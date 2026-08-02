@@ -40,3 +40,10 @@ W1 在 W0 无损基线上增加显式 token 翻译层、简体中文字库、受
 macOS 运行时自动化使用 `tools/libretro_runner.py` 直接驱动 Libretro
 RetroPad 回调，不依赖窗口焦点或键盘映射。当前本机核心、脚本化路线和截图
 证据见 [docs/w1-slice.md](docs/w1-slice.md#libretro-runtime-automation)。
+
+## 全文本清单
+
+`make inventory` 会对 20 张表的 51,174 条记录生成逐条清单、保留上下文 key 的
+36,348 条去重翻译目录，以及机器可读汇总。当前候选文本为 51,006 条、
+1,186,583 个非空白解码字符；统计口径、产物字段和覆盖边界见
+[docs/text-inventory.md](docs/text-inventory.md)。

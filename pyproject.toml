@@ -13,6 +13,7 @@ dependencies = ["Pillow==12.3.0"]
 [project.scripts]
 srw64-w0 = "srw64_w0.cli:main"
 srw64-w1 = "srw64_w0.w1_cli:main"
+srw64-text-inventory = "srw64_w0.inventory_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
