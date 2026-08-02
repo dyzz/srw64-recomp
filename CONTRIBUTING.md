@@ -20,8 +20,9 @@ make check
 变更还需要按风险分层验收：
 
 1. `make w0`：ROM 身份门禁、文本 IR 解析和无损重建；
-2. `make w1`：翻译 token、字库、资源池、差异白名单和确定性 ROM 构建；
-3. `make libretro-smoke` 或更具体的 `config/libretro-w1-*.json`：匹配 ROM、
+2. `make inventory`：生成逐记录清单、去重翻译目录和工作量统计；
+3. `make w1`：翻译 token、字库、资源池、差异白名单和确定性 ROM 构建；
+4. `make libretro-smoke` 或更具体的 `config/libretro-w1-*.json`：匹配 ROM、
    核心、路线和画面的运行时证明。
 
 静态检查、模拟器启动和目标游戏画面是不同证据层，文档和提交信息不得混为
