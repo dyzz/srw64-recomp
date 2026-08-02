@@ -1,0 +1,23 @@
+* text=auto eol=lf
+
+*.py text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.csv text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+*.png binary
+*.z64 binary
+*.n64 binary
+*.v64 binary
+*.ram binary
+*.sav binary
+*.srm binary
+*.state binary
+*.dylib binary
+*.otf binary
+*.ttf binary
+*.zip binary

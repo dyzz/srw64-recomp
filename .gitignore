@@ -1,0 +1,40 @@
+# Local Python environments and packaging output
+/.venv/
+/venv/
+/dist/
+/build/
+*.egg-info/
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Proprietary/local game inputs and emulator state
+/ref-project/
+*.z64
+*.n64
+*.v64
+*.ram
+*.sav
+*.srm
+*.state
+*.dylib
+
+# Local fonts, archives, logs, and environment overrides
+*.otf
+*.ttf
+*.zip
+*.log
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system metadata
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

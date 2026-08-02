@@ -1,0 +1,10 @@
+{
+  "schema": "srw64.libretro-input.v1",
+  "purpose": "Select the super-robot female route used by W1 dialogue t00_17410.",
+  "events": [
+    {"frame": 30, "button": "right", "duration": 3},
+    {"frame": 150, "button": "n64_a", "duration": 3},
+    {"frame": 270, "button": "n64_a", "duration": 3}
+  ],
+  "screenshots": [0, 29, 60, 149, 180, 269, 300, 359, 420, 479]
+}
