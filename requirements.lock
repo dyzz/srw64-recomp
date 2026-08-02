@@ -1,0 +1,3 @@
+# Exact third-party dependency for W1 font/resources and Libretro screenshots.
+# W0 ROM gating and lossless text IR still use only the Python standard library.
+Pillow==12.3.0

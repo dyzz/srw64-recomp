@@ -1,0 +1,32 @@
+{
+  "schema": "srw64.w1-config.v1",
+  "baseline": "srw64-jp-rev0.json",
+  "glyph_map": {
+    "path": "../ref-project/SRW N64/reference/srw64_glyph_map_seed.csv",
+    "sha256": "f9e98bfca8ba13e5b37287bad5c795d57dd3f48b9e0d7865b330a5d5c1bd3567"
+  },
+  "overlay": "../translations/w1-slice.json",
+  "slice_entry_minimum": 20,
+  "slice_entry_maximum": 50,
+  "font": {
+    "sha256": "5123c624dae4a41715a3fc9d6aaf1cf0e3973eafd6ee9adfa51c9ee04de76ebb",
+    "size": 13,
+    "y_offset": 1
+  },
+  "font_resource": {
+    "resource_id": 1,
+    "expected_width": 504,
+    "expected_height": 252,
+    "expanded_height": 504,
+    "new_glyph_start": "0x081f",
+    "new_glyph_end": "0x0aa6"
+  },
+  "resource_pool": {
+    "start": "0x01d90000",
+    "end": "0x01db0000"
+  },
+  "text_pool": {
+    "start": "0x01db0000",
+    "end": "0x02000000"
+  }
+}

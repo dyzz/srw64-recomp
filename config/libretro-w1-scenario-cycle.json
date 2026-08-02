@@ -1,0 +1,11 @@
+{
+  "schema": "srw64.libretro-input.v1",
+  "purpose": "Cycle scenario candidates with D-pad Right and capture each route card.",
+  "events": [
+    {"frame": 30, "button": "right", "duration": 3},
+    {"frame": 150, "button": "right", "duration": 3},
+    {"frame": 270, "button": "right", "duration": 3},
+    {"frame": 390, "button": "right", "duration": 3}
+  ],
+  "screenshots": [0, 29, 60, 149, 180, 269, 300, 389, 420, 479]
+}
