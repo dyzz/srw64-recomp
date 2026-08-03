@@ -44,3 +44,16 @@ git -C ref-project checkout 91e0c15b76b44c302f29ddebc1c45e61f1828cd0
 
 `latest` 地址会漂移；任何不同哈希都应当作为新的运行时环境重新验证，不能沿用
 当前截图或存档结论。
+
+## 出场作品资料
+
+- ROM 内部主证据：日版 Rev 0 的 `t00_00060`–`t00_00084`，由本仓库文本清单
+  直接导出；
+- 官方 SRW SEARCH：`https://www.suparobo.jp/index.php/search`；
+- 官方 LINE UP：`https://www.suparobo.jp/srw_lineup`；
+- 交叉核对：`https://srw.wiki.cre.jp/wiki/スーパーロボット大戦64`；
+- 交叉核对：`https://akurasu.net/wiki/Super_Robot_Wars/64/Series`；
+- 核对日期：2026-08-03。
+
+外部页面只解释作品口径、首次参战、联动条件及补充来源，不参与 ROM 构建。
+机器可读结论保存在 `reference/appearing-works.csv`。

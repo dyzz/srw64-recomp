@@ -47,3 +47,9 @@ RetroPad 回调，不依赖窗口焦点或键盘映射。当前本机核心、�
 36,348 条去重翻译目录，以及机器可读汇总。当前候选文本为 51,006 条、
 1,186,583 个非空白解码字符；统计口径、产物字段和覆盖边界见
 [docs/text-inventory.md](docs/text-inventory.md)。
+
+## 出场作品
+
+参战口径已拆成 22 部本体作品、3 部 Link Battler 联动限定作品、Banpresto
+原创，以及只提供部分机体/情节的补充来源。完整清单、ROM 分类 key 和中文工作
+术语见 [docs/appearing-works.md](docs/appearing-works.md)。
