@@ -1,0 +1,114 @@
+{
+  "schema": "srw64.published-media.v1",
+  "review_status": "approved",
+  "images": [
+    {
+      "file": "01-dialogue-original.png",
+      "source": "build/recomp/model-mode-check/live-1/profile-checks/original.png",
+      "sha256": "977cea2ddd94154d56f9a1c0a67e7811e45b9788067beb012840ceedd0c6e4bb",
+      "title": "01 · 原始画面 / Original artwork",
+      "caption": "与 02 为同次运行、同一段对白；保留原始头像、地图和标记模型。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "02-dialogue-hd.png",
+      "source": "build/recomp/model-mode-check/live-1/profile-checks/hd.png",
+      "sha256": "1bb3123b1e845c7d9a14b8340d6fb0bf02df89d1347646da457e40bb30a25ea4",
+      "title": "02 · HD 实验 / Experimental HD",
+      "caption": "建议作为 README 主图。实际运行中的本地 HD 头像、世界地图、原生文字和标记模型；美术包不随源码分发。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "03-name-entry.png",
+      "source": "build/recomp/three-foundations/hotkey-name-final/name-ja-hd.png",
+      "sha256": "3e402d6c9bb34c43c314be97a97ff2a6b65852196986c96d0723288dd07d5921",
+      "title": "03 · 原生姓名页 / Native name entry",
+      "caption": "F7 切换后的日文界面，字段保留。ナナ 是本次验证输入；使用本地实验性 HD 头像。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "04-stage-one.png",
+      "source": "build/recomp/three-foundations/first-turn-cold/present-1620.png",
+      "sha256": "00ab9296d686fb9983399f308bee329a27f6de2f02559ec82a8c966058b4679b",
+      "title": "04 · 第一话地图 / Stage 1 map",
+      "caption": "独立实验 SRAM 冷启动后的实际地图画面；不代表完整状态自动保存已经完成。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "05-history-zh.png",
+      "source": "build/recomp/readme-history/live-1/locale-1-zh-Hans.png",
+      "sha256": "31fea77d2edc8583d093e40fb691b110e4df128d065570cf0baf3ef3c88725d0",
+      "title": "05 · 中文回看 / Chinese history",
+      "caption": "已实际读完 12 个对白片段；这里展示连续多条历史，按 F7 切换到中文。对白为未审校草稿。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "06-history-ja.png",
+      "source": "build/recomp/readme-history/live-1/locale-0-ja.png",
+      "sha256": "6fe6be0bee0751db79c6614c956cc1d356c6e96ffe69be3d0b1c223d7bfea340",
+      "title": "06 · 日文回看 / Japanese history",
+      "caption": "与 05 为同一运行、同一组 12 个已读片段。切到日文后保留回看进度，按语言重新排版。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "07-auto-dialogue.png",
+      "source": "build/recomp/readme-history/controls-2/present-1800.png",
+      "sha256": "e636ae06d942413367c0f90ad822ecae149c1572ed76624d85ed652f5fcbbaaf",
+      "title": "07 · 自动对话 / Auto reading",
+      "caption": "自动 4/4；录制期间对白按阅读时间自行推进，显示当前句进度。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "08-fast-forward.png",
+      "source": "build/recomp/readme-history/controls-2/present-1860.png",
+      "sha256": "09e0b1d7112cba58fa7c556ecb12f6e9d4e81abcda1327d7b712e743d9606148",
+      "title": "08 · 按住快进 / Hold to fast-forward",
+      "caption": "按住 E＋Z（N64 R＋A），状态栏显示快进；松开后结束临时加速。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "09-before-skip.png",
+      "source": "build/recomp/readme-history/controls-2/09-before-skip.png",
+      "sha256": "6db934cc18c6a2fecc187e956e0ea647c72b02a8109436c14c18a58c944696dc",
+      "title": "09 · 跳过前 / Before skip",
+      "caption": "在标准剧情对白中按 E＋Enter（N64 R＋Start），请求跳过当前脚本对话段。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "10-skip-in-progress.png",
+      "source": "build/recomp/readme-history/controls-2/10-skip-in-progress.png",
+      "sha256": "39fcc202829e6bcbf0f31803a25b2f47fb0da693c7a3d2d0a5fcea7be5bcb405",
+      "title": "10 · 跳过执行中 / Skipping",
+      "caption": "状态栏显示“跳过剧情…”，原脚本继续执行事件与场景过渡。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "11-after-skip.png",
+      "source": "build/recomp/readme-history/controls-2/11-after-skip.png",
+      "sha256": "c381d8d17997ccbf5cbeec407b708f162c5fa856879fc45b31ccba7cfb5eb0b4",
+      "title": "11 · 跳过后 / After skip",
+      "caption": "从世界地图剧情进入第一话战场，停在新的手动对白；与 09 同一次运行。当前实现为跳过当前脚本段，已读过滤仍待实现。",
+      "status": "approved-for-readme",
+      "modified": false
+    }
+  ],
+  "video": {
+    "file": "reading-demo.mp4",
+    "source": "build/recomp/readme-history/controls-2/reading-demo.mov",
+    "source_sha256": "b3b392813ae647f8e036076b673a3c9d5b9eda8f381149855e5c60981c2f4945",
+    "sha256": "4a8487b44db08683c4b2db17adfb07d2710c75e9f49fc202b9ce823812f381b1",
+    "transform": "H.264 transcoding only; no cuts, scaling, or speed changes",
+    "status": "approved-for-readme"
+  },
+  "approved_on": "2026-09-12"
+}

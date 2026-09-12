@@ -67,6 +67,7 @@ CMakeCache.txt
 !/docs/media/*.png
 !/docs/media/*.jpg
 !/docs/media/*.webp
+!/docs/media/reading-demo.mp4
 
 # Editor and operating-system metadata
 .DS_Store
