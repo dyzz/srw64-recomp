@@ -7,11 +7,11 @@
 [English](#english) · [简体中文](#简体中文) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
 
 > Work in progress. This is a source and research repository, not a finished game
-> release or a complete Chinese translation. The current native host targets
-> macOS / Apple Silicon. Full-game compatibility has not been verified.
+> release or a complete Chinese translation. Full-game compatibility has not
+> been verified.
 >
 > 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版，也未完成全量汉化。
-> 当前原生宿主面向 macOS / Apple Silicon，完整游戏兼容性仍待验证。
+> 完整游戏兼容性仍待验证。
 
 <a name="development-preview"></a>
 
@@ -99,7 +99,7 @@ random timing is preserved. / **E＋Enter** 跳过当前对话脚本，事件与
 
 ## English
 
-This project uses **N64Recomp**, **N64ModernRuntime**, and **RT64 / Metal** to run
+This project uses **N64Recomp**, **N64ModernRuntime**, and **RT64** to run
 recompiled code from the Japanese Rev 0 release of Super Robot Wars 64. The
 original game scripts drive progression; native modules provide text rendering,
 reading controls, presentation options, and development diagnostics.
@@ -130,8 +130,9 @@ fonts, HD texture packs, generated game code, or a prebuilt application. Supply
 your own matching original Japanese Rev 0 ROM as `rom.z64` in the repository
 root. Its identity and pinned toolchain sources are in [provenance](docs/provenance.md).
 
-Python **3.11+** is required. The native host also needs macOS / Apple Silicon,
-a C/C++ toolchain, CMake, Ninja, and SDL2. Dependencies are pinned in
+Python **3.11+** is required, along with a C/C++ toolchain, CMake, Ninja, and SDL2
+for the native host. The build instructions below are currently validated on
+macOS / Apple Silicon with the Metal backend. Dependencies are pinned in
 `config/recomp/toolchain.json`; setup downloads and builds them locally.
 
 ```sh
@@ -182,7 +183,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 
 ## 简体中文
 
-本项目基于 **N64Recomp、N64ModernRuntime 和 RT64 / Metal**，重编译并运行
+本项目基于 **N64Recomp、N64ModernRuntime 和 RT64**，重编译并运行
 《超级机器人大战64》日版 Rev 0 的原始代码。原游戏脚本负责剧情和进度推进，
 原生模块提供文字显示、阅读控制、画面选项与诊断工具。
 
@@ -209,8 +210,9 @@ build steps and module boundaries; most technical notes are currently Chinese.
 请自行准备匹配的日版 Rev 0 原始 ROM，放在仓库根目录并命名为 `rom.z64`。
 ROM 身份和工具链固定版本见[来源记录](docs/provenance.md)。
 
-需要 **Python 3.11+**；原生宿主还需要 macOS / Apple Silicon、C/C++ 工具链、
-CMake、Ninja 和 SDL2。按上方英文部分的命令依次准备 Python 环境、原生依赖和生成代码，
+需要 **Python 3.11+**；原生宿主还需要 C/C++ 工具链、CMake、Ninja 和 SDL2。
+以下构建流程目前在 macOS / Apple Silicon 的 Metal 后端上完成验证。
+按上方英文部分的命令依次准备 Python 环境、原生依赖和生成代码，
 再以 `--images original --new-game --mute` 首次启动，可避免依赖本地 HD 素材和历史存档。
 原生依赖会下载并构建到本地 `build/`。
 
