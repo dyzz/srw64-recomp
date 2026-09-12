@@ -1,8 +1,0 @@
-{
-  "schema": "srw64.libretro-input.v1",
-  "purpose": "Accept the final route/name summary and capture the first scripted scene without skipping dialogue.",
-  "events": [
-    {"frame": 30, "button": "n64_a", "duration": 3}
-  ],
-  "screenshots": [0, 29, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 599]
-}

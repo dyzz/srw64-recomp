@@ -1,0 +1,91 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Recorded original-JP stage-one-clear SRAM cold load: title -> Load -> ROM cartridge -> slot 1 -> confirm -> intermission -> Manami pilot detail. Stop at 9000 VI without starting stage 2. Input derived from intermission-cold-1; fixed replay has not been rerun.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "vi": 1698,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "vi": 2454,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "vi": 3588,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "vi": 3654,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "vi": 4182,
+      "button": "a",
+      "duration": 6
+    },
+    {
+      "vi": 4668,
+      "button": "a",
+      "duration": 6
+    },
+    {
+      "vi": 5190,
+      "button": "a",
+      "duration": 6
+    },
+    {
+      "vi": 5796,
+      "button": "a",
+      "duration": 6
+    },
+    {
+      "vi": 6756,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 6792,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 6828,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 6864,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 6900,
+      "button": "a",
+      "duration": 6
+    },
+    {
+      "vi": 7560,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 7596,
+      "button": "down",
+      "duration": 6
+    },
+    {
+      "vi": 7632,
+      "button": "a",
+      "duration": 6
+    }
+  ]
+}

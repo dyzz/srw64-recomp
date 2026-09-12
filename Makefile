@@ -1,12 +1,12 @@
 VENV ?= .venv
 PYTHON := $(VENV)/bin/python
 ROM ?= rom.z64
-W1_FONT ?= /Library/Fonts/RODE Noto Sans CJK SC R.otf
-LIBRETRO_CORE ?= build/libretro/cores/mupen64plus_next_libretro.dylib
-GLYPH_MAP ?= ref-project/SRW N64/reference/srw64_glyph_map_seed.csv
-GLYPH_POLICY ?= ref-project/SRW N64/reference/srw64_unknown_glyph_policy.csv
+NATIVE_CXX ?= clang++
+NATIVE_TEST_FLAGS := -std=c++20 -fsanitize=address,undefined -g
+RECOMP_BUILD := build/recomp
+RECOMP_RUNTIME := $(RECOMP_BUILD)/upstream/N64ModernRuntime
 
-.PHONY: bootstrap test check w0 w1 inventory libretro-smoke
+.PHONY: bootstrap test check recomp-bootstrap recomp-layout recomp-scan recomp-lz recomp-cpu recomp-audio-queue-test recomp-intro-test
 
 bootstrap:
 	python3 -m venv $(VENV)
@@ -20,33 +20,71 @@ check: test
 	$(PYTHON) -m compileall -q src tools tests
 	$(PYTHON) -m pip check
 
-w0:
-	$(PYTHON) -m srw64_w0.cli accept \
-		--rom $(ROM) \
-		--baseline config/srw64-jp-rev0.json \
-		--work-dir build/w0
+recomp-bootstrap:
+	python3 tools/recomp/bootstrap.py
 
-w1:
-	$(PYTHON) -m srw64_w0.w1_cli \
-		--rom $(ROM) \
-		--config config/w1-slice.json \
-		--font "$(W1_FONT)" \
-		--work-dir build/w1
+recomp-layout:
+	python3 tools/recomp/analyze_layout.py --rom $(ROM)
 
-inventory:
-	$(PYTHON) -m srw64_w0.inventory_cli \
-		--rom $(ROM) \
-		--baseline config/srw64-jp-rev0.json \
-		--glyph-map "$(GLYPH_MAP)" \
-		--unknown-glyph-policy "$(GLYPH_POLICY)" \
-		--overlay translations/w1-slice.json \
-		--work-dir build/text-inventory
+recomp-scan:
+	python3 tools/recomp/scan_functions.py --rom $(ROM)
 
-libretro-smoke:
-	$(PYTHON) tools/libretro_runner.py \
-		--core $(LIBRETRO_CORE) \
-		--rom build/w1/srw64-w1.zh-test.z64 \
-		--work-dir build/libretro/start-scan \
-		--frames 960 \
-		--script config/libretro-w1-start-scan.json \
-		--save-state build/libretro/start-scan/frame-000960.state
+recomp-lz:
+	$(PYTHON) tools/recomp/run_lz_probe.py --limit 0
+
+recomp-cpu:
+	python3 tools/recomp/generate_cpu.py
+
+recomp-audio-queue-test:
+	mkdir -p build/recomp
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -I tools/recomp/native-host tests/native_audio_queue.cpp -o build/recomp/native-audio-queue-test
+	build/recomp/native-audio-queue-test
+
+recomp-intro-test:
+	mkdir -p build/recomp/intro
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -I tools/recomp/native-host tests/native_intro.cpp -o build/recomp/intro/controls-test
+	build/recomp/intro/controls-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -I tools/recomp/native-host -I build/recomp/upstream/RT64/src/contrib -I build/recomp/upstream/N64Recomp/include -I build/recomp/cpu-bound/generated -I build/recomp/upstream/N64ModernRuntime/librecomp/include/librecomp -I build/recomp/upstream/N64ModernRuntime/thirdparty tests/native_intro_adapter.cpp tools/recomp/native-host/native_intro.cpp -o build/recomp/intro/adapter-test
+	build/recomp/intro/adapter-test
+
+.PHONY: recomp-content-test recomp-name-entry-test
+recomp-name-entry-test:
+	mkdir -p build/recomp/name-input
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Isrc/native -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include -Ibuild/recomp/cpu-bound/generated tests/native_name_entry.cpp tools/recomp/native-host/native_name_entry.cpp -o build/recomp/name-input/name-entry-test
+	build/recomp/name-input/name-entry-test
+
+recomp-content-test:
+	cmake --build build/recomp/gfx-build --target srw64-content-test srw64-dialogue-test -j 6
+	build/recomp/gfx-build/srw64-content-test
+	build/recomp/gfx-build/srw64-dialogue-test
+
+# Native components require the pinned toolchain/generated headers. Keep this
+# separate from the ROM-independent Python `check` target.
+.PHONY: recomp-native-check recomp-timer-test recomp-replay-test
+recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test
+
+.PHONY: recomp-state-probe-test
+recomp-state-probe-test:
+	mkdir -p build/recomp/state-probe
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_state_probe.cpp -o build/recomp/state-probe/test
+	build/recomp/state-probe/test
+
+.PHONY: recomp-guest-shutdown-test
+recomp-guest-shutdown-test:
+	$(PYTHON) tools/recomp/prepare_runtime_lifecycle.py
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -I$(RECOMP_BUILD)/runtime-lifecycle -I$(RECOMP_RUNTIME)/ultramodern/include -I$(RECOMP_RUNTIME)/thirdparty -I$(RECOMP_RUNTIME)/thirdparty/concurrentqueue tests/native_guest_shutdown.cpp $(RECOMP_RUNTIME)/ultramodern/src/threadqueue.cpp -o $(RECOMP_BUILD)/runtime-lifecycle/guest-shutdown-test
+	$(RECOMP_BUILD)/runtime-lifecycle/guest-shutdown-test
+
+recomp-timer-test:
+	$(PYTHON) tools/recomp/prepare_runtime_lifecycle.py
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -I$(RECOMP_BUILD)/runtime-lifecycle -I$(RECOMP_RUNTIME)/ultramodern/include -I$(RECOMP_RUNTIME)/thirdparty -I$(RECOMP_RUNTIME)/thirdparty/concurrentqueue tests/native_timer_shutdown.cpp -o $(RECOMP_BUILD)/runtime-lifecycle/timer-test
+	$(RECOMP_BUILD)/runtime-lifecycle/timer-test
+
+recomp-replay-test:
+	mkdir -p $(RECOMP_BUILD)
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) tests/native_replay_vi.cpp -o $(RECOMP_BUILD)/replay-vi-test
+	$(RECOMP_BUILD)/replay-vi-test
+
+.PHONY: recomp-data
+recomp-data:
+	$(PYTHON) tools/content/extract_original.py --rom $(ROM)

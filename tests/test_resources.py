@@ -5,7 +5,7 @@ import unittest
 
 from PIL import Image
 
-from srw64_w0.resources import decode_i4_texture, encode_i4_texture, lz_decode, lz_encode
+from srw64_rom.resources import decode_i4_texture, encode_i4_texture, lz_decode, lz_encode
 
 
 class ResourceCodecTests(unittest.TestCase):

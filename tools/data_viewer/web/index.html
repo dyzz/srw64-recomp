@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRW64 · 原始数据目录</title>
+<link rel="stylesheet" href="style.css">
+<body>
+<header><div><span class="eyebrow">SUPER ROBOT WARS 64 / DATA ATLAS</span><h1>原始数据目录 <span class="tag">只读 · JP Rev 0</span></h1></div><nav class="header-links"><a class="download" href="story.html">剧情查看器 ↗</a><a class="download" href="manifest.json">提取清单 ↗</a></nav></header>
+<section class="intro"><p>查看机体、机师与特殊能力；沿关卡脚本追踪事件和原文。</p><div id="stats">正在读取目录…</div></section>
+<details class="limits"><summary>证据说明与未确认事项 <span>结构确认 ≠ 字段含义确认 ≠ 实机验收</span></summary><ul id="limits"></ul></details>
+<nav id="categories" class="primary-categories" aria-label="整合档案分类"></nav>
+<details id="source-categories" class="source-categories"><summary>场景、资源与原始表</summary><nav id="raw-categories" aria-label="原始数据分类"></nav></details>
+<main>
+<section class="catalog" aria-label="记录列表">
+<div class="searchbar"><label for="search">搜索当前分类</label><input id="search" type="search" placeholder="名称、武器、精神、技能、ID…" autocomplete="off"><label id="defined-filter" class="check-label" hidden><input id="defined-only" type="checkbox">仅显示已关联能力的机师</label><div id="result-count" aria-live="polite"></div></div>
+<div id="rows" role="list"></div>
+<footer><button id="page-prev">← 上一页</button><span id="page-count"></span><button id="page-next">下一页 →</button></footer>
+</section>
+<section class="inspector" aria-label="记录详情"><div class="record-nav"><button id="record-prev">← 上一条</button><span>记录详情</span><button id="record-next">下一条 →</button></div><article id="detail"><p class="empty">选择记录，查看原始字节和关联数据。</p></article></section>
+</main>
+<p id="error" role="alert" hidden></p>
+<script type="module" src="app.js"></script>
+</body></html>

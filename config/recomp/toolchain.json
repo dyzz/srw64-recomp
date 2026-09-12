@@ -1,0 +1,32 @@
+{
+  "schema": "srw64.recomp-toolchain.v1",
+  "sources": {
+    "N64Recomp": {
+      "url": "https://github.com/N64Recomp/N64Recomp.git",
+      "commit": "ffb39cdad1da5de07eaaa48bd1db4a89a7986771",
+      "recursive": true
+    },
+    "n64sym": {
+      "url": "https://github.com/shygoo/n64sym.git",
+      "commit": "ccf4600f3389f1a84bde23339225cf372fdf7712",
+      "recursive": false
+    },
+    "N64ModernRuntime": {
+      "url": "https://github.com/N64Recomp/N64ModernRuntime.git",
+      "commit": "cdf5abbd5026fef5c364c676e4667c45e42b6863",
+      "recursive": true
+    },
+    "RT64": {
+      "url": "https://github.com/rt64/rt64.git",
+      "commit": "43373749dac9bbc1b653e6a02aed40a9e1783bed",
+      "recursive": true,
+      "component": "graphics"
+    },
+    "Zelda64Recomp-reference": {
+      "url": "https://github.com/Zelda64Recomp/Zelda64Recomp.git",
+      "commit": "1a9c26613c6e0906140dc8bcca7362cbe00bf1eb",
+      "recursive": false,
+      "component": "graphics"
+    }
+  }
+}

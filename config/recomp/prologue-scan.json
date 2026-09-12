@@ -1,0 +1,16 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Observe native prologue advancement after two Start pulses; inspect captures before choosing a route.",
+  "events": [
+    {"vi": 120, "button": "start", "duration": 3},
+    {"vi": 240, "button": "start", "duration": 3},
+    {"vi": 360, "button": "a", "duration": 3},
+    {"vi": 480, "button": "a", "duration": 3},
+    {"vi": 600, "button": "a", "duration": 3},
+    {"vi": 720, "button": "a", "duration": 3},
+    {"vi": 840, "button": "a", "duration": 3},
+    {"vi": 960, "button": "a", "duration": 3},
+    {"vi": 1080, "button": "a", "duration": 3},
+    {"vi": 1200, "button": "a", "duration": 3}
+  ]
+}

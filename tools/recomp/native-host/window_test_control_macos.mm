@@ -1,0 +1,64 @@
+#import <Cocoa/Cocoa.h>
+#include <SDL.h>
+#include <SDL_syswm.h>
+#include "window_test_control.hpp"
+#include "presentation/image_mode.hpp"
+#include "json/json.hpp"
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+
+namespace srw64::qa {
+void update_window(SDL_Window* window, const std::filesystem::path& output, uint64_t vi) {
+    if (!std::getenv("SRW64_WINDOW_CONTROL")) return;
+
+    @autoreleasepool {
+        // Each protocol has its own monotonic sequence, consumed once per host.
+        static uint64_t close_sequence{}, resize_sequence{}, image_sequence{};
+        {
+            std::ifstream request(output / "window-close.txt");
+            std::string magic;
+            uint64_t sequence{}, at_vi{};
+            if (request >> magic >> sequence >> at_vi && magic == "SRWX1" &&
+                sequence > close_sequence && vi >= at_vi) {
+                SDL_SysWMinfo info{};
+                SDL_VERSION(&info.version);
+                if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
+                NSWindow* cocoa = info.info.cocoa.window;
+                close_sequence = sequence;
+                std::ofstream(output / "window-close-events.jsonl", std::ios::app)
+                    << nlohmann::json({{"schema", "srw64.window-close.v1"}, {"sequence", sequence},
+                        {"vi", vi}, {"window_id", cocoa.windowNumber},
+                        {"action", "NSWindow.performClose"}}).dump() << '\n';
+                // Exercise Cocoa and the SDL delegate instead of injecting SDL_QUIT.
+                [cocoa performClose:nil];
+            }
+        }
+        {
+            std::ifstream request(output / "window-control.txt");
+            std::string magic;
+            uint64_t sequence{};
+            int width{}, height{};
+            if (request >> magic >> sequence >> width >> height && magic == "SRWW1" &&
+                sequence > resize_sequence && width >= 640 && width <= 2560 &&
+                height >= 480 && height <= 1600) {
+                resize_sequence = sequence;
+                SDL_SetWindowSize(window, width, height);
+                std::fprintf(stderr, "SRW64_WINDOW_RESIZE %d %d vi=%llu\n",
+                    width, height, static_cast<unsigned long long>(vi));
+            }
+        }
+        {
+            std::ifstream request(output / "image-control.txt");
+            std::string magic, mode;
+            uint64_t sequence{};
+            if (request >> magic >> sequence >> mode && magic == "SRWI1" &&
+                sequence > image_sequence && (mode == "original" || mode == "hd")) {
+                image_sequence = sequence;
+                // Same request path as F6; the renderer owns application timing.
+                presentation::image_mode.request(mode == "hd");
+            }
+        }
+    }
+}
+}

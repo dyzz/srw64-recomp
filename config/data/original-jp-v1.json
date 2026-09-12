@@ -1,0 +1,3946 @@
+{
+  "schema": "srw64.original-data-layout.v1",
+  "rom_sha256": "ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e",
+  "tables": [
+    {
+      "id": "units",
+      "rom_offset": 465792,
+      "stride": 36,
+      "count": 363,
+      "extent_basis": "code-stride/adjacent-boundary",
+      "loader_vram": "0x800A6E68",
+      "sha256": "45be20fef7c91d0c4190b4202e7aa4437a6340b0e0fba7d4669e30b852b2f6be"
+    },
+    {
+      "id": "weapons",
+      "rom_offset": 478864,
+      "stride": 16,
+      "count": 1329,
+      "extent_basis": "code-stride/adjacent-boundary",
+      "loader_vram": "0x800A642C",
+      "sha256": "5e357ec155c073d5a22360fbf3bccb387cda33b955119f1f2d329e2e425bacf5"
+    },
+    {
+      "id": "pilot_stats",
+      "rom_offset": 500128,
+      "stride": 16,
+      "count": 257,
+      "extent_basis": "actor-map-index-domain",
+      "loader_vram": "0x800A6398",
+      "sha256": "a1effdb0d19f6f5a999705ff26bdf53a6828be5d739a7bd7efb5f10cafc0839f"
+    },
+    {
+      "id": "pilot_thresholds",
+      "rom_offset": 504240,
+      "stride": 30,
+      "count": 256,
+      "extent_basis": "physical-boundary; mapped index 256 overlaps spirit table",
+      "loader_vram": "0x800A6340",
+      "sha256": "e12944a4031824d72d9362c1032abe8a3b40db36a37efc589017125e6c297de7"
+    },
+    {
+      "id": "spirits",
+      "rom_offset": 511920,
+      "stride": 12,
+      "count": 148,
+      "extent_basis": "actor-map-index-domain",
+      "loader_vram": "0x800A63E0",
+      "sha256": "e0f96c6cffc259ee0e0dbdc912a4f6f273dafa8cdfa3c962e67a17b026fa5a63"
+    },
+    {
+      "id": "actor_stats_map",
+      "rom_offset": 349108,
+      "stride": 2,
+      "count": 360,
+      "extent_basis": "adjacent-resident-symbol-boundary",
+      "loader_vram": "0x800A6398",
+      "sha256": "8fb5450d544ba0cd027d30216d8e925473395d00e034e39afd4179fb2471c6e0"
+    },
+    {
+      "id": "actor_spirits_map",
+      "rom_offset": 348388,
+      "stride": 2,
+      "count": 360,
+      "extent_basis": "adjacent-resident-symbol-boundary",
+      "loader_vram": "0x800A63E0",
+      "sha256": "27ba6906a0bd09d2adbfc9331f30e70e6b3bf884ff8fd8c5673260bd7ffc344d"
+    },
+    {
+      "id": "stage_maps",
+      "rom_offset": 1057040,
+      "stride": 2,
+      "count": 144,
+      "extent_basis": "code-stride/adjacent-boundary; last pair may be padding; not playable stage count",
+      "loader_vram": "load_000AB160:80209D6C",
+      "sha256": "7460e3dd50c6a07ac9358581ad7298603925ae50b8002ee738fa463cd22e9857"
+    },
+    {
+      "id": "map_assets",
+      "rom_offset": 1058428,
+      "stride": 12,
+      "count": 158,
+      "extent_basis": "code-stride/adjacent-boundary; not unique map or stage count",
+      "loader_vram": "load_000AB160:801C6EFC",
+      "sha256": "a397e51494abd36d656d6a9ee9d5983030df4c1c8da2b9151f042c36c17b134c"
+    }
+  ],
+  "unit_weapon_lists": {
+    "rom_offset": 516624,
+    "pointer_count": 363,
+    "first_payload_relative": 1456,
+    "region_end": 536848,
+    "row_stride": 12,
+    "terminator": 65535,
+    "note": "首个 payload 前有 364 个 u32；最后一项保留为未解释边界字，不自动增加机体数。"
+  },
+  "names": {
+    "actor_short_base": 4382,
+    "actor_full_base": 4743,
+    "actor_name_count": 361,
+    "stage_title_first": 281,
+    "stage_title_last": 423,
+    "unit_base": 527,
+    "weapon_base": 1370,
+    "weapon_menu_base": 2699,
+    "spirit_base": 969,
+    "spirit_command_count": 30
+  },
+  "evidence": [
+    {
+      "id": "actor_names",
+      "vram": "0x80081130",
+      "rom_offset": 47904,
+      "byte_size": 440,
+      "sha256": "556f271020a5e169a1fea3d1bfbc48fccbfd5228f62c4e101693f7a7ed8534dd",
+      "finding": "人物简称 = actor + 4382；全名 = actor + 4743。"
+    },
+    {
+      "id": "pilot_loader",
+      "vram": "0x800a6340",
+      "rom_offset": 199984,
+      "byte_size": 284,
+      "sha256": "177139e8ef301cb73eba84f4caba218411f45b761e110e2cbf2e0484c8f582e6",
+      "finding": "驾驶员映射、30 字节阈值、16 字节基础记录、12 字节精神记录以及武器读取。"
+    },
+    {
+      "id": "unit_weapons",
+      "vram": "0x800a67c8",
+      "rom_offset": 201144,
+      "byte_size": 872,
+      "sha256": "2e3a3087fa94cc3bb32015217444a46f08dfa30521fd933a3cf2f41131f12f1e",
+      "finding": "机体编号索引相对指针；12 字节列表以 FFFF 结束；首个 u16 传给武器加载器。"
+    },
+    {
+      "id": "unit_loader",
+      "vram": "0x800a6e68",
+      "rom_offset": 202840,
+      "byte_size": 984,
+      "sha256": "c8cc0ef460e2abc8c1f9fdfa56445163e0bf0656944cbc79009eefe807fddc84",
+      "finding": "机体编号乘 36，ROM 0x71B80；复制到 84 字节运行时机体记录。"
+    },
+    {
+      "id": "pilot_consumer",
+      "vram": "0x800a7f8c",
+      "rom_offset": 207228,
+      "byte_size": 596,
+      "sha256": "2839e7d861053abc1d46ebe1d1a4202fe98e906b7dcc100d34932255ac2c2373",
+      "finding": "基础字段复制与等级增长；六组精神习得等级和指令编号。"
+    },
+    {
+      "id": "unit_pilots",
+      "vram": "0x800a7c08",
+      "rom_offset": 206328,
+      "byte_size": 404,
+      "sha256": "ebafcc07edd7418effa40db679c86b70acf42b71b5fe75344142dcbcfe28f307",
+      "finding": "机体 +0x34 驾驶员数，+0x38 起五个驾驶员指针；变形可共享驾驶员。"
+    },
+    {
+      "id": "unit_names",
+      "section": "load_0008F4B0",
+      "vram": "0x801c6d94",
+      "rom_offset": 597316,
+      "byte_size": 96,
+      "sha256": "c65039a57f132183071b84a6410fd316da41ffea8975ca86f784bab874de1014",
+      "finding": "运行时机体 +2 的编号加 527，调用 8008D0E8 显示名称。"
+    },
+    {
+      "id": "weapon_menu_names",
+      "section": "load_0008F4B0",
+      "vram": "0x801c7688",
+      "rom_offset": 599608,
+      "byte_size": 316,
+      "sha256": "573c48e538bfc9449de4386db429a007c8ee1dee0cd073cf110485ea7c606faa",
+      "finding": "机体 +0x30 武器数组，按 36 字节取记录；武器 +2 编号加 2699 显示菜单名称。"
+    },
+    {
+      "id": "weapon_names",
+      "section": "load_00216730",
+      "vram": "0x801c2928",
+      "rom_offset": 2189912,
+      "byte_size": 332,
+      "sha256": "5091c4e4a3e8be5b64faa37ebf172a3b992d5cc5b1f8a7128129adcddd348443",
+      "finding": "801C2928 从原机体武器列表取首个 u16；801C29A4 以此武器编号加 1370 显示名称。load_000AB160:801E7B44..801E7BA4 独立使用相同公式。"
+    },
+    {
+      "id": "spirit_names",
+      "section": "load_0008F4B0",
+      "vram": "0x801c9d14",
+      "rom_offset": 609476,
+      "byte_size": 164,
+      "sha256": "5f703f41f1a002a6f8b019b0c13896482002d3762bbe8abbeaaf898cacb24e6d",
+      "finding": "76 字节驾驶员记录 +0x0B 的精神编号加 969 显示名称；当前原表覆盖编号 0..29。"
+    },
+    {
+      "id": "weapon_eligible_units",
+      "section": "load_0008F4B0",
+      "vram": "0x801c7254",
+      "rom_offset": 598532,
+      "byte_size": 236,
+      "sha256": "5e2291758334f5bb638031707aaeb8d08386775c82cacd11bf1d5d4c9ddf202a",
+      "finding": "运行时武器 +0x18 起五个 u16 与机体编号比较；还检查 +0x22 的 0x600 标志，所以匹配形态不等于完全可用。"
+    },
+    {
+      "id": "unit_repair_cost",
+      "section": "load_000AB160",
+      "vram": "0x8020d85c",
+      "rom_offset": 1008572,
+      "byte_size": 136,
+      "sha256": "11ac493939487630fed941e4c2c24383c85bc2f3f150c3c2b1fbf7040257bf8b",
+      "finding": "文本 933『修理費用』与机体运行时 +0x1C 的 u16 值并排显示；原记录 +0x14 由 800A709C..800A70A8 复制。"
+    },
+    {
+      "id": "unit_status_labels",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800c6ed0",
+      "rom_offset": 334016,
+      "byte_size": 144,
+      "sha256": "1184c89cfe5bb6025bc9fb11d634c1d813890177895a64ae79e7b7c2b9821484",
+      "finding": "机体状态页 (text_id, x, y, flags) 标签表；移动力／运动性／装甲／限界分别在 y=157/173/189/205。"
+    },
+    {
+      "id": "pilot_status_labels",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800c6f78",
+      "rom_offset": 334184,
+      "byte_size": 144,
+      "sha256": "41abcccf743c4c01d0ac6c052234fd58ca8f29ccccfcd2278497043c5f1541ab",
+      "finding": "驾驶员状态页标签坐标；格斗／射击在左列，回避／命中中列，反应／技量右列。"
+    },
+    {
+      "id": "weapon_status_labels",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800c7090",
+      "rom_offset": 334464,
+      "byte_size": 120,
+      "sha256": "083df6225f2094ad62415dd5f19de3cf2e46e6a4421c5d81ae2dd8159ac95942",
+      "finding": "武器状态页标签坐标；攻击力、射程、命中、弹数、必要气力、消耗 EN、暴击修正。"
+    },
+    {
+      "id": "unit_hp_en_ui",
+      "kind": "code",
+      "section": "load_0008F4B0",
+      "vram": "0x801c6dfc",
+      "rom_offset": 597420,
+      "byte_size": 396,
+      "sha256": "99ea33bbbd28d2e0bd816a9e8b653264067999d7d4e291abb3cf025ec583688e",
+      "finding": "机体调用 801C4DE4 后，在文本 4122「HP       EN」旁显示 HP 与机体运行时 +8 的 EN。"
+    },
+    {
+      "id": "unit_status_cache",
+      "kind": "code",
+      "section": "load_0008F4B0",
+      "vram": "0x801c4de4",
+      "rom_offset": 589204,
+      "byte_size": 460,
+      "sha256": "719410775e5e34d4f1223e4d6fde05336bf3c9e9604a5d9c3419dfb4de074cb4",
+      "finding": "运行时机体 +6 的 HP 等数值复制到状态页缓存；装备标志可进一步修正显示值。"
+    },
+    {
+      "id": "unit_status_ui",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801e517c",
+      "rom_offset": 842972,
+      "byte_size": 400,
+      "sha256": "479b2d61b6cfafe549ad8f0b23e28907a8c83c9d6ff224dd2e9ea7a0c3bf2ceb",
+      "finding": "单位状态页读取运行时 +0x0E/+0x10/+0x12/+0x14，在移动力、运动性、装甲、限界对应坐标显示。运行时状态标志可使移动力加 3 或装甲显示翻倍，编号 149 另有特殊显示。"
+    },
+    {
+      "id": "weapon_status_ui",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801e6410",
+      "rom_offset": 847728,
+      "byte_size": 2036,
+      "sha256": "b353170d6f7ee7817d409e50b7bfd67c8038ef82ed7be5991fa17a2456bda71c",
+      "finding": "武器数组步长 36；攻击力 +6、射程 +8/+9、命中 s8 +0xA、弹数 s8 +0xB/+0xC、必要气力 +0xE、EN +0xD、暴击 s8 +0x14；与标签表坐标对应。"
+    },
+    {
+      "id": "pilot_status_ui",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801e6c5c",
+      "rom_offset": 849852,
+      "byte_size": 1452,
+      "sha256": "748b7d6299a041e00c9dbb8d5bcbdfa20a4303c33982f21d8732c03896f8afa7",
+      "finding": "沿机体 +0x38 驾驶员指针读取六项能力，按标签坐标确认 +0x22 格斗、+0x24 射击、+0x26 回避、+0x28 命中、+0x2A 反应、+0x2C 技量；精神点 +0x16/+0x18。"
+    },
+    {
+      "id": "pilot_growth",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800a6238",
+      "rom_offset": 199720,
+      "byte_size": 212,
+      "sha256": "cbcca53c14b15517ae61eef089170d6b85b3d16ede2d6e8ba4180a4be6acbb46",
+      "finding": "从等级 1 起循环；每级格斗／射击／反应／技量 +1，回避／命中／最大精神点 +2；原记录 +0xE 是将运行时 +0x34 置为 2 的等级阈值，动作语义未纳入本批可写字段。"
+    },
+    {
+      "id": "pilot_skill_thresholds",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800a80f0",
+      "rom_offset": 207584,
+      "byte_size": 240,
+      "sha256": "7ecc875a92cdcfd7b5d87df967ec6253400f5a3e5062e96a3eac5d798642b2bd",
+      "finding": "三组间距 10，每组仅循环读取 9 项；仅 0 < 习得等级 <= 当前等级时计数。第一组受技能标志 0x7C 控制，第二组 1，第三组 2。"
+    },
+    {
+      "id": "pilot_skill_names",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801e5a44",
+      "rom_offset": 845220,
+      "byte_size": 404,
+      "sha256": "1ddeca39a4e13ead1f621d80d9102872c7fd5fd0eba6021f8e1e3323fc7bbba8",
+      "finding": "特殊能力等级共用第一组阈值：标志 4 底力、8 NT、16 强化人间、32 圣战士、64 超能力；标志 1 对应切り払い，2 对应 S 防御。首组显示按 4→8→16→32→64 的优先级选择。"
+    },
+    {
+      "id": "stage_map_loader",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x80209d6c",
+      "rom_offset": 993484,
+      "byte_size": 64,
+      "sha256": "78d6ccd81929d0e9490bf3f94b58b860e9da91a2e4490b48c583d8528c67b3a2",
+      "finding": "8010F5F0 的场景索引乘 2；第一字节写入 8010F5EE 地图索引，第二字节由另一函数返回，语义暂保留。"
+    },
+    {
+      "id": "map_asset_loader",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801c6efc",
+      "rom_offset": 719452,
+      "byte_size": 276,
+      "sha256": "0f984c09b9384a307e31b2c6f36be4b981f738244aa5235a7c749db8424ef34c",
+      "finding": "地图索引乘 12；前三个 u16 作为 80098158 的资源参数，两个非零辅助 u16 经 8009CB04 加载，+0xA 为模式字节。"
+    },
+    {
+      "id": "map_resource_arguments",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x80097c68",
+      "rom_offset": 140888,
+      "byte_size": 128,
+      "sha256": "adbb63694538a662caebbd635158edaf08359fe713a77fa5908738dcecbacd05",
+      "finding": "80097C68 接收 80098158 转发的三个资源参数，分别保存在 s7、s5、s6。"
+    },
+    {
+      "id": "map_resource_consumer",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009809c",
+      "rom_offset": 141964,
+      "byte_size": 140,
+      "sha256": "569f86e56b6e73810ead5d0e4b6fff00723d5f8888030606eeec00fedc3fffaf",
+      "finding": "s5、s6、s7 经 80089E9C 加载资源，模式 8 进入 s7 加载分支。"
+    },
+    {
+      "id": "map_resource_wrapper",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x80098158",
+      "rom_offset": 142152,
+      "byte_size": 84,
+      "sha256": "16dd21c071608017a3194ae82d255b39fa17eaf83295e9af9bbc2cf8f667a490",
+      "finding": "80098158 原样转发栈上的三个资源参数给 80097C68，最终参数置 0。"
+    },
+    {
+      "id": "map_aux_resources",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009cb04",
+      "rom_offset": 161012,
+      "byte_size": 264,
+      "sha256": "ef33d3a116e3ae6a9cc2ce6ba14bad1e4cb6331e70c78653e084907db9ac0dd3",
+      "finding": "8009CB04 的第二参数是资源编号，调用 80089E9C 加载并读取解压数据头。"
+    },
+    {
+      "id": "unit_ability_loader",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800a70bc",
+      "rom_offset": 203436,
+      "byte_size": 64,
+      "sha256": "a0fdc328210bcec5d4c29c6f4c9b485f2479b6c69b438af008c060d4cf7d277c",
+      "finding": "原机体 +0x18 u8 → 运行时 +0x20 装备位；+0x1C u32 → 运行时 +0x28 特殊能力位。"
+    },
+    {
+      "id": "unit_ability_labels",
+      "kind": "data",
+      "section": "load_000AB160",
+      "vram": "0x8021818c",
+      "rom_offset": 1051884,
+      "byte_size": 128,
+      "sha256": "80ff43e166cfb4b8d8ae9d86ee1914114da7b6307fc3697cb7a6b4ba0a86abbe",
+      "finding": "16 条 (u32 掩码, u16 文本号, u8 显示宽度, u8 保留)；两种 HP 回复位共用文本 1027。"
+    },
+    {
+      "id": "unit_ability_ui",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801e53a0",
+      "rom_offset": 843520,
+      "byte_size": 228,
+      "sha256": "a6712c572b304e58466c1d783738922a2f3768d097a67b8528e3fd5fff4c32f3",
+      "finding": "读取运行时 +0x20 的 bit 2 显示盾有无；遍历 16 条能力名称表，用运行时 +0x28 与掩码做 AND。"
+    },
+    {
+      "id": "unit_dodge_ability",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801f6c44",
+      "rom_offset": 915364,
+      "byte_size": 204,
+      "sha256": "10430e4e8e8e588027255742c274baf381288b618c5d0679bcca00dde864b006",
+      "finding": "分身类共用判定：掩码 0x163011；主驾驶员气力 >=130，随机函数参数 100、返回值 >=50；按位优先选择表现编号。"
+    },
+    {
+      "id": "unit_hp_recovery",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801fa544",
+      "rom_offset": 929956,
+      "byte_size": 60,
+      "sha256": "9a48cc72f7843dea91c72b6db38fdfd7570b119842788587b5b1d868c9306943",
+      "finding": "能力位 4 调用 HP 百分比回复 10.0；否则位 8 调用 20.0；两位同时启用时位 4 优先。"
+    },
+    {
+      "id": "unit_hp_recovery_math",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801fa324",
+      "rom_offset": 929412,
+      "byte_size": 184,
+      "sha256": "65dff1446add5ab84dd07a4cc51f11ef4d8f03695f96602a9914405612c10d9d",
+      "finding": "a1=0 的 HP 分支读取当前 +4 和最大 +6；a3!=0 时按 最大HP /100 × a2 回复，封顶最大 HP 后截断写回。"
+    },
+    {
+      "id": "unit_repair_check",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801f07a8",
+      "rom_offset": 889608,
+      "byte_size": 164,
+      "sha256": "1820efa48caea264cf974323f1f626d8d5369c4d767293128737f0f58a4bb243",
+      "finding": "修理判定检查当前机体 +0x28 的 0x400 位，随后寻找可回复 HP 的目标。"
+    },
+    {
+      "id": "unit_supply_check",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801f05b8",
+      "rom_offset": 889112,
+      "byte_size": 144,
+      "sha256": "e861b8ec545e4f89bf7528d49e4de326e0963fda922bb531fb9a81b8860fa257",
+      "finding": "补给目标查询检查机体 +0x28 的 0x8000 位，然后比较 EN 并调用弹数检查。"
+    },
+    {
+      "id": "unit_support_menu",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801ca394",
+      "rom_offset": 732916,
+      "byte_size": 180,
+      "sha256": "791715610cc202da80ecb27958b440574d251c66a2783ac09fa632ee763d7ca7",
+      "finding": "修理和补给判定分别调用 801F07A8、801F044C，成功后取 8021DDB8/8021DDBC 对应命令项。"
+    },
+    {
+      "id": "unit_support_labels",
+      "kind": "data",
+      "section": "load_000AB160",
+      "vram": "0x8021ddb8",
+      "rom_offset": 1075480,
+      "byte_size": 8,
+      "sha256": "bd3b14741744195796a7fa16e9383e667cf88dcfe1807ab899edc1a7e3ab3d08",
+      "finding": "菜单命令 13/14 对应文本 518 修理、519 補給。"
+    },
+    {
+      "id": "unit_will_boost",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801ff2a0",
+      "rom_offset": 949760,
+      "byte_size": 92,
+      "sha256": "31dee937a2681c6f08d9209cf3830ebb3bf6fbfe841027ec20cd533b3a9d209d",
+      "finding": "机体能力位 0x10000、驾驶员气力 >=130、尚未有状态 0x40000000 时调用 801FE9CC。"
+    },
+    {
+      "id": "unit_will_boost_apply",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801fe9cc",
+      "rom_offset": 947500,
+      "byte_size": 112,
+      "sha256": "b89ce7124746e7121e0e497ad97028d0d25e52d9262719540408244a26aa43a7",
+      "finding": "启用强化时设置驾驶员状态 0x40000000；机体移动 +1、运动性 +20、限界 +100，并追加 0x200 光束涂层位。"
+    },
+    {
+      "id": "unit_carrier_registration",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801dc170",
+      "rom_offset": 806096,
+      "byte_size": 96,
+      "sha256": "e930ce327bb867bd51fc54563299f79f53bb1307f36506689d9f28247448e662",
+      "finding": "检查机体 0x80000 位，向专用的两槽机体指针／ID 容器登记。"
+    },
+    {
+      "id": "unit_carrier_cargo",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x8020c664",
+      "rom_offset": 1003972,
+      "byte_size": 324,
+      "sha256": "b997d2646cf5aab778d1af48633406efaabe8a4bf83470d51717cfb6b34199c6",
+      "finding": "0x80000 位与登记机体 ID 匹配后遍历其搭载机体指针列表；此位归类为母舰／搭载功能，完整出入舰规则另计。"
+    },
+    {
+      "id": "unit_sword_requirement",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801f6d5c",
+      "rom_offset": 915644,
+      "byte_size": 92,
+      "sha256": "bc23f34472be361dce7cff6227a2392b8852c5e2e18a62651faec4fc9a7fb394",
+      "finding": "切り払い判定同时要求攻击类型 bit 8、机体装备位 1、驾驶员技能位 1 和非零技能等级。"
+    },
+    {
+      "id": "unit_shield_requirement",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801f7020",
+      "rom_offset": 916352,
+      "byte_size": 76,
+      "sha256": "2ac253e9f0992cba1bcb68b4e887198980a7b526d373f541181262cb7d03cec3",
+      "finding": "S 防御判定同时要求机体装备位 2、驾驶员技能位 2 和非零技能等级。"
+    },
+    {
+      "id": "stage_script_scene_argument",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800803C0",
+      "rom_offset": 44464,
+      "byte_size": 208,
+      "sha256": "ba8e48773671144ce1a59f71bac06a09f441048caea3315a480c43936cfa4415",
+      "finding": "800801A4 将 8010F5F0 场景索引作为 a0 调用 8009DD58，a1 为加载模式。"
+    },
+    {
+      "id": "stage_script_load_register",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009DBE4",
+      "rom_offset": 165332,
+      "byte_size": 1436,
+      "sha256": "9055c33a1e702adf1bedc70ed14c89ef318a44100da47ea298fe5b0d906aca9f",
+      "finding": "按场景加载两库；事件指针数组以 -1 结束，事件头 5 个半字，类型 0..11 分类登记，12..14 保存单独入口。"
+    },
+    {
+      "id": "stage_script_dma",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A3D14",
+      "rom_offset": 190212,
+      "byte_size": 252,
+      "sha256": "305f6dd9df966b1b798c3e7ae830017ebd6f5a0ecd273faf139b34a515e772dc",
+      "finding": "DMA 模式 4 将 0x48400 字节加载到 80208C00；模式 2/3 分别加载到 8019B400/80199400。"
+    },
+    {
+      "id": "script_vm",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009EE98",
+      "rom_offset": 170120,
+      "byte_size": 1564,
+      "sha256": "a3c8c0916be0f5ec116d11a37872a311c125656b976fb156a990b5dc4ffdc3ef",
+      "finding": "事件 PC 从入口 +10 开始；读取 16 位命令，FFFF 完成；上下文选择与条件处理独立于普通命令。"
+    },
+    {
+      "id": "script_dispatch",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A19E0",
+      "rom_offset": 181200,
+      "byte_size": 1436,
+      "sha256": "64514eb90319df5abd64c4711386d0b0d5daa9e2fea036a6656d1a7f0c1796a3",
+      "finding": "普通指令 3D31..3D79 的 73 槽分发；3D76/3D77 返回空；条件处理器另处理 3E00..3E1D。"
+    },
+    {
+      "id": "script_command_handlers",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009F4B4",
+      "rom_offset": 171684,
+      "byte_size": 6728,
+      "sha256": "1b995f3063b149ca0408cb2f52bc0a9fd34b3d01a7fd31ea3166ae42788acdf8",
+      "finding": "部分普通命令的参数读取与 PC 步进依据；未确认字段保持未知。"
+    },
+    {
+      "id": "script_dialogue_source",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8008C9C0",
+      "rom_offset": 95152,
+      "byte_size": 176,
+      "sha256": "6b0afbbaebf9a918187f77c31f3d3edabd62b35f513401e4f235f53cdb0a6660",
+      "finding": "标准对白通过 8008C510 获取表 0 原文；脚本 3D3E..3D43 经 8009F4B4/8008FED4 进入对白路径。"
+    },
+    {
+      "id": "script_dispatch_table",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800D0768",
+      "rom_offset": 373080,
+      "byte_size": 292,
+      "sha256": "f4ca105430805b0e4508271dcc3b9ac96e21335aa246084e4729714c878aa92d",
+      "finding": "普通脚本指令的 73 项跳转表；槽位顺序由 ROM 原始指针确定。"
+    },
+    {
+      "id": "actor_portrait_binding",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009C768",
+      "rom_offset": 160088,
+      "byte_size": 116,
+      "sha256": "ab59d1f2c89b3bd19199cfac9f5a75571bb900d492d165a2d9e89219f712545f",
+      "finding": "人物 ID × 4 从 ROM 0x84220 读取头像与调色板资源，各为 u16。"
+    },
+    {
+      "id": "unit_icon_binding",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801C60A4",
+      "rom_offset": 715780,
+      "byte_size": 220,
+      "sha256": "5170949c130db9e37dbd8e641dd7343cfca9e414a31503cbc04a6e4f01ae2b4d",
+      "finding": "运行时机体 +2 的机体 ID 索引 80218218（ROM 100D78）的 u16 图标表；调色板为 1010 + 阵营。"
+    },
+    {
+      "id": "map_draw_layout",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800945D4",
+      "rom_offset": 126916,
+      "byte_size": 300,
+      "sha256": "27dd1ae631a621e0d83774a49cebbf8fa08e5ed185d906045568fd6491d33543",
+      "finding": "地图绘制器读取布局头部和图集，跳过 width/2 × height/2 × 4 字节地形记录。"
+    },
+    {
+      "id": "map_draw_groups",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x80094934",
+      "rom_offset": 127780,
+      "byte_size": 416,
+      "sha256": "3669eb9922784941ab5cb8b0c067f5b60c8f5f53497a67ceeae62751c2297f61",
+      "finding": "绘制组为 tile/count/offset 三个 u16；图集坐标按位展开，读取每组的位置并绘制 16×16 图块。"
+    },
+    {
+      "id": "map_draw_flips",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x80094AD4",
+      "rom_offset": 128196,
+      "byte_size": 100,
+      "sha256": "78fb7d582e44eab153e4f4e992e646116ed13690001bacef304a8af6b72ee796",
+      "finding": "位置项 flags/x/y 各为 u16；0x4000 与 0x8000 控制纹理镜像，其他位在该路径未读取。"
+    },
+    {
+      "id": "script_condition_handlers",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A1F7C",
+      "rom_offset": 182636,
+      "byte_size": 1588,
+      "sha256": "0ac398dd50a6f2015efc3ab626c45529e10e36d4aec71803bca294694c1e1288",
+      "finding": "3E00–3E1D 各条件函数：ACC 比较、2 位变量读写、HP 百分比、在场状态、选择肢与阵营计数。"
+    },
+    {
+      "id": "script_condition_jump_table",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800D0890",
+      "rom_offset": 373376,
+      "byte_size": 120,
+      "sha256": "f83bf73212e84fb60997dad24f64349d633fc4b53863193b4b63fa2b80c5d187",
+      "finding": "3E00–3E1D 的 30 项跳转表，指向 800A1D68 内的 jal 桩；3E05/3E07 落入内联恒真分支。"
+    },
+    {
+      "id": "script_skip_jump_table",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800D0638",
+      "rom_offset": 372776,
+      "byte_size": 112,
+      "sha256": "cee2697a0d8cbcacde346ab55186db9af2a349bbf52a1d75118fa73ae1500b69",
+      "finding": "条件为假时的逐字扫描表：3E01–05/07–0C/10–12 嵌套层 +1，其余仅前进。"
+    },
+    {
+      "id": "script_event_triggers",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009E180",
+      "rom_offset": 166768,
+      "byte_size": 3352,
+      "sha256": "293fd54929b4df00886b09e6e11b0a79d7be0b25d940b9e7473980f12737d027",
+      "finding": "8009E180 按阶段轮询分组；8009E598–8009ECBC 为类型 0–9 触发函数；8009EDB8 处理 C1/C2/C3 专用事件与阶段回退。"
+    },
+    {
+      "id": "script_event_type_table",
+      "kind": "data",
+      "section": "resident",
+      "vram": "0x800D0610",
+      "rom_offset": 372736,
+      "byte_size": 40,
+      "sha256": "1c2dcded1097bbb80352e16894b05a4fe30dad84d65b9c5af1262768142a5630",
+      "finding": "类型 0–9 → 触发函数的 10 项跳转表。"
+    },
+    {
+      "id": "script_speaker_header",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8008CE54",
+      "rom_offset": 96324,
+      "byte_size": 192,
+      "sha256": "e713491e2cd8aa390c7aebfe873fcbefc9245084ed3e674a16619c7464d082f6",
+      "finding": "读取文本头前 4 字节 ASCII 数字，前三位为说话人角色编号。"
+    },
+    {
+      "id": "script_flag_storage",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A4888",
+      "rom_offset": 193144,
+      "byte_size": 436,
+      "sha256": "d07ceac84be2087acd1f418ae164450fd29df8be35dbcb987bb4f8074d4316bd",
+      "finding": "200 个 2 位变量的写入 800A4888 与读取 800A496C。"
+    },
+    {
+      "id": "script_command_handlers_tail",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A0FCC",
+      "rom_offset": 178620,
+      "byte_size": 2580,
+      "sha256": "03dad4c1cc061b9034d561a17ae15299d65ea780a6f46a5eec59105a4552d82e",
+      "finding": "3D72、3D5D–3D70、3D73–3D75 处理函数的参数读取与 PC 步进。"
+    },
+    {
+      "id": "script_region_trigger",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A4288",
+      "rom_offset": 191608,
+      "byte_size": 940,
+      "sha256": "e86ea68b3fd439a4ab1e2b90be8962ec71b4169859c96ffe9bd24c8c97929eef",
+      "finding": "类型 8：按目标阵营遍历地图槽，检查格坐标落在 (x0×10+宽, y0×10+高) 区域；模式 0xFF 触发事件，其余登记退场演出。"
+    },
+    {
+      "id": "script_unit_lookup",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A2C18",
+      "rom_offset": 185864,
+      "byte_size": 568,
+      "sha256": "e75bb3ef38951cbeee86cafbf1d3d1d172e984a8177366eec8f086b11363770b",
+      "finding": "按角色查找地图槽（+4/+5 为格坐标）；0x34E 表示主角。"
+    },
+    {
+      "id": "script_hp_percent",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A293C",
+      "rom_offset": 185132,
+      "byte_size": 328,
+      "sha256": "1c4491f4f6ca94d99b7c42210bbf55fa67ed136d9b071111e84d092e93ac3fbc",
+      "finding": "角色所驾单位 HP 百分比：不在场 0、旗标 1 → 1.0、其余 103.0。"
+    },
+    {
+      "id": "script_position_decode",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x800A38DC",
+      "rom_offset": 189132,
+      "byte_size": 180,
+      "sha256": "c3298dd4f31ebe6d198bbb5ae1731b91fad35f8f85bb90e5c2ad566d9a2b2045",
+      "finding": "位置字解码：高字节 x／低字节 y；0x40 同位、0x41 上、0x42 右、0x43 下、0x44 左（相对 ctx+8/+9）。"
+    },
+    {
+      "id": "script_choice_input",
+      "kind": "code",
+      "section": "resident",
+      "vram": "0x8009F3A8",
+      "rom_offset": 171416,
+      "byte_size": 268,
+      "sha256": "aeb46edea5167479177a5b866153ad774763502075955f9784005284a69be681",
+      "finding": "选择肢光标：上下键循环，A 键返回 0x3DD9 + 序号。"
+    },
+    {
+      "id": "script_protagonist_marker",
+      "kind": "code",
+      "section": "load_001090A0",
+      "vram": "0x801C69D0",
+      "rom_offset": 1102960,
+      "byte_size": 128,
+      "sha256": "bf9294fb11a1e3e7a3fe26a101c736e921436a94527a483f2ef98cf7c32ccabd",
+      "finding": "主角选择 0/1/2/3 → engine+0x99E = 0x3DD3/0x3DD4/0x3DD1/0x3DD2，并把选择写入 8010F5F0 作为首个场景索引。"
+    },
+    {
+      "id": "script_turn_phase_refresh",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801DF96C",
+      "rom_offset": 820428,
+      "byte_size": 140,
+      "sha256": "f584c0581988a09948bcc1532630a72af7bd3c0521f8e27049f420b6539ceb94",
+      "finding": "把 8010F5EA 回合、8010F5E8 阶段写入 engine+0x9AC/0x9AE，刷新三阵营单位数后 engine+0x9AA = 4（战斗前）。"
+    },
+    {
+      "id": "script_battle_phase_return",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801DF9F8",
+      "rom_offset": 820568,
+      "byte_size": 136,
+      "sha256": "9d9fba4e3a16156b8a095aff6b1b783c85cee46112b622b7640c29a70d20ed93",
+      "finding": "同样刷新回合、阶段与单位数后 engine+0x9AA = 7（战斗后）。"
+    },
+    {
+      "id": "script_side_unit_counts",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x802018C4",
+      "rom_offset": 959524,
+      "byte_size": 100,
+      "sha256": "e9e82d42c3e85914bd8c858935ef5a8f8ffe8200a8c257b93b5a4990a3b2b2fc",
+      "finding": "按阵营 0/1/2 把 80172EDC.. 的单位数写入 engine+0x9B0/0x9B1/0x9B2。"
+    },
+    {
+      "id": "script_stage_clear_phase",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x8020DB08",
+      "rom_offset": 1009256,
+      "byte_size": 180,
+      "sha256": "a015af4d98591895335ccbd25bb053b6be8b2964c6c3a14c348164dc72827f01",
+      "finding": "关卡通关：清零阶段与回合、累计 8010F5EC 总回合与 8010F5EF 关卡数、记录上一场景，engine+4 = 0xC3。"
+    },
+    {
+      "id": "script_aux_record_spawn",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x8020ABB4",
+      "rom_offset": 997140,
+      "byte_size": 1312,
+      "sha256": "f0899839eb5a78a73ef90b9b1c6532f09122774268a870b449592db6e6d6efa5",
+      "finding": "由 28 字节配套记录生成运行时机体：+6 驾驶员、+9 等级偏移、+A 机体、+C 强化索引、+14 阵营、+16/+18 行为参数。"
+    },
+    {
+      "id": "script_aux_record_effect",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801C78A0",
+      "rom_offset": 721920,
+      "byte_size": 740,
+      "sha256": "156685d4969400e3d723e58386d3435c9b2b7393e146933885d8fb1748b9c6e8",
+      "finding": "3D3D：配套记录 +2/+4 以 ×16+32 转为屏幕坐标播放演出。"
+    },
+    {
+      "id": "script_status_consumer",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801DFEA8",
+      "rom_offset": 821768,
+      "byte_size": 184,
+      "sha256": "7899364bb158ffe4701c37dcfffb9ae49aae3154988670fd380cb331bdb6a78d",
+      "finding": "8009DE54 返回 0x2001 且阶段 4、或 0x2002 且阶段 7 时保持等待；事件结束后分别调用 801D4E6C 与 801DFA80 并归零阶段。"
+    },
+    {
+      "id": "script_world_map_driver",
+      "kind": "code",
+      "section": "load_000A7EC0",
+      "vram": "0x801C28E4",
+      "rom_offset": 688548,
+      "byte_size": 696,
+      "sha256": "b215e05e1256f8b8ea06a4d86ff512e3b5e5870d00fabd4fdcbc668e3de32e6d",
+      "finding": "世界地图 overlay：进入时 engine+4 = 0xC1（模式 3）或 0xC0，阶段 9；每帧写回合/阶段后调用 8009DE54 推进脚本。"
+    },
+    {
+      "id": "stage_title_display",
+      "kind": "code",
+      "section": "load_0008F4B0",
+      "vram": "0x801CE0F8",
+      "rom_offset": 626856,
+      "byte_size": 28,
+      "sha256": "25d92bf9d992c67be6866f56ee540c8cecefa4397cbc79870a64676b8a285238",
+      "finding": "整备画面以 8010F5F1（刚通关的场景索引）加 281 作为文本编号调用 8008CD8C 显示章节标题；801C6944/801C754C 对存档列表的场景字节使用同一公式。"
+    },
+    {
+      "id": "script_actor_movement",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x8020A030",
+      "rom_offset": 994192,
+      "byte_size": 2116,
+      "sha256": "55ef7d9204d74d4486d9a8809be79874529b7915ffe051f1b9e012703de73e93",
+      "finding": "3D3C 按驾驶员 +2 编号查找三阵营首个有效单位，设置目标位置；8020A4BC 横移、8020A5F0 纵移、8020A724 收尾，8020A788 跟随镜头并在状态 3 返回完成。相对坐标和逻辑位置写回未完整验收。"
+    },
+    {
+      "id": "script_actor_movement_commit",
+      "kind": "code",
+      "section": "load_000AB160",
+      "vram": "0x801CBEB8",
+      "rom_offset": 739864,
+      "byte_size": 372,
+      "sha256": "0814307087a91989d2428876501b147f5ebbed06c8592b7d06663805c863d7ba",
+      "finding": "3D3C 收尾 8020A724 调用 801CBEB8：通过 801E510C 将精灵索引映射到阵营/槽，把 (精灵 x/y−32)>>4 写入 8015E100 对应槽 +4/+5 的逻辑格坐标。"
+    }
+  ],
+  "numeric_fields": {
+    "units": [
+      {
+        "id": "hp",
+        "name": "基础 HP",
+        "offset": 0,
+        "size": 2,
+        "label_text_id": 4122,
+        "confidence": "code-confirmed",
+        "basis": "800A6FC0 → 机体 +4/+6；801C4DE4 缓存，801C6E64..801C6ED0 在 HP 栏显示。",
+        "evidence": [
+          "unit_loader",
+          "unit_status_cache",
+          "unit_hp_en_ui"
+        ]
+      },
+      {
+        "id": "en",
+        "name": "基础 EN",
+        "offset": 2,
+        "size": 2,
+        "label_text_id": 4122,
+        "confidence": "code-confirmed",
+        "basis": "800A6FD8 → 机体 +8/+10；801C6EE8 读取 +8，在 EN 栏显示。",
+        "evidence": [
+          "unit_loader",
+          "unit_hp_en_ui"
+        ]
+      },
+      {
+        "id": "movement",
+        "name": "基础移动力",
+        "offset": 6,
+        "size": 1,
+        "label_text_id": 914,
+        "confidence": "code-confirmed",
+        "basis": "800A700C → 机体 +0x0E；801E51EC..801E521C 对应移动力标签。技能等加成另计。",
+        "evidence": [
+          "unit_loader",
+          "unit_status_ui",
+          "unit_status_labels"
+        ]
+      },
+      {
+        "id": "mobility",
+        "name": "基础运动性",
+        "offset": 8,
+        "size": 2,
+        "label_text_id": 915,
+        "confidence": "code-confirmed",
+        "basis": "800A701C → 机体 +0x10；801E5224..801E5248 对应运动性标签。",
+        "evidence": [
+          "unit_loader",
+          "unit_status_ui",
+          "unit_status_labels"
+        ]
+      },
+      {
+        "id": "armor",
+        "name": "基础装甲",
+        "offset": 10,
+        "size": 2,
+        "label_text_id": 916,
+        "confidence": "code-confirmed",
+        "basis": "800A702C → 机体 +0x12；801E5298..801E52C8 对应装甲标签。运行时状态修正另计。",
+        "evidence": [
+          "unit_loader",
+          "unit_status_ui",
+          "unit_status_labels"
+        ]
+      },
+      {
+        "id": "limit",
+        "name": "基础限界反应",
+        "offset": 12,
+        "size": 2,
+        "label_text_id": 917,
+        "confidence": "code-confirmed",
+        "basis": "800A703C → 机体 +0x14；801E52E0..801E5304 对应限界标签。",
+        "evidence": [
+          "unit_loader",
+          "unit_status_ui",
+          "unit_status_labels"
+        ]
+      },
+      {
+        "id": "repair_cost",
+        "name": "修理费用",
+        "offset": 20,
+        "size": 2,
+        "label_text_id": 933,
+        "confidence": "code-confirmed",
+        "basis": "800A709C → 机体 +0x1C；8020D894..8020D8DC 对应修理費用标签。",
+        "evidence": [
+          "unit_loader",
+          "unit_repair_cost"
+        ]
+      }
+    ],
+    "weapons": [
+      {
+        "id": "power",
+        "name": "基础攻击力",
+        "offset": 1,
+        "size": 1,
+        "label_text_id": 4082,
+        "confidence": "code-confirmed",
+        "basis": "800A6A18..800A6A30 乘 100 → 武器 +6；801E66C0..801E66F8 显示于攻击力列。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ],
+        "scale": 100
+      },
+      {
+        "id": "range_min",
+        "name": "最小射程",
+        "offset": 2,
+        "size": 1,
+        "label_text_id": 4083,
+        "confidence": "code-confirmed",
+        "basis": "800A6A34 → 武器 +8；801E6700..801E675C 格式化射程起点。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ]
+      },
+      {
+        "id": "range_max",
+        "name": "基础最大射程",
+        "offset": 3,
+        "size": 1,
+        "label_text_id": 4083,
+        "confidence": "code-confirmed",
+        "basis": "800A6A3C → 武器 +9；801E6704..801E675C 格式化射程终点。运行时加成另计。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ]
+      },
+      {
+        "id": "hit_modifier",
+        "name": "命中修正",
+        "offset": 4,
+        "size": 1,
+        "label_text_id": 4084,
+        "confidence": "code-confirmed",
+        "basis": "800A6A44 → 武器 +0xA；801E6764 以 lb 读取并按正负显示。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ],
+        "signed": true
+      },
+      {
+        "id": "ammo",
+        "name": "基础弹数",
+        "offset": 5,
+        "size": 1,
+        "label_text_id": 4085,
+        "confidence": "code-confirmed",
+        "basis": "800A6A4C → 武器 +0xB/+0xC；801E6840..801E68B0 显示当前／最大弹数，-1 为无弹数限制标记。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ],
+        "signed": true,
+        "sentinels": {
+          "-1": "无弹数限制"
+        }
+      },
+      {
+        "id": "en_cost",
+        "name": "消耗 EN",
+        "offset": 6,
+        "size": 1,
+        "label_text_id": 4092,
+        "confidence": "code-confirmed",
+        "basis": "800A6A58 → 武器 +0xD；801E6A64..801E6AE4 与机体当前 EN 比较并显示。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ]
+      },
+      {
+        "id": "will_required",
+        "name": "必要气力",
+        "offset": 7,
+        "size": 1,
+        "label_text_id": 4091,
+        "confidence": "code-confirmed",
+        "basis": "800A6A60 → 武器 +0xE；801E69E8..801E6A5C 与机体气力比较并显示。0 在界面显示为无要求。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ]
+      },
+      {
+        "id": "critical_modifier",
+        "name": "暴击修正",
+        "offset": 13,
+        "size": 1,
+        "label_text_id": 4094,
+        "confidence": "code-confirmed",
+        "basis": "800A6A90 → 武器 +0x14；801E6B50..801E6BCC 以 lb 读取并在暴击修正位置显示。",
+        "evidence": [
+          "unit_weapons",
+          "weapon_status_ui",
+          "weapon_status_labels"
+        ],
+        "signed": true
+      }
+    ],
+    "pilot_stats": [
+      {
+        "id": "melee",
+        "name": "基础格斗",
+        "offset": 1,
+        "size": 1,
+        "label_text_id": 926,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x22；801E7084 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 1
+      },
+      {
+        "id": "ranged",
+        "name": "基础射击",
+        "offset": 2,
+        "size": 1,
+        "label_text_id": 929,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x24；801E70C0 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 1
+      },
+      {
+        "id": "evasion",
+        "name": "基础回避",
+        "offset": 3,
+        "size": 1,
+        "label_text_id": 927,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x26；801E716C 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 2
+      },
+      {
+        "id": "accuracy",
+        "name": "基础命中",
+        "offset": 4,
+        "size": 1,
+        "label_text_id": 930,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x28；801E71C0 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 2
+      },
+      {
+        "id": "reaction",
+        "name": "基础反应",
+        "offset": 5,
+        "size": 1,
+        "label_text_id": 928,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x2a；801E70F8 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 1
+      },
+      {
+        "id": "skill",
+        "name": "基础技量",
+        "offset": 6,
+        "size": 1,
+        "label_text_id": 931,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x2c；801E7130 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 1
+      },
+      {
+        "id": "sp",
+        "name": "基础最大精神点",
+        "offset": 12,
+        "size": 1,
+        "label_text_id": 924,
+        "confidence": "code-confirmed",
+        "basis": "800A7F8C 复制到驾驶员 +0x18；801E6F24 读取并在对应标签旁显示。等级成长另计。",
+        "evidence": [
+          "pilot_consumer",
+          "pilot_status_ui",
+          "pilot_status_labels",
+          "pilot_growth"
+        ],
+        "growth_per_level": 2
+      }
+    ]
+  },
+  "pilot_skills": {
+    "flags_offset": 15,
+    "shared_display_priority": [
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "definitions": [
+      {
+        "mask": 1,
+        "name": "切り払い",
+        "threshold_group": 1,
+        "rank_text_base": 1084,
+        "alias": "切落"
+      },
+      {
+        "mask": 2,
+        "name": "S 防御",
+        "threshold_group": 2,
+        "rank_text_base": 1030,
+        "alias": "盾防御"
+      },
+      {
+        "mask": 4,
+        "name": "底力",
+        "threshold_group": 0,
+        "rank_text_base": 1075,
+        "alias": "底力"
+      },
+      {
+        "mask": 8,
+        "name": "NT",
+        "threshold_group": 0,
+        "rank_text_base": 1039,
+        "alias": "新人类"
+      },
+      {
+        "mask": 16,
+        "name": "強化人間",
+        "threshold_group": 0,
+        "rank_text_base": 1048,
+        "alias": "强化人"
+      },
+      {
+        "mask": 32,
+        "name": "聖戦士",
+        "threshold_group": 0,
+        "rank_text_base": 1057,
+        "alias": "圣战士"
+      },
+      {
+        "mask": 64,
+        "name": "超能力",
+        "threshold_group": 0,
+        "rank_text_base": 1066,
+        "alias": "超能力"
+      }
+    ],
+    "threshold_group_stride": 10,
+    "thresholds_used_per_group": 9,
+    "threshold_groups": [
+      {
+        "name": "特殊能力（由技能标志选择）",
+        "enabled_mask": 124
+      },
+      {
+        "name": "切り払い",
+        "enabled_mask": 1
+      },
+      {
+        "name": "S 防御",
+        "enabled_mask": 2
+      }
+    ],
+    "evidence": [
+      "pilot_skill_thresholds",
+      "pilot_skill_names"
+    ]
+  },
+  "unit_abilities": {
+    "ui_table_rom_offset": 1051884,
+    "ui_table_stride": 8,
+    "ui_table_count": 16,
+    "definitions": [
+      {
+        "id": "flag_00000002",
+        "mask": 2,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 0,
+        "family": "形态",
+        "alias": "变形",
+        "note": "标志表示具有变形功能；目标形态和可用条件需由形态／事件逻辑确定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00000040",
+        "mask": 64,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 1,
+        "family": "形态",
+        "alias": "分离",
+        "note": "标志表示具有分离功能；具体拆分与场景条件另计。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00000100",
+        "mask": 256,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 2,
+        "family": "形态",
+        "alias": "合体",
+        "note": "标志表示具有合体功能；组合对象和条件另计。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00000010",
+        "mask": 16,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 3,
+        "family": "回避",
+        "alias": "分身",
+        "note": "气力达到 130 后进入共用随机判定；实际触发取决于战斗调用路径。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00000004",
+        "mask": 4,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 4,
+        "family": "回复",
+        "alias": "HP 回复 10%",
+        "note": "HP 回复处理按最大 HP 的 10% 回复，封顶最大值；与 20% 位同时启用时本位优先。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_hp_recovery",
+          "unit_hp_recovery_math"
+        ]
+      },
+      {
+        "id": "flag_00000008",
+        "mask": 8,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 5,
+        "family": "回复",
+        "alias": "HP 回复 20%",
+        "note": "HP 回复处理按最大 HP 的 20% 回复，封顶最大值；10% 位优先。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_hp_recovery",
+          "unit_hp_recovery_math"
+        ]
+      },
+      {
+        "id": "flag_00001000",
+        "mask": 4096,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 6,
+        "family": "回避",
+        "alias": "马赫特殊",
+        "note": "气力达到 130 后进入分身类共用随机判定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00002000",
+        "mask": 8192,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 7,
+        "family": "回避",
+        "alias": "真马赫特殊",
+        "note": "气力达到 130 后进入分身类共用随机判定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00000001",
+        "mask": 1,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 8,
+        "family": "回避",
+        "alias": "神之分身",
+        "note": "气力达到 130 后进入分身类共用随机判定；事件／强化仍可动态追加该位。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00000020",
+        "mask": 32,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 9,
+        "family": "护罩",
+        "alias": "I 力场",
+        "note": "原始能力位与名称已确认；护罩数值、攻击类型及消耗条件不在本次汇总中模拟。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00000200",
+        "mask": 512,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 10,
+        "family": "护罩",
+        "alias": "光束涂层",
+        "note": "原始持有与强化后追加分开统计；这里统计原始记录持有者。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00000800",
+        "mask": 2048,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 11,
+        "family": "护罩",
+        "alias": "行星防御系统",
+        "note": "原始能力位与名称已确认；战斗中的生效条件另计。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00004000",
+        "mask": 16384,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 12,
+        "family": "护罩",
+        "alias": "灵气屏障",
+        "note": "原始能力位与名称已确认；效果还受驾驶员技能与战斗条件影响。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui"
+        ]
+      },
+      {
+        "id": "flag_00020000",
+        "mask": 131072,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 13,
+        "family": "回避",
+        "alias": "盖塔幻影",
+        "note": "气力达到 130 后进入分身类共用随机判定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00040000",
+        "mask": 262144,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 14,
+        "family": "回避",
+        "alias": "瞬幻足",
+        "note": "气力达到 130 后进入分身类共用随机判定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "flag_00100000",
+        "mask": 1048576,
+        "offset": 28,
+        "size": 4,
+        "ui_index": 15,
+        "family": "回避",
+        "alias": "超级干扰器",
+        "note": "气力达到 130 后进入分身类共用随机判定。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_ability_labels",
+          "unit_ability_ui",
+          "unit_dodge_ability"
+        ]
+      },
+      {
+        "id": "repair",
+        "mask": 1024,
+        "offset": 28,
+        "size": 4,
+        "name": "修理装置",
+        "family": "支援",
+        "alias": "修理",
+        "note": "修理能力标志；命令可用性还要检查目标 HP、位置和行动状态。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_repair_check",
+          "unit_support_menu",
+          "unit_support_labels"
+        ],
+        "source_evidence": "unit_repair_check",
+        "text_id": 518
+      },
+      {
+        "id": "supply",
+        "mask": 32768,
+        "offset": 28,
+        "size": 4,
+        "name": "補給装置",
+        "family": "支援",
+        "alias": "补给",
+        "note": "补给能力标志；命令可用性还要检查 EN／弹数、位置和行动状态。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_supply_check",
+          "unit_support_menu",
+          "unit_support_labels"
+        ],
+        "source_evidence": "unit_supply_check",
+        "text_id": 519
+      },
+      {
+        "id": "will_boost",
+        "mask": 65536,
+        "offset": 28,
+        "size": 4,
+        "name": "气力强化（V-MAX 系候选）",
+        "family": "强化",
+        "alias": "V-MAX",
+        "note": "气力 >=130 且尚未强化时触发：移动 +1、运动性 +20、限界 +100，并追加光束涂层。代码条件已确认；V-MAX 名称对应仍属候选。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_will_boost",
+          "unit_will_boost_apply"
+        ],
+        "source_evidence": "unit_will_boost",
+        "label_confidence": "candidate"
+      },
+      {
+        "id": "carrier",
+        "mask": 524288,
+        "offset": 28,
+        "size": 4,
+        "name": "母舰／搭载功能",
+        "family": "搭载",
+        "alias": "母舰",
+        "note": "参与母舰登记和搭载机体管理；具体搭载数量、出入舰与场景限制另计。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_carrier_registration",
+          "unit_carrier_cargo"
+        ],
+        "source_evidence": "unit_carrier_registration"
+      },
+      {
+        "id": "sword",
+        "mask": 1,
+        "offset": 24,
+        "size": 1,
+        "name": "切り払い対応装備",
+        "family": "装备",
+        "alias": "切落对应装备",
+        "note": "机体具备切落所需装备条件；还需驾驶员切り払い技能等级非零，并满足攻击类型条件。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_sword_requirement"
+        ],
+        "source_evidence": "unit_sword_requirement",
+        "text_id": 1085
+      },
+      {
+        "id": "shield",
+        "mask": 2,
+        "offset": 24,
+        "size": 1,
+        "name": "シールド有",
+        "family": "装备",
+        "alias": "盾装备",
+        "note": "原状态页显示盾装备；发动 S 防御还需驾驶员对应技能及有效等级。",
+        "evidence": [
+          "unit_ability_loader",
+          "unit_shield_requirement",
+          "unit_ability_ui"
+        ],
+        "source_evidence": "unit_shield_requirement",
+        "text_id": 911
+      }
+    ]
+  },
+  "stage_scripts": {
+    "schema": "srw64.stage-script-layout.v2",
+    "resident_vram_rom_delta": 2147964432,
+    "banks": {
+      "events": {
+        "rom_offset": 1687312,
+        "vram": 2149616640,
+        "byte_size": 295936,
+        "sha256": "ed488cbbcc3f14e435b6d2dcd5962096e1b0730219a71b73b3c8ec9f693f04a6",
+        "index_rom_offset": 1981848,
+        "index_count": 142,
+        "extent_basis": "nonzero pointer slots followed by zero; not a playable stage count"
+      },
+      "auxiliary": {
+        "rom_offset": 1982432,
+        "vram": 2149616640,
+        "byte_size": 295936,
+        "sha256": "6f44ebdcd843cc27fb375db88a5afae75b8fdb5e301258a63352a6be7cfb1d25",
+        "index_rom_offset": 2157176,
+        "index_count": 144,
+        "extent_basis": "nonzero pointer slots followed by zero; not a playable stage count"
+      }
+    },
+    "dispatch": {
+      "rom_offset": 373080,
+      "first_opcode": 15665,
+      "count": 73,
+      "default_vram": 2148146516
+    },
+    "commands": {
+      "3d31": {
+        "handler_vram": "0x800A0E64",
+        "operand_words": 1,
+        "name": "世界地图演出（表 801C5310 项）",
+        "semantic_confidence": "unknown",
+        "basis": "一字索引 D_801C5310 的三个半字调用 801C4BCC，等待 801C4FBC 返回 1；load_000A7EC0 世界地图 overlay；PC+2。",
+        "operands": [
+          {
+            "name": "表项",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d32": {
+        "handler_vram": "0x800A0E64",
+        "operand_words": 1,
+        "name": "世界地图演出（表 801C5310 项）",
+        "semantic_confidence": "unknown",
+        "basis": "与 3D31 共用处理函数 800A0E64。",
+        "operands": [
+          {
+            "name": "表项",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d33": {
+        "handler_vram": "0x800A0EFC",
+        "operand_words": 1,
+        "name": "世界地图人物演出（表 801C5310 项）",
+        "semantic_confidence": "unknown",
+        "basis": "人物取 D_801C5644[0x990]，0x990 为 0 时取 800A31DC(46) 的结果（-1 → 24）；连同表项后两个半字调用 801C37B8，等待 801C41BC；PC+2。",
+        "operands": [
+          {
+            "name": "表项",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d34": {
+        "handler_vram": "0x8009F6FC",
+        "operand_words": 4,
+        "name": "地图视点移动（模式, x, y, 种类）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "第 3 字为 0 → 8020A9F4(第 0 字低字节)，否则 80212464；第 1/2 字为目标格，0x4000 表示改用 3D54 记住的位置；80209DAC 完成后 PC+8。非战术地图模式直接 PC+8。",
+        "operands": [
+          {
+            "name": "模式",
+            "role": "raw"
+          },
+          {
+            "name": "x",
+            "role": "x"
+          },
+          {
+            "name": "y",
+            "role": "y"
+          },
+          {
+            "name": "种类",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d35": {
+        "handler_vram": "0x800A03E8",
+        "operand_words": 2,
+        "name": "地图卷动至位置（位置, 速度）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "第 0 字经 800A38DC 解码（高字节 x／低字节 y；0x40–0x44 为相对 3D54 记住位置：同位、上、右、下、左），第 1 字为 80209DAC 第三参数；完成后 PC+4。",
+        "operands": [
+          {
+            "name": "位置",
+            "role": "position"
+          },
+          {
+            "name": "速度",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d36": {
+        "handler_vram": "0x8009F880",
+        "operand_words": 1,
+        "name": "地图／世界地图演出（低字节）",
+        "semantic_confidence": "unknown",
+        "basis": "战术地图模式：8020D3C8(低字节) 后等待 8020D4B0 状态机；其他模式 801C5000／801C5138；PC+2。",
+        "operands": [
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d37": {
+        "handler_vram": "0x8009FF2C",
+        "operand_words": 2,
+        "name": "地图叠加图像演出（索引, 位置）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "第 0 字索引 D_800C99D4 → D_8021DDE0 三半字资源参数，经 80098158 载入窗口 0x122；位置经 800A38DC 解码为格坐标；D_800C99D6[索引] 交给 8007E8A8 播放音效；卷动后等待窗口标志再关闭；PC+4。",
+        "operands": [
+          {
+            "name": "图像索引",
+            "role": "raw"
+          },
+          {
+            "name": "位置",
+            "role": "position"
+          }
+        ]
+      },
+      "3d38": {
+        "handler_vram": "0x800A00F0",
+        "operand_words": 1,
+        "name": "等待（帧计数）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "一字初始计数，每次调用减一，变负后 PC+2；不换算为秒。",
+        "operands": [
+          {
+            "name": "帧数",
+            "role": "count"
+          }
+        ]
+      },
+      "3d39": {
+        "handler_vram": "0x8009FA4C",
+        "operand_words": 1,
+        "name": "播放音效",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F9D0 模式 0 → 8007E8A8(参数)；8009F3A8 以 0xB9 播放光标音、3D4D 以 -1 停止均用同一函数；PC+2。",
+        "operands": [
+          {
+            "name": "音效",
+            "role": "se"
+          }
+        ]
+      },
+      "3d3a": {
+        "handler_vram": "0x8009FA70",
+        "operand_words": 1,
+        "name": "播放 BGM（0 = 停止）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F9D0 模式 1：非零 → 8007E810(参数)，零 → 8007E87C(10)；801FA9B0 回合切换同样用 8007E810 播放曲目；PC+2。",
+        "operands": [
+          {
+            "name": "曲目",
+            "role": "bgm"
+          }
+        ]
+      },
+      "3d3b": {
+        "handler_vram": "0x8009F948",
+        "operand_words": 1,
+        "name": "画面淡入淡出（模式）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800A3390 按模式选择颜色与目标透明度后调用 8009AC84(…, 12)：0 黑色不透明、1 黑色透明、2 白色不透明、3 白色透明；模式 0 与 3 先关闭对白窗口；完成后 PC+2。",
+        "operands": [
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d3c": {
+        "handler_vram": "0x800A0360",
+        "operand_words": 2,
+        "name": "单位移动至位置（驾驶员, 位置）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "关闭窗口；第 1 字经 800A38DC 解码后调用 8020A030(x, y, 第 0 字)。在 8015E100 三阵营各 30 槽中找有效单位，比较单位 +0x38 所指驾驶员的 +2 编号，取首个匹配项。目标格坐标转换为 ×16+32；8020A788 经横移、纵移、收尾状态等待完成后 PC+4，并跟随单位更新镜头。男性超级系开场五次原参数调用已静音观测；原值/目标上移一格对照确认精灵终点和名册逻辑坐标同步改变，收尾 801CBEB8 写回槽 +4/+5。相对位置修正、同编号多单位、目标缺失、地形碰撞及存档仍待专项验证。",
+        "operands": [
+          {
+            "name": "驾驶员",
+            "role": "actor"
+          },
+          {
+            "name": "位置",
+            "role": "position"
+          }
+        ],
+        "evidence": [
+          "script_actor_movement",
+          "script_actor_movement_commit"
+        ]
+      },
+      "3d3d": {
+        "handler_vram": "0x800A09D0",
+        "operand_words": 5,
+        "name": "配套记录坐标演出（–, –, 类型, 数量, 组）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "10 帧后关闭窗口；用第 4 字查找配套记录组，取记录 +2/+4（格坐标）连同第 2 字、第 3 字（非 0/200 且 ≥16 时截为 15）调用 801C78A0（坐标 ×16+32 转屏幕）；第 3 字非零时清空 8015F700；第 0/1 字未被常驻代码读取；PC+10。",
+        "operands": [
+          {
+            "name": "保留",
+            "role": "raw"
+          },
+          {
+            "name": "保留",
+            "role": "raw"
+          },
+          {
+            "name": "类型",
+            "role": "raw"
+          },
+          {
+            "name": "数量",
+            "role": "raw"
+          },
+          {
+            "name": "配套组",
+            "role": "group"
+          }
+        ]
+      },
+      "3d3e": {
+        "handler_vram": "0x8009F654",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 0",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 0
+      },
+      "3d3f": {
+        "handler_vram": "0x8009F670",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 1",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 1
+      },
+      "3d40": {
+        "handler_vram": "0x8009F68C",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 2",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 2
+      },
+      "3d41": {
+        "handler_vram": "0x8009F6A8",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 3",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 3
+      },
+      "3d42": {
+        "handler_vram": "0x8009F6C4",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 4",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 4
+      },
+      "3d43": {
+        "handler_vram": "0x8009F6E0",
+        "operand_words": 1,
+        "name": "对白 · 显示模式 5",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。",
+        "operands": [
+          {
+            "name": "文本",
+            "role": "text"
+          }
+        ],
+        "dialogue_mode": 5
+      },
+      "3d44": {
+        "handler_vram": "0x8009FA94",
+        "operand_words": 3,
+        "name": "显示选择肢（文本, 选项数, 窗口参数）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8008FF34/8008FF04 建立选项窗口；8009F3A8 以上下键移动光标、A 键确认；确认后 0x994 = 0x3DD9 + 选中序号，供 3E10–3E12 与上下文标记 3DD9–3DDB 使用；PC+6。",
+        "operands": [
+          {
+            "name": "选项文本",
+            "role": "text"
+          },
+          {
+            "name": "选项数",
+            "role": "count"
+          },
+          {
+            "name": "窗口参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d45": {
+        "handler_vram": "0x8009FC04",
+        "operand_words": 1,
+        "name": "部署配套记录组（登场）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "10 帧后关闭窗口；从配套数据起点按 14 个半字步进查找首字等于参数的记录，8020B0D4 清空登场列表后对每条连续同组记录调用 8020B154（8020ABB4 由记录生成运行时机体与驾驶员）；8020C524 返回 1 后再等 10 帧，PC+2。",
+        "operands": [
+          {
+            "name": "配套组",
+            "role": "group"
+          }
+        ]
+      },
+      "3d46": {
+        "handler_vram": "0x8009FDC4",
+        "operand_words": 2,
+        "name": "单位列表演出 A（角色或配套组, 立即）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "8020C620 清空列表，8020C7BC(第 0 字) 登记该角色所驾单位，≥500 时登记地图槽 +0xB 低 5 位等于 (值−500) 的整组单位；8020D300(第 1 字低字节) 非零立即完成，否则等状态机；再等 5 帧后 PC+4。800A4288 的区域到达处理使用同一组调用，候选含义为退场。",
+        "operands": [
+          {
+            "name": "角色或配套组",
+            "role": "actor_or_group"
+          },
+          {
+            "name": "立即",
+            "role": "bool"
+          }
+        ]
+      },
+      "3d47": {
+        "handler_vram": "0x800A013C",
+        "operand_words": 0,
+        "name": "关闭对白窗口并等待 32 帧",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A34D8 关闭窗口 0x22/0x1F 与对白状态，计数到 32 后完成。"
+      },
+      "3d48": {
+        "handler_vram": "0x800A0194",
+        "operand_words": 0,
+        "name": "关闭对白窗口",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A34D8 后立即完成。"
+      },
+      "3d49": {
+        "handler_vram": "0x800A10F0",
+        "operand_words": 2,
+        "name": "地图演出（表 800C9A18 两项）",
+        "semantic_confidence": "unknown",
+        "basis": "两个参数各查 14 字节步进、999 结束的表 D_800C9A18；均命中时 80211DA4(第一项) 并等待 8021227C，再计数 25 帧；PC+4。",
+        "operands": [
+          {
+            "name": "表项 A",
+            "role": "raw"
+          },
+          {
+            "name": "表项 B",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d4a": {
+        "handler_vram": "0x800A01CC",
+        "operand_words": 0,
+        "name": "关卡胜利结算",
+        "semantic_confidence": "code-confirmed",
+        "basis": "10 帧后关闭窗口，8020D6E4 启动结算状态机，8020DBF4 返回 1 后 engine+4 = 0xC3；8020DB08 归零回合与阶段、累计 8010F5EC 总回合与 8010F5EF 关卡数；随后执行类型 14 事件。"
+      },
+      "3d4b": {
+        "handler_vram": "0x800A0260",
+        "operand_words": 1,
+        "name": "设定下一场景索引（500 = 恢复 8010F5F2）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "写 8010F5F0（场景索引）与 8010F5F2；500 时把 8010F5F2 写回 8010F5F0。路线分支据此决定下一话；PC+2。",
+        "operands": [
+          {
+            "name": "场景索引",
+            "role": "scene"
+          }
+        ]
+      },
+      "3d4c": {
+        "handler_vram": "0x800A02E0",
+        "operand_words": 0,
+        "name": "游戏结束",
+        "semantic_confidence": "code-confirmed",
+        "basis": "801DF280：停止 BGM 并进入 game over 处理；败北序列 800A25B0 使用同一函数。"
+      },
+      "3d4d": {
+        "handler_vram": "0x800A031C",
+        "operand_words": 0,
+        "name": "清空单位列表、停止音效、engine+4 = 3",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "8015F700 = -1，8007E8A8(-1)，engine+4 = 3；具体后续由 overlay 处理。"
+      },
+      "3d4e": {
+        "handler_vram": "0x800A0468",
+        "operand_words": 0,
+        "name": "关闭窗口并让出一帧",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A34D8 后 state=1，下一帧完成。"
+      },
+      "3d4f": {
+        "handler_vram": "0x8009FE9C",
+        "operand_words": 1,
+        "name": "单位列表演出 B（角色或配套组）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "8020DC40 清空列表，8020DC84(第 0 字)（与 8020C7BC 同构，≥500 同样按组）登记单位，等待 8020E604 后 5 帧，PC+2。候选含义为登场。",
+        "operands": [
+          {
+            "name": "角色或配套组",
+            "role": "actor_or_group"
+          }
+        ]
+      },
+      "3d50": {
+        "handler_vram": "0x800A04AC",
+        "operand_words": 3,
+        "name": "单位演出（角色, 机体, 参数）",
+        "semantic_confidence": "unknown",
+        "basis": "关闭窗口后 8020E650(角色, 机体, 第 2 字)：查找该角色驾驶该机体的地图槽；等待 8020EB14；PC+6。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "机体",
+            "role": "unit"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d51": {
+        "handler_vram": "0x800A051C",
+        "operand_words": 5,
+        "name": "单位移动至坐标（角色, 机体, 参数, x, y）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "8020ECE0(五字)，第 3/4 字同为 0x4000 时改用 3D54 记住的位置；查找角色+机体的地图槽后经 801E085C 驱动移动；等待 8021042C；PC+10。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "机体",
+            "role": "unit"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          },
+          {
+            "name": "x",
+            "role": "x"
+          },
+          {
+            "name": "y",
+            "role": "y"
+          }
+        ]
+      },
+      "3d52": {
+        "handler_vram": "0x800A05D0",
+        "operand_words": 3,
+        "name": "启动延迟计数事件（槽, 回合数, 阶段）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "0x97E[槽] 为 0xFF 时写入回合数，类型 1 组 +0x44[槽] = 阶段、+0x64[槽] = 0xFD；类型 1 触发器每换回合递减，归零且阶段匹配时执行；PC+6。",
+        "operands": [
+          {
+            "name": "类型 1 槽",
+            "role": "event_slot_type1"
+          },
+          {
+            "name": "回合数",
+            "role": "count"
+          },
+          {
+            "name": "阶段",
+            "role": "side"
+          }
+        ]
+      },
+      "3d53": {
+        "handler_vram": "0x800A0638",
+        "operand_words": 1,
+        "name": "停用延迟计数事件（槽）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "0x97E[槽] = 0xFF，类型 1 组 +0x64[槽] = 0x2000；PC+2。",
+        "operands": [
+          {
+            "name": "类型 1 槽",
+            "role": "event_slot_type1"
+          }
+        ]
+      },
+      "3d54": {
+        "handler_vram": "0x800A0678",
+        "operand_words": 1,
+        "name": "记住角色所在位置",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A2C18 找到角色所驾单位的地图槽后把 +4/+5 写入 ctx+8/+9；否则用 800A3854 的备用坐标；3D34/3D35/3D37/3D51 的 0x40 系列参数引用该位置；PC+2。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d55": {
+        "handler_vram": "0x800A0714",
+        "operand_words": 2,
+        "name": "单位演出（角色, 参数）",
+        "semantic_confidence": "unknown",
+        "basis": "关闭窗口后 80210490(角色, 第 1 字) 遍历地图槽驾驶员；等待 802106CC；PC+4。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d56": {
+        "handler_vram": "0x800A0780",
+        "operand_words": 3,
+        "name": "地图区域高亮演出（编码坐标 A, 编码坐标 B, 参数）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "打开窗口 0x23 并以 800A3AD8 绘制矩形；第 0/1 字按十进制拆为 (值/10, 值%10) 乘 16 转屏幕坐标；61 帧后关闭；第 2 字未被常驻代码读取；PC+6。",
+        "operands": [
+          {
+            "name": "坐标 A",
+            "role": "raw"
+          },
+          {
+            "name": "坐标 B",
+            "role": "raw"
+          },
+          {
+            "name": "保留",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d57": {
+        "handler_vram": "0x800A0BD0",
+        "operand_words": 2,
+        "name": "启用区域到达事件槽（槽, 值）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "0x99A 位[槽] 先异或 1 再或上 (值<<槽)；类型 8 触发器只轮询已置位的槽；PC+4。",
+        "operands": [
+          {
+            "name": "类型 8 槽",
+            "role": "event_slot_type8"
+          },
+          {
+            "name": "值",
+            "role": "bool"
+          }
+        ]
+      },
+      "3d58": {
+        "handler_vram": "0x800A0C14",
+        "operand_words": 2,
+        "name": "单位演出（角色, 参数）",
+        "semantic_confidence": "unknown",
+        "basis": "802106E0 后 80210758(角色, 第 1 字) 写入 802279EC/F0 并遍历地图槽；等待 80211634；PC+4。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d59": {
+        "handler_vram": "0x800A0C80",
+        "operand_words": 1,
+        "name": "加入单位列表 8015F700",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "在至多 29 项、以 -1 结束的列表末尾追加参数并补 -1；3D3D/3D4D 清空该列表；参数身份未确认；PC+2。",
+        "operands": [
+          {
+            "name": "编号",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d5a": {
+        "handler_vram": "0x800A0B3C",
+        "operand_words": 4,
+        "name": "队伍编成操作（角色, 参数, 机体, 模式）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "第 3 字 ≥ 2000：800A3540——4000/3000 时 800AA464(角色, 机体)、4000/2000 时 800AA62C(角色)，角色 999 跳过；否则 800A3A1C 把主角机体编号 115–132 映射后调用 800AAD28(角色, 机体, 第 2 字, 第 3 字)；PC+8。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          },
+          {
+            "name": "机体",
+            "role": "unit"
+          },
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d5b": {
+        "handler_vram": "0x800A0D24",
+        "operand_words": 1,
+        "name": "资金增加 参数×1000",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A0D24 将一字参数乘 1000 加到 8010F5F4；该字段由 80091904 存档、8008152C 新游戏清零；PC+2。",
+        "operands": [
+          {
+            "name": "千元",
+            "role": "value"
+          }
+        ]
+      },
+      "3d5c": {
+        "handler_vram": "0x800A0D68",
+        "operand_words": 2,
+        "name": "单位演出（角色, 变体）",
+        "semantic_confidence": "unknown",
+        "basis": "10 帧后关闭窗口；第 1 字 = 1 → 802116FC(角色) 并等待 80211840，否则 80211854(角色) 并等待 8021199C；PC+4。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "变体",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d5d": {
+        "handler_vram": "0x800A1010",
+        "operand_words": 2,
+        "name": "ダンクーガ系机体标志操作",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800AB5C0(第 0 字, 第 1 字) 遍历运行时机体，针对机体 223/224 或 219/225/230/233 设置或清除 +0xC 的 0x80 位；PC+4。",
+        "operands": [
+          {
+            "name": "开关",
+            "role": "raw"
+          },
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d5e": {
+        "handler_vram": "0x800A1050",
+        "operand_words": 0,
+        "name": "世界地图 overlay 调用 801C517C",
+        "semantic_confidence": "unknown",
+        "basis": "不读取参数，调用后立即完成。"
+      },
+      "3d5f": {
+        "handler_vram": "0x800A1078",
+        "operand_words": 1,
+        "name": "全体驾驶员 +0x20 减 30（下限 50）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "802119B0 遍历地图槽的驾驶员记录，+0x20 减 30，低于 50 时设为 50（候选：气力）；参数未被读取；PC+2。",
+        "operands": [
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d60": {
+        "handler_vram": "0x800A10AC",
+        "operand_words": 3,
+        "name": "我方部队按格排列部署（x, y, 每行数）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800A35EC 遍历 D_8015E100 的 30 个地图槽，对 HP 非零且非主角机的单位依次写入格坐标与屏幕坐标，每行放满后换行；PC+6。",
+        "operands": [
+          {
+            "name": "x",
+            "role": "x"
+          },
+          {
+            "name": "y",
+            "role": "y"
+          },
+          {
+            "name": "每行数",
+            "role": "count"
+          }
+        ]
+      },
+      "3d61": {
+        "handler_vram": "0x800A1328",
+        "operand_words": 1,
+        "name": "0x996 位 15 开关",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "engine+0x996 清除位 15，参数非零时置位；800A4288 我方单位到达区域时也置该位；PC+2。",
+        "operands": [
+          {
+            "name": "值",
+            "role": "bool"
+          }
+        ]
+      },
+      "3d62": {
+        "handler_vram": "0x800A1224",
+        "operand_words": 2,
+        "name": "更换角色身份（角色 → 角色）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800ABD98：名册 D_80172F40 中 +2 等于第 0 字的条目改写为第 1 字；PC+4。",
+        "operands": [
+          {
+            "name": "原角色",
+            "role": "actor"
+          },
+          {
+            "name": "新角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d63": {
+        "handler_vram": "0x800A1264",
+        "operand_words": 1,
+        "name": "单位演出（角色）",
+        "semantic_confidence": "unknown",
+        "basis": "80212290(角色) 遍历地图槽驾驶员；等待 80212450；PC+2。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d64": {
+        "handler_vram": "0x800A12CC",
+        "operand_words": 2,
+        "name": "单位退出地图（角色, 500 = 特例）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "第 1 字 = 500 → 800AB96C（针对角色 28/32 的特例），否则 80212668(角色)：从地图槽移除该驾驶员并前移其余指针；PC+4。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d65": {
+        "handler_vram": "0x800A1360",
+        "operand_words": 2,
+        "name": "设置 0x996 两个 7 位字段",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "engine+0x996 = (原值 & 0x8080) | (第 0 字 & 0x7F)<<8 | (第 1 字 & 0x7F)；800A3524 读取 & 0x7F7F；PC+4。",
+        "operands": [
+          {
+            "name": "高字段",
+            "role": "value"
+          },
+          {
+            "name": "低字段",
+            "role": "value"
+          }
+        ]
+      },
+      "3d66": {
+        "handler_vram": "0x800A13A4",
+        "operand_words": 1,
+        "name": "0x996 位 7 开关",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800A3A04(&engine+0x996, (参数<<7)&0x80)；8009E180 与败北序列也操作该位；PC+2。",
+        "operands": [
+          {
+            "name": "值",
+            "role": "bool"
+          }
+        ]
+      },
+      "3d67": {
+        "handler_vram": "0x800A13F0",
+        "operand_words": 1,
+        "name": "特殊演出（编号，含 BGM 切换）",
+        "semantic_confidence": "unknown",
+        "basis": "802176A8(低字节)：编号 <11 经跳转表 8021F058 选曲后 8007E810，并设置状态；等待 8021779C；PC+2。",
+        "operands": [
+          {
+            "name": "编号",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d68": {
+        "handler_vram": "0x800A1458",
+        "operand_words": 0,
+        "name": "演出 80212780",
+        "semantic_confidence": "unknown",
+        "basis": "80212780 调用 80099814(5,1,-1)；等待 80212898 返回 1。"
+      },
+      "3d69": {
+        "handler_vram": "0x800A14A4",
+        "operand_words": 2,
+        "name": "角色状态字节（角色, 值）",
+        "semantic_confidence": "unknown",
+        "basis": "802128E4(角色, 第 1 字低字节) 遍历名册；PC+4。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "值",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d6a": {
+        "handler_vram": "0x800A14E4",
+        "operand_words": 1,
+        "name": "合体／分离演出（模式）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "3 → 800AB808（机体 187/185 处理）、4 → 800AB6F4（机体 186 与角色 138 处理）立即完成；其他值关闭窗口后 80212CC0(低字节) 并等待 80213498；PC+2。",
+        "operands": [
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d6b": {
+        "handler_vram": "0x800A158C",
+        "operand_words": 3,
+        "name": "角色相关操作（角色, 参数, 标志）",
+        "semantic_confidence": "unknown",
+        "basis": "800AC6C4 遍历名册与运行时机体；PC+6。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "参数",
+            "role": "raw"
+          },
+          {
+            "name": "标志",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d6c": {
+        "handler_vram": "0x800A15D0",
+        "operand_words": 2,
+        "name": "设定机体改造段数（机体, 段数）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800ACA1C：运行时机体 +0x4C..+0x50 五项写入 min(段数, +0x51)，随后 800A5C18 重算；PC+4。",
+        "operands": [
+          {
+            "name": "机体",
+            "role": "unit"
+          },
+          {
+            "name": "段数",
+            "role": "value"
+          }
+        ]
+      },
+      "3d6d": {
+        "handler_vram": "0x800A1610",
+        "operand_words": 1,
+        "name": "当前阶段设为 1（敌方）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "80213748 写 8010F5E8 = 1；参数未被读取；PC+2。",
+        "operands": [
+          {
+            "name": "参数",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d6e": {
+        "handler_vram": "0x800A1644",
+        "operand_words": 1,
+        "name": "角色操作 802134E4",
+        "semantic_confidence": "unknown",
+        "basis": "名册中该角色的 +0x38 指针非零时调用 8020AB14；PC+2。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d6f": {
+        "handler_vram": "0x800A1680",
+        "operand_words": 1,
+        "name": "表 80178F80 条目标志清除",
+        "semantic_confidence": "unknown",
+        "basis": "800ACF44：700 项、36 字节步进，+2 等于参数时清 +0x22 的位 2；PC+2。",
+        "operands": [
+          {
+            "name": "编号",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d70": {
+        "handler_vram": "0x800A16BC",
+        "operand_words": 2,
+        "name": "角色关联操作（角色, 角色）",
+        "semantic_confidence": "unknown",
+        "basis": "800ACFAC 在名册中查找两个角色；PC+4。",
+        "operands": [
+          {
+            "name": "角色 A",
+            "role": "actor"
+          },
+          {
+            "name": "角色 B",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d71": {
+        "handler_vram": "0x800A02B8",
+        "operand_words": 0,
+        "name": "世界地图场景切换（不返回）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "首帧调用 801C51B4 后既不推进 PC 也不完成；事件由 overlay 切换场景结束。",
+        "no_advance": true
+      },
+      "3d72": {
+        "handler_vram": "0x800A0FCC",
+        "operand_words": 1,
+        "name": "设置 0x990 = 参数 mod 15",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "3D33 用 0x990 选择 D_801C5644 中的人物；PC+2。",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3d73": {
+        "handler_vram": "0x800A16FC",
+        "operand_words": 1,
+        "name": "按固定角色列表分组（0 = 列表 B）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "参数非零取 D_800D06A8（30 项），零取 D_800D06E4（62 项），复制到 -1 后调用 800AD990(列表, 参数)；PC+2。",
+        "operands": [
+          {
+            "name": "模式",
+            "role": "raw"
+          }
+        ]
+      },
+      "3d74": {
+        "handler_vram": "0x800A1924",
+        "operand_words": 0,
+        "name": "800AD990(空列表, 2)：清除名册 0x80 位与机体 0x40 位",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "复制 D_800D0760 的 8 字节（全为 -1）后调用 800AD990(列表, 2)。"
+      },
+      "3d75": {
+        "handler_vram": "0x800A197C",
+        "operand_words": 1,
+        "name": "单位演出（角色，999 = 46）",
+        "semantic_confidence": "unknown",
+        "basis": "80213758(角色) 经表 8021E398 查找；等待 80213FDC；PC+2。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3d76": {
+        "handler_vram": null,
+        "operand_words": null,
+        "name": "无处理函数",
+        "semantic_confidence": "code-confirmed",
+        "basis": "分发表默认分支返回空处理函数，事件将停滞；ROM 脚本中未出现。"
+      },
+      "3d77": {
+        "handler_vram": null,
+        "operand_words": null,
+        "name": "无处理函数",
+        "semantic_confidence": "code-confirmed",
+        "basis": "同 3D76。"
+      },
+      "3d78": {
+        "handler_vram": "0x800A01BC",
+        "operand_words": 0,
+        "name": "空操作（不可达）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "仅 state=0；8009F0E8 的标记循环不会让 ≥3D77 的字到达分发；ROM 脚本中未出现。"
+      },
+      "3d79": {
+        "handler_vram": "0x800A01C4",
+        "operand_words": 0,
+        "name": "空操作（不可达）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "同 3D78。"
+      }
+    },
+    "conditions": {
+      "3e00": {
+        "handler_vram": "0x800A2388",
+        "operand_words": 0,
+        "kind": "statement",
+        "name": "ACC 清零",
+        "semantic_confidence": "code-confirmed",
+        "basis": "engine+0x99C = 0，返回真。"
+      },
+      "3e01": {
+        "handler_vram": "0x800A1FBC",
+        "operand_words": 3,
+        "kind": "opener",
+        "name": "若角色 HP 百分比 < 阈值（且在场）则 ACC = 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A293C 取角色所驾单位 HP/最大 HP×100（下限 1；不在场 0；已退场 103）；百分比小于阈值且不为 103 时 ACC = 第 2 字并为真。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          },
+          {
+            "name": "百分比",
+            "role": "value"
+          },
+          {
+            "name": "ACC 值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e02": {
+        "handler_vram": "0x800A207C",
+        "operand_words": 2,
+        "kind": "opener",
+        "name": "若变量 ≠ 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A496C 读取 200 个 2 位变量之一；不等时为真。",
+        "operands": [
+          {
+            "name": "变量",
+            "role": "flag"
+          },
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e03": {
+        "handler_vram": "0x800A20C4",
+        "operand_words": 3,
+        "kind": "opener",
+        "name": "若变量 = 值 则 ACC = 值 2",
+        "semantic_confidence": "code-confirmed",
+        "basis": "相等时 ACC = 第 2 字并为真。",
+        "operands": [
+          {
+            "name": "变量",
+            "role": "flag"
+          },
+          {
+            "name": "值",
+            "role": "value"
+          },
+          {
+            "name": "ACC 值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e04": {
+        "handler_vram": "0x800A2344",
+        "operand_words": 2,
+        "kind": "opener",
+        "name": "若当前回合 < 回合数 则 ACC = 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "8010F5EA（存档回合计数）小于第 0 字时 ACC = 第 1 字并为真。",
+        "operands": [
+          {
+            "name": "回合数",
+            "role": "value"
+          },
+          {
+            "name": "ACC 值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e05": {
+        "handler_vram": null,
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "恒真（未实现）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "跳转表落入 800A1F64 返回 -1。"
+      },
+      "3e06": {
+        "handler_vram": "0x800A22CC",
+        "operand_words": 2,
+        "kind": "statement",
+        "name": "ACC = !(名册[角色 A]+5 < 名册[角色 B]+5)",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800A32C0 取名册 D_80172F40 条目 +5 的字节；字段含义未确认。",
+        "operands": [
+          {
+            "name": "角色 A",
+            "role": "actor"
+          },
+          {
+            "name": "角色 B",
+            "role": "actor"
+          }
+        ]
+      },
+      "3e07": {
+        "handler_vram": null,
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "恒真（未实现）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "同 3E05。"
+      },
+      "3e08": {
+        "handler_vram": "0x800A23C4",
+        "operand_words": 1,
+        "kind": "opener",
+        "name": "若 ACC = 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e09": {
+        "handler_vram": "0x800A23EC",
+        "operand_words": 1,
+        "kind": "opener",
+        "name": "若 ACC ≥ 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e0a": {
+        "handler_vram": "0x800A2438",
+        "operand_words": 1,
+        "kind": "opener",
+        "name": "若 ACC ≠ 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e0b": {
+        "handler_vram": "0x800A23EC",
+        "operand_words": 1,
+        "kind": "opener",
+        "name": "若 ACC ≥ 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "与 3E09 共用处理函数。",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e0c": {
+        "handler_vram": "0x800A2414",
+        "operand_words": 1,
+        "kind": "opener",
+        "name": "若 ACC < 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e0d": {
+        "handler_vram": "0x800A228C",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "ACC = 名册[角色]+0x14",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "800A3294 取名册条目 +0x14 的 s16；字段含义未确认。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3e0e": {
+        "handler_vram": "0x800A2198",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "变量 = (变量 + 1) mod 4",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "变量",
+            "role": "flag"
+          }
+        ]
+      },
+      "3e0f": {
+        "handler_vram": "0x800A220C",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "变量 = (变量 − 1) mod 4（≤0 时为 3）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "变量",
+            "role": "flag"
+          }
+        ]
+      },
+      "3e10": {
+        "handler_vram": "0x800A2394",
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "若选择肢结果 = 第 1 项",
+        "semantic_confidence": "code-confirmed",
+        "basis": "engine+0x994 == 0x3DD9（3D44 写入）。"
+      },
+      "3e11": {
+        "handler_vram": "0x800A23A4",
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "若选择肢结果 = 第 2 项",
+        "semantic_confidence": "code-confirmed",
+        "basis": "engine+0x994 == 0x3DDA。"
+      },
+      "3e12": {
+        "handler_vram": "0x800A23B4",
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "若选择肢结果 = 第 3 项",
+        "semantic_confidence": "code-confirmed",
+        "basis": "engine+0x994 == 0x3DDB。"
+      },
+      "3e13": {
+        "handler_vram": "0x800A2158",
+        "operand_words": 2,
+        "kind": "statement",
+        "name": "变量 = 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A4888 写入 2 位变量，值 ≥4 时忽略。",
+        "operands": [
+          {
+            "name": "变量",
+            "role": "flag"
+          },
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e14": {
+        "handler_vram": "0x800A2138",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "ACC = 值",
+        "semantic_confidence": "code-confirmed",
+        "basis": "",
+        "operands": [
+          {
+            "name": "值",
+            "role": "value"
+          }
+        ]
+      },
+      "3e15": {
+        "handler_vram": "0x800A24FC",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "ACC = 阵营单位数",
+        "semantic_confidence": "code-confirmed",
+        "basis": "0/1/2 分别读取 engine+0x9B0/0x9B1/0x9B2，由 802018C4 按阵营刷新。",
+        "operands": [
+          {
+            "name": "阵营",
+            "role": "side"
+          }
+        ]
+      },
+      "3e16": {
+        "handler_vram": "0x800A2478",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "ACC = 交战另一方角色（排除参数角色）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "依次检查 engine+0x9A0/0x9A4 指向的驾驶员记录 +2；等于参数时改查另一方；均不成立时 ACC = 0。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3e17": {
+        "handler_vram": "0x800A2460",
+        "operand_words": 0,
+        "kind": "statement",
+        "name": "ACC = engine+0x9B6（有符号字节）",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "0x9B6 由 801F3F90/801FE794 在战斗流程中写入。"
+      },
+      "3e18": {
+        "handler_vram": "0x800A2570",
+        "operand_words": 0,
+        "kind": "statement",
+        "name": "ACC = 当前场景索引",
+        "semantic_confidence": "code-confirmed",
+        "basis": "读取 8010F5F0。"
+      },
+      "3e19": {
+        "handler_vram": "0x800A2590",
+        "operand_words": 0,
+        "kind": "statement",
+        "name": "engine+0x998 = engine+0x9A8",
+        "semantic_confidence": "structure-confirmed",
+        "basis": "字段含义未确认。"
+      },
+      "3e1a": {
+        "handler_vram": "0x800A25A0",
+        "operand_words": 0,
+        "kind": "statement",
+        "name": "ACC = engine+0x998",
+        "semantic_confidence": "structure-confirmed",
+        "basis": ""
+      },
+      "3e1b": {
+        "handler_vram": "0x800A1F7C",
+        "operand_words": 1,
+        "kind": "statement",
+        "name": "ACC = 角色在场状态（0 不在 / 1 在场 / 3 已退场）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A3990 把 800A293C 的百分比折算：1–100 → 1，103 → 3，102 → 2。",
+        "operands": [
+          {
+            "name": "角色",
+            "role": "actor"
+          }
+        ]
+      },
+      "3e1c": {
+        "handler_vram": "0x800A2584",
+        "operand_words": 0,
+        "kind": "opener",
+        "name": "无条件块开始（恒真）",
+        "semantic_confidence": "code-confirmed",
+        "basis": "engine+0x96C = 0 并返回 -1；跳过扫描时按嵌套层计数。"
+      },
+      "3e1d": {
+        "handler_vram": "0x800A1D60",
+        "operand_words": 0,
+        "kind": "block-end",
+        "name": "条件块结束",
+        "semantic_confidence": "code-confirmed",
+        "basis": "执行时恒真；条件为假时扫描到同层 3E1D 后继续。"
+      }
+    },
+    "condition_dispatch": {
+      "jump_table_rom_offset": 373376,
+      "count": 30,
+      "first_opcode": 15872,
+      "inline_true_vram": "0x800A1F64",
+      "basis": "800A1D68 读取 PC 处的字，减 0x3E00 后查 jtbl_800D0890；FFFF 直接为真；≥0x3E1E 返回 -1（真）。"
+    },
+    "skip_scan": {
+      "jump_table_rom_offset": 372776,
+      "count": 28,
+      "depth_increment_vram": "0x8009F354",
+      "advance_vram": "0x8009F358",
+      "basis": "8009F288 条件为假时逐字扫描：跳转表指向 8009F354 的指令使嵌套层 +1，3E1C 也 +1，3E1D 使嵌套层 -1，层数归零后继续；FFFF 结束事件。"
+    },
+    "context_markers": {
+      "3dd0": {
+        "name": "共通段（任何上下文）",
+        "matches": "always",
+        "basis": "8009F0E8 中 s4 = 0x3DD0 总是匹配。"
+      },
+      "3dd1": {
+        "name": "アークライト・ブルー 路线",
+        "matches": "protagonist",
+        "actor_id": 25,
+        "basis": "801C69D0 选择主角 2 时 engine+0x99E = 0x3DD1。"
+      },
+      "3dd2": {
+        "name": "セレイン・メネス 路线",
+        "matches": "protagonist",
+        "actor_id": 26,
+        "basis": "主角 3 → 0x3DD2。"
+      },
+      "3dd3": {
+        "name": "ブラッド・スカイウィンド 路线",
+        "matches": "protagonist",
+        "actor_id": 27,
+        "basis": "主角 0 → 0x3DD3。"
+      },
+      "3dd4": {
+        "name": "マナミ・ハミル 路线",
+        "matches": "protagonist",
+        "actor_id": 28,
+        "basis": "主角 1 → 0x3DD4。"
+      },
+      "3dd5": {
+        "name": "リアル系主角（3DD1/3DD2）",
+        "matches": "derived",
+        "basis": "0x99E < 0x3DD3 时 a2 = 0x3DD5。"
+      },
+      "3dd6": {
+        "name": "スーパー系主角（3DD3/3DD4）",
+        "matches": "derived",
+        "basis": "0x99E ≥ 0x3DD3 时 a2 = 0x3DD6。"
+      },
+      "3dd7": {
+        "name": "男性主角（3DD1/3DD3）",
+        "matches": "derived",
+        "basis": "0x99E 不为 0x3DD2/0x3DD4 时 a1 = 0x3DD7。"
+      },
+      "3dd8": {
+        "name": "女性主角（3DD2/3DD4）",
+        "matches": "derived",
+        "basis": "0x99E 为 0x3DD2/0x3DD4 时 a1 = 0x3DD8。"
+      },
+      "3dd9": {
+        "name": "选择肢第 1 项",
+        "matches": "choice",
+        "basis": "与 engine+0x994 比较；3D44 写入 0x3DD9+序号。"
+      },
+      "3dda": {
+        "name": "选择肢第 2 项",
+        "matches": "choice",
+        "basis": ""
+      },
+      "3ddb": {
+        "name": "选择肢第 3 项",
+        "matches": "choice",
+        "basis": ""
+      }
+    },
+    "marker_scan": {
+      "range": [
+        "0x3DD0",
+        "0x3DDB"
+      ],
+      "basis": "8009F0E8：标记与 0x3DD0、当前主角 0x99E、其派生的 3DD5/3DD6 与 3DD7/3DD8、选择肢 0x994 之一相等时跳过继续执行；否则逐字向后扫描直到匹配的标记或 FFFF。"
+    },
+    "event_types": {
+      "0": {
+        "name": "回合开始触发",
+        "group": 0,
+        "polled": "阶段 0",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "回合数",
+            "role": "turn",
+            "note": "当前回合 ≥ 该值"
+          },
+          {
+            "name": "阶段",
+            "role": "side",
+            "note": "必须等于当前阶段 8010F5E8"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009E598",
+        "confidence": "code-confirmed"
+      },
+      "1": {
+        "name": "延迟计数触发（3D52 启动）",
+        "group": 1,
+        "polled": "阶段 0",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "初始状态",
+            "role": "raw",
+            "note": "运行时由 3D52 改写为 0xFD"
+          },
+          {
+            "name": "阶段",
+            "role": "side",
+            "note": "运行时由 3D52 改写；4 为任意"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EB5C",
+        "confidence": "code-confirmed"
+      },
+      "2": {
+        "name": "单位击破／退场触发",
+        "group": 2,
+        "polled": "总是",
+        "status_code": "0x2002",
+        "header": [
+          {
+            "name": "门槛变量",
+            "role": "gate_flag",
+            "note": "100–115 时须为 3；0 为无门槛"
+          },
+          {
+            "name": "角色",
+            "role": "actor",
+            "note": "该角色所驾单位 HP 百分比归零"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009E604",
+        "confidence": "code-confirmed"
+      },
+      "3": {
+        "name": "HP 低于百分比触发",
+        "group": 3,
+        "polled": "总是",
+        "status_code": "0x2002",
+        "header": [
+          {
+            "name": "角色",
+            "role": "actor",
+            "note": "角色 138 特例：其单位 HP < 11 才继续"
+          },
+          {
+            "name": "百分比",
+            "role": "value",
+            "note": "HP% ≤ 该值且在场"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009E6E4",
+        "confidence": "code-confirmed"
+      },
+      "4": {
+        "name": "交战事件（战斗后，阶段 7）",
+        "group": 4,
+        "polled": "阶段 7",
+        "status_code": "0x2002",
+        "header": [
+          {
+            "name": "角色 A",
+            "role": "actor_or_any",
+            "note": "0 = 任意"
+          },
+          {
+            "name": "角色 B",
+            "role": "actor_or_any",
+            "note": "0 = 任意"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EA88",
+        "confidence": "structure-confirmed"
+      },
+      "5": {
+        "name": "交战事件（战斗前，阶段 4）",
+        "group": 5,
+        "polled": "阶段 4",
+        "status_code": "0x2001",
+        "header": [
+          {
+            "name": "角色 A",
+            "role": "actor_or_any",
+            "note": "0 = 任意"
+          },
+          {
+            "name": "角色 B",
+            "role": "actor_or_any",
+            "note": "0 = 任意"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009E9B4",
+        "confidence": "structure-confirmed"
+      },
+      "6": {
+        "name": "敌方全灭触发",
+        "group": 6,
+        "polled": "总是",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "最早回合",
+            "role": "turn",
+            "note": "当前回合 ≥ 该值"
+          },
+          {
+            "name": "阶段",
+            "role": "side_or_any",
+            "note": "4 为任意"
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009E834",
+        "confidence": "code-confirmed"
+      },
+      "7": {
+        "name": "阵营残存数触发",
+        "group": 7,
+        "polled": "总是",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "阵营选择",
+            "role": "raw",
+            "note": "2 → 第三方计数 0x9B2，否则敌方 0x9B1"
+          },
+          {
+            "name": "数量上限",
+            "role": "value",
+            "note": "残存数 ≤ 该值"
+          },
+          {
+            "name": "阶段",
+            "role": "side_or_any",
+            "note": "4 为任意"
+          },
+          {
+            "name": "门槛变量",
+            "role": "gate_flag",
+            "note": "100–115 时须为 3"
+          }
+        ],
+        "handler_vram": "0x8009E8B4",
+        "confidence": "code-confirmed"
+      },
+      "8": {
+        "name": "区域到达触发（需 3D57 启用）",
+        "group": 8,
+        "polled": "阶段 0/1/2/6",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "回合或模式",
+            "role": "raw",
+            "note": "数值 = 当前回合 ≥ 该值；0xFF = 到达即触发；0xFE = 我方全部离场"
+          },
+          {
+            "name": "目标",
+            "role": "region_target",
+            "note": "N×1000 + 角色（或 500+阵营、21 = 列表首个在场角色）"
+          },
+          {
+            "name": "x 范围",
+            "role": "region_x",
+            "note": "x0×10 + 宽"
+          },
+          {
+            "name": "y 范围",
+            "role": "region_y",
+            "note": "y0×10 + 高"
+          }
+        ],
+        "handler_vram": "0x8009ECBC",
+        "confidence": "structure-confirmed"
+      },
+      "9": {
+        "name": "游戏指定索引触发（0x992，阶段 6）",
+        "group": 9,
+        "polled": "阶段 0/1/2/6",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EC3C",
+        "confidence": "structure-confirmed"
+      },
+      "10": {
+        "name": "登记但不轮询",
+        "group": 10,
+        "polled": "无",
+        "status_code": null,
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": null,
+        "confidence": "code-confirmed"
+      },
+      "11": {
+        "name": "登记但不轮询",
+        "group": 11,
+        "polled": "无",
+        "status_code": null,
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": null,
+        "confidence": "code-confirmed"
+      },
+      "12": {
+        "name": "开场事件（阶段 C1）",
+        "group": null,
+        "slot": "engine+0x8",
+        "polled": "engine+4 = 0xC1",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EDB8",
+        "confidence": "code-confirmed"
+      },
+      "13": {
+        "name": "阶段 C2 事件（初期配置）",
+        "group": null,
+        "slot": "engine+0xC",
+        "polled": "engine+4 = 0xC2",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EDB8",
+        "confidence": "structure-confirmed"
+      },
+      "14": {
+        "name": "结束事件（阶段 C3，3D4A 之后）",
+        "group": null,
+        "slot": "engine+0x10",
+        "polled": "engine+4 = 0xC3",
+        "status_code": "0x2000",
+        "header": [
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          },
+          {
+            "name": "保留",
+            "role": "raw",
+            "note": ""
+          }
+        ],
+        "handler_vram": "0x8009EDB8",
+        "confidence": "code-confirmed"
+      }
+    },
+    "trigger_dispatch": {
+      "jump_table_rom_offset": 372736,
+      "count": 10,
+      "basis": "8009E308(组号) 查 jtbl_800D0610 得到各组触发函数；8009E480 只轮询 +0x64 < 0x2000 的事件，触发后写 0x2000。"
+    },
+    "polling": {
+      "0": [
+        "阶段 0"
+      ],
+      "1": [
+        "阶段 0"
+      ],
+      "2": [
+        "总是"
+      ],
+      "3": [
+        "总是"
+      ],
+      "4": [
+        "阶段 7"
+      ],
+      "5": [
+        "阶段 4"
+      ],
+      "6": [
+        "总是"
+      ],
+      "7": [
+        "总是"
+      ],
+      "8": [
+        "阶段 0",
+        "阶段 1",
+        "阶段 2",
+        "阶段 6"
+      ],
+      "9": [
+        "阶段 0",
+        "阶段 1",
+        "阶段 2",
+        "阶段 6"
+      ],
+      "basis": "8009E180：0x97C 空闲且 engine+4 = 0xC0 时，按 engine+0x9AA 阶段调用 8009E3B0；阶段 9 时不轮询。801DF96C 在战斗前写阶段 4，801DF9F8 战斗后写阶段 7，801DEBF4 写 6，其余路径归零。"
+    },
+    "engine": {
+      "vram": "0x8015F950",
+      "context_offset": "0x948",
+      "group_base": "0x14",
+      "group_stride": "0xC4",
+      "group_count": 12,
+      "events_per_group": 16,
+      "fields": {
+        "0x964": "脚本 PC",
+        "0x96C": "命令状态（0 取指 / 2 执行 / 0x80 完成）",
+        "0x97C": "事件状态（0x80 空闲 / 0x2000–0x2002 运行）",
+        "0x97E": "类型 1 槽计数字节 ×16",
+        "0x98E": "已登记事件数",
+        "0x990": "3D72 写入的 mod 15 值",
+        "0x992": "类型 9 事件索引（-1 无）",
+        "0x994": "选择肢结果标记（初值 0x3DD9）",
+        "0x996": "两个 7 位字段与两个开关位（初值 0x7F7F）",
+        "0x998": "3E19 复制的值（初值 0xFFFF）",
+        "0x99A": "类型 8 槽启用位",
+        "0x99C": "ACC 比较寄存器",
+        "0x99E": "主角上下文标记 0x3DD1–0x3DD4",
+        "0x9A0/0x9A4": "交战双方驾驶员记录指针",
+        "0x9AA": "轮询阶段",
+        "0x9AC": "当前回合（8010F5EA）",
+        "0x9AE": "当前阶段（8010F5E8：0 我方 / 1 敌方 / 2 第三方）",
+        "0x9B0–0x9B2": "各阵营单位数",
+        "0x9B6": "战斗流程写入的有符号字节"
+      }
+    },
+    "speaker_header": {
+      "digits": 3,
+      "basis": "8008CE54 读取文本条目 8 字节头的前 4 字节，各减 0x30，取前三位十进制作为说话人角色编号；后续字节未被该函数解释。",
+      "relative": {
+        "25": "主角（25 + 上下文偏移）",
+        "29": "对手（29 + 上下文偏移）"
+      },
+      "context_base": "0x3DD1"
+    },
+    "variables": {
+      "count": 200,
+      "bits": 2,
+      "storage_vram": "0x8015E818",
+      "basis": "800A496C/800A4888：每 8 个变量占一个 u16，掩码表 800CA380/800CA390；新关卡时变量 100–114 与 128–139 置 3、变量 54 置 1（8009DE7C）。"
+    },
+    "auxiliary_record": {
+      "halfwords": 14,
+      "terminator": 999,
+      "fields": [
+        {
+          "name": "组号",
+          "offset": 0,
+          "size": 2,
+          "role": "group",
+          "confidence": "code-confirmed",
+          "basis": "3D45/3D3D 与首字比较；999 停止。"
+        },
+        {
+          "name": "x",
+          "offset": 2,
+          "size": 2,
+          "role": "x",
+          "confidence": "code-confirmed",
+          "basis": "3D3D → 801C78A0 以 ×16+32 转为屏幕坐标。"
+        },
+        {
+          "name": "y",
+          "offset": 4,
+          "size": 2,
+          "role": "y",
+          "confidence": "code-confirmed",
+          "basis": "同上。"
+        },
+        {
+          "name": "驾驶员角色",
+          "offset": 6,
+          "size": 2,
+          "role": "actor",
+          "confidence": "code-confirmed",
+          "basis": "8020ABB4：<287 时按名册已分配机体的驾驶员 +2 匹配复用；否则作为默认驾驶员生成。"
+        },
+        {
+          "name": "未解释字节",
+          "offset": 8,
+          "size": 1,
+          "role": "raw",
+          "confidence": "unknown",
+          "basis": ""
+        },
+        {
+          "name": "等级偏移",
+          "offset": 9,
+          "size": 1,
+          "role": "raw",
+          "confidence": "code-confirmed",
+          "basis": "8020ABB4：等级 = 8010F5F3 + 该字节。"
+        },
+        {
+          "name": "机体",
+          "offset": 10,
+          "size": 2,
+          "role": "unit",
+          "confidence": "code-confirmed",
+          "basis": "8020ABB4 交给 800A6E68 机体加载器；与 D_800CA418 默认驾驶员表匹配。"
+        },
+        {
+          "name": "强化索引",
+          "offset": 12,
+          "size": 2,
+          "role": "raw",
+          "confidence": "code-confirmed",
+          "basis": "8020ABB4：D_800CB5DC[值] 写入运行时机体 +0x4C..+0x50 五项改造段数。"
+        },
+        {
+          "name": "未解释",
+          "offset": 14,
+          "size": 6,
+          "role": "raw",
+          "confidence": "unknown",
+          "basis": ""
+        },
+        {
+          "name": "阵营",
+          "offset": 20,
+          "size": 2,
+          "role": "deploy_side",
+          "confidence": "code-confirmed",
+          "basis": "8020ABB4/8020B154：3 → 0、4 → 2，其余按值。"
+        },
+        {
+          "name": "行为标志",
+          "offset": 22,
+          "size": 2,
+          "role": "raw",
+          "confidence": "structure-confirmed",
+          "basis": "交给 800A97F0；位 14 置位且阵营非 0 时把 +0x18 写入驾驶员 +0x14。"
+        },
+        {
+          "name": "附加值",
+          "offset": 24,
+          "size": 2,
+          "role": "raw",
+          "confidence": "structure-confirmed",
+          "basis": "见行为标志位 14。"
+        },
+        {
+          "name": "未解释",
+          "offset": 26,
+          "size": 2,
+          "role": "raw",
+          "confidence": "unknown",
+          "basis": ""
+        }
+      ]
+    },
+    "operand_roles": {
+      "actor": "人物编号（base:actors）",
+      "text": "表 0 文本编号",
+      "unit": "机体编号（base:units）",
+      "flag": "2 位变量 0–199",
+      "scene": "场景索引",
+      "group": "配套记录组号",
+      "position": "高字节 x／低字节 y，0x40–0x44 相对 3D54 位置",
+      "x": "格 x",
+      "y": "格 y",
+      "count": "计数",
+      "frames": "帧数",
+      "se": "音效编号",
+      "bgm": "曲目编号",
+      "event_slot_type1": "本场景类型 1 事件的登记序号",
+      "event_slot_type8": "本场景类型 8 事件的登记序号",
+      "actor_or_group": "<500 为人物编号，≥500 为配套组 (值−500)",
+      "bool": "开关",
+      "value": "数值",
+      "side": "阵营 0/1/2（4 = 任意）",
+      "deploy_side": "出击记录阵营 0/1/2（3 → 0，4 → 2）",
+      "raw": "未解释"
+    }
+  },
+  "images": {
+    "actors": {
+      "rom_offset": 541216,
+      "stride": 4,
+      "count": 361,
+      "sha256": "ddca830a3fce59e4d42515eec0a7d20a9d4855a4de81f4c15a8127f156b2f0ba",
+      "evidence": [
+        "actor_portrait_binding"
+      ]
+    },
+    "units": {
+      "rom_offset": 1052024,
+      "stride": 2,
+      "count": 363,
+      "sha256": "748675f3a193ad58d3122d3f04eb2c5959d2f35ad589b761372637ec48b63afd",
+      "palette_resource": 1010,
+      "evidence": [
+        "unit_icon_binding"
+      ]
+    },
+    "map_evidence": [
+      "map_asset_loader",
+      "map_draw_layout",
+      "map_draw_groups",
+      "map_draw_flips"
+    ]
+  }
+}

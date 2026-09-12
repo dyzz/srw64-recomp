@@ -1,0 +1,31 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Recorded title menu rotation to Continue after importing a native tactical SRAM. Opens the restored map and stops input.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "vi": 678,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "vi": 1158,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "vi": 1734,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "vi": 2106,
+      "button": "a",
+      "duration": 6
+    }
+  ]
+}

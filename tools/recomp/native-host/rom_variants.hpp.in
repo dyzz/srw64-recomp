@@ -1,0 +1,14 @@
+#pragma once
+#include <cstdint>
+
+struct NativeRomVariant {
+    const char* key;
+    uint64_t hash;
+    const char8_t* game_id;
+    const char* save_file;
+};
+
+inline constexpr NativeRomVariant native_rom_variants[] = {
+    {"jp", 0x@SRW64_JP_HASH@ULL, u8"@SRW64_JP_ID@", "@SRW64_JP_ID@.bin"},
+    {"model5600", 0x@SRW64_MODEL5600_HASH@ULL, u8"@SRW64_MODEL5600_ID@", "@SRW64_MODEL5600_ID@.bin"},
+};

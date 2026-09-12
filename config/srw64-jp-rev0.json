@@ -14,11 +14,15 @@
     "pointer_table_offset": "0x0005ab60",
     "table_count": 20,
     "entry_header_size": 8,
-    "allowed_control_words": ["0xffff", "0xfffe", "0xfffd"]
+    "allowed_control_words": [
+      "0xffff",
+      "0xfffe",
+      "0xfffd"
+    ]
   },
   "reference": {
-    "path": "ref-project",
     "commit": "91e0c15b76b44c302f29ddebc1c45e61f1828cd0",
-    "use": "read-only format oracle"
+    "use": "original format provenance; independent local parser",
+    "repository": "https://github.com/snowyegret23/Localize"
   }
 }

@@ -1,0 +1,40 @@
+{
+  "schema": "srw64.libretro-input.v1",
+  "purpose": "Reference emulator title carousel to Continue after native SRAM import; timings are explicit Libretro frames, not native VI evidence.",
+  "events": [
+    {
+      "frame": 120,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "frame": 678,
+      "button": "start",
+      "duration": 6
+    },
+    {
+      "frame": 1158,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "frame": 1734,
+      "button": "right",
+      "duration": 6
+    },
+    {
+      "frame": 2106,
+      "button": "n64_a",
+      "duration": 6
+    }
+  ],
+  "screenshots": [
+    600,
+    1140,
+    1710,
+    2080,
+    2400,
+    2600,
+    2999
+  ]
+}

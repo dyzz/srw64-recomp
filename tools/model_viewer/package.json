@@ -1,0 +1,6 @@
+{
+  "name": "srw64-local-model-viewer",
+  "private": true,
+  "type": "module",
+  "dependencies": { "three": "0.180.0" }
+}

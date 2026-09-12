@@ -1,0 +1,8 @@
+{
+  "schema": "srw64.native-playtest.v1",
+  "variant": "model5600",
+  "initial_save": "build/recomp/gfx-probes/first-map-turn5-reload-1/stage1-clear-turn7.sram",
+  "initial_save_sha256": "0c6ded15fdf60c6b0064b2260a335d17a4ff77386d14d634bfd7d3bcb8de7484",
+  "resolution_scale": 3,
+  "checkpoint": "Isolated 5600 model experiment; use --new-game for opening story"
+}

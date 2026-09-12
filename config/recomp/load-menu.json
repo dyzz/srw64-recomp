@@ -1,0 +1,11 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Open the title menu with an imported tactical SRAM; load selection remains interactive.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 6
+    }
+  ]
+}
