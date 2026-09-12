@@ -1,0 +1,266 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Native fresh-boot female super-robot route; select the route, retain protagonist/rival default names by navigating to Confirm, then enter the route story. Timing remains subject to GPU-capture validation.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 240,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 360,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 480,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 600,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 720,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 840,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 960,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1080,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1200,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1320,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1440,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1560,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1680,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1800,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1920,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2040,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2160,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2280,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2400,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2520,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2640,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2760,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2880,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3000,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3120,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3240,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 3360,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3480,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3630,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3660,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3690,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3720,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3750,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3780,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 3810,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 3840,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 3870,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 3900,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 3930,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 4230,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4260,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4290,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4320,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4350,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4380,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 4410,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 4440,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 4470,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 4500,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 4530,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 4800,
+      "button": "a",
+      "duration": 3
+    }
+  ]
+}

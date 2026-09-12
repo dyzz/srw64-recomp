@@ -1,0 +1,169 @@
+{
+  "schema": "srw64.recomp-code-sections.v1",
+  "rom_sha256": "ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e",
+  "scope": "reviewed loader ranges with static CPU text/data boundaries; scene coverage remains pending",
+  "sections": [
+    {
+      "name": "resident",
+      "rom_start": 4096,
+      "rom_end": 375856,
+      "vram": 2147968528,
+      "text_end": 319136,
+      "sha256": "8f744c81d8d92965d0093d76f7dd8388a41d0094eb5df8acf133c8c96669df3b",
+      "basis": "Observed RSP boot begins at ROM 0x4DEA0; resident CPU code precedes it."
+    },
+    {
+      "name": "load_000856D0",
+      "rom_start": 546512,
+      "rom_end": 564896,
+      "vram": 2149328384,
+      "text_end": 563000,
+      "sha256": "08ef39bd4b720ae14fb5feff0349fb200019709dc01bcd86044ac655021414bc",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00089EA0",
+      "rom_start": 564896,
+      "rom_end": 583040,
+      "vram": 2149328384,
+      "text_end": 568144,
+      "sha256": "8fafc2d84f414a74d7864150e5b67646d23b32b547ba2f99dd3f34ff16c9c2d9",
+      "basis": "Function at 0x801C3294 returns through 0x801C32AC; 0x801C32B0/32B2 are halfword variables accessed by earlier code. Later fake functions are encoded data."
+    },
+    {
+      "name": "load_0008E580",
+      "rom_start": 583040,
+      "rom_end": 586928,
+      "vram": 2149328384,
+      "text_end": 586752,
+      "sha256": "324e505cc874fde8bfa96d37996db6cd1280fa715d5919b583a3165c1ca1b155",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_0008F4B0",
+      "rom_start": 586928,
+      "rom_end": 687808,
+      "vram": 2149336320,
+      "text_end": 684532,
+      "sha256": "205d3de6255067600485445e967cdec6f19094669aaba335f5972d59052dbcae",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_000A7EC0",
+      "rom_start": 687808,
+      "rom_end": 700768,
+      "vram": 2149328384,
+      "text_end": 699344,
+      "sha256": "e784aed9d6bf9cd6f74c8b6249c41121980e7901e31f91015846d8d24343ab15",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_000AB160",
+      "rom_start": 700768,
+      "rom_end": 1080304,
+      "vram": 2149328384,
+      "text_end": 1049600,
+      "sha256": "2f72089b31e041f92982010f69fd6ee499a9f86351eda793f401dcd1c5fd5b30",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00107BF0",
+      "rom_start": 1080304,
+      "rom_end": 1085600,
+      "vram": 2149328384,
+      "text_end": 1085488,
+      "sha256": "1f2cbf8d3471cf40790ebe6616646c58ba1f86190cb28975398538f4cb7ae411",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_001090A0",
+      "rom_start": 1085600,
+      "rom_end": 1104464,
+      "vram": 2149328384,
+      "text_end": 1103088,
+      "sha256": "82560e502da9fa96988e8b7931ad274d22d839d5638f1ed3c187c27921e9e2c0",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_0010DA50",
+      "rom_start": 1104464,
+      "rom_end": 1136288,
+      "vram": 2149336320,
+      "text_end": 1131840,
+      "sha256": "77e0ceddc8e2b2dba1aa812e4d2959b8142b73396b8386f1513f634f4c4cf5c5",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_001156A0",
+      "rom_start": 1136288,
+      "rom_end": 1139136,
+      "vram": 2149328384,
+      "text_end": 1138928,
+      "sha256": "04484b3b31347004d9cecacf4585328471405b0880332624bbcafb15e492bc3f",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00121560",
+      "rom_start": 1185120,
+      "rom_end": 1591088,
+      "vram": 2149328384,
+      "text_end": 1580196,
+      "sha256": "ea2c19d3199d5464f94126fcf8b494abda7c67ceee08f86841c17253a3fa7094",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00184730",
+      "rom_start": 1591088,
+      "rom_end": 1591696,
+      "vram": 2149328384,
+      "text_end": 1591616,
+      "sha256": "8e1ce3c54b2a8b6db230e39b81dbc0a92cd9043359207251c50855f4c05430b0",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00216730",
+      "rom_start": 2189104,
+      "rom_end": 2194256,
+      "vram": 2149328384,
+      "text_end": 2194256,
+      "sha256": "72743160e16e4aa223efe9b142a6bbe5fbe3a45d6b2c8e2ca0829d5ef791e48a",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_00217B50",
+      "rom_start": 2194256,
+      "rom_end": 2194272,
+      "vram": 2149908480,
+      "text_end": 2194256,
+      "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "basis": "16 zero bytes loaded to a data-only address; no executable instructions."
+    },
+    {
+      "name": "load_00217FD0",
+      "rom_start": 2195408,
+      "rom_end": 2281424,
+      "vram": 2151677952,
+      "text_end": 2207136,
+      "sha256": "2022d67a9fb98831175fe8903399f9d9a1eaa45836613bb3b37522850baa005a",
+      "basis": "Text returns before 0x80402DD0; 0x80402DD0/2DD8/2DDC are explicitly accessed as writable data. Later fake functions are encoded strings/data."
+    },
+    {
+      "name": "load_0022CFD0",
+      "rom_start": 2281424,
+      "rom_end": 2286976,
+      "vram": 2149328384,
+      "text_end": 2286784,
+      "sha256": "33c9162c664fe4b83b360aa43ed1f085d59f47de791bf0520c83881b4bd79ce6",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    },
+    {
+      "name": "load_0022E580",
+      "rom_start": 2286976,
+      "rom_end": 2291712,
+      "vram": 2149328384,
+      "text_end": 2291360,
+      "sha256": "885401517475836048dd32421f15f2436e53afad3d6bd3593221cedf0b72ce95",
+      "basis": "Final instruction block ends in return; following non-instruction ranges contain initialized data, tables or strings."
+    }
+  ]
+}

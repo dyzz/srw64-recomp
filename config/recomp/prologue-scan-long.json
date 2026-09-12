@@ -1,0 +1,176 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Advance common prologue from a fresh native boot; preserve GPU captures for route-selection timing.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 240,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 360,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 480,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 600,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 720,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 840,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 960,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1080,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1200,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1320,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1440,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1560,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1680,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1800,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1920,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2040,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2160,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2280,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2400,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2520,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2640,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2760,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2880,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3000,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3120,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3240,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3360,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3480,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3600,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3720,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3840,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3960,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 4080,
+      "button": "a",
+      "duration": 3
+    }
+  ]
+}

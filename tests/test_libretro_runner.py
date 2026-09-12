@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.libretro_runner import (
+from tools.recomp.libretro_runner import (
     BUTTON_IDS,
     INPUT_SCRIPT_SCHEMA,
     RunnerError,
@@ -45,7 +45,7 @@ class LibretroRunnerTests(unittest.TestCase):
                 _compile_events(document, frame_count=4)
 
     def test_load_script_requires_versioned_schema(self) -> None:
-        path = ROOT / "config" / "libretro-w1-start-scan.json"
+        path = ROOT / "config/recomp/reference-load-continue.json"
         self.assertEqual(_load_script(path)["schema"], INPUT_SCRIPT_SCHEMA)
         with tempfile.TemporaryDirectory() as directory:
             invalid = Path(directory) / "input.json"
@@ -54,22 +54,11 @@ class LibretroRunnerTests(unittest.TestCase):
                 _load_script(invalid)
 
     def test_checked_in_input_scripts_compile_for_their_run_lengths(self) -> None:
-        scripts = {
-            "libretro-w1-start-scan.json": 960,
-            "libretro-w1-story-skip.json": 960,
-            "libretro-w1-name-confirm.json": 720,
-            "libretro-w1-name-navigation.json": 600,
-            "libretro-w1-route-confirm.json": 600,
-            "libretro-w1-scenario-arrival.json": 750,
-            "libretro-w1-scenario-cycle.json": 480,
-            "libretro-w1-select-female.json": 480,
-            "libretro-w1-target-dialogue.json": 720,
-            "libretro-w1-target-stop.json": 180,
-        }
+        scripts = {"reference-load-continue.json": 3000}
         for filename, frame_count in scripts.items():
             with self.subTest(filename=filename):
                 document = json.loads(
-                    (ROOT / "config" / filename).read_text(encoding="utf-8")
+                    (ROOT / "config/recomp" / filename).read_text(encoding="utf-8")
                 )
                 self.assertEqual(document["schema"], INPUT_SCRIPT_SCHEMA)
                 _compile_events(document, frame_count)

@@ -1,0 +1,8 @@
+[input]
+symbols_file_path = "lz-probe.syms.toml"
+rom_file_path = "../../rom.z64"
+output_func_path = "../../build/recomp/lz-probe/generated"
+recomp_include = '#include "lz_probe_bindings.h"'
+
+[patches]
+ignored = ["probe_alloc", "probe_free", "probe_rom_read"]

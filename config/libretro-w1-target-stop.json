@@ -1,8 +1,0 @@
-{
-  "schema": "srw64.libretro-input.v1",
-  "purpose": "Advance the STOP token inside W1 t00_17410 and capture its final line.",
-  "events": [
-    {"frame": 30, "button": "n64_a", "duration": 3}
-  ],
-  "screenshots": [0, 29, 60, 120, 179]
-}

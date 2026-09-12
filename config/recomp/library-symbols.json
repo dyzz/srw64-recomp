@@ -1,0 +1,255 @@
+{
+  "schema": "srw64.recomp-reviewed-library-symbols.v1",
+  "rom_sha256": "ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e",
+  "functions": [
+    {
+      "name": "osInvalDCache",
+      "vram": 2148215296,
+      "size": 176,
+      "rom": 250864,
+      "sha256": "8ae1ab78f7b451eff125bd297f76cbcc5f2e3c7a54c6c1497d3f3c0b281f886f",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed cache opcodes 0x15/0x11/0x01 with 16-byte lines; ROM-read caller invalidates destination.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osInvalICache",
+      "vram": 2148215472,
+      "size": 128,
+      "rom": 251040,
+      "sha256": "661c779288b4a4385cb435e15038191ab4b2bd427fc96ab7c44e9d09497ba4b4",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed cache opcodes 0x10/0x00 with 32-byte lines; initialization invalidates exception vectors.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osWritebackDCache",
+      "vram": 2148215600,
+      "size": 128,
+      "rom": 251168,
+      "sha256": "34f4c1b390e561d62c4b6dc9ed63701b9b87430391fc74bfe7d21d90b8fd1074",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed cache opcode 0x19 plus full-cache 0x01 path with 16-byte lines; initialization writes exception vectors.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osWritebackDCacheAll",
+      "vram": 2148215728,
+      "size": 48,
+      "rom": 251296,
+      "sha256": "9e2e910cf2dcf19b0d2826eea41187a62acc4584b8fb7316cc74acbd40f4b04f",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed whole 8 KiB cache traversal with cache 0x01 and 16-byte increments.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osEPiStartDma",
+      "vram": 2148197536,
+      "size": 160,
+      "rom": 233104,
+      "sha256": "2dc6a63a4808a1b406df162a7cba320e6114c32f9f4a50438afa7e9a75a0d187",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Observed ROM wrapper calls with OSPiHandle/OSIoMesg/direction; stores handle at message+0x14, chooses read/write message type and enqueues to PI command queue.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osContInit",
+      "vram": 2148216416,
+      "size": 412,
+      "rom": 251984,
+      "sha256": "fbff6d46533c81898f31bdf131ca6386d0d49c7ce38b9ebd22e4493865c3f773",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed one-time initialization, controller query through SI read/write, controller-status decode, SI access and timer message queues.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osInitialize",
+      "vram": 2148244000,
+      "size": 560,
+      "rom": 279568,
+      "sha256": "f7cc2e0942f5b464c1bdffab3c83bb396534a9cebb3519e05dcb4e6c9261aaba",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed CU1/FPCSR setup, PIF initialization, four exception-vector copies/cache maintenance, VI clock selection and AI register initialization; called from observed init path.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osExceptionPreamble",
+      "vram": 2148246240,
+      "size": 16,
+      "rom": 281808,
+      "sha256": "55d8e3200b960746d0b1f9965a982d106ab8d92588b5bcef37a7d043fc863679",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed 16-byte exception-vector trampoline to 0x800BA2F0; installed by osInitialize.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osException",
+      "vram": 2148246256,
+      "size": 1404,
+      "rom": 281824,
+      "sha256": "c64319752cc6765f8ffe9842c0c1b9ef5d6018032a63dfa6bef5cd4d5c95c6c3",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed original kernel exception entry, thread register/FPU save, Cause dispatch, event posting and thread rescheduling; replaced by native runtime kernel.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "send_mesg",
+      "vram": 2148247660,
+      "size": 188,
+      "rom": 283228,
+      "sha256": "d75955b61f076dc9fd2369096bb4495b89b2c0945f4e0ccee5549a9fb1ab7c07",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed exception event-table lookup and queue insertion, with return through s2 at 0x800BA920.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "handle_CpU",
+      "vram": 2148247848,
+      "size": 52,
+      "rom": 283416,
+      "sha256": "5873670fe6e2a55257a978e3b98a41a2f36e4a1d1d546953fc9cdaaf18ffa3a9",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed coprocessor-unusable exception branch, checks coprocessor 1 and enables CU1 in saved thread state.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osEnqueueAndYield",
+      "vram": 2148247900,
+      "size": 264,
+      "rom": 283468,
+      "sha256": "bfb081f38491ffa08b9e301f236d1857b4b54a6d2b2b4312be94c7b79a60af87",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed native-kernel boundary: saves running thread registers/FP state, queues thread and branches to dispatcher.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osEnqueueThread",
+      "vram": 2148248164,
+      "size": 72,
+      "rom": 283732,
+      "sha256": "482c149f613482f79eda678641c3b4a0a160a6346976865d6055c4494c476ad9",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed priority-sorted intrusive OSThread queue insertion, fields next/priority/queue.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osDispatchThread",
+      "vram": 2148248252,
+      "size": 380,
+      "rom": 283820,
+      "sha256": "dc2e2513387ee7b7bee8153ad2369d71f74ae9b3306bf5bd53e6b95beb516813",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed run-queue pop, full GPR/FPR/CP0 context restore and eret at 0x800BAC34.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osCleanupThread",
+      "vram": 2148248632,
+      "size": 24,
+      "rom": 284200,
+      "sha256": "3892fe4d295bda673d46df5f9405f082ff08394f0c159d8464050b5a29a227b6",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed thread-return callback calling osDestroyThread(NULL), followed by padding.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osGetCause",
+      "vram": 2148274048,
+      "size": 16,
+      "rom": 309616,
+      "sha256": "faf8eb55f0eb39c05afc7af728f372269b0cb947735525a7d916d45672f7a212",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed mfc0 v0,Cause followed by return and alignment padding.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osGetSR",
+      "vram": 2148274080,
+      "size": 16,
+      "rom": 309648,
+      "sha256": "98eb78e5220bcc1e31ff049202bde4471c76ac15ebbc22d818771f741671fe0a",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed mfc0 v0,Status followed by return and alignment padding.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "__osSetFpcCsr",
+      "vram": 2148274112,
+      "size": 16,
+      "rom": 309680,
+      "sha256": "1b1c2a5e117a433a988d960120310c5634987537358a5b13b49fddcee5d2dac4",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed cfc1 v0,FPCSR / ctc1 a0,FPCSR / return.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osMapTLBRdb",
+      "vram": 2148274816,
+      "size": 96,
+      "rom": 310384,
+      "sha256": "60e870785652f4c5376888fa708add8104458aed09503a8f38eb0925c8dbe54a",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed debug TLB slot 31 mapping at C0000000 with EntryHi restoration; called by initialization.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osUnmapTLBAll",
+      "vram": 2148274912,
+      "size": 80,
+      "rom": 310480,
+      "sha256": "2dc15ea0fc52152d4e08c08e13490381d10831bd0bdafad57208cad7b8acf072",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Reviewed TLB invalidation loop over indices 30 down to 0, preserving/restoring EntryHi; called by initialization.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osAiGetLength",
+      "vram": 2148199360,
+      "size": 16,
+      "rom": 234928,
+      "sha256": "679568a8280a1cc54387664b9e46dd53d246ce010538ce2e3327ac214a9b4e75",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Four instructions read AI_LEN_REG at 0xA4500004 and return; observed native boot fault in audio thread at this load.",
+      "runtime_status": "pending"
+    },
+    {
+      "name": "osViGetNextFramebuffer",
+      "vram": 2148228304,
+      "size": 64,
+      "rom": 263872,
+      "sha256": "f3dee357c57c35ce069552d78f0cef6ee419ac8e41fa710f71f801f507cb9451",
+      "identity_evidence": "instruction-and-callsite-reviewed",
+      "basis": "Disables interrupts, reads the framebuffer field +4 from __osViNext at 0x800CEF84, restores interrupts and returns; 8 trailing zero alignment bytes.",
+      "runtime_status": "pending"
+    }
+  ],
+  "function_splits": [
+    {
+      "vram": 2148246240,
+      "size": 1420,
+      "sha256": "df771d200b73d62d72eec7340d9eb71b7e5d66007fe382eecbbf51cc452cb52d",
+      "function_starts": [
+        2148246240,
+        2148246256
+      ]
+    },
+    {
+      "vram": 2148247660,
+      "size": 240,
+      "sha256": "8d25627cf5a759ff1b20f18adcc7236db7da688ab4bf7f4686d82bae985e9872",
+      "function_starts": [
+        2148247660,
+        2148247848
+      ]
+    },
+    {
+      "vram": 2148248252,
+      "size": 404,
+      "sha256": "65f2632e18e56b8f18285cccb9c138321d3e2b4c77629380e12a5003500b8aa4",
+      "function_starts": [
+        2148248252,
+        2148248632
+      ]
+    }
+  ]
+}

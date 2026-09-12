@@ -1,0 +1,15 @@
+# Candidate audio text boundary. Runtime boot transfers 0xF80 bytes, including
+# padding and CPU data after this executable prefix. Task-output validation is
+# still required before this microcode can serve as the native audio backend.
+text_offset = 0x4F300
+text_size = 0xE20
+text_address = 0x1080
+rom_file_path = "../../rom.z64"
+output_file_path = "../../build/recomp/audio-probe/audio.cpp"
+output_function_name = "srw64_audio_probe"
+# Dispatch table at ucode_data + 0x10 (ROM 0x59ED0), slots 0..15.
+# The following halfwords are vector constants, not dispatch entries.
+extra_indirect_branch_targets = [
+  0x1118, 0x1470, 0x11DC, 0x1B38, 0x1214, 0x187C, 0x1254, 0x12D0,
+  0x12EC, 0x1328, 0x140C, 0x1294, 0x1E24, 0x138C, 0x170C, 0x144C,
+]

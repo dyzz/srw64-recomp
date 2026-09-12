@@ -1,0 +1,17 @@
+{
+  "schema": "srw64.recomp-rom-variants.v1",
+  "variants": {
+    "jp": {
+      "path": "rom.z64",
+      "sha256": "ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e",
+      "xxh3_64": "bb8703e9d7c77f4f",
+      "game_id": "srw64-jp-rev0"
+    },
+    "model5600": {
+      "path": "build/recomp/model-5600/rom/srw64-model5600.z64",
+      "sha256": "feeabfecc8eddb0e60d0ce04959683f07506abd58fdfcf9e7970158c2b85c2c7",
+      "xxh3_64": "234cc3290e80e745",
+      "game_id": "srw64-model5600-experiment"
+    }
+  }
+}

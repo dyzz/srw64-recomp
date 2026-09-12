@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SRW64 · 模型资源室</title>
+  <meta name="description" content="本地浏览 SRW64 原始几何资源，检查模型、平面、线框与验证证据。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#5600"><span class="brand-mark">64</span><span>SRW64 <strong>模型资源室</strong></span></a>
+    <span class="local-indicator"><i></i> 本地资源</span>
+    <button id="evidence-open" class="quiet-button">5600 验证对照 <span>↗</span></button>
+  </header>
+  <main class="workspace">
+    <aside class="library" aria-label="资源列表">
+      <div class="library-head"><h1>资源目录 <span id="total">483</span></h1><p>原始网格 · 显示列表中的局部坐标</p>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="查找编号或名称" aria-label="查找资源编号或名称" autocomplete="off"><kbd>/</kbd></label>
+        <div class="filters" role="group" aria-label="筛选资源">
+          <button data-filter="all" aria-pressed="true">全部</button><button data-filter="space" aria-pressed="false">空间几何</button><button data-filter="plane" aria-pressed="false">共面</button><button data-filter="located" aria-pressed="false">已定位</button>
+        </div>
+      </div>
+      <div class="list-meta"><span id="result-count" role="status">载入目录…</span><span>编号 ↑</span></div>
+      <div id="resource-list" class="resource-grid"></div>
+      <p id="empty" class="empty" hidden>没有匹配的资源。试试其他编号或清除筛选。</p>
+    </aside>
+    <section class="viewer" aria-label="交互式三维查看器">
+      <div class="viewer-toolbar">
+        <div class="render-modes" role="group" aria-label="显示方式"><button data-mode="texture" aria-pressed="true">源贴图</button><button data-mode="clay" aria-pressed="false">灰模</button><button data-mode="wire" aria-pressed="false">线框</button></div>
+        <div class="view-tools"><button id="rotate" aria-pressed="false" title="切换自动旋转">自转</button><button id="reset-view" title="重置视角">复位</button></div>
+      </div>
+      <nav class="resource-navigation" aria-label="切换资源">
+        <button id="previous-resource" disabled title="上一个资源（←）">← 上一个</button>
+        <span id="resource-position" role="status" aria-live="polite">载入目录…</span>
+        <button id="next-resource" disabled title="下一个资源（→）">下一个 →</button>
+      </nav>
+      <div id="geometry-variants" class="geometry-variants" hidden>
+        <span>标记版本</span><div id="variant-buttons" role="group" aria-label="选择模型版本"></div>
+      </div>
+      <div id="canvas-wrap" tabindex="0" aria-label="拖动旋转模型，滚轮缩放，右键平移">
+        <canvas id="model-canvas"></canvas>
+        <div class="object-label"><span id="object-id">RESOURCE 5600</span><h2 id="object-name">剧情地图标记</h2></div>
+        <div id="viewer-message" class="viewer-message" role="status">载入几何资源…</div>
+        <div class="camera-buttons" role="group" aria-label="相机方向"><button data-view="perspective" title="斜视">斜视</button><button data-view="front" title="正面">正面</button><button data-view="top" title="顶视">顶视</button></div>
+        <div class="canvas-foot"><span>拖动旋转 · 滚轮缩放 · 右键平移</span><span id="display-kind">局部几何预览</span></div>
+      </div>
+      <footer class="viewer-bottom"><label><input id="wire-overlay" type="checkbox"> 叠加线框</label><label><input id="show-grid" type="checkbox" checked> 参考网格</label><span class="preview-note">简化材质，不含原游戏镜头与动画</span></footer>
+    </section>
+    <aside class="inspector" aria-label="所选资源信息">
+      <div class="inspector-top"><span class="eyebrow">当前资源</span><div class="id-line"><strong id="detail-id">5600</strong><span id="status" class="status">已定位</span></div><h2 id="detail-name">剧情地图标记</h2><p id="detail-note">与欧洲剧情地图同任务调用。</p></div>
+      <dl class="stats"><div><dt>三角形绘制</dt><dd id="triangles">—</dd></div><div><dt>引用顶点</dt><dd id="vertices">—</dd></div><div><dt>几何部件</dt><dd id="parts">—</dd></div><div><dt>源纹理</dt><dd id="textures">—</dd></div></dl>
+      <div class="detail-section"><label for="part-select">显示部件</label><select id="part-select"><option value="all">全部部件</option></select><p>多部件按原始局部坐标展示，尚未应用场景变换或动画。</p></div>
+      <div class="detail-section"><h3>几何范围</h3><div id="bounds" class="bounds"></div><p id="geometry-kind"></p></div>
+      <div class="detail-section material-note"><h3>查看说明</h3><p id="texture-note">源贴图使用简化材质，透明混合和光照可能与游戏内不同。灰模和线框适合检查结构。</p></div>
+      <div class="inspector-actions"><button id="download-obj" class="primary-button">导出几何 OBJ <span>↓</span></button><button id="copy-id" class="quiet-button">复制资源编号</button><span id="action-message" role="status"></span></div>
+      <details class="source-details"><summary>来源与范围</summary><p>日版 Rev 0 · ROM 压缩资源表<br>483 个几何容器，含平面和空间几何。名称按已知用途或外形暂记。</p><p id="resource-hash"></p></details>
+    </aside>
+  </main>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-title">
+    <div class="dialog-head"><div><span class="eyebrow">RESOURCE 5600</span><h2 id="evidence-title">原版与高模 · 游戏效果对照</h2></div><button id="evidence-close" class="quiet-button" aria-label="关闭对照">关闭 ×</button></div>
+    <section id="native-evidence" hidden><h3>原生 GPU 水滴 · 实际游戏</h3><p id="native-evidence-scope" class="evidence-scope"></p><div id="native-evidence-images" class="evidence-images"></div></section>
+    <section id="live-evidence" hidden><h3>96 面资源替换 · 实际游戏开场</h3><p id="live-evidence-scope" class="evidence-scope"></p><div id="live-evidence-images" class="evidence-images"></div></section>
+    <h3>单任务回放 · 资源定位与几何试验</h3><div id="evidence-images" class="evidence-images"></div>
+    <p class="evidence-scope">本节四张为独立快照的 RT64 / Metal 回放，画面在 GPU 完成后读回。隐藏只移除 5600 的三角形绘制；拉伸只修改六个立体顶点；高模试作将立体部分从 8 面替换为 96 面。回放与上方的实际游戏流程分别验证。</p>
+  </dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

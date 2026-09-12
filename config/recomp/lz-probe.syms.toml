@@ -1,0 +1,15 @@
+# Addresses/sizes reviewed against JP Rev 0; see docs/recomp-progress.md.
+# The three probe_* functions are explicit isolated-harness bindings.
+[[section]]
+name = ".main"
+rom = 0x1000
+vram = 0x80076610
+size = 0x5ac30
+functions = [
+    { name = "probe_rom_read", vram = 0x8007f704, size = 0x11c },
+    { name = "probe_alloc", vram = 0x800895d0, size = 0xbc },
+    { name = "probe_free", vram = 0x8008968c, size = 0x94 },
+    { name = "srw64_lz_read_byte", vram = 0x80089720, size = 0x8c },
+    { name = "srw64_lz_decode", vram = 0x800897ac, size = 0x1c4 },
+    { name = "srw64_bzero", vram = 0x800b48b0, size = 0xa0 },
+]

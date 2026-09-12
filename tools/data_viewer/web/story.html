@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SRW64 · 剧情审阅</title><link rel="stylesheet" href="story.css">
+<body>
+<header class="story-header"><div><span class="eyebrow">SUPER ROBOT WARS 64 / STORY READER</span><h1>剧情审阅 <span class="tag">日文原文</span></h1></div><nav class="story-nav"><a href="index.html">数据图鉴 ↗</a><a href="index.html#base%3Ascript_opcodes%3A3d31">指令解析 ↗</a></nav></header>
+<p class="story-intro">按章节连续阅读，查看人物与战场事件。路线筛选只选择主角段落；事件按入口顺序展示，条件和选择肢尚未求值。</p>
+<main class="story-main">
+<aside class="story-sidebar" aria-label="章节列表">
+<div class="sidebar-head"><strong>章节目录</strong><span id="chapter-count"></span></div>
+<label class="sr-only" for="scene-search">搜索章节标题</label><input id="scene-search" type="search" placeholder="搜索标题、场景编号…" autocomplete="off">
+<ol id="scene-list" class="scene-list"></ol>
+</aside>
+<section class="story-body" aria-label="剧情">
+<div class="reader-tools">
+<div class="search-bar"><label class="sr-only" for="dialogue-search">搜索对白或人物</label><input id="dialogue-search" type="search" placeholder="搜索对白、人物或文本编号（至少 2 字）" autocomplete="off"><label class="sr-only" for="search-scope">搜索范围</label><select id="search-scope"><option value="all">全部剧情</option><option value="scene">本章</option></select><button id="search-clear">清除</button></div>
+<div class="reading-options"><label for="route">主角路线</label><select id="route"><option value="">全部路线段</option><option value="3DD1">アーク · 男性／リアル</option><option value="3DD2">セレイン · 女性／リアル</option><option value="3DD3">ブラッド · 男性／スーパー</option><option value="3DD4">マナミ · 女性／スーパー</option></select><label><input id="show-portraits" type="checkbox" checked>头像</label><label><input id="show-structure" type="checkbox">条件与演出提示</label><label><input id="show-source" type="checkbox">原始编号</label><label for="font-size">字号</label><select id="font-size"><option value="16">16</option><option value="18" selected>18</option><option value="20">20</option></select></div>
+</div>
+<section id="search-results" class="search-results" aria-label="对白搜索结果" hidden><p id="search-status" role="status" aria-live="polite"></p><div id="search-hits"></div></section>
+<div class="chapter-controls"><button id="chapter-prev">← 上一章</button><label class="sr-only" for="event-jump">跳转本章事件</label><select id="event-jump"><option value="">跳转本章事件…</option></select><button id="chapter-next">下一章 →</button></div>
+<nav id="phase-nav" class="phase-nav" aria-label="剧情阶段"></nav>
+<p id="reader-status" role="status" aria-live="polite"></p>
+<article id="story"><p class="empty">正在读取剧情…</p></article>
+</section></main><p id="error" role="alert" hidden></p>
+<script type="module" src="story.js"></script>
+</body></html>
