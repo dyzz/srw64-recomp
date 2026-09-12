@@ -24,8 +24,6 @@ not full-game compatibility. [Media provenance](docs/media/manifest.json).
 以下均为原生运行实拍。HD 美术仍属实验且不随仓库提供，中文对白仍为草稿；
 截图只展示对应场景的进展。来源与摘要见[媒体记录](docs/media/manifest.json)。
 
-![Experimental HD dialogue with native Chinese text / 实验性 HD 画面与原生中文对白](docs/media/02-dialogue-hd.png)
-
 **Reading controls demo / 阅读操作演示（45 秒）**
 
 https://github.com/user-attachments/assets/609613d3-fbc2-4e9f-8936-c0923ca10b85
