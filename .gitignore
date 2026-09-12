@@ -21,16 +21,52 @@ htmlcov/
 *.sav
 *.srm
 *.state
+*.sram
+*.eep
+*.mpk
+*.fla
+*.dump
+*.payload
+*.bin
+*.elf
 *.dylib
 
 # Local fonts, archives, logs, and environment overrides
 *.otf
 *.ttf
 *.zip
+*.7z
+*.tar
+*.tar.gz
 *.log
 .env
 .env.*
 !.env.example
+
+# Generated native code, binaries, local tools and web dependencies
+node_modules/
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.obj
+*.a
+*.so
+*.exe
+*.dSYM/
+/.claude/
+/.codex/
+
+# Captures stay local; only reviewed documentation media may be published.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp4
+*.mov
+!/docs/media/*.png
+!/docs/media/*.jpg
+!/docs/media/*.webp
 
 # Editor and operating-system metadata
 .DS_Store
