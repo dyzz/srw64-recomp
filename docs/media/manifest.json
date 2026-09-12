@@ -108,7 +108,16 @@
     "source_sha256": "b3b392813ae647f8e036076b673a3c9d5b9eda8f381149855e5c60981c2f4945",
     "sha256": "4a8487b44db08683c4b2db17adfb07d2710c75e9f49fc202b9ce823812f381b1",
     "transform": "H.264 transcoding only; no cuts, scaling, or speed changes",
-    "status": "approved-for-readme"
+    "status": "approved-for-readme",
+    "inline_player": {
+      "url": "https://github.com/user-attachments/assets/609613d3-fbc2-4e9f-8936-c0923ca10b85",
+      "sha256": "dcf4f95596ff9368d45d90a82376f5a7d21fff09b46760e6af0da70d16c5752c",
+      "bytes": 8427903,
+      "duration_seconds": 45,
+      "encoding": "H.264, CRF 26, yuv420p; same source recording, resolution and speed; no cuts",
+      "source": "build/recomp/readme-history/controls-2/reading-demo.mov",
+      "source_sha256": "b3b392813ae647f8e036076b673a3c9d5b9eda8f381149855e5c60981c2f4945"
+    }
   },
   "approved_on": "2026-09-12"
 }

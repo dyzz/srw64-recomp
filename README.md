@@ -26,7 +26,11 @@ not full-game compatibility. [Media provenance](docs/media/manifest.json).
 
 ![Experimental HD dialogue with native Chinese text / 实验性 HD 画面与原生中文对白](docs/media/02-dialogue-hd.png)
 
-**[Reading demo — 45-second MP4 / 阅读操作实录（45 秒 MP4，约 11 MB）](docs/media/reading-demo.mp4)**
+**Reading controls demo / 阅读操作演示（45 秒）**
+
+https://github.com/user-attachments/assets/609613d3-fbc2-4e9f-8936-c0923ca10b85
+
+[Download MP4 / 下载 MP4（约 11 MB）](docs/media/reading-demo.mp4)
 
 Auto reading → manual → hold to fast-forward → skip the current dialogue script.
 The silent recording runs at the captured speed; the final manual-dialogue stop
