@@ -1,0 +1,817 @@
+{
+  "schema": "srw64.locale.v1",
+  "locale": "zh-Hans",
+  "source_locale": "ja",
+  "font": "PingFangSC-Medium",
+  "scope": "Native standard dialogue adapter; other UI remains original. Chinese content is the existing stage-one draft.",
+  "ui": {
+    "manual": "手动",
+    "auto": "自动",
+    "fast": "快速剧情",
+    "skip": "跳过剧情…",
+    "font_size": "字号",
+    "controls": "↑↓自动速度  Z下一页  Q回看  I/K字号  E+Z快进  E+Enter跳过",
+    "history_title": "对话回看",
+    "history_controls": "↑↓滚动 · Q / Z / X 返回",
+    "name_title": "人物档案",
+    "name_player": "设定主角姓名",
+    "name_partner": "设定搭档姓名",
+    "name_given": "名字",
+    "name_family": "姓氏",
+    "name_nickname": "昵称",
+    "name_limit": "最多字数",
+    "name_cancel": "返回角色选择",
+    "name_default": "恢复默认",
+    "name_back": "上一步",
+    "name_next": "下一项",
+    "name_confirm": "确认姓名",
+    "name_hint": "支持直接输入与粘贴。可使用假名、字母、数字和游戏已有汉字。\nEnter 下一项 · Esc 返回角色选择",
+    "name_empty": "请输入姓名。",
+    "name_long": "字数超过上限，请缩短后重试。",
+    "name_unsupported": "包含当前不支持的字，请改用假名、字母或游戏已有汉字。",
+    "name_spaces": "姓名首尾不能有空格。",
+    "name_invalid": "这个姓名不能使用，请修改。主角与搭档的全名也不能相同。",
+    "name_review": "准备好出发了吗？",
+    "name_step_player": "主角",
+    "name_step_partner": "搭档",
+    "name_step_review": "确认",
+    "name_review_hint": "确认两位角色的姓名，开始属于他们的故事。",
+    "name_page_hint": "为这段旅程写下名字。昵称会显示在剧情对话中。",
+    "name_preview": "姓名预览",
+    "name_keyboard_hint": "Tab 切换字段   ·   Enter 下一项 / 确认   ·   Esc 返回",
+    "name_start": "开始故事  →",
+    "name_edit": "修改姓名",
+    "name_to_partner": "继续：搭档  →",
+    "name_to_review": "继续：确认  →",
+    "name_review_keyboard_hint": "Enter 开始故事   ·   Esc 修改姓名",
+    "settings_error": "语言切换或设置保存失败"
+  },
+  "entries": [
+    {
+      "key": "base:t00_00225",
+      "source_sha256": "5155c846cf529e54a6300ba8cb9a8b774bb3b7c16823f5ddb18e84ff68956a91",
+      "target": "选项<END>"
+    },
+    {
+      "key": "base:t00_00226",
+      "source_sha256": "522a0daa19487ee86955836be12bee0116b4206c0ed8b0f2ed90b76fcbd75a4d",
+      "target": "音乐鉴赏<END>"
+    },
+    {
+      "key": "base:t00_00227",
+      "source_sha256": "2f066c3a3762f5172b61b24c09eabd81d3680b6cb2836f96e39827d5697a8616",
+      "target": "角色列表<END>"
+    },
+    {
+      "key": "base:t00_00228",
+      "source_sha256": "f235080aa22a32fc516346a333c5e4fd2e566320c17ce21d368994cad120450e",
+      "target": "机体列表<END>"
+    },
+    {
+      "key": "base:t00_00229",
+      "source_sha256": "f2579d9846625af4307cd524e85a11d5ecf96d5641d3ac5f3e15775dd0a82bdf",
+      "target": "卡拉OK模式<END>"
+    },
+    {
+      "key": "base:t00_00230",
+      "source_sha256": "563bd4d3a121b07659851b605b892322355b48b6af59ba1f851dd72c506243bf",
+      "target": "退出<END>"
+    },
+    {
+      "key": "base:t00_00490",
+      "source_sha256": "1a32f52a471d33ba5428e0b64756c8d253a3d3b3af1d18fdaa78242b2a77e002",
+      "target": "玛娜米<END>"
+    },
+    {
+      "key": "base:t00_00498",
+      "source_sha256": "9aa629444f0b4dbd2df882fee02f38172f91be735a18a1a7c828a9d0d26bc384",
+      "target": "玛娜米・哈米尔<END>"
+    },
+    {
+      "key": "base:t00_00503",
+      "source_sha256": "2bff767a42756d450f766e2d146fdd9b6aeebba75928270ca5ea1560496f958a",
+      "target": "移动<END>"
+    },
+    {
+      "key": "base:t00_00504",
+      "source_sha256": "a727bf7a9c1061f7a508b772c497fb063f440e933c7147d9894ffe19cc84bd78",
+      "target": "精神<END>"
+    },
+    {
+      "key": "base:t00_00505",
+      "source_sha256": "6922840e581785ba470e535bd4468d2a86aa40043c414026580eb384ce7dc55e",
+      "target": "能力<END>"
+    },
+    {
+      "key": "base:t00_00506",
+      "source_sha256": "cc75bbcad336a0922c3c130e96578232df1a1139f3c831926fbd0fe7f13fe5b7",
+      "target": "待机<END>"
+    },
+    {
+      "key": "base:t00_00507",
+      "source_sha256": "3e4cc68e1307012f377bfb621e0efa4cf1f4e92f8530e589aa9f451c21aa31a3",
+      "target": "攻击<END>"
+    },
+    {
+      "key": "base:t00_00508",
+      "source_sha256": "f2c21b0dd2a878a0a48fe02f9ab8a5e70eb1e6a86575d54b5b62695713817727",
+      "target": "变形<END>"
+    },
+    {
+      "key": "base:t00_00509",
+      "source_sha256": "6af016a6e4550a070c9aea6bb7b4ef7205940acfc2f49ed5907eece07ffda25d",
+      "target": "出击<END>"
+    },
+    {
+      "key": "base:t00_00510",
+      "source_sha256": "107a113e43b9f638423e01dfffb9328ec85c472300ddb7354d505da92192f2eb",
+      "target": "变形<END>"
+    },
+    {
+      "key": "base:t00_00511",
+      "source_sha256": "08d85829f9f49240b7ea336cf50c98b1bc96d33610d2c731d42749176b03819d",
+      "target": "说服<END>"
+    },
+    {
+      "key": "base:t00_00512",
+      "source_sha256": "98e5cf4a33fa7b1ba26337040c75b287fd8d265035abd4d5556ee6765c3458d0",
+      "target": "地面<END>"
+    },
+    {
+      "key": "base:t00_00513",
+      "source_sha256": "519c20447cf60a9d3bce84dc6453c9f1ee499f5c4d547be7313c7495f368cd30",
+      "target": "空中<END>"
+    },
+    {
+      "key": "base:t00_00514",
+      "source_sha256": "ab509f465d6e1ac1d836c817c26689855e4a29b1d22ea5fda193963036e9e909",
+      "target": "地下<END>"
+    },
+    {
+      "key": "base:t00_00515",
+      "source_sha256": "bf31c4f6cc1e97491d67a555cffb800502e9443e3aa083ed86c10fc383409481",
+      "target": "水中<END>"
+    },
+    {
+      "key": "base:t00_00516",
+      "source_sha256": "0e65eca781ac148f1356aeee771eccf7328f422f1506056b437c9aa2f09c5ddf",
+      "target": "分离<END>"
+    },
+    {
+      "key": "base:t00_00517",
+      "source_sha256": "00da9c7811af90c0856a7b2becd0ffad7b8f38a1b1f6aeba473266ed7e539705",
+      "target": "合体<END>"
+    },
+    {
+      "key": "base:t00_00518",
+      "source_sha256": "98187ea957e6bb60440d33aefc16091fdd995cff5847d70a50e16eb8882fedea",
+      "target": "修理<END>"
+    },
+    {
+      "key": "base:t00_00519",
+      "source_sha256": "2e8eeecc1136593c88cd7e568abbd57795f32a7f1f1e885f788d468dbd6e60e8",
+      "target": "补给<END>"
+    },
+    {
+      "key": "base:t00_00520",
+      "source_sha256": "82ef01a753401925f12cde7d99c51c0695616b8978aff889357f9889f8f7b0b0",
+      "target": "回合结束<END>"
+    },
+    {
+      "key": "base:t00_00521",
+      "source_sha256": "ea0040cdbf9109abf64e78e484abb233341cd2aefbc5a931e8b3e028b6ea20fc",
+      "target": "部队表<END>"
+    },
+    {
+      "key": "base:t00_00522",
+      "source_sha256": "bce0682d5976e96399696b23f6fd7bbde59b5fce0e48838cd16b52286ab4c352",
+      "target": "反击指令<END>"
+    },
+    {
+      "key": "base:t00_00523",
+      "source_sha256": "7c3f46337d523b66f6eb576bda8b0913e440a6fb19b7c22b58305e661c94ef32",
+      "target": "作战目标<END>"
+    },
+    {
+      "key": "base:t00_00524",
+      "source_sha256": "37967ad125a2a85b370f17d95f83b03231ccfe3b75947d8d02b9907fbf5c693a",
+      "target": "精神检索<END>"
+    },
+    {
+      "key": "base:t00_00525",
+      "source_sha256": "6aa1fc0a3bf55ec9dbca6ed0d96f09bed21720746eef5d1290b693a04e80e120",
+      "target": "系统<END>"
+    },
+    {
+      "key": "base:t00_00526",
+      "source_sha256": "b6402db55ed0b8f55f203586d69c40158d8a74bce4fcc1ee81860a929c07d5ef",
+      "target": "保存<END>"
+    },
+    {
+      "key": "base:t00_04406",
+      "source_sha256": "a8b00e5849bae9e2c7cce3cb523db8545a3cbce5e28ff4da71beab8d52a2c231",
+      "target": "劳伦斯<END>"
+    },
+    {
+      "key": "base:t00_04410",
+      "source_sha256": "1a32f52a471d33ba5428e0b64756c8d253a3d3b3af1d18fdaa78242b2a77e002",
+      "target": "玛娜米<END>"
+    },
+    {
+      "key": "base:t00_04544",
+      "source_sha256": "7c36fe89aace27e497c424848cc2f0fefdfcea0c3f04de1b9191b9c1d47ecf94",
+      "target": "加里森<END>"
+    },
+    {
+      "key": "base:t00_04547",
+      "source_sha256": "895bf110a3b46adb7fb7315afd6fbd6497213ded08fac81481cb52644f310f6f",
+      "target": "万丈<END>"
+    },
+    {
+      "key": "base:t00_04586",
+      "source_sha256": "d36b07e2940bdddcbf0602a70d7d72160777470cbacef23ead49b116f5188ad2",
+      "target": "西蒙娜<END>"
+    },
+    {
+      "key": "base:t00_04767",
+      "source_sha256": "1fc2aacb67ee4bf9895cfe1fc0f04239a7ca0f7de98b356bf85b085c7e6065e0",
+      "target": "劳伦斯・杰斐逊<END>"
+    },
+    {
+      "key": "base:t00_04771",
+      "source_sha256": "9aa629444f0b4dbd2df882fee02f38172f91be735a18a1a7c828a9d0d26bc384",
+      "target": "玛娜米・哈米尔<END>"
+    },
+    {
+      "key": "base:t00_04905",
+      "source_sha256": "018398a2c2d9d9fe26b40ca5a6e3a003c59b3461e4b17664957cba12548aea77",
+      "target": "加里森时田<END>"
+    },
+    {
+      "key": "base:t00_04908",
+      "source_sha256": "ca918320a99d0f9d63b9edb7b23a4dd6db69a6525e0652d4557170ff4a9b3a8a",
+      "target": "破岚万丈<END>"
+    },
+    {
+      "key": "base:t00_04947",
+      "source_sha256": "0bf3855a39064fcabefbb8e786b2248b07e90f8e0d91e0b04faf3d541cd84304",
+      "target": "西蒙娜・勒弗兰<END>"
+    },
+    {
+      "key": "base:t00_05200",
+      "source_sha256": "cca9e80029163ac2f748577e3239dd9bcf55311293284b0c25baaba9cda5e1ca",
+      "target": "剧情选择<END>"
+    },
+    {
+      "key": "base:t00_05201",
+      "source_sha256": "6dc7758ef12464fca5a6d9049eb629c4f3eb1d9f6c8b395dc66ce3734ce977e1",
+      "target": "左右键切换<END>"
+    },
+    {
+      "key": "base:t00_05202",
+      "source_sha256": "2bb3455cf3daddc409b5c33ac1cc491871d8de4512ff5d747d7413226302bb80",
+      "target": "机体类型<END>"
+    },
+    {
+      "key": "base:t00_05203",
+      "source_sha256": "d5e7fac4361724dad1600c1b5a3d92951dcaf0d9fbfd64ef11e5b001f574eca8",
+      "target": "超级机器人<END>"
+    },
+    {
+      "key": "base:t00_05204",
+      "source_sha256": "502f3903d810b421639aa462dab6d76b1319a19380bb9bdee52ea601fd63dfce",
+      "target": "真实机器人<END>"
+    },
+    {
+      "key": "base:t00_05205",
+      "source_sha256": "e4dbd784dcebcdf0138a2960948eb866e263a5ba2405950504816d32c9c4ce29",
+      "target": "性别<END>"
+    },
+    {
+      "key": "base:t00_05206",
+      "source_sha256": "ed5b2123d33db3a0d9e3dd1e6ac4fda73d8b1dcc4cbf0414de54481bf9cbc877",
+      "target": "男<END>"
+    },
+    {
+      "key": "base:t00_05207",
+      "source_sha256": "a1ba246621ca8e59732b7d79b6449a6fdc5fd6d761bbcb06968e4bf08b86daf6",
+      "target": "女<END>"
+    },
+    {
+      "key": "base:t00_05208",
+      "source_sha256": "7022b46c99e5b11d1bf50b3f667348d18676341bb8e8e3d4c72b04d567e009fe",
+      "target": "主角<END>"
+    },
+    {
+      "key": "base:t00_05209",
+      "source_sha256": "535a87707ef4bdf0d404b84202f238595abcdfc5527a586acdc5b81afaeb5127",
+      "target": "对手<END>"
+    },
+    {
+      "key": "base:t00_05210",
+      "source_sha256": "3e10af22233fbd7ada83dd3a9eddb1ff4f76b53b421c1edf05570cdbc9283494",
+      "target": "剧情<END>"
+    },
+    {
+      "key": "base:t00_05211",
+      "source_sha256": "25ee2604b5e3b60c95fe9b01c6b63ad8e7390b0565f595081e01d3a1ffdd2d29",
+      "target": "超级机器人路线<END>"
+    },
+    {
+      "key": "base:t00_05212",
+      "source_sha256": "b2be68be7cb51819faf3fc69ccb9b55934c7ce623714f42244d6225ff83941be",
+      "target": "真实机器人路线<END>"
+    },
+    {
+      "key": "base:t00_05213",
+      "source_sha256": "e73185bb181aa6fec477af30f0fbdca8c51ade67b37338cbb2f2ea4cf8a5b05f",
+      "target": "确认选择吗？<END>"
+    },
+    {
+      "key": "base:t00_05214",
+      "source_sha256": "3a664dd41231016bf0f638931d13da9b2efe5efee0c1592ba59db4bb8fb68b57",
+      "target": "是<END>"
+    },
+    {
+      "key": "base:t00_05215",
+      "source_sha256": "9787bfd27d3dbf4d2e3b6e2f6fc42c1ee2e8daa84379c18caa284b232a2c66e8",
+      "target": "否<END>"
+    },
+    {
+      "key": "base:t00_05461",
+      "source_sha256": "1fc2aacb67ee4bf9895cfe1fc0f04239a7ca0f7de98b356bf85b085c7e6065e0",
+      "target": "劳伦斯・杰斐逊<END>"
+    },
+    {
+      "key": "base:t00_05540",
+      "source_sha256": "0bf3855a39064fcabefbb8e786b2248b07e90f8e0d91e0b04faf3d541cd84304",
+      "target": "西蒙娜・勒弗兰<END>"
+    },
+    {
+      "key": "base:t00_17410",
+      "source_sha256": "e1108c28e8e0a49a7cb433f3a7886ece861a026e304fd16d130b7a631e219dea",
+      "target": "“大小姐，茶泡好了。<BR>今天是俄式红茶。<STOP>请问送到哪里？”<END>"
+    },
+    {
+      "key": "base:t00_17411",
+      "source_sha256": "e91b4a8c98ba97a7675a11c793275e2bd5436a24a8946c708b5c96f6d68752f3",
+      "target": "“……劳伦斯，<BR>茶的事先放一边。<STOP>我究竟还要<BR>等到什么时候！<STOP>我们等着的时候，<BR>那些人仍在作恶，<STOP>还有人在痛苦和怨恨中<BR>不断死去啊！？”<END>"
+    },
+    {
+      "key": "base:t00_17412",
+      "source_sha256": "8fb4b6144efae73fe09885448446ee698cda23a9d9de712d47d79b53b29f7b7c",
+      "target": "“大小姐，我们的工作<BR>对反抗帝国的人们，<STOP>同样至关重要。<BR>别人拿不到的情报，<STOP>正因为您属于罗姆菲勒，<BR>我们才能得到。”<END>"
+    },
+    {
+      "key": "base:t00_17413",
+      "source_sha256": "6f35280c10d5831f95e63b3c0c3dcde7baa788a7355e3a709e84796d2a4e66da",
+      "target": "“这些话我都听腻了。<BR>那我换个问法。<STOP>我究竟还要到何时，<BR>才能不再眼睁睁看着<STOP>帝国为非作歹！？<STOP>只要爷爷留下的<BR>“斯维姆鲁格”完工……<STOP>劳伦斯，你该不会……”<END>"
+    },
+    {
+      "key": "base:t00_17414",
+      "source_sha256": "0036f66009dae6f372d4ddbde974179f6fcfcb0eb30d3e04ee94d2f64904ed91",
+      "target": "“是，您指什么？”<END>"
+    },
+    {
+      "key": "base:t00_17415",
+      "source_sha256": "d1e48cc44090764f61875a2c66fa7374d0a4f1364a4f03b08d6fd27c149fb2d7",
+      "target": "“你该不会担心我的安危，<BR>就擅自做了什么<STOP>不该做的事吧？”<END>"
+    },
+    {
+      "key": "base:t00_17416",
+      "source_sha256": "61987be80d927d10dc7b61421f7016cf9ac03494ba7a24c86a7171c43b0fb573",
+      "target": "“绝无此事。可是，<BR>没有那位大人的联络，<STOP>我们就不能行动。<BR>请您再耐心等一等。”<END>"
+    },
+    {
+      "key": "base:t00_17417",
+      "source_sha256": "e6fb6c36857950b6e9f727ddfb3a479226749891e0953deafc633c3ecdadcb6b",
+      "target": "“……唉，算了。<BR>……劳伦斯。”<END>"
+    },
+    {
+      "key": "base:t00_17418",
+      "source_sha256": "4ac88a841fffb7c3c27f278d1df67dcfb836d0bf24c6b8b13c19495344e3a2ca",
+      "target": "“在。”<END>"
+    },
+    {
+      "key": "base:t00_17419",
+      "source_sha256": "a07dc0c43a3402a7a9dbfefa71e2a1a39ef23d470c0b873098957239ef42b1ed",
+      "target": "“茶就送到这里来吧。”<END>"
+    },
+    {
+      "key": "base:t00_17420",
+      "source_sha256": "d058d4e2a180814f9ad3dc85d6c590b17db41c1804bb1a1596b06796e6003e3d",
+      "target": "“是，大小姐。”<END>"
+    },
+    {
+      "key": "base:t00_17421",
+      "source_sha256": "645f3e323cd8c4b4216c4853162e4430d0f78825871206a50ac6f730e2a3fb3f",
+      "target": "“您好……”<END>"
+    },
+    {
+      "key": "base:t00_17422",
+      "source_sha256": "9f75244180b1ecd94939e1ea546b948afb6d636c85a91f02608ab106bc5f56f5",
+      "target": "“劳伦斯，气色不错啊。”<END>"
+    },
+    {
+      "key": "base:t00_17423",
+      "source_sha256": "0092d5080d71014df6dd97385d287a1b8108371d54bc2c45ae052f3187dac3a0",
+      "target": "“哎呀，真是许久不见了。<STOP>您使用这条线路，<BR>莫非是……”<END>"
+    },
+    {
+      "key": "base:t00_17424",
+      "source_sha256": "8d72666729c80c9fca18967e21acf9aba51c8ec31782393ad3000a2d7e9e2964",
+      "target": "“嗯，我们也差不多<BR>该开始行动了。<STOP><G:0126><G:0126><G:0126><G:0126><G:0126>小姐在吗？”<END>"
+    },
+    {
+      "key": "base:t00_17425",
+      "source_sha256": "b8da2ccd87442c7c6d31744a0589c7044fa544911a9d857d6a1e48bfb3600f79",
+      "target": "“请稍候。”<END>"
+    },
+    {
+      "key": "base:t00_17426",
+      "source_sha256": "d458623e3b2f7035194a5283461ac7c11422ef1b75a41363d79a6cb17fbb10d7",
+      "target": "“让您久等了，<BR>我是<G:0126><G:0126><G:0126><G:0126><G:0126>。<STOP>万丈先生，我可是<BR>一直等着您的联络呢。”<END>"
+    },
+    {
+      "key": "base:t00_17427",
+      "source_sha256": "7d3f1934694e522536eb47e2171faecb6a70100d1c729763c0aa20dc5c664627",
+      "target": "“抱歉。<STOP>这么久以来让你做<BR>讨厌的工作，辛苦你了。”<END>"
+    },
+    {
+      "key": "base:t00_17428",
+      "source_sha256": "74e76844ab927bb7a5e763ba1f1a87737170049beaff1cf965b0455a8abcca2b",
+      "target": "“那么……”<END>"
+    },
+    {
+      "key": "base:t00_17429",
+      "source_sha256": "26d410cf8abb31e6415a675200a700acfbe71da48625e0cfe9c397f353d55867",
+      "target": "“嗯，我们这边终于<BR>准备得差不多了。<STOP>斯维姆鲁格的调试，<BR>据说也已经完成了。”<END>"
+    },
+    {
+      "key": "base:t00_17430",
+      "source_sha256": "3cccc2f2aac8e204cc95a3387817e4b7a89da02472a978542112d6c145db7286",
+      "target": "“真的吗！？<BR>终于要开始了是吧！”<END>"
+    },
+    {
+      "key": "base:t00_17431",
+      "source_sha256": "02df559ba2da89998d75861059816c875e8807762c4cb97dde25292ba33ad625",
+      "target": "“对，你那边一准备好<BR>就过来吧。详细情况，<STOP>我会让加里森联系你。<BR>我还得联络另一个人。”<END>"
+    },
+    {
+      "key": "base:t00_17432",
+      "source_sha256": "f2cceb3ddd6044acef4a5b5d143a56371f02f5c62016bcf0ca935b68fd67803d",
+      "target": "“是哪一位呢？”<END>"
+    },
+    {
+      "key": "base:t00_17433",
+      "source_sha256": "629addc63cc16e4f32ba7cea41db4d9f0cedd2fcb86afae74a058aa665666bf2",
+      "target": "“她和你一样，<BR>一直在调查帝国的动向。<STOP>也是罗姆菲勒财团的成员，<BR>勒弗兰公爵家的千金。”<END>"
+    },
+    {
+      "key": "base:t00_17434",
+      "source_sha256": "77c9ca6853cea2e6e1e28f685c365618002e6ec925d8674be5286f796a90635c",
+      "target": "“勒弗兰公爵家……<BR>是西蒙娜小姐吧？<STOP>说起来，我听说她<BR>三年前也曾经<STOP>与帝国交战。”<END>"
+    },
+    {
+      "key": "base:t00_17435",
+      "source_sha256": "2b8653d080a9c7607c8f679e4a6905518c5d4ab42018edceab25c152197c81b0",
+      "target": "“没错。<BR>那么，稍后见。”<END>"
+    },
+    {
+      "key": "base:t00_17436",
+      "source_sha256": "160450eda043d1a5c7a10706b695b9ef9e603954e89cdb75baeb1033d5f0baa8",
+      "target": "“万丈先生！”<END>"
+    },
+    {
+      "key": "base:t00_17437",
+      "source_sha256": "f077ba879ba7ffde78a420599bdccb793dc22b1b9f61f7a898c7e5a6629c701e",
+      "target": "“嗨，真准时啊。<STOP>西蒙娜小姐似乎<BR>要晚到一会儿，<STOP>你先看看机体吧。<BR>这边来。”<END>"
+    },
+    {
+      "key": "base:t00_17438",
+      "source_sha256": "8ca3e49643a47fad78b1b6542cb8a7b93702ba7ed52e0b08481f32b8d05136af",
+      "target": "“啊……！”<END>"
+    },
+    {
+      "key": "base:t00_17439",
+      "source_sha256": "b0d550824b9f6a2890f36975e00a1f37396378d54d4837fe76cea4d1f8aa5734",
+      "target": "“怎么样？”<END>"
+    },
+    {
+      "key": "base:t00_17440",
+      "source_sha256": "72a98aac2abce41eb11dc2cb724a1edeff8086c5c582b43a28ef21505ec0aba8",
+      "target": "“我的斯维姆鲁格！？”<END>"
+    },
+    {
+      "key": "base:t00_17441",
+      "source_sha256": "7643fbe3407785341367ea24c7e0eb25330c71f9aae904a326c9477d06655fc3",
+      "target": "“嗯，果然不同凡响。”<END>"
+    },
+    {
+      "key": "base:t00_17442",
+      "source_sha256": "2f8c3f4cf6da0cdb77a837a56801047903e6aa48c702f1000b12080b642d25f0",
+      "target": "“哪里，正因为设计资料<BR>很完整，才能做到这样。<STOP>不然，不可能从零造出来。<BR>不过，机背上原本有个<STOP>像是安装推进器的接口，<BR>我们修改了那部分设计，<STOP>把接口拆掉了。”<END>"
+    },
+    {
+      "key": "base:t00_17443",
+      "source_sha256": "98d67f388dbf476652fc6c47cea342d73f162ecf2271ca75aed3e031475a8485",
+      "target": "“哎呀，诸位都到齐了。<BR>真是失礼了。<STOP>我正在做最后的收尾，<BR>请各位再稍等片刻。”<END>"
+    },
+    {
+      "key": "base:t00_17444",
+      "source_sha256": "4f72769d67b23d1e2cea69b8a2dedde55c601375f3433f2bb4239d88e1568718",
+      "target": "“……？？”<END>"
+    },
+    {
+      "key": "base:t00_17445",
+      "source_sha256": "83c5a360816cdd353d413fb67800ebff250da096a9056ca9d0e4e1672a56d775",
+      "target": "“哈哈，<BR>算是加里森的爱好吧。<STOP>他正在给斯维姆鲁格<BR>打蜡呢。”<END>"
+    },
+    {
+      "key": "base:t00_17446",
+      "source_sha256": "c9db0c1c6857af2ee3ac530807f42bd9aac97bb39fa8a9da47622a071d6a4e59",
+      "target": "“这是什么声音！？”<END>"
+    },
+    {
+      "key": "base:t00_17447",
+      "source_sha256": "5d76d29d5b1df9ee4d90936fbb3c6d80d777c74a4a899c22de606ce2920cd156",
+      "target": "“看来附近出现了<BR>帝国军。”<END>"
+    },
+    {
+      "key": "base:t00_17448",
+      "source_sha256": "08e32b03454b6cc49e884f15386bc0dab868d209d955f449e1900c4f20c5ffd2",
+      "target": "“你说什么！？”<END>"
+    },
+    {
+      "key": "base:t00_17449",
+      "source_sha256": "a30513126ab27d8820f51dc8ecd4c6772c695f148c20222ed596483d71fde748",
+      "target": "“嗯，我这就<BR>去查看一下。”<END>"
+    },
+    {
+      "key": "base:t00_17450",
+      "source_sha256": "9dabd147cfa6cbe5ce1089e67759deb7777d4819ffcde896901896c47a3228d5",
+      "target": "“果然是帝国军。”<END>"
+    },
+    {
+      "key": "base:t00_17451",
+      "source_sha256": "21da15b040d738f0d11c84fe533dc97f17efc09a125168e5f6bde90f49f17358",
+      "target": "“他们来这种地方做什么？<STOP>我不觉得我们的行踪<BR>已经暴露了……”<END>"
+    },
+    {
+      "key": "base:t00_17452",
+      "source_sha256": "8dd43e71d77fe6bfac9498607fb54427ebac6479b1f133b3505f50334c4fdca8",
+      "target": "“他们似乎正在无差别地<BR>攻击附近居民。”<END>"
+    },
+    {
+      "key": "base:t00_17453",
+      "source_sha256": "26d2bdb9058951139c004c9572ed82b85ae61fabbd28b20bbedbd29915b96194",
+      "target": "“什么！？……对了，<STOP>最近听过几次这种事，<BR>是吧，加里森？”<END>"
+    },
+    {
+      "key": "base:t00_17454",
+      "source_sha256": "2a00b94dd62bc955bb1eb76c5aa2a04a8de67f1e610a33531981eadb48b8f7b2",
+      "target": "“请稍等。<BR>……确实，帝国军在<STOP>围剿游击队时，<BR>有时会采取这种作战。”<END>"
+    },
+    {
+      "key": "base:t00_17455",
+      "source_sha256": "4f6d9e17ada07fe9559abcf45e108ba2d4b35c27afe1227e28ceb940c0523520",
+      "target": "“岂有此理！<BR>那岂不是连毫不相干的<STOP>老人和孩子，<BR>也在遭受攻击！？<STOP>不可原谅……<BR>我绝不会原谅他们！”<END>"
+    },
+    {
+      "key": "base:t00_17456",
+      "source_sha256": "9146acd4a51d9ee25c4c4eba99988c0aadbcf0799c2c3d9dc5bd975d0791d12b",
+      "target": "“大小姐！？”<END>"
+    },
+    {
+      "key": "base:t00_17457",
+      "source_sha256": "278f0df7c578679fd547806d80ed16afe238248011c54ed82ef76e782a2544b4",
+      "target": "“还等什么，劳伦斯！<BR>让斯维姆鲁格出击！！”<END>"
+    },
+    {
+      "key": "base:t00_17458",
+      "source_sha256": "bb12865554278d6ffa984030c0288954a3a10c2d518c4076c7f263ade26687bc",
+      "target": "“大小姐！您打算<BR>直接投入实战吗！？”<END>"
+    },
+    {
+      "key": "base:t00_17459",
+      "source_sha256": "c6581f5e8a3f00fd60ec3f062d854740d10f4286984a85d2c30993d7ca4dd2f7",
+      "target": "“当然！快点！”<END>"
+    },
+    {
+      "key": "base:t00_17460",
+      "source_sha256": "e4a4be8d9c27dfe49e9d4af214831f5dc69b43b8d2ce72286bad2d15e8f698ca",
+      "target": "“好厉害……这就是爷爷的<BR>斯维姆鲁格啊……”<END>"
+    },
+    {
+      "key": "base:t00_17461",
+      "source_sha256": "49c6cdefc7d5c4784e8ff4c2666e20da0e55921eba773bf5386b11c331078408",
+      "target": "“哎呀，真是位<BR>行动力十足的大小姐。<STOP>加里森，我出击了！”<END>"
+    },
+    {
+      "key": "base:t00_17462",
+      "source_sha256": "4e1ccf873f48c98c043b5f9d6e7417dd50f64c32cad7fb934f414553645e1531",
+      "target": "“祝您一路顺风。”<END>"
+    },
+    {
+      "key": "base:t00_17463",
+      "source_sha256": "e5540521e2e507d46299ddbb3a3cd752a460f41b854b34d8668f5eb9a361ac04",
+      "target": "“泰坦，快来吧！”<END>"
+    },
+    {
+      "key": "base:t00_17464",
+      "source_sha256": "5ca20f38511d947051970f13002514a03c483644048e1aa39e51babb98ec412d",
+      "target": "“为了世间与人们，<BR>粉碎姆格·佐尔巴多斯<STOP>帝国野心的泰坦３在此！<BR>不怕日轮，就放马来！”<END>"
+    },
+    {
+      "key": "base:t00_17465",
+      "source_sha256": "8622c2d37fcaadffc40aac1638cd145c886675f550402c73487f2facb81f4d07",
+      "target": "“哎呀！好精彩的开场白。<BR>我是不是也该想一句？<STOP>你觉得呢，劳伦斯？”<END>"
+    },
+    {
+      "key": "base:t00_17466",
+      "source_sha256": "7e521b384e1df314a330d557851a88f8b31d6b7b1575c0335a28cec7b96f8f0e",
+      "target": "“大小姐，这种事<BR>请留到以后再想！<STOP>敌人过来了！”<END>"
+    },
+    {
+      "key": "base:t00_17467",
+      "source_sha256": "9ced5bfbd47d64a6e35e81c52443989e3c39cb032990a4a78d688cc651326e2e",
+      "target": "“……我知道啦！”<END>"
+    },
+    {
+      "key": "base:t00_17468",
+      "source_sha256": "4b24cb1c1afe1c9421057bc9ed308415b6fa9e7b072d53cf779cb79f7950dc6b",
+      "target": "“那是……<BR>喂，万丈！<STOP>你们怎么会在这种地方<BR>打起来了！？”<END>"
+    },
+    {
+      "key": "base:t00_17469",
+      "source_sha256": "713ff3006b7d81de7558a76231fb0429ee4adf0b79c064334683507e3050a992",
+      "target": "“自己迟到了，<BR>一来就这么说不太好吧？<STOP>详情待会儿再说。<BR>我把多尔带来了，<STOP>你能帮忙的话，<BR>我会很高兴的。”<END>"
+    },
+    {
+      "key": "base:t00_17470",
+      "source_sha256": "d6b3f39f5a163a2f1704e0b04b1e2520e73f398b79e3ea1fa57b099a64cbafa5",
+      "target": "“行是行……<BR>其实我也被人追着呢。”<END>"
+    },
+    {
+      "key": "base:t00_17471",
+      "source_sha256": "6b553a380564ba4c21228d6fd479cc1b1b1462899da0d6c83d1fd237d985b5e1",
+      "target": "“西蒙娜小姐，怎么了？”<END>"
+    },
+    {
+      "key": "base:t00_17472",
+      "source_sha256": "b2ffcd739f3baf6940b54bb6f42cc51d793c446b597a82fac1f2fc4154d85183",
+      "target": "“还以为这台陌生机体<BR>是谁的，原来是你的呀。<STOP>其实联络员被抓了，<BR>我传递情报的事<STOP>也暴露了。正好本就打算<BR>来这里，时机倒也不算坏。<STOP>只是这么一来，<BR>追兵也跟着来了。”<END>"
+    },
+    {
+      "key": "base:t00_17473",
+      "source_sha256": "8268705890d614249c1991632a3b0330b2831cabecff1aa3e1d63de434facd9c",
+      "target": "“确认了。<BR>帝国军部队正在接近，<STOP>马上就要接触了。”<END>"
+    },
+    {
+      "key": "base:t00_17474",
+      "source_sha256": "6c341e1911b0c63f5cb59e53fa014f6ace883a45be6060412c5307feb1d37ccd",
+      "target": "“唉，护送高贵的小姐们，<BR>还真不是件轻松的事。”<END>"
+    },
+    {
+      "key": "base:t00_17475",
+      "source_sha256": "b4e507081d0f7e125c2e4450b02baa998f72c3ac16897211ddca2d7925942f2c",
+      "target": "“来了啊！<BR>尽管放马过来吧！！”<END>"
+    },
+    {
+      "key": "base:t00_17476",
+      "source_sha256": "cda36bc81999019c9e24c691ff2f1468ec5f86fc0cc411fbe390377a9ab07452",
+      "target": "“大小姐！！”<END>"
+    },
+    {
+      "key": "base:t00_17477",
+      "source_sha256": "5aa205f0a8a7fa63666adefb02e6de57432d384656fe048cc3fdb496b6ebb63d",
+      "target": "“怎……怎么会……”<END>"
+    },
+    {
+      "key": "base:t00_17478",
+      "source_sha256": "0a2eb6d7f3702d6e10d88a916ce3619ff4c175bdb7710fd8315841e8c638637e",
+      "target": "“呼……”<END>"
+    },
+    {
+      "key": "base:t00_17479",
+      "source_sha256": "b3f3e8e4acd4ad39261a1b47bd1bb02ac40b29fe69f6f216141885d1234e53a6",
+      "target": "“看来已经结束了。”<END>"
+    },
+    {
+      "key": "base:t00_17480",
+      "source_sha256": "359f449e9b24764f141277e7ad819564a157914f9cb6cfb13ff8084306afe23c",
+      "target": "“是啊。”<END>"
+    },
+    {
+      "key": "base:t00_17481",
+      "source_sha256": "b090efada7adbf7b7b48d213e95783ce9867d81c7b302149d4dc0fd298fb72aa",
+      "target": "“辛苦了。小姐们，<BR>有没有受伤？”<END>"
+    },
+    {
+      "key": "base:t00_17482",
+      "source_sha256": "96c8c74e81c53e553476ab85512266955e6104c68a87021b802da57016484e5d",
+      "target": "“嗯，我没事。”<END>"
+    },
+    {
+      "key": "base:t00_17483",
+      "source_sha256": "f058bf4e64a0997ee2e1730908a8de1cec5cb5f9528cf0150f485d93fecc9bea",
+      "target": "“太久没打，有点累，<BR>不过没问题。”<END>"
+    },
+    {
+      "key": "base:t00_17484",
+      "source_sha256": "4facd6377b3f0611f5ea3edf3aa762ca63c5be3c21f8953d241ef0056e124f4d",
+      "target": "“那就好。加里森，<BR>准备转移吧。<STOP>没必要留在这里，<BR>等敌人找上门来。”<END>"
+    },
+    {
+      "key": "base:t00_17485",
+      "source_sha256": "3cafe12f8b99aa43c1e5993031edf4838ba5d2b2281a225aa05b83b4dc252808",
+      "target": "“当然，已经全部<BR>准备好了。”<END>"
+    },
+    {
+      "key": "base:t00_17486",
+      "source_sha256": "9fbe0cee65fa99536ce45bfe64f5d7a99239feba38d6fff3f31bb007f9d6a061",
+      "target": "“那么，现在情况如何？”<END>"
+    },
+    {
+      "key": "base:t00_17487",
+      "source_sha256": "4e16c0fe954952f2b729e3fb55a6ef42bbcab8aefa6fe2bea702658154bbe422",
+      "target": "“他们也开始动真格了。<BR>以前只是镇压暴动的<STOP>治安部队，现在似乎在<BR>编组正式部队，专门对付<STOP>有组织的抵抗力量。<BR>此外，特别部队最近<STOP>围剿游击队立了功，<BR>权限也扩大了。”<END>"
+    },
+    {
+      "key": "base:t00_17488",
+      "source_sha256": "dd893c33155a94fbbec4246a2705b1918c73acedb3f800649671368158dd00fb",
+      "target": "“嗯，说起特别部队，<BR>据说是罗姆菲勒财团<STOP>组织起来的<BR>地球人部队吧。”<END>"
+    },
+    {
+      "key": "base:t00_17489",
+      "source_sha256": "c3fbf2b313c3fbe2470b0ad79dded315cdd693af4bc8598bcb3be762deebfdb4",
+      "target": "“不可原谅。<BR>罗姆菲勒和特别部队，<STOP>竟为了确保<BR>自身的利益，<STOP>对同为地球人的同胞<BR>做出如此暴行。”<END>"
+    },
+    {
+      "key": "base:t00_17490",
+      "source_sha256": "dc8ce669db0bddd5ecd747a077962170893b8af33c7f15f1243cf4a9803aee79",
+      "target": "“说到底，在帝国统治下，<BR>地球人就只有<STOP>三种活法。<STOP>为了活下去，听帝国的话，<BR>安分地过日子，<STOP>或者协助帝国，<BR>或者反抗帝国。<STOP>真是个讨厌的时代啊。”<END>"
+    },
+    {
+      "key": "base:t00_17491",
+      "source_sha256": "6f123888d4b55903035c2671c0bb2ec6f1c2e15b9bc4ea0885f65ba2d86d6f05",
+      "target": "“西蒙娜小姐……”<END>"
+    },
+    {
+      "key": "base:t00_17492",
+      "source_sha256": "9a572e4ddd407afded897f2b0da8cc1dd61fefb4d962af31bbffa49c3a82739c",
+      "target": "“别再叫我小姐了。<BR>本来就不合我的性子。<STOP>我们现在都不过是<BR>抵抗组织的一员嘛。”<END>"
+    },
+    {
+      "key": "base:t00_17493",
+      "source_sha256": "0c28c30633e9d510cc8af5273c3f0b6b67e9ae0db062288f39bfebee93e9158c",
+      "target": "“可帝国军要是<BR>认真行动起来，<STOP>往后的日子，<BR>就更艰难了……<STOP>算了，总之得加快脚步。<BR>我们现在该做的，<STOP>就是尽快集结<BR>足够的战力。”<END>"
+    },
+    {
+      "key": "base:t00_17494",
+      "source_sha256": "7fe8b051b7e8bf11dd5e7008cfbaf08b45d8800b4b34b8238cb2dd93407b0e33",
+      "target": "“那么，我们要去哪里？”<END>"
+    },
+    {
+      "key": "base:t00_17495",
+      "source_sha256": "1d275400d04d338fb9421a05c84eb3e37932d9f35f627e28423674f42f821a6e",
+      "target": "“先去见一位博士，<BR>卡拉巴正在支持<STOP>他的研究。”<END>"
+    },
+    {
+      "key": "base:t00_17496",
+      "source_sha256": "997c793349708dd19b3b90cdb3d4a9e0e6f4247d0625cfa50ba931429d12715b",
+      "target": "“卡拉巴……就是你们的<BR>那个反帝国团体吧？<STOP>连研究都在支援啊。”<END>"
+    },
+    {
+      "key": "base:t00_17497",
+      "source_sha256": "3351b071c4673d8e454437975255b47131098301013931cc4f32e35e56510424",
+      "target": "“科学家们，尤其是<BR>研究军事技术，或是<STOP>可转用于军事的<BR>能源技术的人，<STOP>很容易受到<BR>帝国的注意。<STOP>其中也有一些<BR>原西联邦的技术人员，<STOP>不过大多数人原本都在<BR>日本地区设有<STOP>研究设施。<STOP>在姆格·佐尔巴多斯帝国<BR>占领之前，我们协助他们<STOP>分散到了各地，<BR>就是这样。”<END>"
+    },
+    {
+      "key": "base:t00_17498",
+      "source_sha256": "e5fa50b7e78cbe33295832bc7207aef25014563a8087b7e452607e243f95b250",
+      "target": "“原来如此。<STOP>所以你们才能造出多尔<BR>这种地球产的ＳＰＴ啊。”<END>"
+    },
+    {
+      "key": "base:t00_17499",
+      "source_sha256": "b5122efa1a29bad4981ca6285045ddc2cce91ad25042694909796eb1d4470bd5",
+      "target": "“就是这么回事。”<END>"
+    },
+    {
+      "key": "base:t00_17500",
+      "source_sha256": "45e0db090c3189e41d8364ad94626087dc432319fdb6397a8b39e7b1825e2828",
+      "target": "“那我们要去拜访的博士，<BR>研究的是什么呢？”<END>"
+    },
+    {
+      "key": "base:t00_17501",
+      "source_sha256": "eb73efaa92bd266819b619c592597d8fc6b775ac9d09f5e8d5a67d8949e4271b",
+      "target": "“光子力能源。”<END>"
+    },
+    {
+      "key": "base:t00_17502",
+      "source_sha256": "1b3ed34bd278a0a07efbbf966d8d356d700e14b030303f4c2cd88337fb4e0467",
+      "target": "（英二……大家……<BR>你们都还活着吗……）<END>"
+    }
+  ],
+  "display_name": "简体中文"
+}
