@@ -4,7 +4,7 @@
 
 **《超级机器人大战64》原生重编译实验工程。**
 
-[English](#english) · [简体中文](#简体中文) · [Technical docs / 技术文档](docs/README.md)
+[English](#english) · [简体中文](#简体中文) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
 
 > Work in progress. This is a source and research repository, not a finished game
 > release or a complete Chinese translation. The current native host targets
@@ -13,7 +13,87 @@
 > 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版，也未完成全量汉化。
 > 当前原生宿主面向 macOS / Apple Silicon，完整游戏兼容性仍待验证。
 
-<!-- Reviewed runtime screenshots will be added here after maintainer approval. -->
+<a name="development-preview"></a>
+
+## Development preview / 开发中画面
+
+Actual native runtime captures. HD artwork is experimental and is not bundled;
+Chinese dialogue is still a draft. Screenshots demonstrate the shown scenarios,
+not full-game compatibility. [Media provenance](docs/media/manifest.json).
+
+以下均为原生运行实拍。HD 美术仍属实验且不随仓库提供，中文对白仍为草稿；
+截图只展示对应场景的进展。来源与摘要见[媒体记录](docs/media/manifest.json)。
+
+![Experimental HD dialogue with native Chinese text / 实验性 HD 画面与原生中文对白](docs/media/02-dialogue-hd.png)
+
+**[Reading demo — 45-second MP4 / 阅读操作实录（45 秒 MP4，约 11 MB）](docs/media/reading-demo.mp4)**
+
+Auto reading → manual → hold to fast-forward → skip the current dialogue script.
+The silent recording runs at the captured speed; the final manual-dialogue stop
+is shown below. / 自动阅读 → 手动 → 按住快进 → 跳过当前对话脚本。
+视频静音、按实际速度播放，最终恢复手动的停点见下方截图。
+
+<details>
+<summary><strong>Original / HD · 原始与高清画面对照</strong></summary>
+
+The same dialogue in one run; **F6** switches artwork and the world-map marker,
+independently of language and text size. / 同次运行、同一段对白；**F6** 切换美术与世界地图标记，语言和字号独立。
+
+| Original / 原始画面 | Experimental HD / 实验性高清 |
+| --- | --- |
+| ![Original artwork / 原始画面](docs/media/01-dialogue-original.png) | ![HD artwork / 高清画面](docs/media/02-dialogue-hd.png) |
+
+</details>
+
+<details>
+<summary><strong>Native name entry and stage 1 · 原生姓名页与第一话地图</strong></summary>
+
+| Native name entry / 原生姓名页 | Stage 1 map / 第一话地图 |
+| --- | --- |
+| ![Japanese name editor after a hot language switch / 热切换后的日文姓名编辑页](docs/media/03-name-entry.png) | ![Stage 1 after a cold SRAM reload / SRAM 冷启动后的第一话地图](docs/media/04-stage-one.png) |
+
+The name editor preserves the test input **ナナ** across language changes. The map
+capture comes from an isolated SRAM cold-load experiment; complete-state autosave
+is not yet available. / 姓名页切换语言后保留测试输入 **ナナ**。地图截图来自独立 SRAM
+冷启动实验，完整状态自动保存尚未开放。
+
+</details>
+
+<details open>
+<summary><strong>Dialogue history and F7 language switching · 对话回看与中日文热切换</strong></summary>
+
+Twelve dialogue fragments were read through normal confirmation before opening
+history. **F7** retranslates the same history without a dialog or restart. /
+先通过正常确认读完 12 个对白片段，再打开回看；**F7** 切换同一组历史的语言，无弹窗、不重启。
+
+| Chinese / 中文 | Japanese / 日文 |
+| --- | --- |
+| ![Multiple Chinese dialogue history entries / 连续多条中文回看](docs/media/05-history-zh.png) | ![The same dialogue history in Japanese / 同一组日文回看](docs/media/06-history-ja.png) |
+
+</details>
+
+<details open>
+<summary><strong>Auto reading, fast-forward and skip · 自动对话、快进与跳过</strong></summary>
+
+| Auto reading / 自动对话 | Hold to fast-forward / 按住快进 |
+| --- | --- |
+| ![Auto reading at level 4 with progress indicator / 自动 4 档与当前句进度](docs/media/07-auto-dialogue.png) | ![Fast-forward status while holding E and Z / 按住 E 与 Z 时的快进状态](docs/media/08-fast-forward.png) |
+
+**↑ / ↓** changes the auto-reading speed; **X** returns to manual reading.
+Hold **E + Z** to fast-forward; release to stop the temporary acceleration. /
+**↑ / ↓** 调节自动阅读速度，**X** 恢复手动；按住 **E＋Z** 快进，松开结束临时加速。
+
+| Before skip / 跳过前 | Skipping / 跳过执行中 | Manual stop / 恢复手动 |
+| --- | --- | --- |
+| ![Dialogue before the skip request / 发出跳过请求前的对白](docs/media/09-before-skip.png) | ![Skipping status while script events continue / 原脚本执行时的跳过状态](docs/media/10-skip-in-progress.png) | ![Next manual dialogue on the stage 1 battlefield / 第一话战场中的下一段手动对白](docs/media/11-after-skip.png) |
+
+**E + Enter** skips the current dialogue script while its events and scene
+transitions continue. This run reaches the stage 1 battlefield and stops at a
+new manual dialogue. Skipping only previously read dialogue is **not implemented yet**; original
+random timing is preserved. / **E＋Enter** 跳过当前对话脚本，事件与场景过渡继续执行。
+本次运行进入第一话战场后停在新的手动对白。**仅跳过已读的策略尚未实现**，原版随机时序保持不变。
+
+</details>
 
 ## English
 
