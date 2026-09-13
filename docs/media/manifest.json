@@ -100,24 +100,113 @@
       "caption": "从世界地图剧情进入第一话战场，停在新的手动对白；与 09 同一次运行。当前实现为跳过当前脚本段，已读过滤仍待实现。",
       "status": "approved-for-readme",
       "modified": false
+    },
+    {
+      "file": "12-dialogue-en.png",
+      "source": "build/recomp/trilingual-video/live-5/04-en-hd.png",
+      "sha256": "91e74db8d1b1b3eb63c97233a7b4b9b8009ce579d474df868072742b184ab543",
+      "title": "英文对白 / English dialogue",
+      "caption": "当前对白包含多页，保持原脚本停点；英文仍是草稿。",
+      "status": "approved-for-readme",
+      "modified": false,
+      "approved_on": "2026-09-13"
+    },
+    {
+      "file": "13-history-en.png",
+      "source": "build/recomp/trilingual-video/live-5/05-history-en.png",
+      "sha256": "ab8646f12b9f0ae3b5d752c97159186ec49c83a5baf12b474e2f491f8f060148",
+      "title": "英文多条回看 / English dialogue history",
+      "caption": "正常读完 12 个片段后打开回看，显示同一组历史的英文。",
+      "status": "approved-for-readme",
+      "modified": false,
+      "approved_on": "2026-09-13"
+    },
+    {
+      "file": "14-name-entry-en.png",
+      "source": "build/recomp/trilingual-video/live-5/native-name-en.png",
+      "sha256": "36ed4e4c9fced52a1e611c683213e949c4ce9ffcaa3d34d09dc8986e70a19765",
+      "title": "原生姓名页 / Native name entry",
+      "caption": "正常入口中的原生姓名页；三语切换保留原始姓名字段。",
+      "status": "approved-for-readme",
+      "modified": false,
+      "approved_on": "2026-09-13"
     }
   ],
   "video": {
     "file": "reading-demo.mp4",
-    "source": "build/recomp/readme-history/controls-2/reading-demo.mov",
-    "source_sha256": "b3b392813ae647f8e036076b673a3c9d5b9eda8f381149855e5c60981c2f4945",
-    "sha256": "4a8487b44db08683c4b2db17adfb07d2710c75e9f49fc202b9ce823812f381b1",
+    "source": "build/recomp/trilingual-video/live-5/trilingual-demo.mov",
+    "source_sha256": "f54a94c5471fd76f3fc657d75b98da3847c5f644138b49cc3fdb39a44e2e2a81",
+    "sha256": "65b5ff4dca1afa4b034cad4c0b3cb6a6017d6da89c5674357cc60333618e02c4",
+    "bytes": 8775879,
+    "duration_seconds": 94.983333,
     "transform": "H.264 transcoding only; no cuts, scaling, or speed changes",
     "status": "approved-for-readme",
+    "approved_on": "2026-09-13",
+    "binary_sha256": "a8f2d188d6b0a5d1c74b501d38c738ff991854f1d92afb15d7ae83eda36207e2",
+    "timeline": [
+      {
+        "name": "01-ja-original",
+        "seconds": 2.006
+      },
+      {
+        "name": "02-zh-original",
+        "seconds": 6.295
+      },
+      {
+        "name": "03-en-original",
+        "seconds": 10.589
+      },
+      {
+        "name": "04-en-hd",
+        "seconds": 14.816
+      },
+      {
+        "name": "05-history-en",
+        "seconds": 18.286
+      },
+      {
+        "name": "06-history-ja",
+        "seconds": 22.575
+      },
+      {
+        "name": "07-history-zh",
+        "seconds": 25.856
+      },
+      {
+        "name": "08-history-en",
+        "seconds": 29.16
+      },
+      {
+        "name": "09-auto-en",
+        "seconds": 35.177
+      },
+      {
+        "name": "10-fast-en",
+        "seconds": 39.135
+      },
+      {
+        "name": "11-before-skip",
+        "seconds": 39.915
+      },
+      {
+        "name": "12-skipping",
+        "seconds": 40.355
+      },
+      {
+        "name": "13-manual-stop",
+        "seconds": 83.818
+      }
+    ],
     "inline_player": {
-      "url": "https://github.com/user-attachments/assets/609613d3-fbc2-4e9f-8936-c0923ca10b85",
-      "sha256": "dcf4f95596ff9368d45d90a82376f5a7d21fff09b46760e6af0da70d16c5752c",
-      "bytes": 8427903,
-      "duration_seconds": 45,
-      "encoding": "H.264, CRF 26, yuv420p; same source recording, resolution and speed; no cuts",
-      "source": "build/recomp/readme-history/controls-2/reading-demo.mov",
-      "source_sha256": "b3b392813ae647f8e036076b673a3c9d5b9eda8f381149855e5c60981c2f4945"
+      "url": "https://github.com/user-attachments/assets/0f1d7f87-661b-426c-b8e8-cd6cf6ae21f2",
+      "sha256": "65b5ff4dca1afa4b034cad4c0b3cb6a6017d6da89c5674357cc60333618e02c4",
+      "bytes": 8775879,
+      "duration_seconds": 94.983333,
+      "encoding": "H.264, CRF 29, yuv420p; same source recording, resolution and speed; no cuts",
+      "source": "build/recomp/trilingual-video/live-5/trilingual-demo.mov",
+      "source_sha256": "f54a94c5471fd76f3fc657d75b98da3847c5f644138b49cc3fdb39a44e2e2a81"
     }
   },
-  "approved_on": "2026-09-12"
+  "approved_on": "2026-09-12",
+  "updated_on": "2026-09-13"
 }
