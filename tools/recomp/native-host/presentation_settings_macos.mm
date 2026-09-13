@@ -44,7 +44,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
 void toggle() {
     if(applying || release_gate.pending() || destination.empty())return;
     try {
-        applying_locale=localization::catalog().locale=="ja"?"zh-Hans":"ja";
+        applying_locale=localization::next_locale(localization::catalog().locale);
         applying_request=dialogue::request_locale(applying_locale);
         release_gate.hold();awaiting_release=true;applying=true;last_error.clear();
     } catch(const std::exception& error) {last_error=error.what();}

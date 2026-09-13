@@ -25,6 +25,10 @@ const Catalog& catalog();
 Snapshot snapshot();
 Snapshot find(const std::string& locale);
 const std::map<std::string,Snapshot>& registered();
+// Cycles in the profile's locale_options order, independent of map sorting.
+std::string next_locale(const std::string& current);
+std::string display_name(const std::string& locale);
+std::string language_choices();
 void initialize(const nlohmann::json& data);
 void activate(Snapshot value);
 class Scope {

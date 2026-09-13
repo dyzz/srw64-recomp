@@ -453,17 +453,19 @@ void srw64_update_window(void*) {
     const auto locale=srw64::localization::catalog().locale;
     const bool failed=srw64::settings::failed();
     const auto error_label=srw64::localization::catalog().ui("settings_error");
+    const auto language=srw64::localization::display_name(locale);
+    const auto languages=srw64::localization::language_choices();
 #else
     const std::string locale="ja",error_label;
     const bool failed=false;
+    const std::string language="日本語",languages="日本語";
 #endif
     if(applied!=title_mode || locale!=title_locale || failed!=title_error) {
         title_mode=applied;
         title_locale=locale;title_error=failed;
-        const auto language=locale=="ja"?"日本語":locale=="zh-Hans"?"中文":locale.c_str();
         const std::string mode=!srw64::presentation::image_mode.enabled()?"Original | HD unavailable":applied?"HD":"Original";
         if(applied>=0)SDL_SetWindowTitle(window,(std::string("SRW64 | ")+language+" | "+mode+
-            " | F6: Original / HD | F7: 中文 / 日本語"+(failed?" | "+error_label:"")).c_str());
+            " | F6: Original / HD | F7: "+languages+(failed?" | "+error_label:"")).c_str());
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
