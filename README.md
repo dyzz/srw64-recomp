@@ -7,10 +7,10 @@
 [English](#english) · [简体中文](#简体中文) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
 
 > Work in progress. This is a source and research repository, not a finished game
-> release or a complete Chinese translation. Full-game compatibility has not
+> release or a complete translation. Full-game compatibility has not
 > been verified.
 >
-> 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版，也未完成全量汉化。
+> 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版，也未完成全量翻译。
 > 完整游戏兼容性仍待验证。
 
 <a name="development-preview"></a>
@@ -18,22 +18,39 @@
 ## Development preview / 开发中画面
 
 Actual native runtime captures. HD artwork is experimental and is not bundled;
-Chinese dialogue is still a draft. Screenshots demonstrate the shown scenarios,
+Chinese and English dialogue are still drafts. Screenshots demonstrate the shown scenarios,
 not full-game compatibility. [Media provenance](docs/media/manifest.json).
 
-以下均为原生运行实拍。HD 美术仍属实验且不随仓库提供，中文对白仍为草稿；
+以下均为原生运行实拍。HD 美术仍属实验且不随仓库提供，中英文对白仍为草稿；
 截图只展示对应场景的进展。来源与摘要见[媒体记录](docs/media/manifest.json)。
 
-**Reading controls demo / 阅读操作演示（45 秒）**
+**Three-language and reading controls demo / 三语与阅读操作演示（95 秒）**
 
-https://github.com/user-attachments/assets/609613d3-fbc2-4e9f-8936-c0923ca10b85
+https://github.com/user-attachments/assets/0f1d7f87-661b-426c-b8e8-cd6cf6ae21f2
 
-[Download MP4 / 下载 MP4（约 11 MB）](docs/media/reading-demo.mp4)
+[Download MP4 / 下载 MP4（约 8.8 MB）](docs/media/reading-demo.mp4)
 
-Auto reading → manual → hold to fast-forward → skip the current dialogue script.
-The silent recording runs at the captured speed; the final manual-dialogue stop
-is shown below. / 自动阅读 → 手动 → 按住快进 → 跳过当前对话脚本。
-视频静音、按实际速度播放，最终恢复手动的停点见下方截图。
+Japanese → Chinese → English → Original / HD → dialogue history → auto reading →
+fast-forward → skip → manual dialogue. This continuous, silent recording preserves
+the captured speed and includes the final manual-dialogue stop. / 日文 → 中文 → 英文 →
+原始／HD → 多条回看 → 自动阅读 → 快进 → 跳过 → 手动对白。视频连续实录、静音、原速，包含跳过后的手动停点。
+
+<details open>
+<summary><strong>English dialogue, history and name entry · 英文对白、回看与姓名页</strong></summary>
+
+English covers the same draft text as Chinese. Long dialogue is paginated; the
+history capture follows twelve normally completed fragments. **F7** also changes
+the native name editor without replacing entered names. Original character names
+remain Japanese. / 英文覆盖现有中文草稿范围；长对白分页显示，回看截图来自正常读完
+12 个片段后的历史。**F7** 同样支持原生姓名页，切换时保留已输入字段；原始角色姓名保持日文。
+
+![English dialogue with pagination / 分页英文对白](docs/media/12-dialogue-en.png)
+
+![Multiple English history entries / 多条英文回看](docs/media/13-history-en.png)
+
+![Native name editor in English / 英文原生姓名页](docs/media/14-name-entry-en.png)
+
+</details>
 
 <details>
 <summary><strong>Original / HD · 原始与高清画面对照</strong></summary>
@@ -62,11 +79,15 @@ is not yet available. / 姓名页切换语言后保留测试输入 **ナナ**。
 </details>
 
 <details open>
-<summary><strong>Dialogue history and F7 language switching · 对话回看与中日文热切换</strong></summary>
+<summary><strong>Japanese / Chinese history comparison · 中日文回看对照</strong></summary>
 
 Twelve dialogue fragments were read through normal confirmation before opening
 history. **F7** retranslates the same history without a dialog or restart. /
 先通过正常确认读完 12 个对白片段，再打开回看；**F7** 切换同一组历史的语言，无弹窗、不重启。
+
+These captures show the earlier Japanese / Chinese demo. The current build also
+includes an English draft and cycles **Japanese → Chinese → English** with F7. /
+这些截图来自此前的中日文演示；当前版本已加入英文草稿，F7 按**日文 → 中文 → 英文**循环。
 
 | Chinese / 中文 | Japanese / 日文 |
 | --- | --- |
@@ -111,15 +132,16 @@ plugin API, and a general-purpose editor are outside the current scope.
 
 | Area | Current implementation |
 | --- | --- |
-| Languages | **F7** switches Chinese / Japanese immediately, without a dialog or restart, and remembers the selection. Standard dialogue and the new native UI are integrated; missing translations fall back to Japanese. |
+| Languages | **F7** cycles Japanese → Chinese → English immediately, without a dialog or restart, and remembers the selection. Standard dialogue and the new native UI are integrated; missing translations fall back to Japanese. |
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. |
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, fast-forward, and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Name entry | An in-window native editor with original character and length validation. Language changes preserve edited fields and respect active IME composition. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, native probes, and state comparisons. |
 
-**Chinese coverage:** 153 draft records out of 51,174 extracted text records;
-none is marked reviewed yet. This count is an extraction denominator, not a
+**Translation coverage:** Chinese and English each cover the same 153 draft
+records out of 51,174 extracted text records, plus all 40 native UI labels.
+No text records are marked reviewed yet. This count is an extraction denominator, not a
 claim that every menu or text renderer supports language switching. Original
 menus, battle labels, and baked-in text still have integration work remaining.
 
@@ -154,7 +176,8 @@ make recomp-cpu
   --language ja --images original --new-game --mute
 ```
 
-Use `--language zh-Hans` for the Chinese draft, or press **F7** in game. On
+Use `--language zh-Hans` for the Chinese draft, `--language en` for the English
+draft, or press **F7** in game to cycle languages. On
 keyboards with media keys, the function-key modifier may be needed. **F6** becomes
 available for HD when the matching local assets are installed. The checked-in
 profile also describes those experimental assets; `--images original` is the
@@ -193,14 +216,15 @@ build steps and module boundaries; most technical notes are currently Chinese.
 
 | 模块 | 已实现范围 |
 | --- | --- |
-| 语言 | **F7** 直接中／日热切换，无弹窗、不重启，并记住选择。标准对白和新增原生 UI 已接入，缺译回退日文。 |
+| 语言 | **F7** 按日文 → 中文 → 英文循环热切换，无弹窗、不重启，并记住选择。标准对白和新增原生 UI 已接入，缺译回退日文。 |
 | 画面 | **F6** 独立切换 Original／HD，语言和字号不随之改变。HD 使用本地实验素材，并替换世界地图标记模型。 |
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、快进和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
 | 姓名输入 | 游戏窗口内的原生编辑页面，遵守原字库和字数限制；语言切换保留已编辑字段，不打断输入法组字。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、原生运行探针和状态比较。 |
 
-**中文覆盖：** 已提取的 51,174 条文本记录中有 153 条中文草稿，已审校数量为 0。
+**翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 153 条草稿，
+另有全部 40 条原生 UI 文案；文本记录的已审校数量均为 0。
 该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换；原版菜单、
 战斗标签和图片内嵌文字仍有待接入。全量翻译另行排期。
 
@@ -216,7 +240,8 @@ ROM 身份和工具链固定版本见[来源记录](docs/provenance.md)。
 再以 `--images original --new-game --mute` 首次启动，可避免依赖本地 HD 素材和历史存档。
 原生依赖会下载并构建到本地 `build/`。
 
-将启动参数改为 `--language zh-Hans` 使用中文草稿，或在游戏中按 **F7** 切换。
+将启动参数改为 `--language zh-Hans` 使用中文草稿、`--language en` 使用英文草稿，
+或在游戏中按 **F7** 循环切换三种语言。
 媒体键键盘可能需要同时按功能键修饰键。配齐对应的本地 HD 素材后才可用 **F6** 切到高清。
 已提交的 profile 同时描述这些实验素材；没有素材时用 `--images original` 覆盖初始模式。
 `.command` 文件是本地开发快捷入口，首次启动请使用上面的完整命令。
