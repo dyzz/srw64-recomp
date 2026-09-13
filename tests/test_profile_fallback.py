@@ -18,12 +18,12 @@ class ProfileFallbackTests(unittest.TestCase):
         self.root = Path(self.temp.name).resolve()
         self.rom = self.root / 'rom.z64'
         self.rom.write_bytes(b'fixture')
-        for locale in ('ja', 'zh-Hans'):
+        for locale in ('ja', 'zh-Hans', 'en'):
             (self.root / f'{locale}.json').write_text(json.dumps({
                 'schema': 'srw64.locale.v1', 'locale': locale, 'source_locale': 'ja',
                 'font': f'font-{locale}', 'entries': [], 'ui': {key: locale for key in UI_KEYS}}))
         self.profile = {'presentation': {'locale': 'zh-Hans', 'images': 'original', 'font_size': 13},
-                        'locales': {'ja': 'ja.json', 'zh-Hans': 'zh-Hans.json'}, 'art_pack': 'missing.json'}
+                        'locales': {'ja': 'ja.json', 'zh-Hans': 'zh-Hans.json', 'en': 'en.json'}, 'art_pack': 'missing.json'}
 
     def prepare(self, name_mock):
         with patch('srw64_native.profile.source_catalog', return_value=({}, {}, {})), \
@@ -31,7 +31,7 @@ class ProfileFallbackTests(unittest.TestCase):
             return prepare_profile(self.root, self.profile, self.rom, self.root / 'out')
 
     def test_original_missing_art_retains_each_language_and_font(self):
-        for locale in ('ja', 'zh-Hans'):
+        for locale in ('ja', 'zh-Hans', 'en'):
             with self.subTest(locale=locale), tempfile.TemporaryDirectory() as tmp:
                 from unittest.mock import Mock
                 names = Mock(return_value={'portraits': {}})
@@ -47,8 +47,8 @@ class ProfileFallbackTests(unittest.TestCase):
                 self.assertEqual(data['config']['locale'], locale)
                 self.assertEqual(data['config']['font'], f'font-{locale}')
                 self.assertEqual(data['ui']['name_title'], locale)
-                self.assertEqual(set(data['locale_catalogs']), {'ja', 'zh-Hans'})
-                for target in ('ja', 'zh-Hans'):
+                self.assertEqual(set(data['locale_catalogs']), {'ja', 'zh-Hans', 'en'})
+                for target in ('ja', 'zh-Hans', 'en'):
                     bundle = data['locale_catalogs'][target]
                     self.assertEqual(bundle['config']['locale'], target)
                     self.assertEqual(bundle['config']['font'], f'font-{target}')

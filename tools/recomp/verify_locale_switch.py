@@ -17,6 +17,7 @@ import time
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('output', type=Path)
+    parser.add_argument('--locale-order', nargs='+', default=['ja', 'zh-Hans', 'en'])
     args = parser.parse_args()
     output = args.output.resolve()
     deadline = time.monotonic() + 180
@@ -70,15 +71,22 @@ def main() -> int:
     event, count = state['event'], state['history_entries']
     assert any(e['complete'] and e['text'] for e in state['history'])
     results = []
-    for index, locale in enumerate(['ja', 'zh-Hans', 'ja', 'zh-Hans']):
+    initial_locale = state['locale']
+    order = args.locale_order
+    start = order.index(initial_locale)
+    expected = [order[(start + i + 1) % len(order)] for i in range(2 * len(order))]
+    histories = {}
+    for index, locale in enumerate(expected):
         previous_request = read('settings-result.json').get('request', 0)
         ui = command()
         assert not ui['sheet_open']
         result = wait(lambda: (d if (d := read('settings-result.json')).get('request', 0) > previous_request else None))
         assert result['saved'] and not result['error'] and result['locale'] == locale, result
+        assert read('presentation-settings.json')['locale'] == locale
         state = wait(lambda: (d if (d := read('dialogue-state.json')).get('locale') == locale else None))
         assert state['event'] == event and state['history_entries'] == count
         assert state['history_open'] and not state['automatic'] and not state['skipping']
+        histories[locale] = next(e['text'] for e in state['history'] if e['complete'] and e['text'])
         present = wait(lambda: (d if (d := read('dialogue-present.json')).get('locale') == locale and d.get('history_open') else None))
         assert present['reading_event'] == event
         (output / f'locale-{index}-{locale}-reader.json').write_text(json.dumps(state, ensure_ascii=False, indent=2))
@@ -90,10 +98,10 @@ def main() -> int:
         (output / f'locale-{index}-{locale}.png').write_bytes(frame.with_suffix('.png').read_bytes())
         if index == 0:
             subprocess.run(['screencapture', '-x', '-l', str(ui['window_id']),
-                            str(output / 'hotkey-ja-window.png')], check=True)
+                            str(output / f'hotkey-{locale}-window.png')], check=True)
         results.append({'locale': locale, 'event': event, 'history_entries': count,
                         'request': result['request'], 'source_frame': frame.name})
-    assert read('locale-0-ja-reader.json')['history'][0]['text'] != read('locale-1-zh-Hans-reader.json')['history'][0]['text']
+    assert len(set(histories.values())) == len(order), histories
     # Auto-repeat and application shortcuts are not fresh bare F7 presses.
     previous = read('presentation-settings.json')
     request = read('settings-result.json')['request']
@@ -101,13 +109,14 @@ def main() -> int:
         ui=command(**options)
         assert ui['request']==request and not ui['sheet_open']
     assert read('presentation-settings.json') == previous
-    assert read('dialogue-state.json')['locale'] == 'zh-Hans'
+    assert read('dialogue-state.json')['locale'] == initial_locale
     before = {d['argument']: d for p in output.glob('state-*-locale-before.json') if (d := read(p.name))}
     after = {d['argument']: d for p in output.glob('state-*-locale-after.json') if (d := read(p.name))}
     assert len(before) == len(after) == len(results)
     assert all(before[k]['regions'] == after[k]['regions'] for k in before)
     verification = {'schema': 'srw64.hot-locale-verification.v1', 'switches': results,
         'hotkey': 'F7', 'no_popup': True, 'repeat_and_modified_hotkeys_ignored': True,
+        'locale_order': order, 'each_locale_persisted': True,
         'same_fragment_and_history_count': True,
         'completed_history_retranslated': True, 'observed_game_regions_unchanged_during_commit': True,
         'full_game_state_coverage': False, 'gameplay_clock_rule': 'original timing preserved'}

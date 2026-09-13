@@ -56,6 +56,20 @@ int main() {
     assert(rejected && catalog().locale=="ja");
     std::thread rendering([&]{Scope frame(old_frame);for(int i=0;i<10000;++i)assert(catalog().ui("manual")=="Manual");});
     for(int i=0;i<10000;++i)activate(find(i%2?"ja":"en"));rendering.join();
+    auto chinese=japanese;chinese["config"]["locale"]="zh-Hans";chinese["ui"]["manual"]="手动";
+    data["locale_catalogs"]["zh-Hans"]={{"config",chinese["config"]},{"entries",{{"base:t00_00042","译文<END>"}}},{"ui",chinese["ui"]}};
+    data["locale_options"]={{{"locale","ja"},{"label","日本語"}},{{"locale","zh-Hans"},{"label","简体中文"}},{{"locale","en"},{"label","English"}}};
+    initialize(data);
+    assert(next_locale("ja")=="zh-Hans" && next_locale("zh-Hans")=="en" && next_locale("en")=="ja");
+    assert(display_name("en")=="English" && language_choices()=="日本語 / 简体中文 / English");
+    for(const auto* locale:{"ja","zh-Hans","en"}) {
+        activate(find(locale));assert(*catalog().resolve(TextKey::base(1,42))=="別表<END>");
+    }
+    auto invalid=data;invalid["locale_options"].erase(1);
+    rejected=false;try{initialize(invalid);}catch(const std::runtime_error&){rejected=true;}
+    assert(rejected && catalog().locale=="en" && next_locale("ja")=="zh-Hans");
+    // Older one-language probes remain usable without a cycle manifest.
+    auto single=japanese;initialize(single);assert(next_locale("ja")=="ja");
     assert(srw64::game_adapter::standard_dialogue_key(42).value=="base:t00_00042");
     assert(!srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x00FC0000));
     assert(srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x01F80000));

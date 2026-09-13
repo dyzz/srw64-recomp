@@ -2,6 +2,8 @@
 #include <cstdio>
 #include <stdexcept>
 #include <atomic>
+#include <algorithm>
+#include <vector>
 
 namespace srw64::localization {
 TextKey TextKey::base(uint16_t table,uint16_t id) {
@@ -38,6 +40,8 @@ std::string Catalog::ui(const std::string& key) const {
 }
 namespace {
 std::map<std::string,Snapshot> catalogs;
+std::vector<std::string> locale_order;
+std::map<std::string,std::string> locale_names;
 Snapshot active=std::make_shared<const Catalog>();
 thread_local Snapshot scoped;
 }
@@ -49,6 +53,19 @@ const Catalog& catalog() {
 }
 Snapshot find(const std::string& locale){auto it=catalogs.find(locale);return it==catalogs.end()?nullptr:it->second;}
 const std::map<std::string,Snapshot>& registered(){return catalogs;}
+std::string next_locale(const std::string& current) {
+    auto it=std::find(locale_order.begin(),locale_order.end(),current);
+    if(it==locale_order.end())throw std::runtime_error("Current locale is unavailable");
+    return ++it==locale_order.end()?locale_order.front():*it;
+}
+std::string display_name(const std::string& locale) {
+    auto it=locale_names.find(locale);return it==locale_names.end()?locale:it->second;
+}
+std::string language_choices() {
+    std::string result;
+    for(const auto& locale:locale_order){if(!result.empty())result+=" / ";result+=display_name(locale);}
+    return result;
+}
 void activate(Snapshot value){if(!value)throw std::runtime_error("Unknown locale");std::atomic_store(&active,std::move(value));}
 void initialize(const nlohmann::json& data) {
     std::map<std::string,Snapshot> next;
@@ -65,7 +82,20 @@ void initialize(const nlohmann::json& data) {
     }
     const auto selected=data.at("config").value("locale","zh-Hans");
     if(!next.contains(selected))throw std::runtime_error("Selected locale is unavailable");
-    catalogs=std::move(next);activate(catalogs.at(selected));
+    std::vector<std::string> order;
+    std::map<std::string,std::string> names;
+    if(data.contains("locale_options")) {
+        for(const auto& option:data.at("locale_options")) {
+            const auto locale=option.at("locale").get<std::string>();
+            if(!next.contains(locale) || names.contains(locale))throw std::runtime_error("Invalid locale cycle");
+            order.push_back(locale);names.emplace(locale,option.value("label",locale));
+        }
+        if(order.size()!=next.size())throw std::runtime_error("Incomplete locale cycle");
+    } else {
+        for(const auto& [locale,value]:next){order.push_back(locale);names.emplace(locale,locale);}
+    }
+    catalogs=std::move(next);locale_order=std::move(order);locale_names=std::move(names);
+    activate(catalogs.at(selected));
 }
 Scope::Scope(Snapshot value):previous(scoped){if(value)scoped=std::move(value);}
 Scope::~Scope(){scoped=std::move(previous);}

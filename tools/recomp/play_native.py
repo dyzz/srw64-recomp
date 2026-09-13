@@ -79,7 +79,7 @@ def main() -> int:
             args.language = selected_locale(directory / "presentation.json", profile["locales"],
                                             profile["presentation"]["locale"], args.language)
             profile["presentation"]["locale"] = args.language
-            print(f"语言：{profile['presentation']['locale']}；画面：{profile['presentation']['images']}；F7：中文 / 日文热切换（自动记住）；HD 资源齐全时可用 F6 切换图片与 5600 模型。", flush=True)
+            print(f"语言：{profile['presentation']['locale']}；画面：{profile['presentation']['images']}；F7：循环切换语言（自动记住）；HD 资源齐全时可用 F6 切换图片与 5600 模型。", flush=True)
         if args.profile:
             print("剧情：↑/↓调自动速度；X恢复手动；E+Z按住快进；E+Enter跳过当前段；Q回看；I/K调字号。", flush=True)
         if args.new_game:

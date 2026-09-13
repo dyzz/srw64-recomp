@@ -161,10 +161,10 @@ class SaveHistoryTests(unittest.TestCase):
         module = self.launcher()
         settings = self.root / 'build/recomp/profile-play/presentation.json'
         settings.parent.mkdir(parents=True)
-        settings.write_text(json.dumps({'schema': 'srw64.presentation-settings.v1', 'locale': 'ja'}))
-        profile = {'locales': {'ja': 'ja.json', 'zh-Hans': 'zh.json'},
+        settings.write_text(json.dumps({'schema': 'srw64.presentation-settings.v1', 'locale': 'en'}))
+        profile = {'locales': {'ja': 'ja.json', 'zh-Hans': 'zh.json', 'en': 'en.json'},
                    'presentation': {'locale': 'zh-Hans', 'images': 'original'}}
-        for override, expected in [([], 'ja'), (['--language', 'zh-Hans'], 'zh-Hans')]:
+        for override, expected in [([], 'en'), (['--language', 'zh-Hans'], 'zh-Hans'), (['--language', 'ja'], 'ja')]:
             with patch('sys.argv', ['play_native.py', '--new-game', '--mute', '--profile', 'profile.json', *override]), \
                  patch('srw64_native.profile.load_profile', return_value=profile), \
                  patch.object(module.subprocess, 'run', return_value=Mock(returncode=0)) as run:
@@ -172,4 +172,4 @@ class SaveHistoryTests(unittest.TestCase):
             command = run.call_args.args[0]
             self.assertEqual(command[command.index('--language')+1], expected)
             self.assertEqual(Path(command[command.index('--presentation-settings')+1]), settings)
-            self.assertEqual(json.loads(settings.read_text())['locale'], 'ja')
+            self.assertEqual(json.loads(settings.read_text())['locale'], 'en')
