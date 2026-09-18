@@ -61,7 +61,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test
+recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -94,6 +94,24 @@ recomp-script-inject-test:
 	mkdir -p build/recomp/script-inject
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib tests/native_script_inject.cpp -o build/recomp/script-inject/test
 	rm -rf build/recomp/script-inject/test-run && build/recomp/script-inject/test build/recomp/script-inject/test-run
+
+.PHONY: recomp-upgrade-rules-test
+recomp-upgrade-rules-test:
+	mkdir -p build/recomp/upgrade-rules-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_upgrade_rules.cpp -o build/recomp/upgrade-rules-test/test
+	rm -rf build/recomp/upgrade-rules-test/test-run && build/recomp/upgrade-rules-test/test build/recomp/upgrade-rules-test/test-run $(ROM)
+
+.PHONY: recomp-rule-fixes-test
+recomp-rule-fixes-test:
+	mkdir -p build/recomp/rule-fixes-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_rule_fixes.cpp -o build/recomp/rule-fixes-test/test
+	rm -rf build/recomp/rule-fixes-test/test-run && build/recomp/rule-fixes-test/test build/recomp/rule-fixes-test/test-run
+
+.PHONY: recomp-base-fixes-test
+recomp-base-fixes-test:
+	mkdir -p build/recomp/base-fixes-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Itools/recomp/native-host -Ibuild/recomp/upstream/N64Recomp/include tests/native_base_fixes.cpp -o build/recomp/base-fixes-test/test
+	build/recomp/base-fixes-test/test
 
 .PHONY: recomp-mini-stage-test
 recomp-mini-stage-test:

@@ -1,0 +1,641 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "rules-battle as a new game (the run's --save-from SRAM is not loaded): dense-input's title and name sequence, then at VI 4800 up, A (map menu), A (フェイズ終了), A (はい), then an A press every 90 VI to accept counterattacks during the enemy phase.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 240,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 360,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 500,
+      "button": "r",
+      "duration": 180
+    },
+    {
+      "vi": 500,
+      "button": "start",
+      "duration": 180
+    },
+    {
+      "vi": 960,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1080,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1200,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1350,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1380,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1410,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1440,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1470,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1500,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1530,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1560,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1590,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1620,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1650,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1950,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1980,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2010,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2040,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2070,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2100,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2130,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2160,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2190,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2220,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2250,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2520,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3100,
+      "button": "r",
+      "duration": 300
+    },
+    {
+      "vi": 3100,
+      "button": "start",
+      "duration": 300
+    },
+    {
+      "vi": 3400,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3520,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3640,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3760,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3880,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4000,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4060,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4120,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4240,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4360,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4800,
+      "button": "up",
+      "duration": 4
+    },
+    {
+      "vi": 4900,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5000,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5400,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5490,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5670,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5760,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5850,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6030,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6120,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6210,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6390,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6480,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6570,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6660,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6750,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6840,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6930,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7020,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7110,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7200,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7290,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7380,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7470,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7560,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7650,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7740,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7830,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7920,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8010,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8190,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8280,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8370,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8550,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8640,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8730,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8910,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9000,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9090,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9270,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9360,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9450,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9540,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9630,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9720,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9810,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9900,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9990,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10080,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10170,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10260,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10350,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10440,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10530,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10620,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10710,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10800,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10890,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10980,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11070,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11160,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11250,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11340,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11430,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11520,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11610,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11790,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11880,
+      "button": "a",
+      "duration": 4
+    }
+  ]
+}

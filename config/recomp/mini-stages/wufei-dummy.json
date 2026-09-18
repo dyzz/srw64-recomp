@@ -1,0 +1,304 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "wufei-dummy",
+  "note": "BUG05 (docs/base-fixes.md) end to end, in one stage and without editing a save. Turn 1: 五飛 fights on the player side (アルトロンガンダム, level offset 60) with three ドール next to him; each counterattack that destroys one raises his kills — the pilot record +0x14 and the Wing backup 801614E8 (801FB374, 800A4FBC). The turn-2 event then does what the original scripts do when he defects: 3D5A 91,0,115,4000 removes pilot and unit (800AA62C clears the record), and 3D45 2 brings him back from his own 決戦宙域 前 record (side 1, behaviour 0, no dummy bit) together with グレミー from アクシズの攻固 前 (behaviour bit 14, extra 3) as a control. For side 1 the pilot record +0x14 is the dummy count (801F6E3C), so the capture after 3D45 2 shows グレミー at 3 and, in the original, 五飛 at his kill count; with the base fix in place 五飛 reads 0. タケル sits away from the fight as the camera anchor so wufei-dummy-input.json can end the player phase.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 5,
+      "y": 8,
+      "level_offset": 60,
+      "faction": 0,
+      "note": "タケル / ガイヤー — camera anchor, and the one who attacks 五飛 afterwards"
+    },
+    {
+      "template": "base:stage_deployments:001ea998",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "unit": 115,
+      "level_offset": 60,
+      "faction": 0,
+      "note": "五飛 on the player side"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 10,
+      "y": 7,
+      "unit": 269,
+      "faction": 1,
+      "note": "ドール — attacks 五飛"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 11,
+      "y": 8,
+      "unit": 269,
+      "faction": 1,
+      "note": "ドール"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 10,
+      "y": 9,
+      "unit": 269,
+      "faction": 1,
+      "note": "ドール"
+    },
+    {
+      "template": "base:stage_deployments:00202a0c",
+      "group": 2,
+      "x": 6,
+      "y": 8,
+      "faction": 1,
+      "note": "五飛 / アルトロンガンダム — 決戦宙域 前 record, behaviour 0; next to タケル so he attacks in the second enemy phase"
+    },
+    {
+      "template": "base:stage_deployments:0020332c",
+      "group": 2,
+      "x": 14,
+      "y": 12,
+      "faction": 1,
+      "note": "グレミー / クインマンサ — behaviour 0x4000, extra 3; stays away as the untouched control"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: 五飛 on the player side, kills 0"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on タケル"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-2",
+      "type": 0,
+      "header": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: kills after the first enemy phase"
+        },
+        {
+          "op": "3D46",
+          "args": [
+            91,
+            1
+          ],
+          "note": "off the map first — 3D5A 4000 on a deployed unit leaves the roster slot pointing at freed records"
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            91,
+            0,
+            115,
+            4000
+          ],
+          "note": "五飛 leaves, pilot record cleared"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: record gone"
+        },
+        {
+          "op": "3D45",
+          "args": [
+            2
+          ],
+          "note": "五飛 returns as an enemy, with グレミー as the control"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: dummy counts"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera back on タケル for the second phase end"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "name": "turn-3",
+      "type": 0,
+      "header": [
+        2,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: dummy counts after 五飛 attacked and タケル counterattacked"
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            91,
+            0,
+            115,
+            500
+          ],
+          "note": "he rejoins, as the original does after 決戦宙域 後 and 生と死の未来"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "capture: the new player record must get his kills back, fix or no fix"
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

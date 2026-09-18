@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def main() -> int:
+    from srw64_native import rule_settings
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--profile", type=Path, help="unified original-ROM presentation profile")
@@ -29,6 +30,13 @@ def main() -> int:
     parser.add_argument("--mute", action="store_true", help="disable audio output for testing")
     parser.add_argument("--mini-stage", type=Path, help="compile this mini stage and substitute it for the first stage of a new game; F8 on the main menu starts it")
     parser.add_argument("--resolution-scale", type=int, choices=range(1, 9), help="internal resolution multiplier, 1..8; text size and layout stay the same")
+    rules = parser.add_mutually_exclusive_group()
+    rules.add_argument("--rules", choices=("original", "fixed", "all"), help="original rules, the bug-fix rules, or those plus the difficulty choices (docs/rule-fixes.md); a first launch uses fixed, and the choice is remembered")
+    rules.add_argument("--rule-fixes", metavar="IDS",
+                       help=f"comma-separated subset of {', '.join(rule_settings.RULE_FIXES)} ('' for none); remembered for later launches")
+    parser.add_argument("--upgrade-rules", type=Path, metavar="PATH",
+                        help="upgrade increments, prices, caps and weapon types (docs/upgrade-limits.md); "
+                             "tools/recomp/upgrade_rules.py export writes a template. Not remembered")
     args = parser.parse_args()
     if (args.language or args.images) and not args.profile:
         parser.error("--language and --images require --profile")
@@ -60,6 +68,11 @@ def main() -> int:
             print("已有试玩窗口正在运行，请先关闭那个窗口。", file=sys.stderr)
             return 1
         sessions.mkdir(exist_ok=True)
+        try:
+            rule_fixes = rule_settings.select(directory / "rules.json", args.rules, args.rule_fixes)
+        except ValueError as error:
+            print(f"规则设置无效：{error}", file=sys.stderr)
+            return 1
         chosen = None
         skipped = []
         if args.new_game:
@@ -84,6 +97,7 @@ def main() -> int:
             print(f"语言：{profile['presentation']['locale']}；画面：{profile['presentation']['images']}；F7：循环切换语言（自动记住）；HD 资源齐全时可用 F6 切换图片与 5600 模型。", flush=True)
         if args.profile:
             print("剧情：↑/↓调自动速度；X恢复手动；E+Z按住快进；E+Enter跳过当前段；Q回看；I/K调字号。", flush=True)
+        print(f"规则：{rule_settings.describe(rule_fixes)}。菜单栏「选项 → 游戏性调整」或「设置…」里可随时逐项开关（立即生效并记住）；--rules original 可回到原版规则。", flush=True)
         if args.new_game:
             print("选择 New Game → 女性超级系，使用默认姓名进入第一话开场。", flush=True)
         else:
@@ -93,6 +107,12 @@ def main() -> int:
             print(f"跳过会话 {row.session}：{row.reason}", flush=True)
         if chosen is not None:
             print(f"选择 {chosen.session}：{chosen.reason}。游戏内槽位仍由原游戏校验。", flush=True)
+            # The frozen initial backup predates the setting and used the original rules.
+            played = () if chosen.session == "initial" else rule_settings.recorded(sessions / chosen.session / "report.json")
+            if played is None:
+                print("注意：读不到该会话记录的规则设置。", flush=True)
+            elif played != rule_fixes:
+                print(f"注意：该存档上次按不同规则游玩（{rule_settings.describe(played)}）；本次按当前规则运行，存档格式不受影响。", flush=True)
             try:
                 source = stage_selection(output, chosen, skipped)
             except (OSError, SaveHistoryError) as error:
@@ -104,6 +124,18 @@ def main() -> int:
             "--output", str(output),
         ]
         environment = dict(os.environ)
+        environment["SRW64_RULE_FIXES"] = ",".join(rule_fixes)
+        environment.pop("SRW64_UPGRADE_RULES", None)
+        if args.upgrade_rules:
+            from srw64_native import upgrade_rules
+            try:
+                summary = upgrade_rules.report(args.upgrade_rules.resolve())
+            except ValueError as error:
+                print(f"升级规则文件无效：{error}", file=sys.stderr)
+                return 1
+            environment["SRW64_UPGRADE_RULES"] = summary["path"]
+            print(f"升级规则文件：{summary['path']}（五项 {summary['stats'] or '原版'}，武器类型 {summary['weapon_types'] or '原版'}，"
+                  f"上限覆盖 {summary['unit_caps']} 台，武器类型覆盖 {summary['weapon_type_overrides']} 件）", flush=True)
         if args.mini_stage:
             sys.path.insert(0, str(ROOT / "tools/recomp"))
             from mini_stage import compile_stage
@@ -115,7 +147,8 @@ def main() -> int:
         if not args.mute:
             command.append("--audio")
         if args.profile:
-            command += ["--profile", str(args.profile.resolve()), "--presentation-settings", str(directory / "presentation.json")]
+            command += ["--profile", str(args.profile.resolve()), "--presentation-settings", str(directory / "presentation.json"),
+                        "--rule-settings", str(directory / "rules.json")]
             if args.language:
                 command += ["--language", args.language]
             if args.images:

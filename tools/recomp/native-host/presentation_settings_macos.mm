@@ -41,15 +41,17 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     const int directory=::open(path.parent_path().c_str(),O_RDONLY);
     if(directory>=0){fsync(directory);close(directory);}
 }
-void toggle() {
+void apply(const std::string& locale) {
     if(applying || release_gate.pending() || destination.empty())return;
     try {
-        applying_locale=localization::next_locale(localization::catalog().locale);
+        applying_locale=locale;
         applying_request=dialogue::request_locale(applying_locale);
         release_gate.hold();awaiting_release=true;applying=true;last_error.clear();
     } catch(const std::exception& error) {last_error=error.what();}
 }
+void toggle(){apply(localization::next_locale(localization::catalog().locale));}
 }
+void request_locale(const std::string& locale){apply(locale);}
 bool owns_input(){return applying.load() || awaiting_release.load() || release_gate.pending();}
 uint32_t filter_input(uint32_t input){return release_gate.filter(input,applying,awaiting_release);}
 void release_input_when(bool all_keys_released){if(!applying && all_keys_released)awaiting_release=false;}

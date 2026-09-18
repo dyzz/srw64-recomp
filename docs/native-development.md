@@ -126,6 +126,11 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 | `SRW64_MINI_STAGE_CAPTURE=1` | 配合 `SRW64_STATE_PROBE=1`：迷你关卡被替换事件的每个指令边界存一份区域快照 `state-N-mini-stage-command.json`（`argument` 为相对事件块的偏移），使 0 VI 完成、无画面变化的字段写入类指令也有前后对照。宿主只读脚本 PC。见[迷你关卡](mini-stage.md)。 |
 | `SRW64_MINI_STAGE_EXIT_AFTER=<操作码>` | 十六进制脚本操作码。被替换事件中该操作码一经到达，运行在宽限期后结束，不再耗完 VI 预算。验证一条指令只需要它前后那一段。 |
 | `SRW64_MINI_STAGE_EXIT_GRACE=<vi>` | 上面的宽限 VI 数，默认 300：让该指令的效果和其后若干帧仍被采到。 |
+| `SRW64_RULE_FIXES=<id,…>` | 启动时启用的可选规则修正（ID 见 `rule_settings.RULE_FIXES`）；运行中可由菜单栏「选项 → 游戏性调整」或设置窗口改变。未知 ID 使启动失败。宿主写 `rule-fixes.json`，报告记 `rule_fixes`。试玩用 `play_native.py --rules/--rule-fixes`。见[可选规则修正](rule-fixes.md)。 |
+| `SRW64_RULE_SETTINGS=<rules.json>` | 游戏中「选项 → 游戏性调整」或设置窗口改动后写回的设置文件（schema `srw64.rule-settings.v1`）；由 `play_native.py` 经 `run_host_probe.py --rule-settings` 传入，未设置时改动只在本次运行有效。 |
+| `SRW64_WINDOW_CONTROL=1` / `rule-control.json` | `{"schema":"srw64.rule-control.v1","sequence":N,"item":"<规则 ID｜defaults｜original｜all>"}`；按下菜单中对应条目，结果与全部条目勾选状态写入 `rule-menu-events.jsonl`。 |
+| `SRW64_WINDOW_CONTROL=1` / `settings-control.json` | `{"schema":"srw64.settings-control.v1","sequence":N,"action":"open｜close｜press","id":"rule:<ID>｜preset:<键>｜locale:<语言>｜images:<original｜hd>"}`；操作设置窗口，结果与全部控件状态写入 `settings-window-events.jsonl`。见[设置窗口](settings-window.md)。 |
+| `SRW64_RULE_PROBE=1` | 第一次停在 `3D38` 且敌我都有单位时，用各组规则调用两个命中率函数并写 `rule-probe.jsonl`；之后两函数的每次调用写 `rule-calls.jsonl`。 |
 | `SRW64_AUDIO_CAPTURE_FROM/_TO=<vi>` | 把 `--audio` 的诊断采集限定在这段 VI 内（默认只留开声后的前 30 秒，对几分钟后才出现的命令没用）。迷你关卡的有界音频运行必须设置 `_TO`。窗口逻辑见 `audio_timing.hpp` 的 `Srw64AudioCaptureWindow`；播放的声音不受影响。 |
 
 每种协议独立维护递增序号；一个运行目录只使用一个控制驱动，完整写入临时文件后原子替换。普通启动器不主动启用这些 QA 开关，开启调试用的环境变量只作用于对应测试命令。
