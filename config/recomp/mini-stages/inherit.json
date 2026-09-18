@@ -1,0 +1,62 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "inherit",
+  "note": "Upgrade inheritance on machine swaps. 3D5A (mode < 2000 or 500) reaches 800AAD28, which takes the predecessor from the fixed table D_800CA3A0 (not from the script's old-machine word), saves its five body levels and every weapon's level, and 800AA8F4 writes weapon levels back only through the global old->new weapon table D_800CB5E8. 3D6C first puts every body item and every weapon of the old machine on the same level, so after the swap a weapon at that level was carried over and a weapon at 0 was not. A: Layzner -> New Layzner, where 1070 flamethrower and 1072 grenade launcher have no table entry although New Layzner has 1057/1059 of the same names. B: Altron -> Altron Custom (the same call the EW upgrade makes), where 470 Dragon Fire has no entry although Custom has 1291 Dragon Fire. C: Albion -> Argama, where 219 anti-air laser maps to 210 anti-air machine gun rather than 211 anti-air laser. D: mode 500 leaves the old machine in the roster; if the pilot is later registered onto the existing successor again, the predecessor is still found and its levels are written over the successor's.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e5c58", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "エイジ / レイズナー — case A"},
+    {"template": "base:stage_deployments:002023ac", "group": 0, "x": 10, "y": 8, "faction": 0, "note": "五飛 / アルトロンガンダム — case B"},
+    {"template": "base:stage_deployments:001e91e8", "group": 0, "x": 12, "y": 8, "faction": 0, "note": "ブライト / アルビオン — case C"},
+    {"template": "base:stage_deployments:001e4a38", "group": 0, "x": 14, "y": 8, "faction": 0, "note": "甲児 / マジンガーZ — case D"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D6C", "args": [273, 5], "note": "A: Layzner body and all weapons to 5"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [201, 0, 270, 273], "note": "A: original call in scenes 39/55/69"},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D6C", "args": [115, 4], "note": "B: Altron body and all weapons to 4"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [91, 0, 116, 115], "note": "B: same arguments shape as the EW call at load_0008F4B0:801CF93C"},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D6C", "args": [53, 3], "note": "C: Albion body and all weapons to 3"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [46, 0, 51, 53], "note": "C: original call in scenes 32/46"},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D6C", "args": [262, 2], "note": "D1: Mazinger Z to 2"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [196, 0, 263, 500], "note": "D2: mode 500 registration (scenes 23/40/64/80); Z stays in the roster"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D6C", "args": [263, 6], "note": "D3: stands in for the player upgrading JS further"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [196, 0, 999, 2000], "note": "D4: pilot leaves, JS stays"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [196, 0, 263, 500], "note": "D5: pilot rejoins onto the existing JS while Z still exists"},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

@@ -9,6 +9,8 @@
 #include "presentation/image_mode.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
+#include "rule_menu.hpp"
+#include "settings_window.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -429,6 +431,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::names::window_init(info.info.cocoa.window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
+    srw64::rule_menu::update();
 #endif
     view = SDL_Metal_CreateView(window);
     if (!view) std::abort();
@@ -441,6 +444,10 @@ void srw64_update_window(void*) {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::update();
     srw64::settings::control(window,capture_directory);
+    srw64::rule_menu::update(); // Installs when the menu bar is ready; follows the language.
+    srw64::rule_menu::control(capture_directory);
+    srw64::settings_window::update();
+    srw64::settings_window::control(capture_directory);
     srw64::names::window_update();
     const bool editing_name=srw64::names::owns_input();
 #else
@@ -524,6 +531,8 @@ void srw64_keyboard_input(uint16_t* buttons, float* x, float* y) {
 void srw64_destroy_window() {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::shutdown();
+    srw64::settings_window::shutdown();
+    srw64::rule_menu::shutdown();
     srw64::names::window_shutdown();
 #endif
     keyboard_state = 0;

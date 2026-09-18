@@ -1,6 +1,7 @@
 #pragma once
 #include <filesystem>
 #include <cstdint>
+#include <string>
 struct SDL_Window;
 namespace srw64::settings {
 void window_init(SDL_Window* window,const std::filesystem::path& output);
@@ -11,4 +12,6 @@ bool failed();
 uint32_t filter_input(uint32_t input);
 void shutdown();
 void control(SDL_Window*,const std::filesystem::path&);
+// Apply and remember one registered locale (the settings window; F7 cycles).
+void request_locale(const std::string& locale);
 }

@@ -16,12 +16,15 @@
 #include "diagnostics.hpp"
 #include "script_inject.hpp"
 #include "mini_stage.hpp"
+#include "rule_fixes.hpp"
+#include "upgrade_rules.hpp"
 #if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
+#include "settings_window.hpp"
 #endif
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
@@ -82,7 +85,10 @@ private:
 void on_init(uint8_t* rdram, recomp_context*) {
     srw64::state_probe::directory=output_dir;
     srw64::mini_stage::configure(output_dir);
+    srw64::rules::configure(output_dir);
     const auto rom=recomp::get_rom();
+    srw64::upgrades::initialize(rom.data(),rom.size());
+    srw64::upgrades::configure(output_dir);
 #if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
 #endif
@@ -91,6 +97,9 @@ void on_init(uint8_t* rdram, recomp_context*) {
     unload_overlays((int32_t)0x80076610, 0x100000);
     load_overlays(0x1000, (int32_t)0x80076610, 0x5AC30);
     loaded_sections = {0};
+    // The runtime has already copied the resident section; a rules file's table
+    // changes go in before any guest code runs.
+    srw64::upgrades::patch_resident(rdram);
 
     // Guest globals initialized by this ROM's osInitialize. The host runtime
     // initializes its own services, so preserve these ROM-visible side effects.
@@ -151,7 +160,8 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *x = *y = 0;
 #if defined(SRW64_WITH_RT64)
     srw64_keyboard_input(buttons, x, y);
-    if(srw64::names::owns_input())*x=*y=0;
+    if(srw64::names::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
+    *buttons = srw64::settings_window::filter_input(*buttons, *buttons != 0);
     *buttons = srw64::names::input(*buttons);
     *buttons = srw64::intro::input(*buttons);
     *buttons = srw64::mini_stage::input(*buttons);
@@ -177,6 +187,7 @@ uint64_t srw64_current_vi() { return vi_count.load(); }
 
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
+    if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
 #if defined(SRW64_WITH_RT64)
     if(srw64::names::read(rom,rdram,ram,size)) {ctx->r2=0;return;}
 #endif
@@ -199,6 +210,7 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
         }
         load_overlays(rom, (int32_t)ram, size);
         loaded_sections.push_back(index);
+        srw64::upgrades::patch_copy(rdram, rom, ram, size);
 #if defined(SRW64_WITH_RT64)
         srw64::intro::overlay_loaded(rom,ram,size);
         srw64::names::overlay_loaded(rom,ram,size);
@@ -207,10 +219,14 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
         std::fprintf(stderr, "SRW64_OVERLAY rom=%08X ram=%08X size=%08X bytes=verified\n", rom, ram, size);
         return;
     }
+    srw64::upgrades::patch_copy(rdram, rom, ram, size);
 }
 
 extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     uint32_t offset,size;
+    if(srw64::upgrades::descriptor(rdram,uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
+        MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;
+    }
 #if defined(SRW64_WITH_RT64)
     if(srw64::names::descriptor(uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
         MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;

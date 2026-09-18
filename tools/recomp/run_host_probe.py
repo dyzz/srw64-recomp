@@ -39,6 +39,7 @@ def main() -> int:
     parser.add_argument("--native-marker", type=Path, help="native GPU model pack for original JP resource 5600")
     parser.add_argument("--profile", type=Path, help="independent locale, art and native model on the original JP ROM")
     parser.add_argument("--presentation-settings", type=Path, help="persistent next-launch locale preferences; requires profile")
+    parser.add_argument("--rule-settings", type=Path, help="rule file the in-game 选项 menu and settings window write back to; requires profile")
     parser.add_argument("--original-name-entry", action="store_true", help="keep the original character grid for reference runs and old N64-input fixtures")
     parser.add_argument("--language", help="override the profile locale")
     parser.add_argument("--images", choices=("original", "hd"), help="initial image mode; F6 toggles during play")
@@ -62,6 +63,8 @@ def main() -> int:
         parser.error("language/images overrides require --profile")
     if args.presentation_settings and not profile:
         parser.error("presentation-settings requires profile")
+    if args.rule_settings and not profile:
+        parser.error("rule-settings requires profile")
     comparison_fixture = None
     if os.environ.get("SRW64_STATE_FIXTURE"):
         if (os.environ.get("SRW64_STATE_PROBE") != "1" or not profile or args.variant != "jp"
@@ -92,6 +95,20 @@ def main() -> int:
             parser.error("a bounded mini stage audio run must set SRW64_AUDIO_CAPTURE_FROM/_TO around the commands being listened to")
         if not Path(os.environ["SRW64_MINI_STAGE"]).is_file():
             parser.error("SRW64_MINI_STAGE must name a compiled mini stage image")
+    from srw64_native import rule_settings
+    try:
+        rule_fixes = rule_settings.parse(os.environ.get("SRW64_RULE_FIXES", ""))
+    except ValueError as error:
+        parser.error(f"SRW64_RULE_FIXES: {error}")
+    from srw64_native import upgrade_rules
+    upgrade_rules_report = None
+    if os.environ.get("SRW64_UPGRADE_RULES"):
+        # The host applies the same checks; failing here keeps a bad file from
+        # costing a build and a boot.
+        try:
+            upgrade_rules_report = upgrade_rules.report(Path(os.environ["SRW64_UPGRADE_RULES"]))
+        except ValueError as error:
+            parser.error(f"SRW64_UPGRADE_RULES: {error}")
     native_marker = None
     if args.native_marker:
         if not args.graphics or args.variant != "jp":
@@ -237,6 +254,9 @@ def main() -> int:
     report["script_inject_enabled"] = os.environ.get("SRW64_SCRIPT_INJECT") == "1"
     report["mini_stage"] = os.environ.get("SRW64_MINI_STAGE")
     report["state_probe_enabled"] = os.environ.get("SRW64_STATE_PROBE") == "1"
+    report["rule_fixes"] = {"rules_version": rule_settings.RULES_VERSION, "enabled": list(rule_fixes)}
+    report["rule_probe_enabled"] = os.environ.get("SRW64_RULE_PROBE") == "1"
+    report["upgrade_rules"] = upgrade_rules_report
     report["comparison_fixture"] = comparison_fixture
     report["frame_trace"] = {"from_vi": os.environ.get("SRW64_FRAME_TRACE_FROM"), "to_vi": os.environ.get("SRW64_FRAME_TRACE_TO")}
     report["native_resolution"] = args.native_resolution
@@ -255,8 +275,9 @@ def main() -> int:
                    "SRW64_DIAGNOSTICS": diagnostics,
                    "SRW64_ROM_VARIANT": args.variant,
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
-                   "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0"}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS"):
+                   "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
+                   "SRW64_RULE_FIXES": ",".join(rule_fixes)}
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
@@ -264,6 +285,9 @@ def main() -> int:
         environment["SRW64_DIALOGUE_DATA"] = report["native_dialogue"]["path"]
         environment["SRW64_PRESENTATION_SETTINGS"] = str(args.presentation_settings.resolve() if args.presentation_settings else output / "presentation-settings.json")
         report["presentation_settings_path"] = environment["SRW64_PRESENTATION_SETTINGS"]
+        if args.rule_settings:
+            environment["SRW64_RULE_SETTINGS"] = str(args.rule_settings.resolve())
+            report["rule_settings_path"] = environment["SRW64_RULE_SETTINGS"]
     if comparison_fixture:
         environment["SRW64_STATE_FIXTURE"] = comparison_fixture["path"]
         if digest(Path(comparison_fixture["path"])) != comparison_fixture["sha256"]:
@@ -295,6 +319,9 @@ def main() -> int:
         if save_path.exists():
             report["final_save"] = {"path": str(save_path), "size": save_path.stat().st_size,
                                     "sha256": digest(save_path)}
+        rule_changes = output / "rule-fixes-events.jsonl"
+        if rule_changes.exists():
+            report["rule_fix_changes"] = [json.loads(line) for line in rule_changes.read_text().splitlines()]
         control_events = output / "control-events.jsonl"
         if control_events.exists():
             report["live_control"] = {"events_path": str(control_events), "events_sha256": digest(control_events),
