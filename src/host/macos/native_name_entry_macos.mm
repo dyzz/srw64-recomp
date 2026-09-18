@@ -1,5 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #include "native_name_entry.hpp"
+#include "debug_protocol.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
 #include "presentation/image_mode.hpp"
@@ -339,6 +340,8 @@ void window_update() {
             const unsigned game_keys[]={0,1,2,6,7,12,13,14,34,37,38,40,36,49,53,123,124,125,126};
             bool held=false;
             if(game_window.isKeyWindow)for(auto key:game_keys)held |= CGEventSourceKeyState(kCGEventSourceStateCombinedSessionState,key);
+            // Keys held through the debug interface count too, focused or not.
+            for(auto key:game_keys)held |= srw64::debug::keyboard().holds_mac_key(key);
             window_claim_input(held);
             if(!held)controller->releasing=false;
             return;

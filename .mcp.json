@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "srw64": {
+      "command": ".venv/bin/python",
+      "args": ["tools/recomp/debug/mcp_server.py"]
+    }
+  }
+}

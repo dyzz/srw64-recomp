@@ -48,6 +48,7 @@
 | `tools/recomp/model5600/` | 5600 模型的高模、原生水滴与对应验证 |
 | `tools/recomp/probes/` | 帧／音频／LZ／CoreText 重放探针、参考模拟器与 RSP 捕获 |
 | `tools/recomp/analysis/` | 帧、脚本、移动与状态对比的离线分析 |
+| `tools/recomp/debug/` | 调试接口的会话客户端、命令行 `srw64ctl.py` 与 MCP 服务器，见[调试接口与 MCP](debug-interface.md) |
 
 子目录共同组成 `recomp` 包：脚本把 `tools/` 加入 `sys.path` 后以 `from recomp.toolchain.analyze_layout import ROOT` 这样的形式互相引用，测试同理。配置目录同样拆分：`config/recomp/` 只放工具链与构建配置，`profiles/` 放试玩档案，`inputs/` 放有界运行的输入脚本（迷你关卡的在 `inputs/mini-stages/`），`mini-stages/` 只放关卡定义。导出的数据与 HD 素材在不入库的 `assets/`，见 [`assets/README.md`](../assets/README.md)。
 
@@ -144,6 +145,7 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 | `SRW64_WINDOW_CONTROL=1` / `rule-control.json` | `{"schema":"srw64.rule-control.v1","sequence":N,"item":"<规则 ID｜defaults｜original｜all>"}`；按下菜单中对应条目，结果与全部条目勾选状态写入 `rule-menu-events.jsonl`。 |
 | `SRW64_WINDOW_CONTROL=1` / `settings-control.json` | `{"schema":"srw64.settings-control.v1","sequence":N,"action":"open｜close｜press","id":"rule:<ID>｜preset:<键>｜locale:<语言>｜images:<original｜hd>"}`；操作设置窗口，结果与全部控件状态写入 `settings-window-events.jsonl`。见[设置窗口](settings-window.md)。 |
 | `SRW64_RULE_PROBE=1` | 第一次停在 `3D38` 且敌我都有单位时，用各组规则调用两个命中率函数并写 `rule-probe.jsonl`；之后两函数的每次调用写 `rule-calls.jsonl`。 |
+| `SRW64_DEBUG=1` / `debug.sock` | 调试接口：宿主在运行目录监听 Unix socket，每行一条 JSON-RPC 2.0（状态、游戏键盘、手柄、截图、原生界面点击/按键/输入、菜单、设置、退出）。一般通过 `tools/recomp/debug/srw64ctl.py` 或 MCP 使用，见[调试接口与 MCP](debug-interface.md)。 |
 | `SRW64_AUDIO_CAPTURE_FROM/_TO=<vi>` | 把 `--audio` 的诊断采集限定在这段 VI 内（默认只留开声后的前 30 秒，对几分钟后才出现的命令没用）。迷你关卡的有界音频运行必须设置 `_TO`。窗口逻辑见 `audio_timing.hpp` 的 `Srw64AudioCaptureWindow`；播放的声音不受影响。 |
 
 每种协议独立维护递增序号；一个运行目录只使用一个控制驱动，完整写入临时文件后原子替换。普通启动器不主动启用这些 QA 开关，开启调试用的环境变量只作用于对应测试命令。
