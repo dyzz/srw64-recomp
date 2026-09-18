@@ -130,6 +130,51 @@
       "status": "approved-for-readme",
       "modified": false,
       "approved_on": "2026-09-13"
+    },
+    {
+      "file": "15-upgrade-cap-break-open.png",
+      "source": "build/recomp/upgrade-check/run-on-2/present-4020.png",
+      "sha256": "4f6c195ca5c76e5f0eb1fb85f46e5a4df2c30be2dff4813e6cea7e33840ce613",
+      "title": "15 · 改造上限突破：打开画面 / Upgrade cap break: screen opened",
+      "caption": "突破开启。ダイターン3 原作上限 7，HP 已在第 7 段：标题显示「最大で15段階まで」，HP 仍可改（费用 16000，9400→9600）；刻度前 7 格为原字形 ▶／▷，后 8 格 ☆ 是突破后可改的段。资金与段数来自受控存档编辑。",
+      "status": "kept-for-showcase",
+      "modified": false
+    },
+    {
+      "file": "16-upgrade-cap-break-stat.png",
+      "source": "build/recomp/upgrade-check/run-on-2/present-5100.png",
+      "sha256": "9665a838ceaf86479b2a7fb8861b3029715406025677467346d54d746258e1bf",
+      "title": "16 · 改造上限突破：五项超过原作上限 / Stat upgraded past the original cap",
+      "caption": "与 15 同一运行。确认后 HP 9600（第 8 段），资金 900000→884000，下一段费用 18000；刻度 7▶ + 1● + 7☆。",
+      "status": "kept-for-showcase",
+      "modified": false
+    },
+    {
+      "file": "17-upgrade-cap-break-weapon.png",
+      "source": "build/recomp/upgrade-check/run-on-2/present-7560.png",
+      "sha256": "483b57900b30da18ce7029db0e5a1e09f1f8035b6ee1d2019cf61f2b8fef6606",
+      "title": "17 · 改造上限突破：武器超过原作上限 / Weapon upgraded past the original cap",
+      "caption": "与 15 同一运行。ダイターンザンバー 从第 7 段升到第 8 段：攻击力 2500、资金 852000、下一段费用 36000，刻度 7▶ + 1● + 7☆。",
+      "status": "kept-for-showcase",
+      "modified": false
+    },
+    {
+      "file": "18-upgrade-over-cap-refused.png",
+      "source": "build/recomp/upgrade-check/run-off-3/present-4200.png",
+      "sha256": "6a1a637d9291d7f7b01334c0650104cd838eed9acbda76e8923008ab60a919fd",
+      "title": "18 · 关闭突破后的超限段数 / Over-cap levels with the rule off",
+      "caption": "突破关闭，HP 已在第 9 段（受控存档编辑）：标题恢复「最大で 7段階まで」，HP 显示 -----，刻度 7▶ + 2●，其他项保持原作 7 格；按 A 提示「これ以上の改造はできません」，资金不变。装甲预览 1800→2300 来自同次运行的升级规则文件。",
+      "status": "kept-for-showcase",
+      "modified": false
+    },
+    {
+      "file": "19-upgrade-rules-file.png",
+      "source": "build/recomp/upgrade-check/run-off-3/present-6060.png",
+      "sha256": "a9f54063d650eff9c989f858ab0babfe3e00adff0e58cc253c124fb8e62d4793",
+      "title": "19 · 升级规则文件 / Upgrade rules file",
+      "caption": "与 18 同一运行。规则文件把スイームルグ 的上限从 11 改为 13、HP 每段价格改为 1234、装甲每段增量改为 +500：标题「最大で13段階まで」，费用 1234，装甲 1400→1900，13 格原字形刻度。",
+      "status": "kept-for-showcase",
+      "modified": false
     }
   ],
   "video": {

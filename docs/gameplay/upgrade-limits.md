@@ -256,7 +256,7 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 
 ### 7.5 实机核对（2026-09-18，有界运行，日文、Original 画面）
 
-用 `tools/recomp/gameplay/upgrade_save.py` 对第一话通关存档做**受控编辑**（资金 900000；ダイターン3 三个形态 HP 段数、ダイターンザンバー 段数），走 `load-intermission-check.json` 的前 9 个输入读档进中断，再逐键操作改造画面。结果与截图在 `build/recomp/upgrade-check/`。
+用 `tools/recomp/gameplay/upgrade_save.py` 对第一话通关存档做**受控编辑**（资金 900000；ダイターン3 三个形态 HP 段数、ダイターンザンバー 段数），走 `load-intermission-check.json` 的前 9 个输入读档进中断，再逐键操作改造画面。下列截图保存在 `docs/media/`（编号 15～19），来源与摘要见[媒体记录](../media/manifest.json)；运行目录本身不保留。
 
 | 运行 | 条件 | 画面所见 |
 | --- | --- | --- |
@@ -264,6 +264,14 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 | `run-off-3` | 突破关；HP 9 段、EN 3 段、ザンバー 9 段；规则文件：HP 价格 1234、装甲每段 +500、スイームルグ 上限 11→13（补丁 91 字节） | ダイターン3 标题「最大で 7段階まで」，HP 显示 `-----`，刻度 7▶ + 2●，EN 刻度保持原作的 7 格；在 HP 上按 A 提示“これ以上の改造はできません”，资金不变；装甲预览 1800→2300，确认后 2300、资金 −3000（原版装甲价），回到列表重算后仍为 2300；スイームルグ 标题「最大で13段階まで」、HP 费用 1234、13 格原字形刻度；ザンバー（9 段）直接提示“これ以上の改造はできません”，资金始终 897000 |
 
 两次运行宿主无失败记录（`report.json` 状态 `native-run-ended-by-control`，退出码 0），运行报告分别记下 `rule_fixes` 与 `upgrade_rules`（文件路径与摘要）。第一次尝试 `run-on-1` 误入新游戏，已丢弃。
+
+| 突破开：打开画面，HP 在原作上限 7 | 突破开：HP 升到第 8 段 |
+| --- | --- |
+| ![突破开启后的改造画面：15 格刻度，前 7 格为原作上限](../media/15-upgrade-cap-break-open.png) | ![HP 超过原作上限后的刻度 7▶ + 1● + 7☆](../media/16-upgrade-cap-break-stat.png) |
+| **突破开：武器升到第 8 段** | **突破关：已超限的 HP 被拒绝** |
+| ![ダイターンザンバー 超过原作上限](../media/17-upgrade-cap-break-weapon.png) | ![关闭突破后提示これ以上の改造はできません](../media/18-upgrade-over-cap-refused.png) |
+| **规则文件：スイームルグ 上限 13、HP 价格 1234、装甲 +500** | |
+| ![升级规则文件生效后的スイームルグ](../media/19-upgrade-rules-file.png) | |
 
 ### 7.6 限制与二期
 
