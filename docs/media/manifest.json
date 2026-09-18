@@ -146,7 +146,7 @@
       "sha256": "9665a838ceaf86479b2a7fb8861b3029715406025677467346d54d746258e1bf",
       "title": "16 · 改造上限突破：五项超过原作上限 / Stat upgraded past the original cap",
       "caption": "与 15 同一运行。确认后 HP 9600（第 8 段），资金 900000→884000，下一段费用 18000；刻度 7▶ + 1● + 7☆。",
-      "status": "kept-for-showcase",
+      "status": "approved-for-readme",
       "modified": false
     },
     {
@@ -155,7 +155,7 @@
       "sha256": "483b57900b30da18ce7029db0e5a1e09f1f8035b6ee1d2019cf61f2b8fef6606",
       "title": "17 · 改造上限突破：武器超过原作上限 / Weapon upgraded past the original cap",
       "caption": "与 15 同一运行。ダイターンザンバー 从第 7 段升到第 8 段：攻击力 2500、资金 852000、下一段费用 36000，刻度 7▶ + 1● + 7☆。",
-      "status": "kept-for-showcase",
+      "status": "approved-for-readme",
       "modified": false
     },
     {
@@ -209,6 +209,24 @@
       "sha256": "fbba1b577fea204d0f7005b245e083ecd0e4e7a94f978584ae245f903f4a4d37",
       "title": "23 · 回看里的退款记录 / Refund lines in the dialogue history",
       "caption": "同一迷你关卡的另一次运行（20260918T141738.909639Z，1280×960）：四条退款以强调色列在对白之前，没有说话人；F7 切换语言时随之切换。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "24-settings-en.png",
+      "source": "build/recomp/debug/media-2026-09-18/settings-en.png",
+      "sha256": "4aeb28de133b5c1d6015b9c708a078ec7e5f1d180bbb332d440dfa6c767a50dd",
+      "title": "24 · 设置窗口（英文）/ Settings window (English)",
+      "caption": "调试接口实拍（运行 20260918T145421.762889Z）：菜单栏 Options → Settings… 打开的窗口，经 AppKit 渲染（不含标题栏）。默认规则：修正全开、难度调整全关。宽度按最长一行（英文的三个预设按钮）自动放宽。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "25-settings-zh.png",
+      "source": "build/recomp/debug/media-2026-09-18/settings-zh.png",
+      "sha256": "f66661259cf4a7282a299083a1272c53c5a4dfeeb67ec00ce18f3b907aa961f9",
+      "title": "25 · 设置窗口（中文）/ Settings window (Chinese)",
+      "caption": "与 24 同一运行：在窗口里点选「简体中文」后，窗口与游戏同时切换语言，标题重取、宽度重新适配。",
       "status": "approved-for-readme",
       "modified": false
     }

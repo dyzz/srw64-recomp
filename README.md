@@ -107,6 +107,37 @@ dialogue history keeps a line in every language. / 开启难度调整「离队�
 </details>
 
 <details open>
+<summary><strong>Options and settings window · 选项与设置窗口</strong></summary>
+
+**Options → Settings…** (**⌘,**) opens one window for the rule corrections,
+difficulty options, language and artwork; every change applies at once and is
+remembered. / 菜单栏「选项 → 设置…」（**⌘,**）在一个窗口里切换规则修正、难度调整、语言和画面，
+改动立即生效并记住。
+
+| English | 简体中文 |
+| --- | --- |
+| ![Settings window in English / 英文设置窗口](docs/media/24-settings-en.png) | ![Settings window in Chinese / 中文设置窗口](docs/media/25-settings-zh.png) |
+
+</details>
+
+<details open>
+<summary><strong>Upgrade cap break · 改造上限突破</strong></summary>
+
+With the **upgrade cap** difficulty option, every unit can be upgraded to 15
+levels. The gauges keep the original cells (▶▷) and mark the extra ones (●☆);
+EW conversions, bonus weapons and sale prices still follow the original cap.
+An optional rules file also changes increments, prices and caps
+([upgrade limits](docs/gameplay/upgrade-limits.md)). / 开启难度调整「改造上限突破」后所有机体
+可改到 15 段，刻度保留原作的格子（▶▷），超出部分以 ●☆ 标出；EW 换装、满改追加武器与出售价仍按原作
+上限。可选的规则文件还能修改每段增量、价格和上限（见[改造段数与上限](docs/gameplay/upgrade-limits.md)）。
+
+| Stats past the original cap / 五项超过原作上限 | A weapon past the original cap / 武器超过原作上限 |
+| --- | --- |
+| ![HP upgraded to level 8 of 15 on Daitarn 3 / ダイターン3 的 HP 升到 15 段中的第 8 段](docs/media/16-upgrade-cap-break-stat.png) | ![Daitarn Zamber upgraded past its original cap / ダイターンザンバー 超过原作上限](docs/media/17-upgrade-cap-break-weapon.png) |
+
+</details>
+
+<details open>
 <summary><strong>Japanese / Chinese history comparison · 中日文回看对照</strong></summary>
 
 Twelve dialogue fragments were read through normal confirmation before opening
