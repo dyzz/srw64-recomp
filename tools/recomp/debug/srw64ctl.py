@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Command line for the native host's debug interface (docs/debug-interface.md).
+"""Command line for the native host's debug interface (docs/guide/debug-interface.md).
 
   srw64ctl.py launch [--language zh-Hans] [--images original] [--rules fixed] [--reuse-build]
   srw64ctl.py status [--history]

@@ -1,4 +1,4 @@
-"""BUG05: an enemy 五飛's dummy count is his player kill count (docs/base-fixes.md)."""
+"""BUG05: an enemy 五飛's dummy count is his player kill count (docs/gameplay/base-fixes.md)."""
 from __future__ import annotations
 
 import json

@@ -14,7 +14,7 @@
 
 uint64_t srw64_current_vi();
 
-// Optional rules (docs/rule-fixes.md): corrections for original defects and
+// Optional rules (docs/gameplay/rule-fixes.md): corrections for original defects and
 // difficulty options. SRW64_RULE_FIXES gives the set a run starts with, and the
 // 选项 menu or the settings window can change it at any time; a rule that is off
 // leaves its hook wrapper in game_hooks.cpp calling the original routine unchanged.
@@ -258,7 +258,7 @@ private:
     bool active{};
 };
 
-// Weapon upgrade inheritance on a machine swap (docs/upgrade-inheritance.md).
+// Weapon upgrade inheritance on a machine swap (docs/gameplay/upgrade-inheritance.md).
 // 800AA8F4 moves a weapon's upgrade level to the successor only when the ROM table
 // D_800CB5E8 lists that weapon; three pairs are missing although both machines
 // carry the weapon under the same name, with every value but attack power equal,

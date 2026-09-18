@@ -136,7 +136,7 @@ plugin API, and a general-purpose editor are outside the current scope.
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. |
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, fast-forward, and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Name entry | An in-window native editor with original character and length validation. Language changes preserve edited fields and respect active IME composition. |
-| Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. The **Options** menu and settings window switch rules, language and images live. See [rule fixes](docs/rule-fixes.md) and [upgrade limits](docs/upgrade-limits.md). |
+| Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. The **Options** menu and settings window switch rules, language and images live. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, native probes, and state comparisons. |
 
@@ -151,7 +151,7 @@ menus, battle labels, and baked-in text still have integration work remaining.
 The repository does **not** include a ROM, game saves, extracted game assets,
 fonts, HD texture packs, generated game code, or a prebuilt application. Supply
 your own matching original Japanese Rev 0 ROM as `rom.z64` in the repository
-root. Its identity and pinned toolchain sources are in [provenance](docs/provenance.md).
+root. Its identity and pinned toolchain sources are in [provenance](docs/guide/provenance.md).
 
 Python **3.11+** is required, along with a C/C++ toolchain, CMake, Ninja, and SDL2
 for the native host. The build instructions below are currently validated on
@@ -187,7 +187,7 @@ development conveniences; use the explicit command above for a first launch.
 
 After the native build has been configured, `make recomp-native-check` runs the
 C++ component checks. These are separate from Python CI and from actual gameplay
-validation. The [development guide](docs/native-development.md) has detailed
+validation. The [development guide](docs/guide/native-development.md) has detailed
 build steps and module boundaries; most technical notes are currently Chinese.
 
 ### Experimental limits
@@ -202,8 +202,8 @@ build steps and module boundaries; most technical notes are currently Chinese.
 - HD artwork is experimental and remains local. Screenshots showing it do not
   imply the assets are bundled or that all scenes have HD replacements.
 - Windows / Linux native backends, complete translation, and the broader QoL
-  roadmap remain future work. See the [internal MOD roadmap](docs/mod-roadmap.md)
-  and [foundation verification](docs/native-foundations-verification.md).
+  roadmap remain future work. See the [internal MOD roadmap](docs/design/mod-roadmap.md)
+  and [foundation verification](docs/native/native-foundations-verification.md).
 
 ## 简体中文
 
@@ -221,7 +221,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 | 画面 | **F6** 独立切换 Original／HD，语言和字号不随之改变。HD 使用本地实验素材，并替换世界地图标记模型。 |
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、快进和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
 | 姓名输入 | 游戏窗口内的原生编辑页面，遵守原字库和字数限制；语言切换保留已编辑字段，不打断输入法组字。 |
-| 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。菜单栏「选项」与设置窗口可随时切换规则、语言和画面。见[可选规则修正](docs/rule-fixes.md)、[改造段数与上限](docs/upgrade-limits.md)。 |
+| 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。菜单栏「选项」与设置窗口可随时切换规则、语言和画面。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、原生运行探针和状态比较。 |
 
@@ -234,7 +234,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 
 仓库不包含 ROM、存档、提取后的游戏素材、字体、HD 纹理包、生成的游戏代码或预编译程序。
 请自行准备匹配的日版 Rev 0 原始 ROM，放在仓库根目录并命名为 `rom.z64`。
-ROM 身份和工具链固定版本见[来源记录](docs/provenance.md)。
+ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 
 需要 **Python 3.11+**；原生宿主还需要 C/C++ 工具链、CMake、Ninja 和 SDL2。
 以下构建流程目前在 macOS / Apple Silicon 的 Metal 后端上完成验证。
@@ -250,7 +250,7 @@ ROM 身份和工具链固定版本见[来源记录](docs/provenance.md)。
 
 `make check` 不需要 ROM；完成原生构建配置后，`make recomp-native-check` 运行 C++ 组件检查。
 Python CI、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
-[原生开发指南](docs/native-development.md)。
+[原生开发指南](docs/guide/native-development.md)。
 
 ### 实验阶段的边界
 
@@ -260,7 +260,7 @@ Python CI、原生组件测试与真实游戏流程验证分别记录。构建�
 - 原版 SRAM 不完整恢复随机状态。完整状态自动保存、可靠的回合回退和任意时刻即时存档尚不可用。
 - HD 美术属于本地实验，展示截图不意味着仓库附带素材，也不意味着全部场景已高清化。
 - Windows／Linux 原生后端、完整翻译和更多 QoL 功能仍在规划中。见
-  [内置 MOD 路线图](docs/mod-roadmap.md)和[底座验证记录](docs/native-foundations-verification.md)。
+  [内置 MOD 路线图](docs/design/mod-roadmap.md)和[底座验证记录](docs/native/native-foundations-verification.md)。
 
 ## Source layout / 源码目录
 
@@ -284,11 +284,11 @@ Python CI、原生组件测试与真实游戏流程验证分别记录。构建�
 Built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
 [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime), and
 [RT64](https://github.com/rt64/rt64). Additional sources and pinned revisions are
-listed in [provenance](docs/provenance.md). This is an unofficial project; game
+listed in [provenance](docs/guide/provenance.md). This is an unofficial project; game
 content belongs to its respective rights holders. A license for the project's
 own source has not yet been selected; third-party components retain their own terms.
 
-感谢上述项目及[来源记录](docs/provenance.md)中的工具与参考资料。本项目为非官方工程，
+感谢上述项目及[来源记录](docs/guide/provenance.md)中的工具与参考资料。本项目为非官方工程，
 游戏内容的权利归各自权利人所有。项目自有源码许可证尚未选定，第三方组件遵守各自条款。
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for repository boundaries and validation

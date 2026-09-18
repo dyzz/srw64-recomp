@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Controlled save edit for upgrade-limit checks (docs/upgrade-limits.md): set
+"""Controlled save edit for upgrade-limit checks (docs/gameplay/upgrade-limits.md): set
 funds, unit levels and weapon levels in an intermission save and fix the block
 checksum.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MCP server for debugging the native host (docs/debug-interface.md).
+"""MCP server for debugging the native host (docs/guide/debug-interface.md).
 
 Standard library only: MCP over stdio is newline-delimited JSON-RPC 2.0, and
 the project environment has no MCP package. Registered for Claude Code in the

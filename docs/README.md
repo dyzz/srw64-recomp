@@ -1,66 +1,100 @@
 # 技术文档索引
 
-更新：2026-09-12。仓库只维护统一日版 ROM 的原生 recomp、内容工具与运行验证。旧 ROM 汉化流水线已移除；关卡脚本已完成静态指令解析。
+更新：2026-09-18。仓库只维护统一日版 ROM 的原生 recomp（只支持 macOS）、内容工具与运行验证。旧 ROM 汉化流水线已移除。文档按主题分目录；带日期的文档记录当时的结论，`build/` 下的证据链接只在本地存在。
+
+| 目录 | 内容 |
+| --- | --- |
+| [`guide/`](#使用与开发guide) | 试玩、构建与开发、调试接口、存档、来源记录 |
+| [`gameplay/`](#玩法规则与原版缺陷gameplay) | 原版 Bug 登记、基础修复、可选规则、改造上限与继承、隐藏要素 |
+| [`native/`](#原生界面与呈现native) | 对白、阅读控制、姓名页、开场、设置窗口、画面与模型替换、退出生命周期 |
+| [`script/`](#关卡脚本script) | 事件脚本解析、指令语义、运行观察、脚本注入、迷你关卡、剧情审阅站 |
+| [`data/`](#原始数据data) | 原始数据目录、图片与武器标记、3D 资源与模型查看器 |
+| [`design/`](#规划与历史实验design) | 路线图、recomp 方案与实施记录、架构研究、字体与美术实验 |
+| `media/` | README 使用的截图与视频，来源见 `media/manifest.json` |
 
 ## 从这里开始
 
 | 目的 | 文档 |
 | --- | --- |
-| 查看内置 MOD 首发/后续范围、多语种、Original/HD、存档兼容与验收门槛 | [内置 MOD 路线图](mod-roadmap.md) |
-| 查看原版网上 Bug 报告、来源分歧、技能／改造继承核查和建议复现步骤 | [原版 Bug 登记](original-bug-register.md)（2026-09-16；BUG01–05 已确认原因，其余尚未本地复现） |
-| 了解默认生效、没有开关的原版缺陷修复（目前只有 BUG05 五飞假身） | [基础修复](base-fixes.md)（2026-09-18） |
-| 菜单栏「选项」与设置窗口（游戏性调整、语言、画面）的结构、每项设置要写清的元数据与验收 | [设置窗口](settings-window.md)（2026-09-18，第一版已实现，其余为规划） |
-| 开启或了解超能力、圣战士、限界、底力的可选修正（原因、依据、开关与实机核对） | [可选规则修正](rule-fixes.md)（2026-09-18） |
-| 查看换机时机体／武器改造段数如何搬运、前任表与武器映射表、三处疑似漏项和上限被复制的影响 | [改造继承分析](upgrade-inheritance.md)（2026-09-18，静态分析，未运行验证） |
-| 查看机体改造上限（“丑小鸭”）、五项与武器每段增量和价格、各机体上限在哪里；使用改造上限突破与升级规则文件（改增量、价格、上限、武器类型） | [改造段数与上限](upgrade-limits.md)（2026-09-18；一期已实现，改造画面已实机核对） |
-| 接手代码、构建、验证、定位日志与清理测试进程 | [原生开发指南](native-development.md) |
-| 用接口或 MCP 驱动实机调试：启动隔离会话、按键、截图、读状态、操作姓名页与设置窗口等原生界面 | [调试接口与 MCP](debug-interface.md)（2026-09-18） |
-| 查看 Original 在 HD 资源缺失时的启动行为及验证 | [Original 回退](native-original-fallback.md) |
-| 查看当前语言、图片、5600 模型配置及扩展方式 | [内容架构第一批实现](native-content-foundation.md) |
-| 查看内容分层与语义接口，以及暂缓的外部 MOD 扩展研究 | [扩展架构方案](native-extensibility-architecture.md) |
-| 重跑文本／资源／机体／驾驶员／场景地图提取，浏览整合档案、全体特殊能力／技能持有者、原始字节和引用链 | [原始数据目录](original-data-catalog.md) |
-| 查看事件脚本的完整指令、条件块、主角段落、说话人、触发类型、路线流向和出击记录；按章节阅读日文原文剧情（剧情查看器） | [关卡脚本完整解析](stage-script-exploration.md) |
-| 查看隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，及与社区攻略的对照和出入 | [隐藏要素](hidden-elements.md)（2026-09-17，静态分析，未运行验证） |
-| 连续阅读剧情、全文搜索、逐句定位、主角路线与阅读设置 | [剧情审阅站](story-reader.md) |
-| 确认剩余指令效果、安排静音跟踪与单参数实验 | [剩余指令语义确认](script-semantics-confirmation.md) |
-| 查看第一话实际执行的 123 条指令、地图转换和部署观察 | [静音脚本运行观察](script-runtime-observation.md) |
-| 查看男性超级系开场 56 条指令与 3D3C 单位移动的代码／画面证据 | [3D3C 静音运行观察](script-3d3c-runtime.md) |
-| 对照 3D3C 目标位置改动、逻辑坐标写回及固定二进制实验 | [3D3C 单参数实验](script-3d3c-experiment.md) |
-| 用自定义脚本在运行中的游戏里验证指令效果（淡入淡出、卷动、切换地图、登场／退场、移动、资金／改造／气力、对白） | [脚本注入调试](script-debug-injection.md) |
-| 用自制迷你关卡（开场、对白、战场、事件、结束）替换一话来验证脚本指令与关卡流程 | [迷你关卡](mini-stage.md) |
-| 查看原版人物头像、机体地图图标、战场底图及武器属性标记 | [原版图片与武器标记](original-images.md) |
-| 查看关窗崩溃修复、线程回收和退出验收边界 | [退出生命周期问题](native-window-close.md) |
-| 列出/恢复历史存档、了解完整性回退与通关档冷启动证据 | [原生存档恢复](native-save-recovery.md) |
-| 语言设置与覆盖报告、保存集合原型、冷启动及随机状态差异 | [三项底座验证](native-foundations-verification.md) |
-| 了解提交与本地资源边界 | [贡献约定](../CONTRIBUTING.md)、[来源与版本](provenance.md) |
+| 启动试玩、按键、阅读操作、姓名页与「选项」菜单 | [原生试玩](guide/native-playtest.md) |
+| 构建、源码责任、验证开关、证据与清理 | [原生开发指南](guide/native-development.md) |
+| 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
+| 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
+| 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 
-## 当前原生功能
+## 使用与开发（guide/）
 
-| 模块 | 用法、实现与验收 |
+| 文档 | 内容 |
 | --- | --- |
-| 启动、输入、独立 SRAM 历史 | [试玩指南](native-playtest.md)；统一 profile 的新入口见[内容架构](native-content-foundation.md) |
-| 标准剧情双框对白、原生字体、分页与回看 | [对白 UI](native-dialogue-ui.md)、[高清对白实现](native-dialogue-runtime-hd.md) |
-| 自动四档、下一句进度、当前说话框 | [阅读指示器](native-reading-indicators.md) |
-| 间歇性画面/底栏消失问题与修复证据 | [对白闪烁](native-dialogue-flicker.md) |
-| 窗口内现代姓名页面、原校验、姓名写回 | [姓名输入](native-name-entry.md) |
-| 开场缩放文字跳过与资源提取 | [开场文字](native-intro.md) |
-| 5600 原生水滴替换与 Original/HD 切换 | [模型替换](native-model-replacement.md) |
-| 浏览原游戏 3D 资源 | [模型查看器](native-model-viewer.md)、[3D 资源分析](3d-model-replacement-analysis.md) |
+| [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、姓名页与「选项」菜单、存档历史 |
+| [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
+| [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
+| [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
+| [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
 
-## 设计与历史实验
+## 玩法：规则与原版缺陷（gameplay/）
 
-这些文档记录当时的配置和验收，不能替代当前 profile 的结果。ROM 内 5600 高面数实验与原始 JP profile 使用不同身份与存档目录。
+| 文档 | 内容 |
+| --- | --- |
+| [原版 Bug 登记](gameplay/original-bug-register.md) | 网上 Bug 报告、来源分歧、已确认原因（BUG01–05）与建议复现步骤 |
+| [基础修复](gameplay/base-fixes.md) | 默认生效、没有开关的缺陷修复（BUG05 五飞假身） |
+| [可选规则修正](gameplay/rule-fixes.md) | 超能力、圣战士、限界、底力、武器改造继承、奥拉斩威力等修正与难度调整：原因、依据、开关与实机核对 |
+| [改造段数与上限](gameplay/upgrade-limits.md) | “丑小鸭”上限、每段增量与价格、上限突破、升级规则文件 |
+| [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
+| [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
 
-- recomp 基础：[分阶段计划](recomp-plan.md)、[早期进度与可重跑探针](recomp-progress.md)。
-- 架构研究：[同类项目比较](recomp-peer-comparison.md)、[原生增强规划](native-enhancements-plan.md)。
-- 原生高清美术：[世界地图 HD](native-worldmap-hd.md)。
-- 字体探针：[字库替换](native-font-probe.md)、[Core Text 固定帧验证](native-coretext-probe.md)。
-- 美术实验：[AI 探索](hd-ai-exploration.md)、[基准比较](hd-ai-benchmark.md)、[对话框预览](dialogue-frame-ai-preview.md)。
+## 原生界面与呈现（native/）
 
-## 原始 ROM 与数据
+| 文档 | 内容 |
+| --- | --- |
+| [对白 UI](native/native-dialogue-ui.md) | 双框对白、原生字体、分页、回看、自动阅读、快进与跳过 |
+| [阅读指示器](native/native-reading-indicators.md) | 自动档位、下一句进度、当前说话框 |
+| [对白闪烁](native/native-dialogue-flicker.md) | 间歇性画面／底栏消失的原因与修复证据 |
+| [高清对白实现](native/native-dialogue-runtime-hd.md) | 实际地图／边框资源高清替换与蓝色人名 |
+| [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
+| [开场文字](native/native-intro.md) | 开场缩放文字跳过与资源提取 |
+| [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收 |
+| [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
+| [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
+| [模型替换](native/native-model-replacement.md) | 5600 原生水滴与 Original/HD 切换 |
+| [退出生命周期](native/native-window-close.md) | 关窗崩溃修复、线程回收与退出验收边界 |
+| [内容架构第一批实现](native/native-content-foundation.md) | 语言、图片、5600 模型配置及扩展方式 |
+| [三项底座验证](native/native-foundations-verification.md) | 语言设置与覆盖报告、保存集合原型、冷启动及随机状态差异 |
 
-- `src/srw64_rom/` 提供身份校验、文本表和资源编解码。
-- [原始数据目录](original-data-catalog.md)说明 `make recomp-data` 的导出与浏览。
-- [来源记录](provenance.md)固定原 ROM、日文字形表及工具链身份。
+## 关卡脚本（script/）
 
-静态检查、组件测试、固定帧回放、原生游戏运行、模拟器运行和人工检查各有独立范围；“有截图”或“退出码为 0”不自动代表整条流程已验收。
+| 文档 | 内容 |
+| --- | --- |
+| [关卡脚本完整解析](script/stage-script-exploration.md) | 事件脚本的完整指令、条件块、主角段落、说话人、触发类型、路线流向和出击记录 |
+| [剩余指令语义确认](script/script-semantics-confirmation.md) | 尚待确认的指令效果、静音跟踪与单参数实验安排 |
+| [静音脚本运行观察](script/script-runtime-observation.md) | 第一话实际执行的 123 条指令、地图转换和部署 |
+| [3D3C 静音运行观察](script/script-3d3c-runtime.md)、[3D3C 单参数实验](script/script-3d3c-experiment.md) | 男性超级系开场的单位移动证据与目标位置对照 |
+| [脚本注入调试](script/script-debug-injection.md) | 在运行中的游戏里执行自定义脚本验证指令效果 |
+| [迷你关卡](script/mini-stage.md) | 用自制关卡替换一话来验证指令与关卡流程 |
+| [剧情审阅站](script/story-reader.md) | 连续阅读剧情、全文搜索、逐句定位、主角路线 |
+
+## 原始数据（data/）
+
+| 文档 | 内容 |
+| --- | --- |
+| [原始数据目录](data/original-data-catalog.md) | 文本／资源／机体／驾驶员／场景地图提取、整合档案、特殊能力与技能持有者、引用链 |
+| [原版图片与武器标记](data/original-images.md) | 人物头像、机体地图图标、战场底图及武器属性标记 |
+| [3D 资源分析](data/3d-model-replacement-analysis.md) | 原始 3D 资源与模型替换可行性 |
+| [模型查看器](data/native-model-viewer.md) | 本地模型资源浏览与 5600 验证 |
+
+## 规划与历史实验（design/）
+
+这些文档记录当时的配置和验收，不能替代当前 profile 的结果。
+
+| 文档 | 内容 |
+| --- | --- |
+| [内置 MOD 路线图](design/mod-roadmap.md) | 首发／后续范围、多语种、Original/HD、存档兼容与验收门槛 |
+| [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
+| [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
+| [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
+| [字库替换](design/native-font-probe.md)、[Core Text 固定帧验证](design/native-coretext-probe.md) | 字体探针 |
+| [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md)、[对话框预览](design/dialogue-frame-ai-preview.md) | 美术高清化实验 |
+
+## 验证层次
+
+静态检查、组件测试、固定帧回放、原生游戏运行、模拟器运行和人工检查各有独立范围；“有截图”或“退出码为 0”不自动代表整条流程已验收。`tests/test_docs.py` 检查所有 Markdown 链接与文档中引用的仓库路径。

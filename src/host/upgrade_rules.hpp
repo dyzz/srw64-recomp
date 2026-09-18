@@ -6,7 +6,7 @@
 #include <set>
 #include <vector>
 
-// Unit upgrade limits and costs (docs/upgrade-limits.md). Two independent parts:
+// Unit upgrade limits and costs (docs/gameplay/upgrade-limits.md). Two independent parts:
 //
 // - An optional rules file (SRW64_UPGRADE_RULES) replaces the per-level increments
 //   and prices, per-unit caps and per-weapon upgrade types. The game keeps using

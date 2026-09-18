@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Debug sessions of the native host (docs/debug-interface.md).
+"""Debug sessions of the native host (docs/guide/debug-interface.md).
 
 A session is an interactive graphics run of the host with SRW64_DEBUG=1 in its
 own directory under build/recomp/debug/. It never touches the play history or
