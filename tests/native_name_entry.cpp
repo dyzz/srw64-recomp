@@ -16,7 +16,10 @@ namespace srw64::dialogue {
 std::u16string utf16(const std::string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.from_bytes(s);}
 std::string utf8(const std::u16string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.to_bytes(s);}
 }
-int fade=-1;bool reject=false;unsigned validations{},transitions{};
+int fade=-1;bool reject=false;unsigned validations{},transitions{},defaults_loaded{};
+std::vector<uint32_t> sounds;
+extern "C" void resident_func_8007E8A8(uint8_t*,recomp_context* ctx) {sounds.push_back(uint32_t(ctx->r4));ctx->r16=0xBAD;}
+extern "C" void load_001090A0_func_801C3744(uint8_t*,recomp_context* ctx) {++defaults_loaded;ctx->r16=0xBAD;}
 extern "C" void resident_func_80099B30(uint8_t*,recomp_context* ctx) {ctx->r2=fade;}
 extern "C" void resident_func_80099814(uint8_t*,recomp_context* ctx) {
     assert(ctx->r4==5 && ctx->r5==1 && ctx->r6==2);++transitions;ctx->r16=0xBAD;
@@ -74,6 +77,15 @@ int main() {
     srw64_game_hooks.name_step(rdram,&ctx,1);
     assert(validations==2 && transitions==2 && MEM_W(0,int32_t(0x801C6FB0))==0);
     assert(std::memcmp(memory.data()+0x10F5F8,before.data()+0x10F5F8,0xA0)==0);
+    // Selection defaults are name-grid codes: text id 0x147F + code holds one font
+    // glyph. Glyphs the codec does not know keep the original page.
+    auto rom_word=[&](uint32_t at,uint32_t v){for(unsigned i=0;i<4;++i)rom[at+i]=uint8_t(v>>(24-8*i));};
+    auto grid=[&](uint16_t code,uint16_t glyph){
+        const uint32_t entry=0x100+code*12;rom_word(Codec::table_base+4+(0x147F+code)*8,entry);
+        rom[Codec::table_base+entry+8]=uint8_t(glyph>>8);rom[Codec::table_base+entry+9]=uint8_t(glyph);
+    };
+    grid(5,1);grid(6,2);grid(7,0x700);
+    for(uint32_t a=0x801C6C00;a<0x801C6CE0;a+=2)MEM_H(0,int32_t(a))=7;
     srw64_game_hooks.name_begin(rdram,Selection);assert(!request().visible && !owns_input());
     assert(input(0x8000)==0);assert(input(0)==0);assert(input(0x8000)==0x8000);
     for(auto address:{0x10F5F8,0x10F618,0x10F638,0x10F608,0x10F628,0x10F644}) {
@@ -87,6 +99,32 @@ int main() {
     srw64_game_hooks.name_begin(rdram,Review);srw64_game_hooks.name_step(rdram,&ctx,Review);
     review(request().serial,true);srw64_game_hooks.name_step(rdram,&ctx,Review);
     assert(MEM_BU(0,int32_t(0x801C70F4))==2 && transitions==4 && ctx.r16==0x1234);
+    // Selection: four routes with their default names and portraits; the page
+    // highlights, then confirms as the original はい does.
+    for(unsigned route=0;route<4;++route)for(uint32_t table:{0x801C6C00u,0x801C6C70u})for(uint32_t partner:{0u,0x38u}) {
+        const uint32_t at=table+partner+route*14;
+        for(unsigned i=0;i<7;++i)MEM_H(0,int32_t(at+2*i))=i==0?5:i==1&&route==3?6:0xCA;
+    }
+    MEM_H(0,int32_t(0x801C70FA))=2;MEM_H(0,int32_t(0x801C70B0))=2;
+    srw64_game_hooks.name_begin(rdram,Selection);r=request();
+    assert(r.visible && r.person==Selection && r.route==2 && owns_input());
+    assert(r.choices[0].names[0][0]==u"ア" && r.choices[3].names[1][1]==u"アＡ");
+    fade=1;assert(srw64_game_hooks.name_step(rdram,&ctx,Selection) && !request().active);
+    fade=-1;srw64_game_hooks.name_step(rdram,&ctx,Selection);assert(request().active);
+    select(r.serial+1,1);select(r.serial,3);select(r.serial,3);select(r.serial,0);select(r.serial,9);
+    srw64_game_hooks.name_step(rdram,&ctx,Selection);
+    assert(sounds==std::vector<uint32_t>({0xB9}) && request().route==0);   // one cursor sound per step
+    before=memory;choose(r.serial+1,1);srw64_game_hooks.name_step(rdram,&ctx,Selection);assert(memory==before);
+    choose(r.serial,1);srw64_game_hooks.name_step(rdram,&ctx,Selection);
+    assert(sounds.back()==0xB7 && MEM_HU(0,int32_t(0x801C70FA))==1 && MEM_HU(0,int32_t(0x801C70B0))==1);
+    assert(MEM_W(0,int32_t(0x801C6FB0))==1 && defaults_loaded==1 && transitions==5 && ctx.r16==0x1234);
+    assert(MEM_HU(0,int32_t(0x801C6FB8))==0x1549 && MEM_HU(58,int32_t(0x801C70B8))==0x1549);
+    assert(request().visible && !request().active && owns_input());   // held until the name page opens
+    // The same route again keeps the edited names: no reset, no defaults.
+    MEM_H(0,int32_t(0x801C6FB8))=0x1234;
+    srw64_game_hooks.name_begin(rdram,Selection);srw64_game_hooks.name_step(rdram,&ctx,Selection);
+    choose(request().serial,1);srw64_game_hooks.name_step(rdram,&ctx,Selection);
+    assert(defaults_loaded==1 && MEM_HU(0,int32_t(0x801C6FB8))==0x1234 && transitions==6);
     queue_cover(42,true);queue_cover(43,false);assert(frame_cover(42) && !frame_cover(43));
     cover_presented(42,true);assert(cover_in_flight());cover_presented(43,false);cover_presented(42,true);assert(!cover_in_flight());
     overlay_loaded(0x123456,0x80200000,0x1000);assert(request().visible);

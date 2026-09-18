@@ -59,8 +59,15 @@ json name_page() {
     const auto request=names::request();
     json values=json::array();
     for(const auto& value:request.values)values.push_back(utf8(value));
-    return {{"visible",request.visible},{"active",request.active},{"pending",request.pending},
-            {"person",request.person},{"serial",request.serial},{"values",values},{"error",request.error}};
+    json page={{"visible",request.visible},{"active",request.active},{"pending",request.pending},
+               {"person",request.person},{"serial",request.serial},{"values",values},{"error",request.error}};
+    if(request.person==names::Selection) {   // the protagonist selection page
+        page["route"]=request.route;page["choices"]=json::array();
+        for(const auto& choice:request.choices)page["choices"].push_back({
+            {"protagonist",utf8(choice.names[0][0]+u"・"+choice.names[0][1])},
+            {"partner",utf8(choice.names[1][0]+u"・"+choice.names[1][1])}});
+    }
+    return page;
 }
 json dialogue_state(bool full_history) {
     auto state=dialogue::state();

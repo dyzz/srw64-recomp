@@ -7,6 +7,13 @@
 
 namespace srw64::names {
 enum Stage : unsigned { Player=0, Partner=1, Review=2, Selection=3 };
+// One of the four protagonists on the selection page, in the game's route order:
+// 0 ブラッド (super, male), 1 マナミ (super, female), 2 アークライト (real, male),
+// 3 セレイン (real, female). Route < 2 is super robot, even routes are male.
+struct Choice {
+    std::array<std::array<std::u16string,2>,2> names;   // protagonist/partner x given/family defaults
+    std::array<std::array<std::string,2>,2> portraits;  // protagonist/partner x original/HD
+};
 struct Request {
     uint64_t serial{},revision{};
     unsigned person{};
@@ -15,6 +22,7 @@ struct Request {
     std::array<std::u16string,3> values;
     std::array<std::array<std::u16string,3>,2> names;
     std::array<std::array<std::string,2>,2> portraits; // person, original/HD
+    std::array<Choice,4> choices;                      // Selection only; `route` is the highlighted one
     std::string error;
 };
 void configure(const std::filesystem::path&);
@@ -30,6 +38,10 @@ std::string validate(const std::u16string&,unsigned field);
 void submit(uint64_t serial,const std::array<std::u16string,3>& values,bool cancel=false);
 // Review: confirm starts the story; false returns to the protagonist editor.
 void review(uint64_t serial,bool confirm);
+// Selection: highlight a route (the game plays its cursor sound) or confirm it,
+// which continues to the protagonist's name as the original はい does.
+void select(uint64_t serial,unsigned route);
+void choose(uint64_t serial,unsigned route);
 void queue_cover(uint64_t workload,bool visible);
 bool frame_cover(uint64_t workload);
 void cover_presented(uint64_t workload,bool visible);

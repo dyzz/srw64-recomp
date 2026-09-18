@@ -54,6 +54,11 @@ void load_001090A0_func_801C5004(uint8_t* rdram,recomp_context* ctx) {
     srw64_original_name_selection_init(rdram,ctx);
     if(srw64_game_hooks.name_begin)srw64_game_hooks.name_begin(rdram,3);
 }
+void load_001090A0_func_801C50B8(uint8_t* rdram,recomp_context* ctx) {
+    // Protagonist selection: the native page replaces browsing and the はい prompt.
+    if(!srw64_game_hooks.name_step || !srw64_game_hooks.name_step(rdram,ctx,3))
+        srw64_original_name_selection_step(rdram,ctx);
+}
 void load_001090A0_func_801C5DAC(uint8_t* rdram,recomp_context* ctx) {
     srw64_original_name_review_init(rdram,ctx);
     if(srw64_game_hooks.name_begin)srw64_game_hooks.name_begin(rdram,2);

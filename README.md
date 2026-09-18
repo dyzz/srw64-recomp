@@ -136,14 +136,14 @@ plugin API, and a general-purpose editor are outside the current scope.
 | Languages | **F7** cycles Japanese → Chinese → English immediately, without a dialog or restart, and remembers the selection. Standard dialogue and the native UI are integrated; missing translations fall back to Japanese. |
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. The internal resolution scales from 1× to 8×. |
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. |
-| Name entry | An in-window modern editor for the protagonist and partner, with mouse, keyboard, and IME input, the original character set and length limits, and a review step. Language changes preserve edited fields. |
+| Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
 | Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
 | Settings | An **Options** menu in the menu bar and a settings window (**⌘,**) switch rules, language, and images while playing; choices are remembered. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, script injection and custom mini stages, native probes, and a [debug interface](docs/guide/debug-interface.md) with a command line and an MCP server that drives every game input and the native UI without manual key presses. |
 
 **Translation coverage:** Chinese and English each cover the same 153 draft
-records out of 51,174 extracted text records, plus all 68 native UI labels.
+records out of 51,174 extracted text records, plus all 77 native UI labels.
 No text records are marked reviewed yet. This count is an extraction denominator, not a
 claim that every menu or text renderer supports language switching. Original
 menus, battle labels, and baked-in text still have integration work remaining.
@@ -223,14 +223,14 @@ build steps and module boundaries; most technical notes are currently Chinese.
 | 语言 | **F7** 按日文 → 中文 → 英文循环热切换，无弹窗、不重启，并记住选择。标准对白和原生界面已接入，缺译回退日文。 |
 | 画面 | **F6** 独立切换 Original／HD，语言和字号不随之改变。HD 使用本地实验素材，并替换世界地图标记模型。内部分辨率可在 1–8 倍之间调整。 |
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、按住快进、跳过（开场文字与路线序章同样可跳）和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
-| 姓名输入 | 游戏窗口内的现代编辑页面，填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
+| 主角与姓名 | 游戏窗口内的现代页面：先从四张卡片（超级系／真实系 × 男／女）中选主角，再填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
 | 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破、剧情移除机体时退回改造资金并提示）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
 | 设置 | 菜单栏「选项」与设置窗口（**⌘,**）可在游戏中随时切换规则、语言和画面，选择会被记住。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、脚本注入与自制迷你关卡、原生运行探针，以及[调试接口](docs/guide/debug-interface.md)：命令行和 MCP 服务器可驱动全部游戏输入和原生界面，实机检查不需要人工按键。 |
 
 **翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 153 条草稿，
-另有全部 68 条原生 UI 文案；文本记录的已审校数量均为 0。
+另有全部 77 条原生 UI 文案；文本记录的已审校数量均为 0。
 该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换；原版菜单、
 战斗标签和图片内嵌文字仍有待接入。全量翻译另行排期。
 
@@ -291,11 +291,11 @@ Letter keys follow physical positions. / 字母键按物理键位映射。
 | F6 / F7 | Original ↔ HD / Language / 语言 | |
 | Esc | Quit / 退出 | |
 
-The name page takes mouse, keyboard, and IME input directly (Tab, Enter, Esc).
+The protagonist cards take ←→ and Enter / Z or a click; the name page takes mouse, keyboard, and IME input directly (Tab, Enter, Esc).
 **Options → Gameplay adjustments** toggles rules; **⌘,** opens the settings window. Don't hold
 Enter while the game boots: the original Controller Pak screen is not supported
 yet and stops the host. /
-姓名页直接用鼠标、键盘和输入法操作（Tab、Enter、Esc）。「选项 → 游戏性调整」开关规则，**⌘,**
+主角选择卡片用 ←→ 与 Enter／Z 或鼠标点击；姓名页直接用鼠标、键盘和输入法操作（Tab、Enter、Esc）。「选项 → 游戏性调整」开关规则，**⌘,**
 打开设置窗口。开机时不要按住 Enter：原版的 Controller Pak 画面尚不支持，宿主会中止。
 
 ## Debug interface / 调试接口
