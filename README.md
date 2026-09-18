@@ -6,23 +6,34 @@
 
 [English](#english) · [简体中文](#简体中文) · [Controls / 操作](#controls--操作) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
 
-> Work in progress. This is a source and research repository, not a finished game
-> release or a complete translation. Full-game compatibility has not
-> been verified. The native host runs on **macOS (Apple Silicon)** only.
+> **Current focus: exploring what the recompilation makes possible** — native
+> interface pages, reading controls, rule corrections and other gameplay
+> improvements. **Full text translation and HD artwork come later**, some time
+> after this stage; the Chinese / English text and HD art shown here are early
+> experiments, not a translation or HD release in progress.
 >
-> 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版，也未完成全量翻译。
-> 完整游戏兼容性仍待验证。原生宿主只支持 **macOS（Apple Silicon）**。
+> Work in progress. This is a source and research repository, not a finished game
+> release. Full-game compatibility has not been verified. The native host runs on
+> **macOS (Apple Silicon)** only.
+>
+> **当前重点：探索重编译能带来的功能与游戏性提升**——原生界面、阅读控制、规则修正等。
+> **全文翻译和 HD 化要过一段时间才会开始**；这里展示的中英文文本和 HD 美术只是早期实验，
+> 并不代表翻译或高清版本正在推进。
+>
+> 项目处于实验阶段。这是源码与研究仓库，尚非完整游戏发布版；完整游戏兼容性仍待验证。
+> 原生宿主只支持 **macOS（Apple Silicon）**。
 
 <a name="development-preview"></a>
 
 ## Development preview / 开发中画面
 
-Actual native runtime captures. HD artwork is experimental and is not bundled;
-Chinese and English dialogue are still drafts. Screenshots demonstrate the shown scenarios,
+Actual native runtime captures. HD artwork is an early experiment and is not
+bundled; the Chinese and English dialogue are early drafts, with full translation
+and HD planned for a later stage. Screenshots demonstrate the shown scenarios,
 not full-game compatibility. [Media provenance](docs/media/manifest.json).
 
-以下均为原生运行实拍。HD 美术仍属实验且不随仓库提供，中英文对白仍为草稿；
-截图只展示对应场景的进展。来源与摘要见[媒体记录](docs/media/manifest.json)。
+以下均为原生运行实拍。HD 美术是早期实验且不随仓库提供，中英文对白是早期草稿，全文翻译与
+HD 化排在后面的阶段；截图只展示对应场景的进展。来源与摘要见[媒体记录](docs/media/manifest.json)。
 
 **Three-language and reading controls demo / 三语与阅读操作演示（95 秒）**
 
@@ -188,6 +199,17 @@ development tools.
 Features are organized as **internal modules**. External MOD loading, a public
 plugin API, and a general-purpose editor are outside the current scope.
 
+### Current focus
+
+This stage explores **what a native recompilation can add to the game**: modern
+pages in place of original screens, reading and presentation controls, fixes for
+original defects, optional gameplay and difficulty rules, and the tooling to
+verify them in the running game. **Full text translation and HD artwork are
+deliberately later work** and will start some time after this stage; the
+translation and HD pieces in the repository exist to prove the pipelines
+(hot language switching, native text, image replacement), not as releases
+in progress.
+
 ### What works today
 
 | Area | Current implementation |
@@ -205,7 +227,8 @@ plugin API, and a general-purpose editor are outside the current scope.
 records out of 51,174 extracted text records, plus all 77 native UI labels.
 No text records are marked reviewed yet. This count is an extraction denominator, not a
 claim that every menu or text renderer supports language switching. Original
-menus, battle labels, and baked-in text still have integration work remaining.
+menus, battle labels, and baked-in text still have integration work remaining;
+full translation is planned after the current feature work.
 
 ### Getting started
 
@@ -264,8 +287,8 @@ build steps and module boundaries; most technical notes are currently Chinese.
 - HD artwork is experimental and remains local. Screenshots showing it do not
   imply the assets are bundled or that all scenes have HD replacements.
 - Only macOS is supported. Game controllers are not wired up yet (keyboard only).
-  Complete translation and the broader QoL roadmap remain future work; see the
-  [internal MOD roadmap](docs/design/mod-roadmap.md).
+- Full translation and HD artwork come after the current feature and gameplay
+  work; see the [internal MOD roadmap](docs/design/mod-roadmap.md).
 
 ## 简体中文
 
@@ -274,6 +297,13 @@ build steps and module boundaries; most technical notes are currently Chinese.
 原生模块提供文字显示、阅读控制、现代姓名页、画面与玩法选项以及开发工具。
 
 功能按**项目内部模块**组织；目前不接入外部 MOD，不提供公开插件 API 或完整编辑器。
+
+### 当前阶段
+
+现阶段探索的是**原生重编译能给游戏加上什么**：用现代页面取代原版画面、阅读与画面控制、
+原版缺陷修正、可选的玩法与难度规则，以及在实机中验证这些改动的工具。**全文翻译和 HD 美术
+有意放在后面**，要在这一阶段之后一段时间才会开始；仓库里的翻译与 HD 部分用于验证流程
+（语言热切换、原生文字、图片替换），不代表翻译或高清版本正在推进。
 
 ### 当前功能
 
@@ -291,7 +321,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 **翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 153 条草稿，
 另有全部 77 条原生 UI 文案；文本记录的已审校数量均为 0。
 该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换；原版菜单、
-战斗标签和图片内嵌文字仍有待接入。全量翻译另行排期。
+战斗标签和图片内嵌文字仍有待接入。全量翻译排在当前的功能与游戏性工作之后。
 
 ### 启动与检查
 
@@ -326,8 +356,8 @@ Python CI、原生组件测试与真实游戏流程验证分别记录。构建�
 - 保留原版每帧随机时序。对白跳过对照已复现时序差异，战斗动画跳过的等价性仍未验证。
 - 原版 SRAM 不完整恢复随机状态。完整状态自动保存、可靠的回合回退和任意时刻即时存档尚不可用。
 - HD 美术属于本地实验，展示截图不意味着仓库附带素材，也不意味着全部场景已高清化。
-- 只支持 macOS；手柄尚未接入，目前只能用键盘。完整翻译和更多 QoL 功能仍在规划中，见
-  [内置 MOD 路线图](docs/design/mod-roadmap.md)。
+- 只支持 macOS；手柄尚未接入，目前只能用键盘。
+- 全文翻译与 HD 美术排在当前的功能与游戏性工作之后，见[内置 MOD 路线图](docs/design/mod-roadmap.md)。
 
 <a name="controls--操作"></a>
 
