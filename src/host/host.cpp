@@ -25,6 +25,7 @@
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
 #include "settings_window.hpp"
+#include "debug_server.hpp"
 #endif
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
@@ -185,6 +186,16 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 
 uint64_t srw64_current_vi() { return vi_count.load(); }
 
+// Debug interface hooks (debug_server.cpp): a button pulse that starts now
+// rather than at the next control-file poll, and a quit reported like SRWQ1.
+void srw64_debug_buttons(uint16_t mask, uint64_t duration_vis) {
+    live_buttons = ((vi_count.load() + duration_vis) << 16) | mask;
+}
+void srw64_debug_quit() {
+    control_quit = true;
+    ultramodern::quit();
+}
+
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
@@ -297,6 +308,7 @@ int main(int argc, char** argv) {
     cfg.project_version = {0, 0, 1, "cpu-probe"};
 #if defined(SRW64_WITH_RT64)
     srw64_set_capture_directory(output_dir);
+    srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
     srw64::names::configure(output_dir);
     srw64::intro::configure(output_dir);

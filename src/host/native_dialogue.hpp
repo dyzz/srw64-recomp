@@ -1,6 +1,7 @@
 #pragma once
 #include "dialogue_model.hpp"
 #include "localization/catalog.hpp"
+#include "json/json.hpp"
 #include <array>
 #include <filesystem>
 #include <memory>
@@ -55,6 +56,9 @@ void overlay_loaded(uint32_t rom);
 std::shared_ptr<const Frame> take_frame(uint32_t start, uint32_t size, std::vector<uint8_t>& display, const uint8_t* ram);
 void queue_frame(uint64_t workload, std::shared_ptr<const Frame>);
 std::shared_ptr<const Frame> presented_frame(uint64_t workload);
+// Reader and dialogue boxes as dialogue-state.json holds them, from any thread;
+// null when the native dialogue is not configured.
+nlohmann::json state();
 void metal_init(plume::RenderDevice*, const std::filesystem::path&);
 void metal_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);
 void metal_shutdown();

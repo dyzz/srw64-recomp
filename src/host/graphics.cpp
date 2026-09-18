@@ -2,6 +2,7 @@
 #include "hle/rt64_application.h"
 #include "graphics.hpp"
 #include "mini_stage.hpp"
+#include "debug_protocol.hpp"
 #include "audio.hpp"
 #include "diagnostics.hpp"
 #include "window_test_control.hpp"
@@ -11,6 +12,8 @@
 #include "presentation_settings.hpp"
 #include "rule_menu.hpp"
 #include "settings_window.hpp"
+#include "debug_server.hpp"
+#include "debug_ui.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -88,7 +91,9 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     static const uint64_t trace_end = std::getenv("SRW64_FRAME_TRACE_TO") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_TO")) : 0;
     const bool trace = vi >= trace_begin && vi <= trace_end;
     const bool screenshot = srw64_full_diagnostics() && (frame == 1 || frame % 60 == 0);
-    if (!screenshot && !trace) return;
+    // A debug-interface screenshot request takes this present, diagnostics or not.
+    const auto debug_shot = srw64::debug::screenshots().take();
+    if (!screenshot && !trace && !debug_shot) return;
     nlohmann::json dialogue_trace=nullptr;
 #ifdef SRW64_NATIVE_DIALOGUE
     if(trace)if(auto snapshot=srw64::dialogue::presented_frame(workload)) {
@@ -130,9 +135,10 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     command_list->endActiveBlitEncoder();
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, screenshot, dialogue_trace](MTL::CommandBuffer* command) {
+    static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, screenshot, dialogue_trace, debug_shot](MTL::CommandBuffer* command) {
         if (command->status() != MTL::CommandBufferStatusCompleted) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
+            if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
             return;
         }
         auto* raw = static_cast<const uint8_t*>(buffer->map());
@@ -163,6 +169,13 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                 {"mean_rgb",double(luminance)/sample.size()},{"mean_delta",change},{"width",160},{"height",120},
                 {"dialogue",dialogue_trace}}).dump()<<'\n';events.flush();
             previous=std::move(sample);
+        }
+        if (debug_shot) {
+            const bool written = stbi_write_png(debug_shot->path.c_str(), width, height, 4, rgba.data(), width * 4);
+            srw64::debug::screenshots().finish(debug_shot->id, written
+                ? nlohmann::json({{"path", debug_shot->path.string()}, {"present", frame}, {"vi", vi},
+                                  {"width", width}, {"height", height}, {"image_mode", image_mode}})
+                : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
         if(!screenshot && !anomaly)return;
         if (!stbi_write_png(path.c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
@@ -430,6 +443,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::names::window_init(info.info.cocoa.window,capture_directory);
+    srw64::debug_ui::window_init(info.info.cocoa.window);
     srw64::settings::window_init(window,capture_directory);
     srw64::rule_menu::update();
 #endif
@@ -449,6 +463,7 @@ void srw64_update_window(void*) {
     srw64::settings_window::update();
     srw64::settings_window::control(capture_directory);
     srw64::names::window_update();
+    srw64::debug::service_main();
     const bool editing_name=srw64::names::owns_input();
 #else
     const bool editing_name=false;
@@ -491,31 +506,65 @@ void srw64_update_window(void*) {
             ultramodern::quit();
         }
     }
+    // Presses from the debug interface take the same paths as the SDL events
+    // above, including the language-switch and name-page gates. F7 never
+    // reaches SDL (an AppKit monitor takes it), so it goes to the settings.
+    for (const auto key : srw64::debug::keyboard().take_presses()) {
+#ifdef SRW64_NATIVE_DIALOGUE
+        if (srw64::settings::owns_input()) continue;
+#endif
+        if (editing_name) continue;
+        if (key == srw64::debug::F6) srw64::presentation::image_mode.toggle();
+        else if (key == srw64::debug::F8) srw64::mini_stage::hotkey();
+#ifdef SRW64_NATIVE_DIALOGUE
+        else if (key == srw64::debug::F7)
+            srw64::settings::request_locale(srw64::localization::next_locale(srw64::localization::catalog().locale));
+#endif
+        else if (key == srw64::debug::Escape) {
+            fprintf(stderr, "SRW64_WINDOW_QUIT event=debug vi=%llu\n", (unsigned long long)srw64_current_vi());
+            ultramodern::quit();
+        }
+    }
+    const uint32_t virtual_keys = srw64::debug::keyboard().held();
     uint32_t state = 0;
 #ifdef SRW64_NATIVE_DIALOGUE
     int key_count=0;const auto* modal_keys=SDL_GetKeyboardState(&key_count);
     bool keys_released=true;
     for(int i=0;i<key_count;++i)if(modal_keys[i]){keys_released=false;break;}
+    if(virtual_keys)keys_released=false;
     srw64::settings::release_input_when(keys_released);
 #endif
-    if (!editing_name && SDL_GetKeyboardFocus() == window) {
+    if (!editing_name) {
         const Uint8* keys = SDL_GetKeyboardState(nullptr);
         // Physical positions stay stable across keyboard layouts. Do not pass
-        // macOS application shortcuts through as game input.
-        if (!(SDL_GetModState() & (KMOD_GUI | KMOD_ALT | KMOD_CTRL))) {
-            const auto bind = [&](SDL_Scancode key, uint32_t mask) { if (keys[key]) state |= mask; };
-            bind(SDL_SCANCODE_Z, 0x8000); bind(SDL_SCANCODE_X, 0x4000);
-            bind(SDL_SCANCODE_SPACE, 0x2000); bind(SDL_SCANCODE_RETURN, 0x1000);
-            bind(SDL_SCANCODE_UP, 0x0800); bind(SDL_SCANCODE_DOWN, 0x0400);
-            bind(SDL_SCANCODE_LEFT, 0x0200); bind(SDL_SCANCODE_RIGHT, 0x0100);
-            bind(SDL_SCANCODE_Q, 0x0020); bind(SDL_SCANCODE_E, 0x0010);
-            bind(SDL_SCANCODE_I, 0x0008); bind(SDL_SCANCODE_K, 0x0004);
-            bind(SDL_SCANCODE_J, 0x0002); bind(SDL_SCANCODE_L, 0x0001);
-            bind(SDL_SCANCODE_W, 1U << 16); bind(SDL_SCANCODE_S, 1U << 17);
-            bind(SDL_SCANCODE_A, 1U << 18); bind(SDL_SCANCODE_D, 1U << 19);
-        }
+        // macOS application shortcuts through as game input. Physical keys need
+        // window focus; keys held through the debug interface do not, since it
+        // drives the game while another application is in front.
+        const bool physical = SDL_GetKeyboardFocus() == window && !(SDL_GetModState() & (KMOD_GUI | KMOD_ALT | KMOD_CTRL));
+        using namespace srw64::debug;
+        const auto bind = [&](SDL_Scancode key, Key debug_key, uint32_t mask) {
+            if ((physical && keys[key]) || (virtual_keys & bit(debug_key))) state |= mask;
+        };
+        bind(SDL_SCANCODE_Z, Z, 0x8000); bind(SDL_SCANCODE_X, X, 0x4000);
+        bind(SDL_SCANCODE_SPACE, Space, 0x2000); bind(SDL_SCANCODE_RETURN, Return, 0x1000);
+        bind(SDL_SCANCODE_UP, Up, 0x0800); bind(SDL_SCANCODE_DOWN, Down, 0x0400);
+        bind(SDL_SCANCODE_LEFT, Left, 0x0200); bind(SDL_SCANCODE_RIGHT, Right, 0x0100);
+        bind(SDL_SCANCODE_Q, Q, 0x0020); bind(SDL_SCANCODE_E, E, 0x0010);
+        bind(SDL_SCANCODE_I, I, 0x0008); bind(SDL_SCANCODE_K, K, 0x0004);
+        bind(SDL_SCANCODE_J, J, 0x0002); bind(SDL_SCANCODE_L, L, 0x0001);
+        bind(SDL_SCANCODE_W, W, 1U << 16); bind(SDL_SCANCODE_S, S, 1U << 17);
+        bind(SDL_SCANCODE_A, A, 1U << 18); bind(SDL_SCANCODE_D, D, 1U << 19);
     }
     keyboard_state.store(state, std::memory_order_relaxed);
+}
+
+nlohmann::json srw64_window_status() {
+    if (!window) return nullptr;
+    int width = 0, height = 0, pixel_width = 0, pixel_height = 0;
+    SDL_GetWindowSize(window, &width, &height);
+    SDL_Metal_GetDrawableSize(window, &pixel_width, &pixel_height);
+    return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
+            {"pixel_width", pixel_width}, {"pixel_height", pixel_height}, {"title", SDL_GetWindowTitle(window)}};
 }
 
 void srw64_keyboard_input(uint16_t* buttons, float* x, float* y) {

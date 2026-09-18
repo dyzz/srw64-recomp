@@ -18,6 +18,8 @@ std::ofstream log;
 bool loaded{};
 uint64_t last_report{};
 int last_major=-1,last_group=-1,last_page=-1,last_phase=-1;
+json latest;       // The last step's state, for the debug interface.
+unsigned skips{};
 constexpr unsigned lengths[]={11,6,6,5,5};
 
 void record(const char* kind,json fields) {
@@ -53,8 +55,10 @@ void step(uint8_t* rdram,recomp_context* ctx) {
         record("skip",{{"group",group},{"page",page},{"phase",phase},
             {"next_scene",MEM_BU(0,int32_t(0x8015DA02))}});
         state["active"]=false;state["substate"]=2;state["page"]=lengths[group];
+        ++skips;
     }
     const auto vi=srw64_current_vi();
+    latest=state;latest["vi"]=vi;
     if(vi>=last_report+30) {
         state["schema"]="srw64.native-intro-state.v1";state["vi"]=vi;
         std::ofstream(output/"intro-state.tmp")<<state.dump(2)<<'\n';
@@ -62,6 +66,11 @@ void step(uint8_t* rdram,recomp_context* ctx) {
         last_report=vi;
     }
 }
+}
+json state() {
+    std::lock_guard lock(mutex);
+    return {{"loaded",loaded},{"title_major",loaded?last_major:-1},{"skips",skips},
+            {"step",loaded?latest:json(nullptr)}};
 }
 int title_major() {
     std::lock_guard lock(mutex);

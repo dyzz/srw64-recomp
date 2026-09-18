@@ -166,8 +166,7 @@ void refresh(uint8_t* ram,bool create_events) {
     reader.active=active_count==1;
     owns_input=reader.active && !observe;
 }
-void state_report() {
-    if(!srw64_full_diagnostics())return;
+json state_snapshot() {
     json state={{"schema","srw64.native-dialogue-state.v1"},{"vi",srw64_current_vi()},
         {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision},
         {"active",reader.active},{"event",reader.event},{"page",reader.page},
@@ -182,6 +181,11 @@ void state_report() {
         {"event",box.event},{"text_id",box.text_id},{"text_key",game_adapter::standard_dialogue_key(box.text_id).value},
                     {"segment",box.segment},{"speaker",utf8(box.speaker)},
         {"text",utf8(box.layout.text)},{"page",box.page},{"pages",box.layout.pages.size()}});
+    return state;
+}
+void state_report() {
+    if(!srw64_full_diagnostics())return;
+    const auto state=state_snapshot();
     std::ofstream(output/"dialogue-state.tmp")<<state.dump(2)<<'\n';
     std::filesystem::rename(output/"dialogue-state.tmp",output/"dialogue-state.json");
 }
@@ -311,6 +315,11 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
 }
 }
 
+nlohmann::json state() {
+    std::lock_guard lock(mutex);
+    if(!enabled)return nullptr;
+    return state_snapshot();
+}
 void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");if(!path)return;
     std::ifstream input(path);json data;input>>data;
