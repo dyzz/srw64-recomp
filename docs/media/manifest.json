@@ -175,6 +175,42 @@
       "caption": "与 18 同一运行。规则文件把スイームルグ 的上限从 11 改为 13、HP 每段价格改为 1234、装甲每段增量改为 +500：标题「最大で13段階まで」，费用 1234，装甲 1400→1900，13 格原字形刻度。",
       "status": "kept-for-showcase",
       "modified": false
+    },
+    {
+      "file": "20-protagonist-select-en.png",
+      "source": "build/recomp/debug/media-2026-09-18/protagonist-select-en.png",
+      "sha256": "291eb57b043cbc6bae7aa74ebc064822dae0069e926c4519aaa861e0bd328e77",
+      "title": "20 · 主角选择页（英文）/ Protagonist select (English)",
+      "caption": "调试接口实拍（运行 20260918T140000.592481Z，窗口 1280×960，Original 头像）：公共序章之后的原生选择页，四张卡片按原版路线顺序，←→ 已高亮マナミ。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "21-protagonist-select-zh.png",
+      "source": "build/recomp/debug/media-2026-09-18/protagonist-select-zh.png",
+      "sha256": "804b400b60624999092f51ee535a24f2735a23187cc1c1539ed49364fa086ca8",
+      "title": "21 · 主角选择页（中文）/ Protagonist select (Chinese)",
+      "caption": "与 20 同一运行，经 settings 切到简体中文后的同一页面；页头四步中「选角」为当前步。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "22-refund-banner.png",
+      "source": "build/recomp/debug/20260918T131851.399969Z/debug-shots/shot-1.png",
+      "sha256": "fd091f296a99668bf11deeeb4b969e87eaaa009b49e4777ada0cd3a402814ef7",
+      "title": "22 · 离队退款提示条 / Departure refund banners",
+      "caption": "refund 迷你关卡（upgrade-refund 开启）实测：开场事件删除机体后，窗口顶部依次出现退款提示，同时最多三条；金额与 ROM 价格表逐项一致。",
+      "status": "approved-for-readme",
+      "modified": false
+    },
+    {
+      "file": "23-refund-history.png",
+      "source": "build/recomp/debug/media-2026-09-18/refund-history.png",
+      "sha256": "fbba1b577fea204d0f7005b245e083ecd0e4e7a94f978584ae245f903f4a4d37",
+      "title": "23 · 回看里的退款记录 / Refund lines in the dialogue history",
+      "caption": "同一迷你关卡的另一次运行（20260918T141738.909639Z，1280×960）：四条退款以强调色列在对白之前，没有说话人；F7 切换语言时随之切换。",
+      "status": "approved-for-readme",
+      "modified": false
     }
   ],
   "video": {
@@ -253,5 +289,5 @@
     }
   },
   "approved_on": "2026-09-12",
-  "updated_on": "2026-09-13"
+  "updated_on": "2026-09-18"
 }

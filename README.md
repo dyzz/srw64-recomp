@@ -79,6 +79,34 @@ is not yet available. / 姓名页切换语言后保留测试输入 **ナナ**。
 </details>
 
 <details open>
+<summary><strong>Protagonist select · 主角选择</strong></summary>
+
+After the common prologue, a native page replaces the original scenario select:
+the four protagonists side by side with their partners, robot type and default
+names. **←→** and **Enter / Z**, or a click, choose. / 公共序章之后由原生页面取代原版的
+剧本选择：四位主角并排显示搭档、搭乘类型和默认姓名，**←→** 与 **Enter／Z** 或鼠标点击选择。
+
+| English | 简体中文 |
+| --- | --- |
+| ![Native protagonist select in English / 英文主角选择页](docs/media/20-protagonist-select-en.png) | ![Native protagonist select in Chinese / 中文主角选择页](docs/media/21-protagonist-select-zh.png) |
+
+</details>
+
+<details>
+<summary><strong>Departure refund (optional) · 离队退款（可选）</strong></summary>
+
+With the **departure refund** difficulty option on, a machine the story takes
+away pays back what its upgrades cost. A banner reports each refund, and the
+dialogue history keeps a line in every language. / 开启难度调整「离队退款」后，剧情移除的
+机体按现价退回改造资金；顶部提示条逐条报告，对话回看里也留下一行（三种语言）。
+
+| Banners / 提示条 | History / 回看 |
+| --- | --- |
+| ![Refund banners at the top of the window / 窗口顶部的退款提示条](docs/media/22-refund-banner.png) | ![Refund lines in the dialogue history / 回看里的退款记录](docs/media/23-refund-history.png) |
+
+</details>
+
+<details open>
 <summary><strong>Japanese / Chinese history comparison · 中日文回看对照</strong></summary>
 
 Twelve dialogue fragments were read through normal confirmation before opening
