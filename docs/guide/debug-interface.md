@@ -23,6 +23,7 @@
 | F6 画面、F8 迷你关卡、Esc 退出 | SDL 按键事件 | `keys`：虚拟按下沿经过与真实按键相同的姓名页、语言切换门控 |
 | F7 语言 | AppKit 本地事件监视器（SDL 收不到） | `keys f7`：发出与监视器相同的语言请求 |
 | N64 手柄（绕过键盘层） | 无（诊断用） | `buttons` |
+| 主角选择页：四张卡片、←→、Enter／Z | AppKit 鼠标与键盘 | `ui.click --text <主角全名>`（第一次高亮、第二次确定）、`ui.key right`／`return`；`status.name_page` 给出 `route` 与四个选项 |
 | 姓名页：字段、按钮、Tab／Enter／Esc、输入法组字 | AppKit 鼠标与键盘 | `ui.click`、`ui.type`（`marked`／`unmark` 模拟组字与提交）、`ui.key` |
 | 菜单栏「选项」（游戏性调整各项、「设置…」⌘,）与应用菜单 | 菜单栏 | `menu`；快捷键也可用 `ui.key`（如 `,` 加 `cmd`） |
 | 设置窗口：规则、预设、语言、画面 | AppKit 窗口 | `ui.click`／`ui.tree`／`screenshot` 加 `window: "选项"`；或用 `settings` 直接设定 |

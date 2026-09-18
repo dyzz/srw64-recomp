@@ -9,7 +9,9 @@ from .assets import compile_art, inside
 from .catalog import compile_locale, sha, source_catalog
 
 UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "controls", "history_title", "history_controls",
-           "name_title", "name_player", "name_partner", "name_given", "name_family", "name_nickname", "name_limit", "name_cancel", "name_default", "name_back", "name_next", "name_confirm", "name_hint", "name_empty", "name_long", "name_unsupported", "name_spaces", "name_invalid", "name_review_keyboard_hint", "name_review", "name_step_player", "name_step_partner", "name_step_review", "name_review_hint", "name_page_hint", "name_preview", "name_keyboard_hint", "name_start", "name_edit", "name_to_partner", "name_to_review"}
+           "name_title", "name_player", "name_partner", "name_given", "name_family", "name_nickname", "name_limit", "name_cancel", "name_default", "name_back", "name_next", "name_confirm", "name_hint", "name_empty", "name_long", "name_unsupported", "name_spaces", "name_invalid", "name_review_keyboard_hint", "name_review", "name_step_player", "name_step_partner", "name_step_review", "name_review_hint", "name_page_hint", "name_preview", "name_keyboard_hint", "name_start", "name_edit", "name_to_partner", "name_to_review",
+           "name_step_select", "select_title", "select_hint", "select_super", "select_real", "select_male",
+           "select_female", "select_confirm", "select_keyboard_hint"}
 # The 选项 menu and settings window label one item per optional rule, so those keys follow the catalog.
 UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_note", "rules_defaults",
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",

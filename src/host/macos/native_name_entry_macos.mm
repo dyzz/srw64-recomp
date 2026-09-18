@@ -30,6 +30,16 @@ void draw(NSString* value,NSRect rect,CGFloat size,unsigned color,BOOL bold=NO) 
         NSForegroundColorAttributeName:rgb(color),NSParagraphStyleAttributeName:style}];
 }
 const char* field_keys[]={"name_given","name_family","name_nickname"};
+// Header steps: selection first, then the three name pages.
+const char* step_keys[]={"name_step_select","name_step_player","name_step_partner","name_step_review"};
+const char* person_keys[]={"name_step_player","name_step_partner"};
+void portrait_in(NSImage* image,NSRect rect,CGFloat radius,bool smooth) {
+    [NSGraphicsContext saveGraphicsState];
+    [[NSBezierPath bezierPathWithRoundedRect:rect xRadius:radius yRadius:radius] addClip];
+    NSGraphicsContext.currentContext.imageInterpolation=smooth?NSImageInterpolationHigh:NSImageInterpolationNone;
+    [image drawInRect:rect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1 respectFlipped:YES hints:nil];
+    [NSGraphicsContext restoreGraphicsState];
+}
 }
 
 @interface SRW64NameField : NSTextField
@@ -64,6 +74,13 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
 @end
 
 @class SRW64NameController;
+// One protagonist on the selection page. A button, so it takes clicks, Full
+// Keyboard Access and the debug interface's click-by-text (its title is the
+// protagonist's default full name); the controller draws it.
+@interface SRW64ChoiceCard : NSButton
+@property(weak) SRW64NameController* owner;
+@property unsigned route;
+@end
 @interface SRW64NamePage : NSView
 @property(weak) SRW64NameController* owner;
 - (NSRect)place:(NSRect)rect;
@@ -78,6 +95,9 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
     NSArray<SRW64NameField*>* inputs;
     SRW64NameButton *next,*reset,*cancel;
     NSArray<NSImage*>* portraits;
+    NSArray<SRW64ChoiceCard*>* cards;
+    NSArray<NSImage*>* choicePortraits;   // route * 2 + person
+    unsigned choice;
     NSString* error;
     bool waiting;
     int image_mode;
@@ -94,6 +114,14 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
 - (void)useDefault:(id)sender;
 - (void)cancel:(id)sender;
 - (void)snapshot:(NSString*)suffix;
+- (void)move:(int)delta;
+- (void)pick:(SRW64ChoiceCard*)sender;
+- (void)drawCard:(unsigned)route bounds:(NSRect)bounds;
+@end
+
+@implementation SRW64ChoiceCard
+- (BOOL)isFlipped {return YES;}
+- (void)drawRect:(NSRect)dirty {[self.owner drawCard:self.route bounds:self.bounds];}
 @end
 
 @implementation SRW64NamePage
@@ -101,6 +129,14 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
 - (BOOL)isOpaque {return YES;}
 - (BOOL)acceptsFirstResponder {return YES;}
 - (void)keyDown:(NSEvent*)event {
+    if(self.owner->request.person==srw64::names::Selection) {
+        // Arrows as on the original screen; Return, Enter, Space or the game's Z confirm.
+        switch(event.keyCode) {
+            case 123:case 126:[self.owner move:-1];return;
+            case 124:case 125:[self.owner move:1];return;
+            case 36:case 76:case 49:case 6:[self.owner commit:nil];return;
+        }
+    }
     if(self.owner->request.person==srw64::names::Review) {
         if(event.keyCode==36 || event.keyCode==76){[self.owner commit:nil];return;}
         if(event.keyCode==53){[self.owner cancel:nil];return;}
@@ -108,6 +144,8 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
     [super keyDown:event];
 }
 - (BOOL)performKeyEquivalent:(NSEvent*)event {
+    if(self.owner->request.person==srw64::names::Selection && !self.hidden &&
+       [event.charactersIgnoringModifiers isEqualToString:@"\r"]){[self.owner commit:nil];return YES;}
     if(self.owner->request.person==srw64::names::Review && !self.hidden) {
         if([event.charactersIgnoringModifiers isEqualToString:@"\r"]){[self.owner commit:nil];return YES;}
         if(event.keyCode==53){[self.owner cancel:nil];return YES;}
@@ -127,18 +165,26 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
     [NSGraphicsContext saveGraphicsState];
     NSAffineTransform* transform=[NSAffineTransform transform];auto origin=[self place:NSMakeRect(0,0,0,0)].origin;
     [transform translateXBy:origin.x yBy:origin.y];[transform scaleBy:self.scale];[transform concat];
-    box(NSMakeRect(0,0,420,720),0x0B1723);
+    const bool selection=c->request.person==srw64::names::Selection;
+    if(!selection)box(NSMakeRect(0,0,420,720),0x0B1723);
     box(NSMakeRect(0,0,6,720),0x89DBF1);
     draw(@"SRW 64",NSMakeRect(54,36,180,24),18,0xD9F3FA,YES);
     draw(label("name_title"),NSMakeRect(202,39,220,22),13,0x718DA4);
-    const char* steps[]={"name_step_player","name_step_partner","name_step_review"};
-    for(unsigned i=0;i<3;++i) {
-        CGFloat x=548+i*169;BOOL active=c->request.person==i,done=c->request.person>i;
+    const unsigned at=selection?0:c->request.person+1;
+    for(unsigned i=0;i<4;++i) {
+        CGFloat x=426+i*150;BOOL active=at==i,done=at>i;
         box(NSMakeRect(x,34,28,28),active?0x9BE4F7:0x182B3B,14);
         draw(done?@"✓":[NSString stringWithFormat:@"%u",i+1],NSMakeRect(x+9,39,18,20),13,active?0x0A2736:0x8DA8BD,YES);
-        draw(label(steps[i]),NSMakeRect(x+38,39,125,22),13,active?0xE7F3FC:0x748DA1,active);
+        draw(label(step_keys[i]),NSMakeRect(x+38,39,106,22),13,active?0xE7F3FC:0x748DA1,active);
     }
     box(NSMakeRect(54,88,972,1),0x203345);
+    if(selection) {
+        draw(label("select_title"),NSMakeRect(54,115,972,47),32,0xEDF5FC,YES);
+        draw(label("select_hint"),NSMakeRect(54,169,970,30),14,0x8DA6BA);
+        draw(label("select_keyboard_hint"),NSMakeRect(54,676,972,23),12,0x6E879C);
+        [NSGraphicsContext restoreGraphicsState];
+        return;
+    }
     const bool review=c->request.person==srw64::names::Review;
     draw(label(review?"name_review":c->request.person?"name_partner":"name_player"),NSMakeRect(54,115,972,47),32,0xEDF5FC,YES);
     draw(label(review?"name_review_hint":"name_page_hint"),NSMakeRect(54,169,970,30),14,0x8DA6BA);
@@ -156,7 +202,7 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
         for(unsigned p=0;p<2;++p) {
             CGFloat x=54+p*504;box(NSMakeRect(x,226,468,340),0x101E2D,14);stroke_box(NSMakeRect(x,226,468,340),0x294254,14);
             portrait(p,NSMakeRect(x+24,250,144,144));
-            draw(label(steps[p]),NSMakeRect(x+194,255,244,25),13,0x8CD6EF,YES);
+            draw(label(person_keys[p]),NSMakeRect(x+194,255,244,25),13,0x8CD6EF,YES);
             draw(string(c->request.names[p][0]),NSMakeRect(x+194,291,244,40),28,0xF0F6FC,YES);
             draw(string(c->request.names[p][1]),NSMakeRect(x+194,337,244,34),22,0xADC4D6);
             box(NSMakeRect(x+24,420,420,1),0x284052);
@@ -202,6 +248,12 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
         value.buttonType=NSButtonTypeMomentaryPushIn;[page addSubview:value];return value;
     };
     cancel=button(@selector(cancel:));reset=button(@selector(useDefault:));next=button(@selector(commit:));next.primary=YES;
+    NSMutableArray* choiceCards=[NSMutableArray array];
+    for(unsigned route=0;route<4;++route) {
+        auto* card=[[SRW64ChoiceCard alloc] init];card.owner=self;card.route=route;card.target=self;card.action=@selector(pick:);
+        card.bordered=NO;card.buttonType=NSButtonTypeMomentaryChange;card.hidden=YES;[page addSubview:card];[choiceCards addObject:card];
+    }
+    cards=choiceCards;
     return self;
 }
 - (void)arrange {
@@ -210,13 +262,14 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
         inputs[f].frame=[page place:NSMakeRect(478,264+110*f,528,39)];
         inputs[f].font=[NSFont systemFontOfSize:26*s weight:NSFontWeightMedium];
     }
+    for(unsigned route=0;route<4;++route)cards[route].frame=[page place:NSMakeRect(54+route*248,224,228,360)];
     bool review=request.person==srw64::names::Review;
     cancel.frame=[page place:NSMakeRect(review?54:462,612,184,48)];
     reset.frame=[page place:NSMakeRect(660,612,146,48)];
     next.frame=[page place:NSMakeRect(822,612,204,48)];
 }
 - (void)show:(const srw64::names::Request&)value {
-    request=value;values=value.values;field=0;waiting=!value.active;error=@"";
+    request=value;values=value.values;field=0;waiting=!value.active;error=@"";choice=value.route;
     image_mode=-99;
     if(!page.superview || page.hidden)previousResponder=game_window.firstResponder;
     if(!page.superview)[game_window.contentView addSubview:page positioned:NSWindowAbove relativeTo:nil];
@@ -225,25 +278,78 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
     [self refresh];
 }
 - (void)refresh {
-    const bool review=request.person==srw64::names::Review;
+    const bool review=request.person==srw64::names::Review, selection=request.person==srw64::names::Selection;
     if(image_mode!=srw64::presentation::image_mode.current()) {
-        image_mode=srw64::presentation::image_mode.current();NSMutableArray* images=[NSMutableArray array];
-        for(unsigned p=0;p<2;++p) {
-            auto* image=[[NSImage alloc] initWithContentsOfFile:string(request.portraits[p][image_mode==1])];
-            [images addObject:image?:[[NSImage alloc] initWithSize:NSMakeSize(96,96)]];
-        }
+        image_mode=srw64::presentation::image_mode.current();
+        auto load=[&](const std::string& path) {
+            auto* image=[[NSImage alloc] initWithContentsOfFile:string(path)];
+            return image?:[[NSImage alloc] initWithSize:NSMakeSize(96,96)];
+        };
+        NSMutableArray* images=[NSMutableArray array];
+        for(unsigned p=0;p<2;++p)[images addObject:load(request.portraits[p][image_mode==1])];
         portraits=images;
+        NSMutableArray* choices=[NSMutableArray array];
+        if(selection)for(unsigned route=0;route<4;++route)for(unsigned p=0;p<2;++p)
+            [choices addObject:load(request.choices[route].portraits[p][image_mode==1])];
+        choicePortraits=choices;
     }
-    for(SRW64NameField* input in inputs){input.hidden=review;input.enabled=!waiting;}
+    for(SRW64NameField* input in inputs){input.hidden=review || selection;input.enabled=!waiting;}
+    for(SRW64ChoiceCard* card in cards) {
+        const auto& names=request.choices[card.route].names[0];
+        card.hidden=!selection;card.enabled=!waiting;
+        card.title=string(names[0]+u"・"+names[1]);card.needsDisplay=YES;
+    }
     next.enabled=reset.enabled=cancel.enabled=!waiting;
-    next.title=label(review?"name_start":request.person?"name_to_review":"name_to_partner");
-    cancel.title=label(review?"name_edit":"name_cancel");reset.title=label("name_default");reset.hidden=review;
-    next.keyEquivalent=review?@"\r":@"";cancel.keyEquivalent=review?@"\e":@"";
+    next.title=label(selection?"select_confirm":review?"name_start":request.person?"name_to_review":"name_to_partner");
+    cancel.title=label(review?"name_edit":"name_cancel");reset.title=label("name_default");
+    reset.hidden=review || selection;cancel.hidden=selection;
+    next.keyEquivalent=review || selection?@"\r":@"";cancel.keyEquivalent=review?@"\e":@"";
     [self arrange];page.needsDisplay=YES;
-    if(!waiting && !review && !inputs[field].currentEditor)[self focus:field];
+    if(!waiting && !review && !selection && !inputs[field].currentEditor)[self focus:field];
     // NSButton focus depends on the user's Full Keyboard Access setting.
-    // Give the review page its own responder for reliable Return / Escape.
-    if(review)[game_window makeFirstResponder:page];
+    // Give the review and selection pages their own responder for reliable keys.
+    if(review || selection)[game_window makeFirstResponder:page];
+}
+- (void)move:(int)delta {
+    if(waiting || request.person!=srw64::names::Selection)return;
+    choice=unsigned(int(choice)+4+delta)%4;srw64::names::select(request.serial,choice);
+    for(SRW64ChoiceCard* card in cards)card.needsDisplay=YES;
+}
+- (void)pick:(SRW64ChoiceCard*)sender {
+    if(waiting)return;
+    // A click highlights; a second click on the highlighted card (or a double
+    // click) confirms, as Return does.
+    const bool again=sender.route==choice;
+    // clickCount is only defined for mouse events: a card can also be pressed from
+    // the keyboard (Full Keyboard Access) or by performClick:.
+    NSEvent* event=NSApp.currentEvent;
+    const bool mouse=event && (event.type==NSEventTypeLeftMouseDown || event.type==NSEventTypeLeftMouseUp);
+    choice=sender.route;srw64::names::select(request.serial,choice);
+    for(SRW64ChoiceCard* card in cards)card.needsDisplay=YES;
+    if(again || (mouse && event.clickCount>=2))[self commit:nil];
+}
+- (void)drawCard:(unsigned)route bounds:(NSRect)bounds {
+    srw64::localization::Scope language(srw64::localization::snapshot());
+    const CGFloat s=bounds.size.height/360;const bool active=route==choice;
+    [NSGraphicsContext saveGraphicsState];
+    NSAffineTransform* transform=[NSAffineTransform transform];[transform scaleBy:s];[transform concat];
+    const NSRect card=NSMakeRect(1,1,226,358);
+    box(card,active?0x13263A:0x101E2D,14);stroke_box(card,active?0x81D6EE:0x294254,14,active?2:1);
+    const bool smooth=image_mode==1;
+    if(route*2+1<choicePortraits.count) {
+        box(NSMakeRect(24,22,180,180),0x183043,12);portrait_in(choicePortraits[route*2],NSMakeRect(24,22,180,180),12,smooth);
+        box(NSMakeRect(144,146,66,66),active?0x13263A:0x101E2D,12);
+        portrait_in(choicePortraits[route*2+1],NSMakeRect(147,149,60,60),10,smooth);
+    }
+    const bool super=route<2, male=route%2==0;
+    draw([NSString stringWithFormat:@"%@  ·  %@",label(super?"select_super":"select_real"),label(male?"select_male":"select_female")],
+         NSMakeRect(24,220,190,20),13,super?0xF2B678:0x8CD6EF,YES);
+    const auto& names=request.choices[route].names;
+    draw(string(names[0][0]),NSMakeRect(24,246,190,34),26,0xF0F6FC,YES);
+    draw(string(names[0][1]),NSMakeRect(24,284,190,24),16,0xADC4D6);
+    draw([NSString stringWithFormat:@"%@  %@",label("name_step_partner"),string(names[1][0]+u"・"+names[1][1])],
+         NSMakeRect(24,322,190,20),12,0x809DB4);
+    [NSGraphicsContext restoreGraphicsState];
 }
 - (void)focus:(unsigned)index {
     if(waiting || request.person==srw64::names::Review || index>2)return;
@@ -259,14 +365,15 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
 }
 - (void)advance:(id)sender {
     if(waiting || [self composing])return;
-    if(request.person==srw64::names::Review){[self commit:nil];return;}
+    if(request.person==srw64::names::Review || request.person==srw64::names::Selection){[self commit:nil];return;}
     auto problem=srw64::names::validate(text([inputs[field].stringValue precomposedStringWithCanonicalMapping]),field);
     if(!problem.empty()){error=label(problem.c_str());page.needsDisplay=YES;return;}
     if(field<2)[self focus:field+1];else [self commit:nil];
 }
 - (void)commit:(id)sender {
     if(waiting || [self composing])return;
-    if(request.person==srw64::names::Review)srw64::names::review(request.serial,true);
+    if(request.person==srw64::names::Selection)srw64::names::choose(request.serial,choice);
+    else if(request.person==srw64::names::Review)srw64::names::review(request.serial,true);
     else {
         for(unsigned f=0;f<3;++f) {
             values[f]=text([inputs[f].stringValue precomposedStringWithCanonicalMapping]);
@@ -279,11 +386,12 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
 }
 - (void)goBack:(id)sender {if(field)[self focus:field-1];}
 - (void)useDefault:(id)sender {
-    if(waiting || [self composing])return;
+    if(waiting || [self composing] || request.person==srw64::names::Selection)return;
     values=request.values;for(unsigned f=0;f<3;++f)inputs[f].stringValue=string(values[f]);error=@"";[self focus:field];
 }
 - (void)cancel:(id)sender {
-    if(waiting || [self composing])return;
+    // The original selection screen has no way back; neither does its page.
+    if(waiting || [self composing] || request.person==srw64::names::Selection)return;
     if(request.person==srw64::names::Review)srw64::names::review(request.serial,false);
     else srw64::names::submit(request.serial,values,true);
     waiting=true;[game_window makeFirstResponder:nil];[self refresh];

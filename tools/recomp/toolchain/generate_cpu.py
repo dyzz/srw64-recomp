@@ -24,6 +24,7 @@ NATIVE_HOOKS = {
     "resident_func_800927A4": "srw64_original_intermission_restore",
     "resident_func_800936A0": "srw64_original_tactical_restore",
     "load_001090A0_func_801C5004": "srw64_original_name_selection_init",
+    "load_001090A0_func_801C50B8": "srw64_original_name_selection_step",
     "load_001090A0_func_801C5DAC": "srw64_original_name_review_init",
     "load_001090A0_func_801C5E88": "srw64_original_name_review_step",
     "load_001090A0_func_801C5494": "srw64_original_name_player_init",
