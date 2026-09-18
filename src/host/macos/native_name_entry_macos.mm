@@ -81,6 +81,7 @@ const char* field_keys[]={"name_given","name_family","name_nickname"};
     bool waiting;
     int image_mode;
     NSResponder* previousResponder;
+    bool releasing;   // page just closed; waiting once for its keys to be released
 }
 - (void)show:(const srw64::names::Request&)value;
 - (void)refresh;
@@ -326,10 +327,21 @@ void window_update() {
             if(cover_in_flight())return;
             if(!controller->page.hidden) {
                 controller->page.hidden=YES;[game_window makeFirstResponder:controller->previousResponder];
+                controller->releasing=true;
             }
+            // The Enter or Esc that closed the page must not reach the game as
+            // START or B, so input stays with the page until those keys are up.
+            // This happens once per close: afterwards the game owns every key,
+            // or held E+Z, I/K and E+Enter would never reach the reading and
+            // skip controls. The combined session state also reports keys typed
+            // into other applications, so only the focused game window counts.
+            if(!controller->releasing)return;
             const unsigned game_keys[]={0,1,2,6,7,12,13,14,34,37,38,40,36,49,53,123,124,125,126};
-            bool held=false;for(auto key:game_keys)held |= CGEventSourceKeyState(kCGEventSourceStateCombinedSessionState,key);
-            window_claim_input(held);return;
+            bool held=false;
+            if(game_window.isKeyWindow)for(auto key:game_keys)held |= CGEventSourceKeyState(kCGEventSourceStateCombinedSessionState,key);
+            window_claim_input(held);
+            if(!held)controller->releasing=false;
+            return;
         }
         if(value.revision!=controller->request.revision) {
             controller->request.revision=value.revision;controller->request.active=value.active;
