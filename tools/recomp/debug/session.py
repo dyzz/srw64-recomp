@@ -24,7 +24,7 @@ PROFILE = ROOT / "config/recomp/profiles/play-profile.json"
 EVENT_LOGS = {"dialogue": "dialogue-events.jsonl", "intro": "intro-events.jsonl", "name": "name-entry-events.jsonl",
               "rules": "rule-fixes-events.jsonl", "images": "image-mode-events.jsonl", "control": "control-events.jsonl",
               "script": "script-inject-events.jsonl", "mini_stage": "mini-stage-events.jsonl",
-              "settings": "settings-window-events.jsonl"}
+              "settings": "settings-window-events.jsonl", "refunds": "upgrade-refund-events.jsonl"}
 
 
 class HostError(RuntimeError):

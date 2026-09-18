@@ -59,6 +59,8 @@
     "rule_boss_dummy_half": "Boss dummies: halved (at least one)",
     "rule_boss_dummy_none": "Boss dummies: none (wins over halved)",
     "rule_upgrade_cap_break": "Upgrade cap: every unit up to 15 (original: 6–15 per unit)",
+    "rule_upgrade_refund": "Departure refund: story removals return upgrade funds",
+    "refund_notice": "{unit} left the team — {amount} in upgrade funds refunded",
     "options_menu": "Options",
     "settings_open": "Settings…",
     "rules_defaults": "Restore defaults (corrections on, difficulty off)",

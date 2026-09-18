@@ -59,6 +59,8 @@
     "rule_boss_dummy_half": "头目假身：次数减半（至少 1 次）",
     "rule_boss_dummy_none": "头目假身：取消（优先于减半）",
     "rule_upgrade_cap_break": "改造上限突破：全部机体可改到 15 段（原版按机体 6～15）",
+    "rule_upgrade_refund": "离队退款：剧情移除机体时退回改造资金",
+    "refund_notice": "{unit} 已离开部队，退回改造资金 {amount}",
     "options_menu": "选项",
     "settings_open": "设置…",
     "rules_defaults": "恢复默认（修正开启、难度关闭）",

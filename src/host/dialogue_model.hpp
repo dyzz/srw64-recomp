@@ -22,6 +22,7 @@ struct Entry {
     bool warm_name{};
     bool complete{};
     std::map<std::string,std::u16string> localized;
+    bool notice{};   // a host line such as an upgrade refund, not a dialogue fragment
 };
 struct PageTiming {
     size_t clusters{};
@@ -54,9 +55,21 @@ struct Reader {
         page_started=tick=now; history_offset=0;
         // Assign the turn color once so scrolling and trimming old history
         // cannot recolor existing names. STOP fragments keep their speaker.
-        const bool warm_name=!history.empty() &&
-            (history.back().warm_name != (history.back().speaker!=speaker));
+        const auto previous=std::find_if(history.rbegin(),history.rend(),[](const Entry& e){return !e.notice;});
+        const bool warm_name=previous!=history.rend() &&
+            (previous->warm_name != (previous->speaker!=speaker));
         history.push_back({id,text_id,segment,std::move(speaker),{},warm_name});
+        if(history.size()>history_limit) history.pop_front();
+    }
+    // A host notice in every language. It goes before the fragment being read, so
+    // that fragment stays last for remember() and the completion mark.
+    void note(uint64_t id,std::map<std::string,std::u16string> localized,const std::string& locale) {
+        Entry entry{id,0,0,{},{},false,true,std::move(localized),true};
+        const auto found=entry.localized.find(locale);
+        if(found!=entry.localized.end())entry.text=found->second;
+        auto at=history.end();
+        if(event && !history.empty() && history.back().event==event)--at;
+        history.insert(at,std::move(entry));
         if(history.size()>history_limit) history.pop_front();
     }
     void relayout(Layout value) {

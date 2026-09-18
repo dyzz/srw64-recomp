@@ -59,6 +59,8 @@
     "rule_boss_dummy_half": "ボスの身代わり：回数を半分（最低 1 回）",
     "rule_boss_dummy_none": "ボスの身代わり：なし（半分より優先）",
     "rule_upgrade_cap_break": "改造上限：全機体 15 段まで（原作は機体ごとに 6～15）",
+    "rule_upgrade_refund": "離脱返金：シナリオで機体が消えると改造資金を返す",
+    "refund_notice": "{unit}が部隊を離れました。改造資金 {amount} を返金しました",
     "options_menu": "オプション",
     "settings_open": "設定…",
     "rules_defaults": "既定に戻す（修正オン・難易度オフ）",

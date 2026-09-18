@@ -9,6 +9,7 @@
 #include "presentation/image_mode.hpp"
 #include "rule_fixes.hpp"
 #include "settings_window.hpp"
+#include "notices.hpp"
 #include "localization/catalog.hpp"
 #include <cerrno>
 #include <csignal>
@@ -101,7 +102,8 @@ json status(const json& params) {
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
-        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()}};
+        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
+        {"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};

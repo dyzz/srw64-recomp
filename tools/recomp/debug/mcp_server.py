@@ -39,7 +39,7 @@ TOOLS = [
          "reuse_build": {"type": "boolean", "description": "skip the rebuild when nothing changed since the last debug run"}}}},
     {"name": "srw64_attach", "description": "Use a running debug session (the latest one by default).",
      "inputSchema": {"type": "object", "properties": {"run": {"type": "string"}}}},
-    {"name": "srw64_status", "description": "VI, window, locale, image mode, rules, title/intro state, the dialogue reader (page, text size, speed, history, skip) with its boxes, the name page, native UI windows and focus, held keys.",
+    {"name": "srw64_status", "description": "VI, window, locale, image mode, rules, title/intro state, the dialogue reader (page, text size, speed, history, skip) with its boxes, the name page, recent native notices (banners), native UI windows and focus, held keys.",
      "inputSchema": {"type": "object", "properties": {"history": {"type": "boolean", "description": "include the full dialogue history"}}}},
     {"name": "srw64_keys", "description": "Game keyboard. Either {press, hold_ms} or a list of steps: {press|down|up: \"e+z\", hold_ms}, {wait_ms}, {release_all: true}. Keys: z x space return up down left right q e i k j l w a s d escape f6 f7 f8.",
      "inputSchema": {"type": "object", "properties": {

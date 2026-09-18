@@ -225,13 +225,15 @@ void raster(const Frame& frame,uint32_t width,uint32_t height) {
         paint.panel(16,18,288,202);
         paint.label(utf16(localization::catalog().ui("history_title")),23,23,12,210,.41,.75,1,"history_title");
         paint.label(utf16(localization::catalog().ui("history_controls")),151,27,6.2,147,.75,.8,.86,"history_controls");
-        struct HistoryLine {std::u16string text;Line range;bool speaker;bool warm_name{};};
+        struct HistoryLine {std::u16string text;Line range;bool speaker;bool warm_name{};bool notice{};};
         std::vector<HistoryLine> lines;
         for(const auto& entry:frame.history) {
             if(entry.text.empty())continue;
-            lines.push_back({entry.speaker,{0,entry.speaker.size(),0},true,entry.warm_name});
+            // A host notice has no speaker; it keeps the accent colour of the UI frames.
+            if(!entry.notice)lines.push_back({entry.speaker,{0,entry.speaker.size(),0},true,entry.warm_name});
             const auto layout=typeset(entry.text,10,270,10000);
-            for(const auto& page:layout.pages)for(const auto& line:page.lines)lines.push_back({entry.text,line,false});
+            for(const auto& page:layout.pages)for(const auto& line:page.lines)
+                lines.push_back({entry.text,line,false,false,entry.notice});
             lines.push_back({{}, {},false});
         }
         constexpr size_t shown=13;
@@ -241,9 +243,9 @@ void raster(const Frame& frame,uint32_t width,uint32_t height) {
         for(size_t i=begin;i<end;++i) {
             const auto& line=lines[i];
             paint.text(line.text,24,y,10,270,13,{line.range},line.text.size(),
-                line.speaker?(line.warm_name?1:.41):1,
-                line.speaker?(line.warm_name?.67:.75):1,
-                line.speaker && line.warm_name?.35:1,"history_line");
+                line.notice?.61:line.speaker?(line.warm_name?1:.41):1,
+                line.notice?.89:line.speaker?(line.warm_name?.67:.75):1,
+                line.notice?.97:line.speaker && line.warm_name?.35:1,line.notice?"history_notice":"history_line");
             y+=12.5;
         }
     }

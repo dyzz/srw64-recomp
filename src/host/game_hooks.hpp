@@ -15,6 +15,8 @@ struct SRW64GameHooks {
     void (*intro_step)(uint8_t*, recomp_context*){};
     void (*name_begin)(uint8_t*, unsigned){};
     bool (*name_step)(uint8_t*, recomp_context*, unsigned){};
+    // The upgrade-refund rule just paid `amount` back for the player's machine `unit`.
+    void (*refund)(uint8_t*, uint16_t unit, uint32_t amount){};
 };
 extern SRW64GameHooks srw64_game_hooks;
 extern "C" void srw64_original_dialogue_step(uint8_t*, recomp_context*);
