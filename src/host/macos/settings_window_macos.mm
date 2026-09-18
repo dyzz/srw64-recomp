@@ -41,9 +41,11 @@ NSString* text(const std::string& key) {
 @property(nonatomic,strong) NSMutableArray<SRW64Setting*>* settings;
 @property(nonatomic,strong) NSMutableArray<NSTextField*>* labels;
 @property(nonatomic,strong) NSMutableArray<NSString*>* labelKeys;
+@property(nonatomic,strong) NSStackView* presets;
 - (void)build;
 - (void)refresh;
 - (void)retitle;
+- (void)fit;
 - (void)activate:(NSButton*)sender;
 @end
 
@@ -124,6 +126,7 @@ NSString* text(const std::string& key) {
         [presets addArrangedSubview:button];
     }
     [stack addArrangedSubview:presets];
+    self.presets=presets;
 
     [stack addArrangedSubview:[self heading:"settings_language" size:14]];
     NSStackView* languages=[[NSStackView alloc] init];
@@ -153,7 +156,7 @@ NSString* text(const std::string& key) {
     [stack addArrangedSubview:images];
     [stack addArrangedSubview:[self note:"settings_images_note"]];
 
-    const NSRect frame=NSMakeRect(0,0,460,stack.fittingSize.height);
+    const NSRect frame=NSMakeRect(0,0,460,10);
     stack.frame=frame;
     self.panel=[[NSPanel alloc] initWithContentRect:frame
         styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|NSWindowStyleMaskUtilityWindow
@@ -163,8 +166,20 @@ NSString* text(const std::string& key) {
     self.panel.delegate=self;
     self.panel.releasedWhenClosed=NO;
     self.panel.hidesOnDeactivate=NO;
+    [self fit];
     [self.panel center];
     [self refresh];
+}
+
+// At least 460 points wide, and as wide as the longest row (the preset buttons
+// in English) so nothing is clipped; again after a language change.
+- (void)fit {
+    NSStackView* content=(NSStackView*)self.panel.contentView;
+    const NSSize size=content.fittingSize;
+    // The vertical stack's fitting width leaves the horizontal preset row's
+    // trailing inset out, so measure that row with both insets.
+    const CGFloat row=self.presets.fittingSize.width+content.edgeInsets.left+content.edgeInsets.right;
+    [self.panel setContentSize:NSMakeSize(ceil(MAX(460,MAX(size.width,row))),ceil(size.height))];
 }
 
 // Values follow the game, not the other way round: read them back every frame so
@@ -200,6 +215,7 @@ NSString* text(const std::string& key) {
             setting.button.title=text(setting.labelKey.UTF8String);
     }
     self.panel.title=text("settings_title");
+    [self fit];
 }
 
 // Main thread. Each control applies through the same path as the menu or hotkey.
