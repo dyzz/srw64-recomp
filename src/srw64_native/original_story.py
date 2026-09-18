@@ -180,13 +180,15 @@ class StoryBuilder:
                 else:
                     lines.append({"kind": "statement", "text": condition_text(item), **base})
             elif kind == "command" and item["opcode"] == 0x3D44:
-                text_id, count = item["operands"][0], item["operands"][1]
-                options = []
-                for k in range(count):
-                    key = text_key(0, text_id + k)
-                    options.append({"text_key": key, "text": self.sources.get(key, ""),
-                                    "display": display_text(self.sources.get(key, ""))})
-                lines.append({"kind": "choice", "options": options, **base})
+                # 8009FA94 passes operand 3 to 8008F648 as the text id; operand 1 is the window slot.
+                _, count, text_id = item["operands"]
+                key = text_key(0, text_id)
+                text = self.sources.get(key, "")
+                rows = text.replace("<END>", "").split("<BR>") if text else []
+                options = [{"index": k, "text": row, "display": display_text(row).strip()}
+                           for k, row in enumerate(rows)]
+                lines.append({"kind": "choice", "text_key": key, "text_id": text_id, "text": text,
+                              "count": count, "options": options, **base})
             elif kind == "command":
                 text = self.note(scene, item)
                 if text is None:

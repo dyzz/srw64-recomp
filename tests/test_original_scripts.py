@@ -223,6 +223,26 @@ class OriginalScriptTests(unittest.TestCase):
         choice = self.events['base:stage_events:0019ca34']['script']['instructions']
         index = next(n for n, i in enumerate(choice) if i['opcode'] == 0x3D44)
         self.assertEqual((choice[index]['fields'][1]['value'], choice[index + 1]['opcode']), (3, 0x3E10))
+        self.assertEqual(choice[index]['fields'][2]['text_key'], 'base:t00_17582')
+
+    def test_choice_text_is_the_third_operand(self):
+        # 8009FA94 hands lhu 4(PC) to 8008FF04 → 8008F648 as the text id; operand 1 is the window slot.
+        event = self.events['base:stage_events:001a6de8']
+        choice = next(i for i in event['script']['instructions'] if i['opcode'] == 0x3D44)
+        self.assertEqual(choice['operands'], [0, 2, 21815])
+        slot, count, text = choice['fields']
+        self.assertEqual((slot['role'], slot['name'], count['role'], text['role']), ('raw', '窗口槽位', 'count', 'text'))
+        self.assertIn('note', slot)
+        self.assertEqual(text['text_key'], 'base:t00_21815')
+        self.assertEqual(text['text'], ' シーラの方へ向かう<BR> エレの方へ向かう<END>')
+        links = {l['key'] for l in event['links']}
+        self.assertIn('base:t00_21815', links)
+        self.assertNotIn('base:t00_00000', links)
+        instances = [i for e in self.data['stage_events'] for i in e['script']['instructions'] if i['opcode'] == 0x3D44]
+        self.assertEqual(len(instances), 46)
+        self.assertEqual(sorted({i['operands'][0] for i in instances}), [0, 1])
+        for i in instances:
+            self.assertEqual(i['fields'][2]['text'].count('<BR>') + 1, i['operands'][1], i['rom_offset'])
 
     def test_deployment_records_and_catalogs(self):
         self.assertEqual(self.audit['deployment_records'], 6223)
