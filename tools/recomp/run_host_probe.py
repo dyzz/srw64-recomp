@@ -77,6 +77,21 @@ def main() -> int:
                 or args.images != "original" or args.language != "ja"
                 or os.environ.get("SRW64_SCRIPT_TRACE") != "1"):
             parser.error("movement experiment requires original JP profile/images, ja, script trace, muted bounded run and empty SRAM")
+    if os.environ.get("SRW64_SCRIPT_INJECT") == "1":
+        if (not profile or args.variant != "jp" or args.audio or args.interactive or not args.graphics
+                or os.environ.get("SRW64_SCRIPT_TRACE") != "1"):
+            parser.error("script injection requires a muted bounded JP profile graphics run with script trace")
+    if os.environ.get("SRW64_MINI_STAGE"):
+        # Bounded runs stay attributable through the script trace. Audio is allowed
+        # so presentation commands that only differ in sound can be told apart; a
+        # bounded audio run must name the VI window it captures.
+        if (not profile or args.variant != "jp" or not args.graphics
+                or (not args.interactive and os.environ.get("SRW64_SCRIPT_TRACE") != "1")):
+            parser.error("mini stage substitution requires a JP profile graphics run; bounded runs need script trace")
+        if args.audio and not args.interactive and not os.environ.get("SRW64_AUDIO_CAPTURE_TO"):
+            parser.error("a bounded mini stage audio run must set SRW64_AUDIO_CAPTURE_FROM/_TO around the commands being listened to")
+        if not Path(os.environ["SRW64_MINI_STAGE"]).is_file():
+            parser.error("SRW64_MINI_STAGE must name a compiled mini stage image")
     native_marker = None
     if args.native_marker:
         if not args.graphics or args.variant != "jp":
@@ -211,11 +226,16 @@ def main() -> int:
     report["interactive"] = args.interactive
     report["initial_save"] = initial_save
     report["audio_output_enabled"] = args.audio
+    if args.audio:
+        report["audio_capture_window"] = {"from_vi": os.environ.get("SRW64_AUDIO_CAPTURE_FROM"),
+                                          "to_vi": os.environ.get("SRW64_AUDIO_CAPTURE_TO")}
     report["native_name_entry"] = {"enabled": bool(prepared_profile) and not args.original_name_entry,
         "control_enabled": bool(os.environ.get("SRW64_NAME_ENTRY_CONTROL"))}
     report["diagnostics"] = diagnostics
     report["script_trace_enabled"] = os.environ.get("SRW64_SCRIPT_TRACE") == "1"
     report["script_move_probe"] = os.environ.get("SRW64_SCRIPT_MOVE_PROBE")
+    report["script_inject_enabled"] = os.environ.get("SRW64_SCRIPT_INJECT") == "1"
+    report["mini_stage"] = os.environ.get("SRW64_MINI_STAGE")
     report["state_probe_enabled"] = os.environ.get("SRW64_STATE_PROBE") == "1"
     report["comparison_fixture"] = comparison_fixture
     report["frame_trace"] = {"from_vi": os.environ.get("SRW64_FRAME_TRACE_FROM"), "to_vi": os.environ.get("SRW64_FRAME_TRACE_TO")}

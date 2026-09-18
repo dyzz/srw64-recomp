@@ -61,7 +61,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test
+recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -88,3 +88,15 @@ recomp-replay-test:
 .PHONY: recomp-data
 recomp-data:
 	$(PYTHON) tools/content/extract_original.py --rom $(ROM)
+
+.PHONY: recomp-script-inject-test
+recomp-script-inject-test:
+	mkdir -p build/recomp/script-inject
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib tests/native_script_inject.cpp -o build/recomp/script-inject/test
+	rm -rf build/recomp/script-inject/test-run && build/recomp/script-inject/test build/recomp/script-inject/test-run
+
+.PHONY: recomp-mini-stage-test
+recomp-mini-stage-test:
+	mkdir -p build/recomp/mini-stage-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Itools/recomp/native-host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_mini_stage.cpp -o build/recomp/mini-stage-test/test
+	rm -rf build/recomp/mini-stage-test/test-run && build/recomp/mini-stage-test/test build/recomp/mini-stage-test/test-run

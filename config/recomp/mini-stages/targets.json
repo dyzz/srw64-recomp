@@ -1,0 +1,69 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "targets",
+  "note": "Second-round probe for the commands that were no-ops in tactical-3 because their target object was absent, not because the command does nothing. 3D6F now uses operands that exist in this stage's part table with bit 2 already set (19, 773, 775 — verified from the tactical-3 part_instances capture; the earlier 53/874 were absent). 3D70 is preceded by 3D5A the way every one of the ten original instances is: the companion actor (183 チャム / 182 シルキー) has no deployment record anywhere and is registered with unit 999, so 3D5A is what puts it in the pilot table that 800ACFAC searches (stride 0x4C, actor at +2, requires +0x37 non-zero and a pointer at +0x38). 3D63 and 3D69 get a second look with actors that are present.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001ed264", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "ショウ / ビルバイン — 3D70 first operand"},
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 10, "y": 8, "faction": 0, "note": "豹馬 / コン・バトラーV — 3D63, 3D69"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 12, "y": 8, "faction": 0, "note": "万丈 / ダイターン3 — 3D6B with a deployed subject"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D6F", "args": [19], "note": "probe A: number 19 is part entry 83 with +0x22 = 0x0C (bit 2 set)"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D6F", "args": [773], "note": "probe B: number 773 is part entry 63, also 0x0C"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D6F", "args": [775], "note": "probe C: number 775 is part entry 64, also 0x0C"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D5A", "args": [183, 0, 999, 500], "note": "probe D: register チャム with unit 999, the shape the original scripts use for a companion that never deploys"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D70", "args": [181, 183], "note": "probe E: the dominant original instance, now with both actors in the pilot table"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D63", "args": [145], "note": "probe F: repeat with 豹馬 deployed, isolated from the other unit commands"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D69", "args": [145, 1], "note": "probe G: value 1 on a deployed actor whose +0x35 has not been touched this run"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D69", "args": [145, 0], "note": "probe H: the clearing value on the same actor"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

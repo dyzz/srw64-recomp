@@ -96,7 +96,7 @@ make recomp-native-check
   --profile config/recomp/play-profile.json --new-game --mute
 ```
 
-自动探针默认静音，**测试时不传 `--audio`**。完整命名流程需要两个终端，先启动宿主，再启动验证脚本；运行目录必须不存在：
+自动探针默认静音，**测试时不传 `--audio`**；例外是要分辨只有声音不同的演出指令时（见[迷你关卡](mini-stage.md)的开音频运行），此时必须同时给出采集窗口。完整命名流程需要两个终端，先启动宿主，再启动验证脚本；运行目录必须不存在：
 
 ```sh
 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
@@ -121,6 +121,12 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 | `SRW64_NAME_ENTRY_CONTROL=1` / `name-entry-control.json` | 姓名页专用字段/按钮/键盘 QA；校验打开序号、字段、递增 sequence 和活动状态。 |
 | `SRW64_SHUTDOWN_TRACE=1` | macOS 下记录释放 RDRAM 前后的游戏线程数，仅诊断，不改变退出顺序。 |
 | `control.txt` | `control_host.py` 提交 N64 输入/退出请求，宿主以 VI 处理并写回事件。 |
+| `SRW64_SCRIPT_INJECT=1` / `script-inject.txt` | `SRWJ1 sequence at_vi hex`；`script_debug.py` 把自定义事件脚本写入 `807F0000` 暂存区，战术地图空闲时由原脚本引擎执行，事件写入 `script-inject-events.jsonl`。见[脚本注入调试](script-debug-injection.md)。 |
+| `SRW64_MINI_STAGE=<image.json>` | `mini_stage.py compile` 生成的迷你关卡镜像；场景登记（`8009DE7C`）时改写本场景的事件缓冲、出击记录块与指针表，`80209D6C` 之后改写地图索引；主菜单按 F8（或 `SRW64_MINI_STAGE_ARM_VI`）自动选新游戏并跳过序章。事件写入 `mini-stage-events.jsonl`。见[迷你关卡](mini-stage.md)。 |
+| `SRW64_MINI_STAGE_CAPTURE=1` | 配合 `SRW64_STATE_PROBE=1`：迷你关卡被替换事件的每个指令边界存一份区域快照 `state-N-mini-stage-command.json`（`argument` 为相对事件块的偏移），使 0 VI 完成、无画面变化的字段写入类指令也有前后对照。宿主只读脚本 PC。见[迷你关卡](mini-stage.md)。 |
+| `SRW64_MINI_STAGE_EXIT_AFTER=<操作码>` | 十六进制脚本操作码。被替换事件中该操作码一经到达，运行在宽限期后结束，不再耗完 VI 预算。验证一条指令只需要它前后那一段。 |
+| `SRW64_MINI_STAGE_EXIT_GRACE=<vi>` | 上面的宽限 VI 数，默认 300：让该指令的效果和其后若干帧仍被采到。 |
+| `SRW64_AUDIO_CAPTURE_FROM/_TO=<vi>` | 把 `--audio` 的诊断采集限定在这段 VI 内（默认只留开声后的前 30 秒，对几分钟后才出现的命令没用）。迷你关卡的有界音频运行必须设置 `_TO`。窗口逻辑见 `audio_timing.hpp` 的 `Srw64AudioCaptureWindow`；播放的声音不受影响。 |
 
 每种协议独立维护递增序号；一个运行目录只使用一个控制驱动，完整写入临时文件后原子替换。普通启动器不主动启用这些 QA 开关，开启调试用的环境变量只作用于对应测试命令。
 

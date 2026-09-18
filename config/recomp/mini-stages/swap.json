@@ -1,0 +1,62 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "swap",
+  "note": "Replays the original 3D6B call site verbatim instead of probing it in isolation. Event 001AB86C (scene 33) runs 3D6B 124,171,0 immediately followed by 3D5A 124,0,174,171 — リョウ with ゲッター1, then the same pilot registered onto ゲッタードラゴン, the successor machine. Another site (scene 31) runs 3D46 124,1 then 3D6B 124,171,1, i.e. after the unit leaves. Both shapes are reproduced here with リョウ deployed in ゲッター1, and the roster and unit ids are read from the per-command state captures, so the answer does not depend on the picture. 万丈 is deployed as the bystander and also carries the most frequent original pair (165,216) for a second observation.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e8054", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "リョウ / ゲッター1 — the subject of the original call site"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 13, "y": 10, "faction": 0, "note": "万丈 / ダイターン3 — the most frequent 3D6B pair (165,216)"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [124]},
+        {"op": "3D35", "args": [2570, 1], "note": "camera on リョウ"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D6B", "args": [124, 171, 0], "note": "site A, step 1 — exactly as event 001AB86C has it"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D5A", "args": [124, 0, 174, 171], "note": "site A, step 2 — the successor machine registration that always follows"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D6B", "args": [165, 216, 1], "note": "the most frequent original pair, flag 1"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D46", "args": [165, 1], "note": "site B shape: withdrawal alongside the flag"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

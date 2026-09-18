@@ -1,6 +1,7 @@
 #define HLSL_CPU
 #include "hle/rt64_application.h"
 #include "graphics.hpp"
+#include "mini_stage.hpp"
 #include "audio.hpp"
 #include "diagnostics.hpp"
 #include "window_test_control.hpp"
@@ -465,7 +466,7 @@ void srw64_update_window(void*) {
         title_locale=locale;title_error=failed;
         const std::string mode=!srw64::presentation::image_mode.enabled()?"Original | HD unavailable":applied?"HD":"Original";
         if(applied>=0)SDL_SetWindowTitle(window,(std::string("SRW64 | ")+language+" | "+mode+
-            " | F6: Original / HD | F7: "+languages+(failed?" | "+error_label:"")).c_str());
+            " | F6: Original / HD | F7: "+languages+(srw64::mini_stage::state().image?" | F8: mini stage "+srw64::mini_stage::state().image->name:"")+(failed?" | "+error_label:"")).c_str());
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -475,6 +476,9 @@ void srw64_update_window(void*) {
         if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F6 && !event.key.repeat &&
            SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
             srw64::presentation::image_mode.toggle();
+        if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F8 && !event.key.repeat &&
+           SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
+            srw64::mini_stage::hotkey();
         if (event.type == SDL_QUIT || (!editing_name && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && SDL_GetKeyboardFocus() == window)) {
             fprintf(stderr, "SRW64_WINDOW_QUIT event=%u vi=%llu\n", event.type, (unsigned long long)srw64_current_vi());
             ultramodern::quit();

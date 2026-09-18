@@ -1,0 +1,158 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "sortie-a",
+  "note": "3D3D (800A09D0) passes the first record of group w4 as base point, w2 and the count w3 to 801C78A0: w3 = 0 selects a mothership, 200 deploys every candidate without a screen, anything else opens the sortie selection screen with min(candidates, w3) picks. Candidates are player-bank units flagged +0xC&0x80 whose pilot is not on the map and not in the 8015F700 list that 3D59 appends to. Two pilots are registered first (ドモン, ヒイロ) so the list has something to offer. This variant excludes ヒイロ with 3D59 95 and opens the selection screen for one pick: the list should hold only ドモン, and ドモン should be placed near (8,8).",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001fc618",
+      "group": 1,
+      "x": 16,
+      "y": 8,
+      "faction": 1,
+      "note": "レイン — enemy, deployed by 3D45 1"
+    },
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 2,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "sortie base point for 3D3D group 2; never deployed by 3D45"
+    },
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 3,
+      "x": 5,
+      "y": 10,
+      "faction": 0,
+      "note": "mothership base point for 3D3D group 3; never deployed by 3D45"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            38
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            4,
+            0,
+            5,
+            500
+          ],
+          "note": "register ドモン with unit 5 (original combination, 7 uses)"
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            95,
+            0,
+            119,
+            500
+          ],
+          "note": "register ヒイロ with ウイングゼロ 119 (original combination, 13 uses)"
+        },
+        {
+          "op": "3D59",
+          "args": [
+            95
+          ],
+          "note": "exclude ヒイロ"
+        },
+        {
+          "op": "3D3D",
+          "args": [
+            8,
+            8,
+            0,
+            1,
+            2
+          ],
+          "note": "selection screen, one pick, base = group 2"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47",
+          "note": "sole appearance: early exit"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    }
+  ]
+}

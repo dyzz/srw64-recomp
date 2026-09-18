@@ -36,6 +36,8 @@ NATIVE_HOOKS = {
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",
     "resident_func_8009EFDC": "srw64_original_script_step",
     "resident_func_8009FA94": "srw64_original_dialogue_choice",
+    "resident_func_8009DE7C": "srw64_original_script_register",
+    "load_000AB160_func_80209D6C": "srw64_original_stage_map_select",
 }
 
 

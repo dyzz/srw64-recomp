@@ -26,6 +26,27 @@ inline nlohmann::json regions(const uint8_t* ram) {
         {"scenario_variables",0x8015E990,0x24},
         {"player_progress_and_names",0x8010F5E8,0xC8},
         {"map_roster",0x8015E100,0x708},
+        // The script engine's own block. It sits in the gap between the roster and
+        // the unit instances, so commands that only write an engine field (3D66's
+        // +0x996 bit, the turn counter at +0x9AC, the poll state at +0x97C) used to
+        // leave no trace in any captured region and read as doing nothing at all.
+        {"script_engine",0x8015F950,0xA00},
+        // Unit list consumed by 3D3D/3D46/3D4F and appended to by 3D59: at most 29
+        // halfwords ending in -1. Also in the roster/engine gap, so it was unseen.
+        {"unit_list",0x8015F700,0x40},
+        // Tactical overlay state: +0 is the main state byte (0x54/0x55 are the two
+        // defeat sequences), +0x2C.. holds the unit count of each side.
+        {"tactical_state",0x80172EB0,0x40},
+        // Sortie selection (3D3D -> 801C78A0): the candidate list at +0x14 with its
+        // count at +0x05, the per-pilot on-map state (-1 never / 1 on map /
+        // 2 withdrawn) and the mothership table.
+        {"sortie_candidates",0x8015DA08,0x60},
+        {"pilot_map_state",0x8015DE90,0x200},
+        {"ship_table",0x8015E850,0x100},
+        // Tactical overlay BSS: the selection flags/pointers/limit/count and the
+        // base point 3D3D hands to the deployment step.
+        {"sortie_selection",0x80223538,0x2C0},
+        {"sortie_base",0x802279E8,0x20},
         {"unit_instances",0x8016A210,0x89D0},
         {"pilot_instances",0x80172F40,0x5910},
         {"part_instances",0x80178F80,0x12750}};

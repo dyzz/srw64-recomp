@@ -1,0 +1,321 @@
+{
+ "schema": "srw64.recomp-input.v1",
+ "purpose": "Bounded check of hyoma-3d63: end the player phase four times (up, A menu, A フェイズ終了, A はい, B), try selecting 豹馬 after each step, and advance turn 4's line.",
+ "events": [
+  {
+   "vi": 120,
+   "button": "start",
+   "duration": 3
+  },
+  {
+   "vi": 240,
+   "button": "start",
+   "duration": 3
+  },
+  {
+   "vi": 360,
+   "button": "start",
+   "duration": 3
+  },
+  {
+   "vi": 500,
+   "button": "r",
+   "duration": 180
+  },
+  {
+   "vi": 500,
+   "button": "start",
+   "duration": 180
+  },
+  {
+   "vi": 960,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 1080,
+   "button": "a",
+   "duration": 3
+  },
+  {
+   "vi": 1200,
+   "button": "a",
+   "duration": 3
+  },
+  {
+   "vi": 1350,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1380,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1410,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1440,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1470,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1500,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1530,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 1560,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 1590,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 1620,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 1650,
+   "button": "a",
+   "duration": 3
+  },
+  {
+   "vi": 1950,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 1980,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 2010,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 2040,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 2070,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 2100,
+   "button": "down",
+   "duration": 3
+  },
+  {
+   "vi": 2130,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 2160,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 2190,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 2220,
+   "button": "right",
+   "duration": 3
+  },
+  {
+   "vi": 2250,
+   "button": "a",
+   "duration": 3
+  },
+  {
+   "vi": 2520,
+   "button": "a",
+   "duration": 3
+  },
+  {
+   "vi": 3100,
+   "button": "r",
+   "duration": 300
+  },
+  {
+   "vi": 3100,
+   "button": "start",
+   "duration": 300
+  },
+  {
+   "vi": 3400,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 5000,
+   "button": "up",
+   "duration": 4
+  },
+  {
+   "vi": 5100,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 5200,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 5300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 5450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 6300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 6450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 7000,
+   "button": "up",
+   "duration": 4
+  },
+  {
+   "vi": 7100,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 7200,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 7300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 7450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 8300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 8450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 9000,
+   "button": "up",
+   "duration": 4
+  },
+  {
+   "vi": 9100,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 9200,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 9300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 9450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 9900,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 10000,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 10100,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 10300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 10450,
+   "button": "b",
+   "duration": 4
+  },
+  {
+   "vi": 11000,
+   "button": "up",
+   "duration": 4
+  },
+  {
+   "vi": 11100,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 11200,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 11300,
+   "button": "a",
+   "duration": 4
+  },
+  {
+   "vi": 11450,
+   "button": "b",
+   "duration": 4
+  }
+ ]
+}

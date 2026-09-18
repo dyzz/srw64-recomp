@@ -1,0 +1,24 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "ending",
+  "note": "Runs 3D71 in the right overlay. finale-1 ran it after 3D4D, on the tactical map, and the host aborted in get_function: 801C51B4 exists only in the world-map overlay load_000A7EC0, next to 801C517C that 3D5E calls. The original's only use is in the ending event of the final stage (scene 106), which runs on the world map. Here 3D71 is issued in the opening before 3D4D, where the world-map overlay is loaded. It neither advances nor completes, so the opening stops there by design; the frames show what the overlay does next.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D71", "note": "on the world map, as in scene 106"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

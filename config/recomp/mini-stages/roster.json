@@ -1,0 +1,40 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "roster",
+  "note": "Tests the three removal modes of 3D5A. The original call sites show the pattern: mode 2000 is always used with unit 999 (no machine) and calls only 800AA62C(actor), mode 3000 always with actor 999 (no pilot) and calls only 800AA464(unit), and mode 4000 calls both. So the hypothesis is 2000 = remove a pilot, 3000 = remove a machine, 4000 = remove both. Modes 500 (register) and < 2000 (the value is the old machine id: a machine swap) already have runtime evidence from targets-1 and swap-1. Each removal is aimed at a different deployed pair, and the pilot and unit instance tables are read before and after.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e8070", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "ドモン / シャイニングガンダム — mode 2000 target (pilot)"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 10, "y": 8, "faction": 0, "note": "万丈 / ダイターン3 — mode 3000 target (machine 216)"},
+    {"template": "base:stage_deployments:001ea960", "group": 0, "x": 12, "y": 8, "faction": 0, "note": "ヒイロ / ウイングガンダム — mode 4000 target (both)"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [4, 0, 999, 2000], "note": "mode 2000 on ドモン: remove the pilot?"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [999, 0, 216, 3000], "note": "mode 3000 on ダイターン3: remove the machine?"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [95, 0, 117, 4000], "note": "mode 4000 on ヒイロ / ウイングガンダム: remove both?"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

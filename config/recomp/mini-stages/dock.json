@@ -1,0 +1,254 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "dock",
+  "note": "Tests whether 3D75 is a mecha returning to its mothership. Earlier probes put the camera elsewhere and ran 3D75 alone, so an animation on a unit would not have been seen. Here シュバルツ (an original 3D75 operand who flies an ordinary mecha, NOT one of the seven captains in table 8021E398) is first moved ONTO エレ's ゴラオン — the same tile (8,8), not the neighbouring one, since boarding a mothership means occupying its square (dock-1 moved him to (9,8) beside it and saw nothing), the camera is locked onto him with 3D54 + 3D35, and only then does 3D75 run — in the original pairing with the 3D46 that always follows it. 万丈 sits far away as a bystander and 豹馬 gets the same 3D75 without being next to any ship, as the control.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001ea3cc",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "エレ / ゴラオン — the mothership"
+    },
+    {
+      "template": "base:stage_deployments:001eba70",
+      "group": 0,
+      "x": 16,
+      "y": 16,
+      "faction": 0,
+      "note": "シュバルツ / ガンダムシュピーゲル — starts far away, flies to the ship"
+    },
+    {
+      "template": "base:stage_deployments:001f1af4",
+      "group": 0,
+      "x": 20,
+      "y": 20,
+      "faction": 0,
+      "note": "豹馬 / コン・バトラーV — control: 3D75 with no ship nearby"
+    },
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 4,
+      "y": 20,
+      "faction": 0,
+      "note": "万丈 / ダイターン3 — bystander"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ — protagonist"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            179
+          ],
+          "note": "remember the ship's position"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            2056,
+            1
+          ],
+          "note": "put the camera on the ship's tile (8,8) and keep it there"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D3C",
+          "args": [
+            3,
+            2056
+          ],
+          "note": "fly シュバルツ from (16,16) ONTO the ship tile (8,8) itself, not beside it — landing on the same square is what boarding a mothership means"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D75",
+          "args": [
+            3
+          ],
+          "note": "THE TEST: does he now play a return-to-ship animation, with the camera watching?"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D46",
+          "args": [
+            3,
+            1
+          ],
+          "note": "the removal that always follows it in the original scripts"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D75",
+          "args": [
+            145
+          ],
+          "note": "control: 豹馬 is at (20,20) with no ship nearby, camera still on the ship"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

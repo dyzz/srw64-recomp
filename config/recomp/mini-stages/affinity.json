@@ -1,0 +1,69 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "affinity",
+  "note": "Sets up the condition for the love-bonus heart rather than testing a command: ドモン and レイン are deployed on adjacent tiles with the camera locked on them, so if the engine draws the icon on its own it is in frame. アルゴ sits adjacent to them as a control (a nearby pilot with no known bond) and 万丈 stands alone far away as a second control. A separate probe then moves レイン away with 3D3C and back again, so the same pair is observed both adjacent and apart in one run — if an icon or a stat field depends on adjacency, it has to change across that move. The state probe does not cover the icon layer, so the evidence here is the GPU frames; the per-command captures still record any roster, pilot or unit field that adjacency might touch.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f0814", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "ドモン / ゴッドガンダム"},
+    {"template": "base:stage_deployments:001fc618", "group": 0, "x": 11, "y": 10, "faction": 0, "note": "レイン / ライジングガンダム — adjacent to ドモン from the start"},
+    {"template": "base:stage_deployments:001f0654", "group": 0, "x": 10, "y": 11, "faction": 0, "note": "アルゴ / ボルトガンダム — control: also adjacent, no known bond with either"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 16, "y": 16, "faction": 0, "note": "万丈 / ダイターン3 — control: isolated"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [4]},
+        {"op": "3D35", "args": [2570, 1], "note": "camera on ドモン's tile, where the adjacent pair sits"},
+        {"op": "3D38", "args": [120], "note": "hold still while adjacent — an idle icon has time to appear"},
+
+        {"op": "3D55", "args": [4, 30], "note": "select ドモン: a selected unit is when per-unit UI is most likely drawn"},
+        {"op": "3D38", "args": [120]},
+        {"op": "3D55", "args": [7, 30], "note": "select レイン, the other half of the pair"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D3C", "args": [7, 3594], "note": "move レイン away to (14,10), four tiles off — the pair is now apart"},
+        {"op": "3D38", "args": [120]},
+        {"op": "3D55", "args": [4, 30], "note": "select ドモン again, now with nobody bonded beside him"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D3C", "args": [7, 2826], "note": "bring レイン back adjacent to (11,10)"},
+        {"op": "3D38", "args": [120]},
+        {"op": "3D55", "args": [4, 30], "note": "select ドモン once more, adjacent again"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

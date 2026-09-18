@@ -1,0 +1,73 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "note": "Probe for the last visual unknowns, built around what the code says they need. 3D75 scans a 7-entry table at 8021E398 (46/180/179/253/37/49/250, all battleship captains; 999 is rewritten to 46 = ブライト before the scan) and then requires the globals at 8015E85C / 8015E860 — two battleship pointers just past the map roster — to be non-null with a matching pilot. tactical-3 saw nothing because 145 is not in the table and エレ had already been withdrawn by 3D6E. Here three captains ship in with their own vessels and nothing removes them. 3D69 and 3D6B get the same treatment: both are probed on a captain's ship, whose roster and unit records the state probe covers.",
+  "name": "ship",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001ea3cc", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "エレ / ゴラオン — 3D75 table entry 179"},
+    {"template": "base:stage_deployments:001ea3b0", "group": 0, "x": 11, "y": 8, "faction": 0, "note": "シーラ / グラン・ガラン — entry 180"},
+    {"template": "base:stage_deployments:001ffb10", "group": 0, "x": 14, "y": 8, "faction": 0, "note": "葉月博士 / ガンドール — entry 253"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 8, "y": 11, "faction": 0, "note": "万丈 / ダイターン3 — 3D6B subject"},
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 11, "y": 11, "faction": 0, "note": "豹馬 / コン・バトラーV — 3D63 subject"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D75", "args": [179], "note": "probe A: エレ, whose ゴラオン is deployed and never withdrawn"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D75", "args": [180], "note": "probe B: シーラ / グラン・ガラン, a second table entry"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D75", "args": [999], "note": "probe C: the 999 form, rewritten to 46 = ブライト, who is NOT deployed here — expect the early exit"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D75", "args": [145], "note": "probe D: 豹馬, deployed but not in the table — the controlled negative"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D6B", "args": [253, 222, 1], "note": "probe E: 葉月博士 / ガンドール, an original instance on a deployed ship"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D6B", "args": [253, 222, 0], "note": "probe F: the same pair with the other flag"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D69", "args": [179, 1], "note": "probe G: a captain, whose +0x34/+0x35 have not been touched this run"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D69", "args": [179, 0], "note": "probe H: the clearing value on the same actor"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D63", "args": [179], "note": "probe I: 3D63 on a battleship captain rather than 豹馬"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

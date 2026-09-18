@@ -1,0 +1,313 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "worldmap",
+  "note": "World-map probe. The opening event runs in the load_000A7EC0 world-map overlay, the only context where 3D31/3D32/3D33/3D5E/3D68 reach their own overlay functions; script injection cannot go there because its idle gate requires the tactical map. Each unknown command is separated by 3D38 waits so the frame trace attributes the picture to one command, and the 3D32/3D33 arguments walk table 801C5310 across its distinct first fields (region 18 -> 20 -> 13 -> 14 -> 19) with an in-region step to separate region changes from position changes. 3D68 was dropped after worldmap-1: its callees 80212780/80212898 live in the load_000AB160 tactical overlay, so on the world map the wait never returns and the event stops there. It is probed in tactical.json instead. After the probe the stage falls back to the flow baseline so the run reaches victory without a battle.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ],
+          "note": "baseline: entry 4 = (17, 721, -435), the value the original first stage opens with"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            0
+          ],
+          "note": "probe A: entry 0 = (18, -257, -1010); region 17 -> 18"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            2
+          ],
+          "note": "probe B: entry 2 = (18, 338, -390); same region 18, different x/y -> isolates position from region"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            19
+          ],
+          "note": "probe C: entry 19 = (20, 1846, -715); region 18 -> 20"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            46
+          ],
+          "note": "probe D: entry 46 = (13, -1183, -357); region 20 -> 13"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            71
+          ],
+          "note": "probe E: entry 71 = (14, -1752, -961); region 13 -> 14"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            63
+          ],
+          "note": "probe F: entry 63 = (19, 226, -1196); region 14 -> 19"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D31",
+          "args": [
+            4
+          ],
+          "note": "probe G: 3D31 has no original-script instance and shares handler 800A0E64 with 3D32; same argument as the baseline 3D32 to compare"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D33",
+          "args": [
+            2
+          ],
+          "note": "probe H: character/marker command, entry 2 = (18, 338, -390) — the same entry 3D32 used in probe B, so the two commands differ only in what they move"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D33",
+          "args": [
+            69
+          ],
+          "note": "probe I: entry 69 = (14, -996, -20), a far region so a marker move is visible"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D5E",
+          "note": "probe J: reads no operand; sets 801C58C4=2 and calls 80080188(6)/80099814(5,1,2)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ],
+          "note": "return to the baseline entry before leaving the world map"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D",
+          "note": "world map -> battlefield"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            2
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1-player-start",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A",
+          "note": "victory settlement, no battle needed"
+        }
+      ],
+      "note": "engine turn counter +0x9AC is 0 during the first turn"
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "allost-1",
+  "note": "Controlled test of engine+0x996 bit 15 (3D61). Its reader 801FF934(0) returns 1 — and 801DF280 then starts defeat sequence 0x54 — only when the player side's unit count at 0x80172EDC is 0 and bit 15 is clear; that check sits in the post-battle processing (801D561C walks the units just destroyed, 801D8DBC tests HP 0). Scene 32 wraps two scripted battles (3D49) in 3D61 1 / 3D61 0, so the same shape is used here: the only player unit is アレンビー, the losing side of table entries 15/16, and 3D49 15,16 destroys her. This variant sets bit 15 to 1 before the battle.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "note": "アレンビー — the only player unit, loses the scripted battle"
+    },
+    {
+      "template": "base:stage_deployments:001fc618",
+      "group": 1,
+      "x": 13,
+      "y": 10,
+      "faction": 1,
+      "note": "レイン — enemy side, wins"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            38
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D61",
+          "args": [
+            1
+          ],
+          "note": "the variable under test"
+        },
+        {
+          "op": "3D49",
+          "args": [
+            15,
+            16
+          ],
+          "note": "scripted battle: アレンビー loses"
+        },
+        {
+          "op": "3D47",
+          "note": "sole appearance: early exit"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    }
+  ]
+}

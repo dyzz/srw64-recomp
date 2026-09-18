@@ -1,0 +1,556 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "tactical",
+  "note": "Tactical-map probe for the presentation commands whose handlers live in the load_000AB160 overlay and search the map roster for an actor. The deployment block is written here rather than copied so every probed actor is on the map in a known slot; each probe uses an argument pair taken from an original script instance. All probes run inside the opening event, after 3D4D has switched to the battlefield and the units are deployed, because an event that waits on the player turn never fires in a bounded run. Commands are separated by 3D38 waits so the frame trace attributes a picture to one command. The turn-1 event ends with 3D4A so the run finishes without a battle.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "note": "万丈 / ダイターン3 — 3D6B (165,216,f), 3D55, 3D75"
+    },
+    {
+      "template": "base:stage_deployments:001e6690",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "note": "ヒイロ / ウイングガンダム(バード) — 3D50 (95,118,117) transformation source"
+    },
+    {
+      "template": "base:stage_deployments:001ee35c",
+      "group": 0,
+      "x": 12,
+      "y": 8,
+      "note": "ケーラ / ウェイブライダー — 3D50 (238,49,48)"
+    },
+    {
+      "template": "base:stage_deployments:001ed264",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "note": "ショウ / ビルバイン — 3D70 (181,183), 3D6E 181"
+    },
+    {
+      "template": "base:stage_deployments:001ea3cc",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "note": "エレ / ゴラオン — 3D6E 179, 3D75 179"
+    },
+    {
+      "template": "base:stage_deployments:001ea3b0",
+      "group": 0,
+      "x": 12,
+      "y": 10,
+      "note": "シーラ / グラン・ガラン — 3D6E 180, 3D75 180"
+    },
+    {
+      "template": "base:stage_deployments:001f1af4",
+      "group": 0,
+      "x": 8,
+      "y": 12,
+      "note": "豹馬 / コン・バトラーV — 3D5C (145,1), 3D63 145, 3D69 (145,0)"
+    },
+    {
+      "template": "base:stage_deployments:001eba70",
+      "group": 0,
+      "x": 10,
+      "y": 12,
+      "note": "シュバルツ / ガンダムシュピーゲル — 3D69 (3,0), 3D6E 3, 3D75 3"
+    },
+    {
+      "template": "base:stage_deployments:001f0814",
+      "group": 0,
+      "x": 12,
+      "y": 12,
+      "note": "ドモン / ゴッドガンダム — 3D55 (4,30), 3D69 (4,1)"
+    },
+    {
+      "template": "base:stage_deployments:001e4184",
+      "group": 0,
+      "x": 8,
+      "y": 14,
+      "note": "カーツ / ヴァイローズ — 3D58 (31,1), 3D55 (31,9)"
+    },
+    {
+      "template": "base:stage_deployments:001ef7c0",
+      "group": 0,
+      "x": 10,
+      "y": 14,
+      "note": "ロザミア / バウンド・ドック — 3D58 (59,1)"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ / スイームルグ — protagonist, kept so the defeat condition has a subject"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D",
+          "note": "world map -> battlefield"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ],
+          "note": "all probe units"
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ],
+          "note": "protagonist"
+        },
+        {
+          "op": "3D36",
+          "args": [
+            5
+          ],
+          "note": "probe A: most frequent original value (85 uses); tactical mode takes 8020D3C8(low byte)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D36",
+          "args": [
+            6
+          ],
+          "note": "probe B: second most frequent (76 uses); pairs with 5 to show whether they open/close the same thing"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            4,
+            30
+          ],
+          "note": "probe C: original instance (ドモン, 30) — 9 uses"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            31,
+            9
+          ],
+          "note": "probe D: original instance (カーツ, 9) — 6 uses; second operand differs so the table 80217D20 lookup is visible"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D58",
+          "args": [
+            31,
+            1
+          ],
+          "note": "probe E: original instance (カーツ, 1)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D58",
+          "args": [
+            59,
+            0
+          ],
+          "note": "probe F: second operand 0 against probe E's 1, same command"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D5C",
+          "args": [
+            145,
+            1
+          ],
+          "note": "probe G: original instance (豹馬, 1) — 5 uses, the 802116FC branch"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D5C",
+          "args": [
+            145,
+            0
+          ],
+          "note": "probe H: the 80211854 branch of the same command and actor"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D63",
+          "args": [
+            145
+          ],
+          "note": "probe I: the only original instance (豹馬)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D75",
+          "args": [
+            179
+          ],
+          "note": "probe J: original instance (エレ)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D75",
+          "args": [
+            999
+          ],
+          "note": "probe K: the documented special value 999 = 46"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            1
+          ],
+          "note": "probe L: original value 1; numbers below 11 pick a track through jump table 8021F058"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            4
+          ],
+          "note": "probe M: original value 4, the other frequent one"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D68",
+          "note": "probe N: no operand"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D50",
+          "args": [
+            95,
+            118,
+            117
+          ],
+          "note": "probe O: original instance ヒイロ / ウイングガンダム(バード) -> ウイングガンダム; the deployed unit is 118 so the search finds the slot"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D50",
+          "args": [
+            238,
+            49,
+            48
+          ],
+          "note": "probe P: original instance ケーラ / ウェイブライダー -> Zガンダム, same shape on a different pair"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D6B",
+          "args": [
+            165,
+            216,
+            0
+          ],
+          "note": "probe Q: the most frequent original instance (万丈, ダイターン3, 0) — 5 uses"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D6B",
+          "args": [
+            165,
+            216,
+            1
+          ],
+          "note": "probe R: same pair with flag 1 — 3 uses; isolates the third operand"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D69",
+          "args": [
+            4,
+            1
+          ],
+          "note": "probe S: most frequent original instance (ドモン, 1); non-zero copies pilot +0x34 into +0x35"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D69",
+          "args": [
+            4,
+            0
+          ],
+          "note": "probe T: same actor with 0, which clears +0x35"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D6E",
+          "args": [
+            179
+          ],
+          "note": "probe U: original instance (エレ); requires roster +0x38 non-zero"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D70",
+          "args": [
+            181,
+            183
+          ],
+          "note": "probe V: the dominant original instance ショウ + チャム — 11 uses"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D6F",
+          "args": [
+            53
+          ],
+          "note": "probe W: original value 53; clears bit 2 of +0x22 in table 80178F80, covered by the part_instances probe region"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D6F",
+          "args": [
+            874
+          ],
+          "note": "probe X: a large original value, to show the search is by +2 number and not an index"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1-probes",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A",
+          "note": "victory settlement, no battle needed"
+        }
+      ],
+      "note": "Probes moved into the opening after tactical-1: the turn-1 event needs the player to finish a turn, and the bounded input script only presses A, so the run sat in unit selection and the event never fired. The opening runs unattended on the tactical map, which is the context these handlers need."
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -63,6 +63,14 @@ void step(uint8_t* rdram,recomp_context* ctx) {
     }
 }
 }
+int title_major() {
+    std::lock_guard lock(mutex);
+    return loaded?last_major:-1;
+}
+void request_skip() {
+    std::lock_guard lock(mutex);
+    if(controls.active)controls.pending=true;
+}
 void configure(const std::filesystem::path& directory) {
     output=directory;log.open(output/"intro-events.jsonl");
     srw64_game_hooks.intro_step=step;

@@ -1,0 +1,59 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "mode",
+  "note": "Isolates 3D66. Its 284 zeros and 279 ones are a strictly paired toggle, and in the original scripts the pair always brackets a camera scroll plus dialogue — but dialogue redraws most of the screen, so this stage toggles the switch with nothing between and holds still on each side. Any difference is then the switch's own. A unit is deployed with the camera on it and selected, so cursor and selection UI are on screen and would show up if the switch hides them. Uses a save for entry and an early exit, so the run costs a fraction of the VI budget.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "豹馬 — the unit the camera watches"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [145]},
+        {"op": "3D35", "args": [2570, 1], "note": "camera on the unit"},
+        {"op": "3D38", "args": [150], "note": "baseline: hold still with the switch off"},
+
+        {"op": "3D66", "args": [1], "note": "THE TEST: switch on, nothing else"},
+        {"op": "3D38", "args": [150], "note": "hold still with the switch on"},
+
+        {"op": "3D66", "args": [0], "note": "switch off again"},
+        {"op": "3D38", "args": [150], "note": "hold still, should match the baseline"},
+
+        {"op": "3D47", "note": "sole appearance: the early exit watches this"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

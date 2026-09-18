@@ -1,0 +1,396 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Main-menu entry test: two Start pulses reach the main menu; SRW64_MINI_STAGE_ARM_VI=300 makes the host choose New Game and skip both prologues; the remaining pulses pick the female-super default names on the original grid and read the substituted opening.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 240,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 960,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1080,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1200,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1350,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1380,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1410,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1440,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1470,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1500,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1530,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1560,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1590,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1620,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1650,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1950,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1980,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2010,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2040,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2070,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2100,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2130,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2160,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2190,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2220,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2250,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2520,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3000,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3120,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3240,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3360,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3480,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3600,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3720,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3840,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3960,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4080,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4200,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4320,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4440,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4560,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4680,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4800,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4920,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5040,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5160,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5280,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5400,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5520,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5640,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5760,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5880,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6000,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6120,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6240,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6360,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6480,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6600,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6720,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6840,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6960,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7080,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7200,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7320,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7440,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7560,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7680,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7800,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7920,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8040,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8160,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8280,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8400,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8520,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8640,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8760,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8880,
+      "button": "a",
+      "duration": 4
+    }
+  ]
+}

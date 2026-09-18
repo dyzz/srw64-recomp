@@ -1,0 +1,40 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "finale",
+  "note": "Closes two remaining gaps. 3D3C shares the coordinate decoder 800A38DC with 3D35, whose relative form was just measured (high byte 0x41 up / 0x42 right / 0x43 down / 0x44 left, low byte = tiles, relative to 3D54's remembered spot); here 3D3C is given relative targets so the roster shows whether the unit lands exactly that many tiles away. The unit being remembered and the unit being moved are different, so the target is unambiguous. 3D71 runs last: its handler calls 801C51B4 on the first frame and then neither advances the script nor completes, leaving the overlay to change scene — the original's only use is at the end of the final stage.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 12, "y": 12, "faction": 0, "note": "万丈 — the remembered anchor"},
+    {"template": "base:stage_deployments:001e8070", "group": 0, "x": 4, "y": 20, "faction": 0, "note": "ドモン — the unit that is moved"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D54", "args": [165], "note": "remember 万丈 at (12,12)"},
+        {"op": "3D3C", "args": [4, 16898], "note": "ドモン to relative right 2 -> expect (14,12)"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D3C", "args": [4, 17154], "note": "ドモン to relative down 2 -> expect (12,14)"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D3C", "args": [4, 16386], "note": "0x4002: relative 'same spot' with a low byte of 2 -> expect (12,12)?"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D47"},
+        {"op": "3D71", "note": "last: the final-stage scene switch, which does not return"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

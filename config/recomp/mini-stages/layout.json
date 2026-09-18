@@ -1,0 +1,44 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "layout",
+  "note": "Two position commands with clear hypotheses. 3D60 walks the 30 player roster slots and, for every unit whose HP is non-zero and which is not the protagonist's machine, writes a grid position, filling each row before starting the next — a formation. Four ordinary units are deployed scattered, so the roster diff shows whether they end up in rows. 3D56 opens window 0x23 and draws a rectangle whose two corners are packed as decimal (value/10, value%10); the original (186, 212, 60) gives corners (18,6) and (21,2), and the camera is placed over that area so a highlighted rectangle, if drawn, is in frame. The third word is not read by the resident code.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 3, "y": 20, "faction": 0, "note": "万丈 — scattered"},
+    {"template": "base:stage_deployments:001ea960", "group": 0, "x": 18, "y": 25, "faction": 0, "note": "ヒイロ — scattered"},
+    {"template": "base:stage_deployments:001e9a78", "group": 0, "x": 25, "y": 3, "faction": 0, "note": "カトル — scattered"},
+    {"template": "base:stage_deployments:001e8070", "group": 0, "x": 9, "y": 14, "faction": 0, "note": "ドモン — scattered"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist, should be skipped by 3D60"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [40]},
+
+        {"op": "3D60", "args": [5, 5, 2], "note": "formation from (5,5), two per row"},
+        {"op": "3D38", "args": [40]},
+
+        {"op": "3D35", "args": [4612, 1], "note": "camera over the area 3D56 is about to highlight (18..21, 2..6)"},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D56", "args": [186, 212, 60], "note": "highlight the rectangle (18,6)-(21,2)"},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

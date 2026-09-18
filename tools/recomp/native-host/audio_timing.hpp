@@ -14,3 +14,20 @@ inline size_t srw64_audio_feedback_frames(size_t queued_frames, uint32_t rate) {
 }
 
 inline size_t srw64_audio_queue_limit(uint32_t rate) { return rate / 10; }
+
+// Bounded diagnostic capture of the device input. Without a VI window the copy
+// keeps the first 30 seconds, which is the wrong span when the sound being
+// investigated happens minutes into a scripted run; SRW64_AUDIO_CAPTURE_FROM/_TO
+// narrow it to the commands of interest. Played audio is never affected.
+struct Srw64AudioCaptureWindow {
+    uint64_t from{}, to{};
+    bool bounded() const { return to > from; }
+    // What this VI should do with the capture file: skip it, write it, or close it.
+    enum class Action { Skip, Write, Close };
+    Action act(uint64_t vi, bool open) const {
+        if (!bounded()) return Action::Write;
+        if (vi >= to) return open ? Action::Close : Action::Skip;
+        return vi >= from ? Action::Write : Action::Skip;
+    }
+};
+

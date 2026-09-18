@@ -5,6 +5,7 @@ from __future__ import annotations
 import fcntl
 import argparse
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
@@ -26,6 +27,7 @@ def main() -> int:
     save_mode.add_argument("--restore-session", help="restore an intact history session by ID, or 'initial' for the frozen backup")
     save_mode.add_argument("--list-saves", action="store_true", help="inspect history integrity without starting the game")
     parser.add_argument("--mute", action="store_true", help="disable audio output for testing")
+    parser.add_argument("--mini-stage", type=Path, help="compile this mini stage and substitute it for the first stage of a new game; F8 on the main menu starts it")
     parser.add_argument("--resolution-scale", type=int, choices=range(1, 9), help="internal resolution multiplier, 1..8; text size and layout stay the same")
     args = parser.parse_args()
     if (args.language or args.images) and not args.profile:
@@ -101,6 +103,15 @@ def main() -> int:
             "--graphics", "--interactive", "--variant", config["variant"],
             "--output", str(output),
         ]
+        environment = dict(os.environ)
+        if args.mini_stage:
+            sys.path.insert(0, str(ROOT / "tools/recomp"))
+            from mini_stage import compile_stage
+            image = output.parent / (output.name + ".mini-stage.json")
+            image.parent.mkdir(parents=True, exist_ok=True)
+            image.write_text(json.dumps(compile_stage(json.loads(args.mini_stage.read_text())), ensure_ascii=False, indent=2) + "\n")
+            environment["SRW64_MINI_STAGE"] = str(image)
+            print(f"迷你关卡镜像：{image}；在主菜单按 F8 进入。", flush=True)
         if not args.mute:
             command.append("--audio")
         if args.profile:
@@ -121,7 +132,7 @@ def main() -> int:
             if type(scale) is not int or not 1 <= scale <= 8:
                 raise RuntimeError("resolution_scale must be an integer in 1..8")
             command += ["--resolution-scale", str(scale)]
-        return subprocess.run(command, cwd=ROOT).returncode
+        return subprocess.run(command, cwd=ROOT, env=environment).returncode
 
 
 if __name__ == "__main__":

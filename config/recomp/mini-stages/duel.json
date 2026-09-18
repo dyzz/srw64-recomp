@@ -1,0 +1,214 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "duel",
+  "note": "Isolated probe for 3D49. duel-2 crashed in 80211BD0 with SIGBUS at a garbage pointer: that helper takes a roster slot's unit-instance pointer (roster base 8015E10C, side stride 0x258, slot stride 0x14, field +0x0C) and walks the unit's list at +0x2C count / +0x30 pointer with stride 0x24, without validating the pointer. The stock deployment block held neither combatant named by table 800C9A18 entries 15/16, so the read returned garbage. 3D49 therefore needs its two actors ON THE MAP, not a battle context. This version deploys all four actors used by the two probed pairs. Table 800C9A18 has 37 entries of seven halfwords (index, actor, ?, ?, HP, morale, ?) ending at 999; the original pairs a high-HP/high-morale entry with a 10-HP/0-morale one.",
+  "map": 20,
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            45
+          ]
+        },
+        {
+          "op": "3D49",
+          "args": [
+            15,
+            16
+          ],
+          "note": "original pair: entry 15 レイン 32760 HP / 100 morale against entry 16 アレンビー 10 HP / 0 morale"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D49",
+          "args": [
+            29,
+            3
+          ],
+          "note": "original pair: entry 29 ドモン against entry 3 ゾンビ兵"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1-duel",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ],
+      "note": "Probes moved into the opening after duel-1: a turn-1 event needs the player to finish a turn, which a bounded input script never does."
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ],
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001fc618",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "レイン — table entry 15"
+    },
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "note": "アレンビー — table entry 16"
+    },
+    {
+      "template": "base:stage_deployments:001e8070",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "ドモン — table entry 29"
+    },
+    {
+      "template": "base:stage_deployments:001e9190",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "note": "ゾンビ兵 — table entry 3"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ — protagonist, subject of the defeat condition"
+    }
+  ]
+}

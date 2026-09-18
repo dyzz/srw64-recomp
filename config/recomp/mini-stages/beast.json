@@ -1,0 +1,44 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "beast",
+  "note": "Tests 3D5D, which 800AB5C0 applies to the Dancouga family only: ダンクーガ (223/224) and its four component beast machines イーグルファイター 219, ビッグモス 225, ランドクーガー 230, ランドライガー 233. It sets or clears bit 7 of unit +0x0C (the same byte whose bit 6 is the squad mark of 3D6B). The original arguments are (1,0) 8 times, (0,0) 4, (0,1) 2, (1,1) 1, always at the end of a stage just before 3D4B moves to the next scene. Each value is applied in turn and bit 7 of all five units is read after each, which shows which word governs which units.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001eef18", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "忍 / ダンクーガ 224"},
+    {"template": "base:stage_deployments:001e87cc", "group": 0, "x": 10, "y": 8, "faction": 0, "note": "イーグルファイター 219"},
+    {"template": "base:stage_deployments:001e875c", "group": 0, "x": 12, "y": 8, "faction": 0, "note": "ビッグモス 225"},
+    {"template": "base:stage_deployments:001e8724", "group": 0, "x": 8, "y": 10, "faction": 0, "note": "ランドクーガー 230"},
+    {"template": "base:stage_deployments:001e8740", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "ランドライガー 233"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5D", "args": [1, 0]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5D", "args": [0, 0]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5D", "args": [0, 1]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5D", "args": [1, 1]},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}
