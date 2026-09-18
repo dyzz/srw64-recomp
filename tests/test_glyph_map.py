@@ -144,6 +144,7 @@ class GlyphMapTests(unittest.TestCase):
         self.assertEqual({key: sorted(glyphs) for key, glyphs in repeated.items() if len(glyphs) > 1},
                          SAME_FORM_REPEATS)
 
+    @unittest.skipUnless(ROM.exists(), "Local original ROM required")
     def test_tiles_drawn_alike_read_alike(self):
         images = font_tiles()
         shared = collections.defaultdict(list)
@@ -156,6 +157,7 @@ class GlyphMapTests(unittest.TestCase):
             if glyphs != [1, 25]:
                 self.assertEqual(len({self.mapping[glyph] for glyph in glyphs}), 1, glyphs)
 
+    @unittest.skipUnless(ROM.exists(), "Local original ROM required")
     def test_corrections_reach_the_decoded_text(self):
         sources, _, _ = source_catalog(ROOT, ROM)
         for key, text in DECODED.items():
