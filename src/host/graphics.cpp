@@ -567,6 +567,27 @@ nlohmann::json srw64_window_status() {
             {"pixel_width", pixel_width}, {"pixel_height", pixel_height}, {"title", SDL_GetWindowTitle(window)}};
 }
 
+nlohmann::json srw64_window_control(const nlohmann::json& params) {
+    if (!window) throw std::runtime_error("the game window is not open yet");
+    if (params.contains("width") || params.contains("height")) {
+        int width = 0, height = 0;
+        SDL_GetWindowSize(window, &width, &height);
+        width = params.value("width", width);
+        height = params.value("height", height);
+        // Same range as the window QA control (window-control.txt).
+        if (width < 640 || width > 2560 || height < 480 || height > 1600)
+            throw std::invalid_argument("window size must be 640..2560 x 480..1600");
+        SDL_SetWindowSize(window, width, height);
+    }
+    // Bring the game to the front: the paths that need real window focus
+    // (physical keys, the name page's key check, first-click activation).
+    if (params.value("front", false)) SDL_RaiseWindow(window);
+#ifdef SRW64_NATIVE_DIALOGUE
+    if (params.value("close", false)) srw64::debug_ui::close_game_window();
+#endif
+    return srw64_window_status();
+}
+
 void srw64_keyboard_input(uint16_t* buttons, float* x, float* y) {
     uint32_t state = keyboard_state.load(std::memory_order_relaxed) | *buttons;
 #ifdef SRW64_NATIVE_DIALOGUE

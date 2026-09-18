@@ -55,13 +55,17 @@ TOOLS = [
     {"name": "srw64_click", "description": "Click a native control by its text (button title, field text, label) or at x/y points.",
      "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "x": {"type": "number"}, "y": {"type": "number"},
          "window": WINDOW, "button": {"type": "string", "enum": ["left", "right"]}, "count": {"type": "integer"}}}},
-    {"name": "srw64_type", "description": "Type text into the focused native text field (click the field first).",
-     "inputSchema": {"type": "object", "required": ["text"], "properties": {"text": {"type": "string"}, "window": WINDOW}}},
+    {"name": "srw64_type", "description": "Type text into the focused native text field (click the field first). marked=true leaves it as an input-method composition; unmark=true commits the composition.",
+     "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "marked": {"type": "boolean"},
+         "unmark": {"type": "boolean"}, "window": WINDOW}}},
     {"name": "srw64_ui_key", "description": "Send a key to the native UI (e.g. return, tab, escape, delete, arrows, a-z, f7) with optional modifiers.",
      "inputSchema": {"type": "object", "required": ["key"], "properties": {"key": {"type": "string"},
          "modifiers": {"type": "array", "items": {"type": "string", "enum": ["cmd", "shift", "option", "control"]}}, "window": WINDOW}}},
     {"name": "srw64_menu", "description": "Press a menu bar item by title path, or list a menu (empty path lists the bar).",
      "inputSchema": {"type": "object", "properties": {"path": {"type": "array", "items": {"type": "string"}}}}},
+    {"name": "srw64_window", "description": "Resize the game window (640..2560 x 480..1600 points), bring it to the front (needed only to exercise physical-focus behaviour or real mouse events), or press its close button (the game then exits as a player closing the window would).",
+     "inputSchema": {"type": "object", "properties": {"width": {"type": "integer"}, "height": {"type": "integer"}, "front": {"type": "boolean"},
+         "close": {"type": "boolean"}}}},
     {"name": "srw64_settings", "description": "Change rules (preset or id list), language or image mode directly.",
      "inputSchema": {"type": "object", "properties": {"rules": {"type": ["string", "array"]},
          "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]}}}},
@@ -120,6 +124,8 @@ class Server:
             return text(client.call("ui.key", **args))
         if name == "srw64_menu":
             return text(client.call("menu", **args))
+        if name == "srw64_window":
+            return text(client.call("window", **args))
         if name == "srw64_settings":
             return text(client.call("settings", **args))
         if name == "srw64_wait":

@@ -13,6 +13,8 @@
 // substring such as "Options" / "选项".
 namespace srw64::debug_ui {
 void window_init(void* cocoa_window);
+// Presses the game window's close button (NSWindow performClose:).
+void close_game_window();
 // Every visible window of the app (or the selected one) with its view tree:
 // class, frame, title/text, enabled, focused, and the game's Metal view marked.
 nlohmann::json tree(const nlohmann::json& params);
@@ -23,6 +25,8 @@ nlohmann::json click(const nlohmann::json& params);
 // or {key_code, characters}; optional modifiers ["cmd","shift","option","control"].
 nlohmann::json key(const nlohmann::json& params);
 // {text}: inserted into the window's focused text field, as typing would.
+// {text, marked: true} leaves it as an input-method composition; {unmark: true}
+// commits the composition.
 nlohmann::json type(const nlohmann::json& params);
 // {path: ["选项","游戏性调整"]}: presses the item, or lists a submenu; {} lists the bar.
 nlohmann::json menu(const nlohmann::json& params);

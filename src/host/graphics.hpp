@@ -14,3 +14,6 @@ void srw64_set_capture_clock(const char* name);
 uint64_t srw64_current_vi();
 // Window thread: focus, size and title, for the debug interface's status.
 nlohmann::json srw64_window_status();
+// Window thread: resize ({width, height}), raise ({front: true}) and/or press the
+// close button ({close: true}) of the game window.
+nlohmann::json srw64_window_control(const nlohmann::json& params);
