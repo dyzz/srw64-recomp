@@ -1,0 +1,89 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "scene80",
+  "note": "Replays scene 80 「女帝ジャネラの人間狩り」 verbatim — every one of its 20 events copied unchanged, its own deployment block and its own map. This is the only way to see 3D63 in context: it has exactly one instance in the whole game, at instruction 143 of this scene's opening, right after a 3D37 overlay image and right before the 3D69 that makes 豹馬 unable to act. Earlier probes ran it standalone and so were missing the 3D37 that precedes it. Nothing is edited; the mini-stage host simply substitutes this scene's own script for the first stage a new game reaches.",
+  "map": 57,
+  "deployments_from": "base:stage_auxiliary:00200890",
+  "events": [
+    {
+      "name": "001ccff0-type12",
+      "copy_from": "base:stage_events:001ccff0"
+    },
+    {
+      "name": "001cd2e0-type2",
+      "copy_from": "base:stage_events:001cd2e0"
+    },
+    {
+      "name": "001cd300-type0",
+      "copy_from": "base:stage_events:001cd300"
+    },
+    {
+      "name": "001cd314-type0",
+      "copy_from": "base:stage_events:001cd314"
+    },
+    {
+      "name": "001cd328-type0",
+      "copy_from": "base:stage_events:001cd328"
+    },
+    {
+      "name": "001cd33c-type0",
+      "copy_from": "base:stage_events:001cd33c"
+    },
+    {
+      "name": "001cd350-type2",
+      "copy_from": "base:stage_events:001cd350"
+    },
+    {
+      "name": "001cd390-type2",
+      "copy_from": "base:stage_events:001cd390"
+    },
+    {
+      "name": "001cd3d0-type3",
+      "copy_from": "base:stage_events:001cd3d0"
+    },
+    {
+      "name": "001cd408-type2",
+      "copy_from": "base:stage_events:001cd408"
+    },
+    {
+      "name": "001cd43c-type7",
+      "copy_from": "base:stage_events:001cd43c"
+    },
+    {
+      "name": "001cd464-type0",
+      "copy_from": "base:stage_events:001cd464"
+    },
+    {
+      "name": "001cd48c-type1",
+      "copy_from": "base:stage_events:001cd48c"
+    },
+    {
+      "name": "001cd6ec-type2",
+      "copy_from": "base:stage_events:001cd6ec"
+    },
+    {
+      "name": "001cd724-type7",
+      "copy_from": "base:stage_events:001cd724"
+    },
+    {
+      "name": "001cd748-type0",
+      "copy_from": "base:stage_events:001cd748"
+    },
+    {
+      "name": "001cd770-type7",
+      "copy_from": "base:stage_events:001cd770"
+    },
+    {
+      "name": "001cd798-type1",
+      "copy_from": "base:stage_events:001cd798"
+    },
+    {
+      "name": "001cd7e8-type7",
+      "copy_from": "base:stage_events:001cd7e8"
+    },
+    {
+      "name": "001cd7fc-type14",
+      "copy_from": "base:stage_events:001cd7fc"
+    }
+  ]
+}

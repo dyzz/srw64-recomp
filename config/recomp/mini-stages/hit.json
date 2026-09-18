@@ -1,0 +1,53 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "hit",
+  "note": "Tests 3D37 and 3D4F together, in the shape the original scene-2 opening uses: a unit is moved, a 3D37 overlay is placed on it, then 3D4F acts on that unit, and a guerrilla remarks that 'this one is done for'. 3D37 loads one image into window 0x122 at the decoded tile and plays a sound from D_800C99D6[index]; only indices 0 (192 uses), 1 (370) and 11 (11) occur. 3D4F is built like 3D46 (unit withdrawal, confirmed) but calls a different set of functions, so it is run on one unit and 3D46 on another as the control. Positions use 0x4000, 'the spot remembered by 3D54'.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "豹馬 — 3D37 target, then 3D4F"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 13, "y": 10, "faction": 0, "note": "万丈 — control: 3D46"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D54", "args": [145]},
+        {"op": "3D35", "args": [16384, 1], "note": "camera on 豹馬"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D37", "args": [0, 16384], "note": "overlay index 0 on 豹馬"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D37", "args": [1, 16384], "note": "overlay index 1 on 豹馬"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D37", "args": [11, 16384], "note": "overlay index 11 on 豹馬"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D4F", "args": [145], "note": "THE TEST: 3D4F on 豹馬"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D54", "args": [165]},
+        {"op": "3D35", "args": [16384, 1], "note": "camera on 万丈 for the control"},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D46", "args": [165, 0], "note": "CONTROL: known withdrawal"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

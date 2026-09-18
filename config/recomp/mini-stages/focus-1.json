@@ -1,0 +1,171 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "focus-1",
+  "note": "Controlled test of engine+0x996 bit 7 (3D66). Its only reader, 800A3530, is called from 8009F4B4 — the first step of the 3D3E/3D40 dialogue commands — which looks the speaker up with 800A2C18(speaker, bit 7). A hit stores the unit's tile and the dialogue first scrolls the camera there with 80209DAC; with 0x80 as the mode the lookup always returns 0 and the fallback 800A3854 is skipped too, so the camera should stay put. Two speakers stand far apart and the camera is parked between them first. This variant sets bit 7 to 1 before the two lines.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 0,
+      "x": 4,
+      "y": 4,
+      "faction": 0,
+      "note": "アレンビー (actor 248), player side, top-left"
+    },
+    {
+      "template": "base:stage_deployments:001fc618",
+      "group": 1,
+      "x": 26,
+      "y": 22,
+      "faction": 1,
+      "note": "レイン (actor 7), enemy side, bottom-right"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            38
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            3853,
+            0
+          ],
+          "note": "park the camera between the two speakers, (15,13)"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D66",
+          "args": [
+            1
+          ],
+          "note": "the variable under test"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            20246
+          ],
+          "note": "アレンビー speaks (left window)"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D40",
+          "args": [
+            19682
+          ],
+          "note": "レイン speaks (right window)"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D47",
+          "note": "sole appearance: early exit"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    }
+  ]
+}

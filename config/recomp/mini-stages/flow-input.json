@@ -1,0 +1,651 @@
+{
+  "schema": "srw64.recomp-input.v1",
+  "purpose": "Mini stage flow run: cold boot, skip prologues, female-super default names, then one A pulse every 120 VI through opening, deployment, the turn-1 event, victory, ending and into the intermission.",
+  "events": [
+    {
+      "vi": 120,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 240,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 360,
+      "button": "start",
+      "duration": 3
+    },
+    {
+      "vi": 500,
+      "button": "r",
+      "duration": 180
+    },
+    {
+      "vi": 500,
+      "button": "start",
+      "duration": 180
+    },
+    {
+      "vi": 960,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1080,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1200,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1350,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1380,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1410,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1440,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1470,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1500,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1530,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1560,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1590,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1620,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 1650,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 1950,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 1980,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2010,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2040,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2070,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2100,
+      "button": "down",
+      "duration": 3
+    },
+    {
+      "vi": 2130,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2160,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2190,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2220,
+      "button": "right",
+      "duration": 3
+    },
+    {
+      "vi": 2250,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 2520,
+      "button": "a",
+      "duration": 3
+    },
+    {
+      "vi": 3100,
+      "button": "r",
+      "duration": 300
+    },
+    {
+      "vi": 3100,
+      "button": "start",
+      "duration": 300
+    },
+    {
+      "vi": 3500,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3620,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3740,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3860,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 3980,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4220,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4340,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 4940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5060,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5420,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5540,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5660,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5780,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 5900,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6020,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6140,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6260,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6380,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6500,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6620,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6740,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6860,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 6980,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7220,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7340,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 7940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8060,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8420,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8540,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8660,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8780,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 8900,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9020,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9140,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9260,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9380,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9500,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9620,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9740,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9860,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 9980,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10220,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10340,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 10940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11060,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11420,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11540,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11660,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11780,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 11900,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12020,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12140,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12260,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12380,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12500,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12620,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12740,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12860,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 12980,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13100,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13220,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13340,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13460,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13580,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13700,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13820,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 13940,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14060,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14180,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14300,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14420,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14540,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14660,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14780,
+      "button": "a",
+      "duration": 4
+    },
+    {
+      "vi": 14900,
+      "button": "a",
+      "duration": 4
+    }
+  ]
+}

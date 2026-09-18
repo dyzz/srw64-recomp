@@ -36,4 +36,30 @@ int main() {
         assert(next >= 720 && next <= 992);
         assert(device_pending < srw64_audio_queue_limit(44100));
     }
+
+    // Bounded capture window. Without one every VI writes, so the caller's own
+    // 30-second cap is what limits the file.
+    using Action = Srw64AudioCaptureWindow::Action;
+    const Srw64AudioCaptureWindow unbounded{};
+    assert(!unbounded.bounded());
+    for (uint64_t vi : {uint64_t(0), uint64_t(5000), uint64_t(1u << 30)})
+        assert(unbounded.act(vi, false) == Action::Write && unbounded.act(vi, true) == Action::Write);
+
+    // With a window: skip before it, write inside it, close once on the way out
+    // and skip afterwards, so a probe keeps exactly the span it asked for.
+    const Srw64AudioCaptureWindow window{4400, 6600};
+    assert(window.bounded());
+    assert(window.act(0, false) == Action::Skip);
+    assert(window.act(4399, false) == Action::Skip);
+    assert(window.act(4400, false) == Action::Write);
+    assert(window.act(6599, true) == Action::Write);
+    assert(window.act(6600, true) == Action::Close);   // closes the file once
+    assert(window.act(6600, false) == Action::Skip);   // already closed: nothing more
+    assert(window.act(9999, false) == Action::Skip);
+
+    // A degenerate window (to <= from) is treated as no window rather than as a
+    // window that never opens, so a mistyped bound cannot silently lose a capture.
+    const Srw64AudioCaptureWindow degenerate{6600, 4400};
+    assert(!degenerate.bounded());
+    assert(degenerate.act(0, false) == Action::Write);
 }

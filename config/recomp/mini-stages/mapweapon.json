@@ -1,0 +1,40 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "mapweapon",
+  "note": "Tests 3D51 as a scripted MAP-weapon attack. Its current name says 'move to coordinates', but every one of its original third words is a MAP weapon: 478 バスターライフルMAP, 146 集束荷電粒子砲MAP, 1063 V-MAXMAP, 1208 ガンドール砲MAP, 487 ツインバスターライフルMAP. The call sites agree — after 3D51 95,117,478,0,0 (ヒイロ in ウイングガンダム) two units are destroyed with 3D4F and ヒイロ laughs; after 3D51 25,30,146 a row of 3D37 explosions follows. ヒイロ is deployed with enemies in front and the original call is replayed with the camera on him.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001ea960", "group": 0, "x": 10, "y": 12, "faction": 0, "note": "ヒイロ / ウイングガンダム 117"},
+    {"template": "base:stage_deployments:001e3fe0", "group": 1, "x": 10, "y": 8, "faction": 1, "note": "enemy in the line of fire"},
+    {"template": "base:stage_deployments:001e3fe0", "group": 1, "x": 11, "y": 8, "faction": 1, "note": "enemy"},
+    {"template": "base:stage_deployments:001e4268", "group": 2, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D45", "args": [2]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D54", "args": [95]},
+        {"op": "3D35", "args": [16384, 0], "note": "camera on ヒイロ"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D51", "args": [95, 117, 478, 0, 0], "note": "THE TEST: the original Buster Rifle MAP call"},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

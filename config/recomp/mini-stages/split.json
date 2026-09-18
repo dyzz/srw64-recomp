@@ -1,0 +1,43 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "split",
+  "note": "Tests the party-split pair 3D73/3D74 on the selection bits read by 800AD990 (pilot +0 bit 7, unit +0x0C bit 6). The original call sites say what 3D73 is for: right after 3D73 1, サリィ asks whether the members going to Muge space have been decided, ノイン names ブライト, 万丈, アラン, the Beast Warriors and ヒイロ's team, and マーベル adds that カトル stays behind — and list A (used when the parameter is non-zero) holds exactly those people and not カトル. Deployed here: two list-A members (万丈, ヒイロ) and two who are not in list A (カトル, ドモン). 3D74 clears every mark first, then 3D73 1 should mark only the list-A pair; 3D73 0 uses list B, which contains ドモン and カトル. The per-command captures record the bits of all four.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "万丈 — in list A"},
+    {"template": "base:stage_deployments:001ea960", "group": 0, "x": 10, "y": 8, "faction": 0, "note": "ヒイロ — in list A"},
+    {"template": "base:stage_deployments:001e9a78", "group": 0, "x": 12, "y": 8, "faction": 0, "note": "カトル — NOT in list A (stays behind, per the dialogue)"},
+    {"template": "base:stage_deployments:001e8070", "group": 0, "x": 14, "y": 8, "faction": 0, "note": "ドモン — NOT in list A, but in list B"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D74", "note": "clear every selection mark"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D73", "args": [1], "note": "list A: the Muge-space team"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D74", "note": "clear again"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D73", "args": [0], "note": "list B"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "area",
+  "note": "Second attempt at 3D56 using the exact original sequence. layout-1 drew nothing; in every original site 3D56 is preceded by a 3D35 scroll, and scene 15 uses speed 0 (instant) — 3D35 4115,0 then 3D56 145,175,60, with ブライト saying the target point is this area and that three or more units must occupy it. Both shapes from the originals are reproduced here: scene 15's and scene 14's (3D35 5142,1 then 3D56 186,212,60).",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "万丈 — any unit, so the map is populated"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D35", "args": [4115, 0], "note": "scene 15's instant scroll"},
+        {"op": "3D56", "args": [145, 175, 60], "note": "scene 15's area"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D35", "args": [5142, 1], "note": "scene 14's scroll"},
+        {"op": "3D47"},
+        {"op": "3D56", "args": [186, 212, 60], "note": "scene 14's area"},
+        {"op": "3D38", "args": [40]},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "pilot",
+  "note": "Tests whether 3D69 changes the pilot's machine or puts the pilot into a different mode. The lead: five actors own a unit entry named after the actor themselves rather than a mecha, and two of them — アルベルト (unit 211 beside mecha 170) and シュバルツ (unit 362 beside mecha 0) — appear in the 3D69 instance list. If 3D69 swaps a pilot between those two entries, the unit-instance id under the roster slot changes, exactly the way 3D50 was confirmed. Each actor is deployed in the mecha form and the roster slot's unit pointer and unit id are read from the per-command state captures before and after, so the answer does not depend on reading the picture. 豹馬 repeats the combine-1 negative as a control.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001eccd0", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "アルベルト in the person-named unit 211"},
+    {"template": "base:stage_deployments:001eba70", "group": 0, "x": 13, "y": 10, "faction": 0, "note": "シュバルツ in mecha 0 (ガンダムシュピーゲル); his person-named unit is 362"},
+    {"template": "base:stage_deployments:001f0814", "group": 0, "x": 10, "y": 13, "faction": 0, "note": "ドモン in mecha 1; the most frequent 3D69 subject (8 uses, always value 1)"},
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 13, "y": 13, "faction": 0, "note": "豹馬 — control, combine-1 already showed no change"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [161]},
+        {"op": "3D35", "args": [2570, 1], "note": "lock the camera on アルベルト so any transformation is in frame"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D69", "args": [161, 1], "note": "THE TEST: the original instance for アルベルト, who owns both a mecha and a person-named unit"},
+        {"op": "3D38", "args": [90]},
+        {"op": "3D69", "args": [161, 0], "note": "the other value on the same actor — does it revert?"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D69", "args": [3, 0], "note": "シュバルツ's original instance; he also owns a person-named unit"},
+        {"op": "3D38", "args": [90]},
+        {"op": "3D69", "args": [3, 1]},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D69", "args": [4, 1], "note": "ドモン — the most frequent instance of all"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

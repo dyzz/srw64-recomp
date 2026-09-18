@@ -1,0 +1,11 @@
+{
+  "schema": "srw64.debug-script.v1",
+  "name": "3D69 值 0 与 3D6B 标志 1 的对照",
+  "note": "Second half of the actor-field probe: the same commands with the other operand value, so the third operand of 3D6B and the value operand of 3D69 are isolated against the first script's capture.",
+  "commands": [
+    {"op": "3D69", "args": [28, 0], "note": "マナミ, 0 — clears pilot +0x35"},
+    {"op": "3D38", "args": [10]},
+    {"op": "3D6B", "args": [165, 216, 1], "note": "same pair as the first script with flag 1"},
+    {"op": "3D38", "args": [10]}
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "audio-tail",
+  "note": "Audio probe. 3D67 is the last unknown whose meaning is audible rather than visible: 802176A8 routes numbers below 11 through jump table 8021F058 to pick a track. In the original scripts it appears in two fixed shapes — 3D4E then 3D67 n then 3D38 then 3D45 <group> (right before reinforcements arrive) and 3D54 145, 3D35, 3D67 0, 3D5C 145,1 (right before Combattler V combines) — so it reads as a fanfare for a dramatic entrance. All four original values 0/1/3/4 are probed, each bracketed by silence (3D3A 0) so the capture attributes sound to one command, with a known BGM (3D3A 49) at the start as a positive control. Run with --audio and SRW64_AUDIO_CAPTURE_FROM/_TO around the probe span. audio-2 reorders the probes so 3D75/3D68/3D36/3D63 come first and fit inside one capture window; the four 3D67 runs are long enough to push them past any reasonable window otherwise.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f1af4",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "note": "豹馬 / コン・バトラーV — subject of the 3D67 0 shape"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ — protagonist"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ],
+          "note": "positive control: a known BGM, so a silent capture means the sink is broken rather than the command"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ],
+          "note": "stop BGM — every probe below starts from silence"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D75",
+          "args": [
+            145
+          ],
+          "note": "probe E: 188 VI with no state change in tactical-3 — listen for whether it is audible at all"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D68",
+          "note": "probe F: 87 VI, no state change — same question"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D36",
+          "args": [
+            5
+          ],
+          "note": "probe G: viewport transition — check whether it carries a sound"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D36",
+          "args": [
+            6
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D63",
+          "args": [
+            145
+          ],
+          "note": "probe H: 22 VI, one roster byte"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            0
+          ],
+          "note": "probe A: the value used before 3D5C combination"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            1
+          ],
+          "note": "probe B: reinforcement shape"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            3
+          ],
+          "note": "probe C"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D67",
+          "args": [
+            4
+          ],
+          "note": "probe D: the most frequent value"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            90
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

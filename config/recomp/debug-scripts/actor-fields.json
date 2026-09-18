@@ -1,0 +1,17 @@
+{
+  "schema": "srw64.debug-script.v1",
+  "name": "3D69 / 3D6B / 3D6E / 3D70 / 3D6F 名册与部件字段",
+  "note": "The five commands that finished in 0 VI in the tactical mini stage: they write fields instead of playing anything, so the effect only shows in a before/after state capture. Arguments are original-script instances whose actors are in the turn-1 save's roster.",
+  "commands": [
+    {"op": "3D69", "args": [28, 1], "note": "マナミ, 1 — non-zero copies pilot +0x34 into +0x35"},
+    {"op": "3D38", "args": [10]},
+    {"op": "3D6B", "args": [165, 216, 0], "note": "万丈 / ダイターン3, flag 0 — the most frequent original instance"},
+    {"op": "3D38", "args": [10]},
+    {"op": "3D6F", "args": [53], "note": "clears bit 2 of +0x22 in the 700-entry table 80178F80 (part_instances)"},
+    {"op": "3D38", "args": [10]},
+    {"op": "3D70", "args": [181, 183], "note": "ショウ + チャム — the dominant original instance"},
+    {"op": "3D38", "args": [10]},
+    {"op": "3D6E", "args": [28], "note": "マナミ — requires roster +0x38 non-zero"},
+    {"op": "3D38", "args": [10]}
+  ]
+}

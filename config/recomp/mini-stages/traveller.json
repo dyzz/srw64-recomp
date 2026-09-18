@@ -1,0 +1,54 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "traveller",
+  "note": "Tests 3D72 against its only consumer. 3D72 writes engine+0x990 = parameter mod 15, and 3D33 picks its person from table D_801C5644[engine+0x990] — a table of exactly 15 people (then FFFF), which is why the parameter is taken mod 15. Each probe sets a different person, then makes the same 3D33 journey, so any difference in the travel animation is attributable to the person chosen. Values are the original ones: 8 (ローレンス, 20 uses), 14 (レイン), 3 (サイ・サイシー), and 0, which 3D33 treats as 'use the default person'. Runs on the world map, before 3D4D.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D72", "args": [8], "note": "person 8 = ローレンス"},
+        {"op": "3D33", "args": [2], "note": "journey from the baseline to entry 2"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D32", "args": [4], "note": "back to the same start for a fair comparison"},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D72", "args": [14], "note": "person 14 = レイン"},
+        {"op": "3D33", "args": [2], "note": "the identical journey"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D72", "args": [3], "note": "person 3 = サイ・サイシー"},
+        {"op": "3D33", "args": [2]},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D72", "args": [0], "note": "0 = the default person"},
+        {"op": "3D33", "args": [2]},
+        {"op": "3D38", "args": [45]},
+
+        {"op": "3D47", "note": "sole appearance: early exit watches this"},
+        {"op": "3D3B", "args": [0]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

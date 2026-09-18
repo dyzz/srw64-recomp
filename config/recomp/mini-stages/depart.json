@@ -1,0 +1,63 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "depart",
+  "note": "3D75 in the shape the original scripts actually use. All seven original instances are immediately followed by 3D46 (unit withdrawal, code-confirmed) on the same actor — 3D75[166] then 3D46[166,0]; 3D75[3] then 3D46[3,1]; 3D75[999] then 3D46[46,0], where 999 and 46 are both ブライト — and the pair is wrapped in 3D3B 2/3 fades. Earlier isolated probes showed nothing because the command was run alone: this stage runs the pair, and a control that runs 3D46 without 3D75 so the two effects can be told apart. The 3D75 operands are NOT all captains (シュバルツ, ゼクス, アラン fly ordinary mecha); only the seven-entry table at 8021E398 is captains, and non-table actors take one of the four other handlers.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001ea3cc", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "エレ / ゴラオン — in the captain table"},
+    {"template": "base:stage_deployments:001ea3b0", "group": 0, "x": 11, "y": 8, "faction": 0, "note": "シーラ / グラン・ガラン — in the table; control, withdrawn without 3D75"},
+    {"template": "base:stage_deployments:001eba70", "group": 0, "x": 14, "y": 8, "faction": 0, "note": "シュバルツ / ガンダムシュピーゲル — an original 3D75 operand NOT in the table"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 8, "y": 11, "faction": 0, "note": "万丈 / ダイターン3 — bystander, should be untouched"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D75", "args": [179], "note": "probe A: the original pair, captain half — animation"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D46", "args": [179, 1], "note": "probe A: the removal that always follows it"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D46", "args": [180, 1], "note": "control: removal WITHOUT the preceding 3D75, so the animation's own contribution is visible"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D75", "args": [3], "note": "probe B: an original operand that is NOT in the captain table — takes a different handler"},
+        {"op": "3D38", "args": [45]},
+        {"op": "3D46", "args": [3, 1], "note": "probe B: its own following removal, exactly as in event 001D7EE0"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

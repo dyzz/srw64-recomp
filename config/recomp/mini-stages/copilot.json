@@ -1,0 +1,36 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "copilot",
+  "note": "Replays the only shape 3D64 is ever used in. All three original calls are 3D64 500,500, and each follows 3D5A 32,0,37,500 (register アイシャ with エルブルス) and 3D5A 28,0,307,36 (マナミ swaps from 36 スイームルグ to 307 スイームルグS). The 500 case calls 800AB96C, which finds マナミ's machine and アイシャ's pilot record and sets アイシャ's +0x37 (has-a-machine flag) and a +0x34 of 2 — the same writes 3D70 makes when it attaches a companion. So the hypothesis is that 3D64 500,500 makes アイシャ the second pilot of マナミ's new ship. The pilot and unit tables are read after each step.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4268", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "マナミ / スイームルグ"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [32, 0, 37, 500], "note": "register アイシャ with エルブルス, as the original does"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [28, 0, 307, 36], "note": "マナミ: 36 スイームルグ -> 307 スイームルグS"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D64", "args": [500, 500], "note": "THE TEST: the special case"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "flow",
+  "note": "Same baseline as smoke, but the turn-1 player-phase event ends with 3D4A so victory, the ending event and the next-scene hand-off run without battles. Reinforcement is left in place; it should not fire.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3F",
+          "args": [
+            17410
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17411
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17436
+          ]
+        },
+        {
+          "op": "3D48"
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D",
+          "note": "world map → battlefield"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            27
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17460
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            5894,
+            1
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17461
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D45",
+          "args": [
+            2
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17464
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "initial-deployment",
+      "type": 13,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "turn-1-player-start",
+      "type": 0,
+      "header": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17440
+          ]
+        },
+        {
+          "op": "3D3F",
+          "args": [
+            17442
+          ]
+        },
+        {
+          "op": "3D48"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A",
+          "note": "victory settlement → C3 → ending event"
+        }
+      ],
+      "note": "engine turn counter +0x9AC is 0 during the first turn (inject-2 snapshots), so turn ≥ 0"
+    },
+    {
+      "name": "reinforcement-at-6",
+      "type": 7,
+      "header": [
+        1,
+        6,
+        4,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D45",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17475
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "victory",
+      "type": 7,
+      "header": [
+        1,
+        0,
+        4,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17478
+          ]
+        },
+        {
+          "op": "3D3F",
+          "args": [
+            17481
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17476
+          ]
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D33",
+          "args": [
+            2
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17486
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D3F",
+          "args": [
+            17502
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

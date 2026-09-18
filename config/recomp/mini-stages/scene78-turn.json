@@ -1,0 +1,138 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "scene78-turn",
+  "note": "Reaches scene 78's 3D75 call site. scene78-1 showed the original opening alone consumes the whole VI budget (115 of 137 commands over 15,800 VI), so the turn event never fired. Here the opening is replaced by a minimal one that only deploys the same groups (0, 12, 1, 2, 3) and hands over, while event 001CC1B4 — which contains 3D75 166 followed by the 3D46 166,0 it always precedes — is copied verbatim with only its trigger relaxed from turn 8 to turn 0. Every command byte of that event is the game's own. Note the pair sits inside a 3E08 1 conditional, so the run also shows whether that branch is taken.",
+  "map": 55,
+  "deployments_from": "base:stage_auxiliary:001ff608",
+  "events": [
+    {
+      "name": "minimal-opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            12
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            2
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            3
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "001cc1b4-3D75",
+      "copy_from": "base:stage_events:001cc1b4",
+      "header": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "note": "commands untouched; trigger relaxed from turn 8 to turn 0"
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

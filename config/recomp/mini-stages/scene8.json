@@ -1,0 +1,25 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "scene8",
+  "note": "Replays scene 8 「漢の意地!? 決別のとき」 verbatim to see 3D59 and 3D3D in their own context. Its opening runs 3D45 0, then 3D59 46 (add ブライト to the list at 8015F700), then 3D3D 14,24,0,200,1, which hands that list to 801C78A0 with the special count 200; 万丈 then remarks that the enemy is only a small recon squad. The hypothesis is sortie preparation — the mothership's captain being forced into the deployment. Every event is copied unchanged with the scene's own deployment block and map.",
+  "map": 54,
+  "deployments_from": "base:stage_auxiliary:001e5688",
+  "events": [
+    {
+      "name": "0019e054",
+      "copy_from": "base:stage_events:0019e054"
+    },
+    {
+      "name": "0019e140",
+      "copy_from": "base:stage_events:0019e140"
+    },
+    {
+      "name": "0019e158",
+      "copy_from": "base:stage_events:0019e158"
+    },
+    {
+      "name": "0019e208",
+      "copy_from": "base:stage_events:0019e208"
+    }
+  ]
+}

@@ -14,6 +14,8 @@
 #include "recomp_overlays.inl"
 #include "rom_variants.hpp"
 #include "diagnostics.hpp"
+#include "script_inject.hpp"
+#include "mini_stage.hpp"
 #if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
 #include "audio.hpp"
@@ -79,6 +81,7 @@ private:
 
 void on_init(uint8_t* rdram, recomp_context*) {
     srw64::state_probe::directory=output_dir;
+    srw64::mini_stage::configure(output_dir);
     const auto rom=recomp::get_rom();
 #if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
@@ -106,6 +109,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
 void on_vi() {
     const uint64_t vi = ++vi_count;
     if (vi % 6 == 0) {
+        srw64::script_inject::poll_file(output_dir);
         std::ifstream command(output_dir / "control.txt");
         std::string magic, extra;
         uint64_t sequence{}, mask{}, duration{};
@@ -133,6 +137,9 @@ void on_vi() {
         std::filesystem::rename(temporary, output_dir / "live-state.json");
     }
     if (max_vis && vi >= max_vis) ultramodern::quit();
+    // A mini-stage probe that named a command to watch ends once that command's
+    // grace period is over, instead of running out the VI budget.
+    if (srw64::mini_stage::finished()) ultramodern::quit();
 }
 
 bool get_input(int port, uint16_t* buttons, float* x, float* y) {
@@ -147,6 +154,7 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     if(srw64::names::owns_input())*x=*y=0;
     *buttons = srw64::names::input(*buttons);
     *buttons = srw64::intro::input(*buttons);
+    *buttons = srw64::mini_stage::input(*buttons);
     *buttons = srw64::dialogue::input(*buttons);
 #endif
     return true;

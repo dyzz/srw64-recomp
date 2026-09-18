@@ -1,0 +1,42 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "godmars",
+  "note": "Tests 3D6A on the God Mars family. Modes 0 and 1 always come as a pair, in an 'HP below a percentage' event: when タケル's ガイヤー is in danger, 3D6A 0 then 3D6A 1 play, the camera goes to タケル, and the enemy cries that this thing is not in their data — the God Mars combination. Mode 3 calls 800AB808 (units 187 ゴッドマーズ / 185 ガイヤー) and mode 4 calls 800AB6F4 (unit 186 コスモクラッシャー with actor 138 タケル), both completing at once. タケル is deployed in ガイヤー with the camera on him; the unit ids under his roster slot are read after each step to see whether the combination swaps his machine.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f0f1c", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "タケル / ガイヤー 185"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D54", "args": [138]},
+        {"op": "3D35", "args": [16384, 0], "note": "camera on タケル, as scene 42 does"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D6A", "args": [0], "note": "the combination pair, first half"},
+        {"op": "3D6A", "args": [1], "note": "second half"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D6A", "args": [3], "note": "immediate: ゴッドマーズ / ガイヤー handling"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D6A", "args": [4], "note": "immediate: コスモクラッシャー / タケル handling"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}

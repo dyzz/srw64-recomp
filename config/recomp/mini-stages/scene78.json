@@ -1,0 +1,128 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "scene78",
+  "note": "Replays scene 78 「獣戦機基地 総攻撃」 with every event copied verbatim, its own deployment block and its own map. The point is event 001CC1B4, one of the seven original 3D75 call sites: 3D75 166 is followed immediately by 3D46 166,0, the withdrawal it always precedes. That event is gated on turn >= 8, which a bounded run cannot reach, so its header alone is relaxed to turn 0 while every command byte stays the original. Nothing else is edited.",
+  "map": 55,
+  "deployments_from": "base:stage_auxiliary:001ff608",
+  "events": [
+    {
+      "name": "001cbc48-type12",
+      "copy_from": "base:stage_events:001cbc48"
+    },
+    {
+      "name": "001cbe90-type8",
+      "copy_from": "base:stage_events:001cbe90"
+    },
+    {
+      "name": "001cbea4-type8",
+      "copy_from": "base:stage_events:001cbea4"
+    },
+    {
+      "name": "001cbeb8-type2",
+      "copy_from": "base:stage_events:001cbeb8"
+    },
+    {
+      "name": "001cbed4-type0",
+      "copy_from": "base:stage_events:001cbed4"
+    },
+    {
+      "name": "001cbfc0-type7",
+      "copy_from": "base:stage_events:001cbfc0"
+    },
+    {
+      "name": "001cbfd4-type7",
+      "copy_from": "base:stage_events:001cbfd4"
+    },
+    {
+      "name": "001cbfe8-type7",
+      "copy_from": "base:stage_events:001cbfe8"
+    },
+    {
+      "name": "001cbffc-type7",
+      "copy_from": "base:stage_events:001cbffc"
+    },
+    {
+      "name": "001cc010-type7",
+      "copy_from": "base:stage_events:001cc010"
+    },
+    {
+      "name": "001cc024-type7",
+      "copy_from": "base:stage_events:001cc024"
+    },
+    {
+      "name": "001cc038-type7",
+      "copy_from": "base:stage_events:001cc038"
+    },
+    {
+      "name": "001cc04c-type7",
+      "copy_from": "base:stage_events:001cc04c"
+    },
+    {
+      "name": "001cc060-type7",
+      "copy_from": "base:stage_events:001cc060"
+    },
+    {
+      "name": "001cc074-type7",
+      "copy_from": "base:stage_events:001cc074"
+    },
+    {
+      "name": "001cc088-type7",
+      "copy_from": "base:stage_events:001cc088"
+    },
+    {
+      "name": "001cc09c-type7",
+      "copy_from": "base:stage_events:001cc09c"
+    },
+    {
+      "name": "001cc0b0-type7",
+      "copy_from": "base:stage_events:001cc0b0"
+    },
+    {
+      "name": "001cc0c4-type7",
+      "copy_from": "base:stage_events:001cc0c4"
+    },
+    {
+      "name": "001cc0d8-type9",
+      "copy_from": "base:stage_events:001cc0d8"
+    },
+    {
+      "name": "001cc108-type9",
+      "copy_from": "base:stage_events:001cc108"
+    },
+    {
+      "name": "001cc154-type0",
+      "copy_from": "base:stage_events:001cc154"
+    },
+    {
+      "name": "001cc178-type0",
+      "copy_from": "base:stage_events:001cc178"
+    },
+    {
+      "name": "001cc1b4-type0",
+      "copy_from": "base:stage_events:001cc1b4",
+      "header": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "note": "The 3D75 event, commands untouched; its trigger is relaxed from turn 8 to turn 0 so a bounded run reaches it."
+    },
+    {
+      "name": "001cc394-type0",
+      "copy_from": "base:stage_events:001cc394"
+    },
+    {
+      "name": "001cc414-type0",
+      "copy_from": "base:stage_events:001cc414"
+    },
+    {
+      "name": "001cc4f4-type7",
+      "copy_from": "base:stage_events:001cc4f4"
+    },
+    {
+      "name": "001cc858-type14",
+      "copy_from": "base:stage_events:001cc858"
+    }
+  ]
+}

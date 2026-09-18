@@ -1,0 +1,61 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "act",
+  "note": "Tests whether 3D69 toggles a unit's ability to act, which is what its call sites suggest. Value 0 appears where 豹馬 is being restrained (event 001CCFF0: 3D37 overlay, 3D63, 3D69 145,0, then 豹馬 says his body will not move and the enemy calls for the finishing blow) and where NPC ゲリラ are moved into position with 3D3C and then frozen. Value 1 appears where ヒイロ is about to cast a spirit and where 大作 has just been withdrawn. In this game a unit that has finished acting is drawn greyed out, so if 3D69 sets that state the sprite's colour changes; the camera is locked on the subject and dense frame sampling covers each command, so the answer comes from the frame trace rather than a single screenshot. 3D63 is replayed in the same original order just before it.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "豹馬 / コン・バトラーV — the subject of the original 3D63 + 3D69 pair"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 13, "y": 10, "faction": 0, "note": "万丈 — control, never touched"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [145]},
+        {"op": "3D35", "args": [2570, 1], "note": "camera on 豹馬, whose sprite is the thing to watch"},
+        {"op": "3D38", "args": [120], "note": "hold still: this is the reference state of the sprite"},
+
+        {"op": "3D63", "args": [145], "note": "the original order: 3D63 comes immediately before 3D69 in event 001CCFF0"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D69", "args": [145, 0], "note": "THE TEST: the value used where 豹馬 is restrained. Does the sprite grey out?"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D69", "args": [145, 1], "note": "the other value — does it restore?"},
+        {"op": "3D38", "args": [120]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

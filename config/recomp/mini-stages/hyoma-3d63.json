@@ -1,0 +1,300 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "hyoma-3d63",
+  "note": "Interactive stage for 3D63 (scene 80 is its only call site: 3D37 0 on 豹馬, 3D63 145, 3D69 145,0, and the same 3D69 145,0 again at the start of turns 1-4). Only 豹馬 in バトルジェット (scene 80's own record) is deployed, no enemy. Each フェイズ終了 advances one step at the start of the next player phase: turn 2 runs 3D63 145 alone, turn 3 runs it a second time, turn 4 replays the original sequence (explosion, 3D63, 3D69 145,0, his line), turn 5 runs 3D69 145,1. Turn headers compare the 0-based turn counter, so turn N is header [N-1, 1]. Play with play_native.py --mini-stage and press F8 on the main menu.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:00200890",
+      "group": 0,
+      "x": 10,
+      "y": 12,
+      "faction": 0,
+      "note": "豹馬 in バトルジェット, scene 80's record"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            145
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "turn-2: 3D63 alone",
+      "type": 0,
+      "header": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            145
+          ],
+          "note": "remember 豹馬's tile"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "scroll the camera to him"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D63",
+          "args": [
+            145
+          ],
+          "note": "step 1"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "name": "turn-3: 3D63 again",
+      "type": 0,
+      "header": [
+        2,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            145
+          ],
+          "note": "remember 豹馬's tile"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "scroll the camera to him"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D63",
+          "args": [
+            145
+          ],
+          "note": "step 2: does a second call undo the first?"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "name": "turn-4: original sequence",
+      "type": 0,
+      "header": [
+        3,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            145
+          ],
+          "note": "remember 豹馬's tile"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "scroll the camera to him"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D37",
+          "args": [
+            0,
+            16384
+          ],
+          "note": "explosion on his tile"
+        },
+        {
+          "op": "3D63",
+          "args": [
+            145
+          ]
+        },
+        {
+          "op": "3D69",
+          "args": [
+            145,
+            0
+          ],
+          "note": "action disabled, as in scene 80"
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            40302
+          ],
+          "note": "豹馬「うぅ……しまった……体が……」"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-5: 3D69 restore",
+      "type": 0,
+      "header": [
+        4,
+        1,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D54",
+          "args": [
+            145
+          ],
+          "note": "remember 豹馬's tile"
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "scroll the camera to him"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D69",
+          "args": [
+            145,
+            1
+          ],
+          "note": "step 4: action enabled again"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47",
+          "note": "sole appearance: early exit for bounded checks"
+        }
+      ]
+    }
+  ]
+}

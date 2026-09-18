@@ -1,6 +1,8 @@
 #include "game_hooks.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
+#include "script_inject.hpp"
+#include "mini_stage.hpp"
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
 
@@ -9,6 +11,17 @@ extern "C" {
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
+    srw64::script_inject::service(ram);
+    // State captures bracket each injected script when the state probe is on.
+    static uint64_t captured_sequence=0;
+    {
+        auto& inject=srw64::script_inject::state();
+        std::lock_guard lock(inject.mutex);
+        if(inject.active && inject.active->sequence!=captured_sequence) {
+            captured_sequence=inject.active->sequence;
+            srw64::state_probe::capture(ram,"script-inject-applied",uint32_t(captured_sequence));
+        }
+    }
 }
 void resident_func_800821B0(uint8_t* ram,recomp_context* ctx) {
     const uint32_t seed=ctx->r4;srw64_original_rng_seed(ram,ctx);
@@ -98,8 +111,26 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     if(tracing)before=srw64::script_trace::snapshot(rdram,engine,owner);
     srw64_original_script_step(rdram, ctx);
     if(tracing)srw64::script_trace::record(engine,owner,before,srw64::script_trace::snapshot(rdram,engine,owner));
+    {
+        static uint64_t completed=0;
+        srw64::script_inject::observe(rdram);
+        auto& inject=srw64::script_inject::state();
+        uint64_t now,sequence=0;
+        {std::lock_guard lock(inject.mutex);now=inject.completed;sequence=inject.completed_sequence;}
+        if(now!=completed){completed=now;srw64::state_probe::capture(rdram,"script-inject-complete",uint32_t(sequence));}
+    }
+    srw64::mini_stage::poll_hook(rdram,owner);
     move_probe.after(rdram,owner);
     if (srw64_game_hooks.script_after) srw64_game_hooks.script_after(rdram, owner);
+}
+void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
+    // Scene registration: a mini stage image replaces the pointer table and buffers first.
+    srw64::mini_stage::register_hook(rdram, ctx);
+    srw64_original_script_register(rdram, ctx);
+}
+void load_000AB160_func_80209D6C(uint8_t* rdram, recomp_context* ctx) {
+    srw64_original_stage_map_select(rdram, ctx);
+    srw64::mini_stage::map_hook(rdram);
 }
 void resident_func_8009FA94(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.choice) srw64_game_hooks.choice(rdram);

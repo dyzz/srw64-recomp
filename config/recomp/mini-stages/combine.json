@@ -1,0 +1,61 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "combine",
+  "note": "Tests whether 3D69 separates a combining machine, using コン・バトラーV as the subject. 3D5C is already confirmed to do exactly that (3D5C 145,0 took the player roster from 10 to 14 slots, the four component machines appearing on adjacent tiles), so this stage runs the two back to back on the same actor with the camera locked on him: first 3D69 145,0 alone from a combined state, then 3D5C 145,0 as the positive control. If 3D69 separates, the roster grows at the first command and the control finds nothing left to do. Slot counts are read from the per-command state captures, so the answer does not depend on reading the picture.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f1af4", "group": 0, "x": 10, "y": 10, "faction": 0, "note": "豹馬 / コン・バトラーV — combined at the start"},
+    {"template": "base:stage_deployments:001e4248", "group": 0, "x": 16, "y": 16, "faction": 0, "note": "万丈 / ダイターン3 — bystander, must stay untouched"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D54", "args": [145], "note": "remember 豹馬's tile"},
+        {"op": "3D35", "args": [2570, 1], "note": "lock the camera on (10,10) so any separation is in frame"},
+        {"op": "3D38", "args": [60]},
+
+        {"op": "3D69", "args": [145, 0], "note": "THE TEST: does this separate コン・バトラーV? Roster should grow 3 -> 7 if so"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D5C", "args": [145, 0], "note": "POSITIVE CONTROL: the confirmed separation command on the same actor. If 3D69 already separated, this has nothing left to do"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D69", "args": [145, 1], "note": "the other value of 3D69, after separation — does it recombine?"},
+        {"op": "3D38", "args": [90]},
+
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [0, 28, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]
+    }
+  ]
+}

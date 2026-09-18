@@ -1,4 +1,5 @@
 #pragma once
+#include "guest_memory.hpp"
 #include <array>
 #include <cstdint>
 #include <cstdio>
@@ -12,16 +13,9 @@ inline bool enabled() {
     static const bool value=[] {const char* p=std::getenv("SRW64_SCRIPT_TRACE");return p && std::string_view(p)=="1";}();
     return value;
 }
-// RDRAM is word-swapped in the host. These reads never mutate guest memory.
-inline bool valid(uint32_t p, uint32_t size) {
-    return (p & 0xE0000000u)==0x80000000u && (p & 0x1FFFFFFFu)<=0x800000u-size;
-}
-inline uint32_t read(const uint8_t* ram,uint32_t p,unsigned size) {
-    if(!valid(p,size))return 0;
-    uint32_t value=0;
-    for(unsigned i=0;i<size;++i)value=(value<<8)|ram[((p&0x1FFFFFFFu)+i)^3];
-    return value;
-}
+// The trace only reads guest memory.
+using guest::valid;
+using guest::read;
 struct Snapshot {
     uint32_t pc{},handler{};
     uint16_t state{},acc{},route{},choice{},event_type{},engine_phase{},turn{};

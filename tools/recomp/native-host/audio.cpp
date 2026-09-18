@@ -19,11 +19,19 @@ uint32_t rate;
 uint64_t queued_samples{}, max_queued_frames{}, captured_samples{};
 uint64_t queue_calls{}, latency_recoveries{}, max_feedback_frames{};
 std::ofstream capture;
+// Optional VI window for the bounded capture; see Srw64AudioCaptureWindow.
+Srw64AudioCaptureWindow capture_window;
+bool capture_opened{};
+uint64_t window_read(const char* name) {
+    const char* value = std::getenv(name);
+    return value && *value ? std::strtoull(value, nullptr, 10) : 0;
+}
 }
 
 void srw64_configure_audio(bool value, const std::filesystem::path& directory) {
     enabled = value;
     output = directory;
+    capture_window = {window_read("SRW64_AUDIO_CAPTURE_FROM"), window_read("SRW64_AUDIO_CAPTURE_TO")};
 }
 
 bool srw64_audio_enabled() { return enabled; }
@@ -98,14 +106,24 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
         }
         std::filesystem::rename(temporary, output / "audio-live.json");
     }
-    // Keep a bounded copy of the actual post-channel-swap device input.
-    if (!capture.is_open() && captured_samples == 0) {
+    // Keep a bounded copy of the actual post-channel-swap device input. With a VI
+    // window the copy covers exactly that span; otherwise the first 30 seconds.
+    const auto action = capture_window.act(srw64_current_vi(), capture.is_open());
+    if (action == Srw64AudioCaptureWindow::Action::Close) { capture.close(); return; }
+    if (action == Srw64AudioCaptureWindow::Action::Skip) return;
+    if (!capture_opened) {
+        capture_opened = true;
         capture.open(output / "audio-output.s16", std::ios::binary);
         std::ofstream metadata(output / "audio-output.json");
         metadata << "{\"schema\":\"srw64.native-audio-capture.v1\",\"frequency\":" << rate
-                 << ",\"channels\":2,\"format\":\"signed-16-little-endian\",\"duration_limit_seconds\":30}\n";
+                 << ",\"channels\":2,\"format\":\"signed-16-little-endian\"";
+        if (capture_window.bounded())
+            metadata << ",\"capture_from_vi\":" << capture_window.from << ",\"capture_to_vi\":" << capture_window.to;
+        else metadata << ",\"duration_limit_seconds\":30";
+        metadata << "}\n";
     }
-    const size_t keep = std::min<uint64_t>(count, uint64_t(rate) * 2 * 30 - std::min(captured_samples, uint64_t(rate) * 2 * 30));
+    const size_t keep = capture_window.bounded() ? count
+        : std::min<uint64_t>(count, uint64_t(rate) * 2 * 30 - std::min(captured_samples, uint64_t(rate) * 2 * 30));
     capture.write(reinterpret_cast<const char*>(swapped.data()), keep * sizeof(int16_t));
     captured_samples += keep;
 }
