@@ -1,0 +1,64 @@
+# 对话场景：实际地图／边框资源高清替换与蓝色人名
+
+2026-09-09。用户明确要求修改游戏代码和资源，并在游戏实际运行中展示。实现由真实地图纹理替换、边框切片重建与姓名绘制状态调整组成。此前整张场景的 AI 预览没有作为背景、覆盖层或运行截图接入。
+
+后续更新：高清入口现已采用[4096×4096 世界地图与苹方字体](native-worldmap-hd.md)，其包为 `worldmap-runtime/pack-v6`。本页以下的 `dialogue-runtime/v3`、HarmonyOS 与运行记录均为该阶段的历史验收，边框与蓝色人名实现继续保留。
+
+## 背景资源
+
+目标为 ROM **资源 5604**，解压后 158,200 字节。其完整内容唯一匹配昨天对话捕获的 RDRAM `0x2CF200`。地图由带独立 RGBA16 调色板的 64×64 CI4 图块及模型显示列表组成。
+
+本次复用 2026-09-08 从该资源的已解码 512×512 欧洲地图裁块制作并冻结的 2048×2048 高清候选。候选 SHA-256 为 `5636c2f878b590b7036a7900294853557f73d03713338b2be1a9fc481000aa0d`，来源为既有 Qwen 请求。纠正工作方式后未再提交图片生成请求；实际接入没有从整图预览提取背景或文字。
+
+[`build_dialogue_runtime_pack.py`](../../tools/hd_ai/build_dialogue_runtime_pack.py) 校验原始 ROM、捕获内存、源地图及候选图块哈希，重新计算每个源图块的 RT64 v5 哈希，将高清图切块结果合并进现有字体／头像包。
+
+- 57 个地图图块从 64×64 替换为 256×256；原有顶点、UV、摄影机、标记及地图逻辑不变。
+- 海面及海岸保护带保留确定性放大结果；Alpha 来自原调色板，所有替换图块逐像素核对。
+- 候选中的一个共享哈希 `b820c653dd7fc5ec` 因不同邻接上下文存在歧义而排除，沿用原图。其余已有地图替换仍按旧包工作。
+- 旧包的 5,005 个哈希键完整保留；其中只有 57 个地图条目改变，其他 4,948 个条目的文件逐字节相同。新边框另外增加 13 个替换条目，总计 5,018 个。
+- 首次试验包 `v1` 尚未排除此共享哈希，仅保留作过程记录；`v2` 完成排除，`v3` 进一步接入高清边框。当前配置使用 `v3`。
+
+资产证据：[构建记录](../../assets/hd-ai/dialogue-runtime/v3/build.json)、[Alpha／保护区／非目标资产检查](../../assets/hd-ai/dialogue-runtime/v3/asset-checks.json)。本次覆盖已有候选的欧洲裁块，不宣称整个游戏的地图都已重绘。
+
+## 高清边框资源
+
+目标为 ROM **资源 1296**，4,104 字节，头部为 CI4 / 512×16 图条。完整解压数据唯一匹配当前捕获 RDRAM `0x2B8598`。对话框使用其中 13 个不同的 16×16 切片，重复排列成 192×64 的逻辑窗口。
+
+[`dialogue_frame_asset.py`](../../tools/hd_ai/dialogue_frame_asset.py) 用代码绘制银色斜角边框、蓝色内线与透明内部，在整框上完成抗锯齿后切回原有角色位置。每个切片改为 64×64；13 个计算出的 RT64 v5 哈希全部与真实 TMEM 转储相等。按原窗口排列重新拼装后，所有 RGBA 字节与完整 768×256 边框栅格一致，避免切片接缝。
+
+边框资源的几何位置、正文底板透明度及文字绘制顺序沿用游戏。它与背景地图和正文分别绘制，没有使用整张截图覆盖游戏。验证范围为当前开场对话；这些资源在其他界面的使用尚未逐一检查。
+
+## 人名颜色
+
+[`dialogue_style.hpp`](../../src/host/dialogue_style.hpp) 在已核验的开场对话 overlay 和姓名行位置匹配时，为姓名字形矩形临时设置 RGB `#69BFFF`，使用原高清字形的 Alpha 覆盖率，并在每次绘制后恢复 RDP combiner 和 primitive color。
+
+上下两个人名均使用蓝色。正文的白色／灰色区分、字形、字距、逐字显示及翻页逻辑不变。此处沿用已加载的 HarmonyOS 高清字形纹理；独立 Core Text 实验尚未自动成为实时文字后端。开关随素材包内的 `srw64-dialogue-name-blue-v1` 标记启用。
+
+该处理只修改提交给 RT64 的显示列表副本，不写回游戏内存。基于真实捕获的 C++ 检查确认六个人名字形被包裹在颜色设置／恢复命令中；移除这些新增命令后，全部原始绘制命令逐字节相同。错误 overlay 签名和越界输入被拒绝，AddressSanitizer / UndefinedBehaviorSanitizer 检查通过。
+
+## 运行与验证
+
+当前原生试玩入口 `scripts/Play SRW64 Native.command` 通过 profile 读取语言与纯美术包。手动重看开场：
+
+```sh
+python3 tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json --new-game
+```
+
+资源包可从冻结输入重新构建到新目录：
+
+```sh
+.venv/bin/python -m tools.hd_ai.build_dialogue_runtime_pack --frame \
+  --output assets/hd-ai/dialogue-runtime/rebuild
+```
+
+自动重跑同段对话：
+
+当前自动验证命令见[原生开发指南](../guide/native-development.md#静音验证与窗口控制)。
+旧补丁 ROM 的专用运行参数已移除；下方运行目录保留为历史渲染证据。
+
+
+这是从 ROM 启动、使用输入脚本推进剧情的 native recomp + RT64 / Metal 运行。输出帧在 GPU 完成后回读。运行使用独立目录和空白存档，不改已有试玩存档；范围止于开场对话。
+
+最终运行证据在 `assets/hd-ai/dialogue-runtime/live-v3/`；需以其 `report.json` 和实际 GPU 图片为准。首轮 `live-v1` 完成 7,020 VI、exit 0，并显示了实际蓝色人名；`live-v2` 完成 7,200 VI，并停留在目标对白页。高清边框先经过 `replay-v3` 的同任务渲染检查，最终另跑完整新游戏开场为 `live-v3`，区分回放与实际游戏流程。
+
+最终 `live-v3` 完成 **7,200 VI，exit 0**。已查看 [实际 GPU 截图](../../assets/hd-ai/dialogue-runtime/live-v3/present-3540.png)，停留于“同样至关重要。别人拿不到的情报，”这一页，地图、高清边框与两个蓝色人名同时生效。两个姓名区域均存在超过 700 个精确 RGB `(105,191,255)` 的实心像素。43 项 Python 测试、编译与依赖检查通过；详见 [最终验收记录](../../assets/hd-ai/dialogue-runtime/acceptance.json)。

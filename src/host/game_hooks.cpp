@@ -225,7 +225,7 @@ void resident_func_800AA8F4(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_weapon_inherit(rdram, ctx);
     rules::inherit_missing_weapons(rdram, unit, saved, count);
 }
-// Upgrade limits (upgrade_rules.hpp, docs/upgrade-limits.md). With the cap-break
+// Upgrade limits (upgrade_rules.hpp, docs/gameplay/upgrade-limits.md). With the cap-break
 // rule off and no unit above its cap, every scope below leaves memory unchanged.
 void resident_func_800A5254(uint8_t* rdram, recomp_context* ctx) {
     // Stat and weapon power recompute for the unit in a0. The original rewrites the

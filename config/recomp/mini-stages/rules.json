@@ -1,7 +1,7 @@
 {
   "schema": "srw64.mini-stage.v1",
   "name": "rules",
-  "note": "Target stage for the optional rule fixes (docs/rule-fixes.md). Each side gets a 超能力 pilot, a 聖戦士 pilot and a pilot in ミニフォー (unit 170: mobility 95, limit 140, so a level-1 pilot's hit or evade plus mobility is already over the limit). ガラリア's 聖戦士 starts at pilot level 7, so she likely carries the flag at skill level 0. With SRW64_RULE_PROBE=1 the host evaluates the two hit-rate routines for every pairing at the first 3D38 after both groups are on the map.",
+  "note": "Target stage for the optional rule fixes (docs/gameplay/rule-fixes.md). Each side gets a 超能力 pilot, a 聖戦士 pilot and a pilot in ミニフォー (unit 170: mobility 95, limit 140, so a level-1 pilot's hit or evade plus mobility is already over the limit). ガラリア's 聖戦士 starts at pilot level 7, so she likely carries the flag at skill level 0. With SRW64_RULE_PROBE=1 the host evaluates the two hit-rate routines for every pairing at the first 3D38 after both groups are on the map.",
   "map": 20,
   "deployments": [
     {"template": "base:stage_deployments:001f0f1c", "group": 0, "x": 8, "y": 8, "faction": 0, "note": "タケル / ガイヤー — 超能力"},

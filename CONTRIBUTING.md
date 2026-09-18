@@ -8,7 +8,7 @@
 `docs/media/`；须记录来源、摘要和实验范围，不随图分发纹理包或其他游戏资源。
 待审图片保留在忽略的 `build/`。原始字形映射作为独立参考数据保存在 `reference/`，其来源和摘要固定在 `config/data/original-glyph-map.json`。
 
-第三方输入的来源、固定版本和哈希记录在 `docs/provenance.md`。不得通过提交
+第三方输入的来源、固定版本和哈希记录在 `docs/guide/provenance.md`。不得通过提交
 构建产物来替代来源记录。
 
 ## 开发流程
@@ -57,7 +57,7 @@ make check
 
 ## 原生代码与验证
 
-模块责任、构建与证据入口见 [原生开发指南](docs/native-development.md)，
+模块责任、构建与证据入口见 [原生开发指南](docs/guide/native-development.md)，
 文档导航见 [技术索引](docs/README.md)。原生工具链与生成头文件已准备后，
 运行 `make recomp-native-check` 汇集现有 C++ 组件检查；它独立于 `make check`，
 也不代表实际游戏流程验收。

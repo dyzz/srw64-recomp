@@ -3,7 +3,7 @@
 The upstream seed marked every row confirmed, but 138 rows disagreed with the
 tiles the game actually draws. These tests pin the reviewed readings and the
 structural invariants that exposed the misreadings, so a future re-import of the
-seed cannot quietly reintroduce them. See docs/provenance.md.
+seed cannot quietly reintroduce them. See docs/guide/provenance.md.
 """
 from pathlib import Path
 import collections

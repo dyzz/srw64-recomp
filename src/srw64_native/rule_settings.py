@@ -1,4 +1,4 @@
-"""Optional rules: corrections for original defects and difficulty options; see docs/rule-fixes.md.
+"""Optional rules: corrections for original defects and difficulty options; see docs/gameplay/rule-fixes.md.
 
 This is a gameplay choice, kept apart from presentation preferences. A first
 playtest launch turns the corrections on and leaves the difficulty options off;

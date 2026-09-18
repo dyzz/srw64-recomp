@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Upgrade rules file for the native host (docs/upgrade-limits.md).
+"""Upgrade rules file for the native host (docs/gameplay/upgrade-limits.md).
 
   export OUTPUT [--units] [--weapons]   write a file holding the original values
   check PATH                            validate a file the way the host will

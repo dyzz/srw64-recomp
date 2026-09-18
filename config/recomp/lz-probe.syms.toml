@@ -1,4 +1,4 @@
-# Addresses/sizes reviewed against JP Rev 0; see docs/recomp-progress.md.
+# Addresses/sizes reviewed against JP Rev 0; see docs/design/recomp-progress.md.
 # The three probe_* functions are explicit isolated-harness bindings.
 [[section]]
 name = ".main"

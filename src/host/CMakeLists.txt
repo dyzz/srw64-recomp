@@ -70,7 +70,7 @@ if(SRW64_ENABLE_RT64)
     add_executable(srw64-gfx-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
     target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_dialogue_text.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp macos/native_name_entry_macos.mm macos/presentation_settings_macos.mm macos/rule_menu_macos.mm macos/settings_window_macos.mm)
-    # Debug interface (docs/debug-interface.md), inert unless SRW64_DEBUG=1.
+    # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp macos/debug_ui_macos.mm)
     set_source_files_properties(macos/native_name_entry_macos.mm macos/window_test_control_macos.mm macos/presentation_settings_macos.mm macos/rule_menu_macos.mm macos/settings_window_macos.mm macos/debug_ui_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
     target_compile_definitions(srw64-gfx-host PRIVATE SRW64_NATIVE_DIALOGUE)

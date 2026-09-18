@@ -3,7 +3,7 @@
 #include <cstdint>
 
 // Corrections that are always on, for original defects where the game contradicts
-// its own data and no playable behaviour is lost (docs/base-fixes.md). Unlike the
+// its own data and no playable behaviour is lost (docs/gameplay/base-fixes.md). Unlike the
 // optional rules in rule_fixes.hpp these have no switch: the hook wrappers in
 // game_hooks.cpp apply them on every run.
 namespace srw64::base_fixes {

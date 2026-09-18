@@ -12,7 +12,7 @@
     "corrected_rows": 147,
     "added_rows": 84,
     "evidence": "ROM font bitmaps",
-    "record": "docs/provenance.md"
+    "record": "docs/guide/provenance.md"
   },
   "columns": [
     "glyph_id",

@@ -1,4 +1,4 @@
-"""Debug interface clients: socket JSON-RPC, key steps, waits, events and MCP (docs/debug-interface.md)."""
+"""Debug interface clients: socket JSON-RPC, key steps, waits, events and MCP (docs/guide/debug-interface.md)."""
 from __future__ import annotations
 
 import base64

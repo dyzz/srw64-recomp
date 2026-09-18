@@ -1,4 +1,4 @@
-"""Unit upgrade rules file (docs/upgrade-limits.md): template export and validation.
+"""Unit upgrade rules file (docs/gameplay/upgrade-limits.md): template export and validation.
 
 The host reads the same file through SRW64_UPGRADE_RULES and applies the same
 checks (src/host/upgrade_rules.hpp); this module lets the

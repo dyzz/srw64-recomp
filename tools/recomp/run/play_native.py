@@ -31,11 +31,11 @@ def main() -> int:
     parser.add_argument("--mini-stage", type=Path, help="compile this mini stage and substitute it for the first stage of a new game; F8 on the main menu starts it")
     parser.add_argument("--resolution-scale", type=int, choices=range(1, 9), help="internal resolution multiplier, 1..8; text size and layout stay the same")
     rules = parser.add_mutually_exclusive_group()
-    rules.add_argument("--rules", choices=("original", "fixed", "all"), help="original rules, the bug-fix rules, or those plus the difficulty choices (docs/rule-fixes.md); a first launch uses fixed, and the choice is remembered")
+    rules.add_argument("--rules", choices=("original", "fixed", "all"), help="original rules, the bug-fix rules, or those plus the difficulty choices (docs/gameplay/rule-fixes.md); a first launch uses fixed, and the choice is remembered")
     rules.add_argument("--rule-fixes", metavar="IDS",
                        help=f"comma-separated subset of {', '.join(rule_settings.RULE_FIXES)} ('' for none); remembered for later launches")
     parser.add_argument("--upgrade-rules", type=Path, metavar="PATH",
-                        help="upgrade increments, prices, caps and weapon types (docs/upgrade-limits.md); "
+                        help="upgrade increments, prices, caps and weapon types (docs/gameplay/upgrade-limits.md); "
                              "tools/recomp/gameplay/upgrade_rules.py export writes a template. Not remembered")
     args = parser.parse_args()
     if (args.language or args.images) and not args.profile:

@@ -29,7 +29,7 @@ int main(int argc,char** argv) {
     initialize(rom.data(),rom.size());
     const auto& original=state().original;
 
-    // Original tables (docs/upgrade-limits.md sections 2 and 3).
+    // Original tables (docs/gameplay/upgrade-limits.md sections 2 and 3).
     for(unsigned n=0;n<levels;++n) {
         assert(original.stats[0].increments[n]==200 && original.stats[0].prices[n]==2000*(n+1));
         assert(original.stats[1].increments[n]==(n<5?10:20) && original.stats[2].increments[n]==(n<5?5:10));

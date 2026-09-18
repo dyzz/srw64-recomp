@@ -15,7 +15,7 @@
 #include <string_view>
 #include <vector>
 
-// Shared state of the debug interface (docs/debug-interface.md) that the window
+// Shared state of the debug interface (docs/guide/debug-interface.md) that the window
 // and render threads read without depending on the socket server, so the frame
 // probes can link graphics.cpp without it. Everything here is inert until the
 // server (debug_server.cpp, SRW64_DEBUG=1) writes to it.

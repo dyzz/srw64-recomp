@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <filesystem>
 
-// Debug interface (docs/debug-interface.md): with SRW64_DEBUG=1 the graphics
+// Debug interface (docs/guide/debug-interface.md): with SRW64_DEBUG=1 the graphics
 // host serves newline-delimited JSON-RPC 2.0 on <run>/debug.sock. The server
 // thread answers requests; anything touching SDL or AppKit runs on the window
 // thread through service_main().
