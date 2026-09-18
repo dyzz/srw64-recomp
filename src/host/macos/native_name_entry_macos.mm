@@ -262,7 +262,7 @@ void portrait_in(NSImage* image,NSRect rect,CGFloat radius,bool smooth) {
         inputs[f].frame=[page place:NSMakeRect(478,264+110*f,528,39)];
         inputs[f].font=[NSFont systemFontOfSize:26*s weight:NSFontWeightMedium];
     }
-    for(unsigned route=0;route<4;++route)cards[route].frame=[page place:NSMakeRect(54+route*248,224,228,360)];
+    for(unsigned route=0;route<4;++route)cards[route].frame=[page place:NSMakeRect(54+route*248,222,228,368)];
     bool review=request.person==srw64::names::Review;
     cancel.frame=[page place:NSMakeRect(review?54:462,612,184,48)];
     reset.frame=[page place:NSMakeRect(660,612,146,48)];
@@ -330,25 +330,28 @@ void portrait_in(NSImage* image,NSRect rect,CGFloat radius,bool smooth) {
 }
 - (void)drawCard:(unsigned)route bounds:(NSRect)bounds {
     srw64::localization::Scope language(srw64::localization::snapshot());
-    const CGFloat s=bounds.size.height/360;const bool active=route==choice;
+    // Design size 228 x 368: the protagonist above, the partner in its own row
+    // below a divider, so neither portrait covers the other.
+    const CGFloat s=bounds.size.height/368;const bool active=route==choice;
     [NSGraphicsContext saveGraphicsState];
     NSAffineTransform* transform=[NSAffineTransform transform];[transform scaleBy:s];[transform concat];
-    const NSRect card=NSMakeRect(1,1,226,358);
+    const NSRect card=NSMakeRect(1,1,226,366);
     box(card,active?0x13263A:0x101E2D,14);stroke_box(card,active?0x81D6EE:0x294254,14,active?2:1);
     const bool smooth=image_mode==1;
+    const auto& names=request.choices[route].names;
     if(route*2+1<choicePortraits.count) {
-        box(NSMakeRect(24,22,180,180),0x183043,12);portrait_in(choicePortraits[route*2],NSMakeRect(24,22,180,180),12,smooth);
-        box(NSMakeRect(144,146,66,66),active?0x13263A:0x101E2D,12);
-        portrait_in(choicePortraits[route*2+1],NSMakeRect(147,149,60,60),10,smooth);
+        box(NSMakeRect(28,20,172,172),0x183043,12);portrait_in(choicePortraits[route*2],NSMakeRect(28,20,172,172),12,smooth);
+        box(NSMakeRect(24,302,56,56),0x183043,10);portrait_in(choicePortraits[route*2+1],NSMakeRect(24,302,56,56),10,smooth);
     }
     const bool super=route<2, male=route%2==0;
     draw([NSString stringWithFormat:@"%@  ·  %@",label(super?"select_super":"select_real"),label(male?"select_male":"select_female")],
-         NSMakeRect(24,220,190,20),13,super?0xF2B678:0x8CD6EF,YES);
-    const auto& names=request.choices[route].names;
-    draw(string(names[0][0]),NSMakeRect(24,246,190,34),26,0xF0F6FC,YES);
-    draw(string(names[0][1]),NSMakeRect(24,284,190,24),16,0xADC4D6);
-    draw([NSString stringWithFormat:@"%@  %@",label("name_step_partner"),string(names[1][0]+u"・"+names[1][1])],
-         NSMakeRect(24,322,190,20),12,0x809DB4);
+         NSMakeRect(24,202,190,18),13,super?0xF2B678:0x8CD6EF,YES);
+    draw(string(names[0][0]),NSMakeRect(24,222,190,34),26,0xF0F6FC,YES);
+    draw(string(names[0][1]),NSMakeRect(24,258,190,22),16,0xADC4D6);
+    box(NSMakeRect(24,290,180,1),active?0x2E4A60:0x243849);
+    draw(label("name_step_partner"),NSMakeRect(92,302,116,15),11,0x809DB4);
+    draw(string(names[1][0]),NSMakeRect(92,318,116,21),15,0xE7F3FC,YES);
+    draw(string(names[1][1]),NSMakeRect(92,340,116,18),12,0xADC4D6);
     [NSGraphicsContext restoreGraphicsState];
 }
 - (void)focus:(unsigned)index {

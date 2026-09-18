@@ -179,16 +179,16 @@
     {
       "file": "20-protagonist-select-en.png",
       "source": "build/recomp/debug/media-2026-09-18/protagonist-select-en.png",
-      "sha256": "291eb57b043cbc6bae7aa74ebc064822dae0069e926c4519aaa861e0bd328e77",
+      "sha256": "fa6652ebb4eb224f6eff5c43559f3db3103a9395f58cd3bfa7bedc4d60375780",
       "title": "20 · 主角选择页（英文）/ Protagonist select (English)",
-      "caption": "调试接口实拍（运行 20260918T140000.592481Z，窗口 1280×960，Original 头像）：公共序章之后的原生选择页，四张卡片按原版路线顺序，←→ 已高亮マナミ。",
+      "caption": "调试接口实拍（运行 20260918T144703.564088Z，窗口 1280×960，Original 头像）：公共序章之后的原生选择页，四张卡片按原版路线顺序；上方主角头像，分隔线下单独一行是搭档头像与姓名；←→ 已高亮マナミ。",
       "status": "approved-for-readme",
       "modified": false
     },
     {
       "file": "21-protagonist-select-zh.png",
       "source": "build/recomp/debug/media-2026-09-18/protagonist-select-zh.png",
-      "sha256": "804b400b60624999092f51ee535a24f2735a23187cc1c1539ed49364fa086ca8",
+      "sha256": "862c18447e01674e350d814c018028297cb69ded95d197ebabda96f49ea223ae",
       "title": "21 · 主角选择页（中文）/ Protagonist select (Chinese)",
       "caption": "与 20 同一运行，经 settings 切到简体中文后的同一页面；页头四步中「选角」为当前步。",
       "status": "approved-for-readme",
