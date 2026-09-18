@@ -122,11 +122,11 @@ class SaveHistoryTests(unittest.TestCase):
 
     def launcher(self):
         config = self.root / 'config/recomp'
-        config.mkdir(parents=True)
-        (config / 'playtest.json').write_text(json.dumps({'schema': 'srw64.native-playtest.v1',
+        (config / 'profiles').mkdir(parents=True)
+        (config / 'profiles/playtest.json').write_text(json.dumps({'schema': 'srw64.native-playtest.v1',
             'variant': 'jp', 'initial_save': 'initial.sram', 'initial_save_sha256': digest(self.data)}))
         (config / 'rom-variants.json').write_text(json.dumps({'variants': {'jp': self.identity | {'sha256': 'a'*64}}}))
-        spec = importlib.util.spec_from_file_location('save_test_launcher', ROOT / 'tools/recomp/play_native.py')
+        spec = importlib.util.spec_from_file_location('save_test_launcher', ROOT / 'tools/recomp/run/play_native.py')
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         module.ROOT = self.root

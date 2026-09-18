@@ -4,7 +4,7 @@ import ctypes
 import struct
 import subprocess
 ROOT = Path(__file__).resolve().parents[2]
-BUILD = ROOT/'build/hd-ai/native-support'
+BUILD = ROOT/'assets/hd-ai/native-support'
 
 def hasher():
     BUILD.mkdir(parents=True, exist_ok=True)

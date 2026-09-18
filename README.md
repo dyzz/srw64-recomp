@@ -136,6 +136,7 @@ plugin API, and a general-purpose editor are outside the current scope.
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. |
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, fast-forward, and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Name entry | An in-window native editor with original character and length validation. Language changes preserve edited fields and respect active IME composition. |
+| Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. The **Options** menu and settings window switch rules, language and images live. See [rule fixes](docs/rule-fixes.md) and [upgrade limits](docs/upgrade-limits.md). |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, native probes, and state comparisons. |
 
@@ -168,20 +169,20 @@ make recomp-bootstrap
 make recomp-layout
 make recomp-scan
 make recomp-cpu
-.venv/bin/python tools/recomp/prepare_rt64.py
+.venv/bin/python tools/recomp/toolchain/prepare_rt64.py
 
 # Start a new game using original artwork; no local HD pack or saved game needed.
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json \
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json \
   --language ja --images original --new-game --mute
 ```
 
 Use `--language zh-Hans` for the Chinese draft, `--language en` for the English
 draft, or press **F7** in game to cycle languages. On
-keyboards with media keys, the function-key modifier may be needed. **F6** becomes
-available for HD when the matching local assets are installed. The checked-in
-profile also describes those experimental assets; `--images original` is the
-startup override for a checkout without them. The `.command` launchers are local
+keyboards with media keys, the function-key modifier may be needed. The checked-in
+profile starts with original artwork, so a fresh checkout runs without any local
+assets; **F6** switches to HD only when the matching experimental art is installed
+under `assets/` (not published), and `--images hd` starts in HD. The `.command` launchers in `scripts/` are local
 development conveniences; use the explicit command above for a first launch.
 
 After the native build has been configured, `make recomp-native-check` runs the
@@ -220,6 +221,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 | 画面 | **F6** 独立切换 Original／HD，语言和字号不随之改变。HD 使用本地实验素材，并替换世界地图标记模型。 |
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、快进和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
 | 姓名输入 | 游戏窗口内的原生编辑页面，遵守原字库和字数限制；语言切换保留已编辑字段，不打断输入法组字。 |
+| 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。菜单栏「选项」与设置窗口可随时切换规则、语言和画面。见[可选规则修正](docs/rule-fixes.md)、[改造段数与上限](docs/upgrade-limits.md)。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、原生运行探针和状态比较。 |
 
@@ -242,9 +244,9 @@ ROM 身份和工具链固定版本见[来源记录](docs/provenance.md)。
 
 将启动参数改为 `--language zh-Hans` 使用中文草稿、`--language en` 使用英文草稿，
 或在游戏中按 **F7** 循环切换三种语言。
-媒体键键盘可能需要同时按功能键修饰键。配齐对应的本地 HD 素材后才可用 **F6** 切到高清。
-已提交的 profile 同时描述这些实验素材；没有素材时用 `--images original` 覆盖初始模式。
-`.command` 文件是本地开发快捷入口，首次启动请使用上面的完整命令。
+媒体键键盘可能需要同时按功能键修饰键。已提交的 profile 默认使用原始美术，新克隆无需任何本地素材即可运行；
+只有在 `assets/` 下装有对应的实验 HD 素材（不公开发布）时才可用 **F6** 切到高清，`--images hd` 则以高清启动。
+`scripts/` 里的 `.command` 文件是本地开发快捷入口，首次启动请使用上面的完整命令。
 
 `make check` 不需要 ROM；完成原生构建配置后，`make recomp-native-check` 运行 C++ 组件检查。
 Python CI、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
@@ -267,7 +269,10 @@ Python CI、原生组件测试与真实游戏流程验证分别记录。构建�
 | `src/srw64_rom/` | ROM identity, formats, codecs / ROM 身份、格式与编解码 |
 | `src/srw64_native/` | Content/profile compilation and save tooling / 内容编译与存档工具 |
 | `src/native/` | Localization, game adapters, presentation / 本地化、游戏适配与呈现 |
-| `tools/recomp/`, `config/recomp/` | Code generation, native host, probes, pinned configuration / 代码生成、宿主与探针 |
+| `src/host/` | Native game host (macOS AppKit parts in `macos/`) / 原生游戏宿主（AppKit 部分在 `macos/`） |
+| `tools/recomp/` | Toolchain, launch, verification, script lab, probes and analysis tools, one subfolder each / 工具链、启动、验证、脚本实验、探针与分析，按用途分子目录 |
+| `config/recomp/` | Pinned toolchain config, play `profiles/`, bounded-run `inputs/`, `mini-stages/` / 固定工具链配置、试玩档案、有界运行输入与迷你关卡 |
+| `scripts/` | macOS double-click launchers / macOS 双击启动脚本 |
 | `content/` | Language catalogs and art manifests / 语言目录与美术清单 |
 | `tools/content/`, `tools/data_viewer/`, `tools/model_viewer/` | Extraction and inspection / 数据提取与查看 |
 | `tools/hd_ai/` | Experimental HD-art processing / 实验性 HD 美术处理 |
@@ -288,7 +293,8 @@ own source has not yet been selected; third-party components retain their own te
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for repository boundaries and validation
 requirements. Historical links into `build/` refer to local evidence, not files
-included in this repository.
+included in this repository. Exported data and HD art live in the untracked
+`assets/` directory ([guide](assets/README.md)).
 
 贡献约定与验证要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。历史文档中的 `build/` 链接指向本地
-证据文件，不随源码仓库分发。
+证据文件，不随源码仓库分发。导出的数据与 HD 素材放在不入库的 `assets/`（[说明](assets/README.md)）。

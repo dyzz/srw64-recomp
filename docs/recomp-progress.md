@@ -49,7 +49,7 @@
 GPU 截图现在附有绘制时 VI 的 JSON，完成 GPU command buffer 后才写入图片与元数据。
 
 为继续同一进程的战斗操作，宿主新增 `control.txt` 原子命令读取、每秒 `live-state.json`
-以及按实际 VI 记录的 `control-events.jsonl`；工具入口为 `tools/recomp/control_host.py`。
+以及按实际 VI 记录的 `control-events.jsonl`；工具入口为 `tools/recomp/run/control_host.py`。
 实时按键已在 `female-story-2` 中推进世界地图上的角色对话；实际 VI 与按键事件保存在
 该次运行目录。此项只证明输入生效，不能替代战术地图、战斗或存读档验证。
 
@@ -106,7 +106,7 @@ Continue，随后通过实际菜单截图和控制事件继续读档成功。
 到此结束，因此没有继续第二话、整备操作、通关槽位重启读取。
 
 为交接人工试玩，宿主新增有焦点限制的 SDL 键盘输入，跨线程使用原子状态快照。
-`Play SRW64.command` / `tools/recomp/play_native.py` 首次复制上述冻结存档，以后
+`scripts/Play SRW64.command` / `tools/recomp/run/play_native.py` 首次复制上述冻结存档，以后
 复制最近一轮独立试玩目录的 SRAM；一次只允许打开一个试玩进程。交互模式不设
 自动退出时限，GPU 图片使用固定的最新截图文件名。新增宿主已在
 `keyboard-build-smoke-1` 完成 600 VI 启动检查；物理键盘和扬声器同步仍由人工验收。
@@ -130,7 +130,7 @@ present-1740 的系统菜单显示第一回合、资金 0。证据与哈希见�
 参考端实际通过 Continue 恢复地图，机体位置和已行动状态吻合，菜单显示
 第一回合、资金 0。导入前与参考运行后的 SRAM 哈希保持相同。证据位于
 `reference-save/turn1-load-1` 和 `turn1-inspect-1`；入口为
-`tools/recomp/run_reference_save.py`。这是实际参考模拟器读档及画面对照，
+`tools/recomp/probes/run_reference_save.py`。这是实际参考模拟器读档及画面对照，
 不是将参考端即时状态用作原生检查点，也不覆盖尚未完成的过关整备状态。
 
 第五回合的原生存档也已在参考模拟器恢复为资金 8,300，地图和机体位置经
@@ -256,13 +256,13 @@ make recomp-lz
 make recomp-cpu
 
 # 编译完整 CPU 宿主并运行；目录必须新建，图形仍为任务记录器。
-python3 tools/recomp/run_host_probe.py \
+python3 tools/recomp/run/run_host_probe.py \
   --output build/recomp/host-probes/new-boot --vis 600
 
 # 图形依赖与可选的运行时 Metal 源码编译适配；只改变 build/ 下的固定克隆。
-python3 tools/recomp/prepare_rt64.py
-python3 tools/recomp/run_host_probe.py --graphics \
-  --input config/recomp/start-scan.json \
+python3 tools/recomp/toolchain/prepare_rt64.py
+python3 tools/recomp/run/run_host_probe.py --graphics \
+  --input config/recomp/inputs/start-scan.json \
   --output build/recomp/gfx-probes/new-start --vis 960
 ```
 
@@ -273,20 +273,20 @@ ares 使用 `build/recomp/runtime/srw64-jp.z64` 的基线副本和独立设置�
 
 ```sh
 # 输出目录必须尚不存在；--already-halted 仅用于等待 GDB 的冷启动状态。
-python3 tools/recomp/rsp_capture.py \
+python3 tools/recomp/probes/rsp_capture.py \
   --session build/recomp/runtime/session.json \
   --output build/recomp/captures/new-memory
 
-python3 tools/recomp/analyze_layout.py \
+python3 tools/recomp/toolchain/analyze_layout.py \
   --capture build/recomp/captures/idle-8mb \
   --output build/recomp/layout-observed.json
 
-python3 tools/recomp/capture_rsp_tasks.py \
+python3 tools/recomp/probes/capture_rsp_tasks.py \
   --session build/recomp/runtime/session.json \
   --output build/recomp/captures/new-audio-task --count 6 \
   --snapshot-first-type 2 --snapshot-following-task
 
-.venv/bin/python tools/recomp/run_audio_probe.py \
+.venv/bin/python tools/recomp/probes/run_audio_probe.py \
   --capture build/recomp/captures/new-audio-task \
   --output build/recomp/audio-probe/new-audio-task
 ```

@@ -55,17 +55,17 @@
 
 ## 记录器与复现
 
-`SRW64_SCRIPT_TRACE=1` 在现有 `8009EFDC` 包装处开启只读轮询边界记录，默认关闭。日志进入 `RUN.native.log`，以 `SRW64_SCRIPT_TRACE` 开头。`tools/recomp/analyze_script_trace.py` 使用场景运行时入口、原始指令边界、handler 和参数字节作唯一匹配，输出实际经过的普通／对白指令。
+`SRW64_SCRIPT_TRACE=1` 在现有 `8009EFDC` 包装处开启只读轮询边界记录，默认关闭。日志进入 `RUN.native.log`，以 `SRW64_SCRIPT_TRACE` 开头。`tools/recomp/analysis/analyze_script_trace.py` 使用场景运行时入口、原始指令边界、handler 和参数字节作唯一匹配，输出实际经过的普通／对白指令。
 
 记录器不拦截每条内部条件函数；一次轮询可能扫描多个条件，再执行一个普通指令。分析器不会把扫描越过的内容宣称为实际执行。指令耗时使用宿主 VI，不直接当成原脚本等待参数。
 
 ```sh
-SRW64_SCRIPT_TRACE=1 .venv/bin/python -B tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json --language ja \
+SRW64_SCRIPT_TRACE=1 .venv/bin/python -B tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json --language ja \
   --images original --original-name-entry --resolution-scale 2 \
   --input build/recomp/script-analysis/opening-input.json \
   --output build/recomp/script-analysis/opening-next --vis 14500
-.venv/bin/python -B tools/recomp/analyze_script_trace.py \
+.venv/bin/python -B tools/recomp/analysis/analyze_script_trace.py \
   build/recomp/script-analysis/opening-next
 ```
 

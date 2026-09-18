@@ -68,12 +68,12 @@ GPU 连续帧确实出现对应单位的移动与镜头跟随。以下接触表�
 
 ```sh
 SRW64_SCRIPT_TRACE=1 SRW64_FRAME_TRACE_FROM=3600 SRW64_FRAME_TRACE_TO=12000 \
-.venv/bin/python -B tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json --language ja \
+.venv/bin/python -B tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json --language ja \
   --images original --original-name-entry --resolution-scale 2 \
   --input build/recomp/script-analysis/male-opening-input.json \
   --output build/recomp/script-analysis/male-opening-next --vis 14500
-.venv/bin/python -B tools/recomp/analyze_script_trace.py \
+.venv/bin/python -B tools/recomp/analysis/analyze_script_trace.py \
   build/recomp/script-analysis/male-opening-next
 ```
 

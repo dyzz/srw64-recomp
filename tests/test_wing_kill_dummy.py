@@ -8,8 +8,8 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools/recomp"))
-import wing_kill_save  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools"))
+from recomp.gameplay import wing_kill_save  # noqa: E402
 from srw64_native import original_saves  # noqa: E402
 
 ROM = ROOT / "rom.z64"
@@ -28,9 +28,9 @@ def tactical(rom: bytes, vram: int, size: int) -> bytes:
 
 class BaseFixWiringTests(unittest.TestCase):
     def test_restore_hook_is_renamed_and_applied_unconditionally(self):
-        source = (ROOT / "tools/recomp/generate_cpu.py").read_text()
-        hooks = (ROOT / "tools/recomp/native-host/game_hooks.cpp").read_text()
-        header = (ROOT / "tools/recomp/native-host/base_fixes.hpp").read_text()
+        source = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
+        header = (ROOT / "src/host/base_fixes.hpp").read_text()
         # 800A5054 is resident code, called directly by 800A84F8 and 80210758.
         self.assertIn('"resident_func_800A5054": "srw64_original_wing_kill_restore"', source)
         wrapper = re.search(r"void resident_func_800A5054\(.*?\n\}", hooks, re.S).group(0)

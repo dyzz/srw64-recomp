@@ -1,6 +1,6 @@
 # 改造继承：换机时段数如何搬运，以及哪些是真的漏项
 
-日期：2026-09-18。范围：日版 Rev 0 ROM 与本项目的静态反汇编（`build/recomp/cpu-scan`）、已提取的机体／武器目录（`build/original-data/records`）。**本文全部结论来自静态分析，没有运行游戏复现**；需要运行才能定论的条目集中列在第 7 节。对照[原版 Bug 登记](original-bug-register.md)的 BUG07／BUG08／LEAD01／WATCH01／WATCH02。
+日期：2026-09-18。范围：日版 Rev 0 ROM 与本项目的静态反汇编（`build/recomp/cpu-scan`）、已提取的机体／武器目录（`assets/original-data/records`）。**本文全部结论来自静态分析，没有运行游戏复现**；需要运行才能定论的条目集中列在第 7 节。对照[原版 Bug 登记](original-bug-register.md)的 BUG07／BUG08／LEAD01／WATCH01／WATCH02。
 
 ## 1. 结论摘要
 
@@ -163,13 +163,13 @@
 
 ### 8.1 修正 A：补三条武器映射（2026-09-18 已实现，未实机验证）
 
-对应 BUG08 与 LEAD01，改动面最小、边界最清楚。开关 `weapon-inherit-map` 归入修正类（默认开启，可在游戏内「选项 → 游戏性调整」关闭）；实现见 `tools/recomp/native-host/rule_fixes.hpp` 的 `inherit_missing_weapons` 与 `game_hooks.cpp` 的 `resident_func_800AA8F4` 包装，单元测试在 `tests/native_rule_fixes.cpp`。**尚未在游戏里跑过**，第 7 节的验证仍然要做。
+对应 BUG08 与 LEAD01，改动面最小、边界最清楚。开关 `weapon-inherit-map` 归入修正类（默认开启，可在游戏内「选项 → 游戏性调整」关闭）；实现见 `src/host/rule_fixes.hpp` 的 `inherit_missing_weapons` 与 `game_hooks.cpp` 的 `resident_func_800AA8F4` 包装，单元测试在 `tests/native_rule_fixes.cpp`。**尚未在游戏里跑过**，第 7 节的验证仍然要做。
 
 | 项 | 内容 |
 | --- | --- |
 | id | `weapon-inherit-map` |
-| 绑定 | `tools/recomp/generate_cpu.py` 的 `NATIVE_HOOKS` 增加 `"resident_func_800AA8F4": "srw64_original_weapon_inherit"`，之后 `make recomp-cpu` |
-| 包装位置 | `tools/recomp/native-host/game_hooks.cpp` 中新增 `resident_func_800AA8F4`：先调用原函数，再补写三对映射 |
+| 绑定 | `tools/recomp/toolchain/generate_cpu.py` 的 `NATIVE_HOOKS` 增加 `"resident_func_800AA8F4": "srw64_original_weapon_inherit"`，之后 `make recomp-cpu` |
+| 包装位置 | `src/host/game_hooks.cpp` 中新增 `resident_func_800AA8F4`：先调用原函数，再补写三对映射 |
 | 参数 | `a0` = 新机实例；`a1` = 保存下来的旧机武器数组（每件 4 字节：u16 编号、u8 段数、u8 标志）；`a2` = 件数；`a3` = 保存的六字节段数 |
 | 补写表 | `{1070→1057}`（火炎放射器）、`{1072→1059}`（グレネードランチャー）、`{470→1291}`（ドラゴンファイヤー） |
 | 写什么 | 在 `a1` 里找到旧编号取其段数，在新机武器数组（`+0x2C` 件数、`+0x30` 指针、步进 0x24、`+2` 编号）里找到新编号，写入 `+0x16`。**不要动威力**：`800AA8F4` 的两个调用点（`800AB2F8`、`800A9CB0`）之后都紧跟 `800AAB5C → 800A5254`，威力会按段数重算（第 5 节） |
@@ -218,7 +218,7 @@ Akurasu “Lost upgrades” 里的大多数（W 系中期机、施皮格尔、�
 ## 9. 旁证与其他发现
 
 - **`3D6F` 是“解锁武器”，不是部件操作**：它清的是武器实例 `+0x22` 的位 2，原脚本的 11 个参数全部是剧情解禁的必杀技武器编号（19 石破天驚拳、1215 ダブルゴッドフィンガー、53／62／71／76 シャッフル同盟各机、770／773／775／777 コン・バトラーV、874 対空光牙剣）。该位正是 `800AA8F4` 里为 314 ファンネルMAP 特意继承的那一位。布局锁 `config/data/original-jp-v1.json` 的 `3d6f` 条目已随本次分析就地订正（原为“清除部件记录标志（部件编号）”）。
-- 由此，状态探针 `tools/recomp/native-host/state_probe.hpp` 里名为 `part_instances` 的区域（`0x80178F80` 起），其开头的 700 项 × 36 字节是**武器实例池**：机体实例 `+0x30` 指向其中，`+0x2C` 是件数。强化部件是另一套结构（机体实例 `+0x21`／`+0x23` 槽位与 `D_8015E990` 库存，见 `800A9D60`）。该区域名称尚未订正。
+- 由此，状态探针 `src/host/state_probe.hpp` 里名为 `part_instances` 的区域（`0x80178F80` 起），其开头的 700 项 × 36 字节是**武器实例池**：机体实例 `+0x30` 指向其中，`+0x2C` 是件数。强化部件是另一套结构（机体实例 `+0x21`／`+0x23` 槽位与 `D_8015E990` 库存，见 `800A9D60`）。该区域名称尚未订正。
 - 前任查找不看驾驶员，只取第一台编号匹配的在用实例。
 - 保存武器用的栈缓冲是 50 项，全表最大武器数为 28（ランドライガーH），不会溢出。
 - 变形形态共用同一个武器实例数组（如ゲッター1/2/3 共用 12 件），所以各形态的武器改造是同一份数据。

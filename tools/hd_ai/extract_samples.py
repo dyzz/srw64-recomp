@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw
 from srw64_rom.resources import ResourceTable
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "build/hd-ai/2026-09-08"
+OUT = ROOT / "assets/hd-ai/2026-09-08"
 
 
 def rgba16(raw: bytes) -> list[tuple[int, int, int, int]]:

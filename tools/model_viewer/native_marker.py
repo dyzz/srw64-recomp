@@ -9,8 +9,8 @@ def add_native_marker(root, out, resources):
     folder = root / 'build/recomp/native-marker'
     if not (folder/'assets/manifest.json').exists():
         return None
-    sys.path.insert(0, str(root/'tools/recomp'))
-    from prepare_native_marker import validate
+    sys.path.insert(0, str(root/'tools'))
+    from recomp.model5600.prepare_native_marker import validate
     pack = validate(folder/'assets')
     mesh = json.loads((folder/'assets/mesh.json').read_text())
     original = json.loads((out/'models/5600.json').read_text())

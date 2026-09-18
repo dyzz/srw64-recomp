@@ -52,14 +52,14 @@
 复现一个新大字号实验（输出目录须不存在）：
 
 ```sh
-.venv/bin/python tools/recomp/build_native_font_probe.py \
+.venv/bin/python tools/recomp/probes/build_native_font_probe.py \
   --source build/recomp/font-probe/source-1 \
   --textures build/recomp/font-probe/replay-original-1/textures \
   --font '/System/Library/Fonts/Hiragino Sans GB.ttc' \
   --output build/recomp/font-probe/font-new \
   --cell-height 18 --pixel-scale 3
 
-python3 tools/recomp/run_frame_probe.py \
+python3 tools/recomp/probes/run_frame_probe.py \
   --source build/recomp/font-probe/font-new/source \
   --font-pack build/recomp/font-probe/font-new/pack \
   --output build/recomp/font-probe/replay-new --native-resolution

@@ -82,8 +82,8 @@ SRW64 已有地图拼图构建、头像切块和资源查看器，适合把现�
 
 ## 4. 现有实现核对与建议顺序
 
-- [`native-host/graphics.cpp`](../tools/recomp/native-host/graphics.cpp) 当前显式设置 `AspectRatio::Original`、`RefreshRate::Original`；不能把 RT64 本身有宽屏/插值能力当作 SRW64 已完成适配。
-- [`play_native.py`](../tools/recomp/play_native.py) 已通过 `--profile` 统一语言、高清美术和原生模型；当前验收见[内容架构](native-content-foundation.md)。
+- [`src/host/graphics.cpp`](../src/host/graphics.cpp) 当前显式设置 `AspectRatio::Original`、`RefreshRate::Original`；不能把 RT64 本身有宽屏/插值能力当作 SRW64 已完成适配。
+- [`play_native.py`](../tools/recomp/run/play_native.py) 已通过 `--profile` 统一语言、高清美术和原生模型；当前验收见[内容架构](native-content-foundation.md)。
 - [实时对白](native-dialogue-ui.md) 已实现 Unicode 排版、分页、字号、回看和阅读速度；全 UI 覆盖与实体手柄仍有缺口。
 - [原生 5600](native-model-replacement.md) 已有实际游戏与受控遮挡证据；当前仅 Metal raster，不含透明折射、动态投影和跨后端实现。
 - 战术信息、战斗节奏与宽屏依赖沿用[整体实施方案](native-enhancements-plan.md)；本报告补充外部案例，不把计划项改标为已完成。

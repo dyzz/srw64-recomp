@@ -53,7 +53,7 @@ class NativeCatalogTests(unittest.TestCase):
                 signature(text)
 
     def test_profile_axes_are_independent(self):
-        path = ROOT / "config/recomp/play-profile.json"
+        path = ROOT / "config/recomp/profiles/play-profile.json"
         for locale in ("ja", "zh-Hans"):
             for images in ("original", "hd"):
                 profile = load_profile(path, locale=locale, images=images)

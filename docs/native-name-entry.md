@@ -4,7 +4,7 @@
 
 ## 使用
 
-重新启动 `Play SRW64 Native.command`，选择新游戏并完成主角选择，即会进入姓名页面。主角、搭档、确认三步采用同一布局；支持 `ja` 和 `zh-Hans` UI 文案。页面在 Original 和 HD 模式下均可用，人物头像按模式选取原图或已登记的 HD 图。
+重新启动 `scripts/Play SRW64 Native.command`，选择新游戏并完成主角选择，即会进入姓名页面。主角、搭档、确认三步采用同一布局；支持 `ja` 和 `zh-Hans` UI 文案。页面在 Original 和 HD 模式下均可用，人物头像按模式选取原图或已登记的 HD 图。
 
 - 默认值预填并选中，可以直接键入或粘贴；点击字段或 Tab / Shift-Tab 切换，Enter 下一项，最后一项提交。底部“继续”也可以一次校验并提交三个字段。
 - “恢复默认”恢复当前人物打开页面时的三个值。
@@ -18,7 +18,7 @@
 
 ## 适配边界
 
-手写桥接代码在 `tools/recomp/native-host/native_name_entry.cpp`，原生 UI 在 `native_name_entry_macos.mm`，字符编码与虚拟文字记录在 `src/native/game_adapter/name_codec.hpp`。平台 UI 只接收不可变请求和提交草稿；只有游戏线程读取、修改 RDRAM，UI 线程不调用原版函数。新增 UI 标签在 `content/locales/{ja,zh-Hans}.json`，沿用日文回退机制。
+手写桥接代码在 `src/host/native_name_entry.cpp`，原生 UI 在 `native_name_entry_macos.mm`，字符编码与虚拟文字记录在 `src/native/game_adapter/name_codec.hpp`。平台 UI 只接收不可变请求和提交草稿；只有游戏线程读取、修改 RDRAM，UI 线程不调用原版函数。新增 UI 标签在 `content/locales/{ja,zh-Hans}.json`，沿用日文回退机制。
 
 拦截 ROM `0x1090A0` 的 `801C5494/801C5644`（主角）、`801C5920/801C5AD0`（搭档）、`801C5DAC/801C5E88`（最终确认），并在选择页初始化 `801C5004` 释放页面。初始化后立即盖住原选字表，原淡入结束后才允许提交；确认时调用原校验函数 `801C474C`。确认页完成后写入原退出标志并调用原淡出，剧情入口及姓名存储仍走原游戏逻辑。角色路线选择与机器人改名不在此次 UI 改造范围内。
 
@@ -49,7 +49,7 @@
 
 现代页面中文 HD 的通过记录在 `build/recomp/name-page/live-4/`，日文 Original 的通过记录在 `build/recomp/name-page/ja-original/`。这两轮均早于渲染尺寸修复，命名、重新编辑、原校验和剧情姓名读回通过；当时的检查没有覆盖返回剧情后的尺寸一致性，不能用它们证明缩放正确。窗口实际截图为 `page-player-window.png`、`page-small-window.png`、`page-wide-window.png` 和 `page-review-window.png`。`report.json` 固定二进制、原 ROM、宿主源码、输入脚本和音频关闭状态；`name-entry-events.jsonl` 记录打开／提交／拒绝／取消／重新编辑／开始故事；`names-readback.json` 是进入剧情后的真实 RDRAM 姓名读回。各轮结果以对应 `name-entry-acceptance.json` 为准。
 
-实机驱动 `tools/recomp/verify_native_name_entry.py` 检查无子窗口、嵌入字段、Tab 与 Shift-Tab、800×600 / 1200×800 缩放、无效输入与原版重名拒绝、取消返回、双人确认页重新编辑、两个角色的八个姓名字段，以及自定义昵称“ヒカリ”进入剧情。`page-*-window.png` 使用系统截图保存实际游戏窗口；`name-entry-*.png` 为 AppKit 调试缓存，不能替代实际合成外观。
+实机驱动 `tools/recomp/verify/verify_native_name_entry.py` 检查无子窗口、嵌入字段、Tab 与 Shift-Tab、800×600 / 1200×800 缩放、无效输入与原版重名拒绝、取消返回、双人确认页重新编辑、两个角色的八个姓名字段，以及自定义昵称“ヒカリ”进入剧情。`page-*-window.png` 使用系统截图保存实际游戏窗口；`name-entry-*.png` 为 AppKit 调试缓存，不能替代实际合成外观。
 
 渲染尺寸补丁后的首次运行在 `build/recomp/name-page/final-hd/`：原生页面与确认流程正常，八个姓名字段再次读回一致；`present-1380.png` 为 1200×800 GPU 读回，已经目视核对对白与框体位置对齐。该轮在 VI 2855 收到关闭窗口事件后发生宿主退出崩溃，脚本未完成最后的自动检查；`final-review.json` 将功能／画面证据与退出失败分别记录，不能标为整轮通过。退出问题见 [native-window-close.md](native-window-close.md)。
 
@@ -60,11 +60,11 @@
 复现最终流程（两条命令分别运行，测试程序会控制关闭游戏）：
 
 ```sh
-SRW64_NAME_ENTRY_CONTROL=1 .venv/bin/python tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json \
-  --input config/recomp/native-name-entry.json \
+SRW64_NAME_ENTRY_CONTROL=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json \
+  --input config/recomp/inputs/native-name-entry.json \
   --output build/recomp/name-page/new-run --vis 12000
-.venv/bin/python tools/recomp/verify_native_name_entry.py \
+.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
   --run build/recomp/name-page/new-run
 ```
 

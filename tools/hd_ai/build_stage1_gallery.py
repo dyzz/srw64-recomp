@@ -4,7 +4,7 @@ import argparse, hashlib, html, json, shutil
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
-DEST = ROOT / 'build/hd-ai/2026-09-08/gallery'
+DEST = ROOT / 'assets/hd-ai/2026-09-08/gallery'
 
 def comparison_sheet(original, native, output):
     """Lay out real screenshots without redrawing or retouching game content."""
@@ -14,7 +14,7 @@ def comparison_sheet(original, native, output):
         raise ValueError('expected the verified 4:3 Japanese and native captures')
     left=left.resize(right.size,Image.Resampling.NEAREST)
     sheet=Image.new('RGB',(1968,880),'#101719')
-    font_dir=ROOT/'build/hd-ai/dialogue-polish/fonts'
+    font_dir=ROOT/'assets/hd-ai/dialogue-polish/fonts'
     title=ImageFont.truetype(str(font_dir/'HarmonyOS_Sans_SC_Medium.ttf'),30)
     small=ImageFont.truetype(str(font_dir/'HarmonyOS_Sans_SC_Regular.ttf'),20)
     draw=ImageDraw.Draw(sheet)

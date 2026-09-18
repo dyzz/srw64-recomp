@@ -30,12 +30,12 @@
 | 已核对的入口 | 能复用什么 | 仍需补齐什么 |
 | --- | --- | --- |
 | [`catalog.py`](../src/srw64_native/catalog.py)、[`text.py`](../src/srw64_rom/text.py) | 稳定的 table/text ID、翻译覆盖层、原控制单元 | Unicode 运行时段落模型、原控制位置到译文片段的映射 |
-| [`host.cpp`](../tools/recomp/native-host/host.cpp) 的 `resident_func_8008C510` | 文本描述符读取拦截；已有中文默认姓名虚拟记录 | 当前读取是否属于已显示对白、说话者、逐字/停顿/确认状态 |
+| [`host.cpp`](../src/host/host.cpp) 的 `resident_func_8008C510` | 文本描述符读取拦截；已有中文默认姓名虚拟记录 | 当前读取是否属于已显示对白、说话者、逐字/停顿/确认状态 |
 | 同文件的 `resident_func_8007F704` | ROM 读取、overlay 身份校验与装载通知 | 文本场景切换时清除旧状态，防止同址 overlay 被误认 |
-| [`dialogue_layout.hpp`](../tools/recomp/native-host/dialogue_layout.hpp) | 已识别开场对白和姓名页的局部字形绘制 | 目前只改位置；不能自动换行，也不是完整文字解释器 |
-| [`graphics.cpp`](../tools/recomp/native-host/graphics.cpp) | RT64 最终帧 draw hook、Metal、GPU 完成后读回、纹理替换 | 最终分辨率文字合成、统一 DPI 处理、原字形的可靠抑制 |
-| [`audio_timing.hpp`](../tools/recomp/native-host/audio_timing.hpp) | 已有音频队列反馈和时长限制 | 当前以 60 VI 为假设；任何改变模拟速度的方案都需重新验证 |
-| [`auto_counter.py`](../tools/recomp/auto_counter.py) | 有界的既有反击菜单自动确认探针 | 它使用已审阅截图模板，不提供战斗状态机或单位数据模型 |
+| [`dialogue_layout.hpp`](../src/host/dialogue_layout.hpp) | 已识别开场对白和姓名页的局部字形绘制 | 目前只改位置；不能自动换行，也不是完整文字解释器 |
+| [`graphics.cpp`](../src/host/graphics.cpp) | RT64 最终帧 draw hook、Metal、GPU 完成后读回、纹理替换 | 最终分辨率文字合成、统一 DPI 处理、原字形的可靠抑制 |
+| [`audio_timing.hpp`](../src/host/audio_timing.hpp) | 已有音频队列反馈和时长限制 | 当前以 60 VI 为假设；任何改变模拟速度的方案都需重新验证 |
+| [`auto_counter.py`](../tools/recomp/probes/auto_counter.py) | 有界的既有反击菜单自动确认探针 | 它使用已审阅截图模板，不提供战斗状态机或单位数据模型 |
 | `host.cpp::get_device` 和固定运行库的 `ultramodern/input.hpp` | 当前控制器输入 | 宿主返回 `Pak::None`；运行库的 `TransferPak` 仍是注释项，需要专项适配 |
 
 当前 JP 第一话通关保存、原生语言与高清配置以及单帧字体实验的证据范围分别见 [recomp 进度](recomp-progress.md)、[原生内容配置](native-content-foundation.md)、[字体实验](native-font-probe.md)。三者不能互相替代。
@@ -152,7 +152,7 @@ T2 首个交付范围：女性超级系第一话涉及的剧情对白；姓名�
 3. 为一个已验证开场对白场景采集文本 ID、说话者和控制进度，形成显式事件模型及证据。
 4. 明确原字形抑制范围与对白推进接口；只有这两项成立后，开始 T2 的实时替换与分页。
 
-建议新增模块放在 `tools/recomp/native-host/text/`，以平台后端、布局/分页、游戏事件适配和历史模型为独立边界；具体文件名在开发时确定。配置归入 `config/recomp/`，真实 ROM 派生数据、字体、图片、会话记录继续留在 `build/`。
+建议新增模块放在 `src/host/text/`，以平台后端、布局/分页、游戏事件适配和历史模型为独立边界；具体文件名在开发时确定。配置归入 `config/recomp/`，真实 ROM 派生数据、字体、图片、会话记录继续留在 `build/`。
 
 提交按“文字后端 → 场景识别 → 实时分页与输入 → 历史 → 运行验收”分开；后续战斗、面板、宽屏与联动各自独立。开始代码工作时重新盘点工作树，当前已有的未提交内容不能被整包混入新提交。
 

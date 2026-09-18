@@ -6,16 +6,16 @@
 
 ```sh
 # 列出统一原生入口的历史副本和冻结初始备份；不启动游戏、不创建试玩目录。
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --list-saves
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --list-saves
 
 # 恢复指定会话。ID 使用上一步列出的完整时间戳。
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --restore-session SESSION_ID
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --restore-session SESSION_ID
 
 # 显式回到冻结的第一话通关备份。
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --restore-session initial
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --restore-session initial
 ```
 
 `--new-game`、`--restore-session`、`--list-saves` 互斥。不指定时从新到旧选择第一个通过完整性校验的历史副本；都不可用时尝试配置中有固定摘要的初始备份。跳过原因及实际选择均打印出来。指定的会话无效时直接拒绝，不悄悄选择另一份进度；没有任何可核验来源时要求检查历史或显式新游戏。
@@ -24,7 +24,7 @@
 
 ## 校验与保护边界
 
-实现：`src/srw64_native/save_history.py`；接入：`tools/recomp/play_native.py` 与 `run_host_probe.py`。
+实现：`src/srw64_native/save_history.py`；接入：`tools/recomp/run/play_native.py` 与 `run_host_probe.py`。
 
 候选会话必须有可识别且完成的运行报告、宿主退出码 0、匹配的 ROM 版本与 SHA-256，以及最终 SRAM 的既有大小和摘要记录。当前只接受原版玩法配置；涉及未支持玩法配置的记录不自动恢复。文件必须恰为 32 KiB、与记录摘要一致且非全零/全 FF。报告缺失/损坏、异常退出、同长度内容损坏、截断、错误身份和越界/链接存档都会被拒绝。内容编译目录和输入副本不参加历史排序。
 
@@ -50,7 +50,7 @@
 
 三个画面均已查看，哈希和元数据记录于上述证据文件。宿主退出码 0；4 个游戏线程全部 join，RDRAM 释放前后观测为 0 个。原始冻结档、传给宿主的来源副本和运行结束后的 SRAM 摘要均保持原值。没有购买改造、重新保存或进入第二话。
 
-`config/recomp/load-intermission-check.json` 从本轮实际确认过的 VI 输入记录导出，可用于后续重跑（建议 `--vis 9000`）。本轮验收的是实际冷启动与运行中控制；导出的固定输入尚未单独重放，不能标记为确定性回放已验证。运行报告保留原输入脚本和全部已应用控制事件。
+`config/recomp/inputs/load-intermission-check.json` 从本轮实际确认过的 VI 输入记录导出，可用于后续重跑（建议 `--vis 9000`）。本轮验收的是实际冷启动与运行中控制；导出的固定输入尚未单独重放，不能标记为确定性回放已验证。运行报告保留原输入脚本和全部已应用控制事件。
 
 ## 检查与剩余工作
 

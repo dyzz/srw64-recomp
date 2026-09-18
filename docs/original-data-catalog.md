@@ -13,7 +13,7 @@
 python3 -B tools/data_viewer/serve.py --port 59110
 ```
 
-浏览 `http://127.0.0.1:59110/`。服务器仅监听 loopback，并且只提供 `build/original-data/`，没有写入 API。停止该终端即可关闭服务。同一目录下的 `story.html` 是按章节阅读日文原文的剧情查看器，数据来自 `story/index.json` 与 `story/NNNN.json`，见[关卡脚本完整解析](stage-script-exploration.md#剧情查看器)。
+浏览 `http://127.0.0.1:59110/`。服务器仅监听 loopback，并且只提供 `assets/original-data/`，没有写入 API。停止该终端即可关闭服务。同一目录下的 `story.html` 是按章节阅读日文原文的剧情查看器，数据来自 `story/index.json` 与 `story/NNNN.json`，见[关卡脚本完整解析](stage-script-exploration.md#剧情查看器)。
 
 可选加入已有女性超级系第一话快照：
 
@@ -175,7 +175,7 @@ python3 -B tools/data_viewer/serve.py --port 59110
 - `tools/content/extract_original.py`：锁校验、统一生成目录、原始资源解压、全引用检查。
 - `tools/data_viewer/web/`：无第三方网络依赖的只读 HTML/CSS/JS；`app.js` 管理分类与导航，`profiles.js` 展示整合档案，`ui.js` 提供共用安全 DOM 组件。支持搜索、能力筛选、分页、相邻记录、稳定 hash 链接和资源下载。
 - `tools/data_viewer/web/abilities.js`：能力／技能全体持有者、习得分类及覆盖说明。
-- `build/original-data/manifest.json`：源 ROM、布局、生产代码及输出文件哈希、计数、校验范围和未确认事项。
+- `assets/original-data/manifest.json`：源 ROM、布局、生产代码及输出文件哈希、计数、校验范围和未确认事项。
 - `records/*.jsonl`：供工具消费的完整记录；文本的 `text_ir` 保留无损记录 schema。`indexes/` 和每 256 条一份的 `details/` 是页面缓存格式。
 - `raw/resources/*.bin`：全部解压数据。`raw/resource-spans.bin`：顺序拼接原压缩 span；每个资源记录保留 pack 偏移、span 长度和原 ROM 地址。
 
@@ -212,16 +212,16 @@ PYTHONDONTWRITEBYTECODE=1 make check
 
 测试覆盖：越界、坏指针、无终止项、悬空武器／形态 ID、ROM／布局／代码证据漂移、所有固定表逐字节重组、共用列表与形态差异、负数 sentinel、两个映射异常、第一话跨表引用及历史快照共享驾驶员指针。第二批增加独立显示指令检查、武器名称首末边界、精神编号 0 和 29、修理费用与 overlay 地址归属检查。完整生成还检查 51,174 条文本原始字节重组、6,436 块资源解压和所有目录链接可解析。资源解压不是本轮重新运行原生 LZ 的差分证明。
 
-2026-09-11 第一批结果：`make check` 的 67 项测试全部通过；相同输入连续两次生成得到相同 manifest，清单中的 6,714 个输出文件哈希全部核对通过；原压缩 span pack 的 6,436 段与原 ROM 逐字节一致。记录见 `build/original-data-qa/verification.json`，测试日志见 `build/original-data-check.log`。
+2026-09-11 第一批结果：`make check` 的 67 项测试全部通过；相同输入连续两次生成得到相同 manifest，清单中的 6,714 个输出文件哈希全部核对通过；原压缩 span pack 的 6,436 段与原 ROM 逐字节一致。记录见 `build/original-data-qa/verification.json`，测试日志见 `build/original-data-qa/logs/original-data-check.log`。
 
-同日第二批结果：`make check` 的 70 项测试全部通过；重新生成目录后，6,714 个输出文件的大小和 SHA-256、61,200 个唯一身份、17,867 条关联链接全部核对通过。记录见 `build/original-data-qa/verification-pass2.json`，测试日志见 `build/original-data-check-pass2.log`。浏览器确认了修理费用、形态关系、机体→武器跳转、日文武器名搜索、纯名称／菜单名称，以及精神表 13 的六条名称关联。本批未启动游戏；字段修改后的运行验证仍待完成。
+同日第二批结果：`make check` 的 70 项测试全部通过；重新生成目录后，6,714 个输出文件的大小和 SHA-256、61,200 个唯一身份、17,867 条关联链接全部核对通过。记录见 `build/original-data-qa/verification-pass2.json`，测试日志见 `build/original-data-qa/logs/original-data-check-pass2.log`。浏览器确认了修理费用、形态关系、机体→武器跳转、日文武器名搜索、纯名称／菜单名称，以及精神表 13 的六条名称关联。本批未启动游戏；字段修改后的运行验证仍待完成。
 
-同日第三批结果：`make check` 的 76 项测试全部通过，依赖检查通过。新增验证覆盖带符号修正值、攻击力乘数与弹数哨兵、技能位优先级、九项阈值与保留字节、独立 UI 标签坐标、场景→地图→资源和历史快照表字节一致性。生成后核对 6,720 个文件的大小及哈希、61,519 个唯一身份、39,014 条可解析链接，以及 6,436 个原压缩资源 span 的逐字节一致性。结果见 `build/original-data-qa/verification-pass3.json`，测试与提取日志分别为 `build/original-data-check-pass3.log`、`build/original-data-extract-pass3.log`。浏览器确认了机体 36、武器 160、驾驶员数值 18、技能阈值 18，以及场景 1→地图 20→资源 6284 的跳转与下载入口。本批只进行了静态提取、历史快照读取和开发页面验证，没有启动游戏或进行 Mod 写入。
+同日第三批结果：`make check` 的 76 项测试全部通过，依赖检查通过。新增验证覆盖带符号修正值、攻击力乘数与弹数哨兵、技能位优先级、九项阈值与保留字节、独立 UI 标签坐标、场景→地图→资源和历史快照表字节一致性。生成后核对 6,720 个文件的大小及哈希、61,519 个唯一身份、39,014 条可解析链接，以及 6,436 个原压缩资源 span 的逐字节一致性。结果见 `build/original-data-qa/verification-pass3.json`，测试与提取日志分别为 `build/original-data-qa/logs/original-data-check-pass3.log`、`build/original-data-qa/logs/original-data-extract-pass3.log`。浏览器确认了机体 36、武器 160、驾驶员数值 18、技能阈值 18，以及场景 1→地图 20→资源 6284 的跳转与下载入口。本批只进行了静态提取、历史快照读取和开发页面验证，没有启动游戏或进行 Mod 写入。
 
 浏览器检查覆盖分类、分页、相邻记录、重复选择当前分类、原文搜索、空结果边界、5600 资源下载链接以及第一话→玛娜米→精神表跳转，并检查了页面实际显示。此项为开发工具页面验收；本轮未启动原生游戏。
 
-整合档案验证：`make check` 的 82 项测试通过；专门覆盖 actor 映射汇总、共用武器列表的形态差异、技能阈值计数语义、负值／缺失／越界映射、原始字节与身份不变、历史搭乘关系双向关联及重复生成的一致性。6,722 个生成文件的大小与哈希、48,458 条目录链接、57,622 个档案内引用全部核对通过。浏览器检查了机师完整档案、能力筛选、精神名搜索、机体形态与折叠武器、旧精神表返回档案、相邻导航和空搜索；未启动游戏。日志为 `build/original-data-check-profiles.log`，验证清单为 `build/original-data-qa/verification-profiles.json`。
+整合档案验证：`make check` 的 82 项测试通过；专门覆盖 actor 映射汇总、共用武器列表的形态差异、技能阈值计数语义、负值／缺失／越界映射、原始字节与身份不变、历史搭乘关系双向关联及重复生成的一致性。6,722 个生成文件的大小与哈希、48,458 条目录链接、57,622 个档案内引用全部核对通过。浏览器检查了机师完整档案、能力筛选、精神名搜索、机体形态与折叠武器、旧精神表返回档案、相邻导航和空搜索；未启动游戏。日志为 `build/original-data-qa/logs/original-data-check-profiles.log`，验证清单为 `build/original-data-qa/verification-profiles.json`。
 
-全体能力／技能验证：`make check` 的 **88** 项测试通过，依赖检查通过。新增测试独立核对原始能力显示表、字段复制指令和 HP 回复常数；逐台重组全部能力／装备置位，验证形态差异、技能持有与有效习得的区别、未知位保留、原始记录不变及重复投影一致性。生成目录共 6,729 个文件、61,564 个身份、50,119 条目录链接、59,733 个档案／能力定义内引用，文件哈希与引用均通过检查。测试日志为 `build/original-data-check-abilities.log`，生成日志为 `build/original-data-extract-abilities.log`；覆盖名单和浏览器验证结果见 `build/original-data-qa/verification-abilities.json`。本批未启动游戏，未写入 Mod。
+全体能力／技能验证：`make check` 的 **88** 项测试通过，依赖检查通过。新增测试独立核对原始能力显示表、字段复制指令和 HP 回复常数；逐台重组全部能力／装备置位，验证形态差异、技能持有与有效习得的区别、未知位保留、原始记录不变及重复投影一致性。生成目录共 6,729 个文件、61,564 个身份、50,119 条目录链接、59,733 个档案／能力定义内引用，文件哈希与引用均通过检查。测试日志为 `build/original-data-qa/logs/original-data-check-abilities.log`，生成日志为 `build/original-data-qa/logs/original-data-extract-abilities.log`；覆盖名单和浏览器验证结果见 `build/original-data-qa/verification-abilities.json`。本批未启动游戏，未写入 Mod。
 
 图片与武器标记验证：`make check` 的 **103** 项测试通过，依赖检查通过。361 个身份关联头像、363 个机体／形态关联地图图标、158 份地图记录拼合底图；独立预览为 338 张头像、320 张图标、157 张地图，共 815 张，加地图缩略图后共 972 个 PNG。全部 7,725 个生成文件校验了大小和 SHA-256，74,861 条目录链接全部闭合，1,329 条武器原菜单字符串全部匹配标记拆分。详情见[原版图片与武器标记](original-images.md)；验证清单为 `build/original-data-qa/verification-images.json`。本批为静态解码和浏览器验证，未启动游戏。

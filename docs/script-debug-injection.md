@@ -4,7 +4,7 @@
 
 ## 宿主端机制
 
-- 开关 `SRW64_SCRIPT_INJECT=1`；`tools/recomp/native-host/script_inject.hpp` 由 `game_hooks.cpp` 与 `host.cpp` 调用。`run_host_probe.py` 只在日版 profile、`--graphics`、静音、有界 VI 且同时开启 `SRW64_SCRIPT_TRACE=1` 时接受这个开关，报告里写 `script_inject_enabled`。
+- 开关 `SRW64_SCRIPT_INJECT=1`；`src/host/script_inject.hpp` 由 `game_hooks.cpp` 与 `host.cpp` 调用。`run_host_probe.py` 只在日版 profile、`--graphics`、静音、有界 VI 且同时开启 `SRW64_SCRIPT_TRACE=1` 时接受这个开关，报告里写 `script_inject_enabled`。
 - 请求文件 `script-inject.txt`：一行 `SRWJ1 <sequence> <at_vi> <hex>`，hex 为事件头 5 字（类型 + 四个参数）、指令序列和结尾 `FFFF`。VI 线程与 `control.txt` 同一节奏（每 6 VI）读取；序号必须递增，宿主忙时（已排队或正在执行）拒绝并记录。
 - 脚本写入 RDRAM 顶部 64 KiB 暂存区 `807F0000`；应用前要求整个暂存区为零，完成后再清零。
 - 空闲判定（`idle_reason`）：`engine+4 = 0xC0`、`+0x97C = 0x80`（无事件运行）、`+0x9AA = 0`（轮询阶段 0）、`8010F5E8 = 1`（我方阶段；阶段号 1 我方／2 敌方／3 第三方，关卡之间为 0）、`8010F6B0 = 0`（无败北流程）、`8015DA02 ∈ {3, 0xB}`（战术地图）。不满足时记 `deferred`，超过 1800 VI 记 `idle-timeout` 并放弃。
@@ -13,7 +13,7 @@
 - 事件文件 `script-inject-events.jsonl`（schema `srw64.script-inject-event.v1`：`queued / deferred / rejected / applied / complete / escaped / stalled`，`applied` 与 `complete` 附引擎快照）。状态探针在 `script-inject-applied` 与 `script-inject-complete` 两个边界各存一份区域快照。
 - 单元测试 `tests/native_script_inject.cpp`（ASan，`make recomp-script-inject-test`，并入 `recomp-native-check`）覆盖解析拒绝、空闲判定、应用、完成恢复、序号与忙碌拒绝。
 
-## 客户端 `tools/recomp/script_debug.py`
+## 客户端 `tools/recomp/script_lab/script_debug.py`
 
 - `assemble`：输入 schema `srw64.debug-script.v1` 的 JSON（`{"op": "3D3B", "args": [0], "note": "…"}` 列表，可选 `event_type` 与 `header`）。参数长度只取自布局锁 `stage_scripts`，未知指令、空处理函数 `3D76/3D77`、不可达 `3D78/3D79` 和越界参数一律拒绝，输出 hex 与逐条偏移的清单。
 - `inject`：写入 `script-inject.txt`，保存 `script-inject-N.json`，等待 `complete / rejected / escaped`。
@@ -48,19 +48,19 @@
 
 ```sh
 SRW64_SCRIPT_INJECT=1 SRW64_SCRIPT_TRACE=1 SRW64_STATE_PROBE=1 SRW64_FRAME_TRACE_FROM=2400 SRW64_FRAME_TRACE_TO=9600 \
-  .venv/bin/python tools/recomp/run_host_probe.py --graphics --profile config/recomp/play-profile.json --language ja \
-  --images original --original-name-entry --resolution-scale 2 --input config/recomp/load-continue.json \
+  .venv/bin/python tools/recomp/run/run_host_probe.py --graphics --profile config/recomp/profiles/play-profile.json --language ja \
+  --images original --original-name-entry --resolution-scale 2 --input config/recomp/inputs/load-continue.json \
   --save-from build/recomp/gfx-probes/female-map-audio-3/first-map-turn1.sram \
   --save-sha256 b340a9c686b627d00dfaee9b4d89c896039547f8d607cb51b035d3f7bb2d756b \
   --output build/recomp/script-debug/inject-3 --vis 12000
 ```
 
 ```sh
-.venv/bin/python tools/recomp/script_debug.py inject build/recomp/script-debug/inject-3 --script config/recomp/debug-scripts/fade.json
+.venv/bin/python tools/recomp/script_lab/script_debug.py inject build/recomp/script-debug/inject-3 --script config/recomp/debug-scripts/fade.json
 ```
 
 ```sh
-.venv/bin/python tools/recomp/script_debug.py report build/recomp/script-debug/inject-3
+.venv/bin/python tools/recomp/script_lab/script_debug.py report build/recomp/script-debug/inject-3
 ```
 
 每次运行使用新的输出目录；对白脚本用 `control_host.py --buttons` 按 A；结束用 `control_host.py --quit`。

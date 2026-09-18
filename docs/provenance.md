@@ -35,7 +35,7 @@ ROM 身份、文本表和资源解析由 `src/srw64_rom/` 独立完成。
 
 1. 从 ROM 资源 0/1 解出字库位图（I4，504×504 与 504×252；半角 8×14 对应 ID 0–314，
    全角 14×14 从 `0x13B` 起，资源 1 从 `0x597` 起，与
-   `tools/recomp/build_native_font_probe.py` 的 `glyph_id` 同一套排布），按 ID 切出每个图块；
+   `tools/recomp/probes/build_native_font_probe.py` 的 `glyph_id` 同一套排布），按 ID 切出每个图块；
 2. 用系统日文字体渲染全部 7,335 个 CP932 字符，对每个图块做形状排序：映射字排第一且
    领先明显的 1,149 行判为位图一致（随机抽 72 行人工复核，全部正确）；
 3. 其余 602 个全角图块和全部 315 个半角图块逐个放大人工比对，并用修正后的文本上下文复核
@@ -173,7 +173,7 @@ N64ModernRuntime 自身的 N64Recomp 子模块为
 helpers 的接口；这不表示两个提交的所有内部接口都相同。
 bootstrap 的 `compiled` 状态指分析工具已编译，不指游戏宿主已编译。
 
-图形依赖由 `tools/recomp/prepare_rt64.py` 单独准备。Plume 子模块固定在
+图形依赖由 `tools/recomp/toolchain/prepare_rt64.py` 单独准备。Plume 子模块固定在
 `d890ac899e505fb30040e037a4037cdeca68f033`。当前机器只有 Command Line Tools，
 没有离线 Metal 编译器；实验采用可选的 MSL 源码嵌入方式，通过 Metal 运行时
 源码编译接口加载同一份 SPIRV-Cross 输出。该后端原有的内部着色器也使用该接口。

@@ -8,8 +8,8 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT/'tools/recomp'))
-from prepare_native_marker import validate
+sys.path.insert(0, str(ROOT/'tools'))
+from recomp.model5600.prepare_native_marker import validate
 
 
 class NativeMarkerPackTests(unittest.TestCase):
@@ -20,7 +20,7 @@ class NativeMarkerPackTests(unittest.TestCase):
         cls.storage = tempfile.TemporaryDirectory()
         cls.addClassCleanup(cls.storage.cleanup)
         cls.pack = Path(cls.storage.name)/'authored'
-        subprocess.run([sys.executable, str(ROOT/'tools/recomp/prepare_native_marker.py'),
+        subprocess.run([sys.executable, str(ROOT/'tools/recomp/model5600/prepare_native_marker.py'),
                         '--output', str(cls.pack)], check=True, stdout=subprocess.DEVNULL)
 
     def copy_pack(self):

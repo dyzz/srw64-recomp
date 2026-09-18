@@ -4,7 +4,7 @@
 
 ## 2026-09-12 修复
 
-源码位于 `tools/recomp/prepare_runtime_lifecycle.py` 与 `tools/recomp/runtime-support/guest_shutdown.hpp`。生成器按固定版本校验并生成 `threads.cpp`、`mesgqueue.cpp`、`scheduling.cpp`、`timer.cpp` 和 `recomp.cpp` 的本地适配，保留上游 checkout 和生成 CPU C 不变。
+源码位于 `tools/recomp/toolchain/prepare_runtime_lifecycle.py` 与 `src/host/runtime-support/guest_shutdown.hpp`。生成器按固定版本校验并生成 `threads.cpp`、`mesgqueue.cpp`、`scheduling.cpp`、`timer.cpp` 和 `recomp.cpp` 的本地适配，保留上游 checkout 和生成 CPU C 不变。
 
 - 登记 `osCreateThread` 创建的宿主线程，登记、发布线程句柄与初始化确认使用同一个锁。退出后拒绝新线程；避免线程立即退出时清理器提前销毁初始化信号量。
 - 退出时唤醒调度等待和外部消息等待；游戏线程在调度/消息安全点抛出运行时已有的终止异常，退出路径不再恢复游戏逻辑或继续调度其他线程。
@@ -78,10 +78,10 @@
 
 ```sh
 SRW64_SHUTDOWN_TRACE=1 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 \
-.venv/bin/python tools/recomp/run_host_probe.py --graphics \
-  --profile config/recomp/play-profile.json --input config/recomp/native-name-entry.json \
+.venv/bin/python tools/recomp/run/run_host_probe.py --graphics \
+  --profile config/recomp/profiles/play-profile.json --input config/recomp/inputs/native-name-entry.json \
   --output build/recomp/window-close-check/new-window-run --vis 9000
-.venv/bin/python tools/recomp/verify_native_name_entry.py \
+.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
   --run build/recomp/window-close-check/new-window-run --exit-mode window
 ```
 
@@ -91,7 +91,7 @@ SRW64_SHUTDOWN_TRACE=1 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 \
 
 ## 代码整理后的回归
 
-2026-09-11：通用关窗、缩放和图片模式测试控制已拆至 `tools/recomp/native-host/window_test_control_macos.mm`，由图形宿主窗口更新调用，不再依赖姓名页面。线程诊断源码独立存放于 `tools/recomp/runtime-support/shutdown_trace.hpp`，仍由生成器记录摘要并注入本地 runtime 源码。退出算法未改变。
+2026-09-11：通用关窗、缩放和图片模式测试控制已拆至 `src/host/macos/window_test_control_macos.mm`，由图形宿主窗口更新调用，不再依赖姓名页面。线程诊断源码独立存放于 `src/host/runtime-support/shutdown_trace.hpp`，仍由生成器记录摘要并注入本地 runtime 源码。退出算法未改变。
 
 - `build/recomp/cleanup-check/name-window/`：完整现代姓名流程、原校验、八字段读回、1200×800 剧情显示与真实关窗通过，宿主退出码 0。
 - `build/recomp/cleanup-check/original-window/`：禁用原生姓名页，在原选字界面于 VI 1350 调用实际关窗；独立 SDL 缩放及 Original/HD 请求/应用也通过，宿主退出码 0。这只验证通用控制路径，未重复完整美术 ROI 对比。

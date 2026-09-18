@@ -1,4 +1,4 @@
-#include "../tools/recomp/native-host/replay_vi.hpp"
+#include "../src/host/replay_vi.hpp"
 #include <cassert>
 #include <fstream>
 #include <iostream>

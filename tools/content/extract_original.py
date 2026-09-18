@@ -202,7 +202,7 @@ def build(rom_path: Path, destination: Path, snapshot: Path | None = None) -> di
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rom", type=Path, default=ROOT / "rom.z64")
-    parser.add_argument("--output", type=Path, default=ROOT / "build/original-data")
+    parser.add_argument("--output", type=Path, default=ROOT / "assets/original-data")
     parser.add_argument("--snapshot", type=Path, help="Optional historical RDRAM; requires sibling report.json and scene-evidence.json")
     args = parser.parse_args()
     print(json.dumps(build(args.rom.resolve(), args.output, args.snapshot.resolve() if args.snapshot else None), ensure_ascii=False, indent=2))

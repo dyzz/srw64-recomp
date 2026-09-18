@@ -14,21 +14,21 @@
 - **过场地图**：用户认为对比不明显，撤回先推进地图的建议，保留本轮候选与捕获帧回放。
 - **UI 边框**：用户认为效果也不显著，暂缓继续生成；规则绘制／九宫格重建的收益尚未验证。
 
-首选文件：[头像 Qwen 3.0 候选 2](../build/hd-ai/2026-09-08/runs/portrait--qwen-image-3.0--2/output.png)。原始输出 SHA-256：`45ac1a1c6719c2c117853f7f8b6844f0117809b55f2b9e2d31d7dfb24e13406f`。网页和后续工作使用 [review_decisions.json](../tools/hd_ai/review_decisions.json) 记录范围与选择；保留全部 42 张历史结果。
+首选文件：[头像 Qwen 3.0 候选 2](../assets/hd-ai/2026-09-08/runs/portrait--qwen-image-3.0--2/output.png)。原始输出 SHA-256：`45ac1a1c6719c2c117853f7f8b6844f0117809b55f2b9e2d31d7dfb24e13406f`。网页和后续工作使用 [review_decisions.json](../tools/hd_ai/review_decisions.json) 记录范围与选择；保留全部 42 张历史结果。
 
 ## 可以直接查看的结果
 
-- [交互浏览页：六类素材、全部 42 张候选、滑杆与并排对比](../build/hd-ai/2026-09-08/gallery/index.html)
+- [交互浏览页：六类素材、全部 42 张候选、滑杆与并排对比](../assets/hd-ai/2026-09-08/gallery/index.html)
 
-- [原画／地图高清＋既有轮廓字体对照](../build/hd-ai/2026-09-08/runtime-comparison.png)
-- [欧洲地图：首个候选对照](../build/hd-ai/2026-09-08/review/map-europe--comparison-1.png)
-- [欧洲地图：第二个候选对照](../build/hd-ai/2026-09-08/review/map-europe--comparison-2.png)
-- [头像对照](../build/hd-ai/2026-09-08/review/portrait--comparison-1.png)
-- [UI 边框对照](../build/hd-ai/2026-09-08/review/ui-border--comparison-1.png)
-- [机械图标对照](../build/hd-ai/2026-09-08/review/mech-icon--comparison-1.png)
-- [森林图集裁块对照](../build/hd-ai/2026-09-08/review/terrain-forest--comparison-1.png)
-- [完整输入清单与提示词](../build/hd-ai/2026-09-08/samples.json)
-- [输出哈希、数量、成本及指标](../build/hd-ai/2026-09-08/review/qa.json)
+- [原画／地图高清＋既有轮廓字体对照](../assets/hd-ai/2026-09-08/runtime-comparison.png)
+- [欧洲地图：首个候选对照](../assets/hd-ai/2026-09-08/review/map-europe--comparison-1.png)
+- [欧洲地图：第二个候选对照](../assets/hd-ai/2026-09-08/review/map-europe--comparison-2.png)
+- [头像对照](../assets/hd-ai/2026-09-08/review/portrait--comparison-1.png)
+- [UI 边框对照](../assets/hd-ai/2026-09-08/review/ui-border--comparison-1.png)
+- [机械图标对照](../assets/hd-ai/2026-09-08/review/mech-icon--comparison-1.png)
+- [森林图集裁块对照](../assets/hd-ai/2026-09-08/review/terrain-forest--comparison-1.png)
+- [完整输入清单与提示词](../assets/hd-ai/2026-09-08/samples.json)
+- [输出哈希、数量、成本及指标](../assets/hd-ai/2026-09-08/review/qa.json)
 
 `review/` 内还保留各类样本的第二候选图；`runs/` 内保留全部原始服务输出和逐次请求记录。对照图中的灰底用于查看透明区域。透明通道由本地源蒙版合成，不是模型直接生成的 Alpha。
 
@@ -69,16 +69,16 @@
 1. 选用 `qwen-image-3.0-pro` 的欧洲地图第一个候选。
 2. 从原图色板生成水域蒙版，海面和距海岸约 3 个源像素的区域保留确定性双线性放大。只在陆地内部混入 AI 结果。受保护区域相对该基线的 RGB 差异为 **0 像素**；源 Alpha 单独恢复。
 3. 按原图集坐标和翻转变换切回 256×256 图块，绑定 **58 个实际出现且位于所选裁块内的 RT64 哈希**。其他图块继续使用原资源。
-4. 使用原始 RDRAM、OSTask 和 RT64/Metal，在 960×720 输出中验证到第 60 次呈现；GPU 完成后读取画面。最终图块包为 [hd-pack-stall](../build/hd-ai/2026-09-08/map-probe-final/hd-pack-stall/rt64.json)。
+4. 使用原始 RDRAM、OSTask 和 RT64/Metal，在 960×720 输出中验证到第 60 次呈现；GPU 完成后读取画面。最终图块包为 [hd-pack-stall](../assets/hd-ai/2026-09-08/map-probe-final/hd-pack-stall/rt64.json)。
 5. 另生成地图＋既有 22 张轮廓字形的组合包，展示文字和背景两条路径可以同时生效。该字体来自既有 [native-font-probe.md](native-font-probe.md) 实验；本轮没有让 AI 生成文字，也没有把未经审核的 AI 头像装入演示。
 
-证据：[资源与纹理绑定](../build/hd-ai/2026-09-08/map-capture-binding.json)、[地图保护与切块记录](../build/hd-ai/2026-09-08/map-probe-final/build.json)、[地图回放](../build/hd-ai/2026-09-08/replay-hd-final/report.json)、[地图与字体组合回放](../build/hd-ai/2026-09-08/replay-map-and-font-final/report.json)。
+证据：[资源与纹理绑定](../assets/hd-ai/2026-09-08/map-capture-binding.json)、[地图保护与切块记录](../assets/hd-ai/2026-09-08/map-probe-final/build.json)、[地图回放](../assets/hd-ai/2026-09-08/replay-hd-final/report.json)、[地图与字体组合回放](../assets/hd-ai/2026-09-08/replay-map-and-font-final/report.json)。
 
 这个快照中增加了地表纹理，但用户看图认为整体提升不明显。为保持地理轮廓，海岸仍保留原图有限采样带来的阶梯感；接入成功不能单独说明视觉收益足够。地图保留观察。
 
-原图解码成 PNG 再替换的控制实验也没有达到整帧像素完全一致：相对同一宿主的新无包回放，691,200 个像素中 32,561 个不同，多数最大通道误差为 1；仅 100 个像素最大通道误差大于 2，RGB 平均绝对误差为 0.01922／255。不能把这个控制实验标成零差异。源纹理／调色板字节匹配与最终渲染逐像素相同是两种不同证据。[渲染对照记录](../build/hd-ai/2026-09-08/render-check.json)
+原图解码成 PNG 再替换的控制实验也没有达到整帧像素完全一致：相对同一宿主的新无包回放，691,200 个像素中 32,561 个不同，多数最大通道误差为 1；仅 100 个像素最大通道误差大于 2，RGB 平均绝对误差为 0.01922／255。不能把这个控制实验标成零差异。源纹理／调色板字节匹配与最终渲染逐像素相同是两种不同证据。[渲染对照记录](../assets/hd-ai/2026-09-08/render-check.json)
 
-初次高清包使用 `preload` 时触发 RT64 `ReplacementMap::addLoadedTexture` 的重复条目断言。为完成本次隔离回放，包改用官方支持的 `stall` 加载，成功取得输出；没有修改渲染器源码，也没有把断言的根因视为已修复。生产加载策略仍待排查。[失败日志](../build/hd-ai/2026-09-08/replay-hd-map.log)、[RT64 加载方式](https://github.com/rt64/rt64/blob/main/TEXTURE-PACKS.md#operation)
+初次高清包使用 `preload` 时触发 RT64 `ReplacementMap::addLoadedTexture` 的重复条目断言。为完成本次隔离回放，包改用官方支持的 `stall` 加载，成功取得输出；没有修改渲染器源码，也没有把断言的根因视为已修复。生产加载策略仍待排查。[失败日志](../assets/hd-ai/2026-09-08/replay-hd-map.log)、[RT64 加载方式](https://github.com/rt64/rt64/blob/main/TEXTURE-PACKS.md#operation)
 
 ## 看图后的下一阶段方向
 
@@ -93,7 +93,7 @@
 
 ## 复现与文件边界
 
-脚本位于 `tools/hd_ai/`。生成图片、ROM 解码内容、调色板、捕获内存、临时依赖和报告全部位于被忽略的 `build/hd-ai/`；原 ROM、实时游戏源码和现有字体包未修改。未执行 commit／push。
+脚本位于 `tools/hd_ai/`。生成图片、ROM 解码内容、调色板、捕获内存、临时依赖和报告全部位于被忽略的 `assets/hd-ai/`；原 ROM、实时游戏源码和现有字体包未修改。未执行 commit／push。
 
 ```sh
 .venv/bin/python tools/hd_ai/extract_samples.py
@@ -112,7 +112,7 @@
 
 ```sh
 .venv/bin/python tools/hd_ai/build_gallery.py
-.venv/bin/python -m http.server 8769 --bind 127.0.0.1 --directory build/hd-ai/2026-09-08/gallery
+.venv/bin/python -m http.server 8769 --bind 127.0.0.1 --directory assets/hd-ai/2026-09-08/gallery
 ```
 
 浏览器打开 <http://127.0.0.1:8769/>。也可直接打开 `gallery/index.html`；需保留旁边的 `media/` 目录。页面支持六类素材、四个模型与独立候选切换，原始输出／恢复透明蒙版、最近邻／Lanczos 基线、滑杆／并排、放大、原尺寸下载，以及捕获帧地图／地图＋字体对照。网页仅从冻结结果复制图片并生成浏览缩略图；`gallery-manifest.json` 记录本地文件 SHA-256。服务目录仅包含网页及图片，不包含 ROM、捕获内存或 API 请求记录。

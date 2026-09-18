@@ -1,0 +1,18 @@
+{
+  "schema": "srw64.play-profile.v1",
+  "baseline": "srw64-jp-rev0",
+  "presentation": {
+    "locale": "zh-Hans",
+    "images": "original",
+    "model_5600": "waterdrop",
+    "resolution_scale": 4,
+    "font_size": 13
+  },
+  "locales": {
+    "ja": "content/locales/ja.json",
+    "zh-Hans": "content/locales/zh-Hans.json",
+    "en": "content/locales/en.json"
+  },
+  "art_pack": "content/art/stage1-hd.json",
+  "gameplay_mods": []
+}

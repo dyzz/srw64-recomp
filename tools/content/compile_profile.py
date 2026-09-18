@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--profile", type=Path, default=ROOT / "config/recomp/play-profile.json")
+    parser.add_argument("--profile", type=Path, default=ROOT / "config/recomp/profiles/play-profile.json")
     parser.add_argument("--language")
     parser.add_argument("--images", choices=("original", "hd"))
     parser.add_argument("--output", type=Path, required=True)

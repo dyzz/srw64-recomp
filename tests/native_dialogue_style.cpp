@@ -1,5 +1,5 @@
-#include "../tools/recomp/native-host/dialogue_layout.hpp"
-#include "../tools/recomp/native-host/dialogue_style.hpp"
+#include "../src/host/dialogue_layout.hpp"
+#include "../src/host/dialogue_style.hpp"
 #include <cassert>
 #include <fstream>
 #include <iostream>

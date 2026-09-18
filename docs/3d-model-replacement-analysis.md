@@ -31,15 +31,15 @@
 
 诊断图根据提取的原始坐标绘制，未加载原贴图、材质、游戏相机或动画。英文形状标签属于候选分类，不是已确认的游戏资产名称。
 
-![ROM 原始几何样本](../build/analysis/3d-2026-09-09/geometry-samples.png)
+![ROM 原始几何样本](../assets/models/3d-2026-09-09/geometry-samples.png)
 
 本地调查产物：
 
-- [资源头普查](../build/analysis/3d-2026-09-09/header-survey.json)
-- [几何清单与每个显示列表检查](../build/analysis/3d-2026-09-09/geometry-survey.json)
-- [静态解析脚本](../build/analysis/3d-2026-09-09/survey_geometry.py)与[验证结果](../build/analysis/3d-2026-09-09/validation.json)
-- [既有任务快照绑定](../build/analysis/3d-2026-09-09/snapshot-bindings.json)
-- 几何 OBJ 样本：[5584](../build/analysis/3d-2026-09-09/resource-5584-geometry.obj)、[5592](../build/analysis/3d-2026-09-09/resource-5592-geometry.obj)、[5600](../build/analysis/3d-2026-09-09/resource-5600-geometry.obj)、[5604](../build/analysis/3d-2026-09-09/resource-5604-geometry.obj)、[5614](../build/analysis/3d-2026-09-09/resource-5614-geometry.obj)、[5750](../build/analysis/3d-2026-09-09/resource-5750-geometry.obj)。仅含局部顶点与面，没有材质、UV、骨骼或动画；保留在忽略的 `build/` 下。
+- [资源头普查](../assets/models/3d-2026-09-09/header-survey.json)
+- [几何清单与每个显示列表检查](../assets/models/3d-2026-09-09/geometry-survey.json)
+- [静态解析脚本](../assets/models/3d-2026-09-09/survey_geometry.py)与[验证结果](../assets/models/3d-2026-09-09/validation.json)
+- [既有任务快照绑定](../assets/models/3d-2026-09-09/snapshot-bindings.json)
+- 几何 OBJ 样本：[5584](../assets/models/3d-2026-09-09/resource-5584-geometry.obj)、[5592](../assets/models/3d-2026-09-09/resource-5592-geometry.obj)、[5600](../assets/models/3d-2026-09-09/resource-5600-geometry.obj)、[5604](../assets/models/3d-2026-09-09/resource-5604-geometry.obj)、[5614](../assets/models/3d-2026-09-09/resource-5614-geometry.obj)、[5750](../assets/models/3d-2026-09-09/resource-5750-geometry.obj)。仅含局部顶点与面，没有材质、UV、骨骼或动画；保留在忽略的 `build/` 下。
 
 ## 运行时证据边界
 
@@ -53,7 +53,7 @@
 
 ## 当前原生工程能做到哪里
 
-现有 [`graphics.cpp`](../tools/recomp/native-host/graphics.cpp) 在 `send_dl()` 中接收原任务，并允许经 `display_copy` 修改后再提交 `processDisplayLists()`；这是研究局部几何替换的现成入口。现有字体、头像和世界地图高清化走 `loadReplacementDirectory()`，属于纹理替换。
+现有 [`graphics.cpp`](../src/host/graphics.cpp) 在 `send_dl()` 中接收原任务，并允许经 `display_copy` 修改后再提交 `processDisplayLists()`；这是研究局部几何替换的现成入口。现有字体、头像和世界地图高清化走 `loadReplacementDirectory()`，属于纹理替换。
 
 固定使用的 RT64 为 `43373749dac9bbc1b653e6a02aed40a9e1783bed`。其 README 以及本次检查的[上游说明](https://github.com/rt64/rt64#features-in-development-in-priority-order)仍把 Model replacements 列为开发中。当前宿主没有 glTF／FBX／OBJ 换模包加载器，不能承诺把模型放进纹理包目录即可替换。
 

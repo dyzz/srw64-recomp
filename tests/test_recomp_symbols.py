@@ -6,11 +6,11 @@ import sys
 import unittest
 import zlib
 
-TOOLS = Path(__file__).resolve().parents[1] / "tools/recomp"
+TOOLS = Path(__file__).resolve().parents[1] / "tools"
 sys.path.insert(0, str(TOOLS))
-from audit_library_symbols import matches
-from generate_cpu import bind_overlay_calls, bind_native_hooks, NATIVE_HOOKS
-from native_inputs import compile_input
+from recomp.toolchain.audit_library_symbols import matches
+from recomp.toolchain.generate_cpu import bind_overlay_calls, bind_native_hooks, NATIVE_HOOKS
+from recomp.run.native_inputs import compile_input
 
 
 class SignatureTests(unittest.TestCase):

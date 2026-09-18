@@ -1,6 +1,6 @@
 # 隐藏要素：脚本实现与攻略对照
 
-2026-09-17。本文基于锁定的日版 Rev 0 `rom.z64` 做静态分析：从 `build/original-data/records/stage_events.jsonl` 的指令 IR 读出每个隐藏要素的判定位置、所用变量和入队效果，再与社区攻略 [Akurasu Wiki：Super Robot Wars/64/Secrets][wiki]（同日检索）逐项对照。**本轮没有运行游戏验证，也没有写回 ROM。** "一致"只表示脚本结构与攻略描述吻合；回合数、击坠时机这类细节仍需实机确认，这些条目在第 5 节单独列出。
+2026-09-17。本文基于锁定的日版 Rev 0 `rom.z64` 做静态分析：从 `assets/original-data/records/stage_events.jsonl` 的指令 IR 读出每个隐藏要素的判定位置、所用变量和入队效果，再与社区攻略 [Akurasu Wiki：Super Robot Wars/64/Secrets][wiki]（同日检索）逐项对照。**本轮没有运行游戏验证，也没有写回 ROM。** "一致"只表示脚本结构与攻略描述吻合；回合数、击坠时机这类细节仍需实机确认，这些条目在第 5 节单独列出。
 
 攻略的说法只作为对照线索，不作为判定依据；二者冲突时，以脚本为准列出差异，不据此改动游戏规则。
 

@@ -16,8 +16,8 @@
 这个回退仅针对可选 HD 美术文件。原始 ROM、语言目录、字形映射、工具链等基础输入仍然必须有效。水滴模型在完整 HD 美术可用且配置启用时仍按原有流程生成/验证；已有模型损坏不属于本次回退范围。
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --language zh-Hans --images original --new-game
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --language zh-Hans --images original --new-game
 ```
 
 Original 表示原始美术；中文、原生姓名页及独立字体仍可使用，不意味着恢复全部 N64 UI。语言仍在启动时选择，全游戏多语种覆盖与运行中语言切换尚未完成。

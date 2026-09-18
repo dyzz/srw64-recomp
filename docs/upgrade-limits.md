@@ -1,6 +1,6 @@
 # 改造段数与“丑小鸭”上限：每段增量、价格、机体设置与 MOD 设计
 
-日期：2026-09-18。范围：日版 Rev 0 ROM 与本项目的静态反汇编（`build/recomp/cpu-scan`）、已提取的机体／武器目录（`build/original-data/records`）。第 1～6 节是静态分析；第 7 节的一期 MOD（数值可配置、上限突破到 15、改造画面显示原作上限）已实现，并在 2026-09-18 用两次有界运行核对了改造画面（7.5 节）；仍未实机确认的条目在第 8 节。换机时段数如何搬运见[改造继承分析](upgrade-inheritance.md)，本文不重复。
+日期：2026-09-18。范围：日版 Rev 0 ROM 与本项目的静态反汇编（`build/recomp/cpu-scan`）、已提取的机体／武器目录（`assets/original-data/records`）。第 1～6 节是静态分析；第 7 节的一期 MOD（数值可配置、上限突破到 15、改造画面显示原作上限）已实现，并在 2026-09-18 用两次有界运行核对了改造画面（7.5 节）；仍未实机确认的条目在第 8 节。换机时段数如何搬运见[改造继承分析](upgrade-inheritance.md)，本文不重复。
 
 本文的“丑小鸭”指 SRW64 的机体改造上限按机体而异：强机只能改 7 段，弱机、量产机可以改到 13～15 段，改满后能反超起点更高的机体。
 
@@ -155,7 +155,7 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 
 中断存档（`800924D8` 写入 `801C2600` 缓冲，SRAM `0x10` 起）不保存机体实例原样，而是逐台压缩成 16 字节（`80092240`）：`+0` 为 机体号<<6 | 武器件数，`+2` 为 HP<<4 | EN，`+3` 为 运动性<<4 | 装甲，`+4` 为 标志（高 2 位）| 限界，`+0xE` 为该机第一件武器的序号。武器每件 6 字节（`80092498`）：编号、可用形态、段数<<4 | 标志低 4 位。资金是块内 `+0x54` 的 u32（`800918DC`）。
 
-所以五项和武器段数在存档里都只有 4 位，**15 是存档格式本身的上限**；上限字节 `+0x51` 和能力数值都不存，读档后由段数重算。这决定了 MOD 的边界：突破到 15 以内不碰存档格式，超过 15 必须另存段数（第 7.6 节）。`tools/recomp/upgrade_save.py` 按此格式做受控存档编辑（资金、段数），仅供核对用。
+所以五项和武器段数在存档里都只有 4 位，**15 是存档格式本身的上限**；上限字节 `+0x51` 和能力数值都不存，读档后由段数重算。这决定了 MOD 的边界：突破到 15 以内不碰存档格式，超过 15 必须另存段数（第 7.6 节）。`tools/recomp/gameplay/upgrade_save.py` 按此格式做受控存档编辑（资金、段数），仅供核对用。
 
 ## 5. 上限的全部读者
 
@@ -211,8 +211,8 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 规则文件模板：
 
 ```sh
-.venv/bin/python tools/recomp/upgrade_rules.py export my-rules.json --units --weapons
-.venv/bin/python tools/recomp/upgrade_rules.py check my-rules.json
+.venv/bin/python tools/recomp/gameplay/upgrade_rules.py export my-rules.json --units --weapons
+.venv/bin/python tools/recomp/gameplay/upgrade_rules.py check my-rules.json
 ```
 
 `export` 写出原版数值（`--units`／`--weapons` 另附全部 363 台机体的上限和 1329 件武器的类型，带名称），改需要的项、删掉其余即可；每一节、每个字段都可省略，省略的沿用原版。格式（schema `srw64.upgrade-rules.v1`）：
@@ -240,7 +240,7 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 
 ### 7.3 实现
 
-代码在 `tools/recomp/native-host/upgrade_rules.hpp`，包装在 `game_hooks.cpp`，绑定在 `generate_cpu.py` 的 `NATIVE_HOOKS`。
+代码在 `src/host/upgrade_rules.hpp`，包装在 `game_hooks.cpp`，绑定在 `generate_cpu.py` 的 `NATIVE_HOOKS`。
 
 - **数值**：规则文件读入后算出与 ROM 不同的每个字节（常驻增量表、overlay 的价格表与预览表、机体记录 `+0x20`、武器记录 `+0x0E`），在每次 ROM 拷贝之后打补丁：启动时的常驻段、`8007F704` 的每次读（overlay 载入在字节校验之后、机体和武器记录读取）。游戏继续用自己的表，预览表与常驻表同步改写，所以确认改造时加上的值和之后 `800A5254` 重算的值一致。武器实例只在建立时复制类型，`800A5254` 的包装会先按规则文件刷新 `+0x15`。没有文件时补丁表为空，不写任何内存。
 - **上限**：改造画面的六个例程各包一层作用域——`801CF680`（打开画面，打印上限）、`801CF988`（五项的选择与确认）按“能否改”，`801C80E0`（五项的数值、预览与刻度）按“显示”，`801D0C7C`／`801D1100`（武器的预览与确认）按“所选武器”，`801CF85C`（EW 判定）按原作上限。进入时把所有在场机体的 `+0x51` 写成该作用域的上限，退出时写回，只写与现值不同的字节；`800A5254` 会从 ROM 重写 `+0x51`，其包装在作用域内把它补回。画面之外的代码永远只看到原作上限，而且 `+0x51` 不进存档（4.3 节）。
@@ -256,7 +256,7 @@ Akurasu “Unit Upgrades” 页列了三件满改追加武器的累计费用：
 
 ### 7.5 实机核对（2026-09-18，有界运行，日文、Original 画面）
 
-用 `tools/recomp/upgrade_save.py` 对第一话通关存档做**受控编辑**（资金 900000；ダイターン3 三个形态 HP 段数、ダイターンザンバー 段数），走 `load-intermission-check.json` 的前 9 个输入读档进中断，再逐键操作改造画面。结果与截图在 `build/recomp/upgrade-check/`。
+用 `tools/recomp/gameplay/upgrade_save.py` 对第一话通关存档做**受控编辑**（资金 900000；ダイターン3 三个形态 HP 段数、ダイターンザンバー 段数），走 `load-intermission-check.json` 的前 9 个输入读档进中断，再逐键操作改造画面。结果与截图在 `build/recomp/upgrade-check/`。
 
 | 运行 | 条件 | 画面所见 |
 | --- | --- | --- |

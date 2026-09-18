@@ -1,4 +1,4 @@
-#include "../tools/recomp/native-host/dialogue_layout.hpp"
+#include "../src/host/dialogue_layout.hpp"
 #include <cassert>
 #include <fstream>
 #include <iterator>

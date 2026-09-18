@@ -18,7 +18,7 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=0)
-    parser.add_argument("--directory", type=Path, default=ROOT / "build/original-data")
+    parser.add_argument("--directory", type=Path, default=ROOT / "assets/original-data")
     args = parser.parse_args()
     if not (args.directory / "manifest.json").is_file():
         raise SystemExit("Run tools/content/extract_original.py first")

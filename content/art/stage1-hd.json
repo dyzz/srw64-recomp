@@ -3,7 +3,7 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "build/hd-ai/worldmap-runtime/pack-v6/pack",
+    "path": "assets/hd-ai/worldmap-runtime/pack-v6/pack",
     "manifest_sha256": "e252b3fdff7eb6a6c9a01ee97806f45c0233a395c10edbd61840e23d4409f248"
   },
   "textures": [
