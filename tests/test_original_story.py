@@ -81,7 +81,15 @@ class OriginalStoryTests(unittest.TestCase):
     def test_choices_sections_and_structure_lines(self):
         doc = self.documents[2]
         choices = [l for e in doc['events'] for l in e['lines'] if l['kind'] == 'choice']
-        self.assertEqual([o['display'] for o in choices[0]['options']], ['平原', '森', '林'])
+        self.assertEqual([o['display'] for o in choices[0]['options']], ['は、はい……', 'ほっといてくれ!', '…………'])
+        # 3D44's option list is one text (operand 3), split on <BR>; operand 1 is the window slot.
+        scene = next(d for d in self.documents if d['scene'] == 26)
+        choice = next(l for e in scene['events'] if e['key'] == 'base:stage_events:001a6de8'
+                      for l in e['lines'] if l['kind'] == 'choice')
+        self.assertEqual((choice['text_key'], choice['text_id'], choice['count']), ('base:t00_21815', 21815, 2))
+        self.assertEqual([o['display'] for o in choice['options']], ['シーラの方へ向かう', 'エレの方へ向かう'])
+        every = [l for d in self.documents for e in d['events'] for l in e['lines'] if l['kind'] == 'choice']
+        self.assertTrue(every and all(len(l['options']) == l['count'] for l in every))
         sections = {l['label'] for e in doc['events'] for l in e['lines'] if l['kind'] == 'section'}
         self.assertIn('アーク路线', sections)
         kinds = {l['kind'] for d in self.documents for e in d['events'] for l in e['lines']}

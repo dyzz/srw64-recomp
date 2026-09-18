@@ -44,7 +44,7 @@ function renderLine(line,event) {
     body.append(who,renderText(line.display),meta);card.append(side,body);return card;
   }
   if(line.kind==='section')return element('div',line.label,'line section');
-  if(line.kind==='choice'){const card=element('div',undefined,'line choice');card.append(element('span','选择肢','chip'));for(const option of line.options)card.append(element('span',option.display,'option'));return card;}
+  if(line.kind==='choice'){const card=element('div',undefined,'line choice');card.append(element('span','选择肢','chip'));for(const option of line.options)card.append(element('span',option.display,'option'));if(line.text_key){const meta=element('div',undefined,'line-meta');meta.append(catalogLink(line.text_key,'文本 '+line.text_id),catalogLink(event.key,'事件 '+event.key.split(':').pop()));card.append(meta);}return card;}
   if(!$('show-structure').checked)return null;
   const labels={condition:'若 · ',statement:'',note:'', 'block-end':'条件块结束'};
   const d=element('div',(labels[line.kind]||'')+(line.text||''),'line '+line.kind);d.style.paddingLeft=`${16+line.depth*10}px`;return d;

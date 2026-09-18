@@ -11,14 +11,16 @@ function operandCell(field) {
   const span = element('span', undefined, 'operand');
   const label = field.label || field.meaning;
   if (field.key) span.append(anchor(field.key, `${field.name} = ${label ?? field.value}`));
+  else if (field.text_key) span.append(anchor(field.text_key, `${field.name} = 文本 ${field.value}`), element('div', clean(field.text), 'script-dialogue'));
   else span.append(element('span', `${field.name} = ${label ?? field.value}`));
+  if (field.note) span.title = field.note;
   if (field.role === 'position' && field.x !== undefined) span.append(element('small', ` (${field.x}, ${field.y})`));
   if (field.role === 'position' && field.relative_to) span.append(element('small', ` ${field.relative_to} → ${field.direction} ${field.distance}`));
   if (field.role === 'region_x' || field.role === 'region_y') span.append(element('small', ` [${field.start}, ${field.start + field.span})`));
   if (field.role === 'region_target' && field.count !== undefined) span.append(element('small', ` ×${field.count}`));
   if (field.scene_targets) for (const t of field.scene_targets) span.append(document.createTextNode(' '), anchor(t.key, `→ 场景 ${t.scene} 目标`));
   if (field.scene_misses) span.append(element('small', ` 场景 ${field.scene_misses.join('/')} 无对应记录`));
-  if (field.label === undefined && field.meaning === undefined && field.key === undefined && field.x === undefined && field.relative_to === undefined && field.start === undefined) span.append(element('small', ` (${hex(field.value)})`));
+  if (field.label === undefined && field.meaning === undefined && field.key === undefined && field.text_key === undefined && field.x === undefined && field.relative_to === undefined && field.start === undefined) span.append(element('small', ` (${hex(field.value)})`));
   return span;
 }
 
@@ -120,12 +122,13 @@ export function renderScript(data, coverage) {
       ['处理函数', o.handler_vram || (o.family === 'marker' ? '8009F0E8 标记循环' : o.family === 'condition' ? '内联恒真分支' : '空处理函数（默认分支）')],
       ['参数长度', o.operand_words === null || o.operand_words === undefined ? '无（不可达）' : `${o.operand_words} 个 16 位参数`],
       ['语义确认程度', confidence(o.semantic_confidence)],
-      ['依据', o.basis || '—']];
+      ['依据', o.basis || '—'],
+      ['运行注入观察', o.runtime ? `${o.runtime.finding}（${o.runtime.run}，序列 ${o.runtime.sequence}，${o.runtime.date}）` : '—']];
     if (o.block) rows.splice(2, 0, ['块结构', {opener: '条件块开始（为假时跳到同层 3E1D）', statement: '语句（恒真，不开块）', 'block-end': '块结束'}[o.block]]);
     if (o.matches) rows.splice(2, 0, ['匹配规则', o.matches]);
     if (o.dialogue_mode !== undefined && o.dialogue_mode !== null) rows.push(['对白显示模式', String(o.dialogue_mode)]);
     root.append(table(['项目', '值'], rows, '指令定义'));
-    if (o.operands?.length) root.append(block('参数', table(['序号', '名称', '角色'], o.operands.map((p, i) => [String(i), p.name, p.role]), '参数定义')));
+    if (o.operands?.length) root.append(block('参数', table(['序号', '名称', '角色', '说明'], o.operands.map((p, i) => [String(i), p.name, p.role, p.note || '—']), '参数定义')));
     root.append(element('p', '参数长度与分发表、条件跳转表、扫描表和触发表逐项对照 ROM 机器码；参数长度已知不代表所有参数的游戏含义已确认。', 'basis'));
   } else if (data.event_type) {
     const t = data.event_type;
@@ -140,7 +143,7 @@ export function renderScript(data, coverage) {
     const d = data.deployment;
     const side = (data.fields || []).find(f => f.name === '阵营');
     root.append(element('p', `组 ${d.group} · 格 (${d.x}, ${d.y}) · 阵营 ${side ? side.value : d.side}（记录值 ${d.side}） · 等级偏移 ${d.level_offset} · 强化索引 ${d.upgrade_index} · 行为标志 ${hex(d.behaviour)} · 附加值 ${d.extra}`, 'basis'));
-    root.append(element('p', '字段来自 8020ABB4 生成运行时机体的读取顺序；坐标经 3D3D→801C78A0 的屏幕换算确认，出击位置的写入链保留为结构确认。', 'basis'));
+    root.append(element('p', '字段来自 8020ABB4 生成运行时机体的读取顺序；坐标经 3D3D→801C78A0 的屏幕换算确认；3D3D 出击时以该组首条记录为基准点，把选中单位放进附近的空地图槽（迷你关卡实测）。', 'basis'));
   }
   return root;
 }

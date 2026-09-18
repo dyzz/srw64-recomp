@@ -19,7 +19,8 @@ MARKER_FIRST, MARKER_LAST = 0x3DD0, 0x3DDB
 CONDITION_FIRST, CONDITION_LAST = 0x3E00, 0x3E1D
 END_WORD = 0xFFFF
 PROTAGONIST_BASE, RIVAL_BASE, CONTEXT_BASE = 25, 29, 0x3DD1
-SIDE_NAMES = {0: "我方", 1: "敌方", 2: "第三方", 4: "任意阶段"}
+SIDE_NAMES = {0: "阶段 0（关卡之间）", 1: "我方阶段", 2: "敌方阶段", 3: "第三方阶段", 4: "任意阶段"}
+FACTION_NAMES = {0: "我方", 1: "敌方", 2: "第三方"}
 DEPLOY_SIDE_NAMES = {0: "我方", 1: "敌方", 2: "第三方", 3: "我方（记录值 3）", 4: "第三方（记录值 4）"}
 
 
@@ -137,6 +138,7 @@ class Resolver:
         self.actors = categories.get("actors", [])
         self.units = categories.get("units", [])
         self.scene_count = len(categories.get("stage_maps", []))
+        self.map_count = len(categories.get("map_assets", []))
 
     def actor(self, value: int) -> dict:
         if 0 <= value < len(self.actors):
@@ -206,10 +208,16 @@ def decode_operand(role: str, value: int, resolver: Resolver) -> dict:
             out["meaning"] = "恢复 8010F5F2 记录的场景"
         elif value < resolver.scene_count:
             out.update(key=f"base:scenarios:{value:04d}", label=f"场景索引 {value}")
+    elif role == "map":
+        out["meaning"] = f"地图 {value}"
+        if value < resolver.map_count:
+            out.update(key=f"base:map_assets:{value:04d}", label=f"地图 {value}")
     elif role == "position":
         out.update(decode_position(value))
     elif role == "side":
-        out["meaning"] = SIDE_NAMES.get(value, f"未知阵营 {value}")
+        out["meaning"] = SIDE_NAMES.get(value, f"未知阶段 {value}")
+    elif role == "faction":
+        out["meaning"] = FACTION_NAMES.get(value, f"未知阵营 {value}")
     elif role == "deploy_side":
         out["meaning"] = DEPLOY_SIDE_NAMES.get(value, f"未知阵营 {value}")
     elif role == "actor_or_group":
@@ -233,7 +241,7 @@ def decode_operand(role: str, value: int, resolver: Resolver) -> dict:
         else:
             out["meaning"] = f"变量 {value} 须为 3" if 100 <= value <= 115 else f"变量 {value}（触发器不检查此范围）"
     elif role == "side_or_any":
-        out["meaning"] = SIDE_NAMES.get(value, f"未知阵营 {value}")
+        out["meaning"] = SIDE_NAMES.get(value, f"未知阶段 {value}")
     elif role == "turn":
         out["meaning"] = f"回合 {value}"
     elif role == "region_target":
@@ -337,6 +345,7 @@ def decode_event(raw: bytes, offset: int, spec: dict, resolver: Resolver) -> dic
             item["section"] = section
         if known and known.get("operands"):
             item["fields"] = [decode_operand(spec_row["role"], value, resolver) | {"name": spec_row["name"]}
+                              | ({"note": spec_row["note"]} if "note" in spec_row else {})
                               for spec_row, value in zip(known["operands"], args)]
         instructions.append(item)
         position += size
@@ -408,7 +417,7 @@ def opcode_catalogs(rom: bytes, spec: dict) -> dict[str, list[dict]]:
                          checked_slice(rom, offset, 4), offset, "code-confirmed")
         row["opcode"] = {"value": opcode, "case_vram": f"0x{word(rom, offset):08X}", "family": "command",
                          **{k: known.get(k) for k in ("handler_vram", "operand_words", "name", "semantic_confidence",
-                                                      "basis", "operands", "dialogue_mode", "no_advance")}}
+                                                      "basis", "operands", "dialogue_mode", "no_advance", "runtime")}}
         row["evidence"] = ["script_dispatch", "script_dispatch_table", "script_command_handlers", "script_command_handlers_tail"]
         row["evidence"].extend(known.get("evidence", []))
         row["summary"] = f"{known['operand_words'] if known['operand_words'] is not None else '—'} 个参数 · {known['semantic_confidence']}"
@@ -423,7 +432,7 @@ def opcode_catalogs(rom: bytes, spec: dict) -> dict[str, list[dict]]:
                          checked_slice(rom, offset, 4), offset, "code-confirmed")
         row["opcode"] = {"value": opcode, "case_vram": f"0x{word(rom, offset):08X}", "family": "condition",
                          "block": known["kind"], **{k: known.get(k) for k in
-                         ("handler_vram", "operand_words", "name", "semantic_confidence", "basis", "operands")}}
+                         ("handler_vram", "operand_words", "name", "semantic_confidence", "basis", "operands", "runtime")}}
         row["evidence"] = ["script_vm", "script_dispatch", "script_condition_handlers",
                            "script_condition_jump_table", "script_skip_jump_table"]
         row["summary"] = f"{known['operand_words']} 个参数 · {known['kind']}"
@@ -434,7 +443,7 @@ def opcode_catalogs(rom: bytes, spec: dict) -> dict[str, list[dict]]:
         row = {"schema": "srw64.original-record.v1", "key": f"base:script_markers:{opcode:04x}",
                "label": f"{opcode:04X} · {known['name']}", "confidence": "code-confirmed", "links": [],
                "fields": [field("匹配规则", known["matches"], 0, 0, "code-confirmed", known["basis"])],
-               "opcode": {"value": opcode, "family": "marker", "name": known["name"], "matches": known["matches"],
+               "opcode": {"value": opcode, "family": "marker", "name": known["name"], "matches": known["matches"], "runtime": known.get("runtime"),
                           "basis": known["basis"], "operand_words": 0, "semantic_confidence": "code-confirmed"},
                "evidence": ["script_vm", "script_protagonist_marker"], "summary": known["matches"]}
         if "actor_id" in known:
@@ -577,9 +586,10 @@ def attach_script_catalog(categories: dict, rom: bytes, layout: dict, sources: d
                     seen.add(key)
                     row["links"].append(link(key, {"text_key": "对白原文", "opcode_key": "指令", "speaker_key": "说话人"}[key_name]))
             for f in item.get("fields", []):
-                if "key" in f and f["key"] not in seen:
-                    seen.add(f["key"])
-                    row["links"].append(link(f["key"], f"参数 · {f['name']}"))
+                for key in (f.get("key"), f.get("text_key")):
+                    if key and key not in seen:
+                        seen.add(key)
+                        row["links"].append(link(key, f"参数 · {f['name']}"))
         dialogue = [i for i in script["instructions"] if i["kind"] == "dialogue"]
         row["summary"] = (f"{len(script['instructions'])} 条指令 · {len(dialogue)} 条对白 · {len(script['blocks'])} 个条件块 · "
                           + {"terminator-reached": "已读至结束符"}.get(script["status"], script["status"]))
