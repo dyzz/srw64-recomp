@@ -7,7 +7,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock
 
-path = Path(__file__).resolve().parents[1] / "tools/recomp/rsp_capture.py"
+path = Path(__file__).resolve().parents[1] / "tools/recomp/probes/rsp_capture.py"
 spec = importlib.util.spec_from_file_location("recomp_capture", path)
 assert spec is not None and spec.loader is not None
 module = importlib.util.module_from_spec(spec)

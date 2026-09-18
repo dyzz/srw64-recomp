@@ -40,7 +40,7 @@
 
 `script_move_probe.hpp` 默认关闭，`SRW64_SCRIPT_MOVE_PROBE=baseline` 只记录，`target17` 才临时覆盖。固定实验会检查场景 0、路线 `3DD3`、阶段 `C1`、待执行 PC `8019B4C8`、256 字节事件指纹及原始指令/参数，全部匹配才写入 `8019B4CC`。仅执行一次，在该命令完成后恢复 `1912`；若发现参数被其他代码改写，记录冲突而不覆盖。启动器要求原 JP、静音、空 SRAM、开启脚本记录。
 
-两次运行使用同一个[输入文件](../config/recomp/script-move-probe-input.json)。日志中的 `SRW64_SCRIPT_TRACE` 保留实际参数，因此改值组必须产生一条明确的原值不匹配；独立比较器只接受预先指定的 `1912 → 1911`，不会隐藏差异。
+两次运行使用同一个[输入文件](../config/recomp/inputs/script-move-probe-input.json)。日志中的 `SRW64_SCRIPT_TRACE` 保留实际参数，因此改值组必须产生一条明确的原值不匹配；独立比较器只接受预先指定的 `1912 → 1911`，不会隐藏差异。
 
 ## 记录的状态
 
@@ -56,23 +56,23 @@
 # 先运行改值组，保留构建指纹。
 SRW64_SCRIPT_TRACE=1 SRW64_SCRIPT_MOVE_PROBE=target17 \
 SRW64_FRAME_TRACE_FROM=6800 SRW64_FRAME_TRACE_TO=8100 \
-.venv/bin/python -B tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json --language ja \
+.venv/bin/python -B tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json --language ja \
   --images original --original-name-entry --resolution-scale 2 \
-  --input config/recomp/script-move-probe-input.json \
+  --input config/recomp/inputs/script-move-probe-input.json \
   --output build/recomp/script-analysis/move-target17-next --vis 9000
 
 # 原值组复用同一文件，拒绝二进制、源码、ROM、生成报告或 ABI 指纹变化。
 SRW64_SCRIPT_TRACE=1 SRW64_SCRIPT_MOVE_PROBE=baseline \
 SRW64_FRAME_TRACE_FROM=6800 SRW64_FRAME_TRACE_TO=8100 \
-.venv/bin/python -B tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json --language ja \
+.venv/bin/python -B tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json --language ja \
   --images original --original-name-entry --resolution-scale 2 \
-  --input config/recomp/script-move-probe-input.json \
+  --input config/recomp/inputs/script-move-probe-input.json \
   --reuse-build-from build/recomp/script-analysis/move-target17-next \
   --output build/recomp/script-analysis/move-baseline-next --vis 9000
 
-.venv/bin/python -B tools/recomp/analyze_move_probe.py \
+.venv/bin/python -B tools/recomp/analysis/analyze_move_probe.py \
   build/recomp/script-analysis/move-baseline-next \
   build/recomp/script-analysis/move-target17-next \
   --output build/recomp/script-analysis/move-comparison-next.json
@@ -82,8 +82,8 @@ SRW64_FRAME_TRACE_FROM=6800 SRW64_FRAME_TRACE_TO=8100 \
 
 ## 代码与验证
 
-- [固定实验探针](../tools/recomp/native-host/script_move_probe.hpp)：默认关闭、身份校验、单次覆盖、收尾恢复及状态快照。
-- [比较器](../tools/recomp/analyze_move_probe.py)：精确接受一个预定参数差异，同时检查源码／二进制、指令顺序、恢复与名册变化。
+- [固定实验探针](../src/host/script_move_probe.hpp)：默认关闭、身份校验、单次覆盖、收尾恢复及状态快照。
+- [比较器](../tools/recomp/analysis/analyze_move_probe.py)：精确接受一个预定参数差异，同时检查源码／二进制、指令顺序、恢复与名册变化。
 - [组件测试](../tests/native_script_move_probe.cpp)：ASan/UBSan 下验证默认无写入、身份不符拒绝、仅一个字节改变、恢复、单次执行及冲突时不覆盖。
 - `PYTHONDONTWRITEBYTECODE=1 make check`：97 项通过，编译和依赖检查通过；目录重建为 83 个证据项，全部引用可解析。
 - 启动器负例：开启声音的实验被拒绝；伪造二进制摘要的复用请求被拒绝。比较器也拒绝将两份原值记录当作改值实验。

@@ -5,10 +5,10 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'src'))
-sys.path.insert(0, str(ROOT/'tools/recomp'))
+sys.path.insert(0, str(ROOT/'tools'))
 from srw64_rom.resources import ResourceTable, lz_encode, lz_decode
-from build_model_5600_rom import build_resource
-from prepare_model_5600_highpoly import make_mesh, SOLID_COMMANDS
+from recomp.model5600.build_model_5600_rom import build_resource
+from recomp.model5600.prepare_model_5600_highpoly import make_mesh, SOLID_COMMANDS
 
 
 def decode_positions(data, base):

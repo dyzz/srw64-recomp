@@ -5,8 +5,8 @@ from pathlib import Path
 import sys
 import unittest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools/recomp"))
-from audit_rom_variant import VariantError, audit
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+from recomp.toolchain.audit_rom_variant import VariantError, audit
 
 
 class NativeVariantTests(unittest.TestCase):

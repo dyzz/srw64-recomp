@@ -4,8 +4,8 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools/recomp"))
-from script_debug import SCHEMA, assemble, report  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools"))
+from recomp.script_lab.script_debug import SCHEMA, assemble, report  # noqa: E402
 
 
 class DebugScriptAssemblerTests(unittest.TestCase):

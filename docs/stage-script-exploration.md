@@ -18,7 +18,7 @@
 | 场景流向边 | 148 | 由 `3D4B` 的场景索引参数得到，不含运行时条件 |
 | 机器码证据窗口 | 80 | 本批新增 22 项，位于 `config/data/original-jp-v1.json` 的 `evidence` |
 
-统计可从 `build/original-data/manifest.json` 的 `script_coverage` 重现。ROM 脚本中从未出现的指令：`3D31`、`3D41`、`3D76`–`3D79`、`3DD8`–`3DDB`、`3E00`、`3E01`、`3E05`、`3E07`、`3E19`、`3E1A`、`3E1C`。
+统计可从 `assets/original-data/manifest.json` 的 `script_coverage` 重现。ROM 脚本中从未出现的指令：`3D31`、`3D41`、`3D76`–`3D79`、`3DD8`–`3DDB`、`3E00`、`3E01`、`3E05`、`3E07`、`3E19`、`3E1A`、`3E1C`。
 
 ## 虚拟机结构
 
@@ -145,9 +145,9 @@ PYTHONDONTWRITEBYTECODE=1 make check
 python3 -B tools/data_viewer/serve.py --port 59110
 ```
 
-本批 `make check` 通过 90 项测试、compileall 与依赖检查（`build/original-data-check-scripts2.log`）。重新生成目录后核对 7,758 个输出文件的大小与 SHA-256、70,043 个唯一身份、202,670 条目录链接全部闭合（`build/original-data-qa/verification-scripts-v2.json`，生成日志 `build/original-data-extract-scripts2.log`）。浏览器检查了场景索引 1、事件 0019C3BC、条件指令 3E03 与出击记录页面：触发参数、缩进的指令序列、说话人链接、路线流向与出击组均按预期显示，控制台无错误。本批为静态提取与开发页面验证，没有启动游戏。
+本批 `make check` 通过 90 项测试、compileall 与依赖检查（`build/original-data-qa/logs/original-data-check-scripts2.log`）。重新生成目录后核对 7,758 个输出文件的大小与 SHA-256、70,043 个唯一身份、202,670 条目录链接全部闭合（`build/original-data-qa/verification-scripts-v2.json`，生成日志 `build/original-data-qa/logs/original-data-extract-scripts2.log`）。浏览器检查了场景索引 1、事件 0019C3BC、条件指令 3E03 与出击记录页面：触发参数、缩进的指令序列、说话人链接、路线流向与出击组均按预期显示，控制台无错误。本批为静态提取与开发页面验证，没有启动游戏。
 
-剧情查看器与章节标题追加后：`make check` 通过 95 项测试（`build/original-data-check-story.log`）；重新生成的目录共 7,904 个文件、70,044 个身份、203,238 条链接全部核对通过，`story/` 下 143 个文件；142 个场景全部带标题，剧情视图共 34,369 句对白（共用脚本的场景各自计入），说话人直接解析 30,753 句、按段落 3,058 句、按首话主角 123 句、仍随路线相对 435 句，已解析说话人的对白全部有头像文件。浏览器检查 `story.html` 场景 1：标题「出撃!スイームルグ」、下一话、本话主角、头像、说话人、翻页符与 BGM 提示均正确显示，控制台无错误（`build/original-data-qa/verification-scripts-v2.json`）。
+剧情查看器与章节标题追加后：`make check` 通过 95 项测试（`build/original-data-qa/logs/original-data-check-story.log`）；重新生成的目录共 7,904 个文件、70,044 个身份、203,238 条链接全部核对通过，`story/` 下 143 个文件；142 个场景全部带标题，剧情视图共 34,369 句对白（共用脚本的场景各自计入），说话人直接解析 30,753 句、按段落 3,058 句、按首话主角 123 句、仍随路线相对 435 句，已解析说话人的对白全部有头像文件。浏览器检查 `story.html` 场景 1：标题「出撃!スイームルグ」、下一话、本话主角、头像、说话人、翻页符与 BGM 提示均正确显示，控制台无错误（`build/original-data-qa/verification-scripts-v2.json`）。
 
 ## 尚未完成
 

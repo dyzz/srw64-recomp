@@ -19,11 +19,11 @@
 - `events`：事件列表，每项 `type`（0–14）、`header`（四个参数，含义见[事件登记类型](stage-script-exploration.md#事件登记类型与触发条件)）和 `commands`（与[脚本注入调试](script-debug-injection.md)相同的指令写法）。也可以写 `copy_from`（`base:stage_events:*`），按指令流原样复制一个原版事件到结束符为止；同时给 `header` 时只替换四个触发参数、指令字节不变，用来让有界运行到不了的触发条件（较晚的回合、通关次数）也能触发。
 - `deployments_from`：整块复制某个原版出击记录块（`base:stage_auxiliary:*`，到 999 为止）；`deployments`：追加的 28 字节记录，字段名 `group/x/y/actor/level_offset/unit/upgrade/faction/behavior/extra`，未解释的字节用 `byte8/raw14/raw16/raw18/raw26`，可用 `template` 指定一条原版记录（`base:stage_deployments:*`）作为底板。
 
-`tools/recomp/mini_stage.py compile 关卡.json --out 镜像.json` 生成 `srw64.mini-stage-image.v1`：事件按 4 字节对齐拼接（指针 = `8019B400` + 偏移），出击记录块末尾补 `03E7 0000`；超过 63 个事件、0x1A00 字节事件或 0x2000 字节记录时拒绝。
+`tools/recomp/script_lab/mini_stage.py compile 关卡.json --out 镜像.json` 生成 `srw64.mini-stage-image.v1`：事件按 4 字节对齐拼接（指针 = `8019B400` + 偏移），出击记录块末尾补 `03E7 0000`；超过 63 个事件、0x1A00 字节事件或 0x2000 字节记录时拒绝。
 
 ## 宿主端
 
-- 开关 `SRW64_MINI_STAGE=<镜像路径>`；`tools/recomp/native-host/mini_stage.hpp`，由 `game_hooks.cpp` 的两个包装调用：`resident_func_8009DE7C`（先替换再调用原函数）和 `load_000AB160_func_80209D6C`（原函数之后改写 `8010F5EE`）。两个钩子通过 `generate_cpu.py` 的 `NATIVE_HOOKS` 绑定，需要 `make recomp-cpu` 重新生成。
+- 开关 `SRW64_MINI_STAGE=<镜像路径>`；`src/host/mini_stage.hpp`，由 `game_hooks.cpp` 的两个包装调用：`resident_func_8009DE7C`（先替换再调用原函数）和 `load_000AB160_func_80209D6C`（原函数之后改写 `8010F5EE`）。两个钩子通过 `generate_cpu.py` 的 `NATIVE_HOOKS` 绑定，需要 `make recomp-cpu` 重新生成。
 - 启动时读镜像并校验（schema、长度、对齐、事件数）；非法镜像让宿主直接失败。
 - 事件文件 `mini-stage-events.jsonl`（schema `srw64.mini-stage-event.v1`）：`loaded / applied / skipped / map`，`applied` 记录场景索引、加载模式、指针表地址与原出击记录块地址。
 - `run_host_probe.py` 要求日版 profile 与 `--graphics`；有界运行还要 `SRW64_SCRIPT_TRACE=1`，开 `--audio` 的有界运行必须用 `SRW64_AUDIO_CAPTURE_FROM/_TO` 给出采集窗口；`--interactive` 不受这两条限制。报告写 `mini_stage`。
@@ -171,7 +171,7 @@ duel-2 中 `3D49 15,16` 一开始宿主就崩溃（`native-run-failed`、退出�
 
 ## 从原调用点反推（stage_script.py）
 
-最有效的一轮不是构造场景，而是**读原脚本怎么用**。`tools/recomp/stage_script.py` 两个子命令：`show <场景>` 按阅读顺序打印一话的全部事件（指令、参数、对白原文与说话人都已解析），`usage <操作码>` 列出该指令在全部 1,812 个事件中的每一处调用并带前后各三条上下文。按真实调用点复现，比自造参数可靠得多——下面五条都是这样定案的。
+最有效的一轮不是构造场景，而是**读原脚本怎么用**。`tools/recomp/script_lab/stage_script.py` 两个子命令：`show <场景>` 按阅读顺序打印一话的全部事件（指令、参数、对白原文与说话人都已解析），`usage <操作码>` 列出该指令在全部 1,812 个事件中的每一处调用并带前后各三条上下文。按真实调用点复现，比自造参数可靠得多——下面五条都是这样定案的。
 
 ### `3D5E` = 打开部队名输入界面
 
@@ -209,7 +209,7 @@ duel-2 中 `3D49 15,16` 一开始宿主就崩溃（`native-run-failed`、退出�
 
 ```sh
 SRW64_MINI_STAGE=<镜像> SRW64_SCRIPT_TRACE=1 \
-  .venv/bin/python tools/recomp/run_host_probe.py --graphics --profile config/recomp/play-profile.json \
+  .venv/bin/python tools/recomp/run/run_host_probe.py --graphics --profile config/recomp/profiles/play-profile.json \
   --language ja --images original --resolution-scale 2 --original-name-entry --input <输入脚本> \
   --save-from build/recomp/save-recovery-check/intermission-cold-1.source.sram \
   --save-sha256 0c6ded15fdf60c6b0064b2260a335d17a4ff77386d14d634bfd7d3bcb8de7484 \
@@ -220,7 +220,7 @@ SRW64_MINI_STAGE=<镜像> SRW64_SCRIPT_TRACE=1 \
 
 - 这条路径**并没有读取那份存档**（2026-09-18 更正；早先以为会读档并跳过命名），`--save-from` 只是把 SRAM 复制进运行目录。`dense-input.json` 的标题按键选的是ニューゲーム，替换的是**场景 1**（若真读了第一话通关档，下一话应是场景 4），运行中也不会出现 `intermission-restored`／`tactical-restored` 状态快照。
 - 运行仍会经过姓名页，现有的 `dense-input.json` 等脚本靠原版假名盘的按键通过它，所以要加 `--original-name-entry`。不加时现代姓名页接管输入，运行会一直停在姓名 overlay（`001090A0`）上，场景不会登记（rules-2 即如此）。
-- **存档里的持久数据（击坠数、旗标、资金、编成）在这种运行里都是新游戏的初值**：新游戏会调用 `800A4F94` 等初始化，`wufei-dummy-original-1` 就是这样，改过备份的存档完全没有生效。需要存档内容时，要用真正走 Load 菜单的输入脚本（如 `config/recomp/load-intermission-check.json` 的路径），或者像 `wufei-dummy.json` 那样在关卡内自己造出所需状态。
+- **存档里的持久数据（击坠数、旗标、资金、编成）在这种运行里都是新游戏的初值**：新游戏会调用 `800A4F94` 等初始化，`wufei-dummy-original-1` 就是这样，改过备份的存档完全没有生效。需要存档内容时，要用真正走 Load 菜单的输入脚本（如 `config/recomp/inputs/load-intermission-check.json` 的路径），或者像 `wufei-dummy.json` 那样在关卡内自己造出所需状态。
 
 ### 指令触发后就退出
 
@@ -386,7 +386,7 @@ every 4 frames: place one selected unit next to the ship, remove it from the abo
                 play SE 0xD1, player unit count += 1;        // 80213AAC
 ```
 
-搭载只由玩家的移动指令完成（`801CD0E4 → 801EAF88`），没有脚本指令能让单位上舰，所以 launch-1 头一次用按键驱动了玩家操作（`config/recomp/mini-stages/launch-input.json`）：
+搭载只由玩家的移动指令完成（`801CD0E4 → 801EAF88`），没有脚本指令能让单位上舰，所以 launch-1 头一次用按键驱动了玩家操作（`config/recomp/inputs/mini-stages/launch-input.json`）：
 
 1. 开场：`3D5A` 登记 ブライト＋アウドムラ 与 ドモン，`3D3D …,0,3` 让 アウドムラ 进母舰表并登场于 (5,10)，`3D3D …,200,2` 让 ドモン 站在它右边。
 2. 我方阶段：光标右移选 ドモン →「移動」→ 左移到母舰格 → 出现「搭載」→ 确认。ドモン 从地图消失，搭载数 `8015E858` 0 → 1。
@@ -425,7 +425,7 @@ every 4 frames: place one selected unit next to the ship, remove it from the abo
 交互游玩：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py --profile config/recomp/play-profile.json --language ja --images original --mini-stage config/recomp/mini-stages/hyoma-3d63.json
+.venv/bin/python tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json --language ja --images original --mini-stage config/recomp/mini-stages/hyoma-3d63.json
 ```
 
 主菜单按 F8 进入；地图空白处按 Z 打开菜单 →「フェイズ終了」→「はい」。有界验证用 `hyoma-3d63-input.json`（第 4 回合之后的按键会停在能力画面里，第 5 回合只在手动时验证）。

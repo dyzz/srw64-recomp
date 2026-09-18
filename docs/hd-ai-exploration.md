@@ -10,7 +10,7 @@
 
 - 复用 SRW Z 项目现存的 DashScope／百炼配置，在华北2（北京）业务空间执行只读 `GET /compatible-mode/v1/models`，HTTP 200，共返回 249 个模型 ID。
 - 已列出 `qwen-image-3.0-pro`、`qwen-image-3.0`、`wan2.7-image-pro`、`wan2.7-image`，以及 `qwen-image-2.0-pro-2026-06-22` 等固定快照。
-- 本地查询记录：`build/research/aliyun-hd-2026-09-08/model-catalog.json`。记录不含凭据；认证目录可见不等于推理权限、余额、免费额度、实际价格或图像质量已验证。
+- 本地查询记录：`assets/hd-ai/research/aliyun-hd-2026-09-08/model-catalog.json`。记录不含凭据；认证目录可见不等于推理权限、余额、免费额度、实际价格或图像质量已验证。
 - 视觉智能开放平台的 `imageenhan` 是另一套服务，采用阿里云 AccessKey／RAM 鉴权；不能把百炼 API Key 当作该服务的凭据。本次未验证其服务开通与账号权限。
 - 当前项目已有真实显示列表的单帧高清字体实验，见 [native-font-probe.md](native-font-probe.md)。文字可以从轮廓字体重新栅格化，不需要依靠生成式模型猜字。该实验尚未覆盖实时文本引擎和所有 UI。
 - 当前仓库的独立图像解码实现覆盖 I4 字库；其余地图、立绘等资产仍要确认资源格式、拼接和实际绘制来源。资源能解压不等于已正确解码为可替换图像。

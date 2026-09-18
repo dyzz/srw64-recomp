@@ -1,9 +1,9 @@
 # 原生试玩
 
-双击仓库根目录的 `Play SRW64.command`，或在仓库目录运行：
+双击仓库根目录的 `scripts/Play SRW64.command`，或在仓库目录运行：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py
+.venv/bin/python tools/recomp/run/play_native.py
 ```
 
 程序会检查 ROM 和生成代码身份并编译当前宿主，然后打开 macOS Metal 窗口。

@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
-SOURCE = ROOT / 'build/analysis/3d-2026-09-09'
+SOURCE = ROOT / 'assets/models/3d-2026-09-09'
 OUT = ROOT / 'build/model-viewer'
 
 
@@ -154,7 +154,7 @@ def main() -> None:
                          'rank':record['local_coordinate_rank'],'bounds':record['bounds'],
                          'texture_count':len({b['texture'] for b in parts if b['texture']}),
                          'texture_notes':errors,'sha256':record['sha256'],'bytes':len(data)})
-    probe=ROOT/'build/analysis/model-5600-probe';evidence=[]
+    probe=ROOT/'assets/models/model-5600-probe';evidence=[]
     for label,title in [('baseline','原始画面'),('hidden','隐藏 5600'),('stretched','仅拉伸立体部分')]:
         path=probe/label/'present-60.png'
         if path.exists():
@@ -165,7 +165,7 @@ def main() -> None:
         if acceptance.get('status')=='verified':
             next(x for x in manifest if x['id']==5600).update(status='verified',note='同任务 GPU 对照已确认：隐藏后标记及其环形平面消失；仅修改六个顶点后立体部分变形。')
         shutil.copy2(probe/'acceptance.json',OUT/'evidence/5600-acceptance.json')
-    highpoly=ROOT/'build/analysis/model-5600-highpoly'
+    highpoly=ROOT/'assets/models/model-5600-highpoly'
     if (highpoly/'acceptance.json').exists():
         accepted=json.loads((highpoly/'acceptance.json').read_text())
         mesh_bytes=(highpoly/'mesh.json').read_bytes()

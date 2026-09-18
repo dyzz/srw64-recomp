@@ -18,7 +18,7 @@
 - 旧包的 5,005 个哈希键完整保留；其中只有 57 个地图条目改变，其他 4,948 个条目的文件逐字节相同。新边框另外增加 13 个替换条目，总计 5,018 个。
 - 首次试验包 `v1` 尚未排除此共享哈希，仅保留作过程记录；`v2` 完成排除，`v3` 进一步接入高清边框。当前配置使用 `v3`。
 
-资产证据：[构建记录](../build/hd-ai/dialogue-runtime/v3/build.json)、[Alpha／保护区／非目标资产检查](../build/hd-ai/dialogue-runtime/v3/asset-checks.json)。本次覆盖已有候选的欧洲裁块，不宣称整个游戏的地图都已重绘。
+资产证据：[构建记录](../assets/hd-ai/dialogue-runtime/v3/build.json)、[Alpha／保护区／非目标资产检查](../assets/hd-ai/dialogue-runtime/v3/asset-checks.json)。本次覆盖已有候选的欧洲裁块，不宣称整个游戏的地图都已重绘。
 
 ## 高清边框资源
 
@@ -30,7 +30,7 @@
 
 ## 人名颜色
 
-[`dialogue_style.hpp`](../tools/recomp/native-host/dialogue_style.hpp) 在已核验的开场对话 overlay 和姓名行位置匹配时，为姓名字形矩形临时设置 RGB `#69BFFF`，使用原高清字形的 Alpha 覆盖率，并在每次绘制后恢复 RDP combiner 和 primitive color。
+[`dialogue_style.hpp`](../src/host/dialogue_style.hpp) 在已核验的开场对话 overlay 和姓名行位置匹配时，为姓名字形矩形临时设置 RGB `#69BFFF`，使用原高清字形的 Alpha 覆盖率，并在每次绘制后恢复 RDP combiner 和 primitive color。
 
 上下两个人名均使用蓝色。正文的白色／灰色区分、字形、字距、逐字显示及翻页逻辑不变。此处沿用已加载的 HarmonyOS 高清字形纹理；独立 Core Text 实验尚未自动成为实时文字后端。开关随素材包内的 `srw64-dialogue-name-blue-v1` 标记启用。
 
@@ -38,17 +38,17 @@
 
 ## 运行与验证
 
-当前原生试玩入口 `Play SRW64 Native.command` 通过 profile 读取语言与纯美术包。手动重看开场：
+当前原生试玩入口 `scripts/Play SRW64 Native.command` 通过 profile 读取语言与纯美术包。手动重看开场：
 
 ```sh
-python3 tools/recomp/play_native.py --profile config/recomp/play-profile.json --new-game
+python3 tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json --new-game
 ```
 
 资源包可从冻结输入重新构建到新目录：
 
 ```sh
 .venv/bin/python -m tools.hd_ai.build_dialogue_runtime_pack --frame \
-  --output build/hd-ai/dialogue-runtime/rebuild
+  --output assets/hd-ai/dialogue-runtime/rebuild
 ```
 
 自动重跑同段对话：
@@ -59,6 +59,6 @@ python3 tools/recomp/play_native.py --profile config/recomp/play-profile.json --
 
 这是从 ROM 启动、使用输入脚本推进剧情的 native recomp + RT64 / Metal 运行。输出帧在 GPU 完成后回读。运行使用独立目录和空白存档，不改已有试玩存档；范围止于开场对话。
 
-最终运行证据在 `build/hd-ai/dialogue-runtime/live-v3/`；需以其 `report.json` 和实际 GPU 图片为准。首轮 `live-v1` 完成 7,020 VI、exit 0，并显示了实际蓝色人名；`live-v2` 完成 7,200 VI，并停留在目标对白页。高清边框先经过 `replay-v3` 的同任务渲染检查，最终另跑完整新游戏开场为 `live-v3`，区分回放与实际游戏流程。
+最终运行证据在 `assets/hd-ai/dialogue-runtime/live-v3/`；需以其 `report.json` 和实际 GPU 图片为准。首轮 `live-v1` 完成 7,020 VI、exit 0，并显示了实际蓝色人名；`live-v2` 完成 7,200 VI，并停留在目标对白页。高清边框先经过 `replay-v3` 的同任务渲染检查，最终另跑完整新游戏开场为 `live-v3`，区分回放与实际游戏流程。
 
-最终 `live-v3` 完成 **7,200 VI，exit 0**。已查看 [实际 GPU 截图](../build/hd-ai/dialogue-runtime/live-v3/present-3540.png)，停留于“同样至关重要。别人拿不到的情报，”这一页，地图、高清边框与两个蓝色人名同时生效。两个姓名区域均存在超过 700 个精确 RGB `(105,191,255)` 的实心像素。43 项 Python 测试、编译与依赖检查通过；详见 [最终验收记录](../build/hd-ai/dialogue-runtime/acceptance.json)。
+最终 `live-v3` 完成 **7,200 VI，exit 0**。已查看 [实际 GPU 截图](../assets/hd-ai/dialogue-runtime/live-v3/present-3540.png)，停留于“同样至关重要。别人拿不到的情报，”这一页，地图、高清边框与两个蓝色人名同时生效。两个姓名区域均存在超过 700 个精确 RGB `(105,191,255)` 的实心像素。43 项 Python 测试、编译与依赖检查通过；详见 [最终验收记录](../assets/hd-ai/dialogue-runtime/acceptance.json)。

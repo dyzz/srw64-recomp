@@ -4,10 +4,10 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools/recomp"))
-from mini_stage import AUX_BLOCK, EVENT_BLOCK, SCHEMA, compile_stage, encode_record, report  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools"))
+from recomp.script_lab.mini_stage import AUX_BLOCK, EVENT_BLOCK, SCHEMA, compile_stage, encode_record, report  # noqa: E402
 
-RECORDS = ROOT / "build/original-data/records/stage_auxiliary.jsonl"
+RECORDS = ROOT / "assets/original-data/records/stage_auxiliary.jsonl"
 
 
 class MiniStageCompilerTests(unittest.TestCase):
@@ -72,11 +72,12 @@ class MiniStageReportTests(unittest.TestCase):
         self.assertTrue((run / "mini-stage-report.json").exists())
 
 
+@unittest.skipUnless(RECORDS.exists(), "catalog not extracted")
 class CopiedEventTests(unittest.TestCase):
     def test_copied_event_keeps_the_original_bytes_and_stops_at_its_terminator(self):
         """Replaying an original event is only evidence if the bytes are unchanged."""
-        from mini_stage import copied_event
-        from script_debug import layout
+        from recomp.script_lab.mini_stage import copied_event
+        from recomp.script_lab.script_debug import layout
         key = "base:stage_events:0019c1b0"  # scene 1 opening
         words, listing = copied_event(key, layout())
         raw = bytes.fromhex(json.loads(next(
@@ -95,12 +96,12 @@ class CopiedEventTests(unittest.TestCase):
         self.assertEqual(bytes.fromhex(image["events_hex"])[:2], b"\x00\x0c")
 
 
+@unittest.skipUnless(RECORDS.exists(), "catalog not extracted")
 class ShippedStagesTests(unittest.TestCase):
     def test_every_shipped_stage_compiles_within_the_scene_buffers(self):
         """The probe stages are evidence fixtures: a stage that stops compiling would
         silently invalidate the runtime findings recorded against it."""
         stages = sorted((ROOT / "config/recomp/mini-stages").glob("*.json"))
-        stages = [p for p in stages if json.loads(p.read_text()).get("schema") == SCHEMA]
         self.assertTrue(stages)
         for path in stages:
             with self.subTest(stage=path.name):

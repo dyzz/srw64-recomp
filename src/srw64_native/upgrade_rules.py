@@ -1,7 +1,7 @@
 """Unit upgrade rules file (docs/upgrade-limits.md): template export and validation.
 
 The host reads the same file through SRW64_UPGRADE_RULES and applies the same
-checks (tools/recomp/native-host/upgrade_rules.hpp); this module lets the
+checks (src/host/upgrade_rules.hpp); this module lets the
 launcher reject a bad file before starting the game and gives MOD authors a
 template holding the original values.
 """

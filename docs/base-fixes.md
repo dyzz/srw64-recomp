@@ -4,7 +4,7 @@
 
 | ID | 修复 | 实现 |
 | --- | --- | --- |
-| BUG05 | 五飞等 W 驾驶员敌对时不再带假身 | 宿主包装 `resident_func_800A5054`（`tools/recomp/native-host/base_fixes.hpp`、`game_hooks.cpp`），无条件生效 |
+| BUG05 | 五飞等 W 驾驶员敌对时不再带假身 | 宿主包装 `resident_func_800A5054`（`src/host/base_fixes.hpp`、`game_hooks.cpp`），无条件生效 |
 
 判断标准：原版的部署记录明确写着这些单位没有假身（行为字位 14 未置位、附加值 0），代码却因为一处缺少阵营判断把我方击坠数写了进去。恢复成记录本身要求的状态不需要玩家选择，也不改变任何头目原有的假身次数。
 
@@ -74,10 +74,10 @@
 
 | 位置 | 内容 |
 | --- | --- |
-| `tools/recomp/generate_cpu.py` | `NATIVE_HOOKS` 把常驻 `800A5054` 改名为 `srw64_original_wing_kill_restore`；改动后需要 `make recomp-cpu`。 |
-| `tools/recomp/native-host/base_fixes.hpp` | 我方驾驶员表范围 `player_pilot`，以及这条修复的依据注释。 |
-| `tools/recomp/native-host/game_hooks.cpp` | `resident_func_800A5054`：记录不在我方表时直接返回，不查任何规则开关。 |
-| `config/recomp/mini-stages/wufei-dummy.json` | 复现关卡，见 §2。`tools/recomp/wing_kill_save.py` 另提供改写存档中击坠备份并重算校验和的受控手段，只对游戏真正读取的存档有效。 |
+| `tools/recomp/toolchain/generate_cpu.py` | `NATIVE_HOOKS` 把常驻 `800A5054` 改名为 `srw64_original_wing_kill_restore`；改动后需要 `make recomp-cpu`。 |
+| `src/host/base_fixes.hpp` | 我方驾驶员表范围 `player_pilot`，以及这条修复的依据注释。 |
+| `src/host/game_hooks.cpp` | `resident_func_800A5054`：记录不在我方表时直接返回，不查任何规则开关。 |
+| `config/recomp/mini-stages/wufei-dummy.json` | 复现关卡，见 §2。`tools/recomp/gameplay/wing_kill_save.py` 另提供改写存档中击坠备份并重算校验和的受控手段，只对游戏真正读取的存档有效。 |
 
 - `make recomp-base-fixes-test`（已并入 `recomp-native-check`）：我方驾驶员表范围的边界判定。
 - `tests/test_wing_kill_dummy.py`：钩子改名、包装函数无条件生效且不引用规则目录、该项已不在可选规则与三种语言的菜单文案里；BUG05 的 ROM 事实（击坠同时写备份表、`800A84F8` 的调用点、`800A5054` 只读角色编号、角色到备份下标的跳转表、假身判定读 `+0x14`、名册 `0x80` 的置位、五飞两条敌方记录的行为字为 0）；以及改存档工具的校验和处理。

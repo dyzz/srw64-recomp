@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 
-from tools.recomp.libretro_runner import (
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+from recomp.probes.libretro_runner import (  # noqa: E402
     BUTTON_IDS,
     INPUT_SCRIPT_SCHEMA,
     RunnerError,
@@ -45,7 +47,7 @@ class LibretroRunnerTests(unittest.TestCase):
                 _compile_events(document, frame_count=4)
 
     def test_load_script_requires_versioned_schema(self) -> None:
-        path = ROOT / "config/recomp/reference-load-continue.json"
+        path = ROOT / "config/recomp/inputs/reference-load-continue.json"
         self.assertEqual(_load_script(path)["schema"], INPUT_SCRIPT_SCHEMA)
         with tempfile.TemporaryDirectory() as directory:
             invalid = Path(directory) / "input.json"
@@ -58,7 +60,7 @@ class LibretroRunnerTests(unittest.TestCase):
         for filename, frame_count in scripts.items():
             with self.subTest(filename=filename):
                 document = json.loads(
-                    (ROOT / "config/recomp" / filename).read_text(encoding="utf-8")
+                    (ROOT / "config/recomp/inputs" / filename).read_text(encoding="utf-8")
                 )
                 self.assertEqual(document["schema"], INPUT_SCRIPT_SCHEMA)
                 _compile_events(document, frame_count)

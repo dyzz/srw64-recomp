@@ -5,7 +5,7 @@ from pathlib import Path
 import struct
 import unittest
 
-path = Path(__file__).resolve().parents[1] / "tools/recomp/analyze_layout.py"
+path = Path(__file__).resolve().parents[1] / "tools/recomp/toolchain/analyze_layout.py"
 spec = importlib.util.spec_from_file_location("recomp_layout", path)
 assert spec is not None and spec.loader is not None
 module = importlib.util.module_from_spec(spec)

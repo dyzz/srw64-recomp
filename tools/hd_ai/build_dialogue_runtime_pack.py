@@ -22,9 +22,9 @@ def main() -> None:
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--frame', action='store_true', help='also rebuild the original dialogue border slices')
     args=parser.parse_args()
-    base=ROOT/'build/hd-ai/dialogue-type/medium-pack/pack'
-    source=ROOT/'build/hd-ai/2026-09-08/map-probe-final'
-    capture=ROOT/'build/hd-ai/dialogue-type/live-medium-4x'
+    base=ROOT/'assets/hd-ai/dialogue-type/medium-pack/pack'
+    source=ROOT/'assets/hd-ai/2026-09-08/map-probe-final'
+    capture=ROOT/'assets/hd-ai/dialogue-type/live-medium-4x'
     assert sha(base/'rt64.json')=='bf2164ecc5af9fccefa91ee262ffca8165dd8b745dcb9eb9916d7fa22b08cfb1'
     assert sha(capture/'latest-gfx-rdram.bin')=='237f1b494dd2a35e7a54348ab98928323905f582bafbf4b7446477d1d632ceb5'
     report=json.loads((source/'build.json').read_text())

@@ -24,7 +24,7 @@ make check
 1. `make recomp-data`：核对原 ROM 并提取文本、资源与游戏数据；
 2. `tools/content/compile_profile.py`：验证语言目录、原文摘要、控制符和美术清单；
 3. `make recomp-native-check`：原生组件验证；
-4. `tools/recomp/run_host_probe.py` 与对应验证脚本：匹配 ROM、输入、存档与目标画面的原生运行证据；必要时使用同目录的参考模拟器工具对照。
+4. `tools/recomp/run/run_host_probe.py` 与对应验证脚本：匹配 ROM、输入、存档与目标画面的原生运行证据；必要时使用同目录的参考模拟器工具对照。
 
 静态检查、模拟器启动和目标游戏画面是不同证据层，文档和提交信息不得混为
 一谈。核心存档哈希用于标识一次检查点，不作为跨运行必须相同的确定性产物。

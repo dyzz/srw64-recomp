@@ -9,7 +9,7 @@ import shutil
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / 'build/hd-ai/2026-09-08'
+SOURCE = ROOT / 'assets/hd-ai/2026-09-08'
 DEST = SOURCE / 'gallery'
 MODELS = [
     ('qwen-image-3.0-pro', 'Qwen 3.0 Pro'),

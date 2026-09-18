@@ -46,10 +46,10 @@ RT64 呈现 hook 暴露当前 workload ID，新文字与对应游戏帧关联，
 
 ## 复现与证据
 
-`Play SRW64 Native.command` 默认开启。重看新游戏开场可运行：
+`scripts/Play SRW64 Native.command` 默认开启。重看新游戏开场可运行：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py --profile config/recomp/play-profile.json --new-game
+.venv/bin/python tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json --new-game
 ```
 
 选择女性超级系与默认姓名。该入口仍使用独立试玩目录及存档副本。
@@ -63,7 +63,7 @@ RT64 呈现 hook 暴露当前 workload ID，新文字与对应游戏帧关联，
 在另一终端执行：
 
 ```sh
-.venv/bin/python tools/recomp/verify_native_dialogue.py build/recomp/native-dialogue/live-check
+.venv/bin/python tools/recomp/verify/verify_native_dialogue.py build/recomp/native-dialogue/live-check
 ```
 
 控制验证只向宿主提交按键和可选 SDL 窗口尺寸，不修改游戏内存。证据分开记录：`dialogue-state.json` 为 CPU 对话状态，`dialogue-events.jsonl` 为片段／确认／边界事件，`dialogue-present.json` 为实际呈现 workload，`present-*.png` 为 GPU 完成后的回读，`ui-checks/acceptance.json` 为运行检查。

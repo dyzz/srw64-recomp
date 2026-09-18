@@ -8,15 +8,15 @@
 
 ## 可运行入口
 
-双击仓库根目录的 `Play SRW64 Native.command`，或：
+双击仓库根目录的 `scripts/Play SRW64 Native.command`，或：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --new-game
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --new-game
 
 # 同一个原始 ROM、同一个存档目录；启动时选择日文和原图。
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --language ja --images original --new-game
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --language ja --images original --new-game
 ```
 
 默认配置为中文对白、高清图片、原生水滴、4 倍内部渲染分辨率。运行中按 **F6** 在 Original 与 HD 之间来回切换，窗口标题显示当前模式。2026-09-11 起，5600 模型也跟随切换：Original 使用原版菱形，HD 使用配置选定的模型。`presentation.model_5600: waterdrop` 表示 HD 模式启用水滴；设为 `original` 时两种模式均保持原模型。F6 只改变本次运行；下次启动按 profile/命令行选择。语言、原生字体和渲染分辨率不随此开关变化。
@@ -35,7 +35,7 @@
 | `src/native/localization/` | 宿主 TextKey 查找、对应源文回退、字体/locale/原生 UI 字符串 |
 | `src/native/game_adapter/dialogue_source.hpp` | 明确标准对白来自 table 0；识别绘制时实际绑定的字库图集 |
 | `src/native/presentation/image_mode.hpp` | 窗口线程只提交图像模式请求，由渲染线程确认应用 |
-| `tools/recomp/native-host/` | 继续承载已有游戏桥接、读取控制和平台后端；逐步迁移，保留已有验收入口 |
+| `src/host/` | 继续承载已有游戏桥接、读取控制和平台后端；逐步迁移，保留已有验收入口 |
 
 没有移动自动生成的 recomp C 文件，也没有引入第二个代码 Mod 加载器。`gameplay_mods` 在本批必须为空，防止配置看起来接受了一个实际未加载的玩法 Mod。
 
@@ -79,7 +79,7 @@ F6 不卸载 GPU 正在使用的纹理。窗口线程提交请求；渲染提交
 
 ## 验证与后续边界
 
-Python 校验、C++ TextKey/回退/模式请求测试和实际 Core Text 排版测试分别运行。`tools/recomp/verify_profile_images.py` 在真实新游戏剧情中到达 `base:t00_17412` 的同一段，执行原图→高清→原图→高清，核对对白状态不变及静态头像/地图区域往返像素一致。实际运行结果见本文件末尾的验收记录。
+Python 校验、C++ TextKey/回退/模式请求测试和实际 Core Text 排版测试分别运行。`tools/recomp/verify/verify_profile_images.py` 在真实新游戏剧情中到达 `base:t00_17412` 的同一段，执行原图→高清→原图→高清，核对对白状态不变及静态头像/地图区域往返像素一致。实际运行结果见本文件末尾的验收记录。
 
 下一批工作：
 

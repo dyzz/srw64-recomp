@@ -6,7 +6,7 @@
 
 ## 场景与来源
 
-- 原始快照：`build/hd-ai/dialogue-type/live-medium-4x/`，保存时间 2026-09-08。
+- 原始快照：`assets/hd-ai/dialogue-type/live-medium-4x/`，保存时间 2026-09-08。
 - `latest-gfx-rdram.bin` SHA-256：`237f1b494dd2a35e7a54348ab98928323905f582bafbf4b7446477d1d632ceb5`。
 - `latest-gfx-task.bin` SHA-256：`98149c0ff084c347b25cf559f7537268a76db032ef5a0deb469e5653ee8ce37b`。
 - 劳伦斯当前白色对白：`t00_17412`，第二个 STOP 片段，`同样至关重要。<BR>别人拿不到的情报，`。
@@ -33,9 +33,9 @@
 
 ## 实现
 
-[`run_coretext_probe.py`](../tools/recomp/run_coretext_probe.py) 对原始任务和内存进行身份验证，校验开场 overlay 签名、字形纹理头、六行位置及 40 个字形矩形。仅在独立副本内将这些矩形的 24 字节命令组替换为 F3DEX2 SP no-op。复制后的任务大小、其他绘制命令、纹理、头像及地图数据保持原内容。
+[`run_coretext_probe.py`](../tools/recomp/probes/run_coretext_probe.py) 对原始任务和内存进行身份验证，校验开场 overlay 签名、字形纹理头、六行位置及 40 个字形矩形。仅在独立副本内将这些矩形的 24 字节命令组替换为 F3DEX2 SP no-op。复制后的任务大小、其他绘制命令、纹理、头像及地图数据保持原内容。
 
-[`coretext_probe.cpp`](../tools/recomp/native-host/coretext_probe.cpp) 调用 Core Text 进行 Unicode 排版，在 sRGB Core Graphics 位图上下文中绘制透明背景文字。它使用灰度抗锯齿，并按实际字形轮廓范围检查裁切。最后通过 Metal 在 RT64 游戏画面完成后、GPU 截图之前合成；纹理使用预乘 Alpha，按最终像素 1:1 读取，没有再经过游戏低分辨率画面的放大。
+[`coretext_probe.cpp`](../src/host/coretext_probe.cpp) 调用 Core Text 进行 Unicode 排版，在 sRGB Core Graphics 位图上下文中绘制透明背景文字。它使用灰度抗锯齿，并按实际字形轮廓范围检查裁切。最后通过 Metal 在 RT64 游戏画面完成后、GPU 截图之前合成；纹理使用预乘 Alpha，按最终像素 1:1 读取，没有再经过游戏低分辨率画面的放大。
 
 系统绘制版的字距来自字体度量；同字体对照包含这项布局差异，不能称作仅改变抗锯齿的对照。灰色对白的前景值从本次重放基准的实心字形像素读取，为 123/255，与保存的实时画面一致。
 
@@ -56,7 +56,7 @@
 
 首轮 `run-1` 在系统字体的版面检查处失败，原因是用字体全局下降部度量判断小姓名框的裁切范围。保留了日志；修订版增加姓名区域高度，并检查实际字形轮廓范围，完整重跑为 `run-2`。不能把失败的首轮计为通过。
 
-`run-2` 通过文字合成检查，但仍有旧重放器的 gamma 问题。游戏在 `0x8008BFB4..0x8008BFD8` 先调用 `osViSetMode`，随后调用 `osViSetSpecialFeatures` 设置 gamma off、gamma dither on、dither filter off、divot off。重放器此前只取模式表，得到 `0x311E`，现在恢复有效值 `0x3106`。新增 [`replay_vi.hpp`](../tools/recomp/native-host/replay_vi.hpp) 严格校验这段游戏代码再应用覆盖，保留其他模式位。所有六个版本已完整重跑为 `run-3`；旧结果继续保留作诊断证据。
+`run-2` 通过文字合成检查，但仍有旧重放器的 gamma 问题。游戏在 `0x8008BFB4..0x8008BFD8` 先调用 `osViSetMode`，随后调用 `osViSetSpecialFeatures` 设置 gamma off、gamma dither on、dither filter off、divot off。重放器此前只取模式表，得到 `0x311E`，现在恢复有效值 `0x3106`。新增 [`replay_vi.hpp`](../src/host/replay_vi.hpp) 严格校验这段游戏代码再应用覆盖，保留其他模式位。所有六个版本已完整重跑为 `run-3`；旧结果继续保留作诊断证据。
 
 本次只验证固定 960×720 输出。实时调整字号、窗口大小和跨显示器 DPI、逐字显示、控制符同步、完整分页和历史回看仍待实现。因此属于 [增强方案](native-enhancements-plan.md) 的 T0 部分完成，不代表 T1/T2 或全平台文字系统通过。
 
@@ -65,7 +65,7 @@
 使用新的输出目录运行：
 
 ```sh
-.venv/bin/python tools/recomp/run_coretext_probe.py \
+.venv/bin/python tools/recomp/probes/run_coretext_probe.py \
   --output build/recomp/coretext-probe/run-4
 ```
 

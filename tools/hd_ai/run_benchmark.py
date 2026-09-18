@@ -16,7 +16,7 @@ import urllib.request
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_OUT = ROOT / "build/hd-ai/2026-09-08"
+DEFAULT_OUT = ROOT / "assets/hd-ai/2026-09-08"
 PRICES = {"qwen-image-3.0-pro": .52, "qwen-image-3.0": .20,
           "wan2.7-image-pro": .50, "qwen-image-2.0-pro-2026-06-22": .50}
 

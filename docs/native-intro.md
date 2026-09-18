@@ -5,14 +5,14 @@
 从新游戏体验：
 
 ```sh
-python3 tools/recomp/play_native.py --profile config/recomp/play-profile.json --new-game
+python3 tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json --new-game
 ```
 
 先用 Enter 通过商标、标题并选择 New Game；进入星空背景的缩放文字后按 E + Enter。前后两段序章需要分别按一次。此功能默认启用于图形宿主，与是否启用苹方对白 UI 无关。
 
 ## 原始资源
 
-运行 `.venv/bin/python tools/recomp/extract_intro.py`，输出到 `build/recomp/intro/assets/`：
+运行 `.venv/bin/python tools/content/extract_intro.py`，输出到 `build/recomp/intro/assets/`：
 
 - `index.html`：按播放顺序浏览，支持原尺寸／2 倍、透明底纹、单页打开。
 - `group-0.png` 至 `group-4.png`：五组概览。
@@ -41,8 +41,8 @@ python3 tools/recomp/play_native.py --profile config/recomp/play-profile.json --
 - `make check`：53 项 Python 检查、compileall、依赖检查通过。
 - `tests/native_intro.cpp`：组合键边沿、初始淡入等待、单次触发、跨场景持续屏蔽、松键恢复、普通确认透传；ASan/UBSan 通过。
 - `tests/native_intro_adapter.cpp`：真实内存适配器，以 8 MiB RDRAM 和原函数桩验证结束状态、对象槽位、调用上下文保留、overlay 隔离；ASan/UBSan 通过。
-- `build/recomp/intro/common-3/`：原生 RT64/Metal，1,200 VI、exit 0。公共序章静止页 VI 600 跳过，VI 634 载入主角选择；组合键持续到 VI 900，GPU 回读仍停在主角选择。输入为 `config/recomp/intro-skip-common.json`。
-- `build/recomp/intro/female-1/`：原生 RT64/Metal + 苹方对白，4,800 VI、exit 0。VI 500 请求跳过，VI 518 在文字缩放阶段收尾；正常选择女性超级系并完成默认姓名。路线 2 在 VI 3100 跳过，VI 3134 进入世界地图，VI 3290 出现劳伦斯文本 17410；组合键持续至 VI 3400，第一句仍保持手动等待到 VI 4800。输入为 `config/recomp/intro-skip-female.json`。
+- `build/recomp/intro/common-3/`：原生 RT64/Metal，1,200 VI、exit 0。公共序章静止页 VI 600 跳过，VI 634 载入主角选择；组合键持续到 VI 900，GPU 回读仍停在主角选择。输入为 `config/recomp/inputs/intro-skip-common.json`。
+- `build/recomp/intro/female-1/`：原生 RT64/Metal + 苹方对白，4,800 VI、exit 0。VI 500 请求跳过，VI 518 在文字缩放阶段收尾；正常选择女性超级系并完成默认姓名。路线 2 在 VI 3100 跳过，VI 3134 进入世界地图，VI 3290 出现劳伦斯文本 17410；组合键持续至 VI 3400，第一句仍保持手动等待到 VI 4800。输入为 `config/recomp/inputs/intro-skip-female.json`。
 
 各运行目录的 `report.json` 保存输入与代码哈希，`intro-events.jsonl` 保存事件，`present-*.png` 为 GPU 完成后的回读。资产目录的 1／2 倍与透明底纹已在本机浏览器查看。
 

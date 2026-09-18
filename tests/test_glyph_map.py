@@ -82,7 +82,7 @@ def font_tiles() -> dict:
 
 
 def tile_pixels(images: dict, glyph: int) -> bytes:
-    """Same tile layout as tools/recomp/build_native_font_probe.py's glyph_id."""
+    """Same tile layout as tools/recomp/probes/build_native_font_probe.py's glyph_id."""
     if glyph < NARROW_END:
         image, x, y, width = images[0], glyph % 63 * 8, glyph // 63 * 14, 8
     elif glyph < RESOURCE_1_BASE:

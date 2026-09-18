@@ -3,6 +3,9 @@
 /venv/
 /dist/
 /build/
+# Exported resources stay local; only the directory guide is tracked.
+/assets/*
+!/assets/README.md
 *.egg-info/
 *.py[cod]
 __pycache__/

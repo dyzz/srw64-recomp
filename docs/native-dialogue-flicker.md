@@ -35,12 +35,12 @@ C++ 回归覆盖：先发布 A、B，再消费 A，B 必须仍可读取；每份
 # 静音：不传 --audio。
 SRW64_BACKGROUND=1 SRW64_WINDOW_CONTROL=1 \
 SRW64_FRAME_TRACE_FROM=7000 SRW64_FRAME_TRACE_TO=10800 \
-.venv/bin/python tools/recomp/run_host_probe.py --graphics \
-  --diagnostics light --profile config/recomp/play-profile.json \
-  --input build/hd-ai/dialogue-polish/dialogue-only.json \
+.venv/bin/python tools/recomp/run/run_host_probe.py --graphics \
+  --diagnostics light --profile config/recomp/profiles/play-profile.json \
+  --input assets/hd-ai/dialogue-polish/dialogue-only.json \
   --output build/recomp/flicker-check/new-run --vis 11000
 
-.venv/bin/python tools/recomp/analyze_frame_trace.py \
+.venv/bin/python tools/recomp/analysis/analyze_frame_trace.py \
   build/recomp/flicker-check/new-run --from-vi 7100 --require-stable
 ```
 
@@ -89,9 +89,9 @@ SRW64_FRAME_TRACE_FROM=7000 SRW64_FRAME_TRACE_TO=10800 \
 复核命令：
 
 ```sh
-.venv/bin/python tools/recomp/analyze_toolbar_trace.py \
+.venv/bin/python tools/recomp/analysis/analyze_toolbar_trace.py \
   build/recomp/auto-toolbar-check/after --to-vi 8580 --require-visible
-.venv/bin/python tools/recomp/analyze_toolbar_trace.py \
+.venv/bin/python tools/recomp/analysis/analyze_toolbar_trace.py \
   build/recomp/auto-toolbar-check/after --require-matching-dialogue \
   --output build/recomp/auto-toolbar-check/after/toolbar-boundaries.json
 ```

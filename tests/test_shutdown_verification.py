@@ -3,8 +3,8 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools/recomp"))
-from verification_support import shutdown_verified
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+from recomp.run.verification_support import shutdown_verified
 
 
 class ShutdownVerificationTests(unittest.TestCase):

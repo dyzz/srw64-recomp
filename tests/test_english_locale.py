@@ -29,7 +29,7 @@ class EnglishLocaleTests(unittest.TestCase):
 
     def test_english_launch_and_saved_preference(self):
         import tempfile
-        profile = load_profile(ROOT / 'config/recomp/play-profile.json', locale='en', images='original')
+        profile = load_profile(ROOT / 'config/recomp/profiles/play-profile.json', locale='en', images='original')
         self.assertEqual(profile['presentation']['locale'], 'en')
         self.assertEqual(list(profile['locales']), ['ja', 'zh-Hans', 'en'])
         with tempfile.TemporaryDirectory() as tmp:

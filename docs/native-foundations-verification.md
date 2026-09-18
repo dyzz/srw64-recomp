@@ -19,7 +19,7 @@
 窗口及回归证据：
 
 - 早期重启生效及弹窗热切换的记录保留在 `build/recomp/three-foundations/settings-live/`、`language-restart-ui/`、`hot-locale-flow-final/`；这些界面已被直接热键替代。
-- 此前双语版本的 `tools/recomp/verify_locale_switch.py` 发送实际 Cocoa F7 按下/释放事件，验证四次双向切换、没有 sheet、同一片段/历史数量、回看翻译、重复/修饰键不触发及提交前后观察区一致；最终运行记录为 `hotkey-flow-final/hot-locale-verification.json`，窗口截图为 `hotkey-flow-final/hotkey-ja-window.png`。
+- 此前双语版本的 `tools/recomp/verify/verify_locale_switch.py` 发送实际 Cocoa F7 按下/释放事件，验证四次双向切换、没有 sheet、同一片段/历史数量、回看翻译、重复/修饰键不触发及提交前后观察区一致；最终运行记录为 `hotkey-flow-final/hot-locale-verification.json`，窗口截图为 `hotkey-flow-final/hotkey-ja-window.png`。
 - 原输入脚本仍按住 START/R 时曾形成新按键并关闭回看；`ModalInputRelease` 已修复，最终热键运行仍覆盖这一按住输入的场景。
 - 姓名页的 F7、组字保护、未提交文本保留与 HD/Original 独立切换单独验证通过，记录为 `hotkey-name-final/hotkey-name-verification.json`。测试输入 `ナナ` 在日文＋HD、中文＋Original 两次切换后保持原字段，未向游戏确认姓名。
 - 切换请求通过原版帧末空函数 `80085F30` 的适配桥处理，因此姓名页/非对白场景也能应用；原函数调用保留，适配器不写 guest context 或玩法 RAM。首次姓名页测试暴露的“只在对白更新时处理请求”问题保留在 `hotkey-name/`，未算通过。
@@ -58,7 +58,7 @@
 
 实际运行在女性超级系第一话开场事件结束后捕获原版内存备份：`first-tactical-capture/state-96-tactical-save.json`、`tactical-95.payload`。这次采集使用较早探针，文件编号相差 1；新探针已改为在观察记录中显式引用同编号附件。
 
-将该备份装入独立实验 SRAM，并用 `config/recomp/load-continue.json` 完全退出后冷启动，已返回第一话地图。来源、摘要、原校验记录在 `first-turn-candidate.json`；恢复观察在 `first-turn-cold/state-1-tactical-restored.json`，地图截图为 `first-turn-cold/present-1620.png`。
+将该备份装入独立实验 SRAM，并用 `config/recomp/inputs/load-continue.json` 完全退出后冷启动，已返回第一话地图。来源、摘要、原校验记录在 `first-turn-candidate.json`；恢复观察在 `first-turn-cold/state-1-tactical-restored.json`，地图截图为 `first-turn-cold/present-1620.png`。
 
 `first-turn-restore-comparison.json` 比较原序列化返回与原恢复返回的共同观察区：战役旗标、剧情变量、玩家进度/姓名、机体、驾驶员和部件数组一致；RNG 区有 **2,079 字节差异**，地图单位记录有 **28 字节差异**。后者均位于 14 个 `20` 字节记录的 `+2` 字段；恢复返回时为 `FFFF`，地图完成重建后已重新分配。overlay `000AB160` 的 `801DE0B8`、`801E06C4` 指令将渲染对象 `800FFA70 + index*C4 + 48` 的句柄写到该字段，因此有重建表现资源的静态依据。原始差异仍保留，不据此删除 RNG 差异或宣称完整等价。旧采集尚未包括两处重新播种计数。
 
@@ -82,9 +82,9 @@
 make check
 make recomp-native-check
 .venv/bin/python tools/content/compile_profile.py \
-  --profile config/recomp/play-profile.json --language zh-Hans \
+  --profile config/recomp/profiles/play-profile.json --language zh-Hans \
   --images original --output build/recomp/coverage-review
-.venv/bin/python tools/recomp/compare_game_states.py LEFT.json RIGHT.json \
+.venv/bin/python tools/recomp/analysis/compare_game_states.py LEFT.json RIGHT.json \
   --output build/recomp/state-comparison.json
 ```
 

@@ -57,7 +57,7 @@ class UpgradeRulesValidationTests(unittest.TestCase):
                 upgrade_rules.report(path)
 
     def test_constants_match_the_host(self):
-        header = (ROOT / "tools/recomp/native-host/upgrade_rules.hpp").read_text()
+        header = (ROOT / "src/host/upgrade_rules.hpp").read_text()
         for name, value in (("max_increment", upgrade_rules.MAX_INCREMENT), ("max_increment_sum", upgrade_rules.MAX_INCREMENT_SUM),
                             ("min_price", upgrade_rules.MIN_PRICE), ("max_price", upgrade_rules.MAX_PRICE),
                             ("min_cap", upgrade_rules.MIN_CAP), ("max_cap", upgrade_rules.MAX_CAP)):
@@ -70,8 +70,8 @@ class UpgradeRulesValidationTests(unittest.TestCase):
             self.assertRegex(header, rf"\b{name}=0x{value:X}\b")
 
     def test_hooked_routines_are_renamed_and_replaced(self):
-        source = (ROOT / "tools/recomp/generate_cpu.py").read_text()
-        hooks = (ROOT / "tools/recomp/native-host/game_hooks.cpp").read_text()
+        source = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
         for routine, original in (("resident_func_800A5254", "srw64_original_unit_stats"),
                                   ("resident_func_800A5F84", "srw64_original_weapon_twin_sync"),
                                   ("load_0008F4B0_func_801CF680", "srw64_original_upgrade_open"),
@@ -84,7 +84,7 @@ class UpgradeRulesValidationTests(unittest.TestCase):
             self.assertIn(f'"{routine}": "{original}"', source)
             self.assertIn(f"void {routine}(", hooks)
             self.assertIn(f"{original}(rdram, ctx)", hooks)
-        host = (ROOT / "tools/recomp/native-host/host.cpp").read_text()
+        host = (ROOT / "src/host/host.cpp").read_text()
         for call in ("upgrades::initialize(", "upgrades::configure(", "upgrades::patch_resident(",
                      "upgrades::read_text(", "upgrades::descriptor(", "upgrades::patch_copy("):
             self.assertIn(call, host)
@@ -93,8 +93,8 @@ class UpgradeRulesValidationTests(unittest.TestCase):
 class UpgradeSaveEditTests(unittest.TestCase):
     def test_levels_are_nibbles_and_the_checksum_follows(self):
         import sys
-        sys.path.insert(0, str(ROOT / "tools/recomp"))
-        import upgrade_save
+        sys.path.insert(0, str(ROOT / "tools"))
+        from recomp.gameplay import upgrade_save
         sram = bytearray(upgrade_save.SRAM_BYTES)
         at = upgrade_save.BLOCK + upgrade_save.UNITS + 2 * upgrade_save.UNIT_SIZE
         sram[at:at + 2] = (216 << 6 | 2).to_bytes(2, "big")

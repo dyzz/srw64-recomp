@@ -4,7 +4,7 @@
 
 ## 1. 使用
 
-默认：`Play SRW64 Native.command` 首次启动时**修正全开、难度调整全关**。游戏运行中有两处入口，二者共用同一份设置、互相实时同步：
+默认：`scripts/Play SRW64 Native.command` 首次启动时**修正全开、难度调整全关**。游戏运行中有两处入口，二者共用同一份设置、互相实时同步：
 
 - 菜单栏 **「选项 → 游戏性调整」**：「修正」与「难度调整」两组勾选项（组名为不可点击的标题），下面是「恢复默认（修正开启、难度关闭）」「全部关闭（原版规则）」「全部开启」三个预设。
 - **「选项 → 设置…」（⌘,）**：设置窗口，含同样的规则开关与三个预设，另有语言（ja／zh-Hans／en）和画面（Original／HD）。窗口打开期间游戏收不到键盘输入，关闭后要等按键全部松开才恢复。
@@ -142,15 +142,15 @@
 
 | 位置 | 内容 |
 | --- | --- |
-| `tools/recomp/generate_cpu.py` | `NATIVE_HOOKS` 新增八个改名：`801E1D64`、`801E1F08`、`801E1F10`、`801F4384`、`80204254`、`8020ABB4`、`801F5628`、`80203418`，原函数分别改名为 `srw64_original_potential_bonus`、`_seisenshi_bonus`、`_esp_bonus`、`_battle_hit_rate`、`_hit_estimate`、`_deploy_record`、`_battle_damage`、`_damage_estimate`。需要 `make recomp-cpu` 重新生成。 |
-| `tools/recomp/native-host/rule_fixes.hpp` | 规则目录与解析、启动报告、等级表读取、底力档位、`StatCap`（限界临时封顶）、`DummyScale`（部署记录的假身次数临时改写）。 |
-| `tools/recomp/native-host/game_hooks.cpp` | 八个包装函数：规则未开启时只调用原函数（开探针时另外只读记录两个命中率函数的调用）。 |
-| `tools/recomp/native-host/rule_probe.hpp` | 实机探针，见下节。 |
-| `tools/recomp/native-host/rule_menu.hpp`、`rule_menu_macos.mm` | 菜单栏「选项 → 游戏性调整」：按目录分组生成条目、勾选状态、三个预设（`rules::presets`）、随语言重取标题，以及 QA 控制钩子；同一组开关也在[设置窗口](settings-window.md)里。 |
-| `tools/recomp/native-host/graphics.cpp` | 窗口创建后安装菜单（菜单栏出现得晚时每帧重试），关窗时移除。 |
+| `tools/recomp/toolchain/generate_cpu.py` | `NATIVE_HOOKS` 新增八个改名：`801E1D64`、`801E1F08`、`801E1F10`、`801F4384`、`80204254`、`8020ABB4`、`801F5628`、`80203418`，原函数分别改名为 `srw64_original_potential_bonus`、`_seisenshi_bonus`、`_esp_bonus`、`_battle_hit_rate`、`_hit_estimate`、`_deploy_record`、`_battle_damage`、`_damage_estimate`。需要 `make recomp-cpu` 重新生成。 |
+| `src/host/rule_fixes.hpp` | 规则目录与解析、启动报告、等级表读取、底力档位、`StatCap`（限界临时封顶）、`DummyScale`（部署记录的假身次数临时改写）。 |
+| `src/host/game_hooks.cpp` | 八个包装函数：规则未开启时只调用原函数（开探针时另外只读记录两个命中率函数的调用）。 |
+| `src/host/rule_probe.hpp` | 实机探针，见下节。 |
+| `src/host/rule_menu.hpp`、`rule_menu_macos.mm` | 菜单栏「选项 → 游戏性调整」：按目录分组生成条目、勾选状态、三个预设（`rules::presets`）、随语言重取标题，以及 QA 控制钩子；同一组开关也在[设置窗口](settings-window.md)里。 |
+| `src/host/graphics.cpp` | 窗口创建后安装菜单（菜单栏出现得晚时每帧重试），关窗时移除。 |
 | `content/locales/*.json`、`src/srw64_native/profile.py` | 菜单文案；`UI_KEYS` 按规则目录自动派生，新增规则必须同时补三种语言的标题。 |
 | `src/srw64_native/rule_settings.py` | 启动器与探针脚本共用的规则目录、保存与会话记录读取；`CORRECTIONS`／`DIFFICULTY` 决定首次启动默认开哪些。 |
-| `tools/recomp/play_native.py`、`run_host_probe.py` | `--rules`／`--rule-fixes`；报告字段 `rule_fixes`、`rule_probe_enabled`。 |
+| `tools/recomp/run/play_native.py`、`run_host_probe.py` | `--rules`／`--rule-fixes`；报告字段 `rule_fixes`、`rule_probe_enabled`。 |
 
 所有调用方都经过 overlay 函数表（`LOOKUP_FUNC`），因此实战、AI 估算和探针走的是同一组包装函数。
 

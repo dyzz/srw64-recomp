@@ -58,9 +58,9 @@
 复核：
 
 ```sh
-.venv/bin/python tools/recomp/verify_reading_indicators.py build/recomp/reading-indicators/zh-full
-.venv/bin/python tools/recomp/verify_reading_indicators.py build/recomp/reading-indicators/ja-full
-.venv/bin/python tools/recomp/analyze_toolbar_trace.py build/recomp/reading-indicators/zh-full \
+.venv/bin/python tools/recomp/verify/verify_reading_indicators.py build/recomp/reading-indicators/zh-full
+.venv/bin/python tools/recomp/verify/verify_reading_indicators.py build/recomp/reading-indicators/ja-full
+.venv/bin/python tools/recomp/analysis/analyze_toolbar_trace.py build/recomp/reading-indicators/zh-full \
   --require-matching-dialogue --output build/recomp/reading-indicators/zh-full/toolbar-boundaries.json
 ```
 

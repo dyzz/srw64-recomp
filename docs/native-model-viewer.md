@@ -23,7 +23,7 @@ npm ci --prefix tools/model_viewer --ignore-scripts --no-audit --no-fund
 .venv/bin/python tools/model_viewer/serve.py
 ```
 
-服务启动后打印本地 URL；可用 `--port` 指定端口。构建输入为 `build/analysis/3d-2026-09-09/` 下的原始资源、`geometry-data.json` 和 `geometry-survey.json`，详见 [3D 分析](3d-model-replacement-analysis.md)。Three.js 固定为 `0.180.0`，依赖许可随页面输出。
+服务启动后打印本地 URL；可用 `--port` 指定端口。构建输入为 `assets/models/3d-2026-09-09/` 下的原始资源、`geometry-data.json` 和 `geometry-survey.json`，详见 [3D 分析](3d-model-replacement-analysis.md)。Three.js 固定为 `0.180.0`，依赖许可随页面输出。
 
 ## 显示边界与检查
 
@@ -52,16 +52,16 @@ npm ci --prefix tools/model_viewer --ignore-scripts --no-audit --no-fund
 准备新的验证输入：
 
 ```sh
-.venv/bin/python tools/recomp/prepare_model_5600_probe.py \
+.venv/bin/python tools/recomp/model5600/prepare_model_5600_probe.py \
   --source build/recomp/gfx-probes/female-story-2 \
-  --output build/analysis/model-5600-probe-new
+  --output assets/models/model-5600-probe-new
 ```
 
-对生成的 `baseline-source`、`hidden-source`、`stretched-source` 分别运行 `tools/recomp/run_frame_probe.py`，为每项指定新的 `--output`。本次原始结果保存在 `build/analysis/model-5600-probe/`，其中 [acceptance.json](../build/analysis/model-5600-probe/acceptance.json) 记录逐帧哈希和差异。
+对生成的 `baseline-source`、`hidden-source`、`stretched-source` 分别运行 `tools/recomp/probes/run_frame_probe.py`，为每项指定新的 `--output`。本次原始结果保存在 `assets/models/model-5600-probe/`，其中 [acceptance.json](../assets/models/model-5600-probe/acceptance.json) 记录逐帧哈希和差异。
 
 ## 5600：96 面高模试作与新增拓扑回放
 
-新增 [prepare_model_5600_highpoly.py](../tools/recomp/prepare_model_5600_highpoly.py)，生成 50 个位置、96 个三角形的封闭菱形。横截面有 16 个点，三层截面形成圆角与腰部倒角；尺寸仍为 X/Z `-5..5`、Y `-12..12`。原有虚线环的贴图、顶点、8 次三角形绘制全部保留，因此整个替换资源合计 104 次三角形绘制、54 个引用位置。菱形采用黄色切面颜色；这是带新材质的原创几何试作。
+新增 [prepare_model_5600_highpoly.py](../tools/recomp/model5600/prepare_model_5600_highpoly.py)，生成 50 个位置、96 个三角形的封闭菱形。横截面有 16 个点，三层截面形成圆角与腰部倒角；尺寸仍为 X/Z `-5..5`、Y `-12..12`。原有虚线环的贴图、顶点、8 次三角形绘制全部保留，因此整个替换资源合计 104 次三角形绘制、54 个引用位置。菱形采用黄色切面颜色；这是带新材质的原创几何试作。
 
 原始顶点坐标是整数，直接在 `-5..5` 范围内增加圆角容易被量化掉。试作将新顶点放大 256 倍存储，绘制时压入 `1/256` 的模型矩阵，结束后弹出。每批最多加载 30 个顶点，符合现有 32 项缓存；生成后独立解码二进制命令，验证实际三角形与作者网格一致、矩阵栈平衡、封闭流形和范围正确。
 
@@ -72,20 +72,20 @@ npm ci --prefix tools/model_viewer --ignore-scripts --no-audit --no-fund
 可复现命令（输出目录必须尚不存在）：
 
 ```sh
-.venv/bin/python tools/recomp/prepare_model_5600_highpoly.py \
+.venv/bin/python tools/recomp/model5600/prepare_model_5600_highpoly.py \
   --source build/recomp/gfx-probes/female-story-2 \
-  --output build/analysis/model-5600-highpoly
-SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_frame_probe.py \
-  --source build/analysis/model-5600-highpoly/baseline-source \
-  --output build/analysis/model-5600-highpoly/baseline --resolution-scale 3
-SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_frame_probe.py \
-  --source build/analysis/model-5600-highpoly/highpoly-source \
-  --output build/analysis/model-5600-highpoly/highpoly --resolution-scale 3
-.venv/bin/python tools/recomp/verify_model_5600_highpoly.py build/analysis/model-5600-highpoly
+  --output assets/models/model-5600-highpoly
+SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/probes/run_frame_probe.py \
+  --source assets/models/model-5600-highpoly/baseline-source \
+  --output assets/models/model-5600-highpoly/baseline --resolution-scale 3
+SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/probes/run_frame_probe.py \
+  --source assets/models/model-5600-highpoly/highpoly-source \
+  --output assets/models/model-5600-highpoly/highpoly --resolution-scale 3
+.venv/bin/python tools/recomp/model5600/verify_model_5600_highpoly.py assets/models/model-5600-highpoly
 .venv/bin/python tools/model_viewer/build.py
 ```
 
-[验收记录](../build/analysis/model-5600-highpoly/acceptance.json)、[生成与内存修改记录](../build/analysis/model-5600-highpoly/fixtures.json)、[实体 OBJ](../build/analysis/model-5600-highpoly/5600-highpoly-solid.obj)。页面仅在高模验收记录存在且网格、GPU 图片哈希匹配时加入该版本。
+[验收记录](../assets/models/model-5600-highpoly/acceptance.json)、[生成与内存修改记录](../assets/models/model-5600-highpoly/fixtures.json)、[实体 OBJ](../assets/models/model-5600-highpoly/5600-highpoly-solid.obj)。页面仅在高模验收记录存在且网格、GPU 图片哈希匹配时加入该版本。
 
 本节证明 **5600 可以增加顶点和三角形并进入实际 RT64 绘制**。下节另行验证原游戏加载器和实际开场流程；单任务回放本身不提供这些运行时证据。
 
@@ -93,7 +93,7 @@ SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_frame_probe.py \
 
 2026-09-10，已完成一次从空 SRAM 启动、女性主角开场对话、剧情地图位置变化，到第一话战术地图的实际运行。环境为本项目的原生重编译游戏 CPU、原游戏资源加载器、RT64/Metal，960×720 GPU 完成后读回；不是 N64 硬件验证。高模运行达到 **16,800 VI**，耗时约 **280.8 秒**，正常 exit 0。
 
-[build_model_5600_rom.py](../tools/recomp/build_model_5600_rom.py) 把 96 面网格编译后追加到资源 5600 内，使用 segment 4 相对指针，让原游戏加载器管理分配和释放。资源由 **7,048 → 12,264 字节**，新增矩阵、顶点和子显示列表不依赖固定 RDRAM 地址。原虚线环、材质、原容器描述符保持不变；只替换原菱形的八条绘制命令并追加内容。
+[build_model_5600_rom.py](../tools/recomp/model5600/build_model_5600_rom.py) 把 96 面网格编译后追加到资源 5600 内，使用 segment 4 相对指针，让原游戏加载器管理分配和释放。资源由 **7,048 → 12,264 字节**，新增矩阵、顶点和子显示列表不依赖固定 RDRAM 地址。原虚线环、材质、原容器描述符保持不变；只替换原菱形的八条绘制命令并追加内容。
 
 压缩资源写入独立实验 ROM 的 `0x1FF0000` 空白池，仅重定向 5600 的资源表项。压缩区占 2,384 字节；全 ROM 实际变化 2,340 字节，全部位于该表项和新增数据。原 ROM `rom.z64` 不变，实验 ROM 为 `build/recomp/model-5600/rom/srw64-model5600.z64`，SHA-256 为 `feeabfecc8eddb0e60d0ce04959683f07506abd58fdfcf9e7970158c2b85c2c7`。首 1 MiB 与全部 18 个程序装载区均逐字节一致，没有修改 guest 程序或几何渲染钩子。
 
@@ -103,14 +103,14 @@ SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_frame_probe.py \
 - 同为 VI 7073 的实际游戏原版与高模图片，差异 **1,032 像素**，包围框 `[465,323,496,363)`；菱形检查区外为 **0**。虚线环、地图、头像和文字在这对图片中逐像素一致。
 - 高模另一角度与地图位置变化可见于 `live-1/present-4920.png`。`present-6240.png` 已切入战术地图，`present-8400.png` 显示单位和行动范围。末尾任务快照已不再包含该完整资源或其根调用。
 - 对照使用相同的宿主源码、已生成 guest 代码、渲染器源码和输入脚本；分别重建所得二进制哈希不同，**不标记为同一二进制 A/B**。原版对照在 VI 11564 收到 SDL window-quit，正常退出，但未到请求的 16800；仅将其较早完成的帧用于对照。高模完成全段。
-- `tests/test_model_5600_resource.py` 独立遍历编译后的显示列表，在三个模拟加载地址验证 96 个新三角形及原环的 8 次绘制、矩阵栈平衡、原描述符保留和压缩往返。运行证据由 [verify_model_5600_live.py](../tools/recomp/verify_model_5600_live.py) 检查并生成[验收记录](../build/recomp/model-5600/acceptance.json)。
+- `tests/test_model_5600_resource.py` 独立遍历编译后的显示列表，在三个模拟加载地址验证 96 个新三角形及原环的 8 次绘制、矩阵栈平衡、原描述符保留和压缩往返。运行证据由 [verify_model_5600_live.py](../tools/recomp/model5600/verify_model_5600_live.py) 检查并生成[验收记录](../build/recomp/model-5600/acceptance.json)。
 
 运行记录：[高模实际游戏](../build/recomp/model-5600/live-1/report.json)、[原版对照](../build/recomp/model-5600/original-1/report.json)、[ROM 构建记录](../build/recomp/model-5600/rom/build.json)。页面只有在限定范围的运行验收记录及 GPU 图片哈希匹配时，才显示“开场已验证”。 本次浏览器实测已确认该状态、两组共八张图片加载完成、对照窗口可打开，未记录 JavaScript 错误。
 
 从项目根目录手动试玩：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py --model-5600 --new-game
+.venv/bin/python tools/recomp/run/play_native.py --model-5600 --new-game
 ```
 
 选 New Game → 女性超级系，保持默认姓名进入开场。方向键移动，Z 确认，X 取消，Enter 为 Start，Esc 关闭。实验使用独立 game ID `srw64-model5600-experiment`，历史和 SRAM 仅放在 `build/recomp/model-5600/play/`。省略 `--new-game` 会使用该实验历史，首次则复制配置中的既有检查点；不会覆盖通常试玩存档。
@@ -118,11 +118,11 @@ SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_frame_probe.py \
 重新构建与验证（ROM 输出目录须不存在；使用其他目录时同步 variant 路径，ROM 内容哈希相同）：
 
 ```sh
-.venv/bin/python tools/recomp/build_model_5600_rom.py --output build/recomp/model-5600/rom
-.venv/bin/python tools/recomp/audit_rom_variant.py --variant model5600 --output build/recomp/model-5600/compatibility.json
-SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_host_probe.py \
+.venv/bin/python tools/recomp/model5600/build_model_5600_rom.py --output build/recomp/model-5600/rom
+.venv/bin/python tools/recomp/toolchain/audit_rom_variant.py --variant model5600 --output build/recomp/model-5600/compatibility.json
+SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
   --variant model5600 --graphics --resolution-scale 3 \
-  --input config/recomp/female-to-map.json --vis 16800 \
+  --input config/recomp/inputs/female-to-map.json --vis 16800 \
   --output build/recomp/model-5600/live-1
 ```
 
@@ -136,4 +136,4 @@ SRW64_BACKGROUND=1 .venv/bin/python tools/recomp/run_host_probe.py \
 
 `0x801C3490` 按第二参数的低字节选择表项；`0x801C34EC` 读取资源 ID，随后 `0x801C3560` 调用 `0x8008B4F4`，将资源 ID 写入参数区 `sp+0x1C`。另有 `0x801C4DC0` 通过 `0x801C58BC` 中的选择值比较／更新对象，并在 `0x801C4E30` 调用同一构建路径。
 
-后续验证方法为：在确认这个 overlay 身份后，跟踪 `0x801C3490` 的索引 0 调用，记录调用者、脚本位置和场景，再取实际 GPU 帧。当前只定位了静态表与调用路径，没有确认章节、舰名或该资源在已测路线中实际出现。结构化记录见 [model-5584-reference.json](../build/analysis/3d-2026-09-09/model-5584-reference.json)。
+后续验证方法为：在确认这个 overlay 身份后，跟踪 `0x801C3490` 的索引 0 调用，记录调用者、脚本位置和场景，再取实际 GPU 帧。当前只定位了静态表与调用路径，没有确认章节、舰名或该资源在已测路线中实际出现。结构化记录见 [model-5584-reference.json](../assets/models/3d-2026-09-09/model-5584-reference.json)。

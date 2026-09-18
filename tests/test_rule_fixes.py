@@ -76,7 +76,7 @@ class RuleSettingsTests(unittest.TestCase):
         self.assertEqual(rule_settings.select(self.path), rule_settings.DEFAULT)
 
     def test_host_catalog_matches(self):
-        header = (ROOT / "tools/recomp/native-host/rule_fixes.hpp").read_text()
+        header = (ROOT / "src/host/rule_fixes.hpp").read_text()
         catalog = re.search(r"catalog\[\]=\{(.*?)\};", header, re.S).group(1)
         entries = re.findall(r'"([a-z-]+)",Kind::(correction|difficulty)', catalog)
         self.assertEqual(tuple(rule for rule, _ in entries), tuple(rule_settings.RULE_FIXES))
@@ -95,7 +95,7 @@ class RuleSettingsTests(unittest.TestCase):
             ui = json.loads((ROOT / f"content/locales/{locale}.json").read_text())["ui"]
             self.assertEqual(sorted(key for key in keys if not ui.get(key)), [], locale)
             self.assertEqual(set(ui), UI_KEYS, locale)
-        menu = (ROOT / "tools/recomp/native-host/rule_menu_macos.mm").read_text()
+        menu = (ROOT / "src/host/macos/rule_menu_macos.mm").read_text()
         self.assertIn("for(const auto& entry:rules::catalog)", menu)
         self.assertIn("srw64.rule-control.v1", menu)
         # Titles are rebuilt when the player switches language, so every label the
@@ -103,15 +103,15 @@ class RuleSettingsTests(unittest.TestCase):
         self.assertIn("- (void)retitle", menu)
         self.assertIn("built_locale", menu)
         # Both surfaces group the rules by the catalog's kinds.
-        window = (ROOT / "tools/recomp/native-host/settings_window_macos.mm").read_text()
+        window = (ROOT / "src/host/macos/settings_window_macos.mm").read_text()
         for source in (menu, window):
             self.assertIn("rules::corrections", source)
             self.assertIn("rules::difficulty", source)
         self.assertIn("srw64.settings-control.v1", window)
 
     def test_hooked_routines_are_renamed_and_replaced(self):
-        source = (ROOT / "tools/recomp/generate_cpu.py").read_text()
-        hooks = (ROOT / "tools/recomp/native-host/game_hooks.cpp").read_text()
+        source = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
         for address, original in (("801E1F08", "srw64_original_seisenshi_bonus"), ("801E1F10", "srw64_original_esp_bonus"),
                                   ("801E1D64", "srw64_original_potential_bonus"),
                                   ("801F4384", "srw64_original_battle_hit_rate"), ("80204254", "srw64_original_hit_estimate"),

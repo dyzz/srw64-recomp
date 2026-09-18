@@ -32,7 +32,7 @@ def main():
             assert b['hash'] not in names;names[b['hash']]=name;db['textures'].append({'hashes':{'rt64':b['hash']},'path':name})
         portrait_records.append({'resource_id':sample['resource_id'],'character':sample['character'],'source_sha256':sha((args.portraits/sample['source']).read_bytes()),'generation_sha256':expected,'model_dimensions':model_size,'runtime_dimensions':[384,384],'bound_tiles':len(sample['binding']['bindings']),'matte':matte_report})
     table=ResourceTable((ROOT/'rom.z64').read_bytes());xxh=hasher();maps=[];map_outputs={};conflicts=set()
-    gold=json.loads((ROOT/'build/hd-ai/2026-09-08/map-capture-binding.json').read_text());d=table.extract(5604)[0]
+    gold=json.loads((ROOT/'assets/hd-ai/2026-09-08/map-capture-binding.json').read_text());d=table.extract(5604)[0]
     for b in gold['bindings']:
         r=b['record'];a=r['texture_offset'];p=r['palette_offset'];assert map_hash(d[a:a+2048],d[p:p+32],xxh)==b['hash']
     for rid in (5604,5605):

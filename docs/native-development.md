@@ -4,7 +4,7 @@
 
 ## 当前可用范围
 
-开发入口是 `Play SRW64 Native.command` → `tools/recomp/play_native.py --profile config/recomp/play-profile.json`。它运行锁定的原始 JP Rev 0 ROM，由原脚本驱动游戏，并接入原生显示与输入。
+开发入口是 `scripts/Play SRW64 Native.command` → `tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json`。它运行锁定的原始 JP Rev 0 ROM，由原脚本驱动游戏，并接入原生显示与输入。
 
 | 能力 | 当前实现与限制 |
 | --- | --- |
@@ -28,15 +28,28 @@
 | `src/native/localization/` | C++ TextKey、目录查找、原文回退、字体和 UI 文案。 |
 | `src/native/game_adapter/` | 已拆出的对白来源识别与原始姓名字形编解码。 |
 | `src/native/presentation/` | 原图/HD 模式请求与 display-list 快照归属。 |
-| `tools/recomp/native-host/host.cpp`、`game_hooks.*` | 原生宿主、N64 系统接入、overlay/资源钩子与 VI 控制。 |
+| `src/host/host.cpp`、`game_hooks.*` | 原生宿主、N64 系统接入、overlay/资源钩子与 VI 控制。 |
 | `native_dialogue.*`、`native_dialogue_text.cpp` | 原对白桥接、阅读状态、Core Text 排版与 Metal 合成；当前仍位于宿主目录。 |
-| `native_name_entry.cpp` / `native_name_entry_macos.mm` | 游戏线程上的命名请求、原校验与写回 / 窗口线程上的字段编辑与页面绘制。 |
+| `native_name_entry.cpp` / `macos/native_name_entry_macos.mm` | 游戏线程上的命名请求、原校验与写回 / 窗口线程上的字段编辑与页面绘制。 |
 | `graphics.cpp`、`native_marker.cpp`、`audio.cpp` | SDL/RT64 接入、GPU 水滴绘制、音频设备适配。 |
-| `window_test_control*` | 默认关闭的窗口 QA：真实 Cocoa 关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
-| `tools/recomp/verification_support.py` | 验证脚本共用的等待、原子请求写入和退出线程日志解析。 |
-| `tools/recomp/prepare_runtime_lifecycle.py`、`runtime-support/` | 基于固定上游生成本地游戏线程/消息/调度/计时器退出适配，默认关闭系统线程诊断；生成代码与来源摘要写入 `build/`。 |
+| `window_test_control.hpp`、`macos/window_test_control_macos.mm` | 默认关闭的窗口 QA：真实 Cocoa 关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
+| `tools/recomp/run/verification_support.py` | 验证脚本共用的等待、原子请求写入和退出线程日志解析。 |
+| `tools/recomp/toolchain/prepare_runtime_lifecycle.py`、`src/host/runtime-support/` | 基于固定上游生成本地游戏线程/消息/调度/计时器退出适配，默认关闭系统线程诊断；生成代码与来源摘要写入 `build/`。 |
 
-表中不带目录的宿主文件均位于 `tools/recomp/native-host/`。此轮整理没有大规模搬迁宿主；后续按游戏适配、呈现、平台责任逐步迁移，避免一次性破坏验证入口。
+表中不带目录的宿主文件均位于 `src/host/`，AppKit 部分（`.mm`）在 `src/host/macos/`。2026-09-18 宿主从 `tools/recomp/native-host/` 迁入，`tools/recomp/` 的脚本按用途分入子目录：
+
+| 目录 | 内容 |
+| --- | --- |
+| `tools/recomp/toolchain/` | 工具链与代码生成：`bootstrap.py`、`analyze_layout.py`、`scan_functions.py`、`generate_cpu.py`、符号与变体审计、`prepare_rt64.py`、`prepare_runtime_lifecycle.py` |
+| `tools/recomp/run/` | 启动与驱动宿主：`play_native.py`、`run_host_probe.py`、`control_host.py`、`step_host.py`、输入编译与验证公共代码 |
+| `tools/recomp/verify/` | 有界实机验证：语言切换、原生对白、姓名页、图片模式、阅读指示、关窗 |
+| `tools/recomp/script_lab/` | 脚本注入、迷你关卡、场景脚本阅读与按指令切音频 |
+| `tools/recomp/gameplay/` | 改造规则文件与受控存档编辑 |
+| `tools/recomp/model5600/` | 5600 模型的高模、原生水滴与对应验证 |
+| `tools/recomp/probes/` | 帧／音频／LZ／CoreText 重放探针、参考模拟器与 RSP 捕获 |
+| `tools/recomp/analysis/` | 帧、脚本、移动与状态对比的离线分析 |
+
+子目录共同组成 `recomp` 包：脚本把 `tools/` 加入 `sys.path` 后以 `from recomp.toolchain.analyze_layout import ROOT` 这样的形式互相引用，测试同理。配置目录同样拆分：`config/recomp/` 只放工具链与构建配置，`profiles/` 放试玩档案，`inputs/` 放有界运行的输入脚本（迷你关卡的在 `inputs/mini-stages/`），`mini-stages/` 只放关卡定义。导出的数据与 HD 素材在不入库的 `assets/`，见 [`assets/README.md`](../assets/README.md)。
 
 ```mermaid
 flowchart LR
@@ -70,10 +83,10 @@ make recomp-bootstrap
 make recomp-layout
 make recomp-scan
 make recomp-cpu
-.venv/bin/python tools/recomp/prepare_rt64.py
+.venv/bin/python tools/recomp/toolchain/prepare_rt64.py
 ```
 
-`run_host_probe.py` 会复核 ROM 变体、代码兼容性、生成结果与上游版本，并按需配置/构建宿主。HD 模式要求 `content/art/stage1-hd.json` 和 `content/ui/name-entry.json` 引用的本地美术文件存在且摘要一致。新克隆请显式使用 `--images original --new-game`：Original 可在缺少 HD 素材时从原 ROM 提取原图启动，`--new-game` 不依赖开发者本地通关档。当前没有预编译发布包。
+`run_host_probe.py` 会复核 ROM 变体、代码兼容性、生成结果与上游版本，并按需配置/构建宿主。HD 模式要求 `content/art/stage1-hd.json` 和 `content/ui/name-entry.json` 引用的本地美术文件存在且摘要一致。profile 默认 `images: original`：Original 在缺少 HD 素材时从原 ROM 提取原图启动，新克隆不需要 `assets/`；`--new-game` 不依赖开发者本地通关档。当前没有预编译发布包。
 
 已经配置 `build/recomp/gfx-build` 后，只编译、不启动游戏：
 
@@ -92,22 +105,22 @@ make recomp-native-check
 交互检查可使用新增的静音参数：
 
 ```sh
-.venv/bin/python tools/recomp/play_native.py \
-  --profile config/recomp/play-profile.json --new-game --mute
+.venv/bin/python tools/recomp/run/play_native.py \
+  --profile config/recomp/profiles/play-profile.json --new-game --mute
 ```
 
 自动探针默认静音，**测试时不传 `--audio`**；例外是要分辨只有声音不同的演出指令时（见[迷你关卡](mini-stage.md)的开音频运行），此时必须同时给出采集窗口。完整命名流程需要两个终端，先启动宿主，再启动验证脚本；运行目录必须不存在：
 
 ```sh
 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
-.venv/bin/python tools/recomp/run_host_probe.py \
-  --graphics --profile config/recomp/play-profile.json \
-  --input config/recomp/native-name-entry.json \
+.venv/bin/python tools/recomp/run/run_host_probe.py \
+  --graphics --profile config/recomp/profiles/play-profile.json \
+  --input config/recomp/inputs/native-name-entry.json \
   --output build/recomp/qa/new-name-window --vis 9000
 ```
 
 ```sh
-.venv/bin/python tools/recomp/verify_native_name_entry.py \
+.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
   --run build/recomp/qa/new-name-window --exit-mode window
 ```
 
@@ -156,7 +169,7 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 结束仍在运行的测试时，优先关闭其游戏窗口，或对已确认的运行目录执行：
 
 ```sh
-.venv/bin/python tools/recomp/control_host.py RUN --quit
+.venv/bin/python tools/recomp/run/control_host.py RUN --quit
 ```
 
 等待 `report.json` 和进程结束。若进程卡住，先检查 PID 的命令、父进程和工作目录，再只终止确认属于本次测试的 PID，并保留超时/异常日志。不要使用 `killall Python`、`killall node` 或按整个工作区路径杀进程；Codex 工具也可能以此为工作目录。

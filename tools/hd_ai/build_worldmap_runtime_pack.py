@@ -27,8 +27,8 @@ def main() -> None:
     parser.add_argument('--scale', type=int, choices=(4,8), default=8, help='runtime texture density; independent of original ROM texture size')
     args = parser.parse_args()
     scale = args.scale
-    base = ROOT/'build/hd-ai/dialogue-runtime/v3/pack'
-    capture = ROOT/'build/hd-ai/dialogue-type/live-medium-4x'
+    base = ROOT/'assets/hd-ai/dialogue-runtime/v3/pack'
+    capture = ROOT/'assets/hd-ai/dialogue-type/live-medium-4x'
     meta = json.loads((args.ai/'manifest.json').read_text())
     assert sha(args.ai/'map-ai.png') == meta['asset_sha256']
     assert sha(args.ai/'source-map.png') == meta['source_map_sha256']

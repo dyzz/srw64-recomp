@@ -12,7 +12,7 @@ from pathlib import Path
 
 RULES_VERSION = 1
 SCHEMA = "srw64.rule-settings.v1"
-# Same ids and order as the host catalog in tools/recomp/native-host/rule_fixes.hpp.
+# Same ids and order as the host catalog in src/host/rule_fixes.hpp.
 RULE_FIXES = {
     "esp-level": "超能力的命中/回避补正按技能等级（原版固定 64）",
     "seisenshi-level": "圣战士的回避补正按技能等级（原版固定 32）",
