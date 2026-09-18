@@ -134,6 +134,12 @@ const std::map<std::string,std::pair<unsigned short,NSString*>>& keys() {
 
 void window_init(void* cocoa_window){game_window=(__bridge NSWindow*)cocoa_window;}
 
+void close_game_window() {
+    // The close button's path through Cocoa and the SDL delegate, not SDL_QUIT.
+    if(!game_window)fail(debug::ServerError,"the game window is not open yet");
+    [game_window performClose:nil];
+}
+
 json tree(const json& params) {
     json windows=json::array();
     if(params.contains("window"))windows.push_back(window_json(find_window(params["window"]),true));
@@ -239,15 +245,24 @@ json key(const json& params) {
 
 json type(const json& params) {
     NSWindow* window=find_window(params.value("window",json(nullptr)));
-    if(!params.contains("text") || !params["text"].is_string())fail(debug::InvalidParams,"type needs text");
+    const bool unmark=params.value("unmark",false);
+    if(!unmark && (!params.contains("text") || !params["text"].is_string()))fail(debug::InvalidParams,"type needs text");
     id responder=window.firstResponder;
     if([responder isKindOfClass:[NSTextField class]]) {
         [window makeFirstResponder:responder];responder=((NSTextField*)responder).currentEditor;
     }
     if(![responder isKindOfClass:[NSTextView class]])fail(debug::InvalidParams,"no text field has focus in that window; click one first");
-    [(NSTextView*)responder insertText:ns(params["text"].get<std::string>()) replacementRange:NSMakeRange(NSNotFound,0)];
+    auto* editor=(NSTextView*)responder;
+    // "marked" leaves the text as an input-method composition, as an IME does
+    // before the candidate is chosen; "unmark" commits the composition.
+    if(unmark)[editor unmarkText];
+    else if(params.value("marked",false)) {
+        NSString* text=ns(params["text"].get<std::string>());
+        [editor setMarkedText:text selectedRange:NSMakeRange(text.length,0) replacementRange:NSMakeRange(NSNotFound,0)];
+    } else [editor insertText:ns(params["text"].get<std::string>()) replacementRange:NSMakeRange(NSNotFound,0)];
     id owner=((NSTextView*)responder).delegate;
-    return {{"window",window.windowNumber},{"text",[owner isKindOfClass:[NSView class]]?text_of(owner):utf8(((NSTextView*)responder).string)}};
+    return {{"window",window.windowNumber},{"composing",bool(editor.hasMarkedText)},
+            {"text",[owner isKindOfClass:[NSView class]]?text_of(owner):utf8(editor.string)}};
 }
 
 json menu(const json& params) {

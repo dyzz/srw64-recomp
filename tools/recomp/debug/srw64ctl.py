@@ -8,7 +8,8 @@
   srw64ctl.py shot [--window Options] [--no-overlays]
   srw64ctl.py tree [--window game]
   srw64ctl.py click --text 开始故事 | click X Y
-  srw64ctl.py type ナナ ; uikey return [--mod cmd]
+  srw64ctl.py type ナナ [--marked | --unmark] ; uikey return [--mod cmd]
+  srw64ctl.py window [--size 1280 960] [--front] [--close]
   srw64ctl.py menu 选项 游戏性调整
   srw64ctl.py settings --rules original --locale ja --images hd
   srw64ctl.py wait --dialogue --timeout 60 ; wait --vi 5000 ; wait --event dialogue:font
@@ -68,12 +69,19 @@ def main() -> int:
     click.add_argument("--text")
     click.add_argument("--window")
     typing = commands.add_parser("type")
-    typing.add_argument("text")
+    typing.add_argument("text", nargs="?")
+    composition = typing.add_mutually_exclusive_group()
+    composition.add_argument("--marked", action="store_true", help="leave the text as an input-method composition")
+    composition.add_argument("--unmark", action="store_true", help="commit the composition")
     typing.add_argument("--window")
     uikey = commands.add_parser("uikey")
     uikey.add_argument("key")
     uikey.add_argument("--mod", action="append", default=[])
     uikey.add_argument("--window")
+    window = commands.add_parser("window")
+    window.add_argument("--size", nargs=2, type=int, metavar=("WIDTH", "HEIGHT"))
+    window.add_argument("--front", action="store_true")
+    window.add_argument("--close", action="store_true", help="press the window's close button")
     menu = commands.add_parser("menu")
     menu.add_argument("path", nargs="*")
     settings = commands.add_parser("settings")
@@ -110,7 +118,8 @@ def main() -> int:
         if args.command == "status":
             result = client.call("status", history=args.history)
         elif args.command == "keys":
-            result = run_keys(client, key_steps(args.chords))[-2]
+            replies = [row for row in run_keys(client, key_steps(args.chords)) if "waited_ms" not in row]
+            result = replies[-1] if replies else {"waited": True}
         elif args.command == "buttons":
             result = client.call("buttons", buttons=args.buttons, vis=args.vis)
         elif args.command == "shot":
@@ -121,7 +130,11 @@ def main() -> int:
             point = {"x": args.point[0], "y": args.point[1]} if len(args.point) == 2 else {}
             result = client.call("ui.click", **point, **optional(text=args.text, window=args.window))
         elif args.command == "type":
-            result = client.call("ui.type", text=args.text, **optional(window=args.window))
+            result = client.call("ui.type", **optional(text=args.text, window=args.window),
+                                 **({"marked": True} if args.marked else {}), **({"unmark": True} if args.unmark else {}))
+        elif args.command == "window":
+            size = {"width": args.size[0], "height": args.size[1]} if args.size else {}
+            result = client.call("window", **size, **{flag: True for flag in ("front", "close") if getattr(args, flag)})
         elif args.command == "uikey":
             result = client.call("ui.key", key=args.key, modifiers=args.mod, **optional(window=args.window))
         elif args.command == "menu":
