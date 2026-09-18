@@ -3,6 +3,8 @@
 #include "game_hooks.hpp"
 #include "state_probe.hpp"
 #include "presentation_settings.hpp"
+#include "notices.hpp"
+#include "upgrade_refund.hpp"
 #include "game_adapter/dialogue_source.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
@@ -176,12 +178,40 @@ json state_snapshot() {
         {"history_offset",reader.history_offset},{"skipping",reader.skipping},
         {"owner",reading_owner},{"boxes",json::array()},{"history",json::array()}};
     for(const auto& entry:reader.history)state["history"].push_back({{"event",entry.event},
-        {"text_id",entry.text_id},{"segment",entry.segment},{"complete",entry.complete},{"text",utf8(entry.text)}});
+        {"text_id",entry.text_id},{"segment",entry.segment},{"complete",entry.complete},{"notice",entry.notice},
+        {"text",utf8(entry.text)}});
     for(const auto& box:current)if(box.visible)state["boxes"].push_back({{"active",box.active},
         {"event",box.event},{"text_id",box.text_id},{"text_key",game_adapter::standard_dialogue_key(box.text_id).value},
                     {"segment",box.segment},{"speaker",utf8(box.speaker)},
         {"text",utf8(box.layout.text)},{"page",box.page},{"pages",box.layout.pages.size()}});
     return state;
+}
+// Upgrade refund (upgrade_refund.hpp): a history line in every language and a
+// banner in the current one. The machine name stays in the original Japanese.
+std::string grouped(uint32_t value) {
+    const auto digits=std::to_string(value);
+    std::string result;
+    for(size_t i=0;i<digits.size();++i){if(i && (digits.size()-i)%3==0)result+=',';result+=digits[i];}
+    return result;
+}
+std::string filled(std::string text,const std::string& token,const std::string& value) {
+    for(size_t at=text.find(token);at!=std::string::npos;at=text.find(token,at+value.size()))text.replace(at,token.size(),value);
+    return text;
+}
+void refund_notice(uint16_t unit,uint32_t amount) {
+    std::string name;
+    for(const uint16_t code:refund::unit_name(unit))name+=glyph(code);
+    std::map<std::string,std::u16string> localized;
+    for(const auto& [locale,catalog]:localization::registered())
+        localized[locale]=utf16(filled(filled(catalog->ui("refund_notice"),"{unit}",name),"{amount}",grouped(amount)));
+    const auto locale=localization::catalog().locale;
+    const auto text=utf8(localized[locale]);
+    {
+        std::lock_guard lock(mutex);
+        reader.note(++event_serial,std::move(localized),locale);
+        record("refund_notice",{{"unit",unit},{"name",name},{"amount",amount},{"text",text}});
+    }
+    notices::post("refund",text);
 }
 void state_report() {
     if(!srw64_full_diagnostics())return;
@@ -348,6 +378,7 @@ void configure(const std::filesystem::path& directory) {
             cancel("script_ended");
     };
     srw64_game_hooks.choice=[](uint8_t*) {std::lock_guard lock(mutex);cancel("choice");};
+    srw64_game_hooks.refund=[](uint8_t*,uint16_t unit,uint32_t amount) {refund_notice(unit,amount);};
     record("configured",{{"mode",observe?"observe":"replace"},{"font_size",reader.font_size},
         {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision}});
 }

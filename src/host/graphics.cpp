@@ -14,6 +14,7 @@
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #include "debug_ui.hpp"
+#include "notices.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -444,6 +445,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::names::window_init(info.info.cocoa.window,capture_directory);
     srw64::debug_ui::window_init(info.info.cocoa.window);
+    srw64::notices::window_init(info.info.cocoa.window);
     srw64::settings::window_init(window,capture_directory);
     srw64::rule_menu::update();
 #endif
@@ -463,6 +465,7 @@ void srw64_update_window(void*) {
     srw64::settings_window::update();
     srw64::settings_window::control(capture_directory);
     srw64::names::window_update();
+    srw64::notices::update();
     srw64::debug::service_main();
     const bool editing_name=srw64::names::owns_input();
 #else

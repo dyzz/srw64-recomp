@@ -35,7 +35,7 @@
 
 | 方法 | 参数 | 说明 |
 | --- | --- | --- |
-| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、原生窗口与焦点、按住的虚拟键 |
+| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
 | `keys` | `press`+`hold_ms` / `down` / `up` / `release_all` | 游戏键盘；键名 `z x space return up down left right q e i k j l w a s d escape f6 f7 f8`，组合用 `+`，如 `e+return` |
 | `buttons` | `buttons`、`vis` | N64 手柄层按键（`a b z start up down left right l r c_up c_down c_left c_right`），立即生效，不经过键盘层 |
 | `screenshot` | `path`、`overlays`、`window`、`timeout_ms` | 抓下一次呈现的 GPU 回读，再把游戏窗口上可见的 AppKit 覆盖层（如姓名页）画上去；`window` 为其他窗口（如 `"选项"`）时直接渲染该 AppKit 窗口。不依赖完整诊断。 |
@@ -72,7 +72,7 @@
 
 ## MCP 工具
 
-`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`title_major`、`text`、`event`）、`srw64_events`、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
+`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
 
 ## 与现有控制文件的关系
 

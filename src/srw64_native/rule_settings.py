@@ -24,6 +24,7 @@ RULE_FIXES = {
     "boss-dummy-half": "头目的假身次数减半，至少保留 1 次（原版为部署记录里的 2/3/5/7）",
     "boss-dummy-none": "头目不再拥有假身；与减半同时勾选时以本项为准",
     "upgrade-cap-break": "改造上限突破：所有机体可改到 15 段（原作上限 6～15），换装、追加武器仍按原作上限",
+    "upgrade-refund": "剧情让机体离开部队（离队、换乘后旧机消失、合体）时，按现价退回玩家花在该机体上的改造资金；换机被继承的段数和剧情赠送的段数不退",
 }
 # Bug fixes; a first launch turns these on.
 CORRECTIONS = ("esp-level", "seisenshi-level", "limit-cap", "potential-bands", "potential-half",

@@ -8,10 +8,12 @@
 #include "rule_probe.hpp"
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
+#include "upgrade_refund.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
 namespace upgrades=srw64::upgrades;
+namespace refund=srw64::refund;
 extern "C" {
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
@@ -271,6 +273,32 @@ void load_0008F4B0_func_801D1100(uint8_t* rdram, recomp_context* ctx) {
     // Selected weapon: the confirmed upgrade and full-upgrade weapons.
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
     srw64_original_upgrade_weapon_step(rdram, ctx);
+}
+// Upgrade refund (upgrade_refund.hpp): the story routines that delete a player's
+// machine open a scope, and the deletion inside it pays the upgrades back.
+void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
+    // Registration (a1 the new machine): its predecessor's levels move to it, so
+    // deleting that instance here is not a loss.
+    refund::Registration registration(rdram, int16_t(ctx->r5));
+    srw64_original_unit_register(rdram, ctx);
+}
+void resident_func_800AA464(uint8_t* rdram, recomp_context* ctx) {
+    // Pilot a0 leaves machine a1; the instance numbered a2 is deleted (3D5A modes
+    // 3000/4000, or a registration's old machine).
+    refund::Removal removal(refund::Source::removal);
+    srw64_original_unit_remove(rdram, ctx);
+}
+void resident_func_800AB808(uint8_t* rdram, recomp_context* ctx) {
+    // 3D6A mode 3, the ゴッドマーズ merge: ガイヤー is deleted without passing anything on.
+    refund::Removal removal(refund::Source::merge);
+    srw64_original_unit_merge(rdram, ctx);
+}
+void resident_func_800AA3C4(uint8_t* rdram, recomp_context* ctx) {
+    // Frees the machine instance in a0, its weapons and pilot links. Sales and map
+    // removals call this outside the scopes above and are never refunded.
+    const auto paid = refund::before_delete(rdram, uint32_t(ctx->r4));
+    srw64_original_unit_delete(rdram, ctx);
+    if (paid && srw64_game_hooks.refund) srw64_game_hooks.refund(rdram, paid->unit, paid->cost.total());
 }
 void load_00107BF0_func_801C2600(uint8_t* rdram, recomp_context* ctx) {
     // Sale price of the unit in a0, a1 its row in the sale table.

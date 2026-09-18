@@ -1,0 +1,308 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "refund",
+  "note": "The upgrade-refund rule (docs/gameplay/rule-fixes.md 2.6) end to end. The opening removes machines the four ways the refund treats differently: a plain removal (3D5A 4000), a swap whose old machine is the new one's predecessor (logged, no refund), a machine with a story grant (3D6C levels below the grant are free), and the ゴッドマーズ merge (3D6A 3). Removed machines are only registered, never deployed, since 4000 on a unit still on the map breaks the roster (mini-stage.md). Run with SRW64_RULE_FIXES=upgrade-refund and read upgrade-refund-events.jsonl, the banners, and the dialogue history.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "note": "タケル / ガイヤー 185"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ — protagonist"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            93,
+            0,
+            130,
+            500
+          ],
+          "note": "トロワ + ヘビーアームズ 130 into the roster only (not on the map)"
+        },
+        {
+          "op": "3D6C",
+          "args": [
+            130,
+            4
+          ],
+          "note": "four levels on every stat and weapon; 130 has no story grant, so all count as bought"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            93,
+            0,
+            130,
+            4000
+          ],
+          "note": "removal: refund of four levels"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            92,
+            0,
+            127,
+            500
+          ],
+          "note": "デュオ + デスサイズ 127"
+        },
+        {
+          "op": "3D6C",
+          "args": [
+            127,
+            2
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            92,
+            0,
+            128,
+            127
+          ],
+          "note": "swap to デスサイズH: 127 is 128's predecessor, its levels move on, the deletion of 127 is logged without a refund"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            92,
+            0,
+            128,
+            4000
+          ],
+          "note": "removal of 128: refund of the inherited levels, bought on 127"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            95,
+            0,
+            119,
+            500
+          ],
+          "note": "ヒイロ + ウイングゼロ 119, whose story grant is 3"
+        },
+        {
+          "op": "3D6C",
+          "args": [
+            119,
+            5
+          ]
+        },
+        {
+          "op": "3D5A",
+          "args": [
+            95,
+            0,
+            119,
+            4000
+          ],
+          "note": "removal: every item at 5, so levels 3 and 4 are refunded and the first three are free"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D6C",
+          "args": [
+            185,
+            2
+          ],
+          "note": "タケル's ガイヤー on the map"
+        },
+        {
+          "op": "3D6A",
+          "args": [
+            3
+          ],
+          "note": "ゴッドマーズ merge: ガイヤー deleted, refund of two levels"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D3E",
+          "args": [
+            17460
+          ],
+          "note": "one dialogue line so the history can be opened with the notices in it"
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

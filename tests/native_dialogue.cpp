@@ -100,6 +100,22 @@ int main() {
     fast_reader.update(0,804);
     assert(fast_reader.update(Reader::A,806));
     assert(fast_reader.history.back().text==u"第二句。");
+    // A host notice (an upgrade refund) goes before the fragment being read, keeps
+    // every language, and does not take part in the speaker colours.
+    Reader noted;
+    noted.begin(1,100,0,u"甲",typeset(u"第一句。",13),0);
+    noted.begin(2,101,0,u"乙",typeset(u"第二句。",13),2);
+    assert(noted.history.back().warm_name);
+    noted.note(99,{{"ja",u"返金"},{"zh-Hans",u"退款"}},"zh-Hans");
+    assert(noted.history.size()==3 && noted.history.back().event==2);
+    assert(noted.history[1].notice && noted.history[1].complete && noted.history[1].text==u"退款");
+    noted.boundary();
+    noted.note(100,{{"zh-Hans",u"退款二"}},"zh-Hans");
+    assert(noted.history.back().notice && noted.history.back().event==100);
+    noted.begin(3,102,0,u"甲",typeset(u"第三句。",13),4);
+    assert(!noted.history.back().warm_name);  // 甲 after 乙, as if no notice were there
+    noted.switch_language(typeset(u"第三句。",13),"ja",5);
+    assert(noted.history[1].text==u"返金" && noted.history[3].text.empty());
     // A long translation must not make the automatic delay on its FIRST page
     // depend on the length of all unread pages that follow it.
     Reader automatic;

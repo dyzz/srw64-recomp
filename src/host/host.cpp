@@ -17,7 +17,7 @@
 #include "script_inject.hpp"
 #include "mini_stage.hpp"
 #include "rule_fixes.hpp"
-#include "upgrade_rules.hpp"
+#include "upgrade_refund.hpp"
 #if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
 #include "audio.hpp"
@@ -90,6 +90,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     const auto rom=recomp::get_rom();
     srw64::upgrades::initialize(rom.data(),rom.size());
     srw64::upgrades::configure(output_dir);
+    srw64::refund::configure(output_dir);
 #if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
 #endif

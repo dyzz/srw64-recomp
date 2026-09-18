@@ -14,7 +14,8 @@ UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "con
 UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_note", "rules_defaults",
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",
             "settings_language", "settings_language_note",
-            "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note"}
+            "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
+            "refund_notice"}
 UI_KEYS |= {"rule_" + fix.replace("-", "_") for fix in rule_settings.RULE_FIXES}
 
 
