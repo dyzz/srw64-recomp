@@ -24,7 +24,7 @@ make check
 1. `make recomp-data`：核对原 ROM 并提取文本、资源与游戏数据；
 2. `tools/content/compile_profile.py`：验证语言目录、原文摘要、控制符和美术清单；
 3. `make recomp-native-check`：原生组件验证；
-4. `tools/recomp/run/run_host_probe.py` 与对应验证脚本：匹配 ROM、输入、存档与目标画面的原生运行证据；必要时使用同目录的参考模拟器工具对照。
+4. `tools/recomp/run/run_host_probe.py` 与对应验证脚本：匹配 ROM、输入、存档与目标画面的原生运行证据；必要时使用同目录的参考模拟器工具对照。交互流程优先用[调试接口](docs/guide/debug-interface.md)（`tools/recomp/debug/srw64ctl.py` 或 MCP）驱动，不靠人工按键。
 
 静态检查、模拟器启动和目标游戏画面是不同证据层，文档和提交信息不得混为
 一谈。核心存档哈希用于标识一次检查点，不作为跨运行必须相同的确定性产物。
@@ -38,6 +38,8 @@ make check
 - 修改翻译时同时保留源文本、目标文本和控制 token，并更新对应测试或运行时
   截图路径。
 - 原始 ROM、字形表和工具链各有独立身份锁；来源变化时更新 provenance 并重新验证。
+- 新文档放进 `docs/` 下对应的主题目录（`guide/`、`gameplay/`、`native/`、`script/`、`data/`、`design/`）并加入 [docs/README.md](docs/README.md)；`tests/test_docs.py` 检查链接、文档里提到的仓库路径和索引。
+- 新增游戏按键、热键或原生界面时，同时让调试接口能驱动它；`tests/test_debug_coverage.py` 会检查按键与宿主方法的覆盖。
 
 建议提交主题使用 `recomp:`, `content:`, `runtime:`, `test:`, `docs:` 或 `chore:` 前缀，
 每个提交只覆盖一个可解释的证据边界。

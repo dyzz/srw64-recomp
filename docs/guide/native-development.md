@@ -1,6 +1,6 @@
 # 原生开发指南
 
-更新：2026-09-12。本文描述当前源码和开发入口；内置功能模块的当前范围见[路线图](../design/mod-roadmap.md)，外部包与公开 API 暂缓。所有路径相对仓库根目录。
+更新：2026-09-18。本文描述当前源码和开发入口；内置功能模块的当前范围见[路线图](../design/mod-roadmap.md)，外部包与公开 API 暂缓。所有路径相对仓库根目录。
 
 ## 当前可用范围
 
@@ -8,14 +8,15 @@
 
 | 能力 | 当前实现与限制 |
 | --- | --- |
-| 多语言 | F7 按 `ja` → `zh-Hans` → `en` 循环热切换，无弹窗并记住选择；标准双框对白与新增原生 UI 已接入。中英文各覆盖相同的 153 条草稿和 40 条原生 UI 文案，不是全游戏翻译。缺译按完整 TextKey 回退日文。 |
+| 多语言 | F7 按 `ja` → `zh-Hans` → `en` 循环热切换，无弹窗并记住选择；标准双框对白与新增原生 UI 已接入。中英文各覆盖相同的 153 条草稿和全部 66 条原生 UI 文案，不是全游戏翻译。缺译按完整 TextKey 回退日文。 |
 | Original / HD | F6 同时切换纯美术替换和 5600 模型；语言、字体、字号与分辨率不随 F6 改变。 |
 | 5600 模型 | Original 保留原版八面模型；HD 按 profile 使用原生 GPU 水滴。任意模型包接口尚未开放。 |
 | 阅读体验 | 四档自动、逐字、分页、回看、速度/进度和活动对话框指示；原脚本保留事件推进权。 |
 | 存档恢复 | 历史 SRAM 按完成报告、ROM 身份和摘要筛选，支持列表/显式恢复；已验证第一话通关档冷启动到整备和驾驶员详情。安全节点自动保存尚未实现，见[恢复记录](native-save-recovery.md)。 |
-| 姓名输入 | macOS 游戏窗口内页面、原生字段与双人确认；原字库范围与原 7/7/5 字数上限。任意 Unicode、SRAM 冷启动往返和人工 IME 候选流程未验收。 |
+| 姓名输入 | macOS 游戏窗口内页面、原生字段与双人确认；原字库范围与原 7/7/5 字数上限。输入法组字可经调试接口模拟；任意 Unicode、SRAM 冷启动往返和输入法候选窗未验收。 |
 | 玩法 Mod | `gameplay_mods` 必须为空。机体/人物/武器 schema、关卡编辑、内容类型注册和公开 SDK 仍是计划。 |
-| 平台 | 当前图形宿主为 macOS SDL2 + RT64/Metal，姓名页为 AppKit；其他平台后端未实现。 |
+| 平台 | 只支持 macOS：图形宿主为 SDL2 + RT64/Metal，姓名页、菜单栏与设置窗口为 AppKit。其他平台暂不考虑。 |
+| 调试 | `SRW64_DEBUG=1` 时宿主提供 JSON-RPC 调试接口，命令行与 MCP 可驱动全部游戏输入和原生界面，见[调试接口与 MCP](debug-interface.md)。 |
 
 **退出生命周期：** 已增加游戏线程登记、协作停止、等待唤醒和完整 join，再释放 RDRAM；现代姓名→剧情关窗、原版姓名页关窗及 VI 自动退出均有最终版本验证。入口范围、系统采样缺失与剩余限制见[修复证据](../native/native-window-close.md)。这不替代存档冷启动恢复验收。
 
@@ -97,11 +98,13 @@ cmake --build build/recomp/gfx-build \
 make recomp-native-check
 ```
 
-`recomp-native-check` 汇集音频队列、开场控制/适配、姓名桥接、内容、Core Text 对白、计时器退出、游戏线程退出和 VI 回放测试，及随机状态探针，共 10 个测试程序。其中独立编译的 8 个程序使用 ASan/UBSan，内容/对白两个程序使用当前 CMake 配置。它不启动游戏，不替代 GPU 或整条关卡验收。需要 ROM/旧捕获的历史布局与姓名测试继续按各自文档运行。
+`recomp-native-check` 汇集音频队列、开场控制/适配、姓名桥接、内容、Core Text 对白、计时器退出、游戏线程退出、VI 回放、随机状态探针、脚本注入、迷你关卡、可选规则、基础修复、改造规则和调试协议测试，共 16 个测试程序。其中独立编译的 14 个程序使用 ASan/UBSan，内容/对白两个程序使用当前 CMake 配置。它不启动游戏，不替代 GPU 或整条关卡验收。需要 ROM/旧捕获的历史布局与姓名测试继续按各自文档运行。
 
 运行时适配不直接编辑固定 N64ModernRuntime checkout，而是在 `build/recomp/runtime-lifecycle/` 生成对应源文件和 manifest。RT64 适配由 `prepare_rt64.py` 独立管理并记录来源。手写代码、配置和 manifest 规则是源码；生成的 CPU/RSP C、依赖克隆和构建日志都留在 `build/`。
 
 ## 静音验证与窗口控制
+
+新的实机检查优先用[调试接口](debug-interface.md)：`srw64ctl.py launch` 启动隔离会话后按键、截图、读状态、操作原生界面，不需要人工按键。下面的文件控制通道继续服务已有的有界验证脚本。
 
 交互检查可使用新增的静音参数：
 
@@ -145,7 +148,7 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 | `SRW64_WINDOW_CONTROL=1` / `rule-control.json` | `{"schema":"srw64.rule-control.v1","sequence":N,"item":"<规则 ID｜defaults｜original｜all>"}`；按下菜单中对应条目，结果与全部条目勾选状态写入 `rule-menu-events.jsonl`。 |
 | `SRW64_WINDOW_CONTROL=1` / `settings-control.json` | `{"schema":"srw64.settings-control.v1","sequence":N,"action":"open｜close｜press","id":"rule:<ID>｜preset:<键>｜locale:<语言>｜images:<original｜hd>"}`；操作设置窗口，结果与全部控件状态写入 `settings-window-events.jsonl`。见[设置窗口](../native/settings-window.md)。 |
 | `SRW64_RULE_PROBE=1` | 第一次停在 `3D38` 且敌我都有单位时，用各组规则调用两个命中率函数并写 `rule-probe.jsonl`；之后两函数的每次调用写 `rule-calls.jsonl`。 |
-| `SRW64_DEBUG=1` / `debug.sock` | 调试接口：宿主在运行目录监听 Unix socket，每行一条 JSON-RPC 2.0（状态、游戏键盘、手柄、截图、原生界面点击/按键/输入、菜单、设置、退出）。一般通过 `tools/recomp/debug/srw64ctl.py` 或 MCP 使用，见[调试接口与 MCP](debug-interface.md)。 |
+| `SRW64_DEBUG=1` / `debug.sock` | 调试接口：宿主在运行目录监听 Unix socket，每行一条 JSON-RPC 2.0（状态、游戏键盘、手柄、截图、原生界面点击/按键/输入、菜单、设置、窗口、退出）。一般通过 `tools/recomp/debug/srw64ctl.py` 或 MCP 使用，见[调试接口与 MCP](debug-interface.md)。 |
 | `SRW64_AUDIO_CAPTURE_FROM/_TO=<vi>` | 把 `--audio` 的诊断采集限定在这段 VI 内（默认只留开声后的前 30 秒，对几分钟后才出现的命令没用）。迷你关卡的有界音频运行必须设置 `_TO`。窗口逻辑见 `audio_timing.hpp` 的 `Srw64AudioCaptureWindow`；播放的声音不受影响。 |
 
 每种协议独立维护递增序号；一个运行目录只使用一个控制驱动，完整写入临时文件后原子替换。普通启动器不主动启用这些 QA 开关，开启调试用的环境变量只作用于对应测试命令。
@@ -176,6 +179,6 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 
 等待 `report.json` 和进程结束。若进程卡住，先检查 PID 的命令、父进程和工作目录，再只终止确认属于本次测试的 PID，并保留超时/异常日志。不要使用 `killall Python`、`killall node` 或按整个工作区路径杀进程；Codex 工具也可能以此为工作目录。
 
-`active.lock` 是 `flock` 文件，文件存在不等于仍有进程持锁。不要靠删锁文件解决运行中的冲突。验证目录、截图、来源 manifest 和 SRAM 都有追溯价值，不进行宽泛的 `git clean` 或清空 `build/`。源码目录的 `__pycache__` / `.pyc` 可在检查完成后删除；editable Python 安装产生的 `egg-info` 是本地安装元数据，保持忽略即可。
+`active.lock` 是 `flock` 文件，文件存在不等于仍有进程持锁。不要靠删锁文件解决运行中的冲突。
 
-本轮整理的检查与清理结果记录在本地 `build/recomp/cleanup-check/`；历史退出缺陷证据继续保留在 `build/recomp/window-close-check/`。
+`build/` 里的一次性运行目录（`qa/`、`debug/` 下的会话、各类探针输出）只是过程证据，结论写进文档后即可删除；但不要宽泛地 `git clean` 或清空 `build/`：`build/recomp/profile-play/` 是试玩存档与记住的设置，`upstream/`、`gfx-build/` 和生成代码重建很慢。源码目录的 `__pycache__` / `.pyc` 可在检查完成后删除；editable Python 安装产生的 `egg-info` 是本地安装元数据，保持忽略即可。
