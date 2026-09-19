@@ -1,5 +1,8 @@
 VENV ?= .venv
 PYTHON := $(VENV)/bin/python
+# The interpreter that creates $(VENV); everything else runs inside the venv.
+# macOS's own python3 is 3.9, so pass e.g. PYTHON3=/opt/homebrew/bin/python3 if needed.
+PYTHON3 ?= python3
 ROM ?= rom.z64
 NATIVE_CXX ?= clang++
 NATIVE_TEST_FLAGS := -std=c++20 -fsanitize=address,undefined -g
@@ -8,8 +11,13 @@ RECOMP_RUNTIME := $(RECOMP_BUILD)/upstream/N64ModernRuntime
 
 .PHONY: bootstrap test check recomp-bootstrap recomp-layout recomp-scan recomp-lz recomp-cpu recomp-audio-queue-test recomp-intro-test
 
-bootstrap:
-	python3 -m venv $(VENV)
+$(PYTHON):
+	@$(PYTHON3) -c 'import sys; sys.exit(sys.version_info < (3, 11))' 2>/dev/null || { \
+	  echo "Python 3.11 or newer is required; $(PYTHON3) is $$($(PYTHON3) --version 2>&1)." >&2; \
+	  echo "Install one (brew install python) and run: make bootstrap PYTHON3=/path/to/python3" >&2; exit 1; }
+	$(PYTHON3) -m venv $(VENV)
+
+bootstrap: $(PYTHON)
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -e . -r requirements.lock
 
@@ -20,24 +28,20 @@ check: test
 	$(PYTHON) -m compileall -q src tools tests
 	$(PYTHON) -m pip check
 
-recomp-bootstrap:
-	python3 tools/recomp/toolchain/bootstrap.py
+recomp-bootstrap: $(PYTHON)
+	$(PYTHON) tools/recomp/toolchain/bootstrap.py
 
-recomp-layout:
-	python3 tools/recomp/toolchain/analyze_layout.py --rom $(ROM)
+recomp-layout: $(PYTHON)
+	$(PYTHON) tools/recomp/toolchain/analyze_layout.py --rom $(ROM)
 
-recomp-scan:
-	python3 tools/recomp/toolchain/scan_functions.py --rom $(ROM)
+recomp-scan: $(PYTHON)
+	$(PYTHON) tools/recomp/toolchain/scan_functions.py --rom $(ROM)
 
 recomp-lz:
 	$(PYTHON) tools/recomp/probes/run_lz_probe.py --limit 0
 
-# libultra candidates for audit_library_symbols.py (n64sym is built by recomp-bootstrap).
-$(RECOMP_BUILD)/init-library-symbols.txt:
-	$(RECOMP_BUILD)/tool-build/n64sym $(ROM) -s -f splat -o $@
-
-recomp-cpu: $(RECOMP_BUILD)/init-library-symbols.txt
-	python3 tools/recomp/toolchain/generate_cpu.py
+recomp-cpu: $(PYTHON)
+	$(PYTHON) tools/recomp/toolchain/generate_cpu.py
 
 recomp-audio-queue-test:
 	mkdir -p build/recomp

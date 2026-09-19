@@ -60,7 +60,7 @@ def matches(data: bytes, signature: dict) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--symbols", type=Path, default=ROOT / "build/recomp/init-library-symbols.txt")
+    parser.add_argument("--symbols", type=Path, default=ROOT / "config/recomp/n64sym-symbols.txt")
     parser.add_argument("--output", type=Path, default=ROOT / "build/recomp/library-audit.json")
     args = parser.parse_args()
     rom = (ROOT / "rom.z64").read_bytes()
