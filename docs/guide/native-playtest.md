@@ -4,14 +4,13 @@
 
 ## 启动
 
-双击仓库根目录的 `scripts/Play SRW64 Native.command`，或在仓库目录运行：
+先在仓库目录运行一次 `make`（见[原生开发指南](native-development.md#构建与日常检查)），然后双击 `scripts/Play SRW64 Native.command`，或在终端运行：
 
 ```sh
-.venv/bin/python tools/recomp/run/play_native.py \
-  --profile config/recomp/profiles/play-profile.json --new-game
+scripts/Play\ SRW64\ Native.command --language zh-Hans
 ```
 
-程序会检查 ROM 和生成代码身份并编译当前宿主，然后打开 macOS Metal 窗口。新克隆还没有任何存档，第一次必须带 `--new-game`（空 SRAM，从开场剧情开始）；以后不带它启动时，自动读取最近一次正常退出、可核验的试玩会话的 SRAM。
+脚本即 `tools/recomp/run/play_native.py --profile config/recomp/profiles/play-profile.json`，后面的参数原样传入。程序会检查 ROM 和生成代码身份，源码有变化时重新编译宿主，然后打开 macOS Metal 窗口。还没有任何试玩会话（也没有冻结备份）时直接从开场剧情开始新游戏；以后自动读取最近一次正常退出、可核验的试玩会话的 SRAM，`--new-game` 重新开始。已有会话但全部无法核验时会报错并停下，不会悄悄改成新游戏。
 
 | 参数 | 作用 |
 | --- | --- |

@@ -261,39 +261,27 @@ tools, CMake, Ninja, and SDL2 (`xcode-select --install`, then
 `brew install python cmake ninja sdl2`). Other dependencies are pinned in
 `config/recomp/toolchain.json`; setup downloads them from GitHub and builds them
 under `build/`. macOS's own `python3` is 3.9: if `python3` on your `PATH` is older
-than 3.11, `make bootstrap` says so; run it as
-`make bootstrap PYTHON3=/opt/homebrew/bin/python3`. Later steps use the `.venv`
-it creates.
+than 3.11, `make` says so; run it as `make PYTHON3=/opt/homebrew/bin/python3`.
 
 ```sh
-# ROM-independent Python checks.
-make bootstrap
-make check
+# Everything: Python environment, pinned toolchain, generated game code and the
+# game host. Needs rom.z64. Run it again after pulling changes.
+make
 
-# Prepare the pinned native toolchain and generate game code.
-# These steps require the local ROM.
-make recomp-bootstrap
-make recomp-layout
-make recomp-scan
-make recomp-cpu
-.venv/bin/python tools/recomp/toolchain/prepare_rt64.py
-
-# First launch: a new game with original artwork; no local assets or saves needed.
-.venv/bin/python tools/recomp/run/play_native.py \
-  --profile config/recomp/profiles/play-profile.json \
-  --language en --new-game
+# Play. The first launch starts a new game; later ones continue from your saves.
+scripts/Play\ SRW64\ Native.command --language en
 ```
 
-The first launch builds the host, then opens the game window. Save in game
-before quitting; later launches without `--new-game` (or a double-click on
-`scripts/Play SRW64 Native.command`) continue from the most recent intact
-session. Use `--language ja` or `--language zh-Hans` to start in another
-language, `--mute` to disable sound, and `--rules original` for the unmodified
-rules. **F6** switches to HD only when the matching experimental art is
-installed under `assets/` (not published). The [playtest guide](docs/guide/native-playtest.md)
-lists every option and key.
+`scripts/Play SRW64 Native.command` can also be double-clicked in Finder. Save in
+game before quitting; the next launch continues from the most recent intact
+session, and `--new-game` starts over. Use `--language ja` or `--language zh-Hans`
+to start in another language, `--mute` to disable sound, and `--rules original`
+for the unmodified rules. **F6** switches to HD only when the matching
+experimental art is installed under `assets/` (not published). The
+[playtest guide](docs/guide/native-playtest.md) lists every option and key.
 
-After the native build has been configured, `make recomp-native-check` runs the
+`make check` runs the ROM-independent Python checks. After `make`,
+`make recomp-native-check` runs the
 C++ component checks. These are separate from Python CI and from actual gameplay
 validation. The [development guide](docs/guide/native-development.md) has detailed
 build steps and module boundaries; most technical notes are currently Chinese.
@@ -357,23 +345,23 @@ ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 环境要求：Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、Ninja 和 SDL2
 （`xcode-select --install` 后 `brew install python cmake ninja sdl2`）；
 其余依赖的版本固定在 `config/recomp/toolchain.json`，准备时从 GitHub 下载并构建到本地 `build/`。
-macOS 自带的 `python3` 是 3.9：`PATH` 上的 `python3` 低于 3.11 时 `make bootstrap` 会直接提示，
-改用 `make bootstrap PYTHON3=/opt/homebrew/bin/python3`；之后各步都使用它建立的 `.venv`。
-按上方英文部分的命令依次准备 Python 环境、原生依赖和生成代码，首次启动带 `--new-game`：
+macOS 自带的 `python3` 是 3.9：`PATH` 上的 `python3` 低于 3.11 时 `make` 会直接提示，
+改用 `make PYTHON3=/opt/homebrew/bin/python3`。
 
 ```sh
-.venv/bin/python tools/recomp/run/play_native.py \
-  --profile config/recomp/profiles/play-profile.json \
-  --language zh-Hans --new-game
+# 一条命令完成全部准备：Python 环境、固定版本的工具链、生成的游戏代码和游戏宿主。需要 rom.z64。
+make
+
+# 开始游戏。第一次启动直接开新游戏，以后从存档继续。
+scripts/Play\ SRW64\ Native.command --language zh-Hans
 ```
 
-首次启动会先编译宿主再打开游戏窗口。退出前请在游戏内存档；以后不带 `--new-game` 启动
-（或双击 `scripts/Play SRW64 Native.command`）会从最近一次可核验的会话继续。
-`--language ja`／`en` 以日文或英文启动，`--mute` 关闭声音，`--rules original` 使用原版规则。
-只有在 `assets/` 下装有对应的实验 HD 素材（不公开发布）时才可用 **F6** 切到高清。
-全部参数和按键见[原生试玩](docs/guide/native-playtest.md)。
+也可以在 Finder 里双击 `scripts/Play SRW64 Native.command`。退出前请在游戏内存档；下次启动会从最近一次
+可核验的会话继续，`--new-game` 重新开始。`--language ja`／`en` 以日文或英文启动，`--mute` 关闭声音，
+`--rules original` 使用原版规则。只有在 `assets/` 下装有对应的实验 HD 素材（不公开发布）时才可用
+**F6** 切到高清。全部参数和按键见[原生试玩](docs/guide/native-playtest.md)。
 
-`make check` 不需要 ROM；完成原生构建配置后，`make recomp-native-check` 运行 C++ 组件检查。
+`make check` 不需要 ROM；`make` 之后，`make recomp-native-check` 运行 C++ 组件检查。
 Python CI、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
 [原生开发指南](docs/guide/native-development.md)。
 

@@ -9,12 +9,30 @@ NATIVE_TEST_FLAGS := -std=c++20 -fsanitize=address,undefined -g
 RECOMP_BUILD := build/recomp
 RECOMP_RUNTIME := $(RECOMP_BUILD)/upstream/N64ModernRuntime
 
-.PHONY: bootstrap test check recomp-bootstrap recomp-layout recomp-scan recomp-lz recomp-cpu recomp-audio-queue-test recomp-intro-test
+.PHONY: all host bootstrap test check recomp-bootstrap recomp-layout recomp-scan recomp-lz recomp-cpu recomp-audio-queue-test recomp-intro-test
+.DEFAULT_GOAL := all
+
+# `make`: from a fresh clone to a built game host, given the ROM at rom.z64.
+# Then play with scripts/Play SRW64 Native.command (README).
+all: $(ROM)
+	@$(MAKE) --no-print-directory bootstrap
+	@$(MAKE) --no-print-directory recomp-bootstrap
+	@$(MAKE) --no-print-directory recomp-layout
+	@$(MAKE) --no-print-directory recomp-scan
+	@$(MAKE) --no-print-directory recomp-cpu
+	@$(MAKE) --no-print-directory host
+
+$(ROM):
+	@echo "Missing $(ROM): put your Super Robot Taisen 64 ROM (Japan, Rev 0) there; see README." >&2; exit 1
+
+# The RT64/Metal game host, built as the launcher would build it.
+host: $(PYTHON)
+	$(PYTHON) tools/recomp/run/run_host_probe.py --graphics --build-only
 
 $(PYTHON):
 	@$(PYTHON3) -c 'import sys; sys.exit(sys.version_info < (3, 11))' 2>/dev/null || { \
 	  echo "Python 3.11 or newer is required; $(PYTHON3) is $$($(PYTHON3) --version 2>&1)." >&2; \
-	  echo "Install one (brew install python) and run: make bootstrap PYTHON3=/path/to/python3" >&2; exit 1; }
+	  echo "Install one (brew install python) and run: make PYTHON3=/path/to/python3" >&2; exit 1; }
 	$(PYTHON3) -m venv $(VENV)
 
 bootstrap: $(PYTHON)

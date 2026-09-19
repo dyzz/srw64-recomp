@@ -71,22 +71,17 @@ flowchart LR
 
 ## 构建与日常检查
 
-基础 Python 检查不需要 ROM、字体或模拟器：
+`make` 一条命令从新克隆构建到可运行的游戏宿主（需要仓库根目录的 `rom.z64`），依次执行：
 
-```sh
-make bootstrap
-make check
-```
+| 目标 | 作用 |
+| --- | --- |
+| `bootstrap` | 用 `PYTHON3`（默认 `python3`，需 3.11+）建立 `.venv` 并安装本项目；之后各步都在 `.venv` 里运行 |
+| `recomp-bootstrap` | 按 `config/recomp/toolchain.json` 下载固定版本的上游依赖，编译 N64Recomp、RSPRecomp、n64sym |
+| `recomp-layout`、`recomp-scan` | 核对 ROM 布局，扫描函数边界 |
+| `recomp-cpu` | 生成 CPU 代码；libultra 候选符号取自入库的 `config/recomp/n64sym-symbols.txt` |
+| `host` | `run_host_probe.py --graphics --build-only`：准备 RT64，编译 `build/recomp/gfx-build/srw64-gfx-host`，不启动 |
 
-原生依赖需要本机 C/C++ 工具链、CMake、Ninja、SDL2 和本地原 ROM。版本来自 `config/recomp/toolchain.json`。首次准备可参考[探针构建步骤](../design/recomp-progress.md#可重跑入口)：
-
-```sh
-make recomp-bootstrap
-make recomp-layout
-make recomp-scan
-make recomp-cpu
-.venv/bin/python tools/recomp/toolchain/prepare_rt64.py
-```
+各目标也可单独运行。基础 Python 检查不需要 ROM、字体或模拟器：`make bootstrap check`。
 
 `run_host_probe.py` 会复核 ROM 变体、代码兼容性、生成结果与上游版本，并按需配置/构建宿主。HD 模式要求 `content/art/stage1-hd.json` 和 `content/ui/name-entry.json` 引用的本地美术文件存在且摘要一致。profile 默认 `images: original`：Original 在缺少 HD 素材时从原 ROM 提取原图启动，新克隆不需要 `assets/`；`--new-game` 不依赖开发者本地通关档。当前没有预编译发布包。
 

@@ -27,7 +27,8 @@ def digest(path: Path) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--output", type=Path, help="new run directory (required unless --build-only)")
+    parser.add_argument("--build-only", action="store_true", help="check the inputs and build the host, then exit without running it")
     parser.add_argument("--reuse-build-from", type=Path, help="reuse an identical existing binary from a prior run after checking source, ROM and ABI fingerprints")
     parser.add_argument("--variant", choices=("jp", "model5600"), default="jp", help="pinned ROM resource variant; code compatibility is verified before building")
     parser.add_argument("--vis", type=int, default=600)
@@ -50,6 +51,10 @@ def main() -> int:
     parser.add_argument("--interactive", action="store_true", help="keyboard play until the window closes; no automatic VI timeout or input script")
     parser.add_argument("--diagnostics", choices=("light", "full"), help="interactive default: light (no periodic GPU/8 MiB RAM captures); bounded probes default: full")
     args = parser.parse_args()
+    if args.build_only and (args.profile or args.input or args.save_from or args.interactive or args.reuse_build_from):
+        parser.error("--build-only only builds; it takes no run options")
+    if not args.build_only and args.output is None:
+        parser.error("--output is required")
     diagnostics = args.diagnostics or ("light" if args.interactive else "full")
     profile = None
     if args.profile:
@@ -140,10 +145,11 @@ def main() -> int:
         initial_save = {"path": str(args.save_from), "sha256": digest(args.save_from)}
         if args.save_sha256 is not None and initial_save["sha256"] != args.save_sha256:
             raise RuntimeError("initial SRAM differs from the selected recorded digest")
-    output = args.output.resolve()
-    if output.exists():
-        raise RuntimeError("output directory must be new")
-    output.parent.mkdir(parents=True, exist_ok=True)
+    output = args.output.resolve() if args.output else None
+    if output is not None:
+        if output.exists():
+            raise RuntimeError("output directory must be new")
+        output.parent.mkdir(parents=True, exist_ok=True)
     rom_path, variant, compatibility = load_variant(args.variant)
     prepared_profile = None
     if profile:
@@ -210,6 +216,9 @@ def main() -> int:
     for index, command in enumerate(commands):
         with (build / f"probe-build-{index}.log").open("w") as log:
             subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, check=True)
+    if args.build_only:
+        print(f"Built {binary.relative_to(ROOT)}", flush=True)
+        return 0
     lifecycle = json.loads((ROOT / "build/recomp/runtime-lifecycle/manifest.json").read_text())
     command = [str(binary), str(rom_path), str(output), str(args.vis)]
     input_report = None
