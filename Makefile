@@ -32,7 +32,11 @@ recomp-scan:
 recomp-lz:
 	$(PYTHON) tools/recomp/probes/run_lz_probe.py --limit 0
 
-recomp-cpu:
+# libultra candidates for audit_library_symbols.py (n64sym is built by recomp-bootstrap).
+$(RECOMP_BUILD)/init-library-symbols.txt:
+	$(RECOMP_BUILD)/tool-build/n64sym $(ROM) -s -f splat -o $@
+
+recomp-cpu: $(RECOMP_BUILD)/init-library-symbols.txt
 	python3 tools/recomp/toolchain/generate_cpu.py
 
 recomp-audio-queue-test:
