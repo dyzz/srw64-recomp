@@ -229,6 +229,24 @@
       "caption": "与 24 同一运行：在窗口里点选「简体中文」后，窗口与游戏同时切换语言，标题重取、宽度重新适配。",
       "status": "approved-for-readme",
       "modified": false
+    },
+    {
+      "caption": "调试接口实拍（运行 20260919T074648.263971Z，960×720）：第一话通关档读入整备，选「リンク」出现的原生联动页，已勾选高达 F91 与赞博特3，焦点在赞博特3。头像由 ROM 头像表按角色号解出。",
+      "file": "26-link-page-zh.png",
+      "modified": false,
+      "sha256": "70bfc85cb6b1cccbeed1b5e152b8354799b503149736914cbe985a29ce40474c",
+      "source": "build/recomp/debug/20260919T074648.263971Z/debug-shots/shot-2.png",
+      "status": "approved-for-readme",
+      "title": "26 · 联动页（中文）/ Link page (Chinese)"
+    },
+    {
+      "caption": "另一次运行（20260919T134823.000000Z-linkstage）：勾选同样两作后「次のマップへ」进入第 2 话「合流」（场景 117），F91、ビギナ・ギナ 与ザンボット三机以我方登场，シーブック 的开场台词。",
+      "file": "27-link-stage.png",
+      "modified": false,
+      "sha256": "9563e846567eb869ee8d854eb532f01c1df2d3a34ef1381f9af44d468af6b240",
+      "source": "build/recomp/debug/20260919T134823.000000Z-linkstage/debug-shots/shot-6.png",
+      "status": "approved-for-readme",
+      "title": "27 · 联动关「合流」/ The link stage"
     }
   ],
   "video": {
