@@ -75,6 +75,13 @@ def main() -> int:
             return 1
         chosen = None
         skipped = []
+        if not args.new_game and args.restore_session is None:
+            # Nothing has been played in this tree yet (a fresh clone): start the
+            # story instead of asking for --new-game. Damaged saves still stop below.
+            candidates, initial = available_saves()
+            if not candidates and not initial.path.exists():
+                print("还没有存档，开始新游戏。/ No saves yet: starting a new game.", flush=True)
+                args.new_game = True
         if args.new_game:
             source = None
         else:
