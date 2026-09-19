@@ -97,7 +97,7 @@ class NamePortraitFallbackTests(unittest.TestCase):
             rom = bytearray(0x110000)
             faces = (27, 28, 25, 26, 31, 32, 29, 30)
             struct.pack_into('>8H', rom, 0x1090A0 + 0x801C6BF0 - 0x801C2600, *faces)
-            for face in faces:
+            for face in faces + (41, 230, 133, 131, 132, 152, 151, 153):
                 struct.pack_into('>2H', rom, 0x84220 + 4*face, 33, 34)
             pixels = struct.pack('>4H', 15, 96, 96, 0) + bytes(96*96)
             palette = bytes.fromhex('0003008000000000ffff')
@@ -105,7 +105,8 @@ class NamePortraitFallbackTests(unittest.TestCase):
                 table.return_value.extract.side_effect = lambda index: ((pixels if index == 33 else palette), None)
                 result = prepare_name_assets(root, bytes(rom), root / 'out', include_hd=False)
             self.assertIsNone(result['source_sha256'])
-            self.assertEqual(len(result['portraits']), 8)
+            self.assertEqual(len(result['portraits']), 16)
+            self.assertEqual(result['link_faces'], [[41, 230], [133, 131, 132], [152, 151, 153]])
             for row in result['portraits'].values():
                 self.assertNotIn('hd', row)
                 self.assertEqual(sha(Path(row['original']).read_bytes()), row['original_sha256'])

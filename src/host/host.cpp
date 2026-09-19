@@ -24,6 +24,7 @@
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
+#include "link_page.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #endif
@@ -162,9 +163,10 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *x = *y = 0;
 #if defined(SRW64_WITH_RT64)
     srw64_keyboard_input(buttons, x, y);
-    if(srw64::names::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
+    if(srw64::names::owns_input() || srw64::link_page::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
     *buttons = srw64::settings_window::filter_input(*buttons, *buttons != 0);
     *buttons = srw64::names::input(*buttons);
+    *buttons = srw64::link_page::input(*buttons);
     *buttons = srw64::intro::input(*buttons);
     *buttons = srw64::mini_stage::input(*buttons);
     *buttons = srw64::dialogue::input(*buttons);
@@ -312,6 +314,7 @@ int main(int argc, char** argv) {
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
     srw64::names::configure(output_dir);
+    srw64::link_page::configure(output_dir);
     srw64::intro::configure(output_dir);
     srw64_configure_audio(std::getenv("SRW64_AUDIO_OUTPUT") && std::string(std::getenv("SRW64_AUDIO_OUTPUT")) == "1", output_dir);
     cfg.gfx_callbacks.create_window = srw64_create_window;

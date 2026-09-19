@@ -22,6 +22,7 @@
 #include "dialogue_style.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "native_name_entry.hpp"
+#include "link_page.hpp"
 #include "native_dialogue.hpp"
 #endif
 #ifdef SRW64_CORETEXT_PROBE
@@ -444,6 +445,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::names::window_init(info.info.cocoa.window,capture_directory);
+    srw64::link_page::window_init(info.info.cocoa.window,capture_directory);
     srw64::debug_ui::window_init(info.info.cocoa.window);
     srw64::notices::window_init(info.info.cocoa.window);
     srw64::settings::window_init(window,capture_directory);
@@ -465,9 +467,11 @@ void srw64_update_window(void*) {
     srw64::settings_window::update();
     srw64::settings_window::control(capture_directory);
     srw64::names::window_update();
+    srw64::link_page::window_update();
     srw64::notices::update();
     srw64::debug::service_main();
-    const bool editing_name=srw64::names::owns_input();
+    // A native page owns the keyboard: no F6/F8 and no Esc-to-quit meanwhile.
+    const bool editing_name=srw64::names::owns_input() || srw64::link_page::owns_input();
 #else
     const bool editing_name=false;
 #endif
@@ -607,6 +611,7 @@ void srw64_destroy_window() {
     srw64::settings_window::shutdown();
     srw64::rule_menu::shutdown();
     srw64::names::window_shutdown();
+    srw64::link_page::window_shutdown();
 #endif
     keyboard_state = 0;
     srw64_close_audio();

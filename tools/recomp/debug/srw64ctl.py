@@ -93,6 +93,7 @@ def main() -> int:
     wait.add_argument("--dialogue", action="store_true")
     wait.add_argument("--intro", action="store_true")
     wait.add_argument("--name-page", action="store_true")
+    wait.add_argument("--link-page", action="store_true")
     wait.add_argument("--title-menu", action="store_true")
     wait.add_argument("--text")
     wait.add_argument("--event", help="log:kind, e.g. dialogue:font")
@@ -143,7 +144,8 @@ def main() -> int:
             result = client.call("settings", **optional(rules=args.rules, locale=args.locale, images=args.images))
         elif args.command == "wait":
             until = optional(vi=args.vi, text=args.text)
-            for flag, key in ((args.dialogue, "dialogue_active"), (args.intro, "intro_active"), (args.name_page, "name_page")):
+            for flag, key in ((args.dialogue, "dialogue_active"), (args.intro, "intro_active"), (args.name_page, "name_page"),
+                              (args.link_page, "link_page")):
                 if flag:
                     until[key] = True
             if args.title_menu:

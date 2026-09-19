@@ -74,7 +74,9 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp macos/debug_ui_macos.mm)
     # Native banners over the game window (an upgrade refund).
     target_sources(srw64-gfx-host PRIVATE macos/notices_macos.mm)
-    set_source_files_properties(macos/native_name_entry_macos.mm macos/window_test_control_macos.mm macos/presentation_settings_macos.mm macos/rule_menu_macos.mm macos/settings_window_macos.mm macos/debug_ui_macos.mm macos/notices_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+    # Link Battler series page in front of the リンク screen.
+    target_sources(srw64-gfx-host PRIVATE link_page.cpp macos/link_page_macos.mm)
+    set_source_files_properties(macos/native_name_entry_macos.mm macos/window_test_control_macos.mm macos/presentation_settings_macos.mm macos/rule_menu_macos.mm macos/settings_window_macos.mm macos/debug_ui_macos.mm macos/notices_macos.mm macos/link_page_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
     target_compile_definitions(srw64-gfx-host PRIVATE SRW64_NATIVE_DIALOGUE)
     target_link_libraries(srw64-gfx-host PRIVATE "-framework CoreText" "-framework CoreGraphics" "-framework CoreFoundation" "-framework Cocoa" "-framework QuartzCore")
     add_executable(srw64-frame-host frame.cpp graphics.cpp audio.cpp)

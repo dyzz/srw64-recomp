@@ -42,6 +42,7 @@
 | [改造段数与上限](gameplay/upgrade-limits.md) | “丑小鸭”上限、每段增量与价格、上限突破、升级规则文件 |
 | [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
 | [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
+| [Link Battler 联动](gameplay/link-battler.md) | F91、ゴーショーグン、ザンボット3 的开放判定、插入关、等级对齐与 GB 数据块格式；原生版用联动页勾选代替卡带 |
 
 ## 原生界面与呈现（native/）
 

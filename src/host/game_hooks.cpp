@@ -9,6 +9,7 @@
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
+#include "link_battler.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -310,6 +311,31 @@ void load_00107BF0_func_801C2600(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t row = uint32_t(int8_t(ctx->r5));
     srw64_original_sale_price(rdram, ctx);
     ctx->r2 = int32_t(upgrades::clamp_sale_price(rdram, row, uint32_t(ctx->r2)));
+}
+// Link Battler (link_battler.hpp, docs/gameplay/link-battler.md). The host has no
+// Transfer Pak, so the resident Game Boy pak driver answers as a Link Battler cartridge
+// that is always inserted, and its SRAM is the block link::prepare made. Every routine
+// reports success (0) in v0.
+void resident_func_80090F44(uint8_t* rdram, recomp_context* ctx) {ctx->r2 = 0;}   // init + read header
+void resident_func_80090FA0(uint8_t* rdram, recomp_context* ctx) {ctx->r2 = 0;}   // status
+void resident_func_80090FC4(uint8_t* rdram, recomp_context* ctx) {ctx->r2 = 0;}   // power a0
+void resident_func_800910C4(uint8_t* rdram, recomp_context* ctx) {ctx->r2 = 0;}   // title is S ROBOT LB
+void resident_func_80091120(uint8_t* rdram, recomp_context* ctx) {ctx->r2 = 0;}   // enable cartridge RAM
+void resident_func_80091284(uint8_t* rdram, recomp_context* ctx) {
+    // a0 write, a1 linear SRAM address, a2 buffer, a3 length.
+    srw64::link::transfer(rdram, uint32_t(ctx->r4) != 0, uint16_t(ctx->r5), uint32_t(ctx->r6), uint16_t(ctx->r7));
+    ctx->r2 = 0;
+}
+void load_0008F4B0_func_801D6FF4(uint8_t* rdram, recomp_context* ctx) {
+    // リンク screen set-up; it reads the cartridge. With the native series page up, the
+    // set-up waits until the player has chosen what to link (link_page.cpp).
+    if (srw64_game_hooks.link_begin && srw64_game_hooks.link_begin(rdram)) return;
+    srw64::link::prepare(rdram, 0);
+    srw64_original_link_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D70FC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.link_step && srw64_game_hooks.link_step(rdram, ctx)) return;
+    srw64_original_link_step(rdram, ctx);
 }
 void resident_func_8009FA94(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.choice) srw64_game_hooks.choice(rdram);

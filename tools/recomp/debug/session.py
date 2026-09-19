@@ -24,7 +24,8 @@ PROFILE = ROOT / "config/recomp/profiles/play-profile.json"
 EVENT_LOGS = {"dialogue": "dialogue-events.jsonl", "intro": "intro-events.jsonl", "name": "name-entry-events.jsonl",
               "rules": "rule-fixes-events.jsonl", "images": "image-mode-events.jsonl", "control": "control-events.jsonl",
               "script": "script-inject-events.jsonl", "mini_stage": "mini-stage-events.jsonl",
-              "settings": "settings-window-events.jsonl", "refunds": "upgrade-refund-events.jsonl"}
+              "settings": "settings-window-events.jsonl", "refunds": "upgrade-refund-events.jsonl",
+              "link": "link-events.jsonl"}
 
 
 class HostError(RuntimeError):
@@ -221,7 +222,7 @@ class Session:
 
 def satisfied(status: dict, until: dict, session: Session | None = None) -> bool:
     """Conditions: vi (at least), dialogue_active, intro_active, name_page (visible),
-    title_major, text (substring of the active dialogue), event ({log, kind})."""
+    link_page (visible), title_major, text (substring of the active dialogue), event ({log, kind})."""
     dialogue = status.get("dialogue") or {}
     intro = (status.get("intro") or {}).get("step") or {}
     checks = {
@@ -229,6 +230,7 @@ def satisfied(status: dict, until: dict, session: Session | None = None) -> bool
         "dialogue_active": lambda value: bool(dialogue.get("active")) == value,
         "intro_active": lambda value: bool(intro.get("active")) == value,
         "name_page": lambda value: bool((status.get("name_page") or {}).get("visible")) == value,
+        "link_page": lambda value: bool((status.get("link_page") or {}).get("visible")) == value,
         "title_major": lambda value: (status.get("intro") or {}).get("title_major") == value,
         "text": lambda value: any(value in box.get("text", "") for box in dialogue.get("boxes", []) if box.get("active")),
     }

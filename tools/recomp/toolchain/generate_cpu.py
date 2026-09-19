@@ -63,6 +63,16 @@ NATIVE_HOOKS = {
     "load_0008F4B0_func_801D0C7C": "srw64_original_upgrade_weapon_view",
     "load_0008F4B0_func_801D1100": "srw64_original_upgrade_weapon_step",
     "load_00107BF0_func_801C2600": "srw64_original_sale_price",
+    # Link Battler: the Game Boy pak driver becomes a virtual cartridge, and the
+    # リンク screen waits for the native series page (link_page.cpp).
+    "resident_func_80090F44": "srw64_original_gbpak_open",
+    "resident_func_80090FA0": "srw64_original_gbpak_status",
+    "resident_func_80090FC4": "srw64_original_gbpak_power",
+    "resident_func_800910C4": "srw64_original_gbpak_check_title",
+    "resident_func_80091120": "srw64_original_gbpak_enable_ram",
+    "resident_func_80091284": "srw64_original_gbpak_transfer",
+    "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
+    "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }
 
 

@@ -5,6 +5,7 @@
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
+#include "link_page.hpp"
 #include "presentation_settings.hpp"
 #include "presentation/image_mode.hpp"
 #include "rule_fixes.hpp"
@@ -110,7 +111,7 @@ json status(const json& params) {
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"notices",notices::recent()}};
+        {"link_page",link_page::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};

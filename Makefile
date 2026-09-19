@@ -61,7 +61,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-debug-protocol-test
+recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-link-battler-test recomp-debug-protocol-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -106,6 +106,12 @@ recomp-upgrade-refund-test:
 	mkdir -p build/recomp/upgrade-refund-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_upgrade_refund.cpp -o build/recomp/upgrade-refund-test/test
 	rm -rf build/recomp/upgrade-refund-test/test-run && build/recomp/upgrade-refund-test/test build/recomp/upgrade-refund-test/test-run
+
+.PHONY: recomp-link-battler-test
+recomp-link-battler-test:
+	mkdir -p build/recomp/link-battler-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_link_battler.cpp -o build/recomp/link-battler-test/test
+	build/recomp/link-battler-test/test
 
 .PHONY: recomp-rule-fixes-test
 recomp-rule-fixes-test:
