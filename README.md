@@ -149,6 +149,24 @@ An optional rules file also changes increments, prices and caps
 </details>
 
 <details open>
+<summary><strong>Link Battler without a cartridge · 无卡带的 Link Battler 联动</strong></summary>
+
+Choosing **リンク** in the intermission opens a native page instead of reading a
+Game Boy cartridge through the Transfer Pak. Tick Gundam F91, GoShogun or
+Zambot 3, and the original link screen follows; a special stage before the next
+battle brings their pilots and machines into the team, then the story resumes
+([Link Battler](docs/gameplay/link-battler.md)). / 整备画面选「リンク」时不再经 64GB Pak
+读 Game Boy 卡带，而是打开原生页面。勾选高达 F91、GoShogun 或赞博特3 后照常进入原版联动画面，
+下一场战斗前的特别关卡让这些驾驶员与机体加入部队，之后回到主线（见
+[Link Battler 联动](docs/gameplay/link-battler.md)）。
+
+| Link page / 联动页 | The special stage / 联动关 |
+| --- | --- |
+| ![Link page with Gundam F91 and Zambot 3 ticked / 勾选了高达 F91 与赞博特3 的联动页](docs/media/26-link-page-zh.png) | ![F91, Vigna Ghina and the Zambot machines join in the stage Gōryū / 联动关「合流」中登场的 F91、ビギナ・ギナ 与ザンボット](docs/media/27-link-stage.png) |
+
+</details>
+
+<details open>
 <summary><strong>Japanese / Chinese history comparison · 中日文回看对照</strong></summary>
 
 Twelve dialogue fragments were read through normal confirmation before opening
@@ -219,12 +237,13 @@ in progress.
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
 | Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
+| Link Battler | Choosing **リンク** in the intermission opens a native page instead of reading a Game Boy cartridge through the Transfer Pak: tick Gundam F91, GoShogun or Zambot 3, and the original link screen and special stage bring their pilots and machines into the team. See [Link Battler](docs/gameplay/link-battler.md). |
 | Settings | An **Options** menu in the menu bar and a settings window (**⌘,**) switch rules, language, and images while playing; choices are remembered. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, script injection and custom mini stages, native probes, and a [debug interface](docs/guide/debug-interface.md) with a command line and an MCP server that drives every game input and the native UI without manual key presses. |
 
 **Translation coverage:** Chinese and English each cover the same 153 draft
-records out of 51,174 extracted text records, plus all 77 native UI labels.
+records out of 51,174 extracted text records, plus all 99 native UI labels.
 No text records are marked reviewed yet. This count is an extraction denominator, not a
 claim that every menu or text renderer supports language switching. Original
 menus, battle labels, and baked-in text still have integration work remaining;
@@ -314,12 +333,13 @@ build steps and module boundaries; most technical notes are currently Chinese.
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、按住快进、跳过（开场文字与路线序章同样可跳）和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
 | 主角与姓名 | 游戏窗口内的现代页面：先从四张卡片（超级系／真实系 × 男／女）中选主角，再填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
 | 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破、剧情移除机体时退回改造资金并提示）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
+| Link Battler 联动 | 整备画面选「リンク」时打开原生页面，不再经 64GB Pak 读 Game Boy 卡带：勾选高达 F91、GoShogun 或赞博特3 后照常进入原版联动画面，特别关卡让这些驾驶员与机体加入部队。见 [Link Battler 联动](docs/gameplay/link-battler.md)。 |
 | 设置 | 菜单栏「选项」与设置窗口（**⌘,**）可在游戏中随时切换规则、语言和画面，选择会被记住。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、脚本注入与自制迷你关卡、原生运行探针，以及[调试接口](docs/guide/debug-interface.md)：命令行和 MCP 服务器可驱动全部游戏输入和原生界面，实机检查不需要人工按键。 |
 
 **翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 153 条草稿，
-另有全部 77 条原生 UI 文案；文本记录的已审校数量均为 0。
+另有全部 99 条原生 UI 文案；文本记录的已审校数量均为 0。
 该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换；原版菜单、
 战斗标签和图片内嵌文字仍有待接入。全量翻译排在当前的功能与游戏性工作之后。
 
