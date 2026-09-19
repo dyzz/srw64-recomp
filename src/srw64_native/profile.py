@@ -18,6 +18,12 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_language", "settings_language_note",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
             "refund_notice"}
+# The Link Battler series page in front of the リンク screen.
+UI_KEYS |= {"link_back", "link_confirm", "link_crew_f91", "link_crew_goshogun", "link_crew_label",
+            "link_crew_zambot", "link_hint", "link_joined", "link_keyboard_hint", "link_lead_f91",
+            "link_lead_goshogun", "link_lead_zambot", "link_scheduled", "link_section", "link_series_f91",
+            "link_series_goshogun", "link_series_zambot", "link_ticked", "link_title", "link_units_f91",
+            "link_units_goshogun", "link_units_zambot"}
 UI_KEYS |= {"rule_" + fix.replace("-", "_") for fix in rule_settings.RULE_FIXES}
 
 

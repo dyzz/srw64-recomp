@@ -24,6 +24,7 @@
 | F7 语言 | AppKit 本地事件监视器（SDL 收不到） | `keys f7`：发出与监视器相同的语言请求 |
 | N64 手柄（绕过键盘层） | 无（诊断用） | `buttons` |
 | 主角选择页：四张卡片、←→、Enter／Z | AppKit 鼠标与键盘 | `ui.click --text <主角全名>`（第一次高亮、第二次确定）、`ui.key right`／`return`；`status.name_page` 给出 `route` 与四个选项 |
+| 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | AppKit 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
 | 姓名页：字段、按钮、Tab／Enter／Esc、输入法组字 | AppKit 鼠标与键盘 | `ui.click`、`ui.type`（`marked`／`unmark` 模拟组字与提交）、`ui.key` |
 | 菜单栏「选项」（游戏性调整各项、「设置…」⌘,）与应用菜单 | 菜单栏 | `menu`；快捷键也可用 `ui.key`（如 `,` 加 `cmd`） |
 | 设置窗口：规则、预设、语言、画面 | AppKit 窗口 | `ui.click`／`ui.tree`／`screenshot` 加 `window: "选项"`；或用 `settings` 直接设定 |
@@ -36,7 +37,7 @@
 
 | 方法 | 参数 | 说明 |
 | --- | --- | --- |
-| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
+| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
 | `keys` | `press`+`hold_ms` / `down` / `up` / `release_all` | 游戏键盘；键名 `z x space return up down left right q e i k j l w a s d escape f6 f7 f8`，组合用 `+`，如 `e+return` |
 | `buttons` | `buttons`、`vis` | N64 手柄层按键（`a b z start up down left right l r c_up c_down c_left c_right`），立即生效，不经过键盘层 |
 | `screenshot` | `path`、`overlays`、`window`、`timeout_ms` | 抓下一次呈现的 GPU 回读，再把游戏窗口上可见的 AppKit 覆盖层（如姓名页）画上去；`window` 为其他窗口（如 `"选项"`）时直接渲染该 AppKit 窗口。不依赖完整诊断。 |
@@ -73,7 +74,7 @@
 
 ## MCP 工具
 
-`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
+`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
 
 ## 与现有控制文件的关系
 
