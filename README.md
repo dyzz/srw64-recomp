@@ -257,8 +257,13 @@ your own matching original Japanese Rev 0 ROM as `rom.z64` in the repository
 root. Its identity and pinned toolchain sources are in [provenance](docs/guide/provenance.md).
 
 Requirements: macOS on Apple Silicon, Python **3.11+**, the Xcode command line
-tools, CMake, Ninja, and SDL2. Other dependencies are pinned in
-`config/recomp/toolchain.json`; setup downloads and builds them under `build/`.
+tools, CMake, Ninja, and SDL2 (`xcode-select --install`, then
+`brew install python cmake ninja sdl2`). Other dependencies are pinned in
+`config/recomp/toolchain.json`; setup downloads them from GitHub and builds them
+under `build/`. macOS's own `python3` is 3.9: if `python3` on your `PATH` is older
+than 3.11, `make bootstrap` says so; run it as
+`make bootstrap PYTHON3=/opt/homebrew/bin/python3`. Later steps use the `.venv`
+it creates.
 
 ```sh
 # ROM-independent Python checks.
@@ -349,8 +354,11 @@ build steps and module boundaries; most technical notes are currently Chinese.
 请自行准备匹配的日版 Rev 0 原始 ROM，放在仓库根目录并命名为 `rom.z64`。
 ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 
-环境要求：Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、Ninja 和 SDL2；
-其余依赖的版本固定在 `config/recomp/toolchain.json`，准备时下载并构建到本地 `build/`。
+环境要求：Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、Ninja 和 SDL2
+（`xcode-select --install` 后 `brew install python cmake ninja sdl2`）；
+其余依赖的版本固定在 `config/recomp/toolchain.json`，准备时从 GitHub 下载并构建到本地 `build/`。
+macOS 自带的 `python3` 是 3.9：`PATH` 上的 `python3` 低于 3.11 时 `make bootstrap` 会直接提示，
+改用 `make bootstrap PYTHON3=/opt/homebrew/bin/python3`；之后各步都使用它建立的 `.venv`。
 按上方英文部分的命令依次准备 Python 环境、原生依赖和生成代码，首次启动带 `--new-game`：
 
 ```sh

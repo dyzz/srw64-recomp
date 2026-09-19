@@ -160,7 +160,7 @@ EN 有关，但具体界面未经运行确认。
 | 输入 | 固定提交/版本 | 当前用途 |
 | --- | --- | --- |
 | [N64Recomp / RSPRecomp](https://github.com/N64Recomp/N64Recomp) | `ffb39cdad1da5de07eaaa48bd1db4a89a7986771` | MIPS CPU 与 RSP 代码生成；递归依赖按父提交固定 |
-| [n64sym](https://github.com/shygoo/n64sym) | `ccf4600f3389f1a84bde23339225cf372fdf7712` | libultra 签名候选；不能直接视为已确认的系统绑定 |
+| [n64sym](https://github.com/shygoo/n64sym) | `ccf4600f3389f1a84bde23339225cf372fdf7712` | libultra 签名候选；不能直接视为已确认的系统绑定。对本 ROM 的输出（`n64sym rom.z64 -s -f splat`）入库为 `config/recomp/n64sym-symbols.txt`，构建不再现场生成 |
 | [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) | `cdf5abbd5026fef5c364c676e4667c45e42b6863` | 已构建完整静态运行库，接入 CPU 诊断宿主及 RSP 音频任务 |
 | [spimdisasm](https://github.com/Decompollaborate/spimdisasm) | `1.42.4` | 分段反汇编与函数候选 |
 | [splat](https://github.com/ethteck/splat) | `splat64==0.50.0` | 已准备的分段工具，当前扫描未依赖其导出 |
