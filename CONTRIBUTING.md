@@ -13,6 +13,8 @@
 
 ## 开发流程
 
+直接在 `main` 工作。GitHub Actions 保持关闭，不添加远端 CI／workflow；所有验证在本地执行。
+
 ```sh
 make bootstrap
 make check
