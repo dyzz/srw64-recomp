@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-2022, macos-14]
+        os: [ubuntu-24.04, windows-2022, macos-15]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     steps:
@@ -25,12 +25,17 @@ jobs:
         shell: bash
         run: |
           git -C build/pixel-deps submodule update --init --recursive --depth 1 src/contrib/plume src/contrib/dxc src/contrib/spirv-cross
-      - name: Install software Vulkan driver and system headers
+      - name: Install software Vulkan driver and validation
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y mesa-vulkan-drivers libx11-dev libxrandr-dev
+        run: sudo apt-get update && sudo apt-get install -y mesa-vulkan-drivers libx11-dev libxrandr-dev vulkan-validationlayers gdb
       - name: Configure isolated GPU test
-        run: cmake -S tests/pixel_compositor -B build/pixel-gpu -DCMAKE_BUILD_TYPE=Release "-DSRW64_RT64_HEADERS=${{ github.workspace }}/build/pixel-deps" -DSRW64_PIXEL_TEST_WARP=ON
+        run: cmake -S tests/pixel_compositor -B build/pixel-gpu -DCMAKE_BUILD_TYPE=RelWithDebInfo "-DSRW64_RT64_HEADERS=${{ github.workspace }}/build/pixel-deps" -DSRW64_PIXEL_TEST_WARP=ON
       - name: Build production compositor and shaders
-        run: cmake --build build/pixel-gpu --config Release --parallel 2
+        run: cmake --build build/pixel-gpu --config RelWithDebInfo --parallel 2
       - name: Render, fence and compare pixels
-        run: ctest --test-dir build/pixel-gpu -C Release --output-on-failure --verbose
+        run: ctest --test-dir build/pixel-gpu -C RelWithDebInfo --output-on-failure --verbose
+      - name: Diagnose a Linux rendering failure
+        if: failure() && runner.os == 'Linux'
+        env:
+          VK_INSTANCE_LAYERS: VK_LAYER_KHRONOS_validation
+        run: gdb --batch -ex run -ex 'thread apply all bt' --args build/pixel-gpu/srw64-pixel-gpu-test

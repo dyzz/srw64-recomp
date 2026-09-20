@@ -3,6 +3,8 @@
 #include <iostream>
 #ifdef _WIN32
 #include <windows.h>
+#include <d3d12.h>
+#include <d3d12sdklayers.h>
 #include <dbghelp.h>
 namespace {
 LONG WINAPI report_exception(EXCEPTION_POINTERS* error) {
@@ -36,6 +38,11 @@ struct Startup {
 #ifdef _WIN32
         SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
         SetUnhandledExceptionFilter(report_exception);
+        ID3D12Debug* debug = nullptr;
+        if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debug)))) {
+            debug->EnableDebugLayer(); debug->Release();
+            std::fputs("D3D12 validation enabled\n", stderr);
+        }
 #endif
         std::fputs("Starting real offscreen compositor test\n", stderr);
     }
