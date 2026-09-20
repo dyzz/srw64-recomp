@@ -109,27 +109,43 @@ void exercise(RenderDevice& device, const PixelShaders& shaders, uint32_t w, uin
     check(bool(queue) && bool(fence), "Queue/fence allocation failed");
     auto compositor = std::make_unique<PixelCompositor>(device, shaders);
     auto first = pattern(w,h,1), second = pattern(w,h,2);
-    Draw a(device,*queue,w,h,f), b(device,*queue,w,h,f), c(device,*queue,w,h,f);
+    const auto alternate = f == RenderFormat::B8G8R8A8_UNORM ? RenderFormat::R8G8B8A8_UNORM : RenderFormat::B8G8R8A8_UNORM;
+    Draw a(device,*queue,w,h,f), b(device,*queue,w,h,alternate), c(device,*queue,w,h,f);
     auto old_image = compositor->upload(*a.list, first);
-    rejects([&] { compositor->draw(*a.list, *a.framebuffer, RenderFormat::R8G8B8A8_UNORM_SRGB, old_image); });
+    for (const auto bad : {RenderFormat::UNKNOWN, RenderFormat::R16G16B16A16_FLOAT, RenderFormat::BC7_UNORM_SRGB})
+        rejects([&] { compositor->draw(*a.list, *a.framebuffer, bad, old_image); });
+    rejects([&] { compositor->draw(*a.list, *a.framebuffer, f, {}); });
     auto malformed = first; malformed.pixels.pop_back();
     rejects([&] { compositor->upload(*a.list, malformed); });
+    {
+        PixelCompositor other(device, shaders);
+        rejects([&] { other.draw(*a.list, *a.framebuffer, f, old_image); });
+        auto wrong = device.createTexture(RenderTextureDesc::ColorTarget(w+1,h,f));
+        check(bool(wrong), "Mismatch fixture allocation failed");
+        const RenderTexture* attachment = wrong.get();
+        auto wrong_fb = device.createFramebuffer(RenderFramebufferDesc(&attachment,1));
+        check(bool(wrong_fb), "Mismatch framebuffer allocation failed");
+        rejects([&] { compositor->draw(*a.list, *wrong_fb, f, old_image); });
+    }
     a.retained.push_back(compositor->draw(*a.list,*a.framebuffer,f,old_image)); a.blend(first);
     a.finish();
     auto new_image = compositor->upload(*b.list, second);
-    b.retained.push_back(compositor->draw(*b.list,*b.framebuffer,f,new_image)); b.blend(second);
+    b.retained.push_back(compositor->draw(*b.list,*b.framebuffer,alternate,new_image)); b.blend(second);
     b.finish();
     // Record the old cached texture AFTER a new upload; neither texture nor its
     // descriptor may have been overwritten. Two layers exercise alpha blending.
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,old_image)); c.blend(first);
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,new_image)); c.blend(second);
     c.finish();
+    const std::weak_ptr<const void> old_ticket = a.retained.front(), new_ticket = b.retained.front();
     // Completion tickets must retain all GPU resources without the cache/owner.
     old_image.reset(); new_image.reset(); compositor.reset();
+    check(!old_ticket.expired() && !new_ticket.expired(), "Resources released before completion");
     const RenderCommandList* lists[] = {a.list.get(),b.list.get(),c.list.get()};
     queue->executeCommandLists(lists,3,nullptr,0,nullptr,0,fence.get());
     queue->waitForCommandFence(fence.get());
     a.verify(); b.verify(); c.verify();
+    check(old_ticket.expired() && new_ticket.expired(), "Completed image resources leaked");
 }
 }
 int main() {
@@ -137,11 +153,15 @@ int main() {
 #if defined(__APPLE__)
         auto* pool = NS::AutoreleasePool::alloc()->init();
         std::unique_ptr<RenderInterface> api = std::make_unique<MetalInterface>();
+        std::cout << "Backend: Metal\n";
 #elif defined(_WIN32)
         std::unique_ptr<RenderInterface> api = std::make_unique<D3D12Interface>();
+        std::cout << "Backend: D3D12\n";
 #else
         std::unique_ptr<RenderInterface> api = std::make_unique<VulkanInterface>();
+        std::cout << "Backend: Vulkan\n";
 #endif
+        for (const auto& name : api->getDeviceNames()) std::cout << "Enumerated device: " << name << '\n';
         auto device = api->createDevice();
         check(bool(device), "No GPU/software device available; this is not a passing test");
         auto shaders = embedded_pixel_shaders(api->getCapabilities().shaderFormat);
