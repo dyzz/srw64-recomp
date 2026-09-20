@@ -22,6 +22,7 @@ def main():
     run = args.run.resolve()
     client = Client(run / 'debug.sock')
     checks = []
+    window_points = (960, 720)
 
     def wait(predicate, timeout=20):
         until = time.monotonic() + timeout
@@ -42,7 +43,12 @@ def main():
         client.call('ui.click', text=id)
 
     def shot(name):
-        return client.call('screenshot', path=str(run / (name + '.png')))
+        capture = client.call('screenshot', path=str(run / (name + '.png')))
+        scale = client.call('ui.tree')['windows'][0]['scale']
+        expected = tuple(round(size * scale) for size in window_points)
+        actual = (capture['width'], capture['height'])
+        assert actual == expected, f'UI/display pixel mismatch: {actual} != {expected}'
+        return {**capture, 'window_points': window_points, 'display_scale': scale}
 
     def field(id):
         def find(node):
@@ -110,9 +116,11 @@ def main():
     checks.append('settings close waits for held analog-direction keys to release')
     assert field('field0') == 'ナナ'
     client.call('window', width=800, height=600)
+    window_points = (800, 600)
     time.sleep(.3)
     shots.append(shot('shared-small'))
     client.call('window', width=1100, height=760)
+    window_points = (1100, 760)
     time.sleep(.3)
     click('next')
     wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 1)
@@ -136,6 +144,7 @@ def main():
     press('e+return')
     wait(lambda s: s['intro']['skips'] > skips)
     checks.append('game keyboard resumes after the modal closes: route intro skip accepted')
+    checks.append('GPU captures match UI display pixels at initial and resized window sizes')
     state = client.call('status')
     (run / 'shared-ui-verification.json').write_text(json.dumps({
         'schema': 'srw64.shared-ui-verification.v1', 'status': 'passed',

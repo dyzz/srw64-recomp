@@ -437,10 +437,10 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
     }
+    // UI and dialogue need display pixels regardless of the game's internal render scale.
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              960, 720, SDL_WINDOW_METAL | SDL_WINDOW_RESIZABLE |
-                              (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0) |
-                              (std::getenv("SRW64_NATIVE_RESOLUTION") && std::string(std::getenv("SRW64_NATIVE_RESOLUTION")) == "1" ? SDL_WINDOW_ALLOW_HIGHDPI : 0));
+                              960, 720, SDL_WINDOW_METAL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) std::abort();
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);
