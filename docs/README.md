@@ -56,6 +56,7 @@
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
+| [macOS 兼容构建](native/macos-release.md) | 固定源码依赖、macOS 14 部署目标与本地应用打包 |
 | [通用 Plume 像素合成](native/plume-pixel-compositor.md) | 后端无关上传／混合、GPU 完成资源引用、三平台离屏回读与可选游戏接线 |
 | [跨平台文字组件](native/portable-text.md) | ICU／HarfBuzz／FreeType 排版与 CPU 栅格化、字体快照、Reader 适配和独立验证 |
 | [开场文字](native/native-intro.md) | 开场缩放文字跳过与资源提取 |

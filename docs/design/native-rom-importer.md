@@ -123,7 +123,8 @@ SDL2-compat 通过 `dlopen` 加载 SDL3，不会在 SDL2 的普通链接依赖�
 显式传入 `--runtime-library /path/to/libSDL3.dylib`。打包器按指定名字复制 Mach-O dylib，
 再一并收集其依赖、核对最低系统版本、修正路径并签名；不会批量复制整个依赖目录。
 
-本机示例（路径和系统版本以实际依赖为准）：
+以下是使用本机 Homebrew 库的历史构建示例。较低系统版本请使用
+[macOS 本地兼容构建](../native/macos-release.md)，从固定源码重编宿主与运行时库。
 
 ```sh
 .venv/bin/python tools/release/package_macos.py \
