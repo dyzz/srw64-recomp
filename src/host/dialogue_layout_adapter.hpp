@@ -1,6 +1,7 @@
 #pragma once
 #include "dialogue_model.hpp"
 #include "text/portable_text.hpp"
+#include <utility>
 
 namespace srw64::dialogue {
 // Mechanical bridge only. The caller must retain TextLayout separately when it
@@ -17,3 +18,4 @@ inline Layout reader_layout(const text::TextLayout& shaped,double height=35) {
     }
     return result;
 }
+} // namespace srw64::dialogue
