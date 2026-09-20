@@ -1,5 +1,6 @@
 #include "launch.hpp"
 #include "sha256.hpp"
+#include "rom_import.hpp"
 #include "json/json.hpp"
 #include <cstdio>
 #include <map>
@@ -36,11 +37,21 @@ std::vector<std::string> selected_rules(const Options& options,const GameIdentit
 }
 }
 
-int run_standalone(const Options& options,const GameIdentity& game,const HostMain& host) {
+int run_standalone(const Options& options,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
     if(sha256_file(options.rom)!=game.rom_sha256)throw std::runtime_error("ROM does not match the supported baseline");
-    const auto root=fs::canonical(options.content);
+    auto content=options.content;
+    std::unique_ptr<Session> owned_session;
+    if(content.empty()) {
+        // Lock before importing. Two launches cannot create/consume a partial
+        // cache, and an import failure cannot update the committed save pointer.
+        owned_session=std::make_unique<Session>(options);
+        const auto cache=owned_session->user_dir()/"content-cache";
+        content=importer ? importer(options.rom,cache,game.rom_sha256)
+                         : prepare_rom_content(options.rom,cache,embedded_import_spec(),game.rom_sha256);
+    }
+    const auto root=fs::canonical(content);
     const auto manifest_path=content_path(root,"manifest.json");
     const auto manifest=read_json(manifest_path,1024*1024);
     if(manifest.value("schema","")!="srw64.standalone-content.v1" ||
@@ -70,7 +81,8 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");
 
-    Session session(options);
+    if(!owned_session)owned_session=std::make_unique<Session>(options);
+    auto& session=*owned_session;
     const auto language_file=session.user_dir()/"presentation.json";
     std::string locale=options.language;
     if(locale.empty() && fs::exists(language_file)) {

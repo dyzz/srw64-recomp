@@ -7,8 +7,8 @@ else()
     target_compile_options(srw64_app PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
-# Reuse the pinned RT64 JSON header; the app layer does not link to its renderer.
-# ROM-free CI checks out only that header to exercise the complete bootstrap.
+option(SRW64_EMBED_IMPORT_SPEC "Embed ROM-free importer metadata (Python is BUILD-TIME only)" ON)
+# Reuse the pinned RT64 JSON header without linking its renderer.
 function(srw64_add_launch json_include)
     if(TARGET srw64_launch)
         return()
@@ -16,9 +16,27 @@ function(srw64_add_launch json_include)
     if(NOT EXISTS "${json_include}/json/json.hpp")
         message(FATAL_ERROR "A directory containing json/json.hpp is required for the standalone bootstrap")
     endif()
-    add_library(srw64_launch STATIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/launch.cpp")
+    add_library(srw64_launch STATIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/launch.cpp"
+                                   "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/rom_import.cpp")
     target_include_directories(srw64_launch PRIVATE "${json_include}")
     target_link_libraries(srw64_launch PUBLIC srw64_app)
+    if(SRW64_EMBED_IMPORT_SPEC)
+        find_package(Python3 3.11 COMPONENTS Interpreter REQUIRED)
+        get_filename_component(import_root "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../.." ABSOLUTE)
+        set(import_build "${CMAKE_CURRENT_BINARY_DIR}/import-metadata")
+        file(GLOB_RECURSE import_inputs CONFIGURE_DEPENDS
+             "${import_root}/config/*.json" "${import_root}/content/locales/*.json"
+             "${import_root}/reference/*.csv" "${import_root}/src/srw64_rom/*.py"
+             "${import_root}/src/srw64_native/*.py")
+        set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${import_inputs}
+                     "${import_root}/tools/release/build_import_spec.py")
+        execute_process(COMMAND "${Python3_EXECUTABLE}" "${import_root}/tools/release/build_import_spec.py"
+                        --root "${import_root}" --output "${import_build}/import-spec.json"
+                        --header "${import_build}/srw64_import_spec.hpp"
+                        COMMAND_ERROR_IS_FATAL ANY)
+        target_include_directories(srw64_launch PRIVATE "${import_build}")
+        target_compile_definitions(srw64_launch PRIVATE SRW64_EMBEDDED_IMPORT_SPEC)
+    endif()
     if(MSVC)
         target_compile_options(srw64_launch PRIVATE /W4 /utf-8)
     else()
