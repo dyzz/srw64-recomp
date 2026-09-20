@@ -44,17 +44,18 @@ def main() -> None:
             source = pathlib.Path(temporary)
             git(source, "init", "--quiet")
             git(source, "remote", "add", "origin", f"https://github.com/{repository}.git")
-            # Do not check out the full font family. Partial clone fetches only
-            # commit/tree objects, then cat-file requests the selected blob.
-            git(source, "-c", "remote.origin.promisor=true", "-c",
-                "remote.origin.partialclonefilter=blob:none", "fetch", "--quiet",
-                "--depth=1", "--filter=blob:none", "origin", commit)
+            # These settings must persist for subsequent cat-file lazy fetches,
+            # not merely exist as -c overrides on the first fetch process.
+            git(source, "config", "remote.origin.promisor", "true")
+            git(source, "config", "remote.origin.partialclonefilter", "blob:none")
+            git(source, "fetch", "--quiet", "--depth=1", "--filter=blob:none", "origin", commit)
             actual_commit = git(source, "rev-parse", "FETCH_HEAD^{commit}").decode().strip()
             if actual_commit != commit:
                 raise SystemExit("Git returned a different fixture commit")
             expected = git(source, "rev-parse", f"{commit}:{path}").decode().strip()
             if not re.fullmatch(r"[0-9a-f]{40}", expected):
                 raise SystemExit("Invalid font blob identity in pinned tree")
+            print(f"Reading {target.name} from pinned blob {expected}", flush=True)
             if git(source, "cat-file", "-t", expected).strip() != b"blob":
                 raise SystemExit("Pinned font is not a blob")
             if int(git(source, "cat-file", "-s", expected)) != size:
