@@ -87,6 +87,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE macos/dialogue_plume.cpp)
     target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
+    target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
+    set_source_files_properties(macos/app_menu.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp)
     # Banners and settings share the SDL/RmlUi surface.

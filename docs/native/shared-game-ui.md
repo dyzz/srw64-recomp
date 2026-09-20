@@ -4,7 +4,8 @@
 固定版本 RecompFrontend RT64/Plume 渲染器。主角选择、姓名输入、确认、Link Battler、
 设置与提示条都在游戏的 GPU surface 内绘制。默认宿主不再编译对应的 AppKit 页面。
 
-右上角「选项」或 Ctrl/Cmd+, 打开共享设置，Esc 或「返回」关闭；规则、预设、语言、
+macOS 顶部应用菜单中的「设置…」或 Ctrl/Cmd+, 打开共享设置，Esc 或「返回」关闭；
+游戏画面不常驻选项按钮。系统菜单仅负责打开入口，设置页面仍为共享 SDL/RmlUi。规则、预设、语言、
 Original/HD 仍调用原来的接口。F7 统一进入 SDL 事件路径，组字期间交给输入法。
 游戏 adapter 继续负责姓名编码、重复检查、写回、联动状态与脚本推进。
 
@@ -14,6 +15,8 @@ Original/HD 仍调用原来的接口。F7 统一进入 SDL 事件路径，组字
 - `name_page.*`、`text_input.*`：与独立原型共用的姓名页和组字桥接。
 - `presentation_settings.cpp`：原语言请求／完成／按键释放逻辑，保存改用公共 `app::atomic_write`。
 - `window_test_control.cpp`：窗口尺寸和关闭的 SDL QA 后端。
+- `src/host/macos/app_menu.mm`：系统应用菜单的单个设置入口，语言标题跟随游戏切换；
+  点击仅提交打开请求，在窗口线程交给共享设置页面。
 - `src/host/graphics.cpp`：连接 RT64 render hook，在 workload 对应的姓名遮挡之后绘制 UI，
   GPU 完成回调解锁资源；截图包含同一 GPU 提交里的 UI，不再做 AppKit 截图叠加。
 
@@ -42,11 +45,12 @@ Arial Unicode、微软雅黑或 Noto Sans CJK 的已知文件位置；找不到�
 
 `ui.tree` 返回 RmlUi 元素的 `id`、文字、可用、焦点和窗口点坐标。
 `ui.click` 的 `text` 支持可见文字或稳定 ID，如 `route1`、`field0`、`next`、
-`settings-open`、`rule:esp-level`、`locale:en`、`images:hd`、`link:0`。
+`rule:esp-level`、`locale:en`、`images:hd`、`link:0`。
 点击经 RmlUi 命中测试，不直接调用游戏函数。`ui.key` 使用 SDL key 名称，
 `ui.type` 使用 `SDL_TEXTINPUT` / `SDL_TEXTEDITING_EXT`；不再依赖 macOS key_code。
-截图使用默认游戏窗口，设置不再是独立 OS 窗口。`menu` 保留按本地化设置／规则标题转发的兼容入口，
-不会枚举系统菜单。旧 AppKit 姓名／规则控制文件脚本不是共享 UI 的验收入口。
+截图使用默认游戏窗口，设置不再是独立 OS 窗口。`menu` 返回设置标题和 `native_menu` 就绪状态；
+macOS 按设置标题调用时实际执行系统菜单项，规则标题仍保留兼容转发。
+旧 AppKit 姓名／规则控制文件脚本不是共享 UI 的验收入口。
 
 在**新的隔离会话**中执行（会开始新游戏并修改姓名，不要对玩家会话运行）：
 

@@ -1,4 +1,5 @@
 #include "frontend.hpp"
+#include "app_menu.hpp"
 #include "name_page.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
@@ -41,8 +42,8 @@ link_page::Request link_request;
 std::array<bool,3> ticked{};
 unsigned link_focus{};
 bool link_waiting{};
-Rml::ElementDocument *settings_doc{}, *link_doc{}, *toolbar{}, *notice_doc{};
-std::string settings_stamp, link_stamp, toolbar_locale, notice_stamp;
+Rml::ElementDocument *settings_doc{}, *link_doc{}, *notice_doc{};
+std::string settings_stamp, link_stamp, notice_stamp;
 std::string preedit;
 std::mutex notice_mutex;
 std::deque<json> notices_pending, notices_kept;
@@ -68,7 +69,6 @@ button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: 
 button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; margin-right: 2%;}
 .rule {display: block; width: 92%; text-align: left; font-size: 15dp; padding: 7dp;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
-#settings-open {tab-index: none; pointer-events: auto; position: absolute; right: 6dp; top: 4dp; font-size: 12dp; padding: 6dp;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
 )";
 void document_close(Rml::ElementDocument*& doc) {
@@ -210,8 +210,9 @@ void sync() {
     // Catalog owns all labels. No duplicate translation table in the frontend.
     name_page->sync(request,language->ui_labels(),language->locale);
     link_sync();
-    if(!toolbar || toolbar_locale!=language->locale){document_close(toolbar);toolbar_locale=language->locale;toolbar=document(button("settings-open",label("settings_title")),false);}
-    toolbar->PullToFront();settings_sync();notices_sync();context->Update();input.update_rectangle();
+    app_menu::update(language->ui("settings_open"));
+    if(app_menu::take_settings_request())choose("settings-open");
+    settings_sync();notices_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
 }
@@ -224,8 +225,7 @@ bool dispatch(SDL_Event& event) {
         if(!event.key.repeat)settings::request_locale(localization::next_locale(localization::catalog().locale));return true;
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
-    // A closed modal can restore focus to the toolbar. Game keys must not
-    // activate that stale focus (Return used to reopen Options after naming).
+    // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(settings_open){
@@ -300,8 +300,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=toolbar=notice_doc=nullptr;}renderer.reset();}
-void shutdown(){input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
@@ -338,11 +338,18 @@ json menu(const json& p){
     auto lock=lock_ui();require();const auto path=p.value("path",std::vector<std::string>{});
     if(!path.empty()){
         const auto& wanted=path.back();
-        if(wanted==localization::catalog().ui("settings_open") || wanted==localization::catalog().ui("settings_title")){choose("settings-open");sync();return {{"opened","settings"}};}
+        if(wanted==localization::catalog().ui("settings_open") || wanted==localization::catalog().ui("settings_title")){
+#ifdef __APPLE__
+            if(!app_menu::activate_settings())throw debug::RpcError(debug::ServerError,"application menu is not ready");
+#else
+            choose("settings-open");
+#endif
+            sync();return {{"opened","settings"}};
+        }
         for(const auto& entry:rules::catalog)if(wanted==localization::catalog().ui(rules::ui_key(entry.id))){choose("settings-open");choose("rule:"+std::string(entry.id));sync();return {{"pressed",wanted}};}
         for(const auto& preset:rules::presets)if(wanted==localization::catalog().ui(std::string(preset.key))){choose("settings-open");choose("preset:"+std::string(preset.key));sync();return {{"pressed",wanted}};}
     }
-    return {{"backend","SDL2/RmlUi"},{"settings",localization::catalog().ui("settings_open")},{"shortcut","Ctrl/Cmd+,"}};
+    return {{"backend","SDL2/RmlUi"},{"settings",localization::catalog().ui("settings_open")},{"shortcut","Ctrl/Cmd+,"},{"native_menu",app_menu::available()}};
 }
 }
 

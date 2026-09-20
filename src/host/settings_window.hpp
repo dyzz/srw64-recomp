@@ -1,7 +1,7 @@
 #pragma once
 #include <filesystem>
 
-// Shared SDL/RmlUi settings, opened from the Options button or Ctrl/Cmd+comma.
+// Shared SDL/RmlUi settings, opened from the application menu or Ctrl/Cmd+comma.
 // Rules, language and image mode apply through the existing game interfaces.
 namespace srw64::settings_window {
 void open();

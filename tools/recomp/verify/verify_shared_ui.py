@@ -104,7 +104,13 @@ def main():
     wait(lambda s: s['locale'] != before)
     assert field('field0') == 'ナナ'
     checks.append('locale rebuild preserves edited names')
-    click('settings-open')
+    assert 'settings-open' not in json.dumps(client.call('ui.tree')), 'Options must not overlay the game'
+    menu = client.call('menu')
+    if sys.platform == 'darwin':
+        assert menu['native_menu'], 'Application menu entry is missing'
+    client.call('menu', path=[menu['settings']])
+    wait(lambda s: s['ui']['input_owners']['settings'])
+    checks.append('application menu opens shared settings; no persistent Options button')
     click('preset:rules_defaults')
     wait(lambda s: 'esp-level' in s['rules'])
     shots.append(shot('shared-settings'))
@@ -115,6 +121,12 @@ def main():
     wait(lambda s: not s['ui']['input_owners']['settings'])
     checks.append('settings close waits for held analog-direction keys to release')
     assert field('field0') == 'ナナ'
+    client.call('ui.key', key=',', modifiers=['cmd' if sys.platform == 'darwin' else 'control'])
+    wait(lambda s: s['ui']['input_owners']['settings'])
+    client.call('ui.key', key='esc')
+    wait(lambda s: not s['ui']['input_owners']['settings'])
+    assert field('field0') == 'ナナ'
+    checks.append('Ctrl/Cmd+comma opens settings and Escape returns to the edited name')
     client.call('window', width=800, height=600)
     window_points = (800, 600)
     time.sleep(.3)
