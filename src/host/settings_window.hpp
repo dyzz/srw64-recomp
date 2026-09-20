@@ -1,9 +1,8 @@
 #pragma once
 #include <filesystem>
 
-// Settings window opened from 选项 → 设置…: the same rule switches as the menu,
-// plus language and image mode, each applied immediately. Implemented for macOS
-// in settings_window_macos.mm; hosts without a window never call it.
+// Shared SDL/RmlUi settings, opened from the Options button or Ctrl/Cmd+comma.
+// Rules, language and image mode apply through the existing game interfaces.
 namespace srw64::settings_window {
 void open();
 void close();

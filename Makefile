@@ -29,6 +29,13 @@ $(ROM):
 host: $(PYTHON)
 	$(PYTHON) tools/recomp/run/run_host_probe.py --graphics --build-only
 
+# Optional shared-UI experiment; requires the existing native graphics toolchain.
+.PHONY: recomp-ui-probe
+recomp-ui-probe: $(PYTHON)
+	$(PYTHON) tools/recomp/toolchain/prepare_frontend.py --fetch
+	cmake -S src/host -B $(RECOMP_BUILD)/gfx-build -DSRW64_ENABLE_RT64=ON -DSRW64_BUILD_UI_PROBE=ON -DPython3_EXECUTABLE=$(abspath $(PYTHON))
+	cmake --build $(RECOMP_BUILD)/gfx-build --target srw64-ui-probe -j 6
+
 $(PYTHON):
 	@$(PYTHON3) -c 'import sys; sys.exit(sys.version_info < (3, 11))' 2>/dev/null || { \
 	  echo "Python 3.11 or newer is required; $(PYTHON3) is $$($(PYTHON3) --version 2>&1)." >&2; \

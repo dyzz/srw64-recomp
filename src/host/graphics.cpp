@@ -10,11 +10,10 @@
 #include "presentation/image_mode.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
-#include "rule_menu.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #include "debug_ui.hpp"
-#include "notices.hpp"
+#include "ui/frontend.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -64,8 +63,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
 #endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::dialogue::metal_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
-    // The modern AppKit page sits above the Metal surface. Clear the guest
-    // naming frame too, so a delayed view update cannot expose the old grid.
+    // Clear workload-keyed guest naming frames before the shared UI renders.
     const auto name_workload=RT64::GetRenderHookWorkloadId();
     const bool name_cover=srw64::names::frame_cover(name_workload);
     auto* name_commands=static_cast<plume::MetalCommandList*>(list);
@@ -78,7 +76,9 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         color->setClearColor(MTL::ClearColor(.028,.045,.07,1));
         name_commands->mtl->renderCommandEncoder(pass)->endEncoding();
     }
-    name_commands->mtl->addCompletedHandler([name_workload,name_cover](MTL::CommandBuffer* command) {
+    const bool ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);
+    name_commands->mtl->addCompletedHandler([name_workload,name_cover,ui_drawn](MTL::CommandBuffer* command) {
+        if(ui_drawn)srw64::ui::presented();
         if(command->status()==MTL::CommandBufferStatusCompleted)srw64::names::cover_presented(name_workload,name_cover);
     });
 #endif
@@ -195,11 +195,12 @@ class SRW64Renderer final : public ultramodern::renderer::RendererContext {
 public:
     SRW64Renderer(uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
         srw64::marker::configure(capture_directory);
-        RT64::SetRenderHooks([](plume::RenderInterface*, plume::RenderDevice* device) {
+        RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
             srw64::marker::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::dialogue::metal_init(device, capture_directory);
+            srw64::ui::render_init(rhi,device);
 #endif
 #ifdef SRW64_CORETEXT_PROBE
             srw64_coretext_init(device, capture_directory);
@@ -207,6 +208,7 @@ public:
         }, capture_frame, [] {
             srw64::marker::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
+            srw64::ui::render_shutdown();
             srw64::dialogue::metal_shutdown();
 #endif
 #ifdef SRW64_CORETEXT_PROBE
@@ -444,12 +446,8 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     SDL_VERSION(&info.version);
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
 #ifdef SRW64_NATIVE_DIALOGUE
-    srw64::names::window_init(info.info.cocoa.window,capture_directory);
-    srw64::link_page::window_init(info.info.cocoa.window,capture_directory);
-    srw64::debug_ui::window_init(info.info.cocoa.window);
-    srw64::notices::window_init(info.info.cocoa.window);
+    srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
-    srw64::rule_menu::update();
 #endif
     view = SDL_Metal_CreateView(window);
     if (!view) std::abort();
@@ -462,13 +460,8 @@ void srw64_update_window(void*) {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::update();
     srw64::settings::control(window,capture_directory);
-    srw64::rule_menu::update(); // Installs when the menu bar is ready; follows the language.
-    srw64::rule_menu::control(capture_directory);
-    srw64::settings_window::update();
+    srw64::ui::update();
     srw64::settings_window::control(capture_directory);
-    srw64::names::window_update();
-    srw64::link_page::window_update();
-    srw64::notices::update();
     srw64::debug::service_main();
     // A native page owns the keyboard: no F6/F8 and no Esc-to-quit meanwhile.
     const bool editing_name=srw64::names::owns_input() || srw64::link_page::owns_input();
@@ -500,7 +493,8 @@ void srw64_update_window(void*) {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
 #ifdef SRW64_NATIVE_DIALOGUE
-        if(srw64::settings::owns_input() && event.type!=SDL_QUIT)continue;
+        if(event.type!=SDL_QUIT && srw64::ui::event(event))continue;
+        if(srw64::settings::owns_input() && event.type!=SDL_QUIT && !(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE))continue;
 #endif
         if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F6 && !event.key.repeat &&
            SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
@@ -508,25 +502,26 @@ void srw64_update_window(void*) {
         if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F8 && !event.key.repeat &&
            SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
             srw64::mini_stage::hotkey();
-        if (event.type == SDL_QUIT || (!editing_name && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && SDL_GetKeyboardFocus() == window)) {
+        if (event.type == SDL_QUIT || (event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE && event.window.windowID==SDL_GetWindowID(window)) || (!editing_name && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && SDL_GetKeyboardFocus() == window)) {
             fprintf(stderr, "SRW64_WINDOW_QUIT event=%u vi=%llu\n", event.type, (unsigned long long)srw64_current_vi());
             ultramodern::quit();
         }
     }
     // Presses from the debug interface take the same paths as the SDL events
-    // above, including the language-switch and name-page gates. F7 never
-    // reaches SDL (an AppKit monitor takes it), so it goes to the settings.
+    // above. F7 goes through the same SDL composition and repeat gates.
     for (const auto key : srw64::debug::keyboard().take_presses()) {
 #ifdef SRW64_NATIVE_DIALOGUE
+        {
+            SDL_Event e{};e.type=SDL_KEYDOWN;
+            e.key.keysym.sym=SDL_GetKeyFromName(std::string(srw64::debug::key_names[key]).c_str());
+            const bool consumed=srw64::ui::event(e);e.type=SDL_KEYUP;srw64::ui::event(e);
+            if(consumed)continue;
+        }
         if (srw64::settings::owns_input()) continue;
 #endif
         if (editing_name) continue;
         if (key == srw64::debug::F6) srw64::presentation::image_mode.toggle();
         else if (key == srw64::debug::F8) srw64::mini_stage::hotkey();
-#ifdef SRW64_NATIVE_DIALOGUE
-        else if (key == srw64::debug::F7)
-            srw64::settings::request_locale(srw64::localization::next_locale(srw64::localization::catalog().locale));
-#endif
         else if (key == srw64::debug::Escape) {
             fprintf(stderr, "SRW64_WINDOW_QUIT event=debug vi=%llu\n", (unsigned long long)srw64_current_vi());
             ultramodern::quit();
@@ -609,9 +604,7 @@ void srw64_destroy_window() {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::shutdown();
     srw64::settings_window::shutdown();
-    srw64::rule_menu::shutdown();
-    srw64::names::window_shutdown();
-    srw64::link_page::window_shutdown();
+    srw64::ui::shutdown();
 #endif
     keyboard_state = 0;
     srw64_close_audio();

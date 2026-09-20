@@ -19,6 +19,7 @@ public:
     void load(const nlohmann::json& data);
     const std::string* resolve(const TextKey& key) const;
     std::string ui(const std::string& key) const;
+    const std::map<std::string,std::string>& ui_labels() const { return labels; }
 };
 using Snapshot=std::shared_ptr<const Catalog>;
 const Catalog& catalog();

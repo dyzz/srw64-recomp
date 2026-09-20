@@ -41,13 +41,16 @@ class DebugCoverageTests(unittest.TestCase):
     def test_every_hotkey_has_a_virtual_press(self):
         handled = set(re.findall(r"event\.key\.keysym\.sym ?== ?SDLK_(\w+)", self.graphics))
         self.assertEqual(handled, {"F6", "F8", "ESCAPE"})
-        virtual = set(re.findall(r"key == srw64::debug::(\w+)", self.graphics))
+        virtual = set(re.findall(r"key ?== ?srw64::debug::(\w+)", self.graphics))
         self.assertTrue({"F6", "F8", "Escape"} <= virtual)
-        # F7 never reaches SDL: an AppKit monitor takes it, and the interface
-        # sends it to the same settings path.
-        monitor = (HOST / "macos/presentation_settings_macos.mm").read_text()
-        self.assertIn("addLocalMonitorForEventsMatchingMask", monitor)
-        self.assertIn("F7", virtual)
+        # F7 shares the SDL path, including composition and repeat suppression.
+        shared = (ROOT / "src/native/ui/frontend.cpp").read_text()
+        self.assertIn("SDLK_F7", shared)
+        self.assertIn("!input.has_composition()", shared)
+        self.assertIn("!event.key.repeat", shared)
+        self.assertIn("srw64::ui::event(e)", self.graphics)
+        self.assertIn("srw64::debug::key_names[key]", self.graphics)
+        self.assertIn("f7", debug_keys())
 
     def test_controller_buttons_match_the_input_compiler(self):
         server = (HOST / "debug_server.cpp").read_text()

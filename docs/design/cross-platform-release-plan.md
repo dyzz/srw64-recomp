@@ -3,7 +3,7 @@
 基线：`22706a4294f7e0ddee40563e7c6e4972376811f9`（2026-09-19）。
 
 **本批是独立运行入口与可移植应用层，不是 Windows/Linux 游戏移植完成。**
-图形宿主仍使用 Metal、Core Text 和 AppKit；`src/host/CMakeLists.txt` 的
+图形宿主仍使用 Metal、Core Text；默认游戏页面已换成 SDL/RmlUi，桌面 ROM 选择器仍使用 AppKit；`src/host/CMakeLists.txt` 的
 非 Apple 平台拒绝条件有意保留。公共三平台 CI 测试的是应用启动/存档逻辑，
 不是原游戏、GPU、输入法或完整关卡。
 
@@ -126,12 +126,12 @@ resize、异步 GPU 完成回调、字体 metrics、行尾禁则与语言切换�
 
 ### P3：共享 UI 与输入
 
-RecompFrontend/RmlUi 是首选集成候选，不把接入库等同于 UI 已迁移。
-先做一个独立主角/姓名页原型，核验中文/日文 IME 的组字、候选窗位置、取消、退格、焦点切换，
-并验证 UI 消费输入后游戏不会收到同一按键。原型通过后再迁移设置、Link Battler、通知与菜单。
+2026-09-20 默认游戏页面已切换为 [SDL/RmlUi](../native/shared-game-ui.md)：主角选择、姓名、
+确认、设置、Link Battler、通知及调试 UI 共用事件和渲染路径，不再编译原 AppKit 游戏页面。
+保留[独立姓名页探针](../native/shared-name-page-probe.md)供组字与布局回归。
+真实游戏命名与写回已验证；OS 输入法候选窗、手柄、跨平台 surface 和第一话／存档冷启动仍待验收。
+旧 AppKit 源码暂作回归参考；CoreText 对白层属于尚未完成的 P2。
 
-优先共用 UI，而不是新增 Win32/DirectWrite 与 GTK/Pango 两套平行业务实现。
-当前 AppKit/CoreText 作为回归参考保留到共享实现达到功能一致，再删除旧后端。
 连接手柄与可配置按键；MCP/QA 使用语义动作，避免把 Cocoa 控件路径当作公共协议。
 调试 socket 必须可在 release 构建时排除，而不只是运行时关闭。
 

@@ -184,6 +184,8 @@ def main() -> int:
             raise RuntimeError(f"generated source changed: {item['path']}")
     if args.graphics and not args.reuse_build_from:
         subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_rt64.py")], check=True, stdout=subprocess.DEVNULL)
+    if args.graphics and not args.reuse_build_from:
+        subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_frontend.py"), "--fetch"], check=True, stdout=subprocess.DEVNULL)
     build = ROOT / ("build/recomp/gfx-build" if args.graphics else "build/recomp/host-build")
     target = "srw64-gfx-host" if args.graphics else "srw64-host"
     build.mkdir(parents=True, exist_ok=True)
@@ -198,7 +200,8 @@ def main() -> int:
     source_hashes.update({str(path.relative_to(ROOT)): digest(path)
                          for path in sorted((ROOT / "src/native").rglob("*")) if path.is_file()})
     source_hashes.update({str(path.relative_to(ROOT)): digest(path)
-                         for path in [ROOT / "tools/recomp/toolchain/prepare_runtime_lifecycle.py"]})
+                         for path in [ROOT / "tools/recomp/toolchain/prepare_runtime_lifecycle.py",
+                                      ROOT / "tools/recomp/toolchain/prepare_frontend.py", ROOT / "config/recomp/frontend.json"]})
     reused_build = None
     if args.reuse_build_from:
         prior_path = args.reuse_build_from.resolve() / "report.json"

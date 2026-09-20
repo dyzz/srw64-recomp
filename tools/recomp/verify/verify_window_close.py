@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Close the actual game window at a selected VI and record the outcome.
 
-Start run_host_probe with SRW64_WINDOW_CONTROL=1. This invokes NSWindow's close
-action; it does not synthesize SDL_QUIT, kill the process, or treat exit 0 as
+Start run_host_probe with SRW64_WINDOW_CONTROL=1. This injects the SDL window-close
+event; it does not synthesize SDL_QUIT, kill the process, or treat exit 0 as
 proof that every guest thread was reclaimed.
 """
 import argparse
@@ -27,8 +27,8 @@ def main() -> int:
     report = wait_for_report(run, (args.at_vi - state["vi"]) / 60 + 60)
     events = [json.loads(line) for line in (run / "window-close-events.jsonl").read_text().splitlines()]
     log = Path(report["native_log_path"]).read_text()
-    assert events[-1]["action"] == "NSWindow.performClose"
-    assert "SRW64_WINDOW_QUIT event=256" in log
+    assert events[-1]["action"] == "SDL_WINDOWEVENT_CLOSE"
+    assert "SRW64_WINDOW_QUIT event=512" in log
     assert report["audio_output_enabled"] is False
     result = {"schema": "srw64.window-close-verification.v1", "exit_code": report.get("exit_code"),
               "actual_close": events[-1], "native_name_entry": report["native_name_entry"]["enabled"],

@@ -1,0 +1,7 @@
+{
+  "schema": "srw64.frontend-source.v1",
+  "url": "https://github.com/N64Recomp/RecompFrontend.git",
+  "commit": "b1a1477c6556aeb7ed45defbfb5924f721efebc1",
+  "rmlui_commit": "7a06f27db04fe5d13a5dacc19b2b4544673a4eca",
+  "scope": "Shared SDL2 game pages and optional probe: pinned RecompFrontend renderer and RmlUi; no launcher or recompinput"
+}

@@ -22,7 +22,7 @@ srw64_screenshot. Two input layers:
 - srw64_keys: the game keyboard (Z=A, X=B, Enter=START, arrows, E=R, Q=L, I/K=C-up/down,
   WASD stick, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
   window focus not required. Reading controls: E+Z fast-forward, E+Enter skip, I/K text size.
-- srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the native AppKit UI that
+- srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the shared SDL/RmlUi UI that
   replaces game screens (name page, settings window, menu bar), by generic keyboard and mouse.
 Coordinates are points from the window's top-left; use srw64_ui_tree to find controls.
 Every session runs in its own directory under build/recomp/debug/ and never touches play saves."""
