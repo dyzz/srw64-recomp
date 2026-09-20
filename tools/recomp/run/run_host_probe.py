@@ -34,7 +34,7 @@ def main() -> int:
     parser.add_argument("--vis", type=int, default=600)
     parser.add_argument("--graphics", action="store_true", help="build/run RT64 Metal and capture GPU output")
     parser.add_argument("--audio", action="store_true", help="play through SDL and record a bounded device-input capture (requires graphics)")
-    parser.add_argument("--native-resolution", action="store_true", help="render at the window drawable scale with HiDPI enabled")
+    parser.add_argument("--native-resolution", action="store_true", help="render the game at the window drawable scale; UI always uses display pixels")
     parser.add_argument("--resolution-scale", type=int, choices=range(1, 9), help="fixed internal render scale, 1..8; overrides window scaling without changing game layout")
     parser.add_argument("--dump-textures", action="store_true", help="record RT64 TMEM hashes, load coordinates and original texture bytes")
     parser.add_argument("--font-pack", type=Path, help="load a local RT64 texture replacement directory")

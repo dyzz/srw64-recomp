@@ -70,6 +70,9 @@ if(SRW64_ENABLE_RT64)
         add_compile_definitions(SRW64_METAL_SOURCE_SHADERS)
     endif()
     add_subdirectory("${SRW64_RT64}" rt64 EXCLUDE_FROM_ALL)
+    # RT64 disables Plume Retina support upstream; match SDL's HiDPI drawable
+    # so dialogue and RmlUi render at display pixels instead of window points.
+    target_compile_definitions(plume PRIVATE PLUME_APPLE_RETINA_ENABLED)
     find_package(SDL2 REQUIRED)
     option(SRW64_BUILD_UI_PROBE "Build the optional RecompFrontend name-page probe" OFF)
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
