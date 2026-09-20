@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch two explicit, immutable upstream test fixtures; never package fonts.
-
-Pins include upstream commit, size, and Git blob identity (not a SHA-256).
-Only CI/test setup uses this network helper. The C++ runtime has no downloader.
-"""
+"""Fetch immutable, identity-checked test fonts; never package or upload them."""
 from __future__ import annotations
 import hashlib
 import pathlib
@@ -30,11 +26,18 @@ def main() -> None:
             data = target.read_bytes()
         else:
             url = f"https://raw.githubusercontent.com/{repository}/{commit}/{path}"
-            with urllib.request.urlopen(url, timeout=60) as response:
+            request = urllib.request.Request(url, headers={"Accept-Encoding": "identity"})
+            with urllib.request.urlopen(request, timeout=60) as response:
+                print(f"Fetch {target.name}: HTTP {response.status}, "
+                      f"length={response.headers.get('Content-Length')}, "
+                      f"range={response.headers.get('Content-Range')}, "
+                      f"encoding={response.headers.get('Content-Encoding')}", flush=True)
                 data = response.read(size + 1)
-        actual = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
+        actual = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\x00" + data).hexdigest()
         if len(data) != size or actual != expected:
-            raise SystemExit(f"Font fixture identity mismatch: {target.name}")
+            raise SystemExit(f"Font fixture identity mismatch: {target.name}; "
+                             f"expected {size} bytes / {expected}, "
+                             f"received {len(data)} bytes / {actual}; magic={data[:8].hex()}")
         if not target.exists():
             target.write_bytes(data)
         print(f"Verified {target.name}: {len(data)} bytes, git-blob {actual}")
