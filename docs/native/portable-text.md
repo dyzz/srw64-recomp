@@ -1,85 +1,71 @@
-# 跨平台文字组件（P2c1）
+# 中日英跨平台文字与游戏对白
 
-2026-09-20。接续 [通用 Plume 像素合成](plume-pixel-compositor.md)。本批提供独立 CPU
-排版和文字像素输出，尚未把完整游戏对白切换到新后端。CoreText、`rasterize_frame`、
-游戏启动与默认构建均保持原状。
+2026-09-20。实际游戏的正文、人名、分页提示、阅读进度、底栏和回看现在默认使用
+FreeType + HarfBuzz + ICU，像素交给 [Plume 合成器](plume-pixel-compositor.md)。
+对白不再链接 CoreText/CoreGraphics，也没有旧后端切换选项。支持范围为 `zh-Hans`、`ja`、`en`。
+菜单、姓名和设置继续使用 SDL/RmlUi；游戏窗口、截图和 marker 的 Metal 迁移是另一项工作。
 
-## 接口与依赖
+## 实际路径
 
-`src/native/text/portable_text.*` 提供 `FontSet`、不可变 `TextLayout`、UTF-16 字素边界、
-换行、分页和预乘 BGRA8 文字栅格化。组件不链接 SDL、RmlUi、RT64、Plume、CoreText、
-JSON、游戏状态或 ROM。构建入口为 `cmake/PortableText.cmake`。
+`src/host/dialogue_scene.cpp` 实现 `typeset()` 和 `rasterize_frame()`，使用
+`src/native/text/portable_text.*` 排版和绘字；`src/native/text/game_fonts.*` 负责选择字体。
+`src/host/dialogue_layout_adapter.hpp` 将行／页范围交给原 Reader，同时在 Layout 中保存
+不可变 TextLayout。游戏帧随之持有字形位置和字体字节，逐字显示只改变可见范围，不重新排版。
+原 Reader 的翻页、自动阅读、回看、语言切换和 guest 确认逻辑保持不变。
 
-ICU 负责扩展字素、显式 BCP-47 locale 的严格换行及段落双向分析；HarfBuzz 按文字系统、
-方向和字体整形；FreeType 读取明确提供的轮廓字体，以灰度覆盖率绘制，不作 LCD 子像素处理。
-依赖下限为 FreeType 2.10、HarfBuzz 2.8、ICU 70。目前使用构建环境的库，不等于已锁定
-发布包依赖；不同字体／库版本之间不承诺逐像素一致。
+ICU 处理字素边界与中日文禁则，HarfBuzz 整形，FreeType 输出灰度覆盖率。
+偏移使用 UTF-16 code unit；保留组合序列、显式换行和空行。布局一次生成，绘制按已选择的行
+和字素范围显示；行宽不足时只在字素边界应急换行。正文裁剪到对白框，标签和回看各有裁剪区域。
+像素是顶向下 BGRA8、预乘 alpha；布局快照在换语言／字号和异步 GPU 呈现期间保持有效。
+不承诺与 CoreText 抗锯齿逐像素相同，不扩展阿拉伯语、彩色 emoji 或其他语言的产品支持。
 
-API 依据：[ICU 分段](https://unicode-org.github.io/icu/userguide/boundaryanalysis/)、
-[ICU 双向文本](https://unicode-org.github.io/icu-docs/apidoc/dev/icu4c/ubidi_8h.html)、
-[HarfBuzz buffer](https://harfbuzz.github.io/harfbuzz-hb-buffer.html)、
-[HarfBuzz/FreeType](https://harfbuzz.github.io/harfbuzz-hb-ft.html)、
-[FreeType glyph](https://freetype.org/freetype2/docs/reference/ft2-glyph_retrieval.html)。
+## 字体与依赖
 
-## 不变条件
-
-所有偏移是 UTF-16 code unit，字素边界为 exclusive end；不进行 Unicode 正规化。
-CRLF 整体消费，显式换行与空行不丢字。常规换行采用 ICU 合法断点，没有可用断点的
-长词才应急断行；单个字素仍比行宽大时保证进度并明确标记 `overflow`，不拆代理对或
-组合序列，也不谎称该行已经放入宽度。
-
-字素和字形不是一一对应。布局保留整形后的字形、源范围和位置；逐字显示不重新整形前缀。
-非字素边界的 reveal 向下取整；连字覆盖多个字素时，等全部源范围可见后再绘制，不能提前
-显示后面的字符。排版／绘制明确拒绝不支持的情况，而非静默生成缺字方框。
-
-字体按调用者提供的顺序、以整个字素为单位回退。布局持有字体文件的自有字节；销毁 FontSet、
-删除原字体文件、创建其他语言或字号的布局，不改变旧布局。同一集合内可变 FreeType／
-HarfBuzz 状态由互斥锁保护。没有隐式系统字体搜索、当前目录推断或运行时网络下载。
-
-像素为紧密顶向下 BGRA8，覆盖率和颜色 alpha 预乘后作 source-over 合成，与 P2b 输入类型
-相同。绘制按所选行从给定原点开始，按 surface 裁剪，支持小数原点与缩放，不增加 sRGB
-转换。UTF-16 长度、字体大小、尺寸、页高、坐标、字体文件和总字体内存均有边界检查。
-
-## Reader 适配
-
-`src/host/dialogue_layout_adapter.hpp` 的 `reader_layout()` 只把行／页范围复制到原有
-`dialogue::Layout`。测试把真实排版交给原 Reader，检查分页确认、按住按键、字素显示、
-历史、语言切换和字号变化；没有复制或改写 Reader 状态机。
-
-适配返回值不包含可绘制字形。正式接线时，Frame 还必须持有对应的 TextLayout／字体快照，
-不可拿旧 Reader 范围配新字体重排。这属于下一批场景适配工作。
-
-## 独立验证
-
-安装上述开发库后运行；Python 和 Git 仅用于开发／CI 准备测试字体：
+构建依赖 FreeType >= 2.10、HarfBuzz >= 2.8、ICU >= 70。macOS 可用：
 
 ```sh
-python tests/portable_text/prepare_fonts.py build/text-fonts
-cmake -S tests/portable_text -B build/portable-text -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DSRW64_TEST_CJK_FONT="$PWD/build/text-fonts/NotoSansCJKsc-Regular.otf" \
-  -DSRW64_TEST_ARABIC_FONT="$PWD/build/text-fonts/NotoSansArabic-Black.ttf"
-cmake --build build/portable-text --config RelWithDebInfo --parallel 2
-ctest --test-dir build/portable-text -C RelWithDebInfo --output-on-failure --verbose
+brew install freetype harfbuzz icu4c
 ```
 
-字体来自固定提交的 Noto 上游 Git 对象：检查提交、树中的 blob 身份、文件大小及取出的
-字节，不使用浮动分支或信任原始文件 CDN。字体只放在构建目录，不提交仓库，不作为
-Actions artifact 上传，也不作为玩家发行字体。可显式提供自己的本地字体，但测试需要
-中日英、组合字符、阿拉伯字母与必需连字覆盖。
+Linux 可安装 `libfreetype6-dev libharfbuzz-dev libicu-dev fonts-noto-cjk`；Windows 的本地组件构建
+可用提供上述三个库的 CMake 工具链（例如 UCRT64），游戏完整 Windows 构建尚未开放。
 
-`.github/workflows/portable-text.yml` 在 Linux、macOS、Windows UCRT64/GCC 上构建执行；
-Linux 另有 AddressSanitizer／UndefinedBehaviorSanitizer。Windows 此项不是 MSVC 发布验证，
-其他工作流的 MSVC 结果不能代替本组件的 MSVC 验证。结果以对应提交的 CI 为准。
+默认查找本机 Noto Sans CJK（Linux）、Arial Unicode（macOS）、微软雅黑（Windows）。
+Noto 标准 TTC 按中文／日文选择对应 face。缺少 CJK 字体会明确报错。
+开发测试可用 `SRW64_TEXT_FONT` 指定一个明确的 TTF/OTF/TTC 文件；不搜索当前目录、不联网下载，
+字体读入后由布局持有。旧内容包中的 macOS PostScript 字体名称不再决定对白字体，内容包无需重导入。
+此处使用本地系统字体，不意味着发行字体与依赖打包已完成。
 
-覆盖扩展字素（含 emoji ZWJ／旗帜／肤色的分段，但不宣称绘制彩色 emoji）、混合中日英、
-阿拉伯方向与字体回退、连字逐字显示、窄行与长文本、空帧、透明度／通道顺序、裁剪缩放、
-删除字体文件后的旧布局、并发重排／绘制、真实 Reader 适配和异常输入。
+## 本地验证
 
-## 尚未完成
+GitHub Actions 已关闭，仓库不保留远端工作流。以下测试在本地执行，无 ROM 或 GPU 依赖：
 
-完整对白场景（双框、人名、阅读指示器、回看）、`rasterize_frame` 替换、语言目录的
-字体配置、发行字体与依赖打包、CoreText 场景对照、真实 ROM 验收均在本批之外。
-竖排、彩色／位图字体、制表符及任意脚本的全面排版一致性不在支持范围。
-分段函数保留 NUL；文字绘制拒绝 NUL 和未实现控制字符，不静默截断。
+```sh
+# 完整游戏对白场景、原 Reader 和 UTF 转换；只使用 RT64 的 JSON 头文件。
+cmake -S tests/dialogue_cpu -B build/dialogue-portable -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DSRW64_RT64_HEADERS="$PWD/build/recomp/upstream/RT64"
+cmake --build build/dialogue-portable --parallel 6
+ctest --test-dir build/dialogue-portable --output-on-failure
 
-未开放 Windows/Linux 完整游戏 gate，未默认开启 `SRW64_PLUME_DIALOGUE`。
+# 独立排版组件。也可以给出自己的本地 CJK 字体，跳过字体准备。
+python tests/portable_text/prepare_fonts.py build/text-fonts
+cmake -S tests/portable_text -B build/text-cjk -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DSRW64_TEST_CJK_FONT="$PWD/build/text-fonts/NotoSansCJKsc-Regular.otf"
+cmake --build build/text-cjk --parallel 6
+ctest --test-dir build/text-cjk --output-on-failure
+```
+
+独立排版测试覆盖中日英混排、禁则、组合字符、长文本、分页、裁剪、缩放、预乘 alpha、
+字体文件删除后的旧布局与并发重排；游戏场景测试覆盖双框、人名、逐字、回看、底栏、换语言和字号。
+`SRW64_TEST_CJK_FONT` 也可传给对白场景测试的 CMake，显式指定测试字体。
+组件测试与真实游戏截图分别记录，不以 CPU 成功声明 Windows/Linux 整个游戏可玩。
+
+## 本次验收
+
+本地 `make check`：260 项，249 通过、11 跳过；独立文字组件及完整对白 CPU 的 4 个 CTest 通过。
+真实 macOS 游戏运行 `build/recomp/portable-dialogue-02/` 中，先通过共享 UI／姓名与剧情进入回归，
+再用 `tools/recomp/verify/verify_portable_dialogue.py` 覆盖中日英切换、10/13/18 字号、回看、
+800×600 和 1100×760 窗口、只推进宿主分页不推进原脚本，共保存 18 张 GPU 截图。
+报告为该目录的 `portable-dialogue-verification.json`；测试静音，独立新游戏，正常退出。
+截图检查发现并修复了“整段正文放得下，却因 ICU 的换行断点包含换行符而提前折行”的问题，
+组件测试保留此回归。未执行 Windows/Linux 的本次新场景或完整游戏，不借用旧组件测试作此声明。

@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <limits>
 #include <memory>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -21,11 +22,13 @@ struct TextLine {
 };
 struct TextPage { size_t first_line{}, line_count{}, start{}, end{}; };
 struct TextColor { uint8_t r=255, g=255, b=255, a=255; };
+struct TextClip { double x{}, y{}, width{}, height{}; };
 struct TextDraw {
     double x{}, y{}, scale=1;
     size_t first_line{}, line_count=std::numeric_limits<size_t>::max();
     size_t revealed_utf16=std::numeric_limits<size_t>::max();
     TextColor color;
+    std::optional<TextClip> clip;
 };
 class FontSet;
 class TextLayout {
@@ -57,7 +60,7 @@ public:
     // Explicit ordered fallback, whole graphemes only. Reads immutable font
     // bytes once; never searches system font directories or silently uses tofu.
     explicit FontSet(const std::vector<FontSource>& sources);
-    TextLayout layout(std::u16string text,unsigned font_size,double width,
+    TextLayout layout(std::u16string text,double font_size,double width,
                       std::string locale="en") const;
 };
 }

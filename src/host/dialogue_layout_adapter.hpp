@@ -4,10 +4,10 @@
 #include <utility>
 
 namespace srw64::dialogue {
-// Mechanical bridge only. The caller must retain TextLayout separately when it
-// also needs the shaped glyphs/font snapshot for CPU rasterization.
+// Reader ranges and rendered glyphs share the same immutable layout.
 inline Layout reader_layout(const text::TextLayout& shaped,double height=35) {
     Layout result;result.text=shaped.text();result.clusters=shaped.clusters();
+    result.shaped=std::make_shared<const text::TextLayout>(shaped);
     for(const auto& p:shaped.pages(height)) {
         Page page;page.start=p.start;page.end=p.end;
         for(size_t i=0;i<p.line_count;++i) {

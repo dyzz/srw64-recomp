@@ -47,7 +47,7 @@ struct Scratch {
     Scratch(){if(!std::filesystem::create_directory(path))throw std::runtime_error("Scratch exists");}
     ~Scratch(){std::error_code error;std::filesystem::remove_all(path,error);}
 };
-void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
+void run(const std::filesystem::path& cjk) {
     check(grapheme_ends(u"e\u0301\r\n\U0001F1F8\U0001F1EC\U0001F44B\U0001F3FD\U0001F468\u200D\U0001F469\u200D\U0001F467\u200D\U0001F466")
         ==std::vector<size_t>({2,4,8,12,23}),"Extended Unicode grapheme boundaries");
     check(grapheme_ends(std::u16string({u'A',0,u'B'}))==std::vector<size_t>({1,2,3}),"Boundary analysis truncated embedded NUL");
@@ -55,7 +55,7 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
     rejects([]{grapheme_ends(std::u16string(1,0xD800));},"Unpaired high surrogate accepted");
     rejects([]{grapheme_ends(std::u16string(1,0xDC00));},"Unpaired low surrogate accepted");
     rejects([]{grapheme_ends(std::u16string(65537,u'a'));},"Text limit ignored");
-    FontSet fonts({{cjk,0},{arabic,0}});
+    FontSet fonts({{cjk,0}});
     const auto empty=fonts.layout(u"",13,177,"zh-Hans");
     check(empty.lines().empty() && empty.pages(35).size()==1 && transparent(render(empty)),"Empty layout contract");
     const std::u16string mixed=u"中文和日本語：「これは長い会話です。」 English office e\u0301, 123.\r\n第二段：不要丢字。";
@@ -66,6 +66,9 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
     }
     const auto newline=fonts.layout(u"a\r\nb\n\nc\r",13,1000,"en");
     check(newline.lines().size()==4,"Explicit/empty line handling");conservation(newline,1000);
+    const auto paragraph=fonts.layout(u"大小姐，茶泡好了。\n第二行。",13,177,"zh-Hans");
+    check(paragraph.lines().size()==2 && paragraph.lines()[0].end==10,
+          "A fitting paragraph wrapped before its explicit newline");
     const auto punctuation=fonts.layout(u"甲乙（丙丁）甲乙。丙丁「甲乙」丙丁、甲乙。",13,60,"ja");
     for(const auto& line:punctuation.lines())if(!line.emergency_break && line.end<punctuation.text().size())
         check(std::u16string_view(u"）、。」』！？").find(punctuation.text()[line.end])==std::u16string_view::npos,"CJK closing punctuation starts a normal line");
@@ -77,23 +80,17 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
     TextDraw partial;partial.revealed_utf16=1;
     check(transparent(render(composed,partial)),"Reveal split a combining sequence");
     partial.revealed_utf16=2;check(!transparent(render(composed,partial)),"Completed grapheme was not rendered");
-    const auto ligature=fonts.layout(u"\u0644\u0627",24,177,"ar");
-    partial.revealed_utf16=1;
-    check(transparent(render(ligature,partial)),"Arabic ligature disclosed unrevealed source text");
-    partial.revealed_utf16=2;check(!transparent(render(ligature,partial)),"Arabic ligature missing");
-    const auto rtl=fonts.layout(u"\u0627 \u0628",24,177,"ar");
-    partial.revealed_utf16=1;const auto first_rtl=render(rtl,partial);
-    size_t xmin=first_rtl.width;
-    for(size_t y=0;y<first_rtl.height;++y)for(size_t x=0;x<first_rtl.width;++x)
-        if(first_rtl.pixels[(y*first_rtl.width+x)*4+3])xmin=std::min(xmin,x);
-    check(xmin>2 && xmin<first_rtl.width,"RTL logical prefix did not appear on the visual right");
-    for(double width:{30.,77.,177.}) {
-        const auto bidi=fonts.layout(u"ABC \u0627\u0644\u0639\u0631\u0628\u064A\u0629 123 中文 (\u0644\u0627)!",18,width,"ar");
-        conservation(bidi,width);check(!transparent(render(bidi)),"Mixed-script fallback failed");
-    }
-    FontSet cjk_only({{cjk,0}});
-    rejects([&]{cjk_only.layout(u"\u0644\u0627",13,177,"ar");},"Missing fallback silently became tofu");
     rejects([&]{fonts.layout(u"\U0010FFFF",13,177,"en");},"Unsupported character silently became tofu");
+    TextDraw clipped;clipped.clip=TextClip{8,4,11,9};
+    const auto clip_image=render(composed,clipped);
+    bool clip_ink=false;
+    for(size_t y=0;y<clip_image.height;++y)for(size_t x=0;x<clip_image.width;++x) {
+        const auto alpha=clip_image.pixels[(y*clip_image.width+x)*4+3];
+        if(x<8 || x>=19 || y<4 || y>=13)check(alpha==0,"Text escaped its scene clip");
+        else clip_ink|=alpha!=0;
+    }
+    check(clip_ink,"Text clip removed all in-bounds glyph pixels");
+    rejects([&]{TextDraw d;d.clip=TextClip{0,0,-1,4};render(composed,d);},"Negative clip width accepted");
     TextDraw color;color.color={200,100,50,128};
     const auto colored=render(composed,color);bool ink=false;
     for(size_t i=0;i<colored.pixels.size();i+=4) {
@@ -173,8 +170,8 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
 }
 }
 int main(int argc,char** argv) {
-    try {if(argc!=3)throw std::runtime_error("Provide CJK and Arabic outline font paths");
-        run(std::filesystem::path(argv[1]),std::filesystem::path(argv[2]));
+    try {if(argc!=2)throw std::runtime_error("Provide a CJK outline font path");
+        run(std::filesystem::path(argv[1]));
         std::cout<<checks<<" portable text checks passed (ICU + HarfBuzz + FreeType, real CPU glyph raster)\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
 }

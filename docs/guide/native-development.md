@@ -30,7 +30,7 @@
 | `src/native/game_adapter/` | 已拆出的对白来源识别与原始姓名字形编解码。 |
 | `src/native/presentation/` | 原图/HD 模式请求与 display-list 快照归属。 |
 | `src/host/host.cpp`、`game_hooks.*` | 原生宿主、N64 系统接入、overlay/资源钩子与 VI 控制。 |
-| `native_dialogue.*`、`native_dialogue_text.cpp` | 原对白桥接、阅读状态、Core Text 排版与 Metal 合成；当前仍位于宿主目录。 |
+| `native_dialogue.*`、`native_dialogue_text.cpp` | 原对白桥接与阅读状态；跨平台排版及场景绘制见 `src/host/dialogue_scene.cpp`。 |
 | `native_name_entry.cpp` / `macos/native_name_entry_macos.mm` | 游戏线程上的命名请求、原校验与写回 / 窗口线程上的字段编辑与页面绘制。 |
 | `graphics.cpp`、`native_marker.cpp`、`audio.cpp` | SDL/RT64 接入、GPU 水滴绘制、音频设备适配。 |
 | `window_test_control.hpp`、`macos/window_test_control_macos.mm` | 默认关闭的窗口 QA：真实 Cocoa 关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
@@ -62,7 +62,7 @@ flowchart LR
     Frozen --> Adapter[游戏适配层]
     Guest <--> Adapter
     Adapter --> Snapshot[对白 / 命名 / 图形快照]
-    Snapshot --> UI[AppKit / Core Text / Metal]
+    Snapshot --> UI[SDL / RmlUi / portable text / Plume]
     UI --> Request[输入与呈现请求]
     Request --> Adapter
 ```
@@ -93,7 +93,7 @@ cmake --build build/recomp/gfx-build \
 make recomp-native-check
 ```
 
-`recomp-native-check` 汇集音频队列、开场控制/适配、姓名桥接、内容、Core Text 对白、计时器退出、游戏线程退出、VI 回放、随机状态探针、脚本注入、迷你关卡、可选规则、基础修复、改造规则、离队退款、Link Battler 虚拟卡带和调试协议测试，共 18 个测试程序。其中独立编译的 16 个程序使用 ASan/UBSan，内容/对白两个程序使用当前 CMake 配置。它不启动游戏，不替代 GPU 或整条关卡验收。需要 ROM/旧捕获的历史布局与姓名测试继续按各自文档运行。
+`recomp-native-check` 汇集音频队列、开场控制/适配、姓名桥接、内容、跨平台对白、计时器退出、游戏线程退出、VI 回放、随机状态探针、脚本注入、迷你关卡、可选规则、基础修复、改造规则、离队退款、Link Battler 虚拟卡带和调试协议测试，共 18 个测试程序。其中独立编译的 16 个程序使用 ASan/UBSan，内容/对白两个程序使用当前 CMake 配置。它不启动游戏，不替代 GPU 或整条关卡验收。需要 ROM/旧捕获的历史布局与姓名测试继续按各自文档运行。
 
 运行时适配不直接编辑固定 N64ModernRuntime checkout，而是在 `build/recomp/runtime-lifecycle/` 生成对应源文件和 manifest。RT64 适配由 `prepare_rt64.py` 独立管理并记录来源。手写代码、配置和 manifest 规则是源码；生成的 CPU/RSP C、依赖克隆和构建日志都留在 `build/`。
 

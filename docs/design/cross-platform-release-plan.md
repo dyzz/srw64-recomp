@@ -3,8 +3,8 @@
 基线：`22706a4294f7e0ddee40563e7c6e4972376811f9`（2026-09-19）。
 
 **本批是独立运行入口与可移植应用层，不是 Windows/Linux 游戏移植完成。**
-图形宿主仍使用 Metal、Core Text；默认游戏页面已换成 SDL/RmlUi，桌面 ROM 选择器仍使用 AppKit；`src/host/CMakeLists.txt` 的
-非 Apple 平台拒绝条件有意保留。公共三平台 CI 测试的是应用启动/存档逻辑，
+图形宿主仍使用 Metal；对白已切换为 FreeType/HarfBuzz/ICU；默认游戏页面已换成 SDL/RmlUi，桌面 ROM 选择器仍使用 AppKit；`src/host/CMakeLists.txt` 的
+非 Apple 平台拒绝条件有意保留。此前的三平台组件测试覆盖应用启动/存档逻辑（现在仅本地运行），
 不是原游戏、GPU、输入法或完整关卡。
 
 ## 目标与边界
@@ -27,7 +27,7 @@ ROM 分析、代码生成、翻译编译、美术处理与 QA 中；不重写这
 | `src/host/host.cpp` | 新增 `--play`；原 positional probe ABI 保留；不更改游戏循环 |
 | `tools/release/export_content.py` | 将已有 prepared profile 导出为**本地自用**的相对路径内容目录 |
 | 根 `CMakeLists.txt` | 不依赖 ROM、SDL、RT64 renderer、Python 的基础测试入口；不是游戏构建入口 |
-| `.github/workflows/native-app.yml` | Windows、Linux、macOS 的 ROM-free 原生应用测试和内容导出测试 |
+| `tests/native_launch.cpp` | ROM-free 原生应用测试；通过根 CMake 在本地构建执行 |
 
 `srw64_app` 仅依赖 C++20 标准库与少量 OS 文件锁 API。
 `srw64_launch` 复用已固定 RT64 里的 JSON 单头文件，不链接 RT64 renderer。
@@ -130,7 +130,7 @@ resize、异步 GPU 完成回调、字体 metrics、行尾禁则与语言切换�
 确认、设置、Link Battler、通知及调试 UI 共用事件和渲染路径，不再编译原 AppKit 游戏页面。
 保留[独立姓名页探针](../native/shared-name-page-probe.md)供组字与布局回归。
 真实游戏命名与写回已验证；OS 输入法候选窗、手柄、跨平台 surface 和第一话／存档冷启动仍待验收。
-旧 AppKit 源码暂作回归参考；CoreText 对白层属于尚未完成的 P2。
+旧 AppKit 源码暂作回归参考；对白已切换到[跨平台文字组件](../native/portable-text.md)。
 
 连接手柄与可配置按键；MCP/QA 使用语义动作，避免把 Cocoa 控件路径当作公共协议。
 调试 socket 必须可在 release 构建时排除，而不只是运行时关闭。
@@ -140,7 +140,7 @@ resize、异步 GPU 完成回调、字体 metrics、行尾禁则与语言切换�
 首批目标固定为 Windows x64、Linux x64、macOS arm64。Intel macOS、Windows ARM64、
 Universal binary 与更多 Linux 发行格式单独验收，不用 `*-latest` 标签暗中扩大承诺。
 
-公共 PR CI 只使用合成输入和可公开源码；持有 ROM 的受信构建/实机验证与不受信 PR 隔离。
+GitHub Actions 关闭，不添加远端 CI。源码组件检查与持有 ROM 的游戏验证均在本地执行并分别记录。
 代码生成与三平台编译分开，生成物记录 ROM/工具链/patch/schema 摘要。
 发布时只按清单收集二进制、必要依赖和可分发资源，绝不打包整个 `build/` 或用户目录。
 源码/生成代码/二进制、翻译、美术与字体分别核对授权边界；不以“不带 ROM”代替该检查。

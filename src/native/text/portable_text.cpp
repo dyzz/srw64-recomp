@@ -224,9 +224,9 @@ struct TextLayout::Data {
 FontSet::FontSet(const std::vector<FontSource>& sources):state_(std::make_shared<State>(sources)) {}
 TextLayout::TextLayout(std::shared_ptr<const Data> data):data_(std::move(data)) {}
 
-TextLayout FontSet::layout(std::u16string text,unsigned pixels,double width,std::string locale) const {
+TextLayout FontSet::layout(std::u16string text,double pixels,double width,std::string locale) const {
     require(bool(state_),"Moved-from font set");
-    require(pixels>0 && pixels<=256 && std::isfinite(width) && width>0,"Invalid portable layout dimensions");
+    require(std::isfinite(pixels) && pixels>0 && pixels<=256 && std::isfinite(width) && width>0,"Invalid portable layout dimensions");
     auto result=std::make_shared<TextLayout::Data>();result->fonts=state_;
     result->clusters=grapheme_ends(text);result->text=std::move(text);result->locale=std::move(locale);result->size=pixels;
     const auto line_locale=icu_locale(result->locale);
@@ -282,9 +282,11 @@ TextLayout FontSet::layout(std::u16string text,unsigned pixels,double width,std:
             size_t ei=static_cast<size_t>(fit-prefix.begin())-1+a;
             ei=std::max(ei,gi+1);const size_t estimate=gs[ei-1].end;
             auto lb=std::upper_bound(legal.begin(),legal.end(),estimate);
-            size_t end=estimate;bool emergency=true;
-            if(lb!=legal.begin() && *(lb-1)>start) {end=*(lb-1);emergency=false;}
-            if(end==body_end)emergency=false;
+            size_t end=estimate;bool emergency=estimate!=body_end;
+            // ICU's break after an explicit newline includes the newline.
+            // A whole paragraph body that fits must not shrink to an earlier
+            // legal break merely because that final break lies past body_end.
+            if(end!=body_end && lb!=legal.begin() && *(lb-1)>start) {end=*(lb-1);emergency=false;}
             auto shaped=state_->shape(result->text,gs,result->clusters,paragraph.get(),pstart,start,end,language);
             // Paragraph advances are only an estimate: reshape at the actual
             // line boundary, then shrink until it fits. Never split a grapheme.
@@ -325,6 +327,16 @@ void TextLayout::draw(presentation::Bgra8Surface& target,const TextDraw& options
     require(std::isfinite(options.x) && std::isfinite(options.y) && std::abs(options.x)<=1000000 && std::abs(options.y)<=1000000,
             "Invalid text render origin");
     require(options.first_line<=data_->lines.size(),"Invalid first text line");
+    int64_t clip_left=0,clip_top=0,clip_right=target.width,clip_bottom=target.height;
+    if(options.clip) {
+        const auto& c=*options.clip;
+        require(std::isfinite(c.x) && std::isfinite(c.y) && std::isfinite(c.width) && std::isfinite(c.height)
+            && std::abs(c.x)<=1000000 && std::abs(c.y)<=1000000 && c.width>=0 && c.width<=1000000
+            && c.height>=0 && c.height<=1000000,"Invalid text clip");
+        clip_left=std::max<int64_t>(0,std::ceil(c.x));clip_top=std::max<int64_t>(0,std::ceil(c.y));
+        clip_right=std::min<int64_t>(target.width,std::ceil(c.x+c.width));
+        clip_bottom=std::min<int64_t>(target.height,std::ceil(c.y+c.height));
+    }
     const size_t count=std::min(options.line_count,data_->lines.size()-options.first_line);
     size_t reveal=std::min(options.revealed_utf16,data_->text.size());
     const auto boundary=std::upper_bound(data_->clusters.begin(),data_->clusters.end(),reveal);
@@ -353,8 +365,8 @@ void TextLayout::draw(presentation::Bgra8Surface& target,const TextDraw& options
             const int64_t pitch=bitmap.pitch;
             require(std::abs(pitch)>=bitmap.width,"Invalid glyph bitmap pitch");
             const int64_t left=ix+face->glyph->bitmap_left,top=iy-face->glyph->bitmap_top;
-            const int64_t x0=std::max<int64_t>(0,-left),x1=std::min<int64_t>(bitmap.width,int64_t(target.width)-left);
-            const int64_t y0=std::max<int64_t>(0,-top),y1=std::min<int64_t>(bitmap.rows,int64_t(target.height)-top);
+            const int64_t x0=std::max<int64_t>(0,clip_left-left),x1=std::min<int64_t>(bitmap.width,clip_right-left);
+            const int64_t y0=std::max<int64_t>(0,clip_top-top),y1=std::min<int64_t>(bitmap.rows,clip_bottom-top);
             for(auto row=y0;row<y1;++row) {
                 const auto offset=pitch>=0?row*pitch:(int64_t(bitmap.rows)-1-row)*(-pitch);
                 const auto* source=bitmap.buffer+offset;
