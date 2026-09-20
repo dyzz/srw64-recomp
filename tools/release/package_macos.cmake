@@ -1,0 +1,12 @@
+# Run at packaging time only, never while configuring the game.
+cmake_minimum_required(VERSION 3.20)
+if(NOT CMAKE_HOST_APPLE OR NOT DEFINED BUNDLE OR NOT IS_DIRECTORY "${BUNDLE}")
+    message(FATAL_ERROR "A staged macOS .app is required")
+endif()
+include(BundleUtilities)
+if(VERIFY_ONLY)
+    verify_app("${BUNDLE}")
+else()
+    set(BU_CHMOD_BUNDLE_ITEMS ON)
+    fixup_bundle("${BUNDLE}" "" "${SEARCH_DIRS}")
+endif()
