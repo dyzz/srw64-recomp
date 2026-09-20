@@ -9,6 +9,8 @@ function(srw64_add_portable_text)
         set(ICU_ROOT "/opt/homebrew/opt/icu4c")
     endif()
     find_package(ICU 70 REQUIRED COMPONENTS uc i18n)
+    # HarfBuzz's source-built CMake export can reference this imported target.
+    find_package(Threads REQUIRED)
     find_package(harfbuzz CONFIG QUIET)
     if(NOT TARGET harfbuzz::harfbuzz)
         find_package(PkgConfig REQUIRED)
