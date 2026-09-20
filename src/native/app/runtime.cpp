@@ -152,7 +152,10 @@ std::string read_text(const fs::path& path,size_t limit) {
     return data;
 }
 void atomic_write(const fs::path& path,std::string_view text) {
-    const auto temporary=path.parent_path()/(path.filename().string()+".tmp-"+token());
+    // Append an ASCII suffix to the native path, without converting a Windows
+    // UTF-16 filename through the active ANSI code page.
+    auto temporary=path;
+    temporary += fs::path(".tmp-"+token());
     try {
         std::ofstream file(temporary,std::ios::binary|std::ios::trunc);
         file.exceptions(std::ios::badbit|std::ios::failbit);
