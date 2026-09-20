@@ -1,6 +1,6 @@
 # 技术文档索引
 
-更新：2026-09-18。仓库只维护统一日版 ROM 的原生 recomp（只支持 macOS）、内容工具与运行验证。旧 ROM 汉化流水线已移除。文档按主题分目录；带日期的文档记录当时的结论，`build/` 下的证据链接只在本地存在。
+更新：2026-09-20。游戏图形宿主仍只支持 macOS；新增的可移植启动与 ROM 导入层不等于 Win/Linux 游戏移植完成。仓库维护统一日版 ROM 的原生 recomp、内容工具与运行验证。旧 ROM 汉化流水线已移除。文档按主题分目录；带日期的文档记录当时的结论，`build/` 下的证据链接只在本地存在。
 
 | 目录 | 内容 |
 | --- | --- |
@@ -21,6 +21,7 @@
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
+| 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
 
 ## 使用与开发（guide/）
 
@@ -90,6 +91,8 @@
 | 文档 | 内容 |
 | --- | --- |
 | [内置 MOD 路线图](design/mod-roadmap.md) | 首发／后续范围、多语种、Original/HD、存档兼容与验收门槛 |
+| [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
+| [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
@@ -98,4 +101,4 @@
 
 ## 验证层次
 
-静态检查、组件测试、固定帧回放、原生游戏运行、模拟器运行和人工检查各有独立范围；“有截图”或“退出码为 0”不自动代表整条流程已验收。`tests/test_docs.py` 检查所有 Markdown 链接与文档中引用的仓库路径。
+静态检查、组件测试、固定帧回放、原生游戏运行、模拟器运行和人工检查各有独立范围；“有截图”或“退出码为 0”不自动代表整条流程已验收。`tests/test_docs.py` 检查所有 Markdown 链接與文档中引用的仓库路径。

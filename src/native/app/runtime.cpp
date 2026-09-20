@@ -51,10 +51,11 @@ void replace_file(const fs::path& source,const fs::path& destination) {
 }
 
 std::string usage() {
-    return "Usage: srw64-gfx-host --play --rom ROM --content CONTENT_DIR [--user-dir DIR]\n"
+    return "Usage: srw64-gfx-host --play --rom ROM [--content CONTENT_DIR] [--user-dir DIR]\n"
            "       [--language LOCALE] [--rules original|fixed|all] [--resolution-scale 1..8]\n"
            "       [--new-game | --import-save SRAM] [--mute]\n"
-           "CONTENT_DIR is a locally exported standalone content directory, not a source profile.\n"
+           "Without --content, imports the matching ROM into a versioned local cache.\n"
+           "--content keeps the developer-only prepared-content path.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
 }
 Options parse_options(std::span<const std::string_view> args) {
@@ -87,10 +88,10 @@ Options parse_options(std::span<const std::string_view> args) {
             } else throw std::runtime_error("Unknown option: "+std::string(key));
         }
     }
-    if (options.rom.empty() || options.content.empty()) throw std::runtime_error("--rom and --content are required");
+    if (options.rom.empty()) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
     options.rom=fs::absolute(options.rom);
-    options.content=fs::absolute(options.content);
+    if (!options.content.empty()) options.content=fs::absolute(options.content);
     if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
     if (!options.import_save.empty()) options.import_save=fs::absolute(options.import_save);
     return options;

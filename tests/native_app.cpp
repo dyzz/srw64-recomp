@@ -57,7 +57,9 @@ void parser_and_paths() {
     const auto names=parse_options(unicode);
     check(names.rom.filename()==fs::path(u8"rom-测试.z64") && names.content.filename()==fs::path(u8"内容"),"UTF-8 CLI paths");
     auto reject=[](std::vector<std::string_view> values){rejects([&]{parse_options(values);},"invalid CLI accepted");};
-    reject({}); reject({"--rom","x"});
+    reject({});
+    const std::vector<std::string_view> first_boot={"--rom","x"};
+    check(parse_options(first_boot).content.empty(),"first boot must request native import, not use cwd as content");
     reject({"--rom","x","--content","y","--resolution-scale","0"});
     reject({"--rom","x","--content","y","--resolution-scale","8x"});
     reject({"--rom","x","--content","y","--resolution-scale","9"});
