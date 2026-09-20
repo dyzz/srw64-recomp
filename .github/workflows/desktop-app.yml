@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Configure ROM-free desktop tests
-        run: cmake -S . -B build/desktop -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0
+        run: cmake -S . -B build/desktop -DCMAKE_BUILD_TYPE=Release "-DCMAKE_OSX_DEPLOYMENT_TARGET=14.0"
       - name: Build controller
         run: cmake --build build/desktop --config Release --target srw64-desktop-test --parallel 2
       - name: Test controller
