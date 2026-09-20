@@ -56,12 +56,13 @@
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
+| [通用 Plume 像素合成](native/plume-pixel-compositor.md) | 后端无关上传／混合、GPU 完成资源引用、三平台离屏回读与可选游戏接线 |
 | [开场文字](native/native-intro.md) | 开场缩放文字跳过与资源提取 |
 | [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收 |
 | [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生水滴与 Original/HD 切换 |
-| [退出生命周期](native/native-window-close.md) | 关窗崩溃修复、线程回收与退出验收边界 |
+| [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |
 | [内容架构第一批实现](native/native-content-foundation.md) | 语言、图片、5600 模型配置及扩展方式 |
 | [三项底座验证](native/native-foundations-verification.md) | 语言设置与覆盖报告、保存集合原型、冷启动及随机状态差异 |
 

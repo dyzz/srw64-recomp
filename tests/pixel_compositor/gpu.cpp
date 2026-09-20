@@ -71,23 +71,51 @@ struct Draw {
     void finish() {
         list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(target.get(), RenderTextureLayout::COPY_SOURCE));
 #if defined(__APPLE__)
-        // The pinned Metal backend lacks texture->buffer in copyTextureRegion.
-        // Readback is test/platform glue only; the compositor itself has no cast.
+        // Pinned Plume has no texture->buffer copy on Metal or Vulkan. Keep this
+        // platform readback glue inside the test; production draws remain generic.
         auto* command = static_cast<MetalCommandList*>(list.get());
         command->checkActiveBlitEncoder();
         command->activeBlitEncoder->copyFromTexture(static_cast<MetalTexture*>(target.get())->mtl,
             0, 0, MTL::Origin(0,0,0), MTL::Size(w,h,1), static_cast<MetalBuffer*>(readback.get())->mtl,
             0, size_t(row)*4, size_t(row)*h*4);
         command->endActiveBlitEncoder();
-#else
+#elif defined(_WIN32)
         list->copyTextureRegion(RenderTextureCopyLocation::PlacedFootprint(readback.get(), format, w, h, 1, row),
                                 RenderTextureCopyLocation::Subresource(target.get()));
+#else
+        auto* command = static_cast<VulkanCommandList*>(list.get());
+        command->endActiveRenderPass();
+        auto* buffer = static_cast<VulkanBuffer*>(readback.get());
+        VkBufferImageCopy copy{};
+        copy.bufferRowLength = row;
+        copy.bufferImageHeight = h;
+        copy.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        copy.imageSubresource.layerCount = 1;
+        copy.imageExtent = {w,h,1};
+        vkCmdCopyImageToBuffer(command->vk, static_cast<VulkanTexture*>(target.get())->vk,
+                              VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, buffer->vk, 1, &copy);
+        VkBufferMemoryBarrier host{VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER};
+        host.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+        host.dstAccessMask = VK_ACCESS_HOST_READ_BIT;
+        host.srcQueueFamilyIndex = host.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        host.buffer = buffer->vk;
+        host.size = VK_WHOLE_SIZE;
+        vkCmdPipelineBarrier(command->vk, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_HOST_BIT,
+                             0, 0, nullptr, 1, &host, 0, nullptr);
 #endif
         list->end();
     }
     void verify() {
         const auto* bytes = static_cast<const unsigned char*>(readback->map());
         check(bytes != nullptr, "Readback map failed");
+#if !defined(__APPLE__) && !defined(_WIN32)
+        // A fence is not a cache invalidation for non-coherent host memory.
+        auto* buffer = static_cast<VulkanBuffer*>(readback.get());
+        if (vmaInvalidateAllocation(buffer->device->allocator, buffer->allocation, 0, VK_WHOLE_SIZE) != VK_SUCCESS) {
+            readback->unmap();
+            throw std::runtime_error("Readback invalidation failed");
+        }
+#endif
         size_t mismatches = 0;
         for (uint32_t y = 0; y < h; ++y) for (uint32_t x = 0; x < w; ++x) for (unsigned c = 0; c < 4; ++c) {
             const unsigned src = format == RenderFormat::B8G8R8A8_UNORM ? (c == 0 ? 2 : c == 2 ? 0 : c) : c;
@@ -104,6 +132,7 @@ struct Draw {
     }
 };
 void exercise(RenderDevice& device, const PixelShaders& shaders, uint32_t w, uint32_t h, RenderFormat f) {
+    std::cout << "Readback case " << w << 'x' << h << " format=" << unsigned(f) << '\n';
     auto queue = device.createCommandQueue(RenderCommandListType::DIRECT);
     auto fence = device.createCommandFence();
     check(bool(queue) && bool(fence), "Queue/fence allocation failed");
@@ -132,13 +161,11 @@ void exercise(RenderDevice& device, const PixelShaders& shaders, uint32_t w, uin
     auto new_image = compositor->upload(*b.list, second);
     b.retained.push_back(compositor->draw(*b.list,*b.framebuffer,alternate,new_image)); b.blend(second);
     b.finish();
-    // Record the old cached texture AFTER a new upload; neither texture nor its
-    // descriptor may have been overwritten. Two layers exercise alpha blending.
+    // Reuse the old immutable texture after the next upload and target format change.
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,old_image)); c.blend(first);
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,new_image)); c.blend(second);
     c.finish();
     const std::weak_ptr<const void> old_ticket = a.retained.front(), new_ticket = b.retained.front();
-    // Completion tickets must retain all GPU resources without the cache/owner.
     old_image.reset(); new_image.reset(); compositor.reset();
     check(!old_ticket.expired() && !new_ticket.expired(), "Resources released before completion");
     const RenderCommandList* lists[] = {a.list.get(),b.list.get(),c.list.get()};
