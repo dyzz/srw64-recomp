@@ -2,6 +2,7 @@
 #include "dialogue_layout_adapter.hpp"
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <filesystem>
 #include <fstream>
 #include <future>
@@ -130,8 +131,7 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
         }return true;
     }));
     for(auto& task:tasks)check(task.get(),"Concurrent shaping changed retained raster");
-    // Exercise the existing Reader with the real portable layout, no fake
-    // metrics, guest state, GPU or platform text APIs.
+    // Exercise the unchanged Reader with real portable layout and glyph ranges.
     using srw64::dialogue::Reader;
     const auto long_layout=fonts.layout(std::u16string(160,u'甲'),18,177,"zh-Hans");
     auto reader_value=srw64::dialogue::reader_layout(long_layout);
@@ -165,7 +165,7 @@ void run(const std::filesystem::path& cjk,const std::filesystem::path& arabic) {
     rejects([&]{TextDraw o;o.x=std::numeric_limits<double>::infinity();render(composed,o);},"Infinite origin accepted");
     rejects([&]{TextDraw o;o.first_line=1000;render(composed,o);},"Out-of-range line accepted");
     rejects([]{TextLayout{}.lines();},"Invalid layout handle accepted");
-    rejects([]{FontSet({});},"Empty font set accepted");
+    rejects([]{FontSet(std::vector<FontSource>{});},"Empty font set accepted");
     rejects([&]{FontSet({{cjk,-1}});},"Negative face index accepted");
     rejects([&]{FontSet({{cjk,65535}});},"Nonexistent font face accepted");
     {Scratch scratch;const auto invalid=scratch.path/"bad-font";std::ofstream(invalid)<<"not a font";
