@@ -17,6 +17,10 @@ jobs:
           repository: rt64/rt64
           ref: 43373749dac9bbc1b653e6a02aed40a9e1783bed
           path: build/pixel-deps
+      - uses: actions/setup-python@v5
+        if: runner.os == 'Windows'
+        with:
+          python-version: '3.11'
       - name: Prepare pinned rendering dependencies (no game ROM)
         shell: bash
         run: |
@@ -25,7 +29,7 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y mesa-vulkan-drivers libx11-dev libxrandr-dev
       - name: Configure isolated GPU test
-        run: cmake -S tests/pixel_compositor -B build/pixel-gpu -DCMAKE_BUILD_TYPE=Release "-DSRW64_RT64_HEADERS=${{ github.workspace }}/build/pixel-deps"
+        run: cmake -S tests/pixel_compositor -B build/pixel-gpu -DCMAKE_BUILD_TYPE=Release "-DSRW64_RT64_HEADERS=${{ github.workspace }}/build/pixel-deps" -DSRW64_PIXEL_TEST_WARP=ON
       - name: Build production compositor and shaders
         run: cmake --build build/pixel-gpu --config Release --parallel 2
       - name: Render, fence and compare pixels
