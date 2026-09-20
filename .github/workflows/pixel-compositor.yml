@@ -1,0 +1,32 @@
+name: Pixel compositor GPU
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  gpu:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022, macos-14]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: rt64/rt64
+          ref: 43373749dac9bbc1b653e6a02aed40a9e1783bed
+          path: build/pixel-deps
+      - name: Prepare pinned rendering dependencies (no game ROM)
+        shell: bash
+        run: |
+          git -C build/pixel-deps submodule update --init --recursive --depth 1 src/contrib/plume src/contrib/dxc src/contrib/spirv-cross
+      - name: Install software Vulkan driver and system headers
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y mesa-vulkan-drivers libx11-dev libxrandr-dev
+      - name: Configure isolated GPU test
+        run: cmake -S tests/pixel_compositor -B build/pixel-gpu -DCMAKE_BUILD_TYPE=Release "-DSRW64_RT64_HEADERS=${{ github.workspace }}/build/pixel-deps"
+      - name: Build production compositor and shaders
+        run: cmake --build build/pixel-gpu --config Release --parallel 2
+      - name: Render, fence and compare pixels
+        run: ctest --test-dir build/pixel-gpu -C Release --output-on-failure
