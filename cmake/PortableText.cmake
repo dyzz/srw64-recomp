@@ -1,11 +1,13 @@
 include_guard(GLOBAL)
-# Optional CPU-only component. Deliberately does not change the game's default
-# Core Text backend or add dependencies to existing lightweight contract tests.
+# CPU-only text library shared by gameplay and local component tests.
 function(srw64_add_portable_text)
     if(TARGET srw64_portable_text)
         return()
     endif()
     find_package(Freetype 2.10 REQUIRED)
+    if(APPLE AND NOT ICU_ROOT AND EXISTS "/opt/homebrew/opt/icu4c")
+        set(ICU_ROOT "/opt/homebrew/opt/icu4c")
+    endif()
     find_package(ICU 70 REQUIRED COMPONENTS uc i18n)
     find_package(harfbuzz CONFIG QUIET)
     if(NOT TARGET harfbuzz::harfbuzz)

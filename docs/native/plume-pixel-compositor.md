@@ -1,7 +1,7 @@
 # 通用 Plume 像素合成（P2b）
 
-2026-09-20。接续 [CPU／GPU 后端拆分](shared-game-ui.md)。本批新增的是可独立测试的
-像素上传与 GPU 合成器，不是三平台完整游戏，也没有替换 CoreText 排版器。
+2026-09-20。接续 [CPU／GPU 后端拆分](shared-game-ui.md)。像素上传与 GPU 合成器现为默认对白路径，配合[中日英跨平台文字](portable-text.md)。
+完整游戏的三平台 surface 迁移仍未完成。
 
 ## 责任边界
 
@@ -30,16 +30,15 @@ sRGB 转换。颜色混合使用 ONE / ONE_MINUS_SRC_ALPHA，不能再次乘源 
 completion handler。纹理上传和绘制本身不再使用 Metal 专属 pipeline。
 目标 attachment 查询和 completion 仍有 Metal 类型，属于后续窗口／呈现后端迁移。
 
-新路径由 CMake 选项 `SRW64_PLUME_DIALOGUE` 控制，**默认 OFF**。现有
-`macos/dialogue_metal.cpp` 保留为游戏回归基准；两者不会同时链接。
-CPU 排版、阅读器、分页、回看、语言快照与存档不在本批改动范围。
+游戏直接编译 Plume 对白适配器；旧对白 Metal 合成器和后端选择开关已移除。
+CPU 场景使用 FreeType/HarfBuzz/ICU，保留原阅读器、分页、回看与语言快照。
 
 在已有本地 ROM／完整开发依赖的环境中，用独立构建和用户目录试验：
 
 ```sh
 make host
 cmake -S src/host -B build/recomp/gfx-plume-build \
-  -DSRW64_ENABLE_RT64=ON -DSRW64_PLUME_DIALOGUE=ON \
+  -DSRW64_ENABLE_RT64=ON \
   -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
 cmake --build build/recomp/gfx-plume-build --target srw64-gfx-host --parallel 6
 ./build/recomp/gfx-plume-build/srw64-gfx-host --play \
@@ -78,8 +77,8 @@ cmake --build build/pixel-gpu --config RelWithDebInfo --parallel 2
 ctest --test-dir build/pixel-gpu -C RelWithDebInfo --output-on-failure --verbose
 ```
 
-结果以对应提交的 `Pixel compositor GPU` workflow 为准；合成回读不替代真实游戏的 GPU
-workload／窗口缩放／语言切换／退出回归。当前仍需跨平台文字排版、窗口 surface、截图回读、
+GitHub Actions 已关闭，GPU 测试可按上述命令在本地执行。合成回读不替代真实游戏的 GPU
+workload／窗口缩放／语言切换／退出回归。当前仍需窗口 surface、截图回读、
 marker、OS 输入法与三平台游戏冷启动验收。Vulkan 物理设备验证还必须覆盖非 coherent
 上传内存：固定 Plume 的 map/unmap 尚未显式执行 flush/invalidate，软件驱动通过不能替代
 该内存可见性契约的修正与验证。没有发布游戏、ROM 或字体附件。

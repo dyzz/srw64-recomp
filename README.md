@@ -258,7 +258,7 @@ root. Its identity and pinned toolchain sources are in [provenance](docs/guide/p
 
 Requirements: macOS on Apple Silicon, Python **3.11+**, the Xcode command line
 tools, CMake, Ninja, and SDL2 (`xcode-select --install`, then
-`brew install python cmake ninja sdl2`). Other dependencies are pinned in
+`brew install python cmake ninja sdl2 freetype harfbuzz icu4c`). Other dependencies are pinned in
 `config/recomp/toolchain.json`; setup downloads them from GitHub and builds them
 under `build/`. macOS's own `python3` is 3.9: if `python3` on your `PATH` is older
 than 3.11, `make` says so; run it as `make PYTHON3=/opt/homebrew/bin/python3`.
@@ -282,7 +282,7 @@ experimental art is installed under `assets/` (not published). The
 
 `make check` runs the ROM-independent Python checks. After `make`,
 `make recomp-native-check` runs the
-C++ component checks. These are separate from Python CI and from actual gameplay
+C++ component checks. These are separate from local Python checks and from actual gameplay
 validation. The [development guide](docs/guide/native-development.md) has detailed
 build steps and module boundaries; most technical notes are currently Chinese.
 
@@ -343,7 +343,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 
 环境要求：Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、Ninja 和 SDL2
-（`xcode-select --install` 后 `brew install python cmake ninja sdl2`）；
+（`xcode-select --install` 后 `brew install python cmake ninja sdl2 freetype harfbuzz icu4c`）；
 其余依赖的版本固定在 `config/recomp/toolchain.json`，准备时从 GitHub 下载并构建到本地 `build/`。
 macOS 自带的 `python3` 是 3.9：`PATH` 上的 `python3` 低于 3.11 时 `make` 会直接提示，
 改用 `make PYTHON3=/opt/homebrew/bin/python3`。
@@ -362,7 +362,7 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 **F6** 切到高清。全部参数和按键见[原生试玩](docs/guide/native-playtest.md)。
 
 `make check` 不需要 ROM；`make` 之后，`make recomp-native-check` 运行 C++ 组件检查。
-Python CI、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
+本地 Python 检查、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
 [原生开发指南](docs/guide/native-development.md)。
 
 ### 实验阶段的边界

@@ -50,7 +50,8 @@ void metal_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* frameb
         // completes. A later cache replacement cannot free a recorded upload.
         command->mtl->addCompletedHandler([next](MTL::CommandBuffer*) { (void)next; });
         image = std::move(next); cached_key = key.str();
-        raster.report["renderer"] = "Core Text + Core Graphics + Metal";
+        // The scene reports its portable CPU text backend.
+        raster.report["presentation"] = "Plume (Metal surface)";
         raster.report["compositor"] = "Plume";
         if (srw64_full_diagnostics()) std::ofstream(output/"dialogue-raster.json") << raster.report.dump(2) << '\n';
     }

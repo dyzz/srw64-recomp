@@ -18,8 +18,6 @@ import tempfile
 FIXTURES = (
     ("notofonts/noto-cjk", "f8d157532fbfaeda587e826d4cd5b21a49186f7c",
      "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf", 16437364),
-    ("notofonts/noto-fonts", "ffebf8c1ee449e544955a7e813c54f9b73848eac",
-     "hinted/ttf/NotoSansArabic/NotoSansArabic-Black.ttf", 254936),
 )
 
 

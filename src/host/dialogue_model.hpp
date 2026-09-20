@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
+
+namespace srw64::text { class TextLayout; }
 
 namespace srw64::dialogue {
 struct Line { size_t start{}, end{}; double width{}; };
@@ -13,6 +16,8 @@ struct Layout {
     std::u16string text;
     std::vector<size_t> clusters; // Exclusive UTF-16 ends, never split a grapheme.
     std::vector<Page> pages;
+    // Pins shaped glyphs and font bytes for the exact queued game frame.
+    std::shared_ptr<const text::TextLayout> shaped;
 };
 struct Entry {
     uint64_t event{};

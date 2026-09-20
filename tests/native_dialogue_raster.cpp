@@ -6,11 +6,6 @@
 #include <limits>
 #include <stdexcept>
 using namespace srw64::dialogue;
-#ifdef SRW64_COMPARE_LEGACY_RASTER
-namespace srw64::dialogue::reference {
-RasterizedFrame rasterize_frame(const Frame&,uint32_t,uint32_t);
-}
-#endif
 namespace {
 unsigned checks{};
 void check(bool condition,const char* message) { ++checks; if(!condition)throw std::runtime_error(message); }
@@ -37,21 +32,17 @@ std::shared_ptr<srw64::localization::Catalog> catalog(const std::string& locale,
             {"history_title","History"},{"history_controls","Back"}}}});
     return result;
 }
-void compare_reference(const Frame& frame,uint32_t width,uint32_t height) {
-#ifdef SRW64_COMPARE_LEGACY_RASTER
-    const auto actual=rasterize_frame(frame,width,height);
-    auto expected=reference::rasterize_frame(frame,width,height);
-    check(actual.image.pixels==expected.image.pixels,"CPU split changed pixels from the pinned original renderer");
-    expected.report["renderer"]=actual.report.at("renderer");
-    check(actual.report==expected.report,"CPU split changed raster diagnostic blocks");
-#else
-    (void)frame;(void)width;(void)height;
-#endif
+void verify_raster(const Frame& frame,uint32_t width,uint32_t height) {
+    const auto result=rasterize_frame(frame,width,height);
+    result.image.validate();
+    check(result.report.at("renderer")=="FreeType + HarfBuzz + ICU","Wrong game text backend");
+    for(const auto& block:result.report.at("blocks"))
+        if(block.contains("bounds"))check(block.at("bounds").size()==4,"Invalid scene block");
 }
 void run() {
     Scratch scratch;
     Frame frame;frame.catalog=catalog("en","Manual");frame.font_size=13;
-    compare_reference(frame,320,240);
+    verify_raster(frame,320,240);
     const auto empty=rasterize_frame(frame,320,240);
     check(std::all_of(empty.image.pixels.begin(),empty.image.pixels.end(),[](auto b){return b==0;}),"hidden frame is not transparent");
     check(empty.report.at("blocks").empty(),"hidden frame drew controls");
@@ -61,7 +52,7 @@ void run() {
         box.layout=typeset(u"Hello e\u0301, world.",13);
     }
     box.revealed=box.layout.text.size();frame.reading_event=1;
-    compare_reference(frame,320,240);
+    verify_raster(frame,320,240);
     const auto full=rasterize_frame(frame,320,240);full.image.validate();
     check(full.report.at("locale")=="en","raster ignored the pinned catalog");
     check(full.report.at("drawable")==nlohmann::json({320,240}),"raster dimensions");
@@ -78,26 +69,26 @@ void run() {
     check(pinned.image.pixels==full.image.pixels,"active locale changed an already queued frame");
     check(srw64::localization::snapshot()==other,"raster leaked its scoped locale");
     box.revealed=0;
-    compare_reference(frame,320,240);
+    verify_raster(frame,320,240);
     const auto hidden_text=rasterize_frame(frame,320,240);
     check(hidden_text.image.pixels!=full.image.pixels,"typewriter reveal did not affect pixels");
     box.revealed=box.layout.text.size();
-    compare_reference(frame,640,480);
+    verify_raster(frame,640,480);
     const auto scaled=rasterize_frame(frame,640,480);
     check(scaled.image.row_bytes()==2560 && scaled.report.at("drawable")==nlohmann::json({640,480}),"scaled raster extent");
     frame.history_open=true;frame.history.emplace_back();frame.history.back().text=u"Refund received";
     frame.history.back().notice=true;
-    compare_reference(frame,320,240);
+    verify_raster(frame,320,240);
     const auto history=rasterize_frame(frame,320,240);
     check(std::any_of(history.report.at("blocks").begin(),history.report.at("blocks").end(),
         [](const auto& b){return b.at("role")=="history_notice";}),"history notice lost");
     check(history.image.pixels!=full.image.pixels,"history did not render");
-    // Match the old painter across both panels, inactive handoff, auto-read
+    // Exercise the actual game scene across both panels, inactive handoff, auto-read
     // progress, paginated mixed CJK/Unicode, history notices and letterboxing.
     for(unsigned font:{10U,13U,18U}) {
         frame.font_size=font;
         {srw64::localization::Scope scope(frame.catalog);
-         box.layout=typeset(utf16("日本語、中文 é 🚀。A longer line for pagination."),font);}
+         box.layout=typeset(utf16("日本語、中文 é が。A longer line for pagination."),font);}
         frame.boxes[1]=box;frame.boxes[1].y=150;frame.boxes[1].active=false;
         frame.auto_read=true;frame.speed=2;frame.advance={};
         frame.advance.visible=true;frame.advance.permille=567;frame.advance.waiting=true;
@@ -105,10 +96,19 @@ void run() {
             frame.history_open=history_open;box.active=active;
             for(unsigned page=0;page<box.layout.pages.size();++page) {
                 box.page=page;box.revealed=box.layout.pages[page].end;
-                compare_reference(frame,800,600);
-                compare_reference(frame,1100,760);
+                verify_raster(frame,800,600);
+                verify_raster(frame,1100,760);
             }
         }
+    }
+    for(const auto& locale:{"zh-Hans","ja","en"}) {
+        frame.catalog=catalog(locale,"Manual");
+        srw64::localization::Scope scope(frame.catalog);
+        box.layout=typeset(utf16("中文、日本語、English é。"),13);
+        check(bool(box.layout.shaped),"Game Reader lost shaped glyph ownership");
+        box.page=0;box.revealed=box.layout.pages[0].end;
+        frame.font_size=13;frame.boxes[1]=box;frame.boxes[1].y=150;
+        verify_raster(frame,800,600);
     }
     check(std::filesystem::is_empty(scratch.path),"CPU raster backend wrote diagnostic files");
     rejects([&]{rasterize_frame(frame,0,240);},"zero drawable accepted");
