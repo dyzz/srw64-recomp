@@ -4,7 +4,7 @@
 
 **《超级机器人大战64》原生重编译实验工程。**
 
-[English](#english) · [简体中文](#简体中文) · [Controls / 操作](#controls--操作) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
+[English](#english) · [简体中文](#简体中文) · [Build / 构建应用](#build-macos-app) · [Controls / 操作](#controls--操作) · [Preview / 画面](#development-preview) · [Technical docs / 技术文档](docs/README.md)
 
 > **Current focus: exploring what the recompilation makes possible** — native
 > interface pages, reading controls, rule corrections and other gameplay
@@ -120,10 +120,11 @@ dialogue history keeps a line in every language. / 开启难度调整「离队�
 <details open>
 <summary><strong>Options and settings window · 选项与设置窗口</strong></summary>
 
-**Options → Settings…** (**⌘,**) opens one window for the rule corrections,
-difficulty options, language and artwork; every change applies at once and is
-remembered. / 菜单栏「选项 → 设置…」（**⌘,**）在一个窗口里切换规则修正、难度调整、语言和画面，
-改动立即生效并记住。
+**Application menu → Settings…** (**⌘,**) opens the in-game settings page for rule
+corrections, difficulty, language and artwork. Rules and language are remembered;
+artwork selection applies to the current session. The captures below show the earlier
+settings window. / 从顶部应用菜单「设置…」（**⌘,**）打开游戏内设置页，切换规则修正、难度、
+语言和画面；规则和语言会保存，画面选择用于当前会话。下图是此前设置窗口的记录。
 
 | English | 简体中文 |
 | --- | --- |
@@ -238,7 +239,7 @@ in progress.
 | Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
 | Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
 | Link Battler | Choosing **リンク** in the intermission opens a native page instead of reading a Game Boy cartridge through the Transfer Pak: tick Gundam F91, GoShogun or Zambot 3, and the original link screen and special stage bring their pilots and machines into the team. See [Link Battler](docs/gameplay/link-battler.md). |
-| Settings | An **Options** menu in the menu bar and a settings window (**⌘,**) switch rules, language, and images while playing; choices are remembered. |
+| Settings | **Application menu → Settings…** (**⌘,**) opens the shared SDL/RmlUi settings page; **Esc** returns to the game. Rules and language are saved; image selection applies to the current session. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, script injection and custom mini stages, native probes, and a [debug interface](docs/guide/debug-interface.md) with a command line and an MCP server that drives every game input and the native UI without manual key presses. |
 
@@ -256,12 +257,17 @@ fonts, HD texture packs, generated game code, or a prebuilt application. Supply
 your own matching original Japanese Rev 0 ROM as `rom.z64` in the repository
 root. Its identity and pinned toolchain sources are in [provenance](docs/guide/provenance.md).
 
-Requirements: macOS on Apple Silicon, Python **3.11+**, the Xcode command line
-tools, CMake, Ninja, and SDL2 (`xcode-select --install`, then
-`brew install python cmake ninja sdl2 freetype harfbuzz icu4c`). Other dependencies are pinned in
-`config/recomp/toolchain.json`; setup downloads them from GitHub and builds them
-under `build/`. macOS's own `python3` is 3.9: if `python3` on your `PATH` is older
-than 3.11, `make` says so; run it as `make PYTHON3=/opt/homebrew/bin/python3`.
+For a local development build, use macOS on Apple Silicon, Python **3.11+**, the
+Xcode command line tools, CMake, Ninja, SDL2, FreeType, HarfBuzz and ICU:
+
+```sh
+xcode-select --install  # Skip if command line tools are already installed.
+brew install python cmake ninja sdl2 freetype harfbuzz icu4c
+```
+
+Toolchain sources are pinned in `config/recomp/toolchain.json`; setup downloads
+them from GitHub into `build/`. If `python3` on your `PATH` is older than 3.11,
+use `make PYTHON3=/opt/homebrew/bin/python3`.
 
 ```sh
 # Everything: Python environment, pinned toolchain, generated game code and the
@@ -271,6 +277,13 @@ make
 # Play. The first launch starts a new game; later ones continue from your saves.
 scripts/Play\ SRW64\ Native.command --language en
 ```
+
+This development build uses locally installed libraries, whose minimum macOS
+version may be higher than the project's release target. For an application
+bundle, follow [Build a macOS app](#build-macos-app): it rebuilds the runtime
+libraries and host for **macOS 14.0 / arm64**. Gameplay has been tested on macOS 27;
+macOS 14/15 runtime acceptance is still pending. Python is used for building and
+development tools; the packaged native application does not require it to run.
 
 `scripts/Play SRW64 Native.command` can also be double-clicked in Finder. Save in
 game before quitting; the next launch continues from the most recent intact
@@ -285,6 +298,7 @@ experimental art is installed under `assets/` (not published). The
 C++ component checks. These are separate from local Python checks and from actual gameplay
 validation. The [development guide](docs/guide/native-development.md) has detailed
 build steps and module boundaries; most technical notes are currently Chinese.
+GitHub Actions is disabled; build and validation commands run locally.
 
 ### Experimental limits
 
@@ -327,7 +341,7 @@ build steps and module boundaries; most technical notes are currently Chinese.
 | 主角与姓名 | 游戏窗口内的现代页面：先从四张卡片（超级系／真实系 × 男／女）中选主角，再填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
 | 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破、剧情移除机体时退回改造资金并提示）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
 | Link Battler 联动 | 整备画面选「リンク」时打开原生页面，不再经 64GB Pak 读 Game Boy 卡带：勾选高达 F91、GoShogun 或赞博特3 后照常进入原版联动画面，特别关卡让这些驾驶员与机体加入部队。见 [Link Battler 联动](docs/gameplay/link-battler.md)。 |
-| 设置 | 菜单栏「选项」与设置窗口（**⌘,**）可在游戏中随时切换规则、语言和画面，选择会被记住。 |
+| 设置 | 顶部应用菜单「设置…」（**⌘,**）打开共享 SDL/RmlUi 设置页，**Esc** 返回游戏；规则和语言会保存，画面选择用于当前会话。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、脚本注入与自制迷你关卡、原生运行探针，以及[调试接口](docs/guide/debug-interface.md)：命令行和 MCP 服务器可驱动全部游戏输入和原生界面，实机检查不需要人工按键。 |
 
@@ -342,11 +356,16 @@ build steps and module boundaries; most technical notes are currently Chinese.
 请自行准备匹配的日版 Rev 0 原始 ROM，放在仓库根目录并命名为 `rom.z64`。
 ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 
-环境要求：Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、Ninja 和 SDL2
-（`xcode-select --install` 后 `brew install python cmake ninja sdl2 freetype harfbuzz icu4c`）；
-其余依赖的版本固定在 `config/recomp/toolchain.json`，准备时从 GitHub 下载并构建到本地 `build/`。
-macOS 自带的 `python3` 是 3.9：`PATH` 上的 `python3` 低于 3.11 时 `make` 会直接提示，
-改用 `make PYTHON3=/opt/homebrew/bin/python3`。
+本机开发构建需要 Apple Silicon 的 macOS、**Python 3.11+**、Xcode 命令行工具、CMake、
+Ninja、SDL2、FreeType、HarfBuzz 和 ICU：
+
+```sh
+xcode-select --install  # 已安装命令行工具时跳过。
+brew install python cmake ninja sdl2 freetype harfbuzz icu4c
+```
+
+工具链版本固定在 `config/recomp/toolchain.json`，准备时从 GitHub 下载到本地 `build/`。
+如果 `PATH` 上的 `python3` 低于 3.11，改用 `make PYTHON3=/opt/homebrew/bin/python3`。
 
 ```sh
 # 一条命令完成全部准备：Python 环境、固定版本的工具链、生成的游戏代码和游戏宿主。需要 rom.z64。
@@ -356,6 +375,11 @@ make
 scripts/Play\ SRW64\ Native.command --language zh-Hans
 ```
 
+这条开发路径使用本机安装的库，最低系统版本可能高于项目的发行构建目标。需要 `.app` 时，
+按下方[构建 macOS 应用](#build-macos-app)重编运行时依赖和宿主，目标为 **macOS 14.0 / arm64**。
+游戏运行已在 macOS 27 验证，macOS 14/15 仍待实机验收。Python 用于构建和开发工具，
+打包后的原生应用运行时不需要 Python。
+
 也可以在 Finder 里双击 `scripts/Play SRW64 Native.command`。退出前请在游戏内存档；下次启动会从最近一次
 可核验的会话继续，`--new-game` 重新开始。`--language ja`／`en` 以日文或英文启动，`--mute` 关闭声音，
 `--rules original` 使用原版规则。只有在 `assets/` 下装有对应的实验 HD 素材（不公开发布）时才可用
@@ -364,6 +388,7 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 `make check` 不需要 ROM；`make` 之后，`make recomp-native-check` 运行 C++ 组件检查。
 本地 Python 检查、原生组件测试与真实游戏流程验证分别记录。构建细节、静音测试和模块责任见
 [原生开发指南](docs/guide/native-development.md)。
+GitHub Actions 保持关闭，构建和验证均在本地执行。
 
 ### 实验阶段的边界
 
@@ -374,6 +399,64 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 - HD 美术属于本地实验，展示截图不意味着仓库附带素材，也不意味着全部场景已高清化。
 - 只支持 macOS；手柄尚未接入，目前只能用键盘。
 - 全文翻译与 HD 美术排在当前的功能与游戏性工作之后，见[内置 MOD 路线图](docs/design/mod-roadmap.md)。
+
+<a name="build-macos-app"></a>
+
+## Build a macOS app / 构建 macOS 应用
+
+Run `make` above first to prepare the pinned toolchain and generated game code.
+Then build runtime dependencies from the source URLs and SHA-256 hashes in
+`config/recomp/macos-dependencies.json`, and configure a separate Release build.
+This leaves the development build and Homebrew installation in place.
+
+先完成上方的 `make`，准备固定工具链和生成的游戏代码。然后按
+`config/recomp/macos-dependencies.json` 的固定源码及 SHA-256 重编依赖，使用独立目录构建
+Release 应用；开发构建和 Homebrew 安装保持原样。以下命令均在仓库根目录执行。
+
+```sh
+# Pinned runtime libraries targeting macOS 14 / 固定源码运行库，目标 macOS 14
+.venv/bin/python tools/release/build_macos_dependencies.py --jobs 8
+
+release_deps="$PWD/build/macos-deps/14.0-arm64/prefix"
+cmake -S src/host -B build/recomp/macos14-app-build -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+  -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_OSX_ARCHITECTURES=arm64 \
+  -DCMAKE_PREFIX_PATH="$release_deps" \
+  '-DCMAKE_IGNORE_PREFIX_PATH=/opt/homebrew;/usr/local' \
+  -DSDL2_DIR="$release_deps/lib/cmake/SDL2" \
+  -DICU_ROOT="$release_deps" \
+  -Dharfbuzz_DIR="$release_deps/lib/cmake/harfbuzz" \
+  -DSRW64_ENABLE_RT64=ON -DSRW64_METAL_SOURCE_SHADERS=ON \
+  -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
+cmake --build build/recomp/macos14-app-build --target srw64-gfx-host --parallel 8
+
+# Bundle the executable and its runtime libraries / 打包主程序与运行库
+.venv/bin/python tools/release/package_macos.py \
+  --binary build/recomp/macos14-app-build/srw64-gfx-host \
+  --output "dist/SRW64-macos14-arm64/SRW64 Recompiled.app" \
+  --minimum-macos 14.0 --search-dir "$release_deps/lib" \
+  --runtime-library "$release_deps/lib/libSDL3.dylib"
+
+open "dist/SRW64-macos14-arm64/SRW64 Recompiled.app"
+```
+
+On first launch, select your matching ROM; the application imports the content
+locally. ROMs, imported assets, saves and fonts are not copied into the bundle.
+The macOS build currently reads the system's Arial Unicode font file through
+FreeType/HarfBuzz. ICU retains its full data package for now.
+
+首次启动选择匹配的 ROM，由应用在本地导入内容；ROM、导出素材、存档和字体不装入应用包。
+当前 macOS 版本由 FreeType/HarfBuzz 读取系统 Arial Unicode 字体，ICU 暂时保留完整数据。
+
+The packager checks every bundled Mach-O's deployment target and signs the app
+ad hoc for local testing; it is not notarized. Existing output is never overwritten:
+choose a new `--output` directory when repackaging. Lowering `--minimum-macos` alone
+does not make a newer dependency compatible. See [macOS build details and validation](docs/native/macos-release.md).
+
+打包器逐一检查包内二进制的最低系统版本，并做本地 ad-hoc 签名，尚未公证。
+重复打包时换一个 `--output` 目录，已有产物不会被覆盖；只降低 `--minimum-macos`
+不能让较新系统编译的依赖兼容旧系统。详细说明与验收范围见 [macOS 兼容构建](docs/native/macos-release.md)。
 
 <a name="controls--操作"></a>
 
@@ -397,11 +480,13 @@ Letter keys follow physical positions. / 字母键按物理键位映射。
 | Esc | Quit / 退出 | |
 
 The protagonist cards take ←→ and Enter / Z or a click; the name page takes mouse, keyboard, and IME input directly (Tab, Enter, Esc).
-**Options → Gameplay adjustments** toggles rules; **⌘,** opens the settings window. Don't hold
+**Application menu → Settings…** (**⌘,**) opens the settings page, including gameplay
+adjustments; **Esc** closes it. Don't hold
 Enter while the game boots: the original Controller Pak screen is not supported
 yet and stops the host. /
-主角选择卡片用 ←→ 与 Enter／Z 或鼠标点击；姓名页直接用鼠标、键盘和输入法操作（Tab、Enter、Esc）。「选项 → 游戏性调整」开关规则，**⌘,**
-打开设置窗口。开机时不要按住 Enter：原版的 Controller Pak 画面尚不支持，宿主会中止。
+主角选择卡片用 ←→ 与 Enter／Z 或鼠标点击；姓名页直接用鼠标、键盘和输入法操作（Tab、Enter、Esc）。
+顶部应用菜单「设置…」（**⌘,**）打开设置页，可在其中调整游戏规则，**Esc** 关闭设置。
+开机时不要按住 Enter：原版的 Controller Pak 画面尚不支持，宿主会中止。
 
 ## Debug interface / 调试接口
 
