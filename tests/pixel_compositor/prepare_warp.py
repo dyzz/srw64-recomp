@@ -1,8 +1,7 @@
-"""Allow WARP enumeration in a BUILD-DIRECTORY copy of pinned Plume for CI.
+"""Build-directory-only WARP selection and failure diagnostics for pinned Plume.
 
-Only the two adapter-selection filters change. The compositor, shaders, D3D12
-commands, driver and readback are real. Never edit the dependency checkout or
-apply this to the game build. WARP is software evidence, not hardware coverage.
+This never edits the dependency checkout or changes successful rendering. The
+compositor, shaders, commands and driver are real; WARP is software evidence.
 """
 from __future__ import annotations
 import argparse
@@ -23,14 +22,31 @@ def prepare(source: Path, output: Path) -> None:
          "if (adapterDesc.Flags & DXGI_ADAPTER_FLAG_REMOTE) {"),
         ("if ((adapterDesc.Flags & (DXGI_ADAPTER_FLAG_REMOTE | DXGI_ADAPTER_FLAG_SOFTWARE)) == 0) {",
          "if ((adapterDesc.Flags & DXGI_ADAPTER_FLAG_REMOTE) == 0) {"),
+        ("device->d3d->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&d3d));", r'''const HRESULT pixel_test_result = device->d3d->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&d3d));
+        if (FAILED(pixel_test_result)) {
+            fprintf(stderr, "CreateGraphicsPipelineState failed 0x%lX (VS=%zu PS=%zu samples=%u RT=%u)\n", pixel_test_result,
+                psoDesc.VS.BytecodeLength, psoDesc.PS.BytecodeLength, psoDesc.SampleDesc.Count, psoDesc.RTVFormats[0]);
+            ID3D12InfoQueue* info = nullptr;
+            if (SUCCEEDED(device->d3d->QueryInterface(IID_PPV_ARGS(&info)))) {
+                for (UINT64 i = 0; i < info->GetNumStoredMessages(); ++i) {
+                    SIZE_T size = 0; info->GetMessage(i, nullptr, &size);
+                    std::vector<unsigned char> storage(size);
+                    auto* message = reinterpret_cast<D3D12_MESSAGE*>(storage.data());
+                    if (SUCCEEDED(info->GetMessage(i, message, &size))) fprintf(stderr, "%s\n", message->pDescription);
+                }
+                info->Release();
+            }
+            throw std::runtime_error("D3D12 graphics pipeline creation failed");
+        }'''),
     )
     for before, after in replacements:
         if text.count(before) != 1:
-            raise ValueError("Pinned adapter filter differs")
+            raise ValueError("Pinned source differs")
         text = text.replace(before, after)
+    text = '#include <d3d12sdklayers.h>\n#include <stdexcept>\n' + text
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(text, encoding="utf-8", newline="\n")
-    print("WARP test: software-adapter selection enabled in generated copy; production source unchanged")
+    print("WARP fixture: adapter selection and failure diagnostics in generated copy; production source unchanged")
 
 
 if __name__ == "__main__":
