@@ -190,3 +190,13 @@ GPU 图片由宿主使用 RT64 的 draw hook、Metal texture-to-buffer blit 和�
 `7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345`。
 运行时捕获同时记录 ROM、ares、会话和内存身份。结果及其边界见
 [recomp-progress.md](../design/recomp-progress.md)。
+
+## 共享 UI 依赖（2026-09-20）
+
+默认游戏 UI 与可选姓名页原型使用 [RecompFrontend](https://github.com/N64Recomp/RecompFrontend)
+提交 `b1a1477c6556aeb7ed45defbfb5924f721efebc1`，其中 RmlUi 子模块固定为
+`7a06f27db04fe5d13a5dacc19b2b4544673a4eca`。独立锁见
+`config/recomp/frontend.json`，实现范围与验证见[共享游戏界面](../native/shared-game-ui.md)与[姓名页原型](../native/shared-name-page-probe.md)。
+只复用其 UI renderer 与 RmlUi，准备时记录原 renderer 和适配头文件的 SHA-256；
+不更新现有 RT64/N64ModernRuntime，不提交依赖源码、字体或生成 shader。
+运行时 FreeType 来自开发环境；这不是带完整依赖／字体授权清单的发行构建。
