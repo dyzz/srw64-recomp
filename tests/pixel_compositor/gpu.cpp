@@ -70,9 +70,10 @@ struct Draw {
     }
     void finish() {
         list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(target.get(), RenderTextureLayout::COPY_SOURCE));
+        // Pinned Plume's texture->buffer direction is absent on Metal/Vulkan,
+        // and D3D12 unconditionally dereferences dstLocation.texture. Read back
+        // independently in this fixture; production upload/draw remains generic.
 #if defined(__APPLE__)
-        // Pinned Plume has no texture->buffer copy on Metal or Vulkan. Keep this
-        // platform readback glue inside the test; production draws remain generic.
         auto* command = static_cast<MetalCommandList*>(list.get());
         command->checkActiveBlitEncoder();
         command->activeBlitEncoder->copyFromTexture(static_cast<MetalTexture*>(target.get())->mtl,
@@ -80,8 +81,17 @@ struct Draw {
             0, size_t(row)*4, size_t(row)*h*4);
         command->endActiveBlitEncoder();
 #elif defined(_WIN32)
-        list->copyTextureRegion(RenderTextureCopyLocation::PlacedFootprint(readback.get(), format, w, h, 1, row),
-                                RenderTextureCopyLocation::Subresource(target.get()));
+        auto* command = static_cast<D3D12CommandList*>(list.get());
+        D3D12_TEXTURE_COPY_LOCATION source{};
+        source.pResource = static_cast<D3D12Texture*>(target.get())->d3d;
+        source.Type = D3D12_TEXTURE_COPY_TYPE_SUBRESOURCE_INDEX;
+        D3D12_TEXTURE_COPY_LOCATION destination{};
+        destination.pResource = static_cast<D3D12Buffer*>(readback.get())->d3d;
+        destination.Type = D3D12_TEXTURE_COPY_TYPE_PLACED_FOOTPRINT;
+        auto& footprint = destination.PlacedFootprint.Footprint;
+        footprint.Format = format == RenderFormat::B8G8R8A8_UNORM ? DXGI_FORMAT_B8G8R8A8_UNORM : DXGI_FORMAT_R8G8B8A8_UNORM;
+        footprint.Width = w; footprint.Height = h; footprint.Depth = 1; footprint.RowPitch = row * 4;
+        command->d3d->CopyTextureRegion(&destination,0,0,0,&source,nullptr);
 #else
         auto* command = static_cast<VulkanCommandList*>(list.get());
         command->endActiveRenderPass();
