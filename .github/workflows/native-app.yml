@@ -1,0 +1,36 @@
+name: Native launch foundation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  native-bootstrap:
+    name: Bootstrap and importer (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: rt64/rt64
+          ref: 43373749dac9bbc1b653e6a02aed40a9e1783bed
+          path: build/portable-json
+          sparse-checkout: src/contrib/json
+      # Python is used for BUILD metadata and oracle tests, never by the player.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install oracle dependency
+        run: python -m pip install -r requirements.lock
+      - name: Configure ROM-free native tests
+        run: cmake -S . -B build/native-app -DCMAKE_BUILD_TYPE=Release -DSRW64_APP_JSON_INCLUDE_DIR="${{ github.workspace }}/build/portable-json/src/contrib"
+      - name: Build
+        run: cmake --build build/native-app --config Release --parallel 2
+      - name: Test
+        run: ctest --test-dir build/native-app -C Release --output-on-failure
+      - name: Test local content export
+        run: python -m unittest discover -s tests -p test_release_content.py -v
