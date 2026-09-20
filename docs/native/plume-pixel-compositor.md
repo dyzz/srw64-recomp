@@ -9,7 +9,8 @@
 `Bgra8Surface` 的自有像素，输出为录制到调用者 command list 的绘制命令。
 它不创建窗口、不提交队列、不等待 GPU，也不读取语言目录、ROM 或游戏状态。
 `cmake/PixelCompositor.cmake` 由游戏和独立测试共用；同一对 HLSL 分别编译为
-SPIR-V、DXIL 和 Metal。生成工具只用于构建，不放入玩家启动链。
+SPIR-V、DXIL 和 Metal。简单的整像素合成使用 SM6.0，不无故要求 SM6.3；Windows Server 2022
+的软件驱动验证已证明较高版本会导致管线创建失败。生成工具只用于构建，不放入玩家启动链。
 
 像素约定保持不变：紧密顶向下 BGRA8、预乘 alpha，目标为单采样 BGRA8/RGBA8 UNORM。
 上传按照 256 字节行对齐进行复制；着色器按整数 fragment 坐标读取，不增加滤波、缩放或
@@ -57,10 +58,17 @@ cmake --build build/recomp/gfx-plume-build --target srw64-gfx-host --parallel 6
 测试还会在提交前释放 compositor 和缓存，只保留 completion 引用；绘制旧图像、新图像和
 再次使用旧图像，检查资源提前释放、内容被覆盖以及完成后引用泄漏。无效参数检查继续保留。
 
+固定 Plume 的 texture-to-buffer 回读方向有独立缺口：Metal/Vulkan 没有实现；D3D12 无条件
+按目标纹理设置 sample positions，对 buffer 目标会解引用空指针。因此测试的回读分别使用
+Metal blit、vkCmdCopyImageToBuffer 和 D3D12 CopyTextureRegion；Vulkan 另有 host barrier、
+fence 后的 allocation invalidation。这些均在测试适配层，不修改或替代被测的公共上传／绘制。
+它们不意味着生产截图后端已完成迁移。
+
 Windows 的 `SRW64_PIXEL_TEST_WARP` 仅用于独立测试：校验固定 Plume 源码摘要，在
 构建目录生成允许软件适配器枚举、增强失败诊断的副本，不改依赖 checkout 或游戏后端。
 WARP 和 Linux Mesa 软件 Vulkan 的结果是实际 API／驱动执行证据，不是物理 GPU 性能或
-厂商驱动覆盖。macOS CI 虚拟 GPU 的支持限制必须单独记录，不能把编译或跳过当作像素验收。
+厂商驱动覆盖。macOS 14 的 CI 虚拟驱动缺少 Plume 所用的 argument encoder 调用；macOS 15
+可执行该测试。本批使用 macOS 15 GPU CI，这不能推断所有 macOS 14 实体机器不受支持。
 
 ```sh
 cmake -S tests/pixel_compositor -B build/pixel-gpu \
@@ -72,4 +80,6 @@ ctest --test-dir build/pixel-gpu -C RelWithDebInfo --output-on-failure --verbose
 
 结果以对应提交的 `Pixel compositor GPU` workflow 为准；合成回读不替代真实游戏的 GPU
 workload／窗口缩放／语言切换／退出回归。当前仍需跨平台文字排版、窗口 surface、截图回读、
-marker、OS 输入法与三平台游戏冷启动验收。没有发布游戏、ROM 或字体附件。
+marker、OS 输入法与三平台游戏冷启动验收。Vulkan 物理设备验证还必须覆盖非 coherent
+上传内存：固定 Plume 的 map/unmap 尚未显式执行 flush/invalidate，软件驱动通过不能替代
+该内存可见性契约的修正与验证。没有发布游戏、ROM 或字体附件。
