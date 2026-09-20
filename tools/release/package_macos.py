@@ -101,7 +101,8 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 
 
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum: str = "14.0",
-                 identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake") -> Path:
+                 identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
+                 search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = ()) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -120,6 +121,21 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
     resolved_notices = [path.resolve(strict=True) for path in notices]
     if any(not path.is_file() or path.suffix.lower() not in (".txt", ".md", "") for path in resolved_notices):
         raise ValueError("Notices must be explicit plain-text license files")
+    searches = [binary.parent, *(path.resolve(strict=True) for path in search_dirs)]
+    if any(not path.is_dir() or any(c in str(path) for c in ";\n\r") for path in searches):
+        raise ValueError("Dependency search directories must be directories without CMake separators")
+    runtime = []
+    names = set()
+    for path in runtime_libraries:
+        source = path.resolve(strict=True)
+        if path.suffix != ".dylib" or path.name in names or any(c in str(source) + path.name for c in ";\n\r"):
+            raise ValueError("Runtime libraries must have unique dylib names without CMake separators")
+        with source.open("rb") as stream:
+            if stream.read(4) not in MACHO_MAGIC:
+                raise ValueError("Runtime library must be a Mach-O dylib")
+        names.add(path.name)
+        runtime.append((path.name, source))
+        searches.append(source.parent)
     script = Path(__file__).with_suffix(".cmake")
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".srw64-stage-", dir=output.parent) as work:
@@ -149,7 +165,14 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
             licenses = resources / "licenses"
             licenses.mkdir(exist_ok=True)
             shutil.copyfile(notice, licenses / f"{index:02d}-{notice.name}")
-        run([cmake, f"-DBUNDLE:PATH={staged}", f"-DSEARCH_DIRS:STRING={binary.parent}", "-P", str(script)])
+        extra_libraries = []
+        for name, source in runtime:
+            target = macos / name
+            shutil.copy2(source, target)
+            extra_libraries.append(str(target))
+        run([cmake, f"-DBUNDLE:PATH={staged}",
+             "-DSEARCH_DIRS:STRING=" + ";".join(str(path) for path in dict.fromkeys(searches)),
+             "-DEXTRA_LIBS:STRING=" + ";".join(extra_libraries), "-P", str(script)])
         payloads = macho_files(staged)
         if executable not in payloads:
             raise ValueError("Bundle has no native main executable")
@@ -172,10 +195,15 @@ def main() -> int:
     parser.add_argument("--sign-identity", default="-", help="'-' is local ad-hoc testing, not notarization")
     parser.add_argument("--license-file", type=Path, action="append", default=[])
     parser.add_argument("--cmake", default="cmake")
+    parser.add_argument("--search-dir", type=Path, action="append", default=[],
+                        help="Build-side directory for resolving dependent @loader_path/@rpath libraries")
+    parser.add_argument("--runtime-library", type=Path, action="append", default=[],
+                        help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
     args = parser.parse_args()
     try:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
-                              identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake)
+                              identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
+                              search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library))
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")

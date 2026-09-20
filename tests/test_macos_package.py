@@ -63,6 +63,34 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertIn("--verify", signing[-1])
         self.assertFalse(any("--deep" in c for c in signing if "--sign" in c))
 
+    def test_explicit_runtime_library_and_dependency_search(self):
+        libraries = self.root / "linked libs"
+        libraries.mkdir()
+        actual = libraries / "libSDL3.0.16.dylib"
+        actual.write_bytes(self.binary.read_bytes())
+        alias = libraries / "libSDL3.dylib"
+        alias.symlink_to(actual.name)
+        unrelated = libraries / "not-selected.dylib"
+        unrelated.write_bytes(self.binary.read_bytes())
+        result = self.stage(search_dirs=(libraries,), runtime_libraries=(alias,))
+        self.assertEqual((result / "Contents/MacOS/libSDL3.dylib").read_bytes(), actual.read_bytes())
+        self.assertFalse((result / "Contents/MacOS/libSDL3.dylib").is_symlink())
+        self.assertFalse((result / "Contents/MacOS/not-selected.dylib").exists())
+        self.assertTrue(any(str(libraries) in arg and arg.startswith("-DSEARCH_DIRS:")
+                            for command in self.commands for arg in command))
+        self.assertTrue(any(arg.startswith("-DEXTRA_LIBS:") and arg.endswith("libSDL3.dylib")
+                            for command in self.commands for arg in command))
+
+    def test_runtime_library_rejects_non_macho_and_duplicate_names(self):
+        invalid = self.root / "bad.dylib"
+        invalid.write_text("not a library")
+        with self.assertRaisesRegex(ValueError, "Mach-O dylib"):
+            self.stage(runtime_libraries=(invalid,))
+        invalid.write_bytes(self.binary.read_bytes())
+        with self.assertRaisesRegex(ValueError, "unique dylib names"):
+            self.stage(runtime_libraries=(invalid, invalid))
+        self.assertFalse(self.output.exists())
+
     def test_existing_destination_is_never_overwritten(self):
         self.output.mkdir()
         (self.output / "keep").write_text("keep")
