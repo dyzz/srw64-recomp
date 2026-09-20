@@ -1,0 +1,50 @@
+name: Dialogue CPU backend
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  text-backend:
+    name: Text and raster (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-14]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure portable text contracts
+        if: runner.os != 'macOS'
+        run: cmake -S tests/dialogue_cpu -B build/dialogue-cpu -DCMAKE_BUILD_TYPE=Release
+      - uses: actions/checkout@v4
+        if: runner.os == 'macOS'
+        with:
+          repository: rt64/rt64
+          ref: 43373749dac9bbc1b653e6a02aed40a9e1783bed
+          path: build/dialogue-headers
+          sparse-checkout: |
+            src/contrib/json
+            src/contrib/plume
+      - uses: actions/setup-python@v5
+        if: runner.os == 'macOS'
+        with:
+          python-version: '3.11'
+      - name: Prepare pinned headers and pre-split CPU oracle
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          git -C build/dialogue-headers submodule update --init --recursive --depth 1 src/contrib/plume
+          git fetch --no-tags --depth=1 origin a8a2de1649087284ccc2e39d5473f1d71f871b6c
+          git show a8a2de1649087284ccc2e39d5473f1d71f871b6c:src/host/native_dialogue_text.cpp > build/dialogue-reference-original.cpp
+          python tests/make_dialogue_reference.py --source build/dialogue-reference-original.cpp --output build/dialogue-reference.cpp
+      - name: Configure real CPU backend and compositor compile check
+        if: runner.os == 'macOS'
+        run: >-
+          cmake -S tests/dialogue_cpu -B build/dialogue-cpu -DCMAKE_BUILD_TYPE=Release
+          -DSRW64_RT64_HEADERS="${{ github.workspace }}/build/dialogue-headers"
+          -DSRW64_LEGACY_DIALOGUE="${{ github.workspace }}/build/dialogue-reference.cpp"
+      - name: Build
+        run: cmake --build build/dialogue-cpu --config Release --parallel 2
+      - name: Test
+        run: ctest --test-dir build/dialogue-cpu -C Release --output-on-failure
