@@ -1,4 +1,5 @@
 #include "state_probe.hpp"
+#include "app/runtime.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
@@ -20,6 +21,7 @@
 #include "upgrade_refund.hpp"
 #if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
+#include "app/launch.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
@@ -249,7 +251,7 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_text_descriptor(rdram,ctx);
 }
 
-int main(int argc, char** argv) {
+static int run_host(int argc, char** argv) {
     if (argc < 4 || argc > 6) {
         std::fprintf(stderr, "Usage: srw64-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
         return 2;
@@ -362,4 +364,37 @@ int main(int argc, char** argv) {
            << ",\"audio_samples\":" << audio_samples << ",\"frequency\":" << frequency
            << ",\"control_quit\":" << (control_quit ? "true" : "false") << "}\n";
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
+}
+
+// Keep the diagnostic positional ABI untouched for play_native.py and all probes.
+int main(int argc, char** argv) {
+    if (argc == 2 && std::string_view(argv[1]) == "--help") {
+        std::fputs(srw64::app::usage().c_str(), stdout);
+        return 0;
+    }
+    if (argc > 1 && std::string_view(argv[1]) == "--play") {
+#if defined(SRW64_WITH_RT64)
+        try {
+            if (argc == 3 && std::string_view(argv[2]) == "--help") {
+                std::fputs(srw64::app::usage().c_str(), stdout);
+                return 0;
+            }
+            std::vector<std::string_view> args;
+            for (int i = 2; i < argc; ++i) args.emplace_back(argv[i]);
+            const auto options = srw64::app::parse_options(args);
+            srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
+                native_rom_variants[0].save_file, srw64::rules::version, {}};
+            for (const auto& rule : srw64::rules::catalog)
+                game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+            return srw64::app::run_standalone(options, game, run_host);
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
+            return 2;
+        }
+#else
+        std::fputs("--play requires the graphics host, not the headless probe.\n", stderr);
+        return 2;
+#endif
+    }
+    return run_host(argc, argv);
 }
