@@ -54,4 +54,64 @@ SRW64_TEST_ROM=/absolute/path/to/rom.z64 \
 
 ## 仍然缺少
 
-本批只覆盖 Original 呈现，不迁移 HD 包；旧 Python 试玩入口的 HD 功能保留。文件选择器、双击启动界面、动态库收集、`.app` 签名/公证和干净机器验收尚未实现。Metal/CoreText/AppKit 解耦、Win/Linux 图形、IME 和手柄仍是后续阶段。
+本批只覆盖 Original 呈现，不迁移 HD 包；旧 Python 试玩入口的 HD 功能保留。桌面文件选择及 `.app` 暂存/依赖收集已加入，见下节；Developer ID 公证、真实游戏和干净机器验收仍未完成。Metal/CoreText/AppKit 解耦、Win/Linux 图形、IME 和手柄仍是后续阶段。
+
+## P1b：macOS 桌面入口与应用打包
+
+P0/P1 已通过 PR #2 合入主分支。桌面入口在现有图形宿主中运行，不再加一层
+Python 启动器或子进程。无参数启动使用系统 ROM 选择框；下次读取用户目录里的
+`last-rom.txt` 并重新校验 ROM。按住 Option 启动，或以 `--choose-rom` 启动，
+可以重新选择 ROM。`--play` 与旧 positional probe 参数不弹窗口，继续用于自动化。
+
+选择框使用 AppKit `NSOpenPanel`；错误使用 `NSAlert`。不接管 SDL 的 application delegate，
+不另开 GUI 线程。只有在原生 bootstrap 校验内容及存档、持有 Session 锁之后，才原子保存
+选中的 ROM 路径。取消不创建用户目录；坏 ROM 可以重选；缓存、存档或游戏错误只报错退出，
+不在同一进程中重启已初始化的游戏，不静默新开存档。应用包内保持只读。
+
+代码位于 `src/native/app/desktop.cpp`、`src/host/macos/desktop_macos.mm`；前者无 GUI 依赖，
+后者是独立 Cocoa adapter。Windows/Linux 只测试共用控制逻辑，本批没有那两个系统的 GUI。
+
+### 开发者生成本地应用包
+
+先按原来的 `make` 完成游戏构建，再显式指定最低 macOS 目标并重新构建：
+
+```sh
+cmake -S src/host -B build/recomp/gfx-build -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0
+cmake --build build/recomp/gfx-build --target srw64-gfx-host --parallel 6
+.venv/bin/python tools/release/package_macos.py \
+  --binary build/recomp/gfx-build/srw64-gfx-host \
+  --output "dist/SRW64 Recompiled.app" --minimum-macos 14.0
+```
+
+输出目录必须不存在。`tools/release/package_macos.py` 是开发者/CI 打包工具，不随应用分发；
+它显式复制 executable、链接依赖及通过 `--license-file` 指定的纯文本许可，不扫描或复制
+整个仓库、ROM、存档、导入缓存或字体。生成 `Info.plist`，调用 CMake BundleUtilities
+收集并重定位依赖，去掉构建机 RPATH，再验证依赖与最低系统版本，最后由内向外签名。
+
+最低 macOS 版本是可核验的打包约束，不是仅修改 plist 的兼容性声明。任何 Mach-O slice
+或依赖声明的最低版本高于 `--minimum-macos` 都会失败；需要重编译依赖或选择更高且经过
+实际验证的最低版本。失败不会留下已发布的半包，也不会覆盖旧 `.app`。
+
+默认使用 ad-hoc 签名，只用于本地测试，不等于 Developer ID，不等于 Gatekeeper 放行。
+`--sign-identity` 可以指定开发者自己的签名身份；脚本不获取凭证、不提交公证、不上传 release。
+对外发布前仍要核对完整依赖许可证、签名/公证及硬化运行时要求。当前宿主仍使用系统字体，
+没有随包复制字体。
+
+### 新增验收与剩余门槛
+
+`tests/native_desktop.cpp` 测试取消、坏/丢失/Unicode ROM 路径、记住选择、失败不重启宿主、
+错误存档不重置、真实 Session 锁及无关工作目录。`tests/test_macos_package.py` 测试文件白名单、
+不覆盖、异常清理、版本约束、RPATH 和签名调用顺序。
+
+macOS CI 编译真正的 Cocoa adapter，用不含游戏代码的 executable 加一个动态库测试打包。
+`tests/check_macos_bundle.py` 隐藏原始二进制/动态库目录，将 `.app` 移到包含中文与空格的路径，
+设为只读，在移除开发工具和 DYLD 覆盖变量的环境中运行并复核签名。它验证实际 Mach-O 依赖闭包，
+不打开模态选择框，不运行 ROM、SDL 或 GPU，也不代表 Finder→导入→游戏已实机验收。
+
+真实 macOS 验收还需：Finder 双击、取消、坏 ROM、首次导入、第二次启动、Option 重选、
+F7、姓名输入、保存/退出/重启、应用搬移、无 Homebrew/Xcode 的干净机器。
+现有 fail-fast `abort`/进程崩溃不保证能弹错误框，当前错误对话框覆盖可捕获的启动错误及返回码。
+Metal/CoreText/AppKit 的游戏显示迁移仍属于下一阶段，本次没有宣布 Win/Linux 可玩。
+
+参考：CMake 官方 [BundleUtilities](https://cmake.org/cmake/help/latest/module/BundleUtilities.html)，
+Apple 官方 [公证常见问题](https://developer.apple.com/documentation/security/resolving-common-notarization-issues)。

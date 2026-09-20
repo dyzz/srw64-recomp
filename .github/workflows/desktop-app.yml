@@ -1,0 +1,33 @@
+name: Desktop launch and macOS packaging
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    name: Desktop (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Configure ROM-free desktop tests
+        run: cmake -S . -B build/desktop -DCMAKE_BUILD_TYPE=Release "-DCMAKE_OSX_DEPLOYMENT_TARGET=14.0"
+      - name: Build controller
+        run: cmake --build build/desktop --config Release --target srw64-desktop-test --parallel 2
+      - name: Test controller
+        run: ctest --test-dir build/desktop -C Release -R '^native-desktop$' --output-on-failure
+      - name: Package policy tests
+        run: python -m unittest discover -s tests -p test_macos_package.py -v
+      - name: Compile real Cocoa adapter and synthetic host
+        if: runner.os == 'macOS'
+        run: cmake --build build/desktop --config Release --target srw64-macos-smoke --parallel 2
+      - name: Test relocated signed bundle without original dylibs
+        if: runner.os == 'macOS'
+        run: python tests/check_macos_bundle.py --binary build/desktop/macos-smoke/srw64-macos-smoke

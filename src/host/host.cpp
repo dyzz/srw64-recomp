@@ -22,6 +22,7 @@
 #if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
 #include "app/launch.hpp"
+#include "app/desktop.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
@@ -368,6 +369,24 @@ static int run_host(int argc, char** argv) {
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
+#if defined(__APPLE__) && defined(SRW64_WITH_RT64)
+    // Finder supplies no arguments. Explicit --play and the diagnostic ABI
+    // below remain non-GUI and deterministic for the existing developer tools.
+    if (argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom")) {
+        const auto ui = srw64::app::macos_desktop_ui();
+        srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
+            native_rom_variants[0].save_file, srw64::rules::version, {}};
+        for (const auto& rule : srw64::rules::catalog)
+            game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+        return srw64::app::run_desktop({}, game.rom_sha256, ui,
+            [&](const srw64::app::Options& options, const srw64::app::DesktopReady& ready) {
+                return srw64::app::run_standalone(options, game, [&](int count, char** values) {
+                    ready(); // The standalone Session owns the lock until run_host returns.
+                    return run_host(count, values);
+                });
+            }, argc == 2 || srw64::app::macos_choose_another_rom());
+    }
+#endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {
         std::fputs(srw64::app::usage().c_str(), stdout);
         return 0;
