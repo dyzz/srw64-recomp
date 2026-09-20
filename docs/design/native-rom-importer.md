@@ -83,7 +83,7 @@ cmake --build build/recomp/gfx-build --target srw64-gfx-host --parallel 6
   --output "dist/SRW64 Recompiled.app" --minimum-macos 14.0
 ```
 
-输出目录必须不存在。`tools/release/package_macos.py` 是开发者/CI 打包工具，不随应用分发；
+输出目录必须不存在。`tools/release/package_macos.py` 是本地开发打包工具，不随应用分发；
 它显式复制 executable、链接依赖及通过 `--license-file` 指定的纯文本许可，不扫描或复制
 整个仓库、ROM、存档、导入缓存或字体。生成 `Info.plist`，调用 CMake BundleUtilities
 收集并重定位依赖，去掉构建机 RPATH，再验证依赖与最低系统版本，最后由内向外签名。
@@ -115,3 +115,24 @@ Metal/CoreText/AppKit 的游戏显示迁移仍属于下一阶段，本次没有�
 
 参考：CMake 官方 [BundleUtilities](https://cmake.org/cmake/help/latest/module/BundleUtilities.html)，
 Apple 官方 [公证常见问题](https://developer.apple.com/documentation/security/resolving-common-notarization-issues)。
+
+### ICU 与动态加载库
+
+打包器可重复传入 `--search-dir`，供 CMake 在构建机解析 ICU 这类库的 `@loader_path` 依赖。
+SDL2-compat 通过 `dlopen` 加载 SDL3，不会在 SDL2 的普通链接依赖中出现；使用兼容层时必须
+显式传入 `--runtime-library /path/to/libSDL3.dylib`。打包器按指定名字复制 Mach-O dylib，
+再一并收集其依赖、核对最低系统版本、修正路径并签名；不会批量复制整个依赖目录。
+
+本机示例（路径和系统版本以实际依赖为准）：
+
+```sh
+.venv/bin/python tools/release/package_macos.py \
+  --binary build/recomp/macos-app-build/srw64-gfx-host \
+  --output "dist/SRW64-237b629-macos-arm64/SRW64 Recompiled.app" \
+  --minimum-macos 27.0 \
+  --search-dir /opt/homebrew/opt/icu4c/lib \
+  --runtime-library /opt/homebrew/opt/sdl3/lib/libSDL3.dylib
+```
+
+2026-09-20 本机 SDL3 的 Mach-O 声明最低 macOS 27，即使宿主按 26 构建，整包也必须声明 27。
+较旧系统的包需要匹配的依赖构建，不能只改 Info.plist。应用包仅做本地 ad-hoc 签名，未公证。
