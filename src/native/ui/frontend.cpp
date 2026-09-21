@@ -5,6 +5,7 @@
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
 #include "link_page.hpp"
+#include "graphics.hpp"
 #include "battle_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
@@ -532,6 +533,12 @@ void sync() {
     name_page->set_hd(presentation::image_mode.current()==1);
     // Catalog owns all labels. No duplicate translation table in the frontend.
     name_page->sync(request,language->ui_labels(),language->locale);
+    {
+        // Controller edges; a button already down when a page opens is not a press.
+        static uint32_t pad_before=0;
+        const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
+        if(pad_pressed)battle_buttons(pad_pressed);
+    }
     link_sync();battle_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
