@@ -35,6 +35,16 @@ void resident_func_80082334(uint8_t* ram,recomp_context* ctx) {
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
+    if(srw64::mini_stage::take_direct_entry()) {
+        // The title overlay's own exit (801CAA34..801CAA80) with the mode the
+        // intermission's next-stage exit selects (801D8D94).
+        const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {
+            auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
+        };
+        call(resident_func_800836CC,0);call(resident_func_800A5138);
+        srw64::mini_stage::direct_scene(ram);
+        call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
+    }
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
     // State captures bracket each injected script when the state probe is on.

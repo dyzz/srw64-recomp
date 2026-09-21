@@ -223,9 +223,10 @@ json dispatch(const std::string& method,const json& params) {
         catch(const std::invalid_argument& error){throw RpcError(InvalidParams,error.what());}
     });
     if(method=="wait_vi")return wait_vi(params);
+    if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","quit","methods"};
+                                 "menu","settings","window","wait_vi","mini_stage.load","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
 
