@@ -26,6 +26,9 @@
 | 主角选择页：四张卡片、←→、Enter／Z | SDL 鼠标与键盘 | `ui.click --text <主角全名>`（高亮后按继续或 Enter）、`ui.key right`／`return`；`status.name_page` 给出 `route` 与四个选项 |
 | 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | SDL 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
 | 姓名页：字段、按钮、Tab／Enter／Esc、输入法组字 | SDL 鼠标与键盘 | `ui.click`、`ui.type`（`marked`／`unmark` 模拟组字与提交）、`ui.key` |
+| 战前确认页：双方概率、应对、动画、开始／返回；按键同游戏（Z/Enter、X/Esc、方向键/WASD、Q、E、K）及手柄 | SDL/RmlUi | `ui.click --id battle-confirm`、`battle-weapon`、`battle-counter`、`battle-evade`、`battle-defend`、`battle-spirits`、`battle-animation`、`battle-back`；`status.battle_page` 是游戏线程发布的快照 |
+| 运行时加载关卡文件 | 标题菜单时把文件拖到窗口 | `mini_stage.load {"path": <镜像或关卡源文件>}`；直接进入，无需启动时指定关卡，见[迷你关卡](../script/mini-stage.md) |
+| 主菜单迷你关卡入口 | RmlUi 按钮／F8 | 带 mini stage 启动后 `ui.click --id mini-enter`，或 `keys f8`；等待 `status.mini_stage.ready`。自动完成默认人物初始化，普通新游戏不变 |
 | 游戏内「选项」及规则设置 | RmlUi 控件、Ctrl/Cmd+, | `ui.click`、`ui.key`；`menu` 保留本地化规则标题的兼容转发 |
 | 共享设置：规则、预设、语言、画面 | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定 |
 | 游戏窗口：尺寸、前台、关闭按钮 | 窗口管理 | `window`（`width`/`height`、`front`、`close`） |
@@ -37,7 +40,7 @@
 
 | 方法 | 参数 | 说明 |
 | --- | --- | --- |
-| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
+| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、迷你关卡状态（`mini_stage.available/entering/active/ready`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
 | `keys` | `press`+`hold_ms` / `down` / `up` / `release_all` | 游戏键盘；键名 `z x space return up down left right q e i k j l w a s d escape f6 f7 f8`，组合用 `+`，如 `e+return` |
 | `buttons` | `buttons`、`vis` | N64 手柄层按键（`a b z start up down left right l r c_up c_down c_left c_right`），立即生效，不经过键盘层 |
 | `screenshot` | `path`、`overlays`、`window`、`timeout_ms` | 抓下一次呈现的 GPU 回读，已包含共享 UI。`window` 使用默认游戏窗口；不再提供独立设置窗口或 AppKit 合成。 |
@@ -98,3 +101,7 @@
 - `status.ui.focus` 是 RmlUi 的焦点元素，`active` 单独说明 SDL 窗口是否有系统键盘焦点。
 - 菜单项按标题匹配，标题随界面语言变化。
 - 键盘以外的手柄没有接入宿主，因此也不在接口范围内。
+
+战前页回归可运行 `.venv/bin/python tools/recomp/debug/check_battle_ui.py`；精神与主动攻击返回流程可运行 `.venv/bin/python tools/recomp/debug/check_battle_spirits.py`。两者构建当前 native 宿主，通过主菜单 `mini-enter` 进入，不启用旧版人物选择。`status.mini_stage.waiting_reason` 可诊断关卡尚未就绪的原因；只有 `ready=true` 后才开始地图操作。截图和断言结果保存在各自的 debug 会话目录。
+
+战前换武器与现场施放精神可运行 `.venv/bin/python tools/recomp/debug/check_battle_actions.py`：从新构建进入迷你关卡，验证主动攻击换武器、SP 实际扣除、精神效果刷新、反击／回避选择保留、同乘驾驶员 SP，以及中／日／英左右镜像布局。通过 `ui.click`、`ui.key`、`status.battle_page` 和 GPU 截图执行，不改写战斗快照。

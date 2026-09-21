@@ -444,3 +444,10 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
     std::lock_guard lock(mutex);auto it=frames.find(workload);return it==frames.end()?nullptr:it->second;
 }
 }
+
+namespace srw64::dialogue {
+std::string ui_text(const uint8_t* ram,uint16_t id) {
+    const auto* value=localization::catalog().resolve(localization::TextKey::base(0,id));
+    return value?expand(ram,*value):std::to_string(id);
+}
+}

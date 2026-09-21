@@ -6,6 +6,7 @@
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
 #include "rule_probe.hpp"
+#include "battle_ui_probe.hpp"
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
@@ -16,9 +17,25 @@ namespace rules=srw64::rules;
 namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
 extern "C" {
+void load_000AB160_func_801C8AB4(uint8_t* ram,recomp_context* ctx) {
+    if(!srw64_game_hooks.battle_spirit_return || !srw64_game_hooks.battle_spirit_return(ram,ctx))srw64_original_return_to_map(ram,ctx);
+}
+void load_000AB160_func_801D5064(uint8_t* ram,recomp_context* ctx) {
+    if(!srw64_game_hooks.battle_step || !srw64_game_hooks.battle_step(ram,ctx,1))srw64_original_battle_confirm_step(ram,ctx);
+}
+void load_000AB160_func_801D5294(uint8_t* ram,recomp_context* ctx) {
+    if(!srw64_game_hooks.battle_step || !srw64_game_hooks.battle_step(ram,ctx,2))srw64_original_battle_response_step(ram,ctx);
+}
+
+void resident_func_80082334(uint8_t* ram,recomp_context* ctx) {
+    if(srw64::combat_preview::test_roll>=0)ctx->r2=srw64::combat_preview::test_roll;
+    else srw64_original_random_bound(ram,ctx);
+}
+
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
+    srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
     // State captures bracket each injected script when the state probe is on.
     static uint64_t captured_sequence=0;
@@ -134,6 +151,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     }
     srw64::mini_stage::poll_hook(rdram,owner);
     srw64::rule_probe::poll(rdram,ctx,owner);
+    srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
     if (srw64_game_hooks.script_after) srw64_game_hooks.script_after(rdram, owner);
 }

@@ -16,6 +16,10 @@ from recomp.toolchain.analyze_layout import ROOT, analyze
 
 
 NATIVE_HOOKS = {
+    "load_000AB160_func_801C8AB4": "srw64_original_return_to_map",
+    "load_000AB160_func_801D5064": "srw64_original_battle_confirm_step",
+    "load_000AB160_func_801D5294": "srw64_original_battle_response_step",
+    "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",
     "resident_func_800821B0": "srw64_original_rng_seed",
     "resident_func_800822D8": "srw64_original_rng_next",
