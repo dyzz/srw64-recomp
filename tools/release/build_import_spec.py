@@ -60,7 +60,7 @@ def build_spec(root: Path) -> dict:
                             "table_count": layout.table_count, "entry_header_size": layout.entry_header_size},
             "glyphs": {"0": " ", **{str(k): v for k, v in load_glyph_map(root).items()}},
             "locales": locales, "locale": p["locale"], "font_size": p["font_size"],
-            "resolution_scale": p["resolution_scale"]}
+            "resolution_scale": p["resolution_scale"], "battle_art": True}
 
 
 def write_changed(path: Path, data: bytes) -> None:

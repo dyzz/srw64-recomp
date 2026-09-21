@@ -78,6 +78,13 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         if(portrait.contains("hd"))throw std::runtime_error("This standalone milestone supports Original content only");
         portrait["original"]=verified.at(relative).string();
     }
+    if(data.contains("battle_assets"))for(const char* group:{"units","portraits"})
+        for(auto& [id,art]:data["battle_assets"].at(group).items()) {
+            const auto relative=art.at("path").get<std::string>();
+            if(!verified.contains(relative) || art.at("sha256")!=files.at(relative))
+                throw std::runtime_error("Battle art is absent from the verified inventory: "+id);
+            art["path"]=verified.at(relative).string();
+        }
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");
 

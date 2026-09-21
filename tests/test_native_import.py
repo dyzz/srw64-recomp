@@ -220,6 +220,14 @@ class NativeImporterTests(unittest.TestCase):
         for face, row in original["portraits"].items():
             with Image.open(row["original"]) as a, Image.open(native / data["name_entry_assets"]["portraits"][face]["original"]) as b:
                 self.assertEqual(a.convert("RGBA").tobytes(), b.convert("RGBA").tobytes())
+        from srw64_native.battle_assets import prepare_battle_assets
+        battle = prepare_battle_assets(ROOT, self.rom.read_bytes(), self.root / "python-battle")
+        for group in ("units", "portraits"):
+            self.assertEqual(set(battle[group]), set(data["battle_assets"][group]))
+            for identity, art in battle[group].items():
+                with self.subTest(group=group, identity=identity), Image.open(art["path"]) as a, Image.open(native / data["battle_assets"][group][identity]["path"]) as b:
+                    self.assertEqual(a.size, b.size)
+                    self.assertEqual(a.convert("RGBA").tobytes(), b.convert("RGBA").tobytes())
 
 class ImportMetadataTests(unittest.TestCase):
     def test_repository_metadata_is_rom_free_and_deterministic(self):
