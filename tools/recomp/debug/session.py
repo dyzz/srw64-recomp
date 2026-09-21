@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import shlex
 import os
 from pathlib import Path
 import socket
@@ -125,6 +126,8 @@ class Session:
                 command += ["--reuse-build-from", str(previous)]
         environment = dict(os.environ, SRW64_DEBUG="1", SRW64_RULE_FIXES=rule_fixes(rules))
         environment.pop("SRW64_MINI_STAGE", None)
+        environment["SRW64_MINI_STAGE_COMPILER"] = shlex.join([sys.executable, str(ROOT / "tools/recomp/script_lab/mini_stage.py")])
+        environment.pop("SRW64_NATIVE_NAME_ENTRY", None)
         if mini_stage:
             sys.path.insert(0, str(ROOT / "tools"))
             from recomp.script_lab.mini_stage import compile_stage
@@ -144,6 +147,36 @@ class Session:
             time.sleep(0.2)
         CURRENT.write_text(str(run) + "\n")
         return session
+
+    def enter_mini_stage(self, timeout: float = 90.0) -> dict:
+        """Enter via the current native title control, using observed states.
+
+        No original-name-entry override, fixed-VI input recording or save needed.
+        """
+        self.wait(vi=600, timeout=timeout)
+        end = time.monotonic() + timeout
+        while time.monotonic() < end:
+            state = self.client.call("status")
+            if not state.get("mini_stage", {}).get("available"):
+                raise HostError("Launch with mini_stage before entering it")
+            if state["intro"].get("title_major") == 3:
+                break
+            self.client.call("keys", press="return", hold_ms=100)
+            time.sleep(0.5)
+        else:
+            raise HostError("Title menu was not reached")
+        self.client.call("screenshot", path=str(self.run / "mini-menu.png"))
+        self.client.call("ui.click", id="mini-enter")
+        while time.monotonic() < end:
+            state = self.client.call("status")
+            if state.get("name_page", {}).get("visible"):
+                raise HostError("Direct mini-stage entry exposed a name page")
+            if state.get("mini_stage", {}).get("ready"):
+                self.client.call("screenshot", path=str(self.run / "mini-ready.png"))
+                (self.run / "direct-entry.json").write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n")
+                return state
+            time.sleep(0.1)
+        raise HostError("Mini stage did not become ready")
 
     @classmethod
     def previous_run(cls) -> Path | None:

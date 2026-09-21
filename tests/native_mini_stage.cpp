@@ -45,6 +45,29 @@ int main(int argc,char** argv) {
     assert(read(ram.data(),table,4)==event_block && read(ram.data(),table+4,4)==event_block+20 && read(ram.data(),table+8,4)==0xFFFFFFFF);
     assert(read(ram.data(),aux_block,2)==0 && read(ram.data(),aux_block+6,2)==300 && read(ram.data(),aux_block+28,2)==999);
     assert(uint32_t(ctx.r7)==aux_block);
+    // A stage being registered is not proof that the map accepts input. Check
+    // the same idle transition that the live debug entry waits for each frame.
+    service(ram.data());assert(!state().ready && state().waiting_reason=="engine-phase");
+    put(srw64::script_inject::engine+4,0xC0,2);
+    put(srw64::script_inject::engine+0x97C,0x80,2);
+    put(0x8010F5E8,1,1);put(0x8015DA02,3,1);
+    put(srw64::script_inject::engine+0x9AA,1,2);
+    service(ram.data());assert(!state().ready && state().waiting_reason=="poll-phase");
+    put(srw64::script_inject::engine+0x9AA,0,2);
+    service(ram.data());assert(state().ready && state().waiting_reason.empty());
+    // Explicit resource fixtures only apply once, after the idle gate. A second
+    // frame must not undo subsequent real combat/resource changes.
+    auto resource_image=image;
+    resource_image["initial_resources"]={{{"side",0},{"slot",3},{"hp_percent",35},{"en_percent",50}}};
+    state().image=parse(resource_image);state().ready=false;
+    const uint32_t resource_unit=0x8016A210,resource_slot=0x8015E100+3*0x14;
+    put(resource_slot,1,1);put(resource_slot+0xC,resource_unit,4);
+    put(resource_unit+4,3000,2);put(resource_unit+6,3000,2);put(resource_unit+8,80,2);put(resource_unit+10,80,2);
+    service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1050 && read(ram.data(),resource_unit+8,2)==40);
+    put(resource_unit+4,1000,2);service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1000);
+    auto invalid=resource_image;invalid["initial_resources"][0]["hp_percent"]=0;
+    bool rejected=false;try{parse(invalid);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+    state().image=parsed;
     // Map index follows the image only while the bound scene is active.
     put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==20);
     put(0x8010F5F0,4,1);register_hook(ram.data(),&ctx);assert(!state().active && state().applied==1);

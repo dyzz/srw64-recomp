@@ -30,17 +30,24 @@ struct Image {
     std::vector<uint8_t> events, aux;
     std::vector<uint32_t> pointers;
     std::optional<uint32_t> map, slot;
+    nlohmann::json initial_resources=nlohmann::json::array();
 };
 struct State {
     std::mutex mutex;
     std::filesystem::path directory;
     std::optional<Image> image;
     std::optional<uint32_t> bound;   // scene index the image is bound to
+    bool ready{};
+    std::string waiting_reason;
     bool active{};                   // the bound scene is the one currently registered
     unsigned applied{};
     // Main-menu entry: armed by the hotkey (or SRW64_MINI_STAGE_ARM_VI) while the
     // title menu shows; the host then selects New Game and skips both prologues.
     bool armed{}, in_sequence{};
+    // Direct entry (default; SRW64_MINI_STAGE_DIRECT=0 keeps the New Game path):
+    // the armed title menu hands over to the scenario mode the way the
+    // intermission's next-stage exit does, without prologues or name entry.
+    bool direct{true}, direct_done{};
     uint64_t arm_vi{}, hotkey_vi{};
     unsigned skips{}, start_samples{};
     // Per-command state captures (SRW64_MINI_STAGE_CAPTURE=1): the script PC at
@@ -57,6 +64,15 @@ struct State {
     bool exit_seen{};
 };
 inline State& state(){static State s;return s;}
+
+inline bool quick_start() {
+    auto& s=state();std::lock_guard lock(s.mutex);return s.image && s.armed && !s.applied;
+}
+inline nlohmann::json snapshot() {
+    auto& s=state();std::lock_guard lock(s.mutex);
+    return {{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},
+        {"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied}};
+}
 
 inline void log(const nlohmann::json& fields) {
     auto& s=state();
@@ -88,15 +104,29 @@ inline Image parse(const nlohmann::json& document) {
     if(image.pointers.empty() || image.pointers.size()>max_events)throw std::runtime_error("mini stage image: event count out of range");
     if(!document.at("map").is_null())image.map=document.at("map").get<uint32_t>();
     if(!document.at("slot").is_null())image.slot=document.at("slot").get<uint32_t>();
+    image.initial_resources=document.value("initial_resources",nlohmann::json::array());
+    if(!image.initial_resources.is_array() || image.initial_resources.size()>90)throw std::runtime_error("mini stage resources: invalid array");
+    std::vector<unsigned> seen;
+    for(const auto& row:image.initial_resources) {
+        if(row.size()!=4)throw std::runtime_error("mini stage resources: invalid fields");
+        for(const char* key:{"side","slot","hp_percent","en_percent"})
+            if(!row.at(key).is_number_integer())throw std::runtime_error("mini stage resources: expected integers");
+        const int side=row.at("side"),slot=row.at("slot"),hp=row.at("hp_percent"),en=row.at("en_percent");
+        if(side<0 || side>2 || slot<0 || slot>=30 || hp<1 || hp>100 || en<0 || en>100)throw std::runtime_error("mini stage resources: out of range");
+        const unsigned key=side*30+slot;
+        if(std::find(seen.begin(),seen.end(),key)!=seen.end())throw std::runtime_error("mini stage resources: duplicate slot");
+        seen.push_back(key);
+    }
     return image;
 }
 
 inline void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_MINI_STAGE");
-    if(!path || !*path)return;
     auto& s=state();
     std::lock_guard lock(s.mutex);
-    s.directory=directory;
+    s.directory=directory; // runtime loads (load_file) log here as well
+    if(const char* direct=std::getenv("SRW64_MINI_STAGE_DIRECT"))s.direct=std::string_view(direct)!="0";
+    if(!path || !*path)return;
     std::ifstream file(path);
     if(!file)throw std::runtime_error(std::string("mini stage image unreadable: ")+path);
     nlohmann::json document;file>>document;
@@ -129,7 +159,7 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     for(size_t i=0;i<image.pointers.size();++i)write32(ram,table+uint32_t(i*4),image.pointers[i]);
     write32(ram,table+uint32_t(image.pointers.size()*4),0xFFFFFFFF);
     ctx->r7=int32_t(aux_block); // deployment base the registration stores at engine+0
-    s.active=true;++s.applied;
+    s.active=true;s.ready=false;++s.applied;
     log({{"action","applied"},{"scene",scene},{"mode",mode},{"pointer_table",table},{"original_aux",original_aux},
          {"events",image.pointers.size()},{"event_bytes",image.events.size()},{"aux_bytes",image.aux.size()},{"applied",s.applied}});
 }
@@ -144,6 +174,26 @@ inline void map_hook(uint8_t* ram) {
     const auto original=read(ram,0x8010F5EE,1);
     write8(ram,0x8010F5EE,uint8_t(*s.image->map));
     log({{"action","map"},{"scene",scene},{"original",original},{"map",*s.image->map}});
+}
+
+// Game thread, each frame: polling scripts alone misses the transition to idle.
+inline void service(uint8_t* ram) {
+    auto& s=state();std::lock_guard lock(s.mutex);
+    if(!s.image || !s.active || s.ready)return;
+    s.waiting_reason=script_inject::idle_reason(ram);
+    if(s.waiting_reason.empty()) {
+        // Explicit mini-stage setup, once at the initial map-idle boundary.
+        // It changes real unit resources, never presentation snapshots or ROM.
+        for(const auto& row:s.image->initial_resources) {
+            const unsigned side=row.at("side"),slot=row.at("slot");
+            const auto entry=0x8015E100+side*0x258+slot*0x14,unit=read(ram,entry+0xC,4);
+            if(read(ram,entry,1)!=1 || !guest::valid(unit,0x54))throw std::runtime_error("mini stage resources: unit not deployed");
+            guest::write16(ram,unit+4,std::max(1u,read(ram,unit+6,2)*row.at("hp_percent").get<unsigned>()/100));
+            guest::write16(ram,unit+8,read(ram,unit+10,2)*row.at("en_percent").get<unsigned>()/100);
+            log({{"action","initial-resources"},{"side",side},{"slot",slot},{"hp",read(ram,unit+4,2)},{"en",read(ram,unit+8,2)}});
+        }
+        s.ready=true;log({{"action","ready"},{"name",s.image->name}});
+    }
 }
 
 // Game thread, after each script poll. With SRW64_MINI_STAGE_CAPTURE=1 the state
@@ -184,6 +234,63 @@ inline bool finished() {
     return true;
 }
 
+// Game thread, frame boundary. True once, when the armed title menu should hand
+// over to scenario mode 12 (801C2D30 -> 801C2B9C(0)).
+inline bool take_direct_entry() {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(!s.image || !s.direct || !s.armed || s.applied || s.direct_done || srw64::intro::title_major()!=3)return false;
+    s.direct_done=true;
+    return true;
+}
+// After the title exit's game-state reset (800A5138 -> 800814F0 clears these).
+// 8010F5EF != 0 makes 801C2B9C take the scene in 8010F5F0 as given instead of
+// deriving it from the route variable that only the skipped name entry sets.
+inline void direct_scene(uint8_t* ram) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    const uint32_t scene=s.image->slot?*s.image->slot:0;
+    write8(ram,0x8010F5F0,uint8_t(scene));write8(ram,0x8010F5EF,1);
+    log({{"action","direct-entry"},{"scene",scene}});
+}
+
+// Any thread: replace the stage with a local file while the title menu shows and
+// enter it. A compiled image (srw64.mini-stage-image.v1) loads as is; a stage
+// source (srw64.mini-stage.v1) goes through SRW64_MINI_STAGE_COMPILER first,
+// the launcher's shell-quoted "python mini_stage.py" prefix. Throws with a
+// message fit for a notice.
+inline std::string load_file(const std::filesystem::path& file) {
+    if(srw64::intro::title_major()!=3)throw std::runtime_error("mini stage: open stage files from the title menu");
+    const auto read_json=[](const std::filesystem::path& path) {
+        std::ifstream input(path);
+        if(!input)throw std::runtime_error("mini stage: cannot read "+path.string());
+        nlohmann::json document;input>>document;return document;
+    };
+    auto document=read_json(file);
+    static unsigned loads=0;
+    if(document.value("schema","")=="srw64.mini-stage.v1") {
+        const char* compiler=std::getenv("SRW64_MINI_STAGE_COMPILER");
+        if(!compiler || !*compiler)throw std::runtime_error("mini stage: a stage source needs SRW64_MINI_STAGE_COMPILER; compile it with mini_stage.py first");
+        const auto quote=[](const std::string& text){std::string out="'";for(char c:text){if(c=='\'')out+="'\\''";else out+=c;}return out+"'";};
+        std::filesystem::path directory;
+        {auto& s=state();std::lock_guard lock(s.mutex);directory=s.directory;}
+        if(directory.empty())directory=std::filesystem::temp_directory_path();
+        const auto image=directory/("runtime-mini-stage-"+std::to_string(++loads)+".json");
+        const auto command=std::string(compiler)+" compile "+quote(file.string())+" --out "+quote(image.string())+" > "+quote((directory/"runtime-mini-stage-compile.log").string())+" 2>&1";
+        if(std::system(command.c_str())!=0)throw std::runtime_error("mini stage: compile failed, see runtime-mini-stage-compile.log");
+        document=read_json(image);
+    }
+    auto parsed=parse(document);
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    s.image=std::move(parsed);
+    s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
+    s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;
+    s.hotkey_vi=srw64_current_vi();
+    log({{"action","loaded"},{"source","runtime"},{"path",file.string()},{"name",s.image->name},{"events",s.image->pointers.size()}});
+    return s.image->name;
+}
+
 // Hotkey (window thread): remembered until the VI thread sees the main menu.
 inline void hotkey() {
     auto& s=state();
@@ -194,8 +301,8 @@ inline void hotkey() {
 
 // Input filter (VI thread, after the keyboard/script merge). Arming needs the
 // title main menu (intro overlay state 3); the host then presses START once to
-// choose New Game and skips both text prologues. Protagonist and name pages are
-// left to the player or the input script; the entry completes when the first
+// choose New Game and skips both text prologues. Native protagonist/name setup automatically accepts
+// the default route and names while armed; the entry completes when the first
 // scene is registered with the image.
 inline uint16_t input(uint16_t buttons) {
     auto& s=state();
@@ -217,7 +324,12 @@ inline uint16_t input(uint16_t buttons) {
     // START on the main menu chooses New Game. Hold it across several controller
     // polls: the game latches presses on consecutive reads, and the poll cadence
     // is not tied to the VI counter.
-    if(s.start_samples<4){++s.start_samples;return uint16_t(buttons|0x1000);}
+    if(major==3 && !s.direct) {
+        // The menu may still be fading when the native button is clicked.
+        // Retry a released START edge until its state confirms leaving the menu.
+        const unsigned sample=s.start_samples++%32;
+        return sample<4?uint16_t(buttons|0x1000):uint16_t(buttons&~0x1000);
+    }
     if(major==13) {
         srw64::intro::request_skip();
         if(!s.in_sequence){s.in_sequence=true;++s.skips;log({{"action","skip-requested"},{"sequence",s.skips}});}

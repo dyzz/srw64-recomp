@@ -2,6 +2,7 @@
 #include "native_dialogue.hpp"
 #include "game_adapter/name_codec.hpp"
 #include "game_hooks.hpp"
+#include "mini_stage.hpp"
 #include "funcs.h"
 #include "json/json.hpp"
 #include <atomic>
@@ -110,6 +111,13 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
     if(person==Selection && cursor_moves) {
         cursor_moves=0;call=*ctx;call.r4=0xB9;resident_func_8007E8A8(ram,&call);
     }
+    if(mini_stage::quick_start()) {
+        // Debug mini-stage entry still uses the native adapter's normal default
+        // name validation and writes. No legacy name-grid input script needed.
+        if(person==Selection)current.route=0;
+        cancelled=false;review_confirm=true;current.pending=true;
+        record("mini-stage-default");
+    }
     if(!current.pending)return true;
     current.pending=false;
     if(person==Selection) {
@@ -197,7 +205,7 @@ bool read(uint32_t rom,uint8_t* ram,uint32_t destination,uint32_t size) {return 
 bool owns_input() {return owning || window_owning;}
 void window_claim_input(bool value) {window_owning=value;}
 uint16_t input(uint16_t buttons) {held &= buttons;if(owns_input())held|=buttons;return buttons & ~held;}
-Request request() {std::lock_guard lock(mutex);return current;}
+Request request() {std::lock_guard lock(mutex);auto result=current;if(mini_stage::quick_start())result.visible=false;return result;}
 std::string validate(const std::u16string& value,unsigned field) {std::vector<uint16_t> codes;return codec.encode(value,field,codes);}
 void submit(uint64_t id,const std::array<std::u16string,3>& values,bool cancel) {
     std::lock_guard lock(mutex);
