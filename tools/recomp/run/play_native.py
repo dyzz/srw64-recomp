@@ -5,6 +5,7 @@ from __future__ import annotations
 import fcntl
 import argparse
 import json
+import shlex
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -143,6 +144,7 @@ def main() -> int:
             environment["SRW64_UPGRADE_RULES"] = summary["path"]
             print(f"升级规则文件：{summary['path']}（五项 {summary['stats'] or '原版'}，武器类型 {summary['weapon_types'] or '原版'}，"
                   f"上限覆盖 {summary['unit_caps']} 台，武器类型覆盖 {summary['weapon_type_overrides']} 件）", flush=True)
+        environment["SRW64_MINI_STAGE_COMPILER"] = shlex.join([sys.executable, str(ROOT / "tools/recomp/script_lab/mini_stage.py")])
         if args.mini_stage:
             sys.path.insert(0, str(ROOT / "tools"))
             from recomp.script_lab.mini_stage import compile_stage

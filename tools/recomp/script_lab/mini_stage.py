@@ -156,12 +156,25 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
     slot = document.get("slot")
     if slot is not None and not 0 <= int(slot) <= 255:
         raise ValueError("slot must be a scene index 0..255")
+    initial_resources = document.get("initial_resources", [])
+    if not isinstance(initial_resources, list) or len(initial_resources) > 90:
+        raise ValueError("initial_resources must contain at most 90 slot overrides")
+    seen = set()
+    for row in initial_resources:
+        if not isinstance(row, dict) or set(row) != {"side", "slot", "hp_percent", "en_percent"}:
+            raise ValueError("initial_resources requires side, slot, hp_percent and en_percent")
+        if any(type(v) is not int for v in row.values()) or not (0 <= row["side"] <= 2 and 0 <= row["slot"] < 30 and 1 <= row["hp_percent"] <= 100 and 0 <= row["en_percent"] <= 100):
+            raise ValueError("initial_resources values are out of range")
+        key = row["side"], row["slot"]
+        if key in seen:
+            raise ValueError("initial_resources contains a duplicate slot")
+        seen.add(key)
     return {"schema": IMAGE_SCHEMA, "name": document.get("name", "mini-stage"),
             "map": None if map_id is None else int(map_id), "slot": None if slot is None else int(slot),
             "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK,
-            "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
+            "initial_resources": initial_resources, "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
             "deployments": [decode_record(r) for r in records], "source": document,
-            "scope": "Bytes the host writes into the per-scene event and deployment buffers at registration; the game's own tables, ROM and other scenes are untouched."}
+            "scope": "Per-scene event and deployment buffers at registration, plus optional one-time unit resources at initial map idle; ROM and other scenes are untouched."}
 
 
 def host_events(run: Path) -> list[dict]:

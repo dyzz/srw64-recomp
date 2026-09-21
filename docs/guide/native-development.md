@@ -134,7 +134,7 @@ SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
 | `SRW64_SHUTDOWN_TRACE=1` | macOS 下记录释放 RDRAM 前后的游戏线程数，仅诊断，不改变退出顺序。 |
 | `control.txt` | `control_host.py` 提交 N64 输入/退出请求，宿主以 VI 处理并写回事件。 |
 | `SRW64_SCRIPT_INJECT=1` / `script-inject.txt` | `SRWJ1 sequence at_vi hex`；`script_debug.py` 把自定义事件脚本写入 `807F0000` 暂存区，战术地图空闲时由原脚本引擎执行，事件写入 `script-inject-events.jsonl`。见[脚本注入调试](../script/script-debug-injection.md)。 |
-| `SRW64_MINI_STAGE=<image.json>` | `mini_stage.py compile` 生成的迷你关卡镜像；场景登记（`8009DE7C`）时改写本场景的事件缓冲、出击记录块与指针表，`80209D6C` 之后改写地图索引；主菜单按 F8（或 `SRW64_MINI_STAGE_ARM_VI`）自动选新游戏并跳过序章。事件写入 `mini-stage-events.jsonl`。见[迷你关卡](../script/mini-stage.md)。 |
+| `SRW64_MINI_STAGE=<image.json>` | `mini_stage.py compile` 生成的迷你关卡镜像；场景登记（`8009DE7C`）时改写本场景的事件缓冲、出击记录块与指针表，`80209D6C` 之后改写地图索引；主菜单按 F8（或 `SRW64_MINI_STAGE_ARM_VI`）直接切入场景模式 12（`SRW64_MINI_STAGE_DIRECT=0` 走旧的新游戏＋序章路径）；`SRW64_MINI_STAGE_COMPILER` 供运行时加载关卡源文件。事件写入 `mini-stage-events.jsonl`。见[迷你关卡](../script/mini-stage.md)。 |
 | `SRW64_MINI_STAGE_CAPTURE=1` | 配合 `SRW64_STATE_PROBE=1`：迷你关卡被替换事件的每个指令边界存一份区域快照 `state-N-mini-stage-command.json`（`argument` 为相对事件块的偏移），使 0 VI 完成、无画面变化的字段写入类指令也有前后对照。宿主只读脚本 PC。见[迷你关卡](../script/mini-stage.md)。 |
 | `SRW64_MINI_STAGE_EXIT_AFTER=<操作码>` | 十六进制脚本操作码。被替换事件中该操作码一经到达，运行在宽限期后结束，不再耗完 VI 预算。验证一条指令只需要它前后那一段。 |
 | `SRW64_MINI_STAGE_EXIT_GRACE=<vi>` | 上面的宽限 VI 数，默认 300：让该指令的效果和其后若干帧仍被采到。 |

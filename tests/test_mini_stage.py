@@ -24,6 +24,16 @@ class MiniStageCompilerTests(unittest.TestCase):
         self.assertEqual(image["deployments"][0]["actor"], 300)
         self.assertEqual((image["map"], image["slot"], image["aux_block"]), (20, None, AUX_BLOCK))
 
+    def test_initial_resources_are_bounded_and_explicit(self):
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        row = {"side": 0, "slot": 3, "hp_percent": 35, "en_percent": 0}
+        self.assertEqual(compile_stage({**base, "initial_resources": [row]})["initial_resources"], [row])
+        for bad in ([row, row], [{**row, "hp_percent": 0}], [{**row, "en_percent": 101}],
+                    [{**row, "slot": 30}], [{**row, "side": -1}], [{**row, "hp_percent": True}],
+                    [{**row, "address": 0x80100000}]):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                compile_stage({**base, "initial_resources": bad})
+
     def test_limits_and_unknown_fields_are_rejected(self):
         with self.assertRaises(ValueError):
             compile_stage({"schema": SCHEMA, "events": [{"type": 12, "commands": []}] * 64})
