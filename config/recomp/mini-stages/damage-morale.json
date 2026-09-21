@@ -1,0 +1,188 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "damage-morale",
+  "note": "Damage-formula companion to rules.json: byte-identical to it except for one added 3D5F in the opening, which drops every pilot's morale from 100 to 70 (floor 50). The rule probe's sweep then runs at morale 70 instead of 100, so comparing this run's rule-probe.jsonl against rules-aura-1's (morale 100, same roster, same save, same input script) isolates the morale term of the damage formula - the one term every existing dataset holds constant. 3D5F MUST precede the first 3D38: rule_probe::poll fires once, on the first 3D38 seen in the tactical overlay with both rosters non-empty, so a 3D38 before it would sample morale 100 and silently reproduce the old dataset.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "タケル / ガイヤー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:00200a6c",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "マリア / ドリルスペイザー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e8d4c",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "note": "ショウ / ダンバイン — 聖戦士"
+    },
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "unit": 170,
+      "faction": 0,
+      "note": "万丈 in ミニフォー — over the limit"
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 16,
+      "y": 8,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン — enemy 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e8d68",
+      "group": 1,
+      "x": 16,
+      "y": 10,
+      "faction": 1,
+      "note": "ガラリア / バストール — enemy 聖戦士"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 18,
+      "y": 8,
+      "unit": 170,
+      "faction": 1,
+      "note": "ムゲ兵 in ミニフォー — over the limit"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D5F",
+          "args": [
+            0
+          ],
+          "note": "every pilot's morale 100 -> 70; must stay before the first 3D38"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ],
+          "note": "SRW64_RULE_PROBE fires here"
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}
