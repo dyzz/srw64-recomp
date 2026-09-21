@@ -63,6 +63,18 @@ def export_content(prepared: Path, output: Path) -> dict:
         portrait["original"] = relative
         portrait.pop("hd", None)
         portrait.pop("hd_sha256", None)
+    if "battle_assets" in data:
+        for group in ("units", "portraits"):
+            for entry in data["battle_assets"][group].values():
+                source = Path(entry["path"]).resolve(strict=True)
+                if not source.is_relative_to(prepared) or not source.is_file():
+                    raise ValueError("Battle art must be inside the prepared directory")
+                pixels = source.read_bytes()
+                if digest(pixels) != entry["sha256"]:
+                    raise ValueError("Prepared battle art changed")
+                relative = "battle/" + source.name
+                payloads[relative] = pixels
+                entry["path"] = relative
     # An optional HD source manifest is not a runtime dependency of Original.
     assets["source_sha256"] = None
     payloads["dialogue.json"] = (json.dumps(data, ensure_ascii=False) + "\n").encode("utf-8")

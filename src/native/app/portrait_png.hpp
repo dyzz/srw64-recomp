@@ -1,10 +1,10 @@
 #pragma once
 #include "rom_import_codec.hpp"
-// Deliberately small RGBA8 writer for 96/97-pixel portraits. Stored DEFLATE
+// Bounded RGBA8 writer for portraits and composed battle poses. Stored DEFLATE
 // blocks avoid adding a runtime compressor dependency. PNG (W3C), RFC 1950/1951.
 namespace srw64::app::rom_import {
 inline std::vector<uint8_t> portrait_png(const Portrait& image) {
-    if(!image.width || image.width>128 || !image.height || image.height>128 ||
+    if(!image.width || image.width>2048 || !image.height || image.height>2048 ||
        image.rgba.size()!=size_t(image.width)*image.height*4)throw std::runtime_error("Invalid PNG portrait extent");
     std::vector<uint8_t> raw;
     for(unsigned y=0;y<image.height;++y){

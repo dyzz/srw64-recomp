@@ -20,7 +20,7 @@ def decode_indexed(image: bytes, palette: bytes) -> Image.Image:
     palette_kind, size, _, _ = struct.unpack(">4H", checked_slice(palette, 0, 8))
     if palette_kind != 3 or size % 2 or not 0 < size <= 512 or len(palette) != 8 + size:
         raise ValueError("Invalid RGBA16 palette")
-    if kind not in (5, 6, 8, 14, 15) or reserved or not (0 < width <= 2048 and 0 < height <= 2048):
+    if kind not in (5, 6, 7, 8, 14, 15) or reserved or not (0 < width <= 2048 and 0 < height <= 2048):
         raise ValueError("Unsupported indexed image header")
     count = width * height
     ci4 = kind in (5, 14)

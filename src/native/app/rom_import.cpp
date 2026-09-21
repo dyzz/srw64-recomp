@@ -1,6 +1,7 @@
 #include "rom_import.hpp"
 #include "rom_import_codec.hpp"
 #include "portrait_png.hpp"
+#include "battle_art.hpp"
 #include "sha256.hpp"
 #include "json/json.hpp"
 #include <charconv>
@@ -22,7 +23,7 @@ std::string_view embedded_import_spec() {
 namespace {
 using json=nlohmann::json;
 using rom_import::Bytes;
-constexpr unsigned importer_version=1;
+constexpr unsigned importer_version=2;
 std::string hash(Bytes data){Sha256 value;value.update(data);return value.finish();}
 Bytes bytes(std::string_view text){return {reinterpret_cast<const uint8_t*>(text.data()),text.size()};}
 std::string hash(std::string_view text){return hash(bytes(text));}
@@ -163,6 +164,32 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
         }
         data["name_entry_assets"]={{"schema","srw64.name-entry-assets.v1"},{"portraits",portraits},
             {"route_faces",{{27,28,25,26},{31,32,29,30}}},{"link_faces",{{41,230},{133,131,132},{152,151,153}}},{"source_sha256",nullptr}};
+        if(spec.value("battle_art",false)) {
+        fs::create_directory(staging/"battle");
+        json battle={{"schema","srw64.battle-assets.v1"},{"units",json::object()},{"portraits",json::object()}};
+        std::map<unsigned,std::vector<uint8_t>> resource_cache;
+        auto resource=[&](unsigned id)->rom_import::Bytes {
+            if(!resource_cache.contains(id))resource_cache[id]=rom_import::resource(rom,0xa20bd0,id).bytes;
+            return resource_cache.at(id);
+        };
+        auto save_art=[&](const std::string& path,const rom_import::Portrait& pixels) {
+            if(!inventory.contains(path))publish(path,rom_import::portrait_png(pixels));
+            return json{{"path",path},{"sha256",inventory.at(path)},{"width",pixels.width},{"height",pixels.height}};
+        };
+        for(unsigned id=0;id<365;++id) {
+            const auto scene=rom_import::be16(rom,0x84e40+id*6),atlas=rom_import::be16(rom,0x84e42+id*6),palette=rom_import::be16(rom,0x84e44+id*6);
+            if(!scene)continue;
+            const auto pixels=rom_import::battle_pose(resource(scene),rom_import::battle_atlas(resource(atlas),resource(palette)));
+            auto entry=save_art("battle/unit-"+std::to_string(scene)+"-"+std::to_string(atlas)+"-"+std::to_string(palette)+".png",pixels);
+            entry["facing"]="left";battle["units"][std::to_string(id)]=entry;
+        }
+        for(unsigned id=0;id<361;++id) {
+            const auto image=rom_import::be16(rom,0x84220+id*4),palette=rom_import::be16(rom,0x84222+id*4);
+            battle["portraits"][std::to_string(id)]=save_art("battle/face-"+std::to_string(image)+"-"+std::to_string(palette)+".png",
+                rom_import::battle_atlas(resource(image),resource(palette)));
+        }
+        data["battle_assets"]=battle;
+        }
         const auto dialogue=data.dump()+"\n";
         if(dialogue.size()>32*1024*1024)throw std::runtime_error("Dialogue output exceeds bootstrap budget");
         publish("dialogue.json",bytes(dialogue));

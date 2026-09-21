@@ -21,6 +21,7 @@
 | `hd-ai/dialogue-polish/`、`hd-ai/dialogue-type/` | 字体（`fonts/`、`*-fonts/`）与对白排版实验素材 | `tools/hd_ai/build_stage1_gallery.py`、`tools/recomp/probes/run_coretext_probe.py` |
 | `hd-ai/jp-emulator-reference/` | 日版在参考模拟器上的对照截图 | HD 对照与图库 |
 | `hd-ai/research/` | 云端模型可用性调研记录 | 文档引用 |
+| `original-graphics/` | 按机体／人物命名整理的原版图像：机体战斗图与图集、动画零件、地图图标、头像、战斗特效、cut-in 与合体动画、章节标题、战场底图，附 `index.html` 图库与数值总表 | `tools/content/export_graphics.py` 生成，每次整体替换；见 `docs/data/battle-graphics.md` |
 | `models/` | 3D 模型导出：资源 5584–5602 的几何、5600 高模与探针 | `tools/model_viewer/build.py`、`tools/recomp/model5600/` |
 
 每条 HD 素材线只保留当前使用或最终的版本；更早的版本、实验运行和日志已在 2026-09-18 清理，
