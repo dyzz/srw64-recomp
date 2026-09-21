@@ -543,6 +543,13 @@ void sync() {
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
     if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE)return false;
+    if(event.type==SDL_DROPFILE) {
+        // Debug aid: a mini-stage file dropped on the title menu loads and enters.
+        const std::string path=event.drop.file?event.drop.file:"";SDL_free(event.drop.file);
+        try {notices::post("mini-stage",mini_stage::load_file(path));}
+        catch(const std::exception& error){notices::post("mini-stage-error",error.what());}
+        return true;
+    }
     if(input.event(event))return true;
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F7 && !input.has_composition() &&
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
