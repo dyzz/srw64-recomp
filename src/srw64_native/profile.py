@@ -26,6 +26,31 @@ UI_KEYS |= {"link_back", "link_confirm", "link_crew_f91", "link_crew_goshogun", 
             "link_units_goshogun", "link_units_zambot"}
 UI_KEYS |= {"rule_" + fix.replace("-", "_") for fix in rule_settings.RULE_FIXES}
 
+UI_KEYS |= {'battle_effect_ready', 'battle_effect_uncuttable', 'battle_skill_parry', 'battle_effect_full', 'battle_effects_title', 'battle_skill_holy', 'battle_skill_jammer', 'battle_effect_hit', 'battle_effect_crit', 'battle_effect_remaining', 'battle_effect_inactive', 'battle_effect_strength', 'battle_skill_clone', 'battle_effect_enemy_crit', 'battle_effect_none', 'battle_skill_getter_vision', 'battle_skill_beam_coat', 'battle_skill_mach', 'battle_skill_planet', 'battle_skill_esp', 'battle_skill_enhanced', 'battle_effect_aura_first', 'battle_effect_morale_low', 'battle_skill_newtype', 'battle_skill_dummy', 'battle_effect_threshold', 'battle_effect_evade', 'battle_skill_shield', 'battle_skill_god_shadow', 'battle_effect_sure_hit', 'battle_skill_shungeki', 'battle_skill_aura_barrier', 'battle_skill_fixed_damage', 'battle_effect_active', 'battle_effect_no_attack', 'battle_skill_potential', 'battle_skill_true_mach', 'battle_effects_note', 'battle_effect_heat', 'battle_effect_barrier_first', 'battle_effect_no_skill', 'battle_skill_i_field', 'battle_effect_no_equipment'}
+
+UI_KEYS |= {"mini_enter", "mini_entering", "battle_shield_damage"}
+
+# Battle confirmation labels share the same immutable locale catalog.
+UI_KEYS |= {'battle_cuttable', 'battle_target_barrier', 'battle_barrier_non_beam', 'battle_parry', 'battle_clone', 'battle_clone_morale', 'battle_barrier_absorbed', 'battle_critical_damage', 'battle_damage_note', 'battle_barrier_en_low', 'battle_barrier_broken', 'battle_shield', 'battle_sure_hit', 'battle_defense_note', 'battle_damage', 'battle_uncuttable', 'battle_barrier_reduced', 'battle_barrier_first'}
+UI_KEYS |= {
+    "battle_spirits",
+    "battle_spirit_ready",
+    "battle_spirit_sp",
+    "battle_spirit_unavailable",
+    "battle_spirit_map",
+    "battle_spirit_back",
+    "battle_spirit_hint", "battle_damage_if_hit", "battle_first", "battle_second",
+    "battle_first_player", "battle_first_enemy", "battle_barrier",
+    "battle_spirits_none",
+    "battle_ammo", "battle_animation", "battle_attacker", "battle_back",
+    "battle_change_weapon", "battle_confirm", "battle_cost", "battle_counter",
+    "battle_crit_mod", "battle_critical", "battle_critical_note", "battle_damage",
+    "battle_damage_note", "battle_defend", "battle_defender", "battle_evade",
+    "battle_hint", "battle_hit", "battle_hit_mod", "battle_modifiers",
+    "battle_morale", "battle_none", "battle_off", "battle_on",
+    "battle_response", "battle_response_hint", "battle_title", "battle_weapon",
+}
+
 
 def load_profile(path: Path, *, locale: str | None = None, images: str | None = None) -> dict:
     profile = json.loads(path.read_text())
@@ -104,6 +129,8 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
         "locale_options": locale_options, "locale_catalogs": locale_catalogs,
         "rom_sha256": sha(rom.read_bytes()), "catalog_sha256": sha(locale_path.read_bytes()),
         "sources": {relative: sha(inside(root, relative).read_bytes()) for relative in profile["locales"].values()}}
+    from .battle_assets import prepare_battle_assets
+    data["battle_assets"] = prepare_battle_assets(root, rom.read_bytes(), output / "battle")
     data["name_entry_assets"] = name_assets
     (output / "coverage.json").write_text(json.dumps(coverage, ensure_ascii=False, indent=2) + "\n")
     dialogue = output / "dialogue.json"

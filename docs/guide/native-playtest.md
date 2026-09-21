@@ -21,7 +21,7 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 | `--resolution-scale 1..8` | 内部分辨率倍数，字号与布局不变 |
 | `--mute` | 关闭声音 |
 | `--list-saves`、`--restore-session ID` | 查看或指定恢复的试玩会话 |
-| `--mini-stage FILE` | 用自制迷你关卡替换第一话，主菜单按 F8 进入，见[迷你关卡](../script/mini-stage.md) |
+| `--mini-stage FILE` | 用自制迷你关卡替换第一话，主菜单点击“进入迷你关卡”或按 F8 直达，自动完成默认人物初始化，见[迷你关卡](../script/mini-stage.md) |
 
 `scripts/Play SRW64.command`（不带 `--profile`）是早期试玩入口：不加载语言目录与 profile，存档历史在 `build/recomp/play/`，首次运行依赖开发者本地冻结的第一话通关档，新克隆无法直接使用。
 
@@ -63,6 +63,7 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 - **主角选择页**：新游戏跳过公共序章后出现，四张卡片（超级系／真实系 × 男／女）并排；←→ 切换，Enter／Z 确定，也可以点击卡片。
 - **姓名页**：选主角后出现在游戏窗口内（主角 → 搭档 → 确认三步），可用鼠标和键盘直接输入，支持输入法；Tab 切换字段、Enter 下一项／确认、Esc 返回。原字库范围和 7/7/5 字数上限不变，见[姓名输入](../native/native-name-entry.md)。
 - **联动页**：整备画面选「リンク」时出现，不需要 Transfer Pak 和 Link Battler 卡带。三张作品卡片（ガンダムF91、ゴーショーグン、ザンボット3）并排，←→ 切换，空格／Z 或点击卡片勾选，Enter 继续进入原版联动画面，Esc／X 返回整备菜单。勾选的作品在下一场战斗前以特别关卡加入；已加入的作品变灰，已排定的锁定为勾选。见 [Link Battler 联动](../gameplay/link-battler.md) §10。
+- **战前确认页**：选定武器和目标后显示双方 HP／EN、气力、武器、最终命中率与暴击率，单列武器补正及含精神、防御及护罩的预计伤害。敌方进攻时可选反击武器、回避或防御；鼠标或 Tab 选按钮，Enter／Z 执行，己方进攻时 Esc／X 返回选目标。动画开关沿用原游戏设置。见[战前确认 UI](../native/native-battle-ui.md)。
 - **菜单栏「选项」**：「游戏性调整」逐项开关可选规则，「设置…」（⌘,）打开设置窗口，可切换规则、语言和画面，立即生效并记住，见[设置窗口](../native/settings-window.md)。
 - **提示条**：开启难度调整「离队退款」后，剧情让机体离开部队时退回其改造资金，窗口顶部显示约 6 秒的提示，对话回看里也留一行，见[可选规则修正](../gameplay/rule-fixes.md) §2.6。
 

@@ -13,6 +13,9 @@ from srw64_native.profile import prepare_profile, UI_KEYS
 
 class ProfileFallbackTests(unittest.TestCase):
     def setUp(self):
+        battle = patch("srw64_native.battle_assets.prepare_battle_assets", return_value={"units": {}, "portraits": {}})
+        battle.start()
+        self.addCleanup(battle.stop)
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name).resolve()

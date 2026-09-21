@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-link-battler-test recomp-debug-protocol-test
+recomp-native-check: recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-link-battler-test recomp-debug-protocol-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -169,3 +169,9 @@ recomp-debug-protocol-test:
 	mkdir -p build/recomp/debug-protocol-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib tests/native_debug_protocol.cpp -o build/recomp/debug-protocol-test/test
 	build/recomp/debug-protocol-test/test
+
+.PHONY: recomp-battle-preview-test
+recomp-battle-preview-test:
+	mkdir -p build/recomp/battle-preview-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_battle_preview.cpp -o build/recomp/battle-preview-test/test
+	build/recomp/battle-preview-test/test

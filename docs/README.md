@@ -20,6 +20,7 @@
 | 构建、源码责任、验证开关、证据与清理 | [原生开发指南](guide/native-development.md) |
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
+| 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 | 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
 
@@ -37,6 +38,7 @@
 
 | 文档 | 内容 |
 | --- | --- |
+| [战斗计算](gameplay/battle-formulas.md) | 伤害与命中公式、暴击、分身／切り払い／假身／护罩／S防御、反撃／回避／防御 三个指令、精神指令位图与持续时间 |
 | [原版 Bug 登记](gameplay/original-bug-register.md) | 网上 Bug 报告、来源分歧、已确认原因（BUG01–05）与建议复现步骤 |
 | [基础修复](gameplay/base-fixes.md) | 默认生效、没有开关的缺陷修复（BUG05 五飞假身） |
 | [可选规则修正](gameplay/rule-fixes.md) | 超能力、圣战士、限界、底力、武器改造继承、奥拉斩威力等修正，以及假身、改造上限突破、离队退款等难度调整：原因、依据、开关与实机核对 |
@@ -55,6 +57,7 @@
 | [高清对白实现](native/native-dialogue-runtime-hd.md) | 实际地图／边框资源高清替换与蓝色人名 |
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
+| [战前确认 UI](native/native-battle-ui.md) | 双方信息、武器补正与最终概率、反击／回避／防御、原游戏流程接线与迷你关卡验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
 | [macOS 兼容构建](native/macos-release.md) | 固定源码依赖、macOS 14 部署目标与本地应用打包 |
 | [通用 Plume 像素合成](native/plume-pixel-compositor.md) | 后端无关上传／混合、GPU 完成资源引用、三平台离屏回读与可选游戏接线 |
@@ -86,6 +89,8 @@
 | --- | --- |
 | [原始数据目录](data/original-data-catalog.md) | 文本／资源／机体／驾驶员／场景地图提取、整合档案、特殊能力与技能持有者、引用链 |
 | [原版图片与武器标记](data/original-images.md) | 人物头像、机体地图图标、战场底图及武器属性标记 |
+| [战斗图像](data/battle-graphics.md) | 机体战斗图、动画零件、特效、cut-in 的资源分布、绑定表、场景格式与整理导出 |
+| [战斗动画与自定义机体](data/battle-animation.md) | 战斗动画脚本的处理逻辑，加入自定义机体与武器的可行性 |
 | [3D 资源分析](data/3d-model-replacement-analysis.md) | 原始 3D 资源与模型替换可行性 |
 | [模型查看器](data/native-model-viewer.md) | 本地模型资源浏览与 5600 验证 |
 

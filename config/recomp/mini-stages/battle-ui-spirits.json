@@ -1,0 +1,232 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "battle-ui-spirits",
+  "note": "Battle UI art/spirit QA: actual 3D55 script casts, no snapshot or UI data injection.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "タケル / ガイヤー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:00200a6c",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "マリア / ドリルスペイザー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e8d4c",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "note": "ショウ / ダンバイン — 聖戦士"
+    },
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "unit": 170,
+      "faction": 0,
+      "note": "万丈 in ミニフォー — over the limit"
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 9,
+      "y": 10,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン — enemy 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e8d68",
+      "group": 1,
+      "x": 11,
+      "y": 8,
+      "faction": 1,
+      "note": "ガラリア / バストール — enemy 聖戦士"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 9,
+      "y": 8,
+      "unit": 170,
+      "faction": 1,
+      "note": "ムゲ兵 in ミニフォー — over the limit"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on タケル"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            4
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            7
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            11
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            14
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            298,
+            9
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            12
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            12
+          ]
+        },
+        {
+          "op": "3D55",
+          "args": [
+            181,
+            12
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

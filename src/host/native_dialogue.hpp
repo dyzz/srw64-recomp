@@ -9,6 +9,8 @@
 
 namespace plume { class RenderDevice; class RenderCommandList; class RenderFramebuffer; }
 namespace srw64::dialogue {
+// Game-thread expansion of a catalog label, including the current player names.
+std::string ui_text(const uint8_t* ram,uint16_t id);
 std::u16string utf16(const std::string&);
 std::string utf8(const std::u16string&);
 Layout typeset(const std::u16string&, unsigned font_size, double width=177, double height=35);
