@@ -55,7 +55,8 @@ std::filesystem::path capture_directory;
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
 // SDL is polled on the window thread; the game reads one coherent snapshot.
-std::atomic<uint32_t> keyboard_state{};
+std::atomic<uint32_t> keyboard_state{}, pad_state{};
+SDL_GameController* pad{};
 
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
@@ -434,7 +435,7 @@ std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
 }
 
 ultramodern::renderer::WindowHandle srw64_create_window(void*) {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
     }
@@ -493,6 +494,12 @@ void srw64_update_window(void*) {
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
+        // One controller at a time: the first one connected, replaced when it leaves.
+        if(event.type==SDL_CONTROLLERDEVICEADDED){if(!pad)pad=SDL_GameControllerOpen(event.cdevice.which);continue;}
+        if(event.type==SDL_CONTROLLERDEVICEREMOVED) {
+            if(pad && SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(pad))==event.cdevice.which){SDL_GameControllerClose(pad);pad=nullptr;}
+            continue;
+        }
 #ifdef SRW64_NATIVE_DIALOGUE
         if(event.type!=SDL_QUIT && srw64::ui::event(event))continue;
         if(srw64::settings::owns_input() && event.type!=SDL_QUIT && !(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE))continue;
@@ -558,8 +565,28 @@ void srw64_update_window(void*) {
         bind(SDL_SCANCODE_W, W, 1U << 16); bind(SDL_SCANCODE_S, S, 1U << 17);
         bind(SDL_SCANCODE_A, A, 1U << 18); bind(SDL_SCANCODE_D, D, 1U << 19);
     }
-    keyboard_state.store(state, std::memory_order_relaxed);
+    // Controller: the same N64 mask as the keyboard table above. Native pages
+    // that own the pad read it through srw64_pad_state(); the game never sees
+    // it then, because each page's input() filter swallows the buttons.
+    uint32_t buttons = 0;
+    if (pad) {
+        const auto button = [&](SDL_GameControllerButton b, uint32_t mask) { if (SDL_GameControllerGetButton(pad, b)) buttons |= mask; };
+        const auto axis = [&](SDL_GameControllerAxis a, int sign, uint32_t mask) { if (SDL_GameControllerGetAxis(pad, a) * sign > 16000) buttons |= mask; };
+        button(SDL_CONTROLLER_BUTTON_A, 0x8000); button(SDL_CONTROLLER_BUTTON_B, 0x4000); button(SDL_CONTROLLER_BUTTON_X, 0x4000);
+        button(SDL_CONTROLLER_BUTTON_Y, 0x2000); button(SDL_CONTROLLER_BUTTON_START, 0x1000);
+        button(SDL_CONTROLLER_BUTTON_DPAD_UP, 0x0800); button(SDL_CONTROLLER_BUTTON_DPAD_DOWN, 0x0400);
+        button(SDL_CONTROLLER_BUTTON_DPAD_LEFT, 0x0200); button(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, 0x0100);
+        button(SDL_CONTROLLER_BUTTON_LEFTSHOULDER, 0x0020); button(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER, 0x0010);
+        axis(SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1, 0x2000);
+        axis(SDL_CONTROLLER_AXIS_RIGHTY, -1, 0x0008); axis(SDL_CONTROLLER_AXIS_RIGHTY, 1, 0x0004);
+        axis(SDL_CONTROLLER_AXIS_RIGHTX, -1, 0x0002); axis(SDL_CONTROLLER_AXIS_RIGHTX, 1, 0x0001);
+        axis(SDL_CONTROLLER_AXIS_LEFTY, -1, 1U << 16); axis(SDL_CONTROLLER_AXIS_LEFTY, 1, 1U << 17);
+        axis(SDL_CONTROLLER_AXIS_LEFTX, -1, 1U << 18); axis(SDL_CONTROLLER_AXIS_LEFTX, 1, 1U << 19);
+    }
+    pad_state.store(buttons, std::memory_order_relaxed);
+    keyboard_state.store(state | buttons, std::memory_order_relaxed);
 }
+uint32_t srw64_pad_state() { return pad_state.load(std::memory_order_relaxed); }
 
 nlohmann::json srw64_window_status() {
     if (!window) return nullptr;
@@ -608,6 +635,7 @@ void srw64_destroy_window() {
     srw64::ui::shutdown();
 #endif
     keyboard_state = 0;
+    if (pad) { SDL_GameControllerClose(pad); pad = nullptr; }
     srw64_close_audio();
     SDL_Metal_DestroyView(view);
     SDL_DestroyWindow(window);
