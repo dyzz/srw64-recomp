@@ -19,7 +19,7 @@
 
 ## 适配边界
 
-手写桥接代码在 `src/host/native_name_entry.cpp`，原生 UI 在 `native_name_entry_macos.mm`，字符编码与虚拟文字记录在 `src/native/game_adapter/name_codec.hpp`。平台 UI 只接收不可变请求和提交草稿；只有游戏线程读取、修改 RDRAM，UI 线程不调用原版函数。新增 UI 标签在 `content/locales/{ja,zh-Hans}.json`，沿用日文回退机制。
+手写桥接代码在 `src/host/native_name_entry.cpp`，原生 UI 在 `src/native/ui/name_page.cpp`（RmlUi），字符编码与虚拟文字记录在 `src/native/game_adapter/name_codec.hpp`。平台 UI 只接收不可变请求和提交草稿；只有游戏线程读取、修改 RDRAM，UI 线程不调用原版函数。新增 UI 标签在 `content/locales/{ja,zh-Hans}.json`，沿用日文回退机制。
 
 拦截 ROM `0x1090A0` 的 `801C5004/801C50B8`（主角选择）、`801C5494/801C5644`（主角）、`801C5920/801C5AD0`（搭档）、`801C5DAC/801C5E88`（最终确认）。初始化后立即盖住原选字表，原淡入结束后才允许提交；确认时调用原校验函数 `801C474C`。确认页完成后写入原退出标志并调用原淡出，剧情入口及姓名存储仍走原游戏逻辑。机器人改名不在此次 UI 改造范围内。
 
