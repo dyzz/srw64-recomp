@@ -183,6 +183,12 @@ json settings(const json& params) {
         presentation::image_mode.request(images=="hd");
         done["images"]=images;
     }
+    if(params.contains("battle_ui")) {
+        const auto ui=params["battle_ui"].get<std::string>();
+        if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"battle_ui must be native or original");
+        on_window([&]{settings::set_native_battle_ui(ui=="native");return json(nullptr);});
+        done["battle_ui"]=ui;
+    }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
         on_window([&]{settings::request_locale(locale);return json(nullptr);});

@@ -18,8 +18,10 @@ ModalInputRelease release_gate;
 uint64_t applying_request{};
 std::string applying_locale,last_error;
 std::filesystem::path destination,output;
+std::atomic_bool native_battle{true};
 void persist(const std::filesystem::path& path,const std::string& locale) {
-    srw64::app::atomic_write(path,nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale}}).dump(2)+"\n");
+    srw64::app::atomic_write(path,nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
+        {"battle_ui",native_battle?"native":"original"}}).dump(2)+"\n");
 }
 void apply(const std::string& locale) {
     if(applying || release_gate.pending() || destination.empty())return;
@@ -31,6 +33,12 @@ void apply(const std::string& locale) {
 }
 }
 void request_locale(const std::string& locale){apply(locale);}
+bool native_battle_ui(){return native_battle.load();}
+void set_native_battle_ui(bool native) {
+    native_battle=native;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
 bool owns_input(){return applying.load() || awaiting_release.load() || release_gate.pending();}
 uint32_t filter_input(uint32_t input){return release_gate.filter(input,applying,awaiting_release);}
 void release_input_when(bool all_keys_released){if(!applying && all_keys_released)awaiting_release=false;}
@@ -49,6 +57,11 @@ void update() {
 void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     output=directory;
     if(const auto* path=std::getenv("SRW64_PRESENTATION_SETTINGS"))destination=path;
+    if(!destination.empty()) {
+        std::ifstream file(destination);
+        const auto saved=nlohmann::json::parse(file,nullptr,false);
+        if(saved.is_object())native_battle=saved.value("battle_ui","native")!="original";
+    }
 }
 
 void control(SDL_Window*,const std::filesystem::path& directory) {

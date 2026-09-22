@@ -14,4 +14,9 @@ void shutdown();
 void control(SDL_Window*,const std::filesystem::path&);
 // Apply and remember one registered locale (the settings window; F7 cycles).
 void request_locale(const std::string& locale);
+// Pre-battle confirmation: the native page (default) or the original HUD.
+// Read on the game thread when a confirmation opens; the choice is saved with
+// the locale. SRW64_NATIVE_BATTLE_UI=0 forces the original for a run.
+bool native_battle_ui();
+void set_native_battle_ui(bool native);
 }
