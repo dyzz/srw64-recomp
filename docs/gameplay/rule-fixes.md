@@ -45,7 +45,7 @@
 - 菜单里的改动立即写入同一个 `rules.json`，并在运行目录追加 `rule-fixes-events.jsonl`（schema `srw64.rule-fixes-change.v1`，含 VI），运行报告里是 `rule_fix_changes`。
 - 切换在**下一次结算**生效：已经算好命中率的这一次交战不受影响，战斗演出途中切换不会改变本次结果。
 - 修正只改变结算时读取的数值，不写入存档，也不改变存档格式，已有进度可以直接换规则继续。每次会话的 `report.json` 记录 `rule_fixes`（`rules_version` 与启用项），宿主另写 `rule-fixes.json` 并在日志打印 `SRW64_RULE_FIXES`。继续某个会话的存档时，如果它上次按不同规则游玩，启动器会提示。冻结初始备份和本功能之前的会话都按原版规则计。
-- 菜单只在带界面的宿主里出现（macOS 菜单栏，`rule_menu_macos.mm`）。无窗口的诊断宿主仍只用启动参数。
+- 设置页只在带界面的宿主里出现（应用菜单栏「设置…」或 Ctrl/Cmd+, 打开的 RmlUi 页面）。无窗口的诊断宿主仍只用启动参数。
 - 修正对敌我双方同样生效，与原代码的调用方式一致：敌方超能力、圣战士、底力驾驶员同样按新规则计算。
 - 底层开关是环境变量 `SRW64_RULE_FIXES=<逗号分隔的 ID>`；`run_host_probe.py` 会校验 ID，未知 ID 让启动直接失败。
 
@@ -177,14 +177,14 @@
 | `src/host/rule_fixes.hpp` | 规则目录与解析、启动报告、等级表读取、底力档位、`StatCap`（限界临时封顶）、`DummyScale`（部署记录的假身次数临时改写）。 |
 | `src/host/game_hooks.cpp` | 八个包装函数：规则未开启时只调用原函数（开探针时另外只读记录两个命中率函数的调用）。 |
 | `src/host/rule_probe.hpp` | 实机探针，见下节。 |
-| `src/host/rule_menu.hpp`、`rule_menu_macos.mm` | 菜单栏「选项 → 游戏性调整」：按目录分组生成条目、勾选状态、三个预设（`rules::presets`）、随语言重取标题，以及 QA 控制钩子；同一组开关也在[设置窗口](../native/settings-window.md)里。 |
+| `src/native/ui/frontend.cpp`（设置页）、`macos/app_menu.mm`（菜单栏入口） | [设置页](../native/settings-window.md)按目录分组生成规则按钮、勾选状态、三个预设（`rules::presets`），随语言重取标题。 |
 | `src/host/graphics.cpp` | 窗口创建后安装菜单（菜单栏出现得晚时每帧重试），关窗时移除。 |
 | `content/locales/*.json`、`src/srw64_native/profile.py` | 菜单文案；`UI_KEYS` 按规则目录自动派生，新增规则必须同时补三种语言的标题。 |
 | `src/srw64_native/rule_settings.py` | 启动器与探针脚本共用的规则目录、保存与会话记录读取；`CORRECTIONS`／`DIFFICULTY` 决定首次启动默认开哪些。 |
 | `tools/recomp/run/play_native.py`、`run_host_probe.py` | `--rules`／`--rule-fixes`；报告字段 `rule_fixes`、`rule_probe_enabled`。 |
 | `src/host/upgrade_refund.hpp` | 离队退款：四个包装用的范围、前任实例查找、改造花费与免费段数、资金写入与日志、机体名读取（文本表 0，id 527 起）。`generate_cpu.py` 为 `800AAD28`、`800AA464`、`800AB808`、`800AA3C4` 另加四个改名（`srw64_original_unit_register`、`_unit_remove`、`_unit_merge`、`_unit_delete`）。 |
 | `src/host/native_dialogue.cpp`、`dialogue_model.hpp`、`native_dialogue_text.cpp` | 退款提示：三种语言的文案（`refund_notice`）、回看里的提示行（`Entry::notice`，不参与说话人配色，插在正在读的片段之前）。 |
-| `src/host/notices.hpp`、`macos/notices_macos.mm` | 游戏窗口顶部的提示条（AppKit，任意线程投递、窗口线程显示），调试接口的 `status.notices` 与截图都能看到。 |
+| `src/host/notices.hpp`（实现在 `src/native/ui/frontend.cpp`） | 游戏窗口顶部的提示条（RmlUi，任意线程投递、窗口线程显示），调试接口的 `status.notices` 与截图都能看到。 |
 
 所有调用方都经过 overlay 函数表（`LOOKUP_FUNC`），因此实战、AI 估算和探针走的是同一组包装函数。
 

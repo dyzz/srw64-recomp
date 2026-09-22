@@ -47,7 +47,7 @@
 
 ## 4. 技术方案
 
-- 第一版做 **AppKit 弹窗**，和现有的菜单栏代码同层（`rule_menu_macos.mm`、`graphics.cpp` 的每帧 `update()`），能直接复用语言标签与实时切换机制，不影响游戏渲染。
+- 第一版做 **AppKit 弹窗**，和当时的菜单栏代码同层，能直接复用语言标签与实时切换机制，不影响游戏渲染。（后已整体改为 RmlUi 页面，见文末。）
 - 游戏内叠加 UI（RT64 层）留到需要手柄操作或跨平台时再做；那时设置模型不变，只换呈现层。
 - 设置模型放在宿主的一个头文件里（类似 `rule_fixes.hpp` 的 `catalog`），Python 侧继续从同一份定义派生启动参数与校验，保证两边不会漂移。
 
@@ -63,8 +63,8 @@
 
 | 部分 | 状态 |
 | --- | --- |
-| 菜单栏「选项」 | 已实现：「游戏性调整」子菜单（修正／难度调整分组、三个预设、生效说明）与「设置…」（⌘,）。`rule_menu_macos.mm`。 |
-| 设置窗口 | 已实现：规则（分组）、三个预设、语言单选、画面单选（HD 不可用时灰掉），每组一行说明。`settings_window.hpp`、`settings_window_macos.mm`。 |
+| 菜单栏「选项」 | 第一版：「游戏性调整」子菜单与「设置…」（⌘,），AppKit。现只保留菜单栏入口（`macos/app_menu.mm`）。 |
+| 设置窗口 | 第一版：规则（分组）、三个预设、语言单选、画面单选（HD 不可用时灰掉），每组一行说明，AppKit。现为 `src/native/ui/frontend.cpp` 的 RmlUi 设置页，另含战前确认界面选项。 |
 | 同步 | 窗口、菜单、F6／F7 与 QA 钩子共用同一份状态；窗口每帧回读当前值，语言变化时重取全部标题。 |
 | 输入 | 窗口打开期间游戏收不到键盘输入，关闭后等按键全部松开（`ModalInputRelease`）。**游戏不暂停。** |
 | 写回 | 规则写 `rules.json`；语言走原有的 presentation 设置（写 `presentation.json`）；画面不写文件，只影响本次运行。 |
@@ -82,5 +82,7 @@
 过程中修掉的问题：同一视图里的单选按钮被 AppKit 当成一组，语言与画面互相取消，现各自放入独立容器；早期版本退出时在 RT64／plume 的窗口属性回调里崩溃一次（`EXC_BAD_ACCESS`，`CocoaWindow::updateWindowAttributesInternal`），把面板的释放改为在 SDL 退出前同步完成、先摘掉 delegate 后未再出现，但回调本身属于图形层，没有单独复现确认根因。
 
 未做：显示类的分辨率／字号、存档分类、每一项单独的生效时机说明（现在是每组一行）、「关于」页。
+
+2026-09-22：原生界面统一为 recomp 的 SDL/RmlUi 页面，不再做系统依赖的 UI；上文第一版的 AppKit 文件（`settings_window_macos.mm`、`rule_menu_macos.mm`、`presentation_settings_macos.mm` 等）已删除，`src/host/macos/` 只保留应用菜单栏入口 `app_menu.mm` 与 `desktop_macos.mm`。
 
 返回：[可选规则](../gameplay/rule-fixes.md) · [基础修复](../gameplay/base-fixes.md) · [内置 MOD 路线图](../design/mod-roadmap.md)

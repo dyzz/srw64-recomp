@@ -91,7 +91,7 @@ SRW64_SHUTDOWN_TRACE=1 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 \
 
 ## 代码整理后的回归
 
-2026-09-11：通用关窗、缩放和图片模式测试控制已拆至 `src/host/macos/window_test_control_macos.mm`，由图形宿主窗口更新调用，不再依赖姓名页面。线程诊断源码独立存放于 `src/host/runtime-support/shutdown_trace.hpp`，仍由生成器记录摘要并注入本地 runtime 源码。退出算法未改变。
+2026-09-11：通用关窗、缩放和图片模式测试控制已拆至独立文件（当时为 `window_test_control_macos.mm`，现为 `src/native/ui/window_test_control.cpp`），由图形宿主窗口更新调用，不再依赖姓名页面。线程诊断源码独立存放于 `src/host/runtime-support/shutdown_trace.hpp`，仍由生成器记录摘要并注入本地 runtime 源码。退出算法未改变。
 
 - `build/recomp/cleanup-check/name-window/`：完整现代姓名流程、原校验、八字段读回、1200×800 剧情显示与真实关窗通过，宿主退出码 0。
 - `build/recomp/cleanup-check/original-window/`：禁用原生姓名页，在原选字界面于 VI 1350 调用实际关窗；独立 SDL 缩放及 Original/HD 请求/应用也通过，宿主退出码 0。这只验证通用控制路径，未重复完整美术 ROI 对比。

@@ -31,9 +31,9 @@
 | `src/native/presentation/` | 原图/HD 模式请求与 display-list 快照归属。 |
 | `src/host/host.cpp`、`game_hooks.*` | 原生宿主、N64 系统接入、overlay/资源钩子与 VI 控制。 |
 | `native_dialogue.*`、`native_dialogue_text.cpp` | 原对白桥接与阅读状态；跨平台排版及场景绘制见 `src/host/dialogue_scene.cpp`。 |
-| `native_name_entry.cpp` / `macos/native_name_entry_macos.mm` | 游戏线程上的命名请求、原校验与写回 / 窗口线程上的字段编辑与页面绘制。 |
+| `native_name_entry.cpp` / `src/native/ui/name_page.cpp` | 游戏线程上的命名请求、原校验与写回 / RmlUi 页面上的字段编辑与绘制。 |
 | `graphics.cpp`、`native_marker.cpp`、`audio.cpp` | SDL/RT64 接入、GPU 水滴绘制、音频设备适配。 |
-| `window_test_control.hpp`、`macos/window_test_control_macos.mm` | 默认关闭的窗口 QA：真实 Cocoa 关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
+| `window_test_control.hpp`、`src/native/ui/window_test_control.cpp` | 默认关闭的窗口 QA：真实关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
 | `tools/recomp/run/verification_support.py` | 验证脚本共用的等待、原子请求写入和退出线程日志解析。 |
 | `tools/recomp/toolchain/prepare_runtime_lifecycle.py`、`src/host/runtime-support/` | 基于固定上游生成本地游戏线程/消息/调度/计时器退出适配，默认关闭系统线程诊断；生成代码与来源摘要写入 `build/`。 |
 
