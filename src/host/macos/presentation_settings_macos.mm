@@ -67,8 +67,6 @@ void update() {
     if(!last_error.empty())std::fprintf(stderr,"SRW64_LANGUAGE_ERROR %s\n",last_error.c_str());
     applying=false;
 }
-bool native_battle_ui(){return true;} // The AppKit variant predates the native pre-battle page.
-void set_native_battle_ui(bool){}
 void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     output=directory;
     if(const auto* path=std::getenv("SRW64_PRESENTATION_SETTINGS"))destination=path;
