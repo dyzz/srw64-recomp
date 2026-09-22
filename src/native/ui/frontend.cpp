@@ -48,8 +48,8 @@ bool link_waiting{};
 Rml::ElementDocument *settings_doc{}, *link_doc{}, *notice_doc{};
 std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
-Rml::ElementDocument* battle_doc{};
-std::string battle_stamp;
+Rml::ElementDocument* battle_doc{},*original_doc{};
+std::string battle_stamp,original_stamp;
 Rml::ElementDocument* mini_doc{};
 std::string mini_stamp;
 std::string preedit;
@@ -151,6 +151,9 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .battle-actions .bp-segment button {margin:0; border:0; padding:5dp 17dp; font-size:12dp; font-weight:bold; background-color:transparent;}
 .battle-actions .bp-segment button.on {background-color:#3fd0ff; color:#0b1230;}
 .battle-actions .bp-segment button:hover,.battle-actions .bp-segment button:focus {background-color:#ffd75e; color:#0b1230;}
+.bp-original {position:absolute; bottom:14dp; left:0; width:100%; text-align:center; font-size:15dp; color:#a4b0d2;}
+.bp-original div {display:inline-block; padding:5dp 16dp; background-color:#0c122ceb; border:1dp #3fd0ff;}
+.bp-original .key {color:#ffd75e;} .bp-original b {color:#e8eefc;}
 .bp-hints {text-align:center; font-size:10dp; color:#a4b0d2; height:14dp; white-space:nowrap; overflow:hidden;}
 .bp-hints span {margin:0 9dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
 .spirit-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071299;}
@@ -203,7 +206,7 @@ std::string image(const std::string& path) {
 
 void settings_sync() {
     if(!settings_open){document_close(settings_doc);settings_stamp.clear();return;}
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+
+    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+std::to_string(settings::native_battle_ui())+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     document_close(settings_doc);settings_stamp=stamp;
@@ -217,7 +220,9 @@ void settings_sync() {
     for(const auto& [locale,catalog]:localization::registered())body+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
     body+="<p>"+label("settings_language_note")+"</p><h2>"+label("settings_images")+"</h2>";
     for(auto mode:{"original","hd"})body+=button(std::string("images:")+mode,label(std::string("settings_images_")+mode),presentation::image_mode.requested()==(std::string(mode)=="hd"),!presentation::image_mode.enabled());
-    body+="<p>"+label("settings_images_note")+"</p><h2>"+label("rules_menu")+"</h2>";
+    body+="<p>"+label("settings_images_note")+"</p><h2>"+label("settings_battle_ui")+"</h2>";
+    for(auto mode:{"native","original"})body+=button(std::string("battle-ui:")+mode,label(std::string("settings_battle_ui_")+mode),settings::native_battle_ui()==(std::string(mode)=="native"));
+    body+="<p>"+label("settings_battle_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
     for(const auto& preset:rules::presets)body+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
     body+="<p>"+label("rules_note")+"</p>";
     if(settings::failed())body+="<p>"+label("settings_error")+"</p>";
@@ -396,7 +401,17 @@ void mini_sync() {
 }
 void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
-    if(!next.value("visible",false)){document_close(battle_doc);battle_stamp.clear();return;}
+    if(!next.value("visible",false)) {
+        document_close(battle_doc);battle_stamp.clear();
+        // Original HUD: only the animation state and its toggle key.
+        const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
+        if(stamp!=original_stamp) {
+            document_close(original_doc);original_stamp=stamp;
+            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>[K / C\xe2\x96\xbc]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
+        }
+        return;
+    }
+    document_close(original_doc);original_stamp.clear();
     const auto stamp=next.dump()+localization::catalog().locale;
     if(battle_doc && battle_stamp==stamp)return;
     document_close(battle_doc);battle_stamp=stamp;
@@ -441,7 +456,7 @@ void battle_sync() {
 
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
-    if(id.starts_with("battle-") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
+    if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
     if(id=="settings-close"){physical_held=held();settings_open=false;return;}
     if(id.starts_with("link") && link_request.visible && !link_waiting && !settings_open){
@@ -459,6 +474,7 @@ void choose(const std::string& id) {
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
+        if(id.starts_with("battle-ui:"))settings::set_native_battle_ui(id=="battle-ui:native");
     } catch(const std::exception& error){notices::post("settings-error",error.what());}
 }
 // Newly pressed N64 buttons on the battle page, from the keyboard table in

@@ -2,6 +2,7 @@
 #include "battle_effects.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
+#include "presentation_settings.hpp"
 #include "game_hooks.hpp"
 #include "funcs.h"
 #include <atomic>
@@ -22,6 +23,11 @@ std::vector<uint8_t> scratch;
 unsigned generation_rules{};
 bool spirit_running{};
 bool spirit_menu{};
+// Original HUD in use (the setting): the step is called every frame it shows.
+// The frontend keeps a small animation-toggle label up while this is recent.
+std::atomic<uint64_t> original_vi{};
+std::atomic_bool original_animation{};
+std::atomic<unsigned> original_mode{};
 struct SavedByte {uint32_t address;uint8_t value;};
 std::vector<SavedByte> spirit_return_state;
 void save_range(const uint8_t* ram,uint32_t address,unsigned length) {
@@ -116,6 +122,13 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     if((a.side!=0 && d.side!=0) || read(ram,0x802279E8,1)!=0 || !valid(a.unit,0x54) || !valid(d.unit,0x54))return false;
     const auto language=localization::snapshot();localization::Scope language_scope(language);
     std::unique_lock lock(mutex);
+    if(!current.value("visible",false) && !settings::native_battle_ui()) {
+        // Original confirmation, plus one addition: C-down toggles the battle
+        // animation (8015DDA8 & 4 set = off). Its A/B/menu handling is untouched.
+        if(read(ram,0x80178A08,2)&0x0004)write8(ram,0x8015DDA8,read(ram,0x8015DDA8,1)^4);
+        original_animation=(read(ram,0x8015DDA8,1)&4)==0;original_mode=mode;original_vi=srw64_current_vi();
+        return false;
+    }
     if(!current.value("visible",false) || current.value("mode",0u)!=mode) {
         scratch.assign(ram,ram+0x800000);auto call=*ctx;
         generation_rules=rules::active_fixes();
@@ -225,7 +238,14 @@ void configure(const std::filesystem::path& directory) {
     if(data.contains("battle_assets"))art=data.at("battle_assets");
     log.open(directory/"battle-page-events.jsonl");srw64_game_hooks.battle_step=step;srw64_game_hooks.battle_spirit_return=return_from_spirit;
 }
-json state(){std::lock_guard lock(mutex);return current;}
+json state() {
+    std::lock_guard lock(mutex);
+    auto result=current;
+    const auto vi=srw64_current_vi(),seen=original_vi.load();
+    result["original"]=seen && vi>=seen && vi-seen<=3;
+    if(result["original"].get<bool>()){result["animation"]=original_animation.load();result["mode"]=original_mode.load();}
+    return result;
+}
 void answer(uint64_t id,const std::string& action){std::lock_guard lock(mutex);if(current.value("visible",false) && current.value("serial",uint64_t{})==id && pending.empty())pending=action;}
 bool owns_input(){return owning || window_owning;}
 void window_claim_input(bool value){window_owning=value;}
