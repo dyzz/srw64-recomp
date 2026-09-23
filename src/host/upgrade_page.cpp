@@ -7,9 +7,11 @@
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
+#include <algorithm>
 #include <atomic>
 #include <fstream>
 #include <mutex>
+#include <vector>
 
 uint64_t srw64_current_vi();
 namespace srw64::upgrade_page {
@@ -51,7 +53,7 @@ constexpr unsigned sound_confirm=0xB7,sound_cancel=0xB8,sound_move=0xB9;
 // 0xFEC パイロット, 0x102F これ以上の改造はできません, 0x1030 資金が足りません.
 constexpr uint16_t text_stats_title=0xFCE,text_weapons_title=0xFCF,text_question=0xFED,text_cap=0xFEE,text_funds=0x1019,text_price=0xFEF,
     text_stat=0xFE7,text_pilot=0xFEC,text_maxed=0x102F,text_poor=0x1030,text_unit_names=0x20F,text_pilot_names=4382,
-    text_ask=0xFE4,text_yes=0xFE5,text_no=0xFE6,text_weapon_names=0xA8B,
+    text_ask=0xFE4,text_yes=0xFE5,text_no=0xFE6,text_weapon_names=0xA8B,text_weapon_pure_names=0x55A,
     text_bonus_a=0x10AC,text_bonus_b=0x10AD,text_bonus_c=0x10AE,text_power=0xFF2;
 // Text 0xFF1 武器名 .. 0xFFE クリティカル補正 head the weapon list's columns and details.
 constexpr uint16_t text_weapon_labels=0xFF1;
@@ -142,8 +144,9 @@ json stat_rows(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
     }
     return rows;
 }
-// 800A6104: rank 1 '-', 2 'D', 3 'C', then 'B' / 'A'.
-char terrain_letter(unsigned rank){return rank==2?'D':rank==3?'C':rank==4?'B':rank==5?'A':'-';}
+// 800A6104(1, rank): 1 'D', 2 'C', 3 'B', 4 'A', else '-' (verified against the
+// original 武器一覧: ダイターンミサイル prints A A A A).
+char terrain_letter(unsigned rank){return rank==1?'D':rank==2?'C':rank==3?'B':rank==4?'A':'-';}
 void labels(const uint8_t* ram) {
     const bool weapons=current.value("kind",std::string())=="weapons";
     const char* weapon_keys[]={"weapon","power","range","hit","ammo","terrain","air","land","sea","space","morale","en","skill","critical"};
@@ -317,6 +320,28 @@ uint32_t weapon_at(const uint8_t* ram,uint32_t unit,unsigned index) {
     const uint32_t list=read(ram,unit+up::unit_weapon_list,4);
     return list+index*up::weapon_size;
 }
+// The menu string is "prefix + pure name + suffix" (weapon_traits.py): 格／射 in
+// front, P／B／MAP behind; the original prints the markers as round icons. Some pure
+// names already end in MAP, then the menu inserts B before it.
+void weapon_markers(json& row,const std::string& pure) {
+    const std::string menu=row.value("name",std::string());
+    const char* prefixes[]={"格","射",""};
+    struct Suffix{const char* text;std::vector<std::string> tokens;};
+    const Suffix suffixes[]={{"",{}},{"P",{"P"}},{"B",{"B"}},{"PB",{"P","B"}},{"MAP",{"MAP"}},{"BMAP",{"B","MAP"}},{"PBMAP",{"P","B","MAP"}}};
+    std::vector<std::pair<std::string,bool>> candidates={{pure,false}};
+    if(pure.size()>3 && pure.compare(pure.size()-3,3,"MAP")==0)candidates.insert(candidates.begin(),{pure.substr(0,pure.size()-3),true});
+    for(const auto& [display,requires_map]:candidates)for(const char* prefix:prefixes)for(const auto& suffix:suffixes) {
+        if(requires_map && std::find(suffix.tokens.begin(),suffix.tokens.end(),"MAP")==suffix.tokens.end())continue;
+        if(!display.empty() && menu==std::string(prefix)+display+suffix.text) {
+            json markers=json::array();
+            if(*prefix)markers.push_back(prefix);
+            for(const auto& token:suffix.tokens)markers.push_back(token);
+            row["display_name"]=display;row["markers"]=markers;
+            return;
+        }
+    }
+    row["display_name"]=menu;row["markers"]=json::array();
+}
 json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     const uint32_t w=weapon_at(ram,unit,index);
     const uint16_t number=uint16_t(read(ram,w+2,2));
@@ -339,6 +364,7 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
         row["price"]=read(ram,up::weapon_prices[type-1]+level*4,4);
         row["preview"]=read(ram,w+6,2)+read(ram,up::weapon_previews[type-1]+level*2,2);
     } else if(type==0)row["price"]=0;
+    weapon_markers(row,text(ram,uint16_t(text_weapon_pure_names+number)));
     return row;
 }
 json weapon_list_json(uint8_t* ram) {

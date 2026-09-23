@@ -205,7 +205,9 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
 .im-right {text-align:right;} .im-dim {color:#9eafc3;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
-.im-up {color:#7dff8a;} .im-down {color:#ff8d8d;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
+.im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
+.im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:50%; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
+.im-badge.melee {background-color:#c8501e;} .im-badge.ranged {background-color:#2d6fd8;} .im-badge.post {background-color:#2a9a4a;} .im-badge.beam {background-color:#a04fd0;} .im-badge.map {background-color:#c09a1a; border-radius:3dp;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
 
@@ -486,6 +488,61 @@ void intermission_sync() {
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
+// The weapon table the original draws on the 武器改造 list (layout 0x77) and the
+// 武器一覧 (0x7A): a boxed header row (page / 武器名 / 攻撃力 / 射程 / 命中), rows of
+// 16 with the 格／射 marker as a round icon before the name and P／B／MAP after it,
+// then the selected weapon's 弾数, terrain letters, 必要気力, 消費EN, 必要技能 and
+// クリティカル補正 in the boxed bands at y 160 and 180. Returns the panel body.
+std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
+        return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
+    };
+    const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
+    const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("\u00b1 0");};
+    const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
+    const auto badge=[&](const std::string& token){
+        const char* cls=token=="格"?"melee":token=="射"?"ranged":token=="P"?"post":token=="B"?"beam":"map";
+        const float w=token=="MAP"?22.f:11.f;
+        return "<span class='im-badge "+std::string(cls)+"' style='width:"+px(w)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(token=="MAP"?6.f:7.f)+";'>"+escape(token)+"</span>";
+    };
+    const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+    std::string body=cell(21,68,21,44,"<div style='text-align:right; padding-right:"+px(4)+";'>"+escape(page_text)+"</div>")+
+        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("weapon"))+"</div>")+
+        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("power"))+"</div>")+
+        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("range"))+"</div>")+
+        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("hit"))+"</div>");
+    std::string list;
+    for(unsigned n=0;n<rows.size();++n) {
+        const auto& r=rows[n];
+        std::string name;
+        const auto markers=r.value("markers",json::array());
+        for(const auto& m:markers)if(m=="格" || m=="射")name+=badge(m.get<std::string>());
+        name+=escape(r.value("display_name",r.value("name",std::string())));
+        for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
+        list+="<button id='"+id_prefix+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"
+            "<span style='width:"+px(146)+"; white-space:nowrap; overflow:hidden;'>"+name+"</span>"+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
+    }
+    body+="<div id='"+id_prefix.substr(0,id_prefix.size()-1)+"-list' style='position:absolute; left:0; top:"+px(24)+"; width:100%;'>"+list+"</div>";
+    const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+    const auto& unit=next.at("unit");
+    const auto need=[](const json& v,int have){return (v.is_number()&&v.get<int>()?std::to_string(v.get<int>()):std::string("---"))+"("+(have>=0?std::to_string(have):std::string("---"))+")";};
+    const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):std::string("--/--");
+    const std::string terrain=sel.value("terrain",std::string("----"));
+    const bool low_morale=sel.value("morale",0)>0 && unit.value("morale",-1)>=0 && sel.value("morale",0)>unit.value("morale",-1),low_en=sel.value("en",0)>0 && sel.value("en",0)>unit.value("en",0);
+    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim")+span(v,x1-x0-24,"im-right")+"</div>");};
+    body+=cell(21,100,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl("ammo"),30,"im-dim")+span(ammo,42,"im-right")+"</div>")+
+        cell(100,140,160,180,"<div style='text-align:center;' class='im-dim'>"+escape(wl("terrain"))+"</div>")+
+        letter(140,180,"air",terrain.substr(0,1))+letter(180,220,"land",terrain.substr(1,1))+letter(220,260,"sea",terrain.substr(2,1))+letter(260,299,"space",terrain.substr(3,1))+
+        cell(21,164,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("morale"),60,"im-dim")+span(need(sel.value("morale",json()),unit.value("morale",-1)),76,low_morale?"im-right im-down":"im-right")+"</div>"
+            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("en"),60,"im-dim")+span(need(sel.value("en",json()),unit.value("en",-1)),76,low_en?"im-right im-down":"im-right")+"</div>","line-height:"+px(19)+";")+
+        cell(164,299,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("skill"),56,"im-dim")+span(sel.value("skill_name",std::string()),72)+"</div>"
+            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim",std::min(10.5f,78/std::max(1.f,text_units(wl("critical")))))+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
+    return body;
+}
+
 void upgrade_sync() {
     const auto next=upgrade_page::state();upgrade_request=next;
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
@@ -535,25 +592,13 @@ void upgrade_sync() {
         const bool confirm=screen=="weapon";
         const json rows=confirm?json::array({next.at("weapon")}):next.at("rows");
         const unsigned cursor=confirm?0:next.value("cursor",0u);
-        std::string list="<div class='im-row im-dim' style='height:"+px(18)+"; line-height:"+px(18)+"; padding:0 "+px(2)+";'>"+span(wl("weapon"),146,"",0,74)+span(wl("power"),44,"im-right")+span(wl("range"),40,"im-right")+span(wl("hit"),40,"im-right")+"</div>";
-        if(!confirm)for(unsigned n=0;n<rows.size();++n) {
-            const auto& r=rows[n];
-            list+="<button id='upgrade:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(2)+";'>"+
-                span(r.value("name",std::string()),150)+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
+        {
+            // The list frame stays under the confirm screen; the confirm shows the
+            // one weapon in its own row set.
+            json table=next;table["rows"]=rows;table["cursor"]=cursor;
+            const auto page=std::to_string(next.value("page",0u)+1)+"/ "+std::to_string(next.value("pages",1u));
+            body+=box(21,21,299,219,weapon_table(table,"upgrade:",u,line,page),10.5f,"upgrade-panel","padding:0;");
         }
-        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
-        const auto& unit=next.at("unit");
-        const auto paren=[](const json& v,int have){return (v.is_number()&&v.get<int>()?std::to_string(v.get<int>()):std::string("---"))+"("+(have>=0?std::to_string(have):std::string("---"))+")";};
-        std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):"--/--";
-        std::string terrain=sel.value("terrain",std::string("----"));
-        std::string details="<div class='im-row' style='position:absolute; left:0; top:"+px(137)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+";'>"+
-            span(wl("ammo"),32,"im-dim")+span(ammo,44)+span(wl("terrain"),36,"im-dim",0,4)+
-            span(wl("air"),16,"im-dim",0,4)+span(terrain.substr(0,1),16)+span(wl("land"),16,"im-dim")+span(terrain.substr(1,1),16)+span(wl("sea"),16,"im-dim")+span(terrain.substr(2,1),16)+span(wl("space"),16,"im-dim")+span(terrain.substr(3,1),16)+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(161)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
-            span(wl("morale"),68,"im-dim")+span(paren(sel.value("morale",json()),unit.value("morale",-1)),70)+span(wl("skill"),68,"im-dim",0,6)+span(sel.value("skill_name",std::string("---")),60)+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(178)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
-            span(wl("en"),68,"im-dim")+span(paren(sel.value("en",json()),unit.value("en",-1)),70)+span(wl("critical"),90,"im-dim",fit(wl("critical"),88),6)+span(signed_number(sel.value("critical",json())),38)+"</div>";
-        body+=box(21,21,299,219,list+"<div style='position:absolute; left:0; top:"+px(135)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"+details,10.5f,"upgrade-panel");
         const auto window=next.value("window",std::string());
         if(confirm) {
             const auto& w=next.at("weapon");
@@ -792,28 +837,8 @@ void ability_sync() {
             box(176,8,302,132,art_img(unit,118),12.f,"ability-art","display:flex; align-items:center; justify-content:center;");
         body+=hint("ability_unit_hint");
     } else if(screen=="weapons") {
-        const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
-        const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("0");};
-        const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"-"+std::to_string(b);};
-        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& unit=next.at("unit");
-        std::string list="<div class='im-row im-dim' style='height:"+px(18)+"; line-height:"+px(18)+"; padding:0 "+px(2)+";'>"+span(wl("weapon"),146,"",0,74)+span(wl("power"),44,"im-right")+span(wl("range"),40,"im-right")+span(wl("hit"),40,"im-right")+"</div>";
-        for(unsigned n=0;n<rows.size();++n) {
-            const auto& r=rows[n];
-            list+="<button id='ability:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(2)+";'>"+span(r.value("name",std::string()),150)+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
-        }
-        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
-        const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0))+"/"+std::to_string(sel.value("ammo_max",0)):std::string("--");
-        const std::string terrain=sel.value("terrain",std::string("----"));
-        const auto paren=[](const json& need,int have){return need.is_number()?std::to_string(need.get<int>())+"("+std::to_string(have)+")":std::string("---");};
-        const bool low_morale=sel.value("morale",0)>unit.value("morale",-1) && unit.value("morale",-1)>=0,low_en=sel.value("en",0)>unit.value("en",0);
-        std::string details="<div class='im-row' style='position:absolute; left:0; top:"+px(137)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+";'>"+
-            span(wl("ammo"),32,"im-dim")+span(ammo,44)+span(wl("terrain"),36,"im-dim",0,4)+
-            span(wl("air"),16,"im-dim",0,4)+span(terrain.substr(0,1),16)+span(wl("land"),16,"im-dim")+span(terrain.substr(1,1),16)+span(wl("sea"),16,"im-dim")+span(terrain.substr(2,1),16)+span(wl("space"),16,"im-dim")+span(terrain.substr(3,1),16)+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(161)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
-            span(wl("morale"),68,"im-dim")+span(paren(sel.value("morale",json()),unit.value("morale",-1)),70,low_morale?"im-down":"")+span(wl("skill"),68,"im-dim",0,6)+span(sel.value("skill_name",std::string("---")),60)+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(178)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
-            span(wl("en"),68,"im-dim")+span(paren(sel.value("en",json()),unit.value("en",-1)),70,low_en?"im-down":"")+span(wl("critical"),90,"im-dim",fit(wl("critical"),88),6)+span(signed_number(sel.value("critical",json())),38)+"</div>";
-        body+=box(21,21,299,219,list+"<div style='position:absolute; left:0; top:"+px(135)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"+details,10.5f,"ability-panel");
+        const auto page=std::to_string(next.value("page",0u)+1)+"/ "+std::to_string(next.value("pages",1u));
+        body+=box(21,21,299,219,weapon_table(next,"ability:",u,line,page),10.5f,"ability-panel","padding:0;");
         body+=hint("ability_weapons_hint");
     } else if(screen=="pilot") {
         // Layout 0x7B: portrait, the hint bar, the name block, six stats, spirits,
