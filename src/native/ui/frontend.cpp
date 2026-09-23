@@ -1346,6 +1346,11 @@ bool dispatch(SDL_Event& event) {
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
         if(!event.key.repeat)settings::request_locale(localization::next_locale(localization::catalog().locale));return true;
     }
+    // F5 reads the dialogue text files again on every screen, native pages included.
+    if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F5 && !input.has_composition() &&
+       !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
+        if(!event.key.repeat)srw64::dialogue::request_reload();return true;
+    }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) &&
