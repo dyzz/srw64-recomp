@@ -59,6 +59,7 @@
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
 | [场间主菜单接管](native/native-intermission-menu.md) | 原版调度表、布局表、面板几何与 8 张背景的静态分析；保持原构图的 RmlUi 接管、实机验证（12 项）与未验证清单 |
 | [改造画面接管](native/native-upgrade-screens.md) | ユニット改造／武器改造 五个画面：原版列表、详情与状态机的静态分析，保持原构图的 RmlUi 接管，与 15 段规则钩子的配合，实机验证与未验证清单 |
+| [強化パーツ 画面接管](native/native-parts-screens.md) | 机体列表、槽位与库存、持有者三个画面：原版列表、加成表与状态机的静态分析，保持原构图的 RmlUi 接管，装卸走原版函数，实机验证与未验证清单 |
 | [战前确认 UI](native/native-battle-ui.md) | 双方信息、武器补正与最终概率、反击／回避／防御、原游戏流程接线与迷你关卡验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
 | [macOS 兼容构建](native/macos-release.md) | 固定源码依赖、macOS 14 部署目标与本地应用打包 |

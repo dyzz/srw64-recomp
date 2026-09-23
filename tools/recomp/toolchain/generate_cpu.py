@@ -85,6 +85,13 @@ NATIVE_HOOKS = {
     # native page's answers (intermission_page.cpp).
     "load_0008F4B0_func_801CDFB0": "srw64_original_intermission_menu_build",
     "load_0008F4B0_func_801CE19C": "srw64_original_intermission_menu_step",
+    # 強化パーツ screens 7 / 18 / 19 (parts_page.cpp).
+    "load_0008F4B0_func_801D4A00": "srw64_original_parts_list_open",
+    "load_0008F4B0_func_801D4A98": "srw64_original_parts_list_step",
+    "load_0008F4B0_func_801D4BEC": "srw64_original_parts_slots_open",
+    "load_0008F4B0_func_801D4C94": "srw64_original_parts_slots_step",
+    "load_0008F4B0_func_801D5168": "srw64_original_parts_holders_open",
+    "load_0008F4B0_func_801D51EC": "srw64_original_parts_holders_step",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }

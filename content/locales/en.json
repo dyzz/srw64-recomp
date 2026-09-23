@@ -227,6 +227,13 @@
     "upgrade_weapons_hint": "↑↓ Select a weapon   ·   Enter / Z: Upgrade   ·   Esc / X: Back",
     "upgrade_weapons_hint_pages": "↑↓ Select a weapon   ·   ←→ Page   ·   Enter / Z: Upgrade   ·   Esc / X: Back",
     "upgrade_cap_original": "Original cap {n} ▶▷   ·   Beyond it ●☆",
+    "parts_list_hint": "↑↓ Select   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "parts_list_hint_pages": "↑↓ Select   ·   ←→ Page   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "parts_slots_hint": "↑↓ Select a slot   ·   Enter / Z: Open the parts list   ·   Esc / X: Back",
+    "parts_inventory_hint": "↑↓ Select a part   ·   ←→ Page   ·   Enter / Z: Confirm   ·   Esc / X: Back to the slots",
+    "parts_holders_hint": "↑↓ Select   ·   Enter / Z: Equip   ·   Esc / X: Back",
+    "parts_free": "(not equipped)",
+    "parts_equipped_count": "Equipped {n} / Owned {m}",
     "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel"
   },
   "entries": [

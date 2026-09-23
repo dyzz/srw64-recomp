@@ -205,7 +205,7 @@
 4. 调试接口字段（`status.intermission_page`、稳定 ID `intermission:0..8`、`intermission-swap:0|1`、等待条件 `intermission_page`、事件日志 `intermission`）与检查脚本 [`check_intermission.py`](../../tools/recomp/debug/check_intermission.py)。
 5. 验证、截图入 `docs/media/`、本文改写成实现文档。
 
-后续页面：ユニット改造／武器改造 已接管（[改造画面接管](native-upgrade-screens.md)），之后是 强化パーツ → のりかえ → 能力查看 → データセーブ。
+后续页面：ユニット改造／武器改造（[改造画面接管](native-upgrade-screens.md)）与 強化パーツ（[強化パーツ 画面接管](native-parts-screens.md)）已接管，之后是 のりかえ → 能力查看 → データセーブ。
 
 ## 10. 未决问题
 

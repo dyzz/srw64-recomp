@@ -227,6 +227,13 @@
     "upgrade_weapons_hint": "↑↓ 武器を選択   ·   Enter / Z 改造   ·   Esc / X 戻る",
     "upgrade_weapons_hint_pages": "↑↓ 武器を選択   ·   ←→ ページ   ·   Enter / Z 改造   ·   Esc / X 戻る",
     "upgrade_cap_original": "本来の上限 {n}段階 ▶▷   ·   上限突破 ●☆",
+    "parts_list_hint": "↑↓ 選択   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "parts_list_hint_pages": "↑↓ 選択   ·   ←→ ページ   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "parts_slots_hint": "↑↓ スロットを選択   ·   Enter / Z パーツ一覧   ·   Esc / X 戻る",
+    "parts_inventory_hint": "↑↓ パーツを選択   ·   ←→ ページ   ·   Enter / Z 決定   ·   Esc / X スロットへ",
+    "parts_holders_hint": "↑↓ 選択   ·   Enter / Z 装備する   ·   Esc / X 戻る",
+    "parts_free": "（未装備）",
+    "parts_equipped_count": "装備中 {n} / 所持 {m}",
     "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル"
   },
   "entries": [],

@@ -98,6 +98,32 @@ class UpgradePageSourceTests(unittest.TestCase):
             body = hooks[hooks.index(f"void load_0008F4B0_func_{address}("):]
             self.assertIn("upgrades::Scope scope(rdram, upgrades::Policy::decide);", body[:body.index("\n}\n")])
 
+    def test_parts_hooks_are_renamed_and_replaced(self):
+        generator = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
+        for address, original, screen in (("801D4A00", "srw64_original_parts_list_open", "parts_build(rdram, ctx, 7)"),
+                                          ("801D4A98", "srw64_original_parts_list_step", "parts_step(rdram, ctx, 7, srw64_original_parts_list_step)"),
+                                          ("801D4BEC", "srw64_original_parts_slots_open", "parts_build(rdram, ctx, 18)"),
+                                          ("801D4C94", "srw64_original_parts_slots_step", "parts_step(rdram, ctx, 18, srw64_original_parts_slots_step)"),
+                                          ("801D5168", "srw64_original_parts_holders_open", "parts_build(rdram, ctx, 19)"),
+                                          ("801D51EC", "srw64_original_parts_holders_step", "parts_step(rdram, ctx, 19, srw64_original_parts_holders_step)")):
+            self.assertIn(f'"load_0008F4B0_func_{address}": "{original}"', generator)
+            body = hooks[hooks.index(f"void load_0008F4B0_func_{address}("):]
+            body = body[:body.index("\n}\n")]
+            self.assertIn(f"{original}(rdram, ctx)", body)
+            self.assertIn(f"srw64_game_hooks.{screen}", body)
+        parts = (ROOT / "src/host/parts_page.cpp").read_text()
+        self.assertIn("if(original_screens())return false;", parts)
+        # The screen table names these six routines for screens 7, 18 and 19.
+        if not ROM.exists():
+            self.skipTest("needs the original ROM")
+        rom = ROM.read_bytes()
+        table = 0x801DC9D0 - 0x801C4500 + 0x8F4B0
+        entries = [struct.unpack(">II", rom[table + n * 8:table + n * 8 + 8]) for n in range(23)]
+        self.assertEqual(entries[7], (0x801D4A00, 0x801D4A98))
+        self.assertEqual(entries[18], (0x801D4BEC, 0x801D4C94))
+        self.assertEqual(entries[19], (0x801D5168, 0x801D51EC))
+
     def test_screens_follow_the_intermission_ui_setting(self):
         # Every build entry point hands the screen back to the original when the
         # setting says so, closing any page still open; the setting is persisted.
