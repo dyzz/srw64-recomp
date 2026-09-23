@@ -247,7 +247,8 @@ json state_snapshot() {
         {"font_size",reader.font_size},{"speed",reader.speed},{"automatic",reader.auto_read},
         {"history_open",reader.history_open},{"history_entries",reader.history.size()},
         {"history_offset",reader.history_offset},{"skipping",reader.skipping},
-        {"guest_segment",reader.guest},{"stops",reader.stops},
+        {"guest_segment",reader.guest},{"stops",reader.stops},{"page_start",reader.page_start()},
+        {"page_end",reader.layout.pages.empty()?0:reader.layout.pages[reader.page].end},{"pending",reader.pending},
         {"owner",reading_owner},{"boxes",json::array()},{"history",json::array()}};
     for(const auto& entry:reader.history)state["history"].push_back({{"event",entry.event},
         {"text_id",entry.text_id},{"complete",entry.complete},{"notice",entry.notice},
