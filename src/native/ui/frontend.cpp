@@ -1,5 +1,6 @@
 #include "frontend.hpp"
 #include "app_menu.hpp"
+#include "ui_fonts.hpp"
 #include "name_page.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
@@ -44,7 +45,7 @@ SystemInterface_SDL system;
 TextInput input;
 Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
-std::vector<Rml::byte> font;
+std::vector<Rml::byte> font, chinese_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 ModalInputRelease settings_release;
@@ -228,7 +229,7 @@ struct Actions : Rml::EventListener {
     }
 } actions;
 Rml::ElementDocument* document(const std::string& body,bool modal) {
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+"'>"+body+"</body></rml>");
+    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+"'>"+body+"</body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);return doc;
 }
@@ -1289,10 +1290,18 @@ void initialize() {
     std::ifstream file(path,std::ios::binary);font={std::istreambuf_iterator<char>(file),{}};
     if(font.empty() || !Rml::LoadFontFace(font,"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
         throw std::runtime_error("Shared UI needs a CJK font: set SRW64_UI_FONT to a local TTF/OTF/TTC file");
+    if(!std::getenv("SRW64_UI_FONT") && path.filename()=="Arial Unicode.ttf")
+        for(const auto* chinese:{"/System/Library/Fonts/Hiragino Sans GB.ttc"})
+            if(std::filesystem::is_regular_file(chinese)) {
+                std::ifstream input(chinese,std::ios::binary);chinese_font={std::istreambuf_iterator<char>(input),{}};
+                if(!chinese_font.empty() && Rml::LoadFontFace(chinese_font,"srw64-ui-zh",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
+                    chinese_font_family()="srw64-ui-zh";
+                break;
+            }
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,input,NameActions{names::select,names::choose,names::submit,names::review,names::validate});
-    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()}}).dump(2)<<'\n';
+    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
     int count=0;const auto* keys=SDL_GetKeyboardState(&count);

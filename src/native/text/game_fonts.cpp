@@ -3,6 +3,7 @@
 #include <map>
 #include <mutex>
 #include <stdexcept>
+#include <vector>
 namespace srw64::text {
 std::filesystem::path game_font_path() {
     if(const char* path=std::getenv("SRW64_TEXT_FONT")) {
@@ -31,11 +32,21 @@ std::shared_ptr<const FontSet> game_fonts(const std::string& locale) {
     const auto path=game_font_path();
     // Noto's standard CJK collection orders JP, KR, SC, TC, HK faces.
     const long face=path.filename()=="NotoSansCJK-Regular.ttc" && locale=="zh-Hans"?2:0;
+    std::vector<FontSource> sources;
+    // Arial Unicode draws ，！（ centred, as Traditional Chinese does; Simplified
+    // Chinese puts them at the side. Hiragino Sans GB ships with macOS; Arial
+    // Unicode stays behind it for anything it lacks.
+    if(locale=="zh-Hans" && !std::getenv("SRW64_TEXT_FONT") && path.filename()=="Arial Unicode.ttf")
+        for(const auto* chinese:{"/System/Library/Fonts/Hiragino Sans GB.ttc"})
+            if(std::filesystem::is_regular_file(chinese))sources.push_back({chinese,0});
+    sources.push_back({path,face});
     static std::mutex mutex;
-    static std::map<std::pair<std::filesystem::path,long>,std::shared_ptr<const FontSet>> cache;
+    static std::map<std::vector<std::pair<std::filesystem::path,long>>,std::shared_ptr<const FontSet>> cache;
+    std::vector<std::pair<std::filesystem::path,long>> key;
+    for(const auto& source:sources)key.emplace_back(source.path,source.face_index);
     std::lock_guard lock(mutex);
-    auto& fonts=cache[{path,face}];
-    if(!fonts)fonts=std::make_shared<FontSet>(std::vector<FontSource>{{path,face}});
+    auto& fonts=cache[key];
+    if(!fonts)fonts=std::make_shared<FontSet>(sources);
     return fonts;
 }
 }
