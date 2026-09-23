@@ -47,6 +47,7 @@ struct Scratch {
     Scratch(){if(!std::filesystem::create_directory(path))throw std::runtime_error("Scratch exists");}
     ~Scratch(){std::error_code error;std::filesystem::remove_all(path,error);}
 };
+void paged(const FontSet& fonts);
 void run(const std::filesystem::path& cjk) {
     check(grapheme_ends(u"e\u0301\r\n\U0001F1F8\U0001F1EC\U0001F44B\U0001F3FD\U0001F468\u200D\U0001F469\u200D\U0001F467\u200D\U0001F466")
         ==std::vector<size_t>({2,4,8,12,23}),"Extended Unicode grapheme boundaries");
@@ -167,6 +168,79 @@ void run(const std::filesystem::path& cjk) {
     rejects([&]{FontSet({{cjk,65535}});},"Nonexistent font face accepted");
     {Scratch scratch;const auto invalid=scratch.path/"bad-font";std::ofstream(invalid)<<"not a font";
      rejects([&]{FontSet({{invalid,0}});},"Invalid font data accepted");}
+    paged(fonts);
+}
+// Dialogue page layout (docs/design/dialogue-typesetting.md).
+size_t greedy_pages(const FontSet& fonts,const std::u16string& text,double size,double width,size_t per_page) {
+    const auto lines=fonts.layout(text,size,width,"zh-Hans").lines().size();
+    return (lines+per_page-1)/per_page;
+}
+void partition(const TextLayout& layout) {
+    size_t line=0,end=0;
+    for(const auto& page:layout.pages(1)) {
+        check(page.first_line==line && page.start==end && page.end>page.start,"Paged layout gap or overlap");
+        for(size_t i=0;i<page.line_count;++i) {
+            const auto& l=layout.lines()[page.first_line+i];
+            check(l.start==(i?layout.lines()[page.first_line+i-1].end:page.start),"Page lines are not contiguous");
+        }
+        check(layout.lines()[page.first_line+page.line_count-1].end==page.end,"Page does not end with its last line");
+        line+=page.line_count;end=page.end;
+    }
+    check(line==layout.lines().size() && end==layout.text().size(),"Paged layout lost text");
+}
+void paged(const FontSet& fonts) {
+    PageStyle style;style.height=43;style.min_spacing=1.08;style.max_spacing=1.22;style.rank_breaks=true;
+    // Pitch: three lines at 1.08, the rest shared out (43 / 3), capped at 1.22.
+    const auto three=fonts.layout(u"甲",13,177,"zh-Hans",style);
+    check(three.paged() && std::abs(three.line_height()-43.0/3)<1e-9,"Adaptive pitch at 13");
+    check(std::abs(fonts.layout(u"甲",10,177,"zh-Hans",style).line_height()-12.2)<1e-9,"Pitch capped at 1.22");
+    PageStyle edge=style;edge.height=3*12.75*1.15;edge.min_spacing=1.15;
+    check(std::abs(fonts.layout(u"a",12.75,177,"en",edge).line_height()-12.75*1.15)<1e-6,"Exact fit keeps three lines");
+    const std::u16string story=u"但大半殖民卫星被毁，地上也遭受了巨大损失。人口锐减，驱动地球圈运转的国家也大多失去了力量。"
+        u"于是联邦政府接管了一切，一个巨大的统一国家诞生了。可是，那并不是和平的开始，而是新的战争的序曲。";
+    for(double size:{10.0,13.0,16.0,18.0}) {
+        const auto ranked=fonts.layout(story,size,177,"zh-Hans",style);partition(ranked);
+        const size_t per=static_cast<size_t>(std::floor(43/(size*1.08)+1e-6));
+        check(ranked.pages(1).size()==greedy_pages(fonts,story,size,177,per),"Ranking changes the page count");
+        for(const auto& page:ranked.pages(1))check(page.line_count<=per,"Page holds too many lines");
+    }
+    // Page ends: at a sentence end when that costs no extra page.
+    const auto ranked=fonts.layout(story,13,177,"zh-Hans",style);
+    for(size_t i=0;i+1<ranked.pages(1).size();++i) {
+        const auto end=ranked.pages(1)[i].end;const auto c=story[end-1];
+        check(sentence_end_marks.find(c)!=std::u16string_view::npos || comma_marks.find(c)!=std::u16string_view::npos,
+              "A ranked page ends mid-sentence though a sentence end was available");
+    }
+    // Forced page starts stay page starts; the pages before them are unchanged.
+    PageStyle forced=style;forced.forced={ranked.pages(1)[1].start+3};
+    const auto kept=fonts.layout(story,13,177,"zh-Hans",forced);partition(kept);
+    check(std::any_of(kept.pages(1).begin(),kept.pages(1).end(),[&](const TextPage& p){return p.start==forced.forced[0];}),
+          "Forced page start was not a page start");
+    // Extra sentence ends (the original's page breaks) count like a full stop.
+    PageStyle stops=style;stops.sentence_ends={10};
+    partition(fonts.layout(story,13,177,"zh-Hans",stops));
+    // Half-width closing marks: 。 after a full line stays on it only when halving is on.
+    const auto per_line=fonts.layout(std::u16string(40,u'甲'),13,177,"zh-Hans").lines().front().end;
+    const std::u16string full=std::u16string(per_line,u'甲')+u"。乙";
+    PageStyle halve=style;halve.halve_line_end=true;
+    const auto halved=fonts.layout(full,13,177,"zh-Hans",halve);partition(halved);
+    const auto plain=fonts.layout(full,13,177,"zh-Hans",style);
+    check(halved.lines().front().end==per_line+1 && halved.lines().front().halved,"Line-end 。 was not halved");
+    check(plain.lines().front().end<per_line+1 && !plain.lines().front().halved,"Halving applied without the option");
+    check(halved.lines().front().width<=177+1e-6,"A halved line overflows");
+    // Without ranking the paged layout is the greedy fill, page by page.
+    PageStyle greedy=style;greedy.rank_breaks=false;
+    const auto filled=fonts.layout(story,13,177,"zh-Hans",greedy);partition(filled);
+    const auto plain_lines=fonts.layout(story,13,177,"zh-Hans").lines();
+    check(filled.lines().size()==plain_lines.size(),"Greedy paged layout breaks lines differently");
+    for(size_t i=0;i<plain_lines.size();++i)check(filled.lines()[i].end==plain_lines[i].end,"Greedy paged line differs");
+    check(fonts.layout(u"",13,177,"zh-Hans",style).pages(1).size()==1,"Empty paged layout");
+    // Speed: a long record lays out well within a frame budget.
+    const auto begin=std::chrono::steady_clock::now();
+    for(int i=0;i<10;++i)fonts.layout(story+story+story,13,177,"zh-Hans",halve);
+    const auto each=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-begin).count()/10;
+    std::cout<<"paged layout of "<<(story.size()*3)<<" UTF-16 units: "<<each<<" ms\n";
+    check(each<50,"Paged layout is too slow");
 }
 }
 int main(int argc,char** argv) {
