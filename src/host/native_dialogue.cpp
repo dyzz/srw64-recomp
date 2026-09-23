@@ -9,6 +9,7 @@
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
+#include <algorithm>
 #include <atomic>
 #include <ctime>
 #include <cstring>
@@ -129,9 +130,9 @@ std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::C
 }
 // A battle quote cannot be paged: the original advances it on its own clock.
 // Shrink the text until it fits the box; the log names any that still overflow.
-Layout fitted(const std::u16string& body,unsigned size) {
-    for(unsigned s=size;s>9;--s)if(auto layout=typeset(body,s);layout.pages.size()<=1)return layout;
-    return typeset(body,9);
+Layout fitted(const std::u16string& body,double size) {
+    for(double s=size;s>9;s-=1)if(auto layout=typeset_body(body,s);layout.pages.size()<=1)return layout;
+    return typeset_body(body,9);
 }
 std::string segment(const std::string& text,unsigned number) {
     size_t start=0;
@@ -140,6 +141,22 @@ std::string segment(const std::string& text,unsigned number) {
         start=p+1;
     }
     return text.substr(start,text.find('\f',start)-start);
+}
+// A story record in one language. The game runs the Japanese ROM record, so
+// its pages decide how many the host confirms: a translation with fewer
+// original pages confirms the rest at its end, extra ones just flow on.
+Record story_record(const uint8_t* ram,const localization::Catalog& catalog,uint16_t text_id,uint32_t p) {
+    const auto key=game_adapter::standard_dialogue_key(text_id);
+    const auto* message=catalog.resolve(key);
+    auto record=joined_record(utf16(message?expand(ram,*message):decode(ram,p+12,256)),catalog.locale);
+    const auto japanese=localization::find("ja");
+    if(const auto* original=japanese?japanese->resolve(key):nullptr) {
+        const auto end=original->find("<END>");
+        size_t stops=0;
+        for(auto at=original->find("<STOP>");at<end;at=original->find("<STOP>",at+6))++stops;
+        record.stops.resize(stops,record.text.size());
+    }
+    return record;
 }
 void cancel(const char* reason,bool clear=false) {
     if(reader.active || reader.skipping || reader.history_open)record("boundary",{{"reason",reason}});
@@ -168,11 +185,15 @@ void refresh(uint8_t* ram,bool create_events) {
         box.x=x+4;box.y=y+4;
         box.speaker=utf16(speaker_name(ram,np,localization::catalog()));
         if(box.speaker.empty()) {current[slot]={};continue;}
-        const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
-        const auto full=message?expand(ram,*message):decode(ram,p+12,256);
-        const auto body=utf16(segment(full,box.segment));
+        // A battle quote follows the original page by page; a story record is read whole.
+        Record source;
+        if(display_only) {
+            const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
+            source.text=utf16(segment(message?expand(ram,*message):decode(ram,p+12,256),box.segment));
+        } else source=story_record(ram,localization::catalog(),box.text_id,p);
+        const auto& body=source.text;
         if(body.empty()) {current[slot]={};continue;}
-        const std::pair<uint64_t,unsigned> identity{loads[slot],box.segment};
+        const std::pair<uint64_t,unsigned> identity{loads[slot],display_only?box.segment:0};
         if(identity!=identities[slot]) {
             identities[slot]=identity;events[slot]=++event_serial;
         }
@@ -180,7 +201,7 @@ void refresh(uint8_t* ram,bool create_events) {
         if(current[slot].event==box.event && current[slot].layout.text==body &&
            reader.font_size==reader_font_size)box.layout=current[slot].layout;
         else {
-            box.layout=display_only?fitted(body,reader.font_size):typeset(body,reader.font_size);
+            box.layout=display_only?fitted(body,body_size(reader.font_size)):typeset_body(body,body_size(reader.font_size),source.stops);
             if(display_only && box.layout.pages.size()>1)record("battle_overflow",{{"text_id",box.text_id},{"segment",box.segment},{"pages",box.layout.pages.size()}});
         }
         box.page=0;box.revealed=body.size();
@@ -190,20 +211,25 @@ void refresh(uint8_t* ram,bool create_events) {
         } else if(box.active) {
             ++active_count;
             if(create_events && reader.event!=box.event) {
-                reader.begin(box.event,box.text_id,box.segment,box.speaker,box.layout,srw64_current_vi());
+                reader.begin(box.event,box.text_id,box.speaker,box.layout,srw64_current_vi(),source.stops);
+                auto& entry=reader.history.back();
                 for(const auto& [locale,catalog]:localization::registered()) {
-                    const auto* value=catalog->resolve(game_adapter::standard_dialogue_key(box.text_id));
-                    reader.history.back().localized[locale]=utf16(segment(value?expand(ram,*value):decode(ram,p+12,256),box.segment));
-                    reader.history.back().localized_speaker[locale]=utf16(speaker_name(ram,np,*catalog));
+                    auto localized=story_record(ram,*catalog,box.text_id,p);
+                    entry.localized[locale]=std::move(localized.text);
+                    entry.localized_stops[locale]=std::move(localized.stops);
+                    entry.localized_speaker[locale]=utf16(speaker_name(ram,np,*catalog));
                 }
                 srw64::state_probe::capture(ram,"dialogue-fragment",(uint32_t(box.text_id)<<8)|box.segment);
                 record("fragment",{{"event",box.event},{"slot",slot},{"text_id",box.text_id},
                     {"text_key",game_adapter::standard_dialogue_key(box.text_id).value},
-                    {"segment",box.segment},{"speaker",utf8(box.speaker)},{"text",utf8(body)},
+                    {"segment",box.segment},{"stops",source.stops},{"speaker",utf8(box.speaker)},{"text",utf8(body)},
                     {"pages",box.layout.pages.size()},{"owner",reading_owner},
                     {"guest_mode",byte(ram,p+0x20E)},{"guest_wait",half(ram,p+0x210)}});
             }
-            if(reader.event==box.event) {box.layout=reader.layout;box.page=reader.page;box.revealed=reader.visible;}
+            if(reader.event==box.event) {
+                box.layout=reader.layout;box.page=reader.page;box.revealed=reader.visible;
+                reader.guest=box.segment;
+            }
         } else if(current[slot].event==box.event && reader.font_size==reader_font_size) {
             box.page=std::min<size_t>(current[slot].page,box.layout.pages.size()-1);box.revealed=body.size();
         } else box.page=box.layout.pages.size()-1;
@@ -221,9 +247,10 @@ json state_snapshot() {
         {"font_size",reader.font_size},{"speed",reader.speed},{"automatic",reader.auto_read},
         {"history_open",reader.history_open},{"history_entries",reader.history.size()},
         {"history_offset",reader.history_offset},{"skipping",reader.skipping},
+        {"guest_segment",reader.guest},{"stops",reader.stops},
         {"owner",reading_owner},{"boxes",json::array()},{"history",json::array()}};
     for(const auto& entry:reader.history)state["history"].push_back({{"event",entry.event},
-        {"text_id",entry.text_id},{"segment",entry.segment},{"complete",entry.complete},{"notice",entry.notice},
+        {"text_id",entry.text_id},{"complete",entry.complete},{"notice",entry.notice},
         {"text",utf8(entry.text)}});
     for(const auto& box:current)if(box.visible)state["boxes"].push_back({{"active",box.active},
         {"event",box.event},{"text_id",box.text_id},{"text_key",game_adapter::standard_dialogue_key(box.text_id).value},
@@ -308,15 +335,17 @@ void announce_text(const std::map<std::string,size_t>& entries,size_t problems) 
     notices::post("dialogue-text",filled(filled(catalog.ui("dialogue_text_status"),"{n}",std::to_string(found==entries.end()?0:found->second)),
         "{k}",std::to_string(problems)));
 }
-// F5: read the files again, rebuild every fragment the history holds, and show
-// the current fragment from its start, as a language switch does.
+// F5: read the files again, rebuild every record the history holds, and resume
+// the current record at the original's page, as a language switch does.
 void reload_text(uint8_t* ram) {
     try {
         const auto [entries,problems]=load_text();
         for(auto& entry:reader.history)if(!entry.notice)
             for(const auto& [locale,catalog]:localization::registered())
-                if(const auto* value=catalog->resolve(game_adapter::standard_dialogue_key(entry.text_id)))
-                    entry.localized[locale]=utf16(segment(expand(ram,*value),entry.segment));
+                if(catalog->resolve(game_adapter::standard_dialogue_key(entry.text_id))) {
+                    auto localized=story_record(ram,*catalog,entry.text_id,body_base);
+                    entry.localized[locale]=std::move(localized.text);entry.localized_stops[locale]=std::move(localized.stops);
+                }
         language_status.locale=localization::snapshot()->locale;language_status.error.clear();++language_status.request;
         announce_text(entries,problems);
     } catch(const std::exception& error) {
@@ -340,18 +369,26 @@ void service_locale(uint8_t* ram) {
             if(target!=localization::snapshot()) {
                 Reader next=reader;
                 localization::Scope scope(target);
-                std::u16string body;
+                std::u16string body;std::vector<size_t> stops;
                 for(const auto& entry:reader.history)if(entry.event==reader.event) {
                     const auto found=entry.localized.find(target->locale);
                     if(found!=entry.localized.end())body=found->second;
+                    if(const auto at=entry.localized_stops.find(target->locale);at!=entry.localized_stops.end())stops=at->second;
                 }
-                if(reader.active && body.empty())throw std::runtime_error("Current fragment has no language snapshot");
-                next.switch_language(typeset(body,reader.font_size),target->locale,srw64_current_vi());
+                if(reader.active && body.empty())throw std::runtime_error("Current record has no language snapshot");
+                // The new layout starts a page where the original page the game shows begins.
+                const size_t anchor=reader.guest && reader.guest<=stops.size()?stops[reader.guest-1]:0;
+                next.switch_language(typeset_body(body,body_size(reader.font_size),stops,{anchor}),stops,target->locale,srw64_current_vi());
                 next.previous=raw_buttons.load();
                 // Preflight the inactive box too before publishing anything.
                 for(const auto& box:current)if(box.visible) {
                     const auto* text=target->resolve(game_adapter::standard_dialogue_key(box.text_id));
-                    if(text)typeset(utf16(segment(expand(ram,*text),box.segment)),reader.font_size);
+                    if(!text)continue;
+                    if(display_only)typeset_body(utf16(segment(expand(ram,*text),box.segment)),body_size(reader.font_size));
+                    else {
+                        const auto source=story_record(ram,*target,box.text_id,body_base+box.slot*stride);
+                        typeset_body(source.text,body_size(reader.font_size),source.stops);
+                    }
                 }
                 state_probe::capture(ram,"locale-before",uint32_t(language_status.request));
                 reader=std::move(next);current={};skip_owner=0;
@@ -381,13 +418,14 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     }
     const auto old_font=reader.font_size,old_speed=reader.speed;
     const bool was_history=reader.history_open,was_skip=reader.skipping;
-    const bool advance=reader.update(raw_buttons.load(),srw64_current_vi());
+    reader.update(raw_buttons.load(),srw64_current_vi());
     if(reader.skipping && !was_skip) {
         if(reading_owner) {skip_owner=reading_owner;record("skip_start",{{"owner",skip_owner}});}
         else {reader.skipping=false;record("skip_unavailable");}
     }
     if(old_font!=reader.font_size) {
-        reader.relayout(typeset(reader.layout.text,reader.font_size));
+        // The current page keeps its first character; only what follows moves.
+        reader.relayout(typeset_body(reader.layout.text,body_size(reader.font_size),reader.stops,{reader.page_start()}));
         record("font",{{"size",reader.font_size},{"pages",reader.layout.pages.size()}});
     }
     if(old_speed!=reader.speed)record("speed",{{"level",reader.speed},{"automatic",reader.auto_read}});
@@ -402,7 +440,10 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         reader.history_scroll_limit=lines>13?lines-13:0;
     }
     // The exact original routine owns STOP increments and completion status.
-    // Only its local A trigger is substituted, then restored to avoid leakage.
+    // Only its local A trigger is substituted, then restored to avoid leakage:
+    // once for each original page the reader reaches, once more for <END>.
+    const auto confirm=reader.confirmation(srw64_current_vi());
+    const bool advance=confirm!=Confirm::none;
     const auto saved=half(ram,0x15CAF0);
     const uint16_t mask=advance ? uint16_t(saved|Reader::A):uint16_t(saved&~Reader::A);
     std::memcpy(ram+(0x15CAF0^2),&mask,2);
@@ -424,7 +465,9 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         }
     }
     std::memcpy(ram+(0x15CAF0^2),&saved,2);
-    if(advance)record("guest_confirm",{{"event",reader.event},{"page",reader.page},{"skip",reader.skipping}});
+    if(confirm==Confirm::stop)record("guest_stop",{{"event",reader.event},{"segment",reader.guest},{"page",reader.page}});
+    if(confirm==Confirm::end)record("guest_confirm",{{"event",reader.event},{"page",reader.page},{"skip",reader.skipping},
+        {"stops",reader.stops.size()}});
     refresh(ram,true);
     state_report();
     return true;

@@ -13,6 +13,10 @@ Layout layout_text(const std::u16string& value,double size,double width,double h
     return reader_layout(text::game_fonts(localization::catalog().locale)->layout(
         value,size,width,localization::catalog().locale),height);
 }
+// The name row: a 10-point name at the top left inside the box, the text area
+// right under it (docs/design/dialogue-typesetting.md §4). The box interior
+// runs from 20 above the guest's text origin to 34 below it.
+constexpr double name_size=10, name_top=-19.5, body_top=-9.5;
 struct Painter {
     presentation::Bgra8Surface& image;
     double scale,ox,oy;
@@ -93,7 +97,7 @@ struct Painter {
             {"bounds",{ox+x*scale,oy+y*scale,w*scale,h*scale}}});
     }
     void progress(const Box& box,const AdvanceProgress& value) {
-        const double x=box.x+116,y=box.y-20,w=61,h=2.5;
+        const double x=box.x+116,y=box.y-15.5,w=61,h=2.5;  // right of the name
         fill(x-1,y-1,w+2,h+2,.025,.055,.085,.96);
         fill(x,y,w,h,.14,.23,.28);
         // The fill follows the actual reading timer: cyan while revealing,
@@ -125,14 +129,13 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
     for(const auto& box:frame.boxes) {
         if(!box.visible || box.layout.pages.empty())continue;
         const auto& page=box.layout.pages.at(box.page);
-        // The fixed header has room for 13 logical pixels; body size is
-        // independent, so larger accessibility text cannot overlap the name.
+        // The name keeps its size; the text area below it takes any body size.
         const bool focused=&box==focus;
         if(focused)paint.speaker_marker(box);
-        paint.label(box.speaker,box.x,box.y-16,std::min(frame.font_size,13U),177,
+        paint.label(box.speaker,box.x,box.y+name_top,name_size,body_width,
             focused?105./255:.43,focused?191./255:.57,focused?1:.65,"speaker");
         const double grey=box.active?1:123./255;
-        paint.text(box.layout,box.x,box.y,177,35,page.lines,box.revealed,grey,grey,grey,"body");
+        paint.text(box.layout,box.x,box.y+body_top,body_width,body_height,page.lines,box.revealed,grey,grey,grey,"body");
         // No page counter: a long translation simply continues on the next A,
         // like the original's own pages.
         if(focused && frame.advance.visible && box.event==frame.reading_event)paint.progress(box,frame.advance);
@@ -193,7 +196,20 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
     result.image.validate();
     return result;
 }
-Layout typeset(const std::u16string& value,unsigned size,double width,double height) {
+Layout typeset(const std::u16string& value,double size,double width,double height) {
     return layout_text(value,size,width,height);
+}
+double body_size(unsigned setting) {
+    return localization::catalog().locale=="en"?setting*0.85:setting;
+}
+Layout typeset_body(const std::u16string& value,double size,std::vector<size_t> stops,std::vector<size_t> forced) {
+    const auto& locale=localization::catalog().locale;
+    text::PageStyle style;
+    style.height=body_height;
+    style.min_spacing=locale=="en"?1.15:1.08;style.max_spacing=1.22;
+    style.rank_breaks=true;style.halve_line_end=locale=="zh-Hans";
+    std::sort(forced.begin(),forced.end());std::sort(stops.begin(),stops.end());
+    style.forced=std::move(forced);style.sentence_ends=std::move(stops);
+    return reader_layout(text::game_fonts(locale)->layout(value,size,body_width,locale,style),body_height);
 }
 }

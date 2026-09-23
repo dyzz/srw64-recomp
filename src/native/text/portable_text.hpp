@@ -31,15 +31,15 @@ struct PageStyle {
     double height=35;
     double min_spacing=1.22, max_spacing=1.22;   // line pitch / font size
     bool rank_breaks=false;
-    bool halve_line_end=false;                   // CJK: 。，、；：」』） at a line end may take half width
+    bool halve_line_end=false;                   // CJK: halvable_marks at a line end may take half width
     std::vector<size_t> forced;                  // UTF-16 offsets where a page must start
     std::vector<size_t> sentence_ends;           // extra offsets that end a sentence (original page breaks)
 };
 // The characters the ranking and the half-width rule look at. They are listed
 // in docs/design/dialogue-typesetting.md; the Python reference uses the same.
-inline constexpr std::u16string_view sentence_end_marks=u"。．！？!?…‥」』”’）)】〉》.\"";
-inline constexpr std::u16string_view comma_marks=u"，、,；;：:";
-inline constexpr std::u16string_view halvable_marks=u"。，、；：」』）";
+inline constexpr std::u16string_view sentence_end_marks=u"。！？…!?.」』）”\"";
+inline constexpr std::u16string_view comma_marks=u"，、；：—,;:";
+inline constexpr std::u16string_view halvable_marks=u"。，、；：」』）》】〕";
 struct TextColor { uint8_t r=255, g=255, b=255, a=255; };
 struct TextClip { double x{}, y{}, width{}, height{}; };
 struct TextDraw {

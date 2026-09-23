@@ -134,17 +134,17 @@ void run(const std::filesystem::path& cjk) {
     const auto long_layout=fonts.layout(std::u16string(160,u'甲'),18,177,"zh-Hans");
     auto reader_value=srw64::dialogue::reader_layout(long_layout);
     const auto pages=reader_value.pages.size();Reader reader;
-    reader.begin(1,100,0,u"甲",reader_value,0);
+    reader.begin(1,100,u"甲",reader_value,0);
     for(size_t i=0;i<pages;++i) {
         check(reader.update(Reader::A,20+i*4)==(i+1==pages),"Portable pagination changed guest confirmation count");
         check(!reader.update(Reader::A,21+i*4),"Held confirm advanced a second page");reader.update(0,22+i*4);
     }
     check(reader.pending && reader.history.back().complete,"Portable Reader did not complete history");
-    reader.begin(2,101,0,u"乙",srw64::dialogue::reader_layout(fonts.layout(u"e\u0301甲",13,177,"en")),200);
+    reader.begin(2,101,u"乙",srw64::dialogue::reader_layout(fonts.layout(u"e\u0301甲",13,177,"en")),200);
     reader.update(0,202);check(reader.visible==2,"Reader split portable grapheme");
     reader.update(Reader::L,203);check(reader.history_open,"History did not open");
     reader.update(0,300);check(!reader.pending,"History allowed guest progression");
-    reader.switch_language(srw64::dialogue::reader_layout(fonts.layout(u"日本語",13,177,"ja")),"ja",301);
+    reader.switch_language(srw64::dialogue::reader_layout(fonts.layout(u"日本語",13,177,"ja")),{},"ja",301);
     check(reader.page==0 && reader.visible==0 && !reader.pending,"Language switch failed");
     reader.relayout(srw64::dialogue::reader_layout(fonts.layout(u"日本語",18,60,"ja")));
     check(reader.page<reader.layout.pages.size(),"Portable accessibility relayout failed");
