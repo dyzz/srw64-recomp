@@ -7,6 +7,9 @@
 #include "link_page.hpp"
 #include "graphics.hpp"
 #include "battle_page.hpp"
+#include <RmlUi/Core/Elements/ElementFormControlInput.h>
+#include "intermission_page.hpp"
+#include "upgrade_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -50,6 +53,13 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
+json intermission_request,upgrade_request;
+// "intermission" or "upgrade" while the player types a new 資金 figure into that page.
+std::string funds_editing;
+Rml::ElementDocument* upgrade_doc{};
+std::string upgrade_stamp;
+Rml::ElementDocument* intermission_doc{};
+std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
 std::string mini_stamp;
 std::string preedit;
@@ -64,6 +74,14 @@ std::unique_lock<std::mutex> lock_ui() {
 }
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
 std::string label(const std::string& key){return escape(localization::catalog().ui(key));}
+// The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
+// added; empty when the rule is off or the machine's own cap already is the cap.
+std::string cap_legend(unsigned original,unsigned cap) {
+    if(!original || cap<=original)return {};
+    auto text=localization::catalog().ui("upgrade_cap_original");
+    if(const auto at=text.find("{n}");at!=std::string::npos)text.replace(at,3,std::to_string(original));
+    return escape(text);
+}
 const char* css=R"(
 scrollbarvertical { width: 12dp; } scrollbarhorizontal { height: 12dp; }
 scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-color: #122131; }
@@ -170,6 +188,23 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .spirit-footer button {margin:0; padding:4dp 12dp; font-size:11dp; font-weight:bold; border-radius:0; color:#0b1230; background-color:#3fd0ff; border:2dp #3fd0ff;}
 .spirit-footer button:hover,.spirit-footer button:focus {background-color:#8fe4ff; border-color:#ffd75e;}
 
+.im-root {position:absolute; color:#ffffff; font-weight:bold;}
+.im-panel {position:absolute; box-sizing:border-box; overflow:hidden; background-color:#0a0e3cc8; border-color:#3a78e0; white-space:nowrap;}
+.im-panel button {display:block; width:100%; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
+.im-panel button:hover {background-color:#00c80055;} .im-panel button:focus {border:0;}
+.im-panel button.on,.im-panel button.on:hover {background-color:#00c800;} .im-panel button:disabled {opacity:1;}
+.im-line {display:flex; justify-content:space-between;} .im-line span {display:inline-block;}
+.im-hint {position:absolute; text-align:center; font-weight:normal; color:#d6e2efb0; white-space:nowrap;}
+.im-refused {color:#ffd75e;}
+.im-funds {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:transparent; border:0; border-radius:0; margin:0; padding:0;}
+.im-funds:hover,.im-funds:focus {background-color:#00c80055; border:0;}
+.im-funds-input {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:#122131; border:0; border-radius:0; margin:0; padding:0 2dp; tab-index:auto;}
+.im-funds-input selection {color:#0b1421; background-color:#9be4f7;}
+.im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
+.im-right {text-align:right;} .im-dim {color:#9eafc3;}
+.im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
+.im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
+.im-panel img {display:block;}
 
 
 )";
@@ -381,10 +416,204 @@ std::string battle_clash(const json& enemy,const json& player,bool player_first,
 }
 // The original's four panels in its own 320x240 coordinates (screen layouts 0x69 /
 // 0x8D, swap window 0x86), scaled to the 4:3 game picture inside the window.
+// The 資金 figure: a button that opens an edit box in place (funds_editing names the page).
+std::string funds_field(const std::string& page,unsigned value,const std::string& width,const std::string& font,const std::string& height) {
+    const std::string id=page+"-funds";
+    if(funds_editing==page)
+        return "<input type='text' id='"+id+"-input' class='im-funds-input' maxlength='8' value='"+std::to_string(value)+"' style='width:"+width+"; font-size:"+font+"; height:"+height+"; line-height:"+height+";'/>";
+    return "<button id='"+id+"' class='im-funds' style='width:"+width+"; font-size:"+font+"; height:"+height+"; line-height:"+height+";'>"+std::to_string(value)+"</button>";
+}
+void focus_funds(Rml::ElementDocument* doc,const std::string& page) {
+    if(funds_editing!=page || !doc)return;
+    // The old figure is selected, so typing replaces it.
+    if(auto* field=dynamic_cast<Rml::ElementFormControlInput*>(doc->GetElementById(page+"-funds-input"))){context->Update();field->Focus();field->SetSelectionRange(0,int(field->GetValue().size()));}
+}
 float text_units(const std::string& text) {
     float units=0;
     for(unsigned char c:text)if((c&0xC0)!=0x80)units+=c<0x80?0.58f:1.f;
     return units;
+}
+void intermission_sync() {
+    const auto next=intermission_page::state();intermission_request=next;
+    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+funds_editing;
+    if(intermission_doc && intermission_stamp==stamp)return;
+    document_close(intermission_doc);intermission_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;   // the border, one original pixel
+    const auto panel=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto& items=next.at("items");const bool restricted=next.value("restricted",false),submenu=next.value("submenu",false);
+    const unsigned cursor=next.value("cursor",0u);
+    float item_font=12.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
+    const float row=(restricted?31.f:143.f)/items.size();
+    std::string menu;
+    for(unsigned n=0;n<items.size();++n)
+        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
+    const auto title=next.value("title",std::string());
+    const auto turns_label=next.value("turns_label",std::string()),funds_label=next.value("funds_label",std::string());
+    const float info_font=std::min(fit(turns_label,78),fit(funds_label,78));
+    const auto info="<div class='im-line' style='padding:0 "+px(1)+"; line-height:"+px(15.5f)+";'><span>"+escape(turns_label)+"</span><span id='intermission-turns'>"+std::to_string(next.value("turns",0u))+"</span></div>"
+        "<div class='im-line' style='padding:0 "+px(1)+"; line-height:"+px(15.5f)+";'><span>"+escape(funds_label)+"</span>"+funds_field("intermission",next.value("funds",0u),px(60),px(info_font),px(15.5f))+"</div>";
+    auto episode=localization::catalog().ui("intermission_episode");
+    if(const auto at=episode.find("{n}");at!=std::string::npos)episode.replace(at,3,std::to_string(next.value("episode",0u)));
+    const auto footer=episode+" "+next.value("scene_title",std::string())+" "+next.value("clear_label",std::string());
+    std::string body="<div class='im-root' id='intermission' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
+        panel(120,25,199,39,"<div style='text-align:center;'>"+escape(title)+"</div>",fit(title,76),"intermission-title")+
+        panel(33,41,103,restricted?71:183,menu,item_font,"intermission-menu")+
+        panel(145,49,287,79,info,info_font,"intermission-info")+
+        panel(34,193,287,207,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
+    if(submenu) {
+        const auto& swap=next.at("swap_items");const unsigned chosen=next.value("swap_cursor",0u);
+        float swap_font=12.5f;std::string options;
+        for(const auto& item:swap)swap_font=std::min(swap_font,fit(item.get<std::string>(),43));
+        for(unsigned n=0;n<swap.size();++n)
+            options+="<button id='intermission-swap:"+std::to_string(n)+"' class='"+(n==chosen?"on":"")+"' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(2)+";'>"+escape(swap[n].get<std::string>())+"</button>";
+        body+=panel(109,121,155,160,options,swap_font,"intermission-swap");
+    }
+    const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
+    body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(222)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
+    intermission_doc=document(body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
+}
+// ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
+// (0x75), in the original's 320x240 coordinates like the intermission menu.
+void upgrade_sync() {
+    const auto next=upgrade_page::state();upgrade_request=next;
+    if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+funds_editing;
+    if(upgrade_doc && upgrade_stamp==stamp)return;
+    document_close(upgrade_doc);upgrade_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
+    const std::string screen=next.value("screen",std::string());
+    std::string body="<div class='im-root' id='upgrade' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="list") {
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='upgrade:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(18)+"; line-height:"+px(18)+"; padding:0 "+px(2)+";'>"+
+                span(r.value("name",std::string()),148)+span("HP",22,"im-dim")+span(number(r.at("hp")),34,"im-right")+span("EN",22,"im-dim",0,8)+span(number(r.at("en")),30,"im-right")+"</button>";
+        }
+        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+        const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
+        const std::string pilot=sel.value("pilot",std::string());
+        body+=box(21,21,299,219,
+            "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+";'>"+span(page,60,"im-right")+"<span style='width:"+px(210)+"; text-align:center;'>"+escape(next.value("title",std::string()))+"</span></div>"
+            "<div id='upgrade-list' style='margin-top:"+px(2)+";'>"+list+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(153)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+                span(label_of("mobility"),44,"im-dim")+span(number(sel.value("mobility",json())),30,"im-right")+span(label_of("armor"),40,"im-dim",0,22)+span(number(sel.value("armor",json())),40,"im-right")+span(label_of("limit"),40,"im-dim",0,22)+span(number(sel.value("limit",json())),30,"im-right")+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(176)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+                span(label_of("pilot"),52,"im-dim")+span(pilot.empty()?"--------":pilot,100,"",0,6)+span(label_of("funds"),40,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(60),px(11.5f),px(22))+"</div>",
+            11.5f,"upgrade-panel");
+        const std::string hint=next.value("pages",1u)>1?"upgrade_list_hint_pages":"upgrade_list_hint";
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
+    } else if(screen=="weapons" || screen=="weapon") {
+        // Weapon list (layout 0x77): name / power / range / hit rows, the selected
+        // weapon's details below; the confirm screen (0x78) on top of the list frame.
+        const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
+        const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("0");};
+        const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"-"+std::to_string(b);};
+        const bool confirm=screen=="weapon";
+        const json rows=confirm?json::array({next.at("weapon")}):next.at("rows");
+        const unsigned cursor=confirm?0:next.value("cursor",0u);
+        std::string list="<div class='im-row im-dim' style='height:"+px(18)+"; line-height:"+px(18)+"; padding:0 "+px(2)+";'>"+span(wl("weapon"),146,"",0,74)+span(wl("power"),44,"im-right")+span(wl("range"),40,"im-right")+span(wl("hit"),40,"im-right")+"</div>";
+        if(!confirm)for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='upgrade:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(2)+";'>"+
+                span(r.value("name",std::string()),150)+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
+        }
+        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+        const auto& unit=next.at("unit");
+        const auto paren=[](const json& v,int have){return (v.is_number()&&v.get<int>()?std::to_string(v.get<int>()):std::string("---"))+"("+(have>=0?std::to_string(have):std::string("---"))+")";};
+        std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):"--/--";
+        std::string terrain=sel.value("terrain",std::string("----"));
+        std::string details="<div class='im-row' style='position:absolute; left:0; top:"+px(137)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+";'>"+
+            span(wl("ammo"),32,"im-dim")+span(ammo,44)+span(wl("terrain"),36,"im-dim",0,4)+
+            span(wl("air"),16,"im-dim",0,4)+span(terrain.substr(0,1),16)+span(wl("land"),16,"im-dim")+span(terrain.substr(1,1),16)+span(wl("sea"),16,"im-dim")+span(terrain.substr(2,1),16)+span(wl("space"),16,"im-dim")+span(terrain.substr(3,1),16)+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(161)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+            span(wl("morale"),68,"im-dim")+span(paren(sel.value("morale",json()),unit.value("morale",-1)),70)+span(wl("skill"),68,"im-dim",0,6)+span(sel.value("skill_name",std::string("---")),60)+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(178)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+            span(wl("en"),68,"im-dim")+span(paren(sel.value("en",json()),unit.value("en",-1)),70)+span(wl("critical"),90,"im-dim",fit(wl("critical"),88),6)+span(signed_number(sel.value("critical",json())),38)+"</div>";
+        body+=box(21,21,299,219,list+"<div style='position:absolute; left:0; top:"+px(135)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"+details,10.5f,"upgrade-panel");
+        const auto window=next.value("window",std::string());
+        if(confirm) {
+            const auto& w=next.at("weapon");
+            std::string gauge;
+            for(char c:w.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
+            // Layout 0x78: name and gauge at y 64, 攻撃力 ▶ preview and 資金 at 88, 費用 in its own box.
+            body+="<div class='im-shade'></div>"+box(21,61,299,107,
+                "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("name",std::string()),150)+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
+                "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(3)+";'>"+span(wl("power"),44,"im-dim")+span(number(w.at("power")),40,"im-right")+span("▶",14,"im-dim")+span(number(w.value("preview",json())),40,"im-right")+
+                    span(label_of("funds"),32,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(56),px(11),px(20))+"</div>",11.f,"upgrade-weapon")+
+                box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(w.value("price",json())),76,"im-right")+"</div>",11.f,"upgrade-weapon-price");
+            if(const std::string raised=cap_legend(w.value("original_cap",0u),w.value("cap",0u));!raised.empty())
+                body+="<div class='im-dim' style='position:absolute; left:"+px(24)+"; top:"+px(110)+"; width:"+px(150)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>";
+            if(window=="confirm")
+                body+=box(261,133,291,171,"<button id='upgrade-confirm' class='"+std::string(cursor==0?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"upgrade-choice");
+            else body+=box(85,61,235,83,"<button id='upgrade-dismiss' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
+        } else if(window=="bonus") {
+            // Layout 0x8C: 「X を最大まで改造したので、特別ボーナスとして Y が追加されます」.
+            const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
+            body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
+                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",11.f,"upgrade-bonus");
+        }
+        const char* hint=confirm?(window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
+    } else if(screen=="stats") {
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& unit=next.at("unit");
+        std::string cap=label_of("cap");
+        if(const auto at=cap.find("  ");at!=std::string::npos)cap.replace(at,2,std::to_string(next.value("cap",0u)));
+        const auto& row_at=rows[std::min<unsigned>(cursor,rows.size()-1)];
+        const std::string raised=cap_legend(row_at.value("original_cap",0u),next.value("cap",0u));
+        std::string lines;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            std::string gauge;
+            for(char c:r.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
+            lines+="<button id='upgrade:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+                span(r.value("name",std::string()),44)+span(number(r.at("value")),40,"im-right")+span("▶",16,"im-dim")+span(number(r.value("preview",json())),40,"im-right")+
+                "<span class='im-gauge' style='width:"+px(120)+"; margin-left:"+px(8)+"; font-size:"+px(9)+";'>"+gauge+"</span></button>";
+        }
+        body+=box(21,10,175,42,"<div style='padding:0 "+px(4)+"; line-height:"+px(31)+";'>"+escape(unit.value("name",std::string()))+"</div>",fit(unit.value("name",std::string()),146),"upgrade-name")+
+            box(21,43,175,89,"<div style='padding:"+px(3)+" "+px(4)+" 0;'>"+escape(label_of("question"))+"<br/>"+escape(cap)+"</div>",fit(label_of("question"),146),"upgrade-question")+
+            box(21,90,175,131,"<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("funds"),50,"im-dim")+funds_field("upgrade",next.value("funds",0u),px(90),px(12),px(16))+"</div>"
+                "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+span(number(row_at.value("price",json())),90,"im-right")+"</div>"+
+                // The 上限突破 legend fills the money box's spare third row; the question box has no room for it.
+                (raised.empty()?std::string():"<div class='im-dim' style='padding:0 "+px(4)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>"),12.f,"upgrade-money");
+        std::string art;
+        if(unit.contains("art") && unit.at("art").contains("path")) {
+            const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(118.f/w,118.f/h);
+            art="<img src='"+escape(image(unit.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        }
+        body+=box(176,8,302,132,art,12.f,"upgrade-art","display:flex; align-items:center; justify-content:center;")+
+            box(21,133,302,219,lines,11.5f,"upgrade-rows");
+        const auto window=next.value("window",std::string());
+        if(!window.empty()) {
+            body+="<div class='im-shade'></div>";
+            if(window=="confirm")
+                body+=box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(label_of("ask"))+"</div>",12.f,"upgrade-window")+
+                    box(221,139,251,163,"<button id='upgrade-confirm' class='on' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",7.5f,"upgrade-choice");
+            else
+                body+=box(85,61,235,83,"<button id='upgrade-dismiss' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
+        }
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(window.empty()?"upgrade_stats_hint":window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint")+"</div>";
+    }
+    body+="</div>";
+    upgrade_doc=document(body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
 }
 void mini_sync() {
     const auto state=mini_stage::snapshot();
@@ -403,7 +632,7 @@ void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
     if(!next.value("visible",false)) {
         document_close(battle_doc);battle_stamp.clear();
-        // Original HUD: only the animation state and its toggle key.
+        // Original HUD: only the animation state and its toggle key, top centre.
         const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
         if(stamp!=original_stamp) {
             document_close(original_doc);original_stamp=stamp;
@@ -456,9 +685,29 @@ void battle_sync() {
 
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
+    if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
+    if(id.ends_with("-funds-input"))return;
+    funds_editing.clear();
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
     if(id=="settings-close"){physical_held=held();settings_open=false;return;}
+    if(id.starts_with("upgrade") && upgrade_request.value("visible",false) && !settings_open) {
+        const auto serial=upgrade_request.at("serial").get<uint64_t>();const auto screen=upgrade_request.value("screen",std::string());const bool list=screen=="list" || screen=="weapons";
+        if(id.starts_with("upgrade:")) {
+            // A click on the cursor row confirms, elsewhere it moves the cursor.
+            const unsigned n=unsigned(std::atoi(id.c_str()+8));
+            if(n==upgrade_request.value("cursor",0u))upgrade_page::answer(serial,list?"choose":"choose:"+std::to_string(n));
+            else upgrade_page::answer(serial,"move:"+std::to_string(n));
+        } else if(id=="upgrade-confirm" || id=="upgrade-cancel" || id=="upgrade-dismiss")upgrade_page::answer(serial,id.substr(8));
+        return;
+    }
+    if(id.starts_with("intermission") && intermission_request.value("visible",false) && !settings_open) {
+        // Item ids are "intermission:N" and "intermission-swap:N"; a click confirms.
+        const auto serial=intermission_request.at("serial").get<uint64_t>();
+        if(id.starts_with("intermission:"))intermission_page::answer(serial,"choose:"+id.substr(13));
+        else if(id.starts_with("intermission-swap:"))intermission_page::answer(serial,"swap:"+id.substr(18));
+        return;
+    }
     if(id.starts_with("link") && link_request.visible && !link_waiting && !settings_open){
         if(id=="link-back" || id=="link-next"){
             unsigned selected=0;for(unsigned i=0;i<3;++i)if(ticked[i] && !link_request.joined[i])selected|=1u<<i;
@@ -555,13 +804,16 @@ void sync() {
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
         if(pad_pressed)battle_buttons(pad_pressed);
     }
-    link_sync();battle_sync();mini_sync();
+    if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
     settings_sync();notices_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));
+    intermission_page::window_claim_input(intermission_request.value("visible",false) || (intermission_page::owns_input() && held()));
+    upgrade_page::window_claim_input(upgrade_request.value("visible",false) || (upgrade_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -580,9 +832,27 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
-    if(settings_open){
+    if(!funds_editing.empty() && !settings_open){
+        auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
+        auto* field=doc?dynamic_cast<Rml::ElementFormControlInput*>(doc->GetElementById(funds_editing+"-funds-input")):nullptr;
+        const bool page_up=funds_editing=="intermission"?intermission_request.value("visible",false):upgrade_request.value("visible",false);
+        if(!field || !page_up){funds_editing.clear();return true;}
+        if(event.type==SDL_KEYDOWN && !event.key.repeat){
+            const auto k=event.key.keysym.sym;
+            if((k==SDLK_RETURN || k==SDLK_KP_ENTER) && input.accepts_submit()){
+                std::string digits;for(char c:field->GetValue())if(c>='0' && c<='9')digits+=c;
+                if(!digits.empty()){
+                    if(funds_editing=="intermission")intermission_page::answer(intermission_request.at("serial").get<uint64_t>(),"funds:"+digits);
+                    else upgrade_page::answer(upgrade_request.at("serial").get<uint64_t>(),"funds:"+digits);
+                }
+                funds_editing.clear();return true;
+            }
+            if(k==SDLK_ESCAPE){funds_editing.clear();return true;}
+        }
+        // Digits, backspace and the cursor keys belong to the edit box.
+    } else if(settings_open){
         if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_ESCAPE){choose("settings-close");return true;}
     } else if(battle_request.value("visible",false)){
         // The game's own key map, so the page reads like the rest of the game:
@@ -600,6 +870,49 @@ bool dispatch(SDL_Event& event) {
             else if(k==SDLK_e)pressed=0x0010;
             else if(k==SDLK_k)pressed=0x0004;
             if(pressed){battle_buttons(pressed);return true;}
+        }
+    } else if(upgrade_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=upgrade_request.at("serial").get<uint64_t>();
+            const auto screen=upgrade_request.value("screen",std::string());const bool list=screen=="list" || screen=="weapons",confirm=screen=="weapon";
+            const auto window=upgrade_request.value("window",std::string());
+            const unsigned count=confirm?2:unsigned(upgrade_request.at("rows").size()),at=upgrade_request.value("cursor",0u);
+            if(confirm){
+                if(window=="confirm" && (k==SDLK_UP || k==SDLK_DOWN)){upgrade_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+                if(event.key.repeat)return true;
+                if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){upgrade_page::answer(serial,window!="confirm"?"dismiss":at==0?"confirm":"cancel");return true;}
+                if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":"dismiss");return true;}
+                return true;
+            }
+            if(window=="bonus"){if(!event.key.repeat && (k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE || k==SDLK_ESCAPE || k==SDLK_x))upgrade_page::answer(serial,"dismiss");return true;}
+            if(window.empty() && count && (k==SDLK_UP || k==SDLK_DOWN)){upgrade_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            if(list && window.empty() && (k==SDLK_LEFT || k==SDLK_RIGHT)){
+                const unsigned pages=upgrade_request.value("pages",1u),page=upgrade_request.value("page",0u);
+                if(pages>1)upgrade_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_LEFT?pages-1:1))%pages));return true;
+            }
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){
+                if(window=="confirm")upgrade_page::answer(serial,"confirm");
+                else if(!window.empty())upgrade_page::answer(serial,"dismiss");
+                else upgrade_page::answer(serial,list?"choose":"choose:"+std::to_string(at));
+                return true;
+            }
+            if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":window.empty()?"back":"dismiss");return true;}
+        }
+    } else if(intermission_request.value("visible",false)){
+        // As the original: up and down wrap around and repeat while held, A confirms,
+        // B only closes the swap window.
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=intermission_request.at("serial").get<uint64_t>();
+            const bool submenu=intermission_request.value("submenu",false);
+            const unsigned count=submenu?2:unsigned(intermission_request.at("items").size());
+            const unsigned at=intermission_request.value(submenu?"swap_cursor":"cursor",0u);
+            const std::string prefix=submenu?"swap-":"";
+            const bool reverse=k==SDLK_UP || (k==SDLK_TAB && (event.key.keysym.mod&KMOD_SHIFT));
+            if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;}
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){intermission_page::answer(serial,(submenu?"swap:":"choose:")+std::to_string(at));return true;}
+            if((k==SDLK_ESCAPE || k==SDLK_x) && submenu){intermission_page::answer(serial,"swap-close");return true;}
         }
     } else if(link_request.visible){
         if(event.type==SDL_KEYDOWN && !event.key.repeat){
@@ -633,7 +946,7 @@ bool dispatch(SDL_Event& event) {
         // Window dimensions are in points; sync() supplies drawable pixels.
         if(event.window.event==SDL_WINDOWEVENT_LEAVE)context->ProcessMouseLeave();
     } else consumed=!RmlSDL::InputEventHandler(context,scaled);
-    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false);
+    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false);
 }
 json describe(Rml::Element* el,unsigned depth=0) {
     const auto offset=el->GetAbsoluteOffset();const auto size=el->GetBox().GetSize();
@@ -671,8 +984,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=mini_doc=nullptr;}renderer.reset();}
-void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);battle_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=mini_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
@@ -750,7 +1063,7 @@ nlohmann::json tree(const nlohmann::json&){return ui::tree();}
 nlohmann::json summary(){
     auto lock=ui::lock_ui();
     nlohmann::json result={{"backend","SDL2/RmlUi"},{"ready",ui::context!=nullptr},{"focus",nullptr}};
-    result["input_owners"]={{"battle",battle_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
+    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
     if(ui::window)result["active"]=bool(SDL_GetWindowFlags(ui::window)&SDL_WINDOW_INPUT_FOCUS);
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
     return result;

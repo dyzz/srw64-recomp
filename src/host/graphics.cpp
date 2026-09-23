@@ -23,6 +23,8 @@
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
 #include "battle_page.hpp"
+#include "intermission_page.hpp"
+#include "upgrade_page.hpp"
 #include "native_dialogue.hpp"
 #endif
 #ifdef SRW64_CORETEXT_PROBE
@@ -466,7 +468,7 @@ void srw64_update_window(void*) {
     srw64::settings_window::control(capture_directory);
     srw64::debug::service_main();
     // A native page owns the keyboard: no F6/F8 and no Esc-to-quit meanwhile.
-    const bool editing_name=srw64::battle_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input();
+    const bool editing_name=srw64::battle_page::owns_input() || srw64::intermission_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input();
 #else
     const bool editing_name=false;
 #endif

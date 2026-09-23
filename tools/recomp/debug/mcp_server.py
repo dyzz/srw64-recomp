@@ -68,8 +68,11 @@ TOOLS = [
          "close": {"type": "boolean"}}}},
     {"name": "srw64_settings", "description": "Change rules (preset or id list), language or image mode directly.",
      "inputSchema": {"type": "object", "properties": {"rules": {"type": ["string", "array"]},
-         "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]}}}},
-    {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, intro_active, name_page, link_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
+         "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
+         "battle_ui": {"type": "string", "enum": ["native", "original"]}}}},
+    {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it from the title menu, like dropping the file on the window.",
+     "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
+    {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, intro_active, name_page, link_page, intermission_page, battle_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
      "inputSchema": {"type": "object", "properties": {"until": {"type": "object"}, "timeout_s": {"type": "number"}}}},
     {"name": "srw64_events", "description": "Rows of an event log from a cursor. Logs: " + ", ".join(EVENT_LOGS) + ".",
      "inputSchema": {"type": "object", "required": ["log"], "properties": {"log": {"type": "string", "enum": list(EVENT_LOGS)},
@@ -128,6 +131,8 @@ class Server:
             return text(client.call("window", **args))
         if name == "srw64_settings":
             return text(client.call("settings", **args))
+        if name == "srw64_mini_stage_load":
+            return text(client.call("mini_stage.load", path=args["path"]))
         if name == "srw64_wait":
             return text(session.wait(timeout=float(args.get("timeout_s", 30)), **args.get("until", {})))
         if name == "srw64_events":

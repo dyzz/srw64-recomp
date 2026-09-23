@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-link-battler-test recomp-debug-protocol-test
+recomp-native-check: recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -163,6 +163,12 @@ recomp-mini-stage-test:
 	mkdir -p build/recomp/mini-stage-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_mini_stage.cpp -o build/recomp/mini-stage-test/test
 	rm -rf build/recomp/mini-stage-test/test-run && build/recomp/mini-stage-test/test build/recomp/mini-stage-test/test-run
+
+.PHONY: recomp-intermission-test
+recomp-intermission-test:
+	mkdir -p build/recomp/intermission-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_intermission.cpp -o build/recomp/intermission-test/test
+	build/recomp/intermission-test/test
 
 .PHONY: recomp-debug-protocol-test
 recomp-debug-protocol-test:

@@ -70,7 +70,6 @@
     "rule_upgrade_cap_break": "改造上限突破：全部机体可改到 15 段（原版按机体 6～15）",
     "rule_upgrade_refund": "离队退款：剧情移除机体时退回改造资金",
     "refund_notice": "{unit} 已离开部队，退回改造资金 {amount}",
-    "link_section": "Link Battler 联动",
     "link_title": "选择联动作品",
     "link_hint": "勾选的作品会在下一场战斗前通过特别关卡加入，接着进入原版的联动画面。",
     "link_series_f91": "机动战士高达F91",
@@ -211,7 +210,20 @@
     "battle_first_player": "我方先手",
     "battle_first_enemy": "敌方先手",
     "battle_barrier": "护罩",
-    "battle_spirit_hint": "按各驾驶员实际消耗扣除 SP · 已生效的精神不可取消"
+    "battle_spirit_hint": "按各驾驶员实际消耗扣除 SP · 已生效的精神不可取消",
+    "intermission_episode": "第{n}话",
+    "intermission_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   也可以直接点击",
+    "intermission_swap_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   Esc / X 关闭",
+    "intermission_swap_refused": "现在没有可以换乘的对象。",
+    "upgrade_list_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   Esc / X 返回",
+    "upgrade_list_hint_pages": "↑↓ 选择   ·   ←→ 翻页   ·   Enter / Z 确定   ·   Esc / X 返回",
+    "upgrade_stats_hint": "↑↓ 选择项目   ·   Enter / Z 改造   ·   Esc / X 返回",
+    "upgrade_confirm_hint": "Enter / Z 确认   ·   Esc / X 取消",
+    "upgrade_message_hint": "Enter / Esc 关闭",
+    "upgrade_weapons_hint": "↑↓ 选择武器   ·   Enter / Z 改造   ·   Esc / X 返回",
+    "upgrade_weapons_hint_pages": "↑↓ 选择武器   ·   ←→ 翻页   ·   Enter / Z 改造   ·   Esc / X 返回",
+    "upgrade_cap_original": "固有上限 {n} 段 ▶▷   ·   突破部分 ●☆",
+    "funds_edit_hint": "输入新的资金数字   ·   Enter 写入   ·   Esc 取消"
   },
   "entries": [
     {
@@ -243,6 +255,11 @@
       "key": "base:t00_00230",
       "source_sha256": "563bd4d3a121b07659851b605b892322355b48b6af59ba1f851dd72c506243bf",
       "target": "退出<END>"
+    },
+    {
+      "key": "base:t00_00282",
+      "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
+      "target": "出击！斯维姆鲁格<END>"
     },
     {
       "key": "base:t00_00490",
@@ -373,6 +390,76 @@
       "key": "base:t00_00526",
       "source_sha256": "b6402db55ed0b8f55f203586d69c40158d8a74bce4fcc1ee81860a929c07d5ef",
       "target": "保存<END>"
+    },
+    {
+      "key": "base:t00_04044",
+      "source_sha256": "1037566d4be91a4e998e1f0a0e0f076f2ef035243ffd0f8342b894cb3583785e",
+      "target": "幕间<END>"
+    },
+    {
+      "key": "base:t00_04045",
+      "source_sha256": "77d4fe876627b7e534de1ea1f345bb68a37abf7fd382010126167db2e051e261",
+      "target": "保存数据<END>"
+    },
+    {
+      "key": "base:t00_04046",
+      "source_sha256": "00ef6e77aa7dc1b6297b61da3eabc42188e70fb997f4973d1ff7c91ce61539e2",
+      "target": "机体改造<END>"
+    },
+    {
+      "key": "base:t00_04047",
+      "source_sha256": "25a71e16b4f0f03c07bb1fe26aba6d22f40b998d37747727729c165e933b42e3",
+      "target": "武器改造<END>"
+    },
+    {
+      "key": "base:t00_04048",
+      "source_sha256": "69ea206b0ef53d25d607d5996bdd12182734572e3bd3a18be61597bf1a729554",
+      "target": "机体能力<END>"
+    },
+    {
+      "key": "base:t00_04049",
+      "source_sha256": "80d672d5c9801c74ab45484a201f74ea7f10f3a5176707e452228709f6da66c6",
+      "target": "驾驶员能力<END>"
+    },
+    {
+      "key": "base:t00_04050",
+      "source_sha256": "f2808c60f4e08d8c378860568dbb7eefe0192643880f589685eb6865a590e8e6",
+      "target": "换乘<END>"
+    },
+    {
+      "key": "base:t00_04051",
+      "source_sha256": "5d9cd2569803634e6d20e6f3f948f54f5490563935f17b5067f72330912797e1",
+      "target": "强化部件<END>"
+    },
+    {
+      "key": "base:t00_04052",
+      "source_sha256": "30f0f3b7d4e8793032df0851eb4e9a4fb578f034d6a011d548e938fb60ffa77f",
+      "target": "联动<END>"
+    },
+    {
+      "key": "base:t00_04053",
+      "source_sha256": "db93b0e39eb029aed7f967b9e5d81c75f4dcf2deb7143c60a91653e383f7efa2",
+      "target": "前往下一关<END>"
+    },
+    {
+      "key": "base:t00_04054",
+      "source_sha256": "779baf18b4f0e3f5d523a1d93c814979f401807e9a87843d1b6cfe2a48fa815b",
+      "target": "总回合数<BR>资金<END>"
+    },
+    {
+      "key": "base:t00_04064",
+      "source_sha256": "44ef33d661d3c7861752d739b8deb05859f1ad1420956b10e3bf39f866db6376",
+      "target": "通关<END>"
+    },
+    {
+      "key": "base:t00_04076",
+      "source_sha256": "8c468917b784a69eadda23d2ad7e25d169156057ffe6197a9628e910735e1575",
+      "target": "驾驶员<END>"
+    },
+    {
+      "key": "base:t00_04098",
+      "source_sha256": "cf74f0d70858cb491926a580ed4d0036976dee96e5e2e682502b5a9b7e3110ff",
+      "target": "妖精<END>"
     },
     {
       "key": "base:t00_04406",

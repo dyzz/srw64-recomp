@@ -25,6 +25,22 @@ struct SRW64GameHooks {
     bool (*link_step)(uint8_t*, recomp_context*){};
     // The インターミッション main menu builds / steps. True: the native page did it.
     // The frame callback runs at every frame boundary.
+    // The ユニット改造 screens: machine list build / step (weapons: the 武器改造 list),
+    // five-stat build / step, and whether the native page replaces the stat drawing.
+    bool (*upgrade_list_build)(uint8_t*, recomp_context*, bool weapons){};
+    bool (*upgrade_list_step)(uint8_t*, recomp_context*, void (*step)(uint8_t*, recomp_context*)){};
+    bool (*upgrade_stats_build)(uint8_t*, recomp_context*){};
+    bool (*upgrade_stats_step)(uint8_t*, recomp_context*){};
+    bool (*upgrade_stats_view)(uint8_t*){};
+    // 武器改造: the weapon list build / step and the confirm screen build / step.
+    bool (*weapon_list_build)(uint8_t*, recomp_context*){};
+    bool (*weapon_list_step)(uint8_t*, recomp_context*){};
+    bool (*weapon_confirm_build)(uint8_t*, recomp_context*){};
+    bool (*weapon_confirm_step)(uint8_t*, recomp_context*){};
+    void (*upgrade_frame)(uint8_t*){};
+    bool (*intermission_build)(uint8_t*, recomp_context*){};
+    bool (*intermission_step)(uint8_t*, recomp_context*){};
+    void (*intermission_frame)(uint8_t*){};
 };
 extern SRW64GameHooks srw64_game_hooks;
 extern "C" void srw64_original_dialogue_step(uint8_t*, recomp_context*);

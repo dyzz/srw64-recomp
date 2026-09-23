@@ -143,13 +143,18 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         right["target_shield"]=left["defense"]["shield"];
         current={{"visible",true},{"locale",language->locale},{"serial",++serial},{"mode",mode},{"attacker",left},{"defender",right},
             {"response",int8_t(read(ram,0x8018B754,1))},{"animation",(read(ram,0x8015DDA8,1)&4)==0},
-            {"can_cancel",mode==1 && read(ram,0x8010F5E8,1)==1},
+            {"can_cancel",mode==1 && read(ram,0x8010F5E8,1)==1},{"turn",read(ram,0x8010F5EA,2)},
             {"can_counter",mode==2},{"rules",generation_rules},{"spirit_menu",spirit_menu},
             {"spirit_options",spirit_options(scratch.data(),&call,a.side==0?a:d)}};
         // The native cards replace the original HUD sprites/text. This original
         // cleanup removes slots 0x27..0x34, preserving battlefield unit sprites.
         auto cleanup=*ctx;resident_func_8009DB8C(ram,&cleanup);
         owning=true;pending.clear();record("open");
+    }
+    else if(owning && current.value("visible",false)) {
+        // The original screen rebuilds its HUD sprites on some frames (seen as the
+        // original cards showing through the native page); clear them every frame.
+        auto cleanup=*ctx;resident_func_8009DB8C(ram,&cleanup);
     }
     // A language change only relabels the existing combat snapshot. Opening
     // settings must not mix newly selected rules into an already prepared battle.

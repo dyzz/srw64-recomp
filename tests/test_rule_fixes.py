@@ -95,19 +95,13 @@ class RuleSettingsTests(unittest.TestCase):
             ui = json.loads((ROOT / f"content/locales/{locale}.json").read_text())["ui"]
             self.assertEqual(sorted(key for key in keys if not ui.get(key)), [], locale)
             self.assertEqual(set(ui), UI_KEYS, locale)
-        menu = (ROOT / "src/host/macos/rule_menu_macos.mm").read_text()
-        self.assertIn("for(const auto& entry:rules::catalog)", menu)
-        self.assertIn("srw64.rule-control.v1", menu)
-        # Titles are rebuilt when the player switches language, so every label the
-        # menu shows has to come from the catalog at that moment.
-        self.assertIn("- (void)retitle", menu)
-        self.assertIn("built_locale", menu)
-        # Both surfaces group the rules by the catalog's kinds.
-        window = (ROOT / "src/host/macos/settings_window_macos.mm").read_text()
-        for source in (menu, window):
-            self.assertIn("rules::corrections", source)
-            self.assertIn("rules::difficulty", source)
-        self.assertIn("srw64.settings-control.v1", window)
+        # The shared RmlUi settings page lists every catalog entry, grouped by kind,
+        # and is rebuilt whenever the locale changes (the locale is in its stamp).
+        page = (ROOT / "src/native/ui/frontend.cpp").read_text()
+        self.assertIn("for(const auto& entry:rules::catalog)if(entry.kind==group)", page)
+        self.assertIn("for(auto group:{rules::Kind::correction,rules::Kind::difficulty})", page)
+        self.assertIn("const auto stamp=localization::catalog().locale+", page)
+        self.assertIn("srw64.settings-control.v1", page)
 
     def test_hooked_routines_are_renamed_and_replaced(self):
         source = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()

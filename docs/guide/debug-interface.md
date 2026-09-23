@@ -24,6 +24,8 @@
 | F7 语言 | SDL 键盘事件，组字期间交给输入法 | `keys f7`：进入相同的 SDL 组字／repeat 门控 |
 | N64 手柄（绕过键盘层） | 无（诊断用） | `buttons` |
 | 主角选择页：四张卡片、←→、Enter／Z | SDL 鼠标与键盘 | `ui.click --text <主角全名>`（高亮后按继续或 Enter）、`ui.key right`／`return`；`status.name_page` 给出 `route` 与四个选项 |
+| 场间主菜单：九项（「（前）」场景后两项）、のりかえ 二级菜单 | SDL 鼠标与键盘 | `ui.click --text intermission:N`（或可见文字）确认第 N 项，`intermission-swap:0|1` 选驾驶员／妖精；`ui.key up`／`down`／`return`／`escape`；`status.intermission_page` 给出 `cursor`、`submenu`、`swap_refused`、回合数与资金 |
+| 改造画面：机体列表、五项改造、确认窗与消息 | SDL 鼠标与键盘 | `ui.click --text upgrade:N`（当前行确认、其他行移动）、`upgrade-confirm`／`upgrade-cancel`／`upgrade-dismiss`；`ui.key up`／`down`／`left`／`right`／`return`／`escape`；`status.upgrade_page` 给出 `screen`、`rows`、`window`、`funds`；資金直接修改：`ui.click --text upgrade-funds`（主菜单 `intermission-funds`）、`ui.type <数字>`、`ui.key return` |
 | 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | SDL 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
 | 姓名页：字段、按钮、Tab／Enter／Esc、输入法组字 | SDL 鼠标与键盘 | `ui.click`、`ui.type`（`marked`／`unmark` 模拟组字与提交）、`ui.key` |
 | 战前确认页：双方概率、应对、动画、开始／返回；按键同游戏（Z/Enter、X/Esc、方向键/WASD、Q、E、K）及手柄 | SDL/RmlUi | `ui.click --id battle-confirm`、`battle-weapon`、`battle-counter`、`battle-evade`、`battle-defend`、`battle-spirits`、`battle-animation`、`battle-back`；`status.battle_page` 是游戏线程发布的快照 |
@@ -40,7 +42,7 @@
 
 | 方法 | 参数 | 说明 |
 | --- | --- | --- |
-| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、迷你关卡状态（`mini_stage.available/entering/active/ready`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
+| `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、场间主菜单（`intermission_page`）、改造画面（`upgrade_page`）、战前确认页（`battle_page`）、迷你关卡状态（`mini_stage.available/entering/active/ready`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
 | `keys` | `press`+`hold_ms` / `down` / `up` / `release_all` | 游戏键盘；键名 `z x space return up down left right q e i k j l w a s d escape f6 f7 f8`，组合用 `+`，如 `e+return` |
 | `buttons` | `buttons`、`vis` | N64 手柄层按键（`a b z start up down left right l r c_up c_down c_left c_right`），立即生效，不经过键盘层 |
 | `screenshot` | `path`、`overlays`、`window`、`timeout_ms` | 抓下一次呈现的 GPU 回读，已包含共享 UI。`window` 使用默认游戏窗口；不再提供独立设置窗口或 AppKit 合成。 |
@@ -77,7 +79,7 @@
 
 ## MCP 工具
 
-`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
+`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
 
 ## 与现有控制文件的关系
 
