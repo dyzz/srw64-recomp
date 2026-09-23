@@ -5492,7 +5492,7 @@
     {
       "key": "base:t00_00918",
       "source_sha256": "7aa256640fc8515820c442bf8c2745677ca5e3157dde14a4b529f79146ab07a7",
-      "target": "地形适应<END>",
+      "target": "地形<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26009,7 +26009,7 @@
     {
       "key": "base:t00_04086",
       "source_sha256": "7aa256640fc8515820c442bf8c2745677ca5e3157dde14a4b529f79146ab07a7",
-      "target": "地形适应<END>",
+      "target": "地形<END>",
       "review_status": "draft",
       "origin": "terms"
     },
