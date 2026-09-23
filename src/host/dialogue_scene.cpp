@@ -133,11 +133,9 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
             focused?105./255:.43,focused?191./255:.57,focused?1:.65,"speaker");
         const double grey=box.active?1:123./255;
         paint.text(box.layout,box.x,box.y,177,35,page.lines,box.revealed,grey,grey,grey,"body");
-        if(focused) {
-            if(box.layout.pages.size()>1)paint.label(utf16(std::to_string(box.page+1)+"/"+
-                std::to_string(box.layout.pages.size())),box.x+92,box.y-23,5,22,.65,.84,.96,"page_number");
-            if(frame.advance.visible && box.event==frame.reading_event)paint.progress(box,frame.advance);
-        }
+        // No page counter: a long translation simply continues on the next A,
+        // like the original's own pages.
+        if(focused && frame.advance.visible && box.event==frame.reading_event)paint.progress(box,frame.advance);
     }
     // A guest confirmation can leave both panels inactive before the next
     // speaker/STOP fragment arrives. Keep the shared controls visible for the
