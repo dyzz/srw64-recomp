@@ -84,8 +84,7 @@ void hide(const char* reason) {
     active=false;owning=false;pending.clear();current["visible"]=false;record(reason);
 }
 std::string text(const uint8_t* ram,uint16_t id){return dialogue::ui_text(ram,id);}
-// 800A6104(1, rank) for unit and pilot ranks: 1 'D', 2 'C', 3 'B', 4 'A', else '-'
-// (weapon ranks are stored one higher; see upgrade_page.cpp).
+// 800A6104(1, rank): 1 'D', 2 'C', 3 'B', 4 'A', else '-' (units, pilots and weapons alike).
 char terrain_letter(unsigned rank){return rank==1?'D':rank==2?'C':rank==3?'B':rank==4?'A':'-';}
 uint32_t pilot_at(unsigned index){return pilots+index*pilot_size;}
 
