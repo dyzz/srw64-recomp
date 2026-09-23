@@ -82,8 +82,7 @@ we cannot act. Please be patient just a little longer.”
 @17417 マナミ（本话主角）
 > 「……ふぅ、もういいわ。
 >  ……ローレンス」
-“...Oh, very well.
-...Lawrence.”
+“...Oh, very well. ...Lawrence.”
 
 @17418 ローレンス
 > 「はい」
