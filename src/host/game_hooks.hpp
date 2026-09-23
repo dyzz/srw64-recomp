@@ -50,6 +50,10 @@ struct SRW64GameHooks {
     bool (*swap_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*swap_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
     void (*swap_frame)(uint8_t*){};
+    // データセーブ: screens 1 (medium choice) and 9 (slots, overwrite window, pak messages).
+    bool (*save_build)(uint8_t*, recomp_context*, unsigned screen){};
+    bool (*save_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
+    void (*save_frame)(uint8_t*){};
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};

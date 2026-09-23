@@ -240,6 +240,10 @@
     "ability_pilot_hint": "Q / E 上一位／下一位   ·   Esc / X 返回",
     "swap_list_hint": "↑↓ 选择   ·   ←→ 翻页   ·   Enter / Z 确定   ·   Esc / X 返回",
     "swap_confirm_hint": "↑↓ 是／否   ·   Enter / Z 确定   ·   Esc / X 返回",
+    "save_choice_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   Esc / X 返回",
+    "save_slots_hint": "↑↓ 存档栏   ·   Enter / Z 保存   ·   Esc / X 返回",
+    "save_confirm_hint": "↑↓ 是／否   ·   Enter / Z 确定   ·   Esc / X 返回",
+    "save_message_hint": "Enter / Z 重新检查   ·   Esc / X 返回",
     "funds_edit_hint": "输入新的资金数字   ·   Enter 写入   ·   Esc 取消"
   },
   "entries": [

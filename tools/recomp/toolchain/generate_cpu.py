@@ -103,6 +103,11 @@ NATIVE_HOOKS = {
     "load_0008F4B0_func_801D2378": "srw64_original_ability_pilot_list_step",
     "load_0008F4B0_func_801D2480": "srw64_original_ability_pilot_open",
     "load_0008F4B0_func_801D24C8": "srw64_original_ability_pilot_step",
+    # データセーブ screens 1 / 9 (save_page.cpp).
+    "load_0008F4B0_func_801CEA30": "srw64_original_save_choice_open",
+    "load_0008F4B0_func_801CEABC": "srw64_original_save_choice_step",
+    "load_0008F4B0_func_801CECE8": "srw64_original_save_slots_open",
+    "load_0008F4B0_func_801CEEF8": "srw64_original_save_slots_step",
     # のりかえ screens 6 / 16 / 17 / 20 / 21 (swap_page.cpp).
     "load_0008F4B0_func_801D25A4": "srw64_original_swap_pilots_open",
     "load_0008F4B0_func_801D263C": "srw64_original_swap_pilots_step",

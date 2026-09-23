@@ -13,6 +13,7 @@
 #include "parts_page.hpp"
 #include "ability_page.hpp"
 #include "swap_page.hpp"
+#include "save_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -56,11 +57,11 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
-json intermission_request,upgrade_request,parts_request,ability_request,swap_request;
+json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
 std::string funds_editing;
-Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{},* swap_doc{};
-std::string upgrade_stamp,parts_stamp,ability_stamp,swap_stamp;
+Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{},* swap_doc{},* save_doc{};
+std::string upgrade_stamp,parts_stamp,ability_stamp,swap_stamp,save_stamp;
 Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
@@ -838,7 +839,7 @@ void swap_sync() {
         if(fairy && next.value("mode",0u)) {
             const auto& target_row=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
             body+="<div class='im-shade'></div>"+box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(target_row.value("name",std::string()))+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",11.f,"swap-window")+
-                yes_no("swap",next.value("window_cursor",0u),221,139,251,163,12);
+                yes_no("swap",next.value("window_cursor",0u),221,122,251,163,20);
             body+=hint("swap_confirm_hint");
         } else body+=hint("swap_list_hint");
     } else if(screen=="confirm") {
@@ -867,6 +868,97 @@ void swap_sync() {
     }
     body+="</div>";
     swap_doc=document(body,true);swap_doc->SetClass("modal",false);
+}
+
+// データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
+// and the two-slot page (0x73) with the overwrite window (0x74) and the Controller Pak
+// message box (0x8C), at the original positions.
+void save_sync() {
+    const auto next=save_page::state();save_request=next;
+    if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    if(save_doc && save_stamp==stamp)return;
+    document_close(save_doc);save_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
+    const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("--");};
+    const auto hint=[&](const char* key){return "<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(key)+"</div>";};
+    const auto art_img=[&](const json& owner,float size){
+        if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
+        const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
+        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+    };
+    const auto yes_no=[&](unsigned cursor,float x0,float y0,float x1,float y1,float row){
+        return box(x0,y0,x1,y1,std::string("<button id='save-yes' class='")+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='save-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"save-choice");
+    };
+    const auto multiline=[&](const std::string& text){std::string out;for(const char c:text)out+=c=='\n'?std::string("<br/>"):escape(std::string(1,c));return out;};
+    const std::string screen=next.value("screen",std::string());
+    const std::string media[2]={label_of("rom"),label_of("pak")};
+    std::string body="<div class='im-root' id='save' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="choice") {
+        const unsigned cursor=next.value("cursor",0u);
+        std::string items;
+        for(unsigned n=0;n<2;++n)
+            items+="<button id='save:"+std::to_string(n)+"' class='im-center "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+"; text-align:center;'>"+escape(media[n])+"</button>";
+        body+=box(117,61,203,99,items,std::min(fit(media[0],80),fit(media[1],80)),"save-media");
+        const std::string message=media[cursor]+" "+label_of("save_to");
+        body+=box(85,125,235,147,at(0,3,escape(message),"im-center",fit(message,146),150),11.f,"save-message");
+        if(next.value("waiting",false))
+            body+=box(101,109,219,131,at(0,3,escape(label_of("checking")),"im-center",fit(label_of("checking"),114),118),11.f,"save-checking");
+        body+=hint(next.value("waiting",false)?"save_message_hint":"save_choice_hint");
+    } else if(screen=="slots") {
+        const unsigned cursor=next.value("cursor",0u),mode=next.value("mode",0u),medium=next.value("medium",0u);
+        body+=box(117,21,203,43,at(0,3,escape(media[medium]),"im-center",fit(media[medium],80),86),11.f,"save-title");
+        const auto& slots=next.at("slots");
+        for(unsigned n=0;n<slots.size();++n) {
+            const auto& s=slots[n];const float y0=69+80*n;const bool used=s.value("used",false);
+            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",11.f,"save-face:"+std::to_string(n));
+            std::string rows="<button id='save:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
+                span(label_of("slot")+std::to_string(n+1),68,"",fit(label_of("slot")+std::to_string(n+1),66))+
+                (used?span(s.value("name",std::string()),90,"",fit(s.value("name",std::string()),86))+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(s.value("level",json())),14,"im-right"):std::string())+"</button>";
+            if(used) {
+                // 第  話 carries the number in its blanks, as the original's %2d at x=104.
+                std::string episode=label_of("episode");const std::string count=number(s.value("episode",json()));
+                if(const auto blank=episode.find("  ");blank!=std::string::npos)episode.replace(blank,2,count.size()>1?count:" "+count);
+                else if(const auto one=episode.find(' ');one!=std::string::npos)episode.replace(one,1,count);
+                else episode+=count;
+                const std::string title=s.value("title",std::string())+" "+label_of("clear");
+                rows+=at(3,20,"<span class='im-dim'>"+escape(episode.substr(0,episode.find(count)))+"</span>"+escape(count)+"<span class='im-dim'>"+escape(episode.substr(episode.find(count)+count.size()))+"</span>","",fit(episode,60))+
+                    at(2,37,escape(title),"",fit(title,204),204)+
+                    at(3,54,escape(label_of("turns")),"im-dim",fit(label_of("turns"),54))+at(58,54,number(s.value("turns",json())),"im-right",0,24)+
+                    at(104,54,escape(label_of("funds")),"im-dim",fit(label_of("funds"),38))+at(144,54,number(s.value("funds",json())),"im-right",0,62);
+            }
+            body+=box(87,y0,299,y0+70,rows,11.f,"save-slot:"+std::to_string(n));
+        }
+        if(mode==1) {
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(label_of("overwrite")),"",fit(label_of("overwrite"),208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),11.f,"save-window")+
+                yes_no(next.value("window_cursor",0u),221,122,251,163,20);
+        } else if(mode==2) {
+            // Texts the original placed on one row (status 7 splits lines in two) are joined.
+            std::vector<std::pair<int,std::pair<int,std::string>>> rows;
+            for(const auto& l:next.value("message",json::array())) {
+                auto same=std::find_if(rows.begin(),rows.end(),[&](const auto& r){return r.first==l.value("y",0);});
+                if(same==rows.end())rows.push_back({l.value("y",0),{l.value("x",0),l.value("text",std::string())}});
+                else same->second.second+=l.value("text",std::string());
+            }
+            std::string lines;
+            for(const auto& [y,row]:rows)
+                lines+="<div style='position:absolute; left:"+px(row.first-29)+"; top:"+px(y-77)+"; line-height:"+px(15)+"; white-space:nowrap;'>"+multiline(row.second)+"</div>";
+            body+="<div class='im-shade'></div>"+box(29,77,291,179,lines,9.f,"save-pak-message");
+        }
+        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":"save_slots_hint");
+    }
+    body+="</div>";
+    save_doc=document(body,true);save_doc->SetClass("modal",false);
 }
 
 // ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
@@ -1077,6 +1169,19 @@ void choose(const std::string& id) {
         }
         return;
     }
+    if(id.starts_with("save") && save_request.value("visible",false) && !settings_open) {
+        const auto serial=save_request.at("serial").get<uint64_t>();const auto screen=save_request.value("screen",std::string());
+        const unsigned mode=save_request.value("mode",0u);
+        if(screen=="choice" && save_request.value("waiting",false))return;
+        if(mode==2)return;
+        if(id=="save-yes")save_page::answer(serial,mode==1 && save_request.value("window_cursor",0u)==0?"choose":"move:0");
+        else if(id=="save-no")save_page::answer(serial,mode==1 && save_request.value("window_cursor",0u)==1?"cancel":"move:1");
+        else if(id.starts_with("save:") && mode==0) {
+            const unsigned n=unsigned(std::atoi(id.c_str()+5));
+            save_page::answer(serial,n==save_request.value("cursor",0u)?"choose":"move:"+std::to_string(n));
+        }
+        return;
+    }
     if(id.starts_with("ability:") && ability_request.value("visible",false) && !settings_open) {
         const auto serial=ability_request.at("serial").get<uint64_t>();const auto screen=ability_request.value("screen",std::string());
         const unsigned n=unsigned(std::atoi(id.c_str()+8));
@@ -1208,7 +1313,7 @@ void sync() {
         if(pad_pressed)battle_buttons(pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
     settings_sync();notices_sync();context->Update();input.update_rectangle();
@@ -1220,6 +1325,7 @@ void sync() {
     parts_page::window_claim_input(parts_request.value("visible",false) || (parts_page::owns_input() && held()));
     ability_page::window_claim_input(ability_request.value("visible",false) || (ability_page::owns_input() && held()));
     swap_page::window_claim_input(swap_request.value("visible",false) || (swap_page::owns_input() && held()));
+    save_page::window_claim_input(save_request.value("visible",false) || (save_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -1238,7 +1344,7 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
@@ -1328,6 +1434,23 @@ bool dispatch(SDL_Event& event) {
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){if(count)swap_page::answer(serial,"choose");return true;}
             if(k==SDLK_ESCAPE || k==SDLK_x){swap_page::answer(serial,"back");return true;}
         }
+    } else if(save_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=save_request.at("serial").get<uint64_t>();
+            const auto screen=save_request.value("screen",std::string());const unsigned mode=save_request.value("mode",0u);
+            if(screen=="choice" && save_request.value("waiting",false))return true;
+            if(mode==2){
+                if(event.key.repeat)return true;
+                if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){save_page::answer(serial,"choose");return true;}
+                if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,"back");return true;}
+                return true;
+            }
+            const unsigned at=save_request.value(mode==1?"window_cursor":"cursor",0u);
+            if(k==SDLK_UP || k==SDLK_DOWN){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){save_page::answer(serial,"choose");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,mode==1?"cancel":"back");return true;}
+        }
     } else if(ability_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
             const auto k=event.key.keysym.sym;const auto serial=ability_request.at("serial").get<uint64_t>();
@@ -1411,7 +1534,7 @@ bool dispatch(SDL_Event& event) {
         // Window dimensions are in points; sync() supplies drawable pixels.
         if(event.window.event==SDL_WINDOWEVENT_LEAVE)context->ProcessMouseLeave();
     } else consumed=!RmlSDL::InputEventHandler(context,scaled);
-    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) || ability_request.value("visible",false) || swap_request.value("visible",false);
+    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) || ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false);
 }
 json describe(Rml::Element* el,unsigned depth=0) {
     const auto offset=el->GetAbsoluteOffset();const auto size=el->GetBox().GetSize();
