@@ -92,6 +92,17 @@ NATIVE_HOOKS = {
     "load_0008F4B0_func_801D4C94": "srw64_original_parts_slots_step",
     "load_0008F4B0_func_801D5168": "srw64_original_parts_holders_open",
     "load_0008F4B0_func_801D51EC": "srw64_original_parts_holders_step",
+    # ユニット能力／パイロット能力 screens 4 / 13 / 14 / 5 / 15 (ability_page.cpp).
+    "load_0008F4B0_func_801D14BC": "srw64_original_ability_unit_list_open",
+    "load_0008F4B0_func_801D1554": "srw64_original_ability_unit_list_step",
+    "load_0008F4B0_func_801D16D8": "srw64_original_ability_unit_open",
+    "load_0008F4B0_func_801D2030": "srw64_original_ability_unit_step",
+    "load_0008F4B0_func_801D2144": "srw64_original_ability_weapons_open",
+    "load_0008F4B0_func_801D21F8": "srw64_original_ability_weapons_step",
+    "load_0008F4B0_func_801D22E0": "srw64_original_ability_pilot_list_open",
+    "load_0008F4B0_func_801D2378": "srw64_original_ability_pilot_list_step",
+    "load_0008F4B0_func_801D2480": "srw64_original_ability_pilot_open",
+    "load_0008F4B0_func_801D24C8": "srw64_original_ability_pilot_step",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }

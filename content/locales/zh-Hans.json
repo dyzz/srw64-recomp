@@ -234,6 +234,10 @@
     "parts_holders_hint": "↑↓ 选择   ·   Enter / Z 装备   ·   Esc / X 返回",
     "parts_free": "（未装备）",
     "parts_equipped_count": "装备中 {n} / 持有 {m}",
+    "ability_list_hint": "↑↓ 选择   ·   ←→ 翻页   ·   Enter / Z 查看能力   ·   Esc / X 返回",
+    "ability_unit_hint": "Q / E 上一台／下一台   ·   Enter / Z 武器一览   ·   Esc / X 返回",
+    "ability_weapons_hint": "↑↓ 选择武器   ·   ←→ 翻页   ·   Esc / X 返回",
+    "ability_pilot_hint": "Q / E 上一位／下一位   ·   Esc / X 返回",
     "funds_edit_hint": "输入新的资金数字   ·   Enter 写入   ·   Esc 取消"
   },
   "entries": [

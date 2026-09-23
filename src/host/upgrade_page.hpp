@@ -18,4 +18,8 @@ void answer(uint64_t serial,const std::string& action);
 bool owns_input();
 void window_claim_input(bool);
 uint16_t input(uint16_t buttons);
+// Shared with the ability pages: one weapon row of `unit` (index into its weapon
+// list) and the 14 weapon column labels, as the weapon screens show them.
+nlohmann::json weapon_row_json(const uint8_t* ram,uint32_t unit,unsigned index);
+nlohmann::json weapon_labels_json(const uint8_t* ram);
 }

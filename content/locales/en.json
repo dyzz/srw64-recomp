@@ -234,6 +234,10 @@
     "parts_holders_hint": "↑↓ Select   ·   Enter / Z: Equip   ·   Esc / X: Back",
     "parts_free": "(not equipped)",
     "parts_equipped_count": "Equipped {n} / Owned {m}",
+    "ability_list_hint": "↑↓ Select   ·   ←→ Page   ·   Enter / Z: View   ·   Esc / X: Back",
+    "ability_unit_hint": "Q / E: Previous / next unit   ·   Enter / Z: Weapons   ·   Esc / X: Back",
+    "ability_weapons_hint": "↑↓ Select a weapon   ·   ←→ Page   ·   Esc / X: Back",
+    "ability_pilot_hint": "Q / E: Previous / next pilot   ·   Esc / X: Back",
     "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel"
   },
   "entries": [

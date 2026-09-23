@@ -11,6 +11,7 @@
 #include "intermission_page.hpp"
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
+#include "ability_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -54,11 +55,11 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
-json intermission_request,upgrade_request,parts_request;
+json intermission_request,upgrade_request,parts_request,ability_request;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
 std::string funds_editing;
-Rml::ElementDocument* upgrade_doc{},* parts_doc{};
-std::string upgrade_stamp,parts_stamp;
+Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{};
+std::string upgrade_stamp,parts_stamp,ability_stamp;
 Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
@@ -204,7 +205,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
 .im-right {text-align:right;} .im-dim {color:#9eafc3;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
-.im-up {color:#7dff8a;} .im-down {color:#ff8d8d;} .im-panel button.dim {background-color:#00c80055;}
+.im-up {color:#7dff8a;} .im-down {color:#ff8d8d;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
 
@@ -717,6 +718,138 @@ void parts_sync() {
     body+="</div>";
     parts_doc=document(body,true);parts_doc->SetClass("modal",false);
 }
+
+// ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
+// 0x6D / 0x6E), the unit page (0x79), its weapon list (0x7A) and the pilot page (0x7B).
+void ability_sync() {
+    const auto next=ability_page::state();ability_request=next;
+    if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    if(ability_doc && ability_stamp==stamp)return;
+    document_close(ability_doc);ability_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
+    const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
+    const auto dashes=[](const std::string& s){return s.empty()?std::string("--------"):s;};
+    const auto hint=[&](const char* key){return "<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(key)+"</div>";};
+    const auto art_img=[&](const json& owner,float size){
+        if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
+        const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
+        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+    };
+    const std::string screen=next.value("screen",std::string());
+    std::string body="<div class='im-root' id='ability' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="units" || screen=="pilots") {
+        const bool pilots=screen=="pilots";
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='ability:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
+                (pilots?span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
+                       :span(r.value("name",std::string()),126)+span(dashes(r.value("pilot",std::string())),80)+span(label_of("hp"),24,"im-dim")+span(number(r.value("hp",json())),40,"im-right"))+"</button>";
+        }
+        const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
+        const auto& sub=next.value("sub",json::object());
+        body+=box(21,21,299,219,
+            "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of(pilots?"pilot_list":"unit_list"))+"</span></div>"
+            "<div id='ability-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+                span(label_of("sub"),40,"im-dim",fit(label_of("sub"),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
+            11.5f,"ability-panel");
+        body+=hint("ability_list_hint");
+    } else if(screen=="unit") {
+        const auto& unit=next.at("unit");
+        std::string parts;
+        for(const auto& p:next.value("parts",json::array()))parts+="<div style='padding:0 "+px(3)+"; line-height:"+px(16)+";'>"+escape(p.get<std::string>())+"</div>";
+        std::string types;
+        for(const auto& tname:next.value("types",json::array()))types+=escape(tname.get<std::string>());
+        std::string abilities;
+        for(const auto& a:next.value("abilities",json::array()))abilities+="<div style='padding:0 "+px(3)+"; line-height:"+px(16)+";'>"+escape(a.get<std::string>())+"</div>";
+        const long long hp=next.value("hp",0ll),hp_max=std::max(1ll,next.value("hp_max",1ll)),en=next.value("en",0ll),en_max=std::max(1ll,next.value("en_max",1ll));
+        const std::string terrain=next.value("terrain",std::string("----"));
+        const auto stat=[&](const char* key,const json& v,float y){return at(3,y,"<span class='im-dim'>"+escape(label_of(key))+"</span>")+at(60,y,number(v),"im-right",0,40);};
+        body+=box(21,10,175,35,"<div style='padding:0 "+px(8)+"; line-height:"+px(24)+"; font-size:"+px(fit(unit.value("name",std::string()),140))+";'>"+escape(unit.value("name",std::string()))+"</div>",12.f,"ability-name")+
+            box(21,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("size"),34,"im-dim")+span(next.value("size",std::string()),22)+span(label_of("repair"),48,"im-dim",fit(label_of("repair"),46),4)+span(number(next.value("repair",json())),40,"im-right")+"</div>",11.f,"ability-size")+
+            box(21,59,175,131,"<div style='margin-top:"+px(3)+";'>"+parts+"</div>",11.f,"ability-parts")+
+            box(21,132,155,163,at(6,2,"<span style='color:#ffd75e;'>"+escape(label_of("hp"))+"</span>","",9)+at(36,2,std::to_string(hp)+"/ "+std::to_string(hp_max),"",10)+
+                "<div class='im-bar-back' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89)+";'></div><div class='im-bar' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89.f*float(hp)/float(hp_max))+";'></div>"+
+                at(6,16,"<span style='color:#ffd75e;'>"+escape(label_of("en"))+"</span>","",9)+at(36,16,std::to_string(en)+"/ "+std::to_string(en_max),"",10)+
+                "<div class='im-bar-back' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28)+";'></div><div class='im-bar' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28.f*float(en)/float(en_max))+";'></div>",11.f,"ability-gauges")+
+            box(21,164,155,219,at(3,3,"<span class='im-dim'>"+escape(label_of("abilities"))+"</span>","",fit(label_of("abilities"),76))+at(83,3,escape(next.value("shield",std::string())),"",10)+"<div style='margin-top:"+px(22)+";'>"+abilities+"</div>",10.5f,"ability-abilities")+
+            box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),11.f,"ability-stats")+
+            box(260,132,299,219,at(3,4,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),34))+at(3,20,"<span class='im-dim'>"+escape(label_of("air"))+"</span>")+at(24,20,terrain.substr(0,1))+at(3,36,"<span class='im-dim'>"+escape(label_of("land"))+"</span>")+at(24,36,terrain.substr(1,1))+
+                at(3,52,"<span class='im-dim'>"+escape(label_of("sea"))+"</span>")+at(24,52,terrain.substr(2,1))+at(3,68,"<span class='im-dim'>"+escape(label_of("space"))+"</span>")+at(24,68,terrain.substr(3,1)),11.f,"ability-terrain")+
+            box(176,8,302,132,art_img(unit,118),12.f,"ability-art","display:flex; align-items:center; justify-content:center;");
+        body+=hint("ability_unit_hint");
+    } else if(screen=="weapons") {
+        const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
+        const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("0");};
+        const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"-"+std::to_string(b);};
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& unit=next.at("unit");
+        std::string list="<div class='im-row im-dim' style='height:"+px(18)+"; line-height:"+px(18)+"; padding:0 "+px(2)+";'>"+span(wl("weapon"),146,"",0,74)+span(wl("power"),44,"im-right")+span(wl("range"),40,"im-right")+span(wl("hit"),40,"im-right")+"</div>";
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='ability:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(2)+";'>"+span(r.value("name",std::string()),150)+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
+        }
+        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+        const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0))+"/"+std::to_string(sel.value("ammo_max",0)):std::string("--");
+        const std::string terrain=sel.value("terrain",std::string("----"));
+        const auto paren=[](const json& need,int have){return need.is_number()?std::to_string(need.get<int>())+"("+std::to_string(have)+")":std::string("---");};
+        const bool low_morale=sel.value("morale",0)>unit.value("morale",-1) && unit.value("morale",-1)>=0,low_en=sel.value("en",0)>unit.value("en",0);
+        std::string details="<div class='im-row' style='position:absolute; left:0; top:"+px(137)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+";'>"+
+            span(wl("ammo"),32,"im-dim")+span(ammo,44)+span(wl("terrain"),36,"im-dim",0,4)+
+            span(wl("air"),16,"im-dim",0,4)+span(terrain.substr(0,1),16)+span(wl("land"),16,"im-dim")+span(terrain.substr(1,1),16)+span(wl("sea"),16,"im-dim")+span(terrain.substr(2,1),16)+span(wl("space"),16,"im-dim")+span(terrain.substr(3,1),16)+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(161)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+            span(wl("morale"),68,"im-dim")+span(paren(sel.value("morale",json()),unit.value("morale",-1)),70,low_morale?"im-down":"")+span(wl("skill"),68,"im-dim",0,6)+span(sel.value("skill_name",std::string("---")),60)+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(178)+"; width:100%; height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+            span(wl("en"),68,"im-dim")+span(paren(sel.value("en",json()),unit.value("en",-1)),70,low_en?"im-down":"")+span(wl("critical"),90,"im-dim",fit(wl("critical"),88),6)+span(signed_number(sel.value("critical",json())),38)+"</div>";
+        body+=box(21,21,299,219,list+"<div style='position:absolute; left:0; top:"+px(135)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"+details,10.5f,"ability-panel");
+        body+=hint("ability_weapons_hint");
+    } else if(screen=="pilot") {
+        // Layout 0x7B: portrait, the hint bar, the name block, six stats, spirits,
+        // skills and the terrain grid, on the original rectangles.
+        const auto& p=next.at("pilot");const auto& unit=next.value("unit",json::object());const auto& stats=next.at("stats");const auto& over=next.value("over",json::object());
+        const bool hidden=p.value("hidden",false);const int mobility=next.value("mobility",-1);
+        const auto stat_value=[&](const char* key){return hidden?std::string("---"):number(stats.value(key,json()));};
+        const auto plus_value=[&](const char* key){return hidden?std::string("---"):mobility<0?number(stats.value(key,json())):number(stats.value(key,json()))+"+ "+std::to_string(mobility);};
+        const auto cls=[&](const char* key){return std::string("im-right ")+(over.value(key,false)?"im-down":"");};
+        const float spirit_at[6][2]={{136,144},{192,144},{24,162},{80,162},{136,162},{192,162}},skill_at[3][2]={{96,184},{96,202},{168,202}};
+        std::string spirits;
+        const auto& sp=next.value("spirits",json::array());
+        for(unsigned n=0;n<6;++n)spirits+=at(spirit_at[n][0]-18,spirit_at[n][1]-138,n<sp.size()?escape(sp[n].get<std::string>()):escape(label_of("unknown")),"",10.5f);
+        std::string skills;
+        const auto& sk=next.value("skills",json::array());
+        for(unsigned n=0;n<sk.size() && n<3;++n)skills+=at(skill_at[n][0]-18,skill_at[n][1]-178,escape(sk[n].get<std::string>()),"",10.5f);
+        const std::string terrain=next.value("terrain",std::string("----"));
+        const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
+        body+=box(18,10,110,101,art_img(p,88),12.f,"ability-art","display:flex; align-items:center; justify-content:center;")+
+            box(111,10,299,35,"<div style='padding:0 "+px(6)+"; line-height:"+px(24)+"; text-align:right; font-size:"+px(fit(label_of("pilot"),176))+";' class='im-dim'>"+escape(label_of("pilot"))+"</div>",10.f,"ability-title")+
+            box(111,36,299,101,at(9,4,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),170))+
+                at(17,28,dim("morale"),"",10)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"",10)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
+                at(129,28,dim("next"),"",10)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
+                at(17,46,dim("sp"),"",10)+at(90,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,60),11.f,"ability-name")+
+            box(18,102,299,137,at(6,4,dim("melee"))+at(40,4,stat_value("melee"),"im-right",0,32)+at(94,4,dim("evade"))+at(126,4,plus_value("evade"),cls("evade"),0,70)+at(214,4,dim("reaction"))+at(248,4,stat_value("reaction"),"im-right",0,32)+
+                at(6,20,dim("ranged"))+at(40,20,stat_value("ranged"),"im-right",0,32)+at(94,20,dim("hit"))+at(126,20,plus_value("hit"),cls("hit"),0,70)+at(214,20,dim("skill"))+at(248,20,stat_value("skill"),"im-right",0,32),11.f,"ability-stats")+
+            box(18,138,230,177,at(6,6,dim("spirits"),"",fit(label_of("spirits"),86))+spirits,11.f,"ability-spirits")+
+            box(18,178,230,219,at(6,6,dim("skills"),"",fit(label_of("skills"),70))+skills,11.f,"ability-skills")+
+            box(231,138,299,167,"<div style='text-align:center; line-height:"+px(28)+";' class='im-dim'>"+escape(label_of("terrain"))+"</div>",11.f,"ability-terrain-title")+
+            box(231,168,264,193,at(3,4,dim("air"))+at(18,4,terrain.substr(0,1)),11.f)+box(265,168,299,193,at(3,4,dim("land"))+at(18,4,terrain.substr(1,1)),11.f)+
+            box(231,194,264,219,at(3,4,dim("sea"))+at(18,4,terrain.substr(2,1)),11.f)+box(265,194,299,219,at(3,4,dim("space"))+at(18,4,terrain.substr(3,1)),11.f);
+        body+=hint("ability_pilot_hint");
+    }
+    body+="</div>";
+    ability_doc=document(body,true);ability_doc->SetClass("modal",false);
+}
 void mini_sync() {
     const auto state=mini_stage::snapshot();
     const bool entering=state.value("entering",false);
@@ -801,6 +934,13 @@ void choose(const std::string& id) {
             if(n==upgrade_request.value("cursor",0u))upgrade_page::answer(serial,list?"choose":"choose:"+std::to_string(n));
             else upgrade_page::answer(serial,"move:"+std::to_string(n));
         } else if(id=="upgrade-confirm" || id=="upgrade-cancel" || id=="upgrade-dismiss")upgrade_page::answer(serial,id.substr(8));
+        return;
+    }
+    if(id.starts_with("ability:") && ability_request.value("visible",false) && !settings_open) {
+        const auto serial=ability_request.at("serial").get<uint64_t>();const auto screen=ability_request.value("screen",std::string());
+        const unsigned n=unsigned(std::atoi(id.c_str()+8));
+        if(n==ability_request.value("cursor",0u))ability_page::answer(serial,screen=="weapons"?"back":"choose");
+        else ability_page::answer(serial,"move:"+std::to_string(n));
         return;
     }
     if(id.starts_with("parts") && parts_request.value("visible",false) && !settings_open) {
@@ -927,7 +1067,7 @@ void sync() {
         if(pad_pressed)battle_buttons(pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
     settings_sync();notices_sync();context->Update();input.update_rectangle();
@@ -937,6 +1077,7 @@ void sync() {
     intermission_page::window_claim_input(intermission_request.value("visible",false) || (intermission_page::owns_input() && held()));
     upgrade_page::window_claim_input(upgrade_request.value("visible",false) || (upgrade_page::owns_input() && held()));
     parts_page::window_claim_input(parts_request.value("visible",false) || (parts_page::owns_input() && held()));
+    ability_page::window_claim_input(ability_request.value("visible",false) || (ability_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -955,7 +1096,7 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
@@ -1022,6 +1163,26 @@ bool dispatch(SDL_Event& event) {
             }
             if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":window.empty()?"back":"dismiss");return true;}
         }
+    } else if(ability_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=ability_request.at("serial").get<uint64_t>();
+            const auto screen=ability_request.value("screen",std::string());
+            const bool list=screen=="units" || screen=="pilots" || screen=="weapons";
+            if(list){
+                const unsigned count=unsigned(ability_request.at("rows").size()),at=ability_request.value("cursor",0u);
+                if(count && (k==SDLK_UP || k==SDLK_DOWN)){ability_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+                if(k==SDLK_LEFT || k==SDLK_RIGHT){
+                    const unsigned pages=ability_request.value("pages",1u),page=ability_request.value("page",0u);
+                    if(pages>1)ability_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_LEFT?pages-1:1))%pages));return true;
+                }
+            }
+            if(event.key.repeat)return true;
+            // The unit and pilot pages: L / R (Q / E, also the arrows) step through the list.
+            if(!list && (k==SDLK_q || k==SDLK_LEFT)){ability_page::answer(serial,"prev");return true;}
+            if(!list && (k==SDLK_e || k==SDLK_RIGHT)){ability_page::answer(serial,"next");return true;}
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){if(screen!="weapons" && screen!="pilot")ability_page::answer(serial,"choose");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){ability_page::answer(serial,"back");return true;}
+        }
     } else if(parts_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
             const auto k=event.key.keysym.sym;const auto serial=parts_request.at("serial").get<uint64_t>();
@@ -1085,7 +1246,7 @@ bool dispatch(SDL_Event& event) {
         // Window dimensions are in points; sync() supplies drawable pixels.
         if(event.window.event==SDL_WINDOWEVENT_LEAVE)context->ProcessMouseLeave();
     } else consumed=!RmlSDL::InputEventHandler(context,scaled);
-    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false);
+    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) || ability_request.value("visible",false);
 }
 json describe(Rml::Element* el,unsigned depth=0) {
     const auto offset=el->GetAbsoluteOffset();const auto size=el->GetBox().GetSize();
@@ -1123,8 +1284,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=mini_doc=nullptr;}renderer.reset();}
-void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);battle_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=mini_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
@@ -1202,7 +1363,7 @@ nlohmann::json tree(const nlohmann::json&){return ui::tree();}
 nlohmann::json summary(){
     auto lock=ui::lock_ui();
     nlohmann::json result={{"backend","SDL2/RmlUi"},{"ready",ui::context!=nullptr},{"focus",nullptr}};
-    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
+    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"ability",ability_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
     if(ui::window)result["active"]=bool(SDL_GetWindowFlags(ui::window)&SDL_WINDOW_INPUT_FOCUS);
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
     return result;
