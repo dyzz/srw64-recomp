@@ -47,7 +47,7 @@
 
 ## 2. 接管方式
 
-源码：[`upgrade_page.cpp`](../../src/host/upgrade_page.cpp)（游戏线程适配器）、[`frontend.cpp`](../../src/native/ui/frontend.cpp) 的 `upgrade_sync`（页面）、[`game_hooks.cpp`](../../src/host/game_hooks.cpp) 的包装。`SRW64_NATIVE_UPGRADE=0` 或不加载 profile 时保留原画面。
+源码：[`upgrade_page.cpp`](../../src/host/upgrade_page.cpp)（游戏线程适配器）、[`frontend.cpp`](../../src/native/ui/frontend.cpp) 的 `upgrade_sync`（页面）、[`game_hooks.cpp`](../../src/host/game_hooks.cpp) 的包装。设置页「场间画面」选原版时四个构建入口都交回原画面（`original_screens()`，同时关闭仍开着的页面）；`SRW64_NATIVE_UPGRADE=0` 或不加载 profile 时整次运行保留原画面。
 
 | 原函数 | 包装 |
 | --- | --- |
