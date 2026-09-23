@@ -237,19 +237,24 @@ in progress.
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. The internal resolution scales from 1× to 8×. |
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
-| Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
+| Gameplay | Optional rule corrections for original defects (ESP / Holy Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
 | Native screens | The pre-battle page (both sides, weapon modifiers, final hit, damage and critical rates, counter / evade / defend) and every intermission screen (main menu, unit and weapon upgrades, parts, unit and pilot abilities, pilot swap, data save, link) are RmlUi pages that keep the original composition and call the original routines to apply each choice. Three switches in Settings return the pre-battle page, the intermission screens and the name pages to the original screens. See the [pre-battle page](docs/native/native-battle-ui.md) and the [intermission menu](docs/native/native-intermission-menu.md). |
 | Link Battler | Choosing **リンク** in the intermission opens a native page instead of reading a Game Boy cartridge through the Transfer Pak: tick Gundam F91, GoShogun or Zambot 3, and the original link screen and special stage bring their pilots and machines into the team. See [Link Battler](docs/gameplay/link-battler.md). |
 | Settings | **Application menu → Settings…** (**⌘,**) opens the shared SDL/RmlUi settings page; **Esc** returns to the game. Rules and language are saved; image selection applies to the current session. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
 | Developer tools | ROM identity checks, resource and script extraction, data/story/model viewers, script injection and custom mini stages, native probes, and a [debug interface](docs/guide/debug-interface.md) with a command line and an MCP server that drives every game input and the native UI without manual key presses. |
 
-**Translation coverage:** Chinese and English each cover the same 153 draft
-records out of 51,174 extracted text records, plus all 99 native UI labels.
-No text records are marked reviewed yet. This count is an extraction denominator, not a
-claim that every menu or text renderer supports language switching. Original
-menus, battle labels, and baked-in text still have integration work remaining;
-full translation is planned after the current feature work.
+**Translation coverage:** Chinese and English each cover the same 4,767 draft
+records out of 51,174 extracted text records, plus all 244 native UI labels. Of
+these, 4,674 are the game's names, labels and system messages (units, pilots,
+weapons, spirits, skills, parts, stage titles, intermission text), kept as one
+term table per language ([data text localization](docs/native/localization-terms.md)),
+so the native intermission screens and the pre-battle page read in Chinese or
+English; the other 93 are stage-one dialogue. No record is marked reviewed yet.
+This count is an extraction denominator, not a claim that every menu or text
+renderer supports language switching: the original menus, battle labels and
+baked-in text still draw the Japanese glyphs, and story and battle dialogue are
+not translated yet.
 
 ### Getting started
 
@@ -349,10 +354,12 @@ GitHub Actions is disabled; build and validation commands run locally.
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
 | 开发工具 | ROM 身份校验、资源与脚本提取、数据／剧情／模型查看器、脚本注入与自制迷你关卡、原生运行探针，以及[调试接口](docs/guide/debug-interface.md)：命令行和 MCP 服务器可驱动全部游戏输入和原生界面，实机检查不需要人工按键。 |
 
-**翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 153 条草稿，
-另有全部 99 条原生 UI 文案；文本记录的已审校数量均为 0。
-该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换；原版菜单、
-战斗标签和图片内嵌文字仍有待接入。全量翻译排在当前的功能与游戏性工作之后。
+**翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 4,767 条草稿，另有全部
+244 条原生 UI 文案。其中 4,674 条是名称、标签与系统提示（机体、驾驶员、武器、精神、技能、
+部件、关卡名、场间画面文字），按语言各维护一份词条表（见[数据文本汉化](docs/native/localization-terms.md)），
+原生场间画面与战前确认页因此能以中文或英文显示；其余 93 条是第一话对白。文本记录的已审校数量均为 0。
+该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换：原版菜单、战斗标签和
+图片内嵌文字仍用日文字模绘制，剧情与战斗台词尚未翻译。
 
 ### 启动与检查
 
