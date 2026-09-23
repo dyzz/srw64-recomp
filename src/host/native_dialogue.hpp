@@ -1,6 +1,7 @@
 #pragma once
 #include "dialogue_model.hpp"
 #include "localization/catalog.hpp"
+#include "text/portable_text.hpp"
 #include "json/json.hpp"
 #include <array>
 #include <filesystem>
@@ -23,6 +24,8 @@ double body_size(unsigned setting);
 // minimum spacing, spread over the height, page ends ranked. stops are the
 // original's page breaks, which end a sentence; forced offsets start a page.
 Layout typeset_body(const std::u16string&, double size, std::vector<size_t> stops={}, std::vector<size_t> forced={});
+// The page rules typeset_body uses for a language.
+text::PageStyle body_style(const std::string& locale, std::vector<size_t> stops={}, std::vector<size_t> forced={});
 
 struct Box {
     bool visible{}, active{};

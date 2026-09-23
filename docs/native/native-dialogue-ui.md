@@ -32,6 +32,7 @@
 - 片段数以日文 ROM 记录为准（游戏实际执行的是它）。译文的 `---` 少于原文时，缺的确认放到最后一页；多出的只当普通断句。
 - 改字号时整条重排，当前页仍从同一个字开始。切换语言时整条换成另一语言，从原版当前片段的开头接着读。
 - 战斗台词不连排：仍按原版片段逐段替换显示，放不下时逐级缩小字号。
+- 与 Python 参考实现对照的用例在 `tests/data/dialogue-paging-cases.json`：30 条（真实台词的中英文，含不同字号和强制翻页）。每条带上排版规则用到的全部中间量（字素边界和宽度、合法断行位置、每个起点的整行），以及游戏排出的行距、行界、页界和压半宽的位置。输入在同目录的 `dialogue-paging-inputs.json`，由 `tests/dialogue_cpu/paging_cases.cpp` 生成；用 `--check` 重排比对，CMake 设了 `SRW64_TEST_FONT_DIR` 时作为 `dialogue-paging-cases` 测试运行。
 
 最新增加自动档位刻度、下一次推进进度和双框当前说话人标记，见[阅读提示与实机验证](native-reading-indicators.md)。
 

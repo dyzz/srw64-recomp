@@ -13,6 +13,7 @@
 #include <cmath>
 #include <fstream>
 #include <map>
+#include <set>
 #include <tuple>
 #include <mutex>
 #include <stdexcept>
@@ -467,6 +468,37 @@ TextLayout FontSet::layout(std::u16string text,double pixels,double width,std::s
     std::lock_guard lock(state_->mutex);
     Builder builder(*state_,*result,width);builder.prepare();builder.greedy();
     return TextLayout(std::move(result));
+}
+FontSet::PagingTrace FontSet::trace(std::u16string text,double pixels,double width,std::string locale,const PageStyle& style) const {
+    const auto paged=layout(text,pixels,width,locale,style);
+    auto data=std::make_shared<TextLayout::Data>();data->fonts=state_;
+    data->clusters=grapheme_ends(text);data->text=std::move(text);data->locale=std::move(locale);data->size=pixels;
+    PagingTrace result;
+    std::lock_guard lock(state_->mutex);
+    Builder builder(*state_,*data,width);builder.halve=style.halve_line_end;builder.prepare();
+    result.clusters=data->clusters;result.legal=builder.legal;
+    for(const auto& p:builder.paragraphs) {
+        for(size_t i=p.a;i<p.b;++i)result.advances.push_back(p.prefix.empty()?0:p.prefix[i-p.a+1]-p.prefix[i-p.a]);
+        if(p.b<builder.gs.size())result.advances.push_back(0);   // the newline
+    }
+    result.advances.resize(data->clusters.size());
+    // Every start the ranking may try: 0, legal breaks, forced page starts and
+    // the end of every line from those.
+    const size_t n=data->text.size();
+    std::set<size_t> starts{0},done;
+    for(auto at:builder.legal)if(at<n)starts.insert(at);
+    for(auto at:style.forced)if(at<n)starts.insert(at);
+    while(!starts.empty()) {
+        const size_t s=*starts.begin();starts.erase(starts.begin());
+        if(!done.insert(s).second)continue;
+        const auto& line=builder.line(s).line;
+        result.lines.push_back(line);
+        if(line.end<n && !done.count(line.end))starts.insert(line.end);
+    }
+    std::sort(result.lines.begin(),result.lines.end(),[](const TextLine& a,const TextLine& b){return a.start<b.start;});
+    result.lines_per_page=static_cast<size_t>(std::max(1.0,std::floor(style.height/(pixels*style.min_spacing)+1e-6)));
+    result.pitch=paged.line_height();
+    return result;
 }
 TextLayout FontSet::layout(std::u16string text,double pixels,double width,std::string locale,const PageStyle& style) const {
     require(bool(state_),"Moved-from font set");

@@ -32,6 +32,16 @@ if(SRW64_RT64_HEADERS)
     endforeach()
     add_test(NAME dialogue-reader COMMAND srw64-dialogue-reader-test)
     add_test(NAME dialogue-raster COMMAND srw64-dialogue-raster-test)
+    # The paging cases shared with the Python reference; they need the packaged fonts.
+    add_executable(srw64-paging-cases "${ROOT}/tests/dialogue_cpu/paging_cases.cpp"
+        "${ROOT}/src/native/localization/catalog.cpp")
+    target_link_libraries(srw64-paging-cases PRIVATE srw64_dialogue_cpu)
+    set(SRW64_TEST_FONT_DIR "" CACHE PATH "Packaged fonts (tools/content/prepare_fonts.py) for the paging cases")
+    if(SRW64_TEST_FONT_DIR)
+        add_test(NAME dialogue-paging-cases COMMAND srw64-paging-cases --check
+            "${ROOT}/tests/data/dialogue-paging-inputs.json" "${ROOT}/tests/data/dialogue-paging-cases.json")
+        set_tests_properties(dialogue-paging-cases PROPERTIES ENVIRONMENT "SRW64_FONT_DIR=${SRW64_TEST_FONT_DIR}")
+    endif()
 endif()
 
 set(SRW64_TEST_CJK_FONT "" CACHE FILEPATH "Optional explicit CJK test font")
