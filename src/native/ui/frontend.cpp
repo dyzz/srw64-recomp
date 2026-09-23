@@ -537,9 +537,9 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):std::string("--/--");
     const std::string terrain=sel.value("terrain",std::string("----"));
     const bool low_morale=sel.value("morale",0)>0 && unit.value("morale",-1)>=0 && sel.value("morale",0)>unit.value("morale",-1),low_en=sel.value("en",0)>0 && sel.value("en",0)>unit.value("en",0);
-    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim")+span(v,x1-x0-24,"im-right")+"</div>");};
+    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim",std::min(10.5f,15.f/std::max(1.f,text_units(wl(key)))))+span(v,x1-x0-24,"im-right")+"</div>");};
     body+=cell(21,100,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl("ammo"),30,"im-dim")+span(ammo,42,"im-right")+"</div>")+
-        cell(100,140,160,180,"<div style='text-align:center;' class='im-dim'>"+escape(wl("terrain"))+"</div>")+
+        cell(100,140,160,180,"<div style='text-align:center; font-size:"+px(std::min(10.5f,36.f/std::max(1.f,text_units(wl("terrain")))))+";' class='im-dim'>"+escape(wl("terrain"))+"</div>")+
         letter(140,180,"air",terrain.substr(0,1))+letter(180,220,"land",terrain.substr(1,1))+letter(220,260,"sea",terrain.substr(2,1))+letter(260,299,"space",terrain.substr(3,1))+
         cell(21,164,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("morale"),60,"im-dim")+span(need(sel.value("morale",json()),unit.value("morale",-1)),76,low_morale?"im-right im-down":"im-right")+"</div>"
             "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("en"),60,"im-dim")+span(need(sel.value("en",json()),unit.value("en",-1)),76,low_en?"im-right im-down":"im-right")+"</div>","line-height:"+px(19)+";")+
@@ -1068,8 +1068,11 @@ void ability_sync() {
             box(18,138,230,177,at(6,6,dim("spirits"),"",fit(label_of("spirits"),86))+spirits,11.f,"ability-spirits")+
             box(18,178,230,219,at(6,6,dim("skills"),"",fit(label_of("skills"),70))+skills,11.f,"ability-skills")+
             box(231,138,299,167,"<div style='text-align:center; line-height:"+px(28)+";' class='im-dim'>"+escape(label_of("terrain"))+"</div>",11.f,"ability-terrain-title")+
-            box(231,168,264,193,at(3,4,dim("air"))+at(18,4,terrain.substr(0,1)),11.f)+box(265,168,299,193,at(3,4,dim("land"))+at(18,4,terrain.substr(1,1)),11.f)+
-            box(231,194,264,219,at(3,4,dim("sea"))+at(18,4,terrain.substr(2,1)),11.f)+box(265,194,299,219,at(3,4,dim("space"))+at(18,4,terrain.substr(3,1)),11.f);
+            // Each cell is 33 wide: the label shrinks to the 17 in front of the rank ("Lnd A").
+            box(231,168,264,193,at(3,4,dim("air"),"",std::min(11.f,17.f/text_units(label_of("air"))))+at(22,4,terrain.substr(0,1)),11.f)+
+            box(265,168,299,193,at(3,4,dim("land"),"",std::min(11.f,17.f/text_units(label_of("land"))))+at(22,4,terrain.substr(1,1)),11.f)+
+            box(231,194,264,219,at(3,4,dim("sea"),"",std::min(11.f,17.f/text_units(label_of("sea"))))+at(22,4,terrain.substr(2,1)),11.f)+
+            box(265,194,299,219,at(3,4,dim("space"),"",std::min(11.f,17.f/text_units(label_of("space"))))+at(22,4,terrain.substr(3,1)),11.f);
         body+=hint("ability_pilot_hint");
     }
     body+="</div>";

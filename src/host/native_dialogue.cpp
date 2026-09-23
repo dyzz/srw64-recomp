@@ -269,17 +269,18 @@ void state_report() {
 }
 // Layer every locale's text files over the profile's catalog and swap them in.
 // The report lists each problem; broken entries fall back to the layer below.
-std::pair<size_t,size_t> load_text() {
+// Returns the entries loaded per locale and the problems in all of them.
+std::pair<std::map<std::string,size_t>,size_t> load_text() {
     std::map<std::string,localization::Snapshot> next;
     std::vector<localization::dialogue_text::Problem> problems;
-    json summary=json::object();size_t entries=0;
+    json summary=json::object();std::map<std::string,size_t> entries;
     for(const auto& [locale,base]:base_catalogs) {
         const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
                                                        text_overrides.empty()?text_overrides:text_overrides/locale};
         auto result=localization::dialogue_text::load(roots,*base);
         for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
         summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
-        entries+=result.targets.size();
+        entries[locale]=result.targets.size();
         next[locale]=result.targets.empty()?base:base->with_translations(result.targets,"dialogue-text");
     }
     localization::replace(std::move(next));
@@ -300,8 +301,12 @@ std::pair<size_t,size_t> load_text() {
         {"problems",listed.size()>20?json(std::vector<json>(listed.begin(),listed.begin()+20)):listed}});
     return {entries,problems.size()};
 }
-void announce_text(size_t entries,size_t problems) {
-    notices::post("dialogue-text",filled(filled(localization::catalog().ui("dialogue_text_status"),"{n}",std::to_string(entries)),"{k}",std::to_string(problems)));
+// The banner counts the reading language's entries; problems in any language.
+void announce_text(const std::map<std::string,size_t>& entries,size_t problems) {
+    const auto& catalog=localization::catalog();
+    const auto found=entries.find(catalog.locale);
+    notices::post("dialogue-text",filled(filled(catalog.ui("dialogue_text_status"),"{n}",std::to_string(found==entries.end()?0:found->second)),
+        "{k}",std::to_string(problems)));
 }
 // F5: read the files again, rebuild every fragment the history holds, and show
 // the current fragment from its start, as a language switch does.
