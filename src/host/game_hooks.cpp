@@ -37,6 +37,7 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
     if(srw64_game_hooks.intermission_frame)srw64_game_hooks.intermission_frame(ram);
     if(srw64_game_hooks.upgrade_frame)srw64_game_hooks.upgrade_frame(ram);
+    if(srw64_game_hooks.parts_frame)srw64_game_hooks.parts_frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
@@ -341,6 +342,33 @@ void load_0008F4B0_func_801D1100(uint8_t* rdram, recomp_context* ctx) {
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
     if (srw64_game_hooks.weapon_confirm_step && srw64_game_hooks.weapon_confirm_step(rdram, ctx)) return;
     srw64_original_upgrade_weapon_step(rdram, ctx);
+}
+// 強化パーツ: the machine list, the slots/inventory screen and the owned-copies
+// screen; the native page (parts_page.cpp) builds them without drawing and
+// answers their steps.
+void load_0008F4B0_func_801D4A00(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 7)) return;
+    srw64_original_parts_list_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D4A98(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 7, srw64_original_parts_list_step)) return;
+    srw64_original_parts_list_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D4BEC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 18)) return;
+    srw64_original_parts_slots_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D4C94(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 18, srw64_original_parts_slots_step)) return;
+    srw64_original_parts_slots_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D5168(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 19)) return;
+    srw64_original_parts_holders_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D51EC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 19, srw64_original_parts_holders_step)) return;
+    srw64_original_parts_holders_step(rdram, ctx);
 }
 // Upgrade refund (upgrade_refund.hpp): the story routines that delete a player's
 // machine open a scope, and the deletion inside it pays the upgrades back.

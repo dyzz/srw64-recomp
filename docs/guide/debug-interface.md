@@ -32,6 +32,7 @@
 | 运行时加载关卡文件 | 标题菜单时把文件拖到窗口 | `mini_stage.load {"path": <镜像或关卡源文件>}`；直接进入，无需启动时指定关卡，见[迷你关卡](../script/mini-stage.md) |
 | 主菜单迷你关卡入口 | RmlUi 按钮／F8 | 带 mini stage 启动后 `ui.click --id mini-enter`，或 `keys f8`；等待 `status.mini_stage.ready`。自动完成默认人物初始化，普通新游戏不变 |
 | 游戏内「选项」及规则设置 | RmlUi 控件、Ctrl/Cmd+, | `ui.click`、`ui.key`；`menu` 保留本地化规则标题的兼容转发 |
+| 场间 強化パーツ 页面：机体列表、槽位／库存、持有者 | RmlUi 页面 | `ui.click --id parts:N`／`parts-slot:N`，或 `keys` 的方向键、Z／X；`status.parts_page`，等待条件 `parts_page`，事件日志 `parts` |
 | 共享设置：规则、预设、语言、画面、战前确认界面、场间画面 | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定（`rules`／`images`／`locale`／`battle_ui`／`intermission_ui`） |
 | 游戏窗口：尺寸、前台、关闭按钮 | 窗口管理 | `window`（`width`/`height`、`front`、`close`） |
 | 正常退出 | Esc、关窗、⌘Q | `quit`，或 `keys escape`、`window close` |

@@ -38,6 +38,10 @@ struct SRW64GameHooks {
     bool (*weapon_confirm_build)(uint8_t*, recomp_context*){};
     bool (*weapon_confirm_step)(uint8_t*, recomp_context*){};
     void (*upgrade_frame)(uint8_t*){};
+    // 強化パーツ: screens 7 (machine list), 18 (slots and inventory), 19 (owned copies).
+    bool (*parts_build)(uint8_t*, recomp_context*, unsigned screen){};
+    bool (*parts_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
+    void (*parts_frame)(uint8_t*){};
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};

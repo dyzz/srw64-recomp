@@ -10,6 +10,7 @@
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include "intermission_page.hpp"
 #include "upgrade_page.hpp"
+#include "parts_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -53,11 +54,11 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
-json intermission_request,upgrade_request;
+json intermission_request,upgrade_request,parts_request;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
 std::string funds_editing;
-Rml::ElementDocument* upgrade_doc{};
-std::string upgrade_stamp;
+Rml::ElementDocument* upgrade_doc{},* parts_doc{};
+std::string upgrade_stamp,parts_stamp;
 Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
@@ -203,6 +204,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
 .im-right {text-align:right;} .im-dim {color:#9eafc3;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
+.im-up {color:#7dff8a;} .im-down {color:#ff8d8d;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
 
@@ -617,6 +619,104 @@ void upgrade_sync() {
     body+="</div>";
     upgrade_doc=document(body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
 }
+
+// 強化パーツ (parts_page.cpp): the machine list (layout 0x70), the slots with the
+// inventory and stat preview (0x7E) and the owned copies of one part (0x7F), each
+// on the original panel rectangles.
+void parts_sync() {
+    const auto next=parts_page::state();parts_request=next;
+    if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    if(parts_doc && parts_stamp==stamp)return;
+    document_close(parts_doc);parts_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
+    const auto dashes=[](const std::string& s){return s.empty()?std::string("--------"):s;};
+    // The unit's slots as the original prints them: two columns, two rows.
+    const auto slot_grid=[&](const json& unit,float top) {
+        std::string out;
+        const auto& parts=unit.value("parts",json::array());
+        for(unsigned n=0;n<parts.size() && n<4;++n)
+            out+="<span style='position:absolute; left:"+px(n%2?188:91)+"; top:"+px(top+(n/2)*18)+"; width:"+px(96)+";'>"+escape(dashes(parts[n].value("name",std::string())))+"</span>";
+        return out;
+    };
+    const std::string screen=next.value("screen",std::string());
+    std::string body="<div class='im-root' id='parts' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="list") {
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='parts:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
+                span(r.value("name",std::string()),126)+span(dashes(r.value("pilot",std::string())),90)+span(label_of("level"),36,"im-dim",fit(label_of("level"),34))+span(r.contains("level")?number(r.at("level")):std::string(),18,"im-right")+"</button>";
+        }
+        const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+        const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
+        body+=box(21,21,299,219,
+            "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of("title"))+"</span></div>"
+            "<div id='parts-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
+            "<div style='position:absolute; left:0; top:"+px(157)+"; width:100%; height:"+px(42)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"
+                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(4)+"; width:"+px(88)+"; font-size:"+px(fit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(sel,4)+"</div>",
+            11.5f,"parts-panel");
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(next.value("pages",1u)>1?"parts_list_hint_pages":"parts_list_hint")+"</div>";
+    } else if(screen=="slots") {
+        const auto& unit=next.at("unit");const auto& inv=next.at("inventory");const unsigned mode=next.value("mode",0u),cursor=next.value("cursor",0u);
+        const auto& parts=unit.value("parts",json::array());
+        std::string slots;
+        for(unsigned n=0;n<parts.size();++n)
+            slots+="<button id='parts-slot:"+std::to_string(n)+"' class='im-row "+(n==cursor?(mode?"dim":"on"):"")+"' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(dashes(parts[n].value("name",std::string())),136)+"</button>";
+        std::string stats;
+        for(const auto& s:next.at("stats")) {
+            const long long cur=s.value("current",0ll),pre=s.value("preview",0ll);
+            stats+="<div class='im-row' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+span(label_of(s.value("key",std::string("hp")).c_str()),44,"im-dim")+span(std::to_string(cur),40,"im-right")+span(label_of("arrow"),14,"im-dim")+
+                span(std::to_string(pre),40,std::string("im-right ")+(pre>cur?"im-up":pre<cur?"im-down":""))+"</div>";
+        }
+        std::string list;
+        const auto& rows=inv.at("rows");const unsigned at=inv.value("cursor",0u),page=inv.value("page",0u),pages=inv.value("pages",1u);
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            std::string count;
+            if(r.contains("owned"))count=std::to_string(r.value("equipped",0u))+"("+std::to_string(r.value("owned",0u))+")";
+            list+="<button id='parts:"+std::to_string(n)+"' class='im-row "+(mode && n==at?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+span(r.value("name",std::string()),92,"",0,8)+span(count,30,"im-right")+"</button>";
+        }
+        const auto arrows="<div class='im-row im-dim' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+span(page>0?label_of("prev"):std::string(),16)+span(std::to_string(page+1)+"/"+std::to_string(pages),96,"",0,0)+span(page+1<pages?label_of("next"):std::string(),16,"im-right")+"</div>";
+        std::string description;
+        for(const auto& d:next.value("description",json::array()))description+="<div style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(4)+";'>"+escape(d.get<std::string>())+"</div>";
+        const auto page_text=std::to_string(page+1)+"/"+std::to_string(pages);
+        body+=box(21,21,163,43,"<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+";'>"+span(page_text,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(90)+"; text-align:center; font-size:"+px(fit(label_of("select_title"),88))+";'>"+escape(label_of("select_title"))+"</span></div>",11.f,"parts-title")+
+            box(21,43,163,113,"<div id='parts-slots' style='margin-top:"+px(1)+";'>"+slots+"</div>",11.5f,"parts-slot-panel")+
+            box(21,113,163,219,"<div style='margin-top:"+px(5)+";'>"+stats+"</div>",11.f,"parts-stats")+
+            box(163,21,299,43,"<div style='padding:0 "+px(4)+"; line-height:"+px(22)+"; font-size:"+px(fit(unit.value("name",std::string()),128))+";'>"+escape(unit.value("name",std::string()))+"</div>",11.5f,"parts-unit")+
+            box(163,43,299,160,arrows+"<div id='parts-inventory'>"+list+"</div>",11.f,"parts-inventory-panel")+
+            box(163,160,299,219,"<div style='margin-top:"+px(4)+";'>"+description+"</div>",9.5f,"parts-description");
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(mode?"parts_inventory_hint":"parts_slots_hint")+"</div>";
+    } else if(screen=="holders") {
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            const bool free=r.value("free",false);
+            list+="<button id='parts:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
+                span(next.at("part").value("name",std::string()),96)+span(free?label("parts_free"):r.value("name",std::string()),110,free?"im-dim":"")+span(free?"--------":dashes(r.value("pilot",std::string())),64)+"</button>";
+        }
+        body+=box(21,21,299,219,
+            "<div style='position:absolute; left:0; top:0; width:100%; height:"+px(42)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"
+                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(3)+"; width:"+px(88)+"; font-size:"+px(fit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(next.at("unit"),3)+"</div>"
+            "<div id='parts-holders' style='margin-top:"+px(43)+";'>"+list+"</div>",11.5f,"parts-panel");
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
+    }
+    body+="</div>";
+    parts_doc=document(body,true);parts_doc->SetClass("modal",false);
+}
 void mini_sync() {
     const auto state=mini_stage::snapshot();
     const bool entering=state.value("entering",false);
@@ -701,6 +801,25 @@ void choose(const std::string& id) {
             if(n==upgrade_request.value("cursor",0u))upgrade_page::answer(serial,list?"choose":"choose:"+std::to_string(n));
             else upgrade_page::answer(serial,"move:"+std::to_string(n));
         } else if(id=="upgrade-confirm" || id=="upgrade-cancel" || id=="upgrade-dismiss")upgrade_page::answer(serial,id.substr(8));
+        return;
+    }
+    if(id.starts_with("parts") && parts_request.value("visible",false) && !settings_open) {
+        const auto serial=parts_request.at("serial").get<uint64_t>();const auto screen=parts_request.value("screen",std::string());
+        const unsigned mode=parts_request.value("mode",0u);
+        if(id.starts_with("parts-slot:")) {
+            // A click on a slot row moves the slot cursor; on the cursor row it opens
+            // the inventory; with the inventory open it goes back to the slots first.
+            const unsigned n=unsigned(std::atoi(id.c_str()+11));
+            if(mode)parts_page::answer(serial,"cancel");
+            else parts_page::answer(serial,n==parts_request.value("cursor",0u)?"choose":"move:"+std::to_string(n));
+        } else if(id.starts_with("parts:")) {
+            const unsigned n=unsigned(std::atoi(id.c_str()+6));
+            if(screen=="slots" && !mode)parts_page::answer(serial,"choose");
+            else {
+                const unsigned at=screen=="slots"?parts_request.at("inventory").value("cursor",0u):parts_request.value("cursor",0u);
+                parts_page::answer(serial,n==at?"choose":"move:"+std::to_string(n));
+            }
+        }
         return;
     }
     if(id.starts_with("intermission") && intermission_request.value("visible",false) && !settings_open) {
@@ -808,7 +927,7 @@ void sync() {
         if(pad_pressed)battle_buttons(pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
     settings_sync();notices_sync();context->Update();input.update_rectangle();
@@ -817,6 +936,7 @@ void sync() {
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));
     intermission_page::window_claim_input(intermission_request.value("visible",false) || (intermission_page::owns_input() && held()));
     upgrade_page::window_claim_input(upgrade_request.value("visible",false) || (upgrade_page::owns_input() && held()));
+    parts_page::window_claim_input(parts_request.value("visible",false) || (parts_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -835,7 +955,7 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
@@ -902,6 +1022,22 @@ bool dispatch(SDL_Event& event) {
             }
             if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":window.empty()?"back":"dismiss");return true;}
         }
+    } else if(parts_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=parts_request.at("serial").get<uint64_t>();
+            const auto screen=parts_request.value("screen",std::string());const unsigned mode=parts_request.value("mode",0u);
+            const bool inventory=screen=="slots" && mode;
+            const json& pane=inventory?parts_request.at("inventory"):parts_request;
+            const unsigned count=screen=="slots" && !mode?unsigned(parts_request.at("unit").at("parts").size()):unsigned(pane.at("rows").size()),at=pane.value("cursor",0u);
+            if(count && (k==SDLK_UP || k==SDLK_DOWN)){parts_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            if((screen=="list" || inventory) && (k==SDLK_LEFT || k==SDLK_RIGHT)){
+                const unsigned pages=pane.value("pages",1u),page=pane.value("page",0u);
+                if(pages>1)parts_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_LEFT?pages-1:1))%pages));return true;
+            }
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){parts_page::answer(serial,"choose");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){parts_page::answer(serial,inventory?"cancel":"back");return true;}
+        }
     } else if(intermission_request.value("visible",false)){
         // As the original: up and down wrap around and repeat while held, A confirms,
         // B only closes the swap window.
@@ -949,7 +1085,7 @@ bool dispatch(SDL_Event& event) {
         // Window dimensions are in points; sync() supplies drawable pixels.
         if(event.window.event==SDL_WINDOWEVENT_LEAVE)context->ProcessMouseLeave();
     } else consumed=!RmlSDL::InputEventHandler(context,scaled);
-    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false);
+    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false);
 }
 json describe(Rml::Element* el,unsigned depth=0) {
     const auto offset=el->GetAbsoluteOffset();const auto size=el->GetBox().GetSize();
@@ -987,8 +1123,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=mini_doc=nullptr;}renderer.reset();}
-void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);battle_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=mini_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
@@ -1066,7 +1202,7 @@ nlohmann::json tree(const nlohmann::json&){return ui::tree();}
 nlohmann::json summary(){
     auto lock=ui::lock_ui();
     nlohmann::json result={{"backend","SDL2/RmlUi"},{"ready",ui::context!=nullptr},{"focus",nullptr}};
-    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
+    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
     if(ui::window)result["active"]=bool(SDL_GetWindowFlags(ui::window)&SDL_WINDOW_INPUT_FOCUS);
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
     return result;
