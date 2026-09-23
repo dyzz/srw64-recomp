@@ -202,6 +202,12 @@ json settings(const json& params) {
         on_window([&]{settings::set_native_intermission_ui(ui=="native");return json(nullptr);});
         done["intermission_ui"]=ui;
     }
+    if(params.contains("name_entry_ui")) {
+        const auto ui=params["name_entry_ui"].get<std::string>();
+        if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"name_entry_ui must be native or original");
+        on_window([&]{settings::set_native_name_entry_ui(ui=="native");return json(nullptr);});
+        done["name_entry_ui"]=ui;
+    }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
         on_window([&]{settings::request_locale(locale);return json(nullptr);});

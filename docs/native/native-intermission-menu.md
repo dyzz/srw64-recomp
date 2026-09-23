@@ -78,7 +78,7 @@
 1. **观感不变，清晰度和语言现代化。** 保留背景图、四块面板的位置比例、深蓝半透明底、蓝色细边、绿色高亮条和白字；用矢量字体、跟随窗口缩放，文字走中／日／英目录。不改成卡片式新设计（リンク页那种整页重排不适用于此）。
 2. **流程零改动。** 选中哪一项之后发生什么（检查、音效、转场、RNG、退出码）仍由原函数决定；适配层只替换「画」和「读键」。
 3. **鼠标与键盘都能完成全部操作**，B／Esc 行为与原版一致（主菜单上 B 无效，弹窗里 B 关闭）。
-4. 可关：设置页「场间画面」选原版（`presentation.json` 的 `intermission_ui`，调试接口 `settings {"intermission_ui": "original"}`），下一次画面构建时生效，已打开的原生页面在离开时关闭；`SRW64_NATIVE_INTERMISSION=0` 或不加载 profile 则整次运行保留原画面。验证脚本 `tools/recomp/debug/check_intermission_ui_switch.py`（2026-09-23，`build/recomp/debug/20260923T025544.572614Z/`，8 项通过、退出码 0：原生菜单开着时切原版，进 ユニット改造 出现原版列表、B 回到原版菜单；切回新版后 Z 进原生列表、B 回原生菜单且光标仍在 ユニット改造；`presentation-settings.json` 随之写 `intermission_ui`）。
+4. 可关：设置页「场间画面」选原版（`presentation.json` 的 `intermission_ui`，调试接口 `settings {"intermission_ui": "original"}`），下一次画面构建时生效，已打开的原生页面在离开时关闭；`SRW64_NATIVE_INTERMISSION=0` 或不加载 profile 则整次运行保留原画面。验证脚本 `tools/recomp/debug/check_intermission_ui_switch.py`（2026-09-23，`build/recomp/debug/20260923T025544.572614Z/`，8 项通过、退出码 0：原生菜单开着时切原版，进 ユニット改造 出现原版列表、B 回到原版菜单；切回新版后 Z 进原生列表、B 回原生菜单且光标仍在 ユニット改造；`presentation-settings.json` 随之写 `intermission_ui`；2026-09-23 `build/recomp/debug/20260923T045406.607280Z/` 9 项通过，加入原版菜单上进 リンク 出现原版联动画面而非原生联动页）。
 
 不在本页范围：八个子画面仍是原版（リンク前置页除外）。从原生主菜单进入原版子画面会有一次观感切换，这是分阶段接管的已知过渡状态。
 
@@ -205,7 +205,7 @@
 4. 调试接口字段（`status.intermission_page`、稳定 ID `intermission:0..8`、`intermission-swap:0|1`、等待条件 `intermission_page`、事件日志 `intermission`）与检查脚本 [`check_intermission.py`](../../tools/recomp/debug/check_intermission.py)。
 5. 验证、截图入 `docs/media/`、本文改写成实现文档。
 
-后续页面：ユニット改造／武器改造（[改造画面接管](native-upgrade-screens.md)）、強化パーツ（[強化パーツ 画面接管](native-parts-screens.md)）、ユニット能力／パイロット能力（[能力查看画面接管](native-ability-screens.md)）、のりかえ（[のりかえ 画面接管](native-swap-screens.md)）与 データセーブ（[データセーブ 画面接管](native-save-screens.md)）已接管；场间画面至此全部可在原版与原生之间切换。
+后续页面：ユニット改造／武器改造（[改造画面接管](native-upgrade-screens.md)）、強化パーツ（[強化パーツ 画面接管](native-parts-screens.md)）、ユニット能力／パイロット能力（[能力查看画面接管](native-ability-screens.md)）、のりかえ（[のりかえ 画面接管](native-swap-screens.md)）与 データセーブ（[データセーブ 画面接管](native-save-screens.md)）已接管；リンク 页（`link_page.cpp`）也按同一设置交回原版联动画面。场间画面至此全部可在原版与原生之间切换。
 
 ## 10. 未决问题
 

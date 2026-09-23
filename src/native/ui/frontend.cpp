@@ -266,7 +266,9 @@ void settings_sync() {
     for(auto mode:{"native","original"})body+=button(std::string("battle-ui:")+mode,label(std::string("settings_battle_ui_")+mode),settings::native_battle_ui()==(std::string(mode)=="native"));
     body+="<p>"+label("settings_battle_ui_note")+"</p><h2>"+label("settings_intermission_ui")+"</h2>";
     for(auto mode:{"native","original"})body+=button(std::string("intermission-ui:")+mode,label(std::string("settings_intermission_ui_")+mode),settings::native_intermission_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_intermission_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
+    body+="<p>"+label("settings_intermission_ui_note")+"</p><h2>"+label("settings_name_entry_ui")+"</h2>";
+    for(auto mode:{"native","original"})body+=button(std::string("name-entry-ui:")+mode,label(std::string("settings_name_entry_ui_")+mode),settings::native_name_entry_ui()==(std::string(mode)=="native"));
+    body+="<p>"+label("settings_name_entry_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
     for(const auto& preset:rules::presets)body+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
     body+="<p>"+label("rules_note")+"</p>";
     if(settings::failed())body+="<p>"+label("settings_error")+"</p>";
@@ -1232,6 +1234,7 @@ void choose(const std::string& id) {
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
         if(id.starts_with("battle-ui:"))settings::set_native_battle_ui(id=="battle-ui:native");
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
+        if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
     } catch(const std::exception& error){notices::post("settings-error",error.what());}
 }
 // Newly pressed N64 buttons on the battle page, from the keyboard table in

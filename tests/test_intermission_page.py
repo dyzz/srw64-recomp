@@ -197,6 +197,19 @@ class UpgradePageSourceTests(unittest.TestCase):
         self.assertIn('"intermission-ui:"', page)
         self.assertIn('params.contains("intermission_ui")', (ROOT / "src/host/debug_server.cpp").read_text())
         self.assertIn('"intermission_ui": {"type": "string", "enum": ["native", "original"]}', (ROOT / "tools/recomp/debug/mcp_server.py").read_text())
+        for page in ("parts_page", "ability_page", "swap_page", "save_page"):
+            self.assertIn("if(original_screens())return false;", (ROOT / f"src/host/{page}.cpp").read_text())
+        self.assertIn("if(!settings::native_intermission_ui())return false;", (ROOT / "src/host/link_page.cpp").read_text())
+
+    def test_name_entry_follows_its_ui_setting(self):
+        self.assertIn("if(!settings::native_name_entry_ui())return;", (ROOT / "src/host/native_name_entry.cpp").read_text())
+        settings = (ROOT / "src/native/ui/presentation_settings.cpp").read_text()
+        self.assertIn('{"name_entry_ui",native_name_entry?"native":"original"}', settings)
+        self.assertIn('saved.value("name_entry_ui","native")', settings)
+        self.assertIn('saved.value("name_entry_ui","native")', (ROOT / "src/native/app/launch.cpp").read_text())
+        self.assertIn('"name-entry-ui:"', (ROOT / "src/native/ui/frontend.cpp").read_text())
+        self.assertIn('params.contains("name_entry_ui")', (ROOT / "src/host/debug_server.cpp").read_text())
+        self.assertIn('"name_entry_ui": {"type": "string", "enum": ["native", "original"]}', (ROOT / "tools/recomp/debug/mcp_server.py").read_text())
 
     def test_labels_exist_in_every_language(self):
         from srw64_native.profile import UI_KEYS

@@ -18,10 +18,10 @@ ModalInputRelease release_gate;
 uint64_t applying_request{};
 std::string applying_locale,last_error;
 std::filesystem::path destination,output;
-std::atomic_bool native_battle{true},native_intermission{true};
+std::atomic_bool native_battle{true},native_intermission{true},native_name_entry{true};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     srw64::app::atomic_write(path,nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
-        {"battle_ui",native_battle?"native":"original"},{"intermission_ui",native_intermission?"native":"original"}}).dump(2)+"\n");
+        {"battle_ui",native_battle?"native":"original"},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"}}).dump(2)+"\n");
 }
 void apply(const std::string& locale) {
     if(applying || release_gate.pending() || destination.empty())return;
@@ -42,6 +42,12 @@ void set_native_battle_ui(bool native) {
 bool native_intermission_ui(){return native_intermission.load();}
 void set_native_intermission_ui(bool native) {
     native_intermission=native;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+bool native_name_entry_ui(){return native_name_entry.load();}
+void set_native_name_entry_ui(bool native) {
+    native_name_entry=native;
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -66,7 +72,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     if(!destination.empty()) {
         std::ifstream file(destination);
         const auto saved=nlohmann::json::parse(file,nullptr,false);
-        if(saved.is_object()){native_battle=saved.value("battle_ui","native")!="original";native_intermission=saved.value("intermission_ui","native")!="original";}
+        if(saved.is_object()){native_battle=saved.value("battle_ui","native")!="original";native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";}
     }
 }
 
