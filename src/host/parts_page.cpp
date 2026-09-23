@@ -136,6 +136,19 @@ bool original_screens() {
     std::lock_guard lock(mutex);hide("original");return true;
 }
 
+json list_json(const uint8_t* ram);
+json slots_json(uint8_t* ram,recomp_context* ctx);
+json holders_json(const uint8_t* ram);
+// A language switch while a screen is open: its names and descriptions are
+// rebuilt in the new language; what the page itself tracks stays.
+void relocalize(uint8_t* ram,recomp_context* ctx) {
+    if(locale==localization::catalog().locale)return;
+    const auto screen=current.value("screen",std::string());
+    const json next=screen=="list"?list_json(ram):screen=="slots"?slots_json(ram,ctx):screen=="holders"?holders_json(ram):json::object();
+    for(const char* key:{"unit","rows","inventory","description","part"})if(next.contains(key))current[key]=next[key];
+    labels(ram);
+}
+
 // --- Machine list (screen 7) -----------------------------------------------------
 
 unsigned list_size(const uint8_t* ram){return std::min<unsigned>(read(ram,list_count,2),up::unit_slots);}
@@ -165,7 +178,7 @@ bool list_build(uint8_t* ram,recomp_context* ctx) {
 bool list_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="list")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const unsigned count=list_size(ram),pages=std::max(1u,(count+list_rows-1)/list_rows);
@@ -261,7 +274,7 @@ void republish(uint8_t* ram,recomp_context* ctx) {
 bool slots_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="slots")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const uint32_t unit=up::unit_at(read(ram,screen_unit,4));
@@ -346,7 +359,7 @@ bool holders_build(uint8_t* ram,recomp_context* ctx) {
 bool holders_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="holders")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const unsigned count=unsigned(current.at("rows").size());

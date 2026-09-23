@@ -159,6 +159,19 @@ void list_select(uint8_t* ram,bool fairies) {
     const unsigned index=list_index(ram);
     if(index<list_size(ram))write32(ram,screen_subject,list_entry(ram,fairies,index));
 }
+json list_json(uint8_t* ram,recomp_context* ctx,bool fairies);
+json targets_json(uint8_t* ram,recomp_context* ctx,bool fairy);
+json confirm_json(uint8_t* ram,recomp_context* ctx);
+// A language switch while a screen is open: the screen is rebuilt from the game's
+// state in the new language.
+void relocalize(uint8_t* ram,recomp_context* ctx) {
+    if(locale==localization::catalog().locale)return;
+    const auto screen=current.value("screen",std::string());
+    const json next=screen=="pilots" || screen=="fairies"?list_json(ram,ctx,screen=="fairies"):
+        screen=="targets" || screen=="fairy_targets"?targets_json(ram,ctx,screen=="fairy_targets"):screen=="confirm"?confirm_json(ram,ctx):json::object();
+    for(const auto& [key,value]:next.items())current[key]=value;
+    labels(ram);
+}
 json list_json(uint8_t* ram,recomp_context* ctx,bool fairies) {
     const unsigned count=list_size(ram),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,list_page,2))))-1;
     json rows=json::array();
@@ -194,7 +207,7 @@ bool list_build(uint8_t* ram,recomp_context* ctx,bool fairies) {
 bool list_step(uint8_t* ram,recomp_context* ctx,bool fairies,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!=(fairies?"fairies":"pilots"))return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const unsigned count=list_size(ram),pages=std::max(1u,(count+list_rows-1)/list_rows);
@@ -274,7 +287,7 @@ bool targets_build(uint8_t* ram,recomp_context* ctx,bool fairy) {
 bool targets_step(uint8_t* ram,recomp_context* ctx,bool fairy,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!=(fairy?"fairy_targets":"targets"))return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const bool window=fairy && read(ram,mode,4)!=0;
@@ -367,7 +380,7 @@ bool confirm_build(uint8_t* ram,recomp_context* ctx) {
 bool confirm_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="confirm")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(action.starts_with("move:")) {
