@@ -490,6 +490,13 @@ void configure(const std::filesystem::path& directory) {
     h.weapon_confirm_build=weapon_confirm_build;h.weapon_confirm_step=weapon_confirm_step;
     h.upgrade_frame=frame;
 }
+json weapon_row_json(const uint8_t* ram,uint32_t unit,unsigned index){return weapon_row(ram,unit,index);}
+json weapon_labels_json(const uint8_t* ram) {
+    const char* weapon_keys[]={"weapon","power","range","hit","ammo","terrain","air","land","sea","space","morale","en","skill","critical"};
+    json wl;
+    for(unsigned n=0;n<14;++n)wl[weapon_keys[n]]=text(ram,text_weapon_labels+n);
+    return wl;
+}
 json state(){std::lock_guard lock(mutex);return current;}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);

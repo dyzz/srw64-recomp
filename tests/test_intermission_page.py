@@ -124,6 +124,26 @@ class UpgradePageSourceTests(unittest.TestCase):
         self.assertEqual(entries[18], (0x801D4BEC, 0x801D4C94))
         self.assertEqual(entries[19], (0x801D5168, 0x801D51EC))
 
+    def test_ability_hooks_are_renamed_and_replaced(self):
+        generator = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
+        for address, original, screen in (("801D14BC", "srw64_original_ability_unit_list_open", 4), ("801D1554", "srw64_original_ability_unit_list_step", 4),
+                                          ("801D16D8", "srw64_original_ability_unit_open", 13), ("801D2030", "srw64_original_ability_unit_step", 13),
+                                          ("801D2144", "srw64_original_ability_weapons_open", 14), ("801D21F8", "srw64_original_ability_weapons_step", 14),
+                                          ("801D22E0", "srw64_original_ability_pilot_list_open", 5), ("801D2378", "srw64_original_ability_pilot_list_step", 5),
+                                          ("801D2480", "srw64_original_ability_pilot_open", 15), ("801D24C8", "srw64_original_ability_pilot_step", 15)):
+            self.assertIn(f'"load_0008F4B0_func_{address}": "{original}"', generator)
+            body = hooks[hooks.index(f"void load_0008F4B0_func_{address}("):]
+            body = body[:body.index("\n}\n")]
+            self.assertIn(f"{original}(rdram, ctx)", body)
+            self.assertIn(f"ability_{'build' if original.endswith('_open') else 'step'}(rdram, ctx, {screen}", body)
+        self.assertIn("if(original_screens())return false;", (ROOT / "src/host/ability_page.cpp").read_text())
+        if ROM.exists():
+            rom = ROM.read_bytes()
+            table = 0x801DC9D0 - 0x801C4500 + 0x8F4B0
+            entries = [struct.unpack(">II", rom[table + n * 8:table + n * 8 + 8]) for n in range(23)]
+            self.assertEqual([entries[n] for n in (4, 13, 14, 5, 15)], [(0x801D14BC, 0x801D1554), (0x801D16D8, 0x801D2030), (0x801D2144, 0x801D21F8), (0x801D22E0, 0x801D2378), (0x801D2480, 0x801D24C8)])
+
     def test_screens_follow_the_intermission_ui_setting(self):
         # Every build entry point hands the screen back to the original when the
         # setting says so, closing any page still open; the setting is persisted.

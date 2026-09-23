@@ -42,6 +42,10 @@ struct SRW64GameHooks {
     bool (*parts_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*parts_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
     void (*parts_frame)(uint8_t*){};
+    // ユニット能力／パイロット能力: screens 4 (units), 13 (unit page), 14 (weapons), 5 (pilots), 15 (pilot page).
+    bool (*ability_build)(uint8_t*, recomp_context*, unsigned screen){};
+    bool (*ability_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
+    void (*ability_frame)(uint8_t*){};
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};
