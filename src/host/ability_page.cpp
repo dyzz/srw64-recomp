@@ -163,6 +163,20 @@ void list_select(uint8_t* ram,bool pilots_list) {
     const unsigned index=list_index(ram);
     if(index<list_size(ram,pilots_list))write32(ram,screen_subject,list_entry(ram,pilots_list,index));
 }
+json list_json(uint8_t* ram,recomp_context* ctx,bool pilots_list);
+json unit_json(uint8_t* ram,recomp_context* ctx);
+json weapons_json(uint8_t* ram,recomp_context* ctx);
+json pilot_json(uint8_t* ram,recomp_context* ctx);
+// A language switch while a screen is open: the screen is rebuilt from the game's
+// state in the new language (the unit and pilot pages never republish otherwise).
+void relocalize(uint8_t* ram,recomp_context* ctx) {
+    if(locale==localization::catalog().locale)return;
+    const auto screen=current.value("screen",std::string());
+    const json next=screen=="units" || screen=="pilots"?list_json(ram,ctx,screen=="pilots"):screen=="unit"?unit_json(ram,ctx):
+        screen=="weapons"?weapons_json(ram,ctx):screen=="pilot"?pilot_json(ram,ctx):json::object();
+    for(const auto& [key,value]:next.items())current[key]=value;
+    labels(ram);
+}
 json list_json(uint8_t* ram,recomp_context* ctx,bool pilots_list) {
     const unsigned count=list_size(ram,pilots_list),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,list_page,2))))-1;
     json rows=json::array();
@@ -203,7 +217,7 @@ bool list_build(uint8_t* ram,recomp_context* ctx,bool pilots_list) {
 bool list_step(uint8_t* ram,recomp_context* ctx,bool pilots_list,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!=(pilots_list?"pilots":"units"))return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const unsigned count=list_size(ram,pilots_list),pages=std::max(1u,(count+rows_per_page-1)/rows_per_page);
@@ -278,7 +292,7 @@ bool unit_build(uint8_t* ram,recomp_context* ctx) {
 bool page_step(uint8_t* ram,recomp_context* ctx,const char* screen,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!=screen)return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     uint16_t button=0;
@@ -318,7 +332,7 @@ bool weapons_build(uint8_t* ram,recomp_context* ctx) {
 bool weapons_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="weapons")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     const unsigned count=read(ram,weapon_count,2),pages=std::max(1u,(count+weapon_rows_per_page-1)/weapon_rows_per_page);

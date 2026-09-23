@@ -168,6 +168,23 @@ void open(json page,uint8_t* ram) {
     record("open",{{"screen",current.value("screen",std::string())}});
 }
 
+json list_page_json(uint8_t* ram,recomp_context* ctx);
+json stats_json(uint8_t* ram,recomp_context* ctx);
+json weapon_list_json(uint8_t* ram);
+json chosen_weapon(const uint8_t* ram);
+json bonus_json(const uint8_t* ram,unsigned upgraded,unsigned unlocked);
+// A language switch while a screen is open: its names are rebuilt in the new
+// language; what the page itself tracks (window, cursor, serial) stays.
+void relocalize(uint8_t* ram,recomp_context* ctx) {
+    if(locale==localization::catalog().locale)return;
+    const auto screen=current.value("screen",std::string());
+    const json next=screen=="list"?list_page_json(ram,ctx):screen=="stats"?stats_json(ram,ctx):screen=="weapons"?weapon_list_json(ram):json::object();
+    for(const char* key:{"unit","rows"})if(next.contains(key))current[key]=next[key];
+    if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,text_unit_names+current["unit"].value("number",0u));}
+    if(current.contains("bonus")){const auto& ids=current["bonus"]["numbers"];current["bonus"]=bonus_json(ram,ids[0].get<unsigned>(),ids[1].get<unsigned>());}
+    labels(ram);
+}
+
 // --- Machine list (screens 2 and 3) ----------------------------------------------
 
 unsigned list_size(const uint8_t* ram){return std::min<unsigned>(read(ram,list_count,2),up::unit_slots);}
@@ -214,7 +231,7 @@ bool list_build(uint8_t* ram,recomp_context* ctx,bool weapons) {
 bool list_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="list")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;
@@ -264,7 +281,7 @@ bool stats_build(uint8_t* ram,recomp_context* ctx) {
 bool stats_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="stats")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;
@@ -367,6 +384,11 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     weapon_markers(row,text(ram,uint16_t(text_weapon_pure_names+number)));
     return row;
 }
+// The full-upgrade message names both weapons without their markers.
+json bonus_json(const uint8_t* ram,unsigned upgraded,unsigned unlocked) {
+    return {{"upgraded",text(ram,uint16_t(text_weapon_pure_names+upgraded))},{"unlocked",text(ram,uint16_t(text_weapon_pure_names+unlocked))},
+        {"numbers",{upgraded,unlocked}}};
+}
 json weapon_list_json(uint8_t* ram) {
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
     const unsigned count=read(ram,weapon_count,2),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
@@ -395,7 +417,7 @@ bool weapon_list_build(uint8_t* ram,recomp_context* ctx) {
     write16(ram,weapon_row_copy,uint16_t(read(ram,weapon_cursor,2)));
     std::lock_guard lock(mutex);
     auto page=weapon_list_json(ram);
-    if(bonus){page["window"]="bonus";page["bonus"]={{"upgraded",text(ram,text_weapon_names+upgraded)},{"unlocked",text(ram,text_weapon_names+unlocked)}};}
+    if(bonus){page["window"]="bonus";page["bonus"]=bonus_json(ram,upgraded,unlocked);}
     open(std::move(page),ram);
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
@@ -403,7 +425,7 @@ bool weapon_list_build(uint8_t* ram,recomp_context* ctx) {
 bool weapon_list_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="weapons")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;
@@ -435,15 +457,19 @@ bool weapon_list_step(uint8_t* ram,recomp_context* ctx) {
     }
     return false;
 }
+json chosen_weapon(const uint8_t* ram) {
+    const uint32_t unit=up::unit_at(read(ram,screen_unit,4));
+    const unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
+    const unsigned n=page*weapon_rows_per_page+unsigned(int16_t(read(ram,weapon_row_copy,2)));
+    return weapon_row(ram,unit,read(ram,weapon_rows+n*2,2));
+}
 // 801D0C7C without its drawing: background, the price and previewed power the
 // confirmed branch applies; the page shows はい/いいえ or これ以上の改造はできません.
 bool weapon_confirm_build(uint8_t* ram,recomp_context* ctx) {
     if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
-    const unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
-    const unsigned n=page*weapon_rows_per_page+unsigned(int16_t(read(ram,weapon_row_copy,2)));
-    json row=weapon_row(ram,unit,read(ram,weapon_rows+n*2,2));
+    json row=chosen_weapon(ram);
     write32(ram,stat_price,row.value("price",0u));write16(ram,weapon_preview,uint16_t(row.value("preview",row.value("power",0u))));
     write32(ram,mode,0);write8(ram,0x801DECC0,0);
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
@@ -459,7 +485,7 @@ bool weapon_confirm_build(uint8_t* ram,recomp_context* ctx) {
 bool weapon_confirm_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="weapon")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;

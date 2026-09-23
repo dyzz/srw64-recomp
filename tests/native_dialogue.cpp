@@ -116,6 +116,13 @@ int main() {
     assert(!noted.history.back().warm_name);  // 甲 after 乙, as if no notice were there
     noted.switch_language(typeset(u"第三句。",13),"ja",5);
     assert(noted.history[1].text==u"返金" && noted.history[3].text.empty());
+    // Speaker names follow the language too; an entry without them keeps its name.
+    Reader named;
+    named.begin(1,100,0,u"ローレンス",typeset(u"一句。",13),0);
+    named.history.back().localized_speaker={{"ja",u"ローレンス"},{"en",u"Lawrence"}};
+    named.begin(2,101,0,u"マナミ",typeset(u"二句。",13),2);
+    named.switch_language(typeset(u"二句。",13),"en",3);
+    assert(named.history[0].speaker==u"Lawrence" && named.history[1].speaker==u"マナミ");
     // A long translation must not make the automatic delay on its FIRST page
     // depend on the length of all unread pages that follow it.
     Reader automatic;

@@ -100,6 +100,15 @@ void republish(json next) {
     current=std::move(next);
 }
 
+json slots_json(const uint8_t* ram);
+// A language switch while a screen is open: slot titles and pak messages are
+// rebuilt in the new language along with the labels.
+void relocalize(const uint8_t* ram) {
+    if(locale==localization::catalog().locale)return;
+    if(current.value("screen",std::string())=="slots")republish(slots_json(ram));
+    labels(ram);
+}
+
 // --- Medium choice (1) ---------------------------------------------------------------
 
 json choice_json(const uint8_t* ram) {
@@ -116,7 +125,7 @@ bool choice_build(uint8_t* ram,recomp_context* ctx) {
 bool choice_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="choice")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram);
     // Once the message is up the original step counts D_801DECD8 down and leaves for
     // screen 9 without drawing; before that it only animates a cursor the page owns.
     if(pending.empty() || !idle(ram) || read(ram,message_shown,4))return false;
@@ -220,7 +229,7 @@ void write_slot(uint8_t* ram,recomp_context* ctx,unsigned slot) {
 bool slots_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
     if(!active || current.value("screen",std::string())!="slots")return false;
-    if(locale!=localization::catalog().locale)labels(ram);
+    relocalize(ram);
     if(!idle(ram))return true;
     const unsigned m=read(ram,medium,2);
     unsigned state=read(ram,mode,4);

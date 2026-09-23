@@ -26,7 +26,7 @@ struct Entry {
     std::u16string speaker, text;
     bool warm_name{};
     bool complete{};
-    std::map<std::string,std::u16string> localized;
+    std::map<std::string,std::u16string> localized, localized_speaker;
     bool notice{};   // a host line such as an upgrade refund, not a dialogue fragment
 };
 struct PageTiming {
@@ -69,7 +69,7 @@ struct Reader {
     // A host notice in every language. It goes before the fragment being read, so
     // that fragment stays last for remember() and the completion mark.
     void note(uint64_t id,std::map<std::string,std::u16string> localized,const std::string& locale) {
-        Entry entry{id,0,0,{},{},false,true,std::move(localized),true};
+        Entry entry{id,0,0,{},{},false,true,std::move(localized),{},true};
         const auto found=entry.localized.find(locale);
         if(found!=entry.localized.end())entry.text=found->second;
         auto at=history.end();
@@ -90,6 +90,7 @@ struct Reader {
             // Completed fragments can be redisplayed in full. A partial
             // fragment has no safe cross-language character-offset mapping.
             entry.text=entry.complete && found!=entry.localized.end()?found->second:std::u16string{};
+            if(const auto name=entry.localized_speaker.find(locale);name!=entry.localized_speaker.end())entry.speaker=name->second;
         }
         layout=std::move(value);page=visible=history_offset=0;
         page_started=tick=now;pending=skipping=auto_read=fast=false;

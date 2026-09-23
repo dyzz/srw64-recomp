@@ -95,6 +95,31 @@ std::string expand(const uint8_t* ram,const std::string& text) {
     }
     return result;
 }
+// The original fetcher (8008CF14) swaps the protagonists' and partners' name
+// records for the names the player entered; every other record is its text.
+uint32_t entered_name(uint16_t id) {
+    if(uint16_t(id-0x1137)<4)return 0x10F638;
+    if(uint16_t(id-0x113B)<4)return 0x10F644;
+    if(uint16_t(id-0x12A0)<4)return 0x10F650;
+    if(uint16_t(id-0x12A4)<4)return 0x10F674;
+    return 0;
+}
+std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,uint16_t id) {
+    if(const uint32_t bank=entered_name(id))
+        if(auto name=decode(ram,bank,16);!name.empty())return name;
+    const auto* value=catalog.resolve(localization::TextKey::base(0,id));
+    return value?expand(ram,*value):std::string();
+}
+// The speaker label holds its record id at +0 and the glyphs it shows at +12.
+// Show the record in the reading language while the label still shows that
+// record's Japanese text; entered names and anything else stay as drawn.
+std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::Catalog& language) {
+    const auto shown=decode(ram,label+12,20);
+    const uint16_t id=half(ram,label);
+    const auto japanese=localization::find("ja");
+    if(entered_name(id) || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    return record_text(ram,language,id);
+}
 std::string segment(const std::string& text,unsigned number) {
     size_t start=0;
     for(unsigned i=0;i<number;++i) {
@@ -128,7 +153,7 @@ void refresh(uint8_t* ram,bool create_events) {
         box.visible=true;box.active=status==1;box.text_id=half(ram,p);
         box.segment=byte(ram,p+0x215);box.palette=byte(ram,p+3);
         box.x=x+4;box.y=y+4;
-        box.speaker=utf16(decode(ram,np+12,20));
+        box.speaker=utf16(speaker_name(ram,np,localization::catalog()));
         if(box.speaker.empty()) {current[slot]={};continue;}
         const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
         const auto full=message?expand(ram,*message):decode(ram,p+12,256);
@@ -150,6 +175,7 @@ void refresh(uint8_t* ram,bool create_events) {
                 for(const auto& [locale,catalog]:localization::registered()) {
                     const auto* value=catalog->resolve(game_adapter::standard_dialogue_key(box.text_id));
                     reader.history.back().localized[locale]=utf16(segment(value?expand(ram,*value):decode(ram,p+12,256),box.segment));
+                    reader.history.back().localized_speaker[locale]=utf16(speaker_name(ram,np,*catalog));
                 }
                 srw64::state_probe::capture(ram,"dialogue-fragment",(uint32_t(box.text_id)<<8)|box.segment);
                 record("fragment",{{"event",box.event},{"slot",slot},{"text_id",box.text_id},
@@ -198,12 +224,15 @@ std::string filled(std::string text,const std::string& token,const std::string& 
     for(size_t at=text.find(token);at!=std::string::npos;at=text.find(token,at+value.size()))text.replace(at,token.size(),value);
     return text;
 }
-void refund_notice(uint16_t unit,uint32_t amount) {
+void refund_notice(const uint8_t* ram,uint16_t unit,uint32_t amount) {
     std::string name;
     for(const uint16_t code:refund::unit_name(unit))name+=glyph(code);
     std::map<std::string,std::u16string> localized;
-    for(const auto& [locale,catalog]:localization::registered())
-        localized[locale]=utf16(filled(filled(catalog->ui("refund_notice"),"{unit}",name),"{amount}",grouped(amount)));
+    for(const auto& [locale,catalog]:localization::registered()) {
+        // The unit's name in each language; the ROM glyphs when a catalog lacks it.
+        auto local=record_text(ram,*catalog,uint16_t(refund::unit_name_base+unit));
+        localized[locale]=utf16(filled(filled(catalog->ui("refund_notice"),"{unit}",local.empty()?name:local),"{amount}",grouped(amount)));
+    }
     const auto locale=localization::catalog().locale;
     const auto text=utf8(localized[locale]);
     {
@@ -378,7 +407,7 @@ void configure(const std::filesystem::path& directory) {
             cancel("script_ended");
     };
     srw64_game_hooks.choice=[](uint8_t*) {std::lock_guard lock(mutex);cancel("choice");};
-    srw64_game_hooks.refund=[](uint8_t*,uint16_t unit,uint32_t amount) {refund_notice(unit,amount);};
+    srw64_game_hooks.refund=[](uint8_t* ram,uint16_t unit,uint32_t amount) {refund_notice(ram,unit,amount);};
     record("configured",{{"mode",observe?"observe":"replace"},{"font_size",reader.font_size},
         {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision}});
 }
@@ -447,7 +476,7 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
 
 namespace srw64::dialogue {
 std::string ui_text(const uint8_t* ram,uint16_t id) {
-    const auto* value=localization::catalog().resolve(localization::TextKey::base(0,id));
-    return value?expand(ram,*value):std::to_string(id);
+    auto text=record_text(ram,localization::catalog(),id);
+    return text.empty() && !localization::catalog().resolve(localization::TextKey::base(0,id))?std::to_string(id):text;
 }
 }
