@@ -250,7 +250,8 @@
     "save_message_hint": "Enter / Z 重新检查   ·   Esc / X 返回",
     "funds_edit_hint": "输入新的资金数字   ·   Enter 写入   ·   Esc 取消",
     "dialogue_text_status": "台词文本：已载入 {n} 条，{k} 处错误（详见 dialogue-report.txt）",
-    "dialogue_reload": "重新载入台词"
+    "dialogue_reload": "重新载入台词",
+    "font_credit": "字体：HarmonyOS Sans"
   },
   "entries": [
     {

@@ -456,12 +456,16 @@ open "dist/SRW64-macos14-arm64/SRW64 Recompiled.app"
 ```
 
 On first launch, select your matching ROM; the application imports the content
-locally. ROMs, imported assets, saves and fonts are not copied into the bundle.
-The macOS build currently reads the system's Arial Unicode font file through
-FreeType/HarfBuzz. ICU retains its full data package for now.
+locally. ROMs, imported assets and saves are not copied into the bundle. The
+bundle carries HarmonyOS Sans and a small symbol font in `Contents/Resources/fonts`
+with their licences: run `tools/content/prepare_fonts.py` first, which checks
+the official HarmonyOS Sans archive (placed under `assets/`) against
+`content/fonts/harmonyos-sans.json`. ICU retains its full data package for now.
 
-首次启动选择匹配的 ROM，由应用在本地导入内容；ROM、导出素材、存档和字体不装入应用包。
-当前 macOS 版本由 FreeType/HarfBuzz 读取系统 Arial Unicode 字体，ICU 暂时保留完整数据。
+首次启动选择匹配的 ROM，由应用在本地导入内容；ROM、导出素材和存档不装入应用包。应用包在
+`Contents/Resources/fonts` 带上 HarmonyOS Sans 和一个小型符号字体及各自许可：打包前先运行
+`tools/content/prepare_fonts.py`，它按 `content/fonts/harmonyos-sans.json` 核对放在 `assets/` 下的
+HarmonyOS Sans 官方包。ICU 暂时保留完整数据。
 
 The packager checks every bundled Mach-O's deployment target and signs the app
 ad hoc for local testing; it is not notarized. Existing output is never overwritten:
@@ -544,6 +548,11 @@ See / 见 [debug interface / 调试接口与 MCP](docs/guide/debug-interface.md)
 | `reference/` | Source references / 来源参考 |
 
 ## Credits and contributing / 致谢与贡献
+
+Dialogue and native pages use the HarmonyOS Sans fonts (HarmonyOS Sans Fonts
+License Agreement; the files ship only inside the application, see
+`content/fonts/harmonyos-sans.json`). / 对白与原生页面使用 HarmonyOS Sans 字体（HarmonyOS Sans 字体许可协议，
+字体文件只随应用分发，见 `content/fonts/harmonyos-sans.json`）。
 
 Built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
 [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime), and

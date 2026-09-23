@@ -291,7 +291,7 @@ def main() -> int:
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
                    "SRW64_RULE_FIXES": ",".join(rule_fixes)}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES"):
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
@@ -300,6 +300,12 @@ def main() -> int:
         # Bundled dialogue text from the repository, the player's overrides beside the run.
         environment["SRW64_DIALOGUE_TEXT"] = str(ROOT / "content/dialogue")
         environment["SRW64_DIALOGUE_OVERRIDES"] = str(args.dialogue_overrides.resolve() if args.dialogue_overrides else output / "dialogue")
+        # HarmonyOS Sans and the symbol font, checked against content/fonts/harmonyos-sans.json.
+        sys.path.insert(0, str(ROOT / "tools/content"))
+        from prepare_fonts import OUTPUT as FONT_DIR, prepare as prepare_fonts, prepared as fonts_prepared
+        if not fonts_prepared(FONT_DIR):
+            prepare_fonts()
+        environment["SRW64_FONT_DIR"] = str(FONT_DIR)
         report["dialogue_text"] = {"bundled": environment["SRW64_DIALOGUE_TEXT"], "overrides": environment["SRW64_DIALOGUE_OVERRIDES"]}
         environment["SRW64_PRESENTATION_SETTINGS"] = str(args.presentation_settings.resolve() if args.presentation_settings else output / "presentation-settings.json")
         report["presentation_settings_path"] = environment["SRW64_PRESENTATION_SETTINGS"]

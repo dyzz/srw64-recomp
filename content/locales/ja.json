@@ -250,7 +250,8 @@
     "save_message_hint": "Enter / Z 確認   ·   Esc / X 戻る",
     "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル",
     "dialogue_text_status": "台詞テキスト：{n} 件を読み込み、エラー {k} 件（詳細は dialogue-report.txt）",
-    "dialogue_reload": "台詞を再読み込み"
+    "dialogue_reload": "台詞を再読み込み",
+    "font_credit": "フォント：HarmonyOS Sans"
   },
   "entries": [],
   "display_name": "日本語"

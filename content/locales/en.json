@@ -250,7 +250,8 @@
     "save_message_hint": "Enter / Z Check again   ·   Esc / X Back",
     "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel",
     "dialogue_text_status": "Dialogue text: {n} entries loaded, {k} errors (see dialogue-report.txt)",
-    "dialogue_reload": "Reload Dialogue Text"
+    "dialogue_reload": "Reload Dialogue Text",
+    "font_credit": "Font: HarmonyOS Sans"
   },
   "entries": [
     {

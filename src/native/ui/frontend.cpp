@@ -45,7 +45,7 @@ SystemInterface_SDL system;
 TextInput input;
 Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
-std::vector<Rml::byte> font, chinese_font;
+std::vector<Rml::byte> font, chinese_font, english_font, symbol_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 ModalInputRelease settings_release;
@@ -93,7 +93,7 @@ scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-colo
 scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background-color: #506d81; min-height: 16dp; min-width: 12dp; }
 body { display: block; width: 100%; height: 100%; margin: 0; font-family: srw64-ui; font-size: 17dp; color: #d6e2ef; }
 div,h1,h2,p { display: block; } h1 {font-size: 28dp; margin: 0 0 12dp;} h2 {font-size: 20dp; margin: 18dp 0 10dp;}
-p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;}
+p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;} p.credit {font-size: 12dp; color: #7f8fa3; margin-top: 16dp;}
 .page {width: 88%; max-width: 1080dp; margin: 24dp auto; height: 90%; overflow-y: auto;}
 button {display: inline-block; background-color: #152436; color: #d6e2ef; border: 1dp #304859; border-radius: 6dp; padding: 10dp 14dp; margin: 4dp; cursor: pointer; tab-index: auto;}
 button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: #23506a; border-color: #9be4f7;}
@@ -273,7 +273,8 @@ void settings_sync() {
     for(const auto& preset:rules::presets)body+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
     body+="<p>"+label("rules_note")+"</p>";
     if(settings::failed())body+="<p>"+label("settings_error")+"</p>";
-    body+=button("settings-close",label("link_back"))+"</div></div></div>";
+    // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
+    body+=button("settings-close",label("link_back"))+"<p class='credit'>"+label("font_credit")+"</p></div></div></div>";
     settings_doc=document(body,true);settings_doc->PullToFront();settings_doc->Focus();
 }
 void link_sync() {
@@ -1286,17 +1287,35 @@ void initialize() {
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(renderer->get_rml_interface());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
+    const auto bytes=[](const std::filesystem::path& file){std::ifstream input(file,std::ios::binary);return std::vector<Rml::byte>{std::istreambuf_iterator<char>(input),{}};};
     std::filesystem::path path;
+    const char* font_dir=std::getenv("SRW64_FONT_DIR");
     if(const char* explicit_font=std::getenv("SRW64_UI_FONT"))path=explicit_font;
+    else if(font_dir && *font_dir) {
+        // The packaged fonts (tools/content/prepare_fonts.py): SC for every
+        // language, Condensed for English documents, the symbol font last.
+        const std::filesystem::path dir(font_dir);
+        path=dir/"HarmonyOS_Sans_SC_Regular.ttf";
+        for(const auto* name:{"HarmonyOS_Sans_SC_Regular.ttf","HarmonyOS_Sans_Condensed_Regular.ttf","SRW64Symbols.ttf"})
+            if(!std::filesystem::is_regular_file(dir/name))throw std::runtime_error("Missing font "+(dir/name).string()+": run tools/content/prepare_fonts.py");
+    }
     else for(const auto* candidate:{"/System/Library/Fonts/Supplemental/Arial Unicode.ttf","C:/Windows/Fonts/msyh.ttc","/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"})
         if(std::filesystem::is_regular_file(candidate)){path=candidate;break;}
-    std::ifstream file(path,std::ios::binary);font={std::istreambuf_iterator<char>(file),{}};
+    font=bytes(path);
     if(font.empty() || !Rml::LoadFontFace(font,"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
         throw std::runtime_error("Shared UI needs a CJK font: set SRW64_UI_FONT to a local TTF/OTF/TTC file");
-    if(!std::getenv("SRW64_UI_FONT") && path.filename()=="Arial Unicode.ttf")
+    if(!std::getenv("SRW64_UI_FONT") && font_dir && *font_dir) {
+        const std::filesystem::path dir(font_dir);
+        english_font=bytes(dir/"HarmonyOS_Sans_Condensed_Regular.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
+        if(Rml::LoadFontFace(english_font,"srw64-ui-en",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
+            english_font_family()="srw64-ui-en";
+        if(!Rml::LoadFontFace(symbol_font,"srw64-ui-symbols",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
+            throw std::runtime_error("Cannot load the symbol font");
+    }
+    else if(!std::getenv("SRW64_UI_FONT") && path.filename()=="Arial Unicode.ttf")
         for(const auto* chinese:{"/System/Library/Fonts/Hiragino Sans GB.ttc"})
             if(std::filesystem::is_regular_file(chinese)) {
-                std::ifstream input(chinese,std::ios::binary);chinese_font={std::istreambuf_iterator<char>(input),{}};
+                chinese_font=bytes(chinese);
                 if(!chinese_font.empty() && Rml::LoadFontFace(chinese_font,"srw64-ui-zh",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
                     chinese_font_family()="srw64-ui-zh";
                 break;
@@ -1304,7 +1323,7 @@ void initialize() {
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,input,NameActions{names::select,names::choose,names::submit,names::review,names::validate});
-    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()}}).dump(2)<<'\n';
+    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
     int count=0;const auto* keys=SDL_GetKeyboardState(&count);

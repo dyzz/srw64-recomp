@@ -1,0 +1,13 @@
+{
+  "schema": "srw64.font-package.v1",
+  "name": "HarmonyOS Sans",
+  "note": "Dialogue and native UI fonts. The files are not in the repository: the licence allows shipping them with the game but not distributing them separately. tools/content/prepare_fonts.py extracts them from the official archive after checking these hashes. Do not use third-party mirrors.",
+  "url": "https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip",
+  "archive_sha256": "fb02c86e358cd9aad8d4dfa957ee502381e7ee2e94499a9133add4324b6ce69a",
+  "files": {
+    "HarmonyOS_Sans_SC_Regular.ttf": {"member": "HarmonyOS Sans/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf", "sha256": "297b088424be212207df2ce8b98e335468b782aa6b96832af0b8b773d711e2b1"},
+    "HarmonyOS_Sans_Condensed_Regular.ttf": {"member": "HarmonyOS Sans/HarmonyOS_Sans_Condensed/HarmonyOS_Sans_Condensed_Regular.ttf", "sha256": "ef6accddbc7c494c87f5d264cfbf1b4d7def914d115b94528ffbe71f5cc7bf80"},
+    "LICENSE-HarmonyOS-Sans.txt": {"member": "HarmonyOS Sans/HarmonyOS_Sans_SC/LICENSE.txt", "sha256": "b2ffec0e6269ee41c3b5fc0345ab37600b46d66ebea6c9c58ff37f517bdfa164"}
+  },
+  "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt"]
+}
