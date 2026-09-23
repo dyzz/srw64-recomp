@@ -1,6 +1,7 @@
 #include "link_page.hpp"
 #include "link_battler.hpp"
 #include "game_hooks.hpp"
+#include "presentation_settings.hpp"
 #include "funcs.h"
 #include <atomic>
 #include <fstream>
@@ -36,6 +37,8 @@ void record(const char* kind,const uint8_t* ram,nlohmann::json extra=nlohmann::j
 }
 
 bool begin(uint8_t* ram) {
+    // 場間画面 set to the original: the original リンク screen with an empty block.
+    if(!settings::native_intermission_ui())return false;
     std::lock_guard lock(mutex);
     const auto status=link::status(ram);
     current={++serial,true,status.joined,status.scheduled,portraits};

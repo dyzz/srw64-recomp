@@ -91,7 +91,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     if(!owned_session)owned_session=std::make_unique<Session>(options);
     auto& session=*owned_session;
     const auto language_file=session.user_dir()/"presentation.json";
-    std::string locale=options.language,battle_ui="native",intermission_ui="native";
+    std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native";
     if(fs::exists(language_file)) {
         const auto saved=read_json(language_file,65536);
         if(saved.value("schema","")!="srw64.presentation-settings.v1") {
@@ -100,6 +100,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
             if(locale.empty())locale=saved.at("locale").get<std::string>();
             battle_ui=saved.value("battle_ui","native");
             intermission_ui=saved.value("intermission_ui","native");
+            name_entry_ui=saved.value("name_entry_ui","native");
         }
     }
     if(locale.empty())locale=data.at("config").at("locale").get<std::string>();
@@ -114,7 +115,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     if(options.rules)atomic_write(rules_file,json({{"schema","srw64.rule-settings.v1"},
         {"rules_version",game.rules_version},{"fixes",rules}}).dump(2)+"\n");
     if(!options.language.empty())atomic_write(language_file,json({{"schema","srw64.presentation-settings.v1"},
-        {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui}}).dump(2)+"\n");
+        {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui}}).dump(2)+"\n");
     const auto dialogue=session.session_dir()/"dialogue.json";
     atomic_write(dialogue,data.dump()+"\n");
 

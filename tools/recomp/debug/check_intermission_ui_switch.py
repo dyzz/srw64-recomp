@@ -82,6 +82,14 @@ keys('x', pause=3)
 p = pages()
 check('original-menu', not p['menu'] and not p['upgrade'], p)
 shot('ui-switch-original-menu.png')
+# リンク (item 7) on the original menu opens the original link screen, not the native page.
+keys('down', 'down', 'down', 'down', 'down', 'down', pause=.3)
+keys('z', pause=4)
+st = status()
+check('original-link', not st['link_page'].get('visible') and not st['intermission_page'].get('visible'), {'link': st['link_page'], 'vi': st.get('vi')})
+shot('ui-switch-original-link.png')
+keys('x', pause=3)
+keys('up', 'up', 'up', 'up', 'up', 'up', pause=.3)
 
 # Back to the native pages: the original menu's cursor is still on ユニット改造.
 done = s.client.call('settings', intermission_ui='native')

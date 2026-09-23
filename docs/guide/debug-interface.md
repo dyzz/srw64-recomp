@@ -36,7 +36,7 @@
 | 场间 ユニット能力／パイロット能力 页面 | RmlUi 页面 | `ui.click --id ability:N`，或 `keys` 的方向键、Z／X、Q／E；`status.ability_page`，等待条件 `ability_page`，事件日志 `ability` |
 | 场间 のりかえ 页面：驾驶员／妖精列表、目标列表、确认 | RmlUi 页面 | `ui.click --id swap:N`／`swap-yes`／`swap-no`，或 `keys`；`status.swap_page`，等待条件 `swap_page`，事件日志 `swap` |
 | 场间 データセーブ 页面：介质选择、存档栏、覆盖确认、Pak 提示 | RmlUi 页面 | `ui.click --id save:N`／`save-yes`／`save-no`，或 `keys`；`status.save_page`，等待条件 `save_page`，事件日志 `save` |
-| 共享设置：规则、预设、语言、画面、战前确认界面、场间画面 | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定（`rules`／`images`／`locale`／`battle_ui`／`intermission_ui`） |
+| 共享设置：规则、预设、语言、画面、战前确认界面、场间画面、主角选择与姓名输入 | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定（`rules`／`images`／`locale`／`battle_ui`／`intermission_ui`／`name_entry_ui`） |
 | 游戏窗口：尺寸、前台、关闭按钮 | 窗口管理 | `window`（`width`/`height`、`front`、`close`） |
 | 正常退出 | Esc、关窗、⌘Q | `quit`，或 `keys escape`、`window close` |
 

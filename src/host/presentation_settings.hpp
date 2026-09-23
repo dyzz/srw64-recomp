@@ -25,4 +25,9 @@ void set_native_battle_ui(bool native);
 // SRW64_NATIVE_INTERMISSION=0 / SRW64_NATIVE_UPGRADE=0 force the original for a run.
 bool native_intermission_ui();
 void set_native_intermission_ui(bool native);
+// Protagonist selection and name entry on a new game: the native pages (default)
+// or the original screens. Read on the game thread when a page would open; saved as
+// name_entry_ui. SRW64_NATIVE_NAME_ENTRY=0 forces the original for a run.
+bool native_name_entry_ui();
+void set_native_name_entry_ui(bool native);
 }

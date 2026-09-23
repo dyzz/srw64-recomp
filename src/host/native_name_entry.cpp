@@ -2,6 +2,7 @@
 #include "native_dialogue.hpp"
 #include "game_adapter/name_codec.hpp"
 #include "game_hooks.hpp"
+#include "presentation_settings.hpp"
 #include "mini_stage.hpp"
 #include "funcs.h"
 #include "json/json.hpp"
@@ -76,6 +77,7 @@ void begin_selection(uint8_t* ram) {
 void begin(uint8_t* ram,unsigned person) {
     if(!enabled || !ready || overlay!=0x1090A0)return;
     std::lock_guard lock(mutex);current={};owning=false;closed=false;cursor_moves=0;
+    if(!settings::native_name_entry_ui())return;   // the original pages, chosen in the settings window
     if(person==Selection){begin_selection(ram);return;}
     current.serial=++serial;current.person=person;
     current.route=half(ram,0x1C70FA)&3;
