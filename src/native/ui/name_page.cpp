@@ -1,4 +1,5 @@
 #include "name_page.hpp"
+#include "ui_fonts.hpp"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <stdexcept>
 
@@ -137,7 +138,7 @@ input:focus { border-color: #9be4f7; } input selection { color: #0b1421; backgro
 #next { background-color: #9be4f7; color: #0b2737; margin-left: auto; }
 #error { color: #ffaaa0; min-height: 24dp; } #review { min-height: 240dp; }
 )";
-    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+"</style></head><body>"+body+"</body></rml>");
+    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body>"+body+"</body></rml>");
     if(!document)throw std::runtime_error("Cannot build name page");
     for(unsigned i=0;i<3;++i)if(auto* field=document->GetElementById("field"+std::to_string(i)))field->SetAttribute("value",utf8(request.values[i]));
     document->AddEventListener("click",this);document->AddEventListener("change",this);document->Show();context.Update();
