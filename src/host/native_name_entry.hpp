@@ -35,6 +35,8 @@ void window_claim_input(bool);
 uint16_t input(uint16_t buttons);
 Request request();
 std::string validate(const std::u16string&,unsigned field);
+// Font glyph codes (a 0xFFFF- or blank-terminated name buffer) as text; empty when unknown.
+std::u16string decode_glyphs(const std::vector<uint16_t>& codes);
 void submit(uint64_t serial,const std::array<std::u16string,3>& values,bool cancel=false);
 // Review: confirm starts the story; false returns to the protagonist editor.
 void review(uint64_t serial,bool confirm);

@@ -240,6 +240,10 @@
     "ability_pilot_hint": "Q / E 前後のパイロット   ·   Esc / X 戻る",
     "swap_list_hint": "↑↓ 選択   ·   ←→ ページ   ·   Enter / Z 決定   ·   Esc / X 戻る",
     "swap_confirm_hint": "↑↓ はい／いいえ   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "save_choice_hint": "↑↓ 選択   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "save_slots_hint": "↑↓ セーブデータ   ·   Enter / Z セーブ   ·   Esc / X 戻る",
+    "save_confirm_hint": "↑↓ はい／いいえ   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "save_message_hint": "Enter / Z 確認   ·   Esc / X 戻る",
     "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル"
   },
   "entries": [],

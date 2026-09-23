@@ -240,6 +240,10 @@
     "ability_pilot_hint": "Q / E: Previous / next pilot   ·   Esc / X: Back",
     "swap_list_hint": "↑↓ Select   ·   ←→ Page   ·   Enter / Z: Confirm   ·   Esc / X: Back",
     "swap_confirm_hint": "↑↓ Yes / No   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "save_choice_hint": "↑↓ Select   ·   Enter / Z Confirm   ·   Esc / X Back",
+    "save_slots_hint": "↑↓ Save slot   ·   Enter / Z Save   ·   Esc / X Back",
+    "save_confirm_hint": "↑↓ Yes / No   ·   Enter / Z Confirm   ·   Esc / X Back",
+    "save_message_hint": "Enter / Z Check again   ·   Esc / X Back",
     "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel"
   },
   "entries": [

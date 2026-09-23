@@ -206,6 +206,7 @@ bool owns_input() {return owning || window_owning;}
 void window_claim_input(bool value) {window_owning=value;}
 uint16_t input(uint16_t buttons) {held &= buttons;if(owns_input())held|=buttons;return buttons & ~held;}
 Request request() {std::lock_guard lock(mutex);auto result=current;if(mini_stage::quick_start())result.visible=false;return result;}
+std::u16string decode_glyphs(const std::vector<uint16_t>& codes) {return codec.decode(codes);}
 std::string validate(const std::u16string& value,unsigned field) {std::vector<uint16_t> codes;return codec.encode(value,field,codes);}
 void submit(uint64_t id,const std::array<std::u16string,3>& values,bool cancel) {
     std::lock_guard lock(mutex);

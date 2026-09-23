@@ -41,6 +41,7 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.parts_frame)srw64_game_hooks.parts_frame(ram);
     if(srw64_game_hooks.ability_frame)srw64_game_hooks.ability_frame(ram);
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
+    if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
@@ -414,6 +415,24 @@ void load_0008F4B0_func_801D2480(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 15, srw64_original_ability_pilot_step)) return;
     srw64_original_ability_pilot_step(rdram, ctx);
+}
+// データセーブ (save_page.cpp): the medium choice and the slot page, built without
+// drawing; the page runs the state machine and calls the original write routines.
+void load_0008F4B0_func_801CEA30(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 1)) return;
+    srw64_original_save_choice_open(rdram, ctx);
+}
+void load_0008F4B0_func_801CEABC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.save_step && srw64_game_hooks.save_step(rdram, ctx, 1, srw64_original_save_choice_step)) return;
+    srw64_original_save_choice_step(rdram, ctx);
+}
+void load_0008F4B0_func_801CECE8(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 9)) return;
+    srw64_original_save_slots_open(rdram, ctx);
+}
+void load_0008F4B0_func_801CEEF8(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.save_step && srw64_game_hooks.save_step(rdram, ctx, 9, srw64_original_save_slots_step)) return;
+    srw64_original_save_slots_step(rdram, ctx);
 }
 // のりかえ (swap_page.cpp): the pilot / fairy lists, the target lists and the confirm
 // page, built without drawing and stepped by the page; the swap is the original's.
