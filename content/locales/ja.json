@@ -238,6 +238,8 @@
     "ability_unit_hint": "Q / E 前後のユニット   ·   Enter / Z 武器一覧   ·   Esc / X 戻る",
     "ability_weapons_hint": "↑↓ 武器を選択   ·   ←→ ページ   ·   Esc / X 戻る",
     "ability_pilot_hint": "Q / E 前後のパイロット   ·   Esc / X 戻る",
+    "swap_list_hint": "↑↓ 選択   ·   ←→ ページ   ·   Enter / Z 決定   ·   Esc / X 戻る",
+    "swap_confirm_hint": "↑↓ はい／いいえ   ·   Enter / Z 決定   ·   Esc / X 戻る",
     "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル"
   },
   "entries": [],

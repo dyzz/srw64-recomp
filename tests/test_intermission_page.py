@@ -144,6 +144,26 @@ class UpgradePageSourceTests(unittest.TestCase):
             entries = [struct.unpack(">II", rom[table + n * 8:table + n * 8 + 8]) for n in range(23)]
             self.assertEqual([entries[n] for n in (4, 13, 14, 5, 15)], [(0x801D14BC, 0x801D1554), (0x801D16D8, 0x801D2030), (0x801D2144, 0x801D21F8), (0x801D22E0, 0x801D2378), (0x801D2480, 0x801D24C8)])
 
+    def test_swap_hooks_are_renamed_and_replaced(self):
+        generator = (ROOT / "tools/recomp/toolchain/generate_cpu.py").read_text()
+        hooks = (ROOT / "src/host/game_hooks.cpp").read_text()
+        for address, original, screen in (("801D25A4", "srw64_original_swap_pilots_open", 6), ("801D263C", "srw64_original_swap_pilots_step", 6),
+                                          ("801D2758", "srw64_original_swap_targets_open", 16), ("801D2A24", "srw64_original_swap_targets_step", 16),
+                                          ("801D2B64", "srw64_original_swap_confirm_open", 17), ("801D3A90", "srw64_original_swap_confirm_step", 17),
+                                          ("801D4164", "srw64_original_swap_fairies_open", 20), ("801D41FC", "srw64_original_swap_fairies_step", 20),
+                                          ("801D42FC", "srw64_original_swap_fairy_targets_open", 21), ("801D4578", "srw64_original_swap_fairy_targets_step", 21)):
+            self.assertIn(f'"load_0008F4B0_func_{address}": "{original}"', generator)
+            body = hooks[hooks.index(f"void load_0008F4B0_func_{address}("):]
+            body = body[:body.index("\n}\n")]
+            self.assertIn(f"{original}(rdram, ctx)", body)
+            self.assertIn(f"swap_{'build' if original.endswith('_open') else 'step'}(rdram, ctx, {screen}", body)
+        self.assertIn("if(original_screens())return false;", (ROOT / "src/host/swap_page.cpp").read_text())
+        if ROM.exists():
+            rom = ROM.read_bytes()
+            table = 0x801DC9D0 - 0x801C4500 + 0x8F4B0
+            entries = [struct.unpack(">II", rom[table + n * 8:table + n * 8 + 8]) for n in range(23)]
+            self.assertEqual([entries[n] for n in (6, 16, 17, 20, 21)], [(0x801D25A4, 0x801D263C), (0x801D2758, 0x801D2A24), (0x801D2B64, 0x801D3A90), (0x801D4164, 0x801D41FC), (0x801D42FC, 0x801D4578)])
+
     def test_screens_follow_the_intermission_ui_setting(self):
         # Every build entry point hands the screen back to the original when the
         # setting says so, closing any page still open; the setting is persisted.

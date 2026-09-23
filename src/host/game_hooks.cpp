@@ -1,4 +1,5 @@
 #include "game_hooks.hpp"
+#include "guest_memory.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
 #include "script_inject.hpp"
@@ -39,6 +40,7 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.upgrade_frame)srw64_game_hooks.upgrade_frame(ram);
     if(srw64_game_hooks.parts_frame)srw64_game_hooks.parts_frame(ram);
     if(srw64_game_hooks.ability_frame)srw64_game_hooks.ability_frame(ram);
+    if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
@@ -412,6 +414,60 @@ void load_0008F4B0_func_801D2480(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 15, srw64_original_ability_pilot_step)) return;
     srw64_original_ability_pilot_step(rdram, ctx);
+}
+// のりかえ (swap_page.cpp): the pilot / fairy lists, the target lists and the confirm
+// page, built without drawing and stepped by the page; the swap is the original's.
+void load_0008F4B0_func_801D25A4(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 6)) return;
+    srw64_original_swap_pilots_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D263C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 6, srw64_original_swap_pilots_step)) return;
+    srw64_original_swap_pilots_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D2758(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 16)) return;
+    srw64_original_swap_targets_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D2A24(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 16, srw64_original_swap_targets_step)) return;
+    srw64_original_swap_targets_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D2B64(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 17)) return;
+    srw64_original_swap_confirm_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D3A90(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 17, srw64_original_swap_confirm_step)) return;
+    srw64_original_swap_confirm_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D4164(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 20)) return;
+    srw64_original_swap_fairies_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D41FC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 20, srw64_original_swap_fairies_step)) return;
+    srw64_original_swap_fairies_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D42FC(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 21)) return;
+    srw64_original_swap_fairy_targets_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D4578(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 21, srw64_original_swap_fairy_targets_step)) return;
+    srw64_original_swap_fairy_targets_step(rdram, ctx);
+}
+// 80090778(status): osPfsIsPlug into a port bit mask, then per port +0x74 plugged and
+// +0x78 absent (stride 0x7C); an error marks every port both. The recomp runtime's
+// osPfsIsPlug aborts (the データセーブ slot screen dies in it), so answer the success
+// case with no Controller Pak anywhere: the game then keeps to its SRAM path.
+void resident_func_80090778(uint8_t* rdram, recomp_context* ctx) {
+    const uint32_t status = uint32_t(ctx->r4);
+    for (unsigned port = 0; port < 4; ++port) {
+        srw64::guest::write32(rdram, status + 0x74 + port * 0x7C, 0);
+        srw64::guest::write32(rdram, status + 0x78 + port * 0x7C, 1);
+    }
+    ctx->r2 = 0;
 }
 // Upgrade refund (upgrade_refund.hpp): the story routines that delete a player's
 // machine open a scope, and the deletion inside it pays the upgrades back.

@@ -103,6 +103,20 @@ NATIVE_HOOKS = {
     "load_0008F4B0_func_801D2378": "srw64_original_ability_pilot_list_step",
     "load_0008F4B0_func_801D2480": "srw64_original_ability_pilot_open",
     "load_0008F4B0_func_801D24C8": "srw64_original_ability_pilot_step",
+    # のりかえ screens 6 / 16 / 17 / 20 / 21 (swap_page.cpp).
+    "load_0008F4B0_func_801D25A4": "srw64_original_swap_pilots_open",
+    "load_0008F4B0_func_801D263C": "srw64_original_swap_pilots_step",
+    "load_0008F4B0_func_801D2758": "srw64_original_swap_targets_open",
+    "load_0008F4B0_func_801D2A24": "srw64_original_swap_targets_step",
+    "load_0008F4B0_func_801D2B64": "srw64_original_swap_confirm_open",
+    "load_0008F4B0_func_801D3A90": "srw64_original_swap_confirm_step",
+    "load_0008F4B0_func_801D4164": "srw64_original_swap_fairies_open",
+    "load_0008F4B0_func_801D41FC": "srw64_original_swap_fairies_step",
+    "load_0008F4B0_func_801D42FC": "srw64_original_swap_fairy_targets_open",
+    "load_0008F4B0_func_801D4578": "srw64_original_swap_fairy_targets_step",
+    # Controller Pak presence (osPfsIsPlug caller): the runtime aborts in osPfsIsPlug, so
+    # the host answers "no pak on any port" itself (game_hooks.cpp).
+    "resident_func_80090778": "srw64_original_pfs_plug_check",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }

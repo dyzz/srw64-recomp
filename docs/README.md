@@ -61,6 +61,7 @@
 | [改造画面接管](native/native-upgrade-screens.md) | ユニット改造／武器改造 五个画面：原版列表、详情与状态机的静态分析，保持原构图的 RmlUi 接管，与 15 段规则钩子的配合，实机验证与未验证清单 |
 | [強化パーツ 画面接管](native/native-parts-screens.md) | 机体列表、槽位与库存、持有者三个画面：原版列表、加成表与状态机的静态分析，保持原构图的 RmlUi 接管，装卸走原版函数，实机验证与未验证清单 |
 | [能力查看画面接管](native/native-ability-screens.md) | ユニット能力／パイロット能力 五个只读画面：列表、机体能力页、武器一览、驾驶员能力页的静态分析与 RmlUi 接管，实机验证与未验证清单 |
+| [のりかえ 画面接管](native/native-swap-screens.md) | 驾驶员／妖精列表、目标列表、确认页五个画面的静态分析与 RmlUi 接管，换乘走原版函数；测试关卡与未验证清单 |
 | [战前确认 UI](native/native-battle-ui.md) | 双方信息、武器补正与最终概率、反击／回避／防御、原游戏流程接线与迷你关卡验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
 | [macOS 兼容构建](native/macos-release.md) | 固定源码依赖、macOS 14 部署目标与本地应用打包 |

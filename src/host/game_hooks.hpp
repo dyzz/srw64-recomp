@@ -46,6 +46,10 @@ struct SRW64GameHooks {
     bool (*ability_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*ability_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
     void (*ability_frame)(uint8_t*){};
+    // のりかえ: screens 6 (pilots), 16 (machines), 17 (confirm), 20 (fairies), 21 (fairy targets).
+    bool (*swap_build)(uint8_t*, recomp_context*, unsigned screen){};
+    bool (*swap_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
+    void (*swap_frame)(uint8_t*){};
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};

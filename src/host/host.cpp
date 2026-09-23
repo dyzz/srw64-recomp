@@ -33,6 +33,7 @@
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
 #include "ability_page.hpp"
+#include "swap_page.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #endif
@@ -171,7 +172,7 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *x = *y = 0;
 #if defined(SRW64_WITH_RT64)
     srw64_keyboard_input(buttons, x, y);
-    if(srw64::battle_page::owns_input() || srw64::intermission_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::parts_page::owns_input() || srw64::ability_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
+    if(srw64::battle_page::owns_input() || srw64::intermission_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::parts_page::owns_input() || srw64::ability_page::owns_input() || srw64::swap_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
     *buttons = srw64::settings_window::filter_input(*buttons, *buttons != 0);
     *buttons = srw64::names::input(*buttons);
     *buttons = srw64::link_page::input(*buttons);
@@ -180,6 +181,7 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *buttons = srw64::upgrade_page::input(*buttons);
     *buttons = srw64::parts_page::input(*buttons);
     *buttons = srw64::ability_page::input(*buttons);
+    *buttons = srw64::swap_page::input(*buttons);
     *buttons = srw64::intro::input(*buttons);
     *buttons = srw64::mini_stage::input(*buttons);
     *buttons = srw64::dialogue::input(*buttons);
@@ -333,6 +335,7 @@ static int run_host(int argc, char** argv) {
     srw64::upgrade_page::configure(output_dir);
     srw64::parts_page::configure(output_dir);
     srw64::ability_page::configure(output_dir);
+    srw64::swap_page::configure(output_dir);
     srw64::intro::configure(output_dir);
     srw64_configure_audio(std::getenv("SRW64_AUDIO_OUTPUT") && std::string(std::getenv("SRW64_AUDIO_OUTPUT")) == "1", output_dir);
     cfg.gfx_callbacks.create_window = srw64_create_window;
