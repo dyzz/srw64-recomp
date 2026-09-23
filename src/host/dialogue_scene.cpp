@@ -202,14 +202,18 @@ Layout typeset(const std::u16string& value,double size,double width,double heigh
 double body_size(unsigned setting) {
     return localization::catalog().locale=="en"?setting*0.85:setting;
 }
-Layout typeset_body(const std::u16string& value,double size,std::vector<size_t> stops,std::vector<size_t> forced) {
-    const auto& locale=localization::catalog().locale;
+text::PageStyle body_style(const std::string& locale,std::vector<size_t> stops,std::vector<size_t> forced) {
     text::PageStyle style;
     style.height=body_height;
     style.min_spacing=locale=="en"?1.15:1.08;style.max_spacing=1.22;
     style.rank_breaks=true;style.halve_line_end=locale=="zh-Hans";
     std::sort(forced.begin(),forced.end());std::sort(stops.begin(),stops.end());
     style.forced=std::move(forced);style.sentence_ends=std::move(stops);
-    return reader_layout(text::game_fonts(locale)->layout(value,size,body_width,locale,style),body_height);
+    return style;
+}
+Layout typeset_body(const std::u16string& value,double size,std::vector<size_t> stops,std::vector<size_t> forced) {
+    const auto& locale=localization::catalog().locale;
+    return reader_layout(text::game_fonts(locale)->layout(value,size,body_width,locale,
+        body_style(locale,std::move(stops),std::move(forced))),body_height);
 }
 }

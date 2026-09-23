@@ -1,0 +1,400 @@
+{
+ "schema": "srw64.dialogue-paging-inputs.v1",
+ "about": "Inputs for tests/data/dialogue-paging-cases.json (docs/design/dialogue-typesetting.md §6). pages are one record's original pages (split at <STOP>) from content/dialogue, the protagonists named 星野翔/林美雪 (Kaito Hoshi/Mira Lin). A forced case puts a page start forced_shift UTF-16 units after the start of page forced_after_page (0-based) of the same case without it.",
+ "cases": [
+  {
+   "name": "25405 zh-Hans 13",
+   "record": 25405,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“唔……这里是……敌人！？是敌人……这个敌人，要把天空击落。”"
+   ]
+  },
+  {
+   "name": "25405 en 13",
+   "record": 25405,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“Ngh... this place... is the enemy?! The enemy... this enemy will bring down the sky.”"
+   ]
+  },
+  {
+   "name": "19552 zh-Hans 13",
+   "record": 19552,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“我是迪奥，迪奥·麦斯威尔。虽然会逃会躲，但绝不说谎",
+    "迪奥·麦斯威尔”"
+   ]
+  },
+  {
+   "name": "19552 en 13",
+   "record": 19552,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“I'm Duo, Duo Maxwell. I may run and hide, but I never tell a lie.",
+    "Duo Maxwell.”"
+   ]
+  },
+  {
+   "name": "22811 zh-Hans 13",
+   "record": 22811,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“没错，就是这个男人。肖特也是个讨厌的家伙，但这个男人的眼神",
+    "让我很在意，所以只有这点我记得很清楚。沙罗为什么会有照片？”"
+   ]
+  },
+  {
+   "name": "22811 en 13",
+   "record": 22811,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“That's right, this is the man. Shot was unpleasant too, but this man's eyes",
+    "bothered me, so that much I remember clearly. Why do you have his photo, Sara?”"
+   ]
+  },
+  {
+   "name": "23108 zh-Hans 13",
+   "record": 23108,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“那也无所谓。只是不把话说清楚，我心里不痛快。",
+    "明明问题一大堆，同伴之间还闹别扭，",
+    "总觉得不太好吧。”"
+   ]
+  },
+  {
+   "name": "23108 en 13",
+   "record": 23108,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“That's fine with me. I just couldn't rest easy unless I said it properly.",
+    "We've got plenty of problems as it is, and things being awkward",
+    "between comrades isn't good, is it?”"
+   ]
+  },
+  {
+   "name": "24093 zh-Hans 13",
+   "record": 24093,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“才、才不是那样！只是嘛，要是被敌人的子弹打中死掉也就罢了，",
+    "可要是宇航服破了个洞，空气漏光死掉什么的……",
+    "不是很讨厌吗。比如睡着的时候舰里的空气没了之类的……”"
+   ]
+  },
+  {
+   "name": "24093 en 13",
+   "record": 24093,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“I-it's not like that! It's just, dying from enemy fire is one thing,",
+    "but a hole in your suit and then you run out of air and die...",
+    "I don't want that. Like the ship running out of air while you're asleep...”"
+   ]
+  },
+  {
+   "name": "25252 zh-Hans 13",
+   "record": 25252,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“阁下您太狡猾了。阁下是必须站上世界顶点的人。",
+    "可您却任由世界陷入混乱。",
+    "我是为了辅佐阁下才上宇宙的。",
+    "而且，我已经为阁下备好了未来。”"
+   ]
+  },
+  {
+   "name": "25252 en 13",
+   "record": 25252,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“You are unfair, Your Excellency. You are a man who must stand at the pinnacle of the world.",
+    "Yet you leave the world in chaos.",
+    "I went up to space to assist you,",
+    "and I have prepared your future.”"
+   ]
+  },
+  {
+   "name": "23754 zh-Hans 13",
+   "record": 23754,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“第一次见到你时的我，连世界变成了什么样都不去想，",
+    "自己什么代价都不付，只是一味享受着幸福，",
+    "是个不谙世事的人。可是自从遇见你之后，我的命运",
+    "就发生了巨大的改变。现在……我也在用我自己的方式战斗着。”"
+   ]
+  },
+  {
+   "name": "23754 en 13",
+   "record": 23754,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“When I first met you, I never even thought about what was happening in the world.",
+    "I paid no price myself, and simply enjoyed my happiness—",
+    "I was so naive. But after meeting you, my fate",
+    "changed greatly. Now... I fight in my own way too.”"
+   ]
+  },
+  {
+   "name": "40584 zh-Hans 13",
+   "record": 40584,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“进入宇宙的旧格拉多斯人，已经逐渐迎来了作为物种的",
+    "极限。4万年前，他们的宇宙船发现了这颗行星——",
+    "地球。当时地球上，已经诞生了可称为原人类的",
+    "生命。调查的结果，判断其作为物种与自己",
+    "极为相近的旧格拉多斯人，为了延续这濒临灭绝的物种，做了一个尝试。将地球的",
+    "原人类的生命核移植到自己体内，试图再次获得强大的",
+    "生命力。",
+    "”"
+   ]
+  },
+  {
+   "name": "40584 en 13",
+   "record": 40584,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“The ancestral Gradosians who had advanced into space were already",
+    "approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,",
+    "Earth. At the time, life that could be called proto-humanity had been born on Earth.",
+    "After investigation, the ancestral Gradosians judged that as a species",
+    "it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.",
+    "By transplanting the life-core of Earth's",
+    "proto-humans into themselves, they sought to gain once more a strong",
+    "life force.”"
+   ]
+  },
+  {
+   "name": "44787 zh-Hans 13",
+   "record": 44787,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“据我听说，婴儿时期的尊所乘坐的胶囊，本应该一直保持原样才对。",
+    "是因为地壳变动，才让它冒了出来。这是其一。",
+    "其二，是发现它的地球人，……也就是",
+    "明神夫妇，教会了尊爱人之心、爱地球之心。",
+    "其三，是尊的亲生父亲不惜违抗祖尔也要送出的",
+    "五神机器人的存在。这三者哪怕缺了任何一个，",
+    "装在盖亚上的反阳子炸弹都应该已经启动了。”"
+   ]
+  },
+  {
+   "name": "44787 en 13",
+   "record": 44787,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“From what I heard, the capsule baby Takeru was in was supposed to",
+    "stay buried as it was. It was crustal movement that brought it out.",
+    "That's one. The second is that the Earthlings who found it... in other words,",
+    "the Myojin couple, taught Takeru to love people, to love the Earth.",
+    "The third is that Takeru's real father sent in the Five God Robo even",
+    "in defiance of Zuhl. If even one of those had been missing, the",
+    "antiproton bomb set in Gaiya would have gone off.”"
+   ]
+  },
+  {
+   "name": "35024 zh-Hans 13",
+   "record": 35024,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“表面上如此。现在的问题是，接下来地球圈的主导权",
+    "由谁来掌握。只要解决了这个，地球圈怎样都好办。",
+    "若是财团，那就是古老传统与格式之类的时代了。随着时间",
+    "逐渐形骸化，是不可避免的系统。若是贾米托夫的OZ，",
+    "那就是军阀政治。纷争不断的世界。这样下去两边都不好。",
+    "要治理今后时代的地球圈，需要新的天才，",
+    "你不这么觉得吗？”"
+   ]
+  },
+  {
+   "name": "35024 en 13",
+   "record": 35024,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“On the surface, yes. The real question is who will hold",
+    "control of the Earth Sphere after this. Once that's settled, the Earth Sphere can be shaped any way.",
+    "Under the Foundation, it'd be an age of old traditions and prestige. A system that",
+    "inevitably becomes an empty shell with time. Under Jamitov's OZ, it'd be",
+    "military rule. A world of endless conflict. Neither is good.",
+    "To govern the Earth Sphere in the coming era, a new genius is",
+    "needed. Don't you think so?”"
+   ]
+  },
+  {
+   "name": "17387 zh-Hans 13",
+   "record": 17387,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“‘武机霸拳流’星野翔",
+    "道谢就不必了，万丈大人”"
+   ]
+  },
+  {
+   "name": "17387 en 13",
+   "record": 17387,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“‘Buki Haken-ryu’, Kaito Hoshi.",
+    "I won't bow to you, Lord Banjo or whatever you are.”"
+   ]
+  },
+  {
+   "name": "40584 zh-Hans 10",
+   "record": 40584,
+   "locale": "zh-Hans",
+   "setting": 10,
+   "pages": [
+    "“进入宇宙的旧格拉多斯人，已经逐渐迎来了作为物种的",
+    "极限。4万年前，他们的宇宙船发现了这颗行星——",
+    "地球。当时地球上，已经诞生了可称为原人类的",
+    "生命。调查的结果，判断其作为物种与自己",
+    "极为相近的旧格拉多斯人，为了延续这濒临灭绝的物种，做了一个尝试。将地球的",
+    "原人类的生命核移植到自己体内，试图再次获得强大的",
+    "生命力。",
+    "”"
+   ]
+  },
+  {
+   "name": "40584 zh-Hans 14",
+   "record": 40584,
+   "locale": "zh-Hans",
+   "setting": 14,
+   "pages": [
+    "“进入宇宙的旧格拉多斯人，已经逐渐迎来了作为物种的",
+    "极限。4万年前，他们的宇宙船发现了这颗行星——",
+    "地球。当时地球上，已经诞生了可称为原人类的",
+    "生命。调查的结果，判断其作为物种与自己",
+    "极为相近的旧格拉多斯人，为了延续这濒临灭绝的物种，做了一个尝试。将地球的",
+    "原人类的生命核移植到自己体内，试图再次获得强大的",
+    "生命力。",
+    "”"
+   ]
+  },
+  {
+   "name": "40584 zh-Hans 18",
+   "record": 40584,
+   "locale": "zh-Hans",
+   "setting": 18,
+   "pages": [
+    "“进入宇宙的旧格拉多斯人，已经逐渐迎来了作为物种的",
+    "极限。4万年前，他们的宇宙船发现了这颗行星——",
+    "地球。当时地球上，已经诞生了可称为原人类的",
+    "生命。调查的结果，判断其作为物种与自己",
+    "极为相近的旧格拉多斯人，为了延续这濒临灭绝的物种，做了一个尝试。将地球的",
+    "原人类的生命核移植到自己体内，试图再次获得强大的",
+    "生命力。",
+    "”"
+   ]
+  },
+  {
+   "name": "40584 zh-Hans 13 forced",
+   "record": 40584,
+   "locale": "zh-Hans",
+   "setting": 13,
+   "pages": [
+    "“进入宇宙的旧格拉多斯人，已经逐渐迎来了作为物种的",
+    "极限。4万年前，他们的宇宙船发现了这颗行星——",
+    "地球。当时地球上，已经诞生了可称为原人类的",
+    "生命。调查的结果，判断其作为物种与自己",
+    "极为相近的旧格拉多斯人，为了延续这濒临灭绝的物种，做了一个尝试。将地球的",
+    "原人类的生命核移植到自己体内，试图再次获得强大的",
+    "生命力。",
+    "”"
+   ],
+   "forced_after_page": 1,
+   "forced_shift": 3
+  },
+  {
+   "name": "40584 en 10",
+   "record": 40584,
+   "locale": "en",
+   "setting": 10,
+   "pages": [
+    "“The ancestral Gradosians who had advanced into space were already",
+    "approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,",
+    "Earth. At the time, life that could be called proto-humanity had been born on Earth.",
+    "After investigation, the ancestral Gradosians judged that as a species",
+    "it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.",
+    "By transplanting the life-core of Earth's",
+    "proto-humans into themselves, they sought to gain once more a strong",
+    "life force.”"
+   ]
+  },
+  {
+   "name": "40584 en 14",
+   "record": 40584,
+   "locale": "en",
+   "setting": 14,
+   "pages": [
+    "“The ancestral Gradosians who had advanced into space were already",
+    "approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,",
+    "Earth. At the time, life that could be called proto-humanity had been born on Earth.",
+    "After investigation, the ancestral Gradosians judged that as a species",
+    "it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.",
+    "By transplanting the life-core of Earth's",
+    "proto-humans into themselves, they sought to gain once more a strong",
+    "life force.”"
+   ]
+  },
+  {
+   "name": "40584 en 18",
+   "record": 40584,
+   "locale": "en",
+   "setting": 18,
+   "pages": [
+    "“The ancestral Gradosians who had advanced into space were already",
+    "approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,",
+    "Earth. At the time, life that could be called proto-humanity had been born on Earth.",
+    "After investigation, the ancestral Gradosians judged that as a species",
+    "it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.",
+    "By transplanting the life-core of Earth's",
+    "proto-humans into themselves, they sought to gain once more a strong",
+    "life force.”"
+   ]
+  },
+  {
+   "name": "40584 en 13 forced",
+   "record": 40584,
+   "locale": "en",
+   "setting": 13,
+   "pages": [
+    "“The ancestral Gradosians who had advanced into space were already",
+    "approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,",
+    "Earth. At the time, life that could be called proto-humanity had been born on Earth.",
+    "After investigation, the ancestral Gradosians judged that as a species",
+    "it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.",
+    "By transplanting the life-core of Earth's",
+    "proto-humans into themselves, they sought to gain once more a strong",
+    "life force.”"
+   ],
+   "forced_after_page": 1,
+   "forced_shift": 3
+  }
+ ]
+}

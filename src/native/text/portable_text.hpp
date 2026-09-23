@@ -88,5 +88,18 @@ public:
     // Lines broken from the chosen page starts; pages() returns those pages.
     TextLayout layout(std::u16string text,double font_size,double width,
                       std::string locale,const PageStyle& style) const;
+    // What the page ranking works from, for the Python reference
+    // (tests/data/dialogue-paging-cases.json): the legal breaks, each
+    // grapheme's advance in its paragraph, and the greedy line from every
+    // start the ranking may try (0, legal breaks, forced starts, line ends).
+    struct PagingTrace {
+        std::vector<size_t> clusters, legal;
+        std::vector<double> advances;
+        std::vector<TextLine> lines;
+        size_t lines_per_page{};
+        double pitch{};
+    };
+    PagingTrace trace(std::u16string text,double font_size,double width,
+                      std::string locale,const PageStyle& style) const;
 };
 }
