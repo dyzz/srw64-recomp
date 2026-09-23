@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <stdexcept>
 #include <atomic>
+#include <mutex>
 #include <algorithm>
 #include <vector>
 
@@ -35,10 +36,21 @@ const std::string* Catalog::resolve(const TextKey& key) const {
     found=source.find(key.value);
     return found==source.end()?nullptr:&found->second;
 }
+const std::string* Catalog::source_text(const TextKey& key) const {
+    const auto found=source.find(key.value);
+    return found==source.end()?nullptr:&found->second;
+}
+std::shared_ptr<Catalog> Catalog::with_translations(const std::map<std::string,std::string>& entries,const std::string& layer) const {
+    auto copy=std::make_shared<Catalog>(*this);
+    for(const auto& [key,value]:entries)copy->translated[key]=value;
+    if(!entries.empty())copy->revision=revision+"+"+layer;
+    return copy;
+}
 std::string Catalog::ui(const std::string& key) const {
     auto found=labels.find(key);return found==labels.end()?key:found->second;
 }
 namespace {
+std::mutex registry;
 std::map<std::string,Snapshot> catalogs;
 std::vector<std::string> locale_order;
 std::map<std::string,std::string> locale_names;
@@ -51,8 +63,15 @@ const Catalog& catalog() {
     // the default/uninitialized test catalog as well.
     thread_local Snapshot pin;pin=snapshot();return *pin;
 }
-Snapshot find(const std::string& locale){auto it=catalogs.find(locale);return it==catalogs.end()?nullptr:it->second;}
-const std::map<std::string,Snapshot>& registered(){return catalogs;}
+Snapshot find(const std::string& locale){std::lock_guard lock(registry);auto it=catalogs.find(locale);return it==catalogs.end()?nullptr:it->second;}
+std::map<std::string,Snapshot> registered(){std::lock_guard lock(registry);return catalogs;}
+void replace(std::map<std::string,Snapshot> value) {
+    std::lock_guard lock(registry);
+    if(value.size()!=catalogs.size())throw std::runtime_error("Replacement changes the locale registry");
+    for(const auto& [locale,catalog]:value)
+        if(!catalogs.contains(locale) || !catalog || catalog->locale!=locale)throw std::runtime_error("Replacement changes the locale registry");
+    catalogs=std::move(value);
+}
 std::string next_locale(const std::string& current) {
     auto it=std::find(locale_order.begin(),locale_order.end(),current);
     if(it==locale_order.end())throw std::runtime_error("Current locale is unavailable");
@@ -94,8 +113,9 @@ void initialize(const nlohmann::json& data) {
     } else {
         for(const auto& [locale,value]:next){order.push_back(locale);names.emplace(locale,locale);}
     }
-    catalogs=std::move(next);locale_order=std::move(order);locale_names=std::move(names);
-    activate(catalogs.at(selected));
+    {std::lock_guard lock(registry);catalogs=std::move(next);}
+    locale_order=std::move(order);locale_names=std::move(names);
+    activate(find(selected));
 }
 Scope::Scope(Snapshot value):previous(scoped){if(value)scoped=std::move(value);}
 Scope::~Scope(){scoped=std::move(previous);}

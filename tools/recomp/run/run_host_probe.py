@@ -41,6 +41,8 @@ def main() -> int:
     parser.add_argument("--native-marker", type=Path, help="native GPU model pack for original JP resource 5600")
     parser.add_argument("--profile", type=Path, help="independent locale, art and native model on the original JP ROM")
     parser.add_argument("--presentation-settings", type=Path, help="persistent next-launch locale preferences; requires profile")
+    parser.add_argument("--dialogue-overrides", type=Path,
+                        help="the player's dialogue text directory (docs/guide/dialogue-text.md); default: OUTPUT/dialogue")
     parser.add_argument("--rule-settings", type=Path, help="rule file the in-game 选项 menu and settings window write back to; requires profile")
     parser.add_argument("--original-name-entry", action="store_true", help="keep the original character grid for reference runs and old N64-input fixtures")
     parser.add_argument("--language", help="override the profile locale")
@@ -289,12 +291,16 @@ def main() -> int:
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
                    "SRW64_RULE_FIXES": ",".join(rule_fixes)}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS"):
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
     if prepared_profile:
         environment["SRW64_DIALOGUE_DATA"] = report["native_dialogue"]["path"]
+        # Bundled dialogue text from the repository, the player's overrides beside the run.
+        environment["SRW64_DIALOGUE_TEXT"] = str(ROOT / "content/dialogue")
+        environment["SRW64_DIALOGUE_OVERRIDES"] = str(args.dialogue_overrides.resolve() if args.dialogue_overrides else output / "dialogue")
+        report["dialogue_text"] = {"bundled": environment["SRW64_DIALOGUE_TEXT"], "overrides": environment["SRW64_DIALOGUE_OVERRIDES"]}
         environment["SRW64_PRESENTATION_SETTINGS"] = str(args.presentation_settings.resolve() if args.presentation_settings else output / "presentation-settings.json")
         report["presentation_settings_path"] = environment["SRW64_PRESENTATION_SETTINGS"]
         if args.rule_settings:

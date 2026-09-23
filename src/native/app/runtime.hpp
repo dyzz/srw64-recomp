@@ -26,6 +26,9 @@ fs::path default_user_dir();
 fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);
 void atomic_write(const fs::path& path, std::string_view text);
+// A file or directory shipped with the program: Contents/Resources/<name> in a
+// macOS bundle, else <name> beside the executable; empty when there is none.
+fs::path bundled_resource(const std::string& name);
 void set_environment(const std::string& key, const std::string& value);
 void clear_runtime_environment();
 

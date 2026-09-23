@@ -56,6 +56,8 @@ void configure(const std::filesystem::path&);
 uint64_t request_locale(const std::string& locale);
 struct LocaleStatus {uint64_t request{},completed{};std::string locale,error;};
 LocaleStatus locale_status();
+// Read the dialogue text files again at the next game step (F5, app menu).
+void request_reload();
 uint16_t input(uint16_t);
 void overlay_loaded(uint32_t rom);
 std::shared_ptr<const Frame> take_frame(uint32_t start, uint32_t size, std::vector<uint8_t>& display, const uint8_t* ram);

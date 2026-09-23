@@ -1317,8 +1317,9 @@ void sync() {
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();mini_sync();
-    app_menu::update(language->ui("settings_open"));
+    app_menu::update(language->ui("settings_open"),language->ui("dialogue_reload"));
     if(app_menu::take_settings_request())choose("settings-open");
+    if(app_menu::take_reload_request())srw64::dialogue::request_reload();
     settings_sync();notices_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));

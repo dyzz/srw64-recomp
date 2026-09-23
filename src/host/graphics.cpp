@@ -516,6 +516,12 @@ void srw64_update_window(void*) {
         if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F8 && !event.key.repeat &&
            SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
             srw64::mini_stage::hotkey();
+#ifdef SRW64_NATIVE_DIALOGUE
+        // F5 reads the dialogue text files again (docs/guide/dialogue-text.md).
+        if(!editing_name && event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F5 && !event.key.repeat &&
+           SDL_GetKeyboardFocus()==window && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL)))
+            srw64::dialogue::request_reload();
+#endif
         if (event.type == SDL_QUIT || (event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE && event.window.windowID==SDL_GetWindowID(window)) || (!editing_name && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && SDL_GetKeyboardFocus() == window)) {
             fprintf(stderr, "SRW64_WINDOW_QUIT event=%u vi=%llu\n", event.type, (unsigned long long)srw64_current_vi());
             ultramodern::quit();
@@ -536,6 +542,9 @@ void srw64_update_window(void*) {
         if (editing_name) continue;
         if (key == srw64::debug::F6) srw64::presentation::image_mode.toggle();
         else if (key == srw64::debug::F8) srw64::mini_stage::hotkey();
+#ifdef SRW64_NATIVE_DIALOGUE
+        else if (key == srw64::debug::F5) srw64::dialogue::request_reload();
+#endif
         else if (key == srw64::debug::Escape) {
             fprintf(stderr, "SRW64_WINDOW_QUIT event=debug vi=%llu\n", (unsigned long long)srw64_current_vi());
             ultramodern::quit();

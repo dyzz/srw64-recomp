@@ -40,9 +40,9 @@ class DebugCoverageTests(unittest.TestCase):
 
     def test_every_hotkey_has_a_virtual_press(self):
         handled = set(re.findall(r"event\.key\.keysym\.sym ?== ?SDLK_(\w+)", self.graphics))
-        self.assertEqual(handled, {"F6", "F8", "ESCAPE"})
+        self.assertEqual(handled, {"F5", "F6", "F8", "ESCAPE"})
         virtual = set(re.findall(r"key ?== ?srw64::debug::(\w+)", self.graphics))
-        self.assertTrue({"F6", "F8", "Escape"} <= virtual)
+        self.assertTrue({"F5", "F6", "F8", "Escape"} <= virtual)
         # F7 shares the SDL path, including composition and repeat suppression.
         shared = (ROOT / "src/native/ui/frontend.cpp").read_text()
         self.assertIn("SDLK_F7", shared)

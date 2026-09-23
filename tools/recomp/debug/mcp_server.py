@@ -20,7 +20,7 @@ INSTRUCTIONS = """Drive the SRW64 native host for debugging. Start with srw64_la
 session started with tools/recomp/debug/srw64ctl.py), then read srw64_status and take
 srw64_screenshot. Two input layers:
 - srw64_keys: the game keyboard (Z=A, X=B, Enter=START, arrows, E=R, Q=L, I/K=C-up/down,
-  WASD stick, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
+  WASD stick, F5 reload dialogue text, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
   window focus not required. Reading controls: E+Z fast-forward, E+Enter skip, I/K text size.
 - srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the shared SDL/RmlUi UI that
   replaces game screens (name page, settings window, menu bar), by generic keyboard and mouse.
@@ -41,7 +41,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"run": {"type": "string"}}}},
     {"name": "srw64_status", "description": "VI, window, locale, image mode, rules, title/intro state, the dialogue reader (page, text size, speed, history, skip) with its boxes, the name page, the Link Battler page, recent native notices (banners), native UI windows and focus, held keys.",
      "inputSchema": {"type": "object", "properties": {"history": {"type": "boolean", "description": "include the full dialogue history"}}}},
-    {"name": "srw64_keys", "description": "Game keyboard. Either {press, hold_ms} or a list of steps: {press|down|up: \"e+z\", hold_ms}, {wait_ms}, {release_all: true}. Keys: z x space return up down left right q e i k j l w a s d escape f6 f7 f8.",
+    {"name": "srw64_keys", "description": "Game keyboard. Either {press, hold_ms} or a list of steps: {press|down|up: \"e+z\", hold_ms}, {wait_ms}, {release_all: true}. Keys: z x space return up down left right q e i k j l w a s d escape f6 f7 f8 f5.",
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string"}, "hold_ms": {"type": "integer"},
          "steps": {"type": "array", "items": {"type": "object"}}}}},

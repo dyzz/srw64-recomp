@@ -63,6 +63,16 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertIn("--verify", signing[-1])
         self.assertFalse(any("--deep" in c for c in signing if "--sign" in c))
 
+    def test_dialogue_text_is_copied_as_text_only(self):
+        dialogue = self.root / "dialogue"
+        (dialogue / "zh-Hans/story").mkdir(parents=True)
+        (dialogue / "zh-Hans/story/scene-0001.txt").write_text("@17412\n译文\n", encoding="utf-8")
+        (dialogue / "zh-Hans/notes.json").write_text("{}")
+        result = self.stage(dialogue=dialogue)
+        files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
+        self.assertIn("Contents/Resources/dialogue/zh-Hans/story/scene-0001.txt", files)
+        self.assertFalse(any(f.endswith("notes.json") for f in files))
+
     def test_explicit_runtime_library_and_dependency_search(self):
         libraries = self.root / "linked libs"
         libraries.mkdir()
