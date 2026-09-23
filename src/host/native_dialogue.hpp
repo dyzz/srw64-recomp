@@ -32,6 +32,9 @@ struct Frame {
     AdvanceProgress advance;
     unsigned font_size=13, speed{};
     bool auto_read{}, history_open{}, fast{}, skipping{};
+    // Battle quotes: the translation replaces the drawn text, the original keeps
+    // its own pacing, so there are no reading controls to show.
+    bool display_only{};
     size_t history_offset{};
     std::array<Box,2> boxes;
     std::deque<Entry> history;

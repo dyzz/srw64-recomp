@@ -24,7 +24,7 @@ std::recursive_mutex mutex;
 std::atomic<uint16_t> raw_buttons{};
 std::atomic_bool owns_input{};
 uint16_t consumed_hold{};
-bool enabled{}, observe{}, scene_supported{};
+bool enabled{}, observe{}, scene_supported{}, display_only{};
 uint32_t overlay{}, executing_owner{}, reading_owner{}, skip_owner{};
 uint64_t generation{}, event_serial{};
 std::array<uint64_t,2> loads{}, events{};
@@ -120,6 +120,12 @@ std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::C
     if(entered_name(id) || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,language,id);
 }
+// A battle quote cannot be paged: the original advances it on its own clock.
+// Shrink the text until it fits the box; the log names any that still overflow.
+Layout fitted(const std::u16string& body,unsigned size) {
+    for(unsigned s=size;s>9;--s)if(auto layout=typeset(body,s);layout.pages.size()<=1)return layout;
+    return typeset(body,9);
+}
 std::string segment(const std::string& text,unsigned number) {
     size_t start=0;
     for(unsigned i=0;i<number;++i) {
@@ -166,9 +172,15 @@ void refresh(uint8_t* ram,bool create_events) {
         box.event=events[slot];
         if(current[slot].event==box.event && current[slot].layout.text==body &&
            reader.font_size==reader_font_size)box.layout=current[slot].layout;
-        else box.layout=typeset(body,reader.font_size);
+        else {
+            box.layout=display_only?fitted(body,reader.font_size):typeset(body,reader.font_size);
+            if(display_only && box.layout.pages.size()>1)record("battle_overflow",{{"text_id",box.text_id},{"segment",box.segment},{"pages",box.layout.pages.size()}});
+        }
         box.page=0;box.revealed=body.size();
-        if(box.active) {
+        if(display_only) {
+            if(box.event!=current[slot].event)record("battle_quote",{{"event",box.event},{"slot",slot},{"text_id",box.text_id},
+                {"segment",box.segment},{"speaker",utf8(box.speaker)},{"text",utf8(body)},{"guest_mode",byte(ram,p+0x20E)}});
+        } else if(box.active) {
             ++active_count;
             if(create_events && reader.event!=box.event) {
                 reader.begin(box.event,box.text_id,box.segment,box.speaker,box.layout,srw64_current_vi());
@@ -191,7 +203,7 @@ void refresh(uint8_t* ram,bool create_events) {
         current[slot]=std::move(box);
     }
     reader_font_size=reader.font_size;
-    reader.active=active_count==1;
+    reader.active=!display_only && active_count==1;
     owns_input=reader.active && !observe;
 }
 json state_snapshot() {
@@ -213,7 +225,7 @@ json state_snapshot() {
     return state;
 }
 // Upgrade refund (upgrade_refund.hpp): a history line in every language and a
-// banner in the current one. The machine name stays in the original Japanese.
+// banner in the current one, the machine named in each language.
 std::string grouped(uint32_t value) {
     const auto digits=std::to_string(value);
     std::string result;
@@ -368,7 +380,7 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     frame->catalog=localization::snapshot();
     frame->reading_event=reader.event;frame->advance=reader.advance_progress();
     frame->speed=reader.speed;frame->auto_read=reader.auto_read;frame->fast=reader.fast;
-    frame->history_open=reader.history_open;frame->skipping=reader.skipping;
+    frame->history_open=reader.history_open;frame->skipping=reader.skipping;frame->display_only=display_only;
     frame->history=reader.history;frame->history_offset=reader.history_offset;
     drawings.publish(begin,end,frame);
 }
@@ -426,7 +438,9 @@ uint16_t input(uint16_t buttons) {
 void overlay_loaded(uint32_t rom) {
     if(!enabled)return;
     std::lock_guard lock(mutex);
-    overlay=rom;scene_supported=rom==0xA7EC0 || rom==0xAB160;
+    // World map and tactical map script dialogue; battle quotes (0x121560) use the
+    // same boxes but are only redrawn, never read or paced by the native reader.
+    overlay=rom;scene_supported=rom==0xA7EC0 || rom==0xAB160 || rom==0x121560;display_only=rom==0x121560;
     cancel("overlay_changed");drawings.clear();identities={};loads={};events={};
 }
 std::shared_ptr<const Frame> take_frame(uint32_t start,uint32_t size,std::vector<uint8_t>& display,const uint8_t* ram) {

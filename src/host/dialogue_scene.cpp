@@ -143,7 +143,7 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
     // speaker/STOP fragment arrives. Keep the shared controls visible for the
     // visible dialogue, independently of which panel currently owns reading.
     const auto visible=[](const Box& box){return box.visible && !box.layout.pages.empty();};
-    if(std::any_of(frame.boxes.begin(),frame.boxes.end(),visible)) {
+    if(!frame.display_only && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible)) {
         const auto& catalog=localization::catalog();
         const auto status=frame.skipping?catalog.ui("skip"):frame.fast?catalog.ui("fast"):frame.auto_read?
             catalog.ui("auto")+" "+std::to_string(frame.speed)+"/"+std::to_string(Reader::max_speed):catalog.ui("manual");
