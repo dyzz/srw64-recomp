@@ -238,6 +238,7 @@ in progress.
 | Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. |
 | Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
 | Gameplay | Optional rule corrections for original defects (ESP / Aura Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
+| Native screens | The pre-battle page (both sides, weapon modifiers, final hit, damage and critical rates, counter / evade / defend) and every intermission screen (main menu, unit and weapon upgrades, parts, unit and pilot abilities, pilot swap, data save, link) are RmlUi pages that keep the original composition and call the original routines to apply each choice. Three switches in Settings return the pre-battle page, the intermission screens and the name pages to the original screens. See the [pre-battle page](docs/native/native-battle-ui.md) and the [intermission menu](docs/native/native-intermission-menu.md). |
 | Link Battler | Choosing **リンク** in the intermission opens a native page instead of reading a Game Boy cartridge through the Transfer Pak: tick Gundam F91, GoShogun or Zambot 3, and the original link screen and special stage bring their pilots and machines into the team. See [Link Battler](docs/gameplay/link-battler.md). |
 | Settings | **Application menu → Settings…** (**⌘,**) opens the shared SDL/RmlUi settings page; **Esc** returns to the game. Rules and language are saved; image selection applies to the current session. |
 | Saves | Isolated SRAM session history, integrity checks, and explicit recovery. A first-stage clear save has been cold-loaded into intermission. Full-state safe-node autosave remains a prototype. |
@@ -312,7 +313,9 @@ GitHub Actions is disabled; build and validation commands run locally.
   autosave, reliable turn rollback, and arbitrary save states are not available.
 - HD artwork is experimental and remains local. Screenshots showing it do not
   imply the assets are bundled or that all scenes have HD replacements.
-- Only macOS is supported. Game controllers are not wired up yet (keyboard only).
+- Only macOS is supported. The first connected game controller maps onto the N64
+  buttons for the game and the pre-battle page; the other native pages take
+  keyboard and mouse only. No physical controller has been tried yet.
 - Full translation and HD artwork come after the current feature and gameplay
   work; see the [internal MOD roadmap](docs/design/mod-roadmap.md).
 
@@ -340,6 +343,7 @@ GitHub Actions is disabled; build and validation commands run locally.
 | 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、按住快进、跳过（开场文字与路线序章同样可跳）和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
 | 主角与姓名 | 游戏窗口内的现代页面：先从四张卡片（超级系／真实系 × 男／女）中选主角，再填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
 | 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破、剧情移除机体时退回改造资金并提示）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
+| 原生画面 | 战前确认页（双方信息、武器补正与最终命中／伤害／暴击率、反击／回避／防御）和场间全部画面（主菜单、机体与武器改造、強化パーツ、机体与驾驶员能力、のりかえ、データセーブ、リンク）都是保持原构图的 RmlUi 页面，选择结果交给原版例程执行。设置页的三个开关可把战前页、场间画面和姓名页分别切回原版画面。见[战前确认 UI](docs/native/native-battle-ui.md)、[场间主菜单接管](docs/native/native-intermission-menu.md)。 |
 | Link Battler 联动 | 整备画面选「リンク」时打开原生页面，不再经 64GB Pak 读 Game Boy 卡带：勾选高达 F91、GoShogun 或赞博特3 后照常进入原版联动画面，特别关卡让这些驾驶员与机体加入部队。见 [Link Battler 联动](docs/gameplay/link-battler.md)。 |
 | 设置 | 顶部应用菜单「设置…」（**⌘,**）打开共享 SDL/RmlUi 设置页，**Esc** 返回游戏；规则和语言会保存，画面选择用于当前会话。 |
 | 存档 | 隔离的 SRAM 会话历史、完整性检查和显式恢复；第一话通关档已冷启动恢复到整备。完整状态的安全节点自动保存仍是原型。 |
@@ -397,7 +401,8 @@ GitHub Actions 保持关闭，构建和验证均在本地执行。
 - 保留原版每帧随机时序。对白跳过对照已复现时序差异，战斗动画跳过的等价性仍未验证。
 - 原版 SRAM 不完整恢复随机状态。完整状态自动保存、可靠的回合回退和任意时刻即时存档尚不可用。
 - HD 美术属于本地实验，展示截图不意味着仓库附带素材，也不意味着全部场景已高清化。
-- 只支持 macOS；手柄尚未接入，目前只能用键盘。
+- 只支持 macOS。第一个连接的手柄映射到 N64 按键，游戏本身和战前确认页可用；其他原生页面仍只接受
+  键盘和鼠标。尚未用实体手柄试过。
 - 全文翻译与 HD 美术排在当前的功能与游戏性工作之后，见[内置 MOD 路线图](docs/design/mod-roadmap.md)。
 
 <a name="build-macos-app"></a>
