@@ -57,6 +57,8 @@
 | [高清对白实现](native/native-dialogue-runtime-hd.md) | 实际地图／边框资源高清替换与蓝色人名 |
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
+| [场间主菜单接管](native/native-intermission-menu.md) | 原版调度表、布局表、面板几何与 8 张背景的静态分析；保持原构图的 RmlUi 接管、实机验证（12 项）与未验证清单 |
+| [改造画面接管](native/native-upgrade-screens.md) | ユニット改造／武器改造 五个画面：原版列表、详情与状态机的静态分析，保持原构图的 RmlUi 接管，与 15 段规则钩子的配合，实机验证与未验证清单 |
 | [战前确认 UI](native/native-battle-ui.md) | 双方信息、武器补正与最终概率、反击／回避／防御、原游戏流程接线与迷你关卡验证 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
 | [macOS 兼容构建](native/macos-release.md) | 固定源码依赖、macOS 14 部署目标与本地应用打包 |

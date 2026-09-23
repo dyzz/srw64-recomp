@@ -70,7 +70,6 @@
     "rule_upgrade_cap_break": "Upgrade cap: every unit up to 15 (original: 6–15 per unit)",
     "rule_upgrade_refund": "Departure refund: story removals return upgrade funds",
     "refund_notice": "{unit} left the team — {amount} in upgrade funds refunded",
-    "link_section": "Link Battler",
     "link_title": "Choose Series to Link",
     "link_hint": "Checked series join in a special stage before the next battle. The original link screen follows.",
     "link_series_f91": "Mobile Suit Gundam F91",
@@ -211,7 +210,20 @@
     "battle_first_player": "Player first",
     "battle_first_enemy": "Enemy first",
     "battle_barrier": "Barrier",
-    "battle_spirit_hint": "SP is deducted from each pilot · Active spirits cannot be cancelled"
+    "battle_spirit_hint": "SP is deducted from each pilot · Active spirits cannot be cancelled",
+    "intermission_episode": "Stage {n}",
+    "intermission_hint": "↑↓ Select   ·   Enter / Z: Confirm   ·   or click an item",
+    "intermission_swap_hint": "↑↓ Select   ·   Enter / Z: Confirm   ·   Esc / X: Close",
+    "intermission_swap_refused": "Nobody can be reassigned right now.",
+    "upgrade_list_hint": "↑↓ Select   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "upgrade_list_hint_pages": "↑↓ Select   ·   ←→ Page   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "upgrade_stats_hint": "↑↓ Select a stat   ·   Enter / Z: Upgrade   ·   Esc / X: Back",
+    "upgrade_confirm_hint": "Enter / Z: Confirm   ·   Esc / X: Cancel",
+    "upgrade_message_hint": "Enter / Esc: Close",
+    "upgrade_weapons_hint": "↑↓ Select a weapon   ·   Enter / Z: Upgrade   ·   Esc / X: Back",
+    "upgrade_weapons_hint_pages": "↑↓ Select a weapon   ·   ←→ Page   ·   Enter / Z: Upgrade   ·   Esc / X: Back",
+    "upgrade_cap_original": "Original cap {n} ▶▷   ·   Beyond it ●☆",
+    "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel"
   },
   "entries": [
     {
@@ -248,6 +260,12 @@
       "key": "base:t00_00230",
       "source_sha256": "563bd4d3a121b07659851b605b892322355b48b6af59ba1f851dd72c506243bf",
       "target": "Exit<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_00282",
+      "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
+      "target": "Launch! Simurgh<END>",
       "review_status": "draft"
     },
     {
@@ -404,6 +422,90 @@
       "key": "base:t00_00526",
       "source_sha256": "b6402db55ed0b8f55f203586d69c40158d8a74bce4fcc1ee81860a929c07d5ef",
       "target": "Save<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04044",
+      "source_sha256": "1037566d4be91a4e998e1f0a0e0f076f2ef035243ffd0f8342b894cb3583785e",
+      "target": "Intermission<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04045",
+      "source_sha256": "77d4fe876627b7e534de1ea1f345bb68a37abf7fd382010126167db2e051e261",
+      "target": "Save Data<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04046",
+      "source_sha256": "00ef6e77aa7dc1b6297b61da3eabc42188e70fb997f4973d1ff7c91ce61539e2",
+      "target": "Upgrade Units<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04047",
+      "source_sha256": "25a71e16b4f0f03c07bb1fe26aba6d22f40b998d37747727729c165e933b42e3",
+      "target": "Upgrade Weapons<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04048",
+      "source_sha256": "69ea206b0ef53d25d607d5996bdd12182734572e3bd3a18be61597bf1a729554",
+      "target": "Unit Status<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04049",
+      "source_sha256": "80d672d5c9801c74ab45484a201f74ea7f10f3a5176707e452228709f6da66c6",
+      "target": "Pilot Status<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04050",
+      "source_sha256": "f2808c60f4e08d8c378860568dbb7eefe0192643880f589685eb6865a590e8e6",
+      "target": "Reassign<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04051",
+      "source_sha256": "5d9cd2569803634e6d20e6f3f948f54f5490563935f17b5067f72330912797e1",
+      "target": "Parts<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04052",
+      "source_sha256": "30f0f3b7d4e8793032df0851eb4e9a4fb578f034d6a011d548e938fb60ffa77f",
+      "target": "Link<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04053",
+      "source_sha256": "db93b0e39eb029aed7f967b9e5d81c75f4dcf2deb7143c60a91653e383f7efa2",
+      "target": "Next Stage<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04054",
+      "source_sha256": "779baf18b4f0e3f5d523a1d93c814979f401807e9a87843d1b6cfe2a48fa815b",
+      "target": "Total Turns<BR>Funds<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04064",
+      "source_sha256": "44ef33d661d3c7861752d739b8deb05859f1ad1420956b10e3bf39f866db6376",
+      "target": "Cleared<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04076",
+      "source_sha256": "8c468917b784a69eadda23d2ad7e25d169156057ffe6197a9628e910735e1575",
+      "target": "Pilot<END>",
+      "review_status": "draft"
+    },
+    {
+      "key": "base:t00_04098",
+      "source_sha256": "cf74f0d70858cb491926a580ed4d0036976dee96e5e2e682502b5a9b7e3110ff",
+      "target": "Fairy<END>",
       "review_status": "draft"
     },
     {

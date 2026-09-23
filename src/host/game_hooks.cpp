@@ -35,6 +35,8 @@ void resident_func_80082334(uint8_t* ram,recomp_context* ctx) {
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
+    if(srw64_game_hooks.intermission_frame)srw64_game_hooks.intermission_frame(ram);
+    if(srw64_game_hooks.upgrade_frame)srw64_game_hooks.upgrade_frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
@@ -278,19 +280,40 @@ void resident_func_800A5F84(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_weapon_twin_sync(rdram, ctx);
     upgrades::steer_unlock(rdram, unit, weapon);
 }
+// The machine lists of ユニット改造 / 武器改造 and the five-stat screen: the native
+// page (upgrade_page.cpp) may build them without drawing and answer their steps.
+void load_0008F4B0_func_801CF388(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, false)) return;
+    srw64_original_upgrade_list_open(rdram, ctx);
+}
+void load_0008F4B0_func_801CF564(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.upgrade_list_step && srw64_game_hooks.upgrade_list_step(rdram, ctx, srw64_original_upgrade_list_step)) return;
+    srw64_original_upgrade_list_step(rdram, ctx);
+}
+void load_0008F4B0_func_801D03D0(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, true)) return;
+    srw64_original_weapon_list_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D04A4(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.upgrade_list_step && srw64_game_hooks.upgrade_list_step(rdram, ctx, srw64_original_weapon_list_step)) return;
+    srw64_original_weapon_list_step(rdram, ctx);
+}
 void load_0008F4B0_func_801CF680(uint8_t* rdram, recomp_context* ctx) {
     // Upgrade screen set-up; prints the unit's cap.
     upgrades::Scope scope(rdram, upgrades::Policy::decide);
+    if (srw64_game_hooks.upgrade_stats_build && srw64_game_hooks.upgrade_stats_build(rdram, ctx)) return;
     srw64_original_upgrade_open(rdram, ctx);
 }
 void load_0008F4B0_func_801C80E0(uint8_t* rdram, recomp_context* ctx) {
     // Five stats: values, next-level preview and gauges.
+    if (srw64_game_hooks.upgrade_stats_view && srw64_game_hooks.upgrade_stats_view(rdram)) return;
     upgrades::Scope scope(rdram, upgrades::Policy::stats_view);
     srw64_original_upgrade_stats_view(rdram, ctx);
 }
 void load_0008F4B0_func_801CF988(uint8_t* rdram, recomp_context* ctx) {
     // Five stats: cursor, price, "can upgrade" and the confirmed upgrade.
     upgrades::Scope scope(rdram, upgrades::Policy::decide);
+    if (srw64_game_hooks.upgrade_stats_step && srw64_game_hooks.upgrade_stats_step(rdram, ctx)) return;
     srw64_original_upgrade_stats_step(rdram, ctx);
 }
 void load_0008F4B0_func_801CF85C(uint8_t* rdram, recomp_context* ctx) {
@@ -298,14 +321,25 @@ void load_0008F4B0_func_801CF85C(uint8_t* rdram, recomp_context* ctx) {
     upgrades::Scope scope(rdram, upgrades::Policy::original);
     srw64_original_upgrade_ew_check(rdram, ctx);
 }
+void load_0008F4B0_func_801D0600(uint8_t* rdram, recomp_context* ctx) {
+    // 武器改造 weapon list build, with the full-upgrade bonus message.
+    if (srw64_game_hooks.weapon_list_build && srw64_game_hooks.weapon_list_build(rdram, ctx)) return;
+    srw64_original_weapon_screen_open(rdram, ctx);
+}
+void load_0008F4B0_func_801D087C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.weapon_list_step && srw64_game_hooks.weapon_list_step(rdram, ctx)) return;
+    srw64_original_weapon_screen_step(rdram, ctx);
+}
 void load_0008F4B0_func_801D0C7C(uint8_t* rdram, recomp_context* ctx) {
     // Selected weapon: price, power preview, gauge, "cannot upgrade further".
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
+    if (srw64_game_hooks.weapon_confirm_build && srw64_game_hooks.weapon_confirm_build(rdram, ctx)) return;
     srw64_original_upgrade_weapon_view(rdram, ctx);
 }
 void load_0008F4B0_func_801D1100(uint8_t* rdram, recomp_context* ctx) {
     // Selected weapon: the confirmed upgrade and full-upgrade weapons.
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
+    if (srw64_game_hooks.weapon_confirm_step && srw64_game_hooks.weapon_confirm_step(rdram, ctx)) return;
     srw64_original_upgrade_weapon_step(rdram, ctx);
 }
 // Upgrade refund (upgrade_refund.hpp): the story routines that delete a player's
@@ -360,6 +394,15 @@ void load_0008F4B0_func_801D6FF4(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.link_begin && srw64_game_hooks.link_begin(rdram)) return;
     srw64::link::prepare(rdram, 0);
     srw64_original_link_open(rdram, ctx);
+}
+void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
+    // インターミッション menu build: panels, numbers, cursor. The native page shows them.
+    if (srw64_game_hooks.intermission_build && srw64_game_hooks.intermission_build(rdram, ctx)) return;
+    srw64_original_intermission_menu_build(rdram, ctx);
+}
+void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.intermission_step && srw64_game_hooks.intermission_step(rdram, ctx)) return;
+    srw64_original_intermission_menu_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D70FC(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.link_step && srw64_game_hooks.link_step(rdram, ctx)) return;

@@ -7,12 +7,15 @@
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
 #include "battle_page.hpp"
+#include "intermission_page.hpp"
+#include "upgrade_page.hpp"
 #include "mini_stage.hpp"
 #include "presentation_settings.hpp"
 #include "presentation/image_mode.hpp"
 #include "rule_fixes.hpp"
 #include "settings_window.hpp"
 #include "notices.hpp"
+#include "guest_memory.hpp"
 #include "localization/catalog.hpp"
 #include <cerrno>
 #include <csignal>
@@ -113,7 +116,7 @@ json status(const json& params) {
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"notices",notices::recent()}};
+        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};

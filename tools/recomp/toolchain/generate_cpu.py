@@ -60,6 +60,12 @@ NATIVE_HOOKS = {
     "load_000AB160_func_8020ABB4": "srw64_original_deploy_record",
     "resident_func_800A5254": "srw64_original_unit_stats",
     "resident_func_800A5F84": "srw64_original_weapon_twin_sync",
+    "load_0008F4B0_func_801CF388": "srw64_original_upgrade_list_open",
+    "load_0008F4B0_func_801CF564": "srw64_original_upgrade_list_step",
+    "load_0008F4B0_func_801D03D0": "srw64_original_weapon_list_open",
+    "load_0008F4B0_func_801D04A4": "srw64_original_weapon_list_step",
+    "load_0008F4B0_func_801D0600": "srw64_original_weapon_screen_open",
+    "load_0008F4B0_func_801D087C": "srw64_original_weapon_screen_step",
     "load_0008F4B0_func_801CF680": "srw64_original_upgrade_open",
     "load_0008F4B0_func_801C80E0": "srw64_original_upgrade_stats_view",
     "load_0008F4B0_func_801CF988": "srw64_original_upgrade_stats_step",
@@ -75,6 +81,10 @@ NATIVE_HOOKS = {
     "resident_func_800910C4": "srw64_original_gbpak_check_title",
     "resident_func_80091120": "srw64_original_gbpak_enable_ram",
     "resident_func_80091284": "srw64_original_gbpak_transfer",
+    # インターミッション main menu: the build draws nothing and the step takes the
+    # native page's answers (intermission_page.cpp).
+    "load_0008F4B0_func_801CDFB0": "srw64_original_intermission_menu_build",
+    "load_0008F4B0_func_801CE19C": "srw64_original_intermission_menu_step",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }

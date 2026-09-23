@@ -22,7 +22,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
 # The Link Battler series page in front of the リンク screen.
 UI_KEYS |= {"link_back", "link_confirm", "link_crew_f91", "link_crew_goshogun", "link_crew_label",
             "link_crew_zambot", "link_hint", "link_joined", "link_keyboard_hint", "link_lead_f91",
-            "link_lead_goshogun", "link_lead_zambot", "link_scheduled", "link_section", "link_series_f91",
+            "link_lead_goshogun", "link_lead_zambot", "link_scheduled", "link_series_f91",
             "link_series_goshogun", "link_series_zambot", "link_ticked", "link_title", "link_units_f91",
             "link_units_goshogun", "link_units_zambot"}
 UI_KEYS |= {"rule_" + fix.replace("-", "_") for fix in rule_settings.RULE_FIXES}
@@ -30,6 +30,8 @@ UI_KEYS |= {"rule_" + fix.replace("-", "_") for fix in rule_settings.RULE_FIXES}
 UI_KEYS |= {'battle_effect_ready', 'battle_effect_uncuttable', 'battle_skill_parry', 'battle_effect_full', 'battle_effects_title', 'battle_skill_holy', 'battle_skill_jammer', 'battle_effect_hit', 'battle_effect_crit', 'battle_effect_remaining', 'battle_effect_inactive', 'battle_effect_strength', 'battle_skill_clone', 'battle_effect_enemy_crit', 'battle_effect_none', 'battle_skill_getter_vision', 'battle_skill_beam_coat', 'battle_skill_mach', 'battle_skill_planet', 'battle_skill_esp', 'battle_skill_enhanced', 'battle_effect_aura_first', 'battle_effect_morale_low', 'battle_skill_newtype', 'battle_skill_dummy', 'battle_effect_threshold', 'battle_effect_evade', 'battle_skill_shield', 'battle_skill_god_shadow', 'battle_effect_sure_hit', 'battle_skill_shungeki', 'battle_skill_aura_barrier', 'battle_skill_fixed_damage', 'battle_effect_active', 'battle_effect_no_attack', 'battle_skill_potential', 'battle_skill_true_mach', 'battle_effects_note', 'battle_effect_heat', 'battle_effect_barrier_first', 'battle_effect_no_skill', 'battle_skill_i_field', 'battle_effect_no_equipment'}
 
 UI_KEYS |= {"mini_enter", "mini_entering", "battle_shield_damage"}
+UI_KEYS |= {"intermission_episode", "intermission_hint", "intermission_swap_hint", "intermission_swap_refused"}
+UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
 
 # Battle confirmation labels share the same immutable locale catalog.
 UI_KEYS |= {'battle_cuttable', 'battle_target_barrier', 'battle_barrier_non_beam', 'battle_parry', 'battle_clone', 'battle_clone_morale', 'battle_barrier_absorbed', 'battle_critical_damage', 'battle_damage_note', 'battle_barrier_en_low', 'battle_barrier_broken', 'battle_shield', 'battle_sure_hit', 'battle_defense_note', 'battle_damage', 'battle_uncuttable', 'battle_barrier_reduced', 'battle_barrier_first'}

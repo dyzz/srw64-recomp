@@ -46,7 +46,7 @@ class LinkSourceTests(unittest.TestCase):
         # Per series: name, lead pilot, machines, the pilots who come along.
         for field in ("series", "lead", "units", "crew"):
             self.assertLessEqual({f"link_{field}_{name}" for name in ("f91", "goshogun", "zambot")}, keys)
-        page = (ROOT / "src/host/macos/link_page_macos.mm").read_text()
+        page = (ROOT / "src/native/ui/frontend.cpp").read_text()   # the shared RmlUi link page
         for key in keys - {key for key in keys if key.count("_") == 2 and key.split("_")[1] in ("series", "lead", "units", "crew")}:
             self.assertIn(f'"{key}"', page)
         for locale in ("ja", "zh-Hans", "en"):
