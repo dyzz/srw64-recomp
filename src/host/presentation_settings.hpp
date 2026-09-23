@@ -19,4 +19,10 @@ void request_locale(const std::string& locale);
 // the locale. SRW64_NATIVE_BATTLE_UI=0 forces the original for a run.
 bool native_battle_ui();
 void set_native_battle_ui(bool native);
+// インターミッション screens (main menu, ユニット改造／武器改造, and the screens that
+// follow): the native pages (default) or the original screens. Read on the
+// game thread when a screen builds; saved as intermission_ui with the locale.
+// SRW64_NATIVE_INTERMISSION=0 / SRW64_NATIVE_UPGRADE=0 force the original for a run.
+bool native_intermission_ui();
+void set_native_intermission_ui(bool native);
 }

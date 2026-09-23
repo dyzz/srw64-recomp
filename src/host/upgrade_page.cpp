@@ -1,4 +1,5 @@
 #include "upgrade_page.hpp"
+#include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "upgrade_rules.hpp"
 #include "native_dialogue.hpp"
@@ -184,7 +185,13 @@ json list_page_json(uint8_t* ram,recomp_context* ctx) {
 }
 // 801CF388 / 801D03D0 without their drawing: background (its random call included),
 // the list, the cursor back on the unit remembered from last time, the selection.
+// The original screens when the setting says so: any open page closes first.
+bool original_screens() {
+    if(settings::native_intermission_ui())return false;
+    std::lock_guard lock(mutex);hide("original");return true;
+}
 bool list_build(uint8_t* ram,recomp_context* ctx,bool weapons) {
+    if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,weapons?1:0);
     call(ram,ctx,weapons?list_build_weapons:list_build_stats);
     const unsigned count=list_size(ram),remembered=read(ram,list_remembered,2);
@@ -241,6 +248,7 @@ json stats_json(uint8_t* ram,recomp_context* ctx) {
 }
 // 801CF680 without its drawing: dimmed background, fresh stats, the state resets.
 bool stats_build(uint8_t* ram,recomp_context* ctx) {
+    if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
     // D_801DEC50 is the row whose price the original step last drew; keeping it equal
     // to the cursor stops the step from drawing the price itself.
@@ -347,6 +355,7 @@ json weapon_list_json(uint8_t* ram) {
 // 801D0600 without its drawing: background, the list, the bonus message after a
 // full upgrade, the cursor back on the weapon upgraded last.
 bool weapon_list_build(uint8_t* ram,recomp_context* ctx) {
+    if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
     call(ram,ctx,weapon_list_build_fn);
     const unsigned unlocked=read(ram,bonus_unlocked,2),upgraded=read(ram,bonus_upgraded,2);
@@ -403,6 +412,7 @@ bool weapon_list_step(uint8_t* ram,recomp_context* ctx) {
 // 801D0C7C without its drawing: background, the price and previewed power the
 // confirmed branch applies; the page shows はい/いいえ or これ以上の改造はできません.
 bool weapon_confirm_build(uint8_t* ram,recomp_context* ctx) {
+    if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
     const unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;

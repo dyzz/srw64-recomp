@@ -18,6 +18,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_language", "settings_language_note",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
             "settings_battle_ui", "settings_battle_ui_native", "settings_battle_ui_original", "settings_battle_ui_note",
+            "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "refund_notice"}
 # The Link Battler series page in front of the リンク screen.
 UI_KEYS |= {"link_back", "link_confirm", "link_crew_f91", "link_crew_goshogun", "link_crew_label",

@@ -1,4 +1,5 @@
 #include "intermission_page.hpp"
+#include "presentation_settings.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
@@ -66,6 +67,7 @@ void hide(const char* reason) {
 // 801CDFB0 without its drawing: the two-item menu after a （前） scene, the dimmed
 // background (its random call included) and the built flag.
 bool build(uint8_t* ram,recomp_context* ctx) {
+    if(!settings::native_intermission_ui()){std::lock_guard lock(mutex);hide("original");return false;}
     uint8_t list[restricted_count];
     for(unsigned n=0;n<restricted_count;++n)list[n]=uint8_t(read(ram,restricted_list+n,1));
     const auto cleared=uint8_t(read(ram,scene,1));

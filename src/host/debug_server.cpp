@@ -192,6 +192,12 @@ json settings(const json& params) {
         on_window([&]{settings::set_native_battle_ui(ui=="native");return json(nullptr);});
         done["battle_ui"]=ui;
     }
+    if(params.contains("intermission_ui")) {
+        const auto ui=params["intermission_ui"].get<std::string>();
+        if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"intermission_ui must be native or original");
+        on_window([&]{settings::set_native_intermission_ui(ui=="native");return json(nullptr);});
+        done["intermission_ui"]=ui;
+    }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
         on_window([&]{settings::request_locale(locale);return json(nullptr);});

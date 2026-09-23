@@ -98,6 +98,23 @@ class UpgradePageSourceTests(unittest.TestCase):
             body = hooks[hooks.index(f"void load_0008F4B0_func_{address}("):]
             self.assertIn("upgrades::Scope scope(rdram, upgrades::Policy::decide);", body[:body.index("\n}\n")])
 
+    def test_screens_follow_the_intermission_ui_setting(self):
+        # Every build entry point hands the screen back to the original when the
+        # setting says so, closing any page still open; the setting is persisted.
+        upgrade = (ROOT / "src/host/upgrade_page.cpp").read_text()
+        self.assertEqual(upgrade.count("if(original_screens())return false;"), 4)
+        self.assertIn("if(settings::native_intermission_ui())return false;", upgrade)
+        menu = (ROOT / "src/host/intermission_page.cpp").read_text()
+        self.assertIn('if(!settings::native_intermission_ui()){std::lock_guard lock(mutex);hide("original");return false;}', menu)
+        settings = (ROOT / "src/native/ui/presentation_settings.cpp").read_text()
+        self.assertIn('{"intermission_ui",native_intermission?"native":"original"}', settings)
+        self.assertIn('saved.value("intermission_ui","native")', settings)
+        self.assertIn('saved.value("intermission_ui","native")', (ROOT / "src/native/app/launch.cpp").read_text())
+        page = (ROOT / "src/native/ui/frontend.cpp").read_text()
+        self.assertIn('"intermission-ui:"', page)
+        self.assertIn('params.contains("intermission_ui")', (ROOT / "src/host/debug_server.cpp").read_text())
+        self.assertIn('"intermission_ui": {"type": "string", "enum": ["native", "original"]}', (ROOT / "tools/recomp/debug/mcp_server.py").read_text())
+
     def test_labels_exist_in_every_language(self):
         from srw64_native.profile import UI_KEYS
         keys = {key for key in UI_KEYS if key.startswith("upgrade_")}
