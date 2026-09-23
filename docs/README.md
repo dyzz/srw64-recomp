@@ -21,6 +21,7 @@
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
 | 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
+| 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 | 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
 
@@ -63,6 +64,7 @@
 | [能力查看画面接管](native/native-ability-screens.md) | ユニット能力／パイロット能力 五个只读画面：列表、机体能力页、武器一览、驾驶员能力页的静态分析与 RmlUi 接管，实机验证与未验证清单 |
 | [のりかえ 画面接管](native/native-swap-screens.md) | 驾驶员／妖精列表、目标列表、确认页五个画面的静态分析与 RmlUi 接管，换乘走原版函数；测试关卡与未验证清单 |
 | [データセーブ 画面接管](native/native-save-screens.md) | 存储介质选择与两栏存档页（含覆盖确认、コントローラパック 提示）的静态分析与 RmlUi 接管，写入走原版 SRAM／Pak 例程；存档头记录格式 |
+| [数据文本汉化与译名规范](native/localization-terms.md) | 名称、标签与系统提示的词条表：分区、展开工具与检查，中英文统一译名（作品、构词、主要人物） |
 | [战前确认 UI](native/native-battle-ui.md) | 双方信息、武器补正与最终概率、反击／回避／防御、原游戏流程接线与迷你关卡验证 |
 | [战前 UI 设计说明](native/battle-ui-design-brief.md) | 攻击与反击两种布局的设计目标、信息分区与验收要求，附实机基线截图 |
 | [SDL/RmlUi 游戏界面](native/shared-game-ui.md) | 默认共享页面、线程边界、输入与真实游戏验证 |
