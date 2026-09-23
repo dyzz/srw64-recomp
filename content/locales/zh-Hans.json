@@ -4622,7 +4622,7 @@
     {
       "key": "base:t00_00791",
       "source_sha256": "9886ddeea954d78ff1712ee9ece91582f414e22e6eee8e52d25934da041cf23a",
-      "target": "米涅娃X<END>",
+      "target": "密涅瓦X<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27603,7 +27603,7 @@
     {
       "key": "base:t00_04532",
       "source_sha256": "df5bdf05df78d5feeb5f6cbf206c3b43d2c78879991a51f2c3d96803ba4eac84",
-      "target": "贾内拉<END>",
+      "target": "加涅拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27792,7 +27792,7 @@
     {
       "key": "base:t00_04559",
       "source_sha256": "10f6accbefcbbacc70c4fc16851c5d0f2f20333e216bed089c0b7b3e31d1b093",
-      "target": "姆格帝王<END>",
+      "target": "穆格帝王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28576,14 +28576,14 @@
     {
       "key": "base:t00_04672",
       "source_sha256": "d68e99068a55874a8d5b1db4843e2b894180dd4a42edf9b4bcb95db556660d87",
-      "target": "马格亚纳克兵<END>",
+      "target": "马古阿纳克兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04673",
       "source_sha256": "36062be4cea6f532804cde57b6ffe48a0d682eab82e059667b678916555a7137",
-      "target": "拜斯顿维尔兵<END>",
+      "target": "拜斯顿·威尔兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28597,7 +28597,7 @@
     {
       "key": "base:t00_04675",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28632,7 +28632,7 @@
     {
       "key": "base:t00_04680",
       "source_sha256": "c71ec1711bbfcb8f0d061440fde7771519a029652208a445652844ef27fd3fc5",
-      "target": "姆格兵<END>",
+      "target": "穆格兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28723,14 +28723,14 @@
     {
       "key": "base:t00_04693",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04694",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29857,7 +29857,7 @@
     {
       "key": "base:t00_04893",
       "source_sha256": "df5bdf05df78d5feeb5f6cbf206c3b43d2c78879991a51f2c3d96803ba4eac84",
-      "target": "贾内拉<END>",
+      "target": "加涅拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30046,7 +30046,7 @@
     {
       "key": "base:t00_04920",
       "source_sha256": "10f6accbefcbbacc70c4fc16851c5d0f2f20333e216bed089c0b7b3e31d1b093",
-      "target": "姆格帝王<END>",
+      "target": "穆格帝王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30830,14 +30830,14 @@
     {
       "key": "base:t00_05033",
       "source_sha256": "d68e99068a55874a8d5b1db4843e2b894180dd4a42edf9b4bcb95db556660d87",
-      "target": "马格亚纳克兵<END>",
+      "target": "马古阿纳克兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05034",
       "source_sha256": "36062be4cea6f532804cde57b6ffe48a0d682eab82e059667b678916555a7137",
-      "target": "拜斯顿维尔兵<END>",
+      "target": "拜斯顿·威尔兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30851,7 +30851,7 @@
     {
       "key": "base:t00_05036",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30886,7 +30886,7 @@
     {
       "key": "base:t00_05041",
       "source_sha256": "c71ec1711bbfcb8f0d061440fde7771519a029652208a445652844ef27fd3fc5",
-      "target": "姆格兵<END>",
+      "target": "穆格兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30977,14 +30977,14 @@
     {
       "key": "base:t00_05054",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05055",
       "source_sha256": "5b31d2f8dfd5dd6f5896df44f2522f636c59dea089003c1e45ba70682826da80",
-      "target": "新吉恩兵<END>",
+      "target": "新吉翁兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
