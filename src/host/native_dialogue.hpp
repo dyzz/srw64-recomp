@@ -13,7 +13,17 @@ namespace srw64::dialogue {
 std::string ui_text(const uint8_t* ram,uint16_t id);
 std::u16string utf16(const std::string&);
 std::string utf8(const std::u16string&);
-Layout typeset(const std::u16string&, unsigned font_size, double width=177, double height=35);
+// Plain lines 1.22 x size apart: names, history and the typesetting check.
+Layout typeset(const std::u16string&, double font_size, double width=177, double height=35);
+// The text area under the name row (docs/design/dialogue-typesetting.md §4-7).
+inline constexpr double body_width=177, body_height=43;
+// The body size for the reader's font size setting: English takes 0.85 of it.
+double body_size(unsigned setting);
+// A story record or battle quote in the text area: as many lines as fit at the
+// minimum spacing, spread over the height, page ends ranked. stops are the
+// original's page breaks, which end a sentence; forced offsets start a page.
+Layout typeset_body(const std::u16string&, double size, std::vector<size_t> stops={}, std::vector<size_t> forced={});
+
 struct Box {
     bool visible{}, active{};
     unsigned slot{}, palette{};
