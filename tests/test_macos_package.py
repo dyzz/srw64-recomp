@@ -73,6 +73,17 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertIn("Contents/Resources/dialogue/zh-Hans/story/scene-0001.txt", files)
         self.assertFalse(any(f.endswith("notes.json") for f in files))
 
+    def test_fonts_ship_with_their_licences(self):
+        fonts = self.root / "fonts"
+        fonts.mkdir()
+        for name in ("HarmonyOS_Sans_SC_Regular.ttf", "LICENSE-HarmonyOS-Sans.txt", "notes.json"):
+            (fonts / name).write_bytes(b"x")
+        result = self.stage(fonts=fonts)
+        files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
+        self.assertIn("Contents/Resources/fonts/HarmonyOS_Sans_SC_Regular.ttf", files)
+        self.assertIn("Contents/Resources/fonts/LICENSE-HarmonyOS-Sans.txt", files)
+        self.assertNotIn("Contents/Resources/fonts/notes.json", files)
+
     def test_explicit_runtime_library_and_dependency_search(self):
         libraries = self.root / "linked libs"
         libraries.mkdir()

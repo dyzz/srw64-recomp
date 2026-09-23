@@ -103,7 +103,7 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
-                 dialogue: Path | None = None) -> Path:
+                 dialogue: Path | None = None, fonts: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -169,6 +169,13 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
                 target = resources / "dialogue" / path.relative_to(source)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, target)
+        if fonts is not None:
+            # HarmonyOS Sans must ship unmodified with its licence (tools/content/prepare_fonts.py).
+            source = fonts.resolve(strict=True)
+            (resources / "fonts").mkdir()
+            for path in sorted(source.iterdir()):
+                if path.suffix in (".ttf", ".txt"):
+                    shutil.copyfile(path, resources / "fonts" / path.name)
         for index, notice in enumerate(resolved_notices):
             licenses = resources / "licenses"
             licenses.mkdir(exist_ok=True)
@@ -207,6 +214,8 @@ def main() -> int:
                         help="Build-side directory for resolving dependent @loader_path/@rpath libraries")
     parser.add_argument("--dialogue", type=Path, default=Path(__file__).resolve().parents[2] / "content/dialogue",
                         help="dialogue text directory copied to Contents/Resources/dialogue")
+    parser.add_argument("--fonts", type=Path, default=Path(__file__).resolve().parents[2] / "build/fonts",
+                        help="prepared fonts (tools/content/prepare_fonts.py) copied to Contents/Resources/fonts")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
                         help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
     args = parser.parse_args()
@@ -214,7 +223,7 @@ def main() -> int:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
-                              dialogue=args.dialogue if args.dialogue.is_dir() else None)
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")
