@@ -13,6 +13,7 @@
 #include <cmath>
 #include <fstream>
 #include <map>
+#include <tuple>
 #include <mutex>
 #include <stdexcept>
 #include <type_traits>
@@ -219,89 +220,270 @@ struct TextLayout::Data {
     std::vector<size_t> clusters;
     std::vector<TextLine> lines;
     std::vector<std::vector<Glyph>> glyphs;
-    double size{},ascent{};
+    std::vector<TextPage> pages;  // only for a paged layout
+    double size{},ascent{},pitch{};
+    bool paged=false;
 };
 FontSet::FontSet(const std::vector<FontSource>& sources):state_(std::make_shared<State>(sources)) {}
 TextLayout::TextLayout(std::shared_ptr<const Data> data):data_(std::move(data)) {}
+
+// Everything a line needs, shared by the greedy and the paged layout.
+struct FontSet::Builder {
+    FontSet::State& state;
+    TextLayout::Data& out;
+    double width;
+    hb_language_t language;
+    std::vector<size_t> legal;
+    std::vector<Grapheme> gs;
+    bool halve=false;
+    struct Paragraph {size_t a,b,pstart,body_end,pend;Bidi bidi{nullptr,ubidi_close};std::vector<double> prefix;};
+    std::vector<Paragraph> paragraphs;
+    struct Built {TextLine line;std::vector<Glyph> glyphs;};
+    std::map<std::pair<size_t,size_t>,Built> memo;
+    Builder(FontSet::State& s,TextLayout::Data& d,double w):state(s),out(d),width(w) {}
+    void paginate(const PageStyle& style,size_t per_page);
+    void prepare() {
+        const auto line_locale=icu_locale(out.locale);
+        legal=boundaries(out.text,UBRK_LINE,line_locale.c_str());
+        language=hb_language_from_string(out.locale.c_str(),-1);
+        for(auto& f:state.faces) {
+            f->size(out.size);out.ascent=std::max(out.ascent,double(f->ft->ascender)*out.size/f->ft->units_per_EM);
+        }
+        std::map<std::u16string,size_t> fallback_cache;
+        size_t begin=0;
+        for(auto end:out.clusters) {
+            const auto part=std::u16string_view(out.text).substr(begin,end-begin);
+            const bool newline=hard_break(part.front());
+            for(auto c:part)require(!(c<0x20 || c==0x7F) || hard_break(c),"Unsupported control character in rendered text");
+            size_t font=0;
+            if(!newline) {
+                const std::u16string key(part);auto found=fallback_cache.find(key);
+                if(found==fallback_cache.end())found=fallback_cache.emplace(key,state.select(part,language)).first;
+                font=found->second;
+            }
+            gs.push_back({begin,end,font,script_of(part)});begin=end;
+        }
+        // Resolve common/inherited scripts inside each paragraph only. This keeps
+        // Latin + CJK and Arabic punctuation in correctly itemized shaping runs.
+        for(size_t a=0;a<gs.size();) {
+            size_t b=a;while(b<gs.size() && !hard_break(out.text[gs[b].start]))++b;
+            UScriptCode previous=USCRIPT_COMMON;
+            for(size_t i=a;i<b;++i) {if(strong_script(gs[i].script))previous=gs[i].script;else gs[i].script=previous;}
+            UScriptCode next=USCRIPT_COMMON;
+            for(size_t i=b;i>a;) {--i;if(strong_script(gs[i].script))next=gs[i].script;else gs[i].script=next;}
+            Paragraph p{a,b,gs[a].start,b<gs.size()?gs[b].start:out.text.size(),0,{nullptr,ubidi_close},{}};
+            p.pend=b<gs.size()?gs[b].end:p.body_end;
+            if(p.pstart!=p.body_end) {
+                p.bidi=bidi();UErrorCode status=U_ZERO_ERROR;
+                ubidi_setPara(p.bidi.get(),reinterpret_cast<const UChar*>(out.text.data()+p.pstart),
+                    static_cast<int32_t>(p.body_end-p.pstart),UBIDI_DEFAULT_LTR,nullptr,&status);icu_check(status);
+                const auto whole=state.shape(out.text,gs,out.clusters,p.bidi.get(),p.pstart,p.pstart,p.body_end,language);
+                p.prefix.assign(b-a+1,0);
+                for(const auto& glyph:whole.glyphs) {
+                    const auto it=std::lower_bound(out.clusters.begin()+static_cast<std::ptrdiff_t>(a),
+                        out.clusters.begin()+static_cast<std::ptrdiff_t>(b),glyph.end);
+                    require(it!=out.clusters.begin()+static_cast<std::ptrdiff_t>(b),"Glyph escapes paragraph");
+                    p.prefix[static_cast<size_t>(it-out.clusters.begin())-a+1]+=glyph.advance;
+                }
+                for(size_t i=1;i<p.prefix.size();++i)p.prefix[i]+=p.prefix[i-1];
+            }
+            paragraphs.push_back(std::move(p));
+            a=b<gs.size()?b+1:b;
+        }
+    }
+    const Paragraph& paragraph(size_t start) const {
+        for(const auto& p:paragraphs)if(start>=p.pstart && start<std::max(p.pend,p.pstart+1))return p;
+        throw std::runtime_error("Line start outside every paragraph");
+    }
+    size_t grapheme(size_t start) const {
+        return static_cast<size_t>(std::lower_bound(gs.begin(),gs.end(),start,[](const auto& g,size_t p){return g.start<p;})-gs.begin());
+    }
+    bool halvable(size_t end) const {
+        if(!end)return false;
+        const auto last=out.text[end-1];
+        return halvable_marks.find(last)!=std::u16string_view::npos;
+    }
+    // The line from start: as much as fits, ending at a legal break (the
+    // greedy fill), or ending exactly at limit when one is given.
+    const Built& line(size_t start,size_t limit=0) {
+        const auto key=std::make_pair(start,limit);
+        if(auto found=memo.find(key);found!=memo.end())return found->second;
+        const auto& p=paragraph(start);
+        Built built;
+        if(p.pstart==p.body_end) {built.line={p.pstart,p.pend,0,false,false};return memo.emplace(key,std::move(built)).first->second;}
+        const size_t gi=grapheme(start);
+        size_t end;bool emergency=false;Shaped shaped;
+        if(limit) {
+            end=std::min(limit,p.body_end);
+            shaped=state.shape(out.text,gs,out.clusters,p.bidi.get(),p.pstart,start,end,language);
+        } else {
+            auto fit=std::upper_bound(p.prefix.begin()+static_cast<std::ptrdiff_t>(gi-p.a+1),p.prefix.end(),p.prefix[gi-p.a]+width);
+            size_t ei=static_cast<size_t>(fit-p.prefix.begin())-1+p.a;
+            ei=std::max(ei,gi+1);const size_t estimate=gs[ei-1].end;
+            auto lb=std::upper_bound(legal.begin(),legal.end(),estimate);
+            end=estimate;emergency=estimate!=p.body_end;
+            // ICU's break after an explicit newline includes the newline.
+            // A whole paragraph body that fits must not shrink to an earlier
+            // legal break merely because that final break lies past body_end.
+            if(end!=p.body_end && lb!=legal.begin() && *(lb-1)>start) {end=*(lb-1);emergency=false;}
+            shaped=state.shape(out.text,gs,out.clusters,p.bidi.get(),p.pstart,start,end,language);
+            // Paragraph advances are only an estimate: reshape at the actual
+            // line boundary, then shrink until it fits. Never split a grapheme.
+            while(shaped.width>width+1e-6 && end>gs[gi].end) {
+                auto prior=std::lower_bound(legal.begin(),legal.end(),end);
+                if(prior!=legal.begin() && *(prior-1)>start) {end=*(prior-1);emergency=false;}
+                else {auto e=std::lower_bound(out.clusters.begin(),out.clusters.end(),end);end=*(e-1);emergency=true;}
+                shaped=state.shape(out.text,gs,out.clusters,p.bidi.get(),p.pstart,start,end,language);
+            }
+            // A closing mark that only fits at half width may stay on the line
+            // together with the character kinsoku would otherwise push down.
+            if(halve && end<p.body_end) {
+                const auto next=std::upper_bound(legal.begin(),legal.end(),end);
+                if(next!=legal.end() && *next<=p.body_end && halvable(*next)) {
+                    auto longer=state.shape(out.text,gs,out.clusters,p.bidi.get(),p.pstart,start,*next,language);
+                    const double mark=longer.glyphs.empty()?0:longer.glyphs.back().advance;
+                    if(longer.width-mark/2<=width+1e-6) {
+                        end=*next;emergency=false;shaped=std::move(longer);shaped.width-=mark/2;built.line.halved=true;
+                    }
+                }
+            }
+        }
+        const size_t consumed=end==p.body_end?p.pend:end;
+        const bool halved=built.line.halved;
+        built.line={start,consumed,shaped.width,emergency,shaped.width>width+1e-6,halved};
+        built.glyphs=std::move(shaped.glyphs);
+        return memo.emplace(key,std::move(built)).first->second;
+    }
+    void greedy() {
+        for(size_t s=0;s<out.text.size();) {
+            const auto& b=line(s);out.lines.push_back(b.line);out.glyphs.push_back(b.glyphs);s=b.line.end;
+        }
+    }
+};
+namespace {
+// Page end classes for the ranking.
+enum class End {sentence,comma,middle};
+End end_class(std::u16string_view text,size_t end,const std::vector<size_t>& sentence_ends) {
+    if(end>=text.size() || std::binary_search(sentence_ends.begin(),sentence_ends.end(),end))return End::sentence;
+    size_t p=end;
+    while(p>0 && (text[p-1]==u' ' || text[p-1]==u'\n' || text[p-1]==u'　'))--p;
+    if(!p)return End::sentence;
+    if(std::binary_search(sentence_ends.begin(),sentence_ends.end(),p))return End::sentence;
+    const auto c=text[p-1];
+    if(sentence_end_marks.find(c)!=std::u16string_view::npos)return End::sentence;
+    if(comma_marks.find(c)!=std::u16string_view::npos)return End::comma;
+    return End::middle;
+}
+// A last line of one or two characters, or of a single English word.
+bool short_line(std::u16string_view text,const std::vector<size_t>& clusters,size_t start,size_t end) {
+    while(end>start && (text[end-1]==u' ' || text[end-1]==u'\n'))--end;
+    while(start<end && text[start]==u' ')++start;
+    if(end<=start)return false;
+    const auto body=text.substr(start,end-start);
+    const bool latin=std::all_of(body.begin(),body.end(),[](char16_t c){return c<0x2E80;});
+    if(latin)return body.find(u' ')==std::u16string_view::npos;
+    const auto a=std::upper_bound(clusters.begin(),clusters.end(),start),b=std::upper_bound(clusters.begin(),clusters.end(),end-1);
+    return b-a+1<=2;
+}
+struct Rank {
+    size_t pages{},middle{},comma{},orphans{};
+    bool operator<(const Rank& o) const {return std::tie(pages,middle,comma,orphans)<std::tie(o.pages,o.middle,o.comma,o.orphans);}
+};
+}
+void FontSet::Builder::paginate(const PageStyle& style,size_t per_page) {
+    auto& builder=*this;
+    const auto& text=out.text;
+    const size_t n=text.size();
+    std::vector<size_t> forced;
+    for(auto f:style.forced)if(f>0 && f<n)forced.push_back(f);
+    std::sort(forced.begin(),forced.end());forced.erase(std::unique(forced.begin(),forced.end()),forced.end());
+    auto sentence_ends=style.sentence_ends;std::sort(sentence_ends.begin(),sentence_ends.end());
+    // A page from s covers up to per_page greedy lines; it may end at the end
+    // of any of them, at a legal break inside the last, but never past a forced
+    // page start. best[e] ranks the cheapest way to start a page at e.
+    std::map<size_t,std::pair<Rank,size_t>> best;best[0]={Rank{},n};
+    std::vector<size_t> starts{0};
+    std::map<size_t,std::vector<size_t>> ends_from;
+    for(size_t si=0;si<starts.size();++si) {
+        const size_t s=starts[si];
+        if(s>=n)continue;
+        const auto cap_it=std::upper_bound(forced.begin(),forced.end(),s);
+        const size_t cap=cap_it==forced.end()?n:*cap_it;
+        std::vector<size_t> candidates;
+        size_t at=s;
+        for(size_t li=0;li<per_page && at<n && at<cap;++li) {
+            const auto& b=builder.line(at);
+            const size_t line_end=std::min(b.line.end,cap);
+            // Legal breaks inside this line are page ends too (only when ranking).
+            if(style.rank_breaks)
+                for(auto it=std::upper_bound(builder.legal.begin(),builder.legal.end(),at);it!=builder.legal.end() && *it<line_end;++it)
+                    candidates.push_back(*it);
+            candidates.push_back(line_end);
+            at=line_end;
+        }
+        if(!style.rank_breaks)candidates={candidates.back()};
+        std::sort(candidates.begin(),candidates.end());candidates.erase(std::unique(candidates.begin(),candidates.end()),candidates.end());
+        const Rank base=best.at(s).first;
+        for(auto e:candidates) {
+            if(e<=s)continue;
+            Rank r=base;++r.pages;
+            if(e<n) {
+                const auto kind=end_class(text,e,sentence_ends);
+                r.middle+=kind==End::middle;r.comma+=kind==End::comma;
+            }
+            // The page's last line: the greedy line holding e-1, cut at e.
+            size_t ls=s;while(true){const auto& b=builder.line(ls);if(b.line.end>=e || b.line.end>=n)break;ls=b.line.end;}
+            r.orphans+=short_line(text,out.clusters,ls,e);
+            auto found=best.find(e);
+            if(found==best.end() || r<found->second.first) {
+                if(found==best.end())starts.push_back(e);
+                best[e]={r,s};
+            }
+        }
+        std::sort(starts.begin()+static_cast<std::ptrdiff_t>(si)+1,starts.end());
+    }
+    // Walk back from the end; then break each page's lines from its start.
+    std::vector<size_t> bounds{n};
+    for(size_t e=n;e>0;) {const size_t s=best.at(e).second;bounds.push_back(s);e=s;}
+    std::reverse(bounds.begin(),bounds.end());
+    for(size_t pi=0;pi+1<bounds.size();++pi) {
+        const size_t s=bounds[pi],e=bounds[pi+1];
+        TextPage page{out.lines.size(),0,s,e};
+        for(size_t at=s;at<e;) {
+            const auto* b=&builder.line(at);
+            if(b->line.end>e)b=&builder.line(at,e);
+            out.lines.push_back(b->line);out.glyphs.push_back(b->glyphs);at=b->line.end;++page.line_count;
+        }
+        out.pages.push_back(page);
+    }
+}
 
 TextLayout FontSet::layout(std::u16string text,double pixels,double width,std::string locale) const {
     require(bool(state_),"Moved-from font set");
     require(std::isfinite(pixels) && pixels>0 && pixels<=256 && std::isfinite(width) && width>0,"Invalid portable layout dimensions");
     auto result=std::make_shared<TextLayout::Data>();result->fonts=state_;
     result->clusters=grapheme_ends(text);result->text=std::move(text);result->locale=std::move(locale);result->size=pixels;
-    const auto line_locale=icu_locale(result->locale);
-    const auto legal=boundaries(result->text,UBRK_LINE,line_locale.c_str());
-    const auto language=hb_language_from_string(result->locale.c_str(),-1);
+    result->pitch=pixels*1.22;
     std::lock_guard lock(state_->mutex);
-    for(auto& f:state_->faces) {
-        f->size(pixels);result->ascent=std::max(result->ascent,double(f->ft->ascender)*pixels/f->ft->units_per_EM);
-    }
-    std::vector<Grapheme> gs;std::map<std::u16string,size_t> fallback_cache;
-    size_t begin=0;
-    for(auto end:result->clusters) {
-        const auto part=std::u16string_view(result->text).substr(begin,end-begin);
-        const bool newline=hard_break(part.front());
-        for(auto c:part)require(!(c<0x20 || c==0x7F) || hard_break(c),"Unsupported control character in rendered text");
-        size_t font=0;
-        if(!newline) {
-            const std::u16string key(part);auto found=fallback_cache.find(key);
-            if(found==fallback_cache.end())found=fallback_cache.emplace(key,state_->select(part,language)).first;
-            font=found->second;
-        }
-        gs.push_back({begin,end,font,script_of(part)});begin=end;
-    }
-    // Resolve common/inherited scripts inside each paragraph only. This keeps
-    // Latin + CJK and Arabic punctuation in correctly itemized shaping runs.
-    for(size_t a=0;a<gs.size();) {
-        size_t b=a;while(b<gs.size() && !hard_break(result->text[gs[b].start]))++b;
-        UScriptCode previous=USCRIPT_COMMON;
-        for(size_t i=a;i<b;++i) {if(strong_script(gs[i].script))previous=gs[i].script;else gs[i].script=previous;}
-        UScriptCode next=USCRIPT_COMMON;
-        for(size_t i=b;i>a;) {--i;if(strong_script(gs[i].script))next=gs[i].script;else gs[i].script=next;}
-        const size_t pstart=gs[a].start,body_end=b<gs.size()?gs[b].start:result->text.size();
-        const size_t pend=b<gs.size()?gs[b].end:body_end;
-        if(pstart==body_end) {
-            result->lines.push_back({pstart,pend,0,false,false});result->glyphs.emplace_back();a=b+1;continue;
-        }
-        auto paragraph=bidi();UErrorCode status=U_ZERO_ERROR;
-        ubidi_setPara(paragraph.get(),reinterpret_cast<const UChar*>(result->text.data()+pstart),
-            static_cast<int32_t>(body_end-pstart),UBIDI_DEFAULT_LTR,nullptr,&status);icu_check(status);
-        const auto whole=state_->shape(result->text,gs,result->clusters,paragraph.get(),pstart,pstart,body_end,language);
-        std::vector<double> prefix(b-a+1,0);
-        for(const auto& glyph:whole.glyphs) {
-            const auto it=std::lower_bound(result->clusters.begin()+static_cast<std::ptrdiff_t>(a),
-                result->clusters.begin()+static_cast<std::ptrdiff_t>(b),glyph.end);
-            require(it!=result->clusters.begin()+static_cast<std::ptrdiff_t>(b),"Glyph escapes paragraph");
-            prefix[static_cast<size_t>(it-result->clusters.begin())-a+1]+=glyph.advance;
-        }
-        for(size_t i=1;i<prefix.size();++i)prefix[i]+=prefix[i-1];
-        for(size_t start=pstart;start<body_end;) {
-            const size_t gi=static_cast<size_t>(std::lower_bound(gs.begin()+static_cast<std::ptrdiff_t>(a),
-                gs.begin()+static_cast<std::ptrdiff_t>(b),start,[](const auto& g,size_t p){return g.start<p;})-gs.begin());
-            auto fit=std::upper_bound(prefix.begin()+static_cast<std::ptrdiff_t>(gi-a+1),prefix.end(),prefix[gi-a]+width);
-            size_t ei=static_cast<size_t>(fit-prefix.begin())-1+a;
-            ei=std::max(ei,gi+1);const size_t estimate=gs[ei-1].end;
-            auto lb=std::upper_bound(legal.begin(),legal.end(),estimate);
-            size_t end=estimate;bool emergency=estimate!=body_end;
-            // ICU's break after an explicit newline includes the newline.
-            // A whole paragraph body that fits must not shrink to an earlier
-            // legal break merely because that final break lies past body_end.
-            if(end!=body_end && lb!=legal.begin() && *(lb-1)>start) {end=*(lb-1);emergency=false;}
-            auto shaped=state_->shape(result->text,gs,result->clusters,paragraph.get(),pstart,start,end,language);
-            // Paragraph advances are only an estimate: reshape at the actual
-            // line boundary, then shrink until it fits. Never split a grapheme.
-            while(shaped.width>width+1e-6 && end>gs[gi].end) {
-                auto prior=std::lower_bound(legal.begin(),legal.end(),end);
-                if(prior!=legal.begin() && *(prior-1)>start) {end=*(prior-1);emergency=false;}
-                else {auto e=std::lower_bound(result->clusters.begin(),result->clusters.end(),end);end=*(e-1);emergency=true;}
-                shaped=state_->shape(result->text,gs,result->clusters,paragraph.get(),pstart,start,end,language);
-            }
-            const size_t consumed=end==body_end?pend:end;
-            result->lines.push_back({start,consumed,shaped.width,emergency,shaped.width>width+1e-6});
-            result->glyphs.push_back(std::move(shaped.glyphs));start=consumed;
-        }
-        a=b<gs.size()?b+1:b;
-    }
+    Builder builder(*state_,*result,width);builder.prepare();builder.greedy();
+    return TextLayout(std::move(result));
+}
+TextLayout FontSet::layout(std::u16string text,double pixels,double width,std::string locale,const PageStyle& style) const {
+    require(bool(state_),"Moved-from font set");
+    require(std::isfinite(pixels) && pixels>0 && pixels<=256 && std::isfinite(width) && width>0,"Invalid portable layout dimensions");
+    require(std::isfinite(style.height) && style.height>0 && style.min_spacing>0 && style.max_spacing>=style.min_spacing,
+            "Invalid page style");
+    auto result=std::make_shared<TextLayout::Data>();result->fonts=state_;
+    result->clusters=grapheme_ends(text);result->text=std::move(text);result->locale=std::move(locale);result->size=pixels;
+    // As many lines as fit at the minimum pitch (with a tolerance for 3.0008),
+    // then the leftover height shared out up to the maximum pitch.
+    const size_t per_page=static_cast<size_t>(std::max(1.0,std::floor(style.height/(pixels*style.min_spacing)+1e-6)));
+    result->pitch=std::max(pixels*style.min_spacing,std::min(pixels*style.max_spacing,style.height/double(per_page)));
+    result->paged=true;
+    std::lock_guard lock(state_->mutex);
+    Builder builder(*state_,*result,width);builder.halve=style.halve_line_end;builder.prepare();
+    if(result->text.empty())result->pages.push_back({0,0,0,0});
+    else builder.paginate(style,per_page);
     return TextLayout(std::move(result));
 }
 const std::u16string& TextLayout::text() const {require(bool(data_),"Empty layout handle");return data_->text;}
@@ -309,9 +491,11 @@ const std::vector<size_t>& TextLayout::clusters() const {require(bool(data_),"Em
 const std::vector<TextLine>& TextLayout::lines() const {require(bool(data_),"Empty layout handle");return data_->lines;}
 const std::string& TextLayout::locale() const {require(bool(data_),"Empty layout handle");return data_->locale;}
 double TextLayout::font_size() const {require(bool(data_),"Empty layout handle");return data_->size;}
-double TextLayout::line_height() const {return font_size()*1.22;}
+double TextLayout::line_height() const {require(bool(data_),"Empty layout handle");return data_->pitch;}
+bool TextLayout::paged() const {require(bool(data_),"Empty layout handle");return data_->paged;}
 std::vector<TextPage> TextLayout::pages(double height) const {
     require(bool(data_) && std::isfinite(height) && height>0,"Invalid page height");
+    if(data_->paged)return data_->pages;
     const auto& ls=data_->lines;if(ls.empty())return {{0,0,0,0}};
     const auto per=static_cast<size_t>(std::clamp(std::floor(height/line_height()),1.0,double(ls.size())));
     std::vector<TextPage> pages;
