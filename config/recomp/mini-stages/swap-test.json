@@ -1,7 +1,7 @@
 {
  "schema": "srw64.mini-stage.v1",
  "name": "swap-test",
- "note": "のりかえ test data: flow.json (no battles, 3D4A ends the stage) plus roster registrations in the opening so the intermission after the stage has swap candidates: スイームルグS (307) and ゲッタードラゴン (174) as spare machines, リョウ in ゲッター1 (171). Written for check_swap.py.",
+ "note": "のりかえ test data: flow.json (no battles, 3D4A ends the stage) plus two roster registrations in the opening — ヒイロ / ウイングガンダム and pilot 91 / machine 115, both of class 3 (unit ROM record byte 0x12, pilot ROM record byte 0xB) — so the intermission after the stage has swap candidates. Registering a machine with actor 999 corrupts the roster (800ABF08 crashes); original units (class 0) never qualify. Written for check_swap.py.",
  "map": 20,
  "deployments_from": "base:stage_auxiliary:001e4268",
  "events": [
@@ -21,32 +21,22 @@
     {
      "op": "3D5A",
      "args": [
-      124,
+      95,
       0,
-      171,
+      117,
       500
      ],
-     "note": "register リョウ with ゲッター1"
+     "note": "register ヒイロ with ウイングガンダム (class 3)"
     },
     {
      "op": "3D5A",
      "args": [
-      999,
+      91,
       0,
-      174,
+      115,
       500
      ],
-     "note": "register ゲッタードラゴン without a pilot (spare machine)"
-    },
-    {
-     "op": "3D5A",
-     "args": [
-      999,
-      0,
-      307,
-      500
-     ],
-     "note": "register スイームルグS without a pilot (spare machine for マナミ)"
+     "note": "register a second class-3 pilot (91) with class-3 machine 115: two machines of one class make both pilots swap candidates (801C5618)"
     },
     {
      "op": "3D3A",

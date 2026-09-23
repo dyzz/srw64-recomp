@@ -12,6 +12,7 @@
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
 #include "ability_page.hpp"
+#include "swap_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -55,11 +56,11 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
-json intermission_request,upgrade_request,parts_request,ability_request;
+json intermission_request,upgrade_request,parts_request,ability_request,swap_request;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
 std::string funds_editing;
-Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{};
-std::string upgrade_stamp,parts_stamp,ability_stamp;
+Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{},* swap_doc{};
+std::string upgrade_stamp,parts_stamp,ability_stamp,swap_stamp;
 Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
@@ -203,10 +204,10 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-funds-input {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:#122131; border:0; border-radius:0; margin:0; padding:0 2dp; tab-index:auto;}
 .im-funds-input selection {color:#0b1421; background-color:#9be4f7;}
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
-.im-right {text-align:right;} .im-dim {color:#9eafc3;}
+.im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
 .im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
-.im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:50%; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
+.im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:6dp; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
 .im-badge.melee {background-color:#c8501e;} .im-badge.ranged {background-color:#2d6fd8;} .im-badge.post {background-color:#2a9a4a;} .im-badge.beam {background-color:#a04fd0;} .im-badge.map {background-color:#c09a1a; border-radius:3dp;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
@@ -764,6 +765,110 @@ void parts_sync() {
     parts_doc=document(body,true);parts_doc->SetClass("modal",false);
 }
 
+// のりかえ (swap_page.cpp): the pilot / fairy lists (layouts 0x6F / 0x88), the target
+// lists with the pilot header (0x7C / 0x89, with the 乗せますか window 0x8A) and the
+// confirm page (0x7D), on the original rectangles.
+void swap_sync() {
+    const auto next=swap_page::state();swap_request=next;
+    if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    if(swap_doc && swap_stamp==stamp)return;
+    document_close(swap_doc);swap_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
+    const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
+    const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("--");};
+    const auto dashes=[](const std::string& s){return s.empty()?std::string("--------"):s;};
+    const auto hint=[&](const char* key){return "<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(key)+"</div>";};
+    const auto art_img=[&](const json& owner,float size){
+        if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
+        const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
+        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+    };
+    const auto yes_no=[&](const std::string& prefix,unsigned cursor,float x0,float y0,float x1,float y1,float row){
+        return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
+    };
+    const std::string screen=next.value("screen",std::string());
+    std::string body="<div class='im-root' id='swap' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="pilots" || screen=="fairies") {
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='swap:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
+                span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")+"</button>";
+        }
+        const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
+        const auto& sub=next.value("sub",json::object());
+        const char* sub_key=screen=="pilots"?"sub":"fairy";
+        body+=box(21,21,299,219,
+            "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of("title"))+"</span></div>"
+            "<div id='swap-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+                span(label_of(sub_key),40,"im-dim",fit(label_of(sub_key),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
+            11.5f,"swap-panel");
+        body+=hint("swap_list_hint");
+    } else if(screen=="targets" || screen=="fairy_targets") {
+        const bool fairy=screen=="fairy_targets";
+        const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& p=next.at("pilot");const auto& sub=next.value("sub",json::object());
+        std::string list;
+        for(unsigned n=0;n<rows.size();++n) {
+            const auto& r=rows[n];
+            list+="<button id='swap:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
+                (fairy?span(r.value("name",std::string()),128)+span(dashes(r.value("unit",std::string())),96)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
+                      :span(r.value("name",std::string()),128)+span(dashes(r.value("pilot",std::string())),80)+span(label_of("hp"),24,"im-dim")+span(number(r.value("hp",json())),40,"im-right"))+"</button>";
+        }
+        const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
+        body+=box(18,10,299,219,
+            "<div style='position:absolute; left:0; top:0; width:"+px(96)+"; height:"+px(94)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(p,88)+"</div>"+
+            at(94,4,escape(page),"im-right",10,40)+at(190,4,"<span class='im-dim'>"+escape(label_of("title"))+"</span>","",11)+
+            at(98,32,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),120),120)+at(230,32,dim("level"))+at(262,32,number(p.value("level",json())),"im-right",0,20)+
+            at(98,52,dim(fairy?"fairy":"sub"))+at(134,52,dashes(sub.value("name",std::string())),"",0,96)+at(230,52,dim("level"))+at(262,52,sub.contains("level")?number(sub.at("level")):std::string("--"),"im-right",0,20)+
+            "<div style='position:absolute; left:0; top:"+px(94)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"
+            "<div id='swap-list' style='position:absolute; left:0; top:"+px(95)+"; width:100%;'>"+list+"</div>",11.5f,"swap-panel");
+        if(fairy && next.value("mode",0u)) {
+            const auto& target_row=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(target_row.value("name",std::string()))+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",11.f,"swap-window")+
+                yes_no("swap",next.value("window_cursor",0u),221,139,251,163,12);
+            body+=hint("swap_confirm_hint");
+        } else body+=hint("swap_list_hint");
+    } else if(screen=="confirm") {
+        // Layout 0x7D as the original boxes it: portrait with the name, レベル and HP,
+        // the fairy line, the two notes, the 限界／回避／命中 rows, the machine with its
+        // name, the question with はい／いいえ, and the combined terrain ranks.
+        const auto& p=next.at("pilot");const auto& from=next.value("from",json::object());const auto& to=next.at("to");const unsigned cursor=next.value("cursor",0u);
+        const auto& evade=next.at("evade");const auto& hit=next.at("hit");
+        const auto plus=[&](const json& s){return number(s.value("value",json()))+"+"+std::to_string(s.value("after",0)-s.value("value",0));};
+        const std::string terrain=next.value("terrain",std::string("----"));
+        const auto& sub=from.value("sub",json::object());
+        body+=box(18,10,110,101,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(72)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(p,70)+"</div>"+at(0,74,escape(p.value("name",std::string())),"im-center",fit(p.value("name",std::string()),86),90),11.f,"swap-portrait")+
+            box(111,10,175,35,"<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(label_of("level"),34,"im-dim")+span(number(p.value("level",json())),22,"im-right")+"</div>",11.f,"swap-level")+
+            box(111,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("hp"),20,"im-dim")+span(number(to.value("hp",json())),36,"im-right")+"</div>",11.f,"swap-hp")+
+            box(18,102,175,122,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(label_of("sub"),34,"im-dim")+span(dashes(sub.value("name",std::string())),112)+"</div>",11.f,"swap-fairy")+
+            box(18,123,175,162,"<div style='padding:"+px(3)+" "+px(3)+"; line-height:"+px(16)+";' class='im-dim'>"+escape(label_of("current"))+"<br/>"+escape(label_of("after"))+"</div>",fit(label_of("after"),150),"swap-notes")+
+            box(18,163,175,219,"<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("limit"),34,"im-dim")+span(number(to.value("limit",json())),40,"im-right")+"</div>"
+                "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("evade"),34,"im-dim")+span(plus(evade),60,evade.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(evade.value("now",0))+")",50,"im-right im-dim")+"</div>"
+                "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("hit"),34,"im-dim")+span(plus(hit),60,hit.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(hit.value("now",0))+")",50,"im-right im-dim")+"</div>",11.f,"swap-stats")+
+            box(176,8,302,132,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(108)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(to,104)+"</div>"+at(0,108,escape(to.value("name",std::string())),"im-center",fit(to.value("name",std::string()),120),126),11.f,"swap-art")+
+            box(176,133,258,219,"<div style='padding:"+px(2)+" "+px(3)+"; line-height:"+px(15)+";'>"+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",fit(label_of("board"),78),"swap-question")+
+            yes_no("swap",cursor,215,168,250,206,18)+
+            box(259,133,302,219,at(3,3,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),38))+at(3,20,dim("air"))+at(26,20,terrain.substr(0,1))+at(3,36,dim("land"))+at(26,36,terrain.substr(1,1))+
+                at(3,52,dim("sea"))+at(26,52,terrain.substr(2,1))+at(3,68,dim("space"))+at(26,68,terrain.substr(3,1)),11.f,"swap-terrain");
+        body+=hint("swap_confirm_hint");
+    }
+    body+="</div>";
+    swap_doc=document(body,true);swap_doc->SetClass("modal",false);
+}
+
 // ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
 // 0x6D / 0x6E), the unit page (0x79), its weapon list (0x7A) and the pilot page (0x7B).
 void ability_sync() {
@@ -961,6 +1066,17 @@ void choose(const std::string& id) {
         } else if(id=="upgrade-confirm" || id=="upgrade-cancel" || id=="upgrade-dismiss")upgrade_page::answer(serial,id.substr(8));
         return;
     }
+    if(id.starts_with("swap") && swap_request.value("visible",false) && !settings_open) {
+        const auto serial=swap_request.at("serial").get<uint64_t>();const auto screen=swap_request.value("screen",std::string());
+        const bool window=screen=="confirm" || (screen=="fairy_targets" && swap_request.value("mode",0u));
+        if(id=="swap-yes")swap_page::answer(serial,window && swap_request.value(screen=="confirm"?"cursor":"window_cursor",0u)==0?"choose":"move:0");
+        else if(id=="swap-no")swap_page::answer(serial,window && swap_request.value(screen=="confirm"?"cursor":"window_cursor",0u)==1?(screen=="confirm"?"back":"cancel"):"move:1");
+        else if(id.starts_with("swap:") && !window) {
+            const unsigned n=unsigned(std::atoi(id.c_str()+5));
+            swap_page::answer(serial,n==swap_request.value("cursor",0u)?"choose":"move:"+std::to_string(n));
+        }
+        return;
+    }
     if(id.starts_with("ability:") && ability_request.value("visible",false) && !settings_open) {
         const auto serial=ability_request.at("serial").get<uint64_t>();const auto screen=ability_request.value("screen",std::string());
         const unsigned n=unsigned(std::atoi(id.c_str()+8));
@@ -1092,7 +1208,7 @@ void sync() {
         if(pad_pressed)battle_buttons(pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();mini_sync();
     app_menu::update(language->ui("settings_open"));
     if(app_menu::take_settings_request())choose("settings-open");
     settings_sync();notices_sync();context->Update();input.update_rectangle();
@@ -1103,6 +1219,7 @@ void sync() {
     upgrade_page::window_claim_input(upgrade_request.value("visible",false) || (upgrade_page::owns_input() && held()));
     parts_page::window_claim_input(parts_request.value("visible",false) || (parts_page::owns_input() && held()));
     ability_page::window_claim_input(ability_request.value("visible",false) || (ability_page::owns_input() && held()));
+    swap_page::window_claim_input(swap_request.value("visible",false) || (swap_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -1121,7 +1238,7 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
@@ -1187,6 +1304,29 @@ bool dispatch(SDL_Event& event) {
                 return true;
             }
             if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":window.empty()?"back":"dismiss");return true;}
+        }
+    } else if(swap_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=swap_request.at("serial").get<uint64_t>();
+            const auto screen=swap_request.value("screen",std::string());
+            const bool window=screen=="confirm" || (screen=="fairy_targets" && swap_request.value("mode",0u));
+            if(window){
+                const unsigned at=swap_request.value(screen=="confirm"?"cursor":"window_cursor",0u);
+                if(k==SDLK_UP || k==SDLK_DOWN){swap_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+                if(event.key.repeat)return true;
+                if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){swap_page::answer(serial,at==0?"choose":screen=="confirm"?"back":"cancel");return true;}
+                if(k==SDLK_ESCAPE || k==SDLK_x){swap_page::answer(serial,screen=="confirm"?"back":"cancel");return true;}
+                return true;
+            }
+            const unsigned count=unsigned(swap_request.at("rows").size()),at=swap_request.value("cursor",0u);
+            if(count && (k==SDLK_UP || k==SDLK_DOWN)){swap_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            if(k==SDLK_LEFT || k==SDLK_RIGHT){
+                const unsigned pages=swap_request.value("pages",1u),page=swap_request.value("page",0u);
+                if(pages>1)swap_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_LEFT?pages-1:1))%pages));return true;
+            }
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){if(count)swap_page::answer(serial,"choose");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){swap_page::answer(serial,"back");return true;}
         }
     } else if(ability_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
@@ -1271,7 +1411,7 @@ bool dispatch(SDL_Event& event) {
         // Window dimensions are in points; sync() supplies drawable pixels.
         if(event.window.event==SDL_WINDOWEVENT_LEAVE)context->ProcessMouseLeave();
     } else consumed=!RmlSDL::InputEventHandler(context,scaled);
-    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) || ability_request.value("visible",false);
+    return consumed || settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) || intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) || ability_request.value("visible",false) || swap_request.value("visible",false);
 }
 json describe(Rml::Element* el,unsigned depth=0) {
     const auto offset=el->GetAbsoluteOffset();const auto size=el->GetBox().GetSize();
@@ -1309,8 +1449,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=mini_doc=nullptr;}renderer.reset();}
-void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);battle_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=mini_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
@@ -1388,7 +1528,7 @@ nlohmann::json tree(const nlohmann::json&){return ui::tree();}
 nlohmann::json summary(){
     auto lock=ui::lock_ui();
     nlohmann::json result={{"backend","SDL2/RmlUi"},{"ready",ui::context!=nullptr},{"focus",nullptr}};
-    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"ability",ability_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
+    result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"ability",ability_page::owns_input()},{"swap",swap_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
     if(ui::window)result["active"]=bool(SDL_GetWindowFlags(ui::window)&SDL_WINDOW_INPUT_FOCUS);
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
     return result;

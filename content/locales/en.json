@@ -238,6 +238,8 @@
     "ability_unit_hint": "Q / E: Previous / next unit   ·   Enter / Z: Weapons   ·   Esc / X: Back",
     "ability_weapons_hint": "↑↓ Select a weapon   ·   ←→ Page   ·   Esc / X: Back",
     "ability_pilot_hint": "Q / E: Previous / next pilot   ·   Esc / X: Back",
+    "swap_list_hint": "↑↓ Select   ·   ←→ Page   ·   Enter / Z: Confirm   ·   Esc / X: Back",
+    "swap_confirm_hint": "↑↓ Yes / No   ·   Enter / Z: Confirm   ·   Esc / X: Back",
     "funds_edit_hint": "Type a new funds figure   ·   Enter: Apply   ·   Esc: Cancel"
   },
   "entries": [

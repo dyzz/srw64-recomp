@@ -26,7 +26,7 @@ EVENT_LOGS = {"dialogue": "dialogue-events.jsonl", "intro": "intro-events.jsonl"
               "rules": "rule-fixes-events.jsonl", "images": "image-mode-events.jsonl", "control": "control-events.jsonl",
               "script": "script-inject-events.jsonl", "mini_stage": "mini-stage-events.jsonl",
               "settings": "settings-window-events.jsonl", "refunds": "upgrade-refund-events.jsonl",
-              "link": "link-events.jsonl", "intermission": "intermission-events.jsonl", "parts": "parts-page-events.jsonl", "ability": "ability-page-events.jsonl"}
+              "link": "link-events.jsonl", "intermission": "intermission-events.jsonl", "parts": "parts-page-events.jsonl", "ability": "ability-page-events.jsonl", "swap": "swap-page-events.jsonl"}
 
 
 class HostError(RuntimeError):
@@ -255,7 +255,7 @@ class Session:
 
 def satisfied(status: dict, until: dict, session: Session | None = None) -> bool:
     """Conditions: vi (at least), dialogue_active, intro_active, name_page (visible),
-    link_page (visible), intermission_page (visible), battle_page (visible), parts_page (visible), ability_page (visible), title_major, text (substring of the
+    link_page (visible), intermission_page (visible), battle_page (visible), parts_page (visible), ability_page (visible), swap_page (visible), title_major, text (substring of the
     active dialogue), event ({log, kind})."""
     dialogue = status.get("dialogue") or {}
     intro = (status.get("intro") or {}).get("step") or {}
@@ -271,6 +271,7 @@ def satisfied(status: dict, until: dict, session: Session | None = None) -> bool
         "battle_page": lambda value: bool((status.get("battle_page") or {}).get("visible")) == value,
         "parts_page": lambda value: bool((status.get("parts_page") or {}).get("visible")) == value,
         "ability_page": lambda value: bool((status.get("ability_page") or {}).get("visible")) == value,
+        "swap_page": lambda value: bool((status.get("swap_page") or {}).get("visible")) == value,
     }
     for key, value in until.items():
         if key == "event":

@@ -35,6 +35,7 @@ UI_KEYS |= {"intermission_episode", "intermission_hint", "intermission_swap_hint
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
 UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}
+UI_KEYS |= {"swap_list_hint", "swap_confirm_hint"}
 
 # Battle confirmation labels share the same immutable locale catalog.
 UI_KEYS |= {'battle_cuttable', 'battle_target_barrier', 'battle_barrier_non_beam', 'battle_parry', 'battle_clone', 'battle_clone_morale', 'battle_barrier_absorbed', 'battle_critical_damage', 'battle_damage_note', 'battle_barrier_en_low', 'battle_barrier_broken', 'battle_shield', 'battle_sure_hit', 'battle_defense_note', 'battle_damage', 'battle_uncuttable', 'battle_barrier_reduced', 'battle_barrier_first'}
