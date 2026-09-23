@@ -126,7 +126,9 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
         {"SRW64_DIALOGUE_DATA",dialogue.string()},{"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
-        {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)}})
+        {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
+        // The dialogue text shipped with the program, and the player's own edits.
+        {"SRW64_DIALOGUE_TEXT",bundled_resource("dialogue").string()},{"SRW64_DIALOGUE_OVERRIDES",(session.user_dir()/"dialogue").string()}})
         set_environment(key,value);
     std::vector<std::string> arguments={"srw64-gfx-host",options.rom.string(),session.output_dir().string(),"0","-"};
     if(session.initial_save())arguments.push_back(session.initial_save()->string());

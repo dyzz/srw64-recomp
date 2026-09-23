@@ -3,7 +3,7 @@
   "locale": "ja",
   "source_locale": "ja",
   "font": "HiraginoSans-W3",
-  "scope": "Native standard dialogue adapter; other UI remains original. Chinese content is the existing stage-one draft.",
+  "scope": "Japanese native UI labels; game text falls back to the original ROM records. Optional dialogue overrides go in content/dialogue/ja.",
   "ui": {
     "manual": "手動",
     "auto": "自動",
@@ -248,7 +248,9 @@
     "save_slots_hint": "↑↓ セーブデータ   ·   Enter / Z セーブ   ·   Esc / X 戻る",
     "save_confirm_hint": "↑↓ はい／いいえ   ·   Enter / Z 決定   ·   Esc / X 戻る",
     "save_message_hint": "Enter / Z 確認   ·   Esc / X 戻る",
-    "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル"
+    "funds_edit_hint": "資金の数字を入力   ·   Enter 反映   ·   Esc キャンセル",
+    "dialogue_text_status": "台詞テキスト：{n} 件を読み込み、エラー {k} 件（詳細は dialogue-report.txt）",
+    "dialogue_reload": "台詞を再読み込み"
   },
   "entries": [],
   "display_name": "日本語"

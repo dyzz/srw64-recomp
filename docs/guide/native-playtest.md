@@ -39,6 +39,7 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans
 | 空格 | Z 扳机 |
 | I / K / J / L | C 上 / 下 / 左 / 右 |
 | W / S / A / D | 模拟摇杆上 / 下 / 左 / 右 |
+| F5 | 重新载入台词文本文件（`build/recomp/profile-play/dialogue/<语言>/` 里的修改逐条覆盖附带译文，见[台词文本文件](dialogue-text.md)）；应用菜单「重新载入台词」同效 |
 | F6 | 切换 Original／HD（需要本地 HD 素材） |
 | F7 | 日文 → 中文 → 英文循环切换语言，无弹窗、不重启 |
 | F8 | 带 `--mini-stage` 时在主菜单进入迷你关卡 |

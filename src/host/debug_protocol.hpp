@@ -24,12 +24,12 @@ namespace srw64::debug {
 // Keys the interface can hold. graphics.cpp binds each to the SDL scancode of
 // the physical key with the same name; the name page counts them by macOS key
 // code while it waits for its closing keys to be released.
-enum Key : unsigned {Z,X,Space,Return,Up,Down,Left,Right,Q,E,I,K,J,L,W,A,S,D,Escape,F6,F7,F8,KeyCount};
+enum Key : unsigned {Z,X,Space,Return,Up,Down,Left,Right,Q,E,I,K,J,L,W,A,S,D,Escape,F6,F7,F8,F5,KeyCount};
 inline constexpr std::array<std::string_view,KeyCount> key_names={
     "z","x","space","return","up","down","left","right","q","e","i","k","j","l",
-    "w","a","s","d","escape","f6","f7","f8"};
+    "w","a","s","d","escape","f6","f7","f8","f5"};
 inline constexpr std::array<unsigned,KeyCount> mac_key_codes={
-    6,7,49,36,126,125,123,124,12,14,34,40,38,37,13,0,1,2,53,97,98,100};
+    6,7,49,36,126,125,123,124,12,14,34,40,38,37,13,0,1,2,53,97,98,100,96};
 inline constexpr uint32_t bit(Key key){return 1u<<key;}
 
 // "e+return" -> the mask of both keys. Case-insensitive; "enter" and "esc" are
@@ -59,7 +59,7 @@ inline nlohmann::json key_list(uint32_t mask) {
 }
 
 // Keys held through the interface. The window thread reads held() every frame
-// and takes the press edges for the keys handled as events (F6/F7/F8/Esc).
+// and takes the press edges for the keys handled as events (F5/F6/F7/F8/Esc).
 class VirtualKeyboard {
 public:
     void down(uint32_t mask) {

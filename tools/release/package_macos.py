@@ -102,7 +102,8 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
-                 search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = ()) -> Path:
+                 search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
+                 dialogue: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -161,6 +162,13 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
             "Hold Option when launching to choose another ROM, or use --choose-rom.\n"
             "Public distribution requires dependency-license review and Developer ID notarization.\n",
             encoding="utf-8")
+        if dialogue is not None:
+            # The dialogue text players can override (docs/guide/dialogue-text.md): text files only.
+            source = dialogue.resolve(strict=True)
+            for path in sorted(source.rglob("*.txt")):
+                target = resources / "dialogue" / path.relative_to(source)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(path, target)
         for index, notice in enumerate(resolved_notices):
             licenses = resources / "licenses"
             licenses.mkdir(exist_ok=True)
@@ -197,13 +205,16 @@ def main() -> int:
     parser.add_argument("--cmake", default="cmake")
     parser.add_argument("--search-dir", type=Path, action="append", default=[],
                         help="Build-side directory for resolving dependent @loader_path/@rpath libraries")
+    parser.add_argument("--dialogue", type=Path, default=Path(__file__).resolve().parents[2] / "content/dialogue",
+                        help="dialogue text directory copied to Contents/Resources/dialogue")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
                         help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
     args = parser.parse_args()
     try:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
-                              search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library))
+                              search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")

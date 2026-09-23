@@ -1,0 +1,687 @@
+# 场景 0001「出撃!スイームルグ」 · en
+# 第一话开场与战斗中的对白。原文行（>）只作对照；改动请复制到用户目录，见 docs/guide/dialogue-text.md。
+
+@17410 ローレンス
+> 「お嬢様、お茶が入りました。
+>  本日はロシアンティーでございますぞ
+“My lady, your tea is ready. Today's selection is Russian tea.
+---
+>  どちらにお持ちいたしますか?」
+Where shall I serve it?”
+
+@17411 マナミ（本话主角）
+> 「……ローレンス、
+>  お茶などどうでもいいわ
+“...Lawrence, forget about the tea.
+---
+>  あたしはいったい、
+>  いつまで待てばよいのです!
+How much longer am I supposed to wait?!
+---
+>  こうしている間にも、あの者たちは
+>  非道な行いを続け
+While we sit here, those people go on committing atrocities,
+---
+>  苦しみ、恨み言を口にしながら
+>  死んでいく者たちがいるのよ!?」
+and their victims keep dying in pain and bitterness!”
+
+@17412 ローレンス
+> 「お嬢様、私どもの活動とて
+>  反帝国を志す方々にとっては
+“My lady, our work is also vital to those who oppose the Empire.
+---
+>  とても重要なものなのですぞ。
+>  他の方では手に入らぬ情報も
+There is information no one else can obtain.
+---
+>  お嬢様がロームフェラの一員である
+>  からこそ手に入れられるのです」
+We have access to it precisely because you belong to Romefeller.”
+
+@17413 マナミ（本话主角）
+> 「それはうんざりするくらい何度も聞き
+>  ました。では聞き方を変えます
+“I've heard that more times than I care to count. Let me put it another way.
+---
+>  あたしはいったい、いつまで帝国の
+>  非道な行いを
+How much longer must I watch the Empire's atrocities
+---
+>  黙って眺めていなくてはならないの!?
+and do nothing?!
+---
+>  おじい様の残してくださった
+>  “スイームルグ”さえ完成すれば…
+If only the Simurgh Grandfather left me were finished...
+---
+>  ローレンス、あなたまさか」
+Lawrence, you haven't...”
+
+@17414 ローレンス
+> 「はい、なんでございましょう?」
+“Yes? What is it, my lady?”
+
+@17415 マナミ（本话主角）
+> 「あたしの身を案じて何か
+>  勝手なことをしているのでは
+“You haven't taken matters into your own hands out of concern for my safety,
+---
+>  ないでしょうね?」
+have you?”
+
+@17416 ローレンス
+> 「めっそうもございません。しかし、あの方
+>  からのご連絡がないかぎり
+“Certainly not. But until we receive word from him,
+---
+>  私どもが動くわけにはまいりません。
+>  どうか、いましばらくのご辛抱を」
+we cannot act. Please be patient just a little longer.”
+
+@17417 マナミ（本话主角）
+> 「……ふぅ、もういいわ。
+>  ……ローレンス」
+“...Oh, very well.
+...Lawrence.”
+
+@17418 ローレンス
+> 「はい」
+“Yes?”
+
+@17419 マナミ（本话主角）
+> 「お茶は、こっちでいただくわ」
+“I'll have my tea here.”
+
+@17420 ローレンス
+> 「はいお嬢様」
+“Of course, my lady.”
+
+@17421 ローレンス
+> 「はい……」
+“Hello...?”
+
+@17422 ???
+> 「やあ。元気そうだね、ローレンス」
+“Hello, Lawrence. You're looking well.”
+
+@17423 ローレンス
+> 「これはこれは、お久しゅうございます
+“My, it has been a long time.
+---
+>  この回線をお使いということは
+>  もしや……」
+If you're using this channel, could it mean...?”
+
+@17424 ???
+> 「うん、そろそろ僕たちも
+>  動くことになった
+“Yes. It's about time we made our move.
+---
+>  {HeroName}さんはいるかい?」
+Is {HeroName} there?”
+
+@17425 ローレンス
+> 「しばしお待ちを」
+“One moment, please.”
+
+@17426 マナミ（本话主角）
+> 「お待たせいたしました、
+>  {HeroName}です
+“Thank you for waiting. This is {HeroName}.
+---
+>  万丈様、あたしずっとご連絡を
+>  待ってましたのよ?」
+Mr. Banjo, I've been waiting so long to hear from you!”
+
+@17427 万丈
+> 「すまなかった
+“I'm sorry.
+---
+>  長い間いやな仕事を
+>  してもらって悪かったね」
+You've had to put up with that unpleasant work for far too long.”
+
+@17428 マナミ（本话主角）
+> 「では……」
+“Then...?”
+
+@17429 万丈
+> 「うん、こっちのほうもようやく
+>  用意が整ってきた
+“Yes. Things are finally coming together on our end.
+---
+>  スイームルグも調整まで
+>  終わったそうだ」
+I'm told the Simurgh's final adjustments are complete, too.”
+
+@17430 マナミ（本话主角）
+> 「本当ですか!?
+>  では、いよいよ始めるのですね」
+“Really?! Then we're finally getting started!”
+
+@17431 万丈
+> 「そうだ。そちらの準備が整い次第
+>  来てほしい。詳細はギャリソンに
+“That's right. Come over as soon as you're ready. I'll have Garrison send you the details.
+---
+>  連絡させる。僕は今からもう1人
+>  にも連絡をしなくてはならないからね」
+There's someone else I need to contact now.”
+
+@17432 マナミ（本话主角）
+> 「どなたですの?」
+“Who might that be?”
+
+@17433 万丈
+> 「君と同じで帝国の動きを
+>  探ってもらっていた人でね
+“She's been monitoring the Empire's movements, just as you have.
+---
+>  やはりロームフェラ財団の、
+>  ルフラン公爵家のご令嬢だ」
+She's also from Romefeller: the daughter of Duke Lefranc.”
+
+@17434 マナミ（本话主角）
+> 「ルフラン公爵家……
+>  シモーヌ様ですね?
+“Duke Lefranc's family... You mean Lady Simone?
+---
+>  そういえば、あの方は3年前にも
+>  帝国と戦ったことがあったと
+Come to think of it, I heard she fought the Empire three years ago
+---
+>  聞いていますわ」
+as well.”
+
+@17435 万丈
+> 「そういうこと。
+>  では、また後で」
+“That's right. See you soon.”
+
+@17436 マナミ（本话主角）
+> 「万丈様!」
+“Mr. Banjo!”
+
+@17437 万丈
+> 「やあ、時間どおりだね
+“Hello! Right on time.
+---
+>  シモーヌさんが少し遅れている
+>  ようだから
+Simone seems to be running a little late,
+---
+>  機体をみておくといい。
+>  こっちだ」
+so why not take a look at your machine? This way.”
+
+@17438 マナミ（本话主角）
+> 「あっ……!」
+“Ah...!”
+
+@17439 万丈
+> 「どうかな?」
+“What do you think?”
+
+@17440 マナミ（本话主角）
+> 「これが……あたしのスイームルグ!?」
+“This is... my Simurgh?!”
+
+@17441 ローレンス
+> 「ふむ、さすがでございますな」
+“Hmm. Truly impressive.”
+
+@17442 万丈
+> 「いやいや、設計データが完全だった
+>  からこそさ。でなければ、ここまでのものを
+“Well, we had complete design data to work from. Otherwise, building something like this
+---
+>  いちからつくるのは無理だよ。ただ、
+>  背面部にブースターのようなものを
+from scratch would have been impossible. There was a joint on the back for attaching
+---
+>  取りつけるジョイントがあったんだけど、
+>  その部分は設計を変更して
+what looked like a booster, but we modified that part of the design
+---
+>  取り外してある」
+and removed it.”
+
+@17443 ギャリソン
+> 「おや? これはこれは
+>  皆様方おそろいで
+“Oh! Everyone is here already.
+---
+>  ただいま仕上げをしておりますゆえ、
+>  今しばらくお待ちください」
+I'm just putting on the finishing touches. Please bear with me a moment longer.”
+
+@17444 マナミ（本话主角）
+> 「……??」
+“...??”
+
+@17445 万丈
+> 「はははっ、
+>  ギャリソンの趣味みたいなものでね
+“Ha ha! It's something of a hobby for Garrison.
+---
+>  スイームルグにワックスがけを
+>  しているんだ」
+He's waxing the Simurgh.”
+
+@17446 マナミ（本话主角）
+> 「なに、これは!?」
+“What was that?!”
+
+@17447 ギャリソン
+> 「どうやら帝国軍がこの近くに
+>  きているようですな」
+“It seems Imperial troops have appeared nearby.”
+
+@17448 マナミ（本话主角）
+> 「なんですって!?」
+“What?!”
+
+@17449 ローレンス
+> 「ふむ、わたくしが様子をみて
+>  まいりましょう」
+“Hmm. I'll go and have a look.”
+
+@17450 ローレンス
+> 「やはり帝国軍のようでございます」
+“They are indeed Imperial troops.”
+
+@17451 万丈
+> 「やつらはこんなところで一体なにを?
+“What are they doing out here?
+---
+>  僕たちが見つかっていたとは
+>  思えないが……」
+I don't think they've discovered us...”
+
+@17452 ローレンス
+> 「それが、どうも無差別に住民
+>  たちを攻撃している様子で」
+“They appear to be attacking the local residents indiscriminately.”
+
+@17453 万丈
+> 「なんだって!? ……そうか、
+“What?! ...Right.
+---
+>  最近そんな話がいくつかあったな、
+>  ギャリソン」
+We've heard a few reports like that lately, haven't we, Garrison?”
+
+@17454 ギャリソン
+> 「少々お待ちください。
+>  ……確かに帝国軍のゲリラ狩りの
+“One moment, please. ...Yes, it seems the Imperial forces sometimes
+---
+>  一環として、そのような作戦が
+>  とられることがあるようですな」
+conduct such operations as part of their guerrilla hunts.”
+
+@17455 マナミ（本话主角）
+> 「なんということを!
+>  では、まるで無関係な
+“How could they?! You mean they're attacking innocent people,
+---
+>  老人や子供まで攻撃して
+>  いるというの!?
+even the elderly and children?!
+---
+>  許せない……
+>  絶対に許せないわ!」
+Unforgivable... I'll never forgive them!”
+
+@17456 ローレンス
+> 「お嬢様!?」
+“My lady?!”
+
+@17457 マナミ（本话主角）
+> 「なにをしているの、ローレンス!
+>  スイームルグを出すのよ!!」
+“What are you waiting for, Lawrence?! Launch the Simurgh!”
+
+@17458 ローレンス
+> 「お嬢様! いきなり実戦を
+>  なさるおつもりですか!?」
+“My lady! You intend to take it straight into combat?!”
+
+@17459 マナミ（本话主角）
+> 「あたり前でしょ。さぁ早く!」
+“Of course! Hurry!”
+
+@17460 マナミ（本话主角）
+> 「すごいわ……これが、おじい様の
+>  スイームルグなのね……」
+“Incredible... So this is Grandfather's Simurgh...”
+
+@17461 万丈
+> 「やれやれ、さすがに行動力にとんだ
+>  お嬢様だ
+“Good grief. She certainly doesn't hesitate to act.
+---
+>  ギャリソン、僕もでる。後は頼む」
+Garrison, I'm heading out too. I'll leave the rest to you.”
+
+@17462 ギャリソン
+> 「いってらっしゃいませ」
+“Take care, sir.”
+
+@17463 万丈
+> 「ダイターン、カムヒアッ!」
+“Daitarn, come here!”
+
+@17464 万丈
+> 「世のため人のため、ムゲゾルバドス
+>  帝国の野望を打ち砕く
+“For the world and its people, I shall crush the ambitions of the Muge Zorbados Empire!
+---
+>  ダイターン3。この日輪の輝きを、
+>  恐れぬのならば、かかってこい!」
+I am Daitarn 3! If you do not fear the radiance of the sun, then come at me!”
+
+@17465 マナミ（本话主角）
+> 「あら!? よい前口上だわ。あたしも
+>  何か考えた方がいいのかしら
+“Oh! What a wonderful introduction. Perhaps I should think of one too.
+---
+>  どう思う、ローレンス?」
+What do you think, Lawrence?”
+
+@17466 ローレンス
+> 「お嬢様、そのようなことは
+>  後でお考えなさいませ!
+“My lady, please leave that for later!
+---
+>  敵が参りますぞ!」
+The enemy is approaching!”
+
+@17467 マナミ（本话主角）
+> 「……わかってるわよ!」
+“...I know!”
+
+@17468 シモーヌ
+> 「あれは……。
+>  ちょっと万丈
+“Is that...? Hey, Banjo!
+---
+>  いったい、なんだってこんなところで
+>  戦闘になってるの!?」
+How did you end up fighting out here?!”
+
+@17469 万丈
+> 「遅れてきて、いきなりそれは
+>  ないんじゃない?
+“You're late, and that's the first thing you say?
+---
+>  まあ説明は後だ。
+>  それよりドールを持ってきてある
+I'll explain later. I've brought the Doll along,
+---
+>  手伝ってもらえると
+>  うれしいんだけどね」
+and I'd appreciate a little help.”
+
+@17470 シモーヌ
+> 「ああ。それはいいんだけど……
+>  実はアタシも追われてるのよ」
+“Sure, that's fine... But I'm being chased myself.”
+
+@17471 マナミ（本话主角）
+> 「どういうことです、シモーヌ様?」
+“What happened, Lady Simone?”
+
+@17472 シモーヌ
+> 「あら、見慣れない機体があると
+>  思ったら、貴女のだったのね
+“Oh, I was wondering whose unfamiliar machine that was. So it's yours.
+---
+>  実は連絡員がつかまって、
+>  アタシが情報を流していたことが
+Our courier was captured, and they found out I was passing along information.
+---
+>  バレちゃったのよ。ちょうどここへ来る
+>  予定だったから、タイミングはそれほど
+I was already planning to come here, so the timing wasn't too bad.
+---
+>  悪くなかったけど、それで追手が
+>  かかってるってわけ」
+But now I've got pursuers on my tail.”
+
+@17473 ギャリソン
+> 「確認いたしました。
+>  帝国軍部隊が接近中
+“Confirmed. Imperial forces are approaching.
+---
+>  もう少しで接触します」
+Contact is imminent.”
+
+@17474 万丈
+> 「やれやれ、高貴なお嬢様方の
+>  エスコートは、楽にはいかないな」
+“Good grief. Escorting noble ladies is never easy.”
+
+@17475 マナミ（本话主角）
+> 「来たわね!
+>  どんどんかかってらっしゃい!!」
+“Here they come! Come and get me!”
+
+@17476 ローレンス
+> 「お嬢様ッ!?」
+“My lady?!”
+
+@17477 マナミ（本话主角）
+> 「そ……そんな」
+“N-no... This can't be...”
+
+@17478 マナミ（本话主角）
+> 「ふう……」
+“Whew...”
+
+@17479 ローレンス
+> 「どうやら終わったようですな」
+“It seems to be over.”
+
+@17480 マナミ（本话主角）
+> 「そうね」
+“Yes.”
+
+@17481 万丈
+> 「ご苦労様。ケガはないかい、
+>  お嬢さんたち」
+“Well done. Are either of you hurt?”
+
+@17482 マナミ（本话主角）
+> 「ええ、大丈夫ですわ」
+“No, I'm fine.”
+
+@17483 シモーヌ
+> 「久しぶりで少し疲れたけど、
+>  問題ないわ」
+“It's been a while, so I'm a little tired, but I'm all right.”
+
+@17484 万丈
+> 「それはよかった。ギャリソン、
+>  移動の準備をしてくれ
+“Glad to hear it. Garrison, get us ready to move.
+---
+>  のんびりして敵に見つかって
+>  やることもないだろう」
+There's no point sitting around waiting for the enemy to find us.”
+
+@17485 ギャリソン
+> 「もちろん、すでに準備は
+>  できております」
+“Of course. Everything is already prepared.”
+
+@17486 万丈
+> 「それで、どうなっているんだい?」
+“So, what's the situation?”
+
+@17487 シモーヌ
+> 「奴らも本腰を入れ始めているわ。
+>  これまでみたいな暴動鎮圧のための
+“They're starting to get serious. Instead of the security forces they used to send
+---
+>  治安部隊なんかじゃなくて
+>  組織的なレジスタンスに対応する
+to put down riots, they're apparently forming proper units
+---
+>  ちゃんとした部隊を編成している
+>  みたいね。それから、ここしばらくの
+to deal with organized resistance. And the Specials have had their authority expanded
+---
+>  ゲリラ狩りで功績があったとかで
+>  スペシャルズの権限が拡大してるわ」
+after their recent successes hunting guerrillas.”
+
+@17488 ローレンス
+> 「ふむ、スペシャルズといえば
+>  ロームフェラ財団が
+“Hmm. The Specials are an Earthling force believed to have been
+---
+>  組織したと目される
+>  地球人の部隊ですな」
+organized by the Romefeller Foundation, correct?”
+
+@17489 マナミ（本话主角）
+> 「許せない。
+>  ロームフェラもスペシャルズも
+“Unforgivable. Both Romefeller and the Specials
+---
+>  自分たちの権益を
+>  確保するために
+are doing all this to protect their own interests,
+---
+>  同じ地球人に、こうも非道な
+>  行為をするなんて」
+committing such atrocities against their fellow Earthlings.”
+
+@17490 シモーヌ
+> 「結局、帝国の支配下に
+>  あるうちは
+“As long as the Empire rules us,
+---
+>  3種類の地球人しかいないのよ
+there are only three kinds of Earthlings.
+---
+>  生きるために帝国の言うとおりに
+>  おとなしく生活するか
+Those who obey the Empire and keep their heads down to survive,
+---
+>  帝国に協力するか、
+>  帝国に反抗するか
+those who help it, and those who fight it.
+---
+>  いやな時代だわ、ホントに」
+What a miserable time to be alive.”
+
+@17491 マナミ（本话主角）
+> 「シモーヌ様……」
+“Lady Simone...”
+
+@17492 シモーヌ
+> 「“様”は、やめましょ。
+>  もともと性に合わないし
+“Let's drop the ‘Lady.’ It never suited me anyway.
+---
+>  お互い、もうただの
+>  レジスタンスなんだから」
+We're both just members of the resistance now.”
+
+@17493 万丈
+> 「しかし帝国軍が、そう出て
+>  くるとなると
+“But if that's how the Imperial forces are responding,
+---
+>  この先、かなり厳しくなって
+>  くるな……
+things are going to get much harder...
+---
+>  まぁいい、ともかく先を急ごう。
+>  いま僕たちがするべきなのは
+Well, we'd better get moving. Right now, our priority
+---
+>  できるだけ早く十分な戦力を
+>  整えることだ」
+is to gather enough fighting strength as quickly as possible.”
+
+@17494 マナミ（本话主角）
+> 「それで、どちらへ向かうのですか?」
+“Where are we going, then?”
+
+@17495 万丈
+> 「とりあえずカラバで、研究を
+>  支援している博士の1人に
+“First, we'll visit one of the scientists whose research
+---
+>  会いに行く予定だ」
+Karaba is supporting.”
+
+@17496 シモーヌ
+> 「カラバ……あなたたちが組織した
+>  反帝国グループね
+“Karaba... That's the anti-Imperial group you organized, right?
+---
+>  そんなこともしてるの」
+So you support research, too?”
+
+@17497 ギャリソン
+> 「科学者の方々、特に軍事
+>  関係や、それに転用できる
+“Scientists, particularly those working on military technology
+---
+>  エネルギー関連の研究を
+>  されている方々は
+or energy research that could have military applications,
+---
+>  帝国に目をつけられやすい
+>  ですからな
+are likely to attract the Empire's attention.
+---
+>  ほかにも旧連邦の技術者など
+>  何人かの方がおりますが
+There are also a few engineers from the former Western Federation,
+---
+>  大半の方はもともと
+>  日本地区に研究施設を
+but most of these scientists originally had their research facilities
+---
+>  持たれていたのですよ
+in the Japan region.
+---
+>  ムゲゾルバドス帝国の占領前に
+>  私どもがご助力して
+Before the Muge Zorbados Empire occupied it, we helped them
+---
+>  各地に散っていただいたので
+>  ございます」
+relocate to various places.”
+
+@17498 シモーヌ
+> 「なるほどねぇ
+“I see.
+---
+>  それでドールみたいな地球製SPT
+>  なんてのも、つくれたわけね」
+So that's how you were able to build an Earth-made SPT like the Doll.”
+
+@17499 万丈
+> 「そういうこと」
+“Exactly.”
+
+@17500 マナミ（本话主角）
+> 「それで、これからお会いする方は
+>  何を研究されているのです?」
+“What does the scientist we're going to meet study?”
+
+@17501 万丈
+> 「光子力エネルギーさ」
+“Photon energy.”
+
+@17502 シモーヌ
+> (エイジ……みんな……
+>  生きているのかしら……)
+(Eiji... Everyone... Are you still alive...?)

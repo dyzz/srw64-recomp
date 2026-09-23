@@ -157,6 +157,7 @@ def main() -> int:
             command.append("--audio")
         if args.profile:
             command += ["--profile", str(args.profile.resolve()), "--presentation-settings", str(directory / "presentation.json"),
+                        "--dialogue-overrides", str(directory / "dialogue"),
                         "--rule-settings", str(directory / "rules.json")]
             if args.language:
                 command += ["--language", args.language]

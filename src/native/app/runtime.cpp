@@ -21,6 +21,9 @@
 #include <unistd.h>
 extern char** environ;
 #endif
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#endif
 
 namespace srw64::app {
 namespace {
@@ -162,6 +165,32 @@ void atomic_write(const fs::path& path,std::string_view text) {
         file.write(text.data(),static_cast<std::streamsize>(text.size())); file.flush(); file.close();
         replace_file(temporary,path);
     } catch (...) { std::error_code ignored;fs::remove(temporary,ignored);throw; }
+}
+fs::path executable_path() {
+#ifdef _WIN32
+    std::wstring buffer(32768,L'\0');
+    const auto size=GetModuleFileNameW(nullptr,buffer.data(),DWORD(buffer.size()));
+    if(!size || size>=buffer.size())return {};
+    buffer.resize(size);return fs::path(buffer);
+#elif defined(__APPLE__)
+    uint32_t size=0;_NSGetExecutablePath(nullptr,&size);
+    std::string buffer(size,'\0');
+    if(_NSGetExecutablePath(buffer.data(),&size)!=0)return {};
+    std::error_code error;auto path=fs::canonical(buffer.c_str(),error);
+    return error?fs::path{}:path;
+#else
+    std::error_code error;auto path=fs::read_symlink("/proc/self/exe",error);
+    return error?fs::path{}:path;
+#endif
+}
+fs::path bundled_resource(const std::string& name) {
+    const auto executable=executable_path();
+    if(executable.empty())return {};
+    std::error_code error;
+    // A macOS bundle keeps resources in Contents/Resources beside Contents/MacOS.
+    for(const auto& candidate:{executable.parent_path().parent_path()/"Resources"/name,executable.parent_path()/name})
+        if(fs::exists(candidate,error))return candidate;
+    return {};
 }
 void set_environment(const std::string& key,const std::string& value) {
 #ifdef _WIN32

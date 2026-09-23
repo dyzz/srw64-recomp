@@ -235,7 +235,7 @@ in progress.
 | --- | --- |
 | Languages | **F7** cycles Japanese → Chinese → English immediately, without a dialog or restart, and remembers the selection. Standard dialogue and the native UI are integrated; missing translations fall back to Japanese. |
 | Presentation | **F6** switches Original / HD independently of language and text size. HD uses optional local experimental artwork and a native replacement for the world-map marker. The internal resolution scales from 1× to 8×. |
-| Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. |
+| Dialogue | Unicode text, pagination, adjustable text size, four auto-reading speeds, hold-to-fast-forward, skip (also for the opening text and route prologues), and dialogue history. Switching language restarts the current text fragment without advancing the script. Story and battle dialogue come from plain-text files that players can override line by line from their user directory; **F5** reloads them in game ([dialogue text files](docs/guide/dialogue-text.md)). Battle quotes are redrawn in the reading language without changing the battle's pacing. |
 | Protagonist and names | In-window modern pages: pick one of the four protagonists (super / real, male / female) from cards, then name the protagonist and partner with mouse, keyboard, and IME input, within the original character set and length limits, and review. Language changes preserve edited fields. |
 | Gameplay | Optional rule corrections for original defects (ESP / Holy Warrior levels, the Limit cap, Potential bands, missing weapon-upgrade carry-over, Hyper Aura power), on by default, plus off-by-default difficulty options (fewer boss dummies, upgrade cap break, and a refund of upgrade funds when the story takes a machine away, with an on-screen notice). An always-on fix stops a hostile Wufei from gaining one dummy per kill. An optional rules file changes upgrade increments, prices and caps. See [rule fixes](docs/gameplay/rule-fixes.md) and [upgrade limits](docs/gameplay/upgrade-limits.md). |
 | Native screens | The pre-battle page (both sides, weapon modifiers, final hit, damage and critical rates, counter / evade / defend) and every intermission screen (main menu, unit and weapon upgrades, parts, unit and pilot abilities, pilot swap, data save, link) are RmlUi pages that keep the original composition and call the original routines to apply each choice. Three switches in Settings return the pre-battle page, the intermission screens and the name pages to the original screens. See the [pre-battle page](docs/native/native-battle-ui.md) and the [intermission menu](docs/native/native-intermission-menu.md). |
@@ -250,11 +250,12 @@ these, 4,674 are the game's names, labels and system messages (units, pilots,
 weapons, spirits, skills, parts, stage titles, intermission text), kept as one
 term table per language ([data text localization](docs/native/localization-terms.md)),
 so the native intermission screens and the pre-battle page read in Chinese or
-English; the other 93 are stage-one dialogue. No record is marked reviewed yet.
-This count is an extraction denominator, not a claim that every menu or text
-renderer supports language switching: the original menus, battle labels and
-baked-in text still draw the Japanese glyphs, and story and battle dialogue are
-not translated yet.
+English; the other 93 are stage-one dialogue, kept as plain-text
+[dialogue files](docs/guide/dialogue-text.md) rather than in the catalog. No
+record is marked reviewed yet. This count is an extraction denominator, not a
+claim that every menu or text renderer supports language switching: the original
+menus, battle labels and baked-in text still draw the Japanese glyphs, and the
+rest of the story and battle dialogue is not translated yet.
 
 ### Getting started
 
@@ -345,7 +346,7 @@ GitHub Actions is disabled; build and validation commands run locally.
 | --- | --- |
 | 语言 | **F7** 按日文 → 中文 → 英文循环热切换，无弹窗、不重启，并记住选择。标准对白和原生界面已接入，缺译回退日文。 |
 | 画面 | **F6** 独立切换 Original／HD，语言和字号不随之改变。HD 使用本地实验素材，并替换世界地图标记模型。内部分辨率可在 1–8 倍之间调整。 |
-| 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、按住快进、跳过（开场文字与路线序章同样可跳）和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。 |
+| 阅读 | Unicode 文字、分页、字号调节、四档自动阅读、按住快进、跳过（开场文字与路线序章同样可跳）和对话回看。切换语言从当前文字片段开头重新显示，不推进脚本。剧情与战斗台词来自纯文本文件，玩家可在用户目录逐条覆盖修改，游戏中按 **F5** 重新载入（见[台词文本文件](docs/guide/dialogue-text.md)）；战斗台词按阅读语言重绘，不改变战斗节奏。 |
 | 主角与姓名 | 游戏窗口内的现代页面：先从四张卡片（超级系／真实系 × 男／女）中选主角，再填写主角与搭档姓名，支持鼠标、键盘和输入法，遵守原字库和字数限制，最后一步确认；语言切换保留已编辑字段。 |
 | 玩法 | 可选规则修正（超能力／圣战士按等级、限界封顶、底力档位、换机漏继承的武器改造、ハイパーオーラ威力）默认开启，难度调整（头目假身减半或取消、改造上限突破、剧情移除机体时退回改造资金并提示）默认关闭；默认生效的基础修复避免敌方五飞按击坠数获得假身；可选的规则文件修改改造增量、价格与上限。见[可选规则修正](docs/gameplay/rule-fixes.md)、[改造段数与上限](docs/gameplay/upgrade-limits.md)。 |
 | 原生画面 | 战前确认页（双方信息、武器补正与最终命中／伤害／暴击率、反击／回避／防御）和场间全部画面（主菜单、机体与武器改造、強化パーツ、机体与驾驶员能力、のりかえ、データセーブ、リンク）都是保持原构图的 RmlUi 页面，选择结果交给原版例程执行。设置页的三个开关可把战前页、场间画面和姓名页分别切回原版画面。见[战前确认 UI](docs/native/native-battle-ui.md)、[场间主菜单接管](docs/native/native-intermission-menu.md)。 |
@@ -357,9 +358,10 @@ GitHub Actions is disabled; build and validation commands run locally.
 **翻译覆盖：** 已提取的 51,174 条文本记录中，中英文各覆盖相同的 4,767 条草稿，另有全部
 244 条原生 UI 文案。其中 4,674 条是名称、标签与系统提示（机体、驾驶员、武器、精神、技能、
 部件、关卡名、场间画面文字），按语言各维护一份词条表（见[数据文本汉化](docs/native/localization-terms.md)），
-原生场间画面与战前确认页因此能以中文或英文显示；其余 93 条是第一话对白。文本记录的已审校数量均为 0。
+原生场间画面与战前确认页因此能以中文或英文显示；其余 93 条是第一话对白，放在纯文本的
+[台词文件](docs/guide/dialogue-text.md)里而不是语言目录。文本记录的已审校数量均为 0。
 该数字是提取记录的覆盖统计，不代表全游戏所有显示位置已经支持语言切换：原版菜单、战斗标签和
-图片内嵌文字仍用日文字模绘制，剧情与战斗台词尚未翻译。
+图片内嵌文字仍用日文字模绘制，其余剧情与战斗台词尚未翻译。
 
 ### 启动与检查
 
@@ -488,6 +490,7 @@ Letter keys follow physical positions. / 字母键按物理键位映射。
 | I / K / J / L | C-up / down / left / right | I / K: text size / 字号 |
 | W / A / S / D | Analog stick / 摇杆 | |
 | Space / 空格 | Z trigger / Z 扳机 | |
+| F5 | Reload dialogue text files / 重新载入台词文件 | |
 | F6 / F7 | Original ↔ HD / Language / 语言 | |
 | Esc | Quit / 退出 | |
 

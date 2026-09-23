@@ -6,9 +6,11 @@
 #include "notices.hpp"
 #include "upgrade_refund.hpp"
 #include "game_adapter/dialogue_source.hpp"
+#include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
 #include <atomic>
+#include <ctime>
 #include <cstring>
 #include <fstream>
 #include <map>
@@ -38,6 +40,11 @@ std::filesystem::path output;
 std::ofstream log;
 presentation::DisplayListSnapshots<Frame> drawings;
 std::map<uint64_t,std::shared_ptr<const Frame>> frames;
+// Dialogue text files (docs/guide/dialogue-text.md): the catalogs as the profile
+// built them, the bundled and the player's roots, and a pending F5 reload.
+std::map<std::string,localization::Snapshot> base_catalogs;
+std::filesystem::path text_bundled, text_overrides;
+std::atomic_bool reload_requested{};
 
 uint8_t byte(const uint8_t* ram,uint32_t p) { return ram[p^3]; }
 uint16_t half(const uint8_t* ram,uint32_t p) { uint16_t v;std::memcpy(&v,ram+(p^2),2);return v; }
@@ -260,8 +267,61 @@ void state_report() {
     std::ofstream(output/"dialogue-state.tmp")<<state.dump(2)<<'\n';
     std::filesystem::rename(output/"dialogue-state.tmp",output/"dialogue-state.json");
 }
+// Layer every locale's text files over the profile's catalog and swap them in.
+// The report lists each problem; broken entries fall back to the layer below.
+std::pair<size_t,size_t> load_text() {
+    std::map<std::string,localization::Snapshot> next;
+    std::vector<localization::dialogue_text::Problem> problems;
+    json summary=json::object();size_t entries=0;
+    for(const auto& [locale,base]:base_catalogs) {
+        const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
+                                                       text_overrides.empty()?text_overrides:text_overrides/locale};
+        auto result=localization::dialogue_text::load(roots,*base);
+        for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
+        summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
+        entries+=result.targets.size();
+        next[locale]=result.targets.empty()?base:base->with_translations(result.targets,"dialogue-text");
+    }
+    localization::replace(std::move(next));
+    json listed=json::array();
+    std::string report="SRW64 dialogue text report\n";
+    for(const auto& [locale,row]:summary.items())
+        report+=locale+": "+std::to_string(row.at("entries").get<size_t>())+" entries from "+std::to_string(row.at("files").get<unsigned>())+" files, "+
+            std::to_string(row.at("problems").get<size_t>())+" problems\n";
+    for(const auto& problem:problems) {
+        listed.push_back({{"path",problem.path},{"line",problem.line},{"key",problem.key},{"message",problem.message}});
+        report+=problem.path+":"+std::to_string(problem.line)+"  "+(problem.key.empty()?"-":problem.key)+"  "+problem.message+"\n";
+    }
+    if(!text_overrides.empty()) {
+        std::error_code error;std::filesystem::create_directories(text_overrides,error);
+        if(!error)std::ofstream(text_overrides/"dialogue-report.txt")<<report;
+    }
+    record("dialogue_text",{{"bundled",text_bundled.string()},{"overrides",text_overrides.string()},{"locales",summary},
+        {"problems",listed.size()>20?json(std::vector<json>(listed.begin(),listed.begin()+20)):listed}});
+    return {entries,problems.size()};
+}
+void announce_text(size_t entries,size_t problems) {
+    notices::post("dialogue-text",filled(filled(localization::catalog().ui("dialogue_text_status"),"{n}",std::to_string(entries)),"{k}",std::to_string(problems)));
+}
+// F5: read the files again, rebuild every fragment the history holds, and show
+// the current fragment from its start, as a language switch does.
+void reload_text(uint8_t* ram) {
+    try {
+        const auto [entries,problems]=load_text();
+        for(auto& entry:reader.history)if(!entry.notice)
+            for(const auto& [locale,catalog]:localization::registered())
+                if(const auto* value=catalog->resolve(game_adapter::standard_dialogue_key(entry.text_id)))
+                    entry.localized[locale]=utf16(segment(expand(ram,*value),entry.segment));
+        language_status.locale=localization::snapshot()->locale;language_status.error.clear();++language_status.request;
+        announce_text(entries,problems);
+    } catch(const std::exception& error) {
+        record("dialogue_text_error",{{"error",error.what()}});
+        notices::post("dialogue-text",error.what());
+    }
+}
 void service_locale(uint8_t* ram) {
     std::lock_guard lock(mutex);
+    if(reload_requested.exchange(false))reload_text(ram);
     if(language_status.request==language_status.completed)return;
     refresh(ram,true);
     if(language_status.request!=language_status.completed) {
@@ -395,6 +455,7 @@ void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");if(!path)return;
     std::ifstream input(path);json data;input>>data;
     localization::initialize(data);
+    base_catalogs=localization::registered();
     for(const auto& [locale,catalog]:localization::registered()) {
         localization::Scope scope(catalog);typeset(u"Aa 日本語 简体中文",13);
     }
@@ -403,6 +464,13 @@ void configure(const std::filesystem::path& directory) {
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
     output=directory;log.open(directory/"dialogue-events.jsonl");
+    if(const char* value=std::getenv("SRW64_DIALOGUE_TEXT"))text_bundled=value;
+    if(const char* value=std::getenv("SRW64_DIALOGUE_OVERRIDES"))text_overrides=value;
+    {
+        const auto [entries,problems]=load_text();
+        localization::activate(localization::find(localization::snapshot()->locale));
+        if(problems)announce_text(entries,problems);
+    }
     srw64_game_hooks.presentation_step=service_locale;
     srw64_game_hooks.dialogue_step=step;srw64_game_hooks.text_loaded=loaded;srw64_game_hooks.text_drawn=drawn;
     srw64_game_hooks.reset=[](uint8_t*) {std::lock_guard lock(mutex);cancel("dialogue_reset",true);};
@@ -429,6 +497,7 @@ uint64_t request_locale(const std::string& locale) {
     language_status.locale=locale;language_status.error.clear();return ++language_status.request;
 }
 LocaleStatus locale_status(){std::lock_guard lock(mutex);return language_status;}
+void request_reload(){if(enabled)reload_requested=true;}
 uint16_t input(uint16_t buttons) {
     raw_buttons=buttons;
     consumed_hold &= buttons;

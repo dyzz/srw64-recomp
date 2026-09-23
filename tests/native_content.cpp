@@ -1,4 +1,7 @@
 #include "localization/catalog.hpp"
+#include "localization/dialogue_text.hpp"
+#include <filesystem>
+#include <fstream>
 #include "game_adapter/dialogue_source.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/display_list_snapshots.hpp"
@@ -7,6 +10,7 @@
 #include <cassert>
 #include <iostream>
 #include <thread>
+#include <unistd.h>
 
 int main() {
     srw64::ModalInputRelease modal;
@@ -83,5 +87,67 @@ int main() {
     mode.original_only();mode.request(true);mode.toggle();
     assert(!mode.enabled() && !mode.requested() && mode.current()==0);
     assert(c.locale=="en" && *c.resolve(TextKey::base(0,42))=="Translated<END>");
-    std::cout<<"native content: table identity, fallback, UI catalog and image requests passed\n";
+    {
+        // Dialogue text files: the same cases as tests/test_dialogue_text.py.
+        namespace dt=dialogue_text;
+        const std::string source="「お嬢様、<G:0124><G:0124><G:0124>です」<BR> 二行目<STOP>次のページ<END>";
+        assert((dt::pages_of(source)==std::vector<std::vector<std::string>>{{"「お嬢様、{HeroNick}です」"," 二行目"},{"次のページ"}}));
+        const auto one=[&](const std::string& text,const std::string& original)->std::optional<std::string> {
+            std::vector<dt::Problem> problems;auto entries=dt::parse(text,"t.txt",problems);
+            assert(problems.empty() && entries.size()==1);
+            return dt::compile(entries[0],&original);
+        };
+        const auto fails=[&](const std::string& text,const std::string& original,const std::string& message) {
+            try{one(text,original);}catch(const std::runtime_error& error){return std::string(error.what()).find(message)!=std::string::npos;}
+            return false;
+        };
+        assert(one("@17412 ローレンス\n> 「お嬢様、{HeroNick}です」\n>  二行目\n「小姐，{HeroNick}」\n第二行\n---\n> 次のページ\n下一页\n",source)==
+               "「小姐，<G:0124>」<BR>第二行<STOP>下一页<END>");
+        assert(one("@17412\n{HeroNick}小姐，\n第二行\n第三行\n---\n下一页\n",source)=="<G:0124>小姐，<BR>第二行<BR>第三行<STOP>下一页<END>");
+        assert(fails("@17412\n只有一页\n",source,"pages"));
+        assert(fails("@17412\n没有名字\n---\n下一页\n",source,"missing {HeroNick}"));
+        assert(fails("@17412\n{HeroNick}{HeroName}\n---\n下一页\n",source,"extra {HeroName}"));
+        assert(fails("@17412\n{HeroNik}\n---\n下一页\n",source,"unknown placeholder"));
+        assert(fails("@17412\n{HeroNick} <b>\n---\n下一页\n",source,"half-width"));
+        assert(fails("@17412\n> 違う原文\n{HeroNick}\n---\n下一页\n",source,"original text"));
+        assert(fails("@17412\n{HeroNick}\n---\n",source,"no translation"));
+        assert(fails("@100\n名字\n","名前<END>","term tables"));
+        assert(!one("@17412\n> 「お嬢様、{HeroNick}です」\n---\n> 次のページ\n",source));
+        assert(one("@18020\n> * 協力する\n> * 断る\n* 合作\n* 拒绝\n","協力する<BR>断る<END>")=="合作<BR>拒绝<END>");
+        assert(fails("@18020\n> * 協力する\n> * 断る\n* 合作\n","協力する<BR>断る<END>","options"));
+        assert(fails("@18020\n* 合作\n拒绝\n","協力する<BR>断る<END>","mixes"));
+        assert(one("\xEF\xBB\xBF# 注释\r\n@17412 \r\n\\> 箭头 {HeroNick}\r\n\\* 星号\r\n---\r\n\\---\r\n",source)==
+               "> 箭头 <G:0124><BR>* 星号<STOP>---<END>");
+        std::vector<dt::Problem> problems;
+        assert(dt::parse("孤立的一行\n@abc\n","t.txt",problems).empty() && problems.size()==2 &&
+               problems[0].message=="text outside an entry" && problems[1].message=="malformed entry header");
+        // Overrides: a later root wins entry by entry; a broken override falls back.
+        const auto root=std::filesystem::temp_directory_path()/("srw64-dialogue-text-"+std::to_string(::getpid()));
+        std::filesystem::remove_all(root);
+        std::filesystem::create_directories(root/"bundled/story");std::filesystem::create_directories(root/"user");
+        std::ofstream(root/"bundled/story/a.txt")<<"@17412\n{HeroNick}\n---\n附带\n";
+        std::ofstream(root/"bundled/story/b.txt")<<"@17412\n{HeroNick}\n---\n重复\n@17413\n另一条\n";
+        std::ofstream(root/"user/mine.txt")<<"@17412\n{HeroNick}\n---\n玩家改的\n@17413\n只有一页\n---\n多了一页\n";
+        Catalog text;auto text_data=data;text_data.erase("locale_catalogs");
+        text_data["source_entries"]={{"base:t00_17412",source},{"base:t00_17413","別の台詞<END>"}};
+        text.load(text_data);
+        const auto loaded=dt::load({root/"bundled",root/"user"},text);
+        assert(loaded.files==3 && loaded.targets.at("base:t00_17412")=="<G:0124><STOP>玩家改的<END>");
+        assert(loaded.targets.at("base:t00_17413")=="另一条<END>" && loaded.problems.size()==2);
+        assert(loaded.problems[0].path=="story/b.txt" && loaded.problems[1].path=="mine.txt");
+        const auto layered=text.with_translations(loaded.targets,"dialogue");
+        assert(*layered->resolve(TextKey::base(0,17413))=="另一条<END>" && *layered->source_text(TextKey::base(0,17413))=="別の台詞<END>");
+        assert(*text.resolve(TextKey::base(0,17413))=="別の台詞<END>");
+        std::filesystem::remove_all(root);
+    }
+    {
+        // A reload swaps the registered catalogs; the active one changes only on activate().
+        auto before=find("ja");
+        std::map<std::string,Snapshot> next{{"ja",before->with_translations({{"base:t00_00042","新<END>"}},"dialogue")}};
+        replace(next);
+        assert(snapshot()==before && *find("ja")->resolve(TextKey::base(0,42))=="新<END>");
+        bool refused=false;try{replace({});}catch(const std::runtime_error&){refused=true;}
+        assert(refused);
+    }
+    std::cout<<"native content: table identity, fallback, UI catalog, image requests and dialogue text passed\n";
 }

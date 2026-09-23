@@ -22,6 +22,7 @@
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
 | 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
+| 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 | 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
 
@@ -32,6 +33,7 @@
 | [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、姓名页与「选项」菜单、存档历史 |
 | [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
 | [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
+| [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
 | [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
 
