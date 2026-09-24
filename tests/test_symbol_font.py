@@ -9,8 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FONT = ROOT / "content/fonts/SRW64Symbols.ttf"
 # Advances in 1/1000 em: the triangles keep Arial Unicode MS's width, the wrench is full width.
 SYMBOLS = {"▶": 600, "▷": 600, "◀": 600, "🔧": 1000}
-# The weapon markers at U+E000 + their ROM glyph id: narrow 8:10 icons and the MAP badge.
-MARKERS = {241: 680, 242: 680, 243: 680, 244: 680, 575: 1060}
+# The weapon markers at U+E000 + their ROM glyph id: narrow 8:10 icons, the wider traced
+# fist and the MAP badge.
+MARKERS = {241: 680, 242: 680, 243: 680, 244: 827, 575: 1060}
 
 
 class SymbolFontTests(unittest.TestCase):

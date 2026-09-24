@@ -15,7 +15,9 @@ tools/content/build_symbol_font.py.
 - The wrench and weapon marker glyphs were drawn for the SRW64 project after the
   original game's icons and are distributed under the same terms as the rest of
   this font. The letters in the P, B and MAP markers are outlines taken from DejaVu
-  Sans Bold, under the same DejaVu licence.
+  Sans Bold, under the same DejaVu licence. The fist (U+E0F4) was traced from an
+  image generated for the project with Qwen Image 3.0 Pro from the original icon
+  (content/fonts/marker-fist.svg).
 
 --------------------------------------------------------------------------------
 Licence of DejaVu Sans (verbatim)
