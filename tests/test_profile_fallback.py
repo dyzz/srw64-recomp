@@ -45,7 +45,7 @@ class ProfileFallbackTests(unittest.TestCase):
                 self.assertFalse(result['hd_available'])
                 self.assertIsNone(result['art'])
                 self.assertIn('missing.json', result['hd_unavailable_reason'])
-                self.assertFalse(names.call_args.kwargs['include_hd'])
+                self.assertIsNone(names.call_args.kwargs.get('hd_portrait'))
                 data = json.loads(Path(result['dialogue']['path']).read_text())
                 self.assertEqual(data['config']['locale'], locale)
                 self.assertEqual(data['config']['font'], f'font-{locale}')
@@ -75,7 +75,7 @@ class ProfileFallbackTests(unittest.TestCase):
         self.assertFalse(result['hd_available'])
         self.assertIsNone(result['art'])
         self.assertIn('portrait.png', result['hd_unavailable_reason'])
-        self.assertFalse(names.call_args.kwargs['include_hd'])
+        self.assertIsNone(names.call_args.kwargs.get('hd_portrait'))
 
     def test_intact_art_keeps_live_toggle_in_original(self):
         from unittest.mock import Mock
@@ -106,7 +106,7 @@ class NamePortraitFallbackTests(unittest.TestCase):
             palette = bytes.fromhex('0003008000000000ffff')
             with patch('srw64_native.name_assets.ResourceTable') as table:
                 table.return_value.extract.side_effect = lambda index: ((pixels if index == 33 else palette), None)
-                result = prepare_name_assets(root, bytes(rom), root / 'out', include_hd=False)
+                result = prepare_name_assets(bytes(rom), root / 'out')
             self.assertIsNone(result['source_sha256'])
             self.assertEqual(len(result['portraits']), 16)
             self.assertEqual(result['link_faces'], [[41, 230], [133, 131, 132], [152, 151, 153]])
@@ -114,18 +114,19 @@ class NamePortraitFallbackTests(unittest.TestCase):
                 self.assertNotIn('hd', row)
                 self.assertEqual(sha(Path(row['original']).read_bytes()), row['original_sha256'])
 
-    def test_hd_missing_or_changed_pixels_fail_before_output(self):
+    def test_whole_hd_portraits_come_from_the_lookup(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / 'content/ui').mkdir(parents=True)
             rom = bytearray(0x110000)
-            struct.pack_into('>8H', rom, 0x1090A0 + 0x801C6BF0 - 0x801C2600, 27, 28, 25, 26, 31, 32, 29, 30)
-            (root / 'content/ui/name-entry.json').write_text(json.dumps({
-                'schema': 'srw64.name-entry-art.v1', 'hd_portraits': {'33': {'path': 'hd.png', 'sha256': sha(b'reviewed')}}}))
-            with patch('srw64_native.name_assets.ResourceTable'):
-                with self.assertRaises(FileNotFoundError):
-                    prepare_name_assets(root, bytes(rom), root / 'out')
-                (root / 'hd.png').write_bytes(b'damaged')
-                with self.assertRaisesRegex(ValueError, 'portrait changed'):
-                    prepare_name_assets(root, bytes(rom), root / 'out')
-            self.assertFalse((root / 'out').exists())
+            faces = (27, 28, 25, 26, 31, 32, 29, 30)
+            struct.pack_into('>8H', rom, 0x1090A0 + 0x801C6BF0 - 0x801C2600, *faces)
+            for face in faces + (41, 230, 133, 131, 132, 152, 151, 153):
+                struct.pack_into('>2H', rom, 0x84220 + 4*face, 33 if face == 27 else 35, 34)
+            pixels = struct.pack('>4H', 15, 96, 96, 0) + bytes(96*96)
+            palette = bytes.fromhex('0003008000000000ffff')
+            lookup = lambda image, pal: 'portraits/33-34.png' if (image, pal) == (33, 34) else None
+            with patch('srw64_native.name_assets.ResourceTable') as table:
+                table.return_value.extract.side_effect = lambda index: ((palette if index == 34 else pixels), None)
+                result = prepare_name_assets(bytes(rom), root / 'out', hd_portrait=lookup)
+            self.assertEqual(result['portraits']['27']['hd'], 'portraits/33-34.png')
+            self.assertEqual([k for k, row in result['portraits'].items() if 'hd' in row], ['27'])

@@ -190,15 +190,12 @@ function exportOBJ(){
 }
 
 function buildEvidence(){
-  const images=manifest.evidence5600||[],live=manifest.liveEvidence5600,native=manifest.nativeEvidence5600;
-  $('evidence-open').hidden=images.length===0&&!live&&!native;
+  const native=manifest.nativeEvidence5600;
+  $('evidence-open').hidden=!native;
   $('native-evidence').hidden=!native;
-  if(native)$('native-evidence-scope').textContent=native.summary;
-  $('live-evidence').hidden=!live;
-  if(live)$('live-evidence-scope').textContent=live.summary;
-  for(const [items,target] of [[images,'evidence-images'],[live?.frames||[],'live-evidence-images'],[native?.frames||[],'native-evidence-images']]){
-    for(const item of items){const figure=document.createElement('figure');const a=document.createElement('a');a.href=item.path;a.target='_blank';a.rel='noopener';const img=document.createElement('img');img.src=item.path;img.alt=item.title;img.loading='lazy';a.append(img);const caption=document.createElement('figcaption');caption.textContent=item.title;figure.append(a,caption);$(target).append(figure);}
-  }
+  if(!native)return;
+  $('native-evidence-scope').textContent=native.summary;
+  for(const item of native.frames){const figure=document.createElement('figure');const a=document.createElement('a');a.href=item.path;a.target='_blank';a.rel='noopener';const img=document.createElement('img');img.src=item.path;img.alt=item.title;img.loading='lazy';a.append(img);const caption=document.createElement('figcaption');caption.textContent=item.title;figure.append(a,caption);$('native-evidence-images').append(figure);}
 }
 
 $('search').addEventListener('input',()=>renderList());

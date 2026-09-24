@@ -22,7 +22,7 @@ from PIL import Image
 
 from srw64_rom.resources import ResourceTable
 from tools.hd_ai.portrait_batch import SILHOUETTE, portraits
-from tools.hd_ai.run_benchmark import ROOT
+from tools.hd_ai.aliyun import ROOT
 
 SIZE = 768
 SOURCE = 96
@@ -93,13 +93,11 @@ def main() -> None:
     if args.bind:
         path = ROOT / 'content/art/stage1-hd.json'
         manifest = json.loads(path.read_text())
-        manifest['textures'] = [r for r in manifest['textures'] if r['kind'] != 'portrait']
-        base = ROOT / 'assets/hd-ai/portrait-matte/v2/pack'
-        manifest['source'] = {'path': str(base.relative_to(ROOT)), 'manifest_sha256': sha(base / 'rt64.json')}
+        # Only the portraits section: the RT64 source pack and its textures belong to the world map.
         manifest['portraits'] = {'path': str(args.output.resolve().relative_to(ROOT)),
                                  'manifest_sha256': sha(args.output / 'portraits.json')}
         path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-        print('bound', path.relative_to(ROOT), len(manifest['textures']), 'textures,', len(rows), 'whole portraits')
+        print('bound', path.relative_to(ROOT), len(rows), 'whole portraits')
 
 
 if __name__ == '__main__':

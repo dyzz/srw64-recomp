@@ -35,7 +35,7 @@
 
 `Request.visible` 与 `active` 分开：人物间过渡、重新编辑和退出等待期间保留页面。每个 RT64 workload 记录是否应遮盖选字表，Metal 末尾清除相应底图；场景失效按代码地址区间重叠判断（后续序章从 `801C4500` 装载），AppKit 覆盖层在退出帧完成后才移除。测试截图应使用真实游戏窗口截图，GPU 读回单独只会包含命名底色，不能当作输入 UI 的视觉证据。
 
-`src/srw64_native/name_assets.py` 从原 ROM 的角色路线表和 face 资源表提取八张原版头像，`content/ui/name-entry.json` 登记可选 HD 资源及 SHA-256。当前 HD 替换包括已审核的マナミ头像，其余角色自动使用原头像。后续添加资源只需扩充该映射；没有为未提供的角色生成新图。
+`src/srw64_native/name_assets.py` 从原 ROM 的角色路线表和 face 资源表提取八张原版头像。HD 模式下，每张头像的 HD 版取自整张头像集（见[人物头像 HD](native-portraits-hd.md)），姓名页不再单独登记。
 
 | 字段 | 主角地址 | 搭档地址 |
 | --- | --- | --- |

@@ -30,7 +30,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="new run directory (required unless --build-only)")
     parser.add_argument("--build-only", action="store_true", help="check the inputs and build the host, then exit without running it")
     parser.add_argument("--reuse-build-from", type=Path, help="reuse an identical existing binary from a prior run after checking source, ROM and ABI fingerprints")
-    parser.add_argument("--variant", choices=("jp", "model5600"), default="jp", help="pinned ROM resource variant; code compatibility is verified before building")
+    parser.add_argument("--variant", choices=("jp",), default="jp", help="pinned ROM resource variant; code compatibility is verified before building")
     parser.add_argument("--vis", type=int, default=600)
     parser.add_argument("--graphics", action="store_true", help="build/run RT64 Metal and capture GPU output")
     parser.add_argument("--audio", action="store_true", help="play through SDL and record a bounded device-input capture (requires graphics)")

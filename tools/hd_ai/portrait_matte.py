@@ -1,7 +1,7 @@
 """Matte an AI-redrawn portrait against the original portrait's mask.
 
-The model returns an opaque picture on the flat grey backdrop that
-prepare_stage1_portraits.py composited behind the source. The first matte
+The model returns an opaque picture on the flat grey backdrop composited
+behind the source when the request was prepared. The first matte
 (stage1 pack-7) had four faults, found 2026-09-23:
 
 - The premultiplied resize stored every transparent texel as black. RT64 and
@@ -28,7 +28,6 @@ import hashlib
 import json
 import math
 from pathlib import Path
-import shutil
 
 from PIL import Image, ImageChops, ImageFilter, ImageStat
 
@@ -377,11 +376,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     parser.add_argument('--portraits', type=Path, required=True, help='folder with samples.json, inputs/ and runs/')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--pack', type=Path, help='RT64 pack to copy with these portraits\' tiles replaced')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     samples = json.loads((args.portraits / 'samples.json').read_text())['samples']
-    records, tiles = [], {}
+    records = []
     for sample in samples:
         generated = reviewed_output(args.portraits, sample)
         source = Image.open(args.portraits / sample['source']).convert('RGBA')
@@ -391,27 +389,11 @@ def main() -> None:
         high.save(args.output / f"{sample['id']}-{high.width}.png")
         report['filter_fringe'] = {name: filter_fringe(high, bg) for name, bg in
                                        (('white', (255, 255, 255)), ('black', (0, 0, 0)))}
-        for binding in sample['binding']['bindings']:
-            x, y = binding['xy']
-            bw, bh = binding['draw_size']
-            tiles[binding['hash']] = high.crop((x * RUNTIME, y * RUNTIME, (x + bw) * RUNTIME, (y + bh) * RUNTIME))
         records.append({'id': sample['id'], 'resource_id': sample['resource_id'], 'character': sample['character'],
                         'generation_sha256': sha(generated), 'runtime': f"{sample['id']}-{high.width}.png",
                         'runtime_sha256': sha(args.output / f"{sample['id']}-{high.width}.png"), 'matte': report})
         print(sample['id'], {k: report[k] for k in ('silhouette_iou_against_original', 'frame_cut_kept', 'filter_fringe')})
     result = {'schema': 'srw64.portrait-matte.v2', 'portraits': records}
-    if args.pack:
-        pack = args.output / 'pack'
-        shutil.copytree(args.pack, pack)
-        paths = {e['hashes']['rt64']: e['path'] for e in json.loads((pack / 'rt64.json').read_text())['textures']}
-        for digest, tile in tiles.items():
-            if not paths.get(digest, '').startswith('portrait-'):
-                raise ValueError(f'{digest} is not a portrait tile of {args.pack}')
-            target = pack / paths[digest]
-            target.unlink()  # never write through into the copied-from pack
-            tile.save(target)
-        result['pack'] = {'source': str(args.pack), 'manifest_sha256': sha(pack / 'rt64.json'),
-                          'portrait_tiles': {d: sha(pack / paths[d]) for d in sorted(tiles)}}
     (args.output / 'report.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
 
 

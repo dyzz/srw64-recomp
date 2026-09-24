@@ -67,9 +67,14 @@ TextKey 示例为 `base:t00_17412`；另一个表的 `base:t01_17412` 是不同�
 
 ## 原图与高清图
 
-`content/art/stage1-hd.json` 从已核验包中明确列出 **70 张**纯美术替换：57 张世界地图切片、13 张对话边框切片；头像另列在 `portraits` 段。4842 张字库图和其余未纳入本批清单的贴图不进入这个包；筛选在离线编译时完成，运行时不凭文件名猜资源类别。
+`content/art/stage1-hd.json` 列出两类 HD 美术（2026-09-24）：
 
-来源包是 `assets/hd-ai/portrait-matte/v2/pack`：它在 [v6 包](native-worldmap-hd.md)的基础上只换掉 36 张头像切片，其余文件逐字节相同。现在清单只从中取 70 条世界地图和对白边框替换；头像改为整张 768×768 图，由清单的 `portraits` 段列出，宿主整张绘制，见[人物头像 HD](native-portraits-hd.md)。原头像透明处理有三个缺陷，替换原图后头像边缘出问题（2026-09-23 查明）：
+- **RT64 纹理哈希替换，249 条**：剧情世界地图地表（资源 5602–5606）209 条、宇宙物件 27 条、对话框边框 13 条。来源包是 `assets/hd-ai/worldmap-surfaces/pack-v1`。包里的字库图等其他贴图不在清单里，编译时不会带上；筛选在离线编译时完成，运行时不凭文件名猜资源类别。
+- **宿主整张绘制**：头像（`portraits` 段，见[人物头像 HD](native-portraits-hd.md)）、场间背景（`backgrounds`，见[场间背景 HD](native-backgrounds-hd.md)）、标题 Logo 与火焰（`scene_images`，见[标题画面与剧情文字图](native-title-and-story-images.md)）。
+
+profile 默认 `images: original`；用 `--images hd` 启动，或在游戏里按 F6，才会用 HD。
+
+2026-09-23 查明，最早的头像透明处理有三个缺陷，替换原图后头像边缘出问题：
 
 - 透明像素的颜色被存成黑色。RT64 和 RmlUi 页面都按非预乘 Alpha 做双线性采样，于是轮廓外沿出现暗边。
 - 模型输出相对原图有偏移和缩放（劳伦斯右偏约 1.5 个原像素，玛娜米缩小约 1%），而遮罩沿用了偏移后的轮廓。结果是一侧被吃掉、另一侧外扩，轮廓内侧 2 个原像素以内出现 13–519 个透光像素。
@@ -83,14 +88,7 @@ TextKey 示例为 `base:t00_17412`；另一个表的 `base:t01_17412` 是不同�
 - 透明像素填入最近的实色；
 - 缩小时颜色与 Alpha 分开重采样。
 
-改后四张头像的轮廓 IoU 为 0.984–0.994，画框截断处 100% 不透明，轮廓内透光像素为 0–3（Lanczos 振铃，Alpha ≥ 245）。模拟非预乘双线性放大 3 倍后，边缘偏差超过 16 级的像素从 203 / 74 / 97 / 0 降为 0。重建命令（输出目录必须不存在）：
-
-```sh
-.venv/bin/python -m tools.hd_ai.portrait_matte \
-  --portraits assets/hd-ai/stage1-zh/portraits-ai \
-  --pack assets/hd-ai/worldmap-runtime/pack-v6/pack \
-  --output assets/hd-ai/portrait-matte/v2
-```
+改后四张头像的轮廓 IoU 为 0.984–0.994，画框截断处 100% 不透明，轮廓内透光像素为 0–3（Lanczos 振铃，Alpha ≥ 245）。模拟非预乘双线性放大 3 倍后，边缘偏差超过 16 级的像素从 203 / 74 / 97 / 0 降为 0。这些改法现在由整张头像管线沿用，重建方法见[人物头像 HD](native-portraits-hd.md)。
 
 F6 不卸载 GPU 正在使用的纹理。窗口线程提交请求；渲染提交线程等待已提交 workload/present 完成并空闲后，在 RT64 的 texture-map mutex 内改变替换开关。这样 UV 缩放与纹理描述符会在同一模式下构建；纹理仍由 RT64 管理。5600 的原生替换标记也按已应用模式构建：Original 不添加原生绘制／抑制标记，保留完整八个原版面；HD 才标记水滴替换。此开关目前作用于纯美术包和 5600，不能在以后接入语言贴图时直接混装使用。
 

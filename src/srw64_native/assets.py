@@ -89,7 +89,7 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         if not re.fullmatch(r"[0-9a-f]{16}", digest) or digest in seen:
             raise ValueError("Invalid or conflicting art texture identity")
         seen.add(digest)
-        if row["kind"] not in ("worldmap", "portrait", "frame", "space"):
+        if row["kind"] not in ("worldmap", "frame", "space"):
             raise ValueError("Unreviewed/language-dependent image category")
         entry = originals[digest]
         path = inside(source, entry["path"])

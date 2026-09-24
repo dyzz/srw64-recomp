@@ -22,7 +22,6 @@ def main() -> int:
     mode.add_argument("--profile", type=Path, help="unified original-ROM presentation profile")
     parser.add_argument("--language", help="locale declared by the profile")
     parser.add_argument("--images", choices=("original", "hd"), help="initial image mode; F6 switches in game")
-    mode.add_argument("--model-5600", action="store_true", help="isolated Japanese 96-face marker experiment")
     mode.add_argument("--native-waterdrop", action="store_true", help="original JP ROM with native GPU waterdrop")
     save_mode = parser.add_mutually_exclusive_group()
     save_mode.add_argument("--new-game", action="store_true", help="start with empty SRAM for the opening story")
@@ -41,15 +40,14 @@ def main() -> int:
     args = parser.parse_args()
     if (args.language or args.images) and not args.profile:
         parser.error("--language and --images require --profile")
-    config_name = "playtest-model5600.json" if args.model_5600 else "playtest-native-marker.json" if args.native_waterdrop else "playtest.json"
+    config_name = "playtest-native-marker.json" if args.native_waterdrop else "playtest.json"
     config = json.loads((ROOT / "config/recomp/profiles" / config_name).read_text())
-    expected_variant = "model5600" if args.model_5600 else "jp"
-    if config.get("schema") != "srw64.native-playtest.v1" or config["variant"] != expected_variant:
+    if config.get("schema") != "srw64.native-playtest.v1" or config["variant"] != "jp":
         raise RuntimeError("unsupported playtest configuration")
     from srw64_native.save_history import SaveCandidate, SaveHistoryError, inspect_initial, inventory, select, stage_selection
     variants = json.loads((ROOT / "config/recomp/rom-variants.json").read_text())["variants"]
     identity = variants[config["variant"]]
-    directory = ROOT / ("build/recomp/profile-play" if args.profile else "build/recomp/model-5600/play" if args.model_5600 else "build/recomp/native-marker/play" if args.native_waterdrop else "build/recomp/play")
+    directory = ROOT / ("build/recomp/profile-play" if args.profile else "build/recomp/native-marker/play" if args.native_waterdrop else "build/recomp/play")
     sessions = directory / "sessions"
     def available_saves() -> tuple[list[SaveCandidate], SaveCandidate]:
         candidates = inventory(sessions, game_id=identity["game_id"], variant=config["variant"], rom_sha256=identity["sha256"])

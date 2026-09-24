@@ -4,7 +4,7 @@ qwen-image-3.0 bills per output image and 1K and 2K cost the same, so an N x N
 grid of portraits in one 2048 px request costs 1/N^2 per portrait. Each cell
 keeps a backdrop gutter so frame-cut clothes do not run into a neighbour.
 `prepare` freezes every portrait's grid from the ROM, `run` sends them in order
-through run_benchmark.run_one, and `compose` fits each cell's own shift and
+through aliyun.run_one, and `compose` fits each cell's own shift and
 scale, resamples it from the whole output and mattes it with portrait_matte.
 
 2026-09-24: on the grey backdrop cells move up to 7 source px and scale by up
@@ -27,7 +27,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageStat
 
 from srw64_rom.resources import ResourceTable
 from tools.hd_ai.portrait_matte import RUNTIME, WORK, filter_fringe, flatten, matte_portrait, runtime_image
-from tools.hd_ai.run_benchmark import ROOT, run_one
+from tools.hd_ai.aliyun import ROOT, load_env, run_one
 
 GUTTER = 16        # source px of backdrop around every cell
 INPUT_SCALE = 6    # nearest-neighbour pre-scale of the request image
@@ -180,17 +180,6 @@ def prepare(args: argparse.Namespace) -> None:
         'purpose': f'all portraits, {args.columns}x{args.columns} grids on grey; {MODEL}, seed of candidate {CANDIDATE}',
         'skipped_reviewed': sorted(args.skip), 'samples': samples}, ensure_ascii=False, indent=2) + '\n')
     print({'portraits': len(rows), 'requests': len(samples), 'estimated_cny': round(len(samples) * 0.2, 2)})
-
-
-def load_env(path: Path) -> dict:
-    config = {}
-    for line in path.read_text().splitlines():
-        line = line.strip().removeprefix('export ')
-        if line and not line.startswith('#') and '=' in line:
-            key, value = line.split('=', 1)
-            if key.strip() in ('DASHSCOPE_API_KEY', 'DASHSCOPE_BASE_URL'):
-                config[key.strip()] = value.strip().strip('"\'')
-    return config
 
 
 def run(args: argparse.Namespace) -> None:

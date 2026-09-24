@@ -313,15 +313,14 @@ public:
                 if (std::filesystem::exists(map_spec)) {
                     std::ifstream input(map_spec);
                     input >> worldmap_spec;
-                    // One region (5604) or the Earth surfaces 5602-5606 of the story world map.
+                    // The Earth surfaces 5602-5606 of the story world map, 64 px tiles redrawn at 512.
                     const auto region = [](const nlohmann::json& id) { return id.is_number_unsigned() && id >= 5602 && id <= 5606; };
                     const bool regions = worldmap_spec.contains("resources") && !worldmap_spec.at("resources").empty() &&
                         std::all_of(worldmap_spec.at("resources").begin(), worldmap_spec.at("resources").end(), region);
-                    if (worldmap_spec.at("schema") != "srw64.worldmap-hd.v1" || worldmap_spec.at("source_tile_size") != 64 ||
-                        !(regions || worldmap_spec.value("resource_id", 0) == 5604))
+                    if (worldmap_spec.at("schema") != "srw64.worldmap-hd.v1" || worldmap_spec.at("source_tile_size") != 64 || !regions)
                         throw std::runtime_error("Unsupported HD world-map specification");
                     worldmap_tile_size = worldmap_spec.at("replacement_tile_size").get<unsigned>();
-                    if (worldmap_tile_size != 256 && worldmap_tile_size != 512)
+                    if (worldmap_tile_size != 512)
                         throw std::runtime_error("Unsupported HD world-map tile density");
                     for (const auto& hash : worldmap_spec.at("hashes")) {
                         const auto value = hash.get<std::string>();

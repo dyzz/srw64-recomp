@@ -1,7 +1,7 @@
 """HD intermission backgrounds: eight 320x240 CI8 CG pictures, bright and dark palettes.
 
 `prepare` freezes one request per picture and model (the bright palette, nearest
-upscaled), `run` sends them through run_benchmark.run_one, `compose` registers each
+upscaled), `run` sends them through aliyun.run_one, `compose` registers each
 output to its source, resamples it to SIZE and renders a comparison sheet, and
 `build` derives the dark version from the two ROM palettes and writes the
 whole-image set the host draws (native_background.cpp).
@@ -25,8 +25,7 @@ import time
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageStat
 
 from srw64_rom.resources import ResourceTable
-from tools.hd_ai.portrait_batch import load_env
-from tools.hd_ai.run_benchmark import PRICES, ROOT, run_one
+from tools.hd_ai.aliyun import PRICES, ROOT, load_env, run_one
 
 IMAGES = range(0x155E, 0x1566)            # 5470-5477; D_800C59AC lists them per lead unit
 BRIGHT, DARK = 0x1566 - 0x155E, 0x156E - 0x155E  # palette = image + offset

@@ -216,7 +216,7 @@ class NativeImporterTests(unittest.TestCase):
         self.assertEqual(data["source_entries"], sources); self.assertEqual(data["glyphs"], glyphs)
         for locale in self.spec["locales"]:
             self.assertEqual(data["locale_catalogs"][locale["locale"]]["entries"], compile_locale(locale, sources, hashes))
-        original = prepare_name_assets(ROOT, self.rom.read_bytes(), self.root / "python-portraits", include_hd=False)
+        original = prepare_name_assets(self.rom.read_bytes(), self.root / "python-portraits")
         for face, row in original["portraits"].items():
             with Image.open(row["original"]) as a, Image.open(native / data["name_entry_assets"]["portraits"][face]["original"]) as b:
                 self.assertEqual(a.convert("RGBA").tobytes(), b.convert("RGBA").tobytes())

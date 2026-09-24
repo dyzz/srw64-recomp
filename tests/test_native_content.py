@@ -79,7 +79,7 @@ class NativeArtTests(unittest.TestCase):
             (pack / "rt64.json").write_text(json.dumps(db))
             manifest = {"schema": "srw64.art-pack.v1", "locale": "neutral",
                         "source": {"path": "input", "manifest_sha256": sha((pack / "rt64.json").read_bytes())},
-                        "textures": [{"hash": "a" * 16, "kind": "portrait", "sha256": sha(b"reviewed art")}]}
+                        "textures": [{"hash": "a" * 16, "kind": "frame", "sha256": sha(b"reviewed art")}]}
             result = compile_art(root, manifest, root / "out")
             self.assertEqual(result["count"], 1)
             self.assertFalse((root / "out/font.png").exists())
