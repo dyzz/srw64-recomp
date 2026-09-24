@@ -63,6 +63,7 @@ WRENCH = (0x1F527, "u1F527")
 MARKERS = {241: "uniE0F1", 242: "uniE0F2", 243: "uniE0F3", 244: "uniE0F4", 575: "uniE23F"}
 ICON_BOTTOM, ICON_HEIGHT = -20, 760
 NARROW, WIDE, BEARING, STROKE = 600, 980, 40, 80
+TRACED_BOX = 680   # the traced fist, square
 
 
 def triangle(source: TTFont, name: str) -> tuple:
@@ -195,13 +196,17 @@ class Outline:
         return self.pen.glyph()
 
 
-def traced_marker(svg: Path) -> tuple:
-    """An even-odd SVG path (M/L/C/Z, y up) scaled into the icon band, its winding fixed."""
+def traced_marker(svg: Path, box: float = TRACED_BOX) -> tuple:
+    """An even-odd SVG path (M/L/C/Z, y up) fitted into a box x box square centred in
+    the band, its winding fixed. A square shape needs a little more width than the
+    narrow icons (and less height) to look the same size next to them."""
     view = [float(v) for v in re.search(r'viewBox="([^"]+)"', svg.read_text()).group(1).split()]
     data = re.search(r' d="([^"]+)"', svg.read_text()).group(1)
     width, height = view[2], view[3]
-    scale = ICON_HEIGHT / height
-    place = lambda x, y: (BEARING + float(x) * scale, ICON_BOTTOM + float(y) * scale)  # noqa: E731
+    scale = min(box / width, box / height)
+    dx = BEARING + (box - width * scale) / 2
+    dy = ICON_BOTTOM + (ICON_HEIGHT - height * scale) / 2
+    place = lambda x, y: (dx + float(x) * scale, dy + float(y) * scale)  # noqa: E731
     path = pathops.Path(fillType=pathops.FillType.EVEN_ODD)
     pen = path.getPen()
     for command, args in re.findall(r"([MLCZ])([^MLCZ]*)", data):
@@ -218,7 +223,7 @@ def traced_marker(svg: Path) -> tuple:
     path.simplify(fix_winding=True)
     glyph_pen = TTGlyphPen(None)
     path.draw(Cu2QuPen(RoundingPen(glyph_pen), 1.0, reverse_direction=False))
-    return glyph_pen.glyph(), round(width * scale) + 2 * BEARING
+    return glyph_pen.glyph(), round(box) + 2 * BEARING
 
 
 def markers(bold: TTFont) -> dict:

@@ -134,7 +134,7 @@
   - 原版图标字形：244 格闘（拳头）、243 射撃（准星）、241 P、242 B、575 MAP（`reference/original-glyph-map.csv`）。
   - **高清图像模式**：用符号字体 `SRW64Symbols.ttf` 里的矢量图标，码位是 U+E000＋原版字形号（U+E0F4、U+E0F3、U+E0F1、U+E0F2、U+E23F）。
     - 由 `tools/content/build_symbol_font.py` 照原版图标重画；P、B、MAP 的字母取自 DejaVu Sans Bold。
-    - 拳头：以原版图标为底，用千问图像 3.0 Pro 重画了三版，用户选第 3 版。再用 `tools/content/trace_marker.py` 描成 `content/fonts/marker-fist.svg`，线条加粗到图标高度的 7.5%，和其他图标一致。
+    - 拳头：以原版图标为底，用千问图像 3.0 Pro 重画了三版，用户选第 3 版。再用 `tools/content/trace_marker.py` 描成 `content/fonts/marker-fist.svg`，线条加粗到图标高度的 9.5%。字形放进 680×680 的方框，比窄图标（600×760）稍宽稍矮，看起来和其他图标一样大。
       - 生成记录（输入、提示词、参数、三个候选）在 `assets/hd-ai/weapon-markers/`，不进 git。
       - 手画的几版用户不满意：原版是朝左的拳头，大拇指在上面。
     - MAP 是红底徽章、字母镂空，页面把它染成原版的红色 `#DE416A`。
