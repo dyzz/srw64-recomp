@@ -1,0 +1,466 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "worldmap-models",
+  "note": "Every world-map model with an HD replacement (docs/native/native-ship-model.md). Bound to scene 103 (シャアの反乱), whose world-map setup 801C310C places the Axis (5598, location 95) and 5607 (location 92) landmarks. Then each 3D72 vehicle 1-14 makes a short space journey between locations 66 and 65; the comments give the model-table index and resource. Press F6 to compare with the original.",
+  "slot": 103,
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            95
+          ],
+          "note": "space: the Axis landmark at location 95"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            120
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            92
+          ],
+          "note": "the scene-103 landmark 5607 at location 92"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            150
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            66
+          ],
+          "note": "start of the fleet parade, space"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            1
+          ],
+          "note": "vehicle 1 -> グラン・ガラン (index 10, 5594)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            2
+          ],
+          "note": "vehicle 2 -> ゴラオン (9, 5593)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            3
+          ],
+          "note": "vehicle 3 -> ガンドール (11, 5595)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            4
+          ],
+          "note": "vehicle 4 -> ラビアンローズ (8, 5592)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            5
+          ],
+          "note": "vehicle 5 -> バルジ (12, 5596)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            6
+          ],
+          "note": "vehicle 6 -> リーブラ (6, 5590)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            7
+          ],
+          "note": "vehicle 7 -> ピースミリオン (5, 5589)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            8
+          ],
+          "note": "vehicle 8 -> ミデア (24, 5587)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            9
+          ],
+          "note": "vehicle 9 -> ミデア (3, 5587)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            10
+          ],
+          "note": "vehicle 10 -> アウドムラ (2, 5586)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            11
+          ],
+          "note": "vehicle 11 -> アルビオン (0, 5584)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            12
+          ],
+          "note": "vehicle 12 -> アーガマ (1, 5585)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            13
+          ],
+          "note": "vehicle 13 -> ネェル・アーガマ (4, 5588)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            65
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D72",
+          "args": [
+            14
+          ],
+          "note": "vehicle 14 -> ラー・カイラム (7, 5591)"
+        },
+        {
+          "op": "3D33",
+          "args": [
+            66
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            40
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

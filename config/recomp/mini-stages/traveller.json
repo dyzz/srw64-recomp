@@ -1,7 +1,7 @@
 {
   "schema": "srw64.mini-stage.v1",
   "name": "traveller",
-  "note": "Tests 3D72 against its only consumer. 3D72 writes engine+0x990 = parameter mod 15, and 3D33 picks its person from table D_801C5644[engine+0x990] — a table of exactly 15 people (then FFFF), which is why the parameter is taken mod 15. Each probe sets a different person, then makes the same 3D33 journey, so any difference in the travel animation is attributable to the person chosen. Values are the original ones: 8 (ローレンス, 20 uses), 14 (レイン), 3 (サイ・サイシー), and 0, which 3D33 treats as 'use the default person'. Runs on the world map, before 3D4D.",
+  "note": "Tests 3D72 against its only consumer. 3D72 writes engine+0x990 = parameter mod 15, and 3D33 picks its vehicle from table D_801C5644[engine+0x990] — 15 indices into the world-map model table 801C5670 (then FFFF), which is why the parameter is taken mod 15; they are model indices, not people (docs/native/native-ship-model.md). Each probe sets a different vehicle, then makes the same 3D33 journey, so any difference in the travel animation is attributable to the vehicle chosen. Values are the original ones: 8 (ミデア, 20 uses), 14 (ラー・カイラム), 3 (ガンドール), and 0, which 3D33 treats as 'the ship ブライト is aboard'. Runs on the world map, before 3D4D.",
   "map": 20,
   "deployments_from": "base:stage_auxiliary:001e4268",
   "events": [
@@ -16,25 +16,25 @@
         {"op": "3D3B", "args": [1]},
         {"op": "3D38", "args": [60]},
 
-        {"op": "3D72", "args": [8], "note": "person 8 = ローレンス"},
+        {"op": "3D72", "args": [8], "note": "vehicle 8 -> model index 24 = ミデア (5587)"},
         {"op": "3D33", "args": [2], "note": "journey from the baseline to entry 2"},
         {"op": "3D38", "args": [45]},
         {"op": "3D32", "args": [4], "note": "back to the same start for a fair comparison"},
         {"op": "3D38", "args": [45]},
 
-        {"op": "3D72", "args": [14], "note": "person 14 = レイン"},
+        {"op": "3D72", "args": [14], "note": "vehicle 14 -> model index 7 = ラー・カイラム (5591)"},
         {"op": "3D33", "args": [2], "note": "the identical journey"},
         {"op": "3D38", "args": [45]},
         {"op": "3D32", "args": [4]},
         {"op": "3D38", "args": [45]},
 
-        {"op": "3D72", "args": [3], "note": "person 3 = サイ・サイシー"},
+        {"op": "3D72", "args": [3], "note": "vehicle 3 -> model index 11 = ガンドール (5595)"},
         {"op": "3D33", "args": [2]},
         {"op": "3D38", "args": [45]},
         {"op": "3D32", "args": [4]},
         {"op": "3D38", "args": [45]},
 
-        {"op": "3D72", "args": [0], "note": "0 = the default person"},
+        {"op": "3D72", "args": [0], "note": "0 = the ship ブライト is aboard (pair table 801C560C), else index 24"},
         {"op": "3D33", "args": [2]},
         {"op": "3D38", "args": [45]},
 

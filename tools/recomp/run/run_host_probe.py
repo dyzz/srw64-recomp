@@ -39,6 +39,8 @@ def main() -> int:
     parser.add_argument("--dump-textures", action="store_true", help="record RT64 TMEM hashes, load coordinates and original texture bytes")
     parser.add_argument("--font-pack", type=Path, help="load a local RT64 texture replacement directory")
     parser.add_argument("--native-marker", type=Path, help="native GPU model pack for original JP resource 5600")
+    parser.add_argument("--native-models", type=Path,
+                        help="native GPU pack of HD ship models (tools/models/build_native_models.py); also SRW64_NATIVE_MODELS")
     parser.add_argument("--profile", type=Path, help="independent locale, art and native model on the original JP ROM")
     parser.add_argument("--presentation-settings", type=Path, help="persistent next-launch locale preferences; requires profile")
     parser.add_argument("--dialogue-overrides", type=Path,
@@ -123,6 +125,14 @@ def main() -> int:
             parser.error("native marker requires original JP ROM and graphics")
         from recomp.model5600.prepare_native_marker import validate
         native_marker = validate(args.native_marker)
+    native_models = None
+    # Opt-in experiment: debug sessions pass it through the environment.
+    args.native_models = args.native_models or (Path(os.environ["SRW64_NATIVE_MODELS"]) if os.environ.get("SRW64_NATIVE_MODELS") else None)
+    if args.native_models:
+        if not args.graphics or args.variant != "jp":
+            parser.error("native models require the original JP ROM and graphics")
+        from models.build_native_models import validate as validate_models
+        native_models = validate_models(args.native_models)
     if args.interactive and (not args.graphics or args.input):
         parser.error("interactive play requires graphics and excludes scripted input")
     if args.audio and not args.graphics:
@@ -252,6 +262,7 @@ def main() -> int:
     report["profile"] = prepared_profile
     report["input"] = input_report
     report["native_marker"] = native_marker
+    report["native_models"] = native_models
     if prepared_profile:
         report["native_dialogue"] = prepared_profile["dialogue"]
     report["interactive"] = args.interactive
@@ -291,10 +302,12 @@ def main() -> int:
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
                    "SRW64_RULE_FIXES": ",".join(rule_fixes)}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR"):
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_NATIVE_MODELS", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
+    if native_models:
+        environment["SRW64_NATIVE_MODELS"] = native_models["path"]
     if prepared_profile:
         environment["SRW64_DIALOGUE_DATA"] = report["native_dialogue"]["path"]
         # Bundled dialogue text from the repository, the player's overrides beside the run.

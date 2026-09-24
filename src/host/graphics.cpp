@@ -274,7 +274,17 @@ public:
                 int(app->userConfig.resolution), app->userConfig.resolutionMultiplier);
         app->userConfig.aspectRatio = RT64::UserConfiguration::AspectRatio::Original;
         app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Original;
-        app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::None;
+        // 4x MSAA; SRW64_MSAA=0/2/4/8 for comparisons. RT64 falls back when the device
+        // lacks the sample count; native draws follow the scene target's sample count.
+        app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::MSAA4X;
+        if (const char* msaa = std::getenv("SRW64_MSAA")) {
+            const std::string value = msaa;
+            app->userConfig.antialiasing = value == "0" ? RT64::UserConfiguration::Antialiasing::None
+                : value == "2" ? RT64::UserConfiguration::Antialiasing::MSAA2X
+                : value == "8" ? RT64::UserConfiguration::Antialiasing::MSAA8X
+                : RT64::UserConfiguration::Antialiasing::MSAA4X;
+        }
+        fprintf(stderr, "SRW64_MSAA samples=%u\n", app->userConfig.msaaSampleCount());
         app->userConfig.developerMode = false;
         const auto result = app->setup(0);
         chosen_api = ultramodern::renderer::GraphicsApi::Metal;
