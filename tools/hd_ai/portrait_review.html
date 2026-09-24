@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>头像 HD 对比</title>
+<style>
+:root {
+  --bg: #f3f2ee; --panel: #ffffff; --ink: #1c1e23; --muted: #6b707a; --line: #dddbd4;
+  --accent: #b87d0c; --warn: #b3521b; --chip: #ecebe6; --stage: #1c2454; --card: 150px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161b; --panel: #1d2027; --ink: #e8e6e0; --muted: #9aa0aa; --line: #2d3139;
+    --accent: #e3ab3c; --warn: #e5824a; --chip: #262a32;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14161b; --panel: #1d2027; --ink: #e8e6e0; --muted: #9aa0aa; --line: #2d3139;
+  --accent: #e3ab3c; --warn: #e5824a; --chip: #262a32;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 14px/1.45 -apple-system, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", sans-serif; }
+header { position: sticky; top: 0; z-index: 5; padding: 12px 20px; border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+h1 { font-size: 17px; font-weight: 650; margin: 0; }
+.count { color: var(--muted); font-variant-numeric: tabular-nums; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.controls label { color: var(--muted); font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+input[type="search"] { width: 180px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--panel); color: var(--ink); font: inherit; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.seg button { border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 13px;
+  padding: 5px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+input[type="range"] { accent-color: var(--accent); }
+main { padding: 18px 20px 48px; }
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(calc(var(--card) * 2 + 32px), 1fr)); }
+.grid.single { grid-template-columns: repeat(auto-fill, minmax(calc(var(--card) + 22px), 1fr)); }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; cursor: zoom-in;
+  transition: border-color .15s; }
+.card:hover { border-color: var(--accent); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.tile { position: relative; aspect-ratio: 1; border-radius: 6px; overflow: hidden; background: var(--tile-bg); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+img.px { image-rendering: pixelated; }
+.tile .tag { position: absolute; left: 6px; top: 5px; z-index: 2; font-size: 11px; color: #fff;
+  background: rgba(0, 0, 0, .5); padding: 0 5px; border-radius: 4px; pointer-events: none; }
+.wipe img.top { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
+.wipe::after { content: ""; position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 1px;
+  background: rgba(255, 255, 255, .8); box-shadow: 0 0 0 .5px rgba(0, 0, 0, .4); pointer-events: none; }
+.meta { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; min-height: 20px; }
+.meta .id { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+.meta .name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.badge { font-size: 11px; padding: 0 6px; border-radius: 4px; background: var(--chip); color: var(--muted); }
+.badge.warn { color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+[data-bg="blue"] { --tile-bg: var(--stage); }
+[data-bg="checker"] { --tile-bg: repeating-conic-gradient(#b9b9b9 0 25%, #e8e8e8 0 50%) 0 0 / 16px 16px; }
+[data-bg="white"] { --tile-bg: #ffffff; }
+[data-bg="black"] { --tile-bg: #000000; }
+.silhouette img.hd { filter: brightness(0) invert(16%); }   /* opaque texels become (41,41,41) */
+.empty { color: var(--muted); padding: 40px 0; text-align: center; }
+dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+dialog::backdrop { background: rgba(8, 9, 12, .82); }
+.viewer { width: min(96vw, 1180px); display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 16px;
+  background: var(--panel); color: var(--ink); border-radius: 12px; padding: 16px; }
+.stage { position: relative; aspect-ratio: 1; width: 100%; max-height: 82vh; margin: auto; border-radius: 8px;
+  overflow: hidden; background: var(--tile-bg); cursor: ew-resize; touch-action: none; }
+.stage.side { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; aspect-ratio: 2 / 1; background: none; cursor: default; }
+.stage.side .half { position: relative; background: var(--tile-bg); border-radius: 8px; overflow: hidden; }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.side-panel h2 { font-size: 18px; margin: 0 0 2px; }
+.side-panel .jp { color: var(--muted); margin-bottom: 12px; }
+.side-panel dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; font-size: 13px; }
+.side-panel dt { color: var(--muted); }
+.side-panel dd { margin: 0; font-variant-numeric: tabular-nums; }
+.side-panel .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.side-panel .hint { color: var(--muted); font-size: 12px; margin-top: 16px; }
+.nav { display: flex; gap: 8px; margin-top: 14px; }
+.nav button, .close { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px;
+  padding: 6px 12px; font: inherit; cursor: pointer; }
+.close { float: right; }
+@media (max-width: 760px) {
+  header { padding: 10px 16px; } main { padding: 14px 16px 40px; }
+  :root { --card: 110px; }
+  .viewer { grid-template-columns: 1fr; width: 96vw; }
+  .stage.side { aspect-ratio: 1 / 2; grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body data-bg="blue">
+<header>
+  <h1>人物头像 HD 对比</h1>
+  <span class="count" id="count"></span>
+  <div class="controls">
+    <input type="search" id="search" placeholder="名字或图号" aria-label="搜索">
+    <div class="seg" id="filter" role="group" aria-label="筛选">
+      <button data-v="all" aria-pressed="true">全部</button>
+      <button data-v="flag" aria-pressed="false">待审</button>
+      <button data-v="97" aria-pressed="false">97 px</button>
+      <button data-v="silhouette" aria-pressed="false">有剪影</button>
+      <button data-v="lead" aria-pressed="false">主角</button>
+    </div>
+    <div class="seg" id="mode" role="group" aria-label="对比方式">
+      <button data-v="side" aria-pressed="true">并排</button>
+      <button data-v="wipe" aria-pressed="false">滑动</button>
+      <button data-v="hd" aria-pressed="false">仅 HD</button>
+    </div>
+    <div class="seg" id="bg" role="group" aria-label="底色">
+      <button data-v="blue" aria-pressed="true">对白蓝</button>
+      <button data-v="checker" aria-pressed="false">棋盘格</button>
+      <button data-v="white" aria-pressed="false">白</button>
+      <button data-v="black" aria-pressed="false">黑</button>
+    </div>
+    <label>大小 <input type="range" id="size" min="90" max="300" value="150"></label>
+  </div>
+</header>
+<main><div class="grid" id="grid"></div><div class="empty" id="empty" hidden>没有符合条件的头像</div></main>
+<dialog id="dialog">
+  <div class="viewer">
+    <div>
+      <div class="stage" id="stage"></div>
+    </div>
+    <div class="side-panel">
+      <button class="close" id="close" aria-label="关闭">关闭</button>
+      <h2 id="v-name"></h2>
+      <div class="jp" id="v-jp"></div>
+      <div class="seg" id="v-mode" role="group" aria-label="大图对比方式">
+        <button data-v="wipe" aria-pressed="true">滑动</button>
+        <button data-v="side" aria-pressed="false">并排</button>
+        <button data-v="original" aria-pressed="false">原图</button>
+        <button data-v="hd" aria-pressed="false">HD</button>
+      </div>
+      <div class="row"><label><input type="checkbox" id="v-sil"> 剪影预览</label></div>
+      <dl id="v-info"></dl>
+      <div class="nav"><button id="prev">← 上一张</button><button id="next">下一张 →</button></div>
+      <div class="hint">滑动模式下在图上拖动或移动鼠标比较；空格在原图与 HD 间切换，← → 翻页，Esc 关闭。原图按游戏实际显示的 96×96 放大，HD 为 768×768。</div>
+    </div>
+  </div>
+</dialog>
+<script>
+const DATA = /*DATA*/[];
+const $ = (id) => document.getElementById(id);
+const state = { filter: 'all', mode: 'side', search: '', index: 0, vmode: 'wipe', list: [] };
+const flagged = (p) => p.warnings.length > 0;
+const label = (p) => {
+  const zh = p.zh.filter(Boolean);
+  if (zh.length) return zh.slice(0, 2).join(' / ');
+  if (p.jp.length) return p.jp.slice(0, 2).join(' / ');
+  return p.protagonist ? '主角（存档画面）' : '未登记';
+};
+
+function seg(id, key, apply) {
+  $(id).addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    for (const x of $(id).querySelectorAll('button')) x.setAttribute('aria-pressed', x === b);
+    state[key] = b.dataset.v; apply();
+  });
+}
+
+function matches(p) {
+  if (state.filter === 'flag' && !flagged(p)) return false;
+  if (state.filter === '97' && p.size !== 97) return false;
+  if (state.filter === 'silhouette' && !p.silhouette) return false;
+  if (state.filter === 'lead' && !p.protagonist) return false;
+  const q = state.search.trim().toLowerCase();
+  if (!q) return true;
+  return String(p.id) === q || p.jp.some((n) => n.toLowerCase().includes(q)) || p.zh.some((n) => n && n.includes(q));
+}
+
+function img(src, cls, alt) {
+  const i = document.createElement('img');
+  i.src = src; i.loading = 'lazy'; i.decoding = 'async'; i.alt = alt; if (cls) i.className = cls;
+  return i;
+}
+
+function tile(p, which) {
+  const t = document.createElement('div'); t.className = 'tile';
+  if (which === 'wipe') {
+    t.classList.add('wipe');
+    t.append(img(p.hd, 'hd', 'HD'), img(p.original, 'px top', '原图'));
+    t.addEventListener('pointermove', (e) => {
+      const r = t.getBoundingClientRect(); t.style.setProperty('--x', ((e.clientX - r.left) / r.width * 100) + '%');
+    });
+    t.addEventListener('pointerleave', () => t.style.setProperty('--x', '50%'));
+  } else if (which === 'original') {
+    t.append(img(p.original, 'px', '原图'));
+    const s = document.createElement('span'); s.className = 'tag'; s.textContent = '原图'; t.append(s);
+  } else {
+    t.append(img(p.hd, 'hd', 'HD'));
+    const s = document.createElement('span'); s.className = 'tag'; s.textContent = 'HD'; t.append(s);
+  }
+  return t;
+}
+
+function render() {
+  state.list = DATA.filter(matches);
+  const grid = $('grid'); grid.replaceChildren();
+  grid.classList.toggle('single', state.mode !== 'side');
+  state.list.forEach((p, i) => {
+    const c = document.createElement('div'); c.className = 'card'; c.tabIndex = 0;
+    if (state.mode === 'side') { const pair = document.createElement('div'); pair.className = 'pair'; pair.append(tile(p, 'original'), tile(p, 'hd')); c.append(pair); }
+    else c.append(tile(p, state.mode));
+    const meta = document.createElement('div'); meta.className = 'meta';
+    meta.innerHTML = `<span class="id">#${p.id}</span><span class="name"></span>`;
+    meta.querySelector('.name').textContent = label(p);
+    c.append(meta);
+    const b = document.createElement('div'); b.className = 'badges';
+    const add = (t, w) => { const s = document.createElement('span'); s.className = 'badge' + (w ? ' warn' : ''); s.textContent = t; b.append(s); };
+    if (p.size === 97) add('97 px');
+    if (p.silhouette) add('有剪影');
+    if (p.protagonist) add('主角');
+    for (const w of p.warnings) add(w === 'local distortion' ? '局部变形' : w, true);
+    if (b.childElementCount) c.append(b);
+    c.addEventListener('click', () => open(i));
+    c.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(i); });
+    grid.append(c);
+  });
+  $('count').textContent = `${state.list.length} / ${DATA.length} 张`;
+  $('empty').hidden = state.list.length > 0;
+}
+
+function stage() {
+  const p = state.list[state.index]; const s = $('stage'); s.replaceChildren();
+  s.className = 'stage' + (state.vmode === 'side' ? ' side' : '') + ($('v-sil').checked ? ' silhouette' : '');
+  s.style.setProperty('--x', '50%');
+  if (state.vmode === 'side') {
+    for (const [src, cls, t] of [[p.original, 'px', '原图'], [p.hd, 'hd', 'HD']]) {
+      const h = document.createElement('div'); h.className = 'half'; h.append(img(src, cls, t));
+      const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = t; h.append(tag); s.append(h);
+    }
+  } else if (state.vmode === 'wipe') {
+    s.classList.add('wipe'); s.append(img(p.hd, 'hd', 'HD'), img(p.original, 'px top', '原图'));
+  } else {
+    s.append(img(state.vmode === 'original' ? p.original : p.hd, state.vmode === 'original' ? 'px' : 'hd', state.vmode));
+  }
+}
+
+function open(i) {
+  state.index = i; const p = state.list[i];
+  $('v-name').textContent = `#${p.id}　${label(p)}`;
+  $('v-jp').textContent = p.jp.join('、') || (p.protagonist ? '主角头像（存档画面）' : '');
+  const rows = [['尺寸', `${p.size}×${p.size}（显示 96×96）`], ['基础调色板', p.palette], ['来源', p.source || '—'],
+    ['轮廓 IoU', p.iou ?? '—'], ['缩回原尺寸差异', p.fidelity ?? '—'],
+    ['标记', p.warnings.length ? p.warnings.map((w) => w === 'local distortion' ? '局部变形' : w).join('、') : '无'],
+    ['剪影版本', p.silhouette ? '有（游戏里用深灰填色）' : '无']];
+  $('v-info').replaceChildren(...rows.flatMap(([k, v]) => { const dt = document.createElement('dt'); dt.textContent = k;
+    const dd = document.createElement('dd'); dd.textContent = v; return [dt, dd]; }));
+  stage();
+  if (!$('dialog').open) $('dialog').showModal();
+}
+
+function drag(e) {
+  if (state.vmode !== 'wipe') return;
+  const s = $('stage'); const r = s.getBoundingClientRect();
+  s.style.setProperty('--x', Math.min(100, Math.max(0, (e.clientX - r.left) / r.width * 100)) + '%');
+}
+
+seg('filter', 'filter', render);
+seg('mode', 'mode', render);
+seg('bg', 'bg', () => { document.body.dataset.bg = state.bg; try { localStorage.setItem('portrait-review-bg', state.bg); } catch (e) {} });
+seg('v-mode', 'vmode', stage);
+$('search').addEventListener('input', (e) => { state.search = e.target.value; render(); });
+$('size').addEventListener('input', (e) => document.documentElement.style.setProperty('--card', e.target.value + 'px'));
+$('v-sil').addEventListener('change', stage);
+$('stage').addEventListener('pointermove', drag);
+$('stage').addEventListener('pointerdown', (e) => { $('stage').setPointerCapture(e.pointerId); drag(e); });
+$('close').addEventListener('click', () => $('dialog').close());
+$('prev').addEventListener('click', () => open((state.index - 1 + state.list.length) % state.list.length));
+$('next').addEventListener('click', () => open((state.index + 1) % state.list.length));
+$('dialog').addEventListener('click', (e) => { if (e.target === $('dialog')) $('dialog').close(); });
+document.addEventListener('keydown', (e) => {
+  if (!$('dialog').open) return;
+  if (e.key === 'ArrowLeft') $('prev').click();
+  else if (e.key === 'ArrowRight') $('next').click();
+  else if (e.key === ' ') { e.preventDefault(); state.vmode = state.vmode === 'original' ? 'hd' : 'original';
+    for (const x of $('v-mode').querySelectorAll('button')) x.setAttribute('aria-pressed', x.dataset.v === state.vmode); stage(); }
+});
+try { const bg = localStorage.getItem('portrait-review-bg');
+  if (bg) { document.body.dataset.bg = bg; for (const x of $('bg').querySelectorAll('button')) x.setAttribute('aria-pressed', x.dataset.v === bg); }
+} catch (e) {}
+render();
+</script>
+</body>
+</html>

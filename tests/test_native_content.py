@@ -90,3 +90,31 @@ class NativeArtTests(unittest.TestCase):
             manifest["locale"] = "zh-Hans"
             with self.assertRaisesRegex(ValueError, "language-neutral"):
                 compile_art(root, manifest, root / "failed")
+
+    def test_whole_portraits_are_copied_beside_the_pack(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pack = root / "input"
+            pack.mkdir()
+            (pack / "rt64.json").write_text(json.dumps({"configuration": {}, "textures": []}))
+            faces = root / "faces"
+            faces.mkdir()
+            (faces / "portrait-9.png").write_bytes(b"whole portrait")
+            index = {"schema": "srw64.portrait-images.v1", "size": 768, "source_size": 96,
+                     "silhouette": {"palette": 609, "palette_fnv1a64": "0" * 16, "rgb": [41, 41, 41]},
+                     "images": [{"image": 9, "palette": 309, "file": "portrait-9.png", "sha256": sha(b"whole portrait"),
+                                 "pixels_fnv1a64": "1" * 16, "palette_fnv1a64": "2" * 16}]}
+            (faces / "portraits.json").write_text(json.dumps(index))
+            manifest = {"schema": "srw64.art-pack.v1", "locale": "neutral",
+                        "source": {"path": "input", "manifest_sha256": sha((pack / "rt64.json").read_bytes())},
+                        "textures": [],
+                        "portraits": {"path": "faces", "manifest_sha256": sha((faces / "portraits.json").read_bytes())}}
+            result = compile_art(root, manifest, root / "out")
+            self.assertEqual(result["portraits"], 1)
+            runtime = json.loads((root / "out/srw64-portraits-hd.json").read_text())
+            self.assertEqual(runtime["images"][0]["file"], "portraits/portrait-9.png")
+            self.assertEqual((root / "out/portraits/portrait-9.png").read_bytes(), b"whole portrait")
+            (faces / "portrait-9.png").write_bytes(b"edited portrait")
+            with self.assertRaisesRegex(ValueError, "Portrait pixels changed"):
+                compile_art(root, manifest, root / "failed")
+            self.assertFalse((root / "failed").exists())

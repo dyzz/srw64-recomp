@@ -2,8 +2,8 @@
   "schema": "srw64.name-entry-art.v1",
   "hd_portraits": {
     "33": {
-      "path": "assets/hd-ai/stage1-zh/pack-7/portrait-33-384.png",
-      "sha256": "91865d0079db6cdfd4962a86ec8bc8bd195b9eeb3bbef994a21b273004ca6055"
+      "path": "assets/hd-ai/portrait-matte/v2/portrait-33-384.png",
+      "sha256": "25ad4db87622c02bcf0e34b9550cae30881f5d31ed09001dda469e3cce0ee68f"
     }
   }
 }
