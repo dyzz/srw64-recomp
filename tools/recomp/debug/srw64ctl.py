@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Command line for the native host's debug interface (docs/guide/debug-interface.md).
 
-  srw64ctl.py launch [--language zh-Hans] [--images original] [--rules fixed] [--reuse-build]
+  srw64ctl.py launch [--language zh-Hans] [--images original] [--rules fixed] [--reuse-build] [--diagnostics light]
   srw64ctl.py status [--history]
   srw64ctl.py keys e+return i i k e+z:600      # a key chord, or chord:hold_ms; "wait:500" pauses
   srw64ctl.py buttons r+start [--vis 30]
@@ -52,6 +52,8 @@ def main() -> int:
     launch.add_argument("--save", help="32 KiB SRAM to start from")
     launch.add_argument("--mini-stage")
     launch.add_argument("--reuse-build", action="store_true")
+    launch.add_argument("--diagnostics", choices=("full", "light"),
+                        help="full (default) captures a frame every 60 presents; light skips it for smooth play")
     status = commands.add_parser("status")
     status.add_argument("--history", action="store_true")
     keys = commands.add_parser("keys")
@@ -111,7 +113,8 @@ def main() -> int:
     try:
         if args.command == "launch":
             session = Session.launch(**optional(language=args.language, images=args.images, rules=args.rules,
-                                                save=args.save, mini_stage=args.mini_stage), reuse_build=args.reuse_build)
+                                                save=args.save, mini_stage=args.mini_stage, diagnostics=args.diagnostics),
+                                     reuse_build=args.reuse_build)
             print(session.run)
             return 0
         session = Session.attach(args.run)

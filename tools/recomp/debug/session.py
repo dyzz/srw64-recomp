@@ -106,12 +106,12 @@ class Session:
     @classmethod
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
                mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False,
-               timeout: float = 900.0, env: dict | None = None) -> "Session":
+               timeout: float = 900.0, env: dict | None = None, diagnostics: str = "full") -> "Session":
         """Build if needed and start a session; returns once the host listens."""
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
         run = DEBUG_DIR / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         command = [sys.executable, str(ROOT / "tools/recomp/run/run_host_probe.py"), "--graphics", "--interactive",
-                   "--diagnostics", "full", "--profile", str(PROFILE), "--output", str(run)]
+                   "--diagnostics", diagnostics, "--profile", str(PROFILE), "--output", str(run)]
         if language:
             command += ["--language", language]
         if images:

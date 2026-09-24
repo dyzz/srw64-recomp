@@ -109,6 +109,8 @@
 | [战斗图像](data/battle-graphics.md) | 机体战斗图、动画零件、特效、cut-in 的资源分布、绑定表、场景格式与整理导出 |
 | [战斗动画与自定义机体](data/battle-animation.md) | 战斗动画脚本的处理逻辑，加入自定义机体与武器的可行性 |
 | [3D 资源分析](data/3d-model-replacement-analysis.md) | 原始 3D 资源与模型替换可行性 |
+| [战术地图清单](data/tactical-maps.md) | 158 张战术地图逐张的尺寸、图集、初始场景与动态效果（水面等调色板循环、殖民地、3D34 换图） |
+| [HD 资产盘点](data/hd-asset-inventory.md) | 全 ROM 逐资源分类与各类现状、战术地图水面等动态效果、每类的阿里云模型选择与费用粗估 |
 | [模型查看器](data/native-model-viewer.md) | 本地模型资源浏览与 5600 验证 |
 
 ## 规划与历史实验（design/）
@@ -125,6 +127,7 @@
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
+| [HD 化规划](design/hd-pipeline-plan.md) | HD 各类的现状、四条接入路径（宿主整张绘制／RT64 哈希替换／原生模型／原生文字）、战术地图整张接管的实现与待做、制作工具 |
 | [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md) | 美术高清化实验 |
 
 ## 验证层次
