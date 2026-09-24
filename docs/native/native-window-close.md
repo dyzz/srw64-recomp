@@ -74,18 +74,7 @@
 
 ## 复现
 
-完整命名与真实关窗，分别运行以下两条命令：
-
-```sh
-SRW64_SHUTDOWN_TRACE=1 SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 \
-.venv/bin/python tools/recomp/run/run_host_probe.py --graphics \
-  --profile config/recomp/profiles/play-profile.json --input config/recomp/inputs/native-name-entry.json \
-  --output build/recomp/window-close-check/new-window-run --vis 9000
-.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
-  --run build/recomp/window-close-check/new-window-run --exit-mode window
-```
-
-将 `--exit-mode` 改为 `control` 可对照原脚本退出。验证原版输入 UI 时，在启动器增加 `--original-name-entry`，用 `verify_window_close.py --run RUN --at-vi 1350` 触发指定 VI 的真实关窗。关闭动作只在 `SRW64_WINDOW_CONTROL` 启用时可用。
+当时的完整命名与真实关窗由 AppKit 姓名页的控制文件和 verify_native_name_entry.py 驱动，两者已随 AppKit 页面删除；现在的姓名页用调试接口驱动（见[原生姓名输入](native-name-entry.md#验证与证据)）。验证原版输入 UI 时，在启动器增加 `--original-name-entry`，用 `verify_window_close.py --run RUN --at-vi 1350` 触发指定 VI 的真实关窗。关闭动作只在 `SRW64_WINDOW_CONTROL` 启用时可用。
 
 本轮只新增验证入口、结果记录和默认关闭的线程诊断，未改变退出算法。`make check` 的 60 项测试通过。
 

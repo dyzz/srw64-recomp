@@ -41,21 +41,17 @@
 
 ## 多语言内容
 
-`content/locales/ja.json` 声明日文字体和原生阅读 UI；游戏原文从用户本地 ROM 生成。`content/locales/zh-Hans.json` 迁入 153 条已有 stage1 草稿记录，使用 Unicode，不再占用或扩展 N64 字库。缺译时按完整 TextKey 回退相应的日文源记录。
+游戏原文从用户本地 ROM 生成。译文分两部分，都使用 Unicode，不占用或扩展 N64 字库：
+- **数据文本**（名称、标签、提示，记录 0–5643）：由词条表 `content/locales/terms/` 经 `tools/content/apply_terms.py` 展开进 `content/locales/<语言>.json`，中英文各 4,674 条，见[数据文本词条表](localization-terms.md)。
+- **剧情与战斗台词**：玩家可改的台词文本文件 `content/dialogue/<语言>/`，见[台词文本文件](../guide/dialogue-text.md)。
+
+缺译时按完整 TextKey 回退相应的日文源记录。
 
 TextKey 示例为 `base:t00_17412`；另一个表的 `base:t01_17412` 是不同记录。当前标准对白适配器来自原函数 `8008C9C0`，其 `8008CA5C..8008CA6C` 调用固定传入 table 0。其他 UI/文字消费者仍须逐一适配，不能仅因目录包含其记录就宣称已经汉化。
 
 译文允许改变长度、换行和原生阅读分页，必须保留 STOP/END 顺序，以及每段里的动态姓名/专用字形 token。原文摘要变化、重复键、未知键或非法控制符会阻止加载。内容编译只读取原 ROM；不进行 ROM 文本注入。
 
-增加语言可先导出模板：
-
-```sh
-.venv/bin/python tools/content/export_locale.py \
-  --locale en --font Helvetica --key base:t00_17412 \
-  --output content/locales/en.json
-```
-
-修改 `target` 和 `ui`，保留 `source_sha256` 与控制/参数 token；在 profile 的 `locales` 中登记 `"en": "content/locales/en.json"`，随后用 `--language en` 启动。语言标签无 C++ 枚举，不需因新增语言重编宿主。源文只保存在本地导出物；分发语言包的原文携带策略另行处理。
+增加语言：在 `content/locales/terms/` 加一份与中英文同键的词条表并运行 `apply_terms.py`，在 `content/dialogue/<语言>/` 放台词文件，再在 profile 的 `locales` 里登记，用 `--language <语言>` 启动。语言标签无 C++ 枚举，不需因新增语言重编宿主。
 
 可先编译校验而不启动：
 
@@ -67,7 +63,7 @@ TextKey 示例为 `base:t00_17412`；另一个表的 `base:t01_17412` 是不同�
 
 输出必须是新目录，其中记录原始 ROM、全部注册语言目录、美术清单及生成文件摘要。注册目录在启动前验证并冻结；**运行中 F7 热切换语言，F6 切换图片与 5600 模型**。热切换采用不可变目录和逐帧引用，当前对白不推进到下一片段。设置、覆盖报告和实际验证见[三项底座验证](native-foundations-verification.md)。
 
-当前接入世界地图/战术地图的标准双框对白、原生阅读 UI 与[现代姓名页面文案](native-name-entry.md)。原菜单、开场烘焙文字、人物默认名等未全部接入新语言服务；玩家姓名继续保留游戏值，不推断或改写默认名。153 条草稿包含其他类型记录，但尚未适配的显示路径不会使用它们。全剧情翻译、人物默认名本地化和任意 Unicode 改名仍待实施。
+当前接入：剧情与战斗对白（原生阅读 UI）和全部原生页面（场间各画面、战前页、姓名页、设置）。原版菜单、开场与结局的图片文字等仍显示原图。玩家姓名保留游戏值；默认主角名还没有本地化。
 
 ## 原图与高清图
 

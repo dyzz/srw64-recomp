@@ -70,7 +70,7 @@
 2. 从原图色板生成水域蒙版，海面和距海岸约 3 个源像素的区域保留确定性双线性放大。只在陆地内部混入 AI 结果。受保护区域相对该基线的 RGB 差异为 **0 像素**；源 Alpha 单独恢复。
 3. 按原图集坐标和翻转变换切回 256×256 图块，绑定 **58 个实际出现且位于所选裁块内的 RT64 哈希**。其他图块继续使用原资源。
 4. 使用原始 RDRAM、OSTask 和 RT64/Metal，在 960×720 输出中验证到第 60 次呈现；GPU 完成后读取画面。最终图块包为 [hd-pack-stall](../../assets/hd-ai/2026-09-08/map-probe-final/hd-pack-stall/rt64.json)。
-5. 另生成地图＋既有 22 张轮廓字形的组合包，展示文字和背景两条路径可以同时生效。该字体来自既有 [native-font-probe.md](native-font-probe.md) 实验；本轮没有让 AI 生成文字，也没有把未经审核的 AI 头像装入演示。
+5. 另生成地图＋既有 22 张轮廓字形的组合包，展示文字和背景两条路径可以同时生效。该字体来自当时的字库替换实验（已删除）；本轮没有让 AI 生成文字，也没有把未经审核的 AI 头像装入演示。
 
 证据：[资源与纹理绑定](../../assets/hd-ai/2026-09-08/map-capture-binding.json)、[地图保护与切块记录](../../assets/hd-ai/2026-09-08/map-probe-final/build.json)、[地图回放](../../assets/hd-ai/2026-09-08/replay-hd-final/report.json)、[地图与字体组合回放](../../assets/hd-ai/2026-09-08/replay-map-and-font-final/report.json)。
 

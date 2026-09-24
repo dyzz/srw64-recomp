@@ -1,6 +1,6 @@
 # 原生姓名输入
 
-2026-09-11（2026-09-18 加入主角选择页）。统一 JP 基线的原生入口已接管开场的主角选择，以及主角、搭档的姓名编辑。当前 macOS 后端在游戏窗口内显示完整的现代姓名页面，替换选字表及最终确认 UI，不创建 `NSPanel` 或子窗口。三个嵌入的 AppKit `NSTextField` 同时显示名字、姓氏和昵称，左栏显示人物头像与实时姓名预览。系统输入法的组合文本由 AppKit 处理；确认输入法候选不应同时确认游戏姓名。
+2026-09-11（2026-09-18 加入主角选择页）。统一 JP 基线的原生入口已接管开场的主角选择，以及主角、搭档的姓名编辑。现代姓名页面是共享的 SDL／RmlUi 页面，直接画在游戏窗口里，替换选字表及最终确认 UI，不开子窗口（2026-09-22 起不再用 AppKit）。三个输入框同时显示名字、姓氏和昵称，左栏显示人物头像与实时姓名预览。输入法组字走 SDL 的文本编辑事件；确认输入法候选不会同时确认游戏姓名。
 
 ## 使用
 
@@ -50,33 +50,22 @@
 
 ## 验证与证据
 
-2026-09-11 代码整理后的回归在 `build/recomp/cleanup-check/name-window/`：完整命名、八字段写回、进入剧情、缩放和真实关窗均通过，退出码 0。通用窗口控制已移至 `window_test_control*`；新报告将进程结果和线程观测分开，`shutdown_lifecycle_verified` 明确为 false。下列历史验收目录保持原样。
-
-此前完整命名回归位于 `build/recomp/window-close-check/{window-1,control-trace,window-trace}/`，三轮均通过输入、原校验、重新编辑、姓名读回、自定义昵称进入剧情和 1200×800 缩放一致性检查，且全程静音。真实关窗和脚本退出虽均为退出码 0，线程诊断仍确认退出生命周期缺陷，详见 [退出验证](native-window-close.md)。
+现在的页面用[调试接口](../guide/debug-interface.md)驱动：`ui.click`、`ui.type`（`marked`／`unmark` 模拟输入法组字与提交）和 `ui.key` 操作字段与按钮，`status.name_page` 给出当前请求与各字段的值。
+- `tools/recomp/debug/check_name_entry_ui_switch.py`：检查原版／现代页面切换。
+- `tools/recomp/debug/check_dialogue.py`：新游戏时用 Enter 走完主角选择与命名，进入剧情。
 
 组件检查：`make recomp-name-entry-test`，ASan＋UBSan 覆盖字符/长度校验、原版校验失败后的完整回滚、过场时机、取消、虚拟 TEXT DMA、边界检查、陈旧请求拒绝、按键消费和 guest 寄存器保留。另已通过 `make check`、`make recomp-content-test`。
 
-现代页面中文 HD 的通过记录在 `build/recomp/name-page/live-4/`，日文 Original 的通过记录在 `build/recomp/name-page/ja-original/`。这两轮均早于渲染尺寸修复，命名、重新编辑、原校验和剧情姓名读回通过；当时的检查没有覆盖返回剧情后的尺寸一致性，不能用它们证明缩放正确。窗口实际截图为 `page-player-window.png`、`page-small-window.png`、`page-wide-window.png` 和 `page-review-window.png`。`report.json` 固定二进制、原 ROM、宿主源码、输入脚本和音频关闭状态；`name-entry-events.jsonl` 记录打开／提交／拒绝／取消／重新编辑／开始故事；`names-readback.json` 是进入剧情后的真实 RDRAM 姓名读回。各轮结果以对应 `name-entry-acceptance.json` 为准。
-
-实机驱动 `tools/recomp/verify/verify_native_name_entry.py` 检查无子窗口、嵌入字段、Tab 与 Shift-Tab、800×600 / 1200×800 缩放、无效输入与原版重名拒绝、取消返回、双人确认页重新编辑、两个角色的八个姓名字段，以及自定义昵称“ヒカリ”进入剧情。`page-*-window.png` 使用系统截图保存实际游戏窗口；`name-entry-*.png` 为 AppKit 调试缓存，不能替代实际合成外观。
-
-渲染尺寸补丁后的首次运行在 `build/recomp/name-page/final-hd/`：原生页面与确认流程正常，八个姓名字段再次读回一致；`present-1380.png` 为 1200×800 GPU 读回，已经目视核对对白与框体位置对齐。该轮在 VI 2855 收到关闭窗口事件后发生宿主退出崩溃，脚本未完成最后的自动检查；`final-review.json` 将功能／画面证据与退出失败分别记录，不能标为整轮通过。退出问题见 [native-window-close.md](native-window-close.md)。
-
-旧弹窗实现的历史证据保留在 `build/recomp/name-input/runtime-2/`，不代表当前页面外观。
-
-自动测试通过原生 `NSTextView` 的文字插入和同一按钮动作执行。它不等同于人工操作中文/日文 IME 候选框或系统剪贴板快捷键验收。当前也未执行游戏内保存后冷启动重读；已证明原始姓名内存字段与剧情使用，尚不把 SRAM 往返标为通过。原版字体以外的任意 Unicode 姓名不属于这一版支持范围。
-
-复现最终流程（两条命令分别运行，测试程序会控制关闭游戏）：
-
-```sh
-SRW64_NAME_ENTRY_CONTROL=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
-  --graphics --profile config/recomp/profiles/play-profile.json \
-  --input config/recomp/inputs/native-name-entry.json \
-  --output build/recomp/name-page/new-run --vis 12000
-.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
-  --run build/recomp/name-page/new-run
-```
-
-`SRW64_NAME_ENTRY_CONTROL` 仅供本地 QA。正常启动器不启用；请求带打开序号和字段号，过期请求不能提交到下一个人物。
+**历史记录（2026-09-11 至 09-18 的 AppKit 版）**：
+- 当时由 `SRW64_NAME_ENTRY_CONTROL` 控制文件和 verify_native_name_entry.py 驱动；这两样随 AppKit 页面一起删除。
+- 那一版检查过：无子窗口、嵌入字段、Tab 与 Shift-Tab、800×600 / 1200×800 缩放、无效输入与原版重名拒绝、取消返回、双人确认页重新编辑、两个角色的八个姓名字段，以及自定义昵称“ヒカリ”进入剧情。
+- 运行目录：
+  - `build/recomp/cleanup-check/name-window/`：完整命名、八字段写回、进入剧情、缩放和真实关窗通过，退出码 0；
+  - `build/recomp/window-close-check/{window-1,control-trace,window-trace}/`：三轮通过，退出生命周期缺陷见[退出验证](native-window-close.md)；
+  - `build/recomp/name-page/live-4/`（中文 HD）、`ja-original/`（日文 Original）、`final-hd/`（渲染尺寸补丁后，VI 2855 关窗时宿主退出崩溃，`final-review.json` 分开记录）；
+  - 旧弹窗实现在 `build/recomp/name-input/runtime-2/`。
+- 这些都不代表现在的页面外观。
+- 当时的自动测试是往 `NSTextView` 插入文字，不等于人工操作输入法候选框。
+- 游戏内保存后冷启动重读仍未执行：原始姓名内存字段与剧情使用已证明，SRAM 往返尚不标为通过。原版字体以外的任意 Unicode 姓名不属于这一版支持范围。
 
 旧的 N64 按键脚本通过移动选字格确认姓名，无法操作新的原生姓名页面。复现旧基线时给 `run_host_probe.py` 加 `--original-name-entry`，模式会记录进报告。CPU-only、固定帧回放和旧 stage1 补丁运行继续保持原版输入器。

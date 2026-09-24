@@ -37,7 +37,7 @@ HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf`；英文为 HarmonyOS Sans
 Noto Sans CJK（Linux）、Arial Unicode（macOS）、微软雅黑（Windows）；Noto 标准 TTC 按中文／日文选择对应 face。
 开发测试可用 `SRW64_TEXT_FONT` 指定一个明确的 TTF/OTF/TTC 文件；不搜索当前目录、不联网下载，
 字体读入后由布局持有。旧内容包中的 macOS PostScript 字体名称不再决定对白字体，内容包无需重导入。
-此处使用本地系统字体，不意味着发行字体与依赖打包已完成。
+发行应用包在 `Contents/Resources/fonts/` 带上打包字体及许可（`tools/release/package_macos.py`）。
 
 ## 本地验证
 

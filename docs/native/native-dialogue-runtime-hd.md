@@ -35,7 +35,7 @@
 
 ## 人名颜色
 
-[`dialogue_style.hpp`](../../src/host/dialogue_style.hpp) 在已核验的开场对话 overlay 和姓名行位置匹配时，为姓名字形矩形临时设置 RGB `#69BFFF`，使用原高清字形的 Alpha 覆盖率，并在每次绘制后恢复 RDP combiner 和 primitive color。
+`dialogue_style.hpp`（2026-09-24 随旧字形路径删除） 在已核验的开场对话 overlay 和姓名行位置匹配时，为姓名字形矩形临时设置 RGB `#69BFFF`，使用原高清字形的 Alpha 覆盖率，并在每次绘制后恢复 RDP combiner 和 primitive color。
 
 上下两个人名均使用蓝色。正文的白色／灰色区分、字形、字距、逐字显示及翻页逻辑不变。此处沿用已加载的 HarmonyOS 高清字形纹理；独立 Core Text 实验尚未自动成为实时文字后端。开关随素材包内的 `srw64-dialogue-name-blue-v1` 标记启用。
 

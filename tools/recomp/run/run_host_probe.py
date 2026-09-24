@@ -271,8 +271,7 @@ def main() -> int:
     if args.audio:
         report["audio_capture_window"] = {"from_vi": os.environ.get("SRW64_AUDIO_CAPTURE_FROM"),
                                           "to_vi": os.environ.get("SRW64_AUDIO_CAPTURE_TO")}
-    report["native_name_entry"] = {"enabled": bool(prepared_profile) and not args.original_name_entry,
-        "control_enabled": bool(os.environ.get("SRW64_NAME_ENTRY_CONTROL"))}
+    report["native_name_entry"] = {"enabled": bool(prepared_profile) and not args.original_name_entry}
     report["diagnostics"] = diagnostics
     report["script_trace_enabled"] = os.environ.get("SRW64_SCRIPT_TRACE") == "1"
     report["script_move_probe"] = os.environ.get("SRW64_SCRIPT_MOVE_PROBE")

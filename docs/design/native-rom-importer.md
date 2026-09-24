@@ -94,8 +94,8 @@ cmake --build build/recomp/gfx-build --target srw64-gfx-host --parallel 6
 
 默认使用 ad-hoc 签名，只用于本地测试，不等于 Developer ID，不等于 Gatekeeper 放行。
 `--sign-identity` 可以指定开发者自己的签名身份；脚本不获取凭证、不提交公证、不上传 release。
-对外发布前仍要核对完整依赖许可证、签名/公证及硬化运行时要求。当前宿主仍使用系统字体，
-没有随包复制字体。
+对外发布前仍要核对完整依赖许可证、签名/公证及硬化运行时要求。应用包带上打包字体
+HarmonyOS Sans（附许可全文）与符号字体。
 
 ### 新增验收与剩余门槛
 

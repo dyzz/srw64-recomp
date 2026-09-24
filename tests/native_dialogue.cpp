@@ -281,5 +281,5 @@ int main() {
         assert(switched.history.back().text==other.text.substr(0,other.stops[1]));
         assert(switched.guest<=switched.required_guest());
     }
-    std::cout<<"native dialogue: Core Text layout, Unicode clusters, pagination, controls, boundaries, history, advance timing and speaker focus passed\n";
+    std::cout<<"native dialogue: portable layout, Unicode clusters, pagination, controls, boundaries, history, advance timing and speaker focus passed\n";
 }

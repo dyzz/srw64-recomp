@@ -14,21 +14,13 @@ TextKey TextKey::base(uint16_t table,uint16_t id) {
 }
 void Catalog::load(const nlohmann::json& data) {
     translated.clear();source.clear();labels.clear();
-    const bool legacy=data.at("schema")=="srw64.native-dialogue-data.v1";
-    if(!legacy && data.at("schema")!="srw64.native-dialogue-data.v2")throw std::runtime_error("Unsupported text catalog");
+    if(data.at("schema")!="srw64.native-dialogue-data.v2")throw std::runtime_error("Unsupported text catalog");
     locale=data.at("config").value("locale","zh-Hans");
     font=data.at("config").at("font").get<std::string>();
     revision=data.value("catalog_sha256","legacy");
-    for(const auto& [key,value]:data.at("entries").items())
-        translated.emplace(legacy?TextKey::base(0,std::stoul(key)).value:key,value.get<std::string>());
-    if(!legacy) {
-        source=data.at("source_entries").get<decltype(source)>();
-        labels=data.at("ui").get<decltype(labels)>();
-    } else {
-        labels={{"manual","手动"},{"auto","自动"},{"fast","快速剧情"},{"skip","跳过剧情…"},
-            {"font_size","字号"},{"controls","↑↓自动速度  Z下一页  Q回看  I/K字号  E+Z快进  E+Enter跳过"},
-            {"history_title","对话回看"},{"history_controls","↑↓滚动 · Q / Z / X 返回"}};
-    }
+    for(const auto& [key,value]:data.at("entries").items())translated.emplace(key,value.get<std::string>());
+    source=data.at("source_entries").get<decltype(source)>();
+    labels=data.at("ui").get<decltype(labels)>();
 }
 const std::string* Catalog::resolve(const TextKey& key) const {
     auto found=translated.find(key.value);

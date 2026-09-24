@@ -32,15 +32,17 @@
 | [`catalog.py`](../../src/srw64_native/catalog.py)、[`text.py`](../../src/srw64_rom/text.py) | 稳定的 table/text ID、翻译覆盖层、原控制单元 | Unicode 运行时段落模型、原控制位置到译文片段的映射 |
 | [`host.cpp`](../../src/host/host.cpp) 的 `resident_func_8008C510` | 文本描述符读取拦截；已有中文默认姓名虚拟记录 | 当前读取是否属于已显示对白、说话者、逐字/停顿/确认状态 |
 | 同文件的 `resident_func_8007F704` | ROM 读取、overlay 身份校验与装载通知 | 文本场景切换时清除旧状态，防止同址 overlay 被误认 |
-| [`dialogue_layout.hpp`](../../src/host/dialogue_layout.hpp) | 已识别开场对白和姓名页的局部字形绘制 | 目前只改位置；不能自动换行，也不是完整文字解释器 |
+| `dialogue_layout.hpp`（2026-09-24 已删除） | 已识别开场对白和姓名页的局部字形绘制 | 目前只改位置；不能自动换行，也不是完整文字解释器 |
 | [`graphics.cpp`](../../src/host/graphics.cpp) | RT64 最终帧 draw hook、Metal、GPU 完成后读回、纹理替换 | 最终分辨率文字合成、统一 DPI 处理、原字形的可靠抑制 |
 | [`audio_timing.hpp`](../../src/host/audio_timing.hpp) | 已有音频队列反馈和时长限制 | 当前以 60 VI 为假设；任何改变模拟速度的方案都需重新验证 |
 | [`auto_counter.py`](../../tools/recomp/probes/auto_counter.py) | 有界的既有反击菜单自动确认探针 | 它使用已审阅截图模板，不提供战斗状态机或单位数据模型 |
 | `host.cpp::get_device` 和固定运行库的 `ultramodern/input.hpp` | 当前控制器输入 | 宿主返回 `Pak::None`；运行库的 `TransferPak` 仍是注释项，需要专项适配 |
 
-当前 JP 第一话通关保存、原生语言与高清配置以及单帧字体实验的证据范围分别见 [recomp 进度](recomp-progress.md)、[原生内容配置](../native/native-content-foundation.md)、[字体实验](native-font-probe.md)。三者不能互相替代。
+当前 JP 第一话通关保存、原生语言与高清配置以及单帧字体实验的证据范围分别见 [recomp 进度](recomp-progress.md)、[原生内容配置](../native/native-content-foundation.md)、字体实验（探针 2026-09-24 已删除）。三者不能互相替代。
 
 ## 3. 中文文字系统：采用 OS 原生文字渲染
+
+> 2026-09 起不再采用：游戏文字改由跨平台的 FreeType＋HarfBuzz＋ICU 引擎和打包的 HarmonyOS Sans 绘制，见[中日英跨平台文字与游戏对白](../native/portable-text.md)。本节保留当时的方案和理由。
 
 ### 3.1 决策与画面效果
 
@@ -158,4 +160,4 @@ T2 首个交付范围：女性超级系第一话涉及的剧情对白；姓名�
 
 静态测试重点覆盖控制事件顺序、Unicode 边界、分页完整性、历史去重与场景失效；原生测试覆盖资源生命周期、布局范围及线程快照。GPU 结果记录字体、平台、配置和场景身份；系统升级可能改变字形像素，不把跨系统 PNG 哈希相等设为通用条件。正式提交前执行仓库要求的检查，运行时证据按实际完成范围记录。
 
-方案建立时完成了源码入口与官方接口核对；随后按用户要求实施了 T0 的固定场景 Core Text 渲染验证。该实验使用独立图形重放目标，没有启动新的游戏流程或改变存档；当前完成范围以 [验证记录](native-coretext-probe.md) 为准。
+方案建立时完成了源码入口与官方接口核对；随后按用户要求实施了 T0 的固定场景 Core Text 渲染验证。该实验使用独立图形重放目标，没有启动新的游戏流程或改变存档；Core Text 探针与验证记录已于 2026-09-24 删除。

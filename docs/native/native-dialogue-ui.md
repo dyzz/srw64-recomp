@@ -1,8 +1,8 @@
-# 实时苹方对话 UI
+# 原生对白 UI
 
 2026-09-11：新增统一原始 JP ROM 的日中语言目录入口，见 [原生内容架构第一批实现](native-content-foundation.md)。当前使用统一 profile；下文的历史运行证据仍保留原验证范围。
 
-2026-09-09。此实现将女性超级系开场世界地图、第一张战术地图中的标准双框剧情对白接到宿主 UI。它运行原剧情脚本，读取当前文本 ID、说话人、STOP 片段和等待状态，由 macOS Core Text 排版并在最终 Metal 画面上绘制。
+2026-09-09。此实现将女性超级系开场世界地图、第一张战术地图中的标准双框剧情对白接到宿主 UI。它运行原剧情脚本，读取当前文本 ID、说话人、STOP 片段和等待状态，由跨平台文字引擎（FreeType＋HarfBuzz＋ICU，打包的 HarmonyOS Sans）排版，在最终 Metal 画面上绘制。最初一版用的是 macOS Core Text，2026-09-20 起改为跨平台引擎，见[中日英跨平台文字与游戏对白](portable-text.md)。
 
 ## 操作
 
@@ -61,7 +61,7 @@
 
 `native_dialogue.cpp` 从游戏线程发布不可变快照。`graphics.cpp` 只在原 `8008DC40` 对话绘制范围内移除匹配两个文本框的旧字形矩形，修改提交给 RT64 的副本，不改变 RDRAM 原始显示列表。背景、头像、框线、地图标记分别保留。
 
-RT64 呈现 hook 暴露当前 workload ID，新文字与对应游戏帧关联，避免渲染队列延迟导致姓名／对白串帧。Core Text 在逻辑文本宽度内计算换行；Core Graphics 按最终 drawable 像素光栅化，Metal 在最终呈现时合成。窗口变化会重新生成清晰文字，不把低分辨率字图拉伸。当前仍是居中的 4:3 游戏布局；拉宽窗口不等于扩大地图视野。
+RT64 呈现 hook 暴露当前 workload ID，新文字与对应游戏帧关联，避免渲染队列延迟导致姓名／对白串帧。文字引擎在逻辑文本宽度内分行分页（规则见[对白排版](../design/dialogue-typesetting.md)），按最终 drawable 像素光栅化，Metal 在最终呈现时合成。窗口变化会重新生成清晰文字，不把低分辨率字图拉伸。当前仍是居中的 4:3 游戏布局；拉宽窗口不等于扩大地图视野。
 
 ## 复现与证据
 
@@ -73,21 +73,11 @@ RT64 呈现 hook 暴露当前 workload ID，新文字与对应游戏帧关联，
 
 选择女性超级系与默认姓名。该入口仍使用独立试玩目录及存档副本。
 
-实时验证命令（输出目录必须是新目录）：
+实机检查用调试接口脚本 `tools/recomp/debug/check_dialogue.py`：新游戏后读路线开场，逐条核对后台确认次数、I/K 与 F7，结果见上文“排版”一节。
 
-当前自动验证命令见[原生开发指南](../guide/native-development.md#静音验证与窗口控制)。
-旧补丁 ROM 的专用运行参数已移除；下方运行目录保留为历史渲染证据。
+以下是 2026-09-09 最初版本的历史证据。当时用 Core Text 渲染，由控制文件驱动的 verify_native_dialogue.py 检查，两者都已删除。当时的检查只向宿主提交按键和可选 SDL 窗口尺寸，不修改游戏内存。证据分开记录：`dialogue-state.json` 为 CPU 对话状态，`dialogue-events.jsonl` 为片段／确认／边界事件，`dialogue-present.json` 为实际呈现 workload，`present-*.png` 为 GPU 完成后的回读，`ui-checks/acceptance.json` 为运行检查。
 
-
-在另一终端执行：
-
-```sh
-.venv/bin/python tools/recomp/verify/verify_native_dialogue.py build/recomp/native-dialogue/live-check
-```
-
-控制验证只向宿主提交按键和可选 SDL 窗口尺寸，不修改游戏内存。证据分开记录：`dialogue-state.json` 为 CPU 对话状态，`dialogue-events.jsonl` 为片段／确认／边界事件，`dialogue-present.json` 为实际呈现 workload，`present-*.png` 为 GPU 完成后的回读，`ui-checks/acceptance.json` 为运行检查。
-
-静态检查：`make check`。Core Text 与阅读状态检查：`cmake --build build/recomp/gfx-build --target srw64-dialogue-test`，随后运行 `build/recomp/gfx-build/srw64-dialogue-test`。
+静态检查：`make check`。排版与阅读状态检查：`cmake --build build/recomp/gfx-build --target srw64-dialogue-test`，随后运行 `build/recomp/gfx-build/srw64-dialogue-test`。
 
 实际运行检查位于 `build/recomp/native-dialogue/live-4/ui-checks/acceptance.json`：目标对白 `17412 / STOP 1`、18 号分页、回看暂停和滚动、确认返回不前进、自动速度回到 0、三个窗口尺寸、快进松键、开场跳过边界和战术地图第一句 `17460` 已通过。截图均为 CPU 脚本实际运行后的 GPU 回读。跳过在 VI 18056 的 overlay 切换停止，地图第一句在 VI 19364 出现并保持手动等待。
 
