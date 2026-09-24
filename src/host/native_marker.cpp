@@ -85,18 +85,25 @@ void make_pipeline(MTL::Texture *color, MTL::Texture *depth) {
             return {float4(clip * p.w, screen.z * p.w, p.w), (u.normalView * float4(float3(vertices[i].normal), 0)).xyz};
         }
         fragment float4 fs(V in [[stage_in]]) {
+            // Faceted gold marker (original eight faces with rounded edges): each flat
+            // facet reflects a bright sky or a warm ground by its orientation, and a
+            // horizon band sweeps across facets and edges as the game spins it.
             float3 n = normalize(in.normal);
             float3 view = float3(0,0,1);
             float3 key = normalize(float3(-.55f,.8f,1.0f));
             float3 fill = normalize(float3(.75f,.1f,.5f));
+            float3 r = reflect(-view, n);
+            float sky = smoothstep(-.35f, .85f, r.y);
+            float3 env = mix(float3(.55f,.38f,.08f), float3(1.0f,.96f,.80f), sky);
+            env += float3(1.0f,.97f,.85f) * .5f * exp(-pow((r.y - .12f) / .07f, 2.0f));
             float diffuse = max(dot(n,key),0.0f);
-            float broad = pow(max(dot(n,normalize(key+view)),0.0f),24.0f);
-            float sharp = pow(max(dot(n,normalize(float3(-.35f,.65f,1.5f)+view)),0.0f),110.0f);
+            float broad = pow(max(dot(n,normalize(key+view)),0.0f),16.0f);
+            float sharp = pow(max(dot(n,normalize(float3(-.35f,.65f,1.5f)+view)),0.0f),70.0f);
             float rim = pow(1.0f-abs(dot(n,view)),3.0f);
-            float3 gold = float3(1.0f,.57f,.045f);
-            float3 c = gold * (.19f + .61f*diffuse + .14f*max(dot(n,fill),0.0f));
-            c += float3(1.0f,.88f,.52f)*broad*.42f + float3(1.0f,.98f,.87f)*sharp*.75f;
-            c += float3(.28f,.16f,.035f)*rim;
+            float3 gold = float3(1.0f,.82f,.16f);
+            float3 c = gold * (.14f + .36f*diffuse + .10f*max(dot(n,fill),0.0f)) + gold * env * .62f;
+            c += float3(1.0f,.92f,.65f)*broad*.32f + float3(1.0f,.98f,.9f)*sharp*.7f;
+            c += float3(.35f,.24f,.06f)*rim;
             return float4(saturate(c),1);
         }
     )";
