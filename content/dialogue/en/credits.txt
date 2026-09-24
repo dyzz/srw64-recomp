@@ -1,0 +1,185 @@
+# Staff roll (resources 5544-5563) and copyright page (resource 620) · en
+# The staff roll after the ending and the copyright page at boot. Drawn as native text in game instead of the
+# original images; the staff roll follows the reading language, the copyright page keeps its original wording.
+# '>' lines are what Japanese shows, and the reference. Names are romanized given name first.
+# The credits give no readings. These are best guesses and need checking against another source:
+#   赤羽仁 Jin, 冬木稔一 Toshikazu, 赤石龍彌 Tatsuya, 達啓 Kei, 遠藤啓枝 Hiroe, 岩脇哲英 Tetsuhide,
+#   本間寧 Yasushi, 大塚晃慶 Akiyoshi, 横澤啓予 Keiyo, 河野さち子 Kono, 藤井大誠 Taisei, 川田真也 Kawata,
+#   堅木暁 Kataki Akira. じっぱひとからげ and えちおぴあん太郎 are pen names.
+# To change them, copy this file to the user folder, see docs/guide/dialogue-text.md.
+
+@intro:5544 staff 1
+> スーパーロボット大戦64
+> スタッフ
+Super Robot Wars 64
+Staff
+
+@intro:5545 staff 2
+> プロデューサー
+> じっぱひとからげ　　寺田　貴信
+Producers
+Jippa Hitokarage　　Takanobu Terada
+
+@intro:5546 staff 3
+> ディレクター
+> 赤羽　仁
+Director
+Jin Akabane
+
+@intro:5547 staff 4
+> アシスタントディレクター
+> 冬木　稔一
+Assistant Director
+Toshikazu Fuyuki
+
+@intro:5548 staff 5
+> シナリオ
+> 鏡　俊也
+Scenario
+Toshiya Kagami
+
+@intro:5549 staff 6
+> シナリオサポート
+> 新大久保　則雄　　赤石　龍彌
+Scenario Support
+Norio Shin-Okubo　　Tatsuya Akaishi
+
+@intro:5550 staff 7
+> プログラマー
+> 佐藤　勝俊　　中野　康弘
+> 阿部　幸絵　　平沢　直樹
+> 藤井　貴志
+Programmers
+Katsutoshi Sato　　Yasuhiro Nakano
+Yukie Abe　　Naoki Hirasawa
+Takashi Fujii
+
+@intro:5551 staff 8
+> 2Dグラフィックス
+> 野村　尚子　　達　啓
+> 安良岡　昌美　　遠藤　啓枝
+> 佐藤　実　　村尾　美和
+> 長岡　悌司
+2D Graphics
+Naoko Nomura　　Kei Tatsu
+Masami Yasuraoka　　Hiroe Endo
+Minoru Sato　　Miwa Murao
+Teiji Nagaoka
+
+@intro:5552 staff 9
+> 岩脇　哲英　　沼田　剛幸
+> 田中　貴博　　本間　寧
+> 守山　智幸　　中野　大輔
+> 村田　武志　　木澤　妙子
+> 西浦　悦史　　和島　広治
+Tetsuhide Iwawaki　　Takeyuki Numata
+Takahiro Tanaka　　Yasushi Honma
+Tomoyuki Moriyama　　Daisuke Nakano
+Takeshi Murata　　Taeko Kizawa
+Etsushi Nishiura　　Koji Wajima
+
+@intro:5553 staff 10
+> 3Dグラフィックス
+> 大塚　晃慶　　横澤　啓予
+3D Graphics
+Akiyoshi Otsuka　　Keiyo Yokozawa
+
+@intro:5554 staff 11
+> サウンドディレクター／サウンドデータ
+> 濱田　智之
+> （ティーズミュージック）
+Sound Director / Sound Data
+Tomoyuki Hamada
+(T's Music)
+
+@intro:5555 staff 12
+> ミュージック
+> 野村　教裕
+> （ティーズミュージック）
+Music
+Norihiro Nomura
+(T's Music)
+
+@intro:5556 staff 13
+> サウンドエフェクト
+> 藤木　学
+> （ティーズミュージック）
+Sound Effects
+Manabu Fujiki
+(T's Music)
+
+@intro:5557 staff 14
+> オリジナルキャラクターデザイン
+> 河野　さち子
+Original Character Design
+Sachiko Kono
+
+@intro:5558 staff 15
+> オリジナルメカデザイン
+> 藤井　大誠　　寺島　慎也
+Original Mechanical Design
+Taisei Fujii　　Shinya Terashima
+
+@intro:5559 staff 16
+> SD原画
+> 横井　孝二　　かげやま　いちこ
+> 寺島　慎也　　藤井　大誠
+SD Illustrations
+Koji Yokoi　　Ichiko Kageyama
+Shinya Terashima　　Taisei Fujii
+
+@intro:5560 staff 17
+> 演出原画
+> 金田　浩之
+Effects Illustrations
+Hiroyuki Kaneda
+
+@intro:5561 staff 18
+> スペシャルサンクス
+> 堀田　拓司　　川田　真也
+> 門脇　光弘　　竹村　英樹
+> 國島　宣弘　　荒居　弘之
+> 吉田　哲馬　　窪田　英之
+> 堅木　暁　　えちおぴあん太郎
+> スーパーロボット大戦リンクバトラーチーム
+Special Thanks
+Takuji Hotta　　Shinya Kawata
+Mitsuhiro Kadowaki　　Hideki Takemura
+Nobuhiro Kunishima　　Hiroyuki Arai
+Tetsuma Yoshida　　Hideyuki Kubota
+Akira Kataki　　Ethiopian Taro
+Super Robot Wars Link Battler Team
+
+@intro:5562 staff 19
+> 協力
+> スーパーロボット大戦委員会
+In Cooperation With
+Super Robot Wars Committee
+
+@intro:5563 staff 20
+> 企画・販売
+> （株）バンプレスト
+Planning & Sales
+Banpresto Co., Ltd.
+
+@intro:620 copyright page
+> ©葦プロダクション
+> ©サンライズ・NTV
+> ©創通エージェンシー・サンライズ
+> ©ダイナミック企画
+> ©東映
+> ©光プロダクション
+> ©光プロ／アミューズビデオ／
+> 　　　　PLEX／アトランティス
+> ©BANPRESTO 1999
+> ©1999 MONEGI
+©葦プロダクション
+©サンライズ・NTV
+©創通エージェンシー・サンライズ
+©ダイナミック企画
+©東映
+©光プロダクション
+©光プロ／アミューズビデオ／
+　　　　PLEX／アトランティス
+©BANPRESTO 1999
+©1999 MONEGI

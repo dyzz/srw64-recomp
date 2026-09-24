@@ -112,6 +112,21 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if "backgrounds" in manifest:
         background_index, background_files = whole_images(root, manifest["backgrounds"], "backgrounds.json",
                                                           "srw64.background-images.v1", "Background")
+    # Whole scene frames for the host's scene-sprite replacement (native_sprite.cpp): the title.
+    scene_index, scene_files = None, []
+    if "scene_images" in manifest:
+        folder = inside(root, manifest["scene_images"]["path"])
+        index_bytes = (folder / "scene-images.json").read_bytes()
+        if sha(index_bytes) != manifest["scene_images"]["manifest_sha256"]:
+            raise ValueError("Scene image manifest changed")
+        scene_index = json.loads(index_bytes)
+        if scene_index.get("schema") != "srw64.scene-images.v1":
+            raise ValueError("Unsupported scene image set")
+        for row in scene_index["images"]:
+            path = inside(folder, row["file"])
+            if sha(path.read_bytes()) != row["sha256"]:
+                raise ValueError(f"Scene image pixels changed: {row['file']}")
+            scene_files.append((path, row))
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
@@ -120,9 +135,15 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json")
     if background_index is not None:
         copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json")
+    if scene_index is not None:
+        (output / "scene-images").mkdir()
+        for path, row in scene_files:
+            shutil.copyfile(path, output / "scene-images" / row["file"])
+        runtime = {**scene_index, "images": [{**row, "file": f"scene-images/{row['file']}"} for _, row in scene_files]}
+        (output / "srw64-scene-images.json").write_text(json.dumps(runtime, indent=2) + "\n")
     (output / "rt64.json").write_text(json.dumps({"configuration": database["configuration"], "textures": textures}, indent=2) + "\n")
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}

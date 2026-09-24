@@ -74,4 +74,4 @@ UTF-8 纯文本，一个文件放任意多条。示例：
 - 读取实现：`src/srw64_native/dialogue_text.py`（Python，供生成与检查）与 `src/native/localization/dialogue_text.hpp`（游戏内）。两者规则一致，由 `tests/test_dialogue_text.py` 与 `tests/native_content.cpp` 共同约束；两者对同一批附带文件的展开结果逐条一致。
 - 一条展开成语言目录形式：行之间 `<BR>`、页之间 `<STOP>`、占位符变成 `<G:0124>`–`<G:012C>`，末尾 `<END>`。原文里一个姓名占多格（同一字码重复）时，只写一个占位符；游戏内按一个姓名显示。
 - 分页：`src/srw64_native/dialogue_paging.py` 是游戏分页规则的 Python 参考（连排、字号与行距、翻页位置），与游戏共用 `tests/data/dialogue-paging-cases.json` 的用例，由 `tests/test_dialogue_paging.py` 核对页界逐一相同。
-- 保留：`@intro:<资源号>` 是开场缩放文字的条目，现在只读取、不显示，不做 ROM 比对。
+- 文字页：`@intro:<资源号>` 是画在图片里的剧情文字，开场序章在 `intro.txt`（5506–5535），结局在 `ending.txt`（5570–5576）。不做 ROM 比对；游戏内按阅读语言原生绘制，日文用条目里的原文行（`>`）。文字页里的 `---` 表示空一行，不是翻页。见[标题画面与剧情文字图](../native/native-title-and-story-images.md)。

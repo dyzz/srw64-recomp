@@ -33,6 +33,8 @@ UI_KEYS |= {'battle_effect_ready', 'battle_effect_uncuttable', 'battle_skill_par
 
 UI_KEYS |= {"mini_enter", "mini_entering", "battle_shield_damage"}
 UI_KEYS |= {"intermission_episode", "intermission_hint", "intermission_swap_hint", "intermission_swap_refused"}
+# Title ring menu and PRESS START BUTTON, drawn natively (native_sprite.cpp / sprite_text.cpp).
+UI_KEYS |= {"title_press_start", "title_start", "title_load", "title_continue", "title_option"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
 UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}

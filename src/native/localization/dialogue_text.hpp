@@ -27,7 +27,9 @@ inline constexpr std::pair<unsigned,std::string_view> names[]={{0x124,"HeroNick"
 struct Problem {std::string path;unsigned line{};std::string key,message;};
 struct Page {std::vector<std::string> source,target;bool source_options{};std::vector<bool> target_options;};
 struct Entry {std::string key,note,path;unsigned line{};std::vector<Page> pages{Page{}};};
-struct Result {std::map<std::string,std::string> targets,intro;std::vector<Problem> problems;unsigned files{};};
+// intro: @intro:<resource> text pages (opening and ending pages) in catalog form;
+// intro_source: their original ('>') lines in the same form, for Japanese.
+struct Result {std::map<std::string,std::string> targets,intro,intro_source;std::vector<Problem> problems;unsigned files{};};
 
 inline std::string hex4(unsigned code){char text[8];std::snprintf(text,sizeof(text),"%04X",code);return text;}
 inline std::string name_of(unsigned code) {
@@ -219,6 +221,14 @@ inline Result load(const std::vector<std::filesystem::path>& roots,const Catalog
                 try {
                     const auto target=compile(entry,entry.key.starts_with("intro:")?nullptr:catalog.source_text({entry.key}));
                     if(target)(entry.key.starts_with("intro:")?result.intro:result.targets)[entry.key]=*target;
+                    if(entry.key.starts_with("intro:") && std::any_of(entry.pages.begin(),entry.pages.end(),[](const Page& p){return !p.source.empty();})) {
+                        std::string source;
+                        for(size_t n=0;n<entry.pages.size();++n) {
+                            if(n)source+="<STOP>";
+                            for(size_t i=0;i<entry.pages[n].source.size();++i){if(i)source+="<BR>";source+=entry.pages[n].source[i];}
+                        }
+                        result.intro_source[entry.key]=source+"<END>";
+                    }
                 } catch(const std::exception& problem) {
                     result.problems.push_back({name,entry.line,entry.key,problem.what()});
                 }
