@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from . import rule_settings
-from .assets import compile_art, inside
+from .assets import compile_art, inside, portrait_lookup
 from .catalog import compile_locale, sha, source_catalog
 
 UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "controls", "history_title", "history_controls",
@@ -119,13 +119,15 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
     from .name_assets import prepare_name_assets
     art = None
     art_sha = None
+    hd_portrait = None
     unavailable_reason = None
     try:
         art_path = inside(root, profile["art_pack"])
         art_bytes = art_path.read_bytes()
         art = compile_art(root, json.loads(art_bytes), output / "art")
+        hd_portrait = portrait_lookup(output / "art", output / "portraits")
         art_sha = sha(art_bytes)
-        name_assets = prepare_name_assets(root, rom.read_bytes(), output / "name-entry")
+        name_assets = prepare_name_assets(root, rom.read_bytes(), output / "name-entry", hd_portrait=hd_portrait)
     except FileNotFoundError as error:
         if p["images"] != "original":
             raise
@@ -139,7 +141,7 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
         "rom_sha256": sha(rom.read_bytes()), "catalog_sha256": sha(locale_path.read_bytes()),
         "sources": {relative: sha(inside(root, relative).read_bytes()) for relative in profile["locales"].values()}}
     from .battle_assets import prepare_battle_assets
-    data["battle_assets"] = prepare_battle_assets(root, rom.read_bytes(), output / "battle")
+    data["battle_assets"] = prepare_battle_assets(root, rom.read_bytes(), output / "battle", hd_portrait)
     data["name_entry_assets"] = name_assets
     (output / "coverage.json").write_text(json.dumps(coverage, ensure_ascii=False, indent=2) + "\n")
     dialogue = output / "dialogue.json"

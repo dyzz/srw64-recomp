@@ -167,8 +167,11 @@ json slot_json(const uint8_t* ram,unsigned n) {
     s["level"]=read(ram,rec+0xF,1);s["episode"]=read(ram,rec+0x10,1);s["title"]=text(ram,uint16_t(text_titles+read(ram,rec+0x11,1)));
     s["turns"]=read(ram,rec+0x12,2);s["funds"]=read(ram,rec+0x14,4);
     const auto face=std::to_string(portrait_face+protagonist);
-    if(art.contains("portraits") && art.at("portraits").contains(face) && art.at("portraits").at(face).contains("original"))
-        s["art"]={{"path",art.at("portraits").at(face).at("original")},{"width",64},{"height",64}};
+    if(art.contains("portraits") && art.at("portraits").contains(face) && art.at("portraits").at(face).contains("original")) {
+        const auto& row=art.at("portraits").at(face);
+        s["art"]={{"path",row.at("original")},{"width",64},{"height",64}};
+        if(row.contains("hd"))s["art"]["hd"]=row.at("hd");  // whole HD portrait, shown in HD image mode
+    }
     return s;
 }
 // 801CE578: the Controller Pak messages by status, each text at its original position.

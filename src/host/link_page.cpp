@@ -14,7 +14,7 @@ namespace {
 constexpr uint32_t next_screen=0x801DECB8;
 std::mutex mutex;
 Request current;
-std::array<std::vector<std::string>,3> portraits;
+std::array<std::vector<std::string>,3> portraits, portraits_hd;
 uint64_t serial{};
 bool waiting{},answered{},confirmed{},closed{};
 unsigned chosen{};
@@ -41,7 +41,7 @@ bool begin(uint8_t* ram) {
     if(!settings::native_intermission_ui())return false;
     std::lock_guard lock(mutex);
     const auto status=link::status(ram);
-    current={++serial,true,status.joined,status.scheduled,portraits};
+    current={++serial,true,status.joined,status.scheduled,portraits,portraits_hd};
     waiting=true;answered=confirmed=closed=false;chosen=0;owning=true;
     record("open",ram);
     return true;
@@ -85,7 +85,10 @@ void configure(const std::filesystem::path& directory) {
             for(unsigned n=0;n<portraits.size() && n<art.value("link_faces",nlohmann::json::array()).size();++n)
                 for(const auto& face:art.at("link_faces").at(n)) {
                     const auto key=std::to_string(face.get<unsigned>());
-                    if(art.at("portraits").contains(key))portraits[n].push_back(art.at("portraits").at(key).at("original").get<std::string>());
+                    if(!art.at("portraits").contains(key))continue;
+                    const auto& row=art.at("portraits").at(key);
+                    portraits[n].push_back(row.at("original").get<std::string>());
+                    portraits_hd[n].push_back(row.value("hd",row.at("original").get<std::string>()));
                 }
         }
     }
