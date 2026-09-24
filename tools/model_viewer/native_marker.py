@@ -24,18 +24,20 @@ def add_native_marker(root, out, resources):
     (out/'models/5600-native.json').write_text(json.dumps(geometry, separators=(',', ':'))+'\n')
     resource = next(r for r in resources if r['id'] == 5600)
     resource['original_variant_label'] = '原版 · 8 面'
-    overrides = {'title': '剧情地图标记 · 原生水滴', 'status': 'prototype',
+    overrides = {'title': '剧情地图标记 · 原生 HD', 'status': 'prototype',
         'triangles': pack['triangles']+8, 'vertices': pack['vertices']+4, 'texture_count': 1,
-        'note': '现代 GPU 绘制的圆润水滴：浮点网格、连续法线与逐像素光照。保留原游戏的位置、旋转、相机和虚线环。',
+        'note': '现代 GPU 绘制：保留原版八个平面与棱角，12 条棱和 6 个尖角做 0.5 单位圆角倒角，法线连续，逐像素光照让棱线闪出高光。保留原游戏的位置、旋转、相机和虚线环。',
         'material_note': '网页使用简化金色材质展示曲面；实际游戏使用独立 Metal shader，高光以游戏效果对照为准。',
         'source_note': '原生资源包 · SHA-256 '+pack['manifest_sha256']}
-    resource.setdefault('variants', []).append({'key': 'native', 'label': '原生水滴 · 3,968 面',
+    resource.setdefault('variants', []).append({'key': 'native', 'label': f"原生 HD · {pack['triangles']:,} 面",
         'file': 'models/5600-native.json', 'overrides': overrides})
     if not (folder/'acceptance.json').exists():
         return None
     accepted = json.loads((folder/'acceptance.json').read_text())
-    if accepted['status'] != 'verified-bounded-native-run' or accepted['asset_manifest_sha256'] != pack['manifest_sha256']:
-        raise RuntimeError('Native marker evidence or mesh drift')
+    if accepted['status'] != 'verified-bounded-native-run':
+        raise RuntimeError('Native marker evidence is not a verified run')
+    if accepted['asset_manifest_sha256'] != pack['manifest_sha256']:
+        return None  # recorded for an earlier mesh; it does not show this one
     for relative, expected in accepted['evidence_files'].items():
         path = folder/relative
         if hashlib.sha256(path.read_bytes()).hexdigest() != expected:

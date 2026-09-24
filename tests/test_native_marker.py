@@ -32,10 +32,17 @@ class NativeMarkerPackTests(unittest.TestCase):
 
     def test_authored_geometry_and_gpu_payload_agree(self):
         report = validate(self.pack)
-        self.assertGreater(report['triangles'], 3000)
+        self.assertGreater(report['triangles'], 500)
         mesh = json.loads((self.pack/'mesh.json').read_text())
         self.assertEqual([min(p[1] for p in mesh['positions']),max(p[1] for p in mesh['positions'])],[-12,12])
+        self.assertLessEqual(max(abs(v) for p in mesh['positions'] for v in (p[0], p[2])), 5)
         self.assertTrue(any(abs(v-round(v))>1e-3 for p in mesh['positions'] for v in p))
+        # The original eight faces survive as flat facets: each face normal is shared by
+        # its triangle's three corners; bevel and corner normals vary vertex to vertex.
+        normals = [tuple(n) for n in mesh['normals']]
+        flat = [n for n in set(normals) if normals.count(n) >= 3]
+        self.assertEqual(len(flat), 8)
+        self.assertEqual(sorted(n[1] > 0 for n in flat), [False]*4 + [True]*4)
 
     def test_stale_or_incomplete_asset_pack_is_rejected(self):
         path = self.copy_pack()
