@@ -13,6 +13,7 @@
 #include <fstream>
 #include <map>
 #include <mutex>
+#include <set>
 #include <stdexcept>
 #include <tuple>
 #include <vector>
@@ -60,6 +61,8 @@ std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::Rend
 MTL::DepthStencilState *depth_state{};
 MTL::SamplerState *sampler{};
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, unexpected{}, decoded{};
+std::ofstream dump;          // SRW64_BG_DUMP: the first draw of each picture without HD, for new layouts
+std::set<std::pair<uint16_t, uint16_t>> dumped;
 std::filesystem::path output;
 
 uint32_t word(const uint8_t* rdram, uint32_t address) {
@@ -227,6 +230,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
     output = directory;
+    if (std::getenv("SRW64_BG_DUMP")) dump.open(directory / "background-draws.jsonl");
     const auto spec_path = art_directory / "srw64-backgrounds-hd.json";
     if (!std::filesystem::exists(spec_path)) return;
     std::ifstream stream(spec_path);
@@ -276,6 +280,12 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     uint16_t image = 0, palette = 0;
     if (!resource(rdram, int16_t(half(rdram, sub + 0xC)), image) || !resource(rdram, int16_t(half(rdram, sub + 0xE)), palette)) return;
     const auto found = by_ids.find({image, palette});
+    if (found == by_ids.end() && dump.is_open() && dumped.insert({image, palette}).second) {
+        json words = json::array();
+        for (uint32_t p = draw.dl_begin; p + 8 <= draw.dl_end && words.size() < 400; p += 8) words.push_back({word(rdram, p), word(rdram, p + 4)});
+        dump << json({{"slot", draw.slot}, {"sub", draw.sub}, {"image", image}, {"palette", palette}, {"words", words}}).dump() << '\n';
+        dump.flush();
+    }
     if (found == by_ids.end() || !hd_enabled()) return;
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
     // the tile's region (image coordinates), SETTILESIZE to (0,0)-(31,31) and TEXRECT
@@ -284,15 +294,18 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     record.asset = found->second;
     std::vector<uint32_t> rects;
     float load[4]{}, tile[2]{};
+    float columns = 1;  // picture pixels per loaded texel: 2 when CI4 is loaded as 8-bit (starfield)
     bool loaded = false;
     int32_t x0 = INT32_MAX, y0 = INT32_MAX, x1 = INT32_MIN, y1 = INT32_MIN;
     for (uint32_t p = draw.dl_begin; p + 8 <= draw.dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), w1 = word(rdram, p + 4), op = w0 >> 24;
-        if (op == 0xFA) {
+        if (op == 0xFD && ((w0 >> 19) & 3) == 1) {
+            columns = float(source_width) / float((w0 & 0xFFF) + 1);  // 8-bit SETTIMG: its row width
+        } else if (op == 0xFA) {
             for (int c = 0; c < 4; ++c) record.prim[c] = float((w1 >> (24 - 8 * c)) & 0xFF) / 255.f;
         } else if (op == 0xF4) {
-            load[0] = ((w0 >> 12) & 0xFFF) / 4.f; load[1] = (w0 & 0xFFF) / 4.f;
-            load[2] = ((w1 >> 12) & 0xFFF) / 4.f + 1; load[3] = (w1 & 0xFFF) / 4.f + 1;
+            load[0] = ((w0 >> 12) & 0xFFF) / 4.f * columns; load[1] = (w0 & 0xFFF) / 4.f;
+            load[2] = (((w1 >> 12) & 0xFFF) / 4.f + 1) * columns; load[3] = (w1 & 0xFFF) / 4.f + 1;
             loaded = true;
         } else if (op == 0xF2 && ((w1 >> 24) & 7) == 0) {
             tile[0] = ((w0 >> 12) & 0xFFF) / 4.f; tile[1] = (w0 & 0xFFF) / 4.f;  // render tile 0 origin
@@ -329,10 +342,14 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         ring[record.id % kRing] = record;
     }
     // The last rectangle becomes the marker covering the whole picture; the SETTILESIZE
-    // before it carries the tag. The other rectangles become no-ops.
+    // before it carries the tag. The others become no-ops, except the first: when the
+    // picture opens the frame (the world-map starfield), RT64 still has the frame's clear
+    // pending and applies it with its next pass, wiping a native draw that came first.
+    // Its own first tile starts that pass; the whole picture covers it later.
     const size_t marker = rects.size() - 1;
     for (size_t r = 0; r < rects.size(); ++r) {
         const uint32_t p = rects[r];
+        if (r == 0 && marker > 0) continue;
         if (r == marker) {
             put(rdram, p, 0xE4000000 | uint32_t(x1) << 12 | uint32_t(y1));
             put(rdram, p + 4, uint32_t(x0) << 12 | uint32_t(y0));

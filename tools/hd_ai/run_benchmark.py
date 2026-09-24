@@ -35,12 +35,16 @@ def run_one(out: Path, sample: dict, model: str, candidate: int, config: dict) -
     data = (out/sample["input"]).read_bytes()
     parameters = {"n":1,"watermark":False,"seed":640901+candidate,
                   "size":sample["output_size"],"prompt_extend":False}
+    # Optional reference images (for example a style sample) follow the input as 图2, 图3.
+    references = [(out/path).read_bytes() for path in sample.get("references", [])]
     body = {"model":model,"input":{"messages":[{"role":"user","content":[
         {"image":"data:image/png;base64,"+base64.b64encode(data).decode()},
+        *({"image":"data:image/png;base64,"+base64.b64encode(r).decode()} for r in references),
         {"text":sample["prompt"]}]}]},"parameters":parameters}
     report = {"schema":"srw64.ali-image-request.v1","sample_id":sample["id"],
               "model":model,"candidate":candidate,"parameters":parameters,
               "input_sha256":digest(data),"prompt":sample["prompt"],
+              **({"reference_sha256":[digest(r) for r in references]} if references else {}),
               "reserved_cny":price,"price_is_estimate":True,"status":"request_started",
               "started_at_utc":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())}
     def save() -> None:
