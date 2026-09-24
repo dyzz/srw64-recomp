@@ -34014,6 +34014,7 @@
  "marks": {
   "comma": "，、；：—,;:",
   "halvable": "。，、；：」』）》】〕",
+  "opening": "“「『（《【〔\"",
   "sentence_end": "。！？…!?.」』）”\""
  },
  "schema": "srw64.dialogue-paging-cases.v1"
