@@ -1,0 +1,79 @@
+# Ending text pages (resources 5570–5576) · en
+# The closing words shown page by page after the final battle. The game draws them in
+# the reading language with native text; the original images are no longer shown.
+# The original lines (>) are for reference only; in a text page, --- leaves one blank
+# line. To change a page, copy it to your user folder (docs/guide/dialogue-text.md).
+
+@intro:5570 ending 1
+> こうして……
+> 長い戦いは、終わりを告げた。
+And so...
+the long war came to an end.
+
+@intro:5571 ending 2
+> 後に残されたものは、
+> 疲れ果てた星、疲れ果てた人々、
+> そして……
+> 希望……新しい未来。
+What it left behind
+was a weary world, a weary people,
+and...
+hope... a new future.
+
+@intro:5572 ending 3
+> それを手にするために
+> 戦い続けた若者たちがいた。
+There were young people
+who fought on to win it.
+---
+> 混沌の中にあった未来は、
+> 彼らによって再び希望を与えられ、
+> 輝きを取り戻していくことだろう。
+> 少しずつ。しかし、着実に。
+The future, once lost in chaos,
+was given hope again by them,
+and will surely shine once more.
+Little by little. But surely.
+
+@intro:5573 ending 4
+> そしてきっと、人々は忘れない。
+And surely, people will not forget
+---
+> たとえどれほど絶望的な状況の中
+> にあっても、未来を信じるかぎり、
+> その想いを力とするかぎり、
+> いつも希望は、
+> そこにあるのだということを。
+that however hopeless things may seem,
+as long as they believe in the future,
+as long as that belief gives them strength,
+hope is always
+right there.
+
+@intro:5574 ending 5
+> きっと忘れない。
+They will not forget.
+---
+> 人の想いの連なりがあるかぎり、
+> 未来の輝きが
+> 失われることはないことを。
+As long as people's hearts stay linked,
+the light of the future
+will never be lost.
+
+@intro:5575 ending 6
+> 戦い疲れた戦士たちは、
+> やがてまた、
+> それぞれの道を歩みだす。
+The warriors, worn out by battle,
+will before long
+each set out on their own path.
+---
+> だから……
+> いまはただ、戦士たちに休息を……
+So...
+for now, let the warriors rest...
+
+@intro:5576 ending, the end
+> 終
+The End

@@ -1480,6 +1480,10 @@
     "path": "assets/hd-ai/portrait-batch/whole-v1",
     "manifest_sha256": "d672172500f8b5ab6e95fa9d00e9efe02699496099c39f3cb90f235a26c31ac9"
   },
+  "scene_images": {
+    "path": "assets/hd-ai/title/whole-v2",
+    "manifest_sha256": "e4cc55d2046c0805db9f3908c6dabba60f0101ecbdbf6efedfffbabe92757b5c"
+  },
   "backgrounds": {
     "path": "assets/hd-ai/backgrounds/whole-v2",
     "manifest_sha256": "607d6e931d4b36cd46b0beed3b1b00784f3775dd7301f24e66d62a2e90a16001"

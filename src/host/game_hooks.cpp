@@ -162,6 +162,22 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
     if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub);
 }
+void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
+    const int32_t cursor = ctx->r4;
+    const uint32_t slot = ctx->r5, sub = ctx->r6;
+    const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
+    srw64_original_scene_rect_draw(rdram, ctx);
+    const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, false);
+}
+void resident_func_8009761C(uint8_t* rdram, recomp_context* ctx) {
+    const int32_t cursor = ctx->r4;
+    const uint32_t slot = ctx->r5, sub = ctx->r6;
+    const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
+    srw64_original_scene_quad_draw(rdram, ctx);
+    const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, true);
+}
 void resident_func_8008F5C8(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_reset(rdram, ctx);
     if (srw64_game_hooks.reset) srw64_game_hooks.reset(rdram);

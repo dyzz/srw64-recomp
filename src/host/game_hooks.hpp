@@ -16,6 +16,9 @@ struct SRW64GameHooks {
     void (*portrait_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     // 80095974 (sprite modes 2 and 4: intermission backgrounds) wrote [begin, end) for slot/sub.
     void (*background_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
+    // 80096CD8 (sprite modes 11-13, texture rectangles) or 8009761C (modes 14-16, quads) wrote
+    // [begin, end) for one scene frame of slot/sub.
+    void (*scene_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads){};
     void (*reset)(uint8_t*){};
     bool (*script_before)(uint8_t*, uint32_t){};
     void (*script_after)(uint8_t*, uint32_t){};

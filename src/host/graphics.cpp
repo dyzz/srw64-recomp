@@ -10,6 +10,7 @@
 #include "native_map.hpp"
 #include "native_portrait.hpp"
 #include "native_background.hpp"
+#include "native_sprite.hpp"
 #include "presentation/image_mode.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
@@ -205,6 +206,7 @@ public:
             srw64::hdmap::metal_init(device);
             srw64::portraits::metal_init(device);
             srw64::backgrounds::metal_init(device);
+            srw64::sprites::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::dialogue::metal_init(device, capture_directory);
             srw64::ui::render_init(rhi,device);
@@ -214,6 +216,7 @@ public:
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
             srw64::backgrounds::shutdown();
+            srw64::sprites::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::ui::render_shutdown();
             srw64::dialogue::metal_shutdown();
@@ -334,6 +337,9 @@ public:
                     }
                 }
             }
+            // Scene sprites: HD title frames from the art pack, and the story text drawn
+            // natively with or without one. Chained after the portraits.
+            srw64::sprites::configure(art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);
         }
     }
     bool valid() override { return app != nullptr; }

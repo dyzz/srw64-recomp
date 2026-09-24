@@ -12,6 +12,10 @@ namespace plume { class RenderDevice; class RenderCommandList; class RenderFrame
 namespace srw64::dialogue {
 // Game-thread expansion of a catalog label, including the current player names.
 std::string ui_text(const uint8_t* ram,uint16_t id);
+// A text page image's words (@intro:<resource> entries: opening and ending pages) in
+// catalog form (<BR> lines, <STOP> blank lines, <END>); Japanese is the entries' original
+// lines. Empty when no dialogue text file has the page. Any thread.
+std::string page_text(const std::string& locale,unsigned resource);
 std::u16string utf16(const std::string&);
 std::string utf8(const std::u16string&);
 // Plain lines 1.22 x size apart: names, history and the typesetting check.

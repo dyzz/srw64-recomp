@@ -1,0 +1,158 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "game-over",
+  "note": "Reaches GAME OVER: the opening ends with 3D4C (game over) once the battlefield is up, so the defeat banner (scene 614, atlas 615) can be checked in HD (docs/native/native-title-and-story-images.md).",
+  "slot": 84,
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D48"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

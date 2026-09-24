@@ -29,6 +29,8 @@
 #include "native_map.hpp"
 #include "native_portrait.hpp"
 #include "native_background.hpp"
+#include "native_sprite.hpp"
+#include "sprite_text.hpp"
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
@@ -358,6 +360,10 @@ static int run_host(int argc, char** argv) {
     srw64_game_hooks.background_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
         srw64::backgrounds::rewrite(ram, {begin, end, slot, sub});
     };
+    srw64_game_hooks.scene_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads) {
+        srw64::sprites::rewrite(ram, {begin, end, slot, sub, quads});
+    };
+    srw64::sprites::set_text(srw64::sprite_text::describe);
     srw64::names::configure(output_dir);
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);

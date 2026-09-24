@@ -45,6 +45,9 @@ std::map<uint64_t,std::shared_ptr<const Frame>> frames;
 // built them, the bundled and the player's roots, and a pending F5 reload.
 std::map<std::string,localization::Snapshot> base_catalogs;
 std::filesystem::path text_bundled, text_overrides;
+// @intro:<resource> text pages by locale, in catalog form; Japanese from their '>' lines.
+std::mutex page_mutex;
+std::map<std::string,std::map<std::string,std::string>> page_texts;
 std::atomic_bool reload_requested{};
 
 uint8_t byte(const uint8_t* ram,uint32_t p) { return ram[p^3]; }
@@ -302,6 +305,7 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     std::map<std::string,localization::Snapshot> next;
     std::vector<localization::dialogue_text::Problem> problems;
     json summary=json::object();std::map<std::string,size_t> entries;
+    std::map<std::string,std::map<std::string,std::string>> pages;
     for(const auto& [locale,base]:base_catalogs) {
         const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
                                                        text_overrides.empty()?text_overrides:text_overrides/locale};
@@ -310,8 +314,11 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
         summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
         entries[locale]=result.targets.size();
         next[locale]=result.targets.empty()?base:base->with_translations(result.targets,"dialogue-text");
+        for(auto& [key,value]:result.intro)pages[locale][key]=std::move(value);
+        for(auto& [key,value]:result.intro_source)pages["ja"].try_emplace(key,std::move(value));
     }
     localization::replace(std::move(next));
+    {std::lock_guard lock(page_mutex);page_texts=std::move(pages);}
     json listed=json::array();
     std::string report="SRW64 dialogue text report\n";
     for(const auto& [locale,row]:summary.items())
@@ -607,6 +614,13 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
 }
 
 namespace srw64::dialogue {
+std::string page_text(const std::string& locale,unsigned resource) {
+    std::lock_guard lock(page_mutex);
+    const auto language=page_texts.find(locale);
+    if(language==page_texts.end())return {};
+    const auto found=language->second.find("intro:"+std::to_string(resource));
+    return found==language->second.end()?std::string():found->second;
+}
 std::string ui_text(const uint8_t* ram,uint16_t id) {
     auto text=record_text(ram,localization::catalog(),id);
     return text.empty() && !localization::catalog().resolve(localization::TextKey::base(0,id))?std::to_string(id):text;
