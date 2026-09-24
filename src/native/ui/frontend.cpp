@@ -576,7 +576,8 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
             return "<span class='im-mark"+std::string(token=="MAP"?" map":"")+"' style='font-size:"+px(13)+"; margin:0 "+px(1)+";'>"+glyph+"</span>";
         if(const auto found=icons.find(token);found!=icons.end() && found->contains("path")) {
             const float w=found->value("width",8.f),h=found->value("height",10.f);
-            return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='width:"+px(w)+"; height:"+px(h)+
+            // Inline: the panel's portraits are blocks (.im-panel img).
+            return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='display:inline-block; width:"+px(w)+"; height:"+px(h)+
                 "; vertical-align:middle; margin:0 "+px(1)+";'/>";
         }
         const char* cls=token=="格"?"melee":token=="射"?"ranged":token=="P"?"post":token=="B"?"beam":"map";
