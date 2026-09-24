@@ -35,10 +35,14 @@
 
 - **不再依赖系统字体。** 现在 macOS、Linux、Windows 各用不同的系统字体，字宽不同，同一句在三个平台上分页不一样。打包后三平台一致，校对看到的就是玩家看到的。
 - **覆盖情况。** SC 覆盖中文用到的 3,614 个字和日文用到的 1,981 个字（含全部假名）。
-  - 三种语言都缺 ▶ ▷ ◀ 🔧 这 4 个特殊字形。用户决定单独做一个符号字体 `content/fonts/SRW64Symbols.ttf`（2 KB，随仓库提交），放在每种语言字体链的最后一级。
+  - 三种语言都缺 ▶ ▷ ◀ 🔧 这 4 个特殊字形。用户决定单独做一个符号字体 `content/fonts/SRW64Symbols.ttf`（随仓库提交），放在每种语言字体链的最后一级。
     - 由 `tools/content/build_symbol_font.py` 生成，同样输入得到同样字节。
     - ▶▷◀ 取自本机 DejaVu Sans：它的许可允许修改和再分发。字形缩放到现用 Arial Unicode 的大小和宽度（0.6 em），现有界面排版不变。
     - 🔧 按 ROM 里的修理图标自己画：斜放的两用扳手，右上开口、左下套环。本机只有 Apple 彩色表情有这个字符，不能再分发。
+    - 后来又加了 5 个武器标记（`218f327`），放在私用区 U+E000 加原版字形号：U+E0F4 格斗（拳头）、U+E0F3 射击（准星）、U+E0F1 圈 P、U+E0F2 圈 B、U+E23F MAP 徽章。
+      - 图形照 ROM 原图手绘，P、B、MAP 的字母取自 DejaVu Sans Bold，所以构建要多给 `--dejavu-bold`。
+      - 高清图像模式的武器表直接用这些字形；原版图像模式仍用从 ROM 切出的像素图标。
+      - 现在字体共 9 个字形，3 KB。
     - 系统字体（Arial Unicode、Apple 表情等）的版权属于 Monotype 或苹果，不允许摘出来再分发，所以没有用。
     - 竖向度量与 SC 相同，作为后备不会抬高行高。
     - 许可说明在 `content/fonts/LICENSE-SRW64Symbols.txt`，测试在 `tests/test_symbol_font.py`。
