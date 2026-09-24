@@ -383,8 +383,16 @@ bool short_line(std::u16string_view text,const std::vector<size_t>& clusters,siz
     const auto body=text.substr(start,end-start);
     const bool latin=std::all_of(body.begin(),body.end(),[](char16_t c){return c<0x2E80;});
     if(latin)return body.find(u' ')==std::u16string_view::npos;
-    const auto a=std::upper_bound(clusters.begin(),clusters.end(),start),b=std::upper_bound(clusters.begin(),clusters.end(),end-1);
-    return b-a+1<=2;
+    // Punctuation and quotes do not count: “上！” is one character.
+    size_t characters=0;
+    for(auto it=std::upper_bound(clusters.begin(),clusters.end(),start);it!=clusters.end() && *it<=end;++it) {
+        const size_t from=it==clusters.begin()?0:*(it-1);
+        const auto cluster=text.substr(from,*it-from);
+        const bool mark=cluster.size()==1 && (sentence_end_marks.find(cluster[0])!=std::u16string_view::npos ||
+            comma_marks.find(cluster[0])!=std::u16string_view::npos || opening_marks.find(cluster[0])!=std::u16string_view::npos);
+        characters+=!mark;
+    }
+    return characters<=2;
 }
 struct Rank {
     size_t pages{},middle{},comma{},orphans{};
@@ -435,8 +443,10 @@ void FontSet::Builder::paginate(const PageStyle& style,size_t per_page) {
             // The page's last line: the greedy line holding e-1, cut at e.
             size_t ls=s;while(true){const auto& b=builder.line(ls);if(b.line.end>=e || b.line.end>=n)break;ls=b.line.end;}
             r.orphans+=short_line(text,out.clusters,ls,e);
+            // Equal ranks: the page before e starts as late as possible, so
+            // earlier pages are the fuller ones.
             auto found=best.find(e);
-            if(found==best.end() || r<found->second.first) {
+            if(found==best.end() || r<found->second.first || !(found->second.first<r)) {
                 if(found==best.end())starts.push_back(e);
                 best[e]={r,s};
             }
