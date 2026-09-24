@@ -1,6 +1,7 @@
 #include "portable_text.hpp"
 #include <ft2build.h>
 #include FT_FREETYPE_H
+#include FT_MULTIPLE_MASTERS_H
 #include <hb.h>
 #include <hb-ft.h>
 #include <unicode/ubidi.h>
@@ -106,12 +107,26 @@ struct Face {
         require(FT_New_Memory_Face(lib,bytes.data(),static_cast<FT_Long>(bytes.size()),source.face_index,&raw)==0,
                 "FreeType could not open font face");
         ft.reset(raw);
+        if(source.weight>0)instance(lib,raw,source.weight);
         require(FT_IS_SCALABLE(raw) && raw->units_per_EM>0,"Portable text requires an outline font");
         require(FT_Select_Charmap(raw,FT_ENCODING_UNICODE)==0,"Font has no Unicode character map");
         require(FT_Set_Char_Size(raw,0,13*64,72,72)==0,"FreeType could not set font size");
         hb.reset(hb_ft_font_create_referenced(raw));
         require(hb.get()!=hb_font_get_empty(),"HarfBuzz could not create font");
         hb_ft_font_set_load_flags(hb.get(),FT_LOAD_NO_HINTING|FT_LOAD_NO_BITMAP);
+    }
+    static void instance(FT_Library lib,FT_Face face,int weight) {
+        FT_MM_Var* var=nullptr;
+        require(FT_HAS_MULTIPLE_MASTERS(face) && FT_Get_MM_Var(face,&var)==0,"Font weight needs a variable font");
+        unsigned axis=var->num_axis;
+        for(unsigned i=0;i<var->num_axis;++i)if(var->axis[i].tag==FT_MAKE_TAG('w','g','h','t'))axis=i;
+        unsigned best=0;double gap=0;
+        for(unsigned i=0;axis<var->num_axis && i<var->num_namedstyles;++i) {
+            const double d=std::abs(var->namedstyle[i].coords[axis]/65536.0-weight);
+            if(!best || d<gap){best=i+1;gap=d;}
+        }
+        FT_Done_MM_Var(lib,var);
+        require(best && FT_Set_Named_Instance(face,best)==0,"Font has no named instance on the weight axis");
     }
     void size(double pixels) {
         require(std::isfinite(pixels) && pixels>0 && pixels<=4096,"Invalid raster font size");

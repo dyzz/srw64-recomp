@@ -170,6 +170,20 @@ void run(const std::filesystem::path& cjk) {
      rejects([&]{FontSet({{invalid,0}});},"Invalid font data accepted");}
     paged(fonts);
 }
+// FontSource::weight: a variable font's named instance drives both shaping and the raster.
+size_t ink(const Bgra8Surface& image) {
+    size_t total=0;for(size_t i=3;i<image.pixels.size();i+=4)total+=image.pixels[i];return total;
+}
+void weights(const std::filesystem::path& cjk,const std::filesystem::path& variable) {
+    rejects([&]{FontSet({{cjk,0,700}});},"Weight accepted for a font without variations");
+    const std::u16string sample=u"Bold Weight 粗体字重";
+    const auto regular=FontSet({{variable,0}}).layout(sample,20,1000,"en");
+    const auto normal=FontSet({{variable,0,400}}).layout(sample,20,1000,"en");
+    const auto bold=FontSet({{variable,0,700}}).layout(sample,20,1000,"en");
+    check(normal.lines()[0].width==regular.lines()[0].width,"Weight 400 is not the default instance");
+    check(bold.lines()[0].width>regular.lines()[0].width,"Bold instance did not change the advances");
+    check(ink(render(bold))>ink(render(regular))*6/5,"Bold instance did not change the raster");
+}
 // Dialogue page layout (docs/design/dialogue-typesetting.md).
 size_t greedy_pages(const FontSet& fonts,const std::u16string& text,double size,double width,size_t per_page) {
     const auto lines=fonts.layout(text,size,width,"zh-Hans").lines().size();
@@ -244,8 +258,9 @@ void paged(const FontSet& fonts) {
 }
 }
 int main(int argc,char** argv) {
-    try {if(argc!=2)throw std::runtime_error("Provide a CJK outline font path");
+    try {if(argc!=2 && argc!=3)throw std::runtime_error("Provide a CJK outline font path (and optionally a variable font)");
         run(std::filesystem::path(argv[1]));
+        if(argc==3)weights(argv[1],argv[2]);
         std::cout<<checks<<" portable text checks passed (ICU + HarfBuzz + FreeType, real CPU glyph raster)\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
 }

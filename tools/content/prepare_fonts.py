@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "content/fonts/harmonyos-sans.json"
-ARCHIVE = ROOT / "assets/hd-ai/dialogue-polish/HarmonyOS-Sans.zip"
+ARCHIVE = ROOT / "assets/fonts/HarmonyOS-Sans-2.040.zip"
 OUTPUT = ROOT / "build/fonts"
 
 
@@ -25,9 +25,17 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def stale(output: Path, manifest: dict) -> list[Path]:
+    """Files OUTPUT holds that the package no longer lists (an older HarmonyOS Sans)."""
+    keep = set(manifest["files"]) | set(manifest["bundled"])
+    return sorted(path for path in output.iterdir() if path.is_file() and path.name not in keep) if output.is_dir() else []
+
+
 def prepared(output: Path) -> bool:
-    """True when every font file is present with the expected hash."""
+    """True when every font file is present with the expected hash, and nothing else."""
     manifest = json.loads(MANIFEST.read_text())
+    if stale(output, manifest):
+        return False
     for name, row in manifest["files"].items():
         path = output / name
         if not path.is_file() or sha256(path.read_bytes()) != row["sha256"]:
@@ -40,12 +48,15 @@ def prepared(output: Path) -> bool:
 def prepare(archive: Path = ARCHIVE, output: Path = OUTPUT) -> Path:
     manifest = json.loads(MANIFEST.read_text())
     if not archive.is_file():
-        raise SystemExit(f"HarmonyOS Sans is missing: download the official archive from\n  {manifest['url']}\n"
+        raise SystemExit(f"HarmonyOS Sans {manifest['version']} is missing: download the official archive from\n  {manifest['url']}\n"
                          f"and put it at {archive} (SHA-256 {manifest['archive_sha256']}), then run this tool again.")
     data = archive.read_bytes()
     if sha256(data) != manifest["archive_sha256"]:
         raise SystemExit(f"{archive} is not the official HarmonyOS Sans archive (SHA-256 mismatch)")
     output.mkdir(parents=True, exist_ok=True)
+    # The app bundle ships the whole directory, so older font files must go.
+    for path in stale(output, manifest):
+        path.unlink()
     with zipfile.ZipFile(archive) as bundle:
         for name, row in manifest["files"].items():
             content = bundle.read(row["member"])

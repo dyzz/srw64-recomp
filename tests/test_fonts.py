@@ -16,7 +16,9 @@ class FontPackageTests(unittest.TestCase):
         manifest = json.loads(FONTS.MANIFEST.read_text())
         self.assertEqual(manifest["schema"], "srw64.font-package.v1")
         self.assertTrue(manifest["url"].startswith("https://developer.huawei.com/"))
-        self.assertEqual(set(manifest["files"]), {"HarmonyOS_Sans_SC_Regular.ttf", "HarmonyOS_Sans_Condensed_Regular.ttf",
+        # Variable fonts: Regular for text, the Bold instance for the title menu and chapter cards.
+        self.assertEqual(manifest["version"], "2.040")
+        self.assertEqual(set(manifest["files"]), {"HarmonyOS_Sans_SC.ttf", "HarmonyOS_Sans_Condensed.ttf",
                                                   "LICENSE-HarmonyOS-Sans.txt"})
         for row in manifest["files"].values():
             self.assertRegex(row["sha256"], r"^[0-9a-f]{64}$")
@@ -36,8 +38,13 @@ class FontPackageTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             out = FONTS.prepare(FONTS.ARCHIVE, Path(tmp) / "fonts")
             self.assertTrue(FONTS.prepared(out))
-            (out / "HarmonyOS_Sans_SC_Regular.ttf").write_bytes(b"tampered")
+            (out / "HarmonyOS_Sans_SC.ttf").write_bytes(b"tampered")
             self.assertFalse(FONTS.prepared(out))
+            # A file of an older package counts as unprepared and is removed on the next run.
+            (out / "HarmonyOS_Sans_SC_Regular.ttf").write_bytes(b"1.0")
+            FONTS.prepare(FONTS.ARCHIVE, out)
+            self.assertFalse((out / "HarmonyOS_Sans_SC_Regular.ttf").exists())
+            self.assertTrue(FONTS.prepared(out))
 
 
 if __name__ == "__main__":

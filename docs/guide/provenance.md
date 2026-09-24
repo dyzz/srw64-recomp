@@ -129,7 +129,7 @@ token 拆武器标记；575 是 MAP 武器图标；258（🔧）与 259（小号
 条后可选 259（小号 E），11 档 × 4 种组合，另加 271、272 各一条。扳手与 E 暗示和修理、
 EN 有关，但具体界面未经运行确认。
 
-原生字体是 HarmonyOS Sans（`tools/content/prepare_fonts.py` 从华为官方包核对后解出，不进仓库，随应用包分发）和仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`。
+原生字体是 HarmonyOS Sans 2.040（`tools/content/prepare_fonts.py` 从华为官方包核对后解出，不进仓库，随应用包原样分发）和仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`。官方包来自[华为开发者设计资源页](https://developer.huawei.com/consumer/cn/design/resource/)，本地副本放 `assets/fonts/HarmonyOS-Sans-2.040.zip`，SHA-256 记在 `content/fonts/harmonyos-sans.json`。
 
 ## Libretro 核心
 

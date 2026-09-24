@@ -84,7 +84,7 @@ BOARDS = {5599: {'name': 'Space region',
                             (12, 'スウィートウォーター', 'スウィートウォーター', '')]}}
 PLATE_LOCALES = ('ja', 'zh-Hans', 'en')
 PLATE_SCALE = 8  # texture pixels per original unit; the board is 200 x 30 units
-FONT = ROOT / 'build/fonts/HarmonyOS_Sans_SC_Regular.ttf'  # tools/content/prepare_fonts.py
+FONT = ROOT / 'build/fonts/HarmonyOS_Sans_SC.ttf'  # tools/content/prepare_fonts.py
 for _model in MODELS:
     _model['mesh'] = ROOT / f"assets/models/{_model['key']}/mesh.json" if _model['key'] else None
 # World-map travel trail (3D33): drawn by load_000A7EC0 801C4960 as one quad per step
