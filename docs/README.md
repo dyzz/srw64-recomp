@@ -23,6 +23,8 @@
 | 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
+| 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
+| 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 | 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
 
@@ -112,6 +114,8 @@
 | 文档 | 内容 |
 | --- | --- |
 | [内置 MOD 路线图](design/mod-roadmap.md) | 首发／后续范围、多语种、Original/HD、存档兼容与验收门槛 |
+| [全文本地化规划](design/translation-plan.md) | 51,174 条文本、开场转写与原生 UI 的分类导出；词条表与机翻分工；中英全量初稿与 AI 审校结果、台词文件生成、阶段与待定事项 |
+| [对白排版](design/dialogue-typesetting.md) | HarmonyOS 字体与许可、英文 0.85 倍字号、整条连排与原版翻页同步、名牌、行距自适应、翻页位置动态规划；翻页次数模拟数据 |
 | [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |

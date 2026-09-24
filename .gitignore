@@ -37,6 +37,8 @@ htmlcov/
 # Local fonts, archives, logs, and environment overrides
 *.otf
 *.ttf
+# Our own symbol font (DejaVu triangles + a drawn wrench) ships from the repository.
+!/content/fonts/SRW64Symbols.ttf
 *.zip
 *.7z
 *.tar

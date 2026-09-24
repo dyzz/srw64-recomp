@@ -1,0 +1,6802 @@
+{
+ "schema": "srw64.term-renames.v1",
+ "about": "机翻初稿之后改过的专名（docs/design/translation-plan.md“专有名词官方译名”）。写出台词时，run_mt.final_target 只在日文原文含 ja 里某个名字的台词里，把 old 按整名替换成 new（最长匹配，英文按整词，占位符不动）。",
+ "deferred": {
+  "note": "等用户拍板的名字（docs/native/localization-terms.md“官方与通行译名核对”），台词暂保留旧译",
+  "ja": []
+ },
+ "renames": [
+  {
+   "ja": [
+    "2連式レーザードガン"
+   ],
+   "en": {
+    "old": "2-Barrel Laserd Gun",
+    "new": "2-Barrel Lasered Gun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "2連装レーザードライフル"
+   ],
+   "en": {
+    "old": "2-Barrel Laserd Rifle",
+    "new": "2-Barrel Lasered Rifle"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "UFOロボ グレンダイザー"
+   ],
+   "en": {
+    "old": "UFO Robo Grendizer",
+    "new": "UFO Robot Grendizer"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "α・アジール"
+   ],
+   "en": {
+    "old": "α Azieru",
+    "new": "Alpha Azieru"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アイナ・サハリン"
+   ],
+   "en": {
+    "old": "Aina Saharin",
+    "new": "Aina Sakhalin"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "アプサラス"
+   ],
+   "en": {
+    "old": "Apsalus",
+    "new": "Apsaras"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アポリー"
+   ],
+   "en": {
+    "old": "Apolly",
+    "new": "Aboly"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "アリアス"
+   ],
+   "en": {
+    "old": "Arias",
+    "new": "Arius"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "アリアス・モマ"
+   ],
+   "en": {
+    "old": "Arias Moma",
+    "new": "Arius Moma"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "アヴィエスレルム"
+   ],
+   "en": {
+    "old": "Aviesrealm",
+    "new": "Avieslelm"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アヴィ＝ルー"
+   ],
+   "en": {
+    "old": "Avi-Lu",
+    "new": "Avie-Lu"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "アーマス・ゲイル"
+   ],
+   "en": {
+    "old": "Armas Gale",
+    "new": "Ahmos Gale"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ウィル・ウィプス"
+   ],
+   "en": {
+    "old": "Wil Wiph",
+    "new": "Will-Wips"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ウォン・ユンファ"
+   ],
+   "en": {
+    "old": "Wong Yunfat",
+    "new": "Wong Yun-Fat"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エイジィ"
+   ],
+   "en": {
+    "old": "Eiji",
+    "new": "Eijiii"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "エジール・カルラ"
+   ],
+   "en": {
+    "old": "Ejil Karla",
+    "new": "Karla Egiel"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エリザベス・グレブリー"
+   ],
+   "en": {
+    "old": "Elizabeth Grebley",
+    "new": "Elizabeth Crebley"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エルブルス"
+   ],
+   "en": {
+    "old": "Elbrus",
+    "new": "Elbulls"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "エレ・ハンム"
+   ],
+   "en": {
+    "old": "Elle Hamm",
+    "new": "Elle Hunm"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ガイヤー"
+   ],
+   "en": {
+    "old": "Gaiya",
+    "new": "Gaia"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガラバ"
+   ],
+   "en": {
+    "old": "Galaba",
+    "new": "Gallaba"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムシュピーゲル"
+   ],
+   "en": {
+    "old": "Gundam Spiegel",
+    "new": "Shadow Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムデスサイズH"
+   ],
+   "en": {
+    "old": "Gundam Deathscythe H",
+    "new": "Gundam Deathscythe Hell"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "キャスリン"
+   ],
+   "en": {
+    "old": "Catherine",
+    "new": "Cathrine"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "キャスリン・ブルーム"
+   ],
+   "en": {
+    "old": "Catherine Bloom",
+    "new": "Cathrine Bloom"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "キュルタクス"
+   ],
+   "en": {
+    "old": "Kyurutakus",
+    "new": "Curtax"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ギャンドーラ"
+   ],
+   "en": {
+    "old": "Gyandora",
+    "new": "Gandora"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "グランガラン",
+    "グラン・ガラン"
+   ],
+   "en": {
+    "old": "Gran Garan",
+    "new": "Gran-Garan"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゲッタースリー"
+   ],
+   "en": {
+    "old": "Getter 3",
+    "new": "Getter-3"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "コエンシャク"
+   ],
+   "en": {
+    "old": "Koenshaku",
+    "new": "Ko Enshaku"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "コールガッチ"
+   ],
+   "en": {
+    "old": "Kolgatch",
+    "new": "Callgatti"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドガンダム"
+   ],
+   "en": {
+    "old": "God Gundam",
+    "new": "Burning Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドガンダムH"
+   ],
+   "en": {
+    "old": "God Gundam H",
+    "new": "Burning Gundam H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドストライク"
+   ],
+   "en": {
+    "old": "God Strike",
+    "new": "Burning Strike"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュ",
+    "ゴッド・スラッシュ"
+   ],
+   "en": {
+    "old": "God Slash",
+    "new": "Burning Slash"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュタイフーン"
+   ],
+   "en": {
+    "old": "God Slash Typhoon",
+    "new": "Burning Slash Typhoon"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドフィールドダッシュ"
+   ],
+   "en": {
+    "old": "God Field Dash",
+    "new": "Burning Field Dash"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンバード"
+   ],
+   "en": {
+    "old": "Zanbird",
+    "new": "Zambird"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ザンブル"
+   ],
+   "en": {
+    "old": "Zanbull",
+    "new": "Zambull"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ザンベース"
+   ],
+   "en": {
+    "old": "Zanbase",
+    "new": "Zambase"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボエース"
+   ],
+   "en": {
+    "old": "Zambo Ace",
+    "new": "Zambo-Ace"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "シモーヌ・ルフラン"
+   ],
+   "en": {
+    "old": "Simone Lefranc",
+    "new": "Simone Reflann"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "シャァァァイニングフィンガァァァ",
+    "シャァァァイニングフィンガァァァァァ"
+   ],
+   "en": {
+    "old": "Shining Finger Sword",
+    "new": "Shining Finger"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "シャイィィィィンスパァァァァク"
+   ],
+   "en": {
+    "old": "Shining Spark",
+    "new": "Shine Spark"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "シーラ"
+   ],
+   "en": {
+    "old": "Sheela",
+    "new": "Ciela"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シーラ・ラパーナ"
+   ],
+   "en": {
+    "old": "Sheela Lapana",
+    "new": "Ciela Lapana"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ジェイクラップス"
+   ],
+   "en": {
+    "old": "Jayclaps",
+    "new": "JClaps"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ジェイ＝レン"
+   ],
+   "en": {
+    "old": "Jay-Ren",
+    "new": "J-Ren"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ジェリル"
+   ],
+   "en": {
+    "old": "Jeryl",
+    "new": "Jeril"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ジェリル・クチビ"
+   ],
+   "en": {
+    "old": "Jeryl Kuchibi",
+    "new": "Jeril Coochibi"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ジ・O",
+    "ジ・オ"
+   ],
+   "en": {
+    "old": "The O",
+    "new": "The-O"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スイームルグ"
+   ],
+   "en": {
+    "old": "Simurgh",
+    "new": "Sweemurg"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スイームルグS"
+   ],
+   "en": {
+    "old": "Simurgh S",
+    "new": "Sweemurg S"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スヴァンヒルド"
+   ],
+   "en": {
+    "old": "Svanhild",
+    "new": "Svanheld"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゼイ・ファー"
+   ],
+   "en": {
+    "old": "Zei Far",
+    "new": "Zei-Fer"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゾルバドス"
+   ],
+   "en": {
+    "old": "Zolbados",
+    "new": "Zorbados"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゾルバドス帝国"
+   ],
+   "en": {
+    "old": "Zolbados Empire",
+    "new": "Zorbados Empire"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゾルバドス軍"
+   ],
+   "en": {
+    "old": "Zolbados Army",
+    "new": "Zorbados Army"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルゴッドフィンガー"
+   ],
+   "en": {
+    "old": "Double God Finger",
+    "new": "Double Burning Finger"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルハーケン"
+   ],
+   "en": {
+    "old": "Double Harken",
+    "new": "Double Haken"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルライトニングソォォォード"
+   ],
+   "en": {
+    "old": "Double Lightning Sword",
+    "new": "Double Lightning Swooord"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダンゲル"
+   ],
+   "en": {
+    "old": "Dangel",
+    "new": "Dungele"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "チャム"
+   ],
+   "en": {
+    "old": "Cham",
+    "new": "Chum"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "チャム・ファウ"
+   ],
+   "en": {
+    "old": "Cham Huau",
+    "new": "Chum Huau"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ツバロフ"
+   ],
+   "en": {
+    "old": "Tsubarov",
+    "new": "Tubarov"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "デスガイヤー"
+   ],
+   "en": {
+    "old": "Deathgaiyer",
+    "new": "Death Gaia"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "デスガイヤー将軍"
+   ],
+   "en": {
+    "old": "General Deathgaiyer",
+    "new": "General Death Gaia"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "デスサイズHカスタム"
+   ],
+   "en": {
+    "old": "Deathscythe H Custom",
+    "new": "Deathscythe Hell Custom"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "デビルアクシズ"
+   ],
+   "en": {
+    "old": "Devil Axis",
+    "new": "Dark Axis"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "デビルガンダム"
+   ],
+   "en": {
+    "old": "Devil Gundam",
+    "new": "Dark Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "デビルファング"
+   ],
+   "en": {
+    "old": "Devil Fang",
+    "new": "Dark Fang"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "デュークフリード"
+   ],
+   "en": {
+    "old": "Duke Freed",
+    "new": "Duke Fleed"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "デューン"
+   ],
+   "en": {
+    "old": "Dune",
+    "new": "Deune"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "デル"
+   ],
+   "en": {
+    "old": "Del",
+    "new": "Dale"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "トッド"
+   ],
+   "en": {
+    "old": "Todd",
+    "new": "Tod"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "トッド・ギネス"
+   ],
+   "en": {
+    "old": "Todd Guinness",
+    "new": "Tod Guines"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ドクター・エリザベス"
+   ],
+   "en": {
+    "old": "Doctor Elizabeth",
+    "new": "Dr. Elizabeth"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ドクーガ"
+   ],
+   "en": {
+    "old": "Dokuga",
+    "new": "Docooga"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ドゴスギア"
+   ],
+   "en": {
+    "old": "Dogosse Gier",
+    "new": "Dogosse Giar"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ドーバーガン"
+   ],
+   "en": {
+    "old": "Dober Gun",
+    "new": "Dobergun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ノウルーズ"
+   ],
+   "en": {
+    "old": "Nowruz",
+    "new": "Norouz"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ノーベルガンダム"
+   ],
+   "en": {
+    "old": "Nobel Gundam",
+    "new": "Noble Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ノーベルガンダムB"
+   ],
+   "en": {
+    "old": "Nobel Gundam B",
+    "new": "Noble Gundam B"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ノーベルストライク"
+   ],
+   "en": {
+    "old": "Nobel Strike",
+    "new": "Noble Strike"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ハイドボンブ"
+   ],
+   "en": {
+    "old": "Hyde Bomb",
+    "new": "Hide Bomb"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ハイパーガラバ"
+   ],
+   "en": {
+    "old": "Hyper Galaba",
+    "new": "Hyper Gallaba"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ハンマ・ハンマ"
+   ],
+   "en": {
+    "old": "Hamma Hamma",
+    "new": "Hamma-Hamma"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "バウンド・ドッグ"
+   ],
+   "en": {
+    "old": "Bound Dog",
+    "new": "Baund Doc"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "バーン"
+   ],
+   "en": {
+    "old": "Burn",
+    "new": "Bern"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "バーン・バニングス"
+   ],
+   "en": {
+    "old": "Burn Bunnings",
+    "new": "Bern Bunnings"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ビアレス"
+   ],
+   "en": {
+    "old": "Bierres",
+    "new": "Vierres"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビアン"
+   ],
+   "en": {
+    "old": "Bian",
+    "new": "Beanne"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ビギナ・ギナ"
+   ],
+   "en": {
+    "old": "Vigna Ghina",
+    "new": "Vigna-Ghina"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビームソードアックス"
+   ],
+   "en": {
+    "old": "Beam Sword Axe",
+    "new": "Beam Sword-Axe"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンネル",
+    "フィンファンル"
+   ],
+   "en": {
+    "old": "Fin Funnel",
+    "new": "Fin Funnels"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンネルMAP"
+   ],
+   "en": {
+    "old": "Fin Funnel MAP",
+    "new": "Fin Funnels MAP"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "フェラリオ"
+   ],
+   "en": {
+    "old": "Ferrario",
+    "new": "Ferario"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フルアーマー百式改"
+   ],
+   "en": {
+    "old": "FA Hyaku Shiki Kai",
+    "new": "FA Hyaku-Shiki Kai"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ブラン"
+   ],
+   "en": {
+    "old": "Bran",
+    "new": "Buran"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ブラン・ブルターク"
+   ],
+   "en": {
+    "old": "Bran Blutarch",
+    "new": "Buran Blutarch"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "プルツー"
+   ],
+   "en": {
+    "old": "Ple Two",
+    "new": "Ple-Two"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヘルマット"
+   ],
+   "en": {
+    "old": "Hellmat",
+    "new": "Helmut"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヘルマット将軍"
+   ],
+   "en": {
+    "old": "General Hellmat",
+    "new": "General Helmut"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "マダラ"
+   ],
+   "en": {
+    "old": "Madara",
+    "new": "Streaky"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "マリアルイゼ"
+   ],
+   "en": {
+    "old": "Marialuise",
+    "new": "Maria Louise"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ミ・フェラリオ"
+   ],
+   "en": {
+    "old": "Mi Ferrario",
+    "new": "Mi Ferario"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ムゲゾルバドス"
+   ],
+   "en": {
+    "old": "Muge Zolbados",
+    "new": "Muge Zorbados"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ムゲゾルバドス帝国"
+   ],
+   "en": {
+    "old": "Muge Zolbados Empire",
+    "new": "Muge Zorbados Empire"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ムゲゾルバドス軍"
+   ],
+   "en": {
+    "old": "Muge Zolbados Army",
+    "new": "Muge Zorbados Army"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ムゲ・ゾルバドス城"
+   ],
+   "en": {
+    "old": "Muge Zolbados Castle",
+    "new": "Muge Zorbados Castle"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "モンド・アカゲ",
+    "モンド・アガケ"
+   ],
+   "en": {
+    "old": "Mondo Akage",
+    "new": "Mondo Agake"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ライトニングソォォード"
+   ],
+   "en": {
+    "old": "Lightning Sword",
+    "new": "Lightning Swoord"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ラシード"
+   ],
+   "en": {
+    "old": "Rashid",
+    "new": "Rasid"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ランドーラ"
+   ],
+   "en": {
+    "old": "Randora",
+    "new": "Landora"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ラーズグリーズ"
+   ],
+   "en": {
+    "old": "Razgriz",
+    "new": "Razgreez"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ルフラン"
+   ],
+   "en": {
+    "old": "Lefranc",
+    "new": "Reflann"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "レーザードガン"
+   ],
+   "en": {
+    "old": "Laserd Gun",
+    "new": "Lasered Gun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "レーザードライフル"
+   ],
+   "en": {
+    "old": "Laserd Rifle",
+    "new": "Lasered Rifle"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ロアン"
+   ],
+   "en": {
+    "old": "Roan",
+    "new": "Roanne"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ロアン・デミトリッヒ"
+   ],
+   "en": {
+    "old": "Roan Demitrich",
+    "new": "Roanne Demitrich"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ロザミィ"
+   ],
+   "en": {
+    "old": "Rosamia",
+    "new": "Rosamy"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ロペット"
+   ],
+   "en": {
+    "old": "Lopet",
+    "new": "Ropet"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼススクリーマー"
+   ],
+   "en": {
+    "old": "Roses Screamer",
+    "new": "Rose Screamer"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスハリケーン"
+   ],
+   "en": {
+    "old": "Roses Hurricane",
+    "new": "Rose Hurricane"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスビット"
+   ],
+   "en": {
+    "old": "Roses Bit",
+    "new": "Rose Bits"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ワイム"
+   ],
+   "en": {
+    "old": "Waim",
+    "new": "Wyme"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ワルキメデス"
+   ],
+   "en": {
+    "old": "Warukimedes",
+    "new": "Warchimedes"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヴァイローズ"
+   ],
+   "en": {
+    "old": "Vairose",
+    "new": "Virose"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ヴァルキュリア"
+   ],
+   "en": {
+    "old": "Valkyria",
+    "new": "Valkyrie"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ヴァルキュリア・シリーズ"
+   ],
+   "en": {
+    "old": "Valkyria Series",
+    "new": "Valkyrie Series"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "六神合体ゴッドマーズ"
+   ],
+   "en": {
+    "old": "Six God Combination Godmars",
+    "new": "Six God Combination God Mars"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "円盤獣ギルギル"
+   ],
+   "en": {
+    "old": "Saucer Beast Girugiru",
+    "new": "Saucer Beast Gilgil"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "円盤獣ゴスゴス"
+   ],
+   "en": {
+    "old": "Saucer Beast Gosugosu",
+    "new": "Saucer Beast Gosgos"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "南原ちずる"
+   ],
+   "en": {
+    "old": "Chizuru Nanbara",
+    "new": "Chizuru Nambara"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "古代メール帝国"
+   ],
+   "en": {
+    "old": "Ancient Mail Empire",
+    "new": "Ancient Mael Empire"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "地球解放戦線"
+   ],
+   "en": {
+    "old": "Earth Liberation Front",
+    "new": "Liberation Front of the Earth"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "天王捷破斬"
+   ],
+   "en": {
+    "old": "Tenno Shohazan",
+    "new": "Ten'o Shohazan"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "招雷 天竜魔滅陣"
+   ],
+   "en": {
+    "old": "Thunder Call Dragon Doom Array",
+    "new": "Shorai Tenryu Mametsujin"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "断空光牙剣"
+   ],
+   "en": {
+    "old": "Danku Koga Sword",
+    "new": "Dancou Kougaken"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "断空剣"
+   ],
+   "en": {
+    "old": "Danku Sword",
+    "new": "Dancouken"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "断空砲"
+   ],
+   "en": {
+    "old": "Danku Cannon",
+    "new": "Dancouho"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "旧獣戦機基地"
+   ],
+   "en": {
+    "old": "Former Beast Fighter Base",
+    "new": "Former Cyber Beast Force Base"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "死鬼隊"
+   ],
+   "en": {
+    "old": "Shikita",
+    "new": "Demon Death Platoon"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "爆導索"
+   ],
+   "en": {
+    "old": "Detonating Cord",
+    "new": "Demolition Chain"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "爆熱ゴッドスラッシュ"
+   ],
+   "en": {
+    "old": "Erupting God Slash",
+    "new": "Erupting Burning Slash"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "爆熱ゴッドフィンガー"
+   ],
+   "en": {
+    "old": "Erupting God Finger",
+    "new": "Erupting Burning Finger"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "獅子吼烈破"
+   ],
+   "en": {
+    "old": "Shishiku Reppa",
+    "new": "Shishiko Reppa"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "獣戦機基地"
+   ],
+   "en": {
+    "old": "Beast Fighter Base",
+    "new": "Cyber Beast Force Base"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "獣戦機隊"
+   ],
+   "en": {
+    "old": "Beast Fighter Team",
+    "new": "Cyber Beast Force"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "百式"
+   ],
+   "en": {
+    "old": "Hyaku Shiki",
+    "new": "Hyaku-Shiki"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "聖女隊"
+   ],
+   "en": {
+    "old": "Holy Women's Corps",
+    "new": "Saints"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "衝撃のアルベルト"
+   ],
+   "en": {
+    "old": "Alberto the Shockwave",
+    "new": "Shockwave Alberto"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "豪熱マシンガンパンチ"
+   ],
+   "en": {
+    "old": "Blazing Machine Gun Punch",
+    "new": "Burning Machine Gun Punch"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "超獣シシリス・ガロ"
+   ],
+   "en": {
+    "old": "Super Beast Sisiris Garo",
+    "new": "Super Beast Shishiris Garo"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "超獣シシリス・キバ"
+   ],
+   "en": {
+    "old": "Super Beast Sisiris Kiba",
+    "new": "Super Beast Shishiris Kiba"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "超獣機神ダンクーガ"
+   ],
+   "en": {
+    "old": "Super Beast Machine God Dancouga",
+    "new": "Dancouga: Super Beast Machine God"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "超電磁ロボ コン・バトラーV"
+   ],
+   "en": {
+    "old": "Super Electromagnetic Robo Combattler V",
+    "new": "Super Electromagnetic Robot Combattler V"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "速射型レーザードガン"
+   ],
+   "en": {
+    "old": "Rapid Laserd Gun",
+    "new": "Rapid Lasered Gun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "速射式レーザードガン"
+   ],
+   "en": {
+    "old": "Rapid-Fire Laserd Gun",
+    "new": "Rapid-Fire Lasered Gun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "速射式レーザードライフル"
+   ],
+   "en": {
+    "old": "Rapid Laserd Rifle",
+    "new": "Rapid Lasered Rifle"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "連射型レーザードガン"
+   ],
+   "en": {
+    "old": "Burst Laserd Gun",
+    "new": "Burst Lasered Gun"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "連射型レーザードライフル"
+   ],
+   "en": {
+    "old": "Burst Laserd Rifle",
+    "new": "Burst Lasered Rifle"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "遠距離型レーザードライフル"
+   ],
+   "en": {
+    "old": "Long-Range Laserd Rifle",
+    "new": "Long-Range Lasered Rifle"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "鳳凰光覇"
+   ],
+   "en": {
+    "old": "Phoenix Light Blast",
+    "new": "Hoo Koha"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "アイアンカッター"
+   ],
+   "zh-Hans": {
+    "old": "钢铁切割刃",
+    "new": "切割飞拳"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "アイーダ"
+   ],
+   "zh-Hans": {
+    "old": "艾达",
+    "new": "爱伊达"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "アウドムラ"
+   ],
+   "zh-Hans": {
+    "old": "奥德穆拉",
+    "new": "奥多姆拉"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アクティブカノン"
+   ],
+   "zh-Hans": {
+    "old": "主动加农炮",
+    "new": "可动式光束加农"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "アッシマー"
+   ],
+   "zh-Hans": {
+    "old": "阿修玛",
+    "new": "亚希玛"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アルベルト"
+   ],
+   "zh-Hans": {
+    "old": "阿尔贝鲁特",
+    "new": "阿尔伯特"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アレキサンドリア"
+   ],
+   "zh-Hans": {
+    "old": "亚历山德里亚",
+    "new": "亚历山大"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アレンビー"
+   ],
+   "zh-Hans": {
+    "old": "艾伦比",
+    "new": "阿莲比"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "アレンビー・ビアズリー"
+   ],
+   "zh-Hans": {
+    "old": "艾伦比·比亚兹利",
+    "new": "阿莲比·比亚兹利"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "アーガマ"
+   ],
+   "zh-Hans": {
+    "old": "阿卡马",
+    "new": "阿伽玛"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "イゴール"
+   ],
+   "zh-Hans": {
+    "old": "伊戈尔",
+    "new": "伊格尔"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "イゴール将軍"
+   ],
+   "zh-Hans": {
+    "old": "伊戈尔将军",
+    "new": "伊格尔将军"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "イーグルファイター"
+   ],
+   "zh-Hans": {
+    "old": "鹰式战机",
+    "new": "鹰战机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "イーグルファイターA"
+   ],
+   "zh-Hans": {
+    "old": "鹰式战机A",
+    "new": "鹰战机A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "イーグルファイターH"
+   ],
+   "zh-Hans": {
+    "old": "鹰式战机H",
+    "new": "鹰战机H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "イーグル号"
+   ],
+   "zh-Hans": {
+    "old": "鹰号",
+    "new": "飞鹰号"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ウォルターファング"
+   ],
+   "zh-Hans": {
+    "old": "沃尔特之牙",
+    "new": "沃尔特獠牙"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ウッダー"
+   ],
+   "zh-Hans": {
+    "old": "伍达",
+    "new": "伍德"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "エアリーズ"
+   ],
+   "zh-Hans": {
+    "old": "白羊座",
+    "new": "艾亚里斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "エリザベス・グレブリー"
+   ],
+   "zh-Hans": {
+    "old": "伊丽莎白·格雷布利",
+    "new": "伊丽莎白·克雷布利"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エル"
+   ],
+   "zh-Hans": {
+    "old": "艾尔",
+    "new": "艾露"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "エルピー"
+   ],
+   "zh-Hans": {
+    "old": "艾尔皮",
+    "new": "艾露比"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "エルピー・プル"
+   ],
+   "zh-Hans": {
+    "old": "艾尔皮·普露",
+    "new": "艾露比·普露"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エル・ビアンノ"
+   ],
+   "zh-Hans": {
+    "old": "艾尔·比安诺",
+    "new": "艾露·比安诺"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エレ・ハンム"
+   ],
+   "zh-Hans": {
+    "old": "艾蕾·哈姆",
+    "new": "艾蕾·汉姆"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "エンドラ"
+   ],
+   "zh-Hans": {
+    "old": "恩德拉",
+    "new": "恩多拉"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "カトル・ラバーバ・ウィナー"
+   ],
+   "zh-Hans": {
+    "old": "卡特尔·拉巴巴·温拿",
+    "new": "卡特尔·拉巴伯·温拿"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "カーツ・フォルネウス"
+   ],
+   "zh-Hans": {
+    "old": "卡茨·弗尔涅乌斯",
+    "new": "卡茨·弗尔纽斯"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "カーンズ"
+   ],
+   "zh-Hans": {
+    "old": "昆兹",
+    "new": "坎斯"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ガザストーム"
+   ],
+   "zh-Hans": {
+    "old": "卡扎风暴",
+    "new": "加萨风暴"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ガラバ"
+   ],
+   "zh-Hans": {
+    "old": "加拉巴",
+    "new": "卡拉巴"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガラリア"
+   ],
+   "zh-Hans": {
+    "old": "加拉莉亚",
+    "new": "卡拉利亚"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ガラリア・ニャムヒー"
+   ],
+   "zh-Hans": {
+    "old": "加拉莉亚·妮亚姆希",
+    "new": "卡拉利亚·妮亚姆希"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムシュピーゲル"
+   ],
+   "zh-Hans": {
+    "old": "施皮格尔高达",
+    "new": "明镜高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムデスサイズH"
+   ],
+   "zh-Hans": {
+    "old": "死神高达H",
+    "new": "地狱死神高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムヘビーアームズ",
+    "ヘビーアームズ"
+   ],
+   "zh-Hans": {
+    "old": "重武装高达",
+    "new": "重装高达"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムヘビーアームズ改"
+   ],
+   "zh-Hans": {
+    "old": "重武装高达改",
+    "new": "重装高达改"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムマックスター"
+   ],
+   "zh-Hans": {
+    "old": "麦克斯达高达",
+    "new": "极限之星高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムマックスターB"
+   ],
+   "zh-Hans": {
+    "old": "麦克斯达高达B",
+    "new": "极限之星高达B"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダムマックスターS"
+   ],
+   "zh-Hans": {
+    "old": "麦克斯达高达S",
+    "new": "极限之星高达S"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダル"
+   ],
+   "zh-Hans": {
+    "old": "冈达尔",
+    "new": "甘达尔"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダル司令"
+   ],
+   "zh-Hans": {
+    "old": "冈达尔司令",
+    "new": "甘达尔司令"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ガ・ゾウム"
+   ],
+   "zh-Hans": {
+    "old": "加·佐姆",
+    "new": "加佐姆"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "キャラ"
+   ],
+   "zh-Hans": {
+    "old": "卡拉",
+    "new": "姬拉"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "キャラ・スーン"
+   ],
+   "zh-Hans": {
+    "old": "卡拉·苏恩",
+    "new": "姬拉·森"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "キャンサー"
+   ],
+   "zh-Hans": {
+    "old": "巨蟹座",
+    "new": "坎沙"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "キラル・メキレル"
+   ],
+   "zh-Hans": {
+    "old": "基拉尔·麦基雷尔",
+    "new": "基拉尔·梅吉尔"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ギシン"
+   ],
+   "zh-Hans": {
+    "old": "基辛",
+    "new": "异震"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ギシン星人"
+   ],
+   "zh-Hans": {
+    "old": "基辛星人",
+    "new": "异震星人"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ギシン星兵"
+   ],
+   "zh-Hans": {
+    "old": "基辛星兵",
+    "new": "异震星兵"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ギャリソン時田"
+   ],
+   "zh-Hans": {
+    "old": "加里森时田",
+    "new": "时田·加里森"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ギュネイ"
+   ],
+   "zh-Hans": {
+    "old": "裘尼",
+    "new": "邱尼"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ギュネイ・ガス"
+   ],
+   "zh-Hans": {
+    "old": "裘尼·加斯",
+    "new": "邱尼·盖斯"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "クインマンサ"
+   ],
+   "zh-Hans": {
+    "old": "奎因·曼莎",
+    "new": "昆曼沙"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "クェス"
+   ],
+   "zh-Hans": {
+    "old": "奎丝",
+    "new": "葵丝"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "クェス・パラヤ"
+   ],
+   "zh-Hans": {
+    "old": "奎丝·帕拉雅",
+    "new": "葵丝·帕拉雅"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "クラッシュシールド"
+   ],
+   "zh-Hans": {
+    "old": "粉碎盾",
+    "new": "冲击盾牌"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "クラフトドリル"
+   ],
+   "zh-Hans": {
+    "old": "克拉夫特钻头",
+    "new": "装甲车钻头"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "クラフトミサイル"
+   ],
+   "zh-Hans": {
+    "old": "克拉夫特导弹",
+    "new": "装甲车导弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "クロスクラッシャー"
+   ],
+   "zh-Hans": {
+    "old": "十字粉碎",
+    "new": "十字粉碎机"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "グラビトンハンマー"
+   ],
+   "zh-Hans": {
+    "old": "重力子锤",
+    "new": "重力流星锤"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "グランガラン",
+    "グラン・ガラン"
+   ],
+   "zh-Hans": {
+    "old": "格兰·加兰",
+    "new": "古兰·加兰"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "グランダッシャー"
+   ],
+   "zh-Hans": {
+    "old": "大地冲锋",
+    "new": "巨战车冲击"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "グレミー・トト"
+   ],
+   "zh-Hans": {
+    "old": "格雷米·托特",
+    "new": "格雷米·托托"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "グレース・マリア・フリード"
+   ],
+   "zh-Hans": {
+    "old": "格蕾丝·玛丽亚·弗利德",
+    "new": "格蕾丝·玛丽亚·弗里德"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "グレートウォン",
+    "グレート・ウォン"
+   ],
+   "zh-Hans": {
+    "old": "大尊者黄",
+    "new": "伟大的黄"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "グレートブースター"
+   ],
+   "zh-Hans": {
+    "old": "大魔神推进器",
+    "new": "超级喷射机"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ケンジ"
+   ],
+   "zh-Hans": {
+    "old": "健二",
+    "new": "健治"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ゲッターレザー"
+   ],
+   "zh-Hans": {
+    "old": "盖塔利刃",
+    "new": "盖塔腕刃"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゲーツ"
+   ],
+   "zh-Hans": {
+    "old": "盖兹",
+    "new": "盖茨"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ゲーツ・キャバ",
+    "ゲーツ・キャパ"
+   ],
+   "zh-Hans": {
+    "old": "盖兹·卡帕",
+    "new": "盖茨·卡帕"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "コエンシャク"
+   ],
+   "zh-Hans": {
+    "old": "呼延灼",
+    "new": "呼炎灼"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "コロニー代表"
+   ],
+   "zh-Hans": {
+    "old": "殖民地代表",
+    "new": "殖民卫星代表"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ゴォッドスラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "神斩台风",
+    "new": "神之斩"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "神之斩击",
+    "new": "神之斩"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュタイフーン"
+   ],
+   "zh-Hans": {
+    "old": "神之斩击台风",
+    "new": "神之斩台风"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドファイヤー"
+   ],
+   "zh-Hans": {
+    "old": "戈德火焰",
+    "new": "金光火焰"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドマーズ"
+   ],
+   "zh-Hans": {
+    "old": "戈德马斯",
+    "new": "雷霆王"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッド・スラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "神斩",
+    "new": "神之斩"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "サイ・サイシー"
+   ],
+   "zh-Hans": {
+    "old": "赛·赛西",
+    "new": "蔡赛西"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "サザンクロスナイフ"
+   ],
+   "zh-Hans": {
+    "old": "南十字飞刀",
+    "new": "南星十字镖"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "サリィ・ポウ"
+   ],
+   "zh-Hans": {
+    "old": "莎莉·坡",
+    "new": "莎莉·鲍"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "サリィ・ポォ",
+    "サリィ・ポオ"
+   ],
+   "zh-Hans": {
+    "old": "莎莉·波",
+    "new": "莎莉·鲍"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "サンアタック"
+   ],
+   "zh-Hans": {
+    "old": "太阳攻击",
+    "new": "日轮攻击"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "サンクキングダム"
+   ],
+   "zh-Hans": {
+    "old": "桑克王国",
+    "new": "桑古王国"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "サンダーブレーク"
+   ],
+   "zh-Hans": {
+    "old": "雷霆霹雳",
+    "new": "轰天雷"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボエース"
+   ],
+   "zh-Hans": {
+    "old": "赞博王牌",
+    "new": "赞波王牌"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット"
+   ],
+   "zh-Hans": {
+    "old": "赞博特",
+    "new": "赞波"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット3"
+   ],
+   "zh-Hans": {
+    "old": "赞博特3",
+    "new": "赞波3"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットカッター"
+   ],
+   "zh-Hans": {
+    "old": "赞博特切割刃",
+    "new": "赞波切割刃"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットグラップ"
+   ],
+   "zh-Hans": {
+    "old": "赞博特格拉普",
+    "new": "赞波格拉普"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットコンビネーション"
+   ],
+   "zh-Hans": {
+    "old": "赞博特组合",
+    "new": "赞波合体"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットバスター"
+   ],
+   "zh-Hans": {
+    "old": "赞博特破坏者",
+    "new": "赞波破坏者"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットブロー"
+   ],
+   "zh-Hans": {
+    "old": "赞博特重击",
+    "new": "赞波重击"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット・ムーン"
+   ],
+   "zh-Hans": {
+    "old": "赞博特之月",
+    "new": "赞波月光"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボマグナム"
+   ],
+   "zh-Hans": {
+    "old": "赞博马格南",
+    "new": "赞波马格南"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボライフル"
+   ],
+   "zh-Hans": {
+    "old": "赞博步枪",
+    "new": "赞波步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シジーマ"
+   ],
+   "zh-Hans": {
+    "old": "西吉马",
+    "new": "施哲马"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シャァァァイニングフィンガァァァ",
+    "シャァァァイニングフィンガァァァァァ"
+   ],
+   "zh-Hans": {
+    "old": "闪光指剑",
+    "new": "闪光指"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "シャイィィィィンスパァァァァク",
+    "シャインスパーク"
+   ],
+   "zh-Hans": {
+    "old": "闪光火花",
+    "new": "闪光爆烈"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シャイニングフィンガー"
+   ],
+   "zh-Hans": {
+    "old": "闪光手指",
+    "new": "闪光指"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シャイニングフィンガーソード"
+   ],
+   "zh-Hans": {
+    "old": "闪光手指剑",
+    "new": "闪光指剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シャピロ"
+   ],
+   "zh-Hans": {
+    "old": "夏皮罗",
+    "new": "夏比罗"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シャピロ・キーツ"
+   ],
+   "zh-Hans": {
+    "old": "夏皮罗·基茨",
+    "new": "夏比罗·基斯"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "シャピロ戦闘メカ"
+   ],
+   "zh-Hans": {
+    "old": "夏皮罗战斗机械",
+    "new": "夏比罗战斗机械"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "シャリー",
+    "シャーリー"
+   ],
+   "zh-Hans": {
+    "old": "雪莉",
+    "new": "夏莉"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シュツルムファウスト"
+   ],
+   "zh-Hans": {
+    "old": "铁拳火箭筒",
+    "new": "暴风铁拳火箭弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シュツルム・ディアス"
+   ],
+   "zh-Hans": {
+    "old": "突击迪亚斯",
+    "new": "疾风迪亚斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "シュバルツ"
+   ],
+   "zh-Hans": {
+    "old": "修巴尔兹",
+    "new": "修巴鲁兹"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "シュバルツ・ブルーダー"
+   ],
+   "zh-Hans": {
+    "old": "修巴尔兹·布鲁达",
+    "new": "修巴鲁兹·布鲁达"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "シュピーゲルストライク"
+   ],
+   "zh-Hans": {
+    "old": "施皮格尔打击",
+    "new": "明镜打击"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シュピーゲルブレード"
+   ],
+   "zh-Hans": {
+    "old": "施皮格尔之刃",
+    "new": "明镜剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ショウ・ザマ"
+   ],
+   "zh-Hans": {
+    "old": "修·撒玛",
+    "new": "座间翔"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ショット"
+   ],
+   "zh-Hans": {
+    "old": "肖特",
+    "new": "秀特"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ショット・ウェポン",
+    "ショット・ウエポン"
+   ],
+   "zh-Hans": {
+    "old": "肖特·韦邦",
+    "new": "秀特·威朋"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ショルダーブーメラン"
+   ],
+   "zh-Hans": {
+    "old": "肩部回旋镖",
+    "new": "肩射回旋镖"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "シルキー"
+   ],
+   "zh-Hans": {
+    "old": "希尔琪",
+    "new": "希露奇"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シルキー・マウ"
+   ],
+   "zh-Hans": {
+    "old": "希尔琪·玛乌",
+    "new": "希露奇·玛乌"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "シルバー戦線"
+   ],
+   "zh-Hans": {
+    "old": "银白战线",
+    "new": "银色战线"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "シーラ"
+   ],
+   "zh-Hans": {
+    "old": "西拉",
+    "new": "席拉"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "シーラ・ラパーナ"
+   ],
+   "zh-Hans": {
+    "old": "西拉·拉帕娜",
+    "new": "席拉·拉帕娜"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ジェイクラップス"
+   ],
+   "zh-Hans": {
+    "old": "杰克拉普斯",
+    "new": "杰伊克拉普斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ジェリドー"
+   ],
+   "zh-Hans": {
+    "old": "杰里德",
+    "new": "杰利德"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ジェリル"
+   ],
+   "zh-Hans": {
+    "old": "杰丽尔",
+    "new": "洁丽露"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ジェリル・クチビ"
+   ],
+   "zh-Hans": {
+    "old": "杰丽尔·库契比",
+    "new": "洁丽露·克吉比"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ジャイアントロボ",
+    "ジャイアント・ロボ"
+   ],
+   "zh-Hans": {
+    "old": "巨大机器人",
+    "new": "大铁人"
+   },
+   "gate": false,
+   "sections": [
+    "series",
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ジャコバ・アオン"
+   ],
+   "zh-Hans": {
+    "old": "贾科巴·阿昂",
+    "new": "贾可芭·艾翁"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ジャムルフィン"
+   ],
+   "zh-Hans": {
+    "old": "贾姆鲁芬",
+    "new": "杰姆鲁·芬"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ジャムル・フィン"
+   ],
+   "zh-Hans": {
+    "old": "贾姆鲁·芬",
+    "new": "杰姆鲁·芬"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ジョルジュ・ド・サンド"
+   ],
+   "zh-Hans": {
+    "old": "乔治·德·桑德",
+    "new": "乔治·迪·桑德"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ジ・O"
+   ],
+   "zh-Hans": {
+    "old": "吉·O",
+    "new": "铁奥"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スウィートウォーター"
+   ],
+   "zh-Hans": {
+    "old": "斯威特沃特",
+    "new": "甘泉"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "スクランダーカッター"
+   ],
+   "zh-Hans": {
+    "old": "飞翼切割刃",
+    "new": "飞翼切割"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スクランブルカッター"
+   ],
+   "zh-Hans": {
+    "old": "紧急翼刃",
+    "new": "冲刺飞翼切割"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ストナーサンシャイン"
+   ],
+   "zh-Hans": {
+    "old": "斯托纳阳光",
+    "new": "烈阳闪光弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スピンソーサー"
+   ],
+   "zh-Hans": {
+    "old": "旋转飞碟",
+    "new": "旋转飞轮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スピンドリル"
+   ],
+   "zh-Hans": {
+    "old": "旋转钻头",
+    "new": "旋转飞钻"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スプラッシュブレイカー"
+   ],
+   "zh-Hans": {
+    "old": "飞溅破碎",
+    "new": "飞溅破坏者"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スプラッシュブレイカーMAP"
+   ],
+   "zh-Hans": {
+    "old": "飞溅破碎MAP",
+    "new": "飞溅破坏者MAP"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "スペイザー"
+   ],
+   "zh-Hans": {
+    "old": "斯佩泽",
+    "new": "飞天神机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スペシャルズ"
+   ],
+   "zh-Hans": {
+    "old": "特别部队",
+    "new": "特殊部队"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "スードリ"
+   ],
+   "zh-Hans": {
+    "old": "苏德利",
+    "new": "苏德里"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ズメズメ"
+   ],
+   "zh-Hans": {
+    "old": "兹梅兹梅",
+    "new": "兹美兹美"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ズール皇帝"
+   ],
+   "zh-Hans": {
+    "old": "兹尔皇帝",
+    "new": "祖鲁皇帝"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ズール皇帝"
+   ],
+   "zh-Hans": {
+    "old": "祖尔皇帝",
+    "new": "祖鲁皇帝"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "セイラ"
+   ],
+   "zh-Hans": {
+    "old": "赛拉",
+    "new": "塞拉"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "セイラ・マス"
+   ],
+   "zh-Hans": {
+    "old": "赛拉·玛斯",
+    "new": "塞拉·玛斯"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "セシリー・フェアチャイルド"
+   ],
+   "zh-Hans": {
+    "old": "塞西莉·费尔柴尔德",
+    "new": "塞西莉·菲亚查德"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ダイターンザンバー"
+   ],
+   "zh-Hans": {
+    "old": "泰坦斩刀",
+    "new": "泰坦斩马刀"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルカッター"
+   ],
+   "zh-Hans": {
+    "old": "双刃",
+    "new": "双重切割刃"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "双重斯佩泽",
+    "new": "双重飞天神机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルトマホォォォォクブゥゥゥメラン"
+   ],
+   "zh-Hans": {
+    "old": "双重战斧回旋镖",
+    "new": "双战斧回旋镖"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルハーケン"
+   ],
+   "zh-Hans": {
+    "old": "双镰刀",
+    "new": "双头新月镰"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー（ミネルバ）"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰（密涅瓦）",
+    "new": "双重燃烧火焰（米涅瓦）"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルビームライフル"
+   ],
+   "zh-Hans": {
+    "old": "双光束步枪",
+    "new": "2连装光束步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルマジンガーブレード",
+    "ダブル・マジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "双重魔神剑",
+    "new": "双重魔神宝剑"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルミサイル"
+   ],
+   "zh-Hans": {
+    "old": "双导弹",
+    "new": "双重导弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ダンケル"
+   ],
+   "zh-Hans": {
+    "old": "丹凯尔",
+    "new": "邓克尔"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ダンケル・クーパー"
+   ],
+   "zh-Hans": {
+    "old": "丹凯尔·库柏",
+    "new": "邓克尔·库珀"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ダークネスフィンガー"
+   ],
+   "zh-Hans": {
+    "old": "黑暗手指",
+    "new": "暗黑指"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "チェーン"
+   ],
+   "zh-Hans": {
+    "old": "琪恩",
+    "new": "倩恩"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "チェーン・アギ"
+   ],
+   "zh-Hans": {
+    "old": "琪恩·阿基",
+    "new": "倩恩·亚奇"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "チャム"
+   ],
+   "zh-Hans": {
+    "old": "查姆",
+    "new": "恰姆"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "チャム・ファウ"
+   ],
+   "zh-Hans": {
+    "old": "查姆·法乌",
+    "new": "恰姆·法乌"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "チャンドラ・シジーマ"
+   ],
+   "zh-Hans": {
+    "old": "钱德拉·西吉马",
+    "new": "钱德拉·施哲马"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ツインバスターライフル"
+   ],
+   "zh-Hans": {
+    "old": "双破坏步枪",
+    "new": "双管破坏步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ツインバスターライフル2MAP"
+   ],
+   "zh-Hans": {
+    "old": "双破坏步枪2MAP",
+    "new": "双管破坏步枪2MAP"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ツインバスターライフルMAP"
+   ],
+   "zh-Hans": {
+    "old": "双破坏步枪MAP",
+    "new": "双管破坏步枪MAP"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ツインビームサイズ"
+   ],
+   "zh-Hans": {
+    "old": "双光束镰刀",
+    "new": "双刃光束镰刀"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ツインランサー"
+   ],
+   "zh-Hans": {
+    "old": "双长枪",
+    "new": "双刃对枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ツイン・ビィィィィィィム"
+   ],
+   "zh-Hans": {
+    "old": "双重光束",
+    "new": "双光束"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "デスサイズHカスタム"
+   ],
+   "zh-Hans": {
+    "old": "死神H特装型",
+    "new": "地狱死神特装型"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "デストラクション・ブーメラン"
+   ],
+   "zh-Hans": {
+    "old": "破坏回旋镖",
+    "new": "毁灭回旋镖"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "デビル・アレンビー"
+   ],
+   "zh-Hans": {
+    "old": "恶魔艾伦比",
+    "new": "恶魔阿莲比"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "デモニカ"
+   ],
+   "zh-Hans": {
+    "old": "迪莫尼卡",
+    "new": "德摩尼卡"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "デューク・フリード"
+   ],
+   "zh-Hans": {
+    "old": "杜克·弗利德",
+    "new": "杜克·弗里德"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "デルマイユ"
+   ],
+   "zh-Hans": {
+    "old": "德尔麦尤",
+    "new": "迪鲁马尤"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "デルマイユ公爵"
+   ],
+   "zh-Hans": {
+    "old": "德尔麦尤公爵",
+    "new": "迪鲁马尤公爵"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "デンジャラス・アレンビー"
+   ],
+   "zh-Hans": {
+    "old": "危险艾伦比",
+    "new": "危险阿莲比"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "トッド"
+   ],
+   "zh-Hans": {
+    "old": "托德",
+    "new": "陶德"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "トッド・ギネス"
+   ],
+   "zh-Hans": {
+    "old": "托德·吉尼斯",
+    "new": "陶德·基尼斯"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "トラゴス"
+   ],
+   "zh-Hans": {
+    "old": "特拉格斯",
+    "new": "特拉哥斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "トーラス"
+   ],
+   "zh-Hans": {
+    "old": "金牛座",
+    "new": "陶拉斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "トーラス(MA)"
+   ],
+   "zh-Hans": {
+    "old": "金牛座（MA）",
+    "new": "陶拉斯（MA）"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ドクーガ"
+   ],
+   "zh-Hans": {
+    "old": "德库加",
+    "new": "毒牙"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ドラゴンガンダム"
+   ],
+   "zh-Hans": {
+    "old": "龙高达",
+    "new": "飞龙高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ドラゴンガンダムS"
+   ],
+   "zh-Hans": {
+    "old": "龙高达S",
+    "new": "飞龙高达S"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ドラムロ"
+   ],
+   "zh-Hans": {
+    "old": "德拉姆罗",
+    "new": "德拉姆洛"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ドリルスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "钻头斯佩泽",
+    "new": "钻头飞天神机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ドリルプレッシャーパンチ"
+   ],
+   "zh-Hans": {
+    "old": "钻头压力飞拳",
+    "new": "旋钻飞拳"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ネェルアーガマ",
+    "ネェル・アーガマ"
+   ],
+   "zh-Hans": {
+    "old": "奈尔·阿卡马",
+    "new": "新阿伽玛号"
+   },
+   "gate": false,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ネーブルミサイル"
+   ],
+   "zh-Hans": {
+    "old": "肚脐导弹",
+    "new": "腹部导弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ハイパーガラバ"
+   ],
+   "zh-Hans": {
+    "old": "超级加拉巴",
+    "new": "超级卡拉巴"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ハイパーハンマー"
+   ],
+   "zh-Hans": {
+    "old": "超级锤",
+    "new": "超级流星锤"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ハリケーン"
+   ],
+   "zh-Hans": {
+    "old": "旋风",
+    "new": "飓风"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ハンマ・ハンマ"
+   ],
+   "zh-Hans": {
+    "old": "汉马·汉马",
+    "new": "悍马·悍马"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "バウンド・ドック"
+   ],
+   "zh-Hans": {
+    "old": "邦德·多克",
+    "new": "猎犬"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "バウンド・ドッグ"
+   ],
+   "zh-Hans": {
+    "old": "巴温德·多格",
+    "new": "猎犬"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "バックスピンキック"
+   ],
+   "zh-Hans": {
+    "old": "后旋踢",
+    "new": "后回旋踢"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "バトルクラフト"
+   ],
+   "zh-Hans": {
+    "old": "战斗飞艇",
+    "new": "战斗装甲车"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "バルカンポッド"
+   ],
+   "zh-Hans": {
+    "old": "火神炮吊舱",
+    "new": "火神炮舱"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "パイシーズ"
+   ],
+   "zh-Hans": {
+    "old": "双鱼座",
+    "new": "派西斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "パオペイ"
+   ],
+   "zh-Hans": {
+    "old": "宝佩",
+    "new": "宝贝"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ヒルデ"
+   ],
+   "zh-Hans": {
+    "old": "希尔德",
+    "new": "希尔妲"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヒルデ・シュバイカー"
+   ],
+   "zh-Hans": {
+    "old": "希尔德·修拜卡",
+    "new": "希尔妲·修拜卡"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ビアレス"
+   ],
+   "zh-Hans": {
+    "old": "比亚雷斯",
+    "new": "毕亚雷斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグファイアー"
+   ],
+   "zh-Hans": {
+    "old": "大火焰",
+    "new": "BIG FIRE"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグブラストディバイダー"
+   ],
+   "zh-Hans": {
+    "old": "大爆裂分割器",
+    "new": "巨大爆破·分裂"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモス"
+   ],
+   "zh-Hans": {
+    "old": "巨象",
+    "new": "象战机"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモスA"
+   ],
+   "zh-Hans": {
+    "old": "巨象A",
+    "new": "象战机A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモスH"
+   ],
+   "zh-Hans": {
+    "old": "巨象H",
+    "new": "象战机H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビューティフル・タチバナ"
+   ],
+   "zh-Hans": {
+    "old": "比优蒂芙尔·立花",
+    "new": "立花美丽"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ビルゴ"
+   ],
+   "zh-Hans": {
+    "old": "处女座",
+    "new": "比尔哥"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビルゴⅡ"
+   ],
+   "zh-Hans": {
+    "old": "处女座Ⅱ",
+    "new": "比尔哥Ⅱ"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビルゴ部隊"
+   ],
+   "zh-Hans": {
+    "old": "处女座部队",
+    "new": "比尔哥部队"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ピースミリオン"
+   ],
+   "zh-Hans": {
+    "old": "和平百万号",
+    "new": "万年和平号"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ファイナルゴッドマーズ"
+   ],
+   "zh-Hans": {
+    "old": "终极戈德马斯",
+    "new": "终极雷霆王"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ファ・ユイリィ"
+   ],
+   "zh-Hans": {
+    "old": "法·尤伊利",
+    "new": "花·园丽"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンル"
+   ],
+   "zh-Hans": {
+    "old": "浮游炮",
+    "new": "鳍状浮游炮"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フイフイ"
+   ],
+   "zh-Hans": {
+    "old": "夫伊夫伊",
+    "new": "飞飞"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "フェダーインライフル"
+   ],
+   "zh-Hans": {
+    "old": "费达因步枪",
+    "new": "斗士步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "フェラリオ"
+   ],
+   "zh-Hans": {
+    "old": "菲拉里奥",
+    "new": "菲拉里欧"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フォウ・ムラサメ"
+   ],
+   "zh-Hans": {
+    "old": "佛·村雨",
+    "new": "凤·村雨"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "フビフビ"
+   ],
+   "zh-Hans": {
+    "old": "夫比夫比",
+    "new": "胡比胡比"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "フリード"
+   ],
+   "zh-Hans": {
+    "old": "弗利德",
+    "new": "弗里德"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フリード星人"
+   ],
+   "zh-Hans": {
+    "old": "弗利德星人",
+    "new": "弗里德星人"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フレイボム"
+   ],
+   "zh-Hans": {
+    "old": "弗雷炸弹",
+    "new": "火焰炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ブラッキー"
+   ],
+   "zh-Hans": {
+    "old": "布拉基",
+    "new": "布拉奇"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ブラッキー隊長"
+   ],
+   "zh-Hans": {
+    "old": "布拉基队长",
+    "new": "布拉奇队长"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ブラン"
+   ],
+   "zh-Hans": {
+    "old": "布朗",
+    "new": "布兰"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ブラン・ブルターク"
+   ],
+   "zh-Hans": {
+    "old": "布朗·布鲁塔克",
+    "new": "布兰·布鲁塔克"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ブレストファイヤー"
+   ],
+   "zh-Hans": {
+    "old": "胸部热线",
+    "new": "胸部火焰"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ブレストファイヤーMAP"
+   ],
+   "zh-Hans": {
+    "old": "胸部热线MAP",
+    "new": "胸部火焰MAP"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "プチモビル"
+   ],
+   "zh-Hans": {
+    "old": "小机动人",
+    "new": "小型MS"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "プルツー"
+   ],
+   "zh-Hans": {
+    "old": "普露2号",
+    "new": "普露兹"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヘビーアームズカスタム"
+   ],
+   "zh-Hans": {
+    "old": "重武装特装型",
+    "new": "重装特装型"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ヘンケン"
+   ],
+   "zh-Hans": {
+    "old": "亨肯",
+    "new": "汉肯"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヘンケン・ベッケナー"
+   ],
+   "zh-Hans": {
+    "old": "亨肯·贝克纳",
+    "new": "汉肯·贝克纳"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ベアー号"
+   ],
+   "zh-Hans": {
+    "old": "熊号",
+    "new": "巨熊号"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロンビーム"
+   ],
+   "zh-Hans": {
+    "old": "维加特隆光束",
+    "new": "贝加能源光束"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロンレーザー"
+   ],
+   "zh-Hans": {
+    "old": "维加特隆激光",
+    "new": "贝加能源激光"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロン冷凍光線"
+   ],
+   "zh-Hans": {
+    "old": "维加特隆冷冻光线",
+    "new": "贝加能源冷冻光线"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ベガ獣キングゴリ"
+   ],
+   "zh-Hans": {
+    "old": "贝加兽金哥利",
+    "new": "贝加兽大金刚"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ベルトーチカ"
+   ],
+   "zh-Hans": {
+    "old": "贝尔托琪卡",
+    "new": "贝托蒂嘉"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ベルトーチカ・イルマ"
+   ],
+   "zh-Hans": {
+    "old": "贝尔托琪卡·伊尔玛",
+    "new": "贝托蒂嘉·伊露玛"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ベン・ウッダー"
+   ],
+   "zh-Hans": {
+    "old": "本·伍达",
+    "new": "本·伍德"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ホワイトファング"
+   ],
+   "zh-Hans": {
+    "old": "白牙",
+    "new": "白色獠牙"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ボス"
+   ],
+   "zh-Hans": {
+    "old": "老大",
+    "new": "波士"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ボルトガンダム"
+   ],
+   "zh-Hans": {
+    "old": "螺栓高达",
+    "new": "雷霆高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ボルトガンダムS"
+   ],
+   "zh-Hans": {
+    "old": "螺栓高达S",
+    "new": "雷霆高达S"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "マウアー"
+   ],
+   "zh-Hans": {
+    "old": "玛乌亚",
+    "new": "玛雅"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マウアー・ファラオ"
+   ],
+   "zh-Hans": {
+    "old": "玛乌亚·法拉奥",
+    "new": "玛雅·法拉奥"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "マグアナック"
+   ],
+   "zh-Hans": {
+    "old": "马古阿纳克",
+    "new": "马格纳克"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "マグアナック兵"
+   ],
+   "zh-Hans": {
+    "old": "马古阿纳克兵",
+    "new": "马格纳克兵"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マグアナック隊"
+   ],
+   "zh-Hans": {
+    "old": "马古阿纳克队",
+    "new": "马格纳克队"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "マザーバーン"
+   ],
+   "zh-Hans": {
+    "old": "母舰巴恩",
+    "new": "飞碟母船"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "マシュマー"
+   ],
+   "zh-Hans": {
+    "old": "马修马",
+    "new": "马修玛"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マシュマー・セロ"
+   ],
+   "zh-Hans": {
+    "old": "马修马·塞罗",
+    "new": "马修玛·塞罗"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "マシンキャノン"
+   ],
+   "zh-Hans": {
+    "old": "机炮",
+    "new": "机关加农炮"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "マジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "魔神剑",
+    "new": "魔神宝剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "マスク・ザ・レッド",
+    "レッド"
+   ],
+   "zh-Hans": {
+    "old": "红色面具",
+    "new": "赤假面"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マダラ"
+   ],
+   "zh-Hans": {
+    "old": "马达拉",
+    "new": "花白头"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "マリアルイゼ"
+   ],
+   "zh-Hans": {
+    "old": "玛丽亚露易丝",
+    "new": "玛莉亚露丝"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "マリア・フリード"
+   ],
+   "zh-Hans": {
+    "old": "玛丽亚·弗利德",
+    "new": "玛丽亚·弗里德"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "マリンスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "海洋斯佩泽",
+    "new": "海洋飞天神机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "マーキロット"
+   ],
+   "zh-Hans": {
+    "old": "马基洛特",
+    "new": "马基特"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マーキロット・クロノス"
+   ],
+   "zh-Hans": {
+    "old": "马基洛特·克罗诺斯",
+    "new": "马基特·克洛诺斯"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "マーグ"
+   ],
+   "zh-Hans": {
+    "old": "马格",
+    "new": "玛古"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マーグ司令船"
+   ],
+   "zh-Hans": {
+    "old": "马格司令船",
+    "new": "玛古司令船"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "マーズフラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "马斯闪光",
+    "new": "雷霆闪电"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "マーベル"
+   ],
+   "zh-Hans": {
+    "old": "玛贝尔",
+    "new": "玛蓓儿"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "マーベル・フローズン"
+   ],
+   "zh-Hans": {
+    "old": "玛贝尔·弗罗珍",
+    "new": "玛蓓儿·佛罗森"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ミカ"
+   ],
+   "zh-Hans": {
+    "old": "美加",
+    "new": "美佳"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ミケロス"
+   ],
+   "zh-Hans": {
+    "old": "米凯罗斯",
+    "new": "迈锡罗斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ミニフォー"
+   ],
+   "zh-Hans": {
+    "old": "迷你飞碟",
+    "new": "迷你碟"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ミネルバ"
+   ],
+   "zh-Hans": {
+    "old": "密涅瓦",
+    "new": "米涅瓦"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ミネルバX"
+   ],
+   "zh-Hans": {
+    "old": "密涅瓦X",
+    "new": "米涅瓦X"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ミリアルド"
+   ],
+   "zh-Hans": {
+    "old": "米利亚尔多",
+    "new": "米利亚尔特"
+   },
+   "gate": false,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ミリアルド・ピースクラフト"
+   ],
+   "zh-Hans": {
+    "old": "米利亚尔多·匹斯克拉福特",
+    "new": "米利亚尔特·匹斯克拉福特"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ミ・フェラリオ"
+   ],
+   "zh-Hans": {
+    "old": "米·菲拉里奥",
+    "new": "米·菲拉里欧"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "メルトシャワー"
+   ],
+   "zh-Hans": {
+    "old": "熔解喷雾",
+    "new": "溶解光束"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "モンド・アカゲ",
+    "モンド・アガケ"
+   ],
+   "zh-Hans": {
+    "old": "蒙多·阿卡凯",
+    "new": "蒙多·雅加凯"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ライガーミサイル"
+   ],
+   "zh-Hans": {
+    "old": "莱加导弹",
+    "new": "狮虎导弹"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ラシード"
+   ],
+   "zh-Hans": {
+    "old": "拉希德",
+    "new": "拉席德"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ラビアンローズ"
+   ],
+   "zh-Hans": {
+    "old": "拉维安罗斯",
+    "new": "玫瑰人生号"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ラビアン・ローズ"
+   ],
+   "zh-Hans": {
+    "old": "拉比安玫瑰",
+    "new": "玫瑰人生号"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ランタオ島"
+   ],
+   "zh-Hans": {
+    "old": "大屿山岛",
+    "new": "大屿山"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガー"
+   ],
+   "zh-Hans": {
+    "old": "陆地美洲狮",
+    "new": "豹战机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガーA"
+   ],
+   "zh-Hans": {
+    "old": "陆地美洲狮A",
+    "new": "豹战机A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガーH"
+   ],
+   "zh-Hans": {
+    "old": "陆地美洲狮H",
+    "new": "豹战机H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガー"
+   ],
+   "zh-Hans": {
+    "old": "陆地狮虎",
+    "new": "狮战机"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガーA"
+   ],
+   "zh-Hans": {
+    "old": "陆地狮虎A",
+    "new": "狮战机A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガーH"
+   ],
+   "zh-Hans": {
+    "old": "陆地狮虎H",
+    "new": "狮战机H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "リッシュ"
+   ],
+   "zh-Hans": {
+    "old": "利希",
+    "new": "利修"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "リッシュ・グリスウェル"
+   ],
+   "zh-Hans": {
+    "old": "利希·格里斯韦尔",
+    "new": "利修·格里斯韦尔"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "リ・ガズィ"
+   ],
+   "zh-Hans": {
+    "old": "里·卡兹",
+    "new": "灵格斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "リ・ガズィ(BWS)"
+   ],
+   "zh-Hans": {
+    "old": "里·卡兹（BWS）",
+    "new": "灵格斯（BWS）"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ルストハリケーン"
+   ],
+   "zh-Hans": {
+    "old": "锈蚀飓风",
+    "new": "腐蚀飓风"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "レイカ"
+   ],
+   "zh-Hans": {
+    "old": "丽佳",
+    "new": "丽香"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "レイン"
+   ],
+   "zh-Hans": {
+    "old": "蕾茵",
+    "new": "玲"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "レイン・ミカムラ"
+   ],
+   "zh-Hans": {
+    "old": "蕾茵·美加村",
+    "new": "深村玲"
+   },
+   "gate": false,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "レフレクタービット"
+   ],
+   "zh-Hans": {
+    "old": "反射比特",
+    "new": "反射浮游炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "レミー島田"
+   ],
+   "zh-Hans": {
+    "old": "蕾米岛田",
+    "new": "蕾米·岛田"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ロス・イゴール"
+   ],
+   "zh-Hans": {
+    "old": "罗斯·伊戈尔",
+    "new": "罗斯·伊格尔"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "ロゼ"
+   ],
+   "zh-Hans": {
+    "old": "萝泽",
+    "new": "罗塞"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ロングメガバスター"
+   ],
+   "zh-Hans": {
+    "old": "长型米加破坏炮",
+    "new": "长距离米加破坏炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ロングライフル"
+   ],
+   "zh-Hans": {
+    "old": "长步枪",
+    "new": "长距离步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼススクリーマー"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰尖啸",
+    "new": "玫瑰呼啸"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスハリケーン"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰旋风",
+    "new": "玫瑰飓风"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスビット"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰比特",
+    "new": "玫瑰浮游炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ロームフェラ"
+   ],
+   "zh-Hans": {
+    "old": "罗姆菲拉",
+    "new": "罗姆斐拉"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ロームフェラ財団"
+   ],
+   "zh-Hans": {
+    "old": "罗姆菲拉财团",
+    "new": "罗姆斐拉财团"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ワルキメデス"
+   ],
+   "zh-Hans": {
+    "old": "瓦尔基米德斯",
+    "new": "瓦基米德"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names",
+    "pilots"
+   ]
+  },
+  {
+   "ja": [
+    "ヴァルキュリア"
+   ],
+   "zh-Hans": {
+    "old": "瓦尔基里",
+    "new": "女武神"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ヴァルキュリア・シリーズ"
+   ],
+   "zh-Hans": {
+    "old": "瓦尔基里系列",
+    "new": "女武神系列"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ヴェスバー"
+   ],
+   "zh-Hans": {
+    "old": "维斯巴",
+    "new": "VSBR"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "三条レイカ"
+   ],
+   "zh-Hans": {
+    "old": "三条丽佳",
+    "new": "三条丽香"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "光子力ビーム"
+   ],
+   "zh-Hans": {
+    "old": "光子力光束",
+    "new": "光子力射线"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "六神合体ゴッドマーズ"
+   ],
+   "zh-Hans": {
+    "old": "六神合体 戈德马斯",
+    "new": "六神合体雷霆王"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "円盤獣ギルギル"
+   ],
+   "zh-Hans": {
+    "old": "圆盘兽基尔基尔",
+    "new": "飞碟兽吉尔吉尔"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "円盤獣ゴスゴス"
+   ],
+   "zh-Hans": {
+    "old": "圆盘兽戈斯戈斯",
+    "new": "飞碟兽戈斯戈斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "冷凍ビーム"
+   ],
+   "zh-Hans": {
+    "old": "冷冻光束",
+    "new": "冷冻光线"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "大雪山おろし"
+   ],
+   "zh-Hans": {
+    "old": "大雪山颪",
+    "new": "大雪山崩落"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "大雪山おろし二段返し"
+   ],
+   "zh-Hans": {
+    "old": "大雪山颪二段返",
+    "new": "大雪山崩落二段返"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "巨大ベガトロンビーム砲"
+   ],
+   "zh-Hans": {
+    "old": "巨型维加特隆光束炮",
+    "new": "巨型贝加能源光束炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "戦闘獣オベリウス"
+   ],
+   "zh-Hans": {
+    "old": "战斗兽奥贝留斯",
+    "new": "战斗兽欧贝琉斯"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "戦闘獣ズガール"
+   ],
+   "zh-Hans": {
+    "old": "战斗兽兹加尔",
+    "new": "战斗兽斯伽尔"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "日向ミカ"
+   ],
+   "zh-Hans": {
+    "old": "日向美加",
+    "new": "日向美佳"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "明神タケル"
+   ],
+   "zh-Hans": {
+    "old": "明神尊",
+    "new": "明神武"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "有線式メガアーム砲"
+   ],
+   "zh-Hans": {
+    "old": "有线式米加臂炮",
+    "new": "有线式米加手臂炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "木曽アキラ"
+   ],
+   "zh-Hans": {
+    "old": "木曾明",
+    "new": "木曾辉"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "海ヘビ"
+   ],
+   "zh-Hans": {
+    "old": "海蛇",
+    "new": "海蛇鞭"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "無敵超人 ザンボット3"
+   ],
+   "zh-Hans": {
+    "old": "无敌超人 赞博特3",
+    "new": "无敌超人 赞波3"
+   },
+   "gate": false,
+   "sections": [
+    "series"
+   ]
+  },
+  {
+   "ja": [
+    "爆熱ゴッドスラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "爆热神之斩击",
+    "new": "爆热神之斩"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "爆熱ゴッドフィンガー"
+   ],
+   "zh-Hans": {
+    "old": "爆热神之手指",
+    "new": "爆热神之指"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "真・ゲッター1"
+   ],
+   "zh-Hans": {
+    "old": "真·盖塔1",
+    "new": "真盖塔1"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "真・ゲッター2"
+   ],
+   "zh-Hans": {
+    "old": "真·盖塔2",
+    "new": "真盖塔2"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "真・ゲッター3"
+   ],
+   "zh-Hans": {
+    "old": "真·盖塔3",
+    "new": "真盖塔3"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "真・流星胡蝶剣"
+   ],
+   "zh-Hans": {
+    "old": "真·流星胡蝶剑",
+    "new": "真·流星蝴蝶剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "衝撃のアルベルト"
+   ],
+   "zh-Hans": {
+    "old": "冲击的阿尔贝鲁特",
+    "new": "冲击的阿尔伯特"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "裁きのイカズチ"
+   ],
+   "zh-Hans": {
+    "old": "审判之雷",
+    "new": "制裁之雷"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "超電磁スピン"
+   ],
+   "zh-Hans": {
+    "old": "超电磁旋转",
+    "new": "超电磁回旋"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "超電磁ヨーヨー"
+   ],
+   "zh-Hans": {
+    "old": "超电磁溜溜球",
+    "new": "超电磁悠悠球"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "銃剣付きビームライフル"
+   ],
+   "zh-Hans": {
+    "old": "附刺刀光束步枪",
+    "new": "枪刃型光束步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "飛鳥ケンジ"
+   ],
+   "zh-Hans": {
+    "old": "飞鸟健二",
+    "new": "飞鸟健治"
+   },
+   "gate": false,
+   "sections": [
+    "pilot_full_names"
+   ]
+  },
+  {
+   "ja": [
+    "バルジ要塞"
+   ],
+   "zh-Hans": {
+    "old": "巴尔吉要塞",
+    "new": "巴鲁智要塞"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "バルジ"
+   ],
+   "zh-Hans": {
+    "old": "巴尔吉",
+    "new": "巴鲁智"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "バルジ",
+    "バルジ要塞"
+   ],
+   "en": {
+    "old": "Bulge",
+    "new": "Barge"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フィフス",
+    "フィフス・ルナ"
+   ],
+   "zh-Hans": {
+    "old": "第五月球",
+    "new": "月神5号"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
+  }
+ ]
+}
