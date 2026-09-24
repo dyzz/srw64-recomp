@@ -80,7 +80,8 @@ int main(int argc,char** argv) {
                 {"en",{"HarmonyOS_Sans_Condensed_Regular.ttf","HarmonyOS_Sans_SC_Regular.ttf","SRW64Symbols.ttf"}}}},
             {"marks",{{"sentence_end",dialogue::utf8(std::u16string(text::sentence_end_marks))},
                 {"comma",dialogue::utf8(std::u16string(text::comma_marks))},
-                {"halvable",dialogue::utf8(std::u16string(text::halvable_marks))}}},
+                {"halvable",dialogue::utf8(std::u16string(text::halvable_marks))},
+                {"opening",dialogue::utf8(std::u16string(text::opening_marks))}}},
             {"cases",cases}};
         std::ofstream(argv[2])<<doc.dump(1)<<'\n';
         std::cout<<cases.size()<<" paging cases written\n";
