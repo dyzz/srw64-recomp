@@ -29,7 +29,7 @@ RT64 的 `TextureSampler.hlsli` 对替换纹理使用实际 `tcScale`；其低�
 
 ## 重建与验证
 
-最终合并素材包为 `assets/hd-ai/worldmap-runtime/pack-v6/pack`。重建到新目录：
+最终合并素材包为 `assets/hd-ai/worldmap-runtime/pack-v6/pack`。高清入口现在用的是它的派生包 `portrait-matte/v2/pack`，其中只重做了头像透明，见[原图与高清图](native-content-foundation.md#原图与高清图)。重建 v6 到新目录：
 
 ```sh
 .venv/bin/python -m tools.hd_ai.build_worldmap_runtime_pack \

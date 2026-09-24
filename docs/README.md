@@ -79,6 +79,7 @@
 | [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收 |
 | [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
+| [人物头像 HD](native/native-portraits-hd.md) | 全部头像的 2×2 拼图生成、逐格配准与抠图，模式 7 绘制的整张 768×768 替换（宿主 Metal 绘制） |
 | [模型替换](native/native-model-replacement.md) | 5600 原生水滴与 Original/HD 切换 |
 | [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |
 | [内容架构第一批实现](native/native-content-foundation.md) | 语言、图片、5600 模型配置及扩展方式 |

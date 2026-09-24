@@ -5,7 +5,7 @@ from PIL import Image
 from srw64_rom.resources import ResourceTable
 from tools.hd_ai.extract_samples import ROOT,map_image,indexed,rgba16
 from tools.hd_ai.rt64_hash import hasher,map_hash
-from tools.hd_ai.portrait_matte import matte_portrait
+from tools.hd_ai.portrait_matte import matte_portrait,runtime_image
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def upscale(image,scale):return image.convert('RGBa').resize((image.width*scale,image.height*scale),Image.Resampling.LANCZOS).convert('RGBA')
@@ -23,8 +23,8 @@ def main():
             file=args.portraits/request['output'];expected=request['output_sha256'];model_size=request['dimensions']
         assert sha(file.read_bytes())==expected
         source=Image.open(args.portraits/sample['source']).convert('RGBA')
-        matte,matte_report=matte_portrait(Image.open(file),source.getchannel('A'))
-        high=matte.convert('RGBa').resize((384,384),Image.Resampling.LANCZOS).convert('RGBA')
+        matte,matte_report=matte_portrait(Image.open(file),source)
+        high=runtime_image(matte)
         high.save(args.output/f"{sample['id']}-384.png")
         for b in sample['binding']['bindings']:
             x,y=b['xy'];w,h=b['draw_size'];assert w==h==32 and x in (0,32,64) and y in (0,32,64)

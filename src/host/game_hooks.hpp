@@ -10,6 +10,8 @@ struct SRW64GameHooks {
     bool (*dialogue_step)(uint8_t*, recomp_context*){};
     void (*text_loaded)(uint8_t*, unsigned){};
     void (*text_drawn)(uint8_t*, uint32_t, uint32_t){};
+    // 800964E4 (sprite mode 7: every character portrait) wrote [begin, end) for slot/sub.
+    void (*portrait_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     void (*reset)(uint8_t*){};
     bool (*script_before)(uint8_t*, uint32_t){};
     void (*script_after)(uint8_t*, uint32_t){};

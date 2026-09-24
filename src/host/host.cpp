@@ -25,6 +25,8 @@
 #include "app/desktop.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
+#include "native_portrait.hpp"
+#include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
@@ -330,6 +332,11 @@ static int run_host(int argc, char** argv) {
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
+    srw64_game_hooks.portrait_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t, uint32_t) {
+        // The sprite record only holds resource handles; the portrait is recognised from
+        // the texture data the drawn display list points at.
+        srw64::portraits::rewrite(ram, {begin, end});
+    };
     srw64::names::configure(output_dir);
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);

@@ -45,6 +45,28 @@ PATCHES = {
                 state->drawCall.nativeMeshId = 0;
             }
         }''')],
+    # Texture rectangles use the same classification: the HD tactical map marks one
+    # rectangle per map draw and the host paints the whole map in its place.
+    'src/gbi/rt64_gbi_rdp.cpp': [
+        ('#include "rt64_gbi_rdp.h"', '#include "rt64_gbi_rdp.h"\n#include "rhi/rt64_render_hooks.h"'),
+        ('''        void texrect(State *state, DisplayList **dl) {
+            const int32_t ulx = (*dl)->p1(12, 12);''', '''        void texrect(State *state, DisplayList **dl) {
+            auto *nativeHook = GetNativeMeshClassify();
+            const uint32_t nativeId = nativeHook ? nativeHook(state, *dl) : 0;
+            const int32_t ulx = (*dl)->p1(12, 12);'''),
+        ('''            state->rdp->drawTexRect(ulx, uly, lrx, lry, tile, uls, ult, dsdx, dtdy, false);
+        }
+        \n        void texrectFlip(State *state, DisplayList **dl) {''', '''            if (nativeId) {
+                state->flush();
+                state->drawCall.nativeMeshId = nativeId;
+            }
+            state->rdp->drawTexRect(ulx, uly, lrx, lry, tile, uls, ult, dsdx, dtdy, false);
+            if (nativeId) {
+                state->flush();
+                state->drawCall.nativeMeshId = 0;
+            }
+        }
+        \n        void texrectFlip(State *state, DisplayList **dl) {''')],
     'src/render/rt64_framebuffer_renderer_call.h': [
         ('#include <stdint.h>', '#include <stdint.h>\n#include "rhi/rt64_render_hooks.h"'),
         ('        Type type;', '        Type type;\n        NativeMeshDraw nativeMesh;')],

@@ -3,190 +3,10 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "assets/hd-ai/worldmap-runtime/pack-v6/pack",
+    "path": "assets/hd-ai/portrait-matte/v2/pack",
     "manifest_sha256": "e252b3fdff7eb6a6c9a01ee97806f45c0233a395c10edbd61840e23d4409f248"
   },
   "textures": [
-    {
-      "hash": "07794fe91703b7c3",
-      "kind": "portrait",
-      "sha256": "7ac58f97ee7390181961c63b0e5d0a1c572a339dce76b56f64c2e3eb1be95c2d"
-    },
-    {
-      "hash": "0f447211b29d068e",
-      "kind": "portrait",
-      "sha256": "ddb8284f370b35a5287069d9f7d8122c1e9adc23d70fc979c03eb34f25991ec2"
-    },
-    {
-      "hash": "3e4d0d353b16a1fe",
-      "kind": "portrait",
-      "sha256": "d84ad453fe2a91cd943939874245ac83125a5a40f45f1ac4775f87768784974a"
-    },
-    {
-      "hash": "3fc0d32e83777a33",
-      "kind": "portrait",
-      "sha256": "62217e141670636356a86b3013072234fa7bf283fa53d74b334ea46a217d946d"
-    },
-    {
-      "hash": "45af455d2d90feab",
-      "kind": "portrait",
-      "sha256": "9c4ad3d34b285edf085af2bedb938e4c3439ae59119de5c9b9610b53da52010c"
-    },
-    {
-      "hash": "5e159668d575823e",
-      "kind": "portrait",
-      "sha256": "5ef0250c9de234cec8fad06524007564ae7062708a7161e70097d93f3c3dfaf5"
-    },
-    {
-      "hash": "a25a433286f56db5",
-      "kind": "portrait",
-      "sha256": "333158d921e5ebcc77e8c24b5ff8449da12bc7fe92368de2572f0658b4da9b7f"
-    },
-    {
-      "hash": "a615f1b79115b296",
-      "kind": "portrait",
-      "sha256": "6e01fd6f44e66e0769eea3334727ee5d059723c940bc20e5334a3cf837f51097"
-    },
-    {
-      "hash": "d04ad1bbc0b8d029",
-      "kind": "portrait",
-      "sha256": "4e4de70291d65d9e51e9870cb8cad8bc7335d23d076d8aa4b0b5b197b088dc1d"
-    },
-    {
-      "hash": "028de65f9f458892",
-      "kind": "portrait",
-      "sha256": "2754faae55707067171ff345768f87af26b49088c574188d894aa0c06eae2b2d"
-    },
-    {
-      "hash": "1dd872e2ed35adec",
-      "kind": "portrait",
-      "sha256": "d9d4d197ebf7dcc0305550a030b0746b75f0daadbecf6ac5ab7f521df6505862"
-    },
-    {
-      "hash": "3ddf4fccd9bf3e04",
-      "kind": "portrait",
-      "sha256": "378036ff2704f8c2693ee04e0efb124c39e73db985e08620fde0a153ff1c8c6c"
-    },
-    {
-      "hash": "414ad86c6cecf284",
-      "kind": "portrait",
-      "sha256": "9faba482fe90fef239facfaddd07d372ed32911911cbb0211de2175ed45b1ed0"
-    },
-    {
-      "hash": "4259faaa9213d520",
-      "kind": "portrait",
-      "sha256": "360be6ce0ffe326e9a481b98c3b1cec94b558f1a376c61d30dc2851769dfbf16"
-    },
-    {
-      "hash": "4ae316b7955b204b",
-      "kind": "portrait",
-      "sha256": "53b36fd450961057b84484dcafa0f7503981ec693fbb9b1e8d84d683765ed9ce"
-    },
-    {
-      "hash": "8834170e13a42796",
-      "kind": "portrait",
-      "sha256": "2f06e9a47d4d21b7487be72a4f2154fd74ab65145183837707cc8072ff8678a5"
-    },
-    {
-      "hash": "a9f360bddd560fc2",
-      "kind": "portrait",
-      "sha256": "50d0006d746cb50526255e23915ee9dc39e628d0dd30e9626392939da2dde21b"
-    },
-    {
-      "hash": "ff1f7c685b93333b",
-      "kind": "portrait",
-      "sha256": "4dd0b50db7f6b78f8136844c84d2e4c53fcb04a882f5ee5a0e2c5704406b2abe"
-    },
-    {
-      "hash": "2647e5c087f645c1",
-      "kind": "portrait",
-      "sha256": "4c0a6988fc31a873c8b651430b84ec29b8fb4f22b3584762fcef2354e0bb5ccb"
-    },
-    {
-      "hash": "56d45c04a11aca94",
-      "kind": "portrait",
-      "sha256": "30b33b7912771c8802701f33d50e4b6422d46b3d28e28f35e8eb0897c756ad7d"
-    },
-    {
-      "hash": "6a14a41df24597d1",
-      "kind": "portrait",
-      "sha256": "839b69620dd12380d4e90c784a6ff06632ecfd077646c1fee17378db331e7bf4"
-    },
-    {
-      "hash": "6b13706c354e087e",
-      "kind": "portrait",
-      "sha256": "3c4669c3cf2922272b8c1539cbdc6f13b7f67f39179de9f57d4e59be89cefc39"
-    },
-    {
-      "hash": "9bdbaee39af506b1",
-      "kind": "portrait",
-      "sha256": "fb3f1e59e27957ba5ab3099089e613b3e90c8988bac69a833adcde3726fe0497"
-    },
-    {
-      "hash": "b0711c0a778c9860",
-      "kind": "portrait",
-      "sha256": "393630579f8dc20b6fbd4c9639d132a06c8feff425505656cb291e34cd6fb838"
-    },
-    {
-      "hash": "b523f6f7b17bc094",
-      "kind": "portrait",
-      "sha256": "d8d9e6dd83d09ff0f9a2d29b1e70b664efa86f9b61f6391913fb6413228f22d2"
-    },
-    {
-      "hash": "b5c99f4ee48f8887",
-      "kind": "portrait",
-      "sha256": "83aa4aab428563c042cfce93f39566920dd8395a780aa80bb7f669481848eb33"
-    },
-    {
-      "hash": "fe3b05ee74f934ab",
-      "kind": "portrait",
-      "sha256": "6b6e38a483cf8ebf2ae8b623d044105cc9bff014f45a767c1e1e90da1ce51d5d"
-    },
-    {
-      "hash": "07010fde6ad2408f",
-      "kind": "portrait",
-      "sha256": "604672199e48fa9c8cb7b8abd20e8846be9e4b2dd1d2439207459c4d1c88e608"
-    },
-    {
-      "hash": "36168e9de9906c64",
-      "kind": "portrait",
-      "sha256": "ccea158159b666db421dbe52f9c46560848f8f12ef044ea0a2175e1116bfd44b"
-    },
-    {
-      "hash": "3d3e322258e1d29c",
-      "kind": "portrait",
-      "sha256": "9168b98b035f4d1f90dc34759e949f4f663d72b84fdd108772373c31ffd38052"
-    },
-    {
-      "hash": "59b2ab1da85396bb",
-      "kind": "portrait",
-      "sha256": "f81c2634a7c015e5d135761f8d0b4d9e1b4945b21ca39d1f2eb1dff5fb41a91a"
-    },
-    {
-      "hash": "8414e8eb5efe825f",
-      "kind": "portrait",
-      "sha256": "56fc982eafb95a864e746363693778750722a605563dbb08274af6fe9bf68494"
-    },
-    {
-      "hash": "a064f3d48451c051",
-      "kind": "portrait",
-      "sha256": "af448f2b47eff3364120424c7cef167b2ade21e813b06be890b690ceb00e6ada"
-    },
-    {
-      "hash": "ae975e8cc93608b5",
-      "kind": "portrait",
-      "sha256": "d8b1b68de9b4a8bb133e138d8f165909d07378b924f389640688f62d7de996ae"
-    },
-    {
-      "hash": "d4a7cad91ff097de",
-      "kind": "portrait",
-      "sha256": "0d1b68b7ef04b085805742aa93be3dbe49a76ef10b8d453898be0c41a6fe6bba"
-    },
-    {
-      "hash": "e0db7cca0456df4d",
-      "kind": "portrait",
-      "sha256": "f1cbbc1745fef9bb24d2b28ed8e69cff355874c7c9136f0030ada298b207fd4b"
-    },
     {
       "hash": "10205e9441de415d",
       "kind": "worldmap",
@@ -603,5 +423,9 @@
       "ea1e4beef639a66a",
       "ed618dca79d394dd"
     ]
+  },
+  "portraits": {
+    "path": "assets/hd-ai/portrait-batch/whole-v1",
+    "manifest_sha256": "d672172500f8b5ab6e95fa9d00e9efe02699496099c39f3cb90f235a26c31ac9"
   }
 }

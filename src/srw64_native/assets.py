@@ -43,12 +43,34 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         spec = manifest["worldmap"]
         if set(spec["hashes"]) != {r["hash"] for r in manifest["textures"] if r["kind"] == "worldmap"}:
             raise ValueError("Worldmap audit identities differ from art manifest")
+    # Whole-image portraits for the host's sprite-mode-7 replacement (native_portrait.cpp).
+    portrait_index, portrait_files = None, []
+    if "portraits" in manifest:
+        folder = inside(root, manifest["portraits"]["path"])
+        index_bytes = (folder / "portraits.json").read_bytes()
+        if sha(index_bytes) != manifest["portraits"]["manifest_sha256"]:
+            raise ValueError("Portrait manifest changed")
+        portrait_index = json.loads(index_bytes)
+        if portrait_index.get("schema") != "srw64.portrait-images.v1":
+            raise ValueError("Unsupported portrait image set")
+        for row in portrait_index["images"]:
+            path = inside(folder, row["file"])
+            if sha(path.read_bytes()) != row["sha256"]:
+                raise ValueError(f"Portrait pixels changed: {row['image']}")
+            portrait_files.append((path, row))
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
         shutil.copyfile(path, output / name)
+    if portrait_index is not None:
+        (output / "portraits").mkdir()
+        for path, row in portrait_files:
+            shutil.copyfile(path, output / "portraits" / row["file"])
+        runtime = {**portrait_index, "images": [{**row, "file": f"portraits/{row['file']}"} for _, row in portrait_files]}
+        (output / "srw64-portraits-hd.json").write_text(json.dumps(runtime, indent=2) + "\n")
     (output / "rt64.json").write_text(json.dumps({"configuration": database["configuration"], "textures": textures}, indent=2) + "\n")
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "manifest_sha256": sha((output / "rt64.json").read_bytes())}
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files),
+            "manifest_sha256": sha((output / "rt64.json").read_bytes())}
