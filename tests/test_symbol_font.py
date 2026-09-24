@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 FONT = ROOT / "content/fonts/SRW64Symbols.ttf"
 # Advances in 1/1000 em: the triangles keep Arial Unicode MS's width, the wrench is full width.
 SYMBOLS = {"▶": 600, "▷": 600, "◀": 600, "🔧": 1000}
+# The weapon markers at U+E000 + their ROM glyph id: narrow 8:10 icons and the MAP badge.
+MARKERS = {241: 680, 242: 680, 243: 680, 244: 680, 575: 1060}
 
 
 class SymbolFontTests(unittest.TestCase):
@@ -22,6 +24,16 @@ class SymbolFontTests(unittest.TestCase):
                 self.assertIsNotNone(self.font.getbbox(char))
         # Anything else is the empty .notdef (500), so the text engine keeps looking.
         self.assertEqual(self.font.getlength("A"), 500)
+
+    def test_holds_the_weapon_markers(self):
+        mapping = load_glyph_map(ROOT)
+        for glyph_id, advance in MARKERS.items():
+            with self.subTest(glyph=glyph_id):
+                char = chr(0xE000 + glyph_id)
+                self.assertEqual(self.font.getlength(char), advance)
+                left, top, right, bottom = self.font.getbbox(char)
+                self.assertLessEqual(bottom - top, 800)          # one band, never taller than text
+                self.assertIn(mapping[glyph_id], {"P", "B", "射", "格", "MAP"})
 
     def test_never_raises_a_line(self):
         # HarmonyOS Sans SC hhea ascent/descent; the engine takes the tallest face's ascent.

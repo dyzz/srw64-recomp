@@ -32,7 +32,7 @@ Linux 可安装 `libfreetype6-dev libharfbuzz-dev libicu-dev fonts-noto-cjk`；W
 
 2026-09-23 起游戏运行使用打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
 准备的目录（开发运行是 `build/fonts/`，应用包是 `Contents/Resources/fonts/`）。字体链：中文、日文为
-HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf`；英文为 HarmonyOS Sans Condensed → SC → 符号字体。
+HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf`；英文为 HarmonyOS Sans Condensed → SC → 符号字体。符号字体里还有武器标记图标（U+E000＋原版字形号，见[改造画面](native-upgrade-screens.md)）。
 目录里缺文件时明确报错，不退回系统字体。没有 `SRW64_FONT_DIR` 时（单元测试、旧探针）仍查找本机
 Noto Sans CJK（Linux）、Arial Unicode（macOS）、微软雅黑（Windows）；Noto 标准 TTC 按中文／日文选择对应 face。
 开发测试可用 `SRW64_TEXT_FONT` 指定一个明确的 TTF/OTF/TTC 文件；不搜索当前目录、不联网下载，
