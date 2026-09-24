@@ -30,4 +30,9 @@ void set_native_intermission_ui(bool native);
 // name_entry_ui. SRW64_NATIVE_NAME_ENTRY=0 forces the original for a run.
 bool native_name_entry_ui();
 void set_native_name_entry_ui(bool native);
+// The title screen's ロード, オプション, サウンドセレクト and カラオケモード: the native
+// pages (default) or the original screens. Read on the game thread when a screen is
+// built; saved as title_ui.
+bool native_title_ui();
+void set_native_title_ui(bool native);
 }

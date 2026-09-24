@@ -15,6 +15,7 @@
 #include "ability_page.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
+#include "title_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
@@ -59,7 +60,9 @@ std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
-json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request;
+json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
+Rml::ElementDocument* title_doc{};
+std::string title_stamp;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
 std::string funds_editing;
 Rml::ElementDocument* upgrade_doc{},* parts_doc{},* ability_doc{},* swap_doc{},* save_doc{};
@@ -199,7 +202,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-panel {position:absolute; box-sizing:border-box; overflow:hidden; background-color:#0a0e3cc8; border-color:#3a78e0; white-space:nowrap;}
 .im-panel button {display:block; width:100%; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
 .im-panel button:hover {background-color:#00c80055;} .im-panel button:focus {border:0;}
-.im-panel button.on,.im-panel button.on:hover {background-color:#00c800;} .im-panel button:disabled {opacity:1;}
+.im-panel button.on,.im-panel button.on:hover {background-color:#00c800;} .im-panel button:disabled {opacity:1;} .im-panel button.tp-playing {color:#8fe8ff;} .im-panel button.on.tp-playing {color:#ffffff;}
 .im-line {display:flex; justify-content:space-between;} .im-line span {display:inline-block;}
 .im-hint {position:absolute; text-align:center; font-weight:normal; color:#d6e2efb0; white-space:nowrap;}
 .im-refused {color:#ffd75e;}
@@ -322,7 +325,9 @@ void settings_sync() {
     for(auto mode:{"native","original"})body+=button(std::string("intermission-ui:")+mode,label(std::string("settings_intermission_ui_")+mode),settings::native_intermission_ui()==(std::string(mode)=="native"));
     body+="<p>"+label("settings_intermission_ui_note")+"</p><h2>"+label("settings_name_entry_ui")+"</h2>";
     for(auto mode:{"native","original"})body+=button(std::string("name-entry-ui:")+mode,label(std::string("settings_name_entry_ui_")+mode),settings::native_name_entry_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_name_entry_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
+    body+="<p>"+label("settings_name_entry_ui_note")+"</p><h2>"+label("settings_title_ui")+"</h2>";
+    for(auto mode:{"native","original"})body+=button(std::string("title-ui:")+mode,label(std::string("settings_title_ui_")+mode),settings::native_title_ui()==(std::string(mode)=="native"));
+    body+="<p>"+label("settings_title_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
     for(const auto& preset:rules::presets)body+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
     body+="<p>"+label("rules_note")+"</p>";
     if(settings::failed())body+="<p>"+label("settings_error")+"</p>";
@@ -984,7 +989,8 @@ void save_sync() {
         for(unsigned n=0;n<2;++n)
             items+="<button id='save:"+std::to_string(n)+"' class='im-center "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+"; text-align:center;'>"+escape(media[n])+"</button>";
         body+=box(117,61,203,99,items,std::min(fit(media[0],80),fit(media[1],80)),"save-media");
-        const std::string message=media[cursor]+" "+label_of("save_to");
+        // The original draws the medium and the sentence as two labels; Chinese runs them together.
+        const std::string message=media[cursor]+(localization::catalog().locale.starts_with("zh")?"":" ")+label_of("save_to");
         body+=box(85,125,235,147,at(0,3,escape(message),"im-center",fit(message,146),150),11.f,"save-message");
         if(next.value("waiting",false))
             body+=box(101,109,219,131,at(0,3,escape(label_of("checking")),"im-center",fit(label_of("checking"),114),118),11.f,"save-checking");
@@ -1029,10 +1035,71 @@ void save_sync() {
                 lines+="<div style='position:absolute; left:"+px(row.first-29)+"; top:"+px(y-77)+"; line-height:"+px(15)+"; white-space:nowrap;'>"+multiline(row.second)+"</div>";
             body+="<div class='im-shade'></div>"+box(29,77,291,179,lines,9.f,"save-pak-message");
         }
-        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":"save_slots_hint");
+        const bool loading=next.value("context",std::string())=="title";
+        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":loading?"title_load_hint":"save_slots_hint");
     }
     body+="</div>";
     save_doc=document(body,true);save_doc->SetClass("modal",false);
+}
+
+// Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
+// カラオケモード song lists (0x5B / 0x61, ten rows with the arrows of 0x5C), at the
+// original positions. The ロード screens are the データセーブ page above.
+void title_sync() {
+    const auto next=title_page::state();title_request=next;
+    if(!next.value("visible",false)){document_close(title_doc);title_stamp.clear();return;}
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    if(title_doc && title_stamp==stamp)return;
+    document_close(title_doc);title_stamp=stamp;
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;
+    const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="") {
+        return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
+            "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";'>"+content+"</div>";
+    };
+    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto at=[&](float x,float y,float w,float h,const std::string& content,const std::string& extra=""){
+        return "<div style='position:absolute; left:"+px(x)+"; top:"+px(y)+"; width:"+px(w)+"; height:"+px(h)+"; line-height:"+px(h)+";"+extra+"'>"+content+"</div>";};
+    const auto hint=[&](const char* key){return "<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(key)+"</div>";};
+    const std::string screen=next.value("screen",std::string()),title=next.value("title",std::string());
+    std::string body="<div class='im-root' id='title-page' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    if(screen=="options") {
+        body+=box(133,21,187,43,at(0,3,54,16,escape(title),"text-align:center;"),fit(title,50),"tp-title");
+        const auto& items=next.at("items");const unsigned cursor=next.value("cursor",0u);
+        float font=12.5f;
+        for(const auto& item:items)font=std::min(font,fit(item.value("label",std::string())+item.value("value",std::string()),96));
+        std::string rows;
+        for(unsigned n=0;n<items.size();++n) {
+            const auto& item=items[n];
+            rows+="<button id='tp-option:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='position:absolute; left:0; top:"+px(3+16*n)+"; height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(2)+";'>"+
+                "<span style='width:"+px(item.contains("value")?62:96)+";'>"+escape(item.value("label",std::string()))+"</span>"+
+                (item.contains("value")?"<span class='im-right' style='width:"+px(34)+";'>"+escape(item.value("value",std::string()))+"</span>":std::string())+"</button>";
+        }
+        body+=box(109,84,213,139,rows,font,"tp-options");
+        body+=hint("title_options_hint");
+    } else {
+        const auto& songs=next.at("songs");const unsigned count=unsigned(songs.size()),current=next.value("current",0u),top=next.value("top",0u),rows=next.value("rows",10u);
+        const bool exit=next.value("exit_focus",false);const std::string exit_label=next.value("exit",std::string());
+        std::string content="<div style='position:absolute; left:0; top:"+px(22)+"; width:100%; height:"+px(line)+"; background-color:#3a78e0;'></div>"
+            "<div style='position:absolute; left:"+px(207)+"; top:0; width:"+px(line)+"; height:"+px(22)+"; background-color:#3a78e0;'></div>"+
+            at(20,3,180,16,escape(title),"font-size:"+px(fit(title,178))+";")+
+            "<button id='tp-exit' class='"+std::string(exit?"on":"")+"' style='position:absolute; left:"+px(208)+"; top:"+px(3)+"; width:"+px(70)+"; height:"+px(16)+"; line-height:"+px(16)+"; padding:0; text-align:center; font-size:"+px(fit(exit_label,64))+";'>"+escape(exit_label)+"</button>";
+        float font=12.5f;
+        for(unsigned r=0;r<rows && top+r<count;++r)font=std::min(font,fit(songs[top+r].value("text",std::string()),214));
+        for(unsigned r=0;r<rows && top+r<count;++r) {
+            const unsigned n=top+r;const auto& song=songs[n];
+            content+="<button id='tp-song:"+std::to_string(n)+"' class='"+std::string(n==current && !exit?"on":"")+(song.value("playing",false)?" tp-playing":"")+"' style='position:absolute; left:"+px(1)+"; top:"+px(30+16*r)+"; width:"+px(275)+
+                "; height:"+px(16)+"; line-height:"+px(16)+"; padding:0 0 0 "+px(58)+"; font-size:"+px(font)+";'>"+
+                (song.value("playing",false)?"<span style='position:absolute; left:"+px(42)+"; top:0; font-size:"+px(7)+";'>&#x25B6;</span>":std::string())+escape(song.value("text",std::string()))+"</button>";
+        }
+        if(top>0)content+=at(129,22,20,9,"&#x25B2;","text-align:center; color:#e0402a; font-size:"+px(7)+";");
+        if(top+rows<count)content+=at(129,189,20,9,"&#x25BC;","text-align:center; color:#e0402a; font-size:"+px(7)+";");
+        body+=box(21,21,299,219,content,12.5f,"tp-songs");
+        body+=hint(screen=="karaoke"?"title_karaoke_hint":"title_sound_hint");
+    }
+    body+="</div>";
+    title_doc=document(body,true);title_doc->SetClass("modal",false);
 }
 
 // ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
@@ -1259,6 +1326,15 @@ void choose(const std::string& id) {
         }
         return;
     }
+    if(id.starts_with("tp-") && title_request.value("visible",false) && !settings_open) {
+        const auto serial=title_request.at("serial").get<uint64_t>();
+        if(id.starts_with("tp-option:")) {
+            const unsigned n=unsigned(std::atoi(id.c_str()+10));
+            title_page::answer(serial,n==title_request.value("cursor",0u)?"choose":"move:"+std::to_string(n));
+        } else if(id.starts_with("tp-song:"))title_page::answer(serial,"jump:"+id.substr(8));
+        else if(id=="tp-exit")title_page::answer(serial,"exit");
+        return;
+    }
     if(id.starts_with("ability:") && ability_request.value("visible",false) && !settings_open) {
         const auto serial=ability_request.at("serial").get<uint64_t>();const auto screen=ability_request.value("screen",std::string());
         const unsigned n=unsigned(std::atoi(id.c_str()+8));
@@ -1310,6 +1386,7 @@ void choose(const std::string& id) {
         if(id.starts_with("battle-ui:"))settings::set_native_battle_ui(id=="battle-ui:native");
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
+        if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
     } catch(const std::exception& error){notices::post("settings-error",error.what());}
 }
 // Newly pressed N64 buttons on the battle page, from the keyboard table in
@@ -1421,7 +1498,7 @@ void sync() {
         if(pad_pressed)battle_buttons(pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();
     app_menu::update(language->ui("settings_open"),language->ui("dialogue_reload"));
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
@@ -1435,6 +1512,7 @@ void sync() {
     ability_page::window_claim_input(ability_request.value("visible",false) || (ability_page::owns_input() && held()));
     swap_page::window_claim_input(swap_request.value("visible",false) || (swap_page::owns_input() && held()));
     save_page::window_claim_input(save_request.value("visible",false) || (save_page::owns_input() && held()));
+    title_page::window_claim_input(title_request.value("visible",false) || (title_page::owns_input() && held()));
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
@@ -1458,7 +1536,7 @@ bool dispatch(SDL_Event& event) {
     }
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
-    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) &&
+    if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
@@ -1564,6 +1642,23 @@ bool dispatch(SDL_Event& event) {
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){save_page::answer(serial,"choose");return true;}
             if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,mode==1?"cancel":"back");return true;}
+        }
+    } else if(title_request.value("visible",false)){
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const auto serial=title_request.at("serial").get<uint64_t>();
+            if(title_request.value("screen",std::string())=="options") {
+                const unsigned count=unsigned(title_request.at("items").size()),at=title_request.value("cursor",0u);
+                if(count && (k==SDLK_UP || k==SDLK_DOWN)){title_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            } else {
+                // Held arrows repeat like the original's auto-repeat.
+                if(k==SDLK_UP){title_page::answer(serial,"move:-1");return true;}
+                if(k==SDLK_DOWN){title_page::answer(serial,"move:+1");return true;}
+                if(!event.key.repeat && k==SDLK_q){title_page::answer(serial,"prev");return true;}
+                if(!event.key.repeat && k==SDLK_e){title_page::answer(serial,"next");return true;}
+            }
+            if(event.key.repeat)return true;
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){title_page::answer(serial,"choose");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){title_page::answer(serial,"back");return true;}
         }
     } else if(ability_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
@@ -1686,8 +1781,8 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=mini_doc=nullptr;}renderer.reset();}
-void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);battle_page::window_claim_input(false);}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
