@@ -63,9 +63,23 @@ struct SRW64GameHooks {
     bool (*save_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*save_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
     void (*save_frame)(uint8_t*){};
+    // Title overlay screens behind the ring menu (docs/native/native-title-menus.md), by
+    // SRW64TitleScreen: build and per-frame functions. True: the native page did it and
+    // the original does not run this time. title_frame follows every title-overlay frame.
+    bool (*title_build)(uint8_t*, recomp_context*, unsigned screen){};
+    bool (*title_step)(uint8_t*, recomp_context*, unsigned screen, void (*original)(uint8_t*, recomp_context*)){};
+    void (*title_frame)(uint8_t*){};
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};
+};
+// ロード: 801C6F3C / 801C709C medium choice, 801C7328 / 801C783C slots, 801C7A48 load window,
+// 801C7C90 / 801C8074 Controller Pak message. オプション: 801C697C / 801C6B14. サウンドセレクト:
+// 801C86A8 / 801C8724 (list) / 801C89E4 (EXIT); カラオケモード: 801C9888 / 801C9904 / 801C9ADC;
+// 801C83D0 draws either list.
+enum SRW64TitleScreen : unsigned {
+    srw64_title_medium, srw64_title_slots, srw64_title_confirm, srw64_title_message, srw64_title_options,
+    srw64_title_sound, srw64_title_karaoke, srw64_title_sound_exit, srw64_title_karaoke_exit, srw64_title_list_draw,
 };
 extern SRW64GameHooks srw64_game_hooks;
 extern "C" void srw64_original_dialogue_step(uint8_t*, recomp_context*);

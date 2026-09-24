@@ -86,6 +86,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
     # Story text drawn as images, redrawn natively (docs/native/native-title-and-story-images.md).
     target_sources(srw64-gfx-host PRIVATE sprite_text.cpp)
+    # The title screen's ロード, オプション and song lists (docs/native/native-title-menus.md).
+    target_sources(srw64-gfx-host PRIVATE title_page.cpp)
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
     target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
     set_source_files_properties(macos/app_menu.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")

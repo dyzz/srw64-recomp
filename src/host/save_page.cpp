@@ -77,16 +77,21 @@ void hide(const char* reason) {
     active=false;owning=false;pending.clear();current["visible"]=false;record(reason);
 }
 std::string text(const uint8_t* ram,uint16_t id){return dialogue::ui_text(ram,id);}
+// The title's ロード (title_* below) shows the same page with its own two sentences:
+// からロードします。 under the media and 記録を読み込みます。 in the window.
+bool title{};
+constexpr uint16_t text_load_from=0x1E3,text_load_ask=0x1E4;
 void labels(const uint8_t* ram) {
-    const std::pair<const char*,uint16_t> keys[]={{"rom",text_rom},{"pak",text_pak},{"save_to",text_save_to},{"checking",text_checking},{"slot",text_slot},{"level",text_level},
-        {"episode",text_episode},{"clear",text_clear},{"turns",text_turns},{"funds",text_funds},{"overwrite",text_overwrite},{"ask",text_ask},{"yes",text_yes},{"no",text_no}};
+    const std::pair<const char*,uint16_t> keys[]={{"rom",text_rom},{"pak",text_pak},{"save_to",title?text_load_from:text_save_to},{"checking",text_checking},{"slot",text_slot},
+        {"level",text_level},{"episode",text_episode},{"clear",text_clear},{"turns",text_turns},{"funds",text_funds},{"overwrite",title?text_load_ask:text_overwrite},
+        {"ask",text_ask},{"yes",text_yes},{"no",text_no}};
     json l;
     for(const auto& [key,id]:keys)l[key]=text(ram,id);
     current["labels"]=l;
     locale=localization::catalog().locale;
 }
 void open(json page,const uint8_t* ram) {
-    page["visible"]=true;page["serial"]=++serial;
+    page["visible"]=true;page["serial"]=++serial;page["context"]=title?"title":"intermission";
     current=std::move(page);labels(ram);
     active=true;owning=true;pending.clear();
     record("open",{{"screen",current.value("screen",std::string())},{"mode",current.value("mode",0u)}});
@@ -96,16 +101,17 @@ bool original_screens() {
     std::lock_guard lock(mutex);hide("original");return true;
 }
 void republish(json next) {
-    next["visible"]=true;next["serial"]=current["serial"];next["labels"]=current["labels"];
+    next["visible"]=true;next["serial"]=current["serial"];next["labels"]=current["labels"];next["context"]=current["context"];
     current=std::move(next);
 }
 
 json slots_json(const uint8_t* ram);
+json title_slots_json(const uint8_t* ram);
 // A language switch while a screen is open: slot titles and pak messages are
 // rebuilt in the new language along with the labels.
 void relocalize(const uint8_t* ram) {
     if(locale==localization::catalog().locale)return;
-    if(current.value("screen",std::string())=="slots")republish(slots_json(ram));
+    if(current.value("screen",std::string())=="slots")republish(title?title_slots_json(ram):slots_json(ram));
     labels(ram);
 }
 
@@ -153,8 +159,8 @@ bool choice_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_co
 
 // --- Slots (9) -----------------------------------------------------------------------
 
-json slot_json(const uint8_t* ram,unsigned n) {
-    const uint32_t rec=slots+n*slot_size;
+json slot_json(const uint8_t* ram,unsigned n,uint32_t headers=slots) {
+    const uint32_t rec=headers+n*slot_size;
     json s={{"index",n},{"used",read(ram,rec,1)!=0}};
     if(!s["used"].get<bool>())return s;
     std::vector<uint16_t> codes;
@@ -285,8 +291,174 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
     return true;
 }
 
+// --- Title screen ロード (load_0010DA50 major 7) ----------------------------------------
+// docs/native/native-title-menus.md. Substates D_801CC3A7: 3 medium choice (801C709C), 4
+// the checking pause, 7 slots (801C783C), 0xA the load window (801C7A48), 0xE a Controller
+// Pak message (801C8074), 0xC/0xD back to the ring, 0xF the fade into the load itself,
+// which the intermission overlay does (801D8F74). All of these are bytes; the pause
+// countdown D_801CC368 is a half word.
+constexpr uint32_t t_major=0x801CC3A6,t_sub=0x801CC3A7,t_medium=0x801CC359,t_slot=0x801CC358,t_window=0x801CC150,
+    t_pak=0x801CC37C,t_wait=0x801CC368,t_slots=0x801CC158,t_release=0x801C4850;
+constexpr unsigned sound_buzzer=0xBA;
+int title_status{};        // the Controller Pak status the message shows (801C7C90's argument)
+bool title_headers{};      // slot headers read: the Pak paths show the message over empty slots
+bool title_screens_original() {
+    if(settings::native_title_ui())return false;
+    std::lock_guard lock(mutex);if(title)hide("original");return true;
+}
+json title_message_json(const uint8_t* ram,int status) {
+    struct Line{uint16_t id;int x,y;};
+    std::vector<Line> lines;
+    switch(status) {
+        case -1: lines={{0x1B1,118,86},{0x1AA,80,106},{0x1AE,104,126},{0x1B0,72,156}};break;
+        case 2: case 3: lines={{0x1A8,80,86},{0x1AA,80,106},{0x1AE,104,126},{0x1B0,72,156}};break;
+        case 6: lines={{0x1B3,57,86},{0x1B4,187,86},{0x1C0,96,106},{0x1AE,112,126},{0x1B0,80,156}};break;
+        case 7: lines={{0x1A9,96,82},{0x1B8,36,98},{0x1B9,212,98},{0x1B2,120,120},{0x1B5,64,136},{0x1B6,156,136},{0x1B0,72,160}};break;
+        default: lines={{0x1E5,64,86},{0x1E6,176,86},{0x1AD,96,106},{0x1AE,112,126},{0x1B0,80,156}};break;  // no data (-2)
+    }
+    json out=json::array();
+    for(const auto& line:lines)out.push_back({{"text",text(ram,line.id)},{"x",line.x},{"y",line.y}});
+    return out;
+}
+json title_choice_json(const uint8_t* ram) {
+    return {{"screen","choice"},{"cursor",std::min<unsigned>(read(ram,t_medium,1),1)},{"waiting",read(ram,t_sub,1)==4}};
+}
+json title_slots_json(const uint8_t* ram) {
+    const unsigned sub=read(ram,t_sub,1),m=sub==0xE?2:sub==0xA?1:0;
+    json page={{"screen","slots"},{"medium",std::min<unsigned>(read(ram,t_medium,1),1)},{"cursor",std::min<unsigned>(read(ram,t_slot,1),slot_count-1)},{"mode",m},
+        {"window_cursor",std::min<unsigned>(read(ram,t_window,1),1)},{"status",title_status},{"slots",json::array()}};
+    for(unsigned n=0;n<slot_count;++n)page["slots"].push_back(title_headers?slot_json(ram,n,t_slots):json{{"index",n},{"used",false}});
+    if(m==2)page["message"]=title_message_json(ram,title_status);
+    return page;
+}
+void title_open(json page,const uint8_t* ram){title=true;open(std::move(page),ram);}
+bool title_build(uint8_t* ram,recomp_context* ctx,unsigned screen) {
+    switch(screen) {
+        case srw64_title_medium: {
+            if(title_screens_original())return false;
+            std::lock_guard lock(mutex);
+            title_headers=false;title_open(title_choice_json(ram),ram);
+            return true;
+        }
+        case srw64_title_slots: {
+            if(title_screens_original())return false;
+            call(ram,ctx,read_slots,read(ram,t_medium,1),t_slots);
+            write8(ram,t_slot,0);
+            std::lock_guard lock(mutex);
+            title_headers=true;title_status=0;title_open(title_slots_json(ram),ram);
+            return true;
+        }
+        case srw64_title_message: {
+            if(title_screens_original())return false;
+            std::lock_guard lock(mutex);
+            // 801C7C90 also comes straight from a failed Controller Pak load (entry 5).
+            title_status=int8_t(uint8_t(ctx->r4));
+            auto page=title_slots_json(ram);page["mode"]=2u;page["message"]=title_message_json(ram,title_status);
+            if(active && title)republish(std::move(page));else title_open(std::move(page),ram);
+            record("message",{{"status",title_status}});
+            return true;
+        }
+        default: return false;
+    }
+}
+// The Controller Pak pulled out on the slots or the load window: the original's message path.
+bool title_pak_removed(uint8_t* ram,recomp_context* ctx) {
+    if(read(ram,t_medium,1)!=1)return false;
+    const unsigned status=call(ram,ctx,pak_removed);
+    write8(ram,t_pak,uint8_t(status));
+    if(!status)return false;
+    call(ram,ctx,t_release);
+    title_status=int8_t(uint8_t(status));write8(ram,t_sub,0xE);
+    republish(title_slots_json(ram));record("pak-removed");
+    return true;
+}
+unsigned index_of(const std::string& action){return unsigned(std::atoi(action.c_str()+5));}
+bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8_t*,recomp_context*)) {
+    std::unique_lock lock(mutex);
+    if(!active || !title)return false;
+    relocalize(ram);
+    std::string action=std::move(pending);pending.clear();
+    switch(screen) {
+        case srw64_title_medium: {
+            write8(ram,t_pak,0);
+            if(action.starts_with("move:")) {
+                const unsigned index=index_of(action);
+                if(index>1 || index==read(ram,t_medium,1))return true;
+                write8(ram,t_medium,uint8_t(index));republish(title_choice_json(ram));
+                lock.unlock();sound(ram,ctx,sound_move);return true;
+            }
+            if(action=="choose") {
+                // 801C709C's A without its layout 0x56: the pause box is the page's.
+                sound(ram,ctx,sound_confirm);
+                if(read(ram,t_medium,1))write8(ram,t_pak,uint8_t(call(ram,ctx,pak_check,1)));
+                write8(ram,t_sub,4);write16(ram,t_wait,0);
+                republish(title_choice_json(ram));record("choose",{{"medium",read(ram,t_medium,1)}});
+                return true;
+            }
+            if(action=="back"){lock.unlock();feed(ram,ctx,original,button_b);lock.lock();record("back");}
+            return true;
+        }
+        case srw64_title_slots: {
+            if(title_pak_removed(ram,ctx))return true;
+            const unsigned cursor=read(ram,t_slot,1);
+            if(action.starts_with("move:")) {
+                const unsigned index=index_of(action);
+                if(index>=slot_count || index==cursor)return true;
+                write8(ram,t_slot,uint8_t(index));republish(title_slots_json(ram));
+                lock.unlock();sound(ram,ctx,sound_move);return true;
+            }
+            if(action=="choose") {
+                if(!read(ram,t_slots+cursor*slot_size,1)){lock.unlock();sound(ram,ctx,sound_buzzer);return true;}
+                sound(ram,ctx,sound_confirm);
+                write8(ram,t_window,0);write8(ram,t_sub,0xA);
+                republish(title_slots_json(ram));record("window-open",{{"slot",cursor}});
+                return true;
+            }
+            if(action=="back"){lock.unlock();feed(ram,ctx,original,button_b);lock.lock();record("back");}
+            return true;
+        }
+        case srw64_title_confirm: {
+            if(title_pak_removed(ram,ctx))return true;
+            if(action.starts_with("move:")) {
+                const unsigned index=index_of(action);
+                if(index>1 || index==read(ram,t_window,1))return true;
+                write8(ram,t_window,uint8_t(index));republish(title_slots_json(ram));
+                lock.unlock();sound(ram,ctx,sound_move);return true;
+            }
+            if(action=="choose" && read(ram,t_window,1)==0) {
+                // はい: the original sets the load mode (0x12 + slot, 0x14 + slot for the
+                // Controller Pak) and fades out; the intermission overlay loads the save.
+                record("load",{{"slot",read(ram,t_slot,1)},{"medium",read(ram,t_medium,1)}});
+                lock.unlock();feed(ram,ctx,original,0x8000);
+                return true;
+            }
+            if(action=="choose" || action=="cancel") {
+                sound(ram,ctx,sound_cancel);write8(ram,t_sub,7);
+                republish(title_slots_json(ram));record("window-close");
+            }
+            return true;
+        }
+        case srw64_title_message: {
+            // 801C8074 draws only through 801C7C90 (taken above); it polls the pak each frame.
+            const uint16_t button=action=="choose"?0x8000:action=="back"?button_b:0;
+            lock.unlock();feed(ram,ctx,original,button);
+            if(button){lock.lock();record(button==button_b?"back":"recheck",{{"status",title_status}});}
+            return true;
+        }
+        default: return true;
+    }
+}
+void title_frame(uint8_t* ram) {
+    std::lock_guard lock(mutex);
+    if(!active || !title)return;
+    const unsigned major=read(ram,t_major,1),sub=read(ram,t_sub,1);
+    // Back at the ring (0xD) or any other title state: the page closes.
+    if(major!=7 || sub==0xD){hide("left");title=false;}
+}
+
 bool build(uint8_t* ram,recomp_context* ctx,unsigned screen) {
     if(original_screens())return false;
+    {std::lock_guard lock(mutex);title=false;}
     switch(screen) {
         case 1: return choice_build(ram,ctx);
         case 9: return slots_build(ram,ctx);
@@ -294,6 +466,7 @@ bool build(uint8_t* ram,recomp_context* ctx,unsigned screen) {
     }
 }
 bool step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8_t*,recomp_context*)) {
+    if(title)return false;
     switch(screen) {
         case 1: return choice_step(ram,ctx,original);
         case 9: return slots_step(ram,ctx);
@@ -302,6 +475,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8
 }
 void frame(uint8_t* ram) {
     std::lock_guard lock(mutex);
+    if(title)return;
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
 }
 }
@@ -316,6 +490,10 @@ void configure(const std::filesystem::path& directory) {
     auto& h=srw64_game_hooks;
     h.save_build=build;h.save_step=step;h.save_frame=frame;
 }
+bool title_screen_build(uint8_t* ram,recomp_context* ctx,unsigned screen){return title_build(ram,ctx,screen);}
+bool title_screen_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8_t*,recomp_context*)){return title_step(ram,ctx,screen,original);}
+void title_screen_frame(uint8_t* ram){title_frame(ram);}
+void title_overlay_changed(){std::lock_guard lock(mutex);if(title){hide("overlay");title=false;}}
 json state(){std::lock_guard lock(mutex);return current;}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);

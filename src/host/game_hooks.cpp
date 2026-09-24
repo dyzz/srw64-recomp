@@ -121,7 +121,35 @@ void load_001090A0_func_801C5AD0(uint8_t* rdram,recomp_context* ctx) {
 void load_0010DA50_func_801CA9CC(uint8_t* rdram, recomp_context* ctx) {
     if(srw64_game_hooks.intro_step)srw64_game_hooks.intro_step(rdram,ctx);
     srw64_original_intro_main(rdram,ctx);
+    if(srw64_game_hooks.title_frame)srw64_game_hooks.title_frame(rdram);
 }
+// Title screens behind the ring menu: the native pages take the build and step functions.
+#define SRW64_TITLE_BUILD(address, original, screen) \
+    void load_0010DA50_func_##address(uint8_t* rdram, recomp_context* ctx) { \
+        if (srw64_game_hooks.title_build && srw64_game_hooks.title_build(rdram, ctx, screen)) return; \
+        original(rdram, ctx); \
+    }
+#define SRW64_TITLE_STEP(address, original, screen) \
+    void load_0010DA50_func_##address(uint8_t* rdram, recomp_context* ctx) { \
+        if (srw64_game_hooks.title_step && srw64_game_hooks.title_step(rdram, ctx, screen, original)) return; \
+        original(rdram, ctx); \
+    }
+SRW64_TITLE_BUILD(801C6F3C, srw64_original_title_medium_build, srw64_title_medium)
+SRW64_TITLE_STEP(801C709C, srw64_original_title_medium_step, srw64_title_medium)
+SRW64_TITLE_BUILD(801C7328, srw64_original_title_slots_build, srw64_title_slots)
+SRW64_TITLE_STEP(801C783C, srw64_original_title_slots_step, srw64_title_slots)
+SRW64_TITLE_STEP(801C7A48, srw64_original_title_confirm_step, srw64_title_confirm)
+SRW64_TITLE_BUILD(801C7C90, srw64_original_title_message_build, srw64_title_message)
+SRW64_TITLE_STEP(801C8074, srw64_original_title_message_step, srw64_title_message)
+SRW64_TITLE_BUILD(801C697C, srw64_original_title_options_build, srw64_title_options)
+SRW64_TITLE_STEP(801C6B14, srw64_original_title_options_step, srw64_title_options)
+SRW64_TITLE_BUILD(801C86A8, srw64_original_title_sound_build, srw64_title_sound)
+SRW64_TITLE_BUILD(801C9888, srw64_original_title_karaoke_build, srw64_title_karaoke)
+SRW64_TITLE_BUILD(801C83D0, srw64_original_title_list_draw, srw64_title_list_draw)
+SRW64_TITLE_STEP(801C8724, srw64_original_title_sound_step, srw64_title_sound)
+SRW64_TITLE_STEP(801C89E4, srw64_original_title_sound_exit_step, srw64_title_sound_exit)
+SRW64_TITLE_STEP(801C9904, srw64_original_title_karaoke_step, srw64_title_karaoke)
+SRW64_TITLE_STEP(801C9ADC, srw64_original_title_karaoke_exit_step, srw64_title_karaoke_exit)
 void resident_func_8008D748(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64_game_hooks.dialogue_step || !srw64_game_hooks.dialogue_step(rdram, ctx))
         srw64_original_dialogue_step(rdram, ctx);

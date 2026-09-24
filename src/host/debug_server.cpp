@@ -13,6 +13,7 @@
 #include "ability_page.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
+#include "title_page.hpp"
 #include "mini_stage.hpp"
 #include "presentation_settings.hpp"
 #include "presentation/image_mode.hpp"
@@ -120,7 +121,7 @@ json status(const json& params) {
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"notices",notices::recent()}};
+        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};
@@ -207,6 +208,12 @@ json settings(const json& params) {
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"name_entry_ui must be native or original");
         on_window([&]{settings::set_native_name_entry_ui(ui=="native");return json(nullptr);});
         done["name_entry_ui"]=ui;
+    }
+    if(params.contains("title_ui")) {
+        const auto ui=params["title_ui"].get<std::string>();
+        if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"title_ui must be native or original");
+        on_window([&]{settings::set_native_title_ui(ui=="native");return json(nullptr);});
+        done["title_ui"]=ui;
     }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
