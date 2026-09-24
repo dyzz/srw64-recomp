@@ -89,7 +89,13 @@ struct Painter {
         for(int right:{0,1})for(int bottom:{0,1}) {
             const double cx=x+right*w,cy=y+bottom*h,dx=right?-1:1,dy=bottom?-1:1;
             stroke(cx+dx*13,cy,cx+dx*3,cy,1.3);
-            stroke(cx+dx*3,cy,cx,cy+dy*3,1.3);
+            // a rounded corner, like the frame's own corners
+            constexpr double quarter_turn=1.5707963267948966;
+            for(int i=0;i<6;++i) {
+                const double a=i*quarter_turn/6,b=(i+1)*quarter_turn/6;
+                stroke(cx+dx*3*(1-std::sin(a)),cy+dy*3*(1-std::cos(a)),
+                       cx+dx*3*(1-std::sin(b)),cy+dy*3*(1-std::cos(b)),1.3);
+            }
             stroke(cx,cy+dy*3,cx,cy+dy*11,1.3);
         }
         for(int i=0;i<6;++i)fill(box.x-4,box.y-13+i,i<3?i+1:6-i,1,.41,.83,1);
