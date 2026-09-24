@@ -8405,7 +8405,7 @@
     {
       "key": "base:t00_01541",
       "source_sha256": "d62f6afcde4fcd60df5ae09b6c78afa50c9e863a7bc09db62f4bb9ddd1e12728",
-      "target": "维斯巴<END>",
+      "target": "VSBR<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17666,7 +17666,7 @@
     {
       "key": "base:t00_02870",
       "source_sha256": "1ad8a9c7fcbd47593804620dfc068cbd6b3eaa8ed6a7b549f0d88a241303cd34",
-      "target": "射维斯巴B<END>",
+      "target": "射VSBRB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
