@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from srw64_native.assets import compile_art
+from srw64_native.assets import compile_art, portrait_lookup
 from srw64_native.catalog import compile_locale, sha, signature, text_key
 from srw64_native.profile import load_profile
 
@@ -118,3 +118,23 @@ class NativeArtTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Portrait pixels changed"):
                 compile_art(root, manifest, root / "failed")
             self.assertFalse((root / "failed").exists())
+
+    def test_page_portraits_pick_base_or_silhouette(self):
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as tmp:
+            art = Path(tmp) / "art"
+            (art / "portraits").mkdir(parents=True)
+            face = Image.new("RGBA", (8, 8), (200, 150, 100, 0))
+            face.paste((200, 150, 100, 255), (2, 2, 6, 6))
+            face.save(art / "portraits/portrait-9.png")
+            (art / "srw64-portraits-hd.json").write_text(json.dumps({
+                "silhouette": {"palette": 609, "rgb": [41, 41, 41]},
+                "images": [{"image": 9, "palette": 309, "file": "portraits/portrait-9.png"}]}))
+            lookup = portrait_lookup(art, Path(tmp) / "pages")
+            self.assertEqual(lookup(9, 309), str(art / "portraits/portrait-9.png"))
+            self.assertIsNone(lookup(9, 392))
+            self.assertIsNone(lookup(10, 310))
+            filled = Image.open(lookup(9, 609)).convert("RGBA")
+            self.assertEqual(filled.getpixel((3, 3)), (41, 41, 41, 255))
+            self.assertEqual(filled.getpixel((0, 0))[3], 0)
+            self.assertIsNone(portrait_lookup(Path(tmp) / "missing", Path(tmp) / "x")(9, 309))

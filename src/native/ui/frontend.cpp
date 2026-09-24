@@ -24,6 +24,7 @@
 #include "debug_protocol.hpp"
 #include "modal_input.hpp"
 #include "presentation/image_mode.hpp"
+#include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <condition_variable>
 #include <deque>
@@ -74,6 +75,7 @@ struct Banner {std::string text;double until;};
 std::deque<Banner> banners;
 int pixels_w{},pixels_h{};
 float pixel_ratio=1;
+float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
 std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
@@ -246,6 +248,56 @@ std::string image(const std::string& path) {
     const auto name="portrait-"+std::to_string(images.size());
     renderer->queue_image_from_bytes_file(name,{std::istreambuf_iterator<char>(file),{}});images[path]=name;return name;
 }
+// Page portraits: the whole HD image while the applied image mode is HD and the asset
+// carries one (docs/native/native-portraits-hd.md), otherwise the ROM original.
+bool hd_portraits() {return presentation::image_mode.current()==1;}
+std::string portrait_path(const json& art) {
+    return hd_portraits() && art.contains("hd") ? art.at("hd").get<std::string>() : art.at("path").get<std::string>();
+}
+// The HD portraits are 768 px and the pages show them at 56-160 dp. RmlUi samples
+// without mipmaps, so a straight minification aliases; resample once per displayed
+// width with an area filter (premultiplied, so edges keep their colour). Images at or
+// below the width, such as the 96 px originals, load unchanged.
+std::string image(const std::string& path,int width) {
+    if(path.empty() || width<=0)return image(path);
+    const auto key=path+"@"+std::to_string(width);
+    if(auto found=images.find(key);found!=images.end())return found->second;
+    int w=0,h=0,n=0;
+    uint8_t* data=stbi_load(path.c_str(),&w,&h,&n,4);
+    if(!data)throw std::runtime_error("Cannot load shared UI portrait: "+path);
+    if(width>=w){stbi_image_free(data);return images[key]=image(path);}
+    const int ow=width,oh=std::max(1,int(float(h)*width/w+.5f));
+    std::vector<float> row(size_t(ow)*h*4),out(size_t(ow)*oh*4);
+    const float sx=float(w)/ow,sy=float(h)/oh;
+    auto premultiplied=[&](int x,int y,int c){const uint8_t* p=data+(size_t(y)*w+x)*4;return c==3?p[3]/255.f:p[c]/255.f*p[3]/255.f;};
+    for(int y=0;y<h;++y)for(int ox=0;ox<ow;++ox){
+        const float x0=ox*sx,x1=x0+sx;
+        for(int c=0;c<4;++c){
+            float sum=0;
+            for(int x=int(x0);x<w && x<x1;++x)sum+=premultiplied(x,y,c)*(std::min(x1,x+1.f)-std::max(x0,float(x)));
+            row[(size_t(y)*ow+ox)*4+c]=sum/sx;
+        }
+    }
+    stbi_image_free(data);
+    for(int oy=0;oy<oh;++oy)for(int ox=0;ox<ow;++ox){
+        const float y0=oy*sy,y1=y0+sy;
+        for(int c=0;c<4;++c){
+            float sum=0;
+            for(int y=int(y0);y<h && y<y1;++y)sum+=row[(size_t(y)*ow+ox)*4+c]*(std::min(y1,y+1.f)-std::max(y0,float(y)));
+            out[(size_t(oy)*ow+ox)*4+c]=sum/sy;
+        }
+    }
+    std::vector<char> bytes(size_t(ow)*oh*4);
+    for(size_t i=0;i<size_t(ow)*oh;++i){
+        const float a=out[i*4+3];
+        for(int c=0;c<3;++c)bytes[i*4+c]=char(std::clamp(int((a>0?out[i*4+c]/a:0)*255+.5f),0,255));
+        bytes[i*4+3]=char(std::clamp(int(a*255+.5f),0,255));
+    }
+    const auto name="portrait-"+std::to_string(images.size());
+    renderer->queue_image_from_bytes_rgba32(name,bytes,uint32_t(ow),uint32_t(oh));
+    return images[key]=name;
+}
+int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 
 void settings_sync() {
     if(!settings_open){document_close(settings_doc);settings_stamp.clear();return;}
@@ -285,7 +337,7 @@ void link_sync() {
         for(unsigned i=0;i<3;++i)if(!next.joined[i] && !next.scheduled[i]){link_focus=i;break;}
     }
     link_request=next;
-    std::string stamp=std::to_string(next.serial)+localization::catalog().locale+std::to_string(link_focus)+std::to_string(link_waiting);
+    std::string stamp=std::to_string(next.serial)+localization::catalog().locale+std::to_string(link_focus)+std::to_string(link_waiting)+std::to_string(hd_portraits());
     for(bool value:ticked)stamp+=value?'1':'0';
     if(link_doc && link_stamp==stamp)return;
     document_close(link_doc);link_stamp=stamp;
@@ -293,7 +345,7 @@ void link_sync() {
     const char* keys[]={"f91","goshogun","zambot"};
     for(unsigned i=0;i<3;++i){
         std::string content;
-        for(const auto& path:next.portraits[i]){content+="<img src='"+image(path)+"'/>";}
+        for(const auto& path:hd_portraits()?next.portraits_hd[i]:next.portraits[i]){content+="<img src='"+image(path,dp_pixels(86))+"'/>";}
         content+="<h2>"+label(std::string("link_series_")+keys[i])+"</h2><p>"+label(std::string("link_lead_")+keys[i])+"</p><p>"+label(std::string("link_units_")+keys[i])+"</p><p>"+label(std::string("link_crew_")+keys[i])+"</p>";
         if(next.joined[i] || next.scheduled[i] || ticked[i])content+="<p>"+label(next.joined[i]?"link_joined":next.scheduled[i]?"link_scheduled":"link_ticked")+"</p>";
         body+=button("link:"+std::to_string(i),content,ticked[i] || i==link_focus,link_waiting || next.joined[i] || next.scheduled[i],"card");
@@ -370,7 +422,7 @@ std::string battle_unit(const json& c,bool left) {
 std::string battle_pilot(const json& c,bool left) {
     const std::string side=left?"left":"right";
     std::string body="<div id='battle-pilot-"+side+"' class='bp-side bp-pilot "+side+"'><div class='bp-pilot-head'>";
-    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(face.at("path")))+"'/>";
+    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(56)))+"'/>";
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div><div class='battle-spirits'>";
@@ -776,7 +828,7 @@ void parts_sync() {
 void swap_sync() {
     const auto next=swap_page::state();swap_request=next;
     if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
     if(swap_doc && swap_stamp==stamp)return;
     document_close(swap_doc);swap_stamp=stamp;
     const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -797,7 +849,7 @@ void swap_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const auto yes_no=[&](const std::string& prefix,unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
@@ -880,7 +932,7 @@ void swap_sync() {
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
     if(save_doc && save_stamp==stamp)return;
     document_close(save_doc);save_stamp=stamp;
     const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -899,7 +951,7 @@ void save_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const auto yes_no=[&](unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,std::string("<button id='save-yes' class='")+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='save-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"save-choice");
@@ -970,7 +1022,7 @@ void save_sync() {
 void ability_sync() {
     const auto next=ability_page::state();ability_request=next;
     if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
     if(ability_doc && ability_stamp==stamp)return;
     document_close(ability_doc);ability_stamp=stamp;
     const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -990,7 +1042,7 @@ void ability_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(owner.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const std::string screen=next.value("screen",std::string());
     std::string body="<div class='im-root' id='ability' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
@@ -1105,7 +1157,7 @@ void battle_sync() {
         return;
     }
     document_close(original_doc);original_stamp.clear();
-    const auto stamp=next.dump()+localization::catalog().locale;
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits());
     if(battle_doc && battle_stamp==stamp)return;
     document_close(battle_doc);battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
@@ -1332,11 +1384,13 @@ bool held() {
 }
 void sync() {
     physical_held=held();
-    context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(pixel_ratio*std::min({1.f,float(pixels_w)/pixel_ratio/960.f,float(pixels_h)/pixel_ratio/720.f}));input.set_scale(pixel_ratio);
+    ui_density=pixel_ratio*std::min({1.f,float(pixels_w)/pixel_ratio/960.f,float(pixels_h)/pixel_ratio/720.f});
+    context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
     const auto language=localization::snapshot();localization::Scope scope(language);
     auto request=names::request();
-    for(auto& choice:request.choices)for(auto& person:choice.portraits)for(auto& path:person)path=image(path);
-    for(auto& person:request.portraits)for(auto& path:person)path=image(path);
+    // Name page (name_page.cpp): choice cards show 72 dp portraits, the editor 160 dp.
+    for(auto& choice:request.choices)for(auto& person:choice.portraits)for(auto& path:person)path=image(path,dp_pixels(72));
+    for(auto& person:request.portraits)for(auto& path:person)path=image(path,dp_pixels(160));
     name_page->set_hd(presentation::image_mode.current()==1);
     // Catalog owns all labels. No duplicate translation table in the frontend.
     name_page->sync(request,language->ui_labels(),language->locale);

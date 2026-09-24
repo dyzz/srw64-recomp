@@ -17,7 +17,7 @@ from .catalog import sha
 LINK_FACES = ((41, 230), (133, 131, 132), (152, 151, 153))
 
 
-def prepare_name_assets(root: Path, rom: bytes, output: Path, *, include_hd: bool = True) -> dict:
+def prepare_name_assets(root: Path, rom: bytes, output: Path, *, include_hd: bool = True, hd_portrait=None) -> dict:
     table = ResourceTable(rom)
     # 801C3398 selects these face-table indices for the four protagonist routes.
     route_offset = 0x1090A0 + 0x801C6BF0 - 0x801C2600
@@ -63,6 +63,8 @@ def prepare_name_assets(root: Path, rom: bytes, output: Path, *, include_hd: boo
             hd = output / f"face-{face}-hd.png"
             hd.write_bytes(pixels)
             row.update(hd=str(hd), hd_sha256=sha(hd.read_bytes()))
+        elif hd_portrait and (whole := hd_portrait(image_id, palette_id)):
+            row["hd"] = whole  # the whole HD portrait set (native_portrait.cpp)
         portraits[str(face)] = row
     result = {"schema": "srw64.name-entry-assets.v1", "portraits": portraits,
               "route_faces": [list(faces[:4]), list(faces[4:])],

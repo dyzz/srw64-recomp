@@ -17,8 +17,9 @@ struct Request {
     bool visible{};                   // up and waiting for an answer
     std::array<bool,3> joined{};      // series order of link::series
     std::array<bool,3> scheduled{};
-    // Portrait paths per series, the lead pilot first (name-entry assets, original art).
-    std::array<std::vector<std::string>,3> portraits;
+    // Portrait paths per series, the lead pilot first (name-entry assets, original art),
+    // and the same with whole HD portraits where the assets have them.
+    std::array<std::vector<std::string>,3> portraits, portraits_hd;
 };
 void configure(const std::filesystem::path& directory);
 Request request();

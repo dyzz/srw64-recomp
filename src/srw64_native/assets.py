@@ -16,6 +16,39 @@ def inside(root: Path, relative: str) -> Path:
     return path
 
 
+def portrait_lookup(art_directory: Path, output: Path):
+    """(image, palette) -> the whole HD portrait the native pages show, or None.
+
+    The base palette uses the compiled image; the silhouette palette gets a copy
+    filled with its grey, made once per image. Other palettes stay original."""
+    spec_path = art_directory / "srw64-portraits-hd.json"
+    if not spec_path.exists():
+        return lambda image, palette: None
+    spec = json.loads(spec_path.read_text())
+    rows = {row["image"]: row for row in spec["images"]}
+    silhouette, made = spec["silhouette"], {}
+
+    def lookup(image: int, palette: int):
+        row = rows.get(image)
+        if row is None:
+            return None
+        if palette == row["palette"]:
+            return str(art_directory / row["file"])
+        if palette != silhouette["palette"]:
+            return None
+        if image not in made:
+            from PIL import Image
+            output.mkdir(parents=True, exist_ok=True)
+            source = Image.open(art_directory / row["file"]).convert("RGBA")
+            filled = Image.new("RGBA", source.size, tuple(silhouette["rgb"]) + (0,))
+            filled.putalpha(source.getchannel("A"))
+            path = output / f"portrait-{image}-silhouette.png"
+            filled.save(path)
+            made[image] = str(path)
+        return made[image]
+    return lookup
+
+
 def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if manifest.get("schema") != "srw64.art-pack.v1" or manifest.get("locale") != "neutral":
         raise ValueError("Image toggle accepts only a language-neutral art pack")
