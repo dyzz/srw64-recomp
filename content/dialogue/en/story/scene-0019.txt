@@ -382,7 +382,7 @@ Prof. Yumi asked me for.”
 @20363 Dr. Hazuki · 葉月博士
 > 「うむ、ジェットスクランダーと
 >  ダイアナンAだ」
-“Yes, the Jet Scrander and the Dianan A.”
+“Yes, the Jet Scrander and the Diana A.”
 
 @20364 Koji · 甲児
 > 「……なんだよ、それ」
@@ -417,16 +417,16 @@ testing it out!”
 
 @20369 Sayaka · さやか
 > 「博士、ダイアナンAのほうは?」
-“Doctor, what about the Dianan A?”
+“Doctor, what about the Diana A?”
 
 @20370 Dr. Hazuki · 葉月博士
 > 「アフロダイAのパワーアップ版らしい。
 >  コクピットシステムと操縦方法が
-“It's apparently a powered-up version of the Aphrodai A. The cockpit system and controls
+“It's apparently a powered-up version of the Aphrodite A. The cockpit system and controls
 ---
 >  アフロダイと変わるので、君もテストを
 >  しておいたほうがいいだろう」
-differ from the Aphrodai, so you'd best test it out as well.”
+differ from the Aphrodite, so you'd best test it out as well.”
 
 @20371 Sayaka · さやか
 > 「わかりました」

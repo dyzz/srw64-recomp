@@ -2769,7 +2769,7 @@
     "old": "卡拉·苏恩",
     "new": "姬拉·森"
    },
-   "gate": true,
+   "gate": false,
    "sections": [
     "character_list",
     "pilot_full_names"
@@ -6796,6 +6796,77 @@
    "gate": false,
    "sections": [
     "story"
+   ]
+  },
+  {
+   "ja": [
+    "アフロダイ",
+    "アフロダイA"
+   ],
+   "en": {
+    "old": "Aphrodai",
+    "new": "Aphrodite"
+   },
+   "gate": true,
+   "sections": [
+    "story",
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ダイアナン",
+    "ダイアナンA",
+    "ダイアナンミサイル"
+   ],
+   "en": {
+    "old": "Dianan",
+    "new": "Diana"
+   },
+   "gate": true,
+   "sections": [
+    "story",
+    "units",
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "アフロダイA"
+   ],
+   "en": {
+    "old": "Aphrodai A",
+    "new": "Aphrodite A"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ダイアナンA"
+   ],
+   "en": {
+    "old": "Dianan A",
+    "new": "Diana A"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ダイアナンミサイル"
+   ],
+   "en": {
+    "old": "Dianan Missile",
+    "new": "Diana Missile"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
    ]
   }
  ]

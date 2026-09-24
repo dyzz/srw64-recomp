@@ -364,6 +364,15 @@ v1 批次的机械检查一度报出 94 条错误，大多是检查器按单页�
 
 原创对手的英文保留现译 Kurtz Forneus、Rish Griswell、Ehrlich Stasen，因为社区拼法是误读。
 
+**英文对照 Akurasu（2026-09-24）**：用户让参考 Akurasu 的 SRW64 页面，并交给 Claude 评估。
+- 抓取 58 个页面，得到 809 组日英对照。和我们的英文比，约 600 组相同。
+- 另外逐条对照机战 30／T／V／X／DD 官方英文版里的写法，对照页见 https://claude.ai/artifact/6uHNPqtvUM5M6gvHUy2PVB 。
+- 精神指令：Akurasu 的 SRW64 页面是早年玩家叫法（Sure-Hit、Guts、Awaken）和另一套旧叫法（Strike、Alert、Luck、Tire）。我们用的是 T／30 官方叫法，保留。
+- 人名机名：Akurasu 的不同写法多是带长音的罗马字，或我们已按官方写法改过的，保留。
+- 关卡标题：Akurasu 偏直译，保留我们的。
+- 只改 4 条：アフロダイA Aphrodite A、ダイアナンA Diana A、ダイアナンミサイル Diana Missile、高性能レーダー High-Fidelity Radar（官方 T／X）。
+- 数据和脚本在 `assets/translation-runs/official-names/akurasu/`。
+
 ## 7. 译文规范（提示词里已写明）
 
 - 忠实、自然、口语化，符合人物身份与语气；不增删信息，不加注释。

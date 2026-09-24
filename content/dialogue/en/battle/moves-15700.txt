@@ -69,7 +69,7 @@
 
 @15716 Naida · ナイーダ
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @15717 Naida · ナイーダ
 > 「フィンガーミサイル!」
@@ -298,7 +298,7 @@
 
 @15772 Kirika · キリカ
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @15773 Kirika · キリカ
 > 「フィンガーミサイル!」
