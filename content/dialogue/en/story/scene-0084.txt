@@ -1,0 +1,2838 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@41066 Amuro · アムロ
+> 「“グラドスの刻印”の発動から
+>  3日か……
+“It's been three days since the ‘Mark of Grados’ was activated...
+---
+>  いったいどうなっているんだ……?」
+What on earth is going on...?”
+
+@41067 Quattro · クワトロ
+> 「ああ……例の勧告のあと、
+>  銀河帝国軍が地上から
+“Yeah... After that ultimatum, the Galactic Empire forces pulled back from the surface.
+---
+>  一時的とはいえ全面撤退した
+>  のはいいが、その後の動きが見えんな」
+Temporarily, at least. But we can't see what they're doing now.”
+
+@41068 Koji · 甲児
+> 「撤退してくれるなんてよ、
+>  “刻印”の発動は
+“Hey, if they're pulling out, that means the ‘Mark’ worked better than we expected.
+---
+>  予想以上の効果をあげたんだ。
+>  いいじゃないか」
+Isn't that a good thing?”
+
+@41069 Roux · ルー
+> 「あーもぅ、おバカね。それがなんでだか
+>  わからないから
+“Oh, you idiot. That's exactly why we don't know what's going on,
+---
+>  不安だっていってんじゃないの」
+and that's why we're worried.”
+
+@41070 Hayato · ハヤト
+> 「そうだな。撤退したとはいっても、
+>  連中はもうもどれない
+“She's right. Even if they've withdrawn, they can't just go back now.
+---
+>  いつまた攻めてくるか……」
+Who knows when they'll attack again...”
+
+@41071 Daisuke · 大介
+> 「できることなら戦いをやめてほしいが……
+>  無理だろうな」
+“If it were possible, I'd want them to stop fighting... but I doubt that'll happen.”
+
+@41072 Amuro · アムロ
+> 「アラン、トレーズの方はどうだ?」
+“Alan, what about Treize?”
+
+@41073 Alan · アラン
+> 「どうやら宇宙へあがる気らしい。
+>  帝国軍は宇宙でも
+“It seems he intends to head up into space. The Imperial forces have
+---
+>  戦闘を停止しているからな。
+>  OZ宇宙軍の残存部隊を
+halted combat in space as well. He appears to be gathering the
+---
+>  集結させているようだ」
+remaining OZ space forces.”
+
+@41074 Ark · アーク（按段落 3DD1）
+> 「トレーズが宇宙へあがる?
+>  帝国軍を追撃しようというのか…
+“Treize is going into space? Is he planning to pursue the Imperial forces...
+---
+>  まさかホワイトファングと
+>  やるつもりじゃ……」
+Surely he's not going to take on White Fang...”
+
+@41075 Selain · セレイン（按段落 3DD2）
+> 「……トレーズが銀河帝国軍を
+>  追撃するつもりとは思えん
+“...I can't believe Treize intends to pursue the Galactic Empire forces.
+---
+>  まさかとは思うが……」
+I hope I'm wrong, but...”
+
+@41076 Roux · ルー
+> 「ホワイトファングを
+>  叩くつもりだっていうの!?」
+“You mean he's going to strike at White Fang?!”
+
+@41077 Brad · ブラッド（按段落 3DD3）
+> 「どういうつもりだ、あいつは? まさかよ、
+>  ゼクスとやるつもりなんじゃないだろうな」
+“What's that guy thinking? Don't tell me he's planning to take on Zechs.”
+
+@41078 Manami · マナミ（按段落 3DD4）
+> 「トレーズが宇宙へ……
+>  どういうことかしら」
+“Treize is going into space... What does that mean?”
+
+@41079 Lawrence · ローレンス
+> 「……もしやとは思いますが、
+>  リーブラへ向かうのではありませんかな?」
+“...I may be mistaken, my lady, but might he not be heading for Libra?”
+
+@41080 Amuro · アムロ
+> 「いくらなんでもそんなばかなことは……」
+“Even so, that's just too absurd...”
+
+@41081 Quattro · クワトロ
+> 「いや、奴ならやりかねんな。
+>  トレーズ・クシュリナーダは
+“No, he's quite capable of it. Treize Khushrenada is a man whose thoughts
+---
+>  何を考えているのかわからん男だ。
+>  それくらいはやるかもしれん」
+no one can fathom. He just might do it.”
+
+@41082 Koji · 甲児
+> 「冗談じゃないぜ。
+>  せっかく銀河帝国軍が
+“You've gotta be kidding. The Galactic Empire forces have finally
+---
+>  一時的とはいえ戦闘を
+>  停止してるってのに
+stopped fighting, even if only for now, and now
+---
+>  まぁた地球人同士で
+>  やりあうつもりだってのかよ!?」
+he wants Earthlings to fight each other again?!”
+
+@41083 Show · ショウ
+> 「でも、確かにあの男なら
+>  やるかもしれない」
+“But... knowing that man, he really might do it.”
+
+@41084 Chum · チャム
+> 「どうしてそう思うの、ショウ?」
+“Why do you think so, Show?”
+
+@41085 Show · ショウ
+> 「……うまくはいえないな。
+>  ただトレーズを見ていると
+“...It's hard to put into words. But watching Treize,
+---
+>  可能性はあるんじゃないかって
+>  気がするんだ」
+I get the feeling it's possible.”
+
+@41086 Amuro · アムロ
+> 「トレーズめ……どういうつもりなんだ」
+“Treize... What is he thinking?”
+
+@41087 Alan · アラン
+# 检查提示：未用必用译名：銀河帝国→Galactic Empire
+> 「ここでせんさくしていても始まらん。
+>  銀河帝国軍の
+“There's no point speculating here. I'm also concerned about the Galactic
+---
+>  動向も気になる。
+>  ここは我々も宇宙へあがるか……」
+Empire's movements. Perhaps we should head into space as well...”
+
+@41088 Ryoma · リョウ
+> 「賛成だ。どのみち奴らが
+>  地上から引きあげた以上
+“I agree. Since they've pulled back from the surface anyway,
+---
+>  決着は宇宙でつけることに
+>  なるんじゃないのか?」
+the decisive battle will be in space, won't it?”
+
+@41089 Ark · アーク（按段落 3DD1）
+> 「ああ、そう思うな。アムロさん、
+>  俺たちも宇宙へあがりましょう
+“Yeah, I think so. Amuro, let's head into space too.
+---
+>  その方が状況に対応できる」
+That way we can respond to the situation better.”
+
+@41090 Selain · セレイン（按段落 3DD2）
+> 「確かにな。そのほうが
+>  対応もしやすいか」
+“True. That would make it easier to respond.”
+
+@41091 Brad · ブラッド（按段落 3DD3）
+> 「フッ、そいつは正論ってやつだな。
+>  いいぜ、俺たちも
+“Heh, that's what you'd call sound reasoning. Fine, let's head
+---
+>  宇宙へあがろうじゃないか」
+into space ourselves.”
+
+@41092 Manami · マナミ（按段落 3DD4）
+> 「そうね……そうかもしれない。
+>  あたしたちも宇宙へあがりましょう」
+“You're right... maybe so. Let's head into space too.”
+
+@41093 Amuro · アムロ
+> 「わかった。アラン、ブライトや
+>  他のみんなにも話をしてこよう
+“Understood. Alan, I'll go talk to Bright and the others.
+---
+>  大尉、それでいいか?」
+Captain, is that all right with you?”
+
+@41094 Quattro · クワトロ
+> 「私はかまわんよ」
+“I don't mind.”
+
+@41095 Gorman · ゴーマン
+> 「陛下、報告いたします。
+>  例の地球人どもの通信の
+“Your Majesty, I have a report. The contents of that Earthling
+---
+>  内容が兵士たちに伝わり、
+>  各部隊内で混乱が
+transmission have spread among the soldiers, and confusion is
+---
+>  起きております。一部では
+>  脱走兵と、それを制止
+arising within the various units. In some cases, fighting has broken
+---
+>  しようとした士官との間で
+>  戦闘が発生した模様です」
+out between deserters and the officers trying to stop them.”
+
+@41096 Wahl · ワール
+> 「……なんということだ。
+>  しかしズール皇帝
+“...This is terrible. But Emperor Zuul,
+---
+>  奴らのいっていたことは
+>  真実なのでしょうか? 我々は
+is what they said really true? Have we truly
+---
+>  本当に本国への帰還の道を
+>  断たれてしまったのですか!?」
+lost the way back to our homeworld?!”
+
+@41097 Blacky · ブラッキー
+> 「そ、それは実証済みです、
+>  ワール司令。試しにいくつかの
+“Th-that has been confirmed, Commander Wahl. We sent several
+---
+>  艦艇を本国へワープさせましたが、
+>  いまだ返答がなく……」
+ships to warp back to the homeworld on a test, but there's still been no response...”
+
+@41098 Emperor Zuul · ズール皇帝
+> 「……地球人どもめ……ワール、
+>  貴様たちの作戦の
+“...Those Earthlings... Wahl, you understand that this is because
+---
+>  失敗のせいだということは、
+>  理解しておるだろうな
+your operation failed, don't you? Now you see why I was so
+---
+>  ワシがあれほど気にしておったわけが、
+>  これでわかったか」
+concerned about it.”
+
+@41099 Wahl · ワール
+> 「皇帝陛下、では我々は……」
+“Your Majesty, then what becomes of us...?”
+
+@41100 Emperor Zuul · ズール皇帝
+> 「案ずる必要はない。ワシがおれば
+>  そこが銀河帝国の本拠地
+“There's no need to worry. Wherever I am is the Galactic Empire's base.
+---
+>  これからは地球を第2の
+>  ギシン星とすればよいのだ」
+From now on, we need only make Earth our second Gishin.”
+
+@41101 Gorman · ゴーマン
+> 「しかし陛下……国へもどれぬとなった
+>  兵士たちの士気はいちじるしく
+“But Your Majesty... The morale of the soldiers who can no longer return home
+---
+>  低下しております
+>  脱走兵、反乱兵は
+has fallen drastically. Deserters and rebels are
+---
+>  増加していくと予想されますが……」
+expected to increase, but...”
+
+@41102 Emperor Zuul · ズール皇帝
+> 「愚か者どもめ。粛清せよ。
+>  ワシの言葉に従えぬ者には
+“Fools. Purge them. Those who will not obey my words
+---
+>  死あるのみだ」
+have only death awaiting them.”
+
+@41103 Janera · ジャネラ
+> 「お、お待ちください陛下!
+>  それはあまりにも……」
+“P-please wait, Your Majesty! That is simply too...”
+
+@41104 Emperor Zuul · ズール皇帝
+> 「黙れ! くだらぬことでうろたえおって。
+>  お前たちはこのワシのいうとおりにして
+“Silence! You panic over such trifles. You need only do as I say.
+---
+>  おればよいのだ。これ以上ワシの手を
+>  わずらわすことは許さん。兵士どもが
+I will not permit you to trouble me any further. If the soldiers say they cannot fight,
+---
+>  戦えぬというのなら、戦えるようにして
+>  やるだけのこと。よいか、兵士どもには
+then I will simply make them able to fight. Understand? Make the soldiers fight
+---
+>  そのちっぽけな命が果てるまで
+>  戦わせるのだ! ワーッハハハハーッ!!」
+until their pitiful lives are extinguished! Wahahahaha!!”
+
+@41105 Beltorchika · ベルトーチカ
+> 「ピースミリオン確認。
+>  ランデブーは予定通りです」
+“Peacemillion confirmed. Rendezvous is on schedule.”
+
+@41106 Bright · ブライト
+> 「よし、接舷用意だ」
+“All right, prepare to dock.”
+
+@41107 Howard · ハワード
+> 「ようやく宇宙にもどってきたか。
+>  それにしても“刻印”といったか
+“So we've finally made it back to space. Still, that thing called the ‘Mark,’
+---
+>  あれが宇宙に出てきた時には
+>  この世の終わりかと思ったわい」
+when it came out into space, I thought it was the end of the world.”
+
+@41108 Bright · ブライト
+> 「ピースミリオンは無事だったようですね
+>  しかしあの乗員たちはいったい……」
+“It seems the Peacemillion made it through. But who on earth are those crew members...”
+
+@41109 Howard · ハワード
+> 「破壊されたコロニーからの
+>  脱出者たちのシャトルをひろってな
+“We picked up shuttles of survivors from the destroyed colonies.
+---
+>  放り出すわけにもいかんだろう」
+We couldn't very well just cast them out.”
+
+@41110 Quatre · カトル
+> 「……あれは、まさか……トロワ!?」
+“...That's, no way... Trowa?!”
+
+@41111 Duo · デュオ
+> 「なんだって? あいつが
+>  ピースミリオンにいるのか?」
+“What? He's on the Peacemillion?”
+
+@41112 Hilde · ヒルデ
+> 「その人もデュオの仲間なの?」
+“Is he a friend of yours too, Duo?”
+
+@41113 Duo · デュオ
+> 「ああ……まぁ、そんなところだ。しかし
+>  カトル、見間違いじゃないのか?」
+“Yeah... well, something like that. But Quatre, are you sure you saw him right?”
+
+@41114 Quatre · カトル
+> 「今のは間違いありません。
+>  トロワ、生きていたんだ……!」
+“There's no mistake. Trowa, you were alive...!”
+
+@41115 Quatre · カトル
+> 「トロワッ!」
+“Trowa!”
+
+@41116 Trowa · トロワ
+> 「……カ……トル……?」
+“...Qua...tre...?”
+
+@41117 Quatre · カトル
+> 「トロワ、無事だったんだね!
+>  よかった……」
+“Trowa, you're safe! Thank goodness...”
+
+@41118 Trowa · トロワ
+> 「うっ……」
+“Ugh...”
+
+@41119 Quatre · カトル
+> 「トロワ……?」
+“Trowa...?”
+
+@41120 Cathrine · キャスリン
+> 「ちょっとあなたたち、何やってるの!
+>  トロワはまだ調子が
+“Hey, you lot, what do you think you're doing?! Trowa still isn't
+---
+>  よくなってはいないんだからッ!」
+feeling well!”
+
+@41121 Quatre · カトル
+> 「どういうことなんですか?」
+“What do you mean by that?”
+
+@41122 Cathrine · キャスリン
+> 「トロワはずっと記憶喪失
+>  だったのよ! あなたたちはトロワの
+“Trowa's had amnesia this whole time! You may be his old comrades,
+---
+>  昔の仲間なんでしょうけど、
+>  これ以上トロワを苦しめないで!
+but don't torment him any more than this!
+---
+>  この艦に助けられてからだって、
+>  しかたなく戦ってただけなんだから!」
+Ever since this ship rescued him, he's only been fighting because he had no choice!”
+
+@41123 Duo · デュオ
+> 「記憶喪失だってぇ!?」
+“Amnesia?!”
+
+@41124 Roux · ルー
+> 「どうしてそんなことに
+>  なっちゃってるわけ!?」
+“How did it ever come to that?!”
+
+@41125 Trowa · トロワ
+> 「姉さん……」
+“Sis...”
+
+@41126 Cathrine · キャスリン
+> 「大丈夫よ、トロワ。
+>  さぁ、向こうへいって休みましょう」
+“It's all right, Trowa. Come on, let's go over there and rest.”
+
+@41127 Quatre · カトル
+> 「そんな、トロワが……僕のせいなんだ……
+>  僕の……」
+“No, Trowa... It's my fault... Mine...”
+
+@41128 Duo · デュオ
+> 「なんだよ、いったいどうなってるんだ?
+>  おいカトル!?」
+“What the hell, what's going on here? Hey, Quatre?!”
+
+@41129 Heero · ヒイロ
+> 「放っておいてやれ」
+“Leave him alone.”
+
+@41130 Roux · ルー
+> 「なによヒイロ、あんた何か知ってるの?」
+“What's with you, Heero? Do you know something?”
+
+@41131 Heero · ヒイロ
+> 「聞いてどうする」
+“What good would it do you to hear it?”
+
+@41132 Duo · デュオ
+> 「いや、どうするっていわれても……」
+“Well, when you say what good would it do...”
+
+@41133 Noin · ノイン
+> 「……トロワは、カトルに撃墜されて、
+>  行方不明になっていたのだ」
+“...Trowa was shot down by Quatre and went missing.”
+
+@41134 Duo · デュオ
+> 「あん? 撃墜?」
+“Huh? Shot down?”
+
+@41135 Noin · ノイン
+> 「そうだ」
+“That's right.”
+
+@41136 Duo · デュオ
+# 审校：句末原文是「かよ」的反问语气，初稿用句号削弱了语气，改为问号。
+> 「あんたも知ってたのかよ」
+“So you knew too, huh?”
+
+@41137 Noin · ノイン
+> 「私はカトルから聞いただけだ。
+>  ヒイロは当事者だがな
+“I only heard it from Quatre. Heero was there himself, though.
+---
+>  ゼロシステムに取りこまれたカトルは、
+>  すべての存在を敵とみなし
+Consumed by the ZERO System, Quatre saw every being as an enemy
+---
+>  コロニーをも破壊した。
+>  ヒイロとトロワはそれを止めに入り……」
+and even destroyed a colony. Heero and Trowa went to stop him, and...”
+
+@41138 Duo · デュオ
+> 「トロワはやられたってわけだ。
+>  あいつのことだ
+“So Trowa got taken down. Knowing him,
+---
+>  カトルに攻撃なんて、
+>  できなかっただろうからな」
+he probably couldn't bring himself to attack Quatre.”
+
+@41139 Roux · ルー
+> 「そんなことがあったなんて……」
+“To think something like that happened...”
+
+@41140 Duo · デュオ
+> 「そうか……カトルがなぁ……」
+“I see... So it was Quatre, huh...”
+
+@41141 Heero · ヒイロ
+> 「ああ。しかたのないことだ」
+“Yeah. It couldn't be helped.”
+
+@41142 Duo · デュオ
+> 「にしても、わざわざ
+>  ヘビーアームズを改修までして
+“Even so, going out of his way to refit the Heavyarms
+---
+>  艦の防衛にまわすなんざ、
+>  ハワードのおっさんらしいぜ」
+and put it on ship defense—that's just like old man Howard.”
+
+@41143 Heero · ヒイロ
+> 「あいつが十分に戦えるなら
+>  問題はない」
+“As long as he can fight well enough, there's no problem.”
+
+@41144 Duo · デュオ
+> 「ま、そりゃそうなんだけどな。
+>  そういえばお前聞いたか、ヒイロ
+“Well, that's true enough. Speaking of which, did you hear, Heero?
+---
+>  リリーナ・ピースクラフトが
+>  リーブラにいるらしいぜ」
+Apparently Relena Peacecraft is on Libra.”
+
+@41145 Heero · ヒイロ
+> 「……リリーナが? そうか……」
+“...Relena? I see...”
+
+@41146 Ark · アーク（按段落 3DD1）
+> 「ん? いま出ていったのは、ヒイロか?
+>  おいデュオ、何をやってるんだ!?
+“Huh? Was that Heero who just launched? Hey, Duo, what are you doing?!
+---
+>  ヒイロはどうした!?」
+What happened to Heero?!”
+
+@41147 Selain · セレイン（按段落 3DD2）
+> 「なんだ、誰が発進する? ヒイロか?
+>  デュオ、あいつはいったい何のつもりだ?」
+“What the—who's launching? Heero? Duo, what the hell is he thinking?”
+
+@41148 Brad · ブラッド（按段落 3DD3）
+> 「あん? なんだって今ごろ出てく奴が
+>  いるんだ? っておい、ありゃ……
+“Huh? Why's someone launching at a time like this? Wait, that's...
+---
+>  ヒイロじゃねぇか。
+>  おいデュオ、どういうことだよ!?」
+that's Heero! Hey, Duo, what's going on?!”
+
+@41149 Lawrence · ローレンス
+> 「おや? お嬢様、どなたか発進
+>  されるようですな」
+“Oh? My lady, it seems someone is launching.”
+
+@41150 Manami · マナミ（按段落 3DD4）
+> 「まさか……ヒイロじゃないの?
+>  ちょっとデュオ、いったいどういうこと?
+“No way... is that Heero? Hey, Duo, what's going on?
+---
+>  ヒイロはどこへいくの!?」
+Where's Heero going?!”
+
+@41151 Duo · デュオ
+> 「あのバカ、リーブラに行っちまったぜ。
+>  いっとくけど、
+“That idiot went off to Libra. Just so you know,
+---
+>  俺はいちおう止めたからな。まさか
+>  あいつが、あそこまであのお嬢さんに
+I did try to stop him. To think he'd fall that hard
+---
+>  ほれてるとはねぇ……」
+for that young lady...”
+
+@41152 Ryoma · リョウ
+> 「……博士、少し休まなくて
+>  大丈夫ですか? もう3日も
+“...Doctor, are you sure you don't need to rest? You haven't
+---
+>  寝てないでしょう」
+slept in three days.”
+
+@41153 Dr. Saotome · 早乙女博士
+> 「なに、たいしたことはないわ。実験
+>  準備完了まで、もう少しじゃ
+“Bah, it's nothing worth fussing over. We're almost ready for the experiment.
+---
+>  それより演算済みのデータは、
+>  どんどんこっちに送ってくれよ」
+More importantly, keep sending me the computed data.”
+
+@41154 Hayato · ハヤト
+> 「……了解」
+“...Understood.”
+
+@41155 Ryoma · リョウ
+> 「しかし、ゲッターGと真ゲッターの
+>  増幅炉を直結して、実験を
+“Still, to directly link the Getter G and Shin Getter's amplifier reactors
+---
+>  再開するとはな……」
+and restart the experiment...”
+
+@41156 Tetsuya · 鉄也
+> 「ゲッターのエネルギーを、真ゲッターに
+>  注ぎこむってわけか。しかし、いま
+“So we're pouring the Getter's energy into Shin Getter. But if anything
+---
+>  何かあったら、ゲッターは使えんぞ」
+happens now, the Getter won't be usable.”
+
+@41157 Ryoma · リョウ
+> 「その時は、みんなにまかせるさ。俺は、
+>  いや俺たちは、なんとか真ゲッターを
+“If that happens, I'll leave it to everyone else. I—no, we—want to get Shin Getter
+---
+>  動かしたいんだ。真ゲッターのパワーが
+>  あれば、戦いをぐっと有利にできる」
+moving somehow. With Shin Getter's power, we can turn the tide of battle.”
+
+@41158 Dr. Saotome · 早乙女博士
+> 「よし……インプット完了じゃ。
+>  モニターに注意してくれ。危険な
+“All right... input complete. Keep your eyes on the monitor. If you see any dangerous
+---
+>  兆候が見えたら、すぐに接続を
+>  切るんだ。いいな」
+signs, cut the connection immediately. Understood.”
+
+@41159 Hayato · ハヤト
+> 「了解……」
+“Understood...”
+
+@41160 Hayato · ハヤト
+> 「うわっ!? こ……こいつはすげえ!
+>  何てぇパワーだ……どんどんゲージが
+“Whoa?! Th-this is incredible! What power... the gauge just keeps
+---
+>  上がっていく……」
+climbing...”
+
+@41161 Dr. Saotome · 早乙女博士
+> 「よし、いいぞ……
+>  やはり思った通りじゃ!
+“Good, that's it... just as I thought!
+---
+>  ハヤト、もういい。接続を落とせ」
+Hayato, that's enough. Cut the connection.”
+
+@41162 Hayato · ハヤト
+> 「了解…………
+“Understood...
+---
+>  くっ!?」
+Ngh?!”
+
+@41163 Dr. Saotome · 早乙女博士
+> 「何じゃ、どうした!?」
+“What is it, what's wrong?!”
+
+@41164 Hayato · ハヤト
+> 「博士、接続が切れません!」
+“Doctor, the connection won't cut!”
+
+@41165 Dr. Saotome · 早乙女博士
+> 「これは……真ゲッターとゲッターGが、
+>  呼応しあっているのか……!?」
+“Is this... Shin Getter and Getter G resonating with each other...?!”
+
+@41166 Hayato · ハヤト
+> 「いかん! 博士、こいつはヤバイ!
+>  制御が、制御がきかねぇ!」
+“This is bad! Doctor, this is dangerous! I can't—I can't control it!”
+
+@41167 Dr. Saotome · 早乙女博士
+> 「何じゃと!? こっちにまわせ!
+>  ……くっ……い、いかん!
+“What?! Route it over here! ...Ngh... th-this is bad!
+---
+>  みんな、ここから離れるんじゃ!」
+Everyone, get away from here!”
+
+@41168 Hayato · ハヤト
+> 「博士も退避してください!」
+“Doctor, you need to evacuate too!”
+
+@41169 Dr. Saotome · 早乙女博士
+> 「バカもん! ここで暴走させてみろ、
+>  ガンドールごと大爆発だぞ!
+“Don't be a fool! If it goes berserk here, the whole Gandor blows sky high!
+---
+>  何としても止めんと……!」
+We have to stop it no matter what...!”
+
+@41170 Hayato · ハヤト
+> 「だったら、ここは俺が!」
+“Then let me handle this!”
+
+@41171 Dr. Saotome · 早乙女博士
+> 「バカなことをぬかすな! だ、だめだ!
+>  間に合わん……!」
+“Don't talk nonsense! N-no good! We won't make it...!”
+
+@41172 Ryoma · リョウ
+> 「ハヤト! 早乙女博士!?」
+“Hayato! Dr. Saotome?!”
+
+@41173 Dr. Saotome · 早乙女博士
+> 「……う……、うう……」
+“...Ugh... uuugh...”
+
+@41174 Hayato · ハヤト
+> 「博士! 大丈夫ですか!?」
+“Doctor! Are you all right?!”
+
+@41175 Dr. Saotome · 早乙女博士
+> 「むう、し、心配いらん……。
+>  どうやら、助かったらしいな……
+“Mmm, d-don't worry about me... Seems we made it somehow...
+---
+>  とんだ事になるところだった、すまん……」
+That could have turned into a real disaster. Sorry...”
+
+@41176 Hayato · ハヤト
+> 「とんでもない、無事でよかった……」
+“Not at all—I'm just glad you're safe...”
+
+@41177 Dr. Saotome · 早乙女博士
+> 「そ、それよりゲッターは……、
+>  ゲッターはどうなったんじゃ……?
+“M-more importantly, the Getter... what happened to the Getter...?
+---
+>  お……、おお、これは……!!」
+Oh... ooh, this is...!!”
+
+@41178 Ryoma · リョウ
+> 「ゲッターGが……俺たちのゲッターが
+>  大破しちまったのか!?」
+“Getter G... our Getter got wrecked?!”
+
+@41179 Benkei · ベンケイ
+> 「いや……リョウ、見ろ!
+>  真ゲッターが……
+“No... Ryoma, look! Shin Getter is...
+---
+>  真ゲッターが起動してるぞ!」
+Shin Getter is activating!”
+
+@41180 Hayato · ハヤト
+> 「何だと!?」
+“What?!”
+
+@41181 Dr. Saotome · 早乙女博士
+> 「まさか……わからん、なぜこんなことが……」
+“Impossible... I don't understand, how could this happen...”
+
+@41182 Hayato · ハヤト
+> 「真ゲッターが……ゲッターGの命を
+>  吸ったのか……」
+“Shin Getter... did it drain the life from Getter G...?”
+
+@41183 Ryoma · リョウ
+> 「真ゲッターが、目覚めた……。
+>  ようし、これで銀河帝国の奴らに
+“Shin Getter has awakened... All right, now we can give those Galactic Empire
+---
+>  一泡吹かせてやれるぜ!」
+bastards a real beating!”
+
+@41184 Dr. Saotome · 早乙女博士
+> 「な、何じゃと!? い、いかん!
+>  何をバカなことをいっとるんだ!」
+“Wh-what?! N-no good! What are you saying, you fool!”
+
+@41185 Benkei · ベンケイ
+> 「どうしてです? 一時はどうなるかと
+>  思ったが、とにかく真ゲッターが
+“Why not? I thought we were done for back there, but at least Shin Getter
+---
+>  動かせるんだ。良かったじゃないですか」
+can move now. Isn't that a good thing?”
+
+@41186 Dr. Saotome · 早乙女博士
+> 「いま目の前で起こったことを、
+>  もう忘れたのか! 動いたとはいえ
+“Have you already forgotten what just happened right before your eyes?! It moved, but
+---
+>  真ゲッターの正体は、まだほとんど
+>  わかっておらん。危険すぎる!
+we still know almost nothing about what Shin Getter really is. It's far too dangerous!
+---
+>  こいつを使用する許可などできん!」
+I cannot give permission to use this thing!”
+
+@41187 Hayato · ハヤト
+> 「ふ……。しかしまあ、動くには動いたん
+>  だ。戦いにはこれで十分でしょう」
+“Hmph... But still, it did move. For fighting, that's good enough, isn't it?”
+
+@41188 Dr. Saotome · 早乙女博士
+> 「お、お前までそんなことを……」
+“Y-you too, saying things like that...”
+
+@41189 Ryoma · リョウ
+> 「博士、俺たちには、こいつが必要
+>  なんです」
+“Doctor, we need this thing.”
+
+@41190 Benkei · ベンケイ
+> 「何しろゲッターは、壊れちまったしな」
+“After all, the Getter's been wrecked.”
+
+@41191 Dr. Saotome · 早乙女博士
+> 「し、しかし……」
+“B-but still...”
+
+@41192 Ryoma · リョウ
+> 「大丈夫です、早乙女博士。
+>  俺たちに伝わってくる……
+“It's all right, Dr. Saotome. We can feel it...
+---
+>  真ゲッターが俺たちに乗れといって
+>  いる。やらせてください、博士
+Shin Getter is telling us to ride it. Please let us do this, Doctor.
+---
+>  俺たちだって、昔の俺たちとは
+>  違います!」
+We're not the same as we used to be!”
+
+@41193 Dr. Saotome · 早乙女博士
+> 「……わかった、好きにせい! ただし、
+>  扱いには十分気をつけるんじゃ」
+“...Fine, do as you like! But be extremely careful with how you handle it.”
+
+@41194 Hayato · ハヤト
+> 「もちろんですよ」
+“Of course.”
+
+@41195 Ryoma · リョウ
+> 「真ゲッターよ、よろしく頼むぜ!」
+“Shin Getter, I'm counting on you!”
+
+@41196 Ark · アーク（按段落 3DD1）
+> 「銀河帝国軍のいるはずの
+>  宙域に戦闘光が
+“It seems combat flashes have been
+---
+>  確認されたみたいですね。やっぱり、
+>  帰れなくなったと知った兵士たちの
+confirmed in the sector where the Galactic Empire forces should be. As expected, we can assume the morale of the soldiers who've learned they can't go home
+---
+>  士気は相当低下していると
+>  考えていいでしょう」
+has dropped considerably.”
+
+@41197 Bright · ブライト
+> 「ふむ……すると連中は
+>  動かなかったのではなく
+“Hmm... Then it's possible they're not refusing to move,
+---
+>  動けない状態にあるとも
+>  考えられるな」
+but rather that they're in no state to move.”
+
+@41198 Ark · アーク（按段落 3DD1）
+> 「そう思いますね。ただ、
+>  混乱が収まるまでの間でしょう
+“I'd say so. But that's only until the confusion settles.
+---
+>  どのくらい動かずにいてくれるかは、
+>  わかりませんよ」
+There's no telling how long they'll stay put.”
+
+@41199 Amuro · アムロ
+> 「ホワイトファングを叩いておけるとしたら
+>  今しかないということか」
+“So if we're going to strike White Fang, it has to be now.”
+
+@41200 Kamille · カミーユ
+> 「リーブラの主砲は地球を
+>  直接ねらえるそうじゃないですか
+“Libra's main cannon can target Earth directly, can't it?
+---
+>  彼らがコロニーを攻撃するとは
+>  思えないけど、あとあと脅威と
+I doubt they'd attack the colonies, but if they're certain to become a threat
+---
+>  なるのが間違いないなら、トレーズの
+>  動きにあわせるほうが現実的ですね」
+later on, it's more realistic to move in step with Treize.”
+
+@41201 Bright · ブライト
+> 「そうだな……やはり我々も
+>  リーブラへ向かうしかないか……」
+“Right... It seems we've no choice but to head for Libra as well...”
+
+@41202 Ark · アーク（按段落 3DD1）
+> 「問題はクスコの時と同じように、
+>  またトレーズと協力するべきなのかって
+“The question is whether we should cooperate with Treize again, like we did at Cusco.
+---
+>  ことでしょう。それと、ハマーンの動きが
+>  見えないのも、妙なところです」
+And Haman's movements being invisible is another strange point.”
+
+@41203 Amuro · アムロ
+> 「確かに……だがトレーズは
+>  すでにOZを動かしている
+“True... but Treize has already set OZ in motion.
+---
+>  ホワイトファングにしかけるなら、あとは
+>  状況を見て変えていくしかないな」
+If we're going to strike White Fang, all we can do is adapt as the situation changes.”
+
+@41204 Bright · ブライト
+> 「ふむ……それでいくしかないようだな。
+>  {HeroNick}、他の連中を
+“Hmm... It seems that's the only way. {HeroNick}, gather the others
+---
+>  集めておいてくれ。我々は
+>  リーブラへ向かう」
+for me. We're heading for Libra.”
+
+@41205 Amuro · アムロ
+> 「どうだった、{HeroNick}?」
+“How did it go, {HeroNick}?”
+
+@41206 Selain · セレイン（按段落 3DD2）
+> 「やはり戦闘光に
+>  間違いないようです」
+“It's definitely combat flashes, it seems.”
+
+@41207 Amuro · アムロ
+> 「銀河帝国軍がいると
+>  考えられる宙域だったな」
+“It was the sector where the Galactic Empire forces are thought to be.”
+
+@41208 Selain · セレイン（按段落 3DD2）
+> 「ええ。国にもどれなくなったと知った
+>  兵士たちの士気の低下ぶりは
+“Yes. The drop in morale among the soldiers who've learned they can't return home
+---
+>  我々の予想以上だと
+>  いうことでしょう」
+must be greater than we expected.”
+
+@41209 Bright · ブライト
+> 「ふむ……すると連中は
+>  動かなかったのではなく
+“Hmm... Then it's possible they're not refusing to move,
+---
+>  動けない状態にあるものと
+>  考えられるな」
+but rather that they're in no state to move.”
+
+@41210 Selain · セレイン（按段落 3DD2）
+> 「でしょうね。しかしあれだけのことを
+>  してきた軍勢です
+“I'd say so. But after all they've done,
+---
+>  混乱も長くは続かないでしょう。
+>  近いうちに、またしかけてくるはずです」
+the confusion won't last long. They're sure to come at us again before long.”
+
+@41211 Amuro · アムロ
+> 「……ホワイトファングを叩いて
+>  おけるとしたら、今しかないということか」
+“...So if we're going to strike White Fang, it has to be now.”
+
+@41212 Kamille · カミーユ
+> 「リーブラの主砲は地球を
+>  直接ねらえるそうじゃないですか
+“Libra's main cannon can target Earth directly, can't it?
+---
+>  彼らがコロニーを攻撃するとは
+>  思えないけど、あとあと脅威と
+I doubt they'd attack the colonies, but if they're certain to become a threat
+---
+>  なるのが間違いないなら、トレーズの
+>  動きにあわせるほうが現実的ですね」
+later on, it's more realistic to move in step with Treize.”
+
+@41213 Bright · ブライト
+> 「そうだな……やはり我々も
+>  リーブラへ向かうしかないか……」
+“Right... It seems we've no choice but to head for Libra as well...”
+
+@41214 Selain · セレイン（按段落 3DD2）
+> 「ホワイトファングを叩くべきなのは
+>  間違いないでしょうが
+“There's no doubt we should strike White Fang,
+---
+>  クスコの時と同様に
+>  トレーズと協力すべきなのかについては
+but whether we should cooperate with Treize as we did at Cusco is
+---
+>  別の問題です。ハマーンとアクシズの
+>  動きが見えないのも気にかかります」
+a separate matter. Haman and Axis being out of sight worries me too.”
+
+@41215 Amuro · アムロ
+> 「確かに……だがトレーズは
+>  すでにOZを動かしている
+“True... but Treize has already set OZ in motion.
+---
+>  ホワイトファングにしかけるなら、あとは
+>  状況を見て変えていくしかないな」
+If we're going to strike White Fang, all we can do is adapt as the situation changes.”
+
+@41216 Bright · ブライト
+> 「ふむ……それでいくしかないようだな。
+>  {HeroNick}、他の連中を
+“Hmm... It seems that's the only way. {HeroNick}, gather the others
+---
+>  集めておいてくれ。我々は
+>  リーブラへ向かう」
+for me. We're heading for Libra.”
+
+@41217 Brad · ブラッド（按段落 3DD3）
+> 「戦闘光が見えたって?」
+“You saw combat flashes?”
+
+@41218 Ryoma · リョウ
+> 「ああ、間違いない。銀河
+>  帝国軍がいると思われる宙域だ」
+“Yeah, no doubt about it. It's the sector where the Galactic Empire forces are thought to be.”
+
+@41219 Koji · 甲児
+> 「なんだよ、どういうことだ?
+>  どこかが奴らにしかけてるのか?」
+“What the heck, what's going on? Is someone attacking them?”
+
+@41220 Hayato · ハヤト
+> 「いや……そうじゃないだろうな」
+“No... that's not it, I'd bet.”
+
+@41221 Sayaka · さやか
+> 「じゃ、帝国軍同士での
+>  戦闘があったってこと?」
+“Then you mean there was fighting between Imperial forces?”
+
+@41222 Brad · ブラッド（按段落 3DD3）
+> 「なんだって、そんなことになるんだ?」
+“Why would that happen?”
+
+@41223 Hayato · ハヤト
+> 「俺たちが何をやったのか忘れたのか?
+>  連中はもう帰れない
+“Have you forgotten what we did? It's no wonder the soldiers who can't
+---
+>  兵士が戦う気をなくしても
+>  不思議じゃない。武器を持った
+go home anymore have lost the will to fight. When armed
+---
+>  兵士が命令を聞かない場合は
+>  戦闘になっても
+soldiers stop obeying orders, it's hardly
+---
+>  おかしいことではないだろう」
+strange for it to turn into a battle.”
+
+@41224 Brad · ブラッド（按段落 3DD3）
+> 「なるほどな……それで連中の
+>  動きがないってわけか」
+“I see... So that's why they're not making any moves.”
+
+@41225 Alan · アラン
+> 「戦闘光の確認は
+>  それを裏づけていると思う
+“The confirmed combat flashes back that up, I think.
+---
+>  ホワイトファングを叩いておけるとしたら
+>  今しかないな」
+If we're going to strike White Fang, now's the only chance.”
+
+@41226 Banjo · 万丈
+> 「ああ。リーブラの主砲は地球をも
+>  直接ねらえるほどだという
+“Yeah. They say Libra's main gun can target Earth directly.
+---
+>  コロニー以外のすべてを排除すると
+>  いっている連中が
+For a bunch that says they'll eliminate everything but the colonies
+---
+>  それを使えるというのは、脅威だ。
+>  ここはトレーズの動きに
+to have that at their disposal is a threat. I think matching our moves
+---
+>  あわせるのが現実的だと僕は思う」
+to Treize's is the realistic option.”
+
+@41227 Koji · 甲児
+> 「ってことはオレたちも
+>  リーブラへ向かうってことか?」
+“So that means we're heading for Libra too?”
+
+@41228 Brad · ブラッド（按段落 3DD3）
+> 「銀河帝国軍がもめているうちに、
+>  ホワイトファングをつぶすってわけだな
+“While the Galactic Empire forces are at each other's throats, we crush White Fang.
+---
+>  俺もそいつに賛成だぜ」
+I'm all for it too.”
+
+@41229 Banjo · 万丈
+> 「よし、そうと決まったら
+>  行動あるのみだ。{HeroNick}
+“All right, now that it's decided, it's time to act. {HeroNick},
+---
+>  他のみんなも集めてくれ。
+>  僕たちはホワイトファングを叩く」
+gather the others for me too. We're going to strike White Fang.”
+
+@41230 Manami · マナミ（按段落 3DD4）
+> 「ローレンス、戦闘光が
+>  見えたんですって?」
+“Lawrence, you said you saw combat flashes?”
+
+@41231 Lawrence · ローレンス
+> 「はい、間違いございません。
+>  確かに銀河帝国軍が
+“Yes, there is no mistake. They were confirmed in the sector where
+---
+>  いると思われる宙域に
+>  確認されました」
+the Galactic Empire forces are believed to be.”
+
+@41232 Koji · 甲児
+> 「なんだよ、どういうことだ?
+>  どこかが奴らにしかけてるのか?」
+“What the heck, what's going on? Is someone attacking them?”
+
+@41233 Hayato · ハヤト
+> 「いや……そうじゃないだろうな」
+“No... that's not it, I'd bet.”
+
+@41234 Sayaka · さやか
+> 「じゃ、帝国軍同士での
+>  戦闘があったってこと?」
+“Then you mean there was fighting between Imperial forces?”
+
+@41235 Manami · マナミ（按段落 3DD4）
+> 「ありえないことじゃないわね。
+>  帰れなくなったとわかって
+“It's not impossible. It may be to keep the soldiers in line after they
+---
+>  いちじるしく士気を低下させた
+>  兵士たちをおさえるためかもしれない」
+learned they can't go home and their morale dropped sharply.”
+
+@41236 Lawrence · ローレンス
+> 「さよう、お嬢様の推測は
+>  おそらく間違ってはおらぬでしょう」
+“Indeed, my lady's guess is most likely not mistaken.”
+
+@41237 Manami · マナミ（按段落 3DD4）
+> 「ええ。それなら撤退後の
+>  彼らの動きがない理由にもなるわ」
+“Right. That would also explain why they've made no moves since withdrawing.”
+
+@41238 Alan · アラン
+> 「そうだな。戦闘光の確認は
+>  それを裏づけていると思う
+“Yeah. The confirmed combat flashes back that up, I think.
+---
+>  ホワイトファングを叩いておけるとしたら
+>  今しかないか」
+If we're going to strike White Fang, now's the only chance.”
+
+@41239 Banjo · 万丈
+> 「ああ。リーブラの主砲は地球をも
+>  直接ねらえるほどだという。コロニー
+“Yeah. They say Libra's main gun can target Earth directly. For a bunch
+---
+>  以外のすべてを排除するといって
+>  いる連中がそれを使えるというのは
+that says they'll eliminate everything but the colonies to have that
+---
+>  脅威だ。ここはトレーズの動きに
+>  あわせるのが現実的だと僕は思う」
+at their disposal is a threat. I think matching our moves to Treize's is the realistic option.”
+
+@41240 Koji · 甲児
+> 「ってことはオレたちも
+>  リーブラへ向かうってことか?」
+“So that means we're heading for Libra too?”
+
+@41241 Manami · マナミ（按段落 3DD4）
+> 「そうね……あたしも賛成だわ。銀河
+>  帝国軍も混乱を収めるのにそう
+“Yes... I agree too. It won't take the Galactic Empire forces long
+---
+>  時間はかからないでしょう。その前に
+>  リーブラを無力化しておきたいわね」
+to put down their chaos. I'd like to neutralize Libra before that.”
+
+@41242 Banjo · 万丈
+> 「よし、そうと決まったら
+>  行動あるのみだ。{HeroNick}
+“All right, now that it's decided, it's time to act. {HeroNick},
+---
+>  他のみんなも集めてくれ。
+>  僕たちはホワイトファングを叩く」
+gather the others for me too. We're going to strike White Fang.”
+
+@41243 Dorothy · ドロシー
+> 「あれは……まさかヒイロ・ユイ? すごいわ
+>  さすがはリリーナ様のナイト
+“That's... could it be Heero Yuy? Amazing, just as expected of Lady Relena's knight,
+---
+>  こんなところまでやってくるなんて。
+>  うふふふ、いいですわ、見逃して
+coming all the way out here. Hee hee hee, how lovely, I'll let you go
+---
+>  さしあげます。どうするおつもりなのか、
+>  私とっても興味がありますわ」
+unnoticed. I'm terribly curious what you intend to do.”
+
+@41244 Relena · リリーナ
+> 「また来たのですか? 何をいわれても
+>  わたくしはこの艦を離れるつもりは……
+“You've come again? No matter what you say, I have no intention of leaving this ship...
+---
+>  ヒイロ!?」
+Heero?!”
+
+@41245 Heero · ヒイロ
+> 「ここを出る。ついてこい」
+“We're leaving here. Come with me.”
+
+@41246 Relena · リリーナ
+> 「ヒイロ……あなたが来てくれるなんて……
+>  でも……だめよ、今はだめ」
+“Heero... you came for me... but... no, not now.”
+
+@41247 Heero · ヒイロ
+> 「そうはいかない。お前がここにいると
+>  ノインたちの気持ちがにぶる」
+“That won't do. With you here, Noin and the others can't think straight.”
+
+@41248 Relena · リリーナ
+> 「……あいかわらず強引なのですね。
+>  わかりました
+“...You're as forceful as ever. Very well.
+---
+>  もう1度お兄様と話をして、
+>  それでだめならば、あきらめます」
+I'll talk to my brother one more time, and if that fails, I'll give up.”
+
+@41249 Heero · ヒイロ
+> 「ゼクスか……いいだろう。早くしろ」
+“Zechs, huh... Fine. Hurry.”
+
+@41250 Milliardo · ミリアルド
+> 「ヒイロ・ユイか……君がくるとはな。いい
+>  だろう、リリーナを連れて行ってくれ
+“Heero Yuy... So you've come. Fine, take Relena with you.
+---
+>  トレーズが部隊を集結させている。
+>  こちらも対応せねばならん」
+Treize is assembling his forces. We must respond as well.”
+
+@41251 Relena · リリーナ
+> 「トレーズ・クシュリナーダが?
+>  お兄様、すぐにやめてください
+“Treize Khushrenada is? Brother, stop this at once.
+---
+>  こんなことは無意味です」
+This is meaningless.”
+
+@41252 Milliardo · ミリアルド
+> 「無意味などではない。たとえ
+>  後世に恥じる行為だとしても
+“It is not meaningless. Even if it is an act we'll be ashamed of in later ages,
+---
+>  十分すぎる意味があるのだ。
+>  これぐらいの戦いをやってみせねば
+it has more than enough meaning. Unless we show them a battle of this scale,
+---
+>  自らの滅びを肌で
+>  感じるくらいでなければ
+unless they feel their own destruction in their bones,
+---
+>  人は戦いの愚かさを理解しない」
+people will never understand the folly of war.”
+
+@41253 Heero · ヒイロ
+> 「狂言回しにでもなったつもりか、
+>  ゼクス・マーキス」
+“Playing the puppet master now, Zechs Merquise?”
+
+@41254 Relena · リリーナ
+> 「間違っています。人々はもう
+>  十分に戦いの愚かさをわかって
+“You're wrong. People already understand the folly of war well enough.
+---
+>  います。協調を尊ぶ心こそ、
+>  今の人類に必要なものです」
+A heart that values harmony is what humanity needs now.”
+
+@41255 Milliardo · ミリアルド
+> 「それでいい……お前はそれでいいのだ」
+“That's fine... You can stay that way.”
+
+@41256 Relena · リリーナ
+> 「お兄さま……?」
+“Brother...?”
+
+@41257 Relena · リリーナ
+> 「ヒイロ!?」
+“Heero?!”
+
+@41258 Milliardo · ミリアルド
+> 「フッ……」
+“Heh...”
+
+@41259 Heero · ヒイロ
+> 「立体映像か……」
+“A hologram...”
+
+@41260 Relena · リリーナ
+> 「ヒイロ……」
+“Heero...”
+
+@41261 Heero · ヒイロ
+> 「リーブラは戦いの中心になる。いま
+>  は脱出はできない。機会を待つ
+“Libra will be the center of the battle. We can't escape now. We wait for our chance.
+---
+>  リリーナ、お前は俺とここにいろ」
+Relena, you stay here with me.”
+
+@41262 Relena · リリーナ
+> 「あなたがわたくしを守ってくださるの?」
+“You'll protect me?”
+
+@41263 Heero · ヒイロ
+> 「……ああ。俺はゼクスと戦う。
+>  負い目をつくりたくない」
+“...Yeah. I'm going to fight Zechs. I don't want to owe him anything.”
+
+@41264 Haman · ハマーン
+> 「銀河帝国軍は動かぬか……
+>  お前たちはよくやってくれたよ、シャア
+“The Galactic Empire forces won't move... You've done well, Char.
+---
+>  これで私も無駄な手間をかけずに
+>  すむというもの……」
+Now I can be spared the pointless trouble...”
+
+@41265 Glemy · グレミー
+> 「失礼いたします。ハマーン様、
+>  OZ宇宙軍の残存兵力の
+“Excuse me. Lady Haman, nearly all of the OZ space forces'
+---
+>  ほぼすべてがリーブラの宙域に
+>  集結しつつあります」
+remaining strength is gathering in the Libra sector.”
+
+@41266 Haman · ハマーン
+> 「トレーズはやはりそう動くか。
+>  読みやすい男だ。あの連中には
+“So Treize moves as expected. He's an easy man to read. Let those people
+---
+>  好きにさせておけばよい。
+>  {HeroMech}はどうだ?」
+do as they please. What of the {HeroMech}?”
+
+@41267 Glemy · グレミー
+> 「やはり、リーブラに向かうものと
+>  思われます」
+“As expected, they appear to be heading for Libra.”
+
+@41268 Haman · ハマーン
+> 「フフフフ、なるほどな。
+>  マシュマーとキャラを呼べ」
+“Heh heh heh, I see. Call Mashymre and Chara.”
+
+@41269 Glemy · グレミー
+> 「は……私はいかがいたしますか?」
+“Yes... And what shall I do?”
+
+@41270 Haman · ハマーン
+> 「アクシズへもどって銀河帝国軍を
+>  監視しておけ。用意を整えてな」
+“Return to Axis and keep watch on the Galactic Empire forces. Make your preparations.”
+
+@41271 Glemy · グレミー
+> 「了解です、ハマーン様」
+“Understood, Lady Haman.”
+
+@41272 Quinze · カーンズ
+> 「衛星を出撃したOZ軍は
+>  まもなくここへやってくるでしょうな」
+“The OZ forces that launched from the satellite will arrive here before long.”
+
+@41273 Milliardo · ミリアルド
+> 「用意は整っているな?」
+“Are your preparations complete?”
+
+@41274 Quinze · カーンズ
+> 「万全です」
+“They are flawless.”
+
+@41275 Dorothy · ドロシー
+> 「私もいつでもよろしいですわ、
+>  ミリアルド様
+“I am ready as well, Lord Milliardo.
+---
+>  ……いよいよ始まるのですね」
+...So it finally begins.”
+
+@41276 Milliardo · ミリアルド
+> 「よし、モビルドールを発進させろ。
+>  トレーズを迎え撃つ」
+“Good. Launch the Mobile Dolls. We'll meet Treize in battle.”
+
+@41277 Milliardo · ミリアルド
+> 「……来たか、トレーズ」
+“...So you've come, Treize.”
+
+@41278 Dorothy · ドロシー
+> 「トレーズ様……?」
+“Lord Treize...?”
+
+@41279 Treize · トレーズ
+> 「全機、その場で待機せよ」
+“All units, hold position where you are.”
+
+@41280 Quinze · カーンズ
+# 审校：「なんのつもりだ」译为“what does he intend”语气偏正式且略生硬，改为更口语的“what is he thinking”。
+> 「ばかな、なんのつもりだ!?」
+“Impossible, what is he thinking?!”
+
+@41281 Milliardo · ミリアルド
+> 「主砲発射用意」
+“Prepare to fire the main cannon.”
+
+@41282 Dorothy · ドロシー
+> 「え……ミリアルド様!?」
+“What... Lord Milliardo?!”
+
+@41283 Quinze · カーンズ
+> 「はっ」
+“Yes, sir.”
+
+@41284 Dorothy · ドロシー
+> 「だめよ、おやめなさい!」
+“No, stop this!”
+
+@41285 Milliardo · ミリアルド
+> 「構うな。発射態勢を整えろ」
+“Pay her no mind. Ready the firing sequence.”
+
+@41286 Quinze · カーンズ
+> 「はっ」
+“Yes, sir.”
+
+@41287 Milliardo · ミリアルド
+> 「停止せよ。リーブラの主砲は
+>  発射態勢に入っている」
+“Cease fire. Libra's main cannon is in firing position.”
+
+@41288 Treize · トレーズ
+> 「私は、ロームフェラ財団代表
+>  にして、OZ総帥の
+“I am Treize Khushrenada, representative of the Romefeller Foundation
+---
+>  トレーズ・クシュリナーダ。私はここに、
+>  地球圏の存続を危ぶませる
+and Supreme Commander of OZ. I hereby challenge the representative
+---
+>  ホワイトファングの代表者に対し、
+>  決闘を申しこむ」
+of White Fang, who threatens the survival of the Earth Sphere, to a duel.”
+
+@41289 Milliardo · ミリアルド
+> 「トレーズ……」
+“Treize...”
+
+@41290 Treize · トレーズ
+> 「ミリアルド・ピースクラフト、
+>  返答を聞かせてもらおう」
+“Milliardo Peacecraft, let me hear your answer.”
+
+@41291 Quinze · カーンズ
+> 「司令……まさかあのような申し出を
+>  受けるのではないでしょうな」
+“Commander... Surely you don't intend to accept such an offer.”
+
+@41292 Treize · トレーズ
+> 「返答を!」
+“Your answer!”
+
+@41293 Milliardo · ミリアルド
+> 「……決闘は……断る! 私はOZの
+>  兵士ではない。騎士道などという
+“...I refuse... the duel! I am no soldier of OZ. I stand in a position
+---
+>  ものとは、無関係な位置にいる。
+>  私は宇宙の革命の意思を
+wholly unrelated to such things as chivalry. I bear the will
+---
+>  背負っているのだ!」
+of the revolution of space!”
+
+@41294 Treize · トレーズ
+> 「なるほど正しい選択だ。ミリアルド、
+>  私もまた地球を背負っている
+“I see, a correct choice. Milliardo, I too bear the weight of the Earth.
+---
+>  我々は退かない。私は地球が
+>  好きなのだ。たとえここで果てようとも
+We will not retreat. I love the Earth. Even if I should perish here,
+---
+>  その意思を体現する者たちが
+>  残っている。私は彼らのために
+those who embody that will remain. For their sake,
+---
+>  この地球のために、
+>  私自身の命をかけよう」
+for the Earth's sake, I will stake my own life.”
+
+@41295 Milliardo · ミリアルド
+> (トレーズ……見事な覚悟だ)
+(Treize... What splendid resolve.)
+
+@41296 Milliardo · ミリアルド
+> 「了解した、トレーズ。
+>  主砲、発射!」
+“Understood, Treize. Main cannon, fire!”
+
+@41297 Dorothy · ドロシー
+> 「ミリアルド様!? おやめください!
+>  ミリアルド様!!」
+“Lord Milliardo?! Please stop! Lord Milliardo!!”
+
+@41298 Milliardo · ミリアルド
+> 「邪魔をするな!」
+“Don't interfere!”
+
+@41299 Dorothy · ドロシー
+> 「あっ……お願いです、どうか!
+>  ミリアルド様、だめぇっ!!」
+“Ah... I beg you, please! Lord Milliardo, no!!”
+
+@41300 Milliardo · ミリアルド
+> 「………………」
+“...”
+
+@41301 Milliardo · ミリアルド
+> 「………………」
+“...”
+
+@41302 Dorothy · ドロシー
+> 「…………あぁ……」
+“...Ah...”
+
+@41303 Treize · トレーズ
+> 「レディ、なぜこんな無茶を?」
+“Lady, why such recklessness?”
+
+@41304 Lady · レディ
+> 「トレーズ様、戦いは
+>  戦ってこそ美しいものです」
+“Lord Treize, battle is beautiful only when one fights it.”
+
+@41305 Treize · トレーズ
+> 「……わかった。全機に告ぐ。
+>  リーブラを落とせ!」
+“...I understand. To all units: bring down Libra!”
+
+@41306 Noin · ノイン
+> (ゼクス……)
+(Zechs...)
+
+@41307 Duo · デュオ
+> 「あんたは無理すんなよ。ゼクス
+>  相手に戦うなんて、無理だろ
+“Don't push yourself. Fighting Zechs is impossible for you.
+---
+>  俺たちにまかせときな」
+Leave it to us.”
+
+@41308 Noin · ノイン
+> 「デュオ……すまん、そうさせてもらおう」
+“Duo... Sorry, I'll take you up on that.”
+
+@41309 Judau · ジュドー
+> (……なんだ……この感じ……誰かに
+>  呼ばれたような気がしたけど……)
+(...What is this feeling...? I felt like someone was calling me...)
+
+@41310 Bright · ブライト
+> 「さて、どうするか……」
+“Now then, what should we do...”
+
+@41311 Ark · アーク（按段落 3DD1）
+> 「この状況じゃ、考えるまでもない
+>  ですよ。ホワイトファングをつぶしましょう」
+“In this situation, there's nothing to think about. Let's crush White Fang.”
+
+@41312 Selain · セレイン（按段落 3DD2）
+> 「この状況で双方を相手にしても
+>  いいことはない
+“There's nothing good about taking on both sides in this situation.
+---
+>  艦長、まずは全力で
+>  ホワイトファングを叩くべきだ」
+Captain, we should first throw everything we have at White Fang.”
+
+@41313 Brad · ブラッド（按段落 3DD3）
+> 「考えることなんてないだろう。
+>  ホワイトファングを叩いちまわないと
+“There's nothing to think about. We've gotta crush White Fang,
+---
+>  あとが面倒だぜ」
+or we'll be in for trouble later.”
+
+@41314 Manami · マナミ（按段落 3DD4）
+> 「まずはホワイトファングを叩くことに
+>  専念しましょう
+“Let's first focus on crushing White Fang.
+---
+>  そのほうがあとが面倒でなくてすみます」
+That way we won't have trouble later.”
+
+@41315 Bright · ブライト
+> 「そうだな……よし、
+>  {HeroMech}は全力をあげて
+“Right... All right, {HeroMech} will go all out
+---
+>  ホワイトファングを叩く。
+>  OZは相手にするな!」
+and crush White Fang. Do not engage OZ!”
+
+@41316 Lady · レディ
+> 「トレーズ様、{HeroMech}です」
+“Lord Treize, it's {HeroMech}.”
+
+@41317 Treize · トレーズ
+> 「わかっている。彼らに礼を
+>  述べたいところだが
+“I know. I would like to thank them, but
+---
+>  別に私のために
+>  戦ってくれるわけではないからな」
+they aren't fighting for my sake, after all.”
+
+@41318 Milliardo · ミリアルド
+> 「{HeroMech}は
+>  我々だけを敵とみなすか……
+“So {HeroMech} regards only us as the enemy...
+---
+>  当然といえば当然の行動だな」
+It's only natural, I suppose.”
+
+@41319 Dorothy · ドロシー
+> 「ミリアルド様……どうなさるおつもり
+>  ですの?」
+“Lord Milliardo... What do you intend to do?”
+
+@41320 Quinze · カーンズ
+> 「どうなさるおつもりです?」
+“What do you intend to do?”
+
+@41321 Milliardo · ミリアルド
+> 「もちろん、彼らも排除するまでだ。
+>  メリクリウスとヴァイエイトを出す」
+“Naturally, we eliminate them as well. Deploy the Mercurius and the Vayeate.”
+
+@41322 Dorothy · ドロシー
+> 「ではわたくしも、モビルドールを動かして
+>  みせますわ」
+“Then I too shall show you how I move the Mobile Dolls.”
+
+@41323 Quinze · カーンズ
+> 「無用のことだ。そんな必要はない」
+“That is unnecessary. There is no need for it.”
+
+@41324 Milliardo · ミリアルド
+> 「いや、やらせろ、カーンズ」
+“No, let her do it, Quinze.”
+
+@41325 Quinze · カーンズ
+> 「は……そうおっしゃるのでしたら」
+“Yes... If that is what you say.”
+
+@41326 Dorothy · ドロシー
+> 「さぁ、お人形さんたち。すばらしい
+>  戦いのダンスを踊りなさい」
+“Now then, my little dolls. Dance a splendid dance of battle.”
+
+@41327 Lady · レディ
+> 「来たか。リーブラへ攻撃を
+>  集中せよ」
+“They've come. Focus your attacks on Libra.”
+
+@41328 Jerid · ジェリド
+> 「見つけたぜ、カミーユ!!
+>  このバウンドドッグで
+“Found you, Kamille!! With this Bound Doc,
+---
+>  今度こそ貴様を倒す!」
+this time I'll defeat you for sure!”
+
+@41329 Kamille · カミーユ
+> 「ジェリド!? ホワイトファングに
+>  味方するつもりか!?」
+“Jerid?! Do you intend to side with White Fang?!”
+
+@41330 Lady · レディ
+> 「やめろジェリド特尉!
+>  リーブラを落とすのが先だ!」
+“Stop, Lieutenant Jerid! Bringing down Libra comes first!”
+
+@41331 Jerid · ジェリド
+> 「カミーユを倒してからなら
+>  そうさせてもらう!」
+“I'll do that after I've defeated Kamille!”
+
+@41332 Kamille · カミーユ
+> 「ジェリドッ!!」
+“Jerid!!”
+
+@41333 Jerid · ジェリド
+> 「俺は、貴様を倒せればそれでいい!」
+“As long as I can defeat you, that's all I need!”
+
+@41334 Kamille · カミーユ
+> 「くっ、ジェリドッ!!」
+“Ngh, Jerid!!”
+
+@41335 Jerid · ジェリド
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“Kamille isn't here?! Damn him. Then I'll just have to
+# 草稿第 2 页：crush 【主角机体名】!”
+> 「カミーユがいないだと!? くそ、奴め。
+>  なら、{HeroMech}を
+---
+>  叩きつぶすだけだ!」
+
+@41336 Lady · レディ
+> 「やめろジェリド特尉!
+>  リーブラを落とすのが先だ!」
+“Stop, Lieutenant Jerid! Bringing down Libra comes first!”
+
+@41337 Jerid · ジェリド
+> 「奴らを倒してからなら
+>  そうさせてもらうぜ!」
+“I'll do that after I've defeated them!”
+
+@41338 Bright · ブライト
+> 「トレーズ!?」
+“Treize?!”
+
+@41339 Treize · トレーズ
+> 「……私はこれまで犠牲になった
+>  人々に哀悼の意を
+“...All I can do is express my condolences to those who have been sacrificed.
+---
+>  表することしかできない。だが、
+>  君たちもこれだけは知っておいてほしい
+But there is one thing I want you all to know.
+---
+>  彼らは決して無駄死になど
+>  していない。そして、この私もまた」
+They did not die in vain. And neither will I.”
+
+@41340 Milliardo · ミリアルド
+> 「…………」
+“...”
+
+@41341 Treize · トレーズ
+> 「私の戦いはとうに終わっていたのだ。
+>  諸君、人類の未来は
+“My battle ended long ago. Everyone, the future of humanity
+---
+>  君たちにかかっている。私ではない。
+>  ミリアルド……先にいっているぞ……」
+rests with you. Not with me. Milliardo... I'm going on ahead...”
+
+@41342 Dorothy · ドロシー
+> 「トレーズ様!? そ、そんな……」
+“Lord Treize?! Th-That can't be...”
+
+@41343 Dorothy · ドロシー
+> 「トレーズ様!? そ、そんな……」
+“Lord Treize?! Th-That can't be...”
+
+@41344 Milliardo · ミリアルド
+> 「トレーズ……」
+“Treize...”
+
+@41345 Milliardo · ミリアルド
+> 「…………」
+“...”
+
+@41346 Treize · トレーズ
+> 「私の戦いはとうに終わっていたのだ。
+>  諸君、人類の未来は
+“My battle ended long ago. Everyone, the future of humanity
+---
+>  君たちにかかっている。私ではない。
+>  ミリアルド……先にいっているぞ……」
+rests with you. Not with me. Milliardo... I'm going on ahead...”
+
+@41347 Milliardo · ミリアルド
+> 「トレーズ……」
+“Treize...”
+
+@41348 Treize · トレーズ
+> 「私の戦いはとうに終わっていたのだ。
+>  諸君、人類の未来は
+“My battle ended long ago. Everyone, the future of humanity
+---
+>  君たちにかかっている。私ではない。
+>  さらばだ、諸君。……後は頼む」
+rests with you. Not with me. Farewell, everyone. ...I leave the rest to you.”
+
+@41349 Bright · ブライト
+> 「トレーズ……」
+“Treize...”
+
+@41350 Quinze · カーンズ
+> 「司令」
+“Commander.”
+
+@41351 Milliardo · ミリアルド
+> 「……リーブラを地球へ向けろ」
+“...Point Libra toward Earth.”
+
+@41352 Quinze · カーンズ
+> 「はっ!」
+“Yes, sir!”
+
+@41353 Milliardo · ミリアルド
+> (すべての人類よ……思い知るがいい
+>  破滅というものの、恐ろしさを)
+(All of humanity... you will learn the terror of what destruction means)
+
+@41354 Howard · ハワード
+> 「リーブラが移動する? いかん、ゼクス
+>  はリーブラを地球に落とすつもりだ」
+“Libra is moving? No, Zechs means to drop Libra on Earth.”
+
+@41355 Bright · ブライト
+> 「なんですって!?」
+“What did you say?!”
+
+@41356 Howard · ハワード
+> 「たとえ1次被害は数百キロですん
+>  でも、巻き上げられた大量のチリが
+“Even if the primary damage stays within a few hundred kilometers, the massive amount of dust kicked up
+---
+>  地球全体の寒冷化を引き
+>  起こす。……止めねばならんな」
+will cause a global cooling of the entire Earth. ...We have to stop it.”
+
+@41357 Bright · ブライト
+> 「ハワード? 何をするつもりだ!?」
+“Howard? What are you planning to do?!”
+
+@41358 Howard · ハワード
+> 「もうこれしか方法は残っておらん。
+>  ピースミリオンをリーブラへぶつける」
+“There's only one way left. We ram the Peacemillion into Libra.”
+
+@41359 Bright · ブライト
+> 「なっ……」
+“What...”
+
+@41360 Quinze · カーンズ
+> 「な、なんだ? 奴らはいったい何を……」
+“Wh-What? What on earth are they doing...?”
+
+@41361 Howard · ハワード
+> 「エンジンが壊れたってかまわん!
+>  限界まで出力を上げろ!」
+“I don't care if the engines break! Push the output to the limit!”
+
+@41362 Quinze · カーンズ
+> 「な、なんだと!? うわあぁぁぁぁーっ!!」
+“Wh-What did you say?! Uwaaaaaaah!!”
+
+@41363 Milliardo · ミリアルド
+> 「ヒイロ・ユイか……」
+“Heero Yuy...”
+
+@41364 Heero · ヒイロ
+> 「安心しろ……リリーナは退避させた」
+“Don't worry... I got Relena to safety.”
+
+@41365 Milliardo · ミリアルド
+> 「そうか…………では、最後の戦いを
+>  始めるとしよう。大破したリーブラは
+“I see... Then let us begin the final battle. The heavily damaged Libra
+---
+>  いまだ地球へと向かっている。これ
+>  以上の邪魔がなければ、落ちる」
+is still heading toward Earth. If nothing else interferes, it will fall.”
+
+@41366 Noin · ノイン
+> 「ゼクス……あなたはっ!」
+“Zechs... you can't!”
+
+@41367 Milliardo · ミリアルド
+> 「ノイン…………」
+“Noin...”
+
+@41368 Quatre · カトル
+> 「どうして僕たちは、こんな戦いを
+>  しなくちゃならないんだい!?」
+“Why do we have to fight a battle like this?!”
+
+@41369 Dorothy · ドロシー
+> 「あなたたちには、理解できないこと
+>  ですわ!」
+“It's something you people could never understand!”
+
+@41370 Kamille · カミーユ
+> 「貴様のような奴がいるから、
+>  こんなことになるんだ! 消えろ!」
+“It's because people like you exist that this happens! Disappear!”
+
+@41371 Jerid · ジェリド
+> 「俺を戦いに駆りたてたのは
+>  貴様だ!
+“You're the one who drove me to fight!
+---
+>  そんなことがいえるのかよ!!」
+How can you say that?!”
+
+@41372 Jerid · ジェリド
+> 「カミーユ、貴様は俺を……!」
+“Kamille, you...!”
+
+@41373 Jerid · ジェリド
+> 「なぜだ!? なぜ俺が……!!」
+“Why?! Why me...?!”
+
+@41374 Noin · ノイン
+> 「ゼクス!」
+“Zechs!”
+
+@41375 Milliardo · ミリアルド
+> 「ノイン、そこをどけ」
+“Noin, get out of my way.”
+
+@41376 Noin · ノイン
+> 「ゼクス、あなたと戦いたくはない。
+>  ですが……」
+“Zechs, I don't want to fight you. But...”
+
+@41377 Milliardo · ミリアルド
+> 「ノイン、退くんだ!」
+“Noin, stand down!”
+
+@41378 Noin · ノイン
+> 「退きません! たとえ……
+>  たとえあなたを倒すことになろうとも!」
+“I won't stand down! Even... even if it means defeating you!”
+
+@41379 Milliardo · ミリアルド
+> 「ノイン…………くっ!」
+“Noin... Ngh!”
+
+@41380 Noin · ノイン
+> 「……ゼクス……?」
+“...Zechs...?”
+
+@41381 Milliardo · ミリアルド
+> (……なぜだ!?
+>  なぜこうも甘いのだ、私は!)
+(...Why?! Why am I so soft?!)
+
+@41382 Milliardo · ミリアルド
+> 「ヒイロ・ユイ。やはりこうなる
+>  運命のようだな」
+“Heero Yuy. It seems this was our fate after all.”
+
+@41383 Heero · ヒイロ
+> 「ゼクス……未来は見えているはずだ」
+“Zechs... you should be able to see the future.”
+
+@41384 Milliardo · ミリアルド
+> 「見えているとも。地球に
+>  根ざすものは、コロニーに対して常に
+“I can see it. Those rooted on Earth can always become
+---
+>  強者となりうる。それではいつまでも
+>  同じことが繰り返されるだけだ
+the strong against the colonies. That way, the same thing will just repeat forever.
+---
+>  それでは人類は本当に
+>  滅びてしまう
+If so, humanity will truly be destroyed.
+---
+>  銀河帝国によらずともな。
+>  それは座視できん!」
+Even without the Galactic Empire. I cannot stand by and let that happen!”
+
+@41385 Heero · ヒイロ
+> 「ゼクス! 強者などどこにもいない。
+>  人類すべてが弱者なんだ
+“Zechs! There are no strong anywhere. All of humanity is weak.
+---
+>  俺も、お前も、弱者なんだ!」
+I am, and you are, weak too!”
+
+@41386 Milliardo · ミリアルド
+> 「私はそれを認めてはいない!」
+“I refuse to accept that!”
+
+@41387 Milliardo · ミリアルド
+# 审校：“More sternly than anyone” 语气生硬，改为 “More harshly than anyone” 更符合战士口吻。
+> 「私はどこまでも生きぬいて見せるぞ!
+>  誰よりも厳しく、戦士としてな!」
+“I will survive no matter what! More harshly than anyone, as a warrior!”
+
+@41388 Dorothy · ドロシー
+> 「ミリアルド様!? くっ……そんな……」
+“Lord Milliardo?! Ngh... this can't be...”
+
+@41389 Lady · レディ
+> 「終わった……トレーズ様……」
+“It's over... Lord Treize...”
+
+@41390 Jerid · ジェリド
+> 「くっ、奴らをやらずに
+>  引き下がれるかよ!」
+“Ngh, how can I retreat without finishing them off?!”
+
+@41391 Jerid · ジェリド
+> 「くっ、奴らをやらずに
+>  引き下がれるかよ!」
+“Ngh, how can I retreat without finishing them off?!”
+
+@41392 Bright · ブライト
+> 「あれは……」
+“That's...”
+
+@41393 Quatre · カトル
+> 「五飛!?」
+“Wufei?!”
+
+@41394 Duo · デュオ
+> 「五飛だって? あいついったい何の
+>  つもりなんだ……?」
+“Wufei? What the hell is he thinking...?”
+
+@41395 Treize · トレーズ
+> 「ほう……張五飛か……」
+“Oh... Chang Wufei...”
+
+@41396 Wufei · 五飛
+> 「トレーズ……俺は貴様が憎い!
+>  貴様は人を見下すことしか
+“Treize... I hate you! You're a man who can do nothing but
+---
+>  できない男だ。しょせん、エゴでしか
+>  戦っていない
+look down on people. In the end, you only ever fought for your own ego.
+---
+>  OZがスペシャルズだった時代を
+>  思い出すがいい! 貴様のために
+Remember when OZ was the Specials! How many people do you think
+---
+>  何人の人間が死んだと
+>  思っている!?」
+died for your sake?!”
+
+@41397 Treize · トレーズ
+> 「聞きたいかね」
+“Would you like to know?”
+
+@41398 Wufei · 五飛
+> 「な……なに!?」
+“Wha... what?!”
+
+@41399 Treize · トレーズ
+> 「戦いのために犠牲になった人々は
+>  すべて記憶している」
+“I remember every single person who became a sacrifice for this war.”
+
+@41400 Wufei · 五飛
+> 「き……貴様ァッ!!」
+“Y... you bastard!!”
+
+@41401 Treize · トレーズ
+> 「私は……これまで犠牲になった
+>  人々に哀悼の意を表すること
+“I... can do nothing but express my condolences to those who have
+---
+>  しかできない。だが! 君たちもこれだけ
+>  は知っておいてほしい。彼らは決して
+become sacrifices. But! I want you all to know this much. They never
+---
+>  無駄死になどしていない。
+>  ……そして!」
+died in vain. ...And!”
+
+@41402 Wufei · 五飛
+> 「トレーズ!? 貴様!!」
+“Treize?! You!!”
+
+@41403 Treize · トレーズ
+# 审校：“Gentlemen” 与原文“諸君”在上下文中应保持与 L1 一致的 “Everyone”，避免同一说话人用词不一致。
+> 「……私の戦いはとうに終わっていた。
+>  諸君、人類の未来は君たちに
+“...My battle ended long ago. Everyone, the future of humanity rests
+---
+>  かかっている。私ではない。
+>  ……後はまかせる」
+with you. Not with me. ...I leave the rest to you.”
+
+@41404 Lady · レディ
+> 「トレーズ様……」
+“Lord Treize...”
+
+@41405 Amuro · アムロ
+> 「トレーズ……」
+“Treize...”
+
+@41406 Wufei · 五飛
+> 「くそぉぉぉぉぉぉーっ!!」
+“Damn youuuuuuu!!”
+
+@41407 Heero · ヒイロ
+> 「お前の勝ちだ。もうやめろ、五飛」
+“You win. Stop it already, Wufei.”
+
+@41408 Wufei · 五飛
+> 「どこがだ!? いまの戦いのどこが俺の
+>  勝ちだというのだ!? 奴はワザと
+“How is this a win?! How was any of that my victory?! He took my
+---
+>  俺の攻撃を受けたのだぞ!! くっ
+>  奴め……最後の最後まで……」
+attack on purpose!! Ngh, that man... right to the very end...”
+
+@41409 Duo · デュオ
+> 「なぁ五飛、まさか俺たちとやるつもり
+>  なわけじゃないんだろ」
+“Hey Wufei, you're not seriously planning to fight us too, are you?”
+
+@41410 Wufei · 五飛
+> 「……まだ倒さねばならぬ悪が
+>  残っている」
+“...There is still evil left that I must strike down.”
+
+@41411 Duo · デュオ
+> 「わかってるさ。銀河帝国軍だろ?
+>  なら俺たちと一緒に……」
+“I get it. The Galactic Empire, right? Then come with us and...”
+
+@41412 Wufei · 五飛
+> 「俺は1人でも奴らを倒してみせる!
+>  頭をつぶせばいいだけの話だ!
+“I'll defeat them even alone! All I have to do is crush their head!
+---
+>  俺は、貴様らが正義だと
+>  認めていない!!」
+I do not acknowledge that you people are justice!!”
+
+@41413 Quatre · カトル
+> 「五飛!? まってください、五飛!」
+“Wufei?! Wait, Wufei!”
+
+@41414 Quatre · カトル
+> 「五飛……」
+“Wufei...”
+
+@41415 Beauty · ビューティ
+> 「あら……? ちょっと、あいつ
+>  帰らないわよ!」
+“Oh...? Hey, that guy's not coming back!”
+
+@41416 Kamille · カミーユ
+> 「ジェリド!?」
+“Jerid?!”
+
+@41417 Jerid · ジェリド
+> 「くっ、貴様らをやらずに、このまま
+>  引き下がれるかよ!」
+“Ngh, how can I retreat like this without finishing you all off?!”
+
+@41418 Beltorchika · ベルトーチカ
+> 「艦長、MSの編隊が
+>  接近しています!」
+“Captain, an MS formation is approaching!”
+
+@41419 Bright · ブライト
+> 「なんだと!? まだモビルドールが
+>  残っていたのか!?」
+“What?! There are still Mobile Dolls left?!”
+
+@41420 Haman · ハマーン
+> 「フフフフ、まったくよくやってくれたよ、
+>  お前たちは」
+“Heh heh heh, you've done quite well indeed, all of you.”
+
+@41421 Quattro · クワトロ
+> 「ハマーン・カーン!?
+>  アクシズの軍勢か!」
+“Haman Karn?! The Axis forces?!”
+
+@41422 Haman · ハマーン
+> 「このうえは銀河帝国軍も、この
+>  地球圏も、我々アクシズが
+“From here on, both the Galactic Empire's forces and this Earth Sphere
+---
+>  制しよう。ご苦労だった、
+>  {HeroMech}
+shall be controlled by us, Axis. You've done well, {HeroMech}.
+---
+>  ここでお別れとは寂しいかぎりだ。
+>  シャア……こんなところで朽ち果てる
+It is truly a lonely thing to part ways here. Char... curse your own
+---
+>  己が身を呪うがいい」
+body for rotting away in a place like this.”
+
+@41423 Quattro · クワトロ
+> 「そうかな!?」
+“Is that so?!”
+
+@41424 Haman · ハマーン
+> 「シャア、もしも私のもとへもどる
+>  意思があるのならば……」
+“Char, if you have any intention of returning to my side...”
+
+@41425 Quattro · クワトロ
+> 「冗談ではない!」
+“Don't be ridiculous!”
+
+@41426 Haman · ハマーン
+> 「……話しあいの余地がないとすれば、
+>  ここがお前の死に場所となる」
+“...If there's no room for discussion, then this is where you die.”
+
+@41427 Kamille · カミーユ
+> 「ハマーン・カーン!
+>  お前は戦いの意思を生む源だ
+“Haman Karn! You are the source that breeds the will to fight.
+---
+>  だとすれば、生かしておくわけには
+>  いかない!」
+If that's so, I can't let you live!”
+
+@41428 Haman · ハマーン
+> 「俗物が私に! カミーユ・ビダン、
+>  貴様は確かに優れた資質を
+“A commoner, to me! Kamille Bidan, you may indeed possess exceptional
+---
+>  持っているらしいが、無礼を許す
+>  わけにはいかんな」
+qualities, but I cannot forgive such insolence.”
+
+@41429 Mashymre · マシュマー
+> 「なんだ? グレミーのニュータイプか?
+>  なぜこんなところに!?」
+“What? A Newtype of Glemy's? Why are you here?!”
+
+@41430 Ple · プル
+> 「胸がキュンキュンする……でもとっても
+>  気持ちいい……どうしたんだろ?」
+“My chest is tingling... but it feels so good... What's happening to me?”
+
+@41431 Judau · ジュドー
+> 「な……なんだ、この感じ……?
+>  あのMSか……?」
+“Wh... what is this feeling...? That MS...?”
+
+@41432 Ple · プル
+> 「わかったぞ、このキュンキュン。
+>  あのパイロットだ!」
+“I get it now, this tingling. It's that pilot!”
+
+@41433 Judau · ジュドー
+> 「なんだぁ!?」
+“What the?!”
+
+@41434 Ple · プル
+> 「あたしを探してるんでしょ、お兄ちゃん
+>  あたしエルピー・プル。よろしく!」
+“You're looking for me, right, big brother? I'm Elpeo Ple. Nice to meet you!”
+
+@41435 Judau · ジュドー
+> 「エルピー……プル……?」
+“Elpeo... Ple...?”
+
+@41436 Bright · ブライト
+> 「ジュドー! なにをやっている!!」
+“Judau! What are you doing?!”
+
+@41437 Ple · プル
+> 「マシュマー! グレミーのとこは
+>  退屈だから、出てきちゃった!」
+“Mashymre! It was boring at Glemy's place, so I came out!”
+
+@41438 Mashymre · マシュマー
+> 「くっ……このマシュマー・セロ、子供を
+>  戦わせるほど落ちぶれてはおらん!」
+“Ngh... I, Mashymre Cello, have not fallen so low as to make a child fight!”
+
+@41439 Ple · プル
+> 「なにいってんの、マシュマー?」
+“What are you talking about, Mashymre?”
+
+@41440 Haman · ハマーン
+> 「よい、マシュマー。好きにやらせてみろ」
+“It's fine, Mashymre. Let her do as she likes.”
+
+@41441 Mashymre · マシュマー
+> 「はっ、ハマーン様!」
+“Y-yes, Lady Haman!”
+
+@41442 Haman · ハマーン
+> 「な、なんだ? 鳥肌がたっている?
+>  なんだというのだ!?」
+“Wh-what? I have goosebumps? What is this?!”
+
+@41443 Kamille · カミーユ
+> 「ハマーン・カーン!」
+“Haman Karn!”
+
+@41444 Haman · ハマーン
+> 「貴様かニュータイプ! この
+>  キュベレイをなめてもらっては困る!」
+“So it's you, Newtype! I won't have you underestimating this Qubeley!”
+
+@41445 Quattro · クワトロ
+> 「ハマーン……せめて私の手で……」
+“Haman... at least by my own hand...”
+
+@41446 Haman · ハマーン
+> 「シャア……世界の都合というものを
+>  洞察できない男は
+“Char... a man who cannot discern the way of the world
+---
+>  排除せねばならん」
+must be eliminated.”
+
+@41447 Haman · ハマーン
+> 「これで終わりにするか? 続けるか?
+>  シャア!」
+“Shall we end it here? Or continue? Char!”
+
+@41448 Quattro · クワトロ
+> 「そんな決定権が、
+>  お前にあるのか!?」
+“Do you have the right to decide that?!”
+
+@41449 Haman · ハマーン
+> 「口の聞き方に気をつけてもらおう!
+>  いけ、ファンネル!」
+“Mind your tone! Go, Funnels!”
+
+@41450 Quattro · クワトロ
+> 「なにッ!?」
+“What?!”
+
+@41451 Haman · ハマーン
+> 「シャア……私と来てくれれば……
+>  くっ……」
+“Char... if only you would come with me... ngh...”
+
+@41452 Haman · ハマーン
+> 「シャア……私と来てくれれば……
+>  くっ……」
+“Char... if only you would come with me... ngh...”
+
+@41453 Ple · プル
+> 「ジュドー! あたしと遊ぼう!」
+“Judau! Play with me!”
+
+@41454 Judau · ジュドー
+> 「プルみたいな子が戦争なんてしちゃ
+>  いけない! パイロットなんていけないよ!」
+“A kid like you shouldn't be fighting a war! You shouldn't be a pilot!”
+
+@41455 Ple · プル
+> 「何……何をいってるの?」
+“Wh... what are you saying?”
+
+@41456 Judau · ジュドー
+> 「プルみたいな子が人殺しなんて、
+>  しちゃいけない!」
+“A kid like you shouldn't be killing people!”
+
+@41457 Ple · プル
+> 「やめてよ! あたしは、ジュドーと
+>  遊びたいだけなのにッ!!」
+“Stop it! I just want to play with you, Judau!!”
+
+@41458 Haman · ハマーン
+> 「な……なんだと!?
+>  これ以上は無理ということか
+“Wh-what?! So I can't push any further?
+---
+>  くっ、撤退する!」
+Ngh, I'm retreating!”
+
+@41459 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41460 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41461 Haman · ハマーン
+> 「くっ、好きにやらせすぎたか……
+>  ここで無理はできん。撤退する!」
+“Ngh, I let her have too much her own way... I can't push it here. Retreating!”
+
+@41462 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41463 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41464 Haman · ハマーン
+> 「くっ、敵の戦力を見誤ったか……
+>  まぁよい、ここは撤退してもよかろう
+“Ngh, did I misjudge the enemy's strength...? No matter, retreating here should be fine.
+---
+>  全軍撤退せよ!」
+All forces, retreat!”
+
+@41465 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41466 Quattro · クワトロ
+> 「………………」
+“...”
+
+@41467 Quatre · カトル
+> 「いまは、こんな戦いをしている場合
+>  じゃないんだ。銀河帝国軍と
+“This isn't the time to be fighting a battle like this. We have to fight the Galactic Empire
+---
+>  戦わなくっちゃいけないんだよ!」
+and its forces!”
+
+@41468 Dorothy · ドロシー
+> 「いいえ、破壊と殺戮は異星人
+>  を倒せば終わるというものではないわ!
+“No, destruction and slaughter won't end just because we defeat the aliens!
+---
+>  もう1つ倒さなければならない敵が、
+>  私たちの心の中にあるのよ!」
+There's one more enemy we have to defeat, and it's inside our own hearts!”
+
+@41469 Quatre · カトル
+> 「僕たちの……心の中の敵……?」
+“The enemy... inside our hearts...?”
+
+@41470 Dorothy · ドロシー
+> 「そうよ。あなたたちのしていることは、
+>  すべてムダなのよ!
+“That's right. Everything you're doing is pointless!
+---
+>  他人を思いやった、思いやりすぎた
+>  結果が、いまの地球圏なのよ!」
+It's the result of caring for others, of caring too much, that brought the Earth Sphere to what it is now!”
+
+@41471 Quatre · カトル
+> 「そんな、そんなことはない!」
+“That's... that's not true!”
+
+@41472 Dorothy · ドロシー
+> 「いいえ、それが地球圏を、人類を
+>  ダメにしてきたのよ。それが、人の心を
+“No, that's what has ruined the Earth Sphere and humanity. That's what twisted people's
+---
+>  おかしくしたのよ。だから、人類に
+>  見せつけてやるべきなのよ!
+hearts. So we have to show humanity!
+---
+>  その心の中の闇を! 地球圏に
+>  せまる本当の破滅の恐ろしさを!」
+The darkness inside their hearts! The terror of the true destruction closing in on the Earth Sphere!”
+
+@41473 Quatre · カトル
+> 「それが……この戦いの意味だと
+>  いうのか?」
+“That's... the meaning of this battle?”
+
+@41474 Dorothy · ドロシー
+> 「そうよ! 地球圏を守るためには、
+>  異星人を倒すだけじゃだめなのよ!
+“Yes! To protect the Earth Sphere, defeating the aliens isn't enough!
+---
+>  それをわかる前に異星人に勝て
+>  たって、また人類は同じことを
+Even if we beat the aliens before they understand that, humanity will just repeat the same mistakes!
+---
+>  繰り返すわ! それをわからせなければ
+>  その心そのものを改革しなければ、
+If we don't make them understand, if we don't reform their very hearts,
+---
+>  人類は自分自身の手で滅び
+>  を迎えてしまうのよ!
+humanity will bring about its own destruction with its own hands!
+---
+>  人類は生き残るのに精いっぱいな
+>  くらいが、ちょうどいいのよ!」
+Humanity is better off when it's struggling just to survive!”
+
+@41475 Quatre · カトル
+> 「だけど……だけど、やさしさを否定して
+>  はダメだ! すべてを受け入れなければ
+“But... but you can't deny kindness! We have to accept everything.
+---
+>  いけないんだ。そのやさしさが、人類に
+>  は必要なんだよ。やさしくなければ、
+That kindness is what humanity needs. Without kindness,
+---
+>  人類なんか存在する意味はない
+>  んだよ。そうだろう? 生き残るだけの
+there's no point in humanity existing at all. Isn't that right? A humanity that only survives,
+---
+>  人類なんて、他人を思いやること
+>  もない、動物以下の種族に
+that never cares for others, would become a species lower than
+---
+>  なってしまうよ……」
+animals...”
+
+@41476 Dorothy · ドロシー
+> 「………………」
+“...”
+
+@41477 Hyoma · 豹馬
+> 「なんだよなんだよ、みんなしてしけた
+>  ツラしちまってさ。結局俺たちは
+“What's with you all, everyone's got such a gloomy face. In the end, we
+---
+>  勝ったんだぜ? リーブラは落としたし
+>  ホワイトファングもなくなったじゃないか」
+won, didn't we? We brought down Libra and White Fang is gone too.”
+
+@41478 Koji · 甲児
+> 「だけどな……なんだかこう、
+>  すっきりしねぇんだよな」
+“But... somehow, it just doesn't feel right.”
+
+@41479 Ryoma · リョウ
+> 「そうだな……なにしろクワトロ大尉も
+>  行方不明だしな
+“Yeah... after all, Captain Quattro is missing too,
+---
+>  銀河帝国軍もアクシズ軍も
+>  まだ残っている」
+and both the Galactic Empire and the Axis Forces are still out there.”
+
+@41480 Bright · ブライト
+> 「……本当に誰も、大尉を
+>  見ていないのか?」
+“...Has no one really seen the Captain?”
+
+@41481 Amuro · アムロ
+> 「もう何度も確認したよ、ブライト。
+>  大尉は俺たちのもとから
+“I've checked over and over, Bright. The Captain vanished from
+---
+>  姿を消した。生死不明でな」
+our side. He's missing, fate unknown.”
+
+@41482 Judau · ジュドー
+> 「やだなぁアムロさん、
+>  縁起悪いこといわないでよ
+“Come on, Amuro, don't say such unlucky things.
+---
+>  あの人のことだ、きっとすぐ
+>  もどってくるって」
+This is him we're talking about, I'm sure he'll come back soon.”
+
+@41483 Banjo · 万丈
+> 「だといいがね」
+“I hope so.”
+
+@41484 Alan · アラン
+> 「万丈、何か知っているのか?」
+“Banjo, do you know something?”
+
+@41485 Banjo · 万丈
+> 「いや、そういうわけじゃない。
+>  ただ僕が見たところ
+“No, it's not like that. It's just that from what I saw,
+---
+>  クワトロ大尉はこのところ
+>  ずっとうっ屈しているようだった
+Captain Quattro seemed to be brooding all this time.
+---
+>  もしも何か考えがあって僕たちの
+>  前から姿を消したのだとすれば……」
+If he disappeared from before us because he had something in mind...”
+
+@41486 Garrison · ギャリソン
+> 「……もどっておいでにはならない、
+>  と、そういうことですか」
+“...He won't be coming back, is that what you mean, sir?”
+
+@41487 Amuro · アムロ
+> 「…………」
+“...”
+
+@41488 Lady · レディ
+> 「救助していただいて感謝します。
+>  残存したOZ兵士は
+“Thank you for rescuing me. I've sent the surviving OZ soldiers
+---
+>  月面へ向かわせました」
+to the lunar surface.”
+
+@41489 Dr. Hazuki · 葉月博士
+> 「月面?」
+“The lunar surface?”
+
+@41490 Lady · レディ
+> 「ホワイトファングは月面に
+>  戦力を残しておりませんでした
+“White Fang left no forces on the lunar surface.
+---
+>  ほぼ無傷で月面基地は
+>  奪還しています」
+We've retaken the lunar base almost intact.”
+
+@41491 Chief Chujo · 中条長官
+> 「そうですか……しかしOZももはや
+>  まともな戦力とはいいがたいですな」
+“I see... but OZ can hardly be called a proper fighting force anymore.”
+
+@41492 Lady · レディ
+> 「その通りです。
+>  トレーズ様を失った今
+“That's right. Now that we've lost Lord Treize,
+---
+>  士気を維持するのも
+>  難しいでしょう」
+it will be difficult to even maintain morale.”
+
+@41493 Relena · リリーナ
+> 「…………」
+“...”
+
+@41494 Lady · レディ
+> 「リリーナ嬢もおられたのですね……
+>  どうぞこれを」
+“So you were here too, Lady Relena... Please, take this.”
+
+@41495 Relena · リリーナ
+> 「? 拳銃などでわたくしに
+>  何をしろとおっしゃるのですか?」
+“? A pistol... What are you asking me to do with this?”
+
+@41496 Lady · レディ
+> 「見ての通り魂の抜け殻ですが、
+>  どうか父上の……
+“As you can see, I'm an empty shell of a soul, but please...
+---
+>  ドーリアン氏のご無念を
+>  お晴らしください」
+avenge your father's... Mr. Darlian's regrets.”
+
+@41497 Julia · ジュリア
+> 「リリーナ……」
+“Relena...”
+
+@41498 Relena · リリーナ
+> 「ええ、わかっています、ジュリア様。
+>  もう、そういうことは終わりにしましょう
+“Yes, I understand, Julia. Let's put an end to that sort of thing.
+---
+>  復讐など、何の意味も
+>  ないのですから」
+Revenge has no meaning at all.”
+
+@41499 Lady · レディ
+> 「……はい」
+“...Yes.”
+
+@41500 Julia · ジュリア
+> 「あなたにはまだすることが
+>  残っているはずです
+“There must still be things left for you to do.
+---
+>  いま、あなたまで失えば、残された
+>  兵士たちは
+If you too are lost now, what are the remaining soldiers supposed to do?
+---
+>  いったいどうすればよいのでしょう?
+>  それに、OZという組織にも
+Besides, there must be many things the organization called OZ
+---
+>  これからやるべきことは、数多く
+>  あるはずなのではないのですか?」
+still has to do from here on.”
+
+@41501 Lady · レディ
+> 「……確かにおっしゃる通りです。
+>  トレーズ様の死とともに私の戦いも
+“...You're quite right. With Lord Treize's death, my battle ended as well.
+---
+>  終わりました。しかし果たすべき
+>  責任はまだ残っているのですね」
+But the responsibilities I must fulfill still remain.”
+
+@41502 Relena · リリーナ
+> 「ええ。もしもご自分の過ちに気づき
+>  それをつぐなうとおっしゃるのでしたら
+“Yes. If you say you've realized your mistakes and wish to atone for them,
+---
+>  地球圏の平和のために
+>  尽力してください
+then please devote yourself to peace in the Earth Sphere.
+---
+>  お父さまもそれを望むはずです」
+My father would surely wish for that too.”
+
+@41503 Lady · レディ
+> 「はい……私も月面基地へ
+>  向かうことにします
+“Yes... I'll head for the lunar base as well.
+---
+>  OZを立て直し、地上の
+>  難民たちを1人でも多く
+I'll rebuild OZ and work to save even one more refugee on Earth.
+---
+>  救うことに努力いたしましょう。
+>  よろしければおふたりもご一緒ください
+If you'd like, please come with me.
+---
+>  {HeroMech}はまだ
+>  戦いをやめるわけにはいかないでしょう」
+The {HeroMech} can't afford to stop fighting yet, after all.”
+
+@41504 Julia · ジュリア
+> 「……そうですね……
+>  そのほうがよいかもしれません」
+“...You're right... Perhaps that's for the best.”
+
+@41505 Relena · リリーナ
+> 「そう思います。わたくしたちも
+>  ご一緒いたしましょう、ジュリア様」
+“I think so too. Let us accompany you as well, Julia.”
+
+@41506 Chief Chujo · 中条長官
+> 「頼みますぞ、レディ・アン特佐」
+“I'm counting on you, Lieutenant Colonel Lady Une.”
+
+@41507 Sara · 沙羅
+> 「ここにいたのかい。リリーナは
+>  気色悪いくらいに変わっちまった
+“So here you are. Relena's changed so much it's creepy.
+---
+>  レディ・アンと聖女と一緒に、
+>  月へ向かうそうだよ
+Apparently she's heading to the moon with Lady Une and the Holy Woman.
+---
+>  それから地上へ降りるってさ」
+And after that, she's coming down to Earth.”
+
+@41508 Noin · ノイン
+> 「そうか……地上は
+>  さぞかし大変な状態だろうな……」
+“I see... The surface must be in a terrible state...”
+
+@41509 Sara · 沙羅
+> 「あんたは一緒に
+>  行かなくていいのかい?
+“Don't you want to go with them?
+---
+>  その方がいいんじゃないの?」
+Wouldn't that be better for you?”
+
+@41510 Noin · ノイン
+> 「気づかいは無用だ、沙羅。私は
+>  ……ゼクスが生きていると信じる
+“No need to worry about me, Sara. I... believe Zechs is alive.
+---
+>  だから落ちこみなどはしない……
+>  少なくともこの戦いが終わるまでは」
+So I won't be depressed... at least not until this battle is over.”
+
+@41511 Sara · 沙羅
+> 「あんたがそういうんなら、それもいいさ。
+>  結局……何も失わずにいられる
+“If that's how you feel, then fine. In the end... nobody gets through
+---
+>  奴なんて、いやしないのさ。
+>  こんな戦いではね」
+a war like this without losing something.”
+
+@41512 Bright · ブライト
+> 「アムロ、少し休んでおけ。
+>  いつ銀河帝国軍が攻撃を
+“Amuro, get some rest. We don't know when the Galactic Empire's forces
+---
+>  再開するかわからんし、
+>  ハマーンのこともある。あれだけ
+might resume their attack, and there's Haman to consider too. She came out
+---
+>  自信を持って出てきたんだ。
+>  このままですむとも思えん」
+with that much confidence. I doubt this is the end of it.”
+
+@41513 Amuro · アムロ
+> 「わかってるよ、ブライト。すぐに休むさ」
+“I know, Bright. I'll rest soon enough.”
+
+@41514 Bright · ブライト
+> 「……あまり、気にするなよ」
+“...Don't take it too hard.”
+
+@41515 Amuro · アムロ
+> 「ああ……」
+“Yeah...”
+
+@41516 Amuro · アムロ
+> 「シャア…………」
+“Char...”

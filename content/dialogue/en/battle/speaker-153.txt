@@ -1,0 +1,82 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11856 Keiko · 恵子
+> 「いまよ!」
+“Now!”
+
+@11857 Keiko · 恵子
+> 「そこだわ!」
+“There!”
+
+@11858 Keiko · 恵子
+> 「それっ!」
+“Take this!”
+
+@11859 Keiko · 恵子
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@11860 Keiko · 恵子
+> 「し、しまったぁっ!」
+“Oh n-no!”
+
+@11861 Keiko · 恵子
+> 「ああぁぁぁぁーっ!」
+“Aaaaaaah!”
+
+@11862 Keiko · 恵子
+> 「も、もうだめっ!」
+“I-I can't anymore!”
+
+@11863 Keiko · 恵子
+> 「うぅっ!」
+“Ngh!”
+
+@11864 Keiko · 恵子
+> 「ま、まだ!」
+“N-not yet!”
+
+@11865 Keiko · 恵子
+> 「まだもうすこしはっ!」
+“I can still hold on a bit!”
+
+@11866 Keiko · 恵子
+> 「うぅっ、ま、まだいけるはずよ!」
+“Ngh, I-I should still be able to fight!”
+
+@11867 Keiko · 恵子
+> 「あぁっ!?」
+“Ah?!”
+
+@11868 Keiko · 恵子
+> 「この程度でやられる私だと
+>  思って!?」
+“You think this is enough to take me down?!”
+
+@11869 Keiko · 恵子
+> 「ぜんぜんだめね」
+“That's not nearly enough.”
+
+@11870 Keiko · 恵子
+> 「助かったぁ!」
+“That was close!”
+
+@11871 Keiko · 恵子
+> 「危ないっ!」
+“Watch out!”
+
+@11872 Keiko · 恵子
+> 「効かないわよ!」
+“That won't work on me!”
+
+@11873 Keiko · 恵子
+> 「ビームなんかじゃ効かないわ!」
+“A Beam won't do a thing to me!”
+
+@11874 Keiko · 恵子
+> 「あぁ!? 弾切れなの!?」
+“Ah?! I'm out of ammo?!”
+
+@11875 Keiko · 恵子
+> 「だめ! 届かないわ!」
+“No! It won't reach!”

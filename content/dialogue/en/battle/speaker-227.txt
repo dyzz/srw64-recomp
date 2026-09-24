@@ -1,0 +1,98 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8773 Ramsus · ラムサス
+> 「くらえっ!」
+“Take this!”
+
+@8774 Ramsus · ラムサス
+> 「行くぞっ!」
+“Here I come!”
+
+@8775 Ramsus · ラムサス
+> 「このっ!」
+“Why you!”
+
+@8776 Ramsus · ラムサス
+> 「とどめっ!」
+“Finish him!”
+
+@8777 Ramsus · ラムサス
+> 「どうだ!」
+“How's that!”
+
+@8778 Ramsus · ラムサス
+> 「貴様っ!」
+“You bastard!”
+
+@8779 Ramsus · ラムサス
+> 「落ちろっ!」
+“Fall!”
+
+@8780 Ramsus · ラムサス
+# 检查提示：未用必用译名：ヤザン隊→Yazan Team
+> 「ヤ、ヤザン隊長っ! うわあああっ!!」
+“C-Commander Yazan! Aaaagh!!”
+
+@8781 Ramsus · ラムサス
+> 「何っ!? お、押されている!?」
+“What?! I-I'm being pushed back?!”
+
+@8782 Ramsus · ラムサス
+> 「な、何だこいつはっ!?」
+“W-What the hell is this thing?!”
+
+@8783 Ramsus · ラムサス
+> 「うおおおっ! つ、強い!」
+“Whoa! H-He's strong!”
+
+@8784 Ramsus · ラムサス
+> 「ぐっ! ま、まだだっ!」
+“Ngh! N-Not yet!”
+
+@8785 Ramsus · ラムサス
+> 「くっ! やるな!」
+“Tch! Not bad!”
+
+@8786 Ramsus · ラムサス
+> 「づうっ! こ、この程度でっ!」
+“Guh! Th-This is nothing!”
+
+@8787 Ramsus · ラムサス
+> 「ちいっ! よくもっ!」
+“Tch! How dare you!”
+
+@8788 Ramsus · ラムサス
+> 「フ……うわさほどではないな!」
+“Hmph... not as tough as they say!”
+
+@8789 Ramsus · ラムサス
+> 「効かんな!」
+“That's nothing!”
+
+@8790 Ramsus · ラムサス
+> 「ふん、その程度か!」
+“Hmph, is that all?!”
+
+@8791 Ramsus · ラムサス
+> 「甘いな!」
+“Too soft!”
+
+@8792 Ramsus · ラムサス
+> 「かわしてみせる!」
+“I'll dodge it!”
+
+@8793 Ramsus · ラムサス
+> 「そこっ!」
+“There!”
+
+@8794 Ramsus · ラムサス
+> 「ムダな攻撃を……」
+“What a waste of an attack...”
+
+@8795 Ramsus · ラムサス
+> 「ちっ、弾切れか……」
+“Tch, out of ammo...”
+
+@8796 Ramsus · ラムサス
+> 「くそっ! 届かん!」
+“Damn! Out of range!”

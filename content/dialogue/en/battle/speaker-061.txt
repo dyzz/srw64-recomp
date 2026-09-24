@@ -1,0 +1,142 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10981 Illia · イリア
+> 「沈めっ!」
+“Sink!”
+
+@10982 Illia · イリア
+> 「私が負けるはずないのだ!!」
+“There's no way I could lose!!”
+
+@10983 Illia · イリア
+> 「もらった!!」
+“Got you!!”
+
+@10984 Illia · イリア
+> 「これで終わりだ!」
+“This is the end!”
+
+@10985 Illia · イリア
+> 「とどめっ!」
+“Finishing blow!”
+
+@10986 Illia · イリア
+> 「ここまでだっ!」
+“This is as far as you go!”
+
+@10987 Illia · イリア
+# 审校：原文“どこを狙って欲しい?”是问对方想被瞄准哪里，初稿“where would you like to be hit?”意思对但稍生硬，改为更口语的“where do you want me to hit you?”
+> 「さあ、どこを狙って欲しい?」
+“So, where do you want me to hit you?”
+
+@10988 Illia · イリア
+> 「死になっ!」
+“Die!”
+
+@10989 Illia · イリア
+> 「消えろっ!」
+“Vanish!”
+
+@10990 Illia · イリア
+> 「フフッいいエサだな」
+“Heh heh, what nice bait.”
+
+@10991 Illia · イリア
+> 「何ぼやぼやしてるのさ!?」
+“What are you dawdling for!?”
+
+@10992 Illia · イリア
+> 「私は誰にも負けない!」
+“I won't lose to anyone!”
+
+@10993 Illia · イリア
+> 「何っ!? やられた!?」
+“What!? I've been hit!?”
+
+@10994 Illia · イリア
+> 「なんだと!? 直撃かっ!?」
+“What!? A direct hit!?”
+
+@10995 Illia · イリア
+# 审校：初稿“Y-you of all people!!”缺少逗号，改为“Y-you, of all people!!”更自然
+> 「くうううっ! き、貴様などにっ!!」
+“Kuhhh! Y-you, of all people!!”
+
+@10996 Illia · イリア
+> 「あううっ! バ、バカな、押されて
+>  いるのか!?」
+“Augh! I-impossible, am I being pushed back!?”
+
+@10997 Illia · イリア
+> 「な……なんてパワーだ、こいつっ!」
+“Wh... what power this one has!”
+
+@10998 Illia · イリア
+> 「ちいっ! やるじゃないか!」
+“Tch! Not bad!”
+
+@10999 Illia · イリア
+> 「くっ! そんなことで、この私は
+>  やられやしないよ!」
+“Ngh! That won't be enough to take me down!”
+
+@11000 Illia · イリア
+> 「うっ! 私に当てた!?
+>  上等じゃないか!」
+“Ugh! You hit me!? Fine by me!”
+
+@11001 Illia · イリア
+> 「その程度か!」
+“Is that all you've got!”
+
+@11002 Illia · イリア
+> 「ふん、情けない……そんなものか!」
+“Hmph, pathetic... is that all!”
+
+@11003 Illia · イリア
+> 「相手にならんな」
+“No match for me.”
+
+@11004 Illia · イリア
+> 「なんて戦い方だ! ばかにするな!」
+“What kind of fighting is that! Don't mock me!”
+
+@11005 Illia · イリア
+> 「なんだ? なめているのか!?」
+“What? Are you underestimating me!?”
+
+@11006 Illia · イリア
+> 「どこを見てるんだよ!!」
+“What are you looking at!!”
+
+@11007 Illia · イリア
+> 「どこを狙っている!」
+“What are you aiming at!”
+
+@11008 Illia · イリア
+> 「遅いんだよっ!」
+“Too slow!”
+
+@11009 Illia · イリア
+> 「甘いなっ!」
+“Too naive!”
+
+@11010 Illia · イリア
+> 「あたるものかっ!」
+“Like that would hit!”
+
+@11011 Illia · イリア
+> 「ムダなのさ!」
+“It's useless!”
+
+@11012 Illia · イリア
+> 「効かないんだよ!」
+“It doesn't work on me!”
+
+@11013 Illia · イリア
+> 「ちっ、弾切れとは……」
+“Tch, out of ammo...”
+
+@11014 Illia · イリア
+> 「くっ! 届かんのか!」
+“Ngh! It won't reach!?”

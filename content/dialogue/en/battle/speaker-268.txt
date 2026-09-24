@@ -1,0 +1,161 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6303 Trowa · トロワ
+> 「密集などしているからだ」
+“That's because you're bunched up.”
+
+@6304 Trowa · トロワ
+> 「なんであろうと、邪魔ならば戦う」
+“Whatever it is, if it's in my way, I'll fight it.”
+
+@6305 Trowa · トロワ
+> 「攻撃を開始する」
+“Commencing attack.”
+
+@6306 Trowa · トロワ
+> 「……いただく」
+“...I'll take it.”
+
+@6307 Trowa · トロワ
+> 「邪魔をするならば……遠慮はしない」
+“If you get in my way... I won't hold back.”
+
+@6308 Trowa · トロワ
+> 「目標捕捉……破壊する」
+“Target acquired... destroying.”
+
+@6309 Trowa · トロワ
+> 「始めるか……」
+“Let's begin...”
+
+@6310 Trowa · トロワ
+> 「敵をせん滅する」
+“Annihilating the enemy.”
+
+@6311 Trowa · トロワ
+> 「…………」
+“...”
+
+@6312 Trowa · トロワ
+> 「すべてを消滅させる」
+“Eliminating everything.”
+
+@6313 Trowa · トロワ
+> 「戦術的に見て、お前の判断は
+>  正しい。だが……」
+“Tactically speaking, your judgment was correct. But...”
+
+@6314 Trowa · トロワ
+> 「こちらの戦力を把握する前に
+>  行動を起こすべきではなかったな」
+“You shouldn't have acted before assessing our forces.”
+
+@6315 Trowa · トロワ
+> 「はあぁぁぁーっ!」
+“Haaaaaah!”
+
+@6316 Trowa · トロワ
+> 「これまでのようだな」
+“This is as far as you go.”
+
+@6317 Trowa · トロワ
+> 「ん……なんだ?……俺の……涙か?」
+“Hm... what? ...Are these... my tears?”
+
+@6318 Trowa · トロワ
+> 「俺の戦いもこれで終わりか……」
+“So my fight ends here too...”
+
+@6319 Trowa · トロワ
+> 「早かったな……俺の死も……」
+“That was quick... my death too...”
+
+@6320 Trowa · トロワ
+> 「やるな……だが最後の詰めが甘い」
+“Not bad... but your finishing move was sloppy.”
+
+@6321 Trowa · トロワ
+> 「くっ! ……さすがにパワーはあるようだな」
+“Ngh! ...I see you've got some power after all.”
+
+@6322 Trowa · トロワ
+> 「きびしい戦いになる……」
+“This is going to be a tough fight...”
+
+@6323 Trowa · トロワ
+> 「直撃をくらったか……これ以上は
+>  きついな」
+“Took a direct hit... any more of this will be rough.”
+
+@6324 Trowa · トロワ
+> 「く……戦闘続行可能、
+>  任務を継続する」
+“Ngh... combat capability maintained. Continuing the mission.”
+
+@6325 Trowa · トロワ
+> 「なるほど……的確な攻撃だ」
+“I see... a precise attack.”
+
+@6326 Trowa · トロワ
+> 「脚部にトラブルか…まだ大丈夫だ」
+“Trouble in the legs... still, I'm fine.”
+
+@6327 Trowa · トロワ
+> 「この程度の損傷なら
+>  任務継続に支障はない」
+“Damage of this level won't hinder the mission.”
+
+@6328 Trowa · トロワ
+> 「戦術を誤ったようだな」
+“Seems I misjudged the tactics.”
+
+@6329 Trowa · トロワ
+> 「この機体にたいしては
+>  ムダな攻撃だったな」
+“That attack was useless against this unit.”
+
+@6330 Trowa · トロワ
+> 「こちらの戦闘力を把握して
+>  おくべきだったな」
+“You should have assessed our combat strength first.”
+
+@6331 Trowa · トロワ
+> 「その程度か……」
+“Is that all...”
+
+@6332 Trowa · トロワ
+> 「戦術、戦闘レベル共に、
+>  ムダな攻撃だ……」
+“Both tactically and in combat level, that attack was wasted...”
+
+@6333 Trowa · トロワ
+> 「単純な攻撃だ…パターンは読めた」
+“A simple attack... I've read your pattern.”
+
+@6334 Trowa · トロワ
+> 「的確な攻撃だ……だが」
+“A precise attack... but still.”
+
+@6335 Trowa · トロワ
+> 「なるほど、この程度か」
+“I see, is that all?”
+
+@6336 Trowa · トロワ
+> 「どうやらムダだったようだな」
+“Seems that was pointless.”
+
+@6337 Trowa · トロワ
+> 「ビーム兵器は効かない」
+“Beam weapons don't work.”
+
+@6338 Trowa · トロワ
+> 「全弾撃ち尽くしたか……」
+“Out of ammo, huh...”
+
+@6339 Trowa · トロワ
+> 「残弾……0か」
+“Ammo... zero.”
+
+@6340 Trowa · トロワ
+> 「ここからでは距離がありすぎるな」
+“Too far from here.”

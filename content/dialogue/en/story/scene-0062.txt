@@ -1,0 +1,1609 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@24311 Blex · ブレックス
+> 「諸君、すでに知らされている者も
+>  多いと思うが
+“Gentlemen, many of you already know this, but
+---
+>  現在の我々のおかれた状況を
+>  あらためて説明しておく
+let me explain our current situation once more.
+---
+>  まずムゲゾルバドス帝国軍だが、
+>  現在地上から撤退中だ」
+First, the Muge Zorbados Empire's forces are currently withdrawing from the surface.”
+
+@24312 Kamille · カミーユ
+> 「百鬼一族や、
+>  ミケーネはどうなんです?」
+“What about the Hyakki Clan and Mycenae?”
+
+@24313 Blex · ブレックス
+> 「うむ、かなりのダメージを与えてはいる。
+>  だが、また復活してこないともかぎらん
+“Indeed, we've dealt them considerable damage. But there's no guarantee they won't revive again.
+---
+>  決して油断はできない」
+We can never let our guard down.”
+
+@24314 Tetsuya · 鉄也
+> 「くそっ、あれで最後だと思ったのに、
+>  なんてしつこい奴らだ」
+“Damn it, I thought that was the end of them. What a persistent bunch.”
+
+@24315 Blex · ブレックス
+> 「ドレイクひきいるバイストン・ウェル軍も
+>  健在と思われる
+“Drake's Byston Well forces are also believed to be intact.
+---
+>  数は多くないが、いぜんとして
+>  脅威であることに変わりはない」
+They're not numerous, but they remain a threat nonetheless.”
+
+@24316 Show · ショウ
+> 「奴らは、必ずまたやってきます。
+>  近いうちに、決着をつけることになる」
+“They will surely come again. Before long, we'll have to settle this.”
+
+@24317 Blex · ブレックス
+> 「次に宇宙だ。こちらはまだ、
+>  帝国軍が多く残っている
+“Next, space. The Imperial forces still remain in large numbers there.
+---
+>  中心は月面基地、
+>  それからアステロイド基地だな」
+Their main strongholds are the lunar base and the Asteroid Base.”
+
+@24318 Simone · シモーヌ
+> 「でも帝国がコロニー駐留部隊を
+>  引き上げてるってことは
+“But if the Empire is pulling back its Colony Garrison Force,
+---
+>  宇宙もほとんどOZが抑えたって
+>  ことじゃないんですか?」
+doesn't that mean OZ has mostly taken over space too?”
+
+@24319 Blex · ブレックス
+> 「そうだ。つまり、
+>  もはやOZが帝国軍を
+“Correct. In other words, it's certain that OZ will eliminate
+---
+>  排除するのは確実ということだ。
+>  その後、連中はそのほこ先を
+the Imperial forces. After that, they'll turn the tips of their spears
+---
+>  同じ地球人に対して
+>  向けてくるだろう」
+against their fellow Earthlings.”
+
+@24320 Koji · 甲児
+> 「なんだ。ってことは、オレたちは結局
+>  OZを相手にするってわけか」
+“So what? That means we end up fighting OZ after all.”
+
+@24321 Bright · ブライト
+> 「ああ、今のところはそう想定している
+>  帝国軍を排除したOZは
+“Yes, that's our assumption for now. Once OZ has eliminated the Imperial forces,
+---
+>  次に地上の制圧に
+>  取りかかるのは間違いない」
+there's no doubt they'll move to subjugate the surface next.”
+
+@24322 Blex · ブレックス
+> 「私やイゴール将軍は、この想定に
+>  もとづき、旧解放戦線機構の
+“Based on that assumption, General Igor and I intend to work with the remaining members
+---
+>  残り組と、各地の復興に
+>  あたっていこうと考えている
+of the former Liberation Front organization on rebuilding various regions.
+---
+>  第一線での活動は諸君や
+>  万丈くんら若い者たちにまかせよう
+We'll leave the front-line operations to you young ones and Banjo.
+---
+>  必要なら百鬼、ミケーネの
+>  残党と戦うこともありうるがな」
+If necessary, we may also have to fight the remnants of Hyakki and Mycenae.”
+
+@24323 Shinobu · 忍
+> 「万丈? そういや
+>  あいつの姿が見あたらねえな」
+“Banjo? Come to think of it, I haven't seen him around.”
+
+@24324 Blex · ブレックス
+> 「彼はカラバの組織を
+>  維持していく気でいる
+“He intends to keep Karaba's organization running.
+---
+>  一足先に出発したよ。
+>  諸君らによろしくといっておった」
+He set off ahead of us. He told me to give you all his regards.”
+
+@24325 Ryo · 亮
+> 「ふん、奴らしいな。
+>  いつもながら人を食った男だ」
+“Hmph, that's just like him. Always the man who plays by his own rules.”
+
+@24326 Blex · ブレックス
+> 「諸君らは、誰の指揮下に
+>  あるのでもない
+“You are not under anyone's command.
+---
+>  諸君ら自身の信念によって
+>  行動してくれたまえ。私も準備が
+Act according to your own convictions. I too will depart from here
+---
+>  でき次第ここを発つとしよう。
+>  諸君らの武運を祈っている」
+as soon as I'm ready. I pray for your good fortune in battle.”
+
+@24327 Bright · ブライト
+> 「さて、これからどうするか、だが……」
+“Now then, what should we do from here...”
+
+@24328 Kamille · カミーユ
+> 「宇宙はOZにまかせておいて、
+>  いいんじゃないですか?」
+“Why don't we just leave space to OZ?”
+
+@24329 Alan · アラン
+> 「賛成だな。
+>  今のところ攻勢だというし
+“I agree. They're on the offensive for now.
+---
+>  我々が加勢しに行ったところで
+>  いい顔をされるとは思えん」
+I doubt they'd appreciate us showing up to lend a hand.”
+
+@24330 Tetsuya · 鉄也
+> 「すると俺たちの当面の相手は、
+>  ミケーネと百鬼、ドレイク
+“So our immediate enemies are Mycenae, Hyakki, Drake,
+---
+>  それにムゲ帝国の地球残党と
+>  いったあたりか。ふん、上等だぜ」
+and the Muge Empire's Earth remnants. Hmph, bring it on.”
+
+@24331 Amuro · アムロ
+> 「だがそうなると敵の本拠がわからない
+>  結局今までのように
+“But if that's the case, we won't know where the enemy's base is. We'll end up
+---
+>  敵から攻めてくるのを
+>  待つということになるが……」
+just waiting for the enemy to attack us, like we've been doing...”
+
+@24332 Koji · 甲児
+> 「いいんじゃないの?
+>  どうせ頼まなくてもすぐにくるって」
+“Isn't that fine? They'll come soon enough without us asking.”
+
+@24333 Sayaka · さやか
+> 「お気楽ないいかたねえ。
+>  まあ確かにその通りだけど」
+“What a carefree way of putting it. Well, you're certainly right, though.”
+
+@24334 Ciela · シーラ
+> 「ドレイクは、今後も
+>  私たちを狙い続けるでしょう
+“Drake will continue to target us from now on.
+---
+>  地上支配のもくろみが
+>  ついえたとしても
+Even if his scheme for dominating the surface has failed,
+---
+>  私たちがここにある限り、
+>  彼は争いを止めようとはしません」
+as long as we remain here, he will never stop fighting.”
+
+@24335 Bright · ブライト
+> 「シーラ女王……」
+“Queen Ciela...”
+
+@24336 Elle · エレ
+> 「オーラ力が、そう告げているのです。
+>  異世界にあって
+“The Aura Power tells me so. Even in another world,
+---
+>  我々はどこまでも、互いに
+>  引かれ合うということなのでしょう」
+it seems we are destined to be drawn to each other, no matter what.”
+
+@24337 Simone · シモーヌ
+> 「わかるような気がするわ。
+“I think I understand.
+---
+>  ということは、今後も私たちと
+>  一緒に来てくれるってことですよね?
+So that means you'll keep coming with us from now on, right?
+---
+>  味方は多いほどいいのが
+>  道理ですもの」
+After all, the more allies the better.”
+
+@24338 Chum · チャム
+> 「そうそう、シーラ様、エレ様、
+>  そうしましょ!」
+“That's right, Lady Ciela, Lady Elle, let's do that!”
+
+@24339 Ciela · シーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「皆さんさえよろしければ……。
+>  ブライト艦長、ショウ、マーベル
+“If everyone is agreeable... Captain Bright, Show, Marvel,
+---
+>  力をかしていただけますか」
+would you lend us your strength?”
+
+@24340 Marvel · マーベル
+> 「今さら何をおっしゃるんですか。
+>  私たちは聖戦士です」
+“You needn't even ask at this point. We are Holy Warriors.”
+
+@24341 Show · ショウ
+> 「その通りです。
+>  これは俺の戦いでもある」
+“Exactly. This is my fight too.”
+
+@24342 Bright · ブライト
+> 「シーラ女王、エレ女王。
+>  こちらこそお願いする
+“Queen Ciela, Queen Elle. The pleasure is ours.
+---
+>  今後も我々と
+>  共に戦っていただきたい」
+We ask that you continue to fight alongside us.”
+
+@24343 Elle · エレ
+> 「ありがとう、感謝します。
+>  私たちの上に、良きオーラ力の
+“Thank you, we are grateful. May the blessing of good Aura Power
+---
+>  加護があらんことを……」
+be upon us all...”
+
+@24344 Death Gaia · デスガイヤー
+> 「奴らと決着をつけぬままで
+>  宇宙へ行くというのか!?
+“You mean to go to space without settling things with them?!
+---
+>  俺は納得せんぞ。それでは奴らに
+>  しっぽをまいたも同然ではないか!」
+I won't accept this. That's no different from tucking our tails and running!”
+
+@24345 Shapiro · シャピロ
+> 「すでに決定したことだ。
+>  貴公が異論を挟む余地はない」
+“It has already been decided. You have no room to raise objections.”
+
+@24346 Death Gaia · デスガイヤー
+> 「何をいうか。地上を放棄するよう
+>  進言したのは貴様であろうが
+“What nonsense. You're the one who proposed abandoning the surface.
+---
+>  臆病風に吹かれおって」
+You've been spooked by cowardice.”
+
+@24347 Luna · ルーナ
+> 「デスガイヤー殿、言葉がすぎましょう」
+“Lord Death Gaia, that's going too far.”
+
+@24348 Shapiro · シャピロ
+> 「ルーナ、お前は黙っていろ。
+“Luna, you be quiet.
+---
+>  デスガイヤー将軍、
+>  良いことを教えよう
+General Death Gaia, let me tell you something useful.
+---
+>  奴らは今、梁山泊にいる」
+They are currently at Liangshan Marsh.”
+
+@24349 Death Gaia · デスガイヤー
+> 「何だと? 貴様、
+>  それを教えてどうする気だ」
+“What? You bastard, what are you playing at, telling me that?”
+
+@24350 Shapiro · シャピロ
+> 「我々は月で新たな
+>  作戦に入るが、貴公が少し
+“We will begin a new operation on the moon, but if you arrive
+---
+>  遅れてきたところで別に問題はない
+>  勝手にどうとでもするがよい」
+a little late, it's no problem at all. Do as you please.”
+
+@24351 Death Gaia · デスガイヤー
+> 「……ふん、感謝はせんぞ。奴らは
+>  この俺の手で倒す。それだけだ!」
+“...Hmph, I won't thank you. I'll crush them with my own hands. That's all!”
+
+@24352 Luna · ルーナ
+> 「よろしかったのですか、
+>  あのような勝手をお許しになって……」
+“Was that all right, letting him have his way like that...”
+
+@24353 Shapiro · シャピロ
+> 「かまわん。もともと奴には
+>  何の期待もしておらんからな
+“It doesn't matter. I never expected anything from him in the first place.
+---
+>  万一成功すればそれでよし、
+>  死んだところで
+If he happens to succeed, fine. If he dies,
+---
+>  私の腹は痛みもせん……。
+>  そのようなことより、月面行きの
+it's no skin off my nose... More importantly, are the preparations
+---
+>  準備は進んでいような」
+for the lunar mission coming along?”
+
+@24354 Luna · ルーナ
+> 「は、とどこおりなく……」
+“Y-yes, without a hitch...”
+
+@24355 Amuro · アムロ
+> 「やぁリョウ、どうしたんだ?
+>  このところ、あまり見かけなかったが」
+“Hey, Ryoma, what's up? I haven't seen much of you lately.”
+
+@24356 Ryoma · リョウ
+> 「新ゲッターの訓練ですよ。
+>  それより紹介します、車弁慶です」
+“Training with the new Getter. Anyway, let me introduce you—this is Benkei Kuruma.”
+
+@24357 Benkei · ベンケイ
+> 「よろしく頼んます。
+>  よぉ、それよりも少し休ませてくれよ
+“Nice to meet ya. Yeah, but first, let me rest a bit.
+---
+>  もう腹がへって
+>  これ以上は動けないぜ」
+I'm starving and I can't move another inch.”
+
+@24358 Hayato · ハヤト
+> 「しょうがない奴だな。
+>  リョウ、食事にしよう
+“Hopeless, aren't you. Ryoma, let's eat.
+---
+>  そのかわり午後からまた特訓だ」
+In exchange, it's more special training this afternoon.”
+
+@24359 Benkei · ベンケイ
+> 「わかったよ」
+“Got it.”
+
+@24360 Amuro · アムロ
+> 「いったい何をやってるんだ?」
+“What on earth are you doing?”
+
+@24361 Ryoma · リョウ
+> 「ベンケイの奴がすぐにでも戦えるように
+>  訓練しているんですよ
+“We're training Benkei so he can fight right away.
+---
+>  技も覚えさせなきゃならないし、
+>  つきあうこっちも大変ですよ」
+We've got to teach him techniques too, so it's rough on those of us keeping up with him.”
+
+@24362 Koji · 甲児
+> 「なんだ、中条長官が
+>  自信ありげだったから
+“What, Chief Chujo was so confident about him,
+---
+>  さぞかしすげぇ奴かと思ったら、
+>  てんでダメなんじゃねぇか」
+I figured he'd be amazing, but he's totally useless, huh.”
+
+@24363 Hayato · ハヤト
+> 「だが適応力は高いし、
+>  耐久力は
+“But his adaptability is high, and his endurance might be
+---
+>  俺たちよりも上かもしれん。
+>  確かにゲッターには向いているな」
+even better than ours. He's definitely suited to the Getter.”
+
+@24364 Koji · 甲児
+> 「へぇ。よし、じゃあ
+>  ここはひとつ、この甲児さまも
+“Oh yeah? All right then, this Koji here will
+---
+>  特訓に協力してやるぜ」
+help out with the special training too.”
+
+@24365 Sayaka · さやか
+> 「最初の頃は、甲児くんもちゃんと
+>  マジンガーを動かせなかったものね」
+“At first, you couldn't pilot Mazinger properly either, Koji.”
+
+@24366 Koji · 甲児
+> 「なんだよ、よけいなこというなよ、
+>  さやかさん」
+“What's that for, don't bring up stuff like that, Sayaka.”
+
+@24367 Ryoma · リョウ
+> 「ははははっ。じゃ甲児くん、
+>  あとで来てくれよ」
+“Hahahaha. Then come by later, Koji.”
+
+@24368 Beltorchika · ベルトーチカ
+> 「コスモクラッシャー隊の大塚長官
+>  から通信が入っています」
+“We have a transmission from Chief Otsuka of the Cosmo Crusher Corps.”
+
+@24369 Bright · ブライト
+> 「わかった、つないでくれ」
+“Understood, put him through.”
+
+@24370 Chief Otsuka · 大塚長官
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「やぁブライト艦長、そちらの状況は
+>  どうかね?」
+“Hello, Captain Bright. How are things on your end?”
+
+@24371 Bright · ブライト
+> 「ムゲ帝国軍が撤退したとはいえ、
+>  地上には百鬼やミケーネといった
+“Even though the Muge Empire forces have withdrawn, enemies like the Hyakki and Mycenae
+---
+>  敵がまだ残っています。今のうちに
+>  戦力を増強しておきたいところです」
+still remain on Earth. I'd like to build up our strength while we can.”
+
+@24372 Chief Otsuka · 大塚長官
+> 「うむ、確かにそうだな。……実は
+>  コスモクラッシャー隊をそちらに
+“Yes, that's certainly true. ...Actually, I was thinking of having the Cosmo Crusher Corps
+---
+>  同行させようと思っているんだが、
+>  どうかね?」
+accompany you. What do you say?”
+
+@24373 Bright · ブライト
+> 「助かります。ぜひともお願いします」
+“That would help. Please, by all means.”
+
+@24374 Chief Otsuka · 大塚長官
+> 「そういってもらえると彼らも喜ぶよ。
+>  すぐにでも、コスモクラッシャー隊を
+“They'll be glad to hear that. I'll have the Cosmo Crusher Corps
+---
+>  出発させよう」
+depart right away.”
+
+@24375 Bright · ブライト
+> 「よろしくお願いします、長官」
+“Thank you, Chief.”
+
+@24376 Roux · ルー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  あたし考えたんですけど
+“Captain Bright, I've been thinking—
+---
+>  もうあたしたちって
+>  地球解放戦線とかカラバとか
+we're not really connected to the Liberation Front of the Earth or Karaba
+---
+>  関係なくなっちゃった
+>  わけじゃないですか」
+anymore, are we?”
+
+@24377 Bright · ブライト
+> 「そうなるな」
+“That's right.”
+
+@24378 Roux · ルー
+> 「名前、必要だと思いません?」
+“Don't you think we need a name?”
+
+@24379 Bright · ブライト
+> 「名前? いったい何のだ?」
+“A name? A name for what?”
+
+@24380 Roux · ルー
+> 「あたしたちの部隊の名前ですよ」
+“For our unit, of course.”
+
+@24381 Bright · ブライト
+# 审校：原文“そんなもの”指代单数，初稿译成 anything like that 语气过重且不自然，改为 that。
+> 「いらんだろう、そんなもの」
+“We don't need that.”
+
+@24382 Roux · ルー
+# 审校：ルー对布莱德否决表示失望，Whaaat?! 像惊讶疑问，Aww! 更贴合えーっ的失落语气。
+> 「えーっ」
+“Aww!”
+
+@24383 Amuro · アムロ
+> 「いいじゃないかブライト。士気が
+>  高まるかもしれないし、俺たちは
+“Why not, Bright? It might raise morale, and from now on
+---
+>  これから世界中に、俺たちの
+>  存在をアピールしていく必要もある」
+we need to show the whole world that we exist.”
+
+@24384 Roux · ルー
+> 「さっすがアムロさん。
+>  そうなんですよ艦長」
+“As expected of you, Amuro. That's exactly right, Captain.”
+
+@24385 Bright · ブライト
+> 「わかったよ。好きにしろ」
+“Fine. Do as you like.”
+
+@24386 Roux · ルー
+> 「ってわけで、あたしたちの部隊の
+>  名前を決めたいと思うんだけど」
+“So with that settled, I'd like us to decide on a name for our unit.”
+
+@24387 Koji · 甲児
+> 「はいはい! オレ、いいのがあるぜ」
+“Yes, yes! I've got a good one!”
+
+@24388 Simone · シモーヌ
+> 「なによ?」
+“What is it?”
+
+@24389 Koji · 甲児
+> 「“兜甲児と仲間たち”っての
+>  イカスだろ」
+“'Koji Kabuto and Friends'—pretty cool, huh?”
+
+@24390 Simone · シモーヌ
+> 「…………」
+“...”
+
+@24391 Koji · 甲児
+> 「なんだよ」
+“What is it?”
+
+@24392 Sayaka · さやか
+> 「まったく、ほんとにしょうがないわね。
+>  だいたいイカスはないんじゃない?」
+“Honestly, you're hopeless. And 'cool'? I don't think so.”
+
+@24393 Tetsuya · 鉄也
+> 「みんな、バカはほっとこうぜ」
+“Everyone, just ignore the idiots.”
+
+@24394 Shinobu · 忍
+> 「そうだな……獣戦機隊はどうだ」
+“Yeah... How about the Cyber Beast Force?”
+
+@24395 Sara · 沙羅
+> 「そりゃ、あたしたち4人のことでしょ!」
+“That's just the four of us!”
+
+@24396 Shinobu · 忍
+> 「ちっ、いってみただけじゃねぇかよ」
+“Tch, I was just throwing it out there.”
+
+@24397 Simone · シモーヌ
+> 「まったく、このバカコンビはねぇ……」
+“Honestly, this pair of idiots...”
+
+@24398 Shingo · 真吾
+> 「グッドサンダーチームってのも……
+“What about the Good Thunder Team...
+---
+>  やっぱりダメだよな?」
+I guess that's no good either, huh?”
+
+@24399 Remy · レミー
+> 「ダメに決まってるでしょ」
+“Of course it's no good.”
+
+@24400 David · デビッド
+> 「なら“ソーラー・ファング”はどうだ?
+>  こいつならバッチリだぜ」
+“Then how about 'Solar Fang'? That one's perfect.”
+
+@24401 Fa · ファ
+> 「へぇ、いい感じじゃない」
+“Oh, that sounds kind of nice.”
+
+@24402 David · デビッド
+> 「だろ? こいつはな、
+>  ある革命運動の
+“Right? I borrowed it from a famous
+---
+>  有名なゲリラ部隊の名前を
+>  借りてきたものでな」
+Guerrilla unit in some revolutionary movement.”
+
+@24403 Boss · ボス
+> 「ふんふん、それで、
+>  どういう意味なんだわさ」
+“Uh-huh, so what does it mean?”
+
+@24404 David · デビッド
+> 「意味はだな、太陽のき……」
+“Well, it means the sun's f...”
+
+@24405 Masato · 雅人
+> 「ストップ! ちょっと、
+>  いくらなんでもそりゃまずいよデビッド」
+“Stop! Hey, that's going too far even for you, David.”
+
+@24406 David · デビッド
+> 「あ、やっぱり?」
+“Oh, really?”
+
+@24407 Roux · ルー
+> 「もー、みんなちゃんと考えてよね」
+“Come on, everyone, think it through properly.”
+
+@24408 Bright · ブライト
+> 「なんだお前たち、まだやってたのか。
+>  決めるならさっさと決めろ」
+“What, you lot are still at it? If you're going to decide, decide already.”
+
+@24409 Roux · ルー
+> 「それはわかってるんですけど……」
+“I know that, but...”
+
+@24410 Beltorchika · ベルトーチカ
+> 「ねぇアムロ、何かいい名前はないの?」
+“Hey Amuro, don't you have a good name?”
+
+@24411 Amuro · アムロ
+> 「そうだな……
+>  “マーチウィンド”というのはどうかな」
+“Let me think... How about 'March Wind'?”
+
+@24412 Beltorchika · ベルトーチカ
+> 「マーチウィンド……三月の風?」
+“March Wind... the wind of March?”
+
+@24413 Roux · ルー
+> 「音は悪くないと思うんですけど……」
+“It doesn't sound bad, I suppose...”
+
+@24414 Amuro · アムロ
+> 「意味もちゃんとあるさ。
+>  『三月の風、四月の雨
+“It has a proper meaning too. 'March winds, April rains,
+---
+>  五月の花を咲かせるために』。
+>  むかし聞いたことのある詩でね
+to make the May flowers bloom.' It's from a poem I heard
+---
+>  その詩のタイトルなんだよ」
+long ago—that's the title of the poem.”
+
+@24415 Jun · ジュン
+> 「マーチウィンド……
+>  花を咲かせるための風、かぁ」
+“March Wind... a wind to make flowers bloom, huh.”
+
+@24416 Simone · シモーヌ
+> 「へぇ、いいんじゃない?
+>  どう、{HeroNick}?」
+“Oh, that's nice, isn't it? What do you think, {HeroNick}?”
+
+@24417
+> *  それでかまわない
+> *  気に入らない
+* “I'm fine with that.”
+* “I don't like it.”
+
+@24418 Ark · アーク（按段落 3DD1）
+> 「マーチウィンドか……いいんじゃないか。
+>  俺はそれでかまわないよ」
+“March Wind, huh... Sounds good. I'm fine with that.”
+
+@24419 Selain · セレイン（按段落 3DD2）
+> 「マーチウィンドか……
+>  私は別にそれでかまわないと思うぞ」
+“March Wind, huh... I don't mind it, personally.”
+
+@24420 Brad · ブラッド（按段落 3DD3）
+> 「へぇ、マーチウィンドか。
+>  いいんじゃないか? 俺はそれでいいぜ」
+“Oh, March Wind? Sounds good, doesn't it? I'm fine with it.”
+
+@24421 Manami · マナミ（按段落 3DD4）
+> 「マーチウィンドね……
+>  あたしはそれでいいわよ」
+“March Wind, huh... I'm fine with that.”
+
+@24422 Ark · アーク（按段落 3DD1）
+> 「マーチウィンドか……
+>  うーんなんか、あわない気がするな」
+“March Wind, huh... Hmm, it just doesn't feel right to me.”
+
+@24423 Selain · セレイン（按段落 3DD2）
+> 「マーチウィンドか……
+>  私は気に入らないな、そういうのは」
+“March Wind, huh... I don't care for that sort of thing.”
+
+@24424 Brad · ブラッド（按段落 3DD3）
+> 「マーチウィンドだぁ?
+>  俺はヤダぜ、そんなの」
+“March Wind? No way, not that.”
+
+@24425 Manami · マナミ（按段落 3DD4）
+> 「マーチウィンド? うーん、
+>  もう少し別の名称がいいわね」
+“March Wind? Hmm, I'd prefer a different name.”
+
+@24426 Amuro · アムロ
+> 「なら、君は
+>  どんな呼び名がいいんだい?」
+“Then what would you like to call it?”
+
+@24427 Ark · アーク（按段落 3DD1）
+> 「そうですね……{HeroMech}なんて
+>  どうですか?」
+“Well... how about {HeroMech}?”
+
+@24428 Selain · セレイン（按段落 3DD2）
+> 「そうだな……{HeroMech}と
+>  いうのはどうです?」
+“Let's see... how about {HeroMech}?”
+
+@24429 Brad · ブラッド（按段落 3DD3）
+> 「うーんそうだなぁ……{HeroMech}
+>  ってのはどうだ? いい感じだろ」
+“Hmm, let's see... how about {HeroMech}? Sounds good, right?”
+
+@24430 Manami · マナミ（按段落 3DD4）
+> 「そうねぇ……{HeroMech}と
+>  いうのはどうかしら?」
+“Let me think... how about {HeroMech}?”
+
+@24431 Lawrence · ローレンス
+> 「さすがお嬢様、よい名前です」
+“As expected of you, my lady. A fine name.”
+
+@24432 Shinobu · 忍
+> 「{HeroMech}だぁ?
+>  ……まぁ、別にいいけどよ
+“{HeroMech}, huh?... Well, I don't mind, I guess.
+---
+>  お前がそういうんなら俺は止めねぇよ」
+If that's what you want, I won't stop you.”
+
+@24433 Bright · ブライト
+> 「他の者はどうなんだ?
+>  それでいいのか?」
+“What about the rest of you? Are you all fine with that?”
+
+@24434 Bright · ブライト
+> 「…………反対意見はないようだな。
+>  ではそれで決定だ」
+“...No objections, it seems. Then it's decided.”
+
+@24435 Quattro · クワトロ
+> 「……ん? 着信記録か。
+>  記録はナンバーのみ……月からだな」
+“...Hm? A call record. Only the number was logged... It's from the Moon.”
+
+@24436 Kignan · キグナン
+> 「はい」
+“Yes.”
+
+@24437 Quattro · クワトロ
+> 「キグナンか。こんなところまで
+>  連絡してくるとは、何かあったのか?」
+“Kignan? You went out of your way to contact me here. Has something happened?”
+
+@24438 Kignan · キグナン
+> 「大佐、ご連絡を
+>  お待ちしておりました」
+“Colonel, I've been waiting to reach you.”
+
+@24439 Quattro · クワトロ
+> 「キグナン、大佐はよせ。今の私は、
+>  クワトロ・バジーナ大尉だ」
+“Kignan, drop the 'Colonel.' Right now I'm Captain Quattro Bajeena.”
+
+@24440 Kignan · キグナン
+> 「私にとっては
+>  シャア・アズナブル大佐です」
+“To me, you are Colonel Char Aznable.”
+
+@24441 Quattro · クワトロ
+> 「……それで、どうしたのだ?」
+“...So, what is it?”
+
+@24442 Kignan · キグナン
+> 「はい、このデータをご覧ください」
+“Yes. Please take a look at this data.”
+
+@24443 Quattro · クワトロ
+> 「アステロイド・ベルト……アクシズか」
+“The Asteroid Belt... Axis.”
+
+@24444 Kignan · キグナン
+> 「地球圏へ向けて移動を
+>  開始しているようです」
+“It appears they've begun moving toward the Earth Sphere.”
+
+@24445 Quattro · クワトロ
+> 「ジオンの亡霊が動き出したか。……
+>  ハマーン・カーンは二十歳になったか」
+“So the ghosts of Zeon are on the move. ...Haman Karn has turned twenty, has she.”
+
+@24446 Kignan · キグナン
+> 「はい……」
+“Yes...”
+
+@24447 Anna · アンナ
+> 「エイジ、何考えてるの?」
+“Eiji, what are you thinking about?”
+
+@24448 Eiji · エイジ
+> 「アンナか。べつに、何でもないよ」
+“Anna. It's nothing, really.”
+
+@24449 Anna · アンナ
+> 「当ててみせましょうか。ジュリアさんの
+>  こと……。ふふ、当たったみたいね」
+“Shall I guess? It's about Julia... Hee hee, looks like I hit the mark.”
+
+@24450 Eiji · エイジ
+> 「……まあ、そんなところさ」
+“...Yeah, something like that.”
+
+@24451 Simone · シモーヌ
+> 「クスコの聖女隊は、欧州で
+>  平和活動をしてるって聞いたわ
+“I heard Cusco's Saints is doing peace work in Europe.
+---
+>  いま欧州は比較的
+>  平穏だってことだけど……
+They say Europe is relatively calm right now...
+---
+>  そうそう、欧州っていえば、
+>  サンクキングダムの話、聞いた?」
+Oh, that reminds me — speaking of Europe, have you heard about the Sanc Kingdom?”
+
+@24452 Eiji · エイジ
+> 「確か完全平和主義を
+>  唱えている国だったな
+“That was the country that advocated total pacifism, right?
+---
+>  先代のピースクラフト王が
+>  提唱した……」
+Proposed by the previous King Peacecraft...”
+
+@24453 Simone · シモーヌ
+> 「そうそう。欧州が平和なのも、
+>  ひとつはそのサンクキングダムの
+“That's right. They say one big reason Europe is peaceful is the
+---
+>  存在が大きいんだって。
+>  現代表はリリーナ・ピースクラフト
+existence of the Sanc Kingdom. Its current representative is Relena Peacecraft.
+---
+>  確かジュリアさんの
+>  同志だった人よね」
+She was Julia's comrade, wasn't she?”
+
+@24454 David · デビッド
+# 审校：“Vigor” 是词表参考译名，但这里不是技能名，而是口语“有骨气/有毅力”，改为 guts 更自然。
+> 「根性あるよなあ、
+>  こんな時代に完全平和なんてさ
+“They've got real guts, preaching total peace in an age like this.
+---
+>  相当きついだろうに」
+Must be awfully tough on them.”
+
+@24455 Roanne · ロアン
+> 「立派ですね。僕たちに
+>  何かできることがあればいいんですが……」
+“It's admirable. If only there were something we could do for them...”
+
+@24456 Shinobu · 忍
+> 「おいおい、俺たちは
+>  戦争やってるんだぜ?
+“Hey now, we're fighting a war, you know?
+---
+>  その戦争を放棄してるところに、
+>  何をしてやろうってんだよ」
+What are we supposed to do for a place that's given up on war?”
+
+@24457 Sara · 沙羅
+> 「あんたはそういうと思ったよ。
+>  でも、あたしも同感だね
+“I knew you'd say that. But I feel the same way.
+---
+>  武器を捨てたがってる所で
+>  あたしたちのできることなんて無いよ」
+There's nothing we can do for a place that wants to throw away its weapons.”
+
+@24458 Masato · 雅人
+> 「だけど、武器を持たないままだと、
+>  きっとつぶされちゃうよ
+“But if they stay unarmed, they'll surely be crushed.
+---
+>  あの可愛い王女様が悲しむのは
+>  いやだなあ」
+I'd hate to see that cute princess sad.”
+
+@24459 Simone · シモーヌ
+> 「不純な騎士道精神だこと。
+>  だけど、確かにこのままでは
+“What impure chivalry. Still, at this rate, that's
+---
+>  そうなるでしょうね。もしかしたら、
+>  私たちが必要とされる時が
+exactly what will happen. Maybe the time will come when
+---
+>  くるかも知れない……。その時は、
+>  助けてあげたいわ。ね、エイジ」
+we're needed... When it does, I'd like to help them. Right, Eiji?”
+
+@24460 Eiji · エイジ
+> 「そうだな……。その時がくれば、な」
+“Yeah... if that time comes.”
+
+@24461 Ryoma · リョウ
+> 「警報!? 敵襲か!?」
+“An alarm?! An enemy attack?!”
+
+@24462 Chief Chujo · 中条長官
+> 「諸君、たった今レーダーが
+>  敵部隊の接近をとらえた
+“Everyone, the radar has just picked up an approaching enemy force.
+---
+>  どうやらムゲゾルバドス帝国軍と
+>  思われる」
+It appears to be the Muge Zorbados Empire's army.”
+
+@24463 Jun · ジュン
+> 「何だって!?
+>  奴ら、まだ残ってたの!?」
+“What?! Those guys are still around?!”
+
+@24464 Tetsuya · 鉄也
+# 审校：“いきがけの駄賃” 是“顺路赚点外快/顺手牵羊”的俗语，初稿“snatch a parting prize”意思偏了，改为更贴切的口语表达。
+> 「いきがけの駄賃に
+>  おいでなすったってわけか。上等だ
+“So they've come looking for a little extra on the way out, have they? Fine by me.
+---
+>  返り討ちにしてやるぜ!」
+We'll send them packing!”
+
+@24465 Domon · ドモン
+> 「往生際の悪い奴らだ。行くぞ!」
+“They just don't know when to quit. Let's go!”
+
+@24466 Bright · ブライト
+> 「全機発進準備!
+>  迎撃態勢に入れ!」
+“All units, prepare for launch! Assume intercept positions!”
+
+@24467 Kenji · ケンジ
+> 「こちらコスモクラッシャー隊、
+>  隊長の飛鳥ケンジです
+“This is the Cosmo Crusher team, Commander Kenji Asuka speaking.
+---
+>  大塚長官からの
+>  指示を受けてまいりました」
+We've come under orders from Chief Otsuka.”
+
+@24468 Bright · ブライト
+> 「艦長のブライト・ノアだ。
+>  話は聞いている。よろしく頼む」
+“I'm Captain Bright Noa. I've heard about you. Glad to have you.”
+
+@24469 Kenji · ケンジ
+> 「了解!」
+“Roger!”
+
+@24470 Death Gaia · デスガイヤー
+# 审校：“この俺の認めたライバルたちだ” 是“我认可的对手们”，初稿“I, myself, acknowledged”不自然；末句改为更符合将军语气的宣告式表达。
+> 「……シャピロもたまには役にたつ。
+“...Even Shapiro is useful once in a while.
+---
+>  見つけたぞ、間違いない。
+>  この俺の認めたライバルたちだ
+I've found them. No mistake — these are the rivals I acknowledged.
+---
+>  このデスガイヤー将軍が
+>  叩きつぶしてくれる!」
+I, General Death Gaia, will crush them all!”
+
+@24471 Death Gaia · デスガイヤー
+> 「なんと! ……ザン・ガイオーを出せ!!」
+“What?! ...Launch the Zan Gaioh!!”
+
+@24472 Death Gaia · デスガイヤー
+> 「ばかな!? ありえないことだ!」
+“Impossible?! This can't be happening!”
+
+@24473 Ciela · シーラ
+> 「ドレイク……ルフト……?」
+“Drake... Luft...?”
+
+@24474 Drake · ドレイク
+> 「シーラよ、エレよ、ワシとて
+>  世界を見る目はあるつもりだ
+“Ciela, Elle — I too have eyes to see the world.
+---
+>  が、個人の感情の決着だけは、
+>  これはつけさせてもらう」
+But when it comes to settling personal feelings, that I will see through myself.”
+
+@24475 Elle · エレ
+> 「なんという悪意の力か……これでは
+>  ……ますます悪意が広がって……」
+“What a power of malice... At this rate... the malice will spread further and further...”
+
+@24476 Ciela · シーラ
+> (かりそめの客は、
+>  去らねばならぬが運命……
+(A fleeting guest is fated to depart...
+---
+>  それをおわかりか
+>  ドレイク・ルフト……)
+Do you understand that, Drake Luft...?)
+
+@24477 Noin · ノイン
+> 「私はサンクキングダムの
+>  ルクレツィア・ノイン。援護する」
+“I'm Lucrezia Noin of the Sanc Kingdom. I'll cover you.”
+
+@24478 Noin · ノイン
+> 「私はサンクキングダムの
+>  ルクレツィア・ノイン
+“I'm Lucrezia Noin of the Sanc Kingdom.
+---
+>  援護するためにきたが、
+>  その必要はなかったようだな」
+I came to lend support, but it seems there was no need.”
+
+@24479 Chief Chujo · 中条長官
+> 「どうやら、終わったようだな」
+“It seems it's over.”
+
+@24480 Show · ショウ
+> 「トッド! ドレイクも帝国も、
+>  もう終わりだ。もうやめろ!
+“Tod! Drake and the Empire are finished. Stop this now!
+---
+>  このまま地球がめちゃめちゃに
+>  なってもいいってのかよ。トッド!」
+Are you really okay with the Earth being torn apart like this? Tod!”
+
+@24481 Tod · トッド
+> 「貴様がそれをいうのかよ、ショウ!!
+>  貴様を倒してからなら考えてやる!」
+“You're one to talk, Show!! Once I've beaten you, then I'll think about it!”
+
+@24482 Drake · ドレイク
+> 「く……これ以上やられては、いかな
+>  ウィル・ウィプスといえども……。ここは
+“Ngh... If we take any more damage, even the Will-Wips... We'll have to
+---
+>  撤退だな。このようなところで終わる
+>  わけにはいかぬ」
+retreat here. I can't afford to end it in a place like this.”
+
+@24483 Tod · トッド
+> 「ショウ……」
+“Show...”
+
+@24484 Drake · ドレイク
+> 「……まさか!」
+“...Impossible!”
+
+@24485 Allen · アレン
+> 「うぎゃぁぁぁ!」
+“Ugyahhh!”
+
+@24486 Fei · フェイ
+> 「お前らなんかにやられるかよ!
+>  俺はフェイ・チェンカ……」
+“You think you can beat me?! I'm Fei Chenka...”
+
+@24487 Garalia · ガラリア
+> 「ドレイク王!
+>  我らバイストンウェルの者は
+“King Drake! Shouldn't we of Byston Well
+---
+>  かの地へ帰ることを考えるべきでは
+>  ないのか!」
+be thinking of returning to that land?!”
+
+@24488 Drake · ドレイク
+> 「お前ごときが、このわしに意見しよう
+>  というのか」
+“You, of all people, dare to give me your opinion?”
+
+@24489 Tod · トッド
+> 「ガラリア! 俺とお前の仲だろ、
+>  俺に討たれちまいなよ!」
+“Garalia! We're comrades, aren't we? Just let me be the one to finish you!”
+
+@24490 Garalia · ガラリア
+> 「なめるなっ、トッド!」
+“Don't underestimate me, Tod!”
+
+@24491 Show · ショウ
+> 「トッド!」
+“Tod!”
+
+@24492 Tod · トッド
+> 「ショウ・ザマ、貴様は
+>  ただ機会に恵まれただけだ!
+“Show Zama, you just got lucky with your chances!
+---
+>  それを思い知らせてやる!」
+I'll make you realize that!”
+
+@24493 Show · ショウ
+> 「ドレイク! 地上とバイストンウェル
+>  双方のために、お前を討つ!」
+“Drake! For the sake of both the surface and Byston Well, I'll strike you down!”
+
+@24494 Drake · ドレイク
+> 「さかしいな、ショウ・ザマ」
+“How impudent, Show Zama.”
+
+@24495 Ciela · シーラ
+# 审校：“撃ちもらしましたか”是“没能击落他吗”，初稿“escaped destruction”过于书面，改为更自然的口语。
+> 「ドレイクは、撃ちもらしましたか」
+“So Drake got away, did he.”
+
+@24496 Chum · チャム
+> 「もーっ、あとちょっとだったのに!
+>  負けそうになったら逃げ出すなんて
+“Geez, we were so close! Running away when he's about to lose —
+---
+>  ひきょうなんだから!」
+how cowardly!”
+
+@24497 Show · ショウ
+> 「……残念です」
+“...What a shame.”
+
+@24498 Elle · エレ
+> 「いいえ、戦いはままならぬもの。
+>  あなた方が無事だったことを
+“No — battle rarely goes as one wishes. Let us instead rejoice
+---
+>  喜びましょう」
+that all of you came through safely.”
+
+@24499 Marvel · マーベル
+> 「……はい」
+“...Yes.”
+
+@24500 Ciela · シーラ
+> 「ここを出てあとを追うほどの余力は
+>  我々にはない
+“We don't have the strength left to leave here and give chase.
+---
+>  次にまみえる時を、
+>  待つしかありませんね……」
+We can only wait for the next time we meet...”
+
+@24501 Kenji · ケンジ
+> 「クラッシャー隊、
+>  隊長の飛鳥ケンジです」
+“Crusher Team, Commander Kenji Asuka speaking.”
+
+@24502 Bright · ブライト
+> 「コスモクラッシャー隊のクルーは
+>  5人か」
+“So the Cosmo Crusher team has five crew members.”
+
+@24503 Takeru · タケル
+> 「射撃担当の明神タケルです」
+“I'm Takeru Myojin, in charge of gunnery.”
+
+@24504 Naoto · ナオト
+> 「同じく射撃担当、
+>  伊集院ナオトです」
+“Also on gunnery, Naoto Ijuin.”
+
+@24505 Akira · アキラ
+> 「操縦担当の木曽アキラです」
+“I'm Akira Kiso, in charge of piloting.”
+
+@24506 Mika · ミカ
+> 「レーダー、通信担当の
+>  日向ミカです。よろしくお願いします」
+“I'm Mika Hyuga, in charge of radar and communications. Pleased to meet you.”
+
+@24507 Bright · ブライト
+> 「うむ、頼んだぞ。アムロ、
+>  彼らを案内してやってくれ」
+“Good, I'll leave it to you. Amuro, show them around.”
+
+@24508 Amuro · アムロ
+> 「わかった。アムロ・レイだ。よろしく」
+“Got it. I'm Amuro Ray. Nice to meet you.”
+
+@24509 Kenji · ケンジ
+> 「一年戦争の英雄と
+>  ご一緒できるとは、感激です
+“To think I'd get to serve alongside the hero of the One Year War — I'm honored.
+---
+>  よろしくお願いします、
+>  アムロ・レイ大尉」
+I look forward to working with you, Captain Amuro Ray.”
+
+@24510 Amuro · アムロ
+> 「アムロでいい。来てくれ、
+>  他のクルーに紹介しよう」
+“Just Amuro is fine. Come on, let me introduce you to the rest of the crew.”
+
+@24511 Noin · ノイン
+> 「改めて名のる。私は
+>  サンクキングダムの
+“Let me introduce myself properly. I am Lucrezia Noin of the Sanc Kingdom.
+---
+>  ルクレツィア・ノインだ。諸君らが
+>  梁山泊にいると聞き、やって来た」
+I heard you were at Ryozanpaku, so I came.”
+
+@24512 Bright · ブライト
+> 「もと地球解放戦線……、
+>  現在は{HeroMech}と
+“Formerly of the Liberation Front of the Earth... now we go by the name {HeroMech}.
+---
+>  名のっている。ブライト・ノアです」
+I'm Bright Noa.”
+
+@24513 Roux · ルー
+> 「くーっ、かっこいい!
+>  やっぱり決めといてよかったわ!」
+“Ooh, so cool! I'm glad we went with that name!”
+
+@24514 Bright · ブライト
+> 「サンクキングダムの方に援護に
+>  来ていただけるとは思いませんでした
+“I never thought the Sanc Kingdom would come to our aid.
+---
+>  正直、驚いています」
+Honestly, I'm surprised.”
+
+@24515 Noin · ノイン
+> 「そうだろうな。だが理想を
+>  守るためには戦うこともある
+“I imagine so. But to protect an ideal, sometimes you must fight.
+---
+>  少なくとも私自身は……。
+>  {HeroMech}の諸君
+At least, I myself do... People of {HeroMech},
+---
+>  単刀直入にいおう。あなたがたに、
+>  サンクキングダムに来てもらいたい」
+I'll be blunt. I want you to come to the Sanc Kingdom.”
+
+@24516 Bright · ブライト
+> 「サンクキングダムへ? しかし……
+>  それは完全平和主義に
+“To the Sanc Kingdom? But... wouldn't that go against
+---
+>  反するのでは?」
+absolute pacifism?”
+
+@24517 Noin · ノイン
+> 「いいたいことはわかる。
+>  これはリリーナさまはご存知ない
+“I understand what you mean. Lady Relena doesn't know about this.
+---
+>  私が勝手にやっていることだ。
+>  確かにリリーナさまの理想は尊い
+I'm doing this on my own. Lady Relena's ideal is certainly noble,
+---
+>  だが、いまの世界の中では、
+>  あまりにもまっすぐすぎる
+but in today's world, it's far too straight an arrow.
+---
+>  我々は、あなた方を
+>  必要としているのだ」
+We need you.”
+
+@24518 Amuro · アムロ
+> 「完全平和を守るためには、
+>  やはり戦わなくてはならない、と
+“To protect absolute peace, we still have to fight — I know
+---
+>  確かに矛盾しているが、
+>  今の俺たちの立場も
+that's a contradiction. But maybe our position now
+---
+>  同じようなものかも知れないな」
+isn't so different from that.”
+
+@24519 Bright · ブライト
+> 「確かにそうともいえる。戦うこと
+>  そのものが目的では、やりきれんからな
+“You could certainly say that. If fighting itself becomes the goal, we can't bear it.
+---
+>  ノインさん、わかりました。
+>  我々も協力させていただきましょう」
+Miss Noin, understood. We'll cooperate as well.”
+
+@24520 Noin · ノイン
+> 「ありがたい。感謝する、
+>  {HeroMech}……」
+“I'm grateful. Thank you, {HeroMech}...”
+
+@24521 Tetsuya · 鉄也
+> 「ちょっと待った。勝手に話を
+>  進めんでくれ。俺はごめんこうむるぜ」
+“Hold on a minute. Don't go deciding things on your own. Count me out.”
+
+@24522 Shinobu · 忍
+> 「俺も反対だな。いっちゃあ悪いが、
+>  意味があるとは思えねえ」
+“I'm against it too. No offense, but I don't see the point.”
+
+@24523 Koji · 甲児
+# 审校：みんな指在场的同伴，you all 比 everyone 更口语自然。
+> 「……みんな、どうしちまったんだよ」
+“...What's gotten into you all?”
+
+@24524 Shinobu · 忍
+> 「冗談じゃねぇぜ!
+>  あんたら正気かよ。いいか、連邦の
+“You've gotta be kidding! Are you all serious? Listen, even back in the Federation's
+---
+>  時代でだって、完全平和なんざ
+>  とうてい実現できやしなかったんだ
+day, absolute peace was never something we could achieve.
+---
+>  なんでサンクキングダムがなくなったのか、
+>  知らないわけじゃねぇだろう」
+You know full well why the Sanc Kingdom fell, don't you?”
+
+@24525 Amuro · アムロ
+> 「………………」
+“...”
+
+@24526 Sara · 沙羅
+> 「そりゃ平和はいいさ。
+>  あたしたちだって、そのために戦ってきた
+“Sure, peace is fine. We've been fighting for it too.
+---
+>  戦って、戦って、戦いぬいて
+>  平和を勝ち取るためさ。だけどね
+Fighting, fighting, fighting it out to win peace. But you know,
+---
+>  完全平和なんてのは、単なる
+>  夢物語なのさ。この状況下で
+absolute peace is just a fairy tale. It's not something to
+---
+>  考えることじゃないね」
+think about in a situation like this.”
+
+@24527 Daisaku · 大作
+> 「そんな、そんなことはありません。
+>  今だって、“クスコの聖女”や
+“That's — that's not true. Even now, there are plenty of people who support
+---
+>  リリーナさんに賛同する人たちが
+>  たくさんいるから、サンクキングダムが
+the ‘Holy Maiden of Cusco’ and Miss Relena, and that's why the Sanc Kingdom
+---
+>  復興できるんでしょう!?
+>  そんなふうに頭から否定したら
+can be rebuilt, isn't it?! If you deny it outright like that,
+---
+>  できることだって、できませんよ」
+then even what could be done won't get done.”
+
+@24528 Tetsuya · 鉄也
+# 审校：「俺はごめんだぜ」在此表示拒绝参与，I'm out 比 I'm not going 更贴合铁也的粗野口吻。
+> 「勝手にいってろ。俺はごめんだぜ」
+“Say whatever you want. I'm out.”
+
+@24529 Ryo · 亮
+> 「悪いが、俺たちもだ。
+“Sorry, but neither are we.
+---
+>  OZが帝国軍を追い出しつつある
+>  からといっても、いまだ地球圏には
+Even if OZ is driving the Imperial forces out, there are still plenty of
+---
+>  黙っていたって襲ってくるような
+>  奴らが、たくさん残ってるんだ」
+enemies left in the Earth Sphere who'll attack us if we just stay quiet.”
+
+@24530 Domon · ドモン
+> 「百鬼やミケーネ、ドレイク軍、それに
+>  ……デビルガンダム……
+“The Hyakki, Mycenae, the Drake Army, and... the Dark Gundam...
+---
+>  俺たちは戦う。戦わない限り、
+>  平和なんて来やしないんだ」
+We'll fight. Unless we fight, peace will never come.”
+
+@24531 Daisaku · 大作
+> 「でも……」
+“But...”
+
+@24532 Tetsuya · 鉄也
+> 「でももくそもねぇ!」
+“Don't ‘but’ me!”
+
+@24533 Shinobu · 忍
+> 「どうしてもっていうんなら、俺たちは
+>  ここでわかれるぜ」
+“If you insist on this, then we part ways here.”
+
+@24534 Koji · 甲児
+> 「ちょっと待ってくれよ」
+“Wait a second, you guys.”
+
+@24535 Sayaka · さやか
+> 「でも、私たちだって戦わないわけじゃ
+>  ないわ。一方的にやられるのは
+“But it's not like we're refusing to fight. We won't just let ourselves
+---
+>  ごめんだもの。だけど、少しでもいい、
+>  あの人たちの国を守りたい」
+be attacked one-sidedly. But if we can, even a little, I want to protect their country.”
+
+@24536 Amuro · アムロ
+> 「……さっきからずっと黙っているが
+>  クワトロ大尉はどうなんだ?」
+“...You've been quiet this whole time, Captain Quattro. What do you think?”
+
+@24537 Quattro · クワトロ
+> 「私もこの件に関しては、彼らに
+>  賛成だ。武力なき平和が
+“On this matter, I agree with them. If peace without force
+---
+>  達成できれば、それにこしたことはない
+>  しかしロームフェラは話が通じる
+could be achieved, nothing would be better. But I don't think Romefeller is
+---
+>  相手とは思えん。完全平和
+>  主義が無意味とはいわんが
+the kind of opponent you can reason with. I won't say absolute pacifism is meaningless,
+---
+>  それをあてにする気にはなれん」
+but I can't bring myself to rely on it.”
+
+@24538 Beltorchika · ベルトーチカ
+> 「……やっぱり平和なインテリジェンスを
+>  感じないわ」
+“...I still don't sense any peaceful intelligence from him.”
+
+@24539 Amuro · アムロ
+> (シャア……ジオン・ダイクンのことを
+>  考えているのだろう……。かつて
+(Char... he must be thinking about Zeon Deikun... Long ago,
+---
+>  ジオン・ダイクンも人類の平和と
+>  共存をとなえていたが結局
+Zeon Deikun also preached peace and coexistence for humanity, but in the end
+---
+>  ザビ家に暗殺され、その名前だけ
+>  を利用されたという噂だからな)
+he was assassinated by the Zabi family, and rumor has it only his name was used)
+
+@24540 Bright · ブライト
+> 「……しかたないな。サンクキングダムに
+>  同行できない者は申し出てくれ」
+“...It can't be helped. Those who can't come to the Sanc Kingdom, speak up.”
+
+@24541 Amuro · アムロ
+> 「……結局、サンクキングダムに
+>  行くことになったのはこれだけか……」
+“...So in the end, only this many are going to the Sanc Kingdom...”
+
+@24542 Bright · ブライト
+> 「{HeroMech}から、ぬけるのは
+>  藤原忍ら獣戦機隊の4名
+“Leaving {HeroMech} are Shinobu Fujiwara and the four members of the Cyber Beast Force,
+---
+>  それとドモンたち、他に……」
+plus Domon and the others, and besides them...”
+
+@24543 Roux · ルー
+> 「鉄也やジュンたちもいなくなるわ」
+“Tetsuya and Jun and their group are leaving too.”
+
+@24544 Koji · 甲児
+> 「まさかクワトロ大尉も
+>  ぬけるとは思わなかったよ」
+“I never thought Captain Quattro would leave too.”
+
+@24545 Bright · ブライト
+> 「かなりの戦力ダウンだが……
+>  しかたがない」
+“It's a considerable loss of fighting strength, but... it can't be helped.”
+
+@24546 Koji · 甲児
+> 「あーあ、奴ら行っちまったか。
+>  いきなりガランとしちまったなあ」
+“Man, they actually went and left. It got empty around here all of a sudden.”
+
+@24547 Sayaka · さやか
+> 「甲児君、元気出して。ほんの
+>  しばらく、それぞれの道を行くだけよ
+“Koji, cheer up. It's only for a little while that we go our separate ways.
+---
+>  またすぐに一緒に戦う時がくるわ」
+The time will come soon when we fight together again.”
+
+@24548 Boss · ボス
+> 「そうそう。たとえ道は違っても、
+>  俺たち同志は
+“That's right. Even if our paths differ, we comrades
+---
+>  熱ーい友情で結ばれてるんだわさ」
+are bound by red-hot Faith.”
+
+@24549 Koji · 甲児
+> 「ボスよ。今日ほどお前がいてくれて
+>  うれしい日はねえぜ
+“Boss, there's no day I'm happier you're around than today.
+---
+>  長いつきあいってのは
+>  ありがてえもんだよなあ」
+Having a friend for so long sure is something to be thankful for.”
+
+@24550 Simone · シモーヌ
+> 「あらあら、しょうがないわね。
+>  まあ無理ないか」
+“Oh my, oh my, it can't be helped. Well, I suppose it's only natural.”
+
+@24551 Ryoma · リョウ
+> 「みんな、また会おう。
+>  それまで無事でいてくれよ……」
+“Everyone, let's meet again. Until then, stay safe...”
+
+@24552 Hayato · ハヤト
+> 「ま、心配はしてねえがな。
+>  あいつらのことだ」
+“Well, I'm not worried, though. Not with them.”
+
+@24553 Noin · ノイン
+> 「申しわけないことになった……。
+>  私のために」
+“I'm sorry it turned out this way... because of me.”
+
+@24554 Amuro · アムロ
+> 「いや、気にしないで下さい。
+>  彼らじゃないが、必ずまた
+“No, please don't worry about it. It may not be them, but surely we'll
+---
+>  ともに戦うことになるでしょう。
+>  そう信じていますから」
+fight together again. I believe that from the bottom of my heart.”
+
+@24555 Noin · ノイン
+> 「そういってもらえれば……。
+>  では、改めてお願いします
+“If you say that, then... Well then, allow me to ask again.
+---
+>  {HeroMech}の皆さん、
+>  サンクキングダムを守って下さい
+Everyone aboard the {HeroMech}, please protect the Sanc Kingdom,
+---
+>  完全平和主義の理想を、
+>  消さないために」
+so that the ideal of complete pacifism is not erased.”
+
+@24556 Bright · ブライト
+> 「了解しました。{HeroMech}は
+>  これより、サンクキングダム
+“Understood. The {HeroMech} will now head to the area
+---
+>  防衛のため、当地に向かいます。
+>  ノインさん、案内をお願いする」
+to defend the Sanc Kingdom. Noin, please guide us.”
+
+@24557 Noin · ノイン
+> 「わかりました。出発しましょう
+“Understood. Let's depart.
+---
+>  {HeroMech}の皆さん……
+>  本当にありがとう」
+Everyone aboard the {HeroMech}... thank you, truly.”

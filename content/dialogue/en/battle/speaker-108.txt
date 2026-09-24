@@ -1,0 +1,181 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9705 Tetsuya · 鉄也
+> 「これでどうだ!!」
+“How's this?!”
+
+@9706 Tetsuya · 鉄也
+# 审校：初稿已通顺，但“have it your way”略显口语化，改为“have your way”更自然
+> 「これ以上好きにはやらせんぞ!」
+“I won't let you have your way any longer!”
+
+@9707 Tetsuya · 鉄也
+> 「やってくれたなっ!」
+“You'll pay for that!”
+
+@9708 Tetsuya · 鉄也
+> 「お返しだ、受け取ってもらおう!」
+“Here's payback, take it!”
+
+@9709 Tetsuya · 鉄也
+> 「くらえっ!!」
+“Take this!”
+
+@9710 Tetsuya · 鉄也
+> 「やらせんっ!!」
+“I won't let you!”
+
+@9711 Tetsuya · 鉄也
+> 「しまった!!」
+“Damn it!”
+
+@9712 Tetsuya · 鉄也
+> 「くっ!! ここまでか!!」
+“Ngh! This is it?!”
+
+@9713 Tetsuya · 鉄也
+> 「うわっ! しまった!!」
+“Whoa! Damn it!”
+
+@9714 Tetsuya · 鉄也
+> 「ぐぅっ! い、いかん、ダメージが
+>  でかすぎるか!?」
+“Gah! D-damn, is the damage too much?!”
+
+@9715 Tetsuya · 鉄也
+> 「うわあっ!! な、なんてパワーだ!?」
+“Whoa! W-what power is this?!”
+
+@9716 Tetsuya · 鉄也
+> 「くそっ! こうダメージを受けては!」
+“Damn! Taking this much damage!”
+
+@9717 Tetsuya · 鉄也
+> 「くっ! むざむざやられてたまるか!!」
+“Ngh! I won't just sit here and take it!”
+
+@9718 Tetsuya · 鉄也
+> 「くっ! ダメージがでかすぎるか!?」
+“Ngh! Is the damage too much?!”
+
+@9719 Tetsuya · 鉄也
+> 「ちいっ、やりやがったな!」
+“Tch, you got me!”
+
+@9720 Tetsuya · 鉄也
+> 「むうっ! なんのっ! まだだ!」
+“Hmph! So what! I'm not done!”
+
+@9721 Tetsuya · 鉄也
+> 「まだまだっ! やられはしないっ!」
+“Not yet! I won't go down!”
+
+@9722 Tetsuya · 鉄也
+> 「うおっ! やってくれたな!」
+“Whoa! You'll pay for that!”
+
+@9723 Tetsuya · 鉄也
+> 「つっ! 少しは歯ごたえが
+>  ありそうだな!」
+“Tch! Looks like you've got some fight in you!”
+
+@9724 Tetsuya · 鉄也
+> 「くっ!! や、やる!!」
+“Ngh! Y-you're good!”
+
+@9725 Tetsuya · 鉄也
+> 「くそっ! 風穴をあけられてたまるか!」
+“Damn! I won't let you punch a hole in me!”
+
+@9726 Tetsuya · 鉄也
+> 「なんのっ! まだだ!」
+“So what! I'm not done!”
+
+@9727 Tetsuya · 鉄也
+> 「効かんよ!」
+“That won't work on me!”
+
+@9728 Tetsuya · 鉄也
+> 「この程度か!」
+“Is that all?!”
+
+@9729 Tetsuya · 鉄也
+> 「ふん、大した事はないな」
+“Hmph, nothing impressive.”
+
+@9730 Tetsuya · 鉄也
+> 「そんな攻撃じゃ、ビクともしないぜ!」
+“An attack like that won't even scratch me!”
+
+@9731 Tetsuya · 鉄也
+> 「なんのっ!!」
+“So what?!”
+
+@9732 Tetsuya · 鉄也
+> 「くっ! まだ大丈夫だ!」
+“Ngh! I'm still fine!”
+
+@9733 Tetsuya · 鉄也
+> 「このくらいの攻撃ならっ!」
+“An attack like this is nothing!”
+
+@9734 Tetsuya · 鉄也
+> 「当たらんよ!」
+“You won't hit me!”
+
+@9735 Tetsuya · 鉄也
+> 「おっと! 狙いが甘いぜ!」
+“Whoa! Your aim's sloppy!”
+
+@9736 Tetsuya · 鉄也
+> 「あくびがでるぜ!」
+“This is putting me to sleep!”
+
+@9737 Tetsuya · 鉄也
+> 「よし、かわした!」
+“Yes, dodged it!”
+
+@9738 Tetsuya · 鉄也
+> 「あたるものか!」
+“As if that would hit me!”
+
+@9739 Tetsuya · 鉄也
+> 「なんとっ!!」
+“What?!”
+
+@9740 Tetsuya · 鉄也
+> 「その程度のビームが通用する
+>  ものか!」
+“A Beam like that won't get through!”
+
+@9741 Tetsuya · 鉄也
+> 「ムダだっ!!」
+“It's useless!”
+
+@9742 Tetsuya · 鉄也
+> 「フッ効かんよ!」
+“Hmph, it won't work!”
+
+@9743 Tetsuya · 鉄也
+> 「しまった、反撃できない!」
+“Damn, I can't counterattack!”
+
+@9744 Tetsuya · 鉄也
+> 「弾切れか!?」
+“Out of ammo?!”
+
+@9745 Tetsuya · 鉄也
+> 「くっ! だめか!?」
+“Ngh! No good?!”
+
+@9746 Tetsuya · 鉄也
+> 「くっ! とどかん!!」
+“Ngh! It won't reach!”
+
+@9747 Tetsuya · 鉄也
+> 「ちっ、あんな遠くからとは……」
+“Tch, from that far away...”
+
+@9748 Tetsuya · 鉄也
+> 「くっ! とどかん!!」
+“Ngh! It won't reach!”

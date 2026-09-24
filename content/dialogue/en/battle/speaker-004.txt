@@ -1,0 +1,242 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12648 Domon · ドモン
+> 「このっ!!」
+“Why you!!”
+
+@12649 Domon · ドモン
+> 「いけぇーっ!!」
+“Gooo!!”
+
+@12650 Domon · ドモン
+> 「はぁぁぁぁっ……はっ!!」
+“Haaaaaah... hah!!”
+
+@12651 Domon · ドモン
+> 「はぁぁぁ……トオォォォォリャァッ!!」
+“Haaaaa... TOOOOORYAAAAH!!”
+
+@12652 Domon · ドモン
+> 「はあぁぁぁっ!!」
+“Haaaaaah!!”
+
+@12653 Domon · ドモン
+> 「てぇりゃぁ!!」
+“Teryaah!!”
+
+@12654 Domon · ドモン
+> 「とぉぉぉりゃぁぁぁぁっ!!」
+“TOOOOORYAAAAH!!”
+
+@12655 Domon · ドモン
+> 「もらったぁっ!!」
+“Got you!!”
+
+@12656 Domon · ドモン
+> 「うおぉぉぉぉっ!!」
+“Uwooooh!!”
+
+@12657 Domon · ドモン
+> 「みんなまとめて、たたきつぶしてやるっ!!」
+“I'll smash every last one of you!!”
+
+@12658 Domon · ドモン
+> 「お前と遊んでいるヒマはない!!」
+“I've got no time to play with you!!”
+
+@12659 Domon · ドモン
+> 「これまでか!?」
+“Is this the end?!”
+
+@12660 Domon · ドモン
+> 「そ、そんな……!?」
+“Th-That can't be...?!”
+
+@12661 Domon · ドモン
+> 「うわああああっ!!」
+“Uwaaaaaah!!”
+
+@12662 Domon · ドモン
+> 「そんなバカな……!?」
+“That's impossible...?!”
+
+@12663 Domon · ドモン
+> 「これまでなのか……」
+“So this is the end...”
+
+@12664 Domon · ドモン
+> 「うおおっ!! な、何っ!?
+>  この俺が……押されているだと!?」
+“Uwooooh!! Wh-What?! I'm... being pushed back?!”
+
+@12665 Domon · ドモン
+> 「ぐああっ!! や、やる!
+>  だが、負けるわけにはいかないっ!!」
+“Guaaah!! Y-You're good! But I can't afford to lose!!”
+
+@12666 Domon · ドモン
+> 「うわああっ!! く、くそうっ!
+>  俺は負けんっ!!」
+“Uwaaaah!! D-Damn it! I won't lose!!”
+
+@12667 Domon · ドモン
+> 「なんてパワーだ!?」
+“What power?!”
+
+@12668 Domon · ドモン
+> 「うわぁぁっ! なんてパワーだ!?」
+“Uwaaah! What power?!”
+
+@12669 Domon · ドモン
+> 「ぐわぁぁぁぁっ!!」
+“Guwaaaaah!!”
+
+@12670 Domon · ドモン
+> 「くそぉっ!!
+>  こんな事で……やられるわけにはっ!!」
+“Damn it!! I can't let myself... be beaten by this!!”
+
+@12671 Domon · ドモン
+> 「ぬおおおっ!! こ、こいつ……
+>  これほどの力を……」
+“Nuooooh!! Th-This guy... such power...”
+
+@12672 Domon · ドモン
+> 「ぐわっ! こ、こんなヤツに……」
+“Guwah! T-To be beaten by a guy like this...”
+
+@12673 Domon · ドモン
+> 「やるなっ! だが、まだ勝負は
+>  ついていないっ!!」
+“Not bad! But the match isn't over yet!!”
+
+@12674 Domon · ドモン
+> 「むうっ! さすがだな……だがっ!!」
+“Mmph! As expected... but!!”
+
+@12675 Domon · ドモン
+> 「ぐっ! だがこの程度で俺を
+>  倒せると思うなっ!」
+“Guh! But don't think you can beat me with this much!”
+
+@12676 Domon · ドモン
+> 「なにっ!?」
+“What?!”
+
+@12677 Domon · ドモン
+> 「少しはできるなっ!?」
+“You've got some skill?!”
+
+@12678 Domon · ドモン
+> 「しまったっ!?」
+“Damn it?!”
+
+@12679 Domon · ドモン
+> 「なんだ!?」
+“What the?!”
+
+@12680 Domon · ドモン
+> 「な、なんの!! まだまだぁっ!!」
+“Wh-What?! Not yet, not by a long shot!!”
+
+@12681 Domon · ドモン
+> 「ま、まだやられはしないっ!!」
+“I-I won't go down yet!!”
+
+@12682 Domon · ドモン
+> 「キング・オブ・ハートの名にかけてっ!!」
+“On the name of the King of Hearts!!”
+
+@12683 Domon · ドモン
+> 「どうしたっ! それで精一杯か!」
+“What's wrong?! Is that all you've got?!”
+
+@12684 Domon · ドモン
+> 「そんな攻撃が効くものかっ!!」
+“Like that attack could work on me!!”
+
+@12685 Domon · ドモン
+> 「まだまだっ!!」
+“Not even close!!”
+
+@12686 Domon · ドモン
+> 「その程度の攻撃では
+>  この俺は倒せん!!」
+“An attack like that won't bring me down!!”
+
+@12687 Domon · ドモン
+> 「ムダなことを!」
+“What a waste of effort!”
+
+@12688 Domon · ドモン
+> 「ぐぅぅっ!」
+“Guhh!”
+
+@12689 Domon · ドモン
+> 「ちっ! 邪魔をするな!」
+“Tch! Don't get in my way!”
+
+@12690 Domon · ドモン
+> 「貴様の腕はその程度か!?」
+“Is that all your skill amounts to?!”
+
+@12691 Domon · ドモン
+> 「貴様の攻撃、すでに見切った!」
+“I've already seen through your attack!”
+
+@12692 Domon · ドモン
+> 「当たらんっ!」
+“You won't hit me!”
+
+@12693 Domon · ドモン
+> 「見えるっ!!」
+“I can see it!!”
+
+@12694 Domon · ドモン
+> 「俺はここだっ!!」
+“I'm right here!!”
+
+@12695 Domon · ドモン
+> 「そんな攻撃などっっ!!」
+“An attack like that won't—!!”
+
+@12696 Domon · ドモン
+> 「キング・オブ・ハートに同じ手は
+>  二度と通用しない!」
+“The same trick won't work twice on the King of Hearts!”
+
+@12697 Domon · ドモン
+> 「おそいっ!!」
+“Too slow!!”
+
+@12698 Domon · ドモン
+> 「あまいっ!!」
+“Too soft!!”
+
+@12699 Domon · ドモン
+> 「遅いぞっ!」
+“You're slow!”
+
+@12700 Domon · ドモン
+> 「効くかっ!!」
+“Like that would work!!”
+
+@12701 Domon · ドモン
+> 「ムダだっ!!」
+“It's useless!!”
+
+@12702 Domon · ドモン
+> 「ちっ! 弾切れか!?」
+“Tch! Out of ammo?!”
+
+@12703 Domon · ドモン
+> 「何っ!! しまった、弾切れだと!!」
+“What!! Damn it, out of ammo?!”
+
+@12704 Domon · ドモン
+> 「ここからでは攻撃は無理か……」
+“I can't attack from here...”
+
+@12705 Domon · ドモン
+> 「射程外からとは汚い手を使う!」
+“Attacking from out of range is a dirty trick!”

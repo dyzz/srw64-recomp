@@ -1,0 +1,307 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10867 Chara · キャラ
+> 「アッハッハッハッハッハッ!」
+“Ahahahahahaha!”
+
+@10868 Chara · キャラ
+> 「くぅ 敵だ、敵だぁ、もう胸が
+>  張り裂けそう!」
+“Ooh, an enemy, an enemy! My chest is about to burst!”
+
+@10869 Chara · キャラ
+> 「身体が、身体が熱いのよおっ!」
+“My body, my body's on fire!”
+
+@10870 Chara · キャラ
+> 「あははは、もっともっと躍れ!」
+“Ahahaha, dance more, dance more!”
+
+@10871 Chara · キャラ
+> 「いっただき!」
+“I'll take that!”
+
+@10872 Chara · キャラ
+> 「ああっ体が熱いっ燃えるっ!」
+“Ahh, my body's hot, it's burning!”
+
+@10873 Chara · キャラ
+> 「くぅーっ! あははは! 敵だ、敵だ!
+>  もう胸が張り裂けそう! 快感!」
+“Ooh! Ahahaha! An enemy, an enemy! My chest is about to burst! What a thrill!”
+
+@10874 Chara · キャラ
+> 「そーら、そら! 落としちゃうよ!」
+“There, there! I'm gonna drop you!”
+
+@10875 Chara · キャラ
+> 「さあて、行くよっ!」
+“Well now, here I go!”
+
+@10876 Chara · キャラ
+> 「はははっ! ぞくぞくする! それっ!」
+“Hahaha! I'm tingling! Take this!”
+
+@10877 Chara · キャラ
+> 「魂よ! 魂の躍動なのよ!
+>  私の魂は、宇宙を駆ける魂!」
+“My soul! It's the throb of my soul! My soul races across the universe!”
+
+@10878 Chara · キャラ
+> 「胸が苦しい、もう死ぬ!
+>  死んじゃうぞっ!」
+“My chest hurts, I'm gonna die! I'm really gonna die!”
+
+@10879 Chara · キャラ
+> 「そこかいっ!」
+“Right there!”
+
+@10880 Chara · キャラ
+> 「え! ウソ!? やられちゃったのかい!?」
+“Huh! No way!? Did I get hit!?”
+
+@10881 Chara · キャラ
+> 「あうっ! や、やば……壊れちゃいそう」
+“Agh! Th-this is bad... I think I'm gonna break.”
+
+@10882 Chara · キャラ
+> 「わわっ! な、何だいこいつは!?」
+“Whoa! Wh-what is this thing!?”
+
+@10883 Chara · キャラ
+> 「ああっ! す、すごい、なんて強烈……」
+“Ahh! A-amazing, so intense...”
+
+@10884 Chara · キャラ
+> 「なに!? 化け物かっ!?」
+“What!? Is it a monster!?”
+
+@10885 Chara · キャラ
+> 「ちっ! やってくれたね!」
+“Tch! You got me good!”
+
+@10886 Chara · キャラ
+> 「このっ! あたしを怒らせるとどうなるか
+>  わかってるんだろうね!!」
+“Why you! You know what happens when you make me mad!!”
+
+@10887 Chara · キャラ
+> 「くっ! やるじゃないか! おもしろく
+>  なってきたよ!」
+“Hmph! Not bad! This is getting fun!”
+
+@10888 Chara · キャラ
+> 「うっ! そうかい、やるっていうのかい!」
+“Ugh! So you wanna fight, huh!”
+
+@10889 Chara · キャラ
+> 「くすぐったいんだよ!」
+“That tickles!”
+
+@10890 Chara · キャラ
+> 「あはは、かわいいじゃないか」
+“Ahaha, aren't you cute.”
+
+@10891 Chara · キャラ
+> 「その程度かい? 笑わせてくれるね!」
+“Is that all? You're making me laugh!”
+
+@10892 Chara · キャラ
+> 「なんだい、物足りないね!」
+“What's this, not enough for me!”
+
+@10893 Chara · キャラ
+> 「うるさいな!」
+“You're so annoying!”
+
+@10894 Chara · キャラ
+> 「当たらないんだよ!」
+“You can't hit me!”
+
+@10895 Chara · キャラ
+> 「あははは、は～ずれた!」
+“Ahahaha, you missed!”
+
+@10896 Chara · キャラ
+> 「笑わせんじゃないよ!
+>  甘いんだよ、そんなの!!」
+“Don't make me laugh! That's way too soft!!”
+
+@10897 Chara · キャラ
+> 「甘いね、そんなもの!」
+“Too soft, that thing!”
+
+@10898 Chara · キャラ
+> 「どこ狙ってんのさ!」
+“What are you aiming at!”
+
+@10899 Chara · キャラ
+> 「あははは、効かないね!」
+“Ahahaha, that doesn't work on me!”
+
+@10900 Chara · キャラ
+> 「ムダなんだよ、そんなのは!」
+“That's useless!”
+
+@10901 Chara · キャラ
+> 「弾切れ!? なんでぇ?」
+“Out of ammo!? What the heck?”
+
+@10902 Chara · キャラ
+> 「くそっ! 届かないのかい!?」
+“Damn! Can't reach!?”
+
+@11223 Chara · キャラ
+> 「アッハッハッハッハッハッ!」
+“Ahahahahahaha!”
+
+@11224 Chara · キャラ
+# 审校：原文“くぅ”是呻吟/兴奋的感叹，不是“it's the enemy”的强调；改为更贴近原意的自然表达。
+> 「くぅ 敵だ、敵だぁ、もう胸が
+>  張り裂けそう!」
+“Ngh, the enemy, the enemy! My chest is about to burst!”
+
+@11225 Chara · キャラ
+# 审校：“burning hot”改为“burning up”，更符合角色兴奋喊叫的语气。
+> 「身体が、身体が熱いのよおっ!」
+“My body, my body is burning up!”
+
+@11226 Chara · キャラ
+> 「あははは、もっともっと躍れ!」
+“Ahahaha, dance more, dance more!”
+
+@11227 Chara · キャラ
+> 「いっただき!」
+“I'll take that!”
+
+@11228 Chara · キャラ
+> 「ああっ体が熱いっ燃えるっ!」
+“Ahh, my body's hot, it's on fire!”
+
+@11229 Chara · キャラ
+# 审校：“It's the enemy”改为“The enemy”，更贴近原文“敵だ、敵だ”的重复呼喊。
+> 「くぅーっ! あははは! 敵だ、敵だ!
+>  もう胸が張り裂けそう! 快感!」
+“Ngh! Ahahaha! The enemy, the enemy! My chest is about to burst! Such ecstasy!”
+
+@11230 Chara · キャラ
+> 「そーら、そら! 落としちゃうよ!」
+“There, there! I'm gonna drop you!”
+
+@11231 Chara · キャラ
+> 「さあて、行くよっ!」
+“Well now, here I go!”
+
+@11232 Chara · キャラ
+> 「はははっ! ぞくぞくする! それっ!」
+“Hahaha! I'm tingling! Take this!”
+
+@11233 Chara · キャラ
+> 「魂よ! 魂の躍動なのよ!
+>  私の魂は、宇宙を駆ける魂!」
+“My soul! It's the throb of my soul! My soul races across the universe!”
+
+@11234 Chara · キャラ
+> 「胸が苦しい、もう死ぬ!
+>  死んじゃうぞっ!」
+“My chest hurts, I'm gonna die! I'm really gonna die!”
+
+@11235 Chara · キャラ
+# 审校：“そこかいっ!”是“在那里吗！”的感叹，初稿“Right there, huh!”语气不对，改为“Right there!”。
+> 「そこかいっ!」
+“Right there!”
+
+@11236 Chara · キャラ
+> 「え! ウソ!? やられちゃったのかい!?」
+“Eh! No way!? I got taken down!?”
+
+@11237 Chara · キャラ
+> 「あうっ! や、やば……壊れちゃいそう」
+“Agh! Th-this is bad... I think I'm gonna break.”
+
+@11238 Chara · キャラ
+> 「わわっ! な、何だいこいつは!?」
+“Whoa! Wh-what the heck is this!?”
+
+@11239 Chara · キャラ
+> 「ああっ! す、すごい、なんて強烈……」
+“Ahh! A-amazing, so intense...”
+
+@11240 Chara · キャラ
+> 「なに!? 化け物かっ!?」
+“What!? Is it a monster!?”
+
+@11241 Chara · キャラ
+> 「ちっ! やってくれたね!」
+“Tch! You got me good!”
+
+@11242 Chara · キャラ
+> 「このっ! あたしを怒らせるとどうなるか
+>  わかってるんだろうね!!」
+“Why you! You know what happens when you make me mad!!”
+
+@11243 Chara · キャラ
+> 「くっ! やるじゃないか! おもしろく
+>  なってきたよ!」
+“Ngh! Not bad! This is getting interesting!”
+
+@11244 Chara · キャラ
+> 「うっ! そうかい、やるっていうのかい!」
+“Ugh! So you wanna go, huh!”
+
+@11245 Chara · キャラ
+> 「くすぐったいんだよ!」
+“That tickles!”
+
+@11246 Chara · キャラ
+> 「あはは、かわいいじゃないか」
+“Ahaha, aren't you cute.”
+
+@11247 Chara · キャラ
+> 「その程度かい? 笑わせてくれるね!」
+“Is that all? You're making me laugh!”
+
+@11248 Chara · キャラ
+> 「なんだい、物足りないね!」
+“What's this, not satisfying at all!”
+
+@11249 Chara · キャラ
+> 「うるさいな!」
+“You're so annoying!”
+
+@11250 Chara · キャラ
+> 「当たらないんだよ!」
+“You can't hit me!”
+
+@11251 Chara · キャラ
+> 「あははは、は～ずれた!」
+“Ahahaha, you missed!”
+
+@11252 Chara · キャラ
+> 「笑わせんじゃないよ!
+>  甘いんだよ、そんなの!!」
+“Don't make me laugh! That's way too soft!!”
+
+@11253 Chara · キャラ
+> 「甘いね、そんなもの!」
+“Too soft, that's nothing!”
+
+@11254 Chara · キャラ
+> 「どこ狙ってんのさ!」
+“What are you aiming at!?”
+
+@11255 Chara · キャラ
+> 「あははは、効かないね!」
+“Ahahaha, that doesn't work!”
+
+@11256 Chara · キャラ
+> 「ムダなんだよ、そんなのは!」
+“That's pointless!”
+
+@11257 Chara · キャラ
+> 「弾切れ!? なんでぇ?」
+“Out of ammo!? What the heck?”
+
+@11258 Chara · キャラ
+> 「くそっ! 届かないのかい!?」
+“Damn! Can't reach!?”

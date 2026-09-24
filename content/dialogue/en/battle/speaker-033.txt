@@ -1,0 +1,137 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11735 Val-A · ヴァル＝ア
+> 「さぁ、来るがよい」
+“Come, then. Come at me.”
+
+@11736 Val-A · ヴァル＝ア
+> 「良いのか、それで」
+“Are you sure about that?”
+
+@11737 Val-A · ヴァル＝ア
+> 「…………」
+“...”
+
+@11738 Val-A · ヴァル＝ア
+> 「我が力の一端をみせよう」
+“I shall show you a fragment of my power.”
+
+@11739 Val-A · ヴァル＝ア
+> 「受けてみよ」
+“Try to withstand this.”
+
+@11740 Val-A · ヴァル＝ア
+> 「不自由なこの偽りの肉体でも、
+>  このくらいのことはできる」
+“Even in this imperfect, false body, I can manage at least this much.”
+
+@11741 Val-A · ヴァル＝ア
+> 「受け入れよ。お前たちの運命を」
+“Accept it. Accept your fate.”
+
+@11742 Val-A · ヴァル＝ア
+> 「お前たちの力がどれほどのものか、
+>  我に見せてみよ」
+“Show me just how great your power truly is.”
+
+@11743 Val-A · ヴァル＝ア
+> 「宿命を受け入れよ。
+>  大銀河の意思を受け入れよ」
+“Accept your destiny. Accept the will of the great galaxy.”
+
+@11744 Val-A · ヴァル＝ア
+> 「なに……?」
+“What...?”
+
+@11745 Val-A · ヴァル＝ア
+> 「この力……」
+“This power...”
+
+@11746 Val-A · ヴァル＝ア
+> 「これは……」
+“This is...”
+
+@11747 Val-A · ヴァル＝ア
+> 「くっ……なんというパワーだ……」
+“Ngh... what power this is...”
+
+@11748 Val-A · ヴァル＝ア
+> 「これが……この者たちの本当の
+>  力か……?」
+“Is this... their true power...?”
+
+@11749 Val-A · ヴァル＝ア
+> 「この身ではこれが限度か……」
+“In this body, this is my limit, it seems...”
+
+@11750 Val-A · ヴァル＝ア
+> 「……なるほど、これが……」
+“...I see. So this is...”
+
+@11751 Val-A · ヴァル＝ア
+> 「そうだ……それでいい」
+“Yes... that's right.”
+
+@11752 Val-A · ヴァル＝ア
+> 「なかなかのものだが……まだ足りぬな」
+“Impressive, but... still not enough.”
+
+@11753 Val-A · ヴァル＝ア
+> 「なるほど……」
+“I see...”
+
+@11754 Val-A · ヴァル＝ア
+> 「ほう……もう一度やってみよ」
+“Oh? Try that once more.”
+
+@11755 Val-A · ヴァル＝ア
+> 「それでは我らは倒せぬぞ?」
+“At this rate, you cannot defeat us, you know?”
+
+@11756 Val-A · ヴァル＝ア
+> 「この程度なのか?」
+“Is this all you have?”
+
+@11757 Val-A · ヴァル＝ア
+> 「…………」
+“...”
+
+@11758 Val-A · ヴァル＝ア
+> 「……力をみせよ」
+“...Show me your power.”
+
+@11759 Val-A · ヴァル＝ア
+> 「お前たちがこの程度のはずがあるまい」
+“There's no way this is all you're capable of.”
+
+@11760 Val-A · ヴァル＝ア
+> 「…………」
+“...”
+
+@11761 Val-A · ヴァル＝ア
+> 「この程度ではな……」
+“This level won't do...”
+
+@11762 Val-A · ヴァル＝ア
+> 「本気でやっているのか?」
+“Are you even fighting seriously?”
+
+@11763 Val-A · ヴァル＝ア
+> 「ばかめ」
+“Fool.”
+
+@11764 Val-A · ヴァル＝ア
+> 「エネルギーが……ないのか」
+“Your energy... is gone?”
+
+@11765 Val-A · ヴァル＝ア
+> 「使い果たしたか……」
+“Used it all up, have you...”
+
+@11766 Val-A · ヴァル＝ア
+> 「ほう……」
+“Oh?”
+
+@11767 Val-A · ヴァル＝ア
+> 「……この身では届かぬか……」
+“...In this body, I cannot reach them, it seems...”

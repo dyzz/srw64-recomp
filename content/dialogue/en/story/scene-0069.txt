@@ -1,0 +1,2386 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@29738 Akira · アキラ
+> 「なあ、俺たち、
+>  今どこに向かっているんだい?」
+“Hey, where are we headed right now?”
+
+@29739 Mika · ミカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「カラバの基地よ。知らなかったの?
+>  艦内ミーティングで
+“Karaba Base. Didn't you know? Captain Bright said so at the shipboard meeting.
+---
+>  ブライト艦長がいってたじゃない」
+Didn't you hear him?”
+
+@29740 Kenji · ケンジ
+> 「居眠りして、
+>  聞いていなかったんだろう。たるんでるぞ」
+“You were dozing off and didn't hear a thing, right? You're getting sloppy.”
+
+@29741 Akira · アキラ
+> 「ちぇっ、ヤブヘビだったな。
+>  で、そこで何をするんだっけ?」
+“Tch, guess I poked a hornet's nest. So what are we doing there again?”
+
+@29742 Naoto · ナオト
+> 「本当に寝てたのかよ、お前は。
+>  補給だよ、補給
+“You really were asleep, huh. It's resupply, resupply.
+---
+>  アランさんがそこに連絡をとって、
+>  補給を受けさせてもらいに行くのさ」
+Alan got in touch with them, and we're going there to stock up.”
+
+@29743 Akira · アキラ
+> 「ああそうそう、そうだっけ。
+>  思い出したよ」
+“Oh yeah, that's right. I remember now.”
+
+@29744 Mika · ミカ
+> 「まあ」
+“Honestly.”
+
+@29745 Kenji · ケンジ
+> 「……こいつは、まったく!」
+“...This guy, I swear!”
+
+@29746 Akira · アキラ
+# 审校：原文三页，初稿每页都加了引号，违反规则2：只有第一页开头和最后一页结尾用引号。改为中间页不加引号。
+> 「カラバには、万丈さんがいるんだよな。
+>  梁山泊では
+“Banjo's at Karaba, right? We missed each other at Liangshan,
+---
+>  すれ違いになっちゃったけど、
+>  今度こそダイターン3が
+but maybe this time I'll finally get to see the Daitarn 3.
+---
+>  見られるかもしれないなあ」
+I can't wait.”
+
+@29747 Naoto · ナオト
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「まあとにかくよ、
+>  地面におりてチョイと休めば
+“Anyway, once we get down on the ground and take a little rest,
+---
+>  タケルの奴もシャンとするんじゃないか?」
+maybe Takeru will snap out of it too, huh?”
+
+@29748 Mika · ミカ
+> 「……そうね、そうだといいけど……」
+“...Yeah, I hope so...”
+
+@29749 Kenji · ケンジ
+# 审校：原文三页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「タケルの調子が悪いと、
+>  コスモクラッシャー隊が十分に
+“If Takeru's not in shape, the Cosmo Crusher team can't work at full strength.
+---
+>  働けん。特に、謎の宇宙人の
+>  話を聞いて以来
+Especially since he heard that talk about the mysterious alien, he's been spacing out a lot...
+---
+>  しばしばボンヤリしているようだが……。
+>  あいつはそんなに心配性だったかな?」
+Was he always such a worrier?”
+
+@29750 Mika · ミカ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「……あとでもう一度
+>  様子をみてきます
+“...I'll go check on him again later.
+---
+>  必要なら、カラバ基地で
+>  少し休むようにって……」
+If need be, I'll tell him to rest a while at Karaba Base...”
+
+@29751 Banjo · 万丈
+> 「{HeroMech}のみんな、聞こえる
+>  かい? こちらはカラバの万丈だ」
+“Everyone aboard the {HeroMech}, can you hear me? This is Banjo of Karaba.”
+
+@29752 Alan · アラン
+> 「万丈か。こちらは
+>  {HeroMech}。ひさしぶりだな」
+“Banjo, is that you? This is the {HeroMech}. It's been a while.”
+
+@29753 Banjo · 万丈
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「やあアラン。ま、あいさつはあとで改めて
+>  補給の用意はととのっているよ
+“Hey, Alan. We'll save the greetings for later. Resupply is all set up.
+---
+>  誘導に従って着陸してくれたまえ」
+Just follow the guidance and land.”
+
+@29754 Alan · アラン
+> 「了解した」
+“Understood.”
+
+@29755 Banjo · 万丈
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「カラバの基地へようこそ。
+>  みんな、元気そうで何よりだ
+“Welcome to Karaba Base. Good to see everyone looking well.
+---
+>  いろいろあったそうだね」
+Sounds like you've been through a lot.”
+
+@29756 Alan · アラン
+> 「まあな。何といっても、
+>  ブレックス准将のことが……」
+“You could say that. Above all, what happened to Brigadier General Blex...”
+
+@29757 Banjo · 万丈
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「そうだな……。全く、残念な人を
+>  失った。しかし、僕たちは
+“Yeah... We've truly lost a great man. But we can't keep looking back.
+---
+>  後ろを振り返っちゃいけない。
+>  准将のためにも、ね。」
+For the Brigadier General's sake too, right?”
+
+@29758 Alan · アラン
+> 「ああ……」
+“Yeah...”
+
+@29759 Banjo · 万丈
+> 「それより、ずいぶんとにぎやかになってる
+>  じゃないか? 初対面の人も
+“More importantly, things have gotten pretty lively here, hasn't it? Lots of new faces,
+---
+>  大勢いるな。やあ諸君、僕が
+>  カラバの破嵐万丈だ。こっちは
+too. Hey there, everyone. I'm Banjo Haran of Karaba. Over here
+---
+>  アシスタントのレイカとビューティー、
+>  それから執事のギャリソン
+are my assistants Reika and Beauty, and my butler Garrison.
+---
+>  以後よろしくお見知りおきを」
+I hope we'll all get along.”
+
+@29760 Hayato · ハヤト
+> 「ふっ、あいかわらずの奴だ」
+“Heh, he never changes.”
+
+@29761 Reika · レイカ
+> 「よろしく」
+“Nice to meet you.”
+
+@29762 Beauty · ビューティ
+> 「よろしくね」
+“Nice to meet you all.”
+
+@29763 Beecha · ビーチャ
+> 「こっ、こちらこそ……」
+“L-Likewise...”
+
+@29764 Mondo · モンド
+> 「よよ、よろしくおねがいします……」
+“P-Pleased to meet you...”
+
+@29765 Roux · ルー
+> 「…………」
+“...”
+
+@29766 Garrison · ギャリソン
+> 「ギャリソン・時田と申します。
+>  何とぞよろしく」
+“My name is Garrison Tokita. A pleasure to make your acquaintance.”
+
+@29767 Quatre · カトル
+> 「何だかパーガンさんを思い出しますね」
+“He kind of reminds me of Mr. Pagan.”
+
+@29768 Noin · ノイン
+> 「ああ……。元気でいるといいがな」
+“Yeah... I hope he's doing well.”
+
+@29769 Banjo · 万丈
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「ところで、この基地は初めてだろう?
+>  案内するよ。細かい話はそのあとで
+“By the way, this is your first time at this base, right? Let me show you around. We can talk details after,
+---
+>  食事でもとりながら、どうだい?」
+over a meal, how about it?”
+
+@29770 Dermail · デルマイユ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「異星人との戦闘は激化する
+>  ばかりだ。あいかわらず戦況が
+“The fighting with the aliens only keeps intensifying. Why is it that the war situation still
+---
+>  好転せんのは、どういうことだ?」
+refuses to improve?”
+
+@29771 Jamitov · ジャミトフ
+# 审校：原文四页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「奴らが手強いからに
+>  決まっておろうが。銀河帝国め
+“It's obviously because they're tough. That Galactic Empire of theirs
+---
+>  続々と戦力を増しつつある。
+>  月面のMDを全て投入して
+keeps building up its forces one after another. We're barely holding on by throwing in every last MD on the moon.
+---
+>  ようやく支えているありさまだ。
+>  だいたい、オペレーション・ノヴァの際に
+Besides, it was during Operation Nova that we moved far too many MDs to the surface
+---
+>  不必要にMDを
+>  地上に移しすぎたのだ」
+unnecessarily.”
+
+@29772 Dermail · デルマイユ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「今さら繰り言を……。ツバロフよ、
+>  戦艦リーブラは
+“Harping on that now, of all times... Tubarov, can the battleship Libra
+---
+>  まだ実戦投入できぬのか」
+still not be put into actual combat?”
+
+@29773 Tubarov · ツバロフ
+> 「は……。計画を大幅に繰り上げ
+>  てはおりますが、今しばらく……」
+“Yes... We've moved the schedule up considerably, but it will be a while longer...”
+
+@29774 Dermail · デルマイユ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「コロニー労働者をもっと投入しろ
+>  一刻も早く完成させるのだ
+“Throw in more colony laborers. Get it finished as soon as possible.
+---
+>  あれの主砲さえあれば…」
+If only we had its main cannon...”
+
+@29775 Tubarov · ツバロフ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「は、しかし、今以上は……。
+>  月面のMDプラントにも
+“Yes, but any more than this... The MD plant on the moon also
+---
+>  人員が必要で……」
+needs personnel, so...”
+
+@29776 Dermail · デルマイユ
+# 审校：原文两页，初稿每页都加了引号，违反规则2。改为中间页不加引号。
+> 「何のための専制君主制だ!
+>  地球の危機だということを
+“What is an absolute monarchy for?! Don't you understand
+---
+>  わかっておらぬのか!?」
+that Earth is in danger?!”
+
+@29777 Tubarov · ツバロフ
+> 「は、ははっ……」
+“Y-Yes, sir...”
+
+@29778 Jamitov · ジャミトフ
+> 「デルマイユよ、貴公の方こそ
+>  何をしておる。{HeroMech}に
+“Dermail, you're the one I should be asking what you're doing. The revolt of the Treize faction against the {HeroMech}
+---
+>  トレーズ派の反乱……
+>  いっこうに解決せん。小娘を
+shows no sign of being resolved. Surely you didn't put that girl in charge of the foundation
+---
+>  財団代表にすえたのは、まさか
+>  酔狂のためだったのではあるまいな」
+out of mere whimsy?”
+
+@29779 Dermail · デルマイユ
+> 「むむ……」
+“Mmm...”
+
+@29780 Jamitov · ジャミトフ
+> 「地上は貴公にまかせておるのだ。
+>  良いか、我々は宇宙の防衛で
+“I've left the surface to you. Understand? We can't spare a moment from the defense of space.
+---
+>  一時も手がはなせん。
+>  くれぐれも頼んだぞ……」
+I'm counting on you...”
+
+@29781 Alan · アラン
+> 「やはり、いまOZが宇宙で
+>  戦っているのは反乱軍じゃなく
+“So it's true, then — what OZ is fighting out in space right now isn't a rebel army,
+---
+>  新たな異星人の
+>  侵攻だという話は本当だったのか」
+but a new alien invasion.”
+
+@29782 Garrison · ギャリソン
+> 「はい、確かでございます。何でも
+>  彼らは、自らを銀河帝国軍の
+“Yes, that is correct. Apparently they call themselves the advance fleet of the
+---
+>  先遣艦隊と称しているとか」
+Galactic Empire.”
+
+@29783 Takeru · タケル
+> 「銀河帝国軍ですって!?
+>  奴らがそう名のっていると……!?」
+“The Galactic Empire?! They call themselves that...?!”
+
+@29784 Bright · ブライト
+> 「タケル君?」
+“Takeru?”
+
+@29785 Kenji · ケンジ
+> 「おい、どうしたんだタケル?」
+“Hey, what's wrong, Takeru?”
+
+@29786 Takeru · タケル
+> 「そ、それで……、そいつらの皇帝……
+>  い、いや、指導者の名前は……?」
+“S-So then... their emperor... n-no, their leader's name is...?”
+
+@29787 Garrison · ギャリソン
+> 「はあ……。申しわけございません、
+>  残念ながらそこまでは
+“Ah... I'm sorry, but unfortunately I'm afraid I don't know that much,
+---
+>  わかりかねますが……」
+but...”
+
+@29788 Banjo · 万丈
+> 「ははは、タケル君、いくらギャリソンの
+>  情報網でもそこまでは無理さ
+“Hahaha, Takeru, even Garrison's information network can't manage that.
+---
+>  だいいち銀河帝国のことだって、
+>  知っている地球人は
+Besides, when it comes to the Galactic Empire, the Earthlings who know about it
+---
+>  ほんのひと握りなんだから」
+are only a tiny handful.”
+
+@29789 Takeru · タケル
+> 「は、はあ……。そ、そうですよね。
+>  すいません、ギャリソンさん」
+“Y-Yes... R-Right. Sorry, Garrison.”
+
+@29790 Garrison · ギャリソン
+> 「いえいえ。わかりましたら
+>  すぐにお知らせいたしますので
+“Not at all. As soon as I learn anything, I'll let you know at once,
+---
+>  どうかお待ちになっていてください」
+so please do wait for it.”
+
+@29791 Mika · ミカ
+> 「タケル、大丈夫?
+>  何だか変よ、休んだら?」
+“Takeru, are you all right? You seem off. Why don't you rest?”
+
+@29792 Takeru · タケル
+> 「い、いや、大丈夫だ。
+>  なんともないから」
+“N-No, I'm fine. Nothing's wrong.”
+
+@29793 Mika · ミカ
+> 「そう……?」
+“Really...?”
+
+@29794 Quattro · クワトロ
+> 「ともあれ、そいつらが地球征服を
+>  狙っているのは、もはや疑いないな」
+“In any case, there's no longer any doubt that they're after the conquest of Earth.”
+
+@29795 Simone · シモーヌ
+> 「またムゲゾルバドスの時と同じことが
+>  くりかえされるの? そんな……」
+“Are we going to repeat the same thing that happened with Muge Zorbados? That can't be...”
+
+@29796 Ryoma · リョウ
+> 「確かにやりきれん。
+>  だが、弱気になっちゃだめだ
+“It's true it's unbearable. But you mustn't lose heart.
+---
+>  戦う前から負けてしまうぞ」
+You'll lose before the fight even starts.”
+
+@29797 Ark · アーク（按段落 3DD1）
+> 「そうだ。ここでくじけたら、今までの
+>  戦いすらも無駄になってしまう
+“That's right. If we give up here, even the battles we've fought until now will have been for nothing.
+---
+>  俺たちだって昔の俺たちじゃないんだ」
+We're not the people we used to be, either.”
+
+@29798 Selain · セレイン（按段落 3DD2）
+> 「その通りだ。ここでくじければ、
+>  今までの戦いすらも無駄になって
+“Exactly. If we give up here, even the battles we've fought until now will have been
+---
+>  しまうことになる。我々だって
+>  昔のまま、というわけではないんだ」
+for nothing. We, too, are not what we once were.”
+
+@29799 Brad · ブラッド（按段落 3DD3）
+> 「そうだぜ。ここでくじけちまったら、
+>  今までの戦いもムダになっちまう
+“Yeah. If we give up here, all the fights we've been through will've been for nothing.
+---
+>  俺たちだって昔の俺たちじゃねぇ」
+We ain't the guys we used to be, either.”
+
+@29800 Manami · マナミ（按段落 3DD4）
+> 「そうだわ。ここでくじけたりなんかしちゃ、
+>  今までの戦いすらも無駄になって
+“That's right. If we give up here, even the battles we've fought until now will have been
+---
+>  しまうのよ。あたしたちだって
+>  昔のあたしたちじゃないわ」
+for nothing. We're not the girls we used to be, either.”
+
+@29801 Simone · シモーヌ
+> 「そう……。そうね、元気を出さなきゃ
+>  リリーナさんや
+“Yes... You're right. I have to cheer up — for Relena's sake,
+---
+>  他のいろんな人たちのためにも……」
+and for so many other people's...”
+
+@29802 Takeru · タケル
+> 「ズール……。銀河帝国……
+>  皇帝の名を……俺は知ってる
+“Zuhl... The Galactic Empire... the emperor's name... I know it.
+---
+>  皇帝ズール……どうして……」
+Emperor Zuhl... Why...”
+
+@29803 Astonaige · アストナージ
+> 「エイジ、お前に渡したいものがあるんだ
+>  整備ハンガーまで来てくれるか」
+“Eiji, there's something I want to give you. Can you come to the maintenance hangar?”
+
+@29804 Eiji · エイジ
+> 「わかりました」
+“Understood.”
+
+@29805 Eiji · エイジ
+> 「……あなたはドクター・エリザベス。
+>  どうしてここに……」
+“...You're Dr. Elizabeth. Why are you here...”
+
+@29806 Elizabeth · エリザベス
+> 「……エイジ、元気そうね」
+“...Eiji, you look well.”
+
+@29807 Astonaige · アストナージ
+> 「ドクター・エリザベスはニューレイズナーを
+>  持ってきてくれたんだ」
+“Dr. Elizabeth brought us the New Layzner.”
+
+@29808 Eiji · エイジ
+> 「ニューレイズナー……」
+“The New Layzner...”
+
+@29809 Elizabeth · エリザベス
+> 「あなたの新しいSPTよ。これからは
+>  ニューレイズナーに乗り換えなさい」
+“It's your new SPT. From now on, switch over to the New Layzner.”
+
+@29810 Eiji · エイジ
+> 「あなたのような平和主義者が
+>  SPTのような兵器を
+“For a pacifist like you to be delivering a weapon like an
+---
+>  運んでくるなんて……」
+SPT...”
+
+@29811 Elizabeth · エリザベス
+> 「本当のことをいうとね、エイジ。
+>  わたしも疲れているのよ……
+“To tell you the truth, Eiji, I'm tired too...
+---
+>  サンクキングダムの完全平和に
+>  賛同していたけど……まさか
+I supported the Sanc Kingdom's complete pacifism, but... to think
+---
+>  国自体が解体されるなんてね……」
+the nation itself would be dismantled...”
+
+@29812 Eiji · エイジ
+> 「…………」
+“...”
+
+@29813 Astonaige · アストナージ
+> 「……ドクター・エリザベス、
+>  少しお休みになって下さい
+“...Dr. Elizabeth, please get some rest.
+---
+>  今、誰かに案内させます」
+I'll have someone show you the way now.”
+
+@29814 Elizabeth · エリザベス
+> 「……ありがとう」
+“...Thank you.”
+
+@29815 Astonaige · アストナージ
+> 「さぁエイジ、レイをニューレイズナーに
+>  移植するぞ。手伝ってくれるよな」
+“All right, Eiji, we're transferring the Rei into the New Layzner. You'll help, right?”
+
+@29816 Eiji · エイジ
+> 「……はい」
+“...Yes.”
+
+@29817 Takeru · タケル
+> 「誰だ!?」
+“Who's there?!”
+
+@29818 Mika · ミカ
+> 「タケル?」
+“Takeru?”
+
+@29819 Kenji · ケンジ
+> 「どうした?」
+“What's wrong?”
+
+@29820 Takeru · タケル
+> 「誰かいる……どこから侵入した!?
+>  お前は何者だ!」
+“Someone's here... How did they get in?! Who are you?!”
+
+@29821 ???
+> (ふふふ、さあな。
+>  止められるものなら止めてみよ、マーズ)
+(Heh heh, who knows. Stop me if you can, Mars.)
+
+@29822 Takeru · タケル
+> 「俺はマーズじゃないっ!
+>  くそっ、何をするつもりだ!」
+“I'm not Mars! Damn it, what are you planning?!”
+
+@29823 ???
+> (そうだ、追ってこい、裏切り者め。
+>  ズール皇帝の命により
+(That's right, come after me, you traitor. By Emperor Zuul's command,
+---
+>  貴様を殺す)
+I will kill you.)
+
+@29824 Takeru · タケル
+> 「待て! 逃がさないぞ!」
+“Wait! You won't get away!”
+
+@29825 Naoto · ナオト
+> 「何だあ? おいおい、大丈夫か?
+>  あの野郎、ついにイっちまったか」
+“What the hell? Hey, hey, are you okay? Did that bastard finally snap?”
+
+@29826 Mika · ミカ
+> 「とにかく追うわよ! 急いで!」
+“Anyway, we're going after him! Hurry!”
+
+@29827 Akira · アキラ
+> 「おーい、タケルー!
+>  どうしちゃったんだよーっ!」
+“Hey, Takeru! What's gotten into you?!”
+
+@29828 Takeru · タケル
+> 「どこだ、どこにいる?」
+“Where are you? Where?!”
+
+@29829 Baren · バレン
+> 「よく来たな、マーズ。よく聞け。
+>  私はお前の父上である
+“So you've come, Mars. Listen well. I am your father,
+---
+>  ズール皇帝のお言葉を
+>  伝えに来た
+and I've come to relay Emperor Zuul's words.
+---
+>  陛下はお前の反逆行為に、
+>  たいそうお怒りだ」
+His Majesty is most displeased with your act of rebellion.”
+
+@29830 Takeru · タケル
+> 「黙れ!」
+“Shut up!”
+
+@29831 Baren · バレン
+> 「どうしても従う気はないということか?」
+“So you truly have no intention of obeying?”
+
+@29832 Takeru · タケル
+> 「当たり前だ! 誰が!」
+“Of course not! Who would?!”
+
+@29833 Baren · バレン
+> 「お前を殺しても目的は
+>  達成されるのだ。死ねマーズ!」
+“Even if you die, our goal will be achieved. Die, Mars!”
+
+@29834 Takeru · タケル
+> 「うわぁぁっ! く、くそっ!」
+“Uwaaah! D-Damn it!”
+
+@29835 Baren · バレン
+> 「そんなもので!」
+“Is that all you've got?!”
+
+@29836 Takeru · タケル
+> 「あぁぁっ……う……」
+“Aaaah... ugh...”
+
+@29837 Takeru · タケル
+> 「うわぁっ!?」
+“Uwaaah?!”
+
+@29838 Baren · バレン
+> 「なに!? しまった、ガイヤーか!」
+“What?! Damn, it's Gaia!”
+
+@29839 ???
+> (マーズ、恐れることはない。
+>  ガイヤーはお前を守るために来たのだ)
+(Mars, there is nothing to fear. Gaia has come to protect you.)
+
+@29840 Takeru · タケル
+> 「な、なんだこいつ……勝手に……」
+“W-What is this thing... moving on its own...”
+
+@29841 Takeru · タケル
+> 「なんだここは? 俺はいったい……
+>  ガイヤーだと? これがズールのいっていた
+“Where is this place? What in the world am I... Gaia? So this is what Zuul meant.
+---
+>  ……くそっ、もし俺の命令で自由
+>  になるというのなら、奴を倒せ!」
+...Damn it, if this thing will obey my commands, then destroy him!”
+
+@29842 Baren · バレン
+> 「くっ、ならばガイヤーごと
+>  葬り去ってやる!」
+“Tch, then I'll destroy you along with Gaia!”
+
+@29843 Baren · バレン
+> 「な……なんだこいつは?
+>  こんなものはデータにないぞ!?」
+“W-What is this thing? This isn't in the data!”
+
+@29844 ???
+> (マーズ……ガイヤーが危機に
+>  おちいったとき、五神ロボはあらわれる
+(Mars... when Gaia is in danger, the Five God Robots appear.
+---
+>  これらの合体した姿を、
+>  ゴッドマーズと呼ぶがよい)
+You may call their combined form Godmars.)
+
+@29845 Takeru · タケル
+> 「な……に? さっきも聞こえた……
+>  誰だ?」
+“W-What? I heard it again... Who are you?”
+
+@29846 ???
+> (マーズ……死ぬな……)
+(Mars... don't die...)
+
+@29847 Takeru · タケル
+> 「待て! お前はいったい……!?」
+“Wait! Who in the world are you...?!”
+
+@29848 Baren · バレン
+> 「しょせんはみかけ倒しにすぎない。
+>  一気にケリをつけてやる」
+“He's nothing but a bluff. I'll finish this in one blow.”
+
+@29849 Baren · バレン
+> 「きゃあああぁぁーっ!!」
+“Kyaaaaaaah!!”
+
+@29850 Takeru · タケル
+> 「はあっ……はあっ……はあっ……」
+“Hah... hah... hah...”
+
+@29851 Naoto · ナオト
+> 「おい、今のはなんだったんだ!?」
+“Hey, what the hell was that just now?!”
+
+@29852 Beecha · ビーチャ
+> 「な、なんだよあれは!
+>  見たこともないロボットだぜ!?」
+“W-What was that?! I've never seen a robot like that!”
+
+@29853 Bright · ブライト
+> 「なんだと? そこのロボット、
+>  聞こえるか! 正体をあかせ
+“What? You there, robot, can you hear me? Identify yourself,
+---
+>  さもなくば攻撃する!」
+or I will attack!”
+
+@29854 Takeru · タケル
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「待ってください、ブライト艦長!」
+“Please wait, Captain Bright!”
+
+@29855 Mika · ミカ
+> 「あの声、タケルだわ!」
+“That voice... it's Takeru!”
+
+@29856 Kenji · ケンジ
+> 「タケルだと? タケル、なんだって
+>  そんなロボットに乗っている!?」
+“Takeru? Takeru, why are you piloting a robot like that?!”
+
+@29857 Takeru · タケル
+> 「隊長、俺にもわからないんです。
+>  俺は……」
+“Commander, I don't understand it either. I just...”
+
+@29858 Bright · ブライト
+> 「どうした!」
+“What's going on?!”
+
+@29859 Bunny · バニー
+> 「OZの部隊を捕捉。
+>  パトロール部隊のようです!」
+“We've caught an OZ unit. Looks like a patrol squad!”
+
+@29860 Bright · ブライト
+> 「あのロボットが発見されたのか!?
+>  やむをえん、敵部隊と交戦だ!」
+“They've found that robot?! No choice then, we engage the enemy unit!”
+
+@29861 Kenji · ケンジ
+> 「艦長、タケルはどうするんですか!?」
+“Captain, what about Takeru?!”
+
+@29862 Bright · ブライト
+> 「あれが明神タケルなら、そのまま
+>  やらせろ! 事情はあとで聞く」
+“If that's Takeru Myojin, let him keep at it! I'll hear the details later.”
+
+@29863 Kenji · ケンジ
+> 「了解!」
+“Understood!”
+
+@29864 Yazan · ヤザン
+> 「{HeroMech}!
+>  銀河帝国軍が攻めてきて
+“{HeroMech}! The Galactic Empire attacks, and
+---
+>  地球は再び危機に陥ろうと
+>  しているのに、OZに従わず地球を
+the Earth is about to fall into crisis again, yet these bastards won't follow OZ and
+---
+>  破滅させようとしている奴らめ!」
+mean to destroy the Earth!”
+
+@29865 Eiji · エイジ
+> 「そういうのなら戦いをしかけるのを
+>  やめてくれ!
+“If that's how it is, then stop picking fights with us!
+---
+>  ……こちらから戦いを挑んだことはない」
+...We've never started a battle ourselves.”
+
+@29866 Yazan · ヤザン
+> 「ならばこの場で武装解除して、
+>  我々OZに投降しろ」
+“Then disarm here and now, and surrender to us, OZ.”
+
+@29867 Quattro · クワトロ
+> 「……それは聞けない」
+“...I can't agree to that.”
+
+@29868 Yazan · ヤザン
+> 「そうだろうとも、
+>  ならば戦うしかないではないか!
+“I thought as much. Then there's nothing for it but to fight!
+---
+>  あくまでも我々に従うか、
+>  否かなのだ!」
+It's obey us or not, nothing else!”
+
+@29869 Rish · リッシュ（按段落 3DD2）
+> 「{HeroNick}、聞こえるか」
+“{HeroNick}, can you hear me?”
+
+@29870 Selain · セレイン（按段落 3DD2）
+> 「……なんだ」
+“...What is it?”
+
+@29871 Rish · リッシュ（按段落 3DD2）
+> 「こいつで最後にするぜ。だからよ、
+>  最後に一つ聞いてくれないか」
+“This'll be the last one. So, hey, let me ask you one thing before the end.”
+
+@29872 Selain · セレイン（按段落 3DD2）
+> 「何が言いたい」
+“What are you getting at?”
+
+@29873 Rish · リッシュ（按段落 3DD2）
+> 「何度も言うが、俺がお前に
+>  惚れてるってのは、こりゃマジだぜ
+“I'll say it again, me being in love with you, that's the real deal.
+---
+>  俺もこれまでかなり
+>  好きに生きてきたがよ
+I've lived pretty much as I pleased up till now, but you know,
+---
+>  おかげでずいぶん妙なことに
+>  なってきちまった。俺としたことがな」
+thanks to that, things have gotten pretty strange. And me of all people.”
+
+@29874 Selain · セレイン（按段落 3DD2）
+> 「……それで?」
+“...And?”
+
+@29875 Rish · リッシュ（按段落 3DD2）
+> 「ま、俺はお前の敵だった。だから
+>  どんな結果でもそりゃあ仕方ねぇ
+“Well, I was your enemy. So whatever the outcome, that's just how it goes.
+---
+>  だけどな、俺がお前に
+>  惚れてた男だったってことだけは
+But at least remember this one thing:
+---
+>  覚えておいてくれ」
+that I was a man who was in love with you.”
+
+@29876 Selain · セレイン（按段落 3DD2）
+> 「……いいだろう。覚えておいてやる」
+“...Fine. I'll remember it.”
+
+@29877 Rish · リッシュ（按段落 3DD2）
+> 「フッ、そいつを聞いて安心したぜ。
+>  それじゃま、いくかい」
+“Heh, hearing that puts me at ease. Well then, shall we go?”
+
+@29878 Aisha · アイシャ（按段落 3DD4）
+> 「どうやら間に合ったようですわね」
+“It seems I made it in time.”
+
+@29879 Manami · マナミ（按段落 3DD4）
+# 审校：原文句末是「……?」，初稿漏掉了省略号，补上以保留迟疑语气。
+> 「{PartnerName}!?
+>  あなたどうして……?」
+“{PartnerName}!? Why are you...?”
+
+@29880 Aisha · アイシャ（按段落 3DD4）
+> 「誤解しないでいただきたいわ。
+>  わたくしとて、何も私怨のみで
+“Please don't misunderstand. It's not as though I've been fighting out of
+---
+>  戦ってきたわけではありません。
+>  OZがロームフェラ派とトレーズ派に
+mere personal spite. Now that OZ has split into the Romefeller faction and
+---
+>  分かれた以上、わたくしの
+>  とるべき道は決まっています」
+the Treize faction, the path I must take is decided.”
+
+@29881 Manami · マナミ（按段落 3DD4）
+> 「でも……叔父様と叔母様は……」
+“But... Uncle and Aunt...”
+
+@29882 Aisha · アイシャ（按段落 3DD4）
+> 「お父様もお母様も、
+>  わかってくださいますわ」
+“Father and Mother will understand.”
+
+@29883 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}……
+>  じゃあ、あたしたちと来てくれるのね!?」
+“{PartnerName}... so you'll come with us, then?!”
+
+@29884 Aisha · アイシャ（按段落 3DD4）
+> 「しかたがありませんわ。
+>  ロームフェラ派のOZの行為は
+“It can't be helped. Even I cannot condone the actions of the Romefeller
+---
+>  いくらわたくしでも
+>  認めることはできません
+faction's OZ.
+---
+>  彼らと戦うなら、あなたがたと
+>  一緒の方がよいでしょう」
+If you're going to fight them, it's better that I side with you.”
+
+@29885 Manami · マナミ（按段落 3DD4）
+> 「ありがとう、{PartnerName}」
+“Thank you, {PartnerName}.”
+
+@29886 Aisha · アイシャ（按段落 3DD4）
+> 「礼などいわれるすじあいはありません。
+>  さぁ、そんなことよりも
+“There's no reason for you to thank me. Now, more than that,
+---
+>  まずはあの者たちを倒します。
+>  いきますわよ」
+first let's defeat those people. Here I go.”
+
+@29887 Manami · マナミ（按段落 3DD4）
+> 「ええ!」
+“Yeah!”
+
+@29888 Rish · リッシュ（按段落 3DD2）
+> 「{HeroNick}、聞こえるか」
+“{HeroNick}, can you hear me?”
+
+@29889 Selain · セレイン（按段落 3DD2）
+> 「……なんだ」
+“...What is it?”
+
+@29890 Rish · リッシュ（按段落 3DD2）
+> 「こいつで最後にするぜ。だからよ、
+>  最後に一つ聞いてくれないか」
+“This'll be the last one. So, hey, let me ask you one thing before the end.”
+
+@29891 Selain · セレイン（按段落 3DD2）
+> 「何が言いたい」
+“What are you getting at?”
+
+@29892 Rish · リッシュ（按段落 3DD2）
+> 「何度も言うが、俺がお前に
+>  惚れてるってのは、こりゃマジだぜ
+“I'll say it again, me being in love with you, that's the real deal.
+---
+>  俺もこれまでかなり
+>  好きに生きてきたがよ
+I've lived pretty much as I pleased up till now, but you know,
+---
+>  おかげでずいぶん妙なことに
+>  なってきちまった。俺としたことがな」
+thanks to that, things have gotten pretty strange. And me of all people.”
+
+@29893 Selain · セレイン（按段落 3DD2）
+> 「……それで?」
+“...And?”
+
+@29894 Rish · リッシュ（按段落 3DD2）
+> 「ま、俺はお前の敵だった。だから
+>  どんな結果でもそりゃあ仕方ねぇ
+“Well, I was your enemy. So whatever the outcome, that's just how it goes.
+---
+>  だけどな、俺がお前に
+>  惚れてた男だったってことだけは
+But at least remember this one thing:
+---
+>  覚えておいてくれ」
+that I was a man who was in love with you.”
+
+@29895 Selain · セレイン（按段落 3DD2）
+> 「……いいだろう。覚えておいてやる」
+“...Fine. I'll remember it.”
+
+@29896 Rish · リッシュ（按段落 3DD2）
+> 「フッ、そいつを聞いて安心したぜ。
+>  それじゃま、いくかい」
+“Heh, hearing that puts me at ease. Well then, shall we go?”
+
+@29897 Aisha · アイシャ（按段落 3DD4）
+> 「どうやら間に合ったようですわね」
+“It seems I made it in time.”
+
+@29898 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}!?
+>  あなたどうして……?」
+“{PartnerName}!? Why are you...?”
+
+@29899 Aisha · アイシャ（按段落 3DD4）
+> 「誤解しないでいただきたいわ。
+>  わたくしとて、何も私怨のみで
+“Please don't misunderstand. It's not as though I've been fighting out of
+---
+>  戦ってきたわけではありません。
+>  OZがロームフェラ派とトレーズ派に
+personal grudge alone. Now that OZ has split into the Romefeller faction and
+---
+>  分かれた以上、わたくしの
+>  とるべき道は決まっています」
+the Treize faction, the path I must take is decided.”
+
+@29900 Manami · マナミ（按段落 3DD4）
+> 「でも……叔父様と叔母様は……」
+“But... my uncle and aunt...”
+
+@29901 Aisha · アイシャ（按段落 3DD4）
+> 「お父様もお母様も、
+>  わかってくださいますわ」
+“Father and Mother will understand.”
+
+@29902 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}……
+>  じゃあ、あたしたちと来てくれるのね!?」
+“{PartnerName}... then you'll come with us!?”
+
+@29903 Aisha · アイシャ（按段落 3DD4）
+> 「しかたがありませんわ。
+>  ロームフェラ派のOZの行為は
+“It can't be helped. Even I cannot condone the actions of the Romefeller
+---
+>  いくらわたくしでも
+>  認めることはできません
+faction's OZ. If you're going to fight them,
+---
+>  彼らと戦うなら、あなたがたと
+>  一緒の方がよいでしょう」
+it's better that I side with you.”
+
+@29904 Manami · マナミ（按段落 3DD4）
+> 「ありがとう、{PartnerName}」
+“Thank you, {PartnerName}.”
+
+@29905 Aisha · アイシャ（按段落 3DD4）
+> 「礼などいわれるすじあいはありません。
+>  さぁ、そんなことよりも
+“There's no reason for you to thank me. Now, more than that,
+---
+>  まずはあの者たちを倒します。
+>  いきますわよ」
+first let's defeat those people. Here I go.”
+
+@29906 Manami · マナミ（按段落 3DD4）
+> 「ええ!」
+“Yeah!”
+
+@29907 Banjo · 万丈
+> 「やあ、きてくれたようだね」
+“Hey, looks like you came.”
+
+@29908 Alan · アラン
+> 「万丈、あれはいったい?」
+“Banjo, what in the world is that?”
+
+@29909 Banjo · 万丈
+> 「南原博士の建造した
+>  コン・バトラーVだ。これから一緒に
+“It's the Combattler V that Doctor Nanbara built. From now on, they're
+---
+>  戦ってくれる仲間さ」
+comrades who'll fight alongside us.”
+
+@29910 Quattro · クワトロ
+> 「コン・バトラーVだと? 信じられん、
+>  まさか無事で残っていたとは」
+“Combattler V, you say? I can't believe it. To think it survived intact.”
+
+@29911 Hyoma · 豹馬
+> 「はん、俺たちがずっと守ってたんだ。
+>  あったりまえだぜ」
+“Hah, we've been protecting it all along. Of course it did.”
+
+@29912 Chizuru · ちずる
+> 「ちょっと豹馬!
+>  すみません{HeroMech}のみなさん
+“Hey, Hyoma! Excuse us, everyone from the {HeroMech}.
+---
+>  私は南原ちずるです。
+>  これからよろしくお願いします」
+I'm Chizuru Nambara. I look forward to working with you.”
+
+@29913 Hyoma · 豹馬
+> 「ちぇっ、ちずるのやつ、
+>  ひとりでいい格好して
+“Tch, that Chizuru, hogging the good impression all to herself.
+---
+>  葵豹馬だ。
+>  ま、ひとつよろしく頼むぜ」
+I'm Hyoma Aoi. Well, nice to have you aboard.”
+
+@29914 Juzo · 十三
+> 「わいは浪花十三や。よろしゅう
+>  たのむわ」
+“I'm Juzo Naniwa. Pleased to meet ya.”
+
+@29915 Kosuke · 小介
+> 「北小介です。メカのことならボクに
+>  まかせてください」
+“I'm Kosuke Kita. Leave anything mechanical to me.”
+
+@29916 Daisaku · 大作
+> 「おいは西川大作ですたい。よろしく
+>  たのむばい」
+“I'm Daisaku Nishikawa. Pleased to meet ya.”
+
+@29917 Banjo · 万丈
+> 「さぁさぁ、自己紹介はあとだ。
+>  敵さんお待ちかねのご様子だぞ
+“Come now, introductions can wait. The enemy looks like they can hardly wait.
+---
+>  さっさと片づけようじゃないか」
+Let's hurry up and finish this.”
+
+@29918 Banjo · 万丈
+> 「やあ、きてくれたようだね」
+“Hey, looks like you came.”
+
+@29919 Alan · アラン
+> 「万丈、あれはいったい?」
+“Banjo, what in the world is that?”
+
+@29920 Banjo · 万丈
+> 「南原博士の建造した
+>  コン・バトラーVだ。これから一緒に
+“It's the Combattler V that Doctor Nanbara built. From now on, they're
+---
+>  戦ってくれる仲間さ」
+comrades who'll fight alongside us.”
+
+@29921 Quattro · クワトロ
+> 「コン・バトラーVだと? 信じられん、
+>  まさか無事で残っていたとは」
+“Combattler V, you say? I can't believe it. To think it survived intact.”
+
+@29922 Hyoma · 豹馬
+> 「はん、俺たちがずっと守ってたんだ。
+>  あったりまえだぜ」
+“Hah, we've been protecting it all along. Of course it did.”
+
+@29923 Chizuru · ちずる
+> 「ちょっと豹馬!
+>  すみません{HeroMech}のみなさん
+“Hey, Hyoma! Excuse us, everyone from the {HeroMech}.
+---
+>  私は南原ちずるです。
+>  これからよろしくお願いします」
+I'm Chizuru Nambara. I look forward to working with you.”
+
+@29924 Hyoma · 豹馬
+> 「ちぇっ、ちずるのやつ、
+>  ひとりでいい格好して
+“Tch, that Chizuru, hogging the good impression all to herself.
+---
+>  葵豹馬だ。
+>  ま、ひとつよろしく頼むぜ」
+I'm Hyoma Aoi. Well, nice to have you aboard.”
+
+@29925 Juzo · 十三
+> 「わいは浪花十三や。よろしゅう
+>  たのむわ」
+“I'm Juzo Naniwa. Pleased to meet ya.”
+
+@29926 Kosuke · 小介
+> 「北小介です。メカのことならボクに
+>  まかせてください」
+“I'm Kosuke Kita. Leave anything mechanical to me.”
+
+@29927 Daisaku · 大作
+> 「おいは西川大作ですたい。よろしく
+>  たのむばい」
+“I'm Daisaku Nishikawa. Pleased to meet ya.”
+
+@29928 Banjo · 万丈
+> 「さぁさぁ、自己紹介はあとだ。
+>  敵さんお待ちかねのご様子だぞ
+“Come now, introductions can wait. The enemy looks like they can hardly wait.
+---
+>  さっさと片づけようじゃないか」
+Let's hurry up and finish this.”
+
+@29929 Selain · セレイン（按段落 3DD2）
+> 「おい、聞こえるか」
+“Hey, can you hear me?”
+
+@29930 Rish · リッシュ（按段落 3DD2）
+> 「ああ、いい声だ。よーく聞こえるぜ」
+“Yeah, that's a nice voice. I hear you loud and clear.”
+
+@29931 Selain · セレイン（按段落 3DD2）
+> 「いい加減ふざけるのはよせ!
+>  いいか、一度しか言わないぞ
+“Enough of your fooling around! Listen, I'll only say this once.
+---
+>  お前にその気があるなら、
+>  {HeroMech}に来い」
+If you're so inclined, come to the {HeroMech}.”
+
+@29932 Rish · リッシュ（按段落 3DD2）
+> 「おっ? なんだお前も
+>  俺に惚れてたのかよ」
+“Oh? What, so you're in love with me too?”
+
+@29933 Selain · セレイン（按段落 3DD2）
+> 「違う」
+“No.”
+
+@29934 Rish · リッシュ（按段落 3DD2）
+> 「ちっ、そんなにあっさり
+>  否定するこたぁないじゃねぇか」
+“Tch, you didn't have to deny it so flatly.”
+
+@29935 Selain · セレイン（按段落 3DD2）
+> 「お前は、少なくとも連中とは違う
+>  と思った。だから言っている
+“I figured you were different from the rest of them, at least. That's why I'm saying this.
+---
+>  我々は戦いつづけるために戦力が
+>  必要だ」
+We need fighting strength in order to keep fighting.”
+
+@29936 Rish · リッシュ（按段落 3DD2）
+> 「お前の口からそれが聞けるとは
+>  うれしいね
+“I'm glad to hear that from your own mouth.
+---
+>  が、まだ俺はOZの士官だ。
+>  また生き残れたらそうさせてもらうぜ」
+But I'm still an OZ officer. If I survive this, I'll take you up on it.”
+
+@29937 Selain · セレイン（按段落 3DD2）
+> 「{PartnerFull}!?」
+“{PartnerFull}!?”
+
+@29938 Rish · リッシュ（按段落 3DD2）
+> 「悪いな。俺にも一応、俺なりの
+>  こだわりってもんがあるのさ
+“Sorry. Even I've got my own code, you know.
+---
+>  なに、俺も“不死人”と呼ばれた
+>  男だ。そう簡単にゃくたばらねぇよ」
+What, I'm a man they called the ‘Undying.’ I won't kick the bucket that easy.”
+
+@29939 Selain · セレイン（按段落 3DD2）
+> 「そうか……ならば、撃破する」
+“I see... Then I'll shoot you down.”
+
+@29940 Rish · リッシュ（按段落 3DD2）
+> 「やーれやれ、女神に嫌われちまっちゃ
+>  さすがの俺の豪運も
+“Well, well. If the goddess has turned against me, even my great luck
+---
+>  尽きるしかねぇか。
+>  別にどこで死んでもよかったがよ……
+has finally run out, huh. Not that I cared where I died, but...
+---
+>  まったく、しまらねぇ死に方だぜ……」
+Man, what a pathetic way to go...”
+
+@29941 Rish · リッシュ（按段落 3DD2）
+> 「くっ……やられっちまったか……へっ、
+>  生きてたらまた会おうぜ
+“Ngh... so I've been beaten, huh... Heh, if we both live, let's meet again,
+---
+>  {HeroName}。じゃあな……」
+{HeroName}. See you...”
+
+@29942 Selain · セレイン（按段落 3DD2）
+> 「……ばかな……奴だな。……まったく……」
+“...What a fool... Honestly...”
+
+@29943 Bright · ブライト
+> 「どうやら撃退したようだが……
+>  まだ確かめることがあるな
+“It seems we've driven them off, but... there's still something I need to confirm.
+---
+>  明神タケルとコスモクラッシャー隊を
+>  ブリッジへ呼んでくれ!」
+Call Takeru Myojin and the Cosmo Crusher team to the bridge!”
+
+@29944 Bright · ブライト
+> 「タケル君、
+>  事情を説明してくれないか?」
+“Takeru, would you explain the situation to us?”
+
+@29945 Takeru · タケル
+> 「わかりません……俺は……」
+“I don't know... I...”
+
+@29946 Naoto · ナオト
+> 「タケル、お前……何者だよ!?
+>  なんであんなもんに乗ってやがったんだ?」
+“Takeru, what the hell are you?! Why were you piloting that thing?”
+
+@29947 Takeru · タケル
+> 「俺は……俺は明神タケルだ。
+>  あれが何なのか俺にもわからないんだよ」
+“I'm... I'm Takeru Myojin. Even I don't know what that thing is.”
+
+@29948 Akira · アキラ
+> 「信用できないね。案外
+>  宇宙人のスパイかなんかじゃないのか」
+“I can't trust him. For all we know, he could be an alien spy or something.”
+
+@29949 Mika · ミカ
+> 「アキラ! あなたなんてこというのよ!!
+>  タケルがかわいそうじゃない」
+“Akira! How could you say that?! You're being cruel to Takeru!”
+
+@29950 Takeru · タケル
+> 「どうしたんだ、みんな。
+>  俺たちは仲間だろう!?」
+“What's wrong with you all? We're comrades, aren't we?!”
+
+@29951 Naoto · ナオト
+> 「どうだかな。俺の仲間はあんな変な
+>  ロボットにゃ乗ってねぇんだけどな」
+“Are we? My comrades don't go around piloting weird robots like that.”
+
+@29952 Mika · ミカ
+> 「ふたりとも、どうしちゃったのよ!」
+“Both of you, what's gotten into you?!”
+
+@29953 Akira · アキラ
+> 「どうかしちゃったのはこいつの方だろ、
+>  ミカ。いつあのロボットを呼んで
+“He's the one something's gotten into, Mika. We never know when he'll call that robot
+---
+>  この艦が壊されるか
+>  わかったもんじゃないぜ」
+and wreck this ship.”
+
+@29954 Kenji · ケンジ
+> 「やめんか!」
+“That's enough!”
+
+@29955 Takeru · タケル
+> 「隊長、俺は……」
+“Commander, I...”
+
+@29956 Kenji · ケンジ
+> 「お前自身にもわからんのだな、
+>  タケル?
+“Even you don't know yourself, do you, Takeru?
+---
+>  異星人である可能性もあると?」
+You mean there's a chance you're an alien?”
+
+@29957 Takeru · タケル
+> 「わかりません。ただこの間から、
+>  妙な声が…俺の頭の中に
+“I don't know. But lately, a strange voice... speaks to me directly
+---
+>  直接話しかけてくるんです。
+>  俺の名がマーズだと……。でも隊長
+inside my head. It says my name is Mars... But Commander,
+---
+>  たとえ俺がどこの人間であっても
+>  俺の心はとうに地球人です」
+no matter where I come from, my heart has long been that of an Earthling.”
+
+@29958 Kenji · ケンジ
+> 「……わかった。みんないいか。
+>  タケルは俺たちの仲間だ
+“...Understood. Listen, everyone. Takeru is our comrade.
+---
+>  それだけはいっておく。いいな」
+That's all I'll say. Understood?”
+
+@29959 Naoto · ナオト
+> 「…………」
+“...”
+
+@29960 Akira · アキラ
+> 「…………」
+“...”
+
+@29961 Kenji · ケンジ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長……。しばらくタケルの
+>  身を、我々にあずけてくれませんか?」
+“Captain Bright... Would you entrust Takeru to us for a while?”
+
+@29962 Takeru · タケル
+> 「隊長?」
+“Commander?”
+
+@29963 Kenji · ケンジ
+> 「タケル、事実関係がはっきり
+>  するまで、お前はおとなしくしているんだ
+“Takeru, until the facts are clear, you're to stay quiet.
+---
+>  {HeroMech}のみんなに
+>  迷惑はかけられない。わかったな」
+We can't cause trouble for the {HeroMech} crew. Understood?”
+
+@29964 Bright · ブライト
+> 「ふむ……いいだろう。
+>  タケル君のことは、まかせるとしよう」
+“Hmm... Very well. I'll leave Takeru in your hands.”
+
+@29965 Kenji · ケンジ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ありがとうございます、
+>  ブライト艦長……。行くぞ、タケル」
+“Thank you, Captain Bright... Let's go, Takeru.”
+
+@29966 Takeru · タケル
+> 「……はい……」
+“...Yes...”
+
+@29967 Hyoma · 豹馬
+> 「いよう、いいタイミングだったみてぇだな。
+>  ま、こっちもひさしぶりにしちゃあ
+“Hey there. Looks like we showed up at a good time. Well, for a first outing in a while,
+---
+>  まあまあだったぜ」
+we did pretty decently.”
+
+@29968 Alan · アラン
+> 「万丈、彼らはいったい……?」
+“Banjo, just who are these people...?”
+
+@29969 David · デビッド
+> 「ムチャな変形したよなあ。
+>  どういう仕組みしてんだろ」
+“That was some crazy transformation. I wonder how it works.”
+
+@29970 Banjo · 万丈
+> 「そうそう、あらためて紹介しよう。
+>  彼らはコン・バトラー・チーム
+“Right, right. Let me introduce them properly. They're the Combattler V team.
+---
+>  かつて南原博士の
+>  開発したマシンを、四谷博士が
+The machines Dr. Nanbara once developed—Dr. Yotsuya
+---
+>  復活させてくれたんだ」
+has brought them back to life.”
+
+@29971 Hyoma · 豹馬
+> 「自己紹介するぜ。
+>  俺さまは葵豹馬、バトルジェットに
+“Allow me to introduce myself. I'm Hyoma Aoi, and I pilot the Battle Jet.
+---
+>  乗っているんだ。オートバイの
+>  腕だったら誰にも負けないぜ」
+When it comes to riding a bike, I don't lose to anyone.”
+
+@29972 Boss · ボス
+> 「あららっ、いきなりの強気だわさ。
+>  スピードだったら俺さまや兜だって
+“Oh my, bold words right off the bat. When it comes to speed, me and Koji
+---
+>  黙っちゃいられないだわさ」
+can't just stay quiet either.”
+
+@29973 Chum · チャム
+> 「フン、ショウだって地上界じゃ
+>  モトクロスのチャンピオンだったのよ」
+“Hmph, Show was the motocross champion of the surface world, you know.”
+
+@29974 Show · ショウ
+> 「チャム! 俺のことはいい!」
+“Chum! Never mind about me!”
+
+@29975 Hyoma · 豹馬
+> 「いっ!? よ、妖精……?」
+“Huh?! A-a fairy...?”
+
+@29976 Chum · チャム
+> 「んもーっ! ミ・フェラリオっていってよぉ」
+“Oh, come on! I'm a Mi Ferario, I'll have you know.”
+
+@29977 Chizuru · ちずる
+> 「あはっ、かわいい……あ、ごめんなさい。
+>  私は南原ちずるです
+“Ahaha, how cute... Oh, excuse me. I'm Chizuru Nambara.
+---
+>  バトルマリンの操縦をしています。
+>  少し医学を勉強していたことが
+I pilot the Battle Marine. I've studied a little medicine,
+---
+>  あるので何かみなさんの
+>  お役に立てればいいのですが」
+so I hope I can be of some help to everyone.”
+
+@29978 Daisaku · 大作
+> 「西川大作ですたい。バトルタンクは
+>  おいどんが動かしとります
+“I'm Daisaku Nishikawa. I'm the one who drives the Battle Tank.
+---
+>  漫画家になるのが夢たい。ばってん
+>  ゴキブリだけは大の苦手ですばい」
+My dream is to become a manga artist. But cockroaches are the one thing I just can't stand.”
+
+@29979 Kosuke · 小介
+> 「バトルクラフトの北小介です」
+“I'm Kosuke Kita, pilot of the Battle Craft.”
+
+@29980 Juzo · 十三
+> 「最後はわいやな。浪花十三や。
+>  バトルクラッシャーにはわいが乗っとる」
+“And last is me. Juzo Naniwa. I'm the one who rides the Battle Crasher.”
+
+@29981 Banjo · 万丈
+> 「彼は射撃の天才だ。わずか
+>  8歳にして射撃大会に
+“He's a genius with a gun. At just eight years old, he
+---
+>  優勝した実績を持っている。
+>  彼らの乗る5機のバトルマシンが
+won a marksmanship tournament. Their five Battle Machines
+---
+>  合体して身長57メートル、
+>  体重550トンの
+combine to become the Combattler V—
+---
+>  コン・バトラーVになる」
+57 meters tall and 550 tons heavy.”
+
+@29982 Alan · アラン
+> 「それは心強いな。
+>  これからもよろしく頼む」
+“That's reassuring. I'll be counting on you all from now on.”
+
+@29983 Garrison · ギャリソン
+> 「万丈様、お話の途中ですが、
+>  通信が入っております
+“Lord Banjo, pardon the interruption, but we have an incoming transmission.
+---
+>  直通回線の方へ」
+It's on the direct line.”
+
+@29984 Reika · レイカ
+> 「直通……?」
+“The direct line...?”
+
+@29985 Banjo · 万丈
+> 「ほほう、このカラバ基地の
+>  直通回線に通信とは
+“Oh ho, a transmission on this Karaba Base's direct line?
+---
+>  さしずめイゴール将軍あたりかな?」
+I'd wager it's General Igor, or someone like him.”
+
+@29986 Garrison · ギャリソン
+> 「いえ、トレーズ・クシュリナーダ様からで
+>  ございます。万丈様と
+“No, my lord. It's from Treize Khushrenada. He says he has something
+---
+>  {HeroMech}の方々へ、
+>  お話があると」
+to discuss with you, Lord Banjo, and the {HeroMech} people.”
+
+@29987 Bright · ブライト
+> 「トレーズだって!?」
+“Treize?!”
+
+@29988 Alan · アラン
+> 「何だと!? あいつがここに!?」
+“What?! He's here?!”
+
+@29989 Banjo · 万丈
+> 「なるほど、黒幕のご登場か。
+>  向こうからじきじきとは恐れ入る
+“I see, so the mastermind makes his entrance. Calling us himself—how humbling.
+---
+>  ギャリソン、つないでくれ」
+Garrison, put him through.”
+
+@29990 Treize · トレーズ
+> 「ひさしぶりだね、諸君。
+>  元気そうでなによりだ」
+“It's been a while, gentlemen. I'm glad to see you're all well.”
+
+@29991 Banjo · 万丈
+# 审校：原译“you're as careless as ever”把“油断がならない”（让人不能大意）误译为“你粗心大意”，改为“you're as hard to keep off guard as ever”。
+> 「どういたしまして。
+>  この回線に侵入してくるとは
+“Don't mention it. Slipping into this line like this—
+---
+>  あいかわらず油断がならないな」
+you're as hard to keep off guard as ever.”
+
+@29992 Treize · トレーズ
+> 「諸君らと直接話したかったのでね
+>  失礼した」
+“I wanted to speak with you directly, so forgive the intrusion.”
+
+@29993 Banjo · 万丈
+> 「今後は電話番号でも
+>  知らせておくよ。それで、用件は?」
+“Next time I'll give you my phone number. So, what do you want?”
+
+@29994 Treize · トレーズ
+> 「予想しているはずだ。諸君、
+>  私を手伝ってほしい」
+“You must have guessed. Gentlemen, I want your help.”
+
+@29995 Tetsuya · 鉄也
+> 「やはりな……。いつぞやの話を
+>  むしかえそうっていうわけか」
+“Just as I thought... So you're bringing up that old proposal again.”
+
+@29996 Treize · トレーズ
+> 「いや、違う。あの時は
+>  ムゲゾルバドス帝国への
+“No, it's different. Back then, OZ was needed to resist
+---
+>  抵抗のためにOZが必要だった。
+>  だから私は諸君をOZに欲したのだ
+the Muge Zorbados Empire. That's why I wanted you in OZ.
+---
+>  だが今のOZはあのころのOZではない」
+But OZ today is not the OZ of back then.”
+
+@29997 Kamille · カミーユ
+> 「奴らは宇宙で銀河帝国と
+>  戦っている。同じじゃないのか?」
+“They're fighting the Galactic Empire in space. Isn't that the same thing?”
+
+@29998 Treize · トレーズ
+> 「一見、そうだ。しかし、その力は
+>  人類を恒久の未来へと
+“At a glance, yes. But that power is not what will lead
+---
+>  導くものではない。かつてOZが誤った
+>  道を歩みだしたとき
+humanity into a lasting future. When OZ once began to walk the wrong path,
+---
+>  私は自ら退いた。彼らを
+>  誤ったままに放置しておいたのだ」
+I stepped down myself. I left them to go astray.”
+
+@29999 Hayato · ハヤト
+> 「無責任なこった。
+>  おかげで大迷惑だったぜ」
+“How irresponsible. Thanks to that, we were in a real mess.”
+
+@30000 Treize · トレーズ
+> 「愚かな力を使い尽くさなければ
+>  戦いは終わらない。そうしてこそ
+“The battle won't end until foolish power is spent to the last. Only then
+---
+>  人類の本当の未来が始まる。
+>  そして、諸君らの働きで
+will humanity's true future begin. And through your efforts,
+---
+>  きっとそうなるように思えた。
+>  銀河帝国軍が現れなければな」
+I felt sure it would turn out that way. If only the Galactic Empire's forces hadn't appeared.”
+
+@30001 Ryoma · リョウ
+> 「なるほど、銀河帝国は
+>  さすがのあんたも計算外だったか
+“I see. So even you couldn't account for the Galactic Empire.
+---
+>  無理もない」
+No wonder.”
+
+@30002 Treize · トレーズ
+> 「その通りだ。諸君、私は歴史の
+>  傍観者であろうとしていたが
+“Exactly. Gentlemen, I meant to remain a bystander to history, but
+---
+>  たった今からそれを放棄する。そして
+>  諸君にも同じことを要求する
+as of this moment I abandon that. And I ask the same of you.
+---
+>  ほどなく私は、全世界で
+>  反乱を起こしている私の
+Before long, I will gather my supporters who are rising in revolt
+---
+>  支持者たちをまとめ、ロームフェラと
+>  銀河帝国に対峙するだろう
+across the world, and stand against Romefeller and the Galactic Empire.
+---
+>  その時に、力を貸してほしい」
+When that time comes, I want your strength.”
+
+@30003 Alan · アラン
+> 「……あんたを信用しろと?」
+“...You want us to trust you?”
+
+@30004 Treize · トレーズ
+> 「返事は今でなくていい。
+>  伝えたいことはそれだけだ
+“You needn't answer now. That's all I wanted to say.
+---
+>  では諸君、失礼する」
+Now then, gentlemen, I'll take my leave.”
+
+@30005 David · デビッド
+> 「いいたいことだけいって切りやがった。
+>  あいかわらずもってまわった野郎だぜ」
+“He said his piece and cut us off. He's as roundabout a bastard as ever.”
+
+@30006 Bright · ブライト
+> 「さて、どう出るかだな。正直、
+>  全面的に信用はしかねるが……」
+“Well, let's see how this plays out. Honestly, I can't bring myself to trust him completely...”
+
+@30007 Ark · アーク（按段落 3DD1）
+> 「1つだけ、はっきりしている。
+>  俺たちはこの先
+“One thing is clear. From here on, we can't afford
+---
+>  OZだけを相手にしていくわけには
+>  いかないってことだ」
+to deal with OZ alone.”
+
+@30008 Selain · セレイン（按段落 3DD2）
+> 「はっきりしていることがある。
+>  我々はこの先
+“One thing is clear. From here on, we cannot afford
+---
+>  OZだけを相手にするわけには
+>  いかない、ということだ」
+to deal with OZ alone.”
+
+@30009 Brad · ブラッド（按段落 3DD3）
+> 「わかってることが1つだけあるぜ。
+>  俺たちはこの先
+“There's one thing I know for sure. From here on,
+---
+>  OZだけを相手に戦うってわけには
+>  いかねぇってことだ」
+we can't get by just fighting OZ.”
+
+@30010 Manami · マナミ（按段落 3DD4）
+> 「1つだけ、はっきりしていることがあるわ
+>  あたしたちはこの先
+“There's one thing that's clear. From here on, we
+---
+>  OZだけを相手にしていくわけには
+>  いかないってことよ」
+can't afford to deal with OZ alone.”
+
+@30011 Alan · アラン
+> 「ああ、何といっても
+>  同じ地球人同士だ
+“Yeah. After all, we're all Earthlings.
+---
+>  銀河帝国軍が現れた以上、
+>  戦わないにこしたことはない」
+Now that the Galactic Empire's forces have appeared, not fighting is best.”
+
+@30012 Hayato · ハヤト
+> 「だが、相手はそう思っていないぞ」
+“But they don't see it that way.”
+
+@30013 Show · ショウ
+> 「ああ。連中はどうあっても、
+>  俺たちが投降しないかぎり
+“Right. No matter what, as long as we don't surrender,
+---
+>  放置するつもりはない」
+they have no intention of leaving us alone.”
+
+@30014 Marvel · マーベル
+> 「そして投降したら
+>  おそらく武装解除されて
+“And if we surrender, we'll probably be disarmed,
+---
+>  へたしたら投獄よ。冗談じゃないわ」
+and if things go badly, thrown in prison. No thank you.”
+
+@30015 Judau · ジュドー
+> 「それじゃあ、あのトレーズの話に
+>  乗るのかい?
+“So then, are we going along with what that Treize said?
+---
+>  俺はあのおっさんよく知らねえけど、
+>  デルマイユやバスクよりはマシに見えたぜ」
+I don't know that old man well, but he seemed better than Dermail or Bask.”
+
+@30016 Tetsuya · 鉄也
+> 「しかしな……」
+“But still...”
+
+@30017 Banjo · 万丈
+> 「まあ、それも選択肢の1つだと
+>  いうことかな。ここはじっくり考えよう
+“Well, I suppose that's one option too. Let's take our time and think it over.
+---
+>  じゃないか。ひょっとすると、地球の
+>  命運がかかってるかもしれないぞ」
+Who knows—the fate of the Earth might depend on it.”
+
+@30018 Takeru · タケル
+# 审校：词表为 Emperor Zuul，初稿误作 Zuhl。
+> 「銀河帝国……皇帝ズール……
+>  マーズ……。くそっ、何もわからない
+“Galactic Empire... Emperor Zuul... Mars... Damn it, I don't understand anything.
+---
+>  いったい俺は誰なんだ? 俺は……」
+Just who am I? I'm...”
+
+@30019 Mika · ミカ
+> 「タケル……いる?」
+“Takeru... are you there?”
+
+@30020 Takeru · タケル
+> 「ミカか……。何の用だい?」
+“Mika... What do you want?”
+
+@30021 Mika · ミカ
+> 「用ってほどじゃ……。あのね、タケル。
+>  今日のみんなのこと、気にしないで
+“It's not really anything... Listen, Takeru. Don't worry about what everyone said today.
+---
+>  本当はみんな、
+>  あなたのこと仲間だって信じてるから
+The truth is, everyone believes you're one of us.
+---
+>  気が動転してただけよ」
+They were just shaken up.”
+
+@30022 Takeru · タケル
+> 「ミカ……」
+“Mika...”
+
+@30023 Mika · ミカ
+> 「それだけ。じゃあね、おやすみなさい……」
+“That's all. See you, good night...”
+
+@30024 Takeru · タケル
+> (仲間、か。そうだ、例え俺が
+>  地球人でなくても……俺は……
+(Comrades, huh. That's right. Even if I'm not an Earthling... I...
+---
+>  どんなことがあっても
+>  この地球を犠牲にはさせない……)
+No matter what happens, I won't let this Earth be sacrificed...)
+
+@30025 Manami · マナミ（按段落 3DD4）
+> 「どうですか、アストナージさん?」
+“What do you think, Astonaige?”
+
+@30026 Astonaige · アストナージ
+> 「ああ、見てみたんだがね、スイームルグも
+>  エルブルスも、設計段階に
+“Yeah, I took a look, and both the Sweemurg and the Elbulls have been redesigned
+---
+>  あったドッキング機構を
+>  廃して再設計してあるんだな」
+with the docking mechanism from the design stage removed.”
+
+@30027 Lawrence · ローレンス
+# 审校：原文「合体分離はできないということですかな」是疑问确认语气，初稿用 can no longer 偏离原意，改为 cannot。
+> 「確かに万丈様は
+>  そうおっしゃっておられましたな
+“Indeed, Lord Banjo did say as much.
+---
+>  つまり、合体分離は
+>  できないということですかな」
+In other words, they cannot combine or separate, is that it?”
+
+@30028 Astonaige · アストナージ
+> 「合体分離はできないな。
+>  再設計の時点で
+“They can't combine or separate. The strength calculations would have to be
+---
+>  強度計算もやり直している
+>  だろうし、なにより時間がかかりすぎる」
+redone from the redesign stage, and above all, it would take too much time.”
+
+@30029 Manami · マナミ（按段落 3DD4）
+> 「そう……せっかくスイームルグが
+>  パワーアップできると思ったのだけど
+“I see... And here I thought the Sweemurg could finally be powered up.
+---
+>  残念だわ」
+What a shame.”
+
+@30030 Shirley · シャリー
+> 「あら、あきらめるのは早いわよ」
+“Oh, it's too early to give up.”
+
+@30031 Lawrence · ローレンス
+> 「どういうことですかな、シャリーどの?」
+“What do you mean by that, Lady Shirley?”
+
+@30032 Shirley · シャリー
+> 「つまり、合体分離は難しいけど、
+>  合体したままの状態になら
+“In other words, combining and separating is difficult, but if they stay
+---
+>  できるというわけ」
+combined, it can be done.”
+
+@30033 Aisha · アイシャ（按段落 3DD4）
+> 「お待ちなさい。それは
+>  わたくしのエルブルスが、スイームルグの
+“Wait a moment. Are you saying that my Elbulls would remain
+---
+>  背面に取りついたままになると、
+>  そうおっしゃっているのですか?」
+attached to the Sweemurg's back?”
+
+@30034 Astonaige · アストナージ
+> 「ああ、そういうことになるかな」
+“Yeah, that's about the size of it.”
+
+@30035 Aisha · アイシャ（按段落 3DD4）
+> 「そ、そんなバカなことは認められません。
+>  だいたいそれでわたくしに
+“Th-That's absurd! I will never accept such a thing. And just what am I
+---
+>  何をしろとおっしゃるの?」
+supposed to do then?”
+
+@30036 Astonaige · アストナージ
+> 「うーん、その場合はエルブルスの
+>  火器管制もスイームルグに
+“Hmm, in that case, the Elbulls's fire control would be unified with the Sweemurg's,
+---
+>  一本化することになるから、
+>  エルブルスのパイロットはいらなくなるんだ」
+so the Elbulls wouldn't need a pilot anymore.”
+
+@30037 Aisha · アイシャ（按段落 3DD4）
+> 「な、な、な、なんですって!?」
+“Wh-Wh-Wh-What did you say?!”
+
+@30038 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、ちょっと落ち着いて」
+“{PartnerNick}, calm down a moment.”
+
+@30039 Aisha · アイシャ（按段落 3DD4）
+> 「冗談ではありません! そんなこと、
+>  絶対に認められませんわ!
+“This is no joke! I absolutely refuse to accept such a thing!
+---
+>  エルブルスはわたくしの機体です。
+>  わたくしが乗らないなどということが
+The Elbulls is my machine. The idea that I wouldn't pilot it—
+---
+>  あってよいはずがありません!」
+there's no way that could ever be allowed!”
+
+@30040 Astonaige · アストナージ
+> 「……ちょっとまずかったかな。
+>  で、どうする?」
+“...Guess that was a bit much. So, what'll it be?”
+
+@30041 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}が嫌といっている
+>  以上は、しかたないわ」
+“If {PartnerNick} doesn't want to, then there's nothing to be done.”
+
+@30042 Shirley · シャリー
+> 「でも残念ね。合体させれば
+>  飛行能力が
+“But it's a shame. If they combined, not only would it gain flight capability,
+---
+>  付加されるだけでなくて、エルブルスの
+>  ジェネレーターからの余剰出力を
+but the surplus output from the Elbulls's generator could be
+---
+>  スイームルグで使えるようになるのに」
+used by the Sweemurg.”
+
+@30043 Lawrence · ローレンス
+> 「{PartnerName}お嬢様、
+>  こちらにおいででしたか」
+“Lady {PartnerName}, so you were here.”
+
+@30044 Aisha · アイシャ（按段落 3DD4）
+> 「あらローレンス。わたくしを説得しよう
+>  というのでしたら、無駄でしてよ」
+“Oh, Lawrence. If you've come to persuade me, it's useless.”
+
+@30045 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerName}']，实际为 []）
+# 草稿第 1 页：“No, actually, there is something I wished to ask of you,
+# 草稿第 2 页：Lady 【搭档名字】. Might you hear me out?”
+> 「いえ、実は{PartnerName}
+>  お嬢様にお頼みいたしたいことが
+---
+>  ございまして。お聞きいただけますかな?」
+
+@30046 Aisha · アイシャ（按段落 3DD4）
+> 「いいわ、聞いてあげます。
+>  いってごらんなさいな」
+“Very well, I'll listen. Go on, then.”
+
+@30047 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
+# 草稿第 1 页：“The truth is, I have been whipping this old body into shape to support
+# 草稿第 2 页：Lady 【主角名字】, and my back pain has grown severe. At this rate,
+# 草稿第 3 页：it seems I may soon be unable to pilot the Simurgh.”
+> 「実はこれまで老骨にムチ打って
+>  {HeroName}お嬢様のサポートを
+---
+>  してまいりましたためか、腰痛が
+>  ひどくなってまいりました。このままでは
+---
+>  近いうちにスイームルグに搭乗する
+>  ことができなくなってしまいそうなのです」
+
+@30048 Aisha · アイシャ（按段落 3DD4）
+> 「…………それで?」
+“...And?”
+
+@30049 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
+# 草稿第 1 页：“I have been searching for a replacement pilot, but finding someone who can
+# 草稿第 2 页：match Lady 【主角名字】's breathing has proven quite difficult.
+# 草稿第 3 页：So I thought I might borrow Lady 【搭档名字】's wisdom
+# 草稿第 4 页：on the matter.”
+> 「かわりのパイロットを探しておるのですが
+>  {HeroName}お嬢様の呼吸に
+---
+>  あわせることのできる方となると、
+>  これがなかなか見つかりません
+---
+>  そこで、{PartnerName}お嬢様に
+>  お知恵をお借りできないものかと
+---
+>  そう思いまして」
+
+@30050 Aisha · アイシャ（按段落 3DD4）
+> 「……ローレンス」
+“...Lawrence.”
+
+@30051 Lawrence · ローレンス
+> 「はい、なんでございましょう?」
+“Yes, what is it?”
+
+@30052 Aisha · アイシャ（按段落 3DD4）
+> 「腰痛というのは嘘ね?」
+“The back pain is a lie, isn't it?”
+
+@30053 Lawrence · ローレンス
+> 「は、いえ、そのようなことは……」
+“N-No, nothing of the sort...”
+
+@30054 Aisha · アイシャ（按段落 3DD4）
+> 「貴方は昔からそうでしたわ。嘘を
+>  つくのが本当に下手でした。それで
+“You've always been like this. You were truly terrible at lying. So,
+---
+>  どういうおつもり? わたくしをたてるため
+>  というのでしたら、聞けませんわよ」
+what are you really after? If it's just to make me look good, I won't hear it.”
+
+@30055 Lawrence · ローレンス
+> 「これはまいりましたな。実は……
+>  {HeroName}お嬢様のためなのです」
+“My, you've got me. The truth is... it's for Lady {HeroName}'s sake.”
+
+@30056 Aisha · アイシャ（按段落 3DD4）
+> 「どういうことです?」
+“What do you mean?”
+
+@30057 Lawrence · ローレンス
+> 「昔ならしたとは申せども、わたくしも
+>  この歳です。このところのお嬢様の
+“I may have been trained in my youth, but I am at this age now. As of late, my lady's
+---
+>  ご成長は目をみはるほどで、
+>  お恥ずかしい話ですが、お嬢様の
+growth has been remarkable to behold, and shameful as it is to admit, there are times
+---
+>  動きについていけないことがあるのです。
+>  お嬢様は何もおっしゃいませんが
+I cannot keep up with my lady's movements. My lady says nothing, but
+---
+>  このままではいつか致命的な結果
+>  をもたらすことになるやもしれません」
+if this continues, it may one day bring about a fatal result.”
+
+@30058 Aisha · アイシャ（按段落 3DD4）
+> 「いいわ、ローレンス。
+>  その主人を思う心に免じて
+“Very well, Lawrence. In deference to that heart of yours that worries for your master,
+---
+>  貴方の嘘にのってさしあげます。
+>  すぐに作業に
+I shall play along with your lie. Have the work started at once.
+---
+>  取りかからせてちょうだい。
+>  次からはわたくしが乗るわ」
+From now on, I'll be the one piloting it.”
+
+@30059 Lawrence · ローレンス
+> 「はい、{PartnerName}お嬢様」
+“Yes, Lady {PartnerName}.”
+
+@30060 Manami · マナミ（按段落 3DD4）
+> 「あ、あれは……」
+“Oh, that's...”
+
+@30061 Manami · マナミ（按段落 3DD4）
+> 「アストナージさん、どうしたんですか!?」
+“Astonaige, what's going on?!”
+
+@30062 Astonaige · アストナージ
+> 「ああ{HeroNick}か。万丈の
+>  とこのスタッフが持ちこんできたんだ
+“Oh, {HeroNick}. Some of Banjo's people brought it in.
+---
+>  エルブルスっていったっけな?」
+Elbulls, was it called?”
+
+@30063 Manami · マナミ（按段落 3DD4）
+> 「え、ええ……でも、あの、
+>  パイロットは……?」
+“Y-Yes... but, um, the pilot...?”
+
+@30064 Lawrence · ローレンス
+> 「{PartnerName}お嬢様は
+>  ご無事でした。ご安心ください」
+“Lady {PartnerName} is safe. Please rest assured.”
+
+@30065 Manami · マナミ（按段落 3DD4）
+> 「ローレンス! 本当に
+>  {PartnerNick}は無事なの?」
+“Lawrence! Is {PartnerNick} really all right?”
+
+@30066 Lawrence · ローレンス
+> 「はい。ただ、かなりのケガを
+>  されておりましたので
+“Yes. However, the injuries were quite severe, so
+---
+>  お家のほうへ移送するよう
+>  お頼みしておきました」
+I asked that they be transported to the estate.”
+
+@30067 Manami · マナミ（按段落 3DD4）
+> 「そう……よかったわ。
+>  でも{PartnerNick}……
+“I see... Thank goodness. But {PartnerNick}...
+---
+>  あたしを恨んでるでしょうね」
+must surely hate me now.”
+
+@30068 Lawrence · ローレンス
+> 「お嬢様に
+>  ご伝言をあずかっております」
+“I was entrusted with a message for my lady.”
+
+@30069 Manami · マナミ（按段落 3DD4）
+> 「なあに?」
+“What is it?”
+
+@30070 Lawrence · ローレンス
+> 「『貴女の正義、
+>  貴女の理想が
+“‘I will see for myself what end your justice, your ideals,
+---
+>  どのような結末を迎えるのか、
+>  見届けさせていただきます
+will bring about.
+---
+>  それまで、死ぬことは許しません。
+>  わたくしのエルブルスは
+Until then, I will not permit you to die. Use my Elbulls
+---
+>  貴女の好きなように
+>  お使いなさい』。以上です」
+however you please.’ That is all.”
+
+@30071 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}……」
+“{PartnerName}...”
+
+@30072 Shirley · シャリー
+> 「お話中ごめんなさい。
+>  作業、進めちゃっていいのかしら?」
+“Sorry to interrupt. Should I go ahead with the work?”
+
+@30073 Manami · マナミ（按段落 3DD4）
+> 「作業? 何のです?」
+“Work? On what?”
+
+@30074 Lawrence · ローレンス
+> 「スイームルグとエルブルスを、
+>  本来の姿に戻すのです
+“To restore Sweemurg and Elbulls to their original form.
+---
+>  再設計されておりますので
+>  合体分離機構は
+Since they've been redesigned, they can't be equipped with a combine-separate mechanism,
+---
+>  搭載できませんが、一体化する
+>  ことは可能とのことですので」
+but I'm told it's possible to join them into one.”
+
+@30075 Manami · マナミ（按段落 3DD4）
+> 「スイームルグとエルブルスを……
+>  {PartnerName}のエルブルスで
+“Sweemurg and Elbulls... With {PartnerName}'s Elbulls,
+---
+>  スイームルグが生まれ変わるのね。
+>  新しいスイームルグに」
+Sweemurg will be reborn. A new Sweemurg.”
+
+@30076 Lawrence · ローレンス
+> 「さようでございます。
+>  これにより基本性能が向上し
+“Indeed. This will improve its base performance,
+---
+>  また飛行機能と
+>  新しい武器が追加されます」
+and also add flight capability and a new weapon.”
+
+@30077 Manami · マナミ（按段落 3DD4）
+> 「新しい武器……?」
+“A new weapon...?”
+
+@30078 Lawrence · ローレンス
+> 「はい。エルブルスの
+>  ジェネレーター出力を利用した
+“Yes. It uses Elbulls's generator output—
+---
+>  新スイームルグ最大の武器です」
+the greatest weapon of the new Sweemurg.”
+
+@30079 Shirley · シャリー
+> 「どうする{HeroNick}?
+>  嫌ならやめておくけれど……」
+“What will you do, {HeroNick}? If you don't want to, we can stop...”
+
+@30080 Manami · マナミ（按段落 3DD4）
+> 「……いいわ、シャリー。
+>  作業を進めて
+“...It's fine, Shirley. Go ahead with the work.
+---
+>  新しいスイームルグの完成を、
+>  楽しみにしているわ」
+I look forward to the new Sweemurg's completion.”
+
+@30081 Wahl · ワール
+> 「皇帝、各戦線の
+>  定時報告であります」
+“Your Majesty, the scheduled reports from each front.”
+
+@30082 Emperor Zuul · ズール皇帝
+> 「うむ」
+“Mm.”
+
+@30083 Wahl · ワール
+> 「宇宙時間1100現在
+>  イエロー戦線は85%制圧
+“As of 1100 space time, the Yellow Front is 85% suppressed.
+---
+>  完全勝利も間近と思われます
+>  バイオレット戦線は
+A complete victory appears imminent. The Violet Front is
+---
+>  55%制圧、もっか一気に
+>  進攻中。オレンジ戦線は
+55% suppressed, currently advancing at full speed. The Orange Front
+---
+>  たったいま、完全勝利を得ました」
+has just now achieved complete victory.”
+
+@30084 Emperor Zuul · ズール皇帝
+> 「おお、ご苦労であった」
+“Oh, well done.”
+
+@30085 Wahl · ワール
+> 「はっ、では失礼します」
+“Yes, sir. If you'll excuse me.”
+
+@30086 Emperor Zuul · ズール皇帝
+> 「待てワール。
+>  シルバー戦線の報告がないが?」
+“Wait, Wahl. There's no report from the Silver Front?”
+
+@30087 Wahl · ワール
+> 「はっ。先遣艦隊司令
+>  ガンダル殿の報告によれば
+“Yes, sir. According to the report from Lord Gandal, commander of the advance fleet,
+---
+>  すでに地球勢力との交戦を
+>  開始したそうです」
+they have already begun combat with the Earth forces.”
+
+@30088 Emperor Zuul · ズール皇帝
+> 「そうか……見事やってみせろ」
+“I see... Show me what you can do.”
+
+@30089 Marg · マーグ
+# 审校：原文“マーズがコントロールできないとなって”是“变得无法控制之后”的完成状态，初稿“once Mars could no longer be controlled”时态偏过去能力，改为“now that Mars can no longer be controlled”更贴切；后半句补上“he's sent”使语气更自然。
+> (ズールめ……マーズが
+>  コントロールできないとなって
+(Zuul... So now that Mars can no longer be controlled,
+---
+>  地球制圧の軍を出したのか……)
+he's sent an army to subjugate Earth...)
+
+@30090 Wahl · ワール
+> 「そこにいるのは誰だ!?」
+“Who's there?!”
+
+@30091 Marg · マーグ
+> 「鳥……鳥、どこ? 鳥?
+>  鳥、こっちへ」
+“Bird... Bird, where? Bird? Bird, come here.”
+
+@30092 Wahl · ワール
+# 审校：“さっさと失せろ”是粗暴的命令，初稿“at once”偏正式，改为“now”更符合军人呵斥口吻。
+> 「お前か。スパイがいるらしいとは
+>  聞いたが、こいつでは頭が弱すぎて
+“So it's you. I'd heard there was a spy about, but this one's too feeble-minded
+---
+>  話にならん。おい、貴様、
+>  さっさと失せろ!」
+to be worth talking to. Hey, you, get lost, now!”
+
+@30093 Marg · マーグ
+# 审校：“どういう運命をたどるか”指“会遭遇怎样的命运”，初稿“I'll meet”搭配不自然，改为“will befall me”；“お前に会って”强调见面后必须传达，初稿“in person”不够准确，改为“when I see you”。
+> (マーズ、お前に会いたい。オレは
+>  いつどういう運命をたどるかわからない
+(Mars, I want to see you. I don't know when or what fate will befall me,
+---
+>  弟よ。オレはお前に会ってどうしても
+>  伝えなくてはならないことがある)
+my brother. There's something I absolutely must tell you when I see you.)
+
+@30094 Marg · マーグ
+> 「連絡艇……
+>  ワープカタパルトは動くか……」
+“The courier ship... Will the warp catapult work...”
+
+@30095 Marg · マーグ
+> 「くっ……これは!?」
+“Ngh... What is this?!”
+
+@30096 Gorman · ゴーマン
+> 「マーグ、気の毒だが
+>  エネルギーは抜いてある
+“Marg, I'm sorry to say, but I've drained the energy.
+---
+>  まさか貴様が、頭の弱いフリを
+>  していたとはな
+To think you were only pretending to be feeble-minded.
+---
+>  まんまとだまされたよ」
+You had me completely fooled.”
+
+@30097 Marg · マーグ
+> 「親衛隊のゴーマン大尉か……
+>  くそっ!」
+“Captain Gorman of the Imperial Guard... Damn it!”
+
+@30098 Gorman · ゴーマン
+> 「あきらめろ! ズール皇帝への
+>  反逆の罪は重いぞ」
+“Give it up! Rebellion against Emperor Zuul is a grave crime.”
+
+@30099 Emperor Zuul · ズール皇帝
+> 「マーグ、いままでよくも
+>  このワシをたばかってくれた
+“Marg, you've done well deceiving me all this time.
+---
+>  マーズとは血を分けた兄弟、
+>  さぞかし会いたいだろうな。いいだろう
+You and Mars are brothers by blood, so you must be dying to see him. Very well.
+---
+>  会わせてやろう。ただし……
+>  マーズを殺すために」
+I'll let you meet him. But... only so you can kill Mars.”
+
+@30100 Marg · マーグ
+> 「なんだと!?」
+“What did you say?!”
+
+@30101 Emperor Zuul · ズール皇帝
+> 「このワシに逆らった者は、死刑!
+>  お前の生きのびる道はひとつしかない
+“Anyone who defies me will be executed! There's only one way for you to survive.
+---
+>  マーズを殺せ!」
+Kill Mars!”
+
+@30102 Marg · マーグ
+> (く……マーズ……マーズ!)
+(Ngh... Mars... Mars!)

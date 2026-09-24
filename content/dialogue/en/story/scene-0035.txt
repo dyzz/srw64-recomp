@@ -1,0 +1,1188 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@24723 Dermail · デルマイユ
+> 「ツバロフ、例の計画は順調に
+>  進んでおるか?」
+“Tubarov, is that plan of ours proceeding smoothly?”
+
+@24724 Tubarov · ツバロフ
+> 「はい、デルマイユ公。すでにコロニーの
+>  連中の動員も始めております
+“Yes, Lord Dermail. We have already begun mobilizing the colonists.
+---
+>  これに加えて本当に月面の
+>  工場が手に入るならば、
+Add to that the lunar factories, if we truly get them,
+---
+>  問題はまったくないでしょう」
+and there will be no problems at all.”
+
+@24725 Jamitov · ジャミトフ
+> 「そのためにバスクにやらせている。
+>  貴公は軍備増強のことだけを
+“That is why I have Bask handling it. You need only concern yourself
+---
+>  考えておればよい。バスク、帝国の
+>  月面基地攻略作戦の
+with the military buildup. Bask, how are the preparations for the
+---
+>  準備はどうか」
+operation to take the Empire's lunar base?”
+
+@24726 Bask · バスク
+> 「整っております。アナハイムの連中が
+>  なかなか協力しようとせんのですが
+“They are complete. The people at Anaheim are proving reluctant to cooperate,
+---
+>  それはまぁ戦時中のこと、どうにでも
+>  なりましょう。月面は
+but this is wartime, and it will work out one way or another. The lunar surface
+---
+>  OZの手に落ちます」
+will fall into OZ's hands.”
+
+@24727 Tubarov · ツバロフ
+> 「しかし、帝国軍の基地のみならず
+>  他の月面都市にまで手をだすと
+“But if we reach not only for the Imperial forces' base but for the other lunar cities as well,
+---
+>  トレーズが何をいうか……。
+>  現在の軍備増強策にも
+what will Treize say...? I hear he is not exactly eager about
+---
+>  積極的ではないと聞きますが……」
+the current military buildup either...”
+
+@24728 Bask · バスク
+> 「トレーズなどに何ができるか! あやつは
+>  しょせん、飾りにすぎん。貴様は
+“What can a man like Treize do?! He is nothing but decoration. You
+---
+>  トレーズのことなど気にせず、好きに
+>  やっておればよいのだ」
+need not worry about Treize. Just do as you please.”
+
+@24729 Tubarov · ツバロフ
+> 「これは頼もしいお言葉ですな。
+>  そういうことでしたら、
+“Those are reassuring words. In that case,
+---
+>  月面基地制圧後、
+>  すぐとりかかります」
+I will begin immediately after the lunar base is subdued.”
+
+@24730 Dermail · デルマイユ
+> 「うむ。頼んだぞ、ツバロフ」
+“Good. I leave it to you, Tubarov.”
+
+@24731 Lady · レディ
+> 「トレーズ様、お元気そうでなにより
+>  です」
+“Lord Treize, I am glad to see you looking well.”
+
+@24732 Treize · トレーズ
+> 「レディ、君も元気そうでよかった。
+>  君はよくやってくれている」
+“Lady, I am glad to see you well too. You have been doing fine work.”
+
+@24733 Lady · レディ
+> 「ありがとうございます。ただ……」
+“Thank you. However...”
+
+@24734 Treize · トレーズ
+> 「ツバロフとバスクか。私が
+>  軍備増強に反対したために
+“Tubarov and Bask, is it. Because I opposed the military buildup,
+---
+>  デルマイユ公は私を通さずに進める
+>  ことにしたらしいね」
+Lord Dermail apparently decided to proceed without going through me.”
+
+@24735 Lady · レディ
+> 「ジャミトフ閣下のお知恵でしょう。
+>  いかがいたしますか、トレーズ様?」
+“No doubt it was His Excellency Jamitov's idea. What shall we do, Lord Treize?”
+
+@24736 Treize · トレーズ
+> 「放っておきたまえ。君まで不必要
+>  な争いを起こす必要はない
+“Leave them be. There is no need for you to stir up unnecessary conflict as well.
+---
+>  ところでレディ、彼らはどうしている?」
+By the way, Lady, how are they doing?”
+
+@24737 Lady · レディ
+> 「はい。今のところ、これといって
+>  目立った行動はとっておりません」
+“Yes. For the moment, they have taken no particularly conspicuous action.”
+
+@24738 Treize · トレーズ
+> 「そうか……ありがとう、レディ。君が
+>  早く戻ってこれることを祈っているよ」
+“I see... Thank you, Lady. I pray you can return to us soon.”
+
+@24739 Lady · レディ
+> 「もったいないお言葉、いたみいります。
+>  トレーズ様のため、精いっぱい
+“Those words are more than I deserve. For your sake, Lord Treize, I will do
+---
+>  努力いたします」
+my utmost.”
+
+@24740 Treize · トレーズ
+> (ゼクス、君は今どこにいる。君が
+>  いないとOZは、つまらない人間の
+(Zechs, where are you now? Without you, OZ allows dull men
+---
+>  つまらぬ行動を許してしまう……)
+to carry out their dull deeds...)
+
+@24741 Bask · バスク
+> 「奴らの動きをとらえたと、報告が
+>  あった。かねてより探させていた
+“We have a report that we have caught their movements. They are believed to be
+---
+>  ドック艦ラビアンローズと合流すると
+>  考えられる。諸君らには
+rendezvousing with the dock ship La Vie en Rose, which we have long had searched for.
+---
+>  ラビアンローズを発見し、破壊する
+>  任務が与えられる」
+You are all given the mission to find and destroy La Vie en Rose.”
+
+@24742 Gaia · ガイア
+> 「我々はすでにアポロ作戦に
+>  組み込まれておりますが、そちらは?」
+“We have already been assigned to Operation Apollo, but what of that?”
+
+@24743 Bask · バスク
+> 「それはかまわん。奴らはいずれ必ず
+>  我々の邪魔となる存在だ
+“That does not matter. They are certain to stand in our way sooner or later.
+---
+>  今のうちに、つぶしておかなくてはならん」
+We must crush them while we still can.”
+
+@24744 Gaia · ガイア
+# 审校：バスク的军衔是上校（Colonel），不是少将（Major General）；L31、L39 同样问题，但 L31 与 L22 相同需一并修改，L39 也改为 Colonel。
+> 「了解だ、バスク特佐」
+“Understood, Colonel Bask.”
+
+@24745 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：同上，特佐应为 Colonel，不是 Major General。
+> 「特佐、今の状況で彼らに対し
+>  そこまでやる理由が、わかりかねますが」
+“Colonel, I fail to understand the reason for going that far against them in the current situation.”
+
+@24746 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ぐっ……」
+“Guh...”
+
+@24747 Bask · バスク
+> 「知ったふうな口をきくな! 貴様に
+>  何がわかるか!」
+“Do not speak as if you know anything! What could you possibly understand?!”
+
+@24748 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……はっ、申し訳ありません」
+“...Yes, my apologies.”
+
+@24749 Gaia · ガイア
+> 「{PartnerNick}特尉、頼むぞ。
+>  ブロック・ブレイカーの名が、
+“Captain {PartnerNick}, I am counting on you. I hope the name Block Breaker
+---
+>  伊達ではないとよいのだが」
+is not just for show.”
+
+@24750 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ガイア特尉、それはどういう
+>  意味か?」
+“Captain Gaia, what do you mean by that?”
+
+@24751 Bask · バスク
+> 「やめんか、バカ者が。
+>  私はアポロ作戦の指揮をとる
+“Enough, you fools. I will command Operation Apollo.
+---
+>  作戦終了時には、よい報告を
+>  期待している。以上だ」
+When the operation ends, I expect a good report. That is all.”
+
+@24752 Ehrlich · エルリッヒ（按段落 3DD1）
+> (バスク・オム……急ぎすぎるな。彼らを
+>  いま叩かねばならぬ理由など……
+(Bask Om... you are rushing too much. There is no reason we must strike them now...
+---
+>  どういうことか。トレーズ閣下の
+>  理想を理解せぬ男が……)
+What is going on? A man who does not understand Lord Treize's ideals...)
+
+@24753 Gaia · ガイア
+# 审校：バスク的军衔是上校（Colonel），不是少将（Major General）。
+> 「了解だ、バスク特佐」
+“Understood, Colonel Bask.”
+
+@24754 Rish · リッシュ（按段落 3DD2）
+# 审校：特佐应为 Colonel，不是 Major General。
+> 「特佐、帝国軍に対する最後
+>  の攻勢の最中に、そこまでやる
+“Colonel, in the midst of the final offensive against the Imperial forces, I do not
+---
+>  必要性がわかりませんが?」
+understand the need to go that far?”
+
+@24755 Rish · リッシュ（按段落 3DD2）
+> 「ぐっ……」
+“Guh...”
+
+@24756 Bask · バスク
+> 「知ったふうな口をきくな! 貴様に
+>  何がわかるか! 貴様は黙って
+“Do not speak as if you know anything! What could you possibly understand?! You just
+---
+>  命令に従っておればよいのだ!」
+follow orders in silence!”
+
+@24757 Gaia · ガイア
+> 「{PartnerNick}特尉、期待してもよいの
+>  だろうな? “不死人”の名が
+“Captain {PartnerNick}, I trust we can expect something from you? I hope the name ‘Undying’
+---
+>  名誉なものとなればよいが」
+proves to be an honorable one.”
+
+@24758 Rish · リッシュ（按段落 3DD2）
+> 「……ガイア特尉はなにか含むところが
+>  あるようですな」
+“...Captain Gaia seems to be implying something.”
+
+@24759 Bask · バスク
+> 「やめんか、バカ者が。
+>  私はアポロ作戦の指揮をとる
+“Enough, you fools. I will command Operation Apollo.
+---
+>  作戦終了時には、よい報告を
+>  期待している。以上だ」
+When the operation ends, I expect a good report. That is all.”
+
+@24760 Rish · リッシュ（按段落 3DD2）
+> (ちっ、気にいらねぇ。
+>  まったく気にいらねぇぜ
+(Tch, I don't like it. I really don't like it.
+---
+>  バスクめ……いったいどういうつもりだ。
+>  くそっ、つまんねぇことになりそうだぜ…)
+That Bask... what the hell is he thinking? Damn, this is going to turn into something boring...)
+
+@24761 Gaia · ガイア
+# 审校：特佐应为 Colonel，不是 Major General。
+> 「了解だ、特佐」
+“Understood, Colonel.”
+
+@24762 Bask · バスク
+> 「うむ。私はアポロ作戦の
+>  指揮のため月へ向かう
+“Good. I am heading to the moon to command Operation Apollo.
+---
+>  作戦終了時には、よい報告が
+>  聞けることを期待している」
+When the operation ends, I expect to hear a good report.”
+
+@24763 Mash · マッシュ
+> 「我々にまかせておけ。レジスタンスの
+>  ドック艦など、すぐに落としてやる」
+“Leave it to us. A Resistance dock ship like that will fall in no time.”
+
+@24764 Bask · バスク
+> 「歴戦の勇士の働きぶり、とくと
+>  見せてもらおう」
+“Let us see what a veteran of many battles can do.”
+
+@24765 Jerid · ジェリド
+> 「ジェリド特尉、マウアー特尉、
+>  入ります」
+“Captain Jerid and Captain Mouar, reporting in.”
+
+@24766 Bask · バスク
+> 「来たか。ジェリド特尉、貴官は
+>  ライラ特尉とカクリコン特尉の
+“So you've come. Captain Jerid, you had requested a
+---
+>  弔い合戦を希望していたな」
+memorial battle for Captain Lila and Captain Kacricon.”
+
+@24767 Jerid · ジェリド
+> 「はい。奴らに怨念返しをしなければ
+>  気が休まりません」
+“Yes. I won't rest until I've paid those bastards back in kind.”
+
+@24768 Bask · バスク
+> 「その気合いに期待し、貴官らに
+>  特別任務を与える。これは
+“I expect great things from that fighting spirit. I'm giving you a special mission. This is
+---
+>  ガイア特尉も知らぬことだ」
+something even Captain Gaia does not know.”
+
+@24769 Jerid · ジェリド
+> 「はっ、光栄であります」
+“Yes, sir. It's an honor.”
+
+@24770 Mouar · マウアー
+> 「…………」
+“...”
+
+@24771 Mouar · マウアー
+> 「ジェリド、どういうつもりなの?」
+“Jerid, what are you thinking?”
+
+@24772 Jerid · ジェリド
+> 「どうもこうもない。バスクが極秘
+>  任務に俺を選んだ。うまくこなせば
+“There's nothing to think about. Bask chose me for a top-secret mission. If I pull it off,
+---
+>  道も開ける。それに、
+>  相手は奴らだ。ライラもカクリコンも
+the path opens up. Besides, our enemy is them. Lila, Kacricon,
+---
+>  みんな奴らにやられたんだ」
+everyone was killed by them.”
+
+@24773 Mouar · マウアー
+> 「……もう何をいってもムダね」
+“...It's pointless to say anything more, isn't it.”
+
+@24774 Jerid · ジェリド
+> 「俺はカミーユを、奴らを倒さない
+>  限り、先へ進めなくなっちまった
+“Unless I defeat Kamille, unless I defeat them, I can't move forward anymore.
+---
+>  奴らは俺にとってカベなんだ」
+They're a wall to me.”
+
+@24775 Mouar · マウアー
+> 「思いつめるのは危険なのではなくて?」
+“Isn't it dangerous to obsess like that?”
+
+@24776 Jerid · ジェリド
+> 「マウアー……」
+“Mouar...”
+
+@24777 Mouar · マウアー
+> 「ジェリド、覚えておいてね。あなたの
+>  後ろには、いつもあたしがいるって」
+“Jerid, remember this. I'm always behind you.”
+
+@24778 Bright · ブライト
+> 「順調なようだな……どうした、大尉」
+“Things seem to be going well... What's wrong, Captain?”
+
+@24779 Quattro · クワトロ
+> 「いや……バスクが我々に好きにさせて
+>  おくのが妙でな。1度くらいは
+“No... it's odd that Bask is letting us do as we please. I thought a pursuit force would
+---
+>  追撃隊がくるものと思っていた
+>  が……」
+come at least once, but...”
+
+@24780 Bright · ブライト
+> 「確かに……そうだな」
+“Indeed... you're right.”
+
+@24781 Amuro · アムロ
+> 「……まさかとは思うが……ラビアンローズ
+>  が狙われることは考えられないか?」
+“...I may be wrong, but... could it be that La Vie en Rose is the target?”
+
+@24782 Quattro · クワトロ
+> 「そうか……ありうるな。進路を
+>  読めば我々がどこかのコロニーに
+“I see... that's possible. If they read our course, they might realize we're not
+---
+>  向かっているのではないことは、
+>  わかるかもしれん」
+heading for any colony.”
+
+@24783 Amuro · アムロ
+> 「気になるな……ブライト、俺は
+>  先行して様子をみよう」
+“That bothers me... Bright, I'll go ahead and check things out.”
+
+@24784 Bright · ブライト
+> 「わかった。そうしてくれ。カミーユと
+>  {HeroNick}、エイジも行かせよう」
+“Understood. Do that. I'll send Kamille, {HeroNick}, and Eiji as well.”
+
+@24785 Emary · エマリー
+> 「そろそろケーラが戻ってもいいはずなんだ
+>  けど……」
+“Kayra should be back by now, though...”
+
+@24786 Emary · エマリー
+> 「なに!? うそ、敵なの? 見つかって
+>  しまったというの!?」
+“What?! No way, the enemy? You mean we've been found out?!”
+
+@24787 Gaia · ガイア
+> 「あれがドック艦ラビアンローズか。
+>  よくもこんな所に、いままで隠れて
+“So that's the dock ship La Vie en Rose. To think it hid in a place like this all this
+---
+>  いたものだ。いくぞ、オルテガ、マッシュ、
+>  {PartnerSurname}」
+time. Let's go, Ortega, Mash, {PartnerSurname}.”
+
+@24788 Gaia · ガイア
+> 「あれがドック艦ラビアンローズか。よくも
+>  こんな所にいままで隠れていたものだ
+“So that's the dock ship La Vie en Rose. To think it hid in a place like this all this time.
+---
+>  いくぞ、オルテガ、マッシュ」
+Let's go, Ortega, Mash.”
+
+@24789 Amuro · アムロ
+> 「OZか。やはりラビアンローズが狙い
+>  だったのか」
+“OZ. So La Vie en Rose really was their target.”
+
+@24790 Kayra · ケーラ
+> 「アムロ大尉、私はラビアンローズへ
+>  行きます。リ・ガズィがあるはずです」
+“Captain Amuro, I'm going to La Vie en Rose. The Re-GZ should be there.”
+
+@24791 Amuro · アムロ
+> 「リ・ガズィ?」
+“The Re-GZ?”
+
+@24792 Kayra · ケーラ
+> 「はい。変形機構を省略した、
+>  Zガンダムの同型機です」
+“Yes. It's a Zeta Gundam variant with the transformation system omitted.”
+
+@24793 Amuro · アムロ
+> 「わかった。頼む」
+“Understood. I'm counting on you.”
+
+@24794 Gaia · ガイア
+# 审校：“this fast” 可接受，但“this soon”更贴合“这么早”的时间含义，且更自然。
+> 「くっ、バカな、奴らがこんなに早く
+>  くるとは」
+“Ngh, impossible. To think they'd come this soon.”
+
+@24795 Ortega · オルテガ
+> 「ガイア、奴らは数が少ない。先行
+>  した部隊だ。後続がくる前に
+“Gaia, they're few in number. It's an advance unit. Let's finish this in one go
+---
+>  一気にカタをつけるぞ」
+before their reinforcements arrive.”
+
+@24796 Ehrlich · エルリッヒ（按段落 3DD1）
+> (そう都合よくいけばいいが……
+>  あれは連中のエースパイロットたちだ
+(It'd be nice if it went that smoothly... but those are their ace pilots.
+---
+>  フッ……あの少年も、いつのまにか
+>  エースか。そうさせてしまったのは
+Hmph... that boy became an ace before I knew it. And I'm the one
+---
+>  この私なのだな……)
+who made him that way...)
+
+@24797 Ark · アーク（按段落 3DD1）
+> 「あいつか……不思議だな、前よりも
+>  憎しみが、うすらいでいる気がする……」
+“That's him... Strange. My hatred feels fainter than before...”
+
+@24798 Rish · リッシュ（按段落 3DD2）
+> (バカが、そう都合よくいくかよ。
+>  ありゃ連中のトップエースどもだぜ
+(Don't be a fool. Like it'd go that conveniently. Those are their top aces.
+---
+>  フッ、俺たちゃつくづく縁があるって
+>  気がしてきたぜ? なぁ{HeroNick})
+Heh, I get the feeling we're bound by fate, don't you think? Right, {HeroNick}?)
+
+@24799 Selain · セレイン（按段落 3DD2）
+> 「……あいつか。しつこい奴だ。
+>  “不死人”とは
+“...That guy. He's persistent. ‘Undying,’
+---
+>  よくもいったものだな」
+of all things to call himself.”
+
+@24800 Emary · エマリー
+> 「ケーラ!」
+“Kayra!”
+
+@24801 Kayra · ケーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「エマリーさん、なんとか持ちこたえて。
+>  アーガマにはブライト艦長もいるんです」
+“Emary, hold on somehow. Captain Bright is on the Argama too.”
+
+@24802 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「え? 本当っ!? ああ、やっぱり
+>  ブライト艦長が来てくれたのね!
+“Huh? Really?! Ah, so Captain Bright did come for us after all!
+---
+>  私、がんばります、ブライト艦長!」
+I'll do my best, Captain Bright!”
+
+@24803 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「少年、君のその強さはいったい
+>  どこからくる? 君は何のために
+“Boy, where does that strength of yours come from? For what,
+---
+>  何を信じて戦っているのだ!?」
+and believing in what, are you fighting?!”
+
+@24804 Ark · アーク（按段落 3DD1）
+> 「俺は……誰かが無意味に死んで
+>  いくのが嫌なだけだ!!」
+“I just... I just hate seeing people die for nothing!!”
+
+@24805 Selain · セレイン（按段落 3DD2）
+> 「こりずに、またやられに来たのか」
+“Back again, are you? Haven't you learned your lesson?”
+
+@24806 Rish · リッシュ（按段落 3DD2）
+> 「おいおい、そいつは結果論だ。
+>  俺は、お前に出会ったのは
+“Hey now, that's just hindsight talking. I seriously believe that meeting you
+---
+>  運命だったってマジで思ってんだぜ?」
+was fate, you know?”
+
+@24807
+> *  貴様の戯れ言はもうたくさんだ!
+> *  フン、もの好きな奴だな
+> *  敵である以上は戦う以外はなかろう
+* Enough of your nonsense!
+* Hmph, you're a glutton for punishment.
+* As long as you're the enemy, there's no path but to fight.
+
+@24808 Selain · セレイン（按段落 3DD2）
+> 「黙れ! 貴様の戯れ言はもう
+>  たくさんだ!」
+“Silence! I've had enough of your nonsense!”
+
+@24809 Rish · リッシュ（按段落 3DD2）
+> 「ちっ、あいかわらず冷てぇなぁ
+>  {HeroNick}。どうして俺のいうこと
+“Tch, cold as ever, {HeroNick}. Why can't you ever
+---
+>  わかってくれないのかね」
+understand what I'm saying?”
+
+@24810 Selain · セレイン（按段落 3DD2）
+> 「馬鹿か貴様は。敵のいうことなど
+>  なぜ聞かねばならん! 敵ならば倒す
+“Are you a fool? Why should I listen to anything an enemy says?! If you're the enemy, I destroy you—
+---
+>  それだけだ!」
+that's all there is to it!”
+
+@24811 Rish · リッシュ（按段落 3DD2）
+> 「ま、そりゃそうだ。しかたがねぇか」
+“Well, I suppose so. Can't be helped, huh.”
+
+@24812 Selain · セレイン（按段落 3DD2）
+> 「フン、貴様もあいかわらず、もの好き
+>  な奴だな。そんなふざけたことばかり
+“Hmph, you're as much a glutton for punishment as ever. It's because you keep spouting
+---
+>  しているから、いつも負けて帰るハメに
+>  なる」
+that kind of nonsense that you always end up losing and going home.”
+
+@24813 Rish · リッシュ（按段落 3DD2）
+> 「あいにくと運だけはよくてな。お前にや
+>  られたってそう簡単にゃくたばらねぇよ」
+“Unfortunately, my luck's always been good. Even if you beat me, I won't kick the bucket that easily.”
+
+@24814 Selain · セレイン（按段落 3DD2）
+> 「そうか、ならば今回もためしてみたら
+>  どうだ!?」
+“Is that so? Then why not try again this time?!”
+
+@24815 Rish · リッシュ（按段落 3DD2）
+> 「おっと、そうくるかよ。ま、しゃーねぇわな」
+“Whoa, so that's how it is. Well, guess there's no helping it.”
+
+@24816 Selain · セレイン（按段落 3DD2）
+> 「貴様が何をいおうと、敵である
+>  以上は戦う以外に道はなかろう」
+“Whatever you say, as long as you're the enemy, there's no path but to fight.”
+
+@24817 Rish · リッシュ（按段落 3DD2）
+> 「だからよ、お前が本気でいってくれる
+>  んなら、俺はいつでもそっちにつくって
+“That's what I'm saying—if you'd just tell me you mean it, I'd join your side anytime,
+---
+>  いってるじゃねぇか」
+I keep telling you that.”
+
+@24818 Selain · セレイン（按段落 3DD2）
+> 「だから、なぜ私がそんなことをいわねば
+>  ならん!」
+“And why would I ever say such a thing?!”
+
+@24819 Rish · リッシュ（按段落 3DD2）
+> 「そりゃお前……俺がいってほしいからだ
+>  何度もいうが俺ぁマジだぜ!?」
+“Well, because... I want you to say it. I'm telling you, I'm serious!”
+
+@24820 Selain · セレイン（按段落 3DD2）
+> 「そうか……なら、お前が死んだら
+>  考えてやる」
+“I see... Then if you die, I'll think about it.”
+
+@24821 Rish · リッシュ（按段落 3DD2）
+> 「おい、ちょっと待て!
+>  おい、{HeroNick}!! チッ」
+“Hey, wait a second! Hey, {HeroNick}!! Tch.”
+
+@24822 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「きゃあぁぁぁっ! ブライト艦長ーっ!!」
+“Kyaaaaaah! Captain Bright!!”
+
+@24823 Bright · ブライト
+> 「なんだと!?」
+“What?!”
+
+@24824 Quattro · クワトロ
+> 「どうやら間に合ったようだな」
+“Looks like we made it in time.”
+
+@24825 Bright · ブライト
+> 「よし、全機、ラビアンローズに敵を
+>  近づけるな!」
+“All right, all units—don't let the enemy near La Vie en Rose!”
+
+@24826 Jerid · ジェリド
+> 「来たか……アーガマ! バスクめ、
+>  なかなかやるじゃないか。マウアー」
+“So they've come... the Argama! That Bask, he's not half bad. Mouar.”
+
+@24827 Mouar · マウアー
+> 「なに?」
+“What is it?”
+
+@24828 Jerid · ジェリド
+> 「無理はするなよ。俺のことを心配
+>  する必要はない」
+“Don't push yourself too hard. You don't need to worry about me.”
+
+@24829 Mouar · マウアー
+> 「ありがとう、ジェリド」
+“Thank you, Jerid.”
+
+@24830 Jerid · ジェリド
+> 「よし、十分引きつけた。いくぞ!」
+“All right, we've drawn them in enough. Let's go!”
+
+@24831 Mouar · マウアー
+> 「また、あとで」
+“See you later, then.”
+
+@24832 Jerid · ジェリド
+> 「そうだな」
+“Yeah.”
+
+@24833 Jerid · ジェリド
+> 「うわあぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@24834 Mouar · マウアー
+> 「ジェリド!? くっ……よくもジェリドを!」
+“Jerid?! Ngh... How dare you do that to Jerid!”
+
+@24835 Mouar · マウアー
+> 「くっ……ジェリド……」
+“Ngh... Jerid...”
+
+@24836 Jerid · ジェリド
+> 「くそぉぉーっ! 俺は、マウアーの仇も
+>  討てずに……俺はっ!!」
+“Daaamn it! I couldn't even avenge Mouar... I...!!”
+
+@24837 Jerid · ジェリド
+> (う……なんだ……?)
+(Ugh... what...?)
+
+@24838 Mouar · マウアー
+> (………………)
+(.........)
+
+@24839 Jerid · ジェリド
+> (マウアー……? 俺は……
+>  どうなったんだ……)
+(Mouar...? What... happened to me...?)
+
+@24840 Mouar · マウアー
+> (ジェリド……大丈夫、あなたは死な
+>  ない。あなたは世界を導いていける)
+(Jerid... It's all right, you won't die. You can go on to lead the world.)
+
+@24841 Jerid · ジェリド
+> (マウアー……そんなことはいい。お前まで
+>  行っちまうなんて……)
+(Mouar... never mind that. To think even you'd go before me...)
+
+@24842 Mouar · マウアー
+> (ジェリドー……)
+(Jerid...)
+
+@24843 Jerid · ジェリド
+> 「……マウアー、俺は……
+“...Mouar, I...
+---
+>  うっ……腕がきかない……?」
+Ugh... my arm won't move...?”
+
+@24844 Mouar · マウアー
+> (ジェリド)
+(Jerid)
+
+@24845 Jerid · ジェリド
+> 「マウアー……?」
+“Mouar...?”
+
+@24846 Jerid · ジェリド
+> 「よし、マウアー、
+>  行けるぞ!」
+“All right, Mouar, we can do this!”
+
+@24847 Kamille · カミーユ
+> 「なに!? まだ戦えるのか!?」
+“What?! He can still fight?!”
+
+@24848 Jerid · ジェリド
+> 「うおおぉぉぉぉぉぉぉーっ!!」
+“Uwoooooooooooh!!”
+
+@24849 Jerid · ジェリド
+> 「マウアーッ!!」
+“Mouar!!”
+
+@24850 Mouar · マウアー
+> 「……守ってみせるって、いったろ?
+>  ジェリド……」
+“...I told you I'd protect you, didn't I? Jerid...”
+
+@24851 Jerid · ジェリド
+> 「マウアァァーッ!
+>  くそぉぉーっ!
+“Mouaaar! Damn it all!
+---
+>  貴様ら!
+>  貴様らはなんでいつもぉぉぉーっ!!」
+You bastards! Why do you always...!!”
+
+@24852 Mouar · マウアー
+> 「くっ……ジェリド……忘れないで。
+>  私は、いつもあなたのそばに……」
+“Ngh... Jerid... Don't forget. I'll always be by your side...”
+
+@24853 Kamille · カミーユ
+> 「なんで……あんなに保ったんだ……
+>  確か、マウアーって……」
+“Why... did he hold out that long...? I'm sure she was called Mouar...”
+
+@24854 Gaia · ガイア
+> 「うおぉっ!? この我らが……黒い
+>  三連星が、敗れるというのか!?」
+“Uwoh?! We... the Black Tri-Stars... defeated?!”
+
+@24855 Ortega · オルテガ
+> 「バ、バカな!
+>  俺たちがやられるなどと……」
+“I-Impossible! For us to be beaten...”
+
+@24856 Mash · マッシュ
+> 「クッ、俺の悪運もここまでか……」
+“Ngh, so my luck's run out at last...”
+
+@24857 Bright · ブライト
+> 「終わったか……よし、アーガマを
+>  ラビアンローズにつけろ」
+“It's over, then... All right, dock the Argama at La Vie en Rose.”
+
+@24858 Jerid · ジェリド
+> 「マウアー……どこだ? マウアー……。
+>  く……うぅ……」
+“Mouar... where are you? Mouar... Ngh... ugh...”
+
+@24859 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!
+>  ブライト艦長ーーっ!!」
+“Captain Bright! Captain Bright!!”
+
+@24860 Bright · ブライト
+> 「エマリー……艦長代理、
+>  よくラビアンローズを守ってくれた」
+“Emary... Acting Captain, you did well defending La Vie en Rose.”
+
+@24861 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「はい! 私、ブライト艦長のために、
+>  がんばりました!」
+“Yes! I did my very best for you, Captain Bright!”
+
+@24862 Bright · ブライト
+> 「え?」
+“Huh?”
+
+@24863 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長……忘れてしまったの
+>  ですか? 私、艦長に頼まれたと
+“Captain Bright... have you forgotten? I thought you'd asked me to,
+---
+>  思って、一生懸命……」
+so I did my very best...”
+
+@24864 Bright · ブライト
+> 「あ……いや、その……」
+“Ah... no, that's...”
+
+@24865 David · デビッド
+> 「…………」
+“...”
+
+@24866 Domon · ドモン
+> 「…………」
+“...”
+
+@24867 Sai Saici · サイ・サイシー
+> 「…………」
+“...”
+
+@24868 Boss · ボス
+> 「…………」
+“...”
+
+@24869 Arthur · アーサー
+> 「え? なになに? みんなどうしたんだ?」
+“Huh? What, what? What's with all of you?”
+
+@24870 Bright · ブライト
+> 「……貴様ら、何をみている!
+>  さっさと作業にかかれ!」
+“...You lot, what are you staring at?! Get back to work, now!”
+
+@24871 Rain · レイン
+> 「はい、すみません。ほらみんな、さっさと
+>  いらっしゃい」
+“Yes, sorry. Come on, everyone, hurry along.”
+
+@24872 Amuro · アムロ
+> 「Zガンダムにリ・ガズィか。しかし、よく
+>  これだけのものが、つくれたものだな」
+“The Zeta Gundam and the Re-GZ. Still, to think they could build this much...”
+
+@24873 ???
+> 「アナハイム・エレクトロニクスとのパイプが
+>  ありますから。でもいろいろと
+“We have connections with Anaheim Electronics. But it was quite a
+---
+>  大変だったんですよ」
+struggle, let me tell you.”
+
+@24874 Amuro · アムロ
+> 「君は……」
+“You are...”
+
+@24875 Chan · チェーン
+> 「チェーン・アギです。もと連邦の技
+>  術士官で、今はラビアンローズの
+“I'm Chan Agi. I was a Federation technical officer, and now I'm a
+---
+>  クルーをやっています」
+crew member of La Vie en Rose.”
+
+@24876 Amuro · アムロ
+> 「そうか、よろしくチェーン。俺は……」
+“I see. Nice to meet you, Chan. I'm...”
+
+@24877 Chan · チェーン
+> 「知ってます、アムロ・レイ大尉。
+>  私、ずっとお会いしたいと
+“I know. Captain Amuro Ray. I've always wanted to
+---
+>  思っていたんですよ」
+meet you.”
+
+@24878 Amuro · アムロ
+> 「ははは、実物を見てがっかりしたん
+>  じゃないか」
+“Hahaha, I bet the real thing was a disappointment.”
+
+@24879 Chan · チェーン
+> 「そんなことないです。
+>  ますますがんばろうって、思いました」
+“Not at all. It made me want to work even harder.”
+
+@24880 Amuro · アムロ
+> 「なにをだい?」
+“At what?”
+
+@24881 Chan · チェーン
+> 「私の夢なんです。アムロ大尉の
+>  乗るガンダムをつくるのが」
+“It's my dream. To build the Gundam that Captain Amuro pilots.”
+
+@24882 Amuro · アムロ
+> 「そういえばアナハイムといっていたが……」
+“Speaking of which, you said Anaheim...”
+
+@24883 Chan · チェーン
+> 「帝国やロームフェラに協力する
+>  裏で、こちらにも協力する
+“Behind the scenes, while cooperating with the Empire and Romefeller, they cooperate with us too.
+---
+>  あまり気分のよいものではありませんが
+>  そのおかげで私たちも新型を
+It doesn't sit well with me, but thanks to that, we can develop new models
+---
+>  開発することができます。拠点
+>  防衛用のGP03というのも
+as well. There's even one for base defense called the GP03.
+---
+>  あるんですよ」
+Yes, it exists.”
+
+@24884 Amuro · アムロ
+> 「GP03?」
+“GP03?”
+
+@24885 Chan · チェーン
+> 「ステイメンというガンダムを、オーキスとい
+>  う武器コンテナに収容した形が
+“A Gundam called the Stamen housed in a weapons container called the Orchis—that's
+---
+>  通常の運用形態で、
+>  デンドロビウムと呼ばれています」
+the standard operating form, and it's called the Dendrobium.”
+
+@24886 Amuro · アムロ
+> 「なんだかすごそうだね。ウラキ少尉が
+>  喜びそうだ」
+“Sounds impressive. Ensign Uraki would love that.”
+
+@24887 Beltorchika · ベルトーチカ
+> 「ちょっとあなた、何やってるのよ!」
+“Hey you, what do you think you're doing?!”
+
+@24888 Amuro · アムロ
+> 「ベルトーチカ」
+“Beltorchika.”
+
+@24889 Chan · チェーン
+> 「なにって……あなたは?」
+“What do you mean... and who are you?”
+
+@24890 Beltorchika · ベルトーチカ
+> 「ベルトーチカ・イルマ、アーガマのクルーよ
+>  あんまりアムロにちょっかい出さないで」
+“Beltorchika Irma, crew of the Argama. Don't go pestering Amuro so much.”
+
+@24891 Chan · チェーン
+> 「あなたにそんなこといわれる理由は
+>  ないわ」
+“You've got no right to say that to me.”
+
+@24892 Beltorchika · ベルトーチカ
+> 「私は、アムロの恋人なのよ」
+“I'm Amuro's lover.”
+
+@24893 Chan · チェーン
+> 「ふうん、そうなの。でも私は、
+>  アムロ大尉のために、一緒にMSを
+“Hmm, is that so. But I can build mobile suits together with Captain Amuro.
+---
+>  つくれるわ。新しいガンダムを。
+>  あなたには、それはできないでしょう?」
+A new Gundam. You can't do that, can you?”
+
+@24894 Beltorchika · ベルトーチカ
+> 「それが、どうしたのよ」
+“So what of it?”
+
+@24895 Chan · チェーン
+> 「私は、アムロ大尉のお役に
+>  たてるってことです」
+“It means I can be useful to Captain Amuro.”
+
+@24896 Beltorchika · ベルトーチカ
+> 「な……あ、ちょっとアムロ、どこ行くのよ」
+“Wha... hey, Amuro, where are you going?”
+
+@24897 Amuro · アムロ
+> 「ごめん、アストナージを手伝わなくちゃ
+>  いけないんだ」
+“Sorry, I've got to go help Astonaige.”
+
+@24898 Chan · チェーン
+> 「私も行きます。私、ここの
+>  チーフメカニックですから」
+“I'll come too. I'm the chief mechanic here, after all.”
+
+@24899 Beltorchika · ベルトーチカ
+> 「ちょっと、あなた待ちなさいよ!
+>  アムロ!」
+“Hey, you wait right there! Amuro!”
+
+@24900 David · デビッド
+> 「……なんかすげぇもん見ちまったな」
+“...We just saw something pretty crazy, huh.”
+
+@24901 Boss · ボス
+> 「まったくだわさ」
+“You said it.”
+
+@24902 Arthur · アーサー
+> 「ほんとほんと。でもアムロ大尉って
+>  意外に、はっきりしないんだね」
+“Really, really. But Captain Amuro sure is surprisingly indecisive.”
+
+@24903 Killy · キリー
+> 「どっちかに決めてもらえば、
+>  俺にもチャンスがあるってわけだ」
+“If he'd just pick one, that'd mean I've got a chance too.”
+
+@24904 Shingo · 真吾
+> 「チャンスがあるのは、お前だけじゃないぜ」
+“You're not the only one with a chance, you know.”
+
+@24905 Domon · ドモン
+> 「ふん、男の戦いに女は邪魔になる
+>  だけだというのにな」
+“Hmph. In a man's battle, women only get in the way.”
+
+@24906 Rain · レイン
+> 「…………」
+“...”
+
+@24907 Domon · ドモン
+> 「あ、いや、レインのことをいったんじゃ
+>  なくてだな……」
+“Ah, no, I didn't mean you, Rain...”
+
+@24908 Schwarz · シュバルツ
+> 「ハハハハハハッ、修業が足りんぞ
+>  ドモン!!」
+“Hahahahaha, you're still lacking in training, Domon!!”
+
+@24909 Sai Saici · サイ・サイシー
+> 「わっ、覆面のあんちゃん、いきなり
+>  出てくんなよな」
+“Whoa, masked guy, don't just pop out of nowhere.”
+
+@24910 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：バスク的军衔是大佐，应译为 Colonel，不是 Lieutenant Colonel。
+> 「バスク特佐、帝国軍を追撃
+>  しないというのはどういうことですか」
+“Colonel Bask, what do you mean we're not pursuing the Imperial forces?”
+
+@24911 Bask · バスク
+> 「貴様がレジスタンスどもを
+>  叩いておれば、よかったのだ
+“If you had crushed those Resistance dogs, this wouldn't have happened.
+---
+>  アステロイドまで撤退した
+>  帝国軍など、もはやいつでもつぶせる
+The Imperial forces have already retreated to the Asteroid—we can crush them anytime.
+---
+>  今は軍備を整える時だ。特に、
+>  あのような連中がいる以上はな」
+Now is the time to build up our forces. Especially with people like them around.”
+
+@24912 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「特佐、私にアステロイド基地
+>  攻略の許可を」
+“Colonel, give me permission to assault the Asteroid Base.”
+
+@24913 Bask · バスク
+> 「うぬぼれるな! 貴様のかわりなど、
+>  いくらでもおる。そんな言葉は
+“Don't get cocky! There are plenty of others who can take your place. Words like that
+---
+>  実績を見せた者がいうことだ。
+>  貴様も負傷したジェリドのように
+are for those who've shown results. Why don't you go cool your head on Earth,
+---
+>  地球で頭を冷やしてきたらどうだ」
+like Jerid did after he was wounded?”
+
+@24914 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：特佐应译为 Colonel，不是 Lieutenant Colonel。
+> 「バスク特佐! くっ……帝国の排
+>  除がOZの最大の目的だったはず
+“Colonel Bask! Ngh... Eliminating the Empire was supposed to be OZ's greatest goal.
+---
+>  しかし、これでは…………」
+But at this rate...”
+
+@24915 Rish · リッシュ（按段落 3DD2）
+# 审校：特佐应译为 Colonel，不是 Lieutenant Colonel。
+> 「バスク特佐、帝国軍を追撃
+>  しないと聞きましたが」
+“Colonel Bask, I hear we're not pursuing the Imperial forces.”
+
+@24916 Bask · バスク
+> 「貴様が関与することではない。
+>  そもそも貴様らが失敗しなければ
+“It's not your place to interfere. In the first place, if you people hadn't failed,
+---
+>  こんなことにならずにすんだかもしれんのだ
+>  そんな言葉は実績を見せた者が
+this might never have happened. Words like that are for those who've shown
+---
+>  いうことだ」
+results.”
+
+@24917 Rish · リッシュ（按段落 3DD2）
+> (けっ、ハナっからそのつもりもなかったって
+>  わけかよ。タヌキが。帝国軍を
+(Tch, so he never intended to do it from the start, huh. Sly old fox. I did think
+---
+>  排除するだけがOZの目的だったん
+>  じゃねぇとは思ったがよ)
+eliminating the Imperial forces wasn't OZ's only goal, though.)
+
+@24918 Bask · バスク
+# 审校：ジェリド特尉的军衔是特尉，对应 Captain，不是 Lieutenant。
+> 「負傷したジェリド特尉は地球で
+>  療養するそうだな。貴様も
+“I hear the wounded Captain Jerid will be recuperating on Earth. You're welcome
+---
+>  そうしてもかまわんぞ」
+to do the same.”
+
+@24919 Rish · リッシュ（按段落 3DD2）
+> 「ご冗談をおっしゃる」
+“You must be joking.”
+
+@24920 Bask · バスク
+> 「ならば、実績を示すのだな。
+>  でなければレディ・アンのところへでも
+“Then show me results. Otherwise, you may as well go to Lady Une's
+---
+>  行くがいい」
+side.”
+
+@24921 Rish · リッシュ（按段落 3DD2）
+> 「ちっ、あのレディ・アンもすっかり
+>  変わっちまったって話だしな。こりゃ
+“Tch, and they say even Lady Une has changed completely. This is
+---
+>  マジで嫌な展開になってきやがったぜ
+>  さぁて、どうするかな…………」
+seriously turning into a bad situation. Well then, what do I do now...”

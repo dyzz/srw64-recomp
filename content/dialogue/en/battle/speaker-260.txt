@@ -1,0 +1,126 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13165 George · ジョルジュ
+> 「いくぞ!」
+“Here I go!”
+
+@13166 George · ジョルジュ
+> 「いざ!」
+“Now!”
+
+@13167 George · ジョルジュ
+> 「いきますよ!」
+“Here I come!”
+
+@13168 George · ジョルジュ
+> 「うぁぁぁぁぁぁ!」
+“Uwaaaaaaah!”
+
+@13169 George · ジョルジュ
+> 「とどめだぁ!」
+“This is the end!”
+
+@13170 George · ジョルジュ
+> 「これはどうです!?」
+“How's this?!”
+
+@13171 George · ジョルジュ
+> 「今私の目に映るのは、お前のみ!」
+“Right now, you're the only one in my sight!”
+
+@13172 George · ジョルジュ
+> 「む、無念……」
+“H-how regrettable...”
+
+@13173 George · ジョルジュ
+> 「あなたの勝ちだ……」
+“You win...”
+
+@13174 George · ジョルジュ
+> 「マ、マリアルイゼ様……」
+“L-Lady Maria Louise...”
+
+@13175 George · ジョルジュ
+> 「うわぁぁぁぁぁぁぁぁっ!」
+“Uwaaaaaaaaah!”
+
+@13176 George · ジョルジュ
+> 「こ、こんなはずは……」
+“Th-this can't be...”
+
+@13177 George · ジョルジュ
+> 「ぐぅぅ、騎士は敵に背を向けぬ!」
+“Ngh, a knight never turns his back on the enemy!”
+
+@13178 George · ジョルジュ
+> 「ま、まさか!?」
+“I-impossible?!”
+
+@13179 George · ジョルジュ
+> 「どうした! 戦いはまだ終わって
+>  いないぞぉ!」
+“What's wrong! The battle isn't over yet!”
+
+@13180 George · ジョルジュ
+> 「その罪、万死に値します!」
+“That crime deserves a thousand deaths!”
+
+@13181 George · ジョルジュ
+> 「うっ!?」
+“Ugh?!”
+
+@13182 George · ジョルジュ
+> 「なにっ!?」
+“What?!”
+
+@13183 George · ジョルジュ
+> 「ぬぅっ!」
+“Ngh!”
+
+@13184 George · ジョルジュ
+> 「フッ、さすがですね」
+“Hmph, impressive as expected.”
+
+@13185 George · ジョルジュ
+> 「そうこなくては張り合いがありません」
+“It's no fun unless you put up a fight.”
+
+@13186 George · ジョルジュ
+> 「そのくらい」
+“That's nothing.”
+
+@13187 George · ジョルジュ
+> 「フッ、その程度ですか」
+“Hmph, is that all?”
+
+@13188 George · ジョルジュ
+> 「そんな攻撃は効きませんよ」
+“That kind of attack won't work on me.”
+
+@13189 George · ジョルジュ
+> 「フッ!」
+“Hmph!”
+
+@13190 George · ジョルジュ
+> 「どうしたのですか?」
+“What's the matter?”
+
+@13191 George · ジョルジュ
+> 「私はここですよ!」
+“I'm right here!”
+
+@13192 George · ジョルジュ
+> 「効かないといっているのです!」
+“I told you it won't work!”
+
+@13193 George · ジョルジュ
+> 「弾切れ!? 私としたことが」
+“Out of ammo?! To think I'd slip up...”
+
+@13194 George · ジョルジュ
+> 「ここからでは届かないようですね」
+“It seems I can't reach from here.”
+
+@13195 George · ジョルジュ
+> 「卑怯なっ!」
+“That's cowardly!”

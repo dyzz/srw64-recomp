@@ -1,0 +1,166 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13406 Specials · スペシャルズ
+> 「このおぉぉぉっ!!」
+“Take this!”
+
+@13407 Specials · スペシャルズ
+> 「覚悟!」
+“Prepare yourself!”
+
+@13408 Specials · スペシャルズ
+> 「くらえっ!!」
+“Eat this!”
+
+@13409 Specials · スペシャルズ
+> 「うけてみろっ!!」
+“Try and take it!”
+
+@13410 Specials · スペシャルズ
+> 「いけっ!」
+“Go!”
+
+@13411 Specials · スペシャルズ
+> 「させるかっ!」
+“Like I'd let you!”
+
+@13412 Specials · スペシャルズ
+> 「うおおっ!」
+“Whoaah!”
+
+@13413 Specials · スペシャルズ
+> 「そこだっ!」
+“There!”
+
+@13414 Specials · スペシャルズ
+> 「当たれっ!」
+“Hit it!”
+
+@13415 Specials · スペシャルズ
+> 「とどめっ!!」
+“Finish it!”
+
+@13416 Specials · スペシャルズ
+> 「こいつでどうだっ!」
+“How's this?!”
+
+@13417 Specials · スペシャルズ
+> 「うわっ! や、やられたっ!」
+“Whoa! I-I've been hit!”
+
+@13418 Specials · スペシャルズ
+> 「ぐうっ! しまった!」
+“Guh! Damn it!”
+
+@13419 Specials · スペシャルズ
+> 「うおおっ! く、なんてパワーなんだ!?」
+“Whoaah! Wh-what power is this?!”
+
+@13420 Specials · スペシャルズ
+> 「ぐあっ! こ、こいつ、強いぞ!」
+“Gah! Th-this guy's strong!”
+
+@13421 Specials · スペシャルズ
+> 「な、何っ!? バカな!?」
+“Wh-what?! Impossible!”
+
+@13422 Specials · スペシャルズ
+> 「うぐっ! い、いかん、やられる!?」
+“Ugh! Th-this is bad, I'm going down?!”
+
+@13423 Specials · スペシャルズ
+> 「あうっ! ま、まずい、このままでは……」
+“Agh! Th-this is bad, at this rate...”
+
+@13424 Specials · スペシャルズ
+> 「ちっ、さすがにできるな!」
+“Tch, you're good, I'll give you that!”
+
+@13425 Specials · スペシャルズ
+> 「ぐっ! だが、この程度ならまだっ!」
+“Guh! But this much is nothing!”
+
+@13426 Specials · スペシャルズ
+> 「くっ! まだまだ勝負はこれからよ!」
+“Kuh! The real fight's just getting started!”
+
+@13427 Specials · スペシャルズ
+> 「うっ! やるな!!」
+“Ugh! Not bad!”
+
+@13428 Specials · スペシャルズ
+> 「くぅっ! やってくれたな!!」
+“Kuh! You'll pay for that!”
+
+@13429 Specials · スペシャルズ
+> 「ふん、かすった程度のものよ!」
+“Hmph, it barely grazed me!”
+
+@13430 Specials · スペシャルズ
+> 「こそばゆいぜ!」
+“That tickles!”
+
+@13431 Specials · スペシャルズ
+> 「ちっ、あたっちまった!」
+“Tch, it got me!”
+
+@13432 Specials · スペシャルズ
+> 「この程度のダメージなど!!」
+“Damage like this is nothing!”
+
+@13433 Specials · スペシャルズ
+> 「当たっただけだ!」
+“It just grazed me!”
+
+@13434 Specials · スペシャルズ
+> 「甘いっ!」
+“Too easy!”
+
+@13435 Specials · スペシャルズ
+> 「そこかっ!」
+“There you are!”
+
+@13436 Specials · スペシャルズ
+> 「かわせたっ!」
+“Dodged it!”
+
+@13437 Specials · スペシャルズ
+> 「当たるか!」
+“As if that'd hit!”
+
+@13438 Specials · スペシャルズ
+> 「なんの!」
+“No problem!”
+
+@13439 Specials · スペシャルズ
+> 「かわしてみせる!!」
+“I'll dodge it, just watch!”
+
+@13440 Specials · スペシャルズ
+> 「残念だったな!」
+“Too bad for you!”
+
+@13441 Specials · スペシャルズ
+> 「そんなビームなど!」
+“A Beam like that?!”
+
+@13442 Specials · スペシャルズ
+> 「ふん、ムダなことをする!」
+“Hmph, what a waste of effort!”
+
+@13443 Specials · スペシャルズ
+> 「ちっ、しまった! 弾切れか!」
+“Tch, damn! Out of ammo?!”
+
+@13444 Specials · スペシャルズ
+> 「くそっ! 弾切れかよ!」
+“Damn! Out of ammo already?!”
+
+@13445 Specials · スペシャルズ
+> 「くっ! ここからでは
+>  反撃は無理か……」
+“Kuh! Can't counter from here, huh...”
+
+@13446 Specials · スペシャルズ
+> 「あんな遠くから攻撃してくるのか!?」
+“They're attacking from that far away?!”

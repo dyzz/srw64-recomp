@@ -1,0 +1,102 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6074 Ortega · オルテガ
+> 「このっ!!」
+“Why you!!”
+
+@6075 Ortega · オルテガ
+> 「うおおおおっ!!」
+“Uwoooooooh!!”
+
+@6076 Ortega · オルテガ
+> 「もらった!!」
+“Got you!!”
+
+@6077 Ortega · オルテガ
+> 「やらせん!!」
+“I won't let you!!”
+
+@6078 Ortega · オルテガ
+> 「こいつっ!!」
+“You bastard!!”
+
+@6079 Ortega · オルテガ
+> 「くらえっ!!」
+“Take this!!”
+
+@6080 Ortega · オルテガ
+> 「落ちろってんだよ!!」
+“I said fall!!”
+
+@6081 Ortega · オルテガ
+> 「何!? バカな……」
+“What?! Impossible...”
+
+@6082 Ortega · オルテガ
+> 「ちいいっ!! こいつ、やるっ!!」
+“Tch!! This guy's good!!”
+
+@6083 Ortega · オルテガ
+> 「むうっ! ダ、ダメージを受けすぎた……」
+“Mmph! I-I've taken too much damage...”
+
+@6084 Ortega · オルテガ
+> 「バカなっ!? 押されているのか!?」
+“Impossible?! I'm being pushed back?!”
+
+@6085 Ortega · オルテガ
+> 「まだだっ! 黒い三連星の力、
+>  この程度ではない!」
+“Not yet! The Black Tri-Stars' power is not this weak!”
+
+@6086 Ortega · オルテガ
+> 「ぬっ! このくらいでやられるものかよ!」
+“Ngh! You think this is enough to beat me?!”
+
+@6087 Ortega · オルテガ
+> 「おうっ! 少しはやるようだな……だが!」
+“Oh! You're not bad... but!”
+
+@6088 Ortega · オルテガ
+> 「おのれ、よくもっ!!」
+“You bastard, how dare you!!”
+
+@6089 Ortega · オルテガ
+> 「ふん、ちょこざいな」
+“Hmph, impudent.”
+
+@6090 Ortega · オルテガ
+> 「この程度の攻撃で落ちるかよ!」
+“You think an attack like that will bring me down?!”
+
+@6091 Ortega · オルテガ
+> 「その程度か!」
+“Is that all?!”
+
+@6092 Ortega · オルテガ
+> 「なめるなっ!!」
+“Don't underestimate me!!”
+
+@6093 Ortega · オルテガ
+> 「当たるかよ!」
+“Like you'll hit me!”
+
+@6094 Ortega · オルテガ
+> 「そこか!」
+“There you are!”
+
+@6095 Ortega · オルテガ
+> 「ふん!」
+“Hmph!”
+
+@6096 Ortega · オルテガ
+> 「ムダなんだよ!」
+“It's useless!”
+
+@6097 Ortega · オルテガ
+> 「ちっ、しまった、弾切れか」
+“Tch, damn, out of ammo.”
+
+@6098 Ortega · オルテガ
+> 「ちっ、臆病者が……」
+“Tch, coward...”

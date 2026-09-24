@@ -1,0 +1,111 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10797 Pampa · パンパ
+> 「ハマーン様の名誉のために!」
+“For Lady Haman's honor!”
+
+@10798 Pampa · パンパ
+> 「我々はガザの嵐隊だ!」
+“We are Gaza's Storm Squad!”
+
+@10799 Pampa · パンパ
+> 「マシュマー様……いきます!」
+“Lord Mashymre... here I go!”
+
+@10800 Pampa · パンパ
+> 「さぁ、勝負しろ!」
+“Come on, let's settle this!”
+
+@10801 Pampa · パンパ
+> 「いくぞ!」
+“Here I go!”
+
+@10802 Pampa · パンパ
+> 「仲間の仇をとらせてもらう!」
+“I'll avenge my comrades!”
+
+@10803 Pampa · パンパ
+> 「でてこないならば!」
+“If you won't come out!”
+
+@10804 Pampa · パンパ
+> 「いぶりだしてやる!」
+“I'll smoke you out!”
+
+@10805 Pampa · パンパ
+> 「ハ、ハマーン様ぁぁぁーっ!」
+“L-Lady Haman!”
+
+@10806 Pampa · パンパ
+> 「マシュマー様ぁぁーっ!」
+“Lord Mashymre!”
+
+@10807 Pampa · パンパ
+> 「くっ! 私は決して許さない!」
+“Ngh! I will never forgive you!”
+
+@10808 Pampa · パンパ
+> 「うぅぅっ! お、おのれぇーっ!」
+“Ugh! Y-you bastard!”
+
+@10809 Pampa · パンパ
+> 「おぉ!? こ、これほどのものとはっ!」
+“Oh?! Th-this much power?!”
+
+@10810 Pampa · パンパ
+> 「ぐぅぅ……正攻法はもうやめだ!」
+“Guh... no more playing fair!”
+
+@10811 Pampa · パンパ
+> 「あぁぁ!? つ、強い!?」
+“Agh?! S-so strong?!”
+
+@10812 Pampa · パンパ
+# 审校：「相手にとって不足なし」是“作为对手无可挑剔/值得一战”的意思，初稿译成了相反的意思。
+> 「くっ……相手にとって不足なし!」
+“Ngh... you're a worthy opponent!”
+
+@10813 Pampa · パンパ
+> 「なかなかやるなっ!」
+“You're pretty good!”
+
+@10814 Pampa · パンパ
+> 「で、できる相手だ……だがっ!」
+“Y-you're capable... but still!”
+
+@10815 Pampa · パンパ
+> 「その程度では相手にならんぞ!」
+“That's not nearly enough to face me!”
+
+@10816 Pampa · パンパ
+> 「さぁ、もっと攻めてこい!」
+“Come on, attack me more!”
+
+@10817 Pampa · パンパ
+> 「このような者を相手にせねば
+>  ならんとは……」
+“To think I must face the likes of you...”
+
+@10818 Pampa · パンパ
+> 「まだまだ未熟だな!」
+“Still so inexperienced!”
+
+@10819 Pampa · パンパ
+> 「甘いぞ!」
+“Too naive!”
+
+@10820 Pampa · パンパ
+> 「そんな攻撃ではあたらんぞ」
+“An attack like that won't hit me.”
+
+@10821 Pampa · パンパ
+> 「甘いぞ!」
+“Too naive!”
+
+@10822 Pampa · パンパ
+> 「な、なに!? 弾切れというのか……」
+“W-what?! Out of ammo...?”
+
+@10823 Pampa · パンパ
+> 「お、おのれ……なんと卑怯な!」
+“Y-you... how cowardly!”

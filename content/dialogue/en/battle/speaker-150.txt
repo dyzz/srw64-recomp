@@ -1,0 +1,121 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12003 Janera · ジャネラ
+# 审校：原译“finish you off”可接受，但“倒してくれる”更接近“打倒”，且保持高傲语气。
+> 「私みずからが倒してくれるわ!」
+“I shall bring you down myself!”
+
+@12004 Janera · ジャネラ
+> 「死ねぃ!」
+“Die!”
+
+@12005 Janera · ジャネラ
+# 审校：“木っ端みじん”是“粉碎”，原译“smithereens”可接受，但“pieces”更自然。
+> 「木っ端みじんにしてくれるわ!」
+“I'll blast you to pieces!”
+
+@12006 Janera · ジャネラ
+# 审校：原译“full power!”像状态描述，改为命令语气。
+> 「戦闘装置全開せよ!」
+“Combat systems to full power!”
+
+@12007 Janera · ジャネラ
+> 「今ごろ気がついても遅い!」
+“It's too late to notice now!”
+
+@12008 Janera · ジャネラ
+# 审校：原译“Time to put an end to this!”偏自言自语，原文是命令“カタをつけてしまえ”。
+> 「そろそろカタをつけてしまえ!」
+“Finish them off soon!”
+
+@12009 Janera · ジャネラ
+# 审校：原译“at hand”可接受，但“目の前”更直接。
+> 「勝利は目の前じゃ!」
+“Victory is before us!”
+
+@12010 Janera · ジャネラ
+# 审校：原文四个フ，原译只有三个 heh，补足笑声长度。
+> 「フフフフ」
+“Heh heh heh heh.”
+
+@12011 Janera · ジャネラ
+# 审校：原译“make it this far”可接受，但“come this far”更自然。
+> 「よくぞここまで戦ったぞ」
+“You have fought well to come this far.”
+
+@12012 Janera · ジャネラ
+> 「焼き払え!」
+“Burn them all!”
+
+@12013 Janera · ジャネラ
+# 审校：原文没有疑问，原译“damn it?!”的问号多余。
+> 「し……しまった!?」
+“D...damn it!”
+
+@12014 Janera · ジャネラ
+> 「そ、そんなばかな!」
+“Th-that's impossible!”
+
+@12015 Janera · ジャネラ
+> 「くっ……おのれぇ!」
+“Ngh... you wretch!”
+
+@12016 Janera · ジャネラ
+# 审校：原译“How could this be...!”可接受，但“happen”更贴合“このようなことが”。
+> 「まさか!? まさかこのようなことが……!」
+“Impossible! How could this happen...!”
+
+@12017 Janera · ジャネラ
+# 审校：原译“starts now”可接受，但“begins”更符合反派正式宣告语气。
+> 「おのれ! これからが本物の
+>  戦いじゃ!」
+“Curse you! The real battle begins now!”
+
+@12018 Janera · ジャネラ
+# 审校：原文三个フ，原译只有两个 heh，补足笑声长度。
+> 「フフフッ、まだ負けてはおらぬ」
+“Heh heh heh, I have not lost yet.”
+
+@12019 Janera · ジャネラ
+> 「くっ……やらせはせぬぞ!」
+“Ngh... I won't let you!”
+
+@12020 Janera · ジャネラ
+# 审校：原译“not a moment to spare”可接受，但“lose”更贴合“猶予もならん”的紧迫。
+> 「くっ…もはや一刻の猶予もならん!」
+“Ngh... there is not a moment to lose!”
+
+@12021 Janera · ジャネラ
+# 审校：原译“that”指代略弱，改为“such a thing”更贴近“それしき”。
+> 「こざかしや! それしきで倒せると
+>  思うてか!」
+“Insolent fool! You think such a thing can defeat me?!”
+
+@12022 Janera · ジャネラ
+# 审校：原文四个フ，原译只有三个 heh；且“isn't even a game”改为更自然的“hardly even sport”。
+> 「フフフフ、遊びにもならぬわ」
+“Heh heh heh heh, this is hardly even sport.”
+
+@12023 Janera · ジャネラ
+# 审校：原文四个フ，原译只有三个 heh，补足笑声长度。
+> 「フフフフ、無駄じゃ無駄じゃ」
+“Heh heh heh heh, futile, utterly futile.”
+
+@12024 Janera · ジャネラ
+# 审校：原译“That will never hit”可接受，但“It”更直接承接前句。
+> 「遅い攻撃じゃ。それでは当たらぬわ」
+“Such a slow attack. It will never hit.”
+
+@12025 Janera · ジャネラ
+> 「そのような攻撃は効かぬわ!」
+“An attack like that won't work on me!”
+
+@12026 Janera · ジャネラ
+# 审校：原译“can't”可接受，但“cannot”更符合反派正式语气。
+> 「なんと!? 攻撃できぬというのか?」
+“What?! You mean I cannot attack?”
+
+@12027 Janera · ジャネラ
+# 审校：原译“playing such petty tricks”可接受，但“resorting to”更贴近“使いおって”。
+> 「おのれ、こざかしい手を使いおって!」
+“Curse you, resorting to such petty tricks!”

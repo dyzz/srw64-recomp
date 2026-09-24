@@ -1,0 +1,135 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11015 Beecha · ビーチャ
+# 审校：原文是「こンのぉぉぉっ!!」，初稿“You little—!!”语气更像骂小孩，改为更贴合战斗怒喝的“Why you—!!”。
+> 「こンのぉぉぉっ!!」
+“Why you—!!”
+
+@11016 Beecha · ビーチャ
+# 审校：补出“keep doing”以更完整传达「これ以上好きにさせるかいっ!」的持续放任语气。
+> 「これ以上好きにさせるかいっ!」
+“Like I'll let you keep doing whatever you want!”
+
+@11017 Beecha · ビーチャ
+> 「俺だって!!」
+“I can do it too!!”
+
+@11018 Beecha · ビーチャ
+> 「おっまかせ!」
+“Leave it to me!”
+
+@11019 Beecha · ビーチャ
+> 「やらせるかっ!」
+“Like I'll let you!”
+
+@11020 Beecha · ビーチャ
+> 「ジュドーばかりにいいカッコさせるかよっ!」
+“No way I'm letting Judau hog all the glory!”
+
+@11021 Beecha · ビーチャ
+> 「どりゃあああっ!」
+“Take thiiiis!”
+
+@11022 Beecha · ビーチャ
+> 「エル、見てな! 俺様の活躍を!」
+“Elle, watch me! Watch what I can do!”
+
+@11023 Beecha · ビーチャ
+> 「落ちろってんだよ!」
+“I said go down!”
+
+@11024 Beecha · ビーチャ
+> 「しつこいぜっ!」
+“You just don't quit!”
+
+@11025 Beecha · ビーチャ
+> 「うああっ!! だ、だめだあっ!」
+“Uwaaah!! I-I can't do it!”
+
+@11026 Beecha · ビーチャ
+> 「し、しまった! やられちまった!」
+“D-Damn it! I got shot down!”
+
+@11027 Beecha · ビーチャ
+> 「わあああっ!! ま、まずいぞこりゃあ!」
+“Waaah!! Th-this is bad!”
+
+@11028 Beecha · ビーチャ
+> 「ぐわあっ! な、何なんだよ、こいつは!」
+“Guwaah! Wh-what the hell is this thing?!”
+
+@11029 Beecha · ビーチャ
+> 「だああっ! つ、強いじゃねえかよっ!」
+“Daaah! H-he's strong!”
+
+@11030 Beecha · ビーチャ
+> 「うああっ! や、ヤバいぜっ!!」
+“Uwaaah! Th-this is bad!!”
+
+@11031 Beecha · ビーチャ
+> 「くっ! このお、やったなあっ!」
+“Kuh! Why you, you got me!”
+
+@11032 Beecha · ビーチャ
+> 「いってぇ! やってくれんじゃねえの!」
+“Ow! You're asking for it!”
+
+@11033 Beecha · ビーチャ
+> 「うわっ! こいつうっ!」
+“Uwa! Why you!”
+
+@11034 Beecha · ビーチャ
+> 「くうっ! このっ! 覚えとけよ!!」
+“Kuh! You! Just you wait!!”
+
+@11035 Beecha · ビーチャ
+> 「へっ、そんな攻撃ぐらいで!」
+“Heh, that kind of attack won't cut it!”
+
+@11036 Beecha · ビーチャ
+> 「やられるかよ!」
+“Like I'd let you hit me!”
+
+@11037 Beecha · ビーチャ
+> 「効いてないんだよっ!」
+“That didn't even hurt!”
+
+@11038 Beecha · ビーチャ
+> 「その程度でっ!」
+“That's all you've got!”
+
+@11039 Beecha · ビーチャ
+> 「当たるかよっ!」
+“Like that's gonna hit!”
+
+@11040 Beecha · ビーチャ
+> 「あ～らよっと!」
+“Whoa there!”
+
+@11041 Beecha · ビーチャ
+> 「当たってたまるかっ!」
+“No way that's hitting me!”
+
+@11042 Beecha · ビーチャ
+> 「わあっ! あっぶねぇ」
+“Waa! Th-that was close!”
+
+@11043 Beecha · ビーチャ
+> 「ほ～ら、こっち、こっち!」
+“Hey, over here, over here!”
+
+@11044 Beecha · ビーチャ
+> 「そんなもん、効くかよ!」
+“That stuff won't do a thing!”
+
+@11045 Beecha · ビーチャ
+> 「ムダな攻撃なんだよ!」
+“That attack's a waste of time!”
+
+@11046 Beecha · ビーチャ
+> 「くそっ! 弾切れかよ!」
+“Damn! I'm out of ammo!”
+
+@11047 Beecha · ビーチャ
+> 「なんだよ、届かねえのか!?」
+“What the—it won't reach?!”

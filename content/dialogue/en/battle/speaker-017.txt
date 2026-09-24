@@ -1,0 +1,104 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12933 Markiroot · マーキロット
+# 审校：“impudent fool” 偏书面，改为更口语的“insolent brat”
+> 「なまいきなっ!」
+“You insolent brat!”
+
+@12934 Markiroot · マーキロット
+> 「うわぁはははは!」
+“Uwahahahaha!”
+
+@12935 Markiroot · マーキロット
+# 审校：“put an end to you” 不够贴合“息の根を止める”的狠劲，改为“snuff out your life”
+> 「息の根を止めてくれるわ!」
+“I'll snuff out your life!”
+
+@12936 Markiroot · マーキロット
+> 「いくぞぉっ!!」
+“Here I come!!”
+
+@12937 Markiroot · マーキロット
+> 「その身を粉々にしてくれるわっ!」
+“I'll smash you to bits!”
+
+@12938 Markiroot · マーキロット
+# 审校：补上“神の手”的强调语气，改为“by God's own hand”
+> 「貴様のような弱い奴には、
+>  神の手による裁きが必要!」
+“A weakling like you needs judgment by God's own hand!”
+
+@12939 Markiroot · マーキロット
+> 「神の裁きを受けよ!」
+“Receive God's judgment!”
+
+@12940 Markiroot · マーキロット
+> 「ば、ばかな……」
+“I-Impossible...”
+
+@12941 Markiroot · マーキロット
+# 审校：原文是自问式“まさか……のか”，改为疑问语气更贴切
+> 「まさか、おごりたかぶっていたのは
+>  俺のほうだったのか……」
+“Could it be that I was the arrogant one all along...”
+
+@12942 Markiroot · マーキロット
+> 「ぐぅ、なんだと!?」
+“Guh, what did you say?!”
+
+@12943 Markiroot · マーキロット
+> 「うおぉぉぉ、こ、この俺がぁ!」
+“Uooooh, m-me of all people!”
+
+@12944 Markiroot · マーキロット
+# 审校：“grant you praise” 不自然，改为更口语的“I'll praise you”
+> 「ほめてやろう! だがこの罪は重いぞ!」
+“I'll praise you! But this sin is a heavy one!”
+
+@12945 Markiroot · マーキロット
+> 「ぬっ、こ、こいつぅ!?」
+“Ngh, wh-why you?!”
+
+@12946 Markiroot · マーキロット
+> 「おのれっ、望み通りその身を
+>  粉々にしてくれるわっ!」
+“Curse you! As you wish, I'll smash you to bits!”
+
+@12947 Markiroot · マーキロット
+> 「笑わせるな!」
+“Don't make me laugh!”
+
+@12948 Markiroot · マーキロット
+# 审校：“come back another day” 偏离“出直してこい”的“重新来过”含义
+> 「貴様のような青二才は
+>  もう一度出直してこい!」
+“A greenhorn like you should go back and try again!”
+
+@12949 Markiroot · マーキロット
+# 审校：“bigger fish” 太俚语化，改为更贴合“上には上がいる”的“someone stronger”
+> 「上には上がいることを、教えてやる!」
+“I'll teach you that there's always someone stronger!”
+
+@12950 Markiroot · マーキロット
+# 审校：“won't even hit me” 可接受，但“touch me”更贴合“あたらん”的轻蔑语气
+> 「うわぁはははは、貴様の攻撃など
+>  あたらんわ!」
+“Uwahahahaha, your attacks won't even touch me!”
+
+@12951 Markiroot · マーキロット
+> 「ふん!」
+“Hmph!”
+
+@12952 Markiroot · マーキロット
+# 审校：补上“傷一つ”的强调，改为“a single scratch”
+> 「そんな攻撃では傷一つつかぬわ!」
+“Attacks like that won't leave a single scratch!”
+
+@12953 Markiroot · マーキロット
+> 「ふん、弾切れか」
+“Hmph, out of ammo, are you?”
+
+@12954 Markiroot · マーキロット
+# 审校：与 L1 统一，将“that's dirty”改为“you coward”
+> 「おのれ卑怯な!」
+“Curse you, you coward!”

@@ -1,0 +1,932 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@20808 Show · ショウ
+> 「北京か……ここもすっかり廃墟
+>  なんだな」
+“Beijing, huh... So this place is in ruins too.”
+
+@20809 Kamille · カミーユ
+> 「今はどこもこんなものだ。帝国の
+>  衛星軌道上からの攻撃で
+“Everything's like this now. After the Empire's attacks from satellite orbit,
+---
+>  まともに残っているところなんて、
+>  なくなってしまった」
+there isn't a single place left that's still intact.”
+
+@20810 Show · ショウ
+> 「異星人か……いまだに実感
+>  わかないな」
+“Aliens, huh... I still can't quite believe it.”
+
+@20811 Shinobu · 忍
+> 「そりゃ、こっちのセリフだぜ。
+>  バイストンウェルとかなんとかって
+“Hey, that's our line. A world between the sea and the earth,
+---
+>  海と大地の間の世界なんてよ、
+>  ほんとにそんなところがあるのかよ?」
+this Byston Well place... does it really exist?”
+
+@20812 Masato · 雅人
+> 「でもさ、アレみたら信じる気にも
+>  なるよね」
+“But come on, after seeing that thing, you kind of want to believe.”
+
+@20813 Shinobu · 忍
+> 「ああ……アレか。まぁ、確かにな」
+“Yeah... that thing. Well, I guess you're right.”
+
+@20814 Chum · チャム
+> 「みんな～ごはんよ～」
+“Everyone~, food's ready~”
+
+@20815 Roux · ルー
+> 「羽根はえて空飛んでる
+>  “妖精”なんて見せられたらねぇ」
+“When they show you a ‘fairy’ with wings flying through the sky, you kind of have to.”
+
+@20816 Show · ショウ
+> 「妖精じゃなくてミ・フェラリオさ。
+>  チャム、何やってるんだ?」
+“She's not a fairy, she's a Mi Ferario. Chum, what are you doing?”
+
+@20817 Chum · チャム
+> 「何って、あたしだって仕事しなくちゃ
+>  何よ、みんなしてジロジロ見ないでよぉ」
+“What do you mean, what? I've got work to do too, you know! Don't everybody stare at me like that!”
+
+@20818 Aboly · アポリー
+> 「しかし本当にこんなところへ
+>  来るんですかね」
+“But are they really coming to a place like this?”
+
+@20819 Bright · ブライト
+> 「そのはずだが……少し遅すぎるな」
+“They should be... but they're a little too late.”
+
+@20820 Amuro · アムロ
+> 「敵と接触した可能性も
+>  考えられるな」
+“It's possible they ran into the enemy.”
+
+@20821 Bright · ブライト
+> 「どうした!?」
+“What is it?!”
+
+@20822 Beltorchika · ベルトーチカ
+> 「未確認機が接近しています」
+“An unidentified craft is approaching.”
+
+@20823 Amuro · アムロ
+> 「合流相手じゃないのか?」
+“Isn't it our rendezvous party?”
+
+@20824 Beltorchika · ベルトーチカ
+> 「でも、ちょっと様子がおかしいのよ」
+“But something about it seems off.”
+
+@20825 Bright · ブライト
+> 「確認させろ。
+>  総員、戦闘配置につけ」
+“Let me confirm it. All hands, battle stations.”
+
+@20826 Ginrei · 銀鈴
+> 「くっ、だめ、追いつかれる!?」
+“Ngh, no, they're catching up?!”
+
+@20827 Q Boss · Qボス
+# 审校：原文未指定性别，初稿“be a good girl”添加了原文没有的性别信息，改为中性说法。
+> 「フフフ、いまさらどこへ逃げようと
+>  いうのかな。さぁ、おとなしく教授と
+“Heh heh heh, where do you think you can run to now? Come, be good and hand over
+---
+>  そのケースを渡してもらおう」
+the professor and that case.”
+
+@20828 Prof. Yumi · 弓教授
+> 「ぎ、銀鈴くん、君だけでも先に
+>  逃げてくれ」
+“G-Ginrei, at least you should escape first.”
+
+@20829 Ginrei · 銀鈴
+> 「いけません、弓教授! もうすぐ
+>  合流予定地点ですから!」
+“I can't do that, Prof. Yumi! We're almost at the rendezvous point!”
+
+@20830 Q Boss · Qボス
+> 「ほう? まだ逃げようというのですか。
+>  わたしはそのケースだけでも
+“Oh? You still intend to run? I'd be perfectly satisfied
+---
+>  手に入ればいいのですがねぇ」
+with just that case, you know.”
+
+@20831 Ginrei · 銀鈴
+> 「こ、こんなことで!」
+“N-Not like this!”
+
+@20832 ???
+> 「走って、もっと早く!
+>  そのまま、まっすぐ!」
+“Run, faster! Just like that, straight ahead!”
+
+@20833 Ginrei · 銀鈴
+> 「えっ!? ええ!」
+“Huh?! Right!”
+
+@20834 Q Boss · Qボス
+> 「な、なんだ!?」
+“W-What?!”
+
+@20835 Daisaku · 大作
+> 「銀鈴さんたちは、そのまま
+>  逃げてください
+“Ginrei, you and the others just keep running!
+---
+>  やれ! ジャイアントロボ!」
+Go! Giant Robo!”
+
+@20836 Ginrei · 銀鈴
+> 「大作くん! それにジャイアント・ロボ!」
+“Daisaku! And Giant Robo!”
+
+@20837 Q Boss · Qボス
+> 「こ、これは、ジャイアント・ロボ!?」
+“Th-This is Giant Robo?!”
+
+@20838 Q Boss · Qボス
+> 「えぇーい!」
+“Eeei!”
+
+@20839 Daisaku · 大作
+> 「移動します。銀鈴さん、教授、
+>  しっかり、つかまっててください」
+“We're moving out. Ginrei, Professor, hold on tight.”
+
+@20840 Bright · ブライト
+> 「どういうことだ?」
+“What's going on?”
+
+@20841 Beltorchika · ベルトーチカ
+> 「艦長、通信が入っています」
+“Captain, we're receiving a transmission.”
+
+@20842 Bright · ブライト
+> 「スクリーンに出せ」
+“Put it on screen.”
+
+@20843 Ginrei · 銀鈴
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「アルビオンのブライト艦長ですね?
+>  遅くなりました
+“You're Captain Bright of the Albion, correct? Sorry we're late.
+---
+>  もと国際警察機構の銀鈴で
+>  す。よろしくお願いします」
+I'm Ginrei, formerly of the International Police Organization. Pleased to meet you.”
+
+@20844 Bright · ブライト
+> 「銀鈴くん、そちらの方は?」
+“Ginrei, and who is this?”
+
+@20845 Ginrei · 銀鈴
+> 「はい、カラバの弓教授です。教授
+>  の研究施設が帝国軍に
+“Yes, this is Prof. Yumi of Karaba. When the Imperial Army raided
+---
+>  急襲されたとき、偶然お助けしま
+>  した。それで一緒に逃げてきたんです」
+the professor's research facility, I happened to help him out. So we fled together.”
+
+@20846 Quattro · クワトロ
+> 「ほう、カラバの?」
+“Oh, of Karaba?”
+
+@20847 Prof. Yumi · 弓教授
+> 「お恥ずかしい話ですが、こちらの
+>  主力が出ているところを襲われ
+“It's embarrassing to admit, but we were attacked while our main forces were deployed,
+---
+>  研究データを持ち出すのが、
+>  せいいっぱいでしてな
+and getting the research data out was all we could manage.
+---
+>  ジャイアント・ロボがいなければ
+>  危ないところでした」
+If not for Giant Robo, we'd have been in real trouble.”
+
+@20848 Bright · ブライト
+> 「ジャイアント・ロボ?」
+“Giant Robo?”
+
+@20849 Ginrei · 銀鈴
+> 「はい、あのロボットです。それと……
+>  大作くん、降りてらっしゃい
+“Yes, that robot. And... Daisaku, come on down.
+---
+>  彼が操縦を担当している
+>  草間大作くんです」
+He's Daisaku Kusama, the one who handles the controls.”
+
+@20850 Bright · ブライト
+> 「あんな子供が……?」
+“A kid like that...?”
+
+@20851 Ginrei · 銀鈴
+> 「ええ。直接操縦するわけではないの
+>  で問題はありません。それに
+“Yes. He doesn't pilot it directly, so there's no problem. Besides,
+---
+>  ジャイアント・ロボは大作くんのコン
+>  トロール以外は受け付けませんから」
+Giant Robo won't accept anyone's control but Daisaku's.”
+
+@20852 Daisaku · 大作
+> 「草間大作です! よろしくお願い
+>  します!」
+“I'm Daisaku Kusama! Pleased to meet you all!”
+
+@20853 Ryoma · リョウ
+> 「大作くん、君はいくつだ?」
+“Daisaku, how old are you?”
+
+@20854 Daisaku · 大作
+> 「はい、12歳です」
+“I'm twelve, sir.”
+
+@20855 Roux · ルー
+> 「じゅうにさい、ですってぇ!?
+>  本当なの?」
+“Twelve?! You're kidding, right?”
+
+@20856 Daisaku · 大作
+> 「そんなこと、ウソついてどうするんですか?」
+“Why would I lie about something like that?”
+
+@20857 Roux · ルー
+> 「まぁ、そりゃそうなんだけど……」
+“Well, I suppose you wouldn't...”
+
+@20858 Beltorchika · ベルトーチカ
+> 「艦長、もと国際警察機構の
+>  中条長官から通信です」
+“Captain, we have a transmission from Chief Chujo, formerly of the International Police Organization.”
+
+@20859 Bright · ブライト
+> 「ああ、まわしてくれ。お元気そうで
+>  なによりです、中条長官」
+“Ah, put him through. Good to see you're well, Chief Chujo.”
+
+@20860 Chief Chujo · 中条長官
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「そちらも、あいかわらずのようだね、
+>  ブライト艦長。3年ぶりだったかな
+“And you're as busy as ever, Captain Bright. It's been three years, hasn't it?
+---
+>  銀鈴くんたちは無事に合流
+>  できただろうか?」
+Were Ginrei and the others able to join up with you safely?”
+
+@20861 Bright · ブライト
+> 「ええ、いま話を聞いていたところです」
+“Yes, I was just hearing their story.”
+
+@20862 Chief Chujo · 中条長官
+> 「そうか……それで、多少問題が
+>  減ったな」
+“I see... Well, that takes a few problems off my plate.”
+
+@20863 Ginrei · 銀鈴
+> 「長官、何かあったのですか?」
+“Chief, has something happened?”
+
+@20864 Chief Chujo · 中条長官
+> 「うむ、実は帝国が大がかりなレジス
+>  タンス掃討作戦を開始した
+“Indeed. We've obtained information that the Empire has launched a large-scale
+---
+>  という情報を入手したのだ」
+operation to wipe out the resistance.”
+
+@20865 Quattro · クワトロ
+> 「我々の方では、それらしき動きは
+>  つかんでおりませんが……?」
+“We haven't picked up any signs of such a move on our end...”
+
+@20866 Chief Chujo · 中条長官
+> 「実に巧みに動きを隠していたのだ。
+>  おそらくカラバの方でも
+“They've hidden their movements remarkably well. Karaba likely hasn't
+---
+>  何もつかんではおるまい。が、我々に
+>  は、少々特殊な能力を持った
+caught wind of anything either. But we happen to have an expert
+---
+>  エキスパートがいるのでね」
+with some rather special abilities.”
+
+@20867 Bright · ブライト
+> 「信じましょう、長官。それで?」
+“I'll take your word for it, Chief. So?”
+
+@20868 Chief Chujo · 中条長官
+> 「世界各地でレジスタンスの拠点
+>  と思われる地域に一斉に攻撃
+“Simultaneous attacks will be carried out on areas believed to be resistance
+---
+>  が行われる。残念だが警告は、
+>  もう間にあわないだろう。君たちの
+strongholds across the world. Unfortunately, a warning won't reach them in time.
+---
+>  もとにも帝国の大部隊が
+>  向かっているとの情報が入っている
+We have information that a large Imperial force is headed your way as well.
+---
+>  今すぐその場所から移動し、
+>  なんとしても逃げ延びてもらいたい」
+Move from your current location at once, and survive no matter what.”
+
+@20869 Bright · ブライト
+> 「やってみましょう」
+“We'll do our best.”
+
+@20870 Ryoma · リョウ
+> 「どうやら遅かったようですよ。
+>  大部隊かどうかはわかりませんが、
+“Seems we're too late. I don't know if it's the main force, but
+---
+>  敵が接近しています」
+the enemy is approaching.”
+
+@20871 Bright · ブライト
+> 「なに!?
+>  総員、第一級戦闘配備!」
+“What?! All hands, battle stations, Level One!”
+
+@20872 Daisaku · 大作
+> 「いくぞ、ロボ。みんなにお前のすごさを
+>  見てもらうんだ!」
+“Let's go, Robo. I'll show everyone just how amazing you are!”
+
+@20873 Beltorchika · ベルトーチカ
+> 「艦長、ジャイアント・ロボが出ました!」
+“Captain, Giant Robo has launched!”
+
+@20874 Bright · ブライト
+> 「いい、やらせろ! 他の者も出撃
+>  急げ!」
+“Fine, let him go! Everyone else, hurry up and launch!”
+
+@20875 Hell Marshal · 地獄大元帥
+> 「くくくく、見つけたぞ。
+>  どうだ、ワシのいったとおりであろうが
+“Kukuku, found you. See? Just as I said, isn't it?
+---
+>  さぁゆけ、お前たち。
+>  ここで奴らを倒すのじゃ!」
+Now go, all of you. Destroy them here!”
+
+@20876 Gosterro · ゴステロ
+> 「くそぉ、ル・カイン閣下の命令
+>  だからって、えばりちらしやがってよぉ……」
+“Damn it... Just 'cause it's Lord Le Cain's orders, he thinks he can boss us around...”
+
+@20877 Gosterro · ゴステロ
+> 「あれは……エイジィ、エイジィ!
+>  ぐぅぅ、脳がいてぇぇぇっ!
+“That's... Eijiii, Eijiii! Guhh, my head's splitting!
+---
+>  地獄大元帥ぃ、
+>  エイジは俺にやらせろぉ!」
+Hell Marshal, let me be the one to get Eijiii!”
+
+@20878 Hell Marshal · 地獄大元帥
+> 「イカれた奴め。好きにするがいい」
+“You madman. Do as you like.”
+
+@20879 Gosterro · ゴステロ
+# 审校：原文是“エイジはいないのかぁぁぁ!”，初稿译成两个问句且语气重复，改为更贴近原文的“Is Eiji not here?! Where is he?!”
+> 「エイジはいないのかぁぁぁ!」
+“Is Eiji not here?! Where is he?!”
+
+@20880 Koji · 甲児
+# 审校：甲児称呼弓教授为“先生”，此处应译为 Professor 而非 Teacher，与 L5、L7 等处的 Professor 保持一致
+> 「なんとか間にあったぜ。
+>  先生、ご無事ですか!?」
+“We made it just in time. Professor, are you all right?!”
+
+@20881 Bright · ブライト
+> 「なんだ……?」
+“What the...?”
+
+@20882 Prof. Yumi · 弓教授
+> 「おお、甲児くん、さやか、ボスくん、
+>  君たちも無事だったか」
+“Oh, Koji, Sayaka, Boss, so you're all safe too.”
+
+@20883 Sayaka · さやか
+> 「お父さま……よかったわ」
+“Father... thank goodness.”
+
+@20884 Bright · ブライト
+> 「教授、彼らは?」
+“Professor, who are they?”
+
+@20885 Prof. Yumi · 弓教授
+> 「娘のさやかと、カラバのスタッフの
+>  甲児くんとボスくんだ」
+“My daughter Sayaka, and Koji and Boss, staff of Karaba.”
+
+@20886 Koji · 甲児
+# 审校：同上，甲児对弓教授的称呼应统一为 Professor
+> 「あんちきしょうども、俺たちの留守を
+>  狙いやがって。先生が無事で
+“Those damn bastards, attacking while we were away. I'm just glad
+---
+>  ホントによかったぜ」
+you're safe, Professor.”
+
+@20887 Ryoma · リョウ
+> 「話はあとだ。手伝ってくれ!」
+“We can talk later. Give us a hand!”
+
+@20888 Koji · 甲児
+> 「あったり前だぜ!! さやかさん、ボス、
+>  いくぞ!」
+“Of course! Sayaka, Boss, let's go!”
+
+@20889 Sayaka · さやか
+> 「ええ!」
+“Right!”
+
+@20890 Boss · ボス
+> 「ボスボロットの力を見せてやるだわさ!」
+“I'll show you the power of Boss Borot, I will!”
+
+@20891 Duo · デュオ
+> 「おいおい、あの変なのホントに
+>  大丈夫なのかよ?」
+“Hey, hey, is that weird thing really gonna be okay?”
+
+@20892 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「彼らか……
+>  また、まみえることになるとはな
+“So it's them... To think we'd meet face to face again.
+---
+>  どうも浅くはない因縁があるようだ」
+It seems we share a bond that runs deep.”
+
+@20893 Yazan · ヤザン
+> 「なにぶつくさ、いってやがる。
+>  ふん、足止めなどといわず、連中を
+“What're you muttering about? Hmph, forget holding them back—if we just
+---
+>  撃破しちまえばそれで終わりってもん
+>  だ。それでもいいんだろうなぁ?」
+wipe 'em out, that's the end of it. You're fine with that too, right?”
+
+@20894 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「できるものなら、それもよかろう」
+“If you can do it, then by all means.”
+
+@20895 Ark · アーク（按段落 3DD1）
+> 「くっ……あいつは!」
+“Ngh... It's him!”
+
+@20896 Lera · レラ
+> 「あんたの知り合い?」
+“Someone you know?”
+
+@20897 Ark · アーク（按段落 3DD1）
+> 「違うよ。あいつは……俺が忘れちゃ
+>  いけないことを思い出させてくれるんだ」
+“No. He's... the one who reminds me of what I must never forget.”
+
+@20898 Lera · レラ
+> 「……なんだよ、それ」
+“...What's that supposed to mean?”
+
+@20899 Ark · アーク（按段落 3DD1）
+> 「そのうち教えてやるよ」
+“I'll tell you someday.”
+
+@20900 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「あの少年もいるのか? だがなぜだ、
+>  なぜ彼はここまで戦ってこれる!?」
+“Is that boy here too? But why—why can he keep fighting this far?!”
+
+@20901 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ふむ……あの少年は出ていない
+>  ようだな……」
+“Hmm... It seems that boy isn't out there...”
+
+@20902 Rish · リッシュ（按段落 3DD2）
+> 「まぁた、あいつらか。ちっとばかし
+>  やりづれぇかな……」
+“It's those guys again, huh. This is gonna be a bit of a pain...”
+
+@20903 Yazan · ヤザン
+> 「なにぶつくさ、いってやがる。
+>  ふん、足止めなどといわず、連中を
+“What're you muttering about? Hmph, forget holding them back—if we just
+---
+>  撃破しちまえばそれで終わりってもん
+>  だ。それでもいいんだろうなぁ?」
+wipe 'em out, that's the end of it. You're fine with that too, right?”
+
+@20904 Rish · リッシュ（按段落 3DD2）
+> 「ああ、好きにやっちゃってくれ。
+>  お互い、その方がいいだろうよ」
+“Yeah, go ahead and do as you like. That works better for both of us anyway.”
+
+@20905 Yazan · ヤザン
+> 「へっ、わかってるじゃねぇか」
+“Heh, you catch on quick.”
+
+@20906 Selain · セレイン（按段落 3DD2）
+> 「貴様……また来たのか。
+>  しつこい奴だ」
+“You... You've come again. What a persistent bastard.”
+
+@20907 Rish · リッシュ（按段落 3DD2）
+> 「そりゃないぜ。俺はお前を追いかけて
+>  わざわざこんなトコまで来たってのによ」
+“That's cold. I came all the way out here just to chase after you, you know.”
+
+@20908 Selain · セレイン（按段落 3DD2）
+> 「そのふざけた口を二度ときけなく
+>  してやる」
+“I'll make sure you never run that smart mouth again.”
+
+@20909 Rish · リッシュ（按段落 3DD2）
+> (ちっ、つまらんな。{HeroName}がいない
+>  じゃねぇか……)
+(Tch, how boring. {HeroName} isn't even here...)
+
+@20910 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、敵の増援部隊
+>  が接近中です。ものすごい数です!
+“Captain Bright, enemy reinforcements are approaching. There's a huge number of them!
+---
+>  とてもじゃありませんが、
+>  持ちこたえられません!」
+There's no way we can hold out!”
+
+@20911 Bright · ブライト
+> 「なんだと!?
+>  ……しまった、さっきの増援は
+“What?! ...Damn, so those reinforcements earlier
+---
+>  我々の足止めが目的
+>  だったのか!」
+were meant to pin us down!”
+
+@20912 Amuro · アムロ
+> 「ブライト、ここは脱出しよう。
+>  俺たちがここでやられてしまうわけには
+“Bright, we should escape from here. We can't afford
+---
+>  いかないんだ」
+to be wiped out here.”
+
+@20913 Bright · ブライト
+> 「……しかたがない。全機、戦域を
+>  急速離脱! 急げよ!」
+“...It can't be helped. All units, withdraw from the battle zone immediately! Hurry!”
+
+@20914 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、敵の増援部隊
+>  が接近中です。ものすごい数です!
+“Captain Bright, enemy reinforcements are approaching. There's a huge number of them!
+---
+>  とてもじゃありませんが、
+>  持ちこたえられません!」
+There's no way we can hold out!”
+
+@20915 Bright · ブライト
+> 「よし、すぐにこの戦域を離脱する」
+“All right, we're leaving this battle zone at once.”
+
+@20916 Quattro · クワトロ
+> 「間一髪というところだな」
+“That was a close one.”
+
+@20917 主角
+> 「あんたは! しつこいんだよ!!」
+“You again! You just don't know when to quit!!”
+
+@20918 对手
+> 「くっ……なぜこれほどまでに戦えるのだ、
+>  君は!?」
+“Ngh... Why can you fight this hard?!”
+
+@20919 主角
+> 「ふざけた奴め。貴様が敵である
+>  以上、何をいおうと私は
+“You insolent fool. As long as you are my enemy, no matter what you say,
+---
+>  貴様を倒す!」
+I will defeat you!”
+
+@20920 对手
+> 「お前が“一緒に戦って”
+>  というんなら、俺はいつでも
+“If you're saying ‘fight alongside me,' then I'll be your ally
+---
+>  お前の味方になるぜ!?」
+anytime!?”
+
+@20921 主角
+> 「黙れ!」
+“Silence!”
+
+@20922 Koji · 甲児
+> 「地獄大元帥! お前たちの
+>  好きにはさせないぞ!」
+“Hell Marshal! We won't let you do as you please!”
+
+@20923 Hell Marshal · 地獄大元帥
+> 「おのれ兜甲児め!!」
+“Curse you, Koji Kabuto!!”
+
+@20924 Amuro · アムロ
+> 「それで、状況の確認はできたのか?」
+“So, were you able to get a read on the situation?”
+
+@20925 Quattro · クワトロ
+> 「ああ、だが予想以上に
+>  まずい状態だ」
+“Yeah, but it's worse than we expected.”
+
+@20926 Bright · ブライト
+> 「そんなにひどいのか?」
+“Is it that bad?”
+
+@20927 Quattro · クワトロ
+> 「我々もカラバも、45の拠点の
+>  ほとんどが、つぶされた
+“Both our forces and Karaba's—nearly all 45 bases have been crushed.
+---
+>  他の組織についても、
+>  ほぼ壊滅したと考えて間違いない
+As for the other organizations, we can safely assume they've been all but annihilated.
+---
+>  帝国をあなどりすぎたようだ」
+It seems we underestimated the Empire.”
+
+@20928 Bright · ブライト
+> 「くっ……なんということだ……」
+“Ngh... How did it come to this...”
+
+@20929 Ryoma · リョウ
+> 「そんなっ! じゃあ俺たちは、これから
+>  どうすればいいんです!?」
+“No way! Then what are we supposed to do now?!”
+
+@20930 Shinobu · 忍
+> 「どうしようもねぇってことさ。帝国に
+>  降伏するのがイヤなら俺たちだけでも
+“It means there's nothing we can do. If you don't want to surrender to the Empire, then we'll just have to fight on our own,
+---
+>  戦うしかねぇ。そうだろう大尉」
+even if it's only us. Isn't that right, Captain?”
+
+@20931 Quattro · クワトロ
+> 「そうだ。帝国の掃討作戦を
+>  逃れた場所も多少はある
+“That's right. There are still a few places that escaped the Empire's mop-up operation.
+---
+>  しかし……厳しい戦いになる」
+But... it's going to be a hard fight.”
+
+@20932 Domon · ドモン
+> 「冗談じゃない! こうしている間にも
+>  デビルガンダムは……」
+“You've gotta be kidding! Even while we're standing here, the Dark Gundam is...”
+
+@20933 Amuro · アムロ
+> 「落ち着くんだ、ドモンくん」
+“Calm down, Domon.”
+
+@20934 Domon · ドモン
+> 「だが……!」
+“But...!”
+
+@20935 Rain · レイン
+> 「ドモン、そんなこといっている場合じゃ
+>  ないでしょう? あなたの気持ちも
+“Domon, this isn't the time for that, is it? I understand how you feel,
+---
+>  わかるけど、あせったって何も
+>  解決できはしないわ。ね? ドモン」
+but panicking won't solve anything. Right? Domon?”
+
+@20936 Domon · ドモン
+> 「くっ……」
+“Ngh...”
+
+@20937 Astonaige · アストナージ
+> 「おわっ、危ないじゃないか!
+>  ドモンの奴、どうしたんです?」
+“Whoa, watch it! What's with Domon?”
+
+@20938 Amuro · アムロ
+> 「いや、いい。それよりアストナージ、
+>  アルビオンの方はどうだい?」
+“Never mind that. More importantly, Astonaige, how's the Albion?”
+
+@20939 Astonaige · アストナージ
+> 「それなんですがね、エンジンの損傷が
+>  激しくて、とてもじゃありませんが
+“About that, sir—the engine damage is so severe that, frankly,
+---
+>  応急修理じゃ間にあわんのですよ」
+emergency repairs just won't cut it.”
+
+@20940 Bright · ブライト
+> 「なんだ? はっきりいってみろ」
+“What is it? Out with it.”
+
+@20941 Astonaige · アストナージ
+> 「はぁ……いちおう修理はしましたが、
+>  このままではすぐに航行不能に
+“Yes... We've repaired it for now, but at this rate, I believe it'll soon be
+---
+>  なると思われます」
+unable to navigate.”
+
+@20942 Kamille · カミーユ
+> 「でも、修理のできるような施設とは
+>  連絡がついていない……
+“But we haven't been able to contact any facility that could repair it...
+---
+>  深刻ですね、それは」
+That's serious, isn't it.”
+
+@20943 Duo · デュオ
+> 「なんてこった。今、動けなくなったら
+>  俺たち、お手上げだぜ?」
+“What a mess. If we can't move now, we're totally stuck, huh?”
+
+@20944 Quatre · カトル
+> 「……僕に心当たりがあります。
+>  少しお時間をいただけないでしょうか」
+“...I might know a place. Could you give me a little time?”
+
+@20945 Bright · ブライト
+> 「君が? ……わかった、頼めるか」
+“You? ...All right, can I leave it to you?”
+
+@20946 Quatre · カトル
+> 「はい」
+“Yes.”
+
+@20947 Show · ショウ
+> 「クワトロ大尉、バイストンウェルから
+>  出たらしいという軍勢の方は
+“Captain Quattro, do you know what's happened to the forces that seem to have
+---
+>  どうなっているのか、わかりますか?」
+come out of Byston Well?”
+
+@20948 Quattro · クワトロ
+# 审校：初稿已符合要求，无需修改。
+> 「ああ、その件もあったな。はっきりとは
+>  わからないが、どうやら大部分は
+“Ah, that matter too. I can't say for certain, but it appears the majority
+---
+>  占領軍との交戦を行っていない
+>  ようだ」
+haven't engaged the occupation forces.”
+
+@20949 Chum · チャム
+> 「それってどういうこと?」
+“What's that supposed to mean?”
+
+@20950 Show · ショウ
+> 「……帝国とドレイクが手を結んだ
+>  かもしれない、ということですか?」
+“...You mean the Empire and Drake might have joined hands?”
+
+@20951 Quattro · クワトロ
+> 「その可能性が高いな。ショウくん、
+>  君の考えはどうかな?」
+“That's highly likely. Show, what do you think?”
+
+@20952 Show · ショウ
+> 「ろくに戦いもしないでドレイクが同盟
+>  関係を求めるとは思えません。でも
+“I can't imagine Drake seeking an alliance without even putting up a fight. But
+---
+>  ドレイクのもとにいた地上人が手
+>  引きをしたのならありうることでしょうね」
+if a surface dweller who was with Drake acted as a go-between, it's possible.”
+
+@20953 Ark · アーク（按段落 3DD1）
+> 「どういう人なんです、その人?」
+“What kind of person is he?”
+
+@20954 Selain · セレイン（按段落 3DD2）
+> 「……どういう人物なんだ?」
+“...What kind of man is he?”
+
+@20955 Show · ショウ
+> 「よくは知らない。ただ、俺たちよりも
+>  ずっと、あとにバイストンウェルに来た
+“I don't know much. I've only heard he was apparently a surface military official
+---
+>  地上の軍関係者だったらしい
+>  とは聞いている」
+who came to Byston Well much later than we did.”
+
+@20956 Quattro · クワトロ
+> 「軍関係者か……ありうるな」
+“A military official... That's possible.”
+
+@20957 Show · ショウ
+> 「でも、さっき大部分は、といいました
+>  よね?」
+“But you said the majority, right?”
+
+@20958 Quattro · クワトロ
+> 「そうだ。一部では交戦が確認
+>  されている」
+“That's right. Combat has been confirmed in some areas.”
+
+@20959 Chum · チャム
+> 「ショウ! きっとマーベルやシーラ様
+>  たちよ!」
+“Show! It must be Marvel and Lady Ciela and the others!”
+
+@20960 Ark · アーク（按段落 3DD1）
+> 「バイストンウェルで、味方だった人
+>  たちですか?」
+“People who were your allies in Byston Well?”
+
+@20961 Selain · セレイン（按段落 3DD2）
+> 「味方か?」
+“Allies?”
+
+@20962 Show · ショウ
+> 「ああ。今どうなっているかわかりますか?」
+“Yeah. Do you know what's become of them?”
+
+@20963 Quattro · クワトロ
+> 「残念だが、そこまではわからん」
+“Unfortunately, I don't know that much.”
+
+@20964 Chum · チャム
+> 「ショウ、マーベルたちを助けに
+>  行かなくちゃっ!!」
+“Show, we've gotta go save Marvel and the others!!”
+
+@20965 Show · ショウ
+> 「だめだよチャム。俺だって行きたいけど
+>  どこにいるかもわからないんじゃ
+“We can't, Chum. I want to go too, but if we don't even know where they are,
+---
+>  うかつには動けないよ」
+we can't just make a move.”
+
+@20966 Chum · チャム
+> 「そんなぁ～」
+“Aww, come on...”
+
+@20967 Duo · デュオ
+> 「よう、どうだったカトル?」
+“Hey, how'd it go, Quatre?”
+
+@20968 Quatre · カトル
+> 「なんとか連絡はついたよ」
+“I managed to get in touch with them.”
+
+@20969 Bright · ブライト
+> 「あてになるのか? その、マグアナック隊
+>  というのは」
+“Can we count on them? This Maganac Corps, I mean.”
+
+@20970 Quatre · カトル
+> 「はい。彼らの基地は町の地下に
+>  あって発見されずに済んだようです
+“Yes. Their base is underground in the town, so it seems it was never discovered.
+---
+>  アルビオンの修理もできると
+>  いっていました」
+They said they can repair the Albion, too.”
+
+@20971 Roux · ルー
+> 「それで、その基地っていうのはどこに
+>  あるの?」
+“So where exactly is this base?”
+
+@20972 Quatre · カトル
+> 「中東です」
+“In the Middle East.”
+
+@20973 Bright · ブライト
+> 「……かなり遠いが、敵に会わないこと
+>  を祈るしかないか」
+“...That's quite far, but I suppose all we can do is pray we don't run into the enemy.”

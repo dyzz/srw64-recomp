@@ -1,0 +1,120 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9441 Ryo · 亮
+> 「ふっ……」
+“Hmph...”
+
+@9442 Ryo · 亮
+> 「くらえっ!!」
+“Take this!!”
+
+@9443 Ryo · 亮
+> 「おそいっ!!」
+“Too slow!!”
+
+@9444 Ryo · 亮
+> 「そこだっ!!」
+“Right there!!”
+
+@9445 Ryo · 亮
+> 「やらせんっ!!」
+“I won't let you!!”
+
+@9446 Ryo · 亮
+> 「こいつでどうだ!」
+“How's this?!”
+
+@9447 Ryo · 亮
+# 审校：“どけどけぃ”是粗鲁的“让开让开”，原译“Out of my way!”可以，但“Outta my way!”更贴合亮的粗放语气。
+> 「どけどけぃ!」
+“Outta my way!”
+
+@9448 Ryo · 亮
+> 「敵をなめていると、命を落とすぜ」
+“Underestimate the enemy and you'll lose your life.”
+
+@9449 Ryo · 亮
+> 「くっ!! ここまでか!!」
+“Ngh!! This is it for me!!”
+
+@9450 Ryo · 亮
+> 「ちっ! ドジったぜ!」
+“Tch! I screwed up!”
+
+@9451 Ryo · 亮
+> 「ちいっ!」
+“Tch!”
+
+@9452 Ryo · 亮
+> 「くっ!! ヤバイな……」
+“Ngh!! This is bad...”
+
+@9453 Ryo · 亮
+> 「くっ!! ダメージを受けすぎたか!?」
+“Ngh!! Took too much damage, huh?!”
+
+@9454 Ryo · 亮
+> 「ちっ! てごわい!」
+“Tch! You're tough!”
+
+@9455 Ryo · 亮
+# 审校：原译“What is this thing, a monster?!”稍显翻译腔，改为更自然的疑问句。
+> 「ばけもんかこいつ!?」
+“Is this thing a monster?!”
+
+@9456 Ryo · 亮
+> 「うぬっ! やる!!」
+“Grr! Not bad!!”
+
+@9457 Ryo · 亮
+> 「くっ! やるな! だが、まだ!!」
+“Ngh! You're good! But I'm not done!!”
+
+@9458 Ryo · 亮
+> 「なんのっ! まだだ!」
+“So what?! I'm not finished!”
+
+@9459 Ryo · 亮
+> 「しまった!?」
+“Damn!?”
+
+@9460 Ryo · 亮
+> 「くっ、オレとしたことが」
+“Ngh, I slipped up.”
+
+@9461 Ryo · 亮
+> 「ちっ! かすったか!」
+“Tch! Just a graze!”
+
+@9462 Ryo · 亮
+> 「あまいなっ!」
+“Too naive!”
+
+@9463 Ryo · 亮
+> 「まだまだ!」
+“Not yet!”
+
+@9464 Ryo · 亮
+> 「まだまだだな」
+“Still not enough.”
+
+@9465 Ryo · 亮
+> 「間合いがあまいっ!」
+“Your spacing's sloppy!”
+
+@9466 Ryo · 亮
+> 「ムダだっ!!」
+“It's useless!!”
+
+@9467 Ryo · 亮
+> 「フッ 効かんよ!」
+“Hmph. Doesn't hurt!”
+
+@9468 Ryo · 亮
+# 审校：原译“Ngh, no good huh?!”缺少逗号，补上使语气更自然。
+> 「くっ、だめか!?」
+“Ngh, no good, huh?!”
+
+@9469 Ryo · 亮
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far, huh?!”

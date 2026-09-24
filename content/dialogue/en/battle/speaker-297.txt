@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13972 Grados Soldier · グラドス兵
+> 「邪魔なんだよ!」
+“You're in my way!”
+
+@13973 Grados Soldier · グラドス兵
+> 「うおおおおっ!!」
+“Uwooooh!!”
+
+@13974 Grados Soldier · グラドス兵
+> 「これでとどめだ!!」
+“This is the finishing blow!!”
+
+@13975 Grados Soldier · グラドス兵
+> 「こいつで決めてやる!」
+“I'll finish you with this!”
+
+@13976 Grados Soldier · グラドス兵
+> 「やらせるかっ!!」
+“Like I'd let you!!”
+
+@13977 Grados Soldier · グラドス兵
+> 「落ちろっ!!」
+“Go down!!”
+
+@13978 Grados Soldier · グラドス兵
+> 「このっ!!」
+“Why you!!”
+
+@13979 Grados Soldier · グラドス兵
+> 「行くぞっ!!」
+“Here I go!!”
+
+@13980 Grados Soldier · グラドス兵
+> 「そこだっ!」
+“Right there!”
+
+@13981 Grados Soldier · グラドス兵
+> 「もらった!」
+“Got him!”
+
+@13982 Grados Soldier · グラドス兵
+> 「な、何だと!?」
+“W-what did you say!?”
+
+@13983 Grados Soldier · グラドス兵
+> 「しまった! 直撃か!?」
+“Damn! A direct hit!?”
+
+@13984 Grados Soldier · グラドス兵
+> 「ぐうっ、い、いかん、やられる!?」
+“Guuh, n-no good, I'm done for!?”
+
+@13985 Grados Soldier · グラドス兵
+> 「うおっ!? くっ、こっちが不利か!」
+“Uwoh!? Kuh, I'm at a disadvantage!”
+
+@13986 Grados Soldier · グラドス兵
+> 「ぬうううっ! つ、強いっ!」
+“Nguuuh! S-strong!”
+
+@13987 Grados Soldier · グラドス兵
+> 「やるっ! さすがは!」
+“You're good! Just as expected!”
+
+@13988 Grados Soldier · グラドス兵
+> 「ぐうぅっ!! パワーが違いすぎる!!」
+“Guuuh!! His power's on another level!!”
+
+@13989 Grados Soldier · グラドス兵
+> 「ちいっ! まだまだっ!」
+“Tch! I'm not done yet!”
+
+@13990 Grados Soldier · グラドス兵
+> 「くっ! 少しはできるな!」
+“Kuh! You've got some skill!”
+
+@13991 Grados Soldier · グラドス兵
+> 「ぬうっ! そう簡単にやられはせん!!」
+“Ngh! I won't go down that easily!!”
+
+@13992 Grados Soldier · グラドス兵
+> 「うっ! やってくれたな!!」
+“Uh! You got me!!”
+
+@13993 Grados Soldier · グラドス兵
+> 「まだだっ! まだこれからよ!!」
+“Not yet! This is just the beginning!!”
+
+@13994 Grados Soldier · グラドス兵
+> 「非力なんだよ!」
+“You're just weak!”
+
+@13995 Grados Soldier · グラドス兵
+> 「パワー不足だな!」
+“Not enough power!”
+
+@13996 Grados Soldier · グラドス兵
+> 「その程度か!」
+“Is that all!”
+
+@13997 Grados Soldier · グラドス兵
+> 「そんな攻撃など効くものかよ!」
+“An attack like that could never hurt me!”
+
+@13998 Grados Soldier · グラドス兵
+> 「ふん、かすっただけよ!」
+“Hmph, it just grazed me!”
+
+@13999 Grados Soldier · グラドス兵
+> 「当たるものかよ!」
+“Like that could hit me!”
+
+@14000 Grados Soldier · グラドス兵
+> 「踏み込みが足りん!」
+“You lack commitment!”
+
+@14001 Grados Soldier · グラドス兵
+> 「間合いが遠いわっ!」
+“Too far away!”
+
+@14002 Grados Soldier · グラドス兵
+> 「狙いが甘い!」
+“Your aim is sloppy!”
+
+@14003 Grados Soldier · グラドス兵
+> 「バカめ。どこを狙っている!」
+“Fool. What are you aiming at!”
+
+@14004 Grados Soldier · グラドス兵
+> 「ムダな攻撃をする……」
+“What a waste of an attack...”
+
+@14005 Grados Soldier · グラドス兵
+> 「ふ、そんなビームではな!」
+“Hmph, a Beam like that won't work!”
+
+@14006 Grados Soldier · グラドス兵
+> 「ちっ、弾切れとはな……」
+“Tch, out of ammo...”
+
+@14007 Grados Soldier · グラドス兵
+> 「弾切れか……しかたあるまい」
+“Out of ammo... nothing I can do.”
+
+@14008 Grados Soldier · グラドス兵
+> 「ちっ、遠距離からの攻撃か……」
+“Tch, an attack from long range...”
+
+@14009 Grados Soldier · グラドス兵
+> 「む……ここからでは反撃できん」
+“Mm... I can't fight back from here.”

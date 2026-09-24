@@ -1,0 +1,105 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12280 Elle · エレ
+> 「悪意に満ちたオーラ力よ、さがれ!」
+“O Aura Power full of malice, begone!”
+
+@12281 Elle · エレ
+> 「これ以上やらせてはなりません!」
+“I cannot let you do any more!”
+
+@12282 Elle · エレ
+> 「そんな……ゴラオンが……」
+“No... the Goraon...”
+
+@12283 Elle · エレ
+> 「きゃあああっ!!」
+“Aaaah!”
+
+@12284 Elle · エレ
+> 「だ、大丈夫です。まだもちます」
+“I-I'm fine. We can still hold.”
+
+@12285 Elle · エレ
+> 「あああっ!? ま、まだ落ちては
+>  なりません!」
+“Aaaah!? W-we mustn't fall yet!”
+
+@12286 Elle · エレ
+> 「あうっ! どこをやられたのです!?」
+“Agh! Where were we hit!?”
+
+@12287 Elle · エレ
+> 「くうっ! このままでは、いくらゴラオンと
+>  いえど……」
+“Ngh! At this rate, even the Goraon...”
+
+@12288 Elle · エレ
+> 「うっ! 破損箇所は!?」
+“Ugh! Where's the damage!?”
+
+@12289 Elle · エレ
+> 「あうっ! 対空防御!」
+“Agh! Anti-air defense!”
+
+@12290 Elle · エレ
+> 「くっ! これ以上やらせては
+>  なりません!」
+“Ngh! I cannot let you do any more!”
+
+@12291 Elle · エレ
+> 「うっ! 対空砲火、どうしたか!?」
+“Ugh! What of the AA guns!?”
+
+@12292 Elle · エレ
+> 「大した被害はありませんね」
+“No significant damage.”
+
+@12293 Elle · エレ
+> 「まだです! まだいけます!」
+“Not yet! We can still go!”
+
+@12294 Elle · エレ
+> 「くっ、被害情況は!?」
+“Ngh, what's the damage report!?”
+
+@12295 Elle · エレ
+> 「この程度で落ちるゴラオンでは
+>  ありません」
+“The Goraon won't fall from this much.”
+
+@12296 Elle · エレ
+> 「回避運動急げ!」
+“Evasive maneuvers, hurry!”
+
+@12297 Elle · エレ
+> 「右です! 急いで!!」
+“To the right! Quickly!”
+
+@12298 Elle · エレ
+> 「来ます! 回避を!」
+“Here it comes! Evade!”
+
+@12299 Elle · エレ
+> 「ゴラオン、急速回頭!」
+“Goraon, hard turn!”
+
+@12300 Elle · エレ
+> 「大丈夫です。我々のよき
+>  オーラ力を信じるのです」
+“It's all right. Believe in our good Aura Power.”
+
+@12301 Elle · エレ
+> 「ゴラオンのオーラバリアならば、
+>  この程度の攻撃は!」
+“With the Goraon's Aura Barrier, an attack like this!”
+
+@12302 Elle · エレ
+> 「弾切れ? 弾薬が底を
+>  ついたのですか?」
+“Out of ammo? Have we run out of ammunition?”
+
+@12303 Elle · エレ
+> 「こちらの射程外から攻撃を
+>  仕掛けてきたようですね……」
+“It seems they're attacking from outside our range...”

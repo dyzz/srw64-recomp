@@ -1,0 +1,275 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11567 Kurtz · カーツ
+# 审校：“disappear” 语气偏弱，改为更符合 Kurtz 冷硬傲慢口吻的 “Vanish!”
+> 「目障りだ、消えろ!」
+“You're in my way. Vanish!”
+
+@11568 Kurtz · カーツ
+> 「野郎っ!」
+“You bastard!”
+
+@11569 Kurtz · カーツ
+# 审校：“Take my strike!” 略显生硬，改为更自然的战斗台词
+> 「俺の一撃を受けろっ!」
+“Take this blow of mine!”
+
+@11570 Kurtz · カーツ
+# 审校：“みやがれ” 应为挑衅语气，“Watch me!” 意思偏差
+> 「みやがれ!」
+“Come on!”
+
+@11571 Kurtz · カーツ
+# 审校：“くらいやがれ” 是“吃我这招”，改为更贴切的 “Eat this!”
+> 「くらいやがれ!」
+“Eat this!”
+
+@11572 Kurtz · カーツ
+> 「はぁぁぁーっ!」
+“Haaaaaah!”
+
+@11573 Kurtz · カーツ
+> 「俺の目の前から消え失せろ!」
+“Get out of my sight!”
+
+@11574 Kurtz · カーツ
+> 「邪魔だ!」
+“Out of my way!”
+
+@11575 Kurtz · カーツ
+# 审校：“block this” 不够自然，改为更口语化的 “take this”
+> 「貴様にこれが受けきれるか!」
+“Think you can take this?!”
+
+@11576 Kurtz · カーツ
+> 「おおぉぉあぁぉぉーっ!」
+“Oooohaaaaaah!”
+
+@11577 Kurtz · カーツ
+# 审校：“認めん” 是“我不承认”，不是“我不会接受”的被动表达，改为更准确
+> 「おぉぉぉぉぉぉーっ!?
+>  認めん! 俺は認めんぞぉっ!」
+“Oooooooh?! I refuse to accept it! I will never accept it!”
+
+@11578 Kurtz · カーツ
+> 「くっそぉぉぉぉーっ!」
+“Damn yoooooou!”
+
+@11579 Kurtz · カーツ
+# 审校：原文是反问自己修行不足，改为更自然的反问
+> 「くっ!
+>  俺の修行が足りんというのかぁっ!?」
+“Ngh! Are you saying my training isn't enough?!”
+
+@11580 Kurtz · カーツ
+# 审校：“bastaard” 拼写错误，改为 “bastard”
+> 「き、貴っ様ぁぁーっ!」
+“Y-you bastard!”
+
+@11581 Kurtz · カーツ
+> 「がはぁっ!」
+“Gahah!”
+
+@11582 Kurtz · カーツ
+# 审校：“there is no retreat for me” 翻译腔，改为更自然表达
+> 「げ、限界だというのか!? だが、この
+>  俺に後退の二文字はないっ!」
+“Gah, are you saying I've reached my limit?! But the word retreat doesn't exist for me!”
+
+@11583 Kurtz · カーツ
+> 「まだだ! まだ終わってたまるか!」
+“Not yet! It's not over yet!”
+
+@11584 Kurtz · カーツ
+> 「うおぉぉぉぉっ!?」
+“Whoooaah?!”
+
+@11585 Kurtz · カーツ
+# 审校：“ざけんじゃねぇ” 是“别耍我”，改为更贴切口语
+> 「ぐぅぅ……
+>  ざけんじゃねぇ、俺は負けんぞ!!」
+“Guh... don't screw with me. I won't lose!!”
+
+@11586 Kurtz · カーツ
+> 「くっ……
+>  こ、この俺をここまで追い詰める!?」
+“Ngh... y-you pushed me this far?!”
+
+@11587 Kurtz · カーツ
+> 「うおぉぉーっ!?
+>  退かぬ! 俺は退かぬぞ!」
+“Whoooaah?! I won't back down! I will not back down!”
+
+@11588 Kurtz · カーツ
+# 审校：“never!” 单独结尾略突兀，改为更完整
+> 「や、やらせはしねぇ……絶対に!」
+“I-I won't let you... not ever!”
+
+@11589 Kurtz · カーツ
+# 审校：“you” 结尾不够有力，改为 “you bastard” 更符合角色语气
+> 「ぐ、ふざけろよぉテメェ!」
+“Guh, don't mess with me, you bastard!”
+
+@11590 Kurtz · カーツ
+> 「やるっ、だがそれだけではっ!」
+“Not bad, but that's not enough!”
+
+@11591 Kurtz · カーツ
+> 「そうだ! もっと攻めてこいっ!」
+“That's it! Come at me harder!”
+
+@11592 Kurtz · カーツ
+# 审校：“I'll pay this back” 不够自然，改为更完整表达
+> 「野郎っ! このカリは返すぜぇ!」
+“You bastard! I'll pay you back for this!”
+
+@11593 Kurtz · カーツ
+> 「おぉ!? くそぉ!」
+“Oh?! Damn!”
+
+@11594 Kurtz · カーツ
+> 「なに!? この俺がくらっただと!?」
+“What?! I took a hit?!”
+
+@11595 Kurtz · カーツ
+> 「く、なるほど……
+>  この俺が相手をする価値はあるな」
+“Ngh, I see... you're worth my time after all.”
+
+@11596 Kurtz · カーツ
+# 审校：“もろにくらった” 是“正面吃下”，改为 “direct hit” 更准确
+> 「バカな!?
+>  この俺がもろにくらっただと!?」
+“Impossible?! I took a direct hit?!”
+
+@11597 Kurtz · カーツ
+# 审校：“your move” 可接受，但原文“動き”指动作，改为复数更自然
+> 「なに!?
+>  ぐ……動きが読めなかったのか!?」
+“What?! Guh... I couldn't read your movements?!”
+
+@11598 Kurtz · カーツ
+> 「ククク、効かん、効かんぞ!」
+“Heh heh heh, it doesn't hurt, not at all!”
+
+@11599 Kurtz · カーツ
+> 「そんなことでは俺は倒せん!」
+“That won't be enough to bring me down!”
+
+@11600 Kurtz · カーツ
+# 审校：“you of all people” 不够贴切，改为 “the likes of you” 更符合轻蔑语气
+> 「くっ、貴様ごときがっ!
+>  邪魔をするなぁ!!」
+“Ngh, the likes of you! Stay out of my way!!”
+
+@11601 Kurtz · カーツ
+> 「それがどうしたっ!」
+“So what?!”
+
+@11602 Kurtz · カーツ
+> 「ハハハハハハハッ!」
+“Hahahahahahaha!”
+
+@11603 Kurtz · カーツ
+> 「どうやら死にたいらしいな!」
+“So you want to die, it seems!”
+
+@11604 Kurtz · カーツ
+# 审校：“weakling” 可接受，但“ザコ”更贴切为 “small fry”
+> 「フン、貴様のようなザコにどうにか
+>  できるとでも、思ったか」
+“Hmph, did you really think a small fry like you could do anything?”
+
+@11605 Kurtz · カーツ
+> 「弱い、弱すぎる!
+>  貴様では相手にならん!」
+“Weak, far too weak! You're no match for me!”
+
+@11606 Kurtz · カーツ
+> 「フッ、笑わせてくれる」
+“Heh, you crack me up.”
+
+@11607 Kurtz · カーツ
+> 「それほど死にたいのなら、望み通りに
+>  してやる!」
+“If you want to die that badly, I'll grant your wish!”
+
+@11608 Kurtz · カーツ
+# 审校：“You missed!” 是“你打偏了”，原文“当たらん”是“打不中”，改为更准确
+> 「当たらん!」
+“You can't hit me!”
+
+@11609 Kurtz · カーツ
+> 「遅い!」
+“Too slow!”
+
+@11610 Kurtz · カーツ
+> 「ハハハッ、どこを狙っている!?」
+“Hahaha, what are you aiming at?!”
+
+@11611 Kurtz · カーツ
+> 「甘すぎる!」
+“Too naive!”
+
+@11612 Kurtz · カーツ
+> 「貴様の技など通じん!」
+“Your tricks won't work on me!”
+
+@11613 Kurtz · カーツ
+> 「笑止っ!」
+“Ridiculous!”
+
+@11614 Kurtz · カーツ
+> 「クズが。貴様ごときは俺に触れる
+>  ことすらできん!」
+“Trash. The likes of you can't even touch me!”
+
+@11615 Kurtz · カーツ
+> 「貴様の技、見切ったぞ」
+“I've seen through your move.”
+
+@11616 Kurtz · カーツ
+# 审校：“grasp” 稍正式，改为更口语化
+> 「クククッ、どうやらムダだということが
+>  理解できないようだな」
+“Heh heh heh, it seems you can't understand that it's pointless.”
+
+@11617 Kurtz · カーツ
+> 「やるだけムダだな」
+“It's all pointless.”
+
+@11618 Kurtz · カーツ
+> 「貴様の技など俺には効かぬ!」
+“Your tricks have no effect on me!”
+
+@11619 Kurtz · カーツ
+# 审校：“you” 结尾不够有力，改为 “you bastard” 更符合角色语气
+> 「しつこいぞ、貴様」
+“You're persistent, you bastard.”
+
+@11620 Kurtz · カーツ
+> 「なんの真似だ?」
+“What's the meaning of this?”
+
+@11621 Kurtz · カーツ
+# 审校：“I let my guard down” 可接受，但“ぬかった”更贴切为 “I slipped up”
+> 「おのれぇ……ぬかったか!」
+“Curse you... I slipped up!”
+
+@11622 Kurtz · カーツ
+# 审校：原文是反问，改为更自然反问
+> 「くっ……ばかな!
+>  反撃できんというのかぁ!!」
+“Ngh... impossible! Are you saying I can't counterattack?!”
+
+@11623 Kurtz · カーツ
+> 「卑怯者め!」
+“Coward!”
+
+@11624 Kurtz · カーツ
+> 「くっ、そんなに俺が恐いのか!?」
+“Ngh, are you that afraid of me?!”
+
+@11625 Kurtz · カーツ
+> 「フン、俺に近寄れんのか!?」
+“Hmph, you can't even get close to me?!”

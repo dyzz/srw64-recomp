@@ -1,0 +1,896 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@40243 Banjo · 万丈
+> 「ギャリソンが情報を入手した。
+>  例の怪物騒動が起きている
+“Garrison got us the intel. We've pinpointed the area
+---
+>  地域を特定できたよ」
+where those monster incidents are happening.”
+
+@40244 Hyoma · 豹馬
+> 「ありがてぇ。これであんまり飛びまわら
+>  なくてすみそうだな」
+“Much obliged. Now we won't have to fly around so much.”
+
+@40245 Garrison · ギャリソン
+> 「必要と思われるデータは輸送艇
+>  の方へ転送しておきました
+“I've already transferred the data you'll need to the transport ship.
+---
+>  ご確認ください」
+Please confirm it.”
+
+@40246 Chizuru · ちずる
+# 审校：原文是“すみません、ギャリソンさん”，此处是致歉而非道谢，初稿误译为“Thank you”。
+> 「すみません、ギャリソンさん」
+“Sorry, Garrison.”
+
+@40247 Kosuke · 小介
+> 「あれ? でもガンドールの高速輸送
+>  艇って、誰が動かすんですか?」
+“Huh? But who's going to pilot the Gandor's high-speed transport?”
+
+@40248 Juzo · 十三
+> 「ほんまやな。どないするんや」
+“That's right. What are we gonna do?”
+
+@40249 Banjo · 万丈
+> 「誰もいないのか? しょうがない、
+>  レイカ、ビューティー、一緒に
+“Is there no one? Guess there's no choice. Reika, Beauty, would you two
+---
+>  行ってくれないか」
+come along?”
+
+@40250 Reika · レイカ
+> 「しかたないわね。いいわよ」
+“Can't be helped. Fine.”
+
+@40251 Beauty · ビューティ
+> 「あたしもオッケーよ、万丈」
+“I'm okay with that too, Banjo.”
+
+@40252 Banjo · 万丈
+> 「頼む、2人とも」
+“I'm counting on you both.”
+
+@40253 Alan · アラン
+> 「それで、結局行くのはコン・バトラー
+>  チームと{HeroNick}だけなのか?」
+“So in the end, only the Combattler team and {HeroNick} are going?”
+
+@40254 Koji · 甲児
+> 「いいや、オレたちも行くぜ、アラン」
+“No, we're going too, Alan.”
+
+@40255 Boss · ボス
+> 「そうだわさ。当然、俺さまたちも
+>  行くわよ。なぁ、兜」
+“That's right. Naturally, we're going too. Right, Koji?”
+
+@40256 Maria · マリア
+> 「さっすが、甲児。避難民が襲わ
+>  れてるなんて、放っておけないもんね」
+“That's our Koji. We can't just ignore refugees being attacked.”
+
+@40257 Boss · ボス
+> 「あらら? またまた兜だけなの?」
+“Huh? It's just Koji again?”
+
+@40258 Sayaka · さやか
+> 「……甲児くん、
+>  まだ全然、準備してないんでしょ
+“...Koji, you haven't prepared anything at all yet, have you?
+---
+>  さっさと、やってらっしゃいよ」
+Hurry up and get it done.”
+
+@40259 Koji · 甲児
+> 「え? だってさやかさん、さっきは
+>  やってくれるって……」
+“Huh? But Sayaka, you said earlier you'd do it...”
+
+@40260 Sayaka · さやか
+> 「気がかわったの!
+>  ほら、さっさと行きなさいよ」
+“I changed my mind! Come on, get going already.”
+
+@40261 Koji · 甲児
+> 「……なんだってんだよ……もう」
+“...What's her problem... geez.”
+
+@40262 Simone · シモーヌ
+> 「……ここの男ってこんなのばっかりねぇ」
+“...The men around here are all like this, aren't they.”
+
+@40263 David · デビッド
+> 「俺はお前ひと筋だぜ、シモーヌ」
+“I've only got eyes for you, Simone.”
+
+@40264 Simone · シモーヌ
+> 「ばかいってんじゃないの」
+“Don't be ridiculous.”
+
+@40265 Alan · アラン
+> 「……君も行くのか、デューク」
+“...You're going too, Duke?”
+
+@40266 Daisuke · 大介
+> 「ええ、話を聞いて思い当たることが
+>  あったんです」
+“Yes. Something about what I heard struck a chord.”
+
+@40267 Hyoma · 豹馬
+> 「デュークは、これが奴らの“人間狩
+>  り”ってやつじゃないかっていうんだ」
+“Duke says this might be their so-called ‘human hunt.’”
+
+@40268 Alan · アラン
+> 「人間狩り?」
+“Human hunt?”
+
+@40269 Daisuke · 大介
+> 「おそらく間違いはないでしょう」
+“There's likely no mistake about it.”
+
+@40270 Naida · ナイーダ
+> 「つかまえた人たちの脳を円盤獣に
+>  使おうとしているんだわ……
+“They're planning to use the brains of the people they capture for the Disc Beasts...
+---
+>  あたしの弟のように……」
+Just like my little brother...”
+
+@40271 Daisuke · 大介
+> 「心配することはないよ、ナイーダ。
+>  もうそんなことはさせない。絶対に……」
+“Don't worry, Naida. I won't let that happen again. Never...”
+
+@40272 Naida · ナイーダ
+> 「デューク……」
+“Duke...”
+
+@40273 Chizuru · ちずる
+> 「ギャリソンさんの情報ではこのあたりに
+>  出没しているそうよ」
+“According to Garrison's intel, they've been appearing around here.”
+
+@40274 Ark · アーク（按段落 3DD1）
+> 「そうか……手分けして探した方が
+>  よさそうだな」
+“I see... It'd be best if we split up and searched.”
+
+@40275 Selain · セレイン（按段落 3DD2）
+> 「ふむ……危険性は増すが、
+>  散った方が確実そうだな」
+“Hmm... It's more dangerous, but splitting up does seem more reliable.”
+
+@40276 Brad · ブラッド（按段落 3DD3）
+> 「そんじゃ、さっそく行くとするか。
+>  手分けして探そうぜ」
+“Then let's get going right away. We'll split up and search.”
+
+@40277 Manami · マナミ（按段落 3DD4）
+> 「それじゃ、手分けして探しましょう。
+>  その方が早いわ」
+“Then let's split up and search. That'll be faster.”
+
+@40278 Reika · レイカ
+> 「その方がいいわね。じゃ、私たちは
+>  ここで待機しているわ。なにかあったら
+“That would be better. Then we'll stand by here. If anything happens,
+---
+>  連絡してちょうだい」
+contact us.”
+
+@40279 Warchimedes · ワルキメデス
+> 「ジャネラ様、まだ続けるおつもりですか」
+“Lady Janera, do you intend to continue?”
+
+@40280 Janera · ジャネラ
+> 「当然じゃ。私が手塩にかけて
+>  育ててきた“超獣”じゃ
+“Of course. These are the ‘Super Beasts’ I've raised with my own hands.
+---
+>  地球にいる間に獲物をとるという
+>  ことをちゃんと教えねばな」
+While we're on Earth, I must properly teach them to hunt their prey.”
+
+@40281 Warchimedes · ワルキメデス
+> 「しかし、まだ地上の制圧が
+>  終わってはおりません」
+“However, we still haven't finished subduing the surface.”
+
+@40282 Janera · ジャネラ
+> 「お黙り! どうせ地球人どもなど
+>  時間の問題であろうが」
+“Silence! The Earthlings are merely a matter of time anyway.”
+
+@40283 Warchimedes · ワルキメデス
+> 「しかし戦いは遊びでは……」
+“But battle is not a game...”
+
+@40284 Janera · ジャネラ
+# 审校：原文“我が帝国の戦力として他の星系で存分に暴れておる”是“作为帝国战力在其他星系尽情肆虐”，初稿把“作为帝国战力”和“肆虐”并列，结构略乱；调整语序使意思更清楚。
+> 「遊びなどではないわ! このキバとガロの
+>  親たちは我が帝国の戦力として
+“It is no game! The parents of these Fangs and Garo are fighting as our empire's strength,
+---
+>  他の星系で存分に暴れておる。
+>  この子たちも早く1人前に
+rampaging to their hearts' content in other star systems. I want these little ones to grow up
+---
+>  なってほしいのじゃ」
+and become full-fledged as well.”
+
+@40285 Warchimedes · ワルキメデス
+> 「それはわかりますが、そろそろ本陣に
+>  合流しては……」
+“I understand that, but it's about time we rejoined the main force...”
+
+@40286 Janera · ジャネラ
+> 「ならぬ! 今日も訓練にでるのじゃ
+>  キバ、ガロ、ついてまいれ」
+“You will not! We go out for training again today. Fangs, Garo, follow me.”
+
+@40287 Warchimedes · ワルキメデス
+> 「ジャネラ様にも困ったものだ……」
+“Lady Janera is quite a handful...”
+
+@40288 Hyoma · 豹馬
+> 「このあたりも悲惨な状況だな……
+>  ん? なんだ? ライオン……?」
+“This area's in a terrible state too... Hm? What's that? A lion...?”
+
+@40289 Hyoma · 豹馬
+> 「人を追いかけてやがるのか!?
+>  いったいなんだって……違う!
+“Is it chasing people?! What on earth... No!
+---
+>  ただのライオンじゃねぇ。
+>  あれが噂の怪物って奴か!?
+It's no ordinary lion. Is that the monster I've heard about?!
+---
+>  にしては小さいが……」
+Though it's small for that...”
+
+@40290 Hyoma · 豹馬
+> 「やっぱりどう見ても普通じゃねぇや。
+>  それに、避難民が襲われてるんだ
+“It sure doesn't look normal no matter how you slice it. And refugees are being attacked.
+---
+>  ほっとけないぜ。それっ!」
+I can't just stand by. Take this!”
+
+@40291 Hyoma · 豹馬
+> 「なに? 飛んだぁ!? くそっ!!
+>  もう1度だ」
+“What? It flew?! Damn it!! Once more!”
+
+@40292 Janera · ジャネラ
+# 审校：原文“シシリス”是怪物名，初稿音译为 Sishiris，可接受；但“調教”译为 training 合适，无需修改。
+> 「シシリスの調教の邪魔をするのは
+>  何者じゃ!」
+“Who dares interfere with Sishiris's training?!”
+
+@40293 Hyoma · 豹馬
+> 「ちっ、てめぇ異星人、
+>  銀河帝国軍だな!?」
+“Tch, you alien, you're with the Galactic Empire, aren't you?!”
+
+@40294 Janera · ジャネラ
+> 「いかにも。銀河帝国はキャンベルの
+>  女帝にして、地球攻撃軍の
+“Indeed. I am Janera, Empress of Campbell of the Galactic Empire, and vice-commander
+---
+>  副司令、ジャネラじゃ」
+of the Earth attack force.”
+
+@40295 Hyoma · 豹馬
+> 「キャンベル星人? 南原博士が
+>  いってた奴らか……」
+“Campbellian? You're the ones Doctor Nambara mentioned...”
+
+@40296 Janera · ジャネラ
+> 「ほう? 我らのことを知っておるのか。
+>  お前は地球人じゃな?」
+“Oh? So you know of us. You're an Earthling, aren't you?”
+
+@40297 Hyoma · 豹馬
+> 「あったり前だ! 地球人の
+>  葵豹馬だ!!」
+“Of course I am! Hyoma Aoi, Earthling!!”
+
+@40298 Janera · ジャネラ
+> 「……葵豹馬か。フフフ、おもしろい。
+>  新しい獲物じゃ。キバよ、ガロよ
+“...Hyoma Aoi, is it. Heh heh heh, interesting. A new prey. Fangs, Garo,
+---
+>  あやつが次の獲物じゃ。
+>  みごと、狩ってみせい」
+that one is your next prey. Hunt him down splendidly.”
+
+@40299 Hyoma · 豹馬
+> 「なに!? 巨大化しやがった!
+>  ……やべぇ」
+“What?! They've turned giant!... This is bad.”
+
+@40300 Hyoma · 豹馬
+> 「うわぁぁぁぁぁーっ!!」
+“Uwaaaaaaaaah!!”
+
+@40301 Janera · ジャネラ
+> 「フフフ、キバよガロよ、その調子じゃ」
+“Heh heh heh, Fangs, Garo, that's the way.”
+
+@40302 Hyoma · 豹馬
+> 「うぅ……しまった……体が……」
+“Ugh... Damn it... My body...”
+
+@40303 Janera · ジャネラ
+> 「さぁ、葵豹馬にとどめを、さして
+>  おやり!!」
+“Now, finish off Hyoma Aoi!!”
+
+@40304 Hyoma · 豹馬
+> 「く……みんな……」
+“Ugh... everyone...”
+
+@40305 Chizuru · ちずる
+> 「豹馬!? しっかりして、豹馬!!」
+“Hyoma?! Stay with me, Hyoma!!”
+
+@40306 Hyoma · 豹馬
+> 「ち……ちずるか……?」
+“Ch... Chizuru...?”
+
+@40307 Chizuru · ちずる
+> 「あぁ!? 豹馬、大丈夫!?」
+“Ah!? Hyoma, are you all right?!”
+
+@40308 Janera · ジャネラ
+> 「邪魔をするでない! さぁ、キバよ
+>  ガロよ! 早く獲物にとどめを!」
+“Do not interfere! Now, Fangs, Garo! Hurry and finish off your prey!”
+
+@40309 Chizuru · ちずる
+> 「くっ、豹馬がんばって!! 化け物
+>  こっちよ! 私をねらいなさい!」
+“Ngh, Hyoma, hang in there!! Monster, over here! Aim at me!”
+
+@40310 Janera · ジャネラ
+> 「なにをしておる! 最初にねらった
+>  獲物は、最後のとどめをさすまで
+“What are you doing! The prey you target first must be chased until you deliver the final blow!
+---
+>  追わねばならぬ!
+>  ええい、なにをしておるのじゃ!」
+Eei, what are you doing?!”
+
+@40311 Chizuru · ちずる
+> 「そうよ、こっちにいらっしゃい!
+>  私が相手をしてあげる!」
+“That's right, come over here! I'll be your opponent!”
+
+@40312 Hyoma · 豹馬
+> 「う……だめだ、ちずる……逃げろ……」
+“Ugh... No, Chizuru... Run...”
+
+@40313 Chizuru · ちずる
+> 「だめよ、あなたを置いていけない!
+>  連絡したから、みんな、すぐ
+“No, I can't leave you behind! I've contacted them, so everyone will
+---
+>  来てくれるわ。それまでは
+>  私だけでも……!」
+be here soon. Until then, even if it's just me...!”
+
+@40314 Chizuru · ちずる
+> 「あぁぁぁ!? 豹馬ぁぁぁーっ!!」
+“Aaaaaah!? Hyomaaaaaa!!”
+
+@40315 Janera · ジャネラ
+> 「ええい、愚か者! 遊んでおるから
+>  そうなるのじゃ! キバよ、
+“Eei, you fool! That's what happens when you play around! Fangs,
+---
+>  一度戻るがよい!」
+return for now!”
+
+@40316 Janera · ジャネラ
+> 「なんと情けない。キバ、ガロ、このまま
+>  終わらせてはならんぞ!
+“How pathetic. Fangs, Garo, you must not let it end like this!
+---
+>  戻ってもう一度やるのじゃ!」
+Go back and do it again!”
+
+@40317 Janera · ジャネラ
+> 「ええい、愚か者! 遊んでおるから
+>  そうなるのじゃ! ガロよ、
+“Eei, you fool! That's what happens when you play around! Garo,
+---
+>  一度戻るがよい!」
+return for now!”
+
+@40318 Janera · ジャネラ
+> 「なんと情けない。キバ、ガロ、このまま
+>  終わらせてはならんぞ!
+“How pathetic. Fangs, Garo, you must not let it end like this!
+---
+>  戻ってもう一度やるのじゃ!」
+Go back and do it again!”
+
+@40319 Janera · ジャネラ
+> 「ええい、なんということじゃ。
+>  撤退する!」
+“Eei, this is unbelievable. We're retreating!”
+
+@40320 Janera · ジャネラ
+> 「ええい、なんということじゃ。
+>  撤退する!」
+“Eei, this is unbelievable. We're retreating!”
+
+@40321 Janera · ジャネラ
+> 「ええい、キバ、ガロ、なにをしておる。
+>  そやつは、放っておいて早く豹馬を
+“Eei, Fangs, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
+---
+>  やるのじゃ!!」
+off!!”
+
+@40322 Janera · ジャネラ
+> 「ええい、ガロ、なにをしておる。
+>  そやつは、放っておいて早く豹馬を
+“Eei, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
+---
+>  やるのじゃ!!」
+off!!”
+
+@40323 Janera · ジャネラ
+> 「ええい、キバ、なにをしておる。
+>  そやつは、放っておいて早く豹馬を
+“Eei, Fangs, what are you doing? Leave that one alone and hurry and finish Hyoma
+---
+>  やるのじゃ!!」
+off!!”
+
+@40324 Janera · ジャネラ
+> 「キバ、ガロ、なにをしておる。早く
+>  もう1度豹馬を狩りにいかぬか!」
+“Fangs, Garo, what are you doing? Hurry and go hunt Hyoma again!”
+
+@40325 Chizuru · ちずる
+> 「ああっ……みんな、よく……」
+“Ah... everyone, thank goodness...”
+
+@40326 Ark · アーク（按段落 3DD1）
+> 「間にあったか……
+>  ちずる、豹馬は大丈夫なのか?」
+“We made it in time... Chizuru, is Hyoma all right?”
+
+@40327 Selain · セレイン（按段落 3DD2）
+> 「間にあったようだな」
+“Seems we made it in time.”
+
+@40328 Juzo · 十三
+> 「ああ。ほんま、もうあかんと思たで。
+>  こら豹馬、どうなっとんのや!?」
+“Yeah. I really thought we were done for. Hey, Hyoma, what's going on with you?!”
+
+@40329 Brad · ブラッド（按段落 3DD3）
+> 「どうやら間一髪ってとこだな。
+>  ちずる、豹馬はどうした!?」
+“Looks like we made it by a hair. Chizuru, what happened to Hyoma?!”
+
+@40330 Manami · マナミ（按段落 3DD4）
+> 「ふう、どうにか間にあったわね。
+>  ちずる、豹馬は大丈夫?」
+“Phew, we just barely made it. Chizuru, is Hyoma okay?”
+
+@40331 Chizuru · ちずる
+> 「ひどいケガをしているみたいなの。
+>  早く手当てをしないと……」
+“He seems to be badly hurt. We need to treat him quickly...”
+
+@40332 Reika · レイカ
+> 「それは、こっちにまかせてちょうだい。
+>  あなたたちは敵を叩いて!」
+“Leave that to us. You all go strike the enemy!”
+
+@40333 Chizuru · ちずる
+> 「レイカ!?
+>  え、ええ、豹馬をお願いっ!」
+“Reika?! Y-yes, please take care of Hyoma!”
+
+@40334 Beauty · ビューティ
+> 「まっかせてぇ!」
+“Leave it to me!”
+
+@40335 Duke · デューク
+> 「銀河帝国め……許さないぞ!」
+“Galactic Empire... I won't forgive you!”
+
+@40336 Janera · ジャネラ
+> 「おのれ、こざかしい地球人どもめ。
+>  キバ、ガロ!」
+“Curse you, you impudent Earthlings. Fangs, Garo!”
+
+@40337 Koji · 甲児
+> 「な……なんだぁ!?」
+“W-what the?!”
+
+@40338 Boss · ボス
+> 「くっついて、ひとつになっちゃっただわさ」
+“They stuck together and became one, they did.”
+
+@40339 Janera · ジャネラ
+> 「フフフフフ、さぁビッグシリウス、
+>  地球人どもをなぎ払ってしまえ!」
+“Hehehehe, now then, Big Sirius, mow down all these Earthlings!”
+
+@40340 Koji · 甲児
+> 「てやんでぇ! 相手はたった1匹じゃ
+>  ねぇか。みんな、とっとと片づけて
+“Don't give me that! There's only one of them. Everyone, hurry up and finish it off,
+---
+>  あのでかぶつも、やっつけちまおうぜ!」
+and let's smash that big thing too!”
+
+@40341 Maria · マリア
+> 「……!? 待って、甲児!」
+“...?! Wait, Koji!”
+
+@40342 Koji · 甲児
+> 「マリアちゃん!? どうしたんだ?」
+“Maria?! What's wrong?”
+
+@40343 Maria · マリア
+> 「敵……くるわ!」
+“The enemy... they're coming!”
+
+@40344 Koji · 甲児
+> 「なんだって!?」
+“What did you say?!”
+
+@40345 Warchimedes · ワルキメデス
+> 「ジャネラ様、ここは私めに
+>  おまかせください」
+“Lady Janera, please leave this to me.”
+
+@40346 Janera · ジャネラ
+> 「ワルキメデスか。よし、やってみせよ」
+“Warchimedes. Very well, show me what you can do.”
+
+@40347 Warchimedes · ワルキメデス
+> 「ははっ。全軍、地球人を
+>  攻撃だ!」
+“Yes, ma'am. All forces, attack the Earthlings!”
+
+@40348 Koji · 甲児
+> 「な……なんだぁ!?」
+“W-what the?!”
+
+@40349 Boss · ボス
+> 「くっついて、ひとつになっちゃっただわさ」
+“They stuck together and became one, they did.”
+
+@40350 Koji · 甲児
+> 「てやんでぇ! 相手はたった1匹じゃ
+>  ねぇか。みんな、とっとと片づけて
+“Don't give me that! There's only one of them. Everyone, hurry up and finish it off,
+---
+>  あのでかぶつも、やっつけちまおうぜ!」
+and let's smash that big thing too!”
+
+@40351 Maria · マリア
+> 「……!? 待って、甲児!」
+“...?! Wait, Koji!”
+
+@40352 Koji · 甲児
+> 「マリアちゃん!? どうしたんだ?」
+“Maria?! What's wrong?”
+
+@40353 Maria · マリア
+> 「敵……くるわ!」
+“The enemy... they're coming!”
+
+@40354 Koji · 甲児
+> 「なんだって!?」
+“What did you say?!”
+
+@40355 Warchimedes · ワルキメデス
+> 「ジャネラ様にも困ったものだ。
+>  後始末はいつも私に回って
+“Lady Janera is a handful too. The cleanup always comes back
+---
+>  くるのだからな。全軍、地球人
+>  どもを生かして帰すな!」
+to me. All forces, don't let a single Earthling leave alive!”
+
+@40356 Warchimedes · ワルキメデス
+> 「ジャネラ様にも困ったものだ。
+>  後始末はいつも私に回って
+“Lady Janera is a handful too. The cleanup always comes back
+---
+>  くるのだからな。全軍、地球人
+>  どもを生かして帰すな!」
+to me. All forces, don't let a single Earthling leave alive!”
+
+@40357 Kosuke · 小介
+> 「これは今の僕たちには、かなり
+>  手ごわい戦力ですよ!」
+“This is a pretty tough force for us to handle right now!”
+
+@40358 Hyoma · 豹馬
+> 「み、みんな……」
+“E-everyone...”
+
+@40359 Beauty · ビューティ
+> 「こら、動かないの!」
+“Hey, don't move!”
+
+@40360 Daisaku · 大作
+> 「豹馬しゃん、ここは俺たちに
+>  まかしんしゃい!」
+“Hyoma, leave this to us!”
+
+@40361 Juzo · 十三
+> 「よっしゃ、いっちょやったろやないか」
+“All right, let's give it a go!”
+
+@40362 Janera · ジャネラ
+# 机翻疑问：原文“シシリス・キバ”疑为“ビッグシリウス・キバ”之误，暂译作 Sirius。
+> 「おのれ、シシリス・キバ、ガロの仇は
+>  必ずうってくれようぞ! 覚えておれ!」
+“Curse you! I will surely avenge Sirius, Fangs, and Garo! Mark my words!”
+
+@40363 Hyoma · 豹馬
+> 「くっ……みんな、大丈夫か!
+>  俺も戦うぜ!」
+“Ngh... Everyone, are you all right?! I'm fighting too!”
+
+@40364 Reika · レイカ
+> 「ちょっと、ホントに大丈夫なの!?」
+“Hey, are you really okay?!”
+
+@40365 Hyoma · 豹馬
+> 「こんな程度のケガで、寝てるわけには
+>  いかないんだ!!」
+“I can't just lie around with a wound this small!!”
+
+@40366 Chizuru · ちずる
+> 「豹馬!? お願いだから無茶しな
+>  いで!! あなたが倒れたら、私……」
+“Hyoma?! Please, don't push yourself!! If you collapse, I...”
+
+@40367 Hyoma · 豹馬
+> 「ちずる……大丈夫だ、俺は
+>  こんなところで、くたばりはしない
+“Chizuru... I'm fine. I'm not going to die in a place like this.
+---
+>  しばらくなら十分戦える。
+>  一気にケリをつけてやろうぜ」
+I can still fight for a while. Let's finish this all at once.”
+
+@40368 Chizuru · ちずる
+> 「え……ええ、豹馬、わかったわ!」
+“Y-yes, Hyoma, got it!”
+
+@40369 Koji · 甲児
+> 「いやぁ、なんとか片づいたな」
+“Well, we managed to wrap things up somehow.”
+
+@40370 Sayaka · さやか
+> 「でも豹馬はあぶないところだったわね」
+“But Hyoma was in real danger back there.”
+
+@40371 Juzo · 十三
+> 「まったくや。どうせ豹馬のこっちゃ、
+>  なんや無茶しよったんやろ
+“Honestly. Knowing Hyoma, he must've gone and done somethin' reckless.
+---
+>  あいつは、いっつもそうや」
+That guy's always like that.”
+
+@40372 Daisuke · 大介
+> 「ははっ、みんな無事だったんだから、
+>  いいじゃないか」
+“Haha, everyone made it out safe, so isn't that good enough?”
+
+@40373 Maria · マリア
+> 「でも本当、たいしたことなくて
+>  よかったわね、ちずる」
+“But really, I'm glad it turned out fine, Chizuru.”
+
+@40374 Chizuru · ちずる
+> 「ええ……」
+“Yes...”
+
+@40375 Reika · レイカ
+> 「みんな乗ってる?」
+“Is everyone aboard?”
+
+@40376 Koji · 甲児
+> 「乗ってるよ」
+“We're aboard.”
+
+@40377 Reika · レイカ
+> 「じゃ、梁山泊へ向かうわよ」
+“Then we're heading for Ryozanpaku.”
+
+@40378 Boss · ボス
+> 「ありゃりゃ!?
+>  おーい、待ってくれぇぇーっ!!」
+“Whoa!? Hey, wait for meee!!”
+
+@40379 Beauty · ビューティ
+> 「あら? やだ、ちょっと、
+>  ボスが乗ってなかったじゃないの!」
+“Oh? Goodness, wait, Boss wasn't aboard!”
+
+@40380 Boss · ボス
+> 「おいてきぼりなんて、ひどいわよ」
+“Leaving me behind is just cruel!”
+
+@40381 Koji · 甲児
+> 「悪い悪い、てっきり乗ってるもんだと
+>  ばっかり思ってさ」
+“My bad, my bad. I just figured you were aboard.”
+
+@40382 Reika · レイカ
+> 「もぅ、しっかりしてよ。今度こそ
+>  大丈夫ね? それじゃ、行くわよ」
+“Honestly, get it together. You're really aboard this time? Then let's go.”
+
+@40383 Hyoma · 豹馬
+> 「う……」
+“Ugh...”
+
+@40384 Chizuru · ちずる
+> 「豹馬? 気がついた?」
+“Hyoma? Are you awake?”
+
+@40385 Hyoma · 豹馬
+> 「う……ちずる……俺はいったい……」
+“Ugh... Chizuru... What happened to me...”
+
+@40386 Chizuru · ちずる
+> 「バトルジェットから、降りたとたんに
+>  気を失ったのよ」
+“The moment you got out of the Battle Jet, you passed out.”
+
+@40387 Hyoma · 豹馬
+> 「そうか……なんか心配かけちまった
+>  みたいだな。悪かったよ」
+“I see... Looks like I made you worry. Sorry about that.”
+
+@40388 Chizuru · ちずる
+# 审校：“Teacher Hasan”不符合英文习惯，词表中ハサン为Hasan，去掉Teacher。
+> 「いいのよ……本隊に合流したら、
+>  ハサン先生か、サリィさんに
+“It's all right... Once we rejoin the main force, you'll have to get
+---
+>  みてもらわなくちゃね」
+checked out by Hasan or Sally.”
+
+@40389 Hyoma · 豹馬
+> 「ああ……早いとこ治さないとな」
+“Yeah... I've gotta get patched up quick.”
+
+@40390 Koji · 甲児
+> 「おっと、そろそろ梁山泊だぜ」
+“Whoa, we're almost at Ryozanpaku.”
+
+@40391 Sayaka · さやか
+> 「お父さまたちが無事なのかどうか
+>  わかったかしら……」
+“I wonder if we'll find out whether Father and the others are safe...”
+
+@40392 Kosuke · 小介
+> 「弓教授でしたね。僕も1度
+>  お会いして、お話をうかがいたいです」
+“That would be Prof. Yumi. I'd like to meet him once and hear what he has to say.”
+
+@40393 Sayaka · さやか
+> 「合流できたら、紹介してあげるわよ」
+“Once we join up, I'll introduce you.”
+
+@40394 Koji · 甲児
+> 「大丈夫だよ、さやかさん。
+>  博士たちは、中条長官や
+“It'll be fine, Sayaka. Chief Chujo and
+---
+>  銀鈴さんの仲間の人たちが
+>  守ってくれてるさ」
+Ginrei's people are protecting the professors.”
+
+@40395 Kosuke · 小介
+> 「四谷博士もいてもらえると、
+>  いいんですけどね」
+“It'd be nice if Dr. Yotsuya were there too.”
+
+@40396 Juzo · 十三
+> 「なんや小介、博士に用でも
+>  あるんか?」
+“What's this, Kosuke? You got business with the doctor?”
+
+@40397 Kosuke · 小介
+> 「ええ……実は、ちょっとコン・バトラーの
+>  強化をいくつか考えているんですよ」
+“Yes... Actually, I've been thinking about a few upgrades for the Combattler V.”
+
+@40398 Juzo · 十三
+> 「ほんまか? そりゃ楽しみやなぁ」
+“For real? Well, that's somethin' to look forward to.”
+
+@40399 Boss · ボス
+> 「小介、今度ボスボロットにも何か
+>  すげぇパワーアップを考えてくれよ」
+“Kosuke, next time think up some awesome power-up for the Boss Borot too.”
+
+@40400 Kosuke · 小介
+> 「え? ボスボロットですか?
+>  うーん、そうですねぇ……」
+“Huh? The Boss Borot? Hmm, let me think...”
+
+@40401 Koji · 甲児
+> 「小介、はっきりいってやった方が
+>  いいぞ。無理だって」
+“Kosuke, you'd better just tell him straight. It's impossible.”
+
+@40402 Boss · ボス
+> 「なんでだよ、兜。俺さまのボスボロット
+>  をバカにすると許さないわよ」
+“Why, you Kabuto? If you make fun of my Boss Borot, I won't forgive you!”
+
+@40403 Maria · マリア
+> 「あ、ねぇねぇボス、あたし前から
+>  聞いてみたかったんだけど」
+“Oh, hey, Boss, there's something I've been wanting to ask you for a while.”
+
+@40404 Boss · ボス
+> 「おう、なんでも聞いてちょうだい」
+“Oh yeah, ask me anything you like.”
+
+@40405 Maria · マリア
+> 「なんで、あんなガラクタのかたまりが
+>  動くの?」
+“How come that pile of junk can move?”
+
+@40406 Boss · ボス
+> 「…………」
+“...”
+
+@40407 Koji · 甲児
+> 「アッハッハッハッ、ガラクタか!
+>  マリアちゃん、いいこというね」
+“Ahahahaha, junk! Maria, you crack me up.”
+
+@40408 Sayaka · さやか
+> 「もう甲児くんたら。ボスだって
+>  そのガラクタで、必死に戦ってるのよ
+“Honestly, Koji. Boss fights his hardest in that junk too.
+---
+>  ガラクタで、ここまで戦えるなんて
+>  すごいじゃないの。ねぇ、ボス」
+Being able to fight this well in a pile of junk is amazing. Right, Boss?”
+
+@40409 Boss · ボス
+> 「……さやかぁ、あんまり、ガラクタガラクタ
+>  いわないでくれよぉ」
+“...Sayaka, come on, don't keep calling it junk.”
+
+@40410 Sayaka · さやか
+> 「なによ、ほめてあげてるのが
+>  気にくわないっていうの、ボス?」
+“What, Boss? Are you saying you don't like being complimented?”
+
+@40411 Beauty · ビューティ
+> 「はーいはい、お取りこみ中ごめんなさい
+>  ガンドールが見えてきたわ
+“All right, all right, sorry to interrupt your little chat, but Gandor's coming into view.
+---
+>  着艦するから、みんな席についててね」
+We're landing, so everyone take your seats.”

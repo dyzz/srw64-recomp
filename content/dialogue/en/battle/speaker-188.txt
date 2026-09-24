@@ -1,0 +1,159 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12140 Jeril · ジェリル
+> 「アハハハハ……死になよっ!!」
+“Ahahahaha... Just die!!”
+
+@12141 Jeril · ジェリル
+> 「落ちなっ!!」
+“Fall!!”
+
+@12142 Jeril · ジェリル
+> 「逃げられやしないよ!!」
+“You can't escape!!”
+
+@12143 Jeril · ジェリル
+> 「もらった!!」
+“Got you!!”
+
+@12144 Jeril · ジェリル
+> 「ハハハハハハハッ!!」
+“Hahahahahaha!!”
+
+@12145 Jeril · ジェリル
+> 「さっさとやられちまいなっ!」
+“Just get taken out already!”
+
+@12146 Jeril · ジェリル
+> 「ほらほら、邪魔なんだよ!!」
+“Come on, come on, you're in the way!!”
+
+@12147 Jeril · ジェリル
+> 「目障りだっ!」
+“You're an eyesore!”
+
+@12148 Jeril · ジェリル
+> 「消えなっ!」
+“Disappear!”
+
+@12149 Jeril · ジェリル
+> 「地獄へ落ちな!!」
+“Fall to hell!!”
+
+@12150 Jeril · ジェリル
+> 「行けえぇぇぇっ!」
+“Goooooo!”
+
+@12151 Jeril · ジェリル
+> 「どきなっ!」
+“Out of my way!”
+
+@12152 Jeril · ジェリル
+> 「とどめをさしてやるよ!」
+“I'll finish you off!”
+
+@12153 Jeril · ジェリル
+> 「ちっ! やられちまったか!」
+“Tch! I got taken down!”
+
+@12154 Jeril · ジェリル
+> 「何っ!? バカな……このあたしが!?」
+“What?! Impossible... me?!”
+
+@12155 Jeril · ジェリル
+> 「うあっ!! こ、こいつ……パワーが
+>  段ちだ」
+“Ugh!! Th-this guy... his power's on another level.”
+
+@12156 Jeril · ジェリル
+> 「うっ! しまった!? どこをやられた!?」
+“Ugh! Damn it?! Where did it hit me?!”
+
+@12157 Jeril · ジェリル
+> 「何っ!? あ、あたしのオーラ力が……
+>  押されている!?」
+“What?! M-my aura power is... being pushed back?!”
+
+@12158 Jeril · ジェリル
+> 「くっ! この、なめるなっ!」
+“Guh! You, don't underestimate me!”
+
+@12159 Jeril · ジェリル
+> 「あうっ! そうかい、そんなに死にたいの
+>  かいっ!」
+“Agh! So that's how it is, you wanna die that badly?!”
+
+@12160 Jeril · ジェリル
+> 「うわっ! あたしを本気にさせたね!!」
+“Whoa! You've made me serious!!”
+
+@12161 Jeril · ジェリル
+> 「ちいっ! まだ負けちゃいないよっ!!」
+“Tch! I haven't lost yet!!”
+
+@12162 Jeril · ジェリル
+> 「うっ! こ、こしゃくな!」
+“Ugh! H-how insolent!”
+
+@12163 Jeril · ジェリル
+> 「くっ! たかがかすり傷!」
+“Guh! It's just a scratch!”
+
+@12164 Jeril · ジェリル
+> 「ふふふ、そんなものかい?」
+“Fufufu, is that all you've got?”
+
+@12165 Jeril · ジェリル
+> 「こそばゆいんだよっ!」
+“That tickles!”
+
+@12166 Jeril · ジェリル
+> 「効かないって言ってんだろ!!」
+“I told you it doesn't work!!”
+
+@12167 Jeril · ジェリル
+> 「ハハハハ! その程度かい!」
+“Hahahaha! Is that all?!”
+
+@12168 Jeril · ジェリル
+> 「あたらないんだよっ!!」
+“You can't hit me!!”
+
+@12169 Jeril · ジェリル
+> 「ハハハッ、いいねぇこの緊張感!」
+“Hahaha, nice, this tension!”
+
+@12170 Jeril · ジェリル
+> 「しゃらくさいっ!」
+“How annoying!”
+
+@12171 Jeril · ジェリル
+> 「あたしを狙おうなんて、いい根性
+>  してるよ!」
+“Targeting me, you've got some nerve!”
+
+@12172 Jeril · ジェリル
+> 「遅いねっ!」
+“Too slow!”
+
+@12173 Jeril · ジェリル
+# 审校：“カトンボ”指蜻蜓，原译“gnat”不准确，改为“dragonfly”以符合原文。
+> 「あたるかい、カトンボめ!!」
+“As if you'd hit me, you little dragonfly!!”
+
+@12174 Jeril · ジェリル
+> 「そんなものが効くか!! このあたしの
+>  オーラ力に!!」
+“Like that could work on me!! Not against my aura power!!”
+
+@12175 Jeril · ジェリル
+> 「ハハハッ、いきがってさ!」
+“Hahaha, getting all cocky!”
+
+@12176 Jeril · ジェリル
+> 「弾切れだって!? こんな時に……」
+“Out of ammo?! At a time like this...”
+
+@12177 Jeril · ジェリル
+> 「ちっ、少しは頭を使ってるようだね」
+“Tch, seems you're using your head a little.”

@@ -1,0 +1,1256 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@35056 Bright · ブライト
+> 「状況はどうだ?」
+“What's the situation?”
+
+@35057 Quattro · クワトロ
+> 「あまりよくはないな。ロームフェラ派は、
+>  地上にもMDを
+“Not very good. The Romefeller faction seems to have started deploying MDs
+---
+>  投入しはじめているようだ」
+on the ground as well.”
+
+@35058 Ginrei · 銀鈴
+> 「トレーズ派の兵士は
+>  精鋭ぞろいですが、MDの能力は
+“Treize's soldiers are all elites, but the MDs' capabilities
+---
+>  彼らを上回っています。このままでは
+>  長くはもたないかもしれません」
+surpass theirs. At this rate, they may not hold out much longer.”
+
+@35059 Bright · ブライト
+> 「そうか……」
+“I see...”
+
+@35060 Koji · 甲児
+> 「だいたいさ、トレーズはいったい
+>  どうなっちまったってんだよ?
+“Anyway, what the hell happened to Treize?
+---
+>  あいつが出てくりゃ、もっと
+>  違った展開になってるはずなんだぜ」
+If he were out there, things would've turned out differently.”
+
+@35061 Boss · ボス
+> 「でもよぉ、兜。トレーズは
+>  ロームフェラ財団の幹部なんだろ
+“But come on, Kabuto. Treize is a top exec of the Romefeller Foundation, right?
+---
+>  やっぱ財団には
+>  逆らえないんじゃないのか」
+I guess he just can't go against the Foundation.”
+
+@35062 Koji · 甲児
+> 「だったらなんでトレーズ派の連中は、
+>  あんなにまでして戦ってるんだよ!?
+“Then why are Treize's people fighting like that?!
+---
+>  オレたちはいったいどうすりゃいいんだ!?」
+What the hell are we supposed to do?!”
+
+@35063 Boss · ボス
+> 「俺に聞かれても困るだわさ」
+“Don't ask me, I've got no clue.”
+
+@35064 Amuro · アムロ
+> 「銀鈴、ブレックス准将や
+>  万丈たちの方はどうなっている?」
+“Ginrei, what's the situation with Brigadier General Blex and Banjo and the others?”
+
+@35065 Ginrei · 銀鈴
+> 「カラバはロームフェラ派に
+>  抵抗しているようです。以前ほど
+“Karaba seems to be resisting the Romefeller faction. The organization
+---
+>  組織は大きくありませんが、
+>  なにしろ万丈さんがいますから」
+isn't as big as it used to be, but after all, Banjo's with them.”
+
+@35066 Ryoma · リョウ
+> 「そうだな。ダイターン3なら、
+>  そう簡単にはやられはしない」
+“Right. With the Daitarn 3, they won't go down that easily.”
+
+@35067 Amuro · アムロ
+> 「ブレックス准将は?」
+“And Brigadier General Blex?”
+
+@35068 Ginrei · 銀鈴
+> 「北欧のあたりに
+>  いらっしゃることだけは、わかりました」
+“All we know is that he's somewhere in Northern Europe.”
+
+@35069 Quattro · クワトロ
+> 「北欧だと……?」
+“Northern Europe...?”
+
+@35070 Ginrei · 銀鈴
+> 「ええ。それ以上は、まだ。
+>  ただ、北欧のほうで
+“Yes. That's all so far. But it might not be
+---
+>  “クスコの聖女隊”が
+>  活動していることと
+unrelated to the fact that the ‘Cusco Saints’
+---
+>  無関係ではないかもしれません」
+is active in Northern Europe.”
+
+@35071 Eiji · エイジ
+> 「姉さんたちが?」
+“My sisters?”
+
+@35072 Ginrei · 銀鈴
+> 「そう。財団の行動を
+>  批判しているわ」
+“Yes. They're criticizing the Foundation's actions.”
+
+@35073 Fa · ファ
+> 「地上も大変な状態なのね……」
+“Things are rough on the ground too...”
+
+@35074 Alan · アラン
+> 「詳しい状況は、いまギャリソンに
+>  調べてもらっている。准将の行方
+“Garrison is looking into the details right now. The General's whereabouts,
+---
+>  トレーズの幽閉場所、
+>  地上の動き、といったところだな」
+where Treize is being held, movements on the ground—that sort of thing.”
+
+@35075 Kamille · カミーユ
+> 「しばらく動きがとれないか……」
+“So we can't make a move for a while...”
+
+@35076 Takeru · タケル
+> (ズール……銀河帝国……マーズ……
+>  いったいなんなんだ……?
+(Zuhl... the Galactic Empire... Mars... what is going on...?
+---
+>  俺は……地球人じゃないのか……?
+>  そんなこと……)
+Am I... not an Earthling...? That can't be...)
+
+@35077 Anna · アンナ
+> 「エイジ!」
+“Eiji!”
+
+@35078 Eiji · エイジ
+> 「アンナか。どうしたんだ?」
+“Anna. What's up?”
+
+@35079 Anna · アンナ
+> 「またトレーズ派の人たちが
+>  合流してきたんだけど
+“More of Treize's people have joined up with us,
+---
+>  その中にあの人がいたのよ」
+and that person was among them.”
+
+@35080 Eiji · エイジ
+> 「あの人?」
+“That person?”
+
+@35081 Anna · アンナ
+# 检查提示：未用必用译名：エイジ→Eiji
+> 「エイジが、先輩って呼んでいた人よ」
+“The one you used to call your senior.”
+
+@35082 Eiji · エイジ
+> 「先輩……ゲイル先輩が!?
+>  ゲイル先輩が生きていたのか!?」
+“My senior... Senior Gale?! Senior Gale is alive?!”
+
+@35083 Eiji · エイジ
+> 「ゲイル先輩!!」
+“Senior Gale!!”
+
+@35084 Gale · ゲイル
+> 「……エイジ。ひさしぶりだな」
+“...Eiji. It's been a while.”
+
+@35085 Eiji · エイジ
+> 「先輩……よかった。
+>  生きていたんですね。俺は……」
+“Senior... thank goodness. You were alive. I...”
+
+@35086 Gale · ゲイル
+> 「もうすんだことだ。気にするな。
+>  しかしお前たちが本当に
+“It's all in the past. Don't worry about it. But honestly, I still
+---
+>  帝国軍に勝てるとは、正直
+>  いまだに信じられない気持ちだよ」
+can't believe you people really beat the Imperial army.”
+
+@35087 Eiji · エイジ
+> 「先輩……」
+“Senior...”
+
+@35088 Gale · ゲイル
+> 「気づかいは無用だ。私とて
+>  現実は受け入れねばならん
+“No need to worry about me. Even I have to accept reality
+---
+>  ……お前と同じように、この地球に
+>  残されてしまったということもな」
+...that I too was left behind on this Earth, just like you.”
+
+@35089 Eiji · エイジ
+> 「でも先輩、いったいどうして……」
+“But Senior, how on earth...”
+
+@35090 Gale · ゲイル
+> 「お前たちに負けたあと、重傷を
+>  負って死にかけていた私を
+“After you defeated me, I was gravely wounded and near death, but an Earthling
+---
+>  助けてくれた地球人がいたのだ。
+>  そして回復するまでの間、私は
+saved me. And until I recovered, I observed this Earth
+---
+>  帝国の軍人としてではなく、
+>  1人の人間として
+not as a soldier of the Empire, but as one human being.
+---
+>  この地球の様子を見てきた
+And then I realized. Eiji, I was wrong.
+---
+>  そして気づいたのだ。
+>  エイジ、私は間違っていた
+That is what I wanted
+---
+>  そうお前にわびたかった」
+to apologize to you for.”
+
+@35091 Anna · アンナ
+> 「エイジ……よかったわね」
+“Eiji... I'm so glad.”
+
+@35092 Eiji · エイジ
+> 「ありがとう、アンナ。先輩……
+>  ジュリア姉さんも、地球にいるんです」
+“Thanks, Anna. Senior... Julia is on Earth too.”
+
+@35093 Gale · ゲイル
+> 「“クスコの聖女”だな。会って
+>  話をしたよ。私の復讐のために
+“The ‘Holy Woman of Cusco,’ you mean. I met her and we talked. She said she challenged
+---
+>  お前たちに挑んだそうだな。そして
+>  ジュリアもまた、お前たちに敗れた……」
+you for my sake, to get revenge. And Julia too was defeated by you...”
+
+@35094 Eiji · エイジ
+> 「……ええ」
+“...Yes.”
+
+@35095 Gale · ゲイル
+> 「だが、それでよかったのだ。ジュリアに
+>  いわれたよ。私たち2人は
+“But that was for the best. Julia told me. The two of us
+---
+>  この地球で、新たに生まれたのだと
+>  はじめはジュリアの
+were born anew on this Earth. At first I was
+---
+>  あまりの変わりように驚かされたがね」
+startled by how much Julia had changed, though.”
+
+@35096 Eiji · エイジ
+> 「先輩……姉さんに会ったのなら、
+>  どうしてここへ?」
+“Senior... if you met my sister, why did you come here?”
+
+@35097 Gale · ゲイル
+> 「ジュリアは聖女だ。
+>  リリーナという少女とともに
+“Julia is a holy woman. Together with a girl named Relena,
+---
+>  疲れ果てた地球の人々のために
+>  活動している。だが、私は軍人だ
+she works for the sake of the exhausted people of Earth. But I'm a soldier.
+---
+>  彼女たちとともにいるわけには、
+>  いかなかった」
+I couldn't bring myself to stay by their side.”
+
+@35098 Eiji · エイジ
+> 「先輩……」
+“Senior...”
+
+@35099 Gale · ゲイル
+> 「ジュリアたちから聞いた。帝国の
+>  支配を脱した地球を、今度は
+“I heard it from Julia and the others. The Earth that broke free of the Empire's rule is now,
+---
+>  同じ地球人が、武力をもって
+>  支配しようとしていると
+this time, being dominated by force by fellow Earthlings.
+---
+>  私は、お前たちとともに戦うために
+>  ここへ来たのだ。それが私にできる
+I came here to fight alongside you. I consider it the least I can do
+---
+>  せめてもの罪滅ぼしだと思っている。
+>  ジュリアたちは、あくまでも話しあいに
+to atone for my sins. Julia and the others said they wanted to resolve things through
+---
+>  よって解決したいといっていたがね。
+>  だが、お前たちのことも教えてくれた」
+discussion to the very end. But they told me about you as well.”
+
+@35100 Eiji · エイジ
+> 「歓迎します、先輩。
+>  みんなに紹介しますよ」
+“Welcome, Senior. I'll introduce you to everyone.”
+
+@35101 Anna · アンナ
+> 「私、ブライトさんたちに伝えてくるわ」
+“I'll go tell Bright and the others.”
+
+@35102 Tubarov · ツバロフ
+> 「そうですか、月を拠点に。やはり
+>  トレーズ特佐の息のかかったものは
+“I see, so they're using the Moon as their base. As expected, anything connected to
+---
+>  ひと筋縄ではいきませんな」
+Special Colonel Treize is never easy to deal with.”
+
+@35103 Jamitov · ジャミトフ
+> 「トレーズめ、よけいな仕事を
+>  増やしてくれるものだ」
+“That Treize, always piling on extra work for us.”
+
+@35104 Bask · バスク
+> 「ツバロフ技師長。
+>  MDの生産、急がせろ」
+“Chief Engineer Tubarov. Speed up MD production.”
+
+@35105 Tubarov · ツバロフ
+> 「わかっております。MDさえあれば、
+>  トレーズ派などという連中は
+“I understand. Once we have the MDs, those so-called Treize faction people
+---
+>  すぐに片づきましょう」
+will be dealt with in no time.”
+
+@35106 Bask · バスク
+> 「そうであればよいがな」
+“I hope so.”
+
+@35107 Bask · バスク
+> 「なにか」
+“What is it?”
+
+@35108 Specials · スペシャルズ
+> 「正体不明の艦隊を
+>  発見したとの報告がありました」
+“We've received a report that an unidentified fleet has been sighted.”
+
+@35109 Bask · バスク
+> 「艦隊だと?
+>  {HeroMech}ではないのか」
+“A fleet? Not the {HeroMech}?”
+
+@35110 Specials · スペシャルズ
+> 「{HeroMech}ではありません。
+>  地球圏外からのものと
+“It's not the {HeroMech}. It's presumed to have come from
+---
+>  推測されます」
+outside the Earth sphere.”
+
+@35111 Bask · バスク
+> 「なんだと!? ゾルバドスめ、
+>  まだ残っていたのか」
+“What?! Zorbados, you mean they're still around?”
+
+@35112 Jamitov · ジャミトフ
+> 「そうは思えんがな」
+“I doubt it.”
+
+@35113 Tubarov · ツバロフ
+> 「と、申されますと?」
+“And why is that, if I may ask?”
+
+@35114 Jamitov · ジャミトフ
+> 「ギルドローム将軍は、かなりの数の
+>  部隊を率いて
+“I heard that General Gildrome withdrew leading a considerable number of troops.
+---
+>  撤退していったと聞いた。これほど
+>  早く増援がくるのならば
+If reinforcements were coming this soon,
+---
+>  むざむざ前線基地を放棄する
+>  こともなかったのではないか?」
+there would have been no need to abandon the front-line base so readily, would there?”
+
+@35115 Bask · バスク
+> 「……なるほど、そうですな。しかし、
+>  ゾルバドス以外の異星人の
+“...I see, you have a point. But is it even possible for there to be a fleet of
+---
+>  艦隊などということが、
+>  あり得るのですかな」
+aliens other than Zorbados?”
+
+@35116 Jamitov · ジャミトフ
+> 「わからんな……。が、いずれ正体も
+>  知れよう。警戒はしておくことだ」
+“I don't know... But in time we'll learn their true nature. Stay on your guard.”
+
+@35117 Bask · バスク
+> 「はっ」
+“Yes, sir.”
+
+@35118 Bask · バスク
+> 「レディ・アン特佐を呼び出せ」
+“Summon Special Colonel Lady Une.”
+
+@35119 Specials · スペシャルズ
+> 「お待ちください」
+“Right away.”
+
+@35120 Lady · レディ
+> 「バスク特佐、私に何か?」
+“Special Colonel Bask, you wanted something from me?”
+
+@35121 Bask · バスク
+> 「ふん、どうやら
+>  おとなしくしておったようだな
+“Hmph, it seems you've been behaving yourself.
+---
+>  所属不明の艦隊が現れた。
+>  地球のものではない可能性もある
+An unidentified fleet has appeared. There's a chance it isn't from Earth.
+---
+>  貴公に偵察任務をまかせる」
+I'm entrusting you with a reconnaissance mission.”
+
+@35122 Lady · レディ
+> 「異星人の艦隊!?
+>  ムゲゾルバドス帝国ではないのですか」
+“An alien fleet?! Not the Muge Zorbados Empire?”
+
+@35123 Bask · バスク
+> 「わからんから偵察しろといっている。
+>  レディ・アン特佐、貴公もOZの
+“I'm telling you to scout because we don't know. Special Colonel Lady Une, if you're
+---
+>  将校ならば、何に対して忠誠を
+>  尽くすべきか、わかっておるだろうな」
+an OZ officer, you know what you ought to pledge your loyalty to, don't you?”
+
+@35124 Lady · レディ
+> 「…………」
+“...”
+
+@35125 Bask · バスク
+> 「トレーズ派と称するバカ者どもが
+>  騒いでおるが、貴公が合流など
+“Some fools calling themselves the Treize faction are making noise, but if you were to
+---
+>  すれば、トレーズから指示がでたものと
+>  判断する。気をつけることだ」
+join them, it would be taken as an order from Treize. Be careful.”
+
+@35126 Lady · レディ
+> 「私はレディ・アン……。OZの?
+>  それとも、トレーズ様の……?」
+“I am Lady Une... OZ's? Or Lord Treize's...?”
+
+@35127 Roux · ルー
+> 「ねぇちょっと、みんな聞いた!?」
+“Hey, hold on, did you all hear that?!”
+
+@35128 Koji · 甲児
+> 「なんだよ、ルー。そんなにあわてて」
+“What is it, Roux? You're in such a panic.”
+
+@35129 Roux · ルー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「落ち着いていられるわけないでしょ!?
+>  ブライト艦長たちが
+“How could I stay calm?! Captain Bright and the others are saying
+---
+>  また敵が来たらしいっていってるのよ」
+the enemy's come again.”
+
+@35130 Kamille · カミーユ
+> 「なんだって!?」
+“What?!”
+
+@35131 Sayaka · さやか
+> 「どういうことなの?
+>  ロームフェラ派のことじゃないの?」
+“What's going on? Isn't it the Romefeller faction?”
+
+@35132 Roux · ルー
+> 「艦隊が接近してるらしいのよ。
+>  OZじゃないって
+“A fleet seems to be approaching. It's not OZ.
+---
+>  バルジの方もかなり動きが
+>  あわただしいらしいわ」
+Things over at Balgi seem to be in quite a stir too.”
+
+@35133 Shinobu · 忍
+> 「まさか、帝国軍がもうもどって
+>  来やがったってんじゃねぇだろうな!?」
+“Don't tell me the Imperial army's already come back?!”
+
+@35134 Roux · ルー
+> 「そんなこと、わかんないわよ」
+“How would I know that?”
+
+@35135 Kamille · カミーユ
+> 「どっちにしたって
+>  大変なことには変わりないな」
+“Either way, it doesn't change the fact that we're in trouble.”
+
+@35136 Koji · 甲児
+> 「ああ、艦長たちに話
+>  聞きにいこうぜ!」
+“Come on, let's go hear what the Captain and the others have to say!”
+
+@35137 Takeru · タケル
+> (OZじゃない艦隊……? まさか……
+>  あれは本当のことだったのか……?)
+(A fleet that isn't OZ...? Don't tell me... was that really true...?)
+
+@35138 ???
+# 审校：内心独白括号内原文有句号，初稿漏掉句号，已补上。
+> (そう、お前の同胞たちだ)
+(Yes, they are your own kind.)
+
+@35139 Takeru · タケル
+> (!? 誰だ!!)
+(?! Who's there!!)
+
+@35140 ???
+# 审校：内心独白括号内原文有句号，初稿漏掉句号，已补上。
+> (マーズ、出てこい。
+>  どうせお前は逃げられん)
+(Mars, come out. You cannot escape anyway.)
+
+@35141 Takeru · タケル
+> (なに!?)
+(What!?)
+
+@35142 Takeru · タケル
+> 「どこだ、どこにいる?」
+“Where are you? Where are you hiding?”
+
+@35143 Takeru · タケル
+> 「うわっ」
+“Whoa!”
+
+@35144 Baren · バレン
+> 「よく来たなマーズ」
+“So you've come, Mars.”
+
+@35145 Takeru · タケル
+> 「お前は何者だ!」
+“Who are you?!”
+
+@35146 Baren · バレン
+> 「よく聞け。私はお前の父上である
+>  ズール皇帝のお言葉を
+“Listen well. I have come to deliver the words of your father, Emperor Zuul.
+---
+>  伝えに来た。陛下はお前の
+>  反逆行為にたいそうお怒りだ」
+His Majesty is most displeased with your act of rebellion.”
+
+@35147 Takeru · タケル
+> 「黙れ!」
+“Silence!”
+
+@35148 Baren · バレン
+> 「どうしても従う気はないということか?」
+“So you truly have no intention of obeying?”
+
+@35149 Takeru · タケル
+> 「当たり前だ! 誰が!」
+“Of course not! Who would?!”
+
+@35150 Baren · バレン
+> 「お前を殺しても目的は
+>  達成されるのだ。死ねマーズ!」
+“Even if you die, our goal will be achieved. Die, Mars!”
+
+@35151 Takeru · タケル
+> 「うわぁぁっ! く、くそっ!」
+“Uwaaaah! D-Damn it!”
+
+@35152 Baren · バレン
+> 「フン、そんなもので!」
+“Hmph, is that all you've got?!”
+
+@35153 Takeru · タケル
+> 「あぁぁっ……う……うわあぁぁぁぁーっ!!」
+“Aaaah... u... uwaaaaaaah!!”
+
+@35154 Baren · バレン
+> 「なに!? しまった、ガイヤーか!」
+“What?! Damn it, Gaia?!”
+
+@35155 Takeru · タケル
+> 「ぐ……な、なんだ!?」
+“Ngh... W-What is this?!”
+
+@35156 ???
+# 审校：内心独白括号内原文第二页结尾有句号，初稿漏掉句号，已补上。
+> (マーズ、恐れることはない。
+>  ガイヤーはお前を守るために来た
+(Mars, there is nothing to fear. Gaia has come to protect you.
+---
+>  ガイヤーに乗れ)
+Get on Gaia.)
+
+@35157 Takeru · タケル
+> 「な、なんだこいつ……勝手に……」
+“W-What is this thing... moving on its own...”
+
+@35158 Takeru · タケル
+> 「なんだここは? 俺はいったい……
+>  ガイヤーだと?
+“What is this place? What in the world am I... Gaia?
+---
+>  これがズールのいっていた……」
+So this is what Zuul was talking about...”
+
+@35159 Baren · バレン
+> 「くっ、ならばガイヤーごと葬り
+>  去ってやる! 観念するがいい!」
+“Tch, then I'll destroy you along with Gaia! Give it up!”
+
+@35160 Takeru · タケル
+> 「くそっ、もし俺の命令で自由に
+>  なるというのなら、奴を倒せ!」
+“Damn it, if you'll obey my command, then destroy him!”
+
+@35161 Takeru · タケル
+> 「こ、こんなところで
+>  オレは死ぬのか……!?」
+“A-Am I going to die in a place like this...?!”
+
+@35162 Takeru · タケル
+> 「こ、これは……」
+“W-What is this...”
+
+@35163 Baren · バレン
+> 「な……なんだこいつは?
+>  こんなものはデータにないぞ!?」
+“W-What is this thing? There's no data on anything like this?!”
+
+@35164 ???
+# 审校：内心独白括号内原文第二页结尾有句号，初稿漏掉句号，已补上。
+> (マーズ……ガイヤーが危機に
+>  おちいった時、五神ロボはあらわれる
+(Mars... when Gaia is in danger, the five god robots appear.
+---
+>  これらの合体した姿を、
+>  ゴッドマーズと呼ぶがよい)
+You may call their combined form Godmars.)
+
+@35165 Takeru · タケル
+> 「な……に? さっきも聞こえた……
+>  誰だ?」
+“W-What? I heard it again... Who are you?”
+
+@35166 ???
+> (マーズ……死ぬな……)
+(Mars... do not die...)
+
+@35167 Takeru · タケル
+> 「待て! お前はいったい……!?」
+“Wait! Who in the world are you...?!”
+
+@35168 Baren · バレン
+> 「しょせんはみかけ倒しにすぎない。
+>  一気にケリをつけてやる」
+“He's nothing but a bluff. I'll finish this at once.”
+
+@35169 Baren · バレン
+> 「きゃあああぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@35170 Takeru · タケル
+> 「はあっ……はあっ……はあっ……」
+“Hah... hah... hah...”
+
+@35171 Naoto · ナオト
+> 「おい今のはなんだったんだ!?」
+“Hey, what was that just now?!”
+
+@35172 Tetsuya · 鉄也
+> 「な、なんだよあれは!
+>  見たこともないロボットだぞ!?」
+“W-What the hell was that?! That's a robot I've never seen before!”
+
+@35173 Bright · ブライト
+> 「なんだと? そこのロボット、
+>  聞こえるか! 正体をあかせ
+“What? You there, robot, can you hear me? Reveal your identity,
+---
+>  さもなくば攻撃する!」
+or I will attack!”
+
+@35174 Takeru · タケル
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「待ってください、ブライト艦長!」
+“Please wait, Captain Bright!”
+
+@35175 Mika · ミカ
+> 「あの声……タケルだわ!」
+“That voice... it's Takeru!”
+
+@35176 Kenji · ケンジ
+> 「タケルだと? タケル、なんだって
+>  そんなロボットに乗っている!?」
+“Takeru?! Takeru, why are you piloting a robot like that?!”
+
+@35177 Takeru · タケル
+> 「隊長、俺にもわからないんです。
+>  俺は……」
+“Commander, I don't understand either. I just...”
+
+@35178 Bright · ブライト
+> 「どうした!」
+“What's going on?!”
+
+@35179 Ginrei · 銀鈴
+> 「大変です! 所属不明機
+>  多数、降下してきます!」
+“This is bad! Multiple unidentified craft are descending!”
+
+@35180 Bright · ブライト
+> 「なんだと!? 機種は!?」
+“What?! What model are they?!”
+
+@35181 Beltorchika · ベルトーチカ
+> 「照合不能。確定できません」
+“No match. We can't identify them.”
+
+@35182 Quattro · クワトロ
+> 「まさか……
+>  例の艦隊からの部隊か……?」
+“Don't tell me... a unit from that fleet...?”
+
+@35183 Bright · ブライト
+> 「総員第一戦闘配備!
+>  パイロット各員は
+“All hands, battle stations! All pilots,
+---
+>  迎撃戦用意!」
+prepare to intercept!”
+
+@35184 Kenji · ケンジ
+> 「艦長、タケルはどうしますか!?」
+“Captain, what about Takeru?!”
+
+@35185 Bright · ブライト
+> 「あれが明神タケルなら、そのまま
+>  やらせろ! 事情はあとで聞く」
+“If that's Takeru Myojin, let him keep fighting! We'll hear the details later.”
+
+@35186 Kenji · ケンジ
+> 「了解です」
+“Understood.”
+
+@35187 Shinobu · 忍
+> 「雅人、沙羅はどうした?」
+“Masato, what's the situation with Sara?”
+
+@35188 Masato · 雅人
+> 「まだだめだよ、沙羅は。
+>  ダンクーガは使えない」
+“Sara's still no good. We can't use Dancouga.”
+
+@35189 Shinobu · 忍
+> 「チッ」
+“Tch.”
+
+@35190 Blacky · ブラッキー
+> 「むっ、あれがバレンが
+>  知らせてきたロボットだな
+“Mm, so that's the robot Baren told us about.
+---
+>  すると、あれにガイヤーとマーズが……。
+>  全機に告ぐ、マーズを倒せ!」
+Then that thing must contain Gaia and Mars... All units, destroy Mars!”
+
+@35191 Koji · 甲児
+> 「おいなんだよ! あんな連中
+>  見たこともないぜ!?」
+“Hey, what the hell! I've never seen guys like that before!”
+
+@35192 Ryoma · リョウ
+> 「まさか……また別の異星人
+>  なのか!? エイジ、何か知らないのか」
+“Don't tell me... another group of aliens?! Eiji, do you know anything?”
+
+@35193 Eiji · エイジ
+> 「いや……見たことはないな……」
+“No... I've never seen them before...”
+
+@35194 Bright · ブライト
+> 「お前たち、そんなことはあとで考えろ!
+>  いまはとにかく敵を叩け!」
+“You can think about that later! Right now, just hit the enemy!”
+
+@35195 Blacky · ブラッキー
+> 「く、作戦は失敗だ! 帰還して
+>  ガンダル司令の指示を仰がねば
+“Damn, the operation's a failure! I must return and await Commander Gandal's orders.
+---
+>  撤退しろ!」
+Retreat!”
+
+@35196 Blacky · ブラッキー
+> 「くっ、作戦は失敗だ!
+>  マーズは地球人どもに守られている
+“Ngh, the operation's a failure! Mars is being protected by the Earthlings.
+---
+>  ガンダル司令に報告せねば……」
+I must report to Commander Gandal...”
+
+@35197 Bright · ブライト
+# 审校：原文是陈述“结束了”，初稿译成疑问“Is it over...?”语气不对。
+> 「終わったか……」
+“It's over...”
+
+@35198 Alex · アレックス
+> 「裏切り者どもめ、だいぶ消耗して
+>  いるようだな。しかしあの敵は……」
+“Those traitors seem quite worn down. But that enemy...”
+
+@35199 Mueller · ミューラー
+> 「そんなことは、上の連中に考えさせ
+>  とけばいいのさ。クックックックッ
+“Leave that sort of thing for the higher-ups to worry about. Kukukukuku.
+---
+>  さぁて、トレーズ派の粛清を
+>  始めるとするか。ヒャーハハハハハッ!」
+Now then, let's begin purging the Treize faction. Hyahahahahaha!”
+
+@35200 Beltorchika · ベルトーチカ
+> 「艦長、OZです!」
+“Captain, it's OZ!”
+
+@35201 Bright · ブライト
+> 「くそっ、こんな時に! 応戦しろ!!」
+“Damn, of all times! Return fire!!”
+
+@35202 Scirocco · シロッコ
+> 「先行した部隊はよくやってくれて
+>  いるな。どのような理由か知らんが
+“The advance unit is doing well. I don't know why,
+---
+>  あの敵が月を攻めるとは
+>  好都合だった」
+but it's convenient that the enemy is attacking the moon.”
+
+@35203 Jerid · ジェリド
+# 审校：シロッコ特佐的“特佐”是上校，不是中校；词表未给但军衔应译为 Colonel。
+> 「どうするんだ、シロッコ特佐」
+“What do we do, Colonel Scirocco?”
+
+@35204 Scirocco · シロッコ
+> 「このまま月面基地を落とす。
+>  待機している艦隊へ連絡しろ」
+“We take the lunar base as planned. Contact the fleet on standby.”
+
+@35205 Specials · スペシャルズ
+> 「了解しました」
+“Understood.”
+
+@35206 Scirocco · シロッコ
+> 「我々は時間をかせぐぞ」
+“We'll buy time.”
+
+@35207 Jerid · ジェリド
+> 「ああ、了解だ。いくぞマウアー」
+“Yeah, understood. Let's go, Mouar.”
+
+@35208 Mouar · マウアー
+> 「ええ」
+“Right.”
+
+@35209 Kamille · カミーユ
+# 审校：ジェリド・メサ特尉的“特尉”是上尉，不是中尉；应译为 Captain。
+> 「ジェリド・メサ特尉かッ!?」
+“Captain Jerid Messa?!”
+
+@35210 Jerid · ジェリド
+> 「カミーユ!!
+>  今度こそ貴様を殺してやる!」
+“Kamille!! This time I'll kill you for sure!”
+
+@35211 Kamille · カミーユ
+> 「こ、こいつ!」
+“Th-This guy!”
+
+@35212 Scirocco · シロッコ
+> 「フ……ハハハッ! 落ちろ!」
+“Heh... hahaha! Fall!”
+
+@35213 Quattro · クワトロ
+> 「パプティマス・シロッコか……
+>  あきらかに違う。違うタイプだ」
+“Paptimus Scirocco... he's clearly different. A different type.”
+
+@35214 Scirocco · シロッコ
+> 「このプレッシャー……なんだ!?」
+“This pressure... what is it?!”
+
+@35215 Amuro · アムロ
+> 「クッ……こいつは……
+>  なんてプレッシャーだ!」
+“Ngh... this guy... what pressure!”
+
+@35216 Scirocco · シロッコ
+> 「フフフッ、かつての英雄も
+>  地に落ちたものだな」
+“Heh heh... so the hero of old has fallen this low.”
+
+@35217 Roanne · ロアン
+> 「どうにか守りきれたようですね」
+“Looks like we managed to hold them off.”
+
+@35218 Amuro · アムロ
+> 「ああ……だが、あの敵はいったい……」
+“Yeah... but just what was that enemy...”
+
+@35219 Koji · 甲児
+> 「そんなことより、タケルのこと
+>  じゃないのかよ!? ありゃ何なんだ」
+“Never mind that, what about Takeru?! What the hell was that?”
+
+@35220 Amuro · アムロ
+> 「それもあったな……。
+>  ミカ、タケルを呼んできてくれないか」
+“That too... Mika, could you go call Takeru?”
+
+@35221 Mika · ミカ
+> 「は……はい」
+“Y-Yes.”
+
+@35222 Beltorchika · ベルトーチカ
+> 「艦長、OZの艦隊が接近中!
+>  モビルスーツ部隊を発進させました」
+“Captain, an OZ fleet is approaching! They've launched their Mobile Suit units.”
+
+@35223 Amuro · アムロ
+> 「なんだって!? ミカ、待て」
+“What?! Mika, wait.”
+
+@35224 Bright · ブライト
+> 「まずいな……いま攻撃されたら
+>  持ちこたえられないかもしれん」
+“This is bad... if we're attacked now, we may not hold.”
+
+@35225 Quattro · クワトロ
+> 「ああ……。やむをえん、
+>  艦長、月基地を放棄しよう」
+“Yeah... We've no choice, Captain. Let's abandon the lunar base.”
+
+@35226 Bright · ブライト
+> 「本気か? ここを出れば、
+>  ロームフェラ派に対しての
+“Are you serious? If we leave here, we lose our
+---
+>  防衛拠点を失うことになるぞ」
+defensive foothold against the Romefeller faction.”
+
+@35227 Quattro · クワトロ
+> 「例の敵のこともある。
+>  ここで無駄な損害を出したくない」
+“There's also that enemy to consider. I don't want to take needless losses here.”
+
+@35228 Alan · アラン
+> 「賛成だ。トレーズ派の連中にも、
+>  大至急退避させよう」
+“I agree. Let's have the Treize faction evacuate at once as well.”
+
+@35229 Bright · ブライト
+> 「ここでやられるよりはマシか。
+>  ミカ、甲児、全員に伝えろ
+“Better than being finished off here. Mika, Koji, tell everyone
+---
+>  我々はここを放棄する」
+we're abandoning this place.”
+
+@35230 Mika · ミカ
+> 「はい!」
+“Yes!”
+
+@35231 Koji · 甲児
+> 「あいよッ! こいつは
+>  急がないとやべぇかもな」
+“Got it! We'd better hurry, or this could get ugly.”
+
+@35232 Specials · スペシャルズ
+> 「月基地、完全に制圧しました
+>  しかし一部逃げ遅れた者をのぞき
+“The lunar base is completely under our control. However, aside from a few who failed to escape,
+---
+>  トレーズ派はすでに撤収した
+>  あとでした。追撃いたしますか」
+the Treize faction had already withdrawn. Shall we pursue?”
+
+@35233 Scirocco · シロッコ
+> 「放っておけ。月さえ確保できれば
+>  いい。バルジのバスク特佐に
+“Leave them. Securing the moon is enough. Contact Colonel Bask at Balgi.
+---
+>  連絡してくれ。私が月を落とした
+>  ことをあまり喜ばれないかもしれんがな」
+He may not be too pleased that I took the moon, though.”
+
+@35234 Specials · スペシャルズ
+> 「……はっ」
+“...Yes, sir.”
+
+@35235 Mouar · マウアー
+> 「ジェリド、大丈夫?」
+“Jerid, are you all right?”
+
+@35236 Jerid · ジェリド
+> 「ああ……ちょっとしくじっちまったみたい
+>  だな。これじゃ、しばらくはやれそうにない」
+“Yeah... seems I screwed up a bit. Like this, I won't be able to fight for a while.”
+
+@35237 Scirocco · シロッコ
+# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+> 「ジェリド特尉は?」
+“Where is Captain Jerid?”
+
+@35238 Mouar · マウアー
+> 「あばらが折れているそうですが、
+>  命に別状ないようです」
+“His ribs are broken, but his life doesn't seem to be in danger.”
+
+@35239 Scirocco · シロッコ
+# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+> 「そうか、それはよかった。ジェリド特尉
+>  は極端に運がいい。その強運を
+“I see, that's good. Captain Jerid is extremely lucky. Believing in that luck
+---
+>  信じることが、彼にとってはよい
+>  結果を生む。そういってやってくれ」
+will bring about good results for him. Tell him that.”
+
+@35240 Mouar · マウアー
+> (この男……なにを考えている……?)
+(This man... what is he thinking...?)
+
+@35241 Scirocco · シロッコ
+# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+> 「が、戦えぬのではしかたがない。
+>  ジェリド特尉には
+“But if he can't fight, there's nothing to be done. Let's have
+---
+>  しばらく休んでもらうとしよう」
+Captain Jerid rest for a while.”
+
+@35242 Mouar · マウアー
+> 「では、私も……」
+“Then I'll also...”
+
+@35243 Scirocco · シロッコ
+> 「君には残ってもらわねば困る。
+>  ……大人には大人の男が似合う
+“I'd be in trouble if you didn't stay. ...A grown man suits a grown woman.
+---
+>  小僧が好きなら別だが、君の
+>  野心を満たせるのは私の方だろう」
+If you prefer a boy, that's another matter, but I'm the one who can satisfy your ambition.”
+
+@35244 Mouar · マウアー
+> 「…………失礼します」
+“...Excuse me.”
+
+@35245 Mouar · マウアー
+> 「……なんて男……」
+“...What a man...”
+
+@35246 Lady · レディ
+> 「なんだと? それは間違いないのだな?」
+“What? There's no mistake about this?”
+
+@35247 Specials · スペシャルズ
+> 「はい。ガンダムタイプと思われるMSです
+>  すでにサイド2で
+“Yes. It's an MS believed to be a Gundam type. Already at Side 2,
+---
+>  コロニーがいくつか破壊されております」
+several colonies have been destroyed.”
+
+@35248 Lady · レディ
+> 「妙だな……例の
+>  デビルガンダムとも思えんし……
+“Strange... it doesn't seem to be that Dark Gundam either...
+---
+>  コロニーを破壊しているというのも
+>  気になる」
+and the fact that it's destroying colonies bothers me.”
+
+@35249 Specials · スペシャルズ
+> 「いかがいたしましょうか。我が隊の
+>  戦力でとめられるとは思えませんが…」
+“What shall we do? I doubt our unit's strength can stop it, but...”
+
+@35250 Lady · レディ
+> 「バルジへ報告するか……いや、
+>  このままサイド7へ向かってくれ」
+“Shall we report to Balgi...? No, set course for Side 7 as is.”
+
+@35251 Specials · スペシャルズ
+> 「了解しました。
+>  進路をサイド7へ変更します」
+“Understood. Changing course to Side 7.”
+
+@35252 Lady · レディ
+> (異星人と思われる新たな敵……
+>  OZの内紛が続いた状態で
+(A new enemy, seemingly alien... With OZ's internal strife ongoing,
+---
+>  勝てる程度の相手ならばよいが
+>  ……もしムゲゾルバドスと
+I hope it's an opponent we can beat... but if it's a force
+---
+>  同等の勢力だとしたら、
+>  地球圏は再び悪夢にみまわれる
+equal to Muge Zorbados, the Earth Sphere will be visited by nightmare again.
+---
+>  それは見過ごすわけにはいかん……)
+I cannot overlook that...)
+
+@35253 Tubarov · ツバロフ
+> 「これはこれはレディ・アン特佐。
+>  トレーズ派の反乱にも加わらず
+“Well, well, Colonel Lady Une. You didn't join the Treize faction's rebellion,
+---
+>  バスク特佐のもとで
+>  偵察任務についておられるとか
+and I hear you're on a reconnaissance mission under Colonel Bask.
+---
+>  どうやら特佐も世渡りが
+>  上手になられたようですな」
+It seems the Colonel has learned to navigate the world quite well.”
+
+@35254 Lady · レディ
+> 「フン、ツバロフ技師長、貴様の
+>  嫌みなど聞いているヒマはない
+“Hmph, Chief Engineer Tubarov, I've no time to listen to your sarcasm.
+---
+>  コロニーを破壊しているという
+>  ガンダムタイプを抑える
+I'm requisitioning the Mercurius and Vayeate to suppress
+---
+>  メリクリウスとヴァイエイトを借りるぞ」
+the Gundam type that's destroying colonies.”
+
+@35255 Tubarov · ツバロフ
+> 「あの2機はビルゴのベースとなった
+>  機体ですが、MD化はして
+“Those two are the machines that became the basis for the Virgo, but they haven't been
+---
+>  おりませんぞ。まともに扱えるパイロット
+>  がいるのであれば、むろんかまいませんが…」
+converted into MDs. If you have pilots who can handle them properly, by all means, but...”
+
+@35256 Lady · レディ
+> 「心当たりがある。
+>  トロワ特士を呼んでもらおう」
+“I have an idea. Have Warrant Officer Trowa summoned.”
+
+@35257 Trowa · トロワ
+> 「ガンダムが出たそうだな」
+“I hear a Gundam has appeared.”
+
+@35258 Lady · レディ
+> 「そうだ。しかしこのガンダムはコロニーを
+>  破壊しているらしい。すでにOZの
+“That's right. But this Gundam seems to be destroying colonies. OZ's
+---
+>  コロニー守備隊が交戦したが、
+>  まったく歯が立たんそうだ」
+Colony Defense Force has already engaged it, but they couldn't put up any fight at all.”
+
+@35259 Trowa · トロワ
+> 「……ほう。それで」
+“...I see. And?”
+
+@35260 Lady · レディ
+> 「メリクリウスとヴァイエイト、
+>  それとビルゴ部隊をまかせる
+“I'm entrusting you with the Mercurius and Vayeate, along with a Virgo Unit.
+---
+>  そのガンダムをとめてもらいたい」
+I want you to stop that Gundam.”
+
+@35261 Trowa · トロワ
+> 「……了解だ。だが、
+>  あの機体に耐えうるパイロットが
+“...Understood. But I wonder if there's a pilot besides me
+---
+>  俺の他にいるかな」
+who could withstand that machine.”
+
+@35262 Lady · レディ
+> 「先日とらえたガンダムパイロットを
+>  使え。人選はまかせる」
+“Use the Gundam pilot we captured the other day. I leave the selection to you.”
+
+@35263 Trowa · トロワ
+> 「ほう? なかなか大胆な策だ」
+“Oh? That's quite a bold plan.”
+
+@35264 Lady · レディ
+> 「生半可なパイロットでは
+>  役に立つまい。それと、特士」
+“A half-hearted pilot would be of no use. And one more thing, Warrant Officer.”
+
+@35265 Trowa · トロワ
+> 「なんだ?」
+“What is it?”
+
+@35266 Lady · レディ
+> 「接触してからあとの行動は、
+>  お前にまかせる。好きにするがいい」
+“Once you've made contact, I leave your actions to you. Do as you please.”
+
+@35267 Trowa · トロワ
+# 审校：“特佐”是“トレーズ特佐”的省略，指特列兹上校，初稿只译成 Colonel，未体现称呼对象，补全为 Colonel Treize。
+> 「……ああ……了解した、特佐」
+“...Yeah... Understood, Colonel Treize.”
+
+@35268 Lady · レディ
+# 审校：第1页原文结尾无句号，初稿加了句号；改为逗号以贴合原文断句。
+> (どうやらこの混沌とした時代の
+>  流れは、容易には変えられぬらしい
+(It seems the flow of this chaotic era cannot easily be changed,
+---
+>  たとえ……トレーズさまでも。
+>  だが私は……
+even for... Lord Treize. But I... I need only carry history toward
+---
+>  トレーズさまの理想へと、歴史を
+>  運べばよいのだ。私はあの者たちに
+Lord Treize's ideal. I will believe that those people have the power
+---
+>  時代を動かす力があると、戦って
+>  勝ちとることができるのだと、信じよう
+to move the era, that they can fight and win it.
+---
+>  トレーズ様の未来……
+>  この地球圏の未来を……)
+Lord Treize's future... the future of this Earth Sphere...)

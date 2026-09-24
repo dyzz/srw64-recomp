@@ -1,0 +1,127 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8504 Kacricon · カクリコン
+# 审校：“落ちろっ!!”是击坠敌人的攻击台词，Fall 过于生硬，改为更自然的战斗喊话。
+> 「落ちろっ!!」
+“Go down!”
+
+@8505 Kacricon · カクリコン
+> 「遅いんだよ!」
+“Too slow!”
+
+@8506 Kacricon · カクリコン
+> 「もらった!」
+“Got you!”
+
+@8507 Kacricon · カクリコン
+> 「こいつでとどめだ!!」
+“This'll finish you!”
+
+@8508 Kacricon · カクリコン
+> 「いけぇっ!」
+“Go!”
+
+@8509 Kacricon · カクリコン
+> 「目障りなんだよ!!」
+“You're in my way!”
+
+@8510 Kacricon · カクリコン
+> 「沈めっ!!」
+“Sink!”
+
+@8511 Kacricon · カクリコン
+> 「死ねよ!!」
+“Die!”
+
+@8512 Kacricon · カクリコン
+> 「くらえっ!!」
+“Take this!”
+
+@8513 Kacricon · カクリコン
+> 「落としてやるぜ!」
+“I'll shoot you down!”
+
+@8514 Kacricon · カクリコン
+> 「ちいっ!! しくじった!」
+“Tch! I messed up!”
+
+@8515 Kacricon · カクリコン
+> 「なにっ!?」
+“What?!”
+
+@8516 Kacricon · カクリコン
+> 「ぐぅっ! なんてパワーだ!?」
+“Guh! What power!”
+
+@8517 Kacricon · カクリコン
+> 「くっ! ダメージを受けすぎた!」
+“Ngh! I've taken too much damage!”
+
+@8518 Kacricon · カクリコン
+> 「うおっ!? い、いかん!!」
+“Whoa?! Th-this is bad!”
+
+@8519 Kacricon · カクリコン
+# 审校：“こいつ、動けっ!!”是对机体的喝令，damn you 会误指对手，改为 damn it 更自然。
+> 「くそっ! こいつ、動けっ!!」
+“Damn! Move, damn it!”
+
+@8520 Kacricon · カクリコン
+> 「ちっ、油断できんな」
+“Tch, I can't let my guard down.”
+
+@8521 Kacricon · カクリコン
+> 「な、なかなかやる!!」
+“Y-you're pretty good!”
+
+@8522 Kacricon · カクリコン
+> 「なんの、まだまだっ!」
+“No way, not yet!”
+
+@8523 Kacricon · カクリコン
+> 「つっ! まともに当たっちまったか……」
+“Tch! Took a direct hit...”
+
+@8524 Kacricon · カクリコン
+> 「ぐおっ! 当たっただと!?」
+“Gah! It hit?!”
+
+@8525 Kacricon · カクリコン
+> 「ふん、そんなもの!」
+“Hmph, is that all?”
+
+@8526 Kacricon · カクリコン
+> 「この程度のダメージなど!」
+“Damage like this is nothing!”
+
+@8527 Kacricon · カクリコン
+> 「効かんな、そんな攻撃は!」
+“That kind of attack won't work!”
+
+@8528 Kacricon · カクリコン
+> 「当たるかよっ!!」
+“Like that'll hit!”
+
+@8529 Kacricon · カクリコン
+> 「甘いぜっ!!」
+“Too soft!”
+
+@8530 Kacricon · カクリコン
+> 「なんのっ!」
+“No problem!”
+
+@8531 Kacricon · カクリコン
+> 「そこか!」
+“There!”
+
+@8532 Kacricon · カクリコン
+> 「効かねえっつってんだよ!!」
+“I told you it won't work!”
+
+@8533 Kacricon · カクリコン
+> 「ちっ、弾切れか……」
+“Tch, out of ammo...”
+
+@8534 Kacricon · カクリコン
+> 「くそっ! この距離では……」
+“Damn! At this range...”

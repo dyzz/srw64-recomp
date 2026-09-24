@@ -1,0 +1,114 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6781 Quatre · カトル
+> 「恐いんだね、死ぬのが……だったら、
+>  戦わなければいいんだよ!!」
+“You're scared, aren't you... scared of dying. Then you just shouldn't fight!!”
+
+@6782 Quatre · カトル
+> 「邪魔しないでっていってるだろぉ!?」
+“I told you not to get in my way?!”
+
+@6783 Quatre · カトル
+> 「近づかないでっていってるだろぉ!?」
+“I told you not to come near me?!”
+
+@6784 Quatre · カトル
+> 「僕はこの狂った宇宙のすべてを
+>  破壊するんだ……」
+“I'm going to destroy everything in this mad universe...”
+
+@6785 Quatre · カトル
+> 「だめなんだよぉ!」
+“It's no use!”
+
+@6786 Quatre · カトル
+> 「すべてを……破壊するんだ」
+“I'll destroy... everything.”
+
+@6787 Quatre · カトル
+> 「それ以上近づかないで!」
+“Don't come any closer!”
+
+@6788 Quatre · カトル
+> 「はぁ……はぁ……はぁ……」
+“Hah... hah... hah...”
+
+@6789 Quatre · カトル
+> 「消滅させる」
+“I'll wipe you out.”
+
+@6790 Quatre · カトル
+> 「宇宙に必要なのは、戦争なんだ」
+“What space needs is war.”
+
+@6791 Quatre · カトル
+> 「宇宙は狂ってしまったんだ。だから
+>  すべてを破壊するんだ」
+“Space has gone mad. That's why I'll destroy it all.”
+
+@6792 Quatre · カトル
+> 「さようなら」
+“Goodbye.”
+
+@6793 Quatre · カトル
+> 「う、うわあぁぁぁぁぁぁーーっ!!」
+“U-Uwaaaaaaaaah!!”
+
+@6794 Quatre · カトル
+> 「くっ、どうしても戦うんだね」
+“Ngh, so you insist on fighting.”
+
+@6795 Quatre · カトル
+> 「うわぁぁっ!
+>  すべてを破壊するんだぁぁっ!」
+“Uwaaah! I'll destroy everything!”
+
+@6796 Quatre · カトル
+> 「死ぬよ」
+“You'll die.”
+
+@6797 Quatre · カトル
+> 「うくっ、こんなものではだめだよ!」
+“Ugh, this isn't enough!”
+
+@6798 Quatre · カトル
+> 「くっ、そんなに死にたいなら!」
+“Ngh, if you want to die that badly!”
+
+@6799 Quatre · カトル
+> 「僕の前にあらわれるなら、殺すよ」
+“If you stand before me, I'll kill you.”
+
+@6800 Quatre · カトル
+> 「だめなんだよ!」
+“It's no use!”
+
+@6801 Quatre · カトル
+> 「ムダなんだよ!」
+“It's pointless!”
+
+@6802 Quatre · カトル
+> 「邪魔をしないで!」
+“Don't get in my way!”
+
+@6803 Quatre · カトル
+> 「本気でやっているのかい? 死ぬよ?」
+“Are you serious? You'll die, you know?”
+
+@6804 Quatre · カトル
+> 「そう、死にたいんだね……
+>  なら殺してあげるよ」
+“I see, so you want to die... then I'll kill you.”
+
+@6805 Quatre · カトル
+> 「効かないって言ってるだろぅ!?」
+“I told you it won't work?!”
+
+@6806 Quatre · カトル
+> 「エネルギー切れか」
+“Out of energy, huh.”
+
+@6807 Quatre · カトル
+> 「射程外……死ぬのがこわいんだね」
+“Out of range... you're afraid of dying, aren't you.”

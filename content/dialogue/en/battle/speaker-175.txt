@@ -1,0 +1,116 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9533 Death Gaia · デスガイヤー
+> 「ええいめんどうだ!」
+“Enough, this is a pain!”
+
+@9534 Death Gaia · デスガイヤー
+> 「いっきにケリをつけてやる!」
+“I'll finish this all at once!”
+
+@9535 Death Gaia · デスガイヤー
+> 「さぁ止めをさしてやる!」
+“Now, I'll put you out of your misery!”
+
+@9536 Death Gaia · デスガイヤー
+> 「死ね!」
+“Die!”
+
+@9537 Death Gaia · デスガイヤー
+> 「燃える、燃えるぞ!」
+“It burns, it burns!”
+
+@9538 Death Gaia · デスガイヤー
+> 「くるならきてみろ!」
+“Come on then, try it!”
+
+@9539 Death Gaia · デスガイヤー
+> 「このデスガイヤーが相手だ!」
+“You face Death Gaia himself!”
+
+@9540 Death Gaia · デスガイヤー
+> 「叩きつぶしてやろう!」
+“I'll smash you flat!”
+
+@9541 Death Gaia · デスガイヤー
+> 「こ、この俺が負けるなどと……」
+“Th-That I, of all people, would lose...”
+
+@9542 Death Gaia · デスガイヤー
+> 「ムゲ帝王さまぁぁぁぁーっ!」
+“Emperor Muge, sirrrrr!”
+
+@9543 Death Gaia · デスガイヤー
+> 「ぐっ!? 銀河の果てでこの俺が
+>  負けるなど、有り得ないこと!」
+“Guh?! That I would lose at the edge of the galaxy—impossible!”
+
+@9544 Death Gaia · デスガイヤー
+> 「うぉ!? 俺の戦法に間違いは
+>  なかったはずだ!」
+“Whoa?! My tactics couldn't have been wrong!”
+
+@9545 Death Gaia · デスガイヤー
+> 「うぉぉぉぉぉ!?」
+“Whoaaaaaah?!”
+
+@9546 Death Gaia · デスガイヤー
+> 「こ、こんなことがっ!!」
+“Th-This can't be!!”
+
+@9547 Death Gaia · デスガイヤー
+> 「ば、ばかなぁぁっ!」
+“I-Impossible!”
+
+@9548 Death Gaia · デスガイヤー
+> 「バカなっ!?」
+“Impossible?!”
+
+@9549 Death Gaia · デスガイヤー
+> 「このデスガイヤー、これしきのことで
+>  やられはせん!」
+“I, Death Gaia, won't be beaten by something like this!”
+
+@9550 Death Gaia · デスガイヤー
+> 「この程度でやられる俺ではないわ!」
+“I'm not one to be taken down by this much!”
+
+@9551 Death Gaia · デスガイヤー
+> 「おおっ!?」
+“Oh?!”
+
+@9552 Death Gaia · デスガイヤー
+> 「効かぬわ!」
+“It doesn't hurt!”
+
+@9553 Death Gaia · デスガイヤー
+> 「ばかめ!」
+“Fool!”
+
+@9554 Death Gaia · デスガイヤー
+> 「貴様らごときが!」
+“You lot, of all people!”
+
+@9555 Death Gaia · デスガイヤー
+> 「当たらんな!」
+“You won't hit me!”
+
+@9556 Death Gaia · デスガイヤー
+> 「ハハハハハッ!」
+“Hahahahaha!”
+
+@9557 Death Gaia · デスガイヤー
+> 「当たらんな!」
+“You won't hit me!”
+
+@9558 Death Gaia · デスガイヤー
+> 「ハハハハハッ!」
+“Hahahahaha!”
+
+@9559 Death Gaia · デスガイヤー
+> 「ぬうぅ弾切れとはな!」
+“Ngh, out of ammo?!”
+
+@9560 Death Gaia · デスガイヤー
+> 「ばかなっ届かんだとぉっ!?」
+“Impossible, it can't reach?!”

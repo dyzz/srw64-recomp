@@ -1,0 +1,126 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7606 Gale · ゲイル
+> 「そこをどけっ!!」
+“Out of my way!”
+
+@7607 Gale · ゲイル
+> 「容赦はしない!!」
+“No mercy!”
+
+@7608 Gale · ゲイル
+> 「覚悟を決めろ!!」
+“Prepare yourself!”
+
+@7609 Gale · ゲイル
+> 「さらばだっ!!」
+“Farewell!”
+
+@7610 Gale · ゲイル
+> 「許せっ!!」
+“Forgive me!”
+
+@7611 Gale · ゲイル
+> 「あまいなっ!」
+“Too naive!”
+
+@7612 Gale · ゲイル
+> 「運が悪かったな!」
+“Bad luck for you!”
+
+@7613 Gale · ゲイル
+> 「あまいぞっ! そこだっ!!」
+“Too naive! There!”
+
+@7614 Gale · ゲイル
+> 「くっ……見事だ」
+“Ngh... Well done.”
+
+@7615 Gale · ゲイル
+> 「うわぁぁぁぁぁっ!!」
+“Uwaaaaaaah!”
+
+@7616 Gale · ゲイル
+> 「ぐっ! な……なんだと!?」
+“Guh! W-What?!”
+
+@7617 Gale · ゲイル
+> 「ぐっ、私としたことが……!」
+“Guh, to think I'd slip up...!”
+
+@7618 Gale · ゲイル
+> 「おうわぁぁぁぁっ!!」
+“Owwaaaaaah!”
+
+@7619 Gale · ゲイル
+> 「うおぉぉ!? う、うかつだったか!?」
+“Uwooooh?! W-Was I careless?!”
+
+@7620 Gale · ゲイル
+> 「おおぉぉぉぉっ!」
+“Oooooooh!”
+
+@7621 Gale · ゲイル
+> 「おおっ!?」
+“Oh?!”
+
+@7622 Gale · ゲイル
+> 「くっ!!」
+“Ngh!”
+
+@7623 Gale · ゲイル
+> 「やるな!」
+“Not bad!”
+
+@7624 Gale · ゲイル
+> 「やはりその程度か!?」
+“Is that all you've got?!”
+
+@7625 Gale · ゲイル
+> 「大したダメージではない!」
+“That's hardly any damage!”
+
+@7626 Gale · ゲイル
+> 「あまいな!」
+“Too naive!”
+
+@7627 Gale · ゲイル
+> 「そんな腕でやられるような私でない」
+“I'm not the kind to be beaten by skill like that.”
+
+@7628 Gale · ゲイル
+> 「遅すぎる!」
+“Too slow!”
+
+@7629 Gale · ゲイル
+> 「本気を出せ!」
+“Show me your real strength!”
+
+@7630 Gale · ゲイル
+> 「その程度で!」
+“With just that!”
+
+@7631 Gale · ゲイル
+> 「遅い!」
+“Slow!”
+
+@7632 Gale · ゲイル
+> 「そんな攻撃で相手を倒せると
+>  思うな!」
+“Don't think an attack like that can beat your enemy!”
+
+@7633 Gale · ゲイル
+> 「効きはせん!」
+“It won't work!”
+
+@7634 Gale · ゲイル
+> 「ビームなど無駄だ!」
+“Beams are useless!”
+
+@7635 Gale · ゲイル
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@7636 Gale · ゲイル
+> 「おのれ、卑怯な!」
+“Curse you, that's cowardly!”

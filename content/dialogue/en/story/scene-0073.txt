@@ -1,0 +1,808 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@30846 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長! 所属不明機
+>  から通信が入っています!」
+“Captain Bright! We're receiving a transmission from an unidentified craft!”
+
+@30847 Bright · ブライト
+> 「所属不明機だと?
+>  我々にか?」
+“An unidentified craft? For us?”
+
+@30848 Beltorchika · ベルトーチカ
+> 「はい、コードに{HeroMech}と……
+>  どうしますか?」
+“Yes, the code reads {HeroMech} and... What should we do?”
+
+@30849 Bright · ブライト
+> 「罠ということもあるまい。つないでくれ」
+“It's hardly likely to be a trap. Put them through.”
+
+@30850 Beltorchika · ベルトーチカ
+> 「了解。スクリーンに出します!」
+“Understood. Putting them on screen!”
+
+@30851 Howard · ハワード
+> 「お初にお目にかかる、
+>  {HeroMech}の諸君じゃな?
+“A pleasure to make your acquaintance, crew of the {HeroMech}, I take it?
+---
+>  わしは戦艦ピースミリオンの艦長を
+>  やっとる、ハワードという者じゃ」
+I'm the captain of the battleship Peacemillion. The name's Howard.”
+
+@30852 Bright · ブライト
+> 「アーガマ艦長、ブライト・ノアです。
+>  あなた方の所属をうかがいたい
+“I'm Bright Noa, captain of the Argama. I'd like to know who you're affiliated with.
+---
+>  なぜ我々に接触を?」
+Why have you made contact with us?”
+
+@30853 Howard · ハワード
+> 「わしらはどこにも所属などしとりゃせん
+>  お前さん方に会いに来たのは
+“We don't belong to anyone, sonny. The reason we came to see you folks is
+---
+>  届け物があるからじゃ」
+we've got a delivery for you.”
+
+@30854 Bright · ブライト
+> 「届け物?」
+“A delivery?”
+
+@30855 Duo · デュオ
+> 「いよっ、ひさしぶり!」
+“Yo, long time no see!”
+
+@30856 Quatre · カトル
+> 「デュオ! デュオじゃないか!」
+“Duo! Is that you, Duo?!”
+
+@30857 Noin · ノイン
+> 「デュオ・マックスウェルか!
+>  それにヒイロ・ユイ……!」
+“Duo Maxwell! And Heero Yuy too...!”
+
+@30858 Duo · デュオ
+> 「手伝いに来てやったぜ。
+>  ま、銀河帝国といい
+“Figured I'd come lend a hand. I mean, with the Galactic Empire
+---
+>  ホワイトファングといい、
+>  ほっとくわけにもいかねえしな」
+and White Fang both around, I can't just sit back, right?”
+
+@30859 Heero · ヒイロ
+> 「俺の敵はゼクスだ。
+>  奴は宇宙を滅ぼす
+“My enemy is Zechs. He'll destroy space itself.
+---
+>  奴を殺すまで、同行させてもらう」
+Until I kill him, I'll be tagging along.”
+
+@30860 Noin · ノイン
+> 「…………」
+“...”
+
+@30861 Quatre · カトル
+> 「ヒイロも来てくれたんだね……。
+>  ありがとうございます、ハワードさん!」
+“Heero came too, huh... Thank you, Mr. Howard!”
+
+@30862 Howard · ハワード
+> 「なあに。お前さん、
+>  04のパイロットじゃな?
+“Think nothing of it. Say, you're the pilot of 04, aren't you?
+---
+>  もしよかったら、お前さんのガンダムの
+>  調整もやってやるぞ。ことのついでだ」
+If you like, I'll tune up your Gundam for you while I'm at it.”
+
+@30863 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「本当ですか? サンドロックを……。
+>  ぜひお願いします!」
+“Really? You'd tune up Sandrock...? Please, I'd appreciate it!”
+
+@30864 Koji · 甲児
+> 「デュオ! お前あれから、
+>  どこで何してたんだよ!?」
+“Duo! Where the heck have you been and what've you been doing since then?!”
+
+@30865 Duo · デュオ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ま、いろいろとね。
+>  その気になったら話してやるよ
+“Eh, this and that. I'll tell you when I feel like it.
+---
+>  ブライト艦長、
+>  そっちに行ってもかまわねえかい?」
+Captain Bright, mind if I come aboard?”
+
+@30866 Bright · ブライト
+> 「聞くまでもない、よく来てくれた。
+>  オペレーター、右舷ハッチ開けろ!」
+“No need to ask. Glad to have you. Operator, open the starboard hatch!”
+
+@30867 Duo · デュオ
+> 「旧ジオンの連中まで
+>  出てきたっていうじゃねえか
+“I hear even the old Zeon bunch have shown up.
+---
+>  お前ら、直接話したんだって?」
+You guys talked to them face to face?”
+
+@30868 Kamille · カミーユ
+> 「アクシズの奴らか。
+>  今のところ敵じゃないけどね
+“You mean Axis? They're not our enemy for now, at least.
+---
+>  この先どうなるかはわからない」
+No telling what happens down the line, though.”
+
+@30869 Judau · ジュドー
+> 「まったくややこしいよな。銀河帝国
+>  にOZ、ホワイトファングにアクシズに……」
+“Man, this is one big mess. The Galactic Empire, OZ, White Fang, Axis...”
+
+@30870 David · デビッド
+> 「いちばん、わけわからねえのが
+>  ホワイトファングだな。しかも
+“The one that makes the least sense is White Fang. And on top of that,
+---
+>  指導者があのゼクスときやがった。
+>  あいつら、ただ状況をかきまわすために
+their leader turns out to be that Zechs. You don't suppose they came out here
+---
+>  出てきたんじゃねえだろうな」
+just to stir up the whole situation?”
+
+@30871 Simone · シモーヌ
+> 「まさか……」
+“Surely not...”
+
+@30872 Heero · ヒイロ
+> 「いや、ゼクスの狙いはそれだ」
+“No. That's exactly what Zechs is after.”
+
+@30873 Simone · シモーヌ
+> 「え?」
+“Huh?”
+
+@30874 Quatre · カトル
+> 「ヒイロ? それってどういうことだい?」
+“Heero? What do you mean by that?”
+
+@30875 Heero · ヒイロ
+> 「奴が最終的に何を望むのかは
+>  俺にもわからん。だが、奴は
+“Even I don't know what he ultimately wants. But he
+---
+>  バルジを墜としOZになりかわった。
+>  それで第1の目的は達成された」
+shot down Barge and took over OZ. That accomplished his first objective.”
+
+@30876 Roux · ルー
+> 「第1の……。それで?
+>  第2の目的は?」
+“His first... So then? What's his second objective?”
+
+@30877 Heero · ヒイロ
+> 「それはどうでもいい。
+>  その前に俺が奴を殺す」
+“That doesn't matter. Before that, I'll kill him.”
+
+@30878 Pagan · パーガン
+> 「リリーナ様、
+>  どうか危険なことはおやめください」
+“Lady Relena, please refrain from doing anything dangerous.”
+
+@30879 Relena · リリーナ
+> 「いいえ、兄をとめなければいけません。
+>  私はたとえ
+“No. I must stop my brother. No matter
+---
+>  どのような手段をつかっても、
+>  この争いをやめさせてみせます」
+what means I have to use, I will put an end to this conflict.”
+
+@30880 Treize · トレーズ
+> 「本当にそうお思いなら、私の
+>  意思にしたがっていただきましょう
+“If you truly feel that way, then kindly follow my wishes,
+---
+>  リリーナ嬢」
+Lady Relena.”
+
+@30881 Relena · リリーナ
+> 「トレーズ・クシュリナーダ……なぜここに?」
+“Treize Khushrenada... Why are you here?”
+
+@30882 Treize · トレーズ
+> 「あなたにロームフェラ財団
+>  最高幹部会の決定を
+“I thought I would convey to you the decision of the
+---
+>  お伝えしようと思ってね」
+Romefeller Foundation's Supreme Council.”
+
+@30883 Relena · リリーナ
+> 「財団の決定?」
+“The Foundation's decision?”
+
+@30884 Treize · トレーズ
+> 「さよう。本日をもって、
+>  リリーナ・ピースクラフトを
+“Indeed. As of today, Relena Peacecraft is
+---
+>  財団代表から解任する」
+relieved of her post as the Foundation's representative.”
+
+@30885 Relena · リリーナ
+> 「……わかりました。ロームフェラの権限
+>  を、お返しします。でもその前に
+“...I understand. I return Romefeller's authority to you. But before that,
+---
+>  わたくしにはやるべきことがあります。兄
+>  に戦いをやめるよう説得したいのです」
+there is something I must do. I want to persuade my brother to stop fighting.”
+
+@30886 Treize · トレーズ
+> 「あなたにはそれはできない。
+>  結末は私の手で用意しよう
+“You cannot do that. I will prepare the ending with my own hands.
+---
+>  あなたの行きたいところへ行くといい。
+>  あなたは自由だ」
+You may go wherever you wish. You are free.”
+
+@30887 Relena · リリーナ
+> 「…………」
+“...”
+
+@30888 Gandal · ガンダル
+> 「くそっ、地球人どもめ……!
+>  こざかしい{HeroMech}が
+“Damn those Earthlings...! It's because that clever little {HeroMech}
+---
+>  ことごとく邪魔しおるせいで、
+>  いまだにさしたる戦果があがらぬ
+keeps getting in the way at every turn that we still have no real results.
+---
+>  マーズばかりかデューク・フリードまでも
+>  討ちもらし、地球制圧作戦は
+Not only Mars but even Duke Fleed escaped destruction, and the Earth suppression campaign
+---
+>  とどこおる一方だ。このままでは、
+>  このガンダルが皇帝陛下の
+is doing nothing but stalling. At this rate, I, Gandal, may incur
+---
+>  お怒りをこうむるやも知れん。
+>  そのようなことになっては……
+the Emperor's wrath. If that were to happen...
+---
+>  ええい、いまいましい!」
+Argh, how infuriating!”
+
+@30889 Specials · スペシャルズ
+> 「ミリアルド司令、
+>  シャトルが接近してきます
+“Commander Milliardo, a shuttle is approaching.
+---
+>  ロームフェラのシャトルですが……
+>  いかがいたしますか?」
+It's a Romefeller shuttle, but... what shall we do?”
+
+@30890 Milliardo · ミリアルド
+> 「撃て」
+“Fire.”
+
+@30891 Specials · スペシャルズ
+> 「は……、しかし……」
+“Yes... but...”
+
+@30892 Dorothy · ドロシー
+> 「ミリアルド様、お懐かしゅうござい
+>  ますわ。覚えていらっしゃいまして?
+“Lord Milliardo, how nostalgic. Do you remember me?
+---
+>  昔トレーズ様やあなたによく遊んで
+>  もらった、ドロシー・カタロニアです」
+I am Dorothy Catalonia, whom you and Lord Treize used to play with so often.”
+
+@30893 Milliardo · ミリアルド
+> 「……ドロシーか、何をしに来た?」
+“...Dorothy. What have you come here for?”
+
+@30894 Dorothy · ドロシー
+> 「ミリアルド様の戦いを拝見しに。
+>  あなたが人類に突きつけた
+“To witness your battle, Lord Milliardo. Please let me see
+---
+>  戦いの未来を、
+>  どうか見届けさせてください」
+the future of war you have thrust before humanity.”
+
+@30895 Milliardo · ミリアルド
+> 「わかったようなことをいう」
+“You speak as if you understand.”
+
+@30896 Dorothy · ドロシー
+> 「とんでもない、私にはミリアルド様の
+>  お心などわかりません
+“Not at all. I do not understand your heart, Lord Milliardo.
+---
+>  なぜ完全平和主義者であった
+>  あなたが、人類を
+Why would you, who were once a total pacifist, try to drive
+---
+>  滅亡へ追いやろうとするのか?
+>  それが英雄の本能?
+humanity to extinction? Is that the instinct of a hero?
+---
+>  もしかしたら、もともと平和が
+>  お嫌いだったのかしら?
+Perhaps you simply disliked peace from the start?
+---
+>  ドロシーは、ただお側にいて、
+>  見守っていたいだけですの」
+Dorothy merely wishes to stay by your side and watch over you.”
+
+@30897 Milliardo · ミリアルド
+> 「ふ……。わかった、いいだろう。
+>  ドロシー嬢をお迎えしろ」
+“Hmph... Very well, then. Escort Lady Dorothy aboard.”
+
+@30898 Specials · スペシャルズ
+> 「は、ははっ!」
+“Y-yes, sir!”
+
+@30899 Dorothy · ドロシー
+> 「ありがとうございます、ミリアルド様。
+>  ドロシーは
+“Thank you, Lord Milliardo. Dorothy will
+---
+>  決してお側をはなれませんわ……」
+never leave your side...”
+
+@30900 Bright · ブライト
+> 「……では、我々はホワイトファングを
+>  叩くべきだというのだな」
+“...So you're saying we should strike White Fang, then.”
+
+@30901 Heero · ヒイロ
+> 「ああ」
+“Yeah.”
+
+@30902 Alan · アラン
+> 「しかし、いま地球には
+>  銀河帝国軍の
+“But right now the Galactic Empire's
+---
+>  先遣艦隊が
+>  攻撃を仕掛けている
+advance fleet is attacking Earth.
+---
+>  このうえ地球人同士で
+>  争ってどうしようというのだ?」
+On top of that, what do you hope to accomplish by Earthlings fighting each other?”
+
+@30903 Heero · ヒイロ
+> 「お前は奴のことがわかっていない」
+“You don't understand him.”
+
+@30904 Alan · アラン
+> 「何? 奴とはゼクス……いや、
+>  ミリアルド・ピースクラフトのことか?」
+“What? By him, you mean Zechs... no, Milliardo Peacecraft?”
+
+@30905 Heero · ヒイロ
+> 「そうだ。奴の目的は、人類に
+>  滅びの道を突きつけることだ」
+“That's right. His goal is to thrust the path of destruction before humanity.”
+
+@30906 Show · ショウ
+> 「人類に、滅びの道を……?」
+“The path of destruction... before humanity?”
+
+@30907 Heero · ヒイロ
+> 「ああ。奴は人類を愚かなものと
+>  考えている。その人類に、自らの
+“Yeah. He considers humanity foolish. By showing humanity
+---
+>  滅亡の未来を見せてやることで、
+>  新しい未来に目覚めさせようと
+the future of its own destruction, he intends to awaken it
+---
+>  しているのだ。奴の敵は異星人
+>  ではない、地球人そのものだ」
+to a new future. His enemy is not aliens—it is Earthlings themselves.”
+
+@30908 Marvel · マーベル
+> 「なんてこと……」
+“How awful...”
+
+@30909 Daisuke · 大介
+> 「馬鹿なことを! 皇帝ズールが
+>  どんな奴か、彼は知らないのか!?」
+“That's insane! Doesn't he know what kind of man Emperor Zuul is?!”
+
+@30910 Takeru · タケル
+> 「正気じゃない。
+>  もしそれが本当なら……」
+“He can't be serious. If that's really true...”
+
+@30911 Jun · ジュン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「戦わなくちゃしょうがないね。
+>  どうする、ブライト艦長?」
+“We've got no choice but to fight. What do we do, Captain Bright?”
+
+@30912 Heero · ヒイロ
+> 「俺はひとりでも行く。
+>  来たくなければ、無理にとはいわん」
+“I'll go alone if I have to. If you don't want to come, I won't force you.”
+
+@30913 Ark · アーク（按段落 3DD1）
+> 「俺も行こう」
+“I'll go too.”
+
+@30914 Selain · セレイン（按段落 3DD2）
+> 「私も行くことにしよう」
+“I suppose I'll go as well.”
+
+@30915 Brad · ブラッド（按段落 3DD3）
+> 「俺も行ってやるぜ」
+“I'll go too, damn it.”
+
+@30916 Manami · マナミ（按段落 3DD4）
+> 「あたしも行くわ」
+“I'm going too.”
+
+@30917 Simone · シモーヌ
+> 「{HeroNick}?」
+“{HeroNick}?”
+
+@30918 Ark · アーク（按段落 3DD1）
+> 「ヒイロのいった通りだとしたら、
+>  ミリアルドの行動は納得できる
+“If what Heero says is true, then Milliardo's actions make sense.
+---
+>  例えそうじゃなくても、奴らが地球
+>  を敵視しているのは事実なんだ
+Even if it isn't, it's a fact that they regard Earth as an enemy.
+---
+>  銀河帝国との戦いを前にしては
+>  彼らを排除するしかない」
+With the war against the Galactic Empire ahead of us, we have no choice but to eliminate them.”
+
+@30919 Selain · セレイン（按段落 3DD2）
+> 「ヒイロのいう通りだとしたら、
+>  ミリアルドの行動は
+“If what Heero says is true, then Milliardo's actions are
+---
+>  納得できるものだ。例え
+>  そうじゃなくても、奴らが地球を
+understandable. Even if it isn't, it's a fact that they
+---
+>  敵視しているのは事実だ。
+>  銀河帝国との戦いを前にしては
+regard Earth as an enemy. With the war against the Galactic Empire
+---
+>  彼らを排除するしかないのではないか」
+ahead of us, we have no choice but to eliminate them.”
+
+@30920 Brad · ブラッド（按段落 3DD3）
+> 「ヒイロがいった通りだとしたら、
+>  ミリアルドの行動は納得できるな
+“If what Heero said is true, then Milliardo's actions make sense.
+---
+>  例えそうじゃなくても、
+>  奴らが地球を
+Even if it isn't, it's a fact that they
+---
+>  敵視しているのは事実だぜ。
+>  銀河帝国との戦いを前にしては
+regard Earth as an enemy. With the war against the Galactic Empire ahead of us,
+---
+>  彼らを排除するしかねぇ」
+we've got no choice but to eliminate them.”
+
+@30921 Manami · マナミ（按段落 3DD4）
+> 「ヒイロのいった通りだとしたら、
+>  ミリアルドの行動は納得できるわ
+“If what Heero said is true, then Milliardo's actions make sense.
+---
+>  例えそうじゃなくても、
+>  彼らが地球を
+Even if it isn't, it's a fact that they
+---
+>  敵視しているのは事実だし。
+>  銀河帝国との戦いを前にしては
+regard Earth as an enemy. With the war against the Galactic Empire ahead of us,
+---
+>  彼らを排除するしか
+>  ないんじゃないかしら」
+I suppose we have no choice but to eliminate them.”
+
+@30922 Noin · ノイン
+> 「私も行かせて下さい」
+“Please let me go as well.”
+
+@30923 Quatre · カトル
+> 「ノインさん!?」
+“Noin?!”
+
+@30924 Noin · ノイン
+> 「ゼクスに会って、その真意を確かめたい
+>  のです」
+“I want to meet Zechs and ascertain his true intentions.”
+
+@30925 Bright · ブライト
+> 「……わかった。だがいま我々が動く
+>  わけにはいかん。主力を分け、
+“...Understood. But we cannot move right now. Let's split off our main force
+---
+>  別働隊を編成しよう」
+and form a separate unit.”
+
+@30926 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「感謝します、ブライト艦長」
+“Thank you, Captain Bright.”
+
+@30927 Quinze · カーンズ
+> 「{HeroMech}ですかな」
+“So this is the {HeroMech}, is it?”
+
+@30928 Milliardo · ミリアルド
+> 「たったあれだけの数で、このリーブラを
+>  落とそうというのか……?」
+“With only that many, they intend to bring down this Libra...?”
+
+@30929 Dorothy · ドロシー
+> 「このモビルドールで戦いの行方を
+>  見られるなんて……
+“To be able to watch how the battle unfolds from this Mobile Doll...
+---
+>  ドロシー、うれしくってワクワクしますわ」
+Dorothy is so happy she's trembling with excitement.”
+
+@30930 Milliardo · ミリアルド
+> 「……さすがに、強いな」
+“...They're strong, as expected.”
+
+@30931 Quinze · カーンズ
+> 「司令、なにをなさるおつもりです!?」
+“Commander, what do you intend to do?!”
+
+@30932 Milliardo · ミリアルド
+> 「MDだけでは、彼らはとめられん」
+“The MDs alone cannot stop them.”
+
+@30933 Quinze · カーンズ
+> 「司令! まだライトニング・カウントで
+>  いるおつもりなのですか!?」
+“Commander! Do you still intend to remain Lightning Count?!”
+
+@30934 Milliardo · ミリアルド
+> 「………………」
+“...”
+
+@30935 Milliardo · ミリアルド
+> 「……さすがに、強いな」
+“...They're strong, as expected.”
+
+@30936 Quinze · カーンズ
+> 「司令、なにをなさるおつもりです!?」
+“Commander, what do you intend to do?!”
+
+@30937 Milliardo · ミリアルド
+> 「MDだけでは、彼らはとめられん」
+“The MDs alone cannot stop them.”
+
+@30938 Quinze · カーンズ
+> 「司令! まだライトニング・カウントで
+>  いるおつもりなのですか!?」
+“Commander! Do you still intend to remain Lightning Count?!”
+
+@30939 Milliardo · ミリアルド
+> 「………………」
+“...”
+
+@30940 Milliardo · ミリアルド
+> 「くっ、さすがだな、{HeroMech}」
+“Ngh, you're good, {HeroMech}.”
+
+@30941 Heero · ヒイロ
+> 「第1目標撃破。
+>  第2目標を攻撃する」
+“First target destroyed. Attacking second target.”
+
+@30942 Ark · アーク（按段落 3DD1）
+> 「リーブラか……今ならおとせるかも
+>  しれない。全機、続いてくれ!」
+“Libra, huh... We might be able to bring it down now. All units, follow me!”
+
+@30943 Selain · セレイン（按段落 3DD2）
+> 「リーブラか。今ならおちるな。全機、
+>  態勢をたて直せ。リーブラにしかける」
+“Libra, is it? We can bring it down now. All units, regroup. We're attacking Libra.”
+
+@30944 Brad · ブラッド（按段落 3DD3）
+> 「戦艦リーブラだったな。
+>  面白れぇ、いくぜぇっ!」
+“So that battleship's Libra. Interesting, let's go!”
+
+@30945 Manami · マナミ（按段落 3DD4）
+> 「巨大戦艦リーブラ……おとすには、
+>  いましかないわ。みんな、いきましょう!」
+“The giant battleship Libra... If we're going to bring it down, it has to be now. Everyone, let's go!”
+
+@30946 Bright · ブライト
+> 「攻撃隊に告ぐ!
+>  至急アーガマに帰還せよ!」
+“To the attack team! Return to the Argama at once!”
+
+@30947 Ark · アーク（按段落 3DD1）
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!? なぜです!
+>  あと一撃で
+“Captain Bright?! Why?! One more hit and
+---
+>  リーブラに、とどめがさせるというのに!」
+we could've finished off Libra!”
+
+@30948 Selain · セレイン（按段落 3DD2）
+> 「艦長!? なぜだ! あと一撃で
+>  リーブラに、とどめがさせるのだ!」
+“Captain?! Why?! One more hit and we could've finished off Libra!”
+
+@30949 Brad · ブラッド（按段落 3DD3）
+> 「艦長!? なぜだっ! あと一撃で
+>  リーブラに、とどめがさせるんだぜ!」
+“Captain?! Why?! One more hit and we could've finished off Libra!”
+
+@30950 Manami · マナミ（按段落 3DD4）
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!? なぜなんです!
+>  あと一撃で
+“Captain Bright?! Why?! One more hit and
+---
+>  リーブラに、とどめがさせるのに!」
+we could've finished off Libra!”
+
+@30951 Bright · ブライト
+> 「銀河帝国軍の急襲を受けた
+>  第一波は何とか退けたが
+“The first wave took a surprise attack from the Galactic Empire forces, but we managed to drive them off.
+---
+>  再び奴らがやってくるのは
+>  時間の問題だ
+It's only a matter of time before they come again.
+---
+>  残念だが、
+>  大至急帰還するんだ!」
+I'm sorry, but return at once!”
+
+@30952 Ark · アーク（按段落 3DD1）
+> 「何だって!? くそっ、
+>  あと一歩というところなのに!」
+“What?! Damn it, we were one step away!”
+
+@30953 Selain · セレイン（按段落 3DD2）
+> 「何ということだ!?
+>  ……あと一歩というところで!」
+“What did you say?! ...And we were one step away!”
+
+@30954 Brad · ブラッド（按段落 3DD3）
+> 「何だとぉ!? くそっ、
+>  あと一歩なんだぜ!」
+“What?! Damn it, we were one step away!”
+
+@30955 Manami · マナミ（按段落 3DD4）
+> 「何ですって!?
+>  ……あと一歩なのに!」
+“What?! ...And we were one step away!”
+
+@30956 Noin · ノイン
+> 「やむをえない。
+>  アーガマがおちれば我々は終わりだ
+“It can't be helped. If the Argama falls, we're finished.
+---
+>  残念だが、ここは……」
+It's a shame, but here we...”
+
+@30957 Heero · ヒイロ
+> 「そう判断すべきだ。ゼクス…命びろい
+>  したな。……だが、貴様に次はない」
+“That's the call to make. Zechs... you got lucky. ...But there won't be a next time.”
+
+@30958 Ark · アーク（按段落 3DD1）
+> 「……くっ、了解!
+>  リーブラ攻撃隊、帰還します!」
+“...Ngh, understood! Libra Attack Team, returning!”
+
+@30959 Selain · セレイン（按段落 3DD2）
+> 「……了解した!
+>  攻撃隊、帰還する!」
+“...Understood! Attack team, return!”
+
+@30960 Bright · ブライト
+> 「すまん、頼む……」
+“Sorry, I'm counting on you...”
+
+@30961 Quinze · カーンズ
+> 「{HeroMech}は撤退しました。
+>  近づけばこのリーブラの主砲の恐ろ
+“The {HeroMech} has withdrawn. If they'd come closer, we could have shown them the terror
+---
+>  しさを見せつけられたのですが。
+of this Libra's main cannon.
+---
+>  しかしなぜ……?」
+But why...?”
+
+@30962 Milliardo · ミリアルド
+> 「銀河帝国軍だ。おそらく
+>  本隊が攻撃されたのだろう」
+“It's the Galactic Empire forces. Their main force was likely attacked.”
+
+@30963 Quinze · カーンズ
+> 「なるほど。では、追撃なさいますか?」
+“I see. Then shall we pursue?”
+
+@30964 Milliardo · ミリアルド
+> 「やめておけ」
+“Let them go.”
+
+@30965 Quinze · カーンズ
+> 「は、しかし……」
+“Yes, but...”
+
+@30966 Dorothy · ドロシー
+# 审校：ドロシー是对ミリアルド说话，不是对女性贵族，删去误加的“my lady”。
+> 「{HeroMech}との交戦のあとで
+>  異星人とも
+“After fighting the {HeroMech}, do you really have it in you to fight aliens too?
+---
+>  戦う余裕がおありになって?
+>  今は戦力を回復すべき時ですわ」
+Now is the time to recover our strength.”
+
+@30967 Beltorchika · ベルトーチカ
+> 「銀河帝国軍、
+>  第2波接近!
+“Galactic Empire forces, second wave approaching!
+---
+>  戦闘空域まで、もうまもなくです!」
+They'll be in the combat zone any moment now!”
+
+@30968 Reika · レイカ
+> 「艦長、リーブラの攻撃隊は……」
+“Captain, the Libra attack team...”
+
+@30969 Bright · ブライト
+> 「攻撃隊には、
+>  すでにもどるよう要請した
+“I've already ordered the attack team to return.
+---
+>  ……迎撃態勢を整えろ!
+>  ここで踏みとどまるんだ
+...Prepare to intercept! We hold our ground here.
+---
+>  彼らが帰ってくるまで、
+>  何としても沈むな!」
+No matter what, don't let this ship sink until they're back!”
+
+@30970 Beltorchika · ベルトーチカ
+> 「戦闘空域に入ります!」
+“Entering the combat zone!”
+
+@30971 Bright · ブライト
+> 「主砲発射用意!
+>  くそっ、急いでくれよ……!」
+“Prepare to fire the main cannon! Damn it, hurry...!”

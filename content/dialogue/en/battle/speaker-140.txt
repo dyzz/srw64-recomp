@@ -1,0 +1,106 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7067 Rose · ロゼ
+> 「覚悟っ!」
+“Get ready!”
+
+@7068 Rose · ロゼ
+# 审校：原文是疑问句「どうした!」，初稿漏了问号，补上。
+> 「どうした!」
+“What's wrong?!”
+
+@7069 Rose · ロゼ
+> 「ええぃ!」
+“Hah!”
+
+@7070 Rose · ロゼ
+> 「とどめをさしてやる!」
+“I'll finish you off!”
+
+@7071 Rose · ロゼ
+> 「わたしは、戦士だ!」
+“I am a warrior!”
+
+@7072 Rose · ロゼ
+> 「たぁっ!」
+“Tah!”
+
+@7073 Rose · ロゼ
+> 「倒してみせる!」
+“I'll take you down!”
+
+@7074 Rose · ロゼ
+> 「はあぁぁぁっ!」
+“Haaaaaah!”
+
+@7075 Rose · ロゼ
+> 「やってみせる!」
+“I'll show you!”
+
+@7076 Rose · ロゼ
+> 「そこか!」
+“There you are!”
+
+@7077 Rose · ロゼ
+> 「あ!? あぁぁぁぁぁぁぁっ!」
+“Ah?! Aaaaaaah!”
+
+@7078 Rose · ロゼ
+> 「ウワァァァァッ!」
+“Uwaaaaaah!”
+
+@7079 Rose · ロゼ
+> 「うっ、これではもたない!?」
+“Ngh, I can't hold out like this?!”
+
+@7080 Rose · ロゼ
+> 「うぅぅぅっ!」
+“Uuuugh!”
+
+@7081 Rose · ロゼ
+> 「キャァァァァァッ!」
+“Kyaaaaaah!”
+
+@7082 Rose · ロゼ
+> 「くぅ、こんなものではっ!」
+“Ngh, not like this!”
+
+@7083 Rose · ロゼ
+> 「うっ、なにっ!?」
+“Ngh, what?!”
+
+@7084 Rose · ロゼ
+> 「アァァッ!」
+“Aaaah!”
+
+@7085 Rose · ロゼ
+> 「あぅ!?」
+“Agh?!”
+
+@7086 Rose · ロゼ
+> 「か、かわせたのか!?」
+“D-Did I dodge it?!”
+
+@7087 Rose · ロゼ
+> 「このくらいなら!」
+“This much is nothing!”
+
+@7088 Rose · ロゼ
+> 「効きはしないっ!」
+“It won't work on me!”
+
+@7089 Rose · ロゼ
+> 「ムダだ!」
+“It's useless!”
+
+@7090 Rose · ロゼ
+> 「エネルギー切れ!? そんな!」
+“Out of energy?! No!”
+
+@7091 Rose · ロゼ
+> 「く……これでは届かない!?」
+“Ngh... I can't reach?!”
+
+@7092 Rose · ロゼ
+> 「くっ、卑怯な!」
+“Ngh, that's cowardly!”

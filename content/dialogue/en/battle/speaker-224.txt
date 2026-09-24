@@ -1,0 +1,82 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10777 Dale · デル
+> 「出世がまたはやまるな」
+“My promotion just got closer.”
+
+@10778 Dale · デル
+> 「我々の力、見せてやろう!」
+“Let's show them our power!”
+
+@10779 Dale · デル
+> 「この分なら余裕だな」
+“At this rate, it's easy.”
+
+@10780 Dale · デル
+> 「予定よりいけるな」
+“Going better than planned.”
+
+@10781 Dale · デル
+> 「うお!? うわぁぁぁーっ!!」
+“Whoa?! Uwaaaaa!”
+
+@10782 Dale · デル
+> 「うぉぉ!? こ、ここまで攻めてか!」
+“Whoa?! Th-they pushed us this far!”
+
+@10783 Dale · デル
+> 「わ、我々が負ける!?」
+“W-we're losing?!”
+
+@10784 Dale · デル
+> 「な、なにぃ!?」
+“W-what?!”
+
+@10785 Dale · デル
+> 「ぐぅっ! パワー負けだと!?」
+“Guh! Outmatched in power?!”
+
+@10786 Dale · デル
+> 「ぐぅっ! だがこういう奴を倒してこそ
+>  出世もはやまるってもんだ!」
+“Guh! But beating guys like this is what speeds up a promotion!”
+
+@10787 Dale · デル
+> 「我々をなめてもらってはな!」
+“Don't you underestimate us!”
+
+@10788 Dale · デル
+> 「こ、こいつ……手強いぞ!」
+“Th-this one... is tough!”
+
+@10789 Dale · デル
+> 「ザコは捨てるか……?」
+“Should I ditch the small fry...?”
+
+@10790 Dale · デル
+> 「こんな奴を倒しても出世はせんか」
+“Beating trash like this won't get me promoted.”
+
+@10791 Dale · デル
+> 「それで攻撃してるつもりか!?」
+“You call that an attack?!”
+
+@10792 Dale · デル
+> 「それではあたらないぜ!」
+“That won't hit!”
+
+@10793 Dale · デル
+> 「ははははっ」
+“Hahahaha.”
+
+@10794 Dale · デル
+> 「ははははっ」
+“Hahahaha.”
+
+@10795 Dale · デル
+> 「弾切れか!?」
+“Out of ammo?!”
+
+@10796 Dale · デル
+> 「届かないだと!? ええい!」
+“Can't reach?! Tch!”

@@ -1,0 +1,141 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8983 Fa · ファ
+> 「落ちてっ!!」
+“Go down!!”
+
+@8984 Fa · ファ
+> 「そこっ!!」
+“There!!”
+
+@8985 Fa · ファ
+> 「やらせないっ!!」
+“I won't let you!!”
+
+@8986 Fa · ファ
+> 「当たって!!」
+“Hit!!”
+
+@8987 Fa · ファ
+> 「これでっ!!」
+“Take this!!”
+
+@8988 Fa · ファ
+> 「あたしだって、パイロットなんだから!!」
+“I'm a pilot too, you know!!”
+
+@8989 Fa · ファ
+> 「このっ!」
+“Why you!”
+
+@8990 Fa · ファ
+> 「当たれっ!」
+“Hit it!”
+
+@8991 Fa · ファ
+> 「これならっ!」
+“This should do it!”
+
+@8992 Fa · ファ
+> 「やってみせるっ!」
+“I'll show you!”
+
+@8993 Fa · ファ
+> 「きゃあああっ!!」
+“Kyaaaaah!!”
+
+@8994 Fa · ファ
+> 「直撃!? カミーユ!!」
+“A direct hit?! Kamille!!”
+
+@8995 Fa · ファ
+# 审校：“anymore” 改为 “any longer”，更符合原文“もうもたない”的语感。
+> 「ダメ、もうもたないっ!?」
+“No, I can't hold out any longer?!”
+
+@8996 Fa · ファ
+> 「きゃあっ!! だ、ダメっ!!」
+“Kyaah!! N-No!!”
+
+@8997 Fa · ファ
+> 「ううっ! こ、このままじゃ……」
+“Ugh! A-At this rate...”
+
+@8998 Fa · ファ
+> 「あうっ! もうこれまで!? ダメっ!!」
+“Agh! Is this the end?! No!!”
+
+@8999 Fa · ファ
+> 「ああっ!! パ、パワーダウンしている!?」
+“Ahh!! I-I'm losing power?!”
+
+@9000 Fa · ファ
+# 审校：原文“ま……まだよ”是“还没完”，初稿“I'm fine”偏离原意，改为更忠实。
+> 「ま……まだよ、まだいけるっ!!」
+“I-I'm not done yet, I can still go!!”
+
+@9001 Fa · ファ
+# 审校：“I'm fine” 改为 “I can still take it”，更贴合“まだっ”的坚持语气。
+> 「あうっ! こ、この程度ならまだっ!」
+“Agh! I-If it's only this much, I can still take it!”
+
+@9002 Fa · ファ
+> 「あ、足手まといにはならないっ!」
+“I-I won't be a burden!”
+
+@9003 Fa · ファ
+> 「つっ! まだ、まだ戦える!」
+“Ngh! I can still, still fight!”
+
+@9004 Fa · ファ
+> 「きゃあっ! つ、強い……」
+“Kyaah! S-So strong...”
+
+@9005 Fa · ファ
+> 「大丈夫、かすっただけ!」
+“I'm okay, it just grazed me!”
+
+@9006 Fa · ファ
+> 「くっ!
+>  よかった、大したダメージじゃないわ」
+“Ngh! Good, it's not much damage.”
+
+@9007 Fa · ファ
+> 「当たった!? けど、この程度なら!」
+“It hit?! But if it's only this much!”
+
+@9008 Fa · ファ
+> 「かわせた!」
+“I dodged it!”
+
+@9009 Fa · ファ
+> 「あ、当たるわけにはっ!!」
+“I-I can't afford to get hit!!”
+
+@9010 Fa · ファ
+> 「外れた!? 外れて……くれた」
+“It missed?! It... missed.”
+
+@9011 Fa · ファ
+> 「な、なんとか……」
+“I-I managed somehow...”
+
+@9012 Fa · ファ
+> 「来る……そこ!?」
+“Here it comes... there?!”
+
+@9013 Fa · ファ
+> 「ムダよ、そんなビームなんて!」
+“It's useless, a beam like that!”
+
+@9014 Fa · ファ
+> 「そんなビームでやられるものですかっ!」
+“You think a beam like that can take me down?!”
+
+@9015 Fa · ファ
+> 「あ……弾切れ!?」
+“Ah... out of ammo?!”
+
+@9016 Fa · ファ
+> 「ダメ、届かない!!」
+“No, it won't reach!!”

@@ -1,0 +1,98 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7496 Roanne · ロアン
+> 「あたれ! あたれ!」
+“Hit! Hit!”
+
+@7497 Roanne · ロアン
+> 「このっ! このっ!」
+“Why you! Why you!”
+
+@7498 Roanne · ロアン
+> 「やらせない!!」
+“I won't let you!!”
+
+@7499 Roanne · ロアン
+> 「ここは僕が!」
+“This one's mine!”
+
+@7500 Roanne · ロアン
+> 「やらなければ!」
+“I have to do this!”
+
+@7501 Roanne · ロアン
+> 「うわあああああっ!!」
+“Uwaaaaaaah!!”
+
+@7502 Roanne · ロアン
+> 「や、やられた……!?」
+“I-I've been hit...?!”
+
+@7503 Roanne · ロアン
+> 「くっ! これ以上もつのか!?」
+“Ngh! Can it hold any longer?!”
+
+@7504 Roanne · ロアン
+> 「くっ! なんというパワーだ……!」
+“Ngh! What power...!”
+
+@7505 Roanne · ロアン
+> 「くっ! 直撃!?」
+“Ngh! A direct hit?!”
+
+@7506 Roanne · ロアン
+> 「ちきしょうっ!」
+“Damn it!”
+
+@7507 Roanne · ロアン
+> 「ああっ!!」
+“Aah!!”
+
+@7508 Roanne · ロアン
+> 「くっそぉ!!」
+“Damn iiit!!”
+
+@7509 Roanne · ロアン
+> 「まだ……まだやられるわけにはいかないっ!」
+“Not yet... I can't go down yet!”
+
+@7510 Roanne · ロアン
+> 「しまった!!」
+“Damn it!!”
+
+@7511 Roanne · ロアン
+> 「あたってしまった!?」
+“I got hit?!”
+
+@7512 Roanne · ロアン
+> 「この程度ならまだやれるはず!」
+“I should still be able to fight through this!”
+
+@7513 Roanne · ロアン
+> 「くっ!」
+“Ngh!”
+
+@7514 Roanne · ロアン
+> 「よけれた!」
+“I dodged it!”
+
+@7515 Roanne · ロアン
+# 审校：原文句末有句号，补上句号。
+> 「ふぅっ……どうにかかわせましたよ」
+“Phew... I managed to dodge it.”
+
+@7516 Roanne · ロアン
+> 「ビームなんて!」
+“A beam like that!”
+
+@7517 Roanne · ロアン
+> 「効きませんよ!」
+“It won't work on me!”
+
+@7518 Roanne · ロアン
+> 「エ、エネルギー切れ!?」
+“O-Out of energy?!”
+
+@7519 Roanne · ロアン
+> 「くっ、遠すぎる!?」
+“Ngh, it's too far?!”

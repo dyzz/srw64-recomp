@@ -1,0 +1,942 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@28728 Pagan · パーガン
+> 「……幸いにも市民に
+>  死傷者は出ませんでした
+“...Fortunately, there were no civilian casualties.
+---
+>  ただ、ケガ人が十数名と、
+>  家屋を破壊された者がかなり……
+However, over a dozen were injured, and quite a few lost their homes...
+---
+>  現在、彼らの手当てと
+>  街の復旧に当たっております」
+We are currently tending to them and working to restore the city.”
+
+@28729 Relena · リリーナ
+> 「そう。ご苦労でした」
+“I see. Good work.”
+
+@28730 Pagan · パーガン
+# 审校：补上 yet，使“虽然知道却隐瞒”的转折更清楚。
+> 「リリーナ様……。{HeroMech}の
+>  ことは、このパーガンも存じておりながら
+“Lady Relena... Regarding the {HeroMech}, even I, Pagan, knew of it,
+---
+>  お隠ししておりました。
+>  何とぞ、処罰を下さいますよう……」
+yet I kept it hidden from you. Please, I ask that you punish me...”
+
+@28731 Relena · リリーナ
+> 「パーガン、それはもう良いのです。
+>  あの人たちがいなければ、街は
+“Pagan, that is no longer necessary. If those people had not been there, the city
+---
+>  もっとひどいことになっていたでしょう。
+>  そうなればロームフェラが
+would have suffered far worse. And if that had happened, Romefeller's
+---
+>  この国に介入してくるのも
+>  避けられませんでした」
+intervention in this country would have been unavoidable.”
+
+@28732 Pagan · パーガン
+> 「リリーナ様……」
+“Lady Relena...”
+
+@28733 Relena · リリーナ
+> 「ただ、私は迷っているのです。戦う
+>  力を受け入れるべきか否かを……
+“But I am lost. Whether I should accept the power to fight...
+---
+>  完全平和主義など、
+>  戦う力を持たない者の
+Was complete pacifism nothing more than the
+---
+>  理想にすぎなかったのでしょうか?」
+ideal of those without the power to fight?”
+
+@28734 Pagan · パーガン
+> 「リリーナ様……、
+>  そつじながら申しあげます。ご自分の
+“Lady Relena... If I may be so bold, please follow the path
+---
+>  信じる道をおいきなされませ。今
+>  戦っている人たちが、いつか平和に
+you believe in. It is you, and no one else, who can create a place where
+---
+>  暮らせる場所を作ることが
+>  できるのは、あなた様でございます」
+those who fight now may someday live in peace.”
+
+@28735 Bright · ブライト
+> 「完全平和主義の矛盾を、
+>  我々はさらけだしてしまったの
+“Perhaps we have laid bare the contradictions of complete pacifism.
+---
+>  かもしれん。やむをえなかったとはいえ、
+>  リリーナ代表にはすまないことをした」
+Even if it was unavoidable, I am sorry for what we did to Representative Relena.”
+
+@28736 David · デビッド
+> 「やれやれ、敵を倒したってのに素直
+>  に喜べないってのは、なんだかなあ」
+“Good grief. Defeating the enemy and still not being able to celebrate honestly... what a feeling.”
+
+@28737 Amuro · アムロ
+> 「守るべきものは、この国の平和か、
+>  それとも平和そのものか……
+“What we must protect—is it this country's peace, or peace itself...
+---
+>  むずかしいな。いずれにしても、
+>  現実と理想というものは
+It's difficult. Either way, reality and ideals are
+---
+>  ぶつかり合わざるをえない」
+bound to clash.”
+
+@28738 Noin · ノイン
+> 「それはリリーナ様も
+>  十分にご承知です
+“Lady Relena understands that well enough.
+---
+>  皆さんに感謝していることも。ただ、
+>  今は気持ちの整理をつけようと
+She is also grateful to all of you. It is just that right now she is struggling
+---
+>  葛藤なさっている……
+>  私にはそう思えます」
+to sort out her feelings... That is how it seems to me.”
+
+@28739 Koji · 甲児
+> 「守るべきものは……か。何だろうな。
+>  オレも最近考えてんだけどさ」
+“What we must protect... huh. What could it be? I've been thinking about it lately too.”
+
+@28740 Simone · シモーヌ
+> 「へえ、甲児が?」
+“Oh? You, Koji?”
+
+@28741 Koji · 甲児
+> 「何だよ、またバカにしてんのか?」
+“What, are you making fun of me again?”
+
+@28742 Simone · シモーヌ
+> 「ちがうわ、感心してんのよ。
+>  意外とまともな神経してるじゃない」
+“No, I'm impressed. You're surprisingly sensible, aren't you?”
+
+@28743 Koji · 甲児
+> 「……本当にほめてんのか?
+>  まあいいや、ありがとよ」
+“...Are you really praising me? Whatever, thanks.”
+
+@28744 Dermail · デルマイユ
+> 「諸君、いよいよ我々が
+>  地球圏を正しく導いていく
+“Gentlemen, the time has finally come for us to guide the Earth Sphere
+---
+>  時代が来た。支配すべき
+>  階級である我々は、OZの
+rightly. We, the class meant to rule, shall dispatch OZ's
+---
+>  強化された戦力を地上、
+>  そしてコロニーへ派遣することにより
+strengthened forces to the surface and to the colonies,
+---
+>  どれほど強大な力を持っているかを
+>  見せつけることで、世界に秩序を
+showing the world just how mighty we are, and thereby
+---
+>  与えるのである。そして、古き良き
+>  伝統と格式の時代を
+giving it order. And so, let us welcome once more an age of
+---
+>  再び迎え、世界を統治しよう
+>  ではないか、諸君」
+fine old tradition and dignity, and rule the world, gentlemen.”
+
+@28745 Jamitov · ジャミトフ
+> 「名演説だな、デルマイユ公。
+>  トレーズ、これからもOZを頼むぞ」
+“A fine speech, Duke Dermail. Treize, I'll be counting on OZ from now on as well.”
+
+@28746 Treize · トレーズ
+> 「デルマイユ公、ジャミトフ閣下、
+>  私はロームフェラ財団の進む道に
+“Duke Dermail, Your Excellency Jamitov, I cannot agree with
+---
+>  賛同いたしかねます」
+the path the Romefeller Foundation is taking.”
+
+@28747 Dermail · デルマイユ
+> 「なに?」
+“What?”
+
+@28748 Treize · トレーズ
+> 「古き良き伝統とは、人間の
+>  奥深い感情が築き上げた
+“Fine old tradition is the history of compassion built by
+---
+>  いたわりの歴史。私は、戦うことが
+>  時に美しいことと考えるとともに
+the profound emotions of humankind. While I believe that fighting can at times be beautiful,
+---
+>  命が尊いことを訴えて、失われゆく
+>  魂に哀悼の意を表したい」
+I also wish to speak of the preciousness of life and express my mourning for souls being lost.”
+
+@28749 Jamitov · ジャミトフ
+> 「トレーズ……
+>  貴公ほどの地位にあるものが
+“Treize... Do you, a man of your standing,
+---
+>  ロームフェラに反抗するつもりか?」
+intend to defy Romefeller?”
+
+@28750 Treize · トレーズ
+> 「私は、人間に必要なのは
+>  絶対的な勝利ではなく
+“I believe what humanity needs is not absolute victory,
+---
+>  戦う姿、その姿勢と考えます。
+>  しかし、ロームフェラの築く時代は
+but the act of fighting—the stance itself. Yet will the age Romefeller builds
+---
+>  後の世に恥ずべきものとなりは
+>  しないでしょうか。今この世界には
+not become a shame to later generations? Even now, in this world, there are
+---
+>  私の理想を越えて、未来を
+>  見続ける戦士たちがおります
+warriors who surpass my ideals and keep watching the future.
+---
+>  かつての帝国の支配の時代、
+>  そして今ロームフェラが
+In the age of the old Empire's rule, and even now, in this age when
+---
+>  世界を支配しようという
+>  この時代においても
+Romefeller seeks to rule the world,
+---
+>  彼らはまだなおも、理想のために
+>  戦う意志を持ちつづけているのです」
+they still continue to hold the will to fight for their ideals.”
+
+@28751 Treize · トレーズ
+> 「美しく思われた人々の感情は
+>  常に悲しく、重んじた伝統も
+“The emotions of those deemed beautiful are always sad, and the traditions they cherished
+---
+>  いずれは弱者たちの叫びの中へ
+>  消え失せる。戦いにおける勝者は
+will eventually vanish amid the cries of the weak. The victor in battle
+---
+>  歴史の中で衰退という
+>  終止符を打たねばならず
+must, in history, put an end to things with decline,
+---
+>  新たな時代の担い手は
+>  敗者の中にこそ生まれいずる」
+and it is among the defeated that the bearers of a new age are born.”
+
+@28752 Dermail · デルマイユ
+> 「トレーズ、何がいいたい?」
+“Treize, what are you trying to say?”
+
+@28753 Treize · トレーズ
+> 「私は、敗者になりたい」
+“I wish to be a loser.”
+
+@28754 Dermail · デルマイユ
+> 「……本気のようだな。反逆は
+>  本来ならば銃殺だが
+“...You seem serious. Rebellion would normally mean execution by firing squad,
+---
+>  血なまぐさいことは、したくない。
+>  これまでの功績もある
+but I do not wish for bloodshed. In light of your achievements thus far,
+---
+>  トレーズ、お前を幽閉する」
+Treize, I will have you confined.”
+
+@28755 Jamitov · ジャミトフ
+> 「兵たちが動揺しているという
+>  報告は本当か」
+“Is the report that the soldiers are wavering true?”
+
+@28756 Tubarov · ツバロフ
+> 「は。トレーズ特佐解任の噂を
+>  聞いた一部の兵士たちが
+“Yes, sir. Some soldiers who heard rumors of Colonel Treize's dismissal
+---
+>  命令を拒否……、数カ所で
+>  小競り合いになっております。やはり
+have refused orders... and there have been skirmishes in several places. As expected,
+---
+>  トレーズ特佐の息のかかった
+>  連中は一筋縄ではまいりません」
+those connected to Colonel Treize are not so easily dealt with.”
+
+@28757 Bask · バスク
+> 「それは反乱ではないか!
+>  即刻鎮圧しろ!」
+“That is rebellion! Suppress it immediately!”
+
+@28758 Tubarov · ツバロフ
+> 「承知しております。今は
+>  オペレーション・ノヴァをひかえた
+“Understood. Operation Nova is close at hand,
+---
+>  重要な時、このような時に
+>  部隊が混乱することは
+and it is an important time. It would not do for our units
+---
+>  好ましくありませんからな」
+to fall into confusion at a time like this.”
+
+@28759 Bask · バスク
+> 「当然だ。トレーズの奴、
+>  全くよけいな仕事を増やしおって…」
+“Of course. That Treize, adding nothing but unnecessary work...”
+
+@28760 Jamitov · ジャミトフ
+> 「計画に支障はあるまいな?」
+“There will be no hindrance to the plan, I trust?”
+
+@28761 Tubarov · ツバロフ
+> 「ご安心を。彼らはトレーズ派を
+>  名のっているとはいえ
+“Rest assured. Though they call themselves the Treize faction,
+---
+>  組織だった行動はしておりません。
+>  鎮圧は時間の問題でしょう」
+they are not acting in an organized manner. Suppression is only a matter of time.”
+
+@28762 Jamitov · ジャミトフ
+> 「良かろう。反乱分子は
+>  即刻とらえて軍法会議にかけろ
+“Very well. Arrest the rebels at once and bring them before a court-martial.
+---
+>  抵抗する者は射殺してかまわん」
+Those who resist may be shot.”
+
+@28763 Tubarov · ツバロフ
+> 「は、かしこまりました」
+“Yes, sir. Understood.”
+
+@28764 Jamitov · ジャミトフ
+> 「月面基地に命令する。
+>  本日ただ今をもって
+“Order the lunar base. As of this moment today,
+---
+>  オペレーション・ノヴァを発動させる。
+>  一気に地上を制圧するのだ!」
+we will activate Operation Nova. We will subjugate the surface in one stroke!”
+
+@28765 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  上空に機体が接近してきます!」
+“Captain Bright, a unit is approaching from above!”
+
+@28766 Bright · ブライト
+> 「機体? くわしく報告しろ!」
+“A unit? Report in detail!”
+
+@28767 Beltorchika · ベルトーチカ
+> 「機影は1つだけ、識別……あら、
+>  これって……ブラックウィングじゃない!?」
+“Only one craft on radar. Identifying... Oh, isn't this... the Black Wing?!”
+
+@28768 Bright · ブライト
+> 「何だって?」
+“What did you say?”
+
+@28769 Ginrei · 銀鈴
+> 「艦長、パイロットから通信が
+>  入っています。スクリーンに出します!」
+“Captain, we're receiving a transmission from the pilot. Putting it on screen!”
+
+@28770 Alan · アラン
+> 「{HeroMech}、応答せよ、
+>  聞こえるか!?」
+“{HeroMech}, respond! Can you hear me?!”
+
+@28771 Bright · ブライト
+> 「アラン!? アランじゃないか!」
+“Alan?! Is that you, Alan?!”
+
+@28772 Koji · 甲児
+> 「アランだって!? おーい、ひさしぶり
+>  だなあ。忍たちはどうしてんだ!?」
+“Alan?! Hey, it's been a while! How are Shinobu and the others doing?!”
+
+@28773 Alan · アラン
+> 「すまんが、つもる話はあとだ。
+>  事情はあとで説明する
+“Sorry, but the long stories can wait. I'll explain later.
+---
+>  着艦許可をたのむ!」
+Requesting permission to land!”
+
+@28774 Bright · ブライト
+> 「何かあったようだな。
+>  よし、着艦を許可する
+“Seems something's happened. All right, permission granted.
+---
+>  銀鈴、ハッチを開けてくれ」
+Ginrei, open the hatch.”
+
+@28775 Ginrei · 銀鈴
+> 「了解!」
+“Roger!”
+
+@28776 Bright · ブライト
+> 「大量のモビルドール部隊だと!?」
+“A large Mobile Doll Corps?!”
+
+@28777 Alan · アラン
+> 「ああ。俺とクワトロ大尉は、
+>  ブレックス准将と合流していた。
+“Yeah. Captain Quattro and I had joined up with Brigadier General Blex.
+---
+>  しばらく戦局をうかがっていたんだが…
+We were watching how the battle was going for a while, but...
+---
+>  突然奴らが空から降ってきたんだ
+>  現在そいつらと交戦中だ」
+suddenly they came raining down from the sky. We're engaging them right now.”
+
+@28778 Eiji · エイジ
+> 「交戦中って……、
+>  攻撃されてるんですか!?
+“Engaging... you mean you're under attack?!
+---
+>  地球人同士なのに……」
+And you're all Earthlings...”
+
+@28779 Alan · アラン
+> 「奴らはOZ以外のすべての勢力に
+>  対して無差別攻撃をかけている
+“They're launching indiscriminate attacks on every force except OZ.
+---
+>  知っているか? 地上の各地で
+>  MDの大部隊が降下して
+Did you know? Large MD units have descended all over the surface,
+---
+>  周囲を問答無用で
+>  鎮圧しているんだ」
+suppressing everything around them without question.”
+
+@28780 Ryoma · リョウ
+> 「ついにOZの地球圏制圧が
+>  始まったのか……
+“So OZ has finally begun its conquest of the Earth Sphere...
+---
+>  しかし、まさか一方的に
+>  攻撃を仕掛けるとは……」
+But to think they'd launch an all-out attack like this...”
+
+@28781 Hayato · ハヤト
+> 「宇宙に敵がいなくなったんで、
+>  ついに本性を現しやがったな」
+“With no enemies left in space, they've finally shown their true colors.”
+
+@28782 Alan · アラン
+> 「奴らが我々のいる野戦基地
+>  にも兵をまわした目的は、
+“The reason they sent troops to our field base as well must be
+---
+>  ブレックス准将に違いない。別の
+>  場所に潜伏中の、
+Brigadier General Blex. General Igor, hiding elsewhere,
+---
+>  イゴール将軍も襲われた。
+>  そちらには藤原たちが行っている」
+was attacked too. Fujiwara and the others have gone to him.”
+
+@28783 David · デビッド
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ジャミトフの野郎、准将たちを
+>  目の敵にしてやがったからな
+“That bastard Jamitov had it in for the generals all along.
+---
+>  ブライト艦長、
+>  こうしちゃいられないぜ!」
+Captain Bright, we can't just sit here!”
+
+@28784 Alan · アラン
+> 「頼む、君たちを頼るしかない。
+>  クワトロ大尉が支えているが
+“Please, we have no one else to turn to. Captain Quattro is holding them off,
+---
+>  いつまでもつかわからん」
+but I don't know how long he can last.”
+
+@28785 Koji · 甲児
+> 「仲間を見殺しにして
+>  たまるもんかよ、行こうぜ!」
+“No way I'm abandoning our comrades! Let's go!”
+
+@28786 Bright · ブライト
+> 「むろんだ。みんな行くぞ!
+>  緊急発進
+“Of course. Everyone, move out! Emergency launch!
+---
+>  総員配置に着け!
+>  目標、旧解放戦線の
+All hands to battle stations! Target: the Former Liberation Front's
+---
+>  野戦基地だ!」
+field base!”
+
+@28787 Alan · アラン
+> 「ブレックス准将……。
+>  間に合ってくれよ……」
+“Brigadier General Blex... Please, let us make it in time...”
+
+@28788 Quattro · クワトロ
+> 「ようやく片づいたか……しかし……」
+“Finally finished them off... but still...”
+
+@28789 Bright · ブライト
+> 「間に合ったのか!?」
+“Did we make it in time?!”
+
+@28790 Quattro · クワトロ
+> 「来てくれたか……残念ながら
+>  ブレックス准将は亡くなられた」
+“So you came... Unfortunately, Brigadier General Blex has been killed.”
+
+@28791 Alan · アラン
+> 「くっ! だめだったか……」
+“Damn! We were too late...”
+
+@28792 Jerid · ジェリド
+> 「{HeroMech}だと!
+>  つまらない残敵掃討の任務だと
+“{HeroMech}?! I thought this was just a boring mop-up of leftover enemies,
+---
+>  思ったが……俺はついている!」
+but... I'm in luck!”
+
+@28793 Ehrlich · エルリッヒ（按段落 3DD1）
+> (そう都合よくいけばいいが……
+>  あれは連中のエースパイロットたちだ
+(It'd be nice if things went that conveniently... but those are their ace pilots.
+---
+>  フッ……あの少年も、いつのまにか
+>  エースか。そうさせてしまったのは
+Hmph... That boy became an ace before I knew it. And I'm the one
+---
+>  この私なのだな……)
+who made him that way...)
+
+@28794 Ark · アーク（按段落 3DD1）
+> 「あいつか……不思議だな、前よりも
+>  憎しみが、うすらいでいる気がする……」
+“That guy... Strange. My hatred feels more faded than before...”
+
+@28795 Rish · リッシュ（按段落 3DD2）
+> (バカが、そう都合よくいくかよ。
+>  ありゃ連中のトップエースどもだぜ
+(Idiot, you think it'd go that conveniently? Those are their top aces.
+---
+>  フッ、俺たちゃつくづく縁があるって
+>  気がしてきたぜ? なぁ{HeroNick})
+Heh, I get the feeling we're bound by fate, huh? Right, {HeroNick}?)
+
+@28796 Selain · セレイン（按段落 3DD2）
+> 「……あいつか。しつこい奴だ。
+>  “アンデッドマン”とは
+“...That guy. What a persistent one. Calling me the ‘Undead Man’...
+---
+>  よくもいったものだな」
+he's got some nerve.”
+
+@28797 Aisha · アイシャ（按段落 3DD4）
+> 「{HeroName}さん、覚悟はできて!?」
+“{HeroName}, are you ready?!”
+
+@28798 Manami · マナミ（按段落 3DD4）
+> 「待って! {PartnerNick}!」
+“Wait! {PartnerNick}!”
+
+@28799 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、もうやめて!
+>  あたしは、あなたと戦いたくはないの!」
+“{PartnerNick}, stop it! I don't want to fight you!”
+
+@28800 Aisha · アイシャ（按段落 3DD4）
+> 「なら、今ここで私に討たれなさい!
+>  そうすれば、これ以上戦わずに
+“Then let me strike you down here and now! That way, you won't have to
+---
+>  すみますわ!」
+fight anymore!”
+
+@28801 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「少年、君のその強さはいったい
+>  どこからくる? 君は何のために
+“Boy, where does that strength of yours come from? For what,
+---
+>  何を信じて戦っているのだ!?」
+and believing in what, are you fighting?!”
+
+@28802 Ark · アーク（按段落 3DD1）
+> 「俺は……誰かが無意味に死んで
+>  いくのが嫌なだけだ!!」
+“I... I just hate seeing people die for nothing!!”
+
+@28803 Selain · セレイン（按段落 3DD2）
+> 「こりずに、またやられに来たのか」
+“Back again to get beaten, aren't you?”
+
+@28804 Rish · リッシュ（按段落 3DD2）
+> 「おいおい、そいつは結果論だ。
+>  俺は、お前に出会ったのは
+“Hey now, that's just hindsight. I seriously believe that meeting you
+---
+>  運命だったってマジで思ってんだぜ?」
+was fate, you know?”
+
+@28805
+> *  貴様の戯れ言はもうたくさんだ!
+> *  フン、もの好きな奴だな
+> *  敵である以上は戦う以外はなかろう
+* “I've had enough of your nonsense!”
+* “Hmph, you're a glutton for punishment.”
+* “As long as you're the enemy, there's no choice but to fight.”
+
+@28806 Selain · セレイン（按段落 3DD2）
+> 「黙れ! 貴様の戯れ言はもう
+>  たくさんだ!」
+“Silence! I've had enough of your nonsense!”
+
+@28807 Rish · リッシュ（按段落 3DD2）
+> 「ちっ、あいかわらず冷てぇなぁ
+>  {HeroNick}。どうして俺のいうこと
+“Tch, cold as ever, {HeroNick}. Why won't you
+---
+>  わかってくれないのかね」
+understand what I'm saying?”
+
+@28808 Selain · セレイン（按段落 3DD2）
+> 「馬鹿か貴様は。敵のいうことなど
+>  なぜ聞かねばならん! 敵ならば倒す
+“Are you a fool? Why should I listen to anything an enemy says? If you're the enemy, I'll just defeat you—
+---
+>  それだけだ!」
+that's all!”
+
+@28809 Rish · リッシュ（按段落 3DD2）
+> 「ま、そりゃそうだ。しかたがねぇか」
+“Well, I guess so. Can't be helped.”
+
+@28810 Selain · セレイン（按段落 3DD2）
+> 「フン、貴様もあいかわらず、もの好き
+>  な奴だな。そんなふざけたことばかり
+“Hmph, you're as much a glutton for punishment as ever. It's because you keep spouting nonsense like that
+---
+>  しているから、いつも負けて帰るハメに
+>  なる」
+that you always end up going home beaten.”
+
+@28811 Rish · リッシュ（按段落 3DD2）
+> 「あいにくと運だけはよくてな。お前にや
+>  られたってそう簡単にゃくたばらねぇよ」
+“Unfortunately, my luck's always been good. Even if you beat me, I won't kick the bucket that easily.”
+
+@28812 Selain · セレイン（按段落 3DD2）
+> 「そうか、ならば今回もためしてみたら
+>  どうだ!?」
+“Is that so? Then why not try again this time?!”
+
+@28813 Rish · リッシュ（按段落 3DD2）
+> 「おっと、そうくるかよ。ま、しゃーねぇわな」
+“Whoa, so that's how it is. Well, can't be helped.”
+
+@28814 Selain · セレイン（按段落 3DD2）
+> 「貴様が何をいおうと、敵である
+>  以上は戦う以外に道はなかろう」
+“Whatever you say, as long as you're the enemy, there's no path but to fight.”
+
+@28815 Rish · リッシュ（按段落 3DD2）
+> 「だからよ、お前が本気でいってくれる
+>  んなら、俺はいつでもそっちにつくって
+“That's what I'm saying—if you'd just tell me you mean it for real, I'd join your side anytime,
+---
+>  いってるじゃねぇか」
+haven't I told you that?”
+
+@28816 Selain · セレイン（按段落 3DD2）
+> 「だから、なぜ私がそんなことをいわねば
+>  ならん!」
+“And why must I say such a thing?!”
+
+@28817 Rish · リッシュ（按段落 3DD2）
+> 「そりゃお前……俺がいってほしいからだ
+>  何度もいうが俺ぁマジだぜ!?」
+“Well, because... I want you to say it. I've said it over and over—I'm serious, you know?!”
+
+@28818 Selain · セレイン（按段落 3DD2）
+> 「そうか……なら、お前が死んだら
+>  考えてやる」
+“I see... Then if you die, I'll think about it.”
+
+@28819 Rish · リッシュ（按段落 3DD2）
+> 「おい、ちょっと待て!
+>  おい、{HeroNick}!!」
+“Hey, wait a second! Hey, {HeroNick}!!”
+
+@28820 Bright · ブライト
+# 审校：「間に合わなかった」指未能及时赶到/救到，初稿“didn't make it in time”可接受但稍显模糊，改为更自然的“we were too late”。
+> 「ブレックス准将が……
+>  間に合わなかったようだな……」
+“Brigadier General Blex... It seems we were too late...”
+
+@28821 Quattro · クワトロ
+> 「…………」
+“...”
+
+@28822 Kayra · ケーラ
+# 审校：「ふんばってれば」是“再坚持一下/撑住”，初稿“held out”可接受，但“held on”更贴合凯拉自责没能再撑住；其余保持。
+> 「未来を作るのは若い君たちだ、
+>  地球圏を頼む……。准将の
+“The ones who will build the future are you young people. I leave the Earth Sphere to you... Those were the Brigadier General's
+---
+>  最期の言葉でした。……ちくしょう
+>  アタシがもっとふんばってれば……!」
+final words. ...Damn it, if only I'd held on a little longer...!”
+
+@28823 Astonaige · アストナージ
+> 「よせよ、お前の責任じゃない」
+“Cut it out. It's not your fault.”
+
+@28824 Alan · アラン
+> 「そうだ。ケーラ、自分を
+>  責めるのはよせ。……准将が悲しむ」
+“That's right. Kayra, stop blaming yourself. ...The Brigadier General would grieve.”
+
+@28825 Kayra · ケーラ
+> 「くっ……」
+“Ngh...”
+
+@28826 Astonaige · アストナージ
+> 「ケーラ……」
+“Kayra...”
+
+@28827 Amuro · アムロ
+> 「ムゲ帝国の敗退、
+>  ブレックス准将の死、そしてOZ……
+“The Muge Empire's retreat, Brigadier General Blex's death, and then OZ...
+---
+>  かつての地球解放戦線はすでに
+>  歴史上のものとなりつつある
+The old Liberation Front of the Earth is already becoming a thing of history.
+---
+>  これからどうなっていくのか……」
+What will happen from now on...”
+
+@28828 Hayato · ハヤト
+> 「ひとつは完全にはっきりしたぜ。
+>  俺たちの敵はOZだ
+“One thing's become completely clear. Our enemy is OZ.
+---
+>  ムゲがいなくなっても、奴らがいる限り
+>  俺たちに平和なんざこねえ」
+Even if the Muge are gone, as long as they're around, we'll never have peace.”
+
+@28829 Benkei · ベンケイ
+> 「俺たちを敵にまわしたことを
+>  後悔させてやる
+“We'll make them regret making enemies of us.
+---
+>  黙ってやられるとおもうなよ!」
+Don't think we'll just sit back and take it!”
+
+@28830 Daisaku · 大作
+> 「待って下さい、今の僕たちには
+>  使命があるでしょう?
+“Please wait. Don't we have a mission right now?
+---
+>  サンクキングダムの完全平和を
+>  守るっていう」
+To protect the complete peace of the Sanc Kingdom.”
+
+@28831 David · デビッド
+> 「おいぼうず、状況見てからいえよ。
+>  その結果がこうだってことが
+“Hey, kid, look at the situation before you talk. Can't you see
+---
+>  わからねえのか?」
+that this is the result?”
+
+@28832 Daisaku · 大作
+> 「だけど……」
+“But...”
+
+@28833 Roux · ルー
+> 「やめなよ。この子のいったことも
+>  正しいわ。確かに私たちは
+“Stop it. What this kid said is right too. It's true we were
+---
+>  サンクキングダムで平和への道を
+>  探そうとしていた
+trying to find a path to peace in the Sanc Kingdom.
+---
+>  それはまだ終わっちゃいないのよ」
+That isn't over yet.”
+
+@28834 Kamille · カミーユ
+> 「だけど、これが現実だ。
+>  戦争なんだよ」
+“But this is reality. It's war.”
+
+@28835 Fa · ファ
+> 「カミーユ……」
+“Kamille...”
+
+@28836 Quattro · クワトロ
+> 「現実とは変わっていくものだ。
+>  良い方にも、悪い方にもな」
+“Reality is something that changes. For better or for worse.”
+
+@28837 Kamille · カミーユ
+> 「クワトロ大尉……
+>  それってどういう意味ですか?」
+“Captain Quattro... What do you mean by that?”
+
+@28838 Quattro · クワトロ
+> 「先を見すぎてもかえって
+>  道を誤る場合がある
+“Looking too far ahead can sometimes lead you astray instead.
+---
+>  だが、自分の行動に
+>  自信が持てない者は
+But those who can't have confidence in their own actions
+---
+>  そもそも未来のことなど
+>  考えられまい。ブレックス准将は
+can't think about the future in the first place. Brigadier General Blex
+---
+>  地球圏を頼むといわれた。
+>  あとはそれぞれが考えるべきだろう」
+said to leave the Earth Sphere to us. The rest is for each of us to consider.”
+
+@28839 Bright · ブライト
+> 「……これからどうするつもりだ?」
+“...What do you intend to do now?”
+
+@28840 Quattro · クワトロ
+> 「良ければまた同行したい。私にも
+>  考える場所と時間が必要だ」
+“If you'll have me, I'd like to come along again. I too need a place and time to think.”
+
+@28841 Pagan · パーガン
+> 「リリーナ様、本当に
+>  直接おいでになるのでございますか?」
+“Lady Relena, are you truly going in person?”
+
+@28842 Relena · リリーナ
+> 「ええ。どのような相手とでも、
+>  まず直接あわないと
+“Yes. With anyone, unless I first meet them face to face,
+---
+>  本心からの話しあいを
+>  始めることは不可能だわ」
+it's impossible to begin a conversation from the heart.”
+
+@28843 Pagan · パーガン
+> 「しかし、あまりに危険でございます。
+>  ましてやこのところ、財団は我々に
+“But it is far too dangerous. Especially lately, the Foundation has been
+---
+>  無法な挑発や圧力を
+>  かけてきております。そのような時に……」
+subjecting us to outrageous provocations and pressure. At a time like this...”
+
+@28844 Relena · リリーナ
+> 「ですから、その解決のために
+>  行くのです。大丈夫です
+“That is precisely why I go—to resolve it. It will be all right.
+---
+>  話し合ってわからない人間など
+>  この世にはいません
+There is no one in this world who cannot understand through talk.
+---
+>  私たちには何もやましいことなど
+>  ないのですから」
+We have nothing to be ashamed of.”
+
+@28845 Dorothy · ドロシー
+> 「リリーナ様! 財団には
+>  私が案内いたしますわ」
+“Lady Relena! I shall guide you to the Foundation.”
+
+@28846 Quatre · カトル
+> 「地上にMD部隊が
+>  降下し続けている
+“MD units keep descending to the surface.
+---
+>  これだけの数が降ってくるなんて……
+>  月面では、すでに大量生産が
+For this many to come down... It seems mass production has already become
+---
+>  可能になっているみたいだね」
+possible on the lunar surface.”
+
+@28847 Heero · ヒイロ
+> 「そうか」
+“I see.”
+
+@28848 Quatre · カトル
+> 「僕たちには
+>  止めることができなかった……」
+“We couldn't stop it...”
+
+@28849 Heero · ヒイロ
+> 「いずれイヤでも戦うことになる。
+>  俺たちガンダムパイロットは
+“Sooner or later, we'll fight whether we like it or not. We Gundam pilots
+---
+>  戦うことしかできない存在だからな」
+are beings who can do nothing but fight.”
+
+@28850 Quatre · カトル
+> 「……ぼくがもっと強ければ……。
+>  僕が弱いばっかりに
+“...If only I were stronger... Because I'm so weak,
+---
+>  トロワがあんなことになってしまった……」
+Trowa ended up like that...”
+
+@28851 Quatre · カトル
+> 「地球解放戦線のみんなが、
+>  今{HeroMech}と
+“Everyone from the Liberation Front of the Earth has apparently changed their name to {HeroMech} now
+---
+>  名前を変えてサンクキングダムに
+>  いるんだって。知ってたかい?」
+and is at the Sanc Kingdom. Did you know?”
+
+@28852 Heero · ヒイロ
+> 「ああ、そうらしいな」
+“Yeah, so I hear.”
+
+@28853 Quatre · カトル
+> 「あそこは今、OZに狙われてる。
+>  あの人たちなら
+“OZ is targeting that place now. Those people would
+---
+>  きっと守ってくれるだろうけど……。
+>  戦いが始まると、リリーナ王女は
+surely protect it, but... Once the fighting starts, Princess Relena
+---
+>  また苦しむんだろうね……」
+will suffer again, won't she...”
+
+@28854 Heero · ヒイロ
+> 「…………」
+“...”

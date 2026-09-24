@@ -1,0 +1,139 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12899 George · ジョルジュ
+> 「いくぞ!」
+“Here I go!”
+
+@12900 George · ジョルジュ
+> 「いざ!」
+“Now!”
+
+@12901 George · ジョルジュ
+> 「いきますよ!」
+“Here I come!”
+
+@12902 George · ジョルジュ
+> 「うぁぁぁぁぁぁ!」
+“Aaaaaaah!”
+
+@12903 George · ジョルジュ
+> 「とどめだぁ!」
+“This is the finishing blow!”
+
+@12904 George · ジョルジュ
+> 「これはどうです!?」
+“How's this?!”
+
+@12905 George · ジョルジュ
+> 「今私の目に映るのは、お前のみ!」
+“Right now, you're the only one in my sight!”
+
+@12906 George · ジョルジュ
+> 「む、無念……」
+“H-how regrettable...”
+
+@12907 George · ジョルジュ
+> 「あなたの勝ちだ……」
+“You win...”
+
+@12908 George · ジョルジュ
+> 「マ、マリアルイゼ様……」
+“L-Lady Maria Louise...”
+
+@12909 George · ジョルジュ
+> 「うわぁぁぁぁぁぁぁぁっ!」
+“Aaaaaaaaaah!”
+
+@12910 George · ジョルジュ
+> 「こ、こんなはずは……」
+“Th-this can't be...”
+
+@12911 George · ジョルジュ
+> 「ぐぅぅ、騎士は敵に背を向けぬ!」
+“Ngh, a knight never turns his back on the enemy!”
+
+@12912 George · ジョルジュ
+> 「ま、まさか!?」
+“I-impossible?!”
+
+@12913 George · ジョルジュ
+> 「どうした! 戦いはまだ終わって
+>  いないぞぉ!」
+“What's wrong! The battle isn't over yet!”
+
+@12914 George · ジョルジュ
+> 「その罪、万死に値します!」
+“That crime deserves a thousand deaths!”
+
+@12915 George · ジョルジュ
+> 「うっ!?」
+“Ugh?!”
+
+@12916 George · ジョルジュ
+> 「なにっ!?」
+“What?!”
+
+@12917 George · ジョルジュ
+> 「ぬぅっ!」
+“Ngh!”
+
+@12918 George · ジョルジュ
+> 「フッ、さすがですね」
+“Hmph, as expected.”
+
+@12919 George · ジョルジュ
+> 「そうこなくては張り合いがありません」
+“It wouldn't be worth it otherwise.”
+
+@12920 George · ジョルジュ
+> 「そのくらい」
+“Is that all?”
+
+@12921 George · ジョルジュ
+> 「フッ、その程度ですか」
+“Hmph, is that all you've got?”
+
+@12922 George · ジョルジュ
+> 「そんな攻撃は効きませんよ」
+“Attacks like that won't work on me.”
+
+@12923 George · ジョルジュ
+> 「フッ!」
+“Hmph!”
+
+@12924 George · ジョルジュ
+> 「どうしたのですか?」
+“What's the matter?”
+
+@12925 George · ジョルジュ
+> 「私はここですよ!」
+“I'm right here!”
+
+@12926 George · ジョルジュ
+> 「このような攻撃など!」
+“An attack like that is nothing!”
+
+@12927 George · ジョルジュ
+> 「どうやらムダだったようですね」
+“Seems that was useless.”
+
+@12928 George · ジョルジュ
+> 「効かないといっているのです!」
+“I told you it doesn't work!”
+
+@12929 George · ジョルジュ
+> 「ビーム攻撃などと、ムダなことを!」
+“A Beam attack? How pointless!”
+
+@12930 George · ジョルジュ
+> 「弾切れ!? 私としたことが」
+“Out of ammo?! I can't believe it.”
+
+@12931 George · ジョルジュ
+> 「ここからでは届かないようですね」
+“Seems I can't reach from here.”
+
+@12932 George · ジョルジュ
+# 审校：“That's dirty!” 语气偏弱且不像战斗中的斥责，改为更自然的“You coward!”
+> 「卑怯なっ!」
+“You coward!”

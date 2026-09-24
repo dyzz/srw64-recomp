@@ -1,0 +1,431 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17000 Musy · ミュージィ
+# 审校：原文是未说完的感叹句，初稿没有体现“ならっ”的未完成语气，补上破折号。
+> 「このブブリィのパワーならっ!」
+“With the Bublie's power, I'll--!”
+
+@17001 Musy · ミュージィ
+> 「このブブリィ、その程度の攻撃では
+>  落ちん!」
+“The Bublie won't go down from an attack like that!”
+
+@17002 Musy · ミュージィ
+> 「スピードならブブリィの方が上だ!」
+“When it comes to speed, the Bublie's got the edge!”
+
+@17003 Ciela · シーラ
+> 「やらせてはなりません」
+“We must not let them.”
+
+@17004 Ciela · シーラ
+> 「各砲座、撃て」
+“All turrets, fire.”
+
+@17005 Ciela · シーラ
+> 「前方に集中砲火をかけよ」
+“Concentrate your fire to the front.”
+
+@17006 Ciela · シーラ
+> 「前方に集中砲火をかけよ」
+“Concentrate your fire to the front.”
+
+@17007 Ciela · シーラ
+> 「全砲門、撃て!」
+“All guns, fire!”
+
+@17008 Ciela · シーラ
+> 「落とすのです。なんとしても」
+“Bring it down. No matter what.”
+
+@17009 Ciela · シーラ
+> 「落とすのです。なんとしても」
+“Bring it down. No matter what.”
+
+@17010 Ciela · シーラ
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@17011 Ciela · シーラ
+> 「落としてみせよ」
+“Bring it down.”
+
+@17012 Ciela · シーラ
+> 「前方に集中砲火をかけよ」
+“Concentrate your fire to the front.”
+
+@17013 Chum · チャム
+> 「やっちゃえーっ!!」
+“Go get 'em!!”
+
+@17014 Chum · チャム
+> 「シーラさま、来た!!」
+“Lady Ciela, here it comes!!”
+
+@17015 Ciela · シーラ
+> 「全砲門、撃て」
+“All guns, fire.”
+
+@17016 Chum · チャム
+> 「シーラさま、いまよ!」
+“Lady Ciela, now!”
+
+@17017 Ciela · シーラ
+> 「各砲座、撃て」
+“All turrets, fire.”
+
+@17018 Ciela · シーラ
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@17019 Chum · チャム
+> 「いっけぇぇーっ!」
+“Gooo!!”
+
+@17020 Ciela · シーラ
+> 「やらせてはなりません」
+“We must not let them.”
+
+@17021 Chum · チャム
+> 「やらせちゃだめ!!」
+“Don't let 'em!”
+
+@17022 Ciela · シーラ
+> 「うっ……被害状況は!」
+“Ngh... Damage report!”
+
+@17023 Chum · チャム
+> 「はやく知らせてぇっ!!」
+“Hurry up and tell me!!”
+
+@17024 Chum · チャム
+> 「グランガランがやられちゃうーっ!!」
+“The Gran-Garan's gonna get wrecked!!”
+
+@17025 Ciela · シーラ
+> 「まだ、まだ落ちません!」
+“We won't go down. Not yet!”
+
+@17026 Chum · チャム
+> 「いやあぁぁーっ!!」
+“Nooo!!”
+
+@17027 Ciela · シーラ
+> 「まだもちます!」
+“We can still hold!”
+
+@17028 Chum · チャム
+> 「グランガランはこの程度じゃ、落ちないん
+>  だからぁっ!!」
+“The Gran-Garan won't go down from just this!!”
+
+@17029 Ciela · シーラ
+> 「くっ……敵も必死ですね」
+“Ngh... The enemy's desperate too.”
+
+@17030 Chum · チャム
+> 「こっちもそうよぉっ!」
+“So are we!”
+
+@17031 Ciela · シーラ
+> 「うっ……ひるんではなりません!」
+“Ngh... We must not falter!”
+
+@17032 Chum · チャム
+> 「ひるんじゃだめ!」
+“Don't falter!”
+
+@17033 Ciela · シーラ
+> 「グランガランはこの程度では」
+“The Gran-Garan won't go down from just this...”
+
+@17034 Chum · チャム
+> 「落ちないよ!」
+“It won't go down!”
+
+@17035 Ciela · シーラ
+> 「たいした被害はないようですね」
+“It seems there's no serious damage.”
+
+@17036 Chum · チャム
+> 「ベーッだ!」
+“Nyah nyah!”
+
+@17037 Ciela · シーラ
+> 「まだ大丈夫ですね」
+“We're still fine.”
+
+@17038 Chum · チャム
+> 「ぜーんぜん平気なんだから」
+“We're totally fine!”
+
+@17039 Ciela · シーラ
+> 「急速回頭!」
+“Hard about!”
+
+@17040 Chum · チャム
+> 「やったぁっ!!」
+“We did it!!”
+
+@17041 Ciela · シーラ
+> 「急速回頭!」
+“Hard about!”
+
+@17042 Chum · チャム
+> 「あたらないんだから!」
+“It won't hit us!”
+
+@17043 Chum · チャム
+> 「シーラさま、来る!」
+“Lady Ciela, incoming!”
+
+@17044 Ciela · シーラ
+> 「大丈夫です!」
+“We're fine!”
+
+@17045 Ciela · シーラ
+> 「この程度ならば問題ありませんね」
+“At this level, there's no problem.”
+
+@17046 Chum · チャム
+> 「問題ない!」
+“No problem!”
+
+@17047 Ciela · シーラ
+> 「そんな攻撃はムダです!」
+“That attack is useless!”
+
+@17048 Chum · チャム
+> 「ムダムダ!」
+“Useless, useless!”
+
+@17049 Ciela · シーラ
+> 「大丈夫です。オーラバリアが防いで
+>  くれます」
+“It's all right. The Aura Barrier will block it.”
+
+@17050 Ciela · シーラ
+> 「大丈夫です。オーラバリアが防いで
+>  くれます」
+“It's all right. The Aura Barrier will block it.”
+
+@17051 Chum · チャム
+> 「効かないよ!」
+“It doesn't work!”
+
+@17052 Chum · チャム
+> 「オーラバリアーよ!」
+“Aura Barrier!”
+
+@17053 Rain · レイン
+> 「一矢で仕留めるっ!!」
+“One shot will finish it!!”
+
+@17054 Rain · レイン
+> 「必殺必中! ライジングアローッ!」
+“Sure kill, sure hit! Rising Arrow!”
+
+@17055 Rain · レイン
+> 「やってみせるっ!!」
+“I'll show you!!”
+
+@17056 Rain · レイン
+> 「必殺必中! ライジングアローッ!」
+“Sure kill, sure hit! Rising Arrow!”
+
+@17057 Rain · レイン
+> 「いくわよっ!!」
+“Here I go!!”
+
+@17058 Rain · レイン
+> 「必殺必中!
+>  ライジングアロォォォォーッ!」
+“Sure kill, sure hit! Rising Arroooow!”
+
+@17059 Domon · ドモン
+> 「いいか、レイン!」
+“All right, Rain!”
+
+@17060 Domon · ドモン
+> 「これで決めるぞ!」
+“This will finish it!”
+---
+> 「二人のこの手が!」
+“These hands of ours!”
+
+@17061 Rain · レイン
+> 「真っ赤に燃える!」
+“Burn bright red!”
+
+@17062 Domon · ドモン
+> 「幸せつかめと!」
+“Seize happiness!”
+
+@17063 Rain · レイン
+> 「轟き叫ぶ!」
+“Roar and cry out!”
+
+@17064 Domon · ドモン
+> 「いくぞぉぉっ! ばぁぁぁぁくねつ!」
+“Here we go! Burniiiiing!”
+---
+> 「石ッ!」
+“Stone!”
+
+@17065 Rain · レイン
+> 「破ッ!」
+“Shatter!”
+---
+> 「ラーブラブ!」
+“Love love!”
+
+@17066 Domon · ドモン
+> 「天驚ケェェェェェェンッ!!」
+“Heaven Crushing Fiiiiist!!”
+
+@17067 Domon · ドモン
+> 「ヒィィィィィトォォ・エンドォォーッ!」
+“Heeeeat! Eeeend!”
+
+@17068 Master · マスター
+# 审校：“Haou”和“Den'ei Dan”是招式名，应译为英文而非保留罗马音；采用通行译法 Super Overlord Cinema Bullet。
+> 「超級・覇王・電影弾!!」
+“Super! Overlord! Cinema Bullet!!”
+
+@17069 Master · マスター
+> 「ダークネスフィンガァァァァァッ!!」
+“Darkness Fingaaaaaa!!”
+
+@17070 Master · マスター
+> 「秘技!」
+“Secret technique!”
+
+@17071 Master · マスター
+> 「十二王方牌大車りぃぃん!!」
+“Twelve King Rounds, Great Wheel!!”
+
+@17072 Master · マスター
+> 「帰山……笑紅じぃぃん!!」
+“Return to the mountain... Laughing Crimson!!”
+
+@17073 Master · マスター
+> 「流派! 東方不敗!!」
+“School of the Undefeated of the East!!”
+
+@17074 Master · マスター
+> 「十二王方牌! 大車輪!!」
+“Twelve King Rounds! Great Wheel!!”
+
+@17075 Master · マスター
+> 「流派! 東方不敗!!」
+“School of the Undefeated of the East!!”
+
+@17076 Master · マスター
+> 「十二王方牌!!
+>  大車輪ぃぃぃぃん!!」
+“Twelve King Rounds!! Great Wheeeeeel!!”
+
+@17077 Master · マスター
+> 「東方不敗が最終奥義ぃっ!」
+“The Undefeated of the East's ultimate secret!”
+
+@17078 Master · マスター
+> 「石破! 天驚けぇぇぇぇぇぇんっ!」
+“Stone Shatter! Heaven Crushing Fiiiiiist!”
+
+@17079 Master · マスター
+> 「酔舞・再現江湖
+>  デッドリーウェェイブ!!」
+“Drunken Dance: Deadly Wave Reborn!!”
+
+@17080 Master · マスター
+> 「……爆発!!」
+“...Explosion!!”
+
+@17081 Domon · ドモン
+> 「アレンビーッ!」
+“Allenby!”
+
+@17082 Allenby · アレンビー
+> 「いくよぉ、ドモンッ!」
+“Here we go, Domon!”
+
+@17083 Domon · ドモン
+> 「ああ、決めにするぞ!」
+“Yeah, let's finish this!”
+
+@17084 Domon · ドモン
+> 「俺のこの手が真っ赤に燃えるッ!」
+“This hand of mine burns bright red!”
+
+@17085 Allenby · アレンビー
+> 「勝利をつかめと!」
+“Seize victory!”
+
+@17086 Domon · ドモン
+> 「轟き叫ぶ!」
+“Roar and cry out!”
+---
+> 「ばぁぁぁくねつ!」
+“Burniiiiing!”
+
+@17087 Allenby · アレンビー
+> 「ダブルッ!」
+“Double!”
+
+@17088 Domon · ドモン
+> 「ゴッド・フィンガァァァーッ!!」
+“God Fingaaaaaa!!”
+
+@17089 Domon · ドモン
+> 「ヒィィィィトッ!」
+“Heeeeat!”
+
+@17090 Allenby · アレンビー
+> 「エンドォォッ!」
+“Eeeend!”
+
+@17091 Domon · ドモン
+> 「いいか、レイン!」
+“All right, Rain!”
+
+@17092 Domon · ドモン
+> 「これで決めるぞ!」
+“This will finish it!”
+---
+> 「二人のこの手が!」
+“These hands of ours!”
+
+@17093 Rain · レイン
+> 「真っ赤に燃える!」
+“Burn bright red!”
+
+@17094 Domon · ドモン
+> 「幸せつかめと!」
+“Seize happiness!”
+
+@17095 Rain · レイン
+> 「轟き叫ぶ!」
+“Roar and cry out!”
+
+@17096 Domon · ドモン
+> 「いくぞぉぉっ! ばぁぁぁぁくねつ!」
+“Here we go! Burniiiiing!”
+---
+> 「石ッ!」
+“Stone!”
+
+@17097 Rain · レイン
+> 「破ッ!」
+“Shatter!”
+---
+> 「ラーブラブ!」
+“Love love!”
+
+@17098 Domon · ドモン
+> 「天驚ケェェェェェェンッ!!」
+“Heaven Crushing Fiiiiist!!”
+
+@17099 Domon · ドモン
+> 「ヒィィィィィトォォ・エンドォォーッ!」
+“Heeeeat! Eeeend!”

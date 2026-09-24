@@ -1,0 +1,211 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12772 Schwarz · シュバルツ
+> 「どうした! どうした! どうしたっ!」
+“What's wrong?! What's wrong?! What's wrong?!”
+
+@12773 Schwarz · シュバルツ
+> 「ここらで引導を渡してくれるわ!!」
+“I'll put you out of your misery right here!!”
+
+@12774 Schwarz · シュバルツ
+> 「はああああっ!!」
+“Haaaaaah!!”
+
+@12775 Schwarz · シュバルツ
+> 「いくぞっ!! うりゃぁぁぁぁぁぁっ!!」
+“Here I come!! Hraaaah!!”
+
+@12776 Schwarz · シュバルツ
+> 「とりゃぁぁぁっ!!」
+“Hraaah!!”
+
+@12777 Schwarz · シュバルツ
+> 「そこだっ!!」
+“Right there!!”
+
+@12778 Schwarz · シュバルツ
+> 「これまでだっ!!」
+“This is the end!!”
+
+@12779 Schwarz · シュバルツ
+> 「おららららららっ!!」
+“Orarararara!!”
+
+@12780 Schwarz · シュバルツ
+> 「それ! それ! それ! それっ!!」
+“Take this! And this! And this! And this!!”
+
+@12781 Schwarz · シュバルツ
+> 「バカ者ぉぉぉっ!!」
+“You foooool!!”
+
+@12782 Schwarz · シュバルツ
+> 「貴様の思う様にはさせんぞ!!」
+“I won't let you have your way!!”
+
+@12783 Schwarz · シュバルツ
+> 「愚か者!!」
+“Fool!!”
+
+@12784 Schwarz · シュバルツ
+> 「バカ者っ!!」
+“Idiot!!”
+
+@12785 Schwarz · シュバルツ
+> 「くらえっ!」
+“Take this!”
+
+@12786 Schwarz · シュバルツ
+> 「あまかったか……!?」
+“Was I too soft...?!”
+
+@12787 Schwarz · シュバルツ
+> 「し、しまったっ!!」
+“D-Damn it!!”
+
+@12788 Schwarz · シュバルツ
+> 「くっ! しまったっ!!」
+“Ngh! Damn it!!”
+
+@12789 Schwarz · シュバルツ
+> 「くっ! ぬかった!」
+“Ngh! I let my guard down!”
+
+@12790 Schwarz · シュバルツ
+> 「むうっ! 私も修行が足りんな」
+“Hmph! I still have much to learn.”
+
+@12791 Schwarz · シュバルツ
+> 「バカな?」
+“Impossible?”
+
+@12792 Schwarz · シュバルツ
+> 「くくっ……! この凄まじいパワー、
+>  ただ者ではないな!?」
+“Heh heh...! This incredible power, you're no ordinary foe?!”
+
+@12793 Schwarz · シュバルツ
+> 「くっ!
+>  だが、この程度ならまだいける!!」
+“Ngh! But I can still keep going at this rate!!”
+
+@12794 Schwarz · シュバルツ
+> 「むうっ! やる!」
+“Hmph! Not bad!”
+
+@12795 Schwarz · シュバルツ
+> 「つっ! このままでは機体がもたんか!」
+“Tch! At this rate my unit won't hold!”
+
+@12796 Schwarz · シュバルツ
+> 「その程度では私は、やられん!!」
+“That won't be enough to take me down!!”
+
+@12797 Schwarz · シュバルツ
+> 「くっ! くらったか!?」
+“Ngh! Did I take a hit?!”
+
+@12798 Schwarz · シュバルツ
+> 「くっ! まだだ! まだやられはせん!!」
+“Ngh! Not yet! I'm not going down yet!!”
+
+@12799 Schwarz · シュバルツ
+> 「くっ! ま、まだいける!」
+“Ngh! I-I can still go!”
+
+@12800 Schwarz · シュバルツ
+> 「このくらい!」
+“This is nothing!”
+
+@12801 Schwarz · シュバルツ
+# 审校：「ツメがあまい」是惯用语，指经验不足、不够老练，不是字面的爪子软。
+> 「いい腕だ! だが、ツメがあまいぞっ!!」
+“Good skill! But you're still green!!”
+
+@12802 Schwarz · シュバルツ
+> 「むっ! 少しは出来るな!」
+“Hmph! You've got some skill!”
+
+@12803 Schwarz · シュバルツ
+> 「よくぞ、この私に当てた!」
+“You actually managed to hit me!”
+
+@12804 Schwarz · シュバルツ
+> 「うっ!! 当たったか……」
+“Ugh!! So it hit...”
+
+@12805 Schwarz · シュバルツ
+> 「ぬっ! だが、まだ落ちはせんぞ!」
+“Ngh! But I won't fall yet!”
+
+@12806 Schwarz · シュバルツ
+> 「なんのっ!!」
+“As if!!”
+
+@12807 Schwarz · シュバルツ
+> 「その程度では私は、倒せんぞ!!」
+“That won't be enough to defeat me!!”
+
+@12808 Schwarz · シュバルツ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@12809 Schwarz · シュバルツ
+> 「どうした、そんなものか!」
+“What's wrong, is that all you've got?”
+
+@12810 Schwarz · シュバルツ
+> 「その程度とはな!」
+“So that's all you amount to!”
+
+@12811 Schwarz · シュバルツ
+> 「笑止っ!」
+“Ridiculous!”
+
+@12812 Schwarz · シュバルツ
+> 「本気で来いっ!!」
+“Come at me for real!!”
+
+@12813 Schwarz · シュバルツ
+# 审校：「あまい」在这里指对手太嫩，不是“soft”。
+> 「あまいぞっ!!」
+“Too green!!”
+
+@12814 Schwarz · シュバルツ
+# 审校：同上，「あまい」应译为“green”而非“soft”。
+> 「あまいなっ!私はここだっ!!」
+“Too green! I'm right here!!”
+
+@12815 Schwarz · シュバルツ
+> 「あきらめが悪いぞ!」
+“You don't know when to give up!”
+
+@12816 Schwarz · シュバルツ
+> 「未熟、未熟ゥゥゥゥッ!!」
+“Amateur, amateurrr!!”
+
+@12817 Schwarz · シュバルツ
+# 审校：同上，「あまい」应译为“green”而非“soft”。
+> 「あまい、あまいぞっ!!」
+“Green, too green!!”
+
+@12818 Schwarz · シュバルツ
+> 「ビームは、効きはせん!」
+“Beams won't work on me!”
+
+@12819 Schwarz · シュバルツ
+> 「無駄無駄無駄ぁぁぁぁっ!!」
+“Useless, useless, useless!!”
+
+@12820 Schwarz · シュバルツ
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@12821 Schwarz · シュバルツ
+> 「不覚……」
+“A blunder...”
+
+@12822 Schwarz · シュバルツ
+> 「むっ!届かん!」
+“Hmph! Out of range!”

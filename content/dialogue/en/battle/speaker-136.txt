@@ -1,0 +1,78 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7182 Mika · ミカ
+> 「いやぁぁぁぁっ!」
+“Nooooo!”
+
+@7183 Mika · ミカ
+> 「き、機能低下っ! だめですっ!」
+“F-functionality dropping! It's no good!”
+
+@7191 Mika · ミカ
+> 「きゃあぁぁぁぁ!」
+“Kyaaaaaah!”
+
+@7192 Mika · ミカ
+> 「あぁぁぁぁっ!」
+“Aaaaaah!”
+
+@7193 Mika · ミカ
+> 「このままじゃ機体が!」
+“At this rate the unit will...!”
+
+@7198 Mika · ミカ
+> 「ああぁっ!」
+“Aaah!”
+
+@7205 Mika · ミカ
+> 「大丈夫です。装置は作動して
+>  います!」
+“It's fine. The device is working!”
+
+@7207 Mika · ミカ
+> 「だめです、攻撃できません!」
+“No good, I can't attack!”
+
+@7208 Mika · ミカ
+> 「だめです、攻撃が届きません!」
+“No good, my attack can't reach!”
+
+@7209 Mika · ミカ
+> 「敵、見失いました!」
+“I've lost sight of the enemy!”
+
+@7211 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7212 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7213 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7214 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7215 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7216 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7217 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7218 Mika · ミカ
+> 「ばかめ!」
+“Fool!”
+
+@7219 Mika · ミカ
+> 「ばかめ!」
+“Fool!”

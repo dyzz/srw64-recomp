@@ -1,0 +1,214 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5904 Shiro · シロー
+> 「守ったら負ける!」
+“If I just defend, I'll lose!”
+
+@5905 Shiro · シロー
+> 「くそっ、落ちろ!」
+“Damn it, go down!”
+
+@5906 Shiro · シロー
+> 「うわあぁぁぁぁぁぁーっ!」
+“Uwaaaaaaaaah!”
+
+@5907 Shiro · シロー
+> 「落ち着け、落ち着けよシロー……」
+“Calm down, calm down, Shiro...”
+
+@5908 Shiro · シロー
+> 「みてろよ!」
+“Just watch me!”
+
+@5909 Shiro · シロー
+> 「俺にだってできるんだ!」
+“Even I can do it!”
+
+@5910 Shiro · シロー
+> 「かかった!」
+“Got you!”
+
+@5911 Shiro · シロー
+# 审校：「あの時の二の舞」指重蹈上次覆辙，原译 twice 不够准确，改为 as last time。
+> 「あの時の二の舞はゴメンだ!」
+“I'm not making the same mistake as last time!”
+
+@5912 Shiro · シロー
+> 「動くなよ!」
+“Don't move!”
+
+@5913 Shiro · シロー
+> 「いちかばちかだ!」
+“It's all or nothing!”
+
+@5914 Shiro · シロー
+# 审校：原文「くらえぇぇっ」有拖长音，原译 Take this 没体现气势，改为 Take thiiis。
+> 「くらえぇぇっ!」
+“Take thiiis!”
+
+@5915 Shiro · シロー
+> 「いけるか!?」
+“Can I pull it off?!”
+
+@5916 Shiro · シロー
+> 「ジンクスなんて吹き飛ばしてやる」
+“I'll blow away any jinx!”
+
+@5917 Shiro · シロー
+> 「いくぞっ!」
+“Here I go!”
+
+@5918 Shiro · シロー
+> 「でやぁぁぁぁっ!」
+“Hyaaaaaah!”
+
+@5919 Shiro · シロー
+> 「援護がほしいところだな」
+“I could use some backup here.”
+
+@5920 Shiro · シロー
+> 「落ちろぉぉぉぉーっ!」
+“Go doooown!”
+
+@5921 Shiro · シロー
+# 审校：「集中攻撃かける」是命令集中攻击，原译 Focus your fire 可接受，但 Concentrate fire 更贴近军事口令。
+> 「集中攻撃かける!」
+“Concentrate fire!”
+
+@5922 Shiro · シロー
+> 「とらえた!」
+“Got him!”
+
+@5923 Shiro · シロー
+> 「くっそぉぉーっ! 落ちろぉっ!」
+“Damn iiiit! Go down!”
+
+@5924 Shiro · シロー
+> 「出てくるか……」
+“So you're coming out...”
+
+@5925 Shiro · シロー
+> 「ア、アイナーッッ!」
+“Ei-Einer!!”
+
+@5926 Shiro · シロー
+> 「うわぁぁぁぁぁっっ!」
+“Uwaaaaaaah!”
+
+@5927 Shiro · シロー
+> 「く……負けた……」
+“Ngh... I lost...”
+
+@5928 Shiro · シロー
+> 「うわぁぁぁぁぁっ!」
+“Uwaaaaaaah!”
+
+@5929 Shiro · シロー
+> 「も、もたないのか!?」
+“I-I can't hold out?!”
+
+@5930 Shiro · シロー
+> 「これ以上は、無理か!?」
+“Any more than this is impossible?!”
+
+@5931 Shiro · シロー
+> 「くっ、もう噴射機が限界か!」
+“Ngh, the thrusters are at their limit!”
+
+@5932 Shiro · シロー
+> 「まだっ、希望はある!」
+“There's still hope!”
+
+@5933 Shiro · シロー
+> 「うっ、なんだこいつは!?」
+“Ugh, what is this thing?!”
+
+@5934 Shiro · シロー
+> 「くっ、変だ、なにかおかしいぞ!?」
+“Ngh, something's wrong, something's off?!”
+
+@5935 Shiro · シロー
+> 「くっ」
+“Ngh!”
+
+@5936 Shiro · シロー
+> 「あたったのかっ!」
+“Did it hit?!”
+
+@5937 Shiro · シロー
+> 「まだだ!」
+“Not yet!”
+
+@5938 Shiro · シロー
+> 「まだまだぁっっ!」
+“Not by a long shot!”
+
+@5939 Shiro · シロー
+> 「くっ、まずいぞ……」
+“Ngh, this is bad...”
+
+@5940 Shiro · シロー
+# 审校：原文「動きが重い」指机体动作沉重，原译 she's sluggish 用 she 指代机体不自然，改为 it's sluggish。
+> 「くうっ、動きが重いっ!」
+“Ngh, it's sluggish!”
+
+@5941 Shiro · シロー
+> 「くっ、左手がやられただけだ!」
+“Ngh, it's only my left arm that's hit!”
+
+@5942 Shiro · シロー
+> 「あっ……あたったのか!?」
+“Ah... did it hit?!”
+
+@5943 Shiro · シロー
+# 审校：原文「この程度ですんでくれた」是庆幸损伤轻微，原译 So this is all it did 可接受，但改为更自然的庆幸语气。
+> 「この程度ですんでくれた?」
+“So it only did this much?”
+
+@5944 Shiro · シロー
+> 「くっ、命中した!?」
+“Ngh, it hit?!”
+
+@5945 Shiro · シロー
+> 「損傷は軽微だ!」
+“Damage is minimal!”
+
+@5946 Shiro · シロー
+> 「うぅっ」
+“Ugh!”
+
+@5947 Shiro · シロー
+> 「くぅっ、上等だ!」
+“Ngh, bring it on!”
+
+@5948 Shiro · シロー
+> 「俺の腕もまぁまぁだろ!」
+“My skills aren't half bad, huh!”
+
+@5949 Shiro · シロー
+> 「やった、成功した!」
+“Yes, it worked!”
+
+@5950 Shiro · シロー
+> 「みろっ! やったぞ!」
+“See that! I did it!”
+
+@5951 Shiro · シロー
+> 「やったか!」
+“Did I get him?!”
+
+@5952 Shiro · シロー
+> 「効かないんだよ、それは!」
+“That doesn't work on me!”
+
+@5953 Shiro · シロー
+> 「た、弾切れ!?」
+“O-Out of ammo?!”
+
+@5954 Shiro · シロー
+> 「やつはどこだ!?」
+“Where is he?!”
+
+@5955 Shiro · シロー
+> 「く、どこへいったぁ!?」
+“Ngh, where did he go?!”

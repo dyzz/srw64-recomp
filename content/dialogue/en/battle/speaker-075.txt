@@ -1,0 +1,121 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8475 Buran · ブラン
+> 「ダテじゃないんだよ!!」
+“I'm not just for show!”
+
+@8476 Buran · ブラン
+> 「照準内!」
+“In my sights!”
+
+@8477 Buran · ブラン
+> 「もらった!!」
+“Got you!”
+
+@8478 Buran · ブラン
+> 「そこかっ!」
+“There you are!”
+
+@8479 Buran · ブラン
+> 「当てる!!」
+“I'll hit you!”
+
+@8480 Buran · ブラン
+> 「いけっ!」
+“Go!”
+
+@8481 Buran · ブラン
+> 「いただく!」
+“I'll take that!”
+
+@8482 Buran · ブラン
+> 「スキだらけだな……甘いっ!」
+“Wide open... too soft!”
+
+@8483 Buran · ブラン
+> 「な……バカなっ!?」
+“Wha... impossible?!”
+
+@8484 Buran · ブラン
+> 「なんだと!? 直撃か!?」
+“What?! A direct hit?!”
+
+@8485 Buran · ブラン
+> 「ぐっ!! こいつ……やる!!」
+“Guh! This guy... he's good!”
+
+@8486 Buran · ブラン
+> 「ぬおっ!! まだだ!! まだやらせん!!」
+“Ngh! Not yet! I won't let you!”
+
+@8487 Buran · ブラン
+> 「ちいっ! 貴様などにやられるわけには
+>  いかんのだ!!」
+“Tch! I can't afford to be beaten by the likes of you!”
+
+@8488 Buran · ブラン
+# 审校：原文未指明性别，且说话对象可能是机体或对手，改为中性 it，避免误判为男性。
+> 「何っ! これほどのパワーがあるのか!?」
+“What?! It has this much power?!”
+
+@8489 Buran · ブラン
+> 「くっ!! いい腕をしている!」
+“Ngh! You've got skill!”
+
+@8490 Buran · ブラン
+> 「ちっ! そうそう好きにはやらせんよ!!」
+“Tch! I won't let you have it your way!”
+
+@8491 Buran · ブラン
+> 「うおっ! こいつ、ただものではないな!」
+“Whoa! This one's no ordinary foe!”
+
+@8492 Buran · ブラン
+> 「ぬうっ! 貴様らの好きにはさせん!」
+“Ngh! I won't let you lot do as you please!”
+
+@8493 Buran · ブラン
+> 「やるっ! だが、こちらとて!」
+“Nice! But so am I!”
+
+@8494 Buran · ブラン
+> 「効かんな!!」
+“It's useless!”
+
+@8495 Buran · ブラン
+> 「そんなものか……」
+“Is that all you've got...”
+
+@8496 Buran · ブラン
+> 「その程度の腕で戦場にでるとは
+>  ……貴様、戦いをなめているな!」
+“Going into battle with skill like that... you're mocking war!”
+
+@8497 Buran · ブラン
+> 「当たるかよ!」
+“Like that'll hit!”
+
+@8498 Buran · ブラン
+> 「甘いな!!」
+“Too soft!”
+
+@8499 Buran · ブラン
+> 「まだまだだな!」
+“Not good enough!”
+
+@8500 Buran · ブラン
+> 「やはりな……攻撃パターンが
+>  単純なんだよ!」
+“Just as I thought... your attack patterns are too simple!”
+
+@8501 Buran · ブラン
+> 「ビームだと? ムダな事を」
+“Beams? What a waste.”
+
+@8502 Buran · ブラン
+> 「なに!? 弾切れか!?」
+“What?! Out of ammo?!”
+
+@8503 Buran · ブラン
+> 「ちっ、この距離では反撃できんな…」
+“Tch, I can't counter from this distance...”

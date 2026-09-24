@@ -1,0 +1,1502 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@19568 Bright · ブライト
+> 「敵の様子はどうか?」
+“How are the enemy looking?”
+
+@19569 David · デビッド
+> 「まだ追尾されてますね。こいつは
+>  振り払うのはちょっとやっかいだな」
+“They're still tailing us. This one's going to be a bit of a pain to shake off.”
+
+@19570 Roux · ルー
+> 「敵もそんなに甘くはないってことね」
+“So the enemy isn't going to make it that easy, huh.”
+
+@19571 Bright · ブライト
+> 「やはり逃げ切れないか……
+>  どこかで迎撃するしかないのか」
+“So we can't outrun them after all... I suppose we've no choice but to intercept them somewhere.”
+
+@19572 Roux · ルー
+> 「そう思います」
+“I think so too.”
+
+@19573 Aboly · アポリー
+> 「艦長! 敵高速輸送艇
+>  急速接近!」
+“Captain! An enemy high-speed transport is closing in fast!”
+
+@19574 Bright · ブライト
+> 「なんだと!? 各員砲座につけ!
+>  パイロットはデッキへ急げ!」
+“What?! All hands, man your stations! Pilots, get to the deck, on the double!”
+
+@19575 Roux · ルー
+> 「ちょっと待ってください艦長。
+>  敵輸送艇から通信
+“Wait a moment, Captain. The enemy transport is hailing us.
+---
+>  投降するといっています」
+They're saying they surrender.”
+
+@19576 Bright · ブライト
+> 「投降!? 誰がだ?」
+“Surrender?! Who is?”
+
+@19577 Roux · ルー
+# 审校：エマ・シーン特尉：特尉不是少尉，按军衔体系应译为 Lieutenant（中尉），并保留 Specials 的称呼。
+> 「スペシャルズの、エマ・シーン特尉
+>  だそうです」
+“A Specials officer, apparently. Lieutenant Emma Sheen.”
+
+@19578 Bright · ブライト
+> 「エマ・シーン……? 1人なのか?」
+“Emma Sheen...? Just one person?”
+
+@19579 David · デビッド
+> 「機体上部に白旗確認。
+>  どうするんです?」
+“I can confirm a white flag on the upper hull. What do we do?”
+
+@19580 Bright · ブライト
+> 「収容してやれ。監視はおこたるなよ」
+“Take her in. But don't let your guard down.”
+
+@19581 Emma · エマ
+> 「エマ・シーンです。受け入れて
+>  いただいて感謝します」
+“I'm Emma Sheen. I appreciate your taking me in.”
+
+@19582 Kamille · カミーユ
+# 审校：同上，特尉应译为 Lieutenant，保持与 L10 一致。
+> (エマ・シーン特尉か……)
+(Lieutenant Emma Sheen, huh...)
+
+@19583 Quattro · クワトロ
+> 「私は君の心変わりを信じることが
+>  できない。スペシャルズといえば
+“I can't bring myself to trust your change of heart. The Specials are
+---
+>  我々とは違う理念を持った、
+>  選ばれたスタッフだからな」
+chosen personnel with ideals different from ours, after all.”
+
+@19584 Emma · エマ
+> 「皮肉ですか? でも、おっしゃることは
+>  わかります」
+“Is that sarcasm? But I understand what you're saying.”
+
+@19585 Quattro · クワトロ
+> 「何があったのかね、スペシャルズで。
+>  いや、君の心の中で、か」
+“What happened to you in the Specials? No — what happened in your heart?”
+
+@19586 Emma · エマ
+> 「別に何も。私は自分の信じる
+>  道を行きたいと考えるだけです
+“Nothing in particular. I simply want to follow the path I believe in.
+---
+>  何も変わってはいません」
+Nothing has changed.”
+
+@19587 Quattro · クワトロ
+# 审校：クワトロ称呼エマ为特尉，应译为 Lieutenant，而不是 Ensign。
+> 「特尉、しばらくは監視つきになるが」
+“Lieutenant, you'll be under watch for a while.”
+
+@19588 Emma · エマ
+> 「当然でしょうね」
+“Naturally.”
+
+@19589 Quattro · クワトロ
+# 审校：エマ特尉应译为 Lieutenant Emma，保持军衔一致。
+> 「カミーユ、エマ特尉を部屋へ
+>  案内してやってくれ」
+“Kamille, show Lieutenant Emma to her room.”
+
+@19590 Kamille · カミーユ
+> 「はい。こちらです、エマさん」
+“Yes. This way, Emma.”
+
+@19591 Ark · アーク（按段落 3DD1）
+> 「どうなんです、あの人?」
+“What do you make of her?”
+
+@19592 Quattro · クワトロ
+> 「よい感じは受ける。期待したいな?」
+“I get a good feeling from her. I'd like to hope so, anyway.”
+
+@19593 Ark · アーク（按段落 3DD1）
+> 「そう思います」
+“I think so too.”
+
+@19594 Selain · セレイン（按段落 3DD2）
+> 「主義者だと? ご立派なことだが
+>  スペシャルズが何をしてきたのか
+“An ideologue, are you? Very noble, but don't tell me you don't know
+---
+>  知らないとはいわせないぞ」
+what the Specials have been doing.”
+
+@19595 Emma · エマ
+> 「ええ、いわないわ。でもね、あなた
+>  ずいぶんと戦いなれしているようだけど
+“No, I won't say that. But you seem quite used to fighting.
+---
+>  あなたは誰も巻き添えにしては
+>  いないと言えて?」
+Can you honestly say you've never dragged anyone into it?”
+
+@19596 Quattro · クワトロ
+# 审校：エマ特尉应译为 Lieutenant Emma，保持军衔一致。
+> 「やめないか2人とも。エマ特尉、
+>  悪いがしばらくは自由にはできん
+“That's enough, both of you. Lieutenant Emma, I'm sorry, but you won't have your freedom for a while.
+---
+>  カミーユ、エマ特尉を部屋に
+>  案内してやってくれ」
+Kamille, show Lieutenant Emma to her room.”
+
+@19597 Kamille · カミーユ
+> 「は、はい。こちらです」
+“Y-yes. This way.”
+
+@19598 Emma · エマ
+> 「ありがとう……カミーユ・ビダン」
+“Thank you... Kamille Bidan.”
+
+@19599 Quattro · クワトロ
+> 「君の感想を聞かせてもらいたいな?」
+“I'd like to hear your impression of her.”
+
+@19600 Selain · セレイン（按段落 3DD2）
+> 「……信用はできると思いますが」
+“...I think she can be trusted.”
+
+@19601 Quattro · クワトロ
+> 「そうだな。彼女はよいスタッフとなって
+>  くれる」
+“Yes. She'll make a fine addition.”
+
+@19602 Bright · ブライト
+> 「どうしたか!」
+“What is it?!”
+
+@19603 Roux · ルー
+> 「2時の方向より
+>  敵部隊接近」
+“Enemy force approaching from two o'clock.”
+
+@19604 Bright · ブライト
+> 「別の部隊が展開していたか。
+>  やむをえん
+“So another unit was deployed. There's no helping it.
+---
+>  総員、第一戦闘配置!
+>  敵を迎撃する」
+All hands, battle stations! Intercept the enemy!”
+
+@19605 Emma · エマ
+> 「捕捉されたの?」
+“Were we caught?”
+
+@19606 Kamille · カミーユ
+> 「いえ、追撃隊とは別の部隊
+>  みたいです
+“No, it looks like a different unit from the pursuit force.
+---
+>  エマさんは、この部屋から出ないで
+>  ください」
+Emma, please stay in this room.”
+
+@19607 David · デビッド
+> 「カミーユ、何やってんだ。急げよ」
+“Kamille, what are you doing? Hurry up!”
+
+@19608 Kamille · カミーユ
+> 「わかってる!」
+“I know!”
+
+@19609 Jerid · ジェリド
+> 「奴らに間違いない。俺たちは
+>  ついているぜ!」
+“It's definitely them. We've got them now!”
+
+@19610 Lila · ライラ
+> 「じきに連中を追っている部隊も
+>  くる。無理はするなよ」
+“The unit chasing them will be here soon. Don't push yourself.”
+
+@19611 Jerid · ジェリド
+> 「わかってるさ」
+“I know.”
+
+@19612 Kacricon · カクリコン
+> 「あせるなよ、ジェリド」
+“Don't get worked up, Jerid.”
+
+@19613 Karla · カルラ
+> 「奴らめ……絶対に逃しはせん!」
+“Those bastards... I won't let them escape!”
+
+@19614 Karla · カルラ
+> 「奴らめ……絶対に逃しはせん。スペ
+>  シャルズ部隊、奴らの足をとめろ!」
+“Those bastards... I won't let them escape. Specials unit, stop them in their tracks!”
+
+@19615 Emma · エマ
+> 「了解」
+“Understood.”
+
+@19616 Emma · エマ
+> (確かめなくては……)
+(I have to find out...)
+
+@19617 Kurtz · カーツ（按段落 3DD3）
+> 「……{HeroName}、戦ってもらうぞ、
+>  この俺と」
+“...{HeroName}, you'll fight me. Right here.”
+
+@19618 Koji · 甲児
+> 「おい{HeroName}、ありゃ
+>  ヴァイローズじゃねぇのか!?」
+“Hey, {HeroName}, isn't that Virose?!”
+
+@19619 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerName}!? ばかな、
+>  貴様いったいなんのつもりだ!」
+“{PartnerName}?! That can't be. What the hell are you trying to do?!”
+
+@19620 Kurtz · カーツ（按段落 3DD3）
+> 「いったはずだ、{HeroName}。
+>  俺は手段を選ばんとな」
+“I told you, {HeroName}. I won't choose my means.”
+
+@19621 Koji · 甲児
+> 「どうすんだよ!?」
+“What are we gonna do?!”
+
+@19622 Brad · ブラッド（按段落 3DD3）
+> 「みんな、手は出すなよ。
+>  奴は俺がやる
+“Everyone, don't interfere. He's mine.
+---
+>  それが貴様の望みだろう、
+>  {PartnerName}!?
+Isn't that what you want, {PartnerName}?!
+---
+>  俺が、この手で倒してやる」
+I'll take you down with my own hands.”
+
+@19623 Kurtz · カーツ（按段落 3DD3）
+> 「フン、貴様にできるのか?」
+“Hmph. Can you really do it?”
+
+@19624 Koji · 甲児
+> 「おい{HeroName}、ありゃ
+>  ヴァイローズじゃねぇのか!?」
+“Hey, {HeroName}, isn't that Virose?!”
+
+@19625 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerName}!? ばかな、
+>  貴様いったいなんのつもりだ!」
+“{PartnerName}?! That can't be. What the hell are you trying to do?!”
+
+@19626 Kurtz · カーツ（按段落 3DD3）
+> 「いったはずだ、{HeroName}。
+>  俺は手段を選ばんとな
+“I told you, {HeroName}. I won't choose my means.
+---
+>  貴様の方から俺と戦いたくなる
+>  ようにしてやる」
+I'll make you want to fight me.”
+
+@19627 Brad · ブラッド（按段落 3DD3）
+> 「くっ……{PartnerName}……」
+“Ngh... {PartnerName}...”
+
+@19628 Koji · 甲児
+> 「どうやらやらねぇってわけには、
+>  いかなそうだぜ、{HeroName}」
+“Looks like we've got no choice but to fight, {HeroName}.”
+
+@19629 Karla · カルラ
+> 「奴らめ……絶対に逃しはせん。スペ
+>  シャルズ部隊、奴らの足をとめろ!」
+“Those bastards... I won't let them escape. Specials unit, stop them in their tracks!”
+
+@19630 Emma · エマ
+> 「了解」
+“Understood.”
+
+@19631 Emma · エマ
+> (……確かめなくては……)
+(...I have to find out...)
+
+@19632 Lawrence · ローレンス
+> 「お、お嬢様、あれは……」
+“M-my lady, that's...”
+
+@19633 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}……」
+“{PartnerName}...”
+
+@19634 Aisha · アイシャ（按段落 3DD4）
+> 「今度こそ、アナタを倒してみせますわ
+>  {HeroName}さん。覚悟なさい」
+“This time I will defeat you, {HeroName}. Prepare yourself.”
+
+@19635
+> *  待って{PartnerName}!
+> *  残念だわ、{PartnerName}
+* Wait, {PartnerName}!
+* I'm sorry, {PartnerName}.
+
+@19636 Manami · マナミ（按段落 3DD4）
+> 「待って{PartnerName}!
+>  お願い、話をきいて!」
+“Wait, {PartnerName}! Please, listen to me!”
+
+@19637 Aisha · アイシャ（按段落 3DD4）
+> 「アナタがロームフェラに戻らぬかぎりは、
+>  話すことなどありませんわ」
+“Unless you return to Romefeller, there is nothing to discuss.”
+
+@19638 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}! あたしは……」
+“{PartnerName}! I...”
+
+@19639 Aisha · アイシャ（按段落 3DD4）
+> 「問答は無用です!」
+“There's no point in talking!”
+
+@19640 Manami · マナミ（按段落 3DD4）
+> 「残念だわ、{PartnerName}。
+>  あなたとは戦いたくはなかったけれど
+“I'm sorry, {PartnerName}. I didn't want to fight you, but
+---
+>  あたしも素直にやられるわけには
+>  いかないの」
+I can't just let myself be beaten either.”
+
+@19641 Aisha · アイシャ（按段落 3DD4）
+> 「結構ですわ。そうでなければ
+>  張り合いがありませんもの」
+“Fine. Otherwise there'd be no contest at all.”
+
+@19642 Emma · エマ
+> 「私は、スペシャルズのエマ・シーン1級
+>  特尉だ。聞きたいことがある
+“I'm Emma Sheen, First Lieutenant of the Specials. There's something I want to ask.
+---
+>  ニューエドワーズ基地でお前たちが
+>  言っていた“はめられた”とは、
+What did you mean by ‘we were set up’ back at New Edwards Base?
+---
+>  いったいどういうことか?」
+What exactly did you mean by that?”
+
+@19643 Quattro · クワトロ
+> 「言葉の通りだ。我々、
+>  地球解放戦線も、カラバも、
+“It means exactly what it says. We of the Liberation Front of the Earth, and Karaba too,
+---
+>  あの基地には帝国とスペシャルズの
+>  幹部が集結するという情報を
+had intelligence that the Empire's and the Specials' top brass would gather at that base.
+---
+>  つかんでいた。そのためにカラバはあの
+>  基地を攻撃したのだ。しかし、
+That's why Karaba attacked it. But look at the result.
+---
+>  その結果はどうだ? あの基地にい
+>  たのは、帝国と地球の
+What was at that base were the Empire's and Earth's
+---
+>  平和論者たちだった。何者かが
+>  我々が攻撃することをみこして、
+peace advocates. It's obvious that someone anticipated our attack
+---
+>  ニセの情報を流したのは明白だ。
+>  我々は平和論者たちの
+and fed us false information. We were used
+---
+>  排除に、利用されたのだ」
+to eliminate the peace advocates.”
+
+@19644 Emma · エマ
+> 「……まさか、そんなこと」
+“...That can't be.”
+
+@19645 Quattro · クワトロ
+> 「ないといいきれるのか? スペシャルズは
+>  地球の治安維持のための
+“Can you really say it can't? The Specials claim to be an organization for maintaining
+---
+>  組織だというが、その実、帝国の
+>  手先となって同じ地球人を
+order on Earth, but in truth they've become the Empire's pawns, tormenting
+---
+>  苦しめているのが、スペシャルズだ。その
+>  くらいのことはする」
+their fellow Earthlings. That's what the Specials are. They'd do at least that much.”
+
+@19646 Emma · エマ
+> 「そんな、ありえないわ。スペシャルズの
+>  活動は、地球圏の平和と
+“That's impossible. The Specials' activities are meant to bring peace to the Earth Sphere
+---
+>  地球人の権利の獲得を
+>  目的としている。そんなことをする
+and secure the rights of Earthlings. There's no way I can believe
+---
+>  必要があるなど、信じられるわけない
+>  でしょう」
+they'd need to do something like that.”
+
+@19647 Quattro · クワトロ
+# 审校：原文最后一句“わたくしの軍隊なのだ”是承接前句说明“私兵”，不是“我的军队”；初稿译成“My private army”会误认为说话人自己的军队。改为“A private army.”更准确。
+> 「違うな。誰のための権利を獲得
+>  しつつあるのか、よく考えてみればいい
+“You're wrong. Think carefully about whose rights they're securing.
+---
+>  スペシャルズそのもの、いや、ロームフェラ
+>  財団のためだとわかるはずだ
+You should see it's for the Specials themselves—no, for the Romefeller Foundation.
+---
+>  スペシャルズは地球圏全体のため
+>  の軍隊などではない。私兵だよ
+The Specials are no army for the entire Earth Sphere. They're a private force.
+---
+>  わたくしの軍隊なのだ」
+A private army.”
+
+@19648 Emma · エマ
+> 「……そんな…………」
+“...No...”
+
+@19649 Quattro · クワトロ
+> 「ならば、バスクにでも聞いてみるがいい」
+“Then you may as well ask Bask yourself.”
+
+@19650 Emma · エマ
+> 「くっ…………」
+“Ngh...”
+
+@19651 Ark · アーク（按段落 3DD1）
+> 「な、なんだ……あれは?」
+“W-What... is that?”
+
+@19652 Quattro · クワトロ
+> 「敵の新兵器か!?」
+“A new enemy weapon?!”
+
+@19653 Selain · セレイン（按段落 3DD2）
+> 「なんだあれは? 敵の新兵器……
+>  なのか?」
+“What is that? A new enemy weapon...?”
+
+@19654 Brad · ブラッド（按段落 3DD3）
+> 「なんだぁ!? おい、妙なのが出て
+>  きやがったぜ!」
+“What the?! Hey, some weird thing just showed up!”
+
+@19655 Manami · マナミ（按段落 3DD4）
+> 「あ、あれはなに!?」
+“W-What is that?!”
+
+@19656 Lawrence · ローレンス
+> 「データにはないようです、お嬢様」
+“It doesn't appear in our data, my lady.”
+
+@19657 Quatre · カトル
+> 「あれは、もしかして……」
+“That is, could it be...”
+
+@19658 Duo · デュオ
+> 「やっぱりお前もか。俺も、知ってる
+>  やつに似てると思ってたとこだ」
+“So you too, huh. I was just thinking it looks like someone I know.”
+
+@19659 Ryoma · リョウ
+> 「追いついたぞ、ドモン・カッシュ。
+>  あれで間違いないのか?」
+“We caught up, Domon Kasshu. Is that really it?”
+
+@19660 Domon · ドモン
+> 「ああ、間違いない。
+>  ようやく見つけたぞ、キョウジ!
+“Yeah, no mistake. I've finally found you, Kyoji!
+---
+>  レイン、お前は下がっていろ!」
+Rain, you stay back!”
+
+@19661 Domon · ドモン
+> 「うおぉぉぉぉぉーーっ!」
+“Uwooooooooh!”
+
+@19662 Eiji · エイジ
+> 「また新手か!?」
+“Another new one?!”
+
+@19663 Ryoma · リョウ
+> 「地球解放戦線機構の
+>  方々ですね?
+“You're with the Liberation Front of the Earth, correct?
+---
+>  こちらはカラバ所属のゲッターチーム」
+This is the Getter Team, attached to Karaba.”
+
+@19664 Quattro · クワトロ
+> 「カラバの?」
+“Karaba's?”
+
+@19665 Ryoma · リョウ
+> 「説明は後で。まずはあれを叩きます」
+“Explanations later. First, we take that thing down.”
+
+@19666 Quattro · クワトロ
+> 「するとあれは敵というわけか。
+>  了解した」
+“Then that makes it an enemy. Understood.”
+
+@19667 Banjo · 万丈
+> 「早乙女博士のゲッターロボか!?」
+“Dr. Saotome's Getter Robo?!”
+
+@19668 Hayato · ハヤト
+> 「おっと、万丈さんかい。
+>  説明は後だ
+“Whoa, Banjo, is that you? Explanations later.
+---
+>  まずはこいつを叩いちまうのが先さ」
+First we smash this thing, that comes first.”
+
+@19669 Duo · デュオ
+> 「間違いねぇ。あれはデビルガンダムだぜ」
+“No mistake. That's the Dark Gundam.”
+
+@19670 Bright · ブライト
+> 「知っているのか」
+“You know it?”
+
+@19671 Quatre · カトル
+> 「ええ。僕に、いえおそらく僕たち
+>  5人に破壊指示がきていました
+“Yes. I—no, most likely all five of us—received orders to destroy it.
+---
+>  あれが……
+>  6つめの流星の、正体です」
+That is... the true identity of the sixth meteor.”
+
+@19672 Kurtz · カーツ（按段落 3DD3）
+> 「くっ、{HeroNick}、貴様!
+>  貴様ァァァァァーッ!!」
+“Ngh, {HeroNick}, you bastard! Youuuuuuu!!”
+
+@19673 Domon · ドモン
+> 「くっ……キョウジィィッ!!」
+“Ngh... Kyoji!!”
+
+@19674 Kyoji · キョウジ
+> 「………………クックックッ」
+“...Heh heh heh.”
+
+@19675 主角
+> 「{PartnerName}!!」
+“{PartnerName}!!”
+
+@19676 对手
+> 「さぁ、わたくしと戦いなさい!」
+“Now, fight me!”
+
+@19677 主角
+> 「{PartnerName}!! 望み通り、
+>  やってやる!!」
+“{PartnerName}!! I'll do it, just as you wish!!”
+
+@19678 对手
+> 「フン、いくぞぉぉぉぉーッ!!」
+“Hmph, here I goooooo!!”
+
+@19679 Domon · ドモン
+> 「待てぇっ!!」
+“Wait!!”
+
+@19680 Ryoma · リョウ
+> 「いかん、ドモン・カッシュ。この付近は
+>  帝国軍も多い
+“Don't, Domon Kasshu. There are many Imperial troops around here.
+---
+>  深追いは禁物だ」
+Pursuing too far is forbidden.”
+
+@19681 Domon · ドモン
+> 「だが、奴を逃がすわけには!」
+“But I can't let him get away!”
+
+@19682 Rain · レイン
+> 「だめよドモン。あなた1人で
+>  帝国軍と戦うつもり?」
+“No, Domon. You're not planning to fight the Imperial army all by yourself, are you?”
+
+@19683 Domon · ドモン
+> 「クッ……」
+“Ngh...”
+
+@19684 Rain · レイン
+> 「……やったの?」
+“...Did you get him?”
+
+@19685 Domon · ドモン
+> 「いや……逃げられたようだ。追うぞ、
+>  レイン!!」
+“No... it seems he got away. We're going after him, Rain!!”
+
+@19686 Ryoma · リョウ
+> 「いかん、ドモン・カッシュ。この付近は
+>  帝国軍も多い
+“Don't, Domon Kasshu. There are many Imperial troops around here.
+---
+>  深追いは禁物だ」
+Pursuing too far is forbidden.”
+
+@19687 Domon · ドモン
+> 「だが、奴を逃がすわけには!」
+“But I can't let him get away!”
+
+@19688 Rain · レイン
+> 「待って、ドモン。あなた1人で
+>  帝国軍と戦うつもり?」
+“Wait, Domon. You're not planning to fight the Imperial army all by yourself, are you?”
+
+@19689 Domon · ドモン
+> 「クッ……」
+“Ngh...”
+
+@19690 Bright · ブライト
+> 「……よし、とりあえず全員帰還してくれ」
+“...All right, for now, everyone return to base.”
+
+@19691 Quattro · クワトロ
+> 「艦長、他にも追撃隊がいるかも
+>  しれない。すぐにここを離れよう」
+“Captain, there may be more pursuit units. Let's leave this place at once.”
+
+@19692 Bright · ブライト
+> 「そうだな。アウドムラ、発進だ」
+“Right. Audhumla, launch.”
+
+@19693 Brad · ブラッド（按段落 3DD3）
+> 「あん? おいおい、あんた逃げなかったの
+>  かよ?」
+“Huh? Hey, hey, you didn't run away?”
+
+@19694 Manami · マナミ（按段落 3DD4）
+> 「あ、あなた、どうして……?」
+“Y-you, why...?”
+
+@19695 Banjo · 万丈
+> 「どうしたんだ? ……おっと、これはこれは
+>  悪いが、その黒いMSからは離れて
+“What's going on? ...Whoa, well now, sorry, but I'd like you to get away from that black MS,
+---
+>  もらいたいな?」
+if you don't mind?”
+
+@19696 Emma · エマ
+> 「攻撃の意思はないわ」
+“I have no intention of attacking.”
+
+@19697 Banjo · 万丈
+# 审校：原文“特尉”按军衔规则应译为 First Lieutenant，初稿误译为 Ensign。
+> 「スペシャルズの……
+>  エマ・シーン特尉だったかな?」
+“A Specials... First Lieutenant Emma Sheen, was it?”
+
+@19698 Emma · エマ
+> 「ええ」
+“Yes.”
+
+@19699 Quattro · クワトロ
+> 「MSが来たようだが、どうした、
+>  万丈くん」
+“It seems an MS has arrived. What's going on, Banjo?”
+
+@19700 Banjo · 万丈
+> 「大尉、あなたのいったとおりだった
+>  ようだ」
+“Captain, it seems it was just as you said.”
+
+@19701 Quattro · クワトロ
+# 审校：同上，原文“特尉”应译为 First Lieutenant，初稿误译为 Ensign。
+> 「ほう……エマ・シーン特尉か」
+“Oh... First Lieutenant Emma Sheen, is it?”
+
+@19702 Emma · エマ
+> 「どういうことです?」
+“What do you mean?”
+
+@19703 Banjo · 万丈
+> 「クワトロ大尉は、あなたがスペシャルズ
+>  ではないと思えるといっていたんだ」
+“Captain Quattro said he didn't think you were a Specials.”
+
+@19704 Emma · エマ
+> 「私が?」
+“Me?”
+
+@19705 Quattro · クワトロ
+> 「スペシャルズならば、あの場で引き下
+>  がったりはしないだろう」
+“If you were a Specials, you wouldn't have backed down back there.”
+
+@19706 Emma · エマ
+> 「……私をこちらに加えてもらえない
+>  かしら」
+“...Could I join your side?”
+
+@19707 Banjo · 万丈
+> 「僕としてはぜひそうしてもらいたいところ
+>  だが……どう思う、大尉?」
+“Personally, I'd very much like that, but... what do you think, Captain?”
+
+@19708 Quattro · クワトロ
+> 「どういう心境の変化か、聞かせて
+>  もらえるかな」
+“What changed your mind? Would you tell me?”
+
+@19709 Emma · エマ
+> 「私は、自分が信じるように
+>  生きたいというだけで
+“I simply want to live as I believe in,
+---
+>  何も変わってはいないつもりです」
+and I don't think anything about me has changed.”
+
+@19710 Quattro · クワトロ
+> 「……わかった。万丈くん、判断は
+>  君にまかせる」
+“...Understood. Banjo, I'll leave the decision to you.”
+
+@19711 Banjo · 万丈
+# 审校：エマ军衔为中尉，特尉应译为 Lieutenant，不是 Ensign。
+> 「それはどうも。なら、よろしくお願いした
+>  いな、エマ特尉」
+“Much obliged. Then, I'd like to ask for your help, Lieutenant Emma.”
+
+@19712 Emma · エマ
+> 「ありがとう」
+“Thank you.”
+
+@19713 Reika · レイカ
+> 「ちょっと、万丈!」
+“Hey, Banjo!”
+
+@19714 Roux · ルー
+> 「あらら、ずいぶん簡単に
+>  信用しちゃうのね」
+“Oh my, you trust her awfully easily.”
+
+@19715 Anna · アンナ
+> 「私は、信じても大丈夫だと
+>  思います」
+“I think it's all right to trust her.”
+
+@19716 Reika · レイカ
+> 「はいはい、わかったわよ」
+“Yeah, yeah, I get it.”
+
+@19717 Quattro · クワトロ
+> 「艦長、他にも追撃隊がいるかも
+>  しれない。すぐにここを離れよう」
+“Captain, there may be more pursuit units. Let's leave this place at once.”
+
+@19718 Bright · ブライト
+> 「そうだな。アウドムラ、発進だ」
+“Right. Audhumla, launch.”
+
+@19719 Bright · ブライト
+> 「どうした!?」
+“What's going on?!”
+
+@19720 Roux · ルー
+> 「所属不明機3機、
+>  急速接近。機種……不明!」
+“Three unidentified craft, closing fast. Type... unknown!”
+
+@19721 Bright · ブライト
+> 「こんな高空でか? 各員砲座に
+>  つけ! 所属不明機は
+“At this altitude? All hands, man your gun turrets! Can't we
+---
+>  呼び出せんのか?」
+hail the unidentified craft?”
+
+@19722 Quattro · クワトロ
+> 「艦長、私が迎撃に出る」
+“Captain, I'll go out and intercept them.”
+
+@19723 Bright · ブライト
+> 「頼む。この高度だ。落下したら
+>  拾えない。気をつけてくれ」
+“Please do. At this altitude, if you fall, we can't pick you up. Be careful.”
+
+@19724 Quattro · クワトロ
+> 「了解だ」
+“Understood.”
+
+@19725 Quattro · クワトロ
+> 「速いな……モビルアーマーか!?」
+“So fast... Is it a Mobile Armor?!”
+
+@19726 Buran · ブラン
+> 「見つけたぞ、レジスタンスめ。この
+>  アッシマーの性能を甘く見るなよ
+“Found you, Resistance scum. Don't underestimate the performance of this Asshimar.
+---
+>  全機散開しろ」
+All units, scatter!”
+
+@19727 Quattro · クワトロ
+> 「MSに変形をした!? まずい!」
+“It transformed into an MS?! This is bad!”
+
+@19728 Bright · ブライト
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「くっ、デッキからも狙撃させろ。
+>  対空砲火なにをやっている!
+“Tch, have them snipe from the deck too. What's the AA fire doing?!
+---
+>  1機ぐらい落とせんのか!?」
+Can't they shoot down even one?!”
+
+@19729 Quattro · クワトロ
+> 「なに!?」
+“What?!”
+
+@19730 Buran · ブラン
+> 「フハハハハハッ、もらったぞアウドムラ!」
+“Hahahahaha, got you now, Audhumla!”
+
+@19731 ???
+> 「うおぉぉぉぉぉっ!」
+“Uwoooooooh!”
+
+@19732 Quattro · クワトロ
+> 「なんだ!? なにをする気だ、アムロ!?
+>  ……アムロだと?」
+“What?! What are you doing, Amuro?! ...Amuro?”
+
+@19733 Amuro · アムロ
+> 「下がっていろ、シャア!」
+“Stand back, Char!”
+
+@19734 Buran · ブラン
+> 「なんだ!?」
+“What?!”
+
+@19735 Buran · ブラン
+> 「な、なに、輸送機だと!?
+>  バカなッ!」
+“W-what, a transport plane?! Impossible!”
+
+@19736 Amuro · アムロ
+> 「くっ……」
+“Ngh...”
+
+@19737 Bright · ブライト
+> 「いまだ! 機銃座、しっかり狙え!」
+“Now! Gun turrets, aim carefully!”
+
+@19738 Buran · ブラン
+> 「うおおぉぉーっ!? クッ……
+>  全機撤退だ!」
+“Uwaaaah?! Ngh... All units, retreat!”
+
+@19739 Quattro · クワトロ
+> 「引いてくれたか……」
+“They pulled back...”
+
+@19740 Amuro · アムロ
+> 「着艦まではもたないな……」
+“I won't last until landing...”
+
+@19741 Quattro · クワトロ
+> 「脱出したのか? 無茶をする……」
+“He ejected? That's reckless...”
+
+@19742 Quattro · クワトロ
+> 「…………アムロ……
+>  アムロ・レイか……?」
+“...Amuro... Amuro Ray...?”
+
+@19743 Amuro · アムロ
+> 「さっき俺は、シャアといったな……。
+>  シャアだ……しかし……」
+“Just now, I called you Char... Char... and yet...”
+
+@19744 Quattro · クワトロ
+> 「間違いない……アムロ・レイだ……」
+“No mistake... It's Amuro Ray...”
+
+@19745 Bright · ブライト
+> 「アムロ! 本当にアムロなのか!?
+“Amuro! Is it really you, Amuro?!
+---
+>  帝国に軟禁されていたと聞いて
+>  いたが……」
+I'd heard you were interned by the Empire...”
+
+@19746 Amuro · アムロ
+> 「ここしばらくの騒ぎで監視が緩んで
+>  いたんだ。ニューエドワーズ基地の
+“The recent unrest loosened my surveillance. When I learned about New Edwards Base,
+---
+>  ことを知ってなんとか逃げ出して
+>  きたんだが……まさかブライトがいるとは」
+I managed to escape... but I never thought you'd be here, Bright.”
+
+@19747 Bright · ブライト
+> 「よく来てくれた。紹介しよう、
+>  地球解放戦線機構の
+“Good to have you. Let me introduce you—Captain Quattro of the
+---
+>  クワトロ大尉だ」
+Liberation Front of the Earth.”
+
+@19748 Bright · ブライト
+> 「よく来てくれた。紹介しよう、
+>  カラバの破嵐万丈くんと、
+“Good to have you. Let me introduce you—Banjo Haran of Karaba,
+---
+>  地球解放戦線機構の
+>  クワトロ大尉だ」
+and Captain Quattro of the Liberation Front of the Earth.”
+
+@19749 Banjo · 万丈
+> 「噂は聞いていますよ、
+>  アムロ・レイ大尉
+“I've heard the rumors, Captain Amuro Ray.
+---
+>  輸送機のような機動性のない
+>  ものをMSにぶつけるとは、さすがですね」
+Ramming a transport with no mobility into an MS—impressive as expected.”
+
+@19750 Amuro · アムロ
+> 「アムロでいいよ。たまたまうまくいった
+>  だけさ」
+“Just Amuro is fine. It just happened to work out.”
+
+@19751 Quattro · クワトロ
+> 「一年戦争の英雄にお会い
+>  できて光栄だ。よろしく」
+“An honor to meet the hero of the One Year War. Pleased to meet you.”
+
+@19752 Amuro · アムロ
+# 审校：アムロ称クワトロ为“大佐”，但クワトロ下一句纠正自己是“大尉”，这里应译为 Captain 而非 Colonel，以配合后续纠正。
+> 「……よろしく、大佐」
+“...Pleased to meet you, Captain.”
+
+@19753 Quattro · クワトロ
+> 「私は大尉だよ」
+“I'm a captain.”
+
+@19754 Ark · アーク（按段落 3DD1）
+> 「誰なんです、あの人?」
+“Who is that man?”
+
+@19755 Aboly · アポリー
+> 「お前らが知らないのも
+>  無理はないけどな
+“It's no wonder you kids don't know him,
+---
+>  3年前のジオン独立戦争、
+>  その後のムゲゾルバドス帝国の
+but he was a Federation ace pilot who fought in the Zeon War of Independence three years ago,
+---
+>  侵略戦争で活躍した
+>  連邦のエースパイロットだよ」
+and then in the Muge Zorbados Empire's war of invasion.”
+
+@19756 Kamille · カミーユ
+> 「あの最初のガンダムに乗っていたって
+>  いう……」
+“The one who piloted that first Gundam...”
+
+@19757 Aboly · アポリー
+> 「そうだ」
+“That's right.”
+
+@19758 Ark · アーク（按段落 3DD1）
+> 「そんなにすごい人には、思えませんね」
+“He doesn't seem like such an amazing person to me.”
+
+@19759 Kamille · カミーユ
+> 「ああ……アングラの出版物で
+>  見たのとだいぶ印象が違うな」
+“Yeah... He's quite different from the impression I got from underground publications.”
+
+@19760 Selain · セレイン（按段落 3DD2）
+> 「アムロ・レイ……ブライト・ノア。
+>  ……そういうことか」
+“Amuro Ray... Bright Noa. ...So that's how it is.”
+
+@19761 David · デビッド
+> 「なんだ、気になるのかよ?」
+“What, you curious about him?”
+
+@19762 Anna · アンナ
+> 「もう、デビッドったら」
+“Oh, David, honestly.”
+
+@19763 Selain · セレイン（按段落 3DD2）
+> 「気になるのは、確かだ。あれが、あの
+>  アムロ・レイだとは信じがたいな」
+“I am curious, that's certain. It's hard to believe that's the Amuro Ray.”
+
+@19764 Eiji · エイジ
+> 「どういうことなんだ?」
+“What do you mean?”
+
+@19765 Selain · セレイン（按段落 3DD2）
+> 「いや……別に、いい」
+“No... It's nothing, never mind.”
+
+@19766 Brad · ブラッド（按段落 3DD3）
+> 「なんだよあいつ。なぁ、アムロって、
+>  何者なんだ?」
+“What's with that guy? Hey, who is this Amuro anyway?”
+
+@19767 Manami · マナミ（按段落 3DD4）
+> 「アムロ・レイ……。どういう人なの?」
+“Amuro Ray... What kind of person is he?”
+
+@19768 Garrison · ギャリソン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「おや、ご存じでない? あの方は
+>  3年前のジオン独立戦争や
+“Oh, you didn't know? That man distinguished himself in the Zeon War of Independence three years ago
+---
+>  その後の帝国との戦いで
+>  ご活躍された方ですよ
+and in the battles against the Empire that followed.
+---
+>  ブライト艦長のホワイトベースに
+>  おられた方です」
+He served aboard Captain Bright's White Base.”
+
+@19769 Koji · 甲児
+> 「エースパイロットって奴か。それが
+>  なんだって今ごろ出てくるんだ?」
+“So he's an ace pilot. What's he doing showing up now?”
+
+@19770 Sayaka · さやか
+> 「何言ってんのよ。帝国に捕まって
+>  軟禁されてたんだって言ってた
+“What are you talking about? He said he was captured by the Empire and kept under house arrest,
+---
+>  じゃない。甲児くん聞いて
+>  なかったの?」
+didn't he? Weren't you listening, Koji?”
+
+@19771 Koji · 甲児
+> 「わかってるさ。ただ、何かおかしいん
+>  だよな」
+“I know that. It's just... something doesn't add up.”
+
+@19772 Quattro · クワトロ
+> 「戦闘用のゲッターロボか
+“A combat-model Getter Robo, is it?
+---
+>  カラバで研究が続けられているとは
+>  聞いていたが、完成していたとは」
+I'd heard Karaba was continuing its research, but I never thought it was complete.”
+
+@19773 Bright · ブライト
+> 「ああ。プロトタイプは3年前の
+>  戦いで破壊されていたからな
+“Yeah. The prototype was destroyed in the war three years ago.
+---
+>  それで、君たちはどうする」
+So, what will you all do?”
+
+@19774 Ryoma · リョウ
+> 「カラバの指示がありますので、
+>  同行させてもらいます」
+“We have our orders from Karaba, so we'll be coming along with you.”
+
+@19775 Bright · ブライト
+> 「了解した、よろしく頼む。では、
+>  君たちもカラバの?」
+“Understood. We'll be counting on you. So, are you with Karaba as well?”
+
+@19776 Banjo · 万丈
+> 「よく来てくれた。早乙女博士は
+>  お元気かな」
+“Glad you could make it. How is Dr. Saotome doing?”
+
+@19777 Ryoma · リョウ
+> 「ええ。3年前のプロトゲッターの
+>  データをもとにこのゲッターを
+“He's well. After completing this Getter based on the prototype's data from three years ago,
+---
+>  完成させたあと、また
+>  新しい研究にとりかかってますよ」
+he's already started on new research.”
+
+@19778 Hayato · ハヤト
+> 「俺たちは博士に言われて、
+>  あんたらと合流するために来たんだ」
+“The Doctor told us to come and join up with you.”
+
+@19779 Quattro · クワトロ
+# 审校：原文第2页开头有“これほどのものとは。では”，初稿漏掉了引号内第2页开头的引号，且第1页结尾逗号后第2页应另起引号。
+> 「なるほど、カラバでは戦闘ロボットを
+>  いくつか研究していると聞いていたが
+“I see. I'd heard Karaba was researching several combat robots,
+---
+>  これほどのものとは。ではあの
+>  ガンダムタイプもカラバで?」
+but I never imagined anything like this. So that Gundam type is Karaba's too?”
+
+@19780 Banjo · 万丈
+> 「いや、僕は知らないな。リョウ、
+>  彼らは新しいスタッフなのか?」
+“No, I don't know anything about that. Ryoma, are they new staff?”
+
+@19781 Rain · レイン
+> 「あ、私たちは、違うんです。その、
+>  デビルガンダムを追っていただけで……」
+“Oh, we're... not with them. We were just, um, chasing the Dark Gundam...”
+
+@19782 Domon · ドモン
+> 「レイン、余計なことは言うな」
+“Rain, don't say unnecessary things.”
+
+@19783 Rain · レイン
+> 「だって、お世話になるからには、
+>  ちゃんと説明しなくちゃ」
+“But if we're going to impose on them, we have to explain properly.”
+
+@19784 Domon · ドモン
+> 「俺はそんな気はない」
+“I have no intention of doing that.”
+
+@19785 Rain · レイン
+# 审校：原文第1页结尾是问号，初稿第1页结尾也是问号，但第2页开头应另起引号。
+> 「じゃあどうするというの?
+“Then what will you do?
+---
+>  またデビルガンダムを探してまわるって
+>  いうの? 帝国軍から逃げながら?」
+Keep wandering around searching for the Dark Gundam? While running from the Imperial Army?”
+
+@19786 Domon · ドモン
+> 「そ、それは……」
+“Th-That's...”
+
+@19787 Bright · ブライト
+> 「あー、すまない、話が
+>  見えないんだが……」
+“Ah, sorry, I'm not following this conversation...”
+
+@19788 Hayato · ハヤト
+# 审校：原文第2页开头“出会っただけでね”，初稿第2页开头漏了引号。
+> 「俺たちもあのバケモノの知らせを
+>  聞いて、調査していたところで
+“We just happened to run into them while investigating that monster after hearing reports,
+---
+>  出会っただけでね。実は連中の
+>  事情はよく知らんのですよ」
+that's all. Truth is, we don't know much about their situation either.”
+
+@19789 Duo · デュオ
+> 「上から降りてきたのさ、デビルガンダム
+>  を追ってね。そうだろ、お二人さん?」
+“We came down from above, chasing the Dark Gundam. Right, you two?”
+
+@19790 Quattro · クワトロ
+> 「コロニーからだと?」
+“From the colonies?”
+
+@19791 Domon · ドモン
+> 「……貴様、何者だ!?」
+“...Who the hell are you?!”
+
+@19792 Duo · デュオ
+# 审校：原文第2页开头“降りてきただけの話さ”，初稿第2页开头漏了引号。
+> 「おいおい、そんなににらまないでくれよ。
+>  ただあんたらよりちょっとばかり先に
+“Hey, hey, don't glare at me like that. We just came down
+---
+>  降りてきただけの話さ」
+a little ahead of you, that's all.”
+
+@19793 Bright · ブライト
+> 「そういえば君たちは、そのデビルガンダム
+>  とやらを知っていると言ったな?」
+“Come to think of it, you said you know about this Dark Gundam, didn't you?”
+
+@19794 Duo · デュオ
+> 「ああ。もうこうなっちまった以上は
+>  隠しても仕方がねぇ。なぁカトル」
+“Yeah. Now that it's come to this, there's no point hiding it. Right, Quatre?”
+
+@19795 Quatre · カトル
+> 「はい。僕も、お話しした方がいいと
+>  思います」
+“Yes. I think we should tell them too.”
+
+@19796 Quattro · クワトロ
+> 「どういうことだ?」
+“What do you mean?”
+
+@19797 Duo · デュオ
+# 审校：原文第2页开头“たぶん似たようなものだろう”，初稿第2页开头漏了引号；第3、4、5页开头也漏了引号。
+> 「俺たち5人……とはいっても
+>  他の連中の事情は知らないが
+“The five of us... though I don't know the others' circumstances,
+---
+>  たぶん似たようなものだろう……
+>  俺たちは帝国軍に打撃を与え
+they're probably similar... We came down to Earth to strike at the Imperial Army
+---
+>  混乱させるために地球に
+>  降りてきた。だがそんときにどうやら
+and throw them into chaos. But it seems something went wrong
+---
+>  手違いがあったらしい。俺たちと
+>  ほぼ同時に、もう一つ地球に
+at that time. Almost at the same moment as us, something else
+---
+>  降下しちまったものがあったのさ」
+came down to Earth too.”
+
+@19798 Quatre · カトル
+# 审校：原文第2页开头“そのデビルガンダムを捕獲、あるいは破壊せよという指示を受けました”，初稿第2页开头漏了引号。
+> 「そうです。それがデビルガンダム……。
+>  そして僕たちはもうひとつ……
+“That's right. That was the Dark Gundam... And we received another order...
+---
+>  そのデビルガンダムを捕獲、あるいは
+>  破壊せよという指示を受けました」
+to capture or destroy that Dark Gundam.”
+
+@19799 Duo · デュオ
+# 审校：原文第2页开头“詳細は知らない”，初稿第2页开头漏了引号；第3页开头也漏了引号。
+> 「コロニー間は帝国軍によって
+>  相互の連絡を断たれているから
+“The Imperial Army has cut off communications between the colonies,
+---
+>  詳細は知らない。ただデビルガンダム
+>  で地球へ逃走した奴の名前は
+so I don't know the details. But I did hear the name of the one who
+---
+>  聞いている。そいつの名は、
+>  キョウジ・カッシュっていうのさ」
+fled to Earth with the Dark Gundam. His name is Kyoji Kasshu.”
+
+@19800 Ryoma · リョウ
+> 「カッシュ!? じゃあ……」
+“Kasshu?! Then...”
+
+@19801 Rain · レイン
+# 审校：原文第2页开头“するなんて信じられない”，初稿第2页开头漏了引号。
+> 「ドモンの……お兄さんなんです。でも
+>  私はキョウジさんがそんなことを
+“He's Domon's... older brother. But I can't believe Kyoji would do
+---
+>  するなんて信じられない……それに
+>  デビルガンダムはもともと……」
+something like that... Besides, the Dark Gundam was originally...”
+
+@19802 Domon · ドモン
+# 审校：原文第2页开头“デビルガンダムは俺がこの手で倒す”，初稿第2页开头漏了引号。
+> 「言うなレイン。お前たちにも
+>  言っておく。キョウジは
+“Don't say it, Rain. I'll tell you all this too. Kyoji...
+---
+>  デビルガンダムは俺がこの手で倒す!
+>  誰にも邪魔はさせん!」
+the Dark Gundam... I'll destroy them with my own hands! I won't let anyone interfere!”
+
+@19803 Rain · レイン
+> 「ドモン……」
+“Domon...”
+
+@19804 Bright · ブライト
+# 审校：原文第2页开头“そんなに危険なのか?”，初稿第2页开头漏了引号。
+> 「なるほどな……事情は大体わかった
+>  そのデビルガンダムというのは、
+“I see... I've got the general picture now. This Dark Gundam,
+---
+>  そんなに危険なのか?」
+is it really that dangerous?”
+
+@19805 Ryoma · リョウ
+> 「俺たちが聞いている話では、無
+>  差別に破壊を繰り返していると」
+“From what we've heard, it's been destroying everything indiscriminately.”
+
+@19806 Duo · デュオ
+# 审校：原文第2页开头“唯一の救いは”，初稿第2页开头漏了引号。
+> 「自己進化、自己再生、
+>  自己増殖。本物のバケモノだぜ
+“Self-evolution, self-regeneration, self-replication. It's a real monster.
+---
+>  唯一の救いは、帝国にとっても
+>  あまり楽しいもんじゃないってことだけだ」
+The only saving grace is that it's not exactly a picnic for the Empire either.”
+
+@19807 Bright · ブライト
+# 审校：原文第2页开头“デビルガンダムに関する情報もつかみやすくなる”，初稿第2页开头漏了引号。
+> 「わかった。ドモンくんと言ったな。
+>  我々と同行すれば
+“Understood. Domon, was it? If you come with us,
+---
+>  デビルガンダムに関する情報も
+>  つかみやすくなる。どうかな」
+it'll be easier to get information about the Dark Gundam. How about it?”
+
+@19808 Domon · ドモン
+> 「……お前たちと一緒に帝国と
+>  戦えというのか」
+“...You're telling me to fight the Empire alongside you?”
+
+@19809 Quattro · クワトロ
+# 审校：原文第2页开头“はちあわせする。ならば我々と同行したほうが君にとっても”，初稿第2页开头漏了引号；第3页开头也漏了引号。
+> 「そう悪い話でもあるまい。どのみち
+>  地上にいれば嫌でも帝国軍と
+“It's not such a bad deal. Either way, as long as you're on the surface, you'll run into the Imperial Army whether you like it or not.
+---
+>  はちあわせする。ならば我々と
+>  同行したほうが君にとっても、
+In that case, wouldn't it be better for you and your companions
+---
+>  君の連れにとっても
+>  よいのではないかな」
+to come along with us?”
+
+@19810 Domon · ドモン
+> 「……いいだろう。ただし、俺にとっては
+>  帝国軍と戦うのは二の次だ」
+“...Fine. But for me, fighting the Imperial Army comes second.”
+
+@19811 Quattro · クワトロ
+# 审校：原文第2页开头“ないようだからな”，初稿第2页开头漏了引号。
+> 「構わんさ。どのみち我々にとっても
+>  放っておけるようなものでは
+“I don't mind. Either way, it seems we can't afford
+---
+>  ないようだからな」
+to ignore it ourselves.”
+
+@19812 Banjo · 万丈
+> 「話はわかった。そのデビルガンダムと
+>  いうのはかなり危険というわけだ」
+“I get the picture. So this Dark Gundam is pretty dangerous.”
+
+@19813 Duo · デュオ
+# 审校：原文第2页开头“唯一の救いは”，初稿第2页开头漏了引号。
+> 「自己進化、自己再生、
+>  自己増殖。本物のバケモノだぜ
+“Self-evolution, self-regeneration, self-replication. It's a real monster.
+---
+>  唯一の救いは、帝国にとっても
+>  あまり楽しいもんじゃないってことだけだ」
+The only saving grace is that it's not exactly a picnic for the Empire either.”
+
+@19814 Banjo · 万丈
+# 审校：原文第2页开头“僕たちの情報網でデビルガンダムのことも探しやすくなるが?”，初稿第2页开头漏了引号。
+> 「ドモン・カッシュ。レイン嬢の
+>  言う通り僕たちに同行すれば
+“Domon Kasshu. As Miss Rain says, if you come with us,
+---
+>  僕たちの情報網でデビルガンダムの
+>  ことも探しやすくなるが?」
+our information network will make it easier to track down the Dark Gundam too, you know?”
+
+@19815 Domon · ドモン
+> 「……いいだろう。ただし、俺にとっては
+>  帝国軍と戦うのは二の次だ」
+“...Fine. But for me, fighting the Imperial Army comes second.”
+
+@19816 Banjo · 万丈
+> 「それでも構わないさ」
+“That's fine by me too.”
+
+@19817 Quattro · クワトロ
+> 「……私に何か用かな? 大尉」
+“...Do you need something from me? Captain.”
+
+@19818 Amuro · アムロ
+> 「シャア…………
+>  なぜ、地球圏に戻ってきたのです」
+“Char... Why did you come back to the Earth Sphere?”
+
+@19819 Quattro · クワトロ
+> 「…………君を笑いにきた。
+>  そういえば君の気がすむのだろう?」
+“...I came to laugh at you. That should satisfy you, shouldn't it?”
+
+@19820 Amuro · アムロ
+> 「好きでこうなったわけじゃない。それは
+>  あなただってわかるはずだ」
+“I didn't end up like this by choice. You of all people should understand that.”
+
+@19821 Quattro · クワトロ
+# 审校：原文第2页开头“道を示せるアムロ・レイであってほしいそれが私に言える最大の言葉だ”，初稿第2页开头漏了引号。
+> 「しかし同情がほしいわけでもないの
+>  だろう? ならば、若者たちに
+“But you don't want pity either, do you? Then I want you to be the Amuro Ray who can show these young people the way.
+---
+>  道を示せるアムロ・レイであってほしい
+>  それが私に言える最大の言葉だ」
+That's the most I can say to you.”
+
+@19822 Amuro · アムロ
+> 「……なぜ地球圏に戻ってきたのだ」
+“...Why did you come back to the Earth Sphere?”
+
+@19823 Quattro · クワトロ
+> 「ララァの魂は地球圏に漂っている
+>  火星の向こうにはいないと思った」
+“I thought Lalah's soul was drifting in the Earth Sphere, not beyond Mars.”
+
+@19824 Amuro · アムロ
+> 「…………」
+“...”
+
+@19825 Quattro · クワトロ
+# 审校：原文第2页开头“利することになる”，初稿第2页开头漏了引号。
+> 「……自分のカラに閉じこもっている
+>  ことは、異星人の帝国に
+“...Shutting yourself away in your own shell only benefits
+---
+>  利することになる」
+the alien Empire.”
+
+@19826 Amuro · アムロ
+# 审校：原文第2页开头“できない相談だ!”，初稿第2页开头漏了引号。
+> 「いままで軟禁されていた俺に何を
+>  しろと!? 宇宙にでも行けなければ
+“What do you expect me to do when I've been under house arrest all this time?! If I can't even go to space,
+---
+>  できない相談だ!」
+it's impossible!”
+
+@19827 Quattro · クワトロ
+# 审校：原文第2页开头“何も成せないのだということは”，初稿第2页开头漏了引号。
+> 「果たしてそうかな? 気力を
+>  無くしてしまった者は
+“Is that really so? Remember this: those who lose their spirit
+---
+>  何も成せないのだということは、
+>  覚えておいてくれたまえ」
+can accomplish nothing.”
+
+@19828 Amuro · アムロ
+> 「…………」
+“...”

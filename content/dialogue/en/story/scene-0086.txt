@@ -1,0 +1,1115 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@41756 Shinobu · 忍
+> 「で、ハマーンは何ていって
+>  きやがったんだよ?」
+“So, what did Haman have to say?”
+
+@41757 Alan · アラン
+> 「ハマーンの作戦がうまく運べば、
+>  敵の艦隊はいくつかに分断され
+“If Haman's plan goes well, the enemy fleet will be split into several groups,
+---
+>  ズールがいると思われる艦隊の守り
+>  が手うすになる。そこを突くとのことだ」
+and the fleet we believe Zuhl is in will be left thinly guarded. We strike there, she says.”
+
+@41758 Daisuke · 大介
+> 「しかし、そううまくいくのだろうか?」
+“But will it really go that smoothly?”
+
+@41759 Bright · ブライト
+> 「わからんな……信じるしかあるまい。
+>  で、我々の役割は?」
+“Hard to say... We have no choice but to trust her. So, what's our role?”
+
+@41760 Alan · アラン
+> 「分断された敵艦隊を突破し、
+>  敵中央へ進軍する
+“Break through the divided enemy fleet and advance into the enemy's center.
+---
+>  ハマーンによれば、その時点までには
+>  ズールがいると思われる艦隊を
+According to Haman, by that point we should be able to identify
+---
+>  特定できるだろうとのことだ」
+the fleet Zuhl is believed to be in.”
+
+@41761 Amuro · アムロ
+> 「ずいぶん無茶な作戦だな。ズールが
+>  いる艦隊が特定できなければ
+“That's a pretty reckless plan. If we can't identify the fleet Zuhl is in,
+---
+>  我々も逆に敵に包囲される
+>  可能性があるぞ」
+we could end up surrounded by the enemy instead.”
+
+@41762 Alan · アラン
+> 「ああ、ハマーンもそれはわかっていた。
+>  長期戦をやりたくなければ
+“Yes, Haman knows that too. She said if we don't want a drawn-out war,
+---
+>  そのくらいの無茶はしなければ
+>  ならんともな」
+we have to take that much of a risk.”
+
+@41763 Garrison · ギャリソン
+> 「ふむ、それはもっともなお話です」
+“Hmm, that is a most reasonable point.”
+
+@41764 Ryoma · リョウ
+> 「だいたい、いまさらもう
+>  是も非もないでしょう。やるしかない」
+“Besides, there's no point arguing yes or no at this stage. We just have to do it.”
+
+@41765 Daisuke · 大介
+> 「うむ、僕もそう思う。それに
+>  一刻も早くズールを倒さなくては
+“Indeed, I feel the same. And the sooner we defeat Zuhl,
+---
+>  無駄な犠牲が増えるばかりだ」
+the fewer pointless sacrifices there will be.”
+
+@41766 Bright · ブライト
+> 「わかってる。それで、
+>  作戦の開始時刻は?」
+“I understand. So, when does the operation begin?”
+
+@41767 Alan · アラン
+> 「6時間後だ」
+“In six hours.”
+
+@41768 Shinobu · 忍
+> 「なんだよ、もう余裕がないじゃねぇか」
+“What? There's no time to spare at all.”
+
+@41769 Amuro · アムロ
+> 「そうだな……交代で
+>  仮眠をとっておくことにしよう」
+“Right... Let's take turns getting some sleep.”
+
+@41770 Haman · ハマーン
+> 「少佐、もう体のほうはよいのか?」
+“Major, are you fully recovered?”
+
+@41771 Gato · ガトー
+> 「は、おかげで万全です」
+“Yes, thanks to you, I'm in perfect shape.”
+
+@41772 Haman · ハマーン
+> 「そうか、それは良かった。月面が
+>  異星人からOZの手に戻ったとき
+“I see, that's good to hear. When the lunar surface was taken back from the aliens by OZ,
+---
+>  月にいたそうだな?」
+you were on the moon, weren't you?”
+
+@41773 Gato · ガトー
+> 「面目ない。地球圏の動向を
+>  調査するはずが、異星人の
+“I am ashamed. I was supposed to investigate the situation in the Earth Sphere, but I ended up
+---
+>  虜囚と成り果て……」
+a captive of the aliens...”
+
+@41774 Haman · ハマーン
+> 「いや、あの状況ではやむを得まい。
+>  よくも生きて戻れたものだと
+“No, under those circumstances it couldn't be helped. I was impressed
+---
+>  感心していたのだ。さすがは
+>  “ソロモンの悪夢”と呼ばれた
+that you managed to return alive at all. As expected of the man called
+---
+>  アナベル・ガトー少佐だとな」
+the ‘Nightmare of Solomon,’ Major Anavel Gato.”
+
+@41775 Gato · ガトー
+> 「しかしその時の負傷がもとで、これ
+>  まで戦いに参加できずにおりました
+“However, because of the wounds I suffered then, I have been unable to take part in battle until now.
+---
+>  申しわけなく思っております」
+I am truly sorry.”
+
+@41776 Haman · ハマーン
+> 「いや、戦いはこれからだよ、少佐。こ
+>  ちらへこられよ。よいものをお見せしよう」
+“No, the battle is yet to come, Major. Come this way. I have something good to show you.”
+
+@41777 Gato · ガトー
+> 「おおっ、これは! すばらしい……
+>  なんとすばらしい機体だ
+“Oh, this is! Magnificent... What a magnificent machine.
+---
+>  まるでジオンの精神が、
+>  形となったかのようだ……」
+It's as if the spirit of Zeon itself has taken form...”
+
+@41778 Haman · ハマーン
+> 「モビルアーマー、ノイエジールだ。
+>  少佐に使ってもらおうと
+“It is the Mobile Armor Neue Ziel. I thought I would have you pilot it,
+---
+>  思ったのだが、どうかな」
+Major. What do you say?”
+
+@41779 Gato · ガトー
+> 「この機体を私に? 是も非もない
+>  感謝します、ハマーン殿」
+“This machine, for me? I accept without hesitation. Thank you, Lady Haman.”
+
+@41780 Haman · ハマーン
+> 「そういってもらえると、うれしい」
+“I'm glad to hear you say that.”
+
+@41781 Gato · ガトー
+> 「このアナベル・ガトー、この機体に
+>  恥じぬ戦いをしてご覧にいれましょう」
+“I, Anavel Gato, will show you a battle worthy of this machine.”
+
+@41782 Glemy · グレミー
+> 「ハマーン様、お呼びですか」
+“Lady Haman, you called for me?”
+
+@41783 Haman · ハマーン
+> 「グレミーか。面白いものを
+>  手にいれたが、使える者がいなくてな」
+“Glemy. I've acquired something interesting, but I have no one who can use it.”
+
+@41784 Glemy · グレミー
+> 「面白いもの?」
+“Something interesting?”
+
+@41785 Haman · ハマーン
+> 「OZが使っていたものでな、
+>  サイコガンダムという
+“It's something OZ was using. It's called the Psyco Gundam,
+---
+>  ニュータイプ用のマシーンだ」
+a machine for Newtypes.”
+
+@41786 Glemy · グレミー
+> 「は……私のところにも
+>  使える者がおりませんが……」
+“Yes... I don't have anyone who can use it either...”
+
+@41787 Haman · ハマーン
+> 「お前が組織しているという
+>  ニュータイプ部隊ならば、どうだ?
+“What about this Newtype Corps you're organizing?
+---
+>  プルだけではないのだろう?」
+It's not just Ple, is it?”
+
+@41788 Glemy · グレミー
+> 「……それはくちさがない連中の噂です」
+“...That's just the rumor of loose-lipped gossips.”
+
+@41789 Haman · ハマーン
+> 「隠さずともよい。
+>  私は知っているのだ、グレミー
+“You needn't hide it. I know, Glemy.
+---
+>  別に責めているわけではない」
+I'm not blaming you.”
+
+@41790 Glemy · グレミー
+> 「はっ……」
+“Yes...”
+
+@41791 Haman · ハマーン
+> 「グレミー・トト……
+>  ザビ家の血をひくというが……」
+“Glemy Toto... They say you carry the blood of the Zabi family...”
+
+@41792 Glemy · グレミー
+> 「いましばらくはやってみせねばならんか……
+>  プルツー、目覚めよプルツー」
+“I suppose I'll have to prove myself a while longer... Ple-Two, awaken, Ple-Two.”
+
+@41793 Ple-Two · プルツー
+> 「…………グレミーか。
+>  もう私が出ねばならないのか?」
+“...Glemy. Must I already be deployed?”
+
+@41794 Glemy · グレミー
+> 「サイコガンダムというマシーンだ。できるな」
+“It's a machine called the Psyco Gundam. You can handle it, yes?”
+
+@41795 Ple-Two · プルツー
+> 「あたり前だ。体ならしにはちょうどいい」
+“Of course. It's just right for a little warm-up.”
+
+@41796 Bright · ブライト
+> 「時間だな……作戦を開始する。
+>  我が艦隊は目標宙域に対し
+“It's time... Begin the operation. Our fleet will enter the target area
+---
+>  第3象限から侵入する
+>  コースをとる」
+from the third quadrant.”
+
+@41797 Beltorchika · ベルトーチカ
+> 「敵接近」
+“Enemy approaching!”
+
+@41798 Bright · ブライト
+> 「敵の展開は予想通りだな、
+>  アムロ」
+“The enemy deployment is just as we expected, Amuro.”
+
+@41799 Amuro · アムロ
+> 「ああ、アクシズ軍はうまく
+>  やってくれているようだ
+“Yeah, the Axis Forces seem to be doing their part.
+---
+>  だがまずはこいつを突破しなくては、
+>  敵の本陣と思われる艦隊に
+But first we have to break through these guys, or we can't attack
+---
+>  攻撃をしかけられない」
+the fleet that seems to be the enemy's main force.”
+
+@41800 Bright · ブライト
+> 「よし総員、戦闘配置につけ」
+“All right, all hands, battle stations!”
+
+@41801 Reika · レイカ
+> 「進路クリア。パイロット各員は
+>  順次発進してください」
+“Course is clear. All pilots, launch in sequence.”
+
+@41802 Amuro · アムロ
+> 「ブライト、戦闘は終了した。
+>  残存する敵はない
+“Bright, the battle is over. No enemy survivors remain.
+---
+>  これより全機帰投する」
+All units are returning to base now.”
+
+@41803 Bright · ブライト
+> 「ご苦労、アムロ。
+>  ……被害報告はまだか?
+“Good work, Amuro. ...Do we have a damage report yet?
+---
+>  各機の着艦、急がせろ。
+>  アストナージ
+Hurry the units in for landing. Astonaige,
+---
+>  収容次第整備を始めてくれ。
+>  またすぐに出ることになるかもしれん」
+start maintenance as soon as they're aboard. We may have to launch again soon.”
+
+@41804 Astonaige · アストナージ
+> 「了解。できる限りはやりますよ」
+“Understood. I'll do as much as I can.”
+
+@41805 Beltorchika · ベルトーチカ
+> 「艦長、アクシズのMSが
+>  接近中です」
+“Captain, Axis MS are approaching.”
+
+@41806 Bright · ブライト
+> 「なんだと?」
+“What did you say?”
+
+@41807 Bunny · バニー
+> 「通信入ります」
+“Incoming transmission.”
+
+@41808 Bright · ブライト
+> 「よし、出せ」
+“All right, put it through.”
+
+@41809 Mashymre · マシュマー
+> 「こちらはアクシズのマシュマー・セロ。
+>  {HeroMech}、応答願いたい」
+“This is Mashymre Cello of Axis. {HeroMech}, I request a response.”
+
+@41810 Beauty · ビューティ
+> 「あら、あの時の……」
+“Oh my, it's him from back then...”
+
+@41811 Bright · ブライト
+> 「こちら{HeroMech}、
+>  ブライト・ノアだ」
+“This is {HeroMech}, Bright Noa speaking.”
+
+@41812 Mashymre · マシュマー
+> 「我々はハマーン様の命により、
+>  諸君らと同行するために
+“By Lady Haman's orders, we have come to accompany you.
+---
+>  参上した。ハマーン様よりの
+>  ことづても預かっている
+I also carry a message from Lady Haman.
+---
+>  着艦を許可願いたい」
+I request permission to land.”
+
+@41813 Bright · ブライト
+> 「……同行だと? 我々を
+>  監視するつもりか……?」
+“...Accompany us? You intend to keep watch over us...?”
+
+@41814 Mashymre · マシュマー
+> 「そのような汚い真似はせん。
+>  ハマーン様の申し出を
+“I would never do anything so underhanded. Now that you have accepted
+---
+>  受け入れた以上、
+>  諸君らは私の同志である
+Lady Haman's offer, you are my comrades.
+---
+>  ともに戦うために参上し、
+>  何の不都合があろうか」
+We have come to fight alongside you. What could be the problem?”
+
+@41815 Chara · キャラ
+> 「あ～もう! マシュマー、
+>  お前はごちゃごちゃうるさいんだよ!
+“Oh, come on! Mashymre, you're so damn long-winded!
+---
+>  いいから早く着艦させなよ
+>  {HeroMech}!
+Just let us land already, {HeroMech}!
+---
+>  こっちだって好きで
+>  やってんじゃないんだ!」
+It's not like we're doing this because we want to!”
+
+@41816 Garrison · ギャリソン
+> 「艦長、ここで問答をして時間を
+>  無駄にするわけにはまいりますまい」
+“Captain, this is no time to waste on a debate.”
+
+@41817 Bright · ブライト
+> 「しかたがないか……わかった、
+>  着艦を許可する
+“I suppose there's no choice... Understood, landing is permitted.
+---
+>  ただし、こちらの部隊の収容が
+>  終了してからだ」
+However, only after our own units have finished coming aboard.”
+
+@41818 Mashymre · マシュマー
+> 「了解した」
+“Understood.”
+
+@41819 Mashymre · マシュマー
+> 「むう、話には聞いていたが
+>  まさかこれほど年少者ばかりとは……」
+“Hmm, I'd heard the rumors, but I never imagined it would be this full of youngsters...”
+
+@41820 Chara · キャラ
+> 「いいじゃないか。あたしは嫌いじゃないよ
+>  こういうのはさ」
+“It's fine, isn't it? I don't mind this sort of thing, you know.”
+
+@41821 Roux · ルー
+> 「ルー・ルカよ。案内するからついてきて
+>  ただし、武器は預からせてもらうわ」
+“I'm Roux Louka. I'll show you around, so follow me. But I'll have to take your weapons.”
+
+@41822 Mashymre · マシュマー
+> 「なに? それではまるで捕虜ではないか
+>  我々は同志として
+“What? That makes us no better than prisoners! We are here
+---
+>  ここにいるのだぞ!」
+as comrades!”
+
+@41823 Chara · キャラ
+> 「おやめよマシュマー。そんなことぐらい
+>  どうだっていいじゃないか
+“Let it go, Mashymre. What does a little thing like that matter?
+---
+>  それよりあんた、ルーっていったね」
+More importantly, you said your name's Roux, right?”
+
+@41824 Roux · ルー
+> 「そうよ」
+“That's right.”
+
+@41825 Chara · キャラ
+> 「グレミーの坊やが、よろしくってさ」
+“Young Master Glemy says hello.”
+
+@41826 Roux · ルー
+# 审校：「よろしくしてやんなきゃならない」不是“say hello”，而是“由我来关照/接待他”的意思，改为更贴切的表达。
+> 「はぁ? なんであたしが
+>  よろしくしてやんなきゃならないのよ」
+“Huh? Why do I have to be the one to welcome him?”
+
+@41827 Chara · キャラ
+> 「知らないよ。あたしは伝えてくれって
+>  いわれただけだからね」
+“Don't ask me. I was just told to pass it along.”
+
+@41828 Masato · 雅人
+> 「ルー、何やってんの。
+>  急がないと怒られるぜ」
+“Roux, what are you doing? If we don't hurry, we'll get yelled at.”
+
+@41829 Roux · ルー
+> 「わかってるわよ!」
+“I know!”
+
+@41830 Roux · ルー
+> 「艦長、マシュマー・セロと
+>  キャラ・スーンを連れてまいりました」
+“Captain, I've brought Mashymre Cello and Chara Soon.”
+
+@41831 Bright · ブライト
+> 「よし、入れ」
+“Good, send them in.”
+
+@41832 Mashymre · マシュマー
+> 「むう、話には聞いていたが
+>  まさかこれほど年少者ばかりとは……」
+“Hmm, I'd heard the rumors, but I never imagined it would be this full of youngsters...”
+
+@41833 Chara · キャラ
+> 「いいじゃないか。あたしは嫌いじゃないよ
+>  こういうのはさ」
+“It's fine, isn't it? I don't mind this sort of thing, you know.”
+
+@41834 Alan · アラン
+# 审校：「武器は預からせてもらいたい」是“请把武器交给我保管”，初稿“take your weapons”语气偏强硬，改为更符合请求语气的表达。
+> 「アラン・イゴールだ。
+>  案内するからついてきてくれ
+“I'm Alan Igor. I'll show you around, so follow me.
+---
+>  ただし、武器は預からせて
+>  もらいたいが?」
+However, I'll need you to hand over your weapons, if you don't mind?”
+
+@41835 Mashymre · マシュマー
+# 审校：「それではまるで捕虜のようではないか」是“那样简直就像俘虏一样”，初稿“That makes us”时态和语气略生硬，改为更自然的表达。
+> 「無礼な! それでは
+>  まるで捕虜のようではないか
+“How rude! That would make us no better than prisoners!
+---
+>  我々は同志として
+>  ここにいるのだぞ!」
+We are here as comrades!”
+
+@41836 Chara · キャラ
+# 审校：「さっさとおしよ」是“快点吧”，初稿“Hurry it up”不够自然，改为“Just hurry up”。
+> 「おやめよマシュマー。
+>  そんなことくらいどうだっていいじゃないか
+“Stop it, Mashymre. What does something like that even matter?
+---
+>  さっさとおしよ。
+>  この色男が困ってんじゃないか」
+Just hurry up. Can't you see this pretty boy's in trouble?”
+
+@41837 Alan · アラン
+> 「アランだ」
+“It's Alan.”
+
+@41838 Chara · キャラ
+> 「ほら、これでいいんだろ?
+>  案内しておくれよ、色男」
+“See, this is fine, right? Show us around, pretty boy.”
+
+@41839 Alan · アラン
+> 「…………こっちだ」
+“...This way.”
+
+@41840 Alan · アラン
+> 「マシュマー・セロとキャラ・スーンを
+>  連れてきた」
+“I've brought Mashymre Cello and Chara Soon.”
+
+@41841 Bright · ブライト
+> 「さっそく話を聞かせてもらおうか、
+>  マシュマー・セロ」
+“Let's hear what you have to say right away, Mashymre Cello.”
+
+@41842 Banjo · 万丈
+> 「なるほど、敵の親玉がいると
+>  思われる艦隊がふたつあるってわけか」
+“I see, so there are two fleets that might have the enemy's ringleader.”
+
+@41843 Mashymre · マシュマー
+> 「そうだ。ハマーン様ご自身が
+>  一方へ向かわれた
+“That's right. Lady Haman herself headed for one of them.
+---
+>  {HeroMech}には
+>  残った方へ向かってもらいたい」
+I want the {HeroMech} to head for the other.”
+
+@41844 Judau · ジュドー
+# 审校：「信じられたもんじゃない」是“没法相信”，初稿“I can't believe”容易误解为“我无法相信”，改为更明确表达怀疑对方说法的意思。
+> 「本当にハマーンがやってるのかどうか
+>  信じられたもんじゃないぜ
+“I can't just take your word that Haman's really doing this.
+---
+>  俺たちだけにやらせようってんじゃ
+>  ないだろうな?」
+You're not just trying to make us do all the work, are you?”
+
+@41845 Mashymre · マシュマー
+> 「小僧、ハマーン様を
+>  侮辱するつもりか!?」
+“Boy, are you trying to insult Lady Haman?!”
+
+@41846 Chara · キャラ
+> 「いいかげんにしな、マシュマー。
+>  話がちっとも進みゃしない」
+“Give it a rest, Mashymre. We're not getting anywhere.”
+
+@41847 Daisuke · 大介
+> 「ジュドーくんも、落ち着いてくれ」
+“Judau, you calm down too.”
+
+@41848 Bright · ブライト
+> 「わかった、それは了承した。しかし
+>  君たちが一緒にくるというのは……」
+“Understood, I accept that. But the fact that you're coming along with us...”
+
+@41849 Chara · キャラ
+# 审校：初稿基本正确，但“It's just kind Lady Haman's consideration”中“just”位置略生硬，改为更自然的表达。
+> 「気にしなさんな。
+>  お優しいハマーン様のお心づかいさ
+“Don't worry about it. It's kind Lady Haman's consideration.
+---
+>  あたしらだって異星人どもを
+>  やっちまうまでは
+We don't intend to fight you either,
+---
+>  あんたらとやりあうつもりなんて
+>  ないんだからね」
+not until we've finished off those aliens.”
+
+@41850 Amuro · アムロ
+# 审校：「時間があけば敵を分断したハマーンの作戦が無駄になる」中“無駄になる”的主语是“作戦”，初稿“will be for nothing”可以，但改为“will be wasted”更直接。
+> 「ブライト、彼らのいう通りだ。
+>  それよりも今は急ごう
+“Bright, they're right. More importantly, let's hurry now.
+---
+>  時間があけば敵を分断した
+>  ハマーンの作戦が無駄になる」
+If we waste time, Haman's plan to split the enemy will be wasted.”
+
+@41851 Mashymre · マシュマー
+> 「ふむ、さすがに英雄と呼ばれた男は
+>  話がわかるようだな」
+“Hmm, as expected of a man called a hero. He understands.”
+
+@41852 Bright · ブライト
+> 「あれか……総員、
+>  第一戦闘配置!」
+“That's it, then... All hands, battle stations!”
+
+@41853 Mashymre · マシュマー
+> 「我らもいくぞ、キャラ!」
+“We're going too, Chara!”
+
+@41854 Judau · ジュドー
+> 「あんたら、頼むから俺たちの
+>  足をひっぱらないでくれよ」
+“Please, just don't get in our way.”
+
+@41855 Chara · キャラ
+> 「あっははははっ、いいねぇ、
+>  気にいったよジュドー」
+“Ahahahaha, nice, I like you, Judau.”
+
+@41856 Janera · ジャネラ
+> 「あれは……まさか地球人どもか!?
+>  おのれ、このようなところまで!!」
+“That's... could it be the Earthlings?! Curse them, all the way out here!!”
+
+@41857 Wahl · ワール
+> 「陛下!」
+“Your Majesty!”
+
+@41858 Emperor Zuul · ズール皇帝
+> 「うろたえるでない。このワシが負けるなど
+>  ありえんのだ。返り討ちにしてくれるわ」
+“Don't panic. There's no way I, of all people, could lose. I'll crush them all.”
+
+@41859 Takeru · タケル
+> 「ズールだ! 間違いない。
+>  ……ズール、今度こそ倒す!」
+“It's Zuul! No mistake. ...Zuul, this time I'll bring you down!”
+
+@41860 Duke · デューク
+> 「ああ……フリード星の仇をうつんだ」
+“Yes... we'll avenge Planet Fleed.”
+
+@41861 Daisuke · 大介
+> 「ああ……フリード星の仇をうつんだ」
+“Yes... we'll avenge Planet Fleed.”
+
+@41862 Maria · マリア
+> 「ええ、兄さん!」
+“Yes, brother!”
+
+@41863 Bright · ブライト
+> 「どうやら我々のほうが
+>  本陣だったようだな
+“It seems we're the main force, then.
+---
+>  ズールを倒せばいい、
+>  全力を出しつくせ!!」
+Just defeat Zuul. Give it everything you've got!!”
+
+@41864 Gorman · ゴーマン
+> 「ここから先へは進ません!」
+“You shall not pass beyond this point!”
+
+@41865 Dungele · ダンゲル
+> 「ウッハッハッハッハッ!!
+>  貴様らはここで倒してくれる!!」
+“Uhahahahaha!! I'll destroy you all right here!!”
+
+@41866 Wufei · 五飛
+> 「…………」
+“...”
+
+@41867 Duo · デュオ
+> 「アルトロンだと!?
+>  まさか、五飛か!?」
+“Altron?! No way, is that Wufei?!”
+
+@41868 Quatre · カトル
+> 「なんだって!? そんな、
+>  どうして五飛がズールのところに……」
+“What?! No, why would Wufei be with Zuul...”
+
+@41869 Duo · デュオ
+> 「五飛、おい五飛、
+>  いったいどういうことだ!?
+“Wufei, hey Wufei, what the hell is going on?!
+---
+>  まさか俺たちと戦おうってのかよ!?」
+You're not telling me you're going to fight us?!”
+
+@41870 Wufei · 五飛
+> 「そうだ。それはお前たちが悪だからだ」
+“That's right. It's because you are evil.”
+
+@41871 Quatre · カトル
+> 「五飛……?」
+“Wufei...?”
+
+@41872 Sai Saici · サイ・サイシー
+> 「はぁ? お前どうしちまったんだ!?」
+“Huh? What's gotten into you?!”
+
+@41873 Wufei · 五飛
+> 「ズール皇帝こそが正義だ!
+>  ズール皇帝に逆らうような悪は
+“Emperor Zuul is the one who is just! Any evil that defies Emperor Zuul,
+---
+>  俺が倒す!」
+I will destroy!”
+
+@41874 Duo · デュオ
+> 「あっちゃあ。さてはあいつ、
+>  まぁたひとりで突っ込んで
+“Oh man. So he went charging in all by himself again
+---
+>  洗脳されちまいやがったな」
+and got himself brainwashed.”
+
+@41875 Ryo · 亮
+> 「ありうる話だな」
+“That's entirely possible.”
+
+@41876 Koji · 甲児
+> 「おいおい、冗談じゃないぜ」
+“Hey, hey, you've gotta be kidding me.”
+
+@41877 Quatre · カトル
+> 「五飛! やめてください、五飛!」
+“Wufei! Stop this, Wufei!”
+
+@41878 Wufei · 五飛
+> 「黙れ! 俺の敵は貴様らだ。
+>  貴様らを倒す
+“Silence! You are my enemies. Destroying you—
+---
+>  それが俺の正義だ!」
+that is my justice!”
+
+@41879 Heero · ヒイロ
+> 「……五飛、自爆スイッチを押せ。
+>  それがお前のためだ」
+“...Wufei, press the self-destruct switch. It's for your own good.”
+
+@41880 Wufei · 五飛
+> 「フンッ、なぜ俺が
+>  そんな真似をしなければならん!
+“Hmph, why should I do such a thing!
+---
+>  貴様らが正しいというのならば、
+>  俺に勝てるはずだ!」
+If you are truly in the right, then you should be able to defeat me!”
+
+@41881 Quatre · カトル
+> 「五飛ッ!!」
+“Wufei!!”
+
+@41882 Gandal · ガンダル
+> 「ここで奴らをくい止めるのだ!」
+“Hold them off here!”
+
+@41883 Warchimedes · ワルキメデス
+> 「皇帝陛下!
+>  我々におまかせを!!」
+“Your Majesty! Leave this to us!!”
+
+@41884 Wahl · ワール
+> 「うおぉぉっ!? くっ、こんな……」
+“Uwooooh?! Ngh, this can't be...”
+
+@41885 Janera · ジャネラ
+> 「な、なんということじゃ!?
+>  こんなところで……おのれぇっ!!」
+“W-what is the meaning of this?! To fall in a place like this... Curse you!!”
+
+@41886 Gandal · ガンダル
+> 「ぐわぁぁぁぁっ! バ、バカな!?
+>  ズール皇帝陛下ぁぁぁーっ!!」
+“Guwaaaaaah! I-impossible! Emperor Zuul, Your Majestyyyy!!”
+
+@41887 Blacky · ブラッキー
+> 「ぎゃあぁぁぁぁぁぁぁーっ!!」
+“Gyaaaaaaaaaah!!”
+
+@41888 Gorman · ゴーマン
+> 「お、おのれ……うおぉぉぉぉぉぉーっ!!」
+“Y-you fiends... Uwooooooooh!!”
+
+@41889 Warchimedes · ワルキメデス
+> 「おおぉぉっ!?
+>  だ、脱出できんのかぁっ!!」
+“Ooooh?! C-can I not escape?!”
+
+@41890 Dungele · ダンゲル
+> 「なんだと!? うおぉぉぉぉっ!
+>  ジャ、ジャネラ様ぁぁっ!!」
+“What?! Uwooooooh! L-Lady Janera!!”
+
+@41891 Wufei · 五飛
+> 「うっ……なんだ!? ナタク、俺たちは
+>  いったい……」
+“Ugh... what is this?! Nataku, what in the world are we...”
+
+@41892 Takeru · タケル
+> 「今度は逃さんぞ! ズール!」
+“You won't escape this time! Zuul!”
+
+@41893 Emperor Zuul · ズール皇帝
+> 「ワーッハハハハッ! 死にに来たか、
+>  マーズ!!」
+“Wahahahaha! So you've come to die, Mars!!”
+
+@41894 Emperor Zuul · ズール皇帝
+> 「ぬうぅっ! おのれ地球人どもめ!
+>  よくもやってくれおったな!!」
+“Ngh! Curse you Earthlings! How dare you do this to me!!”
+
+@41895 Emperor Zuul · ズール皇帝
+> 「おのれ、恐れを知らぬ奴らめ!
+>  ワシの力を思い知るがいい!!」
+“You insolent fools who know no fear! I'll make you learn the true extent of my power!!”
+
+@41896 Takeru · タケル
+> 「ズール! 貴様はもう終わりだ。
+>  銀河帝国軍もいずれは
+“Zuul! You're finished. The Galactic Empire's forces will fall before long as well.
+---
+>  敗退する。ギシン星にも、もどれない
+>  貴様はそれでも
+You can't even return to Planet Gishin—and even so,
+---
+>  戦いをやめないというのか!?」
+you still won't stop fighting?!”
+
+@41897 Emperor Zuul · ズール皇帝
+> 「かまわん。ワシは生き続け
+>  地球を第2のギシン星とするのだ
+“I care not. I will live on and make Earth my second Planet Gishin.
+---
+>  宇宙に生きる命はワシあっての命
+>  ワシが死ぬなどありえぬわ!
+Every life in the universe exists only through me. It is impossible for me to die!
+---
+>  ワーッハハハハハッ!!」
+Wahahahahaha!!”
+
+@41898 Emperor Zuul · ズール皇帝
+> 「ぬうぅぅぅっ!?」
+“Nguuuuh?!”
+
+@41899 Takeru · タケル
+> 「やった……?」
+“Did it... work?”
+
+@41900 Emperor Zuul · ズール皇帝
+> 「ワーッハハハハッ!! ムダなことだ!
+>  しょせんムシケラにすぎぬお前たちに
+“Wahahahaha!! It's useless! You are nothing but insects—
+---
+>  このワシを倒すことなどできん!」
+you could never hope to defeat me!”
+
+@41901 Takeru · タケル
+> 「くっ……ダメなのか……!? オレたちでは
+>  本当にズールは倒せないのか!?」
+“Ngh... is it no use...?! Can we truly not defeat Zuul?!”
+
+@41902 Marg · マーグ
+> (マーズ……マーズよ。お前はいま、
+>  ズールを倒し、生き抜くことだけを
+(Mars... Mars, my boy. Right now, you think only of defeating Zuul and surviving.
+---
+>  考えている。だが、生きるということは
+>  死を知るということ、命をかける
+But to live is to know death—it is to stake your life.
+---
+>  ということなのだ。マーズ、
+>  広大無辺の宇宙のために戦え
+Mars, fight for the vast and boundless universe.
+---
+>  命をかけて。そのときこそ、
+>  奇跡はおこる!)
+Stake your life on it. Only then will a miracle occur!)
+
+@41903 Takeru · タケル
+> 「マーグ……兄さん!? いや……
+>  それだけではない……まさか、父か!?
+“Marg... brother?! No... that's not all... could it be, Father?!
+---
+>  俺の……本当の父……? そうだ…
+>  ズールを倒さねば、平和はない
+My... real father...? That's right... unless Zuul is destroyed, there will be no peace.
+---
+>  ガイヤーの反陽子爆弾ならば、
+>  いかにズールでも……」
+With Gaia's antiproton bomb, even Zuul should...”
+
+@41904 Emperor Zuul · ズール皇帝
+> 「なんだ、何をするつもりだ、マーズ!」
+“What is it? What do you intend to do, Mars?!”
+
+@41905 Takeru · タケル
+> 「ズール、いかにお前でも、
+>  反陽子爆弾の爆発をくらって
+“Zuul, even for you—can you survive
+---
+>  それでも生き延びられるか!?」
+the blast of an antiproton bomb?!”
+
+@41906 Emperor Zuul · ズール皇帝
+> 「なに!? まさか貴様……
+>  やめろ、マーズ!
+“What?! You can't mean... Stop it, Mars!
+---
+>  そんなことをしても無駄だ!!」
+Even if you do this, it's useless!!”
+
+@41907 Takeru · タケル
+> 「くっ……ズール!!
+>  オレと一緒に死ねぇ!」
+“Ngh... Zuul!! Die with me!”
+
+@41908 Emperor Zuul · ズール皇帝
+> 「うおぉぉぉぉっ!? おのれ、マーズ!!」
+“Uwooooooh?! Curse you, Mars!!”
+
+@41909 Takeru · タケル
+> 「おおおぉぉぉぉぉーっ!!」
+“Oooooooooooh!!”
+
+@41910 Emperor Zuul · ズール皇帝
+> 「マーズ!! ワシは死なんぞ、マーズ!!
+>  たとえこの体が滅びても
+“Mars!! I will not die, Mars!! Even if this body is destroyed,
+---
+>  ワシの細胞の1つ1つは宇宙へと
+>  広がり、そこでまた姿を変えて
+every single one of my cells will spread across the universe, and there take new form
+---
+>  支配者となるのだ! ギシン星の
+>  ズールも、ワシの細胞の1つが
+to become a ruler! Even Zuul of Planet Gishin was merely one of my cells
+---
+>  その体を借りただけだ!ワシは
+>  決して滅びはせぬぞ! マーズ!!」
+borrowing that body! I will never be destroyed! Mars!!”
+
+@41911 Bright · ブライト
+> 「なんだ、何が起こった!?」
+“What was that? What happened?!”
+
+@41912 Reika · レイカ
+> 「ズール皇帝の反応、
+>  消えました!!」
+“Emperor Zuul's signal has vanished!!”
+
+@41913 Bright · ブライト
+> 「やったのか!?」
+“Did he do it?!”
+
+@41914 Takeru · タケル
+> 「なんだ……オレは、死んでいない?
+>  ……生きているのか!?」
+“What... I'm not dead? ...I'm alive?!”
+
+@41915 Kenji · ケンジ
+> 「タケル、いったいどうしたんだ!?」
+“Takeru, what in the world happened?!”
+
+@41916 Takeru · タケル
+> 「隊長……オレは……反陽子
+>  爆弾で、ズールもろとも
+“Commander... I was supposed to die with Zuul,
+---
+>  死ぬはずだったのに……」
+from the antiproton bomb...”
+
+@41917 Kenji · ケンジ
+> 「なんだと!? タケル、お前……
+“What?! Takeru, you...
+---
+>  いや……よくやったな、タケル」
+No... you did well, Takeru.”
+
+@41918 Takeru · タケル
+> 「隊長……」
+“Commander...”
+
+@41919 Bright · ブライト
+> 「よし! みんな、残った指揮官
+>  クラスを全力で叩け!
+“All right! Everyone, hit the remaining commander-class units with everything you've got!
+---
+>  それですべて終わる!」
+That will end it all!”
+
+@41920 Emperor Zuul · ズール皇帝
+> 「ぬうぅぅぅっ!?」
+“Nghhhhh?!”
+
+@41921 Takeru · タケル
+> 「やった……?」
+“Did we do it...?”
+
+@41922 Emperor Zuul · ズール皇帝
+> 「ワーッハハハハッ!! ムダなことだ!
+>  しょせんムシケラにすぎぬお前たちに
+“Wahahahaha!! It's useless! You're nothing but insects—
+---
+>  このワシを倒すことなどできん!
+>  まだそれがわからぬようだな!」
+you can't possibly defeat me! You still don't understand that, do you!”
+
+@41923 Takeru · タケル
+> 「くっ……ダメなのか……!? オレたちでは
+>  本当にズールは倒せないのか!?」
+“Ngh... Is it no use...?! Can we really not defeat Zuul?!”
+
+@41924 Emperor Zuul · ズール皇帝
+> 「うおぉぉぉぉっ!? なんだ、これは!?
+>  おのれ、ワシは死なんぞ!!
+“Uwooooooh?! What is this?! Curse you, I will not die!!
+---
+>  たとえこの体が滅びても、
+>  ワシの細胞の一つ一つは
+Even if this body is destroyed, every single one of my cells
+---
+>  宇宙へと広がり、そこでまた
+>  姿を変えて支配者となるのだ!
+will spread across the universe, and there take new form to become a ruler!
+---
+>  ワシは決して滅びはせぬぞぉぉぉーっ!」
+I will never be destroyed!”
+
+@41925 Reika · レイカ
+> 「……ズール皇帝の反応、
+>  消えました!!」
+“...Emperor Zuul's signal has vanished!!”
+
+@41926 Bright · ブライト
+> 「やったか!?」
+“Did he do it?!”
+
+@41927 Bright · ブライト
+> 「よし! みんな、残った指揮官
+>  クラスを全力で叩け!
+“All right! Everyone, hit the remaining commander-class units with everything you've got!
+---
+>  それですべて終わる!」
+That will end it all!”
+
+@41928 Beltorchika · ベルトーチカ
+> 「敵残存部隊、戦闘を停止
+>  しました」
+“The remaining enemy forces have ceased combat.”
+
+@41929 Bright · ブライト
+> 「終わったか……」
+“Is it over...”
+
+@41930 Beltorchika · ベルトーチカ
+> 「……艦長! 敵です!」
+“...Captain! Enemies!”
+
+@41931 Reika · レイカ
+> 「しつこいわね、まだやるつもりなの!?」
+“How persistent. They still intend to fight?!”
+
+@41932 Bright · ブライト
+> 「くっ、甘かったか……迎撃用意!」
+“Ngh, we were too soft... Prepare to intercept!”
+
+@41933 Bunny · バニー
+> 「艦長、通信入ります!」
+“Captain, incoming transmission!”
+
+@41934 Bright · ブライト
+> 「なに?」
+“What?”
+
+@41935 Gishin Soldier · ギシン星兵
+> 「待ってくれ、俺たちは降伏する!
+>  攻撃はしないでくれ」
+“Wait, we surrender! Don't attack us!”
+
+@41936 Gishin Soldier · ギシン星兵
+> 「俺たちはズール皇帝が怖くて、
+>  しかたなく戦ってたんだ!
+“We were only fighting because we were afraid of Emperor Zuul!
+---
+>  投降する! 助けてくれ!」
+We surrender! Please spare us!”
+
+@41937 Garrison · ギャリソン
+> 「これは……予想以上でございますな」
+“Well now... this exceeds all expectations.”
+
+@41938 Bright · ブライト
+> 「ああ……よし、投降を受け入れる。
+>  武装解除して待て」
+“Yeah... All right, we accept your surrender. Disarm and wait.”
+
+@41939 Gishin Soldier · ギシン星兵
+> 「あ、ありがたい。これ以上
+>  無駄な戦いをしないために
+“Th-thank you. So that we don't fight any more pointless battles,
+---
+>  俺たちで他の連中の説得も
+>  させてほしい」
+we'd like to help persuade the others too.”
+
+@41940 Banjo · 万丈
+> 「やれやれ、なんとか終わりにできそうだね」
+“Good grief. Looks like we might actually be able to wrap this up.”

@@ -1,0 +1,1588 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@25195 Quattro · クワトロ
+> 「そうか……帝国軍は去ったか」
+“I see... so the Imperial forces have withdrawn.”
+
+@25196 Bright · ブライト
+# 审校：“Earthnoids”不是自然英文，改为 Earthlings。
+> 「ああ。これで、残るは
+>  我々地球人同士の問題だ」
+“Yeah. That leaves only our own problems as Earthlings to deal with.”
+
+@25197 Quattro · クワトロ
+> 「監視衛星の件は了解した。
+>  手配しておこう
+“Understood about the surveillance satellite. I'll make the arrangements.
+---
+>  それと一応このことについてはOZにも
+>  情報を流しておいたほうがいいな」
+Also, we'd best pass this information along to OZ as well, just in case.”
+
+@25198 Chan · チェーン
+> 「アムロ大尉」
+“Captain Amuro.”
+
+@25199 Beltorchika · ベルトーチカ
+> 「なによ」
+“What is it?”
+
+@25200 Chan · チェーン
+> 「あなたには用事はないわ」
+“I have no business with you.”
+
+@25201 Amuro · アムロ
+> 「どうしたんだ、チェーン」
+“What's going on, Chan?”
+
+@25202 Chan · チェーン
+> 「私、月へ行ってアナハイムの
+>  オクトバー氏と会ってきます
+“I'm going to the Moon to meet with Mr. October of Anaheim.
+---
+>  クワトロ大尉が今後のことで
+>  話をつけたそうなので」
+Captain Quattro has apparently worked out the details for what comes next.”
+
+@25203 Amuro · アムロ
+> 「月へ? しかし、危険じゃないのか?」
+“To the Moon? But isn't that dangerous?”
+
+@25204 Chan · チェーン
+> 「それはそうですけど……
+>  アムロ大尉のためなら、平気です」
+“It is, but... for your sake, Captain Amuro, I don't mind.”
+
+@25205 Beltorchika · ベルトーチカ
+> 「行くんなら、さっさといっちゃいなさいよ」
+“If you're going, then just hurry up and go already.”
+
+@25206 Emma · エマ
+> 「どう思います?
+>  あの、カミーユの連れてきた娘」
+“What do you make of her? That girl Kamille brought along.”
+
+@25207 Quattro · クワトロ
+> 「わからんな。恐らくは
+>  強化人間だろうとは思うが……」
+“I can't say. I suspect she's likely an enhanced human, but...”
+
+@25208 Amuro · アムロ
+> 「ああ、俺たちと、いやカミーユと
+>  接触する理由がわからないな
+“Yeah, I don't understand why she'd want contact with us—no, with Kamille.
+---
+>  戦場でのシンパシーというなら
+>  理解はできるが」
+If it's some kind of battlefield sympathy, I can understand that much.”
+
+@25209 Emma · エマ
+> 「でも、危険な気がします。カミーユっ
+>  て意外ともろい部分があるから……」
+“Still, I feel she's dangerous. Kamille has a surprisingly fragile side, after all...”
+
+@25210 Quattro · クワトロ
+> 「……そうだな」
+“...You're right.”
+
+@25211 Emma · エマ
+> 「どう思います?
+>  あの、カミーユの連れてきた娘」
+“What do you make of her? That girl Kamille brought along.”
+
+@25212 Quattro · クワトロ
+> 「わからんな。恐らくは
+>  強化人間だろうとは思うが……」
+“I can't say. I suspect she's likely an enhanced human, but...”
+
+@25213 Amuro · アムロ
+> 「ああ、俺たちと、いやカミーユと
+>  接触する理由がわからないな
+“Yeah, I don't understand why she'd want contact with us—no, with Kamille.
+---
+>  戦場でのシンパシーというなら
+>  理解はできるが」
+If it's some kind of battlefield sympathy, I can understand that much.”
+
+@25214 Emma · エマ
+> 「でも、危険な気がします。カミーユっ
+>  て意外ともろい部分があるから……」
+“Still, I feel she's dangerous. Kamille has a surprisingly fragile side, after all...”
+
+@25215 Quattro · クワトロ
+> 「……そうだな」
+“...You're right.”
+
+@25216 Quattro · クワトロ
+> 「あの娘、どう思う?」
+“What do you think of that girl?”
+
+@25217 Amuro · アムロ
+> 「カミーユの連れてきた娘か?
+>  わからないな……危険な気はするが」
+“The girl Kamille brought along? I don't know... but she does feel dangerous.”
+
+@25218 Quattro · クワトロ
+> 「……そうだな」
+“...You're right.”
+
+@25219 Sally · サリィ
+> 「ハサン先生、お久しぶりです」
+“Teacher Hasan, it's been a long time.”
+
+@25220 Hasan · ハサン
+> 「おお、サリィくんか。
+>  君がアーガマに乗っているとはな」
+“Oh, Sally. So you're aboard the Argama now.”
+
+@25221 Sally · サリィ
+> 「色々とありましたからね。
+>  それで、どうですか?」
+“A lot has happened. So, how is she?”
+
+@25222 Hasan · ハサン
+> 「うむ、葉月博士に連絡はついた
+>  沙羅の方はあまり問題はないよう
+“Mm, we've made contact with Dr. Hazuki. Sara doesn't seem to be much of a problem.
+---
+>  だな。しばらく休ませてやれば、あとは
+>  本人とまわりのケアの問題だ」
+If we let her rest a while, after that it's just a matter of care for her and those around her.”
+
+@25223 Sally · サリィ
+> 「そうですか。ではロザミィのほうは?」
+“I see. And what about Rosamy?”
+
+@25224 Hasan · ハサン
+> 「薬物反応が出た。
+>  詳しい事はDNA鑑定まで
+“There was a drug reaction. We'll need to wait for the DNA test
+---
+>  待つ必要があるが……」
+for the details, but...”
+
+@25225 Kamille · カミーユ
+> 「ロザミィが強化人間だって
+>  言うんですか?」
+“Are you saying Rosamy is an enhanced human?”
+
+@25226 Hasan · ハサン
+> 「可能性は否定できないな」
+“I can't deny the possibility.”
+
+@25227 Kamille · カミーユ
+> 「……強化人間なんてつくって、
+>  どうしようって言うんです」
+“...Creating enhanced humans—what do they think they're doing?”
+
+@25228 Hasan · ハサン
+> 「私をせめられても困る。
+>  もっとも医者として
+“It's no use taking it out on me. Though as a doctor,
+---
+>  興味がないといえばウソになるがね。
+>  こんな時代ではなかったら
+I'd be lying if I said I wasn't interested. If it weren't for times like these,
+---
+>  ここまでにはならなかっただろうが……」
+it never would have come to this, but...”
+
+@25229 Sally · サリィ
+# 审校：同上，将“Teacher Hasan”改为“Mr. Hasan”。
+> 「ハサン先生、ちょっと」
+“Mr. Hasan, a moment.”
+
+@25230 Kamille · カミーユ
+> 「戦争のためなら、
+>  人間の身体をいじるのも
+“Are you saying that if it's for the sake of war, it's acceptable
+---
+>  許されるって言うんですか!?」
+to tamper with human bodies?!”
+
+@25231 Hasan · ハサン
+> 「一概にそうとは言えんが、
+>  戦争のおかげで飛躍的に
+“I can't say that's entirely true, but there are any number of technologies
+---
+>  発展を遂げた技術は
+>  いくらでもある。医学だってそうだ」
+that made dramatic advances thanks to war. Medicine included.”
+
+@25232 Kamille · カミーユ
+> 「納得できませんね、そんなこと」
+“I can't accept that. Not at all.”
+
+@25233 Hasan · ハサン
+> 「平和になれば
+>  戦時中の技術も還元できるよ」
+“Once peace comes, wartime technology can be given back to society too.”
+
+@25234 Kamille · カミーユ
+> 「それは……悲しい副産物ですよ。
+>  認めたくありません!」
+“That's... a tragic byproduct. I refuse to accept it!”
+
+@25235 Rosamia · ロザミア
+> 「あ、お兄ちゃん!」
+“Ah, big brother!”
+
+@25236 Kamille · カミーユ
+> 「ロザミィ、
+>  どこか……おかしな所はないか?」
+“Rosamy, is there anything... strange about you?”
+
+@25237 Rosamia · ロザミア
+> 「ぜんぜん。お兄ちゃん、アメたべる?」
+“Not at all. Big brother, want some candy?”
+
+@25238 Kamille · カミーユ
+> 「いや、いいよ」
+“No, I'm fine.”
+
+@25239 Kamille · カミーユ
+> (ロザミィが強化人間だって……
+>  ここにいれば、戦いに出なくてすむんだ)
+(Rosamy is an enhanced human... If she stays here, she won't have to go out and fight.)
+
+@25240 Judau · ジュドー
+> 「よし、アーガマが
+>  入港してるってのはここだな」
+“All right, so this is where the Argama's docked.”
+
+@25241 Iino · イーノ
+> 「ねぇ、本当にやるつもりなの?」
+“Hey, are you really going to do this?”
+
+@25242 Elle · エル
+> 「あったり前じゃない。
+>  あんたいまさら何言ってんのよ」
+“Of course we are. What are you saying at this point?”
+
+@25243 Beecha · ビーチャ
+> 「いやならやめろよ。
+>  そうすりゃ分け前も増える」
+“If you don't want in, back out. That just means a bigger cut for us.”
+
+@25244 Mondo · モンド
+> 「そうそう」
+“Yeah, yeah.”
+
+@25245 Judau · ジュドー
+> 「しっ、静かにしろ」
+“Shh, quiet.”
+
+@25246 Judau · ジュドー
+> 「…………よし、いいぞ」
+“...All right, we're good.”
+
+@25247 Iino · イーノ
+> 「ジュドー……」
+“Judau...”
+
+@25248 Judau · ジュドー
+> 「イーノ、早くしろ。うまくいきゃ、
+>  俺たち大金持ちなんだぞ」
+“Iino, hurry up. If this goes well, we'll be rich.”
+
+@25249 Elle · エル
+> 「急がないと、見つかっちゃうよ」
+“We'd better hurry, or we'll get caught.”
+
+@25250 Iino · イーノ
+> 「わ、わかったよ」
+“O-okay.”
+
+@25251 Treize · トレーズ
+> 「レディ、どういうことだ?」
+“Lady, what is the meaning of this?”
+
+@25252 Lady · レディ
+> 「閣下はずるうございます。閣下は
+>  世界の頂点に立たなければ
+“You are unfair, Your Excellency. You are a man who must stand at the pinnacle of the world.
+---
+>  ならないお方。なのに、世界を
+>  混乱のまま放っておいでになる
+Yet you leave the world in chaos.
+---
+>  私は閣下のお手伝いのために
+>  宇宙へ上がりました
+I went up to space to assist you,
+---
+>  そして、閣下の未来を
+>  ご用意しました」
+and I have prepared your future.”
+
+@25253 Treize · トレーズ
+> 「レディ、世界から戦いはなくならない
+>  ならば、常に強者が世界を
+“Lady, if war will never vanish from the world, then the strong should always rule it.
+---
+>  治めればいい。人々は強い者に
+>  支配されることに喜びすら感じる
+People even take joy in being ruled by the strong.
+---
+>  世界は戦ってこそ自然なのだ」
+It is only natural for the world to fight.”
+
+@25254 Lady · レディ
+> 「それには無駄な血が流れすぎます。
+>  閣下はすべての人々を愛せる
+“But that spills too much pointless blood. You are a man who can love all people.
+---
+>  お方。宇宙から地球圏の
+>  平和を築けるお方です」
+You are a man who can build peace over the Earth Sphere from space.”
+
+@25255 Treize · トレーズ
+> 「レディ、君は自分の理想で
+>  未来を見ている」
+“Lady, you are looking at the future through your own ideals.”
+
+@25256 Lady · レディ
+> 「閣下がお望みになったことです」
+“It is what you wished for, Your Excellency.”
+
+@25257 Treize · トレーズ
+> 「私の理想など、人間一人の
+>  妄想でしかない。歴史は
+“My ideals are nothing but the delusion of one man. History is
+---
+>  日々の積み重ねでつくられる。
+>  個人の未来などに意味はない」
+built by the accumulation of each day. An individual's future means nothing.”
+
+@25258 Lady · レディ
+> 「閣下の未来は決まっております。
+>  宇宙にこそ
+“Your future is already decided. It is in space
+---
+>  閣下の未来が存在します」
+that your future exists.”
+
+@25259 Treize · トレーズ
+> 「レディ、私はそれほど強くない。
+>  ゼクスが、そしてあの反逆の翼持つ
+“Lady, I am not that strong. Zechs, and those with the wings of rebellion—
+---
+>  彼らが、命をかけて未来への道を
+>  見出そうとしている」
+they are risking their lives to find the path to the future.”
+
+@25260 Lady · レディ
+> 「閣下……」
+“Your Excellency...”
+
+@25261 Treize · トレーズ
+> 「急ぐ必要はない。
+>  時代は繰り返されるのだ
+“There is no need to rush. The ages will repeat themselves.
+---
+>  レディ、戻ってきておくれ、
+>  私の大好きだったレディ・アン」
+Lady, come back to me—my beloved Lady Une.”
+
+@25262 Astonaige · アストナージ
+> 「おい、そこの奴。ちょっとこのクレーンを
+>  動かしてくれ…って、なんだお前ら!?」
+“Hey, you there. Move this crane for me... wait, who the hell are you people?!”
+
+@25263 Mondo · モンド
+> 「動くなっ!
+>  こっちには人質だっているんだからな」
+“Don't move! We've got a hostage here!”
+
+@25264 Astonaige · アストナージ
+> 「なんなんだよ、お前たちは!?」
+“What the hell are you all?!”
+
+@25265 Elle · エル
+> 「動かないでっていってるでしょ!
+>  人質がどうなってもいいの?」
+“I said don't move! Do you want the hostage to get hurt?”
+
+@25266 Anna · アンナ
+> 「ん…………」
+“Nn...”
+
+@25267 Astonaige · アストナージ
+> 「アンナ……お前ら一体……」
+“Anna... just who are you people...”
+
+@25268 Elle · エル
+> 「悪いけど、
+>  おじさんも人質になってもらうよ」
+“Sorry, old man, but you're going to be a hostage too.”
+
+@25269 Judau · ジュドー
+> 「おいビーチャ、早くしろ」
+“Hey Beecha, hurry it up.”
+
+@25270 Beecha · ビーチャ
+> 「わかってるよ! えー、アーガマの皆さん
+>  大変お忙しいところを失礼します
+“I know! Ahem—everyone aboard the Argama, sorry to trouble you when you're so busy.
+---
+>  実はわたくしたちはぁ……」
+The truth is, we are...”
+
+@25271 Judau · ジュドー
+> 「選挙演説じゃないんだぞ!」
+“This isn't an election speech!”
+
+@25272 Beecha · ビーチャ
+> 「うっせぇな!
+>  我々は人質をとっている
+“Shut up! We've taken hostages.
+---
+>  モビルスーツを渡さないと、
+>  人質の命は保証できない!」
+If you don't hand over a Mobile Suit, we can't guarantee their lives!”
+
+@25273 Benkei · ベンケイ
+> 「なんだよ、なんの騒ぎだ?」
+“What's going on? What's all the commotion?”
+
+@25274 David · デビッド
+> 「あ、アンナ!」
+“A-Anna!”
+
+@25275 Shinobu · 忍
+> 「なんだてめぇら、何やってやがる! 俺
+>  たちが誰だか知っててやってんだろうな」
+“What the hell are you punks doing?! You know damn well who we are, right?”
+
+@25276 Judau · ジュドー
+> 「そんなのあったり前でしょ。
+>  あんたたちのモビルスーツなら
+“Of course we do. Your Mobile Suits
+---
+>  高く売れるってもんだぜ」
+would fetch a nice high price.”
+
+@25277 Iino · イーノ
+> 「わっ、ジュドー、
+>  どんどん人が集まってくるよ」
+“Whoa, Judau, more and more people keep gathering!”
+
+@25278 Beecha · ビーチャ
+> 「おい、こっちにゃ人質がいるんだぞ!
+>  ケガさせたくなかったら動くんじゃない!
+“Hey, we've got hostages over here! If you don't want them hurt, don't move!
+---
+>  ジュドー、早くしろ」
+Judau, hurry it up.”
+
+@25279 Judau · ジュドー
+> 「おうっ」
+“Yeah!”
+
+@25280 Chibodee · チボデー
+> 「ちっ、ガキどもがよ。お前ら、
+>  俺たちを知っててやってんなら
+“Tch, a bunch of brats. If you're pulling this knowing who we are,
+---
+>  それなりの覚悟はできてんだろうな」
+then you'd better be ready for what's coming.”
+
+@25281 Mondo · モンド
+> 「動くなっての!」
+“I said don't move!”
+
+@25282 Chibodee · チボデー
+> 「やーれやれ、バカなガキどもだぜ」
+“Oh, brother. What a bunch of stupid kids.”
+
+@25283 George · ジョルジュ
+> 「まったく、婦女子を人質にとる
+>  など、どのような理由があっても
+“Honestly, taking women and children hostage—no matter the reason,
+---
+>  許せませんね」
+I cannot forgive it.”
+
+@25284 Alan · アラン
+> 「あまり手荒な真似はするなよ、
+>  お前たち」
+“Don't be too rough with them, you lot.”
+
+@25285 Sai Saici · サイ・サイシー
+> 「わかってるって、アランのあんちゃん」
+“I know, I know, Alan.”
+
+@25286 Beecha · ビーチャ
+> 「なななな、なんだよ、この銃が見えない
+>  のかよ!? 俺は本気だぞ!」
+“Wh-wh-wh-what?! Can't you see this gun?! I mean it!”
+
+@25287 Beecha · ビーチャ
+> 「ぐえっ!」
+“Gueh!”
+
+@25288 Elle · エル
+> 「きゃあぁっ!」
+“Kyaaah!”
+
+@25289 Mondo · モンド
+> 「ひいっ!」
+“Hii!”
+
+@25290 George · ジョルジュ
+> 「……さぁ、お嬢さん、
+>  もう終わりにしましょう」
+“...Now then, young lady, let's put an end to this.”
+
+@25291 Elle · エル
+> 「わ、わかったわよ!
+>  なんなのよあんたたち!」
+“F-fine! Just who the hell are you people?!”
+
+@25292 Schwarz · シュバルツ
+> 「フフフフ、ハハハハッ。修業が
+>  足りなかったようだな、少年たち」
+“Heh heh heh, ha ha ha ha. Seems you boys haven't trained enough.”
+
+@25293 Mondo · モンド
+> 「ひっ、また出た!
+>  もう勘弁してくれぇ」
+“Hii, he's back again! Give me a break already!”
+
+@25294 Eiji · エイジ
+> 「アンナ、大丈夫か?」
+“Anna, are you all right?”
+
+@25295 Anna · アンナ
+> 「ええ、私は大丈夫。
+>  ……あ、あの子!?」
+“Yes, I'm fine. ...Oh, that kid?!”
+
+@25296 Astonaige · アストナージ
+> 「ばか、何やってんだ。
+>  あいつを止めろ!!」
+“Idiot, what's he doing? Stop him!!”
+
+@25297 Judau · ジュドー
+> 「へへっ、もう遅いぜ。っと、こいつでいい
+>  のかな。…さすがにプチモビルとは違うな」
+“Heh heh, too late now. So, is this the one? ...Sure is different from a Petit Mobile.”
+
+@25298 Judau · ジュドー
+> 「うおっと。ちっ、どうなってやがんだよ」
+“Whoa there. Tch, what's wrong with this thing?”
+
+@25299 Bright · ブライト
+> 「Zが盗まれただと!?
+>  一体なにをやってるんだ!
+“The Z has been stolen?! What on earth is going on?!
+---
+>  アムロ、カミーユ、頼む。
+>  取り押さえてくれ」
+Amuro, Kamille, please. Subdue him.”
+
+@25300 Beltorchika · ベルトーチカ
+> 「アムロ、Zが外へ出るわ」
+“Amuro, the Z is heading outside.”
+
+@25301 Amuro · アムロ
+> 「急がないとまずいな。
+>  カミーユ、mkⅡで出てくれ」
+“We'd better hurry. Kamille, take out the Mk-II.”
+
+@25302 Kamille · カミーユ
+> 「了解!」
+“Roger!”
+
+@25303 Judau · ジュドー
+> 「うわっ、外に出ちまったのか。
+>  この、ちゃんと動けっての!」
+“Whoa, it got outside?! Come on, move properly, damn it!”
+
+@25304 Amuro · アムロ
+> 「何をやっている、
+>  それでは外壁にぶつかるぞ!」
+“What are you doing? At this rate you'll crash into the outer wall!”
+
+@25305 Kamille · カミーユ
+> 「そこのお前! おとなしくZを返せ!
+>  そうすればケガはしなくてすむ!」
+“You there! Return the Z quietly! Do that and you won't get hurt!”
+
+@25306 Judau · ジュドー
+> 「冗談じゃないっての。
+>  せっかく苦労して手に入れたんだ
+“No way in hell. I went through a lot of trouble to get this.
+---
+>  はいそうですかって返せるかよ!」
+Like I'd just hand it back!”
+
+@25307 Amuro · アムロ
+> 「仕方がない。カミーユ、
+>  下からまわれ。取り押さえるぞ」
+“No choice then. Kamille, circle around from below. We're taking him down.”
+
+@25308 Kamille · カミーユ
+> 「了解」
+“Roger.”
+
+@25309 Judau · ジュドー
+> 「うわっ、なんだよ、離せって……
+>  な、なんだ……?」
+“Whoa, what the—let go of me... Wh-what the...?”
+
+@25310 Amuro · アムロ
+> 「これは……」
+“This is...”
+
+@25311 Kamille · カミーユ
+> 「ア、アムロさん……」
+“A-Amuro...”
+
+@25312 Judau · ジュドー
+> 「……消えた……なんだったんだ……
+>  今のは……?」
+“...It vanished... What was that just now...?”
+
+@25313 Amuro · アムロ
+> (この少年……)
+(This boy...)
+
+@25314 Kamille · カミーユ
+> 「なに!?」
+“What?!”
+
+@25315 Amuro · アムロ
+> 「どうした、ベルトーチカ!?」
+“What is it, Beltorchika?!”
+
+@25316 Beltorchika · ベルトーチカ
+> 「アムロ、敵が接近中よ。
+>  気をつけて!」
+“Amuro, enemies are approaching. Be careful!”
+
+@25317 Amuro · アムロ
+> 「なんだって!?」
+“What did you say?!”
+
+@25318 Bask · バスク
+> 「ここが奴らが根城にしている
+>  コロニーか
+“So this is the colony those bastards are using as their base.
+---
+>  我々OZに刃向かうと
+>  どういうことになるか、教えてやる」
+I'll teach them what it means to bare their fangs at OZ.”
+
+@25319 Bask · バスク
+> 「コロニーに潜伏する賊軍
+>  {HeroMech}に告ぐ
+“To the rebel army {HeroMech} hiding in this colony:
+---
+>  いまから我々はコロニーを攻撃する
+>  武器を持って我々OZの
+As of now, we are bringing weapons to attack this colony. Those who resist
+---
+>  統治に反抗する者どもは
+>  排除されねばならん」
+OZ's rule must be eliminated.”
+
+@25320 Bask · バスク
+> 「コロニーは貴様らの
+>  巻き添えで攻撃されるのだ」
+“The colony will be attacked because of you.”
+
+@25321 Yazan · ヤザン
+> (ちっ、バスクめ。
+>  つまらん仕事をやらせおって)
+(Tch, damn you, Bask. Making me do such a boring job.)
+
+@25322 Quattro · クワトロ
+> 「バスクめ……」
+“Bask, you bastard...”
+
+@25323 Amuro · アムロ
+> 「あれはまさか……ブライト、
+>  連中はガスを使うつもりだ!」
+“That's... Bright, they intend to use gas!”
+
+@25324 Bright · ブライト
+> 「なんだと!? G3だというのか、
+>  OZめ!
+“What?! You mean G3, those OZ bastards!
+---
+>  総員、OZ部隊を迎撃しろ!
+>  敵をコロニーに近づけるな!!」
+All hands, intercept the OZ forces! Don't let them near the colony!!”
+
+@25325 Judau · ジュドー
+> 「なんだよ、おい、どういうことだ?
+>  あいつらなんなんだよ!?」
+“What the hell, hey, what's going on? Who are those guys?!”
+
+@25326 Kamille · カミーユ
+> 「奴らはガスでこの辺りのコロニーを、
+>  全滅させるつもりなんだ」
+“They intend to wipe out all the colonies around here with gas.”
+
+@25327 Judau · ジュドー
+> 「ウソだろ!? コロニーにはエルたちや、
+>  俺の妹だっているんだそ!」
+“You're kidding, right?! Elle and my little sister are in the colony!”
+
+@25328 Kamille · カミーユ
+> 「やらせはしない! お前は早く戻って
+>  機体を渡せ!」
+“I won't let them! You go back and hand over that machine, now!”
+
+@25329 Amuro · アムロ
+> 「いやカミーユ、彼にやらせてみよう」
+“No, Kamille. Let him try.”
+
+@25330 Kamille · カミーユ
+> 「アムロさん?」
+“Amuro?”
+
+@25331 Amuro · アムロ
+> 「君も、さっきのを見たはずだ」
+“You saw what happened earlier too, didn't you?”
+
+@25332 Kamille · カミーユ
+> 「……わかりました。まかせます」
+“...Understood. I'll leave it to you.”
+
+@25333 Judau · ジュドー
+> 「なにやってんの!
+>  あんたら、早くしないと……」
+“What are you doing?! If you guys don't hurry...”
+
+@25334 Amuro · アムロ
+> 「君、聞こえるな。
+>  コロニーを守りたければ、君も戦え
+“You can hear it, can't you? If you want to protect the colony, then fight too.
+---
+>  守るべきものがあるなら、できるはずだ」
+If there's something you must protect, you should be able to do it.”
+
+@25335 Judau · ジュドー
+> 「俺が!? ……わかったよ。
+>  くそっ、やってやろうじゃないの!」
+“Me?! ...Fine. Damn it, I'll do it!”
+
+@25336 Gosterro · ゴステロ
+> 「や、奴ら、奴ら、奴らぁぁぁーっ!」
+“Th-those, those, those guuuuys!”
+
+@25337 Bask · バスク
+> 「ゴステロ、貴様を
+>  生かしておいてやった上
+“Gosterro, I spared your life,
+---
+>  再戦の機会まで与えてやったのだ
+>  その恩を忘れるな」
+and even gave you a chance to fight again. Don't forget that debt.”
+
+@25338 Gosterro · ゴステロ
+> 「バ、バスク特佐ぁぁ、
+>  わたくしめをお助けいただいたご恩は
+“M-Major Bask, the debt I owe you for saving my life,
+---
+>  ここでたっぷりと
+>  返させていただきますぅぅ」
+I shall repay it in full right here.”
+
+@25339 Bask · バスク
+> 「その言葉、忘れるなよ」
+“See that you don't forget those words.”
+
+@25340 Eiji · エイジ
+> 「ゴステロ!? まさか!」
+“Gosterro?! It can't be!”
+
+@25341 Koji · 甲児
+> 「ちっ、まーだ死んでなかったのかよ。
+>  節操のない奴だぜ」
+“Tch, so he still wasn't dead. What a shameless guy.”
+
+@25342 Gale · ゲイル
+> 「ゴステロだと!?」
+“Gosterro?!”
+
+@25343 Gosterro · ゴステロ
+> 「その声……ゲゲゲ、ゲイルかぁ!?
+>  ゲイルゥ、貴様が生きていてくれて
+“That voice... G-G-Gale?! Gale, I'm glad you're still alive.
+---
+>  うれしいぜぇ。貴様を
+>  この俺の手で殺せるなんてなぁ!!」
+To think I can kill you with my own hands!!”
+
+@25344 Bright · ブライト
+> 「なんだ!?」
+“What?!”
+
+@25345 Milliardo · ミリアルド
+> 「こちらは、サンクキングダムの
+>  ミリアルド・ピースクラフト
+“This is Milliardo Peacecraft of the Sanc Kingdom.
+---
+>  これより諸君らを援護する」
+From here on, we will provide you support.”
+
+@25346 Quattro · クワトロ
+> 「トールギスだと?
+>  ゼクス・マーキス……そういうことか」
+“Tallgeese?! Zechs Merquise... so that's how it is.”
+
+@25347 Bask · バスク
+> 「ウォンがよこした実験部隊か。
+>  遅いぞ!」
+“So it's the experimental unit Wong sent. You're late!”
+
+@25348 Gates · ゲーツ
+> 「申し訳ありません。サイコミュの
+>  調整に手間取りました」
+“My apologies. Adjusting the Psycommu took some time.”
+
+@25349 Gates · ゲーツ
+> 「さて、ロザミアはどうか……」
+“Now then, how is Rosamia doing...”
+
+@25350 Gates · ゲーツ
+> 「戦況はよくないようだな。
+>  さて、ロザミアはどうか……」
+“The battle situation doesn't look good. Now then, how is Rosamia doing...”
+
+@25351 Rosamia · ロザミア
+> 「……うぅ……頭が……お兄ちゃん……」
+“...Ugh... my head... big brother...”
+
+@25352 Astonaige · アストナージ
+> 「あ、おい何やってんの。やめろ!」
+“Ah, hey, what are you doing? Stop!”
+
+@25353 Rosamia · ロザミア
+> 「邪魔をするな! あたしは……
+>  お兄ちゃんを助けにいくんだ」
+“Don't get in my way! I'm... going to save my big brother.”
+
+@25354 Astonaige · アストナージ
+> 「なんだって? お前、ロザミィか?
+>  待て!」
+“What? You're Rosamy? Wait!”
+
+@25355 Rosamia · ロザミア
+> 「見つけた、お兄ちゃん!」
+“I found you, big brother!”
+
+@25356 Kamille · カミーユ
+> 「ロザミィ!? どうして……」
+“Rosamy?! Why...”
+
+@25357 Rosamia · ロザミア
+> 「お兄ちゃんを助けに来たのよ」
+“I came to save my big brother.”
+
+@25358 Gates · ゲーツ
+> 「あれか……くっ、なんだこれは。
+>  ロザミア特尉
+“That's it... ngh, what is this? Special Ensign Rosamia.
+---
+>  聞こえるか、ロザミア特尉」
+Can you hear me, Special Ensign Rosamia?”
+
+@25359 Rosamia · ロザミア
+> 「うぅぅ……頭が痛い……あうぅ」
+“Ugh... my head hurts... agh.”
+
+@25360 Kamille · カミーユ
+> 「ロザミィ? どうしたんだロザミィ!?」
+“Rosamy? What's wrong, Rosamy?!”
+
+@25361 Rosamia · ロザミア
+> 「お……お兄ちゃん……くぅ……」
+“B-Big brother... ngh...”
+
+@25362 Gates · ゲーツ
+> 「刷り込みが強力すぎたか……?
+>  出力を上げるしかないな」
+“Was the imprinting too strong...? I have no choice but to raise the output.”
+
+@25363 Rosamia · ロザミア
+> 「ああぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@25364 Kamille · カミーユ
+> 「ロザミィ! ロザミィ!!」
+“Rosamy! Rosamy!!”
+
+@25365 Rosamia · ロザミア
+> 「くっ……ここは……敵だと!?
+>  敵だ……この敵は、空を落とす」
+“Ngh... this place is... the enemy?! The enemy... this enemy will bring down the sky.”
+
+@25366 Kamille · カミーユ
+> 「どうしたんだロザミィ?
+>  大丈夫か!?」
+“What's wrong, Rosamy? Are you all right?!”
+
+@25367 Rosamia · ロザミア
+> 「敵ならば……撃破する!」
+“If it's the enemy... I'll destroy it!”
+
+@25368 Kamille · カミーユ
+> 「なに!?」
+“What?!”
+
+@25369 Quattro · クワトロ
+> 「カミーユ! そいつは敵の
+>  強化人間だ。撃墜しろ!」
+“Kamille! That one's an enemy enhanced human. Shoot it down!”
+
+@25370 Kamille · カミーユ
+> 「やめてください! ロザミィなんですよ!」
+“Please stop! That's Rosamy!”
+
+@25371 Rosamia · ロザミア
+> 「お兄ちゃん、どこ? どこにいるの?」
+“Big brother, where are you? Where are you?”
+
+@25372 Gates · ゲーツ
+> 「あれか……ロザミア特尉、
+>  聞こえるか、ロザミア特尉」
+“That's it... Special Ensign Rosamia, can you hear me, Special Ensign Rosamia?”
+
+@25373 Rosamia · ロザミア
+> 「……うぅ……な、なに、これは……?
+>  いや! 助けてお兄ちゃん!!」
+“...Ugh... w-what is this...? No! Help me, big brother!!”
+
+@25374 Gates · ゲーツ
+> 「刷り込みが強力すぎたか。
+>  ロザミア特尉!」
+“Was the imprinting too strong? Special Ensign Rosamia!”
+
+@25375 Rosamia · ロザミア
+> 「……わ、私は……き、聞こえております
+>  ゲーツ特尉。う……頭が……」
+“...I-I... I can hear you, Special Ensign Gates. Ugh... my head...”
+
+@25376 Gates · ゲーツ
+> 「これでは戦闘は無理か……
+>  撤退するぞ、来い、ロザミア」
+“Then fighting is impossible... We're retreating. Come, Rosamia.”
+
+@25377 Rosamia · ロザミア
+> 「……了解であります」
+“...Understood, sir.”
+
+@25378 Gosterro · ゴステロ
+> 「ゲイルゥゥーッ!! 貴様を
+>  殺せるなんて、ゆ、夢みたいだぜぇ!!
+“Gaaaaale!! To think I can kill you, i-it's like a dream!!
+---
+>  ヒャハハハハハハーッ!!」
+Hyahahahahahaha!!”
+
+@25379 Gale · ゲイル
+> 「ゴステロ、人としての誇りは
+>  とうになくしたようだな
+“Gosterro, it seems you long ago cast aside your pride as a man.
+---
+>  同じグラドス人として、
+>  せめて私の手で眠らせてやる」
+As a fellow Gradosian, I will at least put you to sleep with my own hands.”
+
+@25380 Gosterro · ゴステロ
+> 「俺は死にたくねぇぇぇーっ!!」
+“I don't wanna diiiie!!”
+
+@25381 Yazan · ヤザン
+> 「ちっ、撤退するぞ!」
+“Tch, we're retreating!”
+
+@25382 Gates · ゲーツ
+> 「くっ、しまった!?」
+“Ngh, damn it?!”
+
+@25383 Gates · ゲーツ
+> 「くっ、しまった。ロザミア、撤退だ」
+“Ngh, damn it. Rosamia, we're retreating.”
+
+@25384 Rosamia · ロザミア
+> 「了解、撤退します」
+“Understood. Retreating.”
+
+@25385 Rosamia · ロザミア
+> 「くっ……離脱する」
+“Ngh... I'm pulling out.”
+
+@25386 Gates · ゲーツ
+> 「ロザミア! これ以上は無理か……」
+“Rosamia! So we can't push any further...”
+
+@25387 Bask · バスク
+> 「ウォンがよこした実験部隊か。
+>  遅いぞ!」
+“So it's the experimental unit Wong sent. You're late!”
+
+@25388 Gates · ゲーツ
+> 「申し訳ありません。サイコミュの
+>  調整に手間取りました」
+“My apologies. Adjusting the Psycommu took some time.”
+
+@25389 Gates · ゲーツ
+> 「さて、ロザミアはどうか……」
+“Now then, how is Rosamia doing...”
+
+@25390 Gates · ゲーツ
+> 「戦況はよくないようだな。
+>  さて、ロザミアはどうか……」
+“The battle situation doesn't look good. Now then, how is Rosamia doing...”
+
+@25391 Rosamia · ロザミア
+> 「……うぅ……頭が……お兄ちゃん……」
+“...Ugh... my head... big brother...”
+
+@25392 Astonaige · アストナージ
+> 「あ、おい何やってんの。やめろ!」
+“Ah, hey, what are you doing? Stop!”
+
+@25393 Rosamia · ロザミア
+> 「邪魔をするな! あたしは……
+>  お兄ちゃんを助けにいくんだ」
+“Don't get in my way! I'm... going to save my big brother.”
+
+@25394 Astonaige · アストナージ
+> 「なんだって? お前、ロザミィか?
+>  待て!」
+“What? You're Rosamy? Wait!”
+
+@25395 Rosamia · ロザミア
+> 「見つけた、お兄ちゃん!」
+“Found you, big brother!”
+
+@25396 Kamille · カミーユ
+> 「ロザミィ!? どうして……」
+“Rosamy?! Why...”
+
+@25397 Rosamia · ロザミア
+# 审校：原文「お兄ちゃんを助けに来たのよ」未明确说“你”，初稿译成 you 是加译；改回 my big brother，与 L23 一致。
+> 「お兄ちゃんを助けに来たのよ」
+“I came to save my big brother.”
+
+@25398 Gates · ゲーツ
+> 「あれか……くっ、なんだこれは。
+>  ロザミア特尉
+“That's it... Ngh, what is this? Special Ensign Rosamia,
+---
+>  聞こえるか、ロザミア特尉」
+can you hear me, Special Ensign Rosamia?”
+
+@25399 Rosamia · ロザミア
+> 「うぅぅ……頭が痛い……あうぅ」
+“Ugh... my head hurts... agh...”
+
+@25400 Kamille · カミーユ
+> 「ロザミィ? どうしたんだロザミィ!?」
+“Rosamy? What's wrong, Rosamy?!”
+
+@25401 Rosamia · ロザミア
+> 「お……お兄ちゃん……くぅ……」
+“B... big brother... ngh...”
+
+@25402 Gates · ゲーツ
+> 「刷り込みが強力すぎたか……?
+>  出力を上げるしかないな」
+“Was the imprinting too strong...? I've no choice but to raise the output.”
+
+@25403 Rosamia · ロザミア
+> 「ああぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@25404 Kamille · カミーユ
+> 「ロザミィ! ロザミィ!!」
+“Rosamy! Rosamy!!”
+
+@25405 Rosamia · ロザミア
+> 「くっ……ここは……敵だと!?
+>  敵だ……この敵は、空を落とす」
+“Ngh... this place... is the enemy?! The enemy... this enemy will bring down the sky.”
+
+@25406 Kamille · カミーユ
+> 「どうしたんだロザミィ?
+>  大丈夫か!?」
+“What's wrong, Rosamy? Are you all right?!”
+
+@25407 Rosamia · ロザミア
+> 「敵ならば……撃破する!」
+“If it's the enemy... I'll destroy it!”
+
+@25408 Kamille · カミーユ
+> 「なに!?」
+“What?!”
+
+@25409 Quattro · クワトロ
+> 「カミーユ! そいつは敵の
+>  強化人間だ。撃墜しろ!」
+“Kamille! That one is an enemy enhanced human. Shoot her down!”
+
+@25410 Kamille · カミーユ
+> 「やめてください! ロザミィなんですよ!」
+“Please stop! That's Rosamy!”
+
+@25411 Rosamia · ロザミア
+> 「お兄ちゃん、どこ? どこにいるの?」
+“Big brother, where are you? Where are you?”
+
+@25412 Gates · ゲーツ
+> 「あれか……ロザミア特尉、
+>  聞こえるか、ロザミア特尉」
+“That's it... Special Ensign Rosamia, can you hear me, Special Ensign Rosamia?”
+
+@25413 Rosamia · ロザミア
+> 「……うぅ……な、なに、これは……?
+>  いや! 助けてお兄ちゃん!!」
+“...Ugh... w-what is this...? No! Help me, big brother!!”
+
+@25414 Gates · ゲーツ
+> 「刷り込みが強力すぎたか。
+>  ロザミア特尉!」
+“Was the imprinting too strong? Special Ensign Rosamia!”
+
+@25415 Rosamia · ロザミア
+> 「……わ、私は……き、聞こえております
+>  ゲーツ特尉。う……頭が……」
+“...I-I... y-yes, I hear you, Special Ensign Gates. Ngh... my head...”
+
+@25416 Gates · ゲーツ
+> 「これでは戦闘は無理か……
+>  撤退するぞ、来い、ロザミア」
+“Then fighting is impossible... We're retreating. Come, Rosamia.”
+
+@25417 Rosamia · ロザミア
+> 「……了解であります」
+“...Understood, sir.”
+
+@25418 Bright · ブライト
+> 「なんだ!?」
+“What is it?!”
+
+@25419 Milliardo · ミリアルド
+> 「こちらは、サンクキングダムの
+>  ミリアルド・ピースクラフト
+“This is Milliardo Peacecraft of the Sanc Kingdom.
+---
+>  これより諸君らを援護する」
+We will now provide you with support.”
+
+@25420 Quattro · クワトロ
+> 「トールギスだと?
+>  ゼクス・マーキス……そういうことか」
+“The Tallgeese? Zechs Merquise... so that's how it is.”
+
+@25421 Milliardo · ミリアルド
+> 「ん? ……なんだ」
+“Hm? ...What is it?”
+
+@25422 ???
+> 「…………聞こえるか、ゼクス」
+“...Can you hear me, Zechs?”
+
+@25423 Milliardo · ミリアルド
+> 「トレーズ?」
+“Treize?”
+
+@25424 Treize · トレーズ
+> 「ゼクス・マーキス、いや我が永遠の
+>  友、ミリアルド・ピースクラフト
+“Zechs Merquise, no, my eternal friend, Milliardo Peacecraft.
+---
+>  君が宇宙に現れたと聞いて、
+>  うれしく思う。OZが変わっていく
+I am glad to hear you have appeared in space. OZ is changing.
+---
+>  私の力が不足していた。
+>  ロームフェラが、いや人類が
+My strength was insufficient. The path Romefeller, no, humanity
+---
+>  進む道はあまりにも気ままだ。
+>  膨れ上がる力がこれほどまでに
+will take is far too selfish. That this swelling power should leave
+---
+>  人の心を置き去りにしていくとはな」
+people's hearts behind to such a degree...”
+
+@25425 Milliardo · ミリアルド
+> 「支配するために戦うのではなく、
+>  異星人の侵略に
+“I believed it was OZ's task not to fight in order to dominate, but to
+---
+>  あらがう誇り高き心を、
+>  戦う心を持つ兵士を育てるのが
+raise soldiers with a proud heart that resists the alien invasion,
+---
+>  OZの仕事と考えておりました。
+>  しかし戦いは混迷を極め
+soldiers with a fighting spirit. But the war has fallen into utter chaos
+---
+>  人の心さえゆがめていきます」
+and is even distorting people's hearts.”
+
+@25426 Treize · トレーズ
+> 「ミリアルド、ロームフェラの選んだ道を
+>  変える力は、今の私にはない
+“Milliardo, I have no power now to change the path Romefeller has chosen.
+---
+>  心の理解者と話せて幸せに
+>  思う。ミリアルド、もう1人、私の
+I am happy to speak with one who understands my heart. Milliardo, there is one
+---
+>  理解者がいる。私を思うあまり
+>  2つの心をもった女性だ。一番
+other who understands me. A woman with two hearts, from caring too much for me.
+---
+>  身近なところを不安にしてしまう
+>  とは、私に未来を語る資格は
+To think I would make the one closest to me uneasy... I have no right to speak of the future.
+---
+>  ない。もしも可能であったなら
+>  ミリアルド、彼女を助けてやってくれ」
+If it were possible, Milliardo, I would ask you to save her.”
+
+@25427 Milliardo · ミリアルド
+> 「トレーズ、私こそ力がない。
+>  この混迷の戦いの中で
+“Treize, it is I who have no power. Amid this chaotic war,
+---
+>  いまだ成すべきことを見出せずに
+>  いるのだからな……」
+I still cannot find what I ought to do...”
+
+@25428 Kamille · カミーユ
+> 「ロザミィ……どうしてなんだ……」
+“Rosamy... why...”
+
+@25429 Fa · ファ
+> 「あなたのせいじゃないわ。
+>  ロザミィは敵の
+“It's not your fault. Rosamy was the enemy's
+---
+>  強化人間だったんだもの、
+>  仕方がないわよ」
+enhanced human, so there was nothing you could do.”
+
+@25430 Kamille · カミーユ
+> 「強化人間だって、
+>  普通の人間に変わりはないんだ!
+“Even if she's an enhanced human, she's still a normal person!
+---
+>  それを、あんな……」
+And yet, like that...”
+
+@25431 Fa · ファ
+> 「カミーユ……」
+“Kamille...”
+
+@25432 Bright · ブライト
+> 「今回はなんとか持ちこたえたが、
+>  G3まで持ち出してくるとなると……」
+“We managed to hold out this time, but if they're going to bring out even the G3...”
+
+@25433 Quattro · クワトロ
+> 「ああ、連中は本気で
+>  我々をつぶそうとしているな
+“Yeah, they're serious about crushing us.
+---
+>  いや、我々だけでなく、
+>  OZに従わないすべて、か」
+No, not just us... everyone who won't obey OZ.”
+
+@25434 Koji · 甲児
+> 「どうすんだよ。コロニーを守りながら
+>  戦うなんて真似、
+“What are we supposed to do? Fighting while protecting the colonies...
+---
+>  いつまでも続けられるわきゃないぜ」
+there's no way we can keep that up forever.”
+
+@25435 Ryo · 亮
+> 「そうだな。ここに俺たちがいるかぎり、
+>  OZにコロニー攻撃の口実を
+“Yeah. As long as we're here, we're also giving OZ an excuse to
+---
+>  与えていることにもなる」
+attack the colonies.”
+
+@25436 Ryoma · リョウ
+> 「俺たちとOZに批判的なコロニー、
+>  敵にとっては一挙両得ってわけか」
+“Us and the colonies that criticize OZ... for the enemy, that's killing two birds with one stone.”
+
+@25437 Amuro · アムロ
+> 「悔しいが、OZの動きが早すぎた。
+>  このまま後手にまわっていては
+“It's frustrating, but OZ moved too fast. If we keep letting them stay one step ahead,
+---
+>  どうにもならないか……」
+we won't be able to do anything...”
+
+@25438 Alan · アラン
+> 「うむ。どのみち兜たちの言うように
+>  ここにとどまるわけにもいかんな」
+“Indeed. Either way, as the Kabutos say, we can't stay here forever.”
+
+@25439 Judau · ジュドー
+> 「放せよ!」
+“Let me go!”
+
+@25440 Elle · エル
+> 「ちょっと! 変なトコ触んないでよ!!」
+“Hey! Don't touch me in weird places!!”
+
+@25441 Tetsuya · 鉄也
+> 「おとなしくしてろ。
+>  艦長、ガキどもを連れてきた」
+“Sit still. Captain, I've brought the kids.”
+
+@25442 Bright · ブライト
+> 「すまない。ジュドーと言ったな。自分
+>  たちが何をしたのかは、わかっているな?」
+“Sorry about that. Judau, was it? You know what you've done, don't you?”
+
+@25443 Judau · ジュドー
+> 「ああ、わかってるさ。
+>  だけどね
+“Yeah, I know. But you know,
+---
+>  俺たちだって好きでこんなことを
+>  してるんじゃないんだよ」
+we're not doing this because we want to.”
+
+@25444 Bright · ブライト
+> 「そうか……ならお前たち、
+>  我々と一緒にこないか?」
+“I see... Then how about you come with us?”
+
+@25445 Shinobu · 忍
+> 「おいおい、正気かよ艦長さん」
+“Whoa, whoa, are you serious, Captain?”
+
+@25446 Alan · アラン
+> 「口をはさむな、藤原」
+“Don't interrupt, Fujiwara.”
+
+@25447 Judau · ジュドー
+> 「あんたら、子供に
+>  戦争やらせようっていうのかよ」
+“You're telling us to make kids fight a war?”
+
+@25448 Beecha · ビーチャ
+> 「そうだぜ。異星人はいなくなったん
+>  だろ。俺たちには関係ないじゃないか」
+“Yeah. The aliens are gone, right? It's got nothing to do with us.”
+
+@25449 Roux · ルー
+> 「関係ない!? 関係ないわけ
+>  ないじゃない! あんたたちだって
+“Nothing to do with us?! Of course it does! You saw
+---
+>  さっきの戦いを見たでしょ。あいつらは
+>  コロニーだって簡単につぶそうとした
+that battle just now, didn't you? Those guys tried to crush a colony like it was nothing.
+---
+>  そんな連中が地球圏を
+>  支配しようっていうのよ
+And now they're trying to take control of the Earth Sphere.
+---
+>  どうなるかなんて、
+>  ちょっと考えればわかるでしょ」
+Anyone could figure out what's going to happen with a little thought.”
+
+@25450 Mondo · モンド
+> 「べ、別に俺たち、
+>  OZに悪いことなんてしてないしさ……」
+“I-I mean, we haven't done anything bad to OZ...”
+
+@25451 Roux · ルー
+> 「あのねぇ!」
+“Oh, come on!”
+
+@25452 David · デビッド
+> 「やめとけよ、ルー。
+>  こんな連中には何を言ってもムダだ
+“Give it up, Roux. There's no point saying anything to these people.
+---
+>  スウィートウォーターにさえ
+>  こんな連中がいるんだ
+If even Sweetwater has people like this,
+---
+>  他のコロニーがOZを受け入れるのも
+>  当たり前だぜ」
+it's no wonder the other colonies accept OZ.”
+
+@25453 Amuro · アムロ
+> 「ジュドー、いますぐに決めろとは
+>  言わない。考えてみてくれないか
+“Judau, I won't tell you to decide right now. Just think about it.
+---
+>  我々は少しでも多くの力を
+>  必要としているんだ」
+We need as much strength as we can get.”
+
+@25454 Quattro · クワトロ
+> 「それで、どういうことかな?
+>  ゼクス・マーキス
+“So, what's the meaning of this, Zechs Merquise?
+---
+>  説明は聞かせてもらえるのだろうな?」
+You'll give us an explanation, won't you?”
+
+@25455 Milliardo · ミリアルド
+> 「ゼクス・マーキスは死んだよ。
+>  私はミリアルド・ピースクラフト
+“Zechs Merquise is dead. I am Milliardo Peacecraft.
+---
+>  地球圏の未来を憂える者の
+>  一人として、戦わせてもらっただけだ
+I merely fought as one who worries about the future of the Earth Sphere.
+---
+>  それ以上の意味はない」
+There is no deeper meaning than that.”
+
+@25456 Quattro · クワトロ
+> 「では、我々に加わるつもりで
+>  来たのではない、というのだな」
+“Then you're saying you didn't come intending to join us.”
+
+@25457 Milliardo · ミリアルド
+> 「少なくとも、今のところは。私も、
+>  私なりにとるべき道を探しているのだ」
+“At least, not for now. I too am searching for the path I should take.”
+
+@25458 ???
+> 「マーズ……マーズよ」
+“Mars... Mars.”
+
+@25459 Takeru · タケル
+> 「う……うぅ……」
+“U... ugh...”
+
+@25460 ???
+> 「目覚めよマーズ」
+“Awaken, Mars.”
+
+@25461 Takeru · タケル
+> 「う……な、なんだ?」
+“Ugh... w-what?”
+
+@25462 ???
+> 「マーズ、この時のために
+>  地球に送られたマーズよ」
+“Mars. You were sent to Earth for this very moment, Mars.”
+
+@25463 Takeru · タケル
+> 「……マーズ……!?
+>  俺は明神タケルだ
+“...Mars...?! I'm Takeru Myojin.
+---
+>  マーズなんて名前じゃない!」
+My name isn't Mars!”
+
+@25464 ???
+> 「……違う、お前はマーズだ。
+>  だが多少の手違いがあったようだな
+“...No, you are Mars. But it seems there was some slight mistake.
+---
+>  もう少し時間をかけねばならぬか……」
+Perhaps I must spend a little more time...”
+
+@25465 Takeru · タケル
+> 「……はっ!? ……夢……か。
+>  なんだったんだ……マーズって……」
+“...Huh?! ...A dream...? What was that... Mars...”
+
+@25466 Heero · ヒイロ
+> 「ここを破壊すれば月面基地は
+>  当分機能しなくなる……」
+“If I destroy this, the lunar base will be out of commission for a while...”
+
+@25467 Specials · スペシャルズ
+> 「こっちだ!」
+“Over here!”
+
+@25468 Specials · スペシャルズ
+> 「いたぞ! 捕まえろ!!」
+“There he is! Seize him!!”
+
+@25469 Heero · ヒイロ
+> 「フン、遅いな……」
+“Hmph, you're slow...”
+
+@25470 Heero · ヒイロ
+> 「なに!?」
+“What?!”
+
+@25471 ???
+> 「そこまでだ」
+“That's far enough.”
+
+@25472 Heero · ヒイロ
+> 「お前は……」
+“You are...”
+
+@25473 Trowa · トロワ
+> 「残念だったな。
+>  俺は、OZの特士トロワ・バートン
+“Too bad for you. I'm Trowa Barton, an OZ special officer.
+---
+>  これ以上抵抗するならば
+>  貴様を殺す」
+If you resist any further, I'll kill you.”
+
+@25474 Heero · ヒイロ
+> 「…………」
+“...”
+
+@25475 Bask · バスク
+> 「ツバロフ技師長、まずは急いで数
+>  をそろえろとのデルマイユ公の命令だ」
+“Chief Engineer Tubarov, this is Lord Dermail's order: hurry and get the numbers ready first.”
+
+@25476 Tubarov · ツバロフ
+> 「どういうことですかな?」
+“And what might you mean by that?”
+
+@25477 Bask · バスク
+> 「ロームフェラ内部に
+>  不穏な動きがあるらしい
+“There seems to be some unrest within Romefeller.
+---
+>  ともかく、貴様は
+>  言われた通りにしておればよい」
+In any case, you need only do as you are told.”
+
+@25478 Tubarov · ツバロフ
+> 「わかりました。
+>  では私は工場のほうへいきます」
+“Understood. Then I shall go to the factory.”
+
+@25479 Lady · レディ
+# 审校：将“たとえトレーズ様でも”的译文“Not even you, Lord Treize”改为“Not even Lord Treize”，因为说话人是在陈述而非直接对特列斯说话，避免误用第二人称。
+> 「歴史の流れは誰にも
+>  止められぬらしい
+“It seems no one can stop the flow of history.
+---
+>  たとえトレーズ様でも……。だが私は
+>  トレーズ様の理想へ
+Not even Lord Treize... But I need only carry history toward Lord Treize's ideal.
+---
+>  歴史を運べばよいのだ。私は
+>  そのために命を捨てることができる
+For that, I can throw away my life.
+---
+>  戦って勝ち取ることができる。
+>  トレーズ様の未来……
+I can fight and win it. Lord Treize's future...
+---
+>  そして私の未来を」
+And my own future.”

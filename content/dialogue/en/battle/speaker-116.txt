@@ -1,0 +1,90 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10221 Naida · ナイーダ
+> 「これで、どう!?」
+“How's this?!”
+
+@10222 Naida · ナイーダ
+> 「あたしが!」
+“I'll do it!”
+
+@10223 Naida · ナイーダ
+> 「デューク、やってみせるわ!」
+“Duke, I'll show you!”
+
+@10224 Naida · ナイーダ
+> 「やらせないわ!」
+“I won't let you!”
+
+@10225 Naida · ナイーダ
+> 「あぁぁっ、デュークゥゥゥーッ!!」
+“Aaaah, Duuuke!!”
+
+@10226 Naida · ナイーダ
+> 「きゃあぁぁぁぁーっ!」
+“Kyaaaaaah!”
+
+@10227 Naida · ナイーダ
+> 「あぁぁっ!?」
+“Aah?!”
+
+@10228 Naida · ナイーダ
+> 「きゃぁぁぁぁーっ!」
+“Kyaaaaaah!”
+
+@10229 Naida · ナイーダ
+> 「いやあぁぁーっ!」
+“Noooooo!”
+
+@10230 Naida · ナイーダ
+> 「うっ、シリウスのためにもこんな所で
+>  やられるわけにはいかないのよ!」
+“Ngh, for Sirius's sake, I can't be beaten here!”
+
+@10231 Naida · ナイーダ
+> 「しまったっ!?」
+“Damn it?!”
+
+@10232 Naida · ナイーダ
+> 「あぁ!?」
+“Aah?!”
+
+@10233 Naida · ナイーダ
+> 「あぁっ、どうすればいいの!?」
+“Aah, what should I do?!”
+
+@10234 Naida · ナイーダ
+> 「ううぅっ」
+“Uuugh”
+
+@10235 Naida · ナイーダ
+> 「あ、あたし……」
+“I-I...”
+
+@10236 Naida · ナイーダ
+> 「あぁっ!?」
+“Aah?!”
+
+@10237 Naida · ナイーダ
+> 「あたるわけには!」
+“I can't let it hit!”
+
+@10238 Naida · ナイーダ
+> 「あたしでもよけてみせる!」
+“Even I can dodge this!”
+
+@10239 Naida · ナイーダ
+> 「ムダだわ!」
+“It's useless!”
+
+@10240 Naida · ナイーダ
+> 「効かないわ!」
+“It doesn't work!”
+
+@10241 Naida · ナイーダ
+> 「そ、そんな、エネルギーが……」
+“N-no, the energy...”
+
+@10242 Naida · ナイーダ
+> 「と、届かない!?」
+“I-it won't reach?!”

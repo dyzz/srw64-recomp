@@ -1,0 +1,89 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7045 Marg · マーグ
+> 「フッフッフッフッフッ」
+“Heh heh heh heh heh.”
+
+@7046 Marg · マーグ
+> 「どうした!」
+“What's wrong?”
+
+@7047 Marg · マーグ
+> 「ここをお前の墓場にしてやる!」
+“I'll make this your grave!”
+
+@7048 Marg · マーグ
+> 「ハーッハッハッハッ!」
+“Hah hah hah hah!”
+
+@7049 Marg · マーグ
+> 「これでどうだ!」
+“How's this?!”
+
+@7050 Marg · マーグ
+> 「必ず、必ずお前を!」
+“I will, I will get you!”
+
+@7051 Marg · マーグ
+> 「ようし!」
+“All right!”
+
+@7052 Marg · マーグ
+> 「そうれっ!」
+“Take this!”
+
+@7053 Marg · マーグ
+> 「うわぁぁぁっ!」
+“Uwaaaah!”
+
+@7054 Marg · マーグ
+> 「な、なんだと!?」
+“W-What did you say?!”
+
+@7055 Marg · マーグ
+> 「ぐはっ!」
+“Guwah!”
+
+@7056 Marg · マーグ
+> 「うぅぅぅあぁぁっ!?」
+“Uwaaaah?!”
+
+@7057 Marg · マーグ
+> 「く、お、おのれぇ!」
+“Ngh, y-you bastard!”
+
+@7058 Marg · マーグ
+> 「なにッ!?」
+“What?!”
+
+@7059 Marg · マーグ
+> 「くっ、うわっ!」
+“Ngh, uwaah!”
+
+@7060 Marg · マーグ
+> 「フン、貴様など敵ではない!」
+“Hmph, you're no match for me!”
+
+@7061 Marg · マーグ
+> 「うわぁぁぁぁぁっ!」
+“Uwaaaaaah!”
+
+@7062 Marg · マーグ
+> 「あぁっ!?」
+“Aah?!”
+
+@7063 Marg · マーグ
+> 「フッ、思った通りだ!」
+“Heh, just as I thought!”
+
+@7064 Marg · マーグ
+> 「フッ、思った通りだ!」
+“Heh, just as I thought!”
+
+@7065 Marg · マーグ
+> 「くっこれでは攻撃できんか……」
+“Ngh, so I can't attack like this...”
+
+@7066 Marg · マーグ
+> 「おのれっ射程外からとは!」
+“You bastard, from out of range!”

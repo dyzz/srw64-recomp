@@ -1,0 +1,80 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7890 Remy · レミー
+> 「やあん! 真吾、しっかりしてよ、
+>  やられちゃったじゃない!」
+“Oh no! Shingo, pull yourself together, you got shot down!”
+
+@7891 Remy · レミー
+> 「やん! ダメっ!!」
+“Eek! No!”
+
+@7897 Remy · レミー
+> 「きゃあっ! このまま花も咲かずに
+>  散ってたまるもんですか!!」
+“Kyaa! I refuse to fall before I've even bloomed!”
+
+@7904 Remy · レミー
+> 「あいたっ! レディに向かってよくも
+>  やってくれたわね!」
+“Ouch! How dare you strike a lady!”
+
+@7905 Remy · レミー
+> 「きゃっ! やったわねっ!」
+“Kya! You did it!”
+
+@7912 Remy · レミー
+> 「まだまだ修行が足りないわよ」
+“You still need more training.”
+
+@7913 Remy · レミー
+> 「だめねえ、この程度?」
+“Pathetic, is this all?”
+
+@7921 Remy · レミー
+> 「あらら、残念でした」
+“Oh dear, too bad.”
+
+@7926 Remy · レミー
+> 「ちょっと!あたったらどうする気!?」
+“Hey! What if you hit me?!”
+
+@7927 Remy · レミー
+> 「ビームは効かないっていってるじゃない!」
+“I told you beams don't work!”
+
+@7941 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7942 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7943 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7944 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7945 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7946 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7947 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7948 Remy · レミー
+> 「ばかめ!」
+“Fool!”
+
+@7949 Remy · レミー
+> 「ばかめ!」
+“Fool!”

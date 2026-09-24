@@ -1,0 +1,144 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10903 Mondo · モンド
+> 「お、俺だってなあっ!!」
+“I-I can do it too!!”
+
+@10904 Mondo · モンド
+> 「にゃろおぉぉぉぉっ!!」
+“You baaastaaaard!!”
+
+@10905 Mondo · モンド
+> 「俺だって、ジュドーくらいにはっ!」
+“I can be just as good as Judau!”
+
+@10906 Mondo · モンド
+> 「やってやるぞぉっ!」
+“I'm gonna do it!”
+
+@10907 Mondo · モンド
+> 「逃がさないよっ!!」
+“I won't let you get away!!”
+
+@10908 Mondo · モンド
+> 「もらうよっ!」
+“I'll take that!”
+
+@10909 Mondo · モンド
+> 「させるかっての!」
+“Like I'd let you!”
+
+@10910 Mondo · モンド
+> 「よ～く狙って……そこだぁっ!」
+“Aim real careful... there!”
+
+@10911 Mondo · モンド
+> 「当たれぇぇっ!」
+“Hit iiiit!”
+
+@10912 Mondo · モンド
+> 「このっ! このっ! このっ!!」
+“Why you! Why you! Why you!!”
+
+@10913 Mondo · モンド
+> 「うわあああっ!」
+“Uwaaaah!”
+
+@10914 Mondo · モンド
+> 「だ、ダメだぁ、やられたぁ!」
+“I-I can't, I got hit!”
+
+@10915 Mondo · モンド
+> 「ひゃーっ、もう限界だよ!」
+“Yikes, I'm at my limit!”
+
+@10916 Mondo · モンド
+> 「わあああっ! やられるっ!?」
+“Waaah! I'm gonna get hit!?”
+
+@10917 Mondo · モンド
+> 「だ、ダメだっ! これ以上もたないよ!」
+“N-no good! I can't take any more!”
+
+@10918 Mondo · モンド
+> 「うわわわっ! 落ちる、落ちるぅ～!」
+“Whoa whoa whoa! I'm falling, I'm falling!”
+
+@10919 Mondo · モンド
+> 「こんにゃろっ! まだまだっ!!」
+“You jerk! I'm not done yet!!”
+
+@10920 Mondo · モンド
+> 「くっ! このおっ! やらせるもんかっ!」
+“Hmph! Why you! I won't let you do this!”
+
+@10921 Mondo · モンド
+> 「つ、強いっ! け、けどなあ、俺だって
+>  意地があるんだよっ!」
+“S-strong! B-but still, I've got my pride too!”
+
+@10922 Mondo · モンド
+> 「どわっ! よ、よくもやったなぁっ!」
+“Whoa! Y-you'll pay for that!”
+
+@10923 Mondo · モンド
+> 「うわっ! ま、まだだっ! まだ落ちる
+>  もんかっ!」
+“Uwah! N-not yet! I won't go down yet!”
+
+@10924 Mondo · モンド
+> 「か、かすっただけぇ!」
+“I-it just grazed me!”
+
+@10925 Mondo · モンド
+> 「当たったけど……こんなもんか」
+“It hit, but... is that all?”
+
+@10926 Mondo · モンド
+> 「うわっ!? ……?
+>  なあんだ、みかけ倒しね」
+“Uwah!? ...Oh, what, all show and no go.”
+
+@10927 Mondo · モンド
+> 「いてっ! やったな、このっ!」
+“Ow! You did that, you!”
+
+@10928 Mondo · モンド
+> 「やられるかっ!」
+“Like I'd get hit!”
+
+@10929 Mondo · モンド
+> 「わわっ! こ、こっち来るっ!」
+“Whoa! I-it's coming this way!”
+
+@10930 Mondo · モンド
+> 「あ、危なかったぁ」
+“Th-that was close.”
+
+@10931 Mondo · モンド
+> 「わあっ! お、俺を狙ってる!?」
+“Waaah! H-he's aiming at me!?”
+
+@10932 Mondo · モンド
+> 「当たるわけにゃいかないんだよっ!」
+“No way I'm gonna get hit!”
+
+@10933 Mondo · モンド
+> 「ふ～、危ない危ない」
+“Phew, that was close, that was close.”
+
+@10934 Mondo · モンド
+> 「あっかんべ～だ」
+“Nyah nyah, missed me!”
+
+@10935 Mondo · モンド
+> 「そ、そんなビームなんて恐くないぞっ!」
+“I-I'm not scared of some Beam like that!”
+
+@10936 Mondo · モンド
+> 「え!? 何? 弾切れなのか?」
+“Huh!? What? Out of ammo?”
+
+@10937 Mondo · モンド
+> 「ダメだぁ、遠すぎて攻撃できない!」
+“No good, it's too far to attack!”

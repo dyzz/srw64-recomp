@@ -1,0 +1,246 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11444 Rish · リッシュ
+> 「そこかよ!?」
+“There you are?!”
+
+@11445 Rish · リッシュ
+> 「あたっちまいな!」
+“Take this!”
+
+@11446 Rish · リッシュ
+> 「悪いな」
+“Sorry 'bout that.”
+
+@11447 Rish · リッシュ
+> 「落ちちまえってんだよ」
+“I said go down already!”
+
+@11448 Rish · リッシュ
+> 「運がなかったな、あんた」
+“Tough luck, pal.”
+
+@11449 Rish · リッシュ
+> 「その賢しさが命とりだよ」
+“That smug look's gonna cost you your life.”
+
+@11450 Rish · リッシュ
+> 「そらよ」
+“Here goes.”
+
+@11451 Rish · リッシュ
+> 「ほらよっ」
+“Take that!”
+
+@11452 Rish · リッシュ
+> 「どうしたどうした!?」
+“What's wrong, what's wrong?!”
+
+@11453 Rish · リッシュ
+> 「落ちなよ」
+“Go down.”
+
+@11454 Rish · リッシュ
+> 「こいつがかわせるかよ?」
+“Think you can dodge this?”
+
+@11455 Rish · リッシュ
+> 「やってみせな」
+“Show me what you got.”
+
+@11456 Rish · リッシュ
+> 「止めといくかい」
+“I'll finish you off.”
+
+@11457 Rish · リッシュ
+> 「ここでやっとかねぇとな」
+“Time to settle this here.”
+
+@11458 Rish · リッシュ
+> 「なかなか素早いが、ね」
+“Quick, aren't you. But still.”
+
+@11459 Rish · リッシュ
+> 「甘いな、甘すぎるぜ」
+“Naive. Way too naive.”
+
+@11460 Rish · リッシュ
+> 「ハハハハハッ! いくぜ!」
+“Hahahahaha! Here I come!”
+
+@11461 Rish · リッシュ
+> 「ちっ……まずったな、こいつぁ」
+“Tch... I screwed up this time.”
+
+@11462 Rish · リッシュ
+> 「ちぃっ、やっちまったか!?」
+“Tch, did I mess up?!”
+
+@11463 Rish · リッシュ
+> 「ぐっ! マジか、くそっ!!」
+“Guh! You serious, damn it!!”
+
+@11464 Rish · リッシュ
+> 「へっ、俺もここで終わりかよ」
+“Heh, so this is the end for me too, huh.”
+
+@11465 Rish · リッシュ
+> 「くっ……マジでやばいな?」
+“Ngh... this is real bad, huh?”
+
+@11466 Rish · リッシュ
+> 「やべぇ! 限界じゃねぇか!?」
+“Damn! I'm at my limit?!”
+
+@11467 Rish · リッシュ
+> 「けっ……そろそろ俺も終わりかよ」
+“Keh... guess I'm done for soon too.”
+
+@11468 Rish · リッシュ
+> 「こいつぁ持たねぇかもな……」
+“I might not last much longer...”
+
+@11469 Rish · リッシュ
+> 「な、なんて腕をしてやがる!?」
+“W-what kind of skill is that?!”
+
+@11470 Rish · リッシュ
+> 「ちいっ! こいつぁマズイぜ……」
+“Tch! This is bad...”
+
+@11471 Rish · リッシュ
+> 「なんだと!?
+>  マズイ所にあたっちまったみてぇだな……」
+“What?! Looks like I hit a bad spot...”
+
+@11472 Rish · リッシュ
+> 「ぐ!? ヤ、ヤベェなこいつぁ」
+“Guh?! Th-this is bad.”
+
+@11473 Rish · リッシュ
+> 「ちっ、この程度でやられてたまるかよ」
+“Tch, like I'd go down from just this.”
+
+@11474 Rish · リッシュ
+> 「ふん、直撃をくらったか」
+“Hmph, took a direct hit, huh.”
+
+@11475 Rish · リッシュ
+> 「直撃!? しくったぜ……」
+“Direct hit?! I messed up...”
+
+@11476 Rish · リッシュ
+> 「ぐ、やってくれるじゃねぇか」
+“Guh, you're pretty good.”
+
+@11477 Rish · リッシュ
+> 「こいつぁ手強いぜぇ……」
+“This one's tough...”
+
+@11478 Rish · リッシュ
+> 「この俺が押されてるってのか!?」
+“You're saying I'm being pushed back?!”
+
+@11479 Rish · リッシュ
+> 「ほう……やるじゃねぇか」
+“Oh... not bad.”
+
+@11480 Rish · リッシュ
+> 「この程度じゃ抜けねぇぜ」
+“That won't get through me.”
+
+@11481 Rish · リッシュ
+> 「なんだよ、俺がでるほどのもんでもねぇな」
+“What, this isn't even worth my time.”
+
+@11482 Rish · リッシュ
+> 「なんだ、そりゃ!?」
+“What the hell is that?!”
+
+@11483 Rish · リッシュ
+> 「ハハハッ
+>  威力が足りなかったようだな」
+“Hahaha, seems it wasn't powerful enough.”
+
+@11484 Rish · リッシュ
+> 「おいおい、マジかよ。
+>  そんなんで俺とやろうってのか!?」
+“Hey now, seriously? You're gonna fight me with that?!”
+
+@11485 Rish · リッシュ
+> 「俺に挑む勇気だけは
+>  認めてやるがね」
+“I'll give you credit for the guts to challenge me, at least.”
+
+@11486 Rish · リッシュ
+> 「おっと、危ねぇ」
+“Whoa, that was close.”
+
+@11487 Rish · リッシュ
+> 「やべぇとこだったぜ」
+“That was a close one.”
+
+@11488 Rish · リッシュ
+> 「そら、どうだ?」
+“There, how's that?”
+
+@11489 Rish · リッシュ
+> 「余裕だな」
+“Easy as pie.”
+
+@11490 Rish · リッシュ
+> 「あたってやるわけにはいかないんでな」
+“Can't afford to get hit, you see.”
+
+@11491 Rish · リッシュ
+> 「クククッ、あたんなかったようだな?」
+“Heheheh, looks like it missed?”
+
+@11492 Rish · リッシュ
+> 「フッ、俺の運も捨てたもんじゃねぇな」
+“Hmph, my luck ain't half bad either.”
+
+@11493 Rish · リッシュ
+> 「はん、それじゃあたらんわな」
+“Hah, that won't hit me.”
+
+@11494 Rish · リッシュ
+> 「そんなもんはきかねぇのよ」
+“That kinda thing don't work on me.”
+
+@11495 Rish · リッシュ
+> 「残念だったな」
+“Too bad for you.”
+
+@11496 Rish · リッシュ
+> 「ムダだってんだよ」
+“I told you it's useless.”
+
+@11497 Rish · リッシュ
+> 「やーれやれだぜ」
+“Man, give me a break.”
+
+@11498 Rish · リッシュ
+> 「悪いが相手にならねぇ
+>  出直してきな」
+“Sorry, but you're no match. Come back later.”
+
+@11499 Rish · リッシュ
+> 「おいおい、やめとけよ」
+“Hey now, give it up.”
+
+@11500 Rish · リッシュ
+> 「お? 弾切れとはな……」
+“Oh? Out of ammo, huh...”
+
+@11501 Rish · リッシュ
+> 「まいったな、弾切れかよ……」
+“Damn, out of ammo already...”
+
+@11502 Rish · リッシュ
+> 「おっと、届かねぇのかよ!?」
+“Whoa, out of range?!”
+
+@11503 Rish · リッシュ
+> 「ちっ……これじゃやれねぇか」
+“Tch... can't do it like this, huh.”

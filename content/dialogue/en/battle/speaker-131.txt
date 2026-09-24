@@ -1,0 +1,80 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7892 Killy · キリー
+> 「ちっ! やられちまったぜ!」
+“Tch! I got taken down!”
+
+@7893 Killy · キリー
+> 「あーあ、ダメか」
+“Aw man, no good, huh.”
+
+@7898 Killy · キリー
+> 「うわっ!! 真吾!!
+>  ヤバイぜこいつは!」
+“Whoa! Shingo! This one's bad!”
+
+@7899 Killy · キリー
+> 「ちっ!! こいつは分が悪いぜ!」
+“Tch! This is a losing fight!”
+
+@7906 Killy · キリー
+> 「うわっ!! くそっ、真吾しっかり
+>  やってくれ!」
+“Whoa! Damn it, Shingo, get it together!”
+
+@7907 Killy · キリー
+> 「つっ! 受けた分は利子つけて
+>  返させてもらうぜ!」
+“Ugh! I'll make you pay back what I took, with interest!”
+
+@7914 Killy · キリー
+> 「効かねえぜ!」
+“That doesn't hurt!”
+
+@7915 Killy · キリー
+> 「やれやれ、この程度か?」
+“Good grief, is this all?”
+
+@7922 Killy · キリー
+> 「おおはずれ～」
+“Way off~”
+
+@7923 Killy · キリー
+> 「チッチッ、ねらいがあまいぜ」
+“Tsk tsk, your aim's too soft.”
+
+@7932 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7933 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7934 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7935 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7936 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7937 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7938 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7939 Killy · キリー
+> 「ばかめ!」
+“Fool!”
+
+@7940 Killy · キリー
+> 「ばかめ!」
+“Fool!”

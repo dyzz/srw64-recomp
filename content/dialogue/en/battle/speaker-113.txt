@@ -1,0 +1,111 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10176 Maria · マリア
+# 审校：覚悟ぉーっ是战斗中的威吓，Get ready 语气偏弱
+> 「覚悟ぉーっ!」
+“Prepare yourself!”
+
+@10177 Maria · マリア
+> 「そこね!」
+“Right there!”
+
+@10178 Maria · マリア
+> 「いくわよぉ!」
+“Here I go!”
+
+@10179 Maria · マリア
+> 「よぉしっ!」
+“All right!”
+
+@10180 Maria · マリア
+# 审校：やられちゃった是被击坠，hit 不够准确
+> 「あぁっ!? だめ、やられちゃったわ!!」
+“Ah?! No, I've been taken out!”
+
+@10181 Maria · マリア
+> 「アァッ、ダメッ、兄さん!」
+“Aah, no, brother!”
+
+@10182 Maria · マリア
+> 「キャアァァッ! 甲児ーッ!!」
+“Eeeek! Koji!”
+
+@10183 Maria · マリア
+# 审校：レバー在机器人语境指操纵杆/操控系统，lever 过于字面
+> 「ああっ!? レバーがきかないわ!」
+“Ah?! The controls won't respond!”
+
+@10184 Maria · マリア
+> 「きゃあぁぁぁーっ!!」
+“Eeeeeeek!”
+
+@10185 Maria · マリア
+> 「あぁっ、もうだめなの!?」
+“Ah, am I done for already?!”
+
+@10186 Maria · マリア
+> 「甲児ーッ、助けてよ!!」
+“Koji, help me!”
+
+@10187 Maria · マリア
+> 「うぅっ!」
+“Ugh!”
+
+@10188 Maria · マリア
+> 「やられた!? そんなぁ!」
+“I've been hit?! No way!”
+
+@10189 Maria · マリア
+> 「ちょっとぉ! レディーに対して
+>  失礼じゃないの!」
+“Hey! That's no way to treat a lady!”
+
+@10190 Maria · マリア
+> 「やったわねぇ!!」
+“You'll pay for that!”
+
+@10191 Maria · マリア
+> 「なによ、そんな攻撃!」
+“What kind of attack is that?!”
+
+@10192 Maria · マリア
+> 「あたっちゃった!?」
+“It hit me?!”
+
+@10193 Maria · マリア
+> 「このあたしには効かないわよ!」
+“That won't work on me!”
+
+@10194 Maria · マリア
+# 审校：原译“I'm getting hit”稍显别扭，改为更自然表达
+> 「あぁっ、当たっちゃうっ!」
+“Ah, it's going to hit!”
+
+@10195 Maria · マリア
+> 「やったぁ! 甲児、今の見てた!?」
+“Yes! Koji, did you see that?!”
+
+@10196 Maria · マリア
+> 「危ないじゃない!」
+“That was dangerous!”
+
+@10197 Maria · マリア
+# 审校：原译“I know perfectly well”缺少对象，结合语境补足
+> 「ちゃーんとわかってるんだから!」
+“I know exactly what I'm doing!”
+
+@10198 Maria · マリア
+> 「大丈夫よ!」
+“I'm fine!”
+
+@10199 Maria · マリア
+> 「そんなの効かないのよ!」
+“That won't work at all!”
+
+@10200 Maria · マリア
+> 「え? あら、エネルギー切れ!?」
+“Huh? Oh no, out of energy?!”
+
+@10201 Maria · マリア
+> 「なによ、届かないじゃない!」
+“What?! It won't reach!”

@@ -1,0 +1,179 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12706 Allenby · アレンビー
+> 「そこっ!」
+“There!”
+
+@12707 Allenby · アレンビー
+> 「そこだっ!!」
+“Right there!!”
+
+@12708 Allenby · アレンビー
+> 「いくよっ!!」
+“Here I go!!”
+
+@12709 Allenby · アレンビー
+> 「はああああっ!!」
+“Haaaaaah!!”
+
+@12710 Allenby · アレンビー
+> 「はぁぁぁっ……はっ!!」
+“Haaaaah... hah!!”
+
+@12711 Allenby · アレンビー
+> 「でぇぇぇやぁぁぁぁっ!!」
+“Deeeeeyaaaaaah!!”
+
+@12712 Allenby · アレンビー
+> 「えいっ!」
+“Hah!”
+
+@12713 Allenby · アレンビー
+> 「くうっ!! ド、ドモン!!」
+“Ngh!! D-Domon!!”
+
+@12714 Allenby · アレンビー
+> 「きゃあああああっ!!」
+“Kyaaaaaaah!!”
+
+@12715 Allenby · アレンビー
+> 「だ、ダメ、もうもたないっ!!」
+“I-I can't, I can't hold out anymore!!”
+
+@12716 Allenby · アレンビー
+> 「うあっ!! や、やっばいなあ……」
+“Ugh!! Th-this is bad...”
+
+@12717 Allenby · アレンビー
+> 「くうっ! ピ、ピンチ!!」
+“Ngh! I-I'm in trouble!!”
+
+@12718 Allenby · アレンビー
+> 「きゃあっ! 何、これ!? 強いっ!!」
+“Kyaah! What is this?! So strong!!”
+
+@12719 Allenby · アレンビー
+> 「うわぁっ!!」
+“Whoa!!”
+
+@12720 Allenby · アレンビー
+> 「やめてぇぇぇっ!!」
+“Stop iiiit!!”
+
+@12721 Allenby · アレンビー
+> 「くっ! や、やばぁ!」
+“Ngh! Th-this is bad!”
+
+@12722 Allenby · アレンビー
+> 「あいたたた……やったねぇ!!」
+“Owww... you got me!!”
+
+@12723 Allenby · アレンビー
+> 「こ、この程度でっ!!」
+“Th-this little bit won't!!”
+
+@12724 Allenby · アレンビー
+> 「やるじゃない! 楽しくなってきた!」
+“Not bad! Now it's getting fun!”
+
+@12725 Allenby · アレンビー
+> 「あいったぁ～……さすがだね!」
+“Owww... you're good!”
+
+@12726 Allenby · アレンビー
+> 「あうっ!
+>  い、いい攻撃だよ! さすがだね!」
+“Ow! G-good hit! You're good!”
+
+@12727 Allenby · アレンビー
+> 「うわぁぁぁぁっ!!」
+“Whoaaaaaah!!”
+
+@12728 Allenby · アレンビー
+> 「ちっ! こんなのってあり!?」
+“Tch! Is that even fair?!”
+
+@12729 Allenby · アレンビー
+> 「くっ!」
+“Ngh!”
+
+@12730 Allenby · アレンビー
+> 「やだ、当たっちゃった!?」
+“Oh no, did I get hit?!”
+
+@12731 Allenby · アレンビー
+> 「なに、その攻撃。
+>  全然効いてないよ」
+“What kind of attack is that? It's not doing a thing.”
+
+@12732 Allenby · アレンビー
+> 「ちょっと、本気でやってる!?」
+“Hey, are you even trying?!”
+
+@12733 Allenby · アレンビー
+> 「うそっ!?」
+“No way?!”
+
+@12734 Allenby · アレンビー
+> 「まだいける!」
+“I can still go!”
+
+@12735 Allenby · アレンビー
+> 「効かないよ!」
+“It doesn't hurt!”
+
+@12736 Allenby · アレンビー
+> 「なんのっ!!」
+“As if!!”
+
+@12737 Allenby · アレンビー
+> 「見切った!」
+“I saw right through it!”
+
+@12738 Allenby · アレンビー
+> 「当たるもんか!!」
+“Like you'd ever hit me!!”
+
+@12739 Allenby · アレンビー
+> 「ほらほら、どうしたの!?」
+“Come on, come on, what's wrong?!”
+
+@12740 Allenby · アレンビー
+> 「へへ、どんなもんよ!」
+“Hehe, how's that!”
+
+@12741 Allenby · アレンビー
+> 「おそいよ!」
+“Too slow!”
+
+@12742 Allenby · アレンビー
+> 「あまい!」
+“Too easy!”
+
+@12743 Allenby · アレンビー
+> 「そんなビームじゃ、傷ひとつつかないよ!」
+“A Beam like that won't leave a scratch!”
+
+@12744 Allenby · アレンビー
+> 「全然効かないよ!」
+“It doesn't hurt at all!”
+
+@12745 Allenby · アレンビー
+> 「ウソっ!? 弾切れぇ!?」
+“No way?! Out of ammo?!”
+
+@12746 Allenby · アレンビー
+> 「ダメ! 弾切れ?」
+“No! Out of ammo?”
+
+@12747 Allenby · アレンビー
+> 「ダメ! エネルギーがなくなっちゃた!」
+“No! I'm out of energy!”
+
+@12748 Allenby · アレンビー
+> 「やだ、届かないじゃん!!」
+“Oh no, it won't reach!!”
+
+@12749 Allenby · アレンビー
+> 「遠くて攻撃できない!」
+“It's too far to attack!”

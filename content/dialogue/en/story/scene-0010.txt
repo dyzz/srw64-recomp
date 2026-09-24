@@ -1,0 +1,1356 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18332 Quattro · クワトロ
+> 「大丈夫か、
+>  {HeroName}君」
+“Are you all right, {HeroName}?”
+
+@18333 Ark · アーク（按段落 3DD1）
+> 「はい。……あとどのくらい
+>  かかるのでしょうか?」
+“Yes. ...How much longer will it take?”
+
+@18334 Quattro · クワトロ
+> 「半日といったところだな。このあたりは
+>  帝国軍の哨戒ルートだ
+“About half a day. This area is on the Imperial Army's patrol route.
+---
+>  すまないが、もう少し
+>  我慢してもらいたい」
+I'm sorry, but I need you to hold out a little longer.”
+
+@18335 Ark · アーク（按段落 3DD1）
+> 「はい」
+“Yes.”
+
+@18336 Selain · セレイン（按段落 3DD2）
+> 「なれています。問題ありません」
+“I'm used to it. No problem.”
+
+@18337 Quattro · クワトロ
+> 「そうか。あと半日ほどでつく。
+>  急ぐぞ」
+“I see. We'll arrive in about half a day. Let's hurry.”
+
+@18338 Selain · セレイン（按段落 3DD2）
+> 「はい」
+“Yes.”
+
+@18339 Quattro · クワトロ
+> 「ついたぞ」
+“We're here.”
+
+@18340 Ark · アーク（按段落 3DD1）
+> 「ここが……?」
+“This is...?”
+
+@18341 Quattro · クワトロ
+> 「廃墟となった町はどこにでもある。
+>  帝国軍は我々がその中に
+“There are ruined towns everywhere. Even if the Imperial Army knows we're
+---
+>  隠れていることを知っていても、
+>  しらみつぶしに探すわけにもいかん
+hiding among them, they can't search every last inch.
+---
+>  長期的には難しいが、短期間
+>  であれば、いい隠れ家になる」
+It's hard long-term, but for a short while, it makes a good hideout.”
+
+@18342 Aboly · アポリー
+> 「大尉、モビルスーツは
+>  奥に入れてくれとのことです」
+“Captain, they want the Mobile Suits brought inside.”
+
+@18343 Quattro · クワトロ
+> 「了解した。
+>  どうした、{HeroName}君
+“Understood. What's wrong, {HeroName}?
+---
+>  機体を中へ入れれば、
+>  あとは休める」
+Once you've brought your machine inside, you can rest.”
+
+@18344 Ark · アーク（按段落 3DD1）
+> 「あ、はい。そうします」
+“Oh, yes. I'll do that.”
+
+@18345 Selain · セレイン（按段落 3DD2）
+> 「機体はどこへ?」
+“Where should I put my machine?”
+
+@18346 Aboly · アポリー
+> 「お前のは、一番奥へ入れてくれ」
+“Yours goes in the very back.”
+
+@18347 Selain · セレイン（按段落 3DD2）
+> 「了解した」
+“Understood.”
+
+@18348 Quattro · クワトロ
+> 「{HeroName}君、機体をおりたら
+>  私のところへ来てくれ」
+“{HeroName}, once you've gotten out of your machine, come see me.”
+
+@18349 Bright · ブライト
+> 「ご苦労だった、大尉。
+>  あれが例の新型か」
+“Good work, Captain. So that's the new model?”
+
+@18350 Quattro · クワトロ
+> 「そうだ。しかし、残念ながら向こうの
+>  組織は、壊滅状態だった」
+“That's right. But unfortunately, the organization on the other side was annihilated.”
+
+@18351 Bright · ブライト
+> 「では、あのパイロットは?」
+“Then what about that pilot?”
+
+@18352 Quattro · クワトロ
+> 「{HeroName}君、
+>  紹介しよう
+“{HeroName}, let me introduce you.
+---
+>  地球解放戦線機構の
+>  ブライト・ノア中佐だ」
+This is Lieutenant Colonel Bright Noa of the Liberation Front of the Earth.”
+
+@18353 Bright · ブライト
+> 「ブライトだ。よろしく頼む」
+“I'm Bright. Pleased to meet you.”
+
+@18354 主角
+> 「{HeroFull}です」
+“I'm {HeroFull}.”
+
+@18355 Quattro · クワトロ
+# 审校：中佐应译为 Lieutenant Colonel，与词表及 L21 一致，原译 Colonel 不准确。
+> 「彼はもとC級市民だ、中佐
+“He was a C-class citizen, Lieutenant Colonel.
+---
+>  ゲリラ狩りに巻きこまれていた
+>  ところを保護した」
+We took him in after he got caught up in a guerrilla hunt.”
+
+@18356 Bright · ブライト
+> 「そうか。最近では少なくないパターン
+>  だな。しかし、多少の訓練は
+“I see. That's a pattern we've been seeing a lot of lately. But you'd had
+---
+>  受けていたのだろう?」
+some training, hadn't you?”
+
+@18357 Ark · アーク（按段落 3DD1）
+> 「いえ……。システムには市街戦闘
+>  モードがセットされていましたし
+“No... The system was set to urban combat mode,
+---
+>  操作系はセミオートで、つねに
+>  マニュアルも表示されていましたから…」
+and the controls were semi-automatic, with the manual always displayed, so...”
+
+@18358 Bright · ブライト
+> 「しかし、それで実戦を? 信じられん」
+“But you fought in actual combat with that? I can't believe it.”
+
+@18359 Quattro · クワトロ
+> 「センスがいいのだよ、彼は。
+>  パイロットとしての資質をそなえている」
+“He has good instincts. He has the makings of a pilot.”
+
+@18360 Ark · アーク（按段落 3DD1）
+> 「そんな……僕は……」
+“That's... I'm just...”
+
+@18361 Quattro · クワトロ
+> 「彼女は、あの近辺のゲリラの
+>  生き残りだ
+“She's a survivor of the guerrillas from that area.
+---
+>  腕利きのパイロットだよ」
+She's a skilled pilot.”
+
+@18362 Bright · ブライト
+> 「ほう。{HeroFull}……
+>  そうか、君があの。それは心強いな」
+“Oh. {HeroFull}... I see, so you're the one. That's reassuring.”
+
+@18363 Selain · セレイン（按段落 3DD2）
+> 「どのような噂をお聞きなのか
+>  知りませんが、買いかぶってもらっては
+“I don't know what rumors you've heard, but I'd rather you not overestimate me.
+---
+>  困ります。私は先の戦いで、
+>  多くの仲間を失いました
+I lost many comrades in the last battle.
+---
+>  これまで勝ってこれたのは……
+>  運がよかったからに過ぎません
+The only reason I've won so far... is that I've simply been lucky.
+---
+>  それをもっとも理解しているのは、
+>  私なのですから」
+And no one understands that better than I do.”
+
+@18364 Bright · ブライト
+> 「しかしな、我々のような組織では、
+>  運も噂も、人の力のうちなのだよ
+“But you see, in an organization like ours, luck and reputation are part of a person's strength.
+---
+>  本人にとっても、周囲の者に
+>  とってもな」
+Both for the person themselves and for those around them.”
+
+@18365 Selain · セレイン（按段落 3DD2）
+> 「……それはわかります。私はただ、
+>  私のような者を
+“...I understand that. I just wanted to say that you shouldn't
+---
+>  あてにされても困ると
+>  いいたかっただけです」
+rely on someone like me.”
+
+@18366 Quattro · クワトロ
+> 「我々はそれほど甘くはないよ、
+>  {HeroFull}
+“We're not that naive, {HeroFull}.
+---
+>  あまりみくびってもらいたくは
+>  ないものだな?」
+I'd appreciate it if you didn't underestimate us too much.”
+
+@18367 Bright · ブライト
+> 「よし、{HeroName}。
+>  大尉もきてくれ
+“All right, {HeroName}. Captain, come with me too.
+---
+>  みなに紹介しよう」
+I'll introduce you to everyone.”
+
+@18368 Aboly · アポリー
+> 「あれですよ大尉。
+>  パイロットが降りてきますね」
+“There, Captain. The pilot's getting out.”
+
+@18369 Quattro · クワトロ
+> 「帝国製のSPTか……。
+>  そこで止まれ。何者だ?」
+“An Imperial-made SPT... Stop right there. Who are you?”
+
+@18370 Eiji · エイジ
+> 「俺の名はエイジ。
+>  この場所はねらわれている
+“My name is Eiji. This place is a target.
+---
+>  それを伝えにやってきた」
+I came to tell you that.”
+
+@18371 Quattro · クワトロ
+> 「ねらわれている?
+>  帝国に発見されたというのか
+“A target? You mean the Empire has found it?
+---
+>  しかしわからんな、なぜ君はそれを
+>  我々に教えようというのだ?」
+But I don't understand. Why would you tell us that?”
+
+@18372 Eiji · エイジ
+> 「グレスコ総督を、
+>  ムゲゾルバドス帝国を
+“To drive Governor Gresco and the Muge Zorbados Empire
+---
+>  この地球から叩きだすためだ。
+>  悪いことはいわない
+out of this Earth. I'm telling you for your own good—
+---
+>  すぐここから退去したほうがいい」
+you'd better leave this place right away.”
+
+@18373 Aboly · アポリー
+> 「いきなりいわれて、はいそうですかと
+>  信じられるかよ」
+“You expect us to just take your word for it and say, sure, okay?”
+
+@18374 Quattro · クワトロ
+> 「そうだな。我々にしてもそれなりに
+>  情報は集めているが、その話は
+“Indeed. We've gathered our own share of intelligence, but that story of yours
+---
+>  確認されていない。なぜ君がそれを
+>  知ったのか、教えてもらえないかな?」
+is unconfirmed. Won't you tell us how you came to know it?”
+
+@18375 Eiji · エイジ
+> 「ゲリラ掃討部隊の通信を
+>  傍受した
+“I intercepted communications from a guerrilla sweep unit.
+---
+>  この場所は付近一帯の
+>  地形をスキャンして、
+This place was found by scanning and
+---
+>  分析した結果、発見した」
+analyzing the terrain of the surrounding area.”
+
+@18376 Aboly · アポリー
+> 「大尉、こんなやつのいうことを
+>  真に受ける必要はありませんよ」
+“Captain, there's no need to take a word this guy says seriously.”
+
+@18377 Quattro · クワトロ
+> 「ふむ……少し考えさせてもらう
+“Hmm... Let me think it over a while.
+---
+>  悪いがその間、君の身がらを
+>  拘束するが、よろしいか?」
+I'm sorry, but in the meantime I'll have you detained. Is that acceptable?”
+
+@18378 Eiji · エイジ
+> 「……いいでしょう。
+>  ただし、早めに
+“...Very well. But make it quick.
+---
+>  敵部隊はここに向けて
+>  移動中です」
+The enemy unit is already on the move toward this location.”
+
+@18379 Bright · ブライト
+> 「帝国製のSPTに乗る
+>  青年か……
+“A young man piloting an Imperial-made SPT...
+---
+>  大尉はどう思う?」
+What do you think, Captain?”
+
+@18380 Quattro · クワトロ
+> 「彼のいうことはおそらく本当でしょう」
+“What he says is most likely true.”
+
+@18381 Aboly · アポリー
+> 「なぜです?」
+“Why do you say that?”
+
+@18382 Quattro · クワトロ
+> 「我々をここから移動させても、
+>  得するような者は思いつかない」
+“I can't think of anyone who would benefit from making us move out of here.”
+
+@18383 Bright · ブライト
+> 「そうだな……そう思う。
+>  よし、移動の準備だ」
+“Yes... I think so too. All right, prepare to move out.”
+
+@18384 Aboly · アポリー
+> 「了解」
+“Understood.”
+
+@18385 Bright · ブライト
+> 「大尉、あとでその青年を
+>  こちらによこしてくれ」
+“Captain, send that young man to me later.”
+
+@18386 Quattro · クワトロ
+> 「わかった」
+“Got it.”
+
+@18387 Bright · ブライト
+> 「それと……」
+“And one more thing...”
+
+@18388 Quattro · クワトロ
+# 审校：原译 “force him” 在セレイン路线外仅用于アーク路线，但该占位符可能随主角性别变化；改为中性 “force it” 更稳妥。
+> 「{HeroName}のことだな。確認は
+>  してみるが、無理強いはしたくない」
+“It's about {HeroName}. I'll ask, but I don't want to force it.”
+
+@18389 Bright · ブライト
+> 「わかっている
+“I know.
+---
+>  だが、あの機体は解放戦線で
+>  運用させてもらう」
+But that unit will be operated by the Liberation Front.”
+
+@18390 Quattro · クワトロ
+> 「それはそうだ。我々は
+>  慈善団体ではないのだからな」
+“Naturally. We're not a charity, after all.”
+
+@18391 Bright · ブライト
+> 「ああ……そういうことだ」
+“Yeah... That's how it is.”
+
+@18392 Ark · アーク（按段落 3DD1）
+> (俺、これからどうするんだろう……
+(What am I going to do from now on...?
+---
+>  エミリア、俺、戦争しなきゃ
+>  ならないのかな……)
+Emilia, do I really have to fight...?)
+
+@18393 Quattro · クワトロ
+> 「ここにいたのか」
+“So here you are.”
+
+@18394 Ark · アーク（按段落 3DD1）
+> 「クワトロ大尉……なにか?」
+“Captain Quattro... Did you need something?”
+
+@18395 Quattro · クワトロ
+> 「我々はここを放棄する。
+>  つまり移動するということだ」
+“We're abandoning this place. In other words, we're moving out.”
+
+@18396 Ark · アーク（按段落 3DD1）
+> 「そう……ですか。あの、僕は……」
+“I see... Um, I...”
+
+@18397 Quattro · クワトロ
+> 「君の、好きにすればいい。
+>  一緒にくるというのなら
+“Do as you like. If you come with us,
+---
+>  ソルデファーのパイロットとして
+>  歓迎する。スタッフは多いが
+you're welcome as a Soldifar pilot. We have plenty of staff,
+---
+>  戦闘パイロットは、
+>  そう多くないのでな」
+but not many combat pilots.”
+
+@18398 Ark · アーク（按段落 3DD1）
+> 「……そうじゃないときは?」
+“...And if I don't?”
+
+@18399 Quattro · クワトロ
+> 「残念だが、近くの町まで
+>  送るようなことはできない。かわりに
+“Unfortunately, I can't have you driven to a nearby town. Instead,
+---
+>  ジープを1台おいていく。ソルデファーは
+>  我々で運用することになる」
+I'll leave one jeep behind. The Soldifar will be operated by us.”
+
+@18400 Ark · アーク（按段落 3DD1）
+> 「ずるいんですね」
+“That's not fair.”
+
+@18401 Quattro · クワトロ
+> 「そういうものだ。
+>  我々も死にたくはないのでな」
+“That's how it is. We don't want to die either.”
+
+@18402
+> *  いきますよ
+> *  もう少し考えさせてください
+* I'll go.
+* Let me think about it a little longer.
+
+@18403 Ark · アーク（按段落 3DD1）
+# 审校：原译“nowhere else to turn”意思偏差，原文是“没有其他选择/退路”，改为更贴切的表达。
+> 「いきますよ。僕にはもう
+>  他にありませんから」
+“I'll go. I have nothing else left.”
+
+@18404 Quattro · クワトロ
+> 「いいだろう。
+>  ではソルデファーは君にまかせる
+“Very well. Then I'll leave the Soldifar to you.
+---
+>  出発準備をしておいてくれ」
+Get it ready to depart.”
+
+@18405 Ark · アーク（按段落 3DD1）
+> 「わかりました」
+“Understood.”
+
+@18406 Ark · アーク（按段落 3DD1）
+> 「もう少し……考えさせてください」
+“Let me... think about it a little longer.”
+
+@18407 Quattro · クワトロ
+# 审校：原译“I'd like nothing better”语气略偏，原文是“我也想让你这样，但没时间”，改为更准确自然的说法。
+> 「そうしたいのはやまやまだが、
+>  なにしろ時間がない」
+“I'd like to let you, but there simply isn't time.”
+
+@18408 Ark · アーク（按段落 3DD1）
+# 审校：原文“わかりました”在此是接受安排，原译“I understand”可以，但结合前文更自然用“Understood”，并保持省略号格式。
+> 「……わかりました。一番近い町まで
+>  の地図、もらえますか?」
+“...Understood. Can I have a map to the nearest town?”
+
+@18409 Quattro · クワトロ
+> 「水と一緒にジープに積んで
+>  おくよう手配しておく」
+“I'll arrange for one to be loaded in the jeep along with some water.”
+
+@18410 Ark · アーク（按段落 3DD1）
+> 「ありがとう……ございます」
+“Thank you... very much.”
+
+@18411 Bright · ブライト
+> 「帝国製のSPTに乗る
+>  青年か……
+“A young man piloting an Imperial-made SPT...
+---
+>  信用したいと思うのは、
+>  私が甘いのかな?」
+Is it naive of me to want to trust him?”
+
+@18412 Quattro · クワトロ
+> 「いや……{HeroName}、
+>  君はどう思う?」
+“No... What do you think, {HeroName}?”
+
+@18413 Selain · セレイン（按段落 3DD2）
+# 审校：“防衛能力”改为“defensive capability”更准确；“移動中”补出主语使句意更清楚。
+> 「私は帝国がこのような手を
+>  使うのを見たことはありません
+“I've never seen the Empire use tactics like this.
+---
+>  それにこの町に
+>  防衛能力がない以上
+And since this town has no defensive capability,
+---
+>  ここで攻撃しても移動中でも
+>  それほど差があるとは思えません
+I doubt it makes much difference whether they attack here or while we're moving.
+---
+>  帝国軍の計略としては、
+>  あまりにも無意味でしょう」
+As an Imperial scheme, it would be far too pointless.”
+
+@18414 Quattro · クワトロ
+> 「ふむ、正しい見方だな。
+>  私もその意見に賛成だ
+“Hmm, a sound assessment. I agree with you.
+---
+>  彼のいうことはおそらく本当でしょう」
+What he says is probably true.”
+
+@18415 Bright · ブライト
+> 「そうだな……そう思う。よし、
+>  移動の準備だ。アポリー中尉」
+“Yes... I think so too. All right, prepare to move out. Lieutenant Aboly.”
+
+@18416 Aboly · アポリー
+> 「了解。整備班には
+>  作業を中止させますよ」
+“Understood. I'll have the maintenance crew stop their work.”
+
+@18417 Bright · ブライト
+> 「大尉、あとでその青年を
+>  こちらへよこしてくれ」
+“Captain, send that young man to me later.”
+
+@18418 Quattro · クワトロ
+> 「手配しておく」
+“I'll make the arrangements.”
+
+@18419 Bright · ブライト
+> 「{HeroName}、聞いての通り、
+>  我々はここを離れる
+“{HeroName}, as you heard, we're leaving this place.
+---
+>  君は、どうするつもりだ?」
+What do you intend to do?”
+
+@18420 Selain · セレイン（按段落 3DD2）
+> 「同行します。
+>  そちらがよろしければ、ですが」
+“I'll come with you. If that's all right with you, that is.”
+
+@18421 Bright · ブライト
+> 「むろんかまわんが、いいのか?」
+“Of course I don't mind, but are you sure?”
+
+@18422 Selain · セレイン（按段落 3DD2）
+> 「スヴァンヒルドは、仲間が命と
+>  引き換えに残したものです
+“The Svanheld is what my comrades left behind at the cost of their lives.
+---
+>  置いていけません。それに、安全な
+>  生活を望むのならば
+I can't abandon it. Besides, if I wanted a safe life,
+---
+>  そもそも銃をとったりはしません」
+I would never have taken up a gun in the first place.”
+
+@18423 Quattro · クワトロ
+> 「優秀なパイロットが増えるのは
+>  助かる
+“I'm glad to have another skilled pilot.
+---
+>  が、死に急ぐような真似は
+>  つつしんでもらいたいものだな?」
+But I'd ask you not to be so eager to throw your life away, all right?”
+
+@18424 Selain · セレイン（按段落 3DD2）
+> 「わかっています。ご安心を」
+“I understand. Rest assured.”
+
+@18425 Bright · ブライト
+> 「よし、あらためてよろしく頼む、
+>  {HeroFull}
+“Good. Then once more, I'm counting on you, {HeroFull}.
+---
+>  地球解放戦線機構は
+>  君を歓迎する」
+The Liberation Front of the Earth welcomes you.”
+
+@18426 Eiji · エイジ
+> 「アルバトロ・ナル・エイジ・アスカです」
+“I'm Albatro Null Eiji Asuka.”
+
+@18427 Bright · ブライト
+> 「ブライト・ノアだ
+“I'm Bright Noa.
+---
+>  我々は君の情報を受け、
+>  ここを放棄することにした」
+After receiving your information, we decided to abandon this place.”
+
+@18428 Eiji · エイジ
+> 「急いでください。
+>  もう近くまで来ているはずです」
+“Please hurry. They should be almost here by now.”
+
+@18429 Bright · ブライト
+> 「わかっている。すぐに準備は整う。
+>  しかし君の名前
+“I know. We'll be ready soon. But your name,
+---
+>  そしてあの蒼いSPTに
+>  なにかひっかかるものがあってな」
+and that blue SPT... something about them bothers me.”
+
+@18430 Eiji · エイジ
+> 「ブライトさんは、
+>  もと連邦軍の中佐でしたね
+“You were a lieutenant colonel in the Federation Forces, weren't you, Bright?
+---
+>  3年前は何を?」
+What were you doing three years ago?”
+
+@18431 Bright · ブライト
+> 「ジオンと戦ったあと、そのまま
+>  ホワイトベースⅡの艦長として
+“After fighting Zeon, I stayed on as captain of the White Base II
+---
+>  ムゲゾルバドス帝国と交戦した
+and fought the Muge Zorbados Empire.
+---
+>  連邦が降伏したとき、
+>  ブレックス准将の誘いで
+When the Federation surrendered, Brigadier General Blex invited me,
+---
+>  軍を抜け、
+>  反帝国運動を始めた」
+so I left the military and started the anti-Imperial movement.”
+
+@18432 Eiji · エイジ
+> 「僕もそのとき、
+>  ほんのわずかな間でしたが
+“At that time, for just a short while,
+---
+>  地球連邦軍とともに
+>  帝国と戦ったことがあります」
+I also fought the Empire alongside the Earth Federation Forces.”
+
+@18433 Bright · ブライト
+> 「そうか……思い出したぞ。
+>  エイジ・アスカ
+“I see... now I remember. Eiji Asuka.
+---
+>  地球と帝国の混血児……
+>  では、あれがレイズナーか」
+A child of both Earth and the Empire... So that's the Layzner, then.”
+
+@18434 Eiji · エイジ
+> 「ええ」
+“Yes.”
+
+@18435 Bright · ブライト
+> 「よく、無事だったものだ。我々は
+>  君が死んだものと思っていた
+“It's a wonder you survived. We thought you were dead.
+---
+>  しかし、最初にそれを告げて
+>  くれれば、すぐに信用したものを」
+Still, if you'd told me that from the start, I would have trusted you right away.”
+
+@18436 Eiji · エイジ
+> 「いえ、おそらく逆に
+>  疑いをもったのではないですか?」
+“No, wouldn't it have made you suspicious instead?”
+
+@18437 Bright · ブライト
+> 「……確かに、その可能性もあるか。
+>  それで、我々はもうここを発つが
+“...True, that's possible. Anyway, we're leaving here now.
+---
+>  君はどうするつもりだ?」
+What do you intend to do?”
+
+@18438 Eiji · エイジ
+> 「一緒にいかせてください。僕には
+>  帝国と戦う義務があります」
+“Let me come with you. I have a duty to fight the Empire.”
+
+@18439 Bright · ブライト
+> 「わかった。君とレイズナーが
+>  加わってくれるとは心強い」
+“Understood. It's reassuring to have you and the Layzner join us.”
+
+@18440 Bright · ブライト
+> 「なんだ?」
+“What is it?”
+
+@18441 Quattro · クワトロ
+> 「残念だが彼の行為を
+>  無にしてしまったようだ
+“Sorry, but it seems his efforts were in vain.
+---
+>  敵に発見された」
+The enemy has spotted us.”
+
+@18442 Bright · ブライト
+> 「なんだと!? 遅かったか!」
+“What?! Were we too late?!”
+
+@18443 Bright · ブライト
+> 「総員、戦闘準備!
+>  非戦闘員はキャリアーで退避!」
+“All hands, battle stations! Non-combatants, evacuate on the carrier!”
+
+@18444 Eiji · エイジ
+> 「レイズナーで迎撃に加わります!」
+“I'll join the interception in the Layzner!”
+
+@18445 Bright · ブライト
+> 「そうか……わかった、頼む」
+“I see... all right, I'm counting on you.”
+
+@18446 Quattro · クワトロ
+> 「帝国の無人機か。
+>  アポリー、ロベルト、いいな」
+“Imperial drones, huh. Aboly, Roberto, ready?”
+
+@18447 Aboly · アポリー
+> 「いつでもいけます」
+“Ready whenever you are.”
+
+@18448 Roberto · ロベルト
+> 「問題ありません、大尉」
+“No problem, Captain.”
+
+@18449 Ark · アーク（按段落 3DD1）
+> 「戦闘モードは市街戦のままで……
+>  セミオート……よし」
+“Keep combat mode set for urban warfare... semi-auto... good.”
+
+@18450 Quattro · クワトロ
+> 「{HeroName}君、どうか?」
+“{HeroName}, how about you?”
+
+@18451 Ark · アーク（按段落 3DD1）
+> 「や、やれます。大丈夫です」
+“I-I can do it. I'm fine.”
+
+@18452 Quattro · クワトロ
+> 「よし、いくぞ」
+“All right, let's go.”
+
+@18453 Quattro · クワトロ
+> 「SPT……エイジ・アスカか」
+“An SPT... Eiji Asuka, huh.”
+
+@18454 Eiji · エイジ
+> 「俺も戦います」
+“I'll fight too.”
+
+@18455 Quattro · クワトロ
+> 「助かる」
+“That helps.”
+
+@18456 Quattro · クワトロ
+> 「帝国の無人機か。
+>  アポリー、ロベルト、いいな」
+“Imperial drones, huh. Aboly, Roberto, ready?”
+
+@18457 Aboly · アポリー
+> 「問題ありません」
+“No problem.”
+
+@18458 Roberto · ロベルト
+> 「大丈夫です、大尉」
+“I'm fine, Captain.”
+
+@18459 Quattro · クワトロ
+> 「よし、いくぞ」
+“All right, let's go.”
+
+@18460 Quattro · クワトロ
+> 「SPT……エイジ・アスカか」
+“An SPT... Eiji Asuka, huh.”
+
+@18461 Eiji · エイジ
+> 「俺も戦います」
+“I'll fight too.”
+
+@18462 Quattro · クワトロ
+> 「助かる」
+“That helps.”
+
+@18463 Quattro · クワトロ
+> 「帝国の無人機か。アポリー、
+>  ロベルト、{HeroName}、どうか?」
+“Imperial drones, huh. Aboly, Roberto, {HeroName}, how about you?”
+
+@18464 Aboly · アポリー
+> 「問題ありません」
+“No problem.”
+
+@18465 Roberto · ロベルト
+> 「大丈夫です、大尉」
+“I'm fine, Captain.”
+
+@18466 Selain · セレイン（按段落 3DD2）
+> 「いつでもどうぞ、クワトロ大尉」
+“Any time you're ready, Captain Quattro.”
+
+@18467 Quattro · クワトロ
+> 「よし、いくぞ」
+“All right, let's go.”
+
+@18468 Quattro · クワトロ
+> 「SPT……エイジ・アスカか」
+“An SPT... Eiji Asuka, huh.”
+
+@18469 Eiji · エイジ
+> 「俺も戦います」
+“I'll fight too.”
+
+@18470 Quattro · クワトロ
+> 「助かる」
+“That helps.”
+
+@18471 Ark · アーク（按段落 3DD1）
+# 审校：原译第二页多了引号，按规则引号只保留首尾，删除页中多余引号。
+> 「……ソルデファーが出ていない?
+“...The Soldifar isn't launching?
+---
+>  そうか、パイロットがいないって
+>  いってたっけ
+Right, they said there's no pilot.
+---
+>  ……何を考えてるんだ、俺は。
+>  関係ないことじゃないか……」
+...What am I thinking? It's none of my business...”
+
+@18472 Gale · ゲイル
+> 「所詮ターミネーターポリスでは
+>  これが限度か……」
+“So this is the limit of the Terminator Police...”
+
+@18473 Eiji · エイジ
+> 「あれは……グライムカイザル!?
+>  まさか……」
+“That's... the Greimkaiser?! It can't be...”
+
+@18474 Gale · ゲイル
+> 「あのSPT……レイズナーだと!?
+>  エイジ、エイジ・アスカなのか!?」
+“That SPT... is that the Layzner?! Eiji, is that you, Eiji Asuka?!”
+
+@18475 Karla · カルラ
+> (エイジ・アスカ? ……あの女の弟か!)
+(Eiji Asuka? ...That woman's little brother!)
+
+@18476 Eiji · エイジ
+# 审校：“先輩”在英文中不宜直译为 Senior，改为直接称呼名字，更自然。
+> 「やはり……ゲイル先輩!」
+“Just as I thought... Gale!”
+
+@18477 Quattro · クワトロ
+> 「なんだ……どうしたというのだ?」
+“What... what's going on?”
+
+@18478 Eiji · エイジ
+# 审校：同上，去掉 Senior，改为直接称呼 Gale。
+> 「あれは……グライムカイザル!?
+>  まさか、ゲイル先輩が来たのか!?」
+“That's... the Greimkaiser?! Don't tell me Gale has come?!”
+
+@18479 Gale · ゲイル
+> 「なに!?
+>  エイジ、エイジ・アスカなのか!?」
+“What?! Eiji, is that you, Eiji Asuka?!”
+
+@18480 Karla · カルラ
+> (エイジ・アスカ? ……あの女の弟か!)
+(Eiji Asuka? ...That woman's little brother!)
+
+@18481 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> 「やはり……ゲイル先輩!」
+“Just as I thought... Gale!”
+
+@18482 Quattro · クワトロ
+> 「なんだ……どうしたというのだ?」
+“What... what's going on?”
+
+@18483 Karla · カルラ
+> 「アルバトロ・ナル・エイジ・アスカ!
+“Albatro Null Eiji Asuka!
+---
+>  よくもぬけぬけと中尉の前に
+>  現れた!」
+How dare you show your face before the Lieutenant so brazenly!”
+
+@18484 Gale · ゲイル
+> 「カルラ、やめろ
+“Karla, stop.
+---
+>  エイジ、まさかお前が
+>  生きているとは思わなかった」
+Eiji, I never thought you were still alive.”
+
+@18485 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> 「ゲイル先輩……」
+“Gale...”
+
+@18486 Gale · ゲイル
+> 「エイジ、お前が生きていたと知れば、
+>  ジュリアも喜ぶだろう
+“Eiji, if Julia knew you were alive, she'd be glad too.
+---
+>  ここでお前と出会えてよかった。
+>  投降しろ、エイジ
+I'm glad I ran into you here. Surrender, Eiji.
+---
+>  今ならばまだ、私の権限で
+>  命だけは助けられる」
+If you do it now, I can still spare your life on my authority.”
+
+@18487 Eiji · エイジ
+# 审校：原文两页为同一句台词，初稿第二页开头多加了引号，已去掉；同时去掉 Senior。
+> 「帝国にもどるつもりはありません。
+>  先輩、地球の現状を見れば
+“I have no intention of going back to the Empire. Gale, if you look at Earth as it is now,
+---
+>  帝国が間違っているのは
+>  わかるはずです」
+you must see that the Empire is wrong.”
+
+@18488 Gale · ゲイル
+# 审校：原文“反逆者の弟を持つ兄”指身为叛徒的哥哥，初稿误译为“traitor's brother”，改为“the brother of a traitor”。
+> 「……お前の体の半分に流れる
+>  地球人の血か……
+“...The Earthling blood flowing through half your body, is it...
+---
+>  エイジ、反逆者の弟を持つ
+>  兄のことを考えたことがあるのか
+Eiji, have you ever thought about what it's like to be the brother of a traitor?
+---
+>  今ならまだ間に合う。
+>  エイジ、我々に投降しろ」
+There's still time. Eiji, surrender to us.”
+
+@18489 Quattro · クワトロ
+> 「勝手なことを! エイジ・アスカ、
+>  迷いは自分を殺すことになる!
+“You can't just decide that! Eiji Asuka, hesitation will only get you killed!
+---
+>  ここは戦場だぞ!」
+This is a battlefield!”
+
+@18490 Gale · ゲイル
+> 「戦わぬわけには、いかんようだな……」
+“It seems I have no choice but to fight...”
+
+@18491 Ark · アーク（按段落 3DD1）
+> 「あんなに敵が……
+>  なんでソルデファーが出ていないんだ!?
+“So many enemies... why isn't the Soldifar launching?!
+---
+>  ……いや、パイロットが、いないんだ。
+>  くっ、なんでこんな時に……」
+...No, there's no pilot. Damn, why now of all times...”
+
+@18492 Ark · アーク（按段落 3DD1）
+> 「あんなに敵が……くっ」
+“So many enemies... ngh.”
+
+@18493 Bright · ブライト
+> 「おい、貴様何をしている!」
+“Hey, what do you think you're doing?!”
+
+@18494 Ark · アーク（按段落 3DD1）
+# 审校：原文三页为同一句台词，初稿第二、三页开头多加了引号，已去掉。
+> 「パイロットがいないんでしょ!?
+>  あんなに敵が多くちゃ
+“There's no pilot, right?! With that many enemies out there,
+---
+>  いくらクワトロ大尉だって
+>  やられちゃいますよ!
+even Captain Quattro will get shot down!
+---
+>  僕でも少しぐらいは
+>  敵を減らせます!」
+I can at least thin them out a little!”
+
+@18495 Bright · ブライト
+> 「お前……{HeroName}か!?
+>  もどって来たのか
+“You... {HeroName}?! You came back?
+---
+>  わかった、まかせる」
+All right, I'm leaving it to you.”
+
+@18496 Ark · アーク（按段落 3DD1）
+> 「はい!」
+“Yes, sir!”
+
+@18497 Quattro · クワトロ
+> 「ソルデファー?
+>  誰が動かしているのだ?」
+“The Soldifar? Who's piloting it?”
+
+@18498 Ark · アーク（按段落 3DD1）
+> 「クワトロ大尉、僕も手伝います」
+“Captain Quattro, I'll help too.”
+
+@18499 Quattro · クワトロ
+> 「{HeroName}君か。いいのか?」
+“{HeroName}, is it? Are you sure?”
+
+@18500 Ark · アーク（按段落 3DD1）
+> 「一人だけ逃げるのが、
+>  イヤになっただけです」
+“I just got tired of being the only one running away.”
+
+@18501 Quattro · クワトロ
+> 「死ぬかもしれんのだぞ?」
+“You might die, you know?”
+
+@18502 Ark · アーク（按段落 3DD1）
+> 「わかってます」
+“I know.”
+
+@18503 Quattro · クワトロ
+> 「本気のようだな。わかった、頼むぞ」
+“You seem serious. All right, I'm counting on you.”
+
+@18504 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> 「ゲイル先輩!?」
+“Gale?!”
+
+@18505 Gale · ゲイル
+> 「撃破した相手のことを気にかける
+>  とは、相変わらず甘い奴だ
+“Worrying about the one you shot down... you're as soft as ever.
+---
+>  だがエイジ……これで私とお前の
+>  いく道が決まったようだな
+But Eiji... it seems our paths are now decided.
+---
+>  ……次に会ったときは容赦しない」
+...Next time we meet, I won't hold back.”
+
+@18506 Gale · ゲイル
+> 「撃破した相手のことを気にかける
+>  とは、相変わらず甘い奴だ
+“Worrying about the one you shot down... you're as soft as ever.
+---
+>  だがエイジ……これで私とお前の
+>  いく道が決まったようだな
+But Eiji... it seems our paths are now decided.
+---
+>  ……次に会ったときは容赦しない
+>  全機帰投しろ!」
+...Next time we meet, I won't hold back. All units, return to base!”
+
+@18507 Gale · ゲイル
+> 「くっ、私としたことが。
+>  エイジ……
+“Ngh, to think I'd let this happen. Eiji...
+---
+>  これで私とお前のいく道が
+>  決まったようだな
+it seems our paths are now decided.
+---
+>  次に会ったときは、
+>  私も容赦しない」
+Next time we meet, I won't hold back either.”
+
+@18508 Gale · ゲイル
+> 「くっ、私としたことが。
+>  エイジ……
+“Ngh, to think I'd let this happen. Eiji...
+---
+>  これで私とお前のいく道が
+>  決まったようだな
+it seems our paths are now decided.
+---
+>  次に会ったときは、
+>  私も容赦しない
+Next time we meet, I won't hold back either.
+---
+>  全機帰投しろ!」
+All units, return to base!”
+
+@18509 Karla · カルラ
+> 「ゲイル中尉!? くっ……この次は
+>  必ず……」
+“Lieutenant Gale?! Ngh... next time, I swear...”
+
+@18510 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> 「ゲイル先輩!」
+“Gale!”
+
+@18511 Gale · ゲイル
+> 「エイジ、本気でこの私と
+>  戦おうというのか? エイジ!」
+“Eiji, you really mean to fight me? Eiji!”
+
+@18512 Quattro · クワトロ
+> 「大丈夫なのか、エイジ・アスカ?
+>  我々も移動するぞ」
+“Are you all right, Eiji Asuka? We're moving out too.”
+
+@18513 Eiji · エイジ
+> 「……大丈夫です、いけます」
+“...I'm fine. I can do this.”
+
+@18514 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> (ゲイル先輩……)
+(Gale...)
+
+@18515 Selain · セレイン（按段落 3DD2）
+> 「あれがエイジ・アスカ……
+>  地球と帝国の混血か……」
+“So that's Eiji Asuka... half Earthling, half Imperial...”
+
+@18516 Roberto · ロベルト
+> 「中佐、ブレックス准将からの
+>  連絡です」
+“Lieutenant Colonel, we have a message from Brigadier General Blex.”
+
+@18517 Bright · ブライト
+> 「わかった。まわしてくれ」
+“Understood. Put him through.”
+
+@18518 Blex · ブレックス
+> 「無事でなによりだ、中佐。
+>  大尉も」
+“I'm glad you're safe, Lieutenant Colonel. Captain, you as well.”
+
+@18519 Bright · ブライト
+> 「はい、ソルデファーと
+>  レイズナーに助けられました」
+“Yes, the Soldifar and the Layzner saved us.”
+
+@18520 Bright · ブライト
+> 「はい、スヴァンヒルドと
+>  レイズナーに助けられました」
+“Yes, the Svanheld and the Layzner saved us.”
+
+@18521 Blex · ブレックス
+> 「帝国の試作機と、
+>  帝国の出でありながら
+“An Imperial prototype, and one who, though born of the Empire,
+---
+>  帝国に反抗する者か。さすがに
+>  中佐の部隊には
+resists it. Truly, the Lieutenant Colonel's unit
+---
+>  特異な存在が集まるな」
+gathers quite the unusual bunch.”
+
+@18522 Quattro · クワトロ
+> 「ブレックス准将、それで
+>  例の件はどうなっているのです?」
+“Brigadier General Blex, so what of that matter?”
+
+@18523 Blex · ブレックス
+> 「ああ、順調に進んでいる。
+>  君たちの他にもいくつか
+“Ah, it's proceeding smoothly. Besides you, we're now in a position
+---
+>  遊撃部隊を編成できる
+>  目処もついてきた
+to form several more guerrilla units.
+---
+>  カラバとの相互支援の話も
+>  進めている」
+Talks with Karaba for mutual support are moving along as well.”
+
+@18524 Quattro · クワトロ
+> 「准将、各地で軍事行動
+>  を起こすのは重要ですが
+“Brigadier General, military action across the regions is important,
+---
+>  こちらも戦力を増強して
+>  いただきませんと」
+but we need you to strengthen our forces as well.”
+
+@18525 Blex · ブレックス
+> 「わかっているよ、大尉。ニューヨーク
+>  方面のゲリラと話がついている
+“I know, Captain. We've reached an understanding with the guerrillas in the New York area.
+---
+>  これからそちらへ向かって
+>  彼らと合流してもらいたい
+I want you to head there and join up with them.
+---
+>  詳しい話はヘンケン君に
+>  聞いてくれたまえ」
+Ask Henken for the details.”
+
+@18526 Aboly · アポリー
+# 审校：同上，去掉 Senior，改为直接称呼 Gale。
+> 「なぁ、お前、あのゲイル先輩
+>  ってのとどういう関係なんだ?
+“Hey, you, what's your connection to that Gale?
+---
+>  向こうは弟っていってただろう?」
+He called you his little brother, right?”
+
+@18527 Eiji · エイジ
+# 审校：同上，去掉 Senior。
+> 「……ゲイル先輩は……
+>  姉さんの婚約者なんです」
+“...Gale is... my sister's fiance.”
+
+@18528 Aboly · アポリー
+> 「……本当かよ。
+>  悪いこと聞いちまったみたいだな」
+“...You're kidding. Guess I asked something I shouldn't have.”
+
+@18529 Eiji · エイジ
+> 「いえ……僕は3年前に
+>  帝国を捨てた身です」
+“No... I'm the one who abandoned the Empire three years ago.”
+
+@18530 Aboly · アポリー
+> 「そうか……
+“I see...
+---
+>  そういや俺たちと一緒に
+>  来てくれるそうじゃないか
+By the way, I hear you're coming along with us.
+---
+>  すこし休んどけよ、エイジ。
+>  お前もだぞ、{HeroName}
+Get some rest, Eiji. You too, {HeroName}.
+---
+>  休めるときに休むのも
+>  パイロットの仕事のうちだからな」
+Resting when you can is part of a pilot's job.”
+
+@18531 Ark · アーク（按段落 3DD1）
+> 「は、はい、
+>  そうさせてもらいます」
+“Y-yes, I'll do that.”
+
+@18532 Aboly · アポリー
+> 「おう、素直なのはいいことだ。
+>  これからも頼むぞ」
+“Oh, being honest is a good thing. I'll be counting on you from now on too.”
+
+@18533 Aboly · アポリー
+> 「そうか……
+“I see...
+---
+>  そういや俺たちと一緒に
+>  来てくれるそうじゃないか
+By the way, I hear you're coming along with us.
+---
+>  すこし休んどけよ、エイジ
+Get some rest, Eiji.
+---
+>  {HeroFull}、
+>  ブライト中佐が呼んでたぞ」
+{HeroFull}, Lieutenant Colonel Bright was calling for you.”
+
+@18534 Ark · アーク（按段落 3DD1）
+> 「は、はい」
+“Y-yes.”
+
+@18535 Ark · アーク（按段落 3DD1）
+> 「あの、何か……?」
+“Um, is something...?”
+
+@18536 Bright · ブライト
+> 「我々、地球解放戦線に
+>  加わる以上、客としての扱いは
+“As long as we're joining the Liberation Front of the Earth, don't expect
+---
+>  期待するな。それから、自分の
+>  機体の整備は自分でやっておけ
+to be treated as a guest. Also, handle the maintenance of your own machine yourself.
+---
+>  人を使ってもいい。お前が責任を
+>  持ってやるんだ。わかったな?」
+You may use others. But you take responsibility for it. Understood?”
+
+@18537 Ark · アーク（按段落 3DD1）
+> 「なっ……」
+“What...”
+
+@18538 Bright · ブライト
+> 「わかったのか!?」
+“Did you hear me?!”
+
+@18539 Ark · アーク（按段落 3DD1）
+> 「……わかりましたよ。
+>  やればいいんでしょう。やりますよ
+“...Fine, I understand. I'll just do it, right? I'll do it.
+---
+>  僕だって遊んでるつもりはないんだ」
+I'm not here to fool around either.”
+
+@18540 Aboly · アポリー
+> 「そうか……
+“I see...
+---
+>  そういや俺たちと一緒に
+>  来てくれるそうじゃないか
+By the way, I hear you're coming along with us.
+---
+>  すこし休んどけよ、エイジ。
+>  お前もだぞ、{HeroName}
+Get some rest, Eiji. You too, {HeroName}.
+---
+>  休めるときに休むのも
+>  パイロットの仕事のうちだからな」
+Resting when you can is part of a pilot's job.”
+
+@18541 Selain · セレイン（按段落 3DD2）
+> 「わかっている
+“I know.
+---
+>  しかし駆動系のチェックくらいは
+>  やっておきたい」
+But I'd at least like to check the drive system.”
+
+@18542 Aboly · アポリー
+# 审校：“かわいくないねぇ”应译出“不可爱”之意，原译“no fun”偏离原意。
+> 「なんだよお前。
+>  かわいくないねぇ、まったく」
+“What's with you? You're not cute at all, you know.”
+
+@18543 Selain · セレイン（按段落 3DD2）
+> 「それで結構。
+>  別に女であることに興味はない」
+“That's fine. I have no particular interest in being a woman.”
+
+@18544 Aboly · アポリー
+> 「はいはい、わかったよ」
+“Yeah, yeah, I got it.”

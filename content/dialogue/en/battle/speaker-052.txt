@@ -1,0 +1,248 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5846 Gato · ガトー
+> 「これでとどめだっ!」
+“This is the finishing blow!”
+
+@5847 Gato · ガトー
+> 「私のじゃまをするなっ!!」
+“Don't get in my way!!”
+
+@5848 Gato · ガトー
+# 审校：“私は義によって立っているからな!!”是卡托说明自己不败的理由，补上“For”使因果关系更清晰。
+> 「私は負けん!!
+>  私は義によって立っているからな!!」
+“I will not lose!! For I stand on righteousness!!”
+
+@5849 Gato · ガトー
+> 「当ててみせる!!」
+“I'll make it hit!!”
+
+@5850 Gato · ガトー
+> 「あまいなっ!!」
+“Too naive!!”
+
+@5851 Gato · ガトー
+> 「なめるなっ!!」
+“Don't underestimate me!!”
+
+@5852 Gato · ガトー
+> 「おそいっ!!」
+“Too slow!!”
+
+@5853 Gato · ガトー
+> 「やらせんっ!!」
+“I won't let you!!”
+
+@5854 Gato · ガトー
+> 「じゃまだっ!!」
+“Out of my way!!”
+
+@5855 Gato · ガトー
+> 「もらったっ!!」
+“Got you!!”
+
+@5856 Gato · ガトー
+> 「そこだっ!!」
+“There!!”
+
+@5857 Gato · ガトー
+> 「手間取るわけにはいかぬ!」
+“I can't afford to waste time!”
+
+@5858 Gato · ガトー
+> 「落ちろっ!!」
+“Fall!!”
+
+@5859 Gato · ガトー
+> 「しずめぇーっ!!」
+“Take 'em down!!”
+
+@5860 Gato · ガトー
+> 「後退せんのか。よい覚悟だ!」
+“You won't retreat? Good resolve!”
+
+@5861 Gato · ガトー
+> 「このっ!!」
+“Why you!!”
+
+@5862 Gato · ガトー
+> 「邪魔をするなーっ!!」
+“Don't get in my way!!”
+
+@5863 Gato · ガトー
+> 「どけいっ!!」
+“Move it!!”
+
+@5864 Gato · ガトー
+> 「直撃させるっ!!」
+“Direct hit!!”
+
+@5865 Gato · ガトー
+> 「くっ! ぬかった!!」
+“Ngh! I slipped up!!”
+
+@5866 Gato · ガトー
+> 「くっ!! ここまでか!!」
+“Ngh!! Is this as far as I go!!”
+
+@5867 Gato · ガトー
+# 审校：“なんだと!?”在此处是震惊的感叹，不是真的询问对方说了什么，译为“What?!”更符合战斗情境。
+> 「なんだと!?」
+“What?!”
+
+@5868 Gato · ガトー
+> 「ぐうぅぅっ!!」
+“Guuuh!!”
+
+@5869 Gato · ガトー
+> 「南無三!」
+“Alas!”
+
+@5870 Gato · ガトー
+> 「ちいっ!!
+>  このままでは機体がもたん!」
+“Tch!! At this rate the unit won't hold!”
+
+@5871 Gato · ガトー
+> 「な、なんと……バカなっ!」
+“W-what... impossible!”
+
+@5872 Gato · ガトー
+> 「うおっ! バカな、
+>  この私がおされているだと!?」
+“Uooh! Impossible, I'm being pushed back?!”
+
+@5873 Gato · ガトー
+> 「むうっ!! ダメージを受けすぎたか!?」
+“Mmph!! Have I taken too much damage?!”
+
+@5874 Gato · ガトー
+> 「くっ!! しかし、まだやられはせん!」
+“Ngh!! But I'm not done yet!”
+
+@5875 Gato · ガトー
+> 「むうっ! や、やるな!」
+“Mmph! N-not bad!”
+
+@5876 Gato · ガトー
+> 「こんなもので、落ちはしない!」
+“I won't fall from something like this!”
+
+@5877 Gato · ガトー
+> 「ぐ!
+>  この私に手傷を負わせるとは……」
+“Guh! To wound me like this...”
+
+@5878 Gato · ガトー
+> 「うっ! 少しはやるようだな……」
+“Ugh! You're a little better than I thought...”
+
+@5879 Gato · ガトー
+> 「ぬうっ!! まだまだあっ!!」
+“Ngh!! I'm not done yet!!”
+
+@5880 Gato · ガトー
+> 「うおっ!! これしきのことで!!」
+“Ugh!! As if this would stop me!!”
+
+@5881 Gato · ガトー
+> 「くっ!!
+>  だが、この程度ならば!!」
+“Ngh!! But at this level, I can still fight!!”
+
+@5882 Gato · ガトー
+> 「くっ、情けない! これほどの
+>  損傷を受けるとは!」
+“Ngh, how pathetic! To take this much damage!”
+
+@5883 Gato · ガトー
+> 「そんなものか!!」
+“Is that all you've got?!”
+
+@5884 Gato · ガトー
+> 「たかがかすりキズだ!」
+“It's just a scratch!”
+
+@5885 Gato · ガトー
+> 「効きはせん!!」
+“It won't work on me!!”
+
+@5886 Gato · ガトー
+# 审校：「蟷螂の斧」是成语，直译成 mantis's axe 不自然，改为英文对应表达。
+> 「貴様の攻撃など、しょせん
+>  蟷螂の斧!」
+“Your attacks are nothing but a mantis trying to stop a cart!”
+
+@5887 Gato · ガトー
+> 「ぬうっ!! まだだ! まだやられはせん!」
+“Ngh!! Not yet! I'm not going down yet!”
+
+@5888 Gato · ガトー
+> 「まだまだだな!!」
+“You're still no match for me!!”
+
+@5889 Gato · ガトー
+> 「ふっ、笑止!」
+“Hmph, ridiculous!”
+
+@5890 Gato · ガトー
+> 「そこかっ!」
+“There!”
+
+@5891 Gato · ガトー
+> 「見切った!!」
+“I saw right through it!!”
+
+@5892 Gato · ガトー
+# 审校：原译把反问对象弄反，改为符合原文“你以为我看不穿这种程度的攻击吗”的语气。
+> 「その程度の攻撃、
+>  見切れぬ私と思ってかっ!」
+“Did you think I couldn't see through an attack like that?!”
+
+@5893 Gato · ガトー
+> 「あまいなっ!」
+“Too naive!”
+
+@5894 Gato · ガトー
+# 审校：「間合いがあまい」指时机/距离判断不严，spacing 太直译，改为更自然的战斗用语。
+> 「間合いがあまいっ!」
+“Your timing is too slow!”
+
+@5895 Gato · ガトー
+> 「あたりはせんよ!」
+“You won't hit me!”
+
+@5896 Gato · ガトー
+> 「未熟!」
+“Amateur!”
+
+@5897 Gato · ガトー
+> 「効かぬわっ!」
+“It has no effect!”
+
+@5898 Gato · ガトー
+> 「効かんよ!その程度ではな!」
+“It won't work! Not at that level!”
+
+@5899 Gato · ガトー
+> 「フン、その程度の攻撃!!」
+“Hmph, an attack like that!!”
+
+@5900 Gato · ガトー
+> 「ビームなど効かん!」
+“Beams won't work on me!”
+
+@5901 Gato · ガトー
+> 「何っ!? 弾切れだというのか!?」
+“What?! You mean I'm out of ammo?!”
+
+@5902 Gato · ガトー
+> 「くっ! だめか!?」
+“Ngh! Is it no good?!”
+
+@5903 Gato · ガトー
+# 审校：原文是说自己被射程外攻击，原译 from out of range 可接受但稍生硬，改为更自然表达。
+> 「くっ!
+>  射程距離外からの攻撃とはな」
+“Ngh! Attacking from outside my range, are you?”

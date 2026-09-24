@@ -1,0 +1,129 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6808 Dorothy · ドロシー
+> 「撃つのよ!」
+“Fire!”
+
+@6809 Dorothy · ドロシー
+> 「さぁここで作戦変更よ」
+“Now then, time to change the plan.”
+
+@6810 Dorothy · ドロシー
+> 「時代は正しき方向に流れるべき
+>  なのよ!」
+“The tide of the age must flow in the right direction!”
+
+@6811 Dorothy · ドロシー
+> 「さぁ、いきますわよ!」
+“Now then, here I go!”
+
+@6812 Dorothy · ドロシー
+> 「これは戦争ですのよ」
+“This is war, you know.”
+
+@6813 Dorothy · ドロシー
+> 「あなたの死も、理想のための
+>  尊い犠牲ですわ!」
+“Your death, too, is a noble sacrifice for our ideals!”
+
+@6814 Dorothy · ドロシー
+> 「これで私たちの勝利に、また一歩
+>  近づきますわ」
+“With this, we are one step closer to victory.”
+
+@6815 Dorothy · ドロシー
+> 「もうなにもかも遅いですわ」
+“It's all too late now.”
+
+@6816 Dorothy · ドロシー
+> 「さぁ、戦いなさい」
+“Now then, fight.”
+
+@6817 Dorothy · ドロシー
+> 「逃げるなんてだめ、
+>  あなたは戦わなくてはならないのよ」
+“Running away is not allowed. You must fight.”
+
+@6818 Dorothy · ドロシー
+> 「さぁお人形さんたち、華麗なダンス
+>  を踊りなさい」
+“Now then, my little dolls, dance a splendid dance.”
+
+@6819 Dorothy · ドロシー
+> 「こんなはずじゃ……
+>  こんなはずじゃなかったのに……」
+“This can't be... it wasn't supposed to be like this...”
+
+@6820 Dorothy · ドロシー
+> 「あうっ!? なぜ、なぜなの!?」
+“Agh?! Why, why is this happening?!”
+
+@6821 Dorothy · ドロシー
+> 「あぁっ! こ、こんなはずは……!?」
+“Aah! Th-this can't be...?!”
+
+@6822 Dorothy · ドロシー
+> 「きゃぁぁぁぁぁーっ!」
+“Kyaaaaaaah!”
+
+@6823 Dorothy · ドロシー
+> 「うっ、こちらを予測している
+>  というの!?」
+“Ngh, you anticipated this?!”
+
+@6824 Dorothy · ドロシー
+> 「な、流れがかわった!?」
+“Wh-what, the tide has turned?!”
+
+@6825 Dorothy · ドロシー
+> 「うぅっ、どうして!?」
+“Ugh, why?!”
+
+@6826 Dorothy · ドロシー
+> 「悪くありませんわ」
+“Not bad.”
+
+@6827 Dorothy · ドロシー
+> 「あなたの力はその程度ですのね」
+“So your power is only that much.”
+
+@6828 Dorothy · ドロシー
+> 「フフフフ、それでは戦う意味など
+>  ありませんわ」
+“Hehehehe, then there's no point in fighting.”
+
+@6829 Dorothy · ドロシー
+> 「どうやらはずれたようですわね?」
+“It seems you missed, didn't you?”
+
+@6830 Dorothy · ドロシー
+> 「あたりませんわ」
+“You won't hit me.”
+
+@6831 Dorothy · ドロシー
+> 「愚かな行為ですわね」
+“What a foolish act.”
+
+@6832 Dorothy · ドロシー
+> 「このシステム、さすがですわミリアルド様」
+“This system is truly superb, Lord Milliardo.”
+
+@6833 Dorothy · ドロシー
+> 「そんな攻撃じゃ、だめ」
+“An attack like that won't do.”
+
+@6834 Dorothy · ドロシー
+> 「効きませんわ」
+“It doesn't work on me.”
+
+@6835 Dorothy · ドロシー
+> 「ふふふふ、このシステムは完璧ですわ」
+“Hehehehe, this system is perfect.”
+
+@6836 Dorothy · ドロシー
+> 「弾切れ!? どうしてっ!?」
+“Out of ammo?! How?!”
+
+@6837 Dorothy · ドロシー
+> 「なぜ!? なぜ届かないの!?」
+“Why?! Why won't it reach?!”

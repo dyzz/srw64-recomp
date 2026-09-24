@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7273 Ginrei · 銀鈴
+> 「やぁっ!」
+“Yah!”
+
+@7274 Ginrei · 銀鈴
+# 审校：「えいっ!」是攻击时的发力喊声，初稿直译成“Ei!”不像英语战斗呼喊，改为自然的“Hiyah!”
+> 「えいっ!」
+“Hiyah!”
+
+@7275 Ginrei · 銀鈴
+> 「いくわよっ」
+“Here I go!”
+
+@7276 Ginrei · 銀鈴
+> 「これが受けられるかしら!?」
+“Think you can take this?!”
+
+@7277 Ginrei · 銀鈴
+> 「キリがないわ」
+“This is endless.”
+
+@7278 Ginrei · 銀鈴
+> 「油断してるとケガするわよ!」
+“You'll get hurt if you drop your guard!”
+
+@7279 Ginrei · 銀鈴
+> 「いけるわっ」
+“I can do this!”
+
+@7280 Ginrei · 銀鈴
+> 「これを受けてみなさい!」
+“Try taking this!”
+
+@7281 Ginrei · 銀鈴
+> 「たあぁぁぁぁっ!」
+“Taaaaaah!”
+
+@7282 Ginrei · 銀鈴
+> 「はっ」
+“Hah!”
+
+@7283 Ginrei · 銀鈴
+> 「はぁっ!」
+“Haah!”
+
+@7284 Ginrei · 銀鈴
+> 「きゃぁぁぁぁっ!!」
+“Kyaaaaaah!!”
+
+@7285 Ginrei · 銀鈴
+> 「いやぁぁぁぁっ!」
+“Nooooo!!”
+
+@7286 Ginrei · 銀鈴
+> 「あぁぁぁうぅぅぅっ!!」
+“Aaaaauuugh!!”
+
+@7287 Ginrei · 銀鈴
+> 「これくらいのことでは、私は負けない!」
+“A little thing like this won't beat me!”
+
+@7288 Ginrei · 銀鈴
+> 「そ、そんなっ!?」
+“Th-That can't be?!”
+
+@7289 Ginrei · 銀鈴
+> 「こ、これは!?」
+“Wh-What is this?!”
+
+@7290 Ginrei · 銀鈴
+> 「あぁ!?」
+“Aah?!”
+
+@7291 Ginrei · 銀鈴
+> 「パワーの差が圧倒的だわ、でもっ!」
+“The power gap is overwhelming, but still!”
+
+@7292 Ginrei · 銀鈴
+> 「な、なんてこと!?」
+“Wh-What in the world?!”
+
+@7293 Ginrei · 銀鈴
+> 「うぅっ、許せないわ!」
+“Ugh, I won't forgive this!”
+
+@7294 Ginrei · 銀鈴
+> 「あぅぅっ」
+“Augh!”
+
+@7295 Ginrei · 銀鈴
+> 「そんな攻撃が効くと思って!?」
+“You think an attack like that will work?!”
+
+@7296 Ginrei · 銀鈴
+> 「くっ!」
+“Ngh!”
+
+@7297 Ginrei · 銀鈴
+> 「あっ!?」
+“Ah?!”
+
+@7298 Ginrei · 銀鈴
+> 「やった!」
+“Got it!”
+
+@7299 Ginrei · 銀鈴
+> 「気づくのが遅かったわね!」
+“You noticed too late!”
+
+@7300 Ginrei · 銀鈴
+> 「右よっ!」
+“To the right!”
+
+@7301 Ginrei · 銀鈴
+# 审校：「スピードならっ!」是省略句，初稿“When it comes to speed!”语气较完整，改为更口语的“If it's speed!”
+> 「スピードならっ!」
+“If it's speed!”
+
+@7302 Ginrei · 銀鈴
+> 「この銀鈴には効かないわよ!」
+“That won't work on Ginrei!”
+
+@7303 Ginrei · 銀鈴
+> 「なに? 弾切れですって!?」
+“What? Out of ammo?!”
+
+@7304 Ginrei · 銀鈴
+> 「く、届かないなんてっ!」
+“I-It won't reach?!”

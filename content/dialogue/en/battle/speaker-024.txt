@@ -1,0 +1,37 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11821 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11822 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11823 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11824 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11825 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11826 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11827 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11828 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”
+
+@11829 Lawrence · ローレンス
+> 「ばかめ!」
+“Fool!”

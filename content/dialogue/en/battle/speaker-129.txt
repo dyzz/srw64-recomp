@@ -1,0 +1,188 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10055 Tekkoki · 鉄甲鬼
+> 「俺は貴様らと勝負するために
+>  こうしてやって来たんだ!」
+“I came here to settle things with you lot!”
+
+@10056 Tekkoki · 鉄甲鬼
+> 「俺は、正々堂々と戦う!」
+“I fight fair and square!”
+
+@10057 Tekkoki · 鉄甲鬼
+> 「とうっ!」
+“Toh!”
+
+@10058 Tekkoki · 鉄甲鬼
+> 「俺は百鬼一族の鉄甲鬼だ!」
+“I am Tekkoki of the Hyakki Clan!”
+
+@10059 Tekkoki · 鉄甲鬼
+> 「決着をつけてやるっ!」
+“I'll finish this!”
+
+@10060 Tekkoki · 鉄甲鬼
+> 「では、いくぞぉっ!」
+“Then here I come!”
+
+@10061 Tekkoki · 鉄甲鬼
+> 「俺はこの時を待ち望んでいたんだ!」
+“I've been waiting for this moment!”
+
+@10062 Tekkoki · 鉄甲鬼
+> 「そらぁっ!」
+“There!”
+
+@10063 Tekkoki · 鉄甲鬼
+> 「俺の作ったこのメカ鉄甲鬼で
+>  貴様を倒す!」
+“I'll destroy you with this Mecha Tekkoki I built!”
+
+@10064 Tekkoki · 鉄甲鬼
+> 「さっさと消えうせろーッ!」
+“Hurry up and disappear!”
+
+@10065 Tekkoki · 鉄甲鬼
+> 「受けてみろ!」
+“Try and take this!”
+
+@10066 Tekkoki · 鉄甲鬼
+> 「このおぉぉぉ!」
+“Why youuu!”
+
+@10067 Tekkoki · 鉄甲鬼
+> 「うおおぉぉぉ!!」
+“Uwooooh!!”
+
+@10068 Tekkoki · 鉄甲鬼
+> 「く……ま、負けたのか……」
+“Guh... I-I lost...?”
+
+@10069 Tekkoki · 鉄甲鬼
+> 「こ、このメカ鉄甲鬼がやられる
+>  はずが……!!」
+“Th-this Mecha Tekkoki can't be beaten...!!”
+
+@10070 Tekkoki · 鉄甲鬼
+> 「ば、ばかな……こんなことが……」
+“I-impossible... This can't be...”
+
+@10071 Tekkoki · 鉄甲鬼
+> 「よ、よくも俺の名誉に
+>  傷をつけてくれたなっ!」
+“H-how dare you tarnish my honor!”
+
+@10072 Tekkoki · 鉄甲鬼
+> 「ぐ……貴様を倒して俺は、
+>  堂々と帰ってやるっ!」
+“Guh... I'll defeat you and return in triumph!”
+
+@10073 Tekkoki · 鉄甲鬼
+> 「バ、バカな!? こんなことが……」
+“I-impossible?! This can't be...”
+
+@10074 Tekkoki · 鉄甲鬼
+> 「こ、こいつ……強い!?」
+“Th-this one... is strong?!”
+
+@10075 Tekkoki · 鉄甲鬼
+> 「フッ、このメカ鉄甲鬼が負けると
+>  でも思っているのか!」
+“Hmph, you think this Mecha Tekkoki would lose?!”
+
+@10076 Tekkoki · 鉄甲鬼
+> 「くっ、これしきの傷でへばる
+>  俺ではないぞ!」
+“Guh, a wound like this won't slow me down!”
+
+@10077 Tekkoki · 鉄甲鬼
+> 「フッ、相手にとって不足はない!」
+“Hmph, you're no unworthy opponent!”
+
+@10078 Tekkoki · 鉄甲鬼
+> 「なに!? やるな!」
+“What?! Not bad!”
+
+@10079 Tekkoki · 鉄甲鬼
+> 「うっ……この程度でっ!」
+“Ugh... this much won't...!”
+
+@10080 Tekkoki · 鉄甲鬼
+> 「な、なんだとっ!」
+“W-what did you say?!”
+
+@10081 Tekkoki · 鉄甲鬼
+> 「こ、このままではすまさんっ!」
+“I-I won't let this stand!”
+
+@10082 Tekkoki · 鉄甲鬼
+> 「俺の邪魔をするな!」
+“Don't get in my way!”
+
+@10083 Tekkoki · 鉄甲鬼
+> 「ふんっ!」
+“Hmph!”
+
+@10084 Tekkoki · 鉄甲鬼
+# 审校：原文“武器”是单数，初稿误为复数 weapons。
+> 「貴様の武器はそれだけか!!」
+“Is that the only weapon you have?!”
+
+@10085 Tekkoki · 鉄甲鬼
+> 「その程度では通用せん!」
+“That won't work on me!”
+
+@10086 Tekkoki · 鉄甲鬼
+> 「そんなものか!」
+“Is that all you've got?!”
+
+@10087 Tekkoki · 鉄甲鬼
+> 「このメカ鉄甲鬼を甘く見ては
+>  困るな!」
+“You'd best not underestimate this Mecha Tekkoki!”
+
+@10088 Tekkoki · 鉄甲鬼
+> 「あわてるなっ!」
+“Don't panic!”
+
+@10089 Tekkoki · 鉄甲鬼
+> 「はぁっ!」
+“Hah!”
+
+@10090 Tekkoki · 鉄甲鬼
+> 「あたるものかっ!」
+“You'll never hit me!”
+
+@10091 Tekkoki · 鉄甲鬼
+# 审校：原文“バカめっ”是单数对象，初稿用复数 Fools 不准确。
+> 「バカめっ!」
+“You fool!”
+
+@10092 Tekkoki · 鉄甲鬼
+> 「ムダだっ!」
+“It's useless!”
+
+@10093 Tekkoki · 鉄甲鬼
+> 「フンッ、それだけか!?」
+“Hmph, is that all?!”
+
+@10094 Tekkoki · 鉄甲鬼
+> 「ムダだっ!」
+“It's useless!”
+
+@10095 Tekkoki · 鉄甲鬼
+> 「フンッ、それだけか!?」
+“Hmph, is that all?!”
+
+@10096 Tekkoki · 鉄甲鬼
+> 「エネルギー切れ!? バッ、バカな!」
+“Out of energy?! Th-That's impossible!”
+
+@10097 Tekkoki · 鉄甲鬼
+> 「うっ……届かないか……」
+“Ugh... out of range, huh...”
+
+@10098 Tekkoki · 鉄甲鬼
+# 审校：原文是两句，初稿合并为一句，改为两句更贴合原文语气。
+> 「おのれ、卑劣な真似を!」
+“You coward! Playing dirty!”

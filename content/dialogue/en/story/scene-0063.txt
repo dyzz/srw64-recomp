@@ -1,0 +1,1803 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@28210 Noin · ノイン
+> 「こちらへ。リリーナ様が
+>  お待ちになっています」
+“This way. Lady Relena is waiting for you.”
+
+@28211 Amuro · アムロ
+> 「……さすがに緊張するな」
+“...I really am nervous.”
+
+@28212 Eiji · エイジ
+> 「アムロさんもですか?
+>  英雄と呼ばれた人でも
+“You too, Amuro? Even a man called a hero
+---
+>  やっぱり緊張してるんですね。
+>  少し安心しました」
+gets nervous after all. That's a bit of a relief.”
+
+@28213 Amuro · アムロ
+> 「冗談じゃない、
+>  俺だって一般人だよ
+“Don't be ridiculous. I'm just an ordinary person too.
+---
+>  まったく、こういう時には
+>  ロアンが頼りになる」
+Honestly, this is when Roanne comes in handy.”
+
+@28214 Roanne · ロアン
+# 审校：将“we line up too many rough-looking faces”改为“if too many rough-looking faces line up”，更自然，避免把“我们”当作主动排列面孔的奇怪表达。
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ははは、あまり無骨な顔が並んでは
+>  完全平和主義に賛同する
+“Hahaha, if too many rough-looking faces line up, no one will believe
+---
+>  なんていっても信用されないかも
+>  知れませんからね。ブライト艦長が
+we support total pacifism. Maybe that's exactly why Captain Bright
+---
+>  僕たちを代表に選んだのも、
+>  案外それが理由かもしれない」
+chose us as representatives.”
+
+@28215 Ginrei · 銀鈴
+> 「あら、私たちが一番
+>  平和的な顔してるってこと?
+“Oh, so we're the most peaceful-looking ones?
+---
+>  どうかしら……。ねえ大作君?」
+I wonder... Right, Daisaku?”
+
+@28216 Daisaku · 大作
+> 「そ、そうなんですか?」
+“I-Is that so?”
+
+@28217 Noin · ノイン
+> 「皆、緊張などは無用のことです。
+>  リリーナ様は無意味な
+“There's no need for anyone to be nervous. Lady Relena has nothing
+---
+>  儀礼などとは無縁の方……
+>  お会いになればわかります」
+to do with meaningless formalities... You'll understand once you meet her.”
+
+@28218 Eiji · エイジ
+> 「はあ……。ところでノインさん、僕たちの
+>  艦は無事移動できましたか?」
+“I see... By the way, Noin, did our ship manage to move safely?”
+
+@28219 Noin · ノイン
+> 「街外れの山間部に近い谷間
+>  に極秘で設備を整えてあります
+“We've secretly prepared facilities in a valley near the mountains on the edge of town.
+---
+>  すでに移動は完了したと、
+>  連絡がありました」
+I've received word that the move is already complete.”
+
+@28220 Amuro · アムロ
+> 「そこらへんはブライトたちに
+>  まかせておけば大丈夫さ
+“That sort of thing is fine if we leave it to Bright and the others.
+---
+>  それより、着いたようだぞ」
+More importantly, it looks like we've arrived.”
+
+@28221 Ginrei · 銀鈴
+> 「ほら大作君、ネクタイ直して」
+“Come on, Daisaku, straighten your tie.”
+
+@28222 Daisaku · 大作
+> 「あ……、い、いいです。自分で……」
+“Ah... i-it's fine. I'll do it myself...”
+
+@28223 Noin · ノイン
+> 「リリーナ様、ノインです。
+>  もと地球解放戦線の方々を
+“Lady Relena, it's Noin. I've brought the former members
+---
+>  ご案内しました」
+of the Liberation Front of the Earth.”
+
+@28224 Relena · リリーナ
+> 「サンクキングダム代表、
+>  リリーナ・ピースクラフトです
+“I am Relena Peacecraft, representative of the Sanc Kingdom.
+---
+>  ようこそいらっしゃいました。
+>  お会いできて、うれしく思います」
+Welcome. I'm glad to meet you.”
+
+@28225 Amuro · アムロ
+> 「もと地球解放戦線所属、
+>  アムロ・レイです。我々の入国を
+“I'm Amuro Ray, formerly of the Liberation Front of the Earth. I thank you
+---
+>  こころよく受け入れて下さったことを
+>  感謝します」
+for kindly accepting our entry into your country.”
+
+@28226 Relena · リリーナ
+> 「いいえ、当然のことです。私たちの
+>  かかげる完全平和主義が
+“No, it's only natural. There's no telling how harsh the path of total pacifism
+---
+>  この先いかに厳しいものであるか
+>  予想もつきません。しかし、少しでも
+we advocate will be from here on. But I believe that spreading this ideal, even a little,
+---
+>  この理想を広げていくことが、
+>  この戦乱に満ちた世界を救う
+is the only way to save this world filled with war.
+---
+>  唯一の方法であると信じています
+>  もと地球解放戦線機構の
+I truly am glad that all of you from the former Liberation Front of the Earth
+---
+>  あなた方に来ていただいて、
+>  本当に喜んでいるのですよ」
+organization have come.”
+
+@28227 Noin · ノイン
+> 「…………」
+“...”
+
+@28228 Amuro · アムロ
+> 「……光栄です」
+“...I'm honored.”
+
+@28229 Relena · リリーナ
+> 「ふふ、堅苦しい言葉づかいは
+>  しないで下さいな、アムロさん
+“Hehe, please don't be so stiff with your words, Amuro.
+---
+>  ところで……、ガンダムパイロットの
+>  ヒイロ・ユイは……
+By the way... the Gundam pilot Heero Yuy...
+---
+>  ご一緒ではないのですか?」
+isn't he with you?”
+
+@28230 Amuro · アムロ
+> 「ヒイロ……ですか? 彼は少し前に、
+>  我々と別れました
+“Heero...? He parted ways with us a little while ago.
+---
+>  お知り合いだったのですか?」
+Were you acquainted with him?”
+
+@28231 Relena · リリーナ
+> 「……お友だちです。そうですか……
+>  ヒイロは、行ってしまったのですか……」
+“...He's a friend. I see... So Heero has gone...”
+
+@28232 Eiji · エイジ
+> 「あ、あの、リリーナさん、がっかりしないで
+>  下さい。そのうち必ず帰ってきます
+“U-Um, Relena, please don't be discouraged. He'll surely come back before long.
+---
+>  そうしたら、すぐにお知らせしますから」
+When he does, I'll let you know right away.”
+
+@28233 Relena · リリーナ
+> 「……ありがとう。あなたは……エイジさん?」
+“...Thank you. You are... Eiji, right?”
+
+@28234 Eiji · エイジ
+> 「は、はい! エイジ・アスカです!」
+“Y-Yes! I'm Eiji Asuka!”
+
+@28235 Relena · リリーナ
+> 「そう、あなたが。お知らせしたい
+>  ことがあるのよ。あなたのお姉さま……
+“I see, so you're the one. There's something I want to tell you. Your older sister...
+---
+>  ジュリア様も、今
+>  このサンクキングダムにいらっしゃいます
+Lady Julia is also here in the Sanc Kingdom now.
+---
+>  もうお会いになった?」
+Have you met her already?”
+
+@28236 Eiji · エイジ
+> 「姉さんが、ここに? い、いえ、
+>  知りませんでした。そうですか……
+“My sister is here? N-No, I didn't know. I see...
+---
+>  欧州にいるとは知ってましたが、
+>  サンクキングダムに……」
+I knew she was in Europe, but in the Sanc Kingdom...”
+
+@28237 Relena · リリーナ
+> 「クスコの聖女隊は、ここを中心に
+>  近隣に平和をもたらす活動を
+“Cusco's Saints is carrying out activities centered here
+---
+>  展開しています。難民の救済や
+>  国々の復興……。欧州は
+to bring peace to the surrounding area. Relief for refugees, rebuilding nations...
+---
+>  あの方々の働きで、次第に
+>  完全平和の理想に目覚め
+Thanks to their work, Europe is gradually awakening to the ideal
+---
+>  まとまりつつあります。落ち着いたら
+>  会いに行ってあげて
+of total peace and coming together. Once things settle down, go and see her.
+---
+>  きっとお喜びになるわ」
+I'm sure she'll be delighted.”
+
+@28238 Eiji · エイジ
+> 「は……、はい……。
+>  そうですね、落ち着いたら……」
+“Y-Yes... Yes... That's right, once things settle down...”
+
+@28239 Noin · ノイン
+> 「…………」
+“...”
+
+@28240 Amuro · アムロ
+> 「…………」
+“...”
+
+@28241 Pagan · パーガン
+> 「{HeroMech}の皆様、
+>  不都合はございませんか?
+“Everyone of the {HeroMech}, is there any inconvenience?
+---
+>  かようなへんぴなところに
+>  押しこめてしまって申しわけありません」
+I apologize for squeezing you into such a remote place.”
+
+@28242 Bright · ブライト
+> 「いや、気にせんで下さい。
+>  完全平和を目指す国に
+“No, don't worry about it. We can't openly bring a battleship
+---
+>  戦艦を堂々と持ちこむわけには
+>  いかない。ましてグラン・ガランを
+into a country aiming for total peace. Besides, there's nowhere
+---
+>  隠しておくところなど、
+>  街の中にはありませんからね」
+in the city to hide the Gran-Garan anyway.”
+
+@28243 Pagan · パーガン
+> 「そういっていただければ……。
+>  不足した物資などがございましたら
+“If you say so... If there's anything you're short of,
+---
+>  どうかいつでもおっしゃって下さい。
+>  すぐに用立てさせていただきます」
+please tell me anytime. I'll arrange it immediately.”
+
+@28244 Bright · ブライト
+> 「ありがたい。当面はこれで十分だが
+>  必要な時はお願いしますよ」
+“I appreciate it. This is enough for now, but I'll ask when we need something.”
+
+@28245 Pagan · パーガン
+> 「はい、何なりと。それでは、
+>  これで通信を終わります
+“Yes, anything at all. Well then, I'll end the communication here.
+---
+>  くれぐれもよろしく……」
+Please take care...”
+
+@28246 Koji · 甲児
+> 「腰の低いじいさんだなあ。
+>  あんまり下手に出られすぎても
+“He's a humble old man. When someone's too polite,
+---
+>  かえって座りが悪いぜ」
+it actually makes you feel uncomfortable.”
+
+@28247 Sayaka · さやか
+> 「こら。もう、あんたとボスだけは
+>  何があっても表に出しちゃだめね
+“Hey. Honestly, you and Boss are the last ones who should ever be shown in public.
+---
+>  一発でボロが出ちゃうわ」
+You'd give yourselves away in one shot.”
+
+@28248 Boss · ボス
+> 「なんでそこで俺さまが
+>  出てきちゃうわけ?」
+“Why does it have to be me who shows up there?”
+
+@28249 Roux · ルー
+> 「……その凶暴な顔の
+>  どこが完全平和なのよ
+“...Where in that savage face of yours is total peace?
+---
+>  いっちゃなんだけど」
+Not to be rude or anything.”
+
+@28250 Boss · ボス
+> 「失礼しちゃうわね。
+>  だいたい顔のことなら
+“How rude. Anyway, when it comes to looks,
+---
+>  ベンケイだって俺さまに
+>  負けちゃいないぜ!」
+Benkei's no match for me either!”
+
+@28251 Sayaka · さやか
+> 「……不毛だわ……」
+“...This is pointless...”
+
+@28252 Hayato · ハヤト
+> 「カミーユは何でアムロさんたちと
+>  行かなかったんだ?」
+“Why didn't you go with Amuro and the others, Kamille?”
+
+@28253 Kamille · カミーユ
+> 「顔にでちゃうかもしれないでしょ。
+>  ……完全平和ってやつが
+“Because it might show on my face. ...I still don't know
+---
+>  どれだけ信用できるか、
+>  俺にはまだわからないんです」
+how much this 'total peace' can really be trusted.”
+
+@28254 Fa · ファ
+> 「カミーユったら! まだいってるの?」
+“Kamille! Are you still going on about that?”
+
+@28255 Ryoma · リョウ
+> 「いや、無理もないさ。
+>  俺だって100パーセント
+“No, it's no wonder. I'm not a hundred percent convinced either.
+---
+>  信用してるわけじゃない。
+>  確かに理想としてはすばらしいが、な
+Sure, as an ideal it's wonderful, but
+---
+>  忍や鉄也たちの方が
+>  正しいって可能性もある
+there's a chance Shinobu and Tetsuya are the ones who are right.
+---
+>  その上でここにくることを選んだんだ。
+>  カミーユもそうじゃないのか?」
+Even knowing that, I chose to come here. Isn't it the same for you, Kamille?”
+
+@28256 Show · ショウ
+> 「彼ら、どうしてるでしょうね」
+“I wonder how they're doing.”
+
+@28257 Koji · 甲児
+> 「まったくだぜ。
+>  無事でいるといいんだがなあ」
+“You said it. I hope they're safe.”
+
+@28258 Chum · チャム
+> 「甲児って、あの人たちと
+>  けんかばっかりしてたじゃない
+“Koji, you were always fighting with those guys,
+---
+>  どーして心配すんの?」
+so why are you worried about them?”
+
+@28259 Show · ショウ
+> 「それとこれとは別だよ。
+>  チャムだって心配してるだろ?」
+“That's a different matter. You're worried too, aren't you, Chum?”
+
+@28260 Chum · チャム
+> 「それはそうだけどお」
+“Well, yeah, but...”
+
+@28261 Marvel · マーベル
+> 「そういうものよ。大丈夫、
+>  きっとすぐに会えるわ」
+“That's how it is. Don't worry, I'm sure we'll see them again soon.”
+
+@28262 David · デビッド
+> 「選んだ道は違っても……か。結局
+>  みんな、平和を目指してることに
+“Even if the paths we chose are different... huh. In the end, we're all aiming for peace.
+---
+>  変わりないもんな。奴らは奴らなりに
+>  俺たちは俺たちなりに」
+That doesn't change. They do it their way, and we do it ours.”
+
+@28263 Simone · シモーヌ
+> 「私は、この選択でよかったと思う。
+>  完全平和主義って言葉の
+“I think this choice was the right one. The words 'total pacifism'—
+---
+>  響き、確かに夢みたいだけど……
+>  ジュリアさんやリリーナさんを見てると
+sure, they sound like a dream, but... when I look at Julia and Relena,
+---
+>  感じるもの。なんていうか……
+>  未来の、可能性を、さ」
+I feel something. How should I put it... the possibility of the future, I guess.”
+
+@28264 Lera · レラ
+> 「{HeroNick}、あたしはここであんたたちと
+>  別れるよ」
+“{HeroNick}, I'm parting ways with you all here.”
+
+@28265 Ark · アーク（按段落 3DD1）
+> 「いったい、どうしたってんだよ」
+“What on earth's gotten into you?”
+
+@28266 Lera · レラ
+> 「何がなんだかわからなくなったんだ。
+>  あたしには完全平和主義なんて
+“I don't know what's what anymore. I just can't understand
+---
+>  よくわかんないよ」
+this total pacifism stuff.”
+
+@28267 Ark · アーク（按段落 3DD1）
+> 「レラ……」
+“Lera...”
+
+@28268 Lera · レラ
+> 「あたしには戦うことがすべてだったんだよ
+>  もう戦いがないっていうんなら
+“Fighting was everything to me. If there's no more fighting,
+---
+>  あたしにはもう何も残ってやしない!」
+then I've got nothing left at all!”
+
+@28269 Ark · アーク（按段落 3DD1）
+> 「ちょっと待ってくれよ、レラ」
+“Wait a minute, Lera.”
+
+@28270 Lera · レラ
+> 「さよなら、{HeroNick}!」
+“Goodbye, {HeroNick}!”
+
+@28271 Ark · アーク（按段落 3DD1）
+> 「レラ……」
+“Lera...”
+
+@28272 Lera · レラ
+> 「{HeroNick}、あたしはここであんたたちと
+>  別れるよ」
+“{HeroNick}, I'm parting ways with you all here.”
+
+@28273 Selain · セレイン（按段落 3DD2）
+> 「いったい、どうしたんだ」
+“What on earth's gotten into you?”
+
+@28274 Lera · レラ
+> 「何がなんだかわからなくなったんだ。
+>  あたしには完全平和主義なんて
+“I don't know what's what anymore. I just can't understand
+---
+>  よくわかんないよ」
+this total pacifism stuff.”
+
+@28275 Selain · セレイン（按段落 3DD2）
+> 「レラ……」
+“Lera...”
+
+@28276 Lera · レラ
+> 「あたしには戦うことがすべてだったんだよ
+>  もう戦いがないっていうんなら
+“Fighting was everything to me. If there's no more fighting,
+---
+>  あたしにはもう何も残ってやしない!」
+then I've got nothing left at all!”
+
+@28277 Selain · セレイン（按段落 3DD2）
+> 「ちょっと待て、レラ」
+“Wait, Lera.”
+
+@28278 Lera · レラ
+> 「さよなら、{HeroNick}!」
+“Goodbye, {HeroNick}!”
+
+@28279 Selain · セレイン（按段落 3DD2）
+> 「レラ……」
+“Lera...”
+
+@28280 Amuro · アムロ
+> 「ただいま。みんな、様子はどうだ?」
+“I'm back. How's everyone doing?”
+
+@28281 Bright · ブライト
+> 「やあ、ご苦労だった。こちらは
+>  異常なしだ。そっちはどうだったんだ?」
+“Hey, good work. No problems here. How did it go on your end?”
+
+@28282 Amuro · アムロ
+> 「まあ、当たりさわりのないことを、ね。
+>  リリーナ代表は
+“Well, nothing but safe, harmless talk. Representative Relena
+---
+>  なかなか美人だったよ」
+was quite a beauty, though.”
+
+@28283 Beltorchika · ベルトーチカ
+> 「つまんない冗談いわないで。
+>  真面目にやってちょうだい!」
+“Don't make boring jokes. Take this seriously!”
+
+@28284 Roanne · ロアン
+> 「まあまあ。実際の話、帝国軍に
+>  攻撃されるまでは、僕たちはあくまで
+“Now, now. The truth is, until the Imperial Army attacks us, we're strictly
+---
+>  陰の存在だから。ロームフェラの
+>  締めつけも厳しくなっているらしいが
+a shadow presence. Romefeller's pressure is apparently getting tighter too,
+---
+>  これも現状は政治の上でのことだ
+>  待機していてくれ……というのが
+but for now that's all politics. Standing by and waiting... that was
+---
+>  ノインさんの意向でした」
+what Noin wanted.”
+
+@28285 Bright · ブライト
+> 「そうか、わかった。
+>  いざという時のために……ということだな
+“I see, understood. For when the time comes... that's what this is about.
+---
+>  そうだ、補給物資を
+>  受け取ったので、今メカニックたちが
+By the way, we've received our supplies, so the mechanics are
+---
+>  各機体を整備中だ。
+>  あとで見にいってやってくれ」
+servicing each unit right now. Go check on them later.”
+
+@28286 Amuro · アムロ
+> 「わかった。アストナージひとりじゃ
+>  大変だな……。すぐに行くよ」
+“Got it. Astonaige can't handle it all alone... I'll head over right away.”
+
+@28287 Ginrei · 銀鈴
+> 「ご苦労様。大変そうね、
+>  何か手伝うことある?」
+“Thanks for your hard work. You look swamped—is there anything I can help with?”
+
+@28288 Astonaige · アストナージ
+> 「やあ、こりゃどうも。実際、
+>  人手不足でまいってますよ
+“Hey, thanks a lot. Truth is, we're short-handed and it's killing me.
+---
+>  部品を山ほどもらえたのはいいけど、
+>  レインさんやシャーリーが
+Getting a mountain of parts is great and all, but losing Rain and Shirley
+---
+>  いなくなったのが痛いなあ」
+really hurts.”
+
+@28289 Amuro · アムロ
+> 「すまないな。今は君に頼るしかない。
+>  幸い、時間には余裕があるから
+“Sorry about that. Right now we've got no choice but to rely on you. Luckily we've got time to spare,
+---
+>  無理をせずに頼むよ」
+so don't push yourself too hard.”
+
+@28290 Astonaige · アストナージ
+> 「わかってます。あ、そうそう、さっきなんか
+>  弓教授と
+“I know. Oh, that's right—earlier Prof. Yumi and
+---
+>  早乙女博士がきましてね、
+>  整備を手伝わせろって」
+Dr. Saotome came by and said to let them help with the maintenance.”
+
+@28291 Ryoma · リョウ
+> 「博士が?」
+“The Doctor did?”
+
+@28292 Sayaka · さやか
+> 「お父様が!?」
+“My father?!”
+
+@28293 Astonaige · アストナージ
+> 「年寄りを馬鹿にするな、
+>  最新のメカでもまかせておけ……
+“They said, don't underestimate us old folks, we can handle even the latest machines...
+---
+>  なんていわれまして。何とかご遠慮
+>  願いましたけどね、おそれおおくて……」
+and so on. I managed to politely decline, but, well, they're rather intimidating...”
+
+@28294 Hayato · ハヤト
+> 「博士たちには重要な研究がある
+>  そりゃ確かにおそれおおいぜ」
+“The doctors do have important research—that's certainly intimidating, all right.”
+
+@28295 Benkei · ベンケイ
+> 「俺たちパイロットもメカニックに
+>  まかせっきりでどうするんだ、ってことだな」
+“What he means is, we pilots can't just leave everything to the mechanics, can we?”
+
+@28296 Amuro · アムロ
+> 「その通りだ。アストナージ、
+>  自分の機体は俺たちが
+“Exactly. Astonaige, we'll each take care of our own units.
+---
+>  それぞれ受け持つから。
+>  指示してくれないか」
+Could you give us the instructions?”
+
+@28297 Astonaige · アストナージ
+> 「そうですか、助かります。じゃあ
+>  ここにパーツリストがありますから……」
+“Sure, that'd be a big help. Then, there's a parts list right here, so...”
+
+@28298 Sayaka · さやか
+> 「他のみんなも呼んでくるわ。
+>  甲児くんにも
+“I'll go call the others too. I've got to make Koji
+---
+>  荷物運びくらいやらせなきゃ!」
+do at least some heavy lifting!”
+
+@28299 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  ノインさんから通信です」
+“Captain Bright, an incoming transmission from Noin.”
+
+@28300 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、重大な情報です
+>  我が国の国境線に近いところで
+“Captain Bright, this is critical information. Pagan has informed us that
+---
+>  巨大な戦艦が修復中との
+>  知らせがパーガンよりありました
+a massive battleship is undergoing repairs near our national border.
+---
+>  情報部で分析した結果、
+>  先日あなた方と交戦していた
+According to our intelligence division's analysis, it appears to be
+---
+>  異世界の船……、
+>  オーラ・シップであると思われます」
+that otherworldly vessel you engaged the other day... the Aura Ship.”
+
+@28301 Show · ショウ
+> 「ウィル・ウィプス! ドレイクが!」
+“The Will-Wips! Drake!”
+
+@28302 Marvel · マーベル
+> 「こんな近くにいるなんて……」
+“To think they're this close...”
+
+@28303 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、奴らが敵なら、
+>  国境を越えさせないでほしい
+“Captain Bright, if they are our enemy, I ask that you not let them cross the border.
+---
+>  いま国内で戦闘がおこれば、
+>  ロームフェラの連中の
+If fighting breaks out within our country now, intervention by
+---
+>  介入はさけられない。
+>  何としてでも……」
+the Romefeller lot will be unavoidable. By any means necessary...”
+
+@28304 Bright · ブライト
+> 「わかりました。お知らせ下さって
+>  感謝します。ご安心下さい……
+“Understood. Thank you for informing us. Rest assured...
+---
+>  我々が、向かって叩きます」
+we will strike them head-on.”
+
+@28305 Noin · ノイン
+> 「ありがとう。では……通信を
+>  終わります。どうかご無事で……」
+“Thank you. Then... I'll end this transmission. Please, stay safe...”
+
+@28306 Chum · チャム
+> 「エレ様、シーラ様……」
+“Lady Elle, Lady Ciela...”
+
+@28307 Ciela · シーラ
+> 「彼らはいずれやってくる。
+>  彼らの目的は、我々なのですから
+“They will come eventually. After all, their goal is us.
+---
+>  我ら異世界の者が
+>  地上にある限り
+As long as we people of the other world remain on the surface,
+---
+>  オーラ力は我々を
+>  引き寄せようとするでしょう」
+the Aura Power will keep drawing us together.”
+
+@28308 Show · ショウ
+> 「それはしかたがありません。そして
+>  ドレイクは、地上の争いにどこまでも
+“That can't be helped. And Drake will stop at nothing to
+---
+>  介入しようとしている。放置して
+>  おけば、もっとひどいことになります!」
+interfere in the conflicts on the surface. If we leave him be, things will only get far worse!”
+
+@28309 Elle · エレ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「これ以上、地上の人たちを
+>  戦乱にまきこむことはできない……
+“We cannot drag the people of the surface any further into war...
+---
+>  ブライト艦長。これで最後にしたい
+>  と思います。全ての憎しみの心を
+Captain Bright. I want to make this the last one. Let us return all hearts of hatred
+---
+>  バイストン・ウェルへ
+>  返してやりましょう……
+to Byston Well...
+---
+>  最後にもう一度、
+>  あなたたちの力をかして下さい」
+For the final time, lend us your strength once more.”
+
+@28310 Bright · ブライト
+> 「いわれるまでもありません、行きましょう」
+“You don't even need to ask. Let's go.”
+
+@28311 Koji · 甲児
+> 「他人行儀ないいかたなんてしない
+>  でさ、いつもみたいに行ってこようぜ」
+“Don't talk like we're strangers—let's just head out like we always do.”
+
+@28312 Simone · シモーヌ
+> 「最後だなんて、おっしゃらないで。
+>  私たち、今はともに
+“Please don't say this is the last time. Right now, we are all together
+---
+>  {HeroMech}ですのよ」
+in the {HeroMech}.”
+
+@28313 Elle · エレ
+> 「……ありがとう……。感謝します、
+>  良き地上の人々……」
+“...Thank you... I am grateful, good people of the surface...”
+
+@28314 Ciela · シーラ
+> 「ショウ、マーベル、頼みますよ」
+“Show, Marvel, I'm counting on you.”
+
+@28315 Bright · ブライト
+> 「機関始動、
+>  総員戦闘配置!
+“Engines started, all hands to battle stations!
+---
+>  {HeroMech}、出撃する!」
+{HeroMech}, launching!”
+
+@28316 Chum · チャム
+> 「シーラさま……なぜショウとふたりっきりで
+>  お話ししなかったの?」
+“Lady Ciela... why didn't you speak with Show alone?”
+
+@28317 Ciela · シーラ
+> 「戦いが終われば、我らは
+>  バイストン・ウェルへ帰らねばなりません
+“Once the battle is over, we must return to Byston Well.
+---
+>  情は……交わさぬがいい」
+It is best... not to let feelings grow.”
+
+@28318 Chum · チャム
+> 「シーラさま……」
+“Lady Ciela...”
+
+@28319 Black Knight · 黒騎士
+> 「ドレイク王! 敵艦が
+>  接近してくるとの報告です!
+“King Drake! Reports say an enemy ship is approaching!
+---
+>  オーラ・シップをともなっていると!」
+It's accompanied by an Aura Ship!”
+
+@28320 Drake · ドレイク
+> 「ほう、奴らが。ふふふ、
+>  自分から仕掛けてくるとはな……
+“Oh? So it's them. Heh heh, to think they'd strike first...
+---
+>  どうやら今回で決着をつける
+>  覚悟と見たぞ」
+It seems they're resolved to settle this once and for all.”
+
+@28321 Black Knight · 黒騎士
+> 「ドレイク王、迎撃を!」
+“King Drake, we must intercept them!”
+
+@28322 Drake · ドレイク
+> 「女王どもめ、それほど地上に
+>  戦いを持ちこむことを嫌うか
+“Those queens... do they hate bringing war to the surface that much?
+---
+>  ははは、よかろう。望み通り、
+>  この地上から消し去ってくれる
+Hahaha, very well. As you wish, I'll wipe you from this surface.
+---
+>  オーラマシンを出せい、
+>  迎え撃つのだ!!」
+Send out the Aura Machines—meet them head-on!!”
+
+@28323 Drake · ドレイク
+> 「きたな……女王どもめ」
+“They've come... those queens.”
+
+@28324 Ciela · シーラ
+> 「還るべき時がきたのです……
+>  ドレイク・ルフト」
+“The time to return has come... Drake Luft.”
+
+@28325 Drake · ドレイク
+> 「ショット・ウェポンか!」
+“Shot Weapon?!”
+
+@28326 Shot · ショット
+> 「おそくなりました、ドレイクさま」
+“I apologize for the delay, King Drake.”
+
+@28327 Shot · ショット
+> 「何!? ウィル・ウィプスが落ちたと
+>  いうのか。……しかし、これは私にとって
+“What?! The Will-Wips has fallen? ...Still, this could be
+---
+>  チャンスかもしれん……」
+an opportunity for me...”
+
+@28328 Ciela · シーラ
+> 「ショット・ウェポンか……」
+“Shot Weapon...”
+
+@28329 Tod · トッド
+> 「くっ……こんなことでぇぇーっ!!」
+“Ngh... not over something like thiiis!!”
+
+@28330 Show · ショウ
+> 「トッド!? ハイパー化したのか!」
+“Tod?! Did you go Hyper?!”
+
+@28331 Tod · トッド
+> 「ハ……ハハハハッ! みてな、ママ。
+>  こいつらを落としてみせるぜ」
+“Ha... hahahaha! Watch, Mama. I'll shoot these guys down for you.”
+
+@28332 Show · ショウ
+> 「く……トッドォォォッ!!」
+“Ngh... Tooodd!!”
+
+@28333 Chum · チャム
+> 「ショウ!? ダメーッ! うかつにハイパー
+>  したら……ショウ!!」
+“Show?! No! If you go Hyper so recklessly... Show!!”
+
+@28334 Show · ショウ
+> 「ウオォォォォォォーッ!!」
+“Uwooooooooh!!”
+
+@28335 Chum · チャム
+> 「ショウがハイパーになる! 助けて
+>  マーベルッ! エレさま! シーラさまぁ!」
+“Show's going Hyper! Help, Marvel! Lady Elle! Lady Ciela!”
+
+@28336 Elle · エレ
+> 「ショウ、いけません!」
+“Show, you mustn't!”
+
+@28337 Marvel · マーベル
+> 「ショウ!!」
+“Show!!”
+
+@28338 Ciela · シーラ
+> 「ショウ!!」
+“Show!!”
+
+@28339 Show · ショウ
+> 「くっ……」
+“Ngh...”
+
+@28340 Chum · チャム
+> 「ショウ! ショウ! 大丈夫!?」
+“Show! Show! Are you all right?!”
+
+@28341 Show · ショウ
+> 「す……すまないチャム。
+>  もう大丈夫だ。助かったよ」
+“S... sorry, Chum. I'm all right now. You saved me.”
+
+@28342 Chum · チャム
+> 「よかったぁ……」
+“Thank goodness...”
+
+@28343 Tod · トッド
+> 「くっ……こんなことでぇぇーっ!!」
+“Ngh... not over something like thiiis!!”
+
+@28344 Show · ショウ
+> 「トッド!? ハイパー化したのか!?」
+“Tod?! Did you go Hyper?!”
+
+@28345 Tod · トッド
+> 「ハ……ハハハハッ! みてな、ママ。
+>  こいつらを落としてみせるぜ」
+“Ha... hahahaha! Watch, Mama. I'll shoot these guys down for you.”
+
+@28346 Black Knight · 黒騎士
+> 「お……おのれ! おのれショウ・ザマッ!!」
+“D... damn you! Damn you, Show!!”
+
+@28347 Show · ショウ
+> 「これで終わりだ、黒騎士!」
+“This is the end, Black Knight!”
+
+@28348 Black Knight · 黒騎士
+> 「うっ!? なんだ、この不快感は!?
+>  うおぉぉぉっ!!」
+“Ugh?! What is this foul feeling?! Uwooooh!!”
+
+@28349 Show · ショウ
+> 「なに!?」
+“What?!”
+
+@28350 Black Knight · 黒騎士
+# 审校：补出未说完的动作，使英文更自然，避免以介词结尾的断裂感。
+> 「ショウ!! 今度こそこの私の
+>  オーラパワーで!!」
+“Show!! This time, with my Aura Power, I will—!!”
+
+@28351 Elle · エレ
+# 审校：“evil aura”改为“wicked aura”，更贴合奇幻语境。
+> 「うっ……なんという悪しきオーラか!
+>  その男、この世界から去れ!」
+“Ugh... what a wicked aura! That man must leave this world!”
+
+@28352 Black Knight · 黒騎士
+# 审校：原文是确认语气而非疑问，去掉问号。
+> 「エレ・ハンムか!」
+“Elle Hunm!”
+
+@28353 Elle · エレ
+> 「退がれ! お前のオーラ力は私が
+>  引き受ける!」
+“Fall back! I will take on your Aura Power myself!”
+
+@28354 Black Knight · 黒騎士
+# 审校：“a single woman”改为“a mere woman”，更准确传达“女1人ごとき”的轻蔑语气。
+> 「女1人ごときに、俺は屈するわけ
+>  にはいかん!」
+“I will not yield to a mere woman!”
+
+@28355 Elle · エレ
+> 「あぁぁぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@28356 Chum · チャム
+> 「いやぁぁーっ! エレさま、だめぇぇっ!!」
+“Nooo! Lady Elle, don't!!”
+
+@28357 Show · ショウ
+> 「黒騎士、貴様ぁぁぁぁーっ!!」
+“Black Knight, you baaastard!!”
+
+@28358 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This Aura Power... Bern Bunnings!”
+
+@28359 Bern · バーン
+> 「バ……バカなッ!? この私が……」
+“I... impossible?! That I, of all people...”
+
+@28360 Show · ショウ
+> 「バーンだと!? 貴様、その怨念で
+>  何を手に入れた!!」
+“Bern?! What did you gain from all that hatred?!”
+
+@28361 Bern · バーン
+> 「く……力と狡猾さだ! さすれば、
+>  勝つ!!」
+“Ngh... power and cunning! With those, I win!!”
+
+@28362 Black Knight · 黒騎士
+# 审校：原文为“ショウ・ザマッ”，应使用全名 Show Zama，与词表一致。
+> 「お……おのれ! おのれショウ・ザマッ!!」
+“D... damn you! Damn you, Show Zama!!”
+
+@28363 Show · ショウ
+> 「これで終わりだ、黒騎士!」
+“This is the end, Black Knight!”
+
+@28364 Black Knight · 黒騎士
+> 「うっ!? なんだ、この不快感は!?
+>  うおぉぉぉっ!!」
+“Ugh?! What is this foul feeling?! Uwooooh!!”
+
+@28365 Show · ショウ
+> 「なに!?」
+“What?!”
+
+@28366 Chum · チャム
+> 「ハイパー化した!?」
+“He went Hyper?!”
+
+@28367 ???
+# 审校：与 L1 相同，补出未说完的动作。
+> 「ショウ!! 今度こそこの私の
+>  オーラパワーで!!」
+“Show!! This time, with my Aura Power, I will—!!”
+
+@28368 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This Aura Power... Bern Bunnings!”
+
+@28369 Show · ショウ
+> 「バーンだと!? 貴様……その怨念
+>  で何を手に入れた!!」
+“Bern?! You... what did you gain from all that hatred?!”
+
+@28370 Bern · バーン
+> 「フ、フハハハハッ! 力と狡猾さだ!
+>  さすれば、勝つ!!」
+“Fuh, fuhahahaha! Power and cunning! With those, I win!!”
+
+@28371 Black Knight · 黒騎士
+> 「お……おのれぇぇーっ!!」
+“D... damn youuu!!”
+
+@28372 ???
+> 「フハハハハハッ! 今度こそ、この私
+>  のオーラパワーで貴様らを落とす!!」
+“Fuhahahahaha! This time, with my Aura Power, I'll bring you all down!!”
+
+@28373 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This Aura Power... Bern Bunnings!”
+
+@28374 Show · ショウ
+> 「バーンだと!? 貴様……その怨念
+>  で何を手に入れた!!」
+“Bern?! You... what did you gain from all that hatred?!”
+
+@28375 Bern · バーン
+> 「フ、フハハハハッ! 力と狡猾さだ!
+>  さすれば、勝つ!!」
+“Fuh, fuhahahaha! Power and cunning! With those, I win!!”
+
+@28376 Tod · トッド
+> 「く……結局、最後までこれか……
+>  あばよ、ショウ……」
+“Ngh... So in the end, it comes to this... So long, Show...”
+
+@28377 Show · ショウ
+> 「勝手に死なせるか! お前は
+>  生きて罪をつぐなえ!」
+“I won't let you die on your own! Live and atone for your sins!”
+
+@28378 Tod · トッド
+> 「楽にさせてくれよ……。ショウ……
+>  いい夢を、見させてもらったぜ……」
+“Just let me go easy... Show... you let me have a good dream...”
+
+@28379 Show · ショウ
+> 「これが……これが、いい夢でたまるかよ!
+>  くっ……」
+“That's... that's no good dream at all! Ngh...”
+
+@28380 Tod · トッド
+> 「ショウ……いい夢を、見させてもらった
+>  ぜ……」
+“Show... you let me have a good dream...”
+
+@28381 Show · ショウ
+> 「これが……これが、いい夢でたまるかよ!
+>  くっ……」
+“That's... that's no good dream at all! Ngh...”
+
+@28382 Chum · チャム
+> 「ショウ……。トッド、死んじゃったの?」
+“Show... Did Tod die?”
+
+@28383 Show · ショウ
+> 「ああ………………」
+“Yeah...”
+
+@28384 Tod · トッド
+> 「く……こんなところで終わるのか……。
+>  いい夢を、見させてもらったぜ……」
+“Ngh... So this is where it ends... You let me have a good dream...”
+
+@28385 Bern · バーン
+> 「なんだと!?
+>  ショウ、貴様ぁぁーっ!!」
+“What?! Show, youuu!!”
+
+@28386 Show · ショウ
+> 「俺は人は殺さない! その怨念を
+>  殺す!!」
+“I don't kill people! I'll kill that hatred of yours!!”
+
+@28387 Bern · バーン
+> 「な……なんだと!?」
+“W... what?!”
+
+@28388 Drake · ドレイク
+> 「くっ……まさか地上で
+>  討たれようとはな……」
+“Ngh... To think I'd be struck down on the surface...”
+
+@28389 Marvel · マーベル
+> 「ウィル・ウィプスが……落ちる……
+>  オーラ力が……!」
+“The Will-Wips is... falling... The Aura Power...!”
+
+@28390 Drake · ドレイク
+> 「ショウ・ザマか!? まさか貴様に
+>  討たれるとはな……」
+“Show Zama?! To think I'd be struck down by you...”
+
+@28391 Show · ショウ
+> 「ドレイク、これで終わりだ!
+>  ……シーラ・ラパーナ! 浄化を!!」
+“Drake, this is the end! ...Ciela Lapana! The purification!!”
+
+@28392 Ciela · シーラ
+> 「よし! ショウ、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Show, you did well. Everyone, we return to Byston Well!!
+---
+>  帰還します!! 憎しみの心を
+>  地上に残さぬよう……」
+Let no hatred remain on the surface...”
+
+@28393 Drake · ドレイク
+> 「マーベル・フローズンか!? まさか
+>  貴様に討たれるとはな……」
+“Marvel Frozen?! To think I'd be struck down by you...”
+
+@28394 Marvel · マーベル
+> 「やったの……?」
+“Did I... do it?”
+
+@28395 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! The purification!!”
+
+@28396 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! The purification!!”
+
+@28397 Ciela · シーラ
+> 「よし! マーベル、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Marvel, you did well. Everyone, we return to Byston Well!!
+---
+>  帰還します!!
+>  憎しみの心を地上に残さぬよう…」
+Let no hatred remain on the surface...”
+
+@28398 Drake · ドレイク
+> 「ガラリアか!? まさか貴様に討たれ
+>  ようとはな!!」
+“Garalia?! To think I'd be struck down by you!!”
+
+@28399 Garalia · ガラリア
+> 「ドレイクは落としたぞ!!」
+“Drake is down!!”
+
+@28400 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+
+@28401 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+
+@28402 Ciela · シーラ
+# 待译：机翻未采用（空译文）
+# 草稿第 1 页：“Good! Garalia, you did well. Everyone, we return to Byston Well!!
+# 草稿第 2 页：
+# 草稿第 3 页：Let no hatred remain on the surface...”
+> 「よし! ガラリア、よくやってくれました。
+>  皆の者、バイストンウェルへ
+---
+>  帰還します!!
+---
+>  憎しみの心を地上に残さぬよう…」
+
+@28403 Drake · ドレイク
+> 「なんだと!? まさかこんなところで
+>  討たれようとは……」
+“What?! To think I'd be struck down in a place like this...”
+
+@28404 Show · ショウ
+> 「ウィル・ウィプスが落ちた……
+>  シーラ・ラパーナ!! 浄化を!!」
+“The Will-Wips has fallen... Ciela Lapana!! The purification!!”
+
+@28405 Show · ショウ
+> 「ウィル・ウィプスが落ちた……
+>  シーラ・ラパーナ!! 浄化を!!」
+“The Will-Wips has fallen... Ciela Lapana!! The purification!!”
+
+@28406 Ciela · シーラ
+> 「よくやってくれました! 皆の者、
+>  バイストンウェルへ帰還します!!
+“You did well! Everyone, we return to Byston Well!!
+---
+>  憎しみの心を地上に残さぬよう…」
+Let no hatred remain on the surface...”
+
+@28407 Bright · ブライト
+> 「な、なんだ!?」
+“W- what is that?!”
+
+@28408 Beltorchika · ベルトーチカ
+> 「光が……」
+“Light...”
+
+@28409 Shot · ショット
+> 「こんなところで俺は……ミュージィ……」
+“So this is where I... Musy...”
+
+@28410 Musy · ミュージィ
+> 「くっ……ショット様!」
+“Ngh... Lord Shot!”
+
+@28411 Shot · ショット
+> 「ミュージィ!! 俺は……俺は……」
+“Musy!! I... I...”
+
+@28412 Chum · チャム
+> 「やったの……ショウ!?」
+“You did it... Show?!”
+
+@28413 Show · ショウ
+> 「ああ……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah... Ciela Lapana! The purification!!”
+
+@28414 Ciela · シーラ
+> 「よし! ショウ、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Show, you did well. Everyone, we return to Byston Well!!
+---
+>  帰還します!! 憎しみの心を
+>  地上に残さぬよう……」
+Let no hatred remain on the surface...”
+
+@28415 Shot · ショット
+> 「これで終わりなのか!?」
+“Is this the end?!”
+
+@28416 Marvel · マーベル
+> 「やったの……?」
+“You did it...?”
+
+@28417 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! The purification!!”
+
+@28418 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! The purification!!”
+
+@28419 Ciela · シーラ
+> 「よし! マーベル、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Marvel, you did well. Everyone, we return to Byston Well!!
+---
+>  帰還します!!
+>  憎しみの心を地上に残さぬよう…」
+Let no hatred remain on the surface...”
+
+@28420 Shot · ショット
+> 「ま……まだ負けぬ……」
+“I... I haven't lost yet...”
+
+@28421 Garalia · ガラリア
+> 「ショットは落としたぞ!!」
+“Shot is down!!”
+
+@28422 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+
+@28423 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+
+@28424 Ciela · シーラ
+> 「よし! ガラリア、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Garalia, you did well. Everyone, we return to Byston Well!!
+---
+>  帰還します!!
+We return now!!
+---
+>  憎しみの心を地上に残さぬよう…」
+Let no hatred remain on the surface...”
+
+@28425 Shot · ショット
+> 「こ、こんなところで!?」
+“I- in a place like this?!”
+
+@28426 Show · ショウ
+> 「シーラ・ラパーナ!! 浄化を!!」
+“Ciela Lapana!! The purification!!”
+
+@28427 Show · ショウ
+> 「シーラ・ラパーナ!! 浄化を!!」
+“Ciela Lapana!! The purification!!”
+
+@28428 Ciela · シーラ
+> 「よくやってくれました! 皆の者、
+>  バイストンウェルへ帰還します!!
+“You did well! Everyone, we return to Byston Well!!
+---
+>  憎しみの心を地上に残さぬよう…」
+Let no hatred remain on the surface...”
+
+@28429 Bright · ブライト
+# 审校：“W- what”断词不自然，改为“Wh- what”。
+> 「な、なんだ!?」
+“Wh- what is that?!”
+
+@28430 Beltorchika · ベルトーチカ
+> 「光が……」
+“Light...”
+
+@28431 Musy · ミュージィ
+> 「しまったぁぁ!」
+“Damn it!!”
+
+@28432 Shot · ショット
+> 「くっ……ミュージィ!」
+“Ngh... Musy!”
+
+@28433 Allen · アレン
+> 「くっ、バカな!? こんなことで俺が……」
+“Ngh, impossible?! Me, of all people...”
+
+@28434 Fei · フェイ
+> 「くっ! ……これで最後かよ!」
+“Ngh! ...So this is the end?!”
+
+@28435 Ciela · シーラ
+> 「ああ! ……悪意がひろがっていく……」
+“Ah! ...The malice is spreading...”
+
+@28436 Ciela · シーラ
+> 「ドレイク! これで終わりにします!」
+“Drake! I'm putting an end to this!”
+
+@28437 Drake · ドレイク
+> 「シーラ・ラパーナか!」
+“Ciela Lapana, is it!”
+
+@28438 Ciela · シーラ
+> 「グラン・ガラン、突撃せよ!」
+“Gran-Garan, charge!”
+
+@28439 Drake · ドレイク
+> 「ウィル・ウィプスで
+>  グラン・ガランを受けろ!!」
+“Take the Gran-Garan with the Will-Wips!!”
+
+@28440 Koji · 甲児
+> 「行っちまった……」
+“They're gone...”
+
+@28441 Roux · ルー
+> 「消えたわ……。敵も、味方も……」
+“They vanished... Both enemies and allies...”
+
+@28442 Kamille · カミーユ
+> 「帰ったんだ。彼らの世界に」
+“They went home. To their own world.”
+
+@28443 Anna · アンナ
+> 「海と大地のはざまにあるもうひとつ
+>  の世界、バイストン・ウェル……
+“Another world between sea and earth, Byston Well...
+---
+>  彼らは、そこに帰っても
+>  まだ戦い続けているのかしら?
+I wonder if they're still fighting on, even after returning there?
+---
+>  それとも、帰るべき場所に帰って、
+>  再び共存をはじめるのかしら……」
+Or will they return where they belong and begin to coexist once more...”
+
+@28444 Amuro · アムロ
+> 「さあな。俺たちには、もうわからないさ
+“Who knows. We can't know anymore.
+---
+>  地上にはもう、彼らはいない……」
+They're no longer on the surface...”
+
+@28445 David · デビッド
+> 「つわものたちの、夢の跡……か」
+“The traces of warriors' dreams... huh.”
+
+@28446 Bright · ブライト
+> 「……」
+“...”
+
+@28447 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、レーダーに反応!
+>  識別は……オーラシップ!?
+“Captain Bright, a reaction on radar! Identification is... an Aura Ship?!
+---
+>  ショウたちだわ!」
+It's Show and the others!”
+
+@28448 Bright · ブライト
+> 「なんだって!?
+>  彼らは、シーラ女王の力で
+“What?! Weren't they supposed to have vanished from
+---
+>  地上から消えたんじゃなかったのか?」
+the surface by Queen Ciela's power?”
+
+@28449 Bright · ブライト
+> 「……それで、どういうことなのでしょう?」
+“...So then, what does this mean?”
+
+@28450 Ciela · シーラ
+> 「この地上……いえ、地球圏には
+>  悪意がうずまいています
+“This surface... no, the Earth Sphere is crawling with malice.
+---
+>  それを取り除くことこそが、我らに
+>  課せられた役目となったのでしょう」
+And removing it must be the task laid upon us.”
+
+@28451 Chum · チャム
+> 「じゃあ、それが終わるまで
+>  あたしたち帰れないの?」
+“So we can't go home until that's over?”
+
+@28452 Ciela · シーラ
+> 「そうですよ、チャム」
+“That's right, Chum.”
+
+@28453 Chum · チャム
+> 「だって、エレ様は帰ることができたのに」
+“But Lady Elle was able to go home.”
+
+@28454 Ciela · シーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「バイストン・ウェルのほうは
+>  エレ様にまかせましょう
+“Let us leave Byston Well in Lady Elle's hands.
+---
+>  我らは課せられた役目を
+>  果たすことを考えましょう
+Let us think about fulfilling the task laid upon us.
+---
+>  それが果たされた時にこそ、
+>  もどることもできましょう
+Only when that is done will we be able to return.
+---
+>  ブライト艦長、我らは今後も
+>  あなたがたと行動をともにいたします」
+Captain Bright, we will continue to act alongside you from now on.”
+
+@28455 Bright · ブライト
+> 「願ってもないことです。
+>  あらためてよろしくお願いします」
+“Nothing would please me more. I look forward to working with you again.”
+
+@28456 Bright · ブライト
+> 「……それで、どういうことなのでしょう?」
+“...So then, what does this mean?”
+
+@28457 Elle · エレ
+> 「この地上……いえ、地球圏には
+>  悪意がうずまいています
+“This surface... no, the Earth Sphere is crawling with malice.
+---
+>  それを取り除くことこそが、我らに
+>  課せられた役目となったのでしょう」
+And removing it must be the task laid upon us.”
+
+@28458 Chum · チャム
+> 「じゃあ、エレ様、それが終わるまで
+>  あたしたち帰れないの?」
+“Then, Lady Elle, we can't go home until that's over?”
+
+@28459 Elle · エレ
+> 「そうですよ、チャム」
+“That's right, Chum.”
+
+@28460 Chum · チャム
+> 「……シーラ様は帰ることができたのに」
+“...But Lady Ciela was able to go home.”
+
+@28461 Elle · エレ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「バイストン・ウェルのほうは
+>  シーラ様にまかせましょう
+“Let us leave Byston Well in Lady Ciela's hands.
+---
+>  我らは課せられた役目を
+>  果たすことを考えましょう
+Let us think about fulfilling the task laid upon us.
+---
+>  それが果たされた時にこそ、
+>  もどることもできましょう
+Only when that is done will we be able to return.
+---
+>  ブライト艦長、我らは今後も
+>  あなたがたと行動をともにいたします」
+Captain Bright, we will continue to act alongside you from now on.”
+
+@28462 Bright · ブライト
+> 「願ってもないことです。
+>  あらためてよろしくお願いします」
+“Nothing would please me more. I look forward to working with you again.”
+
+@28463 Amuro · アムロ
+> 「ショウたちがもどってきてくれたことは
+>  うれしいが、逆にこれから先が
+“I'm glad Show and the others came back, but it might also be proof that
+---
+>  厳しいって証拠かもな。
+>  気持ちを引き締めるべきだな」
+things will only get harder from here. We'd better brace ourselves.”
+
+@28464 Bright · ブライト
+> 「ああ、そのとおりだ。
+>  ……みんな、サンクキングダムにもどるぞ」
+“Yeah, you're right. ...Everyone, we're heading back to the Sanc Kingdom.”
+
+@28465 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、無事で何より
+>  でした。こちらでもロームフェラによる
+“Captain Bright, I'm glad you're safe. We had some probing moves from
+---
+>  けん制の動きはあったものの、
+>  戦闘終了と同時に
+Romefeller here as well, but it seems they withdrew
+---
+>  引きあげていったようです」
+the moment the battle ended.”
+
+@28466 Bright · ブライト
+> 「それはよかった……」
+“That's a relief...”
+
+@28467 Noin · ノイン
+> 「我々はただ見ていることしかできない
+>  ……すまないと思います」
+“All we could do was watch... I'm sorry.”
+
+@28468 Bright · ブライト
+> 「いえ、気になさらないで下さい。
+>  我々は、このために
+“No, please don't worry about it. We came to
+---
+>  サンクキングダムに来たのですから」
+the Sanc Kingdom precisely for this.”
+
+@28469 Bask · バスク
+> 「退却した奴らを追撃しろ!
+“Pursue the retreating enemy!
+---
+>  月面制圧部隊!
+>  抵抗する奴らは射殺するのだ!」
+Lunar suppression force! Shoot anyone who resists!”
+
+@28470 Jamitov · ジャミトフ
+> 「ふふん、手こずらせおって……。しかし、
+>  作戦は成功だ。これでようやく
+“Hmph, they gave us trouble... But the operation was a success. Now we've finally
+---
+>  奴らムゲ帝国から月を
+>  奪い返すことができたというわけだ」
+managed to take the moon back from the Muge Empire.”
+
+@28471 Dermail · デルマイユ
+> 「全く、新型モビルドールの働きは
+>  すばらしい
+“Truly, the new Mobile Dolls performed splendidly.
+---
+>  トレーズめ、何のかんのと文句を
+>  いいおったが、この結果を見れば
+That Treize complained about this and that, but with these results,
+---
+>  誰が正しかったかは、はっきりする!」
+it's clear who was right!”
+
+@28472 Jamitov · ジャミトフ
+> 「バスクよ、帝国軍の中枢は、
+>  月から離脱したらしいな」
+“Bask, it seems the Imperial forces' core has left the moon.”
+
+@28473 Bask · バスク
+> 「はっ、残念ながら……。
+>  追撃に向かわせておりますが
+“Yes, regrettably... We've sent forces in pursuit,
+---
+>  どうやらアステロイド・ベルトに
+>  逃げこむつもりかと……」
+but it appears they intend to flee into the Asteroid Belt...”
+
+@28474 Jamitov · ジャミトフ
+> 「あせるなよ。勢力は逆転したのだ。
+>  今後は我々が月に根拠を
+“Don't be hasty. The balance of power has shifted. From now on we'll establish
+---
+>  築き、一気にせん滅をはかればよい
+>  月面の制圧に全力をあげろ」
+our base on the moon and wipe them out in one stroke. Devote all your efforts to securing the lunar surface.”
+
+@28475 Bask · バスク
+> 「ははっ、了解であります!」
+“Yes, sir! Understood!”
+
+@28476 Dermail · デルマイユ
+> 「ふん、裏切り者のシャピロめが……。
+>  ふくろのねずみとは、このことだ」
+“Hmph, that traitor Shapiro... A rat in a bag, that's what he is.”
+
+@28477 Prof. Yumi · 弓教授
+> 「君たち、ご苦労だったね」
+“You've all done well.”
+
+@28478 Roux · ルー
+> 「弓教授!
+>  それに早乙女博士も
+“Prof. Yumi! And Dr. Saotome too.
+---
+>  どうしたんですか?」
+What brings you here?”
+
+@28479 Koji · 甲児
+> 「まさか、また整備を手伝おうって
+>  つもりじゃないでしょうね?」
+“Don't tell me you're planning to help with maintenance again?”
+
+@28480 Dr. Saotome · 早乙女博士
+> 「バカもん、そんなヒマがどこにあるか!」
+“You fool, where do you think I'd find the time for that?!”
+
+@28481 Koji · 甲児
+> 「……はあ……」
+“...Uh, right...”
+
+@28482 Prof. Yumi · 弓教授
+> 「実は、良い知らせが届いたんだ。
+>  このサンクキングダムに
+“Actually, some good news arrived. They say they'll build
+---
+>  我々の研究所を
+>  建ててくれるというんだよ」
+our research institute here in the Sanc Kingdom.”
+
+@28483 Sayaka · さやか
+> 「お父様、本当!?
+>  すごいじゃない!」
+“Father, really?! That's amazing!”
+
+@28484 Prof. Yumi · 弓教授
+> 「アムロくんたちのところへ
+>  リリーナ代表の使いが来てな
+“A messenger from Representative Relena came to see Amuro and the others,
+---
+>  そう知らせてくれた。
+>  光子力研究所や
+and brought us that news. It's not on the scale of
+---
+>  早乙女研究所ほどの
+>  規模ではないが、助かるよ
+the Photon Power Lab or the Saotome Institute, but it's a great help.
+---
+>  理論をどんなに完成させても、
+>  実験ができなければ
+No matter how much you perfect a theory, if you can't run experiments,
+---
+>  どうしようもないからね」
+there's nothing you can do.”
+
+@28485 Ryoma · リョウ
+> 「博士、リリーナ代表といってました
+>  が……、完全平和主義の国で
+“Doctor, you mentioned Representative Relena... but for a nation of complete pacifism
+---
+>  ゲッター線や光子力エネルギーの
+>  研究を、よく認めましたね」
+to approve research on Getter Rays and photon energy, that's surprising.”
+
+@28486 Dr. Saotome · 早乙女博士
+> 「むろん、最大の目的は
+>  それらの平和利用じゃ
+“Of course, the main purpose is their peaceful use.
+---
+>  ノインさんがうまく話してくれたよ。
+>  なあに、わしや弓教授
+Miss Noin spoke to them well on our behalf. After all, the research done by me, Prof. Yumi,
+---
+>  それに兜博士の研究も、
+>  そもそもの目的は
+and Dr. Kabuto was originally meant for
+---
+>  平和利用だったんだからな。
+>  こんな世界にさえなっちまわなければ」
+peaceful purposes. If only the world hadn't turned out like this.”
+
+@28487 Hayato · ハヤト
+> 「ゲッターやマジンガーと、
+>  そのエネルギーの平和利用か……
+“Peaceful use of the Getter, the Mazinger, and their energy, huh...
+---
+>  確かに、こんな世界じゃ
+>  考えもできなかったぜ……」
+True, in a world like this, I never could have imagined it...”
+
+@28488 Benkei · ベンケイ
+> 「完全平和主義か……。
+>  案外、俺が考えていたよりも
+“Complete pacifism, huh... It might be more
+---
+>  骨のある代物かも知れないな……」
+formidable than I thought...”
+
+@28489 Ryoma · リョウ
+> 「ああ。ムゲ帝国と戦っていた頃とは
+>  まるで違う
+“Yeah. It's completely different from when we were fighting the Muge Empire.
+---
+>  未来のことを考えるってのは、
+>  良いものだ」
+Being able to think about the future... it feels good.”
+
+@28490 Dr. Saotome · 早乙女博士
+> 「さあ、そんなわけで準備をせにゃならん
+>  書類や実験器具が
+“So, that's how it is. There are piles of documents and lab equipment I need to get ready.
+---
+>  山ほどあるんじゃ。
+>  ほら、お前ら、手伝いにこんか!」
+Come on, you lot, get over here and help!”
+
+@28491 David · デビッド
+> 「何でえ、つまりそれを
+>  いいに来たんだな!」
+“What?! So that's what you came here to tell us!”
+
+@28492 Simone · シモーヌ
+> 「ふふふ、いいじゃないの。博士、
+>  手伝いますわ。何からなさいます?」
+“Hehehe, isn't that nice? Doctor, I'll help. What should I start with?”
+
+@28493 Prof. Yumi · 弓教授
+> 「ああ、女性の諸君はかまわないよ
+>  力仕事だからね
+“Ah, the ladies needn't bother. It's heavy work, after all.
+---
+>  さあ君たち、すまんが頼むぞ」
+Now then, you men, sorry to ask, but I'm counting on you.”
+
+@28494 Koji · 甲児
+> 「ちぇーっ、何だよ、そいつはないぜ!」
+“Aw, come on! That's not fair!”
+
+@28495 Sayaka · さやか
+> 「まあ、お父様ったら……」
+“Oh, Father, honestly...”

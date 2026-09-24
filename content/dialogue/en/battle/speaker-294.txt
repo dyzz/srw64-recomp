@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14089 Gishin Soldier · ギシン星兵
+> 「邪魔なんだよ!」
+“You're in my way!”
+
+@14090 Gishin Soldier · ギシン星兵
+> 「うおおおおっ!!」
+“Uwooooh!!”
+
+@14091 Gishin Soldier · ギシン星兵
+> 「これでとどめだ!!」
+“This is the end for you!!”
+
+@14092 Gishin Soldier · ギシン星兵
+> 「こいつで決めてやる!」
+“I'll finish you with this!”
+
+@14093 Gishin Soldier · ギシン星兵
+> 「やらせるかっ!!」
+“Like I'd let you!!”
+
+@14094 Gishin Soldier · ギシン星兵
+> 「落ちろっ!!」
+“Go down!!”
+
+@14095 Gishin Soldier · ギシン星兵
+> 「このっ!!」
+“Why you!!”
+
+@14096 Gishin Soldier · ギシン星兵
+> 「行くぞっ!!」
+“Here I come!!”
+
+@14097 Gishin Soldier · ギシン星兵
+> 「そこだっ!」
+“Right there!”
+
+@14098 Gishin Soldier · ギシン星兵
+> 「もらった!」
+“Got you!”
+
+@14099 Gishin Soldier · ギシン星兵
+> 「な、何だと!?」
+“W-what did you say?!”
+
+@14100 Gishin Soldier · ギシン星兵
+> 「しまった! 直撃か!?」
+“Damn! A direct hit?!”
+
+@14101 Gishin Soldier · ギシン星兵
+> 「ぐうっ、い、いかん、やられる!?」
+“Guh, th-this is bad, I'm done for?!”
+
+@14102 Gishin Soldier · ギシン星兵
+> 「うおっ!? くっ、こっちが不利か!」
+“Whoa?! Tch, I'm at a disadvantage!”
+
+@14103 Gishin Soldier · ギシン星兵
+> 「ぬうううっ! つ、強いっ!」
+“Nghhh! H-he's strong!”
+
+@14104 Gishin Soldier · ギシン星兵
+> 「やるっ! さすがは!」
+“Not bad! Just as expected!”
+
+@14105 Gishin Soldier · ギシン星兵
+> 「ぐうぅっ!! パワーが違いすぎる!!」
+“Guuh!! His power's on another level!!”
+
+@14106 Gishin Soldier · ギシン星兵
+> 「ちいっ! まだまだっ!」
+“Tch! I'm not done yet!”
+
+@14107 Gishin Soldier · ギシン星兵
+> 「くっ! 少しはできるな!」
+“Tch! You've got some skill!”
+
+@14108 Gishin Soldier · ギシン星兵
+> 「ぬうっ! そう簡単にやられはせん!!」
+“Ngh! I won't go down that easily!!”
+
+@14109 Gishin Soldier · ギシン星兵
+> 「うっ! やってくれたな!!」
+“Ugh! You'll pay for that!!”
+
+@14110 Gishin Soldier · ギシン星兵
+> 「まだだっ! まだこれからよ!!」
+“Not yet! This is just the beginning!!”
+
+@14111 Gishin Soldier · ギシン星兵
+> 「非力なんだよ!」
+“You're just weak!”
+
+@14112 Gishin Soldier · ギシン星兵
+> 「パワー不足だな!」
+“Not enough power!”
+
+@14113 Gishin Soldier · ギシン星兵
+> 「その程度か!」
+“Is that all you've got?!”
+
+@14114 Gishin Soldier · ギシン星兵
+> 「そんな攻撃など効くものかよ!」
+“An attack like that won't do a thing!”
+
+@14115 Gishin Soldier · ギシン星兵
+> 「ふん、かすっただけよ!」
+“Hmph, that just grazed me!”
+
+@14116 Gishin Soldier · ギシン星兵
+> 「当たるものかよ!」
+“You'll never hit me!”
+
+@14117 Gishin Soldier · ギシン星兵
+> 「踏み込みが足りん!」
+“You're not committing enough!”
+
+@14118 Gishin Soldier · ギシン星兵
+> 「間合いが遠いわっ!」
+“Too far away!”
+
+@14119 Gishin Soldier · ギシン星兵
+> 「狙いが甘い!」
+“Your aim's too sloppy!”
+
+@14120 Gishin Soldier · ギシン星兵
+> 「バカめ。どこを狙っている!」
+“Fool. What are you aiming at!”
+
+@14121 Gishin Soldier · ギシン星兵
+> 「ムダな攻撃をする……」
+“What a pointless attack...”
+
+@14122 Gishin Soldier · ギシン星兵
+> 「ふ、そんなビームではな!」
+“Hah, a Beam like that won't work!”
+
+@14123 Gishin Soldier · ギシン星兵
+> 「ちっ、弾切れとはな……」
+“Tch, out of ammo, huh...”
+
+@14124 Gishin Soldier · ギシン星兵
+> 「弾切れか……しかたあるまい」
+“Out of ammo... nothing I can do about it.”
+
+@14125 Gishin Soldier · ギシン星兵
+> 「ちっ、遠距離からの攻撃か……」
+“Tch, attacking from long range, huh...”
+
+@14126 Gishin Soldier · ギシン星兵
+> 「む……ここからでは反撃できん」
+“Mm... I can't counter from here.”

@@ -1,0 +1,428 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16300 Erika · エリカ
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@16301 Erika · エリカ
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@16302 Erika · エリカ
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@16303 Erika · エリカ
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@16304 Erika · エリカ
+# 机翻疑问：新译名：大車輪ロケットパーンチ=Great Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!!」
+“Great Wheel Rocket Punch!!”
+
+@16305 Erika · エリカ
+> 「あ、あの、ボロットパンチ!」
+“U-um, Borot Punch!”
+
+@16306 Erika · エリカ
+> 「ス、スペシャルボロットパンチ!」
+“S-Special Borot Punch!”
+
+@16307 Erika · エリカ
+> 「スペシャル……ああっ、神さま!
+>  私には言えません!」
+“Special... ohh, dear God! I can't say it!”
+
+@16308 Erika · エリカ
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16309 Erika · エリカ
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@16310 Erika · エリカ
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16311 Erika · エリカ
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@16312 Erika · エリカ
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@16313 Roux · ルー
+> 「ZZのパワーの違い、見せてあげるわ」
+“I'll show you the difference in the ZZ's power.”
+
+@16314 Roux · ルー
+> 「ZZのパワーの違い、見せてあげるわ」
+“I'll show you the difference in the ZZ's power.”
+
+@16315 Roux · ルー
+> 「いきなさい、ファンネル!」
+“Go, Funnel!”
+
+@16316 Roux · ルー
+> 「フィンファンネル!」
+“Fin Funnels!”
+
+@16317 Roux · ルー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”
+
+@16318 Elle · エル
+> 「ビームライフル、発射!」
+“Beam Rifle, fire!”
+
+@16319 Elle · エル
+> 「いっけー! ファンネルッ!!」
+“Gooo! Funnel!!”
+
+@16320 Elle · エル
+> 「ファンネル!」
+“Funnel!”
+
+@16321 Elle · エル
+> 「いくよっ! フィンファンネル!」
+“Here I go! Fin Funnels!”
+
+@16322 Elle · エル
+> 「フィンファンネル!」
+“Fin Funnels!”
+
+@16323 Elle · エル
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”
+
+@16324 Emary · エマリー
+# 审校：原译“Front's got a thin barrage”不够自然，改为更通顺的说法。
+> 「前方、弾幕うすいぞ!
+>  ……なんてね」
+“The barrage up front is thin!... Just kidding.”
+
+@16325 Emary · エマリー
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「対空砲火用意!
+>  ダミーだして!」
+“AA fire, ready! Launch decoys!”
+
+@16326 Emary · エマリー
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「と、とりあえず対空砲火を!」
+“F-first, AA fire!”
+
+@16327 Emary · エマリー
+> 「アームを切り放して!」
+“Cut the Arm loose!”
+
+@16328 Arius · アリアス
+# 审校：“叩き切ってくれる”语气更强，改为更有气势的“cut you to pieces”。
+> 「叩き切ってくれる!」
+“I'll cut you to pieces!”
+
+@16329 Glemy · グレミー
+# 审校：补出对象，使语气更完整自然。
+> 「フッ、ライフルなど使わなくても!」
+“Hmph, I don't even need a rifle for you!”
+
+@16330 Glemy · グレミー
+> 「このバウをなめてもらってはな!」
+“Don't you underestimate this Bawoo!”
+
+@16331 Glemy · グレミー
+# 审校：“はしたない”用“unseemly”更贴合贵族式语气。
+> 「おやめなさい、はしたない」
+“Stop that. How unseemly.”
+
+@16332 Glemy · グレミー
+> 「ははははっ、それはダミーなのだよ!」
+“Hahahaha, that was a decoy!”
+
+@16333 Glemy · グレミー
+> 「しょせんお前など、その程度でしか
+>  あるまい!」
+“In the end, that's all you're worth!”
+
+@16334 Glemy · グレミー
+> 「お前の相手などダミーでじゅうぶんだ」
+“A decoy is more than enough for the likes of you.”
+
+@16335 Danny · ダニー
+# 审校：“None can escape”偏文，改为更口语的“No one can escape”。
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D's trinity attack!”
+
+@16336 Dale · デル
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16337 Deune · デューン
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”
+
+@16338 Deune · デューン
+> 「ジャムルフィンのスピードはダテじゃ
+>  ないぜ!」
+“The Jamru Fin's speed is no joke!”
+
+@16339 Danny · ダニー
+# 审校：与L36保持一致，改为更口语的“No one can escape”。
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D's trinity attack!”
+
+@16340 Dale · デル
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16341 Deune · デューン
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”
+
+@16342 Deune · デューン
+> 「このジャムルフィンでも届かないだと!?」
+“Even this Jamru Fin can't reach?!”
+
+@16343 Dale · デル
+> 「予定よりいけるな」
+“We're ahead of schedule.”
+
+@16344 Danny · ダニー
+# 审校：与L36保持一致，改为更口语的“No one can escape”。
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D's trinity attack!”
+
+@16345 Dale · デル
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16346 Deune · デューン
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”
+
+@16347 Pampa · パンパ
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16348 Pampa · パンパ
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, let's do that thing!”
+
+@16349 Wyme · ワイム
+# 审校：“ハッ”是短促应答，不是“Yes, sir!”，改为“Hah!”更贴切。
+> 「ハッ」
+“Hah!”
+
+@16350 Beanne · ビアン
+> 「行けるぞ!」
+“We're good to go!”
+
+@16351 Pampa · パンパ
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”
+
+@16352 Wyme · ワイム
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16353 Pampa · パンパ
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, let's do that thing!”
+
+@16354 Wyme · ワイム
+# 审校：与L50保持一致，改为“Hah!”。
+> 「ハッ」
+“Hah!”
+
+@16355 Beanne · ビアン
+> 「行けるぞ!」
+“We're good to go!”
+
+@16356 Pampa · パンパ
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”
+
+@16357 Beanne · ビアン
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16358 Pampa · パンパ
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, let's do that thing!”
+
+@16359 Wyme · ワイム
+# 审校：与L50保持一致，改为“Hah!”。
+> 「ハッ」
+“Hah!”
+
+@16360 Beanne · ビアン
+> 「行けるぞ!」
+“We can do this!”
+
+@16361 Pampa · パンパ
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”
+
+@16362 Chara · キャラ
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I'll shoot you!”
+
+@16363 Chara · キャラ
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I'll shoot you!”
+
+@16364 Chara · キャラ
+> 「ファンネルっ!」
+“Funnel!”
+
+@16365 Chara · キャラ
+> 「フィンファンルっ!!」
+“Fin Funnels!!”
+
+@16366 Chara · キャラ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”
+
+@16367 Mondo · モンド
+> 「撃つぞぉっ!」
+“I'm firing!”
+
+@16368 Mondo · モンド
+> 「頼むぜ、ファンネルっ!」
+“I'm counting on you, Funnel!”
+
+@16369 Mondo · モンド
+> 「うまくいってくれよ……ファンネルっ!」
+“Make it work... Funnel!”
+
+@16370 Mondo · モンド
+> 「いけるか? フィンファンネル!」
+“Can you do it? Fin Funnels!”
+
+@16371 Mondo · モンド
+> 「これならどうだっ! ハイメガキャノン!!」
+“How about this?! High Mega Cannon!!”
+
+@16372 Mashymre · マシュマー
+> 「行けっ! ファンネルよ!」
+“Go! Funnel!”
+
+@16373 Mashymre · マシュマー
+> 「蹴散らせっ! ファンネルッ!!」
+“Scatter them! Funnel!!”
+
+@16374 Mashymre · マシュマー
+> 「蹴散らせっ! ファンネルッ!!」
+“Scatter them! Funnel!!”
+
+@16375 Mashymre · マシュマー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”
+
+@16376 Beecha · ビーチャ
+> 「いくぜっ! ファンネルっ!!」
+“Here I go! Funnel!!”
+
+@16377 Beecha · ビーチャ
+> 「俺だってファンネルくらいっ!!」
+“Even I can handle a Funnel!!”
+
+@16378 Beecha · ビーチャ
+> 「フィンファンネルっ!」
+“Fin Funnels!”
+
+@16379 Beecha · ビーチャ
+> 「行けえっ! ファンネルっ!!」
+“Go! Funnel!!”
+
+@16380 Beecha · ビーチャ
+> 「こいつで決めるぜっ!
+>  ハイメガキャノンだっ!!」
+“I'll finish it with this! High Mega Cannon!!”
+
+@16381 Iino · イーノ
+# 审校：原文“当たれぇっ!!”是祈使语气，初稿“Hit it!!”变成打某个目标，改为“Hit!!”更贴合喊招祈愿命中的语气。
+> 「当たれぇっ!!」
+“Hit!!”
+
+@16382 Iino · イーノ
+> 「撃つよ!」
+“I'm shooting!”
+
+@16383 Iino · イーノ
+> 「ファンネル、行けっ!!」
+“Funnel, go!!”
+
+@16384 Iino · イーノ
+> 「使えるかな……ファンネル!」
+“Can I use this...? Funnel!”
+
+@16385 Iino · イーノ
+> 「たのんだよ、フィンファンネル!!」
+“I'm counting on you, Fin Funnels!!”
+
+@16386 Iino · イーノ
+> 「やっちゃうからね! ハイメガキャノン!!」
+“I'm gonna do it! High Mega Cannon!!”
+
+@16387 Judau · ジュドー
+> 「そこだっ! ファンネル!!」
+“Right there! Funnel!!”
+
+@16388 Judau · ジュドー
+> 「ファンネル!!」
+“Funnel!!”
+
+@16389 Judau · ジュドー
+> 「いけっ!ファンネル!!」
+“Go! Funnel!!”
+
+@16390 Judau · ジュドー
+> 「いけっ!フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@16391 Judau · ジュドー
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@16392 Judau · ジュドー
+> 「フィンファンネル、行けぇぇっ!!」
+“Fin Funnels, gooo!!”
+
+@16393 Judau · ジュドー
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@16394 Judau · ジュドー
+> 「いっけーっ!!ハイメガキャノン!!」
+“Gooo!! High Mega Cannon!!”
+
+@16395 Judau · ジュドー
+> 「一気にいくぜっ! ハイメガキャノン!」
+“I'll finish this in one shot! High Mega Cannon!”
+
+@16396 Judau · ジュドー
+> 「行けえぇっ! ハイメガキャノン砲っ!」
+“Gooo! High Mega Cannon!!”
+
+@16397 Ple · プル
+> 「いけっ! ファンネルたち!」
+“Go! Funnels!”
+
+@16398 Ple · プル
+> 「いっけぇーっ!! ファンネル!!」
+“Gooo!! Funnel!!”
+
+@16399 Ple · プル
+> 「いっけぇーっ!! フィンファンネル!!」
+“Gooo!! Fin Funnels!!”

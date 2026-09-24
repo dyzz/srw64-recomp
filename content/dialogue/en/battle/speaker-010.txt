@@ -1,0 +1,129 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12974 Kyral · キラル
+> 「いざ!」
+“Here goes!”
+
+@12975 Kyral · キラル
+> 「これはどうだ!?」
+“How about this?!”
+
+@12976 Kyral · キラル
+> 「ふははははは!」
+“Fuhahahahaha!”
+
+@12977 Kyral · キラル
+> 「ばかめが!」
+“You fool!”
+
+@12978 Kyral · キラル
+> 「死ねぃ!」
+“Die!”
+
+@12979 Kyral · キラル
+> 「いくぞぉっ!」
+“Here I come!”
+
+@12980 Kyral · キラル
+# 审校：“狙った獲物” 更强调锁定目标，改为“locked onto”
+> 「狙った獲物は必ず倒す!」
+“Once I've locked onto my prey, I always bring it down!”
+
+@12981 Kyral · キラル
+# 审校：“together” 可接受，但“at once”更贴合“まとめて”
+> 「まとめてあの世に送ってくれるわ!」
+“I'll send you all to the next world at once!”
+
+@12982 Kyral · キラル
+> 「逃がしはせん!」
+“I won't let you escape!”
+
+@12983 Kyral · キラル
+# 审校：用破折号分隔更自然，避免逗号断裂
+> 「貴様にも見せてやる、この世の
+>  闇をな!」
+“I'll show you too—the darkness of this world!”
+
+@12984 Kyral · キラル
+> 「貴様に今こそ教えてやるわっ!」
+“I'll teach you right now!”
+---
+> 「この私のうらみを!」
+“All of my grudge!”
+
+@12985 Kyral · キラル
+> 「ばかなぁぁぁぁぁ!」
+“Impossibleeeeeee!”
+
+@12986 Kyral · キラル
+> 「見事だ。貴様のようなやつと
+>  再び戦うことができようとは……」
+“Magnificent. To think I'd fight someone like you again...”
+
+@12987 Kyral · キラル
+> 「楽しい戦いだったぞ……うぉっ」
+“That was an enjoyable battle... Ugh.”
+
+@12988 Kyral · キラル
+> 「ぐおぉぉぉぉぉぉ!」
+“Guoooooooh!”
+
+@12989 Kyral · キラル
+> 「ぐぅぅ決着をつけようというのか」
+“Guh... so you mean to settle this.”
+
+@12990 Kyral · キラル
+> 「バ、バカなぁ!」
+“I-Impossible!”
+
+@12991 Kyral · キラル
+> 「なにぃ!?」
+“What?!”
+
+@12992 Kyral · キラル
+> 「おぉぉぉ!?」
+“Ooooh?!”
+
+@12993 Kyral · キラル
+> 「なんのこれしき!」
+“This is nothing!”
+
+@12994 Kyral · キラル
+> 「おおっ!?」
+“Oh?!”
+
+@12995 Kyral · キラル
+> 「この程度の攻撃など」
+“An attack of this level is nothing.”
+
+@12996 Kyral · キラル
+> 「なるほど」
+“I see.”
+
+@12997 Kyral · キラル
+> 「効きはせん!」
+“It has no effect!”
+
+@12998 Kyral · キラル
+> 「ははははっ! 見たか!」
+“Hahahaha! Did you see that!”
+
+@12999 Kyral · キラル
+> 「なんの!」
+“As if!”
+
+@13000 Kyral · キラル
+> 「ばかめが」
+“You fool.”
+
+@13001 Kyral · キラル
+> 「どうした、手も足もでないか?」
+“What's wrong, can't move a muscle?”
+
+@13002 Kyral · キラル
+> 「ぬぅ攻撃できんとは」
+“Ngh, you can't attack?”
+
+@13003 Kyral · キラル
+> 「く、とどかぬか……」
+“Guh, it won't reach...”

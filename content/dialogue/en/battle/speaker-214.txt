@@ -1,0 +1,162 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7696 Gosterro · ゴステロ
+> 「くらえっ! 地球のサルめっ!!」
+“Take this! You Earth monkeys!!”
+
+@7697 Gosterro · ゴステロ
+> 「くたばれぃっ!!」
+“Die!!”
+
+@7698 Gosterro · ゴステロ
+# 审校：「じわじわと生殺しにしてやる」是慢慢折磨致死，初稿“keep you alive just to savor your suffering”意思偏差且啰嗦。
+> 「じわじわと生殺しにしてやる!」
+“I'll kill you slowly, bit by bit!”
+
+@7699 Gosterro · ゴステロ
+> 「たっぷり楽しませてもらおうか」
+“I'm going to enjoy this plenty.”
+
+@7700 Gosterro · ゴステロ
+> 「へははははははっ!」
+“Hehahahahahaha!”
+
+@7701 Gosterro · ゴステロ
+> 「くらえっっ!!!」
+“Take thiiiis!!!”
+
+@7702 Gosterro · ゴステロ
+> 「バカめっ!」
+“You idiot!”
+
+@7703 Gosterro · ゴステロ
+> 「死ねっ!!」
+“Die!!”
+
+@7704 Gosterro · ゴステロ
+# 审校：「いたぶる楽しみ」指折磨对方的乐趣，初稿“spoil my fun”丢失了“いたぶる”的含义。
+> 「簡単に死ぬなよ! いたぶる
+>  楽しみが無くなるからなっ!」
+“Don't die too easily! I'd lose the fun of tormenting you!”
+
+@7705 Gosterro · ゴステロ
+> 「へーっはっはっはっ!!」
+“Heh-hehahahaha!!”
+
+@7706 Gosterro · ゴステロ
+> 「お楽しみも終わりだ!!」
+“The fun ends here!!”
+
+@7707 Gosterro · ゴステロ
+> 「勝利はじっくりと味わうものだ……」
+“Victory is something to savor slowly...”
+
+@7708 Gosterro · ゴステロ
+> 「逃がさん!」
+“You won't escape!”
+
+@7709 Gosterro · ゴステロ
+# 审校：「たまらないなぁ」表示难以抗拒的快感，初稿“There's nothing like killing people”语气不够贴切。
+> 「たまらないなぁ人殺しというのはぁ!」
+“Killing people is just irresistible!”
+
+@7710 Gosterro · ゴステロ
+> 「逃がすかぁっ!!」
+“You won't get away!!”
+
+@7711 Gosterro · ゴステロ
+> 「うおおおおおおおっ!!」
+“Uwooooooooh!!”
+
+@7712 Gosterro · ゴステロ
+> 「俺はこんな所でくたばらんぞぉ!!」
+“I'm not dying in a place like this!!”
+
+@7713 Gosterro · ゴステロ
+> 「覚えておけ! 俺は必ず戻ってきて
+>  お前の体を八つ裂きにしてやる!!」
+“Remember this! I'll be back, and I'll tear your body to pieces!!”
+
+@7714 Gosterro · ゴステロ
+> 「くそぉぉ、殺してやるぅぅ!」
+“Damn youuu, I'll kill youuu!”
+
+@7715 Gosterro · ゴステロ
+> 「うおぉぉぉぉぉぉーっ!!」
+“Uwooooooooh!!”
+
+@7716 Gosterro · ゴステロ
+# 审校：「影も形もないようにしてやる」意为消灭得无影无踪，初稿“blast you into nothing”不够准确。
+> 「くそぅっ! 影も形もないように
+>  してやる!!」
+“Damn it! I'll wipe you out without a trace!!”
+
+@7717 Gosterro · ゴステロ
+> 「ぬがあぁぁぁっ!!」
+“Nguaaah!!”
+
+@7718 Gosterro · ゴステロ
+> 「ぐわあああーっ!!」
+“Guwaaaah!!”
+
+@7719 Gosterro · ゴステロ
+> 「くっそぉ! いてぇじゃねえかよぉっ!」
+“Damn it! That freakin' hurt!”
+
+@7720 Gosterro · ゴステロ
+> 「うおおっ……ああっ!!」
+“Uooo... aah!!”
+
+@7721 Gosterro · ゴステロ
+> 「や、や、野郎っ!!」
+“Y-you bastard!!”
+
+@7722 Gosterro · ゴステロ
+> 「おおっ!」
+“Ooh!”
+
+@7723 Gosterro · ゴステロ
+> 「貴様ぁ!!」
+“You!!”
+
+@7724 Gosterro · ゴステロ
+> 「チッ!」
+“Tch!”
+
+@7725 Gosterro · ゴステロ
+> 「貴様に俺は殺せん!」
+“You can't kill me!”
+
+@7726 Gosterro · ゴステロ
+> 「ひへへへへへへっ! アマちゃんめ!」
+“Heheheheheh! You amateur!”
+
+@7727 Gosterro · ゴステロ
+> 「貴様はムダなことをしたのだと、
+>  思い知るがいい!」
+“You'd best learn you've done all this for nothing!”
+
+@7728 Gosterro · ゴステロ
+> 「バカがぁ!」
+“You fool!”
+
+@7729 Gosterro · ゴステロ
+> 「まともに俺の相手ができると
+>  思っているのか!?」
+“You think you can take me head-on?!”
+
+@7730 Gosterro · ゴステロ
+> 「もっとよく狙いなぁ!」
+“Aim better next time!”
+
+@7731 Gosterro · ゴステロ
+> 「バカがぁ!」
+“You fool!”
+
+@7732 Gosterro · ゴステロ
+> 「ちいっっ! 弾切れかぁ!?」
+“Tch! Out of ammo?!”
+
+@7733 Gosterro · ゴステロ
+> 「なんだとぅ!?」
+“What did you say?!”

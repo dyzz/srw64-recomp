@@ -1,0 +1,449 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14800 Shinobu · 忍
+> 「なんだと!?」
+“What did you say!?”
+
+@14801 Sara · 沙羅
+> 「何ボーッとしてんだよ、忍!」
+“What are you spacing out for, Shinobu!”
+
+@14802 Shinobu · 忍
+> 「ダンクーガが、そう簡単に
+>  やられるかよっ!」
+“You think Dancouga's gonna go down that easily?!”
+
+@14803 Shinobu · 忍
+> 「ダンクーガが、そう簡単に
+>  やられるかよっ!」
+“You think Dancouga's gonna go down that easily?!”
+
+@14804 Shinobu · 忍
+> 「あまいんだよ!!」
+“You're too naive!!”
+
+@14805 Masato · 雅人
+> 「へへ～ん、ご機嫌だね、忍!」
+“Heh heh, you're in a good mood, Shinobu!”
+
+@14806 Shinobu · 忍
+> 「あまいんだよ!!」
+“Too soft!!”
+
+@14807 Masato · 雅人
+> 「へへ～ん、ご機嫌だね、忍!」
+“Heh heh, you're in a good mood, Shinobu!”
+
+@14808 Masato · 雅人
+> 「俺のキャノン砲は半端じゃないぜ!」
+“My cannon's no joke!”
+
+@14809 Sara · 沙羅
+# 审校：原译 take it 不够自然，改为 catch it，更贴合“受けてもらおう”的语气。
+> 「ミサイルの投げキッス、受けて
+>  もらおうじゃん」
+“Here's a missile blown kiss, catch it!”
+
+@14810 Sara · 沙羅
+# 审校：原译 Come on 语气偏催促，改为 Here 更自然，符合送礼物的口吻。
+> 「さぁミサイルのプレゼントだよ」
+“Here, a present of missiles for you!”
+
+@14811 Shapiro · シャピロ
+> 「沙羅、たとえお前でも容赦は
+>  せん!」
+“Sara, even if it's you, I won't hold back!”
+
+@14812 Death Gaia · デスガイヤー
+> 「死ねぃダンクーガ!」
+“Die, Dancouga!”
+
+@14813 Death Gaia · デスガイヤー
+> 「死ねぃダンクーガ!」
+“Die, Dancouga!”
+
+@14814 Helmut · ヘルマット
+> 「ミサイル一斉攻撃だ!」
+“All missiles, fire!”
+
+@14815 Helmut · ヘルマット
+> 「ビーム一斉放射っ!」
+“All beams, discharge!”
+
+@14816 Helmut · ヘルマット
+# 审校：原译 Let's burn you to death 主语和语气不自然，改为 I'll burn you to death，更符合反派威胁口吻。
+> 「焼け死んでもらおうか!」
+“I'll burn you to death!”
+
+@14817 Dr. Hazuki · 葉月博士
+> 「ガンドール砲、照準せよ!」
+“Gandor Cannon, take aim!”
+
+@14818 Dr. Hazuki · 葉月博士
+> 「ガンドール砲、スタンバイ!」
+“Gandor Cannon, standby!”
+
+@14819 Jun · ジュン
+# 审校：原译 Missile launch 语法不自然，改为 Missiles, fire，更符合战斗台词。
+> 「ミサイル発射!!」
+“Missiles, fire!!”
+
+@14820 Jun · ジュン
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@14821 Jun · ジュン
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@14822 Jun · ジュン
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@14823 Jun · ジュン
+# 审校：原译 Missile launch 语法不自然，改为 Missiles, fire，更符合战斗台词。
+> 「ミサイル発射!!」
+“Missiles, fire!!”
+
+@14824 Jun · ジュン
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@14825 Jun · ジュン
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@14826 Jun · ジュン
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@14827 Jun · ジュン
+> 「マリンビーム!」
+“Marine Beam!”
+
+@14828 Jun · ジュン
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@14829 Jun · ジュン
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@14830 Jun · ジュン
+# 审校：原译 Missile launch 语法不自然，改为 Missiles, fire，更符合战斗台词。
+> 「ミサイル発射!!」
+“Missiles, fire!!”
+
+@14831 Jun · ジュン
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@14832 Jun · ジュン
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@14833 Jun · ジュン
+# 机翻疑问：新译名：ネーブルミサイル=Navel Missile
+> 「ネーブルミサーイルッ!」
+“Navel Missile!”
+
+@14834 Jun · ジュン
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@14835 Jun · ジュン
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@14836 Jun · ジュン
+# 机翻疑问：新译名：アトミックパンチ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@14837 Jun · ジュン
+# 机翻疑问：新译名：ドリルプレッシャーパンチ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@14838 Jun · ジュン
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@14839 Jun · ジュン
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@14840 Jun · ジュン
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@14841 Jun · ジュン
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@14842 Jun · ジュン
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@14843 Jun · ジュン
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@14844 Jun · ジュン
+# 机翻疑问：新译名：ネーブルミサイル=Navel Missile
+> 「ネーブルミサーイルッ!」
+“Navel Missile!”
+
+@14845 Jun · ジュン
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@14846 Jun · ジュン
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@14847 Jun · ジュン
+# 机翻疑问：新译名：アトミックパンチ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@14848 Jun · ジュン
+# 机翻疑问：新译名：ドリルプレッシャーパンチ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@14849 Jun · ジュン
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@14850 Jun · ジュン
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@14851 Jun · ジュン
+> 「グレートブースター!」
+“Great Booster!”
+
+@14852 Tetsuya · 鉄也
+# 审校：原译 you ready 口语可接受，但更简洁自然的战斗台词为 Jun, ready?!
+> 「ジュン、いいな!?」
+“Jun, ready?!”
+
+@14853 Jun · ジュン
+> 「もちろん、鉄也!」
+“Of course, Tetsuya!”
+
+@14854 Tetsuya · 鉄也
+> 「くらいやがれ!」
+“Take this!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@14855 Jun · ジュン
+> 「ボス!」
+“Boss!”
+
+@14856 Boss · ボス
+# 审校：原译 I know, I know 与原文“わかってるわよん”语气略有偏差，改为 I got it, I got it 更自然。
+> 「おう、わかってるわよん」
+“Yeah, I got it, I got it!”
+
+@14857 Jun · ジュン
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@14858 Jun · ジュン
+> 「さやか、いくわよ!」
+“Sayaka, here we go!”
+
+@14859 Sayaka · さやか
+# 审校：原译 Nag much? 过于简略且语气不够自然，改为 Quit nagging, I know already!
+> 「うるさいわね、わかってるわよ!」
+“Quit nagging, I know already!”
+
+@14860 Jun · ジュン
+> 「とどめよ!」
+“This is the finisher!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@14861 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@14862 Jun · ジュン
+> 「わかったわ!」
+“Got it!”
+
+@14863 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14864 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@14865 Boss · ボス
+> 「わかっただわさ!」
+“Got it, that's for sure!”
+
+@14866 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14867 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@14868 Sayaka · さやか
+> 「わかったわ!」
+“Got it!”
+
+@14869 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14870 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14871 Duke · デューク
+> 「準備完了!」
+“Ready to go!”
+
+@14872 Jun · ジュン
+> 「いつでもいいわよ!」
+“I'm good anytime!”
+
+@14873 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14874 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14875 Jun · ジュン
+> 「こっちはオッケイよ!」
+“I'm okay over here!”
+
+@14876 Boss · ボス
+# 审校：原译“Let's go and do it!”语气太平，未体现 Boss 爱出风头、得意忘形的口吻，改为更有气势的口语。
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@14877 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14878 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14879 Sayaka · さやか
+> 「いつでもいいわ!」
+“I'm good anytime!”
+
+@14880 Jun · ジュン
+> 「こっちもオッケイよ!」
+“I'm okay over here too!”
+
+@14881 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14882 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@14883 Jun · ジュン
+> 「頼むわ、鉄也!」
+“I'm counting on you, Tetsuya!”
+
+@14884 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@14885 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@14886 Boss · ボス
+# 审校：“knock 'em flying”不够自然，改为“send 'em flying”，并保留 Boss 口癖。
+> 「ぶっとばしてやるだわさ!」
+“I'll send 'em flying, that's for sure!”
+
+@14887 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@14888 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@14889 Sayaka · さやか
+> 「覚悟しなさい!」
+“Prepare yourself!”
+
+@14890 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@14891 Tetsuya · 鉄也
+> 「ジュン、バラバラに攻撃していては
+>  意味がない!」
+“Jun, attacking separately is pointless!”
+
+@14892 Jun · ジュン
+> 「そうね、わかったわ鉄也!」
+“You're right, got it, Tetsuya!”
+
+@14893 Tetsuya · 鉄也
+> 「よぉし、同時に集中攻撃だ!」
+“All right, concentrated attack all at once!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@14894 Jun · ジュン
+> 「ボス! 応援してちょうだい!」
+“Boss! Back me up!”
+
+@14895 Boss · ボス
+# 审校：补上“just”使语气更贴近 Boss 自夸的口吻。
+> 「そういうことならよ、このボスさまに
+>  おまかせだぜ!」
+“If that's how it is, just leave it to the great Boss!”
+
+@14896 Jun · ジュン
+> 「あてにしてるわよ!」
+“I'm counting on you!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@14897 Jun · ジュン
+> 「さやかさん、剣をつかうのよ!」
+“Sayaka, use the sword!”
+
+@14898 Sayaka · さやか
+> 「ええ、わかってるわ!」
+“Yeah, I know!”
+
+@14899 Jun · ジュン
+> 「オッケイ、いくわよ!」
+“Okay, here I go!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”

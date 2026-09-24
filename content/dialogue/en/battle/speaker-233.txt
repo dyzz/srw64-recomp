@@ -1,0 +1,122 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11048 Iino · イーノ
+> 「あ、当たっても知らないよ!」
+“D-don't blame me if you get hit!”
+
+@11049 Iino · イーノ
+> 「落とすよっ!」
+“I'm taking you down!”
+
+@11050 Iino · イーノ
+> 「このっ!」
+“Why you!”
+
+@11051 Iino · イーノ
+> 「やらせるもんかっ!」
+“Like I'd let you!”
+
+@11052 Iino · イーノ
+> 「もらうよっ!」
+“I'll take that!”
+
+@11053 Iino · イーノ
+> 「僕だって!」
+“I can do it too!”
+
+@11054 Iino · イーノ
+> 「そんな所にいるからっ!」
+“That's what you get for being there!”
+
+@11055 Iino · イーノ
+> 「わあああっ!! だ、ダメだあ～」
+“Waaah!! I-I can't!”
+
+@11056 Iino · イーノ
+> 「や、やられたっ!!」
+“I-I've been hit!!”
+
+@11057 Iino · イーノ
+> 「うわああっ! や、やっぱりやめときゃ
+>  よかった……」
+“Uwaaah! I-I knew I should've stayed out of this...”
+
+@11058 Iino · イーノ
+> 「わああぁっ! だ、ダメだ、助けてっ!」
+“Waaah! I-I can't, help me!”
+
+@11059 Iino · イーノ
+> 「だ、ダメだ! もうもたないよっ!」
+“I-I can't! I can't take any more!”
+
+@11060 Iino · イーノ
+> 「うわわっ! つ、強いぞ、こいつ!」
+“Uwawa! H-he's strong, this one!”
+
+@11061 Iino · イーノ
+> 「うわっ! やったな、このっ!」
+“Uwa! You got me, why you!”
+
+@11062 Iino · イーノ
+> 「くっ! こんなことでっ!」
+“Kuh! Not over something like this!”
+
+@11063 Iino · イーノ
+> 「ま、まだだっ! まだやられてないぞっ!」
+“N-not yet! I'm not down yet!”
+
+@11064 Iino · イーノ
+> 「くうっ! こんな事でやられてたまるか!」
+“Kuh! Like I'd go down over something like this!”
+
+@11065 Iino · イーノ
+> 「こ、この程度なら大丈夫っ!」
+“Th-this much is nothing!”
+
+@11066 Iino · イーノ
+> 「当たっただけっ!」
+“It just grazed me!”
+
+@11067 Iino · イーノ
+> 「うわっ!? あ、あれ、何ともないや」
+“Uwa?! H-hey, it didn't hurt at all.”
+
+@11068 Iino · イーノ
+> 「来るな、来るなぁっ!」
+“Stay away, stay away!”
+
+@11069 Iino · イーノ
+> 「当たりませんようにっ!」
+“Please don't hit me!”
+
+@11070 Iino · イーノ
+> 「よ、よかった、かわせた……」
+“Th-thank goodness, I dodged it...”
+
+@11071 Iino · イーノ
+> 「ラッキー! 外れてくれた!」
+“Lucky! It missed!”
+
+@11072 Iino · イーノ
+> 「うわっ! あ、危なかった……」
+“Uwa! Th-that was close...”
+
+@11073 Iino · イーノ
+> 「来る……そこ!?」
+“Here it comes... there?!”
+
+@11074 Iino · イーノ
+> 「ムダだよっ!」
+“It's useless!”
+
+@11075 Iino · イーノ
+> 「効くもんかっ!」
+“Like that'll work!”
+
+@11076 Iino · イーノ
+> 「だめだぁ、弾切れだ!」
+“I'm out—out of ammo!”
+
+@11077 Iino · イーノ
+> 「ダメだ、届かない!」
+“No good, it won't reach!”

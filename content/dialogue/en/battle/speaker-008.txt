@@ -1,0 +1,104 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13004 Argo · アルゴ
+> 「うおぉぉぉぉぉ!」
+“Whoooaaaaa!”
+
+@13005 Argo · アルゴ
+> 「でえぃぃぃぃっ!」
+“Take thaaaat!”
+
+@13006 Argo · アルゴ
+> 「ぬぅぉぉぉぉっ!」
+“Nghaaaaa!”
+
+@13007 Argo · アルゴ
+> 「うおぉぉぉりゃぁぁぁっ!」
+“Whoooaahyaaa!”
+
+@13008 Argo · アルゴ
+> 「ぬうぅぅん!」
+“Nghhh!”
+
+@13009 Argo · アルゴ
+> 「勝負だ!」
+“Let's settle this!”
+
+@13010 Argo · アルゴ
+> 「ゆくぞ」
+“Here I come.”
+
+@13011 Argo · アルゴ
+> 「うおぉぉぉぉぉ」
+“Whoooaaaaa.”
+
+@13012 Argo · アルゴ
+> 「ま、負けたのか……」
+“I... I lost?”
+
+@13013 Argo · アルゴ
+> 「俺は、俺は負けるわけには
+>  いかんのだぁぁぁ!」
+“I can't lose! I can't afford to lose!”
+
+@13014 Argo · アルゴ
+> 「ぬぁぁぁぁぁぁっ!」
+“Nwaaaaaaah!”
+
+@13015 Argo · アルゴ
+> 「どうやら遠慮はいらんようだな」
+“Seems I don't need to hold back.”
+
+@13016 Argo · アルゴ
+> 「なにっ!?」
+“What?!”
+
+@13017 Argo · アルゴ
+> 「ぐ、うううう……」
+“Guh, uuuugh...”
+
+@13018 Argo · アルゴ
+> 「そうこなくてはな」
+“Now that's more like it.”
+
+@13019 Argo · アルゴ
+> 「戦いの最中にムダ口をたたくのは、
+>  素人だ」
+“Running your mouth mid-battle is the mark of an amateur.”
+
+@13020 Argo · アルゴ
+> 「それだけか」
+“Is that all?”
+
+@13021 Argo · アルゴ
+> 「貴様もこの程度か」
+“So you're no better than this either.”
+
+@13022 Argo · アルゴ
+> 「どうした、それで終わりか」
+“What's wrong? Is that the end of it?”
+
+@13023 Argo · アルゴ
+> 「どうした!」
+“What's wrong?!”
+
+@13024 Argo · アルゴ
+> 「当たるものか」
+“As if that would hit.”
+
+@13025 Argo · アルゴ
+> 「させるかぁっ!」
+“You think I'd let you?!”
+
+@13026 Argo · アルゴ
+> 「こんな子供だましが通用するとでも
+>  思っているのか!」
+“You think cheap tricks like that will work on me?!”
+
+@13027 Argo · アルゴ
+> 「くそっ!」
+“Damn it!”
+
+@13028 Argo · アルゴ
+> 「奴は……どこだ!?」
+“Where... where is he?!”

@@ -1,0 +1,111 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10130 Dr. Gura · グラー博士
+> 「奴らを、け散らせぇっ!」
+“Crush them all!”
+
+@10131 Dr. Gura · グラー博士
+> 「くそ～! なまいきな人間どもめ!」
+“Damn! Those insolent humans!”
+
+@10132 Dr. Gura · グラー博士
+> 「撃て、撃てぇ!」
+“Fire, fire!”
+
+@10133 Dr. Gura · グラー博士
+> 「一気に叩きつぶせ!」
+“Smash them in one blow!”
+
+@10134 Dr. Gura · グラー博士
+> 「やってしまえ!」
+“Finish them off!”
+
+@10135 Dr. Gura · グラー博士
+> 「破壊しろ!」
+“Destroy them!”
+
+@10136 Dr. Gura · グラー博士
+> 「ほとんど成功していたのに……」
+“It was almost a success...”
+
+@10137 Dr. Gura · グラー博士
+> 「うあ、ああああーっ!」
+“Uwaa, aaaaaah!”
+
+@10138 Dr. Gura · グラー博士
+> 「うおおぉぉーっ!? バ、バカな……」
+“Uwooooh?! I-Impossible...”
+
+@10139 Dr. Gura · グラー博士
+> 「百鬼一族はこれしきのことで負け
+>  はせん!」
+“The Hyakki Clan won't lose over something like this!”
+
+@10140 Dr. Gura · グラー博士
+> 「おのれ、まだだ!」
+“Curse you, not yet!”
+
+@10141 Dr. Gura · グラー博士
+> 「どうしたっ! なにごとだ!?」
+“What's going on?! What happened?!”
+
+@10142 Dr. Gura · グラー博士
+> 「い、いかんっ! このままではまずいぞ!」
+“Th-This is bad! At this rate, we're in trouble!”
+
+@10143 Dr. Gura · グラー博士
+> 「万が一にもぬかりがあってはならんぞっ」
+“There must be no room for error, not even the slightest!”
+
+@10144 Dr. Gura · グラー博士
+> 「何ごとだっ!」
+“What's going on?!”
+
+@10145 Dr. Gura · グラー博士
+> 「油断はならんぞ!」
+“Don't let your guard down!”
+
+@10146 Dr. Gura · グラー博士
+> 「うぬぅ、このままでは不利だ!」
+“Ngh, at this rate we're at a disadvantage!”
+
+@10147 Dr. Gura · グラー博士
+> 「まったく、うるさい奴らだ」
+“Honestly, what a noisy bunch.”
+
+@10148 Dr. Gura · グラー博士
+> 「あわてることはない!」
+“There's no need to panic!”
+
+@10149 Dr. Gura · グラー博士
+> 「しまった、間にあわなかったか!」
+“Damn, we didn't make it in time!”
+
+@10150 Dr. Gura · グラー博士
+> 「貴様らの攻撃など、あたるわけがない」
+“Your attacks could never hit me.”
+
+@10151 Dr. Gura · グラー博士
+> 「やったぞ!」
+“I did it!”
+
+@10152 Dr. Gura · グラー博士
+> 「ワシの設計にくるいはない、わはははは!」
+“My designs are flawless, wahahaha!”
+
+@10153 Dr. Gura · グラー博士
+> 「ワシの設計にくるいはない、わはははは」
+“My designs are flawless, wahahaha.”
+
+@10154 Dr. Gura · グラー博士
+> 「なんということだ!」
+“What is the meaning of this?!”
+
+@10155 Dr. Gura · グラー博士
+> 「やや、これは!」
+“Oh my, what's this?!”
+
+@10156 Dr. Gura · グラー博士
+> 「なすすべもなく、指をくわえて見て
+>  おるのか!」
+“Can you do nothing but stand by and watch?!”

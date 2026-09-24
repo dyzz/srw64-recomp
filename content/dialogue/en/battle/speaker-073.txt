@@ -1,0 +1,184 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8690 Scirocco · シロッコ
+> 「身の程知らずが……落ちろっ!」
+“You don't know your place... Fall!”
+
+@8691 Scirocco · シロッコ
+> 「もらった!!」
+“Got you!”
+
+@8692 Scirocco · シロッコ
+> 「とどめをさしてやる!」
+“I'll finish you off!”
+
+@8693 Scirocco · シロッコ
+> 「死ねっ!!」
+“Die!”
+
+@8694 Scirocco · シロッコ
+> 「ぬかったな!!」
+“You let your guard down!”
+
+@8695 Scirocco · シロッコ
+> 「死ににきたか!」
+“So you've come to die!”
+
+@8696 Scirocco · シロッコ
+# 审校：“カトンボ”是蜻蜓，初稿译作 gnat 不准确，改为 dragonfly。
+> 「落ちろ……カトンボ」
+“Fall... you dragonfly.”
+
+@8697 Scirocco · シロッコ
+> 「逃げられはせん!」
+“You won't escape!”
+
+@8698 Scirocco · シロッコ
+> 「沈めっ!!」
+“Sink!”
+
+@8699 Scirocco · シロッコ
+> 「不愉快だな、この感覚は!」
+“This feeling... how unpleasant!”
+
+@8700 Scirocco · シロッコ
+> 「そこかっ!!」
+“There you are!”
+
+@8701 Scirocco · シロッコ
+> 「フフフッ、ハハハハッ! 落ちろっ!!」
+“Heh heh heh, ha ha ha ha! Fall!”
+
+@8702 Scirocco · シロッコ
+> 「これで終わりだな!!」
+“This is the end for you!”
+
+@8703 Scirocco · シロッコ
+> 「そう動くか。わからん話ではないが、
+>  そうはさせん!」
+“So that's your move. I understand it, but I won't let you!”
+
+@8704 Scirocco · シロッコ
+> 「なんだと!? バカな!?」
+“What?! Impossible!”
+
+@8705 Scirocco · シロッコ
+> 「この私が敗れる!?
+>  負けるというのか!?」
+“I, defeated?! You're saying I'll lose?!”
+
+@8706 Scirocco · シロッコ
+# 审校：“俗物”在 Scirocco 口中带有轻蔑，vulgar fool 比 commoner 更符合其语气。
+> 「ぬうっ! 俗物が……あくまで私に
+>  逆らうつもりか!」
+“Ngh! You vulgar fool... you still mean to defy me?!”
+
+@8707 Scirocco · シロッコ
+> 「何っ!? この力……なんだ!?」
+“What?! This power... what is it?!”
+
+@8708 Scirocco · シロッコ
+> 「むうっ! まだだ! まだ落ちはせん!!」
+“Hmph! Not yet! I won't fall yet!”
+
+@8709 Scirocco · シロッコ
+> 「バカな!? 押されているだと!?」
+“Impossible! I'm being pushed back?!”
+
+@8710 Scirocco · シロッコ
+> 「うおぉっ!? なんというプレッシャーだ!」
+“Whoa! What pressure!”
+
+@8711 Scirocco · シロッコ
+> 「ちっ! 少しはできるようだが……」
+“Tch! You've got some skill, it seems...”
+
+@8712 Scirocco · シロッコ
+> 「なんの!この程度では私は倒せん!」
+“Nonsense! That won't be enough to defeat me!”
+
+@8713 Scirocco · シロッコ
+> 「小賢しい……いい気になるな!!」
+“Clever little... don't get cocky!”
+
+@8714 Scirocco · シロッコ
+> 「くっ! やるな……だが、そんなものでは!」
+“Ngh! Not bad... but that won't do it!”
+
+@8715 Scirocco · シロッコ
+> 「むぅっ!
+>  私に油断があったというのか……」
+“Hmph! So I was careless, was I...”
+
+@8716 Scirocco · シロッコ
+> 「あてた!? あれでか」
+“You hit me?! With that?”
+
+@8717 Scirocco · シロッコ
+> 「うっ、このプレッシャー……なんだ?」
+“Ugh, this pressure... what is it?”
+
+@8718 Scirocco · シロッコ
+> 「その程度の攻撃が通用するか!」
+“You think an attack like that will work?!”
+
+@8719 Scirocco · シロッコ
+> 「ふん……そんなものか」
+“Hmph... is that all?”
+
+@8720 Scirocco · シロッコ
+> 「そんな腕で私に向かってくるとは……
+>  なめられたものだ」
+“Coming at me with skill like that... you must take me lightly.”
+
+@8721 Scirocco · シロッコ
+> 「効きはせんよ!!」
+“It won't work!”
+
+@8722 Scirocco · シロッコ
+# 审校：与 L17 统一“俗物”的译法。
+> 「ふん、俗物が……おのれの分を
+>  わきまえるのだな」
+“Hmph, you vulgar fool... know your place.”
+
+@8723 Scirocco · シロッコ
+> 「甘いな!」
+“Too naive!”
+
+@8724 Scirocco · シロッコ
+> 「当たりはせんよ!」
+“You won't hit me!”
+
+@8725 Scirocco · シロッコ
+> 「ふ……見えるぞ、貴様の攻撃が」
+“Heh... I can see it, your attack.”
+
+@8726 Scirocco · シロッコ
+> 「当たらんな!」
+“You won't hit!”
+
+@8727 Scirocco · シロッコ
+> 「見えた!!」
+“I saw it!”
+
+@8728 Scirocco · シロッコ
+> 「ふん……その程度の腕で、よくも
+>  今まで生き延びてこられたものだ」
+“Hmph... with skill like that, how have you survived this long?”
+
+@8729 Scirocco · シロッコ
+> 「ふ、ムダな事を」
+“Heh, what a waste of effort.”
+
+@8730 Scirocco · シロッコ
+> 「これでは人に品性を求めることなど
+>  絶望的だな」
+“Expecting decency from people is hopeless, it seems.”
+
+@8731 Scirocco · シロッコ
+> 「くっ! 弾切れか……」
+“Tch! Out of ammo...”
+
+@8732 Scirocco · シロッコ
+> 「ここからでは反撃できんか……まあいい」
+“I can't counter from here... no matter.”

@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11191 Ple-Two · プルツー
+> 「よくもまぁのこのこと、恐れる心が
+>  ないのかい!?」
+“To come waltzing in like that, have you no fear?!”
+
+@11192 Ple-Two · プルツー
+> 「さかしいよっ!!」
+“How impudent!!”
+
+@11193 Ple-Two · プルツー
+> 「かんねんしなっ!!」
+“Give it up!!”
+
+@11194 Ple-Two · プルツー
+> 「もらったっ!!」
+“Got you!!”
+
+@11195 Ple-Two · プルツー
+> 「くらいなっ!!」
+“Take this!!”
+
+@11196 Ple-Two · プルツー
+> 「おそいっ!!」
+“Too slow!!”
+
+@11197 Ple-Two · プルツー
+> 「落ちろ!」
+“Fall!”
+
+@11198 Ple-Two · プルツー
+> 「追いかけっこはこれまでだな」
+“This chase ends here.”
+
+@11199 Ple-Two · プルツー
+> 「観念しなっ!」
+“Give it up!”
+
+@11200 Ple-Two · プルツー
+> 「し、しまった!!」
+“D-damn it!!”
+
+@11201 Ple-Two · プルツー
+> 「くっ! ここまでか!!」
+“Ngh! This is as far as I go!!”
+
+@11202 Ple-Two · プルツー
+> 「きゃあああっ!」
+“Kyaaaaa!!”
+
+@11203 Ple-Two · プルツー
+> 「直撃!?」
+“A direct hit?!”
+
+@11204 Ple-Two · プルツー
+> 「くっ、やられるのか!?」
+“Ngh, am I going down?!”
+
+@11205 Ple-Two · プルツー
+> 「!! まだ落ちるわけには!」
+“!! I can't fall here yet!”
+
+@11206 Ple-Two · プルツー
+> 「ううっ! こいつ、並みではない!」
+“Ugh! This one's no ordinary foe!”
+
+@11207 Ple-Two · プルツー
+> 「やる! でもまだ!」
+“Not bad! But I'm not done!”
+
+@11208 Ple-Two · プルツー
+> 「くっ!! やったねっ!!」
+“Ngh!! You got me!!”
+
+@11209 Ple-Two · プルツー
+> 「つっ! よくもやってくれたな!」
+“Ngh! How dare you do that to me!”
+
+@11210 Ple-Two · プルツー
+> 「こんなので!」
+“A little thing like that!”
+
+@11211 Ple-Two · プルツー
+> 「フン、この程度の攻撃!」
+“Hmph, an attack of this level!”
+
+@11212 Ple-Two · プルツー
+> 「ハハハハハハッ」
+“Hahahahahaha!”
+
+@11213 Ple-Two · プルツー
+> 「あまいっ!!」
+“Too naive!!”
+
+@11214 Ple-Two · プルツー
+> 「あたんないよ!!」
+“You can't hit me!!”
+
+@11215 Ple-Two · プルツー
+> 「みえみえなんだよ!!」
+“I can see right through you!!”
+
+@11216 Ple-Two · プルツー
+> 「フン、ムダなことをっ!!」
+“Hmph, what a waste of effort!!”
+
+@11217 Ple-Two · プルツー
+> 「ふん、限界だな」
+“Hmph, you've hit your limit.”
+
+@11218 Ple-Two · プルツー
+> 「あまいんだよ!!」
+“You're too naive!!”
+
+@11219 Ple-Two · プルツー
+> 「ビームは効かないっていってる!」
+“I told you Beams don't work on me!”
+
+@11220 Ple-Two · プルツー
+> 「ちっ、反撃不可能!」
+“Tch, I can't counterattack!”
+
+@11221 Ple-Two · プルツー
+> 「クッ……どこからの攻撃だ!?」
+“Ngh... where's that attack coming from?!”
+
+@11222 Ple-Two · プルツー
+> 「射程外からの攻撃!?
+>  賢しいんだよ!」
+“An attack from out of range?! How clever of you!”

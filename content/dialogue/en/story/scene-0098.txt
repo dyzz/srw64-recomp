@@ -1,0 +1,2520 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@46549 Scirocco · シロッコ
+> 「トレーズめ……まさかアクシズ軍とやる
+>  前に、バルジを失うことになるとは
+“That Treize... To think we'd lose Balgi before even facing the Axis Forces.
+---
+>  あのような行動、理解に苦しむな
+>  が……やはり{HeroMech}……
+I can't fathom such a move... As I thought, {HeroMech}...
+---
+>  プレッシャーを増大させている。
+>  排除しなければならんか」
+is increasing the pressure. I may have to eliminate it.”
+
+@46550 Specials · スペシャルズ
+> 「報告いたします。敵艦隊は
+>  月からの艦艇と合流し
+“Reporting. The enemy fleet has linked up with the ships from the moon
+---
+>  この宙域に布陣しつつあります。
+>  また地上から上がったと思われる
+and is taking formation in this sector. Also, several ships believed to have
+---
+>  艦艇も数隻、
+>  敵艦隊との合流を
+come up from the surface are
+---
+>  目指しているものと思われます」
+thought to be heading to join the enemy fleet.”
+
+@46551 Scirocco · シロッコ
+> 「フフフッ、どうやら連中はトレーズを
+>  失い、一気にケリをつけるつもりに
+“Heh heh, it seems they've lost Treize and intend to settle this all at once.
+---
+>  なったようだな。ビルゴⅡの整備を
+>  急がせろ。リーブラの主砲の
+Hurry the maintenance on the Virgo IIs. What's the status of
+---
+>  発射態勢はどうか」
+Libra's main cannon firing readiness?”
+
+@46552 Specials · スペシャルズ
+> 「はっ、万全であります!」
+“Yes, sir, fully ready!”
+
+@46553 Jerid · ジェリド
+> 「どういうことだ、シロッコ!
+>  なぜすぐに奴らを叩きに出ない!」
+“What's the meaning of this, Scirocco?! Why don't we go strike them down at once?!”
+
+@46554 Scirocco · シロッコ
+> 「あせるな、ジェリド。このリーブラと、
+>  残ったモビルドールだけでも、我々は
+“Don't be hasty, Jerid. With this Libra and the remaining Mobile Dolls alone, we
+---
+>  いまだに他を圧倒している。せっかく
+>  残った戦力をかき集めてくれたのだ
+still overwhelm all others. They've gone to the trouble of gathering their remaining forces for us.
+---
+>  まとめて叩いておければ、
+>  あとで面倒がない」
+If we crush them all at once, there'll be no trouble later.”
+
+@46555 Jerid · ジェリド
+> 「しかし……」
+“But...”
+
+@46556 Scirocco · シロッコ
+> 「もはや月にも、地上にも戦力など
+>  ないに等しい。あとはどうとでもなる
+“There's practically no fighting force left on the moon or the surface. After that, we can do as we please.
+---
+>  マウアーの仇討ちがしたいのなら、
+>  待つことだ」
+If you want to avenge Mouar, then wait.”
+
+@46557 Jerid · ジェリド
+> 「くっ……」
+“Ngh...”
+
+@46558 Jerid · ジェリド
+> 「マウアー……俺は、
+>  俺はどうすればいい。……くそっ!」
+“Mouar... What am I, what am I supposed to do? ...Damn it!”
+
+@46559 Quattro · クワトロ
+> 「艦長、地上から来た部隊が
+>  合流してきたそうだが」
+“Captain, I hear the units from the surface have joined us.”
+
+@46560 Bright · ブライト
+> 「ああ。レディ・アンが上げたらしい」
+“Yeah. Seems Lady Une brought them up.”
+
+@46561 Amuro · アムロ
+> 「特佐の判断は正しいな。
+>  少しばかりの戦力を
+“The Lieutenant Colonel's judgment is correct. Leaving behind
+---
+>  残しても、意味はない」
+a handful of forces would be meaningless.”
+
+@46562 Quattro · クワトロ
+> 「そうだな……」
+“Indeed...”
+
+@46563 Amuro · アムロ
+> 「何をためらっている?」
+“What are you hesitating for?”
+
+@46564 Quattro · クワトロ
+> 「……アクシズ軍が動いている。
+>  やはり一度、月へ
+“...The Axis Forces are on the move. Perhaps we should
+---
+>  もどったほうがいいかもしれん」
+return to the moon once, after all.”
+
+@46565 Alan · アラン
+> 「しかし、それではシロッコにも
+>  余裕を与えてしまう
+“But that would give Scirocco room to breathe as well.
+---
+>  我々が退いたところで、
+>  ハマーンがリーブラを叩くとは限らない」
+Even if we withdraw, Haman won't necessarily strike Libra.”
+
+@46566 Quattro · クワトロ
+> 「だが、もしもシロッコとハマーンを
+>  相手にすることになれば
+“But if we end up facing both Scirocco and Haman,
+---
+>  我々は勝てるのか?」
+can we win?”
+
+@46567 Banjo · 万丈
+> 「らしくないね、クワトロ特尉。
+>  その場合はシロッコとハマーンも
+“That's not like you, Captain Quattro. In that case, Scirocco and Haman
+---
+>  それぞれやりあうことになる。さらに、
+>  ギャリソンの情報では、もうアクシズは
+will each fight their own battles. Moreover, according to Garrison's intel, Axis will soon
+---
+>  地球圏に入るという。どのみち、
+>  僕たちにとっては、分の悪い賭けさ」
+enter the Earth Sphere. Either way, it's a bad bet for us.”
+
+@46568 Bright · ブライト
+> 「そう思う。
+>  ここまで来たら、やるしかあるまい」
+“I agree. Having come this far, we've no choice but to do it.”
+
+@46569 Quattro · クワトロ
+> 「ふむ……」
+“Hmm...”
+
+@46570 Elle · エレ
+> 「決断を引きのばしても、
+>  ムダに時が流れるばかりでしょう
+“Putting off the decision will only waste time.
+---
+>  何を心配されているのですか?」
+What is it that worries you?”
+
+@46571 Quattro · クワトロ
+> 「…………」
+“...”
+
+@46572 Ciela · シーラ
+> 「ハマーン・カーンの暗い意思は、
+>  こちらをも取りこもうとしています
+“Haman Karn's dark will is trying to draw us in as well.
+---
+>  惑わされてはなりません」
+We must not be swayed.”
+
+@46573 Amuro · アムロ
+> 「とにかく、最終的な判断は、
+>  あなたにゆだねられているんだ
+“In any case, the final decision rests with you.
+---
+>  そのことを考えてもらいたいな」
+I'd like you to consider that.”
+
+@46574 Quattro · クワトロ
+> 「……わかった。艦長、
+>  メールシュトローム作戦をやってみよう」
+“...Understood. Captain, let's carry out Operation Maelstrom.”
+
+@46575 Bright · ブライト
+> 「よし、全艦隊に通達!
+>  本日1200
+“All right, notify the entire fleet! At 1200 today,
+---
+>  メールシュトローム作戦を発動する
+>  目標は
+we launch Operation Maelstrom. The target is
+---
+>  巨大宇宙戦艦リーブラ」
+the giant space battleship Libra.”
+
+@46576 Kamille · カミーユ
+> 「メールシュトローム作戦か……」
+“Operation Maelstrom, huh...”
+
+@46577 Ark · アーク（按段落 3DD1）
+> 「ハマーンの軍も動いているらしい。
+>  これで決着をつけたいな」
+“Haman's forces are on the move too, it seems. I'd like to settle this here.”
+
+@46578 Kamille · カミーユ
+> 「ああ……しかし、
+>  いつもながら厳しい戦いになる」
+“Yeah... But as always, it's going to be a tough battle.”
+
+@46579 Ark · アーク（按段落 3DD1）
+> 「タイトロープさ。俺たちの
+>  やってきたことは、最初からそうだった」
+“We're walking a tightrope. That's how it's been for us from the very start.”
+
+@46580 Eiji · エイジ
+> 「そうだな……選択の余地が
+>  あったことの方が少ない」
+“True... More often than not, we've had no choice at all.”
+
+@46581 Koji · 甲児
+> 「なぁ、メール何とかってのは、
+>  どういう意味なんだ?」
+“Hey, what does that Mael-whatever thing even mean?”
+
+@46582 Selain · セレイン（按段落 3DD2）
+> 「メールシュトローム作戦の実施が、
+>  確定したそうだ
+“It's been confirmed that Operation Maelstrom will be carried out.
+---
+>  まもなく、戦闘待機に
+>  移行するぞ」
+We'll be moving to combat standby shortly.”
+
+@46583 Eiji · エイジ
+> 「メールシュトローム作戦か……」
+“Operation Maelstrom, huh...”
+
+@46584 Selain · セレイン（按段落 3DD2）
+> 「アクシズ軍も動いている。
+>  ここで決着をつけられればいいが……」
+“The Axis Forces are on the move too. If only we could settle this here...”
+
+@46585 Show · ショウ
+> 「どうせいつもと同じだ。
+>  俺たちには、選択の余地はない
+“It's the same as always anyway. We have no choice.
+---
+>  ただ、ひたすら戦うだけだ」
+We just keep fighting, that's all.”
+
+@46586 Chum · チャム
+> 「ショウ……」
+“Show...”
+
+@46587 Koji · 甲児
+> 「なぁ、メール何とかってのは、
+>  どういう意味なんだ?」
+“Hey, what does that Mael-whatever thing even mean?”
+
+@46588 Ryoma · リョウ
+> 「みんな、メールシュトローム作戦の
+>  実施が確定したぞ」
+“Everyone, it's been confirmed that Operation Maelstrom will be carried out.”
+
+@46589 Dr. Saotome · 早乙女博士
+> 「やはり、やるか。真・ゲッターの
+>  再調整も、急ぐとしよう」
+“So they're really going through with it. Then we'd best hurry the readjustments on Shin Getter too.”
+
+@46590 Hayato · ハヤト
+> 「頼みますよ、博士。
+>  ハマーンも動いてるって話だ
+“We're counting on you, Doctor. Word is Haman's on the move too.
+---
+>  長丁場になるかもしれない」
+This could turn into a long haul.”
+
+@46591 Domon · ドモン
+> 「フン、長かろうが短かろうが、
+>  俺たちは全力で戦うだけだ」
+“Hmph. Long or short, all we can do is fight with everything we've got.”
+
+@46592 Tetsuya · 鉄也
+> 「ああ、他にやりようはないな」
+“Yeah. There's no other way to do it.”
+
+@46593 Jun · ジュン
+> 「いつもと同じに、ね」
+“Same as always, then.”
+
+@46594 Brad · ブラッド（按段落 3DD3）
+> 「まったくだ。……で、
+>  そのメール何とかってのは、何だ?」
+“Exactly. ...So, what is this Mael-whatever thing, anyway?”
+
+@46595 Lawrence · ローレンス
+> 「お嬢様、メールシュトローム作戦、
+>  確定しましたぞ」
+“My lady, Operation Maelstrom has been confirmed.”
+
+@46596 Manami · マナミ（按段落 3DD4）
+> 「そう、中止って話もあったけど、
+>  やっぱりやることになったのね」
+“I see. There was talk of calling it off, but in the end they're going through with it after all.”
+
+@46597 Lawrence · ローレンス
+> 「ハマーン・カーンのアクシズ軍も、
+>  動きが見られるようです」
+“There appear to be signs of movement from Haman Karn's Axis Forces as well.”
+
+@46598 Simone · シモーヌ
+> 「なんだか、
+>  決戦になりそうな雰囲気ね」
+“It feels like this is shaping up to be a decisive battle.”
+
+@46599 Koji · 甲児
+> 「なぁ、メール何とかってのは、
+>  どういう意味なんだ?」
+“Hey, what does that Mael-whatever thing even mean?”
+
+@46600 Shinobu · 忍
+> 「メールストローだろ。
+>  手紙と関係あるんじゃねえのか?」
+“It's Maelstrom, right? Maybe it's got something to do with mail?”
+
+@46601 Sara · 沙羅
+> 「まったく、お約束だね、あんたらは。
+>  メールシュトローム作戦だって」
+“Honestly, you lot are so predictable. It's Operation Maelstrom.”
+
+@46602 David · デビッド
+> 「まま、いいじゃないか。で、どうなんだよ」
+“Well, whatever. So what does it mean?”
+
+@46603 Ryo · 亮
+> 「古代メール帝国の、
+>  首都ロームに、ちなんだ作戦名だ
+“It's named after Rome, the capital of the Ancient Mael Empire.
+---
+>  そんなことも知らんとはな」
+Imagine not even knowing that.”
+
+@46604 Koji · 甲児
+> 「へええ、そうだったのか」
+“Whoa, really?”
+
+@46605 Boss · ボス
+> 「古代メール帝国って
+>  どこにあったんだわさ」
+“And where was this Ancient Mael Empire, anyway?”
+
+@46606 Shinobu · 忍
+> 「おい、それよりも、
+>  なんでそんな名前がついたんだ?」
+“Hey, forget that. Why'd they give it a name like that?”
+
+@46607 Marvel · マーベル
+> 「バカね、亮のいった嘘を、
+>  真に受けるなんて」
+“Idiot. You actually fell for the lie Ryo told you.”
+
+@46608 Koji · 甲児
+> 「……なに!?」
+“...What?!”
+
+@46609 Shinobu · 忍
+> 「亮……てめぇ、
+>  なに真顔でふかしてやがんだよ!」
+“Ryo... you bastard, what're you spouting off with a straight face for?!”
+
+@46610 Sayaka · さやか
+> 「あ～あ、遊ばれちゃって……」
+“Aww, you got played...”
+
+@46611 Daisaku · 大作
+> 「銀鈴さんは知ってるんですか?」
+“Do you know, Ginrei?”
+
+@46612 Ginrei · 銀鈴
+# 检查提示：未用必用译名：メールシュトローム→Operation Maelstrom
+> 「ふふふ、メールシュトロームっていうのは、
+>  渦巻きって意味なの
+“Heh heh. Maelstrom means a whirlpool.
+---
+>  つまり、敵を環状に包囲して、
+>  まわりを回転しながら
+In other words, you encircle the enemy in a ring and attack while rotating around them.
+---
+>  攻撃する作戦、てことね」
+That's the kind of operation it is.”
+
+@46613 Masato · 雅人
+> 「なるほどね。さっすが銀鈴さん、
+>  物知りじゃん」
+“I see. As expected of you, Ginrei. You really know your stuff.”
+
+@46614 Koji · 甲児
+> 「……でもよ、そんなら何で
+>  『渦巻き作戦』って
+“...But then why not just call it ‘Operation Whirlpool'?
+---
+>  いわねえんだよ。
+>  その方が一発でわかるじゃねえか」
+That'd make it obvious in one shot.”
+
+@46615 Simone · シモーヌ
+> 「センスの問題でしょ」
+“It's a matter of taste.”
+
+@46616 Koji · 甲児
+> 「そうかなあ。
+>  オレはかっこいいと思うけどなあ……」
+“You think so? I think it sounds pretty cool...”
+
+@46617 Mashymre · マシュマー
+> 「ハマーン様、アナベル・ガトー少佐が
+>  おもどりになりました」
+“Lady Haman, Major Anavel Gato has returned.”
+
+@46618 Haman · ハマーン
+> 「ほう、“ソロモンの悪夢”が
+>  もどったか。会おう。通せ」
+“Oh? So the ‘Nightmare of Solomon' is back. I'll see him. Send him in.”
+
+@46619 Mashymre · マシュマー
+> 「はっ!」
+“Yes, ma'am!”
+
+@46620 Chara · キャラ
+> 「なんだい、ガトー少佐は
+>  先行偵察で
+“What's this? Wasn't Major Gato on advance reconnaissance?
+---
+>  地球圏に入ってから、
+>  行方をくらませてたんじゃないのかい」
+After entering the Earth Sphere, he just vanished, didn't he?”
+
+@46621 Glemy · グレミー
+> 「私が聞いた話では、
+>  異星人の捕虜となったあと
+“What I heard was that after being taken captive by the aliens,
+---
+>  {HeroMech}に救出されて、
+>  同行していたとか」
+he was rescued by the {HeroMech} and traveled with them.”
+
+@46622 Chara · キャラ
+> 「{HeroMech}?
+>  あたしらの敵じゃないか」
+“The {HeroMech}? Isn't that our enemy?”
+
+@46623 Mashymre · マシュマー
+> 「だから、こうして我らアクシズ軍が、
+>  奴らと本格的に戦う前に
+“That is precisely why our Axis Forces returned before we truly engage them in earnest.
+---
+>  帰還されたのではないか。
+>  キャラ・スーン
+Chara Soon,
+---
+>  ガトー殿のお心がわからんのか」
+can you not understand Lord Gato's feelings?”
+
+@46624 Chara · キャラ
+> 「知らないよ、そんなの。
+>  ラカンみたいな奴が増えたって
+“I don't know about that. If we're just getting more people like Rakan,
+---
+>  あたしゃちっともうれしくないね」
+I'm not happy about it one bit.”
+
+@46625 Gato · ガトー
+> 「本来ならば、ハマーン殿が
+>  地球圏へ入られた時に
+“By rights, I should have joined you when you entered the Earth Sphere, Lady Haman.
+---
+>  参じなければならぬところ、
+>  遅参いたした。申しわけない」
+I arrived late. My apologies.”
+
+@46626 Haman · ハマーン
+> 「いや、事情は聞いている。
+>  貴殿にしてみれば
+“No, I've heard the circumstances. From your standpoint,
+---
+>  いたしかたのないところであろうな。
+>  よくもどってくれた、少佐」
+it could hardly be helped. I'm glad you made it back, Major.”
+
+@46627 Gato · ガトー
+> 「はっ。この上は、身命を賭して
+>  ジオン再興のために働く所存
+“Yes, ma'am. From here on, I intend to stake my life in service of Zeon's restoration.
+---
+>  {HeroMech}のMSもあるゆえ、
+>  ぜひこの戦いから
+There is also the {HeroMech}'s MS, so by all means, from this battle onward,
+---
+>  戦列に加えていただきたい」
+I ask to be allowed to join the line of battle.”
+
+@46628 Haman · ハマーン
+> 「むろんかまわんが、よいのか?
+>  {HeroMech}とはかなり長い間
+“I've no objection, of course, but are you sure? You and the {HeroMech} fought side by side
+---
+>  ともに戦っていたであろう」
+for quite a long time, did you not?”
+
+@46629 Gato · ガトー
+> 「そのようなもの、大事の前の
+>  小事にすぎぬこと。たとえ彼らと
+“That sort of thing is a trifle before the greater cause. Even if it comes to
+---
+>  戦うことになろうとも、いささかなりとも
+>  ためらうことはありますまい」
+fighting them, I shall not hesitate in the slightest.”
+
+@46630 Haman · ハマーン
+> 「よくわかった。
+>  では存分に戦ってもらうとしよう
+“Well understood. Then fight to your heart's content.
+---
+>  マシュマー、
+>  ガトー少佐を部屋へ案内せよ」
+Mashymre, show Major Gato to his quarters.”
+
+@46631 Gato · ガトー
+> 「ハマーン殿」
+“Lady Haman.”
+
+@46632 Haman · ハマーン
+> 「ガトー少佐か。もう体のほうは
+>  良いようだな。安心したぞ」
+“Major Gato. You seem to have recovered. I'm relieved.”
+
+@46633 Gato · ガトー
+> 「かたじけない」
+“I am grateful.”
+
+@46634 Haman · ハマーン
+> 「なに、気にすることはない。
+>  月で救助されてのち
+“Think nothing of it. After you were rescued on the Moon,
+---
+>  OZに参加していたが、
+>  戦死したと聞いていたのだ。まさか
+you joined OZ, and I had heard you were killed in action. I never
+---
+>  少佐を救助できるとは、思っても
+>  いなかった。私にとっても、少佐が
+imagined we could rescue you, Major. For my part, I am glad
+---
+>  もどってくれたことは、うれしいのだ」
+you have returned.”
+
+@46635 Gato · ガトー
+> 「これは、ありがたいお言葉。いたみいる
+>  本来ならばハマーン殿が
+“Those are gracious words. I am humbled. By rights, when you entered
+---
+>  地球圏に入ったときに、
+>  参じなければならぬところ
+the Earth Sphere, Lady Haman, I should have joined you,
+---
+>  無様なところをお見せした」
+yet I showed you an unseemly sight.”
+
+@46636 Haman · ハマーン
+> 「こちらへこられよ。
+>  よい物をお見せしよう」
+“Come this way. I shall show you something good.”
+
+@46637 Gato · ガトー
+> 「おおっ、これは! すばらしい……
+>  なんとすばらしい機体だ
+“Oh! This is... magnificent... What a magnificent machine.
+---
+>  まるでジオンの精神が、
+>  形となったかのようだ……」
+It is as if the spirit of Zeon itself has taken form...”
+
+@46638 Haman · ハマーン
+> 「モビルアーマー、ノイエジールだ。
+>  少佐に使ってもらおうと
+“It is the Mobile Armor Neue Ziel. I thought to have you pilot it,
+---
+>  思ったのだが、いかがかな」
+Major. What do you say?”
+
+@46639 Gato · ガトー
+> 「これを私に? 是も非もない。
+>  感謝します、ハマーン殿」
+“This, to me? There is no question. I thank you, Lady Haman.”
+
+@46640 Haman · ハマーン
+# 审校：初稿已正确翻译，保留哈曼对加托的期待语气，无需修改。
+> 「そういってもらえると、うれしい。
+>  “ソロモンの悪夢”の戦いぶり
+“I am glad to hear you say so. I have expectations for the ‘Nightmare of Solomon’
+---
+>  期待している」
+in battle.”
+
+@46641 Gato · ガトー
+> 「このアナベル・ガトー、ジオン再興の
+>  ために、身命を賭して戦いましょう」
+“I, Anavel Gato, shall stake my life in battle for the restoration of Zeon.”
+
+@46642 Amuro · アムロ
+> 「どうだい、ベルトーチカ」
+“How is it, Beltorchika?”
+
+@46643 Beltorchika · ベルトーチカ
+> 「やっぱり、アクシズの艦隊ね。
+>  リーブラの宙域へ向かっていることは
+“It's the Axis fleet, as I thought. There's no doubt they're heading
+---
+>  間違いないわ」
+for the Libra sector.”
+
+@46644 Bright · ブライト
+> 「やはり来たか……」
+“So they've come after all...”
+
+@46645 Beltorchika · ベルトーチカ
+> 「どうするんです?」
+“What do we do?”
+
+@46646 Bright · ブライト
+> 「作戦は決行だ。
+>  あらかじめ予想されていたことだからな」
+“We carry out the operation. It was anticipated from the start.”
+
+@46647 Banjo · 万丈
+> 「だが、予想されていないこともある。
+>  どのタイミングでしかけてくるかってことさ」
+“But there are things we can't anticipate. Like when exactly they'll make their move.”
+
+@46648 Alan · アラン
+> 「この間のように、序盤は様子を
+>  見てるだけ、という可能性もあるな」
+“There's also the chance that, like last time, they're just watching us at first.”
+
+@46649 Quattro · クワトロ
+> 「いや……それはないな」
+“No... that won't be the case.”
+
+@46650 Bright · ブライト
+> 「クワトロ特尉、なぜそう思う?」
+“Lieutenant Quattro, why do you think so?”
+
+@46651 Quattro · クワトロ
+> 「……説明しにくい」
+“...It's hard to explain.”
+
+@46652 Amuro · アムロ
+> 「わかる気はするが……」
+“I think I understand, but...”
+
+@46653 Banjo · 万丈
+> 「どういうことなんだい?」
+“What do you mean?”
+
+@46654 Amuro · アムロ
+> 「うまくいえないが……
+>  そういうプレッシャーを感じる
+“It's hard to put into words, but... I feel that kind of pressure.
+---
+>  ハマーンも直接
+>  出てきているみたいだしね」
+It seems Haman herself has come out directly, too.”
+
+@46655 Kamille · カミーユ
+> 「ええ……そう思います。
+>  シロッコも僕らも
+“Yes... I think so. I sense a kind of confidence from both Scirocco and us—
+---
+>  両方相手にできるっていう、
+>  自信みたいなものを感じますね」
+that they can take us both on.”
+
+@46656 Judau · ジュドー
+> 「わかるよ。あの女は、そういう女だ。
+>  自分の力をみせたいのさ」
+“I get it. That woman is that kind of woman. She wants to show off her power.”
+
+@46657 Garrison · ギャリソン
+> 「ほほぅ。ニュータイプの勘、
+>  というものでございますかな」
+“Ho ho. Might this be what they call a Newtype's intuition?”
+
+@46658 Banjo · 万丈
+> 「へぇ……はずれるのは、
+>  期待できそうにないな」
+“Heh... doesn't look like we can count on it being wrong.”
+
+@46659 Amuro · アムロ
+> 「よしてくれ。マリアの予知や、
+>  タケルの超能力とは違うよ」
+“Give me a break. It's not like Maria's precognition or Takeru's ESP.”
+
+@46660 Beltorchika · ベルトーチカ
+> 「全艦、
+>  予定位置に到達しました!」
+“All ships have reached their designated positions!”
+
+@46661 Bright · ブライト
+> 「よし、時間通りだな。
+>  メールシュトローム作戦
+“Good, right on schedule. Begin Operation Maelstrom!
+---
+>  開始する! 各艦進路そのまま
+>  包囲を狭めるんだ
+All ships, hold course and tighten the encirclement.
+---
+>  隊形を崩すな!」
+Do not break formation!”
+
+@46662 Beltorchika · ベルトーチカ
+> 「敵MS部隊、来ます!」
+“Enemy MS unit, incoming!”
+
+@46663 Reika · レイカ
+> 「妙ね……リーブラの主砲を
+>  使う気はないということ……?」
+“How strange... So they don't intend to use Libra's main cannon...?”
+
+@46664 Bright · ブライト
+> 「こちらには、その方が都合がいい。
+>  敵MSに対し主砲斉射後
+“That suits us better. After the main cannon volley against the enemy MS,
+---
+>  こららも発進させろ!」
+launch ours as well!”
+
+@46665 Bright · ブライト
+> 「状況は!?」
+“What's the situation!?”
+
+@46666 Beltorchika · ベルトーチカ
+> 「MDに戦術的な
+>  プログラミングがなされているようです
+“It seems the MDs have been given tactical programming.
+---
+>  味方部隊、
+>  リーブラに近づけていません」
+Our forces can't get close to Libra.”
+
+@46667 Reika · レイカ
+> 「3時方向に、
+>  MSの編隊確認
+“MS formation confirmed at 3 o'clock.
+---
+>  アクシズ軍のものと思われます」
+They appear to belong to the Axis Forces.”
+
+@46668 Bright · ブライト
+> 「来たか……万丈のダイターンと、
+>  コン・バトラー
+“So they've come... Send out Banjo's Daitarn and the Combattler V,
+---
+>  それからドモンたちをまわせ」
+and then Domon and the others.”
+
+@46669 Beltorchika · ベルトーチカ
+> 「リーブラのモビルドール、防衛ラインを
+>  突破! 接近してきます!」
+“Libra's Mobile Dolls have broken through the defense line! They're closing in!”
+
+@46670 Bright · ブライト
+> 「なんだと!? マジンガーチームと
+>  SPT部隊はどうした!」
+“What?! What happened to the Mazinger Team and the SPT unit!?”
+
+@46671 Reika · レイカ
+> 「動きが見えなくなっているわ。
+>  あ、いま真・ゲッターが向かいました」
+“We've lost track of their movements. Ah, Shin Getter just headed out.”
+
+@46672 Beltorchika · ベルトーチカ
+> 「敵MS、続けて来ます……。え?」
+“More enemy MS, coming in... Huh?”
+
+@46673 Bright · ブライト
+> 「今度はなんだ!?」
+“Now what!?”
+
+@46674 Beltorchika · ベルトーチカ
+> 「敵の2機が……
+>  交戦状態に……!? い、いえ
+“Two enemy units are... engaged with each other...?! N-no,
+---
+>  違うわ! あの白いMS、
+>  キュベレイだわ。ハマーン機です!
+that's not it! That white MS, it's a Qubeley. Haman's unit!
+---
+>  もう1機は……シロッコのジ・O!」
+The other one is... Scirocco's The-O!”
+
+@46675 Bright · ブライト
+> 「何だと! スクリーンに出せ!
+>  どれだ!?」
+“What?! Put it on the screen! Which one!?”
+
+@46676 Reika · レイカ
+> 「だめ、離れていきます。
+>  捕捉できないわ!」
+“No good, they're pulling away. We can't get a lock!”
+
+@46677 Beauty · ビューティ
+> 「あら? MSが1機、
+>  追っていくみたいよ」
+“Oh? Looks like one MS is going after them.”
+
+@46678 Bright · ブライト
+> 「おい、いまのは……」
+“Hey, that one just now...”
+
+@46679 Reika · レイカ
+> 「百式のように見えましたけど……」
+“It looked like a Hyaku-Shiki...”
+
+@46680 Reika · レイカ
+> 「百式改のように見えましたけど……」
+“It looked like a Hyaku-Shiki Kai...”
+
+@46681 Bright · ブライト
+> 「バカな。クワトロ特尉、どういう
+>  つもりなんだ? アムロとカミーユは!?」
+“Impossible. Special Lieutenant Quattro, what does he think he's doing? Where are Amuro and Kamille!?”
+
+@46682 Bunny · バニー
+> 「敵MSと交戦中……
+>  連携を阻まれています!」
+“Engaged with enemy MS... Our coordination is being disrupted!”
+
+@46683 Bright · ブライト
+> 「くそっ……」
+“Damn it...”
+
+@46684 Quattro · クワトロ
+> 「あれは……シロッコのジ・Oと、
+>  ハマーンのキュベレイか!
+“That's... Scirocco's The-O, and Haman's Qubeley!
+---
+>  この機体でやれるのか……?
+>  ええい、ままよ!」
+Can I do this in this machine...? Fine, whatever happens!”
+
+@46685 Scirocco · シロッコ
+> 「む……シャアか!? 死にに来たか、
+>  シャア! そんなモビルスーツで
+“Hm... Char?! Have you come to die, Char? Do you really think
+---
+>  このジ・Oと対等に戦えるとでも、
+>  思っているのか!」
+you can fight this The-O on equal terms in a Mobile Suit like that!?”
+
+@46686 Haman · ハマーン
+> 「シャア! こんなところで朽ち果てる、
+>  己の身を呪うがいい!」
+“Char! Curse yourself for rotting away in a place like this!”
+
+@46687 Quattro · クワトロ
+> 「そうかな!?」
+“You think so?!”
+
+@46688 Haman · ハマーン
+> 「シャア……もしも、私のもとへ
+>  もどる意思があるのならば……」
+“Char... if you have any intention of returning to my side...”
+
+@46689 Quattro · クワトロ
+> 「なにをいう!」
+“What are you saying?!”
+
+@46690 Scirocco · シロッコ
+# 审校：原文「わかるか!」是疑问句，初稿漏了问号，改为“Do you understand?!”
+> 「道を誤ったのだよ。貴様のような
+>  ニュータイプのなりそこないは
+“You took the wrong path. A failed Newtype like you
+---
+>  粛清される運命なのだ。わかるか!」
+is destined to be purged. Do you understand?!”
+
+@46691 Quattro · クワトロ
+> 「なにッ!?」
+“What?!”
+
+@46692 Scirocco · シロッコ
+> 「ぬかったな、シャア!」
+“You let your guard down, Char!”
+
+@46693 Quattro · クワトロ
+> 「ええい! まだだ! まだ終わらんよ!!」
+“Gah! Not yet! It's not over yet!!”
+
+@46694 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!
+>  リーブラに高エネルギー反応!
+“Captain Bright! High-energy reaction from Libra!
+---
+>  なお増大中……」
+Still increasing...”
+
+@46695 Bright · ブライト
+> 「何だと……!?」
+“What...?!”
+
+@46696 Reika · レイカ
+> 「まさか……主砲!?」
+“No way... the main cannon?!”
+
+@46697 Bright · ブライト
+> 「この混戦で、
+>  リーブラの主砲を撃つのか!?
+“They're firing Libra's main cannon in this melee?!
+---
+>  いかん! 全艦、
+>  リーブラから離れろ!」
+This is bad! All ships, get away from Libra!”
+
+@46698 Bunny · バニー
+> 「退避、間に合いません!」
+“We won't make it in time to evacuate!”
+
+@46699 Beltorchika · ベルトーチカ
+> 「エネルギー波、来ます!」
+“Energy wave, incoming!”
+
+@46700 Bright · ブライト
+> 「くそっ、衝撃にそなえろ!!」
+“Damn it, brace for impact!!”
+
+@46701 Bright · ブライト
+> 「くっ、バカな……」
+“Ngh, impossible...”
+
+@46702 Bunny · バニー
+> 「嘘……こんな、こんなことって……」
+“No way... this, this can't be happening...”
+
+@46703 Beltorchika · ベルトーチカ
+# 审校：原文第2页结尾有句号，初稿漏掉句号
+> 「被害……甚大です。
+>  作戦に参加した艦艇の
+“Damage... is severe. About 30 percent of the ships
+---
+>  約3割が……消失しています」
+that took part in the operation... have vanished.”
+
+@46704 Beauty · ビューティ
+> 「消失!?」
+“Vanished?!”
+
+@46705 Reika · レイカ
+> 「消えてしまったってことよ。
+>  あのエネルギー流に飲みこまれてね」
+“They disappeared. Swallowed up by that energy stream.”
+
+@46706 Bright · ブライト
+> 「くっ……態勢を
+>  たてなおさなければならんか
+“Ngh... We'll have to regroup.
+---
+>  全艦並びに戦闘部隊に、
+>  一時後退の指示をだせ!」
+Order all ships and combat units to retreat temporarily!”
+
+@46707 Reika · レイカ
+> 「信号弾発射します」
+“Firing the signal flare.”
+
+@46708 Bright · ブライト
+> 「くそっ……MDを
+>  おとりに使ったというのか、シロッコめ!」
+“Damn it... So he used the MDs as decoys, that Scirocco!”
+
+@46709 Garrison · ギャリソン
+> 「まんまとしてやられましたな、艦長」
+“We've been completely outplayed, Captain.”
+
+@46710 Beltorchika · ベルトーチカ
+> 「アクシズ軍も、かなりの被害を
+>  受けたと思われます。艦隊を
+“The Axis Forces seem to have taken considerable damage too. Their fleet is
+---
+>  やや後退させています…正面からも
+>  追撃の気配はありません」
+falling back a little... There's no sign of pursuit from the front either.”
+
+@46711 Bright · ブライト
+> 「くそっ、リーブラの主砲を
+>  封じなければ、うかつには近寄れん」
+“Damn it. Unless we seal off Libra's main cannon, we can't get close carelessly.”
+
+@46712 Reika · レイカ
+> 「いくらモビルドールが無人だからって、
+>  まさかあの状態で撃ってくるなんて」
+“Even if Mobile Dolls are unmanned, I can't believe they'd fire in that situation.”
+
+@46713 Garrison · ギャリソン
+> 「あれだけの威力のもの、
+>  連射はできますまい
+“A weapon with that much power can't fire in rapid succession.
+---
+>  問題は第2射の準備が
+>  整うまでの時間ですな」
+The question is how much time we have until the second shot is ready.”
+
+@46714 Beauty · ビューティ
+> 「マジンガーチーム、ゲッターチーム、
+>  獣戦機隊、帰還」
+“Mazinger Team, Getter Team, Cyber Beast Force, returning.”
+
+@46715 Bunny · バニー
+> 「ダイターンとコン・バトラー、
+>  チボデーたちも帰還します」
+“Daitarn and Combattler V, and Chibodee and the others are returning too.”
+
+@46716 Beltorchika · ベルトーチカ
+> 「他、各小隊も、撤退を開始」
+“The other squads are also beginning to withdraw.”
+
+@46717 Bright · ブライト
+> 「どうするか……」
+“What should we do...”
+
+@46718 Bright · ブライト
+> 「クワトロ特尉とカミーユが
+>  もどらないだと!?」
+“Quattro and Kamille haven't come back?!”
+
+@46719 Shinobu · 忍
+> 「ハマーンとシロッコも出てたな。まさか
+>  ……撃墜されたんじゃねぇだろうな」
+“Haman and Scirocco were out there too. Don't tell me... they got shot down.”
+
+@46720 Roux · ルー
+> 「ちょっと、冗談やめてよ!」
+“Hey, don't even joke about that!”
+
+@46721 Ryoma · リョウ
+> 「そうだぞ、忍。あの2人が、
+>  そうそう落とされるはずがない」
+“That's right, Shinobu. Those two wouldn't go down that easily.”
+
+@46722 Eiji · エイジ
+> 「……最後に見たとき、百式は
+>  リーブラの方向へ向かっていました」
+“...The last time I saw it, the Hyaku-Shiki was heading toward Libra.”
+
+@46723 Eiji · エイジ
+> 「……最後に見たとき、百式改は
+>  リーブラの方向へ向かっていました」
+“...The last time I saw it, the Hyaku-Shiki Kai was heading toward Libra.”
+
+@46724 Amuro · アムロ
+> 「リーブラの!?」
+“Toward Libra?!”
+
+@46725 Judau · ジュドー
+> 「それなら俺も見たぜ。キュベレイと
+>  ジ・Oも一緒だった。特尉の
+“Then I saw it too. The Qubeley and The-O were with them. The Lieutenant's
+---
+>  百式は、被弾してたぜ。
+>  こっちもMDに囲まれて
+Hyaku-Shiki had taken hits. We were surrounded by MDs ourselves and
+---
+>  動きがとれなかったんで、
+>  どうにもできなかったんだ」
+couldn't move, so there was nothing we could do.”
+
+@46726 Judau · ジュドー
+# 审校：同上，补出克瓦特罗的名字，避免“The Lieutenant's”生硬
+> 「それなら俺も見たぜ。キュベレイと
+>  ジ・Oも一緒だった。特尉の
+“Then I saw it too. The Qubeley and The-O were with them. Lieutenant Quattro's
+---
+>  百式改は、被弾してたぜ。
+>  こっちもMDに囲まれて
+Hyaku-Shiki Kai had taken hits. We were surrounded by MDs ourselves and
+---
+>  動きがとれなかったんで、
+>  どうにもできなかったんだ」
+couldn't move, so there was nothing we could do.”
+
+@46727 Daisaku · 大作
+> 「僕、クワトロ特尉がカミーユさんに、
+>  もどれっていってるの、聞きました」
+“I heard Lieutenant Quattro telling Kamille to fall back.”
+
+@46728 Amuro · アムロ
+> 「まさか……シャアの奴、リーブラの
+>  主砲をつぶそうとでもいうのか……?」
+“No way... Is Char trying to take out Libra's main cannon...?”
+
+@46729 Banjo · 万丈
+> 「……考えられるね。彼ならやりそうだ」
+“...It's possible. He's just the type to do it.”
+
+@46730 Hyoma · 豹馬
+> 「おい、冗談じゃないぞ。
+>  こっちもアクシズ軍も、いったん
+“Hey, this isn't funny. Both we and the Axis Forces have pulled back for now,
+---
+>  退いてるんだろ!? あの2人、
+>  脱出できないんじゃないのか!?」
+right?! Those two won't be able to escape!”
+
+@46731 Alan · アラン
+> 「……どうする、艦長」
+“...What do we do, Captain?”
+
+@46732 Bright · ブライト
+> 「どのみち、このまま見ているだけでは
+>  ラチがあかん。こちらの被害も大きい
+“Either way, just sitting here watching gets us nowhere. Our losses are heavy too.
+---
+>  次の機会はないな……」
+There won't be a next chance...”
+
+@46733 Bright · ブライト
+> 「どうした!?」
+“What is it?!”
+
+@46734 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：アクシズ軍→Axis Forces
+> 「アクシズ軍に別働隊が合流、
+>  再び布陣を開始
+“A separate Axis unit has joined up and is forming ranks again.
+---
+>  MS隊が出ています」
+Their MS units are launching.”
+
+@46735 Tetsuya · 鉄也
+> 「ふん、連中はやる気だな」
+“Hmph, so they're up for it.”
+
+@46736 Alan · アラン
+> 「いまの話では、
+>  ハマーンもリーブラへ向かったはずだ
+“From what was just said, Haman should have headed for Libra as well.
+---
+>  むこうも作戦を変えたのだ」
+They've changed their plan too.”
+
+@46737 Koji · 甲児
+> 「オレたちもやろうぜ、艦長。
+>  カミーユはともかく、クワトロ特尉が
+“Let's do this too, Captain. Never mind Kamille, but if Lieutenant Quattro
+---
+>  リーブラを止めにいったってんなら、
+>  オレたちは信じるしかないだろ!?」
+went to stop Libra, all we can do is believe in him, right?!”
+
+@46738 Bright · ブライト
+> 「……賭けてみるか。
+>  よし、全艦隊に通達
+“...Shall we take the gamble? All right, signal the entire fleet.
+---
+>  我々も、もう一度しかける。
+>  リーブラの主砲のことは考えるな!」
+We'll attack once more. Don't worry about Libra's main cannon!”
+
+@46739 Judau · ジュドー
+> (……なんだ……この感じ……誰かに
+>  呼ばれたような気がしたけど……)
+(...What is this feeling...? It felt like someone was calling me...)
+
+@46740 Yazan · ヤザン
+> 「フン、奴ら、まだやろうってのか。
+>  面白れぇ
+“Hmph, so they still want to go at it. Interesting.
+---
+>  あれで終わりじゃ、つまらねぇからな」
+Ending it there would've been boring.”
+
+@46741 Mashymre · マシュマー
+> 「ガトー少佐、ハマーン様が
+>  おもどりになられるまで
+“Major Gato, until Lady Haman returns,
+---
+>  指揮は貴殿にまかせる。よろしいな」
+I leave the command to you. Understood?”
+
+@46742 Gato · ガトー
+> 「了解した、マシュマー・セロ
+“Understood, Mashymre Cello.
+---
+>  再びジオンの栄光を掲げるために!
+>  英霊たちよ、私は帰ってきた!
+To raise Zeon's glory once more! Spirits of the fallen, I have returned!
+---
+>  輝かしい、ジオンの旗の下に!」
+Beneath the glorious flag of Zeon!”
+
+@46743 Kou · コウ
+> 「くっ……ガトォォーッ!!」
+“Ngh... Gatooo!!”
+
+@46744 Quattro · クワトロ
+> 「……これでリーブラの主砲は、
+>  必要なだけの出力が
+“...With this, Libra's main cannon shouldn't be able to
+---
+>  得られないはずだが……」
+draw the output it needs...”
+
+@46745 Haman · ハマーン
+> 「そこまでにしてもらおうか、シャア。
+>  リーブラはあとで
+“That's far enough, Char. We'll be using Libra
+---
+>  我が軍が使うのでな」
+ourselves later.”
+
+@46746 Quattro · クワトロ
+> 「くっ……」
+“Ngh...”
+
+@46747 Haman · ハマーン
+> 「トレーズの影に隠れて、ここまでくる
+>  ……たいした役者だったよ、シャア」
+“Hiding in Treize's shadow and making it this far... You were quite the actor, Char.”
+
+@46748 Quattro · クワトロ
+> 「ハマーン……」
+“Haman...”
+
+@46749 Haman · ハマーン
+> 「だが、話しあいの余地がないとすれば
+>  ここがお前の死に場所となる」
+“But if there's no room for talk, then this is where you die.”
+
+@46750 Quattro · クワトロ
+> 「いや……もう1人役者がいるな」
+“No... there's another actor in this play.”
+
+@46751 Haman · ハマーン
+> 「そうだな、こんな芝居じみたことは、
+>  シロッコの領分だったな」
+“Indeed. This sort of theatrical stunt was always Scirocco's domain.”
+
+@46752 Scirocco · シロッコ
+# 审校：原文「シャアよりは冷静だ」是“比夏亚冷静”，初稿误译成“than you, Char”，改为“than Char”
+> 「私は歴史の立会人にすぎんから
+>  そうとも見える
+“I am merely a witness to history, so it may look that way.
+---
+>  が、シャアよりは冷静だ」
+But I am more level-headed than Char.”
+
+@46753 Quattro · クワトロ
+> 「私が冷静でないだと?」
+“You say I am not level-headed?”
+
+@46754 Scirocco · シロッコ
+> 「貴様はその手に、
+>  世界をほしがっている」
+“You want the world in those hands of yours.”
+
+@46755 Haman · ハマーン
+> 「シロッコのいう通りだろう、シャア?
+>  ならば、ジオンの再興に手を
+“It's as Scirocco says, isn't it, Char? Then lend a hand to Zeon's revival.
+---
+>  貸せばいい。その上で今後の
+>  地球圏のことをともに考えよう
+After that, we can think about the future of the Earth Sphere together...
+---
+>  ……この邪魔な見物人を、
+>  排除してな」
+...once we've disposed of this troublesome spectator.”
+
+@46756 Scirocco · シロッコ
+> 「く……」
+“Ngh...”
+
+@46757 Quattro · クワトロ
+> 「ハマーン、私はただ、
+>  地球圏を誤った方向に
+“Haman, I simply don't want to see the Earth Sphere
+---
+>  もっていきたくないだけだ」
+led in the wrong direction.”
+
+@46758 Haman · ハマーン
+> 「では聞くが、我がアクシズを排除し
+>  これだけ荒れきった世界で
+“Then I ask you: with Axis removed and the world this ravaged,
+---
+>  お前はいったい何をしようというのだ?
+>  まさかダイクンの子が
+just what do you intend to do? Surely the son of Deikun
+---
+>  重力に縛られた
+>  ロームフェラ財団とOZによる
+doesn't mean to let the Romefeller Foundation and OZ,
+---
+>  地球圏の統一でもあるまい」
+shackled by gravity, unify the Earth Sphere.”
+
+@46759 Quattro · クワトロ
+> 「OZは生まれ変わる。そして、
+>  既存の体制と価値観がすべて
+“OZ will be reborn. And once the existing order and values have all
+---
+>  崩壊し、これだけの出来事を
+>  乗り越えた地球ならば
+collapsed, and the Earth has endured all this, humanity will change
+---
+>  私が手を出さずとも
+>  人類は変わる。……そのときを待つ」
+even without my hand in it. ...I will wait for that time.”
+
+@46760 Haman · ハマーン
+> 「私に同調してくれなければ、
+>  排除するまでだ
+“If you will not side with me, then I will eliminate you.
+---
+>  その上で、ジオンを復興させる。
+>  それがこの荒廃した地球圏で
+After that, I will restore Zeon. In this ruined Earth Sphere,
+---
+>  わかりやすく人に道を示すことになる」
+that will show people a clear path forward.”
+
+@46761 Quattro · クワトロ
+> 「それではまた同じ過ちを繰り返すと
+>  気づかんのか!?」
+“Can't you see that would only repeat the same mistakes?!”
+
+@46762 Haman · ハマーン
+> 「世界の都合を洞察できない
+>  男は、排除すべきだな」
+“A man who cannot grasp the world's needs must be eliminated.”
+
+@46763 ???
+> 「それは違う!」
+“That's wrong!”
+
+@46764 Haman · ハマーン
+> 「なに!? そこか!」
+“What?! There?!”
+
+@46765 Quattro · クワトロ
+> 「カミーユ!? なぜもどらなかった!」
+“Kamille?! Why didn't you fall back?!”
+
+@46766 Kamille · カミーユ
+> 「今しなければならないことは、
+>  これまでの過ちを認め、人が
+“What we must do now is acknowledge our past mistakes and make the effort
+---
+>  新しい時代へと踏み出すために
+>  努力することだ。あまりにも
+for people to step into a new era. Far too many people have died. Losing
+---
+>  大勢の人間が死にすぎた。
+>  これ以上こんな戦いで、人の命を
+any more lives in a battle like this...
+---
+>  失うなんて、間違ってる!」
+it's wrong!”
+
+@46767 Haman · ハマーン
+> 「愚劣なことをいう」
+“What foolishness.”
+
+@46768 Kamille · カミーユ
+> 「なぜわからない!? 生命は力なんだ
+>  地球圏を支えているものなんだ
+“Why don't you understand?! Life is power, it's what sustains the Earth Sphere.
+---
+>  それを、こうも失っていくのは、
+>  いけないことなんだよ!」
+To keep losing it like this is something that must not be allowed!”
+
+@46769 Scirocco · シロッコ
+> 「生の感情を出すようでは、
+>  俗人は動かすことはできても
+“Wearing your raw emotions so openly may move the common masses,
+---
+>  我々には通じんな」
+but it will never reach the likes of us.”
+
+@46770 Quattro · クワトロ
+> 「カミーユ、退け!!」
+“Kamille, fall back!!”
+
+@46771 Scirocco · シロッコ
+> 「天才の足を引っ張ることしかでき
+>  なかった俗人どもに、何ができた!
+“What could those common masses, who could only drag down the geniuses, ever accomplish!
+---
+>  つねに世の中を変えてきたのは、
+>  一握りの天才だ!
+It has always been a handful of geniuses who changed the world!
+---
+>  それを理解せぬ俗人どもの存在
+>  が、あの戦争を引き起こし、
+It was the existence of those masses, unable to understand that, that caused that war
+---
+>  異星人などにつけこまれる結果に
+>  つながったのだ!」
+and led to us being exploited by aliens!”
+
+@46772 Kamille · カミーユ
+> 「違う!! そんな考え方は、
+>  間違っている!」
+“No!! That way of thinking is wrong!”
+
+@46773 Scirocco · シロッコ
+> 「ちっぽけな感傷は、世界を
+>  破滅に導くだけだ、少年!
+“Petty sentiment will only lead the world to ruin, boy!
+---
+>  まさにこの戦いで、人類はそれを
+>  経験したはずだ! 人はよりよく
+This very war should have taught humanity that! People must be guided
+---
+>  導かれねばならん! いまという
+>  時代には、指導する絶対者が
+toward something better! This age demands an absolute leader to guide them!
+---
+>  必要なのだ! トレーズのような
+>  道化ではなく、真の天才がだ!」
+Not a clown like Treize, but a true genius!”
+
+@46774 Quattro · クワトロ
+> 「退け、退くんだカミーユ! リーブラの
+>  主砲は出力が上がらんようにした
+“Fall back, Kamille, fall back! We've made sure Libra's main cannon can't raise its output.
+---
+>  脱出するぞ!」
+We're escaping!”
+
+@46775 Quattro · クワトロ
+> 「くっ……」
+“Ngh...”
+
+@46776 Jerid · ジェリド
+> 「どこからでもこい!
+>  近づく奴は、みんな灰にしてやる!!」
+“Come at me from anywhere! Anyone who gets close, I'll turn to ash!!”
+
+@46777 Kamille · カミーユ
+> 「ジェリド……メサか!?」
+“Jerid... is that a Messa?!”
+
+@46778 Glemy · グレミー
+> 「ハマーン様、ご無事ですか!?」
+“Lady Haman, are you unharmed?!”
+
+@46779 Haman · ハマーン
+> 「大丈夫だ。ご苦労、
+>  グレミー・トト」
+“I'm fine. Good work, Glemy Toto.”
+
+@46780 Glemy · グレミー
+> 「はっ。プル、ゆくぞ」
+“Yes, ma'am. Ple, let's go.”
+
+@46781 Glemy · グレミー
+> 「ハマーン様はおられないか……」
+“Is Lady Haman not here...”
+
+@46782 Ple · プル
+> 「……あれ……なんだろ、この感じ……」
+“...Huh...? What is this feeling...?”
+
+@46783 Glemy · グレミー
+> 「プル、どうした?」
+“Ple, what's wrong?”
+
+@46784 Ple · プル
+> 「胸がキュンキュンする……
+>  でも、とっても気持ちいい……」
+“My chest is all aflutter... but it feels so good...”
+
+@46785 Glemy · グレミー
+> 「プル、何をしている!」
+“Ple, what are you doing?!”
+
+@46786 Judau · ジュドー
+> 「なんだ……?」
+“What the...?”
+
+@46787 Ple · プル
+> 「わかったぞ、このキュンキュン!
+>  あのパイロットだ!!」
+“I get it now, this fluttering! It's that pilot!!”
+
+@46788 Judau · ジュドー
+> 「な……なんだってんだ、この感覚…!?
+>  誰だ……誰が……」
+“Wh... what is this feeling...?! Who is it... who...?”
+
+@46789 Ple · プル
+> 「あたしを探しているんでしょ、
+>  お兄ちゃん!
+“You're looking for me, aren't you, big brother!
+---
+>  あたし、エルピー・プル! よろしく!」
+I'm Elpeo Ple! Nice to meet you!”
+
+@46790 Judau · ジュドー
+> 「エルピー……プル……!?」
+“Elpeo... Ple...?!”
+
+@46791 Glemy · グレミー
+> 「プル! 何をやっているのだ!
+>  戦いに集中しろ!!」
+“Ple! What are you doing?! Focus on the battle!!”
+
+@46792 Glemy · グレミー
+> (あのパイロットに、
+>  何かを感じているというのか……?)
+(Is she sensing something from that pilot...?)
+
+@46793 Quattro · クワトロ
+> 「ちぃっ!」
+“Tch!”
+
+@46794 Haman · ハマーン
+> 「これで終わりにするか?
+>  それとも、続けるか? シャア!」
+“Shall we end it here? Or do you want to continue? Char!”
+
+@46795 Quattro · クワトロ
+> 「そんな決定権が、
+>  お前にあるのか!?」
+“Is that decision yours to make?!”
+
+@46796 Haman · ハマーン
+> 「口の聞き方に、
+>  気をつけてもらおう!」
+“You would do well to watch your tone!”
+
+@46797 Quattro · クワトロ
+> 「なに!?」
+“What?!”
+
+@46798 Haman · ハマーン
+> (シャア……私と来てくれれば……く……)
+(Char... if only you had come with me... ngh...)
+
+@46799 Ple · プル
+> 「ジュドー! あたしと遊んでくれるの!?」
+“Judau! Are you going to play with me?!”
+
+@46800 Judau · ジュドー
+> 「プルみたいな子が、
+>  こんなことしちゃいけない!」
+“A girl like you shouldn't be doing this!”
+
+@46801 Ple · プル
+> 「えっ?」
+“Huh?”
+
+@46802 Judau · ジュドー
+> 「プル、俺たちと一緒にいこう。プルは
+>  アクシズなんかに、いちゃいけないよ!」
+“Ple, come with us. You don't belong with Axis!”
+
+@46803 Ple · プル
+> 「ジュドー……?」
+“Judau...?”
+
+@46804 Judau · ジュドー
+# 审校：页末补上句号，与原文该页结尾的句号一致。
+> 「{HeroMech}なら、
+>  プルのことわかってくれる人たちが
+“On the {HeroMech}, there are lots of people
+---
+>  たくさんいるんだ」
+who would understand you.”
+
+@46805 Ple · プル
+> 「……ジュドーと一緒にいったら、
+>  みんな、あたしと遊んでくれる?」
+“...If I come with you, Judau, will everyone play with me?”
+
+@46806 Glemy · グレミー
+> 「プル? 敵のニュータイプに引かれて、
+>  暗示が解けるのか!? やらせん!」
+“Ple? Is the enemy Newtype drawing her out, breaking the suggestion?! I won't allow it!”
+
+@46807 Ple · プル
+> 「なに!? や、やめて……
+>  やめてグレミー!!」
+“What?! S-stop... stop it, Glemy!!”
+
+@46808 Judau · ジュドー
+> 「あんた、何やってんだよ!?」
+“What the hell are you doing?!”
+
+@46809 Glemy · グレミー
+> 「プルは私の大事な手駒だ。
+>  連れていかせるわけには、いかん!」
+“Ple is my precious pawn. I cannot let you take her away!”
+
+@46810 Ple · プル
+> 「ジュドー! あたしと遊んでくれるの!?」
+“Judau! Are you going to play with me?!”
+
+@46811 Judau · ジュドー
+> 「プルみたいな子が、
+>  こんなことしちゃいけない!」
+“A girl like you shouldn't be doing this!”
+
+@46812 Ple · プル
+> 「えっ?」
+“Huh?”
+
+@46813 Judau · ジュドー
+> 「プル、俺たちと一緒にいこう。プルは
+>  アクシズなんかに、いちゃいけないよ!」
+“Ple, come with us. You don't belong with Axis!”
+
+@46814 Ple · プル
+> 「ジュドー……?」
+“Judau...?”
+
+@46815 Judau · ジュドー
+# 审校：页末补上句号，与原文该页结尾的句号一致。
+> 「{HeroMech}なら、
+>  プルのことわかってくれる人たちが
+“On the {HeroMech}, there are lots of people
+---
+>  たくさんいるんだ」
+who would understand you.”
+
+@46816 Ple · プル
+> 「……ジュドーと一緒にいったら、
+>  みんな、あたしと遊んでくれる?」
+“...If I come with you, Judau, will everyone play with me?”
+
+@46817 Judau · ジュドー
+> 「ああ、遊んでやる。
+>  みんないい人たちなんだ
+“Yeah, they'll play with you. They're all good people.
+---
+>  だから、プル、アクシズなんかに
+>  味方しちゃ、いけない」
+So, Ple, you can't side with Axis.”
+
+@46818 Ple · プル
+> 「……うん! わかった、ジュドー!
+>  あたし、ジュドーと一緒にいくよ!!」
+“...Okay! I get it, Judau! I'll go with you!!”
+
+@46819 Ple · プル
+> (……ごめんね、グレミー)
+(...I'm sorry, Glemy)
+
+@46820 Haman · ハマーン
+> 「くっ、好きにやらせすぎたか。
+>  やむを得ん」
+“Ngh, I let her have too much free rein. It can't be helped.”
+
+@46821 Haman · ハマーン
+> 「くっ、好きにやらせすぎたか……」
+“Ngh, I let her have too much free rein...”
+
+@46822 Jerid · ジェリド
+> 「カミーユ! 今度こそ貴様を
+>  殺してやる!!」
+“Kamille! This time I'll kill you for sure!!”
+
+@46823 Kamille · カミーユ
+> 「お前のような奴がいるから、戦いが
+>  終わらないんだ! 消えろ!」
+“It's because people like you exist that the fighting never ends! Disappear!”
+
+@46824 Jerid · ジェリド
+> 「俺を戦いに駆り立てたのは、
+>  貴様だ! そんなことがいえるのかよ!」
+“You're the one who drove me to fight! How can you say that?!”
+
+@46825 Kamille · カミーユ
+> 「お前は戦いの意思を生む源だ!
+>  生かしてはおけない!」
+“You are the source that breeds the will to fight! I can't let you live!”
+
+@46826 Haman · ハマーン
+> 「俗物が私に! 貴様は確かに
+>  優れた資質をもっているらしいが
+“A commoner, to me?! You may indeed possess exceptional qualities,
+---
+>  無礼を許すわけにはいかん!」
+but I will not forgive such insolence!”
+
+@46827 Scirocco · シロッコ
+> 「賢しいだけの子供が! 貴様
+>  ごときに、なにができるか!」
+“A mere clever child! What could the likes of you possibly do?!”
+
+@46828 Kamille · カミーユ
+> 「賢くて悪いか! お前のような奴は
+>  ここからいなくなれ!」
+“Is being clever a crime?! People like you should just get out of here!”
+
+@46829 Scirocco · シロッコ
+> 「勝てると思うな、小僧ぉぉっ!!」
+“Don't think you can win, you brat!!”
+
+@46830 Kou · コウ
+# 审校：“Are you satisfied”语气偏询问，改为更贴合战斗前质问的“You must be satisfied”；其余保持。
+> 「満足だろうな、ガトー!!
+>  でもそれはGP02を奪われた
+“You must be satisfied, Gato! But for us, who had GP02 stolen,
+---
+>  俺たちにとっては屈辱なんだ!!」
+it's a humiliation!!”
+
+@46831 Gato · ガトー
+> 「戦いはすべて怨恨に根差している
+>  当然のこと。しかし、そんなことでは
+“All battle is rooted in resentment—that is only natural. But that alone
+---
+>  私は倒せん! 私は義によって
+>  立っているのだからな!」
+will not bring me down! For I stand upon righteousness!”
+
+@46832 Judau · ジュドー
+> 「プル、戦いをやめないのなら……」
+“Ple, if you won't stop fighting...”
+
+@46833 Ple · プル
+> 「やめてよ! あたしは
+>  ジュドーと遊びたいだけなのに!!」
+“Stop it! I just want to play with you, Judau!!”
+
+@46834 Yazan · ヤザン
+> 「死んで楽になっちまいな!」
+“Just die and make it easy on yourself!”
+
+@46835 Kamille · カミーユ
+> 「遊びでやってんじゃないんだよ!」
+“This isn't a game to me!”
+
+@46836 Jerid · ジェリド
+> 「カミーユ! 貴様は、俺をっ……」
+“Kamille! You... you've...”
+
+@46837 Jerid · ジェリド
+> 「くそぉぉぉーっ!! マウアー、すまん……」
+“Damn youuu!! Mouar, forgive me...”
+
+@46838 Yazan · ヤザン
+> 「なにぃ!? バカな、この俺が
+>  落ちるだとぉっ!?」
+“What?! Impossible—me, shot down?!”
+
+@46839 Scirocco · シロッコ
+> 「私だけ……死ぬわけにはいかん……。
+>  貴様の心も一緒に連れていく
+“I alone... I cannot afford to die... I'll take your heart with me,
+---
+>  カミーユ・ビダン……」
+Kamille Bidan...”
+
+@46840 Kamille · カミーユ
+> 「シロッコ!? やったのか……
+>  なんだ……? 光が……」
+“Scirocco?! Did I get him...? What...? A light...”
+
+@46841 Four · フォウ
+> 「だめ! カミーユは連れていかせないよ!」
+“No! I won't let you take Kamille!”
+
+@46842 Scirocco · シロッコ
+> 「なんだ!? 女の声……?」
+“What?! A woman's voice...?”
+
+@46843 Kamille · カミーユ
+> 「う……」
+“Ugh...”
+
+@46844 Four · フォウ
+> 「カミーユ、カミーユ、大丈夫!?」
+“Kamille, Kamille, are you all right?!”
+
+@46845 Kamille · カミーユ
+> 「……フォウ……? あ……ああ、
+>  大丈夫だ。助かったよ
+“...Four...? Ah... ahh, I'm fine. You saved me.
+---
+>  ありがとう、フォウ」
+Thank you, Four.”
+
+@46846 Four · フォウ
+> 「良かった……」
+“Thank goodness...”
+
+@46847 Scirocco · シロッコ
+> 「私だけ……死ぬわけにはいかん……。
+>  貴様の心も一緒に連れていく
+“I alone... I cannot afford to die... I'll take your heart with me,
+---
+>  カミーユ・ビダン……」
+Kamille Bidan...”
+
+@46848 Kamille · カミーユ
+> 「シロッコ!? やったのか……
+>  なんだ……? 光が……」
+“Scirocco?! Did I get him...? What...? A light...”
+
+@46849 Four · フォウ
+> (だめ……カミーユは
+>  連れていかせないよ……)
+(No... I won't let you take Kamille...)
+
+@46850 Scirocco · シロッコ
+> 「なんだ!? 女の声だと……?」
+“What?! A woman's voice...?”
+
+@46851 Kamille · カミーユ
+> 「うっ……フォウ……? 俺を……
+>  守ってくれたのか? フォウ……」
+“Ugh... Four...? Did you... protect me? Four...”
+
+@46852 Scirocco · シロッコ
+> 「うおぉぉぉぉぉっ!? こ……こんなことで
+>  この私がやられるというのか……!?」
+“Uwaaaaaah?! I... I, of all people, brought down by this...?!”
+
+@46853 Beauty · ビューティ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、リーブラで爆発が
+>  おきてるわ!」
+“Captain Bright, there's an explosion on Libra!”
+
+@46854 Bright · ブライト
+> 「なんだと?」
+“What did you say?”
+
+@46855 Bunny · バニー
+> 「……艦長! リーブラより
+>  通信です!」
+“...Captain! We have a transmission from Libra!”
+
+@46856 Bright · ブライト
+> 「どういうことだ……? まわしてくれ」
+“What's going on...? Put it through.”
+
+@46857 Specials · スペシャルズ
+> 「{HeroMech}の
+>  ブライト・ノア特佐でありますか」
+“Is this Colonel Bright Noa of the {HeroMech}?”
+
+@46858 Bright · ブライト
+> 「そうだ」
+“That's right.”
+
+@46859 Specials · スペシャルズ
+> 「自分は、いえ、自分たちは、
+>  投降を希望するものであります
+“I—no, we—wish to surrender.
+---
+>  現在我々はリーブラ機関部に
+>  おいて、守備隊と交戦中です
+We are currently engaged with the garrison in Libra's engine section.
+---
+>  もうまもなく守備隊を突破し、
+>  機関部を破壊します
+We will break through the garrison shortly and destroy the engine section.
+---
+>  これをもって、いまは亡き
+>  トレーズ閣下への裏切りを
+With this, we wish to atone for our betrayal of
+---
+>  おわびしたいと……」
+the late Excellency Treize...”
+
+@46860 Reika · レイカ
+> 「勝手なことを! だったらなぜ今まで
+>  そうしなかったのよ!?」
+“How selfish! Then why didn't you do it until now?!”
+
+@46861 Bright · ブライト
+> 「やめんか。いってもしかたのないことだ。
+>  ……それで?」
+“Enough. Saying it won't change anything. ...So?”
+
+@46862 Specials · スペシャルズ
+> 「リーブラ破壊ののちは、
+>  敵味方問わず、脱出者の
+“After Libra is destroyed, I ask that you rescue the escapees,
+---
+>  救助をお願いしたいのです」
+regardless of friend or foe.”
+
+@46863 Bright · ブライト
+> 「……了解した。約束しよう」
+“...Understood. You have my word.”
+
+@46864 Specials · スペシャルズ
+> 「ありがとうございます。では」
+“Thank you. Then.”
+
+@46865 Reika · レイカ
+> 「リーブラから多数の脱出艇が
+>  出ています」
+“Numerous escape pods are launching from Libra.”
+
+@46866 Bright · ブライト
+> 「始まったか……」
+“So it's begun...”
+
+@46867 Beltorchika · ベルトーチカ
+> 「リーブラの破壊を確認」
+“Confirmed destruction of Libra.”
+
+@46868 Bright · ブライト
+> 「よし、全艦に通達。脱出者を
+>  救助してやれ」
+“All right, signal all ships. Rescue the escapees.”
+
+@46869 Bright · ブライト
+> 「よし、リーブラはいい。残った敵を
+>  叩くぞ」
+“All right, Libra's settled. Let's hit the remaining enemy.”
+
+@46870 Reika · レイカ
+> 「リーブラから多数の脱出艇が
+>  出ています」
+“Numerous escape pods are launching from Libra.”
+
+@46871 Bright · ブライト
+> 「始まったか……」
+“So it's begun...”
+
+@46872 Beltorchika · ベルトーチカ
+> 「リーブラの破壊を確認」
+“Confirmed destruction of Libra.”
+
+@46873 Bright · ブライト
+> 「よし、全艦に通達。脱出者を
+>  救助してやれ」
+“All right, signal all ships. Rescue the escapees.”
+
+@46874 Bright · ブライト
+> 「ふぅ……終わったか……」
+“Phew... it's over...”
+
+@46875 Garrison · ギャリソン
+> 「どうにか、シロッコだけは倒せましたな」
+“At least we managed to defeat Scirocco.”
+
+@46876 Bright · ブライト
+> 「ああ……だが、こちらも
+>  かなりのダメージを受けた
+“Yeah... but we've taken heavy damage too.
+---
+>  アクシズはまだ健在だというのにな……」
+And the Axis Forces are still going strong...”
+
+@46877 Bunny · バニー
+> 「あの……艦長……」
+“Um... Captain...”
+
+@46878 Bright · ブライト
+> 「どうした? みんなもどったのか?」
+“What is it? Has everyone returned?”
+
+@46879 Bunny · バニー
+> 「それが……クワトロ特尉が……」
+“Well... Lieutenant Quattro...”
+
+@46880 Bright · ブライト
+> 「どういうことなんだ!?」
+“What do you mean?!”
+
+@46881 Beltorchika · ベルトーチカ
+> 「被弾した百式は
+>  回収されたそうですが
+“The Hyaku-Shiki was hit, but it's been recovered.
+---
+>  パイロットは……確認されていません」
+The pilot, however... has not been confirmed.”
+
+@46882 Beltorchika · ベルトーチカ
+# 机翻疑问：原文为“百式改”，词表未收；按通行译名作 Hyaku Shiki Kai
+> 「被弾した百式改は
+>  回収されたそうですが
+“The Hyaku-Shiki Kai was hit, but it's been recovered.
+---
+>  パイロットは……確認されていません」
+The pilot, however... has not been confirmed.”
+
+@46883 Hyoma · 豹馬
+> 「なんだよ、どういうことだ!?」
+“What the hell, what does that mean?!”
+
+@46884 Kou · コウ
+> 「まさか……
+>  宇宙にほうり出されたのか?」
+“No way... was he thrown out into space?”
+
+@46885 Roux · ルー
+> 「そんな! それじゃ発見なんて
+>  できっこないわよ!?」
+“That can't be! Then there's no way we could ever find him!”
+
+@46886 Elle · エル
+> 「でもさ、必要な装備は
+>  全部なくなってたんでしょ?」
+“But hey, all the gear he needed was gone, right?”
+
+@46887 Bright · ブライト
+> 「くそっ、どういうことだ。
+>  アムロ、カミーユ、ジュドー
+“Damn it, what is going on? Amuro, Kamille, Judau,
+---
+>  お前たちは何か感じなかったのか!?」
+didn't you three sense anything?!”
+
+@46888 Kamille · カミーユ
+> 「いえ……だけど、
+>  死んだとは思えないな……」
+“No... but I can't believe he's dead...”
+
+@46889 Judau · ジュドー
+> 「俺もその意見に賛成だね」
+“I agree with that.”
+
+@46890 Sara · 沙羅
+> 「そうさ、死ぬはずがないじゃない。
+>  あの男がさ」
+“That's right, there's no way he'd die. Not that man.”
+
+@46891 Bright · ブライト
+> 「本当に誰も、
+>  特尉を見ていないのか!?」
+“Did truly no one see the Lieutenant?!”
+
+@46892 Amuro · アムロ
+> 「もう何度も確認したよ、ブライト。
+>  ……奴は
+“I've checked over and over, Bright. ...He
+---
+>  俺たちの前から姿を消したんだ」
+vanished from before our eyes.”
+
+@46893 Shinobu · 忍
+> 「おかしいじゃねぇかよ!
+>  死んでないんなら、なんだって
+“That's just weird! If he's not dead, then why would he
+---
+>  そんなことする必要があるんだ。
+>  えぇっ!?」
+need to do something like that? Huh?!”
+
+@46894 Zechs · ゼクス
+> 「……死んだのかもしれん。
+>  死んでいないのかもしれん。だが
+“...He may be dead. He may not be. But
+---
+>  発見できなかった以上、いまの
+>  我々がそれを考える必要はない」
+since we couldn't find him, there's no need for us to dwell on it now.”
+
+@46895 Noin · ノイン
+> 「ゼクス、ですが……」
+“Zechs, but...”
+
+@46896 Zechs · ゼクス
+> 「生きているのならば、いつか必ず、
+>  我々の前に姿を現わすだろう
+“If he's alive, then someday, surely, he'll appear before us again.
+---
+>  それを信じて、待てばいい。
+>  それが我々にできる、最大のことだ」
+We need only believe that and wait. That's the most we can do.”
+
+@46897 Ark · アーク（按段落 3DD1）
+> 「賛成だな。あの人が死ぬはずがない
+>  きっともどってくる」
+“I agree. There's no way that man would die. He'll come back for sure.”
+
+@46898 Selain · セレイン（按段落 3DD2）
+> 「それしかないだろうな」
+“That's all we can do.”
+
+@46899 Brad · ブラッド（按段落 3DD3）
+> 「ああ。殺したって死ぬような
+>  タマじゃねぇよ、あの男はな」
+“Yeah. That man's not the type to die even if you kill him.”
+
+@46900 Manami · マナミ（按段落 3DD4）
+> 「そうね……そう信じましょう。
+>  彼は生きていて、そしてまた
+“Yes... let's believe that. That he's alive, and that he'll
+---
+>  あたしたちのところへ、帰ってくるって」
+come back to us again.”
+
+@46901 Banjo · 万丈
+> 「そうだな……その通りだ。生きてたら
+>  きっとまた会える。彼を信じよう」
+“That's right... exactly. If he's alive, we'll surely meet again. Let's believe in him.”
+
+@46902 Bright · ブライト
+> 「しかしな……」
+“But still...”
+
+@46903 Alan · アラン
+> 「ああ……我々はトレーズに続いて、
+>  またも指導者となりうる
+“Ah... after Treize, we've lost yet another person who could
+---
+>  人材を失った。そのことの
+>  ダメージの方が大きい」
+have been a leader. The damage from that is far greater.”
+
+@46904 Masato · 雅人
+> 「……こんなんじゃ、もし
+>  アクシズ軍に勝てたって
+“...At this rate, even if we beat the Axis Forces,
+---
+>  地球圏の再建なんか、
+>  できないんじゃないのかな……」
+I don't think we can rebuild the Earth Sphere...”
+
+@46905 Sara · 沙羅
+> 「バカなこというんじゃないよ!」
+“Don't say such foolish things!”
+
+@46906 Ryoma · リョウ
+> 「まったくだ。俺たちが信じなくて、
+>  誰がそれを信じられる。しっかりしろ!」
+“Exactly. If we don't believe, who else can? Pull yourself together!”
+
+@46907 Banjo · 万丈
+> 「……みんな、疲れているのさ。
+>  ハマーンの艦隊も
+“...Everyone's just exhausted. Haman's fleet seems to have
+---
+>  いったんアクシズへ引きあげたようだ。
+>  僕たちも残った艦隊をまとめて
+withdrawn to Axis for now. Let's gather the remaining ships
+---
+>  月へ向かおう」
+and head for the Moon.”
+
+@46908 Bright · ブライト
+> 「そうだな……それしかないか」
+“Yeah... that's all we can do.”
+
+@46909 Dr. Hazuki · 葉月博士
+> 「うむ……そのほうがよかろう。
+>  十分とはいえないものの
+“Mm... that would be best. It's not enough, but
+---
+>  まだ戦力は残っている。
+>  君たちが休んでいる間
+we still have forces left. While you all rest,
+---
+>  月基地を防衛することくらいは
+>  できるはずだ」
+we should at least be able to defend the lunar base.”
+
+@46910 Simone · シモーヌ
+> 「それじゃ決まりね。月面へ向かい
+>  ましょう。この先まだ続く戦いに……
+“Then it's settled. Let's head for the lunar surface. To prepare for the battles still to come...
+---
+>  そなえるためにね」
+that's what we need to do.”
+
+@46911 Daisuke · 大介
+> 「そうだな……その通りだ。
+>  いま僕たちにできることは
+“Yeah... that's right. What we can do right now
+---
+>  一刻も早く戦力を
+>  回復することだな」
+is recover our strength as fast as we can.”
+
+@46912 David · デビッド
+> 「ああ、違いない。
+>  とにかく、少し休みたいぜ」
+“Yeah, no doubt about it. Anyway, I want to get some rest.”
+
+@46913 Rain · レイン
+# 审校：原文是让サリィ与キャス、ハサン先生分头去通知，初稿把 Sally 也当成被通知对象，改为 Sally 与另外两人分头行动。
+> 「そのほうがいいわね。サリィ、
+>  キャスとハサン先生に、手分けして
+“That would be better. Sally, could you split up with Cath and Dr. Hasan
+---
+>  みんなの体調をチェックしたいって、
+>  伝えてきてもらえない?」
+and tell everyone we want to check on their condition?”
+
+@46914 Sally · サリィ
+> 「ええ、いいわよ」
+“Sure, no problem.”
+
+@46915 Naida · ナイーダ
+> 「あたしも何かお手伝いします」
+“I'll help too.”
+
+@46916 Rain · レイン
+> 「ありがとう、助かるわ……」
+“Thank you, that helps...”
+
+@46917 Ple · プル
+> 「ジュドーのうそつき!
+>  遊んでくれるっていったじゃない!」
+“Judau, you liar! You said you'd play with me!”
+
+@46918 Judau · ジュドー
+> 「ごめん、プル。
+>  いろいろあってさ、疲れちまって……」
+“Sorry, Ple. A lot's been going on, and I'm worn out...”
+
+@46919 Ple · プル
+> 「……ひどいよジュドー。あたしだって……」
+“...That's mean, Judau. I'm tired too...”
+
+@46920 Judau · ジュドー
+> 「……プル?」
+“...Ple?”
+
+@46921 Four · フォウ
+> 「あたしが遊んであげようか?」
+“Want me to play with you?”
+
+@46922 Judau · ジュドー
+> 「フォウさん」
+“Four.”
+
+@46923 Ple · プル
+> 「……ホント? ホントに遊んでくれる?」
+“...Really? You'll really play with me?”
+
+@46924 Kamille · カミーユ
+> 「フォウ、ちょっと」
+“Four, a moment.”
+
+@46925 Kamille · カミーユ
+> (フォウ、いいのかい?
+>  君だって、疲れてるだろうに)
+(Four, are you sure? You're tired too, aren't you?)
+
+@46926 Four · フォウ
+> (うん……でも、あの子、
+>  放っておいてはだめよ)
+(Yeah... but we can't just leave that girl alone.)
+
+@46927 Kamille · カミーユ
+> (どうして?)
+(Why?)
+
+@46928 Four · フォウ
+> (わかるでしょう、カミーユ。
+>  あの子、とっても不安がってる
+(You can tell, can't you, Kamille. That girl is terribly anxious.
+---
+>  知らないところへ来た上に、ここの
+>  みんなの不安を、感じてしまっている
+She's come to a place she doesn't know, and on top of that, she's sensing
+---
+>  心が不安定になっているわ)
+everyone's unease here. Her heart is unstable.)
+
+@46929 Kamille · カミーユ
+> (そうか……そうだな。わかった)
+(I see... you're right. Understood.)
+
+@46930 Ple · プル
+> 「どうしたの?」
+“What's wrong?”
+
+@46931 Kamille · カミーユ
+> 「なんでもないよ、ほら、
+>  お姉ちゃんと遊んできな」
+“It's nothing. Come on, go play with your big sister.”
+
+@46932 Four · フォウ
+> 「艦の中を案内してあげるよ。
+>  行こう」
+“I'll show you around the ship. Let's go.”
+
+@46933 Ple · プル
+> 「やったぁ! プルプルプルプルプルー!」
+“Yay! Ple-Ple-Ple-Ple-Ple!”
+
+@46934 Judau · ジュドー
+> 「すみませんね、気ぃつかわせちまった
+>  みたいで」
+“Sorry about that. Seems I made you worry.”
+
+@46935 Kamille · カミーユ
+> 「あの子は、君に共感している。
+>  君の気分を
+“That girl empathizes with you. She picks up on your feelings
+---
+>  より強く受けてしまうんだ。
+>  気をつけないとな?」
+even more strongly. You'd better be careful, all right?”
+
+@46936 Judau · ジュドー
+> 「わかってますって」
+“I know, I know.”
+
+@46937 Ple · プル
+> 「みんな、やさしいんだね」
+“Everyone's so kind.”
+
+@46938 Four · フォウ
+> 「そうだよ。みんな、あたしたちに、
+>  居場所をつくってくれる
+“That's right. Everyone makes a place for us,
+---
+>  ここにいれば大丈夫っていう気に
+>  させてくれる」
+and makes us feel like we're safe as long as we're here.”
+
+@46939 Ple · プル
+> 「うん。あたし、
+>  ここすっごく気にいっちゃった
+“Yeah. I've really taken a liking to this place.
+---
+>  気持ちのいい人、たっくさんいるもん」
+There are so many nice people here.”
+
+@46940 Tetsuya · 鉄也
+> 「なんだ、こんな所にいやがったのか。
+>  探しちまったぜ」
+“So this is where you were. I've been looking all over for you.”
+
+@46941 Shinobu · 忍
+> 「なんだよ、鉄也。何か用か」
+“What is it, Tetsuya? You need something?”
+
+@46942 Tetsuya · 鉄也
+> 「お前じゃない。豹馬、十三、
+>  ちずるが倒れたそうだ」
+“Not you. Hyoma, Juzo, and Chizuru have collapsed, I hear.”
+
+@46943 Hyoma · 豹馬
+> 「な……なんだって!?」
+“Wha... what did you say?!”
+
+@46944 Juzo · 十三
+> 「そらいったいどういうことや!?」
+“What in the world is going on?!”
+
+@46945 Tetsuya · 鉄也
+> 「俺も詳しくはしらん。
+>  メディカル・ルームだ。いってやれ」
+“I don't know the details either. It's the medical room. Go see them.”
+
+@46946 Shinobu · 忍
+# 检查提示：未用必用译名：コン・バトラー→Combattler V
+> 「今度はコン・バトラーかよ。
+>  ……沙羅の奴と同じなのか?」
+“Now it's the Combattler crew, huh. ...Is it the same as what happened to Sara?”
+
+@46947 Masato · 雅人
+> 「でもさ忍、合体のシステムそのものは
+>  俺たちのと似てるけど、あれって
+“But Shinobu, the Combine system itself is similar to ours, but that one
+---
+>  波長があえばいいだけだろ?」
+just needs the wavelengths to match, right?”
+
+@46948 Shinobu · 忍
+> 「ああ、そのはずだ。ちずるはいったい
+>  何で倒れたってんだ?」
+“Yeah, that's how it should be. So what in the world made Chizuru collapse?”
+
+@46949 Tetsuya · 鉄也
+> 「病気らしいと聞いたがな」
+“I heard it's an illness.”
+
+@46950 Hasan · ハサン
+> 「いいかね、落ち着いて聞きなさい。
+>  ちずるくんは以前から心臓が
+“Now then, listen calmly. Cath told me that Chizuru's heart
+---
+>  おかしかったとキャスくんから聞いてね、
+>  精密検査してみた」
+had been bad for some time, so I ran a thorough examination.”
+
+@46951 Hyoma · 豹馬
+> 「以前から……? それで、ちずるの
+>  奴は……」
+“For some time...? So then, Chizuru...”
+
+@46952 Juzo · 十三
+> 「先生、それで、どうなっとんのや?」
+“Teacher, so what's wrong with her?”
+
+@46953 Hasan · ハサン
+> 「うむ、心臓弁膜症に間違いな
+>  い。それも、かなり悪化している
+“Yes. It's a valvular disease of the heart, no doubt about it. And it's
+---
+>  放置すれば、命にかかわる」
+quite advanced. If left untreated, it will cost her her life.”
+
+@46954 Hyoma · 豹馬
+> 「な……なんだって!?」
+“Wha... what did you say?!”
+
+@46955 Hasan · ハサン
+> 「こんな状態で戦闘に出ていたなど
+>  とても信じられんよ
+“I can hardly believe she was going into battle in this condition.
+---
+>  そうとうの苦痛があったはずだ。
+>  本人はうすうす気づいておった
+She must have been in considerable pain. She herself seemed to have
+---
+>  ようだが、君たちは誰も気がつかな
+>  かったのかね?」
+some faint idea, but did none of you notice?”
+
+@46956 Hyoma · 豹馬
+> 「そんな……じゃあ、あいつはずっと……
+>  くそっ、それなのに俺は……」
+“No... then she's been... Damn it, and yet I...”
+
+@46957 Kosuke · 小介
+> 「……僕の……僕の責任です。僕が
+>  あのとき、無理にでも止めていたら
+“...It's... it's my fault. If I had stopped her by force back then,
+---
+>  こんなことには……」
+this never would have...”
+
+@46958 Juzo · 十三
+> 「小介……お前、知っとったんか!?」
+“Kosuke... you knew?!”
+
+@46959 Hyoma · 豹馬
+> 「バカ野郎! 小介、お前なんで
+>  俺たちに言わなかった!!」
+“You idiot! Kosuke, why didn't you tell us?!”
+
+@46960 Kosuke · 小介
+> 「う、うぐっ……、く、苦し……」
+“Ugh, ugh... it... it hurts...”
+
+@46961 Daisaku · 大作
+> 「やめてください! ちずるさんが
+>  豹馬さんたちには……
+“Please stop! Chizuru asked Hyoma and the others...
+---
+>  黙っててほしいっていったんです!」
+she asked them to keep quiet about it!”
+
+@46962 Hyoma · 豹馬
+> 「お前も知ってたのか……」
+“You knew too...”
+
+@46963 Daisaku · 大作
+> 「ちずるさんは、いまの大変な状況の
+>  中で、自分の都合で
+“Chizuru said that in this terrible situation, she couldn't let her own
+---
+>  コン・バトラーを使えなくするわけには
+>  いかないって、それで……」
+circumstances take Combattler V out of the fight, so...”
+
+@46964 Hyoma · 豹馬
+> 「ちずる……。先生、頼む!
+>  ちずるを助けてやってくれ!
+“Chizuru... Teacher, please! Save Chizuru!
+---
+>  必要だってんなら、俺の心臓を
+>  やってもいい!」
+If you need one, you can have my heart!”
+
+@46965 Hasan · ハサン
+> 「そんなものはいらんよ。しかし、手術は
+>  絶対に必要だな
+“I don't need that. But surgery is absolutely necessary.
+---
+>  人工弁膜を移植しなければ
+>  ならんだろう」
+We'll have to transplant an artificial valve.”
+
+@46966 Hyoma · 豹馬
+> 「なら、すぐやってくれ!」
+“Then do it right away!”
+
+@46967 Hasan · ハサン
+> 「無茶いっちゃいかんよ。サリィくんたち
+>  がいるから人手はあるが、
+“Don't be reckless. We have the hands, with Sally and the others here,
+---
+>  人工弁膜など、この艦には積ん
+>  でおらん。なに、幸い、我々は月へ
+but this ship doesn't carry artificial valves. Fortunately, we're headed
+---
+>  向かっている。月につきしだい、
+>  手術はできるだろう。安心しなさい」
+for the Moon. Once we reach it, the surgery can be done. Rest easy.”
+
+@46968 Hyoma · 豹馬
+> 「…………」
+“...”

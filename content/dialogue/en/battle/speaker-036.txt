@@ -1,0 +1,226 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7950 Amuro · アムロ
+> 「おちろっ!」
+“Fall!”
+
+@7951 Amuro · アムロ
+> 「あたれっ!」
+“Hit!”
+
+@7952 Amuro · アムロ
+> 「そこだっ!!」
+“There!!”
+
+@7953 Amuro · アムロ
+> 「直撃させるっ!!」
+“I'll land a direct hit!!”
+
+@7954 Amuro · アムロ
+> 「逃げ回っても無駄だっ!」
+“Running won't help you!”
+
+@7955 Amuro · アムロ
+> 「この一撃で!」
+“With this one shot!”
+
+@7956 Amuro · アムロ
+> 「邪魔だっ!」
+“Out of my way!”
+
+@7957 Amuro · アムロ
+> 「あててみせるっ!」
+“I'll hit you, just watch!”
+
+@7958 Amuro · アムロ
+> 「落としてみせるっ!」
+“I'll shoot you down, just watch!”
+
+@7959 Amuro · アムロ
+> 「そこだっ!!」
+“There!!”
+
+@7960 Amuro · アムロ
+> 「いけるかっ!?」
+“Can I do it?!”
+
+@7961 Amuro · アムロ
+> 「やらせるかっ!」
+“I won't let you!”
+
+@7962 Amuro · アムロ
+> 「させるかっ!」
+“Like hell I'll let you!”
+
+@7963 Amuro · アムロ
+> 「このおっ!」
+“Why you!”
+
+@7964 Amuro · アムロ
+> 「し、しまった!!」
+“D-Damn it!!”
+
+@7965 Amuro · アムロ
+> 「うわぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@7966 Amuro · アムロ
+> 「も、もつのか!?」
+“C-Can it hold?!”
+
+@7967 Amuro · アムロ
+> 「くっ! ダメージが大きすぎる!?」
+“Ngh! The damage is too much?!”
+
+@7968 Amuro · アムロ
+> 「ダメだ、このままじゃもたないっ!!」
+“No good, I can't take much more like this!!”
+
+@7969 Amuro · アムロ
+> 「しまった! ダメージを受けすぎたか!」
+“Damn! Did I take too much damage?!”
+
+@7970 Amuro · アムロ
+> 「こ、このままではやられる!?」
+“A-At this rate I'll be shot down?!”
+
+@7971 Amuro · アムロ
+# 审校：「やられる!?」在此处是被击坠/被打倒的惊呼，初稿“I'm hit?!”偏离原意。改为“I'm going down?!”
+> 「やられる!?」
+“I'm going down?!”
+
+@7972 Amuro · アムロ
+> 「このくらい!」
+“This much!”
+
+@7973 Amuro · アムロ
+> 「ッ!! まだだ!!」
+“Hn!! Not yet!!”
+
+@7974 Amuro · アムロ
+> 「くっ! まだまだ!」
+“Ngh! Not yet, not by a long shot!”
+
+@7975 Amuro · アムロ
+> 「くっ! まだだ! まだいける!!」
+“Ngh! Not yet! I can still go!!”
+
+@7976 Amuro · アムロ
+> 「くっ! だが、この程度なら
+>  まだいける!」
+“Ngh! But I can still take this much!”
+
+@7977 Amuro · アムロ
+> 「ま、まだまだ!」
+“N-Not yet, not by a long shot!”
+
+@7978 Amuro · アムロ
+> 「やる! だが、まだこんなもので!
+“Not bad! But that's not nearly enough!”
+
+@7979 Amuro · アムロ
+> 「やったな!」
+“You got me!”
+
+@7980 Amuro · アムロ
+> 「まだだっ! まだやられたわけじゃない!」
+“Not yet! I'm not down yet!”
+
+@7981 Amuro · アムロ
+> 「ちっ! 機体の調整が完全じゃ
+>  ないのか!?」
+“Tch! Isn't the unit fully tuned?!”
+
+@7982 Amuro · アムロ
+> 「ちっ!」
+“Tch!”
+
+@7983 Amuro · アムロ
+> 「この程度なら!!」
+“This much is nothing!!”
+
+@7984 Amuro · アムロ
+> 「この程度のダメージなら!」
+“Damage like this is nothing!”
+
+@7985 Amuro · アムロ
+> 「こんなことでっ!!」
+“You think this'll stop me!!”
+
+@7986 Amuro · アムロ
+> 「かすっただけだ!」
+“It just grazed me!”
+
+@7987 Amuro · アムロ
+> 「何の、この程度っ!」
+“What, this much?!”
+
+@7988 Amuro · アムロ
+> 「みえる!!」
+“I can see it!!”
+
+@7989 Amuro · アムロ
+> 「させるかっ!」
+“I won't let you!”
+
+@7990 Amuro · アムロ
+> 「あまいっ!!」
+“Too easy!!”
+
+@7991 Amuro · アムロ
+> 「あたるかっ!」
+“Like you'd hit me!”
+
+@7992 Amuro · アムロ
+> 「そこっ!」
+“There!”
+
+@7993 Amuro · アムロ
+> 「見える!!」
+“I can see it!!”
+
+@7994 Amuro · アムロ
+> 「あたるものかっ!」
+“As if you'd hit me!”
+
+@7995 Amuro · アムロ
+> 「敵の動きが……見える!」
+“I can see... the enemy's movements!”
+
+@7996 Amuro · アムロ
+> 「ムダだっ!」
+“It's useless!”
+
+@7997 Amuro · アムロ
+> 「そこか!」
+“There you are!”
+
+@7998 Amuro · アムロ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@7999 Amuro · アムロ
+> 「させるかっ」
+“I won't let you!”
+
+@8000 Amuro · アムロ
+> 「やられはしない!」
+“I won't be shot down!”
+
+@8001 Amuro · アムロ
+# 审校：「だめか」在此是“不行了吗”，不是“no good”的直译问题，改为更自然的“it's no good”
+> 「くっ、だめか!?」
+“Ngh, it's no good?!”
+
+@8002 Amuro · アムロ
+> 「しまった、弾切れか!」
+“Damn, I'm out of ammo!”
+
+@8003 Amuro · アムロ
+# 审校：「遠すぎるか」指距离太远，补上 away 更自然
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far away?!”
+
+@8004 Amuro · アムロ
+> 「あんな距離から攻撃できるのか!?」
+“They can attack from that range?!”

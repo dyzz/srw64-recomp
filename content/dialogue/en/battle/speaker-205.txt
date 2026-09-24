@@ -1,0 +1,157 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7457 David · デビッド
+> 「こんのぉぉぉーっ!」
+“Why youuuu!”
+
+@7458 David · デビッド
+> 「ちぃえあぁぁぁっ!」
+“Cheaaah!”
+
+@7459 David · デビッド
+> 「でぇぃやぁぁぁっ!!」
+“Deyaaah!!”
+
+@7460 David · デビッド
+> 「いいかげんにやられろ!!」
+“Just go down already!!”
+
+@7461 David · デビッド
+> 「やろうっ!」
+“Let's do this!”
+
+@7462 David · デビッド
+> 「くそったれっ!!」
+“Son of a bitch!!”
+
+@7463 David · デビッド
+> 「でやぁぁぁぁっ!!」
+“Deyaaaaah!!”
+
+@7464 David · デビッド
+> 「おちろ、おちろっ!!」
+“Fall, fall!!”
+
+@7465 David · デビッド
+> 「俺だってやれるんだっ!!」
+“I can do this too!!”
+
+@7466 David · デビッド
+> 「あれか!」
+“That's it, huh!”
+
+@7467 David · デビッド
+> 「きやがったな!」
+“So you showed up!”
+
+@7468 David · デビッド
+> 「意地を見せてやる!」
+“I'll show you some guts!”
+
+@7469 David · デビッド
+> 「しまったぁぁぁー」
+“Damn iiiit!”
+
+@7470 David · デビッド
+> 「うわあぁぁぁぁっ!!」
+“Uwaaaaaah!!”
+
+@7471 David · デビッド
+> 「シモーヌゥゥゥッ!!」
+“Simooone!!”
+
+@7472 David · デビッド
+> 「ぐぅっ、そんなバカなっ!?」
+“Ngh, that can't be?!”
+
+@7473 David · デビッド
+> 「うぅっ、くそぉっ!!」
+“Ugh, damn it!!”
+
+@7474 David · デビッド
+> 「ぐわぁぁぁっ!!」
+“Gwaaaah!!”
+
+@7475 David · デビッド
+> 「うおぅぁぁぁーっ!」
+“Uoaaah!”
+
+@7476 David · デビッド
+> 「ううっ!」
+“Ugh!”
+
+@7477 David · デビッド
+> 「ちきしょうっ!!」
+“Damn it!!”
+
+@7478 David · デビッド
+> 「くそぅっ!!」
+“Damn!!”
+
+@7479 David · デビッド
+> 「ぬあぁぁっ!」
+“Nuaaah!”
+
+@7480 David · デビッド
+> 「まだまだぁ!」
+“Not even close!”
+
+@7481 David · デビッド
+> 「うわっ!!」
+“Whoa!!”
+
+@7482 David · デビッド
+> 「この程度でぇっ!」
+“That's nothing!”
+
+@7483 David · デビッド
+> 「来たなッ!」
+“Here it comes!”
+
+@7484 David · デビッド
+> 「どうだぁっ!」
+“How's that!”
+
+@7485 David · デビッド
+> 「俺だってこのくらいはいけるぜ!」
+“Even I can handle this much!”
+
+@7486 David · デビッド
+> 「ちいっ!」
+“Tch!”
+
+@7487 David · デビッド
+> 「あたってたまるかよ!」
+“Like hell I'd get hit!”
+
+@7488 David · デビッド
+> 「くそっ、かわせたか」
+“Damn, dodged it, huh.”
+
+@7489 David · デビッド
+> 「危ねぇ危ねぇ」
+“That was close, that was close.”
+
+@7490 David · デビッド
+> 「やられてたまるか!」
+“Like hell I'd go down!”
+
+@7491 David · デビッド
+> 「ビームなんて効かねえぜっ!!」
+“Beams don't do a thing to me!!”
+
+@7492 David · デビッド
+> 「効かねぇっていってんだよ!」
+“I said it doesn't work!”
+
+@7493 David · デビッド
+> 「そんなもんはっ!」
+“That kinda thing!”
+
+@7494 David · デビッド
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@7495 David · デビッド
+> 「くっそぉ、射程外だとぉ!?」
+“Damn it, out of range?!”

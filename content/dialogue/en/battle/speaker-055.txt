@@ -1,0 +1,224 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8272 Quess · クェス
+> 「みんな、落ちちゃえぇぇっ!!」
+“Everyone, just fall already!!”
+
+@8273 Quess · クェス
+> 「邪魔すんじゃないっ!」
+“Don't get in my way!”
+
+@8274 Quess · クェス
+> 「落ちろ、落ちろ、落ちろ!」
+“Fall, fall, fall!”
+
+@8275 Quess · クェス
+> 「それ以上好きにはやらせないよっ!!」
+“I won't let you have it your way anymore!!”
+
+@8276 Quess · クェス
+> 「あたしが相手よっ!!」
+“I'll take you on!!”
+
+@8277 Quess · クェス
+> 「あたしだって、やってみせるっ!」
+“I can do it too, just watch me!”
+
+@8278 Quess · クェス
+> 「おちちゃえーっ!!」
+“Just fall already!!”
+
+@8279 Quess · クェス
+> 「おちなさいっ!!」
+“Fall, I said!!”
+
+@8280 Quess · クェス
+> 「みんな! 落ちちゃえー!!」
+“Everyone! Just fall!!”
+
+@8281 Quess · クェス
+> 「じゃまよっ!」
+“You're in my way!”
+
+@8282 Quess · クェス
+> 「そこっ!!」
+“There!!”
+
+@8283 Quess · クェス
+> 「落ちなさいっ!!」
+“Fall, I said!!”
+
+@8284 Quess · クェス
+> 「あててみせるっ!!」
+“I'll hit you, just watch!!”
+
+@8285 Quess · クェス
+> 「やらせないよっ!!」
+“I won't let you!!”
+
+@8286 Quess · クェス
+> 「大佐のところには行かせないよ!」
+“I won't let you get to the Colonel!”
+
+@8287 Quess · クェス
+> 「そんなんで、大佐を困らせないでよ!」
+“Don't go causing the Colonel trouble like that!”
+
+@8288 Quess · クェス
+> 「しまった!? ここまで!?」
+“Damn!? Is this it!?”
+
+@8289 Quess · クェス
+> 「きゃあああっ!!」
+“Kyaaaaah!!”
+
+@8290 Quess · クェス
+> 「ダメ、やられちゃうっ!!」
+“No, I'm going down!!”
+
+@8291 Quess · クェス
+> 「直撃!?」
+“A direct hit!?”
+
+@8292 Quess · クェス
+> 「くうっ! な、なんなの、このパワーは!?」
+“Ngh! W-what is this power!?”
+
+@8293 Quess · クェス
+> 「あうっ!! こ、これじゃ機体が
+>  もたない!?」
+“Agh!! I-I can't take this!?”
+
+@8294 Quess · クェス
+> 「きゃあっ! こんなパワーがあるなんて……」
+“Kyaah! To think it had this much power...”
+
+@8295 Quess · クェス
+> 「直撃!?」
+“A direct hit!?”
+
+@8296 Quess · クェス
+> 「うっ! やられる!?」
+“Ugh! I'm hit!?”
+
+@8297 Quess · クェス
+> 「きゃあっ!」
+“Kyaah!”
+
+@8298 Quess · クェス
+> 「このっ! このくらいなら落ちないよっ!」
+“Why you! This much won't bring me down!”
+
+@8299 Quess · クェス
+> 「あうっ! この程度でやられるもんか!」
+“Agh! Like this could beat me!”
+
+@8300 Quess · クェス
+> 「なんでさ!」
+“Why?!”
+
+@8301 Quess · クェス
+> 「何なの?」
+“What is this?”
+
+@8302 Quess · クェス
+> 「ううっ! 邪魔すんじゃない!」
+“Ugh! Don't get in my way!”
+
+@8303 Quess · クェス
+> 「あ、あああっ!!」
+“A-Ahhh!!”
+
+@8304 Quess · クェス
+> 「くっ!! まだっ!!」
+“Ngh!! Not yet!!”
+
+@8305 Quess · クェス
+> 「やったわねっ!」
+“You did that, didn't you!”
+
+@8306 Quess · クェス
+> 「くっ! まだいける!」
+“Ngh! I can still go!”
+
+@8307 Quess · クェス
+> 「当たっただけ!」
+“It just grazed me!”
+
+@8308 Quess · クェス
+> 「かすった! でもそれだけっ!」
+“A graze! But that's all!”
+
+@8309 Quess · クェス
+> 「こんな攻撃、効くもんかっ!」
+“An attack like that won't work on me!”
+
+@8310 Quess · クェス
+> 「何さ、こんなダメージっ!!」
+“What, damage like this?!”
+
+@8311 Quess · クェス
+> 「ああっ!」
+“Ahh!”
+
+@8312 Quess · クェス
+> 「まだまだっ!!」
+“Not yet, not yet!!”
+
+@8313 Quess · クェス
+> 「まだ!! かすりキズ!」
+“Not yet!! Just a scratch!”
+
+@8314 Quess · クェス
+> 「そこっ!」
+“There!”
+
+@8315 Quess · クェス
+> 「このくらい、よけてみせる!!」
+“I'll dodge something like this!!”
+
+@8316 Quess · クェス
+> 「見える、見えるよ!」
+“I can see it, I can see it!”
+
+@8317 Quess · クェス
+> 「あたらないよ!!」
+“You won't hit me!!”
+
+@8318 Quess · クェス
+> 「みえる!!」
+“I see it!!”
+
+@8319 Quess · クェス
+> 「あまいっ!!」
+“Too easy!!”
+
+@8320 Quess · クェス
+> 「その程度のビーム、
+>  弾き飛ばすんだからっ!」
+“A Beam like that, I'll just knock it away!”
+
+@8321 Quess · クェス
+> 「ムダよ!!」
+“It's useless!!”
+
+@8322 Quess · クェス
+> 「ビームなんて!!」
+“A Beam, really?!”
+
+@8323 Quess · クェス
+> 「え!? 何!? 弾切れなの!?」
+“Huh?! What?! I'm out of ammo?!”
+
+@8324 Quess · クェス
+> 「だめ、反撃不可能!」
+“No good, I can't counterattack!”
+
+@8325 Quess · クェス
+> 「なんでぇっ!? あんなとこから攻撃が
+>  届くの!?」
+“What the?! An attack reaching me from way over there?!”
+
+@8326 Quess · クェス
+> 「だめ、とどかない!」
+“No good, it won't reach!”

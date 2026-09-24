@@ -1,0 +1,62 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5799 Bright · ブライト
+> 「くっ、バカな……」
+“Ngh, impossible...”
+
+@5800 Bright · ブライト
+> 「なんということだ……」
+“How could this be...”
+
+@5801 Ciela · シーラ
+> 「このような所で終わるというのか……?」
+“Is this where it ends...?”
+
+@5802 Ciela · シーラ
+> 「我らの力がおよばなかったのか……」
+“Was our power not enough...?”
+
+@5803 Elle · エレ
+> 「くっ……悪意のオーラが……」
+“Ngh... the aura of malice...”
+
+@5804 Elle · エレ
+> 「悪しきオーラを止められ
+>  なかった……!?」
+“I couldn't stop the evil aura...?!”
+
+@5805 Dr. Hazuki · 葉月博士
+# 审校：“こんな所で”应译为“in a place like this”，使语气更完整自然。
+> 「こんな所で竜を死なせるわけには……」
+“I can't let the dragon die in a place like this...”
+
+@5806 Dr. Hazuki · 葉月博士
+# 审校：原文“このガンドールが落ちるのか”是疑问句，初稿漏译了疑问语气。
+> 「このガンドールが落ちるのか……!?」
+“Is the Gandor going down...?!”
+
+@5807 Emary · エマリー
+> 「あぁぁーっ!?」
+“Aaaah?!”
+
+@5808 Emary · エマリー
+> 「あぁぁーっ!?」
+“Aaaah?!”
+
+@5809 Henken · ヘンケン
+> 「くっ、総員退避だ! 急げ!」
+“Ngh, all hands, evacuate! Hurry!”
+
+@5810 Henken · ヘンケン
+> 「いかん、これでは……」
+“No, at this rate...”
+
+@5811 Howard · ハワード
+# 审校：“なんだと!?”在此处是震惊的感叹，不是真的询问对方说了什么，译为“What?!”更符合战斗情境。
+> 「なんだと!?」
+“What?!”
+
+@5812 Howard · ハワード
+# 审校：“これでは”指当前状况，补上“about this”使句意完整。
+> 「これではどうにもできんか……」
+“So there's nothing I can do about this...”

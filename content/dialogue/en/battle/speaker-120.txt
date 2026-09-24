@@ -1,0 +1,134 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9924 Benkei · ベンケイ
+> 「くらえっ!!」
+“Take this!!”
+
+@9925 Benkei · ベンケイ
+> 「これでもくらえっ!!」
+“Try this one on for size!!”
+
+@9926 Benkei · ベンケイ
+> 「こいつでとどめだっ!!」
+“This'll finish you!!”
+
+@9927 Benkei · ベンケイ
+> 「行くぞっ!!」
+“Here I come!!”
+
+@9928 Benkei · ベンケイ
+> 「うわっちゃあ! やられちまったぜ!」
+“Whoa! They got me!”
+
+@9929 Benkei · ベンケイ
+> 「う、うおおおっ!!」
+“U-Uwooooh!!”
+
+@9930 Benkei · ベンケイ
+> 「くそっ! だめか!」
+“Damn! No good!”
+
+@9931 Benkei · ベンケイ
+> 「くそっ!! なんてパワーだ!」
+“Damn!! What power!”
+
+@9932 Benkei · ベンケイ
+> 「や、やられちまう!?」
+“Th-They're gonna get me?!”
+
+@9933 Benkei · ベンケイ
+> 「ちいっ!! ちょいとヤバイぜ!」
+“Tch!! This is gettin' bad!”
+
+@9934 Benkei · ベンケイ
+> 「うわっ!! や、やばいっ!!」
+“Whoa!! Th-This is bad!!”
+
+@9935 Benkei · ベンケイ
+> 「ちくしょう!! このままじゃ
+>  やられちまうぜっ!!」
+“Damn it!! At this rate they'll get me!!”
+
+@9936 Benkei · ベンケイ
+> 「いてえじゃねえか、この野郎!」
+“That hurt, you bastard!”
+
+@9937 Benkei · ベンケイ
+> 「いてっ! 何しやがる!!」
+“Ow! What're you doin'!!”
+
+@9938 Benkei · ベンケイ
+> 「なんの、これしき!」
+“What, that's nothing!”
+
+@9939 Benkei · ベンケイ
+> 「やったな、このやろう!」
+“You did it, you jerk!”
+
+@9940 Benkei · ベンケイ
+> 「うおおっ!!」
+“Uwooooh!!”
+
+@9941 Benkei · ベンケイ
+> 「やりやがったな!!」
+“You got me!!”
+
+@9942 Benkei · ベンケイ
+> 「そんなもんかよ!」
+“Is that all you got!”
+
+@9943 Benkei · ベンケイ
+> 「ふあ～あ、なんじゃい、そんなもん」
+“Yaaawn, what's this, that's all?”
+
+@9944 Benkei · ベンケイ
+> 「へーき、へーき!」
+“I'm fine, I'm fine!”
+
+@9945 Benkei · ベンケイ
+> 「こんなもん、効くかい!」
+“Like that could hurt me!”
+
+@9946 Benkei · ベンケイ
+> 「こんなものかいっ!」
+“Is that all?!”
+
+@9947 Benkei · ベンケイ
+> 「おっとっと、あぶねえ、あぶねえ」
+“Whoa there, that was close, that was close.”
+
+@9948 Benkei · ベンケイ
+> 「ははーん、ヘタクソ」
+“Ha ha, you're terrible.”
+
+@9949 Benkei · ベンケイ
+> 「ふう、あぶなかった」
+“Phew, that was close.”
+
+@9950 Benkei · ベンケイ
+> 「なんのっ!!」
+“What, no problem!!”
+
+@9951 Benkei · ベンケイ
+> 「おおっと! ツルカメ、ツルカメ」
+“Whoa there! Easy does it, easy does it.”
+
+@9952 Benkei · ベンケイ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@9953 Benkei · ベンケイ
+> 「ビームなんてへでもねえぜ!」
+“A Beam's nothin' to me!”
+
+@9954 Benkei · ベンケイ
+> 「ありゃ、反撃できねえ」
+“Aw man, I can't counter.”
+
+@9955 Benkei · ベンケイ
+> 「ちっ! 反撃できねえ!」
+“Tch! I can't counter!”
+
+@9956 Benkei · ベンケイ
+> 「くそうっ! とどかん!」
+“Damn! It won't reach!”

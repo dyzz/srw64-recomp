@@ -1,0 +1,984 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18748 Roux · ルー
+> 「コロニーのM作戦、
+>  本当だったんですか?」
+“The colonies' Operation M... was it real?”
+
+@18749 Quattro · クワトロ
+# 待译：机翻未采用（空译文）
+# 草稿第 1 页：“It seems so. It's not surprising that there are those in space who resist, just like us.
+# 草稿第 2 页：But still...”
+# 草稿第 3 页：
+> 「そのようだ。
+>  宇宙にも我々のように
+---
+>  抵抗運動をする者たちがいても
+>  不思議ではない
+---
+>  しかし……」
+
+@18750 Bright · ブライト
+> 「何か気になることでも?」
+“Is something bothering you?”
+
+@18751 Quattro · クワトロ
+> 「それを実施する組織については
+>  よくわかっていないのだ
+“We don't know much about the organization carrying it out.
+---
+>  いくつかのコロニーの過激派だと
+>  いうことだが、どうもな」
+They're said to be radicals from several colonies, but something doesn't sit right.”
+
+@18752 Bright · ブライト
+> 「味方につけるのは、むずかしいと?」
+“You mean it'd be hard to get them on our side?”
+
+@18753 Quattro · クワトロ
+> 「わからん。が、准将のように
+>  楽観することはできんな」
+“I don't know. But I can't be as optimistic as the Brigadier General.”
+
+@18754 Ark · アーク（按段落 3DD1）
+> 「あの、なんです、
+>  そのM作戦というのは?」
+“Um, what exactly is this Operation M?”
+
+@18755 Selain · セレイン（按段落 3DD2）
+> 「M作戦……どういうのです?」
+“Operation M... what is it?”
+
+@18756 Aboly · アポリー
+> 「俺たちも実態はつかんでいない。
+>  わかっているのは
+“We haven't grasped the full picture either. All we know is
+---
+>  流星に偽装した兵器を
+>  地球に落とそうとしているって
+that they're trying to drop weapons disguised as meteors
+---
+>  ことだけだ」
+onto the Earth.”
+
+@18757 Ark · アーク（按段落 3DD1）
+> 「そんなにすごいものが
+>  落ちてくるんですか?」
+“Something that huge is going to fall?”
+
+@18758 Selain · セレイン（按段落 3DD2）
+> 「あまり効率的な方法とは
+>  思えませんが
+“It doesn't seem like a very efficient method, but
+---
+>  どれだけの戦力だと
+>  いうのです?」
+just how much force are they sending?”
+
+@18759 Quattro · クワトロ
+> 「それをこれから確認しようと
+>  いうのだ
+“That's exactly what we're about to find out.
+---
+>  帝国軍もでてくる。
+>  整備を急げよ」
+The Imperial forces will show up too. Hurry up with the maintenance.”
+
+@18760 Grados Soldier · グラドス兵
+> 「大気圏に到達すると思われる
+>  質量の移動を確認」
+“Confirmed movement of a mass expected to reach the atmosphere.”
+
+@18761 Grados Soldier · グラドス兵
+> 「1つではないな」
+“It's not just one.”
+
+@18762 Grados Soldier · グラドス兵
+> 「ミノフスキー粒子濃度の
+>  関係ではっきりとはわかりませんが
+“Minovsky particle density makes it hard to tell clearly, but
+---
+>  6つほどの金属反応があります」
+there are about six metal reactions.”
+
+@18763 Grados Soldier · グラドス兵
+> 「捕捉できそうな部隊は
+>  展開しているのか?」
+“Do we have any units deployed that could intercept them?”
+
+@18764 Grados Soldier · グラドス兵
+> 「待ってください……
+>  あります
+“Wait... yes, we do.
+---
+>  スペシャルズの
+>  ゼクス特尉の部隊です」
+It's Specials Lieutenant Zechs's unit.”
+
+@18765 Grados Soldier · グラドス兵
+> 「スペシャルズか。まぁいい、
+>  一応ゼクスに知らせておけ
+“The Specials, huh. Fine, notify Zechs just in case.
+---
+>  どうせ3年前の大戦時の
+>  衛星の破片かなにかだろうがな」
+It's probably just satellite debris from the war three years ago anyway.”
+
+@18766 Specials · スペシャルズ
+> 「ゼクス特尉、監視衛星は
+>  隕石か衛星の破片の落下と
+“Lieutenant Zechs, the surveillance satellite reports it as
+---
+>  報告しています」
+a meteor or satellite debris falling.”
+
+@18767 Zechs · ゼクス
+> 「隕石や衛星が大気圏突入
+>  のウェーブコースを通ると思うか?」
+“Do you think meteors or satellites travel along an atmospheric entry wave course?”
+
+@18768 Specials · スペシャルズ
+> 「では……」
+“Then...”
+
+@18769 Zechs · ゼクス
+> 「うむ、コロニーのM作戦に
+>  間違いないな
+“Yes, it's definitely the colonies' Operation M.
+---
+>  いくつ、とらえられるか」
+How many can we catch?”
+
+@18770 Specials · スペシャルズ
+> 「北米の大西洋岸に
+>  落下すると思われる、1つだけです」
+“Only one, expected to fall on the Atlantic coast of North America.”
+
+@18771 Zechs · ゼクス
+> 「ふむ……1つでも十分とするか
+“Hmm... one will have to be enough.
+---
+>  帝国軍にとっては我々も
+>  しょせんは、よそ者だ
+To the Imperial forces, we're outsiders anyway.
+---
+>  功をあせるものではないな」
+No need to rush for glory.”
+
+@18772 Specials · スペシャルズ
+> 「ずいぶん表向きな発言を
+>  なさいますな」
+“That's quite a diplomatic statement, sir.”
+
+@18773 Zechs · ゼクス
+> 「私は、軍人なのだよ」
+“I am a soldier.”
+
+@18774 Roux · ルー
+> 「ブレックス准将より通信です」
+“Incoming transmission from Brigadier General Blex.”
+
+@18775 Bright · ブライト
+> 「つないでくれ。
+>  ……准将、なにか?」
+“Put him through. ...General, what is it?”
+
+@18776 Blex · ブレックス
+> 「たった今、例の作戦が
+>  発動したとの連絡がはいった
+“I've just received word that the operation has been launched.
+---
+>  大気圏に突入してくるのは
+>  6つのようだな」
+It seems six objects will enter the atmosphere.”
+
+@18777 Quattro · クワトロ
+> 「我々で捕捉できるものは?」
+“Which one can we intercept?”
+
+@18778 Blex · ブレックス
+> 「北米の大西洋岸に
+>  落下すると思われるものが
+“The one expected to fall on the Atlantic coast of North America
+---
+>  捕捉できるだろう」
+should be within our reach.”
+
+@18779 Bright · ブライト
+> 「了解しました
+“Understood.
+---
+>  では我々はM作戦の
+>  調査に向かいます」
+Then we'll head out to investigate Operation M.”
+
+@18780 Roux · ルー
+> 「先行しているレイズナーより連絡!
+>  スペシャルズの部隊が
+“Message from the Layzner, which went ahead! A Specials unit is
+---
+>  展開しているそうです!」
+deployed in the area!”
+
+@18781 Quattro · クワトロ
+> 「目標の空域に
+>  スペシャルズがいるだと?
+“The Specials are already in the target airspace?
+---
+>  はやいな、間に合わんかもしれん。
+>  すぐに出るぞ」
+They're fast. We might not make it. We're launching now.”
+
+@18782 Relena · リリーナ
+> 「あら? なにかしら、あれは。
+>  ……流星……?」
+“Oh? What's that? ...A meteor...?”
+
+@18783 Heero · ヒイロ
+> 「……ついに来た……
+>  これが地球なのか」
+“...So it's finally come... Is this the Earth?”
+
+@18784 Zechs · ゼクス
+> 「あれか。戦闘機なのか?」
+“That's it, then. Is it a fighter?”
+
+@18785 Specials · スペシャルズ
+> 「威嚇しますか?」
+“Shall we fire a warning shot?”
+
+@18786 Zechs · ゼクス
+> 「通用するとは思えん。
+>  撃墜しろ
+“I doubt that would work. Shoot it down.
+---
+>  レジスタンスへの新兵器の
+>  輸送が目的だと思っていたが
+I thought the purpose was to transport new weapons to the resistance,
+---
+>  乗っているのはそれを操縦する
+>  戦闘パイロットだ」
+but what's aboard is a combat pilot meant to operate them.”
+
+@18787 Heero · ヒイロ
+> 「帝国にかぎつけられている
+>  ……当然か」
+“The Empire has spotted me... Naturally.”
+
+@18788 Heero · ヒイロ
+> 「……スペシャルズ部隊を迎撃せよ
+>  ……任務変更了解」
+“...Intercept the Specials unit... Mission change acknowledged.”
+
+@18789 Heero · ヒイロ
+> 「左推進システムに異常発生
+>  ……やるな」
+“Abnormality in the left propulsion system... Not bad.”
+
+@18790 Zechs · ゼクス
+> 「なんだと、あれで落とせんというのか!?」
+“What?! You mean that didn't bring it down?!”
+
+@18791 Zechs · ゼクス
+> 「変形をした!?
+>  モビルスーツだったのか!」
+“It transformed?! It was a Mobile Suit!”
+
+@18792 Heero · ヒイロ
+> 「…………」
+“...”
+
+@18793 Zechs · ゼクス
+> 「!? あの武器……いかん!
+>  退避しろ!!」
+“?! That weapon... No! Everyone, evasive!!”
+
+@18794 Heero · ヒイロ
+> 「フ……ハハハハハハッ」
+“Heh... Hahahahahaha!”
+
+@18795 Zechs · ゼクス
+> 「バカな、なんという威力だ。
+>  機体の性能差がありすぎる
+“Impossible. What power. The gap in performance is too great...
+---
+>  ……ならばっ!」
+...Then I'll do this!”
+
+@18796 Heero · ヒイロ
+> 「なに!?」
+“What?!”
+
+@18797 Zechs · ゼクス
+> 「これで動けまい。
+>  特士、脱出する。拾ってくれ」
+“That should stop it. Special, I'm ejecting. Pick me up.”
+
+@18798 Aboly · アポリー
+> 「間に合いませんよ、こりゃ」
+“We're not gonna make it in time, not like this.”
+
+@18799 Quattro · クワトロ
+> 「相手にとりついて関節をロック、
+>  そして自分は脱出するとは
+“Grabbing onto the enemy, locking its joints, and ejecting himself in the process...
+---
+>  思い切りのよいパイロットだ。
+>  できるな」
+That's one daring pilot. I could do it.”
+
+@18800 Ark · アーク（按段落 3DD1）
+> 「やられてしまった?」
+“We've been beaten?”
+
+@18801 Selain · セレイン（按段落 3DD2）
+> 「あの高度からの落下では、
+>  機体は無事でも
+“Falling from that altitude, even if the machine survives,
+---
+>  パイロットは助かるまい」
+the pilot won't.”
+
+@18802 Zechs · ゼクス
+> 「こんなものか……」
+“Is this all you've got...?”
+
+@18803 Specials · スペシャルズ
+> 「特尉、レジスタンスです」
+“Special Lieutenant, it's the resistance.”
+
+@18804 Zechs · ゼクス
+> 「我々の任務ではない。
+>  報告はまわしておけ
+“That's not our mission. Pass the report along.
+---
+>  我々は引き上げる」
+We're pulling back.”
+
+@18805 Specials · スペシャルズ
+> 「ゼクス特尉、
+>  治安部隊のゲイル中尉から
+“Special Lieutenant Zechs, Lieutenant Gale of the security forces
+---
+>  レジスタンスの足止め要請です。
+>  どうしますか」
+requests we hold the resistance in place. What are your orders?”
+
+@18806 Zechs · ゼクス
+> 「ゲイル中尉か……
+“Lieutenant Gale, is it...
+---
+>  正規軍の要請では、
+>  従うほかあるまい
+A request from the regular army leaves me no choice but to comply.
+---
+>  残りの機体をすべて出せ。
+>  私にも1機まわしてくれ」
+Launch every remaining unit. Assign one to me as well.”
+
+@18807 Ark · アーク（按段落 3DD1）
+> 「どうするんです?」
+“What do we do?”
+
+@18808 Selain · セレイン（按段落 3DD2）
+> 「こちらに来るか……
+>  当然だな」
+“They're coming this way... Of course they are.”
+
+@18809 Quattro · クワトロ
+> 「やはり見逃してはもらえないようだ。
+>  やむを得ん、迎撃するぞ」
+“It seems they won't let us slip away after all. Can't be helped. We'll intercept them.”
+
+@18810 Gale · ゲイル
+> 「ご苦労だった、ゼクス特尉。
+>  あとは我々にまかせてくれていい」
+“Good work, Special Lieutenant Zechs. You can leave the rest to us.”
+
+@18811 Zechs · ゼクス
+# 审校：原文“は”是简短应答，不是结巴；改为自然的 Yes。
+> 「は、では我々は撤収します」
+“Yes, then we'll withdraw.”
+
+@18812 Zechs · ゼクス
+> (アーマス・ゲイル……
+>  よい軍人のようだな)
+(Ahmos Gale... He seems like a fine soldier.)
+
+@18813 Gale · ゲイル
+> 「スペシャルズのゼクスは
+>  撃墜されてしまったか
+“So the Specials' Zechs was shot down after all.
+---
+>  が、そのおかげでレジスタンスを
+>  捕捉できた
+But thanks to that, we've cornered the resistance.
+---
+>  感謝せねばならんな」
+I suppose I should be grateful.”
+
+@18814 Karla · カルラ
+> 「全機、
+>  レジスタンスを囲い込め!」
+“All units, encircle the resistance!”
+
+@18815 Gale · ゲイル
+> (ジュリア……弟の血にぬれた手で
+>  君を抱くことは許されない
+(Julia... These hands stained with my brother's blood have no right to hold you.
+---
+>  ……さようなら)
+...Goodbye.)
+
+@18816 Gale · ゲイル
+> 「今度は逃がさんぞ、エイジ」
+“You won't escape this time, Eiji.”
+
+@18817 Eiji · エイジ
+> 「ゲイル先輩!」
+“Gale, sir!”
+
+@18818 Gale · ゲイル
+> 「エイジ。もう私はお前を
+>  連れ戻そうとは思わん
+“Eiji. I no longer intend to drag you back.
+---
+>  敵となるならば撃破するのみ。
+>  だが一つだけ聞かせてくれ
+If you stand as my enemy, I'll simply destroy you. But let me ask you one thing.
+---
+>  なぜそうまでして地球のために
+>  戦おうというのだ」
+Why go this far to fight for the Earth?”
+
+@18819 Eiji · エイジ
+> 「地球人も俺たちと同じ
+>  人間です
+“Earthlings are human, just like us.
+---
+>  彼らはこの惑星に誇りを抱いて
+>  生きている。俺も同じです
+They live with pride in this planet. So do I.
+---
+>  この地球を、
+>  もう一つの俺の故郷を
+This Earth, my other homeland...
+---
+>  グラドスと同様、愛しているんです」
+I love it just as I love Grados.”
+
+@18820 Gale · ゲイル
+> 「そうか……」
+“I see...”
+
+@18821 Eiji · エイジ
+> 「お願いです、ゲイル先輩
+“Please, Gale, sir.
+---
+>  帝国のやり方は
+>  間違っているんです」
+The Empire's way of doing things is wrong.”
+
+@18822 Gale · ゲイル
+> 「エイジ……覚悟を決めろ!」
+“Eiji... Steel yourself!”
+
+@18823 Eiji · エイジ
+> 「くっ、ゲイル先輩!!」
+“Ngh, Gale, sir!!”
+
+@18824 Gale · ゲイル
+> 「どうしたエイジ!
+“What's wrong, Eiji!
+---
+>  この地球の重みを背負って
+>  攻めてこい!」
+Come at me carrying the full weight of this Earth!”
+
+@18825 Gale · ゲイル
+> 「次で終わらせるぞ、エイジッ!!」
+“I'll end this with the next one, Eiji!!”
+
+@18826 Eiji · エイジ
+> 「ゲイル先輩!? うわあぁぁぁーっ!!」
+“Gale, sir?! Uwaaaaaaah!!”
+
+@18827 Gale · ゲイル
+> 「くっ……見事だ。お前の覚悟、
+>  確かに見せてもらった
+“Ngh... Magnificent. You've shown me your resolve, without a doubt.
+---
+>  ……強くなったな、エイジ……」
+...You've grown strong, Eiji...”
+
+@18828 Eiji · エイジ
+> 「先輩……」
+“Gale, sir...”
+
+@18829 Gale · ゲイル
+> 「さらばだ、エイジ……生きのびろよ」
+“Farewell, Eiji... Live on.”
+
+@18830 Eiji · エイジ
+> 「ゲイル先輩ッ!?」
+“Gale, sir?!”
+
+@18831 Gale · ゲイル
+> 「…………あぁ……ジュリア……」
+“...Ah... Julia...”
+
+@18832 Eiji · エイジ
+> 「くっ……先輩……。さようなら……
+>  ゲイル先輩……」
+“Ngh... Gale, sir... Goodbye... Gale, sir...”
+
+@18833 Karla · カルラ
+> 「ゲイル中尉ッ!?
+>  おのれ、よくも! 許さん!!」
+“Lieutenant Gale?! You bastard, how dare you! I won't forgive this!!”
+
+@18834 Gale · ゲイル
+> 「エイジ、これで終わりにするぞ」
+“Eiji, I'm ending this now.”
+
+@18835 Eiji · エイジ
+> 「くっ、ゲイル先輩……」
+“Ngh, Gale, sir...”
+
+@18836 Gale · ゲイル
+> 「くっ……ここまでか
+>  ……ジュリア……」
+“Ngh... This is as far as I go... Julia...”
+
+@18837 Eiji · エイジ
+> 「ゲイル先輩ッ!? う……
+“Gale, sir?! Ugh...
+---
+>  ……さようなら……ゲイル先輩……」
+...Goodbye... Gale, sir...”
+
+@18838 Karla · カルラ
+> 「ゲイル中尉ッ!?
+>  おのれ、よくも! 許さん!!」
+“Lieutenant Gale?! You bastard, how dare you! I won't forgive this!!”
+
+@18839 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「どうやら追いついたようだな
+“So I've caught up with you at last.
+---
+>  少年、
+>  任務を果たさせてもらうぞ」
+Boy, I'll be carrying out my mission now.”
+
+@18840 Ark · アーク（按段落 3DD1）
+> 「あの機体……あのときのっ!」
+“That machine... It's the one from back then!”
+
+@18841 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「少年、なぜレジスタンスにつく。
+>  軍人でない者を殺したくはない
+“Boy, why side with the Resistance? I don't wish to kill civilians.
+---
+>  おとなしく、その機体を
+>  渡してほしい」
+Be a good lad and hand over that machine.”
+
+@18842 Ark · アーク（按段落 3DD1）
+> 「俺の町を焼いたのはあんたたちだ。
+>  俺がここにいるのは
+“You people are the ones who burned my town. The reason I'm here
+---
+>  あんたたちのせいだろうが!」
+is because of you!”
+
+@18843 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「帝国の無人機にまかせるから
+>  ああなった
+“That happened because we left it to the Empire's drones.
+---
+>  だからこそ我々スペシャルズが
+>  代行することによって
+That is precisely why we Specials act in their stead—
+---
+>  歯止めをかけているのだと、
+>  なぜわからない」
+to put a check on them. Why can't you understand that?”
+
+@18844 Ark · アーク（按段落 3DD1）
+> 「わかるものかよ、そんな詭弁!
+“How could I understand sophistry like that?!
+---
+>  地球人のくせに
+>  異星人に取り入って」
+You're an Earthling, yet you cozy up to aliens.”
+
+@18845 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ロームフェラが動かなければ
+>  戦争は続き
+“If Romefeller hadn't acted, the war would have continued,
+---
+>  地球人の大半は
+>  虐殺されたかもしれんのだ」
+and most of humanity might have been massacred.”
+
+@18846 Ark · アーク（按段落 3DD1）
+> 「今の状態が、
+>  それとどう違うっていうんだよ!」
+“And how is the current state any different from that?!”
+
+@18847 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「いいか少年、
+>  戦争は3年前に終わっている
+“Listen, boy. The war ended three years ago.
+---
+>  今は、帝国の支配下で
+>  あったとしても
+Even if we now live under the Empire's rule,
+---
+>  よりよき形の平和を
+>  志向するべき時代だ
+this is an age when we should strive for a better form of peace.
+---
+>  にもかかわらずレジスタンスは
+>  再び戦争をおこそうとしている
+Yet the Resistance is trying to start another war.
+---
+>  そうなれば、また弱い者たちが
+>  大勢、犠牲になるのだぞ!
+If that happens, the weak will be sacrificed in great numbers once more!
+---
+>  それをわかっているのか、君は!?」
+Do you understand that?!”
+
+@18848 Ark · アーク（按段落 3DD1）
+> 「な……」
+“What...”
+
+@18849 Quattro · クワトロ
+> 「なにをしている{HeroName}、
+>  それでは死ぬぞ!」
+“What are you doing, {HeroName}? At this rate you'll die!”
+
+@18850 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「これ以上話している余裕はないか
+“No time left to talk, it seems.
+---
+>  ……やむを得ん」
+...It can't be helped.”
+
+@18851 Rish · リッシュ（按段落 3DD2）
+> 「へっ、ビンゴだ。いやがったぜ」
+“Heh, bingo. There she was.”
+
+@18852 Selain · セレイン（按段落 3DD2）
+> 「あれは……ヤツか」
+“That's... him.”
+
+@18853 Rish · リッシュ（按段落 3DD2）
+> 「よぅ{HeroName}、おとなしくそいつを
+>  返しちゃくれねぇか
+“Yo, {HeroName}. How about you be a good girl and give that back?
+---
+>  お前みたいな、いい女を
+>  殺したくないんだ」
+I don't want to kill a fine woman like you.”
+
+@18854 Selain · セレイン（按段落 3DD2）
+> 「貴様、なれなれしいぞ!
+“You, don't get so familiar with me!
+---
+>  私は貴様に、この前のカリを
+>  返す!」
+I'll pay you back for last time!”
+
+@18855 Rish · リッシュ（按段落 3DD2）
+> 「この前のカリったってお前、
+>  あんときゃこっちが撤退したんだぜ
+“Pay me back for last time? You're the one who—back then we were the ones retreating.
+---
+>  おかげで始末書の山と格闘だ
+Thanks to that I got buried in reprimands and a pile of Melee training.
+---
+>  俺のほうこそカリがあると思うがな」
+If anything, I'm the one with a grudge.”
+
+@18856 Selain · セレイン（按段落 3DD2）
+> 「貴様のことなど知ったものか!
+>  こっちは仲間をすべてやられた!」
+“As if I care about you! I lost every one of my comrades!”
+
+@18857 Rish · リッシュ（按段落 3DD2）
+> 「俺にも任務ってもんがあるんだ、
+>  しかたないだろ」
+“I've got my own mission too, you know. Can't be helped.”
+
+@18858 Selain · セレイン（按段落 3DD2）
+> 「貴様は、私が落とす!」
+“I'll be the one to shoot you down!”
+
+@18859 Rish · リッシュ（按段落 3DD2）
+> 「おい{HeroName}、
+>  ちょっと待てって……。ちっ」
+“Hey, {HeroName}, hold on a sec... Tch.”
+
+@18860 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「くっ、機体の回収に
+>  こだわりすぎたか……」
+“Ngh, I was too fixated on recovering the unit...”
+
+@18861 Rish · リッシュ（按段落 3DD2）
+> 「ちっ、やられちまったか……。
+>  まったく気の強ぇ女だ
+“Tch, so I got shot down... What a headstrong woman.
+---
+>  どうやらマジで惚れそうだぜ
+Looks like I might seriously fall for her.
+---
+>  じゃあな、また会いに来るぜ、
+>  {HeroName}ちゃん」
+See you, I'll come to see you again, {HeroName}.”
+
+@18862 Selain · セレイン（按段落 3DD2）
+> 「ふざけた奴だ……」
+“What a ridiculous man...”
+
+@18863 Eiji · エイジ
+> 「ゲイル先輩………」
+“Gale, sir...”
+
+@18864 David · デビッド
+> 「エイジ、おいエイジ!
+>  大丈夫か!?」
+“Eiji, hey, Eiji! Are you all right?!”
+
+@18865 Eiji · エイジ
+> 「……あ、ああ、
+“...A-Ah,
+---
+>  機体が強制冷却に
+>  はいっただけだ」
+the unit just went into forced cooldown.”
+
+@18866 Quattro · クワトロ
+> 「M作戦のパイロット……
+>  あれでは助からんな」
+“The M Operation's pilot... He won't survive that.”
+
+@18867 Aboly · アポリー
+> 「そう思います。
+>  ひきあげましょう
+“I agree. Let's withdraw.
+---
+>  我々では機体の回収は
+>  無理です」
+We can't recover the unit ourselves.”
+
+@18868 Quattro · クワトロ
+> 「そうだな。ぐずぐずしていると
+>  帝国の回収部隊もでてくる
+“Right. If we dawdle, the Empire's recovery team will show up too.
+---
+>  エイジくん?」
+Eiji?”
+
+@18869 Eiji · エイジ
+> 「……大丈夫です。動きます」
+“...I'm fine. It's moving.”
+
+@18870 Quattro · クワトロ
+> 「……これは、戦争だ
+“...This is war.
+---
+>  君の事情を
+>  知らぬわけでもないが……」
+It's not that I don't understand your situation, but...”
+
+@18871 Eiji · エイジ
+> 「わかっている……つもりです」
+“I know... or at least, I think I do.”
+
+@18872 Quattro · クワトロ
+> 「そうか……」
+“I see...”
+
+@18873 Gosterro · ゴステロ
+> 「ひゃーっはっはっはぁ
+“Hyahahahaha!
+---
+>  ゲイルのやつが小僧どもに
+>  やられちまったかぁ
+So that Gale fellow got done in by a bunch of kids, huh?
+---
+>  そいつは残念だ。
+>  もっともヤツの甘ちゃんぶりでは
+What a shame. Though with how soft he was,
+---
+>  こうなることは、わかっていたがなぁ」
+I knew it would end up like this.”
+
+@18874 Karla · カルラ
+> 「くっ……」
+“Ngh...”
+
+@18875 Karla · カルラ
+> (ゲイル中尉、あなたのためなら
+>  自分は……)
+(Lieutenant Gale, for your sake, I would...)
+
+@18876 Treize · トレーズ
+> 「聞いたか、ゼクス。
+>  ゲイル中尉が戦死したそうだ」
+“Did you hear, Zechs? Lieutenant Gale was killed in action.”
+
+@18877 Zechs · ゼクス
+> 「アーマス・ゲイルが?
+“Ahmos Gale?
+---
+>  帝国軍にしては
+>  よい士官だっただけに残念です」
+He was a good officer, by the Empire's standards. A shame.”
+
+@18878 Treize · トレーズ
+> 「そう思う。しかし、こちらもずいぶんと
+>  損害が出たな。君ほどの男が
+“I agree. Still, we've taken considerable losses ourselves. A man of your caliber
+---
+>  不始末をした。M作戦の1つを
+>  つぶしたことを差し引いても
+made a blunder. Even setting aside the loss of one M Operation unit,
+---
+>  財団のうるさがたを黙らすのに
+>  ひと苦労だ」
+it'll be a struggle to keep the Foundation's complainers quiet.”
+
+@18879 Zechs · ゼクス
+> 「はい。しかし、やはりM作戦が
+>  レジスタンスと結びつくと
+“Yes. However, if the M Operation were to link up with the Resistance,
+---
+>  かなりの脅威になると推測されます
+I estimate it would become a considerable threat.
+---
+>  機体の回収は、いかがいたしますか」
+What shall we do about recovering the unit?”
+
+@18880 Treize · トレーズ
+> 「帝国軍にまかせておきたまえ
+“Leave it to the Imperial Army.
+---
+>  わかっているだろうが
+>  今は大事の前だ
+You know this, but we stand before something far greater now.
+---
+>  帝国を刺激するような真似は
+>  したくない」
+I don't want to do anything that would provoke the Empire.”
+
+@18881 Zechs · ゼクス
+> 「了解しております」
+“Understood.”
+
+@18882 Treize · トレーズ
+> 「ああそれと、
+>  君のいっていたモビルスーツ
+“Ah, and one more thing. That Mobile Suit you mentioned,
+---
+>  トールギスの件だが
+>  修復作業を急がせている
+the Tallgeese. I've ordered the repairs rushed.
+---
+>  あれは、たいした機体だよ」
+That is a remarkable machine.”
+
+@18883 Zechs · ゼクス
+> 「ありがとうございます」
+“Thank you.”
+
+@18884 Treize · トレーズ
+> 「なに、“ライトニング・バロン”に
+>  ふさわしい機体を用意できて
+“Not at all. I'm glad we could prepare a machine worthy of the ‘Lightning Baron.’
+---
+>  私もうれしい」
+”
+
+@18885 Quattro · クワトロ
+> 「それで、今度はなんだというのだ?」
+“So, what is it this time?”
+
+@18886 Bright · ブライト
+> 「スペシャルズが新型をテスト中らしい
+>  解放戦線としてはそのデータ
+“It seems the Specials are testing a new model. The Liberation Front wants that data,
+---
+>  可能ならば機体そのものを
+>  入手したいということのようだ」
+and if possible, the unit itself.”
+
+@18887 Quattro · クワトロ
+> 「無茶をいう
+“That's absurd.
+---
+>  が、スペシャルズの施設へ
+>  攻撃をしかける、というのは
+But you're saying that attacking a Specials facility
+---
+>  それなりに意味のある
+>  行動だということか」
+would be a meaningful action in its own right?”
+
+@18888 Bright · ブライト
+# 审校：原文“来てくれ”是邀请对方一起走，初稿只译作 Come，补上 with me 更准确。
+> 「そういうことだ
+“That's right.
+---
+>  我々の活動を広く示す
+>  必要もある。来てくれ
+We also need to make our activities widely known. Come with me.
+---
+>  作戦を検討しよう」
+Let's discuss the operation.”
+
+@18889 Ark · アーク（按段落 3DD1）
+# 审校：原文“なんのために、ここにいるんだろう”问的是目的，初稿 what am I even doing here 偏重行为，改为 what am I even here for 更贴切。
+> (俺は……俺は、
+>  なんのために、ここにいるんだろう…)
+(I... what am I even here for...?)
+
+@18890 Relena · リリーナ
+> 「あんなところに人が……」
+“There's someone over there...”
+
+@18891 Relena · リリーナ
+# 审校：原文“パイロットスーツみたいだけど”主语是那身装束，初稿 Looks like a pilot suit 缺主语，补上 It 更自然。
+> 「パイロットスーツみたいだけど
+>  ……まだ子供!?」
+“It looks like a pilot suit... but he's still a kid?!”
+
+@18892 Heero · ヒイロ
+> 「う……、お、お前!?」
+“Ugh... y-you?!”
+
+@18893 Relena · リリーナ
+> 「え!?」
+“Huh?!”
+
+@18894 Heero · ヒイロ
+> 「見たのか!?」
+“Did you see?!”
+
+@18895 Relena · リリーナ
+> 「えっ、なに!?」
+“Huh, what?!”
+
+@18896 Heero · ヒイロ
+> 「!? 不発かッ!」
+“?! A dud?!”
+
+@18897 Relena · リリーナ
+> 「いってしまった……。わたしは……
+>  わたしはリリーナ・ドーリアン
+“He's gone... I'm... I'm Relena Darlian.
+---
+>  ……あなたは?」
+...And you are?”

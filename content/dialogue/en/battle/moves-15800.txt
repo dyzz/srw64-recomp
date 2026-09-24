@@ -1,0 +1,513 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15800 Blacky · ブラッキー
+# 审校：调整语序，使英文更自然，保留原意。
+> 「デューク・フリード、地獄の旅にグレ
+>  ンダイザーを棺おけがわりにつけてやるぜ」
+“Duke Fleed, I'll send you to hell with Grendizer as your coffin!”
+
+@15801 Blacky · ブラッキー
+> 「今度こそなんとしても
+>  デューク・フリードを倒さねばならぬ!」
+“This time I'll bring down Duke Fleed no matter what!”
+
+@15802 Blacky · ブラッキー
+> 「デューク・フリードはこの俺が倒すのだ!」
+“Duke Fleed is mine to defeat!”
+
+@15803 Blacky · ブラッキー
+> 「グレンダイザーめ、覚悟!」
+“Grendizer, prepare yourself!”
+
+@15804 Blacky · ブラッキー
+> 「デューク・フリード、
+>  今日こそ決着をつけてやる!」
+“Duke Fleed, today we settle this!”
+
+@15805 Koji · 甲児
+# 审校：“Missile fire!” 改为更自然的战斗口令 “Missiles, fire!”。
+> 「このやろうっ!!」
+“Why you!!”
+---
+> 「ミサイル発射!」
+“Missiles, fire!”
+
+@15806 Koji · 甲児
+# 审校：同上，统一导弹发射口令。
+> 「ミサイル発射!」
+“Missiles, fire!”
+
+@15807 Koji · 甲児
+# 审校：原文为“ミサイル!!”，复数形式更符合英文战斗呼喊习惯。
+> 「ミサイル!!」
+“Missiles!!”
+
+@15808 Koji · 甲児
+> 「このやろうっ!!」
+“Why you!!”
+---
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15809 Koji · 甲児
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15810 Koji · 甲児
+> 「これでもくらえっ!!」
+“Take this!!”
+---
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15811 Koji · 甲児
+> 「こいつでとどめだ!!」
+“This'll finish you!!”
+---
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15812 Koji · 甲児
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15813 Koji · 甲児
+> 「このやろう!」
+“Why you!”
+---
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15814 Koji · 甲児
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15815 Koji · 甲児
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15816 Koji · 甲児
+> 「これでもくらえっ!!」
+“Take this!!”
+---
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15817 Koji · 甲児
+> 「こいつでとどめだ!!」
+“This'll finish you!!”
+---
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15818 Koji · 甲児
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15819 Koji · 甲児
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15820 Koji · 甲児
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15821 Koji · 甲児
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15822 Koji · 甲児
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15823 Koji · 甲児
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15824 Koji · 甲児
+> 「これでもくらえっ!!」
+“Take this!!”
+---
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15825 Koji · 甲児
+> 「こいつでとどめだ!!」
+“This'll finish you!!”
+---
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15826 Koji · 甲児
+> 「大車輪ロケットパーンチッ!!」
+“Big Wheel Rocket Punch!!”
+
+@15827 Koji · 甲児
+> 「すまねぇ、頼むぜ!」
+“Sorry, I'm counting on you!”
+
+@15828 Tetsuya · 鉄也
+> 「まかせな!」
+“Leave it to me!”
+
+@15829 Koji · 甲児
+> 「よーし!」
+“All right!”
+---
+> 「ダブルバーニングファイヤーッ!!」
+“Double Burning Fire!!”
+
+@15830 Koji · 甲児
+> 「いくぜ、マリアちゃん!」
+“Let's go, Maria!”
+
+@15831 Maria · マリア
+> 「いつでもいいわ、甲児!」
+“Ready whenever you are, Koji!”
+
+@15832 Koji · 甲児
+> 「よーし、くらいやがれ!」
+“All right, take this!”
+---
+> 「ダブルバーニングファイヤーッ!!」
+“Double Burning Fire!!”
+
+@15833 Koji · 甲児
+> 「ボス! あれやるぞ、あれ!」
+“Boss! We're doing that thing, that thing!”
+
+@15834 Boss · ボス
+# 审校：“the great me” 过于直译，改为符合 Boss 自夸口吻的 “the great Boss”。
+> 「おう、オレさまにまかせとけ!」
+“Yeah, leave it to the great Boss!”
+
+@15835 Koji · 甲児
+> 「いっくぞぉっ!」
+“Here we go!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@15836 Koji · 甲児
+> 「さやかさん!」
+“Sayaka!”
+
+@15837 Sayaka · さやか
+> 「わかってるわ、甲児くん!」
+“I know, Koji!”
+
+@15838 Koji · 甲児
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@15839 Duke · デューク
+> 「いくぞ、甲児くん!」
+“Let's go, Koji!”
+
+@15840 Koji · 甲児
+> 「一気に決めてやろうぜ、
+>  大介さん!」
+“Let's finish this in one shot, Daisuke!”
+
+@15841 Duke · デューク
+> 「ああ、そうしよう!」
+“Yes, let's!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15842 Ryoma · リョウ
+> 「いくぞ、甲児くん!」
+“Let's go, Koji!”
+
+@15843 Koji · 甲児
+> 「わかってらぁ!」
+“You got it!”
+
+@15844 Ryoma · リョウ
+> 「くらえぇぇぇっ!」
+“Take thiiis!”
+---
+> 「ツイン・ビィィィィィィム!!」
+“Twin Beam!!”
+
+@15845 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15846 Koji · 甲児
+> 「わかったぜ!」
+“Got it!”
+
+@15847 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15848 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15849 Maria · マリア
+> 「わかったわ! 兄さん」
+“Got it, brother!”
+
+@15850 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15851 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15852 Boss · ボス
+# 审校：“You got it, boss!” 中的 boss 是误译，原文“わかっただわさ”只是 Boss 的口癖，没有称呼对方 boss。
+> 「わかっただわさ!」
+“You got it!”
+
+@15853 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15854 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15855 Sayaka · さやか
+> 「わかったわ!」
+“Got it!”
+
+@15856 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15857 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15858 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15859 Koji · 甲児
+> 「いつでもいいぜ!」
+“Ready anytime!”
+
+@15860 Tetsuya · 鉄也
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15861 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15862 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15863 Maria · マリア
+> 「いつでもいいわよ!」
+“I'm ready anytime!”
+
+@15864 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15865 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15866 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15867 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@15868 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15869 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15870 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15871 Sayaka · さやか
+> 「いつでもいいわ!」
+“I'm ready anytime!”
+
+@15872 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15873 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15874 Koji · 甲児
+> 「たたきこんでやるぜ!」
+“I'll smash 'em in!”
+
+@15875 Tetsuya · 鉄也
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15876 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15877 Maria · マリア
+> 「頼むわよ、甲児!」
+“I'm counting on you, Koji!”
+
+@15878 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15879 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15880 Boss · ボス
+> 「頼むぜぇ、兜よぉ!」
+“I'm countin' on ya, Kabuto!”
+
+@15881 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15882 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15883 Sayaka · さやか
+> 「いいわよ、甲児くん!」
+“Go ahead, Koji!”
+
+@15884 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15885 Tetsuya · 鉄也
+> 「甲児くん、マジンガーブレードを使え!」
+“Koji, use the Mazinger Blade!”
+
+@15886 Koji · 甲児
+> 「わかってらぁ!」
+“I know!”
+
+@15887 Tetsuya · 鉄也
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「よし、甲児くん、いくぜ!」
+“All right, Koji, here we go!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15888 Koji · 甲児
+> 「マリアちゃん、剣で同時攻撃だ!」
+“Maria, simultaneous sword attack!”
+
+@15889 Maria · マリア
+> 「わかったわ、甲児!」
+“Got it, Koji!”
+
+@15890 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「よし、マリアちゃん、俺にあわせてくれ!」
+“All right, Maria, match my timing!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15891 Koji · 甲児
+> 「ボス、大丈夫だろうな!?」
+“Boss, you sure you're up for this?!”
+
+@15892 Boss · ボス
+> 「じゃ～んじゃじゃ～ん! いくぜ、兜ぉ!」
+“Ta-daaa! Let's go, Kabuto!”
+
+@15893 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「おう!」
+“Yeah!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15894 Koji · 甲児
+> 「さやかさん、マジンガーブレードだ!」
+“Sayaka, the Mazinger Blade!”
+
+@15895 Sayaka · さやか
+> 「わかったわ、甲児くん!」
+“Got it, Koji!”
+
+@15896 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「よぉし、くらいやがれ!」
+“All right, take this!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15897 Koji · 甲児
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15898 Koji · 甲児
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15899 Koji · 甲児
+> 「ダブルカッター!」
+“Double Cutter!”

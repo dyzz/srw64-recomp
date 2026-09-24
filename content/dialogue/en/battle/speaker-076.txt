@@ -1,0 +1,121 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10702 NT Soldier · NT兵士
+> 「グレミー様のために……」
+“For Lord Glemy...”
+
+@10703 NT Soldier · NT兵士
+> 「命にかえても……」
+“Even at the cost of my life...”
+
+@10704 NT Soldier · NT兵士
+> 「……敵は倒す」
+“...I will destroy the enemy.”
+
+@10705 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10706 NT Soldier · NT兵士
+> 「……」
+“...”
+
+@10707 NT Soldier · NT兵士
+> 「あぁぁーっ!?」
+“Aaaah?!”
+
+@10708 NT Soldier · NT兵士
+> 「うわぁぁぁーっ!」
+“Uwaaaah!”
+
+@10709 NT Soldier · NT兵士
+> 「くうぅぅっ!!」
+“Nghhh!!”
+
+@10710 NT Soldier · NT兵士
+> 「…………!?」
+“...?!”
+
+@10711 NT Soldier · NT兵士
+> 「!?」
+“?!”
+
+@10712 NT Soldier · NT兵士
+> 「うっ……」
+“Ugh...”
+
+@10713 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10714 NT Soldier · NT兵士
+> 「……」
+“...”
+
+@10715 NT Soldier · NT兵士
+> 「くうぅぅっ!!」
+“Nghhh!!”
+
+@10716 NT Soldier · NT兵士
+> 「…………!?」
+“...?!”
+
+@10717 NT Soldier · NT兵士
+> 「!?」
+“?!”
+
+@10718 NT Soldier · NT兵士
+> 「うっ……」
+“Ugh...”
+
+@10719 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10720 NT Soldier · NT兵士
+> 「……」
+“...”
+
+@10721 NT Soldier · NT兵士
+> 「くうぅぅっ!!」
+“Nghhh!!”
+
+@10722 NT Soldier · NT兵士
+> 「…………!?」
+“...?!”
+
+@10723 NT Soldier · NT兵士
+> 「!?」
+“?!”
+
+@10724 NT Soldier · NT兵士
+> 「うっ……」
+“Ugh...”
+
+@10725 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10726 NT Soldier · NT兵士
+> 「……」
+“...”
+
+@10727 NT Soldier · NT兵士
+> 「フン……」
+“Hmph...”
+
+@10728 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10729 NT Soldier · NT兵士
+> 「…………」
+“...”
+
+@10730 NT Soldier · NT兵士
+> 「……!」
+“...!”
+
+@10731 NT Soldier · NT兵士
+> 「……!」
+“...!”

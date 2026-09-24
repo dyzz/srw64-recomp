@@ -1,0 +1,2510 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@33423 Luna · ルーナ
+> 「シャピロ様」
+“Lord Shapiro.”
+
+@33424 Shapiro · シャピロ
+> 「ルーナか。どうした」
+“Luna. What is it?”
+
+@33425 Luna · ルーナ
+> 「地球人の艦隊が要塞を発し
+>  て、この月へと向かっているようです」
+“The Earthling fleet has left the fortress and appears to be heading for this moon.”
+
+@33426 Shapiro · シャピロ
+> 「そろそろ、くるころだと思っていた。
+>  用意は万全だ」
+“I thought they would come soon enough. We are fully prepared.”
+
+@33427 Luna · ルーナ
+> 「地球人たちも必死の様子。
+>  かなりの大兵力を整えてきたようで」
+“The Earthlings seem desperate as well. They appear to have assembled quite a large force.”
+
+@33428 Shapiro · シャピロ
+> 「フッ、そんなものはゴミのようなものだ。
+>  もっとも“奴ら”が出てくれば
+“Hmph, that lot is nothing but garbage. Though if ‘they’ show up,
+---
+>  少しは違ってくるが、それでも
+>  わが軍の勝利はゆるぎはせん」
+things will change somewhat, but even then our army's victory will not waver.”
+
+@33429 Luna · ルーナ
+> 「…………あれは……」
+“...That is...”
+
+@33430 Shapiro · シャピロ
+> 「ん? 流れ星か」
+“Hm? A shooting star?”
+
+@33431 Luna · ルーナ
+> 「確か地球では、流れ星に願いを
+>  かけるとか。何をお祈りになります
+“On Earth, I believe people wish upon shooting stars. What would you wish for,
+---
+>  シャピロ様?」
+Lord Shapiro?”
+
+@33432 Shapiro · シャピロ
+> 「何を祈るかだと? フッ、神になろう
+>  という私に星くずなどに祈ることなど
+“What would I wish for? Hmph, I intend to become a god. I have nothing to wish
+---
+>  何もない」
+upon a speck of stardust.”
+
+@33433 Luna · ルーナ
+> 「……でも、女の身の私には、はかなく
+>  消える星くずにも頼りたいことも……
+“...But as a woman, there are times when even I wish to rely on a fleeting speck of
+---
+>  ございます」
+stardust...”
+
+@33434 Shapiro · シャピロ
+> 「何がいいたい、ルーナ」
+“What are you trying to say, Luna?”
+
+@33435 Luna · ルーナ
+> 「いえ……くだらないことでございます。
+>  シャピロ様にとっては……」
+“No... it is nothing of consequence. Not to you, Lord Shapiro...”
+
+@33436 Heero · ヒイロ
+> (モビルドールの生産工場か……すで
+>  にかなりの数がロールアウトしているな
+(A Mobile Doll production plant... Quite a number have already rolled out.
+---
+>  月基地攻略に参加しない
+>  機体……OZの地球圏支配の
+Machines not taking part in the moon base assault... units meant for OZ's
+---
+>  ために使われる機体か。ならば、
+>  工場ごと破壊する……)
+domination of the Earth Sphere. Then I'll destroy the whole factory...)
+
+@33437 Specials · スペシャルズ
+> 「こっちだ!」
+“Over here!”
+
+@33438 Specials · スペシャルズ
+> 「いたぞ! 捕まえろ!!」
+“There he is! Seize him!!”
+
+@33439 Heero · ヒイロ
+> 「フン、遅いな……」
+“Hmph, too slow...”
+
+@33440 Specials · スペシャルズ
+> 「ぐわっ!!」
+“Guwah!!”
+
+@33441 Specials · スペシャルズ
+> 「ぎゃああぁーっ!」
+“Gyaaaaah!”
+
+@33442 Heero · ヒイロ
+> 「エネルギーパイプはどこだ……」
+“Where is the energy pipe...”
+
+@33443 Heero · ヒイロ
+> 「なに!?」
+“What?!”
+
+@33444 Trowa · トロワ
+> 「そこまでだ」
+“That's far enough.”
+
+@33445 Heero · ヒイロ
+> 「お前は……」
+“You are...”
+
+@33446 Trowa · トロワ
+> 「俺は、OZの特士トロワ・バートン。
+>  これ以上、抵抗するならば
+“I am OZ special officer Trowa Barton. If you resist any further,
+---
+>  貴様を殺す」
+I will kill you.”
+
+@33447 Heero · ヒイロ
+> 「…………」
+“...”
+
+@33448 Duo · デュオ
+> 「ここがサイド7か。
+>  宇宙港も意外に人が多いが
+“So this is Side 7. The spaceport's got more people than I expected, but it
+---
+>  思ったよりも平和そうなんだな。
+>  中じゃモビルドールの大量生産が
+seems more peaceful than I thought. Word is they've started mass-producing
+---
+>  開始されているって話だが……
+>  まったく、ここの連中は自分たちが
+Mobile Dolls inside... Sheesh, do these people even know what they're
+---
+>  何をやらされてるか、わかってんのかね」
+being made to do?”
+
+@33449 Hilde · ヒルデ
+> 「ちょっとあなた」
+“Hey, you.”
+
+@33450 Duo · デュオ
+> 「あん? 俺かい?」
+“Huh? Me?”
+
+@33451 Hilde · ヒルデ
+> 「他に誰がいるのよ」
+“Who else would I mean?”
+
+@33452 Duo · デュオ
+> 「俺に何か用か?」
+“You need something from me?”
+
+@33453 Hilde · ヒルデ
+> 「批判だけなら誰にもできるわ。いまは
+>  OZと一緒に、新しい地球圏を
+“Anyone can do nothing but criticize. Now is the time to build a new Earth
+---
+>  つくるべき時代よ。私たちはもう、
+>  戦いを恐れてはいない。みんな
+Sphere together with OZ. We no longer fear battle. Everyone here volunteered
+---
+>  自分で志願して参加しているわ
+>  行動こそ信念のあらわれという
+of their own will. Action is the proof of conviction—
+---
+>  ことを、知っておきなさい」
+remember that.”
+
+@33454 Duo · デュオ
+> 「誰だい、あんたは」
+“And who are you?”
+
+@33455 Hilde · ヒルデ
+> 「私はヒルデ・シュバイカー。このコロニー
+>  から志願した者よ」
+“I'm Hilde Schbeiker. I volunteered from this colony.”
+
+@33456 Duo · デュオ
+> 「ふーん、OZの兵隊さんか」
+“Hmm, an OZ soldier, huh.”
+
+@33457 Hilde · ヒルデ
+> 「あなたもコロニーの、地球圏の
+>  未来のことを考えるなら
+“If you care about the future of the colonies and the Earth Sphere,
+---
+>  OZで戦いなさい」
+then fight with OZ.”
+
+@33458 Duo · デュオ
+> 「そいつはいいや。ま、考えさせてもらうよ」
+“No thanks. Well, I'll think about it.”
+
+@33459 David · デビッド
+> 「おい、聞いたか。やっぱりやっちまった
+>  らしいぜ」
+“Hey, did you hear? Looks like they finally went and did it.”
+
+@33460 Roanne · ロアン
+> 「何がだい?」
+“Did what?”
+
+@33461 David · デビッド
+> 「トレーズ派って奴だよ。
+>  あちこちで、もめごとが起きてたが
+“The Treize faction. There've been clashes here and there, but
+---
+>  ついに中隊まるごと命令拒否を
+>  した連中がでちまってよ。それで
+finally some units went and refused orders, whole companies of them. So
+---
+>  武装解除命令が出されたんだ」
+they've been ordered to disarm.”
+
+@33462 Kamille · カミーユ
+> 「それで、どうなったんだ?」
+“So what happened?”
+
+@33463 David · デビッド
+> 「結局、それに反発した連中が、
+>  銃撃戦までやっちまったって
+“In the end, the ones who resisted went and started a firefight,
+---
+>  いうんだよ。その基地はそれで
+>  落ち着いたらしいけどな」
+or so they say. Sounds like that base has calmed down now, though.”
+
+@33464 Roux · ルー
+> 「なんですって!? それじゃ完璧な
+>  反乱じゃないの」
+“What?! Then it's a full-blown rebellion, isn't it?”
+
+@33465 Kou · コウ
+> 「俺たちだって、いえたギリじゃないだろ。
+>  月を制圧してやろうっていうんだから」
+“We're not exactly saints ourselves, are we? We're about to go and take the moon.”
+
+@33466 Roux · ルー
+> 「そうだけど、いくらなんでも作戦前に
+>  やるなんて、無茶よ」
+“That's true, but doing it right before an operation is just reckless.”
+
+@33467 Fa · ファ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「みんな、ブライト艦長たちがもどって
+>  きたわ」
+“Everyone, Captain Bright and the others are back.”
+
+@33468 Kamille · カミーユ
+> 「フォン・ブラウン制圧のアポロ作戦
+>  の開始だな……」
+“So Operation Apollo, the capture of Von Braun, is about to begin...”
+
+@33469 Bright · ブライト
+> 「みんな聞いてくれ。予定通り
+>  我々はアポロ作戦に参加する」
+“Listen up, everyone. We'll be joining Operation Apollo as planned.”
+
+@33470 Shinobu · 忍
+> 「トレーズ派とやらの反乱は
+>  影響なしか」
+“So the Treize faction's rebellion didn't affect us, huh.”
+
+@33471 Quattro · クワトロ
+> 「いや、当然あった。アポロ作戦への
+>  参加拒否はかまわないが
+“No, of course it did. They said we're free to refuse to take part in Operation Apollo,
+---
+>  その場合は武装解除だと
+>  いわれたよ」
+but if we do, we'll be disarmed.”
+
+@33472 Kayra · ケーラ
+> 「あらかじめ決めておいて、良かったじゃ
+>  ないですか。でなけりゃ、まずいことに
+“Aren't you glad we decided in advance? Otherwise, things would have gotten
+---
+>  なってましたよ」
+ugly.”
+
+@33473 Bright · ブライト
+> 「ああ、そうだ。おかげで即答できたよ。
+>  とりあえず作戦への参加はできる」
+“Yeah, that's right. Thanks to that, I could answer on the spot. At least we can join the operation.”
+
+@33474 Koji · 甲児
+> 「あとは、やるだけ、か」
+“All that's left is to do it, huh.”
+
+@33475 Sara · 沙羅
+> 「ああ。いよいよムゲ野郎をぶっつぶして
+>  やるんだよ」
+“Yeah. Now we finally get to crush those Muge bastards.”
+
+@33476 Bask · バスク
+> 「奴らも意外にあっさり作戦への
+>  参加を受け入れましたな」
+“They accepted participation in the operation surprisingly easily, didn't they?”
+
+@33477 Jamitov · ジャミトフ
+> 「なにしろ{HeroMech}は、もともと
+>  反帝国レジスタンスだ。まずは
+“After all, the {HeroMech} was originally an anti-Imperial resistance. First and foremost,
+---
+>  帝国を倒したいのだろう」
+they probably want to defeat the Empire.”
+
+@33478 Bask · バスク
+> 「ですが、トレーズがわざわざ引き入れた
+>  連中です。必要ならば、連中も
+“But those are the very people Treize went out of his way to bring in. If necessary,
+---
+>  叩きます」
+we'll strike them down too.”
+
+@33479 Jamitov · ジャミトフ
+> 「やりすぎはひかえろ。あとが面倒になる」
+“Don't overdo it. It'll be a hassle later.”
+
+@33480 Bask · バスク
+> 「承知しております。が、帝国さえ
+>  排除することができれば、奴らを
+“I'm well aware. But once we've eliminated the Empire, there'll be no need
+---
+>  使う必要もありますまい」
+to keep using them.”
+
+@33481 Jamitov · ジャミトフ
+> 「それは、そうだがな」
+“That may be so.”
+
+@33482 Bask · バスク
+> 「私はこれより月へ向かいます。では」
+“I'm heading to the moon now. Until then.”
+
+@33483 Shapiro · シャピロ
+> 「来たか」
+“So they've come.”
+
+@33484 Helmut · ヘルマット
+> 「フッフッフッ、待ちかねたぞ
+>  地球人どもめ。今度こそ
+“Heh heh heh, I've been waiting for this, you Earthlings. This time,
+---
+>  貴様らに敗北の苦汁をなめさせ
+>  てやるわ! よーし、出撃するぞ!!」
+I'll make you taste the bitter dregs of defeat! All right, we're launching!!”
+
+@33485 Shapiro · シャピロ
+> 「待て、ヘルマット」
+“Wait, Helmut.”
+
+@33486 Helmut · ヘルマット
+> 「なんだ!?」
+“What?!”
+
+@33487 Shapiro · シャピロ
+> 「まだ出てはならん。もっと敵を
+>  引きつけるのだ」
+“You must not go out yet. Draw in more of the enemy.”
+
+@33488 Helmut · ヘルマット
+> 「なんだと!? それでは奴らが、この
+>  月面まで来てしまうではないか!
+“What?! At this rate, they'll come all the way to the lunar surface!
+---
+>  そんなことはせずとも、この俺が」
+There's no need for that—I myself will—”
+
+@33489 Shapiro · シャピロ
+> 「俺の作戦に従えんというのか?」
+“Are you saying you can't follow my plan?”
+
+@33490 Helmut · ヘルマット
+> 「くっ……わかった! 俺は戦艦で
+>  待機している!」
+“Ngh... Fine! I'll wait aboard the battleship!”
+
+@33491 Shapiro · シャピロ
+> 「そうだ、それでいい……」
+“Yes, that's right...”
+
+@33492 Luna · ルーナ
+> 「よろしいのですか? ヘルマット将軍に
+>  迎撃に出てもらい、その上で
+“Is that all right? Having General Helmut go out to intercept, and then
+---
+>  月面で敵を叩く2段構えの
+>  作戦の方が……」
+striking the enemy on the lunar surface—a two-stage plan would be...”
+
+@33493 Shapiro · シャピロ
+# 审校：「この俺の作戦通りにやれば」误译为“If they do things my way”，改为“If we proceed according to my plan”，更贴合夏皮罗自傲语气。
+> 「黙れルーナ。口だしは無用だ。
+>  この俺の作戦通りにやれば
+“Silence, Luna. Your input is unnecessary. If we proceed according to my plan,
+---
+>  奴らにとってこの月は地獄と化す
+>  だろう。クククククッ」
+this moon will become a hell for them. Heh heh heh heh.”
+
+@33494 Luna · ルーナ
+> 「………………」
+“...”
+
+@33495 Helmut · ヘルマット
+# 审校：「まだか!」是催促“还没好吗”，初稿“not yet?!”不自然，改为“what's taking so long?!”
+> 「シャピロ、まだか!」
+“Shapiro, what's taking so long?!”
+
+@33496 Shapiro · シャピロ
+> 「いいだろう。ヘルマット将軍、
+>  出撃してくれ」
+“Very well. General Helmut, launch.”
+
+@33497 Helmut · ヘルマット
+# 审校：「相手をしてくれるわ」意为“我来做你们的对手”，初稿“here will be your opponent”生硬，改为“will take you on”。
+> 「さぁこい地球人ども!
+>  このヘルマット将軍が相手を
+“Come on, you Earthlings! General Helmut
+---
+>  してくれるわ!!」
+will take you on!!”
+
+@33498 Bask · バスク
+> 「{HeroMech}、
+>  貴官らはその場で待機しろ!」
+“{HeroMech}, you are to stand by on the spot!”
+
+@33499 Amuro · アムロ
+> 「待機だって? どうする、ブライト」
+“Stand by? What do we do, Bright?”
+
+@33500 Bright · ブライト
+> 「どうせ連中とも戦うことになるんだ。
+>  かまうことはない。出撃しろ!」
+“We'll end up fighting them anyway. No need to hold back. Launch!”
+
+@33501 Shinobu · 忍
+# 审校：「高みの見物」是“袖手旁观/高高在上地看戏”，初稿“watching from somewhere safe”漏掉“高み”的旁观意味，改为“sitting pretty inside that base, watching from on high”。
+> 「チッ、シャピロの野郎がいないようだな
+>  まだあの基地ん中で、高みの
+“Tch, looks like that bastard Shapiro isn't here. Still sitting pretty
+---
+>  見物ってわけかよ」
+inside that base, watching from on high, huh.”
+
+@33502 Sara · 沙羅
+# 审校：「のんびりと見物なんかさせてやるもんか」初稿“watch at his leisure”可接受但稍弱，改为“sit back and watch”更口语、更有气势。
+> 「忍、雅人、亮、いくよ!
+>  シャピロが出てこないってんなら
+“Shinobu, Masato, Ryo, let's go! If Shapiro won't come out,
+---
+>  ひっぱり出してやるまでだよ。のんびりと
+>  見物なんかさせてやるもんか!」
+then we'll drag him out. We're not letting him sit back and watch!”
+
+@33503 Masato · 雅人
+> 「うわっ! ちょっと沙羅、待ってよ!」
+“Whoa! Hold on, Sara, wait up!”
+
+@33504 Specials · スペシャルズ
+> 「バスク特佐、{HeroMech}が
+>  戦闘部隊を発進させました」
+“Colonel Bask, {HeroMech} has launched its combat units.”
+
+@33505 Bask · バスク
+> 「なんだと!? 命令に従わんというの
+>  か! 奴らめ、まさか……」
+“What?! They're refusing to obey orders?! Those bastards, don't tell me...”
+
+@33506 Bright · ブライト
+> 「全員聞け! わが隊の目標は、
+>  ムゲ帝国軍の撃滅、および
+“Everyone, listen! Our unit's objective is the annihilation of the Muge Empire's forces and
+---
+>  敵月面基地の制圧である。
+>  OZ部隊との交戦は極力避け
+the capture of their lunar base. Avoid combat with OZ forces as much as possible—
+---
+>  アーガマを敵基地へ到達させる
+>  ことを最優先としろ!」
+getting the Argama to the enemy base is our top priority!”
+
+@33507 Bask · バスク
+> 「聞こえるか! {HeroMech}隊
+>  命令に従え! 従わない場合は
+“Can you hear me?! {HeroMech} Team, obey your orders! If you refuse,
+---
+>  敵とみなして攻撃する!!」
+I'll treat you as enemies and attack!!”
+
+@33508 Bright · ブライト
+> 「こちら{HeroMech}、命令は
+>  聞けない。当方はこれより独自に
+“This is {HeroMech}. We cannot comply with that order. From here on we will act on our own
+---
+>  帝国軍の撃滅をはかる。以上」
+to destroy the Imperial forces. Over.”
+
+@33509 Bask · バスク
+> 「くっ……おのれぇ……」
+“Ngh... Damn you...”
+
+@33510 Specials · スペシャルズ
+> 「特佐、いかがいたしますか!?」
+“Colonel, what shall we do?!”
+
+@33511 Bask · バスク
+> 「かまわん、奴らも一緒に
+>  叩きつぶせ!」
+“I don't care. Crush them along with the rest!”
+
+@33512 Yazan · ヤザン
+> 「フンッ、{HeroMech}が命令を
+>  無視だと? トレーズ派だってのか?
+“Hmph. {HeroMech} is ignoring orders? So they're with Treize's faction?
+---
+>  まぁいい。ラムサス、ダンケル、まわりは
+>  全部敵だ。遠慮することはねぇ!」
+Fine. Ramsus, Dunkel, everyone around us is an enemy. No need to hold back!”
+
+@33513 Ramsus · ラムサス
+> 「はっ!」
+“Yes, sir!”
+
+@33514 Dunkel · ダンケル
+# 检查提示：未用必用译名：ヤザン隊→Yazan Team
+> 「了解です、ヤザン隊長!」
+“Understood, Commander Yazan!”
+
+@33515 Bask · バスク
+> 「くっ……やむをえん。モビルドール隊を
+>  出撃させろ!」
+“Ngh... There's no other way. Launch the Mobile Doll Team!”
+
+@33516 Specials · スペシャルズ
+> 「しかし特佐、まだテスト中であります
+>  が……」
+“But Colonel, they're still in testing...”
+
+@33517 Bask · バスク
+> 「かまわん、出させい!」
+“I don't care. Launch them!”
+
+@33518 Bask · バスク
+> 「くっ……やむをえん。モビルドール隊を
+>  出撃させろ!」
+“Ngh... There's no other way. Launch the Mobile Doll Team!”
+
+@33519 Specials · スペシャルズ
+> 「しかし特佐、まだテスト中であります
+>  が……」
+“But Colonel, they're still in testing...”
+
+@33520 Bask · バスク
+> 「かまわん、出させい!」
+“I don't care. Launch them!”
+
+@33521 Bask · バスク
+> 「くっ……やむをえん。
+>  {PartnerFull}
+“Ngh... There's no other way. {PartnerFull},
+---
+>  モビルドール隊を出撃させろ!」
+launch the Mobile Doll Team!”
+
+@33522 Aisha · アイシャ（按段落 3DD4）
+> 「……了解」
+“...Understood.”
+
+@33523 Manami · マナミ（按段落 3DD4）
+> 「まさか……{PartnerNick}なの!?」
+“No way... {PartnerNick}?!”
+
+@33524 Aisha · アイシャ（按段落 3DD4）
+> 「{HeroName}さん……裏切ったはずが
+>  OZに入り、また裏切る……
+“{HeroName}... You were supposed to have betrayed us, then you joined OZ, and now you betray them again...
+---
+>  これはいったいどういうことなのです。
+>  破廉恥にもほどがありますわ
+Just what is the meaning of this? There are limits to shamelessness.
+---
+>  貴女には恥を感じる心がないの
+>  ですか」
+Have you no sense of shame at all?”
+
+@33525 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……」
+“{PartnerNick}...”
+
+@33526
+> *  お願い、話を聞いて
+> *  待って{PartnerNick}
+> *  邪魔をするというのなら……
+* Please, hear me out
+* Wait, {PartnerNick}
+* If you mean to stand in my way...
+
+@33527 Manami · マナミ（按段落 3DD4）
+> 「お願い、話を聞いて! やっぱり
+>  ロームフェラの進もうとしている道は
+“Please, hear me out! The path Romefeller is taking really is
+---
+>  間違っているわ! トレーズ特佐が
+>  幽閉されたことは貴女だって
+wrong! You've heard that Colonel Treize was imprisoned too, haven't you?!
+---
+>  聞いているでしょう!? OZ内部で
+>  さえ問題が起きているのよ!?」
+There's trouble even inside OZ, isn't there?!”
+
+@33528 Aisha · アイシャ（按段落 3DD4）
+> 「どうして……どうして貴女は
+>  そうも簡単に……。わたくしは……
+“Why... Why can you throw everything away so easily...? I...
+---
+>  わたくしには守らなければならないものが
+>  あるのです。貴女のように
+I have things I must protect. I can't just do whatever I please
+---
+>  好き勝手にはできないのよ!」
+the way you do!”
+
+@33529 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、あなた……」
+“{PartnerNick}, you...”
+
+@33530 Aisha · アイシャ（按段落 3DD4）
+> 「もうやめましょう、{HeroName}さん。
+>  貴女とわたくしでは、生きる道が
+“Let's stop this, {HeroName}. It seems you and I were simply
+---
+>  違ったということ。……残念ですけれ
+>  ど、しかたがありませんわ」
+meant to walk different paths. ...It's a shame, but there's nothing to be done.”
+
+@33531 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}ッ!!」
+“{PartnerNick}!!”
+
+@33532 Manami · マナミ（按段落 3DD4）
+> 「待って{PartnerNick}。今は、あたしたちが
+>  やりあっている時ではないでしょう!?」
+“Wait, {PartnerNick}. Now isn't the time for us to be fighting each other!”
+
+@33533 Aisha · アイシャ（按段落 3DD4）
+> 「ならば、OZに従いなさい。その上で
+>  帝国軍を倒せばよいのです。それが
+“Then obey OZ. After that, you need only defeat the Imperial forces. That is
+---
+>  もっともすみやかに、地球圏の
+>  平和を導くことのできる道です」
+the fastest path to bringing peace to the Earth Sphere.”
+
+@33534 Manami · マナミ（按段落 3DD4）
+> 「……それはできない。できないのよ、
+>  {PartnerNick}。やっぱりロームフェラは
+“...I can't do that. I can't, {PartnerNick}. Romefeller really is
+---
+>  間違ってる。あたしたちはそれを正さ
+>  なくてはならないわ。トレーズ特佐の
+wrong. We have to set it right. You've heard about Colonel Treize
+---
+>  ことはあなただって聞いているので
+>  しょう?」
+too, haven't you?”
+
+@33535 Aisha · アイシャ（按段落 3DD4）
+> 「……それでも……それでもわたくしには、
+>  守らなければならないものがあるのです」
+“...Even so... Even so, I have things I must protect.”
+
+@33536 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、
+>  大切にしなければならないものが
+“{PartnerNick}, don't lose sight of what it is
+---
+>  何なのか、それを見失わないで!」
+that you truly must cherish!”
+
+@33537 Aisha · アイシャ（按段落 3DD4）
+> 「もうやめましょう、{HeroName}さん。
+>  貴女とわたくしでは、生きる道が
+“Let's stop this, {HeroName}. It seems you and I were simply
+---
+>  違ったということ。……残念ですけれ
+>  ど、しかたがありませんわ」
+meant to walk different paths. ...It's a shame, but there's nothing to be done.”
+
+@33538 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}ッ!!」
+“{PartnerNick}!!”
+
+@33539 Manami · マナミ（按段落 3DD4）
+> 「邪魔をするというのなら……たとえ
+>  あなたが相手でも、容赦はしないわ」
+“If you mean to stand in my way... then even if it's you, I won't hold back.”
+
+@33540 Aisha · アイシャ（按段落 3DD4）
+> 「結構です。わたくしもそのつもりはあり
+>  ません。貴女にはもう何をいっても
+“Fine. I feel the same. It seems there's no point in saying anything more
+---
+>  ムダなようですからね」
+to you.”
+
+@33541 Manami · マナミ（按段落 3DD4）
+> 「それはこっちのセリフだわ!」
+“Those are my lines!”
+
+@33542 Manami · マナミ（按段落 3DD4）
+> 「まさか……{PartnerNick}なの!?」
+“No way... {PartnerNick}?!”
+
+@33543 Aisha · アイシャ（按段落 3DD4）
+> 「{HeroName}さん……裏切ったはずが
+>  OZに入り、また裏切る……
+“{HeroName}... You were supposed to have betrayed us, then you joined OZ, and now you betray them again...
+---
+>  これはいったいどういうことなのです。
+>  破廉恥にもほどがありますわ
+What on earth is going on here? There's a limit to shamelessness.
+---
+>  貴女には恥を感じる心がないの
+>  ですか」
+Do you have no sense of shame at all?”
+
+@33544 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……」
+“{PartnerNick}...”
+
+@33545 Bask · バスク
+> 「ふん、シロッコの部隊の連中か」
+“Hmph, so it's Scirocco's unit.”
+
+@33546 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「{HeroMech}……反乱だと
+>  いうが……」
+“{HeroMech}... So you call this rebellion...”
+
+@33547 Ark · アーク（按段落 3DD1）
+> 「あいつか……
+>  {PartnerFull}……
+“That one, huh... {PartnerFull}...
+---
+>  ああ、わかってるさ、レラ。あいつは戦い
+>  を終わらせるために、力を貸して
+Yeah, I know, Lera. He might lend us his strength
+---
+>  くれるかもしれない……」
+to put an end to this fighting...”
+
+@33548 Ark · アーク（按段落 3DD1）
+> 「あいつか……
+>  {PartnerFull}……
+“That one, huh... {PartnerFull}...
+---
+>  ゼクスもいない。トレーズもいない。あいつ
+>  だって、今のOZには納得してない
+Zechs isn't here either. Neither is Treize. He can't be happy with
+---
+>  はずだ……」
+the way OZ is now either...”
+
+@33549 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「あの少年か。彼らはいったい何を
+>  するつもりなのだ……」
+“That boy, huh. Just what do they intend to do...”
+
+@33550 Rish · リッシュ（按段落 3DD2）
+> 「おいおい、せっかく仲間になったっての
+>  に、まぁた敵になっちまうのかよ」
+“Hey hey, we finally became allies, and now we're gonna be enemies again?”
+
+@33551 Selain · セレイン（按段落 3DD2）
+> 「また、お前か」
+“You again.”
+
+@33552 Rish · リッシュ（按段落 3DD2）
+> 「なぁ{HeroName}ちゃん、
+>  考えなおそうぜ?」
+“Come on, {HeroName}, why don't you reconsider?”
+
+@33553
+> *  返答する
+> *  無視する
+* Answer him
+* Ignore him
+
+@33554 Selain · セレイン（按段落 3DD2）
+> 「しつこい男だな、貴様は。どうせ私
+>  とお前は敵にしかならん、ということだ
+“You're a persistent man. You and I can only ever be enemies,
+---
+>  いいかげんにしておけ」
+that's just how it is. Give it a rest already.”
+
+@33555 Rish · リッシュ（按段落 3DD2）
+> 「そんなこといってもよ。惚れた女と
+>  殺し合いがやりたい奴なんざ
+“Even if you say that. Who in their right mind would want to fight
+---
+>  普通はいるわきゃないだろうが」
+the woman they've fallen for to the death?”
+
+@33556 Selain · セレイン（按段落 3DD2）
+> 「私はいっこうにかまわん。だいたい、
+>  貴様らの問題でもあるはずだぞ」
+“I don't mind at all. Besides, you people have your own problems to deal with.”
+
+@33557 Rish · リッシュ（按段落 3DD2）
+> 「ロームフェラ派とトレーズ派って奴か
+>  帝国軍がいなくなりゃ、もっと
+“The Romefeller faction and the Treize faction, huh. Once the Imperial forces are gone, it might
+---
+>  エスカレートするかもしれねぇな。まったく
+>  つまんねぇことしやがるぜ」
+escalate even more. They're really doing something so pointless.”
+
+@33558 Selain · セレイン（按段落 3DD2）
+> 「あの連中も、貴様にいわれたくは
+>  なかろうな」
+“I doubt they'd want to hear that from you.”
+
+@33559 Rish · リッシュ（按段落 3DD2）
+> 「クールだねぇ。前はもう少し過激な
+>  反応があったような気がするんだがな
+“Cold as ever. Before, I feel like you had a bit more of a fiery reaction.
+---
+>  なんかあったか」
+Did something happen?”
+
+@33560 Selain · セレイン（按段落 3DD2）
+> 「き、貴様の知ったことじゃない!
+>  私に干渉するな!」
+“Th-That's none of your business! Don't interfere with me!”
+
+@33561 Rish · リッシュ（按段落 3DD2）
+> 「それだ、その方がお前らしいぜ。
+>  なぁ……ひとつ聞きたいんだけどよ
+“There it is, that's more like you. Hey... there's one thing I want to ask.
+---
+>  お前らこんなことしてどうするつもりだ?」
+What are you people trying to accomplish doing all this?”
+
+@33562 Rish · リッシュ（按段落 3DD2）
+> 「やれやれ、冷たいねぇ。
+>  よぉ……ひとつ聞きたいんだけどよ
+“Good grief, so cold. Hey... there's one thing I want to ask.
+---
+>  お前らこんなことしてどうするつもりだ?」
+What are you people trying to accomplish doing all this?”
+
+@33563 Selain · セレイン（按段落 3DD2）
+> 「月基地を我々が占拠する。
+>  あとはその時に考えるだけだ」
+“We'll seize the lunar base. After that, we'll figure it out then.”
+
+@33564 Rish · リッシュ（按段落 3DD2）
+> 「ひゅーっ、マジかよ。またムチャなこと
+>  考えやがるぜ」
+“Whoa, seriously? You're really cooking up something reckless again.”
+
+@33565 Selain · セレイン（按段落 3DD2）
+> 「フン、別に今に始まったことじゃない
+>  それで、どうするつもりだ」
+“Hmph, this is nothing new for us. So, what do you intend to do?”
+
+@33566 Rish · リッシュ（按段落 3DD2）
+# 审校：原文第一页结尾没有句号，初稿第一页加了句号，改为逗号以符合页末标点规则。
+> 「どうするっていわれてもな。
+>  俺にも立場ってもんがある
+“Even if you ask me what I'll do, I've got my own position to consider.
+---
+>  この場の責任は果たさにゃならん」
+I've got to do my duty here.”
+
+@33567 Selain · セレイン（按段落 3DD2）
+> 「そんなところだろう。
+>  ならば、やはり敵ということだ
+“I figured as much. Then we're enemies after all.
+---
+>  これ以上は時間のムダだ」
+Any more than this is a waste of time.”
+
+@33568 Rish · リッシュ（按段落 3DD2）
+> 「チッ。や～れやれ、つまんねぇことに
+>  なっちまったもんだぜ」
+“Tch. Well, ain't this just a pain. What a pointless turn of events.”
+
+@33569 Selain · セレイン（按段落 3DD2）
+> 「…………」
+“...”
+
+@33570 Rish · リッシュ（按段落 3DD2）
+> 「やれやれ、ずいぶんと嫌われちまった
+>  みたいだな。しかたねぇ。つまんねぇことに
+“Good grief, seems I've gone and gotten myself thoroughly hated. Can't be helped. This is gonna be
+---
+>  なりそうだが、やるこたやらないとなぁ……」
+a pain, but I've gotta do what I've gotta do...”
+
+@33571 主角
+> 「{PartnerFull}!」
+“{PartnerFull}!”
+
+@33572 对手
+> 「君か、少年。いったい君たちは
+>  どういうつもりだ? 月攻略という
+“So it's you, boy. Just what do you people intend to do? At this crucial
+---
+>  重要な局面に、いまさらのように
+>  敵対してみせる。理由を聞かせて
+juncture of the lunar offensive, you choose now to turn against us.
+---
+>  ほしいものだな」
+I'd like to hear your reason.”
+
+@33573 主角
+> 「あんたにだって関係ないことじゃない
+>  だろう、{PartnerSurname}。いまの状況は
+“This concerns you too, doesn't it, {PartnerSurname}? The current situation is
+---
+>  OZにとっても問題だ。俺たちより
+>  あんたの方が深刻だったって
+a problem for OZ as well. It wouldn't be strange if things were more serious
+---
+>  おかしくはない」
+for you than for us.”
+
+@33574 对手
+> 「……私は、帝国を排除すること
+>  しか考えていない」
+“...All I think about is eliminating the Empire.”
+
+@33575 主角
+> 「……なら、俺たちにつけよ。
+>  恨みは忘れる。協力してくれ」
+“...Then side with us. I'll forget my grudge. Help us.”
+
+@33576 对手
+> 「なんだと!?」
+“What did you say?!”
+
+@33577 主角
+> 「月は俺たちが落としてみせる。
+>  バスクにもシロッコにも、渡さない」
+“We'll take the moon ourselves. I won't hand it over to Bask or Scirocco.”
+
+@33578 对手
+> 「バカな。たとえ帝国を排除し
+>  月基地を制圧したとしても
+“Don't be absurd. Even if you eliminate the Empire and seize the lunar base,
+---
+>  それからどうしようというのだ!?
+>  ムダなことはやめろ」
+what do you plan to do after that?! Stop this pointless endeavor.”
+
+@33579 主角
+> 「ムダなものかよ! 帝国軍は絶対
+>  に排除してみせる。そして、俺たちは
+“Pointless, you say?! We will absolutely eliminate the Imperial forces. And we
+---
+>  ロームフェラには従わない! もう
+>  状況が変わってるんだ。あんただって
+won't obey Romefeller! The situation has already changed. Even you
+---
+>  ロームフェラが正しいなんて思ってや
+>  しないんだろう!?」
+don't really believe Romefeller is right, do you?!”
+
+@33580 对手
+> 「……少年、君は変わったな」
+“...Boy, you've changed.”
+
+@33581 主角
+> 「エミリアや死んでいった人たちのことも
+>  あるけど、俺はもう過ぎたことは
+“There's Emilia and all the people who died, but I've decided not to
+---
+>  気にしないと決めた。だから、恨みは
+>  忘れるといった」
+dwell on the past anymore. That's why I said I'd forget my grudge.”
+
+@33582 对手
+> 「ほう……」
+“Oh...?”
+
+@33583 主角
+> 「地球圏は平和になるって、俺
+>  たちの手でそれをつかむことができるって
+“There was a girl who believed that the Earth Sphere would know peace, that we could grasp it with our own hands.
+---
+>  そう信じて死んだ女の子がいた。
+>  俺はあいつと約束したんだ。だから
+I made a promise to her. So if fighting to the very end means I can see the future she wished for,
+---
+>  戦いぬくことであいつが望んだ未来
+>  が見れるなら、俺はどこまでも
+then I'll keep fighting, no matter where it takes me.
+---
+>  戦い続けてやる。その覚悟がついた
+>  だけだ」
+I've just made up my mind, that's all.”
+
+@33584 对手
+> 「強いな……君は」
+“You're strong... you are.”
+
+@33585 主角
+> 「協力しないなら、せめて邪魔は
+>  しないでくれ。退いてくれるだけでいい」
+“If you won't help, then at least don't get in my way. Just standing down is enough.”
+
+@33586 对手
+> 「…………いいだろう。君の覚悟とやら
+>  見せてもらおう」
+“...Very well. Show me this resolve of yours.”
+
+@33587 主角
+> 「あんたのおかげさ。あの日、俺は
+>  あんたに出会って、あんたを憎んだ
+“It's thanks to you. That day, I met you, and I hated you.
+---
+>  最初はそれだけが、俺の唯一の
+>  戦う理由だったんだ」
+At first, that alone was my only reason to fight.”
+
+@33588 对手
+> 「少年……」
+“Boy...”
+
+@33589 主角
+> 「だけど、今は違う。俺は自ら望ん
+>  で戦っている。あんたにも事情が
+“But now it's different. I fight because I choose to. I understand you have your own
+---
+>  あるのはわかる。だから協力してくれな
+>  くてもいい。せめて邪魔をしないでくれ」
+circumstances. So you don't have to help me. Just don't get in my way.”
+
+@33590 对手
+> 「……信じる道へ突き進む、か。
+>  帝国軍は倒すといったな」
+“...Charging down the path you believe in, is it? You said you'd defeat the Imperial forces.”
+
+@33591 主角
+> 「ああ」
+“Yeah.”
+
+@33592 对手
+> 「ならばそれを、見せてもらおう」
+“Then let me see you do it.”
+
+@33593 主角
+> 「あいつ……」
+“That guy...”
+
+@33594 Helmut · ヘルマット
+> 「こ、こんなバカなあぁぁぁぁーっ!!」
+“Th-this can't beeeeeee!!”
+
+@33595 Scirocco · シロッコ
+> 「戦況の推移は想定通りだな。
+>  ジェリド特尉、マウアー特尉
+“The course of battle is proceeding as anticipated. Lieutenant Jerid, Lieutenant Mouar,
+---
+>  頼むぞ」
+I'm counting on you.”
+
+@33596 Jerid · ジェリド
+> 「了解だ、シロッコさんよ。
+>  {HeroMech}、貴様らは必ず
+“Understood, Scirocco. {HeroMech}, I knew you bastards would betray us
+---
+>  裏切ると思っていたぜ! これで
+>  遠慮なく貴様らをやれる!」
+sooner or later! Now I can take you on without holding back!”
+
+@33597 Mouar · マウアー
+> 「ジェリド、今は帝国軍が優先よ」
+“Jerid, the Imperial forces come first right now.”
+
+@33598 Jerid · ジェリド
+> 「わかってる!」
+“I know!”
+
+@33599 Shapiro · シャピロ
+> 「ヘルマット、何をやっている!?」
+“Helmut, what are you doing?!”
+
+@33600 Helmut · ヘルマット
+> 「うるさい! これから片づけるところだ!」
+“Shut up! I'm about to finish them off!”
+
+@33601 Shapiro · シャピロ
+> 「ふん、まぁよい。
+>  さあ、敵を叩きつぶせ!」
+“Hmph, very well then. Now, crush the enemy!”
+
+@33602 Shapiro · シャピロ
+> 「ヘルマットめ、ここまで持たせることすら
+>  できんとはな」
+“That fool Helmut, he couldn't even hold out this long.”
+
+@33603 Luna · ルーナ
+> 「シャピロ様、敵の戦力は
+>  予想以上です」
+“Lord Shapiro, the enemy's strength is greater than expected.”
+
+@33604 Shapiro · シャピロ
+> 「何をいってる、ルーナ。この程度
+>  など俺の計算の範囲内よ
+“What are you saying, Luna? This much is well within my calculations.
+---
+>  さぁ、地球人どもを片づけろ!」
+Now, wipe out those Earthlings!”
+
+@33605 Sara · 沙羅
+> 「シャピロッ!!」
+“Shapiro!!”
+
+@33606 Shinobu · 忍
+> 「ヘッ、ようやく出やがったな、
+>  あの野郎」
+“Heh, so the bastard's finally shown himself.”
+
+@33607 Shapiro · シャピロ
+> 「獣戦機隊か。よくもここまで
+>  戦い続けてこれたものだ」
+“The Cyber Beast Force. I'm surprised you've managed to keep fighting this long.”
+
+@33608 Shinobu · 忍
+> 「ヘッ、正直やっとこれたって感じだぜ
+>  だがな、シャピロ、てめぇらはここで
+“Heh, honestly, it feels like we barely made it this far. But you know what, Shapiro? We're gonna
+---
+>  ぶっつぶしてやるぜ!」
+crush you and your lot right here!”
+
+@33609 Sara · 沙羅
+> 「シャピロ、あんたも終わりだよ!」
+“Shapiro, this is the end for you too!”
+
+@33610 Shapiro · シャピロ
+> 「クククククッ、愚かな。この
+>  宇宙の神になろうというこの俺に
+“Kukukukuku, how foolish. You think you can beat me, the one who will become
+---
+>  勝てるつもりでいるのか」
+the god of this universe?”
+
+@33611 Sara · 沙羅
+> 「なんだって!?
+>  シャピロ、あんたどこまで……!!」
+“What?! Shapiro, just how far will you...!!”
+
+@33612 Shapiro · シャピロ
+> 「さらばだ、我が古き友たちよ。この
+>  月面がお前たちの墓場となるのだ」
+“Farewell, my old friends. This lunar surface shall be your graveyard.”
+
+@33613 Shapiro · シャピロ
+> 「バ……バカな!? こんなことはありえん
+>  はずだ……!!」
+“Th-this can't be?! This shouldn't be possible...!!”
+
+@33614 Luna · ルーナ
+> 「シャピロ様、ひとまずここは撤退
+>  いたしましょう! もうこれ以上は
+“Lord Shapiro, let us retreat for now! We can't hold out
+---
+>  持ちこたえられません!」
+any longer!”
+
+@33615 Shapiro · シャピロ
+> 「おのれ、おのれぇぇぇぇぇーっ!!
+>  貴様ら、このままでは済まさんぞ!!」
+“Curse you, curse youuuuu!! You won't get away with this!!”
+
+@33616 Scirocco · シロッコ
+> 「流れが動いた。月面基地を
+>  制圧するぞ! 全機続け!」
+“The tide has turned. We're taking the lunar base! All units, follow me!”
+
+@33617 Bask · バスク
+> 「シロッコめ、勝手をやりおって。
+>  シロッコに先を越されるな
+“That Scirocco, acting on his own. Don't let Scirocco beat us to it—
+---
+>  ドゴスギア前進せい!」
+advance the Dogosse Giar!”
+
+@33618 Shapiro · シャピロ
+> 「バ……バカな!? こんなことはありえん
+>  はずだ……!!」
+“Th-this can't be?! This shouldn't be possible...!!”
+
+@33619 Luna · ルーナ
+> 「シャピロ様、早く脱出を!!」
+“Lord Shapiro, escape at once!!”
+
+@33620 Shapiro · シャピロ
+> 「おのれ、おのれぇぇぇぇぇーっ!!
+>  貴様ら、このままでは済まさんぞ!!」
+“Curse you, curse youuuuu!! You won't get away with this!!”
+
+@33621 Scirocco · シロッコ
+> 「流れが動いた。月面基地を
+>  制圧するぞ! 全機続け!」
+“The tide has turned. We're taking the lunar base! All units, follow me!”
+
+@33622 Bask · バスク
+> 「シロッコめ、勝手をやりおって。
+>  シロッコに先を越されるな
+“That Scirocco, acting on his own. Don't let Scirocco beat us to it—
+---
+>  ドゴスギア前進せい!」
+advance the Dogosse Giar!”
+
+@33623 Scirocco · シロッコ
+> 「くっ、こうもやられるとは。流れが
+>  こちらにはないということか……?
+“Ngh, to be beaten this badly. So the tide isn't with us...?
+---
+>  ならば長居は無用だ」
+Then there's no point in staying.”
+
+@33624 Bask · バスク
+> 「なんだと!?
+>  シロッコめ、どういうつもりか!!」
+“What?! Scirocco, what does he think he's doing?!”
+
+@33625 Beltorchika · ベルトーチカ
+> 「艦長!」
+“Captain!”
+
+@33626 Bright · ブライト
+> 「よし、月面基地は我々が
+>  制圧したぞ!!」
+“All right, we've taken the lunar base!!”
+
+@33627 Shapiro · シャピロ
+> 「バ……バカな!? こんなことはありえん
+>  はずだ……!!」
+“Th-this can't be?! This shouldn't be possible...!!”
+
+@33628 Luna · ルーナ
+> 「シャピロ様、ひとまずここは撤退
+>  いたしましょう! もうこれ以上は
+“Lord Shapiro, let us retreat for now! We can't hold out
+---
+>  持ちこたえられません!」
+any longer!”
+
+@33629 Shapiro · シャピロ
+> 「おのれ、おのれぇぇぇぇぇーっ!!
+>  貴様ら、このままでは済まさんぞ!!」
+“Curse you, curse youuuuu!! You won't get away with this!!”
+
+@33630 Scirocco · シロッコ
+> 「くっ、{HeroMech}に先を越さ
+>  れたか……これではこちらが不利だな
+“Ngh, so {HeroMech} beat us to it... This puts us at a disadvantage.
+---
+>  ここは帝国軍を倒しただけでも
+>  よしとするか……。全機撤退せよ」
+I suppose we can settle for having defeated the imperial forces... All units, retreat.”
+
+@33631 Bask · バスク
+> 「おのれ{HeroMech}め。このままで
+>  済むと思うな。撤退するぞ!」
+“Curse you, {HeroMech}. Don't think this is over. We're retreating!”
+
+@33632 Scirocco · シロッコ
+> 「よし、一気に攻め落とせ。これで
+>  {HeroMech}も手は出せまい」
+“Good, take it in one push. Now {HeroMech} won't be able to make a move.”
+
+@33633 Bright · ブライト
+> 「くっ……しまった」
+“Ngh... damn it.”
+
+@33634 Beltorchika · ベルトーチカ
+> 「そんな……」
+“No...”
+
+@33635 Bright · ブライト
+> 「パプティマス・シロッコか……
+>  くそっ、作戦は失敗だ
+“Paptimus Scirocco, huh... Damn it, the operation's a failure.
+---
+>  月から脱出する!!」
+We're pulling out from the moon!!”
+
+@33636 Bask · バスク
+> 「よおし。基地を制圧しろ。
+>  抵抗する者は射殺してかまわん!」
+“All right. Seize the base. Anyone who resists, shoot to kill!”
+
+@33637 Bright · ブライト
+> 「なんだと!? くそっ、作戦は失敗
+>  だ」
+“What?! Damn it, the operation's a failure.”
+
+@33638 Beltorchika · ベルトーチカ
+> 「そんな……」
+“No...”
+
+@33639 Bright · ブライト
+> 「やむをえん、月を脱出する」
+“It can't be helped. We're pulling out from the moon.”
+
+@33640 Lila · ライラ
+> 「くっ、ジェリド、油断するな!
+>  やはりこいつ、ただ者じゃない!」
+“Ngh, Jerid, don't let your guard down! This one really is no ordinary pilot!”
+
+@33641 Lila · ライラ
+# 审校：原文“あの子”指卡缪，初稿译成 that child 不自然，改为 that boy。
+> (そうか……私がいま
+>  あの子のことをただ者じゃないといった
+(I see... The very fact that I just called that boy no ordinary pilot—
+---
+>  このわかり方が無意識のうちに
+>  反感となってしまう。これが……
+that way of understanding turns into resentment without my realizing it. So this is...
+---
+>  オールドタイプということか……)
+what it means to be an Oldtype...)
+
+@33642 Jerid · ジェリド
+> 「ライラッ!? くっ……カミーユ、
+>  貴様ぁぁぁぁーっ!!」
+“Lila?! Ngh... Kamille, youuuuu!!”
+
+@33643 Lila · ライラ
+> 「な、なんだと!? 私がこんなところで
+>  やられる……?」
+“Wh-what?! I'm being beaten here...?”
+
+@33644 Jerid · ジェリド
+> 「ライラッ!?
+>  くっ……貴様らぁぁぁぁーっ!!」
+“Lila?! Ngh... you bastardssss!!”
+
+@33645 Kacricon · カクリコン
+> 「くっ、やられた!? ……アメリアーッ!」
+“Ngh, I'm hit?! ...Amelia!!”
+
+@33646 Jerid · ジェリド
+> 「カクリコォォンッ!!
+>  くっ、仇はとるぞ。カクリコン。必ずな」
+“Kacricooooon!! Ngh, I'll avenge you, Kacricon. I swear it.”
+
+@33647 Beltorchika · ベルトーチカ
+> 「艦長!」
+“Captain!”
+
+@33648 Bright · ブライト
+> 「よし、月面基地は我々が
+>  制圧したぞ!!」
+“All right, we've taken the lunar base!!”
+
+@33649 Bask · バスク
+> 「おのれ、{HeroMech}め……
+>  最初からあれが目的だったか」
+“Curse you, {HeroMech}... So that was your aim from the start.”
+
+@33650 Scirocco · シロッコ
+> 「どうやらそのようですな。してやられました」
+“It would seem so. We've been outplayed.”
+
+@33651 Bask · バスク
+> 「シロッコ、貴公がもう少し奴らを
+>  引きつけておれば、こんなことには
+“Scirocco, if you had kept them occupied a little longer, this wouldn't have
+---
+>  ならなかったのだ!」
+happened!”
+
+@33652 Scirocco · シロッコ
+> 「くっ。……確かに、私の指揮にも
+>  問題があったようです。以後
+“Ngh. ...Indeed, there seems to have been a problem with my command as well. I'll
+---
+>  このようなことのないよう、気をつけます」
+take care that nothing like this happens again.”
+
+@33653 Bask · バスク
+> 「当たり前だ!」
+“You'd better!”
+
+@33654 Scirocco · シロッコ
+> (フッ、与えられた役割を演じると
+>  いうのは、難しいものだな)
+(Heh, playing the role you've been given is a difficult thing indeed.)
+
+@33655 Quattro · クワトロ
+> 「そうか……帝国軍は
+>  アステロイド基地へ撤退したか」
+“I see... So the imperial forces have retreated to the Asteroid Base.”
+
+@33656 Amuro · アムロ
+> 「ああ、そうだな。これで地球圏
+>  にはムゲゾルバドス帝国軍は
+“Yeah, that's right. We can consider the Muge Zorbados Empire's forces
+---
+>  いなくなったと考えていい」
+gone from the Earth Sphere now.”
+
+@33657 Roanne · ロアン
+> 「ようやく……
+>  ようやく、ここまで来たんですね
+“At last... at last, we've made it this far, haven't we—
+---
+>  僕たちは。火星にムゲ帝国軍が
+>  現れてから、もうずいぶんたったような
+all of us. It feels like so much time has passed since the Muge Empire's forces
+---
+>  気がします」
+appeared on Mars.”
+
+@33658 Bright · ブライト
+> 「ああ、長かった。だが、これでようやく
+>  地球圏は我々人類の手に
+“Yeah, it's been long. But now the Earth Sphere is finally back in our hands—
+---
+>  もどった。もっとも、これからも
+>  大変そうではあるがね」
+in humanity's hands. Though it looks like things will stay tough from here on, too.”
+
+@33659 Alan · アラン
+> 「うむ。問題はこれからどうするかだ……」
+“Indeed. The question is what we do from here...”
+
+@33660 Sara · 沙羅
+> 「そんなの決まってるじゃないか!
+>  シャピロを、シャピロを追うんだ
+“Isn't that obvious?! We go after Shapiro—after Shapiro!
+---
+>  まだアステロイド基地には奴らの
+>  戦力だって十分残ってるんだよ」
+They've still got plenty of forces left at the Asteroid Base!”
+
+@33661 Quattro · クワトロ
+> 「確かにそうだが……我々はOZの
+>  ロームフェラ派も敵にまわしてしまった
+“That's true, but... we've also made an enemy of OZ's Romefeller faction.
+---
+>  あまりうかつには動けん」
+We can't move too recklessly.”
+
+@33662 Sara · 沙羅
+> 「くっ……」
+“Ngh...”
+
+@33663 Masato · 雅人
+> 「あっ、沙羅!!」
+“Ah, Sara!!”
+
+@33664 Ryo · 亮
+> 「やめておけ、雅人。
+>  沙羅だって状況はわかっている」
+“Let it go, Masato. Sara understands the situation too.”
+
+@33665 Roux · ルー
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「あれ? クワトロ特尉はどこへ行った
+>  の?」
+“Huh? Where did Captain Quattro go?”
+
+@33666 Kamille · カミーユ
+> 「え? ああ、アナハイム・エレクトロニクス
+>  と接触するために、フォン・ブラウンへ
+“Huh? Oh, he's gone to Von Braun to make contact with
+---
+>  行ってるよ」
+Anaheim Electronics.”
+
+@33667 Roux · ルー
+> 「アナハイムか……」
+“Anaheim, huh...”
+
+@33668 Quattro · クワトロ
+> 「では、確かに。メラニー会長には
+>  よろしくお伝えください」
+“Then it's settled. Please give my regards to Chairman Melanie.”
+
+@33669 October · オクトバー
+> 「ご苦労さまです。それにしても、
+>  帝国軍を追い払ってもらって
+“Thank you for your hard work. Even so, we're grateful you drove off the
+---
+>  助かりますよ。奴らときたら
+>  無理ばかりいうんですからね」
+imperial forces. Those people do nothing but make unreasonable demands.”
+
+@33670 Amuro · アムロ
+> 「はははっ、月はまだマシなほうだよ」
+“Hahaha, the moon is still one of the better postings.”
+
+@33671 Beltorchika · ベルトーチカ
+> 「GP03にZガンダム、
+>  それにリ・ガズィ……思わぬところで
+“The GP03, the Zeta Gundam, and the Re-GZ too... We managed to strengthen
+---
+>  戦力が強化できたわね」
+our forces in an unexpected place.”
+
+@33672 Amuro · アムロ
+> 「ああ。これで少しは楽になる」
+“Yeah. This'll make things a little easier.”
+
+@33673 Chan · チェーン
+> 「搬入は終わりました。
+>  いつでも出発できます」
+“The loading is finished. We can depart at any time.”
+
+@33674 Amuro · アムロ
+> 「ご苦労さま。君は……?」
+“Good work. And you are...?”
+
+@33675 Quattro · クワトロ
+> 「ああ、紹介しておこう。もと連邦の
+>  技術士官で、解放戦線にも
+“Ah, allow me to introduce you. This is Chan Agi, formerly a technical officer of
+---
+>  参加していたチェーン・アギだ」
+the Federation who also took part in the Liberation Front.”
+
+@33676 Chan · チェーン
+> 「よろしくお願いします」
+“It's a pleasure to meet you.”
+
+@33677 Quattro · クワトロ
+> 「彼女は解放戦線時代に、
+>  アナハイムとの技術交換についての
+“During her time with the Liberation Front, she served as our liaison for
+---
+>  連絡役になってくれていたのだ」
+technical exchanges with Anaheim.”
+
+@33678 Amuro · アムロ
+> 「なるほど。よろしく、チェーン。俺は……」
+“I see. Nice to meet you, Chan. I'm...”
+
+@33679 Chan · チェーン
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「知ってます。アムロ・レイ特尉。
+>  私、ずっとお会いしたいと
+“I know. Captain Amuro Ray. I've always wanted
+---
+>  思っていたんですよ」
+to meet you.”
+
+@33680 Amuro · アムロ
+> 「ははは、実物を見てがっかりしたん
+>  じゃないか」
+“Hahaha, I hope the real thing didn't disappoint you.”
+
+@33681 Chan · チェーン
+> 「そんなことないです。
+>  ますますがんばろうって、思いました」
+“Not at all. It only made me want to work even harder.”
+
+@33682 Amuro · アムロ
+> 「なにをだい?」
+“At what?”
+
+@33683 Chan · チェーン
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「私の夢なんです。アムロ特尉の
+>  乗るガンダムをつくるのが」
+“It's my dream. To build the Gundam that Captain Amuro pilots.”
+
+@33684 Amuro · アムロ
+> 「俺の……ガンダム……?」
+“My... Gundam...?”
+
+@33685 Chan · チェーン
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+# 检查提示：未用必用译名：アムロ→Amuro
+> 「はい。アムロ特尉は基礎設計も
+>  できると聞いていますから。もう何か
+“Yes. I hear you can do basic design work too, Captain. Have you already
+---
+>  考えているんですか?」
+thought of something?”
+
+@33686 Amuro · アムロ
+> 「あ、ああ……考えてはいるが……」
+“Ah, yeah... I have been thinking about it...”
+
+@33687 Chan · チェーン
+> 「ホントですか!? じゃあ、私にも
+>  お手伝いさせてください!」
+“Really?! Then please let me help too!”
+
+@33688 Beltorchika · ベルトーチカ
+> 「ちょっとあなた、何やってるのよ!」
+“Hey you, what do you think you're doing?!”
+
+@33689 Amuro · アムロ
+> 「ベルトーチカ」
+“Beltorchika.”
+
+@33690 Chan · チェーン
+> 「なにって……あなたは?」
+“What do you mean, what... And you are?”
+
+@33691 Beltorchika · ベルトーチカ
+> 「ベルトーチカ・イルマ、アーガマのクルーよ
+>  あんまりアムロにちょっかい出さないで」
+“Beltorchika Irma, a crew member of the Argama. Don't go pestering Amuro so much.”
+
+@33692 Chan · チェーン
+> 「あなたにそんなこといわれる理由は
+>  ないわ」
+“You have no right to say that to me.”
+
+@33693 Beltorchika · ベルトーチカ
+> 「私は、アムロの恋人なのよ」
+“I'm Amuro's lover.”
+
+@33694 Chan · チェーン
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「ふうん、そうなの。でも私は、
+>  アムロ特尉のために、一緒にMSを
+“Hmm, is that so. But I can build mobile suits together with Captain Amuro.
+---
+>  つくれるわ。新しいガンダムを。
+>  あなたには、それはできないでしょう?」
+A new Gundam. You can't do that, can you?”
+
+@33695 Beltorchika · ベルトーチカ
+> 「それが、どうしたのよ」
+“So what of it?”
+
+@33696 Chan · チェーン
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「私は、アムロ特尉のお役に
+>  立てるってことです」
+“It means I can be of use to Captain Amuro.”
+
+@33697 Beltorchika · ベルトーチカ
+> 「な……あ、ちょっとアムロ、どこいくのよ」
+“Wha... h-hey, Amuro, where are you going?”
+
+@33698 Amuro · アムロ
+# 审校：“特尉”是上尉，初稿译成 Lieutenant 有误，改为 Captain。
+> 「いや、そろそろ基地の方にもどらない
+>  とまずいだろ? な、クワトロ特尉」
+“Well, we'd better get back to the base soon. Right, Captain Quattro?”
+
+@33699 Quattro · クワトロ
+> 「そうだな……ロームフェラ派の動きも
+>  気になる。ではオクトバーさん、あとは
+“Indeed... I'm also concerned about the Romefeller faction's movements. Well then, October,
+---
+>  よろしく」
+I'll leave the rest to you.”
+
+@33700 October · オクトバー
+> 「ええ。Zの後継機もすでに設計に
+>  入っています。戦闘データのほうも
+“Yes. The Zeta's successor is already in the design stage. If we get feedback from the
+---
+>  フィードバックがあれば、なんとかできます
+>  よ。他のも検討してみます」
+combat data, we can manage it somehow. I'll look into the others as well.”
+
+@33701 Chan · チェーン
+> 「あ、待ってください。私も行きます」
+“Ah, wait for me. I'm coming too.”
+
+@33702 Beltorchika · ベルトーチカ
+> 「あなたが!? どうしてよ!」
+“You?! Why?!”
+
+@33703 Chan · チェーン
+> 「私、メカニックとしてアーガマに乗艦
+>  します。これからよろしくお願いします」
+“I'll be boarding the Argama as a mechanic. I look forward to working with you all.”
+
+@33704 Sayaka · さやか
+> 「ちょっと、どうしたの、これ」
+“Hey, what's going on here?”
+
+@33705 Boss · ボス
+> 「あ、さやかぁ。それがよ、なんだかやたら
+>  人間が多くなってるんだわさ」
+“Ah, Sayaka. Well, you see, there's just way more people around all of a sudden.”
+
+@33706 Show · ショウ
+> 「なんだ、みんな聞いてなかったのか?」
+“What, none of you heard?”
+
+@33707 Sayaka · さやか
+> 「何を?」
+“Heard what?”
+
+@33708 Show · ショウ
+> 「アポロ作戦で俺たちが月基地を
+>  落としてから、各地でトレーズ派と
+“After we took the lunar base in Operation Apollo, soldiers believed to be Treize loyalists
+---
+>  思われる兵士たちの武装解除
+>  が強行されたんだ。それに反発した
+were forcibly disarmed all over. The ones who resisted that
+---
+>  連中は、武装解除される前に
+>  反乱を起こしたのさ」
+rose up in rebellion before they could be disarmed.”
+
+@33709 Boss · ボス
+> 「それでなんで、この基地の人間が
+>  増えるのよ」
+“So why does that mean more people at this base?”
+
+@33710 Chum · チャム
+> 「だからぁ、そのトレーズ派の人たちが、
+>  みんな集まってきたんじゃない」
+“That's what I'm saying, those Treize loyalists have all gathered here, haven't they?”
+
+@33711 Daisaku · 大作
+> 「僕たちトレーズ派なんですか? 僕は
+>  別にあの人が好きなわけではないのに」
+“Are we Treize loyalists? It's not like I actually like the guy.”
+
+@33712 Marvel · マーベル
+> 「そうね。私たちは別にトレーズ特佐
+>  の信奉者でも、彼に忠誠を
+“That's right. We're not followers of Colonel Treize, nor have we sworn
+---
+>  誓っているわけでもない。でもそうといえ
+>  ばそうだし、違うといえば違うわね」
+loyalty to him. But if you say we are, we are, and if you say we aren't, we aren't.”
+
+@33713 Chum · チャム
+> 「マーベル、どういうこと?」
+“Marvel, what do you mean?”
+
+@33714 Marvel · マーベル
+> 「私たちは戦争を終わらせて、
+>  平和を作れる組織だと考えて
+“We joined OZ thinking it was an organization that could end the war and
+---
+>  OZに入った。でも、それはジャミトフや
+>  バスクたちが指揮するOZじゃなくて
+build peace. But that meant an OZ commanded by Treize, not one led by
+---
+>  トレーズ特佐の指揮するOZだった
+>  ということ。私たちもまた、OZという
+Jamitov and Bask. We too believe that OZ as an organization needs
+---
+>  組織にトレーズ・クシュリナーダが
+>  必要だと考えている
+Treize Khushrenada. In that sense,
+---
+>  そういう点では、トレーズ派の人たち
+>  と同じだわ」
+we're the same as the Treize loyalists.”
+
+@33715 Sayaka · さやか
+> 「それは、そうね」
+“I suppose you're right.”
+
+@33716 Tetsuya · 鉄也
+> 「やれやれ、まさかこういうことになるとはね」
+“Good grief, I never thought it would come to this.”
+
+@33717 Kamille · カミーユ
+> 「考えてみれば当然だな。
+>  財団側の直接介入に対して
+“Thinking about it, it's only natural. The Treize faction resisted the Foundation's direct
+---
+>  抵抗していたトレーズ派は、
+>  精鋭ぞろいとはいえ数は多くない
+intervention, and though they're all elites, there aren't many of them.
+---
+>  月基地を制圧したのが俺たち
+>  {HeroMech}だって知れば
+If they learn it was us, the {HeroMech}, who took the lunar base,
+---
+>  みんな集まってくるさ」
+they'll all come flocking.”
+
+@33718 Jun · ジュン
+> 「敵対していたあたしたちを、トレーズが
+>  自分の直属部隊としてOZに
+“The general view is that Treize took us, his former enemies, into OZ as his own
+---
+>  入れたっていうのが、一般的な
+>  認識だからね。しょうがないっていえば
+direct unit. If you say it can't be helped,
+---
+>  しょうがないんだけど」
+it can't be helped.”
+
+@33719 Alan · アラン
+> 「しかし、これは我々にとっても都合
+>  のいい状況であることは間違いない」
+“However, there's no doubt this situation works in our favor as well.”
+
+@33720 Bright · ブライト
+> 「そうだな。これだけのトレーズ派が
+>  集まれば、ジャミトフやバスクもそうそう
+“Indeed. With this many Treize loyalists gathered, Jamitov and Bask won't be able to
+---
+>  この月に手は出せまい」
+lay a hand on this moon so easily.”
+
+@33721 Shinobu · 忍
+> 「トレーズ派の連中がいるんじゃ、
+>  連中にここを抑えさせといて
+“With the Treize bunch here, why don't we let them hold this place down
+---
+>  俺たちはムゲ野郎を追撃できるん
+>  じゃないのか、艦長さんよ」
+while we go chase after those Muge bastards, Captain?”
+
+@33722 Bright · ブライト
+> 「そうだな。
+>  そういう展開もあり得るか……」
+“Right. That's one possible turn of events...”
+
+@33723 Amuro · アムロ
+> 「俺たちに加わりたいだって?」
+“He wants to join us?”
+
+@33724 Bright · ブライト
+> 「ああ。帝国軍の捕虜となっていた
+>  連中を解放したんだが、その中の
+“Yeah. We freed the ones who'd been taken prisoner by the Imperial army, and one of
+---
+>  1人がな」
+them is him.”
+
+@33725 Kou · コウ
+> 「パイロットなんですか?」
+“Is he a pilot?”
+
+@33726 Bright · ブライト
+> 「そう聞いている」
+“That's what I hear.”
+
+@33727 Quattro · クワトロ
+> (この男……アナベル・ガトー少佐か。
+>  キグナンがいっていたのは、彼らのことか)
+(This man... Major Anavel Gato. So that's who Kignan was talking about.)
+
+@33728 Gato · ガトー
+> 「不覚にも異星人の虜囚と
+>  なっていた我が身を解放して
+“For freeing me when I had shamefully become a captive of aliens,
+---
+>  いただいたことには、このアナベル・ガトー
+>  感謝の言葉もない」
+I, Anavel Gato, have no words to express my gratitude.”
+
+@33729 Amuro · アムロ
+> 「気にしなくていい。俺たちじゃなくても
+>  そうなっていたさ」
+“Don't worry about it. Anyone would have done the same.”
+
+@33730 Gato · ガトー
+> 「だが現実に私の前へ立ったのは
+>  貴君らだ。この恩義に報いるため
+“But the ones who actually stood before me were you. To repay this debt,
+---
+>  しばらく貴君らと同道させていただ
+>  きたい。いまだ未熟なれど、多少の
+I wish to accompany you for a while. I may be inexperienced, but I have some
+---
+>  心得はある。貴君らのなさんとして
+>  いることに微力ながら助力できよう」
+knowledge. I can lend my modest strength to what you are trying to do.”
+
+@33731 Quattro · クワトロ
+> 「申し出はありがたいが我々はOZだ
+>  それでもかまわんのだな?」
+“We appreciate the offer, but we are OZ. You're still fine with that?”
+
+@33732 Gato · ガトー
+> 「承知している。
+>  ……クワトロ・バジーナ特尉」
+“I am aware. ...Lieutenant Quattro Bajeena.”
+
+@33733 Bright · ブライト
+> 「わかった。我々としても戦力が
+>  強化されるのは助かる
+“Understood. We'd also welcome the boost in fighting strength.
+---
+>  よろしく頼む」
+We're counting on you.”
+
+@33734 Chan · チェーン
+> 「カミーユ・ビダンって、どなた?」
+“Who is Kamille Bidan?”
+
+@33735 Kamille · カミーユ
+> 「僕ですけど……何か?」
+“That's me... what of it?”
+
+@33736 Chan · チェーン
+> 「Zガンダムを持ってきたのよ。あなたが
+>  mkⅡを参考にしたベースアイデアを
+“I brought the Zeta Gundam. It's a machine based on the design concept
+---
+>  もとにした機体よ」
+you developed using the Mk-II as reference.”
+
+@33737 Kamille · カミーユ
+> 「Z……開発していたんですか」
+“The Zeta... you were developing it?”
+
+@33738 Chan · チェーン
+> 「そう。調整するから来てもらえる?」
+“Yes. I need to tune it up, so could you come with me?”
+
+@33739 Kamille · カミーユ
+> 「いいですよ。ファ、悪いけど俺、
+>  食事はあとにするよ」
+“Sure. Fa, sorry, but I'll eat later.”
+
+@33740 Fa · ファ
+> 「いいわよ、さやかたちと一緒に食べる
+>  から」
+“Fine, I'll eat with Sayaka and the others.”
+
+@33741 Kamille · カミーユ
+> 「何怒ってるんだ……ファの奴?」
+“What's she so mad about...? Fa, I mean.”
+
+@33742 Kou · コウ
+> 「すごい! これがガンダム……GP03かぁ」
+“Amazing! So this is a Gundam... the GP03!”
+
+@33743 Astonaige · アストナージ
+> 「あっちの武器コンテナとドッキングした
+>  形が通常の運用形態だそうだ
+“Apparently, the form docked with the weapons container over there is its standard operating configuration.
+---
+>  デンドロビウムっていうんだとさ」
+They call it the Dendrobium.”
+
+@33744 Show · ショウ
+> 「大きいな……」
+“It's huge...”
+
+@33745 Rain · レイン
+> 「なんでも本来は拠点防衛用
+>  なんだそうよ」
+“I hear it was originally meant for base defense.”
+
+@33746 Kou · コウ
+> 「それに……Zガンダムか。
+>  こいつの変形機構というのも
+“And then there's... the Zeta Gundam. Its transformation system
+---
+>  かなりのものらしいですね。……あれ、
+>  そのとなりのは? アムロさんたちが
+sounds like quite something too. ...Huh, what about the one next to it? That's not
+---
+>  持ってきたやつじゃないですよね?」
+one that Amuro and the others brought, is it?”
+
+@33747 Astonaige · アストナージ
+> 「ああ、そいつはGP02だ。
+>  同じアナハイム製だが、帝国軍に
+“Yeah, that one's the GP02. It's made by Anaheim too, but it seems the
+---
+>  接収されていた機体らしい。
+>  基地の格納庫で見つけたそうだ」
+imperial army had seized it. They found it in the base's hangar, apparently.”
+
+@33748 Kou · コウ
+> 「へえ……この機体形状からすると
+>  ……戦術核装備タイプですか
+“Huh... judging by the frame... it's the tactical nuclear-equipped type.
+---
+>  あのシールドが冷却装置をかねて
+>  いるんだ……」
+That shield doubles as a cooling system...”
+
+@33749 Astonaige · アストナージ
+> 「よくわかるじゃないか。ま、強力な
+>  機体なんだろうが、あんまりうれしくは
+“You catch on quick. Well, it's a powerful machine, but I guess it's not
+---
+>  ないかもなぁ」
+something to be too happy about.”
+
+@33750 Bask · バスク
+> 「どけぃ!」
+“Out of my way!”
+
+@33751 Scirocco · シロッコ
+> 「あァ、これはバスク特佐」
+“Ah, Colonel Bask.”
+
+@33752 Scirocco · シロッコ
+> 「ぐっ……」
+“Ngh...”
+
+@33753 Bask · バスク
+> 「独断で作戦を進めおって、
+>  貴様! {HeroMech}が
+“You went and pushed the operation through on your own, you bastard! If the {HeroMech}
+---
+>  撤退しなかったらどうするつもりだった
+>  か!」
+hadn't retreated, what were you going to do?!”
+
+@33754 Scirocco · シロッコ
+> 「は……私も少々強引すぎたよう
+>  です。今後この基地の管理は
+“Ha... It seems I was a bit too forceful as well. From now on, I'll leave
+---
+>  バスク特佐にお任せします。私には
+>  少し荷が重すぎるようだ」
+the management of this base to you, Colonel Bask. It seems a little too much for me to handle.”
+
+@33755 Bask · バスク
+> 「フン、やっておいていまさら。貴様が
+>  何をたくらんでおるのか知らんが
+“Hmph, and now you say that after doing it. I don't know what you're plotting,
+---
+>  この私はごまかされはせん。
+>  覚えておけ!」
+but you won't fool me. Remember that!”
+
+@33756 Scirocco · シロッコ
+> (フフッ、与えられた役割を演ずると
+>  いうのは、難しいものだな……)
+(Heh heh, playing the role you're given is a difficult thing...)
+
+@33757 Bright · ブライト
+> 「帝国軍は敗退させたが……」
+“We drove off the imperial army, but...”
+
+@33758 Quattro · クワトロ
+> 「ああ。こちらの作戦は失敗だったな」
+“Yeah. Our operation was a failure.”
+
+@33759 Emma · エマ
+> 「これから、どうするおつもりです?
+>  もうあとには退けませんよ」
+“What do you intend to do now? We can't fall back anymore.”
+
+@33760 Tetsuya · 鉄也
+> 「で、これからどうするつもりなんだ?
+>  やっちまった以上、もうあとには
+“So, what are you planning to do now? We've gone and done it, so there's no
+---
+>  退けないぜ」
+turning back now.”
+
+@33761 Bright · ブライト
+> 「わかっている。まずはなんとかして、
+>  補給を確保することを考えんとな」
+“I know. First we need to figure out some way to secure supplies.”
+
+@33762 Quattro · クワトロ
+> 「准将とは連絡がとれんか……」
+“Can't we get in touch with the Commodore...”
+
+@33763 Alan · アラン
+> 「……ロス・イゴールになら、万丈を
+>  経由で連絡がつけられるかもしれん」
+“...If it's Ross Igor, we might be able to reach him through Banjo.”
+
+@33764 Quattro · クワトロ
+> 「イゴール将軍か……
+>  なんとかできるかもしれんな」
+“General Igor, huh... We might be able to work something out.”
+
+@33765 Ryo · 亮
+> 「まさか地上で、しかも一線を
+>  退いた将軍が、宇宙の我々の
+“There's no way a general on Earth, and one who's retired from the front lines at that, could arrange
+---
+>  補給の手配ができるわけもない。
+>  イゴール将軍が何を知っていると?」
+supplies for us out in space. What does General Igor know?”
+
+@33766 Bright · ブライト
+> 「なるほど、ラビアンローズか……」
+“I see, La Vie en Rose...”
+
+@33767 Quattro · クワトロ
+> 「そうだ」
+“That's right.”
+
+@33768 Shinobu · 忍
+> 「なんだよ、そりゃ」
+“What the hell is that?”
+
+@33769 Amuro · アムロ
+> 「ラビアンローズ……ドック艦だな。
+>  しかし1年戦争で大破したのでは
+“La Vie en Rose... that's a dock ship. But wasn't it heavily damaged
+---
+>  なかったのか?」
+in the One Year War?”
+
+@33770 Bright · ブライト
+> 「いや、あれはブレックス准将の偽装
+>  だ。ラビアンローズは暗礁宙域に
+“No, that was a cover story by Commodore Blex. La Vie en Rose is
+---
+>  いる」
+in the Shoal Zone.”
+
+@33771 Eiji · エイジ
+> 「暗礁宙域というと……この間の?」
+“The Shoal Zone... you mean the one from before?”
+
+@33772 David · デビッド
+> 「なんだ、なら探しにいけばいいじゃないか
+>  そいつと合流することができりゃ
+“What, then we just have to go look for it. If we can link up with it,
+---
+>  補給もできるんでしょう?」
+we can get supplies too, right?”
+
+@33773 Quattro · クワトロ
+> 「そうだ。だが、我々も現在はどこに
+>  いるかはわからん」
+“Yes. But we don't currently know where we are either.”
+
+@33774 Jun · ジュン
+# 审校：原文是反问语气“いったじゃない”，初稿译成陈述句，改为反问更贴切。
+> 「いま暗礁宙域にいるって、いった
+>  じゃない」
+“Didn't you just say we're in the Shoal Zone right now?”
+
+@33775 Kenji · ケンジ
+> 「暗礁宙域は広大だよ。
+>  ゼクスの時と同じ程度ならばいいが
+“The Shoal Zone is vast. If it were the same scale as with Zechs, that'd be fine,
+---
+>  うかつに入りこむと、かなり危険な
+>  ことになる」
+but if we go in carelessly, it could get pretty dangerous.”
+
+@33776 Jun · ジュン
+# 审校：原文“そういうものか”表示原来如此的轻微感叹，初稿“is that so”偏疑问，调整语气。
+> 「へぇ、そういうものか」
+“Huh, is that how it is.”
+
+@33777 Alan · アラン
+> 「まあいい。ともかく連絡がつけられるか
+>  やってみよう」
+“Well, fine. Anyway, let's try and see if we can make contact.”
+
+@33778 Kamille · カミーユ
+> 「どうでした?」
+“How did it go?”
+
+@33779 Alan · アラン
+> 「ああ、ラビアンローズの座標は確認
+>  できた」
+“Yeah, I confirmed La Vie en Rose's coordinates.”
+
+@33780 Koji · 甲児
+> 「やったぜ。これでとりあえず補給の
+>  心配はなくなったってわけだ」
+“All right. So for now, we don't have to worry about supplies.”
+
+@33781 Alan · アラン
+# 审校：“反発し”译为“resisting”不够准确，改为“pushing back against”更自然。
+> 「それに、地上でも各地にいる
+>  トレーズ派がロームフェラ側の
+“Also, on Earth, Treize's supporters in various places are pushing back against
+---
+>  直接介入に反発し、それを
+>  おさえようとした部隊と
+Romefeller's direct intervention, and it seems they're engaging
+---
+>  交戦しているそうだ」
+the forces sent to suppress them.”
+
+@33782 Quattro · クワトロ
+> 「ほう。やはりな」
+“Oh. Just as I thought.”
+
+@33783 Show · ショウ
+> 「本格的な内乱状態だな……」
+“It's a full-blown civil war...”
+
+@33784 Chum · チャム
+> 「でも、あたしたちだって似たようなもの
+>  なんでしょ?」
+“But we're in pretty much the same boat, aren't we?”
+
+@33785 Show · ショウ
+> 「そうだけどさ」
+“Yeah, I guess so.”
+
+@33786 Alan · アラン
+> 「いい知らせも1つある。OZの
+>  クーデター以前に解放戦線が
+“There's one piece of good news. Before OZ's coup, the Liberation Front
+---
+>  開発させていた機体が、
+>  ラビアンローズにあるそうだ」
+had a mobile suit developed, and it's apparently at La Vie en Rose.”
+
+@33787 Shinobu · 忍
+> 「戦力の増強もできるってわけだな。
+>  そいつは都合がいいぜ」
+“So we can boost our fighting strength too. That works out nicely.”
+
+@33788 Bright · ブライト
+> 「よし、とりあえず我々はラビアンローズ
+>  との合流を急ぐぞ」
+“All right, for now we make haste to rendezvous with La Vie en Rose.”
+
+@33789 Beltorchika · ベルトーチカ
+> 「ラビアンローズ確認」
+“La Vie en Rose confirmed.”
+
+@33790 Bunny · バニー
+> 「コールサイン送信します」
+“Sending our call sign.”
+
+@33791 Bright · ブライト
+> 「よし、接舷用意だ」
+“Good, prepare for docking.”
+
+@33792 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!
+>  ブライト艦長ーーっ!!」
+“Captain Bright! Captain Bright!!”
+
+@33793 Bright · ブライト
+> 「エマリー……艦長代理!?」
+“Emary... acting captain?!”
+
+@33794 Emary · エマリー
+> 「はい!
+>  私、きっと艦長がいらしてくださると
+“Yes! I believed you'd surely come, Captain,
+---
+>  信じて、ずっと待っていたんですよ」
+and I've been waiting all this time.”
+
+@33795 Bright · ブライト
+> 「え……?」
+“Huh...?”
+
+@33796 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長……忘れてしまったの
+>  ですか? 私、艦長に頼まれたと
+“Captain Bright... have you forgotten? I thought you'd asked me to,
+---
+>  思って、一生懸命……」
+so I did my very best...”
+
+@33797 Bright · ブライト
+> 「あ……いや、その……」
+“Ah... no, that's...”
+
+@33798 David · デビッド
+> 「…………」
+“...”
+
+@33799 Domon · ドモン
+> 「…………」
+“...”
+
+@33800 Sai Saici · サイ・サイシー
+> 「…………」
+“...”
+
+@33801 Boss · ボス
+> 「…………」
+“...”
+
+@33802 Arthur · アーサー
+> 「え? なになに? みんなどうしたんだ?」
+“Huh? What, what? What's wrong with everyone?”
+
+@33803 Bright · ブライト
+> 「……貴様ら、何をみている!
+>  さっさと作業にかかれ!」
+“...What are you all staring at?! Get to work, now!”
+
+@33804 Rain · レイン
+> 「はい、すみません。ほらみんな、さっさと
+>  いらっしゃい」
+“Yes, sorry. Come on, everyone, get moving.”
+
+@33805 Amuro · アムロ
+> 「Zガンダムにリ・ガズィか。しかし、よく
+>  これだけのものがつくれたものだな」
+“A Zeta Gundam and a Re-GZ. Still, it's amazing they managed to build all this.”
+
+@33806 ???
+> 「アナハイム・エレクトロニクスとのパイプが
+>  ありますから。その関係でGP03も
+“We have connections with Anaheim Electronics. Through that, we got our hands on the GP03 too.
+---
+>  手に入りました。でもいろいろと
+>  大変だったんですよ」
+But it was a lot of trouble, let me tell you.”
+
+@33807 Amuro · アムロ
+> 「君は……」
+“You are...”
+
+@33808 Chan · チェーン
+> 「チェーン・アギです。もと連邦の
+>  技術士官で今はラビアンローズの
+“I'm Chan Agi. I used to be a Federation technical officer, and now I'm
+---
+>  クルーをやっています」
+a crew member of La Vie en Rose.”
+
+@33809 Amuro · アムロ
+> 「そうか、よろしくチェーン。俺は……」
+“I see. Nice to meet you, Chan. I'm...”
+
+@33810 Chan · チェーン
+> 「知ってます、アムロ・レイ特尉。
+>  私、ずっとお会いしたいと
+“I know. Lieutenant Amuro Ray. I've always wanted
+---
+>  思っていたんですよ」
+to meet you.”
+
+@33811 Amuro · アムロ
+> 「ははは、実物を見てがっかりしたん
+>  じゃないか」
+“Hahaha, I bet you were disappointed seeing the real thing.”
+
+@33812 Chan · チェーン
+> 「そんなことないです。
+>  ますますがんばろうって、思いました」
+“Not at all. It made me want to work even harder.”
+
+@33813 Amuro · アムロ
+> 「なにをだい?」
+“At what?”
+
+@33814 Chan · チェーン
+> 「私の夢なんです。アムロ特尉の
+>  乗るガンダムをつくるのが」
+“It's my dream. To build the Gundam that Lieutenant Amuro pilots.”
+
+@33815 Amuro · アムロ
+> 「そういえばアナハイムといっていたが……」
+“Speaking of which, you said Anaheim...”
+
+@33816 Chan · チェーン
+> 「はい。まだ帝国の支配を
+>  受けていた頃から、実戦データの
+“Yes. Even back when we were under the Empire's rule, they cooperated with us
+---
+>  提供を条件にこちらにも
+>  協力してくれてました」
+in exchange for combat data.”
+
+@33817 Amuro · アムロ
+> 「解放戦線にか? 帝国軍や
+>  ロームフェラに協力する裏でか
+“With the Liberation Front? While also helping the Imperial Army and Romefeller behind the scenes—
+---
+>  まるっきり死の商人だな」
+they're nothing but merchants of death.”
+
+@33818 Chan · チェーン
+> 「あまり気分のいいものじゃないですけど
+>  地球人のためというのも理由の
+“It doesn't feel great, but I'd like to believe that doing it for the sake of Earthlings
+---
+>  1つではあると思いたいですね」
+is at least one of their reasons.”
+
+@33819 Beltorchika · ベルトーチカ
+> 「ちょっとあなた、何やってるのよ!」
+“Hey you, what do you think you're doing?!”
+
+@33820 Amuro · アムロ
+> 「ベルトーチカ」
+“Beltorchika.”
+
+@33821 Chan · チェーン
+> 「なにって……あなたは?」
+“What do you mean... and who are you?”
+
+@33822 Beltorchika · ベルトーチカ
+> 「ベルトーチカ・イルマ、アーガマのクルーよ
+>  あんまりアムロにちょっかい出さないで」
+“Beltorchika Irma, crew of the Argama. Don't go pestering Amuro so much.”
+
+@33823 Chan · チェーン
+> 「あなたにそんなこといわれる理由は
+>  ないわ」
+“You've got no right to say that to me.”
+
+@33824 Beltorchika · ベルトーチカ
+> 「私は、アムロの恋人なのよ」
+“I'm Amuro's lover.”
+
+@33825 Chan · チェーン
+> 「ふうん、そうなの。でも私は、
+>  アムロ特尉のために、一緒にMSを
+“Hmm, is that so. But I can build mobile suits together with Lieutenant Amuro.
+---
+>  つくれるわ。新しいガンダムを。
+>  あなたには、それはできないでしょう?」
+A new Gundam. You can't do that, can you?”
+
+@33826 Beltorchika · ベルトーチカ
+> 「それが、どうしたのよ」
+“So what?”
+
+@33827 Chan · チェーン
+> 「私は、アムロ特尉のお役に
+>  たてるってことです」
+“It means I can be useful to Lieutenant Amuro.”
+
+@33828 Beltorchika · ベルトーチカ
+> 「な……あ、ちょっとアムロ、どこいくのよ」
+“Wha... hey, Amuro, where are you going?”
+
+@33829 Amuro · アムロ
+> 「ごめん、アストナージを手伝わなくちゃ
+>  いけないんだ」
+“Sorry, I've got to go help Astonaige.”
+
+@33830 Chan · チェーン
+> 「私も行きます。私、ここの
+>  チーフメカニックですから」
+“I'm coming too. I'm the chief mechanic here, after all.”
+
+@33831 Beltorchika · ベルトーチカ
+> 「ちょっと、あなた待ちなさいよ!
+>  アムロ!」
+“Hey, you wait right there! Amuro!”
+
+@33832 David · デビッド
+# 审校：原文“すげぇもん見ちまった”是粗俗口语，初稿“something else”偏弱，改为“something crazy”更贴切。
+> 「……なんかすげぇもん見ちまったな」
+“...Man, we just saw something crazy.”
+
+@33833 Boss · ボス
+> 「まったくだわさ」
+“You said it.”
+
+@33834 Arthur · アーサー
+> 「ほんとほんと。でもアムロ特尉って
+>  意外に、はっきりしないんだね」
+“Totally. But Lieutenant Amuro sure is surprisingly wishy-washy.”
+
+@33835 Killy · キリー
+> 「どっちかに決めてもらえば、
+>  俺にもチャンスがあるってわけだ」
+“If he'd just pick one, that means I'd have a chance too.”
+
+@33836 Shingo · 真吾
+> 「チャンスがあるのは、お前だけじゃないぜ」
+“You're not the only one who'd have a chance.”
+
+@33837 Domon · ドモン
+> 「ふん、男の戦いに女は邪魔になる
+>  だけだというのにな」
+“Hmph. In a man's battle, women only get in the way.”
+
+@33838 Rain · レイン
+> 「…………」
+“...”
+
+@33839 Domon · ドモン
+> 「あ、いや、レインのことをいったんじゃ
+>  なくてだな……」
+“Ah, no, I wasn't talking about you, Rain...”
+
+@33840 Schwarz · シュバルツ
+> 「ハハハハハハッ、修業が足りんぞ
+>  ドモン!!」
+“Hahahahahaha, you're still not trained enough, Domon!!”
+
+@33841 Sai Saici · サイ・サイシー
+> 「わっ、覆面のあんちゃん、いきなり
+>  出てくんなよな」
+“Whoa, masked guy, don't just pop out of nowhere.”

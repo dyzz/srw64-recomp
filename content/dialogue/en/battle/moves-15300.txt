@@ -1,0 +1,498 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15300 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、甲児くん!」
+“Let's go, Koji!”
+
+@15301 Koji · 甲児
+# 审校：原文以「开头，应使用弯引号“。
+> 「一気に決めてやろうぜ、
+>  大介さん!」
+“Let's finish this in one shot, Daisuke!”
+
+@15302 Duke · デューク
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「ああ、そうしよう!」
+“Yeah, let's do it!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15303 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「鉄也くん、頼むぞ!」
+“Tetsuya, I'm counting on you!”
+
+@15304 Tetsuya · 鉄也
+# 审校：原文以「开头，应使用弯引号“。
+> 「そっちこそ、はずさないでくれよ!」
+“You better not miss either!”
+
+@15305 Duke · デューク
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「まかせてくれ!」
+“Leave it to me!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15306 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、マリア!」
+“Let's go, Maria!”
+
+@15307 Maria · マリア
+# 审校：原文以「开头，应使用弯引号“。
+> 「まっかせて、兄さん!」
+“Leave it to me, brother!”
+
+@15308 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「よし、ダブルライトニングバスター!!」
+“Alright, Double Lightning Buster!!”
+
+@15309 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「ひかるさん、大丈夫か!」
+“Hikaru, are you okay?!”
+
+@15310 Hikaru · ひかる
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええ、大介さん。いけるわ!」
+“Yes, Daisuke. I can do this!”
+
+@15311 Duke · デューク
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「よし、いくぞ!」
+“Alright, here we go!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15312 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「ナイーダ、いくぞ!」
+“Naida, let's go!”
+
+@15313 Naida · ナイーダ
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええ、デューク!!」
+“Yes, Duke!!”
+
+@15314 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15315 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15316 Koji · 甲児
+# 审校：原文以「开头，应使用弯引号“。
+> 「わかったぜ!」
+“Got it!”
+
+@15317 Tetsuya · 鉄也
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15318 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15319 Maria · マリア
+# 审校：原文以「开头，应使用弯引号“。
+> 「わかったわ! 兄さん」
+“Got it, brother!”
+
+@15320 Koji · 甲児
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15321 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15322 Boss · ボス
+# 审校：原文以「开头，应使用弯引号“。
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@15323 Koji · 甲児
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15324 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15325 Sayaka · さやか
+# 审校：原文以「开头，应使用弯引号“。
+> 「わかったわ!」
+“Got it!”
+
+@15326 Koji · 甲児
+# 审校：原文两页均以「开头，应使用弯引号“。
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15327 Duke · デューク
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15328 Boss · ボス
+# 审校：原文以「开头，应使用弯引号“。
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@15329 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!
+---
+> 「マジンガートルネード!!」
+Mazinger Tornado!!”
+
+@15330 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15331 Jun · ジュン
+> 「わかったわ!」
+“Got it!”
+
+@15332 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!
+---
+> 「マジンガートルネード!!」
+Mazinger Tornado!!”
+
+@15333 Sayaka · さやか
+> 「いくわよ!」
+“Here we go!”
+
+@15334 Boss · ボス
+# 审校：ボス的口癖“だわさ”未体现，且“You got it, boss”中的boss易被误解为称呼对方；改为更贴合其语气的“Got it, boss!”
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@15335 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15336 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@15337 Sayaka · さやか
+> 「わかったわ!」
+“Got it!”
+
+@15338 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15339 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@15340 Boss · ボス
+# 审校：同上，统一ボス口癖与语气
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@15341 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15342 Maria · マリア
+> 「いいわよ! 兄さん」
+“All right, brother!”
+
+@15343 Hikaru · ひかる
+> 「お願い!」
+“Please!”
+
+@15344 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15345 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15346 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15347 Koji · 甲児
+> 「いつでもいいぜ!」
+“Any time!”
+
+@15348 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15349 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15350 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15351 Maria · マリア
+> 「いつでもいいわよ!」
+“Any time!”
+
+@15352 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15353 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15354 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15355 Boss · ボス
+# 审校：原译“Let's do this thing!”未体现ボス特有的“やってやろうじゃないのよ”的夸张语气，改为更有气势且自然的表达
+> 「やってやろうじゃないのよ!」
+“Let's give it all we've got!”
+
+@15356 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15357 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15358 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15359 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@15360 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15361 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15362 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15363 Boss · ボス
+# 审校：同上，统一ボス同一句台词的译法
+> 「やってやろうじゃないのよ!」
+“Let's give it all we've got!”
+
+@15364 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15365 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15366 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15367 Jun · ジュン
+> 「いつでもいいわよ!」
+“Any time!”
+
+@15368 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!
+---
+> 「ファイナルダイナミックスペシャル!!」
+Final Dynamic Special!!”
+
+@15369 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15370 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@15371 Boss · ボス
+# 审校：同上，统一ボス同一句台词的译法
+> 「やってやろうじゃないのよ!」
+“Let's give it all we've got!”
+
+@15372 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15373 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15374 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@15375 Jun · ジュン
+> 「こっちもオッケイよ!」
+“We're okay here too!”
+
+@15376 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15377 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15378 Jun · ジュン
+> 「こっちはオッケイよ!」
+“We're okay here!”
+
+@15379 Boss · ボス
+# 审校：同上，统一ボス同一句台词的译法
+> 「やってやろうじゃないのよ!」
+“Let's give it all we've got!”
+
+@15380 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15381 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15382 Maria · マリア
+> 「いつでもいいわよ!」
+“Any time!”
+
+@15383 Hikaru · ひかる
+> 「こちらも準備完了です!」
+“We're ready here too!”
+
+@15384 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15385 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15386 Koji · 甲児
+# 审校：“たたきこんでやるぜ”是甲児的热血喊叫，原译“pound 'em in”略显生硬且对象不清；改为更自然有力的战斗台词
+> 「たたきこんでやるぜ!」
+“I'll slam it into 'em!”
+
+@15387 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!
+---
+> 「トリプルマジンガーパンチ!!」
+Triple Mazinger Punch!!”
+
+@15388 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15389 Maria · マリア
+> 「頼むわよ、甲児!」
+“I'm counting on you, Koji!”
+
+@15390 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15391 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15392 Boss · ボス
+> 「頼むぜぇ、兜よぉ!」
+“You're up, Koji!”
+
+@15393 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15394 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15395 Sayaka · さやか
+> 「いいわよ、甲児くん!」
+“Go ahead, Koji!”
+
+@15396 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15397 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15398 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'm gonna knock 'em flying, I tell ya!”
+
+@15399 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”

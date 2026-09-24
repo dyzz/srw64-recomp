@@ -1,0 +1,1633 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@28496 Dorothy · ドロシー
+> 「初めまして、リリーナ様。
+>  ドロシー・カタロニアと申します
+“Nice to meet you, Lady Relena. My name is Dorothy Catalonia.
+---
+>  リリーナ様にあえて光栄ですわ」
+It is an honor to meet you, Lady Relena.”
+
+@28497 Relena · リリーナ
+> 「ロームフェラ財団から来た方ね
+>  お話はうかがっているわ
+“You're the one from the Romefeller Foundation. I've heard about you.
+---
+>  よろしく、ドロシー」
+Welcome, Dorothy.”
+
+@28498 Dorothy · ドロシー
+# 审校：“It is my admiration” 不自然，改为 “It is what I aspire to.”
+> 「ここサンクキングダムの主張する
+>  完全平和の思想は
+“The philosophy of complete pacifism that the Sanc Kingdom advocates is
+---
+>  すばらしいですわ。
+>  私のあこがれなんですもの
+wonderful. It is what I aspire to.
+---
+>  リリーナ様のもとで、その思想を
+>  学ばせていただきたくて、まいりましたの」
+I came here hoping to learn that philosophy under you, Lady Relena.”
+
+@28499 Relena · リリーナ
+> 「ドロシー、よければ近くを
+>  案内してさしあげましょう
+“Dorothy, if you like, let me show you around.
+---
+>  この国のことを、
+>  早く知っていただきたいの」
+I want you to learn about this country as soon as possible.”
+
+@28500 Dorothy · ドロシー
+> 「まあ、リリーナ様が?
+>  光栄ですわ。もちろん、喜んで」
+“Oh my, you, Lady Relena? What an honor. Of course, I'd be delighted.”
+
+@28501 Dorothy · ドロシー
+> 「あら、リリーナ様。
+>  あちらの方々はどなたですの?」
+“Oh, Lady Relena. Who are those people over there?”
+
+@28502 Relena · リリーナ
+> 「ああ、あの方たちは、もと地球
+>  解放戦線にいた方々です
+“Ah, those people were formerly with the Liberation Front of the Earth.
+---
+>  今はこのサンクキングダムで、
+>  新しいエネルギーの
+Now they are conducting research and development on a new energy source
+---
+>  研究開発をなさっておいでですわ。
+>  そのご報告にみえられたのでしょう」
+here in the Sanc Kingdom. They must have come to report on it.”
+
+@28503 Dorothy · ドロシー
+> 「まあ、新しいエネルギー?
+>  とても興味がありますわ
+“Oh my, a new energy source? I'm very interested.
+---
+>  噂では、ゲッターとかマジンガーとか……
+>  すばらしい兵器を動かしていたとか
+Rumor has it they used to operate wonderful weapons like the Getter and the Mazinger...
+---
+>  きっと強力な力なのでしょうねえ」
+I'm sure it must be a powerful force.”
+
+@28504 Relena · リリーナ
+> 「今はそれを、平和のために
+>  役立てる研究をなさってます
+“Right now they are researching how to put it to use for peace.
+---
+>  完成すれば、人々の暮らしが
+>  もっと豊かになります」
+Once it's complete, people's lives will become even richer.”
+
+@28505 Dorothy · ドロシー
+> 「ええ、そうでしょうとも。あら、
+>  お連れの方はボディーガードかしら?
+“Yes, I'm sure of it. Oh, are those companions of yours bodyguards?
+---
+>  ふふふ、失礼ですけど、
+>  科学者には見えませんわね」
+Heh heh, forgive me, but they don't look like scientists.”
+
+@28506 Relena · リリーナ
+> 「アムロ・レイさんとエイジ・アスカさんです
+>  博士たちのお迎えにこられたのですね
+“That's Amuro Ray and Eiji Asuka. They've come to pick up the doctors.
+---
+>  ドロシー、よければ
+>  紹介してさしあげてよ?」
+Dorothy, if you like, shall I introduce you?”
+
+@28507 Dorothy · ドロシー
+> 「まあ、私を?
+>  フフフ、とても光栄ですけど
+“Oh my, me? Heh heh, it's a great honor, but
+---
+>  今日はご遠慮させていただきますわ
+>  私などとお近づきになって
+I'll refrain today. If someone like me got close to them,
+---
+>  大事なお仕事の邪魔になっては
+>  大変ですもの
+it would be terrible to interfere with their important work.
+---
+>  ではリリーナ様、
+>  私はこれで失礼させていただきます
+Well then, Lady Relena, I shall take my leave now.
+---
+>  この国には楽しいことが、いっぱい
+>  ありそう……
+This country seems to be full of enjoyable things...
+---
+>  また明日、お会いするのを楽しみに
+>  していますわ。ごきげんよう、リリーナ様」
+I look forward to seeing you again tomorrow. Farewell, Lady Relena.”
+
+@28508 Dorothy · ドロシー
+> (アムロ・レイ、エイジ・アスカ、そして
+>  リリーナ様……。ああ、ここはまるで
+(Amuro Ray, Eiji Asuka, and Lady Relena... Ah, this place is like
+---
+>  戦士たちのパラダイスね。おじいさま、
+>  ここはドロシーの思った通りの場所
+a paradise for warriors. Grandfather, this is exactly the place Dorothy imagined.
+---
+>  すばらしい戦争が、
+>  まもなくやってくるのだわ……
+A wonderful war will soon be upon us...
+---
+>  フフフ、早く戦争に、なーれ!)
+Heh heh, hurry up and come, war!)
+
+@28509 Noin · ノイン
+> 「{HeroMech}の皆さん、
+>  新しい環境はいかがですか?」
+“Everyone of the {HeroMech}, how are you finding your new environment?”
+
+@28510 Bright · ブライト
+> 「おかげで、極めて快適です。しかし、
+>  エネルギー研究所を我々の
+“Thanks to you, it's extremely comfortable. But building the energy research institute
+---
+>  隠れ場所の近くに建てて
+>  地下をつなげるとは、考えましたね」
+near our hiding place and connecting it underground, that was clever.”
+
+@28511 Amuro · アムロ
+> 「エネルギー研究というのは
+>  街の外で行うもの……
+“Energy research is supposed to be done outside the city...
+---
+>  一石二鳥というわけだ」
+Two birds with one stone, so to speak.”
+
+@28512 Noin · ノイン
+> 「OZをはじめ、周囲には
+>  いいカムフラージュになるでしょう
+“It will serve as good camouflage from OZ and everyone around us.
+---
+>  完全平和主義国家には
+>  武器はない、というのが
+After all, the official stance is that a nation of complete pacifism
+---
+>  建て前ですから」
+has no weapons.”
+
+@28513 Bright · ブライト
+> 「リリーナさんはまだこの事には?」
+“Does Miss Relena still not know about this?”
+
+@28514 Noin · ノイン
+# 审校：原文“そう明な方”应为“聡明な方”，初稿已按 perceptive 处理，无需修改。
+> 「……お気づきにはなって
+>  いないように思います。ですが
+“...I don't believe she has noticed. But
+---
+>  あのようにそう明な方ですから……。
+>  万一の時には、私がいっさいの
+she is such a perceptive person... If anything should happen, I will take
+---
+>  責任を負います。どうか皆さんは、
+>  この国の安全を守ることに
+full responsibility. Please, everyone, I want you to devote yourselves
+---
+>  専念していただきたい」
+to protecting this country's safety.”
+
+@28515 Bright · ブライト
+> 「承知しています。我々も次第に
+>  完全平和主義というものに
+“Understood. We too are gradually becoming interested in this
+---
+>  興味が出てきている。
+>  全力で守ります」
+complete pacifism. We will protect it with all our strength.”
+
+@28516 Noin · ノイン
+> 「感謝します、{HeroMech}……
+>  それでは、これで」
+“Thank you, {HeroMech}... Well then, that will be all.”
+
+@28517 Koji · 甲児
+> 「研究所が完成して
+>  博士たちは研究ざんまい
+“The institute is complete and the doctors are absorbed in research.
+---
+>  敵が襲ってこなけりゃ戦闘もなし
+>  ……と。まったく平和だねえ」
+If the enemy doesn't attack, there's no fighting either... It's completely peaceful.”
+
+@28518 Roux · ルー
+> 「何いってんの! 地上では
+>  まだあちこちで戦闘が続いてんのよ
+“What are you saying?! Fighting is still going on all over the surface.
+---
+>  無責任なんだから!」
+You're so irresponsible!”
+
+@28519 Koji · 甲児
+> 「無責任つったってなあ。ここでオレが
+>  緊張してたって、どうなるってんだよ」
+“Irresponsible, you say. Even if I got all tense here, what would it change?”
+
+@28520 Roux · ルー
+> 「そりゃそうだけど……」
+“Well, that's true, but...”
+
+@28521 Ginrei · 銀鈴
+> 「今はまだ、ね。
+>  のんびりしててもいいと思うわ
+“For now, at least. I think it's fine to take it easy.
+---
+>  じきにそれどころじゃなくなるでしょうから」
+Because soon we won't have that luxury.”
+
+@28522 Daisaku · 大作
+> 「ここで戦闘がはじまるってことですか?
+>  どうしてわかるんです?」
+“You mean fighting will start here? How can you tell?”
+
+@28523 Ginrei · 銀鈴
+> 「OZが月を奪還したのは
+>  知ってるでしょ?
+“You know OZ recaptured the moon, right?
+---
+>  ムゲ帝国軍は
+>  アステロイド・ベルトまで後退したわ
+The Muge Empire forces have retreated all the way to the Asteroid Belt.
+---
+>  つまり、OZにそれだけ余裕が
+>  できたってことね」
+In other words, that's how much leeway OZ has now.”
+
+@28524 Amuro · アムロ
+> 「ジャミトフ、デルマイユ……、彼らが
+>  完全平和主義なんかを
+“Jamitov, Dermail... There's no way they'd ever acknowledge something like
+---
+>  認めるわけがない、か。確かに、
+>  あまり心安らかにはしていられないな…」
+complete pacifism, huh. Indeed, we can't afford to rest easy...”
+
+@28525 Sayaka · さやか
+> 「政治のことなんか、
+>  あたしたちにわかりっこないもんねえ
+“There's no way we could understand politics anyway.
+---
+>  とくに甲児くんには……」
+Especially Koji...”
+
+@28526 Koji · 甲児
+> 「わざわざオレを引き合いに出すなよな
+>  ほっといてくれ」
+“Don't go out of your way to bring me into it. Just leave me alone.”
+
+@28527 Dermail · デルマイユ
+> 「そちらの様子はどうだ、ツバロフ」
+“How are things on your end, Tubarov?”
+
+@28528 Tubarov · ツバロフ
+> 「は、MDプラントは計画通り
+>  動いております。ムゲ帝国めの
+“Yes, the MD plant is operating as planned. There are no signs of
+---
+>  反抗の気配もございません。
+>  宇宙は全て、順調です」
+resistance from the Muge Empire. Everything in space is going smoothly.”
+
+@28529 Dermail · デルマイユ
+> 「そうか。引き続き計画を進めよ。
+>  アステロイド・ベルトへの
+“I see. Continue advancing the plan. The invasion operation against
+---
+>  侵攻作戦は、
+>  予定通り行えるな」
+the Asteroid Belt can proceed as scheduled, yes?”
+
+@28530 Tubarov · ツバロフ
+> 「おまかせください。我がMDの
+>  大量生産が可能になれば
+“Leave it to me. Once mass production of my MDs becomes possible,
+---
+>  ムゲ帝国ごとき恐れるに足りません」
+the Muge Empire is nothing to fear.”
+
+@28531 Dermail · デルマイユ
+> 「よろしい。では通信を終わる」
+“Good. Then I'll end the transmission.”
+
+@28532 Jamitov · ジャミトフ
+> 「順調のようだな」
+“Things seem to be going well.”
+
+@28533 Dermail · デルマイユ
+> 「うむ。帝国を追い出し、
+>  地球圏を完全に我々OZが
+“Indeed. The day is near when we drive out the Empire and OZ
+---
+>  掌握する日も近い」
+takes complete control of the Earth Sphere.”
+
+@28534 Jamitov · ジャミトフ
+> 「アステロイド・ベルトの
+>  帝国軍中枢をせん滅すれば
+“If we annihilate the Imperial forces' central command in the Asteroid Belt,
+---
+>  残りは地上の完全制圧か。
+>  こちらの方は、たやすいことだな」
+what remains is the complete subjugation of the surface. That part should be easy.”
+
+@28535 Dermail · デルマイユ
+> 「ふむ……」
+“Hmm...”
+
+@28536 Jamitov · ジャミトフ
+> 「どうした」
+“What is it?”
+
+@28537 Dermail · デルマイユ
+> 「地上といえば……
+>  サンクキングダムのことだが」
+“Speaking of the surface... it's about the Sanc Kingdom.”
+
+@28538 Jamitov · ジャミトフ
+> 「完全平和主義とかの連中の
+>  ことか? 気にかけることなどあるまい
+“You mean those complete pacifism people? Nothing worth worrying about.
+---
+>  しょせんは、小娘どもにたぶらかされた
+>  連中の世迷いごとにすぎん
+They're just the deluded ramblings of a bunch of fools led astray by some little girls.
+---
+>  無視しておけ」
+Ignore them.”
+
+@28539 Dermail · デルマイユ
+> 「いや、連中は地上の
+>  帝国軍勢力が弱まったのを
+“No. Those people, taking advantage of the Imperial forces on the surface weakening,
+---
+>  いいことに、欧州をはじめ
+>  各国に勢力をのばしつつある
+are steadily extending their influence through Europe and other nations.
+---
+>  それだけならまだしも、問題は我が
+>  ロームフェラ財団の幹部の
+And that's not all. The problem is that even among the executives of our Romefeller Foundation,
+---
+>  中にまで、奴らに賛同する者が
+>  出はじめているということだ」
+some have begun to sympathize with them.”
+
+@28540 Jamitov · ジャミトフ
+> 「目ざわりか?
+>  ならつぶせばよかろう。虫ケラだ」
+“An eyesore? Then crush them. They're mere insects.”
+
+@28541 Dermail · デルマイユ
+> 「馬鹿をいえ。
+>  いくら邪魔だからといえ
+“Don't be a fool. No matter how much of a nuisance they are,
+---
+>  理由もなく独立国に兵を
+>  出せるか。かえって威信に関わるわ」
+can we really send troops into an independent nation without cause? It would only damage our prestige.”
+
+@28542 Jamitov · ジャミトフ
+> 「直接手を下せとはいっておらん。
+>  地上には、シャピロめに
+“I'm not telling you to do it directly. On the surface, there should still be those monsters
+---
+>  置き去りにされた化け物どもが
+>  いようが。奴らをけしかけるのだ
+that Shapiro left behind. Set them loose.
+---
+>  サンクキングダムには、奴らのほしがる
+>  物があると聞くぞ。それを教えてやれ」
+I hear the Sanc Kingdom has something those creatures want. Tell them about it.”
+
+@28543 Dermail · デルマイユ
+> 「ほしがる物……ほう、なるほどな。
+>  もと地球解放戦線の
+“Something they want... Oh, I see. You mean the Getter Energy and
+---
+>  科学者どもが研究している、
+>  ゲッターエネルギーと
+Photon Power Energy that the former Liberation Front of the Earth
+---
+>  光子力エネルギーか」
+scientists are researching.”
+
+@28544 Jamitov · ジャミトフ
+> 「解放戦線の残党どもも、
+>  地下に潜って所在がつかめん
+“The remnants of the Liberation Front have gone underground, and we can't locate them.
+---
+>  どうやら一部が
+>  完全平和主義に賛同して
+Apparently some of them sympathized with complete pacifism,
+---
+>  そやつらもサンクキングダムに
+>  いるらしいではないか
+and they're in the Sanc Kingdom as well.
+---
+>  案外、面白いものが
+>  出てくるかもしれんぞ……」
+We might get something interesting out of this...”
+
+@28545 Dark General · 暗黒大将軍
+> 「地上に続き、月までも失うとはな
+>  ムゲゾルバドスめ、何というふがいなさだ」
+“To lose the Moon after the surface... Muge Zorbados, how utterly pathetic.”
+
+@28546 Hell Marshal · 地獄大元帥
+> 「ドレイクめも敗れおった。
+>  くそ、いまいましい人間どもめが……」
+“That fool Drake has been defeated as well. Damn, those loathsome humans...”
+
+@28547 Emperor Burai · ブライ大帝
+> 「太古の昔より地球制圧を
+>  夢見てきたわしらが
+“We, who have dreamed of conquering Earth since ancient times,
+---
+>  このままおめおめと、再び暗黒の
+>  闇にもどらねばならんのか……
+must we now slink back into the darkness of obscurity like this...?
+---
+>  ええい、ムゲゾルバドスめ。あのような
+>  者どもの口車に乗ったのが
+Curse it, Muge Zorbados! Falling for the sweet talk of those creatures
+---
+>  一生の不覚であったわ!」
+was the greatest blunder of my life!”
+
+@28548 Dark General · 暗黒大将軍
+> 「光子力エネルギーと
+>  ゲッターエネルギーが手に入れば
+“If only we could obtain the Photon Power Energy and Getter Energy,
+---
+>  まきかえせるものを……」
+we could turn things around...”
+
+@28549 Emperor Burai · ブライ大帝
+> 「きゃつら、いったいどこへ隠れおった。
+>  ええい、ゲッターとマジンガーの
+“Where on earth have those wretches hidden themselves? Curse it, if only we knew
+---
+>  居場所さえ、わかれば……」
+the whereabouts of Getter and Mazinger...”
+
+@28550 Dr. Gura · グラー博士
+> 「大帝閣下、申し上げます!」
+“Your Excellency, I have a report!”
+
+@28551 Emperor Burai · ブライ大帝
+> 「グラーか。何じゃ」
+“Gura, is it? What is it?”
+
+@28552 Dr. Gura · グラー博士
+> 「ははっ、お喜びください。かねてより
+>  探索しておりました人間ども……
+“Yes, sir. Rejoice! The humans we have long been searching for...
+---
+>  早乙女と弓めの居所が、
+>  わかりましてございます」
+I have discovered the whereabouts of Saotome and Yumi.”
+
+@28553 Dark General · 暗黒大将軍
+> 「何と!!」
+“What?!”
+
+@28554 Hell Marshal · 地獄大元帥
+> 「それはまことか!?」
+“Is this true?!”
+
+@28555 Emperor Burai · ブライ大帝
+> 「でかしたぞグラー!
+>  して、きゃつらはどこにおる!?」
+“Well done, Gura! So, where are those wretches?!”
+
+@28556 Dr. Gura · グラー博士
+> 「は、北欧の小国、
+>  サンクキングダムの研究所にて
+“Yes. It seems they are conducting research on Getter Energy and Photon Power Energy
+---
+>  ゲッターエネルギーと
+>  光子力エネルギーの研究を
+at a laboratory in a small Northern European country,
+---
+>  いたしておるようです!」
+the Sanc Kingdom!”
+
+@28557 Emperor Burai · ブライ大帝
+> 「何という好都合よな。
+>  さっそく総攻撃の準備じゃ!」
+“How convenient. Prepare for an all-out attack at once!”
+
+@28558 Dark General · 暗黒大将軍
+# 审校：“...Wait.” 可接受，无需修改。
+> 「……待て」
+“...Wait.”
+
+@28559 Emperor Burai · ブライ大帝
+> 「どうしたミケーネの。この期に及んで、
+>  何を待つ必要があろうぞ」
+“What is it, man of Mycenae? At this stage, what need is there to wait?”
+
+@28560 Dark General · 暗黒大将軍
+> 「グラー博士よ、その情報、
+>  どこから入ってきた」
+“Dr. Gura, where did this information come from?”
+
+@28561 Dr. Gura · グラー博士
+> 「は……? い、いえ、詳しくは……」
+“Huh...? N-no, the details are...”
+
+@28562 Dark General · 暗黒大将軍
+> 「あまりにも話がうますぎる。
+>  我らをおびき寄せる罠ではないか?」
+“The story is far too convenient. Could it not be a trap to lure us in?”
+
+@28563 Emperor Burai · ブライ大帝
+> 「罠だと!? 何をいうか!
+>  どの道このまま座しておっても
+“A trap?! What nonsense! Either way, if we sit idle like this,
+---
+>  地上支配の野望など
+>  永遠にかなわぬのだぞ!」
+our ambition to rule the surface will never be realized!”
+
+@28564 Hell Marshal · 地獄大元帥
+> 「ううむ……。考えてみれば
+>  確かに罠の可能性もある
+“Hmm... Come to think of it, there certainly is a possibility of a trap.
+---
+>  何ぞ確かめる術がないものか……」
+Is there no way to confirm it somehow...?”
+
+@28565 Marquis Janus · ヤヌス侯爵
+> 「その役目、この私めにおまかせを」
+“Leave that task to me.”
+
+@28566 Emperor Burai · ブライ大帝
+> 「おおヤヌス侯爵、
+>  いったいどうする気じゃ」
+“Oh, Marquis Janus, what do you intend to do?”
+
+@28567 Marquis Janus · ヤヌス侯爵
+> 「人間に化け、サンクキングダムとやら
+>  に潜入して参ります
+“I shall disguise myself as a human and infiltrate this Sanc Kingdom.
+---
+>  その上で情報がまことならばよし、
+>  あわよくば……」
+Then, if the information proves true, all the better. And if fortune favors us...”
+
+@28568 Dark General · 暗黒大将軍
+> 「おお、それがよい。
+>  そのあと我々が総攻撃をかけ
+“Oh, that is good. After that, we shall launch an all-out attack
+---
+>  両エネルギーを手に入れればよいのだ」
+and seize both energies.”
+
+@28569 Hell Marshal · 地獄大元帥
+> 「うむ、頼んだぞ。
+>  我々が地球を制覇するか
+“Indeed, we leave it to you. This is the brink between our conquest of Earth
+---
+>  再び闇に帰るかの瀬戸際だ。
+>  ゆけい、ヤヌス侯爵!」
+and our return to darkness. Go, Marquis Janus!”
+
+@28570 Marquis Janus · ヤヌス侯爵
+> 「ははーっ!」
+“Yes, sir!”
+
+@28571 Marquis Janus · ヤヌス侯爵
+> 「……まさか、これほど
+>  やすやすと潜入できるとはな
+“...To think I could infiltrate this easily.
+---
+>  完全平和主義などと訳の
+>  わからぬことをほざいておったが
+They prattle on about complete pacifism and such nonsense,
+---
+>  全くここの人間は理解できん……
+>  なるほど、ここか
+but I truly cannot understand the humans here... I see, so this is it.
+---
+>  フフフ、ろくな警備もなしに……」
+Heh heh, with hardly any guards...”
+
+@28572 Judau · ジュドー
+> 「へへっ、思った通り、ろくな警備も
+>  してねえ。おいみんな、行くぞ!」
+“Heh, just as I thought, hardly any guards. Hey everyone, let's go!”
+
+@28573 Iino · イーノ
+> 「ねぇ、本当にやるつもりなの?」
+“Hey, are you really going to do this?”
+
+@28574 Elle · エル
+> 「あったり前じゃない。
+>  あんたいまさら何いってんのよ」
+“Of course we are. What are you saying at this point?”
+
+@28575 Beecha · ビーチャ
+> 「いやならやめろよ。
+>  そうすりゃ分け前も増える」
+“If you don't want to, then quit. That way our share gets bigger.”
+
+@28576 Mondo · モンド
+> 「そうそう」
+“Yeah, yeah.”
+
+@28577 Judau · ジュドー
+> 「しっ、静かにしろ」
+“Shh, quiet.”
+
+@28578 Judau · ジュドー
+> 「…………よし、いいぞ」
+“...All right, that's good.”
+
+@28579 Iino · イーノ
+> 「ジュドー……」
+“Judau...”
+
+@28580 Judau · ジュドー
+> 「イーノ、早くしろ。うまくいかなきゃ、
+>  俺たち飢え死になんだぞ」
+“Iino, hurry up. If this doesn't work, we starve to death.”
+
+@28581 Elle · エル
+> 「急がないと、見つかっちゃうよ」
+“We have to hurry, or we'll be found.”
+
+@28582 Iino · イーノ
+> 「わ、わかったよ」
+“O-okay.”
+
+@28583 Dorothy · ドロシー
+> 「リリーナ様、もしもこの国に
+>  攻めこむ者がいたらどうします?
+“Lady Relena, what would you do if someone were to attack this country?
+---
+>  戦うことを否定するのですから、
+>  どのようにして対処するのか
+Since you reject fighting, I am curious how you would deal with it.
+---
+>  興味がありますわ」
+I am most interested.”
+
+@28584 Relena · リリーナ
+> 「……それは……」
+“...That is...”
+
+@28585 Dorothy · ドロシー
+> 「今までの長い人類の
+>  歴史の中で完全平和を
+“Throughout humanity's long history, there have been many who
+---
+>  目指した人々は何人も
+>  おりましたわ。それでもいまだにそれは
+aimed for complete peace. And yet it has still never been achieved.
+---
+>  なしえていません。なぜなんでしょう?」
+Why do you suppose that is?”
+
+@28586 Relena · リリーナ
+> 「…………」
+“...”
+
+@28587 Marquis Janus · ヤヌス侯爵
+> 「むうう、まさしくここは
+>  きゃつらの研究施設に相違ない
+“Hmm, this is surely those people's research facility.
+---
+>  このことをブライ大帝たちに
+>  報告せねば……。む、何じゃここは?
+I must report this to Emperor Burai and the others... Hm, what is this place?
+---
+>  このようなところに
+>  地下通路があるとは。まさか……」
+To think there is an underground passage here. Surely not...”
+
+@28588 Judau · ジュドー
+> 「おう、あるある。あるじゃねえか」
+“Oh, there is, there is. There really is one.”
+
+@28589 Elle · エル
+> 「半信半疑だったけど……
+>  噂は本当だったのね」
+“I was half doubtful, but... the rumor was true.”
+
+@28590 Beecha · ビーチャ
+> 「まっさか、こんなところに
+>  格納庫があったなんてなあ
+“To think there was a hangar in a place like this.
+---
+>  完全平和なんて、
+>  マユツバだと思ってたんだ」
+I thought complete peace was just a tall tale.”
+
+@28591 Iino · イーノ
+> 「ど、どうするの?」
+“W-what do we do?”
+
+@28592 Judau · ジュドー
+> 「決まってんだろ、いただいてくのさ。
+>  なあに、1台くらいどうってこと……ん?」
+“Isn't it obvious? We take it. Come on, one unit's no big deal... hm?”
+
+@28593 Mondo · モンド
+> 「どうした?」
+“What's wrong?”
+
+@28594 Judau · ジュドー
+> 「隠れろ! 誰かくる!」
+“Hide! Someone's coming!”
+
+@28595 Marquis Janus · ヤヌス侯爵
+> 「な、何と! これは……ゲッターロボ!
+>  そしてマジンガーZ! ふふ、ふはははは!
+“W-what! This is... Getter Robo! And Mazinger Z! Heh, hahahahaha!
+---
+>  わらわは何とついておることよ、
+>  こんなところでこやつらと
+How lucky can I be, meeting these things in a place like this!
+---
+>  出会えるとはな! ことのついでじゃ、
+>  立ち去る前に
+While I'm at it, before I leave,
+---
+>  この高性能爆弾を
+>  仕掛けてくれようぞ
+I do believe I'll plant this high-performance bomb on them.
+---
+>  きゃつら、これで起動と同時に
+>  こっぱみじんよ……」
+Once they start up, they'll be blown to bits...”
+
+@28596 Beecha · ビーチャ
+# 审校：说话人比查看到的是ヤヌス侯爵，角色为男性，原文未明确性别但此处应指侯爵，初稿用 she 错误，改为 he。
+> 「……様子がおかしいぜ、あいつ。
+>  ここの人間じゃねえ」
+“...Something's off about that one. He's not from here.”
+
+@28597 Judau · ジュドー
+# 审校：同上，将 she 改为 he。
+> 「ああ。どうやら俺たちと同じ、
+>  MSでもかっぱらいに来たみたいだな」
+“Yeah. Looks like he came to swipe an MS, same as us.”
+
+@28598 Mondo · モンド
+> 「どうするんだ? ここの人に
+>  知らせなくってもいいかな?」
+“What do we do? Shouldn't we tell the people here?”
+
+@28599 Elle · エル
+> 「バカ、あんた自分たちの
+>  立場わかってんの?
+“Idiot, do you understand our position?
+---
+>  ……こ、こら、ちょっとイーノ!
+>  押さないで! きゃあっ!」
+...H-hey, Iino! Stop pushing! Kyaa!”
+
+@28600 Judau · ジュドー
+> 「バカ、声を出すな!」
+“Idiot, don't make a sound!”
+
+@28601 Marquis Janus · ヤヌス侯爵
+> 「何やつ!」
+“Who goes there?!”
+
+@28602 Judau · ジュドー
+# 审校：ジュドー对ヤヌス侯爵说话，侯爵为男性，初稿用 lady 错误，改为 mister。
+> 「やっ、やあ、どーも。
+>  お姉さんもMSかっぱらいに来たの?」
+“H-hey, hello there. Did you come to swipe an MS too, mister?”
+
+@28603 Marquis Janus · ヤヌス侯爵
+> 「人間どもか! おのれ、見られたから
+>  には生かしておかん! 覚悟せい!」
+“Humans! Curse you, now that you've seen me, I won't let you live! Prepare yourselves!”
+
+@28604 Elle · エル
+> 「ちょ、ちょっと何なのよ!
+>  きゃーっ! 誰か助けてーっ!!」
+“W-what is with you?! Kyaa! Someone help me!!”
+
+@28605 Astonaige · アストナージ
+> 「どうした! ん!? な、何だ
+>  お前たちは!! おい、カミーユ!」
+“What's going on?! Hm?! W-who are you people!! Hey, Kamille!”
+
+@28606 Kamille · カミーユ
+> 「どうした!?」
+“What is it?!”
+
+@28607 Astonaige · アストナージ
+> 「警報を鳴らせ! 侵入者だ!」
+“Sound the alarm! Intruders!”
+
+@28608 Marquis Janus · ヤヌス侯爵
+> 「ちっ、まずい! かくなる上は、
+>  おのれら全員始末するまでよ
+“Tch, this is bad! If it comes to this, I'll dispose of every last one of you.
+---
+>  その上でゆっくりとエネルギーを
+>  手に入れればよい
+Then I can take the energy at my leisure.
+---
+>  百鬼軍団、ミケーネ軍団、
+>  攻撃開始だ!」
+Hyakki Corps, Mycenae Corps, begin the attack!”
+
+@28609 Astonaige · アストナージ
+> 「百鬼にミケーネだと……?
+>  おいっ、待て!」
+“Hyakki and Mycenae...? Hey, wait!”
+
+@28610 Marquis Janus · ヤヌス侯爵
+> 「ふははははは! 覚悟するがよい!」
+“Hahahahaha! Prepare yourselves!”
+
+@28611 Beecha · ビーチャ
+> 「何だかわかんねえけど、俺たちも
+>  逃げようぜ! おい、何してるんだよ!」
+“I don't know what's going on, but we should run too! Hey, what are you doing?!”
+
+@28612 Elle · エル
+> 「ちょっと待ってよ、ジュドーが……」
+“Wait a second, Judau is...”
+
+@28613 Judau · ジュドー
+> 「こいつをこうしてっと……よおっし
+>  動いたあ! みんな、これに乗れ!」
+“Put this like this... all right, it moved! Everyone, get on!”
+
+@28614 Astonaige · アストナージ
+> 「こ、こら、貴様ら、何をする!
+>  貴様らもあいつの仲間か!?」
+“H-hey, you lot, what are you doing! Are you that one's comrades too?!”
+
+@28615 Judau · ジュドー
+# 审校：ジュドー指ヤヌス侯爵，初稿用 her 错误，改为 him。
+> 「俺たちゃ別クチだって!
+>  そうそうおっさん、さっきの奴
+“We're not with him! Yeah, old man, that one earlier
+---
+>  あそこの赤いのと黒いのになんか
+>  仕掛けてったぜ、気をつけなよ!」
+planted something on the red one and the black one over there, so watch out!”
+
+@28616 Astonaige · アストナージ
+> 「な、何!?
+>  こら、待て、待たないか!!」
+“W-what?! Hey, wait, won't you wait!!”
+
+@28617 Pagan · パーガン
+> 「リリーナ様、
+>  大変なことが起こりました」
+“Lady Relena, something terrible has happened.”
+
+@28618 Relena · リリーナ
+> 「パーガン、何ごとです?
+>  あの騒ぎはいったい何なのですか?」
+“Pagan, what is it? What on earth is all that commotion?”
+
+@28619 Pagan · パーガン
+> 「それが……、百鬼帝国とミケーネの
+>  軍勢が、突如襲って参りました
+“Well... the Hyakki Empire and the Mycenae forces have suddenly attacked.
+---
+>  例のエネルギー研究施設を
+>  狙っておりますようで……」
+It seems they're after that energy research facility...”
+
+@28620 Relena · リリーナ
+> 「何ですって……!?」
+“What did you say...?!”
+
+@28621 Dorothy · ドロシー
+> 「まあ、何ということでしょう!
+>  リリーナ様、早く何とか
+“Oh, what a dreadful thing! Lady Relena, you must do something quickly.
+---
+>  いたしませんと。ああ、でもこの国は
+>  完全平和主義の国なのですね
+Ah, but this country is one of complete pacifism, isn't it?
+---
+>  リリーナ様、いったいどうすれば
+>  よろしいのかしら?」
+Lady Relena, whatever are you going to do?”
+
+@28622 Relena · リリーナ
+> 「……パーガン、
+>  すぐに街の人たちの避難を」
+“...Pagan, evacuate the townspeople at once.”
+
+@28623 Pagan · パーガン
+> 「は、はい!」
+“Y-yes!”
+
+@28624 Dorothy · ドロシー
+> 「そうそう、それでこそリリーナ様。それで
+>  そのあとはどうなさるの? 降伏?
+“Yes, yes, that's just like you, Lady Relena. And then what will you do? Surrender?
+---
+>  まさか、リリーナ様はそんなことは
+>  いたしませんよねえ。もし街が
+Surely you wouldn't do that, Lady Relena. If the town were
+---
+>  突然化け物に襲われたとき、
+>  完全平和主義はいったい
+suddenly attacked by monsters, just how would complete pacifism
+---
+>  どうやって立ち向かうのでしょう?
+>  私、とっても興味がございますわ」
+stand against them? I'm ever so curious.”
+
+@28625 Pagan · パーガン
+> 「ドロシー様! このような時に……。
+“Lady Dorothy! At a time like this...
+---
+>  リリーナ様
+>  早く安全な場所へ……」
+Lady Relena, please hurry to somewhere safe...”
+
+@28626 Relena · リリーナ
+> 「私のことはあとになさい。
+>  住民たちの避難を急いで!」
+“Never mind me. Hurry and evacuate the residents!”
+
+@28627 Pagan · パーガン
+> 「は、はい! かしこまりました!」
+“Y-yes! As you wish!”
+
+@28628 Dorothy · ドロシー
+> 「ご立派ですわ、さすがはリリーナ様。
+>  そうでなくては
+“How admirable, just as expected of Lady Relena. It wouldn't do
+---
+>  私がっかりしてしまいますもの。でも、
+>  化け物は待ってくれませんことよ
+for you to be anything less. But the monsters won't wait, you know.
+---
+>  このままでは、街が
+>  粉々になってしまいますわ
+At this rate, the town will be smashed to pieces.
+---
+>  完全平和主義の姿を、
+>  ドロシーに見せてくださいな」
+Show Dorothy what complete pacifism looks like.”
+
+@28629 Relena · リリーナ
+> 「……」
+“...”
+
+@28630 Beltorchika · ベルトーチカ
+> 「敵部隊接近!
+>  艦長、迎撃命令を!」
+“Enemy forces approaching! Captain, give the order to intercept!”
+
+@28631 Bright · ブライト
+> 「……やむをえん。
+>  総員戦闘配置!」
+“...It can't be helped. All hands, battle stations!”
+
+@28632 Daisaku · 大作
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「だけどブライト艦長、
+>  そんなことしたら……」
+“But Captain Bright, if you do that...”
+
+@28633 David · デビッド
+> 「いってる場合かよ! やつら
+>  無差別に攻撃してくるぞ!」
+“Is this the time to say that?! They're attacking indiscriminately!”
+
+@28634 Amuro · アムロ
+> 「そのとおりだ。こうなってしまった以上
+>  敵を引きつけて戦うのが
+“He's right. Now that it's come to this, drawing the enemy in and fighting is
+---
+>  俺たちにできる、せいいっぱいのことだ」
+the very best we can do.”
+
+@28635 Bright · ブライト
+> 「ノインさん……よろしいですね」
+“Noin... you're all right with this?”
+
+@28636 Noin · ノイン
+# 审校：“Everyone of the {HeroMech}”不通顺，改为“Everyone aboard the {HeroMech}”。
+> 「……私もそう考えます。
+>  {HeroMech}の皆さん
+“...I feel the same way. Everyone aboard the {HeroMech},
+---
+>  出撃して下さい」
+please launch.”
+
+@28637 Ryoma · リョウ
+> 「よし、出撃だ! みんな行くぞ!」
+“All right, launch! Everyone, let's go!”
+
+@28638 Astonaige · アストナージ
+> 「ちょ、ちょっと待ってくれ!」
+“W-wait a second!”
+
+@28639 Bright · ブライト
+> 「アストナージ? どうしたんだ?」
+“Astonaige? What's wrong?”
+
+@28640 Astonaige · アストナージ
+# 审校：“It was those intruders from earlier”缺谓语，改为“It was the work of those intruders from earlier.”
+> 「ゲッターとマジンガーに、
+>  爆弾が仕掛けられてる
+“There are bombs planted on the Getter and the Mazinger.
+---
+>  さっきの侵入者のしわざだ」
+It was the work of those intruders from earlier.”
+
+@28641 Koji · 甲児
+> 「なんだってえ!?」
+“What did you say?!”
+
+@28642 Hayato · ハヤト
+> 「ちぃっ、何てこった!」
+“Tch, what a mess!”
+
+@28643 Astonaige · アストナージ
+> 「今、大急ぎで撤去してる。
+>  すまないがもう少し待ってくれ!」
+“We're removing them as fast as we can right now. Sorry, but wait a little longer!”
+
+@28644 Benkei · ベンケイ
+> 「……頼む。急いでくれよ」
+“...Please. Hurry.”
+
+@28645 Bright · ブライト
+> 「聞いての通りだ。
+>  残りの者はすぐに出ろ!」
+“You heard him. The rest of you, get out there now!”
+
+@28646 Noin · ノイン
+> 「……リリーナ様……お許し下さい……」
+“...Lady Relena... please forgive me...”
+
+@28647 Judau · ジュドー
+> 「ドサクサにまぎれて、MSもーらった!」
+“In all the confusion, I scored myself an MS!”
+
+@28648 Elle · エル
+> 「さっさと逃げようよ、ジュドー。
+>  ……きゃぁぁぁっ!」
+“Let's just get out of here, Judau. ...Kyaaa!”
+
+@28649 Judau · ジュドー
+> 「うわっ! 化け物どもがでたぁ!」
+“Whoa! The monsters are out!”
+
+@28650 Astonaige · アストナージ
+> 「もう少しで爆弾を解除できるんだ
+>  ……もう少しだけ待ってくれ」
+“I can disarm the bombs in just a little longer... just hold on a bit more.”
+
+@28651 Ryoma · リョウ
+> 「……百鬼の奴らめ!」
+“...Those Hyakki bastards!”
+
+@28652 Iino · イーノ
+> 「ねぇ、早く逃げようよ……」
+“Hey, let's hurry up and run...”
+
+@28653 Judau · ジュドー
+> 「逃げたくても、まわりじゅうに
+>  ウジャウジャいるしよ……
+“Even if we want to run, they're swarming everywhere...
+---
+>  よっしゃ、いっちょ戦ってみるか!」
+All right, let's give fighting a try!”
+
+@28654 Elle · エル
+> 「ジュドー、やっちゃって!」
+“Judau, go get 'em!”
+
+@28655 Dorothy · ドロシー
+> 「さすがですわリリーナ様、
+>  やっぱりこういう時には
+“How splendid, Lady Relena. Even with complete peace,
+---
+>  完全平和といえども戦わなくては
+>  しかたありませんものね。しかもかつての
+when it comes to this, one simply has no choice but to fight. And moreover, these are
+---
+>  反帝国レジスタンスの主力と
+>  なった戦士たち。すてきですわ」
+the warriors who once formed the backbone of the anti-Empire resistance. Wonderful.”
+
+@28656 Relena · リリーナ
+> 「……彼らの存在は
+>  自分の知らないことでした」
+“...Their existence was something I knew nothing about.”
+
+@28657 Dorothy · ドロシー
+> 「でも今となっては彼らの存在は
+>  心強いわ。……ねぇ、リリーナ様」
+“But now their presence is reassuring. ...Isn't that right, Lady Relena?”
+
+@28658 Relena · リリーナ
+> 「…………」
+“...”
+
+@28659 Marquis Janus · ヤヌス侯爵
+> 「まったく邪魔な連中だ、奴らを
+>  倒して超エネルギーを我らの手に!」
+“What a nuisance they are. Defeat them and the super energy will be ours!”
+
+@28660 Koji · 甲児
+> 「みんな、待たせたな!
+>  真打ち登場だぜ!」
+“Everyone, sorry to keep you waiting! The real star has arrived!”
+
+@28661 Ryoma · リョウ
+> 「ようやく爆弾の解除が
+>  終わったんだ。カリをかえしてやろうぜ!」
+“We've finally finished disarming the bombs. Let's pay them back for this!”
+
+@28662 Kurtz · カーツ（按段落 3DD3）
+> 「やはり、奴らか。フン、これでこそ
+>  化け物どもに同行した意味が
+“So it's them after all. Hmph, this is exactly why it was worth
+---
+>  あるというもの」
+coming along with those monsters.”
+
+@28663 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerName}!? ばかな、なぜお前が
+>  そんな連中と一緒に!?」
+“{PartnerName}?! Impossible, why are you with the likes of them?!”
+
+@28664 Kurtz · カーツ（按段落 3DD3）
+> 「知れたこと。貴様と戦うためよ!」
+“Isn't it obvious? To fight you!”
+
+@28665 Brad · ブラッド（按段落 3DD3）
+> 「くっ……もうやめろ{PartnerName}! こん
+>  なことをして何の意味があるッ!?」
+“Ngh... Stop this, {PartnerName}! What good does this do?!”
+
+@28666 Kurtz · カーツ（按段落 3DD3）
+> 「俺は貴様を倒せればそれで
+>  かまわん!! いくぞ{HeroName}!!」
+“As long as I can defeat you, I don't care about anything else!! Here I come, {HeroName}!!”
+
+@28667 Kurtz · カーツ（按段落 3DD3）
+> 「{HeroName}が出ていないという
+>  のか!? これでは話にならん!」
+“{HeroName} isn't even out here?! Then there's no point in this!”
+
+@28668 Kurtz · カーツ（按段落 3DD3）
+> 「ぐぅっ!?
+>  ばかなばかなばかなぁぁぁぁーっ!!」
+“Gah?! Impossible, impossible, impossible!!”
+
+@28669 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerName}……お前はいつまで……」
+“{PartnerName}... How long will you...”
+
+@28670 Kurtz · カーツ（按段落 3DD3）
+> 「{HeroName}ッ! 貴様はいったい
+>  どこまで俺をコケにすれば気がすむ!?」
+“{HeroName}! Just how far do you intend to make a fool of me?!”
+
+@28671 Amuro · アムロ
+> 「リリーナ代表、あなたに黙って
+>  いたことを申しわけなく思います」
+“Representative Relena, I am sorry that we kept this from you.”
+
+@28672 Relena · リリーナ
+> 「……」
+“...”
+
+@28673 Noin · ノイン
+> 「リリーナ様、すべては私が独断で
+>  やったことです。サンクキングダムを
+“Lady Relena, everything was done on my own authority. Even though it was to
+---
+>  守るためとはいえ、リリーナ様の
+>  お考えを知りながら……
+protect the Sanc Kingdom, knowing full well what you believed...
+---
+>  いっさいの責は、私にあります。
+>  どのようなご処分も
+The blame is entirely mine. Whatever punishment you see fit,
+---
+>  お受けする覚悟です」
+I am prepared to accept it.”
+
+@28674 Bright · ブライト
+> 「いや、我々はノインさんの考えに
+>  賛同してここに来たのです
+“No, we came here because we agreed with Noin's way of thinking.
+---
+>  それが、結果的に敵を
+>  ここに呼びこむことになってしまった……
+And as a result, we ended up drawing the enemy here...
+---
+>  リリーナ代表、
+>  我々{HeroMech}を
+Representative Relena, if you find our {HeroMech}
+---
+>  うとましく思われるなら、
+>  すぐに出発いたします」
+unwelcome, we will depart at once.”
+
+@28675 Eiji · エイジ
+> 「……」
+“...”
+
+@28676 Relena · リリーナ
+> 「立ち去る必要はありません」
+“There is no need for you to leave.”
+
+@28677 Noin · ノイン
+> 「リリーナ様?」
+“Lady Relena?”
+
+@28678 Relena · リリーナ
+> 「最も近い人の考えを
+>  受け入れることができずに
+“If I cannot accept the thinking of those closest to me,
+---
+>  どうして完全平和主義など
+>  実現することができるでしょうか
+how could I ever bring about complete pacifism?
+---
+>  ノインさん、あなたの心づかいに
+>  感謝します
+Noin, I am grateful for your consideration.
+---
+>  {HeroMech}の皆さん……、
+>  街を守って下さって、ありがとう」
+Everyone aboard the {HeroMech}... thank you for protecting the city.”
+
+@28679 Bright · ブライト
+> 「リリーナ代表……」
+“Representative Relena...”
+
+@28680 Relena · リリーナ
+> 「戦わずに守れる平和など……
+>  ないのでしょうか……。いいえ
+“Is there no such thing as peace that can be protected without fighting...? No,
+---
+>  きっとあるはずです。あると信じています
+>  ……それが見つかるまで……
+there must be. I believe there is... Until we find it...
+---
+>  どうかこの国を…」
+please, this country...”
+
+@28681 Dorothy · ドロシー
+> (さすがリリーナ様、私の
+>  みこんだお方だけのことはあるわ
+(As expected of Lady Relena. She truly is the woman I had her figured for.
+---
+>  いいえ、私の予想なんかより
+>  もっと素晴らしい方……
+No, she is even more wonderful than anything I imagined...
+---
+>  リリーナ様、これから
+>  もっと楽しくなってよ。うふふふふ……)
+Lady Relena, things are only going to get more interesting from here. Hee hee hee...)
+
+@28682 Treize · トレーズ
+> 「レディ、どういうことだ?」
+“Lady, what is the meaning of this?”
+
+@28683 Lady · レディ
+> 「閣下はずるうございます。閣下は
+>  世界の頂点に立たなければ
+“Your Excellency, you are being unfair. You are the one who must stand
+---
+>  ならないお方。なのに、世界を
+>  混乱のまま、放っておいでになる
+at the summit of the world. And yet you leave the world in chaos.
+---
+>  私は閣下のお手伝いのために
+>  宇宙へ上がりました
+I went up into space to assist Your Excellency.
+---
+>  そして、閣下の未来を
+>  ご用意しました」
+And I have prepared Your Excellency's future.”
+
+@28684 Treize · トレーズ
+> 「レディ、世界から戦いはなくならない
+>  ならば、常に強者が世界を
+“Lady, if war will never vanish from the world, then it is enough that the strong
+---
+>  治めればいい。人々は強い者に
+>  支配されることに喜びすら感じる
+always rule it. People even take pleasure in being ruled by the strong.
+---
+>  世界は戦ってこそ自然なのだ」
+It is only natural for the world to fight.”
+
+@28685 Lady · レディ
+> 「それには無駄な血が流れすぎます。
+>  閣下はすべての人々を愛せる
+“That spills far too much blood needlessly. Your Excellency is a man who can love
+---
+>  お方。宇宙から地球圏の
+>  平和を築けるお方です」
+all people. A man who can build peace across the Earth Sphere from space.”
+
+@28686 Treize · トレーズ
+> 「レディ、君は自分の理想で
+>  未来を見ている」
+“Lady, you are looking at the future through your own ideals.”
+
+@28687 Lady · レディ
+> 「閣下がお望みになったことです」
+“It is what Your Excellency wished for.”
+
+@28688 Treize · トレーズ
+> 「私の理想など、人間ひとりの
+>  妄想でしかない。歴史は
+“My ideals are nothing more than the delusion of one man. History is
+---
+>  日々の積み重ねでつくられる。
+>  個人の未来などに意味はない」
+built by the accumulation of each day. An individual's future has no meaning.”
+
+@28689 Lady · レディ
+> 「閣下の未来は決まっております。
+>  宇宙にこそ
+“Your Excellency's future is already decided. It is in space
+---
+>  閣下の未来が存在します」
+that Your Excellency's future exists.”
+
+@28690 Treize · トレーズ
+> 「レディ、私はそれほど強くない」
+“Lady, I am not that strong.”
+
+@28691 Lady · レディ
+> 「閣下……」
+“Your Excellency...”
+
+@28692 Treize · トレーズ
+> 「急ぐ必要はない。
+>  時代は繰り返されるのだ
+“There is no need to rush. The ages will repeat themselves.
+---
+>  レディ、もどってきておくれ、
+>  私の大好きだったレディ・アン」
+Lady, come back to me. Lady Une, whom I loved so dearly.”
+
+@28693 Bask · バスク
+> 「報告いたします!
+>  本日1540をもって
+“Reporting! As of 1540 today,
+---
+>  本隊はアステロイド・ベルトにおいて
+>  敵ムゲゾルバドス帝国軍中枢を
+our main force destroyed the enemy Muge Zorbados Empire's central command in the Asteroid Belt,
+---
+>  撃破、司令官シャピロを
+>  死亡せしめました! なお
+and killed their commander Shapiro! Furthermore,
+---
+>  ギルドローム将軍他は異次元に
+>  逃亡したと思われます!
+General Gildrome and the others are believed to have fled into another dimension!
+---
+>  ……閣下、勝利であります!!」
+...Your Excellency, this is a victory!!”
+
+@28694 Jamitov · ジャミトフ
+> 「うむ、よくやった! 貴軍は
+>  引き続き掃討戦をおこない
+“Good, well done! Your forces are to continue mopping-up operations
+---
+>  残敵をせん滅せよ。
+>  一兵たりとも討ちもらすな!」
+and annihilate the remaining enemy. Do not leave a single soldier alive!”
+
+@28695 Bask · バスク
+> 「ははっ! 了解であります!」
+“Yes, sir! Understood!”
+
+@28696 Dermail · デルマイユ
+> 「すばらしい、全くすばらしいな、
+>  MD部隊の戦力は
+“Wonderful, absolutely wonderful, the fighting power of the MD units.
+---
+>  奴らをいとも簡単にうちやぶるとは…」
+To think they would crush those bastards so easily...”
+
+@28697 Bask · バスク
+> 「お言葉ですがデルマイユ公爵、
+>  当方の被害も
+“With respect, Duke Dermail, our own losses are
+---
+>  決して少ないものではありませんぞ。
+>  帝国軍の
+by no means small either. If the Imperial forces were to return
+---
+>  大規模な再来があったとしたら、
+>  あるいは今回のようには……」
+in large numbers, then perhaps things would not go as they did this time...”
+
+@28698 Dermail · デルマイユ
+> 「バスク特佐、MDはまさにそのために
+>  あるのだ。最も合理的な兵士
+“Major Bask, that is precisely what the MDs are for. They are the most rational soldiers,
+---
+>  失ってもまた生産できる兵士なの
+>  だからな。もうしばらく時間があれば
+soldiers who can simply be produced again even if lost. Given a little more time,
+---
+>  かつてのムゲゾルバドス帝国の
+>  侵略時の戦力をも超えられよう
+we should be able to surpass even the forces of the old Muge Zorbados Empire
+---
+>  まったく問題はない」
+during their invasion. There is no problem at all.”
+
+@28699 Bask · バスク
+> 「…はっ」
+“...Yes, sir.”
+
+@28700 Jamitov · ジャミトフ
+> 「さて、次はいよいよ地球圏を固め
+>  ねば、な……。まったく休む暇もない」
+“Now then, next we must finally secure the Earth Sphere... There is truly no time to rest.”
+
+@28701 Judau · ジュドー
+> 「……なんでメシをくわせてくれんのさ?
+>  俺たちはあんたらのMSを盗んだんだぜ」
+“...Why are you feeding us? We stole your mobile suits, you know.”
+
+@28702 Astonaige · アストナージ
+> 「偶然とはいえ、やつらの潜入が
+>  わかったんだ。それにお前らが
+“It was by chance, but we learned of their infiltration. And it was because you
+---
+>  忠告してくれたからこそ爆弾が
+>  仕掛けられていることがわかった
+warned us that we found out bombs had been planted.
+---
+>  それがなかったら今ごろ……」
+If not for that, by now...”
+
+@28703 Hayato · ハヤト
+> 「ゲッターやマジンガーは
+>  なくなっていたってわけさ……」
+“So the Getter and the Mazinger were already gone...”
+
+@28704 Koji · 甲児
+> 「ま、オレたちからのお礼がわりってわけさ
+>  ……そんなことよりどうだい
+“Well, consider it our way of thanking you... Anyway, how about it,
+---
+>  オレたちの仲間にならないかい?」
+won't you join us?”
+
+@28705 Ryoma · リョウ
+> 「君の戦いぶりを見ていたが
+>  なかなかのものだった。……どうする?」
+“I've been watching how you fight, and you're quite something. ...So what will it be?”
+
+@28706 Judau · ジュドー
+> 「冗談じゃないね、そんな気はない……」
+“You've got to be kidding. I'm not interested...”
+
+@28707 Koji · 甲児
+> 「だったらいま食べているメシ代はらえ!
+>  お礼がわりだっていったの、撤回だ」
+“Then pay for the food you're eating right now! I take back what I said about it being thanks.”
+
+@28708 Judau · ジュドー
+> 「……わかった、メシの分は働くよ。
+>  仲間になるよ」
+“...Fine, I'll work off the meal. I'll join you.”
+
+@28709 Elle · エル
+> 「あのさ、これからも食べさせてもらえ
+>  るんだったら、あたしらも仲間になるよ
+“Hey, if you'll keep feeding us from now on, we'll join too.
+---
+>  ビーチャ、イーノ、モンド、いいよね!?」
+Beecha, Iino, Mondo, that's okay with you, right?!”
+
+@28710 Beecha · ビーチャ
+> 「いいぜ」
+“Fine by me.”
+
+@28711 Mondo · モンド
+> 「ま、いいか」
+“Eh, sure.”
+
+@28712 Iino · イーノ
+> 「ど、どうしようか……」
+“W-what should we do...”
+
+@28713 Elle · エル
+> 「あたしらとわかれて、
+>  ひとりでどうすんのよ? イーノ」
+“What are you going to do all by yourself, split off from us? Iino?”
+
+@28714 Iino · イーノ
+> 「…………わ、わかったよ……」
+“...O-okay, I get it...”
+
+@28715 Elle · エル
+> 「決まりだね! そうと決まったら
+>  ……おかわりくれない?」
+“Then it's settled! And now that that's decided... could I get seconds?”
+
+@28716 Amuro · アムロ
+# 检查提示：未用必用译名：ムゲ帝国→Muge Empire
+> 「ムゲ帝国軍が撤退したって!?」
+“The Muge Imperial forces have withdrawn?!”
+
+@28717 Bright · ブライト
+> 「ああ。今パーガンさんから
+>  知らせがあった
+“Yeah. Pagan just sent word.
+---
+>  アステロイド基地は壊滅、
+>  司令官シャピロは戦死……」
+The Asteroid Base was destroyed, and Commander Shapiro was killed in action...”
+
+@28718 Ryoma · リョウ
+> 「なんてこった……」
+“You've gotta be kidding me...”
+
+@28719 Hayato · ハヤト
+> 「喜んでいいもの……なんだろうな。
+>  やれやれ
+“I wonder if we should really be happy...about this. Good grief,
+---
+>  複雑な気分とはこのことだ」
+this is what they mean by mixed feelings.”
+
+@28720 Eiji · エイジ
+> 「何年もの間……俺たちが必死に
+>  戦い続けてきた、あのムゲ帝国が
+“For all those years... that Muge Empire we kept fighting so desperately,
+---
+>  こんなにあっけなく……。
+>  俺は……俺には信じられない……」
+just like that, so easily... I... I can't believe it...”
+
+@28721 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@28722 Simone · シモーヌ
+> 「でも事実ね……。恐ろしい
+>  兵器だわ、新型MDってやつ……」
+“But it's a fact... What a terrifying weapon, that new MD thing...”
+
+@28723 David · デビッド
+> 「やれやれ、結局俺たちは、おいしい
+>  ところを持ってかれちまったってこった」
+“Good grief. In the end, we had the best part snatched right out from under us.”
+
+@28724 Daisaku · 大作
+> 「でも、ようやくこれで地球圏が
+>  地球人の手に
+“But now the Earth Sphere has finally returned to
+---
+>  もどったんじゃないですか。
+>  これっていいことなんでしょう?」
+the hands of Earth's people, hasn't it? That's a good thing, right?”
+
+@28725 Amuro · アムロ
+> 「まあ、そうだな。これで俺たちは、
+>  目の前の仕事に
+“Well, yes. Now we can devote ourselves to the work right in front of us.
+---
+>  没頭できるというわけだ。いやおうなく」
+Whether we like it or not.”
+
+@28726 Roanne · ロアン
+> 「サンクキングダムを守ることですね。
+>  そう……いよいよここが標的になる」
+“Defending the Sanc Kingdom. Yes... at last this place will become a target.”
+
+@28727 Bright · ブライト
+> 「そうだ、我々の仕事はこれからだ。
+>  エイジ、他のみんなも
+“That's right. Our work starts now. Eiji, and everyone else,
+---
+>  これからが正念場だぞ!」
+the real test begins from here!”

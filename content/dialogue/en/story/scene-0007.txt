@@ -1,0 +1,1064 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17972 Roux · ルー
+> 「カラバの破嵐万丈さんですね
+>  ライフのルー・ルカです」
+“You're Banjo Haran of Karaba, right? I'm Roux Louka of L.I.F.E.”
+
+@17973 Banjo · 万丈
+> 「ご苦労様。それでイゴール将軍の
+>  親書というのは?」
+“Thanks for coming all this way. So, what's this letter from General Igor?”
+
+@17974 Roux · ルー
+> 「これです。どうぞ」
+“Here it is. Please, go ahead.”
+
+@17975 Banjo · 万丈
+> 「ありがとう。…………」
+“Thank you. ......”
+
+@17976 Koji · 甲児
+> 「……なぁ、ライフってなんだ?」
+“...Hey, what's L.I.F.E.?”
+
+@17977 Brad · ブラッド（按段落 3DD3）
+> 「知らん。俺に聞くなよ」
+“Beats me. Don't ask me.”
+
+@17978 Garrison · ギャリソン
+> 「地球解放戦線機構、
+>  つまり、
+“The Liberation Front of the Earth, that is,
+---
+>  Liberation Front of
+>  the Earthの略称ですな
+the abbreviation for Liberation Front of the Earth.
+---
+>  スタッフの中でも特に
+>  実働部隊で好まれる
+Among the staff, it seems to be the preferred
+---
+>  呼び方のようです」
+name, especially in the combat units.”
+
+@17979 Koji · 甲児
+> 「へぇ、さすが物知りですね」
+“Wow, you really know your stuff.”
+
+@17980 Sayaka · さやか
+> 「カラバにいるくせに、甲児くんたち
+>  の方が知らなすぎるのよ」
+“You're with Karaba, and yet you two know even less than anyone.”
+
+@17981 Brad · ブラッド（按段落 3DD3）
+> 「そんなもの知らなくとも
+>  戦いに支障はない」
+“Not knowing that doesn't get in the way of fighting.”
+
+@17982 Koji · 甲児
+> 「まったくだぜ」
+“Exactly.”
+
+@17983 Sayaka · さやか
+> 「……もう」
+“...Honestly.”
+
+@17984 Simone · シモーヌ
+> 「あなたって、ほんと無知ね。
+>  地球解放戦線機構……
+“You really are clueless. The Liberation Front of the Earth...
+---
+>  つまり、Liberation Front
+>  of the Earthの略称よ
+that is, the abbreviation for Liberation Front of the Earth.
+---
+>  スタッフの中でも特に実働部隊
+>  で好まれる呼び方だわ」
+Among the staff, it's the preferred name, especially in the combat units.”
+
+@17985 Koji · 甲児
+> 「ちぇっ、無知はないだろう、
+>  無知は」
+“Tch, clueless is a bit much, don't you think?”
+
+@17986 Sayaka · さやか
+> 「本当のことだもの、
+>  しょうがないじゃない」
+“It's the truth, so you can't help it, can you?”
+
+@17987 Koji · 甲児
+> 「なにぃ」
+“What?!”
+
+@17988 Banjo · 万丈
+> 「……なるほど。ルー、君は
+>  この内容は知っているのか?」
+“...I see. Roux, do you know what's in here?”
+
+@17989 Roux · ルー
+> 「ええ。そのために、このままこちらに
+>  合流して行動するように、
+“Yes. I've been instructed to join up with you here and operate together,
+---
+>  との指示を受けています。私の
+>  ジェガンも運び込んでもらってますから」
+so that's what I'm doing. My Jegan's been brought in as well.”
+
+@17990 Koji · 甲児
+> 「その、なんたら将軍っていうのは
+>  なんて言って来たんだ?」
+“So what did that general guy have to say?”
+
+@17991 Banjo · 万丈
+> 「コロニーのM作戦を
+>  キャッチしたので
+“He says they've caught wind of the colonies' Operation M,
+---
+>  その実態調査に協同で
+>  あたりたいと言ってきている
+and he wants us to work together to investigate what's really going on.
+---
+>  地球解放戦線は
+>  この地域をカバーしていないからね」
+The Liberation Front of the Earth doesn't cover this region, after all.”
+
+@17992 Roux · ルー
+> 「M作戦っていうのは、コロニーの
+>  一部過激派が遂行していると
+“Operation M is a plan that some radical faction in the colonies is believed
+---
+>  思われる計画で、簡単に言うと
+>  流星に偽装した新兵器を
+to be carrying out. Simply put, they're dropping new weapons disguised as
+---
+>  地球へ投下して、破壊活動
+>  をさせようっていうものらしいわ」
+meteors onto Earth to carry out acts of destruction.”
+
+@17993 Banjo · 万丈
+> 「地球解放戦線機構は
+>  宇宙でも活動していると聞いたが
+“I heard the Liberation Front of the Earth operates in space too,
+---
+>  それでもその程度の情報しか
+>  つかめないとはね」
+but even so, that's all the intel they can get?”
+
+@17994 Roux · ルー
+> 「我々が把握しているのはコロニーの
+>  ごく一部だけですからね。帝国の
+“We only have a grasp on a tiny portion of the colonies. The Empire's
+---
+>  監視が厳しくてコロニー間の
+>  連絡もほとんどとれないし、
+surveillance is strict, and there's almost no contact between colonies.
+---
+>  M作戦のグループは我々とまったく
+>  別のものですから、仕方ありませんよ」
+The Operation M group is completely separate from us, so it can't be helped.”
+
+@17995 Garrison · ギャリソン
+> 「確かに、今後の活動を考えれば
+>  敵か味方かだけでも確認して
+“Indeed. Considering our future operations, we'd at least like to confirm
+---
+>  おきたいところですな」
+whether they're friend or foe.”
+
+@17996 Brad · ブラッド（按段落 3DD3）
+> 「はっ、敵だったらその場で
+>  叩きつぶしてやるさ
+“Ha, if they're the enemy, I'll crush them on the spot.
+---
+>  いくんだろ、万丈?」
+We're going, right, Banjo?”
+
+@17997 Manami · マナミ（按段落 3DD4）
+> 「かなりの危険をおかして
+>  降下してくるんですもの
+“They're descending at considerable risk,
+---
+>  きっと味方になってくれるわ」
+so I'm sure they'll be on our side.”
+
+@17998 Simone · シモーヌ
+> 「そうだといいんだけど。宇宙は
+>  地上以上に混乱しているって
+“I hope so. They say space is even more chaotic than the surface.
+---
+>  いう話だしね。結局、調査には
+>  いくんでしょ?」
+In the end, you're going to investigate, aren't you?”
+
+@17999 Banjo · 万丈
+# 待译：机翻未采用（页数应为 3，实际给了 2（zh 必须与 ja 逐页对应））
+# 草稿第 1 页：“Yeah, that's the plan. Garrison, send General Igor a message saying we accept.
+# 草稿第 2 页：Also, have the nearby regions strengthen their space surveillance.”
+> 「ああ、そのつもりだ。ギャリソン、
+>  イゴール将軍に了解したと
+---
+>  電文を送ってくれ。それから、
+>  近隣地域に対宙監視を
+---
+>  強化してもらってくれ」
+
+@18000 Garrison · ギャリソン
+> 「かしこまりました」
+“Understood.”
+
+@18001 Banjo · 万丈
+> 「さて、じゃあ僕たちは流星が落ちて
+>  くるのを待つとしようか」
+“Well then, let's wait for the meteors to fall.”
+
+@18002 Garrison · ギャリソン
+> 「万丈さま、ほぼ同時に大気圏
+>  へ突入すると思われる
+“Master Banjo, six meteor-like objects have been confirmed,
+---
+>  隕石らしきものが6つ
+>  確認されたようです」
+and they appear to be entering the atmosphere almost simultaneously.”
+
+@18003 Banjo · 万丈
+> 「6つもか。よし、一番近いやつは
+>  どこへ落ちるか、確認してくれ」
+“Six of them? All right, find out where the closest one is going to land.”
+
+@18004 Garrison · ギャリソン
+> 「モニターに出します」
+“I'll put it on the monitor.”
+
+@18005 Brad · ブラッド（按段落 3DD3）
+> 「例の奴が落ちてくるのか?」
+“So that thing's coming down?”
+
+@18006 Banjo · 万丈
+> 「ああ。この距離では落下には
+>  間に合わないが、すぐ出よう」
+“Yeah. At this distance we won't make it in time for the landing, but let's head out now.”
+
+@18007 Brad · ブラッド（按段落 3DD3）
+> 「わかった。{PartnerName}……
+>  おい、{PartnerName}!」
+“Got it. {PartnerName}... Hey, {PartnerName}!”
+
+@18008 Kurtz · カーツ（按段落 3DD3）
+> 「……聞こえている。
+>  出るのだろう、わかっている」
+“...I heard you. We're heading out. I know.”
+
+@18009 Brad · ブラッド（按段落 3DD3）
+> 「……なんだよ、変な奴だな」
+“...What's with you? Weird guy.”
+
+@18010 Manami · マナミ（按段落 3DD4）
+> 「いよいよね。
+>  一体、何が落ちてくるのかしら」
+“It's finally time. I wonder what's going to fall.”
+
+@18011 Simone · シモーヌ
+> 「さぁてね。でも万丈、この距離じゃ
+>  落下には間に合わないわよ」
+“Who knows. But Banjo, at this distance we won't make it in time for the landing.”
+
+@18012 Banjo · 万丈
+> 「ま、しかたないさ。
+>  できるだけ急ごう」
+“Well, can't be helped. Let's hurry as much as we can.”
+
+@18013 Banjo · 万丈
+> 「ここが落下地点だな。
+>  ……やはり移動した後か」
+“This is the landing site. ...So it's already moved on.”
+
+@18014 Roux · ルー
+> 「見て、あんなに足跡がついてるわ。
+>  あれはモビルスーツのでしょ」
+“Look, there are so many footprints. Those are from Mobile Suits, aren't they?”
+
+@18015 Koji · 甲児
+> 「なんだって? じゃあ、そんなに
+>  たくさんのモビルスーツが
+“What? You mean that many Mobile Suits
+---
+>  空から降ってきたっていうのか?」
+came falling down from the sky?”
+
+@18016 Sayaka · さやか
+> 「違うわよ。落下した何かと
+>  モビルスーツの部隊が接触したって
+“No, that's not it. I bet whatever fell down
+---
+>  ことじゃないの」
+came into contact with a Mobile Suit unit.”
+
+@18017 Banjo · 万丈
+> 「そういうこと。残骸がない以上は
+>  敵に遭遇して撃破されたとは
+“That's right. With no wreckage left behind, I doubt they were
+---
+>  考えられないな。捕獲されたのか、
+>  仲間と合流したのか……」
+found by the enemy and destroyed. Either they were captured, or they linked up with allies...”
+
+@18018 Roux · ルー
+> 「いずれにしても、
+>  いってみるしかないんじゃない?」
+“Either way, we've got no choice but to go check it out, right?”
+
+@18019 Banjo · 万丈
+> 「こちら万丈」
+“This is Banjo.”
+
+@18020 Garrison · ギャリソン
+> 「その付近の帝国軍基地で
+>  戦闘が行われている模様です
+“It appears fighting is underway at the Imperial base nearby.
+---
+>  お気をつけて」
+Please be careful.”
+
+@18021 Banjo · 万丈
+> 「了解。戦闘か……
+>  よし、いってみよう」
+“Roger. A battle, huh... All right, let's go.”
+
+@18022 Brad · ブラッド（按段落 3DD3）
+> 「帝国軍の基地だな?
+>  へっ、そうこなくてはな」
+“An Imperial base, huh? Heh, now that's more like it.”
+
+@18023 Quatre · カトル
+> 「武器を捨てて投降しろ。
+>  命まで奪うとは言わない」
+“Throw down your weapons and surrender. I won't say I'll take your lives.”
+
+@18024 Specials · スペシャルズ
+> 「ふざけやがって! くらえ!」
+“Don't screw with us! Take this!”
+
+@18025 Quatre · カトル
+> 「こちらカトル、隊長機を破壊した
+>  これより敵基地をせん滅する
+“This is Quatre. I've destroyed the commander's unit. From here I'll wipe out the enemy base.
+---
+>  ……言ったよ、
+>  僕は投降しろって……」
+...I told you, I said surrender...”
+
+@18026 Rasid · ラシード
+> 「さすがですな、カトル様
+>  よぉしお前ら、ヘマすんじゃねぇぞ!」
+“As expected of you, Lord Quatre! All right, you lot, don't screw this up!”
+
+@18027 Banjo · 万丈
+> 「帝国基地を
+>  攻撃している……?
+“They're attacking an Imperial base...?
+---
+>  M作戦で降下したのは
+>  あのガンダムタイプか?」
+Was that Gundam type the one that descended in Operation M?”
+
+@18028 Koji · 甲児
+> 「どうするんだよ、万丈さん」
+“What do we do, Mr. Banjo?”
+
+@18029 Rasid · ラシード
+> 「カトル様っ!」
+“Lord Quatre!”
+
+@18030 Quatre · カトル
+> 「しまった、新手か!?」
+“Damn, reinforcements?!”
+
+@18031 Banjo · 万丈
+> 「僕はカラバの破嵐万丈だ。
+>  コロニーから降下したのは君か?
+“I'm Banjo Haran of Karaba. Was it you who descended from the colony?
+---
+>  帝国軍と交戦している以上、
+>  敵とは思いたくないが?」
+Since you're fighting the Imperial forces, I'd rather not think of you as an enemy, but?”
+
+@18032 Quatre · カトル
+> (カラバ……
+>  確か地球の反帝国組織だ
+(Karaba... if I recall, that's an anti-Imperial organization on Earth.
+---
+>  確かに彼らは僕のターゲット
+>  ではない…… だけど
+It's true they're not my target... but
+---
+>  味方と判断するには
+>  情報が少なすぎる)
+there's too little information to judge them as allies.)
+
+@18033 Quatre · カトル
+> 「僕はカトル。
+>  カトル・ラバーバ・ウィナー
+“I'm Quatre. Quatre Raberba Winner.
+---
+>  確かに僕はコロニーから来ました。
+>  しかし、今は敵ではない、としか
+It's true I came from a colony. However, all I can say for now is that I'm not your enemy.
+---
+>  言えません。邪魔はしないでください」
+Please don't get in my way.”
+
+@18034 Banjo · 万丈
+> 「了解した。邪魔はしないさ
+“Understood. I won't get in your way.
+---
+>  みんな、
+>  僕たちも基地を攻撃するぞ」
+Everyone, we'll attack the base too.”
+
+@18035 Brad · ブラッド（按段落 3DD3）
+> 「あの連中に協力するのか!?」
+“You're going to cooperate with those guys?!”
+
+@18036 Banjo · 万丈
+> 「結果的には、さ。帝国軍の
+>  基地の1つをせん滅するチャンスだ
+“In the end, yes. This is our chance to wipe out one of the Imperial bases.
+---
+>  有効に利用したい」
+I want to make good use of it.”
+
+@18037 Brad · ブラッド（按段落 3DD3）
+> 「なるほどな、わかった。
+>  ならばいくぞ!」
+“I see, got it. Then let's go!”
+
+@18038 Manami · マナミ（按段落 3DD4）
+> 「現状で敵ではないのなら、
+>  することは、それだけですものね」
+“If they're not our enemy as things stand, then that's all there is to do.”
+
+@18039 Lawrence · ローレンス
+> 「そうでございますな」
+“Indeed, my lady.”
+
+@18040 Roux · ルー
+> 「了解よ、万丈さん。
+>  その判断には賛成するわ」
+“Understood, Mr. Banjo. I agree with that call.”
+
+@18041 Rasid · ラシード
+> 「いいんですかい、カトル様」
+“Is that all right, Lord Quatre?”
+
+@18042 Quatre · カトル
+> 「かまわないよ。こちらにしてもムダな
+>  損害を出さずにすめば
+“It's fine. If it means we can avoid needless losses on our side,
+---
+>  それにこしたことはない」
+then all the better.”
+
+@18043 Quatre · カトル
+> 「くっ、しまった……」
+“Ngh, damn...”
+
+@18044 Rasid · ラシード
+> 「カトル様!? どうやらこれ以上は
+>  無理そうですな
+“Lord Quatre?! It seems we can't hold out any longer.
+---
+>  ここは撤退しましょう、カトル様」
+Let's retreat here, Lord Quatre.”
+
+@18045 Quatre · カトル
+> 「……カラバの方、共に戦えてよかった
+>  僕たちはこれで、ひきあげます
+“...To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+---
+>  次に会うときも、
+>  敵ではないことを祈ります」
+I pray that when we meet again, we won't be enemies.”
+
+@18046 Quatre · カトル
+> 「くっ、しまった……これ以上は
+>  無理か……」
+“Ngh, damn... I can't hold out any longer...”
+
+@18047 Quatre · カトル
+> 「……カラバの方、共に戦えてよかった
+>  僕たちはこれで、ひきあげます
+“...To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+---
+>  次に会うときも、
+>  敵ではないことを祈ります」
+I pray that when we meet again, we won't be enemies.”
+
+@18048 Brad · ブラッド（按段落 3DD3）
+> 「おい、いっちまうぜ。
+>  いいのかよ」
+“Hey, they're taking off. You sure about this?”
+
+@18049 Banjo · 万丈
+> 「今回は、これでいいさ」
+“For this time, it's fine.”
+
+@18050 Manami · マナミ（按段落 3DD4）
+> 「そうね……そう祈りたいわ、アタシも」
+“Yes... I'd like to pray for that too.”
+
+@18051 Mash · マッシュ
+> 「基地は壊滅のようだな」
+“Looks like the base has been annihilated.”
+
+@18052 Ortega · オルテガ
+> 「なに、奴らの足止めをしてくれたと
+>  考えればよかろう」
+“What's the harm? Just think of it as them buying us time.”
+
+@18053 Mash · マッシュ
+> 「なら、連中をつぶさんと、基地の
+>  連中に申しわけがたたんな」
+“Then if we don't crush those guys, we'll have no excuse to give the folks back at base.”
+
+@18054 Gaia · ガイア
+# 机翻疑问：页数不符：原文2页，但两页内容相同，按原文逐页对应输出
+> 「オルテガ、マッシュ、せっかくの
+>  特注装備だ。使い勝手を
+“Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how it handles, if we get the chance, we're using that.
+---
+>  整備兵に知らせてやるためにも、
+>  チャンスがあればあれをやるぞ」
+Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how it handles, if we get the chance, we're using that.”
+
+@18055 Mash · マッシュ
+> 「了解だ、ガイア。ドライセンでどこまで
+>  できるか、試してみるとしよう」
+“Roger, Gaia. Let's see just how far a Dreissen can go.”
+
+@18056 Ortega · オルテガ
+> 「おうさ」
+“You bet.”
+
+@18057 Gaia · ガイア
+> 「よし、いくぞ!」
+“All right, here we go!”
+
+@18058 Rasid · ラシード
+> 「カトル様、どうやら新手のようですな
+>  どうしますか?」
+“Lord Quatre, it seems fresh enemy units have arrived. What shall we do?”
+
+@18059 Quatre · カトル
+> 「さすがに対応が早いね。ラシード、
+>  僕たちは退きましょう
+“They really are quick to respond. Rasid, we're pulling back.
+---
+>  最初の目的は達成しました。
+>  長居は無用です」
+Our initial objective is complete. There's no need to linger.”
+
+@18060 Rasid · ラシード
+> 「了解です、カトル様」
+“Understood, Lord Quatre.”
+
+@18061 Quatre · カトル
+> 「カラバの方、共に戦えてよかった。
+>  僕たちはこれで、ひきあげます
+“To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+---
+>  次に会うときも、
+>  敵ではないことを祈ります」
+I pray that when we meet again, we won't be enemies.”
+
+@18062 Brad · ブラッド（按段落 3DD3）
+> 「おい、いっちまうぜ。
+>  いいのかよ」
+“Hey, they're taking off. You sure about this?”
+
+@18063 Banjo · 万丈
+> 「それよりも、
+>  いよいよスペシャルズのお出ましだ
+“More importantly, the Specials are finally here.
+---
+>  地球人同士だからといって、
+>  手加減してやる必要などない
+Just because they're Earthlings doesn't mean we need to hold back.
+---
+>  全力で叩きつぶすんだ」
+We'll crush them with everything we've got.”
+
+@18064 Brad · ブラッド（按段落 3DD3）
+> 「ひゅーっ、いうじゃないか
+>  そういうことなら話は別だ
+“Whoa, now that's more like it. If that's how it is, that's a different story.
+---
+>  さぁ来やがれ!」
+Come on, bring it!”
+
+@18065 Sayaka · さやか
+# 审校：原文「ねえ、追わなくていいの?」中的「ねえ」漏译，补上呼唤语气。
+> 「ちょっと、待ちなさいよ!
+>  ねえ、追わなくていいの?」
+“Hey, wait a minute! Hey, shouldn't we go after them?”
+
+@18066 Manami · マナミ（按段落 3DD4）
+> 「だめよ! スペシャルズを前にしながら
+>  逃げるなんて、絶対だめ!」
+“No! Running away with the Specials right in front of us is absolutely out of the question!”
+
+@18067 Koji · 甲児
+> 「なんだよ突然。
+>  一体どうしたっていうんだ?」
+“What's with you all of a sudden? What on earth's going on?”
+
+@18068 Manami · マナミ（按段落 3DD4）
+> 「帝国は確かに許せない
+“The Empire is unforgivable, sure.
+---
+>  でもそれ以上に、スペシャルズは
+>  もっと許せないわ!」
+But even more than them, I can't forgive the Specials!”
+
+@18069 Simone · シモーヌ
+# 审校：原文「アタシもそう思うわ」是“我也这么想”，初稿“I feel the same way”可接受，但为更自然改为“I think so too”。
+> 「そうね、アタシもそう思うわ」
+“Yeah, I think so too.”
+
+@18070 Banjo · 万丈
+> 「みんな、敵の新手を叩くぞ!」
+“Everyone, we're hitting the enemy's new units!”
+
+@18071 Mash · マッシュ
+> 「何機か逃げたようだな」
+“Looks like a few of them got away.”
+
+@18072 Ortega · オルテガ
+> 「放っておけ
+>  我々の本来の役目は
+“Leave them. Our real job is
+---
+>  レジスタンスの掃討だ」
+mopping up the Resistance.”
+
+@18073 Gaia · ガイア
+> 「そういうことだな。我々は残った
+>  レジスタンスを叩くぞ
+“That's right. We'll hit the Resistance remnants.
+---
+>  オルテガ、マッシュ、せっかくの
+>  特注装備だ。使い勝手を
+Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics
+---
+>  整備兵に知らせてやるためにも、
+>  チャンスがあればあれをやるぞ」
+how it handles, if we get the chance, we're using that.”
+
+@18074 Mash · マッシュ
+> 「了解だ、ガイア。ドライセンでどこまで
+>  できるか、試してみるとしよう」
+“Roger, Gaia. Let's see just how far a Dreissen can go.”
+
+@18075 Ortega · オルテガ
+> 「おうさ」
+“You bet.”
+
+@18076 Gaia · ガイア
+> 「よし、いくぞ!」
+“All right, here we go!”
+
+@18077 Banjo · 万丈
+> 「ふう……終わったか」
+“Phew... it's over, huh.”
+
+@18078 Koji · 甲児
+> 「敵基地は完全に沈黙、と。
+>  ひきあげるかい?」
+“Enemy base is completely silent. Shall we pull out?”
+
+@18079 Banjo · 万丈
+> 「ああ……いや、ちょっと待ってくれ。
+>  いいものが残っていたみたいだ」
+“Yeah... no, hold on a second. Looks like they left something good behind.”
+
+@18080 Roux · ルー
+> 「いいものって?」
+“Something good?”
+
+@18081 Banjo · 万丈
+> 「ガルダタイプの輸送機だよ
+“A Garuda-type transport.
+---
+>  ちょうど足を確保したいと
+>  思っていたところだ
+I was just thinking we needed a ride.
+---
+>  後でギャリソンたちに
+>  取りに来させよう」
+I'll have Garrison and the others come pick it up later.”
+
+@18082 Trowa · トロワ
+> 「ん? 攻撃を受けたか。
+>  発見された以上は見逃せない
+“Hm? We're under attack. Now that they've found us, I can't let them go.
+---
+>  スペースポートの破壊が目標
+>  だったが、すべてを消滅させる」
+My target was the spaceport, but I'll wipe out everything.”
+
+@18083 Specials · スペシャルズ
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaaaah!!”
+
+@18084 Wufei · 五飛
+> 「俺の名は張五飛。
+>  この戦い、すぐにケリをつける!」
+“My name is Chang Wufei. I'll settle this battle right now!”
+
+@18085 Garrison · ギャリソン
+> 「各地で確認された
+>  ガンダムタイプは
+“The Gundam-types confirmed in various locations,
+---
+>  先ほどのものも合わせて
+>  全部で5体ですな
+including the one from earlier, total five in all.
+---
+>  かなりの規模の破壊活動が
+>  確認されておりますが
+We've confirmed a considerable scale of destruction,
+---
+>  うち一体はスペシャルズの
+>  攻撃によって海中に落下し
+but one of them fell into the sea from the Specials' attack,
+---
+>  パイロットの生存確率は
+>  かなり低いようです」
+and the pilot's chances of survival appear quite low.”
+
+@18086 Banjo · 万丈
+> 「それがすべてM作戦で降下してきた
+>  のか。敵には、したくないものだね
+“So they all descended in Operation M. I wouldn't want them as enemies.
+---
+>  僕らが会ったのは、まだ少年だった
+>  が、冷静な判断力を持っていた
+The one we met was still a boy, but he had a calm head on him.
+---
+>  1人減ったとして、あとの3人は
+>  いったい……
+With one gone, what in the world are the other three...
+---
+>  ちょっと待ってくれ、ギャリソン。
+>  確認されたのは5ヶ所だけなのか?
+Hold on a second, Garrison. Only five locations were confirmed?
+---
+>  もう1つは?」
+What about the other one?”
+
+@18087 Garrison · ギャリソン
+> 「落下は確認されておるのですが、
+>  その後、なんの情報もないようです
+“Its descent was confirmed, but there's been no information since.
+---
+>  帝国も発見できなかった
+>  ようですな」
+It seems even the Empire couldn't find it.”
+
+@18088 Banjo · 万丈
+> 「そう……か……気になるな……。
+>  引き続き情報を集めてくれ
+“I... see... That bothers me... Keep gathering information.
+---
+>  それと、
+>  イゴール将軍にも連絡を
+Also, get in touch with General Igor.
+---
+>  ああそれから」
+Oh, and one more thing.”
+
+@18089 Garrison · ギャリソン
+> 「海中に沈んだガンダムタイプの
+>  探査状況ですな」
+“You mean the search status of the Gundam-type that sank into the sea.”
+
+@18090 Banjo · 万丈
+> 「そう。頼むよ」
+“That's right. I'm counting on you.”
+
+@18091 Relena · リリーナ
+> 「あなた、ヒイロといったわね。
+>  こんなところで何をしているの。教えて
+“You... your name was Heero, wasn't it? What are you doing in a place like this? Tell me.
+---
+>  そして、あなたは何者?」
+And who are you?”
+
+@18092 Heero · ヒイロ
+> 「………………」
+“...”
+
+@18093 Relena · リリーナ
+> 「わたくし知りたいの、
+>  あなたのことを
+“I want to know about you.
+---
+>  なぜパイロットスーツのようなものを着て
+>  海岸に倒れていたのか
+Why were you lying on the beach wearing something like a pilot suit?
+---
+>  話しなさい、ヒイロ」
+Answer me, Heero.”
+
+@18094 Heero · ヒイロ
+> 「リリーナ・ドーリアン……
+>  A級市民だったな
+“Relena Darlian... an A-class citizen, weren't you.
+---
+>  深入りしすぎた。
+>  お前を、殺す」
+You've pried too deep. I'll kill you.”
+
+@18095 Heero · ヒイロ
+> 「く……」
+“Ngh...”
+
+@18096 Duo · デュオ
+> 「こういう場合、どう見たって
+>  お前の方が悪者だろ
+“In a case like this, no matter how you look at it, you're the bad guy.
+---
+>  ケガはないかい、お嬢さん」
+Are you hurt, miss?”
+
+@18097 Relena · リリーナ
+> 「大丈夫、ヒイロ? もうやめて。
+>  この人に、なんのうらみがあるんです」
+“Are you all right, Heero? Stop it already. What grudge do you have against this man?”
+
+@18098 Duo · デュオ
+> 「は……?
+“Huh...?
+---
+>  おいおい、ちょっと待ってくれよ
+Hey, hey, hold on a second.
+---
+>  俺の方が悪者になっちまってる
+>  じゃねぇか」
+Now I'm the one who's turned into the bad guy.”
+
+@18099 Heero · ヒイロ
+> 「ん……?」
+“Hm...?”
+
+@18100 Heero · ヒイロ
+> (あれは俺のガンダム……こいつが
+>  海中から引き上げたのか?)
+(That's my Gundam... did he pull it up from the sea?)
+
+@18101 Relena · リリーナ
+> 「え……何……?」
+“Huh... what...?”
+
+@18102 Duo · デュオ
+> 「おっと、みちゃいけねぇ。お嬢さん、
+>  なんかわけありみたいだけど、すぐこっから
+“Whoa, I shouldn't be seeing this. Miss, you seem to have some kind of story, but it's best for you to get out of here right away.
+---
+>  立ち去るのが身のためだ。
+>  この時代に立派な身なりの
+Even if you're a fine-looking A-class citizen in this day and age,
+---
+>  A級市民とはいえ、お嬢さんを
+>  殺すのは忍びない」
+I can't bring myself to kill you.”
+
+@18103 Relena · リリーナ
+> 「ヒイロ!?」
+“Heero?!”
+
+@18104 Duo · デュオ
+> 「まだやんのか!」
+“You're still going at it?!”
+
+@18105 Relena · リリーナ
+> (なんなの!?
+>  一体なんなの、この人たち!?)
+(What is this?! Just what is wrong with these people?!)
+
+@18106 Banjo · 万丈
+> 「なんだって!? 本当なのか、アラン」
+“What did you say?! Is it true, Alan?”
+
+@18107 Alan · アラン
+> 「信用できる情報だ
+>  占領軍に新司令官として
+“It's reliable information. As the new commander of the occupation army,
+---
+>  グレスコの息子が
+>  赴任してくるらしい
+it seems Gresco's son is being sent to take up the post.
+---
+>  我々としては可能ならば
+>  この男を始末したい
+As for us, if possible we'd like to do away with this man.
+---
+>  そうすれば帝国軍の士気は
+>  著しく低下するはずだ」
+If we do, the Imperial Army's morale should drop dramatically.”
+
+@18108 Banjo · 万丈
+> 「確かに。しかし帝国も
+>  それほど甘くは、ないだろう」
+“True enough. But the Empire won't be that easy, either.”
+
+@18109 Alan · アラン
+> 「わかっている
+“I know.
+---
+>  だが、これほどの機会は
+>  そうそうないのも事実だ
+But it's also a fact that an opportunity like this doesn't come often.
+---
+>  できれば現地に行って
+>  機会を、みてほしいな」
+If possible, I'd like you to go there and look for a chance.”
+
+@18110 Brad · ブラッド（按段落 3DD3）
+> 「おもしろいじゃないか
+“Sounds interesting.
+---
+>  もし本当なら、そいつが
+>  俺たちの直接の敵になる
+If it's true, that guy will be our direct enemy.
+---
+>  やれなかったとしても、
+>  そいつを見ておくのは悪くない」
+Even if we can't pull it off, it wouldn't hurt to get a look at him.”
+
+@18111 Koji · 甲児
+> 「オレも賛成だ
+“I'm in favor too.
+---
+>  うまくいきゃ一気に
+>  カタがつくかもしれねぇしな」
+If it goes well, we might settle this all at once.”
+
+@18112 Alan · アラン
+> 「フフフ」
+“Heh heh heh.”
+
+@18113 Brad · ブラッド（按段落 3DD3）
+> 「なにがおかしい!?」
+“What's so funny?!”
+
+@18114 Alan · アラン
+# 审校：第二页原文结尾没有句号，删除句号以符合页末标点规则。
+> 「いや、すまない。お前たちを見ていると
+>  昔の知り合いを思い出してな
+“No, forgive me. Watching you all reminds me of an old acquaintance.
+---
+>  で、どうする万丈。現地の
+>  レジスタンスたちにも話はつけてあるが」
+So, what will it be, Banjo? I've already arranged things with the local resistance.”
+
+@18115 Banjo · 万丈
+> 「わかった、
+>  やるか、やらないかは別として
+“Got it. Whether we do it or not,
+---
+>  とりあえず北米へいくとしよう。
+>  すぐに準備する」
+for now let's head to North America. I'll get us ready right away.”
+
+@18116 Brad · ブラッド（按段落 3DD3）
+> 「よぉし、おもしろくなってきたぜ!」
+“All right, now things are getting interesting!”
+
+@18117 Kurtz · カーツ（按段落 3DD3）
+> 「…………」
+“...”
+
+@18118 Banjo · 万丈
+> 「みんな、どう思う?」
+“Everyone, what do you think?”
+
+@18119 Simone · シモーヌ
+> 「アタシは賛成
+“I'm in favor.
+---
+>  ニューヨークには知り合いも
+>  いたはずだしね」
+I should have acquaintances in New York, after all.”
+
+@18120 Koji · 甲児
+> 「オレもだ
+“Me too.
+---
+>  うまくいきゃ一気に
+>  カタがつくかもしれねぇしな」
+If it goes well, we might settle this all at once.”
+
+@18121 Manami · マナミ（按段落 3DD4）
+> 「あまり気は進まないわね
+“I'm not too keen on it, honestly.
+---
+>  あの辺りは帝国の本拠地と
+>  いってもいいわ
+That area is practically the Empire's home base.
+---
+>  まだあたしたちに、それだけの
+>  準備が整っているとは
+I don't think we're ready for
+---
+>  思えないけど……
+something like that yet...
+---
+>  でも、それだけ意味が
+>  あるってことは認めるわ」
+But I'll admit there's that much to be gained from it.”
+
+@18122 Garrison · ギャリソン
+> 「確かに、いまの戦力では
+>  少々きつうございますな
+“Indeed, with our current forces it would be a bit tough.
+---
+>  しかし北米大陸でも
+>  反帝国運動は
+However, the anti-Imperial movement is showing
+---
+>  盛り上がりをみせております
+growing momentum on the North American continent as well.
+---
+>  現地のカラバと、
+>  地球解放戦線機構からも
+There's a strong chance we can get cooperation from the local Karaba
+---
+>  協力が得られる可能性は
+>  大いにありますな」
+and from the Liberation Front of the Earth as well.”
+
+@18123 Banjo · 万丈
+> 「よし、いこう。
+>  このところ帝国も
+“All right, let's go. Lately the Empire has been
+---
+>  十分対応できる体制を
+>  整えてきている
+building up a system that can respond well enough.
+---
+>  多少の強攻策も
+>  いいかもしれない」
+A bit of a hard push might not be a bad idea.”
+
+@18124 Alan · アラン
+> 「決まりだな
+“Then it's settled.
+---
+>  現地のレジスタンスには
+>  話をつけておく
+I'll arrange things with the local resistance.
+---
+>  戦力の増強も急がせる。
+>  なんとかうまくやってくれ」
+I'll hurry the reinforcements along too. Make it work somehow.”

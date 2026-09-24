@@ -1,0 +1,97 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11895 Hyoma · 豹馬
+> 「くたばれっ!!!」
+“Die!!!”
+
+@11896 Hyoma · 豹馬
+> 「いけーっ!!」
+“Go!!”
+
+@11897 Hyoma · 豹馬
+> 「くらえっ!!」
+“Take this!!”
+
+@11898 Hyoma · 豹馬
+> 「これでもくらえっ!!」
+“Take this too!!”
+
+@11899 Hyoma · 豹馬
+> 「いちかばちかだっ!!」
+“It's all or nothing!!”
+
+@11900 Hyoma · 豹馬
+> 「くそっ!! だめか!」
+“Damn!! No good?!”
+
+@11901 Hyoma · 豹馬
+> 「ちっくしょおおおっ! おぼえてやがれ!!」
+“Damn iiiit! You'll pay for this!!”
+
+@11902 Hyoma · 豹馬
+> 「ちっ! ドジったぜ!」
+“Tch! I screwed up!”
+
+@11903 Hyoma · 豹馬
+> 「ちいっ!! ちょいとヤバイぜ!」
+“Tch!! This is getting bad!”
+
+@11904 Hyoma · 豹馬
+> 「くっ! このままじゃヤバイぜ!!」
+“Ngh! At this rate I'm in trouble!!”
+
+@11905 Hyoma · 豹馬
+> 「ちくしょう! このままじゃ
+>  やられちまうぜっ!」
+“Damn! At this rate I'm gonna get taken out!”
+
+@11906 Hyoma · 豹馬
+> 「あいたっ! けど、この程度なら
+>  まだまだいけるぜ!」
+“Ow! But this much won't stop me!”
+
+@11907 Hyoma · 豹馬
+> 「うあっ! やりやがったなっ!」
+“Ugh! You got me!”
+
+@11908 Hyoma · 豹馬
+> 「くっ! やるじゃねえかっ!!」
+“Ngh! Not bad!!”
+
+@11909 Hyoma · 豹馬
+# 审校：原译“You did it!”会被误解为称赞对方，原文是“やったなっ”表示被击中的恼怒，改为“You got me!”更准确。
+> 「うわっ! やったなっ!」
+“Whoa! You got me!”
+
+@11910 Hyoma · 豹馬
+> 「へへん! 効いてないぜ!」
+“Heh! That didn't hurt!”
+
+@11911 Hyoma · 豹馬
+> 「あぶねぇ、あぶねぇ」
+“That was close, that was close.”
+
+@11912 Hyoma · 豹馬
+> 「あたるかっ!」
+“As if that'd hit!”
+
+@11913 Hyoma · 豹馬
+> 「あらよっと!」
+“Whoops!”
+
+@11914 Hyoma · 豹馬
+> 「この程度のビームなんざへでも
+>  ねえぜ!!」
+“A Beam like that's nothing to me!!”
+
+@11915 Hyoma · 豹馬
+> 「ヘン、効かねえぜ!」
+“Hmph, that won't work!”
+
+@11916 Hyoma · 豹馬
+> 「ちっ!反撃できねえ!」
+“Tch! I can't fight back!”
+
+@11917 Hyoma · 豹馬
+> 「くそっ!とどかねえ!」
+“Damn! It won't reach!”

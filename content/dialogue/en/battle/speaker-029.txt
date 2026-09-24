@@ -1,0 +1,231 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11322 Ehrlich · エルリッヒ
+> 「直撃させるよ」
+“I'll land a direct hit.”
+
+@11323 Ehrlich · エルリッヒ
+> 「敵は、倒すさ」
+“The enemy goes down.”
+
+@11324 Ehrlich · エルリッヒ
+> 「さぁ、いくぞっ!」
+“Now, here I come!”
+
+@11325 Ehrlich · エルリッヒ
+> 「その程度の動きではな」
+“Not with moves like that.”
+
+@11326 Ehrlich · エルリッヒ
+> 「遅い!」
+“Too slow!”
+
+@11327 Ehrlich · エルリッヒ
+> 「笑わせるな!」
+“Don't make me laugh!”
+
+@11328 Ehrlich · エルリッヒ
+> 「落としてみせる」
+“I'll shoot you down.”
+
+@11329 Ehrlich · エルリッヒ
+> 「よくも出てくる」
+“You dare show yourself.”
+
+@11330 Ehrlich · エルリッヒ
+> 「私はやってみせねばならん」
+“I must see this through.”
+
+@11331 Ehrlich · エルリッヒ
+> 「悪いが決めさせてもらう」
+“Sorry, but I'll finish this.”
+
+@11332 Ehrlich · エルリッヒ
+> 「そこだな」
+“Right there.”
+
+@11333 Ehrlich · エルリッヒ
+> 「この体勢ならば、いけるな」
+“From this position, I can do it.”
+
+@11334 Ehrlich · エルリッヒ
+> 「私の前に出てきたことを
+>  後悔させてやろう!」
+“I'll make you regret crossing my path!”
+
+@11335 Ehrlich · エルリッヒ
+> 「ターゲット捕捉……落ちろ!」
+“Target locked... fall!”
+
+@11336 Ehrlich · エルリッヒ
+> 「う、うおぉぉぉぉぉ!?」
+“U-uwAAAAAAH?!”
+
+@11337 Ehrlich · エルリッヒ
+> 「くっ、や、やられた……のか」
+“Tch, I-I've been... hit...”
+
+@11338 Ehrlich · エルリッヒ
+> 「い、いかん!?」
+“Th-this is bad?!”
+
+@11339 Ehrlich · エルリッヒ
+> 「なにっ! げ、限界か!?」
+“What?! A-are we at our limit?!”
+
+@11340 Ehrlich · エルリッヒ
+> 「ぐうぅぅっ……
+>  この私が、直撃をくらう!?」
+“Guh... I, of all people, took a direct hit?!”
+
+@11341 Ehrlich · エルリッヒ
+> 「な、なにっ!? これほどのものとは!」
+“W-what?! This much power?!”
+
+@11342 Ehrlich · エルリッヒ
+> 「くっ……ぬかったな、私も……」
+“Tch... I let my guard down too...”
+
+@11343 Ehrlich · エルリッヒ
+> 「そう簡単に退くわけには!」
+“I can't just retreat so easily!”
+
+@11344 Ehrlich · エルリッヒ
+> 「つ、強い……だがっ!」
+“S-strong... but still!”
+
+@11345 Ehrlich · エルリッヒ
+> 「くぅっ、出力があがらんとは!」
+“Guh, the output won't rise?!”
+
+@11346 Ehrlich · エルリッヒ
+> 「や、やられるのか……私が!?」
+“A-am I going down... me?!”
+
+@11347 Ehrlich · エルリッヒ
+> 「できる敵だ……手強い!」
+“A capable foe... tough!”
+
+@11348 Ehrlich · エルリッヒ
+> 「さ、さすがにやるな!」
+“A-as expected, you're good!”
+
+@11349 Ehrlich · エルリッヒ
+> 「で、できる!? こいつ!」
+“Y-you can do that?! This one!”
+
+@11350 Ehrlich · エルリッヒ
+> 「くっ、やらせはせんよ!」
+“Tch, I won't let you!”
+
+@11351 Ehrlich · エルリッヒ
+> 「これ以上やってもらっては!」
+“I can't let you do any more!”
+
+@11352 Ehrlich · エルリッヒ
+> 「ぬぅっ、私をここまで
+>  本気にさせるとはなっ!」
+“Ngh, to make me get this serious!”
+
+@11353 Ehrlich · エルリッヒ
+> 「少しはできるようだな……」
+“Seems you're somewhat capable...”
+
+@11354 Ehrlich · エルリッヒ
+> 「こ、これほどのパワーとは!」
+“Th-this much power?!”
+
+@11355 Ehrlich · エルリッヒ
+> 「私が押されている!?」
+“I'm being pushed back?!”
+
+@11356 Ehrlich · エルリッヒ
+> 「その程度で止められると思われては
+>  困るな」
+“I'd hate for you to think that's enough to stop me.”
+
+@11357 Ehrlich · エルリッヒ
+> 「敵をなめると痛い目にあうということ
+>  を、教えてやろう!」
+“I'll teach you that underestimating the enemy costs you dearly!”
+
+@11358 Ehrlich · エルリッヒ
+> 「ふん、この程度か」
+“Hmph, is that all?”
+
+@11359 Ehrlich · エルリッヒ
+> 「甘いな」
+“Too naive.”
+
+@11360 Ehrlich · エルリッヒ
+> 「効かぬよ、そんな攻撃は」
+“That attack won't work on me.”
+
+@11361 Ehrlich · エルリッヒ
+> 「なめてもらっては困る!」
+“Don't underestimate me!”
+
+@11362 Ehrlich · エルリッヒ
+> 「それが本気だというのなら、
+>  私には勝てん!」
+“If that's your best, you can't beat me!”
+
+@11363 Ehrlich · エルリッヒ
+> 「やはりその程度か」
+“Just as I thought, that's all you've got.”
+
+@11364 Ehrlich · エルリッヒ
+> 「見え見えだな」
+“I saw that coming a mile away.”
+
+@11365 Ehrlich · エルリッヒ
+> 「それで終わりか!?」
+“Is that all you've got?!”
+
+@11366 Ehrlich · エルリッヒ
+> 「うかつだな」
+“Careless.”
+
+@11367 Ehrlich · エルリッヒ
+> 「甘すぎる」
+“Too soft.”
+
+@11368 Ehrlich · エルリッヒ
+> 「その程度ではな」
+“Not with that.”
+
+@11369 Ehrlich · エルリッヒ
+> 「狙いが甘いのだよ」
+“Your aim is sloppy.”
+
+@11370 Ehrlich · エルリッヒ
+> 「ムダなのだがな!」
+“That's pointless!”
+
+@11371 Ehrlich · エルリッヒ
+> 「この機体にはきかんな!」
+“It won't work on this machine!”
+
+@11372 Ehrlich · エルリッヒ
+> 「フッ、この程度なら!」
+“Hmph, if that's all!”
+
+@11373 Ehrlich · エルリッヒ
+> 「ビームなど効きはせんよ」
+“Beams won't do a thing to me.”
+
+@11374 Ehrlich · エルリッヒ
+> 「ちいっ、こんなときに!」
+“Tch, of all times!”
+
+@11375 Ehrlich · エルリッヒ
+> 「弾切れ!? うかつだったか」
+“Out of ammo?! Was I careless?”
+
+@11376 Ehrlich · エルリッヒ
+> 「ええい、これでは届かん!」
+“Damn, it won't reach!”
+
+@11377 Ehrlich · エルリッヒ
+> 「敵の射程距離がこれほどとは!」
+“The enemy's range is this far?!”

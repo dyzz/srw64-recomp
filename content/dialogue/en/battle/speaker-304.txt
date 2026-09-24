@@ -1,0 +1,151 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13668 Guerrilla · ゲリラ
+# 审校：「でやあああっ!!」是战斗呐喊，不是“Take thiiis!!”，改为音译呐喊
+> 「でやあああっ!!」
+“Deyaaaah!!”
+
+@13669 Guerrilla · ゲリラ
+> 「こ、このおっ!」
+“Wh-why you!”
+
+@13670 Guerrilla · ゲリラ
+> 「やってやる、やってやるぞ!」
+“I'll do it, I'll do it!”
+
+@13671 Guerrilla · ゲリラ
+# 审校：同L8，「当たれっ！」是祈愿命中，改为“Hit!”
+> 「当たれっ!」
+“Hit!”
+
+@13672 Guerrilla · ゲリラ
+> 「うおおおおっ!」
+“Uwooooh!”
+
+@13673 Guerrilla · ゲリラ
+> 「行くぜっ!」
+“Here I go!”
+
+@13674 Guerrilla · ゲリラ
+> 「落ちろってんだよ!!」
+“Just go down already!!”
+
+@13675 Guerrilla · ゲリラ
+> 「こいつっ!」
+“Why you!”
+
+@13676 Guerrilla · ゲリラ
+> 「やってやる!!」
+“I'll do it!!”
+
+@13677 Guerrilla · ゲリラ
+> 「う、うわあああっ!!」
+“U-uwaaaah!!”
+
+@13678 Guerrilla · ゲリラ
+> 「ぐあっ!! や、やられたっ!!」
+“Gah!! I-I've been hit!!”
+
+@13679 Guerrilla · ゲリラ
+> 「うわあっ! や、やられちまうっ!!」
+“Uwaah! I-I'm going down!!”
+
+@13680 Guerrilla · ゲリラ
+# 审校：「もたない!?」是危机感叹，不是疑问，改为感叹号
+> 「ぐあっ! こ、これじゃもたない!?」
+“Gah! I-I can't hold out!”
+
+@13681 Guerrilla · ゲリラ
+# 审校：「強すぎる!?」是感叹，不是疑问，改为感叹号
+> 「つ、強い、強すぎる!?」
+“S-strong, way too strong!”
+
+@13682 Guerrilla · ゲリラ
+> 「な、なんだこいつのパワーは!?」
+“Wh-what is with this guy's power?!”
+
+@13683 Guerrilla · ゲリラ
+> 「がああっ! パ、パワーが違いすぎる……」
+“Gaaah! H-his power's on another level...”
+
+@13684 Guerrilla · ゲリラ
+> 「うおっ!? や、やってくれる!」
+“Uwoh?! Y-you're good!”
+
+@13685 Guerrilla · ゲリラ
+> 「な、なんの、まだまだっ!!」
+“N-no way, not yet!!”
+
+@13686 Guerrilla · ゲリラ
+> 「くっ! さすがにやるじゃないか!」
+“Ngh! You're pretty good after all!”
+
+@13687 Guerrilla · ゲリラ
+> 「ちっ! この程度ならまだ戦える!」
+“Tch! I can still fight with this much!”
+
+@13688 Guerrilla · ゲリラ
+> 「このっ! やったな!」
+“Why you! You did it now!”
+
+@13689 Guerrilla · ゲリラ
+> 「クソっ!! こんなもんでやられるか!!」
+“Damn!! Like this'll take me down!!”
+
+@13690 Guerrilla · ゲリラ
+> 「効かないな、そんな攻撃!」
+“That kind of attack doesn't work on me!”
+
+@13691 Guerrilla · ゲリラ
+> 「そんなものか!」
+“Is that all you've got!”
+
+@13692 Guerrilla · ゲリラ
+> 「たかがかすり傷だっ!!」
+“It's just a scratch!!”
+
+@13693 Guerrilla · ゲリラ
+> 「当たっただけだ!」
+“It only grazed me!”
+
+@13694 Guerrilla · ゲリラ
+> 「こんなダメージなど!」
+“Damage like this is nothing!”
+
+@13695 Guerrilla · ゲリラ
+> 「あ、危なかった……」
+“Th-that was close...”
+
+@13696 Guerrilla · ゲリラ
+> 「かわせた!」
+“Dodged it!”
+
+@13697 Guerrilla · ゲリラ
+> 「当たってたまるか!」
+“Like I'd let that hit me!”
+
+@13698 Guerrilla · ゲリラ
+> 「外れた!」
+“It missed!”
+
+@13699 Guerrilla · ゲリラ
+> 「な、なんとか……」
+“I-I managed somehow...”
+
+@13700 Guerrilla · ゲリラ
+# 审校：「そこか!」是发现敌人位置，不是疑问，改为感叹号
+> 「そこか!」
+“There!”
+
+@13701 Guerrilla · ゲリラ
+> 「このっ! 効かないんだよっ!!」
+“Why you! It doesn't work on me!!”
+
+@13702 Guerrilla · ゲリラ
+> 「え!? しまった、弾切れか!?」
+“Huh?! Damn, out of ammo?!”
+
+@13703 Guerrilla · ゲリラ
+> 「な、なんだ!?
+>  あんな距離から攻撃できるのか!?」
+“Wh-what?! He can attack from that range?!”

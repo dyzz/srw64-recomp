@@ -1,0 +1,139 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14149 Vega Soldier · ベガ星兵
+> 「死ねぇぇっ!!」
+“Die!!”
+
+@14150 Vega Soldier · ベガ星兵
+> 「おのれ!」
+“Curse you!”
+
+@14151 Vega Soldier · ベガ星兵
+> 「いくぞ!」
+“Here I go!”
+
+@14152 Vega Soldier · ベガ星兵
+> 「攻撃開始だ!」
+“Commencing attack!”
+
+@14153 Vega Soldier · ベガ星兵
+> 「目標確認。攻撃を
+>  開始する」
+“Target confirmed. Beginning attack.”
+
+@14154 Vega Soldier · ベガ星兵
+> 「いまがチャンスだ!」
+“Now's our chance!”
+
+@14155 Vega Soldier · ベガ星兵
+> 「よし!」
+“All right!”
+
+@14156 Vega Soldier · ベガ星兵
+> 「…………」
+“...”
+
+@14157 Vega Soldier · ベガ星兵
+> 「敵を叩きつぶせっ!」
+“Crush the enemy!”
+
+@14158 Vega Soldier · ベガ星兵
+> 「ぎゃあぁぁぁぁぁーっ!!」
+“Gyaaaaaaah!!”
+
+@14159 Vega Soldier · ベガ星兵
+> 「うわあぁぁぁーっ!!」
+“Uwaaaaaah!!”
+
+@14160 Vega Soldier · ベガ星兵
+> 「うわっ!? も、もうダメか……」
+“Uwah!? I-I'm done for...”
+
+@14161 Vega Soldier · ベガ星兵
+> 「ぎゃあ!! こ、これ以上は……」
+“Gyah!! N-No more...”
+
+@14162 Vega Soldier · ベガ星兵
+> 「ぐわっ! げ、限界だ……!」
+“Guwah! I-I've hit my limit...!”
+
+@14163 Vega Soldier · ベガ星兵
+> 「や、やられる!?」
+“I-I'm going down!?”
+
+@14164 Vega Soldier · ベガ星兵
+> 「ぐわっ!? ど、どうしたんだ!?」
+“Guwah!? W-What's going on!?”
+
+@14165 Vega Soldier · ベガ星兵
+> 「な、なに!?」
+“W-What!?”
+
+@14166 Vega Soldier · ベガ星兵
+> 「こ、こんなバカな……!」
+“Th-This can't be...!”
+
+@14167 Vega Soldier · ベガ星兵
+> 「ま、まだやられたわけではない!」
+“I-I'm not beaten yet!”
+
+@14168 Vega Soldier · ベガ星兵
+> 「ぐわっ!? は、反撃を……」
+“Guwah!? C-Counterattack...”
+
+@14169 Vega Soldier · ベガ星兵
+> 「フフフ、ムダな攻撃だ」
+“Heh heh heh, a pointless attack.”
+
+@14170 Vega Soldier · ベガ星兵
+> 「そんな攻撃は効かない」
+“That kind of attack won't work.”
+
+@14171 Vega Soldier · ベガ星兵
+> 「なんの、この程度」
+“Please, that's nothing.”
+
+@14172 Vega Soldier · ベガ星兵
+> 「まだまだだ!」
+“Not nearly enough!”
+
+@14173 Vega Soldier · ベガ星兵
+> 「ぐわっ!? ダメージは軽いな……」
+“Guwah!? Barely any damage...”
+
+@14174 Vega Soldier · ベガ星兵
+> 「よし!」
+“All right!”
+
+@14175 Vega Soldier · ベガ星兵
+> 「あたってたまるか!」
+“Like I'd let that hit me!”
+
+@14176 Vega Soldier · ベガ星兵
+> 「はずれたな!」
+“You missed!”
+
+@14177 Vega Soldier · ベガ星兵
+> 「フフフ、あたるものか」
+“Heh heh heh, as if that would hit.”
+
+@14178 Vega Soldier · ベガ星兵
+> 「そんな攻撃は効かない」
+“That kind of attack won't work.”
+
+@14179 Vega Soldier · ベガ星兵
+> 「ムダだな!」
+“Futile!”
+
+@14180 Vega Soldier · ベガ星兵
+> 「エネルギー切れか!?」
+“Out of energy!?”
+
+@14181 Vega Soldier · ベガ星兵
+> 「と、届かないのか!?」
+“I-It can't reach!?”
+
+@14182 Vega Soldier · ベガ星兵
+> 「ええい、そんな所から攻撃して
+>  くるとは!」
+“Grr, attacking from a place like that!”

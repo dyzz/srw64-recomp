@@ -1,0 +1,158 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7140 Emperor Zuul · ズール皇帝
+> 「生かしては帰さぬ!」
+“I won't let you leave alive!”
+
+@7141 Emperor Zuul · ズール皇帝
+> 「フハハハハハハッ!」
+“Fuhahahahahaha!”
+
+@7142 Emperor Zuul · ズール皇帝
+> 「ばかめぇ!」
+“Fools!”
+
+@7143 Emperor Zuul · ズール皇帝
+> 「ハーッハッハッハッハッ!」
+“Hahahahahahaha!”
+
+@7144 Emperor Zuul · ズール皇帝
+> 「死ねぃ!」
+“Die!”
+
+@7145 Emperor Zuul · ズール皇帝
+> 「フハッ、ハハハハハッ!」
+“Fuhah, hahahahaha!”
+
+@7146 Emperor Zuul · ズール皇帝
+> 「あきらめの悪い奴めっ!」
+“You just don't know when to quit!”
+
+@7147 Emperor Zuul · ズール皇帝
+> 「しぶとい奴め!」
+“Persistent wretch!”
+
+@7148 Emperor Zuul · ズール皇帝
+> 「ワシの力を思い知るがいい!」
+“You'd best learn what my power truly is!”
+
+@7149 Emperor Zuul · ズール皇帝
+> 「おそれを知らぬ奴め!」
+“You know no fear, fool!”
+
+@7150 Emperor Zuul · ズール皇帝
+> 「死んで自分の愚かさをしれ!」
+“Die, and learn your own foolishness!”
+
+@7151 Emperor Zuul · ズール皇帝
+> 「宇宙に生きる命はワシあっての
+>  命だ!」
+“Every life in space exists only by my grace!”
+
+@7152 Emperor Zuul · ズール皇帝
+> 「自分の無力を思い知れ!」
+“Know your own helplessness!”
+
+@7153 Emperor Zuul · ズール皇帝
+> 「死ぬがいい、ムシケラども!」
+“Die, you insects!”
+
+@7154 Emperor Zuul · ズール皇帝
+> 「ワシは宇宙の帝王だ!!」
+“I am the Emperor of the universe!!”
+
+@7155 Emperor Zuul · ズール皇帝
+> 「なんだと!? こんなばかなぁぁぁぁ」
+“What?! This can't beeeee!”
+
+@7156 Emperor Zuul · ズール皇帝
+> 「な、なんだとぉぉぉぉ!?」
+“W-what did you saaaay?!”
+
+@7157 Emperor Zuul · ズール皇帝
+> 「ぐぅぅ、ワシは死なんぞ!」
+“Guh, I will not die!”
+
+@7158 Emperor Zuul · ズール皇帝
+> 「うおぉぉぉぉぁぁ!?」
+“Uwooooooah?!”
+
+@7159 Emperor Zuul · ズール皇帝
+> 「うおぉぉ!? 許さんぞこの
+>  ムシケラどもがぁっ!」
+“Uwooo?! I won't forgive this, you insects!”
+
+@7160 Emperor Zuul · ズール皇帝
+> 「ぬうぅぅ許さん、許さんぞ!!」
+“Ngh, unforgivable, unforgivable!!”
+
+@7161 Emperor Zuul · ズール皇帝
+> 「ぬぅおぅぁぁっ!」
+“Nghwaaah!”
+
+@7162 Emperor Zuul · ズール皇帝
+> 「なに!?」
+“What?!”
+
+@7163 Emperor Zuul · ズール皇帝
+> 「ぐぅっ、よくもこのワシに
+>  逆らいおったな!」
+“Guh, how dare you defy me!”
+
+@7164 Emperor Zuul · ズール皇帝
+> 「おおぉっ!?」
+“Oooh?!”
+
+@7165 Emperor Zuul · ズール皇帝
+> 「ぬぅっこしゃくな!」
+“Ngh, how infuriating!”
+
+@7166 Emperor Zuul · ズール皇帝
+> 「ムシケラがぁ!」
+“You insect!”
+
+@7167 Emperor Zuul · ズール皇帝
+> 「おのれ! 生かしては帰さん!」
+“Curse you! I won't let you leave alive!”
+
+@7168 Emperor Zuul · ズール皇帝
+> 「フハハハハ、効かぬわ!」
+“Fuhahahaha, it has no effect!”
+
+@7169 Emperor Zuul · ズール皇帝
+> 「愚か者めがぁ!」
+“You fool!”
+
+@7170 Emperor Zuul · ズール皇帝
+> 「お前の力はそんなものか」
+“Is that all the power you have?”
+
+@7171 Emperor Zuul · ズール皇帝
+> 「そんなものでワシが倒せるとでも
+>  思うのか!?」
+“You think that's enough to defeat me?!”
+
+@7172 Emperor Zuul · ズール皇帝
+> 「フッハッハッハッ」
+“Fuhahahaha!”
+
+@7173 Emperor Zuul · ズール皇帝
+> 「ハハハハ、ムシケラが」
+“Hahahaha, you insect.”
+
+@7174 Emperor Zuul · ズール皇帝
+> 「フハハハハッ、このワシにはきかんぞ」
+“Fuhahahaha, it won't work on me.”
+
+@7175 Emperor Zuul · ズール皇帝
+> 「ハーッハッハッハッハッ!!」
+“Hahahahahahaha!!”
+
+@7176 Emperor Zuul · ズール皇帝
+> 「ばかな!? このワシがっ!」
+“Impossible?! Me?!”
+
+@7177 Emperor Zuul · ズール皇帝
+> 「なんと、届かぬというのか!?
+>  おのれぃ!」
+“What, it can't reach?! Curse you!”

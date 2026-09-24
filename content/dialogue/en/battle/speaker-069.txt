@@ -1,0 +1,162 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8733 Jerid · ジェリド
+> 「落ちろってんだよ!!」
+“I said fall!”
+
+@8734 Jerid · ジェリド
+> 「観念するんだな!!」
+“Give it up!”
+
+@8735 Jerid · ジェリド
+> 「沈めえっ!!」
+“Sink!”
+
+@8736 Jerid · ジェリド
+> 「このっ!!」
+“Why you!”
+
+@8737 Jerid · ジェリド
+> 「こいつでとどめだっ!!」
+“This one's the finisher!”
+
+@8738 Jerid · ジェリド
+> 「きっさまぁぁっ!!」
+“You bastaaaard!”
+
+@8739 Jerid · ジェリド
+> 「もらった!!」
+“Got you!”
+
+@8740 Jerid · ジェリド
+> 「くらえっ!!」
+“Take this!”
+
+@8741 Jerid · ジェリド
+> 「そこかあっ!!」
+“There you are!”
+
+@8742 Jerid · ジェリド
+> 「当ててみせる!!」
+“I'll hit you, just watch!”
+
+@8743 Jerid · ジェリド
+> 「じゃまだ!!」
+“Out of my way!”
+
+@8744 Jerid · ジェリド
+> 「落ちろっ!!」
+“Fall!”
+
+@8745 Jerid · ジェリド
+> 「今、楽にしてやるぜ!!」
+“I'll put you out of your misery!”
+
+@8746 Jerid · ジェリド
+> 「そんなに落とされたいか!?」
+“You want to be shot down that badly?!”
+
+@8747 Jerid · ジェリド
+> 「どこからでも来い! 近づくやつは、
+>  みんな灰にしてやる!」
+“Come at me from anywhere! Anyone who gets close, I'll turn to ash!”
+
+@8748 Jerid · ジェリド
+> 「くっそおぉぉぉっ!!」
+“Daaamn it!”
+
+@8749 Jerid · ジェリド
+> 「ええい、これまでか!!」
+“Argh, so this is it!”
+
+@8750 Jerid · ジェリド
+> 「くそっ! なぜだ! なぜ勝てないっ!?」
+“Damn! Why?! Why can't I win?!”
+
+@8751 Jerid · ジェリド
+> 「バカな……この俺が押されている!?」
+“Impossible... I'm being pushed back?!”
+
+@8752 Jerid · ジェリド
+> 「ぐうっ! こ、こいつっ!」
+“Gah! Th-this guy!”
+
+@8753 Jerid · ジェリド
+> 「なんだと!?」
+“What?!”
+
+@8754 Jerid · ジェリド
+> 「ぐあっ! なんてパワーだ!!」
+“Gah! What power!”
+
+@8755 Jerid · ジェリド
+> 「ちいっ! いい気になるなっ!!」
+“Tch! Don't get cocky!”
+
+@8756 Jerid · ジェリド
+> 「まだまだっ!!」
+“Not yet, not yet!”
+
+@8757 Jerid · ジェリド
+> 「うっ! 貴様なんぞにっ!!」
+“Ugh! You of all people!”
+
+@8758 Jerid · ジェリド
+> 「ちいっ! なめた真似してくれるぜっ!」
+“Tch! You've got some nerve!”
+
+@8759 Jerid · ジェリド
+> 「ぬうっ!! まだだ、まだ戦える!!」
+“Ngh! Not yet, I can still fight!”
+
+@8760 Jerid · ジェリド
+> 「こんなもんで落ちるかよっ!!」
+“You think this'll take me down?!”
+
+@8761 Jerid · ジェリド
+> 「かすっただけだ!!」
+“It just grazed me!”
+
+@8762 Jerid · ジェリド
+> 「この程度!!」
+“That's nothing!”
+
+@8763 Jerid · ジェリド
+> 「そんなものか!! 笑わせるぜ!!」
+“Is that all?! You're kidding me!”
+
+@8764 Jerid · ジェリド
+> 「あまいんだよっ!!」
+“Too naive!”
+
+@8765 Jerid · ジェリド
+> 「なめるなっ!!」
+“Don't underestimate me!”
+
+@8766 Jerid · ジェリド
+> 「なんのっ!!」
+“No problem!”
+
+@8767 Jerid · ジェリド
+> 「させるかっ!!」
+“Like I'd let you!”
+
+@8768 Jerid · ジェリド
+> 「ハハハッ! あたるかッ!」
+“Ha ha ha! You think you'll hit me?!”
+
+@8769 Jerid · ジェリド
+> 「効かねえなっ!」
+“That doesn't hurt!”
+
+@8770 Jerid · ジェリド
+> 「しまった、弾切れか!?」
+“Damn, out of ammo?!”
+
+@8771 Jerid · ジェリド
+> 「しまった、撃ちつくした! スペア!!」
+“Damn, I'm all out! Spare!!”
+
+@8772 Jerid · ジェリド
+> 「くそっ! 反撃できん!!」
+“Damn! I can't fight back!!”

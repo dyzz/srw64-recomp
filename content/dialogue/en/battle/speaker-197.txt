@@ -1,0 +1,109 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10461 Sayaka · さやか
+> 「ええいっ!!」
+“Hah!!”
+
+@10462 Sayaka · さやか
+> 「なによ!!」
+“What was that?!”
+
+@10463 Sayaka · さやか
+> 「甲児くんばっかりにいいかっこは
+>  させないわ!」
+“I won't let Koji hog all the glory!”
+
+@10464 Sayaka · さやか
+> 「きゃあああっ!!」
+“Kyaaaaah!!”
+
+@10465 Sayaka · さやか
+> 「も、もうだめっ!!」
+“I-I can't take anymore!!”
+
+@10466 Sayaka · さやか
+> 「きゃあっ!! やられちゃった!」
+“Kyaah!! I got hit!”
+
+@10467 Sayaka · さやか
+> 「きゃあっ!! も、もうダメ!」
+“Kyaah!! I-I'm done for!”
+
+@10468 Sayaka · さやか
+> 「うっ!! ダメだわ! これじゃ
+>  やられちゃう!!」
+“Ugh!! No good! At this rate I'm finished!!”
+
+@10469 Sayaka · さやか
+> 「ダメ、やられちゃうっ!!」
+“No, I'm gonna get shot down!!”
+
+@10470 Sayaka · さやか
+> 「きゃっ! やったわねえっ!」
+“Kyah! You'll pay for that!”
+
+@10471 Sayaka · さやか
+> 「つっ! よくもやったわねっ!」
+“Tch! How dare you!”
+
+@10472 Sayaka · さやか
+> 「きゃっ! 何よ、痛いじゃないっ!」
+“Kyah! What's your problem, that hurt!”
+
+@10473 Sayaka · さやか
+> 「あたった!? でもまだ!!」
+“It hit?! But I'm not done!!”
+
+@10474 Sayaka · さやか
+> 「いったあぁぁぁい!」
+“Owwwwww!”
+
+@10475 Sayaka · さやか
+> 「まだよっ!! このくらいっ!」
+“I'm fine!! That's nothing!”
+
+@10476 Sayaka · さやか
+> 「きゃっ! あぶなかった……」
+“Kyah! That was close...”
+
+@10477 Sayaka · さやか
+> 「ふう、たすかった」
+“Phew, that was a relief.”
+
+@10478 Sayaka · さやか
+> 「ベーだ! あたんないわよ!」
+“Nyah! You missed me!”
+
+@10479 Sayaka · さやか
+> 「こんなもの!」
+“Is that all!”
+
+@10480 Sayaka · さやか
+> 「きゃっ!……あ～こわかった」
+“Kyah!... Ah, that scared me.”
+
+@10481 Sayaka · さやか
+> 「きゃっ! あぶなかった……」
+“Kyah! That was close...”
+
+@10482 Sayaka · さやか
+> 「ふう、たすかった」
+“Phew, that was a relief.”
+
+@10483 Sayaka · さやか
+> 「ベーだ! あたんないわよ!」
+“Nyah! You missed me!”
+
+@10484 Sayaka · さやか
+> 「だめ、反撃不可能!」
+“No good, I can't fight back!”
+
+@10485 Sayaka · さやか
+> 「ちょっと!! どっから攻撃
+>  してくんのよ!」
+“Hey!! Where are you even attacking from?!”
+
+@10486 Sayaka · さやか
+> 「どっから攻撃してくんのよ!
+>  ずるいじゃない!!」
+“Where are you attacking from?! That's not fair!!”

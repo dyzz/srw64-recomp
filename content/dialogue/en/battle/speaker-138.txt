@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7007 Takeru · タケル
+> 「とりゃぁぁぁぁーっ!」
+“Hyaaaah!”
+
+@7008 Takeru · タケル
+> 「むんんんっ!」
+“Mnnngh!”
+
+@7009 Takeru · タケル
+> 「ぬぅぅぅっ!」
+“Nghhh!”
+
+@7010 Takeru · タケル
+> 「おぅりゃぁぁぁぁ!」
+“Hooraaah!”
+
+@7011 Takeru · タケル
+> 「おりゃあぁぁぁーっ!」
+“Oryaaaah!”
+
+@7012 Takeru · タケル
+> 「はあぁぁぁぁーっ!」
+“Haaaaaah!”
+
+@7013 Takeru · タケル
+> 「おぉぉぉぉぉーっ!」
+“Oooooooh!”
+
+@7014 Takeru · タケル
+> 「オレは、生きる!」
+“I'm gonna live!”
+
+@7015 Takeru · タケル
+> 「つあぁぁぁぁぁぁーっ!」
+“Tzaaaaaaah!”
+
+@7016 Takeru · タケル
+> 「消えろぉ!」
+“Disappear!”
+
+@7017 Takeru · タケル
+> 「オレは、地球人だ!」
+“I'm an Earthling!”
+
+@7018 Takeru · タケル
+> 「逃がすものか!」
+“You're not getting away!”
+
+@7019 Takeru · タケル
+> 「消えうせろ!」
+“Vanish!”
+
+@7020 Takeru · タケル
+> 「し、しまった……」
+“D-Damn it...”
+
+@7021 Takeru · タケル
+> 「くっ、まずい、反陽子爆弾が……」
+“Ngh, this is bad, the antiproton bomb...”
+
+@7022 Takeru · タケル
+> 「オレは死なん!」
+“I won't die!”
+
+@7023 Takeru · タケル
+> 「オレは死ねない!」
+“I can't die!”
+
+@7024 Takeru · タケル
+> 「くそぅ……こんなところで死んだら……」
+“Damn... if I die in a place like this...”
+
+@7025 Takeru · タケル
+> 「ああぁぁぁ……あぁぁぁぁーっ!」
+“Aaaah... aaaaaah!”
+
+@7026 Takeru · タケル
+> 「うわぁぁぁぁぁぁぁっ!」
+“Uwaaaaaaah!”
+
+@7027 Takeru · タケル
+> 「こ、こんなところでオレはやられる!?」
+“I-I'm getting hit in a place like this?!”
+
+@7028 Takeru · タケル
+> 「ウウッ、ウワァァーッ!」
+“Ugh, uwaaaah!”
+
+@7029 Takeru · タケル
+> 「うわぁぁ!?」
+“Uwaaah?!”
+
+@7030 Takeru · タケル
+> 「くそぅっ!」
+“Damn it!”
+
+@7031 Takeru · タケル
+> 「おのれぇっ!」
+“You bastard!”
+
+@7032 Takeru · タケル
+> 「ぐわっ!」
+“Guwah!”
+
+@7033 Takeru · タケル
+> 「しまった!?」
+“Damn it?!”
+
+@7034 Takeru · タケル
+> 「ううっだめだっ!」
+“Ugh, no good!”
+
+@7035 Takeru · タケル
+> 「まずい!?」
+“This is bad?!”
+
+@7036 Takeru · タケル
+> 「ううっ!」
+“Ugh!”
+
+@7037 Takeru · タケル
+> 「あうぅっ!」
+“Augh!”
+
+@7038 Takeru · タケル
+> 「くっ!」
+“Ngh!”
+
+@7039 Takeru · タケル
+> 「とうっ!」
+“Toh!”
+
+@7040 Takeru · タケル
+> 「とおっ!」
+“Tooh!”
+
+@7041 Takeru · タケル
+> 「そんな攻撃など!」
+“An attack like that won't—!”
+
+@7042 Takeru · タケル
+> 「つぅおぅりゃぁぁぁぁっ!」
+“Tzoryaaaah!”
+
+@7043 Takeru · タケル
+> 「しまった、エネルギーが!?」
+“Damn, the energy?!”
+
+@7044 Takeru · タケル
+> 「おのれ、そんなところから!」
+“You bastard, from a place like that!”

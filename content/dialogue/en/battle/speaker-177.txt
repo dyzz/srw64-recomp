@@ -1,0 +1,136 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9616 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「我が悪霊のえじきとなれ」
+“Become an offering to my evil spirits.”],”
+
+@9617 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「この私を怒らせてしまったことを
+>  後悔させてやろう」
+“I'll make you regret angering me.”],”
+
+@9618 Emperor Muge · ムゲ帝王
+> 「我が宇宙に眠る悲しき魂どもよ
+>  このムゲゾルバドスの声に応えよ!」
+“Sorrowful souls sleeping in my cosmos, answer the voice of Muge Zorbados!”
+
+@9619 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「我が悪霊のえじきとなるがいい」
+“You shall become an offering to my evil spirits.”],”
+
+@9620 Emperor Muge · ムゲ帝王
+> 「愚か者どもが!」
+“Fools!”
+
+@9621 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「はははははっ」
+“Hahahahaha.”],”
+
+@9622 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「この私に挑んだことを
+>  後悔するがいい」
+“Regret ever challenging me.”],”
+
+@9623 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「この私の宇宙において
+>  私は絶対者なのだ」
+“In my cosmos, I am absolute.”],”
+
+@9624 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「お前たちに勝ち目はない」
+“You have no chance of winning.”],”
+
+@9625 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「お前たちも悪霊の中へ
+>  くわえてやろう」
+“I'll add you to the evil spirits as well.”],”
+
+@9626 Emperor Muge · ムゲ帝王
+> 「この宇宙は私そのもの。
+>  それを思い知れ!」
+“This cosmos is myself. Know it well!”
+
+@9627 Emperor Muge · ムゲ帝王
+> 「肉体よ、滅びるがいい……」
+“Flesh, perish...”
+
+@9628 Emperor Muge · ムゲ帝王
+> 「わ、私の宇宙でこんなことが……!?」
+“I-in my own cosmos, this can't be...?!”
+
+@9629 Emperor Muge · ムゲ帝王
+> 「おぉぉっ!? やつらを見くびり
+>  すぎたか……」
+“Ohh?! Did I underestimate them too much...”
+
+@9630 Emperor Muge · ムゲ帝王
+> 「くっ……こんなことが……」
+“Ngh... this can't be...”
+
+@9631 Emperor Muge · ムゲ帝王
+> 「な……なぜだ!?」
+“W-why?!”
+
+@9632 Emperor Muge · ムゲ帝王
+> 「ぬぅ、我が宇宙に眠る魂たちよ、
+>  我が声に応えよ!」
+“Ngh, souls sleeping in my cosmos, answer my voice!”
+
+@9633 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「この私を本気で怒らせてしまったな」
+“You've truly angered me now.”],”
+
+@9634 Emperor Muge · ムゲ帝王
+> 「この程度で私を倒そうというのか?」
+“You think you can defeat me with this much?”
+
+@9635 Emperor Muge · ムゲ帝王
+> 「その勢いも、ここまでのこと……」
+“That momentum of yours ends here...”
+
+@9636 Emperor Muge · ムゲ帝王
+> 「愚かな。無駄な抵抗をしようと
+>  いうのか」
+“Foolish. You mean to resist in vain?”
+
+@9637 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「おのれをわきまえぬ愚か者どもめ」
+“Fools who don't know their place.”],”
+
+@9638 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「無駄なことだ」
+“It's pointless.”],”
+
+@9639 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「愚か者めが」
+“You fool.”],”
+
+@9640 Emperor Muge · ムゲ帝王
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「当たらぬではないか」
+“You missed, didn't you.”],”
+
+@9641 Emperor Muge · ムゲ帝王
+> 「愚かな。まだ無駄な抵抗をしよう
+>  というのか?」
+“Fool. You still mean to put up this pointless resistance?”
+
+@9642 Emperor Muge · ムゲ帝王
+> 「ここまで敵を追いこみながら……」
+“And to have driven the enemy this far...”
+
+@9643 Emperor Muge · ムゲ帝王
+> 「どうなっておるのだ!?」
+“What is going on?!”

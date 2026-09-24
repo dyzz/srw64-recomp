@@ -1,0 +1,165 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9231 Banjo · 万丈
+> 「そこだっ!!」
+“Right there!!”
+
+@9232 Banjo · 万丈
+> 「行くぞっ!!」
+“Here I go!!”
+
+@9233 Banjo · 万丈
+> 「そらよっ!」
+“Take this!”
+
+@9234 Banjo · 万丈
+> 「さて、ではいきますか!」
+“Well then, shall we begin!”
+
+@9235 Banjo · 万丈
+> 「これで、どうだっ!!」
+“How's this?!”
+
+@9236 Banjo · 万丈
+> 「もらったっ!」
+“Got you!”
+
+@9237 Banjo · 万丈
+> 「なんだってぇ!?」
+“What did you say?!”
+
+@9238 Banjo · 万丈
+> 「な、なんとおーっ!?」
+“Wh-What the?!”
+
+@9239 Banjo · 万丈
+> 「くっ! やられたっ!」
+“Ngh! I've been hit!”
+
+@9240 Banjo · 万丈
+> 「しまった! ダメージを受けすぎたか!?」
+“Damn! Did I take too much damage?!”
+
+@9241 Banjo · 万丈
+> 「くっ、こうダメージをうけては……」
+“Ngh, with this much damage...”
+
+@9242 Banjo · 万丈
+> 「ぐっ! い、いくらダイターンでも、
+>  このままでは……」
+“Guh! E-Even the Daitarn can't take much more of this...”
+
+@9243 Banjo · 万丈
+> 「うっ! うわっ!!」
+“Ugh! Whoa!!”
+
+@9244 Banjo · 万丈
+> 「ぐっ!! まずい! このままでは!!」
+“Guh!! This is bad! At this rate!!”
+
+@9245 Banjo · 万丈
+> 「くっ! このままじゃ……」
+“Ngh! At this rate...”
+
+@9246 Banjo · 万丈
+> 「その程度で、ダイターンは落ちんよ!」
+“That's not enough to bring down the Daitarn!”
+
+@9247 Banjo · 万丈
+> 「まだまだっ!」
+“Not even close!”
+
+@9248 Banjo · 万丈
+> 「うっ!! やってくれちゃって!」
+“Ugh!! You'll pay for that!”
+
+@9249 Banjo · 万丈
+> 「うっ! 今のはちょっと効いたかな」
+“Ugh! That one actually stung a bit.”
+
+@9250 Banjo · 万丈
+> 「あいたた……ちょっと油断したかな?」
+“Ouch... Guess I let my guard down?”
+
+@9251 Banjo · 万丈
+> 「へえ、やるじゃないの」
+“Oh, not bad at all.”
+
+@9252 Banjo · 万丈
+> 「なんの、まだまだっ!」
+“Nonsense, I'm just getting started!”
+
+@9253 Banjo · 万丈
+> 「ふん、軽い軽い」
+“Hmph, that's nothing, nothing.”
+
+@9254 Banjo · 万丈
+> 「その程度かい?」
+“Is that all you've got?”
+
+@9255 Banjo · 万丈
+> 「そんな攻撃では、ダイターンを
+>  倒す事などできんよ!」
+“An attack like that can't bring down the Daitarn!”
+
+@9256 Banjo · 万丈
+> 「効かんよ! その程度ではな!」
+“It doesn't hurt! Not one bit!”
+
+@9257 Banjo · 万丈
+> 「このダイターンをなめてもらっては困るな」
+“I won't have you underestimating the Daitarn.”
+
+@9258 Banjo · 万丈
+> 「なんのっ!!」
+“As if!!”
+
+@9259 Banjo · 万丈
+> 「ほらほら、どこ狙ってんの」
+“Come on, what are you even aiming at?”
+
+@9260 Banjo · 万丈
+> 「よっと! 軽い軽い」
+“Whoop! That's nothing, nothing.”
+
+@9261 Banjo · 万丈
+> 「ほらほら、こっちだこっち」
+“Over here, over here, this way.”
+
+@9262 Banjo · 万丈
+> 「おっと!」
+“Whoa there!”
+
+@9263 Banjo · 万丈
+> 「なんとっ!!」
+“What?!”
+
+@9264 Banjo · 万丈
+> 「あまいなっ!」
+“Too naive!”
+
+@9265 Banjo · 万丈
+> 「そういうムダなことは、やめたほうがいいと
+>  思うな」
+“I'd say you ought to give up these pointless efforts.”
+
+@9266 Banjo · 万丈
+> 「ムダなことを……」
+“What a waste of effort...”
+
+@9267 Banjo · 万丈
+> 「ビームは効かないっていってる!!」
+“I told you beams don't work!!”
+
+@9268 Banjo · 万丈
+> 「何と、弾切れか!?
+>  僕とした事が……」
+“What, out of ammo?! And I call myself...”
+
+@9269 Banjo · 万丈
+> 「ちっ、この距離では届きそうもないな」
+“Tch, at this range I don't think I can reach.”
+
+@9270 Banjo · 万丈
+> 「くっ、だめか!?」
+“Ngh, no good?!”

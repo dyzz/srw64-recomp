@@ -1,0 +1,83 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10243 Kirika · キリカ
+> 「これで終わりね」
+“This is the end.”
+
+@10244 Kirika · キリカ
+> 「覚悟!」
+“Prepare yourself!”
+
+@10245 Kirika · キリカ
+> 「これで!」
+“Take this!”
+
+@10246 Kirika · キリカ
+> 「…………」
+“...”
+
+@10247 Kirika · キリカ
+> 「どいて!」
+“Out of my way!”
+
+@10248 Kirika · キリカ
+> 「あぁーっ! 兄さんっ!!」
+“Aah! Brother!!”
+
+@10249 Kirika · キリカ
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@10250 Kirika · キリカ
+> 「ああぁぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@10251 Kirika · キリカ
+> 「も、もうだめっ! 兄さん!」
+“I-I can't take it! Brother!”
+
+@10252 Kirika · キリカ
+> 「ま、まだよ。ちっとも怖くなんか
+>  ないんだから!」
+“N-not yet. I'm not scared at all!”
+
+@10253 Kirika · キリカ
+> 「うあぁぁーっ!」
+“Uwaaaah!”
+
+@10254 Kirika · キリカ
+> 「まだ、やられない!」
+“I won't go down yet!”
+
+@10255 Kirika · キリカ
+> 「くっ、に、兄さん、私に力をかして!」
+“Ngh, b-brother, lend me your strength!”
+
+@10256 Kirika · キリカ
+> 「あぁ!?」
+“Aah?!”
+
+@10257 Kirika · キリカ
+> 「この程度の攻撃ではダメージは
+>  受けないはず!」
+“An attack like this shouldn't hurt me!”
+
+@10258 Kirika · キリカ
+> 「私にあてられるかしら!?」
+“Think you can hit me?!”
+
+@10259 Kirika · キリカ
+> 「ちっともあたらないわ!」
+“You can't hit me at all!”
+
+@10260 Kirika · キリカ
+> 「それは無効化できるのよ!」
+“I can nullify that!”
+
+@10261 Kirika · キリカ
+> 「エネルギーが!? そんな……」
+“The energy?! No...”
+
+@10262 Kirika · キリカ
+> 「ここからでは攻撃できない……」
+“I can't attack from here...”

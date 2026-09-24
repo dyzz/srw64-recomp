@@ -1,0 +1,87 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11939 Chizuru · ちずる
+> 「行くわよ!」
+“Here I go!”
+
+@11940 Chizuru · ちずる
+> 「させるもんですか!」
+“Like I'd let you!”
+
+@11941 Chizuru · ちずる
+> 「あたしだって!」
+“I can do this too!”
+
+@11942 Chizuru · ちずる
+> 「これならどうっ!?」
+“How about this?!”
+
+@11943 Chizuru · ちずる
+> 「きゃあああっ! 豹馬ッ!!」
+“Kyaaah! Hyoma!!”
+
+@11944 Chizuru · ちずる
+> 「あううっ! な、なんてパワーなのっ!?」
+“Augh! Wh-what incredible power!”
+
+@11945 Chizuru · ちずる
+> 「きゃあっ! ダメ、このままじゃ
+>  やられちゃうっ!」
+“Kyaah! No, at this rate I'll be shot down!”
+
+@11946 Chizuru · ちずる
+> 「あああっ! ち、直撃なの!?」
+“Aaah! A-a direct hit?!”
+
+@11947 Chizuru · ちずる
+> 「あうっ! まだよ、こんな事で
+>  負けるもんですか!」
+“Augh! Not yet, I won't lose over something like this!”
+
+@11948 Chizuru · ちずる
+> 「くうっ! よくもやったわねえっ!」
+“Ngh! How dare you do that!”
+
+@11949 Chizuru · ちずる
+> 「うっ! まだよ! まだやれるわ!」
+“Ugh! Not yet! I can still fight!”
+
+@11950 Chizuru · ちずる
+> 「こんな攻撃なんて!」
+“An attack like this is nothing!”
+
+@11951 Chizuru · ちずる
+> 「甘く見ないでよ!」
+“Don't underestimate me!”
+
+@11952 Chizuru · ちずる
+> 「効くもんですか!」
+“Like that would work on me!”
+
+@11953 Chizuru · ちずる
+> 「当たるものですか!」
+“Like that would hit me!”
+
+@11954 Chizuru · ちずる
+> 「かわしてみせる!」
+“I'll dodge it, just watch!”
+
+@11955 Chizuru · ちずる
+> 「そう簡単にっ!」
+“Not that easily!”
+
+@11956 Chizuru · ちずる
+> 「来た! そこねっ!」
+“There! Right there!”
+
+@11957 Chizuru · ちずる
+> 「効きはしないわっ!」
+“It won't do a thing!”
+
+@11958 Chizuru · ちずる
+> 「えっ!? 弾切れ!?」
+“Huh?! Out of ammo?!”
+
+@11959 Chizuru · ちずる
+> 「そんな、届かないなんて……」
+“No, it won't reach...”

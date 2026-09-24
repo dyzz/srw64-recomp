@@ -1,0 +1,442 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14600 Quess · クェス
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14601 Bright · ブライト
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14602 Bright · ブライト
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14603 Bright · ブライト
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14604 Bright · ブライト
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14605 Bright · ブライト
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14606 Bright · ブライト
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14607 Bright · ブライト
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14608 Bright · ブライト
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14609 Bright · ブライト
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14610 Bright · ブライト
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14611 Bright · ブライト
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14612 Bright · ブライト
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14613 Bright · ブライト
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14614 Bright · ブライト
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14615 Bright · ブライト
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14616 Bright · ブライト
+> 「ハイメガ粒子砲、発射!!」
+“High Mega Particle Cannon, fire!!”
+
+@14617 Bright · ブライト
+> 「メガ粒子砲、撃てーっ!!」
+“Mega Particle Cannon, fire!!”
+
+@14618 Bright · ブライト
+> 「主砲、一斉発射!!」
+“Main cannons, fire all together!!”
+
+@14619 Kamille · カミーユ
+# 审校：Funnel 作为武器复数发射，改为复数更自然
+> 「そこだ! ファンネル!!」
+“There! Funnels!!”
+
+@14620 Kamille · カミーユ
+# 审校：同上，改为复数
+> 「ファンネル!!」
+“Funnels!!”
+
+@14621 Kamille · カミーユ
+# 审校：同上，改为复数
+> 「いけっ!ファンネル!!」
+“Go! Funnels!!”
+
+@14622 Kamille · カミーユ
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14623 Kamille · カミーユ
+> 「いけっ!フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14624 Kamille · カミーユ
+> 「フィンファンネル、行けぇっ!」
+“Fin Funnels, go!”
+
+@14625 Kamille · カミーユ
+> 「ハイメガキャノン、いけえっ!!」
+“High Mega Cannon, fire!!”
+
+@14626 Kamille · カミーユ
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14627 Buran · ブラン
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14628 Buran · ブラン
+> 「アッシマーがぁーっ!?」
+“The Asshimar?!”
+
+@14629 Buran · ブラン
+> 「アッシマーの装甲を甘くみるな!」
+“Don't underestimate the Asshimar's armor!”
+
+@14630 Four · フォウ
+> 「このサイコガンダムに、そんな攻撃が
+>  通用するか!」
+“You think that attack can hurt the Psyco Gundam?!”
+
+@14631 Four · フォウ
+> 「このサイコガンダムに、そんな攻撃が
+>  通用するか!」
+“You think that attack can hurt the Psyco Gundam?!”
+
+@14632 Four · フォウ
+# 审校：Funnel 复数发射，改为复数
+> 「ファンネルッ!!」
+“Funnels!!”
+
+@14633 Four · フォウ
+# 审校：同上
+> 「いけっ、ファンネル!!」
+“Go, Funnels!!”
+
+@14634 Four · フォウ
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14635 Four · フォウ
+> 「行くよ……ハイメガキャノン!!」
+“Here it comes... High Mega Cannon!!”
+
+@14636 Haman · ハマーン
+# 审校：同上
+> 「ファンネルッ!!」
+“Funnels!!”
+
+@14637 Haman · ハマーン
+# 审校：同上
+> 「いけっ、ファンネル!!」
+“Go, Funnels!!”
+
+@14638 Haman · ハマーン
+# 审校：俗物指人，初稿 a commoner like you 稍显冗余，改为更简洁自然的表达
+> 「フッ、俗物が私にあてられるなどと
+>  思うな」
+“Hmph. Don't think a commoner can hit me.”
+
+@14639 Haman · ハマーン
+> 「ダミーにかかってくれるとは、助かる」
+“How convenient that you fell for the decoy.”
+
+@14640 Haman · ハマーン
+> 「それだけか」
+“Is that all?”
+
+@14641 Haman · ハマーン
+> 「そこまでのようだな」
+“It seems that's your limit.”
+
+@14642 Haman · ハマーン
+> 「それでは私を倒すことなどできんよ」
+“Then you can't possibly defeat me.”
+
+@14643 Haman · ハマーン
+> 「ダミーバルーンというのも
+>  なかなか役に立つ」
+“These dummy balloons are quite useful.”
+
+@14644 Haman · ハマーン
+> 「その程度で私がやれると思われては
+>  困るな」
+“I can't have you thinking that's enough to finish me.”
+
+@14645 Scirocco · シロッコ
+> 「このジ・オの力、身をもって
+>  知るがいい!!」
+“Learn the power of The-O firsthand!!”
+
+@14646 Scirocco · シロッコ
+> 「そんなマシンで、このジ・オと対等に
+>  戦えると思っているのか!」
+“You think a machine like that can fight The-O on equal terms?!”
+
+@14647 Scirocco · シロッコ
+> 「ハハハハッ、そんな攻撃ではダミーに
+>  あてる程度しかできんよ!」
+“Hahahaha! An attack like that can only hit a decoy!”
+
+@14648 Scirocco · シロッコ
+> 「貴様ごときを相手にしている
+>  ヒマはない!」
+“I have no time to waste on the likes of you!”
+
+@14649 Scirocco · シロッコ
+> 「ムダだ!」
+“It's useless!”
+
+@14650 Jerid · ジェリド
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14651 Jerid · ジェリド
+> 「そんな事で、このバウンド・ドッグは
+>  落ちないぜ!」
+“That won't be enough to bring down this Baund Doc!”
+
+@14652 Jerid · ジェリド
+# 审校：原文是确认命中，初稿带问号语气不对，改为肯定句
+> 「かかった!?」
+“Got you!”
+
+@14653 Jerid · ジェリド
+> 「いいぞ、こいつはなかなか使える!」
+“All right, this thing's pretty useful!”
+
+@14654 Jerid · ジェリド
+> 「よし、ダミーにいったな」
+“Yes, it went for the decoy.”
+
+@14655 Ramsus · ラムサス
+> 「落ちろっ!」
+“Fall!”
+
+@14656 Yazan · ヤザン
+> 「ダンケル、ラムサス、クモの巣をやるぞ!」
+“Dunkel, Ramsus, we're doing the Spider Web!”
+
+@14657 Ramsus · ラムサス
+> 「ハッ!」
+“Yes, sir!”
+
+@14658 Dunkel · ダンケル
+> 「了解です、隊長!」
+“Understood, Commander!”
+
+@14659 Yazan · ヤザン
+> 「ハハハッ! しとめるぞっ!」
+“Hahaha! We'll finish them off!”
+
+@14660 Emma · エマ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”
+
+@14661 Emma · エマ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”
+
+@14662 Dunkel · ダンケル
+> 「くらえっ!」
+“Take this!”
+
+@14663 Yazan · ヤザン
+> 「ダンケル、ラムサス、クモの巣をやるぞ!」
+“Dunkel, Ramsus, we're doing the Spider Web!”
+
+@14664 Ramsus · ラムサス
+> 「ハッ!」
+“Yes, sir!”
+
+@14665 Dunkel · ダンケル
+> 「了解です、隊長!」
+“Understood, Commander!”
+
+@14666 Yazan · ヤザン
+> 「ハハハッ! しとめるぞっ!」
+“Hahaha! We'll finish them off!”
+
+@14667 Gates · ゲーツ
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14668 Gates · ゲーツ
+> 「このバウンド・ドッグに、そんな攻撃が
+>  通用すると思っているのか!」
+“You think that attack can hurt this Baund Doc?!”
+
+@14669 Yazan · ヤザン
+# 审校：原文外から指从外部攻击，初稿 from the outside 稍显累赘，改为 from outside
+> 「外から串刺しにしてやる!!」
+“I'll skewer you from outside!!”
+
+@14670 Yazan · ヤザン
+> 「海ヘビをやるぞ!」
+“We're doing the Sea Snake!”
+
+@14671 Yazan · ヤザン
+> 「ダンケル、ラムサス、クモの巣をやるぞ!」
+“Dunkel, Ramsus, we're doing the Spider Web!”
+
+@14672 Ramsus · ラムサス
+> 「ハッ!」
+“Yes, sir!”
+
+@14673 Dunkel · ダンケル
+> 「了解です、隊長!」
+“Understood, Commander!”
+
+@14674 Yazan · ヤザン
+> 「ハハハッ! しとめるぞっ!」
+“Hahaha! We'll finish them off!”
+
+@14675 Yazan · ヤザン
+# 审校：初稿 Hambrabi's got 口语化可接受，但为更贴近原文语感改为 has the edge in speed
+> 「スピードはハンブラビの方が
+>  上のようだな!!」
+“Seems the Hambrabi has the edge in speed!!”
+
+@14676 Yazan · ヤザン
+> 「ハハハハッ、ダミーにかかってくれたよう
+>  だな!」
+“Hahahaha, looks like you fell for the decoy!”
+
+@14677 Yazan · ヤザン
+> 「そいつはダミーなんだよ!」
+“That one's a decoy!”
+
+@14678 Yazan · ヤザン
+> 「ダミーの一つや二つ、くれてやる!」
+“I'll give you a decoy or two for free!”
+
+@14679 Fa · ファ
+# 审校：Funnel 作为武器名在喊出时应使用复数形式，更符合英语战斗台词习惯。
+> 「ファンネルっ!」
+“Funnels!”
+
+@14680 Fa · ファ
+# 审校：同上，Funnel 改为复数。
+> 「ファンネルっ! お願いっ!!」
+“Funnels! Please!!”
+
+@14681 Fa · ファ
+> 「行って! フィンファンネルっ!!」
+“Go! Fin Funnels!!”
+
+@14682 Fa · ファ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”
+
+@14683 Rosamia · ロザミア
+# 审校：Funnel 改为复数。
+> 「行くよっ! ファンネルっ!」
+“Here I go! Funnels!”
+
+@14684 Rosamia · ロザミア
+# 审校：Funnel 改为复数。
+> 「ファンネル!」
+“Funnels!”
+
+@14685 Rosamia · ロザミア
+> 「フィンファンネル、いっけぇぇぇっ!」
+“Fin Funnels, gooo!!”
+
+@14686 Rosamia · ロザミア
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”
+
+@14687 Quattro · クワトロ
+# 审校：Funnel 改为复数。
+> 「いけっ!ファンネル!!」
+“Go! Funnels!!”
+
+@14688 Quattro · クワトロ
+# 审校：Funnel 改为复数。
+> 「ファンネル!!」
+“Funnels!!”
+
+@14689 Quattro · クワトロ
+> 「いけっ!! フィンファンネル!!」
+“Go!! Fin Funnels!!”
+
+@14690 Quattro · クワトロ
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14691 Quattro · クワトロ
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14692 Quattro · クワトロ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”
+
+@14693 Henken · ヘンケン
+> 「ミサイル! 撃て!!」
+“Missile! Fire!!”
+
+@14694 Henken · ヘンケン
+> 「各砲座! しっかり狙え!!」
+“All turrets! Aim carefully!!”
+
+@14695 Henken · ヘンケン
+> 「全砲門開け!
+>  集中砲火ぁ!!」
+“Open all gun ports! Concentrated fire!!”
+
+@14696 Henken · ヘンケン
+> 「主砲! 撃て!!」
+“Main cannon! Fire!!”
+
+@14697 Henken · ヘンケン
+> 「メガ粒子砲、よく狙えよ」
+“Mega Particle Cannon, aim well.”
+
+@14698 Henken · ヘンケン
+> 「ハイメガ粒子砲! 発射!!」
+“High Mega Particle Cannon! Fire!!”
+
+@14699 Aboly · アポリー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”

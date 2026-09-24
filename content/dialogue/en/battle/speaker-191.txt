@@ -1,0 +1,150 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12449 Bern · バーン
+> 「勝負だ!」
+“Let's settle this!”
+
+@12450 Bern · バーン
+> 「死ね!」
+“Die!”
+
+@12451 Bern · バーン
+> 「そこか!」
+“There!”
+
+@12452 Bern · バーン
+> 「やらせん!」
+“I won't let you!”
+
+@12453 Bern · バーン
+> 「これでとどめだ!」
+“This is the finishing blow!”
+
+@12454 Bern · バーン
+> 「ゆくぞ!」
+“Here I come!”
+
+@12455 Bern · バーン
+> 「これでどうだ!」
+“How's this?!”
+
+@12456 Bern · バーン
+> 「なめるな!」
+“Don't underestimate me!”
+
+@12457 Bern · バーン
+> 「終わりだな!」
+“This is the end!”
+
+@12458 Bern · バーン
+> 「フフフフフ」
+“Heheheheh.”
+
+@12459 Bern · バーン
+> 「な、なんだと!?」
+“W-what did you say?!”
+
+@12460 Bern · バーン
+> 「なっ……なんだと!?」
+“Wha... what did you say?!”
+
+@12461 Bern · バーン
+> 「ばかな、このわたしが……」
+“Impossible, me of all people...”
+
+@12462 Bern · バーン
+> 「やられたというのか……」
+“I've been beaten, you say...”
+
+@12463 Bern · バーン
+> 「な、なぜだ!?」
+“W-why?!”
+
+@12464 Bern · バーン
+> 「なっ……なぜだ!」
+“Wha... why?!”
+
+@12465 Bern · バーン
+> 「うっ! なんというパワーだ!」
+“Ugh! What power!”
+
+@12466 Bern · バーン
+> 「うっ……こんなことでやられるわけには
+>  いかぬ!」
+“Ugh... I can't be beaten by this!”
+
+@12467 Bern · バーン
+> 「ぐぅ……お、おのれ!」
+“Guh... y-you bastard!”
+
+@12468 Bern · バーン
+> 「ぐぅ……おっ、おのれ!」
+“Guh... y-you bastard!”
+
+@12469 Bern · バーン
+> 「おされている……この私が!?」
+“I'm being pushed back... me?!”
+
+@12470 Bern · バーン
+> 「まだだ! まだやられはせんよ!」
+“Not yet! I won't be beaten yet!”
+
+@12471 Bern · バーン
+> 「ぐぅ……きさまぁ!!」
+“Guh... you scum!!”
+
+@12472 Bern · バーン
+> 「うっ 意外と……」
+“Ugh, unexpectedly...”
+
+@12473 Bern · バーン
+> 「なに!? あたった……」
+“What?! It hit...”
+
+@12474 Bern · バーン
+> 「うっ……この程度でいい気になるな」
+“Ugh... don't get cocky over this.”
+
+@12475 Bern · バーン
+> 「ちっ……やるな」
+“Tch... not bad.”
+
+@12476 Bern · バーン
+> 「効かんな」
+“That's nothing.”
+
+@12477 Bern · バーン
+> 「その程度か」
+“Is that all?”
+
+@12478 Bern · バーン
+> 「ふっ……なめるな」
+“Hmph... don't underestimate me.”
+
+@12479 Bern · バーン
+> 「ハハハハッ、効かぬ!」
+“Hahahah, it's nothing!”
+
+@12480 Bern · バーン
+> 「あまいな!」
+“Too naive!”
+
+@12481 Bern · バーン
+> 「見切った!」
+“I saw through it!”
+
+@12482 Bern · バーン
+> 「あたらん!」
+“You won't hit me!”
+
+@12483 Bern · バーン
+> 「そんなものが通用するか!」
+“You think that'll work?!”
+
+@12484 Bern · バーン
+> 「しまった!? 反撃できん!」
+“Damn!? I can't counterattack!”
+
+@12485 Bern · バーン
+> 「なに!? 射程外からだと!?」
+“What?! From out of range?!”

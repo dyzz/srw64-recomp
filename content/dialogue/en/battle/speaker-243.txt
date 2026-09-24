@@ -1,0 +1,103 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12052 Warchimedes · ワルキメデス
+> 「ゆくぞ、ダークロン!」
+“Here I go, Darkron!”
+
+@12053 Warchimedes · ワルキメデス
+> 「頼むぞダークロン!」
+“I'm counting on you, Darkron!”
+
+@12054 Warchimedes · ワルキメデス
+> 「のるかそるかだ!」
+“It's all or nothing!”
+
+@12055 Warchimedes · ワルキメデス
+> 「逃しはせん!」
+“I won't let you escape!”
+
+@12056 Warchimedes · ワルキメデス
+> 「それっ!」
+“Take this!”
+
+@12057 Warchimedes · ワルキメデス
+> 「どうだ!」
+“How's that!”
+
+@12058 Warchimedes · ワルキメデス
+> 「ダークロン、最大出力
+>  120%!」
+“Darkron, maximum output 120%!”
+
+@12059 Warchimedes · ワルキメデス
+> 「これまでよ。死ねぃ!」
+“This is the end. Die!”
+
+@12060 Warchimedes · ワルキメデス
+> 「これでもくらうがいい!」
+“Try taking this!”
+
+@12061 Warchimedes · ワルキメデス
+> 「うおぉぉぉぉぉーっ!?」
+“Whoaoooooooh?!”
+
+@12062 Warchimedes · ワルキメデス
+> 「だ、脱出だ!」
+“E-eject! Eject!”
+
+@12063 Warchimedes · ワルキメデス
+> 「ジャネラ様、申しわけございません!!」
+“Lady Janera, I beg your forgiveness!!”
+
+@12064 Warchimedes · ワルキメデス
+> 「うおっ!? お、俺はまだ
+>  死にたくない!」
+“Whoa?! I-I don't wanna die yet!”
+
+@12065 Warchimedes · ワルキメデス
+> 「ぐっ……ばかな、こんなばかな!」
+“Ngh... Impossible, this can't be!”
+
+@12066 Warchimedes · ワルキメデス
+> 「お……おのれ、このままでは……」
+“Y-you fiend, at this rate...”
+
+@12067 Warchimedes · ワルキメデス
+> 「な、なんだ!?」
+“W-what the?!”
+
+@12068 Warchimedes · ワルキメデス
+> 「くっ……なんということだ!」
+“Ngh... How can this be!”
+
+@12069 Warchimedes · ワルキメデス
+> 「ええいっ! これしきのことで!」
+“Gah! This is nothing!”
+
+@12070 Warchimedes · ワルキメデス
+> 「フフフ、無駄な攻撃だ!」
+“Hehehe, a futile attack!”
+
+@12071 Warchimedes · ワルキメデス
+> 「このダークロンには効きはせん!」
+“It won't work on this Darkron!”
+
+@12072 Warchimedes · ワルキメデス
+> 「ハハハッ、痛くもかゆくもないわ!」
+“Hahaha, that doesn't hurt one bit!”
+
+@12073 Warchimedes · ワルキメデス
+> 「ハハハッ、何度でもやるがよい!」
+“Hahaha, try it as many times as you like!”
+
+@12074 Warchimedes · ワルキメデス
+> 「フン、無駄なことだ!」
+“Hmph, pointless!”
+
+@12075 Warchimedes · ワルキメデス
+> 「な、なんと弾切れか!?」
+“W-what, out of ammo?!”
+
+@12076 Warchimedes · ワルキメデス
+> 「ええいっ、届かぬではないか!」
+“Gah, it won't even reach!”

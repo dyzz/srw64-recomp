@@ -1,0 +1,179 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6438 Noin · ノイン
+> 「とまれぇ!」
+“Stop!”
+
+@6439 Noin · ノイン
+> 「汚い戦いをするな!」
+“Don't fight dirty!”
+
+@6440 Noin · ノイン
+> 「逃げられるわけがない!」
+“There's no way you can escape!”
+
+@6441 Noin · ノイン
+> 「やらせはしないっ!」
+“I won't let you!”
+
+@6442 Noin · ノイン
+> 「この命にかえてもっ!!」
+“Even if it costs me my life!!”
+
+@6443 Noin · ノイン
+> 「落ちろっ!!」
+“Fall!!”
+
+@6444 Noin · ノイン
+> 「そこっ!」
+“There!”
+
+@6445 Noin · ノイン
+> 「もらった!!」
+“Got you!!”
+
+@6446 Noin · ノイン
+> 「これでとどめだっ!」
+“This is the finishing blow!”
+
+@6447 Noin · ノイン
+# 审校：原文“うかつなっ!”是诺因对敌人喊出“太疏忽了”，初稿“Careless!”缺少主语且不像对敌方喊话，改为“You're careless!”。
+> 「うかつなっ!」
+“You're careless!”
+
+@6448 Noin · ノイン
+> 「貴様っ!」
+“You bastard!”
+
+@6449 Noin · ノイン
+> 「ここまでだっ!」
+“This is the end!”
+
+@6450 Noin · ノイン
+> 「ガードがなってないっ!」
+“Your guard's a mess!”
+
+@6451 Noin · ノイン
+> 「覚悟っ!」
+“Prepare yourself!”
+
+@6452 Noin · ノイン
+> 「くうっ……ゼクス……」
+“Ngh... Zechs...”
+
+@6453 Noin · ノイン
+> 「だ、だめか……」
+“N-No good...”
+
+@6454 Noin · ノイン
+# 审校：原文“まだやられたわけではない”是否定“已经被打败”，初稿“I'm not done yet”意思接近但不够准确，改为“I haven't been beaten yet!”。
+> 「な、なんの! まだやられたわけではない!」
+“W-What?! I haven't been beaten yet!”
+
+@6455 Noin · ノイン
+> 「つっ……このままでは危険か……」
+“Ngh... At this rate, I'm in danger...”
+
+@6456 Noin · ノイン
+> 「うあっ! な、なんてパワー……」
+“Ugh! W-What power...”
+
+@6457 Noin · ノイン
+> 「くううっ! このまま黙って
+>  やられるわけには……」
+“Nghhh! I can't just sit here and take it...”
+
+@6458 Noin · ノイン
+> 「あぁぅっ、う、動けぇ!」
+“Ahh, m-move!”
+
+@6459 Noin · ノイン
+> 「まだだ! まだ私は戦える!」
+“Not yet! I can still fight!”
+
+@6460 Noin · ノイン
+> 「うっ!! さ、さすがに……」
+“Ugh!! A-As expected...”
+
+@6461 Noin · ノイン
+> 「しまった、当たった!?」
+“Damn, I'm hit?!”
+
+@6462 Noin · ノイン
+> 「つっ! やる! しかし!!」
+“Ngh! Not bad! But!!”
+
+@6463 Noin · ノイン
+> 「あうっ!! や、やらせないっ!」
+“Agh!! I-I won't let you!”
+
+@6464 Noin · ノイン
+> 「まだまだっ!! これしきのことでっ!!」
+“Not yet!! This won't stop me!!”
+
+@6465 Noin · ノイン
+> 「やる! だがっここまでだ!」
+“Not bad! But this is the end!”
+
+@6466 Noin · ノイン
+> 「くそっどうした!?」
+“Damn, what's going on?!”
+
+@6467 Noin · ノイン
+# 审校：原文“この程度でっ!!”是省略句，表示“这种程度才不会……”，初稿“This much won't!!”不完整，补上“stop me”使语义完整。
+> 「この程度でっ!!」
+“This much won't stop me!!”
+
+@6468 Noin · ノイン
+> 「効きはしないっ!」
+“It won't work on me!”
+
+@6469 Noin · ノイン
+# 审校：原文“当たっただけだ、こんなもの!”是“只是被打中而已，这种程度”，初稿“It just grazed me”把“当たった”误译为擦过，改为“It just hit me, that's all!”。
+> 「当たっただけだ、こんなもの!」
+“It just hit me, that's all!”
+
+@6470 Noin · ノイン
+> 「そんな攻撃で落ちるものか!」
+“You think that attack can bring me down?!”
+
+@6471 Noin · ノイン
+> 「損傷軽微、いける!!」
+“Minor damage. I can keep going!!”
+
+@6472 Noin · ノイン
+> 「甘いなっ!!」
+“Too naive!!”
+
+@6473 Noin · ノイン
+> 「当たるものかっ!!」
+“As if that would hit!!”
+
+@6474 Noin · ノイン
+# 审校：原文“なんのっ!”是表示“这算什么”的轻蔑反击，初稿“What of it!”语气不对，改为更自然的“As if!”。
+> 「なんのっ!」
+“As if!”
+
+@6475 Noin · ノイン
+> 「ふ……まるで素人だな」
+“Hmph... You're a complete amateur.”
+
+@6476 Noin · ノイン
+> 「見切った!」
+“I saw through it!”
+
+@6477 Noin · ノイン
+> 「遅いっ!」
+“Too slow!”
+
+@6478 Noin · ノイン
+> 「ビームなど、効きはしないっ!!」
+“A beam like that won't work on me!!”
+
+@6479 Noin · ノイン
+> 「なにっ!? 弾切れだと……」
+“What?! Out of ammo...”
+
+@6480 Noin · ノイン
+> 「ちっ、この距離ではどうしようもない…」
+“Tch, at this range there's nothing I can do...”

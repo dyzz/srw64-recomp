@@ -1,0 +1,107 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9206 Bask · バスク
+> 「撃てぃ! 撃ち落とせぇ!」
+“Fire! Shoot them down!”
+
+@9207 Bask · バスク
+> 「全砲門開け! 一斉掃射」
+“Open all gun ports! Full barrage!”
+
+@9208 Bask · バスク
+> 「生かして帰すなっ!」
+“Don't let them get away alive!”
+
+@9209 Bask · バスク
+> 「蹴散らせぇ!」
+“Crush them!”
+
+@9210 Bask · バスク
+> 「撃てぃ!」
+“Fire!”
+
+@9211 Bask · バスク
+> 「バッ、バカな……」
+“Th-This can't be...”
+
+@9212 Bask · バスク
+> 「ぬぅぅぅっ……おのれぇ、よくもよくも!」
+“Nghhh... You fiends, how dare you, how dare you!”
+
+@9213 Bask · バスク
+> 「ぬあっ……出力が落ちているぞ!
+>  どうしたかっ!?」
+“Ngh... Output's dropping! What's going on?!”
+
+@9214 Bask · バスク
+> 「うぉ!? ……直撃なのか!?」
+“Whoa?! ...Was that a direct hit?!”
+
+@9215 Bask · バスク
+> 「ぬうぉっ……な、何だこの力は!?」
+“Ngh... Wh-What is this power?!”
+
+@9216 Bask · バスク
+> 「ぬうううっ! おのれっ!
+>  よくも、よくもっ!!」
+“Nghhh! You bastards! How dare you, how dare you!!”
+
+@9217 Bask · バスク
+> 「ええいっ! 何をしておる!
+>  撃ち落とせっ!!」
+“Enough! What are you doing?! Shoot them down!!”
+
+@9218 Bask · バスク
+> 「ぐぅぅっ!? 対空防御!
+>  しっかりやらんかっ!」
+“Gah?! Anti-air defense! Get it together!”
+
+@9219 Bask · バスク
+> 「ぬうぉっ……やらせるわけにはいかん!」
+“Ngh... I can't let you get away with this!”
+
+@9220 Bask · バスク
+> 「おのれ、よくもやりおったなっ!」
+“You fiends, you'll pay for that!”
+
+@9221 Bask · バスク
+> 「ふん、効きはせんわ」
+“Hmph, that won't work on me.”
+
+@9222 Bask · バスク
+> 「ふん、悪あがきよ」
+“Hmph, pointless struggle.”
+
+@9223 Bask · バスク
+> 「ふん……蚊トンボが」
+“Hmph... like a gnat.”
+
+@9224 Bask · バスク
+> 「この装甲は並ではないぞ」
+“This armor is no ordinary armor.”
+
+@9225 Bask · バスク
+> 「急速回頭!」
+“Hard about!”
+
+@9226 Bask · バスク
+> 「回避運動急げ! あたるなっ!!」
+“Evasive maneuvers, hurry! Don't get hit!!”
+
+@9227 Bask · バスク
+> 「かわせっ!」
+“Dodge it!”
+
+@9228 Bask · バスク
+> 「ふはははははっ、無駄だ無駄だ
+>  ふははは!!」
+“Fuhahahaha, useless, useless, fuhahaha!!”
+
+@9229 Bask · バスク
+> 「弾切れだと……ええぃ
+>  何をやっておるか!!」
+“Out of ammo...? Damn it, what are you doing!!”
+
+@9230 Bask · バスク
+> 「おのれぇっ、遠距離からの攻撃か」
+“You fiends, attacking from long range?”

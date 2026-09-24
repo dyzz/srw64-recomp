@@ -1,0 +1,724 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@31513 Bright · ブライト
+> 「突入するぞ!
+>  要塞を内部から破壊するんだ!」
+“We're going in! We'll destroy the fortress from the inside!”
+
+@31514 Murasame · 村雨
+# 审校：句末应为问号，原文为疑问句。
+> 「{HeroMech}、聞こえるか、
+>  {HeroMech}!」
+“{HeroMech}, can you hear me, {HeroMech}?”
+
+@31515 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長!
+>  緊急通信です!」
+“Captain Bright! An urgent transmission!”
+
+@31516 Bright · ブライト
+> 「何だと!?
+>  ……君は! 村雨君か!」
+“What?! ... It's you! Murasame!”
+
+@31517 Ginrei · 銀鈴
+> 「健二さん!」
+“Kenji!”
+
+@31518 Murasame · 村雨
+> 「中条長官の指示で
+>  潜入していたんだ
+“I infiltrated on Chief Chujo's orders.
+---
+>  手短かにいうからよく聞いてくれ。
+>  いいか、この要塞はまだ未完成だ
+I'll keep it short, so listen carefully. All right, this fortress is still incomplete.
+---
+>  こいつを完全に破壊するには、
+>  4か所あるエネルギー発生機を
+To destroy it completely, we have to take out the four energy generators—
+---
+>  すべて破壊するしかない」
+all of them, no exceptions.”
+
+@31519 Tetsuya · 鉄也
+> 「4か所のエネルギー発生機……。
+>  それをぶち壊せば
+“The four energy generators... If we smash those,
+---
+>  この要塞を破壊できるんだな!」
+we can destroy this fortress!”
+
+@31520 Murasame · 村雨
+> 「そうだ。だが、4つは連動して
+>  いるうえにまだ不安定で
+“That's right. But the four are linked, and they're still unstable.
+---
+>  どれかを破壊してバランスをくずすと、
+>  残りが暴走する危険がある
+If we destroy one and throw off the balance, the rest could run wild.
+---
+>  最悪の場合、
+>  爆発に巻きこまれるかも知れん」
+In the worst case, we might get caught in the explosion.”
+
+@31521 Ryoma · リョウ
+> 「と、いうことは……」
+“Which means...”
+
+@31522 Murasame · 村雨
+> 「4か所のジェネレーターを、可能な
+>  限り同時に破壊することだ
+“We have to destroy all four generators at as close to the same time as possible.
+---
+>  いいか、くれぐれも気をつけてくれ」
+All right, be extremely careful.”
+
+@31523 Bright · ブライト
+> 「わかった、ありがとう。
+>  みんな聞こえたな!」
+“Understood, thank you. You all heard him!”
+
+@31524 Murasame · 村雨
+> 「幸運を祈る。じゃあな」
+“I wish you luck. See you.”
+
+@31525 Emperor Burai · ブライ大帝
+> 「何と、奴らの進入を許したとな!
+>  ええい、どこまでもこざかしい……」
+“What, you let them get inside?! Curse them, always so clever...”
+
+@31526 Hell Marshal · 地獄大元帥
+> 「むうう、暗黒大将軍を
+>  もってしても……! おのれ人間ども
+“Grrr, even the Dark General...! Damn you humans!
+---
+>  この上は生かして帰さぬ!
+>  我が同胞の無念
+This time I won't let you leave alive! I'll make you feel
+---
+>  思い知らせてくれようぞ!」
+the grief of my comrades!”
+
+@31527 Emperor Burai · ブライ大帝
+> 「グラー博士、ヤヌス侯爵!」
+“Dr. Gura, Marquis Janus!”
+
+@31528 Dr. Gura · グラー博士
+> 「ははっ」
+“Yes, sir!”
+
+@31529 Marquis Janus · ヤヌス侯爵
+> 「お側に」
+“At your side.”
+
+@31530 Emperor Burai · ブライ大帝
+> 「よいか、奴らをエネルギー発生機に
+>  だけは近づけるな
+“Listen well. Do not let them anywhere near the energy generators.
+---
+>  あれを破壊されては
+>  この要塞は大破する
+If those are destroyed, this fortress will be torn apart.
+---
+>  奴らがそれに気づく前に、
+>  息の根をとめるのだ!」
+Kill them before they realize it!”
+
+@31531 Dr. Gura · グラー博士
+> 「はっ!」
+“Yes, sir!”
+
+@31532 Marquis Janus · ヤヌス侯爵
+> 「承知いたしてございます!」
+“As you command!”
+
+@31533 Hell Marshal · 地獄大元帥
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“Onward, all of you! This time we'll finish off
+# 草稿第 2 页：【主角机体名】 for good!”
+> 「ゆくぞ者ども!
+>  今度こそ{HeroMech}に
+---
+>  引導を渡すのだ!」
+
+@31534 Bright · ブライト
+> 「村雨のいっていたエネルギー
+>  発生機は、ここと……」
+“The energy generator Murasame mentioned is here, and...”
+
+@31535 Bright · ブライト
+> 「ここと……」
+“Here, and...”
+
+@31536 Bright · ブライト
+> 「ここと……」
+“Here, and...”
+
+@31537 Bright · ブライト
+> 「ここか」
+“Here, huh.”
+
+@31538 Amuro · アムロ
+> 「あそこへいけばいいのか……」
+“So we just have to get over there...”
+
+@31539 Bright · ブライト
+> 「わかっているな? 可能な限り、
+>  同時に破壊するよう努力しろ!」
+“You understand? Make every effort to destroy them at the same time!”
+
+@31540 Emperor Burai · ブライ大帝
+> 「やらせはせんぞ! 今度こそ引導を
+>  渡してやる」
+“I won't let you! This time I'll send you to your grave!”
+
+@31541 Marquis Janus · ヤヌス侯爵
+> 「このヤヌス侯爵は負けぬわ……」
+“I, Marquis Janus, will not lose...”
+
+@31542 Hell Marshal · 地獄大元帥
+> 「おのれ……よくも、
+>  よくもこのワシをぉぉぉーっ!!」
+“You... How dare you, how dare you do this to meeee!!”
+
+@31543 Marquis Janus · ヤヌス侯爵
+# 审校：原文是ヤヌス侯爵的自称「わらわ」，译文误译为“a woman of”，且未完整表达原意，改为更自然的自述。
+> 「こ、こんな……人間ごときに
+>  わらわが……」
+“Th-this... to mere humans, I...”
+
+@31544 Dr. Gura · グラー博士
+> 「おおぉぉっ、おのれぇぇぇーっ!!」
+“Ooooh, damn youuu!!”
+
+@31545 Emperor Burai · ブライ大帝
+> 「グオォォォォォォォーッ!!」
+“GUOOOOOOOOOO!!”
+
+@31546 Bright · ブライト
+> 「暴走が始まった。
+>  あと10分以内に
+“The runaway has begun. Within the next ten minutes,
+---
+>  残りの2つも破壊するんだ」
+destroy the remaining two as well.”
+
+@31547 Bright · ブライト
+> 「あと1つだ、急げ!」
+“One left, hurry!”
+
+@31548 Bright · ブライト
+> 「止まったぞ。よし、脱出する」
+“It's stopped. All right, we're pulling out.”
+
+@31549 Bright · ブライト
+> 「暴走が始まった。
+>  あと10分以内に
+“The runaway has begun. Within the next ten minutes,
+---
+>  残りの2つも破壊するんだ」
+destroy the remaining two as well.”
+
+@31550 Bright · ブライト
+> 「あと1つだ、急げ!」
+“One left, hurry!”
+
+@31551 Bright · ブライト
+> 「止まったぞ。よし、脱出する」
+“It's stopped. All right, we're pulling out.”
+
+@31552 Bright · ブライト
+> 「暴走が始まった。
+>  あと10分以内に
+“The runaway has begun. Within the next ten minutes,
+---
+>  残りの2つも破壊するんだ」
+destroy the remaining two as well.”
+
+@31553 Bright · ブライト
+> 「あと1つだ、急げ!」
+“One left, hurry!”
+
+@31554 Bright · ブライト
+> 「止まったぞ。よし、脱出する」
+“It's stopped. All right, we're pulling out.”
+
+@31555 Bright · ブライト
+> 「暴走が始まった。
+>  あと10分以内に
+“The runaway has begun. Within the next ten minutes,
+---
+>  残りの2つも破壊するんだ」
+destroy the remaining two as well.”
+
+@31556 Bright · ブライト
+> 「あと1つだ、急げ!」
+“One left, hurry!”
+
+@31557 Bright · ブライト
+> 「止まったぞ。よし、脱出する」
+“It's stopped. All right, we're pulling out.”
+
+@31558 Bright · ブライト
+> 「なに!? しまった、暴走が
+>  はじまったぞ。いかん、脱出するんだ!」
+“What?! Damn it, the runaway has started. This is bad, everyone pull out!”
+
+@31559 Beltorchika · ベルトーチカ
+> 「あと10分以内に全機脱出
+>  しないと危険だわ」
+“If every unit doesn't escape within ten minutes, it'll be dangerous.”
+
+@31560 Bright · ブライト
+> 「くっ、全員、出口へ急げ!」
+“Ngh, everyone, hurry to the exit!”
+
+@31561 Bright · ブライト
+> 「くっ、しまった……」
+“Ngh, damn it...”
+
+@31562 Beltorchika · ベルトーチカ
+> 「あと2分以内よ」
+“You have two minutes left.”
+
+@31563 Beltorchika · ベルトーチカ
+> 「あと1分以内よ、急いで!」
+“One minute left, hurry!”
+
+@31564 Beltorchika · ベルトーチカ
+> 「あと4分以内よ、急いで!」
+“Four minutes left, hurry!”
+
+@31565 Beltorchika · ベルトーチカ
+> 「あと3分以内よ、急いで!」
+“Three minutes left, hurry!”
+
+@31566 Bright · ブライト
+> 「みんな、何かにつかまれ!
+>  衝撃波がくるぞ!」
+“Everyone, grab onto something! A shockwave is coming!”
+
+@31567 Beltorchika · ベルトーチカ
+> 「きゃああっ!」
+“Kyaaah!”
+
+@31568 Judau · ジュドー
+> 「うわああっ!」
+“Uwaaaah!”
+
+@31569 Bright · ブライト
+> 「くっ……!」
+“Ngh...!”
+
+@31570 Bright · ブライト
+> 「被害確認! みんな無事か!?」
+“Damage report! Is everyone all right?!”
+
+@31571 Koji · 甲児
+> 「ひてててて……。舌かんじまった……」
+“Owww... I bit my tongue...”
+
+@31572 Amuro · アムロ
+> 「やつらは……?」
+“And them...?”
+
+@31573 Beltorchika · ベルトーチカ
+> 「移動要塞……消滅!
+>  すごい、完全にふきとんじゃってる……」
+“The mobile fortress... annihilated! Amazing, it's been completely blown away...”
+
+@31574 Alan · アラン
+> 「今度こそ連中も最後だな……。
+>  あの爆発では
+“This time they're finished for sure... After that explosion,
+---
+>  もう復活してくることもあるまい」
+there's no way they'll be coming back.”
+
+@31575 Ryoma · リョウ
+> 「ついに……やったか!」
+“We finally... did it!”
+
+@31576 Tetsuya · 鉄也
+> 「ああ。あのしぶとい連中も、これで
+>  とどめだ。手こずらせやがったぜ……」
+“Yeah. Even those stubborn bastards are done for now. They sure made us work for it...”
+
+@31577 Koji · 甲児
+# 审校：原文「へっ、らまあみやがれ」应为「ざまあみやがれ」的咬舌口误，译文“just you watch”未体现口误和挑衅语气，改为“just you wait”并保留轻蔑感。
+> 「へっ、らまあみやがれ!」
+“Heh, just you wait!”
+
+@31578 David · デビッド
+> 「おい、口から血が出てるぞ」
+“Hey, you're bleeding from the mouth.”
+
+@31579 Koji · 甲児
+> 「ひてて……。さやかさん、薬……!」
+“Owww... Sayaka, medicine...!”
+
+@31580 Daisaku · 大作
+> 「そうだ、村雨さんは!?」
+“That's right, what about Murasame?!”
+
+@31581 Ginrei · 銀鈴
+> 「心配いらないわ、
+>  とっくに脱出してるはずよ」
+“No need to worry, she should have escaped long ago.”
+
+@31582 Daisaku · 大作
+> 「……わかるんですか?」
+“...How can you tell?”
+
+@31583 Ginrei · 銀鈴
+# 审校：原文「あの人」未明确性别，但后文用「仕損じることなんてありはしないの」且语境指专家，初稿译成 woman 可能误判性别；改为中性 that person。
+> 「ええ。あの人はエキスパートよ……。
+>  仕損じることなんてありはしないの」
+“Yes. That person is an expert... She never makes a mistake.”
+
+@31584 Astonaige · アストナージ
+> 「おうい、鉄也、ジュン。それに甲児
+>  たちも、ちょっと聞いてくれないか?」
+“Hey, Tetsuya, Jun. And Koji and the rest of you too, could you listen for a moment?”
+
+@31585 Koji · 甲児
+> 「何らい?」
+“What is it?”
+
+@31586 Sayaka · さやか
+> 「ちょっと甲児くん、動かないで!
+>  薬がつけられないじゃないの」
+“Koji, hold still for a moment! I can't put the medicine on otherwise.”
+
+@31587 Tetsuya · 鉄也
+> 「どうしたんだ? マジンガーのパーツでも
+>  手に入ったのか?」
+“What's up? Did you get your hands on some Mazinger parts or something?”
+
+@31588 Astonaige · アストナージ
+# 检查提示：未用必用译名：量産型グレート→MP Great Mazinger
+> 「パーツどころか。いいか、聞いて
+>  驚くなよ。どうやらあの要塞には
+“Parts, nothing. All right, listen and be surprised. Apparently that fortress was
+---
+>  量産型グレートの生産工場が
+>  作られる予定だったらしい」
+supposed to have a production factory for the MP Great built inside it.”
+
+@31589 Tetsuya · 鉄也
+> 「何だと!?」
+“What?!”
+
+@31590 Jun · ジュン
+> 「本当なの、それ!?」
+“Really, that's true?!”
+
+@31591 Astonaige · アストナージ
+# 审校：原文「その時はよろしく頼むな」是请对方届时协助测试，初稿 count on me 弄错对象；改为 I'm counting on you。
+# 检查提示：未用必用译名：量産型グレート→MP Great Mazinger
+> 「もしかしたら再生工場だったのかも
+>  しれんがな。それはともかく
+“It might have been a regeneration factory, for all I know. Anyway,
+---
+>  量産型グレートの残がいやパーツを
+>  逃げ出す前にできるだけ運びこんで
+before we escaped I had as many MP Great wreckages and parts as possible loaded up,
+---
+>  調べてみたんだ。そうしたら、どうやら
+>  1体だけ組み立てられそうなんだよ
+and took a look at them. And it seems we can assemble one of them.
+---
+>  組み上がったらテストするから、
+>  その時はよろしく頼むな」
+Once it's put together I'll run a test, so I'm counting on you then.”
+
+@31592 Mondo · モンド
+> 「ふええ、あの状況でよくもまあ……」
+“Whoa, and you managed all that in that situation...”
+
+@31593 Elle · エル
+# 审校：初稿“We don't stand a chance.”偏离原文「かないっこないね、私たちなんか」的“我们可做不到那种事”之意；改为更贴切的表达。
+> 「かないっこないね、私たちなんか」
+“We could never manage that.”
+
+@31594 Kayra · ケーラ
+> 「メカニックの鏡だろ?
+>  ま、場数の違いさ」
+“He's the model mechanic, isn't he? Well, that's the difference experience makes.”
+
+@31595 Roux · ルー
+> 「マジンガーって、
+>  そもそも量産できる物なの?」
+“Can a Mazinger even be mass-produced in the first place?”
+
+@31596 Astonaige · アストナージ
+> 「まあ、人間が設計して作ったもの
+>  だからね。やろうと思えばできるだろ」
+“Well, humans designed and built it, so if you put your mind to it, it can be done.”
+
+@31597 Kayra · ケーラ
+> 「考えてみたらその通りか。じゃあ、
+>  もしかしたらOZだって、グレートを
+“Come to think of it, you're right. Then maybe even OZ could
+---
+>  量産してしまう可能性が
+>  あるんじゃない?」
+mass-produce a Great, couldn't they?”
+
+@31598 Judau · ジュドー
+> 「そんなことになったらおしまいだね。
+>  俺たちも
+“If that happened, it'd be all over. We wouldn't be able to keep up
+---
+>  ゲリラ活動どころじゃなくなるだろうぜ」
+our guerrilla activities either.”
+
+@31599 Tetsuya · 鉄也
+> 「おい、冗談でもそんな話はやめてくれ」
+“Hey, don't even joke about that.”
+
+@31600 Jun · ジュン
+> 「そうよ。私、
+>  何だか真剣に怖かったわ、今の」
+“That's right. Honestly, that really scared me just now.”
+
+@31601 Astonaige · アストナージ
+# 审校：「科学ってのは、決して万能じゃない」初稿 almighty 可接受，但 all-powerful 更自然口语化。
+> 「ははは、実際はそんなことは
+>  ないと思うよ。特にこの手のマシンは
+“Hahaha, in reality I don't think that'll happen. These kinds of machines especially are
+---
+>  パイロットに合わせて特化した、
+>  ほとんど1点物だからね……
+tailored to their pilot, practically one-of-a-kind...
+---
+>  科学ってのは、
+>  決して万能じゃない」
+Science isn't all-powerful, you know.”
+
+@31602 Kayra · ケーラ
+> 「ふうん……。あんたがいうんなら、
+>  まあ、安心かね……」
+“Hmm... If you say so, then I guess I can relax...”
+
+@31603 Dermail · デルマイユ
+> 「我々の地球から、
+>  つまらぬ紛争が消えつつある
+“From our Earth, petty conflicts are fading away.
+---
+>  誠によろこばしいことだ。
+>  だが我々の責任は
+That is truly a joyous thing. But our responsibility
+---
+>  これで果たされたわけではない……」
+is not fulfilled by this alone...”
+
+@31604 Relena · リリーナ
+> 「わたくしはクイーン・リリーナ……。
+>  新たなるロームフェラ財団の代表
+“I am Queen Relena... the representative of the new Romefeller Foundation.
+---
+>  ……そして世界国家を
+>  代表する者……。世界国家
+...And the one who represents the world nation.... The world nation
+---
+>  ……すなわち紛争のもととなる
+>  国家の垣根を取りのぞき
+...that is, the era has come when the barriers of nations, the source of conflict, are removed
+---
+>  ひとつとなる時代がきたのです。
+>  地球の未来は国と国とが
+and all become one. Earth's future will be opened
+---
+>  ひとつに結びつくことによって
+>  開けるのです」
+by nations joining together as one.”
+
+@31605 Dermail · デルマイユ
+> 「すばらしい! 我が財団は
+>  リリーナ代表のもと
+“Splendid! Under Representative Relena, let our foundation
+---
+>  一致団結して、世界国家
+>  建設にまい進しようではないか!」
+unite as one and press on with the construction of the world nation!”
+
+@31606 Relena · リリーナ
+> (……ヒイロ、わたくしも自分に
+>  できることをせいいっぱいやってみます)
+(...Heero, I too will do everything I can.)
+
+@31607 Eiji · エイジ
+> 「な……ばかな!」
+“Th-That's insane!”
+
+@31608 Roux · ルー
+> 「ロームフェラはサンクキングダムを
+>  踏みにじった当人のはずよ!
+“Romefeller was the one who trampled the Sanc Kingdom!
+---
+>  その代表にリリーナさんが……」
+And now Miss Relena is its representative...”
+
+@31609 Koji · 甲児
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、どういうことだよ!?」
+“Captain Bright, what does this mean?!”
+
+@31610 Bright · ブライト
+> 「わからん。あるいは強制されたのか?
+>  いや、たとえそうだとしても
+“I don't know. Could she have been forced into it? No, even if she were,
+---
+>  彼女がそれに屈するはずがない」
+she would never yield to that.”
+
+@31611 Show · ショウ
+> 「地上の争いを終わらせるため……
+>  じゃないんですか?」
+“Isn't it to put an end to the fighting on Earth...?”
+
+@31612 David · デビッド
+> 「だからといってよ!」
+“Even so!”
+
+@31613 Noin · ノイン
+> 「いや、リリーナ様は
+>  その道を選ばれたのでしょう」
+“No, Lady Relena must have chosen that path herself.”
+
+@31614 Alan · アラン
+> 「ノインさん?」
+“Miss Noin?”
+
+@31615 Quatre · カトル
+> 「……僕もそう思います。
+>  これは覚悟のうえでの行動だと」
+“...I think so too. This is an action taken with full resolve.”
+
+@31616 Noin · ノイン
+> 「スペシャルズがOZとなり、現在の
+>  OZはロームフェラ財団の兵力だ
+“The Specials became OZ, and the current OZ is the military force of the Romefeller Foundation.
+---
+>  いま地球圏にある争いのもとは、
+>  全て地球人自らが
+The source of every conflict now in the Earth Sphere is a seed that Earthlings themselves
+---
+>  まいた種だといえる」
+sowed.”
+
+@31617 Quatre · カトル
+> 「まいた種は刈り取らなきゃいけない。
+>  リリーナさんは
+“The seeds we sowed must be reaped. Miss Relena
+---
+>  それをやろうとしてるんです」
+is trying to do exactly that.”
+
+@31618 Eiji · エイジ
+> 「…………」
+“...”
+
+@31619 Quattro · クワトロ
+> 「再び外宇宙からの敵がやってくる
+>  その時だからというわけか
+“So it's because the time has come when an enemy from outer space will attack once more.
+---
+>  なるほどな……立派な覚悟だ」
+I see... A splendid resolve.”
+
+@31620 Treize · トレーズ
+> 「財団も考えたものだ。
+>  確かに彼女ならばロームフェラに
+“The foundation has thought this through. Indeed, with her, Romefeller can
+---
+>  人心を吸収することができる。
+>  だがそれが、ロームフェラにとって
+absorb the people's hearts. But it seems they haven't noticed
+---
+>  リスクが大きいことに、
+>  気づいていないようだね」
+how great a risk that is for Romefeller.”
+
+@31621 Lady · レディ
+> 「地上の争いは
+>  なくなるとお考えですか?」
+“Do you believe the fighting on Earth will end?”
+
+@31622 Treize · トレーズ
+> 「なくなりはすまい。
+>  いずれ争いの芽は新たに生じてくる
+“It will not end. In time, new seeds of conflict will sprout,
+---
+>  あるいは宇宙から
+>  やってくるかもしれない」
+or perhaps they will come from space.”
+
+@31623 Lady · レディ
+> 「…銀河帝国軍先遣艦隊は
+>  接近を続けています
+“...The Galactic Empire's advance fleet continues to approach.
+---
+>  OZ宇宙軍の形勢は
+>  不利になるでしょう。もっとも
+The OZ space force's position will worsen. Though,
+---
+>  戦艦リーブラが完成すれば、
+>  またわからなくなりますが……」
+once the battleship Libra is completed, that may change again...”
+
+@31624 Treize · トレーズ
+> 「愚かしいことだ。{HeroMech}の
+>  諸君の足取りはつかめたかね?」
+“How foolish. Have you grasped the movements of the {HeroMech} group?”
+
+@31625 Lady · レディ
+> 「は、百鬼、ミケーネの連合軍との
+>  戦闘が行われ、目撃されたとの
+“Yes. We have received information that they were sighted in battle against the
+---
+>  情報が入りました。ですが、そこに
+>  ゼロとエピオンは確認されなかったと…」
+combined forces of Hyakki and Mycenae. However, Zero and Epyon were not confirmed there...”
+
+@31626 Treize · トレーズ
+> 「ヒイロ・ユイ、そしてゼクス……。君たち
+>  は戦いにどんな未来を見ている?」
+“Heero Yuy, and Zechs... What kind of future do you see in this war?”
+
+@31627 Axis Soldier · アクシズ兵
+> 「ハマーン様、間もなく地球圏に
+>  到達します。どうなさいますか?」
+“Lady Haman, we will reach the Earth Sphere shortly. What are your orders?”
+
+@31628 Haman · ハマーン
+> 「そのまま進め。OZ宇宙軍は
+>  異星人のことで頭がいっぱいだ
+“Proceed as we are. The OZ space force has its hands full with the aliens.
+---
+>  このグワダン1隻のことなど、
+>  気にかける余裕もあるまい」
+They'll have no spare attention to worry about a single Gwadan.”
+
+@31629 Axis Soldier · アクシズ兵
+> 「はっ! 了解しました!」
+“Yes! Understood!”
+
+@31630 Haman · ハマーン
+> 「フフン、謎の艦隊は、
+>  新たな異星人だったとはな
+“Hmph, so the mysterious fleet was a new group of aliens.
+---
+>  我々としては、
+>  OZとやりあうものとばかり思っていたが
+We had assumed they were here to fight OZ, but
+---
+>  これでまたわからなくなったか。
+>  まあいい、戦争というものは
+now it's unclear again. Well, no matter. War is
+---
+>  あまりに単純だと面白みがない……」
+no fun when it's too simple...”

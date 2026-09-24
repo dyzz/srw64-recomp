@@ -1,0 +1,1565 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@21791 Bright · ブライト
+> 「現在の我々の位置がここ……」
+“Our current position is here...”
+
+@21792 Bright · ブライト
+> 「そしてバイストンウェルの戦艦が
+>  いると思われるのが……」
+“And the Byston Well warship is believed to be...”
+
+@21793 Bright · ブライト
+> 「ここと……」
+“Here...”
+
+@21794 Bright · ブライト
+> 「ここだ」
+“And here.”
+
+@21795 Bright · ブライト
+# 审校：“the first one”在口语中可接受，但此处为舰长说明情报，改为更简洁的“the first”更自然；同时保持两页对应。
+> 「マーベルの話では、最初の方が
+>  シーラ女王のグラン・ガラン
+“According to Marvel, the first is Queen Ciela's Gran-Garan,
+---
+>  もうひとつがエレ女王の
+>  ゴラオンということだ」
+and the other is Queen Elle's Goraon.”
+
+@21796 Amuro · アムロ
+> 「どちらとの合流をめざすにしろ、
+>  現状では我々にとってはあまり
+“Whichever one we aim to join up with, at present it doesn't make
+---
+>  たいした違いはないな」
+much difference to us.”
+
+@21797 Ark · アーク（按段落 3DD1）
+# 审校：原文是回应“没有太大差别”的确认式反问，初稿用“Meaning...”略显生硬，改为更口语的“So either way...”并保留句号。
+> 「どちらにしても危険なことには
+>  変わりない、ということですか」
+“So either way, it's still dangerous.”
+
+@21798 Selain · セレイン（按段落 3DD2）
+> 「確かに、どのみち危険なことには
+>  かわりないでしょう」
+“True, either way it will be dangerous all the same.”
+
+@21799 Brad · ブラッド（按段落 3DD3）
+> 「どっちにしたって
+>  楽なわきゃないってことか」
+“So either way it ain't gonna be easy, huh.”
+
+@21800 Manami · マナミ（按段落 3DD4）
+> 「どちらにしても面倒はあるということね」
+“Either way, there'll be trouble, I suppose.”
+
+@21801 Amuro · アムロ
+> 「そういうことだ。ショウくん、君は
+>  どちらと合流すべきだと考えている?」
+“That's right. Show, which one do you think we should join up with?”
+
+@21802 Show · ショウ
+> 「……わかりません。
+>  おふたりともバイストンウェルにとっては
+“...I don't know. Both of them are
+---
+>  大事な人ですから」
+important people to Byston Well.”
+
+@21803 Chum · チャム
+> 「そうよぉ、シーラ様とエレ様の
+>  どちらかなんていわれても
+“That's right, you can't just ask us to pick between
+---
+>  答えられるわけないじゃない」
+Lady Ciela and Lady Elle!”
+
+@21804 Bright · ブライト
+> 「では我々で決めるとするか」
+“Then we'll decide among ourselves.”
+
+@21805 Koji · 甲児
+> 「じゃあさ艦長、
+>  美人のほうってのはどうですかね?」
+“Then how about this, Captain? What if we go with the pretty one?”
+
+@21806 Sayaka · さやか
+> 「ちょっと甲児くん!」
+“Koji!”
+
+@21807 Tetsuya · 鉄也
+> 「やれやれ、こんな奴と一緒に
+>  戦わねばならんとは……」
+“Good grief, to think I have to fight alongside this guy...”
+
+@21808 Koji · 甲児
+> 「なにをぉっ!?」
+“What did you say?!”
+
+@21809 Jun · ジュン
+> 「やめなよ、ふたりとも。
+>  みっともないったらありゃしない」
+“Cut it out, you two. You're both acting ridiculous.”
+
+@21810 Ryoma · リョウ
+> 「……甲児くんの意見に
+>  賛成なわけじゃないが
+“...I'm not saying I agree with Koji, but
+---
+>  状況に大差ない以上、何か
+>  判断の基準がないと難しいですよ」
+since the situation's about the same either way, we need some basis for deciding.”
+
+@21811 Bright · ブライト
+> 「そうだな……グラン・ガランとゴラオンと
+>  いうのはだいぶ違うタイプの船なのか?」
+“Right... Are Gran-Garan and Goraon very different types of ships?”
+
+@21812 Show · ショウ
+> 「そうですね……ゴラオンは
+>  艦首にオーラノバ砲がある分
+“Well... Goraon has an Aura Nova Cannon on its bow, so
+---
+>  より攻撃的といって
+>  いいかもしれません」
+you could say it's the more aggressive one.”
+
+@21813 Chum · チャム
+> 「シーラ様の方は
+>  空とぶお城って感じだものね」
+“Lady Ciela's is more like a flying castle, after all.”
+
+@21814 Ryoma · リョウ
+> 「なるほどね……。
+>  {HeroNick}、どう思う?」
+“I see... {HeroNick}, what do you think?”
+
+@21815
+> *  シーラの方へ向かう
+> *  エレの方へ向かう
+* Head for Ciela
+* Head for Elle
+
+@21816 Ark · アーク（按段落 3DD1）
+> 「……どちらかといえばシーラさんの
+>  グラン・ガランですね」
+“...If I had to choose, I'd say Lady Ciela's Gran-Garan.”
+
+@21817 Selain · セレイン（按段落 3DD2）
+> 「……私ならグラン・ガランとやらだな」
+“...If it were up to me, I'd say Gran-Garan.”
+
+@21818 Brad · ブラッド（按段落 3DD3）
+> 「俺か!? 別にどっちでも
+>  いいんだけどよ
+“Me?! I don't really care either way, but
+---
+>  なんとなく城みたいな戦艦ってのは
+>  興味あるな」
+a warship that looks like a castle kinda interests me.”
+
+@21819 Manami · マナミ（按段落 3DD4）
+> 「そうねぇ……私は、
+>  シーラ様の方かしら」
+“Let me think... I suppose I'd say Lady Ciela's.”
+
+@21820 Bright · ブライト
+> 「ふむ……他に意見は?」
+“Hmm... Anyone else?”
+
+@21821 Bright · ブライト
+> 「……ないようならそれでいくか。
+>  では我々はこれからバイストンウェルの
+“...If not, we'll go with that. Then we'll head out to join up with
+---
+>  シーラ女王との合流に向かう
+>  ことにする。各自持ち場につけ」
+Queen Ciela of Byston Well. Everyone, to your posts.”
+
+@21822 Ark · アーク（按段落 3DD1）
+> 「……どちらかといえばエレさんの
+>  ゴラオンですね」
+“...If I had to choose, I'd say Lady Elle's Goraon.”
+
+@21823 Selain · セレイン（按段落 3DD2）
+> 「ふむ……私ならゴラオンとやらだな」
+“Hmm... If it were up to me, I'd say Goraon.”
+
+@21824 Brad · ブラッド（按段落 3DD3）
+> 「俺か!? 別にどっちでも
+>  いいんだけどよ、まぁ同行することに
+“Me?! I don't really care either way, but if we're gonna be traveling
+---
+>  なるんなら、攻撃力があるに
+>  こしたことはないんじゃないか?」
+together, having more firepower can't hurt, right?”
+
+@21825 Manami · マナミ（按段落 3DD4）
+> 「そうねぇ……私は、エレ様の方かしら」
+“Let me think... I suppose I'd say Lady Elle's.”
+
+@21826 Bright · ブライト
+> 「ふむ……他に意見は?」
+“Hmm... Anyone else?”
+
+@21827 Bright · ブライト
+> 「……ないようならそれでいくか。
+>  では我々はこれからバイストンウェルの
+“...If not, we'll go with that. Then we'll head out to join up with
+---
+>  エレ女王との合流に向かう
+>  ことにする。各自持ち場につけ」
+Queen Elle of Byston Well. Everyone, to your posts.”
+
+@21828 Gresco · グレスコ
+> 「……ル・カインか」
+“...Le Cain.”
+
+@21829 Le Cain · ル・カイン
+> 「父上、うかがいたいことがあります。
+>  なぜレイズナーとの接触を
+“Father, I have something I wish to ask. Why did you forbid contact with
+---
+>  はばませたのです。それともうひとつ、
+>  父上が連れ去らせた聖女を
+the Layzner? And one more thing: what have you done with the holy woman you had
+---
+>  どうされたのです。このグラドスタワーの
+>  どこかへ連れ込んだことは
+taken away? I have confirmed that she was brought somewhere into this Grados Tower.
+---
+>  調べがついております。
+>  父上、今日こそお聞かせください」
+Father, today you will tell me.”
+
+@21830 Gresco · グレスコ
+> 「ル・カインよ。レジスタンス
+>  掃討作戦の成功により
+“Le Cain. I hear that with the success of the resistance sweep operation,
+---
+>  反乱勢力の大部分を壊滅
+>  させたと聞く
+the greater part of the rebel forces has been wiped out.
+---
+>  占領軍司令官として、お前は
+>  まだまだ地球の平定に全力を
+As commander of the occupation forces, you must still devote yourself fully to
+---
+>  尽くさねばならん。くだらぬことに
+>  固執し、詰めを誤らせるつもりか?」
+subjugating the Earth. Do you intend to cling to trifles and misjudge the finish?”
+
+@21831 Le Cain · ル・カイン
+> 「ごまかされるおつもりですか、父上!
+>  奴らなど
+“Are you going to keep dodging the question, Father?! Those vermin
+---
+>  私が直接指揮をせずとも、
+>  まもなく完全に制圧できましょう
+will soon be completely crushed even without me commanding in person.
+---
+>  今は父上が何をお考えなのかを
+>  お聞かせいただきたいのです
+What I want now is to hear what you are thinking, Father.
+---
+>  聖女の行方について、民衆は
+>  おろか兵士の一部までもが
+About where the holy woman has gone, not just the people but even some of the soldiers
+---
+>  騒ぎはじめております。父上!」
+have begun to stir. Father!”
+
+@21832 Gresco · グレスコ
+> 「……ル・カイン……
+>  すべてはお前のためなのだ」
+“...Le Cain... Everything is for your sake.”
+
+@21833 Le Cain · ル・カイン
+> 「……なんですと?」
+“...What did you say?”
+
+@21834 Gresco · グレスコ
+> 「お前は帝国人が地球人より
+>  すぐれた人種だと思っている」
+“You believe the Imperials are a race superior to Earthlings.”
+
+@21835 Le Cain · ル・カイン
+> 「事実ですから、いたしかたありません」
+“It is a fact, so it cannot be helped.”
+
+@21836 Gresco · グレスコ
+> 「すぐれた者によるよりよき指導。
+>  それに従う無垢なる従順
+“Better guidance by the superior. And innocent obedience to follow it.
+---
+>  それがお前の支配の原理だと
+>  いったことがあったな」
+That is the principle of your rule, you said once.”
+
+@21837 Le Cain · ル・カイン
+> 「その通りです……
+>  何をおっしゃりたいのです、父上?」
+“That is correct... What are you trying to say, Father?”
+
+@21838 Gresco · グレスコ
+> 「……ル・カイン、
+>  明日もう一度ここへくるがよい」
+“...Le Cain, come here again tomorrow.”
+
+@21839 Le Cain · ル・カイン
+> 「……わかりました。
+>  明日こそ明解なお答えを
+“...Understood. I trust that tomorrow you will give me a clear
+---
+>  いただけるものと信じております、
+>  父上」
+answer, Father.”
+
+@21840 Gresco · グレスコ
+> 「…………」
+“...”
+
+@21841 Quattro · クワトロ
+> 「艦長、たった今ブレックス准将と
+>  連絡がついた」
+“Captain, I've just made contact with Brigadier General Blex.”
+
+@21842 Bright · ブライト
+> 「そうか、准将はご無事だったか。
+>  それで、どうなっている?」
+“I see, so the Brigadier General is safe. And? What's the situation?”
+
+@21843 Quattro · クワトロ
+> 「こちらの推測通り、
+>  地球解放戦線機構も
+“As we suspected, both the Liberation Front of the Earth command
+---
+>  カラバも、再建は難しいくらい
+>  ダメージを受けている」
+and Karaba have taken damage severe enough to make rebuilding difficult.”
+
+@21844 Bright · ブライト
+> 「やはりそうか……今後のことはなんと?」
+“So it's as I thought... What does he say about the future?”
+
+@21845 Quattro · クワトロ
+> 「准将ご自身はイゴール将軍と
+>  ともに、アジア地区にある
+“The Brigadier General himself, together with General Igor, is working to
+---
+>  帝国の攻撃をまぬがれた拠点を
+>  中心に、組織の立て直しを
+rebuild the organization around bases in the Asian region that escaped
+---
+>  はかっているそうだ。が……」
+the Empire's attacks. However...”
+
+@21846 Bright · ブライト
+> 「やはり我々が最後の
+>  有効戦力というわけか」
+“So we really are the last effective fighting force.”
+
+@21847 Quattro · クワトロ
+> 「そうだ。我々が倒れれば、もはや
+>  レジスタンスの再建はできんな
+“That's right. If we fall, the resistance can no longer be rebuilt.
+---
+>  准将もそれをご承知の上で、
+>  我々に独自の判断で行動を
+Knowing that full well, the Brigadier General said he wants us to act
+---
+>  してほしいといっておられた」
+on our own judgment.”
+
+@21848 Amuro · アムロ
+> 「厳しいな、それは。バックアップは
+>  できないということなのだろう?」
+“That's harsh. You mean they can't back us up?”
+
+@21849 Quattro · クワトロ
+> 「我々が大陸へ向かうということを
+>  聞き、現状で可能なかぎりの
+“He says that upon hearing we're heading for the continent, they'll provide
+---
+>  補給は行うということだ」
+whatever resupply is possible under the current circumstances.”
+
+@21850 Bright · ブライト
+> 「それが……最後というわけか」
+“So that's... the last of it.”
+
+@21851 Quattro · クワトロ
+> 「補給部隊と合流できればの
+>  話だが」
+“That is, if we can link up with the supply unit.”
+
+@21852 Amuro · アムロ
+> 「場所は?」
+“Where?”
+
+@21853 Quattro · クワトロ
+> 「例の戦艦との合流に
+>  合わせるとのことだ
+“It's to coincide with our rendezvous with that battleship.
+---
+>  どちらに向かうのかは
+>  決まったのだろう?」
+Have you decided which way we're heading?”
+
+@21854 Bright · ブライト
+> 「ああ」
+“Yeah.”
+
+@21855 Quattro · クワトロ
+> 「ではあとはうまくいくことを祈るとしよう」
+“Then let's just pray it goes well.”
+
+@21856 Ryoma · リョウ
+> 「ここからはどこへ向かっても敵に
+>  発見される可能性はあるな」
+“From here on, there's a chance we'll be spotted by the enemy no matter which way we go.”
+
+@21857 Shinobu · 忍
+> 「ああ。艦長さん、ここまでは
+>  なんとか敵と遭遇せずにすんだが
+“Yeah. Captain, we've managed to avoid running into the enemy so far, but
+---
+>  例の戦艦が攻撃を受けている
+>  可能性は高いんじゃないのか?」
+there's a good chance that battleship is under attack, isn't there?”
+
+@21858 Bright · ブライト
+> 「そうだな。お前たちは
+>  出撃準備をしておいてくれ」
+“Indeed. You all get ready to launch.”
+
+@21859 Shinobu · 忍
+> 「了解だ」
+“Got it.”
+
+@21860 Amuro · アムロ
+> 「しかし君が艦橋にくるなんて
+>  めずらしいな」
+“Still, it's rare to see you up on the bridge.”
+
+@21861 Shinobu · 忍
+> 「シャピロと会ってから、沙羅のやつが
+>  イライラしっぱなしでね。顔あわせる
+“Ever since she met Shapiro, Sara's been on edge the whole time. She snaps at me
+---
+>  たびにつっかかってきやがるから、あんまり
+>  近くによらないようにしてんですよ」
+every time we see each other, so I've been keeping my distance.”
+
+@21862 Amuro · アムロ
+> 「シャピロ・キーツか……。帝国との
+>  交戦前から降伏を進言して
+“Shapiro Keats... I'd heard that even before the war with the Empire, he proposed
+---
+>  参謀本部からつまはじきされたと
+>  聞いていたが」
+surrender and was shunned by the General Staff.”
+
+@21863 Shinobu · 忍
+> 「それで奴は帝国に寝返ったんだ。
+>  あのとき俺がとめなきゃ
+“And so he defected to the Empire. If I hadn't stopped her back then,
+---
+>  沙羅のやつも
+>  くっついていっちまう所だった」
+Sara would've gone along with him too.”
+
+@21864 Bright · ブライト
+> 「だが終戦後にもシャピロが帝国に
+>  いるという話は聞かなかったがな
+“But I never heard talk of Shapiro being with the Empire after the war ended.
+---
+>  彼がバイストンウェル軍と
+>  一緒にいたというのも気になるな」
+It's also curious that he was with the Byston Well Forces.”
+
+@21865 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長」
+“Captain Bright.”
+
+@21866 Bright · ブライト
+> 「なんだ?」
+“What is it?”
+
+@21867 Beltorchika · ベルトーチカ
+> 「先行させた連絡員から報告が
+>  入りました。グラン・ガランらしき
+“We've received a report from the scout we sent ahead. They've spotted
+---
+>  船影を発見したとのことです。
+>  山間部に着陸して擬装して
+what appears to be the Gran-Garan. It seems to have landed in the mountains
+---
+>  いるようです」
+and camouflaged itself.”
+
+@21868 Bright · ブライト
+> 「航行できないのか? 敵影は?」
+“Can't it sail? Any sign of the enemy?”
+
+@21869 Beltorchika · ベルトーチカ
+> 「現在のところ、ないそうです」
+“None at present, apparently.”
+
+@21870 Amuro · アムロ
+> 「敵がいないのは幸いだったな。
+>  あとは補給部隊の方だけか」
+“Lucky there's no enemy. So it's just the supply unit left.”
+
+@21871 Bright · ブライト
+> 「よし、これよりグラン・ガランとの合流
+>  に向かう。ショウ、マーベル
+“All right, we'll head out to rendezvous with the Gran-Garan now. Show, Marvel,
+---
+>  近くまでいったら、先に出て状況
+>  を確認してくれ」
+once we're close, go on ahead and check the situation.”
+
+@21872 Show · ショウ
+> 「はい」
+“Yes, sir.”
+
+@21873 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長」
+“Captain Bright.”
+
+@21874 Bright · ブライト
+> 「なんだ?」
+“What is it?”
+
+@21875 Beltorchika · ベルトーチカ
+> 「先行させた連絡員から報告が
+>  入りました。ゴラオンらしき船影を
+“We've received a report from the scout we sent ahead. They've spotted
+---
+>  発見したとのことです。被弾して
+>  いるようです」
+what appears to be the Goraon. It looks like it's been hit.”
+
+@21876 Chum · チャム
+> 「え～っ!?」
+“Whaaat?!”
+
+@21877 Marvel · マーベル
+> 「チャム、落ち着きなさい」
+“Chum, calm down.”
+
+@21878 Bright · ブライト
+> 「大丈夫なのか? 敵影は?」
+“Is it all right? Any sign of the enemy?”
+
+@21879 Beltorchika · ベルトーチカ
+> 「現在のところ、ないそうです」
+“None at present, apparently.”
+
+@21880 Amuro · アムロ
+> 「敵は引き上げた後か……。またくる
+>  かもしれないな。補給部隊が
+“So the enemy pulled back... They might come again. I hope the supply unit
+---
+>  狙われなければいいが……」
+doesn't get targeted...”
+
+@21881 Bright · ブライト
+> 「よし、これよりゴラオンとの合流に
+>  向かう。ショウ、マーベル
+“All right, we'll head out to rendezvous with the Goraon now. Show, Marvel,
+---
+>  近くまでいったら、先に出て状況
+>  を確認してくれ」
+once we're close, go on ahead and check the situation.”
+
+@21882 Show · ショウ
+> 「はい」
+“Yes, sir.”
+
+@21883 Show · ショウ
+> 「やられたのか?」
+“Were they hit?”
+
+@21884 Marvel · マーベル
+> 「そのようね。
+>  シーラ様は大丈夫かしら」
+“Seems so. I wonder if Lady Ciela is all right.”
+
+@21885 Show · ショウ
+> 「こちらダンバイン、ショウ・ザマだ。
+>  グラン・ガラン、応答してくれ!」
+“This is the Dunbine, Show Zama. Gran-Garan, respond!”
+
+@21886 Ciela · シーラ
+> 「ショウ……? ショウ・ザマ?
+>  本当にあなたなのですか!?」
+“Show...? Show Zama? Is it really you?!”
+
+@21887 Show · ショウ
+> 「シーラ・ラパーナ? ご無事ですか?」
+“Ciela Lapana? Are you safe?”
+
+@21888 Ciela · シーラ
+> 「かなり攻撃を受けました。
+>  あまり、無事とは申せませんね」
+“We took quite a beating. I can't exactly say we're safe.”
+
+@21889 Marvel · マーベル
+> 「シーラ様、私たちは地上の
+>  反政府勢力に協力しています
+“Lady Ciela, we're aiding the anti-government forces on the surface.
+---
+>  まもなく戦艦が1隻
+>  こちらへまいります
+A battleship will be arriving here shortly.
+---
+>  接近をお許しいただけるでしょうか」
+Would you permit us to approach?”
+
+@21890 Ciela · シーラ
+> 「マーベルもいるのですね。
+>  地上人の反政府軍……
+“Marvel, you're here too. The surface dwellers' anti-government army...
+---
+>  信用できるのでしょうか? 地上は
+>  星の世界からきた者たちに
+can they be trusted? I've heard the surface was invaded
+---
+>  侵略されたと聞いています」
+by people who came from the Star World.”
+
+@21891 Show · ショウ
+# 检查提示：未用必用译名：ドレイク軍→Drake Army
+> 「ドレイクの軍がそちらにつきました。
+>  彼らはドレイク軍とも
+“Drake's army has sided with them. They're also
+---
+>  戦っているのです」
+fighting Drake's army.”
+
+@21892 Ciela · シーラ
+> 「ドレイク・ルフトが……やはりそうでしたか
+>  わかりました
+“Drake Luft... So that's how it is. Understood.
+---
+>  その方々とお会いしましょう」
+Let us meet these people.”
+
+@21893 Chum · チャム
+> 「よかったぁ」
+“Thank goodness.”
+
+@21894 Ciela · シーラ
+> 「……ショウ・ザマ、マーベル・フローズンも
+>  ……よく来てくれました」
+“...Show Zama, Marvel Frozen too... I'm glad you came.”
+
+@21895 Show · ショウ
+> 「いえ、遅くなってしまい
+>  申しわけありませんでした」
+“No, I'm sorry we were so late.”
+
+@21896 Marvel · マーベル
+> 「ショウ、アルビオンがくるわ」
+“Show, the Albion is coming.”
+
+@21897 Bright · ブライト
+> 「あれがグラン・ガランか……」
+“So that's the Gran-Garan...”
+
+@21898 Show · ショウ
+> 「ゴラオンが……かなりやられている?」
+“The Goraon... It's taken quite a beating?”
+
+@21899 Marvel · マーベル
+> 「そのようね。エレ様は大丈夫かしら」
+“Seems so. I wonder if Lady Elle is all right.”
+
+@21900 Show · ショウ
+> 「こちらダンバイン、ショウ・ザマだ。
+>  ゴラオン、応答してくれ!」
+“This is the Dunbine, Show Zama. Goraon, respond!”
+
+@21901 Elle · エレ
+> 「ショウ・ザマ?
+>  聖戦士なのですか!?」
+“Show Zama? You're a Holy Warrior?!”
+
+@21902 Show · ショウ
+> 「エレ様? ご無事ですか?」
+“Lady Elle? Are you safe?”
+
+@21903 Elle · エレ
+> 「あまり無事といえる状況では
+>  ありませんね」
+“I can't exactly say we're in a safe situation.”
+
+@21904 Marvel · マーベル
+> 「エレ様、私たちは地上の
+>  反政府勢力に協力しています
+“Lady Elle, we're aiding the anti-government forces on the surface.
+---
+>  まもなく戦艦が1隻
+>  こちらへまいります
+A battleship will be arriving here shortly.
+---
+>  接近をお許しいただけるでしょうか」
+Would you permit us to approach?”
+
+@21905 Elle · エレ
+> 「マーベルもいるのですね。
+>  地上人の戦艦…………
+“Marvel, you're here too. The surface dwellers' battleship...
+---
+>  悪意は感じません、
+>  許可しましょう」
+I sense no ill will. You have my permission.”
+
+@21906 Chum · チャム
+> 「よかったぁ」
+“Thank goodness.”
+
+@21907 Elle · エレ
+> 「ふたりとも、よく……無事で」
+“You two... I'm glad you're safe.”
+
+@21908 Show · ショウ
+> 「ありがとうございます。
+>  彼らに助けられました」
+“Thank you. They saved us.”
+
+@21909 Marvel · マーベル
+> 「ショウ、アルビオンがくるわ」
+“Show, the Albion is coming.”
+
+@21910 Bright · ブライト
+> 「あれがゴラオンか……」
+“So that's the Goraon...”
+
+@21911 Ginrei · 銀鈴
+> 「ダンバインの信号弾を確認。
+>  大丈夫のようです」
+“Dunbine's signal flare confirmed. Looks like they're all right.”
+
+@21912 Bright · ブライト
+> 「よし、接舷用意」
+“Good. Prepare to dock.”
+
+@21913 Beltorchika · ベルトーチカ
+> 「補給部隊を護衛中のコウ・
+>  ウラキ少尉より緊急通信!!
+“An urgent transmission from Ensign Kou Uraki, escorting the resupply unit!!
+---
+>  敵の攻撃を受けている
+>  とのことです!」
+He reports they're under enemy attack!”
+
+@21914 Amuro · アムロ
+> 「なんだって!? 場所は?」
+“What?! Where?”
+
+@21915 Beltorchika · ベルトーチカ
+> 「すぐ近くよ、アムロ」
+“Close by, Amuro.”
+
+@21916 Bright · ブライト
+> 「くそっ! 総員戦闘配置!
+>  パイロット各員は発進を急げ!!
+“Damn it! All hands to battle stations! Pilots, launch immediately!!
+---
+>  何か見えるか!?」
+Can you see anything?!”
+
+@21917 Ginrei · 銀鈴
+> 「……ッ! 来ました、補給部隊の
+>  ミデアと護衛機です!」
+“...! Here they come — the resupply Medeas and their escorts!”
+
+@21918 Kou · コウ
+> 「くっ、追いつかれた!? こちら補給
+>  部隊のコウ・ウラキ!
+“Ngh, they caught up to us?! This is Kou Uraki of the resupply unit!
+---
+>  頼む、
+>  急いでくれ!」
+Please, hurry!”
+
+@21919 Marvel · マーベル
+> 「ショウ、補給部隊が!!」
+“Show, the resupply unit!!”
+
+@21920 Ciela · シーラ
+> 「お行きなさい、ショウ・ザマ。
+>  グラン・ガランは大丈夫です」
+“Go, Show Zama. The Gran-Garan will be fine.”
+
+@21921 Show · ショウ
+> 「わかりました。
+>  シーラ・ラパーナ、ご無事で」
+“Understood. Stay safe, Ciela Lapana.”
+
+@21922 Elle · エレ
+> 「ふたりとも行ってください。
+>  こちらは大丈夫です」
+“Both of you, go. We'll be fine here.”
+
+@21923 Show · ショウ
+> 「わかりました。エレ様もご無事で」
+“Understood. Stay safe as well, Lady Elle.”
+
+@21924 Giura · ギウラ
+> 「サルどもめ、好きかってやりおって。
+>  全力で奴らを叩け!」
+“Those monkeys, doing whatever they please. Hit them with everything we've got!”
+
+@21925 Giura · ギウラ
+> 「サルどもめ、好きかってやりおって。
+>  全力で奴らを叩け!」
+“Those monkeys, doing whatever they please. Hit them with everything we've got!”
+
+@21926 Aisha · アイシャ（按段落 3DD4）
+> 「……やはりお逃げになっていたのね、
+>  {HeroName}さん
+“...So you were running away after all, {HeroName}.
+---
+>  でも、それもここまでですわ」
+But that ends here.”
+
+@21927 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}!?
+>  あなたは自分が何をしているのか
+“{PartnerName}?! Do you even understand
+---
+>  理解しているの!?」
+what you're doing?!”
+
+@21928 Aisha · アイシャ（按段落 3DD4）
+> 「貴女こそ、もう無駄なことは
+>  おやめなさい」
+“You're the one who should stop this pointless behavior.”
+
+@21929 Fa · ファ
+> 「なんとか追いついたみたいね。
+>  どうするの、カミーユ」
+“Looks like we just made it. What do we do, Kamille?”
+
+@21930 Kamille · カミーユ
+> 「戦闘はまだ継続中だ。
+>  援護する」
+“The battle's still going. We'll cover them.”
+
+@21931 Fa · ファ
+> 「えぇ……そうね、わかったわ」
+“Yeah... right, got it.”
+
+@21932 Bright · ブライト
+> 「スペシャルズの増援か!?」
+“Specials reinforcements?!”
+
+@21933 Kamille · カミーユ
+> 「地球解放戦線機構の
+>  カミーユ・ビダンと、ファ・ユイリィです
+“This is Kamille Bidan and Fa Yuiry of the Liberation Front of the Earth.
+---
+>  アルビオン応答願います」
+Albion, please respond.”
+
+@21934 Bright · ブライト
+> 「こちらアルビオン、
+>  艦長のブライト・ノアだ」
+“This is the Albion, Captain Bright Noa.”
+
+@21935 Kamille · カミーユ
+# 审校：原文“援護します”是独立句，初稿合并成一句且语气稍弱，改为分句并明确支援意图。
+> 「ブレックス准将の命令で来ました
+>  援護します」
+“We came on Brigadier General Blex's orders. We'll support you.”
+
+@21936 Bright · ブライト
+> 「准将の? 了解した、
+>  よろしく頼む」
+“By the Brigadier General? Understood, we appreciate it.”
+
+@21937 Gyukenki · 牛剣鬼
+> 「おのれ、おのれぇぇーっ!!」
+“Curse you, curse youuu!!”
+
+@21938 Ryoma · リョウ
+> 「……百鬼の老兵士か……」
+“...An old veteran of the Hyakki Clan...”
+
+@21939 Gyukenki · 牛剣鬼
+> 「おのれ、おのれぇぇーっ!!」
+“Curse you, curse youuu!!”
+
+@21940 Kou · コウ
+> 「くっ……だめか。申しわけありません
+>  中佐、自分は退避します!」
+“Ngh... no good. My apologies, Lieutenant Colonel — I'm pulling back!”
+
+@21941 Bright · ブライト
+> 「……終わったか」
+“...It's over, then.”
+
+@21942 Beltorchika · ベルトーチカ
+> 「待ってください。未確認機が
+>  数機接近しています」
+“Wait. Several unidentified craft are approaching.”
+
+@21943 Bright · ブライト
+> 「敵か?」
+“Enemy?”
+
+@21944 Gyukenki · 牛剣鬼
+# 审校：“息子の仇、討たせてもらうぞ”是复仇宣言，初稿“avenge my son”可接受但“I'll have my revenge for him”更贴合老兵口吻。
+> 「ようやく追いついたわ。
+>  息子を殺したのは貴様たちだな?
+“I've finally caught up with you. You're the ones who killed my son, aren't you?
+---
+>  わしは百鬼一族の牛剣鬼
+>  息子の仇、討たせてもらうぞ!」
+I am Gyukenki of the Hyakki Clan. I'll have my revenge for him!”
+
+@21945 Fa · ファ
+> 「戦闘は終わったみたいね。
+>  どうするの、カミーユ」
+“Looks like the battle's over. What do we do, Kamille?”
+
+@21946 Kamille · カミーユ
+> 「准将からは、そのまま合流するよう
+>  に言われている。そうするだけさ」
+“The Brigadier General told us to rendezvous with them. So that's what we do.”
+
+@21947 Bright · ブライト
+> 「スペシャルズの増援か!?」
+“Specials reinforcements?!”
+
+@21948 Kamille · カミーユ
+> 「地球解放戦線機構の
+>  カミーユ・ビダンと、ファ・ユイリィです
+“This is Kamille Bidan and Fa Yuiry of the Liberation Front of the Earth.
+---
+>  アルビオン応答願います」
+Albion, please respond.”
+
+@21949 Bright · ブライト
+> 「こちらアルビオン、
+>  艦長のブライト・ノアだ」
+“This is the Albion, Captain Bright Noa.”
+
+@21950 Kamille · カミーユ
+> 「ブレックス准将の命令で来ました
+>  援護するつもりだったのですが
+“We came on Brigadier General Blex's orders intending to assist you,
+---
+>  戦闘は終わったようですね」
+but it seems the battle is already over.”
+
+@21951 Bright · ブライト
+> 「ああ。もう周囲に敵はいないようだ。
+>  君たちはどうするのだ?」
+“Yeah. There don't seem to be any enemies left around here. What will you do?”
+
+@21952 Kamille · カミーユ
+> 「准将からは、そのままこちらへ合流
+>  するように言われています」
+“The Brigadier General told us to rendezvous with you as is.”
+
+@21953 Bright · ブライト
+> 「そうか、助かる」
+“I see. That helps.”
+
+@21954 Bright · ブライト
+> 「な、なんだと!?」
+“W-what did you say?!”
+
+@21955 Rain · レイン
+> 「どうですか、アストナージさん」
+“How is it, Astonaige?”
+
+@21956 Astonaige · アストナージ
+> 「ああ、これだけあれば当分は
+>  大丈夫だ。整備も楽になる」
+“Yeah, with this much we'll be fine for a while. Maintenance will be easier too.”
+
+@21957 Rain · レイン
+> 「ふふふ、このところ
+>  ずいぶん無理をしてましたものね」
+“Hehehe, we've been pushing things awfully hard lately, after all.”
+
+@21958 Astonaige · アストナージ
+> 「まったく、勘弁してほしいよ」
+“Honestly, give me a break.”
+
+@21959 Rain · レイン
+> 「うーん、ずいぶん減ってしまったのよね。
+>  アストナージさん
+“Hmm, it's gotten awfully low. Astonaige,
+---
+>  これだけで大丈夫なんでしょうか」
+will this really be enough?”
+
+@21960 Astonaige · アストナージ
+> 「大丈夫じゃないさ。……しかしまぁ、
+>  だましだましやっていくしかないな
+“It's not enough. ...But well, we've just got to make do and keep patching things together.
+---
+>  食料品がほとんど無事だったこと
+>  だけでもよしとしなけりゃな?」
+We should count ourselves lucky the food supplies were mostly untouched, at least.”
+
+@21961 Rain · レイン
+> 「フフッ、そうですね」
+“Hehe, I suppose so.”
+
+@21962 Rain · レイン
+> 「そういえば、戦闘機のようなものが
+>  あったみたいですけど……」
+“By the way, I think there was something like a fighter plane...”
+
+@21963 Astonaige · アストナージ
+> 「ああ、Gディフェンサーってやつだな」
+“Ah, that thing called the G-Defenser.”
+
+@21964 Rain · レイン
+> 「ずいぶんと頼りない機体ですね」
+“It looks like a rather unreliable machine.”
+
+@21965 Astonaige · アストナージ
+> 「そりゃそうだ。あれは、ガンダムmkⅡ用
+>  の強化パーツみたいなものだからな」
+“Well, of course. That thing's basically an enhancement part for the Gundam Mk-II.”
+
+@21966 Masato · 雅人
+> 「へぇ、あの戦闘機が?」
+“Huh, that fighter plane is?”
+
+@21967 Astonaige · アストナージ
+> 「増加装甲と武装のオプションだ
+>  と考えればいいんだ。もちろん、単体
+“You can think of it as optional extra armor and armaments. Of course, it seems it can
+---
+>  でも運用はできるらしいけどな」
+also be operated on its own.”
+
+@21968 Domon · ドモン
+> 「レイン、余計なおしゃべりをしている
+>  ヒマがあったら、シャイニングガンダムの
+“Rain, if you've got time to sit around chattering, go tune up the Shining Gundam.
+---
+>  調整をやってくれ。
+>  右手の反応が遅い」
+The right hand's response is slow.”
+
+@21969 Rain · レイン
+> 「もうっ! 私だって
+>  疲れてるんですからね!
+“Oh, come on! I'm tired too, you know!
+---
+>  ドモンも他の人たちを見習って
+>  少しは覚えたらどうなの!?」
+Why don't you follow everyone else's example and learn a thing or two, Domon?!”
+
+@21970 Domon · ドモン
+> 「整備はお前の担当だろう」
+“Maintenance is your job, isn't it?”
+
+@21971 Masato · 雅人
+> 「まぁまぁレインさん。
+>  ドモンはレインさんが他の男と
+“Now, now, Rain. Domon just doesn't like seeing you
+---
+>  楽しそうにしゃべっているのが
+>  気にくわないんだよね」
+chatting so happily with other men.”
+
+@21972 Domon · ドモン
+> 「なっ……」
+“Wha...”
+
+@21973 Simone · シモーヌ
+> 「ドモンってばダメねぇ。
+>  そういうのはハッキリいわなくちゃ」
+“Domon's hopeless. You've got to say that kind of thing straight out.”
+
+@21974 Domon · ドモン
+> 「勝手なことをいうな!!」
+“Don't say whatever you please!!”
+
+@21975 Ryo · 亮
+> 「バイストンウェルの女王様が
+>  いらしているんだ
+“The Queen of Byston Well is here with us.
+---
+>  少しは静かにしたほうがいいんじゃ
+>  ないのか? 品性が疑われる」
+Shouldn't you be a little quieter? People will question your breeding.”
+
+@21976 Domon · ドモン
+> 「ちっ」
+“Tch.”
+
+@21977 Bright · ブライト
+> 「……という状況です。
+>  ご協力いただけますか?」
+“...That's the situation. Will you lend us your cooperation?”
+
+@21978 Ciela · シーラ
+> 「……わかりました。ドレイクは倒さねば
+>  なりません。協力いたしましょう」
+“...Understood. Drake must be defeated. We shall cooperate.”
+
+@21979 Bright · ブライト
+> 「それでは、いろいろと
+>  大変なことばかりですが
+“Then, though there will be many hardships ahead,
+---
+>  これからよろしくお願いいたします」
+we look forward to working with you.”
+
+@21980 Ciela · シーラ
+> 「地上では我々にはわからぬことも
+>  多いのです。こちらこそ頼みます」
+“There is much on the surface we do not understand. We ask the same of you.”
+
+@21981 Chum · チャム
+> 「ね、シーラ様はちゃんと
+>  わかってくれるんだからっ」
+“See, Lady Ciela understands properly!”
+
+@21982 Show · ショウ
+> 「チャム、口をはさむな」
+“Chum, don't butt in.”
+
+@21983 Chum · チャム
+> 「なによぉ」
+“What's your problem?”
+
+@21984 Quattro · クワトロ
+> 「それで、修理の方は
+>  どうなっているのです?」
+“So, how are the repairs coming along?”
+
+@21985 Ciela · シーラ
+> 「ここしばらく攻撃が
+>  ありませんでしたから
+“There haven't been any attacks for a while now,
+---
+>  もうまもなく作業を終えると
+>  思います」
+so I believe the work will be finished before long.”
+
+@21986 Quattro · クワトロ
+> 「それはよかった。ではそれを待って
+>  移動することにしましょう」
+“That's good to hear. Then we'll wait for that before moving out.”
+
+@21987 Bright · ブライト
+> 「……という状況です。
+>  ご協力いただけますか?」
+“...That's the situation. Will you lend us your cooperation?”
+
+@21988 Elle · エレ
+> 「はい。ドレイクは放っておくわけにも
+>  まいりませんし……それに……」
+“Yes. We can't just leave Drake be, after all... and besides...”
+
+@21989 Marvel · マーベル
+> 「どうされたのですか?」
+“What is it?”
+
+@21990 Elle · エレ
+> 「いえ……、この世界にみちる
+>  悪意の力を感じます
+“No... I sense a power of malice filling this world.
+---
+>  バイストンウェルのことを考えても、
+>  やはり放置できません」
+Thinking of Byston Well as well, we truly cannot leave it alone.”
+
+@21991 Amuro · アムロ
+> 「悪意の力?」
+“A power of malice?”
+
+@21992 Elle · エレ
+> 「そうとしか申し上げられませんが……
+>  ともかく、協力させていただきます」
+“I can only describe it that way... In any case, we will lend you our cooperation.”
+
+@21993 Bright · ブライト
+> 「それでは、いろいろと
+>  大変なことばかりですが
+“Then, though there will be many hardships ahead,
+---
+>  これからよろしくお願いいたします」
+we look forward to working with you.”
+
+@21994 Elle · エレ
+> 「こちらこそ。聖戦士の故郷の
+>  方々のお力、頼りにしています」
+“The same to you. We are counting on the strength of the people from the Holy Warriors' homeland.”
+
+@21995 Quattro · クワトロ
+> 「ところで被弾箇所の様子は
+>  どうでしょう?」
+“By the way, how do the damaged sections look?”
+
+@21996 Elle · エレ
+> 「このままでも応急修理は
+>  可能です
+“Emergency repairs are possible as things stand.
+---
+>  航行に支障はありませんが……
+>  可能ならばどこかで修理を
+There is no hindrance to navigation, but... if possible, I would like to
+---
+>  したいところですね。
+>  時間さえあればよいのですが……」
+carry out proper repairs somewhere. If only we had the time...”
+
+@21997 Quattro · クワトロ
+> 「近いうちになんとかしてみましょう」
+“We'll manage it somehow before long.”
+
+@21998 Bright · ブライト
+> 「ウラキ少尉といったか。君もこちらに
+>  加わるというのだな?」
+“Ensign Uraki, was it? So you will be joining us as well?”
+
+@21999 Kou · コウ
+> 「はい。ブレックス准将から、そのように
+>  指示を受けています」
+“Yes. I have received orders to that effect from Brigadier General Blex.”
+
+@22000 Quattro · クワトロ
+> 「やはり准将は、この部隊を可能
+>  な限り強化しておくつもりのようだな」
+“So the Brigadier General intends to strengthen this unit as much as possible, after all.”
+
+@22001 Bright · ブライト
+> 「戦力を分散させていても、しかたな
+>  いということなのだろう。先が見えない
+“It must be that scattering our forces serves no purpose. The situation is unclear,
+---
+>  状況だが、よろしく頼む、少尉」
+but I'm counting on you, Ensign.”
+
+@22002 Kou · コウ
+> 「了解であります。しかし、この部隊
+>  にはガンダムがあります。大丈夫だと
+“Understood, sir. But this unit has a Gundam. I want to believe
+---
+>  思いたいですね」
+we'll be all right.”
+
+@22003 Amuro · アムロ
+> 「そうかい?」
+“Is that so?”
+
+@22004 Kou · コウ
+> 「そうです! 自分はそう思います!」
+“Yes! That's what I believe!”
+
+@22005 Gresco · グレスコ
+> 「……来たか……」
+“...So you've come...”
+
+@22006 Le Cain · ル・カイン
+> 「父上、お聞かせいただきましょう」
+“Father, let us hear it.”
+
+@22007 Gresco · グレスコ
+> 「うむ……」
+“Mm...”
+
+@22008 Karla · カルラ
+> 「……連れて参りました」
+“...I have brought her.”
+
+@22009 Julia · ジュリア
+> 「…………」
+“...”
+
+@22010 Le Cain · ル・カイン
+> 「やはりでしたな、父上」
+“It was as I thought, Father.”
+
+@22011 Gresco · グレスコ
+> 「ジュリアよ……ル・カインに話すがよい」
+“Julia... speak to Le Cain.”
+
+@22012 Julia · ジュリア
+> 「……ル・カイン様、
+>  帝国人が地球人よりも
+“...Lord Le Cain, your belief that the Imperials are
+---
+>  すぐれた存在であるという、あなたの
+>  お考えは、間違っておられます
+superior beings to Earthlings is mistaken.
+---
+>  帝国人は……少なくとも
+>  あなた方グラドス人は、地球人と
+The Imperials... at least you Gradosians, are
+---
+>  同等なのです。もとをただせば
+>  地球人もグラドス人も
+equal to Earthlings. If you trace it back, both Earthlings and Gradosians
+---
+>  同じ根から発生した
+>  種族なのです」
+are races that sprang from the same root.”
+
+@22013 Le Cain · ル・カイン
+> 「フッ、あらわれたとたん、
+>  奇異なことをいう」
+“Hmph. The moment you appear, you speak such bizarre things.”
+
+@22014 Julia · ジュリア
+> 「いいえ、ウソではありません。
+>  グラドス人と地球人の先祖は
+“No, it is not a lie. The ancestors of the Gradosians and the Earthlings
+---
+>  同一なのです」
+are one and the same.”
+
+@22015 Le Cain · ル・カイン
+> 「黙れジュリア! 父上、いつまで
+>  世迷いごとをいわせておくつもりです」
+“Silence, Julia! Father, how long do you intend to let her spout such nonsense?”
+
+@22016 Julia · ジュリア
+> 「お聞きください、ル・カイン様。
+>  あなたのお父上が私を
+“Please listen, Lord Le Cain. The reason your father took me away,
+---
+>  連れ去ったのも、レイズナーとの
+>  接触を避けられたのも
+and the reason he avoided contact with Layzner,
+---
+>  この秘密があなたの耳に入るのを
+>  恐れたからなのです
+is that he feared this secret would reach your ears.
+---
+>  秘密を知ったときにあなたの受ける
+>  衝撃を、恐れたがゆえのことです」
+It was because he feared the shock you would suffer upon learning the secret.”
+
+@22017 Le Cain · ル・カイン
+> 「無礼だぞジュリア!! いわせておけば
+>  調子にのりおって!!
+“You are insolent, Julia!! Give you an inch and you take a mile!!
+---
+>  父上、まだジュリアにいいたい放題
+>  いわせておくおつもりですか!?」
+Father, do you still intend to let Julia say whatever she pleases!?”
+
+@22018 Gresco · グレスコ
+> 「……ル・カイン、ジュリアの言葉は
+>  すべて事実だ。嘘はない」
+“...Le Cain, everything Julia says is the truth. There is no lie.”
+
+@22019 Le Cain · ル・カイン
+> 「父上!?」
+“Father!?”
+
+@22020 Gresco · グレスコ
+> 「グラドスの権力の中枢にあり、
+>  帝国においてもまた
+“Those who stand at the center of Grados's power, and who also hold
+---
+>  地位を持つ者は、
+>  いずれは知ることになる秘密なのだ」
+position within the Empire, are destined to learn this secret sooner or later.”
+
+@22021 Le Cain · ル・カイン
+> 「何をいっておられるのです、父上!」
+“What are you saying, Father!?”
+
+@22022 Gresco · グレスコ
+> 「ル・カイン……お前は支配の
+>  原理を学ばなければならない
+“Le Cain... you must learn the principle of domination.
+---
+>  支配とは自らを悪と
+>  認める所から始まるのだ
+Domination begins from acknowledging oneself as evil.
+---
+>  支配力を維持するために、
+>  多くの星々の無数の血が
+You must know that to maintain the power to dominate, the countless blood of
+---
+>  流されたことを、知らなければならない」
+numberless stars has been spilled.”
+
+@22023 Le Cain · ル・カイン
+> 「だからこそ、流された血を
+>  ムダにしないためにも
+“That is precisely why, so that the spilled blood is not wasted,
+---
+>  支配する者は、
+>  すぐれていなければならないのです!」
+those who dominate must be superior!”
+
+@22024 Gresco · グレスコ
+> 「すぐれているとはどういうことだ?
+>  知識か肉体か。文化か
+“What does it mean to be superior? Knowledge, or the body? Culture,
+---
+>  それとも、家柄か容貌か。
+>  あやういものだ。確たるものはなにもない
+or perhaps lineage or appearance? All precarious. Nothing is certain.
+---
+>  支配とは力だ。
+>  他者を押さえつける力だ
+Domination is power. The power to hold others down.
+---
+>  力とはすなわち、悪なのだ」
+And power is, in other words, evil.”
+
+@22025 Le Cain · ル・カイン
+> 「…………」
+“...”
+
+@22026 Gresco · グレスコ
+> 「自らをまず、悪と認めることが
+>  できる者が必要なのだ
+“What is needed is one who can first acknowledge himself as evil.
+---
+>  すべてを知った上で、なお超然と
+>  君臨できる者が必要なのだ
+What is needed is one who, knowing all, can still reign aloof.
+---
+>  帝国はムゲゾルバドス帝王のもと
+>  そうして星々を支配してきたのだ」
+Under Emperor Muge Zorbados, the Empire has dominated the stars in that way.”
+
+@22027 Karla · カルラ
+> 「…………」
+“...”
+
+@22028 Gresco · グレスコ
+> 「やはり占領軍司令官としては
+>  まだまだ未熟なようだな、ル・カイン」
+“It seems you are still far from mature as an occupation army commander, Le Cain.”
+
+@22029 Le Cain · ル・カイン
+> 「それは父上のお考え!
+>  私の場合はあくまでも
+“That is your thinking, Father! In my case, I hold to the belief that
+---
+>  すぐれた者こそが支配すべきという
+>  考え方です!」
+only the superior should rule!”
+
+@22030 Gresco · グレスコ
+> 「支配だけなら愚者でも可能だ」
+“If it were only domination, even a fool could do it.”
+
+@22031 Le Cain · ル・カイン
+> 「いえ! すぐれている者こそです!」
+“No! It is the superior who should rule!”
+
+@22032 Gresco · グレスコ
+> 「まだわからんのか、ル・カイン!!」
+“Still don't understand, Le Cain?!”
+
+@22033 Le Cain · ル・カイン
+> 「父上こそおわかりになっていない!
+>  父上は支配の高みから
+“It is you who don't understand, Father! You are trying to
+---
+>  お逃げになろうとしている!!」
+flee from the heights of domination!!”
+
+@22034 Gresco · グレスコ
+> 「口がすぎるぞル・カイン!! さがれ!!」
+“You go too far, Le Cain!! Withdraw!!”
+
+@22035 Le Cain · ル・カイン
+> 「お待ちください父上!!」
+“Please wait, Father!!”
+
+@22036 Gresco · グレスコ
+> 「私はお前をかいかぶりすぎていたな。
+>  お前は幼すぎる」
+“I overestimated you far too much. You are too young.”
+
+@22037 Le Cain · ル・カイン
+> 「卑怯ですぞ父上。私が父上の
+>  意にそぐわぬからといって
+“That is cowardly, Father. Just because I do not suit your wishes,
+---
+>  それが父上の支配の論理ですか」
+is that your logic of domination?”
+
+@22038 Gresco · グレスコ
+> 「ル・カイン……
+>  私はお前の司令官の任をとく」
+“Le Cain... I relieve you of your post as commander.”
+
+@22039 Le Cain · ル・カイン
+> 「父上……父上!!」
+“Father... Father!!”
+
+@22040 Gresco · グレスコ
+> 「さがれ!!」
+“Withdraw!!”
+
+@22041 Le Cain · ル・カイン
+> 「ク……ゥゥ……………………」
+“Kuh... ugh...”
+
+@22042 Karla · カルラ
+> 「ッ!? ル・カイン様おやめください!」
+“Huh?! Lord Le Cain, please stop!”
+
+@22043 Gresco · グレスコ
+> 「……グッ……あ……ぅル・カイン……」
+“...Guh... ah... Le Cain...”
+
+@22044 Le Cain · ル・カイン
+> 「あ……あぁ……」
+“Ah... aah...”
+
+@22045 Gresco · グレスコ
+> 「ぬうぅ……。帝国の支配と……
+>  お前の……お前自身のために……
+“Ngh... For the Empire's domination... and for your... for your own sake...
+---
+>  私の……死の真相は……
+>  秘密に、秘密にするのだ……」
+the truth of my... death... keep it secret, keep it secret...”
+
+@22046 Le Cain · ル・カイン
+> 「ち……父上ぇぇーっ!!」
+“D... Faaatheeeer!!”
+
+@22047 Gresco · グレスコ
+> 「…………カルラ……」
+“...Karla...”
+
+@22048 Karla · カルラ
+> 「ッ!? な……なぜ……?」
+“Huh?! Wh... why...?”
+
+@22049 Le Cain · ル・カイン
+> 「ち、父上……」
+“F-Father...”
+
+@22050 Gresco · グレスコ
+> 「秘密は……守られねばならん……
+>  ジュリアも……
+“The secret... must be kept... Julia too...
+---
+>  ジュリアも殺せえぇぇぇぇ………………」
+kill Julia toooo...”
+
+@22051 Le Cain · ル・カイン
+> 「父上!? ……父上ぇぇーっ!!」
+“Father!? ...Faaatheeeer!!”

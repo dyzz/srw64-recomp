@@ -1,0 +1,106 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7393 Red · レッド
+> 「ワハハハハハハハッ」
+“Wah ha ha ha ha ha ha!”
+
+@7394 Red · レッド
+> 「ハッハッハッハッ」
+“Ha ha ha ha!”
+
+@7395 Red · レッド
+> 「敵ではないわっ」
+“You're no match for me!”
+
+@7396 Red · レッド
+> 「踏み砕いてくれるわ」
+“I'll crush you underfoot.”
+
+@7397 Red · レッド
+> 「今度こそ死ねぇい!」
+“This time you die for sure!”
+
+@7398 Red · レッド
+> 「ワーッハッハッハッハッ」
+“Wah ha ha ha ha ha!”
+
+@7399 Red · レッド
+> 「ハッハッハッ、見よ!」
+“Ha ha ha, behold!”
+
+@7400 Red · レッド
+> 「フッフッフッフッ」
+“Heh heh heh heh.”
+
+@7401 Red · レッド
+> 「いまのうちだ」
+“Now's my chance.”
+
+@7402 Red · レッド
+> 「ククククククッ!」
+“Kukuku kukuku!”
+
+@7403 Red · レッド
+> 「押しつぶしてやるわ!」
+“I'll squash you flat!”
+
+@7404 Red · レッド
+> 「お、おのれぇぇぇっ!」
+“Y-you wretch!”
+
+@7405 Red · レッド
+> 「まさかこれほどのものとはっ!」
+“To think you were this strong!”
+
+@7406 Red · レッド
+> 「お、おのれぇぇぇっ!」
+“Y-you wretch!”
+
+@7407 Red · レッド
+> 「くっ、さすがの十傑集も
+>  こうなってはっ!」
+“Tch, even the Ten Great Warriors can't hold out like this!”
+
+@7408 Red · レッド
+> 「なぁにぃっ!?」
+“Whaaat?!”
+
+@7409 Red · レッド
+> 「おのれっ!」
+“You wretch!”
+
+@7410 Red · レッド
+> 「なにをこしゃくな」
+“How insolent.”
+
+@7411 Red · レッド
+> 「ええぃ!」
+“Enough!”
+
+@7412 Red · レッド
+> 「クククククッ」
+“Kukuku kuku.”
+
+@7413 Red · レッド
+> 「ハハハハハハッ」
+“Ha ha ha ha ha ha!”
+
+@7414 Red · レッド
+> 「この程度か」
+“Is this all you've got?”
+
+@7415 Red · レッド
+> 「当たらんよ!」
+“You won't hit me!”
+
+@7416 Red · レッド
+> 「お、おのれぇぇぇっ!」
+“Y-you wretch!”
+
+@7417 Red · レッド
+> 「お、おのれぇぇぇっ!」
+“Y-you wretch!”
+
+@7418 Red · レッド
+> 「おのれ届かぬとはっ!」
+“Curse it, it won't reach!”

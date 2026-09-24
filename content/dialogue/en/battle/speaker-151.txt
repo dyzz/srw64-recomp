@@ -1,0 +1,78 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11876 Uchuta · 宇宙太
+> 「いくぜぃ!」
+“Here I go!”
+
+@11877 Uchuta · 宇宙太
+> 「よぉしっ!」
+“All right!”
+
+@11878 Uchuta · 宇宙太
+> 「わああぁぁぁぁ!!」
+“Waaaaaah!!”
+
+@11879 Uchuta · 宇宙太
+> 「だ、だめだっ!」
+“I-I'm done for!”
+
+@11880 Uchuta · 宇宙太
+> 「わああぁぁぁぁ!!」
+“Waaaaaah!!”
+
+@11881 Uchuta · 宇宙太
+> 「うわあぁぁっ!」
+“Uwaaaaaah!”
+
+@11882 Uchuta · 宇宙太
+> 「だ、だめだっ!」
+“I-I'm done for!”
+
+@11883 Uchuta · 宇宙太
+> 「なにぃ!?」
+“What?!”
+
+@11884 Uchuta · 宇宙太
+# 审校：原译“Th-this guy's!”不完整且语义不明，改为更自然的受击反应。
+> 「こ、こいつはっ!」
+“Th-this is--!”
+
+@11885 Uchuta · 宇宙太
+> 「うわっ、ちくしょう、むちゃくちゃだぜ!」
+“Ugh, damn it, this is insane!”
+
+@11886 Uchuta · 宇宙太
+> 「ぜんぜんこたえないぜ」
+“That didn't hurt one bit.”
+
+@11887 Uchuta · 宇宙太
+> 「へっへぇ、こんなんなら余裕ってもんだ」
+“Heh heh, this is a piece of cake.”
+
+@11888 Uchuta · 宇宙太
+> 「やったぞ!」
+“Got 'em!”
+
+@11889 Uchuta · 宇宙太
+> 「ふぅーっ!」
+“Phew!”
+
+@11890 Uchuta · 宇宙太
+> 「当たるものか!」
+“Like that'd ever hit!”
+
+@11891 Uchuta · 宇宙太
+> 「へっへっへぇ」
+“Heh heh heh.”
+
+@11892 Uchuta · 宇宙太
+> 「そーれみたことか」
+“Told you so.”
+
+@11893 Uchuta · 宇宙太
+> 「ちぇっ、弾切れかよ!」
+“Tch, out of ammo already?!”
+
+@11894 Uchuta · 宇宙太
+> 「クッ、届かねぇ!」
+“Ngh, it won't reach!”

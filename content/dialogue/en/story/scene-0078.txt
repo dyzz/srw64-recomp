@@ -1,0 +1,2292 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@39716 Wahl · ワール
+> 「戦況は順調なようだな」
+“The battle situation seems to be going well.”
+
+@39717 Janera · ジャネラ
+> 「当然じゃ。我らに比しては
+>  地球側の勢力などとるに足りぬ
+“Of course. Compared to us, the forces of the Earth side are worthless.
+---
+>  愚かなことにそれがさらに分裂して
+>  いるのじゃからな
+Foolishly, they're even further divided among themselves.
+---
+>  して、これからどうするのじゃ」
+So, what shall we do now?”
+
+@39718 Wahl · ワール
+> 「ガイヤーの反陽子爆弾で地球
+>  を破壊できない以上は、地球を
+“Since we cannot destroy the Earth with Gaia's antiproton bomb, there is
+---
+>  制圧するほか、なかろう。
+>  降下部隊を用意させる。それに
+no other way but to subjugate it. Have the landing forces prepared. Besides,
+---
+>  陛下のおっしゃられたこともある」
+there is also what His Majesty spoke of.”
+
+@39719 Janera · ジャネラ
+> 「しかしなワール司令。4万年も
+>  昔ものこと、地球人どもは
+“But Commander Wahl, that was forty thousand years ago. Not a single
+---
+>  誰1人知る者はおるまいに。
+>  皇帝陛下もずいぶんと
+Earthling could possibly know of it. His Majesty the Emperor is being
+---
+>  慎重なことじゃ」
+quite cautious as well.”
+
+@39720 Wahl · ワール
+> 「念のためだ。陛下の御前でたかが
+>  地球ごときを相手に万が一にも
+“Just to be safe. In His Majesty's presence, we cannot be permitted to lose
+---
+>  負けることは許されぬ。すでに地上
+>  では協力を申し入れてきた奴らに
+even once against mere Earth. I already have those who offered us their cooperation on the surface
+---
+>  探させている」
+searching for it.”
+
+@39721 Janera · ジャネラ
+> 「ホホホ、まこと地球人は愚かよな」
+“Hohoho, Earthlings truly are foolish.”
+
+@39722 Bright · ブライト
+> 「状況はどうだ?」
+“What's the situation?”
+
+@39723 Kamille · カミーユ
+> 「やはり抑えられませんでしたね。
+>  銀河帝国軍は地球に
+“As expected, we couldn't hold them back. The Galactic Empire forces appear to be
+---
+>  降下しているようです」
+descending to Earth.”
+
+@39724 Judau · ジュドー
+> 「くそっ、奴ら何だって地球に
+>  降りやがったんだ!?」
+“Damn it, why the hell did they come down to Earth?!”
+
+@39725 Elle · エル
+> 「そんなこといったって、しょうがないでしょ」
+“Saying that won't change anything, you know.”
+
+@39726 Shinobu · 忍
+> 「どうするんだよ、ここで手をこまねいて
+>  見てるってのか?」
+“What are we gonna do, just sit here with our hands tied and watch?”
+
+@39727 Bright · ブライト
+> 「しかしな……敵の数が多すぎる。
+>  どう戦えばいいのか、わからんのだ」
+“But still... there are too many enemies. I don't know how we should fight them.”
+
+@39728 Koji · 甲児
+> 「オレたちも地球へ降りようぜ。
+>  とにかく少しでも敵を叩くんだ
+“Let's head down to Earth too. Anyway, we'll hit as many enemies as we can.
+---
+>  地上にゃ助けなきゃならない人
+>  だって多いんだ」
+There are plenty of people down there who need our help.”
+
+@39729 Alan · アラン
+> 「確かにな。どのみち動かないままで
+>  いるわけにはいかん」
+“Indeed. Either way, we can't afford to stay put forever.”
+
+@39730 Bright · ブライト
+> 「ブライトだ」
+“This is Bright.”
+
+@39731 Bunny · バニー
+> 「艦長、地上の葉月博士から
+>  緊急通信です」
+“Captain, an urgent transmission from Dr. Hazuki on the surface.”
+
+@39732 Bright · ブライト
+> 「まわしてくれ」
+“Put it through.”
+
+@39733 Dr. Hazuki · 葉月博士
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、何者かが
+>  獣戦機基地を探っていることが
+“Captain Bright, we've discovered that someone is investigating the Cyber Beast Force Base.
+---
+>  わかった。今ここを攻撃されては
+>  まずい。すぐ来てもらいたい」
+If we're attacked here now, it will be bad. I need you to come at once.”
+
+@39734 Bright · ブライト
+> 「獣戦機基地に!?」
+“To the Cyber Beast Force Base?!”
+
+@39735 Shinobu · 忍
+> 「博士、ろくに機能してない
+>  獣戦機基地なんて、どうだって
+“Doctor, what does it matter if some barely functioning Cyber Beast Force Base gets attacked?
+---
+>  いいじゃねぇか。だいたい今はかなりの
+>  数の敵が地上に降りてるんだ
+Besides, right now there are a ton of enemies landing on the surface.
+---
+>  それどころじゃねぇだろう。とっとと
+>  逃げて他の連中と
+This isn't the time for that. Just hurry up and escape and
+---
+>  合流しといてくれよ」
+join up with the others.”
+
+@39736 Dr. Hazuki · 葉月博士
+> 「そういうわけにはいかん。我々は
+>  今、ここを離れるわけにはいかんのだ」
+“That is not an option. We cannot leave this place right now.”
+
+@39737 Shinobu · 忍
+> 「なんでだよ。あんたら、いったい何を
+>  やってるんだ!?」
+“Why not? What the hell are you people doing?!”
+
+@39738 Dr. Hazuki · 葉月博士
+> 「藤原、お前と問答している
+>  時間はない。艦長、頼む
+“Fujiwara, I don't have time to argue with you. Captain, I'm asking you—
+---
+>  ことは急を要するのだ」
+this matter is urgent.”
+
+@39739 Alan · アラン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「……獣戦機基地に向かおう、
+>  ブライト艦長。どっちにしろ
+“...Let's head for the Cyber Beast Force Base, Captain Bright. Either way,
+---
+>  地上には降下した方が
+>  よかったのだ」
+descending to the surface would have been the better choice.”
+
+@39740 Bright · ブライト
+> 「そうだな……わかりました、
+>  葉月博士。我々はこれより
+“You're right... Understood, Dr. Hazuki. We will now
+---
+>  地球へ降下し、旧獣戦機
+>  基地に向かいます」
+descend to Earth and head for the Former Cyber Beast Force Base.”
+
+@39741 Dr. Hazuki · 葉月博士
+> 「すまない、頼む」
+“Sorry, I'm counting on you.”
+
+@39742 Bright · ブライト
+> 「聞いた通りだ。我々はこれより
+>  地球へ降りる」
+“You heard him. We will now descend to Earth.”
+
+@39743 Kamille · カミーユ
+> 「なら、急ぎましょう。時間がたてば
+>  銀河帝国軍と接触する
+“Then let's hurry. The longer we wait, the higher the chance
+---
+>  可能性が高くなります」
+we'll encounter the Galactic Empire forces.”
+
+@39744 Beltorchika · ベルトーチカ
+> 「大気圏突入準備終了。
+>  付近に敵部隊ありません」
+“Atmospheric entry preparations complete. No enemy forces in the vicinity.”
+
+@39745 Bright · ブライト
+> 「よし、全員所定の位置に
+>  待機して衝撃にそなえろ
+“Good, everyone stand by at your designated positions and brace for the shock.
+---
+>  バリュートを展開し、大気圏へ
+>  突入する」
+Deploy the ballutes and enter the atmosphere.”
+
+@39746 Ivan · イワン
+> 「アルベルト様、ここが候補地の
+>  1つというわけでございますか」
+“Lord Alberto, so this is one of the candidate sites?”
+
+@39747 Alberto · アルベルト
+> 「そうだ。一見何の役にも、たたん
+>  半壊した基地のようだが
+“Indeed. At first glance it looks like a half-destroyed base good for nothing,
+---
+>  実際にはかなり多くの人間がおる
+>  地下に何かあるのは間違いない」
+but in reality there are quite a lot of people here. There's no doubt something lies underground.”
+
+@39748 Ivan · イワン
+> 「なるほど……しかし、この程度ならば
+>  我々だけでも十分ではありませんか」
+“I see... But if it's only this much, wouldn't we alone be more than enough?”
+
+@39749 Alberto · アルベルト
+> 「ワシもそう思うがな。孔明のやつが
+>  新たにやってきた異星人に
+“I think so too. But that Komei fellow insisted we cooperate with the newly arrived aliens.
+---
+>  協力しろとぬかしおった。例のものを
+>  探すというのも、そのためなのだとな」
+Searching for that thing is apparently for that purpose as well.”
+
+@39750 Ivan · イワン
+> 「異星人? しかし噂では
+>  今度の連中は地球を
+“Aliens? But the rumor is that these newcomers are trying to
+---
+>  滅ぼそうとしていると……」
+destroy the Earth...”
+
+@39751 Alberto · アルベルト
+> 「なぁイワン、少し変だとは思わぬか
+>  なぜ我々のボス、ビッグファイアーは
+“Say, Ivan, don't you find it a bit strange? Why would our boss, Big Fire,
+---
+>  異星人に協力などするのか。
+>  これは我々BF団にとっても
+cooperate with aliens? Isn't this a dangerous thing for us,
+---
+>  危険なことではないのか?」
+the BF Group, as well?”
+
+@39752 Ivan · イワン
+> 「アルベルト様、十傑集ともあろう
+>  お方が何ということを! そのような
+“Lord Alberto, for one of the Ten Great Generals to say such a thing! That kind of
+---
+>  お考えはボスへの反逆に……」
+thinking amounts to rebellion against the Boss...”
+
+@39753 Alberto · アルベルト
+> 「ムッ!?」
+“Hmph?!”
+
+@39754 Ivan · イワン
+> 「失礼いたしました。私ごときが
+>  意見するなど……」
+“My apologies. For someone like me to voice an opinion...”
+
+@39755 Alberto · アルベルト
+> 「いや……邪魔が入ったようだな」
+“No... It seems we have company.”
+
+@39756 Guerrilla · ゲリラ
+> 「動くな、怪しい奴らめ!」
+“Don't move, you suspicious lot!”
+
+@39757 Guerrilla · ゲリラ
+> 「基地を探っているのはお前たちだな
+>  おとなしく一緒に来てもらおう!」
+“You're the ones snooping around the base. Come along quietly!”
+
+@39758 Alberto · アルベルト
+> 「バカ共が。貴様らごときに、
+>  この衝撃のアルベルトがやれるとでも
+“Fools. Do you really think the likes of you could
+---
+>  思っているのか?」
+take on Shockwave Alberto?”
+
+@39759 Ivan · イワン
+> 「アルベルト様、ここは私に」
+“Lord Alberto, allow me to handle this.”
+
+@39760 Alberto · アルベルト
+> 「下がっておれ、イワン」
+“Stand back, Ivan.”
+
+@39761 Guerrilla · ゲリラ
+> 「こ、こいつ、MS相手に生身で
+>  どうするつもりだ!? バカは貴様だ!」
+“W-what's this guy, taking on an MS bare-handed?! You're the fool here!”
+
+@39762 Alberto · アルベルト
+> 「ふん……どうやら先に死にたいらしいな」
+“Hmph... Seems you'd rather die first.”
+
+@39763 Guerrilla · ゲリラ
+> 「なんだと!?」
+“What did you say?!”
+
+@39764 Guerrilla · ゲリラ
+> 「あっ!?」
+“Ah?!”
+
+@39765 Guerrilla · ゲリラ
+> 「そ、そんな……バカな!?」
+“Th-that's... impossible!”
+
+@39766 Alberto · アルベルト
+> 「相手が悪かったな」
+“You picked the wrong opponent.”
+
+@39767 Guerrilla · ゲリラ
+> 「き、聞いたことがある。素手で
+>  MSを破壊する奴がいると……」
+“I-I've heard of him. There's a man who destroys MS with his bare hands...”
+
+@39768 Alberto · アルベルト
+> 「ふん、貴様らごときでもわしの名を
+>  しっておるか。それに免じて楽に
+“Hmph, even the likes of you know my name. For that, I'll grant you a painless
+---
+>  死なせてやろう」
+death.”
+
+@39769 Guerrilla · ゲリラ
+> 「確か……あのドモン・カッシュの師匠
+>  ……東方不敗、マスター・アジア!」
+“That's right... the master of Domon Kasshu... Master Asia of the Undefeated of the East!”
+
+@39770 Alberto · アルベルト
+> 「なんだとぉっ!? 貴様、楽には
+>  死なさんぞ!!」
+“What?! You won't die easily now, you bastard!!”
+
+@39771 Guerrilla · ゲリラ
+> 「き、緊急連絡! イゴール将軍
+>  に敵が来たと……くっ!」
+“E-emergency contact! Enemies have come for General Igor... Ngh!”
+
+@39772 Alberto · アルベルト
+> 「ふん、バカにしおって」
+“Hmph, making a fool of me.”
+
+@39773 Ivan · イワン
+> 「さすがはアルベルト様。あいかわらず、
+>  お見事ですな」
+“As expected of Lord Alberto. Splendid as always.”
+
+@39774 Alberto · アルベルト
+> 「この程度、準備運動にも
+>  ならぬわ。……ム? 来たようだな」
+“This much isn't even a warm-up. ...Hm? Seems they've arrived.”
+
+@39775 Q Boss · Qボス
+> 「アルベルト様、例の者たちを連れて
+>  参りました!」
+“Lord Alberto, I've brought the ones you mentioned!”
+
+@39776 Alberto · アルベルト
+> 「うむ」
+“Good.”
+
+@39777 Warchimedes · ワルキメデス
+> 「ふむ、まずはここからというわけか。では
+>  さっそく例のものを確認するとしよう」
+“Hmm, so we start here, then. Let's confirm that thing right away.”
+
+@39778 Alberto · アルベルト
+> 「ふん……では見物させてもらうとするか」
+“Hmph... Then let's have a look, shall we?”
+
+@39779 Dr. Hazuki · 葉月博士
+> 「基地が囲まれましたな」
+“The base is surrounded.”
+
+@39780 Igor · イゴール
+> 「{HeroMech}は間にあわなかった
+>  のか……もはや、やむをえん」
+“So {HeroMech} didn't make it in time... There's no other way now.”
+
+@39781 Dr. Hazuki · 葉月博士
+> 「将軍、まさか!?」
+“General, you can't mean...?!”
+
+@39782 Igor · イゴール
+> 「湖の底深く眠る竜も、時が
+>  くれば雲を呼び天に昇るという
+“They say the dragon sleeping deep at the bottom of the lake will, when the time comes, call the clouds and rise to the heavens.
+---
+>  今がその時なのかもしれん」
+Perhaps now is that time.”
+
+@39783 Dr. Hazuki · 葉月博士
+> 「しかし……」
+“But...”
+
+@39784 Igor · イゴール
+> 「彼らならば、この竜とともに、きっと
+>  地球の未来を守れるはずだ
+“With them, alongside this dragon, they will surely protect the future of the Earth.
+---
+>  葉月博士、竜を!」
+Dr. Hazuki, the dragon!”
+
+@39785 Dr. Hazuki · 葉月博士
+> 「将軍、今の状態では竜の命が
+>  短いのは、ご存じですね?」
+“General, you know that in its current state, the dragon's life will be short?”
+
+@39786 Igor · イゴール
+> 「竜は、彼らの手に渡さねばならん」
+“The dragon must be entrusted to them.”
+
+@39787 Dr. Hazuki · 葉月博士
+> 「……キーワード、ロック解除。
+>  ナンバーTHX1139」
+“...Keyword, lock released. Number THX1139.”
+
+@39788 Computer · コンピュータ
+> 「キーワードをインプットしてください」
+“Please input the keyword.”
+
+@39789 Dr. Hazuki · 葉月博士
+# 审校：“昇雲”是专有口令，应保持单数“Cloud”，与“飛竜昇雲”的对应关系一致。
+> 「飛・竜・昇・雲」
+“Fly, Dragon, Rise, Cloud.”
+
+@39790 Computer · コンピュータ
+> 「キーワード了解。
+>  THX1139発動」
+“Keyword confirmed. THX1139 activated.”
+
+@39791 Igor · イゴール
+> 「……いよいよか……」
+“...So it's finally time...”
+
+@39792 Computer · コンピュータ
+> 「炉心稼働開始。
+>  プラズマ発生
+“Reactor core activation begun. Plasma generation at
+---
+>  臨界プラズマ温度の5%」
+5% of critical plasma temperature.”
+
+@39793 Shinobu · 忍
+> 「ちっ、敵がウジャウジャいやがるぜ」
+“Tch, the enemy's swarming like flies.”
+
+@39794 Alan · アラン
+> 「先に出てきて、正解だったようだな」
+“Seems coming out first was the right call.”
+
+@39795 Ryo · 亮
+> 「ああ。タケルとマリアの予知能力は
+>  たいしたものだ」
+“Yeah. Takeru and Maria's precognition is something else.”
+
+@39796 Masato · 雅人
+> 「くそーっ! でもこんなんじゃ、長くは
+>  もたないよ!」
+“Damn it! But at this rate, we won't last long!”
+
+@39797 Ryo · 亮
+> 「あせるなよ雅人、あせるな」
+“Don't panic, Masato. Don't panic.”
+
+@39798 Alan · アラン
+> 「そうだ。すぐにあとの連中もくる」
+“Right. The rest of them will be here soon.”
+
+@39799 Dr. Hazuki · 葉月博士
+> 「将軍! ダンクーガです。
+>  それとあれは……」
+“General! It's Dancouga. And that's...”
+
+@39800 Igor · イゴール
+> 「ああ……彼らは私など、とうの昔に
+>  越えてしまっていたのかもしれんな……」
+“Ah... Perhaps they surpassed the likes of me long ago...”
+
+@39801 Dr. Hazuki · 葉月博士
+> 「聞こえるか、藤原。もうしばらく
+>  の間、基地に敵を近づけるな」
+“Can you hear me, Fujiwara? Keep the enemy away from the base a while longer.”
+
+@39802 Shinobu · 忍
+> 「わかったよ、博士! だが、あとで
+>  きっちり理由を説明してもらうぜ!」
+“Got it, Doctor! But afterward, you're going to explain everything properly!”
+
+@39803 Dr. Hazuki · 葉月博士
+> 「好きにしろ。とにかく、頼む」
+“As you like. Just hold them off, please.”
+
+@39804 Shinobu · 忍
+> 「よーし、やってやるぜッ!!」
+“All right, let's do this!!”
+
+@39805 Computer · コンピュータ
+> 「臨界プラズマ温度の35%」
+“35% of critical plasma temperature.”
+
+@39806 Shinobu · 忍
+> 「くそっ、援軍はまだかよ!?」
+“Damn it, are the reinforcements here yet?!”
+
+@39807 Sara · 沙羅
+> 「……ようやくおいでだよ、忍!」
+“...They're finally here, Shinobu!”
+
+@39808 Bright · ブライト
+> 「どうやら間にあったようだな」
+“Looks like we made it in time.”
+
+@39809 Ginrei · 銀鈴
+> 「あれはまさか……BF団!?
+>  いったいどうして……」
+“That's... the BF Group?! Why are they here...?”
+
+@39810 Bright · ブライト
+> 「なんだと!? いや、詮索はあとだ。
+>  パイロット各員は発進急げ!」
+“What?! No, questions later. All pilots, launch immediately!”
+
+@39811 Warchimedes · ワルキメデス
+> 「地球人の増援か!? しかたない
+>  予備兵力を投入しろ!」
+“Earthling reinforcements?! No help for it, send in the reserve forces!”
+
+@39812 Warchimedes · ワルキメデス
+> 「ゴーマン大尉、基地を占拠する
+>  のだ。地下を調べるのは
+“Captain Gorman, occupy the base. Investigating the underground
+---
+>  そのあとでよい」
+can wait until after.”
+
+@39813 Gorman · ゴーマン
+> 「了解した。親衛隊をあなどって
+>  もらってはこまる」
+“Understood. You'd best not underestimate the Imperial Guard.”
+
+@39814 Gorman · ゴーマン
+> 「ワルキメデスのバカめが。もうやられて
+>  しまったのか」
+“That fool Warchimedes. Done in already?”
+
+@39815 Warchimedes · ワルキメデス
+> 「ゴーマン大尉、基地を占拠する
+>  のだ。地下を調べるのは
+“Captain Gorman, occupy the base. Investigating the underground
+---
+>  そのあとでよい」
+can wait until after.”
+
+@39816 Gorman · ゴーマン
+> 「了解した。キリカ、やれるのだろうな」
+“Understood. Kirika, you can handle this, yes?”
+
+@39817 Kirika · キリカ
+> (兄さん……やっと、兄さんの夢だった
+>  冷凍光線が完成するというのに
+(Brother... Your dream, the Freeze Ray, is finally complete,
+---
+>  平和利用ではなく、地球を
+>  攻撃することになるなんて……)
+and yet instead of peaceful use, it will be used to attack the Earth...)
+
+@39818 Gorman · ゴーマン
+> 「キリカ、どうした」
+“Kirika, what's wrong?”
+
+@39819 Kirika · キリカ
+> 「は、はい、大丈夫です」
+“Y-yes, I'm fine.”
+
+@39820 Gorman · ゴーマン
+> 「ワルキメデスのバカめが。もうやられて
+>  しまったのか。キリカ、やれるのだろうな」
+“That fool Warchimedes. Done in already? Kirika, you can handle this, yes?”
+
+@39821 Kirika · キリカ
+> (兄さん……やっと、兄さんの夢だった
+>  冷凍光線が完成するというのに
+(Brother... Your dream, the Freeze Ray, is finally complete,
+---
+>  平和利用ではなく、地球を
+>  攻撃することになるなんて……)
+and yet instead of peaceful use, it will be used to attack the Earth...)
+
+@39822 Gorman · ゴーマン
+> 「キリカ、どうした」
+“Kirika, what's wrong?”
+
+@39823 Kirika · キリカ
+> 「は、はい、大丈夫です」
+“Y-yes, I'm fine.”
+
+@39824 Kirika · キリカ
+> 「あれがグレンダイザー……
+>  あれを倒せば……」
+“That's Grendizer... If I defeat it...”
+
+@39825 Dr. Hazuki · 葉月博士
+> 「艦長、もうしばらく、もうしばらくだけ
+>  敵を近づけないでもらいたい」
+“Captain, I need you to keep the enemy away a little longer. Just a little longer.”
+
+@39826 Bright · ブライト
+> 「保証はできませんよ」
+“I can't guarantee that.”
+
+@39827 Duke · デューク
+> 「なぜ君は僕をねらう!?」
+“Why are you targeting me?!”
+
+@39828 Kirika · キリカ
+> 「ズール皇帝はグレンダイザーを倒せば
+>  私の好きにさせてくれるといったわ
+“Emperor Zuul said if I defeat Grendizer, he'll let me do as I please.
+---
+>  私はあなたを倒して兄の遺志を
+>  継ぐ!」
+I'll defeat you and carry on my brother's dying wish!”
+
+@39829 Duke · デューク
+> 「やめるんだ! 君は連中に利用
+>  されているだけだ。死ぬぞ!」
+“Stop! They're only using you. You'll die!”
+
+@39830 Kirika · キリカ
+> 「……私はちっとも、こわくなんか
+>  ないんだから!」
+“...I'm not scared at all!”
+
+@39831 Duke · デューク
+> 「ばかな、命を粗末にするな!」
+“Don't be a fool, don't throw your life away!”
+
+@39832 Kirika · キリカ
+> 「…………」
+“...”
+
+@39833 Maria · マリア
+> 「兄さんをねらうなら、許さないわ!」
+“If you're after my brother, I won't forgive you!”
+
+@39834 Kirika · キリカ
+> 「兄……兄さん? デューク・フリードは
+>  あなたのお兄さんなの?」
+“B-brother? Duke Fleed is your brother?”
+
+@39835 Maria · マリア
+> 「そうよ。あたしはマリア・フリード。
+>  デュークは、あたしのたった1人の
+“That's right. I'm Maria Fleed. Duke is my one and only
+---
+>  大事な兄さんだわ!」
+precious brother!”
+
+@39836 Kirika · キリカ
+> 「そう……そうなの……」
+“I see... I see...”
+
+@39837 Kirika · キリカ
+> (ああ、兄さん……ごめんなさい。私には
+>  これ以上はできないわ)
+(Oh, brother... forgive me. I can't do any more than this)
+
+@39838 Kirika · キリカ
+> 「いいわ……マリア。私を撃って。それで
+>  私は兄さんのところへ行ける
+“It's all right... Maria. Shoot me. Then I can go to my brother.
+---
+>  私にも……私にも素敵な兄さんが
+>  いたのよ」
+I had... I had a wonderful brother too.”
+
+@39839 Maria · マリア
+> 「あなた……だめ、そんなことできないわ」
+“You... no, I can't do that.”
+
+@39840 Kirika · キリカ
+> 「だけど、私はグレンダイザーを
+>  倒さなければ……」
+“But I have to defeat Grendizer...”
+
+@39841 Maria · マリア
+> 「もどれないなら、一緒に行きましょう
+>  あなたのことは、あたしと兄さんで
+“If you can't go back, then let's go together. My brother and I will
+---
+>  なんとかする。心配しないで」
+work something out for you. Don't worry.”
+
+@39842 Kirika · キリカ
+> 「マリア……ありがとう」
+“Maria... thank you.”
+
+@39843 Maria · マリア
+> 「墜落したフリをして、そこにいてね。
+>  あとで迎えにくるから。きっとよ」
+“Pretend you've crashed and stay there. I'll come for you later. I promise.”
+
+@39844 Kirika · キリカ
+> 「ええ……わかったわ」
+“Yes... all right.”
+
+@39845 Computer · コンピュータ
+> 「臨界プラズマ温度の65%」
+“Critical plasma temperature at 65%.”
+
+@39846 Dr. Hazuki · 葉月博士
+> 「もう少しだ……もう少し……」
+“Just a little more... just a little more...”
+
+@39847 Computer · コンピュータ
+> 「臨界プラズマ温度の85%」
+“Critical plasma temperature at 85%.”
+
+@39848 Bright · ブライト
+> 「博士、まだですか!?」
+“Doctor, not yet?!”
+
+@39849 Dr. Hazuki · 葉月博士
+> 「もうまもなくだ。もう少しだけ
+>  もたせてくれ!」
+“Almost there. Just hold out a little longer!”
+
+@39850 Computer · コンピュータ
+> 「臨界プラズマ温度の90%」
+“Critical plasma temperature at 90%.”
+
+@39851 Igor · イゴール
+> 「博士」
+“Doctor.”
+
+@39852 Dr. Hazuki · 葉月博士
+> 「ええ……ガンドール、発動スタンバイ!」
+“Yes... Gandor, standby for activation!”
+
+@39853 Alberto · アルベルト
+> 「ふん、何があるのか知らんが、このワシ
+>  が直接、確認してくれるわ」
+“Hmph, I don't know what you have here, but I'll confirm it myself, firsthand.”
+
+@39854 Dr. Hazuki · 葉月博士
+> 「なんだ!?」
+“What?!”
+
+@39855 Guerrilla · ゲリラ
+> 「何者かが、基地内に侵入しま
+>  した!」
+“Someone has infiltrated the base!”
+
+@39856 Igor · イゴール
+> 「何だと!? おのれ、やらせはせんぞ!」
+“What?! You scum, I won't let you get away with this!”
+
+@39857 Dr. Hazuki · 葉月博士
+> 「将軍!?」
+“General?!”
+
+@39858 Alan · アラン
+> 「む!? いかん、
+>  基地が襲われたか!?」
+“Hm?! This is bad, has the base been attacked?!”
+
+@39859 Alan · アラン
+> 「む!? いかん、
+>  基地が襲われたか!?」
+“Hm?! This is bad, has the base been attacked?!”
+
+@39860 Alberto · アルベルト
+> 「ハハハハッ、たわいもない。
+>  たいした抵抗もできんとは。……むう
+“Hahahaha, how pathetic. You can't even put up a decent fight. ...Hm?
+---
+>  これは……アレではないが……いかんな、
+>  これは破壊しておかねばならん」
+This is... not that, but... this won't do. I must destroy this.”
+
+@39861 Igor · イゴール
+> 「うおおぉぉぉぉっ!!」
+“Uwoooooooh!!”
+
+@39862 Alberto · アルベルト
+> 「なに!? フン、旧連邦の
+>  生き残りか。くだらんな」
+“What?! Hmph, a survivor of the Former Federation. How pointless.”
+
+@39863 Igor · イゴール
+> 「貴様らに竜はやらせはせん!」
+“I won't let you bastards have the dragon!”
+
+@39864 Alberto · アルベルト
+> 「こしゃくな。それほど死にたいのならば
+>  殺してやろう。ちぇあぁぁぁぁーっ!!」
+“Insolent fool. If you want to die that badly, I'll kill you. Cheaaaaaah!!”
+
+@39865 Igor · イゴール
+> 「がはっ!! こ、これしきのことで……
+>  や、やらせはせん、やらせは……」
+“Gah!! Th-this much won't... I-I won't let you, I won't let...”
+
+@39866 Alberto · アルベルト
+> 「その闘志だけは見事なものよ」
+“That fighting spirit of yours is truly admirable.”
+
+@39867 ???
+> 「そこまでだッ!」
+“That's far enough!”
+
+@39868 Alberto · アルベルト
+> 「ぐぅっ、なにやつ!?」
+“Guh, who goes there?!”
+
+@39869 Schwarz · シュバルツ
+> 「フフフフフフッ、ハーッハハハハハッ!!」
+“Heheheheheh, hahahahahaha!!”
+
+@39870 Alberto · アルベルト
+> 「ムッ!? 貴様、あの時の……」
+“Hm?! You, from back then...”
+
+@39871 Guerrilla · ゲリラ
+> 「いたぞ! こっちだ!!」
+“There he is! Over here!!”
+
+@39872 Schwarz · シュバルツ
+> 「さぁ、どうする、どうする、アルベルト!?」
+“So, what will you do, what will you do, Alberto?!”
+
+@39873 Alberto · アルベルト
+> 「貴様のことは奴から聞いたわ。
+>  ここで貴様と戦うのは
+“I've heard about you from him. Fighting you here is
+---
+>  賢いやり方ではない。さらばだ!」
+not a wise move. Farewell!”
+
+@39874 Schwarz · シュバルツ
+> (行ってくれたか。
+>  ……この体も、もはや限界だ
+(So he's gone. ...This body of mine is at its limit too.
+---
+>  あの男と戦わずに済んだのは幸い
+>  だったな……)
+It's fortunate I didn't have to fight that man...)
+
+@39875 Alan · アラン
+> 「シュバルツ・ブルーダー!? なぜ
+>  ここに……いや、それよりも将軍は!?」
+“Schwarz Bruder?! Why are you here... no, more importantly, where's the General?!”
+
+@39876 Schwarz · シュバルツ
+> 「…………ここだ」
+“...Here.”
+
+@39877 Alan · アラン
+> 「…………イゴール将軍」
+“...General Igor.”
+
+@39878 Igor · イゴール
+> 「アランか……わずかな間に、よくそこまで
+>  成長したな……もはや、この父を
+“Alan... In so short a time, you've grown so much... You've already surpassed
+---
+>  乗り越えてしまった……。
+>  結局……お前の戦いもまた
+this father of yours... In the end... your way of fighting was also
+---
+>  正しかったということか……」
+the right one...”
+
+@39879 Alan · アラン
+> 「やめてくれ! あんたの口から、そんな
+>  弱気な言葉は聞きたくない!」
+“Don't! I don't want to hear such weak words from your mouth!”
+
+@39880 Igor · イゴール
+> 「アラン、ほかの多くの子供たちと
+>  ともに、この世界を、地球を
+“Alan, along with all the other children, protect this world, protect the Earth...
+---
+>  守ってくれ……地球の未来を……
+>  く……」
+The future of the Earth... ngh...”
+
+@39881 Schwarz · シュバルツ
+> 「……すまぬ、私がもう少し早ければ
+>  よかったのだが」
+“...Forgive me. If only I had been a little faster.”
+
+@39882 Alan · アラン
+> 「いや………さらば、最後の将軍
+>  ロス・イゴール……さらば……親父
+“No... Farewell, last General Ross Igor... Farewell... Dad.
+---
+>  あなたの遺志は若者たちが
+>  引き継ぎ、戦っていくでしょう……」
+Your will shall be carried on by the young, and they will keep fighting...”
+
+@39883 Shinobu · 忍
+> 「アラン! どうした!?」
+“Alan! What happened?!”
+
+@39884 Alan · アラン
+> 「基地は無事だ。安心しろ」
+“The base is safe. Rest easy.”
+
+@39885 Shinobu · 忍
+> 「将軍は!?」
+“And the General?!”
+
+@39886 Alan · アラン
+> 「……俺たちの親父は、親父らしい
+>  立派な最期だった。本望だろう」
+“...Our father met an end worthy of him. He got what he wanted.”
+
+@39887 Shinobu · 忍
+> 「なっ……」
+“What...”
+
+@39888 Sara · 沙羅
+> 「なんだって!?」
+“What did you say?!”
+
+@39889 Shinobu · 忍
+> 「くっ……ちっきしょおぉぉぉぉぉーっ!!」
+“Ngh... damn it aaaaall!!”
+
+@39890 Computer · コンピュータ
+> 「97%……98%……99%……
+>  プラズマ温度臨界!」
+“97%... 98%... 99%... Plasma temperature critical!”
+
+@39891 Dr. Hazuki · 葉月博士
+> 「よし……頼むぞ、竜よ。
+>  ガンドール、発動!」
+“Good... I'm counting on you, dragon. Gandor, activate!”
+
+@39892 Bright · ブライト
+> 「な、なんだこれは……博士!?」
+“Wh-what is this... Doctor?!”
+
+@39893 Masato · 雅人
+> 「ひょっとして基地に事故でも!?」
+“Could there be an accident at the base?!”
+
+@39894 Reika · レイカ
+> 「これは……! 気をつけて、
+>  敵のエネルギーを上まわる何かが
+“This is...! Watch out, something surpassing the enemy's energy is
+---
+>  浮上してくるわ!」
+rising up!”
+
+@39895 Banjo · 万丈
+> 「なんだって!?」
+“What did you say?!”
+
+@39896 Dr. Hazuki · 葉月博士
+> 「みんな、よく守ってくれた。すぐに、この
+>  獣戦機基地から離れてくれ!
+“Everyone, you've defended it well. Now get away from this Cyber Beast Force Base at once!
+---
+>  ガンドール砲、発射スタンバイ」
+Gandor Cannon, firing standby.”
+
+@39897 Alan · アラン
+> 「これが親父の遺産か……」
+“So this is my father's legacy...”
+
+@39898 Shinobu · 忍
+> 「基地? これが俺たちの
+>  獣戦機基地だってのか!?」
+“The base? You're telling me this is our Cyber Beast Force Base?!”
+
+@39899 Bright · ブライト
+> 「……よし、撤退する!」
+“...All right, we're retreating!”
+
+@39900 Vega Soldier · ベガ星兵
+> 「奴ら引きあげるぞ。よし、一気に
+>  あの要塞を攻撃だ!」
+“They're pulling back. All right, attack that fortress in one go!”
+
+@39901 Dr. Hazuki · 葉月博士
+> 「……ガンドール砲、発射!」
+“...Gandor Cannon, fire!”
+
+@39902 Vega Soldier · ベガ星兵
+> 「だ、だめだ、逃げろーッ!!」
+“N-no good, run!!”
+
+@39903 Dr. Hazuki · 葉月博士
+> 「イゴール将軍……あなたの竜は
+>  天に昇りましたよ……」
+“General Igor... your dragon has ascended to the heavens...”
+
+@39904 Reika · レイカ
+> 「……敵の攻撃が止まりました」
+“...The enemy attack has stopped.”
+
+@39905 Bright · ブライト
+> 「なんとかしのぎきったか……」
+“We managed to hold them off...”
+
+@39906 Computer · コンピュータ
+> 「臨界プラズマ温度の90%」
+“90% of critical plasma temperature.”
+
+@39907 Igor · イゴール
+> 「博士」
+“Doctor.”
+
+@39908 Dr. Hazuki · 葉月博士
+> 「ええ……ガンドール、発動スタンバイ!」
+“Yes... Gandor, activation standby!”
+
+@39909 Alberto · アルベルト
+> 「ふん、何があるのか知らんが、このワシ
+>  が直接、確認してくれるわ」
+“Hmph, I don't know what's here, but I'll confirm it myself, directly.”
+
+@39910 Dr. Hazuki · 葉月博士
+> 「なんだ!?」
+“What?!”
+
+@39911 Guerrilla · ゲリラ
+> 「何者かが、基地内に侵入しま
+>  した!」
+“Someone has infiltrated the base!”
+
+@39912 Igor · イゴール
+> 「何だと!? おのれ、やらせはせんぞ!」
+“What?! Curse you, I won't let you!”
+
+@39913 Dr. Hazuki · 葉月博士
+> 「将軍!?」
+“General?!”
+
+@39914 Alan · アラン
+> 「む!? いかん、
+>  基地が襲われたか!?」
+“Hm?! This is bad, has the base been attacked?!”
+
+@39915 Alan · アラン
+> 「む!? いかん、
+>  基地が襲われたか!?」
+“Hm?! This is bad, has the base been attacked?!”
+
+@39916 Alberto · アルベルト
+> 「ハハハハッ、たわいもない。
+>  たいした抵抗もできんとは。……むう
+“Hahahaha, how pathetic. You couldn't even put up a decent fight. ...Hm,
+---
+>  これは……アレではないが……いかんな、
+>  これは破壊しておかねばならん」
+this is... not that, but... this won't do. I must destroy this.”
+
+@39917 Igor · イゴール
+> 「うおおぉぉぉぉっ!!」
+“Uwoooooooh!!”
+
+@39918 Alberto · アルベルト
+> 「なに!? フン、旧連邦の
+>  生き残りか。くだらんな」
+“What?! Hmph, a survivor of the Former Federation. How pointless.”
+
+@39919 Igor · イゴール
+> 「貴様らに竜はやらせはせん!」
+“I won't let you scum have the dragon!”
+
+@39920 Alberto · アルベルト
+> 「こしゃくな。それほど死にたいのならば
+>  殺してやろう。ちぇあぁぁぁぁーっ!!」
+“Insolent fool. If you want to die that badly, I'll kill you. Cheaaaaaah!!”
+
+@39921 Igor · イゴール
+> 「がはっ!! こ、これしきのことで……
+>  や、やらせはせん、やらせは……」
+“Gahah!! Th-this little... I-I won't let you, I won't let...”
+
+@39922 Alberto · アルベルト
+> 「その闘志だけは見事なものよ」
+“That fighting spirit of yours is truly admirable.”
+
+@39923 ???
+> 「そこまでだッ!」
+“That's far enough!”
+
+@39924 Alberto · アルベルト
+> 「ぐぅっ、なにやつ!?」
+“Guh, who are you?!”
+
+@39925 Schwarz · シュバルツ
+> 「フフフフフフッ、ハーッハハハハハッ!!」
+“Fufufufufu, hahahahahaha!!”
+
+@39926 Alberto · アルベルト
+> 「ムッ!? 貴様、あの時の……」
+“Hm?! You're the one from back then...”
+
+@39927 Guerrilla · ゲリラ
+> 「いたぞ! こっちだ!!」
+“There he is! Over here!!”
+
+@39928 Schwarz · シュバルツ
+> 「さぁ、どうする、どうする、アルベルト!?」
+“So, what will you do, what will you do, Alberto?!”
+
+@39929 Alberto · アルベルト
+# 审校：原文两页为同一句，初稿第二页多加了引号；改为只在第一页开头和第二页结尾保留引号。
+> 「貴様のことは奴から聞いたわ。
+>  ここで貴様と戦うのは
+“I've heard about you from him. Fighting you here is not
+---
+>  賢いやり方ではない。さらばだ!」
+a wise move. Farewell!”
+
+@39930 Schwarz · シュバルツ
+> (行ってくれたか。
+>  ……この体も、もはや限界だ
+(He actually left. ...This body of mine is at its limit too.)
+---
+>  あの男と戦わずに済んだのは幸い
+>  だったな……)
+(I'm glad I didn't have to fight that man...)
+
+@39931 Alan · アラン
+> 「シュバルツ・ブルーダー!? なぜ
+>  ここに……いや、それよりも将軍は!?」
+“Schwarz Bruder?! Why are you here... no, more importantly, where's the General?!”
+
+@39932 Schwarz · シュバルツ
+> 「…………ここだ」
+“...Over here.”
+
+@39933 Alan · アラン
+> 「…………イゴール将軍」
+“...General Igor.”
+
+@39934 Igor · イゴール
+# 审校：原文三页为同一句，初稿每页都加了引号；改为只在第一页开头和第三页结尾保留引号。
+> 「アランか……わずかな間に、よくそこまで
+>  成長したな……もはや、この父を
+“Alan... in such a short time, you've grown so much... you've already
+---
+>  乗り越えてしまった……。
+>  結局……お前の戦いもまた
+surpassed this father of yours... In the end... your way of fighting was also
+---
+>  正しかったということか……」
+the right one, it seems...”
+
+@39935 Alan · アラン
+> 「やめてくれ! あんたの口から、そんな
+>  弱気な言葉は聞きたくない!」
+“Stop it! I don't want to hear such weak words from your mouth!”
+
+@39936 Igor · イゴール
+# 审校：原文两页为同一句，初稿每页都加了引号；改为只在第一页开头和第二页结尾保留引号。
+> 「アラン、ほかの多くの子供たちと
+>  ともに、この世界を、地球を
+“Alan, along with the many other children, protect this world, protect the Earth...
+---
+>  守ってくれ……地球の未来を……
+>  く……」
+protect the future of the Earth... ugh...”
+
+@39937 Schwarz · シュバルツ
+> 「……すまぬ、私がもう少し早ければ
+>  よかったのだが」
+“...I'm sorry. If only I had been a little faster.”
+
+@39938 Alan · アラン
+# 审校：原文两页为同一句，初稿每页都加了引号；改为只在第一页开头和第二页结尾保留引号。
+> 「いや………さらば、最後の将軍
+>  ロス・イゴール……さらば……親父
+“No... Farewell, the last General, Ross Igor... Farewell... Dad.
+---
+>  あなたの遺志は若者たちが
+>  引き継ぎ、戦っていくでしょう……」
+Your will shall be carried on by the young, and they will keep fighting...”
+
+@39939 Shinobu · 忍
+> 「アラン! どうした!?」
+“Alan! What happened?!”
+
+@39940 Alan · アラン
+> 「基地は無事だ。安心しろ」
+“The base is safe. Don't worry.”
+
+@39941 Shinobu · 忍
+> 「将軍は!?」
+“And the General?!”
+
+@39942 Alan · アラン
+> 「……俺たちの親父は、親父らしい
+>  立派な最期だった。本望だろう」
+“...Our father met a splendid end, worthy of him. He got what he wanted.”
+
+@39943 Shinobu · 忍
+> 「なっ……」
+“What...”
+
+@39944 Sara · 沙羅
+> 「なんだって!?」
+“What did you say?!”
+
+@39945 Shinobu · 忍
+> 「くっ……ちっきしょおぉぉぉぉぉーっ!!」
+“Ngh... damn it aaaaall!!”
+
+@39946 Computer · コンピュータ
+> 「97%……98%……99%……
+>  プラズマ温度臨界!」
+“97%... 98%... 99%... Plasma temperature critical!”
+
+@39947 Dr. Hazuki · 葉月博士
+> 「よし……頼むぞ、竜よ。
+>  ガンドール、発動!」
+“All right... I'm counting on you, dragon. Gandor, activate!”
+
+@39948 Bright · ブライト
+> 「な、なんだこれは……博士!?」
+“Wh-what is this... Doctor?!”
+
+@39949 Masato · 雅人
+> 「ひょっとして基地に事故でも!?」
+“Could there be an accident at the base?!”
+
+@39950 Reika · レイカ
+> 「これは……! 気をつけて、
+>  何かが浮上してくるわ!」
+“This is...! Be careful, something is surfacing!”
+
+@39951 Banjo · 万丈
+> 「なんだって!?」
+“What did you say?!”
+
+@39952 Dr. Hazuki · 葉月博士
+# 审校：原文三页为同一句，初稿每页都加了引号；改为只在第一页开头和第三页结尾保留引号。
+> 「みんな、よく守ってくれた。これが
+>  イゴール将軍が命をかけ……
+“Everyone, you defended it well. This is what General Igor staked his life on...
+---
+>  そして、君たちが守ってくれた、
+>  獣戦機基地の新しい姿……
+and what you all protected—the new form of the Cyber Beast Force Base...
+---
+>  ガンドールだ」
+Gandor.”
+
+@39953 Alan · アラン
+> 「ガンドール……これが親父の
+>  遺産か……」
+“Gandor... so this is my father's legacy...”
+
+@39954 Shinobu · 忍
+> 「基地? これが俺たちの
+>  獣戦機基地だってのか!?」
+“The base? You're saying this is our Cyber Beast Force Base?!”
+
+@39955 Bright · ブライト
+> 「事情はあとで聞かせていただき
+>  ましょう。全員、帰還しろ」
+“We'll hear the details later. Everyone, return to the ship.”
+
+@39956 Vega Soldier · ベガ星兵
+> 「奴ら引きあげるぞ。よし、一気に
+>  あの要塞を攻撃だ!」
+“We're pulling back. All right, hit that fortress all at once!”
+
+@39957 Beltorchika · ベルトーチカ
+> 「艦長!!」
+“Captain!!”
+
+@39958 Bright · ブライト
+> 「しまった、まだ残っていたのか!?」
+“Damn, there were still some left?!”
+
+@39959 Dr. Hazuki · 葉月博士
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、ここはまかせてほしい。
+>  このガンドールの力の一端を
+“Captain Bright, leave this to me. I'll show you a glimpse of the Gandor's power.
+---
+>  お目にかけましょう。ガンドール砲、
+>  発射スタンバイ!」
+Gandor Cannon, firing standby!”
+
+@39960 Bright · ブライト
+> 「……わかりました」
+“...Understood.”
+
+@39961 Dr. Hazuki · 葉月博士
+> 「……ガンドール砲、発射!」
+“...Gandor Cannon, fire!”
+
+@39962 Vega Soldier · ベガ星兵
+> 「だ、だめだ、逃げろーッ!!」
+“N-no, run!!”
+
+@39963 Dr. Hazuki · 葉月博士
+> 「イゴール将軍……あなたの竜は
+>  天に昇りましたよ……」
+“General Igor... your dragon has ascended to the heavens...”
+
+@39964 Quattro · クワトロ
+> 「そうか……イゴール将軍も
+>  なくなられたか……」
+“I see... so General Igor has passed away as well...”
+
+@39965 Alan · アラン
+> 「ああ……だが、悲しんでいるヒマはない。
+>  我々にできるのは、彼の遺志を
+“Yes... but there's no time to grieve. All we can do is hold his dying wish
+---
+>  胸に抱き、戦い続けることだけだ。
+>  このガンドールとともに」
+in our hearts and keep fighting. Together with this Gandor.”
+
+@39966 Bright · ブライト
+> 「葉月博士、
+>  この移動要塞は完全ではないと
+“Dr. Hazuki, you said this mobile fortress isn't
+---
+>  いっていたようだが……?」
+complete, didn't you...?”
+
+@39967 Dr. Hazuki · 葉月博士
+> 「うむ……現状では、このガンドールの
+>  エネルギーは180日と3日しか
+“Indeed... as things stand, this Gandor's energy will only last
+---
+>  もたないのだ」
+180 days and 3 more.”
+
+@39968 Garrison · ギャリソン
+> 「約半年でございますな」
+“About half a year, then.”
+
+@39969 Dr. Hazuki · 葉月博士
+> 「しかし、戦闘消費はかなり大きい
+>  実際には、その半分程度と
+“However, combat consumption is considerable. In practice, you'd best assume
+---
+>  見ていた方がいいだろう」
+it's about half that.”
+
+@39970 Banjo · 万丈
+> 「いまのところはそれで十分さ。
+>  いまを乗り越えられなければ
+“For now, that's plenty. If we can't get through today,
+---
+>  半年が一年でも変わりはない」
+half a year or a full year makes no difference.”
+
+@39971 Bright · ブライト
+> 「そうだな」
+“True enough.”
+
+@39972 Dr. Hazuki · 葉月博士
+> 「どうした、藤原」
+“What's wrong, Fujiwara?”
+
+@39973 Shinobu · 忍
+> 「別に……何でもねぇよ」
+“Nothing... it's nothing.”
+
+@39974 Dr. Hazuki · 葉月博士
+> 「いつまでも落ち込んでいては、将軍
+>  に顔むけできんぞ
+“If you keep moping forever, you won't be able to face the General.
+---
+>  せっかくダンクーガにも新しい武器が
+>  追加されるというのに。しっかりしろ」
+And here the Dancouga is about to get a new weapon. Pull yourself together.”
+
+@39975 Shinobu · 忍
+> 「ダンクーガの新しい武器?
+>  博士、そいつはいったい……」
+“A new weapon for the Dancouga? Doctor, what on earth is it...”
+
+@39976 Dr. Hazuki · 葉月博士
+> 「うむ、ガンドール砲のエネルギーを
+>  利用するものだ。断空剣を
+“Yes, it uses the Gandor Cannon's energy. Think of it as an upgraded
+---
+>  パワーアップしたものと考えればいい」
+version of the Dancouken.”
+
+@39977 Masato · 雅人
+> 「断空剣をパワーアップ!?」
+“An upgraded Dancouken?!”
+
+@39978 Shinobu · 忍
+> 「そいつはすごそうだな。それも……将軍
+>  が俺たちに残してくれたものってわけか」
+“That sounds amazing. So that's... another thing the General left for us.”
+
+@39979 Dr. Hazuki · 葉月博士
+> 「そうだ」
+“That's right.”
+
+@39980 Shinobu · 忍
+> 「わかったよ、博士。将軍の死を
+>  ムダにしないために、そいつで
+“Got it, Doctor. So the General's death won't be in vain, I'll use it to
+---
+>  片っ端から敵をぶった切ってやるぜ」
+cut down every last enemy in my path.”
+
+@39981 Banjo · 万丈
+> 「ああ、おつかれさま、デューク、マリアも。
+>  ん? どうかしたのか?」
+“Yeah, good work, Duke, and you too, Maria. Hm? What's the matter?”
+
+@39982 Maria · マリア
+> 「ほら、キリカ」
+“Come on, Kirika.”
+
+@39983 Kirika · キリカ
+> 「…………」
+“...”
+
+@39984 Quattro · クワトロ
+> 「その娘は……?」
+“And that girl is...?”
+
+@39985 Daisuke · 大介
+> 「頼みがあります。彼女も一緒に
+>  連れて行ってほしいのです。いろいろと
+“I have a request. I want you to take her along with us. It seems she was
+---
+>  複雑な事情で攻撃隊に
+>  加わっていたようですが
+caught up in complicated circumstances and ended up with the attack force, but
+---
+>  平和を望む優しい娘です」
+she's a gentle girl who wishes for peace.”
+
+@39986 Quattro · クワトロ
+> 「ふむ……」
+“Hmm...”
+
+@39987 Banjo · 万丈
+> 「いいじゃないか。
+>  ようこそ{HeroMech}へ
+“Why not? Welcome aboard the {HeroMech},
+---
+>  お嬢さん。僕は万丈、
+>  破嵐万丈だ」
+young lady. I'm Banjo—Banjo Haran.”
+
+@39988 Maria · マリア
+> 「じゃあ、いいのね!? やったぁ!」
+“Then it's all right?! Yay!”
+
+@39989 Alan · アラン
+> 「おい、万丈」
+“Hey, Banjo.”
+
+@39990 Banjo · 万丈
+> 「大丈夫さ。
+>  いちおう、みんなにも確認してみるが
+“It'll be fine. I'll check with everyone just in case, but
+---
+>  誰も、反対はしないだろう」
+no one's going to object.”
+
+@39991 Bright · ブライト
+> 「それはそうかもしれんが……まぁいい。
+>  マリア、面倒は君が見てやってくれ」
+“That may be so... well, fine. Maria, you look after her.”
+
+@39992 Maria · マリア
+> 「はい! いこっ、キリカ」
+“Yes! Let's go, Kirika.”
+
+@39993 Kirika · キリカ
+> 「あの……よろしくお願いします」
+“Um... pleased to meet you all.”
+
+@39994 Sai Saici · サイ・サイシー
+> 「覆面のあんちゃん、ひさしぶりじゃん。
+>  生きてるとは思わなかったぜ」
+“Hey, masked guy, long time no see. I didn't think you were still alive.”
+
+@39995 Domon · ドモン
+> 「シュバルツ……生きていたなら、なぜ
+>  今まで出てこなかったんだ!?」
+“Schwarz... if you were alive, why didn't you show yourself until now?!”
+
+@39996 Schwarz · シュバルツ
+> 「私にも事情というものがあるのだ、
+>  ドモン。だが、そんなことはどうでもいい
+“I have my reasons too, Domon. But that doesn't matter now.
+---
+>  ドモン、デビルガンダムが再び
+>  目覚めようとしている
+Domon, the Dark Gundam is about to awaken once more.
+---
+>  止めなければならん」
+We must stop it.”
+
+@39997 Domon · ドモン
+> 「な……なんだと!?」
+“Wha... what did you say?!”
+
+@39998 Ryoma · リョウ
+# 审校：修正主谓一致：the Devil Gundam 是单数，改为 Wasn't。
+> 「そんな! デビルガンダムはドモンたちが
+>  倒したはずじゃなかったのか!?」
+“No way! Wasn't the Dark Gundam supposed to have been destroyed by Domon and the others?!”
+
+@39999 Ark · アーク（按段落 3DD1）
+> 「そうだ。確かに俺たちはあの時、
+>  デビルガンダムを倒したはずだ」
+“That's right. We did destroy the Dark Gundam back then, no question.”
+
+@40000 Selain · セレイン（按段落 3DD2）
+> 「ああ。確かにあの時、あの化け物は
+>  倒したはずだったがな」
+“Yeah. We did destroy that monster back then, no question.”
+
+@40001 Brad · ブラッド（按段落 3DD3）
+# 审校：原文“奴”指デビルガンダム，用 him 比 that thing 更贴切且保持口语感。
+> 「間違いねぇ。あんときゃ、確かに
+>  奴を倒したはずだ」
+“No doubt about it. We sure as hell destroyed him back then.”
+
+@40002 Manami · マナミ（按段落 3DD4）
+> 「そうよ。確かにあの時、あたしたちは
+>  デビルガンダムを倒したはずだわ」
+“That's right. We did destroy the Dark Gundam back then, no question.”
+
+@40003 Schwarz · シュバルツ
+> 「相当のダメージは与えた
+>  ようだが、機能停止まで
+“It seems we dealt it considerable damage, but not enough to
+---
+>  至らなかったということだ。
+>  どうやら自己再生したようだな」
+stop its functions. Apparently it regenerated itself.”
+
+@40004 George · ジョルジュ
+> 「ちょっと待ってください。なぜ、あなたは
+>  それを知っているのです。これまでも
+“Wait a moment. How do you know that? It's been the same all along—
+---
+>  そうでしたが、デビルガンダムが出る時
+>  には、いつもあなたがいる
+whenever the Dark Gundam appears, you're always there.
+---
+>  偶然では通りませんよ」
+That's too much to be a coincidence.”
+
+@40005 Benkei · ベンケイ
+> 「そういやそうだな。どうしてなんだ?」
+“Now that you mention it, yeah. How come?”
+
+@40006 Domon · ドモン
+> 「はっきりさせてもらおう、シュバルツ。
+>  あんたは俺の恩人だ
+“Let's have it straight, Schwarz. You're my benefactor.
+---
+>  疑いたくはないが……」
+I don't want to doubt you, but...”
+
+@40007 Schwarz · シュバルツ
+> 「ドモン……すまぬ、今はいえんのだ。だが
+>  私は君たちの敵ではない。それだけは
+“Domon... forgive me, I can't say it now. But I am not your enemy. That much,
+---
+>  信じてくれ。いずれ必ず事情は
+>  話す」
+please believe. I will tell you everything someday.”
+
+@40008 Domon · ドモン
+> 「……わかったよ。あんたを信じよう。いま
+>  は保留にしておく。それでいいんだな?」
+“...All right. I'll believe you. We'll leave it for now. That's fine with you?”
+
+@40009 Schwarz · シュバルツ
+> 「うむ」
+“Yes.”
+
+@40010 Rain · レイン
+> (なんて悲しい、そして優しい瞳を
+>  しているのかしら……あの瞳……
+(What sad, gentle eyes he has... Those eyes...
+---
+>  確かどこかで……)
+I'm sure I've seen them somewhere before...)
+
+@40011 George · ジョルジュ
+> 「しかたありませんね。まあ、私もあなたが
+>  敵だといっているわけではないのです
+“It can't be helped. Well, I'm not saying you're our enemy either.
+---
+>  いずれ事情を話していただける
+>  のならば、それでいいでしょう」
+If you'll tell us everything someday, then that's fine.”
+
+@40012 Rain · レイン
+> (シュバルツ・ブルーダー……
+>  もしかして、あの人は……でも
+(Schwarz Bruder... Could that man be... But
+---
+>  そんなことありうるの……?)
+could such a thing really be possible...?)
+
+@40013 Killy · キリー
+# 审校：原文“兄弟”泛指兄弟姐妹，用 siblings 更准确。
+> 「……キリー・ギャグレー作、
+>  『ブロンクスの狼』、第1章
+“...'The Wolf of the Bronx' by Killy Gagley, Chapter 1.
+---
+>  ……俺には何もなかった。親も
+>  兄弟も友だちも何もなかった
+...I had nothing. No parents, no siblings, no friends, nothing.
+---
+>  ……んー、……えーい、ダメだ!
+>  書き直しだ!」
+...Hmm... ...Argh, no good! I'll rewrite it!”
+
+@40014 Shingo · 真吾
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“What, you haven't made any progress at all? I'm pretty sure you were saying
+# 草稿第 2 页：the same thing before you joined up with the 【主角机体名】.”
+> 「なんだ、全然進んでいないじゃないか
+>  確か、{HeroMech}に
+---
+>  合流する前にも同じようなことを
+>  いっていたぞ」
+
+@40015 Remy · レミー
+> 「ホントにもう……外に出て少し
+>  気分転換でもしてきたら
+“Honestly... Why don't you go outside and get some fresh air?
+---
+>  戦闘がおわるたびに続きを書くんだ
+>  とかいって、結局はいっつも
+You say you'll write more after every battle, but in the end it's always
+---
+>  書き直しだ、書き直しだって
+>  いってるんだもの。それを聞かされている
+rewrite this, rewrite that. And we're the ones who have to listen to it,
+---
+>  こっちの身にもなってよ」
+so spare a thought for us.”
+
+@40016 Killy · キリー
+> 「……そうか、気分転換もいいな。
+>  ここにはナイスなレディがたくさんいるしな
+“...You know, a change of pace might be nice. There are plenty of nice ladies here.
+---
+>  彼女らと素敵な時間を過ごす
+>  のも悪くない」
+Spending some lovely time with them wouldn't be bad either.”
+
+@40017 Shingo · 真吾
+> 「おっ、それなら俺もつきあうぜ」
+“Oh, then I'll come along too.”
+
+@40018 Killy · キリー
+> 「ついてくるのはかまわんが、
+>  さびしい思いをするのはそっちだぞ」
+“I don't mind you tagging along, but you're the one who'll end up feeling lonely.”
+
+@40019 Remy · レミー
+> 「ふたりとも好きにすればいいんじゃない
+>  こっちは静かになってたすかるわ」
+“You two can do whatever you like. It'll be quieter here, which suits me fine.”
+
+@40020 Quatre · カトル
+> 「怪物……ですか?」
+“A monster... you say?”
+
+@40021 Juzo · 十三
+> 「せや。ほんまの話やで。なんでも
+>  避難民が襲われとるゆう話や」
+“That's right. It's the honest truth. Word is the refugees are being attacked.”
+
+@40022 Duo · デュオ
+> 「ああ、それなら俺も聞いたぜ。なんでも
+>  ライオンみたいな奴だって話だけどな
+“Yeah, I heard about that too. They say it's something like a lion,
+---
+>  かなりの数の人間が
+>  襲われてるそうだ」
+and a good number of people have been attacked.”
+
+@40023 Elle · エル
+> 「なんなのよ、それ。なんだって地球に
+>  そんな奴がいるわけ?」
+“What is that supposed to be? Why would something like that be on Earth?”
+
+@40024 Chizuru · ちずる
+> 「問題はそこなのよ」
+“That's exactly the problem.”
+
+@40025 Kosuke · 小介
+> 「僕が聞いた話を分析した結果
+>  では、地球のものではないというのが
+“Based on my analysis of what I've heard, the most likely conclusion
+---
+>  いちばん有力です」
+is that it isn't from Earth.”
+
+@40026 Hyoma · 豹馬
+> 「ってことは……まさか
+>  異星人がらみってことか?」
+“Which means... don't tell me aliens are involved?”
+
+@40027 Kosuke · 小介
+> 「地上のあちこちに銀河帝国軍
+>  がいることを考えれば
+“Considering the Galactic Empire's forces are all over the surface,
+---
+>  ほぼ間違いないですよ」
+there's hardly any doubt.”
+
+@40028 Hyoma · 豹馬
+> 「なんて奴らだ。そういや奴らに負けた
+>  ら、モルモットとかって話もあったな
+“What a bunch. Come to think of it, there was talk that if you lose to them, you get turned into a guinea pig.
+---
+>  何か、おかしなことをやってやがるんだ」
+They're up to something strange, all right.”
+
+@40029 Chizuru · ちずる
+> 「いやな話だわ。その怪物をなんとか
+>  できないかしら」
+“What a nasty business. Can't we do something about that monster?”
+
+@40030 Juzo · 十三
+> 「よっしゃ。ほな、わいが艦長たちに
+>  聞いてきたるわ」
+“All right. Then I'll go ask the captains about it.”
+
+@40031 Bright · ブライト
+> 「トレーズ・クシュリナーダから
+>  通信だと!?」
+“A transmission from Treize Khushrenada?!”
+
+@40032 Banjo · 万丈
+> 「ほう、そいつは興味深いね」
+“Oh, now that's interesting.”
+
+@40033 Bunny · バニー
+> 「どうします?」
+“What shall we do?”
+
+@40034 Bright · ブライト
+> 「出してくれ」
+“Put it through.”
+
+@40035 Treize · トレーズ
+> 「ひさしぶりだね、{HeroMech}の
+>  諸君。君たちが健在で
+“It's been a while, everyone aboard the {HeroMech}. I'm glad to see
+---
+>  うれしく思う」
+you're all still alive and well.”
+
+@40036 Bright · ブライト
+> 「……何か?」
+“...What is it?”
+
+@40037 Treize · トレーズ
+> 「旧獣戦機基地が
+>  銀河帝国軍に攻撃され
+“I heard the Former Cyber Beast Force Base was attacked by the Galactic Empire's forces,
+---
+>  ロス・イゴール将軍が戦死されたと
+>  聞いた。まことに遺憾なことだ」
+and that General Ross Igor was killed in action. A truly regrettable thing.”
+
+@40038 Amuro · アムロ
+> 「別に将軍の死を悼むために
+>  わざわざ、連絡をつけてきたわけでは
+“You didn't go out of your way to contact us just to mourn the general,
+---
+>  ないのだろう? 用件をいってくれない
+>  か」
+did you? Tell us what you want.”
+
+@40039 Treize · トレーズ
+> 「君たちも現状は正しく認識して
+>  いることだと思う。OZは私が再び
+“I believe you correctly understand the situation as well. Even though I am once again
+---
+>  指揮しているとはいえ、かつてほどの
+>  力はない。そして銀河帝国軍は
+commanding OZ, it no longer has the strength it once did. And the Galactic Empire's forces have committed
+---
+>  地上から我々を一掃できるほど
+>  の戦力を投入している
+enough combat power to wipe us from the face of the Earth.
+---
+>  ロームフェラの本拠であり、貴族
+>  たちが守ってきた欧州もすでに
+Europe, the home base of Romefeller and the land the nobles have protected, has already
+---
+>  戦火に焼かれている」
+been scorched by the fires of war.”
+
+@40040 Bright · ブライト
+> 「何がいいたい」
+“What are you getting at?”
+
+@40041 Treize · トレーズ
+> 「いまOZは戦線を縮小し、
+>  どうにか戦いを維持している。が
+“Right now OZ is shrinking its front lines and somehow managing to keep the fight going. But
+---
+>  このままでは、やはりどうにもならない
+>  だろう。そうなる前に、私は最後の
+at this rate, it will still come to nothing. Before that happens, I intend to attempt one final
+---
+>  戦いを試みるつもりでいる。その前に
+>  もしも君たちが何か反抗作戦を
+battle. If you should carry out some kind of resistance operation before then,
+---
+>  するのであれば、こちらには協力する
+>  意思がある。それを伝えたかったのだ」
+I am willing to cooperate with you. That is what I wanted to tell you.”
+
+@40042 Banjo · 万丈
+> 「当然だな」
+“Of course you are.”
+
+@40043 Treize · トレーズ
+> 「そうだ。君たちとは敵対していたこと
+>  もあったが、求めるものの姿はそれほど
+“Indeed. We have been enemies at times, but what we seek is not so very
+---
+>  異なるものではない。ことに、人類の
+>  滅亡が、かかっているとあっては」
+different. Especially when the extinction of mankind is at stake.”
+
+@40044 Bright · ブライト
+> 「了解した。残念ながら
+>  今は我々にも有効な手段は
+“Understood. Unfortunately, at the moment we can't think of any effective means
+---
+>  思いつかない。だが何かあれば
+>  協力を頼もう」
+either. But if anything comes up, we'll ask for your cooperation.”
+
+@40045 Treize · トレーズ
+> 「それでいい。宇宙でもミリアルドと
+>  アクシズ軍が、銀河帝国軍に
+“That will do. In space as well, Milliardo and the Axis Forces continue
+---
+>  対し、交戦を続けている。
+>  いましばらくは、もちこたえるだろう
+to fight against the Galactic Empire's forces. They should hold out a while longer.
+---
+>  それでは諸君、健闘を祈る」
+Well then, gentlemen, I wish you good luck.”
+
+@40046 Eiji · エイジ
+> 「トレーズが……」
+“Treize...”
+
+@40047 Koji · 甲児
+> 「まったく、こんな状態だってのに、
+>  あいかわらずスカした奴だぜ」
+“Honestly, even in a situation like this, he's as cool and aloof as ever.”
+
+@40048 Sayaka · さやか
+> 「でも……思っていたよりも、もっと
+>  ひどい状態なのね……」
+“But... things are even worse than I thought...”
+
+@40049 Alan · アラン
+> 「ああ……地球はボロボロだな。たとえ
+>  万が一、銀河帝国軍を
+“Yeah... the Earth is a wreck. Even if, by some miracle, we could drive off the Galactic Empire's forces,
+---
+>  排除できたとしても、そのあとも
+>  楽ではあるまい」
+things won't be easy after that either.”
+
+@40050 Quattro · クワトロ
+> 「…………」
+“...”
+
+@40051 Amuro · アムロ
+> 「どうした、クワトロ大尉?」
+“What's wrong, Captain Quattro?”
+
+@40052 Quattro · クワトロ
+> 「いや、なんでもない。それで、我々は
+>  これからどうするのだ」
+“No, it's nothing. So then, what are we going to do now?”
+
+@40053 Kamille · カミーユ
+> 「梁山泊はどうなんです?」
+“What about Liangshan Po?”
+
+@40054 Banjo · 万丈
+> 「いや、ギャリソンがつかんだ情報
+>  では、どうやら梁山泊も
+“No, according to the information Garrison got, it seems Liangshan Po
+---
+>  攻撃されたらしい」
+was attacked as well.”
+
+@40055 Ginrei · 銀鈴
+> 「梁山泊まで!? では……」
+“Liangshan Po too?! Then...”
+
+@40056 Banjo · 万丈
+> 「中条長官たちは無事、脱出
+>  されたようだ。推測だが、おそらく
+“It seems Chief Chujo and the others escaped safely. This is only a guess, but they're probably
+---
+>  博士たちや大塚長官たちも
+>  一緒だろう」
+with the doctors and Chief Otsuka as well.”
+
+@40057 Ginrei · 銀鈴
+> 「そうですね。エキスパートたちがいれば、
+>  連絡はつけられたでしょう
+“I see. With the experts there, they should have been able to make contact.
+---
+>  気になるのはBF団の動きですね」
+What worries me is the BF Group's movements.”
+
+@40058 Reika · レイカ
+> 「なぜ異星人たちと一緒だったかは
+>  この際おいておきましょう
+“Let's set aside for now why they were with the aliens.
+---
+>  気になるのは、何かを探している
+>  らしいという点よ。梁山泊もそれで
+What bothers me is that they seem to be searching for something. It's possible that's why
+---
+>  攻撃された可能性があるわ」
+Liangshan Po was attacked too.”
+
+@40059 Boss · ボス
+> 「何かったって、想像もつかないだわさ」
+“I can't even imagine what it could be.”
+
+@40060 Beauty · ビューティ
+> 「そうよねぇ」
+“You're right.”
+
+@40061 Banjo · 万丈
+> 「確かに、それを考えていてもしかたが
+>  ない。どうだろう艦長、脱出した
+“True, there's no use mulling it over. What do you think, Captain? How about we try
+---
+>  博士たちと合流できないか
+>  試してみるというのは?」
+to rendezvous with the doctors who escaped?”
+
+@40062 Quattro · クワトロ
+> 「確かに彼らと合流できれば運用
+>  は楽になるが、探しまわっているうちに
+“If we could join up with them, operations would certainly be easier, but while we're searching around,
+---
+>  敵に攻撃されるぞ」
+the enemy will attack us.”
+
+@40063 Ginrei · 銀鈴
+> 「……梁山泊へ行ってみてください。
+>  もしかしたら何か、符丁が
+“...Please try going to Liangshan Po. There may be some kind of sign
+---
+>  残されているかもしれません」
+left behind.”
+
+@40064 Bright · ブライト
+> 「そうだな……みんなどうだ、それでいいか?」
+“I suppose so... What does everyone think? Is that all right with you?”
+
+@40065 Amuro · アムロ
+> 「ブライト、ドモンや豹馬たちの件は
+>  どうするんだ?」
+“Bright, what about Domon and Hyoma and the others?”
+
+@40066 Bright · ブライト
+> 「そうか、そうだったな」
+“Oh, right, that's true.”
+
+@40067 Eiji · エイジ
+> 「なんの話です?」
+“What are you talking about?”
+
+@40068 Bright · ブライト
+# 审校：补上第三页开头的连接词，使跨页句子更自然。
+> 「いや、シュバルツがいうには
+>  あのデビルガンダムが、また
+“Well, according to Schwarz, that Dark Gundam seems to have
+---
+>  復活しているらしい。ドモンたちは
+>  それを倒しに行くといっている
+revived again. Domon and the others say they're going to defeat it.
+---
+>  豹馬たちは避難民を襲っている
+>  という怪物をなんとかしたいとな」
+And Hyoma and his group want to do something about the monster attacking the refugees.”
+
+@40069 Alan · アラン
+> 「どちらも我々全員で動くほどでは
+>  ないと思うが……気にはなるな」
+“I don't think either is big enough for all of us to move on... but it does bother me.”
+
+@40070 Banjo · 万丈
+# 审校：将“そっち”明确译为“the other matter”，避免指代不清。
+> 「いま、この近辺には帝国軍は
+>  展開していないようだ。本隊は
+“Right now, the Imperial forces don't seem to be deployed in this area. The main force
+---
+>  このまま梁山泊へ向かい、
+>  そっちには分隊を向かわせるのが
+should head for Liangshan Po as is, and we should send a detachment to deal with the other matter,
+---
+>  いいんじゃないか? 全部まわっている
+>  余裕もない」
+don't you think? We don't have the leeway to cover everything.”
+
+@40071 Quattro · クワトロ
+> 「私もその意見には賛成だな。
+>  あまり手間はかけられん」
+“I agree with that opinion as well. We can't afford to waste too much effort.”
+
+@40072 Bright · ブライト
+> 「よし、ではそうしよう」
+“All right, then let's do that.”
+
+@40073 Kamille · カミーユ
+> 「{HeroNick}、どうするんだ?」
+“{HeroNick}, what are you going to do?”
+
+@40074 Amuro · アムロ
+# 审校：“What about you?” 与原文“君はどうする?”语气略有偏差，改为更直接的询问。
+> 「{HeroNick}、分隊のメンバーを決めて
+>  いるんだが、君はどうする?」
+“{HeroNick}, we're deciding on the detachment's members. What will you do?”
+
+@40075 Chibodee · チボデー
+> 「よう{HeroNick}、お前はどうするんだ?
+>  俺たちと一緒にくるのか?」
+“Hey, {HeroNick}, what are you going to do? Are you coming with us?”
+
+@40076 Simone · シモーヌ
+# 审校：统一“どうする”的译法，与 L8、L10 保持一致。
+> 「{HeroNick}、あんたはどうするの?
+>  アタシはこのまま残るつもりだけど」
+“{HeroNick}, what are you going to do? I'm planning to stay here.”
+
+@40077
+> *  本隊といく
+> *  ドモンたちといく
+> *  豹馬たちといく
+* Go with the main force
+* Go with Domon and the others
+* Go with Hyoma and the others
+
+@40078 Ark · アーク（按段落 3DD1）
+# 审校：“少し休まないと”语气更自然，改为“I need to get some rest”。
+> 「そうだな……このまま残って梁山泊
+>  に向かうよ。少し休まないと」
+“Yeah... I'll stay here and head for Liangshan Po. I need to get some rest.”
+
+@40079 Kamille · カミーユ
+# 审校：原文“体がもたない”指身体吃不消，改为更贴切的表达。
+> 「そりゃそうだ。ドモンたちと一緒じゃ
+>  体がもたないしな」
+“That figures. Your body won't hold up if you go with Domon and the others.”
+
+@40080 Selain · セレイン（按段落 3DD2）
+> 「私は残ります。今は銀河帝国
+>  軍と戦うのが最優先です
+“I'll stay. Right now, fighting the Galactic Empire is our top priority.
+---
+>  無駄はしたくありませんから」
+I don't want to waste any effort.”
+
+@40081 Amuro · アムロ
+> 「そうだな……いつまた敵と遭遇するか
+>  わからない。少し休んでおいた方が
+“Yeah... We never know when we'll run into the enemy again. It might be better
+---
+>  いいかもな」
+to get some rest.”
+
+@40082 Brad · ブラッド（按段落 3DD3）
+> 「悪いが今回はパスだ。デビルガンダム
+>  今回こそきっちりカタつけてきてくれよ」
+“Sorry, but I'll pass this time. Make sure you finish off the Dark Gundam for good this time.”
+
+@40083 Chibodee · チボデー
+> 「ああ、まかせな」
+“Yeah, leave it to me.”
+
+@40084 Manami · マナミ（按段落 3DD4）
+> 「そうねぇ、あたしもそうするわ。これからの
+>  銀河帝国軍との戦いのことを
+“Hmm, I'll do the same. Thinking about the battles with the Galactic Empire ahead,
+---
+>  考えるとね。今のうちに
+>  休んでおいた方がいいもの」
+it's better to rest while we can.”
+
+@40085 Simone · シモーヌ
+> 「そういうこと。そうときまったらローレンス
+>  にお茶でも入れてもらいましょ」
+“That settles it. Now that it's decided, let's have Lawrence make us some tea.”
+
+@40086 Ark · アーク（按段落 3DD1）
+> 「ドモンたちと一緒に行くことにするよ
+>  デビルガンダムはやはり放置できないし
+“I'll go with Domon and the others. We can't just leave the Dark Gundam alone,
+---
+>  ここまで関わった以上はさ」
+not after getting involved this far.”
+
+@40087 Kamille · カミーユ
+> 「そうか。あの連中につられて
+>  無茶はするなよ」
+“I see. Don't let those guys drag you into doing anything reckless.”
+
+@40088 Ark · アーク（按段落 3DD1）
+> 「それは、わかってる」
+“I know that.”
+
+@40089 Selain · セレイン（按段落 3DD2）
+> 「そうですね……ドモンたちと一緒に
+>  行きましょう」
+“You're right... Let's go with Domon and the others.”
+
+@40090 Amuro · アムロ
+# 检查提示：未用必用译名：ドモン→Domon
+> 「デビルガンダムか……ドモンたちだけだと
+>  暴走する心配もあった
+“The Dark Gundam, huh... I was worried they might go out of control on their own,
+---
+>  君が行ってくれるなら大丈夫だな」
+but if you're going, it should be fine.”
+
+@40091 Selain · セレイン（按段落 3DD2）
+> 「どうでしょうか。頭に血がのぼると人
+>  のいうことを聞きませんからね、彼らは」
+“I wonder. Once their blood's up, they don't listen to anyone.”
+
+@40092 Amuro · アムロ
+> 「はははっ、まかせるよ。
+>  無理はしないでくれ」
+“Hahaha, I'll leave it to you. Don't push yourself too hard.”
+
+@40093 Selain · セレイン（按段落 3DD2）
+> 「はい」
+“Yes.”
+
+@40094 Brad · ブラッド（按段落 3DD3）
+> 「フッ、当然だ。今度こそ、ケリを
+>  つけてやろうぜ」
+“Heh, of course. This time we'll settle it for sure.”
+
+@40095 Chibodee · チボデー
+> 「ああ。奴がいる限り、異星人との
+>  戦いに集中できないからな」
+“Yeah. As long as he's around, we can't focus on fighting the aliens.”
+
+@40096 Manami · マナミ（按段落 3DD4）
+> 「あたしは……ドモンたちと行くことに
+>  するわ」
+“I'll... go with Domon and the others.”
+
+@40097 Simone · シモーヌ
+> 「ちょっと、本気? ま、しかたないわね
+>  あんな連中と一緒で、あんまり
+“Wait, are you serious? Well, I suppose there's no helping it. Going with those guys,
+---
+>  無茶はしないでちょうだい」
+don't do anything too reckless.”
+
+@40098 Manami · マナミ（按段落 3DD4）
+> 「わかってるわ。大丈夫よ」
+“I know. I'll be fine.”
+
+@40099 Simone · シモーヌ
+> 「ホントにそうだといいんだけど……」
+“I hope you really will be...”
+
+@40100 Ark · アーク（按段落 3DD1）
+> 「豹馬たちと一緒に行くよ。
+>  避難民をねらって襲うのは
+“I'll go with Hyoma and the others. I can't forgive anyone who attacks refugees,
+---
+>  許せないし。それに、それほど
+>  大変なことにもならないだろう」
+and it shouldn't turn out to be that big a deal anyway.”
+
+@40101 Kamille · カミーユ
+> 「そうか。気をつけてな」
+“I see. Be careful.”
+
+@40102 Ark · アーク（按段落 3DD1）
+> 「わかってるさ」
+“I know.”
+
+@40103 Selain · セレイン（按段落 3DD2）
+> 「そうですね……豹馬たちと一緒に
+>  行きましょう。異星人がいったい
+“You're right... Let's go with Hyoma and the others. I'm curious about what the aliens
+---
+>  何をやっているのか、興味があります」
+are actually up to.”
+
+@40104 Amuro · アムロ
+> 「そうか。わかった、気をつけてな」
+“I see. Understood, be careful.”
+
+@40105 Selain · セレイン（按段落 3DD2）
+> 「はい」
+“Yes.”
+
+@40106 Brad · ブラッド（按段落 3DD3）
+> 「いや、俺は豹馬たちと一緒に
+>  行く。異星人どもが何を
+“No, I'll go with Hyoma and the others. I don't know what those aliens
+---
+>  企んでやがるのか知らんが、
+>  それぐらいは邪魔してやるさ
+are plotting, but I'll at least get in their way.
+---
+>  デビルガンダムも気にはなるがな」
+I'm worried about the Dark Gundam too, though.”
+
+@40107 Chibodee · チボデー
+> 「なるほどな。わかった。デビルガンダムは
+>  俺たちが倒す。安心しな」
+“I see. Understood. We'll take down the Dark Gundam. Don't worry.”
+
+@40108 Brad · ブラッド（按段落 3DD3）
+> 「フッ、そっちはまかせるぜ、
+>  チボデー・クロケット」
+“Heh, I'll leave that to you, Chibodee Crocket.”
+
+@40109 Manami · マナミ（按段落 3DD4）
+> 「そうね……あたしは豹馬たちと行くわ
+>  避難民をねらって襲うなんて
+“Right... I'll go with Hyoma and the others. Attacking refugees
+---
+>  絶対、許せないもの」
+is absolutely unforgivable.”
+
+@40110 Simone · シモーヌ
+> 「フフ、あなたがそういう時は何をいって
+>  も無駄だわね。わかったわ
+“Heh heh, when you're like this, there's no point saying anything. All right,
+---
+>  気をつけてね」
+take care.”
+
+@40111 Manami · マナミ（按段落 3DD4）
+> 「ありがとう、シモーヌ」
+“Thank you, Simone.”

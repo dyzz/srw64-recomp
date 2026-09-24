@@ -1,0 +1,120 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9561 Gildrome · ギルドローム
+> 「かまわん! つっこめ!」
+“I don't care! Charge in!”
+
+@9562 Gildrome · ギルドローム
+> 「ケダモノどもを叩きつぶせぇ!」
+“Crush those beasts!”
+
+@9563 Gildrome · ギルドローム
+> 「蹴散らしてしまえ!」
+“Wipe them out!”
+
+@9564 Gildrome · ギルドローム
+> 「今まさに地球の命運が決まった
+>  のだ!」
+“Earth's fate is decided this very moment!”
+
+@9565 Gildrome · ギルドローム
+> 「すべてはゾルバドス星の繁栄のため!」
+“All for the prosperity of Planet Zorbados!”
+
+@9566 Gildrome · ギルドローム
+> 「死ぬがいい!」
+“Just die!”
+
+@9567 Gildrome · ギルドローム
+> 「悪夢をみせてやろう!」
+“I'll give you a nightmare!”
+
+@9568 Gildrome · ギルドローム
+> 「愚か者め!」
+“Fools!”
+
+@9569 Gildrome · ギルドローム
+> 「な、なんだとぉぉ! ぐうわぁぁぁぁぁ!」
+“W-what?! Guwaaaaaaah!”
+
+@9570 Gildrome · ギルドローム
+> 「帝王様、どうかお許しを……」
+“Your Majesty, please forgive me...”
+
+@9571 Gildrome · ギルドローム
+> 「ぐうぅっ、またしてもぉ……」
+“Guh, again...”
+
+@9572 Gildrome · ギルドローム
+> 「うぬぬ、こうなったら一刻の猶予も
+>  ならん!」
+“Ngh, at this rate there's not a moment to lose!”
+
+@9573 Gildrome · ギルドローム
+> 「バ、バカな、なぜこんなことに……」
+“I-impossible, why did this happen...”
+
+@9574 Gildrome · ギルドローム
+> 「な、なんだと!?」
+“W-what?!”
+
+@9575 Gildrome · ギルドローム
+> 「くっ……おのれ! 許さんぞ!」
+“Ngh... why you! I won't forgive this!”
+
+@9576 Gildrome · ギルドローム
+> 「ぐっ、なかなかやる。だが!」
+“Guh, you're good. But!”
+
+@9577 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「くっ、未開の星のマシーンとしては
+>  なかなかやるな」
+“Guh, not bad for a machine from an uncivilized planet.”],”
+
+@9578 Gildrome · ギルドローム
+> 「ええーい、この程度のことで!」
+“Gah, is this all you've got!”
+
+@9579 Gildrome · ギルドローム
+> 「愚かな。そんなものは効かぬわ!」
+“Foolish. That won't work on me!”
+
+@9580 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「ヒャッハッハ、たいしたものよのぉ」
+“Hyahahaha, impressive indeed.”],”
+
+@9581 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「フッフッフッフッ、愚か者め」
+“Heh heh heh heh, you fool.”],”
+
+@9582 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「フッフッ、ムダなあがきを」
+“Heh heh, what a pointless struggle.”],”
+
+@9583 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「あたらぬなぁ」
+“You missed.”],”
+
+@9584 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「効果が現れたか」
+“So it's taken effect.”],”
+
+@9585 Gildrome · ギルドローム
+> 「ククククッ、効かぬ、効かぬわ!」
+“Kukukuku, it doesn't work, it doesn't work at all!”
+
+@9586 Gildrome · ギルドローム
+> 「な、なんだとぉ!
+>  エネルギーがないというのか!?」
+“W-what?! You mean there's no energy?!”
+
+@9587 Gildrome · ギルドローム
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「ぬぅ、こざかしい真似を」
+“Ngh, such a clever trick.”],”

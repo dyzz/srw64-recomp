@@ -1,0 +1,1022 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@24558 Beltorchika · ベルトーチカ
+> 「いよいよ宇宙に来たわね、アムロ」
+“So we've finally made it to space, Amuro.”
+
+@24559 Amuro · アムロ
+> 「……ああ」
+“...Yeah.”
+
+@24560 Beltorchika · ベルトーチカ
+> 「どうしたの?」
+“What's wrong?”
+
+@24561 Amuro · アムロ
+> 「……なんでもない。ごめん、部屋に
+>  もどるよ」
+“...It's nothing. Sorry, I'm going back to my room.”
+
+@24562 Beltorchika · ベルトーチカ
+> 「え……? あ、ちょっとアムロっ!」
+“Huh...? Ah, wait, Amuro!”
+
+@24563 Beltorchika · ベルトーチカ
+> 「アムロ……なにか様子がおかしいわ」
+“Amuro... something's off with him.”
+
+@24564 Quattro · クワトロ
+> 「待ちたまえ。彼はひとりになりたがって
+>  いる。放っておいたほうがいい」
+“Wait. He wants to be alone. It's best to leave him be.”
+
+@24565 Beltorchika · ベルトーチカ
+> 「なによ、あなたには関係のないことで
+>  しょ! これは私とアムロの問題だわ」
+“What's it to you?! This is between me and Amuro!”
+
+@24566 Quattro · クワトロ
+> 「ベルトーチカ、人の心の中に踏み
+>  込むには、それ相応の資格がいる」
+“Beltorchika, stepping into someone's heart requires a certain qualification.”
+
+@24567 Beltorchika · ベルトーチカ
+> 「あたしには、その資格があるつもりです
+>  アムロッ!」
+“I believe I have that qualification, Amuro!”
+
+@24568 Quattro · クワトロ
+# 审校：Lalah 的通行译名是 Lalah，初稿误作 Lalla。
+> (……死んだ者に会えるわけがないと
+>  思いながら、どこかで信じている
+(...While telling myself there's no way I could meet the dead, somewhere I still believe it.
+---
+>  だからララァの死んだこの宇宙が
+>  恐くなる。アムロ……生きている間に
+That's why this space where Lalah died frightens me. Amuro... while we're alive,
+---
+>  生きている人間のするべきことがある
+>  それをすることが、死んだ者への
+there are things the living must do. And doing them can also serve as an offering
+---
+>  手向けにもなるのだ……)
+to the dead...)
+
+@24569 Astonaige · アストナージ
+> 「どうだ?」
+“How's it look?”
+
+@24570 Shirley · シャリー
+# 审校：“list up”是日式英语，改为自然的 list。
+> 「やっぱりダメだわ。やり直さないと。
+>  ジャネット、該当する機体と
+“It's no good after all. We'll have to redo it. Janet, list the units involved and
+---
+>  問題点をリストアップして。
+>  レインはリストのチェックを頼むわ」
+the problem points. Rain, I want you to check the list.”
+
+@24571 Janet · ジャネット
+> 「すぐ出すわ、ちょっと待って」
+“I'll have it out right away, just a moment.”
+
+@24572 Astonaige · アストナージ
+> 「やっぱりダメかぁ。十分なテストが
+>  できなかったから、しかたないといえば
+“No good after all, huh. We couldn't do enough testing, so I suppose it can't be helped,
+---
+>  しかたないんだが……」
+but still...”
+
+@24573 Rain · レイン
+> 「えっ!? ジャネット、これ全部そう
+>  なの? アストナージさん、これ、かなり
+“What?! Janet, all of these? Astonaige, this is going to take quite a
+---
+>  時間かかりますよ」
+lot of time.”
+
+@24574 Astonaige · アストナージ
+> 「あ～、やっぱりそうかぁ……」
+“Ah, figures...”
+
+@24575 Chibodee · チボデー
+> 「お前ら、何騒いでんだよ。
+>  シャリー、どうした?」
+“What're you all making a fuss about? Shirley, what's going on?”
+
+@24576 Shirley · シャリー
+> 「あ、チボデー。宇宙戦に対応して
+>  ない機体の改修が、
+“Oh, Chibodee. The refits for units that aren't set up for space combat
+---
+>  十分じゃなかったのよ」
+weren't sufficient.”
+
+@24577 Chibodee · チボデー
+> 「なんだそりゃ。おいおい、
+>  しっかりしてくれよ」
+“What's that supposed to mean? Hey, hey, get it together.”
+
+@24578 Astonaige · アストナージ
+> 「地上で、設備もなくて、そんなに
+>  完全にできるわけないだろ
+“On the ground, without the facilities, there's no way to do it that perfectly.
+---
+>  無重力での使用なんて想定
+>  されてないんだ
+They were never designed for use in zero gravity.
+---
+>  姿勢制御用のバーニアの
+>  コントロール系だって……」
+And the control systems for the attitude-control verniers...”
+
+@24579 Rain · レイン
+> 「システムソフトの書き換えで、
+>  どこまでAMBACに対応できるかも
+“How far we can handle AMBAC just by rewriting the system software is
+---
+>  問題よね……」
+another problem...”
+
+@24580 Janet · ジャネット
+> 「それにしたって、シミュレート用のデータ
+>  が足りなすぎるわ。ソフトウェア側で
+“Even so, there's way too little data for simulation. If we're going to handle it on the
+---
+>  対応させるなら……」
+software side...”
+
+@24581 Chibodee · チボデー
+> 「…………」
+“...”
+
+@24582 Astonaige · アストナージ
+> 「なるほど、つまりそういうことか。
+>  だとすると生命維持システムが……」
+“I see, so that's what it comes down to. In that case, the life-support system...”
+
+@24583 Rain · レイン
+> 「じゃ、リスクマネージメントについては……」
+“Then, as for risk management...”
+
+@24584 Shirley · シャリー
+> 「でも、結局最後の部分は、
+>  腕でカバーしてもらわないと……
+“But in the end, the last part will have to be covered by skill...
+---
+>  あらチボデー、まだいたの?」
+Oh, Chibodee, you're still here?”
+
+@24585 Chibodee · チボデー
+> 「……あー……とにかく、がんばってくれや」
+“...Uh... anyway, do your best.”
+
+@24586 Bright · ブライト
+> 「そうか、スウィートウォーターは、まだ
+>  無事か……」
+“I see, so Sweetwater is still safe...”
+
+@24587 Ryoma · リョウ
+> 「なんです、そのスウィートウォーターって
+>  いうのは?」
+“What is this Sweetwater you're talking about?”
+
+@24588 Quattro · クワトロ
+> 「ジオン独立戦争の後、
+>  つまり帝国の侵攻の前だが
+“It's a colony prepared for housing refugees after the Zeon Independence War,
+---
+>  難民収容用として用意された
+>  コロニーだ。戦争で半壊した
+that is, before the Empire's invasion. It was made by piecing together
+---
+>  コロニーを、継ぎ合わせてつくったもの
+>  でな。当時の連邦が、いかに
+colonies half-destroyed in the war. It shows all too well how little the Federation
+---
+>  宇宙移民者のことを考えていな
+>  かったというのが、よくわかる」
+of those days thought about the space colonists.”
+
+@24589 Bright · ブライト
+> 「かつて解放戦線が連絡をつける
+>  ことのできた、唯一のコロニーだ
+“It's the only colony the Liberation Front was ever able to make contact with.
+---
+>  同志も多い。OZに対しても
+>  警戒を解いていないようだな」
+There are many comrades there. It seems they haven't let their guard down against OZ either.”
+
+@24590 Koji · 甲児
+> 「そりゃいいや。じゃオレたちはとりあえず
+>  そこへ行くってことか」
+“That's good. So for now, we head there, right?”
+
+@24591 Bright · ブライト
+> 「そういうことになるな」
+“That's how it works out, yes.”
+
+@24592 Sayaka · さやか
+> 「でも宇宙で私たちが頼れるのって、
+>  そこだけなんですか?」
+“But is that really the only place we can rely on in space?”
+
+@24593 Bright · ブライト
+> 「いや……他にもあることはあるんだが、
+>  所在があきらかではない」
+“No... there are others, but their whereabouts aren't clear.”
+
+@24594 Amuro · アムロ
+> 「そうか……ラビアンローズか」
+“I see... La Vie en Rose, huh.”
+
+@24595 Shinobu · 忍
+> 「はぁ? 場所がわからねぇって、
+>  コロニーじゃないのかよ」
+“Huh? You don't know where it is? Isn't it a colony?”
+
+@24596 Amuro · アムロ
+> 「ラビアンローズはドック艦なんだよ」
+“La Vie en Rose is a dock ship.”
+
+@24597 Quattro · クワトロ
+> 「そうだ。1年戦争の終戦
+>  直前、すでに抵抗運動のことを
+“That's right. Just before the end of the One Year War, a commodore who was already
+---
+>  考えておられた准将が、
+>  クルーを説得し、暗礁宙域へ
+thinking about the resistance movement persuaded the crew and sent it
+---
+>  向かわせたそうだ。だが、
+>  その後の情報がないのだ」
+toward the shoal zone. But there's been no word since.”
+
+@24598 Koji · 甲児
+> 「それじゃ話にならないぜ」
+“Then there's no point talking about it.”
+
+@24599 Hayato · ハヤト
+> 「だからとりあえずは、スウィートウォーター
+>  に向かうってことさ」
+“That's why, for now, we head for Sweetwater.”
+
+@24600 Bright · ブライト
+> 「そういうことだ」
+“That's how it is.”
+
+@24601 Beltorchika · ベルトーチカ
+> 「艦長、接近する部隊を確認」
+“Captain, I've confirmed an approaching unit.”
+
+@24602 Bright · ブライト
+> 「どこの部隊だ?」
+“Whose unit is it?”
+
+@24603 Beltorchika · ベルトーチカ
+> 「……帝国軍です」
+“...It's the Imperial Army.”
+
+@24604 Bright · ブライト
+> 「く……こんなときにか。アストナージに
+>  つないでくれ」
+“Ugh... now of all times. Put me through to Astonaige.”
+
+@24605 Bunny · バニー
+> 「でました」
+“It's out.”
+
+@24606 Astonaige · アストナージ
+> 「艦長、敵ですか!? まだ終わって
+>  ませんよ!!」
+“Captain, enemies?! We're not done yet!!”
+
+@24607 Bright · ブライト
+> 「出られるものだけでいい。出させろ」
+“Just whatever can launch. Get them out there.”
+
+@24608 Helmut · ヘルマット
+> 「馬鹿な! なぜ奴らがこんなところに
+>  いるのだ!?」
+“Impossible! Why are they in a place like this?!”
+
+@24609 Muge Soldier · ムゲ兵
+> 「将軍、どういたしますか」
+“General, what shall we do?”
+
+@24610 Helmut · ヘルマット
+> 「ばかもの! 月面基地までたどり
+>  着けねば、話にならん。突破しろ!」
+“You fool! If we don't reach the lunar base, it's hopeless. Break through!”
+
+@24611 Muge Soldier · ムゲ兵
+> 「し、しかし……」
+“B-But...”
+
+@24612 Helmut · ヘルマット
+> 「おのれぇ、地球人ごとき、なめられて
+>  たまるか!」
+“Damn them, mere Earthlings, I won't be looked down on!”
+
+@24613 Shinobu · 忍
+> 「ちっ、ムゲ野郎かよ!」
+“Tch, it's the Muge bastards!”
+
+@24614 Amuro · アムロ
+# 审校：原文“落ち着いていけ”没有“and go”的意思，初稿多译了 go。
+> 「みんな、宇宙での戦闘は初めての
+>  者もいると思うが、落ち着いていけ」
+“Everyone, I know some of you are fighting in space for the first time, but stay calm.”
+
+@24615 Bright · ブライト
+> 「OZだと!? くそっ、発見されて
+>  しまったか」
+“OZ?! Damn it, so we've been spotted.”
+
+@24616 Bask · バスク
+> 「賊軍め。こんなところまで出て
+>  きおって。ロザミア、いけるな」
+“Rebel scum. Coming all the way out here. Rosamia, you can handle it, yes?”
+
+@24617 Rosamia · ロザミア
+# 审校：特佐对应 Colonel，初稿误作 Lieutenant Colonel。
+> 「はい特佐。おまかせください」
+“Yes, Colonel. Leave it to me.”
+
+@24618 Kamille · カミーユ
+> 「この感覚……フォウ? ……いや、
+>  違う。アムロさん、何か感じませんか」
+“This feeling... Four? ...No, it's different. Amuro, don't you sense something?”
+
+@24619 Amuro · アムロ
+> 「カミーユ? あの敵が強化人間
+>  だというのか……?」
+“Kamille? You're saying that enemy is an enhanced human...?”
+
+@24620 Kurtz · カーツ（按段落 3DD3）
+> 「奴か……俺はついている」
+“So it's him... I'm in luck.”
+
+@24621 Bask · バスク
+> 「{PartnerSurname}、貴様の希望通り
+>  部隊に加えてやったのだ
+“{PartnerSurname}, I've added you to the unit just as you wished.
+---
+>  十分に働いてもらうぞ」
+You'll work plenty for me.”
+
+@24622 Kurtz · カーツ（按段落 3DD3）
+> 「ふん、俺は{HeroNick}とさえ、やらせて
+>  もらえれば、文句はない。お前は
+“Hmph, as long as I get to fight {HeroNick}, I've no complaints. You just
+---
+>  黙って見ていればいいのだ」
+keep quiet and watch.”
+
+@24623 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}……今度はOZについた
+>  のか!? なぜお前はそこまでする!」
+“{PartnerNick}... now you've sided with OZ?! Why would you go that far!”
+
+@24624 Kurtz · カーツ（按段落 3DD3）
+> 「貴様がいるからだ、{HeroNick}。
+>  貴様さえ倒せれば他の連中など
+“Because you exist, {HeroNick}. If I can just defeat you, the rest of them
+---
+>  どうでもいい!」
+don't matter!”
+
+@24625 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}!!」
+“{PartnerNick}!!”
+
+@24626 Aisha · アイシャ（按段落 3DD4）
+# 审校：特佐对应 Colonel，初稿误作 Lieutenant Colonel。
+> 「部隊に加えていただいて感謝して
+>  おります、特佐」
+“I thank you for adding me to the unit, Colonel.”
+
+@24627 Bask · バスク
+> 「{PartnerSurname}、貴様の希望通り
+>  奴らとも遭遇した。十分に
+“{PartnerSurname}, as you wished, we've encountered them too. You'll work
+---
+>  働いてもらうぞ。財団からの指示
+>  とはいえ、役立たずを加えておく
+plenty for me. Even if it's on the Foundation's orders, I don't intend to keep
+---
+>  つもりはない」
+useless people around.”
+
+@24628 Aisha · アイシャ（按段落 3DD4）
+> 「わかっておりますわ。……{HeroName}
+>  さん、覚悟はよろしくて?」
+“I understand. ...{HeroName}, are you prepared?”
+
+@24629 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……ロームフェラには正義は
+>  ないのよ。それをわかって!!」
+“{PartnerNick}... there is no justice in Romefeller. Understand that!!”
+
+@24630 Aisha · アイシャ（按段落 3DD4）
+> 「ロームフェラの力なくして、地球の
+>  再建はありえませんわ!」
+“Without Romefeller's power, Earth's reconstruction is impossible!”
+
+@24631 Bright · ブライト
+> 「OZだと!? くそっ、発見されて
+>  しまったか」
+“OZ?! Damn it, so we've been spotted.”
+
+@24632 Bask · バスク
+> 「賊軍め。こんなところまで出て
+>  きおって。ロザミア、いけるな」
+“Rebel scum. Coming all the way out here. Rosamia, you can handle it, yes?”
+
+@24633 Rosamia · ロザミア
+# 审校：原文“特佐”是上校，词表规则中“大佐”为Colonel，初稿误译为Lieutenant Colonel。
+> 「はい特佐。おまかせください」
+“Yes, Colonel. Leave it to me.”
+
+@24634 Kamille · カミーユ
+> 「この感覚……フォウ? ……いや、
+>  違う。アムロさん、何か感じませんか」
+“This feeling... Four? ...No, it's different. Amuro, don't you sense something?”
+
+@24635 Amuro · アムロ
+> 「カミーユ? あの敵が強化人間
+>  だというのか……?」
+“Kamille? You're saying that enemy is an enhanced human...?”
+
+@24636 Kurtz · カーツ（按段落 3DD3）
+> 「奴か……俺はついている」
+“So it's him... I'm in luck.”
+
+@24637 Bask · バスク
+> 「{PartnerSurname}、貴様の希望通り
+>  部隊に加えてやったのだ
+“{PartnerSurname}, I've added you to the unit just as you wished.
+---
+>  十分に働いてもらうぞ」
+You'll work plenty for me.”
+
+@24638 Kurtz · カーツ（按段落 3DD3）
+> 「ふん、俺は{HeroNick}とさえ、やらせて
+>  もらえれば、文句はない。お前は
+“Hmph. As long as I get to fight {HeroNick}, I've got no complaints. You just
+---
+>  黙って見ていればいいのだ」
+keep quiet and watch.”
+
+@24639 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}……今度はOZについた
+>  のか!? なぜお前はそこまでする!」
+“{PartnerNick}... now you've thrown in with OZ?! Why would you go that far?!”
+
+@24640 Kurtz · カーツ（按段落 3DD3）
+> 「貴様がいるからだ、{HeroNick}。
+>  貴様さえ倒せれば他の連中など
+“Because you exist, {HeroNick}. If I can just defeat you, the rest of them
+---
+>  どうでもいい!」
+don't matter at all!”
+
+@24641 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}!!」
+“{PartnerNick}!!”
+
+@24642 Aisha · アイシャ（按段落 3DD4）
+# 审校：原文“特佐”是上校，初稿误译为Lieutenant Colonel。
+> 「部隊に加えていただいて感謝して
+>  おります、特佐」
+“I thank you for adding me to the unit, Colonel.”
+
+@24643 Bask · バスク
+> 「{PartnerSurname}、貴様の希望通り
+>  奴らとも遭遇した。十分に
+“{PartnerSurname}, as you wished, we've encountered them too. You'll
+---
+>  働いてもらうぞ。財団からの指示
+>  とはいえ、役立たずを加えておく
+work plenty for me. Even if it's on the Foundation's orders, I don't intend to keep
+---
+>  つもりはない」
+useless people around.”
+
+@24644 Aisha · アイシャ（按段落 3DD4）
+> 「わかっておりますわ。……{HeroName}
+>  さん、覚悟はよろしくて?」
+“I understand. ...{HeroName}, are you prepared?”
+
+@24645 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……ロームフェラには正義は
+>  ないのよ。それをわかって!!」
+“{PartnerNick}... there is no justice in Romefeller. Understand that!!”
+
+@24646 Aisha · アイシャ（按段落 3DD4）
+> 「ロームフェラの力なくして、地球の
+>  再建はありえませんわ!」
+“Without Romefeller's power, Earth's reconstruction is impossible!”
+
+@24647 Kurtz · カーツ（按段落 3DD3）
+> 「くそぉぉぉーっ!! なぜだ!
+>  なぜ貴様に勝てんのだッ!?」
+“Damn youuuu!! Why?! Why can't I beat you?!”
+
+@24648 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、もうやめて!
+>  あたしは、あなたと戦いたくはないの!」
+“{PartnerNick}, stop it! I don't want to fight you!”
+
+@24649 Aisha · アイシャ（按段落 3DD4）
+> 「なら、今ここで私に討たれなさい!
+>  そうすれば、これ以上戦わずに
+“Then let me strike you down here and now! That way, you won't have to
+---
+>  すみますわ!」
+fight anymore!”
+
+@24650 Kayra · ケーラ
+> 「聞こえますか、アーガマ。こちらは
+>  ラビアンローズのケーラ・スゥ」
+“Can you hear me, Argama? This is Kayra Su of the La Vie en Rose.”
+
+@24651 Bright · ブライト
+> 「ラビアンローズ!? やはり無事だった
+>  のか。アーガマのブライト・ノアだ」
+“The La Vie en Rose?! So you made it after all. This is Bright Noa of the Argama.”
+
+@24652 Kayra · ケーラ
+> 「アーガマが宇宙へ上がったと聞き、
+>  迎えに参りました」
+“When I heard the Argama had gone up into space, I came to meet you.”
+
+@24653 Bright · ブライト
+> 「そうか。しかし見ての通り今は、
+>  OZと交戦中だ」
+“I see. But as you can see, we're currently engaged with OZ.”
+
+@24654 Kayra · ケーラ
+> 「了解。援護します」
+“Understood. I'll provide support.”
+
+@24655 Lila · ライラ
+> 「くっ、ジェリド……油断するなよ……
+>  やはりこいつ、ただ者じゃない……」
+“Ngh, Jerid... don't let your guard down... this one really is no ordinary pilot...”
+
+@24656 Lila · ライラ
+> (そうか……私がいま
+>  あの子のことをただ者じゃないといった
+(I see... the very fact that I just called that child no ordinary pilot—
+---
+>  このわかり方が無意識のうちに
+>  反感となってしまう。これが……
+that way of understanding turns into resentment without my realizing it. So this is...
+---
+>  オールドタイプということか……)
+what it means to be an Oldtype...)
+
+@24657 Lila · ライラ
+> 「な、なんだと!? 私がこんなところで
+>  やられる……?」
+“W-what?! I'm being beaten here, of all places...?”
+
+@24658 Kacricon · カクリコン
+> 「くっ、やられた!? ……アメリアーッ!」
+“Ngh, I've been hit?! ...Ameliaaa!”
+
+@24659 Kamille · カミーユ
+> 「プレッシャーは感じない。
+>  ただ強いだけだ」
+“I don't feel any pressure. He's just strong.”
+
+@24660 Yazan · ヤザン
+> 「小僧が知ったふうな口をきくな!」
+“Don't talk like you know something, kid!”
+
+@24661 Kayra · ケーラ
+> 「聞こえますか、アーガマ。こちらは
+>  ラビアンローズのケーラ・スゥ」
+“Can you hear me, Argama? This is Kayra Su of the La Vie en Rose.”
+
+@24662 Bright · ブライト
+> 「ラビアンローズ!? やはり無事だった
+>  のか。アーガマのブライト・ノアだ」
+“The La Vie en Rose?! So you made it after all. This is Bright Noa of the Argama.”
+
+@24663 Kayra · ケーラ
+> 「アーガマが宇宙へ上がったと聞き、
+>  迎えに参りました」
+“When I heard the Argama had gone up into space, I came to meet you.”
+
+@24664 Bright · ブライト
+> 「そうか。よし、着艦してくれ」
+“I see. Good, come aboard.”
+
+@24665 Kayra · ケーラ
+> 「了解」
+“Understood.”
+
+@24666 Kayra · ケーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、おひさしぶりです」
+“Captain Bright, it's been a long time.”
+
+@24667 Bright · ブライト
+> 「ご苦労だった。ラビアンローズが、まだ
+>  健在だったとは助かるな」
+“Good work. It's a relief that the La Vie en Rose is still intact.”
+
+@24668 Kayra · ケーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「はい。アーガマにブライト艦長がいる
+>  のを聞けば、艦長代理も
+“Yes. When the acting captain hears that Captain Bright is on the Argama,
+---
+>  喜ぶでしょう」
+she'll be delighted too.”
+
+@24669 Bright · ブライト
+> 「艦長代理? ラビアンローズの
+>  指揮は誰がとっているんだ?」
+“Acting captain? Who's in command of the La Vie en Rose?”
+
+@24670 Kayra · ケーラ
+> 「エマリー・オンスです。艦長はOZが
+>  主導権を取りもどしたとき
+“Emary Ounce. When OZ regained control, the captain tried
+---
+>  投降しようとしたのですが、エマリーは
+>  必ずブライト・ノアがくるからと
+to surrender, but Emary stopped him, saying Bright Noa would surely come.
+---
+>  やめさせました。それで、今は彼女が
+>  艦長代理となっています」
+So now she's the acting captain.”
+
+@24671 Bright · ブライト
+> 「そ、そうか、エマリーが……」
+“I-I see, so Emary is...”
+
+@24672 Daisaku · 大作
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「前にいっていた、ブライト艦長の
+>  奥さんですか?」
+“Is that the wife of Captain Bright you mentioned before?”
+
+@24673 Bright · ブライト
+> 「ば、ばかなことをいうな。エマリーは
+>  そんなんじゃない」
+“D-don't be ridiculous. Emary isn't like that.”
+
+@24674 Daisaku · 大作
+> 「え、違うんですか? ごめんなさい、
+>  艦長がうれしそうだったから僕
+“Huh, she's not? I'm sorry. You just looked so happy, Captain, that I
+---
+>  つい、そうかと思って。
+>  そういえば名前も違いますね」
+thought that must be it. Come to think of it, her name is different too.”
+
+@24675 Schwarz · シュバルツ
+> 「ハハハハハハッ、大作、大人には
+>  大人の事情というものがある
+“Hahahahahaha, Daisaku, adults have adult circumstances.
+---
+>  あまり、うかつなことをいうものではないぞ」
+You shouldn't say such careless things.”
+
+@24676 Domon · ドモン
+> 「なんだシュバルツ。いったい、どういうこと
+>  なんだ?」
+“What is it, Schwarz? What on earth is going on?”
+
+@24677 Rain · レイン
+> 「ちょ、ちょっとドモン、やめなさいよ……」
+“H-hey, Domon, cut it out...”
+
+@24678 Bright · ブライト
+> 「お前ら、いいかげんにしろ! シュバルツ
+>  も、よけいなことをいうんじゃない!」
+“You lot, that's enough! Schwarz, stop saying unnecessary things too!”
+
+@24679 Astonaige · アストナージ
+> 「ケーラ!」
+“Kayra!”
+
+@24680 Kayra · ケーラ
+> 「やぁアストナージ。ひさしぶりじゃないか。
+>  元気だった?」
+“Hey, Astonaige. Long time no see. Have you been well?”
+
+@24681 Astonaige · アストナージ
+> 「ケーラこそ。俺、心配で……」
+“Same to you, Kayra. I was so worried...”
+
+@24682 Kayra · ケーラ
+> 「ちょっ、やめなよ、こんなところで。
+>  それより、カミーユってのもいるんだろ」
+“Hey, cut it out, not in a place like this. More importantly, there's a guy named Kamille here too, right?”
+
+@24683 Kamille · カミーユ
+> 「いますよ。なにか?」
+“I'm here. Something you need?”
+
+@24684 Kayra · ケーラ
+> 「Zガンダムは、君のためにもってきた
+>  ようなものだからね。基本コンセプトは
+“The Zeta Gundam was practically brought here for your sake. I heard you came up with
+---
+>  君が考えたって聞いたけど?」
+the basic concept, right?”
+
+@24685 Kamille · カミーユ
+> 「Zガンダム? そうですよ。完成して
+>  いたんですか?」
+“The Zeta Gundam? That's right. So it's been completed?”
+
+@24686 Kayra · ケーラ
+> 「そういうことさ。大事に使いなよ」
+“That's right. Take good care of it.”
+
+@24687 Quattro · クワトロ
+> 「さて、どうする艦長?」
+“So, what will you do, Captain?”
+
+@24688 Bright · ブライト
+> 「機体の改修のこともある。
+>  まずラビアンローズへ向かおう
+“There's the matter of the mobile suits' refitting. First, let's head for the La Vie en Rose.
+---
+>  アストナージたちだけでは、かなり厳しい
+>  ようだからな」
+It seems things are quite tough with just Astonaige and the others.”
+
+@24689 Amuro · アムロ
+> 「わかった。他の連中に伝えてこよう」
+“Got it. I'll go let the others know.”
+
+@24690 Bright · ブライト
+> 「……なんだ、何かいいたいことがあるのか
+>  いっておくが俺は別に……」
+“...What, is there something you want to say? I'll say this now, I'm not—”
+
+@24691 Amuro · アムロ
+> 「そういう態度が誤解をまねくんだよ
+>  ブライト。……本当に誤解なのか?」
+“That attitude is what causes misunderstandings, Bright. ...Or is it really a misunderstanding?”
+
+@24692 Bright · ブライト
+> 「当たり前だ。お前まで、そんなことを
+>  いうのか」
+“Of course not. You too, saying things like that?”
+
+@24693 Amuro · アムロ
+> 「冗談だよ」
+“Just kidding.”
+
+@24694 Sayaka · さやか
+> 「あら、みんな何みてるの?」
+“Oh my, what is everyone watching?”
+
+@24695 Tetsuya · 鉄也
+# 检查提示：未用必用译名：コロニー代表→Colony Delegate
+> 「コロニー代表会議だそうだ。
+>  ちょうどOZの奴が出るところだな」
+“It's the colony representatives' conference. Looks like the OZ fellows are just about to come out.”
+
+@24696 Lady · レディ
+> 「A.C.195年、宇宙の
+>  民は自由であるべきなのです。しかし
+“A.C. 195. The people of space should be free. But
+---
+>  地球連邦政府はあなたがたを
+>  抑圧してきました。そして、その後に
+the Earth Federation Government has oppressed you. And then
+---
+>  やってきたムゲゾルバドス帝国もまた。
+>  ですが、そのような時代は
+the Muge Zorbados Empire that came afterward as well. But such an era
+---
+>  もう終わりです。地球では新たなる
+>  秩序が、つくられようとしています
+is over now. On Earth, a new order is about to be created.
+---
+>  それは、この宇宙でも同じです。
+>  あなた方は自由なのです
+It is the same in space. You are free.
+---
+>  OZが皆様を支えます」
+OZ will support you all.”
+
+@24697 Colony Delegate · コロニー代表
+> 「すばらしいことです、レディ・アン代表
+>  我々サイド6は、OZに賛同
+“A wonderful thing, Representative Lady Une. We of Side 6 endorse OZ.
+---
+>  いたします。OZの公明正大さに、
+>  誤解はすぐに解けました
+With OZ's fairness and justice, misunderstandings were quickly cleared up.
+---
+>  他のコロニーもきっと同調すること
+>  でしょう」
+The other colonies will surely follow suit as well.”
+
+@24698 Lady · レディ
+# 审校：调整语序，使英文更自然，避免“in order to”翻译腔。
+> 「ありがとうございます。ともに地球圏
+>  に平和な未来をもたらすために
+“Thank you. Together, let us strive to bring a peaceful future
+---
+>  努力してまいりましょう……」
+to the Earth Sphere...”
+
+@24699 Koji · 甲児
+# 审校：“美辞麗句”改为更口语的 fine talk，并调整问句语气以符合甲児的粗鲁热血口吻。
+> 「ちっ、けったくそわりぃな。よくこんだけ
+>  美辞麗句を口にできるもんだぜ
+“Tch, this is damn irritating. How can she spout all that fine talk?
+---
+>  だいたいコロニーの連中も、なんだって
+>  こうもあっさり信用しちまうんだよ」
+And the colony folks too—why do they trust her so easily?”
+
+@24700 Alan · アラン
+# 审校：“かつては連邦に、その後は帝国に”改为更自然的 First…then…，并调整“normally just”为“easily”。
+> 「誰だって無意味な争いはしたくな
+>  いからな。かつては連邦に、その後は
+“Everyone wants to avoid meaningless conflict. First the Federation oppressed them,
+---
+>  帝国に、彼らはしいたげられてきた。
+>  本来、武力をもって制圧しても
+then the Empire. If OZ, who could easily subdue them by force,
+---
+>  おかしくないOZが、友好的に
+>  接してくるならば……」
+comes to them in a friendly manner...”
+
+@24701 Sayaka · さやか
+# 审校：调整语序，使英文更自然。
+> 「受け入れてしまっても、しかたのない
+>  ことってわけね」
+“So it can't be helped if they just accept it.”
+
+@24702 Alan · アラン
+# 审校：调整语序，使英文更自然。
+> 「そういうことだ。だが……
+>  彼らもいつかは気づく
+“That's right. But... someday they too will realize
+---
+>  それが偽りの平和だったとな」
+that it was a false peace.”
+
+@24703 Tetsuya · 鉄也
+# 审校：调整语序，使英文更自然，避免“is that it?”的翻译腔。
+> 「平和……平和か。誰かが与えて
+>  くれる平和など本物じゃない、と
+“Peace... peace, huh. So it takes sacrifices to understand
+---
+>  理解するには、犠牲が必要
+>  だってわけだ」
+that a peace handed to you by someone else isn't real.”
+
+@24704 Daisaku · 大作
+> 「そう……でしょうか。本当に
+>  犠牲は必要なんですか?
+“Is that... so? Are sacrifices really necessary?
+---
+>  僕にはわかりませんよ」
+I don't understand.”
+
+@24705 Tetsuya · 鉄也
+> 「フン、甘いガキだぜ。なら今まで
+>  戦って死んでいった連中は
+“Hmph, what a naive kid. Then what were all the people who fought and died until now?
+---
+>  なんだったんだ? 平和を得るための
+>  犠牲じゃなかったってのか
+Are you saying they weren't sacrifices for gaining peace?
+---
+>  ムダ死にだったと? 冗談じゃねぇや」
+That they died for nothing? Don't give me that crap.”
+
+@24706 Jun · ジュン
+# 审校：“鉄也みたいのばっかじゃ”改为“If everyone were like you”，更准确传达“全是铁也那样的人”的意思。
+> 「まったく、子供相手にムキになるん
+>  じゃないの。鉄也みたいのばっかじゃ
+“Honestly, don't get so worked up at a kid. If everyone were like you, Tetsuya,
+---
+>  戦争なんて、いつまでたっても
+>  終わらないんじゃないかっていいたいのさ
+wars would never end no matter how much time passes.
+---
+>  ね、大作」
+Right, Daisaku?”
+
+@24707 Alan · アラン
+> 「それにしても……」
+“Even so...”
+
+@24708 Tetsuya · 鉄也
+> 「何か気になることでもあるのか?」
+“Something on your mind?”
+
+@24709 Alan · アラン
+# 审校：与 L2 的“美辞麗句”译法保持一致，改为 fine talk。
+> 「うむ……。兜、お前……よく
+>  “美辞麗句”などという言葉を
+“Yeah... Kabuto, you... you actually knew a word like 'fine talk.'
+---
+>  知っていたな。驚いたぞ」
+I was surprised.”
+
+@24710 Sayaka · さやか
+> 「そういわれてみれば、そうねぇ」
+“Now that you mention it, that's true.”
+
+@24711 Koji · 甲児
+> 「ほっとけ!」
+“Leave me alone!”
+
+@24712 Masato · 雅人
+> 「ねえ、今のレディ・アン代表って、
+>  あのレディ・アン特佐なのかな?
+“Hey, is that Representative Lady Une just now the same Colonel Lady Une?
+---
+>  なんだか、ずいぶん違うみたいだったけど」
+She seemed awfully different, though.”
+
+@24713 Koji · 甲児
+> 「そういや、そうだったな。別人なんじゃ
+>  ねぇのか? 双子の妹とかさ
+“Now that you mention it, that's right. Maybe she's a different person? Like a twin sister.
+---
+>  あんな陰険そのものの女が、
+>  あんないい顔できるわきゃないぜ」
+There's no way a woman that sinister could make a face like that.”
+
+@24714 Simone · シモーヌ
+> 「ウフフフ、わかんないわよ。女の顔は
+>  1つじゃないんだから」
+“Hehehe, you never know. A woman doesn't have just one face.”
+
+@24715 Mika · ミカ
+> 「ねぇ、みんな聞いた?
+>  ウィナー家の資源衛星が
+“Hey, did everyone hear? They say the Winner family's resource satellite
+---
+>  破壊されたって話よ」
+was destroyed.”
+
+@24716 Takeru · タケル
+> 「ウィナー家? コロニー建設で名を
+>  あげた有力者じゃないか。なんだって
+“The Winner family? Aren't they the influential people who made their name in colony construction? Why
+---
+>  そんなことになったんだ、ミカ?」
+did something like that happen, Mika?”
+
+@24717 Mika · ミカ
+> 「それがね、OZの受け入れを
+>  拒否したウィナー家の当主に
+“Well, you see, the head of the Winner family refused to accept OZ,
+---
+>  住民たちが反対運動を
+>  起こしたんだって。その人は争いを
+and the residents started a protest movement against him. He tried to
+---
+>  避けて、衛星で逃げようとした
+>  らしいんだけど……」
+avoid the conflict and escape by satellite, but...”
+
+@24718 Show · ショウ
+> 「それをOZに狙われたってことだろ。
+>  死んだら、何にもならないのにな」
+“So that means OZ targeted them for it. Dying doesn't accomplish anything.”
+
+@24719 Marvel · マーベル
+> 「でも、嫌な感じね。コロニーの内部
+>  で、そういう争いが起こるのは
+“Still, it leaves a bad taste. That kind of conflict breaking out inside a colony,
+---
+>  それにOZが関わるのもそうだけど……」
+and OZ getting involved in it too...”
+
+@24720 Roux · ルー
+> 「ちょっと待って。ウィナー家ですって?
+>  それってカトルの関係者じゃないの?」
+“Wait a second. The Winner family? Isn't that connected to Quatre?”
+
+@24721 Ryoma · リョウ
+> 「可能性は高いな。まさか
+>  その事件に、カトルの奴が関わって
+“Highly likely. I can't imagine Quatre himself being involved in that incident,
+---
+>  いるとは思えないが、気にはなるな」
+but it does bother me.”
+
+@24722 Hayato · ハヤト
+> 「ああ……無事でやっているといいがな」
+“Yeah... I hope he's doing all right.”

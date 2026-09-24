@@ -1,0 +1,255 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11259 Ark · アーク
+> 「このぉっ!」
+“Why you!”
+
+@11260 Ark · アーク
+> 「あたれ!」
+“Hit!”
+
+@11261 Ark · アーク
+> 「いけるっ」
+“I can do this!”
+
+@11262 Ark · アーク
+> 「やれるのか!?」
+“Can I pull it off!?”
+
+@11263 Ark · アーク
+> 「いけるはずだ……」
+“I should be able to do this...”
+
+@11264 Ark · アーク
+> 「俺だってぇ!」
+“I can too!”
+
+@11265 Ark · アーク
+> 「やってみせる」
+“I'll show you.”
+
+@11266 Ark · アーク
+> 「やってみるさ」
+“I'll give it a try.”
+
+@11267 Ark · アーク
+> 「そこか!」
+“There!”
+
+@11268 Ark · アーク
+> 「そこぉっ!」
+“Right there!”
+
+@11269 Ark · アーク
+> 「頼む、あたってくれ!」
+“Come on, hit!”
+
+@11270 Ark · アーク
+> 「目をつぶせばっ!」
+“If I just close my eyes!”
+
+@11271 Ark · アーク
+> 「やってやる……
+>  俺だって死にたくないんだ!」
+“I'll do it... I don't wanna die either!”
+
+@11272 Ark · アーク
+> 「やられる前にっ!」
+“Before I get hit!”
+
+@11273 Ark · アーク
+> 「このままいければ……」
+“If I can keep this up...”
+
+@11274 Ark · アーク
+> 「あたれよ!!」
+“Hit!!”
+
+@11275 Ark · アーク
+> 「お、俺は、こんなところで……!?」
+“I-I'm going to die here...!?”
+
+@11276 Ark · アーク
+> 「ぐぅぅっ、ここまでか!?」
+“Ngh, is this as far as I go!?”
+
+@11277 Ark · アーク
+> 「うわぁぁぁぁぁぁっ!」
+“Uwaaaaaaaah!”
+
+@11278 Ark · アーク
+> 「うわぁっ!! や、やられる!?」
+“Whoa!! I-I'm getting hit!?”
+
+@11279 Ark · アーク
+> 「あぁぁ!? し、死ぬのか?」
+“Ahhh!? A-am I going to die?”
+
+@11280 Ark · アーク
+> 「うっ……き、機体がもたない!?」
+“Ugh... th-the unit can't take it!?”
+
+@11281 Ark · アーク
+> 「お、俺は、死にたくないっ!」
+“I-I don't wanna die!”
+
+@11282 Ark · アーク
+> 「うぅぅ!! そ、そんな!?」
+“Ugh!! N-no way!?”
+
+@11283 Ark · アーク
+> 「くっ、なんて強い……だけどさ!!」
+“Ngh, you're strong... but still!!”
+
+@11284 Ark · アーク
+> 「うわっ!? ま、まだだ!
+>  まだもたせてみせる!」
+“Whoa!? N-not yet! I'll make it last!”
+
+@11285 Ark · アーク
+> 「うっ……こ、こんなことでっ!」
+“Ugh... n-not like this!”
+
+@11286 Ark · アーク
+> 「ぐぅっ、まだ……まだだ……」
+“Ngh, not yet... not yet...”
+
+@11287 Ark · アーク
+> 「くっ、出力があがらない!?」
+“Ngh, the output won't rise!?”
+
+@11288 Ark · アーク
+> 「あ、あてられた!?」
+“I-I got hit!?”
+
+@11289 Ark · アーク
+> 「うっ……脚部損傷!? くそっ!」
+“Ugh... leg damage!? Damn!”
+
+@11290 Ark · アーク
+> 「こ、このままじゃだめだ……」
+“I-I can't go on like this...”
+
+@11291 Ark · アーク
+> 「ちぃっ! なめるなぁっ!!」
+“Tch! Don't underestimate me!!”
+
+@11292 Ark · アーク
+> 「くそっ……やられてたまるかよッ!!」
+“Damn... I won't let you take me down!!”
+
+@11293 Ark · アーク
+> 「この装甲ならそんな攻撃はっ」
+“With this armor, that kind of attack won't—”
+
+@11294 Ark · アーク
+> 「くっ、かすめたのか!?」
+“Ngh, did it graze me!?”
+
+@11295 Ark · アーク
+> 「各部異常は……なし、か」
+“No abnormalities in any section... I see.”
+
+@11296 Ark · アーク
+> 「損傷なし……まだいけるぞ」
+“No damage... I can still go.”
+
+@11297 Ark · アーク
+> 「ぐ……このぉっ、邪魔なんだよ!」
+“Ngh... why you, you're in the way!”
+
+@11298 Ark · アーク
+> 「ふぅ……かわせたか」
+“Phew... I dodged it, huh.”
+
+@11299 Ark · アーク
+> 「そんな攻撃で!」
+“With an attack like that!”
+
+@11300 Ark · アーク
+> 「あたるわけにはいかないんだ!」
+“I can't afford to get hit!”
+
+@11301 Ark · アーク
+> 「これなら!」
+“This should do it!”
+
+@11302 Ark · アーク
+> 「ちぃっ!」
+“Tch!”
+
+@11303 Ark · アーク
+> 「そうそうあたるかよ!」
+“You think you can hit me?!”
+
+@11304 Ark · アーク
+> 「かわせた……のか……」
+“I dodged it... right...?”
+
+@11305 Ark · アーク
+> 「まだっ!」
+“Not yet!”
+
+@11306 Ark · アーク
+> 「この程度の攻撃でさ!」
+“That kind of attack won't do it!”
+
+@11307 Ark · アーク
+> 「読めるぞ、敵の攻撃が!!」
+“I can read the enemy's attacks!!”
+
+@11308 Ark · アーク
+> 「俺だってこのくらいはさ!」
+“Even I can handle this much!”
+
+@11309 Ark · アーク
+> 「よけてみせる!」
+“I'll dodge it!”
+
+@11310 Ark · アーク
+> 「ビームはムダだ!!」
+“Beams are useless!!”
+
+@11311 Ark · アーク
+> 「そんな攻撃が効くかよ!」
+“You think that attack will work?!”
+
+@11312 Ark · アーク
+> 「こいつには効かない!」
+“That won't work on this one!”
+
+@11313 Ark · アーク
+> 「だ、大丈夫……なのか?」
+“A-are we... okay?”
+
+@11314 Ark · アーク
+> 「ムダなことを」
+“What a waste of effort.”
+
+@11315 Ark · アーク
+> 「よし、いけるぞ」
+“All right, we can do this.”
+
+@11316 Ark · アーク
+> 「そんなビームなんかでさ!」
+“A beam like that won't stop me!”
+
+@11317 Ark · アーク
+> 「しまった、た、弾がない!?」
+“Damn, I-I'm out of ammo?!”
+
+@11318 Ark · アーク
+> 「た、弾切れなのか!?」
+“A-ammo's gone?!”
+
+@11319 Ark · アーク
+> 「くっ、あんな位置じゃ……」
+“Tch, from that position...”
+
+@11320 Ark · アーク
+> 「と、遠すぎるか……?」
+“T-too far, huh...?”
+
+@11321 Ark · アーク
+> 「くっ、反撃できないってのかよ!」
+“Tch, so I can't fight back?!”

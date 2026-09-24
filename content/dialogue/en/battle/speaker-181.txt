@@ -1,0 +1,157 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12304 Show · ショウ
+> 「一撃でしとめてみせる!」
+“I'll finish you in one blow!”
+
+@12305 Show · ショウ
+> 「やるかよっ!」
+“Like I'd let you!”
+
+@12306 Show · ショウ
+> 「この!!」
+“Why you!”
+
+@12307 Show · ショウ
+> 「もらったっ!!」
+“Got you!”
+
+@12308 Show · ショウ
+> 「はああああっ!!」
+“Haaaaaah!”
+
+@12309 Show · ショウ
+> 「そこだっ!!」
+“There!”
+
+@12310 Show · ショウ
+> 「おちろっ!」
+“Fall!”
+
+@12311 Show · ショウ
+> 「いけるかっ!?」
+“Can I do it!?”
+
+@12312 Show · ショウ
+> 「やるかよっ!」
+“Like I'd let you!”
+
+@12313 Show · ショウ
+> 「沈めーっ!!」
+“Sink!”
+
+@12314 Show · ショウ
+> 「おちろって言ってんだよっ!!」
+“I said fall, damn it!”
+
+@12315 Show · ショウ
+> 「俺のオーラ力を受けてみろっ!」
+“Take my Aura Power!”
+
+@12316 Show · ショウ
+> 「くっ! なむさん!」
+“Ngh! Damn it!”
+
+@12317 Show · ショウ
+> 「くっ!! ここまでか!!」
+“Ngh! This is it!?”
+
+@12318 Show · ショウ
+> 「し、しまった!!」
+“D-damn it!”
+
+@12319 Show · ショウ
+> 「くそっ! 俺のオーラ力は
+>  この程度なのか!?」
+“Damn! Is my Aura Power only this much!?”
+
+@12320 Show · ショウ
+> 「くっ! このままでは!」
+“Ngh! At this rate!”
+
+@12321 Show · ショウ
+> 「くっ! ま、まだやられるわけには!!」
+“Ngh! I-I can't go down yet!”
+
+@12322 Show · ショウ
+> 「南無三!」
+“Damn it!”
+
+@12323 Show · ショウ
+> 「ま、まだだ!!」
+“N-not yet!”
+
+@12324 Show · ショウ
+> 「くっ! このおっ! 好きにさせるかっ!」
+“Ngh! Why you! Like I'd let you do as you please!”
+
+@12325 Show · ショウ
+> 「くっ!! だが、この程度ならまだ
+>  いける!」
+“Ngh! But I can still take this much!”
+
+@12326 Show · ショウ
+> 「うっ!! だが、この程度なら!」
+“Ugh! But this is nothing!”
+
+@12327 Show · ショウ
+> 「やられてないっ!」
+“I'm not down yet!”
+
+@12328 Show · ショウ
+> 「くっ、かすっただけだっ!」
+“Ngh, it just grazed me!”
+
+@12329 Show · ショウ
+> 「なんのっ! まだだ!」
+“No problem! I'm not done!”
+
+@12330 Show · ショウ
+> 「くっ!?」
+“Ngh?!”
+
+@12331 Show · ショウ
+> 「まだだ! この程度!!」
+“Not yet! This is nothing!!”
+
+@12332 Show · ショウ
+> 「くっ! まだいける!」
+“Ngh! I can keep going!”
+
+@12333 Show · ショウ
+> 「あたりはしないっ!!」
+“You won't hit me!!”
+
+@12334 Show · ショウ
+> 「あたるかっ!」
+“As if you'd hit me!”
+
+@12335 Show · ショウ
+# 审校：“あまい”在这里是“太天真/太嫩”的意思，不是“软”
+> 「あまいっ!」
+“Too naive!”
+
+@12336 Show · ショウ
+> 「俺のオーラ力だって、パワーアップして
+>  いるんだ!」
+“My aura power's been powered up too!”
+
+@12337 Show · ショウ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@12338 Show · ショウ
+> 「効くかよ!」
+“Like that'll work!”
+
+@12339 Show · ショウ
+> 「しまった、弾切れか!?」
+“Damn, out of ammo?!”
+
+@12340 Show · ショウ
+> 「くっ! だめか!?」
+“Ngh! No good?!”
+
+@12341 Show · ショウ
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far?!”

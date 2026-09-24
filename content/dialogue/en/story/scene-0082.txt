@@ -1,0 +1,1048 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@40755 Avie-Lu · アヴィ＝ルー
+> 「……地球はもうだめかもネ」
+“...Earth might be done for already.”
+
+@40756 ???
+# 审校：原文是「ムゲかズール」，初稿把「か」误译成 and，应为 or。
+> 「ならばムゲかズールが選ばれるだけのこと
+>  どうせ最初から候補に入っては
+“Then Muge or Zorbad will simply be the ones chosen. They were never
+---
+>  いなかった奴らではないか」
+in the running from the start, were they?”
+
+@40757 Avie-Lu · アヴィ＝ルー
+> 「そうだけどサ。あいつらが、いちばん
+>  面白いんだヨ」
+“True, but they're the most interesting ones.”
+
+@40758 ???
+> 「……いよいよ終局が近づいてきたよう
+>  ですね。アヴィ＝ルー、ジェイ＝レン
+“...It seems the final act is drawing near. Avie-Lu, J-Ren,
+---
+>  それぞれの役目を果たしなさい。
+>  それが我ら大銀河の意思たる
+fulfill your respective roles. That is what we, the will of the great galaxy,
+---
+>  “アル＝イー＝クイス”が、
+>  なさねばならぬこと」
+Al-E-Quis, must do.”
+
+@40759 Avie-Lu · アヴィ＝ルー
+> 「わかってるヨ……ヴァル＝ア。もう1度
+>  やりなおす余裕は、もうないからネ」
+“I know... Val-A. There's no room left to start over again.”
+
+@40760 Anna · アンナ
+> 「AC195年9月30日。ここは
+>  南米大陸、クスコ。私たち
+“September 30, A.C. 195. This is Cusco, on the South American continent. We,
+---
+>  {HeroMech}は、地球を救う
+>  切り札、“グラドスの刻印”を
+the {HeroMech}, stood facing the Galactic Empire's forces to protect
+---
+>  守るため、銀河帝国軍と
+>  対峙していたのでした……」
+Earth's last hope, the ‘Crest of Grados’...”
+
+@40761 Treize · トレーズ
+> 「順調のようだね」
+“Things seem to be going well.”
+
+@40762 Amuro · アムロ
+> 「ああ。敵の動きはどうなっている?」
+“Yeah. What's the enemy doing?”
+
+@40763 Treize · トレーズ
+> 「クスコに集結させたOZ軍の周囲
+>  を完全に取り巻いているが
+“They've completely surrounded the OZ forces gathered at Cusco, but
+---
+>  今のところ攻撃を開始するつもり
+>  はないようだ」
+for now they don't seem inclined to start attacking.”
+
+@40764 Amuro · アムロ
+> 「少しでも時間がかせげるのなら、
+>  ありがたいな。こちらは、まだ多少の
+“If we can buy even a little time, I'd be grateful. We still need
+---
+>  時間がかかる」
+a bit more time on our end.”
+
+@40765 Treize · トレーズ
+> 「できるだけ早く用意を終わらせてく
+>  れたまえ。敵が攻撃を開始すれば
+“Finish your preparations as quickly as you can. If the enemy begins their attack,
+---
+>  我々はそう長くはもちこたえられない」
+we won't hold out for long.”
+
+@40766 Ark · アーク（按段落 3DD1）
+> 「エイジ、準備は進んでるのか?」
+“Eiji, how are the preparations coming?”
+
+@40767 Selain · セレイン（按段落 3DD2）
+> 「エイジ、準備は進んでいるのか?」
+“Eiji, are the preparations coming along?”
+
+@40768 Brad · ブラッド（按段落 3DD3）
+> 「エイジ、まだやってるのかよ」
+“Eiji, are you still at it?”
+
+@40769 Manami · マナミ（按段落 3DD4）
+> 「エイジ、どう、用意のほうは?」
+“Eiji, how are the preparations going?”
+
+@40770 Eiji · エイジ
+> 「ああ……姉さんがやってるよ」
+“Yeah... my sister's doing it.”
+
+@40771 Fa · ファ
+> 「ジュリアさん、お茶をいれましたから
+>  少し休んでください」
+“Ms. Julia, I've made some tea, so please take a little rest.”
+
+@40772 Julia · ジュリア
+> 「ありがとう」
+“Thank you.”
+
+@40773 Ark · アーク（按段落 3DD1）
+> 「……なんだか乗り気ではないようですね
+>  ジュリアさん」
+“...You don't seem very enthusiastic about this, Ms. Julia.”
+
+@40774 Selain · セレイン（按段落 3DD2）
+> 「どうもあんたは、あまり乗り気じゃない
+>  ようだね」
+“You don't seem too keen on this, do you?”
+
+@40775 Brad · ブラッド（按段落 3DD3）
+> 「なんだか調子が悪そうだな、
+>  聖女さまは。大丈夫、準備が
+“You look a bit under the weather, Holy Woman. Don't worry, we'll
+---
+>  終わるまでくらい、俺たちが
+>  もたせてみせるって」
+hold them off until the preparations are done.”
+
+@40776 Anna · アンナ
+> 「ジュリアさん……何か心配なことでも
+>  あるのですか?」
+“Ms. Julia... is something worrying you?”
+
+@40777 Manami · マナミ（按段落 3DD4）
+> 「もしかして……ジュリアさんは、この
+>  作戦に乗り気ではないのですか?」
+“Could it be... that you're not enthusiastic about this operation, Ms. Julia?”
+
+@40778 Julia · ジュリア
+> 「そうですね……わたくしは今でも、
+>  人と人とが最善をつくして
+“I suppose so... Even now, I believe that people doing their utmost and
+---
+>  理解しあうことが、いちばん大切な
+>  ことと信じています。できることならば
+understanding one another is the most important thing of all. If I could help it,
+---
+>  “グラドスの刻印”などは
+>  使いたくありませんでした」
+I never wanted to use the ‘Crest of Grados.’”
+
+@40779 Eiji · エイジ
+> 「ジュリア姉さん……」
+“Julia...”
+
+@40780 Anna · アンナ
+> 「それで、今まで
+>  “グラドスの刻印”のことを
+“So that's why you kept the ‘Crest of Grados’ a secret
+---
+>  秘密になさっていたのですね?」
+all this time?”
+
+@40781 Julia · ジュリア
+> 「ええ。けれどやむをえません。これ以上
+>  無益な血を流させないために
+“Yes. But it can't be helped. So that no more pointless blood is spilled,
+---
+>  地球人に絶望的な戦いを
+>  させないために。私たち人類は
+so that humanity need not fight a hopeless battle. We humans are
+---
+>  この大いなる宇宙の中では、
+>  まだ幼な子にすぎないのです
+still nothing but infants in this vast universe.
+---
+>  この刻印を残した先住グラドス
+>  人たちの知恵に、私たちは
+We must rely on the wisdom of the ancient Gradosians,
+---
+>  すがらねばなりません」
+who left this crest behind.”
+
+@40782 Komei · 孔明
+> 「クスコに例の遺跡があるのは確認
+>  したようですね」
+“It seems you've confirmed that the ruins in question are in Cusco.”
+
+@40783 Ivan · イワン
+> 「その通りです。もはや間違いない
+>  でしょう」
+“That's right. There can be no doubt now.”
+
+@40784 Komei · 孔明
+> 「では、あの方々へそれをお教えして
+>  さしあげましょう。あとは、なりゆきを
+“Then let us inform those people of it. After that, we shall simply
+---
+>  見るといたしましょう」
+see how things unfold.”
+
+@40785 Alberto · アルベルト
+> 「なんだと? ここまでやらせておいて、
+>  これで手をひくというのか!?」
+“What? You make us do all this, and now you're pulling out?!”
+
+@40786 Komei · 孔明
+> 「さよう、我々はここまでです。すべては
+>  ビッグファイアーのご意思によるもの」
+“Indeed. This is as far as we go. All of it is by Big Fire's will.”
+
+@40787 Alberto · アルベルト
+> 「ぬううぅぅ……」
+“Grrraaah...”
+
+@40788 Gorman · ゴーマン
+> 「ワール司令、ようやく到着なさい
+>  ましたか」
+“Commander Wahl, so you've finally arrived.”
+
+@40789 Wahl · ワール
+> 「ゴーマン大尉、状況はどうなって
+>  いる?」
+“Captain Gorman, what's the situation?”
+
+@40790 Gorman · ゴーマン
+> 「すでに総攻撃の用意は整って
+>  おります。また例の地球人どもより
+“The preparations for the all-out attack are already complete. We also have
+---
+>  皇帝陛下のお探しになっていた
+>  遺跡はあの地に間違いないとの
+a report from those Earthlings that the ruins His Majesty has been searching for
+---
+>  報告がありました」
+are indeed in that area.”
+
+@40791 Wahl · ワール
+> 「そうか……よし、全軍に
+>  攻撃命令を出せ!
+“I see... Good, issue the attack order to all forces!
+---
+>  地球人どもを撃破し、遺跡を
+>  破壊するのだ」
+Destroy the Earthlings and obliterate the ruins.”
+
+@40792 Gandal · ガンダル
+> 「司令官どの、陛下はずいぶんと、
+>  こだわりを持たれておるようだが
+“Commander, His Majesty seems to be quite fixated on this.
+---
+>  いったい、その遺跡とはなんなのだ?」
+Just what are those ruins, anyway?”
+
+@40793 Wahl · ワール
+> 「私も詳しくは知らん。4万年前
+>  に何者かが残したものとしか
+“I don't know the details either. I've only heard that something left them behind
+---
+>  聞いておらぬ。なに、地球人どもを
+>  ここでせん滅すれば、それですむことよ」
+40,000 years ago. In any case, if we wipe out the Earthlings here, that will be the end of it.”
+
+@40794 Judau · ジュドー
+> 「おい、奴らが攻撃を開始
+>  しやがったぜ!」
+“Hey, those guys have started attacking!”
+
+@40795 Roanne · ロアン
+# 审校：原文「刻印」与词表及上下文一致应译为 Crest，初稿译为 Engraving，统一为 Crest。
+> 「ついに始まりましたか……
+>  “刻印”の方はどうなのです?」
+“So it's finally begun... What of the ‘Crest’?”
+
+@40796 Koji · 甲児
+> 「まだやってるよ」
+“It's still going.”
+
+@40797 Ryoma · リョウ
+# 审校：同上，「刻印」统一译为 Crest。
+> 「みんな、俺たちも用意しよう。
+>  OZがいつまで、もってくれるかわからない
+“Everyone, let's get ready too. We don't know how long OZ can hold out.
+---
+>  刻印が発動する前に攻めこまれ
+>  たら、俺たちはおしまいだ」
+If they break through before the Crest activates, we're finished.”
+
+@40798 Roux · ルー
+> 「そうね、行きましょう」
+“Right. Let's go.”
+
+@40799 Bunny · バニー
+> 「艦長、衛星軌道上のグワダン
+>  から通信です」
+“Captain, we have a transmission from the Gwadan in satellite orbit.”
+
+@40800 Quattro · クワトロ
+> 「グワダン……ハマーンか。
+>  どういうつもりだ……?」
+“The Gwadan... Haman, is it? What does she want...?”
+
+@40801 Bright · ブライト
+> 「バニー、メインスクリーンに出してくれ」
+“Bunny, put it on the main screen.”
+
+@40802 Bunny · バニー
+> 「はい」
+“Yes.”
+
+@40803 Haman · ハマーン
+> 「{HeroMech}はトレーズと協力
+>  して、何か有効な反攻作戦を
+“So the {HeroMech} is cooperating with Treize and
+---
+>  行なっているそうだな」
+carrying out some kind of effective counteroffensive.”
+
+@40804 Quattro · クワトロ
+> 「ハマーン、何の用だ」
+“Haman, what do you want?”
+
+@40805 Haman · ハマーン
+> 「シャア……我々とて銀河帝国
+>  軍には勝たねばならんと
+“Char... Even we believe we must defeat the Galactic Empire's forces.
+---
+>  思っているのだ。現在も我々と
+>  ホワイトファングは銀河帝国軍と
+Even now, we and White Fang are engaged in battle with the Galactic Empire.
+---
+>  交戦中だ。が、そちらの作戦が
+>  終了するまで、これ以上やつらの
+But until your operation is complete, I will not let any more of their
+---
+>  降下部隊は降ろさせん」
+landing forces touch down.”
+
+@40806 Bright · ブライト
+> 「ハマーン・カーン……協力には感謝
+>  するが……」
+“Haman Karn... I appreciate the cooperation, but...”
+
+@40807 Haman · ハマーン
+> 「別に見返りなど要求せんよ。
+>  人類滅亡のかかった戦いだからな
+“I ask for no reward. This is a battle with humanity's extinction at stake.
+---
+>  では{HeroMech}の諸君、
+>  作戦の成功を祈る」
+Now then, people of the {HeroMech}, I pray for your operation's success.”
+
+@40808 Quattro · クワトロ
+> 「……いまだグワダン1隻しか出さずに、
+>  よくいう」
+“...She talks big, when she's still only sent out a single Gwadan.”
+
+@40809 Amuro · アムロ
+> 「クワトロ大尉、今は作戦に
+>  集中するんだ。ここで勝てなければ
+“Lieutenant Quattro, focus on the operation for now. If we don't win here,
+---
+>  アクシズがどうでも関係なくなる」
+it won't matter what Axis does.”
+
+@40810 Quattro · クワトロ
+> 「ああ……そうだな、アムロ」
+“Yeah... you're right, Amuro.”
+
+@40811 Anna · アンナ
+> 「AC195年10月1日。
+>  圧倒的な銀河帝国軍に
+“October 1, A.C. 195. Overwhelmed by the Galactic Empire's forces,
+---
+>  おされ、OZのクスコ防衛隊は
+>  壊滅に近い状態で
+OZ's Cusco defense unit has retreated in a state near annihilation.
+---
+>  後退しました。私たちはこの
+>  クスコの遺跡で、最後の対決を
+Here at the Cusco ruins, we are about to
+---
+>  迎えようとしています」
+face our final showdown.”
+
+@40812 Duo · デュオ
+> 「来やがった、来やがった。続々と
+>  防衛ラインを突破してきてるぜ」
+“They're coming, they're coming! They're breaking through the defense line one after another!”
+
+@40813 Quatre · カトル
+> 「ええ。かなりの数がここに集結して
+>  きていますね」
+“Yeah. A considerable number of them are converging here.”
+
+@40814 Shinobu · 忍
+> 「ちっ、どうやら連中の目的もこいつ
+>  らしいな」
+“Tch. Looks like this is what they're after too.”
+
+@40815 Ryo · 亮
+> 「ああ、そうらしい」
+“Yeah, seems so.”
+
+@40816 Eiji · エイジ
+> 「姉さん!」
+“Sis!”
+
+@40817 Julia · ジュリア
+> 「大丈夫です、エイジ。
+>  もうまもなく終わります。みなさん
+“It's all right, Eiji. It will be over soon. Everyone,
+---
+>  準備が整うまで守っていてください」
+please hold them off until the preparations are complete.”
+
+@40818 Banjo · 万丈
+> 「わかりました、頼みますよ。どうやら、
+>  やるしかないようだね」
+“Understood. We're counting on you. Looks like we've got no choice but to do this.”
+
+@40819 Bright · ブライト
+# 审校：同上，「刻印」统一译为 Crest。
+> 「そのようだ。全機、“刻印”の
+>  発動まで敵を遺跡に
+“It seems so. All units, don't let the enemy near the ruins
+---
+>  近づけるな!」
+until the Crest activates!”
+
+@40820 Gandal · ガンダル
+> 「あれか……地球人の守備隊など
+>  どうでもよい。全軍、遺跡の
+“So that's it... The Earthling garrison doesn't matter. All forces,
+---
+>  破壊を最優先とせよ。
+>  全軍、攻撃開始!」
+make destroying the ruins your top priority. All forces, begin the attack!”
+
+@40821 Janera · ジャネラ
+> 「ええい、ガンダルめ。何を手間どって
+>  おるのじゃ。ワルキメデス、ダンゲル
+“Gah, that Gandal. What's taking him so long? Warchimedes, Dungele,
+---
+>  我らも突入するぞ! なんとしても、
+>  あれを破壊するのじゃ」
+we're going in too! We will destroy it no matter what!”
+
+@40822 Warchimedes · ワルキメデス
+> 「おまかせください、ジャネラ様」
+“Leave it to us, Lady Janera.”
+
+@40823 Dungele · ダンゲル
+> 「腕がなるわ! この俺がたたきつぶして
+>  くれる!」
+“My fists are itching! I'll smash it to pieces myself!”
+
+@40824 Beltorchika · ベルトーチカ
+> 「敵の第二波です!」
+“It's the enemy's second wave!”
+
+@40825 Bright · ブライト
+# 审校：补出“them”，使“数量”指代敌人更自然。
+> 「わかっている! くそっ、なんという数だ」
+“I know! Damn it, what a number of them.”
+
+@40826 Beltorchika · ベルトーチカ
+> 「艦長! 敵の第三波、
+>  来ます!」
+“Captain! The enemy's third wave is coming!”
+
+@40827 Bright · ブライト
+> 「なんだと!?」
+“What?!”
+
+@40828 Gorman · ゴーマン
+> 「司令、突入準備完了です」
+“Commander, preparations for the assault are complete.”
+
+@40829 Wahl · ワール
+> 「よし、一気に攻め落とせ!」
+“Good, take them down in one push!”
+
+@40830 Tetsuya · 鉄也
+> 「くそっ、まだだってのかよ!」
+“Damn it, there's still more?!”
+
+@40831 Dr. Hazuki · 葉月博士
+> 「むっ……このエネルギー反応は……」
+“Hm... This energy reaction is...”
+
+@40832 Bright · ブライト
+> 「なんだ? “グラドスの刻印”
+>  が……発動するのか……?」
+“What? The ‘Engraving of Grados’ is... activating...?”
+
+@40833 Julia · ジュリア
+> 「みなさん、
+>  よく、もちこたえてくれました
+“Everyone, you have held out well.
+---
+>  これより“刻印”を発動させ
+>  ます」
+We will now activate the ‘Engraving.’”
+
+@40834 Alberto · アルベルト
+> 「どういうことだ、孔明。
+>  これでは失敗してしまったのではないか
+“What does this mean, Komei? Haven't we failed?
+---
+>  あのようなもの、我がBF団の
+>  エージェントを送りこめば
+If we had sent in an agent of our Big Fire,
+---
+>  とめられたかもしれんものを」
+something like that might have been stopped.”
+
+@40835 Komei · 孔明
+> 「フフフ、失敗などと、とんでもありま
+>  せん。これでよいのです」
+“Heh heh, failure? Not at all. This is exactly as it should be.”
+
+@40836 Alberto · アルベルト
+> 「なんだと?」
+“What did you say?”
+
+@40837 Komei · 孔明
+> 「よくお聞きなさい。この作戦こそ、
+>  我らBF団の悲願の
+“Listen carefully. This operation is the very first step toward our Big Fire's dearest wish.
+---
+>  第1歩なのですぞ。これすべて我らが
+>  ビッグファイアーのご意志なのです」
+All of this is the will of our Big Fire.”
+
+@40838 Show · ショウ
+> 「これが“グラドスの刻印”……」
+“So this is the ‘Engraving of Grados’...”
+
+@40839 Marvel · マーベル
+> 「こんなものが4万年も眠っていた
+>  なんて、信じられないわね……」
+“I can't believe something like this slept for 40,000 years...”
+
+@40840 Anna · アンナ
+> 「みて、光の柱が空へと上っていくわ」
+“Look, the pillar of light is rising into the sky.”
+
+@40841 Daisaku · 大作
+> 「……すごい……」
+“...Amazing...”
+
+@40842 Duo · デュオ
+> 「ああ、こいつはすげぇや」
+“Yeah, this is something else.”
+
+@40843 Janera · ジャネラ
+> 「ワール司令、
+>  いったいどうなっておるのじゃ!?
+“Commander Wahl, what on earth is happening?!
+---
+>  あれが陛下のおっしゃられていたもの
+>  なのか!?」
+Is that what His Majesty spoke of?!”
+
+@40844 Wahl · ワール
+> 「陛下とてどのようなものか、正確に
+>  は把握されておらなかったではないか!
+“Even His Majesty did not precisely grasp what it was, did he!
+---
+>  私は知らん。が、おそらくはそう
+>  考えて間違いあるまい」
+I do not know. But that is most likely the correct way to think of it.”
+
+@40845 Warchimedes · ワルキメデス
+> 「司令官! あれはいったい……」
+“Commander! What in the world is that...”
+
+@40846 Janera · ジャネラ
+> 「黙れ、ワルキメデス!」
+“Silence, Warchimedes!”
+
+@40847 Warchimedes · ワルキメデス
+> 「はっ……」
+“Yes, sir...”
+
+@40848 Wahl · ワール
+# 审校：原文页末是“か……”，初稿用“...”可接受，但为保持省略号统一，改为“...”。
+> 「……何にせよ、陛下があれほど
+>  気にかけられ、また地球人どもが
+“...In any case, given how much His Majesty concerned himself with it, and how desperately the Earthlings
+---
+>  必死になっておったところをみると、
+>  何か重大な装置に違いない
+fought over it, it must be some device of great importance.
+---
+>  ええい、状況を確認せねば
+>  ならんか……」
+Ugh, I suppose we must confirm the situation...”
+
+@40849 Janera · ジャネラ
+> 「どうするおつもりか?」
+“What do you intend to do?”
+
+@40850 Wahl · ワール
+> 「……ゴーマン、ここはまかせる。ジャネラ、
+>  ガンダル、我らは宇宙へもどるぞ」
+“...Gorman, I leave this place to you. Janera, Gandal, we return to space.”
+
+@40851 Gale · ゲイル
+> 「ジュリア……あれで終わったのか?」
+“Julia... Is that the end of it?”
+
+@40852 Julia · ジュリア
+> 「ええ……“グラドスの刻印”は
+>  発動しました。あの柱が宇宙へと
+“Yes... The ‘Engraving of Grados’ has activated. Once that pillar
+---
+>  出れば、空間をゆがめる機構が
+>  動き始めます」
+reaches space, the mechanism that warps space will begin to move.”
+
+@40853 Gale · ゲイル
+> 「そうか……」
+“I see...”
+
+@40854 Julia · ジュリア
+> 「しかしこれで、あともどりはできなくなり
+>  ました。この星系に来た者たちは
+“But now there is no turning back. Those who came to this star system
+---
+>  帰るべき場所を失ったのです。私
+>  たちもゾルバドス星の仲介なくしては
+have lost the place they should return to. Without the mediation of Planet Zorbados, we too
+---
+>  本星にもどれないでしょう」
+will not be able to return to our homeworld.”
+
+@40855 Gale · ゲイル
+> 「地球圏に残留することになる、か
+>  しかたあるまい
+“We will remain in the Earth Sphere, then. There is no other way.
+---
+>  もしも生き残れるならば、
+>  その者たちの処遇については
+If any of them survive, we must do all we can
+---
+>  我々が尽力せねばな」
+for their treatment.”
+
+@40856 Julia · ジュリア
+> 「ええ、もちろんです」
+“Yes, of course.”
+
+@40857 Gale · ゲイル
+> 「そうか……君は“聖女”だった
+>  のだな」
+“I see... So you were the ‘Holy Woman.’”
+
+@40858 Julia · ジュリア
+> 「わたくしは人々が望んでいることを
+>  するだけです」
+“I merely do what the people desire.”
+
+@40859 Banjo · 万丈
+> 「みんな、気をぬくなよ。“刻印”
+>  の発動が成功したからといって
+“Everyone, don't let your guard down. Just because the ‘Engraving’ activated successfully,
+---
+>  僕たちが圧倒的多数の敵に
+>  囲まれていることは変わらないんだ」
+it doesn't change the fact that we're surrounded by an overwhelming enemy force.”
+
+@40860 Bright · ブライト
+> 「ジュリアさん、あれで終わったのでしょう
+>  か」
+“Miss Julia, is that the end of it?”
+
+@40861 Julia · ジュリア
+> 「はい……“グラドスの刻印”は
+>  発動しました。あの柱が宇宙へと
+“Yes... The ‘Engraving of Grados’ has activated. Once that pillar
+---
+>  出れば、空間をゆがめる機構が
+>  動き始めます」
+reaches space, the mechanism that warps space will begin to move.”
+
+@40862 Amuro · アムロ
+> 「そうか……」
+“I see...”
+
+@40863 Julia · ジュリア
+> 「しかしこれで、あともどりはできなくなった
+>  ことをご承知ください
+“But please understand that there is no turning back now.
+---
+>  この星系に来た者たちは、
+>  帰るべき場所を失ったのです
+Those who came to this star system have lost the place they should return to.
+---
+>  戦いがどのようになろうとも、
+>  彼らもまたのちの地球圏の
+No matter how the battle turns out, they too must become
+---
+>  住人とならねばなりません」
+residents of the Earth Sphere in time.”
+
+@40864 Chum · チャム
+> 「それって、あたしたちがバイストンウェルに
+>  帰れないのと同じようなこと?」
+“Is that like how we can't go back to Byston Well?”
+
+@40865 Marvel · マーベル
+> 「そうね」
+“That's right.”
+
+@40866 Chum · チャム
+> 「えー、なんだかかわいそう……」
+“Aww, that's kind of sad...”
+
+@40867 Kamille · カミーユ
+> 「考えてみれば当然の話ですね。
+>  まさか、皆殺しなんてできるはずがない」
+“When you think about it, it's only natural. There's no way we could just kill them all.”
+
+@40868 Ryoma · リョウ
+> 「ああ……そうだな」
+“Yeah... you're right.”
+
+@40869 Banjo · 万丈
+> 「そんなことを考えている時じゃない。
+>  まだ銀河帝国軍は、そのまま
+“This isn't the time to be thinking about that. The Galactic Empire forces are still
+---
+>  残っているんだ。戦いに
+>  勝てねば、我々が地球圏から
+right there. If we don't win this battle, we'll be the ones
+---
+>  排除される側にまわることになる」
+driven out of the Earth Sphere.”
+
+@40870 Shinobu · 忍
+> 「ああ、いわれなくてもわかってるさ。
+>  まだまだ、これからだ
+“Yeah, you don't have to tell me that. We're just getting started.
+---
+>  敵の動きはどうなってんだ?
+>  戦闘は停止しているようだけどよ」
+What's the enemy doing? It looks like the fighting's stopped.”
+
+@40871 Sally · サリィ
+> 「いくつか部隊が残留し包囲網
+>  をしいているけど、大半は撤退を
+“Some units remain and are holding a siege, but most of them seem to have
+---
+>  開始しているみたいね」
+begun withdrawing.”
+
+@40872 Bright · ブライト
+> 「ふむ……ジュリアさん、彼らは何が
+>  起こったか理解しているのだろうか?」
+“Hmm... Miss Julia, do they understand what has happened?”
+
+@40873 Julia · ジュリア
+> 「わかりません。銀河帝国と
+>  先住グラドス人は数万年の
+“I don't know. The Galactic Empire and the native Gradosians must have had contact
+---
+>  昔に接触したことがあるはずです。
+>  あれが何か、知っていたとしても
+tens of thousands of years ago. It wouldn't be strange if they knew what that is,
+---
+>  不思議ではありませんが、実際に
+>  何が起こったかは、彼ら自身が
+but what actually happened is something they will have to
+---
+>  確認することになるでしょう」
+confirm for themselves.”
+
+@40874 Bright · ブライト
+> 「なるほど……よし、銀河帝国軍に
+>  対して“グラドスの刻印”の
+“I see... All right, let us inform the Galactic Empire forces of the activation of the ‘Engraving of Grados’
+---
+>  発動とその影響について、告知
+>  しよう。戦意をそげるかもしれん」
+and its effects. It may sap their will to fight.”
+
+@40875 Banjo · 万丈
+> 「そういうことなら、ロゼにやってもらおう。
+>  それがもっとも効果的だろう」
+“If that's how it is, let's have Rose do it. That'll be the most effective.”
+
+@40876 Takeru · タケル
+> 「しかし……」
+“But...”
+
+@40877 Rose · ロゼ
+> 「いいわ、マーズ。私がやります」
+“It's fine, Mars. I'll do it.”
+
+@40878 Takeru · タケル
+> 「ロゼ……」
+“Rose...”
+
+@40879 Rose · ロゼ
+> 「悪いのはズールだ、そういったのはマーズ
+>  あなたよ。私が呼びかけることで
+“Zuhl is the one to blame. You were the one who said that, Mars. If there are people who'll stop fighting
+---
+>  戦いをやめてくれる人がいるのなら、
+>  私はそれでいい」
+because I call out to them, then that's good enough for me.”
+
+@40880 Bright · ブライト
+> 「ふむ……頼めるか、ロゼ」
+“Hmm... Can I leave it to you, Rose?”
+
+@40881 Rose · ロゼ
+> 「はい」
+“Yes.”
+
+@40882 Daisuke · 大介
+> 「そういうことなら、僕とマリアで
+>  やりましょう」
+“If that's the case, let Maria and me do it.”
+
+@40883 Alan · アラン
+> 「君が?」
+“You?”
+
+@40884 Daisuke · 大介
+> 「奴らに滅ぼされたフリード星の
+>  生き残りである、僕とマリアの
+“If the words come from Maria and me, survivors of the Fleed Star that they destroyed,
+---
+>  言葉なら、より動揺を大きく
+>  できるはずです」
+we should be able to shake them up even more.”
+
+@40885 Bright · ブライト
+> 「ふむ……頼めるか、デューク、マリア」
+“Hmm... Can I leave it to you, Duke, Maria?”
+
+@40886 Maria · マリア
+> 「もっちろん。まかせて、みんな」
+“Of course. Leave it to us, everyone.”
+
+@40887 Alan · アラン
+> 「よし、そういうことなら、帝国軍に
+>  向けて発信する通信文について
+“All right, then let's work out the message we'll transmit
+---
+>  検討しよう」
+to the Imperial forces.”
+
+@40888 Bright · ブライト
+> 「そうだな。
+>  サリィ、敵の監視は続けてくれ
+“Right. Sally, keep monitoring the enemy.
+---
+>  それと、トレーズに連絡を頼む」
+And get in touch with Treize.”
+
+@40889 Sally · サリィ
+> 「わかりました」
+“Understood.”
+
+@40890 Banjo · 万丈
+> 「さて……あとは敵の動きを待つだけか
+>  うまくいってくれると、いいんだけどね」
+“Well... now all we can do is wait for the enemy to move. I hope it goes well.”
+
+@40891 Beauty · ビューティ
+> 「万丈、もしもうまくいかなかったら
+>  どうなるの?」
+“Banjo, what happens if it doesn't go well?”
+
+@40892 Reika · レイカ
+> 「決まってるでしょ。残った
+>  銀河帝国軍の数だけでも
+“Isn't it obvious? Even just the remaining Galactic Empire forces
+---
+>  圧倒的だわ。私たちは、
+>  負けるのよ」
+are overwhelming. We lose.”
+
+@40893 Amuro · アムロ
+> 「まぁ、そうと決まったわけでもないが……
+>  しかし、うまくいくにこしたことはない」
+“Well, it's not as if that's decided yet... but things going well would be for the best.”
+
+@40894 Banjo · 万丈
+> 「ああ……どうなることかな……」
+“Yeah... I wonder how this'll turn out...”
+
+@40895 Anna · アンナ
+> 「みんな、見て!」
+“Everyone, look!”
+
+@40896 Banjo · 万丈
+> 「どうした、アンナ?」
+“What is it, Anna?”
+
+@40897 David · デビッド
+# 审校：“What the?!” 不自然，改为更口语的 “What the—?!”
+> 「なんだぁ!?」
+“What the—?!”
+
+@40898 Amuro · アムロ
+> 「これは……
+>  これが刻印の影響なのか……?」
+“Is this... is this the effect of the Engraving...?”
+
+@40899 Sara · 沙羅
+> 「……空が……なんて光景だい、
+>  まったく」
+“...The sky... What a sight, I swear.”
+
+@40900 Duo · デュオ
+> 「ああ……こいつはまったく……
+>  宇宙が、ゆがんでるみたいだぜ」
+“Yeah... this is really something... It's like space itself is warping.”
+
+@40901 Kamille · カミーユ
+> 「ゆがむ……宇宙か……」
+“A warping... universe, huh...”
+
+@40902 Bright · ブライト
+# 审校：同上，统一为自然的英语表达
+> 「なんだ!?」
+“What the—?!”
+
+@40903 Chief Chujo · 中条長官
+> 「艦長、
+>  早乙女博士はそちらかね?」
+“Captain, is Dr. Saotome over there?”
+
+@40904 Dr. Saotome · 早乙女博士
+> 「わしはここにおるよ。何か?」
+“I'm right here. What is it?”
+
+@40905 Chief Chujo · 中条長官
+> 「博士、すぐに来てください。
+>  ゲッター線実験中のゲッターに
+“Doctor, come at once. Something strange is happening to the Getter
+---
+>  異変が生じているそうです」
+during the Getter Ray experiment.”
+
+@40906 Dr. Saotome · 早乙女博士
+> 「なんですと!? すぐに行きます!」
+“What?! I'll be right there!”
+
+@40907 Ryoma · リョウ
+> 「博士、いったいどうしたんです?」
+“Doctor, what on earth happened?”
+
+@40908 Dr. Saotome · 早乙女博士
+> 「お前たち、近づくんじゃない!」
+“You lot, don't come any closer!”
+
+@40909 Hayato · ハヤト
+> 「ああ、こいつはひどいな。どうしたって
+>  いうんです」
+“Yeah, this is bad. What's going on?”
+
+@40910 Dr. Saotome · 早乙女博士
+> 「うむ……あやうくゲッター炉が
+>  暴走しかけおった」
+“Hmm... The Getter reactor nearly went out of control.”
+
+@40911 Dr. Yotsuya · 四谷博士
+> 「早乙女博士、数値は
+>  正常値までもどっておるぞ」
+“Dr. Saotome, the readings have returned to normal levels.”
+
+@40912 Dr. Saotome · 早乙女博士
+> 「……もう大丈夫なようだな。危ない
+>  ところだった。あいつが暴走したら
+“...It seems to be all right now. That was close. If it had gone out of control,
+---
+>  ガンドールも無事ではすまなかった
+>  だろう」
+the Gandor wouldn't have escaped unharmed either.”
+
+@40913 Hayato · ハヤト
+> 「原因はわかっているんですか、
+>  博士?」
+“Do you know the cause, Doctor?”
+
+@40914 Dr. Saotome · 早乙女博士
+> 「ううむ……」
+“Hmm...”
+
+@40915 Prof. Yumi · 弓教授
+> 「早乙女博士、このデータを
+>  見てください」
+“Dr. Saotome, take a look at this data.”
+
+@40916 Dr. Saotome · 早乙女博士
+# 审校：“This is!” 不完整且不自然，改为 “This is—!”；同时让后半句更口语化
+> 「……これは! バカな、こんなことはあり
+>  えん! 弓教授、このデータは……」
+“...This is—! Impossible, this can't be! Prof. Yumi, this data is...”
+
+@40917 Prof. Yumi · 弓教授
+> 「暴走直前に、モニターした時の
+>  ものです」
+“It was monitored just before the runaway.”
+
+@40918 Benkei · ベンケイ
+> 「何だよ、どうしたんだよ博士」
+“What is it? What's wrong, Doctor?”
+
+@40919 Dr. Saotome · 早乙女博士
+> 「わからん……この異常な数値は……」
+“I don't know... These abnormal readings...”
+
+@40920 Dr. Yotsuya · 四谷博士
+> 「もしやとは思うが……
+>  “グラドスの刻印”の発動が
+“I may be wrong, but... perhaps the activation of the ‘Crest of Grados’
+---
+>  影響しておるのではないかな」
+is having an effect.”
+
+@40921 Dr. Saotome · 早乙女博士
+> 「だとすれば……この数値をもとに
+>  計算をやりなおし……いかん!」
+“If so... I'll redo the calculations based on these readings... No, this is bad!”
+
+@40922 Ryoma · リョウ
+> 「こんどは何です」
+“What is it this time?”
+
+@40923 Dr. Saotome · 早乙女博士
+> 「いまの暴走で、ゲッター線
+>  増幅炉が使えなくなってしまった
+“That runaway has made the Getter Ray amplification reactor unusable.
+---
+>  くそ、これでは実験を続けることが
+>  できん……」
+Damn it, at this rate I can't continue the experiments...”

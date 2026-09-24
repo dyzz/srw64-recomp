@@ -1,0 +1,999 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@45200 Wahl · ワール
+> 「陛下! ズール皇帝陛下!」
+“Your Majesty! Emperor Zuul, Your Majesty!”
+
+@45201 Emperor Zuul · ズール皇帝
+> 「どうした、ワール」
+“What is it, Wahl?”
+
+@45202 Wahl · ワール
+> 「はっ、地球人の軍勢がこちらへ
+>  向かっております」
+“Yes, sir. The Earthling forces are advancing on us.”
+
+@45203 Emperor Zuul · ズール皇帝
+> 「その程度のことか。迎撃の
+>  用意をせよ」
+“Is that all? Prepare to intercept them.”
+
+@45204 Wahl · ワール
+> 「しかし陛下、兵士たちの間で
+>  かなりの混乱が続いております
+“But Your Majesty, there is still considerable confusion among the troops.
+---
+>  このままでは戦闘に支障を
+>  きたします。現状では我がほうの
+At this rate, it will hinder our combat operations. As things stand, our
+---
+>  総合戦力は、地球降下前
+>  の20%にも届かぬものと……」
+total fighting strength is not even 20% of what it was before the descent to Earth...”
+
+@45205 Emperor Zuul · ズール皇帝
+> 「混乱だと? ワシの命令に従えぬ
+>  者には、死あるのみといったはずだ
+“Confusion? I told you that those who will not obey my orders have only death awaiting them.
+---
+>  ワール、粛清が進んでおらぬようだな」
+Wahl, it seems the purges are not proceeding.”
+
+@45206 Wahl · ワール
+> 「陛下……」
+“Your Majesty...”
+
+@45207 Emperor Zuul · ズール皇帝
+> 「ワシのために戦わぬ兵士の数など、
+>  半分になっても構わん
+“I do not care if the number of soldiers who will not fight for me is halved.
+---
+>  地球人どもが来る前に、
+>  愚か者どもの粛清を完了せよ!
+Complete the purge of the fools before the Earthlings arrive!
+---
+>  わかったな、ワール!」
+Do you understand, Wahl?!”
+
+@45208 Wahl · ワール
+> 「は……おおせのままに……」
+“Yes... as you command...”
+
+@45209 Gishin Soldier · ギシン星兵
+> 「くそぉっ、こんな所で死んでたまるか!
+>  俺は家族に会いに帰るんだ!」
+“Damn it, I refuse to die in a place like this! I'm going home to see my family!”
+
+@45210 Vega Soldier · ベガ星兵
+> 「持ち場に戻らぬ者は、その場で
+>  処刑せよとの命令が出ている
+“Orders have been given that anyone who does not return to their post is to be executed on the spot.
+---
+>  悪く思うなよ」
+Don't hold it against me.”
+
+@45211 Gishin Soldier · ギシン星兵
+> 「うわあぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@45212 Vega Soldier · ベガ星兵
+> 「命令に従わなかったら……俺たちが
+>  殺されるんだ」
+“If we don't follow orders... we're the ones who get killed.”
+
+@45213 Eiji · エイジ
+> 「……いよいよか」
+“...It's finally time.”
+
+@45214 Daisuke · 大介
+> 「……ああ、いよいよだ」
+“...Yeah, it's finally time.”
+
+@45215 Kamille · カミーユ
+> 「…………」
+“...”
+
+@45216 Tod · トッド
+> 「いよいよだぞ、ショウ……」
+“It's finally time, Show...”
+
+@45217 Show · ショウ
+> 「…………」
+“...”
+
+@45218 Chum · チャム
+> 「ねえねえショウ、ショウってば! もう、
+>  みんな黙り込んじゃってどうしたの?」
+“Hey, hey, Show! Show, I'm talking to you! Geez, everyone's gone all quiet. What's wrong?”
+
+@45219 Show · ショウ
+> 「……あの異星人の大艦隊に、
+>  こっちからしかけようっていうんだ
+“...We're about to take on that huge alien fleet head-on.
+---
+>  緊張くらいは、するさ」
+Of course we're nervous.”
+
+@45220 Chum · チャム
+> 「ふーん……そういうものなの?」
+“Hmm... is that how it works?”
+
+@45221 Show · ショウ
+> 「まあ、人それぞれだろうけど……」
+“Well, I suppose it's different for everyone...”
+
+@45222 Koji · 甲児
+> 「なんだよ、辛気くせえな!
+>  一発気合い入れて
+“What's with the long faces?! Let's fire ourselves up and
+---
+>  バーッとやっちまおうぜ! なぁに、
+>  俺たちは“刻印”の
+go all out! Come on, we pulled it off back when the ‘Mark’
+---
+>  発動んときだって、やれたんだ。
+>  今度だって大丈夫さ!」
+activated, didn't we? We'll be fine this time too!”
+
+@45223 Sayaka · さやか
+> 「あ～あ、まったく、こんなときになっても
+>  ぜーんぜん、緊張感がないんだから」
+“Oh, geez, honestly, even at a time like this you've got absolutely no sense of tension.”
+
+@45224 Bright · ブライト
+> 「みんなの様子はどうだ、アムロ」
+“How's everyone holding up, Amuro?”
+
+@45225 Amuro · アムロ
+> 「さすがに緊張しているようだ。もちろん
+>  そうじゃない連中もいるけどね」
+“They seem nervous, as expected. Of course, there are some who aren't.”
+
+@45226 Banjo · 万丈
+> 「しかたないさ。敵が
+>  混乱しているだろうとはわかっても
+“It can't be helped. Even if we know the enemy is in disarray,
+---
+>  いざ戦闘となったとき、どうなるかは
+>  わからない。なにしろ敵さんは
+once the fighting starts, there's no telling how it will go. After all, the enemy has
+---
+>  あの数だからね。よほど戦意を
+>  喪失していてくれないかぎり
+that kind of numbers. Unless they've lost their will to fight in a big way,
+---
+>  僕たちだけでは、勝つことは難しい」
+we can't win on our own.”
+
+@45227 Alan · アラン
+> 「だが、いま無理ならば、
+>  もはやどうにもならん」
+“But if we can't do it now, then there's nothing left we can do.”
+
+@45228 Amuro · アムロ
+> 「みんなもわかっているのさ。
+>  だから緊張もする
+“Everyone understands that. That's why they're nervous.
+---
+>  いい方へ作用すると思いたいな」
+I'd like to think it'll work in our favor.”
+
+@45229 Bright · ブライト
+> 「そうだな」
+“You're right.”
+
+@45230 Julia · ジュリア
+> 「……レディさん」
+“...Lady.”
+
+@45231 Lady · レディ
+> 「……これは、ジュリア様。
+>  どうかなさったのですか?」
+“...Why, Lady Julia. Is something the matter?”
+
+@45232 Julia · ジュリア
+> 「ひとつお聞きしても、よろしいでしょうか
+>  OZという組織には、もうそれほど
+“May I ask you one thing? OZ as an organization
+---
+>  戦力は残ってはいないでしょう。
+>  ですが、エイジや他の皆さんは
+surely doesn't have much fighting strength left. But I hear that Eiji and the others
+---
+>  銀河帝国軍と戦うために、
+>  宇宙へ上がったと聞きます」
+went up into space to fight the Galactic Empire's army.”
+
+@45233 Lady · レディ
+> 「はい」
+“Yes.”
+
+@45234 Julia · ジュリア
+> 「戦いを終わらせることができると、
+>  お思いなのですか?」
+“Do you believe they can put an end to this war?”
+
+@45235 Lady · レディ
+> 「わかりません」
+“I don't know.”
+
+@45236 Julia · ジュリア
+> 「おわかりにならない?」
+“You don't know?”
+
+@45237 Lady · レディ
+> 「そう申し上げるほかは、ないでしょう。
+>  貴女と“刻印”のおかげで
+“There's nothing else I can say. Thanks to you and the ‘Mark,’
+---
+>  私たちは最悪の事態だけは、
+>  まぬがれることが出来ました。ですが
+we were able to avoid the worst-case scenario. But it is also
+---
+>  依然として危機的な状況に
+>  あるのもまた、事実です。私たちには
+a fact that we remain in a critical situation. We have no choice
+---
+>  彼らに希望を託すほかはないのです
+>  たとえ、結果がどのようになろうとも…」
+but to entrust our hopes to them. No matter how it turns out...”
+
+@45238 Lady · レディ
+> (そして……それがトレーズ様の
+>  ご意志でもあるのだから……)
+(And... because that is also what Lord Treize wishes...)
+
+@45239 Amuro · アムロ
+> 「ハマーンから連絡があっただって?」
+“You say Haman sent word?”
+
+@45240 Bright · ブライト
+> 「ああ、トレーズ特佐が話をされた。
+>  これから、その件について
+“Yeah, Colonel Treize told me. He says he has something
+---
+>  話があるそうだ」
+to discuss about that matter.”
+
+@45241 Treize · トレーズ
+> 「諸君、アクシズのハマーン・カーンから
+>  連絡があったのは
+“Everyone, I trust you already know that we received word from Haman Karn of Axis.
+---
+>  すでに知っていると思う。
+>  それで大変興味深い話を
+And from that, I was able
+---
+>  聞くことが出来た」
+to hear something extremely interesting.”
+
+@45242 Ark · アーク（按段落 3DD1）
+> 「なんです?」
+“What is it?”
+
+@45243 Selain · セレイン（按段落 3DD2）
+> 「どのような話です」
+“What sort of talk?”
+
+@45244 Brad · ブラッド（按段落 3DD3）
+> 「なんだよ、もったいぶらずに、いってくれよ」
+“Come on, don't keep us in suspense. Just tell us.”
+
+@45245 Manami · マナミ（按段落 3DD4）
+> 「興味深い話?
+>  いったいなんなのです?」
+“Interesting talk? What on earth is it?”
+
+@45246 Treize · トレーズ
+> 「“刻印”の発動により、
+>  こちらに取り残された艦隊の中に
+“With the activation of the ‘Mark,’ among the fleet left stranded on this side,
+---
+>  銀河帝国のズール皇帝が
+>  いるというのだ」
+Emperor Zuul of the Galactic Empire is present.”
+
+@45247 Takeru · タケル
+> 「ズールが!?」
+“Zuul?!”
+
+@45248 Daisuke · 大介
+> 「まさか……ズール皇帝が、
+>  じきじきに出てきているというのか?」
+“No way... Emperor Zuul himself has come out to the front?”
+
+@45249 Tetsuya · 鉄也
+> 「ハマーンのいったことだろう。
+>  信じられるのか?」
+“This is what Haman said, right? Can we believe it?”
+
+@45250 Alan · アラン
+> 「向こうはいったいどうして、
+>  それを知ったのです?」
+“Just how did they come to know that?”
+
+@45251 Treize · トレーズ
+> 「ひん死の状態で漂流中だった、
+>  帝国軍兵士をとらえたそうだ
+“They apparently captured an Imperial soldier drifting near death.
+---
+>  脱走兵らしい」
+He seems to have been a deserter.”
+
+@45252 Bright · ブライト
+> 「脱走兵?」
+“A deserter?”
+
+@45253 Treize · トレーズ
+> 「そうだ。さらに、その兵士によれば、
+>  帝国軍の艦隊内では
+“That's right. Moreover, according to that soldier, within the Imperial fleet,
+---
+>  反乱分子の粛清が
+>  行なわれているということだ」
+rebels are being purged.”
+
+@45254 Banjo · 万丈
+> 「それはまた、穏やかじゃないね」
+“Well, that's hardly a calm state of affairs.”
+
+@45255 Treize · トレーズ
+> 「それをしかけたのが、我々であったこと
+>  を考えると、そうもいっていられないがね」
+“Considering that we were the ones who set it off, I suppose we can't say that.”
+
+@45256 Eiji · エイジ
+> 「……そこまでの影響が……」
+“...The effects reach that far...”
+
+@45257 Treize · トレーズ
+> 「そのようだ。話によれば、敵艦隊の
+>  兵士たちの大部分が
+“It seems so. According to the story, the majority of the enemy fleet's soldiers
+---
+>  いちじるしく戦意を喪失している。
+>  また、艦艇を奪い
+have markedly lost their will to fight. And those who seize ships
+---
+>  帰還を試みようとする者も、
+>  後を絶たないそうだ」
+and attempt to return home are said to be endless.”
+
+@45258 Quattro · クワトロ
+> 「まさに反乱だな。それでその皇帝と
+>  やらは、説得は不可能と考え
+“That's outright rebellion. So this emperor of theirs deems them impossible to persuade,
+---
+>  そういった者たちを
+>  処分しているというわけか」
+and is disposing of such people, is that it?”
+
+@45259 Anna · アンナ
+> 「ひどい……なんてひどいことを。
+>  どうして、そんなことができるの……」
+“How awful... How awful. How can he do such a thing...”
+
+@45260 Takeru · タケル
+> 「ズールのやりそうなことだ。
+>  俺を本当の両親から引き離し
+“That's just like something Zuul would do. The Zuul who tore me from my real parents
+---
+>  爆弾のキーとして地球に
+>  送り込んだ、あのズールの」
+and sent me to Earth as a bomb's key.”
+
+@45261 Rose · ロゼ
+> 「……説得が
+>  不可能だからではないわ」
+“...It's not because persuasion is impossible.”
+
+@45262 Quattro · クワトロ
+> 「どういうことだ?」
+“What do you mean?”
+
+@45263 Rose · ロゼ
+> 「ズール皇帝は、最初から
+>  そんなつもりもないんです。ズールにとって
+“Emperor Zuul never had any such intention from the start. To Zuul,
+---
+>  兵士はすべて自分のために戦い、
+>  死ぬ、道具にすぎない
+soldiers are nothing but tools who fight and die for him.
+---
+>  それ以外の行動など、
+>  絶対に認めない」
+Any other action, he will absolutely never permit.”
+
+@45264 Anna · アンナ
+> 「ロゼ……」
+“Rose...”
+
+@45265 Rose · ロゼ
+> 「私も……ズール皇帝に直接そう
+>  いわれたわ。私はあなた方と戦い
+“I too... was told so directly by Emperor Zuul. I fought you all,
+---
+>  敗れ、責任をとるために、自決を
+>  申し出たことがあったの。でも……
+was defeated, and once offered to take responsibility by taking my own life. But...
+---
+>  ズールはそれすら認めなかった。
+>  そんな勝手は許さないといって
+Zuul wouldn't even allow that. He said such selfishness would not be permitted,
+---
+>  命果てるまで戦って、死ねと」
+and told me to fight until my life ended, and die.”
+
+@45266 Daisuke · 大介
+> 「僕も直接はあったことはないが、
+>  噂は聞いたことがある
+“I've never met him directly either, but I've heard the rumors.
+---
+>  ズール皇帝の非道さは、
+>  幹部すらも恐れているという
+Emperor Zuul's cruelty is feared even by his own officers.
+---
+>  説得ができないからではない。
+>  恐らく、そのつもりもないのだ」
+It's not that he cannot be persuaded. Most likely, he has no such intention at all.”
+
+@45267 Ryoma · リョウ
+> 「なんて奴だ」
+“What a bastard.”
+
+@45268 Ryo · 亮
+> 「……問題は、その粛清とやらが、
+>  敵にどう影響しているかだな」
+“...The question is how that purge is affecting the enemy.”
+
+@45269 Koji · 甲児
+> 「どうって……敵の兵士は
+>  ろくに戦う気力もないってことだろ
+“How? ...It means the enemy soldiers don't have much will to fight left.
+---
+>  俺たちにも十分勝つ
+>  見込みはあるってことだぜ!」
+It means we've got a good enough chance of winning!”
+
+@45270 Shinobu · 忍
+> 「そういうこった。
+>  よーし、やってやろうじゃねぇか!」
+“That's what it comes down to. All right, let's go do this!”
+
+@45271 Ryo · 亮
+# 审校：“you two”与原文“お前たち”不符，且前文未限定两人，改为“you lot”更贴切。
+> 「まったく、お前たちはいつもそれだな」
+“Honestly, you lot are always like that.”
+
+@45272 Koji · 甲児
+> 「なんだよ、違うってのか?」
+“What, you saying we're wrong?”
+
+@45273 Roanne · ロアン
+# 审校：补出“Thinking it through”的主语，使语气更自然。
+> 「戦いを拒否すれば、確実に
+>  処分される
+“Refuse to fight, and you're certain to be disposed of.
+---
+>  逃げようとしても同じでしょう。
+>  では、彼らが
+Try to run, and it's the same. So then, how are they
+---
+>  生き残るにはどうすればよいか。
+>  そう考えれば、わかりませんか
+to survive? If you think it through, don't you see?
+---
+>  ある意味では、少し前の我々と
+>  似た部分もありますよ」
+In a sense, there's a part of them that resembles us not long ago.”
+
+@45274 Shinobu · 忍
+> 「……戦うしかねぇってことか。
+>  戦って、勝つしか」
+“...So we've got no choice but to fight. Fight, and win, that's all.”
+
+@45275 Alan · アラン
+> 「その通りだ、藤原。どれだけの
+>  兵士が粛清されるのかはわからんが
+“Exactly, Fujiwara. We don't know how many soldiers will be purged,
+---
+>  残った兵士たちは、
+>  死に物狂いで戦うだろう」
+but the ones who remain will fight like men possessed.”
+
+@45276 Ryoma · リョウ
+> 「決して楽ではないということだな」
+“So it won't be easy, then.”
+
+@45277 Hayato · ハヤト
+> 「だが、もう一つ重要な点があるぜ」
+“But there's one more important point.”
+
+@45278 George · ジョルジュ
+> 「それはいったい、なんです?」
+“And what might that be?”
+
+@45279 Hayato · ハヤト
+> 「それは、敵の艦隊のどこかに、
+>  確実にズールがいるということだ」
+“It's that somewhere in the enemy fleet, Zuul is definitely there.”
+
+@45280 Masato · 雅人
+> 「……そっか! そういう状況なら、
+>  ズールを倒せば
+“...I see! If that's the situation, then beating Zuul
+---
+>  戦いを終わらせられるかもしれない!」
+might put an end to this war!”
+
+@45281 Treize · トレーズ
+> 「そう、私もそう考えた。
+>  敵艦隊内の反乱
+“Yes, that's what I thought as well. Considering the rebellion within the enemy fleet,
+---
+>  そしてその事実、
+>  その2つを考慮すれば
+and that fact as well, you could say we have a chance at victory.
+---
+>  我々には勝機があるといえる。
+>  決して、楽観できるものではないがね」
+Though it's certainly nothing to be optimistic about.”
+
+@45282 Quattro · クワトロ
+> 「そうだな。しかし、
+>  これまでの状況を考えれば
+“Indeed. But given the situation so far,
+---
+>  勝つ可能性があるというだけでも、
+>  十分といえる」
+just having a possibility of winning is enough.”
+
+@45283 Treize · トレーズ
+> 「そういうことになる」
+“That's how it is.”
+
+@45284 Judau · ジュドー
+> 「それで、ハマーンはどう動くってんです」
+“So what's Haman going to do?”
+
+@45285 Treize · トレーズ
+> 「どうやら、こちらの作戦に
+>  あわせるつもりのようだ
+“It seems she intends to match her moves to our operation.
+---
+>  現在、敵のいる宙域には、
+>  いくつかの艦隊が存在している
+Right now, there are several fleets in the enemy's sector of space.
+---
+>  我々は敵の本陣と思われる
+>  集団へ攻撃をかける予定だが
+We plan to attack the group we believe is the enemy's main force,
+---
+>  アクシズ軍もまたそのうちの
+>  ひとつに向かっているようだ」
+but it appears the Axis Forces are also heading toward one of them.”
+
+@45286 Judau · ジュドー
+> 「ちぇっ、きったねぇの」
+“Tch, how sneaky.”
+
+@45287 Ryoma · リョウ
+> 「だが、連中もしかけるというのなら、
+>  それだけこちらにくる敵も減る」
+“But if they're going to make a move too, that means fewer enemies coming at us.”
+
+@45288 Masato · 雅人
+> 「協力してくれるとでも
+>  思っておけばいいってことか」
+“So we just have to assume they'll cooperate with us.”
+
+@45289 Koji · 甲児
+> 「でもよ、はちあわせたらどうするんだ」
+“But what do we do if we run into them?”
+
+@45290 Bright · ブライト
+> 「どう思う、特尉?」
+“What do you think, Special Lieutenant?”
+
+@45291 Quattro · クワトロ
+> 「ハマーンがそう動くのであれば、
+>  少なくとも、銀河帝国軍に
+“If Haman moves that way, then at the very least, while she's facing
+---
+>  対峙している間は
+>  こちらにはしかけてくるまい」
+the Galactic Empire's forces, she won't make a move on us.”
+
+@45292 Bright · ブライト
+> 「そう思う。信用しよう、特尉」
+“I agree. Let's trust her, Special Lieutenant.”
+
+@45293 Koji · 甲児
+> 「しかし……もし俺たちの作戦が
+>  うまくいった場合はどうなるんだよ」
+“But... what happens if our operation goes well?”
+
+@45294 Amuro · アムロ
+> 「その後は向こう次第ということだな
+>  やりあわずに済めばいいんだが……」
+“After that, it's up to them. It'd be nice if we could get through this without fighting...”
+
+@45295 Quattro · クワトロ
+> 「ああ……」
+“Yeah...”
+
+@45296 Amuro · アムロ
+> 「……クワトロ特尉、いまは目の前の
+>  戦いに集中してもらいたいな」
+“...Special Lieutenant Quattro, right now I'd like you to focus on the battle in front of us.”
+
+@45297 Quattro · クワトロ
+> 「……わかっている」
+“...I know.”
+
+@45298 Beltorchika · ベルトーチカ
+> 「2時の方向より、
+>  敵艦隊接近!」
+“Enemy fleet approaching from two o'clock!”
+
+@45299 Bright · ブライト
+> 「進路そのまま!
+>  最大戦速で突破しろ!
+“Hold course! Break through at maximum battle speed!
+---
+>  我々の目標は、
+>  最深部に位置する艦隊だ!」
+Our target is the fleet at the very back!”
+
+@45300 Reika · レイカ
+> 「艦長、敵艦隊の動きは
+>  思ったより早いわ
+“Captain, the enemy fleet is moving faster than expected.
+---
+>  これでは、戦闘中に挟撃される
+>  恐れがあります!」
+At this rate, there's a risk we'll be caught in a pincer attack during combat!”
+
+@45301 Bright · ブライト
+> 「かまわん。全部相手にしている
+>  余裕はない!
+“I don't care. We don't have the luxury of dealing with them all!
+---
+>  パイロット各員は
+>  発進スタンバっておけ!」
+All pilots, stand by to launch!”
+
+@45302 Emperor Zuul · ズール皇帝
+> 「地球人どもか」
+“The Earthlings, is it.”
+
+@45303 Gandal · ガンダル
+> 「おのれ、たったあれだけの戦力で
+>  ここまでくるとは。全軍
+“Curse them, coming this far with only that much force. All forces,
+---
+>  戦闘開始だ! 奴らを生かして
+>  帰すな!! ん? どうしたブラッキー」
+begin combat! Don't let them leave alive!! Hm? What is it, Blacky?”
+
+@45304 Blacky · ブラッキー
+> 「……ズ、ズール皇帝陛下!
+>  ただいま、別方面にも
+“...E-Emperor Zuul, Your Majesty! We've just received a report that
+---
+>  地球人の艦隊が
+>  現れたと、報告がありました!」
+an Earthling fleet has appeared in another sector as well!”
+
+@45305 Emperor Zuul · ズール皇帝
+> 「捨て置けい! 地球人どもなど、
+>  いくら来たとて
+“Leave them be! No matter how many Earthlings come,
+---
+>  たいしたものではないわ! マーズ……
+>  それに地球人どもめ。このワシに
+they're nothing to worry about! Mars... and those Earthlings. Do they
+---
+>  勝てるつもりでおるのか!? 死んで
+>  自分の愚かさを呪うがよい!!」
+think they can beat me?! They'd best die and curse their own foolishness!!”
+
+@45306 Takeru · タケル
+> 「……ズールだ! 奴がいる!」
+“...It's Zuul! He's there!”
+
+@45307 Takeru · タケル
+> 「ガイヤァァァァァーッ!!」
+“Gaiyaaaaaaaaah!!”
+
+@45308 Takeru · タケル
+> 「六神がったぁぁぁーいッ!!」
+“Godmars, launch!!”
+
+@45309 Beltorchika · ベルトーチカ
+> 「ゴッドマーズ、出撃しました!」
+“Godmars has launched!”
+
+@45310 Bright · ブライト
+> 「ズールだと!? 確かなのか!?」
+“Zuul?! Are you certain?!”
+
+@45311 Takeru · タケル
+> 「間違いありません。ズールがいます!」
+“There's no mistake. Zuul is here!”
+
+@45312 Garrison · ギャリソン
+> 「こちらの分析が正しかったようですな」
+“It seems our analysis was correct.”
+
+@45313 Treize · トレーズ
+> 「諸君、ここで決着をつけてくれ。
+>  頼む」
+“Everyone, settle this here. I'm counting on you.”
+
+@45314 Bright · ブライト
+> 「パイロット各員、出撃しろ!!」
+“All pilots, launch!!”
+
+@45315 Takeru · タケル
+> 「ズールッ!」
+“Zuul!”
+
+@45316 Emperor Zuul · ズール皇帝
+> 「マーズよ、よくもいままで、
+>  このワシに逆らい続けてくれおったな」
+“Mars, you've done well to keep defying me all this time.”
+
+@45317 Takeru · タケル
+> 「ズール、お前たちはもう
+>  帝国へは戻れない
+“Zuul, you and your kind can never return to the empire now.
+---
+>  この地球圏で生きるしか
+>  ないはずだ! 戦いをやめろ!」
+You have no choice but to live in this Earth sphere! Stop fighting!”
+
+@45318 Rose · ロゼ
+> 「マーズ!? …………ズール皇帝、
+>  兵士たちもそう望んでいるはずです!
+“Mars?! ...Emperor Zuul, the soldiers must wish for that too!
+---
+>  もうおやめください!」
+Please, stop this!”
+
+@45319 Emperor Zuul · ズール皇帝
+> 「裏切り者め。このワシと
+>  話しあいでもする気か?
+“Traitor. Do you intend to talk things over with me?
+---
+>  宇宙の支配者たる、
+>  このワシと!? フハハハハハハッ!!」
+With me, the ruler of the universe?! Fuhahahahahaha!!”
+
+@45320 Takeru · タケル
+> 「ズール! これ以上戦っても、
+>  互いに傷つくだけだ!」
+“Zuul! Fighting any longer will only hurt us both!”
+
+@45321 Emperor Zuul · ズール皇帝
+> 「ワーッハハハハハッ!! 愚か者め!
+>  すべての者が
+“Wahahahahaha!! Fool! Everyone
+---
+>  ワシにひざまづき服従を誓う。ワシは
+>  宇宙の支配者。すべてのものが
+kneels before me and swears allegiance. I am the ruler of the universe. Everything
+---
+>  ワシの意のままに動くのだ!
+>  逆らうことはできん!!
+moves as I will it! None can defy me!!
+---
+>  逆らった者は、
+>  死んで自らの愚かさを知るのだ!」
+Those who defy me die, and learn their own foolishness!”
+
+@45322 Takeru · タケル
+> 「ズールッ!!」
+“Zuul!!”
+
+@45323 Bright · ブライト
+> 「いいか、全員、
+>  ズールに攻撃を集中しろ!
+“Listen up, everyone, focus your attacks on Zuul!
+---
+>  なんとしてもズールを倒すんだ!」
+We must defeat Zuul no matter what!”
+
+@45324 Emperor Zuul · ズール皇帝
+> 「おのれ!!」
+“Curse you!!”
+
+@45325 Bright · ブライト
+> 「やったか!?」
+“Did we get him?!”
+
+@45326 Emperor Zuul · ズール皇帝
+> 「フハハハハッ! 愚か者どもめ!!
+>  それしきのことで
+“Fuhahahaha! Fools!! Did you really think
+---
+>  このワシが倒せるとでも思ったか!
+>  このワシの力を思い知るがいい!」
+you could defeat me with something like that?! Behold my true power!”
+
+@45327 Bright · ブライト
+> 「な……なんだと!? あれが……ズールか!」
+“W-what?! That was... Zuul?!”
+
+@45328 Dungele · ダンゲル
+> 「なんだと!? うおぉぉぉぉっ!
+>  ジャ、ジャネラ様ぁぁっ!!」
+“What?! Uwaaaaaaah! L-Lady Janera!!”
+
+@45329 Emperor Zuul · ズール皇帝
+> 「お、おのれぇ!!
+>  うおおおぉぉぉぉぉーっ!!!」
+“C-curse you!! Uwaaaaaaah!!!”
+
+@45330 Beauty · ビューティ
+> 「やったぁっ!!」
+“We did it!!”
+
+@45331 Garrison · ギャリソン
+> 「ふむ……これはいけませんな、艦長。
+>  敵はまだ
+“Hmm... this won't do, Captain. It seems the enemy still
+---
+>  戦闘を継続するつもりのようですぞ」
+intends to continue the fight.”
+
+@45332 Bright · ブライト
+> 「なんだと? ズールを倒したのに
+>  戦いをやめないというのか!?」
+“What? You're saying they won't stop fighting even though we defeated Zuul?!”
+
+@45333 Treize · トレーズ
+> 「艦長、やむを得ない。
+>  敵を撃滅するしかないようだ」
+“Captain, it can't be helped. It seems we have no choice but to annihilate the enemy.”
+
+@45334 Bright · ブライト
+> 「わかりました。残敵を掃討しろ!」
+“Understood. Mop up the remaining enemy forces!”
+
+@45335 Takeru · タケル
+> 「ズール! 俺は貴様を倒す!!」
+“Zuul! I'm going to take you down!!”
+
+@45336 Emperor Zuul · ズール皇帝
+> 「裏切り者マーズ。ワシに
+>  逆らったことを後悔するがいい!」
+“Traitor Mars. You'd best regret defying me!”
+
+@45337 Rose · ロゼ
+> 「ズール皇帝! 覚悟!!」
+“Emperor Zuul! Prepare yourself!!”
+
+@45338 Emperor Zuul · ズール皇帝
+> 「ロゼか。お前ごときが相手に
+>  なるとでも思うのか!? 死ねい!」
+“Rose, is it? Do you really think the likes of you can face me?! Die!”
+
+@45339 Bright · ブライト
+> 「…………終わったか……これで……」
+“...It's over... With this...”
+
+@45340 Takeru · タケル
+> 「ズールを……
+>  本当にズールを倒したのか……」
+“Zuul... Did we really defeat Zuul...”
+
+@45341 Koji · 甲児
+# 审校：“ざまぁみろってんだ”译为“Serves you right”语气偏正式，改为更口语、更贴合甲児热血性格的“Take that, Zuul!!”。
+> 「いやっほぅ!! ズールめ、
+>  ざまぁみろってんだ!!」
+“Yahoo!! Take that, Zuul!!”
+
+@45342 Maria · マリア
+> 「甲児! あたしたち、
+>  ついにやったのね!!」
+“Koji! We finally did it!!”
+
+@45343 Kirika · キリカ
+> 「これで終わったのね。マリア……」
+“So it's over now. Maria...”
+
+@45344 Maria · マリア
+> 「そうよ、キリカ。あたしたち、やったのよ!」
+“That's right, Kirika. We did it!”
+
+@45345 Ryoma · リョウ
+> 「おいおい、まだまわり中敵だらけなんだ
+>  気をぬかないでくれよ」
+“Hey, hey, we're still surrounded by enemies, so don't let your guard down.”
+
+@45346 Sai Saici · サイ・サイシー
+# 审校：“なーに”在此是轻松否定对方担忧，不是疑问“What're you talking about?”，改为“Nah”更贴合语气。
+> 「なーに、ズールさえ倒しちまえば、
+>  あとは説得してなんとかできるって」
+“Nah, once we take out Zuul, we can just talk the rest into surrendering.”
+
+@45347 Reika · レイカ
+> 「えっ!? これは……。
+>  艦長、エネルギー反応が!」
+“Huh?! This is... Captain, an energy reaction!”
+
+@45348 Bright · ブライト
+> 「なんだと!? いったいなんだ!」
+“What?! What on earth is it?!”
+
+@45349 Emperor Zuul · ズール皇帝
+> 「ワーッハッハッハッハッハッハーッ!!」
+“Wahahahahahahahaha!!”
+
+@45350 Daisuke · 大介
+> 「ズール!?」
+“Zuul?!”
+
+@45351 Beltorchika · ベルトーチカ
+> 「そんな!?
+>  いま確かに倒したはずなのに……」
+“No!? We definitely defeated him just now...”
+
+@45352 Emperor Zuul · ズール皇帝
+> 「まだ気づかぬのか、愚か者め!
+>  お前たちが倒したのは
+“Still haven't realized it, fools?! What you defeated was
+---
+>  ワシの影にすぎんのだ!」
+nothing more than my shadow!”
+
+@45353 Koji · 甲児
+> 「な……なんだとぉっ!?」
+“W-what did you say?!”
+
+@45354 Maria · マリア
+> 「そんな……」
+“No...”
+
+@45355 David · デビッド
+> 「くっ……マジかよ」
+“Ngh... You've gotta be kidding me.”
+
+@45356 Garrison · ギャリソン
+> 「……実体はないようです。どうやら、
+>  映像のようなものらしいですな」
+“...There seems to be no substance to him. It appears he's something like a projection, sir.”
+
+@45357 Emperor Zuul · ズール皇帝
+> 「貴様らごときが、このワシを
+>  倒せるなど、あるわけがないわ!
+“There's no way the likes of you could ever defeat me!
+---
+>  無駄なことはやめよ! ワシに勝つ
+>  ことはできん!! ハーッハハハハハッ!!」
+Stop this pointless struggle! You cannot win against me!! Hahahahahaha!!”
+
+@45358 Takeru · タケル
+> 「消えた…………くそっ、ズールめ!」
+“He vanished... Damn you, Zuul!”
+
+@45359 Bright · ブライト
+# 审校：“奴におどらされた”意为被他耍弄，原译“dancing in the palm of his hand”虽可理解但偏长，改为更简洁自然的“he made fools of us”。
+> 「くっ……奴におどらされたというのか……」
+“Ngh... So he made fools of us...”
+
+@45360 Treize · トレーズ
+# 审校：“残念だが”在トレーズ口中应保持优雅克制，原译“I'm sorry”偏道歉，改为“Regrettably”更贴合其贵族军官语气。
+> 「……残念だが、どうやらそのようだね」
+“...Regrettably, it seems that's the case.”
+
+@45361 Beltorchika · ベルトーチカ
+> 「後方より敵艦隊接近!
+>  艦長!」
+“Enemy fleet approaching from the rear! Captain!”
+
+@45362 Bright · ブライト
+> 「なんということだ……やむをえん、
+>  最大戦速で離脱しろ!」
+“This is terrible... We've no choice. Withdraw at maximum speed!”

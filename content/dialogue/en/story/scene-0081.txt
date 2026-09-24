@@ -1,0 +1,2190 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@40412 Bright · ブライト
+> 「そうか……ついにデビルガンダムとの
+>  決着がついたか」
+“I see... so the matter with Dark Gundam is finally settled.”
+
+@40413 Duo · デュオ
+> 「ああ、あそこまでやっときゃ、もう
+>  復活はしないぜ」
+“Yeah. After all that, it won't be coming back.”
+
+@40414 George · ジョルジュ
+> 「そうですね。これまではロームフェラを
+>  隠れみのにした、ウォンと
+“Indeed. Until now, Wong and
+---
+>  東方不敗とがデビルガンダムを
+>  隠し、復活させていました
+Master Asia used Romefeller as a shield, hiding Dark Gundam and bringing it back.
+---
+>  もう、その2人もいません」
+Now those two are gone as well.”
+
+@40415 Ryoma · リョウ
+> 「しかし……ドモンは大丈夫なのか?」
+“But... is Domon all right?”
+
+@40416 Argo · アルゴ
+> 「肉体的には問題ない」
+“Physically, there's no problem.”
+
+@40417 Quatre · カトル
+> 「ええ、あの人の心の問題です。あの
+>  人はこれまでデビルガンダムを倒すと
+“Yes, it's a matter of his heart. Until now, defeating Dark Gundam
+---
+>  いうことを最大の目的としてきまし
+>  た。それがなくなったのですから」
+was his greatest purpose. And now that's gone.”
+
+@40418 Amuro · アムロ
+> 「しかしな……」
+“Still...”
+
+@40419 Chibodee · チボデー
+> 「なぁに、心配はいらねぇよ。
+>  あいつもシャッフルの紋章を持つ身
+“Hey, no need to worry. He bears the Shuffle Crest too,
+---
+>  まだやることが残ってるってのは
+>  よくわかってるさ」
+so he knows full well he's still got things left to do.”
+
+@40420 Argo · アルゴ
+> 「うむ、心配することはない」
+“Indeed, there's nothing to worry about.”
+
+@40421 Amuro · アムロ
+> 「だといいが……」
+“I hope you're right...”
+
+@40422 Sai Saici · サイ・サイシー
+> 「それよりあんちゃん、こっちは
+>  どうなってんのさ?」
+“Anyway, big bro, what's the situation on this end?”
+
+@40423 Amuro · アムロ
+> 「ああ、銀鈴が残されていた
+>  メッセージを確認した。やはり
+“Ah, we checked the message Ginrei left behind. As we thought,
+---
+>  中条長官たちは無事
+>  脱出したようだ」
+it seems Chief Chujo and the others escaped safely.”
+
+@40424 Duo · デュオ
+> 「へえ、で、どこに行ったんだい?」
+“Oh, so where'd they go?”
+
+@40425 Bright · ブライト
+> 「ここを脱出した時点では、西へ
+>  向かうつもりだったとのことだ」
+“At the time they escaped, they intended to head west.”
+
+@40426 Ark · アーク（按段落 3DD1）
+> 「じゃ、我々も彼らを探して西へ
+>  向かうということですね」
+“Then we'll head west as well, searching for them.”
+
+@40427 Selain · セレイン（按段落 3DD2）
+> 「ということは我々も彼らを追って、
+>  西へ向かうということか」
+“So that means we'll chase after them and head west too.”
+
+@40428 Brad · ブラッド（按段落 3DD3）
+> 「ってことは、俺たちも連中を
+>  追っかけて西へ移動か」
+“So we're gonna chase after 'em and head west too, huh.”
+
+@40429 Manami · マナミ（按段落 3DD4）
+> 「では、あたしたちも西へ向かいつつ、
+>  長官たちを探すのね」
+“Then we'll head west as well, searching for the Chief and the others.”
+
+@40430 Bright · ブライト
+> 「そういうことになる」
+“That's right.”
+
+@40431 Quatre · カトル
+> 「でも、そううまく見つかるのでしょうか」
+“But will we really be able to find them so easily?”
+
+@40432 Amuro · アムロ
+> 「ああ、なんでも国際警察機構の
+>  エキスパートたちだけが使う特殊な
+“Yes. Apparently there's a special signal used only by experts of the
+---
+>  合図があるそうだ。銀鈴なら見つ
+>  けられるそうだから、大丈夫だろう」
+International Police Organization. Ginrei can find it, so we should be fine.”
+
+@40433 Quatre · カトル
+> 「そうですか……そういえば、例の
+>  怪物の件はどうなったんです?」
+“I see... By the way, what happened with that monster?”
+
+@40434 Bright · ブライト
+> 「やはり銀河帝国が、かんでいた
+>  らしい。豹馬がケガをしたが
+“It seems the Galactic Empire was involved after all. Hyoma got hurt,
+---
+>  無事、片づけたそうだ」
+but they took care of it safely.”
+
+@40435 Banjo · 万丈
+> 「やはり銀河帝国軍だったか」
+“So it was the Galactic Empire's forces after all.”
+
+@40436 Reika · レイカ
+> 「ええ。でも、もう大丈夫よ」
+“Yes. But it's all right now.”
+
+@40437 Koji · 甲児
+# 审校：原文“超獣”是带引号的专名，初稿用了直引号，改为弯引号‘Beastmen’。
+> 「ああ。奴らが人間狩りをやらせてた
+>  “超獣”っていう化け物は
+“Yeah. Those monsters called ‘Beastmen’ that they had hunting humans—
+---
+>  オレたちがやっつけちまったからな」
+we took care of 'em ourselves.”
+
+@40438 Banjo · 万丈
+> 「みんな、ご苦労さん。そういえば、
+>  豹馬がケガをしたと聞いたが?」
+“Good work, everyone. By the way, I heard Hyoma got hurt?”
+
+@40439 Sayaka · さやか
+> 「ええ、今、ちずると一緒に
+>  ハサン先生のところへ行っています」
+“Yes, he's at Master Hasan's place right now with Chizuru.”
+
+@40440 Banjo · 万丈
+> 「ひどいのか?」
+“Is it bad?”
+
+@40441 Beauty · ビューティ
+> 「そんなにひどくはないから、大丈夫
+>  だと思うわ、万丈」
+“It's not that bad, so I think he'll be fine, Banjo.”
+
+@40442 Garrison · ギャリソン
+> 「それは、ようございましたな」
+“That's good to hear.”
+
+@40443 Daisuke · 大介
+> 「それで、こちらの方は?」
+“So, what about things on this end?”
+
+@40444 Alan · アラン
+> 「ああ、銀鈴が残されていた
+>  メッセージを発見した。やはり
+“Ah, we found the message Ginrei left behind. As we thought,
+---
+>  中条長官たちは、無事に
+>  脱出していたようだ」
+it seems Chief Chujo and the others escaped safely.”
+
+@40445 Sayaka · さやか
+> 「……あの、お父さまは……?」
+“...Um, and my father...?”
+
+@40446 Alan · アラン
+> 「弓教授? 確か、一緒にいる
+>  らしいと聞いたよ。安心したまえ」
+“Prof. Yumi? I heard he's with them, I believe. Rest easy.”
+
+@40447 Koji · 甲児
+> 「よかったじゃないか、さやかさん」
+“That's great, Sayaka.”
+
+@40448 Sayaka · さやか
+# 审校：さやか说的是自己的父亲，初稿误译为 your father，改为 my father。
+> 「ええ……ありがとう、甲児くん。
+>  お父さまが無事で、本当に
+“Yes... thank you, Koji. I'm truly glad
+---
+>  よかったわ」
+my father is safe.”
+
+@40449 Kosuke · 小介
+> 「四谷博士はどうなんでしょう?」
+“What about Dr. Yotsuya?”
+
+@40450 Banjo · 万丈
+> 「もちろん四谷博士も一緒だ。
+>  僕たちが宇宙へあがる前に
+“Of course Dr. Yotsuya is with them too. Before we head up into space,
+---
+>  中条長官たちと合流できるよう
+>  手配しておいたからね」
+I've arranged for us to meet up with Chief Chujo and the others.”
+
+@40451 Juzo · 十三
+> 「やったやないか、小介。
+>  これでコン・バトラーもパワーアップ
+“Way to go, Kosuke. Now Combattler V's power-up
+---
+>  間違いなしや」
+is a sure thing.”
+
+@40452 Reika · レイカ
+> 「それで、どうするの万丈?
+>  合流はできそうなの?」
+“So, what are we going to do, Banjo? Can we meet up with them?”
+
+@40453 Banjo · 万丈
+> 「ああ。彼らはとりあえず西に向かった
+>  そうだが、国際警察機構の
+“Yeah. Seems they headed west for now, but there's a signal the
+---
+>  エキスパートが使う合図があるそうだ
+>  銀鈴なら見つけられるといっていたよ」
+experts of the International Police Organization use. Ginrei said she can find it.”
+
+@40454 Ark · アーク（按段落 3DD1）
+> 「じゃ、我々も彼らを探して西へ
+>  向かうということですね」
+“So that means we head west too, searching for them.”
+
+@40455 Selain · セレイン（按段落 3DD2）
+> 「ということは我々も彼らを追って、
+>  西へ向かうということか」
+“So that means we chase after them and head west as well.”
+
+@40456 Brad · ブラッド（按段落 3DD3）
+> 「ってことは、俺たちも連中を
+>  追っかけて西へ移動か」
+“So that means we chase those guys down and head west too, huh.”
+
+@40457 Manami · マナミ（按段落 3DD4）
+> 「では、あたしたちも西へ向かいつつ、
+>  長官たちを探すのね」
+“Then we head west as well, searching for the Chief and the others.”
+
+@40458 Banjo · 万丈
+> 「そういうことになるかな」
+“I guess that's how it works out.”
+
+@40459 Beauty · ビューティ
+> 「ねえ万丈、ドモンたちの方はどうだっ
+>  たの? もう、もどってきてたみたいだけど」
+“Hey, Banjo, what about Domon and the others? Looks like they're already back.”
+
+@40460 Banjo · 万丈
+> 「ああ、デビルガンダムの件は
+>  すべて決着がついたそうだ
+“Yeah, seems the whole Dark Gundam business is settled.
+---
+>  詳しい事情が聞きたければ、
+>  本人たちに聞くといい。ドモンは
+If you want the details, ask them yourselves. Domon's
+---
+>  消耗が激しくて休んでしまっている
+>  がね。なんでも石破天驚拳という
+worn out and resting, though. Apparently he can now use
+---
+>  すごい技を使えるようになったそうだよ」
+some amazing move called the Sekiha Tenkyoken.”
+
+@40461 Bright · ブライト
+> 「やはり、梁山泊もだめか……」
+“So Ryozanpaku was no good either...”
+
+@40462 Quattro · クワトロ
+> 「しかしな……軍事拠点でもない、
+>  こんな場所をねらう必要性が
+“But still... I don't see why they'd need to target
+---
+>  わからんな」
+a place like this. It's not even a military base.”
+
+@40463 Banjo · 万丈
+> 「ああ、連中が何を探しているにして
+>  も、ここにあったとは思えないね」
+“Yeah, whatever they're looking for, I doubt it was ever here.”
+
+@40464 Garrison · ギャリソン
+> 「ふむ……それがわかればあるいは、
+>  なにか有効な対抗手段と
+“Hmm... if we could figure that out, it might perhaps
+---
+>  なりうるやもしれませんな」
+give us some effective countermeasure.”
+
+@40465 Banjo · 万丈
+> 「わかれば、の話さ。アラン、
+>  銀鈴の方はどうだい?」
+“If we figure it out, that is. Alan, how are things on Ginrei's end?”
+
+@40466 Alan · アラン
+> 「いま探している。俺たちがいても
+>  何を探しているか、わからんから
+“Still searching. Even with us there, we couldn't tell what they're after,
+---
+>  引きあげてきたんだ」
+so we pulled back.”
+
+@40467 Ginrei · 銀鈴
+> 「……どこかにきっと、あるはず
+>  なんだけど……」
+“...It has to be somewhere. I know it's here somewhere...”
+
+@40468 Murasame · 村雨
+> 「やぁ、ファルメール。くるだろうと
+>  思っていたよ」
+“Hey there, Falmel. I figured you'd come.”
+
+@40469 Ginrei · 銀鈴
+> 「健二さん? もしかして私たちを
+>  待っていてくれたの?」
+“Kenji? Were you waiting for us?”
+
+@40470 Murasame · 村雨
+> 「いや、俺もあとから来たクチさ。
+>  ところで捜し物はあれじゃないのか?」
+“No, I just got here myself. By the way, isn't that what you're looking for?”
+
+@40471 Ginrei · 銀鈴
+> 「あんなところに……ええ、そうよ。
+>  あれを探していたの。もう確認した?」
+“In a place like that... Yes, that's right. That's what I was looking for. Did you already check it?”
+
+@40472 Murasame · 村雨
+> 「ああ。長官たちは攻撃を
+>  受ける前に脱出した
+“Yeah. The Chief and the others escaped before the attack.
+---
+>  反抗勢力の要となりそうな
+>  人物は、ほとんど一緒にいるとさ」
+Most of the people who could become leaders of the resistance are with them.”
+
+@40473 Ginrei · 銀鈴
+> 「……そうね。西へ向かう、か」
+“...I see. Heading west, then.”
+
+@40474 Murasame · 村雨
+> 「長官のことだ、君がいれば、
+>  すぐ見つけられるよう、目印を
+“This is the Chief we're talking about. With you around, he'd have left
+---
+>  つけてるだろう」
+markers so you could find them right away.”
+
+@40475 Ginrei · 銀鈴
+> 「健二さん……やっぱり私たちとは、
+>  こないの?」
+“Kenji... you're really not coming with us?”
+
+@40476 Murasame · 村雨
+> 「俺の能力は1人でいる時が
+>  最大に発揮できる
+“My abilities are at their best when I'm on my own.
+---
+>  知ってるだろう、ファルメール?」
+You know that, don't you, Falmel?”
+
+@40477 Ginrei · 銀鈴
+> 「健二さん……」
+“Kenji...”
+
+@40478 Murasame · 村雨
+> 「おっと、そんな顔はするなよ。
+>  大作少年は元気でやってるか?」
+“Whoa, don't make a face like that. Is young Daisaku doing all right?”
+
+@40479 Ginrei · 銀鈴
+> 「え、ええ。がんばってくれているわ。
+>  気になる?」
+“Y-yes. He's doing his best. Worried about him?”
+
+@40480 Murasame · 村雨
+> 「俺は、あいつの親父さん……
+>  草間博士は救うことが
+“I couldn't save his old man... Dr. Kusama,
+---
+>  できなかったからな……」
+after all...”
+
+@40481 Astonaige · アストナージ
+> 「……これもまだ使えるな……」
+“...This one's still usable too...”
+
+@40482 Amuro · アムロ
+> 「何をやってるんだ、アストナージ?」
+“What are you doing, Astonaige?”
+
+@40483 Astonaige · アストナージ
+> 「え? ああ、残骸の中にけっこう
+>  使えそうなものが混ざっているんで
+“Huh? Oh, there's a lot of stuff mixed in with the wreckage that looks usable,
+---
+>  集めているところですよ」
+so I'm gathering it up.”
+
+@40484 Amuro · アムロ
+> 「へえ、そうなのか?」
+“Oh, is that so?”
+
+@40485 Chan · チェーン
+> 「アストナージさん、またいくつか見つけま
+>  したよ。あ、アムロさん」
+“Astonaige, I found a few more. Oh, Amuro.”
+
+@40486 Amuro · アムロ
+> 「やぁ、チェーン。何を見つけたんだ?」
+“Hey, Chan. What did you find?”
+
+@40487 Chan · チェーン
+> 「主にパーツ類です。機体の補修
+>  に使えそうなものもあります
+“Mainly spare parts. Some of it looks usable for repairs.
+---
+>  あとのことを考えたら、少しでも
+>  資材が多い方がいいですから」
+If we think about what's ahead, the more materials we have, the better.”
+
+@40488 Astonaige · アストナージ
+> 「こういう時にシャリーやジャネットが
+>  いてくれると助かるんですがね」
+“Times like this, I wish Shirley and Janet were here to help.”
+
+@40489 Amuro · アムロ
+> 「大変そうだね」
+“Sounds rough.”
+
+@40490 Chan · チェーン
+> 「そう思うんでしたら、あとでお茶でも
+>  ご一緒してください」
+“If you think so, then please join me for tea later.”
+
+@40491 Amuro · アムロ
+> 「その程度でよければ、かまわないさ」
+“If that's all it takes, I don't mind.”
+
+@40492 Chan · チェーン
+> 「約束ですよ。ベルトーチカさんに
+>  とめられた、なんていうのはナシですからね」
+“It's a promise. No saying Beltorchika stopped you, all right?”
+
+@40493 Amuro · アムロ
+> 「あ、ああ……努力するよ」
+“Y-yeah... I'll do my best.”
+
+@40494 Alan · アラン
+> 「……なるほど、そっちもうまく
+>  片づいたようだな」
+“...I see. So that's been taken care of too.”
+
+@40495 Koji · 甲児
+> 「ああ。奴らが人間狩りをやらせてた
+>  “超獣”っていう化け物は
+“Yeah. Those monsters they called ‘Beasts’ that they used for hunting humans—
+---
+>  オレたちがやっつけちまったからな。
+>  もう大丈夫だろう」
+we took care of them. It should be fine now.”
+
+@40496 Banjo · 万丈
+> 「みんな、ご苦労さん。そういえば、
+>  豹馬がケガをしたと聞いたが?」
+“Good work, everyone. By the way, I heard Hyoma got hurt?”
+
+@40497 Sayaka · さやか
+> 「ええ、今、ちずると一緒に
+>  ハサン先生のところへ行っています」
+“Yes, he's at Dr. Hasan's place right now with Chizuru.”
+
+@40498 Banjo · 万丈
+> 「ひどいのか?」
+“Is it bad?”
+
+@40499 Beauty · ビューティ
+> 「そんなにひどくはないから、大丈夫
+>  だと思うわ、万丈」
+“It's not that bad, so I think he'll be fine, Banjo.”
+
+@40500 Garrison · ギャリソン
+> 「それは、ようございましたな」
+“That is good to hear.”
+
+@40501 Daisuke · 大介
+> 「それで、こちらの方は?」
+“So, what about this side?”
+
+@40502 Alan · アラン
+> 「ああ、銀鈴が残されていた
+>  メッセージを発見した。やはり
+“Ah, Ginrei discovered a message that had been left behind. It seems
+---
+>  中条長官たちは、無事に
+>  脱出していたようだ」
+Chief Chujo and the others did escape safely after all.”
+
+@40503 Sayaka · さやか
+> 「……あの、お父さまは……?」
+“...Um, and my father...?”
+
+@40504 Alan · アラン
+> 「弓教授? 確か、一緒にいる
+>  らしいと聞いたよ。安心したまえ」
+“Prof. Yumi? I heard he's apparently with them. Rest easy.”
+
+@40505 Koji · 甲児
+> 「よかったじゃないか、さやかさん」
+“That's great, Sayaka.”
+
+@40506 Sayaka · さやか
+> 「ええ……ありがとう、甲児くん。
+>  お父さまが無事で、本当に
+“Yes... thank you, Koji. I'm truly glad
+---
+>  よかったわ」
+my father is safe.”
+
+@40507 Kosuke · 小介
+> 「四谷博士はどうなんでしょう?」
+“What about Dr. Yotsuya?”
+
+@40508 Banjo · 万丈
+> 「もちろん四谷博士も一緒だ。
+>  僕たちが宇宙へあがる前に
+“Of course Dr. Yotsuya is with them too. Before we went up into space,
+---
+>  中条長官たちと合流できるよう
+>  手配しておいたからね」
+I made arrangements so we could rendezvous with Chief Chujo and the others.”
+
+@40509 Juzo · 十三
+> 「やったやないか、小介。これで合流
+>  できればコン・バトラーもパワーアップ
+“Way to go, Kosuke. If we can link up now, Combattler V's power-up
+---
+>  間違いなしや」
+is a sure thing.”
+
+@40510 Reika · レイカ
+> 「それで、どうするの万丈?
+>  合流はできそうなの?」
+“So what are we doing, Banjo? Can we meet up with them?”
+
+@40511 Banjo · 万丈
+> 「ああ。彼らはとりあえず西に向かった
+>  そうだが、国際警察機構の
+“Yeah. They headed west for now, but there's a signal the experts of the
+---
+>  エキスパートが使う合図があるそうだ
+>  銀鈴なら見つけられるといっていたよ」
+International Police Organization use. Ginrei said she can find it.”
+
+@40512 Beltorchika · ベルトーチカ
+> 「艦長、まもなくドモンたちも
+>  帰還します」
+“Captain, Domon and the others will be returning soon.”
+
+@40513 Bright · ブライト
+> 「わかった」
+“Understood.”
+
+@40514 Bright · ブライト
+> 「そうか……ついにデビルガンダムとの
+>  決着がついたか」
+“I see... so the matter with Dark Gundam is finally settled.”
+
+@40515 Duo · デュオ
+> 「ああ、あそこまでやっときゃ、もう
+>  復活はしないぜ」
+“Yeah. After all that, it won't be coming back.”
+
+@40516 George · ジョルジュ
+> 「そうですね。これまではロームフェラを
+>  隠れみのにした、ウォンと
+“Indeed. Until now, Wong and Master Asia used Romefeller as cover to
+---
+>  東方不敗とがデビルガンダムを
+>  秘匿し、復活させていました
+hide and revive Dark Gundam.
+---
+>  もう、その2人もいません」
+Now those two are gone as well.”
+
+@40517 Ryoma · リョウ
+> 「しかし……ドモンは大丈夫なのか?」
+“But... is Domon all right?”
+
+@40518 Argo · アルゴ
+> 「肉体的には問題ない」
+“Physically, there's no problem.”
+
+@40519 Quatre · カトル
+> 「ええ、あの人の心の問題です。あの
+>  人はこれまでデビルガンダムを倒すと
+“Yes, it's a matter of his heart. Until now, defeating Dark Gundam was
+---
+>  いうことを最大の目的としてきまし
+>  た。それがなくなったのですから」
+his greatest purpose. And now that's gone.”
+
+@40520 Amuro · アムロ
+> 「しかしな……」
+“Even so...”
+
+@40521 Chibodee · チボデー
+> 「なぁに、心配はいらねぇよ。
+>  あいつもシャッフルの紋章を持つ身
+“Hey, no need to worry. He's a bearer of a Shuffle Crest too.
+---
+>  まだやることが残ってるってのは
+>  よくわかってるさ」
+He knows full well he's still got work to do.”
+
+@40522 Argo · アルゴ
+> 「うむ、心配することはない」
+“Indeed, there's nothing to worry about.”
+
+@40523 George · ジョルジュ
+> 「それに、ドモンは石破天驚拳を
+>  身につけ、また一回り強く
+“Besides, Domon has mastered the Sekiha Tenkyoken and grown
+---
+>  なりましたからね」
+even stronger.”
+
+@40524 Sai Saici · サイ・サイシー
+> 「そうそう、アニキの新技はすげぇんだぜ」
+“Yeah, yeah, my big brother's new move is amazing!”
+
+@40525 Ryoma · リョウ
+> 「ま、みんながそういうんなら
+>  大丈夫だろう。すぐに忙しくなる
+“Well, if everyone says so, he'll be fine. Things will get busy soon,
+---
+>  少し、休ませておいてやろう」
+so let's let him rest a little.”
+
+@40526 Amuro · アムロ
+> 「ああ、そうだな」
+“Yeah, you're right.”
+
+@40527 Alan · アラン
+> 「艦長、全員もどったことだし、
+>  そろそろ出発しよう」
+“Captain, everyone's back, so let's get moving soon.”
+
+@40528 Garrison · ギャリソン
+> 「現在のところ銀河帝国軍の
+>  動きは降下当初よりは
+“At present, the Galactic Empire's movements are less active than
+---
+>  活発でなくなっており、状況は
+>  小康状態です。今のうちに
+when they first descended, and the situation is at a lull. If we can
+---
+>  合流できれば、それにこしたことは
+>  ありませんな」
+rendezvous now, so much the better.”
+
+@40529 Bright · ブライト
+> 「そうだな。よし、全員に伝達して
+>  くれ。我々は2時間後に
+“Right. All right, relay it to everyone. We leave here
+---
+>  ここを離れる」
+in two hours.”
+
+@40530 Amuro · アムロ
+> 「どうだい?」
+“How's it going?”
+
+@40531 Ginrei · 銀鈴
+> 「大丈夫です、ルートは確認しまし
+>  た。もうすぐ接触できます」
+“It's fine, I've confirmed the route. We'll make contact soon.”
+
+@40532 Alan · アラン
+> 「思ったよりも時間がかかって
+>  しまったな」
+“It took longer than I expected.”
+
+@40533 Bright · ブライト
+> 「やむを得んさ」
+“It can't be helped.”
+
+@40534 Chief Chujo · 中条長官
+> 「むっ、敵に発見されてしまったか!?
+>  しかたがない、みなさんは離れてください
+“Hm, have we been spotted by the enemy?! It can't be helped—everyone, stand back.
+---
+>  ここは私が……」
+I'll handle this...”
+
+@40535 Prof. Yumi · 弓教授
+> 「待ってください、中条長官。
+>  例のオーラシップの船影が見えます
+“Wait, Chief Chujo. I can see the silhouette of that Aura Ship.
+---
+>  あれは{HeroMech}に違いありま
+>  せん。“静かなる中条”の
+That must be the {HeroMech}. There's no need for you to use the power of the
+---
+>  お力を使うことはないでしょう」
+‘Silent Chujo.’”
+
+@40536 Chief Chujo · 中条長官
+> 「……そうか。やはり銀鈴くんが
+>  メッセージに気づいてくれたとみえる
+“...I see. So Ginrei noticed the message after all.
+---
+>  ジュリアくん、彼らが来てくれた。
+>  君のいっていたことが
+Julia, they've come. What you spoke of may yet
+---
+>  実現できるかもしれん」
+come to pass.”
+
+@40537 Julia · ジュリア
+> 「はい……」
+“Yes...”
+
+@40538 Chief Chujo · 中条長官
+> 「みんな、よく来てくれた。もしも敵に
+>  発見されていたら、私の力を
+“Everyone, I'm glad you came. If the enemy had spotted us, I would have had
+---
+>  使うしかないところだった」
+no choice but to use my power.”
+
+@40539 Ginrei · 銀鈴
+> 「長官の!? そんなことにならずに
+>  よかったですわ」
+“Your power, Chief?! I'm so glad it didn't come to that.”
+
+@40540 Chief Chujo · 中条長官
+> 「ははははははっ」
+“Hahahahahaha!”
+
+@40541 Bright · ブライト
+> 「博士たちもご一緒ですね。とにかく
+>  みなさんご無事でよかった」
+“The doctors are with you too, I see. In any case, I'm glad everyone is safe.”
+
+@40542 Banjo · 万丈
+> 「こんなところで立ち話もない。中へ
+>  入りましょう。ガンドールでいいですね
+“This is no place to stand around talking. Let's go inside. The Gandor will do,
+---
+>  葉月博士」
+right, Dr. Hazuki?”
+
+@40543 Dr. Hazuki · 葉月博士
+> 「もちろんだ。移動要塞ガンドールへ
+>  ようこそ。博士方には
+“Of course. Welcome aboard the mobile fortress Gandor. We can provide you
+---
+>  研究設備もご提供できますよ」
+doctors with research facilities as well.”
+
+@40544 Koji · 甲児
+> 「銀鈴さん、中条長官の力って
+>  なんなんだい?
+“Ginrei, what is Chief Chujo's power, anyway?
+---
+>  ずいぶんびっくりしてたみたいだけど」
+You looked pretty shocked.”
+
+@40545 Ginrei · 銀鈴
+> 「……実は、私も見たことがないのよ。
+>  というより、誰も見たことがないの」
+“...Actually, I've never seen it either. Or rather, no one has.”
+
+@40546 Sara · 沙羅
+> 「なんだい、どういうことなのさ?」
+“What's that supposed to mean?”
+
+@40547 Ginrei · 銀鈴
+> 「“静かなる中条”の力は、
+>  ビッグバン・パンチと呼ばれる
+“The power of the ‘Silent Chujo’ is a self-destruct technique called the
+---
+>  自爆技なの。だから1度っきりしか
+>  使えないそうよ」
+Big Bang Punch. That's why they say he can only use it once.”
+
+@40548 Boss · ボス
+> 「自爆……なんだか心が揺さぶられる
+>  言葉だわさ」
+“Self-destruct... somehow those words stir my heart.”
+
+@40549 Duo · デュオ
+> 「おいおい、自爆は勘弁してくれよ。
+>  なぁヒイロ」
+“Hey, hey, spare us the self-destruct. Right, Heero?”
+
+@40550 Heero · ヒイロ
+> 「必要ならばそれもいいだろう」
+“If it's necessary, that would be fine too.”
+
+@40551 Duo · デュオ
+> 「……あったくこれだもんなぁ」
+“...Man, of course you'd say that.”
+
+@40552 Koji · 甲児
+> 「でも、どの程度なんだよ、それ」
+“But how strong is it, really?”
+
+@40553 Ginrei · 銀鈴
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“It's only a rumor, but they say it's powerful enough to blow away the entire
+# 草稿第 2 页：【主角机体名】 fleet in one shot.”
+> 「あくまでも噂だけど{HeroMech}
+>  の艦隊を、まるごと吹き飛ばせる
+---
+>  くらいの威力はあるそうよ」
+
+@40554 Marvel · マーベル
+> 「……冗談でしょう?」
+“...You're joking, right?”
+
+@40555 Ginrei · 銀鈴
+# 审校：第二页“ご本人も知らないのではないかしら”是推测语气，初稿“I wonder if even he himself knows”偏疑问，改为更自然的推测表达。
+> 「そんな顔しないでよ、マーベル。
+>  あくまでも噂よ。本当のことは
+“Don't make that face, Marvel. It's only a rumor. No one knows the truth.
+---
+>  誰も知らないわ。ご本人も
+>  知らないのではないかしら」
+I doubt even he himself knows.”
+
+@40556 Koji · 甲児
+# 审校：“人騒がせな力だな”指这种力量引起骚动，初稿“What a way to stir people up”对象不清，改为更贴切的“What a fuss over nothing”。
+> 「なんだよ、人騒がせな力だな。
+>  そういえばエキスパートっていうからには
+“What a fuss over nothing. Speaking of which, if you're called an expert,
+---
+>  銀鈴さんも何か、力があるんだろ?
+>  どういう力なんだ?」
+Ginrei, you must have some kind of power too, right? What kind?”
+
+@40557 Ginrei · 銀鈴
+> 「え……内緒よ。そのうち、教えて
+>  あげるわ」
+“Huh...? It's a secret. I'll tell you someday.”
+
+@40558 Koji · 甲児
+> 「ちぇっ、いっつもそうなんだよなぁ、
+>  銀鈴さんは」
+“Sheesh, you're always like this, Ginrei.”
+
+@40559 Alan · アラン
+> 「……というわけで、事態は予断を
+>  許しません」
+“...And so, the situation allows no room for optimism.”
+
+@40560 Chief Chujo · 中条長官
+> 「なるほど……トレーズから連絡があった
+>  といったね」
+“I see... You said Treize got in touch.”
+
+@40561 Alan · アラン
+> 「ええ。OZのトレーズ・クシュリナーダは
+>  状況がこのまま悪化の一途を
+“Yes. It seems OZ's Treize Khushrenada is planning an all-out counteroffensive
+---
+>  たどる前に総力をあげての反抗
+>  作戦を計画しているようです。が
+before the situation can deteriorate any further. But even he admits
+---
+>  それも勝算があるとはいいがたいのは
+>  本人も認めているところです」
+it's hard to say they have a real chance of winning.”
+
+@40562 Banjo · 万丈
+> 「そう、なにしろ地上の敵さえ掃討
+>  できる可能性は低い。しかも
+“Right—after all, there's little chance of even sweeping away the enemies on
+---
+>  奴らの本陣は宇宙だからね……」
+the ground. And on top of that, their main force is in space...”
+
+@40563 Dr. Yotsuya · 四谷博士
+> 「……人類はおろか、この地球さえも
+>  風前のともし火というわけか……」
+“...So not just humanity, but even this Earth is a candle in the wind...”
+
+@40564 Daisuke · 大介
+> 「奴らが地球を残しておく理由は
+>  思い当たりません。それに
+“I can't think of any reason they'd leave Earth intact. Besides,
+---
+>  どのみちマーズが死ねば太陽系
+>  そのものが……」
+if Mars dies, the entire solar system will...”
+
+@40565 Dr. Saotome · 早乙女博士
+> 「四谷博士、やはりあの話にのって
+>  みるしかないのじゃないかね」
+“Dr. Yotsuya, I suppose we have no choice but to go along with that proposal after all.”
+
+@40566 Bright · ブライト
+> 「何のお話です?」
+“What proposal is that?”
+
+@40567 Chief Chujo · 中条長官
+> 「うむ……実は我々は、地球
+>  防衛の切り札となりうるかも
+“Yes... The truth is, we possess information that might serve as
+---
+>  しれない情報を持っている」
+a trump card for Earth's defense.”
+
+@40568 Amuro · アムロ
+> 「本当ですか!? それはいったい……?」
+“Really?! What is it...?”
+
+@40569 Chief Chujo · 中条長官
+> 「ここから先は、ジュリアくんに話して
+>  もらった方がいいだろう」
+“From here on, it would be better to let Julia explain.”
+
+@40570 Eiji · エイジ
+> 「姉さん? 何を……」
+“Sis? What are you...?”
+
+@40571 Julia · ジュリア
+# 审校：“眠っています”指沉睡、潜伏，初稿“lies sleeping”可接受，但“lies dormant”更自然。
+> 「……この地球には、
+>  “グラドスの刻印”と呼ばれる
+“...On this Earth, something called the ‘Grados Crest’
+---
+>  ものが眠っています」
+lies dormant.”
+
+@40572 Eiji · エイジ
+> 「グラドスの……刻印?
+>  やはり姉さんは……」
+“The Grados... Crest? So you really are, sis...”
+
+@40573 Bright · ブライト
+> 「エイジ、話の腰をおるな。続けて
+>  ください、ジュリアさん」
+“Eiji, don't interrupt. Please continue, Julia.”
+
+@40574 Julia · ジュリア
+> 「これをお話するには、まず私たち
+>  グラドスと、地球との関係について
+“To explain this, I must first tell you about the relationship between us Grados
+---
+>  お話ししなければなりません。
+>  ムゲゾルバドス帝国を構成する
+and Earth. Not the Grados who make up the Muge Zorbados Empire,
+---
+>  グラドスではなく、1つの独立した
+>  惑星文明としてのグラドスのことを」
+but Grados as an independent planetary civilization.”
+
+@40575 Quattro · クワトロ
+> 「グラドスと地球の関係……?」
+“The relationship between Grados and Earth...?”
+
+@40576 Julia · ジュリア
+> 「皆さんはまず、両者が生命種と
+>  して兄弟にあることを知らなければ
+“First, you must know that the two are brothers as life-forms.
+---
+>  なりません。グラドス人と地球人
+>  とは、同じ根から発生したのです」
+The Gradosians and the people of Earth were born from the same root.”
+
+@40577 Gale · ゲイル
+> 「な……なんだと?」
+“W-what did you say?”
+
+@40578 Alan · アラン
+> 「ばかな! あのグレスコやル・カインが、
+>  我々地球人と同じだったと!?
+“Impossible! Gresco and Le Cain are the same as us Earthlings?!
+---
+>  エイジ、君は、君はそれを知っていた
+>  のか!?」
+Eiji, did you—did you know this?!”
+
+@40579 Eiji · エイジ
+> 「ええ……知っていました。
+>  ご存じのように僕たちは、地球と
+“Yes... I knew. As you're aware, we are of mixed Earth and
+---
+>  グラドスの混血です。この僕と
+>  姉さんの存在が、なによりもそれを
+Grados blood. The very existence of my sister and me
+---
+>  裏づけています」
+proves it beyond doubt.”
+
+@40580 Alan · アラン
+> 「し、しかし……」
+“B-but still...”
+
+@40581 Eiji · エイジ
+> 「3年前……偶然からそれを知った
+>  僕はそれを根拠にグレスコ提督に
+“Three years ago... when I learned of it by chance, I tried to use that as grounds to make Admiral Gresco
+---
+>  戦いをやめさせようとしました。
+>  ……結果は、ご存じの通りです」
+stop fighting. ...The result, as you all know.”
+
+@40582 Gale · ゲイル
+> 「そうか……そうだったのか……」
+“I see... So that's how it was...”
+
+@40583 Amuro · アムロ
+> 「だが、いったいなぜ……?」
+“But why on earth...?”
+
+@40584 Julia · ジュリア
+> 「宇宙に進出した先住グラドス
+>  人は、すでに種としての限界を
+“The ancestral Gradosians who had advanced into space were already
+---
+>  迎えつつありました。4万年前、
+>  彼らの宇宙船がこの惑星
+approaching the limits of their species. Forty thousand years ago, their ships discovered this planet,
+---
+>  地球を発見します。当時
+>  地球では、原人類ともいうべき
+Earth. At the time, life that could be called proto-humanity had been born on Earth.
+---
+>  生命が誕生していました。
+>  調査の結果、それが種として
+After investigation, the ancestral Gradosians judged that as a species
+---
+>  自分たちと極めて近しいと
+>  判断した先住グラドス人たちは
+it was extremely close to their own, and for the sake of preserving their dying species, they made one attempt.
+---
+>  滅びゆく種の存続のために、1つの
+>  試みをなしました。地球の
+By transplanting the life-core of Earth's
+---
+>  原人類の生命核を、自らに
+>  移植することで、再び強い
+proto-humans into themselves, they sought to gain once more a strong
+---
+>  生命力を得ようとしたのです」
+life force.”
+
+@40585 Dr. Hazuki · 葉月博士
+> 「しかし……しかしそれでは、もはや
+>  別の種となってしまう」
+“But... but that would make them an entirely different species.”
+
+@40586 Julia · ジュリア
+> 「そうです。種の亡びを止める
+>  ことができないと知った
+“Yes. Knowing they could not stop the extinction of their species,
+---
+>  先住グラドス人たちは、自分たち
+>  の文明を受け継ぐべき存在を
+the ancestral Gradosians wanted to create beings who would
+---
+>  作りたかったのです」
+inherit their civilization.”
+
+@40587 Dr. Hazuki · 葉月博士
+> 「そうか……それが今のグラドス人……
+>  つまり先住グラドス人とは違う
+“I see... So that makes the present Gradosians... in other words, a brother species to us Earth humans,
+---
+>  我々地球人類の兄弟種と
+>  いうわけか」
+different from the ancestral Gradosians.”
+
+@40588 Julia · ジュリア
+> 「そして、そのとき先住グラドス人
+>  たちは、地球にひとつの機構を
+“And at that time, the ancestral Gradosians installed a certain mechanism on Earth.
+---
+>  設置しました。彼らは銀河に
+>  すでに無数の星間文明が
+Taking into account that countless interstellar civilizations already existed
+---
+>  存在していることを考慮し、
+>  自分たちの後継者となった種の
+in the galaxy, they sought to protect Earth humanity—the brother of the species
+---
+>  兄弟である地球人類を、
+>  やがてくる不幸な出会いから
+that had become their successors—from the unhappy encounters
+---
+>  守ろうとしたのです」
+that would eventually come.”
+
+@40589 Ark · アーク（按段落 3DD1）
+> 「不幸な……出会い?」
+“Unhappy... encounters?”
+
+@40590 Selain · セレイン（按段落 3DD2）
+> 「不幸な出会い……どういうことだ?」
+“Unhappy encounters... What do you mean?”
+
+@40591 Brad · ブラッド（按段落 3DD3）
+> 「聖女さん、頼むぜ、もっと
+>  わかりやすくいってくれないか」
+“Hey, Saint lady, could you say it in a way that's easier to follow?”
+
+@40592 Koji · 甲児
+> 「そ、そうそう」
+“Y-yeah, yeah.”
+
+@40593 Manami · マナミ（按段落 3DD4）
+> 「不幸な出会い……私たちの……?」
+“Unhappy encounters... ours...?”
+
+@40594 Julia · ジュリア
+> 「地球人が未成熟なまま、それと
+>  知らずに出会った兄弟たちが
+“Encounters in which Earthlings, still immature and unaware, might destroy each other as brothers.
+---
+>  互いに滅ぼしあってしまうような
+>  出会い。他の星間種族と
+The danger that immature Earthlings might be destroyed through contact with other interstellar races. ...
+---
+>  接触して未熟な地球人たちが
+>  滅ぼされてしまう危険。……
+A safety mechanism to protect against
+---
+>  そういった出会いから守るための
+>  セーフティ機構」
+such encounters.”
+
+@40595 Ark · アーク（按段落 3DD1）
+> 「そうか……それが“グラドスの
+>  刻印”なんだ」
+“I see... So that's the ‘Grados Crest.’”
+
+@40596 Selain · セレイン（按段落 3DD2）
+> 「それが“グラドスの刻印”という
+>  やつか」
+“So that's what the ‘Grados Crest’ is.”
+
+@40597 Brad · ブラッド（按段落 3DD3）
+> 「わかったぜ! それが“グラドスの
+>  刻印”ってやつなんだな!?」
+“Got it! So that's what the ‘Grados Crest’ is, huh?!”
+
+@40598 Manami · マナミ（按段落 3DD4）
+> 「それが“グラドスの刻印”……
+>  そういうことなのね」
+“So that's the ‘Grados Crest’... That's what this is about.”
+
+@40599 Quattro · クワトロ
+> 「ふむ……事情はだいたい飲みこめたと
+>  思う。それで、その機構がどのような
+“Hm... I believe I've grasped the situation. So then, what exactly does that mechanism
+---
+>  働きをするものなのかだが……」
+do...?”
+
+@40600 Julia · ジュリア
+# 审校：“遮へいする”初稿“blocks off”可接受，但“shields”更准确，改为“shields”。
+> 「空間を遮へいするもの、と認識
+>  しております」
+“I understand it to be something that shields space.”
+
+@40601 Quattro · クワトロ
+# 审校：与L49保持一致，改为“Shields... space?”。
+> 「空間を……?」
+“Shields... space?”
+
+@40602 Julia · ジュリア
+> 「それによりグラドスからも銀河帝国
+>  からもこの太陽系へは、くることが
+“With it, neither Grados nor the Galactic Empire will be able
+---
+>  できなくなります」
+to come to this solar system.”
+
+@40603 Alan · アラン
+> 「すると、ムゲゾルバドス帝国もか」
+“Then the Muge Zorbados Empire too.”
+
+@40604 Julia · ジュリア
+> 「……ゾルバドス星は、そもそもこの
+>  銀河系宇宙にはありません
+“...The planet Zorbados is not originally in this galactic universe.
+---
+>  異次元にあると聞いております。
+>  それがどのように影響するのか
+I hear it exists in another dimension. How that would be affected,
+---
+>  わたくしにはわかりませんが……」
+I do not know, but...”
+
+@40605 Dr. Hazuki · 葉月博士
+> 「ともかく銀河帝国とのつながりが
+>  断てるだけでも十分な意味がある
+“In any case, even just cutting the link to the Galactic Empire would be meaningful enough.
+---
+>  これはすごいことだよ」
+This is an amazing thing.”
+
+@40606 Dr. Saotome · 早乙女博士
+> 「うむ……わしらには想像もつかん
+>  ことだ。機会があれば、ぜひ
+“Indeed... It's beyond anything we could imagine. If there's a chance, I'd certainly
+---
+>  研究してみたいが……」
+like to study it, but...”
+
+@40607 Banjo · 万丈
+> 「みんな、ちょっと待ってくれないか。
+>  確かにそれがすごいものであるのはわかる
+“Everyone, could you wait a moment? I understand it's an amazing thing, all right.
+---
+>  だが、行き来できなくなるだけだ。
+>  銀河帝国がこれ以上増援を
+But it only stops them from coming and going. Just because the Galactic Empire can no longer
+---
+>  送ってこれないからといって、いま
+>  地球圏に来ている軍勢が
+send reinforcements doesn't mean the forces already here in the Earth Sphere
+---
+>  消えてなくなるわけではない。
+>  そうでしょう?」
+will vanish into thin air. Isn't that right?”
+
+@40608 Julia · ジュリア
+> 「その通りです。しかし自らの国へ
+>  帰ることができなくなった兵士は
+“That is correct. But can soldiers who can no longer return to their own country
+---
+>  なんらよるべき大義なくして士気を
+>  保てるのでしょうか?」
+maintain their morale without any great cause to rely on?”
+
+@40609 Quattro · クワトロ
+> 「……無理だな。万丈、確かに
+>  帝国軍は残留するが、もしも
+“...Impossible. Banjo, it's true the imperial forces will remain, but if
+---
+>  刻印が発動できれば勝機はある
+>  軍隊とはそういうものだ」
+the Crest can be activated, there is a chance of victory. That's what an army is.”
+
+@40610 Banjo · 万丈
+> 「……悪かった。信じよう、大尉。
+>  どのみち、他に選ぶべき道は
+“...Sorry. I'll believe you, Captain. Either way, there's no other path
+---
+>  存在しない」
+left to choose.”
+
+@40611 Ark · アーク（按段落 3DD1）
+> 「……それで、“グラドスの刻印”は
+>  どこにあるというのです?」
+“...So then, where is the ‘Grados Crest’?”
+
+@40612 Selain · セレイン（按段落 3DD2）
+> 「ふむ……で、その刻印とやらは、
+>  どこにある?」
+“Hmm... So then, where is this Crest you speak of?”
+
+@40613 Brad · ブラッド（按段落 3DD3）
+> 「よーし、なんとか希望が見えてきた
+>  じゃねぇか。で、聖女さん、そいつは
+“All right, looks like we've finally got a glimmer of hope. So, Lady Saint,
+---
+>  いったいどこにあるんだ?」
+just where is this thing?”
+
+@40614 Manami · マナミ（按段落 3DD4）
+> 「あたしたちにも、まだ希望は残されて
+>  いたわね。ジュリアさん、刻印はどこに
+“So there's still hope left for us too. Julia, where is the Crest
+---
+>  あるの?」
+located?”
+
+@40615 Julia · ジュリア
+> 「クスコです」
+“Cusco.”
+
+@40616 Bright · ブライト
+> 「クスコ……?」
+“Cusco...?”
+
+@40617 Julia · ジュリア
+> 「みなさん、行きましょう。私をクスコへ
+>  連れて行ってください。おごれるものの
+“Everyone, let's go. Please take me to Cusco. We will stay the hand of the
+---
+>  力をはばむのです。先人たちの
+>  偉大な知恵の力を借りて」
+arrogant. With the power of our ancestors' great wisdom.”
+
+@40618 Bright · ブライト
+> 「……というわけで“グラドスの
+>  刻印”の発動が可能なら
+“...And so, if the ‘Grados Crest’ can be activated,
+---
+>  我々人類にもまだチャンスはあると
+>  いうことです」
+we humans still have a chance.”
+
+@40619 Treize · トレーズ
+> 「なるほど、了解した」
+“I see. Understood.”
+
+@40620 Bright · ブライト
+> 「では……」
+“Then...”
+
+@40621 Treize · トレーズ
+> 「私にもそれ以外の方策は思い
+>  つかない。ムゲゾルバドス帝国に
+“I can think of no other plan either. That being conquered by the Muge Zorbados Empire
+---
+>  征服されていたことが、
+>  銀河帝国への反抗の機会に
+would lead to an opportunity to resist the Galactic Empire...
+---
+>  つながるとは……つくづく歴史と
+>  いうものは不思議なものだ」
+History truly is a strange thing.”
+
+@40622 Amuro · アムロ
+> 「しかし、もしもムゲ帝国がいなければ、
+>  こんなことには、ならなかったかもしれない
+“But if the Muge Empire had never existed, none of this might have happened.
+---
+>  そうは考えないのか?」
+Don't you think so?”
+
+@40623 Treize · トレーズ
+> 「歴史に“もしも”はないよ、
+>  アムロ・レイ
+“There is no ‘if’ in history, Amuro Ray.
+---
+>  そこにあるのは、人の生と死、
+>  その日々の積み重ねだけだ
+All that is there is people's lives and deaths, the accumulation of each day.
+---
+>  それは、よくわかっているのではないかね?
+>  かつての連邦のエース・パイロット
+Surely you understand that well? If you are the former Federation ace pilot,
+---
+>  ニュータイプのアムロ・レイならば」
+the Newtype Amuro Ray.”
+
+@40624 Amuro · アムロ
+> 「トレーズ……あなたとニュータイプ論を
+>  戦わせる気はない」
+“Treize... I have no intention of debating Newtype theory with you.”
+
+@40625 Treize · トレーズ
+> 「そうか……そこにシャア・アズナブルが
+>  いないのは残念だ。かつてのジオンの
+“I see... It's a shame Char Aznable isn't here. I would have liked to ask what the
+---
+>  赤い彗星が、いま何を考えている
+>  のかも、聞いてみたかったのだが」
+Red Comet of Zeon is thinking now.”
+
+@40626 Bright · ブライト
+> 「よけいな話は終わりにしましょう。
+>  時間を無駄にしたくない」
+“Let's end the idle talk. I don't want to waste time.”
+
+@40627 Treize · トレーズ
+> 「ああ、そうだった。さっそくクスコへ
+>  兵力を集中させるよう
+“Ah, yes. I'll arrange to concentrate our forces at Cusco at once.
+---
+>  手配しよう。人類の愚かな
+>  歴史のフィナーレを飾るかもしれない
+It may be the battle that adorns the finale of humanity's foolish history.
+---
+>  戦いなのだから。……
+>  が、君たちは太平洋を
+...But you cannot cross the Pacific. You'll have to
+---
+>  横断するわけにはいくまい。独力で
+>  銀河帝国軍の勢力圏を
+break through the Galactic Empire's sphere of influence on your own.
+---
+>  突破してもらわねばならないな」
+That much is certain.”
+
+@40628 Bright · ブライト
+> 「わかっている。こちらも相応の
+>  覚悟はできています」
+“I know. We're prepared for that as well.”
+
+@40629 Treize · トレーズ
+> 「ああ……無論、君たちはそうだろう。
+>  健闘を祈る
+“Yes... Of course you are. I wish you good luck.
+---
+>  君たちが来てくれなければ、
+>  何の意味もないのだからね」
+If you don't come, none of it will mean anything.”
+
+@40630 Alan · アラン
+> 「OZが動いたようだな」
+“It seems OZ has made its move.”
+
+@40631 Banjo · 万丈
+> 「さすがに早いね。だが、そのOZの
+>  動きで、銀河帝国軍にも再び
+“That was fast. But with OZ on the move, the Galactic Empire is stirring again too.
+---
+>  動きが出ている。小康状態は
+>  終わったようだ」
+Looks like the lull is over.”
+
+@40632 Garrison · ギャリソン
+> 「さようですな。再び各地で侵攻を
+>  開始したようです」
+“Indeed. It seems they've begun invading across the regions again.”
+
+@40633 Ryoma · リョウ
+> 「我々も、クスコへ急ぎましょう」
+“We should hurry to Cusco as well.”
+
+@40634 Koji · 甲児
+> 「まずは邪魔な敵をぶっつぶしてな」
+“First we smash the enemies in our way.”
+
+@40635 Hayato · ハヤト
+> 「ああ、敵の勢力圏を突破
+>  できなけりゃ、俺たちは終わりだ」
+“Yeah. If we can't break through their sphere of influence, we're finished.”
+
+@40636 Elle · エレ
+> 「そうですね。急ぎましょう、艦長。
+>  どうやら悪意のオーラがその地域へ
+“That's right. Let's hurry, Captain. It seems an aura of malice has begun to
+---
+>  集中しはじめたようです」
+concentrate in that region.”
+
+@40637 Chum · チャム
+> 「いやーん、おどかさないでよ。エレさまぁ」
+“Eek, don't scare me like that, Lady Elle.”
+
+@40638 Marvel · マーベル
+> 「大丈夫よ、チャム。私たちは
+>  勝つわ」
+“It's all right, Chum. We're going to win.”
+
+@40639 Show · ショウ
+> 「そうさ。心配すんなよ」
+“That's right. Don't worry.”
+
+@40640 Chum · チャム
+> 「あたしは何をすればいいの?」
+“What should I do?”
+
+@40641 Roux · ルー
+> 「チャムはいつも通りしてればいいのよ。
+>  ほら、ごはんの支度の時間でしょ」
+“Just do what you always do, Chum. Come on, isn't it time to get the meals ready?”
+
+@40642 Chum · チャム
+> 「あーいっけない! どいてどいてーっ!」
+“Oh no, I'm late! Out of my way, out of my way!”
+
+@40643 Bright · ブライト
+> 「では、よろしいのですね?」
+“Then it's settled, yes?”
+
+@40644 Elle · エレ
+> 「是も非もありません。
+>  何度も申しあげたはずです
+“There's no yes or no about it. I've told you many times.
+---
+>  世界に平和をもたらすのが我らの
+>  担う役目であれば、それは
+If it is our duty to bring peace to the world, then we
+---
+>  果たさねばなりません」
+must fulfill it.”
+
+@40645 Koji · 甲児
+> 「しかし、エレさんもすごいよな。よく
+>  あれだけのことがいえるもんだぜ」
+“But you're amazing too, Elle. To be able to say all that so easily.”
+
+@40646 Ciela · シーラ
+> 「それは正しい見方でしょう。
+>  艦長、我らも急ぎクスコとやらへ
+“That is the correct way of thinking. Captain, let us also hurry toward this Cusco
+---
+>  向かいましょう」
+as well.”
+
+@40647 Chum · チャム
+> 「シーラ様ぁ、あたしたち勝てるの?」
+“Lady Ciela, can we win?”
+
+@40648 Ciela · シーラ
+> 「チャム、あなたもここまで聖戦士と
+>  ともに戦ってきたのでしょう。もっと
+“Chum, you've fought alongside the Holy Warriors all this way, haven't you? Hold your
+---
+>  意識を高く持ちなさい。最後に
+>  ものをいうのは、強い覚悟をもった
+awareness higher. What matters in the end is a heart with strong
+---
+>  心なのですよ」
+resolve.”
+
+@40649 Show · ショウ
+> 「シーラ・ラパーナ……」
+“Ciela Lapana...”
+
+@40650 Ciela · シーラ
+> 「ショウ・ザマ。バイストンウェルの戦乱
+>  の源はオーラマシンそのものであると
+“Show Zama. You once said that the source of Byston Well's wars is the Aura Machine
+---
+>  かつて、あなたはいいましたね。その時に
+>  私の申したこと、覚えておいでか?」
+itself. Do you remember what I told you then?”
+
+@40651 Show · ショウ
+> 「時がくれば、自分の乗った
+>  グラン・ガランでも沈めてくれるか、と」
+“That when the time came, you'd sink even the Gran-Garan you rode in.”
+
+@40652 Ciela · シーラ
+> 「そうです。あなたは必要とあれば
+>  そうすると答えてくれましたね」
+“That's right. You told me you would, if it came to that.”
+
+@40653 Show · ショウ
+> 「はい」
+“Yes.”
+
+@40654 Ryoma · リョウ
+> 「ショウ、お前そんなことを……」
+“Show, you said something like that...”
+
+@40655 Ciela · シーラ
+> 「みなもお聞きなさい。自ら望んだに
+>  せよ、望まぬにせよ、すでに我らは
+“Everyone, listen. Whether we wished for it or not, we already
+---
+>  未来を担う運命の中にあります
+>  それには覚悟が必要です。命を
+stand within a destiny that carries the future. That requires resolve. Not
+---
+>  捨てる覚悟ではなく、何があろう
+>  とも為すべきことを為さしめるという
+the resolve to throw your life away, but the resolve to do what must be done,
+---
+>  覚悟が、です。それを忘れては
+>  なりません」
+no matter what happens. Never forget that.”
+
+@40656 Koji · 甲児
+> 「しかし、シーラさんもすごいよな。よく
+>  あれだけのことがいえるもんだぜ」
+“But you're amazing too, Ciela. To be able to say all that so easily.”
+
+@40657 Simone · シモーヌ
+> 「ノーブレス・オブリージってやつね。
+>  バイストンウェルにはまだ、確固たる
+“It's called noblesse oblige. In Byston Well it still exists as a
+---
+>  思想としてあるんだわ」
+firmly held philosophy.”
+
+@40658 Koji · 甲児
+> 「ノーブレス……なんだって?」
+“Noblesse... what?”
+
+@40659 Ark · アーク（按段落 3DD1）
+> 「ノーブレス・オブリージさ。
+>  たしか……高貴な身分にともなう
+“Noblesse oblige. I think it means... the duties that come with
+---
+>  義務とでもいうんじゃなかったかな」
+noble birth, or something like that.”
+
+@40660 Selain · セレイン（按段落 3DD2）
+> 「ノーブレス・オブリージだ。高貴な
+>  身分にともなう義務というやつだな」
+“Noblesse oblige. It means the duties that come with noble birth.”
+
+@40661 Brad · ブラッド（按段落 3DD3）
+> 「ノー……オブ……なんとかだな」
+“Noblesse... oblige... something like that.”
+
+@40662 Anna · アンナ
+> 「ノーブレス・オブリージよ。高貴な
+>  身分にともなう義務とでも
+“Noblesse oblige. The duties that come with noble birth, I
+---
+>  いうのかしら」
+suppose.”
+
+@40663 Manami · マナミ（按段落 3DD4）
+> 「ノーブレス・オブリージ、
+>  高貴なる身分にともなう義務ね
+“Noblesse oblige, the duties that come with noble birth.
+---
+>  古い言葉よ」
+It's an old phrase.”
+
+@40664 Simone · シモーヌ
+> 「そう。あたしたちの世界では、とっくの
+>  昔になくなってしまったものよ。もっとも
+“Right. In our world, it died out long ago. Though in
+---
+>  ロームフェラでは、言葉としてはいまだ
+>  に使う連中もいたけど、かつて
+Romefeller, some people still used the words, but that would be an insult
+---
+>  その言葉のもとに命までかけた
+>  貴族たちに失礼というものだわ」
+to the nobles who once staked their lives on them.”
+
+@40665 Tetsuya · 鉄也
+> 「つまり、あの人はそうあるべきものとして
+>  育ったので、あれが普通というわけか」
+“So she was raised to be that way, and to her it's just normal.”
+
+@40666 Judau · ジュドー
+> 「やだやだ、俺は平民でよかったぜ」
+“No thanks, I'm glad I'm a commoner.”
+
+@40667 Roux · ルー
+> 「ばかね、あたしたちは基本的にみんな
+>  そうでしょ」
+“Don't be silly, basically all of us are.”
+
+@40668 Marvel · マーベル
+> 「でも、あの方みたいな王は
+>  バイストンウェルでも、そうはいないわ」
+“But even in Byston Well, there aren't many kings like her.”
+
+@40669 Ryo · 亮
+> 「まぁ、だからこそドレイクに対抗する
+>  勢力として出たんだろうがな」
+“Well, that's exactly why she came out as a force against Drake.”
+
+@40670 Koji · 甲児
+> 「負けちゃいらんねぇな。みんな、
+>  オレたちも覚悟決めていこうぜ!」
+“We can't lose to her. Come on, everyone, let's get our resolve together too!”
+
+@40671 Bright · ブライト
+> 「よし、これより我々
+>  {HeroMech}は敵勢力圏を
+“All right, from here the {HeroMech} will break through
+---
+>  突破し、クスコへ向かう。
+>  総員、配置につけ!!」
+enemy territory and head for Cusco. All hands, to your posts!!”
+
+@40672 Kosuke · 小介
+> 「みんな、ちょっと聞いてください」
+“Everyone, listen for a moment.”
+
+@40673 Juzo · 十三
+> 「なんや小介、今いそがしいんや。
+>  手短かに頼むで」
+“What is it, Kosuke? I'm busy right now. Make it quick.”
+
+@40674 Kosuke · 小介
+> 「前に話していたコン・バトラーVの
+>  強化についてなんですけど……」
+“It's about the Combattler V upgrades we talked about before...”
+
+@40675 Hyoma · 豹馬
+> 「おっ! どこかパワーアップしたのか!?」
+“Oh! Did it get powered up somewhere?!”
+
+@40676 Dr. Yotsuya · 四谷博士
+> 「あいかわらず気が早いな。小介は
+>  まだ何もいっておらんじゃないか」
+“You're as impatient as ever. Kosuke hasn't said anything yet.”
+
+@40677 Hyoma · 豹馬
+> 「でも、そういうことだろ」
+“But that's what it's about, right?”
+
+@40678 Dr. Yotsuya · 四谷博士
+> 「ああ、そのとおりだ。小介と
+>  協力してコン・バトラーVに新しく
+“Yes, exactly. Working with Kosuke, we've fitted the Combattler V with new
+---
+>  武器を取りつけたんじゃ」
+weapons.”
+
+@40679 Hyoma · 豹馬
+> 「博士、もったいぶらずに早く話して
+>  くれよ」
+“Doctor, don't keep us in suspense. Tell us already.”
+
+@40680 Dr. Yotsuya · 四谷博士
+> 「グランダッシャーとツインランサー、それに
+>  Vレーザー、ビッグブラストディバイダーだ」
+“The Grand Dasher and the Twin Lancer, plus the V Laser and the Big Blast Divider.”
+
+@40681 Hyoma · 豹馬
+> 「4つも増えるのか!? 名前を
+>  聞いただけでも強そうじゃねえか」
+“Four of them?! Just hearing the names, they sound strong!”
+
+@40682 Dr. Yotsuya · 四谷博士
+> 「豹馬、武器というものは
+>  効果的に使ってこそ絶大な
+“Hyoma, weapons only show their true power when used effectively.
+---
+>  能力を発揮するんじゃ。お前の
+>  ようにむやみに使うものではないぞ
+They're not meant to be used recklessly like you do. That's just
+---
+>  それこそ無駄使いというものじゃ。
+>  わかっておるのか!?」
+wasting them. Do you understand?!”
+
+@40683 Hyoma · 豹馬
+> 「はいはい、わかってますよーだ。
+>  カミナリが落ちる前に退散しましょ」
+“Yeah, yeah, I get it. Let's clear out before lightning strikes.”
+
+@40684 Dr. Yotsuya · 四谷博士
+> 「こら、豹馬! どこへ行く!?
+>  ちょっと待たんか!」
+“Hey, Hyoma! Where are you going?! Wait a moment!”
+
+@40685 Emperor Zuul · ズール皇帝
+> 「ワール、例の件はどうだ」
+“Wahl, how goes that matter?”
+
+@40686 Wahl · ワール
+> 「いまだ発見には、いたっておりません。
+>  しかし陛下、地球制圧は
+“It still has not been found. But Your Majesty, the subjugation of Earth is
+---
+>  目前です。それほどお気になさること
+>  もないのではありませんか? おそらく
+at hand. Is there really any need to concern yourself so much? Surely
+---
+>  地球人どもは存在すら知らぬの
+>  でしょう」
+the Earthlings don't even know it exists.”
+
+@40687 Emperor Zuul · ズール皇帝
+> 「ワールよ、油断は禁物だ。マーズの
+>  件はワシがうかつであったが、もう1度
+“Wahl, one must never be careless. I was careless in the Mars matter, but I have no
+---
+>  それを繰り返すつもりはない」
+intention of repeating it.”
+
+@40688 Wahl · ワール
+> 「はっ」
+“Yes, sir.”
+
+@40689 Wahl · ワール
+> 「なんだ?」
+“What is it?”
+
+@40690 Gishin Soldier · ギシン星兵
+> 「地上のジャネラ様より通信です」
+“A transmission from Lady Janera on the surface.”
+
+@40691 Wahl · ワール
+> 「よし、出せ」
+“All right, put it through.”
+
+@40692 Janera · ジャネラ
+> 「ワール司令、陛下、地球人
+>  どもが動き始めたようです。おそらく
+“Commander Wahl, Your Majesty, the Earthlings seem to have started moving. In all likelihood,
+---
+>  この地域に集結するつもりと
+>  思われます」
+they intend to gather in this region.”
+
+@40693 Wahl · ワール
+> 「ふむ……いったいどういうつもりか。もはや
+>  勝ち目はないと知って、我らに
+“Hmm... what could they be thinking? Knowing they have no chance of winning, do they mean to
+---
+>  最後の決戦でも挑もうというのか」
+challenge us to one final decisive battle?”
+
+@40694 Emperor Zuul · ズール皇帝
+> 「待て、ワール。例の候補地で
+>  地球人どもがおらぬ場所が、まだ
+“Wait, Wahl. There still remains a place among the candidate sites where the Earthlings are
+---
+>  残っておったな。表示を重ねてみよ」
+absent. Overlay the displays.”
+
+@40695 Wahl · ワール
+# 审校：原文“これは!”是发现异常时的惊呼，初稿“This is!”不完整且不像英语惊呼，改为“This is—!”
+> 「はい陛下…………これは!」
+“Yes, Your Majesty... This is—!”
+
+@40696 Emperor Zuul · ズール皇帝
+> 「どうだ、ワール」
+“What do you make of it, Wahl?”
+
+@40697 Wahl · ワール
+> 「しかし陛下、あの大陸にはこれまで
+>  にも地球人の重要拠点が
+“But Your Majesty, that continent has hosted important Earthling strongholds before.
+---
+>  おかれていたこともあります。
+>  偶然ではないかと……」
+I suspect it may be coincidence...”
+
+@40698 Emperor Zuul · ズール皇帝
+> 「黙れ! ジャネラよ、
+>  その大陸へ戦力を集中させい
+“Silence! Janera, concentrate your forces on that continent.
+---
+>  ワール、お前もガンダルとともに地上
+>  へ降りるのだ。4万年の昔のこと
+Wahl, you too shall descend to the surface with the Gandal. That thing dates back 40,000 years—
+---
+>  あれが使われた場合、どれほどの
+>  影響があるのかわからぬ。そこにあれば
+if it is used, there is no telling what effect it might have. If it is there,
+---
+>  破壊せよ。そうでなくとも、ここで
+>  地球人どもをせん滅すればよい」
+destroy it. Even if not, we need only annihilate the Earthlings here.”
+
+@40699 Wahl · ワール
+> 「はっ、かしこまりました」
+“Yes, sir. Understood.”
+
+@40700 Beltorchika · ベルトーチカ
+> 「発見されました。
+>  前方に敵部隊です」
+“We've spotted them. Enemy forces ahead.”
+
+@40701 Bright · ブライト
+> 「いよいよか。
+>  総員、第一戦闘配置
+“So it's time. All hands, battle stations one.
+---
+>  なんとしてもクスコへたどり着くんだ」
+We must reach Cusco no matter what.”
+
+@40702 Quattro · クワトロ
+> 「作戦は伝達した通りだ。
+>  一刻も早く、敵部隊を
+“The plan is as relayed. Think only of breaking through the enemy forces
+---
+>  突破することだけを考えろ」
+as quickly as possible.”
+
+@40703 Bright · ブライト
+> 「そういうことだ」
+“You heard him.”
+
+@40704 Bright · ブライト
+> 「ここまでたどりついた者から戦線を
+>  離脱する。いいな!」
+“Those who make it this far are to withdraw from the battle line. Understood?!”
+
+@40705 Chum · チャム
+> 「ショウ、あれ見て!」
+“Show, look at that!”
+
+@40706 Show · ショウ
+> 「なんだ……オーラバトラーなのか?」
+“What is it... an Aura Battler?”
+
+@40707 Tod · トッド
+> 「ショウ、どうやらお前らもオーラバトラー
+>  ごと、地上に残ったクチらしいな」
+“Show, seems you lot got left behind on the surface along with your Aura Battlers.”
+
+@40708 Show · ショウ
+> 「トッド!? 生きていたのか!?」
+“Tod?! You're alive?!”
+
+@40709 Tod · トッド
+> 「ああ、この通りだぜ」
+“Yeah, as you can see.”
+
+@40710 Show · ショウ
+> 「どういうつもりだ、トッド?」
+“What are you playing at, Tod?”
+
+@40711 Tod · トッド
+> 「どういうつもりもクソもあるかよ!
+>  俺だって、地球人だぜ
+“What am I playing at, my ass! I'm an Earthling too, you know.
+---
+>  銀河帝国ってのがどういう奴らか
+>  ってことぐらい、俺だって聞いてるんだ
+Even I've heard what kind of people this Galactic Empire is.
+---
+>  貴様への恨みをチャラにする気は
+>  ないが、何をするべきかは
+I've got no intention of letting go of my grudge against you, but I know
+---
+>  わかってるつもりだぜ」
+what needs to be done.”
+
+@40712 Show · ショウ
+> 「トッド……」
+“Tod...”
+
+@40713 Chum · チャム
+> 「トッドが味方してくれるの!?
+>  ウッソォ!」
+“Tod's going to fight on our side?! No way!”
+
+@40714 Tod · トッド
+> 「ウソはないだろう、ミ・フェラリオの……」
+“No lie about it, Mi Ferario...”
+
+@40715 Chum · チャム
+> 「チャム・ファウよ!」
+“It's Chum Huau!”
+
+@40716 Tod · トッド
+> 「チャム。いいんだろう、ショウ」
+“Chum. It's fine, isn't it, Show?”
+
+@40717 Show · ショウ
+> 「ああ、助かる、トッド。しかし、その
+>  オーラバトラーはなんだ?」
+“Yeah, you're a big help, Tod. But what's that Aura Battler?”
+
+@40718 Tod · トッド
+> 「さあな。俺も知らん。あとで説明
+>  してやるよ」
+“Beats me. I don't know either. I'll explain later.”
+
+@40719 Show · ショウ
+> 「わかった。いまは敵を撃退することが
+>  先だものな」
+“Got it. Right now, driving off the enemy comes first.”
+
+@40720 Silky · シルキー
+> 「いいの、トッド?」
+“Is this all right, Tod?”
+
+@40721 Tod · トッド
+> 「ああ、まずはとにかく、あの異星人
+>  どもを倒す」
+“Yeah. First things first—we take down those aliens.”
+
+@40722 Chum · チャム
+> 「ミ・フェラリオがいるの!?」
+“There's a Mi Ferario here?!”
+
+@40723 Silky · シルキー
+> 「シルキー・マウよ」
+“It's Silky Mau.”
+
+@40724 Tod · トッド
+> 「話はあとだっていったろ」
+“I told you, we'll talk later.”
+
+@40725 Tod · トッド
+> 「ちっ……ここまでか。悪いな、ショウ。
+>  どうやら、お前と一緒にいくことは
+“Tch... this is as far as I go. Sorry, Show. Looks like I can't
+---
+>  できなくなっちまった。あばよ
+come with you after all. So long.
+---
+>  後は頼むぜ……」
+I'm counting on you...”
+
+@40726 Show · ショウ
+> 「トッド!? くっ……」
+“Tod?! Damn...”
+
+@40727 Chum · チャム
+> 「ショウ……気を落とさないで……」
+“Show... don't be discouraged...”
+
+@40728 Show · ショウ
+> 「ああ……大丈夫だよ、チャム。
+>  大丈夫だ……」
+“Yeah... I'm fine, Chum. I'm fine...”
+
+@40729 Bright · ブライト
+> 「片づいたか。よし、先を急ぐぞ。
+>  いつ敵と遭遇するか、わからん
+“All taken care of? Good, let's hurry on ahead. There's no telling when we'll run into the enemy.
+---
+>  総員、第二戦闘配置のまま
+>  待機だ」
+All hands, remain at battle stations two.”
+
+@40730 Bright · ブライト
+> 「なるほど。それで我々と、ともに
+>  来たいと?」
+“I see. So that's why you want to come with us?”
+
+@40731 Tod · トッド
+> 「ああ、そうだ。今度の奴らは
+>  地球人を生かしておくつもりが
+“Yeah, that's right. I hear these guys have no intention of letting Earthlings
+---
+>  ないと聞いた。俺も地球人だ、
+>  何をするべきなのかは、わかっている
+live. I'm an Earthling too, and I know what needs to be done.
+---
+>  つもりだぜ。このままじゃ、おふくろだって
+>  やばい」
+At this rate, even my mom's in danger.”
+
+@40732 Bright · ブライト
+> 「ショウ、君はどうだ?」
+“Show, what about you?”
+
+@40733 Show · ショウ
+> 「俺はトッドを信じます」
+“I believe in Tod.”
+
+@40734 Chum · チャム
+> 「うん、大丈夫よ。ね、マーベル」
+“Yeah, it'll be fine. Right, Marvel?”
+
+@40735 Marvel · マーベル
+> 「そうね……信じたいわね」
+“I suppose... I'd like to believe him.”
+
+@40736 Tod · トッド
+> 「そいつはどうも」
+“Much obliged.”
+
+@40737 Bright · ブライト
+> 「そうか……シーラ女王はどうですか?」
+“I see... What about Queen Ciela?”
+
+@40738 Ciela · シーラ
+> 「ドレイクにくみした男……しかし
+>  今、この地上にオーラマシンとともに
+“He was a man who sided with Drake... But the fact that he remains here on
+---
+>  残っているということは、彼もまた
+>  はたすべき役割をもたされているのだと
+the surface now, together with an Aura Machine, suggests to me that he too
+---
+>  考えます。それに今のトッド・ギネスに
+>  は聖戦士としての力を感じます
+has been given a role to fulfill. Besides, I can sense the power of a Holy Warrior
+---
+>  信用してもよろしいのでは
+>  ないでしょうか」
+in Tod Guines now. I believe it would be fine to trust him.”
+
+@40739 Bright · ブライト
+> 「そうか……エレさんはどうです?」
+“I see... What about you, Elle?”
+
+@40740 Elle · エレ
+> 「トッド・ギネスのオーラ力に
+>  悪意は感じません。この者は
+“I sense no ill will in Tod Guines's aura power. I acknowledge that
+---
+>  聖戦士として、ここにいるのだと
+>  認めます」
+this man is here as a Holy Warrior.”
+
+@40741 Bright · ブライト
+> 「わかりました。トッド・ギネス、我々は
+>  今かなり厳しい状態にある
+“Understood. Tod Guines, we are in a rather dire situation right now.
+---
+>  それでもいいのだな?」
+You're still all right with that?”
+
+@40742 Tod · トッド
+> 「ああ、かまわんさ」
+“Yeah, I don't mind.”
+
+@40743 Bright · ブライト
+> 「よし、すぐにでも出てもらうかもしれん。
+>  休んでおけ」
+“Good. We may send you out at any moment. Get some rest.”
+
+@40744 Garalia · ガラリア
+> 「足ひっぱるんじゃないよ、トッド」
+“Don't go dragging us down, Tod.”
+
+@40745 Tod · トッド
+> 「ああ、せいぜい努力させてもらうぜ」
+“Yeah, I'll do my best, at least.”
+
+@40746 Chum · チャム
+> 「トッド、しっかり活躍しないと
+>  承知しないんだから!」
+“Tod, if you don't put on a good show, I won't forgive you!”
+
+@40747 Tod · トッド
+> 「フェラリオに、いわれるまでもない」
+“I don't need a Ferario telling me that.”
+
+@40748 Chum · チャム
+> 「チャム・ファウよ!」
+“It's Chum Huau!”
+
+@40749 Show · ショウ
+> 「で、このオーラバトラーは何なんだ?」
+“So what is this Aura Battler, anyway?”
+
+@40750 Tod · トッド
+> 「正直いって、俺にもわからん。俺は
+>  お前らにやられたあと、なんとか命を
+“Honestly, I don't know either. After you people finished me off, I somehow
+---
+>  とりとめた。だが、気がついた時には、
+>  ライネックは消えちまってた」
+hung on to life. But by the time I came to, the Wryneck was gone.”
+
+@40751 Marvel · マーベル
+> 「シーラさまのお力ね。
+>  私たちのマシンも、本当はすべて
+“That's Queen Ciela's power. Our machines, too, were really all
+---
+>  消えてしまうはずだったわ」
+supposed to vanish.”
+
+@40752 Tod · トッド
+> 「だろうな。ま、そのあと俺は、
+>  ずっと療養してたのさ。ところが
+“Figures. Well, after that I was laid up recovering for a long while. But then
+---
+>  最近になって、突然こいつを
+>  発見した。そうだな、ちょうど
+recently, I suddenly found this thing. Yeah, right around
+---
+>  銀河帝国とやらが、地球圏に
+>  来た頃のことだ」
+when that Galactic Empire or whatever came to the Earth Sphere.”
+
+@40753 Show · ショウ
+> 「銀河帝国か……何か、関係が
+>  あるんだろうか……」
+“The Galactic Empire... I wonder if there's some connection...”
+
+@40754 Tod · トッド
+> 「さあな。女王さんのいってた、果たす
+>  べき役割ってやつかもしれないがね
+“Who knows. Maybe it's that role to fulfill the Queen talked about.
+---
+>  どっちみち、やらなきゃならんことだ。
+>  あのオーラバトラーは力がある。なんなら
+Either way, it's something I've got to do. That Aura Battler's got power. If you want,
+---
+>  お前が使ってもいいんだぜ、ショウ」
+you're welcome to use it, Show.”

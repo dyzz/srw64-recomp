@@ -1,0 +1,190 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10545 Roux · ルー
+> 「私が相手になってやるわ!」
+“I'll take you on!”
+
+@10546 Roux · ルー
+> 「まかせなさい!」
+“Leave it to me!”
+
+@10547 Roux · ルー
+> 「いくわよ!」
+“Here I go!”
+
+@10548 Roux · ルー
+> 「なにさっ!」
+“What's your problem?!”
+
+@10549 Roux · ルー
+> 「さぁどこからでもかかってらっしゃい!」
+“Come on, bring it from anywhere!”
+
+@10550 Roux · ルー
+> 「女をなめんじゃないの!」
+“Don't underestimate a woman!”
+
+@10551 Roux · ルー
+> 「なにぼーっとしてるの!」
+“What are you spacing out for?!”
+
+@10552 Roux · ルー
+> 「きた!」
+“Here it comes!”
+
+@10553 Roux · ルー
+> 「そこね!」
+“There, huh!”
+
+@10554 Roux · ルー
+> 「私がっ!」
+“I will!”
+
+@10555 Roux · ルー
+> 「落としてみせるわ!」
+“I'll shoot you down!”
+
+@10556 Roux · ルー
+> 「ルー・ルカ、いきます!」
+“Roux Louka, moving out!”
+
+@10557 Roux · ルー
+> 「し、しまった! だめっ!」
+“D-Damn! No!”
+
+@10558 Roux · ルー
+> 「ご、ごめん……やられたっ!」
+“S-Sorry... I got hit!”
+
+@10559 Roux · ルー
+> 「う、嘘!? やられちゃったの!?」
+“N-No way!? I got taken down!?”
+
+@10560 Roux · ルー
+> 「くっ、そ、そんな! 嘘でしょ!?」
+“Ngh, n-no! You're kidding!?”
+
+@10561 Roux · ルー
+> 「あぁーっ! 直撃!?」
+“Aah! A direct hit!?”
+
+@10562 Roux · ルー
+> 「くっ、だ、だめっ!」
+“Ngh, n-no!”
+
+@10563 Roux · ルー
+> 「うぅっ、こ、これ以上は……!」
+“Ngh, a-any more than this...!”
+
+@10564 Roux · ルー
+> 「な、なんて攻撃……」
+“W-What an attack...”
+
+@10565 Roux · ルー
+> 「あぁーっ!」
+“Aah!”
+
+@10566 Roux · ルー
+> 「こ、このくらいでっ!」
+“Th-This much is nothing!”
+
+@10567 Roux · ルー
+> 「うっ! まだよ!」
+“Ngh! Not yet!”
+
+@10568 Roux · ルー
+> 「こ、これ以上はやらせないわ!」
+“I-I won't let you do any more!”
+
+@10569 Roux · ルー
+> 「あぅっ! あたった!?」
+“Ah! It hit!?”
+
+@10570 Roux · ルー
+> 「こ、このっ、やってくれんじゃないのよ!」
+“Wh-Why you, you're pretty good!”
+
+@10571 Roux · ルー
+> 「うっ! なんてパワーなの!?」
+“Ngh! What power!?”
+
+@10572 Roux · ルー
+> 「なにさ、そのくらいっ!」
+“What, that's all?!”
+
+@10573 Roux · ルー
+> 「そんな攻撃で!」
+“With an attack like that!”
+
+@10574 Roux · ルー
+> 「効かないわよ!」
+“It won't work on me!”
+
+@10575 Roux · ルー
+> 「あ、あたっちゃったわけ!?」
+“I-I got hit!?”
+
+@10576 Roux · ルー
+> 「やれた!? すごーい、こんな私を
+>  愛しちゃう」
+“Did I get it!? Amazing, I could fall in love with myself.”
+
+@10577 Roux · ルー
+> 「よしっ!」
+“All right!”
+
+@10578 Roux · ルー
+> 「この程度ならよけてみせるわ!」
+“At this level, I'll dodge it!”
+
+@10579 Roux · ルー
+> 「やらせないっ!」
+“I won't let you!”
+
+@10580 Roux · ルー
+> 「さっすが、私!」
+“That's my girl—me!”
+
+@10581 Roux · ルー
+> 「なにさ、そんな攻撃!」
+“What, an attack like that?!”
+
+@10582 Roux · ルー
+> 「無駄よ!」
+“It's useless!”
+
+@10583 Roux · ルー
+> 「あたらないわ!」
+“You won't hit me!”
+
+@10584 Roux · ルー
+> 「無駄だっていってるの!」
+“I said it's useless!”
+
+@10585 Roux · ルー
+> 「効きはしないわ」
+“It won't work.”
+
+@10586 Roux · ルー
+> 「なにさ、効かないわよ!」
+“What, it doesn't work!”
+
+@10587 Roux · ルー
+> 「そんなことしてどうしようっていうの!?」
+“What are you trying to do with that!?”
+
+@10588 Roux · ルー
+> 「弾切れ? なんてこと!」
+“Out of ammo? You've gotta be kidding!”
+
+@10589 Roux · ルー
+> 「こんなときに弾切れ!?」
+“Out of ammo at a time like this!?”
+
+@10590 Roux · ルー
+> 「あ、あんなに遠くから!?」
+“F-From that far away!?”
+
+@10591 Roux · ルー
+> 「この距離じゃ反撃は無理ね……」
+“At this distance, I can't fight back...”

@@ -1,0 +1,192 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9845 Ryoma · リョウ
+> 「ゲッターの力を信じるんだ……!」
+“Believe in the power of Getter...!”
+
+@9846 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+
+@9847 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here I go!!”
+
+@9848 Ryoma · リョウ
+> 「とおっ!!」
+“Hah!!”
+
+@9849 Ryoma · リョウ
+> 「これでどうだ!!」
+“How's this!!”
+
+@9850 Ryoma · リョウ
+> 「ゲッターのパワーを受けてみろっ!!」
+“Feel the power of Getter!!”
+
+@9851 Ryoma · リョウ
+> 「貴様にも味わってもらうぜ、ゲッターの
+>  恐ろしさをな!!」
+“You're gonna get a taste of it too, the terror of Getter!!”
+
+@9852 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+
+@9853 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here I go!!”
+
+@9854 Ryoma · リョウ
+> 「とおっ!!」
+“Hah!!”
+
+@9855 Ryoma · リョウ
+> 「うわああああっ!!」
+“Uwaaaaaaah!!”
+
+@9856 Ryoma · リョウ
+> 「うわっ! しまった!!」
+“Uwah! Damn it!!”
+
+@9857 Ryoma · リョウ
+> 「くっ!! ここまでか!!」
+“Ngh!! This is it for me!!”
+
+@9858 Ryoma · リョウ
+> 「うおっ!! い、いかん!!」
+“Uwoh!! Th-this is bad!!”
+
+@9859 Ryoma · リョウ
+> 「くっ! まずいな……」
+“Ngh! This isn't good...”
+
+@9860 Ryoma · リョウ
+> 「うっ!! なんてパワーだ!?」
+“Ugh!! What kind of power is that?!”
+
+@9861 Ryoma · リョウ
+> 「し、しまった!! このままでは……」
+“D-damn it!! At this rate...”
+
+@9862 Ryoma · リョウ
+> 「うわっ!! まずい! このままでは!!」
+“Uwah!! This is bad! At this rate!!”
+
+@9863 Ryoma · リョウ
+> 「くっ! ダメージを受けすぎたか!?」
+“Ngh! Did I take too much damage?!”
+
+@9864 Ryoma · リョウ
+> 「くっ! ま、まだやられるわけには!!」
+“Ngh! I-I can't go down yet!!”
+
+@9865 Ryoma · リョウ
+> 「うわっ!! ゲッターは まだ
+>  こんなものでは!!」
+“Uwah!! Getter's not done yet!!”
+
+@9866 Ryoma · リョウ
+> 「うっ!! ま、まだいける!!」
+“Ugh!! I-I can still go!!”
+
+@9867 Ryoma · リョウ
+> 「くっ!! やらせるものかっ!!」
+“Ngh!! Like I'd let you!!”
+
+@9868 Ryoma · リョウ
+> 「むうっ!! やるなっ!!」
+“Mmph!! Not bad!!”
+
+@9869 Ryoma · リョウ
+> 「まだだっ!! こんなものでっ!!」
+“Not yet!! Not from something like that!!”
+
+@9870 Ryoma · リョウ
+> 「うわっ! やったなっ!!」
+“Uwah! You got me!!”
+
+@9871 Ryoma · リョウ
+> 「くっ!」
+“Ngh!”
+
+@9872 Ryoma · リョウ
+> 「くっ! やるな! だが、まだ!!」
+“Ngh! Not bad! But I'm not done!!”
+
+@9873 Ryoma · リョウ
+> 「くっ!! だが、この程度なら
+>  まだいける!」
+“Ngh!! But I can still take this much!”
+
+@9874 Ryoma · リョウ
+> 「この程度っ!」
+“That's nothing!”
+
+@9875 Ryoma · リョウ
+> 「なんの、かすっただけだっ!」
+“Please, it just grazed me!”
+
+@9876 Ryoma · リョウ
+> 「なんのこれしき!!」
+“This is nothing!!”
+
+@9877 Ryoma · リョウ
+> 「どうした、そんなものか!」
+“What's wrong, is that all you've got?”
+
+@9878 Ryoma · リョウ
+> 「その程度ではゲッターに勝てないぞ!」
+“You can't beat Getter with that!”
+
+@9879 Ryoma · リョウ
+> 「くっ!! この程度で落ちるものか!」
+“Ngh!! Like I'd fall from this!”
+
+@9880 Ryoma · リョウ
+> 「この程度のダメージっ!」
+“Damage like this!”
+
+@9881 Ryoma · リョウ
+> 「くっ! まだまだ!!」
+“Ngh! I'm not done yet!!”
+
+@9882 Ryoma · リョウ
+> 「おっとっ!」
+“Whoa there!”
+
+@9883 Ryoma · リョウ
+> 「あまいぞっ!」
+“Too slow!”
+
+@9884 Ryoma · リョウ
+> 「こんなもの!!」
+“As if!!”
+
+@9885 Ryoma · リョウ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@9886 Ryoma · リョウ
+> 「あたるかっ!」
+“Like you'd hit me!”
+
+@9887 Ryoma · リョウ
+> 「ビームは通用しないぞ!」
+“Beams are useless against me!”
+
+@9888 Ryoma · リョウ
+> 「ビームは効かないぞ!」
+“Beams don't work on me!”
+
+@9889 Ryoma · リョウ
+> 「しまった! 反撃できない!!」
+“Damn! I can't fight back!!”
+
+@9890 Ryoma · リョウ
+> 「くそっ、この距離では!」
+“Damn, at this range!”
+
+@9891 Ryoma · リョウ
+> 「ダメだ、この距離では!」
+“No good, at this range!”

@@ -1,0 +1,237 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8374 Kamille · カミーユ
+> 「来るかッ!」
+“Coming at me?!”
+
+@8375 Kamille · カミーユ
+> 「これならっ!」
+“This should do it!”
+
+@8376 Kamille · カミーユ
+> 「出てこなければ、やられなかったのに!」
+“If you hadn't come out, you wouldn't have been shot!”
+
+@8377 Kamille · カミーユ
+> 「抵抗するとムダ死にをするだけだって
+>  なんでわからないんだ!」
+“Why don't you get that resisting just gets you killed for nothing?!”
+
+@8378 Kamille · カミーユ
+> 「まだ、抵抗するのならっ!!」
+“If you're still going to resist!!”
+
+@8379 Kamille · カミーユ
+> 「おちろぉーっ!」
+“Fall, damn you!”
+
+@8380 Kamille · カミーユ
+> 「そこかぁーっ!」
+“There you are!”
+
+@8381 Kamille · カミーユ
+> 「あたれぇーっ!」
+“Hit him!”
+
+@8382 Kamille · カミーユ
+> 「いけるかっ!?」
+“Can I do this?!”
+
+@8383 Kamille · カミーユ
+> 「そこだっ!!」
+“Right there!!”
+
+@8384 Kamille · カミーユ
+> 「うかつなっ!!」
+“Careless!!”
+
+@8385 Kamille · カミーユ
+> 「やらせるかっ!」
+“Like I'd let you!”
+
+@8386 Kamille · カミーユ
+> 「させるかぁっ!!」
+“You think I'd let you?!”
+
+@8387 Kamille · カミーユ
+> 「いけーっ!!」
+“Go!!”
+
+@8388 Kamille · カミーユ
+> 「邪魔だっ!!」
+“Out of my way!!”
+
+@8389 Kamille · カミーユ
+> 「そこをどけーっ!!」
+“Get out of the way!!”
+
+@8390 Kamille · カミーユ
+> 「ええいっ!」
+“Come on!”
+
+@8391 Kamille · カミーユ
+> 「直撃させるっ!」
+“I'll land a direct hit!”
+
+@8392 Kamille · カミーユ
+> 「遊びでやってんじゃないんだよーっ!!」
+“This isn't a game to me!!”
+
+@8393 Kamille · カミーユ
+> 「ここからいなくなれーっ!!」
+“Get out of here!!”
+
+@8394 Kamille · カミーユ
+> 「これで決めてやる!」
+“I'll finish you with this!”
+
+@8395 Kamille · カミーユ
+> 「しまった! 直撃をくらった!!」
+“Damn! Took a direct hit!!”
+
+@8396 Kamille · カミーユ
+> 「し、しまった!!」
+“D-damn it!!”
+
+@8397 Kamille · カミーユ
+> 「うわぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@8398 Kamille · カミーユ
+> 「うわっ!しまった!!」
+“Uwah! Damn it!!”
+
+@8399 Kamille · カミーユ
+> 「ぐうっ!! まだだ! まだもってくれ!!」
+“Guh!! Not yet! Hold together a little longer!!”
+
+@8400 Kamille · カミーユ
+> 「くぅっ! パワーダウンか!?
+>  こんな時に……」
+“Kuh! Power down?! Of all times...”
+
+@8401 Kamille · カミーユ
+> 「ダメだ、このままじゃもたないっ!!」
+“No good, I can't hold out like this!!”
+
+@8402 Kamille · カミーユ
+> 「くっ!! ダメージを受けすぎたか!?」
+“Kuh!! Did I take too much damage?!”
+
+@8403 Kamille · カミーユ
+> 「うわっ!! も、もつのか!?」
+“Uwah!! C-can it hold?!”
+
+@8404 Kamille · カミーユ
+> 「まだだ! まだやられるわけにはいかない!」
+“Not yet! I can't afford to go down yet!”
+
+@8405 Kamille · カミーユ
+> 「当たった!? やってくれる!!」
+“It hit?! You're good!!”
+
+@8406 Kamille · カミーユ
+> 「うっ! やる!!
+>  けど、まだやられちゃいない!!」
+“Ugh! Nice one!! But I'm not down yet!!”
+
+@8407 Kamille · カミーユ
+> 「なにっ!! こ、こいつっ!!」
+“What!! Y-you bastard!!”
+
+@8408 Kamille · カミーユ
+> 「くっ!! まだっ!!」
+“Kuh!! Not yet!!”
+
+@8409 Kamille · カミーユ
+> 「やる! でもまだ!」
+“You're good! But not yet!”
+
+@8410 Kamille · カミーユ
+> 「まだまだっ!!」
+“Not even close!!”
+
+@8411 Kamille · カミーユ
+> 「こんな攻撃、効くもんかよっ!!」
+“An attack like that won't do a thing!!”
+
+@8412 Kamille · カミーユ
+> 「被弾!? いや、かすめただけか」
+“Hit?! No, just a graze.”
+
+@8413 Kamille · カミーユ
+> 「そんなのでやられるものか!!」
+“You think that's enough to take me down?!”
+
+@8414 Kamille · カミーユ
+> 「この程度の攻撃!!」
+“An attack this weak!!”
+
+@8415 Kamille · カミーユ
+> 「この程度のダメージなら!」
+“Damage like this is nothing!”
+
+@8416 Kamille · カミーユ
+> 「くっ、まだァッ!!」
+“Kuh, not yet!!”
+
+@8417 Kamille · カミーユ
+> 「当たりはしないっ!」
+“You won't hit me!”
+
+@8418 Kamille · カミーユ
+> 「下!? いや、正面か!!」
+“Below?! No, straight ahead!!”
+
+@8419 Kamille · カミーユ
+> 「そう簡単にっ!!」
+“Not that easily!!”
+
+@8420 Kamille · カミーユ
+> 「なんのっ!」
+“As if!”
+
+@8421 Kamille · カミーユ
+> 「みえる……そこっ!!」
+“I can see it... there!!”
+
+@8422 Kamille · カミーユ
+> 「あたるかよっ!!」
+“Like that would hit!!”
+
+@8423 Kamille · カミーユ
+> 「あたるものか!」
+“You won't hit me!”
+
+@8424 Kamille · カミーユ
+> 「みえる!」
+“I can see it!”
+
+@8425 Kamille · カミーユ
+> 「ビームは効かないっていってる!!」
+“I told you beams don't work!!”
+
+@8426 Kamille · カミーユ
+> 「効くかよ!」
+“Like that would work!”
+
+@8427 Kamille · カミーユ
+> 「そんなものッ!!」
+“That's nothing!!”
+
+@8428 Kamille · カミーユ
+> 「しまった! 弾切れか!?」
+“Damn! Out of ammo?!”
+
+@8429 Kamille · カミーユ
+> 「くっ! ダメか!?」
+“Kuh! No good?!”
+
+@8430 Kamille · カミーユ
+> 「ダメだ、
+>  この距離じゃ反撃できない!」
+“No good, I can't counter from this range!”
+
+@8431 Kamille · カミーユ
+> 「くっ! 遠すぎるか!」
+“Kuh! Too far?!”

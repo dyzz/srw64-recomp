@@ -1,0 +1,105 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7305 Q Boss · Qボス
+> 「逃がさんぞ!」
+“You won't escape!”
+
+@7306 Q Boss · Qボス
+> 「これでどうかな!」
+“How about this!”
+
+@7307 Q Boss · Qボス
+> 「おのれっ!」
+“Curse you!”
+
+@7308 Q Boss · Qボス
+> 「さぁっ!」
+“Come on!”
+
+@7309 Q Boss · Qボス
+> 「これならどうだ!?」
+“How's this?!”
+
+@7310 Q Boss · Qボス
+> 「いくぞっ!」
+“Here I go!”
+
+@7311 Q Boss · Qボス
+> 「貴様っ!」
+“You bastard!”
+
+@7312 Q Boss · Qボス
+> 「手段は選ばん」
+“I'll use any means necessary.”
+
+@7313 Q Boss · Qボス
+> 「観念なさいぃっ!」
+“Give it up!”
+
+@7314 Q Boss · Qボス
+> 「ビッグファイアーのためにぃっ!」
+“For Big Fire!”
+
+@7315 Q Boss · Qボス
+> 「グゥゥ、ビッグファイアーのためにぃぃぃ!」
+“Guh, for Big Fire!”
+
+@7316 Q Boss · Qボス
+> 「そんなばかなぁぁぁぁっ!」
+“That's impossible!”
+
+@7317 Q Boss · Qボス
+> 「こ、これはっ!」
+“Th-This is?!”
+
+@7318 Q Boss · Qボス
+> 「エンジンシステムを!?」
+“The engine system?!”
+
+@7319 Q Boss · Qボス
+> 「くそぅっ!」
+“Damn it!”
+
+@7320 Q Boss · Qボス
+> 「な、なんだ!?」
+“Wh-What?!”
+
+@7321 Q Boss · Qボス
+> 「やってくれたな、ただでは逃がさんぞっ」
+“You've done it now. I won't let you get away with that.”
+
+@7322 Q Boss · Qボス
+> 「ぐぅ? 貴様っ!」
+“Guh? You bastard!”
+
+@7323 Q Boss · Qボス
+> 「おわっ」
+“Whoa!”
+
+@7324 Q Boss · Qボス
+> 「ほう? その程度かな」
+“Oh? Is that all?”
+
+@7325 Q Boss · Qボス
+> 「ふはははははっ!」
+“Fuhahahahaha!”
+
+@7326 Q Boss · Qボス
+> 「あきらめなさい」
+“Give it up.”
+
+@7327 Q Boss · Qボス
+> 「フフフ、どこを狙っているのかな」
+“Hehehe, what are you aiming at?”
+
+@7328 Q Boss · Qボス
+> 「あきらめなさい」
+“Give it up.”
+
+@7329 Q Boss · Qボス
+> 「こ、これは、残弾がゼロだと!?」
+“Th-This is, zero rounds left?!”
+
+@7330 Q Boss · Qボス
+> 「くそぅっ、届かんとは!」
+“Damn it, it won't reach!”

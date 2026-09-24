@@ -1,0 +1,128 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9675 Jun · ジュン
+> 「やらせないっ!!」
+“I won't let you!!”
+
+@9676 Jun · ジュン
+> 「そこっ!!」
+“There!!”
+
+@9677 Jun · ジュン
+> 「いくわよ!!」
+“Here I go!!”
+
+@9678 Jun · ジュン
+> 「これでどう!!」
+“How's this!!”
+
+@9679 Jun · ジュン
+# 审校：“This is the finishing blow!” 语气偏说明，战斗喊招应更短促有力，改为“Finishing blow!”
+> 「とどめよ!」
+“Finishing blow!”
+
+@9680 Jun · ジュン
+> 「くっ! ダメ、やられた!!」
+“Ngh! No, I've been hit!!”
+
+@9681 Jun · ジュン
+> 「くうぅっ! ごめん、鉄也!」
+“Ngh! Sorry, Tetsuya!”
+
+@9682 Jun · ジュン
+> 「あうっ! こ、このままでは……」
+“Agh! A-at this rate...”
+
+@9683 Jun · ジュン
+> 「きゃあぁぁっ! つ、強い!」
+“Kyaaah! S-so strong!”
+
+@9684 Jun · ジュン
+> 「ああっ! こ、これじゃもたない!」
+“Aah! I-I can't hold out like this!”
+
+@9685 Jun · ジュン
+> 「あああっ! こ、こんなにパワーが
+>  あるなんて……」
+“Aaah! T-to have this much power...”
+
+@9686 Jun · ジュン
+> 「くっ! まだよ、まだまだっ!」
+“Ngh! Not yet, not by a long shot!”
+
+@9687 Jun · ジュン
+> 「うっ! このまま、やられてたまる
+>  ものですかっ!」
+“Ugh! Like I'd let you beat me like this!”
+
+@9688 Jun · ジュン
+> 「やるわね! けど勝負はこれからよ!」
+“Not bad! But the real fight starts now!”
+
+@9689 Jun · ジュン
+> 「くっ、やったわね!」
+“Ngh, you got me!”
+
+@9690 Jun · ジュン
+> 「つうっ、意外とやるじゃない!」
+“Tch, you're better than I expected!”
+
+@9691 Jun · ジュン
+> 「やるっ! でもまだやられてないわっ!」
+“You're good! But I'm not down yet!”
+
+@9692 Jun · ジュン
+# 审校：原文是轻蔑的陈述感叹，不是疑问，去掉问号改为感叹号
+> 「何さ、こんな攻撃!」
+“What, an attack like that!”
+
+@9693 Jun · ジュン
+> 「効くものですか!」
+“Like that would hurt me!”
+
+@9694 Jun · ジュン
+> 「そんな攻撃なんて!」
+“An attack like that is nothing!”
+
+@9695 Jun · ジュン
+> 「そう簡単にやられるものですか!」
+“Like I'd go down that easily!”
+
+@9696 Jun · ジュン
+> 「当たるものですか!」
+“Like that would hit me!”
+
+@9697 Jun · ジュン
+> 「よけてみせるっ!」
+“I'll dodge it, just watch!”
+
+@9698 Jun · ジュン
+> 「きゃっ! 危なかった……」
+“Kya! That was close...”
+
+@9699 Jun · ジュン
+> 「このくらいっ!」
+“That's nothing!”
+
+@9700 Jun · ジュン
+> 「遅いわっ!」
+“Too slow!”
+
+@9701 Jun · ジュン
+> 「甘いのよ!」
+“Too naive!”
+
+@9702 Jun · ジュン
+# 审校：原文是反问但语气为轻蔑断言，句末用感叹号更贴合战斗台词，去掉问号
+> 「そんなビームが通用すると
+>  思ってるの!」
+“You think a beam like that will work on me!”
+
+@9703 Jun · ジュン
+> 「しまった、弾切れ!?」
+“Damn, out of ammo?!”
+
+@9704 Jun · ジュン
+> 「しまった! ここからじゃ反撃
+>  できない!」
+“Damn! I can't counter from here!”

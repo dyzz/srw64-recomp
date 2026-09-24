@@ -1,0 +1,168 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12554 Rain · レイン
+# 审校：「おちなさい」是让对方倒下/坠落，不是“get down”躲下。
+> 「おちなさい!!」
+“Fall!!”
+
+@12555 Rain · レイン
+> 「えいっ!」
+“Hah!”
+
+@12556 Rain · レイン
+# 审校：「倒れて」是击倒对方，改为更自然的战斗台词。
+> 「倒れて!!」
+“Go down!!”
+
+@12557 Rain · レイン
+# 审校：原译“don't think I'll lose”语气偏差，改为更贴合原文。
+> 「女だからって……まけないわよ!」
+“Just because I'm a girl... doesn't mean I'll lose!”
+
+@12558 Rain · レイン
+> 「まけないわよ!」
+“I won't lose!”
+
+@12559 Rain · レイン
+> 「なめないでよねっ!」
+“Don't underestimate me!”
+
+@12560 Rain · レイン
+> 「これで決めるっ!!」
+“This'll finish it!!”
+
+@12561 Rain · レイン
+> 「やってみせるっ!!」
+“I'll show you!!”
+
+@12562 Rain · レイン
+> 「う、うそでしょ……!?」
+“N-no way...?!”
+
+@12563 Rain · レイン
+> 「きゃあああああっ!」
+“Kyaaaaaaah!”
+
+@12564 Rain · レイン
+> 「あぁぁぁぁっ!!」
+“Aaaaaaah!!”
+
+@12565 Rain · レイン
+> 「きゃああっ! だ、ダメ……このままじゃ…」
+“Kyaaah! N-no... at this rate...”
+
+@12566 Rain · レイン
+# 审校：「やられちゃう」是被干掉/被打败，改为更贴切。
+> 「あああっ! や、やられちゃう!?」
+“Aaah! I-I'm gonna get taken out?!”
+
+@12567 Rain · レイン
+# 审校：「まだもって」是还能撑住，原译“take it”不够准确。
+> 「だ、ダメっ! まだもって!!」
+“N-no! I can still hold on!!”
+
+@12568 Rain · レイン
+> 「きゃああっ! そ、そんなっ!?」
+“Kyaaah! N-no way?!”
+
+@12569 Rain · レイン
+> 「きゃぁぁぁぁっ!!」
+“Kyaaaaaaah!!”
+
+@12570 Rain · レイン
+> 「あ、あっ!!」
+“A-ah!!”
+
+@12571 Rain · レイン
+# 审校：原文是「しっかりしなきゃ」，改为更自然的自我鼓励。
+> 「くうっ! し、しっかりしなきゃ!」
+“Ngh! I-I've got to pull myself together!”
+
+@12572 Rain · レイン
+# 审校：「やるわね」是称赞对方，原译可接受但改为更自然。
+> 「ああっ!! や、やるわね!」
+“Aaah!! Y-you're pretty good!”
+
+@12573 Rain · レイン
+> 「ま、まだよっ! まだこれからっ!」
+“N-not yet! It's only starting!”
+
+@12574 Rain · レイン
+> 「くっ! こ、こんなものっ!」
+“Ngh! Th-this is nothing!”
+
+@12575 Rain · レイン
+> 「つっ! やらせないっ!」
+“Tch! I won't let you!”
+
+@12576 Rain · レイン
+# 审校：「私だって」在战斗语境下是“我也能行/我也能打”，原译“do it too”含糊。
+> 「あうっ! わ、私だって!」
+“Ow! I-I can fight too!”
+
+@12577 Rain · レイン
+> 「きゃあっ! こ、このくらいでっ!」
+“Kyaah! Th-this much won't stop me!”
+
+@12578 Rain · レイン
+# 审校：「この程度なら」表示“如果只是这种程度”，原译略生硬。
+> 「当たった!? でも、この程度なら!」
+“It hit?! But if that's all, I'm fine!”
+
+@12579 Rain · レイン
+# 审校：「何よ、このくらいっ」语气更接近“这算什么”，原译“is that all”可接受但改为更贴切。
+> 「あつっ!! 何よ、このくらいっ!!」
+“Hot!! What, this is nothing!!”
+
+@12580 Rain · レイン
+> 「まだまだ!! 大したことないっ!!」
+“Not yet!! That's nothing!!”
+
+@12581 Rain · レイン
+> 「こんなのじゃ、効かないわっ!!」
+“That won't work on me!!”
+
+@12582 Rain · レイン
+> 「ダメっ!! ……あ、外れた?」
+“No!! ...Oh, it missed?”
+
+@12583 Rain · レイン
+# 审校：原译正确，无需修改。
+> 「よ、よかった、当たらなかったみたい」
+“Th-thank goodness, it looks like it didn't hit.”
+
+@12584 Rain · レイン
+# 审校：原译“As if it'd hit”可接受，改为更自然。
+> 「当たるもんですか!!」
+“As if it would hit!!”
+
+@12585 Rain · レイン
+# 审校：「こっちにこないで」是“别到这边来”，原译“this way”可接受，改为更自然。
+> 「いやぁ! こっちにこないで!!」
+“No! Don't come over here!!”
+
+@12586 Rain · レイン
+# 审校：「危ないじゃないの」是“很危险啊”，原译“close”不够准确。
+> 「きゃっ! あ、危ないじゃないのっ!!」
+“Kyah! Th-that was dangerous!!”
+
+@12587 Rain · レイン
+> 「きゃあ! だ、大丈夫みたいね……?」
+“Kyaah! L-looks like I'm okay...?”
+
+@12588 Rain · レイン
+# 审校：原译“won't stop me”可接受，改为更贴切。
+> 「こんなビームならっ!!」
+“A Beam like this is nothing!!”
+
+@12589 Rain · レイン
+> 「なんなの? 弾切れ?」
+“What? Out of ammo?”
+
+@12590 Rain · レイン
+> 「エネルギーがない!?」
+“No energy?!”
+
+@12591 Rain · レイン
+> 「だめだわ! ここからじゃ、遠すぎるわ!」
+“It's no good! From here, it's too far!”

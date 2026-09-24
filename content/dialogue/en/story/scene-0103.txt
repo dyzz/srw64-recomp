@@ -1,0 +1,3066 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@48878 Emma · エマ
+> 「サイド4宙域に潜伏していた、
+>  銀河帝国軍残党の制圧は
+“The suppression of the Galactic Empire remnants hiding in the Side 4 area
+---
+>  終了しました」
+is complete.”
+
+@48879 Emma · エマ
+> 「アムロ特佐、サイド4宙域に
+>  潜伏していた、銀河帝国軍の
+“Colonel Amuro, the suppression of the Galactic Empire remnants hiding in the Side 4 area
+---
+>  残党の制圧は終了しました」
+is complete.”
+
+@48880 Amuro · アムロ
+> 「ご苦労さま。また出てもらうかも
+>  しれない。少し休んでいてくれ」
+“Good work. We may need you out there again. Get some rest.”
+
+@48881 Emma · エマ
+> 「はい。……ガンドール、
+>  改修作業が終了したそうですね」
+“Yes, sir. ...I hear the Gandor's refit is finished.”
+
+@48882 Amuro · アムロ
+> 「ああ。いよいよ出発だそうだ。
+>  予定よりずいぶんと早くなったな」
+“Yeah. They say it's finally departing. Quite a bit earlier than scheduled.”
+
+@48883 Emma · エマ
+> 「ええ。でも彼らがムゲの宇宙へ
+>  向かってから、4ヶ月……
+“Yes. But it's been four months since they headed into Muge's space...
+---
+>  正直、無事であるとは
+>  思いがたいですね」
+Honestly, it's hard to believe they're safe.”
+
+@48884 Amuro · アムロ
+> 「そうだが……あれ以来、
+>  ムゲゾルバドス軍の動きは見えない
+“True, but... there's been no sign of the Muge Zorbados Army since then.
+---
+>  彼らはうまくやってくれたんだよ。なら、
+>  生きていてもおかしくはないはずだろ?」
+They did their job well. So there's no reason they couldn't still be alive, right?”
+
+@48885 Emma · エマ
+> 「私には異空間のことは
+>  わかりませんよ
+“I don't understand anything about other dimensions.
+---
+>  そう信じたいとは思いますが……」
+I'd like to believe it, but...”
+
+@48886 Kayra · ケーラ
+> 「大尉、サイド4宙域の
+>  銀河帝国軍残党の制圧は
+“Captain, the suppression of the Galactic Empire remnants in the Side 4 area
+---
+>  終了しました」
+is complete.”
+
+@48887 Amuro · アムロ
+> 「ご苦労さま、中尉。
+>  また出てもらうかもしれない
+“Good work, Lieutenant. We may need you out there again.
+---
+>  少し休んでいてくれ」
+Get some rest.”
+
+@48888 Kayra · ケーラ
+> 「特佐、サイド4宙域の
+>  銀河帝国軍残党の制圧は
+“Colonel, the suppression of the Galactic Empire remnants in the Side 4 area
+---
+>  終了しました」
+is complete.”
+
+@48889 Amuro · アムロ
+> 「ご苦労さま。また出てもらうかもしれ
+>  ない。少し休んでいてくれ」
+“Good work. We may need you out there again. Get some rest.”
+
+@48890 Kayra · ケーラ
+> 「ありがとうございます。
+>  ……ガンドール、改修作業が
+“Thank you, sir. ...I heard the Gandor's refit
+---
+>  終わったって聞きましたけど?」
+is finished?”
+
+@48891 Amuro · アムロ
+> 「ああ、いよいよ出発だそうだ。
+>  予定よりずいぶんと早くなったな」
+“Yeah, they say it's finally departing. Quite a bit earlier than scheduled.”
+
+@48892 Kayra · ケーラ
+> 「それでも、あの連中が向こうへ
+>  行ってから、もう4ヶ月ですよ
+“Even so, it's already been four months since those guys went over there.
+---
+>  大尉はどう思ってるんです?」
+What do you think, Captain?”
+
+@48893 Kayra · ケーラ
+> 「それでも、あの連中が向こうへ
+>  行ってから、もう4ヶ月ですよ
+“Even so, it's already been four months since those guys went over there.
+---
+>  特佐はどう思ってるんです?」
+What do you think, Colonel?”
+
+@48894 Amuro · アムロ
+> 「……あれ以来、ムゲゾルバドス軍が
+>  くる様子もない
+“...There's been no sign of the Muge Zorbados Army coming since then.
+---
+>  彼らはうまくやってくれたんだよ。なら、
+>  生きていてもおかしくはないだろう?」
+They did their job well. So there's no reason they couldn't still be alive, right?”
+
+@48895 Kayra · ケーラ
+> 「そりゃ、そう信じたいですけどね」
+“Well, I'd like to believe that.”
+
+@48896 Beltorchika · ベルトーチカ
+> 「アムロ」
+“Amuro.”
+
+@48897 Amuro · アムロ
+> 「どうかしたのか?」
+“What is it?”
+
+@48898 Beltorchika · ベルトーチカ
+> 「コロニーの代表者会議から、
+>  出席要請が届いたわ」
+“A request to attend has arrived from the colony representatives' conference.”
+
+@48899 Amuro · アムロ
+> 「またか。俺は政治向きの
+>  人間じゃないんだぞ」
+“Again? I'm not a political man, you know.”
+
+@48900 Beltorchika · ベルトーチカ
+> 「そうは、いってもね。現状では
+>  {HeroMech}が仲介役で
+“Even so. As things stand, there's no way forward except with the {HeroMech} as mediator
+---
+>  まとめていくしかないでしょ。地上じゃ
+>  ようやく、各地に都市レベルの
+holding things together. On the ground, city-level autonomous organizations have only just begun
+---
+>  自治組織ができ始めたばかりだし
+>  地球圏の復興は
+to form here and there, and the reconstruction of the Earth Sphere
+---
+>  コロニー主導でやっていかなくては
+>  ならない以上は、ね」
+has to be colony-led, so, well...”
+
+@48901 Emma · エマ
+> 「そうね。結局コロニーが、いちばん
+>  まともに組織を残している
+“That's right. In the end, the colonies are the ones with the most intact organizations
+---
+>  わけですから。“クスコの聖女”や
+>  ピースクラフトでは
+left. The ‘Holy Woman of Cusco’ and the Peacecrafts may be
+---
+>  地上の人間の精神的な
+>  支えにはなれても、コロニーと
+a spiritual support for the people on Earth, but they're not yet in any position
+---
+>  実務レベルでの話しあいは、
+>  まだできる状態ではないでしょう」
+to negotiate with the colonies on a practical level.”
+
+@48902 Kayra · ケーラ
+> 「行政組織として、
+>  いちばんまともに残っているのは
+“As administrative organizations, the ones left most intact are
+---
+>  各コロニーのものですからね。
+>  ジュリアやリリーナは地上の連中の
+those of the colonies. Julia and Relena may be a spiritual support for the people on Earth,
+---
+>  精神的支柱にはなれても、
+>  コロニーとの実務レベルの協議が
+but they're not in any position to negotiate with the colonies
+---
+>  できる状況じゃないですよ」
+on a practical level.”
+
+@48903 Beltorchika · ベルトーチカ
+> 「そう。だいたい私たちだって、
+>  それほど信用されてるわけではないのよ」
+“Right. Besides, we're not exactly trusted all that much either.”
+
+@48904 Amuro · アムロ
+> 「連中の嫌いなロームフェラと、
+>  つながりがあるのは事実だものな
+“It's a fact that we're connected to Romefeller, which they hate.
+---
+>  わかったよ。サリィを
+>  呼んでおいてくれないか
+All right. Would you call Sally for me?
+---
+>  ああ、それと、カトルの方は
+>  どうなってるんだ?」
+Oh, and what's the situation with Quatre?”
+
+@48905 Beltorchika · ベルトーチカ
+> 「うまくやってくれているわ。
+>  また援助物資を地球に
+“He's doing well. He's going to drop relief supplies
+---
+>  降ろすのですって。なんだかんだいっても
+>  、やっぱりコロニーでは
+to Earth again, apparently. Say what you will, the Winner family's influence
+---
+>  ウィナー家の影響力は大きいわ」
+in the colonies is still considerable.”
+
+@48906 Beltorchika · ベルトーチカ
+> 「アムロ」
+“Amuro.”
+
+@48907 Amuro · アムロ
+> 「どうかしたのか?」
+“What is it?”
+
+@48908 Beltorchika · ベルトーチカ
+> 「コロニーの代表者会議から、
+>  出席要請が届いたわ」
+“A request to attend has arrived from the colony representatives' conference.”
+
+@48909 Amuro · アムロ
+> 「またか。俺は政治向きの
+>  人間じゃないんだぞ」
+“Again? I'm not a political man, you know.”
+
+@48910 Beltorchika · ベルトーチカ
+> 「そうは、いってもね。現状ではまだ、
+>  {HeroMech}が仲介役で
+“Even so. As things stand, there's still no way forward except with the {HeroMech} as mediator
+---
+>  まとめていくしかないでしょ。あ、でも
+holding things together. Oh, but I hear
+---
+>  リリーナ・ピースクラフトが会議に
+>  出席するために、上がってくるそうよ」
+Relena Peacecraft is coming up to attend the conference.”
+
+@48911 Amuro · アムロ
+> 「ロームフェラ財団代表がか?」
+“The Romefeller Foundation's representative?”
+
+@48912 Beltorchika · ベルトーチカ
+> 「財団の本拠を、コロニーに移す
+>  計画を進めているそうよ。そのための
+“They're apparently pushing ahead with a plan to move the Foundation's headquarters
+---
+>  交渉もかねてのことね」
+to a colony. This is partly to negotiate about that, too.”
+
+@48913 Amuro · アムロ
+> 「そうか……すごいな、彼女は」
+“I see... She's impressive.”
+
+@48914 Beltorchika · ベルトーチカ
+> 「代表に復帰してから、いろんなこと
+>  してるものね」
+“She's been doing all sorts of things since she returned as representative.”
+
+@48915 Amuro · アムロ
+> 「ああ。俺たちをバックアップしてくれてる
+>  のも、そうだしな」
+“Yeah. She's backing us up too, after all.”
+
+@48916 Beltorchika · ベルトーチカ
+> 「コロニーと地球側との緩衝材
+>  がわりでしょ。おかげで私たちも
+“She's like a buffer between the colonies and the Earth side. Thanks to that,
+---
+>  コロニー側からはそれほど信用して
+>  もらえないわ」
+the colonies don't trust us all that much either.”
+
+@48917 Emma · エマ
+> 「まだ若いのに、かなりやり手ですね、
+>  彼女。財団が資金提供して
+“She's still young, but quite capable. The Foundation provides funding,
+---
+>  聖女ジュリアを中心にしたクスコの
+>  聖女隊も、各地で
+and I hear the Cusco Saints, with the Holy Woman Julia at its center,
+---
+>  難民救済にあたってるって
+>  話ですしね」
+is also working to relieve refugees in various places.”
+
+@48918 Kayra · ケーラ
+> 「まだ若いのにさ、彼女もよくやってま
+>  すよ。財団が資金提供して
+“She's still young, but she's doing well too. The Foundation provides funding,
+---
+>  聖女ジュリアを中心にしたクスコの
+>  聖女隊も、各地で
+and I hear the Cusco Saints, with the Holy Woman Julia at its center,
+---
+>  難民救済にあたってるって話、
+>  聞きましたか?」
+has been working to relieve refugees in various places?”
+
+@48919 Amuro · アムロ
+> 「すごい人気らしいね、
+>  ジュリア・アスカは」
+“Julia Asuka seems incredibly popular.”
+
+@48920 Beltorchika · ベルトーチカ
+> 「地上の人たちの精神的な柱ね。
+>  でも、財団も聖女も、まだコロニー
+“She's the spiritual pillar for the people on Earth. But neither the Foundation nor the Holy Woman is at a point where they can handle practical talks between the colonies
+---
+>  と、地球統一の実務レベルの
+>  話ができる状況ではないわよ
+and a unified Earth yet.
+---
+>  まだ{HeroMech}がまとめていかな
+>  くてはね」
+The {HeroMech} still has to hold things together.”
+
+@48921 Amuro · アムロ
+> 「わかったよ。リリーナ代表がくるとなる
+>  と、護衛もつけないとならないな
+“I understand. If Representative Relena is coming, we'll need to assign an escort.
+---
+>  サリィとノインを呼んでおいてくれないか
+>  ああ、それと、カトルの方は
+Could you call Sally and Noin? Oh, and what's the situation
+---
+>  どうなっているんだ?」
+with Quatre?”
+
+@48922 Beltorchika · ベルトーチカ
+> 「うまくやってくれているわ。また援助
+>  物資を地球に降ろすのですって
+“He's doing well. He's going to drop relief supplies to Earth again, apparently.
+---
+>  なんだかんだいっても、やっぱりコロニーで
+>  はウィナー家の影響力は大きいわ」
+Say what you will, the Winner family's influence in the colonies is still enormous.”
+
+@48923 Beltorchika · ベルトーチカ
+> 「アムロ」
+“Amuro.”
+
+@48924 Amuro · アムロ
+> 「どうかしたのか?」
+“What is it?”
+
+@48925 Beltorchika · ベルトーチカ
+> 「リリーナ・ピースクラフトがコロニーの
+>  代表者会議に出席するために
+“I hear Relena Peacecraft is coming up
+---
+>  上がってくるそうよ」
+to attend the colony representatives' conference.”
+
+@48926 Amuro · アムロ
+> 「財団代表がか?」
+“The Foundation's representative?”
+
+@48927 Beltorchika · ベルトーチカ
+> 「財団の本拠を、コロニーに移す
+>  計画を進めているそうよ。そのための
+“They're apparently pushing ahead with a plan to move the Foundation's headquarters to a colony. This is partly
+---
+>  交渉もかねてのことね」
+to negotiate about that, too.”
+
+@48928 Amuro · アムロ
+> 「そうか……幹部会ではもう可決し
+>  ていたのか」
+“I see... So the executive council has already approved it?”
+
+@48929 Beltorchika · ベルトーチカ
+> 「まだよ。さすがにかなりもめてるみたい」
+“Not yet. It seems there's quite a lot of opposition, as you'd expect.”
+
+@48930 Amuro · アムロ
+> 「そうなのか? 知らなかったな。すんなり
+>  いくとは思ってなかったが……」
+“Is that so? I didn't know. I didn't think it would go smoothly, but...”
+
+@48931 Emma · エマ
+> 「面倒だって、幹部会に出席し
+>  ないからいけないんですよ」
+“It's a hassle, but that's what you get for not attending the executive council meetings.”
+
+@48932 Kayra · ケーラ
+> 「特佐は面倒がって出席しない
+>  から。たまには出たらどうです?」
+“You find it a hassle, so you don't attend. Why not show up once in a while?”
+
+@48933 Amuro · アムロ
+> 「彼女が財団の代表に復帰し
+>  たとき、名前を貸しただけさ
+“When she returned as the Foundation's representative, I just lent her my name.
+---
+>  それだってブライトや万丈がいなかった
+>  から、俺に回ってきたんだ。今後も
+Even that only came to me because Bright and Banjo weren't around. I don't intend
+---
+>  出るつもりはないよ。その辺りのことは
+>  レディがやってくれてるはずだろ」
+to attend from now on either. Lady Une should be handling that sort of thing.”
+
+@48934 Beltorchika · ベルトーチカ
+> 「いても2人とも逃げたと思うけどね。
+>  そのレディ・アンから、リリーナ代表の
+“Even if they were here, I think both of them would have run away. Speaking of Lady Une, she sent word that she wants us
+---
+>  護衛を派遣して欲しいって、
+>  連絡あったわよ」
+to dispatch an escort for Representative Relena.”
+
+@48935 Amuro · アムロ
+> 「そうだな……ノインにいってもらおう」
+“Right... I'll have Noin go.”
+
+@48936 Emma · エマ
+> 「でも、地上はかなりの地域で
+>  復興に着手してるって聞きます
+“But I hear reconstruction has begun in quite a few regions on Earth.
+---
+>  難民だって多いし、いまはそれどころ
+>  ではないって気がしますけど」
+There are so many refugees, too. I feel like now isn't the time for that.”
+
+@48937 Amuro · アムロ
+> 「難民に関しては、聖女にまかせて
+>  いるんだろ。クスコの聖女隊って
+“The refugees are being left to the Holy Woman, aren't they? I hear the Cusco Saints
+---
+>  かなりの人数になってるって話だよ」
+has grown to quite a large number.”
+
+@48938 Emma · エマ
+> 「それはそうかもしれませんね」
+“That may be true.”
+
+@48939 Kayra · ケーラ
+> 「でも、地上はかなりの地域で
+>  復興に着手してるって
+“But I heard reconstruction has begun in quite a few regions
+---
+>  聞きましたけど。難民だって多いし
+>  いまは、それどころじゃない立場じゃ
+on Earth. There are so many refugees, too. I wonder if now just isn't
+---
+>  ないのかな」
+the time for that.”
+
+@48940 Amuro · アムロ
+> 「難民に関しては、聖女にまかせて
+>  いるんだろ。クスコの聖女隊って
+“The refugees are being left to the Holy Woman, aren't they? I hear the Cusco Saints
+---
+>  かなりの人数になってるって話だよ」
+has grown to quite a large number.”
+
+@48941 Kayra · ケーラ
+> 「ああ、なるほど。そういえばそんな話も
+>  ありましたね」
+“Ah, I see. Now that you mention it, I did hear something like that.”
+
+@48942 Beltorchika · ベルトーチカ
+> 「地上の人たちの精神的な柱に
+>  なってるものね。財団にも、もう
+“She's become the spiritual pillar for the people on Earth. It seems no one in the Foundation
+---
+>  彼女を支援するのに反対する
+>  人はいなくなったみたいよ」
+opposes supporting her anymore either.”
+
+@48943 Amuro · アムロ
+> 「そうだろうね。ああ、そういえば、カトルの
+>  方はどうなっているんだ?」
+“I'm sure. Ah, that reminds me, what's the situation with Quatre?”
+
+@48944 Beltorchika · ベルトーチカ
+> 「うまくやってくれているわ。難民や
+>  異星人収容用のコロニーの
+“He's doing well. Preparations for colonies to house refugees and aliens
+---
+>  準備も、だいぶ進んでいるみたい。
+>  やっぱりコロニーでは、ウィナー家の
+seem to be coming along nicely, too. As expected, the Winner family's
+---
+>  影響力は大きいわ」
+influence in the colonies is enormous.”
+
+@48945 Beltorchika · ベルトーチカ
+> 「アムロ」
+“Amuro.”
+
+@48946 Amuro · アムロ
+> 「どうかしたのか?」
+“What is it?”
+
+@48947 Beltorchika · ベルトーチカ
+> 「リリーナ・ドーリアンがコロニーの代表
+>  者会議に出席するために
+“I hear Relena Darlian is coming up
+---
+>  上がってくるそうよ」
+to attend the colony representatives' conference.”
+
+@48948 Amuro · アムロ
+> 「そうか。彼女が交渉役についてか
+>  ら、ずいぶんとコロニー側の態度も
+“I see. Since she took on the role of negotiator, the colonies' attitude has softened
+---
+>  軟化してきた。感謝しないとな」
+quite a bit. We owe her our thanks.”
+
+@48949 Emma · エマ
+# 审校：原文是“もう名乗らないのかしら”，询问现在是否已不再自称，初稿译成将来时“will stop”不准确。
+> 「彼女、ピースクラフトはもう
+>  名乗らないのかしら」
+“I wonder if she's stopped calling herself Peacecraft now.”
+
+@48950 Kayra · ケーラ
+# 审校：同上，改为现在完成时，符合“もう名乗らないのかな”的语感。
+> 「あの子、ピースクラフトはもう
+>  名乗らないのかな」
+“I wonder if that girl's stopped calling herself Peacecraft now.”
+
+@48951 Amuro · アムロ
+# 审校：原文“それではこちらもやりづらい”是承接前句的结论，初稿“That would make”语气偏假设，改为更直接的“That makes”。
+> 「ピースクラフトでいる限りは、完全
+>  平和主義から離れられないからさ
+“As long as she's a Peacecraft, she can't distance herself from absolute pacifism.
+---
+>  それではこちらもやりづらい」
+That makes things difficult for us, too.”
+
+@48952 Beltorchika · ベルトーチカ
+> 「本当なら、軍隊なんてなくしたいっ
+>  ていうのが、彼女の考えだものね
+“Her own belief is that she'd like to do away with armies altogether, after all.
+---
+>  理想をまげてまでOZに協力してく
+>  れるのは、ありがたいわ。ヒイロのことも
+We're grateful she'd compromise her ideals to cooperate with OZ. Though I'm sure she's
+---
+>  心配でしょうに」
+worried about Heero, too.”
+
+@48953 Amuro · アムロ
+> 「ロームフェラもOZも、変わってきたって
+>  ことを、理解してくれてるのさ」
+“She understands that both Romefeller and OZ have changed.”
+
+@48954 Beltorchika · ベルトーチカ
+> 「地上じゃようやく、欧州以外の
+>  地域でも、都市レベルでの
+“On Earth, it seems reconstruction work at the city level can finally begin
+---
+>  復興作業が始められるそうよ」
+in regions outside Europe, too.”
+
+@48955 Emma · エマ
+> 「さすがに時間がかかりましたね」
+“It certainly took a long time.”
+
+@48956 Amuro · アムロ
+> 「行政機関がある程度まともな
+>  形で残っているコロニーとは、わけが
+“It's a completely different situation from the colonies, where administrative institutions remain more or less intact.
+---
+>  違うさ。組織づくりから始める
+>  必要があった。復興作業を
+We had to start by building organizations from scratch. Even the people
+---
+>  進めてる連中だって、ちょっと前ま
+>  では盗賊団まがいだった連中も
+pushing reconstruction forward include some who were little better than bandits
+---
+>  混ざってるんだぜ?」
+not long ago, you know?”
+
+@48957 Emma · エマ
+> 「それも、“クスコの聖女”の存在が
+>  なければ、そうはならなかったでしょうね」
+“That wouldn't have happened either, without the presence of the ‘Holy Woman of Cusco.’”
+
+@48958 Kayra · ケーラ
+> 「さすがに時間がかかったみたいですね」
+“It certainly took a long time.”
+
+@48959 Amuro · アムロ
+> 「行政機関がある程度まともな
+>  形で残っているコロニーとは、わけが
+“It's a completely different situation from the colonies, where administrative institutions remain more or less intact.
+---
+>  違うさ。組織づくりから始める
+>  必要があった。復興作業を
+We had to start by building organizations from scratch. Even the people
+---
+>  進めてる連中だって、ちょっと前ま
+>  では盗賊団まがいだった連中も
+pushing reconstruction forward include some who were little better than bandits
+---
+>  混ざってるんだぜ?」
+not long ago, you know?”
+
+@48960 Kayra · ケーラ
+> 「やはり、ジュリア・アスカの影響ですか」
+“Is it still Julia Asuka's influence, then?”
+
+@48961 Beltorchika · ベルトーチカ
+> 「地上の人たちの精神的な柱に
+>  なってるものね。財団にも、もう
+“She's become a spiritual pillar for the people on Earth. It seems no one in the foundation
+---
+>  彼女を支援するのに反対する
+>  人はいなくなったみたいよ」
+opposes supporting her anymore, either.”
+
+@48962 Amuro · アムロ
+> 「しかし、彼女がくるとなると、護衛
+>  はつけないとならないな。ノインを呼んで
+“But if she's coming, we'll have to assign an escort. Would you call Noin for me?
+---
+>  おいてくれないか。ああ、それと、カトルの
+>  方はどうなっているんだ?」
+Oh, and what's the situation with Quatre?”
+
+@48963 Beltorchika · ベルトーチカ
+> 「うまくやってくれているわ。難民や
+>  異星人収容用のコロニーの
+“He's doing well. Preparations for the colonies to house refugees and aliens
+---
+>  準備も、だいぶ進んでいるみたい。
+>  やっぱりコロニーでは、ウィナー家の
+seem to be coming along nicely, too. As expected, the Winner family's
+---
+>  影響力は大きいわ」
+influence among the colonies is considerable.”
+
+@48964 Kamille · カミーユ
+> 「アムロさん、ガンドールの葉月博士
+>  から通信が入ってますよ」
+“Amuro, we have a transmission from Dr. Hazuki on the Gandor.”
+
+@48965 Amuro · アムロ
+> 「月からか? わかった、すぐにいく」
+“From the moon? Understood, I'll be right there.”
+
+@48966 Dr. Hazuki · 葉月博士
+> 「では、行ってくる。
+>  ガンドールの改造はうまくいった
+“Well then, I'm off. The Gandor's refit went well.
+---
+>  今回はだいぶ早く、
+>  もどってこれるだろう」
+This time I should be able to return quite a bit sooner.”
+
+@48967 Kayra · ケーラ
+> 「頼むよ、博士。
+>  あの連中をちゃんと連れて帰ってよ」
+“Please, Doctor. Bring those kids back safe.”
+
+@48968 Dr. Hazuki · 葉月博士
+> 「わかっている。
+>  あの若者たちを見捨てはせん」
+“I know. I won't abandon those young ones.”
+
+@48969 Amuro · アムロ
+> 「吉報を待っていますよ」
+“I'll be waiting for good news.”
+
+@48970 Dr. Hazuki · 葉月博士
+> 「うむ」
+“Indeed.”
+
+@48971 Amuro · アムロ
+> 「ガンドールもいったか……」
+“So the Gandor's gone too...”
+
+@48972 Beltorchika · ベルトーチカ
+> 「無事に戻ってきてほしいわね」
+“I hope they come back safely.”
+
+@48973 Amuro · アムロ
+> 「ああ……」
+“Yeah...”
+
+@48974 Amuro · アムロ
+> 「さてと、次は銀河帝国軍に
+>  占拠されたアウターオービットの
+“Now then, next is the abandoned colony in outer orbit
+---
+>  遺棄コロニーだったな」
+occupied by the Galactic Empire's forces.”
+
+@48975 Kamille · カミーユ
+> 「ええ。でも連中がそこだけで
+>  生活するっていうんなら
+“Right. But if they're just going to live there,
+---
+>  放っておいてもいいんじゃないんですか?
+>  どのみち残留した連中も
+isn't it fine to leave them alone? Either way, the ones who stayed behind
+---
+>  生活する場が必要でしょう。
+>  捕虜の扱いだって
+need somewhere to live. And the treatment of
+---
+>  まだもめてるんですから」
+prisoners is still being argued over, after all.”
+
+@48976 Amuro · アムロ
+> 「確認する必要はあるさ。幹部
+>  クラスが残っていないとも限らない」
+“We need to confirm. There's no guarantee some officers didn't stay behind.”
+
+@48977 Beltorchika · ベルトーチカ
+> 「あっ」
+“Ah.”
+
+@48978 Chan · チェーン
+> 「アムロッ!」
+“Amuro!”
+
+@48979 Beltorchika · ベルトーチカ
+> 「なによ、あなた、もうもどってきたの!?」
+“What, you're back already?!”
+
+@48980 Amuro · アムロ
+> 「やあチェーン、
+>  アナハイムの方はどうだった?」
+“Hey, Chan. How did things go at Anaheim?”
+
+@48981 Chan · チェーン
+> 「アムロ、それどころじゃないんです。
+>  たった今、スウィートウォーターが
+“Amuro, this is no time for that. Just now, Sweetwater was
+---
+>  ネオジオンを名のる艦隊に
+>  占拠されました!」
+occupied by a fleet calling itself Neo Zeon!”
+
+@48982 Amuro · アムロ
+> 「なんだって!?」
+“What?!”
+
+@48983 Amuro · アムロ
+> 「誰か、スウィートウォーターの放送を
+>  見たか!?」
+“Has anyone seen the broadcast from Sweetwater?!”
+
+@48984 Roux · ルー
+> 「アムロさん見てないんですか!?」
+“Amuro, you haven't seen it?!”
+
+@48985 Amuro · アムロ
+> 「いま聞いたばかりだ。どうなんだ?」
+“I just heard about it. What's going on?”
+
+@48986 Roux · ルー
+> 「シャアですよ。シャア・アズナブルが、
+>  ネオジオン艦隊の
+“It's Char. Char Aznable is
+---
+>  指揮をとってるんです」
+commanding the Neo Zeon Fleet.”
+
+@48987 Amuro · アムロ
+> 「シャア!? やっぱり生きていたのか。
+>  だが、なぜだ!?」
+“Char?! So he really was alive. But why?!”
+
+@48988 Judau · ジュドー
+> 「あんたにわからないのに、
+>  俺たちにわかるわけないでしょう
+“If you don't understand, how are we supposed to?
+---
+>  まったく、ほんの数ヶ月前までは
+>  俺たちと一緒に戦ってたってのにさ」
+Honestly, just a few months ago he was fighting alongside us.”
+
+@48989 Sally · サリィ
+> 「あら、みんなそろってるのね」
+“Oh, everyone's here.”
+
+@48990 Amuro · アムロ
+> 「サリィか。聞いているな?」
+“Sally. You've heard?”
+
+@48991 Sally · サリィ
+> 「ええ。サイド3にいた銀鈴に
+>  調べてもらっています」
+“Yes. I've asked Ginrei on Side 3 to look into it.”
+
+@48992 Elle · エル
+> 「へーっ、さすがに早いじゃない」
+“Wow, that was fast.”
+
+@48993 Sally · サリィ
+> 「すでにわかっていることは3つよ。
+>  ネオジオン軍がホワイトファングと
+“There are three things we already know. That the Neo Zeon Forces are a fleet that gathered White Fang
+---
+>  アクシズの残党を集めた艦隊で
+>  あること。スウィートウォーター政庁は
+and the remnants of Axis. That the Sweetwater government has announced it recognizes
+---
+>  ネオジオンの政権を認めると
+>  発言していること。それから……」
+the Neo Zeon regime. And then...”
+
+@48994 Sally · サリィ
+> 「すでにわかっていることは3つよ。
+>  ネオジオン軍がアクシズの残党を
+“There are three things we already know. That the Neo Zeon Forces are a fleet that gathered the remnants of Axis.
+---
+>  集めた艦隊であること。スウィート
+>  ウォーター政庁はネオジオンの
+That the Sweetwater government has announced it recognizes the Neo Zeon
+---
+>  政権を認めると発言していること
+>  それから……」
+regime. And then...”
+
+@48995 Roux · ルー
+> 「それから?」
+“And then?”
+
+@48996 Sally · サリィ
+> 「フィフス・ルナを、地球復興の
+>  中心地となっている欧州に
+“That they intend to drop Fifth Luna onto Europe,
+---
+>  落とそうとしていること」
+which has become the center of Earth's reconstruction.”
+
+@48997 Elle · エル
+> 「ちょっと、それって……」
+“Wait, that would mean...”
+
+@48998 Amuro · アムロ
+> 「……シャアめ、どういうつもりなんだ」
+“...What is Char thinking?”
+
+@48999 Kamille · カミーユ
+> 「クワトロ大尉が隕石落としを……
+>  全員を呼びもどします
+“Captain Quattro is dropping an asteroid... Recall everyone.
+---
+>  ショウたちにも地上から、
+>  あがってもらわなくては」
+We'll need Show and the others to come up from the surface too.”
+
+@49000 Kamille · カミーユ
+> 「クワトロ特尉が隕石落としを……
+>  全員を呼びもどします
+“Special Ensign Quattro is dropping an asteroid... Recall everyone.
+---
+>  ショウたちにも地上から、
+>  あがってもらわなくては」
+We'll need Show and the others to come up from the surface too.”
+
+@49001 Amuro · アムロ
+> 「え?」
+“Huh?”
+
+@49002 Kamille · カミーユ
+> 「大尉の、シャアの隕石落としを
+>  とめなくちゃならないでしょ、僕らは!?」
+“We have to stop the Captain—stop Char from dropping that asteroid, don't we?!”
+
+@49003 Kamille · カミーユ
+> 「特尉の、シャアの隕石落としを
+>  とめなくちゃならないでしょ、僕らは!?」
+“We have to stop the Special Ensign—stop Char from dropping that asteroid, don't we?!”
+
+@49004 Amuro · アムロ
+> 「そ、そうだな。だがオーラシップしか
+>  残っていないのでは……」
+“Y-yeah. But all we have left is the Aura Ship...”
+
+@49005 Chan · チェーン
+> 「大丈夫です。アナハイムで
+>  建造していた新造艦……
+“Don't worry. The new ship Anaheim was building...
+---
+>  ラー・カイラムがあります。私、その
+>  ためにアナハイムへ行っていたんですよ?」
+the Ra Cailum is ready. That's what I went to Anaheim for, you know?”
+
+@49006 Amuro · アムロ
+> 「そうだった。
+>  ラー・カイラムは誰が持ってくる?」
+“Right. Who's bringing the Ra Cailum?”
+
+@49007 Chan · チェーン
+# 检查提示：未用必用译名：ヘンケン艦→Henken's ship
+> 「ヘンケン艦長です」
+“Captain Henken.”
+
+@49008 Amuro · アムロ
+> 「そうか……よし、全員出撃の
+>  準備だ。シャアを止めるぞ
+“I see... All right, everyone prepare to launch. We're stopping Char.
+---
+>  奴のことだ、先手はとれないまでも、
+>  遅れはとりたくない」
+Knowing him, we may not get the first move, but I don't want to be late.”
+
+@49009 Beltorchika · ベルトーチカ
+> 「整備の方のチェックは
+>  アストナージまかせで?」
+“Shall we leave the maintenance checks to Astonaige?”
+
+@49010 Amuro · アムロ
+> 「もちろん。奴はプロなんだぜ?」
+“Of course. The man's a pro, you know?”
+
+@49011 Amuro · アムロ
+> 「シャア……」
+“Char...”
+
+@49012 Amuro · アムロ
+> 「よく来てくれました、シーラさん。
+>  事情は聞いていると思いますが……」
+“Thank you for coming, Ciela. I believe you've heard the situation, but...”
+
+@49013 Ciela · シーラ
+> 「ええ。また、始まったのですね。
+>  今度の相手は
+“Yes. So it's begun again. I hear our opponent this time is
+---
+>  クワトロ大尉であると聞きましたが?」
+Captain Quattro?”
+
+@49014 Amuro · アムロ
+> 「そうです」
+“That's right.”
+
+@49015 Ciela · シーラ
+> 「戦えるのですか? あなたは?
+>  おふたりの関わりは
+“Can you fight him? You, of all people? Your connection with him
+---
+>  浅くはないのでしょう」
+can't be a shallow one.”
+
+@49016 Amuro · アムロ
+> 「戦いますよ。奴もそれをわかっていて
+>  仕掛けたと思えます
+“I'll fight. I think he knew that and made his move anyway.
+---
+>  {HeroMech}が戦力の
+>  半数以上を失っていることも
+The fact that the {HeroMech} has lost over half its strength probably
+---
+>  関係あるでしょう。奴はずっと
+>  見ていてたんだ。いなくなった連中が
+plays a part too. He's been watching all along. Watching whether the ones who left
+---
+>  もどってくるのかどうかを」
+would come back.”
+
+@49017 Ciela · シーラ
+> 「ええ。また、始まったのですね。
+>  今度の相手は
+“Yes. So it's begun again. I hear our opponent this time is
+---
+>  クワトロ特尉であると聞きましたが?」
+Special Ensign Quattro?”
+
+@49018 Amuro · アムロ
+> 「そうです」
+“That's right.”
+
+@49019 Ciela · シーラ
+> 「戦えるのですか? あなたは?
+>  おふたりの関わりは
+“Can you fight him? You, of all people? Your connection with him
+---
+>  浅くはないのでしょう」
+can't be a shallow one.”
+
+@49020 Amuro · アムロ
+> 「戦いますよ。奴もそれをわかっていて
+>  仕掛けたと思えます
+“I'll fight. I think he knew that and made his move anyway.
+---
+>  {HeroMech}が戦力の半数
+>  以上を失ったままであること、OZの
+The fact that the {HeroMech} is still down over half its strength, and that OZ's
+---
+>  再編もようやく本格的に始めら
+>  れそうだということも関係あるでしょう
+reorganization is finally about to get properly underway, probably plays a part too.
+---
+>  奴はずっと見ていたんだ。いなくなった
+>  連中がもどってくるのかどうかを」
+He's been watching all along. Watching whether the ones who left would come back.”
+
+@49021 Ciela · シーラ
+> 「それで、今になって
+>  行動を起こした?」
+“And that's why he's acting now?”
+
+@49022 Amuro · アムロ
+> 「ええ。そちらは、よろしいのですか?」
+“Yes. Are you all right with this, though?”
+
+@49023 Ciela · シーラ
+> 「もとより我らの役目は
+>  果たされていないと思えばこそ
+“It is precisely because we felt our duty was not yet fulfilled
+---
+>  こうして、いまだ地上界に
+>  残留しておりました」
+that we have remained here on the surface all this time.”
+
+@49024 Chum · チャム
+> 「あたしは早く帰ろうって、いったのに」
+“And I said we should go home early.”
+
+@49025 Amuro · アムロ
+> 「すまないな、チャム。もうしばらく、
+>  君たちの力を貸してくれ」
+“Sorry, Chum. Lend us your strength a little longer.”
+
+@49026 Chum · チャム
+> 「そういわれちゃ、いやとはいえないわね」
+“Well, when you put it that way, I can't say no.”
+
+@49027 Show · ショウ
+> 「チャム、調子にのるな!」
+“Chum, don't get carried away!”
+
+@49028 Chum · チャム
+> 「なによぉ」
+“What's your problem?”
+
+@49029 Show · ショウ
+> 「それで、いつ?」
+“So, when do we go?”
+
+@49030 Amuro · アムロ
+> 「ラー・カイラムが届きしだい、
+>  出撃する」
+“The moment the Ra Cailum arrives, we launch.”
+
+@49031 Amuro · アムロ
+> 「よく来てくれました、エレさん。
+>  事情は聞いていると思いますが……」
+“Thank you for coming, Elle. I believe you've heard the situation, but...”
+
+@49032 Elle · エレ
+> 「承知しています。今度の相手は
+>  クワトロ大尉なのですね」
+“I understand. Our opponent this time is Captain Quattro.”
+
+@49033 Amuro · アムロ
+> 「そうです」
+“That's right.”
+
+@49034 Elle · エレ
+> 「だからでしょう。私もまどわされました」
+“That must be why. I was misled too.”
+
+@49035 Amuro · アムロ
+> 「……オーラ力ですか」
+“...The Aura Power, you mean.”
+
+@49036 Elle · エレ
+> 「はい。悪意のオーラは感じなかったの
+>  です。今も、それほどには感じません
+“Yes. I didn't sense any aura of ill will. Even now, I don't sense much of it.
+---
+>  ただ……どう表現してよいのか
+>  わかりませんが、違うオーラを感じます」
+But... I'm not sure how to put this, but I sense a different aura.”
+
+@49037 Amuro · アムロ
+> 「でしょうね。シャアはそういう奴です」
+“I thought so. That's the kind of man Char is.”
+
+@49038 Marvel · マーベル
+> 「でも、なぜ今になって?」
+“But why now, of all times?”
+
+@49039 Amuro · アムロ
+> 「{HeroMech}が戦力の
+>  半数以上を失っていることも
+“The fact that the {HeroMech} has lost over half its fighting strength
+---
+>  関係あるだろうね。
+>  奴はずっと見ていたんだ
+probably has something to do with it. He's been watching all along—
+---
+>  俺たちが何をするのかを。そして
+>  いなくなった連中がもどってくるのかを」
+what we'd do. And whether the ones who left would come back.”
+
+@49040 Elle · エレ
+> 「承知しています。今度の相手は
+>  クワトロ特尉なのですね」
+“I understand. Our opponent this time is Special Ensign Quattro, then.”
+
+@49041 Amuro · アムロ
+> 「そうです」
+“That's right.”
+
+@49042 Elle · エレ
+> 「だからでしょう。私もまどわされました」
+“That must be why. I was misled too.”
+
+@49043 Amuro · アムロ
+> 「……オーラ力ですか」
+“...The Aura Power, you mean.”
+
+@49044 Elle · エレ
+> 「はい。悪意のオーラは感じなかったの
+>  です。今も、それほどには感じません
+“Yes. I didn't sense any aura of ill will. Even now, I don't sense much of it.
+---
+>  ただ……どう表現してよいのか
+>  わかりませんが、違うオーラを感じます」
+But... I'm not sure how to put this, but I sense a different aura.”
+
+@49045 Amuro · アムロ
+> 「でしょうね。シャアはそういう奴です」
+“I thought so. That's the kind of man Char is.”
+
+@49046 Marvel · マーベル
+> 「でも、なぜ今になって?」
+“But why now, of all times?”
+
+@49047 Amuro · アムロ
+> 「{HeroMech}が戦力の
+>  半数以上を失っていることも
+“The fact that the {HeroMech} has lost over half its fighting strength
+---
+>  関係あるだろうね。それと、ようやく
+>  俺たちがOZの再編を本格的に
+probably has something to do with it. And the fact that we can finally get
+---
+>  始められそうだというのもね。奴は
+>  ずっと見ていたんだ。俺たちが
+serious about reorganizing OZ. He's been watching all along—what we'd
+---
+>  何をするのかを。そして、いなくなった
+>  連中が、もどってくるのかを」
+do. And whether the ones who left would come back.”
+
+@49048 Show · ショウ
+> 「それで、行動を起こした?」
+“So that's why he made his move?”
+
+@49049 Amuro · アムロ
+> 「ああ。エレさん、
+>  そちらはよろしいのですか?」
+“Yeah. Elle, are you sure about this on your end?”
+
+@49050 Elle · エレ
+> 「このオーラを感じた時から、
+>  こうなることは予測できました
+“Ever since I sensed this aura, I predicted this would happen.
+---
+>  ですからそのために、我らにとっては
+>  かりそめの地である、この地上界に
+That is why we stayed in this surface world, which is but a temporary
+---
+>  とどまっていたのです」
+home for us.”
+
+@49051 Chum · チャム
+> 「あたしは早く帰ろうって、いったのにさ」
+“And I told you we should go home early.”
+
+@49052 Amuro · アムロ
+> 「すまないな、チャム。もうしばらく、
+>  君たちの力を貸してくれ」
+“Sorry, Chum. Lend us your strength a while longer.”
+
+@49053 Chum · チャム
+> 「そういわれちゃ、いやとはいえないわね」
+“Well, when you put it that way, I can't say no.”
+
+@49054 Show · ショウ
+> 「チャム、調子にのるな!」
+“Chum, don't get carried away!”
+
+@49055 Chum · チャム
+> 「なによぉ」
+“What's your problem?”
+
+@49056 Show · ショウ
+> 「それで、いつ?」
+“So, when do we go?”
+
+@49057 Amuro · アムロ
+> 「ラー・カイラムが届きしだい、
+>  出撃する」
+“The moment the Ra Cailum arrives, we launch.”
+
+@49058 Henken · ヘンケン
+> 「遅れてすまんな。
+>  クルーの確保に手間どった
+“Sorry I'm late. Securing the crew took some doing.
+---
+>  しかし大変なことになったな、大尉」
+But this has turned into quite a mess, Captain.”
+
+@49059 Amuro · アムロ
+> 「ええ。中佐には、
+>  このまま艦長をやってもらいたいが?」
+“Yeah. I'd like you to stay on as captain, Lieutenant Colonel.”
+
+@49060 Henken · ヘンケン
+> 「遅れてすまんな。クルーが不慣れで、
+>  手間どった。しかし大変なことに
+“Sorry I'm late. The crew's inexperienced, so it took some doing. But this has turned
+---
+>  なったな、特尉。いやすまん、特佐
+>  だったな」
+into quite a mess, Special Ensign. No, forgive me—Special Lieutenant Colonel.”
+
+@49061 Amuro · アムロ
+> 「いいですよ、別に。しかしキャプテンには
+>  このままラー・カイラムの艦長を
+“It's fine, really. But I'd like you to stay on as captain of the Ra Cailum,
+---
+>  やってもらいたいが?」
+Captain.”
+
+@49062 Henken · ヘンケン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「かまわんよ。ブライト艦長がいなけりゃ
+>  しょうがなかろう」
+“I don't mind. Without Captain Bright, there's no helping it.”
+
+@49063 Amuro · アムロ
+> 「頼みます。ベル、みんなもどったのか?」
+“I'm counting on you. Bell, has everyone made it back?”
+
+@49064 Beltorchika · ベルトーチカ
+> 「ええ。ジャイアント・ロボもグレートも、
+>  ドモンたちもいるわ
+“Yes. Giant Robo and Great are here, and so are Domon and the others.
+---
+>  {HeroNick}も機体の搬入中。
+>  いないのは銀鈴とカトルだけね」
+The {HeroNick} is still being loaded. Only Ginrei and Quatre are missing.”
+
+@49065 Amuro · アムロ
+> 「カトルは間にあわなかったか。
+>  しかたない、予定通り出港しよう」
+“Quatre didn't make it in time. Nothing to be done—we depart as scheduled.”
+
+@49066 Beltorchika · ベルトーチカ
+> 「コロニー代表者会議は?」
+“And the Colony Delegate conference?”
+
+@49067 Amuro · アムロ
+> 「サリィに行ってもらうさ。
+>  こっちはそれどころじゃない」
+“We'll send Sally. We've got bigger things to deal with here.”
+
+@49068 Beltorchika · ベルトーチカ
+> 「了解」
+“Understood.”
+
+@49069 Bunny · バニー
+> 「フィフス・ルナ、捕捉。敵艦隊は
+>  すでに展開を終えているみたいです」
+“Fifth Luna, captured. The enemy fleet appears to have already finished deploying.”
+
+@49070 Chibodee · チボデー
+> 「シーット! 後手にまわっちまったか」
+“Shoot! They beat us to the punch.”
+
+@49071 Hyoma · 豹馬
+> 「そんなこといったってしょうがないだろ。
+>  連中だってそれほどの戦力じゃない
+“No use complaining about that. They're not that big a force anyway—
+---
+>  叩きつぶしちまえばいいんだ」
+we just smash 'em to bits.”
+
+@49072 Tetsuya · 鉄也
+> 「違うな。俺たちは
+>  フィフスをとめる必要がある
+“That's not it. We need to stop Fifth Luna.
+---
+>  連中はコースを確定して
+>  落とせばいい。この違いは大きい」
+All they have to do is lock in the course and drop it. That difference is huge.”
+
+@49073 Henken · ヘンケン
+> 「そういうことだ」
+“Exactly.”
+
+@49074 Ark · アーク（按段落 3DD1）
+> 「でも、本当にあの
+>  クワトロ大尉なんですか?
+“But is it really that Captain Quattro?
+---
+>  なんだか信じられない気がします。
+>  俺を助けてくれて……
+I just can't believe it. He saved me...
+---
+>  優秀な指揮官で……。あんなに
+>  命がけで一緒に戦ったのに……」
+He was a brilliant commander... We fought side by side, risking our lives like that...”
+
+@49075 Ark · アーク（按段落 3DD1）
+> 「でも、本当にあの
+>  クワトロ特尉なんですか?
+“But is it really that Special Ensign Quattro?
+---
+>  なんだか信じられない気がします。
+>  俺を助けてくれて……
+I just can't believe it. He saved me...
+---
+>  優秀な指揮官で……。あんなに
+>  命がけで一緒に戦ったのに……」
+He was a brilliant commander... We fought side by side, risking our lives like that...”
+
+@49076 Amuro · アムロ
+> 「あの頃のシャアは、俺たちには
+>  本心を見せてなかったということだ
+“It means the Char of back then never showed us his true heart.
+---
+>  今の奴は間違いなく強敵だよ。
+>  君がそもそもの最初から、奴と
+The man he is now is a formidable enemy, no doubt about it. I know you were with him
+---
+>  一緒だったことは知っている。が、
+>  油断すると、君がやられることになる」
+from the very start. But if you let your guard down, you'll be the one who dies.”
+
+@49077 Ark · アーク（按段落 3DD1）
+> 「……はい」
+“...Yes.”
+
+@49078 Ark · アーク（按段落 3DD1）
+> 「でも、本当にあの
+>  クワトロ大尉なんですか?
+“But is it really that Captain Quattro?
+---
+>  なんだか信じられない気がします。
+>  俺を助けてくれて……
+I just can't believe it. He saved me...
+---
+>  優秀な指揮官で……。あんなに
+>  命がけで一緒に戦ったのに……」
+He was a brilliant commander... We fought side by side, risking our lives like that...”
+
+@49079 Ark · アーク（按段落 3DD1）
+> 「でも、本当にあの
+>  クワトロ特尉なんですか?
+“But is it really that Special Ensign Quattro?
+---
+>  なんだか信じられない気がします。
+>  俺を助けてくれて……
+I just can't believe it. He saved me...
+---
+>  優秀な指揮官で……。あんなに
+>  命がけで一緒に戦ったのに……」
+He was a brilliant commander... We fought side by side, risking our lives like that...”
+
+@49080 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「フッ」
+“Hmph.”
+
+@49081 Ark · アーク（按段落 3DD1）
+> 「何がおかしい!?」
+“What's so funny?!”
+
+@49082 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「いや、かつての私も、もしかしたら
+>  部下たちに、そういわれていたのかも
+“No, I was just thinking that perhaps my men once said the same
+---
+>  しれないと思ってな。人にはそれぞれ
+>  いるべき場所というものがある
+about me. Every man has a place where he belongs.
+---
+>  シャア・アズナブルはあの戦いの中で
+>  気づいたのだろう
+Char Aznable must have realized it during that battle—
+---
+>  {HeroMech}が自分の
+>  いるべき場所ではない、と」
+that the {HeroMech} was not where he belonged.”
+
+@49083 Amuro · アムロ
+> 「ああ。あの頃のシャアは、俺たちには
+>  本心を見せてなかったということだ
+“Yeah. It means the Char of back then never showed us his true heart.
+---
+>  今の奴は間違いなく強敵だよ。
+>  君がそもそもの最初から奴と
+The man he is now is a formidable enemy, no doubt about it. I know you were with him
+---
+>  一緒だったことは知っている。が、
+>  油断すると、君がやられることになる」
+from the very start. But if you let your guard down, you'll be the one who dies.”
+
+@49084 Ark · アーク（按段落 3DD1）
+> 「……はい」
+“...Yes.”
+
+@49085 Selain · セレイン（按段落 3DD2）
+> 「クワトロ大尉……まさか再会が
+>  こういう形になろうとはね」
+“Captain Quattro... I never thought we'd meet again like this.”
+
+@49086 Selain · セレイン（按段落 3DD2）
+> 「クワトロ特尉……まさか再会が
+>  こういう形になろうとはね」
+“Special Ensign Quattro... I never thought we'd meet again like this.”
+
+@49087 George · ジョルジュ
+> 「人というのはわからないものです。
+>  これだけ長い間、戦い続けていれば
+“People are unpredictable. After fighting for this long,
+---
+>  こういうこともありますよ、マドモアゼル」
+these things happen, mademoiselle.”
+
+@49088 Selain · セレイン（按段落 3DD2）
+> 「ジョルジュ、やめろというのに。
+>  私はお前のそういうところだけは
+“George, I told you to stop that. It's the one thing about you
+---
+>  好きになれん」
+I simply cannot stand.”
+
+@49089 George · ジョルジュ
+> 「これは失礼。しばらくお会いして
+>  いなかったものですから、つい」
+“My apologies. It's been so long since I last saw you, I couldn't help myself.”
+
+@49090 Rish · リッシュ（按段落 3DD2）
+> 「つい、じゃねぇよ。人の女にあんまり、
+>  なれなれしくしてほしくないなぁ」
+“Couldn't help yourself, my ass. I'd appreciate it if you didn't get so friendly with another man's woman.”
+
+@49091 Rish · リッシュ（按段落 3DD2）
+> 「つーっ、手加減なしかよ、おい」
+“Ow—no holding back, huh?”
+
+@49092 Selain · セレイン（按段落 3DD2）
+> 「誰が人の女だ。
+>  調子にのるのも、いい加減にしろ!」
+“Who's your woman? You'd better know your place!”
+
+@49093 Amuro · アムロ
+# 审校：「今の奴」指刚才出现的敌人，初稿译成“the man he is now”不通顺，改为“the man we just saw”。
+> 「ともかくだ。{HeroNick}、
+>  今の奴は間違いなく強敵だ
+“Anyway. {HeroNick}, the man we just saw is a formidable enemy, no doubt about it.
+---
+>  油断するなよ」
+Don't let your guard down.”
+
+@49094 Selain · セレイン（按段落 3DD2）
+> 「無用の心配です。
+>  敵とあれば、戦ってみせます」
+“A needless worry. If he's an enemy, I'll fight him.”
+
+@49095 Rish · リッシュ（按段落 3DD2）
+> 「ま、どっちみち俺らには、
+>  それしかできんでしょう」
+“Well, either way, that's all any of us can do.”
+
+@49096 Amuro · アムロ
+> 「そうだな……」
+“Yeah...”
+
+@49097 Selain · セレイン（按段落 3DD2）
+> 「クワトロ大尉……まさか再会が
+>  こういう形になろうとはね」
+“Captain Quattro... I never thought we'd meet again like this.”
+
+@49098 Selain · セレイン（按段落 3DD2）
+> 「クワトロ特尉……まさか再会が
+>  こういう形になろうとはね」
+“Special Ensign Quattro... I never thought we'd meet again like this.”
+
+@49099 George · ジョルジュ
+> 「人というのはわからないものです。
+>  これだけ長い間、戦い続けていれば
+“People are unpredictable. After fighting for this long,
+---
+>  こういうこともありますよ、マドモアゼル」
+these things happen, mademoiselle.”
+
+@49100 Selain · セレイン（按段落 3DD2）
+> 「ジョルジュ、やめろというのに。
+>  私はお前のそういうところだけは
+“George, I told you to stop that. It's the one thing about you
+---
+>  好きになれん」
+I simply cannot stand.”
+
+@49101 George · ジョルジュ
+> 「これは失礼。しばらくお会いして
+>  いなかったものですから、つい」
+“My apologies. It's been so long since I last saw you, I couldn't help myself.”
+
+@49102 Amuro · アムロ
+# 审校：同 L6，「今の奴」改为“the man we just saw”。
+> 「{HeroNick}、今の奴は間違いなく
+>  強敵だ。油断するなよ」
+“{HeroNick}, the man we just saw is a formidable enemy, no doubt about it. Don't let your guard down.”
+
+@49103 Selain · セレイン（按段落 3DD2）
+> 「無用の心配です。
+>  敵とあれば、戦ってみせます」
+“A needless worry. If he's an enemy, I'll fight him.”
+
+@49104 Brad · ブラッド（按段落 3DD3）
+> 「クワトロ・バジーナ…シャア・アズナブルか
+>  尊敬できる奴だったが
+“Quattro Bajeena... Char Aznable was a man I could respect,
+---
+>  敵となるならば容赦はしない。
+>  全力で叩きつぶすぜ」
+but if he stands against us, I'll show no mercy. I'll crush him with everything I've got.”
+
+@49105 Kurtz · カーツ（按段落 3DD3）
+> 「奴が敵にまわった事情も、
+>  多少は理解できるがな
+“I can understand, to some extent, why he'd turn against us.
+---
+>  ならばこそなおのこと、俺たちも
+>  全力で奴と戦う必要がある
+And that's exactly why we have to fight him with everything we've got.
+---
+>  それが俺たち流の
+>  礼儀のしめし方だ」
+That's how we show our respect.”
+
+@49106 Domon · ドモン
+> 「ああ……しょせん俺たちには、
+>  その程度のことしかできん」
+“Yeah... in the end, that's all any of us can do.”
+
+@49107 Brad · ブラッド（按段落 3DD3）
+> 「クワトロ・バジーナ…シャア・アズナブルか
+>  尊敬できる奴だったが
+“Quattro Bajeena... Char Aznable was a man I could respect,
+---
+>  敵となるならば容赦はしない。
+>  全力で叩きつぶすぜ」
+but if he stands against us, I'll show no mercy. I'll crush him with everything I've got.”
+
+@49108 Domon · ドモン
+> 「ああ……しょせん俺たちには、
+>  その程度のことしかできん」
+“Yeah... in the end, that's all any of us can do.”
+
+@49109 Manami · マナミ（按段落 3DD4）
+> 「クワトロ大尉……
+>  どうしてこんなことに……」
+“Captain Quattro... How did it come to this...”
+
+@49110 Manami · マナミ（按段落 3DD4）
+> 「クワトロ特尉……
+>  どうしてこんなことに……」
+“Special Ensign Quattro... How did it come to this...”
+
+@49111 Amuro · アムロ
+> 「あの頃のシャアは、俺たちには
+>  本心を見せてなかったということだ
+“It means the Char of back then never showed us his true heart.
+---
+>  今の奴は間違いなく強敵だよ。
+>  油断すると
+The man he is now is a formidable enemy, no doubt about it. If you let your guard down,
+---
+>  君たちがやられることになる」
+you'll be the one who dies.”
+
+@49112 Aisha · アイシャ（按段落 3DD4）
+> 「あら、わたくしは油断などしたことは
+>  ございませんわよ。もっとも
+“Oh my, I have never once let my guard down. Though in
+---
+>  {HeroName}さんなら、確かに
+>  十分ありうることですけれど」
+{HeroName}'s case, I suppose it's quite possible.”
+
+@49113 Manami · マナミ（按段落 3DD4）
+> 「でも、相手は
+>  あのクワトロ大尉なのよ?」
+“But our opponent is that Captain Quattro, you know?”
+
+@49114 Manami · マナミ（按段落 3DD4）
+> 「でも、相手は
+>  あのクワトロ特尉なのよ?」
+“But our opponent is that Special Ensign Quattro, you know?”
+
+@49115 Aisha · アイシャ（按段落 3DD4）
+> 「クワトロでもシャアでも
+>  どちらでもかまいません
+“Quattro or Char, it makes no difference to me.
+---
+>  わたくしたちが何のために
+>  戦っているのかを理解していれば
+As long as we understand what we're fighting for,
+---
+>  相手が誰であろうと
+>  関係ありませんわ」
+it doesn't matter who the enemy is.”
+
+@49116 Manami · マナミ（按段落 3DD4）
+> 「そうだけど……」
+“I suppose so, but...”
+
+@49117 Amuro · アムロ
+> 「きつい言い方だが、
+>  それでは君が、死ぬぞ」
+“That's harsh, but if you don't, you'll die.”
+
+@49118 Manami · マナミ（按段落 3DD4）
+> 「そう……ですね。すみません、
+>  戦闘の前だというのに」
+“Yes... that's right. I'm sorry, and we're about to go into battle.”
+
+@49119 Aisha · アイシャ（按段落 3DD4）
+> 「まったく、しかたのない人ですわね」
+“Goodness, you really are a hopeless one.”
+
+@49120 Amuro · アムロ
+> 「あの頃のシャアは、俺たちには
+>  本心を見せてなかったということだ
+“It means the Char of back then never showed us his true heart.
+---
+>  今の奴は間違いなく強敵だよ。
+>  油断すると、君がやられることになる」
+The man he is now is a formidable enemy, no doubt about it. If you let your guard down, you'll be the one who dies.”
+
+@49121 Manami · マナミ（按段落 3DD4）
+> 「アムロさん……でも、相手は
+>  あのクワトロ大尉なんですよ?」
+“Amuro... but our opponent is that Captain Quattro, you know?”
+
+@49122 Manami · マナミ（按段落 3DD4）
+> 「アムロさん……でも、相手は
+>  あのクワトロ特尉なんですよ?」
+“Amuro... but our opponent is that Special Ensign Quattro, you know?”
+
+@49123 Amuro · アムロ
+> 「だからこそだ。君がそれでは、
+>  俺は君を戦わせるわけにはいかないな」
+“That's exactly why. If that's how you feel, I can't let you fight.”
+
+@49124 Manami · マナミ（按段落 3DD4）
+> 「そう……ですね。すみません、
+>  戦闘の前だというのに」
+“Yes... that's right. I'm sorry, and we're about to go into battle.”
+
+@49125 Kamille · カミーユ
+> 「だけど、許せないな…シャア・アズナブル
+>  こういう形でもどってくるくらいなら
+“But I can't forgive him... If Char Aznable was going to come back in a form like this,
+---
+>  いっそあの時に……」
+I'd rather he had back then...”
+
+@49126 Amuro · アムロ
+> 「いうなよ、カミーユ」
+“Don't say it, Kamille.”
+
+@49127 Beltorchika · ベルトーチカ
+> 「まもなく主砲の
+>  射程距離に到達」
+“We'll soon be within range of the main guns.”
+
+@49128 Henken · ヘンケン
+> 「よーし、射程に入りしだい
+>  主砲を一斉射
+“All right, the moment we're in range, fire the main guns in a full volley.
+---
+>  続けて敵艦隊に向けてミサイルを
+>  ばらまいたあと、お前らに出てもらうぞ
+Then, after we scatter missiles across the enemy fleet, you lot will sortie.
+---
+>  総員、第一戦闘配置だ!」
+All hands, battle stations!”
+
+@49129 Gyunei · ギュネイ
+> 「来たか。これだけのプレッシャーを
+>  発する……{HeroMech}だな」
+“So they've come. Giving off this much pressure... that's the {HeroMech}.”
+
+@49130 Rezin · レズン
+> 「いいかい、お前たち。連中を
+>  フィフスに近づけるんじゃないよ!」
+“Listen up, all of you. Don't let them get anywhere near Fifth!”
+
+@49131 Amuro · アムロ
+> 「目標はフィフス・ルナだ。
+>  他は無視しろ!
+“Our target is Fifth Luna. Ignore everything else!
+---
+>  フィフスに、とりつけばいい!」
+Just get to Fifth!”
+
+@49132 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……
+“There's still backup?! Is that Char?! And...
+---
+>  ミリアルド・ピースクラフトだと!?」
+Milliardo Peacecraft?!”
+
+@49133 Noin · ノイン
+> 「ゼクス!? よく、生きて……
+>  しかし、なぜ!?」
+“Zechs?! You're alive... but why?!”
+
+@49134 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……アナベル・ガトー!?」
+“There's still backup?! Is that Char?! And... Anavel Gato?!”
+
+@49135 Kou · コウ
+> 「アナベル・ガトー……生きていたのか!」
+“Anavel Gato... you were alive!”
+
+@49136 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!」
+“There's still backup?! Is that Char?!”
+
+@49137 Henken · ヘンケン
+> 「よぉし、急いでフィフスに取りつくんだ」
+“All right, hurry and get to Fifth.”
+
+@49138 Chan · チェーン
+> 「フィフスに火がついた!?」
+“Fifth is on fire?!”
+
+@49139 Bunny · バニー
+> 「そんな!?」
+“No way?!”
+
+@49140 Beltorchika · ベルトーチカ
+> 「アムロ、フィフスは降下を
+>  開始したわ。阻止は失敗よ!」
+“Amuro, Fifth has begun its descent. We failed to stop it!”
+
+@49141 Amuro · アムロ
+> 「くそっ!」
+“Damn it!”
+
+@49142 Rezin · レズン
+> 「役目は終わった。引きあげるよ!」
+“Our job here is done. We're pulling out!”
+
+@49143 Char · シャア
+> 「ギュネイ、作戦は成功だ。
+>  よくやってくれた」
+“Gyunei, the operation was a success. You did well.”
+
+@49144 Gyunei · ギュネイ
+> 「はっ、ありがとうございます、大佐!」
+“Yes, thank you, Colonel!”
+
+@49145 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……
+“There's still backup?! Is that Char?! And...
+---
+>  ミリアルド・ピースクラフトだと!?」
+Milliardo Peacecraft?!”
+
+@49146 Noin · ノイン
+> 「ゼクス!? よく、生きて……
+>  しかし、なぜ!?」
+“Zechs?! You're alive... but why?!”
+
+@49147 Char · シャア
+> 「ギュネイ、作戦は成功だ。
+>  よくやってくれた」
+“Gyunei, the operation was a success. You did well.”
+
+@49148 Gyunei · ギュネイ
+> 「はっ、ありがとうございます、大佐!」
+“Yes, thank you, Colonel!”
+
+@49149 Amuro · アムロ
+> 「まだ援護がいた!? ……シャアか!
+>  それに……アナベル・ガトー!?」
+“There's still backup?! ...Is that Char?! And... Anavel Gato?!”
+
+@49150 Kou · コウ
+> 「アナベル・ガトー……生きていたのか!」
+“Anavel Gato... you were alive!”
+
+@49151 Char · シャア
+> 「ギュネイ、作戦は成功だ。
+>  よくやってくれた」
+“Gyunei, the operation was a success. You did well.”
+
+@49152 Gyunei · ギュネイ
+> 「はっ、ありがとうございます、大佐!」
+“Yes, thank you, Colonel!”
+
+@49153 Amuro · アムロ
+> 「まだ援護がいた!? ……シャアか!」
+“There's still backup?! ...Is that Char?!”
+
+@49154 Char · シャア
+> 「ギュネイ、何をやっている!」
+“Gyunei, what are you doing?!”
+
+@49155 Gyunei · ギュネイ
+> 「大佐! まさかご自分で!?」
+“Colonel! You're going out yourself?!”
+
+@49156 Milliardo · ミリアルド
+> 「お前の撤退が遅いから、こうなる。
+>  もう少し大局をみるのだな」
+“Your retreat was too slow, so it's come to this. You need to look at the bigger picture.”
+
+@49157 Gyunei · ギュネイ
+> 「くっ……」
+“Ngh...”
+
+@49158 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……
+“There's still backup?! Is that Char?! And...
+---
+>  ミリアルド・ピースクラフトだと!?」
+Milliardo Peacecraft?!”
+
+@49159 Noin · ノイン
+> 「ゼクス!? よく、生きて……
+>  しかし、なぜ!?」
+“Zechs?! You're alive... but why?!”
+
+@49160 Char · シャア
+> 「ギュネイ、何をやっている!」
+“Gyunei, what are you doing?!”
+
+@49161 Gyunei · ギュネイ
+> 「大佐!? まさかご自分で!」
+“Colonel?! You're going out yourself?!”
+
+@49162 Gato · ガトー
+> 「貴様の撤退が遅いからこうなる。
+>  大事の前だ。もう少し慎重に
+“Your retreat was too slow, so it's come to this. We're on the eve of something great. I'd like you to be a little more
+---
+>  なってもらいたいものだな」
+careful.”
+
+@49163 Gyunei · ギュネイ
+> 「くっ……」
+“Ngh...”
+
+@49164 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……アナベル・ガトー!?」
+“There's still backup?! Is that Char?! And... Anavel Gato?!”
+
+@49165 Kou · コウ
+# 审校：原文“生きていたのか”是发现对方还活着时的感叹，初稿“you were alive”像陈述已知事实，改为“so you're alive!”更自然。
+> 「アナベル・ガトー……生きていたのか!」
+“Anavel Gato... so you're alive!”
+
+@49166 Char · シャア
+> 「ギュネイ、何をやっている!」
+“Gyunei, what are you doing?!”
+
+@49167 Gyunei · ギュネイ
+> 「大佐!? まさかご自分で!」
+“Colonel?! You're going out yourself?!”
+
+@49168 Char · シャア
+> 「貴様の撤退が遅いからだ。こんな
+>  所で死んでもらっては困るのだよ」
+“It's because your retreat was too slow. I can't have you dying in a place like this.”
+
+@49169 Gyunei · ギュネイ
+> 「くっ……」
+“Ngh...”
+
+@49170 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!」
+“There's still backup?! Is that Char?!”
+
+@49171 Char · シャア
+> 「フィフスはとめられん。
+>  この戦いは私の勝ちだな、アムロ」
+“Fifth can't be stopped. This battle is my victory, Amuro.”
+
+@49172 Amuro · アムロ
+> 「シャア、今になって自分から
+>  出てくるのか! なんでこんなものを
+“Char, now of all times you come out yourself?! Why would you drop something like this
+---
+>  地球に落とす。これでは地球が
+>  寒くなって人が住めなくなるぞ!」
+on Earth? This will make Earth so cold no one can live on it!”
+
+@49173 Char · シャア
+> 「地上の復興など、地球をまた
+>  汚染するだけだ。だが……
+“Rebuilding the surface would only pollute the Earth again. But...
+---
+>  それを知っていながら
+>  地上の人間たちは
+knowing that, the people on the surface
+---
+>  宇宙へあがる決断ができずにいる。
+>  だから、決断させてやろうというのだ」
+still can't make the decision to go up into space. So I'll make the decision for them.”
+
+@49174 Amuro · アムロ
+> 「地上じゃ餓死者だって
+>  出ているんだぞ!?
+“People on the surface are starving to death!?
+---
+>  まずは環境を整えなければ、
+>  できない相談だ!
+First we have to fix the environment, or it's impossible!
+---
+>  なのに人が人に罰を与えるなどッ!」
+And yet you'd have people punish people?!”
+
+@49175 Char · シャア
+> 「私、シャア・アズナブルがそれをしようと
+>  いうのだ、アムロ」
+“I, Char Aznable, am the one who will do it, Amuro.”
+
+@49176 Amuro · アムロ
+> 「エゴだよ、それは!」
+“That's just ego!”
+
+@49177 Char · シャア
+> 「地球がもたん時が来ているのだ!」
+“The time has come when the Earth can't hold out!”
+
+@49178 Amuro · アムロ
+> 「シャアッ!!」
+“Char!!”
+
+@49179 Chan · チェーン
+# 审校：原文“とりついた!?”是疑问加惊讶，初稿句末多了一个空格，且“It hit”后应直接跟“?!”。
+> 「とりついた!?」
+“It hit?!”
+
+@49180 Bunny · バニー
+> 「やったぁーっ!」
+“We did it!”
+
+@49181 Beltorchika · ベルトーチカ
+> 「……だめね」
+“...It's no good.”
+
+@49182 Chan · チェーン
+> 「え!? あっ……火がついた!?」
+“Huh?! Ah... it's caught fire?!”
+
+@49183 Beltorchika · ベルトーチカ
+> 「アムロ、フィフスは降下を
+>  開始したわ! 阻止は失敗よ!」
+“Amuro, Fifth has begun its descent! We failed to stop it!”
+
+@49184 Rezin · レズン
+> 「役目は終わった。引きあげるよ!」
+“My job here is done. I'm pulling out!”
+
+@49185 Gyunei · ギュネイ
+> 「くっ、俺は強化されているはずだ。
+>  敵の気を感じとれても
+“Ngh, I'm supposed to be enhanced. Even if I can sense the enemy,
+---
+>  撃破できなければ何にもならんッ!」
+if I can't shoot them down it's all for nothing!”
+
+@49186 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……
+“There's still backup?! Is that Char?! And...
+---
+>  ミリアルド・ピースクラフトだと!?」
+Milliardo Peacecraft?!”
+
+@49187 Noin · ノイン
+> 「ゼクス!? よく、生きて……
+>  しかし、なぜ!?」
+“Zechs?! You're alive... but why?!”
+
+@49188 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!
+>  それに……アナベル・ガトー!?」
+“There's still backup?! Is that Char?! And... Anavel Gato?!”
+
+@49189 Kou · コウ
+# 审校：与 L8 相同，原文是发现对方还活着时的感叹，改为“so you're alive!”更自然。
+> 「アナベル・ガトー……生きていたのか!」
+“Anavel Gato... so you're alive!”
+
+@49190 Amuro · アムロ
+> 「まだ援護がいた!? シャアか!」
+“There's still backup?! Is that Char?!”
+
+@49191 Char · シャア
+> 「残念だがまだ先がある。ここで
+>  決着をつけるわけにはいかんぞ、アムロ」
+“Sorry, but there's more to come. I can't settle this here, Amuro.”
+
+@49192 Amuro · アムロ
+> 「シャアッ!!」
+“Char!!”
+
+@49193 Kamille · カミーユ
+> 「なんで、いまさら出てきて、こんなことを
+>  するんです!」
+“Why come out now, after all this time, and do something like this?!”
+
+@49194 Char · シャア
+> 「なんというプレッシャーだ。強くなったな
+>  カミーユ。だが、私も負けるわけには
+“What pressure. You've gotten strong, Kamille. But I can't afford to lose
+---
+>  いかんのだ!」
+either!”
+
+@49195 Kamille · カミーユ
+> 「勝手なことをッ!! 沈めぇっ!」
+“You're just doing whatever you want!! Sink!”
+
+@49196 Milliardo · ミリアルド
+> 「ノイン……私の前に出てくるならば、
+>  たとえ君でも、落とさねばならん」
+“Noin... if you stand before me, then even you I must shoot down.”
+
+@49197 Noin · ノイン
+> 「ゼクス!!」
+“Zechs!!”
+
+@49198 Noin · ノイン
+> 「ゼクス! どういうことなのですか!?」
+“Zechs! What is the meaning of this?!”
+
+@49199 Milliardo · ミリアルド
+> 「聞かなかったのか?
+>  ホワイトファング残党は
+“Did you not hear? The White Fang remnants were
+---
+>  シャア総帥のもと、ネオジオンに
+>  吸収されたのだ」
+absorbed into Neo Zeon under Supreme Commander Char.”
+
+@49200 Noin · ノイン
+> 「私が聞きたいのは、
+>  そんなことではありません!」
+“That is not what I want to ask you!”
+
+@49201 Milliardo · ミリアルド
+> 「ノイン……すまんな、
+>  私は過去を捨てたのだ」
+“Noin... forgive me. I have cast away my past.”
+
+@49202 Noin · ノイン
+> 「待ってください! ゼクスッ!!」
+“Wait! Zechs!!”
+
+@49203 Amuro · アムロ
+# 审校：原文“並みじゃないな”指“不是泛泛之辈”，初稿“no ordinary man”虽可理解，但“no ordinary one”更贴合“这个飞行员”的指代，语气也更自然。
+> 「くっ、このパイロット……
+>  並みじゃないな!?」
+“Ngh, this pilot... he's no ordinary one?!”
+
+@49204 Gyunei · ギュネイ
+> 「貴様っ! アムロ・レイだな!」
+“You! You're Amuro Ray!”
+
+@49205 Gato · ガトー
+# 审校：原文“ウラキ特尉か!”是认出对方时的称呼，初稿“is it!”多余且不自然，改为直接称呼。
+> 「ウラキ特尉か!」
+“Ensign Uraki!”
+
+@49206 Kou · コウ
+> 「ガトォォォォーッ!!」
+“Gatoooooo!!”
+
+@49207 Kou · コウ
+> 「ガトー、いまさら出てきたって
+>  無駄なんだよ!」
+“Gato, showing up now won't change anything!”
+
+@49208 Gato · ガトー
+> 「ならば、試してみるか!」
+“Then let us put that to the test!”
+
+@49209 Bunny · バニー
+> 「なに、あれ! 敵なの!?」
+“What is that?! Is it an enemy?!”
+
+@49210 Mashymre · マシュマー
+> 「聞こえるか{HeroMech}。
+>  いまより、この
+“Can you hear me, {HeroMech}? From now on, I,
+---
+>  マシュマー・セロが援護する」
+Mashymre Cello, will provide you support.”
+
+@49211 Judau · ジュドー
+> 「マシュマー!?」
+“Mashymre?!”
+
+@49212 Henken · ヘンケン
+# 审校：原文“どういうことだ”是质问，初稿“doing what?!”不通顺，改为“what is the meaning of this!”更符合质问语气。
+> 「なんだと? アクシズの士官が、
+>  どういうことだ!」
+“What? An Axis officer... what is the meaning of this!”
+
+@49213 Mashymre · マシュマー
+> 「ハマーン様は、真に地球圏の
+>  ことをお考えになられていたお方だ
+“Lady Haman was one who truly had the Earth Sphere in her thoughts.
+---
+>  地球つぶしをやるような輩とは
+>  違う! 私はここで戦い
+She was not like those who would destroy the Earth! By fighting here and
+---
+>  勝つことによって、そのハマーン様の
+>  遺志を体現してみせる!
+winning, I will embody Lady Haman's dying wish!
+---
+>  それがともに死ぬこともできずに
+>  生きながらえた私の
+That is the only path left to me, who survived
+---
+>  唯一の道なのだ!」
+when I could not even die alongside her!”
+
+@49214 Henken · ヘンケン
+> 「シャアは許せんということか。
+>  了解した、まかせる」
+“So you cannot forgive Char. Understood, I leave it to you.”
+
+@49215 Mashymre · マシュマー
+> 「かたじけない!」
+“My thanks!”
+
+@49216 Bunny · バニー
+> 「なに、あれ! 敵なの!?」
+“What is that?! Is it an enemy?!”
+
+@49217 Chara · キャラ
+> 「聞こえるかい、{HeroMech}。
+>  猫目のキャラが
+“Can you hear me, {HeroMech}? Cat-eyed Chara
+---
+>  あんたらを援護するよ」
+is going to back you up.”
+
+@49218 Judau · ジュドー
+> 「キャラ!? いったいどうして……」
+“Chara?! Just why...”
+
+@49219 Henken · ヘンケン
+# 审校：与 L55 相同，原文是质问，初稿“doing what?!”不通顺，改为“what is the meaning of this!”。
+> 「キャラ・スーン!? アクシズの士官が
+>  どういうことだ!」
+“Chara Soon?! An Axis officer... what is the meaning of this!”
+
+@49220 Chara · キャラ
+> 「ハマーン様は、真に地球圏を
+>  愛されたお方
+“Lady Haman was one who truly loved the Earth Sphere.
+---
+>  地球つぶしをやるような奴と
+>  一緒にされたくないんだよ!
+I don't want her lumped in with the likes of those who would destroy the Earth!
+---
+>  ぶざまに生き残っちまった
+>  あたしは、戦ってみせることで
+I, who survived so pathetically, have to prove it
+---
+>  それを証明しなくちゃいけないんだ!」
+by fighting and showing them!”
+
+@49221 Henken · ヘンケン
+> 「シャアは許せん、ということか。
+>  了解した。まかせる」
+“So you cannot forgive Char. Understood. I leave it to you.”
+
+@49222 Chara · キャラ
+> 「悪いね、一緒にやらせてもらうよ」
+“Sorry about this, but I'm joining in too.”
+
+@49223 Char · シャア
+> 「なんだと!? ええい、ここまでか!」
+“What?! Damn, so this is as far as I go!”
+
+@49224 Char · シャア
+> 「なんだと!? ええい、ここまでか。
+>  作戦は成功したのだ
+“What?! Damn, so this is as far as I go. The operation succeeded.
+---
+>  撤退しろ!」
+Retreat!”
+
+@49225 Char · シャア
+> 「ええい、これ以上は無理か。
+>  まあいい、作戦は成功だ」
+“Damn, no more than this, then. Very well, the operation succeeded.”
+
+@49226 Char · シャア
+> 「ええい、これ以上は無理か。
+>  まあいい、作戦は成功だ
+“Damn, no more than this, then. Very well, the operation succeeded.
+---
+>  撤退する!」
+I'm retreating!”
+
+@49227 Gato · ガトー
+> 「マシュマー・セロ……貴君が敵に
+>  回った事情は問わぬ
+“Mashymre Cello... I will not ask why you have turned enemy.
+---
+>  我々をはばむというのならば、
+>  ただ倒すのみ!」
+If you stand in our way, then I need only strike you down!”
+
+@49228 Mashymre · マシュマー
+# 审校：“ソロモンの悪夢”是称号，按规则『』应转成单引号，而非双引号。
+> 「“ソロモンの悪夢”……相手にとっ
+>  て、不足はない。このマシュマー・セロ
+“The ‘Nightmare of Solomon’... For an opponent like you, I could ask for no more. I, Mashymre Cello,
+---
+>  ハマーン様の騎士として、まいる!」
+come at you as Lady Haman's knight!”
+
+@49229 Amuro · アムロ
+> 「情けない。シャアにやられるのを
+>  見ていただけだった
+“How pathetic. I could only watch as Char did as he pleased.
+---
+>  フィフス・ルナが地球に落ちるのを
+>  阻止できなかったとは」
+To think I couldn't stop Fifth Luna from falling to Earth.”
+
+@49230 Henken · ヘンケン
+> 「あの状態では、しかたあるまい」
+“In that situation, there was nothing to be done.”
+
+@49231 Amuro · アムロ
+> 「避難勧告は出ているのか?」
+“Has an evacuation order been issued?”
+
+@49232 Beltorchika · ベルトーチカ
+# 审校：“情報を知ってる人たち”指知道情报/内情的人，原译“in the know”可接受但“what's coming”更贴合语境；原译基本正确，但为更自然略作调整。
+> 「ええ。情報を知ってる人たちは、
+>  真っ先に逃げ出しているけどね
+“Yes. The people who know what's coming are already fleeing first, of course.
+---
+>  いちおうレディ・アンのOZが住民の
+>  避難の手伝いに
+For what it's worth, Lady Une's OZ is helping
+---
+>  まわってくれているわ。
+>  ぎりぎりまでやってくれるはずよ」
+the residents evacuate. They should keep at it until the last moment.”
+
+@49233 Amuro · アムロ
+> 「そうか……くそっ!」
+“I see... damn it!”
+
+@49234 Anna · アンナ
+> 「はい。財団の人を含め、
+>  付近一帯の人たちを、OZで
+“Yes. Including the Foundation's people, they say OZ is doing everything
+---
+>  全力を上げて避難させている
+>  そうです。でも…………」
+it can to evacuate everyone in the surrounding area. But...”
+
+@49235 Zechs · ゼクス
+# 审校：“壊滅だな”是已发生的结果，原译“is destroyed”语法上可接受，但“has been destroyed”更准确。
+> 「再建しつつあった財団の本拠は
+>  壊滅だな……これでまた、復興が
+“The Foundation's headquarters, which was being rebuilt, has been destroyed... Now reconstruction
+---
+>  数年は遅れる」
+will be delayed by several more years.”
+
+@49236 Amuro · アムロ
+> 「だろうな……くそっ!」
+“I figured... damn it!”
+
+@49237 Chan · チェーン
+> 「アムロ……」
+“Amuro...”
+
+@49238 Kamille · カミーユ
+> 「こちらが情報をつかむのが
+>  遅かったんです
+“Our intel came in too late.
+---
+>  あのタイミングでは、
+>  あれが限界でしたよ」
+At that timing, that was the best we could do.”
+
+@49239 Fa · ファ
+> 「そう思います。私たちは
+>  できるだけのことはしたんです
+“I think so too. We did everything we could.
+---
+>  アムロさんがそれでは、
+>  私たち、どうしていいか……」
+If that's how it is with you, Amuro, then we don't know what to do...”
+
+@49240 Amuro · アムロ
+> 「しかしな……この数ヶ月、俺たちは
+>  ずっと宇宙でコロニー間を
+“But still... these past few months, we've been flying around the colonies in space
+---
+>  飛びまわってたんだぞ? なのに
+>  シャアとかネオジオンなんてのは
+the whole time, haven't we? And yet Char and Neo Zeon... we never heard even a rumor.
+---
+>  噂すらいっさい、いいか、いっさいだ、
+>  聞かなかった。なのになぜ
+Not one, I tell you, not one. So why
+---
+>  こんなに短期間に戦力を
+>  整備できたんだ? アクシズや
+were they able to build up their forces in such a short time? Even if they're remnants of Axis and
+---
+>  ホワイトファングの残党だからって、
+>  動きが見えないわけがない」
+White Fang, there's no way their movements could have gone unseen.”
+
+@49241 Amuro · アムロ
+> 「しかしな……この数ヶ月、俺たちは
+>  ずっと宇宙でコロニー間を
+“But still... these past few months, we've been flying around the colonies in space
+---
+>  飛びまわってたんだぞ? なのに
+>  シャアとかネオジオンなんてのは
+the whole time, haven't we? And yet Char and Neo Zeon... we never heard even a rumor.
+---
+>  噂すらいっさい、いいか、いっさいだ、
+>  聞かなかった。なのになぜこんなに
+Not one, I tell you, not one. So why were they able to
+---
+>  短期間に、戦力を整備できた
+>  んだ? アクシズやシロッコ派の残党
+build up their forces in such a short time? If they were remnants of Axis or Scirocco's faction,
+---
+>  だったら、動きが見えないわけがない」
+there's no way their movements could have gone unseen.”
+
+@49242 Henken · ヘンケン
+# 审校：原译“They went unseen, that is, to us”语序不自然，改为更口语化表达。
+> 「見えなかったんだよ、我々にはな」
+“They went unseen—by us, that is.”
+
+@49243 Kayra · ケーラ
+> 「そうか……コロニーの住民たちが
+>  隠してたってことか。十分ありうるね」
+“I see... so the colony residents were hiding it. That's entirely possible.”
+
+@49244 Anna · アンナ
+> 「そんな……だって私たちの戦いは
+>  コロニーを守るためでもあったのに……」
+“No... but our fighting was supposed to be to protect the colonies too...”
+
+@49245 Show · ショウ
+> 「そうだな……だいたい
+>  スウィートウォーターといえば
+“That's right... after all, Sweetwater is a place
+---
+>  俺たちが以前、補給をしたことも
+>  あるところじゃないか」
+we once resupplied at, isn't it?”
+
+@49246 Amuro · アムロ
+> 「ああ、地球解放戦線機構の
+>  宇宙での協力者の1つだった」
+“Yeah, it was one of the Liberation Front of the Earth's collaborators in space.”
+
+@49247 Anna · アンナ
+> 「それなのに、どうして…………?」
+“And yet, why...?”
+
+@49248 Elle · エル
+> 「アンナたちは知らないかもしれないけど、
+>  一年戦争以来、コロニーって
+“You might not know this, Anna, but since the One Year War, the colonies have been
+---
+>  情報的に取り残されてたんだよ。
+>  たぶん、今だってそれほど
+left behind when it comes to information. It probably hasn't recovered much even now.
+---
+>  回復していない。ここしばらくの
+>  戦いのことは知ってても、それが
+Even if they know about the recent fighting, it wouldn't be strange at all if some of them
+---
+>  終わればまた、もとにもどるって
+>  考えてる連中がいたって、全然
+thought things would just go back to the way they were once it ended.
+---
+>  おかしくないよ。そういう連中なら、
+>  シャアのネオジオンにだって協力するね」
+People like that would gladly cooperate with Char's Neo Zeon.”
+
+@49249 Judau · ジュドー
+> 「それが俺たちのコロニーだってのがさ……
+>  そうか、リィナがいってたのはこのことか」
+“And that's our colony for you... I see, so this is what Leina meant.”
+
+@49250 Tetsuya · 鉄也
+> 「何のことだ?」
+“What are you talking about?”
+
+@49251 Judau · ジュドー
+> 「俺たちがスウィートウォーターの
+>  出身だってことは知ってたよな
+“You know we're from Sweetwater, right?
+---
+>  俺はコロニーに残してた妹を
+>  こっちにこさせてたんだ
+I had my little sister, who I'd left behind on the colony, come over here.
+---
+>  そん時、何か大人たちの様子が
+>  おかしかったって、いってたんだよ
+At the time, she said the adults were acting strange somehow.
+---
+>  くそっ、もっと早く気づいてれば……」
+Damn it, if only I'd noticed sooner...”
+
+@49252 Show · ショウ
+> 「そうだな……」
+“Yeah...”
+
+@49253 Anna · アンナ
+> 「それに、スウィートウォーターは1年
+>  戦争の時、宇宙難民のために
+“Besides, Sweetwater was the colony the Federation prepared for space refugees
+---
+>  連邦が用意したコロニーでしょう。
+>  それなのに、どうして…………?」
+during the One Year War, wasn't it? And yet, why...?”
+
+@49254 Elle · エル
+> 「アンナたちは知らないかもしれないけど、
+>  一年戦争以来、コロニーって
+“You might not know this, Anna, but since the One Year War, the colonies have been
+---
+>  情報的に取り残されてたんだよ。
+>  たぶん、今だってそれほど
+left behind when it comes to information. It probably hasn't recovered much even now.
+---
+>  回復していない。ここしばらくの
+>  戦いのことは知ってても、それが
+Even if they know about the recent fighting, it wouldn't be strange at all if some of them
+---
+>  終わればまた、もとにもどるって
+>  考えてる連中がいたって、全然
+thought things would just go back to the way they were once it ended.
+---
+>  おかしくないよ。そういう連中なら、
+>  シャアのネオジオンにだって協力するね」
+People like that would gladly cooperate with Char's Neo Zeon.”
+
+@49255 Judau · ジュドー
+> 「その結果がこれだってのがさ。わかる
+>  けど、納得なんかできやしない」
+“And this is the result. I get it, but I can't accept it.”
+
+@49256 Roux · ルー
+> 「ジュドー、落ち着きなさい」
+“Judau, calm down.”
+
+@49257 Show · ショウ
+> 「そうだな……」
+“Yeah...”
+
+@49258 Anna · アンナ
+> 「それに、スウィートウォーターは1年
+>  戦争の時、宇宙難民のために
+“Besides, Sweetwater was the colony the Federation prepared for space refugees
+---
+>  連邦が用意したコロニーでしょう。
+>  それなのに、どうして…………?」
+during the One Year War, wasn't it? And yet, why...?”
+
+@49259 Kayra · ケーラ
+> 「用意したっていっても、壊れた
+>  コロニーを2つくっつけただけの
+“Even if they prepared it, it was just two broken colonies stuck together,
+---
+>  いいかげんなものだよ。いま銀河
+>  帝国の連中に手伝わせて
+a slapdash job. The colonies they're repairing now with
+---
+>  修理してるコロニーの方が、ずっと
+>  マシなくらいさ」
+the Galactic Empire's help are far better by comparison.”
+
+@49260 Elle · エル
+> 「しかたないよ、アンナ。アンナたちは知ら
+>  ないかもしれないけど
+“It can't be helped, Anna. You might not know this, but
+---
+>  一年戦争以来、コロニーの人
+>  たちって孤立して、いつ外から
+since the One Year War, the people of the colonies have been isolated, always
+---
+>  コロニーが壊されるかって、ずっと
+>  そんな心配をしながら生きてた
+worrying about when their colony might be destroyed from outside, living with that fear.
+---
+>  地上と違って、コロニーじゃ何か
+>  あったらすぐにみんな死んじゃうのよ
+Unlike on the ground, in a colony everyone dies right away if something happens.
+---
+>  だからいまだって、財団やOZを
+>  敵対視してる人も多いはずよ
+So even now, there must be plenty of people who see the Foundation and OZ as enemies.
+---
+>  そういう連中なら、シャアのネオ
+>  ジオンに協力するね」
+People like that would cooperate with Char's Neo Zeon.”
+
+@49261 George · ジョルジュ
+> 「わかる話ですね」
+“That makes sense.”
+
+@49262 Anna · アンナ
+> 「そんな……」
+“No...”
+
+@49263 Judau · ジュドー
+> 「その結果がこれだってのがさ。わかる
+>  けど、納得なんかできやしない」
+“And this is the result. I get it, but I can't accept it.”
+
+@49264 Roux · ルー
+> 「ジュドー、落ち着きなさい」
+“Judau, calm down.”
+
+@49265 Amuro · アムロ
+> 「……こうしていても、しかたがないか。
+>  シャアの艦隊の動き
+“...Sitting here won't get us anywhere. What's Char's fleet
+---
+>  どうなっている?」
+doing?”
+
+@49266 Bunny · バニー
+> 「地球を1度まわりこんで、
+>  スウィートウォーター方面へ
+“Aren't they planning to swing around Earth once and break away
+---
+>  離脱するつもりなんじゃないですか?」
+toward the Sweetwater area?”
+
+@49267 Amuro · アムロ
+> 「シャアがそんなに単純か?」
+“Is Char really that simple?”
+
+@49268 Domon · ドモン
+> 「しかし……地球の寒冷化というが
+>  あの程度の石っころで本当に
+“But... is Earth really going to freeze over from a rock that size?
+---
+>  そんなことになるのか?
+>  どうもよくわからないんだが……」
+I just can't quite believe it...”
+
+@49269 Rain · レイン
+> 「そうねぇ、確かにあの規模だと、
+>  気象異常は起こるけど
+“Well, at that scale, it would cause abnormal weather, sure,
+---
+>  全地球規模で人が
+>  住めなくなるほどには……」
+but not enough to make the whole Earth uninhabitable...”
+
+@49270 Amuro · アムロ
+> 「そうか、アクシズだ」
+“I see. Axis.”
+
+@49271 Rain · レイン
+> 「えっ?」
+“Huh?”
+
+@49272 Amuro · アムロ
+> 「シャアの本当のねらいは、アクシズだよ」
+“Char's real target is Axis.”
+
+@49273 Rain · レイン
+> 「……確かにアクシズなら
+>  十分な質量がありますね」
+“...True, Axis would have more than enough mass.”
+
+@49274 Henken · ヘンケン
+> 「おい、今アクシズはどうなっている?」
+“Hey, what's the situation with Axis right now?”
+
+@49275 Beltorchika · ベルトーチカ
+> 「コロニー再建の資源用として
+>  利用されるとかで
+“It's supposed to be managed by the Winner family,
+---
+>  ウィナー家が管理しているはずです。
+>  マグアナック隊の一部が
+for use as resources to rebuild colonies. Part of the Maganac Corps should be
+---
+>  駐留しているはずですが、
+>  シャアの戦力でもすぐに落ちますね」
+stationed there, but even so, Char's forces would take it in no time.”
+
+@49276 Amuro · アムロ
+> 「くそっ、シャアに一杯くわされたか。
+>  ここからではもう間にあわないな」
+“Damn it, did Char get one over on us? From here, we won't make it in time.”
+
+@49277 Henken · ヘンケン
+> 「連中もそれほど
+>  大部隊ではないとはいえ
+“They may not be that large a force,
+---
+>  こちらも決定的に
+>  戦力が不足しているか……」
+but even so, we're critically short on fighting strength ourselves...”
+
+@49278 Amuro · アムロ
+> 「どのみち1度、サイド1へもどるしかない。
+>  ガンドールが彼らを連れもどって
+“Either way, we've got no choice but to head back to Side 1 once. If the Gandor brings them back with it,
+---
+>  くれれば、まだ手の打ちようは
+>  あるんだが……」
+we'll still have a move we can make...”
+
+@49279 Bunny · バニー
+> 「月に確認してみます?」
+“Want me to check with the Moon?”
+
+@49280 Chibodee · チボデー
+> 「無駄だよ。もどってんなら、
+>  すぐに連絡があるはずだろうが」
+“It's pointless. If they were back, they'd have contacted us right away.”
+
+@49281 Amuro · アムロ
+> 「そうだな」
+“Yeah, you're right.”
+
+@49282 Sally · サリィ
+> 「おつかれさま」
+“Good work out there.”
+
+@49283 Rain · レイン
+> 「サリィ、会議の方は?」
+“Sally, how did the meeting go?”
+
+@49284 Sally · サリィ
+> 「中止よ。コロニーの人たちの多くは
+>  潜在的にシャアの味方のような
+“It was called off. Most of the colony people are potentially on Char's side,
+---
+>  ものだから。腹の探りあいね。
+>  話が進まないから、中止になったわ」
+so it's all probing each other. Nothing was getting anywhere, so it was canceled.”
+
+@49285 Naoto · ナオト
+> 「シャアの味方だって
+>  宣言しちまったら、俺たちが
+“If they came out and declared they're on Char's side, it'd be bad for them
+---
+>  勝ったあと、まずいってか。
+>  きったねぇなぁ」
+once we win, huh. That's just filthy.”
+
+@49286 Beltorchika · ベルトーチカ
+> 「あまりいい状況じゃないわね。
+>  長びくと、また地球圏規模の
+“This isn't a very good situation. If it drags on, it could turn into another
+---
+>  争いになるかも……」
+Earth-sphere-wide war...”
+
+@49287 Sally · サリィ
+> 「おつかれさま」
+“Good work out there.”
+
+@49288 Rain · レイン
+> 「サリィ、会議の方は?」
+“Sally, how did the meeting go?”
+
+@49289 Sally · サリィ
+> 「中止よ。コロニーの人たちの多くは
+>  潜在的にシャアの味方のような
+“It was called off. Most of the colony people are potentially on Char's side,
+---
+>  ものだから。腹の探りあいね。
+>  話が進まないから、中止になったわ
+so it's all probing each other. Nothing was getting anywhere, so it was canceled.
+---
+>  せっかくリリーナさんが来ても、
+>  あれではね」
+Even with Relena coming all this way, that's how it is.”
+
+@49290 Naoto · ナオト
+> 「シャアの味方だって
+>  宣言しちまったら、俺たちが
+“If they came out and declared they're on Char's side, it'd be bad for them
+---
+>  勝ったあと、まずいってか。
+>  きったねぇなぁ」
+once we win, huh. That's just filthy.”
+
+@49291 Beltorchika · ベルトーチカ
+> 「あまりいい状況じゃないわね。
+>  長びくと、また地球圏規模の
+“This isn't a very good situation. If it drags on, it could turn into another
+---
+>  争いになるかも……」
+Earth-sphere-wide war...”
+
+@49292 Noin · ノイン
+> 「ご苦労さまです。大変だった
+>  ようですね」
+“Thank you for your hard work. It seems it was rough.”
+
+@49293 Amuro · アムロ
+> 「ああ……奴にしてやられた。ノイン、
+>  会議の方は?」
+“Yeah... he got one over on us. Noin, how did the meeting go?”
+
+@49294 Noin · ノイン
+> 「中止でした。リリーナ様がご自身
+>  で出向かれたとしても、この程度
+“It was called off. Even with Lady Relena going herself, this is all
+---
+>  ですよ。彼らは潜在的にネオジオン
+>  の味方でしょう。むろん、そう公言
+it comes to. They're potentially on Neo Zeon's side. Of course, they don't
+---
+>  しているわけではありませんが。彼の
+>  演説のビデオを見ましたが……」
+say so openly. I watched a video of his speech, but...”
+
+@49295 Roux · ルー
+> 「あれじゃ、コロニーの人たちの多くは、
+>  ネオジオンを否定しようという気には
+“After that, most of the colony people wouldn't feel like
+---
+>  ならないわよね」
+denying Neo Zeon, would they.”
+
+@49296 Kou · コウ
+> 「だけど、シャアの味方だって言わない
+>  のは、こっちが勝った場合のこと
+“But the reason they won't say they're on Char's side is they're thinking about
+---
+>  考えてるんだろ。いやだな、
+>  そういうのはさ」
+what happens if we win, right. I hate that kind of thing.”
+
+@49297 Rain · レイン
+> 「リリーナ代表はどうしたの? まさか、
+>  地球に戻られたの?」
+“What happened to Representative Relena? Don't tell me she went back to Earth?”
+
+@49298 Noin · ノイン
+> 「まさか。月にいっていただいている。
+>  代表者会議は中止となったが
+“Of course not. She's gone to the Moon. The representatives' meeting was called off,
+---
+>  まだ財団の本拠の移転先の
+>  交渉が残っているからな」
+but there's still the negotiation over where to move the foundation's headquarters.”
+
+@49299 Beltorchika · ベルトーチカ
+> 「でも、あまりいい状況じゃないわよ。
+>  長びくと、また地球圏規模の
+“But this isn't a very good situation. If it drags on, it could turn into another
+---
+>  争いになるかも……」
+Earth-sphere-wide war...”
+
+@49300 Noin · ノイン
+> 「ご苦労さまです。大変だったよう
+>  ですね」
+“Thank you for your hard work. It seems it was rough.”
+
+@49301 Amuro · アムロ
+> 「ああ……奴にしてやられた。ノイン、
+>  会議の方は?」
+“Yeah... he got one over on us. Noin, how did the meeting go?”
+
+@49302 Noin · ノイン
+> 「中止でした。リリーナさまが交渉
+>  役となってはいても、やはりコロニー
+“It was called off. Even with Lady Relena acting as negotiator, the colonies'
+---
+>  側の財団に対する不信は強い
+>  彼らは潜在的にネオジオンの
+distrust of the foundation is still strong. They're potentially on Neo Zeon's
+---
+>  味方でしょう。むろん、そう公言し
+>  ているわけではありませんが。彼の
+side. Of course, they don't say so openly. I watched a video of his
+---
+>  演説のビデオを見ましたが……」
+speech, but...”
+
+@49303 Roux · ルー
+# 审校：句末原文为“わよね”，是反问确认语气，改为问号更自然。
+> 「あれじゃ、コロニーの人たちの多くは、
+>  ネオジオンを否定しようという気には
+“After that, most of the colony people wouldn't feel like
+---
+>  ならないわよね」
+denying Neo Zeon, would they?”
+
+@49304 Kou · コウ
+# 审校：原文“考えてるんだろ”是推测反问，句末改为问号。
+> 「だけど、シャアの味方だって言わない
+>  のは、こっちが勝った場合のこと
+“But the reason they won't say they're on Char's side is they're thinking about
+---
+>  考えてるんだろ。いやだな、
+>  そういうのはさ」
+what happens if we win, right? I hate that kind of thing.”
+
+@49305 Rain · レイン
+> 「リリーナさんはどうしたの? まさか、
+>  地球に降ろしたわけではないでしょう」
+“What happened to Relena? Don't tell me you had her go down to Earth?”
+
+@49306 Noin · ノイン
+> 「むろんだ。月にいっていただいている」
+“Of course not. She's gone to the Moon.”
+
+@49307 Beltorchika · ベルトーチカ
+> 「でも……あまりいい状況じゃないわね。
+>  長びくと、また地球圏規模の
+“But... this isn't a very good situation. If it drags on, it could turn into another
+---
+>  争いになるかも……」
+Earth-sphere-wide war...”
+
+@49308 Amuro · アムロ
+> 「この戦いは短期決戦だよ。
+>  シャアにとっても、俺たちにとってもね
+“This battle has to be a short, decisive one. For Char, and for us too.
+---
+>  それで、アクシズは?」
+So, what about Axis?”
+
+@49309 Sally · サリィ
+> 「ついさっき、ネオジオンの手に落ちたわ」
+“Just a little while ago, it fell into Neo Zeon's hands.”
+
+@49310 Tetsuya · 鉄也
+> 「あんたの予想が当たったってわけだ。
+>  ってことは次も当然くるな」
+“So your prediction was right. Which means the next one's coming too, of course.”
+
+@49311 Jun · ジュン
+> 「冗談じゃないよ。アクシズなんて
+>  地球に落とされたら
+“You've gotta be kidding. If something like Axis is dropped on Earth,
+---
+>  本当に地球は人間が
+>  すめなくなっちゃうじゃない!」
+humans really won't be able to live on Earth anymore!”
+
+@49312 Amuro · アムロ
+> 「やらせはしない!
+>  ……シャアをとめなければ
+“I won't let it happen! ...If I don't stop Char,
+---
+>  死んでも死にきれるものじゃない」
+I won't be able to die in peace.”
+
+@49313 Beltorchika · ベルトーチカ
+> 「アムロ!?」
+“Amuro?!”
+
+@49314 Chan · チェーン
+> 「そんな不吉なこと、いわないでください」
+“Please don't say such ominous things.”
+
+@49315 Amuro · アムロ
+> 「……覚悟をいったまでさ。補給と
+>  整備を終えたらアクシズにしかける」
+“...I was just saying I'm ready. Once resupply and maintenance are done, we hit Axis.”
+
+@49316 Ginrei · 銀鈴
+> 「アクシズの核パルスは生きてますから、
+>  シャアはすぐに
+“Axis's nuclear pulse is still alive, so Char will move on to
+---
+>  次の作戦に移りますよ」
+his next operation right away.”
+
+@49317 Judau · ジュドー
+> 「銀鈴さん、もどってたの?」
+“Ginrei, you were back?”
+
+@49318 Ginrei · 銀鈴
+> 「ついさっきね。それとネオジオンのMS、
+>  やっぱりアナハイムが
+“Just a little while ago. And those Neo Zeon Mobile Suits—it looks like Anaheim's
+---
+>  1枚かんでるみたいよ」
+got a hand in them after all.”
+
+@49319 Amuro · アムロ
+> 「奴め、よくもぬけぬけと」
+“That bastard, he's got some nerve.”
+
+@49320 October · オクトバー
+> 「ネオジオンのMS、
+>  サイコミュ搭載型があるって
+“I heard some of Neo Zeon's Mobile Suits are Psycommu-equipped models.
+---
+>  聞きましたけど、本当ですか?」
+Is that true?”
+
+@49321 Amuro · アムロ
+> 「オクトバーさん、いつロンデニオンへ?」
+“October, when did you get to Londenion?”
+
+@49322 October · オクトバー
+> 「チェーンさんに連絡を受けましてね。
+>  先ほどつきました」
+“I received word from Chan, you see. I arrived just a short while ago.”
+
+@49323 Amuro · アムロ
+> 「では、お手伝いいただけるわけですね。
+>  助かりますよ」
+“Then you'll be lending us a hand. That's a relief.”
+
+@49324 October · オクトバー
+> 「ええ。それで、どうなんですか。
+>  本当なんですか?」
+“Yes. So, what's the situation? Is it true?”
+
+@49325 Kamille · カミーユ
+> 「俺たちが嘘をついてどうするんです」
+“Why would we lie about it?”
+
+@49326 Chan · チェーン
+> 「それだってアナハイムで
+>  造ったんでしょう?
+“And Anaheim's the one who built them, isn't it?
+---
+>  私たちよりもそっちの方が
+>  よく知っているんじゃないんですか?」
+Wouldn't you people know better than we do?”
+
+@49327 October · オクトバー
+> 「怒らないでくださいよ。
+>  グラナダ工場と
+“Please don't be angry. The Granada factory and
+---
+>  我々のフォン・ブラウン工場は、
+>  月の裏表で
+our Von Braun factory are on opposite sides of the Moon,
+---
+>  まったく別組織なんですから。何を
+>  やってるかなんて私らにもわかりません」
+completely separate organizations. Even we don't know what they're up to.”
+
+@49328 Judau · ジュドー
+> 「大人たちは、まったくさ。
+>  いつもそうなんだよな」
+“Adults, honestly. It's always the same with them.”
+
+@49329 Amuro · アムロ
+> 「アストナージ、チェーン、
+>  整備を急いでくれ
+“Astonaige, Chan, hurry up with the maintenance.
+---
+>  オクトバーさんも、頼みますよ」
+October, we're counting on you too.”
+
+@49330 George · ジョルジュ
+> 「やれやれ、厳しいことになりそうですね」
+“Good grief, this is going to get rough.”
+
+@49331 Janet · ジャネット
+> 「アストナージさん、こっちはもう終わり
+>  ますよ」
+“Astonaige, we're just about done over here.”
+
+@49332 Astonaige · アストナージ
+> 「おう、ご苦労さん。ジュドーに
+>  カミーユか、どうした?」
+“Oh, thanks for the hard work. Judau and Kamille, huh—what's up?”
+
+@49333 Judau · ジュドー
+> 「アストナージさん、あれってまさか……」
+“Astonaige, is that thing really...”
+
+@49334 Astonaige · アストナージ
+> 「ああ、アクシズ軍のモビルアーマーだ。
+>  “ソロモンの悪夢”アナベル・ガトーが
+“Yeah, it's an Axis Forces Mobile Armor. The one the ‘Nightmare of Solomon,’ Anavel Gato,
+---
+>  使ってた機体だったっけな」
+used to pilot, if I remember right.”
+
+@49335 Kamille · カミーユ
+> 「なんで、そんなもんがここにあるんです」
+“Why is something like that here?”
+
+@49336 Astonaige · アストナージ
+> 「アクシズ軍の残党が残骸を
+>  回収していたらしくてな
+“Seems Axis Forces remnants salvaged the wreckage.
+---
+>  そいつらの拠点を抑えたとき、手に
+>  入れたんだそうだ。それでこっちに
+When we took their base, we got our hands on it, apparently. So then it
+---
+>  まわってきたんだよ」
+made its way over here.”
+
+@49337 Judau · ジュドー
+> 「へぇ、使えそうなの?」
+“Huh, is it usable?”
+
+@49338 Janet · ジャネット
+> 「もちろん。ちゃんと修理したもの、
+>  大丈夫よ」
+“Of course. We repaired it properly, so it's fine.”
+
+@49339 Astonaige · アストナージ
+> 「まだ調整が残ってるけどな。
+>  アクシズ戦には出せるぜ」
+“There's still some fine-tuning left, but we can send it out for the Axis battle.”

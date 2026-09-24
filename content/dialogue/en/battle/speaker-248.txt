@@ -1,0 +1,91 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12750 Allenby · アレンビー
+> 「うおおおおおおっ!!」
+“Uwooooooooh!!”
+
+@12751 Allenby · アレンビー
+> 「でやぁぁぁぁぁぁっ!!」
+“Deyaaaaaaah!!”
+
+@12752 Allenby · アレンビー
+> 「私と……私と戦おうよっ!!!」
+“Fight me... fight me!!!”
+
+@12753 Allenby · アレンビー
+> 「さあ! ファイトしよう!!」
+“Come on! Let's fight!!”
+
+@12754 Allenby · アレンビー
+> 「ファイトしようよ……私と!!!」
+“Let's fight... with me!!!”
+
+@12755 Allenby · アレンビー
+> 「うおおおおおおっ!!」
+“Uwooooooooh!!”
+
+@12756 Allenby · アレンビー
+> 「ぎゃああああっ!!」
+“Gyaaaaaah!!”
+
+@12757 Allenby · アレンビー
+> 「うぎゃああああっ!!」
+“Ugyyaaaaaah!!”
+
+@12758 Allenby · アレンビー
+> 「ぎゃあああっ!!……はぁ、はぁ、はぁ」
+“Gyaaaah!! ...Hah, hah, hah.”
+
+@12759 Allenby · アレンビー
+> 「あ、あぎゃぁぁぁっ!!」
+“A-agyaaaah!!”
+
+@12760 Allenby · アレンビー
+> 「くっ!
+>  負けないよ絶対……ぜぇったいっ!!」
+“Ngh! I won't lose, absolutely... absolutely!!”
+
+@12761 Allenby · アレンビー
+> 「そうだよ……もっとファイトしようよ!!」
+“That's right... let's fight more!!”
+
+@12762 Allenby · アレンビー
+> 「うぎゃっ!!」
+“Ugyah!!”
+
+@12763 Allenby · アレンビー
+> 「ッ!?
+>  そんなの……そんなの攻撃じゃないよ!」
+“Hn?! That's... that's not even an attack!”
+
+@12764 Allenby · アレンビー
+> 「もっと! もっと! 本気だしてよ!!」
+“More! More! Give it your all!!”
+
+@12765 Allenby · アレンビー
+> 「やらせないよっ!!」
+“I won't let you!!”
+
+@12766 Allenby · アレンビー
+> 「みえる! みえるよっ!!」
+“I can see it! I can see it!!”
+
+@12767 Allenby · アレンビー
+> 「効くもんかぁーっ!!」
+“Like that would hurt!!”
+
+@12768 Allenby · アレンビー
+> 「ビームなんて効くもんかぁーっ!!」
+“A Beam like that would never hurt!!”
+
+@12769 Allenby · アレンビー
+> 「ちぇっ! だめか!?」
+“Tch! No good?!”
+
+@12770 Allenby · アレンビー
+> 「くうぅぅぅっ!!」
+“Nghhh!!”
+
+@12771 Allenby · アレンビー
+> 「届かないじゃないかぁっ!!」
+“It won't reach!!”

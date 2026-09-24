@@ -1,0 +1,2721 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@36216 Mika · ミカ
+> 「艦長、発進準備、
+>  終了したそうです」
+“Captain, launch preparations are complete.”
+
+@36217 Bright · ブライト
+> 「オーラシップの方はどうだ?」
+“What about the Aura Ship?”
+
+@36218 Mika · ミカ
+> 「待ってください……大丈夫です」
+“Please wait... it's all right.”
+
+@36219 Quattro · クワトロ
+> 「さて……地球か」
+“Well then... Earth, is it.”
+
+@36220 Bright · ブライト
+> 「ああ、{HeroMech}、
+>  出発するぞ。目標は地球
+“Yes. {HeroMech}, we're departing. Our target is Earth,
+---
+>  降下予定ポイントは、黒海だ」
+and our scheduled descent point is the Black Sea.”
+
+@36221 Beltorchika · ベルトーチカ
+> 「進路クリア、周囲に敵影なし」
+“Course is clear, no enemy contacts in the area.”
+
+@36222 Ginrei · 銀鈴
+> 「どうやら無事に降りられそうですね」
+“Looks like we'll be able to land safely.”
+
+@36223 Bright · ブライト
+# 审校：バリュート是再入大气层用的充气减速装置，应译为 ballute，而非 parachute。
+> 「よし、高度下げろ。
+>  バリュート展開用意」
+“All right, lower altitude. Prepare to deploy the ballute.”
+
+@36224 Bright · ブライト
+> 「どうした!?」
+“What's going on?!”
+
+@36225 Chan · チェーン
+> 「ミノフスキークラフトに異常発生。
+>  高度を維持できません!!」
+“An abnormality in the Minovsky Craft. We can't maintain altitude!!”
+
+@36226 Amuro · アムロ
+> 「なんだって!?」
+“What did you say?!”
+
+@36227 Bright · ブライト
+> 「やむをえん、銀鈴、地形を走査
+>  してくれ。緊急着陸を行なう」
+“We've got no choice. Ginrei, scan the terrain. We're making an emergency landing.”
+
+@36228 Ginrei · 銀鈴
+> 「はい!」
+“Yes!”
+
+@36229 Koji · 甲児
+> 「あ～、死ぬかと思ったぜ」
+“Man, I thought I was gonna die.”
+
+@36230 Boss · ボス
+> 「まったくだわさ」
+“You said it.”
+
+@36231 Tetsuya · 鉄也
+> 「で、状況はどうなんだ?」
+“So, what's the situation?”
+
+@36232 Astonaige · アストナージ
+> 「ダメだな。アーガマは航行不能だ。
+>  もうすこし遅かったら
+“It's no good. The Argama can't move. If we'd been a little later,
+---
+>  地面に激突して
+>  ドカンといくところだったよ」
+we'd have slammed into the ground and gone boom.”
+
+@36233 Sayaka · さやか
+> 「脅かさないでよ、もう」
+“Don't scare me like that, geez.”
+
+@36234 Ark · アーク（按段落 3DD1）
+> 「航行不能って……どうするんです」
+“Can't move... so what are we going to do?”
+
+@36235 Astonaige · アストナージ
+> 「直すしかないだろ?
+>  しかし、まいったな……」
+“We've got no choice but to fix it, right? Still, this is a real mess...”
+
+@36236 Sayaka · さやか
+> 「修理、できるの?」
+“Can you repair it?”
+
+@36237 Astonaige · アストナージ
+> 「なんともいえんね。
+>  ちゃんと見てみないと……」
+“Hard to say. I won't know until I take a proper look...”
+
+@36238 Selain · セレイン（按段落 3DD2）
+> 「航行不能だと?
+>  修理はできるのか?」
+“It can't move? Can it be repaired?”
+
+@36239 Astonaige · アストナージ
+> 「なんともいえんね。
+>  ちゃんと見てみないと……」
+“Hard to say. I won't know until I take a proper look...”
+
+@36240 Brad · ブラッド（按段落 3DD3）
+> 「ちょっと待て! 航行不能って、
+>  飛べないってことか?」
+“Hold on! Can't move means it can't fly?!”
+
+@36241 Tetsuya · 鉄也
+> 「他に何がある」
+“What else would it mean?”
+
+@36242 Brad · ブラッド（按段落 3DD3）
+> 「バカ、そりゃつまり
+>  移動できねぇってことだろ!?」
+“Idiot, that means we can't go anywhere, right?!”
+
+@36243 Tetsuya · 鉄也
+> 「そうなるな」
+“That's about the size of it.”
+
+@36244 Brad · ブラッド（按段落 3DD3）
+> 「ってことはだ、敵に狙われたら、
+>  一発じゃねぇかよ」
+“Which means if the enemy targets us, we're done in one shot!”
+
+@36245 Tetsuya · 鉄也
+> 「もっともだ」
+“Quite right.”
+
+@36246 Brad · ブラッド（按段落 3DD3）
+> 「てめぇ、よくもそんなに
+>  落ち着いていられるな!?」
+“How can you stay so calm?!”
+
+@36247 Tetsuya · 鉄也
+> 「俺たちがあせったところで、
+>  どうにもならないからな」
+“Because panicking won't do us any good.”
+
+@36248 Masato · 雅人
+> 「そりゃ、ごもっとも」
+“Can't argue with that.”
+
+@36249 Jun · ジュン
+> 「いちおう、そのために
+>  発見されにくい場所に
+“For what it's worth, that's why we crash-landed
+---
+>  不時着したわけなんだけどね」
+in a place where we're hard to find.”
+
+@36250 Brad · ブラッド（按段落 3DD3）
+> 「しかし……」
+“Still...”
+
+@36251 Koji · 甲児
+> 「で、なおせるのかよ、アストナージさん?」
+“So can you fix it or not, Astonaige?”
+
+@36252 Astonaige · アストナージ
+> 「なんともいえんよ。
+>  ちゃんと見てみないと……」
+“Hard to say. I won't know until I take a proper look...”
+
+@36253 Manami · マナミ（按段落 3DD4）
+> 「ねぇアストナージさん、いま確か、
+>  航行不能って聞こえたんだけど…」
+“Hey, Astonaige, I'm pretty sure I just heard that we can't move...”
+
+@36254 Astonaige · アストナージ
+> 「ああ、いったよ」
+“Yeah, you heard right.”
+
+@36255 Lawrence · ローレンス
+> 「修理は可能なのですかな」
+“Is repair possible, then?”
+
+@36256 Astonaige · アストナージ
+> 「ちゃんと見てみないと
+>  なんともいえないが……」
+“I can't say for sure until I take a proper look, but...”
+
+@36257 Amuro · アムロ
+> 「それで、どうなんだ?」
+“So, how is it?”
+
+@36258 Astonaige · アストナージ
+> 「だめですね。ここじゃ到底
+>  修理できませんよ」
+“It's no good. There's no way we can repair it here.”
+
+@36259 Bright · ブライト
+> 「設備の問題か?」
+“Is it a problem with the equipment?”
+
+@36260 Shirley · シャリー
+> 「パーツの問題です。ほとんどは
+>  使い回しでなんとかできるんですが
+“It's a problem with the parts. Most of them we can manage by reusing what we have,
+---
+>  一部はユニットごとの交換
+>  じゃないと、対応できないみたいで……」
+but some of them can only be handled by swapping out whole units...”
+
+@36261 Astonaige · アストナージ
+> 「ええ。それを手に入れないと……」
+“Yeah. Unless we get our hands on those...”
+
+@36262 Bright · ブライト
+> 「まいったな……いつまでもここで足止め
+>  をくっているわけには、いかんというのに」
+“This is bad... and we can't afford to stay stuck here forever.”
+
+@36263 Amuro · アムロ
+> 「なんとかならないのか?」
+“Isn't there some way?”
+
+@36264 Astonaige · アストナージ
+> 「ムリいわないでくださいよ。1から部品
+>  をつくるなんて、できっこありません」
+“Don't ask for the impossible. There's no way we can build parts from scratch.”
+
+@36265 Astonaige · アストナージ
+> 「ムリいわないでくださいよ。
+>  ラビアンローズにいた時にわかっていれば
+“Don't ask for the impossible. If we'd known back when we were at La Vie en Rose,
+---
+>  予備を持ってきたんですがねぇ」
+we could have brought spares.”
+
+@36266 Ciela · シーラ
+> 「どこかで入手できるのでしたら、
+>  グラン・ガランで先行いたしますが?」
+“If they can be obtained somewhere, shall we go on ahead in the Gran-Garan?”
+
+@36267 Elle · エレ
+> 「どこかで入手できるのになら、
+>  ゴラオンで先行しましょうか?」
+“If they can be obtained somewhere, shall we go on ahead in the Goraon?”
+
+@36268 Quattro · クワトロ
+> 「いや……オーラシップは目立ちすぎる。
+>  アラン、カラバの方で
+“No... the Aura Ship stands out too much. Alan, can't Karaba
+---
+>  調達できないか?」
+procure them for us?”
+
+@36269 Alan · アラン
+> 「ふむ、そうだな……どのみち状況を
+>  確認するために、万丈に
+“Hmm, I suppose so... In any case, I was thinking of going to see Banjo
+---
+>  会ってこようと思っていたところだ。
+>  わかった、なんとか手配してみよう」
+to check on the situation. All right, I'll see what I can arrange.”
+
+@36270 Bright · ブライト
+> 「それしかないか……よし、アラン、頼むぞ
+>  アストナージ、シャリー、他の
+“I suppose that's our only option... All right, Alan, I'm counting on you. Astonaige, Shirley, go ahead and
+---
+>  修理箇所を先にやってしまって
+>  くれ。あとはアランの帰りを待つ」
+take care of the other repairs first. After that, we wait for Alan to return.”
+
+@36271 Amuro · アムロ
+> 「どのくらいかかると思う?」
+“How long do you think it'll take?”
+
+@36272 Alan · アラン
+> 「ふむ……ロームフェラ派に
+>  出くわすとまずいからな
+“Hmm... running into the Romefeller faction would be trouble,
+---
+>  1週間程度はかかるだろう」
+so it'll probably take about a week.”
+
+@36273 Bright · ブライト
+> 「1週間か……長いな……」
+“A week... that's a long time...”
+
+@36274 Rain · レイン
+> 「システムアップ回路のAからB……
+>  EからGがそれぞれ切れて。そこから
+“The system-up circuits A through B... and E through G are each cut. From there,
+---
+>  モードラインへエネルギーが漏れてる…?
+>  これをとめるのは大変だわ……
+energy is leaking into the mode line...? Stopping this will be tough...
+---
+>  シャイニングも、もう限界かしら。
+>  パーツ交換だけじゃ……」
+The Shining Gundam may be at its limit too. Just swapping parts won't...”
+
+@36275 Janet · ジャネット
+> 「レイン」
+“Rain.”
+
+@36276 Rain · レイン
+> 「ジャネット、アーガマの方はどうなの?」
+“Janet, how are things on the Argama?”
+
+@36277 Janet · ジャネット
+> 「アランがカラバの人と接触するって。
+>  それでパーツを調達してくるみたいよ」
+“Alan's going to make contact with the Karaba people. It sounds like he'll procure the parts that way.”
+
+@36278 Rain · レイン
+> 「カラバの?」
+“Karaba's?”
+
+@36279 Rain · レイン
+> 「アランさん」
+“Alan.”
+
+@36280 Alan · アラン
+> 「レインか。どうした?」
+“Rain. What is it?”
+
+@36281 Rain · レイン
+> 「あの、以前
+>  お話していた件なんですが……」
+“Um, it's about that matter we discussed before...”
+
+@36282 Alan · アラン
+> 「ああ……あの件か。そうだな、
+>  もしかしたら進んでいるかもしれん
+“Ah... that matter. Well, it may have progressed by now.
+---
+>  どうする、確認だけしてくるか?」
+What will you do, shall we just go and confirm it?”
+
+@36283 Rain · レイン
+> 「いえ、私も一緒に行かせてください
+>  可能ならすぐに必要になります
+“No, please let me come along too. If possible, I'll be needed right away,
+---
+>  調整は私でなくては、できませんから」
+and no one but me can do the adjustments.”
+
+@36284 Alan · アラン
+> 「わかった。艦長には
+>  私からいっておこう。準備してくれ」
+“Understood. I'll inform the Captain myself. Get ready.”
+
+@36285 Rain · レイン
+> 「はい」
+“Yes.”
+
+@36286 Rain · レイン
+> 「ドモン」
+“Domon.”
+
+@36287 Domon · ドモン
+> 「ああレイン、ちょうどよかった。しばらく
+>  ここを出て、修行をすることにした
+“Ah, Rain, good timing. I've decided to leave here for a while and go train.
+---
+>  すぐに出るぞ」
+I'm heading out right away.”
+
+@36288 Rain · レイン
+> 「えっ? 私、行けないわ」
+“What? I can't go.”
+
+@36289 Domon · ドモン
+> 「なんでだ?」
+“Why not?”
+
+@36290 Rain · レイン
+> 「アランさんと一緒に、
+>  行くことになってるのよ」
+“I'm supposed to go with Alan.”
+
+@36291 Domon · ドモン
+> 「なんでレインが、アランの奴と一緒に
+>  行かなくちゃならないんだ
+“Why does Rain have to go with that Alan?
+---
+>  だいたいお前がいなくて、誰が
+>  シャイニングの調整をやってくれる」
+Besides, with you gone, who's going to do the Shining Gundam's adjustments?”
+
+@36292 Rain · レイン
+> 「とにかく、だめなの」
+“Anyway, it's impossible.”
+
+@36293 Domon · ドモン
+> 「……わかった、もうお前には頼まん!
+>  どこへでも勝手にいけ!」
+“...Fine, I won't ask you for anything anymore! Go wherever you like!”
+
+@36294 Rain · レイン
+> 「ちょ、ちょっとドモン」
+“W-wait, Domon.”
+
+@36295 Rain · レイン
+> 「なによ、もう。
+>  これはあなたのためなのよ……」
+“Honestly. This is for your sake...”
+
+@36296 Domon · ドモン
+> 「お前たち、出発するぞ」
+“All right, everyone, we're moving out.”
+
+@36297 Chibodee · チボデー
+> 「おいドモン、レインはどうした」
+“Hey, Domon, where's Rain?”
+
+@36298 Domon · ドモン
+> 「知るか」
+“How should I know?”
+
+@36299 Bunny · バニー
+# 检查提示：未用必用译名：レイン→Rain
+> 「まぁたレインとケンカしたんでしょ」
+“You two had another fight, didn't you.”
+
+@36300 Domon · ドモン
+> 「うるさい! お前たちには関係ない!」
+“Shut up! It's none of your business!”
+
+@36301 George · ジョルジュ
+> 「やれやれ、しかたのない人ですね」
+“Good grief, there's just no helping him.”
+
+@36302 Argo · アルゴ
+> 「この時間は貴重だ。いこう」
+“This time is precious. Let's go.”
+
+@36303 Sai Saici · サイ・サイシー
+> 「ちぇっ、レインねぇちゃんは
+>  来てくれないのかぁ」
+“Aw, man, so Rain isn't coming?”
+
+@36304 Domon · ドモン
+> 「…………」
+“...”
+
+@36305 Sayaka · さやか
+> 「どうしたの、ボーッとしちゃって」
+“What's wrong? You're staring off into space.”
+
+@36306 Ark · アーク（按段落 3DD1）
+> 「ん? 別に、なんでもないよ。
+>  甲児たちはどうしたんだ?」
+“Hm? Nothing, it's nothing. Where'd Koji and the others go?”
+
+@36307 Sayaka · さやか
+> 「ボスやショウと一緒に、
+>  倉庫にあったバイクを借り出して
+“They borrowed some bikes from the warehouse with Boss and Show,
+---
+>  その辺で遊んでるわよ。
+>  まったく、どういう神経してるのかしら」
+and they're out playing somewhere. Honestly, what's going through their heads?”
+
+@36308 Ark · アーク（按段落 3DD1）
+> 「レクリエーションだろ。
+>  一緒に遊んでくればいいんだよ
+“It's recreation. You should go join them.
+---
+>  銀河帝国軍が本格的に
+>  侵攻を開始すれば
+If the Galactic Empire launches a full-scale invasion,
+---
+>  次にいつそんな余裕があるか、
+>  わからないんだからさ」
+who knows when we'll get another chance to relax like this.”
+
+@36309 Sayaka · さやか
+> 「そうね……
+>  {HeroNick}は行かないの?」
+“I suppose so... Aren't you going, {HeroNick}?”
+
+@36310 Ark · アーク（按段落 3DD1）
+> 「俺は、いいよ。疲れてるし」
+“I'm fine. I'm tired anyway.”
+
+@36311 Sayaka · さやか
+> 「そう。……あんまりムリしない方が
+>  いいわよ」
+“I see. ...You shouldn't push yourself too hard.”
+
+@36312 Ark · アーク（按段落 3DD1）
+> 「わかってる」
+“I know.”
+
+@36313 Ark · アーク（按段落 3DD1）
+> (ごめん……レラ。約束果たすには、
+>  まだまだ時間が必要みたいだ
+(Sorry... Lera. It looks like I still need a lot more time to keep my promise.
+---
+>  それどころか、
+>  前よりもっと大変かもしれない
+In fact, it might be even harder than before.
+---
+>  どうなっていくのか、まるでわからないよ。
+>  だけどレラ……お前の命は
+I have no idea how things will turn out. But Lera... your life
+---
+>  絶対に無駄にさせはしない。
+>  だから、見ていてくれ。地球は
+I will never let it be wasted. So keep watching. Earth...
+---
+>  絶対に守ってみせるから……)
+I swear I'll protect it...)
+
+@36314 Sayaka · さやか
+> 「どうしたの、何か
+>  珍しいものでもあった?」
+“What's wrong? Did you find something unusual?”
+
+@36315 Selain · セレイン（按段落 3DD2）
+> 「いや……景色をながめていただけだ。
+>  1人か、甲児たちはどうした?」
+“No... I was just looking at the scenery. Am I alone? Where's Koji and the others?”
+
+@36316 Sayaka · さやか
+> 「ボスやショウと一緒に、
+>  倉庫にあったバイクを借り出して
+“They borrowed some bikes from the warehouse with Boss and Show,
+---
+>  その辺で遊んでるわよ。
+>  まったく、どういう神経してるのかしら」
+and they're out playing somewhere. Honestly, what's going through their heads?”
+
+@36317 Selain · セレイン（按段落 3DD2）
+> 「レクリエーションさ。戦うべきときに
+>  戦うのなら、問題はない」
+“It's recreation. As long as they fight when they need to, there's no problem.”
+
+@36318 Sayaka · さやか
+> 「いわれてみれば、そうかもね。
+>  {HeroNick}はやらないの?
+“Now that you mention it, maybe you're right. Aren't you going to join in, {HeroNick}?
+---
+>  そういうことは?」
+That sort of thing?”
+
+@36319 Selain · セレイン（按段落 3DD2）
+> 「ああ。私はそういうのは好きじゃない」
+“No. I don't care for that sort of thing.”
+
+@36320 Sayaka · さやか
+> 「{HeroNick}も、
+>  たまにはみんなにつきあわないとだめよ」
+“You need to go along with everyone once in a while too, {HeroNick}.”
+
+@36321 Selain · セレイン（按段落 3DD2）
+> 「努力はするよ」
+“I'll try.”
+
+@36322 Selain · セレイン（按段落 3DD2）
+> (別の異星人か……まったく、
+>  こんなことになろうとはな
+(Another alien race... Good grief, I never thought it would come to this.
+---
+>  レラ、あの時には思いもしなかったよ。
+>  どうやら、まだ戦いは終わりそうにない
+Lera, back then I never imagined it. It seems the fighting still isn't over.
+---
+>  先のことなど、考えても
+>  ムダだったようだ
+It looks like thinking about the future was pointless after all.
+---
+>  ……よかったのか、悪かったのか、
+>  わからないけどな)
+...Whether that's good or bad, I can't say.)
+
+@36323 Rish · リッシュ（按段落 3DD2）
+> 「……よっ」
+“...Yo.”
+
+@36324 Selain · セレイン（按段落 3DD2）
+> 「今度はお前か。何の用だ」
+“You again. What do you want?”
+
+@36325 Rish · リッシュ（按段落 3DD2）
+> 「いやなに、ここんとこ、
+>  すこしばかり様子が違ってたもんでな」
+“Nothing much. It's just, you've been acting a little different lately.”
+
+@36326 Selain · セレイン（按段落 3DD2）
+> 「お前に気にしてもらう必要はない」
+“I don't need you worrying about me.”
+
+@36327 Rish · リッシュ（按段落 3DD2）
+> 「かもしれねぇが、そういうのはな、
+>  まわりにも影響するもんだ」
+“Maybe not, but you know, that kind of thing affects the people around you too.”
+
+@36328 Selain · セレイン（按段落 3DD2）
+> 「……気をつけるとしよう」
+“...I'll be careful.”
+
+@36329 Rish · リッシュ（按段落 3DD2）
+> 「……それと、だ」
+“...And one more thing.”
+
+@36330 Selain · セレイン（按段落 3DD2）
+> 「まだ何かあるのか?」
+“Is there something else?”
+
+@36331 Rish · リッシュ（按段落 3DD2）
+> 「たまには、一緒に
+>  メシでもどうだ? ん?」
+“How about we grab a meal together sometime? Hm?”
+
+@36332 Selain · セレイン（按段落 3DD2）
+> 「遠慮しておく」
+“I'll pass.”
+
+@36333 Rish · リッシュ（按段落 3DD2）
+> 「あいかわらず冷たいねぇ。
+>  少しは考えるフリとか、しないもんかね」
+“Cold as ever. Can't you at least pretend to think about it?”
+
+@36334 Selain · セレイン（按段落 3DD2）
+> 「答えは決まっている。
+>  そんなことをする必要はない」
+“My answer's already decided. There's no need for that.”
+
+@36335 Alberto · アルベルト
+> 「なんだと?」
+“What did you say?”
+
+@36336 Komei · 孔明
+> 「{HeroMech}が
+>  地上へ降りてきたと
+“I've received word from our agent that the {HeroMech} has descended to the surface.
+---
+>  エージェントから連絡がありましてね」
+”
+
+@36337 Alberto · アルベルト
+> 「それで、わしにどうしろというのだ」
+“And what do you want me to do about it?”
+
+@36338 Komei · 孔明
+> 「まずは、彼らと戦ってみて
+>  いただきたいのです」
+“First, I would like you to try fighting them.”
+
+@36339 Alberto · アルベルト
+> 「わからんな、孔明。いまさら
+>  光子力もゲッター線もあるまい
+“I don't understand, Komei. There's no Photon Power or Getter Rays at this point.
+---
+>  なぜ我々があのような連中と
+>  関わらねばならん」
+Why must we involve ourselves with the likes of them?”
+
+@36340 Komei · 孔明
+> 「疑問はごもっとも。ですが、
+>  これも今後のことを考えてのことと
+“Your doubts are understandable. But this too is for the sake of what lies ahead.
+---
+>  この諸葛亮を信じていただきたい」
+I ask that you put your trust in this Zhuge Liang.”
+
+@36341 Alberto · アルベルト
+# 审校：「別の異星人」指另一个外星种族，初稿译成 another alien 不准确；改为 another alien race。
+> 「だが、おかしいではないか。聞けば、また
+>  別の異星人がやってきているという
+“But isn't it strange? I hear yet another alien race has come.
+---
+>  奴らに手を出して、
+>  我々になんの得がある」
+What do we stand to gain by meddling with them?”
+
+@36342 Komei · 孔明
+> 「よろしい、ではこう答えましょう。すべて
+>  はビッグファイアーのご意思である、と」
+“Very well, then let me answer you this way: all of it is the will of Big Fire.”
+
+@36343 Alberto · アルベルト
+> 「…………」
+“...”
+
+@36344 Master · マスター
+> 「ウォン、何の用だ」
+“Wong, what do you want?”
+
+@36345 Wong · ウォン
+> 「先生のご執心の、
+>  ドモン・カッシュがいる
+“Domon Kasshu, the one you're so fixated on, is here.
+---
+>  {HeroMech}が、
+>  地上にもどってきたそうですよ」
+The {HeroMech} has apparently returned to the surface.”
+
+@36346 Master · マスター
+> 「なに? どうしてそんなことを知っておる」
+“What? How do you know such a thing?”
+
+@36347 Wong · ウォン
+> 「あまり見くびっていただきたくは
+>  ないものですな
+“I'd rather you not underestimate me.
+---
+>  私にもそれなりの
+>  情報源というものがあるのです」
+Even I have my own sources of information.”
+
+@36348 Master · マスター
+> 「フン、まぁよいわ。
+>  それで、いまどこにおる?」
+“Hmph, very well. So, where is he now?”
+
+@36349 Wong · ウォン
+> 「やはり、しかけるおつもりですか」
+“So you really intend to make your move, then?”
+
+@36350 Master · マスター
+> 「当然だ。デビルガンダムの
+>  完全復活のためには
+“Of course. For the Dark Gundam's complete revival,
+---
+>  どうしてもあやつが必要なのだ」
+I absolutely need him.”
+
+@36351 Wong · ウォン
+> 「いいでしょう、そちらは先生に
+>  おかませしますよ。私は財団に
+“Fine, I'll leave that side to you, Teacher. As for me, I have my position
+---
+>  対しての立場があるので、あまり
+>  表立って動くわけにはいきませんから」
+with the foundation, so I can't afford to act too openly.”
+
+@36352 Master · マスター
+> 「フン、この悪党めが」
+“Hmph, you villain.”
+
+@36353 Wong · ウォン
+> 「それはお互い様でしょう。
+>  それで{HeroMech}のいる
+“That makes us even, doesn't it? Now then, as for where the {HeroMech}
+---
+>  場所なのですが……」
+is located...”
+
+@36354 Wong · ウォン
+> 「{HeroMech}を叩ければ、
+>  それでよし。財団に対して
+“If we can strike down the {HeroMech}, all the better. It'll make the foundation
+---
+>  ムリもきくようになる。叩けなければ、
+>  それはそれでOZを動かせばいい
+more willing to bend. If we can't, then I simply set OZ in motion.
+---
+>  どちらにしても、私は
+>  損をしないというものです。クククククッ」
+Either way, I lose nothing. Heh heh heh heh heh!”
+
+@36355 Chibodee · チボデー
+> 「どうだ、シャリー」
+“How's that, Shirley?”
+
+@36356 Shirley · シャリー
+> 「ええ、いい調子よチボデー」
+“Yeah, you're in great form, Chibodee.”
+
+@36357 Cath · キャス
+> 「体調の方も問題ないわ」
+“Your condition's no problem either.”
+
+@36358 Chibodee · チボデー
+> 「そうだろそうだろ。よーし、
+>  もういっちょいくか。アルゴ、頼むぜ」
+“Right? Right? All right, let's go one more round. Argo, you're up.”
+
+@36359 Argo · アルゴ
+> 「ああ……こい」
+“Yeah... bring it.”
+
+@36360 Chibodee · チボデー
+> 「とりゃとりゃとりゃとりゃとりゃぁぁーっ!」
+“Take this, take this, take this, take this, take thiiis!”
+
+@36361 George · ジョルジュ
+> 「フッ、サイ・サイシー、
+>  私たちも再開するとしましょう」
+“Heh, Sai Saici, let's resume as well.”
+
+@36362 Sai Saici · サイ・サイシー
+> 「よ～し、いっくぜぇっ!!」
+“All riiight, here I gooo!”
+
+@36363 Bunny · バニー
+> 「チボデーたちすごい熱気ね。
+>  どうしたのかしら」
+“Chibodee and the others are really fired up. I wonder what happened.”
+
+@36364 Shirley · シャリー
+> 「これはレインから聞いたんだけど、
+>  ドモンがね、シュバルツに
+“I heard this from Rain, but apparently Schwarz told Domon
+---
+>  デビルガンダムのことをいわれたらしいのよ
+>  その話を聞いてから、少し様子が
+about the Dark Gundam. Ever since he heard that, I did think he'd been
+---
+>  おかしいとは思っていたんだけど……」
+acting a little strange...”
+
+@36365 Janet · ジャネット
+> 「もしかして……
+>  デビルガンダムが怖いのかしら……」
+“Could it be... that he's afraid of the Dark Gundam...?”
+
+@36366 Schwarz · シュバルツ
+> 「その通り!」
+“Exactly!”
+
+@36367 Bunny · バニー
+> 「ひゃっ! あ、あたしたち
+>  脅かしてどうするのよ!」
+“Eek! Wh-what are you doing scaring us like that?!”
+
+@36368 Shirley · シャリー
+> 「シュバルツ……いつから聞いてたのよ」
+“Schwarz... how long have you been listening?”
+
+@36369 Schwarz · シュバルツ
+> 「そんなことはどうでもいい」
+“That doesn't matter.”
+
+@36370 Janet · ジャネット
+> 「よくないわよ、まったく」
+“It does matter, honestly.”
+
+@36371 Schwarz · シュバルツ
+> 「……とにかく、彼らはデビルガンダムの
+>  幻影に脅えていたのだ
+“...In any case, they were terrified by the phantom of the Dark Gundam.
+---
+>  これまで宇宙に出ていたために
+>  何も問題はないように見えた
+Because they'd been out in space until now, it seemed there was no problem.
+---
+>  だがその実、デビルガンダムに対する
+>  恐怖は消え去ってはいなかったのだ」
+But in truth, their fear of the Dark Gundam had never disappeared.”
+
+@36372 Shirley · シャリー
+> 「……それが、地上にもどってきたことが
+>  きっかけで、表に出てきた……?」
+“...And returning to the surface is what brought it out into the open...?”
+
+@36373 Schwarz · シュバルツ
+> 「そうだ。だが……
+>  無用の心配だったようだな」
+“Yes. But... it seems it was a needless worry.”
+
+@36374 Bunny · バニー
+> 「それって、もう大丈夫だってこと?」
+“Does that mean they're okay now?”
+
+@36375 Schwarz · シュバルツ
+> 「うむ。彼らは自力で克服した
+>  ようだな。それに、新たな技も身に
+“Indeed. It seems they've overcome it on their own. And on top of that, they're
+---
+>  つけつつある。さすがにシャッフルの
+>  紋章を受け継ぐ者たちだな」
+acquiring new techniques. Truly, they are the ones who inherited the Shuffle Crest.”
+
+@36376 Janet · ジャネット
+> 「新しい技? すごいじゃない!」
+“A new technique? That's amazing!”
+
+@36377 Schwarz · シュバルツ
+> 「残る問題は……ドモンだな」
+“The remaining problem is... Domon.”
+
+@36378 Domon · ドモン
+> 「はっ!!」
+“Hah!!”
+
+@36379 Domon · ドモン
+> 「……ふう。だめだ、この程度のことが
+>  できないようでは……
+“...Phew. No good. If I can't even do something like this...
+---
+>  まだまだ修行が足りん」
+my training is still far from enough.”
+
+@36380 Domon · ドモン
+> 「なに!?」
+“What?!”
+
+@36381 Schwarz · シュバルツ
+> 「調子は悪くないようだな、ドモン。
+>  だがその様子では
+“You don't seem to be in bad form, Domon. But from the looks of it,
+---
+>  その刀を使いこなせてはいないな」
+you haven't mastered that blade yet.”
+
+@36382 Domon · ドモン
+> 「ガンダムシュピーゲル……シュバルツか」
+“Shadow Gundam... Schwarz.”
+
+@36383 Schwarz · シュバルツ
+> 「そんなことでは、デビルガンダムにも
+>  マスターアジアにも
+“At this rate, I doubt you can beat either the Dark Gundam or Master Asia.
+---
+>  勝てぬのではないかな?」
+Don't you think?”
+
+@36384 Domon · ドモン
+> 「勝てるさ。スーパーモードさえあれば、
+>  俺は師匠を超えてみせる」
+“I can beat them. As long as I have Super Mode, I'll surpass Master.”
+
+@36385 Schwarz · シュバルツ
+> 「ハハハハハッ、愚か者め! 貴様の
+>  スーパーモードなど、欠点だらけだ
+“Hahahahaha! You fool! Your Super Mode is full of flaws.
+---
+>  そんなものではマスターには勝てぬ」
+With something like that, you can't beat Master.”
+
+@36386 Domon · ドモン
+> 「なんだと!? どういうことだ!」
+“What?! What do you mean?!”
+
+@36387 Schwarz · シュバルツ
+> 「お前のそれは“怒り”の
+>  スーパーモード。だが“怒り”とは
+“Yours is a Super Mode of 'anger.' But 'anger'
+---
+>  心を曇らせ、見えるはずのものすらも
+>  見えなくする
+clouds the heart and blinds you even to what should be visible.
+---
+>  そんなスーパーモードなど、通用せん」
+A Super Mode like that is useless.”
+
+@36388 Domon · ドモン
+> 「フン、貴様のいうことなど、
+>  いちいち聞いていられるか」
+“Hmph. I can't be bothered to listen to every word you say.”
+
+@36389 Schwarz · シュバルツ
+> 「信じられぬようだな。
+>  ならば……試してみるか!」
+“You don't seem to believe me. Then... shall we test it?!”
+
+@36390 Domon · ドモン
+> 「くっ、シュバルツ、何をする!?」
+“Ngh, Schwarz, what are you doing?!”
+
+@36391 Schwarz · シュバルツ
+> 「どうしたどうしたドモン・カッシュ!
+>  それでは死ぬことになるぞ!
+“What's wrong, what's wrong, Domon Kasshu?! At this rate you'll die!
+---
+>  本気でかかってこい!」
+Come at me for real!”
+
+@36392 Domon · ドモン
+> 「シュバルツ! いったいどういうつもりだ!」
+“Schwarz! Just what are you after?!”
+
+@36393 Schwarz · シュバルツ
+> 「さぁさぁ、貴様の自慢の
+>  スーパーモードとやらを出してみろ!」
+“Come, come, show me that Super Mode you're so proud of!”
+
+@36394 Domon · ドモン
+> 「ぐぅぅっ、おのれぇっ!
+>  でろぉぉぉーっ!!」
+“Ghhh, you bastard! Come oooout!!”
+
+@36395 Domon · ドモン
+> 「ガンダァァァァァァム!!」
+“Gundaaaaaam!!”
+
+@36396 Schwarz · シュバルツ
+> 「さぁこい。貴様の
+>  スーパーモードとやらが、どれほどのものか
+“Come on. Let's see just how much that Super Mode of yours
+---
+>  試してみるがいい!」
+is really worth!”
+
+@36397 Domon · ドモン
+# 审校：招式名按词表应为 Shining Finger，但原文有拖长音，改为 Shiiining Finger 以保留气势。
+> 「いくぞぉっ!! 俺のこの手が光って
+>  うなる! お前を倒せと輝き叫ぶ!
+“Here I go!! This hand of mine glows with an awesome power! Its burning grip tells me to defeat you!
+---
+>  くらえっ!
+>  シャァァイニング・フィンガァァァーッ!!」
+Take this! Shiiining Finger!!”
+
+@36398 Domon · ドモン
+> 「ば……ばかな、
+>  俺のシャイニングフィンガーが
+“Im... impossible. My Shining Finger,
+---
+>  こうも簡単に……」
+so easily...”
+
+@36399 Schwarz · シュバルツ
+> 「フッ、自分のほどがわかったようだな。
+>  ドモン、怒りのスーパーモードではない
+“Hmph. Seems you've learned your own limits. Domon, it's not a Super Mode of anger.
+---
+>  真のスーパーモードを身につけるのだ」
+You must acquire the true Super Mode.”
+
+@36400 Domon · ドモン
+> 「真のスーパーモード……
+>  シュバルツ、それはいったい!?」
+“The true Super Mode... Schwarz, what in the world is that?!”
+
+@36401 Schwarz · シュバルツ
+> 「それは己の内より見い出す
+>  ほかはない。恐れや迷いを断ちきり
+“You can only find it within yourself. Cast off your fear and hesitation,
+---
+>  技に己が魂を込めるのだ!
+>  さぁ、いくぞ!」
+and put your very soul into your technique! Now, here I come!”
+
+@36402 Domon · ドモン
+> 「ま、待てシュバルツ!」
+“W-wait, Schwarz!”
+
+@36403 Schwarz · シュバルツ
+> 「出来ねばお前が死ぬことになるぞ、
+>  ドモン! 死にたくなくばやってみせろ!」
+“If you can't do it, you'll die, Domon! If you don't want to die, then show me you can!”
+
+@36404 Schwarz · シュバルツ
+> 「そらそらそらそら!」
+“Come on, come on, come on, come on!”
+
+@36405 Domon · ドモン
+> 「くっ、シュバルツ、何を考えている!?」
+“Ngh, Schwarz, what are you thinking?!”
+
+@36406 Schwarz · シュバルツ
+> 「どうしたどうしたどうした!!」
+“What's wrong, what's wrong, what's wrong!!”
+
+@36407 Domon · ドモン
+> 「ぐうぅぅぅっ……」
+“Guhhhh...”
+
+@36408 Schwarz · シュバルツ
+> 「もう観念したか、ドモン! ならば、
+>  心静かに死ね!」
+“Have you given up, Domon?! Then die with a quiet heart!”
+
+@36409 Domon · ドモン
+> (ほ、本気だ……シュバルツは本気で
+>  俺を殺そうと……
+(H-he's serious... Schwarz really means to kill me...
+---
+>  ……? なんだ……?)
+...? What is this...?)
+
+@36410 Domon · ドモン
+> (な、なんだこの気分は。兄さん、
+>  父さん、母さん、師匠……
+(Wh-what is this feeling? Brother, Father, Mother, Master...
+---
+>  いっさいが過ぎ去っていく……もう
+>  怒りも憎しみもどうでもいい……
+everything is passing away... anger and hatred no longer matter...
+---
+>  あるのは目の前の死…………
+>  レイン……?)
+all that's left is the death before my eyes... Rain...?)
+
+@36411 Domon · ドモン
+> 「見える!」
+“I can see it!”
+
+@36412 Domon · ドモン
+> 「光った? 紋章がこんなに……これは
+>  いったい……この光はなんだ!?」
+“It glowed? The crest, so much... What is this... What is this light?!”
+
+@36413 Schwarz · シュバルツ
+> 「…………ようやくつかんだようだな、ドモン」
+“...It seems you've finally grasped it, Domon.”
+
+@36414 Domon · ドモン
+> 「シュバルツ……これはいったい……」
+“Schwarz... what in the world is this...”
+
+@36415 Schwarz · シュバルツ
+> 「明鏡止水の心よ。いいか、
+>  わだかまりや、やましさのない澄んだ心
+“It is the heart of Meikyo Shisui. Listen: a clear heart, free of lingering doubts
+---
+>  それが明鏡止水。
+>  それが人に、己を超えた力を
+and shame. That is Meikyo Shisui. It is what can grant a person
+---
+>  持たせることができる」
+power beyond themselves.”
+
+@36416 Domon · ドモン
+> 「それが俺のスーパーモード……
+>  だが、なぜそれを俺に教える?」
+“So that's my Super Mode... but why are you teaching it to me?”
+
+@36417 Schwarz · シュバルツ
+> 「そんなことはどうでもいい。よいかドモン、
+>  明鏡止水だ
+“That doesn't matter. Listen, Domon, Meikyo Shisui.
+---
+>  それしかマスターアジアに
+>  勝つ方法はない。忘れるなよ」
+It's the only way to beat Master Asia. Don't forget it.”
+
+@36418 Domon · ドモン
+> 「シュバルツ……お前はいったい……」
+“Schwarz... just who are you...”
+
+@36419 Domon · ドモン
+> 「明鏡止水か……」
+“Meikyo Shisui, huh...”
+
+@36420 ???
+# 审校：初稿把「{HeroMech}の奴か」译成 who pilots the {HeroMech}，意思偏差；原文是“你就是那台{HeroMech}的家伙吗”，改为更贴切的表达并保留占位符。
+> 「フン、貴様、
+>  {HeroMech}の奴か」
+“Hmph, so you're the one with the {HeroMech}.”
+
+@36421 Domon · ドモン
+> 「何者だ!?」
+“Who are you?!”
+
+@36422 Alberto · アルベルト
+> 「BF団十傑集、
+>  衝撃のアルベルト」
+“Shockwave Alberto, one of the Big Fire Group's Ten Elite.”
+
+@36423 Domon · ドモン
+> 「BF団!? なんだそれは!」
+“Big Fire Group?! What's that?!”
+
+@36424 Alberto · アルベルト
+> 「貴様が知る必要はない。
+>  どうせここで、死ぬのだからな」
+“You don't need to know. You're going to die here anyway.”
+
+@36425 Domon · ドモン
+> 「なに!?」
+“What?!”
+
+@36426 Alberto · アルベルト
+> 「ちぇあぁぁぁぁぁーっ!!」
+“Cheaaaaaah!!”
+
+@36427 Domon · ドモン
+> 「くっ!」
+“Ngh!”
+
+@36428 Alberto · アルベルト
+> 「なに!? ……ほぅ、
+>  少しはできるようだな。面白い」
+“What?! ...Hoh, seems you're not half bad. Interesting.”
+
+@36429 Domon · ドモン
+> 「こ、こいつ、ただ者ではない!」
+“Th-this guy's no ordinary fighter!”
+
+@36430 Alberto · アルベルト
+> 「そうとも! 運がなかったな。
+>  さぁ、死ねぃ!!」
+“Indeed! Bad luck for you. Now, die!!”
+
+@36431 Alberto · アルベルト
+> 「ぬぅぅぅぅっ、十傑集たるこのわしと
+>  対等に戦えるだと!?
+“Nghhhhh, to think you could fight me, one of the Ten Elite, as an equal?!
+---
+>  国際警察機構の
+>  エキスパートとも思えんが……」
+I wouldn't have taken you for an expert of the International Police Organization, though...”
+
+@36432 Chibodee · チボデー
+> 「ドモン! 何やってんだ!?」
+“Domon! What are you doing?!”
+
+@36433 Domon · ドモン
+> 「お前たち、来たのか」
+“So you all came.”
+
+@36434 Sai Saici · サイ・サイシー
+> 「アニキ、そいつ誰だい?」
+“Bro, who's that guy?”
+
+@36435 Alberto · アルベルト
+> 「チッ、邪魔が入ったか。
+>  おい貴様、名はなんという」
+“Tch, some meddlers showed up. Hey, you. What's your name?”
+
+@36436 Domon · ドモン
+> 「俺はキング・オブ・ハート、
+>  ドモン・カッシュだ!」
+“I'm the King of Hearts, Domon Kasshu!”
+
+@36437 Alberto · アルベルト
+> 「ドモン・カッシュ……しかと覚えた」
+“Domon Kasshu... I'll remember that.”
+
+@36438 Domon · ドモン
+> 「待て!」
+“Wait!”
+
+@36439 George · ジョルジュ
+> 「ドモン、今の相手はいったい……?」
+“Domon, just who was that opponent...?”
+
+@36440 Domon · ドモン
+> 「わからん。だが、かなりの使い手だ」
+“I don't know. But he's quite a fighter.”
+
+@36441 Chibodee · チボデー
+> 「なんだ、ありゃ!?」
+“What the hell is that?!”
+
+@36442 Ivan · イワン
+> 「アルベルト様、よろしいのですか」
+“Lord Alberto, are you sure about this?”
+
+@36443 Alberto · アルベルト
+> 「我らがビッグファイアーのためとあらば、
+>  しかたあるまい
+“If it's for our Big Fire, there's no other way.
+---
+>  だがイワン、気をつけろよ。
+>  あやつら、なかなかやりおる」
+But Ivan, be careful. Those lot are quite tough.”
+
+@36444 Ivan · イワン
+> 「おまかせください、アルベルト様」
+“Leave it to me, Lord Alberto.”
+
+@36445 George · ジョルジュ
+> 「……どうやら、
+>  狙いは我々のようですね」
+“...It seems we're their target.”
+
+@36446 Argo · アルゴ
+> 「うむ」
+“Indeed.”
+
+@36447 Chibodee · チボデー
+> 「ちょうどいいじゃねぇか。ドモン、俺たち
+>  の特訓の成果を見せてやるぜ!」
+“Perfect timing. Domon, let's show them what our special training's done for us!”
+
+@36448 Domon · ドモン
+> 「フッ、そいつは楽しみだな。
+>  出ろぉぉっ!」
+“Heh, I'm looking forward to it. Come out!!”
+
+@36449 Domon · ドモン
+> 「ガンダァァァァム!!」
+“Gundaaaaaam!!”
+
+@36450 George · ジョルジュ
+> 「では、我々もガンダムを出しましょう」
+“Then let us bring out our Gundams as well.”
+
+@36451 Domon · ドモン
+> 「もう残ってはいないようだな。
+>  しかし、こいつらはいったい……」
+“Looks like there are none left. But just what are these things...”
+
+@36452 Domon · ドモン
+> 「デスアーミー!? バカな、
+>  なぜこんなところに……まさか!?」
+“Death Army?! Impossible, why are they here... Don't tell me?!”
+
+@36453 Domon · ドモン
+> 「東方不敗、
+>  マスターアジアがいるのか!?
+“Is the Undefeated of the East, Master Asia, here?!
+---
+>  いいだろう、ここで決着をつけてやる!」
+Fine, I'll settle this right now!”
+
+@36454 Domon · ドモン
+> 「デスアーミーごとき、
+>  何体いようと敵ではない!
+“A mere Death Army is no match for me, no matter how many there are!
+---
+>  さぁ、出てこい東方不敗!!」
+Come on out, Undefeated of the East!!”
+
+@36455 Master · マスター
+> 「ばかもの!! おのれごときに、
+>  呼び捨てにされるいわれはないわ!!
+“You fool!! You have no right to address me so rudely!!
+---
+>  それが貴様の師匠に対する
+>  態度かぁっ!」
+Is that how you speak to your Master?!”
+
+@36456 Domon · ドモン
+> 「黙れぇっ!! 俺はもう、
+>  あんたを師匠とは呼ばない!!」
+“Shut up!! I don't call you Master anymore!!”
+
+@36457 Master · マスター
+> 「くくくっ、未熟よのう、ドモン。
+>  お前の兄上もおるというのに」
+“Heh heh heh, how immature, Domon. And your brother is here too, you know.”
+
+@36458 Domon · ドモン
+> 「なにッ!?」
+“What?!”
+
+@36459 Kyoji · キョウジ
+> 「フッフッフッフッ」
+“Heh heh heh heh.”
+
+@36460 Domon · ドモン
+> 「デビルガンダム……キョウジィィィッ!!」
+“Dark Gundam... Kyojiiiii!!”
+
+@36461 Schwarz · シュバルツ
+> 「待て、ドモン!
+>  心を落ち着けるのだ!」
+“Wait, Domon! Calm your heart!”
+
+@36462 Domon · ドモン
+> 「シュバルツか!? うるさいッ、
+>  邪魔をするな!!」
+“Schwarz?! Shut up, don't get in my way!!”
+
+@36463 Schwarz · シュバルツ
+> 「くっ、ドモン!」
+“Ngh, Domon!”
+
+@36464 Domon · ドモン
+> 「東方不敗! 今日こそケリを
+>  つけてやる!!」
+“Undefeated of the East! Today I'm settling this!!”
+
+@36465 Schwarz · シュバルツ
+> 「……聞いてはもらえんようだな。
+>  明鏡止水……
+“...It seems you won't listen. Serenity of mind...
+---
+>  曇りのない鏡のごとく、
+>  静かにたたえた水のごとき心
+Like a flawless mirror, like still, clear water.
+---
+>  それが勝つための唯一の方法だ。
+>  だが、今のお前には無理だろうがな」
+That is the only way to win. But for you as you are now, it's impossible.”
+
+@36466 Domon · ドモン
+> 「くらえぇぇっ、東方不敗ぃぃ!!」
+“Take this, Undefeated of the Eaaaast!!”
+
+@36467 Master · マスター
+> 「フン、この程度の技で何をする
+>  つもりだ? 未熟者がぁっ!」
+“Hmph, what do you intend to do with a technique like that? You amateur!”
+
+@36468 Domon · ドモン
+> 「おのれぇぇぇっ!」
+“Curse youuuu!”
+
+@36469 Kyoji · キョウジ
+> 「ククククククク、ハーッハハハハハッ!!」
+“Heh heh heh heh heh, hah hah hah hah hah!!”
+
+@36470 Domon · ドモン
+> 「何がおかしい……何がおかしぃぃぃッ!
+>  貴様のおかげで母は死に
+“What's so funny... What's so funnyyyy?! Because of you my mother died,
+---
+>  コロニーは崩壊、俺は貴様を
+>  追ってきてこのザマだ
+the colony was destroyed, and I chased after you and ended up like this.
+---
+>  貴様に笑われるすじあいはない!
+>  俺は貴様を許せん!
+You have no right to laugh at me! I will never forgive you!
+---
+>  貴様を叩きつぶしてやる!」
+I'll crush you!”
+
+@36471 Master · マスター
+> 「フン、貴様のスーパーモードなど、この
+>  ワシに通用するとでも思っているのか」
+“Hmph, do you really think your Super Mode will work on me?”
+
+@36472 Domon · ドモン
+> 「黙れ!! いくぞぉっ!
+>  シャァァイニング・フィンガァァァーッ!!」
+“Silence!! Here I come! Shiiiiining Fingerrrr!!”
+
+@36473 Master · マスター
+> 「このバカ弟子がぁっ!!
+>  そんなスキだらけの技で
+“You foolish pupil!! Did you really think a technique
+---
+>  このワシが倒せるとでも
+>  思うたかぁっ!!」
+full of openings like that could defeat me?!”
+
+@36474 Domon · ドモン
+> 「バ、バカな……」
+“I-Impossible...”
+
+@36475 Domon · ドモン
+> 「うわああぁぁぁぁーッ!!」
+“Uwaaaaaaaaah!!”
+
+@36476 Master · マスター
+> 「さあ、今とどめをさしてやるぞ!
+>  くらえぃ!」
+“Now, I'll finish you off! Take this!”
+
+@36477 Schwarz · シュバルツ
+> 「いかん、ドモンッ! なにをやっている!!」
+“This is bad, Domon! What are you doing!!”
+
+@36478 Schwarz · シュバルツ
+> 「うおおぉぉぉっ!?」
+“Uwoooooooh?!”
+
+@36479 Master · マスター
+> 「なに!? 貴様……」
+“What?! You...”
+
+@36480 Domon · ドモン
+> 「ガンダムシュピーゲル……シュバルツ!?」
+“Shadow Gundam... Schwarz?!”
+
+@36481 Schwarz · シュバルツ
+> 「愚か者が……あれほど忠告したのに
+>  なぜスーパーモードを発動させた……」
+“You fool... After all my warnings, why did you activate Super Mode...”
+
+@36482 Master · マスター
+> (ぬうぅぅ、まさか……こやつの正体は……)
+>  
+(Nghhh, don't tell me... this one's true identity is...)
+
+@36483 Domon · ドモン
+> 「シュバルツ……いったいどうして……
+>  あんたは俺を見捨てたはずじゃ
+“Schwarz... just why... Weren't you supposed to have
+---
+>  なかったのか……?」
+abandoned me...?”
+
+@36484 Schwarz · シュバルツ
+> 「いかにお前とて、頼る者がいなければ
+>  少しは冷静に戦うだろうと
+“I thought that even for you, without anyone to rely on, you might fight
+---
+>  思ったのだ……」
+a little more calmly...”
+
+@36485 Domon · ドモン
+> 「すまない……俺はなっちゃいない。
+>  修行が足りなかった……」
+“I'm sorry... I'm not ready. My training was insufficient...”
+
+@36486 Domon · ドモン
+> 「くっ!?」
+“Ngh?!”
+
+@36487 Master · マスター
+> 「なっちゃいない!
+>  本当になっちゃいないぞドモン!
+“Not ready! You're really not ready, Domon!
+---
+>  ガンダムシュピーゲルに救われ、怒りも
+>  おさまったというのに、スキだらけで
+You were saved by Shadow Gundam, and your anger had settled, yet you're full of openings
+---
+>  このザマだ。さぁ、首をへし折って
+>  くれるわ!!」
+and end up like this. Now, I'll snap your neck!!”
+
+@36488 Domon · ドモン
+> 「うわあぁぁぁぁぁぁぁーっ!!」
+“Uwaaaaaaaaaah!!”
+
+@36489 Schwarz · シュバルツ
+> 「ドモンよ……思い出せ。
+>  あのときの一瞬を…………
+“Domon... remember. That single instant...
+---
+>  明鏡止水の一瞬を…………!」
+That single instant of serenity of mind...!”
+
+@36490 Domon · ドモン
+> (父さん……母さん……
+>  俺は……俺は……)
+(Dad... Mom... I... I...)
+
+@36491 Master · マスター
+> 「さぁ、心静かに死ぬのだ」
+“Now, die with a calm heart.”
+
+@36492 Domon · ドモン
+> (死ぬ……? 俺が……? そうだ、
+>  あの時と同じだ……あの時と……)
+(Die...? Me...? That's right, it's the same as that time... The same as then...)
+
+@36493 Rain · レイン
+> (ドモン、がんばって……負けちゃだめ!)
+(Domon, hang in there... You can't lose!)
+
+@36494 Domon · ドモン
+> 「見えた! 水のひとしずく!」
+“I see it! A drop of water!”
+
+@36495 Master · マスター
+> 「なんだこの気迫は!? いままでの
+>  奴とは違う……なんだ!?」
+“What is this fighting spirit?! He's different from before... What is this?!”
+
+@36496 Domon · ドモン
+> 「東方不敗……!」
+“Master Asia...!”
+
+@36497 Master · マスター
+> 「……フン、少しは利口になったか。
+>  だが、つけあがるな、ドモン!」
+“...Hmph, so you've gotten a little smarter. But don't get cocky, Domon!”
+
+@36498 Master · マスター
+> 「ぐっ! なにぃッ!?」
+“Ngh! What?!”
+
+@36499 Schwarz · シュバルツ
+# 审校：“真のスーパーモード”应译为“the true Super Mode”，初稿漏译了“真の”对应的“true”。
+> 「おお……できたぞ。それこそまさしく……
+>  真のスーパーモードだ……」
+“Ohh... he did it. That truly is... the true Super Mode...”
+
+@36500 Domon · ドモン
+# 审校：“未熟なばかりに”语气更接近“still so inexperienced”，补上“still”使自责语气更自然。
+> 「シュバルツ!? ……すまないシュバルツ
+>  ……俺が未熟なばかりに……
+“Schwarz?! ...I'm sorry, Schwarz... It's only because I was still so inexperienced...
+---
+>  キョウジ……兄さん……もう、
+>  終わらせるよ……」
+Kyoji... brother... I'm ending this now...”
+
+@36501 Master · マスター
+> 「こやつ……いつのまにこれほどの力を……
+>  いかん!」
+“This boy... when did he gain such power...? This is bad!”
+
+@36502 Masato · 雅人
+> 「あれは……デビルガンダム!?
+>  マスター・アジアもいるよ」
+“That's... the Dark Gundam?! Master Asia's there too.”
+
+@36503 Shinobu · 忍
+# 审校：“面倒おこしやがるぜ”带有不满语气，改为“he's gone and dragged us into a mess”更口语化。
+> 「まったく、修行してるだけのはずが、
+>  面倒おこしやがるぜ」
+“Honestly, we were supposed to just be training, and now he's gone and dragged us into a mess.”
+
+@36504 Sara · 沙羅
+> 「忍、そんなこといってる状況じゃない
+>  だろ!?」
+“Shinobu, this isn't the time to be saying that!”
+
+@36505 Ryo · 亮
+> 「確かに、どうにか間に合っただけ
+>  でも、じゅうぶんとすべきだな」
+“True, we should count ourselves lucky just to have made it in time.”
+
+@36506 Master · マスター
+# 审校：原文“こんなばかなことがあってたまるかぁぁぁーっ!!”是强烈咆哮，初稿只译出一半气势，改为重复句以还原吼叫感。
+> 「こんな……こんなばかなことがあって
+>  たまるかぁぁぁーっ!!」
+“This... this can't be happening! This can't be happening!!”
+
+@36507 Kyoji · キョウジ
+# 审校：原文是咆哮而非疑问，句末应为“!!”而不是“?!”。
+> 「ウオオォォォォォーッ!?」
+“Uwooooooooh!!”
+
+@36508 Master · マスター
+> 「ああ……、ワシの、
+>  ワシのデビルガンダムが……
+“Ahh... my, my Dark Gundam...
+---
+>  おのれ! 貴様ら全員
+>  生かしては帰さぬぞ!!」
+Curse you! I won't let a single one of you leave here alive!!”
+
+@36509 Kyoji · キョウジ
+# 审校：同L12，咆哮应使用“!!”而非“?!”。
+> 「ウオオォォォォォーッ!?」
+“Uwooooooooh!!”
+
+@36510 Domon · ドモン
+> 「…………」
+“...”
+
+@36511 Shinobu · 忍
+# 审校：“引き上げる”在战场语境下用“pull out”比“pull back”更准确。
+> 「ドモン、なにやってやがる。とっとと
+>  引き上げるぞ」
+“Domon, what are you doing? Hurry up and pull out.”
+
+@36512 Sai Saici · サイ・サイシー
+> 「アニキ……」
+“Bro...”
+
+@36513 Domon · ドモン
+> 「みんな……すまん、先にもどっていてくれ」
+“Everyone... sorry, go on ahead without me.”
+
+@36514 George · ジョルジュ
+> 「ドモン……しかし……」
+“Domon... but still...”
+
+@36515 Domon · ドモン
+> 「大丈夫だ。必ずあとからもどる。
+>  頼む」
+“I'll be fine. I'll definitely come back later. Please.”
+
+@36516 Domon · ドモン
+> 「師匠……兄さん……シュバルツ……。
+>  父さん……
+“Master... brother... Schwarz... Dad...
+---
+>  ついにデビルガンダムを倒したよ」
+I've finally defeated the Dark Gundam.”
+
+@36517 Domon · ドモン
+# 审校：原文“まさか!?”是震惊加疑问，初稿“It can't be?!”语气偏弱，改为“It can't be!!”更符合惊呼。
+> 「なんだと……まさか!?」
+“What...? It can't be!!”
+
+@36518 Master · マスター
+> 「まさか、無事にここから
+>  逃げられるとでも思っていたか
+“Did you really think you could escape from here unharmed?
+---
+>  この馬鹿弟子がぁ!」
+You foolish disciple!”
+
+@36519 Domon · ドモン
+> 「東方不敗! なぜだ、
+>  なぜそうまでして戦う?
+“Master Asia! Why? Why do you go this far to fight?
+---
+>  俺を倒していったい何になる!?」
+What do you gain by defeating me?!”
+
+@36520 Master · マスター
+> 「ワシが何のために戦うかだと?
+>  そんなことを貴様に話してどうなる
+“You ask what I fight for? What good would it do to tell the likes of you?
+---
+>  ククク、ワシも哀れよな。まさか
+>  自分が育てた弟子にこうまで
+Heh heh heh, how pitiful I am. To think I'd be defied this much by
+---
+>  逆らわれるとは、思ってもみなんだわ。
+>  そうだ、貴様らさえ、貴様らさえ
+a disciple I raised myself. Yes, if only you all, if only you all
+---
+>  あそこにあらわれなんだら、貴様さえ
+>  ガンダム乗りになっていなければ
+hadn't appeared there, if only you had never become a Gundam Fighter,
+---
+>  どれほどよかったか!」
+how much better it would have been!”
+
+@36521 Domon · ドモン
+> 「東方不敗……お前はいったい……」
+“Master Asia... just what are you...”
+
+@36522 Master · マスター
+> 「だからお前は、アホなのだぁっ!
+>  ドモン、貴様は許さんぞ!」
+“That's why you're a fool! Domon, I will never forgive you!”
+
+@36523 Domon · ドモン
+> 「くっ……なに!?
+>  どうした、動けシャイニング!!」
+“Ngh... what?! What's wrong, move, Shining Gundam!!”
+
+@36524 Master · マスター
+> 「どうやら、勝機はワシにあるようだな」
+“It seems the advantage is mine.”
+
+@36525 Domon · ドモン
+> 「動け! 動いてくれ!
+>  シャイニングガンダム!!」
+“Move! Please move! Shining Gundam!!”
+
+@36526 Master · マスター
+> 「なんだ!?」
+“What?!”
+
+@36527 Banjo · 万丈
+> 「やれやれ、どうやらギリギリのタイミング
+>  だったようだね。急いで来てよかった」
+“Good grief, seems we made it just in the nick of time. Good thing we hurried.”
+
+@36528 Rain · レイン
+> 「ええ。ドモン!!」
+“Yes. Domon!!”
+
+@36529 Domon · ドモン
+> 「レイン!? レイン、
+>  シャイニングガンダムが……」
+“Rain?! Rain, the Shining Gundam is...”
+
+@36530 Rain · レイン
+> 「わかってるわ!
+>  ギャリソンさん、お願いします」
+“I know! Garrison, if you please.”
+
+@36531 Garrison · ギャリソン
+> 「かしこまりました。
+>  ゴッドガンダム、投下いたします」
+“Understood. Dropping the Burning Gundam now.”
+
+@36532 Rain · レイン
+> 「ドモン、受け取って!
+>  あなたの新しいガンダムよ!」
+“Domon, catch! It's your new Gundam!”
+
+@36533 Domon · ドモン
+> 「俺の……新しいガンダム!?」
+“My... new Gundam?!”
+
+@36534 Master · マスター
+> 「おのれ、そうはさせんぞ!!」
+“Curse you, I won't let you!!”
+
+@36535 Domon · ドモン
+> 「マスターガンダムが自己修復して
+>  いく!? まさか……DG細胞か!」
+“The Master Gundam is repairing itself?! No way... DG cells?!”
+
+@36536 Banjo · 万丈
+> 「ドモン、急ぐんだ!」
+“Domon, hurry!”
+
+@36537 Domon · ドモン
+> 「万丈か! わかった!」
+“Banjo! Got it!”
+
+@36538 Banjo · 万丈
+> 「ドモン・カッシュ、急いでくれ!」
+“Domon Kasshu, hurry, please!”
+
+@36539 Domon · ドモン
+> 「誰だ!?」
+“Who's there?!”
+
+@36540 Banjo · 万丈
+> 「僕は万丈、破嵐万丈だ。
+>  話はあとだ、とにかく急げ!」
+“I'm Banjo. Banjo Haran. We'll talk later, just hurry!”
+
+@36541 Domon · ドモン
+> 「わかった! そうさせてもらう!」
+“Understood! I'll take you up on that!”
+
+@36542 Domon · ドモン
+> 「これがゴッドガンダム……
+>  俺の新しい機体か」
+“So this is the Burning Gundam... my new machine.”
+
+@36543 Rain · レイン
+> 「データの転送は終了。
+>  ドモン、いいわ!」
+“Data transfer complete. Domon, you're good!”
+
+@36544 Domon · ドモン
+> 「すまん、レイン。
+>  さぁこい東方不敗!
+“Sorry, Rain. Now come on, Master Asia!
+---
+>  決着をつけてやる!!」
+I'll finish this!!”
+
+@36545 Master · マスター
+# 审校：“ほざけぇぇーっ!”是怒吼，句末应加“!!”以还原气势。
+> 「ほざけぇぇーっ!」
+“Don't make me laugh!!”
+
+@36546 Master · マスター
+> 「なんだと!?」
+“What?!”
+
+@36547 Domon · ドモン
+> 「そのまま寝ていろ東方不敗!
+>  貴様と遊んでいるヒマはない!」
+“Stay down, Master Asia! I've got no time to play with you!”
+
+@36548 Master · マスター
+> 「ド……ドモン……」
+“Do... Domon...”
+
+@36549 Domon · ドモン
+> 「レイン、助かったよ。
+>  しかしこの機体はいったい……」
+“Rain, you saved me. But what in the world is this machine...”
+
+@36550 Rain · レイン
+> 「シャイニングガンダムの後継機、
+>  ゴッドカンダムよ」
+“It's the Shining Gundam's successor: the Burning Gundam.”
+
+@36551 Banjo · 万丈
+> 「お見事、ドモン。さすがだね」
+“Well done, Domon. Just as expected.”
+
+@36552 Domon · ドモン
+> 「万丈か。ひさしぶりだな」
+“Banjo. It's been a while.”
+
+@36553 Rain · レイン
+> 「ドモン、ゴッドガンダムは、
+>  カラバで開発してもらったのよ」
+“Domon, the Burning Gundam was developed for you by Karaba.”
+
+@36554 Domon · ドモン
+> 「カラバで?」
+“By Karaba?”
+
+@36555 Banjo · 万丈
+> 「そういうこと。以前レインさんから、
+>  シャイニングの設計データを
+“That's right. Some time ago, I received the Shining's design data
+---
+>  もらっていてね。いざというときのために、
+>  シャイニングガンダムの同型機と
+from Rain here. So that we'd be ready in case of emergency, we pushed ahead
+---
+>  ともに、開発を進めていたんだ」
+with development, along with a unit of the same type as the Shining Gundam.”
+
+@36556 Domon · ドモン
+# 检查提示：未用必用译名：シャイニング→Shining Gundam
+> 「シャイニングの同型機?」
+“A unit of the same type as the Shining?”
+
+@36557 Rain · レイン
+> 「ライジングガンダムよ。
+>  それも持ってきてあるわ」
+“The Rising Gundam. We brought that one along too.”
+
+@36558 Domon · ドモン
+> 「シャイニングガンダムの後継機……
+>  いつ開発したんだ?」
+“The Shining Gundam's successor... when did you develop it?”
+
+@36559 Rain · レイン
+# 检查提示：未用必用译名：シャイニング→Shining Gundam
+> 「カラバの方で、やってもらっていたの。
+>  以前シャイニングの設計データは
+“We had Karaba handle it for us. We'd already handed over
+---
+>  渡していたから。
+>  シャイニングの同型機の
+the Shining's design data, you see. There's also the Rising Gundam,
+---
+>  ライジングガンダムもあるのよ」
+a unit of the same type as the Shining.”
+
+@36560 Banjo · 万丈
+> 「そういうこと。気に入ってもらえたかな
+>  ドモン・カッシュ?」
+“That's right. I hope you like it, Domon Kasshu?”
+
+@36561 Domon · ドモン
+> 「お前は誰だ?」
+“Who are you?”
+
+@36562 Banjo · 万丈
+> 「おっと、失礼。僕の名は万丈、
+>  破嵐万丈だ
+“Whoops, pardon me. My name is Banjo. Banjo Haran.
+---
+>  以後お見知りおきを」
+I hope we'll be getting to know each other.”
+
+@36563 Domon · ドモン
+> 「さっきの男か」
+“You're the man from before.”
+
+@36564 Garrison · ギャリソン
+> 「そして私は、
+>  ギャリソン時田と申します」
+“And I am Garrison Tokita.”
+
+@36565 Rain · レイン
+> 「お2人とも、カラバのスタッフなのよ」
+“Both of them are Karaba staff.”
+
+@36566 Domon · ドモン
+> 「ああ……名前は聞いたことがある。
+>  確か万丈とえば、アランと一緒に
+“Yeah... I've heard the name. If I recall, Banjo is the man who founded
+---
+>  カラバをつくった男だったな」
+Karaba together with Alan.”
+
+@36567 Banjo · 万丈
+> 「ご名答。それにしても、さすがだね、
+>  ドモン。初めての機体を
+“Correct. Even so, impressive as always, Domon. Getting that much out of
+---
+>  あれだけ使いこなせるとは、わざわざ
+>  持ってきたかいもあったというものだ」
+a machine you've never piloted before—bringing it all this way was worth it.”
+
+@36568 Domon · ドモン
+> 「そうか。礼をいう、万丈。
+>  ゴッドガンダムがなければ
+“I see. You have my thanks, Banjo. Without the Burning Gundam,
+---
+>  危ないところだった」
+I'd have been in real trouble.”
+
+@36569 Banjo · 万丈
+# 检查提示：未用必用译名：シャイニング→Shining Gundam
+> 「いやいや、礼ならレインさんにいってくれ
+>  彼女がシャイニングが限界だからと
+“No, no, if you're giving thanks, give it to Rain. She came all the way to us
+---
+>  アランと一緒に僕たちのところまで
+>  来たから
+with Alan, saying the Shining had reached its limit,
+---
+>  僕らもわざわざ運んできたんだ」
+so we went out of our way to bring it here.”
+
+@36570 Garrison · ギャリソン
+> 「さよう、それにレイン様でなければ、
+>  あれだけの短時間では
+“Indeed. And if it hadn't been Lady Rain, no one could have tuned it to match
+---
+>  ドモンさまにあわせた調整は
+>  できなかったでしょうな」
+Lord Domon in such a short time.”
+
+@36571 Domon · ドモン
+> 「レインが? ……すまない、レイン。
+>  俺は……」
+“Rain did? ...I'm sorry, Rain. I...”
+
+@36572 Rain · レイン
+> 「いいのよ、ドモン。だって、
+>  私は、ドモンのパートナーなんだから」
+“It's all right, Domon. After all, I'm your partner.”
+
+@36573 Domon · ドモン
+> 「レイン……」
+“Rain...”
+
+@36574 Garrison · ギャリソン
+> 「さてと。ご一同、そろそろ
+>  アーガマの方へ向かいますかな」
+“Well then. Everyone, shall we head for the Argama soon?”
+
+@36575 Banjo · 万丈
+> 「ああ、そうしてくれ」
+“Yeah, let's do that.”
+
+@36576 Domon · ドモン
+> 「悪いが、1度だけでいい、
+>  さっきの場所を通ってくれないか」
+“Sorry, but could you pass by that spot once more? Just once.”
+
+@36577 Garrison · ギャリソン
+> 「おやすいごようですとも」
+“As you wish.”
+
+@36578 Garrison · ギャリソン
+> 「上空を通過いたします」
+“Passing overhead now.”
+
+@36579 Rain · レイン
+> 「あれ……シャイニングガンダムね……」
+“Oh... it's the Shining Gundam...”
+
+@36580 Domon · ドモン
+> 「ああ。……すまん、シャイニングガンダム。
+>  お前とともに戦った日々を
+“Yeah. ...Forgive me, Shining Gundam. I will never forget the days we fought together.
+---
+>  俺は決して忘れはしない。
+>  ありがとう……」
+Thank you...”
+
+@36581 Banjo · 万丈
+> 「やぁ、みんな。ひさしぶりだね」
+“Hey, everyone. It's been a while.”
+
+@36582 Bright · ブライト
+> 「万丈、まさか君がくるとは」
+“Banjo, I never thought you'd come.”
+
+@36583 Banjo · 万丈
+> 「アランから、上の状況も
+>  聞いているしね。僕が地上で
+“I've heard about the situation up there from Alan, too. The reason I was
+---
+>  活動していたのは、いざというとき、
+>  少しでもOZに対抗できる力を
+operating on the surface was to leave Karaba with whatever strength it could
+---
+>  カラバに残しておくためだった。
+>  しかし、もうそんなことをいってられる
+muster to stand against OZ in an emergency. But we can't afford to talk like
+---
+>  状況ではないだろう?」
+that anymore, can we?”
+
+@36584 Quattro · クワトロ
+> 「ああ。補給物資も
+>  持ってきてもらえたようで、助かる」
+“Yeah. It looks like you brought us supplies as well—that helps.”
+
+@36585 Banjo · 万丈
+> 「他にも用意しているところだ。
+>  さすがに
+“I'm having more prepared as well. Though I couldn't quite
+---
+>  すぐに持ってくるというわけには、
+>  いかなかったけどね」
+get it all here right away.”
+
+@36586 Garrison · ギャリソン
+> 「まぁ、それほど長い時間は
+>  かかりますまい」
+“Well, it shouldn't take all that long.”
+
+@36587 Amuro · アムロ
+> 「それはありがたいな」
+“That's a relief.”
+
+@36588 Banjo · 万丈
+> 「まぁそんなわけでね、
+>  またこちらに加わらせてもらうよ
+“So anyway, I'll be joining you all again.
+---
+>  おっと、今はOZの
+>  {HeroMech}だったかな」
+Oops—right now it's OZ's {HeroMech}, isn't it?”
+
+@36589 Bright · ブライト
+> 「まぁ、御存知の通り、OZも
+>  内紛状態だがね。歓迎するよ
+“Well, as you know, OZ is in the middle of its own infighting. You're welcome here.
+---
+>  あとで、君がぬけた後に
+>  加わった連中を紹介しよう」
+Later, I'll introduce you to the people who joined after you left.”
+
+@36590 Beauty · ビューティ
+> 「うふふ、ずいぶんと人が
+>  増えたみたいだものね」
+“Hehe, it seems the ranks have grown quite a bit.”
+
+@36591 Banjo · 万丈
+> 「そうだ、エイジ。新しいレイズナーも
+>  持ってきてあるんだ」
+“That's right, Eiji. I've brought a new Layzner as well.”
+
+@36592 Alan · アラン
+> 「紹介しよう。
+>  カラバの、破嵐万丈だ」
+“Allow me to introduce him. This is Banjo Haran of Karaba.”
+
+@36593 Banjo · 万丈
+> 「どうも、僕がただいまご紹介に
+>  あずかった、破嵐万丈です
+“Hello, I'm Banjo Haran, the man who was just introduced.
+---
+>  初めて会う人も多いと思う。
+>  以後、お見知りおきいただきたい」
+I imagine many of you are meeting me for the first time. I hope you'll remember me from now on.”
+
+@36594 Hayato · ハヤト
+> 「フッ、あいかわらずだな」
+“Heh, same as ever.”
+
+@36595 Banjo · 万丈
+> 「まぁ、そういわないでくれ。
+>  最初くらいはきちんと挨拶を
+“Now, don't say that. At least at first, I'd like to greet everyone properly.
+---
+>  しておきたいからね。これから
+>  {HeroMech}に同行したいと
+I'm hoping to accompany the {HeroMech} from here on—
+---
+>  思っているんだが、かまわないかな?」
+would that be all right?”
+
+@36596 Bright · ブライト
+> 「噂はかねがね。歓迎するよ、
+>  よろしく頼む」
+“I've heard the rumors for a long time. You're welcome here. Glad to have you.”
+
+@36597 Banjo · 万丈
+> 「こちらこそ。
+>  それと僕のアシスタントの……」
+“Likewise. And this is my assistant...”
+
+@36598 Reika · レイカ
+> 「三条レイカです」
+“Reika Sanjo.”
+
+@36599 Beauty · ビューティ
+> 「ビューティフル・タチバナよ。
+>  ビューティって呼んでちょうだい
+“I'm Beautiful Tachibana. Just call me Beauty.
+---
+>  よろしくね」
+Nice to meet you.”
+
+@36600 Garrison · ギャリソン
+> 「わたくしは万丈様の執事、
+>  ギャリソン時田と申します
+“I am Lord Banjo's butler, Garrison Tokita.
+---
+>  なにとぞよしなに」
+I hope we get along well.”
+
+@36601 Shinobu · 忍
+> 「は? 執事ぃ!? 今の世の中、
+>  ロームフェラの連中のところ以外に
+“Huh? A butler?! I never thought anyone in this day and age had one of those,
+---
+>  そんなもんがいるとは思わなかったぜ」
+except for the Romefeller crowd.”
+
+@36602 Sara · 沙羅
+> 「わかるよ。あんたにゃ、
+>  一生縁のないものだもんね」
+“I get it. You'd never have anything to do with one your whole life, after all.”
+
+@36603 Shinobu · 忍
+> 「けっ、お前に人のこといえんのかよ」
+“Tch, like you're one to talk.”
+
+@36604 Quattro · クワトロ
+> 「それで、万丈くん、補給の
+>  物資も持ってきてくれたようだが」
+“So, Banjo, it seems you've brought supplies as well.”
+
+@36605 Banjo · 万丈
+> 「とりあえず、すぐに持ってこれるだけはね
+>  ゴッドガンダムとライジングガンダム
+“For now, I prioritized what I could bring right away: the Burning Gundam and the Rising Gundam,
+---
+>  それと、新しいレイズナーを
+>  優先させてもらった
+and the new Layzner.
+---
+>  もうしばらくすれば、かなりの戦力に
+>  なる連中を連れてこれると思う」
+In a little while, I should be able to bring forces that'll make a real difference.”
+
+@36606 Eiji · エイジ
+> 「新しいレイズナー?」
+“A new Layzner?”
+
+@36607 Banjo · 万丈
+> 「さすがに、レイズナーもずいぶん調子が
+>  悪くなっていると聞いていたんでね
+“I'd heard the Layzner was in pretty bad shape, after all.
+---
+>  純地球製だけど、
+>  性能は悪くないはずだ
+It's purely Earth-made, but its performance shouldn't be bad.
+---
+>  ミズ・エリザベスたちのチームも、
+>  ずいぶんと研究を重ねていたからね
+Ms. Elizabeth's team had been researching it for quite some time, you see.
+---
+>  V-MAX時の出力が20%
+>  以上UPしていると聞いた
+I heard output during V-MAX is up by over 20%.
+---
+>  君たちによろしくといっていたよ」
+She told me to give you all her regards.”
+
+@36608 Eiji · エイジ
+> 「ドクター・エリザベスは、
+>  お元気ですか?」
+“How is Dr. Elizabeth doing?”
+
+@36609 Banjo · 万丈
+> 「……まぁ、おおむねはね。だいぶ
+>  精神的におつかれの様子だったが」
+“...Well, more or less. Though she did seem quite worn down.”
+
+@36610 Arthur · アーサー
+> 「ドクター・エリザベスは
+>  カラバにいたんですか!?」
+“Dr. Elizabeth was with Karaba?!”
+
+@36611 Alan · アラン
+> 「ドールの開発中に、我々から
+>  接触したんだ。知らなかったのか?」
+“We made contact with her while the Doll was being developed. You didn't know?”
+
+@36612 Arthur · アーサー
+> 「エイジやシモーヌたちは、
+>  みんな知ってたんだな!?
+“Eiji and Simone and everyone knew?!
+---
+>  僕に黙ってるなんて、ひどいや」
+Keeping it from me—that's just mean.”
+
+@36613 Simone · シモーヌ
+> 「バカね。あんたが知らなかったなんて、
+>  今の今まで知らなかったわよ」
+“Don't be silly. I didn't know until just now that you didn't know.”
+
+@36614 Banjo · 万丈
+> 「エイジ、僕が持ってきたレイズナーには
+>  コンピュータが搭載されていない
+“Eiji, the Layzner I brought doesn't have a computer installed.
+---
+>  かなり特殊なものらしくて、
+>  今のレイズナーから
+Apparently it's quite a special one, so I hear it needs to be
+---
+>  移す必要があると聞いているが?」
+transferred over from the current Layzner?”
+
+@36615 Eiji · エイジ
+> 「ええ。それはこちらでやります」
+“Yes. We'll handle that on our end.”
+
+@36616 Garrison · ギャリソン
+> 「あとで、仕様書を
+>  お渡しいたしましょう」
+“I shall hand you the specifications later.”
+
+@36617 Bright · ブライト
+> 「そうか……デビルガンダムと
+>  マスターアジアを倒したか」
+“I see... So you defeated the Dark Gundam and Master Asia.”
+
+@36618 Domon · ドモン
+> 「ああ……だが、シュバルツは……」
+“Yeah... But Schwarz...”
+
+@36619 Amuro · アムロ
+> 「見つからなかったのか?」
+“You couldn't find him?”
+
+@36620 Ryo · 亮
+> 「俺たちも探してみたが、生死は
+>  確認できなかった」
+“We searched too, but we couldn't confirm whether he's alive or dead.”
+
+@36621 Rain · レイン
+> 「そんな……」
+“No...”
+
+@36622 Koji · 甲児
+> 「大丈夫だよ、レインさん。
+>  あの覆面男なら殺しても
+“It's all right, Rain. That masked man wouldn't die even if you killed him.
+---
+>  死にはしないって。そのうちまた、
+>  甘いぞドモン! とかいって出てくるさ」
+Before long he'll show up again saying something like ‘You're too soft, Domon!’”
+
+@36623 Rain · レイン
+> 「ウフフフ、ええ、そうね。
+>  ありがとう、甲児くん」
+“Hehehe, yes, you're right. Thank you, Koji.”
+
+@36624 Koji · 甲児
+> 「いやぁ、そういうふうにいわれると
+>  なんかテレちゃうぜ」
+“Aw, when you say it like that, I get all embarrassed.”
+
+@36625 Koji · 甲児
+> 「あいたっ! 何するんだよ、さやかさん」
+“Ow! What'd you do that for, Sayaka?”
+
+@36626 Sayaka · さやか
+> 「別にぃ」
+“Nothing.”
+
+@36627 Amuro · アムロ
+> 「それで、ドモン。君はどうするつもりだ?
+>  デビルガンダムを倒すという目的は
+“So, Domon. What do you intend to do now? Your goal of defeating
+---
+>  達成したのだろう」
+the Dark Gundam has been achieved, hasn't it?”
+
+@36628 Roux · ルー
+> 「まさか、いまさらおりるなんて
+>  いわないわよね」
+“Don't tell me you're going to quit now, after all this.”
+
+@36629 Domon · ドモン
+> 「フッ、当然、同行させてもらう。
+>  人類の滅びを防ぐために戦うのが
+“Hmph, of course I'll be coming along. Fighting to prevent humanity's destruction
+---
+>  シャッフルの紋章を
+>  持つ者の義務だ
+is the duty of one who bears the Shuffle Crest.
+---
+>  これで、奴らとの戦いに集中できる
+>  それに……」
+Now I can focus on the battle against them. Besides...”
+
+@36630 Roux · ルー
+> 「それに?」
+“Besides?”
+
+@36631 Domon · ドモン
+> 「俺がいなくては、{HeroMech}の
+>  戦力が激減してしまうからな
+“Without me, the fighting strength of the {HeroMech} would drop sharply.
+---
+>  まったく、しょうがない奴らだ」
+Honestly, you people are hopeless.”
+
+@36632 Shinobu · 忍
+> 「てめぇ、そりゃいったい
+>  どういう意味だ!?」
+“What the hell's that supposed to mean?!”
+
+@36633 Sai Saici · サイ・サイシー
+> 「まぁまぁ、アニキは
+>  照れ隠ししてるだけなんだからさ」
+“Now, now, big bro's just hiding his embarrassment.”
+
+@36634 George · ジョルジュ
+> 「まったく、素直じゃありませんね」
+“Honestly, he just can't be honest with himself.”
+
+@36635 Domon · ドモン
+> 「俺が? 冗談も休み休みいえ」
+“Me? Don't make me laugh.”
+
+@36636 Shinobu · 忍
+> 「んだと、コラ! ケンカ売ってんのか!?」
+“Say what, punk?! You pickin' a fight?!”
+
+@36637 Sara · 沙羅
+> 「忍、いいかげんにしな!
+>  話が進みゃしないよ」
+“Shinobu, that's enough! We'll never get anywhere like this.”
+
+@36638 Banjo · 万丈
+> 「それで、君はこれから
+>  どうするんだ、ドモン」
+“So, what are you going to do from here, Domon?”
+
+@36639 Brad · ブラッド（按段落 3DD3）
+> 「おい、まさかデビルガンダムを
+>  倒したからって
+“Hey, don't tell me that just because you beat the Dark Gundam,
+---
+>  もうおしまいってわけじゃないだろうな」
+it's all over now.”
+
+@36640 Domon · ドモン
+> 「フッ、当然だ。人類の滅びを
+>  防ぐために戦うのが
+“Hmph, of course not. Fighting to prevent humanity's destruction
+---
+>  シャッフルの紋章を持つ者の
+>  義務だ。同行させてもらう」
+is the duty of one who bears the Shuffle Crest. I'll be coming along.”
+
+@36641 Banjo · 万丈
+> 「それを聞いて安心したよ」
+“That's a relief to hear.”
+
+@36642 Domon · ドモン
+> 「気にするな。なにしろ俺がいなくては、
+>  {HeroMech}の戦力が
+“Don't mention it. After all, without me, the fighting strength of the {HeroMech}
+---
+>  半減してしまうからな」
+would be cut in half.”
+
+@36643 Brad · ブラッド（按段落 3DD3）
+> 「フッ、いってくれるじゃないかよ。
+>  あてにさせてもらうぜ」
+“Hmph, you don't hold back, do you? I'll be counting on you.”
+
+@36644 Domon · ドモン
+> 「ああ、まかせておけ」
+“Yeah, leave it to me.”
+
+@36645 Banjo · 万丈
+> 「それで、君はこれから
+>  どうするんだ、ドモン」
+“So, what are you going to do from here, Domon?”
+
+@36646 Manami · マナミ（按段落 3DD4）
+> 「もちろん、これからもあたしたちと
+>  一緒に来てくれるのよね?」
+“Of course you'll keep coming along with us, won't you?”
+
+@36647 Domon · ドモン
+> 「フッ、当然だ。人類の滅びを
+>  防ぐために戦うのが
+“Hmph, of course. Fighting to prevent humanity's destruction
+---
+>  シャッフルの紋章を持つ者の
+>  義務だ。同行させてもらう」
+is the duty of one who bears the Shuffle Crest. I'll be coming along.”
+
+@36648 Banjo · 万丈
+> 「それを聞いて安心したよ」
+“That's a relief to hear.”
+
+@36649 Domon · ドモン
+> 「気にするな。なにしろ俺がいなくては、
+>  {HeroMech}の戦力が
+“Don't mention it. After all, without me, the fighting strength of the {HeroMech}
+---
+>  半減してしまうからな」
+would be cut in half.”
+
+@36650 Lawrence · ローレンス
+> 「これはこれは、頼もしいお言葉ですな」
+“Well, well, those are reassuring words indeed.”
+
+@36651 Garrison · ギャリソン
+> 「まったく」
+“Honestly.”
+
+@36652 Manami · マナミ（按段落 3DD4）
+> 「そこまでいうからには、
+>  頼りにしていいんでしょうね?」
+“Since you've said that much, I can count on you, right?”
+
+@36653 Domon · ドモン
+> 「ああ、まかせておけ」
+“Yeah, leave it to me.”
+
+@36654 Daisaku · 大作
+> 「えっ!?」
+“Huh?!”
+
+@36655 Ginrei · 銀鈴
+> 「ちょっと待って、いま、なんていったの?」
+“Wait a second, what did you just say?”
+
+@36656 Shirley · シャリー
+> 「おかしな連中に襲われたって」
+“They said they were attacked by some strange bunch.”
+
+@36657 Ginrei · 銀鈴
+> 「そうじゃなくて、
+>  その連中が名のったっていうのは」
+“That's not it. What I mean is, the name those guys gave—”
+
+@36658 Shirley · シャリー
+# 审校：BF団是专有名词，应保留缩写 BF 并译为 BF Group，而不是按词表 Big Fire 展开；Big Fire 是首领名。
+> 「BF団?」
+“The BF Group?”
+
+@36659 Ginrei · 銀鈴
+# 审校：同上，BF団应译为 the BF Group，保持与 L23 一致。
+> 「本当にBF団っていったのね?」
+“They really did say the BF Group?”
+
+@36660 Bunny · バニー
+> 「銀鈴、知ってるの?」
+“Ginrei, you know them?”
+
+@36661 Ginrei · 銀鈴
+# 审校：BF団应译为 the BF Group，与前后文一致；补逗号使句子更自然。
+> 「知ってるも何も……
+>  国際警察機構の
+“Know them? They're practically the sworn enemy of the International Police Organization.
+---
+>  宿敵みたいなものよ。
+>  秘密結社BF団
+The secret society, the BF Group...
+---
+>  まだ活動していたなんて」
+To think they were still active.”
+
+@36662 Tetsuya · 鉄也
+> 「秘密結社だ?」
+“A secret society?”
+
+@36663 Ginrei · 銀鈴
+# 审校：Big Fire 作为首领名加逗号更清晰；修正原文断句对应。
+> 「ええ。ボスのビッグファイアーの正体も
+>  その実態も明らかではなかったけど
+“Yes. Neither the true identity of their leader, Big Fire, nor their real nature was ever made clear,
+---
+>  かつては世界中で活動していたわ
+>  いまさらいったい
+but they once operated all over the world.
+---
+>  何をしようというのかしら」
+What on earth could they be up to now?”
+
+@36664 Daisaku · 大作
+> 「…………」
+“...”
+
+@36665 Chibodee · チボデー
+> 「なんだ、どうしたガキんちょ」
+“What's up with you, kid?”
+
+@36666 Daisaku · 大作
+> 「なんでもありません」
+“It's nothing.”
+
+@36667 Chibodee · チボデー
+> 「そぉかぁ? そういうツラじゃなかったぜ」
+“That so? That's not the face of a kid who's fine.”
+
+@36668 Daisaku · 大作
+> 「かまわないでください!」
+“Please leave me alone!”
+
+@36669 Jun · ジュン
+> 「どうしたの、あの子?」
+“What's wrong with that boy?”
+
+@36670 Ginrei · 銀鈴
+# 审校：BF団应译为 the BF Group，与 L23 等保持一致。
+> 「ジャイアント・ロボをつくったの、
+>  BF団なのよ。正確には
+“It was the BF Group who built Giant Robo. To be precise,
+---
+>  大作くんのお父さんの
+>  草間博士が、BF団で
+Daisaku's father, Doctor Kusama, developed it
+---
+>  開発したの。でも博士はそれを
+>  後悔して、大作くんを連れて
+for the BF Group. But the Doctor regretted it, and tried to
+---
+>  逃げようとしたのよ」
+run away with Daisaku.”
+
+@36671 Tetsuya · 鉄也
+> 「だが……逃げられなかった、ってとこか」
+“But... he couldn't get away, is that it?”
+
+@36672 Ginrei · 銀鈴
+> 「ええ。そのとき健二さんが
+>  行っていたらしいんだけど
+“Yes. Kenji apparently went to help them then, but
+---
+>  助けられたのは
+>  大作くんだけだったって」
+the only one he could save was Daisaku.”
+
+@36673 Chibodee · チボデー
+> 「親の仇だってわけか。
+>  そいつは悪いことしちまったな」
+“So they're the ones who killed his parents. Guess I put my foot in it.”
+
+@36674 Bright · ブライト
+> 「それで、アラン、状況はどうなんだ?」
+“So, Alan, what's the situation?”
+
+@36675 Alan · アラン
+# 待译：机翻未采用（页数应为 5，实际给了 2（zh 必须与 ja 逐页对应））
+# 草稿第 1 页：“As for Karaba, it's just as Banjo said earlier. Compared to a while back, their organization has recovered considerably, but not enough to put together a guerrilla unit.
+# 草稿第 2 页：So we'll have them back up the 【主角机体名】 instead. It seems Brigadier General Blex is indeed involved in the revival of the Sanc Kingdom.”
+> 「カラバについては、さきほど万丈が
+>  いった通りだ。一時期に比べれば
+---
+>  ずいぶんと組織力も
+>  回復しているが、遊撃隊が
+---
+>  編成できるほどではない。その分、
+>  {HeroMech}のバックアップに
+---
+>  まわらせる。ブレックス准将は、
+>  やはりサンクキングダムの
+---
+>  再興に関わっているようだ」
+
+@36676 Quattro · クワトロ
+> 「サンクキングダムか……。
+>  完全平和主義に
+“The Sanc Kingdom, huh... I can't believe he's doing it
+---
+>  賛同してのこととは、思えんな。
+>  やはり、ロームフェラへの
+out of sympathy for absolute pacifism. I suppose it's
+---
+>  けん制のためと見るのが正しいか」
+right to see it as a check against Romefeller.”
+
+@36677 Garrison · ギャリソン
+> 「さようですな。しかし、
+>  ロームフェラ財団のほうでも
+“It would seem so. However, I hear that within
+---
+>  現状のまま放置するのは
+>  危険との見方が
+the Romefeller Foundation as well, the view is growing stronger
+---
+>  強まっていると聞いております」
+that leaving things as they are is dangerous.”
+
+@36678 Bright · ブライト
+> 「なにしろ、異星人が
+>  攻めてきているわけだからな
+“After all, aliens are invading us.
+---
+>  准将にも、一線に
+>  もどっていただきたいところだ」
+We'd like the Brigadier General to return to the front lines as well.”
+
+@36679 Quattro · クワトロ
+> 「そうだな。トレーズの次に、
+>  准将にも接触するとしよう」
+“Right. After Treize, let's make contact with the Brigadier General as well.”
+
+@36680 Alan · アラン
+> 「トレーズの件だが、こちらは
+>  レディ・アンのいっていた通りだ
+“As for the matter of Treize, it's just as Lady Une said.
+---
+>  場所は特定できた。アーガマの
+>  修理が終わり次第
+We've pinpointed the location. Once the Argama's repairs are finished,
+---
+>  向かえるだろう」
+we should be able to head there.”
+
+@36681 Dermail · デルマイユ
+# 审校：ジャミトフ公的“公”是敬称，不是 Duke；按词表译为 Jamitov 即可。
+> 「おお、ジャミトフ公、聞いたか。
+>  例のサンクキングダムの話は」
+“Oh, Jamitov, did you hear? That business about the Sanc Kingdom.”
+
+@36682 Jamitov · ジャミトフ
+> 「ブレックスか。レジスタンスの次は、
+>  子供の遊びに手を貸すとはな」
+“Blex, is it? First the resistance, and now he lends a hand to children's games.”
+
+@36683 Dermail · デルマイユ
+> 「だが、あそこにはクスコの聖女もいる。
+>  このままでいけば
+“But the Holy Maiden of Cusco is there as well. If things go on like this,
+---
+>  我々の邪魔になるぞ」
+they'll get in our way.”
+
+@36684 Jamitov · ジャミトフ
+> 「ふむ……トレーズ派の反乱兵士と
+>  いい、やっかいなことだな
+“Hmm... First the rebel soldiers of the Treize faction, and now this. What a nuisance.
+---
+>  新たな異星人の侵略を受けて
+>  いるというのに、そんなものに
+We're being invaded by new aliens, and if we let ourselves
+---
+>  わずらわされていては、
+>  地球はもたぬのだがな」
+be bothered by such things, the Earth won't last.”
+
+@36685 Dermail · デルマイユ
+> 「どうするつもりだ?」
+“What do you intend to do?”
+
+@36686 Jamitov · ジャミトフ
+> 「侵略者に勝つためには、
+>  地球圏を統一した組織として
+“To defeat the invaders, it's essential that we act as a unified
+---
+>  動かすことが肝要だ。そのために
+>  邪魔になるというのであれば
+organization across the Earth Sphere. If something stands in the way of that,
+---
+>  排除すればよかろう」
+then we need only remove it.”

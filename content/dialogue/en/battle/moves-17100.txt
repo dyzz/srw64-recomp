@@ -1,0 +1,541 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17100 Domon · ドモン
+> 「バァルカンッ!!」
+“Vulcaaan!!”
+
+@17101 Domon · ドモン
+> 「バルカンッ!!」
+“Vulcan!!”
+
+@17102 Domon · ドモン
+> 「バァァァァルカンッ!!」
+“Vuuuulcan!!”
+
+@17103 Domon · ドモン
+# 审校：“超級! 覇王! 電影弾”应译为英文招式名，改为 Super! Overlord! Cinema Bullet!!
+> 「超級! 覇王! 電影弾!!」
+“Super! Overlord! Cinema Bullet!!”
+
+@17104 Domon · ドモン
+> 「肘打ち! 裏拳! 正拳!
+>  とぉぉりゃぁあああっ!!」
+“Elbow strike! Backfist! Straight punch! Hyaaaah!!”
+
+@17105 Domon · ドモン
+> 「とぉぉりゃぁぁぁぁっ!!」
+“Hyaaaaaah!!”
+
+@17106 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine glows and roars! It cries out to defeat you!!”
+
+@17107 Domon · ドモン
+> 「砕け! 必殺!!」
+“Break! Sure kill!!”
+
+@17108 Domon · ドモン
+> 「シャァァァイニングフィンガァァァッ!!!」
+“Shaaaaaining Fingaaaaaa!!!”
+
+@17109 Domon · ドモン
+> 「ヒィィィィト! エンドッ!」
+“Heeeeat! End!”
+
+@17110 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine glows and roars! It cries out to defeat you!!”
+
+@17111 Domon · ドモン
+> 「必殺!!」
+“Sure kill!!”
+
+@17112 Domon · ドモン
+> 「シャァァァイニングフィンガァァァッ!!!」
+“Shaaaaaining Fingaaaaaa!!!”
+
+@17113 Domon · ドモン
+> 「ヒィィィィト! エンドッ!」
+“Heeeeat! End!”
+
+@17114 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine glows and roars! It cries out to defeat you!!”
+
+@17115 Domon · ドモン
+> 「ひっさぁぁぁつっ!!」
+“Suuuure kiiiill!!”
+
+@17116 Domon · ドモン
+> 「シャァァァイニングフィンガァァァッ!!!」
+“Shaaaaaining Fingaaaaaa!!!”
+
+@17117 Domon · ドモン
+> 「ヒィィィィト! エンドッ!」
+“Heeeeat! End!”
+
+@17118 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine glows and roars! It cries out to defeat you!!”
+
+@17119 Domon · ドモン
+> 「砕け! ひぃぃぃぃーっさつ!!」
+“Break! Suuuuure kiiiill!!”
+
+@17120 Domon · ドモン
+> 「シャァァァイニングフィンガァァァッ!!!」
+“Shaaaaaining Fingaaaaaa!!!”
+
+@17121 Domon · ドモン
+> 「ヒィィィィト! エンドッ!」
+“Heeeeat! End!”
+
+@17122 Domon · ドモン
+> 「ゴッドフィィィルド! ダァァァッシュ!!」
+“God Fiiiiield! Daaaaash!!”
+
+@17123 Domon · ドモン
+> 「ばぁくねつ!!
+>  ゴッド・スラッシュ!!」
+“Burniiing!! Burning Slash!!”
+
+@17124 Domon · ドモン
+# 检查提示：未用必用译名：スラァァァッシュ→God Slash
+> 「ばぁくねつ!!
+>  ゴッド!スラァァァッシュ!!」
+“Burniiing!! God! Slaaaaash!!”
+
+@17125 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17126 Domon · ドモン
+> 「ひぃぃぃぃっさつっ!!」
+“Hiiiiii-satsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「メンッ! メンッ!」
+“Men! Men!”
+---
+> 「メンッ! メンッ! メェェェェェンッ!!」
+“Men! Men! Meeeeeeen!!”
+
+@17127 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17128 Domon · ドモン
+> 「必殺ッ!!」
+“Hissatsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「メンッ! メンッ!」
+“Men! Men!”
+---
+> 「メンッ! メンッ! メェェェェェンッ!!」
+“Men! Men! Meeeeeeen!!”
+
+@17129 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17130 Domon · ドモン
+> 「必ぃぃぃぃっ殺!!」
+“Hi-hi-hi-hissatsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「ツキッ!」
+“Tsuki!”
+---
+> 「ドォォォォォォォッ!!」
+“Doooooooh!!”
+
+@17131 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17132 Domon · ドモン
+> 「ひっさぁぁぁつっ!!」
+“Hissaaaaaatsu!!”
+---
+> 「シャァァァイニングフィンガァァァァァ
+>  ソォォォォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaaaaa Soooooooooord!!!”
+
+@17133 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17134 Domon · ドモン
+> 「ひぃぃぃぃっさつっ!!」
+“Hiiiiii-satsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「メンッ! メンッ!」
+“Men! Men!”
+---
+> 「メンッ! メンッ! メェェェェェンッ!!」
+“Men! Men! Meeeeeeen!!”
+
+@17135 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17136 Domon · ドモン
+> 「必殺ッ!!」
+“Hissatsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「メンッ! メンッ!」
+“Men! Men!”
+---
+> 「メンッ! メンッ! メェェェェェンッ!!」
+“Men! Men! Meeeeeeen!!”
+
+@17137 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17138 Domon · ドモン
+> 「必ぃぃぃぃっ殺!!」
+“Hi-hi-hi-hissatsu!!”
+---
+> 「シャァァァイニングフィンガァァァ
+>  ソォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaa Soooooord!!!”
+---
+> 「メンッ!」
+“Men!”
+---
+> 「ツキッ!」
+“Tsuki!”
+---
+> 「ドォォォォォォォッ!!」
+“Doooooooh!!”
+
+@17139 Domon · ドモン
+> 「俺のこの手が光ってうなる!
+>  お前を倒せと輝き叫ぶっ!!」
+“This hand of mine is burning red! It tells me to defeat you!”
+
+@17140 Domon · ドモン
+> 「ひっさぁぁぁつっ!!」
+“Hissaaaaaatsu!!”
+---
+> 「シャァァァイニングフィンガァァァァァ
+>  ソォォォォォォォォドッ!!!」
+“Shaaaaaining Fingaaaaaaaaa Soooooooooord!!!”
+
+@17141 Domon · ドモン
+> 「斬るっ!!」
+“Slash!!”
+
+@17142 Domon · ドモン
+> 「ゴッド・スラッシュ!!」
+“Burning Slash!!”
+
+@17143 Domon · ドモン
+# 检查提示：未用必用译名：スラァァァッシュ→God Slash
+> 「ゴッド! スラァァァッシュ!!」
+“God! Slaaaaash!!”
+
+@17144 Domon · ドモン
+# 检查提示：未用必用译名：ゴォッドスラッシュ→God Slash Typhoon、タイフゥゥゥン→Typhoon
+> 「必殺!!
+>  ゴォッドスラッシュ……タイフゥゥゥン!!」
+“Hissatsu!! Burning Slash... Typhooooon!!”
+
+@17145 Domon · ドモン
+# 检查提示：未用必用译名：ゴォッドスラッシュ→God Slash Typhoon、タイフゥゥゥン→Typhoon
+> 「ひいっさつ!」
+“Hissatsu!”
+---
+> 「ゴォッドスラッシュ……タイフゥゥゥン!!」
+“Burning Slash... Typhooooon!!”
+
+@17146 Domon · ドモン
+> 「俺のこの手が真っ赤に燃える!!」
+“This hand of mine burns bright red!!”
+
+@17147 Domon · ドモン
+> 「勝利をつかめと轟き叫ぶ!!」
+“It roars at me to seize victory!!”
+---
+> 「いくぞっ!」
+“Here I go!”
+
+@17148 Domon · ドモン
+> 「ばぁくねつ……!!」
+“Burning...!!”
+
+@17149 Domon · ドモン
+> 「ゴォォォッド!!フィンガァァァァッ!!!」
+“Goooood!! Fingeeeeer!!!”
+
+@17150 Domon · ドモン
+> 「ヒィィィィト! エンドッ!!」
+“Heeeeat! End!!”
+
+@17151 Domon · ドモン
+> 「俺のこの手が真っ赤に燃える!!」
+“This hand of mine burns bright red!!”
+
+@17152 Domon · ドモン
+> 「勝利をつかめと轟き叫ぶ!!」
+“It roars at me to seize victory!!”
+
+@17153 Domon · ドモン
+> 「ばぁくねつ!!」
+“Burning!!”
+
+@17154 Domon · ドモン
+> 「ゴォォォッド! フィンガァァァァッ!!!」
+“Goooood! Fingeeeeer!!!”
+
+@17155 Domon · ドモン
+> 「ヒィィィィト!エンドッ!!」
+“Heeeeat! End!!”
+
+@17156 Domon · ドモン
+> 「いくぞっ!!」
+“Here I go!!”
+---
+> 「俺のこの手が真っ赤に燃える!!」
+“This hand of mine burns bright red!!”
+
+@17157 Domon · ドモン
+> 「勝利をつかめと轟き叫ぶ!!」
+“It roars at me to seize victory!!”
+
+@17158 Domon · ドモン
+> 「ばぁくねつ!!」
+“Burning!!”
+
+@17159 Domon · ドモン
+> 「ゴォォォッド!!フィンガァァァァッ!!!」
+“Goooood!! Fingeeeeer!!!”
+
+@17160 Domon · ドモン
+> 「ヒィィィィト!エンドォォーッ!!」
+“Heeeeat! Endoooooh!!”
+
+@17161 Domon · ドモン
+> 「俺はキング・オブ・ハート!
+>  最強の男だ!」
+“I am the King of Hearts! The strongest man alive!”
+---
+> 「いくぞ!」
+“Here I go!”
+
+@17162 Domon · ドモン
+> 「俺のこの手が真っ赤に燃えるっ!」
+“This hand of mine burns bright red!”
+---
+> 「勝利をつかめと轟き叫ぶっ!!」
+“It roars at me to seize victory!!”
+
+@17163 Domon · ドモン
+> 「ばぁくねつ!!」
+“Burning!!”
+
+@17164 Domon · ドモン
+> 「ゴォォォッド!!フィンガァァァァッ!!!」
+“Goooood!! Fingeeeeer!!!”
+
+@17165 Domon · ドモン
+> 「ヒィィィィト!エンドォォッ!!」
+“Heeeeat! Endoooh!!”
+
+@17166 Domon · ドモン
+> 「いくぞっ!!」
+“Here I go!!”
+---
+> 「流派!東方不敗の
+>  名のもとに!!」
+“School of the Undefeated of the East!!”
+
+@17167 Domon · ドモン
+> 「俺のこの手が真っ赤に燃える!!」
+“This hand of mine burns bright red!!”
+---
+> 「勝利をつかめと轟き叫ぶ!!」
+“It roars at me to seize victory!!”
+
+@17168 Domon · ドモン
+> 「ばぁくねつ!!」
+“Burning!!”
+
+@17169 Domon · ドモン
+> 「ゴッドォッ・フィンガァァァァッ!!」
+“God! Fingeeeeer!!”
+
+@17170 Domon · ドモン
+> 「ヒィィィィト!エンドォォッ!!」
+“Heeeeat! Endoooh!!”
+
+@17171 Domon · ドモン
+> 「いくぞっ! 流派!東方不敗の
+>  名のもとにぃ!!」
+“Here I go! School of the Undefeated of the Eaaast!!”
+
+@17172 Domon · ドモン
+> 「俺のこの手が真っ赤に燃える!!」
+“This hand of mine burns bright red!!”
+
+@17173 Domon · ドモン
+> 「勝利をつかめと轟き叫ぶ!!」
+“It roars at me to seize victory!!”
+
+@17174 Domon · ドモン
+> 「ばぁくねつ!!」
+“Burning!!”
+
+@17175 Domon · ドモン
+> 「ゴッドォッ・フィンガァァァァッ!!」
+“God! Fingeeeeer!!”
+
+@17176 Domon · ドモン
+> 「せきはっ!! てんきょうけぇぇぇぇん!!」
+“Sekiha!! Tenkyooooooooken!!”
+
+@17177 Domon · ドモン
+> 「いくぞ、お前たちぃ!!」
+“Let's go, you guys!!”
+
+@17178 Chibodee · チボデー
+> 「おおっ!」
+“Oh!”
+
+@17179 Chibodee · チボデー
+# 审校：原文是名词短语，初稿误加了 If，改为直接喊出“This flame of the soul!”
+> 「この魂の炎!」
+“This flame of the soul!”
+
+@17180 George · ジョルジュ
+# 审校：原文是承接上句的动词短语，初稿用 Is raised 显得像陈述句，改为更自然的战斗接续喊法
+> 「極限まで高めれば!」
+“Raised to its limit!”
+
+@17181 Sai Saici · サイ・サイシー
+# 审校：原文“倒せないものなど!”与下句“なにもない!”连成完整句，初稿把两句意思拆反了，这里改为承接下句的完整表达
+> 「倒せないものなど!」
+“There is nothing it cannot defeat!”
+
+@17182 Argo · アルゴ
+# 审校：原文“なにもない!”应表达“没有（打不倒的）东西”，初稿误译为“We cannot defeat”，改为“Nothing at all!”
+> 「なにもない!」
+“Nothing at all!”
+
+@17183 Domon · ドモン
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Burning Heat! Shuffle Alliance Fist!!”
+
+@17184 Domon · ドモン
+> 「分身殺法! ゴッドシャドー!!」
+“Afterimage Arts! God Shadow!!”
+
+@17185 Allenby · アレンビー
+# 审校：拟声词拼写修正，去掉多余的 w。
+> 「ノーベェェルフラフゥゥゥプ!!」
+“Nobel Flaaap!!”
+
+@17186 Allenby · アレンビー
+# 审校：拟声词拼写修正，去掉多余的 w。
+> 「ノーベルフラフゥゥゥプ!!」
+“Nobel Flaaap!!”
+
+@17187 Domon · ドモン
+> 「アレンビーッ!」
+“Allenby!”
+
+@17188 Allenby · アレンビー
+> 「いくよぉ、ドモンッ!」
+“Here we go, Domon!”
+
+@17189 Domon · ドモン
+> 「ああ、決めにするぞ!」
+“Yeah, let's finish this!”
+
+@17190 Domon · ドモン
+> 「俺のこの手が真っ赤に燃えるッ!」
+“This hand of mine is burning red!”
+
+@17191 Allenby · アレンビー
+> 「勝利をつかめと!」
+“It tells me to seize victory!”
+
+@17192 Domon · ドモン
+> 「轟き叫ぶ!」
+“Roaring and crying out!”
+---
+> 「ばぁぁぁくねつ!」
+“Buuuurning hot!”
+
+@17193 Allenby · アレンビー
+> 「ダブルッ!」
+“Double!”
+
+@17194 Domon · ドモン
+> 「ゴッド・フィンガァァァーッ!!」
+“God Fingerrrrr!!”
+
+@17195 Domon · ドモン
+> 「ヒィィィィトッ!」
+“Hiiiiit!”
+
+@17196 Allenby · アレンビー
+> 「エンドォォッ!」
+“Endoooo!”
+
+@17197 Schwarz · シュバルツ
+> 「シュトゥルム! ウント! ドランクゥッ!」
+“Sturm! Und! Drang!”
+
+@17198 Chibodee · チボデー
+> 「いくぜぇっ!」
+“Let's go!”
+
+@17199 Chibodee · チボデー
+> 「おおおぉぉぉぉぉ!」
+“Oooohhhhh!”

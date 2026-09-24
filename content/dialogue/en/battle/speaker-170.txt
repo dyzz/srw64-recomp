@@ -1,0 +1,223 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9337 Masato · 雅人
+> 「やらせるもんかっ!」
+“Like I'd let you!”
+
+@9338 Masato · 雅人
+> 「これでもくらえっ!」
+“Take this!”
+
+@9339 Masato · 雅人
+> 「おちろっ!」
+“Fall!”
+
+@9340 Masato · 雅人
+> 「そこだっ!!」
+“There!”
+
+@9341 Masato · 雅人
+> 「いっくぞぉぉぉぉっ!!」
+“Here I gooo!”
+
+@9342 Masato · 雅人
+> 「これでもくらえっ!!」
+“Take this!!”
+
+@9343 Masato · 雅人
+> 「いっけぇぇぇぇっ!!」
+“Gooo!!”
+
+@9344 Masato · 雅人
+> 「もらうよっ!!」
+“I'll take that!”
+
+@9345 Masato · 雅人
+> 「そらっ!!」
+“Take that!”
+
+@9346 Masato · 雅人
+> 「やられろよっ!!」
+“Just go down!”
+
+@9347 Masato · 雅人
+> 「くっ! しまったっ!!」
+“Ngh! Damn it!!”
+
+@9348 Masato · 雅人
+> 「しまった!!」
+“Damn it!!”
+
+@9349 Masato · 雅人
+> 「うわあっ!! やられたっ!!」
+“Uwaa!! I'm hit!!”
+
+@9350 Masato · 雅人
+> 「くそうっ! やられたっ!!」
+“Damn! I'm hit!!”
+
+@9351 Masato · 雅人
+> 「わああああっ!!」
+“Waaaaa!!”
+
+@9352 Masato · 雅人
+> 「うわっ!! こ、このままじゃやられる!」
+“Uwaa!! I-I can't take much more!”
+
+@9353 Masato · 雅人
+> 「わっ!! ヤ、ヤバイ……」
+“Whoa!! Th-This is bad...”
+
+@9354 Masato · 雅人
+> 「うわっ! こ、これじゃやられちまう!」
+“Whoa! I-I'm gonna get wrecked!”
+
+@9355 Masato · 雅人
+> 「だ、だめだ! これじゃもたないよ!」
+“N-No! I can't hold out like this!”
+
+@9356 Masato · 雅人
+> 「こ、このままじゃやられる!!」
+“I-I'm gonna get shot down!!”
+
+@9357 Masato · 雅人
+> 「うわっ! だ、だめだぁっ!!」
+“Whoa! N-No good!!”
+
+@9358 Masato · 雅人
+> 「く、くそっ!! だめだ、これじゃ!!」
+“D-Damn!! I can't take this!!”
+
+@9359 Masato · 雅人
+> 「わあっ!! やられたっ!」
+“Waa!! I'm hit!”
+
+@9360 Masato · 雅人
+> 「うっ!! ま、まだだいじょうぶ!」
+“Ugh!! I-I'm still okay!”
+
+@9361 Masato · 雅人
+> 「くっ! まだまだ!」
+“Ngh! I'm not done yet!”
+
+@9362 Masato · 雅人
+> 「ま、まだまだっ!!」
+“N-Not even close!!”
+
+@9363 Masato · 雅人
+> 「ま、まだこんなもんじゃ やられないっ!!」
+“Th-This isn't enough to take me down!!”
+
+@9364 Masato · 雅人
+> 「そ、そう簡単にやられるもんか!!」
+“I-I won't go down that easy!!”
+
+@9365 Masato · 雅人
+> 「うわっ!! いってぇ～」
+“Whoa!! That huuurts!”
+
+@9366 Masato · 雅人
+> 「わっ!! やったな、このっ!!」
+“Whoa!! You'll pay for that!!”
+
+@9367 Masato · 雅人
+> 「うわっ!! い、意外と!」
+“Whoa!! Th-That's stronger than I thought!”
+
+@9368 Masato · 雅人
+> 「いてっ! やったなっ!!」
+“Ow! You'll pay for that!!”
+
+@9369 Masato · 雅人
+> 「だいじょうぶ効いてないっ!」
+“It's fine, that didn't hurt!”
+
+@9370 Masato · 雅人
+> 「やられるかよっ!」
+“Like I'd go down!”
+
+@9371 Masato · 雅人
+> 「そんなものっ!!」
+“That's nothing!!”
+
+@9372 Masato · 雅人
+> 「へへ、大したことないじゃん」
+“Heh, that was nothing”
+
+@9373 Masato · 雅人
+> 「こんな攻撃でっ!!」
+“An attack like that?!”
+
+@9374 Masato · 雅人
+> 「ま、こんなもんかな」
+“Well, that's about it”
+
+@9375 Masato · 雅人
+> 「あたるかよっ!!」
+“Like you'd hit me!!”
+
+@9376 Masato · 雅人
+> 「ふう、たすかった」
+“Phew, that was close”
+
+@9377 Masato · 雅人
+> 「あ、あぶなかった……」
+“Th-That was close...”
+
+@9378 Masato · 雅人
+> 「残念でした!」
+“Too bad!”
+
+@9379 Masato · 雅人
+> 「当たらないね!」
+“You missed!”
+
+@9380 Masato · 雅人
+> 「おおっと!」
+“Whoa there!”
+
+@9381 Masato · 雅人
+> 「へへ、軽い軽い」
+“Heh, too easy”
+
+@9382 Masato · 雅人
+> 「よっと!!」
+“Hup!!”
+
+@9383 Masato · 雅人
+> 「ビームなんて!!」
+“A Beam like that?!”
+
+@9384 Masato · 雅人
+> 「ムダだって言ってんのに」
+“I told you it's useless”
+
+@9385 Masato · 雅人
+> 「ムダだよ!」
+“It's useless!”
+
+@9386 Masato · 雅人
+> 「ありゃ、弾切れかよ!?」
+“Huh, out of ammo?!”
+
+@9387 Masato · 雅人
+> 「ダメだ、手が出せない!」
+“I can't do anything!”
+
+@9388 Masato · 雅人
+> 「しまった、反撃できない!」
+“Damn, I can't fight back!”
+
+@9389 Masato · 雅人
+> 「ウソだろ!? あんなとこから
+>  攻撃できるのかよ!?」
+“No way?! They can attack from there?!”
+
+@9390 Masato · 雅人
+> 「だ、だめだ、届かないよ!」
+“N-No good, I can't reach!”
+
+@9391 Masato · 雅人
+> 「何だよ、そんなとこからなんて
+>  卑怯だぞ!!」
+“What the hell, attacking from way back there is dirty!!”

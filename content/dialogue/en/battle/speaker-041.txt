@@ -1,0 +1,241 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5984 Seabook · シーブック
+> 「こいつっ!!」
+“Why you!”
+
+@5985 Seabook · シーブック
+> 「これならっ!」
+“This should do it!”
+
+@5986 Seabook · シーブック
+> 「まだまだぁっ!」
+“Not done yet!”
+
+@5987 Seabook · シーブック
+> 「うおおおっ!!」
+“Uwooooh!”
+
+@5988 Seabook · シーブック
+> 「どけえぇぇっ!!」
+“Out of my way!”
+
+@5989 Seabook · シーブック
+# 审校：原译“Just die already”语气过重且与原文“いっちゃえよ”的语境略有偏差，改为更贴合战斗台词的“Just go down already!”
+> 「抵抗するんじゃない! いっちゃえよ!」
+“Don't resist! Just go down already!”
+
+@5990 Seabook · シーブック
+> 「なんでこんなところに来るんだよ!」
+“Why'd you have to come here?!”
+
+@5991 Seabook · シーブック
+> 「こんなところにのこのこ来るからっ!」
+“That's what you get for waltzing in here!”
+
+@5992 Seabook · シーブック
+> 「そこかぁっ!」
+“There you are!”
+
+@5993 Seabook · シーブック
+> 「くらえっ!!」
+“Take this!”
+
+@5994 Seabook · シーブック
+> 「もらったぁっ!」
+“Got you!”
+
+@5995 Seabook · シーブック
+> 「こいつで、とどめだっ!」
+“This one's the finisher!”
+
+@5996 Seabook · シーブック
+> 「いけーっ!!」
+“Go!”
+
+@5997 Seabook · シーブック
+> 「いけるかっ!?」
+“Can I make it?!”
+
+@5998 Seabook · シーブック
+> 「させるかぁっ!!」
+“Like I'd let you!”
+
+@5999 Seabook · シーブック
+> 「あまいんだよっ!!」
+“Too naive!”
+
+@6000 Seabook · シーブック
+> 「これまでだっ!!」
+“This is the end!”
+
+@6001 Seabook · シーブック
+> 「貴様ぁ!!」
+“You bastard!”
+
+@6002 Seabook · シーブック
+> 「直撃させるっ!!」
+“I'll hit you dead-on!”
+
+@6003 Seabook · シーブック
+> 「そう簡単にやらせるかよっ!」
+“You think I'd let you do that?!”
+
+@6004 Seabook · シーブック
+> 「うわああああっ!!」
+“Uwaaaaaah!”
+
+@6005 Seabook · シーブック
+> 「う、うわっ!?」
+“U-Uwah?!”
+
+@6006 Seabook · シーブック
+> 「し、しまった!!」
+“D-Damn it!”
+
+@6007 Seabook · シーブック
+> 「うわあああっ!! な、なんてパワーだっ!」
+“Uwaaaah! W-What power!”
+
+@6008 Seabook · シーブック
+> 「うわあっ! し、しまった!
+>  動力部にダメージが!」
+“Uwah! D-Damn it! The power unit's hit!”
+
+@6009 Seabook · シーブック
+> 「うわっ!! も、もつのか!?」
+“Uwah! C-Can it hold?!”
+
+@6010 Seabook · シーブック
+> 「うわっ!! こ、このままじゃやられる!」
+“Uwah! A-At this rate I'm done for!”
+
+@6011 Seabook · シーブック
+> 「直撃!?」
+“A direct hit?!”
+
+@6012 Seabook · シーブック
+> 「うあっ! や、やるっ!! けどっ!!」
+“Uwah! Y-You're good! But still!”
+
+@6013 Seabook · シーブック
+> 「まだだっ! まだやらせない!」
+“Not yet! I won't let you take me down!”
+
+@6014 Seabook · シーブック
+> 「つっ!! まだ落ちるものか!」
+“Tch! Like I'd go down!”
+
+@6015 Seabook · シーブック
+> 「そ、そう簡単にやられるかっ!」
+“L-Like I'd go down that easy!”
+
+@6016 Seabook · シーブック
+> 「やる! でもまだ!」
+“Nice hit! But not yet!”
+
+@6017 Seabook · シーブック
+> 「くっ! まだだ! まだいける!!」
+“Ngh! Not yet! I can still go!”
+
+@6018 Seabook · シーブック
+> 「こんなものなら!!」
+“If that's all you've got!”
+
+@6019 Seabook · シーブック
+> 「あたった!? けどたいした事はないっ!」
+“It hit?! But it's nothing!”
+
+@6020 Seabook · シーブック
+> 「まだまだっ!」
+“Not done yet!”
+
+@6021 Seabook · シーブック
+> 「このくらいでやられるかよっ!」
+“You think this'll take me down?!”
+
+@6022 Seabook · シーブック
+> 「くっ!!
+>  だが、まだこの程度ならまだいける!」
+“Ngh! But at this level I can still go!”
+
+@6023 Seabook · シーブック
+> 「まだ、こんなものなら!!」
+“If it's just this much!”
+
+@6024 Seabook · シーブック
+> 「くっ!! この程度で落ちるものか!」
+“Ngh! Like I'd fall from this!”
+
+@6025 Seabook · シーブック
+> 「そこっ!」
+“There!”
+
+@6026 Seabook · シーブック
+> 「見えた!」
+“I see it!”
+
+@6027 Seabook · シーブック
+> 「来る……そこだっ!!」
+“Here it comes... there!”
+
+@6028 Seabook · シーブック
+> 「なんのっ!!」
+“No problem!”
+
+@6029 Seabook · シーブック
+> 「なめるなっ!」
+“Don't underestimate me!”
+
+@6030 Seabook · シーブック
+# 审校：原译“What the?!”缺少破折号，按英文规则改为“What the—!”
+> 「なんとぉーっ!」
+“What the—!”
+
+@6031 Seabook · シーブック
+> 「逃げ回りゃ、死にはしない」
+“Keep running and you won't die.”
+
+@6032 Seabook · シーブック
+> 「あまいっ!!」
+“Too naive!”
+
+@6033 Seabook · シーブック
+> 「よし、かわした!」
+“Yes, dodged it!”
+
+@6034 Seabook · シーブック
+> 「あたりはしないっ!!」
+“You won't hit me!”
+
+@6035 Seabook · シーブック
+> 「ムダだっ!!」
+“It's useless!”
+
+@6036 Seabook · シーブック
+> 「ムダなんだよ!!」
+“It's useless!!”
+
+@6037 Seabook · シーブック
+# 审校：“won't even scratch me”语气偏弱且与原文“効きはしない”的否定强调略有偏差，改为更自然的战斗台词。
+> 「その程度のビームなんか、
+>  効きはしないっ!」
+“A beam like that won't do a thing to me!”
+
+@6038 Seabook · シーブック
+> 「弾切れ!? しまった!」
+“Out of ammo?! Damn it!”
+
+@6039 Seabook · シーブック
+# 审校：原文“だめか”是疑问，初稿“no good?!”可接受，但补上“is it”更自然。
+> 「くっ、だめか!?」
+“Ngh, is it no good?!”
+
+@6040 Seabook · シーブック
+# 审校：原文“とどかないのか”是自问，初稿“it won't reach”变成陈述，改为疑问更贴切。
+> 「だめだ、とどかないのか!」
+“No good, can't I reach it?!”
+
+@6041 Seabook · シーブック
+> 「だめだ、とどかない!」
+“No good, it won't reach!”

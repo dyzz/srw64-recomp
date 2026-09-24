@@ -1,0 +1,1095 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@20300 Bright · ブライト
+> 「まもなくホンコンか……
+>  こちらの位置はつかんでいるはずだが
+“Hong Kong soon... They should know where we are.
+---
+>  敵に動きがないのが気になるな」
+What bothers me is that the enemy isn't making a move.”
+
+@20301 Banjo · 万丈
+> 「ネオホンコン特別行政区は
+>  ロームフェラのウォンが
+“The Neo Hong Kong Special Administrative Region should be under the control of
+---
+>  取りしきっているはずだ。このまま
+>  見逃してくれるとは思えないな」
+Romefeller's Wong. I doubt he'll just let us pass.”
+
+@20302 Bright · ブライト
+> 「そうだな……そう思う」
+“Yeah... I think so too.”
+
+@20303 Amuro · アムロ
+# 审校：原文是疑问句“行くのかい?”，初稿译成陈述句，改为疑问语气。
+> 「……君がルオ商会へ
+>  交渉に行くのかい?」
+“...Are you going to negotiate with the Luo Company?”
+
+@20304 Beltorchika · ベルトーチカ
+> 「そういう仕事のために、
+>  ここにいるのですからね」
+“That's the kind of work I'm here for, after all.”
+
+@20305 Amuro · アムロ
+> 「ベルトーチカ……」
+“Beltorchika...”
+
+@20306 Beltorchika · ベルトーチカ
+> 「ちゃんと補給をして戦わなければ、
+>  帝国を地球から
+“If we don't resupply properly and fight, we'll never
+---
+>  追い出すことなんて、
+>  できないでしょう?」
+drive the Empire off the Earth, will we?”
+
+@20307 Amuro · アムロ
+> 「……君は戦うことがイヤなのだろう?」
+“...You don't like fighting, do you?”
+
+@20308 Beltorchika · ベルトーチカ
+> 「戦争は、キライよ。
+>  当たり前でしょう?
+“I hate war. Isn't that obvious?
+---
+>  でもそのことと、戦わなくちゃ
+>  いけないときに戦うというのは、別よ」
+But that's a different thing from fighting when you have to fight.”
+
+@20309 Amuro · アムロ
+> 「僕を軽蔑しているんだろう?」
+“You despise me, don't you?”
+
+@20310 Beltorchika · ベルトーチカ
+> 「あたしはそれほど鈍くはないわ。
+>  アムロ・レイの3年間は
+“I'm not that dense. Amuro Ray's three years were
+---
+>  眠りの時間だったのよ。肉体も、
+>  精神も。休息は必要だわ
+a time of sleep. Body and mind alike. Rest is necessary.
+---
+>  目を覚ませばいいのよ。
+>  そうすれば昔と同じになるわ」
+You just have to wake up. Then you'll be the same as before.”
+
+@20311 Amuro · アムロ
+> 「……自信がないな」
+“...I'm not confident.”
+
+@20312 Beltorchika · ベルトーチカ
+> 「あなたは前にあの子たちと
+>  同じことをしていたのでしょう?」
+“You used to do the same thing as those kids, didn't you?”
+
+@20313 Amuro · アムロ
+> 「そうだが…………
+“That's true, but...
+---
+>  !?」
+?!”
+
+@20314 Beltorchika · ベルトーチカ
+> 「ん……」
+“Mm...”
+
+@20315 Roux · ルー
+> 「あらら、あんなところでキスなんか
+>  されてたら、エレベーター使えないわね」
+“Oh my, if you're going to kiss in a place like that, we can't use the elevator.”
+
+@20316 Masato · 雅人
+# 审校：“手が早い”指对女性出手快，初稿“works fast”意思偏差，改为“moves fast”更贴切。
+> 「あ～あ、結構気に入ってたのに、
+>  がっかりだよ
+“Ahh, and I liked him quite a bit too. What a letdown.
+---
+>  アムロ大尉も手が早いや」
+Captain Amuro sure moves fast.”
+
+@20317 Roux · ルー
+> 「なにいってんのよ。ほら、
+>  いつまでものぞいてないの。行くわよ」
+“What are you saying? Come on, don't keep peeking forever. Let's go.”
+
+@20318 Amuro · アムロ
+> 「…………ベルトーチカ、同情ならいい」
+“...Beltorchika, I don't need your pity.”
+
+@20319 Beltorchika · ベルトーチカ
+> 「あたしは、それほど鈍くないと
+>  いったでしょ?
+“I told you, I'm not that dense, didn't I?
+---
+>  女の愛撫で男を
+>  奮い立たせることができるのなら
+If a woman's caress can rouse a man to action,
+---
+>  女はそれをすることもあるのよ。
+>  なぜだと思う?」
+then a woman will sometimes do that. Why do you think that is?”
+
+@20320 Amuro · アムロ
+> 「……男を試しているんだろう?」
+“...You're testing me, aren't you?”
+
+@20321 Beltorchika · ベルトーチカ
+> 「そうよ。自分にふさわしい男に
+>  なってほしいからね
+“That's right. Because I want you to become a man worthy of me.
+---
+>  でも、だめだとわかったら捨てるわ。
+>  同情なんかしているヒマなんてない」
+But if I find out you're no good, I'll throw you away. I don't have time to waste on pity.”
+
+@20322 Amuro · アムロ
+> 「ご両親は前の戦争で
+>  亡くなられたといっていたね?」
+“You said your parents died in the last war, didn't you?”
+
+@20323 Beltorchika · ベルトーチカ
+# 审校：原文“同情されたいほう”是“想同情别人的那一方”，初稿“giving pity”方向对但表达生硬，改为更自然的“doing the pitying”。
+> 「ええ。同情されたいほう」
+“Yes. I'd rather be the one doing the pitying.”
+
+@20324 Amuro · アムロ
+> 「すまなかった……帝国は
+>  地球から追い出してみせる」
+“I'm sorry... I'll drive the Empire off the Earth, I promise.”
+
+@20325 Beltorchika · ベルトーチカ
+> 「あたしすぐ忘れるかもよ?」
+“I might forget about this right away, you know?”
+
+@20326 Amuro · アムロ
+> 「構わないさ……」
+“I don't mind...”
+
+@20327 Beltorchika · ベルトーチカ
+> 「ん…………」
+“Mm...”
+
+@20328 Quattro · クワトロ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「……ベルトーチカ、
+>  ブライト艦長が呼んでいる」
+“...Beltorchika, Captain Bright is calling for you.”
+
+@20329 Beltorchika · ベルトーチカ
+> 「すぐ行きます……
+>  あたし、あの人キライよ」
+“I'll be right there... I don't like that man.”
+
+@20330 Ryoma · リョウ
+> 「これがネオホンコンか。噂通りだな」
+“So this is Neo Hong Kong. Just like the rumors said.”
+
+@20331 Hayato · ハヤト
+> 「ああ。今の地球で唯一、
+>  占領前と
+“Yeah. It's the only city on Earth right now that hasn't
+---
+>  あまり変わらない街だからな、ここは」
+changed much since before the occupation.”
+
+@20332 Duo · デュオ
+> 「へえ? どういうことだい?」
+“Huh? What do you mean by that?”
+
+@20333 Hayato · ハヤト
+> 「ネオホンコンは地球人の
+>  行政官がいる
+“Neo Hong Kong is a special administrative region with an
+---
+>  特別行政区なのさ。例の
+>  ロームフェラ財団がらみらしいんだがな
+Earthling administrator. Seems the Romefeller Foundation is involved.
+---
+>  ま、ロームフェラも少なくとも1つは、
+>  いいことをしたってわけだ」
+Well, I suppose even Romefeller has done at least one good thing.”
+
+@20334 Boss · ボス
+> 「よぉ! 久しぶりじゃねぇかよ、兜」
+“Yo! Long time no see, Koji!”
+
+@20335 Koji · 甲児
+> 「ボス!? なんだってお前が、
+>  こんなところにいるんだ!?」
+“Boss?! What are you doing in a place like this?!”
+
+@20336 Boss · ボス
+> 「なんだって、水くせぇじゃねぇかよ。
+>  この俺さまも
+“What do you mean, what am I doing? Don't be so cold. Yours truly
+---
+>  正義のために一緒に戦うのよ」
+is going to fight alongside you for justice too!”
+
+@20337 Koji · 甲児
+> 「おいボス、こいつは遊びじゃないんだぞ。
+>  大体お前が来たって
+“Hey Boss, this isn't a game. Besides, even if you came along,
+---
+>  甲板掃除くらいしか、
+>  できないんじゃないのか?」
+all you could do is swab the deck, isn't that right?”
+
+@20338 Boss · ボス
+> 「バカにするんじゃないわよ。よく見ろ兜
+>  あれが俺さまのスーパーロボット
+“Don't mock me! Take a good look, Koji. That's my super robot,
+---
+>  その名もボスボロットよ」
+and its name is Boss Borot!”
+
+@20339 Koji · 甲児
+> 「……なんだよ、
+>  補給物資以外なんにもないぜ?」
+“...What is this? There's nothing here but supplies.”
+
+@20340 Boss · ボス
+> 「ありゃりゃりゃりゃ、ちょっと、俺さまの
+>  ボスボロットは、どこいっちゃったのよ」
+“Whoa, whoa, whoa, hey, where did my Boss Borot go?!”
+
+@20341 Rain · レイン
+> 「……あなたたち、もしかしてここにあった
+>  スクラップのこと、いってるの?
+“...You guys, are you talking about the scrap that was here, by any chance?
+---
+>  だったら搬入の邪魔だから
+>  外に出しちゃったわよ」
+If so, it was in the way of the unloading, so I had it taken outside.”
+
+@20342 Boss · ボス
+> 「なんだって!? あ、ちょっと、いや、
+>  やめて、俺さまのボスボロットを
+“What?! H-hey, wait, no, stop, where are you taking my Boss Borot?
+---
+>  どこへ持っていくのよ。
+>  ちょっと、お待ちになって」
+Hey, hold on a moment!”
+
+@20343 Koji · 甲児
+> 「…………」
+“...”
+
+@20344 Sayaka · さやか
+> 「なにやってるのよ。甲児くん、
+>  まぁた、面倒おこすつもり?」
+“What are you doing? Koji, are you planning to cause trouble again?”
+
+@20345 Koji · 甲児
+> 「違うって、さやかさん」
+“I'm not, Sayaka.”
+
+@20346 Brad · ブラッド（按段落 3DD3）
+> 「甲児、なんだよあいつは?」
+“Koji, who the heck is that guy?”
+
+@20347 Manami · マナミ（按段落 3DD4）
+> 「なぁに、あれ?」
+“What in the world is that?”
+
+@20348 Koji · 甲児
+> 「なんだか知らねぇが、
+>  一緒についてくる気らしい
+“I don't know the details, but he apparently intends to come along with us.
+---
+>  悪い奴じゃあないんだ、
+>  まぁよろしく頼むわ」
+He's not a bad guy, so go easy on him.”
+
+@20349 Astonaige · アストナージ
+> 「それはそっちじゃない、
+>  こっちに持ってくるんだよ!」
+“Not that way, bring it over here!”
+
+@20350 Dr. Hazuki · 葉月博士
+> 「搬入は進んでいるか?」
+“Is the unloading proceeding?”
+
+@20351 Masato · 雅人
+> 「葉月博士!? どうしてここに?」
+“Dr. Hazuki?! Why are you here?”
+
+@20352 Dr. Hazuki · 葉月博士
+> 「どうしてもこうしてもあるか。お前たちが
+>  ルオ商会と接触すると聞いて
+“Why indeed. When I heard you were making contact with the Luo Company,
+---
+>  解放戦線で開発した新型を
+>  運び込んでもらったのだ
+I had the new model developed by the Liberation Front brought in.
+---
+>  ところで藤原はまだ見つからんのか?」
+By the way, have you still not found Fujiwara?”
+
+@20353 Masato · 雅人
+> 「沙羅が探しにいったんだけど、
+>  戻ってから何か変なんですよ
+“Sara went to look for him, but ever since she came back, something's been off.
+---
+>  沙羅の奴。たぶん忍には
+>  会ったんじゃないかって思うんだけど…」
+That Sara. I think she probably ran into Shin...”
+
+@20354 Dr. Hazuki · 葉月博士
+> 「そうか……」
+“I see...”
+
+@20355 Quattro · クワトロ
+> 「葉月博士」
+“Dr. Hazuki.”
+
+@20356 Dr. Hazuki · 葉月博士
+> 「ああ、大尉。どうかね、あれは」
+“Ah, Captain. What do you think of it?”
+
+@20357 Quattro · クワトロ
+> 「よい機体を持ってきていただいて、
+>  感謝しています」
+“Thank you for bringing us such a fine machine.”
+
+@20358 Duo · デュオ
+> 「うっひゃー、
+>  おい見ろよ金色のMSだぜ」
+“Whoa, hey, look at that, a golden mobile suit!”
+
+@20359 Roux · ルー
+> 「すっごぉ、誰が乗るのかしら」
+“Amazing, I wonder who'll pilot it.”
+
+@20360 Dr. Hazuki · 葉月博士
+> 「兜甲児と弓さやかは、いないのか?
+>  弓教授に頼まれていたものを
+“Are Koji Kabuto and Sayaka Yumi not here? I've brought the things
+---
+>  持ってきているんだが」
+Prof. Yumi asked me for.”
+
+@20361 Koji · 甲児
+> 「ここにいるよ、博士」
+“I'm right here, Doctor.”
+
+@20362 Sayaka · さやか
+> 「お父さまが? 何かしら」
+“My father? What could it be?”
+
+@20363 Dr. Hazuki · 葉月博士
+> 「うむ、ジェットスクランダーと
+>  ダイアナンAだ」
+“Yes, the Jet Scrander and the Dianan A.”
+
+@20364 Koji · 甲児
+> 「……なんだよ、それ」
+“...What's that?”
+
+@20365 Dr. Hazuki · 葉月博士
+> 「ジェットスクランダーは、マジンガーZに
+>  装着する飛行パーツだ
+“The Jet Scrander is a flight unit that attaches to Mazinger Z.
+---
+>  これを装備することで、マジンガーZは
+>  空中戦にも対応できるようになる」
+With this equipped, Mazinger Z will be able to handle aerial combat as well.”
+
+@20366 Koji · 甲児
+> 「ほんとかよ!? ありがてぇ、これで
+>  マジンガーは無敵だぜ! さっそく
+“For real?! Thanks a lot, now Mazinger's invincible! Let's get right to
+---
+>  テストといくか!」
+testing it out!”
+
+@20367 Masato · 雅人
+> 「あの反応の仕方、
+>  忍とそっくりだよ」
+“That reaction of his is just like Shin's.”
+
+@20368 Ryo · 亮
+> 「フッ、おつむが単純だと、
+>  行動も似てくるらしいな」
+“Heh, seems simple minds act alike too.”
+
+@20369 Sayaka · さやか
+> 「博士、ダイアナンAのほうは?」
+“Doctor, what about the Dianan A?”
+
+@20370 Dr. Hazuki · 葉月博士
+> 「アフロダイAのパワーアップ版らしい。
+>  コクピットシステムと操縦方法が
+“It's apparently a powered-up version of the Aphrodai A. The cockpit system and controls
+---
+>  アフロダイと変わるので、君もテストを
+>  しておいたほうがいいだろう」
+differ from the Aphrodai, so you'd best test it out as well.”
+
+@20371 Sayaka · さやか
+> 「わかりました」
+“Understood.”
+
+@20372 Masato · 雅人
+> 「ねぇ博士、ダンクーガには、
+>  そういうの、ないんですか?」
+“Hey Doctor, doesn't the Dancouga have anything like that?”
+
+@20373 Dr. Hazuki · 葉月博士
+> 「むろん考えてあるとも。
+>  弓教授からもデータをいただいている
+“Of course I've been thinking about it. I've received data from Prof. Yumi as well.
+---
+>  まだしばらくは
+>  時間がかかると思うがな」
+I think it'll still take some time, though.”
+
+@20374 Lady · レディ
+> (レジスタンスどもめ、
+>  ここで始末をつけてやるぞ
+(You Resistance vermin, I'll finish you off right here.
+---
+>  この程度のことでトレーズ様の
+>  お手を、わずらわせるわけにはいかん)
+I can't trouble Lord Treize with something of this magnitude.)
+
+@20375 Wong · ウォン
+> 「しかしレディ・アン特佐、確かに
+>  おっしゃるとおり研究所のいくつかは
+“However, Lieutenant Colonel Lady Une, it is true that several of the laboratories are
+---
+>  私の管理下にありますが、
+>  まだまだデータを集めているところでして」
+under my management, but we are still in the process of gathering data.”
+
+@20376 Lady · レディ
+> 「出し惜しみするおつもりか、
+>  ウォン行政官?
+“Do you intend to hold back on me, Administrator Wong?
+---
+>  それでは、ない腹も
+>  さぐられるというものだぞ」
+If so, you'll only invite suspicion.”
+
+@20377 Wong · ウォン
+> 「いやいや、そんなつもりはありませんよ。
+>  よろしい、そこまでおっしゃるのなら
+“No, no, that's not my intention at all. Very well, if you insist that much,
+---
+>  しかたありませんな。
+>  私の実験部隊でアウドムラを
+it can't be helped. I'll have my experimental unit strike the Audhumla.
+---
+>  叩くとしましょう。トレーズ特佐には
+>  よろしくお伝えいただきたい」
+Please give my regards to Lieutenant Colonel Treize.”
+
+@20378 Lady · レディ
+> 「結構だ。よい結果を
+>  期待しよう。お互いにな」
+“Good. I'll expect good results. From both of us.”
+
+@20379 Wong · ウォン
+> 「ふん……女狐め。
+>  この私を利用しようなどと」
+“Hmph... you vixen. Trying to use me, of all people.”
+
+@20380 ???
+> 「が、それにのるのも兵法の
+>  妙というものよ
+“But going along with it is a fine bit of strategy too.
+---
+>  ときに、例のものの手配は
+>  できておるのか?」
+By the way, have you arranged for that thing?”
+
+@20381 Wong · ウォン
+> 「これは先生。
+>  聞いていらしたとはお人が悪い
+“Teacher, you heard me out? How cruel of you.
+---
+>  もちろんですとも。そちらのほうは
+>  よろしく頼みましたよ」
+Of course. I'll leave that side of things to you, then.”
+
+@20382 ???
+> 「フフフフフ、まかせておけ」
+“Heh heh heh heh, leave it to me.”
+
+@20383 Banjo · 万丈
+> 「艦長、敵部隊が出た。
+>  市街に向かっているようだ」
+“Captain, an enemy unit has appeared. They seem to be heading for the city.”
+
+@20384 Bright · ブライト
+> 「やはり来たか。
+>  全員をすぐに呼び戻せ
+“So they've come after all. Recall everyone at once.
+---
+>  残っているパイロットは
+>  スタンバらせておけ!」
+Have the remaining pilots stand by!”
+
+@20385 Quattro · クワトロ
+> 「艦長、私は百式で待機する」
+“Captain, I'll wait on standby in the Hyaku-Shiki.”
+
+@20386 Bright · ブライト
+> 「頼む、大尉。アムロ、お前も
+>  新型のディジェで出てくれ
+“I'm counting on you, Captain. Amuro, you go out in the new Dijeh too.
+---
+>  やれるのだろう?」
+You can do it, right?”
+
+@20387 Amuro · アムロ
+> 「ああ、大丈夫だ」
+“Yeah, I'll be fine.”
+
+@20388 Reika · レイカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、敵の
+>  広域放送をキャッチしたわ」
+“Captain Bright, I've caught a wide-area broadcast from the enemy.”
+
+@20389 Bright · ブライト
+> 「なに? 流してくれ」
+“What? Put it through.”
+
+@20390 Lady · レディ
+> 「聞こえるか、アウドムラ。私は
+>  帝国軍スペシャルズのレディ・アンだ
+“Can you hear me, Audhumla? I am Lady Une of the Imperial Army's Specials.
+---
+>  我々は諸君らをせん滅すべく、
+>  部隊の配置を終えた
+We have finished deploying our forces to annihilate you.
+---
+>  しかし、このまま戦闘が行われれば
+>  街にもかなりの被害が出よう
+However, if the battle proceeds as is, the city will suffer considerable damage as well.
+---
+>  それは我々としても
+>  望むところではない」
+That is not something we desire either.”
+
+@20391 Banjo · 万丈
+> 「なんだ、何がいいたい?」
+“What? What are you trying to say?”
+
+@20392 Lady · レディ
+> 「よって私はここに、諸君らに
+>  降伏を勧告する。ネオホンコンの
+“Therefore, I hereby advise you to surrender. If you do not wish to see the streets of Neo Hong Kong
+---
+>  街を火の海にしたくなければ、
+>  おとなしく武装解除してもらおう」
+turned into a sea of fire, you will quietly disarm.”
+
+@20393 Bright · ブライト
+> 「ばかな……連中は正気か!?」
+“Impossible... are they insane?!”
+
+@20394 Banjo · 万丈
+> 「そうだろうね。なんて破廉恥な女だ」
+“I'd say so. What a shameless woman.”
+
+@20395 Garrison · ギャリソン
+> 「しかし……どうなさるのですか?」
+“But... what shall we do?”
+
+@20396 Banjo · 万丈
+> 「ここで降伏などするわけにはいかない。
+>  すぐにここを発とう」
+“We can't surrender here. We'll leave this place at once.”
+
+@20397 Beauty · ビューティ
+> 「だめよ万丈。まだ物資の搬入が
+>  できていないわよ」
+“No, Banjo. We haven't finished loading the supplies yet.”
+
+@20398 Bright · ブライト
+> 「くっ……
+>  とりあえず時間をかせぐしかないか……」
+“Ngh... for now, we've no choice but to buy time...”
+
+@20399 Four · フォウ
+> 「ブラン・ブルターク特佐、
+>  お願いがあります」
+“Lieutenant Colonel Buran Blutarch, I have a request.”
+
+@20400 Buran · ブラン
+> 「なんだ?」
+“What is it?”
+
+@20401 Four · フォウ
+> 「私は好きにやらせていただきたいのです
+>  人の命令では動けませんので」
+“I wish to act as I please. I cannot move on someone else's orders.”
+
+@20402 Buran · ブラン
+> 「……いいだろう、やってみせろ」
+“...Very well. Show me what you can do.”
+
+@20403 Four · フォウ
+> 「ありがとうございます」
+“Thank you.”
+
+@20404 Buran · ブラン
+> (強化人間というが……
+>  大丈夫なのか)
+(They call her an enhanced human... but is she really all right?)
+
+@20405 Anna · アンナ
+> 「ひ、ひどい……
+>  どうしてこんなことができるの!?」
+“Th-this is terrible... how can they do such a thing?!”
+
+@20406 Bright · ブライト
+> 「大尉、アウドムラはホンコンを
+>  脱出する。時間をかせいでくれ」
+“Captain, the Audhumla will escape Hong Kong. Buy us time.”
+
+@20407 Quattro · クワトロ
+> 「了解した」
+“Understood.”
+
+@20408 Quattro · クワトロ
+> (が、簡単にいくとは思えんな……)
+(But I doubt it'll go that easily...)
+
+@20409 Amuro · アムロ
+> 「……こんなところで無差別攻撃を
+>  するとは、それでも地球人か!」
+“...To launch an indiscriminate attack in a place like this—are you even Earthlings?!”
+
+@20410 Four · フォウ
+> 「な、なんだ!?
+>  このザラッとした感覚は?
+“Wh-what is this?! This prickling sensation?
+---
+>  こんな感覚を持った敵が
+>  いるというのか……気持ち悪い」
+There's an enemy out there with a feeling like this...? It's sickening.”
+
+@20411 Quattro · クワトロ
+> 「……むう……なんだ、
+>  このプレッシャーは!?」
+“...Hmm... what is this pressure?!”
+
+@20412 Amuro · アムロ
+> 「これは……あの黒いマシーンか!」
+“This is... that black machine!”
+
+@20413 Bright · ブライト
+> 「パイロット各員は順次、
+>  出撃しろ!」
+“All pilots, launch in sequence!”
+
+@20414 Dr. Hazuki · 葉月博士
+> 「艦長、獣戦機は
+>  調整が終了していない
+“Captain, the beast fighters haven't finished their adjustments yet.
+---
+>  すまないが少し待ってくれ」
+Sorry, but give us a little time.”
+
+@20415 Bright · ブライト
+> 「急いでください! 出撃、まだか!?」
+“Please hurry! Are the launches ready yet?!”
+
+@20416 Koji · 甲児
+> 「うっひょーっ、こいつはいいや! やっぱ
+>  空を飛べるってのは最高だぜ!」
+“Whoa-ho, this is great! Flying through the sky really is the best!”
+
+@20417 Masato · 雅人
+> 「あれは……イーグルファイター!
+>  忍だよ!」
+“That's... the Eagle Fighter! It's Shinobu!”
+
+@20418 Sara · 沙羅
+> 「忍!? 大丈夫なのかい!?」
+“Shinobu?! Is he all right?!”
+
+@20419 Shinobu · 忍
+> 「沙羅か。すまねぇ、またせたな!」
+“Sara? Sorry, did I keep you waiting?!”
+
+@20420 Dr. Hazuki · 葉月博士
+> 「やめろ、藤原。
+>  いまのお前では無理だ」
+“Stop it, Fujiwara. You can't do it the way you are now.”
+
+@20421 Shinobu · 忍
+> 「へっ、心配すんな葉月さんよ。
+>  俺はきっちり思い出したからな」
+“Heh, don't you worry, Dr. Hazuki. I remember it all perfectly now.”
+
+@20422 Dr. Hazuki · 葉月博士
+> 「思い出した?」
+“You remember?”
+
+@20423 Shinobu · 忍
+> 「ああ。獣戦機隊に野性を
+>  しばる理性はいらねぇってな!
+“Yeah. The Cyber Beast Force doesn't need any reason holding back its wild instincts!
+---
+>  わかったら、腹くくって見物してな!」
+If you get it, then sit back and watch!”
+
+@20424 Ryo · 亮
+> 「フッ、あいかわらずの単細胞ぶりだな
+>  威勢だけでは戦いには勝てんぞ」
+“Hmph, still the same single-celled idiot. You can't win a battle on bravado alone.”
+
+@20425 Shinobu · 忍
+> 「なんだと亮、てめえっ!」
+“What'd you say, Ryo?! You bastard!”
+
+@20426 Masato · 雅人
+> 「まぁまぁ忍。いいじゃないか亮、
+>  それでこそ忍っていうもんだろ」
+“Now, now, Shinobu. Come on, Ryo, it's fine—that's just what makes Shinobu who he is.”
+
+@20427 Sara · 沙羅
+> 「あんたたち、
+>  なにゴチャゴチャやってんのさ!
+“What are you all bickering about?!
+---
+>  敵は目の前にいるんだよ!
+>  博士、まだ出られないのかい!?」
+The enemy's right in front of us! Doctor, can't we launch yet?!”
+
+@20428 Dr. Hazuki · 葉月博士
+> 「あわてるな。いま終わったところだ」
+“Don't rush. It's finished just now.”
+
+@20429 Masato · 雅人
+> 「それじゃ行きますか。
+>  艦長、獣戦機出撃します!」
+“Then let's go. Captain, the beast fighters are launching!”
+
+@20430 Shinobu · 忍
+> 「へっ、やけにのんびりした
+>  出撃じゃねぇか」
+“Heh, that's one awfully leisurely launch.”
+
+@20431 Sara · 沙羅
+> 「忍っ、ぼけっとしてんじゃないよ!」
+“Shinobu! Don't just stand there spacing out!”
+
+@20432 Shinobu · 忍
+> 「いわれるまでもねぇ。いくぞ、亮、
+>  雅人、沙羅
+“You don't have to tell me. Let's go, Ryo, Masato, Sara.
+---
+>  アグレッシブ・モードじゃ話にならねぇ。
+>  合体するぞ!」
+Aggressive Mode won't cut it. We're combining!”
+
+@20433 Masato · 雅人
+> 「へへっ、そうこなくっちゃ!」
+“Heh heh, now that's what I wanted to hear!”
+
+@20434 Sara · 沙羅
+> 「ああ、すっかり待ちくたびれてたとこさ!」
+“Yeah, I've been waiting so long I was getting tired of it!”
+
+@20435 Ryo · 亮
+> 「フッ、久しぶりに気合いをいれて
+>  いくとするか」
+“Hmph, let's go at it with Spirit for the first time in a while.”
+
+@20436 Shinobu · 忍
+> 「キーワード、
+>  D・A・N・C・O・U・G・A……」
+“Keyword: D-A-N-C-O-U-G-A...”
+
+@20437 Shinobu · 忍
+> 「ダンクーガ! ロックオフ!
+>  やあぁぁぁぁぁってやるぜ!!」
+“Dancouga! Lock off! I'm gonna tear you apart!!”
+
+@20438 Domon · ドモン
+> 「あれはノーベルガンダム……
+>  アレンビーなのか!?」
+“That's the Noble Gundam... is that Allenby?!”
+
+@20439 Domon · ドモン
+> 「アレンビー!」
+“Allenby!”
+
+@20440 Allenby · アレンビー
+> 「え……? ドモン?
+>  本当にドモンなの?」
+“Huh...? Domon? Is it really you, Domon?”
+
+@20441 Domon · ドモン
+> 「アレンビー、なぜお前が」
+“Allenby, why are you—”
+
+@20442 Allenby · アレンビー
+> 「しかたがなかったのよ。
+>  軍の施設で育てられたあたしには
+“I had no choice. Raised in a military facility, I
+---
+>  他にどうすることもできなかったんだから
+>  でもドモン、あなたに会えてよかった
+couldn't do anything else. But Domon, I'm glad I got to see you.
+---
+>  お願い、一緒に連れていって」
+Please, take me with you.”
+
+@20443 Domon · ドモン
+> 「アレンビー……いいだろう、来い!」
+“Allenby... all right, come on!”
+
+@20444 Wong · ウォン
+> 「おやおや、これはいけません。
+>  バーサーカーシステムを起動しろ!」
+“Oh dear, oh dear, this won't do. Activate the Berserker System!”
+
+@20445 Allenby · アレンビー
+> 「うあぁぁぁ……やめて! お願いだから
+>  システムを切って! ドモン、助けて!」
+“Uwaaah... stop! Please, turn the system off! Domon, help me!”
+
+@20446 Domon · ドモン
+> 「どうしたんだ、アレンビー!」
+“What's wrong, Allenby?!”
+
+@20447 Amuro · アムロ
+> 「さがれドモン。戦闘を強制する
+>  システムが遠隔コントロールされている
+“Fall back, Domon. The system forcing her to fight is being remote-controlled.
+---
+>  残念だが今、
+>  彼女を救うのは無理だ」
+I'm sorry, but right now there's no way to save her.”
+
+@20448 Domon · ドモン
+> 「し、しかし!」
+“B-but!”
+
+@20449 Amuro · アムロ
+> 「目的を果たさずに死ぬつもりか、
+>  ドモン・カッシュ!?」
+“Do you intend to die without accomplishing your goal, Domon Kasshu?!”
+
+@20450 Domon · ドモン
+> 「クッ……すまん、アレンビー……」
+“Ngh... forgive me, Allenby...”
+
+@20451 Garrison · ギャリソン
+> 「艦長、物資の搬入は、
+>  すべて終わったようですぞ」
+“Captain, it seems the loading of supplies is all finished.”
+
+@20452 Bright · ブライト
+> 「よし、アウドムラは、ただちにホンコンを
+>  離れる。全機撤退しろ!」
+“Good. The Audhumla leaves Hong Kong at once. All units, retreat!”
+
+@20453 Garrison · ギャリソン
+> 「艦長、物資の搬入は、
+>  すべて終わったようですぞ」
+“Captain, it seems the loading of supplies is all finished.”
+
+@20454 Bright · ブライト
+> 「よし、アウドムラは、ただちにホンコンを
+>  離れる。全機撤退しろ!」
+“Good. The Audhumla leaves Hong Kong at once. All units, retreat!”
+
+@20455 Amuro · アムロ
+> 「なんだ、このプレッシャーは!?」
+“What is this pressure?!”
+
+@20456 Four · フォウ
+> 「くっ……気持ちが悪い……。
+>  こんな敵がいるのか……」
+“Ngh... this feels awful... There's an enemy like this...?”
+
+@20457 Quattro · クワトロ
+# 审校：「強化人間」在Z高达语境下应译为 Enhanced Human，而非 Cyber-Newtype；Cyber-Newtype 是不同作品用语。
+> 「ええい、強化人間だというのか!?」
+“Grr, so she's an Enhanced Human?!”
+
+@20458 Four · フォウ
+> 「な、なんだ? よるな!!」
+“Wh-what?! Stay away!!”
+
+@20459 Domon · ドモン
+> 「アレンビー! なぜだ!?」
+“Allenby! Why?!”
+
+@20460 Allenby · アレンビー
+> 「ドモン……」
+“Domon...”
+
+@20461 Allenby · アレンビー
+> 「さぁ、ファイトしようよぉぉぉーっ!!」
+“Come on, let's fight!!”
+
+@20462 Domon · ドモン
+> 「アレンビィィィィーッ!!」
+“Allenbyyyyy!!”
+
+@20463 Brad · ブラッド（按段落 3DD3）
+> 「ふん、さすが英雄と呼ばれた男
+>  っていうわけか。やるな、アムロ・レイ」
+“Hmph, so he really is the man they called a hero. Not bad, Amuro Ray.”
+
+@20464 Manami · マナミ（按段落 3DD4）
+> 「アムロ・レイ……1年戦争の
+>  英雄……噂は本当だったんだわ」
+“Amuro Ray... the hero of the One Year War... So the rumors were true.”
+
+@20465 Beltorchika · ベルトーチカ
+> 「第一印象を取り消さなくてはね
+>  眠りから覚めたアムロ・レイ……
+“I suppose I'll have to take back my first impression. Amuro Ray, awake from his slumber...
+---
+>  おびえる男はキライだけど、
+>  好戦的なのもイヤね……」
+I hate men who cower, but I don't like the warmongering type either...”
+
+@20466 Beltorchika · ベルトーチカ
+> 「アムロ、アムロ! よく、無事で……」
+“Amuro, Amuro! Thank goodness you're safe...”
+
+@20467 Amuro · アムロ
+> 「痛いよ、ベルトーチカ……」
+“That hurts, Beltorchika...”
+
+@20468 Banjo · 万丈
+> 「ご苦労さま。さすがだね、アムロ
+>  大尉。忍くんもよく来てくれた」
+“Good work. Just as expected, Captain Amuro. And Shinobu, thanks for coming too.”
+
+@20469 Shinobu · 忍
+> 「へっ、礼なんざいらねぇよ。
+>  またムゲ野郎と
+“Heh, I don't need any thanks. Just getting to fight those Muge
+---
+>  戦えるってだけで十分だぜ」
+bastards again is enough for me.”
+
+@20470 Sara · 沙羅
+> 「あんた、ちっとも成長してないんだね」
+“You haven't grown one bit, have you.”
+
+@20471 Shinobu · 忍
+> 「なんだと、沙羅。
+>  お前には、いわれたくねぇよ」
+“What was that, Sara? I don't want to hear that from you.”
+
+@20472 Sara · 沙羅
+> 「なんだって、そりゃいったい
+>  どういうことだい、忍!?」
+“What did you say? Just what do you mean by that, Shinobu?!”
+
+@20473 Duo · デュオ
+> 「はいはい、そのへんにしとこうぜ。
+>  やるこたぁ、山積みなんだからさ」
+“All right, all right, let's leave it at that. We've got a mountain of things to do.”
+
+@20474 Bright · ブライト
+> 「進路をチベットにとれ」
+“Set a course for Tibet.”
+
+@20475 Reika · レイカ
+> 「チベットですか?」
+“Tibet, sir?”
+
+@20476 Bright · ブライト
+> 「そうだ。
+>  葉月博士によれば、チベットに
+“That's right. According to Dr. Hazuki, the Liberation Front has
+---
+>  解放戦線が確保した戦艦が
+>  用意してあるらしい」
+a battleship secured and waiting for us in Tibet.”
+
+@20477 Banjo · 万丈
+> 「それはありがたいな」
+“That's a relief.”
+
+@20478 Lady · レディ
+# 审校：同上，「強化人間」统一译为 Enhanced Human。
+> 「強化人間だの何だのと、
+>  あまりあてにはならんな」
+“Enhanced Humans and whatnot... I can't say I put much stock in them.”
+
+@20479 Wong · ウォン
+> 「それはひどいおっしゃりようですな。
+>  あれはまだまだ実験段階だと
+“That's a harsh way to put it. I believe I told you that those are still
+---
+>  申し上げておいたはずですよ」
+in the experimental stage.”
+
+@20480 Lady · レディ
+> 「ふん、では追撃隊は出せない
+>  というのだな」
+“Hmph. Then you're saying you can't send a pursuit force.”
+
+@20481 Wong · ウォン
+> 「いえいえ、そうは言っておりませんよ、
+>  レディ・アン特佐。ただ私も
+“No, no, I'm not saying that at all, Special Colonel Lady Une. It's just that,
+---
+>  帝国からネオホンコンをあずかって
+>  いる以上、あまり無理はできない
+as I've been entrusted with Neo Hong Kong by the Empire, I can't afford to
+---
+>  というわけでして。事情はご理解
+>  いただきたいものですな」
+overextend myself. I do hope you'll understand the situation.”
+
+@20482 Lady · レディ
+> 「どちらでも同じことだ。まぁよい、
+>  追撃隊はこちらで手配する
+“It makes no difference either way. Very well, I'll arrange the pursuit force
+---
+>  ただし、
+>  多少の兵は出してもらうぞ」
+myself. But you will provide some troops.”
+
+@20483 Wong · ウォン
+> 「それはもちろんですとも」
+“But of course.”
+
+@20484 Wong · ウォン
+> 「フォウ、もう少しがんばってくれなければ
+>  研究所にも資金がまわせなくなる」
+“Four, if you don't try a little harder, I won't be able to allocate any more funds to the lab.”
+
+@20485 Four · フォウ
+> 「サイコガンダムを使わない者に
+>  あの感覚がわかってたまるか
+“How could anyone who doesn't pilot the Psyco Gundam possibly understand that sensation?
+---
+>  わかるのか、お前に!
+>  ヘビが頭をのたうつような感覚が!?」
+Do you understand it?! That feeling like a snake writhing inside your head?!”
+
+@20486 Wong · ウォン
+> 「もちろんわかりません。
+>  しかしそれが治るかどうかも
+“Of course I don't. But whether that can be cured or not
+---
+>  君の努力次第なのですよ」
+depends entirely on your efforts.”
+
+@20487 Four · フォウ
+> 「くっ……わかった。
+>  アウドムラを追撃すればいいのだろう」
+“Ngh... fine. I just have to pursue the Audhumla, right.”
+
+@20488 Wong · ウォン
+> 「そういうことです。
+>  期待していますよ、フォウ」
+“Exactly. I'm counting on you, Four.”

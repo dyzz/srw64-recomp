@@ -1,0 +1,90 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7861 Giura · ギウラ
+# 审校：原文结尾有感叹号，译文漏掉了。
+> 「ふっ……!」
+“Hmph...!”
+
+@7862 Giura · ギウラ
+# 审校：原文「しねぇー!!」是拖长音的怒吼，译文太短，改为拖长音以保留气势。
+> 「しねぇー!!」
+“Diiie!”
+
+@7863 Giura · ギウラ
+# 审校：「サル」在吉乌拉口中是蔑称，用 ape 比 monkey 更贴合其粗暴语气。
+> 「このサルめっ!!」
+“You damn ape!”
+
+@7864 Giura · ギウラ
+> 「邪魔をするなっ!!」
+“Don't get in my way!”
+
+@7865 Giura · ギウラ
+> 「どけっ! どけっ!!」
+“Out of my way! Move!”
+
+@7866 Giura · ギウラ
+> 「とどめを刺してやる!!」
+“I'll finish you off!”
+
+@7867 Giura · ギウラ
+> 「直撃!?」
+“A direct hit?!”
+
+@7868 Giura · ギウラ
+> 「うっ、うわっ!!」
+“Ugh, whoa!”
+
+@7869 Giura · ギウラ
+> 「し、しまった!!」
+“D-Damn it!”
+
+@7870 Giura · ギウラ
+> 「あ、あっ!」
+“Ah, ah!”
+
+@7871 Giura · ギウラ
+# 审校：原文结尾为「!」，译文漏掉感叹号。
+> 「くっ! 最後の意地をかけての
+>  悪あがきか!」
+“Hmph! A last-ditch struggle for pride, is it?!”
+
+@7872 Giura · ギウラ
+# 审校：与 L3 统一，将 monkey 改为 ape。
+> 「くっ! うっとうしいサルめ!!」
+“Hmph! You irritating ape!”
+
+@7873 Giura · ギウラ
+# 审校：「ガキ」带有轻蔑语气，brat 比 child 更贴合吉乌拉的说话方式。
+> 「ガキの戦い方だな……」
+“That's a brat's way of fighting...”
+
+@7874 Giura · ギウラ
+> 「弱い! 弱い!」
+“Weak! Weak!”
+
+@7875 Giura · ギウラ
+> 「ふん! 無駄なことを……」
+“Hmph! What a waste of effort...”
+
+@7876 Giura · ギウラ
+> 「私をなめるな!!」
+“Don't underestimate me!”
+
+@7877 Giura · ギウラ
+> 「おそいんだよ!!」
+“Too slow!”
+
+@7878 Giura · ギウラ
+> 「効かぬわ!」
+“It's useless!”
+
+@7879 Giura · ギウラ
+> 「くっ、だめか!?」
+“Hmph, no good?!”
+
+@7880 Giura · ギウラ
+# 审校：原文结尾为「!」，译文漏掉感叹号。
+> 「おのれそんなところから攻撃して
+>  くるとは!」
+“Curse you, attacking from a place like that?!”

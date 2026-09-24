@@ -1,0 +1,482 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@43528 Glemy · グレミー
+> 「くっ、まさかハマーンより先に
+>  お前たちがくるとはな
+“Hmph, to think you'd arrive before Haman.
+---
+>  よかろう、まずはお前たちから
+>  片づけてやる!」
+Fine, then. I'll deal with you lot first!”
+
+@43529 Ple-Two · プルツー
+> 「くっ……」
+“Ngh...”
+
+@43530 Glemy · グレミー
+> 「どうしたプルツー? 奴らを倒せ!」
+“What's wrong, Ple-Two? Destroy them!”
+
+@43531 Ple-Two · プルツー
+> 「わかってるッ!」
+“I know!”
+
+@43532 Ple · プル
+> 「もうやめてプルツー! ジュドーやカミーユ
+>  たちの邪魔をしないで!」
+“Stop it, Ple-Two! Don't get in Judau and Kamille's way!”
+
+@43533 Ple-Two · プルツー
+> 「くっ……お前か! さっきから私の
+>  頭に中に入りこもうとするのは!」
+“Ngh... It's you! You're the one who's been trying to get inside my head!”
+
+@43534 Ple · プル
+> 「ジュドーたちは敵じゃない。
+>  ジュドーたちと一緒にいると
+“Judau and the others aren't enemies. When you're with them,
+---
+>  気持ちがいいんだってこと、
+>  なんで気づかないの!?」
+it feels good. Why can't you see that?!”
+
+@43535 Ple-Two · プルツー
+> 「やめろ!! 私を、
+>  混乱させるなぁっ!!」
+“Stop it!! Don't confuse me!!”
+
+@43536 Glemy · グレミー
+# 审校：第二页“君はパイロットをやっていてはいけないのだ”是グレミー对ルー居高临下的劝告，初稿“You have no business being a pilot”语气过重且不够贴近原意，改为更直接的“You shouldn't be a pilot.”
+> 「あれは……ルーさんがいるのか!?
+>  ルー・ルカ、やめるんだ
+“That's... Is that Roux?! Roux Louka, stop this.
+---
+>  君はパイロットをやっていては
+>  いけないのだ」
+You shouldn't be a pilot.”
+
+@43537 Roux · ルー
+# 审校：原文“もう、何勝手なこといってんのよ!”是ルー对グレミー擅自决定的强烈不满，初稿拆成两句且加了原文没有的“Who do you think you are?!”，改为一句更自然的口语表达
+> 「もう、何勝手なこといってんのよ!」
+“Oh, what are you going on about?!”
+
+@43538 Judau · ジュドー
+> 「グレミーの人形になってしまって
+>  いいのか!? プルツー!」
+“Are you really okay with being Glemy's puppet?! Ple-Two!”
+
+@43539 Ple-Two · プルツー
+> 「ジュドー……」
+“Judau...”
+
+@43540 Glemy · グレミー
+> 「やめろ! 私には戦わねばならぬ
+>  大義がある!
+“Stop! I have a great cause I must fight for!
+---
+>  お前こそ、無意味に戦いを
+>  続けているだけではないか」
+You're the one who's just fighting pointlessly, aren't you?”
+
+@43541 Judau · ジュドー
+> 「な……なに!?」
+“Wha... What?!”
+
+@43542 Glemy · グレミー
+> 「お前が戦っているのは、状況に
+>  すぎんだろう! しかし私は違う
+“What you're fighting for is just circumstance! But I'm different.
+---
+>  自ら過酷な生き方を選び、
+>  後悔はしていない。お前には
+I chose this harsh path myself, and I have no regrets. You don't have
+---
+>  内からわきあがる衝動があるまい!
+>  そんなクズは私の前から去れ!」
+that impulse welling up from within! Get out of my sight, you trash!”
+
+@43543 Judau · ジュドー
+> 「何が大義だよ! 大義があれば
+>  何だっていいってのかよ!?」
+“What great cause?! So as long as you've got a cause, anything goes?!”
+
+@43544 Glemy · グレミー
+> 「私は、ザビ家の血をひく者として、
+>  この地球圏を
+“As one who carries the blood of the Zabi family, I must guide
+---
+>  正しく導かねばならんのだ!
+>  貴様にはわかるまい!」
+this Earth Sphere on the right path! You could never understand!”
+
+@43545 Judau · ジュドー
+> 「わかってたまるかよ!
+>  地球はメチャメチャだし
+“Like hell I could! The Earth is in ruins,
+---
+>  コロニーだって半分も残っちゃいない
+>  今はね、人類全体が
+and not even half the colonies are left. Now all of humanity
+---
+>  新しくやりなおさなければいけないんだ。
+>  あんたみたいな小さなことにこだわる
+has to start over. As long as people like you cling to your petty obsessions,
+---
+>  人間は、倒さなくちゃ地球圏に
+>  未来は見えないんだよ!」
+there's no future for the Earth Sphere unless we take you down!”
+
+@43546 Glemy · グレミー
+> 「小さなことだと!? 私の大義を
+>  小さなことだというのか!」
+“Petty?! You call my great cause petty?!”
+
+@43547 Judau · ジュドー
+> 「血に縛られたような連中は、
+>  邪魔なんだよ! 人間の
+“People who are bound by blood just get in the way! I won't let
+---
+>  可能性をちっぽけな自己満足
+>  のためにつぶされてたまるか!」
+humanity's potential be crushed for the sake of your petty self-satisfaction!”
+
+@43548 Ple · プル
+> 「プルツー、ジュドーは
+>  やさしいことをいってるんだよ。プルツー」
+“Ple-Two, Judau is saying something kind. Ple-Two.”
+
+@43549 Ple-Two · プルツー
+> 「プル……」
+“Ple...”
+
+@43550 Glemy · グレミー
+> 「何をする気だプルツー。
+>  お前の役目は奴らを倒すことだ
+“What are you planning, Ple-Two? Your role is to destroy them.
+---
+>  ジュドーを殺せ、プルツー!」
+Kill Judau, Ple-Two!”
+
+@43551 Ple-Two · プルツー
+> 「……ジュドー……私も、
+>  私も連れてって!!」
+“...Judau... Take me too! Take me with you!!”
+
+@43552 Glemy · グレミー
+> 「ばかなッ!? もどれプルツー!」
+“Impossible?! Come back, Ple-Two!”
+
+@43553 Ple-Two · プルツー
+> 「いやだ! 私はジュドーたちと
+>  一緒に行く!」
+“No! I'm going with Judau and the others!”
+
+@43554 Judau · ジュドー
+> 「よし、こっちだプルツー」
+“All right, this way, Ple-Two.”
+
+@43555 Glemy · グレミー
+> 「待て! プルツー!!」
+“Wait! Ple-Two!!”
+
+@43556 Glemy · グレミー
+> 「くっ……おのれプルツー、お前まで
+>  この私を裏切るのか!」
+“Ngh... Curse you, Ple-Two. Even you betray me?!”
+
+@43557 Judau · ジュドー
+> 「あんたと一緒じゃ、プルもプルツーも
+>  不幸になる!」
+“With you, both Ple and Ple-Two will only end up miserable!”
+
+@43558 Glemy · グレミー
+> 「黙れ! 貴様などにいったい
+>  何がわかるというのだ!!」
+“Silence! What could a wretch like you possibly understand?!”
+
+@43559 Judau · ジュドー
+> 「プルツー、グレミーはもういない。
+>  もうやめろ、プルツー!」
+“Ple-Two, Glemy is gone. Stop this already, Ple-Two!”
+
+@43560 Ple-Two · プルツー
+> 「来るな……来るなぁっ!!」
+“Stay away... Stay away!!”
+
+@43561 Judau · ジュドー
+> 「プルツー!?」
+“Ple-Two?!”
+
+@43562 Ple · プル
+> 「ジュドー……ジュドー……」
+“Judau... Judau...”
+
+@43563 Judau · ジュドー
+> 「どうした、プル?」
+“What's wrong, Ple?”
+
+@43564 Ple · プル
+> 「もうだめ……ジュドー……プルツーは
+>  助けられないよ……」
+“It's no use... Judau... Ple-Two can't be saved...”
+
+@43565 Judau · ジュドー
+> 「なんだって!? どういうことだ、
+>  おい、プル!」
+“What?! What do you mean, Ple?!”
+
+@43566 Ple · プル
+> 「グレミーの死の波動に……プルツーは
+>  取り込まれちゃったんだ。もう……
+“Glemy's wave of death... Ple-Two got swallowed up by it. There's...
+---
+>  もうどうにもできないよ……」
+there's nothing we can do anymore...”
+
+@43567 Ple-Two · プルツー
+> 「不愉快な奴らめ、消えろ!
+>  私のそばに寄るな!」
+“You unpleasant lot, vanish! Don't come near me!”
+
+@43568 Judau · ジュドー
+> 「プルツー……」
+“Ple-Two...”
+
+@43569 Roux · ルー
+# 审校：原文“私のこと好きだっていうの……忘れないよ……”是ルー对グレミー曾表白过的回应，初稿语序和“that you said you loved me”略显生硬，改为更自然的口语表达
+> 「私のこと好きだっていうの……
+>  忘れないよ……」
+“You said you loved me... I won't forget it...”
+
+@43570 Glemy · グレミー
+> 「き、君か……ルー・ルカ……
+>  君にやられる!?」
+“Y-You... Roux Louka... Killed by you?!”
+
+@43571 Glemy · グレミー
+> 「こ……こんなことが……
+>  お前たちなどにぃぃぃーっ!!」
+“Th-This can't be... By the likes of you people!!”
+
+@43572 Glemy · グレミー
+> 「こ……こんなことが……
+>  お前たちなどにぃぃぃーっ!!」
+“Th-This can't be... By the likes of you people!!”
+
+@43573 Ple-Two · プルツー
+> 「あ……グレミー……? グレミー!?
+“Ah... Glemy...? Glemy?!
+---
+>  うぁぁぁぁぁぁぁーっ、いや、頭が……」
+Uwaaaaaaaah, no, my head...”
+
+@43574 Ple-Two · プルツー
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@43575 Glemy · グレミー
+> 「プルツー、どうしたプルツー!?」
+“Ple-Two, what's wrong, Ple-Two?!”
+
+@43576 Glemy · グレミー
+> 「プルツー!? くっ、おのれぇっ!!」
+“Ple-Two?! Ngh, curse you!!”
+
+@43577 Judau · ジュドー
+> 「あんたはもう終わりなんだよ!」
+“You're finished already!”
+
+@43578 Glemy · グレミー
+> 「道理のわからぬ子供がッ!!」
+“You unreasonable child!!”
+
+@43579 Judau · ジュドー
+> 「プルツー……かわいそうだけど!」
+“Ple-Two... I'm sorry, but!”
+
+@43580 Ple-Two · プルツー
+> 「くっ……お前などにっ!!」
+“Ngh... Not by the likes of you!!”
+
+@43581 Roux · ルー
+> 「あんた、みっともないよ!」
+“You're a sorry sight!”
+
+@43582 Glemy · グレミー
+> 「ルーさん!?」
+“Roux?!”
+
+@43583 Ple · プル
+> 「くっ……グレミー!!」
+“Ngh... Glemy!!”
+
+@43584 Glemy · グレミー
+> 「裏切り者め!
+>  私の恩を忘れおって!」
+“You traitor! Have you forgotten what I did for you?!”
+
+@43585 Ple · プル
+> 「プルツー、止められないのなら、せめて!」
+“Ple-Two, if I can't stop you, then at least!”
+
+@43586 Ple-Two · プルツー
+> 「お前は不愉快だ!
+>  ここからいなくなれ!!」
+“You're an eyesore! Get out of here!!”
+
+@43587 Bright · ブライト
+> 「そうか。グレミーは倒したか……」
+“I see. So Glemy is defeated...”
+
+@43588 Amuro · アムロ
+> 「ベル、ハマーンの艦隊は
+>  どうなっている?」
+“Bel, what's the status of Haman's fleet?”
+
+@43589 Beltorchika · ベルトーチカ
+> 「ひどいものよ。例の
+>  キュベレイタイプのMSのせいね
+“It's a mess. It's because of those Quebeley-type mobile suits.
+---
+>  大打撃を受けているといっていいわ」
+You could say they've taken heavy damage.”
+
+@43590 Judau · ジュドー
+> 「……やろうぜ。ここで一気に
+>  ハマーンをしとめるんだ」
+“...Let's do it. We finish Haman off right here and now.”
+
+@43591 Domon · ドモン
+> 「そうだな。詰めを誤ると何度でも
+>  出てくる。そいつは経験済みだ」
+“Right. If we let her slip away, she'll come back again and again. I know that from experience.”
+
+@43592 Sara · 沙羅
+> 「あたしもその意見には賛成だよ。
+>  こっちもボロボロだけど
+“I agree with that too. We're battered ourselves, but
+---
+>  今やっとかないとダメさ。
+>  そいつだけは間違いないよ」
+we've got to settle this now. That much I'm sure of.”
+
+@43593 Ryoma · リョウ
+> 「ああ。どう考えても俺たちより
+>  ハマーンの方が立て直しが早い
+“Yeah. No matter how you look at it, Haman will regroup faster than we will.
+---
+>  今を逃せば、これほどのチャンスは
+>  もうこないだろう」
+If we miss this chance, we won't get another like it.”
+
+@43594 Elle · エレ
+> 「そう思います。ここで退いては
+>  あとに問題を残すことになります
+“I think so too. If we retreat here, we'll only leave problems for later.
+---
+>  ここが正念場でしょう」
+This is the decisive moment.”
+
+@43595 Ciela · シーラ
+> 「その感じ方は正しいでしょう。
+>  ハマーン・カーンに時間を与えては
+“That feeling is correct. We must not give Haman Karn time.
+---
+>  なりません」
+We cannot allow it.”
+
+@43596 Bright · ブライト
+> 「しかし……いま戦闘を終えたばかりで
+>  まともに戦えるのか?」
+“But... we've just finished a battle. Can we really fight properly?”
+
+@43597 Judau · ジュドー
+> 「そんなこといってる場合じゃない
+>  だろう!? ブライトさん、無茶でも
+“This isn't the time to say that! Bright, saying we'll do it even if it's reckless—
+---
+>  やるんだってのは、あんたの口癖
+>  でしょうに!」
+that's your favorite line, isn't it?!”
+
+@43598 Garrison · ギャリソン
+# 审校：原文“1本とられましたな”指舰长被哈曼赢了一着，初稿 you've lost that round 方向正确但未点明对手，改为 she's taken that one from you 更贴合上下文。
+> 「これはこれは。艦長、
+>  1本とられましたな」
+“Well, well. Captain, she's taken that one from you.”
+
+@43599 Ark · アーク（按段落 3DD1）
+> 「行きましょう。ハマーンをここで
+>  叩けなけりゃ、ここまで出てきて
+“Let's go. If we can't strike Haman down here, then coming this far and
+---
+>  グレミーをつぶしたってのは、
+>  ハマーンに利するだけです」
+crushing Glemy only ends up benefiting Haman.”
+
+@43600 Selain · セレイン（按段落 3DD2）
+> 「ジュドーのいう通りだ。このまま
+>  もう1度出よう、艦長。直接
+“Judau's right. Let's sortie once more as we are, Captain. We'll cut straight
+---
+>  ハマーンの喉もとに切りこんでやる。
+>  いま出れば、ハマーンの首をとれる」
+into Haman's throat. If we go now, we can take Haman's head.”
+
+@43601 Brad · ブラッド（按段落 3DD3）
+> 「行こうぜ、艦長。今さら
+>  考えたってしかたがねぇじゃねぇか
+“Let's go, Captain. There's no point thinking about it now.
+---
+>  ここまで来た以上は、
+>  最後までやるしかないぜ」
+We've come this far—we've got no choice but to see it through.”
+
+@43602 Manami · マナミ（按段落 3DD4）
+> 「みんな、行きましょう。これ以上
+>  戦いが長びくのを許すわけには
+“Everyone, let's go. We can't allow this battle to drag on any longer.
+---
+>  いかないわ。ここで決着をつけましょう
+>  ハマーンを叩くわ」
+Let's settle it here. We'll strike Haman down.”
+
+@43603 Bright · ブライト
+> 「……みんな、それでいいんだな?」
+“...Everyone, you're all agreed on this?”
+
+@43604 Amuro · アムロ
+> 「覚悟はできているさ、ブライト」
+“I'm ready for it, Bright.”
+
+@43605 Bright · ブライト
+> 「わかった。ハマーンの位置は
+>  つかめるのか?」
+“Understood. Can you pinpoint Haman's location?”
+
+@43606 Garrison · ギャリソン
+> 「おおよその位置は見当がつきます。
+>  そのようなこともあろうかと
+“I have a rough idea of her position. In case something like this happened,
+---
+>  ハマーンの所在は
+>  トレースしておりましたので」
+I've been tracing Haman's whereabouts.”
+
+@43607 Chum · チャム
+> 「それで十分よ!
+>  近づけばあたしたちだって
+“That's good enough! Once we get close, even we can
+---
+>  ハマーンのオーラ力は感じとれるわ!」
+sense Haman's aura power!”
+
+@43608 Banjo · 万丈
+> 「決まったようだね。
+>  では、行くとしようか?」
+“Looks like it's settled. So, shall we go?”
+
+@43609 Bright · ブライト
+> 「よし、全員持ち場にもどれ。
+>  本艦隊はこれよりハマーンを討つ」
+“All right, everyone back to your posts. This fleet will now strike Haman down.”

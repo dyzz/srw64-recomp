@@ -1,0 +1,37 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6965 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6966 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6967 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6968 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6969 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6970 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6971 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6972 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”
+
+@6973 Dorothy · ドロシー
+> 「ばかめ!」
+“Fool!”

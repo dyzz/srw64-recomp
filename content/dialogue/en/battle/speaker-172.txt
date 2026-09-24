@@ -1,0 +1,94 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9644 Dr. Hazuki · 葉月博士
+> 「発射!」
+“Fire!”
+
+@9645 Dr. Hazuki · 葉月博士
+> 「成功してくれ!」
+“Let it work!”
+
+@9646 Dr. Hazuki · 葉月博士
+> 「発射ーっ!」
+“Fire!”
+
+@9647 Dr. Hazuki · 葉月博士
+> 「頼むぞ!」
+“I'm counting on you!”
+
+@9648 Dr. Hazuki · 葉月博士
+> 「くっ、しまった……」
+“Ngh, damn it...”
+
+@9649 Dr. Hazuki · 葉月博士
+> 「バカな、ガンドールが……」
+“Impossible, the Gandor...”
+
+@9650 Dr. Hazuki · 葉月博士
+> 「くっ……いかん、これ以上は……」
+“Ngh... no good, any more of this...”
+
+@9651 Dr. Hazuki · 葉月博士
+> 「くっ……いかん、最悪の事態だ!」
+“Ngh... this is bad, it's the worst-case scenario!”
+
+@9652 Dr. Hazuki · 葉月博士
+> 「くっ……あと、どのくらいもたせられる!?」
+“Ngh... how much longer can we hold out?!”
+
+@9653 Dr. Hazuki · 葉月博士
+> 「何をやっている! シールドを閉めろ!」
+“What are you doing?! Close the shield!”
+
+@9654 Dr. Hazuki · 葉月博士
+> 「まだだ、ガンドールならこの程度の
+>  攻撃は耐えられる」
+“Not yet. The Gandor can withstand an attack of this level.”
+
+@9655 Dr. Hazuki · 葉月博士
+> 「くっ……いかん、出力をあげろ!」
+“Ngh... no good, raise the output!”
+
+@9656 Dr. Hazuki · 葉月博士
+> 「うむ……やってくれたな!」
+“Hmph... you've done it now!”
+
+@9657 Dr. Hazuki · 葉月博士
+> 「このガンドールを甘くみたな」
+“You underestimated this Gandor.”
+
+@9658 Dr. Hazuki · 葉月博士
+> 「ロス・イゴールが残したこの竜は、
+>  これしきのことでは落ちん!」
+“This dragon left to us by Ross Igor won't fall to something like this!”
+
+@9659 Dr. Hazuki · 葉月博士
+> 「緊急回避だ!」
+“Emergency evasion!”
+
+@9660 Dr. Hazuki · 葉月博士
+> 「避けろ!」
+“Dodge!”
+
+@9661 Dr. Hazuki · 葉月博士
+# 审校：“Hard to port!” 是航海用语，与机器人紧急回避语境不符，改为更通用的“Evasive action!”
+> 「急速回避!」
+“Evasive action!”
+
+@9662 Dr. Hazuki · 葉月博士
+# 审校：“諸君”在此是对全体乘员/同伴的称呼，gentlemen 过于男性化且不自然，改为 everyone
+> 「どんなものかな、諸君」
+“How's that, everyone?”
+
+@9663 Dr. Hazuki · 葉月博士
+> 「このガンドールにはビーム攻撃を
+>  無効化する装備があるのだ」
+“This Gandor is equipped to nullify beam attacks.”
+
+@9664 Dr. Hazuki · 葉月博士
+> 「エネルギー切れか……」
+“Out of energy, are we...”
+
+@9665 Dr. Hazuki · 葉月博士
+> 「ここからでは届かぬようだな……」
+“It seems we can't reach them from here...”

@@ -1,0 +1,884 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@20974 Hayato · ハヤト
+> 「見事なまでの廃墟だな、これは」
+“This is a magnificent ruin, I must say.”
+
+@20975 Ryoma · リョウ
+> 「ああ。だが、住んでいる人は
+>  いるようだぞ」
+“Yeah. But it looks like people are still living here.”
+
+@20976 Koji · 甲児
+> 「ホントかよ。ま、こんなところなら
+>  帝国もあんまり、こないんだろうけどな」
+“For real? Well, I guess the Empire doesn't come around a place like this much anyway.”
+
+@20977 Sayaka · さやか
+> 「ちょっと、甲児くんたち、
+>  こんなところで遊んでないで
+“Hey, Koji and the rest of you, quit playing around in a place like this.
+---
+>  少し手伝ったら、どうなのよ」
+How about giving us a hand for a change?”
+
+@20978 Boss · ボス
+# 审校：“兜なんかより”指甲儿，不是姓氏“Kabuto”，改为“Koji”以符合角色称呼。
+> 「さやかぁ、俺さまが手伝ってやるわよ
+>  兜なんかより、ずっと役にたつぜ」
+“Sayaka, I'll help you out! I'll be way more useful than Koji any day!”
+
+@20979 Sayaka · さやか
+> 「ありがとう、ボス。まったく、甲児くん
+>  たら、気がきかないんだから」
+“Thanks, Boss. Honestly, Koji, you're so inconsiderate.”
+
+@20980 Koji · 甲児
+> 「ちょ、ちょっと待ってくれよ、さやかさん」
+“W-wait a second, Sayaka!”
+
+@20981 Musashi · ムサシ
+> 「……しかし、ここの女性は
+>  気が強いなぁ」
+“...Still, the women around here sure are strong-willed.”
+
+@20982 David · デビッド
+> 「まったくだ。あんなのばっかりじゃ
+>  たまらないぜ」
+“You said it. If they're all like that, I can't take it.”
+
+@20983 Shinobu · 忍
+> 「ばぁか、レジスタンスで戦闘パイロット
+>  やってるような女が
+“You idiot. A woman who flies combat as a Resistance pilot
+---
+>  おとなしいわけがねぇだろう」
+isn't gonna be some meek little thing.”
+
+@20984 Simone · シモーヌ
+> 「へぇ? それはいったい、
+>  どういう意味かしら」
+“Oh? And just what is that supposed to mean?”
+
+@20985 Sara · 沙羅
+> 「聞かせてもらいたいもんだね」
+“I'd like to hear that myself.”
+
+@20986 Roux · ルー
+> 「そうね、ぜひとも教えていただきたいもの
+>  だわ」
+“Yes, I'd very much like you to explain that.”
+
+@20987 Shinobu · 忍
+> 「げっ」
+“Gah.”
+
+@20988 Ryoma · リョウ
+> 「お、俺たちは何もいってないぜ」
+“W-we didn't say anything!”
+
+@20989 Masato · 雅人
+> 「墓穴ほっちゃったみたいだねぇ、忍」
+“Looks like you dug your own grave, Shinobu.”
+
+@20990 Sara · 沙羅
+> 「ちょっとあんたたち、お待ちよ!」
+“Hey, you lot, hold it right there!”
+
+@20991 Eiji · エイジ
+> 「どうしたんだ?」
+“What's going on?”
+
+@20992 Simone · シモーヌ
+> 「エイジ、そいつらつかまえて!」
+“Eiji, grab those guys!”
+
+@20993 Astonaige · アストナージ
+> 「お前たち、騒ぐなら外でやってくれ!」
+“You kids, if you're going to make a racket, do it outside!”
+
+@20994 Hayato · ハヤト
+> 「………………」
+“...”
+
+@20995 Ryoma · リョウ
+> 「どうしたんだ、隼人」
+“What's wrong, Hayato?”
+
+@20996 Hayato · ハヤト
+> 「いや……この荒れ果てた街並みを
+>  見ていたら、ふと昔のことを
+“Nothing... Looking at this ruined cityscape, I just found myself
+---
+>  思い出してな」
+remembering the old days.”
+
+@20997 Ryoma · リョウ
+> 「昔の?」
+“The old days?”
+
+@20998 Hayato · ハヤト
+> 「ああ……友達のことをな。いつかでっか
+>  いことをやってやるんだってな
+“Yeah... about a friend of mine. He always used to say
+---
+>  いつもいってたよ」
+that someday he was going to do something big.”
+
+@20999 Ryoma · リョウ
+> 「そいつはいまどこに?」
+“Where is he now?”
+
+@21000 Hayato · ハヤト
+> 「いや……知らん。俺がゲッターチームに
+>  入ってから、会っていない」
+“No... I don't know. I haven't seen him since I joined the Getter Team.”
+
+@21001 Ryoma · リョウ
+> 「そうか……」
+“I see...”
+
+@21002 Hayato · ハヤト
+> 「なに、あいつのことだ。どこかでうまいこと
+>  やって、生き延びてるさ」
+“Don't worry. Knowing him, he's found some way to get by and survive somewhere.”
+
+@21003 Domon · ドモン
+> 「お前のあの機体、格闘戦用
+>  だったな。MTSもないのに
+“That machine of yours was built for melee combat. You don't even have an MTS.
+---
+>  まともに戦えるのか?」
+Can you really fight properly?”
+
+@21004 Brad · ブラッド（按段落 3DD3）
+> 「当然だ。俺の師匠がつくりあげた
+>  ロボットによる格闘術
+“Of course. It's the dedicated machine for ‘Buki Haken-ryu,’
+---
+>  “武機覇拳流”の
+>  専用機だからな
+the robot martial art my Master created.
+---
+>  格闘戦では右に出るものはない。
+>  ガンダムモドキなどと比べてほしくないね」
+In melee combat, nothing can touch it. Don't compare it to some Gundam knockoff.”
+
+@21005 Domon · ドモン
+> 「なんだと!? 貴様っ」
+“What did you say?! You bastard!”
+
+@21006 Brad · ブラッド（按段落 3DD3）
+> 「なんなら試してみてもいいんだぜ?」
+“If you want, we can settle it right here.”
+
+@21007 Domon · ドモン
+# 审校：“キング・オブ・ハートの名にかけて”应译为“In the name of the King of Hearts”，初稿“On the name”不自然。
+> 「よかろう。キング・オブ・ハートの名に
+>  かけて、その挑戦、受けてやる!」
+“Very well. In the name of the King of Hearts, I accept your challenge!”
+
+@21008 Rain · レイン
+> 「ちょ、ちょっとあなたたち、なにいってるの
+>  今が、どんなときか忘れちゃったの!?」
+“H-hey, you two, what are you saying? Have you forgotten what's going on right now?!”
+
+@21009 Domon · ドモン
+# 审校：原文“男の勝負に口出しは無用だ”强调女性不应插嘴男人的胜负，初稿“There's no need for a woman to butt in”语气较弱，改为更符合多蒙强硬性格的说法。
+> 「黙っていろ、レイン!
+>  男の勝負に口出しは無用だ!」
+“Be quiet, Rain! A woman has no business butting in on a man's duel!”
+
+@21010 Brad · ブラッド（按段落 3DD3）
+> 「その通りだ。いくぞドモン・カッシュ」
+“Exactly. Let's go, Domon Kasshu.”
+
+@21011 Beltorchika · ベルトーチカ
+> 「あら? 艦長、アースゲインと
+>  シャイニングガンダムが発進しました」
+“Oh? Captain, the Earthgain and the Shining Gundam have launched.”
+
+@21012 Bright · ブライト
+> 「なんだと? そんな命令は
+>  出していないぞ」
+“What? I never gave such an order.”
+
+@21013 Bright · ブライト
+> 「レインか? どういうことだ!?」
+“Is that Rain? What's going on?!”
+
+@21014 Rain · レイン
+> 「すみません、あの2人どうしても
+>  勝負するといって……」
+“I'm sorry. Those two insisted on having it out no matter what...”
+
+@21015 Bright · ブライト
+> 「ばかどもが。やめさせろ!
+>  誰か、あの連中を連れ戻してこい」
+“Idiots. Stop them! Someone, go bring those two back.”
+
+@21016 Amuro · アムロ
+> 「いいじゃないか、ブライト。
+>  あれもレクリエーションのうちさ」
+“Let them be, Bright. Think of it as a little recreation.”
+
+@21017 Bright · ブライト
+> 「今は待機中だぞ。……まったく、
+>  俺には、ああいう連中が
+“We're on standby right now. ...Honestly, I just can't understand what goes on in the heads of men like that.
+---
+>  なにを考えているのか、
+>  理解できんよ」
+what goes on in the heads of men like that.”
+
+@21018 Rain · レイン
+> 「あの……いっておきますが、私も理解
+>  できませんので」
+“Um... for the record, I don't understand them either.”
+
+@21019 Rain · レイン
+> (もぅ、こんなことでシャイニングガンダムを
+>  壊したりしたら、絶交なんだから)
+(Honestly, if they wreck the Shining Gundam over something like this, I'll never speak to them again.)
+
+@21020 Anna · アンナ
+> 「どうしたの、{HeroNick}? 考えごと?」
+“What's wrong, {HeroNick}? Something on your mind?”
+
+@21021 Manami · マナミ（按段落 3DD4）
+> 「ん……ちょっとね」
+“Mm... a little.”
+
+@21022 Anna · アンナ
+> 「{PartnerName}さんのこと?」
+“Is it about {PartnerName}?”
+
+@21023 Manami · マナミ（按段落 3DD4）
+> 「……そう。どうしてこうなってしまったの
+>  かなぁって思って」
+“...Yes. I was just wondering how things ended up like this.”
+
+@21024 Anna · アンナ
+> 「そのうちきっと、わかってくれると思うわ
+>  そんなに悪い人には思えなかったもの」
+“I'm sure he'll come around eventually. He never struck me as that bad a person.”
+
+@21025 Manami · マナミ（按段落 3DD4）
+> 「でもね……{PartnerNick}は昔から
+>  人のいうこと聞かなかったから
+“But you know... {PartnerNick} has never listened to anyone, even back then.
+---
+>  今は、お金のこととか、家系のこと
+>  とかいってる場合じゃないって
+Right now isn't the time to be talking about money or family bloodlines.
+---
+>  自分で気づいてくれればいいんだけど
+>  ……でも、ありがとう、アンナ」
+I just wish he'd realize that himself... But thank you, Anna.”
+
+@21026 Brad · ブラッド（按段落 3DD3）
+> 「いくぞ、ドモン!」
+“Here I come, Domon!”
+
+@21027 Domon · ドモン
+> 「来い!」
+“Come on!”
+
+@21028 Brad · ブラッド（按段落 3DD3）
+> 「ちょっと待て!」
+“Hold on a second!”
+
+@21029 Domon · ドモン
+> 「どうした、この程度でおしまいか!?」
+“What's wrong? Is this all you've got?!”
+
+@21030 Brad · ブラッド（按段落 3DD3）
+> 「違う、あれを見ろ!」
+“No, look over there!”
+
+@21031 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、何か来ます!」
+“Captain Bright, something's coming!”
+
+@21032 Bright · ブライト
+> 「何かじゃわからん。何だ、いったい?」
+“'Something' tells me nothing. What is it, exactly?”
+
+@21033 Ginrei · 銀鈴
+> 「くっ、だめ、追いつかれる!?」
+“Ngh, no, they're catching up?!”
+
+@21034 Q Boss · Qボス
+> 「フフフ、いまさらどこへ逃げようと
+>  いうのかな。さぁ、おとなしく教授と
+“Heh heh heh. And just where do you think you can run to now? Come, be good and
+---
+>  そのケースを渡してもらおう」
+hand over the Professor and that case.”
+
+@21035 Prof. Yumi · 弓教授
+> 「ぎ、銀鈴くん、君だけでも先に
+>  逃げてくれ」
+“G-Ginrei, just run ahead, even if it's only you.”
+
+@21036 Ginrei · 銀鈴
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
+> 「いけません、弓教授! もうすぐ
+>  合流予定地点ですから!」
+“I can't, Professor Yumi! We're almost at the rendezvous point!”
+
+@21037 Q Boss · Qボス
+> 「ほう? まだ逃げようというのですか。
+>  わたしはそのケースだけでも
+“Oh? Still trying to run, are you? Though I'd be quite satisfied
+---
+>  手に入ればいいのですがねぇ」
+with just that case, you know.”
+
+@21038 Ginrei · 銀鈴
+> 「こ、こんなことで!」
+“N-not like this!”
+
+@21039 ???
+> 「走って、もっと早く!
+>  そのまま、まっすぐ!」
+“Run, faster! Straight ahead, just like that!”
+
+@21040 Ginrei · 銀鈴
+> 「えっ!? ええ!」
+“Huh?! Right!”
+
+@21041 Q Boss · Qボス
+> 「な、なんだ!?」
+“W-what is this?!”
+
+@21042 Daisaku · 大作
+> 「銀鈴さんたちは、そのまま
+>  逃げてください
+“Ginrei, you and the others just keep running!
+---
+>  やれ! ジャイアントロボ!」
+Go! Giant Robo!”
+
+@21043 Ginrei · 銀鈴
+> 「大作くん! それにジャイアント・ロボ!」
+“Daisaku! And that's Giant Robo!”
+
+@21044 Q Boss · Qボス
+> 「こ、これは、ジャイアント・ロボ!?」
+“Th-this is Giant Robo?!”
+
+@21045 Q Boss · Qボス
+> 「えぇーい!」
+“Rrraaagh!”
+
+@21046 Daisaku · 大作
+> 「ロ、ロボォォォッ!?」
+“R-Robooo!?”
+
+@21047 Daisaku · 大作
+> 「移動します。銀鈴さん、教授、
+>  しっかりつかまっててください」
+“We're moving out. Ginrei, Professor, hold on tight.”
+
+@21048 Bright · ブライト
+> 「まだ他にもいるかもしれん。
+>  索敵おこたるなよ」
+“There may be more of them. Don't slack off on your search.”
+
+@21049 Koji · 甲児
+> 「なんだよ、あれは」
+“What the heck was that?”
+
+@21050 Sayaka · さやか
+> 「あれは……お父さま!?」
+“That's... Father?!”
+
+@21051 Banjo · 万丈
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
+> 「弓教授だって?
+>  いったいどうして……」
+“Professor Yumi, you say? What in the world...”
+
+@21052 Masato · 雅人
+> 「おっ、降りてきたよ。うっひゃぁ、
+>  すっごい美人じゃん」
+“Oh, they're coming down. Whoa, she's a real beauty.”
+
+@21053 Sara · 沙羅
+> 「ちょっと雅人、みっともないマネは
+>  およしよ」
+“Hey, Masato, quit making a fool of yourself.”
+
+@21054 Ginrei · 銀鈴
+> 「もと国際警察機構の銀鈴で
+>  す。中条長官にいわれて
+“I'm Ginrei, formerly of the International Police Organization. Chief Chujo sent
+---
+>  まいりました」
+me here.”
+
+@21055 Banjo · 万丈
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
+> 「ご苦労さま、きれいなお嬢さん。
+>  しかし、なぜ弓教授が?」
+“Thanks for your hard work, beautiful lady. But why is Professor Yumi with you?”
+
+@21056 Prof. Yumi · 弓教授
+> 「おお、万丈くん。実は研究施
+>  設が何者かの襲撃を受けてね
+“Ah, Banjo. You see, our research facility came under attack by someone,
+---
+>  ジャイアント・ロボの調整のために来て
+>  いた銀鈴くんたちに助けられたんだよ」
+and Ginrei and the others, who were here to tune up Giant Robo, saved us.”
+
+@21057 Sayaka · さやか
+> 「お父さま、大丈夫なの!?」
+“Father, are you all right?!”
+
+@21058 Prof. Yumi · 弓教授
+> 「さやか、元気そうだね。
+>  私は大丈夫だ。施設も破壊
+“Sayaka, you look well. I'm fine. The facility was destroyed,
+---
+>  されてしまったが、超合金Zと
+>  光子力に関するデータはすべて
+but we managed to get all the data on Super Alloy Z and Photon Power
+---
+>  持ち出すことができたからね」
+out safely.”
+
+@21059 Garrison · ギャリソン
+> 「それはようございましたな」
+“That is most fortunate, sir.”
+
+@21060 Amuro · アムロ
+> 「あれがジャイアント・ロボ……
+>  ではあの子が?」
+“So that's Giant Robo... Then that kid is?”
+
+@21061 Ginrei · 銀鈴
+> 「はい、ジャイアント・ロボの操縦を
+>  担当しています。大作くん」
+“Yes, he's the one who pilots Giant Robo. Daisaku.”
+
+@21062 Daisaku · 大作
+> 「草間大作です! よろしくお願い
+>  します!」
+“I'm Daisaku Kusama! Pleased to meet you all!”
+
+@21063 Koji · 甲児
+> 「なんだよ、ただのガキじゃねぇか」
+“What the heck, he's just a little kid.”
+
+@21064 Daisaku · 大作
+> 「ただのガキじゃありません。だいたいなんで
+>  すか、初対面の人間にいきなり
+“I'm not just a little kid. Besides, what's with you, saying something like
+---
+>  そんなことをいうなんて、
+>  失礼じゃないですか?」
+that to someone you just met? Isn't that rude?”
+
+@21065 Koji · 甲児
+> 「な……なにをぉ」
+“Wh... what did you say?”
+
+@21066 Sayaka · さやか
+> 「やめなさいよ、甲児くん。
+>  みっともないわよ。ごめんね、大作くん」
+“Cut it out, Koji. You're embarrassing yourself. Sorry about that, Daisaku.”
+
+@21067 Daisaku · 大作
+> 「いえ、そんな……」
+“No, it's nothing...”
+
+@21068 Koji · 甲児
+> (くそっ、なんだよこのガキ……)
+(Damn it, what's with this kid...)
+
+@21069 Beltorchika · ベルトーチカ
+> 「敵接近。迎撃準備、急いで
+>  ください」
+“Enemy approaching. Hurry and prepare to intercept.”
+
+@21070 Banjo · 万丈
+> 「銀鈴、教授をアルビオンへ!」
+“Ginrei, get the Professor to the Albion!”
+
+@21071 Ginrei · 銀鈴
+> 「はいっ!」
+“Yes, sir!”
+
+@21072 Boryuki · 暴竜鬼
+> 「ふふふ、俺はついているな。奴らを
+>  追ってきて正解だったようだ」
+“Heh heh, lucky me. Following them here was the right call.”
+
+@21073 Ryoma · リョウ
+> 「百鬼一族か!?」
+“The Hyakki Clan?!”
+
+@21074 Boryuki · 暴竜鬼
+> 「そうだ。俺の名は暴竜鬼!」
+“That's right. My name is Boryuki!”
+
+@21075 Hayato · ハヤト
+> 「この声は……」
+“That voice...”
+
+@21076 Boryuki · 暴竜鬼
+> 「やれっ! 奴らをたたきつぶせ!」
+“Go! Crush them all!”
+
+@21077 Hayato · ハヤト
+> 「間違いない……イサム、お前はイサム
+>  じゃないのか!?」
+“There's no mistake... Isamu, aren't you Isamu?!”
+
+@21078 Boryuki · 暴竜鬼
+> 「お前……隼人か!?」
+“You... Hayato?!”
+
+@21079 Hayato · ハヤト
+> 「やはりイサムか。なぜお前が
+>  こんなことを!?」
+“So it is you, Isamu. Why are you doing this?!”
+
+@21080 Boryuki · 暴竜鬼
+> 「オレはもうイサムじゃない。
+>  暴竜鬼だ。オレは自ら望んで
+“I'm not Isamu anymore. I'm Boryuki. I chose to become
+---
+>  暴竜鬼になったのだ!」
+Boryuki of my own free will!”
+
+@21081 Hayato · ハヤト
+> 「本当に鬼になったというのか!?」
+“You really became a demon?!”
+
+@21082 Boryuki · 暴竜鬼
+> 「そうだ! 人には、それぞれの生き方
+>  がある。こんな時代だ。誰にも
+“That's right! Everyone has their own way of living. Times like these,
+---
+>  文句などいわせない!」
+I won't let anyone tell me otherwise!”
+
+@21083 Hayato · ハヤト
+> 「イサム!」
+“Isamu!”
+
+@21084 Boryuki · 暴竜鬼
+> 「隼人、お前には、お前の生き方
+>  があるように、俺には俺の道がある!
+“Hayato, just as you have your own way of living, I have my own path!
+---
+>  邪魔だてするというのなら、
+>  お前も倒す!」
+If you mean to stand in my way, then I'll take you down too!”
+
+@21085 Hayato · ハヤト
+> 「イサム、自分のしていることが
+>  いいことか、悪いことかの判断を
+“Isamu, don't lose sight of whether what you're doing is right
+---
+>  間違えないでくれ!」
+or wrong!”
+
+@21086 Boryuki · 暴竜鬼
+> 「それは戦いが決めてくれる。
+>  勝った者が正義で
+“The battle will decide that. The winner becomes justice,
+---
+>  負けた者が邪悪になるのだ。
+>  いくぞ!」
+and the loser becomes evil. Here I come!”
+
+@21087 Hayato · ハヤト
+> 「イサム、やめるんだ、イサム!!」
+“Isamu, stop it, Isamu!!”
+
+@21088 Boryuki · 暴竜鬼
+> 「邪魔をするな! 俺は勝つ!
+>  勝ってすべてを手に入れる!」
+“Don't get in my way! I'll win! I'll win and take everything!”
+
+@21089 Hayato · ハヤト
+> 「イサム、やめるんだ、イサム!!」
+“Isamu, stop it, Isamu!!”
+
+@21090 Boryuki · 暴竜鬼
+> 「邪魔をするな! 俺は勝つ!
+>  勝ってすべてを手に入れる!」
+“Don't get in my way! I'll win! I'll win and take everything!”
+
+@21091 Hayato · ハヤト
+> 「イサム、やめるんだ、イサム!!」
+“Isamu, stop it, Isamu!!”
+
+@21092 Boryuki · 暴竜鬼
+> 「邪魔をするな! 俺は勝つ!
+>  勝ってすべてを手に入れる!」
+“Don't get in my way! I'll win! I'll win and take everything!”
+
+@21093 Boryuki · 暴竜鬼
+> 「うおぉぉぉぉっ!?
+>  い、いやだ、俺は負けたくない……」
+“Uwaaaagh?! N-no, I don't want to lose...”
+
+@21094 Hayato · ハヤト
+> 「くっ……イサム……バカヤロウが……」
+“Ngh... Isamu... you idiot...”
+
+@21095 Hayato · ハヤト
+> 「くっ……イサム……バカヤロウが……」
+“Ngh... Isamu... you idiot...”
+
+@21096 Hayato · ハヤト
+> 「くっ……イサム……バカヤロウが……」
+“Ngh... Isamu... you idiot...”
+
+@21097 Hayato · ハヤト
+> 「イサム……イサム!!」
+“Isamu... Isamu!!”
+
+@21098 Boryuki · 暴竜鬼
+# 审校：补上“改造手术で”中“用手术”的动词，使句子完整自然。
+> 「は……隼人か。俺が、ばかだったんだ
+>  奴ら、A級市民への登録や
+“Ha... Hayato, huh. I was the fool. They lured guys like us in with A-class citizenship and
+---
+>  金をエサに、俺たちみたいのを
+>  集めて、改造手術で
+money, then used surgery to turn us
+---
+>  鬼兵士にしていやがった」
+into oni soldiers.”
+
+@21099 Hayato · ハヤト
+> 「もうしゃべるな」
+“Don't talk anymore.”
+
+@21100 Boryuki · 暴竜鬼
+> 「俺は……金と力がほしかった……
+>  そうすれば帝国軍にだって
+“I... I wanted money and power... That way, even the Imperial Army
+---
+>  好きにやられずにすむ……」
+couldn't do whatever they wanted to me...”
+
+@21101 Hayato · ハヤト
+> 「イサム、しっかりしろ!」
+“Isamu, hang in there!”
+
+@21102 Boryuki · 暴竜鬼
+# 审校：原文“人間に戻って死にたかった”是“想变回人类再死”，初稿“die human again”表达不准确，改为更忠实自然的说法。
+> 「い……いやだ、鬼なんて。せめて……
+>  人間に戻って死にたかった……」
+“N-no, not an oni. At least... I wanted to turn back into a human before I died...”
+
+@21103 Hayato · ハヤト
+> 「お前は人間だ。おれの友達だ、
+>  イサム」
+“You are human. You're my friend, Isamu.”
+
+@21104 Boryuki · 暴竜鬼
+> 「は……隼人……だけど……
+>  つ、角が………」
+“Ha... Hayato... but... m-my horns...”
+
+@21105 Hayato · ハヤト
+> 「バカだな、角なんかどこにもないぜ、
+>  イサム。お前は正真正銘の……
+“Don't be stupid. There aren't any horns anywhere, Isamu. You're the real thing...
+---
+>  人間だ」
+a human.”
+
+@21106 Boryuki · 暴竜鬼
+> 「は……やと……俺は……」
+“Ha... ya... to... I'm...”
+
+@21107 Hayato · ハヤト
+> 「くっ……イサム……。帝国、そして
+>  百鬼一族め。おれは絶対に
+“Ngh... Isamu... The Empire, and the Hyakki Clan too. I will never
+---
+>  貴様らを許さんぞ!」
+forgive you bastards!”
+
+@21108 Brad · ブラッド（按段落 3DD3）
+> 「やーれやれ、やっと終わったか」
+“Well, well, it's finally over, huh.”
+
+@21109 Domon · ドモン
+# 审校：原文“ナイスガイ”是评价对方，初稿“you're a nice guy”略显冗长，改为更贴近原句节奏的“nice guy”。
+> 「フッ……{HeroFull}、
+>  ナイスガイ」
+“Hmph... {HeroFull}, nice guy.”
+
+@21110 Brad · ブラッド（按段落 3DD3）
+> 「あんたもな、ドモン・カッシュ。
+>  気に入ったぜ」
+“You too, Domon Kasshu. I like you.”
+
+@21111 Bright · ブライト
+> 「貴様ら、自分たちのおかれている
+>  状況を理解しているのか!?
+“Do you people understand the situation you're in?!
+---
+>  今後、あんな勝手なマネは
+>  許さんぞ!」
+From now on, I won't allow any more of that reckless behavior!”
+
+@21112 Brad · ブラッド（按段落 3DD3）
+> 「ちっ、わかったよ。
+>  だがよ、艦長さん……」
+“Tch, fine. But you know, Captain...”
+
+@21113 Domon · ドモン
+> 「やめとけ、{HeroNick}。
+>  しょせん拳の心が、わからぬ者には
+“Let it go, {HeroNick}. It's useless talking to someone
+---
+>  いってもムダだ」
+who doesn't understand the heart of the fist.”
+
+@21114 Bright · ブライト
+# 审校：「貴様」在此是愤怒的骂语，改为 you bastard 更符合语气。
+> 「なんだと、貴様!」
+“What did you say, you bastard?!”
+
+@21115 Rain · レイン
+# 审校：「私がよくいって聞かせますから」改为更自然的 I'll talk some sense into him；「やられちゃってもいいの」改为反问 do you want us to be wiped out，更贴近原意。
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「やめなさいドモン!!
+>  すみません、ブライト艦長
+“Stop it, Domon!! I'm sorry, Captain Bright.
+---
+>  私がよくいって聞かせますから。
+>  ドモン、デビルガンダムを見つける前に
+I'll talk some sense into him. Domon, do you want us to be wiped out by
+---
+>  帝国にやられちゃってもいいの!?」
+the Empire before we even find the Dark Gundam?!”
+
+@21116 Domon · ドモン
+> 「……わかったよ、レイン」
+“...All right, Rain.”
+
+@21117 Bright · ブライト
+> 「……とにかく我々のまわりは敵ばかり
+>  なのだということは、覚えておけ」
+“...In any case, just remember that we're surrounded by enemies.”
+
+@21118 Koji · 甲児
+# 审校：「地道なこと」在此指无聊的杂活，改为 grunt work 更自然。
+> 「ちっ、こんな地道なことは他の奴に
+>  やらせりゃいいんだ。なんで俺が
+“Tch, this kind of grunt work should be left to someone else. Why do I have to
+---
+>  こんなガレキの中を走りまわらなけりゃ
+>  ならないんだよ、まったく」
+run around in all this rubble, seriously.”
+
+@21119 ???
+> 「キャーッ!!」
+“Kyaaah!!”
+
+@21120 Koji · 甲児
+# 审校：「帝国の奴らじゃねぇか」是发现对方是帝国兵，改为 Ain't those the Empire's guys 更准确。
+> 「なんだぁ? ありゃ帝国の奴ら
+>  じゃねぇか。こんなところでふざけやがって
+“What the? Ain't those the Empire's guys? Messing around in a place like this.
+---
+>  よーし、このやろうっ!」
+All right, you bastards!”
+
+@21121 Muge Soldier · ムゲ兵
+> 「うわっ退け、退けぇーっ!!」
+“Whoa, get out of the way, out of the way!!”
+
+@21122 Koji · 甲児
+# 审校：「君、ケガはないかい?」是对被救女性说话，改为 Are you hurt, miss? 更自然。
+> 「なんでぇ、あっさり逃げちまいやがんの。
+>  君、ケガはないかい?」
+“What the heck, they ran off just like that. Are you hurt, miss?”
+
+@21123 Erika · エリカ
+> 「ええ……ありがとう」
+“Yes... thank you.”
+
+@21124 Koji · 甲児
+> 「それで、なんで奴らに追われてたんだ?」
+“So, why were they chasing you?”
+
+@21125 Erika · エリカ
+> 「……わかりません」
+“...I don't know.”
+
+@21126 Koji · 甲児
+> 「……名前は?」
+“...Your name?”
+
+@21127 Erika · エリカ
+> 「確か……エリカです」
+“I think... it's Erika.”
+
+@21128 Koji · 甲児
+> 「確か? どういうことなんだ?」
+“You think? What do you mean?”
+
+@21129 Erika · エリカ
+> 「私……なにもかも忘れてしまったの。
+>  なにもかも……」
+“I... I've forgotten everything. Everything...”
+
+@21130 Boss · ボス
+> 「おーい、さやか、ビッグニュースだぜ」
+“Hey, Sayaka, big news!”
+
+@21131 Sayaka · さやか
+> 「なんだ、ボスじゃないの。
+>  何なの、いったい?」
+“What, it's just Boss. What is it, anyway?”
+
+@21132 Boss · ボス
+> 「ボスじゃないのぉなんてひでえや、さやか。
+>  それがよ、兜のやつが美人の娘を
+“'Just Boss,' she says. That's harsh, Sayaka. Get this, Koji brought a beautiful girl
+---
+>  連れてきたんだよ」
+with him!”
+
+@21133 Sayaka · さやか
+> 「娘? 美人!?」
+“A girl? Beautiful?!”
+
+@21134 Ryoma · リョウ
+> 「へぇ、甲児くんもなかなかやるもんだな」
+“Heh, Koji's not bad at all.”
+
+@21135 Sayaka · さやか
+> 「まさか。甲児くんは、
+>  およそ美人には縁のない顔よ
+“No way. Koji's got a face that's about as far from beautiful girls as it gets.
+---
+>  この私が相手にしないのが、
+>  なによりの証拠でーす」
+The fact that I won't give him the time of day is proof enough!”
+
+@21136 Boss · ボス
+> 「それがなぜか、そうではないのでーす」
+“And yet, for some reason, that's not the case at aaaall.”
+
+@21137 Boss · ボス
+> 「な、なにするんだよ、さやかぁ」
+“W-what are you doing, Sayaka?!”
+
+@21138 Sayaka · さやか
+> 「フン!」
+“Hmph!”

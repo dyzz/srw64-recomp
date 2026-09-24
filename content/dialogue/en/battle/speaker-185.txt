@@ -1,0 +1,145 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12245 Garalia · ガラリア
+> 「やらせるかっ!!」
+“Like I'll let you!”
+
+@12246 Garalia · ガラリア
+> 「落ちろぉっ!」
+“Fall!”
+
+@12247 Garalia · ガラリア
+> 「そこだ!」
+“There!”
+
+@12248 Garalia · ガラリア
+> 「消えろ! 邪魔だっ!!」
+“Disappear! You're in my way!”
+
+@12249 Garalia · ガラリア
+> 「もらった!」
+“Got you!”
+
+@12250 Garalia · ガラリア
+> 「これで決める!!」
+“This settles it!”
+
+@12251 Garalia · ガラリア
+> 「運がなかったのさ!」
+“Just bad luck!”
+
+@12252 Garalia · ガラリア
+> 「沈めっ!」
+“Sink!”
+
+@12253 Garalia · ガラリア
+> 「ここまでだなっ!」
+“This is as far as you go!”
+
+@12254 Garalia · ガラリア
+> 「おしまいだっ!!」
+“It's over!”
+
+@12255 Garalia · ガラリア
+> 「バカな!? 直撃を受けた!?」
+“Impossible!? A direct hit!?”
+
+@12256 Garalia · ガラリア
+> 「何だ!? うわっ!?」
+“What!? Whoa!?”
+
+@12257 Garalia · ガラリア
+> 「な、なんだこのパワーは……!?」
+“Wh-what is this power...!?”
+
+@12258 Garalia · ガラリア
+> 「くうっ! わ、私は負けるわけには
+>  いかないのだ!」
+“Ngh! I-I can't afford to lose!”
+
+@12259 Garalia · ガラリア
+> 「あううっ! こ、このままでは……」
+“Agh! A-at this rate...”
+
+@12260 Garalia · ガラリア
+> 「あああっ! わ、私のオーラ力は
+>  こんなものではないはずだ!」
+“Aaaah! M-my Aura Power can't be just this!”
+
+@12261 Garalia · ガラリア
+> 「何っ! 当てただと!?」
+“What!? You hit me!?”
+
+@12262 Garalia · ガラリア
+> 「ううっ! 少しはやるようだな……
+>  しかしっ!!」
+“Ugh! You're not bad... but still!”
+
+@12263 Garalia · ガラリア
+> 「うっ! 貴様、いい気になるなっ!」
+“Ugh! Don't get cocky, you!”
+
+@12264 Garalia · ガラリア
+> 「くっ! そう好きにはやらせんっ!!」
+“Ngh! I won't let you have it your way!”
+
+@12265 Garalia · ガラリア
+> 「その程度の攻撃など!」
+“An attack like that!”
+
+@12266 Garalia · ガラリア
+> 「しゃらくさいんだよっ!」
+“How annoying!”
+
+@12267 Garalia · ガラリア
+> 「効きはしないっ!」
+“It won't work!”
+
+@12268 Garalia · ガラリア
+> 「こしゃくなっ! その程度でっ!!」
+“Insolent! With that little!?”
+
+@12269 Garalia · ガラリア
+> 「甘いっ!」
+“Too naive!”
+
+@12270 Garalia · ガラリア
+> 「そこかっ!」
+“There, huh!”
+
+@12271 Garalia · ガラリア
+> 「当たるかっ!」
+“As if you'd hit me!”
+
+@12272 Garalia · ガラリア
+> 「遅いっ!」
+“Too slow!”
+
+@12273 Garalia · ガラリア
+> 「なめるなっ!」
+“Don't underestimate me!”
+
+@12274 Garalia · ガラリア
+> 「右!? いや、正面かっ!!」
+“Right!? No, straight ahead!”
+
+@12275 Garalia · ガラリア
+> 「こんなものっ!」
+“That's nothing!”
+
+@12276 Garalia · ガラリア
+> 「私だって、オーラ力は
+>  上がっている!!」
+“My Aura Power is rising too!”
+
+@12277 Garalia · ガラリア
+> 「そんな攻撃が効くかっ!」
+“Like that attack would work!”
+
+@12278 Garalia · ガラリア
+> 「弾切れか!?」
+“Out of ammo!?”
+
+@12279 Garalia · ガラリア
+> 「くっ……この距離では手が出せん」
+“Ngh... I can't reach at this distance.”

@@ -1,0 +1,76 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6923 Rasid · ラシード
+> 「ばかものぉ!」
+“You fool!”
+
+@6924 Rasid · ラシード
+> 「カトル様のために!」
+“For Lord Quatre!”
+
+@6925 Rasid · ラシード
+> 「我々マグアナック隊をなめるな!」
+“Don't underestimate the Maganac Corps!”
+
+@6926 Rasid · ラシード
+> 「弾幕を絶やすな!」
+“Keep up the barrage!”
+
+@6927 Rasid · ラシード
+> 「見つけたぞ」
+“Found you.”
+
+@6928 Rasid · ラシード
+> 「カ、カトル様ぁぁーっ!」
+“L-Lord Quatre!”
+
+@6929 Rasid · ラシード
+> 「うおぉぉぉぉっ!」
+“Uwooooh!”
+
+@6930 Rasid · ラシード
+> 「くっ、これではマグアナックの名が
+>  泣く!」
+“Ngh, the Maganac name weeps at this!”
+
+@6931 Rasid · ラシード
+> 「マグアナックの意地を見せてやる!」
+“I'll show you the pride of the Maganac!”
+
+@6932 Rasid · ラシード
+> 「くっ、もう少し力があればっ!」
+“Ngh, if only I had a little more power!”
+
+@6933 Rasid · ラシード
+> 「周到な攻撃方法だな」
+“A thorough attack pattern.”
+
+@6934 Rasid · ラシード
+> 「これならばいけるな!」
+“This should do it!”
+
+@6935 Rasid · ラシード
+> 「たいしたダメージはないな」
+“No significant damage.”
+
+@6936 Rasid · ラシード
+# 审校：原文没有“for you”的对象，删去多余成分，使译文更贴合原文。
+> 「かわしてみせるさ」
+“I'll dodge it.”
+
+@6937 Rasid · ラシード
+> 「かわせましたぜ、カトル様」
+“Dodged it, Lord Quatre.”
+
+@6938 Rasid · ラシード
+# 审校：与 L14 相同，原文没有“for you”的对象，删去多余成分。
+> 「かわしてみせるさ」
+“I'll dodge it.”
+
+@6939 Rasid · ラシード
+> 「弾切れか……うかつだったな」
+“Out of ammo... careless of me.”
+
+@6940 Rasid · ラシード
+> 「レーダー反応がないだと!?」
+“No radar response?!”

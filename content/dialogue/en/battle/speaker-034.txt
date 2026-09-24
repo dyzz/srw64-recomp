@@ -1,0 +1,120 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11768 Avie-Lu · アヴィ＝ルー
+> 「さァ、アンタたちの力をみせてヨ」
+“Now then, show me what you've got, huh?”
+
+@11769 Avie-Lu · アヴィ＝ルー
+> 「さァ、みせてごらんヨ、アタシに」
+“Come on, show me, show me what you can do.”
+
+@11770 Avie-Lu · アヴィ＝ルー
+> 「アンタたち、これが受けられるかイ」
+“Think you can take this, huh?”
+
+@11771 Avie-Lu · アヴィ＝ルー
+> 「いくヨ」
+“Here I go.”
+
+@11772 Avie-Lu · アヴィ＝ルー
+> 「すぐに終わらせるヨ」
+“I'll finish this quick.”
+
+@11773 Avie-Lu · アヴィ＝ルー
+> 「これでおしまいだネ」
+“This is the end for you, huh?”
+
+@11774 Avie-Lu · アヴィ＝ルー
+> 「ほら……どうしたんだイ?」
+“Hey... what's the matter with you?”
+
+@11775 Avie-Lu · アヴィ＝ルー
+> 「残念だヨ」
+“Too bad.”
+
+@11776 Avie-Lu · アヴィ＝ルー
+> 「クククッ、アタシの攻撃、
+>  受けてごらんヨ」
+“Heh heh heh, try taking my attack, why don't you?”
+
+@11777 Avie-Lu · アヴィ＝ルー
+> 「な……なんだって!?」
+“W-What did you say?!”
+
+@11778 Avie-Lu · アヴィ＝ルー
+> 「く……やっぱり、思ったとおりだネ……」
+“Ngh... just as I thought, huh...”
+
+@11779 Avie-Lu · アヴィ＝ルー
+> 「まだ……まだ終わりじゃないヨ……
+>  サァ、戦いなヨ!」
+“Not yet... it's not over yet... Come on, fight!”
+
+@11780 Avie-Lu · アヴィ＝ルー
+> 「アウッ……この形態を
+>  維持しながらじゃ、もう無理か……」
+“Agh... while holding this form, I can't do any more, it seems...”
+
+@11781 Avie-Lu · アヴィ＝ルー
+> 「ククククッ、おもしろいネ。
+>  やっぱりおもしろいヨ、アンタたち」
+“Heh heh heh heh, interesting. You really are interesting, you lot.”
+
+@11782 Avie-Lu · アヴィ＝ルー
+> 「そう……そうだヨ。感じるヨ、
+>  お前たちの力……」
+“Yes... that's right. I can feel it, your power...”
+
+@11783 Avie-Lu · アヴィ＝ルー
+> 「さァ、もっと、もっと、力をだしなヨ。
+>  でないと、みんな死んでしまうヨ?」
+“Come on, more, more, show me your power. Otherwise, everyone's going to die, you know?”
+
+@11784 Avie-Lu · アヴィ＝ルー
+> 「く……すごいネ」
+“Ngh... incredible, huh.”
+
+@11785 Avie-Lu · アヴィ＝ルー
+> 「ククク……まだまだだヨ」
+“Heh heh heh... not nearly enough, huh.”
+
+@11786 Avie-Lu · アヴィ＝ルー
+> 「本気でやらないと……永劫の
+>  闇の中へ、消えてしまうヨ」
+“If you don't get serious... you'll vanish into the eternal darkness, you know.”
+
+@11787 Avie-Lu · アヴィ＝ルー
+> 「まさか……このまま終わるワケないよネ?」
+“No way... there's no way it ends like this, right?”
+
+@11788 Avie-Lu · アヴィ＝ルー
+> 「ホラホラ、どうしたんだイ」
+“Hey hey, what's the matter with you?”
+
+@11789 Avie-Lu · アヴィ＝ルー
+> 「それではあたらないヨ」
+“That won't hit me, you know.”
+
+@11790 Avie-Lu · アヴィ＝ルー
+> 「そんなもンじゃないだろう? アンタたちは」
+“That's not all you've got, is it? Not from you lot.”
+
+@11791 Avie-Lu · アヴィ＝ルー
+> 「ばかめ」
+“Fool.”
+
+@11792 Avie-Lu · アヴィ＝ルー
+> 「エネルギーが……」
+“My energy...”
+
+@11793 Avie-Lu · アヴィ＝ルー
+> 「いけない……これ以上、長引けば…」
+“This is bad... if this drags on any longer...”
+
+@11794 Avie-Lu · アヴィ＝ルー
+> 「へぇ……少しは考えているんダ」
+“Oh? So you've thought a little, huh.”
+
+@11795 Avie-Lu · アヴィ＝ルー
+> 「ククッ、やるじゃなイ」
+“Heh, not bad, huh.”

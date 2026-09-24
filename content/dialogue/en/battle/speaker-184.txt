@@ -1,0 +1,161 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12077 Marvel · マーベル
+> 「これならっ!!」
+“With this!!”
+
+@12078 Marvel · マーベル
+> 「やらせるわけにはっ!!」
+“I won't let you!!”
+
+@12079 Marvel · マーベル
+> 「そこっ!!」
+“There!!”
+
+@12080 Marvel · マーベル
+> 「落ちなさいっ!」
+“Fall!”
+
+@12081 Marvel · マーベル
+> 「やってみせる!!」
+“I'll show you!!”
+
+@12082 Marvel · マーベル
+> 「いただき!」
+“Got you!”
+
+@12083 Marvel · マーベル
+> 「沈めっ!!」
+“Sink!!”
+
+@12084 Marvel · マーベル
+> 「私だって、オーラ力は上がっている
+>  はず!!」
+“My Aura Power should be rising too!!”
+
+@12085 Marvel · マーベル
+> 「これで決めるっ!」
+“This settles it!”
+
+@12086 Marvel · マーベル
+> 「どきなさいっ!」
+“Out of my way!”
+
+@12087 Marvel · マーベル
+> 「邪魔をするのなら!」
+“If you're going to get in my way!”
+
+@12088 Marvel · マーベル
+> 「とどめっ!」
+“Finishing blow!”
+
+@12089 Marvel · マーベル
+> 「しまった!?」
+“Damn it?!”
+
+@12090 Marvel · マーベル
+> 「くっ……こんなことで……」
+“Ngh... Not like this...”
+
+@12091 Marvel · マーベル
+> 「あああっ……な、なんてパワー!!」
+“Aaaah... W-what power!!”
+
+@12092 Marvel · マーベル
+> 「あうっ!! も、もたない!?」
+“Agh!! I-I can't hold out?!”
+
+@12093 Marvel · マーベル
+> 「くううっ! パワーが違いすぎる!!」
+“Nghhh! The power difference is too much!!”
+
+@12094 Marvel · マーベル
+> 「つっ……ま、まだやられるわけには!!」
+“Ngh... I-I can't go down yet!!”
+
+@12095 Marvel · マーベル
+> 「こ、このままでは……」
+“A-at this rate...”
+
+@12096 Marvel · マーベル
+> 「ま、まだよ!! まだこれからっ!!」
+“N-not yet!! It's just getting started!!”
+
+@12097 Marvel · マーベル
+> 「これしきのことで! あたしだって!」
+“This is nothing! I can take it too!”
+
+@12098 Marvel · マーベル
+> 「くっ! こんな事でやられるものですか!」
+“Ngh! I won't be beaten by something like this!”
+
+@12099 Marvel · マーベル
+> 「あうっ! さすがにパワーがある……
+>  けどっ!!」
+“Agh! He really does have power... but still!!”
+
+@12100 Marvel · マーベル
+> 「うっ! まだまだ!! この程度で!!」
+“Ugh! Not yet!! Not from this much!!”
+
+@12101 Marvel · マーベル
+> 「こんなものっ!!」
+“Like that's anything!!”
+
+@12102 Marvel · マーベル
+> 「この程度で落ちるものですかっ!!」
+“You think this would take me down?!”
+
+@12103 Marvel · マーベル
+> 「私にもオーラ力がある!!」
+“I have Aura Power too!!”
+
+@12104 Marvel · マーベル
+> 「こんな攻撃など!!」
+“An attack like that?!”
+
+@12105 Marvel · マーベル
+> 「かわした!!」
+“Dodged it!!”
+
+@12106 Marvel · マーベル
+> 「甘いっ!」
+“Too easy!”
+
+@12107 Marvel · マーベル
+> 「よけてみせるっ!」
+“I'll dodge it!”
+
+@12108 Marvel · マーベル
+> 「遅いっ!」
+“Too slow!”
+
+@12109 Marvel · マーベル
+> 「当たるものですか!!」
+“As if that would hit!!”
+
+@12110 Marvel · マーベル
+> 「間合いが甘い!」
+“Your timing's off!”
+
+@12111 Marvel · マーベル
+> 「このっ! 当たるわけには!!」
+“Why you! I can't let that hit!!”
+
+@12112 Marvel · マーベル
+> 「オーラ力が上がっている……この
+>  程度なら!!」
+“My Aura Power is rising... this much is nothing!!”
+
+@12113 Marvel · マーベル
+> 「私のオーラ力も、捨てたものでは
+>  ないわね」
+“My Aura Power isn't so bad either.”
+
+@12114 Marvel · マーベル
+> 「しまった、弾切れ!?」
+“Damn, out of ammo?!”
+
+@12115 Marvel · マーベル
+> 「遠距離からの攻撃……やるわね」
+“A long-range attack... not bad.”

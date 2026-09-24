@@ -1,0 +1,97 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7117 Wahl · ワール
+> 「それ!」
+“Take that!”
+
+@7118 Wahl · ワール
+# 审校：同 L35，原文「どうだ!」应保留反问语气。
+> 「どうだ!」
+“How's that?!”
+
+@7119 Wahl · ワール
+> 「さあ!」
+“Now!”
+
+@7120 Wahl · ワール
+> 「やれ!」
+“Fire!”
+
+@7121 Wahl · ワール
+> 「ようし、撃て!」
+“All right, fire!”
+
+@7122 Wahl · ワール
+> 「攻撃開始!」
+“Begin the attack!”
+
+@7123 Wahl · ワール
+# 审校：原文「やつを集中攻撃だ!」未明确性别，初稿用 him 可能不准确，改为 that one。
+> 「やつを集中攻撃だ!」
+“Focus your fire on that one!”
+
+@7124 Wahl · ワール
+> 「一斉射撃!」
+“All guns, fire!”
+
+@7125 Wahl · ワール
+> 「ねらい撃て!」
+“Take aim and fire!”
+
+@7126 Wahl · ワール
+> 「うお!? わあぁぁぁぁっ!」
+“Uwoh?! Waaaaaah!”
+
+@7127 Wahl · ワール
+> 「おぉぅっ! や、やつらの力が
+>  これほどとは!?」
+“Ooh! T-To think their power was this great?!”
+
+@7128 Wahl · ワール
+> 「ガァァッ!? こんなところで!」
+“Gaaah?! Not here!”
+
+@7129 Wahl · ワール
+> 「こ、これでは私まで死んでしまうっ!」
+“A-At this rate even I will die!”
+
+@7130 Wahl · ワール
+> 「うぉっ、お、おのれ!」
+“Uwoh, y-you bastard!”
+
+@7131 Wahl · ワール
+> 「くっ、こんなばかな!?」
+“Ngh, this can't be?!”
+
+@7132 Wahl · ワール
+> 「こ、これでは……!」
+“A-At this rate...!”
+
+@7133 Wahl · ワール
+> 「うっ、だがかまわん!」
+“Ngh, but it doesn't matter!”
+
+@7134 Wahl · ワール
+> 「そんな攻撃でやられはせん」
+“That kind of attack won't take me down.”
+
+@7135 Wahl · ワール
+> 「はずれたか」
+“It missed, huh.”
+
+@7136 Wahl · ワール
+> 「あたらなかったようだな」
+“Seems it didn't hit.”
+
+@7137 Wahl · ワール
+> 「そんな攻撃でやられはせん」
+“That kind of attack won't take me down.”
+
+@7138 Wahl · ワール
+> 「エネルギー切れだと!? ええぃ何を
+>  やっている!」
+“Out of energy?! Damn it, what are you doing!”
+
+@7139 Wahl · ワール
+> 「なに、届かないだと!?」
+“What, it can't reach?!”

@@ -1,0 +1,504 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@43610 Haman · ハマーン
+> 「やはり来たか、{HeroMech}。
+>  グレミーを倒してくれたようだな
+“So you came after all, {HeroMech}. It seems you've defeated Glemy.
+---
+>  礼をいおう」
+I thank you.”
+
+@43611 Kamille · カミーユ
+> 「別にお前のためにやったわけじゃない!」
+“It's not like I did it for you!”
+
+@43612 Judau · ジュドー
+> 「もう終わりだハマーン。
+>  お前の足場は崩れ落ちた」
+“It's over, Haman. The ground beneath you has crumbled.”
+
+@43613 Haman · ハマーン
+> 「小ざかしいことを少年がいうのか?
+>  ……フッ、フフフ、いいだろう
+“A boy dares to talk so cleverly? ...Hmph, heh heh, very well.
+---
+>  ここで決着をつけるとしよう。
+>  お前たちさえいなくなれば
+Let's settle this here. Once you are gone,
+---
+>  もはや私をはばむ者はない。私は
+>  お前たちを倒したうえで、ゆっくりと
+there will be no one left to stand in my way. After I defeat you, I will take my time
+---
+>  地球圏を掌握させてもらう」
+and bring the Earth Sphere under my control.”
+
+@43614 Banjo · 万丈
+> 「そう何もかも都合よくいくと
+>  思うなよ、ハマーン!」
+“Don't think everything will go your way, Haman!”
+
+@43615 Haman · ハマーン
+> 「どういわれようと、己の運命は
+>  自分で切り開くのが私だ!」
+“Whatever you say, I am the one who carves out her own destiny!”
+
+@43616 Bright · ブライト
+> 「パイロット各員は発進急げ!
+>  みんな、健闘を祈る!」
+“All pilots, launch immediately! Everyone, I wish you good luck!”
+
+@43617 Haman · ハマーン
+> 「なに!?」
+“What?!”
+
+@43618 Bright · ブライト
+> 「まだ残っていたのか!? やっかいな!」
+“There are still more?! What a nuisance!”
+
+@43619 Gato · ガトー
+> 「再びジオンの栄光をかかげるために!
+>  我々はここで負けるわけにはいかん!」
+“To raise the glory of Zeon once more! We cannot afford to lose here!”
+
+@43620 Gato · ガトー
+# 审校：原文“ハマーン殿はおちたか……”是确认哈曼已败，初稿用“...?”疑问语气不对，改为陈述“...”；同时补上句号
+> 「ハマーン殿はおちたか……だが、もはや
+>  後退する場所はない!」
+“Lady Haman has fallen... But there is nowhere left to retreat!”
+
+@43621 Kamille · カミーユ
+> 「わかった! お前は生きていては
+>  いけない人間なんだ!
+“I understand now! You are someone who must not be allowed to live!
+---
+>  暗黒の世界へもどれ、ハマーン・
+>  カーン!! ここから、いなくなれッ!!」
+Go back to the world of darkness, Haman Karn!! Get out of here!!”
+
+@43622 Haman · ハマーン
+> 「カミーユ・ビダンか!?
+>  貴様は危険すぎるな、少年!
+“Kamille Bidan?! You are far too dangerous, boy!
+---
+>  今ここで私が排除する!」
+I will eliminate you here and now!”
+
+@43623 Amuro · アムロ
+> 「ハマーン! なぜそう何もかもを
+>  否定する!?
+“Haman! Why do you deny everything?!
+---
+>  そういう意思をなくせば、俺たち
+>  だってわかりあえて、シャアだって……」
+If you would just let go of that will, we could understand each other, and even Char...”
+
+@43624 Haman · ハマーン
+> 「やさしさがニュータイプの力だと
+>  勘違いしている男が!
+“A man who mistakes kindness for the power of a Newtype!
+---
+>  女が誰でもそれを受け入れるなどと
+>  思うな、アムロ・レイ!」
+Do not think any woman would accept that, Amuro Ray!”
+
+@43625 Amuro · アムロ
+> 「なに!?」
+“What?!”
+
+@43626 Judau · ジュドー
+> 「ハマーン!」
+“Haman!”
+
+@43627 Haman · ハマーン
+> 「なんだ? ……人の想いが、
+>  人の意思が力となっていくのか!?」
+“What? ...People's feelings, people's wills, becoming power?!”
+
+@43628 Judau · ジュドー
+> 「そうだ、あなたにも見えているはずだ。
+>  戦いで無駄死にをした
+“That's right, you should be able to see it too. The wills of those who died
+---
+>  人の意思が!」
+pointlessly in battle!”
+
+@43629 Haman · ハマーン
+> 「人は生きる限りひとりだよ。人類
+>  そのものもそうだ。人類すべてがそう
+“People are alone as long as they live. Humanity itself is the same. All of humanity
+---
+>  やすやすと変われるものか! その前に
+>  人類は地球を食い尽くすよ!」
+cannot change so easily! Before that happens, humanity will devour the Earth!”
+
+@43630 Judau · ジュドー
+> 「憎しみは憎しみを呼ぶだけだって、
+>  わかれ!」
+“Hatred only breeds more hatred, you know that!”
+
+@43631 Haman · ハマーン
+> 「憎しみがあってこそ、
+>  人は強くなれる!
+“It is because of hatred that people can become strong!
+---
+>  私はそうやって地球圏へと
+>  もどってきた!」
+That is how I made my way back to the Earth Sphere!”
+
+@43632 Judau · ジュドー
+> 「そんなもので地球が救えるか!
+>  憎しみを生むもの
+“Can that save the Earth?! Spit out the blood
+---
+>  憎しみを育てる血を、吐き出せ!」
+that breeds hatred and nurtures hatred!”
+
+@43633 Haman · ハマーン
+> 「吐き出すものなど、ないッ!!」
+“There is nothing for me to spit out!!”
+
+@43634 Haman · ハマーン
+> 「くっ……まだやられんといいたいが……
+>  私の負けだな」
+“Ngh... I'd like to say I'm not done yet... but I've lost.”
+
+@43635 Judau · ジュドー
+> 「ハマーン……その力のすべてを
+>  いい方向に使えば
+“Haman... If you had used all that power for good,
+---
+>  地球だって救えたかもしれないのに!」
+you might have been able to save the Earth!”
+
+@43636 Haman · ハマーン
+> 「無駄だよ、ジュドー。
+>  アステロイドベルトまで行った人間が
+“It's futile, Judau. The fact that humans who went as far as the Asteroid Belt
+---
+>  もどってくるっていうのはな、人類が
+>  まだ地球という存在に
+come back is proof that humanity is still
+---
+>  縛りつけられている、証拠だろ」
+bound to the existence called Earth.”
+
+@43637 Judau · ジュドー
+> 「だからって、こんな戦いをしたって
+>  なんにも……」
+“Even so, fighting a war like this won't accomplish anything...”
+
+@43638 Haman · ハマーン
+> 「そうさ、賢しいお前らのおかげで、
+>  人類が負わされた
+“That's right. Thanks to you clever ones, I was unable
+---
+>  地球の呪縛を、断ち切って
+>  やることができなかったよ……」
+to sever the curse of Earth that humanity bears...”
+
+@43639 Judau · ジュドー
+> 「ハマーン!?」
+“Haman?!”
+
+@43640 Haman · ハマーン
+> (シャア……なぜ私と……)
+(Char... why won't you...)
+
+@43641 Haman · ハマーン
+# 审校：原文“くっ……シャア……なぜ私と……”与L31内心独白呼应，初稿“why won't you...”漏译“私と”，补上“with me”
+> 「くっ……シャア……なぜ私と……」
+“Ngh... Char... why won't you... with me...”
+
+@43642 Gato · ガトー
+> 「ハマーン殿!? くっ……だが、もはや
+>  後退する場所はない!」
+“Lady Haman?! Ngh... But there is nowhere left to retreat!”
+
+@43643 Axis Soldier · アクシズ兵
+> 「ハ、ハマーン様が!? くっ……」
+“L-Lady Haman?! Ngh...”
+
+@43644 Gato · ガトー
+> 「くっ……情けない、このような所で
+>  終わるとは……」
+“Ngh... How pathetic, to end in a place like this...”
+
+@43645 Duo · デュオ
+> 「なぁ、俺たち……勝てたんだよな?」
+“Hey, we... we actually won, right?”
+
+@43646 Trowa · トロワ
+> 「ああ、そのはずだ」
+“Yeah, that's how it should be.”
+
+@43647 Show · ショウ
+> 「とりあえずは……
+>  これで終わったってことか」
+“For now... I guess this means it's over.”
+
+@43648 Alan · アラン
+> 「だが問題は山積みだぞ。
+>  銀河帝国やアクシズ軍の
+“But there are piles of problems ahead. Skirmishes with the remnants of the
+---
+>  残党との小ぜりあいも、
+>  当分は続くだろう」
+Galactic Empire and the Axis Forces will probably continue for a while.”
+
+@43649 Koji · 甲児
+> 「なんでもいいから、とにかく
+>  今は少し休ませてくれよ
+“Whatever, just let me rest a little for now.
+---
+>  もう、しばらくは何もできそうにないぜ」
+I don't think I can do anything for a while.”
+
+@43650 Bright · ブライト
+> 「そうだな……月へでも向かうか」
+“Right then... let's head for the Moon.”
+
+@43651 Beauty · ビューティ
+> 「でもグラナダの基地にはまだ
+>  アクシズ軍がいるんじゃなかったかしら?」
+“But weren't the Axis Forces still at the Granada base?”
+
+@43652 Amuro · アムロ
+> 「連中も、これ以上戦っても
+>  無意味だとわかるさ
+“They'll understand that fighting any further is pointless.
+---
+>  降伏勧告は出しているんだろう?
+>  とりあえずはフォン・ブラウンにでも
+We've issued a surrender demand, haven't we? For now, we can just
+---
+>  降りればいい」
+land at Von Braun.”
+
+@43653 Garrison · ギャリソン
+> 「それがよろしいでしょう
+>  このような状態で今後のことを
+“That would be for the best. Pondering the future in a state like this
+---
+>  思案してもしかたありますまい。
+>  今は休息をされるのがいちばんですな」
+will get us nowhere. Resting is the best thing for you now.”
+
+@43654 Bright · ブライト
+> 「よし、月のフォン・ブラウンへ向かおう
+>  みんな、悪いがもうしばらくは
+“All right, we'll head for Von Braun on the Moon. Everyone, sorry, but bear with it
+---
+>  我慢してくれ」
+a while longer.”
+
+@43655 Koji · 甲児
+> 「あー、ついたついた。さぁて、
+>  たっぷり寝るとするかぁ」
+“Ahh, we're here, we're here. Now then, time to get a nice long sleep.”
+
+@43656 Maria · マリア
+> 「甲児、さっきまでずっと
+>  寝てたじゃない」
+“Koji, you've been asleep this whole time until just now.”
+
+@43657 Kirika · キリカ
+> 「まだ寝るんですか?」
+“You're still going to sleep?”
+
+@43658 Sayaka · さやか
+> 「今までずっとがんばってたんだから、
+>  それでもいいのよ
+“He's been working hard all this time, so that's fine.
+---
+>  さ、行きましょ、甲児くん」
+Come on, let's go, Koji.”
+
+@43659 Maria · マリア
+> 「あっ、ちょっと待ちなさいよ!」
+“Ah, wait just a moment!”
+
+@43660 Cecily · セシリー
+> 「こんなふうにゆったりと過ごせる日が
+>  くるなんて、ここ数年考えたことが
+“I never thought I'd see days when we could relax like this, not once in
+---
+>  なかったわ」
+all these past few years.”
+
+@43661 Seabook · シーブック
+> 「ああ。
+>  戦ってばかりの毎日だったものな」
+“Yeah. Every day was nothing but fighting.”
+
+@43662 Cecily · セシリー
+> 「本当にそうね……命令を受けて
+>  {HeroMech}と合流してから
+“That's so true... Ever since we got our orders and rendezvoused with the {HeroMech},
+---
+>  ずっと戦い続けて……」
+we've done nothing but fight...”
+
+@43663 Seabook · シーブック
+> 「それも、もうすぐ終わりさ」
+“And that'll be over soon too.”
+
+@43664 Cecily · セシリー
+> 「……コロニーのみんなは、元気かな」
+“...I wonder if everyone at the colony is doing well.”
+
+@43665 Seabook · シーブック
+> 「大丈夫だよ、みんな元気でいるよ
+>  この戦いが終わったら、また会えるさ」
+“They're fine, everyone's doing well. Once this war is over, we can see them again.”
+
+@43666 Cecily · セシリー
+> 「ええ。その時はあなたも一緒よ」
+“Yes. And you'll be with me then too.”
+
+@43667 Seabook · シーブック
+> 「ああ……もちろんだ」
+“Yeah... of course.”
+
+@43668 David · デビッド
+> 「まだ問題はあるとはいえ、こんな
+>  楽な気分は何年もなかったぜ
+“There are still problems, but I haven't felt this relaxed in years.
+---
+>  エイジ、ロアン、アーサー、酒でも
+>  飲んで寝ちまうとしようぜ。おっと
+Eiji, Roanne, Arthur, let's have a drink and sleep it off. Oops,
+---
+>  エイジはアンナと一緒のほうが
+>  よかったか」
+would Eiji rather be with Anna?”
+
+@43669 Anna · アンナ
+> 「デビッド!」
+“David!”
+
+@43670 Roux · ルー
+> 「ばかなこといってないで、
+>  さっさと行きなさいよ」
+“Stop saying stupid things and get going already.”
+
+@43671 Simone · シモーヌ
+> 「まったくねぇ。ほら、あんたたちも」
+“Honestly. Come on, you lot too.”
+
+@43672 Tetsuya · 鉄也
+> 「まったく、気楽な連中だぜ。
+>  残党どころか
+“Honestly, what a carefree bunch. Never mind remnants,
+---
+>  正体不明の敵だって
+>  残ってるってのによ」
+there's still an enemy of unknown origin left, you know.”
+
+@43673 Jun · ジュン
+> 「今くらいはいいじゃない。今まで
+>  ずっと必死にやってきたんだからさ
+“It's fine for now, isn't it? We've been giving it everything all this time.
+---
+>  少しくらい休んだって
+>  バチは当たらないわ」
+Taking a little rest won't bring down any punishment.”
+
+@43674 Chief Chujo · 中条長官
+> 「そう思うな。ここは我々にまかせて、
+>  ブライト君たちも休んでくれたまえ」
+“I think so too. Leave things here to us, and you and the others should rest too, Bright.”
+
+@43675 Prof. Yumi · 弓教授
+> 「ああ、そうしてもらったほうがいいな。
+>  我々は君たちほど
+“Yes, that would be better. We're not as
+---
+>  疲れてはいないからね」
+exhausted as you all are.”
+
+@43676 Banjo · 万丈
+> 「では、お言葉に甘えるとしましょう。
+>  艦長、僕たちも少し休んでおこう」
+“Then let's take you up on that. Captain, let's get some rest too.”
+
+@43677 Bright · ブライト
+> 「そうさせてもらいましょう。
+>  ではあとを頼みます」
+“Let's do that. I'll leave the rest to you, then.”
+
+@43678 Dr. Hazuki · 葉月博士
+> 「我々はガンドールにいます。
+>  何かあったら連絡をいれますよ」
+“We'll be on the Gandor. If anything happens, we'll contact you.”
+
+@43679 Sally · サリィ
+> 「え? それ本当なんですか?」
+“What? Is that really true?”
+
+@43680 Dr. Hazuki · 葉月博士
+> 「うむ。アステロイドに設置した
+>  監視衛星だ
+“Indeed. It's a surveillance satellite we set up on the Asteroid.
+---
+>  今、ギャリソンに分析して
+>  もらっているが……」
+I'm having Garrison analyze it right now, but...”
+
+@43681 Chief Chujo · 中条長官
+> 「……やはり、奴らかね」
+“...So it's them after all, is it?”
+
+@43682 Dr. Hazuki · 葉月博士
+> 「間違いないでしょう。
+>  やはり連中は“刻印”の
+“There's no doubt about it. As expected, they seem unaffected by the
+---
+>  影響を受けないようですな」
+‘Mark.’”
+
+@43683 Chief Chujo · 中条長官
+> 「たった数日か……命がけで
+>  戦ってきた彼らには
+“Only a few days, huh... For them, who've been fighting for their lives,
+---
+>  少々短い休暇だったな」
+that was a rather short leave.”
+
+@43684 Sally · サリィ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「なんてこと……ブライト艦長たちに
+>  連絡を……」
+“How awful... We have to contact Captain Bright and the others...”
+
+@43685 Dr. Yotsuya · 四谷博士
+> 「待ちなさい。まだしばらくは
+>  余裕がある
+“Wait. We still have some time to spare.
+---
+>  彼らにはもうしばらく
+>  休んでいてもらおう
+Let them rest a while longer.
+---
+>  今の地球には、彼ら以外に
+>  対応できる者はおらんだろう」
+In the Earth as it is now, there's no one but them who can handle this.”
+
+@43686 Dr. Hazuki · 葉月博士
+> 「ええ。我々はその間に
+>  観測データの収集と分析に
+“Yes. In the meantime, let's get started on collecting and analyzing the observation data.
+---
+>  とりかかりましょう。奴らがどこから
+>  くるのか特定しなければなりません」
+We have to pinpoint where they're coming from.”
+
+@43687 Dr. Saotome · 早乙女博士
+> 「ふむ、それと可能なら、
+>  そこへ我々が行く方法もだな」
+“Hmm, and if possible, a way for us to get there as well.”
+
+@43688 Prof. Yumi · 弓教授
+> 「どうやら、我々も
+>  忙しくなりそうですな」
+“It seems we're going to be busy too.”

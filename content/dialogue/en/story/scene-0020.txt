@@ -1,0 +1,1861 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@20489 Lady · レディ
+> 「アウドムラはタクラマカン砂漠を
+>  抜けるルートをとるか
+“Will the Audhumla take the route through the Taklamakan Desert?
+---
+>  ……目的が読めんな」
+...I can't read their objective.”
+
+@20490 Zechs · ゼクス
+# 审校：「どういうおつもりか」在此是质问语气，改为更自然的“what are you playing at?”。
+> 「レディ・アン特佐、どういうおつもりか」
+“Colonel Lady Une, what are you playing at?”
+
+@20491 Lady · レディ
+> 「なにがだ?」
+“What do you mean?”
+
+@20492 Zechs · ゼクス
+> 「ホンコンの件、それとアウドムラに
+>  追撃隊を出している件
+“The Hong Kong matter, and the pursuit force you've sent after the Audhumla.
+---
+>  トレーズ閣下は連中に対しては、
+>  様子見にまわるお考えのはず」
+His Excellency Treize's plan was to wait and see with regard to them.”
+
+@20493 Lady · レディ
+# 审校：「機会があれば」应译为条件句“If the opportunity arises”，初稿“If there is an opportunity”不够自然。
+> 「貴様に意見されることではない。
+>  機会があれば
+“It is not for you to question. If the opportunity arises,
+---
+>  レジスタンスを叩くのは当然だ。
+>  多少市民に犠牲が
+striking the resistance is only natural. Even if a few citizens
+---
+>  出たところで、どうというものでも
+>  あるまい」
+become casualties, what of it?”
+
+@20494 Zechs · ゼクス
+# 审校：「ウォンのようなやからの実験部隊」指“像Wong那类人的实验部队”，初稿“Wong's experimental unit”漏掉“のようなやから”的贬义，改为“an experimental unit like Wong's”。
+> 「ウォンのようなやからの実験部隊を
+>  動かしてまでか。特佐、
+“Even to the point of deploying an experimental unit like Wong's? Colonel,
+---
+>  追撃隊を帰還させるんだ。それは
+>  トレーズ閣下の望むところではない
+recall the pursuit force. That is not what His Excellency Treize wishes.
+---
+>  特佐は閣下の考えを
+>  理解していない」
+You do not understand His Excellency's thinking.”
+
+@20495 Lady · レディ
+> 「理解していないのはゼクス、お前だ」
+“The one who does not understand is you, Zechs.”
+
+@20496 Noin · ノイン
+> 「いいえ、貴女です。
+>  レディ・アン特佐
+“No, it is you, Colonel Lady Une.
+---
+>  このような戦いは
+>  閣下は望んでおりません」
+His Excellency does not wish for this kind of battle.”
+
+@20497 Lady · レディ
+> 「私に指図するつもりか!?
+>  貴様らは黙って見ていればよいのだ」
+“You dare give me orders?! You need only stay silent and watch.”
+
+@20498 Bright · ブライト
+> 「これだけ大きく迂回していけば、
+>  目的地も、そう簡単には
+“If we make a detour this wide, our destination won't be
+---
+>  わからないだろう」
+so easily figured out.”
+
+@20499 Amuro · アムロ
+> 「ああ、それに沿岸部の基地からも
+>  発見されにくいしな」
+“Yeah, and it makes us harder to spot from the coastal bases too.”
+
+@20500 Bright · ブライト
+> 「そういうことだ」
+“Exactly.”
+
+@20501 Quattro · クワトロ
+> 「しかし問題がないこともない」
+“However, it's not as if there are no problems.”
+
+@20502 Bright · ブライト
+> 「大尉、どういうことだ?」
+“Captain, what do you mean?”
+
+@20503 Quattro · クワトロ
+> 「先ほど本部から入った
+>  情報によれば
+“According to information that just came in from headquarters,
+---
+>  現在各地で、所属不明の
+>  部隊が出現しているらしい」
+units of unknown affiliation seem to be appearing all over now.”
+
+@20504 Amuro · アムロ
+> 「しかし解放戦線でもカラバでも
+>  知らないとなれば、レジスタンスでは
+“But if neither the Liberation Front nor Karaba knows of them, they can't be
+---
+>  ないだろう。帝国軍の
+>  特殊部隊か、なにかなのでは?」
+the resistance. Could they be an Imperial special forces unit, or something?”
+
+@20505 Quattro · クワトロ
+> 「いや、帝国軍でも、これの対応に
+>  追われているらしい。情報では
+“No, it seems even the Imperial military is being kept busy dealing with them. According to reports,
+---
+>  巨大な戦艦や、見たこともない
+>  人型マシンを有しているそうだ
+they possess enormous battleships and humanoid machines the likes of which we've never seen.
+---
+>  それに、未確認だが本当に
+>  突然“出現”したという
+And though unconfirmed, there are also reports that they truly
+---
+>  報告もある」
+‘appeared’ out of nowhere.”
+
+@20506 Ryoma · リョウ
+> 「まさか、百鬼一族や
+>  ミケーネでしょうか」
+“Surely you don't mean the Hyakki Clan or Mycenae?”
+
+@20507 Quattro · クワトロ
+> 「そうとは思えんな。
+>  しかし不可解ではある」
+“I doubt it. But it is baffling nonetheless.”
+
+@20508 Roux · ルー
+> 「ブレックス准将やイゴール将軍は
+>  なんといってるんですか?
+“What do Brigadier General Blex and General Igor say?
+---
+>  また、接触しろとでも?」
+Are we to make contact again?”
+
+@20509 Quattro · クワトロ
+> 「さすがに、こうも謎では危険すぎると
+>  判断されたようだな
+“It seems they've judged that with this much mystery, it's too dangerous.
+---
+>  まずはチベットに向かうことを
+>  優先しろということだが……」
+They say to prioritize heading for Tibet first, but...”
+
+@20510 Kamille · カミーユ
+> 「問題がある?」
+“There's a problem?”
+
+@20511 Quattro · クワトロ
+> 「そうだ。その正体不明の一軍が
+>  この近くにも出現しているらしい」
+“Yes. That unidentified force seems to have appeared near here as well.”
+
+@20512 Bright · ブライト
+> 「それは……やっかいだな」
+“That's... troublesome.”
+
+@20513 Banjo · 万丈
+> 「みんな、ちょっと来てくれないか」
+“Everyone, could you come here a moment?”
+
+@20514 Amuro · アムロ
+> 「どうしたんだ?」
+“What's going on?”
+
+@20515 Banjo · 万丈
+> 「ちょっと妙な情報が入ってね。
+>  ギャリソン」
+“Some odd information came in. Garrison.”
+
+@20516 Garrison · ギャリソン
+> 「はい。私どもがつかんだ情報に
+>  よりますと、現在各地に
+“Yes. According to the information we've gathered, mysterious units
+---
+>  所属不明の謎の部隊が
+>  出現しているようでございます
+of unknown affiliation appear to be appearing all over now.
+---
+>  少なくとも
+>  レジスタンス組織ではありません」
+They are at least not a resistance organization.”
+
+@20517 Koji · 甲児
+> 「どうせ占領軍の特殊部隊か
+>  何かだろ」
+“It's probably just some special forces unit of the occupation army or something.”
+
+@20518 Garrison · ギャリソン
+> 「いいえ、帝国軍もこれの対応に
+>  追われているようですので、
+“No, the Imperial military also seems to be kept busy dealing with them,
+---
+>  それはないでしょう」
+so that's likely not the case.”
+
+@20519 Ryoma · リョウ
+> 「とすると……
+>  まさか百鬼一族やミケーネが?」
+“Then... surely not the Hyakki Clan or Mycenae?”
+
+@20520 Banjo · 万丈
+> 「いや、連中が帝国に
+>  反抗するために用意したにしては
+“No, for something those lot prepared to rebel against the Empire,
+---
+>  それほど数が多いわけでもないようだ」
+there don't seem to be all that many of them either.”
+
+@20521 Koji · 甲児
+> 「なんだよ、さっぱりわからないじゃねぇか」
+“What the hell, we don't know a damn thing!”
+
+@20522 Garrison · ギャリソン
+> 「ですから、所属不明の
+>  謎の部隊と申し上げたのですよ」
+“That is why I said mysterious units of unknown affiliation.”
+
+@20523 Bright · ブライト
+> 「正体を探るのは、あとでいい。
+>  それよりも
+“Finding out their true identity can wait. More importantly,
+---
+>  何か問題があるのだろう?」
+there's some kind of problem, isn't there?”
+
+@20524 Banjo · 万丈
+> 「そう。実はこの近隣地域にも
+>  出現しているらしいんだ」
+“Right. Actually, they seem to have appeared in this nearby area too.”
+
+@20525 Beauty · ビューティ
+> 「あらやだ。それって接触するかも
+>  しれないってことでしょう?」
+“Oh my. That means we might end up making contact with them, doesn't it?”
+
+@20526 Banjo · 万丈
+> 「そういうこと。
+>  みんな、準備だけはしておいてほしい
+“Exactly. Everyone, I'd like you to at least be prepared.
+---
+>  スペシャルズの追撃隊も
+>  あきらめていないようだしね」
+The Specials' pursuit force doesn't seem to have given up either.”
+
+@20527 Ryo · 亮
+> 「そういえば沙羅、
+>  お前確か、シャピロを探していたな
+“Speaking of which, Sara, you were looking for Shapiro, weren't you?
+---
+>  見つかったのか、奴は?」
+Did you find him, that bastard?”
+
+@20528 Simone · シモーヌ
+> 「なぁに、恋人? そのシャピロって」
+“What's this, your lover? That Shapiro guy.”
+
+@20529 Sara · 沙羅
+> 「……あんたたちには、関係ないよ」
+“...It's none of your business.”
+
+@20530 Masato · 雅人
+> 「ちょっと沙羅、どこいくのさ」
+“Hey, Sara, where are you going?”
+
+@20531 Shinobu · 忍
+> 「ほっといてやれよ」
+“Just leave her alone.”
+
+@20532 Ryo · 亮
+> 「忍、お前何か知っているのか」
+“Shinobu, do you know something?”
+
+@20533 Shinobu · 忍
+> 「ああ……シャピロは、あのクソ野郎は
+>  ムゲに寝返りやがったんだ」
+“Yeah... Shapiro, that bastard, he defected to the Muge.”
+
+@20534 Masato · 雅人
+> 「それってホントかい、忍?」
+“Is that true, Shinobu?”
+
+@20535 Simone · シモーヌ
+> 「誰なの、その人?」
+“Who is that guy?”
+
+@20536 Shinobu · 忍
+> 「あんたのいったとおり、沙羅の恋人
+>  そして士官学校で俺たちの
+“Just like you said, he was Sara's lover, and the man who was our
+---
+>  教官だった男さ」
+instructor at the military academy.”
+
+@20537 Simone · シモーヌ
+> 「まずいこと、いっちゃったわね」
+“I really put my foot in it, didn't I.”
+
+@20538 Ryo · 亮
+> 「それで、あいつは?」
+“So, what happened to him?”
+
+@20539 Shinobu · 忍
+> 「行方不明さ。お前らには
+>  黙ってたが、終戦前に
+“Missing. I kept it from you all, but before the war ended,
+---
+>  確かに奴が帝国側にいたことは
+>  確認している。だが、戦後の
+I confirmed he was definitely on the Empire's side. But in the postwar
+---
+>  帝国軍に奴の姿はなかった。
+>  俺が知ってるのはそれだけだ」
+Imperial military, there was no sign of him. That's all I know.”
+
+@20540 Masato · 雅人
+> 「帝国軍に殺されちゃったのかな」
+“Maybe the Imperial military killed him.”
+
+@20541 Shinobu · 忍
+> 「さあな。どうだっていいさ、
+>  あんな裏切り者のことはな」
+“Who knows. Doesn't matter anyway, not for a traitor like him.”
+
+@20542 Ark · アーク（按段落 3DD1）
+> 「お前、勝手にいじるな!」
+“Hey, don't go messing with it on your own!”
+
+@20543 Lera · レラ
+> 「整備を手伝ってるんだ。
+>  勝手にやってるわけじゃない」
+“I'm helping with the maintenance. I'm not doing it on my own.”
+
+@20544 Astonaige · アストナージ
+> 「俺がやらせてるんだ、{HeroName}。
+>  その娘は、なかなかスジがいい」
+“I'm the one who told her to do it, {HeroName}. That girl's got real talent.”
+
+@20545 Ark · アーク（按段落 3DD1）
+> 「そう……なんですか」
+“Is that... so.”
+
+@20546 Lera · レラ
+> 「ふんっ」
+“Hmph.”
+
+@20547 Ark · アーク（按段落 3DD1）
+> 「敵!?」
+“Enemy?!”
+
+@20548 Selain · セレイン（按段落 3DD2）
+> 「お前、何をしている?」
+“What are you doing?”
+
+@20549 Lera · レラ
+> 「整備を手伝ってるんだ。
+>  勝手にやってるわけじゃない」
+“I'm helping with the maintenance. I'm not doing it on my own.”
+
+@20550 Astonaige · アストナージ
+> 「俺がやらせてるんだ、{HeroName}。
+>  その娘は、なかなかスジがいい」
+“I'm the one who told her to do it, {HeroName}. That girl's got real talent.”
+
+@20551 Selain · セレイン（按段落 3DD2）
+> 「なら、いい」
+“Then it's fine.”
+
+@20552 Lera · レラ
+> 「ふんっ」
+“Hmph.”
+
+@20553 Selain · セレイン（按段落 3DD2）
+> 「ん?……敵か」
+“Hm?...Enemies.”
+
+@20554 Bright · ブライト
+> 「どうした!?」
+“What's going on?!”
+
+@20555 Roberto · ロベルト
+> 「未確認機です。
+>  例のやつじゃないですかね」
+“Unidentified craft. Maybe it's that thing we've been hearing about.”
+
+@20556 Bright · ブライト
+> 「数は?」
+“How many?”
+
+@20557 Roberto · ロベルト
+> 「今のところ2機だけです」
+“Only two for now.”
+
+@20558 Bright · ブライト
+> 「2機? それだけか?」
+“Two? That's all?”
+
+@20559 Amuro · アムロ
+> 「接触してみるか、ブライト?
+>  たとえ敵でも、2機程度なら
+“Want to try making contact, Bright? Even if they're enemies, two
+---
+>  なんとかなる」
+shouldn't be a problem.”
+
+@20560 Bright · ブライト
+> 「よし、やってみるか」
+“All right, let's give it a try.”
+
+@20561 Banjo · 万丈
+> 「どうしたんだ?」
+“What's going on?”
+
+@20562 Reika · レイカ
+> 「あ、万丈。
+>  それが、例の未確認機らしいの」
+“Ah, Banjo. It seems to be that unidentified craft we've been hearing about.”
+
+@20563 Bright · ブライト
+> 「現在確認されている数は2機
+>  のみだ。接触してみるつもりでいるが?」
+“The number currently confirmed is only two. I intend to try making contact, but?”
+
+@20564 Banjo · 万丈
+> 「ええ、そうしましょう。
+>  正体を確認したい」
+“Yes, let's do that. I want to confirm what they are.”
+
+@20565 Show · ショウ
+> 「やめろガラリア!
+>  戦っているヒマは、ないんだ!」
+“Stop it, Garalia! There's no time to fight!”
+
+@20566 Garalia · ガラリア
+> 「バイストンウェルに帰れぬとあらば、
+>  せめてお前を倒さずして
+“If I cannot return to Byston Well, then at the very least, what kind of
+---
+>  なんの戦士か!」
+warrior would I be if I did not defeat you?!”
+
+@20567 Show · ショウ
+> 「あの軍勢を見ただろう!? あれは
+>  地上のものでも、バイストンウェルの
+“Did you see that army?! That was neither something of the surface nor
+---
+>  ものでもなかった。地上は何か
+>  おかしなことになっているんだ!」
+of Byston Well. Something strange is happening on the surface!”
+
+@20568 Garalia · ガラリア
+> 「私には関係ない!」
+“That has nothing to do with me!”
+
+@20569 Chum · チャム
+> 「ショウ、もうもたないよ!」
+“Show, I can't hold on much longer!”
+
+@20570 Show · ショウ
+> 「チャム、邪魔だ!」
+“Chum, you're in the way!”
+
+@20571 Chum · チャム
+> 「変なトコさわらないでよ、すけべぇ!」
+“Don't touch me in weird places, you pervert!”
+
+@20572 Show · ショウ
+> 「そんな場合じゃないだろ! ガラリア、
+>  俺たち以外にも地上に出ている
+“This isn't the time for that! Garalia, there have to be others who came out to the surface besides us.
+---
+>  者がいるはずだ。戻れる方法だって
+>  見つかるかもしれないだろ!?」
+We might even find a way back, you know?!”
+
+@20573 Garalia · ガラリア
+> 「ならば、お前を倒した後で
+>  それを探す!」
+“Then I'll search for it after I've defeated you!”
+
+@20574 Chum · チャム
+> 「ショウ! 何か近づいてくる!」
+“Show! Something's coming closer!”
+
+@20575 Show · ショウ
+> 「なんだ!? ……ガラリア!」
+“What?! ...Garalia!”
+
+@20576 Garalia · ガラリア
+> 「くっ……地上人の船か!?」
+“Ngh... A surface-dweller ship?!”
+
+@20577 Amuro · アムロ
+> 「聞こえるか?
+>  我々に交戦の意思はない
+“Can you hear me? We have no intention of fighting.
+---
+>  君たちの所属を確認したい」
+We want to confirm your affiliation.”
+
+@20578 Show · ショウ
+> 「あの敵ではない?
+>  俺はショウ、ショウ・ザマだ
+“You're not with that enemy? I'm Show, Show Zama.
+---
+>  あんたたちと同じ地上人だ。
+>  攻撃はしないでくれ」
+I'm a surface-dweller, same as you. Don't attack.”
+
+@20579 Amuro · アムロ
+> 「地上人?
+>  地球人ということか?
+“Surface-dweller? You mean an Earthling?
+---
+>  攻撃はしない。
+>  状況を確認したいんだ」
+We won't attack. We just want to confirm the situation.”
+
+@20580 Show · ショウ
+> 「俺はバイストンウェルから
+>  戻ってきたんだ
+“I came back from Byston Well.
+---
+>  こっちこそ何がどうなっているのか
+>  わからないんだよ」
+If anything, I'm the one who doesn't understand what's going on.”
+
+@20581 Amuro · アムロ
+> 「バイストンウェル? どこのことだ?」
+“Byston Well? Where is that?”
+
+@20582 Show · ショウ
+> 「……海と大地の
+>  狭間にある世界だ
+“...A world in the space between the sea and the earth.
+---
+>  ファンタジーの異世界みたいなものだ」
+Something like a fantasy otherworld.”
+
+@20583 Chum · チャム
+> 「ショウ、この人たち大丈夫なの?」
+“Show, are these people okay?”
+
+@20584 Bright · ブライト
+> 「……な、なんだ? 小人……?」
+“...W-what is this? A little person...?”
+
+@20585 Duo · デュオ
+> 「マジかよ、羽根がついてたぜぇ」
+“No way, she's got wings.”
+
+@20586 Show · ショウ
+> 「こっちも聞かせてもらいたい。いったい
+>  地上はどうなってしまったんだ?」
+“I'd like to hear from you too. Just what has happened to the surface?”
+
+@20587 Amuro · アムロ
+> 「君は異星人ではないのだな?」
+“So you're not an alien, then?”
+
+@20588 Show · ショウ
+> 「俺は地球人だよ」
+“I'm an Earthling.”
+
+@20589 Amuro · アムロ
+> 「……地球は異星人の帝国に
+>  占領されたんだよ」
+“...Earth has been occupied by an alien empire.”
+
+@20590 Show · ショウ
+> 「なんだって? じゃあ、あのときの
+>  連中が異星人ってことか……」
+“What?! So those guys back then were aliens...”
+
+@20591 Amuro · アムロ
+> 「ショウくんといったな。
+>  君が地球人であるなら
+“Show, was it? If you're an Earthling,
+---
+>  協力してくれないか。
+>  君の事情も詳しく聞きたいし
+won't you cooperate with us? I'd also like to hear your circumstances in detail.
+---
+>  世界各地に君たちのような
+>  集団が出現しているんだ」
+Groups like yours have been appearing all over the world.”
+
+@20592 Show · ショウ
+> 「世界各地に?
+>  やはりジャコバ・アオンか
+“All over the world? So it really is Jacoba Aon.
+---
+>  フェラリオがしかけたんだ……」
+Ferario must have set this up...”
+
+@20593 Garalia · ガラリア
+> 「ショウ! 貴様、地上人に
+>  己を売るのか?
+“Show! You bastard, are you selling yourself to the surface-dwellers?
+---
+>  やはり地上人同士の
+>  なれあいか!?」
+So it's just surface-dwellers cozying up to each other after all?!”
+
+@20594 Show · ショウ
+> 「落ち着けガラリア! やはり
+>  他にも地上に出てきているんだ
+“Calm down, Garalia! So there really are others who came out to the surface.
+---
+>  バイストンウェルに戻れずに、
+>  こんなところで死ぬつもりか?
+Do you intend to die here, unable to return to Byston Well?
+---
+>  俺はお前との戦いを避けてみせた。
+>  いいかげん少しくらいは
+I've shown you I'm avoiding a fight with you. At least for once,
+---
+>  話を聞いてくれ!」
+just listen to what I have to say!”
+
+@20595 Chum · チャム
+> 「そおよ! 少しくらいいいじゃない!」
+“That's right! A little won't hurt!”
+
+@20596 Garalia · ガラリア
+> 「……わかった。私にどうしろというのだ、
+>  ショウ・ザマ」
+“...Understood. What do you want me to do, Show Zama?”
+
+@20597 Show · ショウ
+> 「この人たちと一緒にいくんだ。
+>  少なくとも敵じゃない
+“Come along with these people. At the very least, they're not enemies.
+---
+>  他の連中の情報も入る」
+We'll also get information on the others.”
+
+@20598 Garalia · ガラリア
+> 「……いいだろう。
+>  地上で死ぬのは犬死にだからな」
+“...Fine. Dying on the surface would be a dog's death anyway.”
+
+@20599 Bright · ブライト
+> 「……話は、ついたようだな」
+“...Sounds like you've come to an understanding.”
+
+@20600 Amuro · アムロ
+> 「よし、二人ともこちらへ来て……」
+“All right, you two, come over here...”
+
+@20601 Quattro · クワトロ
+> 「敵だと!? うかつだったか」
+“Enemies?! Were we careless?”
+
+@20602 Bern · バーン
+> 「ダンバイン!? ショウ・ザマか!!」
+“Dunbine?! Show Zama!!”
+
+@20603 Show · ショウ
+> 「バーン・バニングス!?」
+“Bern Bunnings?!”
+
+@20604 Garalia · ガラリア
+> 「バーンだと!?」
+“Bern?!”
+
+@20605 Bern · バーン
+> 「ガラリアも一緒か? ふん、
+>  貴様ごときが裏切ったとて
+“Garalia too? Hmph, even if the likes of you betrayed us,
+---
+>  どうということもないわ。まとめて
+>  叩き落としてくれる!」
+it's nothing to me. I'll shoot you all down together!”
+
+@20606 Garalia · ガラリア
+> 「違う、私は……」
+“No, I...”
+
+@20607 Bern · バーン
+> 「問答は無用だ! 覚悟!」
+“No need for talk! Prepare yourself!”
+
+@20608 Show · ショウ
+> 「バーン、状況を考えろ!
+>  ここは地上なんだぞ、戦いをやめろ!」
+“Bern, think about the situation! This is the surface, stop fighting!”
+
+@20609 Bern · バーン
+> 「そうはいかん。地上で最初に
+>  会う者がお前だというのは
+“That won't do. That you're the first person I meet on the surface
+---
+>  私にとっては僥倖なのだ。
+>  地上で死ねるのは幸せだと思え!」
+is a stroke of luck for me. Consider yourself fortunate to die on the surface!”
+
+@20610 Show · ショウ
+> 「僥倖だと……? 俺に会ったのが
+>  そんなに幸運か!?」
+“A stroke of luck...? Is meeting me really that fortunate?!”
+
+@20611 Bern · バーン
+> 「そうだ! 地上に来てまで、私は
+>  チャンスを与えられたのだ!」
+“That's right! Even here on the surface, I've been given a chance!”
+
+@20612 Show · ショウ
+> 「バイストンウェルの人間が地上に
+>  来てしまったっていうのに、そのことの
+“Even though people from Byston Well have come to the surface, you don't even
+---
+>  意味も考えず、貴様は!」
+think about what that means, you bastard!”
+
+@20613 Amuro · アムロ
+> 「どうしたというんだ、ショウくん!」
+“What's wrong, Show?”
+
+@20614 Show · ショウ
+> 「応戦してください! あいつは
+>  本気で、きます!」
+“Fight back! He's coming at us for real!”
+
+@20615 Bright · ブライト
+> 「敵だというのか!?
+>  よし、出撃しろ!」
+“You're saying they're enemies?! All right, launch!”
+
+@20616 Garalia · ガラリア
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@20617 Show · ショウ
+> 「くっ……ガラリア……」
+“Ngh... Garalia...”
+
+@20618 Chum · チャム
+> 「ショウ……」
+“Show...”
+
+@20619 Show · ショウ
+> 「大丈夫だよ、チャム」
+“I'm fine, Chum.”
+
+@20620 Chum · チャム
+> 「……ショウ、あたしたち、本当に
+>  バイストンウェルに帰れるの?」
+“...Show, can we really make it back to Byston Well?”
+
+@20621 Show · ショウ
+> 「わからない。その前にあの軍勢に
+>  やられるかもしれない……
+“I don't know. Before that, we might be killed by that army...
+---
+>  地上で死ねるのがせめてもの幸せ
+>  かなって、考えることもあるんだ……」
+Sometimes I think that at least dying on the surface might be a kind of happiness...”
+
+@20622 Chum · チャム
+> 「じゃあ、あたしは不幸な女じゃない」
+“Then I'm not an unfortunate woman.”
+
+@20623 Show · ショウ
+> 「ははっ、ごめん、チャム
+“Haha, sorry, Chum.
+---
+>  なに!? オーラレーダーに反応!?」
+What?! A reaction on the aura radar?!”
+
+@20624 Chum · チャム
+> 「ショウ! 何かくるよ!!」
+“Show! Something's coming!!”
+
+@20625 Show · ショウ
+> 「くっ、あの敵か!?」
+“Ngh, is it that enemy?!”
+
+@20626 Amuro · アムロ
+> 「聞こえるか?
+>  我々に交戦の意思はない
+“Can you hear me? We have no intention of fighting.
+---
+>  君たちの所属を確認したい」
+We want to confirm your affiliation.”
+
+@20627 Show · ショウ
+> 「違う? あの敵ではない?
+>  ……俺はショウ、ショウ・ザマだ
+“No? Not that enemy?...I'm Show. Show Zama.
+---
+>  あんたたちと同じ地上人だ。
+>  攻撃はしないでくれ」
+I'm a surface dweller, same as you. Don't attack.”
+
+@20628 Amuro · アムロ
+> 「地上人?
+>  地球人ということか?
+“Surface dweller? You mean an Earthling?
+---
+>  攻撃はしない。
+>  状況を確認したいんだ」
+We won't attack. We just want to confirm the situation.”
+
+@20629 Show · ショウ
+> 「俺はバイストンウェルから
+>  戻ってきたんだ
+“I came back from Byston Well.
+---
+>  こっちこそ何がどうなっているのか
+>  わからないんだよ」
+If anything, I'm the one who doesn't understand what's going on.”
+
+@20630 Amuro · アムロ
+> 「バイストンウェル? どこのことだ?」
+“Byston Well? Where is that?”
+
+@20631 Show · ショウ
+> 「……海と大地の
+>  狭間にある世界だ
+“...A world between the sea and the earth.
+---
+>  ファンタジーの異世界みたいなものだ」
+Something like a fantasy otherworld.”
+
+@20632 Chum · チャム
+> 「ショウ、この人たち大丈夫なの?」
+“Show, are these people okay?”
+
+@20633 Bright · ブライト
+> 「……な、なんだ? 小人……?」
+“...W-what is this? A little person...?”
+
+@20634 Duo · デュオ
+> 「マジかよ、羽根がついてたぜぇ」
+“No way, she's got wings.”
+
+@20635 Show · ショウ
+> 「こっちも聞かせてもらいたい。いったい
+>  地上はどうなってしまったんだ?」
+“I'd like to hear from you too. What on earth has happened to the surface?”
+
+@20636 Amuro · アムロ
+> 「君は異星人ではないのだな?」
+“So you're not an alien?”
+
+@20637 Show · ショウ
+> 「俺は地球人だよ」
+“I'm an Earthling.”
+
+@20638 Amuro · アムロ
+> 「……地球は異星人の帝国に
+>  占領されたんだよ」
+“...Earth has been occupied by an alien empire.”
+
+@20639 Show · ショウ
+> 「なんだって? じゃあ、あのときの
+>  連中が異星人ってことか……」
+“What? Then those guys back there were aliens...”
+
+@20640 Amuro · アムロ
+> 「ショウくんといったな。
+>  君が地球人であるなら
+“Show, was it? If you're an Earthling,
+---
+>  協力してくれないか。
+>  君の事情も詳しく聞きたいし
+won't you cooperate with us? I'd also like to hear your circumstances in detail.
+---
+>  世界各地に君たちのような
+>  集団が出現しているんだ」
+Groups like yours are appearing all over the world.”
+
+@20641 Show · ショウ
+> 「世界各地に?
+>  やはりジャコバ・アオンか
+“All over the world? So it is Jacoba Aon after all.
+---
+>  フェラリオがしかけたんだ……」
+The Ferario must have set it up...”
+
+@20642 Amuro · アムロ
+> 「どうかな?」
+“What do you think?”
+
+@20643 Show · ショウ
+> 「わかりました。一緒にいかせてください」
+“Understood. Let me come with you.”
+
+@20644 Chum · チャム
+> 「ショウ、大丈夫なの……?」
+“Show, are you sure...?”
+
+@20645 Show · ショウ
+> 「そう思う。この人たちなら
+>  信じてもいい」
+“I think so. These people can be trusted.”
+
+@20646 Amuro · アムロ
+> 「そういってくれて助かるよ。
+>  では後部デッキから……」
+“I'm glad to hear that. Then from the rear deck...”
+
+@20647 Amuro · アムロ
+> 「なんだ!?」
+“What?!”
+
+@20648 Quattro · クワトロ
+> 「敵だと!? うかつだったか」
+“Enemies?! Were we careless?”
+
+@20649 Bern · バーン
+> 「ダンバイン!? ショウ・ザマか!!」
+“Dunbine?! Show Zama?!”
+
+@20650 Show · ショウ
+> 「バーン・バニングス!? 待て!」
+“Bern Bunnings?! Wait!”
+
+@20651 Bern · バーン
+> 「問答は無用だ! 覚悟!」
+“No time for talk! Prepare yourself!”
+
+@20652 Show · ショウ
+> 「バーン、状況を考えろ!
+>  ここは地上なんだぞ、戦いをやめろ!」
+“Bern, think about the situation! This is the surface! Stop fighting!”
+
+@20653 Bern · バーン
+# 审校：“幸せ”在此处是“死得其所/幸运”之意，改为 blessing 更贴合巴恩的武士式语气，避免与 L26 的 fortune 重复。
+> 「そうはいかん。地上で最初に
+>  会う者がお前だというのは
+“That I cannot do. That you are the first one I meet on the surface
+---
+>  私にとっては僥倖なのだ。
+>  地上で死ねるのは幸せだと思え!」
+is a stroke of luck for me. Consider it a blessing to die on the surface!”
+
+@20654 Show · ショウ
+# 审校：“幸運”与 L25 的“僥倖”呼应，改为 good fortune 更自然，并保留原文反问语气。
+> 「僥倖だと……? 俺に会ったのが
+>  そんなに幸運か!?」
+“A stroke of luck...? Is meeting me really such good fortune?!”
+
+@20655 Bern · バーン
+> 「そうだ! 地上に来てまで、私は
+>  チャンスを与えられたのだ!」
+“Indeed! Even here on the surface, I have been given my chance!”
+
+@20656 Show · ショウ
+> 「バイストンウェルの人間が地上に
+>  来てしまったっていうのに、そのことの
+“The people of Byston Well have come to the surface, and yet
+---
+>  意味も考えず、貴様は!」
+you don't even think about what that means, you bastard!”
+
+@20657 Amuro · アムロ
+> 「どうしたというんだ、ショウくん!」
+“What's going on, Show?”
+
+@20658 Show · ショウ
+> 「応戦してください! あいつは
+>  本気で、きます!」
+“Please fight back! He's coming at us for real!”
+
+@20659 Bright · ブライト
+> 「敵だというのか!?
+>  よし、出撃しろ!」
+“You mean enemies?! All right, launch!”
+
+@20660 Beltorchika · ベルトーチカ
+> 「艦長! スペシャルズの追撃隊に
+>  捕捉されました!」
+“Captain! We've been caught by a Specials pursuit squad!”
+
+@20661 Bright · ブライト
+> 「なんだと!?」
+“What?!”
+
+@20662 Amuro · アムロ
+> 「あの敵か……」
+“That enemy...”
+
+@20663 Quattro · クワトロ
+> 「…………」
+“...”
+
+@20664 Kamille · カミーユ
+> 「あれは……フォウか!?」
+“That's... Four?!”
+
+@20665 Four · フォウ
+> 「……カミーユが出ているのか……」
+“...So Kamille is out here...”
+
+@20666 Kamille · カミーユ
+> 「フォウ!!」
+“Four!!”
+
+@20667 Four · フォウ
+> 「……邪魔をするな! 私は
+>  記憶を手に入れるんだ!」
+“...Don't get in my way! I'm going to get my memories back!”
+
+@20668 Kamille · カミーユ
+> 「フォウ、やめろ! 戦っちゃいけない!
+>  フォウ!」
+“Four, stop! You mustn't fight! Four!”
+
+@20669 Four · フォウ
+> 「お前は私を苦しめるために
+>  つくられたのか!!」
+“Were you made just to torment me?!”
+
+@20670 Kamille · カミーユ
+> 「フォウ! 思い出なんて、これから
+>  いくらでもつくればいいじゃないか!!」
+“Four! You can make all the new memories you want from now on!!”
+
+@20671 Four · フォウ
+> 「昔の記憶を取り戻せないのに、
+>  いまの記憶があったって、何になる!」
+“If I can't get back my old memories, what good are the ones I have now?!”
+
+@20672 Kamille · カミーユ
+> 「フォォォォォォウッ!!」
+“Foooouuur!!”
+
+@20673 Amuro · アムロ
+> 「カミーユ、下がれ!」
+“Kamille, fall back!”
+
+@20674 Kamille · カミーユ
+> 「僕がやります! この敵は、
+>  よくわかっていますから」
+“I'll do it! I know this enemy well.”
+
+@20675 Kamille · カミーユ
+> 「フォウ!」
+“Four!”
+
+@20676 Four · フォウ
+> 「カミーユ……出てきたのなら、
+>  さっさと撃破してくれればいいものを!」
+“Kamille... If you've come out, you might as well just shoot me down quickly!”
+
+@20677 Kamille · カミーユ
+> 「フォウ、話を聞いてくれ。フォウ!」
+“Four, listen to me. Four!”
+
+@20678 Four · フォウ
+> 「カミーユ……」
+“Kamille...”
+
+@20679 Kamille · カミーユ
+> 「フォウ、俺、君に言い残したことが
+>  たくさんあるんだ」
+“Four, there's so much I never got to tell you.”
+
+@20680 Four · フォウ
+> 「私に……?」
+“To me...?”
+
+@20681 Kamille · カミーユ
+> 「……それで、幼なじみの女の子が
+>  いうんだよ。カミーユ、爪をかむクセを
+“...So this girl I grew up with says to me, Kamille, stop biting your nails,
+---
+>  やめなさい、カミーユって。僕はそれが
+>  嫌だった。だってさ、カミーユってのは
+Kamille. I hated that. Because, you know, Kamille is
+---
+>  女の子の名前だ。だから僕はカラ
+>  テもやったし、戦い方の勉強もした
+a girl's name. So I took up karate, and I studied how to fight.
+---
+>  こんな世界でもちゃんと
+>  やっていけるように、体も鍛えた
+So I could make it in a world like this, I trained my body too.
+---
+>  男の証明を、
+>  手に入れたかったんだ……」
+I wanted proof that I was a man...”
+
+@20682 Four · フォウ
+> 「カミーユ……」
+“Kamille...”
+
+@20683 Kamille · カミーユ
+> 「俺……何いってるんだろ。
+>  フォウ、俺、こんなこと……」
+“I... what am I saying? Four, I... this is...”
+
+@20684 Four · フォウ
+> 「カミーユ…………カミーユ、
+>  ひとつだけ聞いていい?
+“Kamille... Kamille, can I ask you just one thing?
+---
+>  今でもカミーユって名前、きらい?」
+Do you still hate the name Kamille?”
+
+@20685 Kamille · カミーユ
+> 「……好きさ、自分の名前だもの」
+“...I like it. It's my name, after all.”
+
+@20686 Four · フォウ
+> 「そう…………。カミーユ、
+>  お互いの場所に戻りましょう
+“I see... Kamille, let's go back to where we each belong.
+---
+>  これは、あなたにふさわしいことじゃないわ」
+This isn't something that suits you.”
+
+@20687 Kamille · カミーユ
+> 「フォウ、フォウ!? 待ってくれ、
+>  フォウ!!」
+“Four, Four?! Wait, Four!!”
+
+@20688 Four · フォウ
+> 「カミーユ……さよなら……」
+“Kamille... goodbye...”
+
+@20689 Bright · ブライト
+> 「敵の増援だと!?
+>  くそっ、スペシャルズめ!」
+“Enemy reinforcements?! Damn, those Specials!”
+
+@20690 Wooder · ウッダー
+> 「来たか。よし一気に敵を叩くぞ!
+>  フォウ特尉、どうなっている!
+“So they've come. Good, we'll crush the enemy in one go! Lieutenant Four, what's your status!
+---
+>  やれないのならば邪魔にしかならん。
+>  引き返せ!」
+If you can't do it, you're only in the way. Turn back!”
+
+@20691 Wooder · ウッダー
+> 「なんだと!?
+>  フォウ特尉、どういうつもりだ!!」
+“What?! Lieutenant Four, what do you think you're doing?!”
+
+@20692 Four · フォウ
+# 审校：原文“忘れなくてすむ”是“可以不用忘记”，初稿误译为“won't have to remember”。改为 won't have to forget。
+> 「……カミーユ。これでもう、忘れなくて
+>  すむということ……」
+“...Kamille. This way, I won't have to forget anymore...”
+
+@20693 Wooder · ウッダー
+> 「なにッ!?」
+“What?!”
+
+@20694 Kamille · カミーユ
+> 「あ……フォ……フォォォォォウッッ!!」
+“Ah... Fo... Fouuuuur!!”
+
+@20695 Specials · スペシャルズ
+> 「ス、スードリが!? 撤退だ!!」
+“Th-the Sudori?! We're retreating!!”
+
+@20696 Bright · ブライト
+> 「敵の増援だと!? 数が多すぎる
+>  スペシャルズめ!」
+“Enemy reinforcements?! There are too many of them, those Specials!”
+
+@20697 Ryoma · リョウ
+> 「なに? どうしたんだ、いったい!?」
+“What? What on earth is going on?!”
+
+@20698 Amuro · アムロ
+> 「ブライト、離脱するんだ」
+“Bright, we're pulling out.”
+
+@20699 Bright · ブライト
+> 「なんだと?」
+“What did you say?”
+
+@20700 Amuro · アムロ
+> 「彼女は命をかけて俺たちを、
+>  いやカミーユを脱出させようとしている」
+“She's risking her life to let us escape. No, to let Kamille escape.”
+
+@20701 Kamille · カミーユ
+> 「待ってください、フォウが……!」
+“Please wait, Four is...!”
+
+@20702 Amuro · アムロ
+> 「人の善意を無視するやつは、
+>  一生苦しむぞ!」
+“Anyone who ignores another person's goodwill will suffer for the rest of their life!”
+
+@20703 Bright · ブライト
+> 「よし、全機撤退だ!」
+“All right, all units, retreat!”
+
+@20704 Four · フォウ
+> 「カミーユ……さよなら……。これでもう、
+>  忘れなくてもすむということ……」
+“Kamille... goodbye... This way, I won't have to remember anymore...”
+
+@20705 Kamille · カミーユ
+> 「フォウ……これでよかったのか……
+>  フォォォォウッ!!」
+“Four... was this really for the best... Fouuuur!!”
+
+@20706 Quattro · クワトロ
+> 「ええい、なんだというのだ、この感覚は!」
+“Ngh, what is this feeling?!”
+
+@20707 Four · フォウ
+> 「くっ……邪魔をするなぁっ!!」
+“Ngh... Don't get in my way!!”
+
+@20708 Bern · バーン
+> 「ショウ・ザマ! 覚悟!!」
+“Show Zama! Prepare yourself!!”
+
+@20709 Show · ショウ
+> 「くっ……バーンめ!」
+“Ngh... Bern!”
+
+@20710 Bern · バーン
+> 「ガラリア、貴様もこれで終わりだ!」
+“Garalia, this is the end for you too!”
+
+@20711 Garalia · ガラリア
+> 「黙れ! お前ごときにやられるものか!」
+“Silence! As if I'd be beaten by the likes of you!”
+
+@20712 Kamille · カミーユ
+> 「フォウ……」
+“Four...”
+
+@20713 Amuro · アムロ
+> 「なるほどな。つまり、
+>  君はその異世界に呼び込まれた
+“I see. So you were summoned into that other world,
+---
+>  地球人で、彼女たちは
+>  その世界の住人ということか」
+and you're saying those girls are inhabitants of that world.”
+
+@20714 Show · ショウ
+> 「ええ」
+“Yes.”
+
+@20715 Chum · チャム
+> 「異世界じゃなくて
+>  バイストンウェルよ!」
+“It's not another world, it's Byston Well!”
+
+@20716 Quatre · カトル
+> 「すごい……本当に生きているんですね」
+“Amazing... so they really are alive.”
+
+@20717 Chum · チャム
+> 「当たり前じゃないっ!」
+“Of course they are!”
+
+@20718 Quattro · クワトロ
+> 「信じないわけにもいくまい。
+>  しかし戦争中でその敵も
+“I suppose I have no choice but to believe it. But the problem is that
+---
+>  地上に出ているというのが
+>  問題だな」
+we're in the middle of a war, and that enemy has come to the surface as well.”
+
+@20719 Show · ショウ
+> 「はい。他にも地上の人間が
+>  いましたが、どう行動するのか
+“Yes. There were other people from the surface too, but I don't know
+---
+>  わかりません。それと、
+>  仲間がいれば合流したいのですが」
+how they'll act. Also, if I have comrades, I'd like to join up with them.”
+
+@20720 Quattro · クワトロ
+> 「わかった。可能な限り情報を
+>  集めさせよう。しかし、いま地上を
+“Understood. I'll have information gathered as much as possible. However, the one who currently
+---
+>  制圧しているのは帝国だ。我々
+>  もあまり自由のきく立場ではない」
+controls the surface is the Empire. We're not in a position where we can act very freely either.”
+
+@20721 Show · ショウ
+# 审校：修正语法：'a Earthling' 改为 'an Earthling'。
+> 「それは、わかりました。
+>  バイストンウェルでの敵である
+“I understand that. Drake and the others, our enemies in
+---
+>  ドレイクたちも気になりますが、
+>  僕も地球人です
+Byston Well, concern me as well, but I'm an Earthling too.
+---
+>  異星人の帝国との戦いには
+>  参加します」
+I'll join the fight against the alien empire.”
+
+@20722 Quattro · クワトロ
+> 「うむ。君はどうする、
+>  ガラリア・ニャムヒー
+“Very well. What about you, Garalia Nyamhee?
+---
+>  ショウくんとは敵対する組織に
+>  属していたと聞くが」
+I hear you belonged to an organization hostile to young Show.”
+
+@20723 Garalia · ガラリア
+> 「……わからない。
+>  しばらくは世話になるつもりだ
+“...I don't know. For the time being, I intend to accept your hospitality.
+---
+>  私も武人だ、
+>  いきなり敵にまわるようなことはしない
+I too am a warrior; I won't suddenly turn on you as an enemy.
+---
+>  その証に、バーンたちとも
+>  戦ってみせただろう」
+As proof of that, I fought against Bern and the others, didn't I?”
+
+@20724 Bright · ブライト
+> 「いいだろう。ただし、しばらくの間は、
+>  監視はつけさせてもらう」
+“Very well. However, for the time being, you'll be kept under surveillance.”
+
+@20725 Garalia · ガラリア
+> 「……わかった」
+“...Understood.”
+
+@20726 Banjo · 万丈
+> 「信じないわけにもいかないね。
+>  しかし戦争中でその敵も
+“I guess we've got no choice but to believe it. But the problem is that
+---
+>  地上に出ているというのが
+>  問題だな」
+we're in the middle of a war, and that enemy has come to the surface as well.”
+
+@20727 Show · ショウ
+> 「はい。他も地上の人間が
+>  いましたが、どう行動するのか
+“Yes. There were other people from the surface too, but I don't know
+---
+>  わかりません。それと、
+>  仲間がいれば合流したいのですが」
+how they'll act. Also, if I have comrades, I'd like to join up with them.”
+
+@20728 Banjo · 万丈
+> 「わかった。ギャリソン、この件に関して
+>  は最優先で情報を集めてくれ」
+“Understood. Garrison, gather information on this matter on top priority.”
+
+@20729 Garrison · ギャリソン
+> 「かしこまりました」
+“Understood.”
+
+@20730 Quattro · クワトロ
+> 「しかし、いま地上を
+>  制圧しているのは帝国だ
+“However, the one who currently controls the surface is the Empire.
+---
+>  我々もあまり自由のきく
+>  立場ではない」
+We're not in a position where we can act very freely either.”
+
+@20731 Show · ショウ
+# 审校：修正语法：'a Earthling' 改为 'an Earthling'。
+> 「それは、わかりました。
+>  バイストンウェルでの敵である
+“I understand that. Drake and the others, our enemies in Byston Well,
+---
+>  ドレイクたちも気になりますが、
+>  僕も地球人です
+concern me as well, but I'm an Earthling too.
+---
+>  異星人の帝国との戦いには
+>  参加します」
+I'll join the fight against the alien empire.”
+
+@20732 Banjo · 万丈
+> 「それはありがたいな。よろしく頼むよ」
+“That's a great help. I'm counting on you.”
+
+@20733 Banjo · 万丈
+> 「それで、君はどうするんだい、
+>  ガラリア・ニャムヒーさん
+“So then, what will you do, Garalia Nyamhee?
+---
+>  ショウくんとは敵対する組織に
+>  属していたと聞くが」
+I hear you belonged to an organization hostile to young Show.”
+
+@20734 Garalia · ガラリア
+> 「……わからない。
+>  しばらくは世話になるつもりだ
+“...I don't know. For the time being, I intend to accept your hospitality.
+---
+>  私も武人だ、
+>  いきなり敵にまわるようなことはしない
+I too am a warrior; I won't suddenly turn on you as an enemy.
+---
+>  その証に、バーンたちとも
+>  戦ってみせただろう」
+As proof of that, I fought against Bern and the others, didn't I?”
+
+@20735 Banjo · 万丈
+> 「わかった。君たちを信用しよう」
+“Understood. We'll trust you.”
+
+@20736 Shinobu · 忍
+> 「おいおいホントかよ」
+“Hey, hey, are you serious?”
+
+@20737 Masato · 雅人
+> 「まぁまぁ文句いわないの、忍」
+“Now, now, don't complain, Shinobu.”
+
+@20738 Henken · ヘンケン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ご苦労だった、ブライト艦長」
+“Good work, Captain Bright.”
+
+@20739 Bright · ブライト
+> 「ヘンケン中佐、あなたでしたか」
+“Lieutenant Colonel Henken, it was you.”
+
+@20740 Henken · ヘンケン
+> 「ずいぶんと戦果をあげているようだな。
+>  おかげで、こちらもやりやすくて助かる
+“You seem to have racked up quite the results. Thanks to that, things are easier on our end too.
+---
+>  戦艦アルビオンは当分の間、
+>  君らで運用してもらうことになる」
+The battleship Albion will be operated by you lot for the time being.”
+
+@20741 Bright · ブライト
+> 「聞いています。
+>  パイロットの補充もあるとか?」
+“I've heard. There are replacement pilots too, I hear?”
+
+@20742 Henken · ヘンケン
+> 「ああ、紹介しよう。ファ・ユイリィだ。
+>  まだ未熟だが役にはたつだろう」
+“Yes, let me introduce you. This is Fa Yuiry. She's still inexperienced, but she should be useful.”
+
+@20743 Fa · ファ
+> 「ファ・ユイリィです。
+>  よろしくお願いします」
+“I'm Fa Yuiry. Pleased to meet you.”
+
+@20744 Bright · ブライト
+> 「ブライト・ノアだ。ここはもういい。
+>  他のクルーに、あいさつしてこい」
+“I'm Bright Noa. You're fine here. Go introduce yourself to the other crew.”
+
+@20745 Fa · ファ
+> 「はい。では失礼します」
+“Yes. Then if you'll excuse me.”
+
+@20746 Quattro · クワトロ
+> 「ヘンケン中佐がおられるとなると、
+>  我々の次の行動の指示も
+“With Lieutenant Colonel Henken here, I take it we'll also be receiving orders
+---
+>  あるとみましたが」
+for our next move.”
+
+@20747 Henken · ヘンケン
+> 「さすがにするどいな。そうだ。君たちには
+>  アルビオンで北京へ向かってもらう」
+“Sharp as ever. That's right. I want you to head to Beijing aboard the Albion.”
+
+@20748 Amuro · アムロ
+> 「北京? しかし、
+>  あそこは廃墟になっていたはずでは?」
+“Beijing? But wasn't that place reduced to ruins?”
+
+@20749 Henken · ヘンケン
+> 「そうだ。そこで、
+>  もと国際警察機構のスタッフと
+“That's right. There, I want you to rendezvous with former staff of the
+---
+>  合流してもらいたい」
+International Police Organization.”
+
+@20750 Bright · ブライト
+> 「国際警察機構? ああ、
+>  武装集団の組織犯罪を
+“The International Police Organization? Ah, the one that handled organized crime
+---
+>  扱っていた? 戦後解体されたと
+>  聞いていますが」
+by armed groups? I heard it was disbanded after the war.”
+
+@20751 Henken · ヘンケン
+> 「我々と同じだよ。まぁ、どんな
+>  連中なのかは俺も聞いていない
+“Same as us. Well, I haven't heard what kind of people they are either.
+---
+>  向こうから接触してくるはずだ」
+They should make contact with you from their side.”
+
+@20752 Bright · ブライト
+> 「わかりました。
+>  では我々は北京へ向かいます」
+“Understood. Then we'll head for Beijing.”
+
+@20753 Henken · ヘンケン
+> 「おう、頼んだぞ」
+“Yeah, I'm counting on you.”
+
+@20754 Kamille · カミーユ
+> 「ファ……? ファ・ユイリィか!?」
+“Fa...? Fa Yuiry?!”
+
+@20755 Fa · ファ
+> 「えっ!? ……カミーユ? あなたなの!?」
+“Huh?! ...Kamille? Is that you?!”
+
+@20756 Kamille · カミーユ
+> 「ファ……」
+“Fa...”
+
+@20757 Fa · ファ
+> 「カミーユ……あなたに会えるなんて
+>  思ってなかった。カミーユゥ!」
+“Kamille... I never thought I'd get to see you. Kamille!”
+
+@20758 Kamille · カミーユ
+> 「ファ、どうしたんだ?」
+“Fa, what happened?”
+
+@20759 Fa · ファ
+> 「父さんも母さんも、
+>  帝国軍につかまっちゃったのよ
+“Both Dad and Mom got captured by the Imperial Army.
+---
+>  レジスタンスのパイロットのカミーユの
+>  知り合いだからって」
+They said it was because they knew you, Kamille, a Resistance pilot.”
+
+@20760 Kamille · カミーユ
+> 「そうか……それで、ファは?」
+“I see... And what about you, Fa?”
+
+@20761 Fa · ファ
+> 「地球解放戦線機構の
+>  人たちに助けられて……それで……」
+“I was saved by the people of the Liberation Front of the Earth... and then...”
+
+@20762 Kamille · カミーユ
+> 「くそっ、帝国め!」
+“Damn it, those Imperials!”
+
+@20763 Banjo · 万丈
+> 「ご苦労さまです。
+>  カラバの破嵐万丈です」
+“Thanks for your hard work. I'm Banjo Haran of Karaba.”
+
+@20764 Henken · ヘンケン
+> 「解放戦線のヘンケン・ベッケナーだ
+>  君の噂は聞いているよ」
+“I'm Henken Bekkener of the Liberation Front. I've heard rumors about you.”
+
+@20765 Banjo · 万丈
+> 「それはどうも。
+>  アルビオン、状態は良いようですね」
+“Much obliged. The Albion seems to be in good shape.”
+
+@20766 Henken · ヘンケン
+> 「廃艦扱いとはいえ、戦後のどさく
+>  さで隠した艦だ。整備もそれなりに
+“It may be treated as a decommissioned ship, but it's one we hid in the postwar confusion. The maintenance has been
+---
+>  やってあるさ」
+done properly enough.”
+
+@20767 Bright · ブライト
+> 「助かります。補充兵もいると聞き
+>  ましたが……」
+“That's a relief. I heard there are replacement soldiers too...”
+
+@20768 Henken · ヘンケン
+> 「ああ、紹介しよう。シロー・アマダだ。
+>  彼の乗機、Ez8もアルビオンに
+“Yes, let me introduce you. This is Shiro Amada. His machine, the Ez8, has also been
+---
+>  運び込んである」
+brought aboard the Albion.”
+
+@20769 Bright · ブライト
+> 「Ez8? 陸戦型のガンダムだな」
+“Ez8? That's the ground-combat Gundam, isn't it.”
+
+@20770 Shiro · シロー
+> 「はい。シロー・アマダ少尉であります。
+>  よろしくお願いします」
+“Yes, sir. Ensign Shiro Amada, reporting. Pleased to meet you.”
+
+@20771 Bright · ブライト
+> 「ブライト・ノアだ。よろしく頼む。こちら
+>  はカラバの破嵐万丈くんだ」
+“I'm Bright Noa. Glad to have you. This is Banjo Haran of Karaba.”
+
+@20772 Banjo · 万丈
+> 「よろしく、アマダ少尉」
+“Nice to meet you, Ensign Amada.”
+
+@20773 Bright · ブライト
+> 「ここはもういい。他の連中にあいさつ
+>  してこい」
+“That's enough here. Go introduce yourself to the others.”
+
+@20774 Shiro · シロー
+> 「はっ、失礼します」
+“Yes, sir. Excuse me.”
+
+@20775 Banjo · 万丈
+> 「……少尉のつけていた時計……
+>  女もののようだったが……」
+“...That watch the ensign was wearing... it looked like a woman's...”
+
+@20776 Henken · ヘンケン
+> 「ああ、あれか? なんでもスペシャルズの
+>  女パイロットのものだそうだ」
+“Oh, that? I hear it belonged to a female Specials pilot.”
+
+@20777 Bright · ブライト
+> 「スペシャルズの?」
+“A Specials pilot's?”
+
+@20778 Henken · ヘンケン
+> 「戦場でトラブって2人して死にかけ
+>  たところを、協力して切り抜けた
+“Apparently the two of them got in trouble on the battlefield and nearly died, but they helped each other pull through.
+---
+>  とかでな。ありゃ、惚れてるな」
+I'd say he's smitten.”
+
+@20779 Banjo · 万丈
+> 「へぇ、敵の女性にねぇ」
+“Huh, an enemy woman, no less.”
+
+@20780 Henken · ヘンケン
+> 「面倒をおこさなけりゃいいんだがな。
+>  ところで万丈くん、君たちは
+“As long as it doesn't cause trouble, fine. Anyway, Banjo, could you and your people
+---
+>  アルビオンで北京へ向かってくれ
+>  ないか」
+take the Albion to Beijing for us?”
+
+@20781 Banjo · 万丈
+> 「我々が北京へ?」
+“Us, to Beijing?”
+
+@20782 Henken · ヘンケン
+> 「そうだ。そこで、
+>  もと国際警察機構のスタッフと
+“That's right. There, I'd like you to meet up with some former staff
+---
+>  合流してもらいたい」
+of the International Police Organization.”
+
+@20783 Bright · ブライト
+> 「国際警察機構? ああ、
+>  武装集団の組織犯罪を
+“The International Police Organization? Ah, the one that dealt with
+---
+>  扱っていた? 戦後解体されたと
+>  聞いていますが」
+organized crime by armed groups? I heard it was disbanded after the war.”
+
+@20784 Henken · ヘンケン
+> 「我々と同じだよ。まぁ、どんな
+>  連中なのかは俺も聞いていない
+“Same as us. Well, I haven't been told what kind of people they are either.
+---
+>  向こうから接触してくるはずだ」
+They should make contact with us from their side.”
+
+@20785 Banjo · 万丈
+> 「なるほど、解放戦線の方でも
+>  この部隊を
+“I see. So even the Liberation Front wants to make this unit
+---
+>  中核にしていきたいということですか」
+the core of its forces.”
+
+@20786 Henken · ヘンケン
+> 「そういうことだ。
+>  ブライト中佐やクワトロ大尉も
+“Exactly. Lieutenant Colonel Bright and Captain Quattro are working hard
+---
+>  そのためにがんばってもらっている。
+>  カラバも我々も基本的な
+toward that as well. Karaba and we are in basically the same
+---
+>  状況は同じだからな。
+>  強力な部隊で
+situation. Unless we build a strong force and
+---
+>  主導権をとっていかなければ、
+>  味方だって掌握できん」
+take the initiative, we won't be able to keep even our allies in hand.”
+
+@20787 Banjo · 万丈
+> 「いいでしょう。
+>  我々は北京へ向かいます」
+“Very well. We'll head for Beijing.”
+
+@20788 Henken · ヘンケン
+> 「頼む。アウドムラは
+>  アランくんの方へ回しておく」
+“I'm counting on you. I'll send the Audhumla over to Alan's side.”
+
+@20789 Henken · ヘンケン
+> 「君が、もとスペシャルズの
+>  エマ・シーン特尉か」
+“So you're Emma Sheen, formerly a Specials First Lieutenant.”
+
+@20790 Emma · エマ
+> 「そうですけど……なにか?」
+“That's right... is something the matter?”
+
+@20791 Henken · ヘンケン
+> 「いや、いいスタッフだと聞いているので、
+>  ちょっと顔を見によっただけだ
+“No, I heard you were fine staff, so I just came by to see your face.
+---
+>  がんばってくれ、特尉。
+>  期待している」
+Keep at it, Lieutenant. I have high hopes for you.”
+
+@20792 Emma · エマ
+> 「……はい……」
+“...Yes, sir...”
+
+@20793 Emma · エマ
+> (なにかしら、いったい?)
+(What on earth was that about?)
+
+@20794 Henken · ヘンケン
+> 「君が、もとスペシャルズの
+>  エマ・シーン特尉か」
+“So you're Emma Sheen, formerly a Specials First Lieutenant.”
+
+@20795 Emma · エマ
+> 「そうですけど……なにか?」
+“That's right... is something the matter?”
+
+@20796 Henken · ヘンケン
+> 「いや、いいスタッフだと聞いているので、
+>  ちょっと顔を見によっただけだ
+“No, I heard you were fine staff, so I just came by to see your face.
+---
+>  がんばってくれ、特尉。
+>  期待している」
+Keep at it, Lieutenant. I have high hopes for you.”
+
+@20797 Emma · エマ
+> 「……はい……」
+“...Yes, sir...”
+
+@20798 Emma · エマ
+> (なにかしら、いったい?)
+(What on earth was that about?)
+
+@20799 Bern · バーン
+> 「……敗北につぐ敗北……すべて、
+>  あの地上人があらわれてからだ
+“...Defeat after defeat... all of it began when that surface dweller appeared.
+---
+>  クッ……私は……勝ちたい。
+>  私は奴を破りたい
+Ngh... I... I want to win. I want to crush him.
+---
+>  私は……騎士の出のはずだ!!」
+I... I'm supposed to be a knight!!”
+
+@20800 Drake · ドレイク
+> 「どうやら、かなりの数のオーラシップと
+>  オーラバトラーが
+“It seems a considerable number of Aura Ships and Aura Battlers
+---
+>  地上へ出ておるようだな」
+have made their way to the surface.”
+
+@20801 ???
+> 「はい。いまは、ショット殿との合流を
+>  急がれるべきでしょう
+“Yes. For now, you should hurry to join forces with Lord Shot.
+---
+>  いまの地上界を支配しているのは
+>  地上人とは違う種族です
+The one who rules the surface world now is a race different from the surface dwellers,
+---
+>  が、私に策がございます。
+>  交渉は私におまかせください」
+but I have a plan. Leave the negotiations to me.”
+
+@20802 Drake · ドレイク
+> 「……地上人のお前がか。
+>  よかろう、やってみせろ」
+“...You, a surface dweller? Very well, show me what you can do.”
+
+@20803 ???
+> 「はい」
+“Yes.”
+
+@20804 Lady · レディ
+> 「なに!? 失敗したというのか。
+>  おのれ、レジスタンスどもめ
+“What?! You're saying it failed? Curse those Resistance dogs.
+---
+>  だが奴らとて相当のダメージを
+>  受けているはず
+But they must have taken considerable damage as well.
+---
+>  ウォンにも兵を出させろ、
+>  第2波をしかける」
+Have Wong send troops too. We'll launch a second wave.”
+
+@20805 Noin · ノイン
+> 「そこまでです、特佐。トレーズ閣下
+>  のご命令です。レジスタンスに関する
+“That's far enough, Special Colonel. This is an order from His Excellency Treize. Cease all
+---
+>  作戦行動をすべて停止させ、
+>  本部へお戻りください」
+combat operations concerning the Resistance and return to headquarters.”
+
+@20806 Lady · レディ
+> 「な……なんだと? でまかせを、いうな!」
+“Wha... what did you say? Don't make things up!”
+
+@20807 Noin · ノイン
+> 「特佐、閣下からもうひとつ。
+>  ことはエレガントに運べ、とのことです
+“Special Colonel, one more thing from His Excellency. He says to handle matters elegantly.
+---
+>  エレガントに、レディ?」
+Elegantly, Lady?”

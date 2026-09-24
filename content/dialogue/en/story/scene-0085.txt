@@ -1,0 +1,1518 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@41517 Alan · アラン
+> 「さてと、まずは状況を整理しよう。
+>  まずホワイトファングだが、リーブラが
+“Now then, let's sort out the situation first. As for White Fang, with Libra
+---
+>  落ちたことでほぼ壊滅したと考えて
+>  間違いない。OZはトレーズを
+down, we can safely assume they're more or less wiped out. OZ lost
+---
+>  失ったが、レディ・アンの尽力で
+>  どうにか再編されつつあり、これは
+Treize, but thanks to Lady Une's efforts they're managing to regroup, and together
+---
+>  ロームフェラ財団の生き残りと
+>  ともに、地上の混乱を収め
+with the survivors of the Romefeller Foundation, they've begun operating
+---
+>  難民たちの救助にあたるべく
+>  活動を始めている」
+to quell the chaos on the ground and rescue the refugees.”
+
+@41518 Bright · ブライト
+> 「あの様子ならば地上は
+>  まかせておいても問題ないだろうな」
+“From the look of things, we can leave the surface in their hands without worry.”
+
+@41519 Banjo · 万丈
+> 「ああ、僕もそう思う。
+>  今のレディ・アンならまかせられるさ
+“Yeah, I think so too. The Lady Une of today can be trusted with it.
+---
+>  それに聖女やリリーナ嬢も
+>  一緒にいる」
+Besides, the Holy Woman and Lady Relena are with them.”
+
+@41520 Ciela · シーラ
+> 「そうですね。あの方々ならば、
+>  うちひしがれた民衆の
+“Indeed. Those people can become the pillar of support
+---
+>  心の支えとなれるでしょう」
+for the hearts of the devastated populace.”
+
+@41521 Elle · エレ
+> 「はい。あの方々ならば、
+>  荒廃した地上に残された
+“Yes. Those people can give the exhausted masses left behind
+---
+>  疲れきった民衆に、
+>  再建に向かう勇気を
+on the ruined surface the courage to move toward
+---
+>  与えることができるでしょう」
+reconstruction.”
+
+@41522 Ryoma · リョウ
+> 「となると残るは銀河帝国軍と、
+>  ハマーンのアクシズか」
+“Then what's left is the Galactic Empire's forces and Haman's Axis.”
+
+@41523 Alan · アラン
+> 「そうだ。銀河帝国軍はいまだに
+>  動きがないものの、戦闘光はかなり
+“That's right. The Galactic Empire's forces still haven't made a move, but combat
+---
+>  前から観測できなくなっている。
+>  そろそろ混乱も収まってきたと
+flashes haven't been observed for quite a while now. We should assume
+---
+>  みるべきだろう。戦力的にはほぼ
+>  以前とかわりなく、依然として
+the confusion is settling down. Their fighting strength is roughly unchanged
+---
+>  我々にとっては脅威だ。しかし、
+>  士気の低下ぶりがいちじるしいと
+from before, and they remain a threat to us. However, their morale
+---
+>  思われるため、以前ほど
+>  絶望的な状況ではないだろう」
+seems to have dropped markedly, so the situation isn't as hopeless as it once was.”
+
+@41524 Koji · 甲児
+> 「ハマーンの方はどうなんだよ。
+>  確か銀河帝国軍も
+“What about Haman's side? I'm pretty sure the Galactic Empire and
+---
+>  地球圏も自分たちが
+>  制圧するとかいってたよな」
+the Earth Sphere both said they'd take control themselves.”
+
+@41525 Shinobu · 忍
+> 「そういやそうだったな。アラン、
+>  アクシズについては何かわかったのかよ」
+“Now that you mention it, yeah. Alan, did you find out anything about Axis?”
+
+@41526 Alan · アラン
+> 「アクシズはすでに
+>  地球圏に到達している
+“Axis has already reached the Earth Sphere.
+---
+>  観測によれば、
+>  かなりの規模の宇宙要塞だ
+According to observations, it's a space fortress of considerable scale.
+---
+>  残念ながら戦力は
+>  把握できていないが……」
+Unfortunately, we haven't been able to grasp their fighting strength, but...”
+
+@41527 Amuro · アムロ
+> 「アクシズ自体の規模を考えれば、
+>  相当な戦力の
+“Considering the size of Axis itself, there's a chance they have
+---
+>  可能性があるか……」
+considerable forces...”
+
+@41528 Bright · ブライト
+> 「ああ、ハマーンの自信もそれを
+>  裏づけているな。ハマーンめ
+“Yeah, Haman's confidence backs that up too. That Haman...
+---
+>  初めからそのつもりだったということか」
+so that was her intention from the start.”
+
+@41529 Banjo · 万丈
+> 「油断できないな。あの女は僕たちと
+>  OZを、当て馬に使ったんだ
+“We can't let our guard down. That woman used us and OZ as decoys,
+---
+>  地球が亡びる可能性を前に
+>  しながら、ね。普通じゃできないことだ」
+even with the possible destruction of Earth on the line. That's not something just anyone could do.”
+
+@41530 Judau · ジュドー
+> 「で、結局ハマーンのもくろみ通りに
+>  なりつつあるってことかよ
+“So in the end, things are going just the way Haman planned, huh.
+---
+>  冗談じゃないぜ。だから俺がいった
+>  じゃないかよ、あの女は怖いんだって
+You've gotta be kidding. That's why I told you, didn't I? That woman is scary.
+---
+>  真っ先にやっちまうべきだったんだ」
+We should've taken her out first thing.”
+
+@41531 Kamille · カミーユ
+> 「ジュドー、あの状況でそうはできな
+>  かったことは、君だってわかってるはずだ」
+“Judau, you of all people should know we couldn't do that under those circumstances.”
+
+@41532 Judau · ジュドー
+> 「だけどさ……」
+“But still...”
+
+@41533 Bright · ブライト
+> 「もういい、ジュドー。過ぎたことを
+>  悔やんでも始まらん
+“That's enough, Judau. Regretting the past won't get us anywhere.
+---
+>  それよりもこれから我々が
+>  どうするかだが……」
+What matters more is what we do from here on...”
+
+@41534 Daisuke · 大介
+> 「マリア?」
+“Maria?”
+
+@41535 Maria · マリア
+> 「兄さん、みんな、大変!
+>  大変よ!」
+“Brother, everyone, it's terrible! Terrible!”
+
+@41536 Duo · デュオ
+> 「またか。やれやれ、なんだか
+>  この数ヶ月そればっかり
+“Again? Good grief, feels like that's all I've been hearing
+---
+>  聞いてるような気がするぜ」
+these past few months.”
+
+@41537 Hilde · ヒルデ
+> 「しかたないでしょ。文句ばっかり
+>  いわないの」
+“It can't be helped. Stop complaining all the time.”
+
+@41538 Duo · デュオ
+> 「へぇへぇ」
+“Yeah, yeah.”
+
+@41539 Koji · 甲児
+> 「どうしたんだよ、マリアちゃん」
+“What's wrong, Maria?”
+
+@41540 Maria · マリア
+> 「アクシズからかなりの数の艦艇が
+>  放出されたのが観測されたって
+“They've observed a huge number of ships being launched from Axis!
+---
+>  いま博士たちが大騒ぎなのよ!」
+The doctors are in an uproar right now!”
+
+@41541 Koji · 甲児
+> 「なんだってぇ!?」
+“Say what?!”
+
+@41542 Ark · アーク（按段落 3DD1）
+> 「……確かに、大変だな」
+“...It certainly is terrible.”
+
+@41543 Selain · セレイン（按段落 3DD2）
+> 「予想されたことだろう。
+>  それほど驚くべきものでもあるまい」
+“It was anticipated. It's hardly something to be so surprised about.”
+
+@41544 Koji · 甲児
+> 「そういうなって。
+>  大変なことには間違いないだろ」
+“Don't say that. It's definitely a terrible situation.”
+
+@41545 Brad · ブラッド（按段落 3DD3）
+> 「いよいよ始めやがったか、ハマーン!」
+“So she's finally made her move, Haman!”
+
+@41546 Manami · マナミ（按段落 3DD4）
+> 「そう……予想されたこととはいえ、
+>  あまりうれしくはないわね」
+“I see... Even if it was anticipated, I can't say I'm pleased about it.”
+
+@41547 Bright · ブライト
+> 「それで、数は? どこへ向かっている?」
+“So, how many? Where are they headed?”
+
+@41548 Maria · マリア
+> 「あたしが聞いた話では、
+>  あたしたちの数倍はいるって
+“From what I heard, there are several times as many as us.
+---
+>  どこへ行くつもりなのかは
+>  まだわからないみたいだけど……」
+We still don't know where they're headed, though...”
+
+@41549 Kirika · キリカ
+> 「私たちの数倍って……そんな!?」
+“Several times our number... No way?!”
+
+@41550 Amuro · アムロ
+> 「ブライト、月のレディ・アンに
+>  連絡をとってみよう
+“Bright, let's try contacting Lady Une on the moon.
+---
+>  向こうでも観測しているはずだ」
+They should be observing it too.”
+
+@41551 Bright · ブライト
+> 「そうだな……そうするか」
+“Right... let's do that.”
+
+@41552 Lady · レディ
+# 检查提示：未用必用译名：アクシズ軍→Axis Forces
+> 「はい、その件はこちらでも確認して
+>  います。我々はアクシズ軍の
+“Yes, we've confirmed that matter on our end as well. We estimate the Axis
+---
+>  規模を、かつての我々よりも
+>  大きいと推測しています」
+Forces' scale to be larger than ours was.”
+
+@41553 Amuro · アムロ
+> 「そんなにか……」
+“That big...”
+
+@41554 Lady · レディ
+> 「今のところはまだ詳しいことは
+>  わかりませんが、いくつかの艦隊に
+“We don't have the details yet, but it seems they're moving in
+---
+>  別れて移動しているようです。
+>  しかし、ちょうどよいタイミングで
+several separate fleets. However, you've contacted us
+---
+>  連絡してくれました」
+at just the right time.”
+
+@41555 Bright · ブライト
+> 「なにか?」
+“What is it?”
+
+@41556 Lady · レディ
+> 「実は銀河帝国軍に関して
+>  重大な情報をつかんだのです
+“Actually, we've obtained critical information regarding the Galactic Empire's forces.
+---
+>  我々は先ごろ、ひん死の状態で
+>  漂流中だった帝国軍兵士を
+We recently rescued an Imperial soldier who was adrift
+---
+>  救助しました。
+>  脱走兵のようですが、その兵士の
+in critical condition. He appears to be a deserter, but according to
+---
+>  話によると、地球圏に残留した
+>  敵艦隊に銀河帝国の
+this soldier, Emperor Zuul of the Galactic Empire is with the enemy
+---
+>  ズール皇帝がいるというのです」
+fleet still remaining in the Earth Sphere.”
+
+@41557 Takeru · タケル
+> 「なんだって!? ズールが、
+>  ズールがいるというのか!?」
+“What?! Zuul, you're saying Zuul is here?!”
+
+@41558 Amuro · アムロ
+> 「落ち着け、タケル」
+“Calm down, Takeru.”
+
+@41559 Lady · レディ
+> 「もちろん確実な情報では
+>  ありませんが」
+“Of course, it's not confirmed information.”
+
+@41560 Bright · ブライト
+> 「皇帝が自ら地球圏へ
+>  来ていたというのか……?」
+“The Emperor himself came to the Earth Sphere...?”
+
+@41561 Takeru · タケル
+> 「艦長! ズールも帝国へ
+>  もどれないんですよ
+“Captain! Zuul can't get back to the Empire either.
+---
+>  なんとかズールさえ倒せれば……」
+If we can just defeat Zuul somehow...”
+
+@41562 Bright · ブライト
+> 「ああ、残った敵は完全に
+>  戦意を喪失するかもしれんか……」
+“Yeah, the remaining enemy might lose their will to fight completely...”
+
+@41563 Alan · アラン
+> 「……しかし皇帝が前線に
+>  出てくるはずもない
+“...But the Emperor wouldn't come to the front lines himself.
+---
+>  敵の本艦隊に
+>  カミカゼでもやるつもりか?」
+Are you planning to kamikaze the enemy's main fleet?”
+
+@41564 Amuro · アムロ
+> 「いや……もしも本当に皇帝が
+>  いるのならば、こちらが攻勢にでれば
+“No... If the Emperor really is there, then if we go on the offensive,
+---
+>  連中は守りにまわる可能性も
+>  ある。そう悲観したものじゃない」
+they may switch to defending. It's not as hopeless as it sounds.”
+
+@41565 Bright · ブライト
+> 「そうだな。これで退くわけには
+>  いかないという点で
+“Right. In that they can't afford to retreat now,
+---
+>  我々と彼らは対等になったと
+>  みるべきだろう」
+we should consider ourselves and them on equal footing.”
+
+@41566 Lady · レディ
+> 「アクシズはどうされるのですか?」
+“What will you do about Axis?”
+
+@41567 Amuro · アムロ
+> 「まったく……ハマーンめ……」
+“Honestly... that Haman...”
+
+@41568 Bright · ブライト
+> 「なんだ!?」
+“What is it?!”
+
+@41569 Dr. Hazuki · 葉月博士
+> 「艦長、銀河帝国軍が
+>  動き出した
+“Captain, the Galactic Empire's forces have begun to move.
+---
+>  アクシズ軍にあわせた行動と
+>  思われる」
+It appears to be coordinated with the Axis Forces.”
+
+@41570 Alan · アラン
+> 「ついに来たか。で、状況は?」
+“So they've finally come. What's the situation?”
+
+@41571 Dr. Hazuki · 葉月博士
+> 「敵はふた手にわかれ、
+>  その一方がサイド7の
+“The enemy has split into two groups, and one of them is heading
+---
+>  コロニー群へ向かっている」
+for the colony cluster at Side 7.”
+
+@41572 Amuro · アムロ
+> 「そうか、長期戦になるとふんだな。
+>  連中は拠点をつくるつもりだ」
+“I see, so they've decided it'll be a long war. They intend to establish a base.”
+
+@41573 Alan · アラン
+> 「うむ、私もそう思う。だとすれば、
+>  その艦隊にズール皇帝が
+“Indeed, I think so too. If that's the case, there's a high chance
+---
+>  いる可能性も高いな」
+Emperor Zuul is with that fleet.”
+
+@41574 Bright · ブライト
+> 「アクシズのこともあるが……
+>  やはり銀河帝国が先か
+“There's Axis to worry about too... but the Galactic Empire comes first after all.
+---
+>  我々もサイド7へ向かうぞ」
+We're heading to Side 7 as well.”
+
+@41575 Amuro · アムロ
+> 「了解だ、ブライト。
+>  まずズールを倒さなくてはな」
+“Understood, Bright. First we have to defeat Zuul.”
+
+@41576 Takeru · タケル
+> 「はい!」
+“Yes, sir!”
+
+@41577 Beltorchika · ベルトーチカ
+> 「敵艦隊捕捉しました!」
+“Enemy fleet spotted!”
+
+@41578 Bright · ブライト
+> 「間にあったか……総員、
+>  戦闘配置につけ!
+“We made it in time... All hands, battle stations!
+---
+>  敵も出てくるぞ!」
+The enemy will be coming out too!”
+
+@41579 Emperor Zuul · ズール皇帝
+> 「地球人……マーズのいる部隊か。
+>  どうやら
+“Earthlings... So it's Mars's unit. It seems
+---
+>  偽装にひっかかってくれたようだな……」
+they fell for the decoy...”
+
+@41580 Blacky · ブラッキー
+> 「ズール皇帝陛下?」
+“Emperor Zuul, Your Majesty?”
+
+@41581 Emperor Zuul · ズール皇帝
+> 「……ブラッキー、ダンケル、
+>  奴らを撃滅せよ!」
+“...Blacky, Dunkel, annihilate them!”
+
+@41582 Blacky · ブラッキー
+> 「はっ!」
+“Yes, sir!”
+
+@41583 Takeru · タケル
+> 「……ズールだ! 奴がいる!」
+“...It's Zuul! He's there!”
+
+@41584 Rose · ロゼ
+> 「ズール皇帝が!? マーズ……」
+“Emperor Zuul?! Mars...”
+
+@41585 Takeru · タケル
+> 「ロゼ、ここで決着をつけるんだ。
+>  ズールを倒せば
+“Rose, we settle this here. If we defeat Zuul,
+---
+>  戦いは終わらせることができる」
+we can end this war.”
+
+@41586 Rose · ロゼ
+> 「マーズ……そうね、わかったわ!」
+“Mars... You're right, I understand!”
+
+@41587 Bright · ブライト
+> 「よし、ズールに攻撃を集中しろ!
+>  他の奴にはかまうな
+“All right, focus your attacks on Zuul! Don't bother with the others.
+---
+>  なんとしてもズールを倒せ!」
+Defeat Zuul no matter what!”
+
+@41588 Emperor Zuul · ズール皇帝
+> 「フハハハハハハッ! ワシを倒すだと!?
+>  宇宙の支配者たるこのワシを!?
+“Fuhahahahahaha! Defeat me?! Me, the ruler of the universe?!
+---
+>  すべてのものがワシにひざまずき服従を
+>  誓う。逆らった者は死んで
+All things kneel before me and swear obedience. Those who defy me die
+---
+>  自分の愚さを知るのだ! ワシは
+>  宇宙の支配者、すべてのものが
+and learn their own foolishness! I am the ruler of the universe, all things
+---
+>  ワシの意のままに動くのだ!
+>  逆らうことはできん!!」
+move as I will! None can defy me!!”
+
+@41589 Takeru · タケル
+> 「ズール! 俺は貴様を倒す!!」
+“Zuul! I'm going to defeat you!!”
+
+@41590 Emperor Zuul · ズール皇帝
+# 审校：原文“後悔するがいい”是威胁语气，初稿“Regret ever defying me”像命令且不够自然，改为更符合皇帝口吻的威胁句。
+> 「裏切り者マーズ。ワシに
+>  逆らったことを後悔するがいい!」
+“Traitor Mars. You will regret defying me!”
+
+@41591 Emperor Zuul · ズール皇帝
+> 「おのれ!!」
+“Curse you!!”
+
+@41592 Bright · ブライト
+> 「やったか!?」
+“Did we get him?!”
+
+@41593 Emperor Zuul · ズール皇帝
+> 「フハハハハッ! 愚か者どもめ!!」
+“Fuhahahahaha! You fools!!”
+
+@41594 Bright · ブライト
+> 「な……なんだと!? あれが……ズールか!」
+“Wha... What?! That's... Zuul?!”
+
+@41595 Emperor Zuul · ズール皇帝
+> 「バ、バカな!? うおおぉぉぉぉぉーっ!!」
+“I-Impossible?! Uwaaaaaaah!!”
+
+@41596 Bright · ブライト
+> 「…………終わったか」
+“...It's over.”
+
+@41597 Dr. Hazuki · 葉月博士
+> 「むっ!? 艦長、この反応は……」
+“Hm?! Captain, this reading is...”
+
+@41598 Emperor Zuul · ズール皇帝
+> 「ハーッハハハハハハッ!!」
+“Hahahahahahahaha!!”
+
+@41599 Beltorchika · ベルトーチカ
+> 「そんな! いま確かに
+>  ズールを倒したのに……」
+“No! We just defeated Zuul for certain...”
+
+@41600 Emperor Zuul · ズール皇帝
+> 「まだ気づかぬのか、愚か者め!
+>  お前たちが倒したのは
+“Still you do not realize, you fools! What you defeated was
+---
+>  ワシの影にすぎんのだ!」
+nothing but my shadow!”
+
+@41601 Dr. Hazuki · 葉月博士
+> 「……実体はない。
+>  あれは映像のようなものだな」
+“...There's no substance. That thing is like a projection.”
+
+@41602 Emperor Zuul · ズール皇帝
+> 「貴様らをおびき出してマーズを殺し
+>  反陽子爆弾を爆発させる
+“I meant to lure you out, kill Mars, and detonate the anti-proton bomb...
+---
+>  つもりだったが……まぁよいわ。しょせん
+>  お前たちではワシには勝てぬのだ
+but no matter. In the end, you cannot defeat me.
+---
+>  ハーッハハハハハッ!!」
+Hahahahahahaha!!”
+
+@41603 Bright · ブライト
+# 审校：原文“奴におどらされた”是被动态，初稿“we were dancing”少了“被操纵”的意味，改为“we were made to dance in his palm”。
+> 「くっ……奴におどらされたというのか……」
+“Ngh... So we were made to dance in his palm...”
+
+@41604 Reika · レイカ
+> 「!? 艦長、新たに接近する
+>  機影を複数確認!
+“?! Captain, multiple new contacts approaching!
+---
+>  これは……アクシズ軍よ!」
+Those are... the Axis Forces!”
+
+@41605 Glemy · グレミー
+> 「マシュマー様、あれは
+>  {HeroMech}です
+“Lord Mashymre, that is the {HeroMech}.
+---
+>  銀河帝国軍ではありません」
+It is not the Galactic Empire.”
+
+@41606 Mashymre · マシュマー
+> 「見ればわかる!
+>  {HeroMech}の諸君
+“I can see that! People of the {HeroMech},
+---
+>  私はアクシズのマシュマー・セロである。
+>  私は諸君らに
+I am Mashymre Cello of Axis. I advise you to
+---
+>  無条件降伏を勧告する。
+>  素直に受け入れてもらいたい」
+surrender unconditionally. I expect you to accept.”
+
+@41607 Reika · レイカ
+> 「ちょっと、あいつ正気なの!?」
+“Hey, is that guy serious?!”
+
+@41608 Beltorchika · ベルトーチカ
+> 「1つだけ救いがあったわね。
+>  アクシズにはろくな人材がいないって
+“There's one silver lining. Now I see clearly that Axis has
+---
+>  よくわかるわ」
+no decent people at all.”
+
+@41609 Illia · イリア
+> 「…………」
+“...”
+
+@41610 Mashymre · マシュマー
+> 「おのれ、地球人同士の戦闘は
+>  避けたいという
+“Curse you! Can you not understand my consideration in wishing
+---
+>  この私の心づかいがわからんのか!?」
+to avoid combat between Earthlings?!”
+
+@41611 Pampa · パンパ
+> 「さすがですマシュマー様!
+>  敵にも情けをかけるその心意気
+“As expected of Lord Mashymre! That spirit of showing mercy even to the enemy—
+---
+>  それでこそ我がアクシズの、
+>  ハマーン様の名誉も
+that is what preserves the honor of our Axis, and of Lady Haman—
+---
+>  保たれるというものです!」
+and keeps it intact!”
+
+@41612 Mashymre · マシュマー
+> 「うむ、その通りだ。
+>  さあ{HeroMech}
+“Indeed, exactly so. Now then, {HeroMech},
+---
+>  返答やいかに!?」
+what is your answer?!”
+
+@41613 Reika · レイカ
+> 「あの連中、遊んでるつもりかしら。
+>  本気でやってるとしたら
+“Are those people just playing around? If they're actually serious,
+---
+>  救いようがないわね」
+there's no hope for them.”
+
+@41614 Bunny · バニー
+> 「どうします、艦長?」
+“What shall we do, Captain?”
+
+@41615 Bright · ブライト
+> 「受け入れるわけにはいかんだろう!?
+>  聞こえるかマシュマー・セロ
+“We can hardly accept, can we?! Can you hear me, Mashymre Cello?
+---
+>  勧告は聞けない!」
+We cannot accept your advice!”
+
+@41616 Beauty · ビューティ
+> 「というわけよ。お・ば・か・さ・んっ」
+“So there you have it. You i-di-ot.”
+
+@41617 Mashymre · マシュマー
+> 「なんと!? ……騎士を
+>  愚ろうするとは、許せん!
+“What?! ...To mock a knight is unforgivable!
+---
+>  全機、{HeroMech}を
+>  せん滅しろ! ハマーン様のためにッ!」
+All units, annihilate the {HeroMech}! For Lady Haman!”
+
+@41618 Glemy · グレミー
+> 「……マシュマー様、我らの任務は
+>  銀河帝国軍の
+“...Lord Mashymre, was our mission not supposed to be
+---
+>  偵察のはずではなかったのですか?」
+reconnaissance of the Galactic Empire?”
+
+@41619 Mashymre · マシュマー
+> 「かまわん。{HeroMech}を倒せば
+>  ハマーン様もおほめくださる!!」
+“It matters not. If we defeat the {HeroMech}, Lady Haman will praise us!!”
+
+@41620 Glemy · グレミー
+> (やれやれだな……)
+(Good grief...)
+
+@41621 Roux · ルー
+> 「勝手なこといってくれちゃってさ!
+>  あんたたちに名誉なんて
+“You just say whatever you like! There's no way you people
+---
+>  あるわけないでしょ!」
+have any honor!”
+
+@41622 Glemy · グレミー
+> 「な……なんという美しい声だ。
+>  あ、あなたも
+“Wha... What a beautiful voice. A-are you also
+---
+>  {HeroMech}のパイロットなのか?」
+a pilot of the {HeroMech}?”
+
+@41623 Roux · ルー
+> 「はぁ? あったりまえでしょ!
+>  あんた何いってるのよ!」
+“Huh? Of course I am! What are you even saying?!”
+
+@41624 Glemy · グレミー
+> 「かわいい……」
+“How cute...”
+
+@41625 Bright · ブライト
+> 「ルー・ルカ! 何を遊んでいる!」
+“Roux Louka! What are you playing at?!”
+
+@41626 Roux · ルー
+> 「す、すみません、艦長!」
+“S-Sorry, Captain!”
+
+@41627 Illia · イリア
+> 「グレミー、状況を考えろ!」
+“Glemy, consider the situation!”
+
+@41628 Glemy · グレミー
+> 「わ、わかった」
+“U-Understood.”
+
+@41629 Glemy · グレミー
+> (ルー・ルカ……よい名前だ……)
+(Roux Louka... what a fine name...)
+
+@41630 Ple · プル
+> 「ジュドー……ジュドーがいるの?
+>  なに……気持ち悪い……」
+“Judau... Is Judau there? What... this feels awful...”
+
+@41631 Judau · ジュドー
+> 「この感じ……プルか? どうしたんだ!?」
+“This feeling... Ple? What's wrong?!”
+
+@41632 Judau · ジュドー
+> 「プル、戦いなんてやめて、
+>  俺たちと一緒に行こう
+“Ple, stop fighting and come with us.
+---
+>  プルはアクシズなんかにいちゃいけない」
+You don't belong with Axis.”
+
+@41633 Ple · プル
+> 「ジュ……ドー……?」
+“Ju... dau...?”
+
+@41634 Judau · ジュドー
+> 「プル? どうしたんだ!?」
+“Ple? What's wrong?!”
+
+@41635 Ple · プル
+> 「あ……あたし……」
+“Ah... I...”
+
+@41636 Glemy · グレミー
+> 「プル!? 敵のニュータイプにひかれて
+>  暗示がとけるのか!?
+“Ple?! Is the enemy Newtype drawing you out and breaking the suggestion?!
+---
+>  そうはさせんぞ!」
+I won't let that happen!”
+
+@41637 Ple · プル
+> 「や……やめて……やめてグレミー!!」
+“No... stop... stop it, Glemy!!”
+
+@41638 Judau · ジュドー
+> 「あんた、何やってんだよッ!!」
+“What the hell are you doing?!”
+
+@41639 Judau · ジュドー
+> 「プル、戦いなんてやめて、
+>  俺たちと一緒に行こう
+“Ple, stop fighting and come with us.
+---
+>  プルはアクシズなんかにいちゃいけない」
+You don't belong with Axis.”
+
+@41640 Ple · プル
+> 「ジュドー?」
+“Judau?”
+
+@41641 Judau · ジュドー
+> 「そうだよ、さぁプル」
+“That's right. Come on, Ple.”
+
+@41642 Ple · プル
+> 「……ジュドーと一緒に行ったら、
+>  あたしと遊んでくれる!?」
+“...If I come with you, Judau, will you play with me?!”
+
+@41643 Judau · ジュドー
+> 「ああ、遊んでやるさ。だからプル、
+>  アクシズになんか味方しちゃだめだ」
+“Yeah, I'll play with you. So Ple, you can't side with Axis.”
+
+@41644 Ple · プル
+> 「うん! わかったよジュドー。
+>  あたし、ジュドーと一緒に行く!」
+“Okay! I get it, Judau. I'll come with you!”
+
+@41645 Ple · プル
+> (……ごめんね、グレミー……)
+(...I'm sorry, Glemy...)
+
+@41646 Mashymre · マシュマー
+> 「なんだと!? バラが……
+>  ハマーン様のバラが……!!」
+“What?! The Rose... Lady Haman's Rose...!!”
+
+@41647 Glemy · グレミー
+> 「くっ……こんなところで
+>  終わるわけには……」
+“Ngh... I can't let it end here...”
+
+@41648 Illia · イリア
+> 「マシュマーめ……くそ、撤退する」
+“That fool Mashymre... Damn it, we're retreating.”
+
+@41649 Pampa · パンパ
+> 「ハ、ハマーン様!
+>  申しわけございません!!」
+“L-Lady Haman! My deepest apologies!!”
+
+@41650 Beanne · ビアン
+> 「マ、マシュマー様ぁぁぁーっ!!」
+“L-Lord Mashymre!!”
+
+@41651 Wyme · ワイム
+> 「な、なんだ!? こんな……」
+“W-What?! This can't...”
+
+@41652 Duke · デューク
+> 「ブラッキー!」
+“Blacky!”
+
+@41653 Blacky · ブラッキー
+> 「グレンダイザー!? おのれ、
+>  返り討ちにしてくれる!!」
+“Grendizer?! Curse you, I'll strike you down instead!!”
+
+@41654 Judau · ジュドー
+> 「あんたら、何やってるかわかってんの!?」
+“Do you people even know what you're doing?!”
+
+@41655 Mashymre · マシュマー
+> 「ハマーン様のつくる新しい
+>  地球圏のために戦っているのだ!!」
+“We fight for the new Earth Sphere that Lady Haman will build!!”
+
+@41656 Glemy · グレミー
+> 「ルー・ルカ!?」
+“Roux Louka?!”
+
+@41657 Roux · ルー
+# 审校：“call my name”不自然，改为“say my name”更符合英语习惯。
+> 「気安く名前を呼ばないでよ!!」
+“Don't say my name so casually!!”
+
+@41658 Rose · ロゼ
+> 「ズール!!」
+“Zuul!!”
+
+@41659 Emperor Zuul · ズール皇帝
+> 「ロゼか、この裏切り者め!
+>  ここでワシがじきじきに殺してやる!!」
+“Rose, is it? You traitor! I'll kill you with my own hands right here!!”
+
+@41660 Bunny · バニー
+> 「艦長!! アクシズのハマーンからの
+>  通信です!!」
+“Captain!! We're receiving a transmission from Haman of Axis!!”
+
+@41661 Banjo · 万丈
+> 「ハマーンが?」
+“From Haman?”
+
+@41662 Bright · ブライト
+> 「……よし、まわしてくれ」
+“...All right, put her through.”
+
+@41663 Haman · ハマーン
+> 「お前たちは銀河帝国軍と
+>  交戦したそうだな」
+“I hear you engaged the Galactic Empire's forces.”
+
+@41664 Kamille · カミーユ
+> 「ハマーン・カーン……何のつもりだ!?」
+“Haman Karn... What are you after?!”
+
+@41665 Haman · ハマーン
+> 「知っての通り、我がアクシズ軍は
+>  地上をのぞく、地球圏の
+“As you know, my Axis Forces have brought nearly the entire Earth Sphere,
+---
+>  ほぼすべてを制圧下においた。
+>  もはや我々の優勢は動かん
+save the surface, under our control. Our advantage is now unshakable.
+---
+>  お前たちに勝ち目はない」
+You have no chance of winning.”
+
+@41666 Ryoma · リョウ
+> 「そんなことは、やってみなければ
+>  わからないだろう!」
+“You can't know that unless you try!”
+
+@41667 Haman · ハマーン
+> 「フッ……まぁいい。我がアクシズとしても
+>  銀河帝国軍を排除したいのは
+“Hmph... Very well. Axis also wishes to eliminate the Galactic Empire's forces.
+---
+>  同じだ。先ほどのようにつまらぬ
+>  小ぜりあいになどなっては面白くない
+The same goes for us. Pointless skirmishes like the last one are of no interest.
+---
+>  ここは協定を結ぼうではないか。
+>  お前たちにとっても
+Let us conclude an agreement here. For you as well,
+---
+>  悪い話ではあるまい?」
+it is hardly a bad deal, is it?”
+
+@41668 Amuro · アムロ
+> 「それを信じろというのか、ハマーン!?」
+“You expect us to believe that, Haman?!”
+
+@41669 Haman · ハマーン
+> 「私はこれまでも、口にしたことは
+>  実行してきたつもりだよ
+“I have always made good on what I say,
+---
+>  アムロ・レイ。ともに戦い
+>  銀河帝国軍を排除し
+Amuro Ray. Let us fight together to drive out the Galactic Empire's forces,
+---
+>  そのうえで誰が地球圏を
+>  支配するのかを、決しようではないか」
+and after that, decide who will rule the Earth Sphere.”
+
+@41670 Koji · 甲児
+> 「おい、オレたちゃ別に地球圏を
+>  支配しようなんて思っちゃいないぜ!
+“Hey, we're not looking to rule the Earth Sphere or anything!
+---
+>  一緒にするな!」
+Don't lump us in with you!”
+
+@41671 Haman · ハマーン
+> 「同じことだよ、少年。お前たちが
+>  勝てば、お前たちの認めぬ者が
+“It amounts to the same thing, boy. If you win, then those you do not acknowledge
+---
+>  地球圏を支配することはありえん
+>  そうではないか?」
+can never rule the Earth Sphere. Is that not so?”
+
+@41672 Haman · ハマーン
+> 「さて、そろそろ返答を
+>  聞かせてもらおうか」
+“Now then, I believe it's time I heard your answer.”
+
+@41673 Banjo · 万丈
+> 「……艦長」
+“...Captain.”
+
+@41674 Bright · ブライト
+> 「うむ……」
+“Hmm...”
+
+@41675 Haman · ハマーン
+> 「どうした?」
+“What is it?”
+
+@41676 Bright · ブライト
+> 「……わかった、申し入れを受けよう」
+“...Understood. We accept your offer.”
+
+@41677 Judau · ジュドー
+> 「ちょっ……」
+“Hey, wait—”
+
+@41678 Amuro · アムロ
+> 「黙っていろ、ジュドー!」
+“Be quiet, Judau!”
+
+@41679 Haman · ハマーン
+> 「フッ、多少問題があるようだが、
+>  まあよかろう。まずはともに
+“Hmph. There seem to be a few problems, but very well. For now, let us agree to strike
+---
+>  銀河帝国軍を叩くということで
+>  同意ができたものと理解しよう
+the Galactic Empire's forces together.
+---
+>  作戦はおって伝える」
+I will inform you of the operation later.”
+
+@41680 Daisaku · 大作
+> 「どうして、どうしてなんですか!?
+>  いまさらあの人たちを
+“Why, why is this happening?! To accept those people now,
+---
+>  受け入れるなんて」
+of all times—”
+
+@41681 Judau · ジュドー
+> 「ああ、そうだぜブライトさんよ。
+>  俺たちは納得できないね」
+“Yeah, that's right, Bright. We're not buying it.”
+
+@41682 Kamille · カミーユ
+> 「大作、ジュドー、忘れたのか?
+>  地球はいまだに危機にある
+“Daisaku, Judau, have you forgotten? The Earth is still in danger.
+---
+>  まずはそれを解決しないと、
+>  どうにもならないんだ」
+We have to deal with that first, or nothing else can move forward.”
+
+@41683 Judau · ジュドー
+> 「だからって、ハマーンのやり方を
+>  認めろっていうのかよ!?」
+“Even so, you're telling us to accept Haman's way of doing things?!”
+
+@41684 Bright · ブライト
+> 「そうはいっていない。状況をよく
+>  考えろ。今はこうするしかないんだよ!」
+“That's not what I'm saying. Think about the situation. Right now, this is the only way!”
+
+@41685 Judau · ジュドー
+> 「くっそぉぉぉぉぉぉぉーっ!!」
+“Damn iiiiiiiit!!”
+
+@41686 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……少年たちは
+>  納得できかねるといった風情だな」
+“...The boys certainly don't look convinced.”
+
+@41687 Ark · アーク（按段落 3DD1）
+> 「俺だって、納得なんかしちゃいないさ
+>  どうせ戦うことになる相手と
+“I'm not convinced either. Fighting alongside people I know will be my enemies
+---
+>  知っていながら、一緒に戦うなんて
+>  ただ、しかたのないことだってのは
+sooner or later—but I do understand
+---
+>  理解している」
+that there's no other choice.”
+
+@41688 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「しかたのないこと……か」
+“No other choice... is that it.”
+
+@41689 Kamille · カミーユ
+> 「それはみんな同じだよ、{HeroNick}。
+>  やらなければならないことを
+“It's the same for all of us, {HeroNick}. We have to put what must be done
+---
+>  優先させなくちゃならないんだ。
+>  俺は、今は、それでいいと思う」
+first. For now, I think that's fine.”
+
+@41690 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ニュータイプの感というやつか?」
+“Is that what they call a Newtype's intuition?”
+
+@41691 Kamille · カミーユ
+> 「なんといってもらってもいい。少なくとも
+>  先が見えて来たってだけで
+“Call it whatever you like. At least now that we can see ahead,
+---
+>  これまでよりはずいぶんマシな
+>  状態なんだ」
+things are far better than they were.”
+
+@41692 Eiji · エイジ
+> 「そうだな……勝つにしても、
+>  負けるにしても」
+“Yeah... whether we win or lose.”
+
+@41693 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「もう、終わらせることが
+>  できるというわけか……」
+“So we can finally put an end to it...”
+
+@41694 Ark · アーク（按段落 3DD1）
+> 「そう思う。戦いで死んでいった人の
+>  意思が、それを望んでいるんだ」
+“I think so. The will of those who died in this war is asking for it.”
+
+@41695 Show · ショウ
+> 「……勝てるのか、俺たちは。
+>  銀河帝国軍に。あのハマーンに」
+“...Can we win? Against the Galactic Empire's forces? Against Haman?”
+
+@41696 Ark · アーク（按段落 3DD1）
+> 「そう、信じたい。
+>  いや、信じるよ、俺は
+“Yes, I want to believe it. No—I will believe it.
+---
+>  そうでなけりゃ、死んでいった人たちに
+>  申しわけがたたない」
+If I don't, I'd have no excuse to face those who died.”
+
+@41697 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ああ……私も、そう信じよう。
+>  死んでいった者たちではなく、君の
+“Yes... I will believe it too. Not in the dead, but in your will—
+---
+>  君たちの、意思の力というものを」
+in the power of your will, all of you.”
+
+@41698 Rish · リッシュ（按段落 3DD2）
+> 「やーれやれ、ガキどもは
+>  まったく大変だぜ」
+“Oh, brother. Kids sure are a handful.”
+
+@41699 Selain · セレイン（按段落 3DD2）
+> 「せめて純粋なのだといってやれ。
+>  この戦いの中で
+“At least call them pure. In the middle of this war,
+---
+>  いまだにああいえる奴が、いったい
+>  どれだけいるというのだ。彼らは正しい
+how many people can still say what they say? They are right.
+---
+>  間違っているのは、私たちだ」
+The ones who are wrong are us.”
+
+@41700 Rish · リッシュ（按段落 3DD2）
+> 「ひゅ～、あいかわらず厳しいねぇ
+>  {HeroNick}ちゃん
+“Whoo—still as strict as ever, {HeroNick}.
+---
+>  だがよ、それじゃ戦いには勝てないぜ」
+But you know, that won't win you a war.”
+
+@41701 Show · ショウ
+> 「そうだな……そう思うよ。
+>  あんたのいう通りだ」
+“Yeah... I think so too. You're right.”
+
+@41702 Selain · セレイン（按段落 3DD2）
+> 「そんなことはわかっている。それとこれとは
+>  別だ。私は、生きている限りは
+“I know that. But that's a separate matter. As long as I live,
+---
+>  どこまでも戦ってみせる。勝つためなら
+>  ハマーンでもなんでも利用するだけだ」
+I'll keep fighting to the very end. If it means winning, I'll use Haman or anyone else.”
+
+@41703 Simone · シモーヌ
+> 「そうね。納得できなくたって、
+>  やるしかないんだものね
+“That's right. Even if we can't accept it, we've got no choice but to do it.
+---
+>  いまさら、他にはどうしようもない、か」
+At this point, there's nothing else we can do, is there.”
+
+@41704 Rish · リッシュ（按段落 3DD2）
+> 「そういうこった。辛気くさいツラ
+>  並べてたって、どうにもならん
+“That's how it is. Sitting around with long faces won't get us anywhere.
+---
+>  それによ、いちおう先は見えてきたんだ
+>  これまでに比べりゃ
+Besides, at least we can see ahead now. Compared to before,
+---
+>  ずいぶんマシな状態なんだぜ?」
+things are a whole lot better, aren't they?”
+
+@41705 Selain · セレイン（按段落 3DD2）
+> 「ああ……そうもいえるな。勝つか負ける
+>  かは、わからないがな
+“Yeah... you could say that. Though I don't know if we'll win or lose.
+---
+>  いいかげんに見えるようで、
+>  それなりに物事はわかっているようだな」
+You look careless, but you seem to understand things well enough.”
+
+@41706 Rish · リッシュ（按段落 3DD2）
+> 「お、惚れなおしたか!?」
+“Oh, did you fall for me all over again?!”
+
+@41707 Selain · セレイン（按段落 3DD2）
+> 「ふん、最初から何もなければ、
+>  なおしようもない。……」
+“Hmph. If there was nothing there to begin with, there'd be nothing to fix. ...”
+
+@41708 Show · ショウ
+> 「? どうしたんだ、{HeroNick}。
+>  まだ何か気になることがあるのか?」
+“? What's wrong, {HeroNick}? Is something still bothering you?”
+
+@41709 Selain · セレイン（按段落 3DD2）
+> 「いや……だが妙なものだ」
+“No... but it's strange.”
+
+@41710 Simone · シモーヌ
+> 「なにが?」
+“What is?”
+
+@41711 Selain · セレイン（按段落 3DD2）
+> 「この戦いの終わりが
+>  見えてきたというのが
+“That we can see the end of this war.
+---
+>  そこまで生きていられると
+>  考えたこともなかった」
+I never thought I'd live that long.”
+
+@41712 Rish · リッシュ（按段落 3DD2）
+> 「ばかいってんなよ{HeroNick}。
+>  この戦いはお前らの手で決着を
+“Don't be stupid, {HeroNick}. This war has to be settled by your hands.
+---
+>  つけにゃなんねぇんだ。最後まで
+>  見とどける責任ってもんがある」
+You've got a responsibility to see it through to the end.”
+
+@41713 Selain · セレイン（按段落 3DD2）
+> 「……ひと事のようにいってくれるな。
+>  ……しかし……戦いの終わりか……」
+“...Don't talk like it's someone else's problem. ...But still... the end of the war, huh...”
+
+@41714 Kurtz · カーツ（按段落 3DD3）
+> 「フン、まったくよくわめくガキどもだぜ」
+“Hmph. Those brats sure do whine a lot.”
+
+@41715 Brad · ブラッド（按段落 3DD3）
+> 「だがな{PartnerNick}、俺だって
+>  あのハマーンって女は気に入らないぜ」
+“But you know, {PartnerNick}, I don't like that woman Haman either.”
+
+@41716 Kurtz · カーツ（按段落 3DD3）
+> 「ばかが。そんなことは問題じゃない。
+>  問題なのは勝てるかどうか
+“Fool. That's not the issue. The only issue is whether we can win.
+---
+>  ただそれだけだ。まず目の前の戦いに
+>  勝利せねば、先はない」
+That's all. If we don't win the battle in front of us first, there's no future.”
+
+@41717 Domon · ドモン
+> 「ああそうだ。アクシズだろうがなんだろうが
+>  俺たちできっちりケリをつけてやればいい
+“Yeah, that's right. Whether it's Axis or whatever, we just have to settle it ourselves.
+---
+>  異星人どもをぶっつぶしたあとでな」
+After we crush those aliens.”
+
+@41718 Ryoma · リョウ
+> 「おいおい、いくらなんでも
+>  それほど単純にはいかないだろ」
+“Hey, hey, it's never gonna be that simple.”
+
+@41719 Shinobu · 忍
+> 「へっ、そのくらいの認識で
+>  ちょうどいいのさ
+“Heh, that level of thinking is just right.
+---
+>  どのみち俺たちは戦って戦って
+>  敵を倒していくしかないんだからな」
+Either way, all we can do is fight and fight and take down the enemy.”
+
+@41720 Ryo · 亮
+> 「フッ、まったくお前らしい意見だな、
+>  忍」
+“Hmph, that's just like you, Shinobu.”
+
+@41721 Shinobu · 忍
+> 「なんだよ、またなんか
+>  文句でもあんのかよ」
+“What, you got a problem with that too?”
+
+@41722 Ryo · 亮
+> 「いや、別に間違ってはいないからな」
+“No, it's not exactly wrong.”
+
+@41723 Hayato · ハヤト
+> 「ともかく、ようやくこの戦いの終わりも
+>  見えかけてきたんだ
+“Anyway, we're finally starting to see the end of this war.
+---
+>  まず銀河帝国軍を叩くと
+>  決めた以上
+Now that we've decided to strike the Galactic Empire first,
+---
+>  あとは全力を尽くして戦うだけだな」
+all that's left is to fight with everything we've got.”
+
+@41724 Brad · ブラッド（按段落 3DD3）
+> 「確かにな。そいつだけは
+>  間違いようがねぇ」
+“True. That much is certain.”
+
+@41725 Kurtz · カーツ（按段落 3DD3）
+> 「そういうことだ」
+“Exactly.”
+
+@41726 Chibodee · チボデー
+> 「ああ、もう終わらせようぜ、
+>  こんな戦いはよ」
+“Yeah, let's put an end to this war already.”
+
+@41727 Brad · ブラッド（按段落 3DD3）
+# 审校：原文“俺たちでな”是承接前文“由我们来结束”的强调，初稿“Us, that is.”语气太弱且不自然，改为更果断的“We'll do it.”
+> 「俺たちでな」
+“We'll do it.”
+
+@41728 Ryoma · リョウ
+> 「そうだ……俺たちが終わらすんだ」
+“That's right... we're the ones who'll end it.”
+
+@41729 Aisha · アイシャ（按段落 3DD4）
+# 审校：“聞き分けのない”更接近“willful/不听话”，初稿“unreasonable”不够贴切
+> 「まったく、聞き分けのない
+>  子供たちだこと」
+“Goodness, what a willful bunch of children.”
+
+@41730 Manami · マナミ（按段落 3DD4）
+# 审校：“そういうものではないわ”指“事情不是那样的”，初稿“That's not how it works”稍偏，改为更贴切的“That's not how it is”
+> 「そういうものではないわ、{PartnerNick}
+>  ハマーンのやり方を
+“That's not how it is, {PartnerNick}. Not wanting to accept Haman's
+---
+>  認めたくないっていうのは、
+>  みんな思ってることだもの」
+way of doing things is something we all feel.”
+
+@41731 Aisha · アイシャ（按段落 3DD4）
+# 审校：“あれはないでしょう”指对方做法过分、不该那样，初稿“that's no way to act”可接受但“that was uncalled for”更贴切；“騒いでみたって”改为“Making a fuss”更自然
+> 「だからといって、あれはないでしょう。
+>  騒いでみたって戦いは
+“Even so, that was uncalled for. Making a fuss won't end the war.
+---
+>  終わりませんのよ。勝てなければ、
+>  なんの意味もないのです」
+If we don't win, it means nothing at all.”
+
+@41732 Manami · マナミ（按段落 3DD4）
+> 「それも、みんなわかってるわ。
+>  大作くんだってね
+“Everyone understands that too. Even Daisaku.
+---
+>  ただ気持ちの整理がつかないだけよ」
+He just can't sort out his feelings yet.”
+
+@41733 Simone · シモーヌ
+> 「そうね……あたしたちの戦いの意味は
+>  みんなよくわかっていると思うわ」
+“That's right... I think we all understand the meaning of our fight well enough.”
+
+@41734 Sayaka · さやか
+> 「それはそうよ。でなければここまで
+>  戦い続けてはこれないでしょ」
+“Of course. Otherwise we couldn't have kept fighting this long.”
+
+@41735 Marvel · マーベル
+# 审校：“先が見えてきた”指看到前路/前景，初稿“see ahead”稍显模糊，改为“see the way ahead”更清楚
+> 「でも……ようやく、
+>  先が見えてきたって感じね」
+“But... it finally feels like we can see the way ahead.”
+
+@41736 Aisha · アイシャ（按段落 3DD4）
+> 「それは、認めますわ。この戦いが
+>  終わるまで、そう長くは
+“That, I will admit. It won't be long now before this war ends.
+---
+>  かからないでしょう。わたくしたちが
+>  勝つにせよ、負けるにせよ」
+Whether we win or lose.”
+
+@41737 Manami · マナミ（按段落 3DD4）
+> 「負けるなんて、考えちゃだめよ!
+>  あたしたちは勝つことだけを
+“Don't even think about losing! We have to think only about winning.
+---
+>  考えなくてはいけないわ。ズールが
+>  地球圏に残留した以上
+Now that Zuhl has remained in the Earth Sphere,
+---
+>  もう地球が破壊されてしまうような
+>  ことはないと思うけど、それでもズールや
+I don't think the Earth will be destroyed anymore, but even so, we can't allow Zuhl or
+---
+>  ハマーンが地球圏を支配するのを
+>  許すわけにはいかないのよ。絶対に!」
+Haman to rule the Earth Sphere. Absolutely not!”
+
+@41738 Aisha · アイシャ（按段落 3DD4）
+# 审校：原文句末“ね”带反问语气，初稿用句号丢失了反问感，改为问号
+> 「はいはい、わかりましたわよ。
+>  本当に貴女は昔から
+“Yes, yes, I understand. You really haven't changed
+---
+>  ちっとも変わりませんのね」
+one bit since long ago, have you?”
+
+@41739 Chizuru · ちずる
+# 审校：“なんだか”语气词可省略，初稿“Somehow”略显多余，改为更自然的“I can just picture it”
+> 「まぁ。なんだか目にうかぶようね」
+“My. I can just picture it.”
+
+@41740 Aisha · アイシャ（按段落 3DD4）
+> 「それはもう大変でしたわ」
+“It was quite a handful, I'll have you know.”
+
+@41741 Manami · マナミ（按段落 3DD4）
+> 「それはお互い様でしょ、
+>  {PartnerNick}」
+“That goes both ways, {PartnerNick}.”
+
+@41742 Simone · シモーヌ
+> 「ウフフ、結局あなたたちって、
+>  根っこの部分が一緒なのね
+“Hehe, in the end, you two are the same at the core.
+---
+>  やっぱりいとこだわ」
+Cousins after all.”
+
+@41743 Aisha · アイシャ（按段落 3DD4）
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
+# 草稿第 1 页：“How rude. Kindly do not lump me together
+# 草稿第 2 页：with 【主角名字】.”
+> 「失礼な。わたくしと
+>  {HeroName}さんを
+---
+>  一緒にしないでいただきたいわ」
+
+@41744 Lawrence · ローレンス
+> 「失礼いたします。お嬢様方、
+>  お茶のご用意ができました
+“Pardon my intrusion. My ladies, the tea is ready.
+---
+>  お話はこの辺で、
+>  ひと休みされてはいかがですか」
+Perhaps you might take a break from your talk here.”
+
+@41745 Aisha · アイシャ（按段落 3DD4）
+> 「あらローレンス、ご苦労様」
+“Oh, Lawrence, thank you for your trouble.”
+
+@41746 Manami · マナミ（按段落 3DD4）
+> 「そうね、そうしましょうか」
+“Yes, let's do that.”
+
+@41747 Simone · シモーヌ
+> 「なんだかひさしぶりね。
+>  のんびりとお茶を飲むなんて」
+“It feels like it's been so long. Drinking tea so leisurely, I mean.”
+
+@41748 Aisha · アイシャ（按段落 3DD4）
+> 「ローレンス、今日は何ですの?」
+“Lawrence, what is it today?”
+
+@41749 Lawrence · ローレンス
+> 「はい、シナモンティーでございます」
+“Yes, it is cinnamon tea.”
+
+@41750 Manami · マナミ（按段落 3DD4）
+> 「せっかくだから、さめないうちに
+>  いただきましょう」
+“Since we have the chance, let's drink it before it gets cold.”
+
+@41751 Chizuru · ちずる
+> 「でも、女王様もお呼びしたほうが
+>  いいのかしら」
+“But should we invite the Queen as well, I wonder.”
+
+@41752 Marvel · マーベル
+> 「きっと喜ばれると思うわ。いろいろと
+>  大変なことも多いでしょうから」
+“I'm sure she'd be pleased. She must have a lot on her plate these days.”
+
+@41753 Lawrence · ローレンス
+> 「あの方でしたら、すでにお声を
+>  おかけいたしております」
+“In her case, I have already extended an invitation.”
+
+@41754 Simone · シモーヌ
+> 「さすがローレンス、そつがないわね」
+“As expected of Lawrence. Not a single detail missed.”
+
+@41755 Aisha · アイシャ（按段落 3DD4）
+> 「それではみなさん、まいりましょうか」
+“Then, everyone, shall we go?”

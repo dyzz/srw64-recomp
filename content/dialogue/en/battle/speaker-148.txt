@@ -1,0 +1,91 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11960 Kosuke · 小介
+> 「このっ!」
+“Take this!”
+
+@11961 Kosuke · 小介
+> 「やらせませんよ!」
+“I won't let you!”
+
+@11962 Kosuke · 小介
+> 「これでもくらえっ!」
+“Try taking this!”
+
+@11963 Kosuke · 小介
+> 「いくよっ!」
+“Here I go!”
+
+@11964 Kosuke · 小介
+> 「僕だって!」
+“I can do it too!”
+
+@11965 Kosuke · 小介
+> 「わあああっ! す、すいません、やられて
+>  しまいました!」
+“Waaah! S-sorry, I've been shot down!”
+
+@11966 Kosuke · 小介
+> 「うわああっ! パ、パワーが
+>  違いすぎるっ!」
+“Uwaaah! H-his power's way too different!”
+
+@11967 Kosuke · 小介
+> 「わああっ! や、やられちゃうっ!!」
+“Waaah! I-I'm gonna be shot down!!”
+
+@11968 Kosuke · 小介
+> 「うわあっ! ちずるお姉ちゃん、
+>  豹馬さん、助けてくださいっ!」
+“Uwaah! Chizuru, Hyoma, please help me!”
+
+@11969 Kosuke · 小介
+> 「くうっ! やったなあっ!」
+“Ngh! You did it now!”
+
+@11970 Kosuke · 小介
+> 「こ、このっ! まだやられてませんよ!」
+“Wh-why you! I'm not beaten yet!”
+
+@11971 Kosuke · 小介
+> 「まだだっ! まだやられるもんか!」
+“Not yet! Like I'd go down!”
+
+@11972 Kosuke · 小介
+> 「わっ! あ、当たったけど、
+>  大丈夫だよね?」
+“Whoa! I-it hit, but I'm okay, right?”
+
+@11973 Kosuke · 小介
+> 「こんな攻撃で落ちるもんか!」
+“Like an attack like that would bring me down!”
+
+@11974 Kosuke · 小介
+> 「この程度のダメージなんて!」
+“Damage like this is nothing!”
+
+@11975 Kosuke · 小介
+> 「わあああっ! あ、危なかったぁ」
+“Waaah! Th-that was close.”
+
+@11976 Kosuke · 小介
+> 「わあっ! あた、あた……当たってないや」
+“Whoa! I-it, it... it didn't hit.”
+
+@11977 Kosuke · 小介
+> 「わっ、わっ、来るなぁっ!」
+“Wh-whoa, don't come at me!”
+
+@11978 Kosuke · 小介
+> 「そんなビームじゃ、このバトルクラフトは
+>  やられませんよ!」
+“A beam like that won't take down this Battle Craft!”
+
+@11979 Kosuke · 小介
+> 「あ、あれ? 弾切れなの? 計算
+>  間違ったかな?」
+“H-huh? Out of ammo? Did I miscalculate?”
+
+@11980 Kosuke · 小介
+> 「だ、ダメだ! ここからじゃ届かないよ!」
+“N-no good! It won't reach from here!”

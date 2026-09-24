@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13563 Guerrilla · ゲリラ
+> 「邪魔なんだよ!」
+“You're in my way!”
+
+@13564 Guerrilla · ゲリラ
+> 「うおおおおっ!!」
+“Uwooooh!!”
+
+@13565 Guerrilla · ゲリラ
+> 「これでとどめだ!!」
+“This is the finishing blow!!”
+
+@13566 Guerrilla · ゲリラ
+> 「こいつで決めてやる!」
+“I'll finish you with this!”
+
+@13567 Guerrilla · ゲリラ
+> 「やらせるかっ!!」
+“Like I'll let you!!”
+
+@13568 Guerrilla · ゲリラ
+> 「落ちろっ!!」
+“Go down!!”
+
+@13569 Guerrilla · ゲリラ
+> 「このっ!!」
+“Why you!!”
+
+@13570 Guerrilla · ゲリラ
+> 「行くぞっ!!」
+“Here I come!!”
+
+@13571 Guerrilla · ゲリラ
+> 「そこだっ!」
+“Right there!”
+
+@13572 Guerrilla · ゲリラ
+> 「もらった!」
+“Got you!”
+
+@13573 Guerrilla · ゲリラ
+> 「な、何だと!?」
+“W-what did you say?!”
+
+@13574 Guerrilla · ゲリラ
+> 「しまった! 直撃か!?」
+“Damn! A direct hit?!”
+
+@13575 Guerrilla · ゲリラ
+> 「ぐうっ、い、いかん、やられる!?」
+“Guh, n-no, I'm done for?!”
+
+@13576 Guerrilla · ゲリラ
+> 「うおっ!? くっ、こっちが不利か!」
+“Whoa?! Tch, I'm at a disadvantage?!”
+
+@13577 Guerrilla · ゲリラ
+> 「ぬうううっ! つ、強いっ!」
+“Nghhh! S-strong!”
+
+@13578 Guerrilla · ゲリラ
+> 「やるっ! さすがは!」
+“Not bad! As expected!”
+
+@13579 Guerrilla · ゲリラ
+> 「ぐうぅっ!! パワーが違いすぎる!!」
+“Guhh!! The power difference is too much!!”
+
+@13580 Guerrilla · ゲリラ
+> 「ちいっ! まだまだっ!」
+“Tch! I'm not done yet!”
+
+@13581 Guerrilla · ゲリラ
+> 「くっ! 少しはできるな!」
+“Tch! You're not half bad!”
+
+@13582 Guerrilla · ゲリラ
+> 「ぬうっ! そう簡単にやられはせん!!」
+“Ngh! I won't go down that easily!!”
+
+@13583 Guerrilla · ゲリラ
+> 「うっ! やってくれたな!!」
+“Ugh! You'll pay for that!!”
+
+@13584 Guerrilla · ゲリラ
+> 「まだだっ! まだこれからよ!!」
+“Not yet! It's only starting!!”
+
+@13585 Guerrilla · ゲリラ
+> 「非力なんだよ!」
+“You're just weak!”
+
+@13586 Guerrilla · ゲリラ
+> 「パワー不足だな!」
+“Not enough power!”
+
+@13587 Guerrilla · ゲリラ
+> 「その程度か!」
+“Is that all you've got?!”
+
+@13588 Guerrilla · ゲリラ
+> 「そんな攻撃など効くものかよ!」
+“An attack like that won't do a thing!”
+
+@13589 Guerrilla · ゲリラ
+> 「ふん、かすっただけよ!」
+“Hmph, just a graze!”
+
+@13590 Guerrilla · ゲリラ
+> 「当たるものかよ!」
+“Like that'll hit me!”
+
+@13591 Guerrilla · ゲリラ
+> 「踏み込みが足りん!」
+“You're not committing enough!”
+
+@13592 Guerrilla · ゲリラ
+> 「間合いが遠いわっ!」
+“Too far out of range!”
+
+@13593 Guerrilla · ゲリラ
+> 「狙いが甘い!」
+“Your aim's too soft!”
+
+@13594 Guerrilla · ゲリラ
+> 「バカめ。どこを狙っている!」
+“Fool. What are you aiming at?!”
+
+@13595 Guerrilla · ゲリラ
+> 「ムダな攻撃をする……」
+“What a waste of an attack...”
+
+@13596 Guerrilla · ゲリラ
+> 「ふ、そんなビームではな!」
+“Hah, a Beam like that won't work!”
+
+@13597 Guerrilla · ゲリラ
+> 「ちっ、弾切れとはな……」
+“Tch, out of ammo, huh...”
+
+@13598 Guerrilla · ゲリラ
+> 「弾切れか……しかたあるまい」
+“Out of ammo... nothing I can do.”
+
+@13599 Guerrilla · ゲリラ
+> 「ちっ、遠距離からの攻撃か……」
+“Tch, attacking from long range, huh...”
+
+@13600 Guerrilla · ゲリラ
+> 「む……ここからでは反撃できん」
+“Mm... I can't fight back from here.”

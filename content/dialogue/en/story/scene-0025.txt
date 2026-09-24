@@ -1,0 +1,1153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@21592 Le Cain · ル・カイン
+> 「それで?」
+“And?”
+
+@21593 Giura · ギウラ
+> 「はっ、現地からの報告では、
+>  何者かが市民に武器を
+“Yes, sir. Reports from the field suggest that someone
+---
+>  渡しているのではないかとのことです」
+has been handing out weapons to the citizens.”
+
+@21594 Le Cain · ル・カイン
+> 「何者か、だと!? そんなものは
+>  レジスタンスどもに決まっている
+“Someone, you say?! It's obviously the Resistance.
+---
+>  どうやらかなりつぶし損なっていた
+>  ようだな
+It seems we've failed to crush them quite thoroughly.
+---
+>  当然調べはついているのだろうな?」
+You've looked into it already, of course?”
+
+@21595 Giura · ギウラ
+> 「は……それが、かなりの数の偵察隊
+>  を出しているのですが、いまだに……」
+“Yes... Well, we've sent out a considerable number of scout teams, but even now...”
+
+@21596 Le Cain · ル・カイン
+> 「役立たずが!
+>  ロアンとトレーズを呼べ」
+“Useless fool! Summon Roanne and Treize.”
+
+@21597 ???
+> 「それには及びません、閣下」
+“That won't be necessary, Your Excellency.”
+
+@21598 Le Cain · ル・カイン
+> 「ほう? 貴様、
+>  何か知っているようだな?」
+“Oh? You seem to know something.”
+
+@21599 ???
+> 「はい。あの地域には終戦前に
+>  破壊された地下基地が
+“Yes. There should have been an underground base in that region
+---
+>  あったはずです。が、実際にはそれは
+>  建設を中断しただけの
+that was destroyed before the war ended. But in truth, its construction
+---
+>  偽装工作。奴らがそれを利用
+>  することは十分に考えられます」
+was merely halted as a cover. It's quite possible they're making use of it.”
+
+@21600 Le Cain · ル・カイン
+> 「ギウラ、それは調べたのか?」
+“Giura, did you look into that?”
+
+@21601 Giura · ギウラ
+> 「は……いいえ……その、
+>  リストからはずれておりましたので……
+“Yes... No... Well, it had been removed from the list, so...
+---
+>  地下深くですと熱源探知も
+>  できませんし……」
+And at such depths, heat-source detection is impossible...”
+
+@21602 Le Cain · ル・カイン
+> 「ふん。どうやら間違いないようだな」
+“Hmph. It seems there's no mistake, then.”
+
+@21603 ???
+> 「私にお任せいただければ、
+>  見事叩いて見せましょう
+“If you would leave it to me, I shall strike them down splendidly.
+---
+>  ムゲ帝王様への忠誠の証を、も
+>  うひとつお目にかけることができましょう」
+I shall show you yet another proof of my loyalty to Emperor Muge.”
+
+@21604 Le Cain · ル・カイン
+> 「貴様はバイストンウェルとやらの
+>  軍勢を連れて来たのであったな
+“You're the one who brought forces from that place called Byston Well, aren't you?
+---
+>  おもしろい、やってみせろ」
+Interesting. Show me what you can do.”
+
+@21605 ???
+> 「は、おまかせください」
+“Yes, leave it to me.”
+
+@21606 Le Cain · ル・カイン
+# 审校：“百鬼のグラー”指グラー博士，词表必用为 Dr. Gura，且后文 L68 也使用 Dr. Gura，应保持一致。
+> 「百鬼のグラーを呼べ。
+>  何をたくらんでいるのか知らんが
+“Summon Gura of the Hundred Demons. I don't know what they're plotting,
+---
+>  奴らにも役に立ってもらわねばな」
+but they'll have to make themselves useful too.”
+
+@21607 Anna · アンナ
+> 「エイジ! 無事だったのね! 向こう
+>  にいる連絡員の人から、金色の
+“Eiji! You're safe! I heard from the liaison over there that you were being
+---
+>  SPTに追われていたって噂を聞いて
+>  ……私……」
+chased by a golden SPT... I was so...”
+
+@21608 Eiji · エイジ
+> 「ああ……心配かけてごめん。アンナ」
+“Yeah... Sorry for worrying you, Anna.”
+
+@21609 Daisaku · 大作
+> 「“クスコの聖女”はやっぱり
+>  お姉さんだったんですか?」
+“So the ‘Holy Woman of Cusco’ really was your sister?”
+
+@21610 Eiji · エイジ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「……そうだ。それよりブライト艦長たち
+>  は? 帝国軍の動きをつかんだんだ」
+“...That's right. Anyway, where are Captain Bright and the others? We've caught wind of Imperial movement.”
+
+@21611 Anna · アンナ
+> 「艦長たちなら、
+>  ブリーフィングルームにいると思うわ」
+“The captain and the others should be in the briefing room.”
+
+@21612 Bright · ブライト
+> 「南米大陸の太平洋側に
+>  敵が集結しつつあるだと!?」
+“The enemy is gathering on the Pacific side of the South American continent?!”
+
+@21613 Eiji · エイジ
+> 「はい。かなりの数が動いています」
+“Yes. A considerable number are on the move.”
+
+@21614 Quattro · クワトロ
+> 「ナスカ基地が発見されたな。
+>  しかし、なぜだ?
+“The Nazca base has been discovered. But why?
+---
+>  これまで発見されずにいたのなら、
+>  なぜ今ごろになって発見される?」
+If it went undiscovered until now, why is it being found only at this point?”
+
+@21615 Amuro · アムロ
+> 「今はそんなことをいっている
+>  場合じゃない
+“This isn't the time for that.
+---
+>  敵の動きがナスカを
+>  目的としたものなら、やはり
+If the enemy's movement is aimed at Nazca, then it's proof
+---
+>  ナスカの地下備蓄基地は
+>  まだ無事だという証拠だ」
+that the underground supply base at Nazca is still intact.”
+
+@21616 Bright · ブライト
+> 「急がなければならんというわけか」
+“Then we must hurry.”
+
+@21617 Hayato · ハヤト
+> 「ナスカの地下基地が
+>  攻撃を受けるらしいな」
+“So the underground base at Nazca is going to be attacked.”
+
+@21618 Ryo · 亮
+> 「やはりまだ発見されてなかったと
+>  いうわけだ」
+“So it really hadn't been discovered yet after all.”
+
+@21619 Masato · 雅人
+> 「もう見つかっちゃったみたいだけどね」
+“Looks like it's already been found, though.”
+
+@21620 Sayaka · さやか
+> 「でもそれだけ巧妙に
+>  隠されていたのなら
+“But if it was hidden that cleverly,
+---
+>  なんで今さら発見されるのかしら?」
+why would it be discovered only now?”
+
+@21621 Koji · 甲児
+> 「そんなこと考えても、しょうがないだろ
+>  オレたちは敵をぶったたくだけさ」
+“There's no point thinking about that. We just have to smash the enemy.”
+
+@21622 Sara · 沙羅
+> (あいつは……
+>  あの基地のことを知っていた
+(He knew about that base...
+---
+>  建設が放棄されたとき、もうそれを
+>  利用することさえ考えていた……
+When construction was abandoned, he was already thinking of using it...
+---
+>  まさか……あいつが……?)
+No way... Could he be...?)
+
+@21623 Le Cain · ル・カイン
+> 「どういうことです、父上!
+>  なぜ“クスコの聖女”を
+“What is the meaning of this, Father?! Why did you take away
+---
+>  連れ去ったのですか!?」
+the ‘Holy Woman of Cusco’?!”
+
+@21624 Gresco · グレスコ
+> 「何をいっているのかわからんな」
+“I don't know what you're talking about.”
+
+@21625 Le Cain · ル・カイン
+> 「父上、私は父上の手の者が
+>  聖女を連れ去ったと
+“Father, I have received reports that men under your command
+---
+>  報告を受けているのですよ」
+took the Holy Woman away.”
+
+@21626 Gresco · グレスコ
+> 「私は聞いておらぬ」
+“I have heard nothing of it.”
+
+@21627 Le Cain · ル・カイン
+> 「父上は何をお隠しになっているの
+>  です。私がエイジを追うのもお止め
+“What are you hiding, Father? You even stopped me from pursuing Eiji.
+---
+>  になられた。いったいなぜです? あの者
+>  たちに何があるというのですか!?」
+Why? What is it about those people?!”
+
+@21628 Gresco · グレスコ
+> 「もうよい、さがれ。私は疲れた」
+“That's enough. Leave me. I'm tired.”
+
+@21629 Le Cain · ル・カイン
+> 「父上!!
+>  お待ちください父上!! くっ……」
+“Father!! Please wait, Father!! Ngh...”
+
+@21630 Le Cain · ル・カイン
+> (自分の息子にも
+>  聞かせたくない秘密……
+(A secret he won't even let his own son hear...
+---
+>  いよいよもって知りたい……)
+Now I want to know all the more...)
+
+@21631 Duo · デュオ
+> 「なぁ、これってかなり
+>  まずいんじゃないのか?」
+“Hey, isn't this pretty bad?”
+
+@21632 Quatre · カトル
+> 「そうですね……あれでは
+>  いくら地下基地といっても……」
+“That's right... Even if it is an underground base, after that...”
+
+@21633 Shinobu · 忍
+> 「どうするんだよ艦長さん」
+“What are we gonna do, Captain?”
+
+@21634 Amuro · アムロ
+> 「ブライト、残念だがあきらめるしかない
+>  地下基地は壊滅だろう」
+“Bright, it's a shame, but we have no choice but to give up. The underground base must be destroyed.”
+
+@21635 Bright · ブライト
+> 「くっ……全速で
+>  この戦域を離脱する」
+“Ngh... Full speed, withdraw from this battle zone.”
+
+@21636 Beltorchika · ベルトーチカ
+> 「艦長!
+>  後方より敵多数接近!!」
+“Captain! Many enemies approaching from the rear!!”
+
+@21637 Quattro · クワトロ
+> 「なに!?」
+“What?!”
+
+@21638 Ryo · 亮
+> 「ちっ、これは罠だ」
+“Tch, this is a trap.”
+
+@21639 Sara · 沙羅
+> 「何いってんの、もう遅いよ!」
+“What are you saying? It's too late for that!”
+
+@21640 Bright · ブライト
+> 「総員、戦闘配置につけ!」
+“All hands, battle stations!”
+
+@21641 Ginrei · 銀鈴
+> 「敵、来ます!!」
+“Enemy incoming!!”
+
+@21642 Chum · チャム
+> 「ショウ、あれウィル・ウィプスよ!
+>  トッドたちもいる!」
+“Show, that's the Will-Wips! Tod and the others are there too!”
+
+@21643 Show · ショウ
+> 「ドレイクが帝国についたってのは
+>  本当だったんだな
+“So it was true that Drake sided with the Empire.
+---
+>  トッド、地上の人間が
+>  なんで敵につく……」
+Tod, why would a surface dweller side with the enemy...”
+
+@21644 Sara · 沙羅
+> (備えは周到に、
+>  作戦は先手先手と……
+(Prepare thoroughly, strike first and strike again...
+---
+>  あいつは、いつもそういってたっけ。
+>  この作戦、間違いない
+That's what he always said. This plan is definitely his.
+---
+>  あいつが生きてたんだ)
+He's alive.)
+
+@21645 Shinobu · 忍
+> 「おい沙羅!」
+“Hey, Sara!”
+
+@21646 Sara · 沙羅
+> 「出るよ、みんな!」
+“We're launching, everyone!”
+
+@21647 Masato · 雅人
+> 「ちょっと沙羅ってば!」
+“Hey, Sara, wait!”
+
+@21648 Beltorchika · ベルトーチカ
+> 「ダンクーガ出撃しました」
+“Dancouga has launched.”
+
+@21649 Bright · ブライト
+> 「20秒!? 早いな。
+>  他の者も順次出撃させろ!」
+“Twenty seconds?! That was fast. Send the others out one after another!”
+
+@21650 Drake · ドレイク
+> 「計画通りというわけか、シャピロ」
+“So it's going according to plan, Shapiro.”
+
+@21651 Shapiro · シャピロ
+> 「はい。あとは閣下のお力で連中を
+>  倒せば、帝国にも無理がききます
+“Yes. After that, if Your Excellency's power destroys them, we can push the Empire as well.
+---
+>  ショットどのと合流できれば
+>  閣下のお力は
+If we can join forces with Lord Shot, Your Excellency's power
+---
+>  帝国にもひけをとらぬでしょう」
+would be a match even for the Empire.”
+
+@21652 Drake · ドレイク
+> 「討たれるべき者を、力あるものが
+>  討ち滅ぼし世を平定する
+“Those who should be struck down are destroyed by the powerful, and the world is pacified.
+---
+>  それが戦乱の世のならいだな」
+Such is the way of an age of war.”
+
+@21653 Luna · ルーナ
+> 「シャピロ様」
+“Lord Shapiro.”
+
+@21654 Shapiro · シャピロ
+> 「なんだ、ルーナ……あれはダンクーガか。
+>  まだ残っていたとはな
+“What is it, Luna... That's the Dancouga. So it still remains.
+---
+>  藤原に……沙羅か」
+Fujiwara... and Sara.”
+
+@21655 Luna · ルーナ
+> 「お知り合いのようですわね」
+“They seem to be acquaintances of yours.”
+
+@21656 Shapiro · シャピロ
+> 「フ……過去を捨てた男に
+>  そんなものは関係ない」
+“Hmph... A man who has abandoned his past has no need for such things.”
+
+@21657 Allen · アレン
+> 「おいトッド、あのオーラバトラーの動き、
+>  ショウ・ザマじゃないのか」
+“Hey Tod, isn't that Aura Battler's movement Show Zama?”
+
+@21658 Tod · トッド
+> 「ショウ!? やはり地上に出ていたか」
+“Show?! So he did come to the surface after all.”
+
+@21659 Dr. Gura · グラー博士
+> 「これで我らの役目は終わりじゃ
+>  せっかく増やした鬼兵士を
+“With this, our role is finished. There's no point wasting the
+---
+>  ムダにすることもない。撤退するぞ
+>  む? 牛餓鬼、なにをする?」
+demon soldiers we went to the trouble of increasing. We're withdrawing. Hm? Gyugaki, what are you doing?”
+
+@21660 Gyugaki · 牛餓鬼
+> 「グラー博士、
+>  俺の父さんの牛剣鬼は
+“Dr. Gura, my father Gyukenki is
+---
+>  百鬼の英雄といわれてるんだ。
+>  俺だって」
+called a hero of the Hundred Demons. I too...”
+
+@21661 Dr. Gura · グラー博士
+> 「よさんか。初陣のお前ひとりで
+>  何ができるというのだ」
+“Enough. What can you alone do on your first battle?”
+
+@21662 Gyugaki · 牛餓鬼
+> 「初陣だからこそ、
+>  おめおめと引き返せません
+“Precisely because it's my first battle, I cannot simply turn back.
+---
+>  グラー博士、わがままを
+>  お許しください」
+Dr. Gura, please forgive my selfishness.”
+
+@21663 Dr. Gura · グラー博士
+> 「……勝手にせい!
+>  ただしどうなっても知らんぞ」
+“...Do as you please! But don't blame me for whatever happens.”
+
+@21664 Ryoma · リョウ
+> 「ん? 無鉄砲な奴がいるぜ」
+“Hm? There's a reckless one out there.”
+
+@21665 Hayato · ハヤト
+> 「なまいきに1機だけでくるつもりだ」
+“He's impertinent enough to come at us alone.”
+
+@21666 Ryoma · リョウ
+> 「体当たりでもされたらまずい。
+>  みんな気をつけろよ」
+“If he tries to ram us, that'd be bad. Everyone, be careful.”
+
+@21667 Dr. Gura · グラー博士
+> 「これで我らの役目は終わりじゃ
+>  せっかく増やした鬼兵士を
+“With this, our role is finished. There's no point wasting the
+---
+>  ムダにすることもない。撤退するぞ」
+demon soldiers we went to the trouble of increasing. We're withdrawing.”
+
+@21668 Ryoma · リョウ
+> 「チッ、百鬼は逃げやがったか」
+“Tch, the Hundred Demons ran away.”
+
+@21669 Gyugaki · 牛餓鬼
+> 「くそぉっ、俺の父さんの牛剣鬼は
+>  百鬼の英雄といわれてるんだ
+“Damn it, my father Gyukenki is called a hero of the Hundred Demons.
+---
+>  俺だってやってやる! このまま
+>  おめおめと、引き返せるものか!」
+I'll do it too! I can't just turn back like this!”
+
+@21670 Gyugaki · 牛餓鬼
+> 「うわあぁぁぁぁぁーっ、父さぁぁぁん!!」
+“Uwaaaaaaah, Faaatheeeer!!”
+
+@21671 Sara · 沙羅
+> 「シャピロ、あんたがいるのは
+>  わかってるんだよ。シャピロ!」
+“Shapiro, I know you're there. Shapiro!”
+
+@21672 Shapiro · シャピロ
+> 「久しぶりだな、沙羅。私が
+>  教えたことはよく覚えていたようだな」
+“It's been a while, Sara. Seems you remembered well what I taught you.”
+
+@21673 Shinobu · 忍
+> 「マジかよ、ホントに
+>  シャピロの野郎がいやがったぜ」
+“No way, that bastard Shapiro really is here.”
+
+@21674 Sara · 沙羅
+> 「シャピロ、あんたいったい
+>  どういうつもりなのさ!?」
+“Shapiro, just what do you think you're doing?!”
+
+@21675 Shapiro · シャピロ
+> 「沙羅、私の考えはお前が
+>  一番よく知っていたはずだがな
+“Sara, you of all people should have known my thinking best.
+---
+>  私についてくるのではなかったのか?
+>  沙羅
+Weren't you going to come with me, Sara?
+---
+>  今ならば、まだ
+>  考え直してもいいのだぞ」
+Even now, you can still change your mind.”
+
+@21676 Sara · 沙羅
+> 「裏切り者の口から
+>  聞きたい言葉じゃないね」
+“Those aren't words I want to hear from a traitor.”
+
+@21677 Shapiro · シャピロ
+> 「フ……お前もすっかりスケールの小さな
+>  地球人になりさがったな」
+“Heh... You've quite fallen to being a small-minded Earthling too.”
+
+@21678 Shinobu · 忍
+> 「シャピロッ! てめぇ今度こそ、
+>  ぶっつぶしてやる!!」
+“Shapiro! This time I'm gonna smash you flat for sure!!”
+
+@21679 Shapiro · シャピロ
+> 「愚かな……しょせんは力だけの男か。
+>  私の理想は、はるかなところにある
+“Foolish... In the end, just a man of brute force. My ideals lie far beyond.
+---
+>  お前たちを相手に
+>  時間をつぶしているヒマはない」
+I have no time to waste on the likes of you.”
+
+@21680 Ryo · 亮
+> 「あんたはもう少しマシな男だと
+>  思っていたんだがな」
+“I thought you were a slightly better man than this.”
+
+@21681 Sara · 沙羅
+> 「見果てぬ夢をいだいて死ぬつもり?
+>  シャピロ!?」
+“Do you intend to die clutching an unfulfilled dream? Shapiro?!”
+
+@21682 Shapiro · シャピロ
+> 「それはお前たちの方だろう?
+>  獣戦機隊の諸君
+“That would be you lot, wouldn't it? Gentlemen of the Cyber Beast Force.
+---
+>  別れの杯を受けてくれ」
+Accept this cup of farewell.”
+
+@21683 Sara · 沙羅
+> 「シャピロ!!」
+“Shapiro!!”
+
+@21684 Kurtz · カーツ（按段落 3DD3）
+> 「見つけたぞ、{HeroNick}!!」
+“Found you, {HeroNick}!!”
+
+@21685 Brad · ブラッド（按段落 3DD3）
+> 「なに!? {PartnerNick}か!!」
+“What?! {PartnerNick}!!”
+
+@21686 Kurtz · カーツ（按段落 3DD3）
+> 「いくぞぉ!!」
+“Here I come!!”
+
+@21687 Kurtz · カーツ（按段落 3DD3）
+> 「チッ、{HeroNick}め、出ていないと
+>  いうのか!?
+“Tch, {HeroNick} isn't out here?!
+---
+>  ならば、こんな奴らに用はない」
+Then I've no business with the likes of these.”
+
+@21688 Brad · ブラッド（按段落 3DD3）
+> 「あれは……ヴァイローズ!?
+>  {PartnerNick}か!!
+“That's... Virose?! {PartnerNick}!!
+---
+>  待て、{PartnerNick}!!」
+Wait, {PartnerNick}!!”
+
+@21689 Brad · ブラッド（按段落 3DD3）
+> 「くっ……」
+“Ngh...”
+
+@21690 Jun · ジュン
+> 「鉄也、見つけたよ。アルビオンだ」
+“Tetsuya, I found it. It's the Albion.”
+
+@21691 Tetsuya · 鉄也
+> 「いわれなくてもわかってる。
+>  聞こえるか、アルビオン
+“You don't have to tell me, I know. Can you hear me, Albion?
+---
+>  こちらグレートマジンガー、剣鉄也だ
+>  万丈の指示で手伝いに来た」
+This is Great Mazinger, Tetsuya Tsurugi. I've come to help on Banjo's orders.”
+
+@21692 Bright · ブライト
+> 「グレートマジンガー? 博士?」
+“Great Mazinger? Doctor?”
+
+@21693 Prof. Yumi · 弓教授
+> 「うむ、カラバで開発していた
+>  マジンガーZの改良機だ
+“Indeed, it's the improved model of Mazinger Z developed by Karaba.
+---
+>  無事に完成していたようだね」
+It seems it was completed safely.”
+
+@21694 Bright · ブライト
+> 「了解だ、剣鉄也。よろしく頼む」
+“Understood, Tetsuya Tsurugi. We're counting on you.”
+
+@21695 Tetsuya · 鉄也
+> 「まかせな!」
+“Leave it to me!”
+
+@21696 Tod · トッド
+> 「ショウか。再会を祝して
+>  乾杯でもするかい?」
+“Show, is that you? Shall we toast to our reunion?”
+
+@21697 Show · ショウ
+> 「トッド! なぜそのオーラ力をドレイクや
+>  帝国のために使う!?」
+“Tod! Why do you use that aura power for Drake and the Empire?!”
+
+@21698 Tod · トッド
+> 「そうさせたのは貴様だよ。
+>  貴様が敵にならなきゃ
+“You're the one who made me do it. If you hadn't become my enemy,
+---
+>  こんなことはやらずにすんだ」
+none of this would have happened.”
+
+@21699 Show · ショウ
+> 「そんな理屈!」
+“That's nonsense!”
+
+@21700 Tod · トッド
+> 「理屈で何がいけない? お前の
+>  ために、俺は地獄を見たんだよ!」
+“What's wrong with reason? Because of you, I've seen hell!”
+
+@21701 Show · ショウ
+> 「バイストンウェルの戦いが地上にまで
+>  あがった意味は、考えないのか!?」
+“Have you never thought about what it means that the war in Byston Well has risen to the surface?!”
+
+@21702 Tod · トッド
+> 「おふくろに心配かけるだけ
+>  無益だったってことさ
+“It just means worrying my mother was pointless.
+---
+>  バイストンウェルで終わらせるだけで
+>  よかったんだ」
+We should have just ended it in Byston Well.”
+
+@21703 Show · ショウ
+> 「トッド!!」
+“Tod!!”
+
+@21704 Tod · トッド
+> 「いいかげんに黙んな!」
+“Shut up already!”
+
+@21705 Drake · ドレイク
+> 「このウィル・ウィプス、
+>  この程度で落ちはせん」
+“This Will-Wips won't fall from a mere scratch like this.”
+
+@21706 Shapiro · シャピロ
+> 「閣下、ここはいったん退くのが
+>  よろしいかと」
+“Your Excellency, I believe it would be wise to withdraw for now.”
+
+@21707 Drake · ドレイク
+> 「お前らしくもないな、シャピロ?」
+“That's not like you, Shapiro.”
+
+@21708 Shapiro · シャピロ
+> 「我々の当初の目的は連中と
+>  戦う前に達成されております
+“Our original objective was achieved before fighting them.
+---
+>  しょせん、この戦いはついでのようなもの
+>  今後のこともありますゆえ」
+After all, this battle was merely a side matter, and there is the future to consider.”
+
+@21709 Drake · ドレイク
+> 「……そうだな
+>  ウィル・ウィプス、後退せよ」
+“...Yes, you're right. Will-Wips, retreat.”
+
+@21710 Koji · 甲児
+> 「まちやがれ、こんちきしょう!!」
+“Wait, you bastards!!”
+
+@21711 Bright · ブライト
+> 「深追いはやめろ
+>  我々も急いでここを離れる」
+“Don't pursue too far. We'll hurry and leave this place as well.”
+
+@21712 Shapiro · シャピロ
+> 「閣下、ここはいったん退くのが
+>  よろしいかと」
+“Your Excellency, I believe it would be wise to withdraw for now.”
+
+@21713 Drake · ドレイク
+> 「お前らしくもないな、シャピロ?」
+“That's not like you, Shapiro.”
+
+@21714 Shapiro · シャピロ
+> 「我々の当初の目的は連中と
+>  戦う前に達成されております
+“Our original objective was achieved before fighting them.
+---
+>  しょせん、この戦いはついでのようなもの
+>  今後のこともありますゆえ」
+After all, this battle was merely a side matter, and there is the future to consider.”
+
+@21715 Drake · ドレイク
+> 「……そうだな
+>  ウィル・ウィプス、後退せよ」
+“...Yes, you're right. Will-Wips, retreat.”
+
+@21716 Koji · 甲児
+> 「まちやがれ、こんちきしょう!!」
+“Wait, you bastards!!”
+
+@21717 Bright · ブライト
+> 「深追いはやめろ
+>  我々も急いでここを離れる」
+“Don't pursue too far. We'll hurry and leave this place as well.”
+
+@21718 Show · ショウ
+> 「トッドォッ!!」
+“Todooo!!”
+
+@21719 Tod · トッド
+> 「ショウ、俺が貴様を落としてやる!」
+“Show, I'll be the one to shoot you down!”
+
+@21720 Show · ショウ
+> 「ドレイクめ! 地上でまで戦いをやめ
+>  ないのか!」
+“Curse you, Drake! Won't you stop fighting even on the surface?!”
+
+@21721 Drake · ドレイク
+> 「ふん、賢しいな、ショウ・ザマ」
+“Hmph, aren't you the clever one, Show Zama.”
+
+@21722 Jun · ジュン
+> 「鉄也、見つけたよ。アルビオンだ」
+“Tetsuya, I found it. It's the Albion.”
+
+@21723 Tetsuya · 鉄也
+> 「いわれなくてもわかってる。
+>  聞こえるか、アルビオン
+“I know without you telling me. Can you hear me, Albion?
+---
+>  こちらグレートマジンガー、剣鉄也だ
+>  万丈の指示で手伝いに来た」
+This is Great Mazinger, Tetsuya Tsurugi. Banjo told me to come help.”
+
+@21724 Ginrei · 銀鈴
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、グレートマジンガーの
+>  剣鉄也という方から、通信が
+“Captain Bright, we're receiving a communication from a man named Tetsuya Tsurugi of Great Mazinger.
+---
+>  入っています」
+”
+
+@21725 Bright · ブライト
+> 「グレートマジンガー? 博士?」
+“Great Mazinger? The Doctor?”
+
+@21726 Prof. Yumi · 弓教授
+> 「ああ、カラバで開発していた
+>  マジンガーZの改良機だ
+“Yes, it's the improved model of Mazinger Z that Karaba was developing.
+---
+>  無事に完成していたようだね」
+It seems it was completed safely.”
+
+@21727 Bright · ブライト
+> 「よし、まわしてくれ」
+“All right, put him through.”
+
+@21728 Tetsuya · 鉄也
+> 「万丈に言われて来たんだが、
+>  どうやら間に合わなかったようだ」
+“Banjo told me to come, but it looks like I didn't make it in time.”
+
+@21729 Bright · ブライト
+> 「ああ、ナスカも壊滅だ。万丈の
+>  指示ということは、こちらに
+“Yeah, Nazca's been wiped out too. If Banjo sent you, does that mean
+---
+>  合流してくれるのか?」
+you're joining up with us?”
+
+@21730 Tetsuya · 鉄也
+> 「そのつもりだ。剣鉄也、炎ジュンの
+>  両名、これより加わらせてもらう
+“That's the idea. Tetsuya Tsurugi and Jun Hono, the two of us will be joining you from here on.
+---
+>  着艦の許可を」
+Requesting permission to land.”
+
+@21731 Bright · ブライト
+> 「いいだろう、許可する。ベルトーチカ、
+>  誘導灯をつけろ」
+“Very well, permission granted. Beltorchika, turn on the landing lights.”
+
+@21732 Tetsuya · 鉄也
+> 「剣鉄也だ。よろしく頼む」
+“I'm Tetsuya Tsurugi. Pleased to meet you.”
+
+@21733 Sayaka · さやか
+> 「これがグレートマジンガーね。マジンガーZ
+>  よりもさらに戦闘的な感じがするわ」
+“So this is Great Mazinger. It feels even more combat-oriented than Mazinger Z.”
+
+@21734 Koji · 甲児
+> 「へん、見た目で強さがわかるもんかよ」
+“Hmph, you can't tell how strong something is just by looking at it.”
+
+@21735 Tetsuya · 鉄也
+> 「おっと、これはまたごあいさつだな。
+>  グレートマジンガーの力を知りたければ
+“Oh, that's quite the greeting. If you want to know the power of Great Mazinger,
+---
+>  いつだって相手になってやるぞ。
+>  マジンガーZとの力の違いを
+I'll take you on anytime. I'll let you taste the difference in power
+---
+>  味あわせてやるぜ」
+between it and Mazinger Z.”
+
+@21736 Koji · 甲児
+> 「なんだとぉ!? いいやがったな!」
+“What did you say?! You've got some nerve!”
+
+@21737 Tetsuya · 鉄也
+> 「なんだ、やる気か?」
+“What, you want to go?”
+
+@21738 Jun · ジュン
+> 「鉄也、いいかげんにしなさいよ」
+“Tetsuya, that's enough.”
+
+@21739 Boss · ボス
+> 「おぉっ!? いい女……」
+“Whoa?! What a woman...”
+
+@21740 Tetsuya · 鉄也
+> 「先にケンカをうってきたのは、
+>  こいつの方だぜ」
+“He's the one who picked the fight first.”
+
+@21741 Jun · ジュン
+> 「あたしたちは合流してきたばっかりなの
+>  よ? 少しはおとなしくしないと、後で
+“We just joined up, you know? If you don't settle down a little, don't blame me
+---
+>  面倒なことになってもしらないわよ」
+if things get troublesome later.”
+
+@21742 Tetsuya · 鉄也
+> 「ちっ、わかったよ」
+“Tch, fine.”
+
+@21743 Jun · ジュン
+> 「炎ジュンよ。よろしくね」
+“I'm Jun Hono. Nice to meet you.”
+
+@21744 Boss · ボス
+# 审校：原文“よろしくしちゃう”的对象是刚自我介绍的纯，不是甲儿；初稿把“you”指向了甲儿，改为指向她。
+> 「おぉぉ、いくらでもよろしくしちゃうだわさ
+>  なぁ兜」
+“Ohhh, I'd be more than happy to get to know her, Koji!”
+
+@21745 Koji · 甲児
+> 「同感同感」
+“Couldn't agree more.”
+
+@21746 Tetsuya · 鉄也
+> 「けっ、調子のいい野郎だ」
+“Hmph, what a smooth-talking guy.”
+
+@21747 Boss · ボス
+# 审校：原文是反问语气“じゃねぇか”，初稿陈述句语气偏弱，改为反问更贴切。
+> (兜よぉ、さやかより美人じゃねぇか)
+(Koji, isn't she prettier than Sayaka?)
+
+@21748 Koji · 甲児
+# 审校：原文“意見があう”指两人意见一致，初稿“You're agreeing with me”只说了Boss单方面同意，改为“We're agreeing”更准确。
+> (なんだよボス、今日はやけに意見が
+>  あうな)
+(What's up, Boss? We're agreeing an awful lot today.)
+
+@21749 Sayaka · さやか
+> 「ちょっと、あなたたち。しっかり
+>  聞こえてるんですけど」
+“Hey, you two. We can hear you just fine, you know.”
+
+@21750 Boss · ボス
+> 「あっ、さやか……いや、その、これには
+>  深いわけが…………」
+“Ah, Sayaka... no, um, there's a deep reason for this...”
+
+@21751 Sayaka · さやか
+> 「うるさい!」
+“Shut up!”
+
+@21752 Koji · 甲児
+> 「うわっ、ちょっと待った、さやかさん!」
+“Whoa, hold on a second, Sayaka!”
+
+@21753 Sayaka · さやか
+> 「フン、失礼しちゃうわ!」
+“Hmph, how rude!”
+
+@21754 Bright · ブライト
+> 「剣鉄也に炎ジュン……戦闘
+>  訓練を受けているようですね」
+“Tetsuya Tsurugi and Jun Hono... it seems they've had combat training.”
+
+@21755 Prof. Yumi · 弓教授
+# 审校：“貴重な戦力”译为“valuable fighting strength”略显生硬，改为“valuable assets”更自然。
+> 「そう聞いている。そのせいか多少
+>  人づき合いが下手なところも
+“That's what I hear. Perhaps because of that, they seem a little poor at dealing with people,
+---
+>  あるようだが、彼らは我々にとって
+>  貴重な戦力になってくれるだろう」
+but they should prove to be valuable assets for us.”
+
+@21756 Bright · ブライト
+> 「そう期待したいものです」
+“I certainly hope so.”
+
+@21757 Show · ショウ
+> 「オーラバトラーが落ちたんですって?」
+“An Aura Battler went down, you said?”
+
+@21758 Bright · ブライト
+> 「ああ、あれだ。他の機体に
+>  攻撃を受けていたんだが
+“Yeah, that one. It was under attack from another unit,
+---
+>  我々を見て撤収したようだ。
+>  見てくれ」
+but it seems it withdrew when it saw us. Take a look.”
+
+@21759 Show · ショウ
+> 「あれは……ボチューンじゃないか。
+>  誰だ、乗っているのは」
+“That's... a Botune, isn't it? Who's piloting it?”
+
+@21760 Bright · ブライト
+> 「味方なのか?」
+“Is it on our side?”
+
+@21761 Show · ショウ
+> 「そのはずです。お願いします、
+>  収容してください」
+“It should be. Please, bring it aboard.”
+
+@21762 Chum · チャム
+> 「マーベルーッッ!
+>  無事でよかったぁ!!」
+“Marvel! Thank goodness you're safe!!”
+
+@21763 Marvel · マーベル
+> 「チャム!? ショウ!?
+>  よく……無事で……」
+“Chum?! Show?! Thank goodness... you're safe...”
+
+@21764 Show · ショウ
+> 「マーベルこそ。大丈夫なのか?」
+“Same to you, Marvel. Are you all right?”
+
+@21765 Marvel · マーベル
+# 审校：原文“助かったわ”是被动/结果含义“得救了”，初稿“you saved me”把主语变成对方，改为“I was saved”更忠实。
+> 「ええ……でも、助かったわ」
+“Yes... but I was saved.”
+
+@21766 Astonaige · アストナージ
+> 「……誰なんだ?」
+“...Who is she?”
+
+@21767 Rain · レイン
+> 「ショウの仲間ですって」
+“She says she's a friend of Show's.”
+
+@21768 Roux · ルー
+> 「バイストンウェルとかの?」
+“From Byston Well or somewhere like that?”
+
+@21769 Show · ショウ
+> 「マーベルも地上人だよ。
+>  北米出身だ
+“Marvel's a surface-dweller too. She's from North America.
+---
+>  でも……どうしてこんなところに?」
+But... what are you doing here?”
+
+@21770 Marvel · マーベル
+> 「ショウ、エレ様とシーラ様も地上に
+>  出ているの。今はまだ
+“Show, Lady Elle and Lady Ciela are up on the surface too. We're still
+---
+>  大丈夫だけど、このまま何度も
+>  攻撃を受けたらやられてしまうわ」
+all right for now, but if we keep getting attacked like this, we'll be done for.”
+
+@21771 Show · ショウ
+> 「場所は?
+>  今どこにいるかわかるのか!?」
+“Where? Do you know where they are right now?!”
+
+@21772 Marvel · マーベル
+> 「ええ。私たちは助けを求めに出たの
+>  だけど、みんなやられてしまって……」
+“Yes. We came out to look for help, but everyone else was shot down...”
+
+@21773 Show · ショウ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「わかった、ブライト艦長たちに
+>  相談してみるよ。マーベルは
+“All right, I'll talk to Captain Bright and the others. Marvel, you should
+---
+>  少し休んだほうがいい。チャム、
+>  マーベルを医務室に案内して」
+get some rest. Chum, take Marvel to the infirmary.”
+
+@21774 Chum · チャム
+> 「うん、マーベル、こっちよ」
+“Okay. Marvel, this way.”
+
+@21775 Sally · サリィ
+> 「あ、ちょっとまって。私も行くわ」
+“Ah, wait a moment. I'll come too.”
+
+@21776 Quattro · クワトロ
+> 「君の話からすると、その人たちは
+>  我々に協力してくれそうだな?」
+“From what you've told us, those people sound like they'd be willing to cooperate with us?”
+
+@21777 Show · ショウ
+> 「そう思います」
+“I believe so.”
+
+@21778 Amuro · アムロ
+> 「しかしこちらもあまり
+>  余裕のある状態じゃない
+“But we're not exactly in a position to spare much ourselves.
+---
+>  両方と接触するのは
+>  無理じゃないか?」
+Isn't it impossible to make contact with both groups?”
+
+@21779 Quattro · クワトロ
+> 「ならば万丈くんたちに
+>  頼んでみるという手もある」
+“Then there's also the option of asking Banjo and the others.”
+
+@21780 Bright · ブライト
+> 「そうだな……よし、それでいこう」
+“True... All right, let's do that.”
+
+@21781 Show · ショウ
+> 「ありがとうございます」
+“Thank you.”
+
+@21782 Quattro · クワトロ
+> 「いや、嫌ないい方かもしれんが、
+>  戦力になるのならば我々にとっても
+“No, it may sound cold, but if they become fighting strength, we stand to gain
+---
+>  得るものが大きい。必然があって
+>  そうするのだ、気にすることはない」
+a great deal as well. We're doing this out of necessity, so don't worry about it.”
+
+@21783 Show · ショウ
+> 「はい」
+“Understood.”
+
+@21784 Gyukenki · 牛剣鬼
+> 「なんだと!? グラー博士、
+>  それは本当なのか!?」
+“What?! Dr. Gura, is that true?!”
+
+@21785 Dr. Gura · グラー博士
+> 「本当だ。お前の息子は
+>  勇敢に戦ったが
+“It's true. Your son fought bravely,
+---
+>  レジスタンスどもになぶり殺しに
+>  されてしまった。残念だ」
+but the Resistance scum toyed with him and killed him. A shame.”
+
+@21786 Gyukenki · 牛剣鬼
+# 审校：原文“仇をうってやる”的对象是儿子，初稿“avenge you”变成对儿子直接喊话，改为“avenge him”更符合叙述语气。
+> 「おおぉぉ、なんということだ。年老いて
+>  やっとさずかった、ひとり息子を……
+“Ohhh, how could this be. My only son, finally blessed to me in my old age...
+---
+>  許さんぞきゃつらめ、地の果てまで
+>  追いかけて必ず仇をうってやる!
+I won't forgive them! I'll chase them to the ends of the earth and avenge him for certain!
+---
+>  まっていろよ!!」
+Just you wait!!”
+
+@21787 Emperor Burai · ブライ大帝
+> 「よくぞ申した、牛剣鬼。
+>  その決意にわしは感動した
+“Well spoken, Gyukenki. Your resolve has moved me.
+---
+>  お前の復讐のために
+>  兵を出してやろう」
+I shall send troops for your revenge.”
+
+@21788 Gyukenki · 牛剣鬼
+> 「ありがたきお言葉。かならずや
+>  きゃつらを討ち果たしてみせましょう」
+“Your words are too kind. I swear I will strike them down without fail.”
+
+@21789 Emperor Burai · ブライ大帝
+> 「うむ、期待しておるぞ」
+“Good. I look forward to it.”
+
+@21790 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}……いったい、
+>  いつまで続けるつもりなんだ……
+“{PartnerNick}... just how long do you intend to keep this up...
+---
+>  お前は……」
+You...”

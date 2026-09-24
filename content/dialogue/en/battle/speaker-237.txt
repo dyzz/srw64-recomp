@@ -1,0 +1,113 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9178 Roberto · ロベルト
+> 「なんだってんだ」
+“What the hell.”
+
+@9179 Roberto · ロベルト
+> 「こさせるか!」
+“Like hell I'll let you!”
+
+@9180 Roberto · ロベルト
+> 「こなくそぉ!」
+“Damn it all!”
+
+@9181 Roberto · ロベルト
+> 「いくぞ!」
+“Here I go!”
+
+@9182 Roberto · ロベルト
+> 「当てる!」
+“I'll hit!”
+
+@9183 Roberto · ロベルト
+> 「落ちろ」
+“Go down.”
+
+@9184 Roberto · ロベルト
+> 「この程度の敵に!」
+“Against an enemy like this!”
+
+@9185 Roberto · ロベルト
+> 「うわぁぁーーっ!!」
+“Uwaaaaaah!!”
+
+@9186 Roberto · ロベルト
+> 「な、なんてパワーなんだ!?」
+“W-what power!”
+
+@9187 Roberto · ロベルト
+> 「くっやられるのか!?」
+“Ngh, am I going down?!”
+
+@9188 Roberto · ロベルト
+> 「こんな所でっ!」
+“Not here!”
+
+@9189 Roberto · ロベルト
+> 「ぐっ……まだだ! 落ちてたまるか!」
+“Guh... Not yet! Like hell I'll go down!”
+
+@9190 Roberto · ロベルト
+> 「くっ、その程度で勝てると思うな!」
+“Ngh, don't think you can win with that!”
+
+@9191 Roberto · ロベルト
+> 「なにぃ!」
+“What?!”
+
+@9192 Roberto · ロベルト
+> 「うっ、当たったのか!?」
+“Ugh, did it hit?!”
+
+@9193 Roberto · ロベルト
+> 「直撃!? くそっ!!」
+“A direct hit?! Damn!!”
+
+@9194 Roberto · ロベルト
+> 「な、なんだ!?」
+“W-what?!”
+
+@9195 Roberto · ロベルト
+> 「きいてないってんだよ」
+“I told you it won't work.”
+
+@9196 Roberto · ロベルト
+> 「この程度で!」
+“With this much!”
+
+@9197 Roberto · ロベルト
+> 「そんな攻撃はぁ!」
+“An attack like that!”
+
+@9198 Roberto · ロベルト
+> 「当たらないってんだ」
+“I said it won't hit.”
+
+@9199 Roberto · ロベルト
+> 「当たるもんかよ!」
+“Like it'd ever hit!”
+
+@9200 Roberto · ロベルト
+> 「パターンは読めてんだよ!」
+“I've read your pattern!”
+
+@9201 Roberto · ロベルト
+> 「やられてたまるか!」
+“Like hell I'll be beaten!”
+
+@9202 Roberto · ロベルト
+> 「効かないんだよ!」
+“It won't work!”
+
+@9203 Roberto · ロベルト
+> 「ビーム程度で!」
+“A mere Beam!”
+
+@9204 Roberto · ロベルト
+> 「ちっ弾切れか!?」
+“Tch, out of ammo?!”
+
+@9205 Roberto · ロベルト
+> 「届かないのかよ」
+“Can't reach, huh.”

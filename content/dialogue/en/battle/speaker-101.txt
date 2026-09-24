@@ -1,0 +1,200 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6524 Zechs · ゼクス
+> 「ギリギリだが、叩ける!」
+“It's close, but I can hit it!”
+
+@6525 Zechs · ゼクス
+> 「あと何機だ!?」
+“How many more?!”
+
+@6526 Zechs · ゼクス
+> 「そこだっ!!」
+“There!”
+
+@6527 Zechs · ゼクス
+> 「……私は軍人なのだよ……」
+“...I am a soldier, after all...”
+
+@6528 Zechs · ゼクス
+> 「とどめだっ!!」
+“The finishing blow!”
+
+@6529 Zechs · ゼクス
+> 「直撃させる!」
+“I'll land a direct hit!”
+
+@6530 Zechs · ゼクス
+> 「落ちるがいい!」
+“Fall!”
+
+@6531 Zechs · ゼクス
+> 「あまいぞ、そこだっ!」
+“Too naive. There!”
+
+@6532 Zechs · ゼクス
+> 「お前は所詮そこまでだっ!!」
+“You're only good for that much!”
+
+@6533 Zechs · ゼクス
+> 「お前は戦いに何を
+>  見い出すのだ!?」
+“What do you hope to find in battle?!”
+
+@6534 Zechs · ゼクス
+> 「悪いが、死んでもらおう!」
+“Sorry, but you're going to die!”
+
+@6535 Zechs · ゼクス
+> 「ふ……面白い!」
+“Hmph... interesting!”
+
+@6536 Zechs · ゼクス
+# 审校：补上不定冠词 a，使英文通顺
+> 「相手にとって不足はない!」
+“You're a more than worthy opponent!”
+
+@6537 Zechs · ゼクス
+> 「雑念は捨てている!」
+“I've cast aside all distractions!”
+
+@6538 Zechs · ゼクス
+> 「私なりになんとかしよう」
+“I'll manage somehow, in my own way.”
+
+@6539 Zechs · ゼクス
+> 「私の運命もここまでか……?」
+“Is this where my fate ends...?”
+
+@6540 Zechs · ゼクス
+> 「ぐぅぅっ、ここまでかっ」
+“Ngh... this is it, then.”
+
+@6541 Zechs · ゼクス
+> 「これまでか……」
+“This is the end...”
+
+@6542 Zechs · ゼクス
+# 审校：拟声词改为更自然的英文拼写
+> 「ぬぅおあぁぁぁっ!」
+“Nghooaaah!”
+
+@6543 Zechs · ゼクス
+> 「このままでは、こちらも戦えんか!?」
+“At this rate, I can't fight either?!”
+
+@6544 Zechs · ゼクス
+> 「くっ、これ以上はもう無理だな」
+“Tch, I can't take any more of this.”
+
+@6545 Zechs · ゼクス
+> 「くっ、油断があったということか!?」
+“Tch, so I let my guard down?!”
+
+@6546 Zechs · ゼクス
+> 「うっ……こうも直撃をくらうとは!」
+“Ugh... to take a direct hit like that!”
+
+@6547 Zechs · ゼクス
+> 「死ぬな……このままでは……」
+“I can't die... not like this...”
+
+@6548 Zechs · ゼクス
+> 「やるなっ!!」
+“Not bad!”
+
+@6549 Zechs · ゼクス
+> 「ぐぅっっ……!」
+“Ngh...!”
+
+@6550 Zechs · ゼクス
+> 「くっ……面白い!」
+“Tch... interesting!”
+
+@6551 Zechs · ゼクス
+> 「そうこなくてはな!」
+“Now that's more like it!”
+
+@6552 Zechs · ゼクス
+> 「やられはせんよ!」
+“I won't be beaten!”
+
+@6553 Zechs · ゼクス
+> 「なにっ!?」
+“What?!”
+
+@6554 Zechs · ゼクス
+> 「よい攻撃だ! しかし私はまだ
+>  死なん!」
+“Good attack! But I won't die yet!”
+
+@6555 Zechs · ゼクス
+> 「フフ、私に挑んでくる相手を、
+>  無下にはできんな」
+“Heh, I can't dismiss anyone who challenges me.”
+
+@6556 Zechs · ゼクス
+> 「その程度では沈まんよ!」
+“That won't sink me!”
+
+@6557 Zechs · ゼクス
+> 「私に戦いを挑むとは……」
+“To challenge me in battle...”
+
+@6558 Zechs · ゼクス
+> 「この戦いは私の勝ちだな。
+>  なんの恐怖も感じない」
+“This battle is mine. I feel no fear at all.”
+
+@6559 Zechs · ゼクス
+> 「私の命の見積もりが甘かった
+>  ようだな」
+“Seems I underestimated the value of my life.”
+
+@6560 Zechs · ゼクス
+> 「レーダー反応ロスト!? いや下か!」
+“Radar contact lost?! No, below!”
+
+@6561 Zechs · ゼクス
+> 「無能な……」
+“Incompetent...”
+
+@6562 Zechs · ゼクス
+> 「あまい!」
+“Too soft!”
+
+@6563 Zechs · ゼクス
+> 「貴様には無理だ!!」
+“You're no match for me!!”
+
+@6564 Zechs · ゼクス
+> 「ついているな、私は」
+“Luck is on my side.”
+
+@6565 Zechs · ゼクス
+> 「あっけない。これでよいのか?」
+“Too easy. Is this all you've got?”
+
+@6566 Zechs · ゼクス
+> 「やらせはせんっ!!」
+“I won't let you!!”
+
+@6567 Zechs · ゼクス
+> 「させるかぁぁぁっ!!」
+“Like I'd let you!!”
+
+@6568 Zechs · ゼクス
+> 「くっ……このような時に弾切れか…?」
+“Ngh... Out of ammo at a time like this...?”
+
+@6569 Zechs · ゼクス
+> 「エネルギーが切れたか……?」
+“Energy depleted...?”
+
+@6570 Zechs · ゼクス
+> 「レーダー反応、ロスト!?」
+“Radar contact lost?!”
+
+@6571 Zechs · ゼクス
+> 「ロストしただと!? ばかな!」
+“Lost?! Impossible!”

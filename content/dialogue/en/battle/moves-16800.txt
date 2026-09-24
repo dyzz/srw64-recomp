@@ -1,0 +1,411 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16800 Chum · チャム
+> 「あたってぇーっ!」
+“Hiiiit!”
+
+@16801 Marvel · マーベル
+> 「これでとどめ!」
+“This is the finisher!”
+
+@16802 Chum · チャム
+> 「いっけえぇぇーっ!」
+“Goooooo!”
+
+@16803 Chum · チャム
+> 「マーベル、いまよ!」
+“Marvel, now!”
+
+@16804 Marvel · マーベル
+> 「わかってるわ!」
+“I know!”
+
+@16805 Show · ショウ
+> 「マーベル! オーラ力を俺に
+>  集中してくれ!」
+“Marvel! Focus your aura power on me!”
+
+@16806 Marvel · マーベル
+> 「ええ! 私のオーラ力はいつもショウと
+>  一緒よ!」
+“Yes! My aura power is always with you, Show!”
+
+@16807 Chum · チャム
+> 「ショウ! マーベル!
+>  やっちゃえぇぇーっ!!」
+“Show! Marvel! Go get 'em!!”
+
+@16808 Show · ショウ
+> 「マーベル! オーラ力を俺に
+>  集中してくれ!」
+“Marvel! Focus your aura power into me!”
+
+@16809 Marvel · マーベル
+> 「ええ! 私のオーラ力はいつもショウと
+>  一緒よ!」
+“Yes! My aura power is always with you, Show!”
+
+@16810 Show · ショウ
+> 「よし、いくぞ!」
+“All right, here we go!”
+
+@16811 Chum · チャム
+> 「マーベルッ!?」
+“Marvel?!”
+
+@16812 Marvel · マーベル
+> 「くっ……も、もたない!?」
+“Ngh... I-I can't hold it?!”
+
+@16813 Marvel · マーベル
+> 「あうぅぅっ!」
+“Augh!”
+
+@16814 Chum · チャム
+> 「マーベル、しっかりして!」
+“Marvel, hang in there!”
+
+@16815 Marvel · マーベル
+> 「くっ、この程度のことで!」
+“Ngh, not from something like this!”
+
+@16816 Chum · チャム
+> 「やられないんだからっ!」
+“We're not gonna lose!”
+
+@16817 Chum · チャム
+> 「マーベル、当たっちゃったよぉっ!」
+“Marvel, we got hit!”
+
+@16818 Marvel · マーベル
+> 「チャムっ! ちょっと黙ってて!」
+“Chum! Just be quiet for a second!”
+
+@16819 Chum · チャム
+# 审校：原文是チャム的惨叫，不是引语，去掉多余的双引号。
+> 「いやぁぁーっ!」
+“Eeeek!”
+
+@16820 Marvel · マーベル
+> 「チャム、邪魔しないで!」
+“Chum, don't get in the way!”
+
+@16821 Marvel · マーベル
+> 「こんな攻撃っ!」
+“An attack like this!”
+
+@16822 Chum · チャム
+> 「効かないんだからっ!」
+“It doesn't even hurt!”
+
+@16823 Marvel · マーベル
+> 「よけてみせる!」
+“I'll dodge it!”
+
+@16824 Chum · チャム
+> 「やったぁーっ!」
+“We did it!”
+
+@16825 Chum · チャム
+> 「マーベルッ、来た!」
+“Marvel, here it comes!”
+
+@16826 Marvel · マーベル
+> 「大丈夫よ!」
+“I'm fine!”
+
+@16827 Marvel · マーベル
+> 「私のオーラ力でもこの程度は!」
+“Even my aura power can handle this much!”
+
+@16828 Chum · チャム
+> 「マーベルすごーいっ!」
+“Marvel, you're amazing!”
+
+@16829 Marvel · マーベル
+> 「こんな攻撃は!」
+“An attack like this!”
+
+@16830 Chum · チャム
+> 「ムダなんだから!」
+“It's useless!”
+
+@16831 Chum · チャム
+> 「マーベル、どうしたの!?」
+“Marvel, what's wrong?!”
+
+@16832 Marvel · マーベル
+> 「くっ、弾切れみたいね」
+“Ngh, looks like I'm out of ammo.”
+
+@16833 Chum · チャム
+> 「撃たないの!?」
+“You're not gonna shoot?!”
+
+@16834 Marvel · マーベル
+> 「届かないのよ!」
+“It won't reach!”
+
+@16835 Shot · ショット
+> 「主砲、発射!!」
+“Main cannon, fire!!”
+
+@16836 Shot · ショット
+> 「全砲門、一斉発射!!」
+“All guns, fire at once!!”
+
+@16837 Drake · ドレイク
+> 「主砲、一斉発射!」
+“Main cannon, fire at once!”
+
+@16838 Drake · ドレイク
+> 「全砲門開け!一斉射撃!」
+“Open all gun ports! Fire at once!”
+
+@16839 Tod · トッド
+# 审校：原译“Let me shoot you down!”语气偏请求且不够自然，改为更符合战斗台词的“I'll take you down!”。
+> 「落とさせてもらうぜ!」
+“I'll take you down!”
+
+@16840 Chum · チャム
+> 「やっちゃえーっ!」
+“Go get 'em!”
+
+@16841 Tod · トッド
+> 「やらせるかよ!」
+“Like I'd let you!”
+
+@16842 Chum · チャム
+> 「そうよぉ!」
+“That's right!”
+
+@16843 Chum · チャム
+> 「トッド、いっけぇーっ!!」
+“Tod, gooo!!”
+
+@16844 Tod · トッド
+> 「まかせなっ!」
+“Leave it to me!”
+
+@16845 Show · ショウ
+> 「トッド! 同時にしかけるぞ!」
+“Tod! We strike at the same time!”
+
+@16846 Tod · トッド
+> 「おう、まかせな!」
+“Yeah, leave it to me!”
+
+@16847 Chum · チャム
+> 「いっけぇぇっ!
+>  ツインオーラアタックだぁっ!!」
+“Gooo! Twin Aura Attack!!”
+
+@16848 Show · ショウ
+> 「トッド! 同時にしかけるぞ!」
+“Tod! We strike at the same time!”
+
+@16849 Tod · トッド
+> 「おう、まかせな!」
+“Yeah, leave it to me!”
+
+@16850 Show · ショウ
+> 「いっけえぇぇぇぇっ!!」
+“Goooooo!!”
+
+@16851 Chum · チャム
+> 「トッドォォッ!!」
+“Todddd!!”
+
+@16852 Tod · トッド
+> 「トッド・ギネスが、この程度で
+>  落ちるかよ!」
+“You think Tod Guines would go down from this?!”
+
+@16853 Tod · トッド
+> 「なにッ!? くそっ、ヤバイぜ」
+“What?! Damn, this is bad.”
+
+@16854 Chum · チャム
+> 「トッド、がんばってよぉっ!」
+“Tod, hang in there!”
+
+@16855 Tod · トッド
+> 「くっ……なめるなっ!」
+“Ngh... don't underestimate me!”
+
+@16856 Chum · チャム
+> 「そうよっ!」
+“That's right!”
+
+@16857 Chum · チャム
+> 「トッド、よく見て!」
+“Tod, watch closely!”
+
+@16858 Tod · トッド
+> 「うるさいんだよっ!」
+“Shut up already!”
+
+@16859 Tod · トッド
+> 「そんなもんが効くかよ!」
+“Like that's gonna work on me!”
+
+@16860 Chum · チャム
+> 「ぜんぜん効いてないんだからっ!」
+“It's not working at all!”
+
+@16861 Chum · チャム
+> 「トッド、右っ!」
+“Tod, on your right!”
+
+@16862 Tod · トッド
+> 「余裕だぜ!」
+“Piece of cake!”
+
+@16863 Chum · チャム
+> 「だめっ、当たっちゃうーっ!!」
+“No, we're gonna get hit!!”
+
+@16864 Tod · トッド
+> 「そう簡単に当たるかよ!」
+“Like I'd get hit that easily!”
+
+@16865 Tod · トッド
+> 「ムダなんだよ!」
+“It's useless!”
+
+@16866 Chum · チャム
+> 「そうよ、ムダムダっ!!」
+“That's right, totally useless!!”
+
+@16867 Tod · トッド
+# 审校：原译“It doesn't even hurt!”与原文“効かねぇってんだよ!”语气不符，原文是强调“说了没用/不起作用”，改为更贴切的表达。
+> 「効かねぇってんだよ!」
+“I told you, it won't work!”
+
+@16868 Chum · チャム
+> 「効いてない!」
+“It's not working!”
+
+@16869 Tod · トッド
+> 「弾切れかよ!?」
+“Out of ammo?!”
+
+@16870 Chum · チャム
+> 「えーっっ!?」
+“Whaaat?!”
+
+@16871 Tod · トッド
+> 「届かないってのか!」
+“It can't reach?!”
+
+@16872 Chum · チャム
+> 「ずるーいっ!」
+“No fair!”
+
+@16873 Garalia · ガラリア
+> 「ここまでだな!」
+“This is the end for you!”
+
+@16874 Chum · チャム
+> 「いっけぇぇーっ!」
+“Gooo!”
+
+@16875 Chum · チャム
+> 「ガラリア、あそこ!」
+“Garalia, over there!”
+
+@16876 Garalia · ガラリア
+> 「言われるまでもない!」
+“You don't have to tell me!”
+
+@16877 Garalia · ガラリア
+> 「そこかっ!」
+“There?!”
+
+@16878 Chum · チャム
+> 「落ちちゃえーっ!」
+“Just fall already!”
+
+@16879 Show · ショウ
+> 「ガラリア! 俺にあわせてくれ!」
+“Garalia! Match my timing!”
+
+@16880 Garalia · ガラリア
+> 「わかった!」
+“Got it!”
+
+@16881 Chum · チャム
+> 「2人とも、いっけぇぇぇぇーっ!!」
+“You two, gooo!!”
+
+@16882 Show · ショウ
+> 「ガラリア! 俺にあわせてくれ!」
+“Garalia! Match my timing!”
+
+@16883 Garalia · ガラリア
+> 「わかった!」
+“Got it!”
+
+@16884 Show · ショウ
+> 「はあぁぁぁぁっ!!」
+“Haaaaaah!!”
+
+@16885 Garalia · ガラリア
+> 「ぐうぅぅーっ!」
+“Ghhhaaah!”
+
+@16886 Chum · チャム
+> 「ガラリアっ! やられちゃう!!」
+“Garalia! They're gonna get you!!”
+
+@16887 Chum · チャム
+> 「きゃあぁぁーっ!」
+“Kyaaaah!”
+
+@16888 Garalia · ガラリア
+> 「な、なんだこのパワーはっ!?」
+“Wh-what is this power?!”
+
+@16889 Garalia · ガラリア
+> 「ちっ! バストールの力をなめるなっ!!」
+“Tch! Don't underestimate the Bastole's power!!”
+
+@16890 Chum · チャム
+> 「もぅいやぁぁーっ!」
+“I've had enough!”
+
+@16891 Garalia · ガラリア
+> 「おとなしくしてなっ!」
+“Hold still!”
+
+@16892 Garalia · ガラリア
+> 「くっ! これ以上はっ!」
+“Ngh! No more than this!”
+
+@16893 Chum · チャム
+> 「やらせないよっ!」
+“I won't let you!”
+
+@16894 Garalia · ガラリア
+> 「この程度の攻撃など!」
+“An attack like this is nothing!”
+
+@16895 Chum · チャム
+> 「効かないよっ!」
+“It doesn't hurt!”
+
+@16896 Chum · チャム
+> 「なにさっ!」
+“What's your problem?!”
+
+@16897 Garalia · ガラリア
+> 「チャム、どきなよ!」
+“Chum, get out of the way!”
+
+@16898 Garalia · ガラリア
+> 「そこかっ!」
+“There?!”
+
+@16899 Chum · チャム
+> 「さっすがぁ!」
+“Just as expected!”

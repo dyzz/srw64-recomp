@@ -1,0 +1,39 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9017 Fa · ファ
+> 「落ちてっ!!」
+“Go down!!”
+
+@9018 Fa · ファ
+> 「きゃあああっ!!」
+“Kyaaaaah!!”
+
+@9019 Fa · ファ
+# 审校：与 L23 保持一致，改为 “any longer”。
+> 「ダメ、もうもたないっ!?」
+“No, I can't hold out any longer?!”
+
+@9020 Fa · ファ
+# 审校：与 L28 保持一致，改为更忠实原文。
+> 「ま……まだよ、まだいけるっ!!」
+“I-I'm not done yet, I can still go!!”
+
+@9021 Fa · ファ
+> 「大丈夫、かすっただけ!」
+“I'm okay, it just grazed me!”
+
+@9022 Fa · ファ
+> 「かわせた!」
+“I dodged it!”
+
+@9023 Fa · ファ
+> 「ムダよ、そんなビームなんて!」
+“It's useless, a beam like that!”
+
+@9024 Fa · ファ
+> 「あ……弾切れ!?」
+“Ah... out of ammo?!”
+
+@9025 Fa · ファ
+> 「ダメ、届かない!!」
+“No, it won't reach!!”

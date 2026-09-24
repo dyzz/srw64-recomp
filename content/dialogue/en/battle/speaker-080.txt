@@ -1,0 +1,113 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8662 Lila · ライラ
+> 「落ちなよ!」
+“Fall!”
+
+@8663 Lila · ライラ
+> 「もらった!」
+“Got you!”
+
+@8664 Lila · ライラ
+> 「そこっ!」
+“There!”
+
+@8665 Lila · ライラ
+> 「やらせるわけにはいかないんだよ!!」
+“I can't let you do that!!”
+
+@8666 Lila · ライラ
+> 「フフ……落とさせてもらうよ」
+“Heh... I'll shoot you down.”
+
+@8667 Lila · ライラ
+> 「そっちがうかつなのさ!」
+“You're the careless one!”
+
+@8668 Lila · ライラ
+> 「これでっ!!」
+“Take this!!”
+
+@8669 Lila · ライラ
+> 「こいつっ!」
+“Why you!”
+
+@8670 Lila · ライラ
+> 「邪魔なんだよっ!」
+“You're in my way!”
+
+@8671 Lila · ライラ
+> 「これならっ!」
+“This'll do it!”
+
+@8672 Lila · ライラ
+> 「こ、こいつ……ただ者じゃない……」
+“Th-This one... is no ordinary pilot...”
+
+@8673 Lila · ライラ
+> 「しまった!?」
+“Damn it?!”
+
+@8674 Lila · ライラ
+> 「バカな……この私が押されている!?」
+“Impossible... I'm being pushed back?!”
+
+@8675 Lila · ライラ
+> 「うおっ! ダ、ダメージを受けすぎたか…」
+“Whoa! D-Did I take too much damage...”
+
+@8676 Lila · ライラ
+> 「何っ!? なんだ、この力は……」
+“What?! What is this power...”
+
+@8677 Lila · ライラ
+> 「つうっ! なんの!!」
+“Ngh! Like that matters!!”
+
+@8678 Lila · ライラ
+> 「くっ! まだまだっ! まだやられないっ!」
+“Ngh! Not yet! I'm not going down yet!”
+
+@8679 Lila · ライラ
+> 「ちっ! 少しはやるようだね!」
+“Tch! You're not half bad!”
+
+@8680 Lila · ライラ
+> 「効かないね!」
+“That won't work on me!”
+
+@8681 Lila · ライラ
+> 「そんな攻撃で!」
+“With an attack like that!”
+
+@8682 Lila · ライラ
+> 「ふん、かわいいもんだね」
+“Hmph, how cute.”
+
+@8683 Lila · ライラ
+> 「当たらないね!」
+“You won't hit me!”
+
+@8684 Lila · ライラ
+> 「甘いっ!」
+“Too soft!”
+
+@8685 Lila · ライラ
+> 「当たるものかい!」
+“As if that would hit!”
+
+@8686 Lila · ライラ
+> 「間合いが甘いね!」
+“Your spacing is sloppy!”
+
+@8687 Lila · ライラ
+> 「そんなビームで落ちるものか!」
+“A beam like that won't shoot me down!”
+
+@8688 Lila · ライラ
+> 「しまった、弾切れか!」
+“Damn, out of ammo!”
+
+@8689 Lila · ライラ
+> 「ちっ…射程外から、そういう事かい」
+“Tch... attacking from out of range, is that it.”

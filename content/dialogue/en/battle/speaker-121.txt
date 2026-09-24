@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9892 Hayato · ハヤト
+> 「くらいな!!」
+“Take this!!”
+
+@9893 Hayato · ハヤト
+> 「俺に任せろ!」
+“Leave it to me!”
+
+@9894 Hayato · ハヤト
+> 「いくぜっ!」
+“Let's go!”
+
+@9895 Hayato · ハヤト
+> 「ちっ!! オレもヤキが
+>  まわったもんだぜ!!」
+“Tch!! I'm getting old, huh!!”
+
+@9896 Hayato · ハヤト
+> 「くっ!! ここまでか!!」
+“Ngh!! This is it for me!!”
+
+@9897 Hayato · ハヤト
+> 「なんだと!?」
+“What did you say?!”
+
+@9898 Hayato · ハヤト
+> 「ちっ!! しまった!」
+“Tch!! Damn it!”
+
+@9899 Hayato · ハヤト
+> 「しまった! このままでは……」
+“Damn! At this rate...”
+
+@9900 Hayato · ハヤト
+> 「くうっ!! 意外とやるな!」
+“Ngh!! He's better than I expected!”
+
+@9901 Hayato · ハヤト
+> 「ちいっ!! ちょいとヤバイぜ!」
+“Tch!! This is a bit bad!”
+
+@9902 Hayato · ハヤト
+> 「くっ!! ヤバイな……」
+“Ngh!! This is bad...”
+
+@9903 Hayato · ハヤト
+> 「くっ!! ダメージがでかすぎるか!?」
+“Ngh!! Is the damage too much?!”
+
+@9904 Hayato · ハヤト
+> 「うっ!! まだまだ!」
+“Ugh!! I'm not done yet!”
+
+@9905 Hayato · ハヤト
+> 「この程度で、やられるか!」
+“Like this would take me down!”
+
+@9906 Hayato · ハヤト
+> 「つっ!! なかなかやるな!」
+“Tch!! He's pretty good!”
+
+@9907 Hayato · ハヤト
+> 「むっ!! だが、まだやられちゃいないぜ!」
+“Mm!! But I'm not down yet!”
+
+@9908 Hayato · ハヤト
+> 「なんのっ! まだだ!」
+“As if! Not yet!”
+
+@9909 Hayato · ハヤト
+> 「ちっ! やるな!!」
+“Tch! Not bad!!”
+
+@9910 Hayato · ハヤト
+> 「くっ!! だが、この程度なら
+>  まだいける!!」
+“Ngh!! But I can still take this much!!”
+
+@9911 Hayato · ハヤト
+> 「ちっ! あたっちまったか!」
+“Tch! I got hit!”
+
+@9912 Hayato · ハヤト
+> 「あまいぜ!」
+“Too slow!”
+
+@9913 Hayato · ハヤト
+> 「なっちゃいないぜ!」
+“That's nothing!”
+
+@9914 Hayato · ハヤト
+> 「フ、その程度か?」
+“Hmph, is that all?”
+
+@9915 Hayato · ハヤト
+> 「ちっ! かすったか!」
+“Tch! Just a graze!”
+
+@9916 Hayato · ハヤト
+> 「この程度のダメージ!」
+“Damage like this!”
+
+@9917 Hayato · ハヤト
+> 「あまいぜ!」
+“Too slow!”
+
+@9918 Hayato · ハヤト
+> 「ゲッターのスピードを甘くみるなよ!!」
+“Don't underestimate Getter's speed!!”
+
+@9919 Hayato · ハヤト
+> 「ムダだっ!」
+“It's useless!!”
+
+@9920 Hayato · ハヤト
+> 「フッ 効かんな!」
+“Hmph, it doesn't work!”
+
+@9921 Hayato · ハヤト
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@9922 Hayato · ハヤト
+> 「くっ! 距離が遠すぎるのか!」
+“Ngh! Is the distance too far?!”
+
+@9923 Hayato · ハヤト
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far?!”

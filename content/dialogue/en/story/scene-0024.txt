@@ -1,0 +1,1380 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@21345 Ryoma · リョウ
+> 「しかし、まいったな」
+“Well, this is bad.”
+
+@21346 Sayaka · さやか
+> 「ええ……ほとんどの拠点はつぶされて
+>  しまったみたいね」
+“Yeah... looks like almost all our bases got wiped out.”
+
+@21347 Anna · アンナ
+> 「こんなに一度にやられてしまった
+>  なんて……信じられないわ」
+“To be hit this hard all at once... I can't believe it.”
+
+@21348 Roux · ルー
+> 「確かにちょっと変よね。あまりにも、
+>  いきなりすぎたし」
+“It is a little strange, sure. It was way too sudden.”
+
+@21349 Anna · アンナ
+> 「地球人が……レジスタンスの拠点
+>  を通報したのかしら……」
+“Did an Earthling... report the Resistance bases to them...?”
+
+@21350 David · デビッド
+> 「間違いない。帝国のイヌ野郎
+>  どもが、もぐりこんでやがったのさ
+“No doubt about it. Those Imperial dogs snuck in on us.
+---
+>  ロアンみたいな、な」
+Guys like Roanne.”
+
+@21351 Ark · アーク（按段落 3DD1）
+> 「しかたないことかもしれない。
+>  帝国につくか、何もしないか、
+“Maybe it can't be helped. Side with the Empire, do nothing,
+---
+>  帝国と戦うか。この3つしかないん
+>  だ。地球人のとるべき道は」
+or fight the Empire. Those are the only three choices Earthlings have.”
+
+@21352 Selain · セレイン（按段落 3DD2）
+> 「しかたないだろう。戦えない者、その
+>  気力のない者は帝国につくしか
+“It can't be helped. Those who can't fight, who don't have the will, have no way
+---
+>  生き延びるすべはない。今の地球
+>  の本当の姿がそれだ」
+to survive but to side with the Empire. That's the real face of Earth right now.”
+
+@21353 Brad · ブラッド（按段落 3DD3）
+> 「俺にはわからねぇよ。なんだって異星
+>  人どもにつくような連中がいるのか」
+“I just don't get it. Why the hell would anyone side with a bunch of aliens?”
+
+@21354 Ryoma · リョウ
+> 「生きるためには、そうするしかない者
+>  だっているのさ。認めたくはないけどな」
+“Some people have no choice if they want to live. Not that I want to admit it.”
+
+@21355 Manami · マナミ（按段落 3DD4）
+> 「みんながみんな、あたしたちみたいに戦え
+>  るわけじゃないもの。いってもしかたないわ
+“Not everyone can fight like we do. There's no point in saying it.
+---
+>  許せないのは、そういう人たちを
+>  利用する帝国だし、
+What I can't forgive is the Empire for using people like that,
+---
+>  自分たちのことしか考えない
+>  ロームフェラだわ」
+and Romefeller for only thinking about themselves.”
+
+@21356 David · デビッド
+> 「まったく、イヤな時代になっちまった
+>  もんだぜ」
+“Man, what a rotten era we've ended up in.”
+
+@21357 Duo · デュオ
+> 「よ、あんたら聞いたかい? なんでもいま
+>  北米あたりじゃ今度のレジスタンス
+“Hey, you guys hear about it? Apparently somewhere in North America right now, in protest of the latest Resistance
+---
+>  掃討作戦に反発して、
+>  “クスコの聖女隊”ってのが
+sweep operation, something called the ‘Saints of Cusco’
+---
+>  不戦運動をしてるんだってさ。
+>  よく殺されないもんだよな」
+is running a pacifist movement. Surprised they haven't been killed yet.”
+
+@21358 Anna · アンナ
+> 「すごいわ、噂は本当だったのね」
+“Amazing, so the rumors were true.”
+
+@21359 Emma · エマ
+> 「なんなの、その
+>  “クスコの聖女隊”って?」
+“What is this ‘Saints of Cusco’ thing?”
+
+@21360 Emma · エマ
+> 「なんなの、その
+>  “クスコの聖女隊”って?」
+“What is this ‘Saints of Cusco’ thing?”
+
+@21361 Ryoma · リョウ
+> 「なんだ、その“クスコの聖女隊”
+>  っていうのは?」
+“What's this ‘Saints of Cusco’ thing?”
+
+@21362 Anna · アンナ
+> 「うちひしがれた人々から、聖女と
+>  呼ばれて支持者を増やしている
+“There's a woman who's been called a holy woman by the downtrodden people, and her supporters keep growing.
+---
+>  女の人がいるの。南米のクスコから
+>  噂が広がったから
+The rumor spread from Cusco in South America, so
+---
+>  そう呼ばれているらしいわ」
+that's what she's called, apparently.”
+
+@21363 Duo · デュオ
+> 「ま、無抵抗主義者って奴だな
+>  武器も持たずにグレスコの政策を
+“Well, she's what you'd call a pacifist. Word is she's criticizing Gresco's policies without
+---
+>  批判しているって話だ。
+>  俺みたいな奴には信じられないけどな」
+even carrying a weapon. Hard for a guy like me to believe.”
+
+@21364 Anna · アンナ
+> 「だから、すごいのよ。
+>  帝国の兵士にだって
+“That's what's amazing about it. Apparently even some Imperial
+---
+>  共感する人たちが出てるらしいって」
+soldiers are starting to sympathize with her.”
+
+@21365 Eiji · エイジ
+> 「その人の名前は?」
+“What's her name?”
+
+@21366 Duo · デュオ
+> 「さあ? 確か顔写真ならデータが
+>  来てたと思ったけどね
+“Hmm? I think we got data with a photo of her face, actually.
+---
+>  ちょっと待っててくれよ…………
+>  ほい、出たぜ」
+Hold on a sec... there, got it.”
+
+@21367 Eiji · エイジ
+> 「!! ……これは……」
+“!! ...This is...”
+
+@21368 Anna · アンナ
+> 「エイジ、どうしたの!?」
+“Eiji, what's wrong?!”
+
+@21369 Ginrei · 銀鈴
+> 「艦長、レイズナーがカタパルトデッキに
+>  出ていますが?」
+“Captain, the Layzner is out on the catapult deck.”
+
+@21370 Bright · ブライト
+> 「エイジ・アスカだろう?
+>  私が許可した。行かせてやれ」
+“Eiji Asuka, right? I gave the permission. Let him go.”
+
+@21371 Amuro · アムロ
+> 「どうしたんだ?」
+“What's going on?”
+
+@21372 Bright · ブライト
+> 「例の“聖女”がな、実の姉
+>  かもしれんらしい。あのままでは戦力に
+“That ‘holy woman’ might be his real sister. As he is now, he's no use to us in a fight,
+---
+>  ならんから、確認に行くのを
+>  許可したんだ」
+so I gave him permission to go confirm it.”
+
+@21373 Shiro · シロー
+> 「…………アイナ……」
+“...Aina...”
+
+@21374 David · デビッド
+> 「お? めずらしい時計だな。ちょっと
+>  見せてくれよ」
+“Oh? That's an unusual watch. Let me see it for a sec.”
+
+@21375 Shiro · シロー
+> 「あっ、おい!」
+“Ah, hey!”
+
+@21376 David · デビッド
+> 「へぇ、おかしな形だな」
+“Huh, weird shape.”
+
+@21377 Shiro · シロー
+> 「こら、返せ!!」
+“Hey, give it back!!”
+
+@21378 David · デビッド
+> 「うわっ!?」
+“Whoa?!”
+
+@21379 David · デビッド
+> 「あ、壊れた……」
+“Ah, it broke...”
+
+@21380 Shiro · シロー
+> 「なに!?」
+“What?!”
+
+@21381 David · デビッド
+> 「あ、いや、開いただけだった。あ～、
+>  びっくりしたぜ」
+“Ah, no, it just opened. Man, you scared me.”
+
+@21382 Shiro · シロー
+> 「いいから、もう触るな!」
+“Just stop touching it!”
+
+@21383 David · デビッド
+> 「なんだよ、そんなに怒ることはない
+>  だろうに」
+“What's your problem, no need to get that mad.”
+
+@21384 Shiro · シロー
+> (ん……? 中に写真が入ってたのか
+>  男と一緒の写真!?
+(Hm...? There was a photo inside? A photo of her with a man!?
+---
+>  アイナ・サハリン……恋人がいたのか。
+>  ……いたって……おかしくないよな)
+Aina Sakhalin... so she had a lover. ...Well... that's not... strange, I guess.)
+
+@21385 Quatre · カトル
+> 「ラシード、みんな、元気そうでよかった」
+“Rasid, everyone, I'm glad you're all safe.”
+
+@21386 Rasid · ラシード
+> 「カトル様こそ、よくご無事で。皆さ
+>  んもどうぞ休んでください。戦艦の
+“It's you we're glad to see safe, Lord Quatre. Everyone, please rest.
+---
+>  補修もきっちりやっておきます。ついで
+>  に機体の整備もしておきましょう」
+We'll handle the battleship repairs properly. We'll service the mobile suits while we're at it.”
+
+@21387 Quatre · カトル
+> 「いいですよね?」
+“That's all right, isn't it?”
+
+@21388 Bright · ブライト
+> 「こちらには是非もない。
+>  よろしく頼みます」
+“We have no objection. We'll take you up on that.”
+
+@21389 Rasid · ラシード
+> 「まかせてください。あなた方の活躍は
+>  我々にとっても希望なのです
+“Leave it to us. Your efforts are a source of hope for us as well.
+---
+>  皆、協力できることを喜んで
+>  おりますよ
+Everyone here is glad to help in any way we can.
+---
+>  お前たち、さっさと取りかかれよ!」
+You men, get to work right away!”
+
+@21390 Maganac Soldier · マグアナック兵
+> 「おおーっ!!」
+“Oooh!!”
+
+@21391 Rasid · ラシード
+> 「各地のレジスタンスをほぼ掃討した
+>  ことで帝国の動きが活発になって
+“With the resistance in most regions nearly wiped out, the Empire's movements
+---
+>  きています。今回の作戦での
+>  貢献があったとして、スペシャルズは
+have grown more active. Thanks to our contributions in this operation, the Specials
+---
+>  宇宙での活動権限を得ました」
+have gained authorization to operate in space.”
+
+@21392 Simone · シモーヌ
+> 「とんでもない連中。あたしたちは
+>  連中の出世の道具ってわけね」
+“What a bunch. So we're just stepping stones for their careers.”
+
+@21393 Rasid · ラシード
+> 「それに関連して、現在アフリカの
+>  レイク・ビクトリア基地で
+“Related to that, we have information that they're currently preparing to launch
+---
+>  宇宙戦用機体の打ち上げ
+>  準備をしているとの情報もあります」
+space-combat units at the Lake Victoria base in Africa.”
+
+@21394 Quattro · クワトロ
+> 「ふむ。可能なら叩いておきたいところ
+>  だが……どうする、艦長」
+“Hm. If possible, I'd like to strike them there... What do you say, Captain?”
+
+@21395 Bright · ブライト
+> 「今の状況では、うかつには動けない
+>  が、黙って見ているだけでは
+“In our current situation we can't move carelessly, but if we just stand by and watch,
+---
+>  帝国がより支配力を
+>  強めるだけか……」
+the Empire will only tighten its grip...”
+
+@21396 Ryoma · リョウ
+> 「やりましょう、艦長。どのみち待って
+>  いれば我々に不利になるだけです
+“Let's do it, Captain. Either way, waiting around only puts us at a disadvantage.
+---
+>  それでは、いずれは逃げ切れなくなる」
+If we don't act, eventually we won't be able to escape.”
+
+@21397 Prof. Yumi · 弓教授
+> 「私もその方がいいと思う。
+>  まだ我々は負けたわけではない
+“I agree. We haven't lost yet.
+---
+>  カラバでも、おそらく逃げ延びた他の
+>  研究者たちが新たな戦力を
+In Karaba too, the other researchers who likely escaped are probably
+---
+>  開発しているだろう。
+>  時間が必要なのだ」
+developing new fighting strength. We need time.”
+
+@21398 Sayaka · さやか
+> 「お父さま……」
+“Father...”
+
+@21399 Koji · 甲児
+> 「いこうぜ艦長。奴らが好き勝手
+>  やるのを放ってなんかおけるもんか」
+“Let's go, Captain. We can't just let them do whatever they want.”
+
+@21400 Bright · ブライト
+> 「わかった。我々の次の目標は
+>  レイク・ビクトリア基地だ
+“Understood. Our next target is the Lake Victoria base.
+---
+>  全員に通達しておいてくれ」
+Notify everyone.”
+
+@21401 Koji · 甲児
+> 「そうこなくっちゃ!」
+“Now that's what I wanted to hear!”
+
+@21402 Rasid · ラシード
+> 「そういうことなら我々マグアナック隊
+>  も行きましょう」
+“If that's the case, we Maganac Corps will go as well.”
+
+@21403 Rasid · ラシード
+> 「帝国軍か!? やはり発見されて
+>  いたか」
+“The Imperial Army?! So they did find us after all.”
+
+@21404 Quattro · クワトロ
+> 「我々が入港したときだな」
+“It must have been when we docked.”
+
+@21405 Rasid · ラシード
+> 「そうでしょう。しかしそれも承知の上
+>  ですよ」
+“Most likely. But we knew that risk going in.”
+
+@21406 Bright · ブライト
+> 「すまない。アストナージ、艦の修理
+>  は?」
+“Sorry about this. Astonaige, how are the ship repairs?”
+
+@21407 Astonaige · アストナージ
+> 「終わっています。いつでも出れますよ」
+“All done. We can launch anytime.”
+
+@21408 Koji · 甲児
+> 「よーし! いっちょ、ひと暴れして
+>  やるか!」
+“All right! Let's go raise a little hell!”
+
+@21409 Rasid · ラシード
+> 「いや、あなた方はこのまま
+>  レイク・ビクトリアへ向かってください」
+“No, you should head straight for Lake Victoria.”
+
+@21410 Amuro · アムロ
+> 「しかし、それでは……」
+“But that would mean...”
+
+@21411 Rasid · ラシード
+> 「ここは我々マグアナック隊が引き
+>  受けます。あなた方が最大の
+“We Maganac Corps will handle things here. You are our greatest
+---
+>  希望です。それをお忘れなく。ともに
+>  戦える日もいずれ来るでしょう
+hope. Don't forget that. The day will come when we fight side by side.
+---
+>  この星の未来のために」
+For the future of this planet.”
+
+@21412 Bright · ブライト
+> 「わかりました。頼みます」
+“Understood. We're counting on you.”
+
+@21413 Quatre · カトル
+> 「ラシード、無理はしないでください」
+“Rasid, don't push yourselves too hard.”
+
+@21414 Rasid · ラシード
+> 「カトル様も。それでは私は迎撃の
+>  指揮をとります。ご武運を」
+“Nor you, Lord Quatre. I'll take command of the interception. Good luck to you.”
+
+@21415 Bright · ブライト
+> 「我々も出航するぞ!」
+“We're launching too!”
+
+@21416 Wufei · 五飛
+> 「弱いくせに、なぜついてくる」
+“You're weak. Why do you follow us?”
+
+@21417 Sally · サリィ
+> 「やらなくてはいけない戦いだからよ」
+“Because it's a fight that has to be fought.”
+
+@21418 Wufei · 五飛
+> 「誰かに命令されたのか」
+“Did someone order you to?”
+
+@21419 Sally · サリィ
+> 「いいえ、自分の意思でここにいるわ
+>  あなたも、あなたの正義があるから
+“No, I'm here by my own will. You fight because you have your own justice,
+---
+>  戦っているのでしょう?」
+don't you?”
+
+@21420 Wufei · 五飛
+> 「おかしな奴だ。ふん……好きにするがいい」
+“You're a strange one. Hmph... do as you like.”
+
+@21421 Bask · バスク
+> 「なにごとか!?」
+“What's going on?!”
+
+@21422 Noin · ノイン
+> 「レジスタンスの破壊工作と
+>  思われます!」
+“It appears to be sabotage by the resistance!”
+
+@21423 Bask · バスク
+> 「なんだと!? ならば貴様はこんな
+>  所で何をしておる! さっさと行け!」
+“What?! Then what are you doing here?! Get moving!”
+
+@21424 Noin · ノイン
+> 「はっ!」
+“Yes, sir!”
+
+@21425 Noin · ノイン
+> 「どこだ、敵は? あれか!」
+“Where's the enemy? There?!”
+
+@21426 Wufei · 五飛
+> 「発見されたな……お前は向こうへ
+>  逃げろ」
+“So we've been spotted... You run the other way.”
+
+@21427 Sally · サリィ
+> 「わかったわ!」
+“Got it!”
+
+@21428 Noin · ノイン
+> 「とまれ! とまらねば撃つ!」
+“Stop! Stop, or I'll shoot!”
+
+@21429 Wufei · 五飛
+> 「フン」
+“Hmph.”
+
+@21430 Noin · ノイン
+> 「……子供だと!?」
+“...A child?!”
+
+@21431 Wufei · 五飛
+> 「女か……だから甘い」
+“A woman... No wonder you're soft.”
+
+@21432 Noin · ノイン
+> 「くっ……しまった、コントロールがきかん!」
+“Ngh... Damn, I can't control it!”
+
+@21433 Noin · ノイン
+> 「あれは……ガンダム!? いかん!」
+“That's... a Gundam?! This is bad!”
+
+@21434 Bask · バスク
+> 「ばかどもが。敵はたった1機ではない
+>  か! ノイン特尉、何をやっているか」
+“Fools. There's only one enemy! Special Ensign Noin, what are you doing?”
+
+@21435 Noin · ノイン
+> 「ま、待て!」
+“W-Wait!”
+
+@21436 Wufei · 五飛
+> 「女、聞こえるか。子供だと
+>  思って、油断したお前が
+“Woman, can you hear me? You let your guard down because you thought I was a child—
+---
+>  つまらぬ兵士だということだ。
+>  弱い者と女を、俺は殺さない」
+that makes you a worthless soldier. I don't kill the weak, or women.”
+
+@21437 Noin · ノイン
+> 「くぅっ……」
+“Ngh...”
+
+@21438 Beltorchika · ベルトーチカ
+> 「艦長、戦闘中のようです。
+>  敵基地が破壊されています」
+“Captain, it seems they're in combat. The enemy base is being destroyed.”
+
+@21439 Bright · ブライト
+> 「誰だかわからんが、ちょうどいい。
+>  よし、出撃だ
+“I don't know who they are, but the timing's perfect. All right, launch!
+---
+>  我々も敵基地を叩くぞ!」
+We'll hit the enemy base too!”
+
+@21440 Wufei · 五飛
+> 「レジスタンスか……あとはまかせるとしよう」
+“The resistance... I'll leave the rest to them.”
+
+@21441 Bask · バスク
+> 「ばかな! トレーズなどにまかせておくから
+>  こんなことになったのだ。迎撃せい!!」
+“Impossible! This is what happens when I leave things to Treize and the rest. Intercept them!!”
+
+@21442 Noin · ノイン
+> 「くそっ、だめか。機体を放棄する
+>  しかない……」
+“Damn, it's no use. I'll have to abandon the unit...”
+
+@21443 Bask · バスク
+> 「今ごろ来おって、ゼクスめ」
+“Coming at this late hour, that Zechs.”
+
+@21444 Zechs · ゼクス
+> 「バスク特佐、戦況は不利です。
+>  お引きください」
+“Colonel Bask, the situation is unfavorable. Please withdraw.”
+
+@21445 Bask · バスク
+> 「貴様が引き受けるというのか。
+>  いいだろう、あとはまかせる。やってみせい」
+“You'll take over, then? Very well, I leave the rest to you. Show me what you can do.”
+
+@21446 Lila · ライラ
+> 「ごますりかい? おもしろくないね」
+“Flattery? I don't like it.”
+
+@21447 Zechs · ゼクス
+> 「ムダに戦艦を失うよりは、ご退場
+>  願った方がよかろう?」
+“Better to make your exit than lose a battleship for nothing, wouldn't you say?”
+
+@21448 Lila · ライラ
+> 「ああ……そういうことなら、了解だよ」
+“Ah... if that's how it is, understood.”
+
+@21449 Zechs · ゼクス
+> 「くっ……遅かったか」
+“Ngh... too late, was I?”
+
+@21450 Lila · ライラ
+> 「奴らの動きが早かったってことさ。
+>  ライトニングバロンのお手並み
+“It just means they moved faster. Let's see what the Lightning Baron
+---
+>  見せてもらおう」
+can do.”
+
+@21451 Zechs · ゼクス
+> 「あの敵を相手に、そう簡単にいく
+>  とも思えんが……やってみるさ」
+“Against that enemy, I doubt it'll go so easily... but I'll try.”
+
+@21452 Jerid · ジェリド
+> 「カミーユ、今度こそ仕留めてやる!」
+“Kamille, this time I'll finish you for sure!”
+
+@21453 Kamille · カミーユ
+> 「この感じ……
+>  ジェリド・メサ特尉か!」
+“This feeling... It's Special Ensign Jerid Messa!”
+
+@21454 Emma · エマ
+> 「あれはライラ特尉!? ジェリドに
+>  カクリコンも来たの!?」
+“That's Special Ensign Lila?! Jerid and Kacricon are here too?!”
+
+@21455 Lila · ライラ
+> 「裏切り者のエマ・シーンがいるのか?
+>  よくもぬけぬけと」
+“The traitor Emma Sheen is here? You've got some nerve.”
+
+@21456 Bask · バスク
+> 「今ごろ来おって、ゼクスめ」
+“Coming at this late hour, that Zechs.”
+
+@21457 Zechs · ゼクス
+> 「バスク特佐、戦況は不利です。
+>  お引きください」
+“Colonel Bask, the situation is unfavorable. Please withdraw.”
+
+@21458 Bask · バスク
+> 「貴様が引き受けるというのか。
+>  いいだろう、あとはまかせる。やってみせい」
+“You'll take over, then? Very well, I leave the rest to you. Show me what you can do.”
+
+@21459 Lila · ライラ
+> 「ごますりかい? おもしろくないね」
+“Flattery? I don't like it.”
+
+@21460 Zechs · ゼクス
+> 「ムダに戦艦を失うよりは、ご退場
+>  願った方がよかろう?」
+“Better to make your exit than lose a battleship for nothing, wouldn't you say?”
+
+@21461 Lila · ライラ
+> 「ああ……そういうことなら、了解だよ」
+“Ah... if that's how it is, understood.”
+
+@21462 Zechs · ゼクス
+> 「くっ……遅かったか」
+“Ngh... too late, was I?”
+
+@21463 Lila · ライラ
+> 「奴らの動きが早かったってことさ。
+>  ライトニングバロンのお手並み
+“It just means they moved faster. Let's see what the Lightning Baron
+---
+>  見せてもらおう」
+can do.”
+
+@21464 Zechs · ゼクス
+> 「あの敵を相手に、そう簡単にいく
+>  とも思えんが……やってみるさ」
+“Against that enemy, I doubt it'll go so easily... but I'll try.”
+
+@21465 Jerid · ジェリド
+> 「カミーユ、今度こそ仕留めてやる!」
+“Kamille, this time I'll finish you off!”
+
+@21466 Kamille · カミーユ
+> 「この感じ……
+>  ジェリド・メサ特尉か!」
+“This feeling... It's Special Ensign Jerid Messa!”
+
+@21467 Emma · エマ
+> 「あれはライラ特尉!? ジェリドに
+>  カクリコンも来たの!?」
+“That's Special Ensign Lila?! Jerid and Kacricon are here too?!”
+
+@21468 Lila · ライラ
+> 「裏切り者のエマ・シーンがいるのか?
+>  よくもぬけぬけと」
+“The traitor Emma Sheen is here? You've got some nerve.”
+
+@21469 Aina · アイナ
+> 「これは……」
+“This is...”
+
+@21470 Specials · スペシャルズ
+> 「修理と補給をする予定の
+>  基地が攻撃を受けているようです
+“The base where we were supposed to repair and resupply seems to be under attack.
+---
+>  どうしますか?」
+What should we do?”
+
+@21471 Aina · アイナ
+> 「このまま去るわけにはいかないでしょう。
+>  レジスタンスの迎撃に加わります」
+“We can't just leave like this. I'll join the resistance in intercepting them.”
+
+@21472 Specials · スペシャルズ
+> 「よろしいのですか? ミノフスキークラフト
+>  の不調は……」
+“Are you sure? The Minovsky Craft is malfunctioning...”
+
+@21473 Aina · アイナ
+> 「もうしばらくはもちます」
+“It'll hold a while longer.”
+
+@21474 Specials · スペシャルズ
+> 「わかりました」
+“Understood.”
+
+@21475 Shiro · シロー
+> 「あ、あれは……アイナのアプサラス!?」
+“Th-that's... Aina's Apsaras?!”
+
+@21476 Shiro · シロー
+> 「アイナ!!」
+“Aina!!”
+
+@21477 Aina · アイナ
+> 「シロー……シロー・アマダ!? 離れて
+>  ください!」
+“Shiro... Shiro Amada?! Stay away!”
+
+@21478 Shiro · シロー
+> 「アイナ……好きだ!」
+“Aina... I love you!”
+
+@21479 Aina · アイナ
+> 「えっ!?」
+“What?!”
+
+@21480 Shiro · シロー
+> 「……俺は帝国とスペシャルズが憎い
+>  奴らは絶対に許せない」
+“...I hate the Empire and the Specials. I can never forgive those people.”
+
+@21481 Aina · アイナ
+> 「シロー…………」
+“Shiro...”
+
+@21482 Shiro · シロー
+> 「なのに、最初にあったときから、君の
+>  ことが忘れられないんだ。たとえ……
+“And yet, ever since we first met, I haven't been able to forget you. Even if...
+---
+>  君がスペシャルズで、たとえ……
+>  恋人がいたとしても」
+you're with the Specials, and even if... you have a lover.”
+
+@21483 Aina · アイナ
+> 「恋人? 恋人などいません。そして
+>  あなたが敵だとしても、私の答えは…」
+“A lover? I don't have a lover. And even if you are my enemy, my answer is...”
+
+@21484 Aina · アイナ
+> 「うっ……!?
+>  もう出力が落ちている!?」
+“Ngh...?! The output is already dropping?!”
+
+@21485 Shiro · シロー
+> 「アイナ、大丈夫か!? ここは
+>  危険だ、すぐに退避してくれ!」
+“Aina, are you all right?! It's dangerous here, get out right away!”
+
+@21486 Aina · アイナ
+> 「だ、だめです。そんなわけには……」
+“I-I can't. I can't do that...”
+
+@21487 Shiro · シロー
+> 「頼む! 俺は君に死んでほしくない
+>  んだ! 俺は、俺は君と一緒に…」
+“Please! I don't want you to die! I... I want to be with you...”
+
+@21488 Aina · アイナ
+> 「シロー……。わかりました。シロー・アマダ
+>  ……無事でいてください……」
+“Shiro... All right. Shiro Amada... please stay safe...”
+
+@21489 Ginrei · 銀鈴
+> 「敵は沈黙したようです」
+“The enemy seems to have gone silent.”
+
+@21490 Bright · ブライト
+> 「よし、急いでここをはなれるぞ」
+“All right, let's get out of here in a hurry.”
+
+@21491 Beltorchika · ベルトーチカ
+> 「待って下さい、艦長!
+>  敵部隊が接近中……百鬼と
+“Wait, Captain! An enemy force is approaching... I believe it's the Hyakki!
+---
+>  思われます!」
+”
+
+@21492 Ryoma · リョウ
+> 「お前はあの時の……百鬼一族の
+>  鉄甲鬼か!」
+“You're... Tekkoki of the Hyakki Clan, from back then!”
+
+@21493 Tekkoki · 鉄甲鬼
+> 「ひさしぶりだな! あの時の戦いでは
+>  邪魔が入ったが、今度こそ
+“It's been a while! Last time we fought, there was an interruption, but this time
+---
+>  正々堂々と戦える! さあ、
+>  人間ども! 俺と勝負だ!」
+we can fight fair and square! Come, humans! Face me!”
+
+@21494 Tekkoki · 鉄甲鬼
+> 「いくぞゲッターロボ! 勝負だ!」
+“Here I come, Getter Robo! Let's settle this!”
+
+@21495 Ryoma · リョウ
+> 「望むところだ! いくぞぉっ!!」
+“Just what I wanted! Let's go!!”
+
+@21496 Tekkoki · 鉄甲鬼
+> 「ゲッターロボなど、この俺の
+>  メカ鉄甲鬼で!」
+“Getter Robo is nothing against my Mecha Tekkoki!”
+
+@21497 Hayato · ハヤト
+> 「強がりはよすんだな! さっさと帰った
+>  ほうがいいぜ!」
+“Stop bluffing! You'd better just go home!”
+
+@21498 Tekkoki · 鉄甲鬼
+> 「それでこのメカ鉄甲鬼に勝てるつも
+>  りでいるのか!」
+“And you think you can beat my Mecha Tekkoki like that?!”
+
+@21499 Musashi · ムサシ
+> 「おおっ!」
+“Oh!”
+
+@21500 Tekkoki · 鉄甲鬼
+> 「うおぉぉぉぉっ!?
+>  お、俺の負けだぁ!!」
+“Uwaaaaaaah?! I-I've lost!!”
+
+@21501 Bright · ブライト
+> 「終わったか……よし、離脱するぞ」
+“Is it over... All right, we're pulling out.”
+
+@21502 Sally · サリィ
+> 「もと地球連邦軍少佐、
+>  サリィ・ポォです。ひろっていただいて
+“I'm Sally Po, formerly a major in the Earth Federation Forces. Thank you for
+---
+>  感謝します」
+picking me up.”
+
+@21503 Quattro · クワトロ
+> 「構わんよ。君たちの工作のおかげで
+>  ずいぶんやりやすくなった」
+“It's no trouble. Thanks to your work, things have gotten a lot easier.”
+
+@21504 Quatre · カトル
+> 「あの、彼はどこへ行ったんですか?」
+“Um, where did he go?”
+
+@21505 Sally · サリィ
+> 「彼? ああ、五飛のことね。
+>  さぁ、わからないわ。あの子とあったのも
+“Him? Oh, you mean Wufei. I have no idea. Meeting him was
+---
+>  偶然だっただけだし……」
+just a coincidence...”
+
+@21506 Quatre · カトル
+> 「そう……ですか」
+“I... see.”
+
+@21507 Sally · サリィ
+> 「役に立てなくて悪いわね」
+“Sorry I couldn't be more help.”
+
+@21508 Roux · ルー
+> 「あらあら。カトルくんは、まだ残り
+>  3人も仲間にしたいようね?」
+“My, my. It seems Quatre still wants the other three to join us too?”
+
+@21509 Quatre · カトル
+> 「ちゃかさないでください。でも……彼らは
+>  過激だけど、いい人たちなんだ」
+“Please don't tease me. But... they're radicals, yet they're good people.”
+
+@21510 Sara · 沙羅
+> 「あたしの知ってる過激な連中は、
+>  とてもじゃないけど、いい人なんて
+“The radicals I know are anything but good people,
+---
+>  いえないけどね」
+if you ask me.”
+
+@21511 Ryo · 亮
+> 「おい、いわれてるぞ忍」
+“Hey, they're talking about you, Shinobu.”
+
+@21512 Sayaka · さやか
+> 「あら、甲児くんのことじゃないの?」
+“Oh, isn't she talking about you, Koji?”
+
+@21513 Shinobu · 忍
+> 「ちっ、つきあってらんねぇぜ。
+>  メシ食いに行こうぜ、甲児」
+“Tch, I don't have time for this. Let's go grab some food, Koji.”
+
+@21514 Koji · 甲児
+> 「そうするか」
+“Sure, let's do that.”
+
+@21515 Masato · 雅人
+> 「あんまり、いじめちゃだめだよ。
+>  それなりに少しは気にしてるんだから」
+“Don't tease them too much. They do care a little, in their own way.”
+
+@21516 Ryo · 亮
+> 「あくまでそれなりに、だがな」
+“Only a little, mind you.”
+
+@21517 Eiji · エイジ
+> 「やはり姉さんだったのか……
+>  生きていたんだね」
+“So it really was you, sis... You were alive.”
+
+@21518 Julia · ジュリア
+> 「エイジ……」
+“Eiji...”
+
+@21519 Eiji · エイジ
+> 「……姉さん……なぜ姉さんが……」
+“...Sis... Why are you...”
+
+@21520 Julia · ジュリア
+> 「エイジ……すべては過ぎたこと。私には
+>  やらなくてはならないことがあるのです
+“Eiji... All of that is in the past. There is something I must do,
+---
+>  人々がそれを望んでいる限り」
+as long as people wish for it.”
+
+@21521 Eiji · エイジ
+> 「姉さん……」
+“Sis...”
+
+@21522 Julia · ジュリア
+> 「エイジ……私のこと、ずいぶん変わった
+>  と思っているんでしょう?
+“Eiji... You must think I've changed a great deal, don't you?
+---
+>  どうしてなのか、いずれあなたにもわかるわ
+>  もう、お行きなさい。あなたにはあなたの
+Why that is, you will understand someday. Now, go. You have your own
+---
+>  するべきことがあるはずです。
+>  それが正しいかどうかは別としても」
+things you must do. Whether they are right or not is another matter.”
+
+@21523 Eiji · エイジ
+> 「…………」
+“...”
+
+@21524 Julia · ジュリア
+> 「私は大丈夫です。
+>  さぁ、お行きなさい、エイジ」
+“I will be fine. Now go, Eiji.”
+
+@21525 Relena · リリーナ
+> 「ジュリア様は、わたくしたちが
+>  お守りします
+“We will protect Lady Julia.
+---
+>  完全平和は武器を持っては
+>  成し得ないものです
+Complete peace cannot be achieved by bearing weapons.
+---
+>  これが、わたくしたちの戦い方なのです
+>  から」
+That is simply how we fight.”
+
+@21526 Eiji · エイジ
+> 「君は?」
+“And you are?”
+
+@21527 Relena · リリーナ
+> 「リリーナ・ドーリアンと申します。
+>  ジュリア様のお考えに賛同し、
+“My name is Relena Darlian. I share Lady Julia's ideals,
+---
+>  ともに活動させていただいている
+>  者です。お見知りおきくださいな」
+and I work alongside her. I hope we get along.”
+
+@21528 Eiji · エイジ
+> 「そうか……姉さんを頼む」
+“I see... Please take care of my sister.”
+
+@21529 Relena · リリーナ
+> 「ええ。さぁ、まいりましょう、ジュリア様
+>  グレスコ総督にお会いして
+“Of course. Now, let us be on our way, Lady Julia. We must go
+---
+>  いただかなくては」
+and meet Governor Gresco.”
+
+@21530 Julia · ジュリア
+> 「ええ、リリーナ」
+“Yes, Relena.”
+
+@21531 Relena · リリーナ
+> (ヒイロ……あなたは今もきっと
+>  戦っているのでしょう
+(Heero... I'm sure you are still fighting even now.
+---
+>  わたくしも、自分の戦場で
+>  戦ってみせます)
+I too will fight on my own battlefield.)
+
+@21532 Le Cain · ル・カイン
+> 「私も聞いている。
+>  “クスコの聖女”と
+“I have heard of her as well. The ‘Holy Woman of Cusco’
+---
+>  その信奉者たちのことはな。
+>  それがこの地へ来るというのか?
+and her followers. You say she is coming here?
+---
+>  なんのためだ?」
+For what purpose?”
+
+@21533 Giura · ギウラ
+> 「は、おそらくグレスコ閣下に直訴
+>  するためと思われます」
+“Yes, most likely to appeal directly to Governor Gresco.”
+
+@21534 Le Cain · ル・カイン
+> 「地球人と我々は共存
+>  しなければならん
+“Earthlings and we must coexist—
+---
+>  そんなたわごとを、いうためにか!?」
+is that the nonsense she comes to spout?!”
+
+@21535 Giura · ギウラ
+> 「は、はぁ……そのようで……」
+“Y-yes... it would seem so...”
+
+@21536 Le Cain · ル・カイン
+> 「ばか者!! 人心をたぶらかす、
+>  その聖女とやらを
+“Fools!! That so-called Holy Woman who bewitches the hearts of the people—
+---
+>  なぜ今まで放っておいたのだ!
+>  すぐに捕らえてこい!」
+why have you left her alone until now?! Capture her at once!”
+
+@21537 Giura · ギウラ
+> 「は、はい!」
+“Y-yes, sir!”
+
+@21538 Le Cain · ル・カイン
+> 「ロアン・デミトリッヒ」
+“Roanne Demitrich.”
+
+@21539 Roanne · ロアン
+> 「ここにおります」
+“I am here.”
+
+@21540 Le Cain · ル・カイン
+> 「先のレジスタンス掃討作戦の際
+>  もれるはずのない極秘情報が
+“During the recent resistance sweep, top-secret information that should never
+---
+>  奴らに入手された。そのためレジスタ
+>  ンスどもの重要人物を捕らえる
+have leaked fell into their hands. As a result, we failed to capture the resistance's
+---
+>  ことができなかった上に、奴らの中で
+>  もっとも戦闘力の高い部隊を
+key figures, and on top of that, we could not destroy their
+---
+>  撃破することもできなかった。
+>  これはどういうことだ?」
+most combat-capable unit. How do you explain this?”
+
+@21541 Roanne · ロアン
+> 「おそらく内部に敵のスパイがいるので
+>  はないかと思われます」
+“I believe there may be an enemy spy on the inside.”
+
+@21542 Le Cain · ル・カイン
+> 「スパイ……スパイか。貴様は確か
+>  3年前にはエイジとともに
+“A spy... A spy, is it? If I recall, three years ago you stood
+---
+>  我が帝国に敵対していたな?」
+with Eiji against our empire, did you not?”
+
+@21543 Roanne · ロアン
+> 「私をお疑いでしたら、この場で
+>  処刑していただいても構いません」
+“If you suspect me, you may execute me here and now.”
+
+@21544 Le Cain · ル・カイン
+> 「…………」
+“...”
+
+@21545 Roanne · ロアン
+> 「…………」
+“...”
+
+@21546 Le Cain · ル・カイン
+> 「フ……身動きひとつもせんか。貴様
+>  がスパイなら、恐ろしい存在だな
+“Hmph... Not a single twitch. If you are a spy, you're a terrifying one.
+---
+>  もうよい、さがれ」
+That's enough. Dismissed.”
+
+@21547 Roanne · ロアン
+> 「はい。失礼いたします」
+“Yes, sir. If you'll excuse me.”
+
+@21548 Roux · ルー
+> 「あら? ……ねえ、あそこ、
+>  何か見えない?」
+“Hm? ...Hey, can you see something over there?”
+
+@21549 David · デビッド
+> 「あん? どこだって?」
+“Huh? Where?”
+
+@21550 Roux · ルー
+> 「あそこよ。あの山の影の中」
+“Over there. In the shadow of that mountain.”
+
+@21551 Duo · デュオ
+> 「あれか。なんかが落ちたみたいだな。
+>  墜落か不時着かってとこだろ」
+“That thing? Looks like something crashed. Either a crash or an emergency landing.”
+
+@21552 Quatre · カトル
+> 「あれは……
+>  さっきのザク頭じゃないですか?」
+“Isn't that... the Zaku head from earlier?”
+
+@21553 David · デビッド
+> 「ああ、ホントだ。確かにあんときの奴だ
+>  な。結局落ちちまったのか」
+“Oh, you're right. That's definitely the one from back then. So it went down after all.”
+
+@21554 Shiro · シロー
+> 「なんだって!? どこだ!?」
+“What?! Where?!”
+
+@21555 Roux · ルー
+> 「だから、あそこだってば。ほら」
+“I told you, over there. Look.”
+
+@21556 Shiro · シロー
+> 「間違いない、アプサラスだ。艦長、
+>  艦を降ろしてください! 艦長!
+“No mistake, that's the Apsaras. Captain, bring the ship down! Captain!
+---
+>  くそっ、アイナ……無事でいてくれ……」
+Damn it, Aina... Please be safe...”
+
+@21557 Shiro · シロー
+> 「アイナ!! アイナ、無事か!?」
+“Aina!! Aina, are you all right?!”
+
+@21558 Aina · アイナ
+> 「あ……シロー……」
+“Ah... Shiro...”
+
+@21559 Shiro · シロー
+> 「アイナ……良かった……本当に……」
+“Aina... Thank goodness... Really...”
+
+@21560 Aina · アイナ
+> 「シロー!」
+“Shiro!”
+
+@21561 Aina · アイナ
+> 「助けていただいて、感謝します」
+“Thank you for saving me.”
+
+@21562 Quattro · クワトロ
+> 「いや……礼ならばアマダ少尉にいって
+>  くれ。彼の強い要望がなければ
+“No... If you want to thank someone, thank Ensign Amada. Without his strong insistence,
+---
+>  我々はそのまま通りすぎていた。それ
+>  に、問題もある。君はスペシャルズの
+we would have passed right by. Besides, there's a problem. You are a Specials
+---
+>  パイロットだからな。我々としては
+pilot. As far as we're concerned,
+---
+>  君とあのマシーンを敵に返すことに、
+>  抵抗がある」
+we're reluctant to return you and that machine to the enemy.”
+
+@21563 Shiro · シロー
+> 「クワトロ大尉!?」
+“Captain Quattro?!”
+
+@21564 Aina · アイナ
+> 「いいのです、シロー。大尉のおっしゃる
+>  ことは、もっともです」
+“It's all right, Shiro. The Captain is absolutely right.”
+
+@21565 Quattro · クワトロ
+> 「一応、君の希望は考慮するが
+>  ……」
+“For the time being, we will take your wishes into consideration, but...”
+
+@21566 Aina · アイナ
+> 「……私はあなた方と戦うことをせず、
+>  退避しました。恐らく、脱走兵
+“...I retreated without fighting you. Most likely, I will be punished
+---
+>  として処罰されることになるでしょう」
+as a deserter.”
+
+@21567 Shiro · シロー
+> 「そんなバカな!」
+“That's insane!”
+
+@21568 Aina · アイナ
+> 「それは、いいのです。でも……このところの
+>  スペシャルズや財団の動きには
+“That's fine. But... I've also been feeling doubts about the recent movements
+---
+>  疑問を感じてもいます」
+of the Specials and the Foundation.”
+
+@21569 Bright · ブライト
+> 「ニューエドワーズの件からか……」
+“Since the New Edwards incident...”
+
+@21570 Aina · アイナ
+> 「はい。噂は私も聞いていますので」
+“Yes. I've heard the rumors too.”
+
+@21571 Quattro · クワトロ
+> 「いまの話を聞く限りでは、君は他
+>  にいくあてがあれば、スペシャルズには
+“From what you've just said, if you had somewhere else to go, you wouldn't want to
+---
+>  戻りたくないと受け取れるが……」
+return to the Specials...”
+
+@21572 Aina · アイナ
+> 「私は……信じられるものを探したい。
+>  最近ずっと、そう思っていました」
+“I... want to find something I can believe in. Lately, I've been thinking that all the time.”
+
+@21573 Shiro · シロー
+> 「なら、ここにいればいい。俺たちと
+>  一緒にいこう、アイナ」
+“Then you can stay here. Come with us, Aina.”
+
+@21574 Aina · アイナ
+> 「シロー……」
+“Shiro...”
+
+@21575 Aina · アイナ
+> 「あなたといると、不思議です、シロー
+>  張り詰めていたものが、まるですっかり
+“When I'm with you, it's strange, Shiro. All the tension I felt has completely
+---
+>  消えてしまったみたい。私は、ここにい
+>  させていただいてもよろしいのでしょうか?」
+vanished. May I... stay here with you?”
+
+@21576 Bright · ブライト
+> 「かまわんよ。君がそうしたいと望むのな
+>  ら。この集団は、そうしてできたような
+“I don't mind. If that's what you want. This group was formed
+---
+>  ものだからな」
+in exactly that way, after all.”
+
+@21577 Quattro · クワトロ
+> 「そういうことだ。アマダ少尉、彼女
+>  を部屋へ案内してやってくれ」
+“That settles it. Ensign Amada, show her to a room.”
+
+@21578 Shiro · シロー
+> 「はい、大尉!」
+“Yes, Captain!”
+
+@21579 Shiro · シロー
+> 「アイナ……その、恋人はいないって……
+>  いってたけど……」
+“Aina... Um, you said you didn't have a lover, but...”
+
+@21580 Aina · アイナ
+> 「ええ。シロー……どうして、私に恋人
+>  がいると、思ったのですか?」
+“Yes. Shiro... Why did you think I had a lover?”
+
+@21581 Shiro · シロー
+> 「いや……あの時計に入っている
+>  写真に、君と一緒に写っている
+“Well... In the photo inside that watch, the man standing
+---
+>  男性は……」
+next to you...”
+
+@21582 Aina · アイナ
+> 「ああ、あれですか。あれは……兄です」
+“Ah, that. That's... my brother.”
+
+@21583 Shiro · シロー
+> 「兄? ……兄さん!?
+>  そうだったのかぁ!」
+“Brother? ...Your brother?! So that's it!”
+
+@21584 Hayato · ハヤト
+> 「ナスカ? そんなところに、いったい何が
+>  あると?」
+“Nazca? What on earth is out there?”
+
+@21585 Bright · ブライト
+> 「知らないのも無理はない。
+>  連邦が極秘に建設していた
+“It's no wonder you haven't heard of it. It was a secret underground
+---
+>  地下備蓄基地だ。終戦前
+>  に破壊されたことになっているが
+supply base the Federation built. Officially it was destroyed before the war ended,
+---
+>  建設途中で放棄しただけでな」
+but really they just abandoned it mid-construction.”
+
+@21586 Amuro · アムロ
+> 「それを解放戦線が密かに建設
+>  を続行したってわけか」
+“So the Liberation Front secretly kept building it.”
+
+@21587 Ryoma · リョウ
+> 「では、そこはまだ無事なんですね?」
+“Then that place is still intact?”
+
+@21588 Quattro · クワトロ
+> 「確証はない。だが、カラバの
+>  万丈くんの情報では、南米で
+“No confirmation. But according to Karaba's Banjo, an armed civilian
+---
+>  武装市民による反帝国
+>  運動が再び起こりつつあるらしい
+anti-Imperial movement is rising again in South America.
+---
+>  武器の供給がなされなければ、
+>  ありえない話だ」
+That would be impossible without a weapons supply.”
+
+@21589 Aboly · アポリー
+> 「では我々の次の目的地は
+>  南米ですか」
+“Then our next destination is South America.”
+
+@21590 Koji · 甲児
+> 「じゃあオレたちはこれから南米に
+>  向かうってわけか」
+“So we're heading to South America next, huh.”
+
+@21591 Bright · ブライト
+> 「そういうことだ。今のうちによく休んで
+>  おけ」
+“That's right. Get some good rest while you can.”

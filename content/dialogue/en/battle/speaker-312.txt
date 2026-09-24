@@ -1,0 +1,161 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13897 Neo Zeon Soldier · ネオジオン兵
+> 「もらったな!」
+“Got you now!”
+
+@13898 Neo Zeon Soldier · ネオジオン兵
+> 「沈めっ!」
+“Sink!”
+
+@13899 Neo Zeon Soldier · ネオジオン兵
+> 「落ちろっ!!」
+“Fall!”
+
+@13900 Neo Zeon Soldier · ネオジオン兵
+> 「やらせんっ!」
+“I won't let you!”
+
+@13901 Neo Zeon Soldier · ネオジオン兵
+> 「こいつでとどめだ!!」
+“This is the finishing blow!”
+
+@13902 Neo Zeon Soldier · ネオジオン兵
+> 「甘く見るなっ!!」
+“Don't underestimate me!”
+
+@13903 Neo Zeon Soldier · ネオジオン兵
+> 「死ねっ!」
+“Die!”
+
+@13904 Neo Zeon Soldier · ネオジオン兵
+> 「くらえっ!」
+“Eat this!”
+
+@13905 Neo Zeon Soldier · ネオジオン兵
+> 「行くぞっ!」
+“Here I come!”
+
+@13906 Neo Zeon Soldier · ネオジオン兵
+> 「これでどうだ!!」
+“How's this?!”
+
+@13907 Neo Zeon Soldier · ネオジオン兵
+> 「な……バカなっ!?」
+“Wha... impossible?!”
+
+@13908 Neo Zeon Soldier · ネオジオン兵
+> 「やられただと!?」
+“I've been hit?!”
+
+@13909 Neo Zeon Soldier · ネオジオン兵
+> 「ぐうっ! バカなっ、
+>  これ程のパワーが!?」
+“Guuh! Impossible, this much power?!”
+
+@13910 Neo Zeon Soldier · ネオジオン兵
+> 「な、なんだと!? この力……
+>  化け物か!?」
+“Wh-what?! This strength... is it a monster?!”
+
+@13911 Neo Zeon Soldier · ネオジオン兵
+> 「うおおっ!? こ、こいつは……」
+“Whoaah?! Th-this is...”
+
+@13912 Neo Zeon Soldier · ネオジオン兵
+> 「何っ!? お、押されている!?」
+“What?! I-I'm being pushed back?!”
+
+@13913 Neo Zeon Soldier · ネオジオン兵
+> 「こ、こいつら、ただもんじゃない!!」
+“Th-these guys are no ordinary foes!”
+
+@13914 Neo Zeon Soldier · ネオジオン兵
+> 「ちいっ、このままですむと思うなっ!」
+“Tch, don't think this is over!”
+
+@13915 Neo Zeon Soldier · ネオジオン兵
+> 「ぐあっ! この、黙ってやられるものか!」
+“Gwaah! Damn you, I won't go down quietly!”
+
+@13916 Neo Zeon Soldier · ネオジオン兵
+> 「くっ! やるな!」
+“Kuh! Not bad!”
+
+@13917 Neo Zeon Soldier · ネオジオン兵
+> 「うおっ! なんの、まだまだっ!」
+“Whoa! Nothing to it, I'm still going!”
+
+@13918 Neo Zeon Soldier · ネオジオン兵
+> 「つうっ! こ、この程度でっ!」
+“Tch! Th-this much won't...!”
+
+@13919 Neo Zeon Soldier · ネオジオン兵
+> 「ふん、その程度か!」
+“Hmph, is that all?!”
+
+@13920 Neo Zeon Soldier · ネオジオン兵
+> 「効かんな!」
+“That didn't hurt!”
+
+@13921 Neo Zeon Soldier · ネオジオン兵
+> 「フ……うわさほどではないな!」
+“Heh... not as tough as the rumors say!”
+
+@13922 Neo Zeon Soldier · ネオジオン兵
+> 「こんなものとはな……失望したぜ!」
+“So this is all you've got... I'm disappointed!”
+
+@13923 Neo Zeon Soldier · ネオジオン兵
+> 「しょせんその程度よ!」
+“Just as weak as expected!”
+
+@13924 Neo Zeon Soldier · ネオジオン兵
+> 「そこだ!」
+“There!”
+
+@13925 Neo Zeon Soldier · ネオジオン兵
+> 「当たりはせん!」
+“It won't hit!”
+
+@13926 Neo Zeon Soldier · ネオジオン兵
+> 「貴様らの攻撃パターンなど、
+>  お見通しよ!」
+“I see right through your attack patterns!”
+
+@13927 Neo Zeon Soldier · ネオジオン兵
+> 「甘いな!」
+“Too soft!”
+
+@13928 Neo Zeon Soldier · ネオジオン兵
+> 「かわしてみせる!」
+“I'll dodge it!”
+
+@13929 Neo Zeon Soldier · ネオジオン兵
+> 「来た……そこかっ!」
+“Here it comes... there!”
+
+@13930 Neo Zeon Soldier · ネオジオン兵
+> 「その程度のビームが効くか!」
+“A Beam like that won't work!”
+
+@13931 Neo Zeon Soldier · ネオジオン兵
+> 「ムダな攻撃を……」
+“What a pointless attack...”
+
+@13932 Neo Zeon Soldier · ネオジオン兵
+> 「ちっ、弾切れか……」
+“Tch, out of ammo...”
+
+@13933 Neo Zeon Soldier · ネオジオン兵
+> 「くそっ! 弾切れだと!」
+“Damn! Out of ammo?!”
+
+@13934 Neo Zeon Soldier · ネオジオン兵
+> 「射程距離外からだと!?
+>  意外とセコい手を使うやつだ」
+“Attacking from out of range?! He plays dirty.”
+
+@13935 Neo Zeon Soldier · ネオジオン兵
+> 「くそっ! 届かん!」
+“Damn! I can't reach him!”

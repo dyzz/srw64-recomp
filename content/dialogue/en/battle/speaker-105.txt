@@ -1,0 +1,81 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6868 Mueller · ミューラー
+> 「みじめな過去の遺物どもめ」
+“You pitiful relics of the past.”
+
+@6869 Mueller · ミューラー
+> 「新たな時代の洗礼を受けろ!」
+“Receive the baptism of a new era!”
+
+@6870 Mueller · ミューラー
+> 「クックックックッ」
+“Kukukuku.”
+
+@6871 Mueller · ミューラー
+> 「アーッハッハッハッハッ」
+“Ahahahahaha!”
+
+@6872 Mueller · ミューラー
+> 「フッ」
+“Hmph.”
+
+@6873 Mueller · ミューラー
+> 「死ねぇ!」
+“Die!”
+
+@6874 Mueller · ミューラー
+> 「ヒャーッハハハハハッ!」
+“Hyahahahahaha!”
+
+@6875 Mueller · ミューラー
+> 「ヒャハハハハハッ、粛正、粛正っ!」
+“Hyahahahaha, purge, purge!”
+
+@6876 Mueller · ミューラー
+> 「ヒャーッハッハッハァ!」
+“Hyahahahaha!”
+
+@6877 Mueller · ミューラー
+> 「うぎゃあぁぁーっ!」
+“Ugraaah!”
+
+@6878 Mueller · ミューラー
+> 「うわあぁぁーっ!」
+“Uwaaah!”
+
+@6879 Mueller · ミューラー
+> 「こ、こんなばかなことがぁっ!」
+“Th-this can't be happening!”
+
+@6880 Mueller · ミューラー
+> 「なにっ!?」
+“What?!”
+
+@6881 Mueller · ミューラー
+> 「お、おのれぇ!」
+“Y-you bastard!”
+
+@6882 Mueller · ミューラー
+> 「クククク、そんなものか」
+“Kukuku, is that all?”
+
+@6883 Mueller · ミューラー
+> 「あーん? なにかしたのか?」
+“Huh? Did you do something?”
+
+@6884 Mueller · ミューラー
+> 「ヒャハハハハハッ! ムダなんだよぉ!」
+“Hyahahahahaha! It's useless!”
+
+@6885 Mueller · ミューラー
+> 「ヒャハハハハハッ! ムダなんだよぉ!」
+“Hyahahahahaha! It's useless!”
+
+@6886 Mueller · ミューラー
+> 「なに!? 弾切れだとぉ!?」
+“What?! Out of ammo?!”
+
+@6887 Mueller · ミューラー
+> 「射程外!? なめたまねを!」
+“Out of range?! Don't mock me!”

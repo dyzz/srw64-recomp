@@ -1,0 +1,138 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5813 Kou · コウ
+# 审校：“このやろうっ!!”是愤怒的骂声，拖长语气更自然。
+> 「このやろうっ!!」
+“Why you...!!”
+
+@5814 Kou · コウ
+> 「くらえっ!!」
+“Take this!!”
+
+@5815 Kou · コウ
+> 「やらせるかっ!」
+“Like I'd let you!”
+
+@5816 Kou · コウ
+# 审校：“いけーっ!”是攻击时的呐喊，译为“Go get 'em!”更有气势。
+> 「いけーっ!」
+“Go get 'em!”
+
+@5817 Kou · コウ
+> 「あたれぇーっ!」
+“Hit 'em!”
+
+@5818 Kou · コウ
+# 审校：“させるかぁっ!”语气强烈，初稿“Not a chance!”稍弱，改为更贴近原文的反问式表达。
+> 「させるかぁっ!」
+“Like I'd let you!”
+
+@5819 Kou · コウ
+> 「ウラキ、突貫します!!」
+“Uraki, charging in!!”
+
+@5820 Kou · コウ
+> 「でやーっ!!」
+“Hyaaah!!”
+
+@5821 Kou · コウ
+> 「ゆくぞっ!!」
+“Here I go!!”
+
+@5822 Kou · コウ
+# 审校：“ダウン”在战斗语境中更常指击倒，译为“knockdown”更准确。
+> 「これで、ダウンだ!」
+“That's a knockdown!”
+
+@5823 Kou · コウ
+> 「しずめぇーっ!!」
+“Take 'em down!!”
+
+@5824 Kou · コウ
+> 「直撃させるっ!!」
+“Direct hit!!”
+
+@5825 Kou · コウ
+> 「う、うわっ!?」
+“U-uwah?!”
+
+@5826 Kou · コウ
+> 「うわっ! やられたっ!!」
+“Uwah! I'm hit!!”
+
+@5827 Kou · コウ
+> 「ちくしょう! やられちまった!」
+“Damn! They got me!”
+
+@5828 Kou · コウ
+> 「しまった! 脱出を!!」
+“Damn! Eject!!”
+
+@5829 Kou · コウ
+> 「うっ! やられる!?」
+“Ugh! I'm hit?!”
+
+@5830 Kou · コウ
+> 「くっ! このままじゃ……」
+“Ngh! At this rate...”
+
+@5831 Kou · コウ
+> 「うわっ! やられる!?」
+“Uwah! I'm hit?!”
+
+@5832 Kou · コウ
+> 「くっ!! やるなっ!!」
+“Ngh!! Not bad!!”
+
+@5833 Kou · コウ
+> 「くっ!!
+>  だが、この程度ならまだいける!」
+“Ngh!! But I can still take this much!”
+
+@5834 Kou · コウ
+> 「ッ!! まだだ!!」
+“Hngh!! Not yet!!”
+
+@5835 Kou · コウ
+> 「この程度のダメージ!!」
+“This much damage!!”
+
+@5836 Kou · コウ
+> 「この程度のダメージなら!」
+“If it's only this much!”
+
+@5837 Kou · コウ
+> 「効くかよ!!」
+“Like that'll hurt!!”
+
+@5838 Kou · コウ
+> 「ふーっ、間一髪……」
+“Phew, that was close...”
+
+@5839 Kou · コウ
+> 「あまいっ!!」
+“Too slow!!”
+
+@5840 Kou · コウ
+> 「あたってたまるかよっ!!」
+“Like I'd let that hit!!”
+
+@5841 Kou · コウ
+> 「間に合えぇぇーっ!!」
+“Make it in time!!”
+
+@5842 Kou · コウ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@5843 Kou · コウ
+> 「ビームなど!」
+“A beam like that!”
+
+@5844 Kou · コウ
+> 「くっ! だめか!」
+“Ngh! No good!”
+
+@5845 Kou · コウ
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far?!”

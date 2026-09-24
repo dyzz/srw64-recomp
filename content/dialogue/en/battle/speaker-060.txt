@@ -1,0 +1,113 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10646 Arius · アリアス
+> 「行きがけの駄賃に、いただく!」
+“I'll take this as a little bonus on the way!”
+
+@10647 Arius · アリアス
+> 「フフフフッ」
+“Heh heh heh.”
+
+@10648 Arius · アリアス
+> 「一気に突っ込む!」
+“I'll charge in all at once!”
+
+@10649 Arius · アリアス
+> 「調子にのるなっ!」
+“Don't get cocky!”
+
+@10650 Arius · アリアス
+> 「あきらめろ!」
+“Give it up!”
+
+@10651 Arius · アリアス
+> 「もらった!」
+“Got you!”
+
+@10652 Arius · アリアス
+> 「やってみなければわからん!」
+“You won't know unless you try!”
+
+@10653 Arius · アリアス
+> 「こやつ!」
+“Why you!”
+
+@10654 Arius · アリアス
+> 「うおあぁぁぁぁーっ!!」
+“Uwaaaaaa!”
+
+@10655 Arius · アリアス
+> 「い、いかんっ!」
+“Th-this is bad!”
+
+@10656 Arius · アリアス
+> 「ぬうぅぅーっ! やらせるかぁ!」
+“Ngh! Like I'd let you!”
+
+@10657 Arius · アリアス
+> 「こ、こいつ、なんてパワーだ!?」
+“Wh-what kind of power is this?!”
+
+@10658 Arius · アリアス
+> 「こ、このままでは!」
+“A-at this rate!”
+
+@10659 Arius · アリアス
+> 「くっ、これほどやるとは!」
+“Ugh, to think you were this good!”
+
+@10660 Arius · アリアス
+> 「むぅっ! まだやらせん!」
+“Hmph! I won't let you yet!”
+
+@10661 Arius · アリアス
+> 「くうっ! 貴様ごときにぃ!」
+“Gah! By the likes of you!”
+
+@10662 Arius · アリアス
+> 「なに!? 意外と手強い!」
+“What?! You're tougher than I thought!”
+
+@10663 Arius · アリアス
+> 「まだこの程度でっ!」
+“This much won't stop me!”
+
+@10664 Arius · アリアス
+> 「ザコを相手にしていてはっ!」
+“I've no time for small fry!”
+
+@10665 Arius · アリアス
+> 「どけっザコが!」
+“Out of my way, small fry!”
+
+@10666 Arius · アリアス
+> 「きかんな!」
+“It's no use!”
+
+@10667 Arius · アリアス
+> 「甘い!」
+“Too naive!”
+
+@10668 Arius · アリアス
+> 「そこかっ!」
+“There!”
+
+@10669 Arius · アリアス
+> 「あたるか!」
+“As if that'd hit!”
+
+@10670 Arius · アリアス
+> 「きかんな!」
+“It's no use!”
+
+@10671 Arius · アリアス
+> 「あたるか!」
+“As if that'd hit!”
+
+@10672 Arius · アリアス
+> 「くっ、弾切れだと!?」
+“Ngh, out of ammo?!”
+
+@10673 Arius · アリアス
+> 「なに!? 届かぬというのか!」
+“What?! It won't reach?!”

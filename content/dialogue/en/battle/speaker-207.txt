@@ -1,0 +1,98 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7582 Julia · ジュリア
+> 「待ちなさい!」
+“Wait!”
+
+@7583 Julia · ジュリア
+> 「こちらを向いて私と戦うのです!」
+“Face me and fight!”
+
+@7584 Julia · ジュリア
+> 「こちらからいきます!」
+“I'll come to you!”
+
+@7585 Julia · ジュリア
+> 「決着をつけます!」
+“Let's settle this!”
+
+@7586 Julia · ジュリア
+> 「覚悟!!」
+“Prepare yourself!”
+
+@7587 Julia · ジュリア
+> 「覚悟なさい!!」
+“Prepare yourself!”
+
+@7588 Julia · ジュリア
+> 「逃げても無駄です!」
+“Running is useless!”
+
+@7589 Julia · ジュリア
+> 「し、しまった!!」
+“D-Damn it!”
+
+@7590 Julia · ジュリア
+> 「や、やられた!?」
+“I-I've been hit?!”
+
+@7591 Julia · ジュリア
+> 「あ、ああっ!?」
+“A-Ahh?!”
+
+@7592 Julia · ジュリア
+> 「くっ! ダメージが大きすぎる!!」
+“Ngh! Too much damage!”
+
+@7593 Julia · ジュリア
+> 「くっ! も、もうこれ以上は……!」
+“Ngh! N-No more...!”
+
+@7594 Julia · ジュリア
+> 「きゃぁぁぁぁ!!」
+“Kyaaaaaah!”
+
+@7595 Julia · ジュリア
+> 「つ、つよい!!」
+“S-So strong!”
+
+@7596 Julia · ジュリア
+> 「あうっ、しまった!!」
+“Agh, damn it!”
+
+@7597 Julia · ジュリア
+> 「うぅっ、まだいけるはず!」
+“Ugh, I should still be able to fight!”
+
+@7598 Julia · ジュリア
+> 「この程度なら!」
+“If it's only this much!”
+
+@7599 Julia · ジュリア
+> 「本気で戦いなさい!」
+“Fight me seriously!”
+
+@7600 Julia · ジュリア
+> 「これくらいは!」
+“This much is nothing!”
+
+@7601 Julia · ジュリア
+> 「このくらいはっ!」
+“This much!”
+
+@7602 Julia · ジュリア
+> 「避けてみせる!」
+“I'll dodge it!”
+
+@7603 Julia · ジュリア
+> 「効きはしない!」
+“It won't work!”
+
+@7604 Julia · ジュリア
+> 「くっ、このような時に!」
+“Ngh, of all times!”
+
+@7605 Julia · ジュリア
+> 「私と正々堂々と勝負を
+>  するのです」
+“Fight me fair and square.”

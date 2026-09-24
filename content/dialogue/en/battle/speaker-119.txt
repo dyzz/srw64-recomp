@@ -1,0 +1,175 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10348 Blacky · ブラッキー
+> 「このブラッキー様が地獄へ
+>  送りこんでやるぞ、ありがたく思え」
+“I, the great Blacky, will send you to hell. Be grateful.”
+
+@10349 Blacky · ブラッキー
+> 「よし、ゆけ!」
+“All right, go!”
+
+@10350 Blacky · ブラッキー
+> 「木っ端みじんだ!」
+“Smashed to bits!”
+
+@10351 Blacky · ブラッキー
+> 「地獄の底へ葬り去るのだ!」
+“I'll bury you at the bottom of hell!”
+
+@10352 Blacky · ブラッキー
+> 「フフフフフフ、地獄のダンスを
+>  踊らせてやるぞ」
+“Heh heh heh heh heh, I'll make you dance the dance of hell.”
+
+@10353 Blacky · ブラッキー
+> 「徹底的に壊せ、そして燃やすのだ」
+“Destroy them completely, then burn them.”
+
+@10354 Blacky · ブラッキー
+> 「爆破してしまえ!」
+“Blow them up!”
+
+@10355 Blacky · ブラッキー
+> 「総攻撃開始ーっ!」
+“All-out attack, begin!”
+
+@10356 Blacky · ブラッキー
+> 「せめて、せめて、せめまくれー!」
+“Attack, attack, keep attacking!”
+
+@10357 Blacky · ブラッキー
+> 「地球最後の日を見るがいい!」
+“Witness Earth's final day!”
+
+@10358 Blacky · ブラッキー
+> 「貴様たちもとうとう年貢の
+>  収め時がきたようだなぁ」
+“Seems it's finally time for you lot to pay your dues.”
+
+@10359 Blacky · ブラッキー
+> 「とどめをさしてやるぞ!!」
+“I'll finish you off!!”
+
+@10360 Blacky · ブラッキー
+> 「殺してやる!」
+“I'll kill you!”
+
+@10361 Blacky · ブラッキー
+> 「ぎゃあぁぁぁぁぁぁーっ!」
+“Gyaaaaaaaaah!”
+
+@10362 Blacky · ブラッキー
+> 「ぐあぁっ、この恨みは必ず、必ず、今度
+>  こそ!」
+“Gwaah, I'll make you pay for this, I swear, next time for sure!”
+
+@10363 Blacky · ブラッキー
+> 「ぐわあぁぁぁぁぁぁーっ!」
+“Guwaaaaaaaaah!”
+
+@10364 Blacky · ブラッキー
+> 「ぐわぁぁっ! おぼえておれ、この次は
+>  きっとバラバラにしてやる!」
+“Guwaaah! Just you wait, next time I'll tear you apart!”
+
+@10365 Blacky · ブラッキー
+> 「おおぉぉぉーっ、おのれぃ!」
+“Oooooooh, you bastard!”
+
+@10366 Blacky · ブラッキー
+> 「おぉぉっ!? おのれ、この借りは必ず
+>  返してやるぞ!」
+“Ohh?! Curse you, I'll repay this debt for sure!”
+
+@10367 Blacky · ブラッキー
+> 「うわぁぁっ!? て、撤退準備を
+>  始めろ! 急げ!」
+“Uwaaah?! B-begin retreat preparations! Hurry!”
+
+@10368 Blacky · ブラッキー
+> 「くそうっ! やられたか!!」
+“Damn it! So I've been hit!!”
+
+@10369 Blacky · ブラッキー
+> 「なに!? ええい、まだ直らぬか!」
+“What?! Gah, still not fixed?!”
+
+@10370 Blacky · ブラッキー
+> 「なんだと!? くっ、うろたえるな!」
+“What?! Ngh, don't panic!”
+
+@10371 Blacky · ブラッキー
+> 「まっ、まさか!? こんなパワーがあるのか!
+>  ?」
+“I-impossible! It has this much power?!”
+
+@10372 Blacky · ブラッキー
+> 「ハハハハッ、ムダだムダだ!」
+“Hahahaha, useless, useless!”
+
+@10373 Blacky · ブラッキー
+> 「ワハハハハハッ、なにをやっている!」
+“Wahahahahaha, what are you doing!”
+
+@10374 Blacky · ブラッキー
+> 「ぐっ、おのれよくもやってくれおったな!」
+“Ngh, you bastard, how dare you do this to me!”
+
+@10375 Blacky · ブラッキー
+> 「誘いに乗ってきよったな、フフ」
+“So you took the bait, heh heh.”
+
+@10376 Blacky · ブラッキー
+> 「ゆるさん!」
+“I won't forgive you!”
+
+@10377 Blacky · ブラッキー
+> 「この期に及んで強がりなど
+>  通用せんぞ」
+“Bluffing won't work at this point.”
+
+@10378 Blacky · ブラッキー
+> 「しまった!」
+“Damn!”
+
+@10379 Blacky · ブラッキー
+> 「こやつ!」
+“Why you!”
+
+@10380 Blacky · ブラッキー
+> 「ハハハ、身の程知らずめ」
+“Hahaha, you don't know your place.”
+
+@10381 Blacky · ブラッキー
+> 「勝てる、勝てるぞ」
+“We can win, we can win!”
+
+@10382 Blacky · ブラッキー
+> 「うまくいったぞ!」
+“It worked!”
+
+@10383 Blacky · ブラッキー
+> 「俺の勝ちだな!」
+“Guess I win!”
+
+@10384 Blacky · ブラッキー
+> 「よくやった!」
+“Nice work!”
+
+@10385 Blacky · ブラッキー
+> 「な、何ごとだ! エネルギー切れだと!?」
+“W-what's going on?! Out of energy?!”
+
+@10386 Blacky · ブラッキー
+> 「いったいどうなってんだ、くそう」
+“What the hell is happening, damn it!”
+
+@10387 Blacky · ブラッキー
+> 「ええーい、何をモタモタしている
+>  ここまで追いつめながら」
+“Gah, what are you dawdling for when we had them cornered?!”
+
+@10388 Blacky · ブラッキー
+> 「ええい、もう少しのところを」
+“Gah, we were so close!”

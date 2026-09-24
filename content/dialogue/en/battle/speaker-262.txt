@@ -1,0 +1,225 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8005 Amuro · アムロ
+> 「おちろっ!」
+“Go down!”
+
+@8006 Amuro · アムロ
+> 「あたれっ!」
+“Hit!”
+
+@8007 Amuro · アムロ
+> 「そこだっ!!」
+“There!!”
+
+@8008 Amuro · アムロ
+> 「直撃させるっ!!」
+“I'll land a direct hit!!”
+
+@8009 Amuro · アムロ
+> 「逃げ回っても無駄だっ!」
+“Running won't save you!”
+
+@8010 Amuro · アムロ
+> 「この一撃で!」
+“With this one shot!”
+
+@8011 Amuro · アムロ
+> 「邪魔だっ!」
+“Out of my way!”
+
+@8012 Amuro · アムロ
+> 「あててみせるっ!」
+“I'll hit you, just watch!”
+
+@8013 Amuro · アムロ
+> 「落としてみせるっ!」
+“I'll shoot you down, just watch!”
+
+@8014 Amuro · アムロ
+> 「そこだっ!!」
+“There!!”
+
+@8015 Amuro · アムロ
+> 「いけるかっ!?」
+“Can I do it?!”
+
+@8016 Amuro · アムロ
+> 「やらせるかっ!」
+“I won't let you!”
+
+@8017 Amuro · アムロ
+> 「させるかっ!」
+“Like I'd let you!”
+
+@8018 Amuro · アムロ
+> 「このおっ!」
+“Why you—!”
+
+@8019 Amuro · アムロ
+> 「し、しまった!!」
+“D-Damn it!!”
+
+@8020 Amuro · アムロ
+> 「うわぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@8021 Amuro · アムロ
+> 「も、もつのか!?」
+“C-Can it hold?!”
+
+@8022 Amuro · アムロ
+> 「くっ! ダメージが大きすぎる!?」
+“Ngh! Too much damage?!”
+
+@8023 Amuro · アムロ
+> 「ダメだ、このままじゃもたないっ!!」
+“No good, I can't take much more!!”
+
+@8024 Amuro · アムロ
+> 「しまった!ダメージを受けすぎたか!」
+“Damn! I took too much damage!”
+
+@8025 Amuro · アムロ
+> 「こ、このままではやられる!?」
+“A-At this rate I'll be shot down?!”
+
+@8026 Amuro · アムロ
+> 「やられる!?」
+“I'm hit?!”
+
+@8027 Amuro · アムロ
+> 「このくらい!」
+“This much is nothing!”
+
+@8028 Amuro · アムロ
+> 「!! まだだ!!」
+“!! Not yet!!”
+
+@8029 Amuro · アムロ
+> 「くっ! まだまだ!」
+“Ngh! I'm not done yet!”
+
+@8030 Amuro · アムロ
+> 「くっ! まだだ! まだいける!!」
+“Ngh! Not yet! I can still go!!”
+
+@8031 Amuro · アムロ
+> 「くっ! だが、この程度なら
+>  まだいける!」
+“Ngh! But I can still take this much!”
+
+@8032 Amuro · アムロ
+> 「ま、まだまだ!」
+“N-Not done yet!”
+
+@8033 Amuro · アムロ
+> 「やる!だが、まだこんなもので!
+“Not bad! But that's not nearly enough!”
+
+@8034 Amuro · アムロ
+> 「やったな!」
+“You got me!”
+
+@8035 Amuro · アムロ
+> 「まだだっ!まだやられたわけじゃない!」
+“Not yet! I'm not down yet!”
+
+@8036 Amuro · アムロ
+> 「ちっ! 機体の調整が完全じゃ
+>  ないのか!?」
+“Tch! The unit isn't fully tuned?!”
+
+@8037 Amuro · アムロ
+> 「ちっ!」
+“Tch!”
+
+@8038 Amuro · アムロ
+> 「この程度なら!!」
+“This much is nothing!!”
+
+@8039 Amuro · アムロ
+> 「この程度のダメージなら!」
+“If it's only this much damage!”
+
+@8040 Amuro · アムロ
+> 「こんなことでっ!!」
+“Not from something like this!!”
+
+@8041 Amuro · アムロ
+> 「かすっただけだ!」
+“It just grazed me!”
+
+@8042 Amuro · アムロ
+> 「何の、この程度っ!」
+“What, this much?!”
+
+@8043 Amuro · アムロ
+> 「みえる!!」
+“I can see it!!”
+
+@8044 Amuro · アムロ
+> 「させるかっ!」
+“Like I'd let you!”
+
+@8045 Amuro · アムロ
+> 「あまいっ!!」
+“Too naive!!”
+
+@8046 Amuro · アムロ
+> 「あたるかっ!」
+“Like that'll hit!”
+
+@8047 Amuro · アムロ
+> 「そこっ!」
+“There!”
+
+@8048 Amuro · アムロ
+> 「見える!!」
+“I can see it!!”
+
+@8049 Amuro · アムロ
+> 「あたるものかっ!」
+“Like that'll hit me!”
+
+@8050 Amuro · アムロ
+> 「敵の動きが……見える!」
+“I can see... the enemy's movements!”
+
+@8051 Amuro · アムロ
+> 「ムダだっ!」
+“It's useless!”
+
+@8052 Amuro · アムロ
+> 「みえる!!」
+“I can see it!!”
+
+@8053 Amuro · アムロ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@8054 Amuro · アムロ
+> 「させるかっ」
+“Like I'd let you!”
+
+@8055 Amuro · アムロ
+> 「やられるっ!?」
+“I'm hit?!”
+
+@8056 Amuro · アムロ
+# 审校：与 L1 相同，改为更自然的“it's no good”
+> 「くっ、だめか!?」
+“Ngh, it's no good?!”
+
+@8057 Amuro · アムロ
+> 「しまった、弾切れか!」
+“Damn, I'm out of ammo!”
+
+@8058 Amuro · アムロ
+# 审校：与 L3 相同，补上 away
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far away?!”
+
+@8059 Amuro · アムロ
+> 「あんな距離から攻撃できるのか!?」
+“They can attack from that range?!”

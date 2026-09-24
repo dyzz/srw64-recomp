@@ -1,0 +1,427 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15500 Hikaru · ひかる
+> 「大介さん!?」
+“Daisuke?!”
+
+@15501 Duke · デューク
+> 「大丈夫だよ、ひかるさん」
+“I'm fine, Hikaru.”
+
+@15502 Duke · デューク
+> 「大丈夫かい、ひかるさん?」
+“Are you okay, Hikaru?”
+
+@15503 Hikaru · ひかる
+> 「ええ、大丈夫よ」
+“Yes, I'm fine.”
+
+@15504 Maria · マリア
+> 「兄さん、危ない!」
+“Brother, look out!”
+
+@15505 Duke · デューク
+# 审校：原文句末为「!」，但「こんな攻撃!」是“这种攻击算什么”的反问/不屑语气，初稿“an attack like that!”缺反问感，改为“an attack like that?!”更贴合。
+> 「くっ、こんな攻撃!」
+“Ngh, an attack like that?!”
+
+@15506 Duke · デューク
+> 「甘い!」
+“Too easy!”
+
+@15507 Maria · マリア
+> 「さっすが、兄さん!」
+“Just like you, brother!”
+
+@15508 Duke · デューク
+# 审校：原文「あたるものか!」是“怎么可能打中我”，初稿“You won't hit me!”语气偏陈述，改为更贴合原意的“As if you'll hit me!”。
+> 「あたるものか!」
+“As if you'll hit me!”
+
+@15509 Tetsuya · 鉄也
+> 「へぇ、やるじゃないか」
+“Heh, not bad.”
+
+@15510 Duke · デューク
+> 「この程度ならよけられる!」
+“I can dodge something like that!”
+
+@15511 Jun · ジュン
+> 「さすがね、デューク」
+“Impressive, Duke.”
+
+@15512 Naida · ナイーダ
+> 「デューク! 危ない!」
+“Duke! Watch out!”
+
+@15513 Duke · デューク
+> 「なんの!」
+“No problem!”
+
+@15514 Koji · 甲児
+> 「へへーん、そんなもんが効くもんかよ!」
+“Heh, like that'd ever work on me!”
+
+@15515 Duke · デューク
+> 「甲児くん、調子に乗りすぎだぞ!」
+“Koji, you're getting way too cocky!”
+
+@15516 Maria · マリア
+> 「そんな攻撃、あたしと兄さんには
+>  効かないのよ!!」
+“An attack like that won't work on my brother and me!!”
+
+@15517 Duke · デューク
+> 「無駄だ!!」
+“It's useless!!”
+
+@15518 Maria · マリア
+> 「そんなもの効かないのよ!」
+“That won't do a thing!”
+
+@15519 Tetsuya · 鉄也
+> 「フッ、どうやら効かんらしいな」
+“Hmph, seems it doesn't work on us.”
+
+@15520 Duke · デューク
+> 「ああ、大丈夫だ!」
+“Yeah, we're fine!”
+
+@15521 Jun · ジュン
+> 「そんな攻撃じゃ、あたしたちに
+>  通用しないよ!」
+“An attack like that won't work on us!”
+
+@15522 Naida · ナイーダ
+# 审校：原译漏掉了“あたしたち”的幸存含义，改为更贴合原文的“W-We survived...”
+> 「くっ!? た、助かったのね
+>  あたしたち……」
+“Ngh?! W-We survived...”
+
+@15523 Duke · デューク
+> 「ああ、大丈夫だよナイーダ」
+“Yeah, we're okay, Naida.”
+
+@15524 Maria · マリア
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15525 Maria · マリア
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15526 Maria · マリア
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@15527 Maria · マリア
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15528 Maria · マリア
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15529 Maria · マリア
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15530 Maria · マリア
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15531 Maria · マリア
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15532 Maria · マリア
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15533 Maria · マリア
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15534 Maria · マリア
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15535 Maria · マリア
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15536 Maria · マリア
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15537 Maria · マリア
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15538 Maria · マリア
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15539 Maria · マリア
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15540 Maria · マリア
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15541 Maria · マリア
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15542 Maria · マリア
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15543 Maria · マリア
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15544 Maria · マリア
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15545 Maria · マリア
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15546 Maria · マリア
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15547 Maria · マリア
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15548 Maria · マリア
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15549 Maria · マリア
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15550 Maria · マリア
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15551 Maria · マリア
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15552 Maria · マリア
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15553 Maria · マリア
+> 「グレートブースター!」
+“Great Booster!”
+
+@15554 Maria · マリア
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15555 Maria · マリア
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15556 Maria · マリア
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15557 Maria · マリア
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15558 Maria · マリア
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15559 Maria · マリア
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15560 Maria · マリア
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15561 Maria · マリア
+> 「ミサイル発射ーっ!!」
+“Missile launch!!”
+
+@15562 Maria · マリア
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15563 Maria · マリア
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15564 Maria · マリア
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15565 Maria · マリア
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15566 Maria · マリア
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15567 Maria · マリア
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15568 Maria · マリア
+# 机翻疑问：新译名：大車輪ロケットパーンチッ=Big Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!」
+“Big Wheel Rocket Punch!”
+
+@15569 Maria · マリア
+> 「ボロットパンチよ!」
+“Borot Punch!”
+
+@15570 Maria · マリア
+# 机翻疑问：新译名：スペシャルボロットパーンチッ=Special Borot Punch
+> 「よーし、スペシャルボロットパーンチッ!」
+“All right, Special Borot Punch!”
+
+@15571 Maria · マリア
+> 「スペシャルデラックス……もう、
+>  なんでもいいわ!!」
+“Special Deluxe... Ugh, whatever!!”
+
+@15572 Maria · マリア
+> 「スペシャル……もう、誰よこんなの
+>  考えたの! パンチよ、パンチ!」
+“Special... Ugh, who came up with this?! Punch, it's a punch!”
+
+@15573 Maria · マリア
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15574 Maria · マリア
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15575 Maria · マリア
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15576 Maria · マリア
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15577 Maria · マリア
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15578 Koji · 甲児
+> 「いくぜ、マリアちゃん!」
+“Let's go, Maria!”
+
+@15579 Maria · マリア
+> 「いつでもいいわ、甲児!」
+“Any time, Koji!”
+
+@15580 Koji · 甲児
+> 「よーし、くらいやがれ!」
+“All right, take this!”
+---
+> 「ダブルバーニングファイヤーッ!!」
+“Double Burning Fire!!”
+
+@15581 Maria · マリア
+# 审校：マリア语气更凶，原文“これで終わりにしてやるわ”带有攻击性，初稿“Let's finish this!”偏中性。
+> 「これで終わりにしてやるわ!」
+“I'll put an end to you!”
+
+@15582 Hikaru · ひかる
+> 「いけるわ、マリアちゃん」
+“We can do it, Maria!”
+
+@15583 Maria · マリア
+> 「よぉし、ダブルバーニングファイヤー!!」
+“All right, Double Burning Fire!!”
+
+@15584 Duke · デューク
+> 「いくぞ、マリア!」
+“Here we go, Maria!”
+
+@15585 Maria · マリア
+> 「まっかせて、兄さん!」
+“Leave it to me, brother!”
+
+@15586 Duke · デューク
+> 「よし、ダブルライトニングバスター!!」
+“All right, Double Lightning Buster!!”
+
+@15587 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@15588 Maria · マリア
+> 「わかったわ! 兄さん」
+“Got it, brother!”
+
+@15589 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15590 Maria · マリア
+> 「いいわよ! 兄さん」
+“All right, brother!”
+
+@15591 Hikaru · ひかる
+> 「お願い!」
+“Please!”
+
+@15592 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15593 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15594 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15595 Maria · マリア
+> 「いつでもいいわよ!」
+“Any time!”
+
+@15596 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15597 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15598 Maria · マリア
+> 「いつでもいいわよ!」
+“Any time!”
+
+@15599 Hikaru · ひかる
+> 「こちらも準備完了です!」
+“We're ready too!”

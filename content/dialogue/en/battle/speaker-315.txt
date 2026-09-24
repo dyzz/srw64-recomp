@@ -1,0 +1,89 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14183 Guerrilla · ゲリラ
+> 「………………!!」
+“...!!”
+
+@14184 Guerrilla · ゲリラ
+> 「グオオォォォッ!」
+“Guoooooh!”
+
+@14185 Guerrilla · ゲリラ
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14186 Guerrilla · ゲリラ
+> 「………………」
+“...”
+
+@14187 Guerrilla · ゲリラ
+> 「グギャアァァァァッ!」
+“Gugyaaaaaah!”
+
+@14188 Guerrilla · ゲリラ
+> 「ギエェェェェェーッ!!」
+“Gieeeeeeeh!!”
+
+@14189 Guerrilla · ゲリラ
+> 「……!!」
+“...!!”
+
+@14190 Guerrilla · ゲリラ
+> 「グオオォォォッ!」
+“Guoooooh!”
+
+@14191 Guerrilla · ゲリラ
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14192 Guerrilla · ゲリラ
+> 「………!!!!」
+“...!!!!”
+
+@14193 Guerrilla · ゲリラ
+> 「……!!」
+“...!!”
+
+@14194 Guerrilla · ゲリラ
+> 「ウゥゥゥゥゥッ!」
+“Uuuuuuuh!”
+
+@14195 Guerrilla · ゲリラ
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14196 Guerrilla · ゲリラ
+> 「………………!?」
+“...!?”
+
+@14197 Guerrilla · ゲリラ
+> 「……!!」
+“...!!”
+
+@14198 Guerrilla · ゲリラ
+> 「!!!!」
+“!!!!”
+
+@14199 Guerrilla · ゲリラ
+> 「…………」
+“...”
+
+@14200 Guerrilla · ゲリラ
+> 「………………!?」
+“...!?”
+
+@14201 Guerrilla · ゲリラ
+> 「…………」
+“...”
+
+@14202 Guerrilla · ゲリラ
+> 「…………」
+“...”
+
+@14203 Guerrilla · ゲリラ
+> 「…………」
+“...”
+
+@14204 Guerrilla · ゲリラ
+> 「…………」
+“...”

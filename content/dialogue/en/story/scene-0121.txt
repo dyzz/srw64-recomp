@@ -1,0 +1,232 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50939 Cecily · セシリー
+# 审校：补上开头的左双引号，与后续页的右引号配对。
+> 「……それじゃあなたたちも
+>  レジスタンス部隊に合流するの?」
+“...So you're joining up with the resistance too?”
+
+@50940 Kappei · 勝平
+> 「そうなんだよね。俺は乗り気じゃ
+>  ないんだけど、じっちゃんのいいつけでね」
+“Yeah, that's right. I'm not exactly thrilled about it, but Gramps gave the order.”
+
+@50941 Keiko · 恵子
+> 「地球を救うために、
+>  レジスタンス部隊と協力して
+“We were told to work with the resistance
+---
+>  敵と戦えっていわれたんです」
+and fight the enemy to save the Earth.”
+
+@50942 Remy · レミー
+# 审校：补上开头的左双引号和结尾的右双引号，使引号配对。
+> 「私たちもレジスタンス部隊に
+>  聞きたいことがあるのよ
+“We've got something we want to ask the resistance too...
+---
+>  ……私たちはドクーガっていう組織を
+>  追っているんだけど、帝国軍と
+We're chasing an organization called Docooga, and we got intel that they're
+---
+>  共同で何らかの行動を
+>  起こすっていう情報があったのよ
+working together with the Imperial forces on something.
+---
+>  レジスタンス部隊だったら
+>  何か知っていることが
+We figured if anyone knew something about it,
+---
+>  あるんじゃないかって……」
+it'd be the resistance...”
+
+@50943 Cecily · セシリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「私たちもレジスタンス部隊と
+>  合流しろという命令を受けて
+“We received orders to join up with the resistance too,
+---
+>  動いていたんです」
+so we were on our way.”
+
+@50944 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「でもホント、助かったよ。
+>  こっちのレーダーは故障しちまって
+“But man, are we glad we ran into you. Our radar's busted,
+---
+>  部隊を探すの、
+>  あきらめようかって時だったから」
+and we were just about ready to give up looking for the unit.”
+
+@50945 Shingo · 真吾
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「俺たちもそうだ。なかなか部隊が
+>  見つからないんでどうしようかってな」
+“Same here. We couldn't find the unit anywhere, so we were wondering what to do.”
+
+@50946 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「僕たちはあらかじめ
+>  部隊に連絡して
+“We contacted the unit ahead of time
+---
+>  合流地点を決めていましたからね」
+and set a rendezvous point, you see.”
+
+@50947 Killy · キリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ま、でもそのおかげでこーんなかわいい
+>  お嬢さんたちに出会えたからね
+“Well, but thanks to that, we got to meet such cute young ladies.
+---
+>  俺の運もまだまだ捨てたもんじゃない」
+My luck hasn't run out yet.”
+
+@50948 Remy · レミー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「キリー、いいかげんにしなさいよ。
+>  ……もうそろそろ合流地点よ」
+“Killy, that's enough out of you. ...We're almost at the rendezvous point.”
+
+@50949 Shingo · 真吾
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「あれじゃないか?
+>  レジスタンス部隊ってのは……」
+“Isn't that them? The resistance unit...”
+
+@50950 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「……違うぞ! あれは敵だ!」
+“...No, that's not them! That's the enemy!”
+
+@50951 Killy · キリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「どうもヤバイみたいよ。敵さん、
+>  俺たちのことに気づいたみたい!」
+“This looks bad. The enemy's noticed us!”
+
+@50952 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「迎撃しましょう!
+>  セシリー、準備はいいかい」
+“Let's intercept them! Cecily, are you ready?”
+
+@50953 Cecily · セシリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ビギナ・ギナで出るわ」
+“I'll take out the Vigna-Ghina.”
+
+@50954 Shingo · 真吾
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「俺たちもいきましょうか!
+>  グッドサンダーチーム
+“Let's get going too! Good Thunder Team,
+---
+>  出撃ってことで!」
+moving out!”
+
+@50955 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「俺も燃えてきたぜ!
+>  宇宙太、恵子、出撃だ!」
+“I'm fired up now too! Uchuta, Keiko, let's launch!”
+
+@50956 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「敵部隊を全滅させる!」
+“Wipe out the enemy force!”
+
+@50957 Shingo · 真吾
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ゴーショーグン、ゴー!」
+“GoShogun, go!”
+
+@50958 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ザンボットコンビネーション!」
+“Zambot Combination!”
+
+@50959 Chiyonishiki · 千代錦
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ワン!」
+“Woof!”
+
+@50960 Uchuta · 宇宙太
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ツー!」
+“Two!”
+
+@50961 Keiko · 恵子
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「スリー!」
+“Three!”
+
+@50962 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「な、なんでだよ!」
+“W-why?!”
+
+@50963 Cecily · セシリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「あぁぁ!? シ、シーブック!」
+“Aaaah!? S-Seabook!”
+
+@50964 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「そんなバカな……
+>  クソッ、負けるのかよぉ」
+“That can't be... Damn it, are we gonna lose?”
+
+@50965 Keiko · 恵子
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@50966 Uchuta · 宇宙太
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「うわあぁぁっ!」
+“Uwaaaah!”
+
+@50967 Killy · キリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「まだ『ブロンクスの狼』が
+>  書きあがってないのにね」
+“And I haven't even finished writing ‘The Wolf of Bronx’ yet.”
+
+@50968 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「へへーん、ざまぁみろ」
+“Heh heh, serves you right.”
+
+@50969 Cecily · セシリー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「……なんとか終わったようね」
+“...Looks like it's finally over.”
+
+@50970 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「ああ。……でも戦いは、まだまだ続くさ」
+“Yeah. ...But the fight's still far from over.”
+
+@50971 Remy · レミー
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「見て、真吾。
+>  あれ、レジスタンス部隊じゃないかしら」
+“Look, Shingo. Isn't that the resistance unit?”
+
+@50972 Shingo · 真吾
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「……あれがレジスタンス部隊かい?」
+“...So that's the resistance unit?”
+
+@50973 Seabook · シーブック
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「……どうやらそうみたいです。
+>  合流しましょう」
+“...Seems that way. Let's join up with them.”
+
+@50974 Kappei · 勝平
+# 审校：补上开头的左双引号和结尾的右双引号。
+> 「へへん、いっちょ暴れてやりますか」
+“Heh, let's go raise some hell.”

@@ -1,0 +1,146 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50803 Killy · キリー
+# 审校：“brothers”在原文为“兄弟”，此处泛指兄弟姐妹，改为“siblings”更准确。
+> 「……キリー・ギャグレー作、
+>  『ブロンクスの狼』、第1章
+“...Chapter 1 of ‘The Wolf of Bronx’, by Killy Gagley.
+---
+>  ……俺には何もなかった。親も
+>  兄弟も友だちも何もなかった
+...I had nothing. No parents, no siblings, no friends, nothing.
+---
+>  ……んー、……えーい、ダメだ!
+>  書き直しだ!」
+...Hmm... ...Gah, no good! I'm rewriting it!”
+
+@50804 Remy · レミー
+> 「まだやってるの?
+>  もういいかげん、あきらめたら」
+“Still at it? Come on, it's about time you gave up.”
+
+@50805 Shingo · 真吾
+> 「第1章から全然進んでないじゃ
+>  ないか。もう何年やってるんだ?
+“You haven't gotten past chapter 1 at all. How many years have you been at this?
+---
+>  ホントに出版できるのか」
+Can you really get it published?”
+
+@50806 Killy · キリー
+> 「うるさい! たとえ何年かかろうとだな
+>  俺の歩んできた道を後世に
+“Shut up! Even if it takes years, passing down the path I've walked
+---
+>  残すのは人類にとって非常に
+>  大切なことなんだ」
+to future generations is something incredibly important for mankind.”
+
+@50807 Shingo · 真吾
+> 「後世になっても、それを読んでくれる
+>  人類が生き残っていたらな……」
+“If there's still a mankind left alive to read it in the future...”
+
+@50808 Remy · レミー
+> 「そうよ、今はこの地球を守ることの
+>  ほうが先でしょ」
+“That's right. Right now, protecting this Earth comes first.”
+
+@50809 Killy · キリー
+> 「……しかし、大変なことになっちまった
+>  よな。地球がこんな目にあうなんてよ」
+“...Still, things have gotten serious, haven't they? To think the Earth would end up like this.”
+
+@50810 Remy · レミー
+> 「やっぱりこの一件にはドクーガが、
+>  からんでいるのかしら」
+“I wonder if Docooga really is behind all this after all.”
+
+@50811 Killy · キリー
+> 「奴らなら、やりかねないな」
+“Those guys are certainly capable of it.”
+
+@50812 Shingo · 真吾
+> 「もしそうだとしたら、俺たち
+>  グッドサンダーチームの出番だな」
+“If that's the case, then it's time for us, the Good Thunder Team, to step in.”
+
+@50813 Remy · レミー
+> 「そのことを知るためにも早く
+>  レジスタンス部隊と合流しないとね」
+“And to find that out, we need to link up with the resistance force fast.”
+
+@50814 Killy · キリー
+> 「ん……あれじゃないのか?
+>  噂のレジスタンス部隊とやらは」
+“Hmm... isn't that them? The resistance force we've heard about.”
+
+@50815 Remy · レミー
+> 「……違うみたいね。
+>  どうやら敵部隊のお出ましのようね」
+“...Doesn't look like it. Seems we've got an enemy unit coming our way.”
+
+@50816 Killy · キリー
+> 「奴らを倒さなきゃこれ以上は
+>  先に進めそうもないようだ」
+“Looks like we can't go any further unless we take them down.”
+
+@50817 Shingo · 真吾
+> 「そんじゃ、出撃しますか」
+“Then let's head out.”
+
+@50818 Shingo · 真吾
+> 「ゴーショーグン、ゴー!」
+“GoShogun, go!”
+
+@50819 Killy · キリー
+> 「まだ『ブロンクスの狼』が
+>  書きあがってないのにね」
+“And I still haven't finished ‘The Wolf of Bronx’.”
+
+@50820 Shingo · 真吾
+> 「いっちょあがり!」
+“That's a wrap!”
+
+@50821 Remy · レミー
+> 「……終わったわね。グッドサンダーチーム
+>  ここにありって感じ!」
+“...It's over. This is what it means to be the Good Thunder Team!”
+
+@50822 Killy · キリー
+> 「ああ。これでまた『ブロンクスの狼』
+>  の続きが書けるってもんだ」
+“Yeah. Now I can get back to writing more of ‘The Wolf of Bronx’.”
+
+@50823 Shingo · 真吾
+> 「何いってるんだ。まだ第1章すら
+>  書けていないじゃないか」
+“What are you talking about? You haven't even finished chapter 1.”
+
+@50824 Killy · キリー
+# 审校：“need to”改为“have to”更口语化，符合角色语气。
+> 「ベストセラーっていうものは、最初の
+>  文章が大事なのよ、わかる?
+“For a bestseller, the opening line is what matters, you know?
+---
+>  だからじっくり時間をかけてだね……」
+So I have to take my time with it...”
+
+@50825 Remy · レミー
+> 「最初の文章が書けるのは、
+>  もうちょっと先になりそうよ」
+“It looks like it'll be a while before you can write that opening line.”
+
+@50826 Killy · キリー
+> 「ん!?」
+“Huh?!”
+
+@50827 Remy · レミー
+> 「レジスタンス部隊が見えてきたわ。
+>  合流するわよ」
+“The resistance force is in sight. Let's link up with them.”
+
+@50828 Killy · キリー
+> 「やれやれ、
+>  ローマは一日にしてならず、だね」
+“Good grief. Rome wasn't built in a day, I suppose.”

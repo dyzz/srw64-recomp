@@ -1,0 +1,68 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6941 Howard · ハワード
+# 审校：原文「どうするか」是疑问语气，句末应加问号。
+> 「さて、どうするか」
+“Well then, what to do?”
+
+@6942 Howard · ハワード
+> 「仕方あるまい」
+“It can't be helped.”
+
+@6943 Howard · ハワード
+> 「くっ、総員退避だ!」
+“Ngh, all hands, evacuate!”
+
+@6944 Howard · ハワード
+> 「エンジンが壊れたって構わん!」
+“I don't care if the engine's broken!”
+
+@6945 Howard · ハワード
+> 「左舷2番エンジンが
+>  爆発じゃと!?」
+“Port engine number two exploded?!”
+
+@6946 Howard · ハワード
+> 「第1、第3エンジンまでも
+>  大破か!?」
+“Engines one and three wrecked too?!”
+
+@6947 Howard · ハワード
+> 「被害報告など後でいい!
+>  燃料タンク周辺の消火いそげ!」
+“Damage reports can wait! Hurry, put out the fire around the fuel tanks!”
+
+@6948 Howard · ハワード
+> 「くっ、この船の質量では
+>  機敏には動けん」
+“Ngh, with this ship's mass, we can't move nimbly.”
+
+@6949 Howard · ハワード
+> 「し、姿勢制御いそげ!」
+“H-hurry, attitude control!”
+
+@6950 Howard · ハワード
+> 「なに!?」
+“What?!”
+
+@6951 Howard · ハワード
+> 「各部損害を報告しろ」
+“Report damage to all sections.”
+
+@6952 Howard · ハワード
+> 「射線をはずしたか……」
+“Missed the firing line, did we...”
+
+@6953 Howard · ハワード
+> 「射線をはずしたか……」
+“Missed the firing line, did we...”
+
+@6954 Howard · ハワード
+> 「なんとエネルギー切れとは、
+>  ワシもヤキがまわったわい」
+“To think we're out of energy. I've gotten old.”
+
+@6955 Howard · ハワード
+> 「この船では、あの距離の敵には
+>  攻撃できんな……」
+“With this ship, we can't attack an enemy at that range...”

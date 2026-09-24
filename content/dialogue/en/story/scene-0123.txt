@@ -1,0 +1,320 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50621 主角
+> 「確かこの辺りだったな……」
+“It should be around here...”
+
+@50622 主角
+> 「あそこか……。MSがいる?
+“There it is... An MS?
+---
+>  ……やってみるさ」
+...I'll give it a try.”
+
+@50623 主角
+> 「情報では確かあの区画の建物
+>  のはずだ……」
+“According to the intel, it should be the building in that block...”
+
+@50624 Specials · スペシャルズ
+> 「なんだ……? て、敵だ! 敵襲!!
+>  迎撃しろ!!」
+“What the...? I-It's the enemy! Enemy attack!! Intercept them!!”
+
+@50625 主角
+> 「見つかったか……やっぱり、MSを倒さ
+>  なければだめってことか……」
+“So they found me... I guess I really do have to take out that MS after all...”
+
+@50626 Ark · アーク（按段落 3DD1）
+> 「……他に警備のMSはいないか……」
+“...Are there any other guard MS around...”
+
+@50627 Ark · アーク（按段落 3DD1）
+> 「ここか……どの部屋だ……?」
+“This is the place... Which room is it...?”
+
+@50628 Ark · アーク（按段落 3DD1）
+> 「女だ……薬で眠らされている?
+>  間違いない、この人だ。ひどいことを」
+“A woman... She's been put to sleep with drugs? No doubt about it, it's her. What a horrible thing to do.”
+
+@50629 Bask · バスク
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“What's this, where's the guard detail?! Isn't that the
+# 草稿第 2 页：[主角机体名] over there?!”
+> 「なんだ、警備隊はどうしたか!
+>  あそこにおるのは{HeroMech}の
+---
+>  奴ではないか!」
+
+@50630 Ehrlich · エルリッヒ（按段落 3DD1）
+> (あれは……ソルデファーだと!? バカな、
+>  なぜあの少年が……)
+(That's... the Soldifar?! Impossible, why is that boy here...)
+
+@50631 Specials · スペシャルズ
+> 「バスク特佐、警備隊は全滅の
+>  模様です!」
+“Colonel Bask, the guard detail appears to have been wiped out!”
+
+@50632 Bask · バスク
+> 「ふざけおって! MS隊発進させろ!
+>  奴を逃すな!!」
+“Insolent fools! Launch the MS squad! Don't let him escape!!”
+
+@50633 Ark · アーク（按段落 3DD1）
+> 「しまった、敵の新手か! バスクの
+>  部隊か!? ……あいつもいる!?」
+“Damn, enemy reinforcements! Bask's troops?! ...He's here too?!”
+
+@50634 Bask · バスク
+> 「もっと出せんのか!? 奴を完全に
+>  包囲させろ!」
+“Can't you send out more?! Surround him completely!”
+
+@50635 Specials · スペシャルズ
+> 「現在、機体の整備中でありま
+>  したので、動かせるのはこれだけです」
+“The units are currently undergoing maintenance, so this is all we can deploy.”
+
+@50636 Bask · バスク
+> 「ええい、バカどもが! {PartnerSurname}、
+>  貴様がしとめてみせろ!」
+“Gah, you idiots! {PartnerSurname}, you finish him off!”
+
+@50637 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……了解」
+“...Understood.”
+
+@50638 Ark · アーク（按段落 3DD1）
+> 「{PartnerFull}!
+>  あんたはここがどういう場所か、
+“{PartnerFull}! Do you even know what kind of place
+---
+>  知っているのか!?」
+this is?!”
+
+@50639 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「なに? どういうことだ、少年」
+“What? What are you talking about, boy?”
+
+@50640 Ark · アーク（按段落 3DD1）
+> 「ここは、あんたの恋人が軟禁されて
+>  いる場所なんだぞ! あんたの女は
+“This is where your lover is being held captive! Your woman was
+---
+>  薬で眠らされてた。それをやらせている
+>  のは、バスクだろ!? あんたは、そんな
+drugged into sleep. And the one behind it is Bask, isn't it?! Are you really
+---
+>  場所を守るために、それをやった奴
+>  の命令を聞くのか!?」
+going to obey the man who did that, just to protect this place?!”
+
+@50641 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「な……んだと……?」
+“Wha... what did you say...?”
+
+@50642 Bask · バスク
+> 「ええい、なにをやっておるか!」
+“Gah, what are you doing?!”
+
+@50643 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……特佐、いまの話は事実ですか」
+“...Colonel, is what he just said true?”
+
+@50644 Bask · バスク
+> 「黙れ! 貴様は黙って命令を
+>  聞いておればよい! 従えぬというなら
+“Silence! You just shut up and follow orders! If you refuse,
+---
+>  貴様も女も、あ奴と同様ここで
+>  死んでもらうぞ!」
+then you and your woman will die here, just like him!”
+
+@50645 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「くっ……アリンディーネ……」
+“Ngh... Alindine...”
+
+@50646 Ark · アーク（按段落 3DD1）
+> 「惑わされるんじゃない! わかるか、いま
+>  ここを確保しているのは、俺だ!
+“Don't let him fool you! Understand? I'm the one holding this place now!
+---
+>  連中をここに近づけなければ、
+>  あんたの恋人は助けられる!」
+If we keep them from getting close, your lover can be saved!”
+
+@50647 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「君は……まさかそのために……?」
+“You... was that your reason all along...?”
+
+@50648 Ark · アーク（按段落 3DD1）
+> 「いいのか、いつまでもそんな奴のいいなり
+>  で!? いずれはあんたも女も、そいつに
+“Are you really fine with letting that man control you forever?! Eventually, both you and your woman
+---
+>  殺されるぞ!」
+will be killed by him!”
+
+@50649 Bask · バスク
+> 「小僧が、好き放題いいおって!
+>  早く奴を黙らせい!」
+“You brat, running your mouth as you please! Shut him up, now!”
+
+@50650 Ark · アーク（按段落 3DD1）
+> 「こういう奴は許せないんだって、あんた
+>  だってわかるはずだ! だったら
+“You should understand that men like him can't be forgiven! Then
+---
+>  自分の女を守って見せろよ!」
+prove it by protecting your own woman!”
+
+@50651 Bask · バスク
+> 「よぉし、そのままやってしまえ!」
+“All right, just finish him off as you are!”
+
+@50652 Ark · アーク（按段落 3DD1）
+> 「くっ……」
+“Ngh...”
+
+@50653 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……君のいう通りだ、少年。私は
+>  また、過ちを重ねるところだった」
+“...You're right, boy. I was about to repeat my mistake again.”
+
+@50654 Bask · バスク
+> 「なんだと貴様ぁ! ええい、かまわん!
+>  奴ごとやってしまえ!
+“What did you say, you bastard?! Gah, I don't care! Take him out along with everything else!
+---
+>  生かしてかえすな! 女も殺せ!」
+Don't let him leave alive! Kill the woman too!”
+
+@50655 Ark · アーク（按段落 3DD1）
+> 「敵を近づけたらあんたの女が殺され
+>  る。わかってるな!?」
+“If the enemy gets close, your woman dies. You understand that?!”
+
+@50656 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「了解している!」
+“Understood!”
+
+@50657 主角
+> 「く……しまった……」
+“Ngh... damn...”
+
+@50658 主角
+> 「く……しまった……」
+“Ngh... damn...”
+
+@50659 主角
+> 「ふぅ……どうにか終わったか……」
+“Phew... Somehow it's over...”
+
+@50660 对手
+> 「待たせたな」
+“Sorry to keep you waiting.”
+
+@50661 主角
+> 「……あの人はどうしたんです?」
+“...What happened to that man?”
+
+@50662 对手
+> 「別の町へ身を隠させた。バスクに
+>  見つかることはあるまい
+“I had him hide in another town. Bask won't find him there.
+---
+>  大きな借りができたな、少年」
+You've done me a great favor, boy.”
+
+@50663 主角
+> 「{HeroFull}です。
+>  名乗るのが遅れて悪かったけど
+“It's {HeroFull}. Sorry I was slow to introduce myself,
+---
+>  その少年ってのはやめてもらいたいな」
+but I'd appreciate it if you'd stop calling me 'boy.'”
+
+@50664 对手
+> 「すまん。しかし……まさか君がこのような
+>  行動をとるとはな」
+“My apologies. But... to think you would take such action.”
+
+@50665 主角
+> 「いいたいことはわかりますよ。前のあなた
+>  は信用できなかった。でも、恋人の
+“I understand what you're saying. I couldn't trust the man you were before. But if you're
+---
+>  ために死んでみせようとするあなたなら、
+>  信用できそうな気がしただけです」
+willing to die for your lover, then I felt I could trust you.”
+
+@50666 对手
+> 「そうか……君はあの町で……。
+>  すまん、私は……」
+“I see... You were in that town... Forgive me, I...”
+
+@50667 主角
+> 「……恨みは忘れるといいました。それに
+>  あれがあなたのせいじゃなかったってことは
+“...I said I'd forget my grudge. And I think I understand now
+---
+>  いまは、よくわかっているつもりです」
+that it wasn't your fault.”
+
+@50668 对手
+> 「{HeroName}くん……」
+“{HeroName}...”
+
+@50669 主角
+> 「それで、どうするんです、これから」
+“So what will you do now?”
+
+@50670 对手
+> 「…………{HeroMech}に
+>  行くというのも、よいかもしれんな
+“...Perhaps it wouldn't be a bad idea to go to the {HeroMech}.
+---
+>  君がよければ、だが。君も長い間、
+>  部隊を離れていてはまずいだろう」
+That is, if you don't mind. You can't stay away from your unit for long either.”
+
+@50671 主角
+> 「いいんですか、それで。俺はそういうつも
+>  りで来たわけじゃ……」
+“Is that really all right? That's not why I came here...”
+
+@50672 对手
+> 「いまさら、他にどうしようがある?
+>  まさかこの状況で、戦うことをやめる
+“At this point, what other choice is there? Surely in this situation, you can't choose to stop
+---
+>  選択などできまい。ならば、道は1つ
+>  だと思えるがね。もっとも、
+fighting. If so, then there's only one path. Though I don't know
+---
+>  {HeroMech}が私のような者を
+>  受け入れてくれるかどうかは
+whether the {HeroMech} would even accept
+---
+>  わからないが」
+someone like me.”
+
+@50673 主角
+> 「それは、大丈夫でしょう。エマさん
+>  だってそうだし、うちにはそういう人は
+“That should be fine. Emma is the same, and we have plenty of people
+---
+>  たくさんいますから」
+like that in our ranks.”
+
+@50674 对手
+> 「ならば、やはり共にいかせてもらおう。
+>  かまわないのだろう?」
+“Then I'll come along with you after all. You don't mind, do you?”
+
+@50675 主角
+> 「わかりました、いいでしょう。急ぎますよ」
+“Understood, that's fine. Let's hurry.”

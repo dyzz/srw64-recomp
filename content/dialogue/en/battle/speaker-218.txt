@@ -1,0 +1,116 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7734 Gosterro · ゴステロ
+> 「脳がはちきれそうだぜっ!」
+“My brain's about to burst!”
+
+@7735 Gosterro · ゴステロ
+> 「派手に殺してやるぜっ!!」
+“I'll kill you good and flashy!!”
+
+@7736 Gosterro · ゴステロ
+> 「ひゃっはっはははっ!」
+“Hyahahahaha!”
+
+@7737 Gosterro · ゴステロ
+> 「死ねぇい!」
+“Die!”
+
+@7738 Gosterro · ゴステロ
+> 「ひぃゃーははははははっ!」
+“Hyeahahahahaha!”
+
+@7739 Gosterro · ゴステロ
+> 「逃がすかぁっ!」
+“You're not getting away!”
+
+@7740 Gosterro · ゴステロ
+> 「ちょろちょろ動くんじゃねぇ!」
+“Stop zipping around!”
+
+@7741 Gosterro · ゴステロ
+> 「せっかくだから派手に殺してやるぜ!」
+“Might as well kill you good and flashy!”
+
+@7742 Gosterro · ゴステロ
+> 「俺は不死身だぁ～!!」
+“I'm immortal!!”
+
+@7743 Gosterro · ゴステロ
+> 「ぬぉぉぉぉ、ばかなぁぁぁっ!?」
+“Nooo, impossible!!”
+
+@7744 Gosterro · ゴステロ
+> 「ひぃひひっ、ムザムザ殺されて
+>  たまるかってんだ!!」
+“Heheheh, like hell I'll let you kill me just like that!!”
+
+@7745 Gosterro · ゴステロ
+> 「うぎゃぁぁぁぁっ、脳がぁぁっ!」
+“Ugraaah, my brain!!”
+
+@7746 Gosterro · ゴステロ
+> 「ひっひっひひひひひひっ!」
+“Hihhihihihihihi!”
+
+@7747 Gosterro · ゴステロ
+> 「脳がいてぇぇぇぇーっ!」
+“My brain hurrrts!”
+
+@7748 Gosterro · ゴステロ
+> 「のうっ、脳が痛い!」
+“M-my brain hurts!”
+
+@7749 Gosterro · ゴステロ
+> 「ぬおぉぉっ、脳がはちきれそうだぜぇ!」
+“Nwooo, my brain's about to burst!”
+
+@7750 Gosterro · ゴステロ
+> 「くそぅ、ぶち殺してやる!」
+“Damn it, I'll blow you away!”
+
+@7751 Gosterro · ゴステロ
+> 「ふひゃははははっ!」
+“Fuhyahahahaha!”
+
+@7752 Gosterro · ゴステロ
+> 「ムダなんだよぉっ!」
+“It's pointless!”
+
+@7753 Gosterro · ゴステロ
+> 「ひへへへへっ、効かねぇなぁ?」
+“Heheheheh, that didn't even hurt!”
+
+@7754 Gosterro · ゴステロ
+> 「出力が違うんだ出力がぁっ!」
+“Our output's on another level!”
+
+@7755 Gosterro · ゴステロ
+> 「あいかわらずアマちゃんだなぁ!」
+“Still just an amateur, huh!”
+
+@7756 Gosterro · ゴステロ
+> 「バカがぁ!」
+“You fool!”
+
+@7757 Gosterro · ゴステロ
+> 「まともに俺の相手ができると
+>  思っているのかぁ!?」
+“You think you can take me head-on?!”
+
+@7758 Gosterro · ゴステロ
+> 「ムダなんだよぉっ!」
+“It's pointless!”
+
+@7759 Gosterro · ゴステロ
+> 「ひへへへへっ、効かねぇなぁ?」
+“Heheheheh, that didn't even hurt!”
+
+@7760 Gosterro · ゴステロ
+> 「エネルギー切れだと!?
+>  ふざけるなぁっ!」
+“Out of energy?! Don't give me that!”
+
+@7761 Gosterro · ゴステロ
+> 「届かねぇじゃねぇかよぉ!」
+“It won't even reach!”

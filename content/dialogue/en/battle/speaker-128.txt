@@ -1,0 +1,111 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10002 Gyukenki · 牛剣鬼
+> 「死ねぇっ!」
+“Die!”
+
+@10003 Gyukenki · 牛剣鬼
+> 「うりゃぁーっ!」
+“Hraaah!”
+
+@10004 Gyukenki · 牛剣鬼
+> 「男なら戦え! 戦いぬくのじゃーっ!」
+“If you're a man, fight! Fight to the bitter end!”
+
+@10005 Gyukenki · 牛剣鬼
+> 「地の果てまでも追い求め、必ず
+>  息子の仇をとってやる!」
+“I'll chase you to the ends of the earth and avenge my son!”
+
+@10006 Gyukenki · 牛剣鬼
+> 「お前に引導をわたしてやる!」
+“I'll send you to your grave!”
+
+@10007 Gyukenki · 牛剣鬼
+> 「ゆくぞっ!」
+“Here I come!”
+
+@10008 Gyukenki · 牛剣鬼
+> 「百鬼にも勇士はおる。
+>  正々堂々と勝負だ!」
+“Even among the Hyakki there are brave warriors. Let's have an honest duel!”
+
+@10009 Gyukenki · 牛剣鬼
+> 「いくぞ!」
+“Let's go!”
+
+@10010 Gyukenki · 牛剣鬼
+> 「くらえっ!!」
+“Take this!”
+
+@10011 Gyukenki · 牛剣鬼
+> 「な、なんだと!? このわしが……!?」
+“W-what?! Me, of all people...?!”
+
+@10012 Gyukenki · 牛剣鬼
+> 「ぐぅっ、わしは死なぬっ! わしは
+>  戦うっ! まだまだ戦ってやるわっ!」
+“Guh, I won't die! I'll fight! I'll keep fighting on and on!”
+
+@10013 Gyukenki · 牛剣鬼
+> 「ぬうぅぅっ!!
+>  百鬼老兵は死なぬっ!!」
+“Nghhh!! A Hyakki veteran doesn't die!!”
+
+@10014 Gyukenki · 牛剣鬼
+> 「くっ……若僧に親の気持ちがわかって
+>  たまるかっ!」
+“Hmph... What would a whelp like you know of a parent's feelings?!”
+
+@10015 Gyukenki · 牛剣鬼
+> 「くっ……なかなかやるではないか!」
+“Hmph... You're not half bad!”
+
+@10016 Gyukenki · 牛剣鬼
+> 「な、何じゃと?」
+“W-what did you say?”
+
+@10017 Gyukenki · 牛剣鬼
+> 「ぐっ、このままではすまさんぞっ!」
+“Guh, you won't get away with this!”
+
+@10018 Gyukenki · 牛剣鬼
+> 「こ、この恨みを晴らすまでは、
+>  やられんぞ!」
+“I won't fall until I've settled this grudge!”
+
+@10019 Gyukenki · 牛剣鬼
+> 「若僧め、バカにしおって」
+“You whelp, making a fool of me.”
+
+@10020 Gyukenki · 牛剣鬼
+> 「それで攻めているつもりか!」
+“You call that an attack?!”
+
+@10021 Gyukenki · 牛剣鬼
+> 「なに!? バカにするな!」
+“What?! Don't mock me!”
+
+@10022 Gyukenki · 牛剣鬼
+> 「どぉうしたぁーっ!」
+“What's the matter?!”
+
+@10023 Gyukenki · 牛剣鬼
+> 「それしきの攻撃など!」
+“An attack like that is nothing!”
+
+@10024 Gyukenki · 牛剣鬼
+> 「効かぬ、効かぬぞ!」
+“It doesn't hurt, not one bit!”
+
+@10025 Gyukenki · 牛剣鬼
+> 「そんなのは効かんのじゃ!」
+“That won't do a thing to me!”
+
+@10026 Gyukenki · 牛剣鬼
+> 「エネルギーが!? おのれぇ～」
+“My energy?! Curse you...”
+
+@10027 Gyukenki · 牛剣鬼
+> 「ええぃ、正々堂々と戦え!」
+“Tch, fight me fair and square!”

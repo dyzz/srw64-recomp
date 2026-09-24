@@ -1,0 +1,506 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15200 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15201 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15202 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15203 Jun · ジュン
+> 「いつでもいいわよ!」
+“I'm ready any time!”
+
+@15204 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15205 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15206 Sayaka · さやか
+> 「いつでもいいわ!」
+“I'm ready anytime!”
+
+@15207 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's give 'em hell!”
+
+@15208 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15209 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15210 Sayaka · さやか
+> 「いつでもいいわ!」
+“I'm ready anytime!”
+
+@15211 Jun · ジュン
+> 「こっちもオッケイよ!」
+“I'm good to go too!”
+
+@15212 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15213 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15214 Jun · ジュン
+> 「こっちはオッケイよ!」
+“I'm good to go!”
+
+@15215 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's give 'em hell!”
+
+@15216 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15217 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15218 Maria · マリア
+> 「いつでもいいわよ!」
+“I'm ready anytime!”
+
+@15219 Hikaru · ひかる
+> 「こちらも準備完了です!」
+“Ready here too!”
+
+@15220 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15221 Hayato · ハヤト
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ゲッターアーム!!」
+“Getter Arm!!”
+
+@15222 Hayato · ハヤト
+> 「ゲッターアーム!!」
+“Getter Arm!!”
+
+@15223 Hayato · ハヤト
+> 「ゲッタードリル!!」
+“Getter Drill!!”
+
+@15224 Hayato · ハヤト
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ゲッタードリル!!」
+“Getter Drill!!”
+
+@15225 Hayato · ハヤト
+> 「ドリルストーム!!」
+“Drill Storm!!”
+
+@15226 Hayato · ハヤト
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ドリルストーム!!」
+“Drill Storm!!”
+
+@15227 Hayato · ハヤト
+> 「ドリルパンチ!!」
+“Drill Punch!!”
+
+@15228 Hayato · ハヤト
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ドリルパンチ!!」
+“Drill Punch!!”
+
+@15229 Hayato · ハヤト
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15230 Hayato · ハヤト
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15231 Hayato · ハヤト
+> 「ドリルアーム!!」
+“Drill Arm!!”
+
+@15232 Hayato · ハヤト
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「ドリルアーム!!」
+“Drill Arm!!”
+
+@15233 Hayato · ハヤト
+> 「ライガーミサイルっ!!」
+“Liger Missile!!”
+
+@15234 Hayato · ハヤト
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「ライガーミサイルっ!!」
+“Liger Missile!!”
+
+@15235 Hayato · ハヤト
+> 「チェーンアタック!!」
+“Chain Attack!!”
+
+@15236 Hayato · ハヤト
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「チェーンアタック!!」
+“Chain Attack!!”
+
+@15237 Hayato · ハヤト
+> 「ミラージュドリル!!」
+“Mirage Drill!!”
+
+@15238 Hayato · ハヤト
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ミラージュドリル!!」
+“Mirage Drill!!”
+
+@15239 Hayato · ハヤト
+> 「ドリルテンペスト!!」
+“Drill Tempest!!”
+
+@15240 Hayato · ハヤト
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ドリルテンペスト!!」
+“Drill Tempest!!”
+
+@15241 Hayato · ハヤト
+> 「ゲッタービジョン!!」
+“Getter Vision!!”
+
+@15242 Hayato · ハヤト
+> 「マッハスペシャル!!」
+“Mach Special!!”
+
+@15243 Hayato · ハヤト
+> 「真・マッハスペシャル!!」
+“True Mach Special!!”
+
+@15244 Benkei · ベンケイ
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15245 Benkei · ベンケイ
+> 「ゲッターサイクロン!!」
+“Getter Cyclone!!”
+
+@15246 Benkei · ベンケイ
+> 「ストロングミサイル!!」
+“Strong Missile!!”
+
+@15247 Benkei · ベンケイ
+# 审校：词表必用译名为 Daisetsuzan Oroshi，原文的间隔号是喊招时的拖长强调，不应拆成 Dai-set-su-zan O-ro-shi。
+> 「うおおお!!」
+“Uwooooh!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15248 Benkei · ベンケイ
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「うおおおーっ!!」
+“Uwooooh!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15249 Benkei · ベンケイ
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15250 Benkei · ベンケイ
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「行くぞっ!!」
+“Here I go!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15251 Benkei · ベンケイ
+> 「くらえっ!!」
+“Take this!!”
+
+@15252 Benkei · ベンケイ
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15253 Benkei · ベンケイ
+> 「これでもくらえっ!!」
+“Try this one!!”
+
+@15254 Benkei · ベンケイ
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15255 Benkei · ベンケイ
+> 「こいつでとどめだっ!!」
+“This one's the finisher!!”
+
+@15256 Benkei · ベンケイ
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15257 Benkei · ベンケイ
+> 「大雪山おろし、
+>  二段返しぃぃぃーっ!!」
+“Daisetsuzan Oroshi, second rooound!!”
+
+@15258 Benkei · ベンケイ
+> 「おりゃあっ!!」
+“Hraaah!!”
+
+@15259 Benkei · ベンケイ
+> 「大雪山おろし、
+>  二段返しじゃーいっ!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15260 Musashi · ムサシ
+> 「つっこむぞぉっ!」
+“Charging in!”
+
+@15261 Musashi · ムサシ
+> 「ゲッターミサイル!」
+“Getter Missile!”
+
+@15262 Musashi · ムサシ
+> 「よし! ゲッターミサイル!」
+“All right! Getter Missile!”
+
+@15263 Musashi · ムサシ
+> 「ゲッタースリーぶちかましーっ!」
+“Getter-3, smash 'em!!”
+
+@15264 Musashi · ムサシ
+> 「よぉしいまだ! いくぞぉーっ!」
+“All right, now! Here we go!”
+---
+> 「ゲッタースリーぶちかましーっ!」
+“Getter-3, smash 'em!!”
+
+@15265 Musashi · ムサシ
+> 「それっ!」
+“There!”
+---
+> 「大雪山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15266 Musashi · ムサシ
+> 「このっ!」
+“Why you!”
+---
+> 「大雪山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15267 Musashi · ムサシ
+# 审校：原文间隔号是喊招拖长，应使用词表译名 Daisetsuzan Oroshi 并保留拖长音，而不是拆成 Dai-set-su-zan。
+> 「大・雪・山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15268 Musashi · ムサシ
+> 「ぬうぅぅっ!」
+“Nghhh!”
+---
+> 「大雪山おぉろぉしぃぃぃーっ!」
+“Daisetsuzaaan Oroshiii!!”
+
+@15269 Boryuki · 暴竜鬼
+# 审校：原文以「开头，应使用弯引号“，且句末感叹号保留。
+> 「イサムの名ぐらい、いつでも
+>  捨ててやらぁ!」
+“I can throw away the name Isamu anytime!”
+
+@15270 Boryuki · 暴竜鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「俺はもう、イサムじゃない!!」
+“I'm not Isamu anymore!!”
+
+@15271 Boryuki · 暴竜鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「いくぞ、隼人!!」
+“Let's go, Hayato!!”
+
+@15272 Boryuki · 暴竜鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「隼人、俺のために死ね!!」
+“Hayato, die for me!!”
+
+@15273 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ミサイル発射!」
+“Missile, fire!”
+
+@15274 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「受けろ! ミサイル!!」
+“Take this! Missile!!”
+
+@15275 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「そこだ!!」
+“Right there!!”
+
+@15276 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15277 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15278 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15279 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15280 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15281 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15282 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15283 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15284 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15285 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15286 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15287 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15288 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15289 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15290 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15291 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15292 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15293 Tekkoki · 鉄甲鬼
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15294 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15295 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15296 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15297 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”
+
+@15298 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”
+
+@15299 Emperor Burai · ブライ大帝
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”

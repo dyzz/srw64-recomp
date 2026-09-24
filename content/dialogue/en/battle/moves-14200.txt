@@ -1,0 +1,325 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14227 Kou · コウ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14228 Gato · ガトー
+> 「エネルギー充填……
+>  ハイメガキャノン発射!」
+“Energy charge... High Mega Cannon, fire!”
+
+@14229 Gato · ガトー
+> 「ダミーごときにかかるとは……未熟!」
+“Falling for a mere dummy... Amateur!”
+
+@14230 Gato · ガトー
+> 「ときには、このような手も使わせて
+>  もらう!」
+“Sometimes, I'll use a trick like this too!”
+
+@14231 Gato · ガトー
+> 「甘いな! それではダミーをつぶす
+>  程度しかできん!」
+“Too naive! That's only good enough to smash a dummy!”
+
+@14232 Shiro · シロー
+> 「銃身が焼きつくまで撃ちつづけて
+>  やる!」
+“I'll keep firing till the barrel burns out!”
+
+@14233 Shiro · シロー
+> 「ビームのエネルギーはもつのか!?」
+“Will the beam energy hold out?!”
+
+@14234 Shiro · シロー
+> 「あたれぇっ!」
+“Hit 'em!”
+
+@14235 Shiro · シロー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14236 Aina · アイナ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14237 Seabook · シーブック
+> 「ファンネル!!」
+“Funnel!!”
+
+@14238 Seabook · シーブック
+> 「いけっ!ファンネル!!」
+“Go! Funnel!!”
+
+@14239 Seabook · シーブック
+# 审校：「これならばっ!」是“这样的话就能行”的喊叫，原译“With this, I can!”不完整且不像战斗台词，改为更自然的战斗短句。
+> 「これならばっ! ファンネルっ!」
+“This'll do it! Funnel!”
+
+@14240 Seabook · シーブック
+> 「いけっ!フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14241 Seabook · シーブック
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14242 Seabook · シーブック
+> 「やらせるかっ! フィンファンネルっ!」
+“I won't let you! Fin Funnels!”
+
+@14243 Seabook · シーブック
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14244 Cecily · セシリー
+# 审校：「ファンネルなら!」是“如果是浮游炮的话（就能行）”的省略，原译“If it's a Funnel!”意思不完整，改为更明确的战斗台词。
+> 「ファンネルなら!」
+“Then I'll use a Funnel!”
+
+@14245 Cecily · セシリー
+> 「いって、フィンファンネル!」
+“Go, Fin Funnels!”
+
+@14246 Cecily · セシリー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14247 Ortega · オルテガ
+> 「もらった!!」
+“Got you!!”
+
+@14248 Gaia · ガイア
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We're launching the Jet Stream Attack!”
+
+@14249 Ortega · オルテガ
+> 「おう!」
+“Yeah!”
+
+@14250 Mash · マッシュ
+> 「了解だ、ガイア!」
+“Roger, Gaia!”
+
+@14251 Mash · マッシュ
+> 「もらった!」
+“Got you!”
+
+@14252 Gaia · ガイア
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We're launching the Jet Stream Attack!”
+
+@14253 Ortega · オルテガ
+> 「おう!」
+“Yeah!”
+
+@14254 Mash · マッシュ
+> 「了解だ、ガイア!」
+“Roger, Gaia!”
+
+@14255 Gaia · ガイア
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We're launching the Jet Stream Attack!”
+
+@14256 Ortega · オルテガ
+> 「おう!」
+“Yeah!”
+
+@14257 Mash · マッシュ
+> 「了解だ、ガイア!」
+“Roger, Gaia!”
+
+@14258 Gaia · ガイア
+# 审校：原译已准确自然，无需修改。
+> 「ドライセンとてこういう芸当はできる!」
+“Even a Dreissen can pull off a trick like this!”
+
+@14259 Wufei · 五飛
+> 「目標捕捉、いくぞナタク!!」
+“Target acquired, let's go, Nataku!!”
+
+@14260 Wufei · 五飛
+> 「ナタクをなめるなあっ!!」
+“Don't underestimate Nataku!!”
+
+@14261 Wufei · 五飛
+> 「目標捕捉、いくぞナタク!!」
+“Target acquired, let's go, Nataku!!”
+
+@14262 Wufei · 五飛
+> 「ナタクをなめるなあっ!!」
+“Don't underestimate Nataku!!”
+
+@14263 Wufei · 五飛
+> 「目標捕捉、いくぞナタク!!」
+“Target acquired, let's go, Nataku!!”
+
+@14264 Wufei · 五飛
+> 「ナタクをなめるなあっ!!」
+“Don't underestimate Nataku!!”
+
+@14265 Wufei · 五飛
+> 「女か、だから甘い」
+“A woman, huh. That's why you're soft.”
+
+@14266 Wufei · 五飛
+> 「くっ! すまん、ナタク!」
+“Ngh! Sorry, Nataku!”
+
+@14267 Wufei · 五飛
+> 「くっ! すまん、ナタク!」
+“Ngh! Sorry, Nataku!”
+
+@14268 Wufei · 五飛
+> 「くっ! すまん、ナタク!」
+“Ngh! Sorry, Nataku!”
+
+@14269 Wufei · 五飛
+> 「くっ……ナタク、俺たちはまだ
+>  死ぬわけにはいかないんだ……」
+“Ngh... Nataku, we can't afford to die yet...”
+
+@14270 Wufei · 五飛
+> 「くっ……ナタク、俺たちはまだ
+>  死ぬわけにはいかないんだ……」
+“Ngh... Nataku, we can't afford to die yet...”
+
+@14271 Wufei · 五飛
+> 「くっ……ナタク、俺たちはまだ
+>  死ぬわけにはいかないんだ……」
+“Ngh... Nataku, we can't afford to die yet...”
+
+@14272 Duo · デュオ
+# 审校：「さあて、いっちょ行きますか!」语气更接近“好嘞，来一场吧”，原译“Well then”偏正式，改为更口语化的“All right”。
+> 「さあて、いっちょ行きますか!」
+“All right, let's get this show on the road!”
+
+@14273 Duo · デュオ
+# 审校：「突撃あるのみ!!」是“只有突击一途”的热血喊叫，原译“Nothing but a charge!!”略显生硬，改为更自然的“All we can do is charge!!”。
+> 「突撃あるのみ!!」
+“All we can do is charge!!”
+
+@14274 Duo · デュオ
+> 「こちらデュオ!
+>  切って切って切りまくるぜ!」
+“This is Duo! I'm gonna slice, slice, and keep on slicing!”
+
+@14275 Duo · デュオ
+> 「おらおらっ! 死神様のおとおりだ!」
+“Come on, come on! The Grim Reaper's passing through!”
+
+@14276 Duo · デュオ
+> 「おらおらっ! 死神様のおとおりだ!」
+“Come on, come on! The Grim Reaper's passing through!”
+
+@14277 Duo · デュオ
+> 「おらおらっ! 死神様のおとおりだ!」
+“Come on, come on! The Grim Reaper's passing through!”
+
+@14278 Duo · デュオ
+> 「所詮コピーじゃねぇか!」
+“You're just a copy after all!”
+
+@14279 Duo · デュオ
+> 「所詮コピーじゃねぇか!」
+“You're just a copy after all!”
+
+@14280 Duo · デュオ
+> 「所詮コピーじゃねぇか!」
+“You're just a copy after all!”
+
+@14281 Duo · デュオ
+# 审校：原译“could I call myself”语法正确但语气略弱，改为“how could I call myself”更贴合反问语气。
+> 「人形ごときに負けてて
+>  ガンダムのパイロットがつとまるかぁ!」
+“If I lost to a mere puppet, how could I call myself a Gundam pilot?!”
+
+@14282 Duo · デュオ
+> 「人形ごときに負けてて
+>  ガンダムのパイロットがつとまるかぁ!」
+“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
+
+@14283 Duo · デュオ
+> 「人形ごときに負けてて
+>  ガンダムのパイロットがつとまるかぁ!」
+“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
+
+@14284 Duo · デュオ
+> 「ちっ、出力ゼロか。
+>  このデスサイズも死んだな……」
+“Tch, output zero, huh. This Deathscythe's dead too...”
+
+@14285 Duo · デュオ
+> 「ちっ、出力ゼロか。
+>  このデスサイズも死んだな……」
+“Tch, output zero, huh. This Deathscythe's dead too...”
+
+@14286 Duo · デュオ
+> 「ちっ、出力ゼロか。
+>  このデスサイズも死んだな……」
+“Tch, output zero, huh. This Deathscythe's dead too...”
+
+@14287 Duo · デュオ
+> 「その程度で死神がとめられると
+>  思うなよ!」
+“Don't think that's enough to stop the Grim Reaper!”
+
+@14288 Duo · デュオ
+> 「その程度で死神がとめられると
+>  思うなよ!」
+“Don't think that's enough to stop the Grim Reaper!”
+
+@14289 Duo · デュオ
+> 「その程度で死神がとめられると
+>  思うなよ!」
+“Don't think that's enough to stop the Grim Reaper!”
+
+@14290 Duo · デュオ
+# 审校：原译“won't fall to a beam like that”意思接近，但「このデスサイズがそんなビームごときで!」是“这台死神高达岂会被那种光束怎样”的省略，改为“won't be stopped by”更明确。
+> 「このデスサイズがそんなビームごときで!」
+“This Deathscythe won't be stopped by a beam like that!”
+
+@14291 Duo · デュオ
+> 「このデスサイズがそんなビームごときで!」
+“This Deathscythe won't fall to a beam like that!”
+
+@14292 Duo · デュオ
+> 「このデスサイズがそんなビームごときで!」
+“This Deathscythe won't fall to a beam like that!”
+
+@14293 Heero · ヒイロ
+> 「だまれゼロ!」
+“Shut up, Zero!”
+
+@14294 Heero · ヒイロ
+> 「だまれゼロ!」
+“Shut up, Zero!”
+
+@14295 Heero · ヒイロ
+> 「だまれゼロ!」
+“Shut up, Zero!”
+
+@14296 Heero · ヒイロ
+> 「だまれエピオン!」
+“Shut up, Epyon!”
+
+@14297 Heero · ヒイロ
+> 「だまれエピオン!」
+“Shut up, Epyon!”
+
+@14298 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14299 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”

@@ -1,0 +1,106 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7788 Borne · ボーン
+> 「しえぇぇぇっ!!」
+“Sheeeaaah!!”
+
+@7789 Borne · ボーン
+> 「地獄に送ってやるっ!!」
+“I'll send you to hell!!”
+
+@7790 Borne · ボーン
+> 「殺しあいは数字じゃねえぇ!」
+“Killing ain't about the numbers!”
+
+@7791 Borne · ボーン
+> 「うへへへへへっ!」
+“Uh heh heh heh heh!”
+
+@7792 Borne · ボーン
+> 「うひひひひひひーっ!」
+“Uhee hee hee hee hee!”
+
+@7793 Borne · ボーン
+> 「げへへへへへへっ!」
+“Geh heh heh heh heh!”
+
+@7794 Borne · ボーン
+> 「いた、いた、いたぞ～!!」
+“There, there, there he is!!”
+
+@7795 Borne · ボーン
+> 「ふざけるなっ!!」
+“Don't screw with me!!”
+
+@7796 Borne · ボーン
+> 「踊れ、踊れぇ!」
+“Dance, dance!”
+
+@7797 Borne · ボーン
+> 「ぐっ……ぐわぁぁぁっ!!」
+“Guh... guwaaah!!”
+
+@7798 Borne · ボーン
+> 「おわぁぁぁぁぁーっ!?」
+“Owaaaaaah!?”
+
+@7799 Borne · ボーン
+> 「俺を殺そうとしやがって……
+>  ゆるせねえ!!」
+“You tried to kill me... I won't forgive you!!”
+
+@7800 Borne · ボーン
+> 「うわあっ!!」
+“Uwaah!!”
+
+@7801 Borne · ボーン
+> 「うぅぅぅっ、ちきしょう!」
+“Uuugh, damn it!”
+
+@7802 Borne · ボーン
+> 「お、俺をぉぉぉぉ!」
+“M-meeeeee!”
+
+@7803 Borne · ボーン
+> 「い、いかん!?」
+“Th-this is bad!?”
+
+@7804 Borne · ボーン
+> 「このやろぉっ!!」
+“You bastard!!”
+
+@7805 Borne · ボーン
+> 「ちきしょぉぉっ!」
+“Damn iiiit!”
+
+@7806 Borne · ボーン
+> 「ヘヘヘヘヘヘッ、ハハハハハハッ!!」
+“Heh heh heh heh, ha ha ha ha!!”
+
+@7807 Borne · ボーン
+> 「フッハッハ! どうしたぁっ!?」
+“Fuhah hah! What's wrong!?”
+
+@7808 Borne · ボーン
+> 「ケッ!」
+“Keh!”
+
+@7809 Borne · ボーン
+> 「ひぃえへへへっ、のろまめぇ!」
+“Hee heh heh, you slowpoke!”
+
+@7810 Borne · ボーン
+> 「もう終わりか? ひへへへへへ!」
+“Is that all? Hee heh heh heh heh!”
+
+@7811 Borne · ボーン
+> 「弾切れぇ!?」
+“Out of ammo!?”
+
+@7812 Borne · ボーン
+> 「くそぉ、エネルギーが切れてやがる!」
+“Damn, the energy's run dry!”
+
+@7813 Borne · ボーン
+> 「遠くて攻撃できねぇ!」
+“Too far to attack!”

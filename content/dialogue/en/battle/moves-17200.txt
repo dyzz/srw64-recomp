@@ -1,0 +1,446 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17200 Chibodee · チボデー
+> 「一発で決めてやるぜ」
+“I'll finish it in one shot!”
+
+@17201 Chibodee · チボデー
+> 「覚悟しな! ウィナーは俺たちだぜ!」
+“Get ready! The winners are us!”
+
+@17202 Chibodee · チボデー
+> 「いくぜぇっ!」
+“Let's go!”
+
+@17203 Chibodee · チボデー
+> 「くらいな!」
+“Take this!”
+
+@17204 Chibodee · チボデー
+> 「シューッ!」
+“Shoo!”
+
+@17205 Chibodee · チボデー
+> 「ギガンテックマグナムゥ、シュート!」
+“Gigantic Magnum, shoot!”
+
+@17206 Chibodee · チボデー
+> 「うぉぉぉっ」
+“Whoaah!”
+---
+> 「サイクロンパンチィィィ!」
+“Cyclone Punch!”
+
+@17207 Chibodee · チボデー
+> 「サイクロンパンチィィィ!」
+“Cyclone Punch!”
+
+@17208 Chibodee · チボデー
+> 「バーニングパンチ!」
+“Burning Punch!”
+
+@17209 Chibodee · チボデー
+> 「バーニングパンチ! シュゥトォォ!」
+“Burning Punch! Shoot!”
+
+@17210 Chibodee · チボデー
+# 审校：ゴウネェェツ应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「ゴウネェェツ、マシンガンンパァァンチッ!」
+“Burning heat, Machine Gun Paaanch!”
+
+@17211 Chibodee · チボデー
+# 审校：豪熱应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「豪熱! マシンガン、パァァァンチィ!」
+“Burning heat! Machine Gun, Paaanch!”
+
+@17212 Chibodee · チボデー
+# 审校：ゴウネェェツ应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「ゴウネェェツ、マシンガンンパァァンチッ!」
+“Burning heat, Machine Gun Paaanch!”
+
+@17213 Chibodee · チボデー
+# 审校：豪熱应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「豪熱! マシンガン、パァァァンチィ!」
+“Burning heat! Machine Gun, Paaanch!”
+
+@17214 Domon · ドモン
+> 「いくぞ、お前たちぃ!!」
+“Let's go, you guys!!”
+
+@17215 Chibodee · チボデー
+> 「おおっ!」
+“Oh!”
+
+@17216 Chibodee · チボデー
+> 「この魂の炎!」
+“This flame of our souls!”
+
+@17217 George · ジョルジュ
+> 「極限まで高めれば!」
+“If we raise it to the limit!”
+
+@17218 Sai Saici · サイ・サイシー
+> 「倒せないものなど!」
+“There's nothing we can't beat!”
+
+@17219 Argo · アルゴ
+> 「なにもない!」
+“Nothing at all!”
+
+@17220 Domon · ドモン
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Burning hot! Shuffle Alliance Fist!!”
+
+@17221 Sai Saici · サイ・サイシー
+# 审校：招式名按词表使用 Shadowless Kick，去掉多余拉长音。
+> 「無影脚ぅぅぅ!」
+“Shadowless Kick!”
+
+@17222 Sai Saici · サイ・サイシー
+> 「こうなったら決めてやる!」
+“If it comes to this, I'll finish it!”
+---
+> 「まわれ、フェイロンフラッグ!」
+“Spin, Feilong Flag!”
+
+@17223 Sai Saici · サイ・サイシー
+> 「フェイロンフラッグ!」
+“Feilong Flag!”
+
+@17224 Sai Saici · サイ・サイシー
+> 「はしれ! パオペイ!」
+“Run, Paopei!”
+
+@17225 Sai Saici · サイ・サイシー
+> 「ドラゴンファイヤー!」
+“Dragon Fire!”
+
+@17226 Sai Saici · サイ・サイシー
+> 「宝華教典………十絶陣!!」
+“Hoka Kyoten... Juuzetsujin!!”
+---
+> 「たああぁぁぁーっ!!」
+“Taaahhh!!”
+
+@17227 Sai Saici · サイ・サイシー
+> 「いっくぞぉっ!!」
+“Here I gooo!!”
+---
+> 「宝華教典、十絶陣!!」
+“Hoka Kyoten, Juuzetsujin!!”
+
+@17228 Sai Saici · サイ・サイシー
+> 「天に竹林地に少林寺、
+>  目にもの見せるは最終秘伝!」
+“Bamboo grove in the heavens, Shaolin on earth, the final secret I show you!”
+
+@17229 Sai Saici · サイ・サイシー
+> 「真・流星胡蝶剣!」
+“Shin Ryusei Kochoken!”
+
+@17230 Sai Saici · サイ・サイシー
+> 「天に竹林地に少林寺、
+>  目にもの見せよ最終奥義ぃ!」
+“Bamboo grove in the heavens, Shaolin on earth, behold the final secret!”
+
+@17231 Sai Saici · サイ・サイシー
+> 「いっくぞぉ! 真・流星胡蝶剣」
+“Here I gooo! Shin Ryusei Kochoken!”
+
+@17232 Sai Saici · サイ・サイシー
+> 「天に竹林地に少林寺、
+>  目にもの見せるは最終秘伝!」
+“Bamboo grove in the heavens, Shaolin on earth, the final secret I show you!”
+
+@17233 Sai Saici · サイ・サイシー
+> 「真・流星胡蝶剣!」
+“Shin Ryusei Kochoken!”
+
+@17234 Sai Saici · サイ・サイシー
+> 「天に竹林地に少林寺、
+>  目にもの見せよ最終奥義ぃ!」
+“Bamboo grove in the heavens, Shaolin on earth, behold the final secret!”
+
+@17235 Sai Saici · サイ・サイシー
+> 「いっくぞぉ! 真・流星胡蝶剣」
+“Here I gooo! Shin Ryusei Kochoken!”
+
+@17236 Domon · ドモン
+> 「いくぞ、お前たちぃ!!」
+“Let's go, you guys!!”
+
+@17237 Chibodee · チボデー
+> 「おおっ!」
+“Oh!”
+
+@17238 Chibodee · チボデー
+> 「この魂の炎!」
+“This flame of our souls!”
+
+@17239 George · ジョルジュ
+> 「極限まで高めれば!」
+“If we raise it to the limit!”
+
+@17240 Sai Saici · サイ・サイシー
+> 「倒せないものなど!」
+“There's nothing we can't beat!”
+
+@17241 Argo · アルゴ
+> 「なにもない!」
+“Nothing at all!”
+
+@17242 Domon · ドモン
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Burning hot! Shuffle Alliance Fist!!”
+
+@17243 George · ジョルジュ
+> 「ローズ!」
+“Rose!”
+
+@17244 George · ジョルジュ
+> 「いくぞ、ガンダムローズ!」
+“Let's go, Gundam Rose!”
+
+@17245 George · ジョルジュ
+> 「この剣が受けられますか!?」
+“Can you take this sword?!”
+
+@17246 George · ジョルジュ
+> 「ローゼスビット!」
+“Rose Bits!”
+
+@17247 George · ジョルジュ
+> 「ゆけ! ローゼスビットォッ!」
+“Go! Rose Bits!”
+
+@17248 George · ジョルジュ
+> 「受けよ我が洗礼!」
+“Receive my baptism!”
+---
+> 「ローゼスビット!」
+“Rose Bits!”
+
+@17249 George · ジョルジュ
+> 「いかがかな、
+>  変幻自在のローゼスビットは!?」
+“How do you like it, my ever-changing Rose Bits?!”
+
+@17250 George · ジョルジュ
+> 「受けよ我が洗礼!」
+“Receive my baptism!”
+---
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17251 George · ジョルジュ
+> 「ゆくぞ!」
+“Here I go!”
+---
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17252 George · ジョルジュ
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17253 George · ジョルジュ
+> 「ゆけっ、ローゼスハリケーン!」
+“Go, Rose Hurricane!”
+
+@17254 George · ジョルジュ
+> 「とどめ! ローゼスハリケーン!!」
+“Finishing blow! Rose Hurricane!!”
+
+@17255 George · ジョルジュ
+> 「このエネルギーの渦から逃がれることは
+>  不可能!」
+“There's no escaping this vortex of energy!”
+
+@17256 George · ジョルジュ
+> 「ゆけっ、ローゼスハリケーン!」
+“Go, Rose Hurricane!”
+
+@17257 George · ジョルジュ
+> 「とどめ! ローゼスハリケーン!!」
+“Finishing blow! Rose Hurricane!!”
+
+@17258 George · ジョルジュ
+> 「このエネルギーの渦から逃がれることは
+>  不可能!」
+“There's no escaping this vortex of energy!”
+
+@17259 Domon · ドモン
+> 「いくぞ、お前たちぃ!!」
+“Here we go, you guys!!”
+
+@17260 Chibodee · チボデー
+> 「おおっ!」
+“Ohh!”
+
+@17261 Chibodee · チボデー
+> 「この魂の炎!」
+“This flame of the soul!”
+
+@17262 George · ジョルジュ
+> 「極限まで高めれば!」
+“Raise it to the limit!”
+
+@17263 Sai Saici · サイ・サイシー
+> 「倒せないものなど!」
+“There's nothing we can't beat!”
+
+@17264 Argo · アルゴ
+> 「なにもない!」
+“Nothing at all!”
+
+@17265 Domon · ドモン
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Explosive Heat! Shuffle Alliance Fist!!”
+
+@17266 George · ジョルジュ
+# 审校：ガンダムロォォォズ的拖长音应落在Rose上，改为Gundam Rose，保持招式名与词表一致。
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I won't lose! Here I go, Gundam Rose!”
+
+@17267 George · ジョルジュ
+# 审校：同上，修正拖长音位置并统一为Gundam Rose。
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I won't lose! Here I go, Gundam Rose!”
+
+@17268 George · ジョルジュ
+> 「ガ、ガンダムローズが……」
+“G-Gundam Rose is...”
+
+@17269 George · ジョルジュ
+> 「ガ、ガンダムローズが……」
+“G-Gundam Rose is...”
+
+@17270 George · ジョルジュ
+> 「それではこのガンダムローズに、
+>  傷ひとつつきませんよ」
+“You won't put a single scratch on this Gundam Rose.”
+
+@17271 George · ジョルジュ
+> 「それではこのガンダムローズに、
+>  傷ひとつつきませんよ」
+“You won't put a single scratch on this Gundam Rose.”
+
+@17272 Markiroot · マーキロット
+> 「くらえ、裁きの雷!」
+“Take this, lightning of judgment!”
+
+@17273 Markiroot · マーキロット
+> 「ゼウスガンダム最大出力!」
+“Zeus Gundam at maximum output!”
+
+@17274 Markiroot · マーキロット
+> 「そんな攻撃ではこのゼウスガンダムに
+>  傷ひとつ、つかぬわ!」
+“An attack like that won't leave a single scratch on this Zeus Gundam!”
+
+@17275 Kyral · キラル
+> 「このまま焼け死ね!」
+“Burn to death right there!”
+
+@17276 Kyral · キラル
+> 「これはどうだ! 煉獄熱波ぁっ!」
+“How about this! Purgatory Heat Wave!”
+
+@17277 Kyral · キラル
+> 「キラル殺法……地獄曼陀羅!」
+“Kyral's Killing Art... Hell Mandala!”
+
+@17278 Kyral · キラル
+> 「全員構えぃ!
+>  最大出力、仕掛けるぞぉ!」
+“Everyone, ready! Maximum output, we're going in!”
+
+@17279 Kyral · キラル
+> 「キラル殺法、曼陀羅円陣!
+>  極楽往生ぅぅぅ!」
+“Kyral's Killing Art, Mandala Circle! Go to paradise!”
+
+@17280 Kyral · キラル
+> 「南無阿弥陀仏」
+“Namu Amida Butsu.”
+
+@17281 Argo · アルゴ
+> 「グラビトンハンマァァァッ!」
+“Graviton Hammmeeeer!”
+
+@17282 Argo · アルゴ
+> 「さぁくれつ! ガイアクラッシャーッ!」
+“Now, explode! Gaia Crusher!”
+
+@17283 Argo · アルゴ
+> 「炸裂! ガイアクラッシャー!」
+“Blast! Gaia Crusher!”
+
+@17284 Argo · アルゴ
+> 「さぁくれつ! ガイアクラッシャーッ!」
+“Now, explode! Gaia Crusher!”
+
+@17285 Argo · アルゴ
+> 「炸裂! ガイアクラッシャー!」
+“Blast! Gaia Crusher!”
+
+@17286 Domon · ドモン
+> 「いくぞ、お前たちぃ!!」
+“Here we go, you guys!!”
+
+@17287 Chibodee · チボデー
+> 「おおっ!」
+“Ohh!”
+
+@17288 Chibodee · チボデー
+> 「この魂の炎!」
+“This flame of the soul!”
+
+@17289 George · ジョルジュ
+> 「極限まで高めれば!」
+“Raise it to the limit!”
+
+@17290 Sai Saici · サイ・サイシー
+> 「倒せないものなど!」
+“There's nothing we can't beat!”
+
+@17291 Argo · アルゴ
+> 「なにもない!」
+“Nothing at all!”
+
+@17292 Domon · ドモン
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Explosive Heat! Shuffle Alliance Fist!!”
+
+@17293 Wong · ウォン
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells—I am Great Wong!”
+
+@17294 Wong · ウォン
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”
+
+@17295 Wong · ウォン
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells—I am Great Wong!”
+
+@17296 Wong · ウォン
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”
+
+@17297 Wong · ウォン
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells—I am Great Wong!”
+
+@17298 Wong · ウォン
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”
+
+@17299 Kyoji · キョウジ
+> 「撃て」
+“Fire.”

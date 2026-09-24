@@ -1,0 +1,146 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8833 Emma · エマ
+> 「落ちなさいっ!!」
+“Fall, damn you!!”
+
+@8834 Emma · エマ
+> 「そこっ!!」
+“There!!”
+
+@8835 Emma · エマ
+> 「やらせないっ!!」
+“I won't let you!!”
+
+@8836 Emma · エマ
+> 「うかつなっ!!」
+“Careless!!”
+
+@8837 Emma · エマ
+> 「当ててみせる!!」
+“I'll hit you, just watch!!”
+
+@8838 Emma · エマ
+> 「前にでるからっ!」
+“I'm moving up!”
+
+@8839 Emma · エマ
+> 「当たれっ!」
+“Hit!”
+
+@8840 Emma · エマ
+> 「このっ!」
+“Why you!”
+
+@8841 Emma · エマ
+> 「これならっ!!」
+“This should do it!!”
+
+@8842 Emma · エマ
+> 「どかないと!!」
+“I have to dodge!!”
+
+@8843 Emma · エマ
+> 「沈めっ!」
+“Sink!”
+
+@8844 Emma · エマ
+> 「くっ、やられた!!」
+“Ngh, I've been hit!!”
+
+@8845 Emma · エマ
+> 「しまった!?」
+“Damn!?”
+
+@8846 Emma · エマ
+> 「な、なんてパワーなの!?」
+“W-what power!?”
+
+@8847 Emma · エマ
+> 「ま、まだやられるわけには……」
+“I-I can't afford to go down yet...”
+
+@8848 Emma · エマ
+> 「くうっ!! こ、このままでは……」
+“Ngh!! A-at this rate...”
+
+@8849 Emma · エマ
+> 「ま、負けるものですか!!」
+“I-I won't lose!!”
+
+@8850 Emma · エマ
+> 「つっ!! まだよっ!!」
+“Ngh!! Not yet!!”
+
+@8851 Emma · エマ
+> 「やるっ!! けどっ!!」
+“You're good!! But still!!”
+
+@8852 Emma · エマ
+> 「まだっ! やらせはしないっ!!」
+“Not yet! I won't let you!!”
+
+@8853 Emma · エマ
+> 「ダメージ!? でも、まだっ!!」
+“Damage!? But I'm still in this!!”
+
+@8854 Emma · エマ
+> 「あうっ! さ、さすがに……」
+“Agh! A-as expected...”
+
+@8855 Emma · エマ
+> 「当たっただけ!」
+“It just grazed me!”
+
+@8856 Emma · エマ
+> 「この程度で落ちはしないっ!」
+“This won't bring me down!”
+
+@8857 Emma · エマ
+> 「かすった!?」
+“A graze!?”
+
+@8858 Emma · エマ
+> 「こんな攻撃でっ!」
+“An attack like that!”
+
+@8859 Emma · エマ
+> 「当たるものですか!」
+“As if that would hit me!”
+
+@8860 Emma · エマ
+> 「かわせた!」
+“I dodged it!”
+
+@8861 Emma · エマ
+> 「おそいっ!」
+“Too slow!”
+
+@8862 Emma · エマ
+> 「正面? 違う、左ねっ!!」
+“Front? No, it's the left!!”
+
+@8863 Emma · エマ
+> 「当たるわけにはっ!」
+“I can't let that hit!”
+
+@8864 Emma · エマ
+> 「このくらい、よけてみせるっ!!」
+“This much, I'll dodge it!!”
+
+@8865 Emma · エマ
+> 「ムダよ! そんなビームが効く
+>  ものですか!」
+“It's useless! As if a Beam like that would work!”
+
+@8866 Emma · エマ
+> 「そんなビームなどでっ!」
+“A Beam like that won't!”
+
+@8867 Emma · エマ
+> 「しまった、弾切れ!? うかつな……」
+“Damn, out of ammo!? How careless...”
+
+@8868 Emma · エマ
+> 「くっ、この距離では……」
+“Ngh, at this range...”

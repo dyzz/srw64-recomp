@@ -1,0 +1,98 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12408 Ciela · シーラ
+# 审校：「やらせてはなりません」意为“不能让他们得逞/不能让他们做”，原译“We cannot let them”缺少动作，语义不完整。
+> 「やらせてはなりません」
+“We must not let them do it.”
+
+@12409 Ciela · シーラ
+> 「落とすのです。なんとしても」
+“Shoot it down. No matter what.”
+
+@12410 Ciela · シーラ
+> 「つっ……ここまでか……」
+“Ngh... this is it, then...”
+
+@12411 Ciela · シーラ
+> 「総員退避せよ!」
+“All hands, evacuate!”
+
+@12412 Ciela · シーラ
+> 「くっ ま、まだです。まだ落ちては
+>  なりません!」
+“Ngh... n-not yet. We must not fall yet!”
+
+@12413 Ciela · シーラ
+> 「こ、この程度で落ちるわけにはまいりませ
+>  ん!」
+“I-I cannot afford to fall to something like this!”
+
+@12414 Ciela · シーラ
+> 「つっ……どこをやられたか!?」
+“Ngh... where were we hit?!”
+
+@12415 Ciela · シーラ
+> 「っはぁ……出力が下がったぞ、
+>  どうしたか!?」
+“Hah... output's dropping, what happened?!”
+
+@12416 Ciela · シーラ
+> 「うっ……被害状況は!」
+“Ugh... damage report!”
+
+@12417 Ciela · シーラ
+> 「くっ……敵も必死ですね」
+“Ngh... the enemy is desperate too.”
+
+@12418 Ciela · シーラ
+> 「うっ……ひるんではなりません!」
+“Ugh... we must not falter!”
+
+@12419 Ciela · シーラ
+> 「どこをやられたか!?」
+“Where were we hit?!”
+
+@12420 Ciela · シーラ
+> 「被害状況を知らせよ」
+“Report the damage.”
+
+@12421 Ciela · シーラ
+> 「グランガランはこの程度では
+>  落ちはしません」
+“The Gran-Garan won't fall to this level of attack.”
+
+@12422 Ciela · シーラ
+> 「たいした被害はないようですね」
+“No significant damage, it seems.”
+
+@12423 Ciela · シーラ
+> 「まだ大丈夫です」
+“We're still fine.”
+
+@12424 Ciela · シーラ
+> 「グランガラン急速降下!」
+“Gran-Garan, rapid descent!”
+
+@12425 Ciela · シーラ
+> 「急速回頭!」
+“Hard about!”
+
+@12426 Ciela · シーラ
+> 「そんな攻撃はムダです!」
+“That kind of attack is useless!”
+
+@12427 Ciela · シーラ
+> 「グランガランを抜けはしません!」
+“You won't get past the Gran-Garan!”
+
+@12428 Ciela · シーラ
+> 「この程度ならば問題ありませんね」
+“At this level, no problem.”
+
+@12429 Ciela · シーラ
+> 「弾切れだというのですか!?」
+“Out of ammo, you say?!”
+
+@12430 Ciela · シーラ
+> 「ここからでは反撃はできませんね……」
+“From here, we can't counterattack...”

@@ -1,0 +1,414 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15400 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15401 Jun · ジュン
+> 「頼むわ、鉄也!」
+“I'm counting on you, Tetsuya!”
+
+@15402 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15403 Sayaka · さやか
+> 「チャンスだわ!」
+“Now's our chance!”
+
+@15404 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'm gonna knock 'em flying, I tell ya!”
+
+@15405 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15406 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@15407 Sayaka · さやか
+> 「覚悟しなさい!」
+“Prepare yourself!”
+
+@15408 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15409 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@15410 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'm gonna knock 'em flying, I tell ya!”
+
+@15411 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15412 Maria · マリア
+> 「いまだわ! 兄さん」
+“Now, brother!”
+
+@15413 Hikaru · ひかる
+> 「チャンスよ!」
+“Now's our chance!”
+
+@15414 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15415 Duke · デューク
+> 「ハンドビーム!!」
+“Hand Beam!!”
+
+@15416 Duke · デューク
+> 「ショルダーブーメラン!!」
+“Shoulder Boomerang!!”
+
+@15417 Duke · デューク
+> 「反重力ストーム!!」
+“Anti-Gravity Storm!!”
+
+@15418 Duke · デューク
+> 「ダブルハーケン!!」
+“Double Haken!!”
+
+@15419 Duke · デューク
+> 「スクリュークラッシャーパンチ!!」
+“Screw Crusher Punch!!”
+
+@15420 Duke · デューク
+> 「スペースサンダー!!」
+“Space Thunder!!”
+
+@15421 Duke · デューク
+> 「スピンソーサー!!」
+“Spin Saucer!!”
+
+@15422 Duke · デューク
+> 「スピンドリル!!」
+“Spin Drill!!”
+
+@15423 Duke · デューク
+> 「メルトシャワー!!」
+“Melt Shower!!”
+
+@15424 Duke · デューク
+> 「サイクロンビーム!!」
+“Cyclone Beam!!”
+
+@15425 Duke · デューク
+> 「ダブルカッター!!」
+“Double Cutter!!”
+
+@15426 Duke · デューク
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@15427 Duke · デューク
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15428 Duke · デューク
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15429 Duke · デューク
+> 「スパークボンバー!!」
+“Spark Bomber!!”
+
+@15430 Duke · デューク
+> 「ドリルアタック!!」
+“Drill Attack!!”
+
+@15431 Duke · デューク
+> 「マリンカッター!!」
+“Marine Cutter!!”
+
+@15432 Duke · デューク
+> 「マリンミサイル!!」
+“Marine Missile!!”
+
+@15433 Duke · デューク
+> 「マリンビーム!!」
+“Marine Beam!!”
+
+@15434 Koji · 甲児
+> 「いまだ、大介さん!」
+“Now, Daisuke!”
+
+@15435 Duke · デューク
+> 「よしっ、スペースサンダー!!」
+“All right, Space Thunder!!”
+
+@15436 Hikaru · ひかる
+> 「大介さん、いまよ!」
+“Daisuke, now!”
+
+@15437 Duke · デューク
+> 「スペースサンダー!!」
+“Space Thunder!!”
+
+@15438 Maria · マリア
+> 「兄さん!」
+“Brother!”
+
+@15439 Duke · デューク
+> 「わかってる! スペースサンダー!!」
+“I know! Space Thunder!!”
+
+@15440 Maria · マリア
+> 「兄さん、あそこよ!」
+“Brother, over there!”
+
+@15441 Duke · デューク
+> 「よし! スペースサンダー!!」
+“All right! Space Thunder!!”
+
+@15442 Tetsuya · 鉄也
+> 「敵が逃げる! 早くしてくれ!」
+“The enemy's getting away! Hurry it up!”
+
+@15443 Duke · デューク
+> 「スペースサンダー!!」
+“Space Thunder!!”
+
+@15444 Tetsuya · 鉄也
+> 「まだか!?」
+“Not yet?!”
+
+@15445 Duke · デューク
+> 「いくぞ、スペースサンダー!!」
+“Here we go, Space Thunder!!”
+
+@15446 Jun · ジュン
+> 「とどめを!」
+“Finish it!”
+
+@15447 Duke · デューク
+> 「よし! スペースサンダー!!」
+“All right! Space Thunder!!”
+
+@15448 Naida · ナイーダ
+> 「デューク、今なら!」
+“Duke, now's the time!”
+
+@15449 Duke · デューク
+# 审校：「ああ」在此是回应/招呼，不是“Yeah”的随意语气，改为“Right”更贴合杜克王子身份。
+> 「ああナイーダ。いくぞ!」
+“Right, Naida. Here we go!”
+
+@15450 Koji · 甲児
+> 「うわぁぁぁぁーっ!!」
+“Whoaaaaa!!”
+
+@15451 Duke · デューク
+> 「くっ、甲児くん!?」
+“Ngh, Koji?!”
+
+@15452 Duke · デューク
+> 「し、しまった! ひかるさん!?」
+“D-Damn it! Hikaru?!”
+
+@15453 Hikaru · ひかる
+> 「きゃあぁぁぁぁーっ!」
+“Kyaaaaaa!!”
+
+@15454 Maria · マリア
+> 「きゃあぁぁっ! 兄さんっ!!」
+“Kyaaa! Brother!!”
+
+@15455 Duke · デューク
+> 「くっ、マリアッ!?」
+“Ngh, Maria?!”
+
+@15456 Tetsuya · 鉄也
+> 「くっ、ここまでか!?」
+“Ngh, is this as far as we go?!”
+
+@15457 Duke · デューク
+> 「すまん、鉄也くん!!」
+“Sorry, Tetsuya!!”
+
+@15458 Duke · デューク
+> 「うおぉぉぉーっ!?」
+“Whoaaaaa?!”
+
+@15459 Tetsuya · 鉄也
+> 「ぐっ!? 冗談じゃないぜッ!」
+“Guh?! You've gotta be kidding me!”
+
+@15460 Duke · デューク
+> 「ジュン、大丈夫か!?」
+“Jun, are you okay?!”
+
+@15461 Jun · ジュン
+> 「ダメッ! やられたわ!!」
+“No! I'm hit!!”
+
+@15462 Naida · ナイーダ
+> 「きゃあぁぁぁっ! デュ、デューク!!」
+“Kyaaaaa! D-Duke!!”
+
+@15463 Duke · デューク
+> 「ナイーダ!? く、くそぉぉっ!!」
+“Naida?! D-Damn it!!”
+
+@15464 Duke · デューク
+> 「くっ、ま、まずい!?」
+“Ngh, th-this is bad?!”
+
+@15465 Koji · 甲児
+> 「大介さん! なんとかしてくれ!」
+“Daisuke! Do something!”
+
+@15466 Hikaru · ひかる
+> 「あうぅぅっ!!」
+“Augh!!”
+
+@15467 Duke · デューク
+> 「ひかるさん、大丈夫か!?
+>  くそぉっ!」
+“Hikaru, are you okay?! Damn it!”
+
+@15468 Maria · マリア
+> 「うっ……兄さん!? しっかりして!」
+“Ugh... Brother?! Pull yourself together!”
+
+@15469 Duke · デューク
+> 「だ、大丈夫だマリア!」
+“I-I'm fine, Maria!”
+
+@15470 Tetsuya · 鉄也
+> 「ぐぅっ、頼むぜ、しっかりしてくれ!」
+“Guh, come on, hang in there!”
+
+@15471 Duke · デューク
+> 「す、すまん!」
+“S-Sorry!”
+
+@15472 Duke · デューク
+> 「うわぁぁっ!!」
+“Whoaaa!!”
+
+@15473 Jun · ジュン
+> 「くっ、もうもたないわ!!」
+“Ngh, I can't hold out anymore!!”
+
+@15474 Naida · ナイーダ
+> 「あぅっ!? デュ、デューク、もうだめ……」
+“Ah?! D-Duke, I can't...”
+
+@15475 Duke · デューク
+> 「頑張るんだ、ナイーダ!!」
+“Hang in there, Naida!!”
+
+@15476 Koji · 甲児
+> 「うわっ! 何やってんだよ大介さん!」
+“Whoa! What are you doing, Daisuke?!”
+
+@15477 Duke · デューク
+> 「す、すまない甲児くん」
+“S-Sorry, Koji.”
+
+@15478 Duke · デューク
+> 「くっ、こんなことで倒れるわけには
+>  いかないんだ!」
+“Ngh, I can't afford to go down like this!”
+
+@15479 Maria · マリア
+> 「そうよ!!」
+“That's right!!”
+
+@15480 Tetsuya · 鉄也
+> 「くそっ、何やってんだ!」
+“Damn it, what are you doing?!”
+
+@15481 Jun · ジュン
+# 审校：原文句末为「!?」，初稿漏了“?!”。
+> 「くっ、デューク、敵は強いわよ!?」
+“Ngh, Duke, the enemy's strong?!”
+
+@15482 Duke · デューク
+> 「だ、大丈夫だ、なんとかしてみせる!」
+“I-It's fine, I'll find a way!”
+
+@15483 Naida · ナイーダ
+> 「うっ……デューク!?」
+“Ugh... Duke?!”
+
+@15484 Duke · デューク
+> 「大丈夫だナイーダ。まだまだ!」
+“It's okay, Naida. We're not done yet!”
+
+@15485 Duke · デューク
+> 「くっ……」
+“Ngh...”
+
+@15486 Hikaru · ひかる
+> 「被害はほとんどなかったわね」
+“We barely took any damage.”
+
+@15487 Maria · マリア
+# 审校：「へっちゃらなんだから」语气更接近“根本不算什么”，初稿“Piece of cake!”稍偏，改为更贴合的“It's nothing!”。
+> 「なーによ、そんな攻撃! へっちゃら
+>  なんだから!」
+“What, that attack? It's nothing!”
+
+@15488 Duke · デューク
+> 「マリア、油断するなよ!」
+“Maria, don't let your guard down!”
+
+@15489 Duke · デューク
+> 「つっ……マリア、大丈夫か!?」
+“Tch... Maria, are you okay?!”
+
+@15490 Maria · マリア
+> 「うん、あたしは全然平気よ、
+>  兄さん」
+“Yeah, I'm totally fine, brother.”
+
+@15491 Tetsuya · 鉄也
+> 「ふん、たいしたことはないぜ!」
+“Hmph, that was nothing!”
+
+@15492 Duke · デューク
+# 审校：「この程度ですんだか」意为“只受了这点程度就结束了”，初稿“made it through that?”方向略偏，改为更准确表达。
+> 「こ、この程度ですんだか」
+“W-We got off with just that?”
+
+@15493 Jun · ジュン
+# 审校：原文「そう簡単にやられちゃ困るわよ」是“我可不能这么容易被打倒”，初稿“I won't stand for going down that easily!”语气略怪，改为更自然。
+> 「そう簡単にやられちゃ困るわよ!」
+“I won't let myself go down that easily!”
+
+@15494 Duke · デューク
+> 「くっ、大丈夫か、ナイーダ?」
+“Ngh, are you okay, Naida?”
+
+@15495 Naida · ナイーダ
+> 「ええ、デューク。大丈夫よ」
+“Yes, Duke. I'm fine.”
+
+@15496 Koji · 甲児
+> 「危ない大介さん!」
+“Look out, Daisuke!”
+
+@15497 Duke · デューク
+> 「大丈夫だ!」
+“I'm fine!”
+
+@15498 Duke · デューク
+# 审校：原文「そんなもの!」是“就这点程度吗”，初稿“Is that all!”缺了反问的“?!”语气，改为“Is that all?!”。
+> 「そんなもの!」
+“Is that all?!”
+
+@15499 Koji · 甲児
+> 「ふーっ、冷や冷やしたぜ」
+“Phew, that gave me a scare.”

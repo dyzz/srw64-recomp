@@ -1,0 +1,2262 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@32652 Luna · ルーナ
+# 审校：“left for” 可接受，但“departed for”更贴合正式汇报语气；未改专名。
+> 「シャピロ様、ギルドローム将軍は
+>  アステロイド基地へ向かったそうです」
+“Lord Shapiro, I hear General Gildrome has departed for the Asteroid Base.”
+
+@32653 Shapiro · シャピロ
+> 「知っている。俺が許可したのだ」
+“I know. I gave him permission.”
+
+@32654 Luna · ルーナ
+> 「シャピロ様が……?」
+“You did, Lord Shapiro...?”
+
+@32655 Shapiro · シャピロ
+> 「ギルドローム将軍にとってもその方が
+>  よいだろう。どうも私のもとでは
+“It's better for General Gildrome too. He seems to find it
+---
+>  やりにくいようだからな」
+hard to work under me, after all.”
+
+@32656 Luna · ルーナ
+> 「なるほど、そういうことですか」
+“I see. So that's what this is about.”
+
+@32657 Shapiro · シャピロ
+> 「それだけではないぞ。ギルドロームを
+>  アステロイドまで下がらせておけば
+“That's not all. If I keep Gildrome back at the Asteroid,
+---
+>  あの基地の戦力もすぐに投入
+>  できるようになる」
+that base's forces can be thrown into battle at a moment's notice.”
+
+@32658 Luna · ルーナ
+> 「すばらしいお考えです。しかし……
+>  カリフォルニア・ベースは本当に
+“A brilliant plan. But... was it really all right to give up
+---
+>  よろしかったのですか? あそこを残して
+>  おけば、まだドレイク軍やミケーネたちも
+the California Base? If we had kept it, the Drake Army and the Mycenae could still have been
+---
+>  利用できたでしょうに」
+of use to us.”
+
+@32659 Shapiro · シャピロ
+> 「あのような奴らなど俺には不要だ。
+>  それに放っておいても奴らはOZと
+“I have no need for the likes of them. And even if I leave them alone, they'll have no choice but to
+---
+>  戦わぬわけにはいくまい。あの目障り
+>  な部隊に少しでもダメージが
+fight OZ. If they can do even a little damage to that troublesome
+---
+>  与えられるならば、それはそれでよかろう」
+force, so much the better.”
+
+@32660 Luna · ルーナ
+> 「さすがはシャピロ様。そこまでお考え
+>  でしたとは」
+“As expected of you, Lord Shapiro. I never imagined you had thought that far ahead.”
+
+@32661 Shapiro · シャピロ
+> 「たとえ一時的に地上の拠点が
+>  つぶれても、俺の野望はつぶれはせん」
+“Even if our bases on Earth fall for a time, my ambition will not.”
+
+@32662 Helmut · ヘルマット
+> 「シャピロ! コロニー駐留軍を月に
+>  集めているのはどういうことだ!?
+“Shapiro! What do you mean by gathering the colony garrison troops on the Moon?!
+---
+>  地球人どもにコロニーを奪還
+>  されているではないか!」
+The Earthlings are taking back the colonies!”
+
+@32663 Shapiro · シャピロ
+> 「コロニーなどいくらでもくれてやればいい。
+>  そんなものを確保していたとて
+“Let them have as many colonies as they like. Holding on to such things
+---
+>  何の役にもたたん。それよりも
+>  この月で戦力を整え、OZを
+is good for nothing. What matters more is consolidating our forces here on the Moon and
+---
+>  叩くことが重要だ」
+striking OZ.”
+
+@32664 Helmut · ヘルマット
+> 「なに!? 貴様、本国からの
+>  増援を待たずに、このまま
+“What?! You mean to take on the Earthlings as we are, without
+---
+>  地球人どもとやろうというのか?」
+waiting for reinforcements from the homeland?”
+
+@32665 Shapiro · シャピロ
+> 「この戦力とこの基地があれば
+>  十分に可能だ。それに
+“With these forces and this base, it's more than possible. Besides,
+---
+>  ヘルマット将軍が出てくれれば
+>  OZなど敵ではない」
+if you take the field, General Helmut, OZ is no match for us.”
+
+@32666 Luna · ルーナ
+> 「ヘルマット将軍、
+>  シャピロ様がギルドローム将軍を
+“General Helmut, why not consider what it means that Lord Shapiro
+---
+>  アステロイド基地へ向かわせ、
+>  あなたを月に残したことの意味を
+sent General Gildrome to the Asteroid Base and left you here
+---
+>  お考えになってみてはいかが?」
+on the Moon?”
+
+@32667 Helmut · ヘルマット
+> 「……フッ、フフフフ、いいだろう。
+>  シャピロ、期待しておるぞ」
+“...Heh, heheheh. Very well. Shapiro, I'll be expecting great things.”
+
+@32668 Specials · スペシャルズ
+> 「バスク特佐、ツバロフ技師長、
+>  地上よりの通信です」
+“Colonel Bask, Chief Engineer Tubarov, we have a communication from Earth.”
+
+@32669 Bask · バスク
+> 「こちらへまわせ」
+“Patch it through to me.”
+
+@32670 Specials · スペシャルズ
+> 「はっ!」
+“Yes, sir!”
+
+@32671 Bask · バスク
+> 「デルマイユ公爵、ジャミトフ閣下、
+>  何か?」
+“Duke Dermail, Your Excellency Jamitov, what is it?”
+
+@32672 Dermail · デルマイユ
+> 「バスク特佐、宇宙の戦況は
+>  どうだ?」
+“Colonel Bask, how goes the war in space?”
+
+@32673 Bask · バスク
+> 「順調です。帝国軍が
+>  月に集結しておるために
+“Smoothly. Since the imperial forces are massing on the Moon,
+---
+>  戦力の損失は無視できる
+>  程度ですな。各コロニーは我々が
+our losses are negligible. We have every colony under
+---
+>  掌握しております」
+our control.”
+
+@32674 Dermail · デルマイユ
+> 「おお、さすがだな特佐」
+“Oh, impressive as always, Colonel.”
+
+@32675 Jamitov · ジャミトフ
+> 「コロニーへの接触は
+>  レディ・アン特佐の担当だったな
+“Contact with the colonies was Colonel Lady Une's responsibility, wasn't it?
+---
+>  そちらはどうか」
+How is that going?”
+
+@32676 Bask · バスク
+> 「うまくやっておるようです。
+>  トレーズの腰ぎんちゃくにしては
+“She seems to be handling it well. Quite good,
+---
+>  上出来でしょう」
+for Treize's lapdog.”
+
+@32677 Dermail · デルマイユ
+> 「バスク特佐、トレーズは君の上官
+>  でありOZの総帥だ。その口の
+“Colonel Bask, Treize is your superior officer and the Supreme Commander of OZ. Can't you do something
+---
+>  聞き方はなんとかならんのか」
+about that tone of yours?”
+
+@32678 Bask · バスク
+> 「はっ、これは私の失言でした」
+“Yes, that was a slip of the tongue on my part.”
+
+@32679 Dermail · デルマイユ
+> 「まあいい。ツバロフ、そちらの計画は
+>  どうだ。順調に進んでいるのか?」
+“Very well. Tubarov, how is your project? Is it progressing smoothly?”
+
+@32680 Tubarov · ツバロフ
+> 「はい、デルマイユ公。あとは十分な
+>  人手とプラントがあれば、いつでも
+“Yes, Duke Dermail. All that remains is sufficient manpower and plants, and mass production
+---
+>  量産が可能です」
+can begin at any time.”
+
+@32681 Jamitov · ジャミトフ
+> 「帝国の無人機を参考にしたと
+>  いうが、使えるのか。その
+“You say it was modeled on the Empire's unmanned machines, but is it usable? This
+---
+>  モビルドールというのは」
+Mobile Doll of yours.”
+
+@32682 Tubarov · ツバロフ
+> 「もちろんです。反応速度は
+>  一般兵とは比べ物になりません
+“Of course. Its reaction speed is beyond comparison with ordinary soldiers.
+---
+>  また設備さえあれぱ
+>  大量の兵力を即座に実戦に
+And with the facilities in place, we can throw vast numbers of troops into combat
+---
+>  投入できることになります」
+immediately.”
+
+@32683 Jamitov · ジャミトフ
+> 「訓練もなしに、か。デルマイユ公、
+>  確か、トレーズはこの計画に
+“Without even training, is that it? Duke Dermail, if I recall, Treize was
+---
+>  反対していたな」
+opposed to this plan.”
+
+@32684 Dermail · デルマイユ
+> 「それは私がなんとかする。レディ・アン
+>  特佐の交渉次第ではコロニーに
+“I will handle that. Depending on how Colonel Lady Une's negotiations go, we can prepare plants in the colonies
+---
+>  プラントも用意できるし人員も
+>  使えるようになる」
+and make use of their personnel as well.”
+
+@32685 Tubarov · ツバロフ
+> 「それはありがたいですな。
+>  そうなればMDの生産はもちろん
+“That would be most welcome. If so, not only MD production
+---
+>  巨大戦艦リーブラの建造にも
+>  めどがつきます」
+but construction of the giant battleship Libra would be in sight as well.”
+
+@32686 Bask · バスク
+> 「あとは月の帝国軍だけです。
+>  戦力さえそろえば、異星人どもを
+“After that, only the imperial forces on the Moon remain. Once our forces are in place, driving the aliens
+---
+>  地球から追い払うのもそう
+>  時間はかからぬでしょう」
+off Earth won't take long either.”
+
+@32687 Dermail · デルマイユ
+> 「うむ。我々ロームフェラ財団が
+>  地球を支配し、古き良き
+“Indeed. We of the Romefeller Foundation shall rule the Earth and restore
+---
+>  伝統の時代を取りもどすのだ」
+the age of good old tradition.”
+
+@32688 Jamitov · ジャミトフ
+> 「デルマイユ公、
+>  わしはバルジにあがる。トレーズの件
+“Duke Dermail, I am going up to Barge. As for the matter with Treize,
+---
+>  くれぐれもよろしく頼むぞ」
+I leave it entirely in your hands.”
+
+@32689 Dermail · デルマイユ
+> 「まかせておけ。トレーズも財団の
+>  幹部、これまで財団のために
+“Leave it to me. Treize is a senior official of the Foundation, a man who has devoted himself
+---
+>  尽力してきた男だ。我々
+>  ロームフェラのためになると理解すれば
+to it until now. Once he understands it is for the good of Romefeller,
+---
+>  納得もしよう」
+he will come around.”
+
+@32690 Jamitov · ジャミトフ
+> 「だといいがな」
+“I hope so.”
+
+@32691 Jamitov · ジャミトフ
+> (古き良き伝統など無用のものな
+>  のだがな。わしももう歳だ。死ぬ前に
+(Good old tradition is a useless thing, really. I am old now. Before I die,
+---
+>  地球圏にとって必須のことをやっ
+>  てみせる。頑迷な者たちは地上で
+I will show them what is truly necessary for the Earth Sphere. The stubborn ones will be swept from the surface,
+---
+>  掃討し、無知無能な者は
+>  コロニー再建に追いあげる。それが
+and the ignorant and incompetent will be driven to rebuild the colonies. That is
+---
+>  地球から人間を排除し、
+>  地球環境を再生させる
+how humanity will be removed from the Earth and its environment
+---
+>  方法なのだ)
+restored.)
+
+@32692 Jamitov · ジャミトフ
+> (だがそんな手段を講じている
+>  間に地球が疲弊しすぎる
+(But while we resort to such measures, the Earth will be exhausted beyond repair.
+---
+>  危機感がある。帝国の侵略に
+>  より従来の秩序が崩壊した
+I feel the crisis. The Empire's invasion has shattered the old order.
+---
+>  今となっては、戦争を続けることに
+>  よって地球経済に打撃を与え
+Now, by continuing the war, we strike a blow to the Earth's economy,
+---
+>  ついでに地球上のエリート意識に
+>  こり固まった選民も排除する
+and at the same time weed out the chosen few on Earth who are mired in elitism.
+---
+>  財団など過去の遺物にすぎん。
+>  時代の要求なのだ。でなければ
+The Foundation is nothing but a relic of the past. This is what the times demand. If not,
+---
+>  ジオンの旗揚げも、帝国の侵略
+>  もなかった……)
+neither Zeon's uprising nor the Empire's invasion would have happened...)
+
+@32693 Lady · レディ
+> 「トレーズ様、お元気そうでなにより
+>  です」
+“Lord Treize, I am glad to see you looking well.”
+
+@32694 Treize · トレーズ
+> 「レディ、君も元気そうでよかった。
+>  コロニーの一部では
+“Lady, I am glad you look well too. In some of the colonies,
+---
+>  平和維持軍OZと呼ばれている
+>  そうだね。君はよくやってくれている」
+they call you the peacekeeping force OZ, I hear. You have done well.”
+
+@32695 Lady · レディ
+> 「ありがとうございます。ただ……」
+“Thank you. However...”
+
+@32696 Treize · トレーズ
+> 「ツバロフとバスクか。私が
+>  軍備増強に反対したために
+“Tubarov and Bask, is it? Because I opposed the arms buildup,
+---
+>  私を通さずに進めることにしたらしい
+>  ね。デルマイユ公から幾度か
+they apparently decided to proceed without me. Duke Dermail has contacted me
+---
+>  連絡があったよ」
+several times.”
+
+@32697 Lady · レディ
+> 「ジャミトフ閣下のお知恵でしょう。
+>  いかがいたしますか、トレーズ様?」
+“No doubt by His Excellency Jamitov's design. What shall we do, Lord Treize?”
+
+@32698 Treize · トレーズ
+> 「放っておきたまえ。君まで不必要
+>  な争いを、おこす必要はない」
+“Leave them be. There is no need for you to start an unnecessary conflict as well.”
+
+@32699 Lady · レディ
+> 「はい」
+“Yes.”
+
+@32700 Treize · トレーズ
+> 「地上での戦いももうすぐ
+>  ひと区切りつく。そうなれば
+“The fighting on Earth will soon reach a lull. Once it does,
+---
+>  {HeroMech}には宇宙に
+>  あがってもらうことになる。地球も
+the {HeroMech} will be asked to go up into space. The Earth will feel
+---
+>  寂しくなる。レディ、君がはやく
+>  もどってこれることを祈っているよ」
+lonely too. Lady, I pray you can return quickly.”
+
+@32701 Lady · レディ
+> 「ありがとうございます。トレーズ様のため
+>  精いっぱい努力いたします」
+“Thank you. I will do my utmost for your sake, Lord Treize.”
+
+@32702 Hell Marshal · 地獄大元帥
+> 「おお、ヤヌスか。連絡を待っておった
+>  ぞ。首尾はどうだ」
+“Oh, Janus. I have been waiting for your report. How goes it?”
+
+@32703 ???
+> 「は、作戦はうまくいっております。
+>  このまま、ここで総攻撃を待ちます」
+“Yes, the operation is proceeding well. We will wait here for the all-out attack as planned.”
+
+@32704 Dark General · 暗黒大将軍
+> 「それでヤヌス侯爵、場所はどこだ?
+>  奴らのいる場所は!?」
+“So then, Marquis Janus, where is the place? Where are they?!”
+
+@32705 ???
+> 「オーストラリア大陸……
+>  トリントン基地」
+“The Australian continent... Torrington Base.”
+
+@32706 Hell Marshal · 地獄大元帥
+> 「聞いた通りだ、百鬼の」
+“You heard him, men of Hyakki.”
+
+@32707 Dr. Gura · グラー博士
+> 「例のゲッター線と光子力の
+>  ロボットがそこにおるというわけじゃな?」
+“So the robots powered by Getter Rays and Photon Power are there, are they?”
+
+@32708 Hell Marshal · 地獄大元帥
+> 「そうだ。それさえ抑えれば帝国も
+>  人間どもも我らの地球制覇を
+“Indeed. Once we crush them, neither the Empire nor the humans can stop
+---
+>  とめられはせん」
+our conquest of Earth.”
+
+@32709 Emperor Burai · ブライ大帝
+> 「グラー、さっそく攻撃の準備をせよ
+>  集められるだけの戦力を
+“Gura, prepare for the attack at once. Gather every force
+---
+>  用意するのだ」
+we can muster.”
+
+@32710 Dr. Gura · グラー博士
+> 「はっ」
+“Yes, sir.”
+
+@32711 Hell Marshal · 地獄大元帥
+> 「暗黒大将軍、
+>  こちらも出撃準備だ」
+“Dark General, we make our own preparations to sortie as well.”
+
+@32712 Dark General · 暗黒大将軍
+> 「地獄大元帥、
+>  バイストンウェル軍はどうするのだ」
+“Hell Marshal, what of the Byston Well Forces?”
+
+@32713 Hell Marshal · 地獄大元帥
+> 「ドレイクとてこのままで終わるつもりは
+>  あるまい。とりあえずの目的が同じ
+“Drake has no intention of letting things end here either. If our immediate goals are the same,
+---
+>  ならば、手を組むのもよかろう。
+>  いまやれなければ、我らが人間どもに
+then joining hands should be fine. If we fail now, we will lose
+---
+>  負けることになるのだ」
+to the humans.”
+
+@32714 Drake · ドレイク
+> 「シャピロめ……逃がしはせぬぞ」
+“That Shapiro... I will not let him escape.”
+
+@32715 Black Knight · 黒騎士
+> 「陛下、化け物どもより総攻撃
+>  を開始すると連絡がありました」
+“Your Majesty, word has come that the monsters will begin their all-out attack.”
+
+@32716 Drake · ドレイク
+> 「あのような者どもに協力してやる
+>  理由などないのだがな」
+“There is no reason for me to lend aid to the likes of them.”
+
+@32717 Black Knight · 黒騎士
+> 「しかしシーラとエレは放置できません」
+“However, we cannot leave Ciela and Elle as they are.”
+
+@32718 Drake · ドレイク
+> 「わかっておる。シャピロを追うためには、
+>  まずOZとやらを排除せねばならん
+“I know. To pursue Shapiro, we must first eliminate this OZ or whatever it is.
+---
+>  そのために利用できるというのであれば
+>  それは利用させてもらう」
+If they can be used for that, then I shall make use of them.”
+
+@32719 Tod · トッド
+> 「やれやれ、何が悲しくて化け物ども
+>  と一緒にやらなきゃならないんだ
+“Good grief. What a sad fate, having to work alongside monsters.
+---
+>  ドレイク王、本当に勝てるん
+>  でしょうな」
+King Drake, we really can win, can't we?”
+
+@32720 Drake · ドレイク
+> 「お前も聖戦士ならば、そのような
+>  ことを口にする前に、それなりの
+“If you are a Holy Warrior too, then before voicing such things, do your
+---
+>  働きをするのだな。我々が勝てねば
+>  お前の立場もないであろう」
+share of the work. If we do not win, you will have no place either.”
+
+@32721 Ginrei · 銀鈴
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、トレーズ特佐から
+>  通信です」
+“Captain Bright, a communication from Colonel Treize.”
+
+@32722 Bright · ブライト
+> 「来たか。
+>  そろそろだとは思っていたが……」
+“So it's come. I had a feeling it would be soon...”
+
+@32723 Quattro · クワトロ
+> 「ああ、連中が何かしかけてきたな」
+“Yeah, they've set something in motion.”
+
+@32724 Bright · ブライト
+> 「まわしてくれ、銀鈴」
+“Put him through, Ginrei.”
+
+@32725 Ginrei · 銀鈴
+> 「はい」
+“Yes.”
+
+@32726 Treize · トレーズ
+> 「{HeroMech}の諸君、
+>  地上に残された敵に動きがあった
+“To the crew of the {HeroMech}, there has been movement among the enemies remaining on Earth.
+---
+>  対応の準備をしてもらいたい」
+I want you to prepare to respond.”
+
+@32727 Koji · 甲児
+> 「ついに帝国だけじゃなくあの化け物
+>  どもと決着をつけれるってわけか」
+“So we finally get to settle things not just with the Empire, but with those monsters too.”
+
+@32728 Shinobu · 忍
+> 「俺たちはカリフォルニアでヤバイ橋を
+>  渡ったばかりだぜ? 他の連中も
+“We just crossed a dangerous bridge in California, you know? The others are
+---
+>  動いてるんだろうな、トレーズさんよ」
+on the move too, aren't they, Mr. Treize?”
+
+@32729 Treize · トレーズ
+> 「むろんだが、これは君たちにやって
+>  もらわなければならない」
+“Of course, but this is something you must handle.”
+
+@32730 Tetsuya · 鉄也
+> 「どういうことだ? まさか俺たちを
+>  あて馬に使おうってんじゃないだろうな」
+“What do you mean? Don't tell me you're planning to use us as decoys.”
+
+@32731 Masato · 雅人
+> 「きったねぇの。俺たちが最初からOZ
+>  だったわけじゃないからって
+“That's dirty. Just because we weren't with OZ from the start doesn't mean
+---
+>  そりゃないんじゃないの」
+you can pull that on us.”
+
+@32732 Treize · トレーズ
+> 「それは誤解だよ。いいかね、
+>  敵はオーストラリア大陸へ
+“That is a misunderstanding. Listen, the enemy is heading for the Australian continent—
+---
+>  向かっているのだ」
+the Australian continent.”
+
+@32733 Sayaka · さやか
+> 「オーストラリア大陸……? それって、
+>  ここじゃないの?」
+“The Australian continent...? Isn't that here?”
+
+@32734 Treize · トレーズ
+> 「その通り。つまり彼らのねらいは、
+>  君たちだと思われる」
+“Exactly. In other words, it seems their target is you.”
+
+@32735 Amuro · アムロ
+> 「なんだって?
+>  それで、敵の戦力は!?」
+“What?! Then what about the enemy's forces?!”
+
+@32736 Treize · トレーズ
+> 「百鬼とミケーネ、それに
+>  バイストンウェル軍の連合軍だ
+“A joint force of the Hyakki, Mycenae, and the Byston Well Forces.
+---
+>  かなりの数だ。こちらも応援をだした
+>  が、まだ地上に残留している
+It's a considerable number. We've sent reinforcements as well, but there are still
+---
+>  帝国軍もいる。間にあうかどうかは
+>  わからない」
+Imperial forces remaining on Earth. Whether they'll make it in time, I don't know.”
+
+@32737 Bright · ブライト
+> 「我々だけで相手をしなければ
+>  ならないということか……」
+“So we have to face them on our own...”
+
+@32738 Treize · トレーズ
+> 「私が知っている限りでは、
+>  百鬼一族はゲッター線や
+“As far as I know, the Hyakki Clan has been working to secure special energy
+---
+>  光子力といった、特殊な
+>  エネルギー源の確保に力を
+sources like Getter Rays and Photon Power. If you lose and those fall into
+---
+>  いれていた。君たちが負け、それが
+>  敵の手にわたると面倒なことになる」
+enemy hands, it will become a serious problem.”
+
+@32739 Roux · ルー
+> 「面倒なことになるっていわれてもねぇ。
+>  あたしたちだって別に負けたい
+“You can say it'll be a problem, but still. It's not like we want to lose
+---
+>  わけじゃないんだから」
+either.”
+
+@32740 Treize · トレーズ
+> 「わかっている。とにかく彼らがこれだけの
+>  戦力を集中してくるということは
+“I understand. At any rate, the fact that they're concentrating this much force
+---
+>  それだけ必死だということだ」
+means they're that desperate.”
+
+@32741 Quattro · クワトロ
+> 「逆にいえば、ここで彼らを
+>  倒せば、地上の敵は
+“Conversely, if we defeat them here, we can
+---
+>  ほぼ一掃できるわけだな」
+nearly wipe out the enemies on Earth.”
+
+@32742 Treize · トレーズ
+> 「そういうことだ。
+>  そうすれば君たちが望んでいたように
+“That's right. And if you do, then as you've wished,
+---
+>  宇宙へあがってもらうこともできる」
+you'll be able to go up into space as well.”
+
+@32743 Shinobu · 忍
+> 「ごちゃごちゃいっても始まらねぇ。
+>  要はここに攻めてくる化け物どもを
+“No use jawing about it. The point is, we just have to
+---
+>  叩きつぶせばいいってことだろ」
+crush the monsters coming at us here.”
+
+@32744 Sara · 沙羅
+> 「それでシャピロを追いかけられる。
+>  やってやろうじゃないのさ」
+“And then we can chase after Shapiro. Let's do this.”
+
+@32745 Ryoma · リョウ
+> 「ああ。奴らが総力をあげて、しかけて
+>  くるというのなら、こっちも全力で
+“Yeah. If they're coming at us with everything they've got, then we'll
+---
+>  迎え撃つまでだ」
+meet them with everything we've got.”
+
+@32746 Musashi · ムサシ
+> 「百鬼やミケーネごとき、返り討ちに
+>  してやろうぜ」
+“The Hyakki and Mycenae are nothing—let's beat them back.”
+
+@32747 Ciela · シーラ
+> 「ドレイクのウィル・ウィプスも、
+>  ここへ来るというのですね?」
+“So Drake's Will-Wips is coming here as well?”
+
+@32748 Treize · トレーズ
+> 「その通りです、シーラ女王。
+>  さすがにオーラシップは、そちらに
+“That's right, Queen Ciela. As expected, the Aura Ship is something we can only
+---
+>  お願いするしかないようです」
+leave to you.”
+
+@32749 Elle · エレ
+> 「はい。もとより我らはそのためにこちらに
+>  世話になっておりました。ドレイクは
+“Yes. We've been staying here for that very purpose from the start. Drake is
+---
+>  我らの手で倒しましょう」
+ours to defeat.”
+
+@32750 Ciela · シーラ
+> 「ショウ、マーベル、頼みますよ」
+“Show, Marvel, I'm counting on you.”
+
+@32751 Show · ショウ
+> 「はい」
+“Yes.”
+
+@32752 Marvel · マーベル
+> 「命にかえても」
+“Even at the cost of my life.”
+
+@32753 Elle · エレ
+> 「命をかけてはなりません。世界に
+>  平和をもたらすまでは、死ぬことは
+“You must not risk your lives. Until we bring peace to the world, dying is
+---
+>  許されません!」
+not permitted!”
+
+@32754 Marvel · マーベル
+> 「エレさま……」
+“Lady Elle...”
+
+@32755 Elle · エレ
+> 「……すみません、きつい言葉を
+>  申し上げました」
+“...Forgive me. I spoke harshly.”
+
+@32756 Kamille · カミーユ
+> 「いえ……エレさんは覚悟のあり方に
+>  ついていわれたのだと、理解します」
+“No... I understand that you were speaking about what resolve truly means, Elle.”
+
+@32757 Elle · エレ
+> 「ありがとう、カミーユ・ビダン」
+“Thank you, Kamille Bidan.”
+
+@32758 Lera · レラ
+> 「あ、いたいた。{HeroNick}」
+“Ah, there you are. {HeroNick}.”
+
+@32759 Ark · アーク（按段落 3DD1）
+> 「どうしたんだ?」
+“What's up?”
+
+@32760 Lera · レラ
+> 「メインカメラの調子が悪いって
+>  いってたでしょ。取り替えなきゃ
+“You said the main camera was acting up, right? I figured it
+---
+>  ならないんじゃないかと思ってさ」
+needed to be replaced.”
+
+@32761 Ark · アーク（按段落 3DD1）
+> 「使えるパーツがあったのか?」
+“You found usable parts?”
+
+@32762 Lera · レラ
+> 「アストナージさんたちが、合うようにして
+>  くれたんだ」
+“Astonaige and the others made one fit for you.”
+
+@32763 Ark · アーク（按段落 3DD1）
+> 「助かるな。なら、早いとこやっちまうか」
+“That's a big help. Then let's get it done quick.”
+
+@32764 Lera · レラ
+> 「うん」
+“Yeah.”
+
+@32765 Ark · アーク（按段落 3DD1）
+> 「これでよしっと。悪いな、手伝わせて」
+“There, done. Sorry for making you help.”
+
+@32766 Lera · レラ
+> 「いいよ、別に。それよりさ、がんばってよ
+>  ね。ここであの化け物たちを倒せれば
+“It's fine. More importantly, do your best, okay? If we can beat those monsters here,
+---
+>  本当に終わりが見えてくるんだから
+>  さ」
+we'll really start to see the end.”
+
+@32767 Ark · アーク（按段落 3DD1）
+> 「ああ。みんなその気になってる。
+>  大丈夫さ」
+“Yeah. Everyone's up for it. We'll be fine.”
+
+@32768 Lera · レラ
+> 「こういう状況になってくれば、
+>  やっぱりOZに入ったのが間違いじゃ
+“Now that things have come to this, I really think joining OZ wasn't a mistake.
+---
+>  なかったって思うな。財団とか
+>  そういうとこの連中が何考えてるか
+I don't know what the people in the Foundation and places like that are thinking,
+---
+>  なんてわからないけど」
+though.”
+
+@32769 Ark · アーク（按段落 3DD1）
+> 「そうだな、それはある。でも、少なくとも
+>  異星人がいなくなって戦争が
+“Yeah, that's true. But at least if the aliens are gone and the war
+---
+>  終わるんなら、それ以外のことなんて
+>  たいした問題じゃないって気もするな
+ends, then everything else doesn't seem like that big a problem.
+---
+>  だから、今はこれでいいと信じるんだ」
+So for now, I choose to believe this is the right path.”
+
+@32770 Lera · レラ
+> 「どんな形でも、平和は平和。
+>  戦争よりはまし。アタシも信じるよ
+“Whatever form it takes, peace is peace. It's better than war. I believe it too—
+---
+>  みんなならきっとできるって」
+that everyone can definitely pull it off.”
+
+@32771 Ark · アーク（按段落 3DD1）
+# 审校：原文“お前だって{HeroMech}なんだぜ”指蕾拉也是{HeroMech}的一员，初稿译成“the pilot of the {HeroMech}”不准确，改为“part of the {HeroMech} crew”。
+> 「人ごとみたいにいうなよ。
+>  お前だって{HeroMech}なんだぜ」
+“Don't talk like it's someone else's problem. You're part of the {HeroMech} crew too, you know.”
+
+@32772 Lera · レラ
+> 「アハハハ、そうだね」
+“Ahahaha, I guess so.”
+
+@32773 Shirley · シャリー
+> 「{HeroName}、パイロットは10分後
+>  にブリーフィングだそうよ」
+“{HeroName}, they say the pilots' briefing is in ten minutes.”
+
+@32774 Ark · アーク（按段落 3DD1）
+> 「了解。遅れずに行きますよ」
+“Understood. I'll be there on time.”
+
+@32775 Lera · レラ
+> 「……ここで勝ったら、次は宇宙に
+>  行くんだね」
+“...If we win here, we go to space next, huh.”
+
+@32776 Ark · アーク（按段落 3DD1）
+> 「ああ。帝国軍とかシャピロとか、
+>  まだ月に残ってるからな」
+“Yeah. The Imperial forces and Shapiro are still on the moon.”
+
+@32777 Lera · レラ
+> 「{HeroNick}はコロニー出身だって
+>  いってたよね。アタシさ、宇宙って
+“You said you were from a colony, {HeroNick}. I've never
+---
+>  行ったことないんだ。どんなとこなの?」
+been to space. What's it like?”
+
+@32778 Ark · アーク（按段落 3DD1）
+> 「説明はむずかしいな。知識としては
+>  あるわけだろ?」
+“It's hard to explain. You know about it in theory, right?”
+
+@32779 Lera · レラ
+> 「バカにしないでよ」
+“Don't treat me like an idiot.”
+
+@32780 Ark · アーク（按段落 3DD1）
+> 「そういうわけじゃないけどさ、それ以上
+>  のことって、結局行ってみなくちゃ
+“That's not what I meant, but in the end, there's a lot about it you
+---
+>  わからないことの方が多いんだよ」
+can't understand until you go there yourself.”
+
+@32781 Lera · レラ
+> 「そりゃ、そうかもしれないけど……」
+“I suppose you might be right, but...”
+
+@32782 Ark · アーク（按段落 3DD1）
+> 「そうだな……少なくとも、怖いと思う
+>  ことはない。宇宙ってのはさ
+“Let's see... At least there's nothing to be afraid of. Space isn't
+---
+>  悪いもんじゃないんだ。ちゃんと人間
+>  が生きていけるようになってるんだ
+a bad place. It's made so humans can live there properly.
+---
+>  それに、なんていうのかな、
+>  地上にいるよりも感覚が
+And, how should I put it, your senses feel
+---
+>  鋭くなるような感じはあるな」
+sharper than they do on the ground.”
+
+@32783 Lera · レラ
+> 「ふうん。宇宙か……早く行ってみた
+>  いな」
+“Hmm. Space, huh... I want to go see it soon.”
+
+@32784 Ark · アーク（按段落 3DD1）
+> 「どうせイヤでも行くことになるんだ。
+>  あわてることもないだろ」
+“You'll end up going whether you like it or not. No need to rush.”
+
+@32785 Lera · レラ
+> 「そうだけどさ」
+“I know, but still.”
+
+@32786 Ark · アーク（按段落 3DD1）
+> 「そろそろ俺、ブリーフィングに行かなく
+>  ちゃ」
+“I'd better get going to the briefing.”
+
+@32787 Lera · レラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「遅れると、ブライト艦長に修正
+>  されちゃうもんね」
+“If you're late, Captain Bright will straighten you out.”
+
+@32788 Ark · アーク（按段落 3DD1）
+> 「そういうこと。またあとでな」
+“That's right. See you later.”
+
+@32789 Selain · セレイン（按段落 3DD2）
+> 「あとはバランサーのチェックか……」
+“Now, just the balancer check left...”
+
+@32790 Lera · レラ
+> 「手伝おうか?」
+“Want me to help?”
+
+@32791 Selain · セレイン（按段落 3DD2）
+> 「ああ、頼む。そこのウィンドウのデータを
+>  モニタしていてくれ」
+“Yeah, please. Monitor the data in that window over there.”
+
+@32792 Lera · レラ
+> 「いいよ」
+“Sure.”
+
+@32793 Lera · レラ
+> 「調整終了っと。これで終わり?」
+“Adjustments done. Is that everything?”
+
+@32794 Selain · セレイン（按段落 3DD2）
+> 「ああ。戦闘前の準備はな」
+“Yeah. That's all the prep before battle.”
+
+@32795 Lera · レラ
+> 「スヴァンヒルドもずいぶん故障が多く
+>  なってきたみたいだね」
+“Svanheld seems to be breaking down a lot more lately.”
+
+@32796 Selain · セレイン（按段落 3DD2）
+> 「しかたないな。もともと
+>  帝国の試作機だったやつだ
+“It can't be helped. It was originally an Imperial prototype.
+---
+>  OZに来たことでパーツを流用しやす
+>  くなったことだけが救いだな。もっとも
+The one saving grace is that joining OZ made it easier to scrounge parts. Of course,
+---
+>  そのままじゃ使えないから、アストナージ
+>  たちには苦労をかける」
+they don't work as-is, so we put Astonaige and the others through a lot.”
+
+@32797 Lera · レラ
+> 「アストナージはケーラが来てから
+>  元気そうだから、いいんじゃない」
+“Astonaige has seemed cheerful ever since Kayra showed up, so it's fine, isn't it?”
+
+@32798 Selain · セレイン（按段落 3DD2）
+> 「そうなのか?」
+“Is that so?”
+
+@32799 Lera · レラ
+> 「そう。なんだか知りあいだったみたい」
+“Yep. Seems like they knew each other somehow.”
+
+@32800 Selain · セレイン（按段落 3DD2）
+> 「そういうものか」
+“I suppose that's how it goes.”
+
+@32801 Lera · レラ
+> 「あ、そうだ、こないだのシミュレーションの
+>  結果、どうだった?」
+“Oh, right—how did the simulation the other day turn out?”
+
+@32802 Selain · セレイン（按段落 3DD2）
+> 「お前の模擬戦闘のか? かなり
+>  マシにはなってきたが、まだまだだな
+“You mean your mock battle? You've gotten a lot better, but still not enough.
+---
+>  実戦で後ろはまかせられん」
+In real combat, I can't leave my back to you.”
+
+@32803 Lera · レラ
+> 「そっか……くやしいなぁ。アタシ、操縦
+>  のセンスないのかな」
+“I see... That's frustrating. Maybe I just have no talent for piloting.”
+
+@32804 Selain · セレイン（按段落 3DD2）
+> 「そんなことはない。かなりいい方だと
+>  思うぞ」
+“That's not true. I'd say you're pretty good.”
+
+@32805 Lera · レラ
+> 「だけどさ、ろくに訓練もしないで
+>  乗りこなす奴だっているじゃないか」
+“But there are people who can handle one without hardly any training, aren't there?”
+
+@32806 Selain · セレイン（按段落 3DD2）
+> 「あれが特殊なだけだ。世の中の
+>  民間人全部があんな連中なら
+“They're just special. If every civilian in the world were like them,
+---
+>  訓練学校はいらんし、帝国に
+>  負けることもなかった」
+we wouldn't need training schools, and we never would have lost to the Empire.”
+
+@32807 Lera · レラ
+> 「じゃあ、アンタはどうなのさ。そんなに
+>  時間はかからなかったんでしょ?」
+“Then what about you? It didn't take you that long, did you?”
+
+@32808 Selain · セレイン（按段落 3DD2）
+> 「私にはそれしかなかったからだ。命をか
+>  けて実戦で学ばなければならなかった
+“Because I had nothing else. I had to learn in real combat, risking my life.
+---
+>  その頃、腹に空いた風穴の跡は
+>  今でもうずく。仲間はみんな死んだ
+Even now, the scar of the hole in my gut aches. All my comrades died.
+---
+>  お前が重火器の扱いまで覚えた
+>  のと同じことだ。お前がいたグループに
+It's the same as how you learned to handle heavy weapons. If the group you were with
+---
+>  機動兵器があれば、今ごろお前
+>  も熟練パイロットか、あるいは
+had had mobile weapons, you might be a veteran pilot by now—or else
+---
+>  土の下だったかもしれないぞ」
+you might be under the dirt.”
+
+@32809 Lera · レラ
+> 「なら、アタシだって実戦でなれれば
+>  いいってことだろ」
+“Then that just means I can get used to it in real combat too, right?”
+
+@32810 Selain · セレイン（按段落 3DD2）
+> 「レジスタンスだった時はともかく、OZに
+>  入った今は不慣れな奴まで
+“Back when we were the resistance, maybe, but now that we're with OZ, even inexperienced people
+---
+>  実戦に出ることはない。それに……」
+don't get sent into real combat. Besides...”
+
+@32811 Lera · レラ
+> 「それに?」
+“Besides?”
+
+@32812 Selain · セレイン（按段落 3DD2）
+> 「まだ戦いは続くとはいっても、
+>  それほど長くは続かないかもしれない
+“The fighting may go on, but it might not last much longer.
+---
+>  現状ではそこまでやる意味はない
+>  だろう」
+As things stand, there's no point in going that far.”
+
+@32813 Lera · レラ
+> 「ちぇっ。それってアタシが役立たずって
+>  こと?」
+“Tch. So you're saying I'm useless?”
+
+@32814 Selain · セレイン（按段落 3DD2）
+> 「パイロットだけでは戦いは続けられない
+>  ということだ。お前は十分
+“It means we can't keep fighting with pilots alone. You're more than
+---
+>  {HeroMech}の役に立っている」
+pulling your weight for the {HeroMech}.”
+
+@32815 Lera · レラ
+# 审校：原文第1页以「……まぁいいや。そういえばさ、今度の戦いであの連中を倒せば」结尾，没有引号；初稿错误地加了开引号。
+> 「……まぁいいや。そういえばさ、
+>  今度の戦いであの連中を倒せば
+“...Whatever. Oh, right—if we beat those guys in the next battle,
+---
+>  次は宇宙だってね」
+it's off to space next, isn't it?”
+
+@32816 Selain · セレイン（按段落 3DD2）
+> 「ああ。まだ帝国軍がいるからな。
+>  行かないなどといったら、沙羅が
+“Yeah. The Imperial forces are still out there. If we said we weren't going, Sara would
+---
+>  怒る。どうやらトレーズも我々を
+>  宇宙へ行かせたいらしいしな」
+be furious. And it seems Treize wants us to head into space too.”
+
+@32817 Lera · レラ
+> 「シャピロ・キーツか……なんで地球人
+>  のくせに帝国の指揮官になんか
+“Shapiro Keats, huh... Why would an Earthling go and become
+---
+>  なってるんだろ」
+an Imperial commander?”
+
+@32818 Selain · セレイン（按段落 3DD2）
+> 「さあな。私には理解できないことだ」
+“Who knows. It's beyond my understanding.”
+
+@32819 Lera · レラ
+> 「月に帝国軍が集まってるんだって
+>  聞いたけど、アタシたちも行くことに
+“I heard the Imperial forces are gathering at the moon. So we're going there
+---
+>  なるんでしょ?」
+too, aren't we?”
+
+@32820 Selain · セレイン（按段落 3DD2）
+> 「たぶんな」
+“Probably.”
+
+@32821 Lera · レラ
+# 审校：原文第1页以「……宇宙か……アタシさ、宇宙って行ったことないんだ」结尾，没有引号；初稿错误地加了开引号。
+> 「……宇宙か……アタシさ、宇宙って
+>  行ったことないんだ
+“...Space, huh... I've never been to space, you know.
+---
+>  {HeroNick}はあるの?」
+Have you, {HeroNick}?”
+
+@32822 Selain · セレイン（按段落 3DD2）
+> 「1年戦争が始まる前までは
+>  コロニーだった」
+“I lived in a colony until the One Year War began.”
+
+@32823 Lera · レラ
+> 「へぇ、はじめて聞いたな。
+>  どんなとこなの?」
+“Huh, first I've heard of that. What's it like?”
+
+@32824 Selain · セレイン（按段落 3DD2）
+> 「説明するのはむずかしいな。実際に
+>  行ってみないと、あの感覚は
+“It's hard to explain. You can't really share that feeling unless you go there
+---
+>  共有できない。火を見たことのない
+>  奴に言葉で説明するのと
+yourself. It's like trying to describe it in words to someone
+---
+>  似たようなものだ」
+who's never seen fire.”
+
+@32825 Lera · レラ
+> 「怖くはない?」
+“Isn't it scary?”
+
+@32826 Selain · セレイン（按段落 3DD2）
+> 「人によるだろう。地上でも水が
+>  怖い奴もいるのと同じだ」
+“Depends on the person. Same as how some people on the ground are afraid of water.”
+
+@32827 Lera · レラ
+> 「ふうん、そっか。アタシさ、前から
+>  宇宙に行ってみたいと思ってたんだ
+“Hmm, I see. You know, I've always wanted to go to space.
+---
+>  早く行ってみたいな」
+I can't wait to see it.”
+
+@32828 Selain · セレイン（按段落 3DD2）
+> 「その前に1つ、やることが残っている。
+>  ここで死んだら宇宙へは行けない」
+“Before that, there's one thing left to do. If we die here, we'll never make it to space.”
+
+@32829 Lera · レラ
+> 「大丈夫! アンタたちなら、きっと
+>  勝てるよ」
+“Don't worry! With you guys, we're sure to win.”
+
+@32830 Kamille · カミーユ
+> 「百鬼にミケーネ、それからドレイクか」
+“Hyakki, Mycenae, and Drake too, huh.”
+
+@32831 Kou · コウ
+> 「帝国軍が相手じゃないとはいえ、
+>  かなりキツいことになりそうだな」
+“Even if the Imperial forces aren't our opponents, this is going to be pretty rough.”
+
+@32832 Ryoma · リョウ
+> 「なーに、俺たちなら大丈夫さ。
+>  奴らもこれで最後だ」
+“What are you talking about? We'll be fine. This is the last time for them too.”
+
+@32833 Ark · アーク（按段落 3DD1）
+> 「それから宇宙へ出てムゲを叩く、か
+>  それでこの戦争も終わる」
+“Then we head into space and strike at Muge—and with that, this war ends too.”
+
+@32834 Selain · セレイン（按段落 3DD2）
+> 「そうあってほしいものだな。そうすれば
+>  あとは宇宙へあがり、ムゲを叩けば
+“I certainly hope so. If we do that, then all that's left is to go up into space and strike at Muge—
+---
+>  すべて終わりだ」
+and it's all over.”
+
+@32835 Brad · ブラッド（按段落 3DD3）
+> 「2度と出てこれないよう徹底的に
+>  な。そうすりゃ、あとはムゲ野郎を
+“Make it thorough so they can never come back out. Then all that's left is to
+---
+>  追っかけるだけだ」
+chase down that bastard Muge.”
+
+@32836 Manami · マナミ（按段落 3DD4）
+> 「そうね。やってみせなければね。
+>  これが終われば、あとは宇宙の
+“That's right. We have to show them. Once this is over, all that's left is to
+---
+>  帝国軍を叩くだけだわ」
+strike the Imperial forces in space.”
+
+@32837 Ryoma · リョウ
+> 「ああ、そうだ」
+“Yeah, that's right.”
+
+@32838 Beltorchika · ベルトーチカ
+> 「敵接近! 例の連合軍と
+>  思われます」
+“Enemy approaching! It appears to be that allied force.”
+
+@32839 Bright · ブライト
+> 「来たか。全員聞け。敵は
+>  この一戦に残る戦力を
+“So they've come. Everyone, listen. The enemy has concentrated the forces remaining to them
+---
+>  集中させている。我々にとっては
+>  危険であると同時に、地上の
+into this one battle. For us, that's dangerous—and at the same time, it's our chance
+---
+>  争乱を一気に終結させる
+>  チャンスでもある。なんとしても
+to end the chaos on Earth in one blow. We win this
+---
+>  勝利するんだ。以上だ。
+>  総員、配置につけ!」
+no matter what. That's all. All hands, to your posts!”
+
+@32840 Show · ショウ
+> 「敵が来たか」
+“So the enemy's here.”
+
+@32841 Ciela · シーラ
+> 「戦いが始まります。
+>  お行きなさい、ショウ、マーベル」
+“The battle is about to begin. Go, Show, Marvel.”
+
+@32842 Show · ショウ
+> 「はい。いこう、マーベル!」
+“Yes. Let's go, Marvel!”
+
+@32843 Marvel · マーベル
+> 「シーラさまもお気をつけて!」
+“Lady Ciela, please take care as well!”
+
+@32844 Chum · チャム
+> 「シーラさま、なぜショウとふたりっきりで
+>  お話しなかったの?」
+“Lady Ciela, why didn't you speak with Show alone?”
+
+@32845 Ciela · シーラ
+> 「戦いが終われば、我らは
+>  バイストンウェルへ帰らねばなりません
+“Once the battle is over, we must return to Byston Well.
+---
+>  情は交わさぬがいい」
+It's best not to grow attached.”
+
+@32846 Chum · チャム
+> 「シーラさま……」
+“Lady Ciela...”
+
+@32847 Ciela · シーラ
+> 「お前もお行き、チャム。
+>  ショウを頼みますよ」
+“You go too, Chum. Look after Show for me.”
+
+@32848 Bright · ブライト
+> 「ドレイクのウィル・ウィプスか……」
+“Drake's Will-Wips, huh...”
+
+@32849 Bright · ブライト
+> 「な、なんだ!?」
+“Wh-what was that?!”
+
+@32850 Ginrei · 銀鈴
+> 「艦内で爆発のようです」
+“It seems there's been an explosion inside the ship.”
+
+@32851 Bright · ブライト
+> 「なんだと!? 原因は!?」
+“What?! What's the cause?!”
+
+@32852 Sally · サリィ
+> 「不明です。敵の破壊工作の
+>  可能性があります。艦内に
+“Unknown. It could be enemy sabotage. Inside the ship,
+---
+>  見覚えのない人物がいたような
+>  気がしました」
+I had the feeling there was someone I didn't recognize.”
+
+@32853 Bright · ブライト
+> 「敵の侵入を許したというのか?
+>  艦内を捜索しろ!」
+“You mean you let the enemy infiltrate? Search the ship!”
+
+@32854 Ark · アーク（按段落 3DD1）
+> 「了解!」
+“Understood!”
+
+@32855 Lera · レラ
+> 「ちょっと、アンタはパイロットでしょ!」
+“Hey, you're a pilot, aren't you!”
+
+@32856 Ark · アーク（按段落 3DD1）
+> 「本当に敵が潜入してるんなら、
+>  人手が足りないだろ!?」
+“If the enemy really has snuck aboard, we don't have enough hands, do we!?”
+
+@32857 Bright · ブライト
+> 「わかった、{HeroNick}はそのまま艦内の
+>  捜索をしろ! 他の者は発進
+“Understood. {HeroNick}, you keep searching the ship! Everyone else, launch—
+---
+>  急げよ!」
+make it quick!”
+
+@32858 Selain · セレイン（按段落 3DD2）
+> 「艦長、私は出撃を見合わせる」
+“Captain, I'll hold off on launching.”
+
+@32859 Lera · レラ
+> 「ちょっと、アンタ何いってんのさ!」
+“Hey, what are you saying!?”
+
+@32860 Bright · ブライト
+# 审校：原文第1页以「……よし、許可する。{HeroNick}は艦内を頼む。他の者は発進」结尾，没有引号；初稿错误地加了开引号。
+> 「……よし、許可する。{HeroNick}は
+>  艦内を頼む。他の者は発進
+“...All right, permission granted. {HeroNick}, I leave the ship to you. Everyone else, launch—
+---
+>  急げよ!」
+make it quick!”
+
+@32861 Selain · セレイン（按段落 3DD2）
+> 「了解」
+“Understood.”
+
+@32862 Ark · アーク（按段落 3DD1）
+> 「了解!」
+“Understood!”
+
+@32863 Beltorchika · ベルトーチカ
+# 审校：原文为「!?」，英文应使用“?!”而非“!?”。
+> 「あなたはパイロットでしょ!?」
+“You're a pilot, aren't you?!”
+
+@32864 Bright · ブライト
+> 「いい、やらせろ。{HeroNick}は艦内の
+>  捜索だ。敵にこれ以上やらせるな」
+“It's fine, let him do it. {HeroNick}, you search the ship. Don't let the enemy do any more damage.”
+
+@32865 Ark · アーク（按段落 3DD1）
+> 「はい!」
+“Yes, sir!”
+
+@32866 Bright · ブライト
+> 「他の者は発進急げよ!」
+“Everyone else, launch—make it quick!”
+
+@32867 Selain · セレイン（按段落 3DD2）
+> 「艦長、私が残ろうか」
+“Captain, shall I stay behind?”
+
+@32868 Bright · ブライト
+> 「そうだな……頼む。他の者は発進
+>  急げ!」
+“Yes, that works... I'll leave it to you. Everyone else, launch—make it quick!”
+
+@32869 Brad · ブラッド（按段落 3DD3）
+# 审校：原文为「!?」，英文应使用“?!”而非“!?”。
+> 「敵が爆弾しかけたってのかよ!?
+>  くそっ、冗談じゃねぇ!」
+“You're saying the enemy planted a bomb?! Damn it, you've gotta be kidding me!”
+
+@32870 Bright · ブライト
+# 审校：原文为「!?」，英文应使用“?!”而非“!?”。
+> 「{HeroNick}、どこへ行く!?」
+“{HeroNick}, where are you going?!”
+
+@32871 Brad · ブラッド（按段落 3DD3）
+> 「敵を見つけなきゃならねぇんだろ?
+>  これ以上やられてたまるかよ!」
+“We've gotta find the enemy, right? I'm not letting them get away with any more!”
+
+@32872 Bright · ブライト
+> 「……わかった、お前は艦内の捜索
+>  だ。他の者は発進急げよ!」
+“...Understood. You search the ship. Everyone else, launch—make it quick!”
+
+@32873 Manami · マナミ（按段落 3DD4）
+> 「艦長、あたしも残るわ!」
+“Captain, I'm staying too!”
+
+@32874 Bright · ブライト
+# 审校：原文为「!?」，英文应使用“?!”而非“!?”。
+> 「なんだと!? いや……わかった。頼む」
+“What?! No... understood. I'll leave it to you.”
+
+@32875 Manami · マナミ（按段落 3DD4）
+> 「はい!」
+“Yes!”
+
+@32876 Bright · ブライト
+> 「他の者は発進急げよ!」
+“Everyone else, launch—make it quick!”
+
+@32877 Ciela · シーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  ドレイクに対応せねばなりません
+“Captain Bright, we must deal with Drake.
+---
+>  ここはグラン・ガランとゴラオンを前面
+>  に出します」
+Here, we'll send out the Gran-Garan and the Goraon to the front.”
+
+@32878 Bright · ブライト
+> 「シーラ女王……わかりました。
+>  頼みます」
+“Queen Ciela... understood. I'll leave it to you.”
+
+@32879 Ciela · シーラ
+> 「ドレイク!」
+“Drake!”
+
+@32880 Elle · エレ
+> 「お覚悟を!」
+“Prepare yourself!”
+
+@32881 Drake · ドレイク
+> 「シーラ・ラパーナとエレ・ハンムか。そうか
+>  なぜ地上界まで追ってきたのか
+“Ciela Lapana and Elle Hunm, is it? So that's why you chased us all the way to the surface world—
+---
+>  わかったぞ。やはり真っ先につぶして
+>  おくべきだったな」
+now I understand. I should have crushed you first after all.”
+
+@32882 Ciela · シーラ
+> 「ドレイク・ルフト。
+>  お気づきか、あなたのなしたこと
+“Drake Luft. Have you realized? What you have done—
+---
+>  かりそめの客は去らねばならぬが
+>  運命。それがわからぬというのなら……」
+it is fate that a passing guest must depart. If you cannot understand that, then...”
+
+@32883 Drake · ドレイク
+> 「オーラマシンの力は世界をつなげ
+>  すぎた。我々は地上にあっては
+“The power of the Aura Machine connected the worlds too much. In the surface world, we are
+---
+>  粛清されなければならぬ存在だ」
+beings that must be purged.”
+
+@32884 Elle · エレ
+> 「ドレイク王……?」
+“King Drake...?”
+
+@32885 Drake · ドレイク
+> 「ワシとて世界をみる目はあるつもりだ
+>  が、個人の感情の決着だけは
+“I may not have much of an eye for the world, but when it comes to settling personal feelings,
+---
+>  これはつけさせてもらう。そのために、
+>  ここで貴様たちに負けてやるわけには
+this I will see through. And for that sake, I cannot afford to lose to you lot here—
+---
+>  いかぬな」
+no, I cannot.”
+
+@32886 Show · ショウ
+> 「やらせはしないッ!」
+“I won't let you!”
+
+@32887 Black Knight · 黒騎士
+> 「ショウ・ザマ……ここをお前の墓場に
+>  してくれる」
+“Show Zama... I'll make this place your grave.”
+
+@32888 Tod · トッド
+> 「ショウか……」
+“Show, huh...”
+
+@32889 Dark General · 暗黒大将軍
+> 「ふはははっ! この程度ではすまんぞ!」
+“Fuhahaha! This level won't be enough to finish me!”
+
+@32890 Dr. Gura · グラー博士
+> 「それっ、一気に叩きつぶせ!
+>  ゲッター線の秘密を手にいれるのだ」
+“There, crush them all at once! We shall obtain the secret of Getter Rays!”
+
+@32891 Ark · アーク（按段落 3DD1）
+> 「何か見つかったか?」
+“Did you find anything?”
+
+@32892 Lera · レラ
+> 「ううん、全然。
+>  怪しい奴もいなかったし……」
+“No, not at all. There wasn't anyone suspicious either...”
+
+@32893 Ark · アーク（按段落 3DD1）
+> 「くそっ、いったいどうなってるんだ」
+“Damn it, what the hell is going on?”
+
+@32894 Ginrei · 銀鈴
+> 「これだけ探して見つからないなんて、
+>  少し変だわ」
+“Searching this much and still not finding them... it's a little strange.”
+
+@32895 Rain · レイン
+> 「だけど敵が潜入したのは確か
+>  なんでしょ?」
+“But it's certain that the enemy infiltrated, right?”
+
+@32896 Ginrei · 銀鈴
+> 「サリィはそういっていたわね。でも
+>  それらしい人物は見当たらないわ」
+“That's what Sally said. But I don't see anyone who fits the bill.”
+
+@32897 Rain · レイン
+> 「どこかに隠れているかもしれない。
+>  とにかく、探しましょう」
+“They might be hiding somewhere. Anyway, let's keep searching.”
+
+@32898 Ark · アーク（按段落 3DD1）
+> 「ああ」
+“Yeah.”
+
+@32899 Selain · セレイン（按段落 3DD2）
+> 「……妙だな……」
+“...Something's off...”
+
+@32900 Lera · レラ
+> 「何がさ?」
+“What is?”
+
+@32901 Selain · セレイン（按段落 3DD2）
+> 「これだけ探して敵が見つからないと
+>  いうのはな」
+“That we've searched this much and still can't find the enemy.”
+
+@32902 Rain · レイン
+> 「どこかに隠れているってことでしょう?」
+“You mean they're hiding somewhere?”
+
+@32903 Ginrei · 銀鈴
+> 「私も少し気になるわ」
+“I'm a little concerned too.”
+
+@32904 Rain · レイン
+> 「銀鈴がいうんならそうなのかも
+>  しれないけど……とにかく何者かが
+“If Ginrei says so, maybe you're right... but in any case, someone has
+---
+>  潜入しているのは間違いないんだか
+>  ら、一刻も早く見つけなくては」
+definitely infiltrated, so we have to find them as soon as possible.”
+
+@32905 Selain · セレイン（按段落 3DD2）
+> 「そうだな……」
+“Yeah...”
+
+@32906 Ark · アーク（按段落 3DD1）
+> 「何か見つかったか?」
+“Did you find anything?”
+
+@32907 Shirley · シャリー
+> 「いいえ。とくに怪しい人物も見かけ
+>  なかったわ」
+“No. I didn't see anyone particularly suspicious.”
+
+@32908 Ark · アーク（按段落 3DD1）
+> 「くそっ、いったいどうなってるんだ」
+“Damn it, what the hell is going on?”
+
+@32909 Ginrei · 銀鈴
+> 「これだけ探して見つからないなんて、
+>  少し変だわ」
+“Searching this much and still not finding them... it's a little strange.”
+
+@32910 Rain · レイン
+> 「だけど敵が潜入したのは確かなんで
+>  しょ?」
+“But it's certain that the enemy infiltrated, right?”
+
+@32911 Ginrei · 銀鈴
+> 「サリィはそういっていたわね。でも
+>  それらしい人物は見当たらないわ」
+“That's what Sally said. But I don't see anyone who fits the bill.”
+
+@32912 Rain · レイン
+> 「どこかに隠れているかもしれない。
+>  とにかく、探しましょう」
+“They might be hiding somewhere. Anyway, let's keep searching.”
+
+@32913 Ark · アーク（按段落 3DD1）
+> 「ああ」
+“Yeah.”
+
+@32914 Selain · セレイン（按段落 3DD2）
+> 「……妙だな……」
+“...Something's off...”
+
+@32915 Bunny · バニー
+> 「何が?」
+“What is?”
+
+@32916 Selain · セレイン（按段落 3DD2）
+> 「これだけ探して敵が見つからないと
+>  いうのはな」
+“That we've searched this much and still can't find the enemy.”
+
+@32917 Rain · レイン
+> 「どこかに隠れているってことでしょう?」
+“You mean they're hiding somewhere?”
+
+@32918 Ginrei · 銀鈴
+> 「私も少し気になるわ」
+“I'm a little concerned too.”
+
+@32919 Bunny · バニー
+> 「もう、そんなこといってる場合じゃない
+>  でしょ」
+“Come on, this isn't the time to be saying that.”
+
+@32920 Rain · レイン
+> 「銀鈴がいうんならそうなのかも
+>  しれないけど……とにかく何者かが
+“If Ginrei says so, maybe you're right... but in any case, someone has
+---
+>  潜入しているのは間違いないんだか
+>  ら、一刻も早く見つけなくては」
+definitely infiltrated, so we have to find them as soon as possible.”
+
+@32921 Selain · セレイン（按段落 3DD2）
+> 「そうだな……」
+“Yeah...”
+
+@32922 Brad · ブラッド（按段落 3DD3）
+> 「くそっ、いったい敵はどこに隠れてやが
+>  る! コソコソしてねぇで出てきやがれ!」
+“Damn it, where the hell are the enemy hiding?! Stop sneaking around and come out!”
+
+@32923 Rain · レイン
+> 「それで出てきてくれるんなら、こんな
+>  苦労はしてないでしょ」
+“If they'd come out just because you said that, we wouldn't be going through all this trouble.”
+
+@32924 Ginrei · 銀鈴
+> 「でも変ね。これだけ探しても見つから
+>  ないなんて」
+“But it's strange. Searching this much and still not finding them.”
+
+@32925 Rain · レイン
+> 「そうだけど……でも、とにかく探すしか
+>  ないでしょう?」
+“That's true, but... we've just got to keep searching, right?”
+
+@32926 Brad · ブラッド（按段落 3DD3）
+> 「ああ、敵が逃げたんならそれで
+>  かまわねぇが、すっきりさせとかねぇと
+“Yeah, if the enemy ran off, that's fine by me, but if we don't settle this,
+---
+>  戦いに集中できないぜ」
+I can't focus on the fight.”
+
+@32927 Manami · マナミ（按段落 3DD4）
+> 「ローレンス、そっちはどう?」
+“Lawrence, how's it on your end?”
+
+@32928 Lawrence · ローレンス
+> 「特に怪しい人物は発見できませ
+>  んでした」
+“I was unable to find anyone particularly suspicious.”
+
+@32929 Manami · マナミ（按段落 3DD4）
+> 「いったいどこに隠れているのかしら」
+“Where on earth could they be hiding?”
+
+@32930 Ginrei · 銀鈴
+> 「そうね。これだけ探しても見つからない
+>  なんて……」
+“You're right. Searching this much and still not finding them...”
+
+@32931 Rain · レイン
+> 「でも艦内から誰も外へ出ていない
+>  わけだから、まだいるはずでしょ?」
+“But no one has left the ship, so they should still be here, right?”
+
+@32932 Manami · マナミ（按段落 3DD4）
+> 「そうね。とにかく、探しましょう」
+“You're right. Anyway, let's keep searching.”
+
+@32933 Show · ショウ
+# 审校：原译“Your hatred is the only thing powering up”把“憎しみだけがパワーアップしている”译成“只有仇恨在升级”，语气偏陈述且略生硬；改为更自然的战斗台词。
+> 「トッド! 憎しみだけがパワーアップして
+>  いるぞ!」
+“Tod! Only your hatred is powering up!”
+
+@32934 Tod · トッド
+> 「貴様がそうさせたんだろうッ、ショウ!
+>  ここで終わりにしてやるぜ!」
+“You're the one who made me this way, Show! I'll finish you here and now!”
+
+@32935 Tod · トッド
+> 「くっ……こんなことでぇぇーっ!!」
+“Ngh... Not like thisss!!”
+
+@32936 Show · ショウ
+> 「トッド!? ハイパー化したのか!」
+“Tod?! Did you go Hyper?!”
+
+@32937 Tod · トッド
+> 「ハ……ハハハハッ! みてな、ママ。
+>  こいつらを落としてみせるぜ」
+“Ha... Hahahaha! Watch me, Mama. I'll shoot these guys down for you.”
+
+@32938 Show · ショウ
+> 「く……トッドォォォォォォォォッ!!」
+“Ngh... Toddddddd!!”
+
+@32939 Chum · チャム
+> 「ショウ!? ダメーッ! うかつにハイパー
+>  したら……ショウ!!」
+“Show?! No! If you go Hyper so recklessly... Show!!”
+
+@32940 Show · ショウ
+> 「ウオォォォォォォーッ!!」
+“Uwooooooooh!!”
+
+@32941 Chum · チャム
+> 「ショウがハイパーになる! 助けて
+>  マーベルッ! エレさま! シーラさまぁ!」
+“Show's going Hyper! Help, Marvel! Lady Elle! Lady Ciela!”
+
+@32942 Elle · エレ
+> 「ショウ、いけません!」
+“Show, you mustn't!”
+
+@32943 Marvel · マーベル
+> 「ショウ!!」
+“Show!!”
+
+@32944 Ciela · シーラ
+> 「ショウ!!」
+“Show!!”
+
+@32945 Show · ショウ
+> 「うっ……」
+“Ugh...”
+
+@32946 Chum · チャム
+> 「ショウ! ショウ! 大丈夫!?」
+“Show! Show! Are you okay?!”
+
+@32947 Show · ショウ
+> 「す……すまないチャム。
+>  もう大丈夫だ。助かったよ」
+“S-Sorry, Chum. I'm all right now. You saved me.”
+
+@32948 Chum · チャム
+> 「よかったぁ……」
+“Thank goodness...”
+
+@32949 Tod · トッド
+> 「くっ……こんなことでぇぇーっ!!」
+“Ngh... Not like thisss!!”
+
+@32950 Show · ショウ
+> 「トッド!? ハイパー化したのか!?」
+“Tod?! Did you go Hyper?!”
+
+@32951 Tod · トッド
+> 「ハ……ハハハハッ! みてな、ママ。
+>  こいつらを落としてみせるぜ」
+“Ha... Hahahaha! Watch me, Mama. I'll shoot these guys down for you.”
+
+@32952 Tod · トッド
+> 「く……結局、最後までこれか……
+>  あばよ、ショウ……」
+“Ngh... So this is how it ends, right to the last... So long, Show...”
+
+@32953 Show · ショウ
+> 「勝手に死なせるか! お前は
+>  生きて罪をつぐなえ!」
+“I won't let you die on your own! You're going to live and atone for your sins!”
+
+@32954 Tod · トッド
+> 「楽にさせてくれよ……。ショウ……
+>  いい夢を、見させてもらったぜ……」
+“Just let me rest... Show... you let me have a good dream...”
+
+@32955 Show · ショウ
+> 「これが……これが、いい夢でたまるかよ!
+>  くっ……」
+“How is this... how is this any kind of good dream?! Ngh...”
+
+@32956 Tod · トッド
+> 「ショウ……いい夢を、見させてもらった
+>  ぜ……」
+“Show... you let me have a good dream...”
+
+@32957 Show · ショウ
+> 「これが……これが、いい夢でたまるかよ!
+>  くっ……」
+“How is this... how is this any kind of good dream?! Ngh...”
+
+@32958 Chum · チャム
+> 「ショウ……。トッド、死んじゃったの?」
+“Show... Did Tod die?”
+
+@32959 Show · ショウ
+> 「ああ………………」
+“Yeah...”
+
+@32960 Tod · トッド
+> 「く……こんなところで終わるのか……。
+>  いい夢を、見させてもらったぜ……」
+“Ngh... So I end here... You let me have a good dream...”
+
+@32961 Black Knight · 黒騎士
+> 「ショウ! マーベル、シーラともども
+>  地獄へ送ってやる!」
+“Show! I'll send you to hell along with Marvel and Ciela!”
+
+@32962 Show · ショウ
+> 「黒騎士、貴様ッ!」
+“Black Knight, you bastard!”
+
+@32963 Black Knight · 黒騎士
+> 「お……おのれ! おのれショウ・ザマッ!!」
+“D-Damn you! Damn you, Show Zama!!”
+
+@32964 Show · ショウ
+> 「これで終わりだ、黒騎士!」
+“This is the end, Black Knight!”
+
+@32965 Black Knight · 黒騎士
+> 「うっ!? なんだ、この不快感は!?
+>  うおぉぉぉっ!!」
+“Ugh?! What is this foul feeling?! Uwooooh!!”
+
+@32966 Show · ショウ
+> 「なに!?」
+“What?!”
+
+@32967 Black Knight · 黒騎士
+> 「ショウ!! 今度こそこの私の
+>  オーラパワーで!!」
+“Show!! This time I'll finish you with my Aura Power!!”
+
+@32968 Elle · エレ
+> 「うっ……なんという悪しきオーラか!
+>  その男、この世界から去れ!」
+“Ugh... What wicked aura is this?! That man must leave this world!”
+
+@32969 Black Knight · 黒騎士
+> 「エレ・ハンムか!」
+“Elle Hunm!”
+
+@32970 Elle · エレ
+> 「退がれ! お前のオーラ力は私が
+>  引き受ける!」
+“Fall back! I will take on your Aura Power myself!”
+
+@32971 Black Knight · 黒騎士
+> 「女1人ごときに、俺は屈するわけ
+>  にはいかん!」
+“I will not yield to a single woman!”
+
+@32972 Elle · エレ
+> 「あぁぁぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@32973 Chum · チャム
+> 「いやぁぁーっ! エレさま、だめぇぇっ!!」
+“Nooo! Lady Elle, don't!!”
+
+@32974 Show · ショウ
+> 「黒騎士、貴様ぁぁぁぁーっ!!」
+“Black Knight, you baaastard!!”
+
+@32975 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This aura... Bern Bunnings!”
+
+@32976 Bern · バーン
+> 「バ……バカなッ!? この私が……」
+“I-Impossible?! That I, of all people...”
+
+@32977 Show · ショウ
+> 「バーンだと!? 貴様、その怨念で
+>  何を手に入れた!!」
+“Bern?! What did you gain from all that hatred?!”
+
+@32978 Bern · バーン
+> 「く……力と狡猾さだ! さすれば、
+>  勝つ!!」
+“Ngh... Power and cunning! With those, I win!!”
+
+@32979 Black Knight · 黒騎士
+> 「お……おのれ! おのれショウ・ザマッ!!」
+“D-Damn you! Damn you, Show Zama!!”
+
+@32980 Show · ショウ
+> 「これで終わりだ、黒騎士!」
+“This is the end, Black Knight!”
+
+@32981 Black Knight · 黒騎士
+> 「うっ!? なんだ、この不快感は!?
+>  うおぉぉぉっ!!」
+“Ugh?! What is this foul feeling?! Uwooooh!!”
+
+@32982 Show · ショウ
+> 「なに!?」
+“What?!”
+
+@32983 Chum · チャム
+> 「ハイパー化した!?」
+“He's gone Hyper?!”
+
+@32984 ???
+> 「ショウ!! 今度こそこの私の
+>  オーラパワーで!!」
+“Show!! This time I'll finish you with my Aura Power!!”
+
+@32985 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This aura... Bern Bunnings!”
+
+@32986 Show · ショウ
+> 「バーンだと!? 貴様……その怨念
+>  で何を手に入れた!!」
+“Bern?! You... What did you gain from all that hatred?!”
+
+@32987 Bern · バーン
+> 「フ、フハハハハッ! 力と狡猾さだ!
+>  さすれば、勝つ!!」
+“F-Fuhahahaha! Power and cunning! With those, I win!!”
+
+@32988 Black Knight · 黒騎士
+> 「お……おのれぇぇーっ!!」
+“D-Damn youuu!!”
+
+@32989 ???
+> 「フハハハハハッ! 今度こそ、この私
+>  のオーラパワーで貴様らを落とす!!」
+“Fuhahahahaha! This time, with my Aura Power, I'll bring you all down!!”
+
+@32990 Chum · チャム
+> 「このオーラ力……バーン・バニングス!」
+“This aura... Bern Bunnings!”
+
+@32991 Show · ショウ
+> 「バーンだと!? 貴様……その怨念
+>  で何を手に入れた!!」
+“Bern?! You... What did you gain from all that hatred?!”
+
+@32992 Bern · バーン
+> 「フ、フハハハハッ! 力と狡猾さだ!
+>  さすれば、勝つ!!」
+“F-Fuhahahaha! Power and cunning! With those, I win!!”
+
+@32993 Bern · バーン
+> 「なんだと!?
+>  ショウ、貴様ぁぁーっ!!」
+“What?! Show, you baaastard!!”
+
+@32994 Show · ショウ
+> 「俺は人は殺さない! その怨念を
+>  殺す!!」
+“I don't kill people! I kill that hatred!!”
+
+@32995 Bern · バーン
+> 「な……なんだと!?」
+“W-What did you say?!”
+
+@32996 Ciela · シーラ
+> 「ドレイク! これで終わりにします!」
+“Drake! I'm putting an end to this!”
+
+@32997 Drake · ドレイク
+> 「シーラか!」
+“Ciela!”
+
+@32998 Ciela · シーラ
+> 「グラン・ガラン、突撃せよ!」
+“Gran-Garan, charge!”
+
+@32999 Drake · ドレイク
+> 「ウィル・ウィプスでグラン・ガランを
+>  受けろ!!」
+“Take the Gran-Garan with the Wil Wiphs!!”
+
+@33000 Drake · ドレイク
+> 「ショウ・ザマか!? まさか貴様に
+>  討たれるとはな……」
+“Show Zama?! To think I'd be struck down by you...”
+
+@33001 Show · ショウ
+> 「ドレイク、これで終わりだ!
+>  ……シーラ・ラパーナ! 浄化を!!」
+“Drake, this is the end! ...Ciela Lapana! Purify!!”
+
+@33002 Ciela · シーラ
+> 「よし! ショウ、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Show, you did well. Everyone, we return to Byston Well
+---
+>  帰還します!! 憎しみの心を
+>  地上に残さぬよう……」
+!! Leave no hatred behind on the surface...”
+
+@33003 Drake · ドレイク
+> 「マーベル・フローズンか!? まさか
+>  貴様に討たれるとはな……」
+“Marvel Frozen?! To think I'd be struck down by you...”
+
+@33004 Marvel · マーベル
+> 「やったの……?」
+“Did I do it...?”
+
+@33005 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! Purify!!”
+
+@33006 Show · ショウ
+> 「ああ、マーベル。……シーラ・ラパーナ!
+>  浄化を!!」
+“Yeah, Marvel. ...Ciela Lapana! Purify!!”
+
+@33007 Ciela · シーラ
+> 「よし! マーベル、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Marvel, you did well. Everyone, we return to Byston Well
+---
+>  帰還します!!
+>  憎しみの心を地上に残さぬよう…」
+!! Leave no hatred behind on the surface...”
+
+@33008 Drake · ドレイク
+> 「ガラリアか!? まさか貴様に討たれ
+>  ようとはな!!」
+“Garalia?! To think I'd be struck down by you!!”
+
+@33009 Garalia · ガラリア
+> 「ドレイクは落としたぞ!!」
+“Drake is down!!”
+
+@33010 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“As expected, Garalia. ...Ciela Lapana!! Purify!!”
+
+@33011 Show · ショウ
+> 「さすがだ、ガラリア。
+>  ……シーラ・ラパーナ!! 浄化を!!」
+“As expected, Garalia. ...Ciela Lapana!! Purify!!”
+
+@33012 Ciela · シーラ
+# 审校：初稿中出现了全角斜线“／”，应删除，改为与原文页末一致的“!!”。
+> 「よし! ガラリア、よくやってくれました。
+>  皆の者、バイストンウェルへ
+“Good! Garalia, you did well. Everyone, we return to Byston Well
+---
+>  帰還します!!
+!!
+---
+>  憎しみの心を地上に残さぬよう…」
+Leave no hatred behind on the surface...”
+
+@33013 Drake · ドレイク
+> 「なんだと!? まさかこんなところで
+>  討たれようとは……」
+“What?! To think I'd be struck down in a place like this...”
+
+@33014 Show · ショウ
+> 「ウィル・ウィプスが落ちた……
+>  シーラ・ラパーナ!! 浄化を!!」
+“The Will-Wips has fallen... Ciela Lapana!! Purify!!”
+
+@33015 Show · ショウ
+> 「ウィル・ウィプスが落ちた……
+>  シーラ・ラパーナ!! 浄化を!!」
+“The Will-Wips has fallen... Ciela Lapana!! Purify!!”
+
+@33016 Ciela · シーラ
+> 「よくやってくれました! 皆の者、
+>  バイストンウェルへ帰還します!!
+“You did well! Everyone, we return to Byston Well!!
+---
+>  憎しみの心を地上に残さぬよう…」
+Leave no hatred behind on the surface...”
+
+@33017 Bright · ブライト
+> 「な……なんだと……?」
+“W-What...?”
+
+@33018 Beltorchika · ベルトーチカ
+> 「オーラマシンが……消えてしまった?」
+“The Aura Machines... vanished?”
+
+@33019 Anna · アンナ
+> 「そんな……それじゃあ、みんなは!?」
+“No... then what about everyone else?!”
+
+@33020 Bright · ブライト
+> 「わからん……わからんが……」
+“I don't know... I don't know, but...”
+
+@33021 Bright · ブライト
+> 「詮索はあとまわしだ。
+>  まずは敵を片づけることを考えろ!」
+“Questions can wait. First, think about wiping out the enemy!”
+
+@33022 Dark General · 暗黒大将軍
+> 「なんと……バイストンウェルの軍勢が
+>  消滅しただと!?」
+“What... the forces of Byston Well have been annihilated?!”
+
+@33023 Dr. Gura · グラー博士
+> 「よいではないか、暗黒大将軍。
+>  敵のオーラマシンも消えたのだ
+“Isn't that fine, Dark General? The enemy's Aura Machines are gone as well.
+---
+>  我らにとっては有利であろう」
+This works in our favor.”
+
+@33024 Dark General · 暗黒大将軍
+> 「なるほどグラー博士、確かに
+>  その通りだ。よし、一気に奴らを
+“I see, Dr. Gura. Indeed, you're right. Good, crush them all at once
+---
+>  叩きつぶせ!!」
+!!”
+
+@33025 Dr. Gura · グラー博士
+> 「それ、行け! ゲッター線の秘密を
+>  手に入れるのだ!」
+“There, go! Seize the secret of the Getter Rays!”
+
+@33026 Beltorchika · ベルトーチカ
+# 审校：“ミケーネ”指迈锡尼帝国势力，补上定冠词更自然。
+> 「艦長、百鬼とミケーネです!」
+“Captain, it's the Hyakki and the Mycenae!”
+
+@33027 Bright · ブライト
+> 「くっ、もう来たか。迎撃しろ!」
+“Ngh, they're already here. Intercept them!”
+
+@33028 Ryoma · リョウ
+# 审校：“鬼”在此指百鬼帝国的敌人，译为 oni 保留日文词不够自然，改为 demon 更符合英文语境。
+> 「鬼め、2度と出てこれないようにして
+>  やる!」
+“You demon, I'll make sure you never come out again!”
+
+@33029 Dr. Gura · グラー博士
+> 「ゲッターロボ! 貴様を倒して
+>  ゲッター炉心をもらいうけるぞ!」
+“Getter Robo! I'll defeat you and take the Getter core for myself!”
+
+@33030 Dr. Gura · グラー博士
+> 「おおぉぉっ、おのれぇぇぇーっ!!」
+“Ooooh, curse youuuu!!”
+
+@33031 Dark General · 暗黒大将軍
+> 「死ねぇ、剣鉄也!!
+>  この暗黒大将軍がじきじきに
+“Die, Tetsuya Tsurugi!! I, the Dark General, shall personally
+---
+>  貴様を葬ってくれるわ!」
+send you to your grave!”
+
+@33032 Tetsuya · 鉄也
+> 「ミケーネめ! やれるもんならやって
+>  みやがれ!!」
+“Mycenae! If you think you can do it, just try!!”
+
+@33033 Jun · ジュン
+> 「暗黒大将軍! 勝ちめはない
+>  わよ!」
+“Dark General! You don't stand a chance!”
+
+@33034 Dark General · 暗黒大将軍
+> 「このわしが、貴様ごときにやられるもの
+>  か!」
+“You think the likes of you could defeat me?!”
+
+@33035 Dark General · 暗黒大将軍
+> 「こ、これしきのことで……わしは闇の
+>  軍団を率いる大将軍……だ……」
+“T-To fall to something like this... I am the great general who leads the armies of darkness...”
+
+@33036 Bright · ブライト
+> 「とりあえずはしのいだか……敵の
+>  様子は?」
+“For now, we've held them off... What's the enemy's status?”
+
+@33037 Beltorchika · ベルトーチカ
+> 「後続が接近中です。それと……
+>  オーラマシンはやはり消失したようです
+“Reinforcements are approaching. Also... the Aura Machines do seem to have vanished.
+---
+>  周囲に反応ありません」
+There's no response in the surrounding area.”
+
+@33038 Bright · ブライト
+> 「そうか……くそっ。艦内の爆発の
+>  原因はわかったのか!?」
+“I see... Damn it. Have you found the cause of the explosion aboard the ship?!”
+
+@33039 Bunny · バニー
+> 「銀鈴がいうには、爆発物に
+>  間違いないそうです」
+“According to Ginrei, there's no doubt it was an explosive.”
+
+@33040 Bright · ブライト
+> 「やはり敵が侵入しているのか……
+>  発見いそがせろ!」
+“So the enemy really has infiltrated... Hurry up and find them!”

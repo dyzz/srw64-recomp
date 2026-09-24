@@ -1,0 +1,477 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15100 Hell Marshal · 地獄大元帥
+> 「涙をのんでここは引きあげろ!」
+“Swallow your tears and retreat for now!”
+
+@15101 Hell Marshal · 地獄大元帥
+> 「涙をのんでここは引きあげろ!」
+“Swallow your tears and retreat for now!”
+
+@15102 Hell Marshal · 地獄大元帥
+# 审校：“ぞぅ”是强调语气，初稿“don't go whining”稍弱，改为“don't start whining”更贴近命令口吻。
+> 「ここが正念場だぞぅ、弱音を
+>  吐くな!」
+“This is the crucial moment, don't start whining!”
+
+@15103 Hell Marshal · 地獄大元帥
+> 「修理はまだか!」
+“Are the repairs done yet?!”
+
+@15104 Hell Marshal · 地獄大元帥
+> 「ばかもの!」
+“You fool!”
+
+@15105 Hell Marshal · 地獄大元帥
+# 审校：同上，统一 L32 的译法。
+> 「ここが正念場だぞぅ、弱音を
+>  吐くな!」
+“This is the crucial moment, don't start whining!”
+
+@15106 Hell Marshal · 地獄大元帥
+> 「修理はまだか!」
+“Are the repairs done yet?!”
+
+@15107 Hell Marshal · 地獄大元帥
+> 「ばかもの!」
+“You fool!”
+
+@15108 Hell Marshal · 地獄大元帥
+# 审校：“しっかりやってくれよ”是要求对方认真做，初稿“Get it together”偏“振作起来”，改为“Do this properly”更准确。
+> 「しっかりやってくれよ」
+“Do this properly, you hear me.”
+
+@15109 Hell Marshal · 地獄大元帥
+> 「このくらいでひるむな、馬鹿者!」
+“Don't flinch at a little thing like this, you idiot!”
+
+@15110 Hell Marshal · 地獄大元帥
+> 「早く修理しろ!」
+“Hurry up and repair it!”
+
+@15111 Hell Marshal · 地獄大元帥
+> 「ええい、何をもたもたしているのだ」
+“Gah, what are you dawdling for?”
+
+@15112 Hell Marshal · 地獄大元帥
+# 审校：同上，统一 L38 的译法。
+> 「しっかりやってくれよ」
+“Do this properly, you hear me.”
+
+@15113 Hell Marshal · 地獄大元帥
+> 「このくらいでひるむな、馬鹿者!」
+“Don't flinch at a little thing like this, you idiot!”
+
+@15114 Hell Marshal · 地獄大元帥
+> 「早く修理しろ!」
+“Hurry up and repair it!”
+
+@15115 Hell Marshal · 地獄大元帥
+> 「ええい、何をもたもたしているのだ」
+“Gah, what are you dawdling for?”
+
+@15116 Hell Marshal · 地獄大元帥
+> 「いかにあがこうと無理な事だ、
+>  ええい皆殺しにしてやれい!」
+“Struggle all you like, it's hopeless. Gah, kill them all!”
+
+@15117 Hell Marshal · 地獄大元帥
+> 「いかにあがこうと無理な事だ、
+>  ええい皆殺しにしてやれい!」
+“Struggle all you like, it's hopeless. Gah, kill them all!”
+
+@15118 Dark General · 暗黒大将軍
+> 「撃て、撃て、撃ち落とすのだ!」
+“Fire, fire, shoot them down!”
+
+@15119 Dark General · 暗黒大将軍
+> 「全速前進、突っこめぇっ!」
+“Full speed ahead, charge!”
+
+@15120 Dark General · 暗黒大将軍
+> 「叩きつぶすのだ!」
+“Crush them!”
+
+@15121 Dark General · 暗黒大将軍
+> 「粉砕してしまえ!」
+“Pulverize them!”
+
+@15122 Dark General · 暗黒大将軍
+> 「葬りにゆけ!」
+“Go and bury them!”
+
+@15123 Dark General · 暗黒大将軍
+> 「倒せ! 葬り去るのだ!」
+“Destroy them! Bury them all!”
+
+@15124 Dark General · 暗黒大将軍
+# 审校：原文“息の根を止めてやるのだ!!”是命令式“给我结果他们”，初稿“I'll put an end to them!!”语气偏第一人称陈述，改为更直接的命令式。
+> 「息の根を止めてやるのだ!!」
+“I'll put an end to them!”
+
+@15125 Dark General · 暗黒大将軍
+> 「ようし、総攻撃だ!」
+“All right, all-out attack!”
+
+@15126 Dark General · 暗黒大将軍
+> 「葬りにゆけ!」
+“Go and bury them!”
+
+@15127 Dark General · 暗黒大将軍
+> 「倒せ! 葬り去るのだ!」
+“Destroy them! Bury them all!”
+
+@15128 Dark General · 暗黒大将軍
+# 审校：同上，统一 L54 的译法。
+> 「息の根を止めてやるのだ!!」
+“I'll put an end to them!”
+
+@15129 Dark General · 暗黒大将軍
+> 「ようし、総攻撃だ!」
+“All right, all-out attack!”
+
+@15130 Dark General · 暗黒大将軍
+> 「ええい、どいつもこいつも役にたたん」
+“Gah, not a single one of them is any use.”
+
+@15131 Dark General · 暗黒大将軍
+> 「かまわん、全速で突っこめー!」
+“I don't care, charge at full speed!”
+
+@15132 Dark General · 暗黒大将軍
+> 「ええい、どいつもこいつも役にたたん」
+“Gah, not a single one of them is any use.”
+
+@15133 Dark General · 暗黒大将軍
+# 审校：同上，统一 L61 的译法，并修正“かまわん”的译法。
+> 「かまわん、全速で突っこめー!」
+“Never mind that, charge at full speed!”
+
+@15134 Dark General · 暗黒大将軍
+> 「ええい、グズグズするな!」
+“Gah, stop dawdling!”
+
+@15135 Dark General · 暗黒大将軍
+> 「ええい、グズグズするな!」
+“Gah, stop dawdling!”
+
+@15136 Dark General · 暗黒大将軍
+# 审校：原文“チャンスは今しかない”强调“只有现在这个机会”，初稿“now or never”可接受，但改为“This is our only chance”更自然。
+> 「チャンスは今しかない、ゆけ!」
+“This is our only chance, go!”
+
+@15137 Dark General · 暗黒大将軍
+> 「ええい、グズグズするな!」
+“Gah, stop dawdling!”
+
+@15138 Dark General · 暗黒大将軍
+> 「ええい、間抜けめ!」
+“Gah, you imbecile!”
+
+@15139 Dark General · 暗黒大将軍
+> 「ばかものめが! 厳罰だ!」
+“You blasted fool! You'll be severely punished!”
+
+@15140 Dark General · 暗黒大将軍
+# 审校：同上，统一 L66 的译法。
+> 「チャンスは今しかない、ゆけ!」
+“This is our only chance, go!”
+
+@15141 Dark General · 暗黒大将軍
+> 「ええい、グズグズするな!」
+“Gah, stop dawdling!”
+
+@15142 Dark General · 暗黒大将軍
+> 「ええい、間抜けめ!」
+“Gah, you imbecile!”
+
+@15143 Dark General · 暗黒大将軍
+> 「ばかものめが! 厳罰だ!」
+“You blasted fool! You'll be severely punished!”
+
+@15144 Dark General · 暗黒大将軍
+# 审校：“何をやっているのだ”是质问“在干什么”，初稿“what in the world are you doing”稍啰嗦，改为更直接的“what are you doing”。
+> 「うぅーむ、何をやっているのだ!」
+“Hmm... what are you doing?!”
+
+@15145 Dark General · 暗黒大将軍
+# 审校：同上，统一 L74 的译法。
+> 「うぅーむ、何をやっているのだ!」
+“Hmm... what are you doing?!”
+
+@15146 Ryoma · リョウ
+> 「スピンカッターーーッ!!」
+“Spin Cutter!!”
+
+@15147 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ダブルトマホォォォォォォク!!」
+“Double Tomahawk!!”
+
+@15148 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ダブルトマホォォクブゥゥゥメラン!!」
+“Double Tomahawk Boomerang!!”
+
+@15149 Ryoma · リョウ
+> 「ゲッターのパワーを受けてみろっ!!」
+“Feel the power of Getter!!”
+---
+> 「ダブルトマホォォォォクブゥゥゥメラン!!」
+“Double Tomahawk Boomerang!!”
+
+@15150 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here we go!!”
+---
+> 「ダブルトマホォォォォクブゥゥゥメラン!!」
+“Double Tomahawk Boomerang!!”
+
+@15151 Ryoma · リョウ
+> 「ダブルトマホォォォォクブゥゥゥメラン!!」
+“Double Tomahawk Boomerang!!”
+
+@15152 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ゲッタァァァビィィィィィィム!!」
+“Getter Beam!!”
+
+@15153 Ryoma · リョウ
+> 「ゲッタァァァビィィィィィム!!」
+“Getter Beam!!”
+
+@15154 Ryoma · リョウ
+> 「ストナァァァサァァンシャイィィィンッ!!」
+“Stoner Sunshine!!”
+
+@15155 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ゲッタァァァトマホォォォォォク!!」
+“Getter Tomahawk!!”
+
+@15156 Ryoma · リョウ
+> 「ゲッタァァァトマホォォォォォク!!」
+“Getter Tomahawk!!”
+
+@15157 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ゲッタァァァトマホォォォォォク!!!」
+“Getter Tomahawk!!!”
+
+@15158 Ryoma · リョウ
+> 「ゲッタァァァトマホォォォォォク!!!」
+“Getter Tomahawk!!!”
+
+@15159 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「トマホォォォォクブゥゥゥゥゥメラン!!」
+“Tomahawk Boomerang!!”
+
+@15160 Ryoma · リョウ
+> 「ゲッターのパワーを受けてみろっ!!」
+“Feel the power of Getter!!”
+---
+> 「トマホォォォォクブゥゥゥゥゥメラン!!」
+“Tomahawk Boomerang!!”
+
+@15161 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here we go!!”
+---
+> 「トマホォォォォク・ブゥゥゥゥゥメラン!!」
+“Tomahawk Boomerang!!”
+
+@15162 Ryoma · リョウ
+> 「トマホォォォォク・ブゥゥゥメラン!!」
+“Tomahawk Boomerang!!”
+
+@15163 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here we go!!”
+---
+> 「トマホォォォク・ブゥゥゥメラン!!」
+“Tomahawk Boomerang!!”
+
+@15164 Ryoma · リョウ
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「ゲッタァァァ・ビィィィィム!!」
+“Getter Beam!!”
+
+@15165 Ryoma · リョウ
+> 「ゲッタァァァビィィィィィィム!!」
+“Getter Beam!!”
+
+@15166 Ryoma · リョウ
+> 「ゲッターのパワーを受けてみろっ!!」
+“Feel the power of Getter!!”
+---
+> 「ゲッタァァァ・ビィィィィィィム!!」
+“Getter Beam!!”
+
+@15167 Ryoma · リョウ
+> 「いくぞっ!!」
+“Here we go!!”
+---
+> 「ゲッタァァァ・ビィィィィム!!」
+“Getter Beam!!”
+
+@15168 Ryoma · リョウ
+> 「ゲッタァァァ・ビィィィィム!!」
+“Getter Beam!!”
+
+@15169 Ryoma · リョウ
+> 「ストナァァ・サァァンシャァァァインッ!!」
+“Stoner Sunshine!!”
+
+@15170 Ryoma · リョウ
+> 「ゲッタァァァシャアイィィン!!」
+“Getter Shine!!”
+
+@15171 Ryoma · リョウ
+> 「シャイィィィィンスパァァァァク!!」
+“Shine Spark!!”
+
+@15172 Ryoma · リョウ
+> 「真!! シャイィィンスパァァァク!!!」
+“True!! Shine Spark!!!”
+
+@15173 Ryoma · リョウ
+> 「真・シャイィィィンスパァァァァァク!!」
+“True Shine Spark!!”
+
+@15174 Ryoma · リョウ
+> 「真・シャイィィィィンスパァァァァク!!」
+“True Shine Spark!!”
+
+@15175 Ryoma · リョウ
+> 「いくぞ、甲児くん!」
+“Let's go, Koji!”
+
+@15176 Koji · 甲児
+> 「わかってらぁ!」
+“You got it!”
+
+@15177 Ryoma · リョウ
+> 「くらえぇぇぇっ!」
+“Take this!”
+---
+> 「ツイン・ビィィィィィィム!!」
+“Twin Beam!!”
+
+@15178 Ryoma · リョウ
+> 「そっちはいけるのか!?」
+“Can you make it on your end?!”
+
+@15179 Tetsuya · 鉄也
+> 「いつでもいいぜ!」
+“Any time you're ready!”
+
+@15180 Ryoma · リョウ
+# 审校：「ツイィィィン・ビィィィィィィィィムッ!!」应按词表统一为 Twin Beam，初稿的 Twiin Beeeaaam 不符合必用译名。
+> 「いくぞ、俺たちのパワーを受けてみろ!」
+“Here we go! Take our power!”
+---
+> 「ツイィィィン・ビィィィィィィィィムッ!!」
+“Twin Beam!!”
+
+@15181 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15182 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15183 Koji · 甲児
+> 「いつでもいいぜ!」
+“Any time you're ready!”
+
+@15184 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15185 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15186 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15187 Maria · マリア
+> 「いつでもいいわよ!」
+“I'm ready any time!”
+
+@15188 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15189 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15190 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15191 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@15192 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15193 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15194 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15195 Sayaka · さやか
+> 「いつでもいいわ!」
+“I'm ready any time!”
+
+@15196 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15197 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15198 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@15199 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”

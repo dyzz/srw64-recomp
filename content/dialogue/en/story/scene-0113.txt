@@ -1,0 +1,140 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50829 Kappei · 勝平
+# 审校：“what a pain in the ass”语气过重且带脏字，胜平是12岁少年，改为更自然的抱怨。
+> 「あーあ、めんどくせぇよなぁ」
+“Man, what a pain.”
+
+@50830 Keiko · 恵子
+> 「ちょっと勝平、いきなり何いってん
+>  のよ」
+“Hey, Kappei, what are you saying all of a sudden?”
+
+@50831 Uchuta · 宇宙太
+> 「そうだぜ、いったいどうしたってんだよ」
+“Yeah, what's gotten into you anyway?”
+
+@50832 Kappei · 勝平
+> 「レジスタンス部隊っていうんだっけ、
+>  いつまで探すんだよ」
+“The Resistance, right? How long are we gonna keep looking for them?”
+
+@50833 Keiko · 恵子
+> 「もう少しのがまんよ。レーダーの反応
+>  が、だんだん近くなってきてるんだから」
+“Just be patient a little longer. The radar signal's getting closer and closer.”
+
+@50834 Kappei · 勝平
+> 「もう、帰ろうぜ。これじゃ、とうちゃんと
+>  一緒に漁に出た方がまだマシさ」
+“Let's just go home already. We'd be better off out fishing with Dad.”
+
+@50835 Keiko · 恵子
+> 「なーに、いってんのよ。
+>  思い出してよ、勝平
+“What are you talking about? Come on, remember, Kappei?
+---
+>  おじいさんがいってたでしょ。地球を
+>  守るためにレジスタンス部隊に
+Grandpa told us, didn't he? To help the Resistance and fight the enemy
+---
+>  協力して敵と戦えって」
+to protect the Earth.”
+
+@50836 Uchuta · 宇宙太
+> 「第2の故郷であるこの地球を
+>  ビアル星のように滅亡させちゃ
+“He said we mustn't let this Earth, our second home,
+---
+>  ならないっていってたろう」
+be destroyed like Planet Bial.”
+
+@50837 Kappei · 勝平
+> 「いくら、じっちゃんの頼みでもなぁ……」
+“Even if it is Grandpa's request...”
+
+@50838 Keiko · 恵子
+> 「レーダーに反応があったわ!
+>  だんだん強くなる!」
+“There's a signal on the radar! It's getting stronger!”
+
+@50839 Uchuta · 宇宙太
+> 「これはレジスタンス部隊……じゃない!
+>  敵だ! 敵部隊にぶつかった!」
+“That's not the Resistance... it's the enemy! We've run into an enemy unit!”
+
+@50840 Kappei · 勝平
+> 「おいでなすったか。退屈しのぎだ!
+>  いっちょもんでやりますか」
+“So they've shown up, huh? Something to cure my boredom! Let's take 'em on!”
+
+@50841 Kappei · 勝平
+> 「ザンボットコンビネーション!」
+“Zambot Combination!”
+
+@50842 Chiyonishiki · 千代錦
+> 「ワン!」
+“Woof!”
+
+@50843 Uchuta · 宇宙太
+> 「ツー!」
+“Two!”
+
+@50844 Keiko · 恵子
+> 「スリー!」
+“Three!”
+
+@50845 Kappei · 勝平
+> 「そんなバカな……
+>  クソッ、負けるのかよぉ」
+“That can't be... Damn it, are we gonna lose?”
+
+@50846 Keiko · 恵子
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@50847 Uchuta · 宇宙太
+> 「うわあぁぁっ!」
+“Uwaaaaaah!”
+
+@50848 Kappei · 勝平
+> 「へへーん、ざまぁみろ」
+“Heh, serves you right.”
+
+@50849 Kappei · 勝平
+> 「はん、チョロいチョロい。
+>  軽ーくひねってやったぜ」
+“Hah, too easy, too easy. I twisted 'em up nice and light.”
+
+@50850 Keiko · 恵子
+> 「勝平! 油断してると、いつか
+>  大変な目にあうわよ」
+“Kappei! If you let your guard down, someday you'll be in big trouble.”
+
+@50851 Kappei · 勝平
+> 「へーん、そんなヘマはしませんですよーだ」
+“Nyah, I won't make a blunder like that, no sir.”
+
+@50852 Keiko · 恵子
+> 「なんですって! こらっ、勝平!
+>  ちょっと待ちなさい!」
+“What did you say?! Hey, Kappei! Just you wait!”
+
+@50853 Uchuta · 宇宙太
+> 「2人とも静かにしろ!
+>  ……レジスタンス部隊を見つけた」
+“Both of you, quiet! ...I've found the Resistance.”
+
+@50854 Kappei · 勝平
+> 「お、どうやら今度のは本物らしいね」
+“Oh, looks like this time it's the real thing.”
+
+@50855 Uchuta · 宇宙太
+> 「恵子、部隊に通信をいれてくれ
+>  そちらと協力して戦いたいって」
+“Keiko, radio the unit. Tell them we want to fight alongside them.”
+
+@50856 Keiko · 恵子
+> 「わかったわ。……こちら、ザンボット3、
+>  こちら、ザンボット3……」
+“Got it. ...This is Zambot 3, this is Zambot 3...”

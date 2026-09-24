@@ -1,0 +1,1585 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@25480 Ark · アーク（按段落 3DD1）
+> 「それで、どうするつもりなんです?」
+“So, what do you intend to do?”
+
+@25481 Selain · セレイン（按段落 3DD2）
+> 「それで、どうするおつもりで?」
+“So, what do you intend to do?”
+
+@25482 Brad · ブラッド（按段落 3DD3）
+> 「で、結局どうするか決まったのかよ」
+“So, did you finally decide what we're doing?”
+
+@25483 Manami · マナミ（按段落 3DD4）
+> 「今後の行動については、
+>  決まったのですか?」
+“Have you decided on our future course of action?”
+
+@25484 Bright · ブライト
+> 「ああ……地球へ降りようかと
+>  考えている」
+“Yeah... I'm thinking we head down to Earth.”
+
+@25485 Ryoma · リョウ
+> 「地球へ? しかし、地上へ降りて
+>  どうするっていうんです」
+“To Earth? But what are we supposed to do once we're on the ground?”
+
+@25486 Bright · ブライト
+> 「それなんだが……ジャブローへの
+>  降下作戦を検討している」
+“That's the thing... I'm considering a descent operation on Jaburo.”
+
+@25487 Ark · アーク（按段落 3DD1）
+> 「ジャブロー?」
+“Jaburo?”
+
+@25488 Selain · セレイン（按段落 3DD2）
+> 「ジャブロー? ずいぶんと
+>  思い切ったことを考えますね」
+“Jaburo? That's quite a bold idea.”
+
+@25489 Brad · ブラッド（按段落 3DD3）
+> 「あそこか。だがOZが占拠してんだろ?
+>  ちょっと大胆すぎやしないか」
+“That place, huh? But OZ has it occupied, right? Isn't that a bit too bold?”
+
+@25490 Manami · マナミ（按段落 3DD4）
+> 「ジャブローですって? どうしてですか?」
+“Jaburo? Why there?”
+
+@25491 Bright · ブライト
+> 「理由はいくつかある。まず
+>  ジャブローはOZが制圧して以来
+“There are several reasons. First, since OZ took control of Jaburo,
+---
+>  比較的少数の兵しか
+>  配備されていないこと
+only a relatively small number of troops have been stationed there.
+---
+>  次に、帝国軍が司令部を
+>  設営していたときの物資が
+Second, the supplies from when the imperial army set up its
+---
+>  ほぼそのまま残されていること。
+>  そして、我々の存在を
+headquarters there have been left almost entirely intact. And third,
+---
+>  人々に知ってもらうことだ」
+we need to let people know that we exist.”
+
+@25492 Roux · ルー
+> 「どういうことです?」
+“What do you mean?”
+
+@25493 Bright · ブライト
+> 「帝国がいなくなってから、OZは
+>  敵対者や暴動に対しての
+“Since the Empire withdrew, OZ has begun making a show of force
+---
+>  武力行使を示威的に
+>  行いはじめている
+against its opponents and riots. With the Sanc Kingdom and its
+---
+>  完全平和主義を掲げる
+>  サンクキングダムの存在もあって
+absolute pacifism in the picture, it seems people who have grown
+---
+>  OZの支配体制に懐疑的に
+>  なっている人々も
+skeptical of OZ's rule are starting to appear
+---
+>  出始めているらしい」
+as well.”
+
+@25494 Koji · 甲児
+> 「ちぇっ、いまさら遅せぇんだってーの」
+“Tch, that's way too late already.”
+
+@25495 Bright · ブライト
+> 「だが我々が戦ってみせることで、
+>  反OZ感情を高めることができる」
+“But by showing them that we fight, we can raise anti-OZ sentiment.”
+
+@25496 Eiji · エイジ
+> 「反帝国のときと
+>  同じことをやるわけですね」
+“So we do the same thing we did against the Empire.”
+
+@25497 Bright · ブライト
+> 「そうだ」
+“That's right.”
+
+@25498 Roux · ルー
+> 「だけど艦長、
+>  よくそんな詳しく知ってますね」
+“But Captain, how do you know all this in such detail?”
+
+@25499 Bright · ブライト
+> 「ああ、地上の万丈くんたちからの
+>  情報だ。それと……
+“Yeah, it's intel from Banjo and the others on the ground. And...
+---
+>  ドモンたちにも関連のある
+>  情報もある」
+there's also information that concerns Domon and the rest of you.”
+
+@25500 Domon · ドモン
+> 「俺たちに?」
+“Us?”
+
+@25501 Bright · ブライト
+> 「例のデスアーミータイプのMSが
+>  ジャブロー付近で目撃されたらしい」
+“Those Death Army-type MS were apparently sighted near Jaburo.”
+
+@25502 Domon · ドモン
+> 「なんだって!? デビルガンダムが
+>  ジャブローにいるというのか」
+“What?! You're saying the Dark Gundam is at Jaburo?”
+
+@25503 Schwarz · シュバルツ
+> 「慌てるなドモン。
+>  落ち着いて話を聞くのだ」
+“Don't panic, Domon. Calm down and listen.”
+
+@25504 Bright · ブライト
+> 「ああ、いや、そういうわけでは
+>  ないらしいんだがな
+“Ah, no, it doesn't seem to be that, exactly, but
+---
+>  デスアーミーの件は
+>  不確定情報だから
+the Death Army report is unconfirmed, so
+---
+>  そういうこともあり得ると
+>  考えておいてもらえればいい」
+just keep in mind that it's a possibility.”
+
+@25505 Domon · ドモン
+> 「それだけで十分だ。そういうことなら
+>  話しは別だ。艦長、地球へ
+“That's enough for me. If that's the case, it's a different story. Captain, hurry
+---
+>  急いでくれ! マスターアジア、
+>  それに、デビルガンダム!
+to Earth! Master Asia, and the Dark Gundam!
+---
+>  今度こそこの俺が倒してやる!」
+This time I'm definitely going to beat them!”
+
+@25506 Chibodee · チボデー
+> 「おいドモーン。
+>  俺たちもいるのを忘れんじゃねぇぜ」
+“Hey, Domon. Don't forget we're here too.”
+
+@25507 George · ジョルジュ
+> 「そうです。我々とてデビルガンダムには
+>  因縁がありますからね」
+“Indeed. We have our own score to settle with the Dark Gundam.”
+
+@25508 Sai Saici · サイ・サイシー
+> 「そういうことさ、アニキ。
+>  あいつは俺たちで倒すんだ」
+“That's right, bro. We're the ones who'll take that thing down.”
+
+@25509 Argo · アルゴ
+> 「うむ」
+“Mm.”
+
+@25510 Schwarz · シュバルツ
+> 「フフフフフ、ハーッハハハハハハ。
+>  果たして本当にできるかな?」
+“Heh heh heh heh, hah hah hah hah hah hah. And can you really do it, I wonder?”
+
+@25511 Domon · ドモン
+> 「どういうことだ、シュバルツ!?」
+“What do you mean, Schwarz?!”
+
+@25512 Schwarz · シュバルツ
+> 「それは己の胸に聞いてみるのだな。
+>  武闘家たるもの
+“Ask that of your own heart. A martial artist who cannot first
+---
+>  まず己を律することが出来ずば、
+>  戦いに勝つことなどとてもとても」
+master himself has no hope of ever winning a battle.”
+
+@25513 Rain · レイン
+> 「待ってシュバルツ。
+>  さっきのはどういう意味なの?」
+“Wait, Schwarz. What did you mean by that just now?”
+
+@25514 Schwarz · シュバルツ
+> 「フフフ、気になるか、ドモンのことが」
+“Heh heh, worried, are you? About Domon?”
+
+@25515 Rain · レイン
+> 「べ、別に私は
+>  そういう意味で言ったんじゃ……」
+“I-I didn't mean it like that...”
+
+@25516 Schwarz · シュバルツ
+> 「ハハハハハッ。ムキになっても
+>  勝てぬものは勝てぬということだ
+“Hah hah hah hah. Getting worked up won't win the battles that can't be won.
+---
+>  腕も、心もまだまだ未熟よ。
+>  人よりわずかに抜きんでた
+Your skill and your heart are both still immature. If you're so
+---
+>  おのが腕におぼれているようでは、
+>  マスターアジアに勝つことなど
+enamored with your own arm for being just slightly better than others',
+---
+>  夢のまた夢。それに…デビルガンダムの
+>  幻影に脅えているようではな」
+beating Master Asia is nothing but a dream within a dream. And besides... not while you're cowering before the Dark Gundam's phantom.”
+
+@25517 Rain · レイン
+> 「脅えている? あの人たちが?」
+“Cowering? Them?”
+
+@25518 Schwarz · シュバルツ
+> 「その通り。口では
+>  いくら否定しようとも
+“Exactly. No matter how much they deny it with their mouths,
+---
+>  この私の目はごまかせん。それを
+>  克服せんかぎりは、どうにもならん」
+they can't fool these eyes of mine. Unless they overcome it, there's no way forward.”
+
+@25519 Rain · レイン
+> 「……でも……あなたはドモンたちにそれを
+>  気づかせ、克服させようとしている…
+“...But... you're trying to make Domon and the others realize that and overcome it...
+---
+>  シュバルツ、あなたは
+>  一体何者なの? 私はときどき
+Schwarz, just who are you? Sometimes I get the feeling
+---
+>  あなたが私よりもドモンのことを
+>  知っているような気がすることがあるわ」
+you know Domon even better than I do.”
+
+@25520 Schwarz · シュバルツ
+> 「私の正体などどうでもいい。
+>  レイン、地上へ降りたらさりげなく
+“My true identity doesn't matter. Rain, once you're on the ground, casually
+---
+>  ドモンに修業をするよううながすのだ。
+>  よいな」
+nudge Domon toward training. Understood?”
+
+@25521 Lady · レディ
+> 「ガンダムがあらわれただと!?」
+“A Gundam has appeared?!”
+
+@25522 Specials · スペシャルズ
+> 「はい。迎撃に向かった部隊は
+>  全滅、またこのガンダムは
+“Yes. The unit sent to intercept it was wiped out, and this Gundam is
+---
+>  コロニーを破壊しつつ
+>  ここへ向かっています」
+destroying colonies as it makes its way here.”
+
+@25523 Lady · レディ
+> 「コロニーを? 妙だな……
+>  あの連中ならば
+“Destroying colonies? Strange... those people
+---
+>  そんな真似はしないはずだ。
+>  ……メリクリウスとヴァイエイトはどうか」
+wouldn't do such a thing. ...What of the Mercurius and the Vayeate?”
+
+@25524 Specials · スペシャルズ
+> 「テスト待ちと聞いています」
+“I hear they're still awaiting testing.”
+
+@25525 Lady · レディ
+> 「よし、トロワ特士を呼べ。
+>  それとツバロフにメリクリウスと
+“Good, call Specials Trowa. And tell Tubarov that we'll be conducting
+---
+>  ヴァイエイトのテストは
+>  こちらでやると伝えておけ」
+the Mercurius and Vayeate tests here.”
+
+@25526 Trowa · トロワ
+> 「ガンダムが出たそうだな」
+“So a Gundam has appeared.”
+
+@25527 Lady · レディ
+> 「そうだ。しかしこのガンダムは
+>  コロニーを破壊しているらしい
+“Yes. But this Gundam is apparently destroying colonies.
+---
+>  新型のテストをかねて出てもらいたい」
+I want you to sortie, doubling as a test of the new models.”
+
+@25528 Trowa · トロワ
+> 「了解だ。だが、新型に耐えうる
+>  パイロットが俺の他にいるかな」
+“Understood. But is there any pilot besides me who can handle the new models?”
+
+@25529 Lady · レディ
+> 「先日捕らえた
+>  ガンダムパイロットを使え」
+“Use the Gundam pilot we captured the other day.”
+
+@25530 Trowa · トロワ
+> 「ほう? なかなか大胆な策だ」
+“Oh? That's quite a bold plan.”
+
+@25531 Lady · レディ
+> 「フフ、誉め言葉と思っておこう。
+>  それと、特士」
+“Heh, I'll take that as a compliment. And one more thing, Specials.”
+
+@25532 Trowa · トロワ
+> 「なんだ?」
+“What is it?”
+
+@25533 Lady · レディ
+> 「接触してから後の行動は、
+>  お前にまかせる。好きにするがいい」
+“Once you make contact, I leave your actions to you. Do as you please.”
+
+@25534 Trowa · トロワ
+> 「……ああ……了解した、特佐」
+“...Yeah... understood, Lieutenant Colonel.”
+
+@25535 Lady · レディ
+> (さてと……残るは2人か。
+>  うまく脱出して彼らと
+(Now then... only two remain. I hope they escape safely and
+---
+>  合流してくれればいいのだがな。
+>  私は、お前たちに
+join up with them. I will believe that you
+---
+>  時代を動かす力があると、
+>  信じよう……)
+have the power to move the era...)
+
+@25536 Lady · レディ
+> 「これでよし……」
+“There, that's done...”
+
+@25537 Tubarov · ツバロフ
+> 「何をなさっているのですかな、
+>  レディ・アン特佐」
+“What are you doing, Lieutenant Colonel Lady Une?”
+
+@25538 Lady · レディ
+> 「ツバロフか……」
+“Tubarov...”
+
+@25539 Duo · デュオ
+> 「おい、ドアが開いたみたいだぜ?」
+“Hey, looks like the door opened.”
+
+@25540 Wufei · 五飛
+> 「そうか、ならば行くか」
+“Is that so. Then let's go.”
+
+@25541 Duo · デュオ
+> 「おいちょっと待てよ。
+>  罠だったらどうするんだよ」
+“Hey, hold on a second. What if it's a trap?”
+
+@25542 Wufei · 五飛
+> 「殺すならとっくにやっている。
+>  こんな回りくどい真似はしない
+“If they meant to kill us, they'd have done it long ago. They wouldn't pull such a roundabout trick.
+---
+>  行かないのなら一人で残るがいい」
+If you won't go, then stay here alone.”
+
+@25543 Duo · デュオ
+> 「冷たいやつだな、
+>  誰が行かないって言ったんだよ
+“Cold bastard, aren't you. Who said I wasn't going?
+---
+>  生きて出られるのが
+>  不思議なくらいだ
+It's a wonder we're even alive.
+---
+>  俺だって文句はねぇぜ。
+>  それじゃさっさと行きますか」
+I've got no complaints either. So let's get moving.”
+
+@25544 Wufei · 五飛
+> 「借りを返してからな」
+“After I repay what I owe.”
+
+@25545 Tubarov · ツバロフ
+> 「捕虜を逃がすとは……
+>  これは明白な反逆行為ですな
+“Letting prisoners escape... that is a clear act of treason.
+---
+>  何か申し開きでもありますかな?」
+Do you have anything to say for yourself?”
+
+@25546 Lady · レディ
+> 「いや……ないな、ツバロフ技師長」
+“No... I don't, Chief Engineer Tubarov.”
+
+@25547 Tubarov · ツバロフ
+> 「ではレディ・アン嬢、OZへの
+>  反逆罪であなたを処刑します」
+“Then, Lady Une, I hereby execute you for treason against OZ.”
+
+@25548 Lady · レディ
+> 「好きにしろ。
+>  トレーズ様は人を愛された
+“Do as you like. Lord Treize loved people.
+---
+>  そして、人の死も愛された。
+>  死は人の感情に強烈に訴える
+And he loved their deaths as well. Death appeals fiercely to human emotion.
+---
+>  死者が与える感情、
+>  戦うことに対する肯定と否定
+The emotions the dead give rise to, the affirmation and denial of fighting.
+---
+>  高ぶる感情は人を
+>  極論の選択へと導く
+Heightened emotion leads people to choose extremes.
+---
+>  それこそがあるべきものの姿であり、
+>  その中からこそ未来が生まれるのだ」
+That is precisely how things ought to be, and it is from within that that the future is born.”
+
+@25549 Tubarov · ツバロフ
+> 「私には理解できないことですな」
+“That is something I cannot comprehend.”
+
+@25550 Lady · レディ
+# 审校：补出“我们的过错”的主语，使英文更自然。
+> 「だから敵となるのだ。お前と私は。
+>  OZでの過ちは死に値する
+“That is why we are enemies. You and I. Our mistakes within OZ were worth death
+---
+>  過去であった。さぁ、撃てツバロフ。
+>  己を肯定するために」
+in the past. Now, shoot, Tubarov. To affirm yourself.”
+
+@25551 Tubarov · ツバロフ
+> 「レディ・アン嬢、あなたは甘すぎる」
+“Lady Une, you are too soft.”
+
+@25552 Lady · レディ
+> 「兵士としてはな。
+>  しかし、この最後の刻を
+“As a soldier, yes. But in this final moment,
+---
+>  私は人として厳しく生きたつもりだ」
+I believe I have lived strictly as a human being.”
+
+@25553 Roux · ルー
+> 「聞いたわよ。あたしたちと来て
+>  くれるんだって?」
+“I heard. You're coming with us, right?”
+
+@25554 Judau · ジュドー
+> 「ああ……コロニーに毒ガスなんて
+>  冗談じゃないし、食わせてもらった
+“Yeah... poison gas on a colony is no joke, and I'll work off
+---
+>  メシの分は働くさ。あんたは何だって
+>  戦争なんかやってるんだ?」
+the meals you fed me. What are you fighting a war for, anyway?”
+
+@25555 Roux · ルー
+> 「あたしは反帝国のレジスタンスに
+>  自分から参加したわ。当時は
+“I joined the anti-Empire resistance of my own will. Back then,
+---
+>  それが正しいことだって信じてたから。
+>  ムゲ帝国がいなくなった今でも同じ
+because I believed it was the right thing. Even now that the Muge Empire is gone, it's the same.
+---
+>  あたしは、OZに正義はないと信じて
+>  いるわ」
+I believe there is no justice in OZ.”
+
+@25556 Judau · ジュドー
+> 「ご立派なことで」
+“How noble of you.”
+
+@25557 Show · ショウ
+> 「沙羅はまだ、だめなのか?」
+“Is Sara still not ready?”
+
+@25558 Chum · チャム
+> 「もう出発よ」
+“We're leaving now.”
+
+@25559 Shinobu · 忍
+> 「わかってる。だがよ」
+“I know. But still.”
+
+@25560 Ryo · 亮
+> 「沙羅はおいていくしかないな。
+>  ダンクーガが使えないのは痛いが……」
+“We've got no choice but to leave Sara behind. It hurts not being able to use Dancouga, but...”
+
+@25561 Marvel · マーベル
+> 「沙羅?」
+“Sara?”
+
+@25562 Sara · 沙羅
+> 「冗談じゃないよ。
+>  なに勝手なこと言ってんのさ
+“Don't be ridiculous. Who said you could decide that on your own?
+---
+>  あたしを抜きにして
+>  そんなこと決めないでおくれ」
+Don't go making decisions like that without me.”
+
+@25563 Masato · 雅人
+> 「沙羅、無理しちゃだめだよ」
+“Sara, you shouldn't push yourself.”
+
+@25564 Sara · 沙羅
+> 「だまんな! あたしも行くよ、
+>  行かせてもらうよ」
+“Shut up! I'm going too, and you're going to let me!”
+
+@25565 Shinobu · 忍
+> 「沙羅……お前……。
+>  わかった、獣戦機隊が3人じゃ
+“Sara... you... All right, the Cyber Beast Force just doesn't
+---
+>  サマにならねぇからな」
+look right with only three of us.”
+
+@25566 Sara · 沙羅
+> 「フン、礼は言わないよ、忍。
+>  あんたがいなかったときも
+“Hmph, I won't thank you, Shinobu. When you weren't here,
+---
+>  同じことを言ってたんだからね」
+you were saying the same thing anyway.”
+
+@25567 Ginrei · 銀鈴
+> 「艦長、準備完了です」
+“Captain, preparations are complete.”
+
+@25568 Bright · ブライト
+> 「よし、これより{HeroMech}は
+>  地球へ向かう」
+“All right, the {HeroMech} will now head for Earth.”
+
+@25569 Rish · リッシュ（按段落 3DD2）
+> 「{PartnerSurname}一級特尉、
+>  入ります」
+“Ensign First Class {PartnerSurname}, reporting in.”
+
+@25570 Bask · バスク
+> 「来たか。どのような用件か、
+>  わかっておろうな」
+“So you've come. You know what this is about, don't you?”
+
+@25571 Rish · リッシュ（按段落 3DD2）
+> 「は……いえ、自分にはわかりかねます」
+“Yes... no, I'm afraid I don't.”
+
+@25572 Bask · バスク
+> 「フン、貴様の指揮能力に対す
+>  る評価は、このところいちじるしく
+“Hmph. The assessment of your command ability has declined markedly
+---
+>  低下しておる。我々OZもあまり
+>  余裕のある状況ではない
+as of late. We in OZ are not in a position with much room to spare either.
+---
+>  これ以上の失敗は、容認できん」
+I cannot tolerate any further failures.”
+
+@25573 Rish · リッシュ（按段落 3DD2）
+> 「はっ、それはよくわかっております」
+“Yes, sir. I understand that quite well.”
+
+@25574 Bask · バスク
+> 「汚名返上のチャンスをやる。
+>  {HeroMech}の連中がどうやら
+“I'll give you a chance to clear your name. The {HeroMech} group appears
+---
+>  地球へ降りるようだ。ヤザン特尉
+>  とともに、これを阻止しろ
+to be descending to Earth. Join Lieutenant Yazan and stop them.
+---
+>  ここでやってみせねば、最後だと思え」
+If you cannot prove yourself here, consider this your last chance.”
+
+@25575 Rish · リッシュ（按段落 3DD2）
+> 「は……了解であります」
+“Yes... understood, sir.”
+
+@25576 Bask · バスク
+> 「来たか」
+“So you've come.”
+
+@25577 Aisha · アイシャ（按段落 3DD4）
+> 「何かご用でしょうか?」
+“Is there something you need?”
+
+@25578 Bask · バスク
+> 「{HeroMech}が地球へ降下
+>  するという情報をつかんだ。これを
+“We've obtained information that the {HeroMech} is descending to Earth. Join
+---
+>  阻止するヤザンの部隊に加われ」
+Yazan's unit and stop them.”
+
+@25579 Aisha · アイシャ（按段落 3DD4）
+> 「はい……わかりました」
+“Yes... understood.”
+
+@25580 Bask · バスク
+# 待译：机翻未采用（页数应为 4，实际给了 1（zh 必须与 ja 逐页对应））
+# 草稿第 1 页：You have been accepted under special treatment with the rank of Ensign First Class／in OZ, on the pretext of striking down the 【主角姓氏】 girl who betrayed the Foundation.／If you fail to accomplish your objective, you will have no standing with the Foundation.／Do try to prove yourself.
+> 「貴公は、財団を裏切った
+>  {HeroSurname}の小娘を叩くという
+---
+>  名目で、特例としてOZの
+>  1級特尉待遇で迎えておる
+---
+>  目的を果たせなければ、財団への
+>  立場がなかろう
+---
+>  せいぜいやってみせるのだな」
+
+@25581 Aisha · アイシャ（按段落 3DD4）
+> 「…………」
+“...”
+
+@25582 Trowa · トロワ
+> 「あれか……恐らくカトルか誰かだろう。
+>  合流するぞ、ヒイロ」
+“That's... probably Quatre, or someone. Let's rendezvous, Heero.”
+
+@25583 Heero · ヒイロ
+> 「どうかな……奴はコロニーを
+>  破壊している」
+“I wonder... He's been destroying colonies.”
+
+@25584 Trowa · トロワ
+> 「間違いない、あれはカトルだ。
+>  カトル、こちらトロワだ
+“There's no mistake, that's Quatre. Quatre, this is Trowa.
+---
+>  聞こえているか、カトル?」
+Can you hear me, Quatre?”
+
+@25585 Quatre · カトル
+> 「聞こえているよ。
+>  それ以上近寄らないでよ、トロワ」
+“I can hear you. Don't come any closer, Trowa.”
+
+@25586 Trowa · トロワ
+> 「カトル? ……どういうことだ?」
+“Quatre? ...What do you mean?”
+
+@25587 Quatre · カトル
+> 「僕はこの狂った地球圏の
+>  すべてを破壊する
+“I will destroy everything in this mad Earth Sphere.
+---
+>  争いを望む者すべてを
+>  消し去るのが僕のやるべきことなんだ
+Eliminating everyone who desires conflict is what I must do.
+---
+>  コロニーにもそういう人はいるよね。
+>  だから僕はコロニーも破壊するんだ」
+There are people like that in the colonies too, aren't there? So I'll destroy the colonies as well.”
+
+@25588 Trowa · トロワ
+> 「どうしたんだカトル?
+>  お前らしくないじゃないか」
+“What's happened to you, Quatre? This isn't like you.”
+
+@25589 Quatre · カトル
+> 「狂ってるんだよ、地球圏は。
+>  やさしい人の涙を誰もわからないんだ
+“The Earth Sphere is mad. No one understands the tears of kind people.
+---
+>  僕は決して忘れない。
+>  忘れさせないよ
+I will never forget. I won't let anyone forget.
+---
+>  このウイングゼロですべてを
+>  消し去るまでは」
+Not until I erase everything with this Wing Zero.”
+
+@25590 Trowa · トロワ
+> 「ウィナー家の資源衛星のことか?
+>  お前はそれほど弱くはなかったはずだ」
+“You mean the Winner family's resource satellite? You were never that weak.”
+
+@25591 Quatre · カトル
+> 「あの人たちにも伝えてほしい。
+>  もう僕の前に現れないで
+“Tell them too. Don't appear before me again.
+---
+>  でないと、みんなを殺すことになる」
+Otherwise, I'll end up killing everyone.”
+
+@25592 Trowa · トロワ
+> 「カトル……」
+“Quatre...”
+
+@25593 Heero · ヒイロ
+> 「言いたいことは、それだけか。
+>  すべてが狂っているのなら
+“Is that all you wanted to say? If everything is mad,
+---
+>  俺は自分を信じて戦う。
+>  カトル……お前を殺す」
+then I'll believe in myself and fight. Quatre... I'll kill you.”
+
+@25594 Quatre · カトル
+> 「ヒイロォォォォーッ!!」
+“HEEROOOOOO!”
+
+@25595 Heero · ヒイロ
+> 「ぐぅぅぅぅっ!」
+“Guhhhhh!”
+
+@25596 Trowa · トロワ
+> 「やめろカトル!!」
+“Stop it, Quatre!!”
+
+@25597 Quatre · カトル
+> 「近寄らないでっていってるだろぉぉ!?」
+“I told you not to come any closer!”
+
+@25598 Quatre · カトル
+> 「……ヒイロ、コロニーは
+>  OZと手を組んだんだ
+“...Heero, the colonies have joined hands with OZ.
+---
+>  コロニーは敵になったんだよ。
+>  せっかく異星人を追い出したのに
+The colonies have become the enemy. We finally drove out the aliens, and yet
+---
+>  地球圏は狂ってしまったんだ。
+>  だから僕はすべてを破壊する
+the Earth Sphere has gone mad. So I will destroy everything.
+---
+>  破壊して正す。そうだろう? ヒイロ」
+Destroy it and set it right. Isn't that so? Heero.”
+
+@25599 Heero · ヒイロ
+> 「……言いたいことはそれだけか……
+>  うっ……」
+“...Is that all you wanted to say... ugh...”
+
+@25600 Quatre · カトル
+> 「死ぬよ、ヒイロ。
+>  でも僕は仲間を殺したくない
+“You're going to die, Heero. But I don't want to kill my comrades.
+---
+>  逃げてヒイロ。
+>  ねぇ聞いているの、ヒイロ?」
+Run, Heero. Hey, are you listening, Heero?”
+
+@25601 Heero · ヒイロ
+> 「カトル……俺は逃げない。
+>  俺の後ろにはコロニーがある」
+“Quatre... I won't run. The colonies are behind me.”
+
+@25602 Quatre · カトル
+> 「そう……さようなら、ヒイロ」
+“I see... Goodbye, Heero.”
+
+@25603 Trowa · トロワ
+> 「……カトル……」
+“...Quatre...”
+
+@25604 Quatre · カトル
+> 「……トロワ?」
+“...Trowa?”
+
+@25605 Trowa · トロワ
+> 「カトル、俺はお前が過ちを犯して
+>  いると思う。コロニーのためと信じて
+“Quatre, I think you're making a mistake. For those of us who believed in the colonies
+---
+>  戦ってきた俺たちには、
+>  この結果は確かに残念なことだ
+and fought, this outcome is truly a shame.
+---
+>  だがこれが現実だ。
+>  受け入れるしかない。そして残るのは
+But this is reality. We have no choice but to accept it. And what remains
+---
+>  俺たちの心の中の問題だけだ……」
+is only a problem within our own hearts...”
+
+@25606 Quatre · カトル
+> 「…………」
+“............”
+
+@25607 Trowa · トロワ
+> 「真剣に未来を信じて戦って
+>  きたがゆえに、自分一人でも
+“Because we believed in the future so earnestly and fought for it, we end up thinking
+---
+>  歴史の流れを変えられるかも
+>  しれないと考えてしまう。それは
+that even one person might be able to change the course of history. It's not
+---
+>  お前だけじゃない。だがその心は、
+>  想いの強い者ほど、やさしい者ほど
+just you. But that feeling drives those with the strongest convictions, the gentlest souls,
+---
+>  つらく追い込んでいく……」
+the hardest of all...”
+
+@25608 Trowa · トロワ
+> 「くっ……」
+“Ngh...”
+
+@25609 Trowa · トロワ
+> 「カトル、俺たちの心の問題は、
+>  俺たち自身が戦い
+“Quatre, the problem in our hearts is something we must fight through ourselves
+---
+>  結論を見出さなければならない。
+>  己を信じて戦う者たちがいる
+and find the answer to. There are those who fight believing in themselves.
+---
+>  銃を持たずに戦う者たちもいる。
+>  俺たちはまだ
+There are those who fight without holding a gun. We are not yet
+---
+>  いらなくなった兵士ではないんだ」
+soldiers who have become unnecessary.”
+
+@25610 Quatre · カトル
+> 「トロワ……」
+“Trowa...”
+
+@25611 Trowa · トロワ
+> 「だからカトル、
+>  まだ目を閉ざさないでくれ
+“So Quatre, don't close your eyes yet.
+---
+>  時代の流れを受け入れよう。
+>  やさしいカトルに戻ってくれないか……」
+Accept the flow of the times. Won't you go back to being the gentle Quatre...?”
+
+@25612 Trowa · トロワ
+> 「ぐ……だめか……」
+“Guh... It's no use...”
+
+@25613 Quatre · カトル
+> 「トロワッ!」
+“Trowa!”
+
+@25614 Quatre · カトル
+> 「ヒイロ!?」
+“Heero?!”
+
+@25615 Quatre · カトル
+> 「離してヒイロ!
+>  トロワが死んでしまう!!」
+“Let go of me, Heero! Trowa is going to die!!”
+
+@25616 Heero · ヒイロ
+> 「ああ……お前が殺した」
+“Yeah... You killed him.”
+
+@25617 Quatre · カトル
+> 「トロワ……トロワァァァァーッ!!」
+“Trowa... TROWAAAAAA!!”
+
+@25618 Beltorchika · ベルトーチカ
+> 「敵です!」
+“Enemy!”
+
+@25619 Bright · ブライト
+> 「いいか、目標はジャブローだ。この
+>  エリアへ入れば地球へ降下できる」
+“Listen, our target is Jaburo. Once we enter this area, we can descend to Earth.”
+
+@25620 Bright · ブライト
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段，而不是每页分别加引号。
+> 「可能な限り交戦を避け、
+>  地上への降下を優先させろ!
+“Avoid combat as much as possible and prioritize descending to the surface!
+---
+>  カミーユ、降下時には
+>  ウェイブライダーで先に降下しろ」
+Kamille, descend first in the Waverider when we go down.”
+
+@25621 Kamille · カミーユ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「了解。カミーユ・ビダン、
+>  Zガンダム、出ます!」
+“Roger. Kamille Bidan, Zeta Gundam, launching!”
+
+@25622 Yazan · ヤザン
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いいかお前ら、
+>  連中を地球へ降ろさせるな!」
+“Listen up, all of you! Don't let them get down to Earth!”
+
+@25623 Ramsus · ラムサス
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 检查提示：未用必用译名：ヤザン隊→Yazan Team
+> 「了解です、ヤザン隊長」
+“Understood, Commander Yazan.”
+
+@25624 Rish · リッシュ（按段落 3DD2）
+> (けっ、そろそろ俺の豪運も
+>  尽きかけてきたかよ
+(Tch, looks like my luck's finally running out too.
+---
+>  ここいらでしまいにするのも、
+>  いいかもな……)
+Maybe this is a good place to end it...)
+
+@25625 Rish · リッシュ（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{HeroName}、聞こえるか」
+“{HeroName}, can you hear me?”
+
+@25626 Selain · セレイン（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……なんだ」
+“...What is it?”
+
+@25627 Rish · リッシュ（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「こいつで最後にするぜ。だからよ、
+>  最後に一つ聞いてくれないか」
+“This'll be the last one. So, uh, let me ask you one thing before the end.”
+
+@25628 Selain · セレイン（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「何が言いたい」
+“What are you trying to say?”
+
+@25629 Rish · リッシュ（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「何度も言うが、俺がお前に
+>  惚れてるってのは、こりゃマジだぜ
+“I've said it before, but me being in love with you, that's the real deal.
+---
+>  俺もこれまでかなり
+>  好きに生きてきたがよ
+I've lived pretty much however I wanted up till now,
+---
+>  おかげでずいぶん妙なことに
+>  なってきちまった。俺としたことがな」
+and thanks to that, things have gotten pretty strange. And me, of all people.”
+
+@25630 Selain · セレイン（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……それで?」
+“...And?”
+
+@25631 Rish · リッシュ（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ま、俺はお前の敵だった。だから
+>  どんな結果でもそりゃあ仕方ねぇ
+“Well, I was your enemy. So whatever the result, that can't be helped.
+---
+>  だけどな、俺がお前に
+>  惚れてた男だったってことだけは
+But at least remember this one thing:
+---
+>  覚えておいてくれ」
+that I was a man who was in love with you.”
+
+@25632 Selain · セレイン（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……いいだろう。覚えておいてやる」
+“...Fine. I'll remember it.”
+
+@25633 Rish · リッシュ（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「フッ、そいつを聞いて安心したぜ。
+>  それじゃま、いくかい」
+“Heh, hearing that puts me at ease. Well then, shall we go?”
+
+@25634 Yazan · ヤザン
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「聞こえたな、女!?
+>  俺はてめぇの面倒を見る気はねぇ
+“You heard me, woman?! I've got no intention of looking after you.
+---
+>  やるなら勝手にやってみせな!」
+If you're going to do it, then show me what you can do on your own!”
+
+@25635 Aisha · アイシャ（按段落 3DD4）
+> (……なんて野蛮な男。
+>  バスクといいこの男といい
+(...What a barbaric man. Bask and now this one too.
+---
+>  これではOZが
+>  だめになってしまうのではなくて?
+At this rate, isn't it OZ that's falling apart?
+---
+>  トレーズ閣下の目指されたものは、
+>  こんなものではなかったはずなのに……)
+What His Excellency Treize aimed for shouldn't have been anything like this...)
+
+@25636 Aisha · アイシャ（按段落 3DD4）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{HeroName}さん……
+>  わたくしも疲れましたわ
+“{HeroName}... I'm tired too.
+---
+>  そろそろ、決着をつけましょう」
+It's about time we settled this.”
+
+@25637 Manami · マナミ（按段落 3DD4）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{PartnerName}……どうして……」
+“{PartnerName}... Why...”
+
+@25638 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「待たせたな! 死神が
+>  地獄から舞い戻ってきたぜッ!」
+“Sorry to keep you waiting! The God of Death has danced his way back from hell!”
+
+@25639 Ark · アーク（按段落 3DD1）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオ!?
+>  しかしその機体は一体……」
+“Duo?! But that mobile suit... what is it...”
+
+@25640 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ああ、どっかのバカな技術者が、
+>  俺のデスサイズを新調してくれたのさ
+“Yeah, some idiot engineer went and rebuilt my Deathscythe for me,
+---
+>  そいつを、ありがたくいただいてきた」
+and I gratefully took it off his hands.”
+
+@25641 Selain · セレイン（按段落 3DD2）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオか? 新しい機体のようだな」
+“That's Duo? Looks like a new machine.”
+
+@25642 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ああ、どっかのバカな技術者が、
+>  俺のデスサイズを新調してくれたのさ
+“Yeah, some idiot engineer went and rebuilt my Deathscythe for me,
+---
+>  そいつを、ありがたくいただいてきた」
+and I gratefully took it off his hands.”
+
+@25643 Manami · マナミ（按段落 3DD4）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオなの!? 来てくれたのね!」
+“That's Duo?! You came!”
+
+@25644 Lawrence · ローレンス
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「その機体は登録されておりませんな
+>  新型ですか、デュオさま」
+“That machine isn't in our registry. Is it a new model, Master Duo?”
+
+@25645 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ああ、どっかのバカな技術者が、
+>  俺のデスサイズを新調してくれたのさ
+“Yeah, some idiot engineer went and rebuilt my Deathscythe for me,
+---
+>  そいつを、ありがたくいただいてきた」
+and I gratefully took it off his hands.”
+
+@25646 Brad · ブラッド（按段落 3DD3）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオ!? 久しぶりじゃねぇかよ!
+>  その機体はどうしたんだ?」
+“Duo?! Long time no see! What'd you do with that machine?”
+
+@25647 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ああ、どっかのバカな技術者が、
+>  俺のデスサイズを新調してくれたのさ
+“Yeah, some idiot engineer went and rebuilt my Deathscythe for me,
+---
+>  そいつを、ありがたくいただいてきた」
+and I gratefully took it off his hands.”
+
+@25648 Bright · ブライト
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「よく来てくれた、デュオ。
+>  それで、後の4人は?」
+“Good to have you, Duo. So, where are the other four?”
+
+@25649 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いや、残念だが俺は知らない。
+>  五飛とは途中まで
+“Sorry, but I don't know. Wufei and I were together part of the way,
+---
+>  一緒だったんだが、あいつは
+>  俺と違って1人が好きだからな」
+but unlike me, that guy likes being on his own.”
+
+@25650 Bright · ブライト
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「よく来てくれた、デュオ。
+>  それで、後の4人は?」
+“Good to have you, Duo. So, where are the other four?”
+
+@25651 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いや、残念だが俺は知らない。
+>  五飛とは途中まで
+“Sorry, but I don't know. Wufei and I were together part of the way,
+---
+>  一緒だったんだが、あいつは
+>  俺と違って1人が好きだからな」
+but unlike me, that guy likes being on his own.”
+
+@25652 Bright · ブライト
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「よく来てくれた、デュオ。
+>  それで、後の4人は?」
+“Good to have you, Duo. So, where are the other four?”
+
+@25653 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いや、残念だが俺は知らない。
+>  五飛とは途中まで
+“Sorry, but I don't know. Wufei and I were together part of the way,
+---
+>  一緒だったんだが、あいつは
+>  俺と違って1人が好きだからな」
+but unlike me, that guy likes being on his own.”
+
+@25654 Hilde · ヒルデ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオ!? どうして……」
+“Duo?! Why...”
+
+@25655 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ヒルデか……」
+“Hilde...”
+
+@25656 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「よぅ、ヒルデ。もうやめとこうや。
+>  お前には似合わないぜ」
+“Hey, Hilde. Let's call it quits. This doesn't suit you.”
+
+@25657 Hilde · ヒルデ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオ! どうして撃たないの!?
+>  どうして私を敵とみなさないの!?」
+“Duo! Why won't you shoot?! Why won't you treat me as an enemy?!”
+
+@25658 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いっちゃ悪いが、お前の力じゃ
+>  俺たちの敵にならない。そんな奴が
+“No offense, but with your strength, you're no match for us. For someone like that
+---
+>  命をかけて立ち向かってくるなんて、
+>  馬鹿げたことだ。でもな、なんか俺が
+to risk her life and come at us is just ridiculous. But you know, it kind of
+---
+>  たった一人で、ゾルバドス軍に
+>  占領された地球へ降りた時に
+reminded me of when I came down to Earth all alone,
+---
+>  似てるなって思ったのさ」
+to a planet occupied by the Zorbados Army.”
+
+@25659 Hilde · ヒルデ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「馬鹿にしないで!」
+“Don't mock me!”
+
+@25660 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「俺たち馬鹿なんだぜ、きっと。
+>  兵士はいつ死んでもおかしくない
+“We're the fools, I'm sure of it. A soldier can die at any time.
+---
+>  コロニーの仲間だって、これから
+>  どんどん死んでいく。せめてお互い
+Our comrades in the colonies will keep dying one after another. At least
+---
+>  自分の信じられる道で
+>  精一杯生きようぜ」
+let's each live as hard as we can on the path we believe in.”
+
+@25661 Hilde · ヒルデ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「デュオ……」
+“Duo...”
+
+@25662 Duo · デュオ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「馬鹿! OZの識別信号を
+>  出せ! やられるぞ!」
+“Idiot! Broadcast your OZ identification signal! You'll be killed!”
+
+@25663 Hilde · ヒルデ
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……出せないよ。誰が味方か、
+>  わからなくなったんだもの」
+“...I can't. I don't know who's on my side anymore.”
+
+@25664 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「おい、聞こえるか」
+“Hey, can you hear me?”
+
+@25665 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ああ、いい声だ。よ～く聞こえるぜ」
+“Yeah, a nice voice. I hear you loud and clear.”
+
+@25666 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「いい加減ふざけるのはよせ!
+>  いいか、一度しか言わないぞ
+“Cut the crap already! Listen, I'm only saying this once.
+---
+>  お前にその気があるなら、
+>  {HeroMech}に来い」
+If you're up for it, come to the {HeroMech}.”
+
+@25667 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「おっ? なんだお前も
+>  俺に惚れてたのかよ」
+“Oh? What, so you're in love with me too?”
+
+@25668 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「違う」
+“No.”
+
+@25669 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「ちっ、そんなにあっさり
+>  否定するこたぁないじゃねぇか」
+“Tch, you don't have to deny it so flat-out.”
+
+@25670 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「お前は、少なくとも連中とは違う
+>  と思った。だから言っている
+“I figured you were at least different from the rest of them. That's why I'm saying this.
+---
+>  我々は戦いつづけるために戦力が
+>  必要だ」
+We need fighting strength in order to keep fighting.”
+
+@25671 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「お前の口からそれが聞けるとは
+>  涙がでるほどうれしいねぇ
+“Hearing that from your own mouth makes me so happy I could cry.
+---
+>  が、まだ俺はOZの士官だ。
+>  また生き残れたらそうさせてもらうぜ」
+But I'm still an OZ officer. If I survive this again, I'll take you up on it.”
+
+@25672 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「どういうことだ、
+>  {PartnerFull}?」
+“What do you mean, {PartnerFull}?”
+
+@25673 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段；同时将‘不死人’的引号改为弯单引号。
+> 「悪いな。俺にも一応、俺なりの
+>  こだわりってもんがあるのさ
+“Sorry. Even I've got my own code of honor, more or less.
+---
+>  なに、俺も“不死人”と呼ばれた
+>  男だ。そう簡単にゃくたばらねぇよ」
+Don't worry, I'm a man they called the ‘Undying.’ I won't kick the bucket that easily.”
+
+@25674 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「そうか……ならば、撃破する」
+“I see... Then I'll shoot you down.”
+
+@25675 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「やーれやれ、女神に嫌われちまっちゃ
+>  さすがの俺の豪運も
+“Well, well. Guess even my incredible luck runs out once the goddess
+---
+>  尽きるしかねぇか。
+>  別にどこで死んでもよかったがよ……
+turns her back on me. Not that I cared where I died, but...
+---
+>  まったく、しまらねぇ死に方だぜ……」
+Man, what a pathetic way to go...”
+
+@25676 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「やーれやれ、女神に嫌われちまっちゃ
+>  さすがの俺の豪運も
+“Well, well. Guess even my incredible luck runs out once the goddess
+---
+>  尽きるしかねぇか。
+>  別にどこで死んでもよかったがよ……
+turns her back on me. Not that I cared where I died, but...
+---
+>  まったく、しまらねぇ死に方だぜ……」
+Man, what a pathetic way to go...”
+
+@25677 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「くっ……やられっちまったか……へっ、
+>  生きてたらまた会おうぜ
+“Ugh... so I got taken down... Heh, if we both live, let's meet again,
+---
+>  {HeroName}。じゃあな……」
+{HeroName}. See you...”
+
+@25678 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……ばかな……奴だな。……まったく……」
+“...You idiot... What a fool. ...Honestly...”
+
+@25679 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{PartnerName}!」
+“{PartnerName}!”
+
+@25680 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{HeroName}さん、
+>  ここは戦場ですのよ!
+“{HeroName}, this is a battlefield!
+---
+>  何をやっているのです!」
+What are you doing?!”
+
+@25681 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「お願い、もうやめて。
+>  あたしたちが戦ったって
+“Please, stop this already. Even if we fight,
+---
+>  何の意味もないのよ!?」
+it won't mean a thing!?”
+
+@25682 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「意味……いいえ、
+>  意味ならありますわ
+“Meaning... no, there is a meaning.
+---
+>  あなたを倒さなければ、わたくしは、
+>  いえ{PartnerSurname}の家は
+If I don't defeat you, I—no, the {PartnerSurname} family—
+---
+>  ロームフェラでの立場をなくすわ」
+will lose its standing within Romefeller.”
+
+@25683 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「わかって{PartnerName}、もう
+>  そんなことを言っているときではないのよ
+“I know, {PartnerName}, this isn't the time to be saying things like that.
+---
+>  ロームフェラの、
+>  OZのやり方は間違ってるわ!
+Romefeller's way, OZ's way, is wrong!
+---
+>  あなただってそれは
+>  わかっているでしょうに!」
+You know that as well as I do!”
+
+@25684 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「……それでも、それでも、わたくしには……
+>  他の道は選べない
+“...Even so, even so, I... I can't choose any other path.
+---
+>  選ぶわけにはいかないのです!」
+I'm not allowed to choose one!”
+
+@25685 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{PartnerName}!?」
+“{PartnerName}!?”
+
+@25686 对手
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「お話はもうおしまい。お互いのなすべき
+>  ことをしましょう、{HeroName}さん」
+“Our talk is over. Let's each do what we must, {HeroName}.”
+
+@25687 主角
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{PartnerName}ーッ!!」
+“{PartnerName}!!”
+
+@25688 Aisha · アイシャ（按段落 3DD4）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「あぁ……お父様……お母様……
+>  申し訳ありません……」
+“Ah... Father... Mother... I'm so sorry...”
+
+@25689 Manami · マナミ（按段落 3DD4）
+# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+> 「{PartnerName}……あなた……ばかよ。
+>  こんな風に死んだって
+“{PartnerName}... you... you idiot. Dying like this,
+---
+>  誰も、喜んでなんてくれないのに……
+>  ばかよ、あなたは
+no one would ever be happy about it... you idiot.
+---
+>  ……{PartnerName}……」
+...{PartnerName}...”
+
+@25690 Aisha · アイシャ（按段落 3DD4）
+> 「ああ……これでもう……
+>  終わりですのね……」
+“Ah... so this is... the end, then...”
+
+@25691 Manami · マナミ（按段落 3DD4）
+> 「{PartnerName}!?」
+“{PartnerName}!?”
+
+@25692 Lawrence · ローレンス
+> 「大丈夫です、お嬢様。
+>  {PartnerName}様は
+“It's all right, my lady. It seems {PartnerName}
+---
+>  無事脱出されたようです」
+escaped safely.”
+
+@25693 Manami · マナミ（按段落 3DD4）
+> 「……よかった……{PartnerName}。
+>  ありがとう、ローレンス」
+“...Thank goodness... {PartnerName}. Thank you, Lawrence.”
+
+@25694 Lawrence · ローレンス
+> 「とんでもございません」
+“Not at all.”
+
+@25695 Hilde · ヒルデ
+> 「デュオ……私も、
+>  私もあなたの信じているものを
+“Duo... I wanted to see it too,
+---
+>  見てみたかったな……」
+the thing you believe in...”
+
+@25696 Duo · デュオ
+# 审校：“てめぇら”语气更接近“you bastards”，比“you idiots”更符合杜欧愤怒的喊叫。
+> 「ヒルデッ!? ばっかやろぉぉぉーっ!
+>  てめぇら一人も生かしちゃおかねぇ!」
+“Hilde?! You bastards! I won't let a single one of you live!”
+
+@25697 Hilde · ヒルデ
+> 「きゃあぁぁぁぁぁーっ!!」
+“Kyaaaaaaah!!”
+
+@25698 Duo · デュオ
+# 审校：同上，将“you idiots”改为“you bastards”，保持杜欧愤怒语气一致。
+> 「ヒルデッ!? くっ、ばっかやろぉぉーっ!」
+“Hilde?! Ngh, you bastards!”
+
+@25699 Bright · ブライト
+> 「敵は片付いたか……
+>  よし、地球に降下するぞ!」
+“The enemy's been dealt with... All right, we're descending to Earth!”
+
+@25700 Bright · ブライト
+> 「よし、全機降下開始したな。
+>  気を抜くなよ。目標はジャブローだ」
+“Good, all units have begun their descent. Stay sharp. Our target is Jaburo.”
+
+@25701 Beltorchika · ベルトーチカ
+> 「艦長! 未確認MSが1機、
+>  艦尾にとりつきました!!」
+“Captain! One unidentified MS has attached itself to the stern!!”
+
+@25702 Bright · ブライト
+> 「なんだと!? 敵か!?」
+“What?! Is it an enemy?!”
+
+@25703 Bunny · バニー
+> 「そのMSより通信入ります」
+“We're receiving a transmission from that MS.”
+
+@25704 Bright · ブライト
+> 「スクリーンに出せ」
+“Put it on screen.”
+
+@25705 Duo · デュオ
+# 审校：“燃えつきちまう”指在大气层降落时被烧毁，改为“burn up”更准确。
+> 「よっ、ひさしぶり。いきなりで悪いが、
+>  はやいとこ入れてくれよ。このままじゃ
+“Yo, long time no see. Sorry to drop in like this, but let me in quick. At this rate,
+---
+>  いくら俺でも、燃えつきちまうぜ」
+even I'll burn up.”
+
+@25706 Bright · ブライト
+> 「デュオ・マックスウェルか!?」
+“Duo Maxwell?!”
+
+@25707 Roux · ルー
+> 「ちょっとデュオ、あれ新型でしょ?
+>  いったいどこで手に入れたのよ」
+“Hey, Duo, that's a new model, isn't it? Where on earth did you get it?”
+
+@25708 Duo · デュオ
+> 「ああ、どっかのバカな技術者が、
+>  俺のデスサイズを新調してくれたのさ
+“Yeah, some fool of an engineer went and rebuilt my Deathscythe.
+---
+>  そいつを、ありがたくいただいてきた」
+So I gratefully took it off his hands.”
+
+@25709 Bright · ブライト
+> 「よく来てくれた、デュオ。
+>  それで、後の4人は?」
+“Glad you made it, Duo. So, what about the other four?”
+
+@25710 Duo · デュオ
+> 「いや、残念だが俺は知らない。
+>  五飛とは途中まで
+“Nah, sorry, but I don't know. Wufei and I were together
+---
+>  一緒だったんだが、あいつは
+>  俺と違って1人が好きだからな」
+part of the way, but unlike me, he likes being on his own.”
+
+@25711 Hilde · ヒルデ
+> 「デュオ、私も自分の思ったことを
+>  精一杯やってみる
+“Duo, I want to give it my all too, doing what I believe in.
+---
+>  私もあなたたちと一緒に行かせて」
+Let me come along with you.”
+
+@25712 Duo · デュオ
+> 「まったく……馬鹿だな、お前も」
+“Honestly... you're an idiot too.”
+
+@25713 Kamille · カミーユ
+> 「くっ……みんなは敵の攻撃で降下
+>  地点を変えられてしまったのか……?」
+“Ngh... Did everyone get forced off their landing point by the enemy's attack...?”

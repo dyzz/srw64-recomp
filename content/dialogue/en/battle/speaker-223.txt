@@ -1,0 +1,82 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10847 Beanne · ビアン
+# 审校：「つぶれろ」是命令对方被压碎，初稿“Crush them!”把对象变成了第三方。
+> 「つぶれろ!」
+“Get crushed!”
+
+@10848 Beanne · ビアン
+> 「こいつ!」
+“Why you!”
+
+@10849 Beanne · ビアン
+> 「文句はいわせん!」
+“I won't hear any complaints!”
+
+@10850 Beanne · ビアン
+> 「こうも簡単にやらせるとはな!」
+“To think they'd let me do this so easily!”
+
+@10851 Beanne · ビアン
+> 「これならどうだ!」
+“How about this!”
+
+@10852 Beanne · ビアン
+> 「し、しまったぁぁぁーっ!」
+“D-damn it all!”
+
+@10853 Beanne · ビアン
+> 「こ、これではっ!」
+“Th-this is it?!”
+
+@10854 Beanne · ビアン
+> 「わぁぁ! こ、このままでは!」
+“Waaah! A-at this rate!”
+
+@10855 Beanne · ビアン
+> 「なに!? ま、負けるだと!?」
+“What?! I-I'm losing?!”
+
+@10856 Beanne · ビアン
+> 「な、なんだ!?」
+“Wh-what is this?!”
+
+@10857 Beanne · ビアン
+> 「つ、強い……ならばっ!」
+“S-strong... then take this!”
+
+@10858 Beanne · ビアン
+> 「くぅっ! やる! だがこれなら!」
+“Ngh! Not bad! But with this!”
+
+@10859 Beanne · ビアン
+> 「そんなものか!」
+“Is that all you've got?!”
+
+@10860 Beanne · ビアン
+> 「この程度ならば!」
+“If it's only this much!”
+
+@10861 Beanne · ビアン
+> 「相手にならん!」
+“You're no match for me!”
+
+@10862 Beanne · ビアン
+> 「こうも簡単によけられるとはな」
+“To think you'd dodge so easily.”
+
+@10863 Beanne · ビアン
+> 「甘いんだよ」
+“Too naive.”
+
+@10864 Beanne · ビアン
+> 「甘いんだよ」
+“Too naive.”
+
+@10865 Beanne · ビアン
+> 「な、なんだ!? 弾切れ!?」
+“Wh-what?! Out of ammo?!”
+
+@10866 Beanne · ビアン
+> 「くっ! おのれ、なんと卑怯な手を!」
+“Ngh! You bastard, what a cowardly trick!”
