@@ -17,7 +17,9 @@ set(SRW64_TEST_CJK_FONT "" CACHE FILEPATH "Explicit outline CJK font for compone
 if(NOT EXISTS "${SRW64_TEST_CJK_FONT}")
     message(FATAL_ERROR "Supply a CJK test font path; fonts are not bundled or discovered implicitly")
 endif()
-add_test(NAME portable-text COMMAND srw64-portable-text-test "${SRW64_TEST_CJK_FONT}")
+# Optional: a variable font (build/fonts/HarmonyOS_Sans_SC.ttf) for the weight checks.
+set(SRW64_TEST_VARIABLE_FONT "" CACHE FILEPATH "Variable font for the FontSource::weight checks")
+add_test(NAME portable-text COMMAND srw64-portable-text-test "${SRW64_TEST_CJK_FONT}" ${SRW64_TEST_VARIABLE_FONT})
 set_tests_properties(portable-text PROPERTIES TIMEOUT 120)
 option(SRW64_TEXT_SANITIZERS "Enable ASan and UBSan in the isolated text fixture" OFF)
 if(SRW64_TEXT_SANITIZERS)

@@ -14,7 +14,9 @@ namespace srw64::text {
 // All offsets are UTF-16 code units. No normalization or OS locale is applied.
 // Boundary analysis does not require a font and also accepts embedded NUL.
 std::vector<size_t> grapheme_ends(std::u16string_view text);
-struct FontSource { std::filesystem::path path; long face_index=0; };
+// weight 0 keeps the face's default instance; otherwise a variable font opens
+// at the named instance nearest to it on the wght axis (HarmonyOS Sans Bold is 706).
+struct FontSource { std::filesystem::path path; long face_index=0; int weight=0; };
 struct TextLine {
     size_t start{}, end{};
     double width{};

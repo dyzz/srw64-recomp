@@ -34,9 +34,14 @@
 | `dialogue-runtime/v4/` | 当前对话框边框的预览与构建记录 | `dialogue_frame_asset.py` |
 | `tactical-maps/` | 战术地图 HD 样板：请求清单、生成结果（`runs/`）、合成中间文件，`runtime/` 是宿主读取的底图与色号图 | `tools/hd_ai/tactical_map_hd.py`；运行时由 `SRW64_HD_MAPS` 指向 `runtime/` |
 | `weapon-markers/` | 武器标记图标的 AI 描摹来源 | 武器标记符号字体 |
-| `dialogue-polish/HarmonyOS-Sans.zip` | 官方字体包 | `tools/content/prepare_fonts.py` 解出游戏字体 |
 | `native-support/` | RT64 哈希的本机实现（`libhash.dylib`）与 xBRZ 源码 | `tools/hd_ai/rt64_hash.py` |
 | `research/` | 云端模型可用性调研记录 | 文档引用 |
+
+## 字体（`fonts/`）
+
+| 路径 | 内容 | 来源／使用者 |
+| --- | --- | --- |
+| `fonts/HarmonyOS-Sans-2.040.zip` | HarmonyOS Sans 2.040 官方包（华为开发者设计资源页下载，哈希见 `content/fonts/harmonyos-sans.json`） | `tools/content/prepare_fonts.py` 解出游戏字体到 `build/fonts/` |
 
 ## 3D 模型（`models/`）
 

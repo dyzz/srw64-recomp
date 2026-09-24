@@ -33,6 +33,11 @@ Linux 可安装 `libfreetype6-dev libharfbuzz-dev libicu-dev fonts-noto-cjk`；W
 2026-09-23 起游戏运行使用打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
 准备的目录（开发运行是 `build/fonts/`，应用包是 `Contents/Resources/fonts/`）。字体链：中文、日文为
 HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf`；英文为 HarmonyOS Sans Condensed → SC → 符号字体。符号字体里还有武器标记图标（U+E000＋原版字形号，见[改造画面](native-upgrade-screens.md)）。
+2026-09-24 起字体包是 HarmonyOS Sans 2.040：`HarmonyOS_Sans_SC.ttf`（20.6 MB）和 `HarmonyOS_Sans_Condensed.ttf`（0.3 MB）都是可变字体（wght 40–900），
+每个文件含全部字重。`FontSource::weight` 为 0 时用文件默认实例 Regular（400）；其他值取 wght 轴上最近的命名实例，
+塑形和光栅都用这个实例。标题菜单与章节标题卡用 `game_font_sources(locale, 700)`，即 Bold 实例（706）；符号字体只有一个字重，不受影响。
+RmlUi 按 `LoadFontFace` 给的字重载入同名实例（Normal 即 Regular）。与 1.0 Regular 相比，排版只有细微差别：
+“——”连成一个连字、英文“Th”连字、中文弯引号宽度差 0.03 em；30 条共享用例的断行和翻页都没变。
 目录里缺文件时明确报错，不退回系统字体。没有 `SRW64_FONT_DIR` 时（单元测试、旧探针）仍查找本机
 Noto Sans CJK（Linux）、Arial Unicode（macOS）、微软雅黑（Windows）；Noto 标准 TTC 按中文／日文选择对应 face。
 开发测试可用 `SRW64_TEXT_FONT` 指定一个明确的 TTF/OTF/TTC 文件；不搜索当前目录、不联网下载，
@@ -53,7 +58,8 @@ ctest --test-dir build/dialogue-portable --output-on-failure
 # 独立排版组件。也可以给出自己的本地 CJK 字体，跳过字体准备。
 python tests/portable_text/prepare_fonts.py build/text-fonts
 cmake -S tests/portable_text -B build/text-cjk -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DSRW64_TEST_CJK_FONT="$PWD/build/text-fonts/NotoSansCJKsc-Regular.otf"
+  -DSRW64_TEST_CJK_FONT="$PWD/build/text-fonts/NotoSansCJKsc-Regular.otf" \
+  -DSRW64_TEST_VARIABLE_FONT="$PWD/build/fonts/HarmonyOS_Sans_SC.ttf"   # 可选：字重检查
 cmake --build build/text-cjk --parallel 6
 ctest --test-dir build/text-cjk --output-on-failure
 ```

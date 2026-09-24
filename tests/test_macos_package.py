@@ -76,11 +76,11 @@ class MacOSPackageTests(unittest.TestCase):
     def test_fonts_ship_with_their_licences(self):
         fonts = self.root / "fonts"
         fonts.mkdir()
-        for name in ("HarmonyOS_Sans_SC_Regular.ttf", "LICENSE-HarmonyOS-Sans.txt", "notes.json"):
+        for name in ("HarmonyOS_Sans_SC.ttf", "LICENSE-HarmonyOS-Sans.txt", "notes.json"):
             (fonts / name).write_bytes(b"x")
         result = self.stage(fonts=fonts)
         files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
-        self.assertIn("Contents/Resources/fonts/HarmonyOS_Sans_SC_Regular.ttf", files)
+        self.assertIn("Contents/Resources/fonts/HarmonyOS_Sans_SC.ttf", files)
         self.assertIn("Contents/Resources/fonts/LICENSE-HarmonyOS-Sans.txt", files)
         self.assertNotIn("Contents/Resources/fonts/notes.json", files)
 

@@ -1364,9 +1364,11 @@ void initialize() {
     else if(font_dir && *font_dir) {
         // The packaged fonts (tools/content/prepare_fonts.py): SC for every
         // language, Condensed for English documents, the symbol font last.
+        // Both HarmonyOS files are variable; RmlUi opens the named instance
+        // of the requested weight (Normal: Regular).
         const std::filesystem::path dir(font_dir);
-        path=dir/"HarmonyOS_Sans_SC_Regular.ttf";
-        for(const auto* name:{"HarmonyOS_Sans_SC_Regular.ttf","HarmonyOS_Sans_Condensed_Regular.ttf","SRW64Symbols.ttf"})
+        path=dir/"HarmonyOS_Sans_SC.ttf";
+        for(const auto* name:{"HarmonyOS_Sans_SC.ttf","HarmonyOS_Sans_Condensed.ttf","SRW64Symbols.ttf"})
             if(!std::filesystem::is_regular_file(dir/name))throw std::runtime_error("Missing font "+(dir/name).string()+": run tools/content/prepare_fonts.py");
     }
     else for(const auto* candidate:{"/System/Library/Fonts/Supplemental/Arial Unicode.ttf","C:/Windows/Fonts/msyh.ttc","/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"})
@@ -1376,7 +1378,7 @@ void initialize() {
         throw std::runtime_error("Shared UI needs a CJK font: set SRW64_UI_FONT to a local TTF/OTF/TTC file");
     if(!std::getenv("SRW64_UI_FONT") && font_dir && *font_dir) {
         const std::filesystem::path dir(font_dir);
-        english_font=bytes(dir/"HarmonyOS_Sans_Condensed_Regular.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
+        english_font=bytes(dir/"HarmonyOS_Sans_Condensed.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
         if(Rml::LoadFontFace(english_font,"srw64-ui-en",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
             english_font_family()="srw64-ui-en";
         if(!Rml::LoadFontFace(symbol_font,"srw64-ui-symbols",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))

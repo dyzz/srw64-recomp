@@ -76,8 +76,8 @@ int main(int argc,char** argv) {
                 "may try: 0, legal breaks, forced starts and line ends (end includes a trailing newline; halved: the "
                 "closing mark at the end takes half width). "
                 "The ranking picks page ends from these; expected is what the game lays out."},
-            {"fonts",{{"zh-Hans",{"HarmonyOS_Sans_SC_Regular.ttf","SRW64Symbols.ttf"}},
-                {"en",{"HarmonyOS_Sans_Condensed_Regular.ttf","HarmonyOS_Sans_SC_Regular.ttf","SRW64Symbols.ttf"}}}},
+            {"fonts",{{"zh-Hans",{"HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf"}},
+                {"en",{"HarmonyOS_Sans_Condensed.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf"}}}},
             {"marks",{{"sentence_end",dialogue::utf8(std::u16string(text::sentence_end_marks))},
                 {"comma",dialogue::utf8(std::u16string(text::comma_marks))},
                 {"halvable",dialogue::utf8(std::u16string(text::halvable_marks))},
