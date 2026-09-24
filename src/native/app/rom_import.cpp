@@ -23,7 +23,7 @@ std::string_view embedded_import_spec() {
 namespace {
 using json=nlohmann::json;
 using rom_import::Bytes;
-constexpr unsigned importer_version=2;
+constexpr unsigned importer_version=3;
 std::string hash(Bytes data){Sha256 value;value.update(data);return value.finish();}
 Bytes bytes(std::string_view text){return {reinterpret_cast<const uint8_t*>(text.data()),text.size()};}
 std::string hash(std::string_view text){return hash(bytes(text));}
@@ -185,8 +185,10 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
         }
         for(unsigned id=0;id<361;++id) {
             const auto image=rom_import::be16(rom,0x84220+id*4),palette=rom_import::be16(rom,0x84222+id*4);
-            battle["portraits"][std::to_string(id)]=save_art("battle/face-"+std::to_string(image)+"-"+std::to_string(palette)+".png",
+            auto entry=save_art("battle/face-"+std::to_string(image)+"-"+std::to_string(palette)+".png",
                 rom_import::battle_atlas(resource(image),resource(palette)));
+            // The launcher finds a bundled HD portrait by (image, palette), as profile.py does.
+            entry["resources"]={image,palette};battle["portraits"][std::to_string(id)]=entry;
         }
         data["battle_assets"]=battle;
         }

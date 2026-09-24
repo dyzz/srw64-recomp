@@ -14,7 +14,7 @@ macOS 14/15 的实际启动与游戏流程仍需在对应系统验收。
 
 保留现有 SDL2 API → SDL2-compat → SDL3 路径。文字使用 FreeType + HarfBuzz 的 OpenType
 排版和 ICU 分段；关闭 HarfBuzz CoreText、GLib、Graphite2、辅助工具以及 FreeType
-PNG/Brotli/BZip2 等当前 TTF/TTC 文字不使用的依赖。字体文件仍由运行时选择，不随包分发。
+PNG/Brotli/BZip2 等当前 TTF/TTC 文字不使用的依赖。应用包带上 `tools/content/prepare_fonts.py` 准备的字体（HarmonyOS Sans 2.040 原样附许可全文，加符号字体）。
 
 准备好原项目的固定工具链与生成代码后运行：
 
@@ -48,6 +48,27 @@ cmake --build build/recomp/macos14-app-build --target srw64-gfx-host --parallel 
 Mach-O 的最低系统版本、依赖路径和签名。整个过程仅本地运行，不使用 GitHub Actions。
 
 产物仅本地 ad-hoc 签名，没有 Developer ID 公证。对外分发前应携带各依赖的许可说明。
+
+## 全 HD 自用包
+
+默认打出的包只有原版画面。要打默认开启全部 HD 的包，先准备 HD 目录，再在打包时传 `--hd`：
+
+```sh
+.venv/bin/python tools/release/prepare_hd_bundle.py --output build/release/hd-$(date +%F)
+.venv/bin/python tools/release/package_macos.py ...（同上） --hd build/release/hd-$(date +%F)
+```
+
+- `prepare_hd_bundle.py` 从本机 `assets/` 编译美术清单 `content/art/stage1-hd.json`：世界地图地表、
+  宇宙物件、对话框边框这 249 张 RT64 替换贴图，304 张整张头像，17 张场间背景，19 张标题图。
+  它还给原生页面的头像按（图，调色板）建索引，每张附一份剪影；再校验并复制
+  世界地图舰船与地标包（`build/recomp/native-models/assets`）和 5600 标记包
+  （`build/recomp/native-marker/assets`）。战术地图样板（`SRW64_HD_MAPS`）不在里面。目录约 324 MB。
+- 启动器看到 `Contents/Resources/hd/art` 就设 `SRW64_ART_PACK`，以 HD 开局（`SRW64_IMAGE_MODE=hd`），
+  给姓名页、战前确认、存档与联动页的头像接上 HD 图，两个模型包存在时再设
+  `SRW64_NATIVE_MARKER`、`SRW64_NATIVE_MODELS`。F6 或设置窗口可以切回原版，选择不写入设置文件。
+- 首次导入仍只从 ROM 生成原版内容；导入器第 3 版给战斗头像记下（图，调色板），旧缓存会重新导入一次。
+- 这种包只给打包的人自己用：AI 美术的分发许可未审，两个模型包里有从 ROM 复制的参考字节。
+  `Distribution.txt` 会写明不要分发。
 现有最低 27 的旧包来自本机 Homebrew 二进制的部署目标，不是 SDL 或文字组件的源码要求。
 
 ## 本地验证（2026-09-20）

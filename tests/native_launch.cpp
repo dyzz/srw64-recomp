@@ -67,6 +67,7 @@ void relocated_boot_and_resume() {
         check(env("SRW64_ROM_VARIANT")=="jp","ROM variant leaked");
         check(env("SRW64_RULE_FIXES")=="fix-one","first launch default rules");
         check(env("SRW64_RESOLUTION_SCALE")=="4","resolution override lost");
+        check(env("SRW64_ART_PACK").empty() && env("SRW64_IMAGE_MODE")=="original","HD enabled without a bundled HD folder");
         const auto native=load(env("SRW64_DIALOGUE_DATA"));
         check(native.at("config").at("locale")=="en","locale override not applied");
         check(fs::path(native.at("name_entry_assets").at("portraits").at("27").at("original").get<std::string>())==
@@ -126,6 +127,42 @@ void fail_closed() {
     rejects([&]{run_standalone(f.options,f.game,no_host);},"unknown saved rule accepted");
     check(!unexpectedly_called,"a rejected bootstrap entered the host");
 }
+// A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
+// beside the executable when it is not inside a .app.
+void bundled_hd(const fs::path& beside) {
+    const auto hd=beside/"hd";
+    struct Remove{fs::path path;~Remove(){std::error_code ignored;fs::remove_all(path,ignored);}} cleanup{hd};
+    fs::remove_all(hd);
+    fs::create_directories(hd/"art/page-portraits");fs::create_directories(hd/"native-marker");
+    atomic_write(hd/"art/rt64.json","{}");
+    atomic_write(hd/"art/page-portraits/face.png","synthetic HD portrait");
+    atomic_write(hd/"art/srw64-page-portraits.json",json({{"schema","srw64.page-portraits.v1"},
+        {"portraits",{{"5:6","page-portraits/face.png"}}}}).dump());
+    atomic_write(hd/"native-marker/manifest.json","{}");
+    Fixture f;
+    auto& face=f.data["name_entry_assets"]["portraits"]["27"];face["resource_id"]=5;face["palette_id"]=6;
+    const auto art=[&](unsigned image,unsigned palette){return json{{"path","name-entry/face-27.png"},
+        {"sha256",sha256_file(f.options.content/"name-entry/face-27.png")},{"resources",{image,palette}}};};
+    f.data["battle_assets"]={{"schema","srw64.battle-assets.v1"},{"units",json::object()},
+        {"portraits",{{"0",art(5,6)},{"1",art(7,8)}}}};
+    f.publish_content();
+    f.options.language="en";
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(fs::equivalent(env("SRW64_ART_PACK"),hd/"art"),"bundled art not loaded");
+        check(env("SRW64_HD_AVAILABLE")=="1" && env("SRW64_IMAGE_MODE")=="hd","bundled HD does not start on");
+        check(fs::equivalent(env("SRW64_NATIVE_MARKER"),hd/"native-marker"),"bundled marker pack not loaded");
+        check(env("SRW64_NATIVE_MODELS").empty(),"a missing model pack was set");
+        const auto native=load(env("SRW64_DIALOGUE_DATA"));
+        const auto hd_of=[](const json& row){return fs::path(row.at("hd").get<std::string>());};
+        check(fs::equivalent(hd_of(native.at("name_entry_assets").at("portraits").at("27")),hd/"art/page-portraits/face.png"),
+              "name-entry portrait has no HD image");
+        const auto& battle=native.at("battle_assets").at("portraits");
+        check(fs::equivalent(hd_of(battle.at("0")),hd/"art/page-portraits/face.png"),"battle portrait has no HD image");
+        check(!battle.at("1").contains("hd"),"a portrait without an HD image got one");
+        return 0;
+    })==0,"bundled HD launch failed");
 }
-int main(){try{relocated_boot_and_resume();fail_closed();std::cout<<checks<<" bootstrap checks passed\n";return 0;}
+}
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());
+    std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}

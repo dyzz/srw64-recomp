@@ -84,6 +84,27 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertIn("Contents/Resources/fonts/LICENSE-HarmonyOS-Sans.txt", files)
         self.assertNotIn("Contents/Resources/fonts/notes.json", files)
 
+    def test_hd_folder_ships_whole_with_a_local_only_notice(self):
+        hd = self.root / "hd"
+        (hd / "art").mkdir(parents=True)
+        (hd / "native-models").mkdir()
+        for name in ("hd.json", "art/rt64.json", "art/0082929fd8c9a1fc.png", "native-models/manifest.json"):
+            (hd / name).write_bytes(b"x")
+        result = self.stage(hd=hd)
+        files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
+        self.assertIn("Contents/Resources/hd/art/0082929fd8c9a1fc.png", files)
+        self.assertIn("Contents/Resources/hd/native-models/manifest.json", files)
+        self.assertIn("do not distribute", (result / "Contents/Resources/Distribution.txt").read_text())
+        # Without it the notice stays the public one.
+        self.output = self.root / "Plain.app"
+        self.assertNotIn("do not distribute", (self.stage() / "Contents/Resources/Distribution.txt").read_text())
+
+    def test_hd_folder_must_be_prepared(self):
+        (self.root / "loose").mkdir()
+        with self.assertRaisesRegex(ValueError, "prepared HD folder"):
+            self.stage(hd=self.root / "loose")
+        self.assertFalse(self.output.exists())
+
     def test_explicit_runtime_library_and_dependency_search(self):
         libraries = self.root / "linked libs"
         libraries.mkdir()
