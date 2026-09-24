@@ -4590,14 +4590,14 @@
     {
       "key": "base:t00_00786",
       "source_sha256": "9d3cf86be6d1401e13079cd7846333dedb94e55c7d666f2ca863f4bb2529abb5",
-      "target": "Aphrodai A<END>",
+      "target": "Aphrodite A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00787",
       "source_sha256": "1d09099ad4af0128803ff288a5ad6c45b71799c28a23f425ad84b43de603f427",
-      "target": "Dianan A<END>",
+      "target": "Diana A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6928,7 +6928,7 @@
     {
       "key": "base:t00_01139",
       "source_sha256": "ae258985ccf63969e6a48230f9b534f52d16f157e7009fa3b02a4cd89cf6e147",
-      "target": "High-Performance Radar<END>",
+      "target": "High-Fidelity Radar<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14306,7 +14306,7 @@
     {
       "key": "base:t00_02384",
       "source_sha256": "8dcc235ea6dcf99df5455f122229e0602c9304befb5ce93e3d53576ba23e3845",
-      "target": "Dianan Missile<END>",
+      "target": "Diana Missile<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23567,7 +23567,7 @@
     {
       "key": "base:t00_03713",
       "source_sha256": "e2d133ad18fb5cc8bd49fe8c992c5e61a1884e69cc4fcb67deac65c84f02c01b",
-      "target": "射Dianan Missile<END>",
+      "target": "射Diana Missile<END>",
       "review_status": "draft",
       "origin": "terms"
     },
