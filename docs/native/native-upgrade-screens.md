@@ -134,6 +134,9 @@
   - 原版图标字形：244 格闘（拳头）、243 射撃（准星）、241 P、242 B、575 MAP（`reference/original-glyph-map.csv`）。
   - **高清图像模式**：用符号字体 `SRW64Symbols.ttf` 里的矢量图标，码位是 U+E000＋原版字形号（U+E0F4、U+E0F3、U+E0F1、U+E0F2、U+E23F）。
     - 由 `tools/content/build_symbol_font.py` 照原版图标重画；P、B、MAP 的字母取自 DejaVu Sans Bold。
+    - 拳头：以原版图标为底，用千问图像 3.0 Pro 重画了三版，用户选第 3 版。再用 `tools/content/trace_marker.py` 描成 `content/fonts/marker-fist.svg`，线条加粗到图标高度的 7.5%，和其他图标一致。
+      - 生成记录（输入、提示词、参数、三个候选）在 `assets/hd-ai/weapon-markers/`，不进 git。
+      - 手画的几版用户不满意：原版是朝左的拳头，大拇指在上面。
     - MAP 是红底徽章、字母镂空，页面把它染成原版的红色 `#DE416A`。
   - **原版图像模式**：用从 ROM 字库切出的像素图标，按原像素大小显示（窄图标 8×10，MAP 13×10）。
     - `src/srw64_native/battle_assets.py` 在准备 profile 时从玩家的 ROM 生成：字库资源 0 经白字调色板资源 2 上色（1 白，2–10 灰阶描边，11 是 MAP 的红底），按 8 倍最近邻放大。

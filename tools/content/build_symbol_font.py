@@ -16,11 +16,13 @@ font after them (docs/design/dialogue-typesetting.md).
   at U+E000 + their ROM glyph id (the Private Use Area; HarmonyOS Sans has nothing
   there): U+E0F4 the 格闘 fist, U+E0F3 the 射撃 crosshair, U+E0F1 circled P (usable
   after moving), U+E0F2 circled B (beam) and U+E23F the MAP badge, its letters cut out.
-  The letters are DejaVu Sans Bold outlines.
+  The letters are DejaVu Sans Bold outlines. The fist is content/fonts/marker-fist.svg:
+  a Qwen Image 3.0 Pro redrawing of the ROM icon (a fist pointing left, the thumb on
+  top), chosen by the user and traced with potrace, its lines thickened to match.
 
 Vertical metrics copy HarmonyOS Sans SC so a fallback never raises a line's ascent.
-Needs fontTools (pip install fonttools); the built font is tracked, so this runs only
-when the glyphs change.
+Needs fontTools and skia-pathops (pip install fonttools skia-pathops); the built font
+is tracked, so this runs only when the glyphs change.
 
     python tools/content/build_symbol_font.py --dejavu /path/to/DejaVuSans.ttf \
         --dejavu-bold /path/to/DejaVuSans-Bold.ttf
@@ -34,7 +36,11 @@ from pathlib import Path
 
 from fontTools.fontBuilder import FontBuilder
 from fontTools.misc.timeTools import timestampFromString
+import re
+
+import pathops
 from fontTools.pens.boundsPen import BoundsPen
+from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
 from fontTools.pens.roundingPen import RoundingPen
 from fontTools.pens.transformPen import TransformPen
@@ -43,6 +49,7 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "content/fonts/SRW64Symbols.ttf"
+FIST = ROOT / "content/fonts/marker-fist.svg"
 UPEM = 1000
 ASCENT, DESCENT = 928, -244          # HarmonyOS Sans SC hhea
 TRIANGLE_ADVANCE = 600               # Arial Unicode MS: 1229/2048 em
@@ -188,6 +195,32 @@ class Outline:
         return self.pen.glyph()
 
 
+def traced_marker(svg: Path) -> tuple:
+    """An even-odd SVG path (M/L/C/Z, y up) scaled into the icon band, its winding fixed."""
+    view = [float(v) for v in re.search(r'viewBox="([^"]+)"', svg.read_text()).group(1).split()]
+    data = re.search(r' d="([^"]+)"', svg.read_text()).group(1)
+    width, height = view[2], view[3]
+    scale = ICON_HEIGHT / height
+    place = lambda x, y: (BEARING + float(x) * scale, ICON_BOTTOM + float(y) * scale)  # noqa: E731
+    path = pathops.Path(fillType=pathops.FillType.EVEN_ODD)
+    pen = path.getPen()
+    for command, args in re.findall(r"([MLCZ])([^MLCZ]*)", data):
+        numbers = re.findall(r"-?\d+(?:\.\d+)?", args)
+        points = [place(numbers[i], numbers[i + 1]) for i in range(0, len(numbers), 2)]
+        if command == "M":
+            pen.moveTo(points[0])
+        elif command == "L":
+            pen.lineTo(points[0])
+        elif command == "C":
+            pen.curveTo(*points)
+        else:
+            pen.closePath()
+    path.simplify(fix_winding=True)
+    glyph_pen = TTGlyphPen(None)
+    path.draw(Cu2QuPen(RoundingPen(glyph_pen), 1.0, reverse_direction=False))
+    return glyph_pen.glyph(), round(width * scale) + 2 * BEARING
+
+
 def markers(bold: TTFont) -> dict:
     """The five weapon markers, after the ROM icons (reference/original-glyph-map.csv)."""
     top = ICON_BOTTOM + ICON_HEIGHT
@@ -216,21 +249,7 @@ def markers(bold: TTFont) -> dict:
     o.rect(cx - 220, mid - bar / 2, cx + 220, mid + bar / 2)
     o.rect(cx - bar / 2, mid - 230, cx + bar / 2, mid + 230)
     built[243] = (o.glyph(), NARROW + 2 * BEARING)
-    # 格闘: a fist seen from the front: four curled fingers on the left, the thumb on
-    # the right, inside the outline of the hand. Rings only meet along shared edges.
-    o = Outline()
-    def ring(a, b, c, d, r):
-        o.rounded(a, b, c, d, r)
-        o.rounded(a + STROKE, b + STROKE, c - STROKE, d - STROKE, (max(r[0] - STROKE, 20), max(r[1] - STROKE, 20)), clockwise=False)
-    fx0, fy0, fx1, fy1 = x0, ICON_BOTTOM + 30, x1, top - 30
-    ring(fx0, fy0, fx1, fy1, (170, 190))                                 # the hand
-    reach = fx0 + 330
-    lobe = (fy1 - fy0 + 3 * STROKE) / 4
-    for i in range(4):                                                   # the fingers
-        bottom = fy0 + i * (lobe - STROKE)
-        ring(fx0, bottom, reach, bottom + lobe, (lobe / 2, lobe / 2))
-    ring(reach - STROKE, fy0 + 150, fx0 + 500, fy1 - 190, (85, 85))    # the thumb
-    built[244] = (o.glyph(), NARROW + 2 * BEARING)
+    built[244] = traced_marker(FIST)
     # MAP: a rounded red badge in the ROM; the glyph is the badge with the letters cut out.
     o = Outline()
     o.rounded(BEARING, ICON_BOTTOM, BEARING + WIDE, top, (220, 230))
