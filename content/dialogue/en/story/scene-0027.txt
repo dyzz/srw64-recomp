@@ -1,0 +1,1555 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@22052 Quattro · クワトロ
+> 「グレスコ総督が……死んだだと?」
+“Governor Gresco... is dead?”
+
+@22053 Koji · 甲児
+> 「ああ、なんかみんなで大騒ぎしてたぜ。
+>  一応敵軍の親玉だろ?
+“Yeah, everyone was making a huge fuss about it. He was the enemy army's big boss, right?
+---
+>  ざまぁみろって感じだよな」
+Serves him right, if you ask me.”
+
+@22054 Prof. Yumi · 弓教授
+> 「なんでも各地の中継局を通じて
+>  全地球圏規模で
+“Apparently it's being broadcast across the entire Earth Sphere
+---
+>  放送が行われているそうだよ」
+through relay stations everywhere.”
+
+@22055 Eiji · エイジ
+> 「グレスコが……」
+“Gresco...”
+
+@22056 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@22057 Quattro · クワトロ
+> 「ふむ……問題はこれが状況に
+>  どう影響してくるかだな……」
+“Hmm... The question is how this will affect the situation...”
+
+@22058 David · デビッド
+> 「お、始まっちまってるぜ」
+“Oh, it's already started.”
+
+@22059 Duo · デュオ
+> 「あーやだやだ。
+>  こんな盛大な葬式みたことないぜ」
+“Ugh, give me a break. I've never seen such a grand funeral.”
+
+@22060 Roux · ルー
+> 「ちょっとぉ、もっとボリューム大きくして
+>  くれないと、聞こえないじゃない」
+“Hey, turn it up louder, would you? I can't hear a thing.”
+
+@22061 Quatre · カトル
+> 「あ、はい、今あげます」
+“Oh, yes, I'll turn it up now.”
+
+@22062 Le Cain · ル・カイン
+# 审校：“strive to build” 改为 “devote myself to building”，更贴合宣誓语气。
+> 「……全兵士諸君、私はここに、
+>  亡き父の遺志をつぎ
+“...To all soldiers, I hereby vow to carry on my late father's will
+---
+>  帝国と地球人のための
+>  理想国家の建設に
+and devote myself to building an ideal nation
+---
+>  努力することを誓うものである」
+for the Empire and the Earthlings.”
+
+@22063 Kamille · カミーユ
+> 「なにが理想なものか、ル・カインめ!」
+“Ideal, my foot, Le Cain!”
+
+@22064 Fa · ファ
+> 「カミーユ……」
+“Kamille...”
+
+@22065 Le Cain · ル・カイン
+> 「ロアン・デミトリッヒ、
+>  トレーズ・クシュリナーダ、ここへ」
+“Roanne Demitrich, Treize Khushrenada, come here.”
+
+@22066 David · デビッド
+> 「あの野郎!! 裏切り者の
+>  ブタ野郎が、のうのうとしてやがるぜ」
+“That bastard!! That traitorous pig, sitting there without a care in the world!”
+
+@22067 Anna · アンナ
+> 「ロアン……」
+“Roanne...”
+
+@22068 Simone · シモーヌ
+> 「…………」
+“...”
+
+@22069 Eiji · エイジ
+> 「…………」
+“...”
+
+@22070 Le Cain · ル・カイン
+# 审校：“legend” 改为 “saying”，更贴合“言い伝え”的普通说法。
+> 「諸君、この者たちは地球人で
+>  ありながら、実にすぐれた者たちだ
+“Everyone, these men are Earthlings, yet truly outstanding ones.
+---
+>  これからの私は地球人であろうとも
+>  すぐれている者はわけへだてなく
+From now on, I have decided to appoint anyone of merit without distinction,
+---
+>  登用することにした。それでこそ
+>  はじめて、理想的な国家が
+even if they are Earthlings. Only then, I realized, can an ideal nation
+---
+>  建設できると気づいたからだ。私の
+>  理想はこのようにして実現される
+truly be built. This is how my ideal shall be realized.
+---
+>  ところで、ロアン・デミトリッヒ、
+>  地球には火がすべてのものを
+By the way, Roanne Demitrich, on Earth there is a saying that fire purifies
+---
+>  浄化するという、言い伝えが
+>  あるそうだな?」
+all things, is there not?”
+
+@22071 Roanne · ロアン
+> 「はい」
+“Yes.”
+
+@22072 Le Cain · ル・カイン
+> 「諸君、まさに今がそのときだ。
+>  古きもの、悪しきものは
+“Everyone, that time is now. The old, the wicked shall be
+---
+>  炎に焼かれて浄化される。
+>  トレーズ・クシュリナーダ」
+purified by fire. Treize Khushrenada.”
+
+@22073 Treize · トレーズ
+> 「はい。すべて閣下のご命令のまま、
+>  反乱分子のせん滅作戦
+“Yes. Everything is in accordance with Your Excellency's orders. The operation to annihilate the rebels
+---
+>  および主要都市、コロニーの
+>  再建計画が整っております」
+and the reconstruction plan for the major cities and colonies are ready.”
+
+@22074 Le Cain · ル・カイン
+> 「諸君、聞いての通りだ。
+>  古きものよ! 悪しきものよ!
+“Everyone, you heard him. O old things! O wicked things!
+---
+>  新しきもの、理想なるものの誕生
+>  のため、炎の洗礼を受けよ!!」
+For the birth of the new, the ideal, receive the baptism of fire!!”
+
+@22075 Duo · デュオ
+> 「……なぁ、それってまさか……」
+“...Hey, does that mean...”
+
+@22076 Ryoma · リョウ
+> 「ああ、奴ら徹底的にやるつもりだな」
+“Yeah, they intend to go all out.”
+
+@22077 Ryo · 亮
+> 「今となっては抵抗組織の中では
+>  俺たちがいちばん戦力がある
+“At this point, we're the strongest fighting force among the resistance groups.
+---
+>  連中の最大の標的は
+>  俺たちだと考えて間違いないだろう」
+There's no doubt we're their biggest target.”
+
+@22078 Hayato · ハヤト
+> 「どれだけの数が攻めてくるのか、
+>  見当もつかんな」
+“I can't even guess how many they'll send at us.”
+
+@22079 Daisaku · 大作
+> 「それじゃあ……
+>  僕たちはどうなるんですか!?」
+“Then... what's going to happen to us?!”
+
+@22080 Quatre · カトル
+> 「……さすがに……
+>  勝てないかもしれませんね」
+“...Honestly... we may not be able to win.”
+
+@22081 Ginrei · 銀鈴
+> 「…………」
+“...”
+
+@22082 Shinobu · 忍
+> 「ちきしょう! 冗談じゃないぜ!
+>  そう簡単にやられてたまるかよ!!」
+“Damn it! You've gotta be kidding! Like hell I'll let them beat us that easily!!”
+
+@22083 Anna · アンナ
+> 「……エイジ?」
+“...Eiji?”
+
+@22084 Eiji · エイジ
+> 「艦長たちに伝えてくるよ」
+“I'll go tell the captains.”
+
+@22085 Shapiro · シャピロ
+> 「……お前はどう思う、ルーナ?」
+“...What do you think, Luna?”
+
+@22086 Luna · ルーナ
+> 「はい、ル・カイン様は地球人と
+>  共存なさるおつもりのようですわね」
+“Yes, it seems Lord Le Cain intends to coexist with the Earthlings.”
+
+@22087 Shapiro · シャピロ
+# 审校：“star” 改为 “world”，更自然，避免直译“星”。
+> 「ふ……愚かな。それは、
+>  ムゲゾルバドス帝国の
+“Hmph... Foolish. Is that the proper way for a world
+---
+>  支配下にある星として、
+>  正しいあり方かな?」
+under the dominion of the Muge Zorbados Empire?”
+
+@22088 Luna · ルーナ
+> 「もちろん、違います」
+“Of course not.”
+
+@22089 Shapiro · シャピロ
+> 「グレスコ閣下が病気で
+>  お亡くなりになったとのことだが?」
+“I heard Lord Gresco passed away from illness?”
+
+@22090 Luna · ルーナ
+> 「不審なこと、このうえありません」
+“There is nothing more suspicious than that.”
+
+@22091 Shapiro · シャピロ
+> 「ふむ……アステロイド基地に
+>  連絡はつけられるな、ルーナ?」
+“Hmm... Can you get in contact with the Asteroid Base, Luna?”
+
+@22092 Luna · ルーナ
+> 「ル・カインの手の者が
+>  通信施設を押さえておりますが
+“Le Cain's men have seized the communications facility, but
+---
+>  可能でありましょう」
+it may still be possible.”
+
+@22093 Shapiro · シャピロ
+> 「フフフフフ、いずれすべてが
+>  この俺の前にひざまづくことになる
+“Heh heh heh heh. Sooner or later, everything will kneel before me.
+---
+>  百鬼一族のグラー博士を
+>  お呼びしてくれ、ルーナ。丁重にな」
+Summon Dr. Gura of the Hyakki Clan, Luna. Treat him with respect.”
+
+@22094 Luna · ルーナ
+> 「はい、シャピロ様」
+“Yes, Lord Shapiro.”
+
+@22095 Le Cain · ル・カイン
+> 「ロアンか、どうした?」
+“Roanne, what is it?”
+
+@22096 Roanne · ロアン
+> 「はっ……実は……」
+“Sir... the truth is...”
+
+@22097 Le Cain · ル・カイン
+> 「通信施設が帝国の
+>  兵士によって襲撃されただと?」
+“The communications facility was attacked by imperial soldiers?”
+
+@22098 Roanne · ロアン
+> 「はっ、すでに鎮圧しております。
+>  どうやらアステロイドへ向けて
+“Sir, it has already been suppressed. It seems they managed to send a transmission
+---
+>  送信したようです。
+>  首謀者は現在調査中ですが
+toward the Asteroid. We are still investigating the ringleader, but
+---
+>  まずは報告をと思いまして」
+I thought I should report first.”
+
+@22099 Le Cain · ル・カイン
+> 「…………もうよい。調査は続行せよ」
+“...That will be all. Continue the investigation.”
+
+@22100 Roanne · ロアン
+> 「はっ?」
+“Sir?”
+
+@22101 Le Cain · ル・カイン
+> 「もうよい! さがれ!」
+“That will be all! Dismissed!”
+
+@22102 Le Cain · ル・カイン
+> 「……およそ理想というものを持たぬ
+>  愚か者どもめ……
+“...Fools, every one of them, with not a shred of idealism...
+---
+>  アステロイド前線基地から
+>  将軍どもを呼んだか……」
+So they've summoned the generals from the Asteroid Frontline Base...”
+
+@22103 Julia · ジュリア
+> 「…………」
+“...”
+
+@22104 Le Cain · ル・カイン
+> 「すぐれた者によるよりよき指導、
+>  それに従う無垢なる従順……
+“The superior few give wise guidance, and the purehearted obey...
+---
+>  私の理想とした国家の建設は
+>  夢で終わらせはせん……」
+I will not let my dream of building such a nation end as a dream...”
+
+@22105 Gresco · グレスコ
+> (支配とは力だ……)
+(Dominion is power...)
+
+@22106 Le Cain · ル・カイン
+# 审校：“told me, again and again, to carry the pride” 改为 “kept telling me, from my earliest days, to hold fast to the pride”，更流畅。
+> 「……父上! あなたが悪い!
+>  幼き日より帝国の誇りを
+“...Father! This is your fault! You were the one who kept telling me,
+---
+>  持ち続けるようにいい続けてきたのは
+>  父上、あなたです!
+from my earliest days, to hold fast to the pride of the Empire!
+---
+>  ……あなたではありませんか……」
+...It was you, wasn't it...”
+
+@22107 Julia · ジュリア
+> 「ル・カイン様……」
+“Lord Le Cain...”
+
+@22108 Le Cain · ル・カイン
+> 「ジュリア……祈ってくれ。
+>  父のために祈ってくれ」
+“Julia... Pray. Pray for my father.”
+
+@22109 Julia · ジュリア
+> 「…………」
+“...”
+
+@22110 Le Cain · ル・カイン
+> 「祈れ、祈ってくれ。祈るのだ!
+“Pray, pray for him. Pray!
+---
+>  我が父のために祈れ!
+Pray for my father!
+---
+>  お前が聖女と呼ばれるのならば
+>  父のため……そしてこの私のために
+If you are called a saint, then for my father's sake... and for mine,
+---
+>  祈ってくれ。すぐれた者に加護が
+>  あるように……己の父を手にかけた
+pray. That the superior may be blessed... For a pitiful man
+---
+>  哀れな男のために……祈ってくれ!」
+who laid hands on his own father... pray!”
+
+@22111 Roanne · ロアン
+> 「なんの用だい、こんなところに
+>  呼び出して。僕は忙しいんだよ」
+“What do you want, calling me out to a place like this? I'm busy.”
+
+@22112 Arthur · アーサー
+> 「ロアン、今まで敵に従うフリをして、
+>  ひとりでがんばってきて
+“Roanne, all this time you've pretended to obey the enemy and fought on all alone.
+---
+>  つらかっただろうな。でも僕にだけは
+>  本当のことをいってくれていいんだよ」
+It must have been hard. But you can tell me the truth, if no one else.”
+
+@22113 Roanne · ロアン
+> 「なんのことだい?」
+“What are you talking about?”
+
+@22114 Arthur · アーサー
+> 「またまた。僕にはわかってるんだよ。
+>  みんなル・カインの信頼を得るための
+“Come on. I know. It's all an act to win Le Cain's
+---
+>  お芝居なんだろう?」
+trust, isn't it?”
+
+@22115 Roanne · ロアン
+> 「僕は帝国の方がすばらしいと
+>  思ったからそうしているだけだ
+“I'm doing this simply because I think the Empire is superior.
+---
+>  用っていうのがそれだけなら、
+>  僕はもう行くよ」
+If that's all you wanted, I'm leaving.”
+
+@22116 Arthur · アーサー
+> 「待ってくれよ、ロアン!」
+“Wait, Roanne!”
+
+@22117 Roanne · ロアン
+> 「相手が僕だからよかったものの、
+>  誰かに聞かれたら銃殺刑ものだよ
+“It's lucky it was only me, but if anyone heard you, it'd be a firing squad.
+---
+>  もう僕の前に顔を見せないでくれ。
+>  いいね」
+Don't show your face in front of me again. Understood?”
+
+@22118 Arthur · アーサー
+> 「ロアン、ロアンッ!!」
+“Roanne, Roanne!!”
+
+@22119 Duo · デュオ
+> 「聞いたかよ、奴ら
+>  ついにおっぱじめたって話だぜ?」
+“Did you hear? They've finally made their move.”
+
+@22120 Kamille · カミーユ
+> 「くそッ帝国め!!」
+“Damn the Empire!!”
+
+@22121 Amuro · アムロ
+> 「落ち着くんだカミーユ。
+>  少し休んでおいた方がいい」
+“Calm down, Kamille. You should rest a little.”
+
+@22122 Kamille · カミーユ
+> 「今にも敵がくるかもしれないのに、
+>  できるわけないでしょう!!」
+“The enemy could attack any moment! How could I?!”
+
+@22123 Amuro · アムロ
+> 「カミーユ」
+“Kamille.”
+
+@22124 Kamille · カミーユ
+> 「整備……手伝ってきます。
+>  その方が気がまぎれますから」
+“I'm going to help with the maintenance... It'll take my mind off things.”
+
+@22125 Duo · デュオ
+> 「チェッ、男のヒステリーはみっともないぜ」
+“Sheesh, a man throwing a fit is just pathetic.”
+
+@22126 Amuro · アムロ
+> 「そういうふうにいうものじゃない。
+>  みんな、つらいんだよ」
+“That's not how you should talk. Everyone's suffering.”
+
+@22127 Amuro · アムロ
+> 「そういえば、
+>  {HeroNick}はどうしたんだ?」
+“By the way, where's {HeroNick}?”
+
+@22128 Duo · デュオ
+> 「俺は見てないぜ」
+“I haven't seen him.”
+
+@22129 Domon · ドモン
+> 「……奴なら暗い顔して
+>  うろつきまわってたようだぞ」
+“...If you mean him, he was wandering around with a gloomy look.”
+
+@22130 Amuro · アムロ
+> 「そうか……。ドモン、すまないな。君には
+>  その……別の目的があったというのに」
+“I see... Domon, I'm sorry. You had your own... separate purpose, after all.”
+
+@22131 Domon · ドモン
+> 「まったくだ。だが、この程度のことで
+>  やられてしまうならば、
+“You're right about that. But if I could be beaten by something like this,
+---
+>  しょせんは俺もその程度でしか
+>  なかったということだ。それに……
+then I was only ever that much to begin with. Besides...
+---
+>  奴の手がかりがない以上は、やはり
+>  あんたたちに頼るしかないのも
+with no leads on him, it's also a fact that I have no choice but to rely on you all.
+---
+>  また事実。気にしてもらう
+>  必要はない」
+You don't need to worry about it.”
+
+@22132 Ark · アーク（按段落 3DD1）
+> (帝国の……大部隊……
+>  これで、終わってしまうのか?
+(An Imperial... main force... Is this how it ends?
+---
+>  俺は……なんにもできずに……
+>  俺は……)
+I couldn't do a thing... I...)
+
+@22133 Lera · レラ
+> 「あっ……
+“Oh...
+---
+>  なんだ、あんたか。
+>  機体の整備はやんなくてもいいの?」
+What, it's you. Don't you have a machine to maintain?”
+
+@22134
+> *  レラと話をする
+> *  レラを艦から降ろそうとする
+> *  無視する
+* Talk with Lera
+* Try to get Lera off the ship
+* Ignore her
+
+@22135 Ark · アーク（按段落 3DD1）
+> 「……お前こそ、
+>  こんなところで何やってんだよ」
+“...What are you doing in a place like this?”
+
+@22136 Lera · レラ
+> 「別に。ただの休憩。…………さすがに
+>  今度はダメかもしんないんでしょ?」
+“Nothing. Just taking a break. ...This time we really might not make it, right?”
+
+@22137 Ark · アーク（按段落 3DD1）
+> 「……ああ。お前はいいのかよ、それで。
+>  まだ降ろしてもらえるんだろ」
+“...Yeah. Are you okay with that? You can still get off.”
+
+@22138 Lera · レラ
+> 「なんだよ今さら。アタシはずっと、ずっと
+>  戦ってきたんだ。あんたよりも長い
+“What are you saying that for now? I've been fighting, fighting all along. Longer than
+---
+>  間ね。何度か捕まって、そのたびに
+>  逃げ出して。撃たれたことだってある」
+you have. I got caught a few times, and escaped every time. I've even been shot.”
+
+@22139 Ark · アーク（按段落 3DD1）
+> 「……すごいな……」
+“...That's amazing...”
+
+@22140 Lera · レラ
+> 「なにがさ」
+“What is?”
+
+@22141 Ark · アーク（按段落 3DD1）
+> 「お前みたいのが、そこまでできるって
+>  ことがさ」
+“That someone like you can go that far.”
+
+@22142 Lera · レラ
+> 「強くなれば……力があれば……戦って
+>  さえいれば……誇りをもって生きて
+“If you get strong... if you have power... if you just keep fighting... you can live with
+---
+>  いける。……それで死ぬなら……きっと
+>  後悔しないですむから」
+pride. ...And if you die that way... you won't have any regrets.”
+
+@22143 Ark · アーク（按段落 3DD1）
+> 「俺は……恐いよ。やっぱり、死にたく
+>  はない。だってそうだろう? 死んだら
+“I'm... scared. I really don't want to die. I mean, come on. If you die,
+---
+>  何にも……何にもならないじゃないか」
+nothing... nothing comes of it at all.”
+
+@22144 Lera · レラ
+> 「じゃあ、あんたはなんで戦ってるのさ?」
+“Then why are you fighting?”
+
+@22145 Ark · アーク（按段落 3DD1）
+> 「他に、他にはどうしようもなかったんだ
+>  ……あの時は……」
+“There was no other way... nothing else I could do... back then...”
+
+@22146 Lera · レラ
+> 「なら、なんで今までずっと戦って
+>  きたんだよ? とっととやめればよかった
+“Then why have you kept fighting all this time? You could've just quit
+---
+>  じゃないか。それとも、こないだの
+>  あいつのせい?」
+a long time ago. Or is it because of that guy the other day?”
+
+@22147 Ark · アーク（按段落 3DD1）
+> 「あぁ……最初はあいつが憎かった。
+>  ……違うな、たぶん、やめてもどうやって
+“Yeah... at first I hated him. ...No, that's not it. It's probably that even if I quit,
+---
+>  生きていけばいいのか、わからなかった
+>  せいだ」
+I didn't know how to go on living.”
+
+@22148 Lera · レラ
+> 「それで今まで戦ってきて、今だって
+>  恐いって言ってるのに、逃げようとは
+“So you've fought all this way, and even now you say you're scared, but you're not
+---
+>  思わないんだろ?」
+thinking of running, are you?”
+
+@22149 Ark · アーク（按段落 3DD1）
+> 「逃げるなんて……できるわけない
+>  じゃないか」
+“Run...? How could I?”
+
+@22150 Lera · レラ
+> 「もう、はっきりしなよ! 覚悟も決め
+>  ずに、いつまでもうだうだやってんのは
+“Then make up your mind already! Dragging your feet without even deciding
+---
+>  みっともないよ!!」
+is just pathetic!!”
+
+@22151 Ark · アーク（按段落 3DD1）
+> 「お前にそんなことをいわれたくない!」
+“I don't want to hear that from you!”
+
+@22152 Lera · レラ
+> 「考えるのは後にしなよ。もうそんな
+>  状況じゃないのは、あんただって
+“Do the thinking later. Even you must know we're not in a situation
+---
+>  わかってるはずだろ!?」
+where you can do that anymore, right?!”
+
+@22153 Ark · アーク（按段落 3DD1）
+> 「……ちぇっ。なんでお前に説教され
+>  なきゃならないんだよ、まったく」
+“...Sheesh. Why do I have to get lectured by you, of all people?”
+
+@22154 Lera · レラ
+> 「なら、言われないようにしてみせなよ!
+>  ホントは……アタシだってあんたみたいな
+“Then show me you won't have to be! Honestly... if I had power like
+---
+>  力があれば……」
+yours, I...”
+
+@22155 Ark · アーク（按段落 3DD1）
+> 「お前……」
+“You...”
+
+@22156 Ark · アーク（按段落 3DD1）
+> 「……ッ! 敵襲!? 早すぎるッ!!」
+“...Hn! Enemy attack?! Too soon!!”
+
+@22157 Ark · アーク（按段落 3DD1）
+> 「お前……まだいたのか。今からでも
+>  遅くないんだろ、艦を降りろよ」
+“You... you're still here. It's not too late even now, get off the ship.”
+
+@22158 Lera · レラ
+> 「なんでさ!?」
+“Why should I?!”
+
+@22159 Ark · アーク（按段落 3DD1）
+> 「今回は……ダメかもしれない。
+>  こんなところで死ぬのを待つことはない」
+“This time... we might not make it. There's no need to wait around to die in a place like this.”
+
+@22160 Lera · レラ
+> 「……自分が恐いからって、
+>  勝手なこというな!」
+“...Don't go saying whatever you want just because you're scared!”
+
+@22161 Ark · アーク（按段落 3DD1）
+> 「な……なんだよ! 人が親切でいって
+>  やってんのに! パイロットでもないから
+“W-what's with you?! I'm saying this out of kindness! I'm telling you that since you're
+---
+>  ムダ死にすることはないって、
+>  いってるんだよ、俺は!」
+not even a pilot, there's no point dying for nothing!”
+
+@22162 Lera · レラ
+> 「アタシがパイロットじゃないのが
+>  そんなに悪いのかよ!
+“Is it really that bad that I'm not a pilot?!
+---
+>  大きなお世話だ! そんなことより
+>  自分の心配してなッ!」
+Mind your own business! Worry about yourself instead!”
+
+@22163 Ark · アーク（按段落 3DD1）
+> 「こいつッ! ……」
+“Why you...!”
+
+@22164 Ark · アーク（按段落 3DD1）
+> 「……ッ! 敵襲!? 早すぎるッ!!」
+“...Hn! Enemy attack?! Too soon!!”
+
+@22165 Lera · レラ
+> 「遅かったみたいだね。
+>  ほら、さっさと行きなよ!」
+“Looks like it's too late. Come on, get going!”
+
+@22166 Ark · アーク（按段落 3DD1）
+> 「わかってる!」
+“I know!”
+
+@22167 Ark · アーク（按段落 3DD1）
+> 「…………」
+“...”
+
+@22168 Lera · レラ
+> 「……なんだよ、あったまくるなぁ!
+>  あんたになんか話しかけた
+“...What the hell, that pisses me off! I was an idiot for even
+---
+>  アタシがバカだったよ!」
+trying to talk to you!”
+
+@22169 Ark · アーク（按段落 3DD1）
+> 「……なにやってんだ……俺は……」
+“...What am I doing...?”
+
+@22170 Ark · アーク（按段落 3DD1）
+> 「……ッ! 敵襲!? 早すぎるッ!!」
+“...Hn! Enemy attack?! Too soon!!”
+
+@22171 Amuro · アムロ
+> 「そういえば、
+>  {HeroNick}はどうしたんだ?」
+“By the way, where's {HeroNick}?”
+
+@22172 Duo · デュオ
+# 审校：セレイン路线中デュオ回答的是“{HeroNick}（女主角）在哪里”，初稿译成“I didn't see anything”偏离了问句，改为“I haven't seen her”。
+> 「俺は見てないぜ」
+“I haven't seen her.”
+
+@22173 Domon · ドモン
+# 审校：原文主语是“あいつ”，指セレイン，初稿误用“You seemed to be talking”，改为“She seemed to be talking”。
+> 「さっきレインと話をしていたようだがな。
+>  あいつは、いいファイターだ
+“She seemed to be talking with Rain earlier. She's a good fighter.
+---
+>  心配することもないだろう」
+I doubt you have anything to worry about.”
+
+@22174 Amuro · アムロ
+> 「そうだな…………ドモン、君はいいのか?
+>  残ってくれるのはありがたいが
+“I suppose so... Domon, are you sure about this? I'm grateful you're staying,
+---
+>  君には別の目的があったのだろう?」
+but you had a different goal of your own, didn't you?”
+
+@22175 Domon · ドモン
+> 「いいわけないだろう。だが、
+>  この程度のことでやられてしまうならば
+“Of course I'm not. But if I were to be beaten by something like this,
+---
+>  しょせんは俺もその程度でしか
+>  なかったということだ。それに……
+then in the end that's all I ever amounted to. Besides...
+---
+>  奴の手がかりがない以上は、やはり
+>  あんたたちに頼るしかないのも
+with no lead on him, it's also a fact that I have no choice but to rely on you all.
+---
+>  また事実。気にしてもらう
+>  必要はない」
+You don't need to concern yourself with me.”
+
+@22176 Selain · セレイン（按段落 3DD2）
+> (帝国の……大部隊か……。
+>  いずれこうなることは
+(The Empire's... main force, huh... I knew it would come to this eventually.
+---
+>  予想していたことだ。
+>  やれるだけやってみるさ)
+I'll do what I can)
+
+@22177 Lera · レラ
+> 「あっ……
+“Ah...
+---
+>  なんだ、あんたか。
+>  機体の整備はやんなくてもいいの?」
+Oh, it's you. Don't you have to go do maintenance on your machine?”
+
+@22178
+> *  レラと話をする
+> *  レラを艦から降ろそうとする
+> *  無視する
+* Talk to Lera
+* Try to get Lera off the ship
+* Ignore her
+
+@22179 Selain · セレイン（按段落 3DD2）
+> 「お前こそこんなところで
+>  何をやっている?」
+“What are you doing in a place like this?”
+
+@22180 Lera · レラ
+> 「別に……ただの休憩だよ。
+>  ……さすがに今度はヤバイんでしょ?」
+“Nothing... just taking a break. ...This one's really bad, isn't it?”
+
+@22181 Selain · セレイン（按段落 3DD2）
+> 「そうだ。艦を降りたいのか?」
+“That's right. Do you want to leave the ship?”
+
+@22182 Lera · レラ
+# 审校：“バカにしないでよ”在此是“别小看我/别把我当傻瓜”，初稿“treat me like an idiot”语气略偏，改为“make fun of me”更自然。
+> 「バ……バカにしないでよ! アタシだって
+>  ずっとやつらと戦って来たんだ
+“D-don't make fun of me! I've been fighting them all along too.
+---
+>  死にかけたことだって
+>  一度や二度じゃない
+I've come close to dying more than once or twice.
+---
+>  こんな程度のことで
+>  逃げ出したりするもんか!!」
+You think I'd run away over something like this?!”
+
+@22183 Selain · セレイン（按段落 3DD2）
+> 「そうか……
+>  お前はなぜそうまでして戦う?」
+“I see... Why do you fight so hard?”
+
+@22184 Lera · レラ
+> 「その言葉、
+>  あんたにそっくり返してあげるよ
+“I'll throw that question right back at you.
+---
+>  この時代に、それ以外にどれだけ
+>  ましな生き方があるっていうのさ」
+In this day and age, what better way to live is there?”
+
+@22185 Selain · セレイン（按段落 3DD2）
+> 「ああ……そうだな。確かに、お前の
+>  いう通りだ。つまらないことをいったな」
+“Yeah... you're right. You're absolutely right. I said something pointless.”
+
+@22186 Lera · レラ
+> 「……いいよ、別に。それよりも……」
+“...It's fine, really. More importantly...”
+
+@22187 Lera · レラ
+> 「敵? もう来たの!?」
+“The enemy? They're already here?!”
+
+@22188 Selain · セレイン（按段落 3DD2）
+> 「予想よりも早かったな。
+>  それだけ連中も本気だということだ
+“Sooner than I expected. That just shows how serious they are.
+---
+>  お前も早く機銃座へ行け」
+You get to the gun turret too, quickly.”
+
+@22189 Lera · レラ
+> 「わかってるよ!!」
+“I know!!”
+
+@22190 Selain · セレイン（按段落 3DD2）
+> 「お前か……まだいたとは思わなかった」
+“It's you... I didn't think you were still here.”
+
+@22191 Lera · レラ
+> 「なんだよ、それ。いちゃ悪いっての!?」
+“What's that supposed to mean? Is it so bad for me to be here?!”
+
+@22192 Selain · セレイン（按段落 3DD2）
+> 「いや。しかし今度の戦いが最後に
+>  なるかもしれん。一緒にここで
+“No. But this next battle may be our last. There's no need for you to die
+---
+>  死ぬこともなかろう。艦を降りろ。
+>  今ならばまだ間に合うだろう」
+here with us. Get off the ship. There's still time.”
+
+@22193 Lera · レラ
+> 「じょ、冗談じゃないよ!
+>  今さらそんなこといわれて
+“Y-you've gotta be kidding! You tell me that now, and I'm just supposed to say
+---
+>  はいそうですかって降りられるもんか!
+>  アタシだって、ずっと、あんたたちと
+'okay' and get off?! I've been fighting them since long before I ever met
+---
+>  会う前からずっと奴らと戦って
+>  きたんだ。今さら……
+any of you. And now...
+---
+>  今さら、危険だからって
+>  逃げたりできるわけないじゃないか!!
+now you expect me to run just because it's dangerous?!
+---
+>  アタシがパイロットじゃないからって
+>  そんなこというなんて、きたないよ!」
+Saying that just because I'm not a pilot... that's low!”
+
+@22194 Selain · セレイン（按段落 3DD2）
+> 「そうか、お前…………すまなかったな、
+>  そういうつもりではなかったんだが
+“I see... I'm sorry. That wasn't what I meant.
+---
+>  覚悟があるならそれもよかろう」
+If you're resolved, then that's fine too.”
+
+@22195 Lera · レラ
+> 「…………」
+“...”
+
+@22196 Lera · レラ
+> 「敵? もう来たの!?」
+“The enemy? They're already here?!”
+
+@22197 Selain · セレイン（按段落 3DD2）
+> 「予想よりも早かったな。
+>  それだけ連中も本気だということだ
+“Sooner than I expected. That just shows how serious they are.
+---
+>  お前も早く機銃座へ行け」
+You get to the gun turret too, quickly.”
+
+@22198 Lera · レラ
+> 「わかってるよ!!」
+“I know!!”
+
+@22199 Selain · セレイン（按段落 3DD2）
+> 「…………」
+“...”
+
+@22200 Lera · レラ
+> 「……なんだよ、あったまくるなぁ!
+>  あんたになんか話しかけた
+“...What the hell, that pisses me off! I was an idiot for even
+---
+>  アタシがバカだったよ!」
+trying to talk to you!”
+
+@22201 Selain · セレイン（按段落 3DD2）
+> 「もの好きな奴だ……
+>  さっさと降りてしまえばいいものを
+“What a strange one... She could just get off the ship.
+---
+>  こんな戦いにつきあう必要は
+>  ないだろうに」
+There's no need for her to go along with a battle like this.”
+
+@22202 Selain · セレイン（按段落 3DD2）
+> 「敵か……予想よりも早かったな」
+“The enemy, huh... sooner than I expected.”
+
+@22203 Duo · デュオ
+> 「ま、確かに、それが普通かもな。
+>  かなり厳しいってのは
+“Well, I guess that's normal. It's obvious enough that this is
+---
+>  わかりきってることだもんなぁ」
+gonna be pretty rough.”
+
+@22204 Amuro · アムロ
+> 「そういうことだ。しかしドモン、
+>  君はよかったのか?
+“That's right. But Domon, are you sure about this?
+---
+>  いてくれるのはありがたいが、君にはその
+>  ……別の目的があったのだろう?」
+I'm grateful you're here, but you had that... different goal of your own, didn't you?”
+
+@22205 Domon · ドモン
+> 「いいわけはないだろう。だが、
+>  この程度のことでやられてしまうならば
+“Of course I'm not. But if I were to be beaten by something like this,
+---
+>  しょせんは俺もその程度でしか
+>  なかったということだ」
+then in the end that's all I ever amounted to.”
+
+@22206 Brad · ブラッド（按段落 3DD3）
+> 「俺もその意見には賛成だな。
+>  ここで終わる程度なら
+“I agree with that. If this is where it ends for us,
+---
+>  地球圏の解放など
+>  できるはずもないだろう」
+there's no way we could ever liberate the Earth Sphere.”
+
+@22207 Duo · デュオ
+> 「ちょっと極端すぎるような気も
+>  するけど、間違っちゃいないと思うぜ」
+“Might be a bit extreme, but I don't think you're wrong.”
+
+@22208 Domon · ドモン
+> 「ああ。それに……奴の手がかりが
+>  ない以上は、やはりあんたたちに
+“Yeah. Besides... with no lead on him, it's also a fact that I have no choice
+---
+>  頼るしかないのもまた事実。
+>  気にしてもらう必要はない」
+but to rely on you all. You don't need to concern yourself with me.”
+
+@22209 Brad · ブラッド（按段落 3DD3）
+> 「とかいって、本当はレインさんに
+>  そういわれたんだろ?」
+“You say that, but really Rain told you that, didn't she?”
+
+@22210 Domon · ドモン
+> 「……{HeroNick}、盗み聞きするとは
+>  ファイターの風上にもおけん奴だな」
+“...{HeroNick}, eavesdropping is no way for a fighter to behave.”
+
+@22211 Brad · ブラッド（按段落 3DD3）
+> 「なんだやっぱりそうだったのか」
+“So that's what it was after all.”
+
+@22212 Domon · ドモン
+> 「なに?」
+“What?”
+
+@22213 Brad · ブラッド（按段落 3DD3）
+> 「俺はそうじゃないかって
+>  思っただけだぜ?
+“I just thought that might be the case, that's all.
+---
+>  あんまりレインさんに面倒かけるなよな」
+Don't go causing so much trouble for Rain.”
+
+@22214 Domon · ドモン
+> 「大きなお世話だ。
+>  レインは俺のパートナーだ
+“None of your business. Rain is my partner.
+---
+>  お前にいわれるすじあいじゃない」
+You're not one to talk.”
+
+@22215 Brad · ブラッド（按段落 3DD3）
+> 「いいかドモン、知らないようだから
+>  教えてやるが、レインさんは
+“Listen, Domon, seems you don't know, so I'll tell you. Rain's right up there with
+---
+>  アストナージさんと並んで、メカニックの
+>  要だし、医療でだって
+Astonaige as the backbone of our mechanics, and she's just as vital
+---
+>  大事な人なんだぞ」
+when it comes to medical care.”
+
+@22216 Amuro · アムロ
+> 「もうよせ、ふたりとも。いつ敵がくるかも
+>  わからないというのに……」
+“That's enough, both of you. We don't even know when the enemy will come...”
+
+@22217 Brad · ブラッド（按段落 3DD3）
+> 「もう来やがったってのか!?
+>  早すぎるぜ!!」
+“They're already here?! Way too soon!!”
+
+@22218 Duo · デュオ
+> 「さぁて、いっちょ派手に
+>  あばれてやりますか」
+“Well then, let's go raise a little hell.”
+
+@22219 Duo · デュオ
+> 「ま、確かに、それが普通かもな。
+>  かなり厳しいってのは
+“Well, I guess that's normal. It's obvious enough that this is
+---
+>  わかりきってることだもんなぁ」
+gonna be pretty rough.”
+
+@22220 Amuro · アムロ
+> 「そういうことだ。しかしドモン、
+>  君はよかったのか?
+“That's right. But Domon, are you sure about this?
+---
+>  いてくれるのはありがたいが、君にはその
+>  ……別の目的があったのだろう?」
+I'm grateful you're here, but you had that... different goal of your own, didn't you?”
+
+@22221 Domon · ドモン
+> 「いいわけはないだろう。だが、
+>  この程度のことでやられてしまうならば
+“Of course I'm not. But if I were to be beaten by something like this,
+---
+>  しょせんは俺もその程度でしか
+>  なかったということだ。それに……
+then in the end that's all I ever amounted to. Besides...
+---
+>  奴の手がかりがない以上は、やはり
+>  あんたたちに頼るしかないのも
+with no lead on him, it's also a fact that I have no choice
+---
+>  また事実。気にしてもらう
+>  必要はない」
+but to rely on you all. You don't need to concern yourself with me.”
+
+@22222 Amuro · アムロ
+> 「そういってもらえると助かる」
+“I'm glad to hear you say that.”
+
+@22223 Manami · マナミ（按段落 3DD4）
+> 「負けられない……負けるわけには
+>  いかないのね、この戦いは」
+“We can't lose... we can't afford to lose this battle.”
+
+@22224 Amuro · アムロ
+> 「ああ……どこまで持ちこたえられるか
+>  わからないが
+“Yeah... I don't know how long we can hold out,
+---
+>  やれるところまでやるしかない。
+>  それでだめなら、俺たちは……」
+but we've got no choice but to fight as long as we can. And if that's not enough, then we...”
+
+@22225 Lawrence · ローレンス
+> 「弱気は禁物ですぞ、アムロ様」
+“Defeatism is forbidden, Master Amuro.”
+
+@22226 Amuro · アムロ
+> 「すまない、ローレンス」
+“Sorry, Lawrence.”
+
+@22227 Lawrence · ローレンス
+> 「いえいえ。皆様ご存じですかな、
+>  かの1年戦争のおり
+“Not at all. Are you all aware of the words left behind by a nameless young man
+---
+>  異星人の侵略に対抗して
+>  最後まで戦い、そして……
+who fought to the very end against the alien invasion during the One Year War,
+---
+>  公開処刑された、名もなき
+>  青年の残した言葉を」
+and then... was publicly executed?”
+
+@22228 Simone · シモーヌ
+> 「全身全霊をかけて望みさえすれば
+>  希望は常に我々とともにある
+“'If you face it with all your heart and soul, hope is always with us,'
+---
+>  だったかしらね」
+wasn't it?”
+
+@22229 Lawrence · ローレンス
+> 「さようです。彼の言葉通り、
+>  あれから3年たった今も私どもが
+“Indeed. Just as he said, three years later we are still
+---
+>  こうして再び戦っています。
+>  希望は常にあるのです」
+fighting like this. Hope is always there.”
+
+@22230 Manami · マナミ（按段落 3DD4）
+> 「敵? もう来たの!?」
+“The enemy? They're already here?!”
+
+@22231 Duo · デュオ
+> 「ちょっと早すぎるぜ、まったく」
+“Way too soon, honestly.”
+
+@22232 Lawrence · ローレンス
+> 「まいりましょう、皆様方」
+“Let us go, everyone.”
+
+@22233 Bright · ブライト
+> 「総員第一戦闘配置!
+>  敵の数は!?」
+“All hands, battle stations! How many enemies?!”
+
+@22234 Beltorchika · ベルトーチカ
+> 「すごい数です。計測できません!」
+“Too many to count. I can't get a reading!”
+
+@22235 Ginrei · 銀鈴
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、あのことを皆さんに
+>  お伝えしなくてよかったのですか?」
+“Captain Bright, are you sure you shouldn't tell everyone about that?”
+
+@22236 Bright · ブライト
+> 「かまわん。成功すれば
+>  それにこしたことはないが、
+“It's fine. If it succeeds, so much the better,
+---
+>  不確かな情報はあてにできんよ。
+>  パイロット各員、出撃を急げ!」
+but we can't rely on uncertain information. All pilots, launch immediately!”
+
+@22237 Quatre · カトル
+> 「デュオ、あれを!
+>  みんな来てくれたんだ!」
+“Duo, look! Everyone came!”
+
+@22238 Duo · デュオ
+> 「こんな状況じゃ、あんまり喜べないぜ」
+“In a situation like this, it's hard to be happy about it.”
+
+@22239 Quatre · カトル
+> 「ヒイロ! トロワ! 五飛も!
+>  みんな来てくれたんですね!」
+“Heero! Trowa! Wufei too! Everyone came!”
+
+@22240 Trowa · トロワ
+> 「気にするな。戦略的に考えて
+>  現状でもっとも
+“Don't mention it. Strategically speaking, this was simply the action with
+---
+>  生存確率の高い行動を
+>  選んだだけのことだ」
+the highest survival probability under the circumstances.”
+
+@22241 Heero · ヒイロ
+> 「ああ……そういうことだ」
+“Yeah... that's right.”
+
+@22242 Wufei · 五飛
+> 「正しい者は強くなくてはならない!
+>  お前たちが正しいというのなら
+“Those who are righteous must be strong! If you claim to be righteous,
+---
+>  この状況をくつがえしてみせろ!」
+then try and overturn this situation!”
+
+@22243 Duo · デュオ
+> 「まったく、どいつもこいつも……」
+“Honestly, every last one of them...”
+
+@22244 Quattro · クワトロ
+> 「協力してくれるのならば助かる。
+>  ……敵も来たようだな」
+“We'd appreciate your cooperation. ...Looks like the enemy's here too.”
+
+@22245 Giura · ギウラ
+> 「バカな奴らめ。攻撃を開始せよ。
+>  ここを奴らの墓場にしてやれ!!」
+“Fools. Begin the attack. Make this place their graveyard!!”
+
+@22246 Giura · ギウラ
+> 「ル、ル・カイン閣下アァァァーッ!!」
+“L-Lord Le Cain!!”
+
+@22247 Zechs · ゼクス
+> 「そうか、あの部隊か。残念だが
+>  これで終わりにしなければならん」
+“I see, so it's that unit. A shame, but this is where it has to end.”
+
+@22248 Noin · ノイン
+> 「しかしゼクス、トレーズ閣下は……」
+“But Zechs, Colonel Treize said...”
+
+@22249 Zechs · ゼクス
+> 「この状況では
+>  そうもいってられんだろう、ノイン」
+“In this situation, that's not an option, Noin.”
+
+@22250 Jerid · ジェリド
+> 「何をごちゃごちゃやってやがる。
+>  俺は先に行かせてもらうぜ
+“What are you all dawdling around for? I'm going on ahead.
+---
+>  奴らは俺が仕留めてやる!」
+I'll take them down myself!”
+
+@22251 Zechs · ゼクス
+> 「クッ……これが私の甘さか……」
+“Ngh... so this is my weakness...”
+
+@22252 Jerid · ジェリド
+> 「なぜだ!? なぜ俺は奴らに勝てない
+>  んだッッ!! クソォォォォーッ!」
+“Why?! Why can't I beat them?! Daaamn you!!”
+
+@22253 Dark General · 暗黒大将軍
+> 「うわーははははぁッ!
+>  そろそろ限界が近づいてきたようだな
+“Uwahahahaha! It seems you're nearing your limit.
+---
+>  我がミケーネ闇の軍団が
+>  トドメをさしてくれるわ!!」
+My Mycenae dark army will finish you off!!”
+
+@22254 Dark General · 暗黒大将軍
+> 「おのれぇ……覚えておれ!!」
+“Curse you... I won't forget this!!”
+
+@22255 Ryoma · リョウ
+> 「ふう……どうにか持ちこたえたようだな」
+“Phew... looks like we managed to hold out.”
+
+@22256 Amuro · アムロ
+> 「いや、まだだ。気を抜くな!」
+“No, not yet. Don't let your guard down!”
+
+@22257 Anna · アンナ
+> 「気をつけてください。敵の
+>  第2波が接近しています!!
+“Be careful. The enemy's second wave is approaching!!
+---
+>  ダメ! 完全に包囲されているわ!」
+No! We're completely surrounded!”
+
+@22258 Shinobu · 忍
+> 「くそったれ! なんてしつこい奴らだ」
+“Damn it! These guys just don't quit.”
+
+@22259 Le Cain · ル・カイン
+> 「見ろ、ロアン。すべては予定通りに
+>  進行している」
+“Look, Roanne. Everything is proceeding as planned.”
+
+@22260 Roanne · ロアン
+> 「…………」
+“...”
+
+@22261 Le Cain · ル・カイン
+> 「フフフ、どうやら先が見えたな。
+>  もはやこの戦況はくつがえらぬ
+“Heh heh heh, it seems the outcome is clear now. This battle can no longer be overturned,
+---
+>  ロアン・デミトリッヒ」
+Roanne Demitrich.”
+
+@22262 Roanne · ロアン
+> 「はい」
+“Yes.”
+
+@22263 Le Cain · ル・カイン
+# 审校：「どうした」在此是询问对方怎么了，初稿译成 What's wrong 可以，但结合后续 Roan 的「はっ?」和 Le Cain 指出他站错位置，改为 What is it 更贴合语境；同时保持跨页引号规则。
+> 「あとはお前にまかせた。
+>  私は休んで果報を待つとしよう
+“I leave the rest to you. I shall rest and await the rewards.
+---
+>  ……どうしたロアン・デミトリッヒ?」
+...What is it, Roanne Demitrich?”
+
+@22264 Roanne · ロアン
+> 「はっ?」
+“Huh?”
+
+@22265 Le Cain · ル・カイン
+> 「そこでは作戦の指揮はできんぞ。
+>  指揮官の席は……あそこだ」
+“You can't command the operation from there. The commander's seat is... over there.”
+
+@22266 Roanne · ロアン
+> 「……閣下」
+“...Your Excellency.”
+
+@22267 Le Cain · ル・カイン
+# 审校：「選ばれた者にとまどいは不要だ」指被选中的人不应犹豫，初稿 in the chosen 表达不自然，改为 The chosen have no need for hesitation。
+> 「選ばれた者にとまどいは不要だ。
+>  ただ私の期待に応えればよい」
+“The chosen have no need for hesitation. You need only live up to my expectations.”
+
+@22268 Roanne · ロアン
+> 「……はい」
+“...Yes.”
+
+@22269 Arthur · アーサー
+> (ロアン……)
+(Roanne...)
+
+@22270 Grados Soldier · グラドス兵
+# 审校：「逃げる余裕を与える」初稿 room to escape 可接受，但 time to escape 更自然；其余保留。
+> 「司令、いつまで待つおつもりです。
+>  このままでは奴らに逃げる余裕を
+“Commander, how long do you intend to wait? At this rate, we'll give them time to escape.
+---
+>  与えることになります。司令、
+>  今すぐ総攻撃許可を!」
+Commander, authorize the all-out attack now!”
+
+@22271 Roanne · ロアン
+> 「………………」
+“...”
+
+@22272 Grados Soldier · グラドス兵
+> 「司令!! 攻撃許可を!!」
+“Commander!! Authorize the attack!!”
+
+@22273 Roanne · ロアン
+> 「……全軍に撤退命令を
+>  出したまえ!」
+“...Issue a retreat order to all forces!”
+
+@22274 Grados Soldier · グラドス兵
+> 「な……なんだと!? 貴様やはり!!」
+“Wha... what did you say?! You bastard, I knew it!!”
+
+@22275 Roanne · ロアン
+# 审校：第二页初稿 It's enough 与前句衔接略生硬，改为 Enough to wipe... 更紧凑自然。
+> 「諸君、動くな!
+>  この本部タワー内に
+“Everyone, don't move! A powerful bomb has been planted inside this headquarters tower.
+---
+>  強力な爆弾がしかけてある。
+>  タワーごと諸君らを地上から
+Enough to wipe all of you from the face of the earth, tower and all.
+---
+>  消し去るのに十分な量だ。
+>  今より当本部は
+From this moment, this headquarters is under the control of the
+---
+>  地球解放戦線機構の
+>  管理下にあると心得てもらいたい」
+Liberation Front of the Earth. I trust you understand.”
+
+@22276 Grados Soldier · グラドス兵
+> 「ぐ……バ、バカなッ!」
+“Ngh... I-Impossible!”
+
+@22277 Treize · トレーズ
+> (そうだロアン、君はそうするのが
+>  いちばん正しい
+(Yes, Roanne. That is the most correct thing for you to do.
+---
+>  それでこそ歴史は
+>  よどみなく流れるのだ)
+That is how history flows without stagnation.)
+
+@22278 Lady · レディ
+> 「トレーズ様」
+“Lord Treize.”
+
+@22279 Treize · トレーズ
+> 「行くよレディ。
+>  私はここにいては殺されてしまうからね
+“Let's go, Lady. If I stay here, I'll be killed.
+---
+>  私にはまだやらなければならないことが、
+>  多く残されている」
+I still have many things I must do.”
+
+@22280 Lady · レディ
+> 「はい閣下。
+>  すでにシャトルの用意はできております」
+“Yes, Your Excellency. The shuttle is already prepared.”
+
+@22281 Treize · トレーズ
+> 「第2幕がはじまった。……忙しくなる」
+“The second act has begun. ...Things are about to get busy.”
+
+@22282 Le Cain · ル・カイン
+# 审校：初稿 my ideal, which I tried to protect 语法正确但稍显书面，改为 the ideal I tried to protect 更自然，且保持跨页断句。
+> 「フ……フハハハハハッ。父を殺してまで
+>  守らんとした私の理想が、
+“Heh... hahahahaha. To think the ideal I tried to protect even at the cost of killing my father
+---
+>  まさかこのような形でくずされようとはな」
+would be torn down in such a way.”
+
+@22283 Roanne · ロアン
+> 「……閣下、おわかりください。
+>  私は地球人なのです」
+“...Your Excellency, please understand. I am an Earthling.”
+
+@22284 Le Cain · ル・カイン
+# 审校：第二页初稿 they had followed 指代不清，改为 to follow 使主语回到 Earth，更符合原文「地球にとっては」。
+> 「……このような事態となっては、
+>  アステロイドの将軍たちの介入を
+“...Now that things have come to this, it is no longer possible to stop the Asteroid
+---
+>  とめることはもはやかなわぬ。
+>  あの者どもよりも、私の理想に
+generals from intervening. It would have been better for Earth to follow
+---
+>  したがっていた方が地球にとっては
+>  よかったのだがな。これで
+my ideal rather than those men. With this,
+---
+>  再び秩序は消え去るであろう」
+order will vanish once more.”
+
+@22285 Roanne · ロアン
+> 「ザカール!? 閣下……?」
+“Zakarl?! Your Excellency...?”
+
+@22286 Le Cain · ル・カイン
+> 「ロアン・デミトリッヒ。
+>  だまされていたとはいえ、貴様たちに
+“Roanne Demitrich. Even if you were deceived, it is also true that I entrusted
+---
+>  はかなき夢を託したのも、また事実
+>  私が帰るまでその命、あずけておこう」
+a fleeting dream to you all. Until I return, I shall leave that life in your hands.”
+
+@22287 Roanne · ロアン
+> 「…………閣下……」
+“...Your Excellency...”
+
+@22288 Le Cain · ル・カイン
+> 「ロアン・デミトリッヒ!
+>  私は帰ってくるぞ、必ず!」
+“Roanne Demitrich! I will return, without fail!”
+
+@22289 Alan · アラン
+> 「クッ……ばかな!
+>  なぜル・カインを逃がした!?
+“Ngh... impossible! Why did you let Le Cain escape?!
+---
+>  奴は親衛隊と合流して、
+>  最後の戦いに望むつもりだぞ」
+He intends to join up with his guards and make a final stand!”
+
+@22290 Roanne · ロアン
+> 「そうでしょうね。
+>  しかし……僕には閣下を
+“I suppose so. But... I cannot
+---
+>  お止めすることは、できませんよ」
+stop His Excellency.”
+
+@22291 Alan · アラン
+> 「……長くそばにいれば情もうつるか。
+>  まぁいい。そのくらいは彼らが
+“...Spend long enough by someone's side and even sentiment rubs off on you. Well, fine. They'll
+---
+>  なんとかしてくれるだろう。タワー内は
+>  我々が武装解除したとはいえ、
+manage that much somehow. Even if we've disarmed the tower,
+---
+>  各地の攻撃部隊が戻ればひと
+>  たまりもない。そろそろ引き上げどきだ」
+once the attack units from the various regions return, we won't stand a chance. It's about time to withdraw.”
+
+@22292 Roanne · ロアン
+> 「そうですね……指揮官クラスの
+>  連中はどうなりました?」
+“I see... What became of the commander-class men?”
+
+@22293 Alan · アラン
+> 「だめだ。百鬼やミケーネは、
+>  もともとここにはいない。その上、
+“No good. Hyakki and Mycenae were never here to begin with. On top of that,
+---
+>  シャピロもトレーズも、我々の
+>  行動を予測していたらしい
+it seems both Shapiro and Treize anticipated our actions.
+---
+>  逃げられたよ。
+>  万丈たちが追っているが、
+They got away. Banjo and the others are after them,
+---
+>  だめだろうな。
+>  それより急いでくれ。ドレイクの
+but it's probably hopeless. More importantly, hurry. I want to
+---
+>  ウィル・ウィプスがくる前に、
+>  ここを出たい」
+get out of here before Drake's Will-Wips arrives.”
+
+@22294 Roanne · ロアン
+> 「ええ、わかっています」
+“Yes, I know.”

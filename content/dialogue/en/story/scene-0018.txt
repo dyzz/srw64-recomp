@@ -1,0 +1,1392 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@20044 Bright · ブライト
+> 「まもなくホンコンか……
+>  こちらの位置はつかんでいるはずだが
+“So we'll be in Hong Kong soon... They should have a fix on our position by now,
+---
+>  敵に動きがないのが気になるな」
+but the enemy not making a move bothers me.”
+
+@20045 Quattro · クワトロ
+> 「オーガスタ研とムラサメ研に動きが
+>  あったという情報も入っている
+“We've also got intel that something's moving at the Augusta and Murasame labs.
+---
+>  なにかあるかもしれんが、どのみち補給
+>  をしなければそう長くは持たんよ」
+Something may be up, but either way, we won't last long without resupply.”
+
+@20046 Bright · ブライト
+> 「ああ。……強化人間か……
+>  やっかいなことにならなければいいが」
+“Right. ...Cyber Newtypes, huh... I just hope this doesn't turn into a real mess.”
+
+@20047 Amuro · アムロ
+> 「……君がルオ商会へ交渉に
+>  行くのかい?」
+“...You're going to negotiate with the Luo Company?”
+
+@20048 Beltorchika · ベルトーチカ
+> 「そういう仕事のために、
+>  ここにいるのですからね」
+“That's exactly why I'm here, after all.”
+
+@20049 Amuro · アムロ
+> 「ベルトーチカ……」
+“Beltorchika...”
+
+@20050 Beltorchika · ベルトーチカ
+> 「ちゃんと補給をして戦わなければ、
+>  帝国を地球から
+“If we don't resupply properly and keep fighting, we'll never
+---
+>  追い出すことなんて、
+>  できないでしょう?」
+drive the Empire off the Earth, will we?”
+
+@20051 Amuro · アムロ
+> 「……君は戦うことがイヤなのだろう?」
+“...You hate fighting, don't you?”
+
+@20052 Beltorchika · ベルトーチカ
+> 「戦争は、キライよ。
+>  当たり前でしょう? でもそのことと
+“I hate war. Isn't that obvious? But that's a different thing
+---
+>  戦わなくちゃいけないときに
+>  戦うというのは、別よ」
+from fighting when you have to fight.”
+
+@20053 Amuro · アムロ
+> 「僕を軽蔑しているんだろう?」
+“You despise me, don't you?”
+
+@20054 Beltorchika · ベルトーチカ
+> 「あたしはそれほど鈍くはないわ。
+>  アムロ・レイの3年間は
+“I'm not that dense. Amuro Ray's three years were
+---
+>  眠りの時間だったのよ。肉体も
+>  精神も。休息は必要だわ
+a time of sleep. Body and mind alike. Rest is necessary.
+---
+>  目を覚ませばいいのよ。
+>  そうすれば昔と同じになるわ」
+You just have to wake up. Then you'll be the same as before.”
+
+@20055 Amuro · アムロ
+> 「……自信がないな」
+“...I'm not confident.”
+
+@20056 Beltorchika · ベルトーチカ
+> 「あなたは前にカミーユたちと同じことを
+>  していたのでしょう?」
+“You were doing the same thing as Kamille and the others before, weren't you?”
+
+@20057 Amuro · アムロ
+> 「そうだが…………
+“That's true, but...
+---
+>  !?」
+?!”
+
+@20058 Beltorchika · ベルトーチカ
+> 「ん……」
+“Mm...”
+
+@20059 Roux · ルー
+> 「あらら、あんなところでキスなんか
+>  されてたら、エレベーター使えないわね」
+“Oh my, if they're kissing in a place like that, we can't use the elevator.”
+
+@20060 Masato · 雅人
+# 审校：“手が早い”在这里是“对女性出手快”的意思，初稿“doesn't waste time”不够贴切，改为更自然的“moves fast”。
+> 「あ～あ、結構気に入ってたのに、
+>  がっかりだよ
+“Aww, and I really liked her too. What a letdown.
+---
+>  アムロ大尉も手が早いや」
+Captain Amuro sure moves fast.”
+
+@20061 Roux · ルー
+> 「なにいってんのよ。ほら、
+>  いつまでものぞいてないの。行くわよ」
+“What are you saying? Come on, don't stare forever. Let's go.”
+
+@20062 Amuro · アムロ
+# 审校：原文“同情ならいい”是“如果是同情那就算了/我不要”的意思，初稿“I don't want your pity”语气稍偏，改为更贴近原意的表达。
+> 「…………ベルトーチカ、同情ならいい」
+“...Beltorchika, if it's pity, I don't want it.”
+
+@20063 Beltorchika · ベルトーチカ
+> 「あたしは、
+>  それほど鈍くないといったでしょ?
+“I told you, I'm not that dense, didn't I?
+---
+>  女の愛撫で男を
+>  奮い立たせることができるのなら
+If a woman's touch can rouse a man to action,
+---
+>  女はそれをすることもあるのよ。
+>  なぜだと思う?」
+then a woman will do it. Why do you think that is?”
+
+@20064 Amuro · アムロ
+> 「……男を試しているんだろう?」
+“...You're testing me, aren't you?”
+
+@20065 Beltorchika · ベルトーチカ
+> 「そうよ。自分にふさわしい男に
+>  なってほしいからね
+“That's right. Because I want you to become a man worthy of me.
+---
+>  でも、だめだとわかったら捨てるわ。
+>  同情なんかしているヒマなんてない」
+But if I find out you're no good, I'll dump you. I don't have time to waste on pity.”
+
+@20066 Amuro · アムロ
+> 「ご両親は前の戦争で
+>  亡くなられたといっていたね?」
+“You said your parents died in the last war, didn't you?”
+
+@20067 Beltorchika · ベルトーチカ
+# 审校：原文“同情されたいほう”是“我是想被同情的那一方”，初稿“I'm the one who wants pity”不够准确，改为“wants to be pitied”。
+> 「そう。同情されたいほう」
+“Yes. I'm the one who wants to be pitied.”
+
+@20068 Amuro · アムロ
+> 「すまなかった……帝国は地球から
+>  追い出してみせる」
+“I'm sorry... I'll drive the Empire off the Earth, I promise.”
+
+@20069 Beltorchika · ベルトーチカ
+> 「あたし、すぐ忘れるかもよ?」
+“I might forget all about it soon, you know?”
+
+@20070 Amuro · アムロ
+> 「構わないさ……」
+“I don't mind...”
+
+@20071 Beltorchika · ベルトーチカ
+> 「ん…………」
+“Mm...”
+
+@20072 Quattro · クワトロ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「……ベルトーチカ、
+>  ブライト艦長が呼んでいる」
+“...Beltorchika, Captain Bright is calling for you.”
+
+@20073 Beltorchika · ベルトーチカ
+> 「すぐ行きます……あたし、
+>  あの人キライよ」
+“I'll be right there... I don't like that man.”
+
+@20074 Ryoma · リョウ
+> 「これがネオホンコンか。噂通りだな」
+“So this is Neo Hong Kong. Just like the rumors said.”
+
+@20075 Hayato · ハヤト
+> 「ああ。今の地球で唯一、
+>  占領前と
+“Yeah. It's the only city on Earth that hasn't
+---
+>  あまり変わらない街だからな、ここは」
+changed much since before the occupation.”
+
+@20076 Duo · デュオ
+> 「へえ? どういうことだい?」
+“Huh? What do you mean by that?”
+
+@20077 Hayato · ハヤト
+> 「ネオホンコンは地球人の
+>  行政官がいる
+“Neo Hong Kong has an Earthling administrator.
+---
+>  特別行政区なのさ。例の
+>  ロームフェラ財団がらみらしいんだがな
+It's a special administrative zone. Seems the Romefeller Foundation is involved.
+---
+>  ま、ロームフェラも少なくとも1つは、
+>  いいことをしたってわけだ」
+Well, I suppose even Romefeller has done at least one good thing.”
+
+@20078 Roux · ルー
+# 审校：原文“アムロさんたち”指阿姆罗等人，初稿“you and the others”把说话对象弄混了，改为“Amuro and the others”。
+> 「あれ、アムロさんたち、
+>  どこへ行くんです?」
+“Oh, where are Amuro and the others going?”
+
+@20079 Aboly · アポリー
+# 审校：原文“行くんだろ”是推测阿姆罗他们要去，初稿“we're going”把主语弄错，改为“they're going”。
+> 「ああ、ルオ商会に行くんだろ。
+>  補給の手配をしにさ」
+“Ah, they're going to the Luo Company. To arrange resupply.”
+
+@20080 Roux · ルー
+> 「あたしたちは行っちゃだめなの? どうせ
+>  だから市街に行ってみたかったのに」
+“Can't we come too? Since we're here, I wanted to see the city.”
+
+@20081 Aboly · アポリー
+> 「1時間だけなら、
+>  艦長の許可をもらってるぜ」
+“If it's just for an hour, I've got the Captain's permission.”
+
+@20082 David · デビッド
+> 「ホントかよ、やったぜ。
+>  おいエイジ、いこうぜ
+“Really? All right! Hey Eiji, let's go.
+---
+>  アンナ、
+>  他の連中にも言ってきてやれよ」
+Anna, go tell the others too.”
+
+@20083 Anna · アンナ
+> 「ええ」
+“Okay.”
+
+@20084 Kamille · カミーユ
+> 「アムロさん、戻らないんですか?
+>  補給の手配、終わったんでしょ」
+“Amuro, aren't you coming back? You've finished arranging the resupply, right?”
+
+@20085 Amuro · アムロ
+> 「カミーユ?」
+“Kamille?”
+
+@20086 Beltorchika · ベルトーチカ
+> 「なによ、あなた。何でここにいるの?」
+“What do you want? Why are you here?”
+
+@20087 Kamille · カミーユ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長にいわれて来たんですよ
+>  戻らないんですか?」
+“Captain Bright told me to come. Aren't you coming back?”
+
+@20088 Beltorchika · ベルトーチカ
+> 「もう少ししたら帰るわよ。
+>  あなたは先に戻ってていいわ」
+“I'll head back in a little while. You can go on ahead.”
+
+@20089 Kamille · カミーユ
+> 「……知りませんよ、僕は」
+“...Don't blame me if something happens.”
+
+@20090 Four · フォウ
+> 「ねぇ君、旧市街まで
+>  乗せてくれない?」
+“Hey, would you give me a ride to the old city?”
+
+@20091 Kamille · カミーユ
+> 「え? ああ。どうぞ」
+“Huh? Oh, sure. Hop in.”
+
+@20092 Four · フォウ
+> 「ありがと。あの2人、お知り合い?」
+“Thanks. Are those two friends of yours?”
+
+@20093 Kamille · カミーユ
+> 「知らないよ。
+>  傷をなめあう男と女なんてさ」
+“I don't know them. Just a man and a woman licking each other's wounds.”
+
+@20094 Four · フォウ
+> 「ああ……そういうこと」
+“Ah... so that's how it is.”
+
+@20095 Kamille · カミーユ
+> 「そういうこと」
+“That's how it is.”
+
+@20096 Four · フォウ
+> 「あはっ、あははははははっ」
+“Aha, ahahahahaha!”
+
+@20097 Kamille · カミーユ
+> 「カミーユっていうんだ。よろしく」
+“I'm Kamille. Nice to meet you.”
+
+@20098 Four · フォウ
+> 「わたしは、フォウ・ムラサメ」
+“I'm Four Murasame.”
+
+@20099 Kamille · カミーユ
+> 「むずかしい名前だな……」
+“That's a tough name...”
+
+@20100 Four · フォウ
+> 「しかたないわ。
+>  そうつけられてしまったんだもの」
+“It can't be helped. It was given to me.”
+
+@20101 Kamille · カミーユ
+> 「そりゃそうだ」
+“I suppose so.”
+
+@20102 Four · フォウ
+> 「カミーユか……やさしい名前だね?」
+“Kamille... that's a gentle name, isn't it?”
+
+@20103 Kamille · カミーユ
+> 「…………」
+“...”
+
+@20104 Four · フォウ
+> 「アハハハッ、自分の名前、
+>  キライなのね? 顔に書いてあるわ」
+“Ahahaha! You hate your own name, don't you? It's written all over your face.”
+
+@20105 Kamille · カミーユ
+> 「……旧市街に何の用なの?」
+“...What business do you have in the old city?”
+
+@20106 Four · フォウ
+> 「ちょっとね、人を探してるんだ」
+“Just something. I'm looking for someone.”
+
+@20107 Kamille · カミーユ
+> 「誰を?」
+“Who?”
+
+@20108 Four · フォウ
+> 「わたしを知ってくれている人……」
+“Someone who knows me...”
+
+@20109 Astonaige · アストナージ
+> 「それはそっちじゃない、
+>  こっちに持ってくるんだよ!」
+“Not that way, bring it over here!”
+
+@20110 Dr. Hazuki · 葉月博士
+> 「搬入は進んでいるか?」
+“Is the unloading proceeding?”
+
+@20111 Masato · 雅人
+> 「葉月博士!? どうしてここに?」
+“Dr. Hazuki?! What are you doing here?”
+
+@20112 Dr. Hazuki · 葉月博士
+> 「どうしてもこうしてもあるか。お前たちが
+>  ルオ商会と接触すると聞いて
+“There's every reason for me to be here. When I heard you'd be meeting with the Luo Company,
+---
+>  解放戦線で開発した
+>  新型を運び込んでもらったのだ
+I had the new model developed by the Liberation Front brought in.
+---
+>  ところで藤原はまだ見つからんのか?」
+By the way, have you still not found Fujiwara?”
+
+@20113 Masato · 雅人
+> 「沙羅が探しに行ったんだけど、
+>  戻ってから何か変なんですよ
+“Sara went to look for him, but ever since she came back, something's been off.
+---
+>  沙羅の奴。たぶん忍には
+>  会ったんじゃないかって思うんだけど…」
+That Sara... I think she probably ran into Shin...”
+
+@20114 Dr. Hazuki · 葉月博士
+> 「そうか……」
+“I see...”
+
+@20115 Quattro · クワトロ
+> 「葉月博士」
+“Dr. Hazuki.”
+
+@20116 Dr. Hazuki · 葉月博士
+> 「ああ、大尉。どうかね、あれは」
+“Ah, Captain. What do you think of it?”
+
+@20117 Quattro · クワトロ
+> 「よい機体を持ってきていただいて、
+>  感謝しています」
+“Thank you for bringing us such a fine machine.”
+
+@20118 Duo · デュオ
+> 「うっひゃー、
+>  おい見ろよ金色のMSだぜ
+“Whoa, hey, look at that gold mobile suit!
+---
+>  目立たないようにしてある
+>  俺のデスサイズとは大違いだな」
+Nothing like my Deathscythe, which I keep low-profile.”
+
+@20119 Roux · ルー
+> 「すっごぉ。誰が乗るのかしら」
+“Amazing. I wonder who'll pilot it.”
+
+@20120 Quattro · クワトロ
+> 「GディフェンサーはガンダムmkⅡ用の
+>  強化装備だとか」
+“The G-Defenser is said to be enhancement equipment for the Gundam Mk-II.”
+
+@20121 Dr. Hazuki · 葉月博士
+> 「防御能力の向上と、武装
+>  強化のためのものだよ。単独でも
+“It's meant to improve defense and strengthen armament. It can even operate
+---
+>  運用できる機体だ。まだ調整を
+>  していないので、すぐには使えないが
+on its own. It hasn't been tuned yet, so it can't be used right away,
+---
+>  役に立つと思う」
+but I believe it will prove useful.”
+
+@20122 Quattro · クワトロ
+> 「助かります。ああそれと、地球製の
+>  SPTが1機あったようですが
+“That's a great help. Oh, and there seemed to be one Earth-made SPT as well,
+---
+>  我々にはパイロットがおりませんが?」
+but we don't have a pilot for it, do we?”
+
+@20123 Dr. Hazuki · 葉月博士
+> 「うむ、パイロットも連れてきている」
+“Indeed. I've brought a pilot along as well.”
+
+@20124 David · デビッド
+> 「シモーヌ……シモーヌじゃないか!」
+“Simone... Simone, is that you?!”
+
+@20125 Simone · シモーヌ
+> 「…………」
+“...”
+
+@20126 David · デビッド
+> 「うわっ」
+“Whoa!”
+
+@20127 Simone · シモーヌ
+> 「あー、せいせいしたわ」
+“Ahh, that felt good.”
+
+@20128 David · デビッド
+> 「シモーヌ、いったい……!?」
+“Simone, what in the...?!”
+
+@20129 Simone · シモーヌ
+> 「奪われた唇のおかえしよ。
+>  3年間ずーっと考えてたんだから」
+“That's payback for the kiss you stole. I've been thinking about it for three whole years.”
+
+@20130 Anna · アンナ
+> 「シモーヌ……無事でよかった」
+“Simone... I'm glad you're safe.”
+
+@20131 Simone · シモーヌ
+> 「アンナも、元気そうね。……エイジ……」
+“Anna, you look well too. ...Eiji...”
+
+@20132 Eiji · エイジ
+> 「シモーヌ……3年ぶりだね」
+“Simone... it's been three years.”
+
+@20133 Simone · シモーヌ
+> 「エイジ……顔さわらせて。
+>  エイジ、本当に生きてたのね……
+“Eiji... let me touch your face. Eiji, you really were alive...
+---
+>  もう二度と会えないかもしれないって
+>  思ってた……うぅっ……
+I thought I might never see you again... ugh...
+---
+>  ごめんなさい……やだ、みっともないわ」
+I'm sorry... no, I'm such a mess.”
+
+@20134 David · デビッド
+> 「あーあ、全然ちがうでやんの。
+>  俺なんかいきなりバシーッだもんな」
+“Ahh, man, it's totally different for me. I just got smacked out of nowhere.”
+
+@20135 Lady · レディ
+> (レジスタンスどもめ、
+>  ここで始末をつけてやるぞ
+(These resistance dogs... I'll finish them off right here.
+---
+>  この程度のことでトレーズ様の
+>  お手を、わずらわせるわけにはいかん)
+I can't trouble Lord Treize with something this trivial.)
+
+@20136 Wong · ウォン
+> 「しかしレディ・アン特佐、確かに
+>  おっしゃるとおり研究所のいくつかは
+“However, Lieutenant Colonel Lady Une, it's true that some of the laboratories are
+---
+>  私の管理下にありますが、
+>  まだまだデータを集めているところでして」
+under my management, but we're still in the process of gathering data.”
+
+@20137 Lady · レディ
+> 「出し惜しみするおつもりか、
+>  ウォン行政官?
+“Do you intend to hold out on me, Administrator Wong?
+---
+>  それでは、ない腹もさぐられる
+>  というものだぞ」
+Then I'll have no choice but to probe for what you're hiding.”
+
+@20138 Wong · ウォン
+> 「いやいや、そんなつもりはありませんよ。
+>  よろしい、そこまでおっしゃるのなら
+“No, no, that's not my intention at all. Very well, if you insist that much,
+---
+>  しかたありませんな。
+>  私の実験部隊でアウドムラを
+it can't be helped. I'll have my experimental unit strike
+---
+>  叩くとしましょう。トレーズ特佐には
+>  よろしくお伝えいただきたい」
+the Audhumla. Please give my regards to Lieutenant Colonel Treize.”
+
+@20139 Lady · レディ
+> 「結構だ。よい結果を期待しよう
+>  お互いにな」
+“Good. Let's both look forward to good results.”
+
+@20140 Wong · ウォン
+> 「ふん……女狐め。
+>  この私を利用しようなどと」
+“Hmph... you vixen. Trying to use me, of all people.”
+
+@20141 ???
+> 「が、それにのるのも兵法の妙と
+>  いうものよ
+“But going along with it is also the art of war.
+---
+>  ときに、例のものの手配は
+>  できておるのか?」
+By the way, have you arranged for that thing?”
+
+@20142 Wong · ウォン
+> 「これは先生。
+>  聞いていらしたとはお人が悪い
+“Teacher. How wicked of you to have been listening.
+---
+>  もちろんですとも。
+>  そちらのほうはよろしく頼みましたよ」
+Of course I have. I'll be counting on you for your part as well.”
+
+@20143 ???
+> 「フフフフフ、まかせておけ」
+“Heh heh heh heh, leave it to me.”
+
+@20144 Roberto · ロベルト
+> 「艦長、敵部隊です!
+>  市街に向かっています」
+“Captain, enemy forces! They're heading for the city.”
+
+@20145 Bright · ブライト
+> 「やはり来たか。
+>  全員をすぐに呼び戻せ
+“So they've come after all. Recall everyone at once.
+---
+>  残っているパイロットは
+>  スタンバらせておけ!」
+Have the remaining pilots stand by!”
+
+@20146 Quattro · クワトロ
+> 「艦長、私は百式で出る」
+“Captain, I'll go out in the Hyaku-Shiki.”
+
+@20147 Bright · ブライト
+> 「頼む、大尉。アムロ、お前も
+>  新型のディジェで出てくれ
+“I'm counting on you, Captain. Amuro, you go out in the new Dijeh too.
+---
+>  やれるのだろう?」
+You can do it, right?”
+
+@20148 Amuro · アムロ
+> 「ああ……大丈夫だ。やってみせるさ」
+“Yeah... I'll be fine. I'll show you.”
+
+@20149 Kamille · カミーユ
+> 「君が……スペシャルズとは思えないな」
+“You... I can't believe you're with the Specials.”
+
+@20150 Four · フォウ
+> 「ウフフフ、わたしたち敵同士
+>  らしいのにね? ……ね、頼める?」
+“Heh heh, and yet we're supposed to be enemies, aren't we? ...Hey, would you do something for me?”
+
+@20151 Kamille · カミーユ
+> 「何を?」
+“Do what?”
+
+@20152 Four · フォウ
+> 「キスして……」
+“Kiss me...”
+
+@20153 Kamille · カミーユ
+> 「……ああ……」
+“...Yeah...”
+
+@20154 Four · フォウ
+> 「……ん」
+“...Mm.”
+
+@20155 Kamille · カミーユ
+> 「…………」
+“...”
+
+@20156 Four · フォウ
+> 「やさしいのね……ほんとのこと教えて
+>  あげようか? わたしの名前、好き?」
+“You're gentle... Want me to tell you the truth? Do you like my name?”
+
+@20157 Kamille · カミーユ
+> 「いい名前だ。好きだよ」
+“It's a good name. I like it.”
+
+@20158 Four · フォウ
+> 「わたしはキライよ。今の施設で
+>  4番目だったからフォウなの
+“I hate it. I'm Four because I was the fourth at the facility.
+---
+>  ……ナンバー4」
+...Number 4.”
+
+@20159 Kamille · カミーユ
+> 「……本当の名前は?」
+“...What's your real name?”
+
+@20160 Four · フォウ
+> 「わからないわ。
+>  わたしには昔の記憶がないもの
+“I don't know. I have no memories of my past.
+---
+>  知りたいんだ、昔のこと。
+>  それを探していたの」
+I want to know about the past. That's what I was searching for.”
+
+@20161 Kamille · カミーユ
+> 「フォウ……」
+“Four...”
+
+@20162 Kamille · カミーユ
+> 「なんだ!? 帝国軍か!
+>  こんなところで」
+“What?! Imperial forces? Here, of all places?”
+
+@20163 Four · フォウ
+> 「ああぁぁぁぁーっ!! あ、頭がぁっ!」
+“Aaaahhh!! M-my head!”
+
+@20164 Kamille · カミーユ
+> 「フォウ!?」
+“Four?!”
+
+@20165 Bright · ブライト
+> 「パイロット各員は順次、
+>  出撃しろ!」
+“All pilots, launch in sequence!”
+
+@20166 Dr. Hazuki · 葉月博士
+> 「艦長、獣戦機は
+>  調整が終了していない
+“Captain, the Beast Fighter's adjustments aren't finished yet.
+---
+>  すまないが少し待ってくれ」
+Sorry, but wait a little longer.”
+
+@20167 Bright · ブライト
+> 「急いでください!
+>  カミーユはどうした!?」
+“Hurry, please! Where's Kamille?!”
+
+@20168 Amuro · アムロ
+> 「カミーユが戻らないだと!? ええい!」
+“Kamille hasn't come back?! Damn it!”
+
+@20169 Bright · ブライト
+> 「アムロたちが出たか。他も急がせろ!」
+“Amuro and the others have launched, huh? Get the rest moving too!”
+
+@20170 Kamille · カミーユ
+> 「フォウ、アウドムラへ行こう。君が
+>  スペシャルズにいる理由なんてないんだ」
+“Four, let's go to the Audhumla. There's no reason for you to be with the Specials.”
+
+@20171 Four · フォウ
+> 「あそこに、あそこにわたしの記憶が
+>  あるの! あの飛行機が、
+“There, my memories are there! That plane will
+---
+>  わたしに記憶をもってきてくれる!」
+bring my memories back to me!”
+
+@20172 Kamille · カミーユ
+> 「フォウ!?」
+“Four?!”
+
+@20173 Four · フォウ
+> 「孤独はイヤ! まぎらわせたくても、
+>  まぎらわす思い出もないのよ!?」
+“I don't want to be alone! Even if I wanted to distract myself, I don't have a single memory to do it with?!”
+
+@20174 Masato · 雅人
+> 「あれは……イーグルファイター!
+>  忍だよ!」
+“That's... the Eagle Fighter! It's Shinobu!”
+
+@20175 Sara · 沙羅
+> 「忍!? 大丈夫なのかい!?」
+“Shinobu?! Is he all right?!”
+
+@20176 Shinobu · 忍
+> 「沙羅か。すまねぇ、またせたな!」
+“Sara, huh? Sorry, I kept you waiting!”
+
+@20177 Dr. Hazuki · 葉月博士
+> 「やめろ、藤原。
+>  いまのお前では無理だ」
+“Stop it, Fujiwara. You can't do it the way you are now.”
+
+@20178 Shinobu · 忍
+> 「へっ、心配すんな葉月さんよ。
+>  俺はきっちり思い出したからな」
+“Heh, don't worry about it, Dr. Hazuki. I remembered everything, good and proper.”
+
+@20179 Dr. Hazuki · 葉月博士
+> 「思い出した?」
+“You remembered?”
+
+@20180 Shinobu · 忍
+> 「ああ。獣戦機隊に野性を
+>  しばる理性はいらねぇってな!
+“Yeah. The Cyber Beast Force doesn't need reason to chain down its wild instincts!
+---
+>  わかったら、腹くくって見物してな!」
+If you get it, brace yourself and just watch!”
+
+@20181 Ryo · 亮
+> 「フッ、あいかわらずの単細胞ぶりだな
+>  威勢だけでは戦いには勝てんぞ」
+“Hmph, still the same single-celled idiot. You can't win a battle on spirit alone.”
+
+@20182 Shinobu · 忍
+> 「なんだと亮、てめえっ!」
+“What'd you say, Ryo, you bastard?!”
+
+@20183 Masato · 雅人
+> 「まぁまぁ忍。いいじゃないか亮、
+>  それでこそ忍っていうもんだろ」
+“Now, now, Shinobu. It's fine, isn't it, Ryo? That's what makes Shinobu who he is.”
+
+@20184 Sara · 沙羅
+> 「あんたたち、
+>  なにゴチャゴチャやってんのさ!
+“What are you all bickering about?!
+---
+>  敵は目の前にいるんだよ!
+>  博士、まだ出られないのかい!?」
+The enemy's right in front of us! Doctor, can't we launch yet?!”
+
+@20185 Dr. Hazuki · 葉月博士
+> 「あわてるな。いま終わったところだ」
+“Don't rush. It just finished now.”
+
+@20186 Masato · 雅人
+> 「それじゃ行きますか。
+>  艦長、獣戦機出撃します!」
+“Then let's go. Captain, the Beast Fighter is launching!”
+
+@20187 Shinobu · 忍
+> 「へっ、やけにのんびりした
+>  出撃じゃねぇか」
+“Heh, that's one awfully laid-back launch.”
+
+@20188 Sara · 沙羅
+> 「忍っ、ぼけっとしてんじゃないよ!」
+“Shinobu, don't just stand there spacing out!”
+
+@20189 Shinobu · 忍
+> 「いわれるまでもねぇ。いくぞ、亮、
+>  雅人、沙羅
+“Don't have to tell me. Let's go, Ryo, Masato, Sara.
+---
+>  アグレッシブ・モードじゃ話にならねぇ。
+>  合体するぞ!」
+Aggressive Mode won't cut it. We're combining!”
+
+@20190 Masato · 雅人
+> 「へへっ、そうこなくっちゃ!」
+“Heh heh, now that's what I want to hear!”
+
+@20191 Sara · 沙羅
+> 「すっかり待ちくたびれてたとこさ!」
+“I've been waiting so long I couldn't stand it anymore!”
+
+@20192 Ryo · 亮
+> 「フッ、久しぶりに気合いをいれて
+>  いくとするか」
+“Hmph, let's go at it with Spirit for the first time in a while.”
+
+@20193 Shinobu · 忍
+> 「キーワード、
+>  D・A・N・C・O・U・G・A……」
+“Keyword, D-A-N-C-O-U-G-A...”
+
+@20194 Shinobu · 忍
+> 「ダンクーガ! ロックオフ!
+>  やあぁぁぁぁぁってやるぜ!!」
+“Dancouga! Lock off! I'm gonna tear you apart, yaaahhh!!”
+
+@20195 Kamille · カミーユ
+> 「フォウ……フォウ!
+>  どうしたっていうんだ!?」
+“Four... Four! What's gotten into you?!”
+
+@20196 Four · フォウ
+> 「わかる? わたしが誰だか、わかる!?」
+“Do you understand? Do you understand who I am?!”
+
+@20197 Kamille · カミーユ
+> 「フォウ! 行っちゃいけない、フォウ!」
+“Four! Don't go, Four!”
+
+@20198 Kamille · カミーユ
+> 「フォウッッ!!」
+“Fouuur!!”
+
+@20199 Domon · ドモン
+> 「あれはノーベルガンダム……
+>  アレンビーなのか!?」
+“That's the Noble Gundam... Is that Allenby?!”
+
+@20200 Kamille · カミーユ
+> 「くっ……あれは……」
+“Ngh... that's...”
+
+@20201 Amuro · アムロ
+> 「カミーユ、戻ったのか? 乗れ!」
+“Kamille, you're back? Get on!”
+
+@20202 Kamille · カミーユ
+> 「アムロ大尉……? はい!」
+“Captain Amuro...? Yes, sir!”
+
+@20203 Kamille · カミーユ
+> (間違いない。あれにフォウが
+>  乗っているんだ)
+(No mistake. Four is piloting that thing.)
+
+@20204 Kamille · カミーユ
+> 「フォウ! しっかりしてフォウ!
+>  わかるか、カミーユだ!」
+“Four! Snap out of it, Four! Do you know who I am? It's Kamille!”
+
+@20205 Four · フォウ
+> 「わたしは記憶が欲しいの。
+>  自分のことをもっと知りたい
+“I want my memories. I want to know more about myself.
+---
+>  レジスタンスを倒せば研究所は、
+>  わたしの記憶を戻してくれるといった」
+They said if I defeat the Resistance, the lab would give me my memories back.”
+
+@20206 Kamille · カミーユ
+> 「フォウ、そんな約束あてになるもんか!」
+“Four, you can't trust a promise like that!”
+
+@20207 Four · フォウ
+> 「自分のこと知りたいのが、
+>  いけないことなの!?」
+“Is wanting to know about myself such a bad thing?!”
+
+@20208 Amuro · アムロ
+> 「カミーユ、何をやっている!
+>  そんなことではお前が殺されるぞ!」
+“Kamille, what are you doing?! At this rate, you'll be the one killed!”
+
+@20209 Kamille · カミーユ
+> 「くっ……」
+“Ngh...”
+
+@20210 Kamille · カミーユ
+> 「フォウ、ライフに来るんだ。君の
+>  記憶を取り戻す方法をさがそう」
+“Four, come to La Vie en Rose. We'll find a way to get your memories back.”
+
+@20211 Four · フォウ
+> 「そんなことできるものか!」
+“Like that's possible!”
+
+@20212 Kamille · カミーユ
+> 「やってみなくちゃわからないだろ!?」
+“You won't know unless we try, right?!”
+
+@20213 Four · フォウ
+> 「ムダだ! ……カミーユは、
+>  わたしのことを知ってくれている」
+“It's useless! ...Kamille, you do know me.”
+
+@20214 Kamille · カミーユ
+> 「知っていてくれる人がいるから、
+>  生きていけるんだろ!?」
+“It's because someone knows you that you can keep living, isn't it?!”
+
+@20215 Four · フォウ
+> 「なら敵になるのをやめて!
+>  わたしにやさしくしてよぉっ!
+“Then stop being my enemy! Be kind to me!
+---
+>  いじめられるの……嫌なの……」
+I don't want... to be picked on...”
+
+@20216 Kamille · カミーユ
+> 「フォウ!」
+“Four!”
+
+@20217 Amuro · アムロ
+> 「よせ、カミーユ」
+“Stop, Kamille.”
+
+@20218 Kamille · カミーユ
+> 「大尉?」
+“Captain?”
+
+@20219 Amuro · アムロ
+> 「システムを破壊する。
+>  戦闘システムがパイロットに
+“We destroy the system. The combat system is forcing the pilot
+---
+>  戦いを強制しているんだ。
+>  どこだ、どこがシステムの中心だ?
+to fight. Where is it? Where's the system's core?
+---
+>  どこがシステムの!?」
+Where is the system?!”
+
+@20220 Kamille · カミーユ
+> 「そ、そんなことができるっていうのか……?」
+“Y-you're saying you can do that...?”
+
+@20221 Amuro · アムロ
+> 「……あれか! カミーユ、撃て!
+>  わからなくてもいい
+“...That's it! Kamille, fire! You don't have to understand.
+---
+>  俺の言う通りにしろ!」
+Just do as I say!”
+
+@20222 Kamille · カミーユ
+> 「は、はい!」
+“Y-yes, sir!”
+
+@20223 Four · フォウ
+> 「ああぁぁぁぁーっ!?」
+“Aaaahhhh?!”
+
+@20224 Kamille · カミーユ
+> 「フォウ……!?」
+“Four...?!”
+
+@20225 Amuro · アムロ
+> 「大丈夫だ。死んではいない」
+“She's all right. She's not dead.”
+
+@20226 Domon · ドモン
+> 「アレンビー!」
+“Allenby!”
+
+@20227 Allenby · アレンビー
+> 「え……? ドモン?
+>  本当にドモンなの!?」
+“Huh...? Domon? Is it really you, Domon?!”
+
+@20228 Domon · ドモン
+> 「アレンビー、なぜお前が」
+“Allenby, why are you—”
+
+@20229 Allenby · アレンビー
+> 「しかたがなかったのよ。
+>  軍の施設で育てられたあたしには
+“I had no choice. I was raised in a military facility, so
+---
+>  他にどうすることもできなかったんだから
+>  でもドモン、あなたに会えてよかった
+there was nothing else I could do. But Domon, I'm glad I got to see you.
+---
+>  お願い、一緒に連れていって」
+Please, take me with you.”
+
+@20230 Domon · ドモン
+> 「アレンビー……いいだろう、来い!」
+“Allenby... all right, come on!”
+
+@20231 Wong · ウォン
+> 「おやおや、これはいけません。
+>  バーサーカーシステムを起動しろ!」
+“Oh dear, this won't do. Activate the Berserker System!”
+
+@20232 Allenby · アレンビー
+> 「うあぁぁぁ……やめて! お願いだから
+>  システムを切って! ドモン、助けて!」
+“Uwaaah... stop! Please, turn off the system! Domon, help me!”
+
+@20233 Domon · ドモン
+> 「どうしたんだ、アレンビー!」
+“What's wrong, Allenby?!”
+
+@20234 Amuro · アムロ
+> 「さがれドモン。戦闘を強制する
+>  システムが遠隔コントロールされている
+“Fall back, Domon. The system forcing her to fight is being remote-controlled.
+---
+>  残念だが今、
+>  彼女を救うのは無理だ」
+I'm sorry, but right now, saving her is impossible.”
+
+@20235 Domon · ドモン
+> 「し、しかし!」
+“B-but still!”
+
+@20236 Amuro · アムロ
+> 「目的を果たさずに死ぬつもりか、
+>  ドモン・カッシュ!?」
+“Do you intend to die without fulfilling your purpose, Domon Kasshu?!”
+
+@20237 Domon · ドモン
+> 「クッ……」
+“Ngh...”
+
+@20238 Kamille · カミーユ
+> 「フォウッ!」
+“Four!”
+
+@20239 Four · フォウ
+> 「カミーユ!? やっぱりあなたも、
+>  あたしをいじめにきたのね!?
+“Kamille?! So you came to pick on me too, didn't you?!
+---
+>  キライだぁぁっ!!」
+I hate you!!”
+
+@20240 Amuro · アムロ
+> 「なんだ、このプレッシャーは!?」
+“What is this pressure?!”
+
+@20241 Four · フォウ
+> 「くっ……気持ちが悪い……。
+>  こんな敵がいるのか……」
+“Ngh... this feels awful... There are enemies like this...?”
+
+@20242 Quattro · クワトロ
+> 「ええい、強化人間だというのか!?」
+“Tch, so she's an enhanced human?!”
+
+@20243 Four · フォウ
+> 「な、なんだ?
+>  このザラッとした感覚は……!?」
+“W-what is this? This prickly sensation...?!”
+
+@20244 Domon · ドモン
+> 「アレンビー! なぜだ!?」
+“Allenby! Why?!”
+
+@20245 Allenby · アレンビー
+> 「ドモン……」
+“Domon...”
+
+@20246 Allenby · アレンビー
+> 「さぁ、ファイトしようよぉぉぉーっ!!」
+“Come on, let's fight!!”
+
+@20247 Domon · ドモン
+> 「アレンビィィィィーッ!!」
+“Allenbyyyyy!!”
+
+@20248 Ark · アーク（按段落 3DD1）
+> 「さすがですね、アムロ・レイ大尉」
+“Impressive as expected, Captain Amuro Ray.”
+
+@20249 Selain · セレイン（按段落 3DD2）
+> 「アムロ・レイ……
+>  さすがに、伊達ではなかったか」
+“Amuro Ray... so he really was the real thing.”
+
+@20250 Beltorchika · ベルトーチカ
+> 「第一印象を取り消さなくてはね
+>  眠りから覚めたアムロ・レイ……
+“I suppose I'll have to take back my first impression. Amuro Ray, awake from his slumber...
+---
+>  おびえる男はキライだけど、
+>  好戦的なのもイヤね……」
+I hate men who cower, but I don't like the aggressive type either...”
+
+@20251 Beltorchika · ベルトーチカ
+> 「アムロ、アムロ! よく、無事で……」
+“Amuro, Amuro! Thank goodness you're safe...”
+
+@20252 Amuro · アムロ
+> 「痛いよ、ベルトーチカ……ちょっとごめん
+>  ……カミーユ」
+“That hurts, Beltorchika... give me a moment... Kamille.”
+
+@20253 Amuro · アムロ
+> 「カミーユ、サイコガンダムには近づくな。
+>  あれは危険だ」
+“Kamille, don't go near the Psyco Gundam. It's dangerous.”
+
+@20254 Kamille · カミーユ
+> 「なぜ、そんなことがわかるんです!」
+“How can you know that?!”
+
+@20255 Amuro · アムロ
+> 「……経験がある。
+>  彼女には近づくな」
+“...I have experience. Don't go near her.”
+
+@20256 Kamille · カミーユ
+> (彼女……わかるのか?)
+(Her...? Does he know?)
+
+@20257 Kamille · カミーユ
+> 「勝手をいわないでください」
+“Don't be so selfish.”
+
+@20258 Amuro · アムロ
+> 「カミーユ!」
+“Kamille!”
+
+@20259 Quattro · クワトロ
+> 「強化人間か……」
+“An enhanced human, huh...”
+
+@20260 Amuro · アムロ
+> 「おそらく。だが、カミーユと共感
+>  している。危険すぎる」
+“Probably. But she's resonating with Kamille. It's far too dangerous.”
+
+@20261 Quattro · クワトロ
+> 「……あのときと同じだと?」
+“...The same as back then?”
+
+@20262 Amuro · アムロ
+> 「あなたにだって、わかっているはずだ」
+“You should understand that as well as anyone.”
+
+@20263 Quattro · クワトロ
+> 「……そうだな」
+“...I suppose so.”
+
+@20264 Bright · ブライト
+> 「予定数は積み込んだんだな?」
+“You've loaded the scheduled amount, right?”
+
+@20265 Aboly · アポリー
+> 「そのはずです」
+“It should be done.”
+
+@20266 Bright · ブライト
+> 「はずじゃこまるんだよ。
+>  ちゃんと確認しろ」
+“'Should be' isn't good enough. Go confirm it properly.”
+
+@20267 Aboly · アポリー
+> 「積み終わってます。大丈夫です」
+“It's all loaded. We're fine.”
+
+@20268 Bright · ブライト
+> 「よし、敵の第2波が来るまえに、
+>  ホンコンを脱出する」
+“All right, we're leaving Hong Kong before the enemy's second wave arrives.”
+
+@20269 Dr. Hazuki · 葉月博士
+> 「艦長、チベットへ行ってくれ」
+“Captain, head for Tibet.”
+
+@20270 Bright · ブライト
+> 「チベット? なぜです?」
+“Tibet? Why?”
+
+@20271 Dr. Hazuki · 葉月博士
+> 「解放戦線が確保している
+>  戦艦がある
+“There's a battleship secured by the Liberation Front.
+---
+>  アウドムラでは小回りがきかない分、
+>  敵に発見されやすいだろう
+The Audhumla isn't very maneuverable, so it's easy for the enemy to spot.
+---
+>  アウドムラはカラバで
+>  運用してもらえるよう話はついている」
+I've arranged for Karaba to take charge of the Audhumla.”
+
+@20272 Bright · ブライト
+> 「わかりました。
+>  ではアウドムラはチベットへ向かいます」
+“Understood. Then the Audhumla will head for Tibet.”
+
+@20273 Dr. Hazuki · 葉月博士
+> 「よろしく頼む。
+>  私は同行できないが
+“I'm counting on you. I can't come along, but
+---
+>  藤原たちの面倒も見てやって
+>  ほしい。問題児ばかりだがね」
+I'd like you to look after Fujiwara and the others too. They're a handful, every one of them.”
+
+@20274 Bright · ブライト
+> 「頭の痛いことです」
+“That's a headache and a half.”
+
+@20275 Eiji · エイジ
+> 「すまない、ちょっと来てくれないか」
+“Sorry, could you come here a moment?”
+
+@20276 Ark · アーク（按段落 3DD1）
+> 「どうしたんです?」
+“What's wrong?”
+
+@20277 Selain · セレイン（按段落 3DD2）
+> 「どうしたんだ、いったい?」
+“What on earth's going on?”
+
+@20278 David · デビッド
+> 「どうしたもこうしたもあるかよ。
+>  あのガキをなんとかしやがれ」
+“What's wrong, you ask? Do something about that brat!”
+
+@20279 主角
+> 「ガキ?」
+“Brat?”
+
+@20280 Lera · レラ
+> 「離せっていってるだろ!!」
+“I said let go of me!!”
+
+@20281 主角
+> 「あいつ……なんだって、まだいるんだ」
+“That kid... why is she still here?”
+
+@20282 主角
+> 「お前、ホンコンで降りなかったのか?
+>  葉月博士に頼んでおいたのに」
+“You didn't get off in Hong Kong? I asked Dr. Hazuki to take care of it.”
+
+@20283 Lera · レラ
+> 「そんなの、アタシの勝手だろ!
+>  それともなに、知らないうちに
+“That's my business, isn't it?! Or what, you sneak me on board
+---
+>  乗せたくせに、今度は
+>  無理やり降ろそうっていうわけ!?」
+and now you're gonna force me off?!”
+
+@20284 Ark · アーク（按段落 3DD1）
+> 「そんなこといってないだろ!
+>  なんなんだよ、お前は!
+“I never said that! What is with you?
+---
+>  大体カンザスに戻りたがってたのは
+>  お前の方じゃないかよ」
+You're the one who wanted to go back to Kansas in the first place!”
+
+@20285 Selain · セレイン（按段落 3DD2）
+> 「別にそんなつもりはない。
+>  が、勝手は困るな
+“That's not what I meant. But I can't have you doing as you please.
+---
+>  あの街に戻りたかったんじゃないのか?」
+Didn't you want to go back to that city?”
+
+@20286 Lera · レラ
+> 「別にあんたたちに迷惑かけようって
+>  わけじゃない
+“It's not like I'm trying to cause you trouble.
+---
+>  あそこに戻ってもどうにもならないって
+>  わかっただけさ
+I just figured out there's nothing for me back there.
+---
+>  ムゲ野郎やスペシャルズと戦うんなら
+>  あんたたちと一緒にいるのが
+If you're fighting the Muge bastards and the Specials, staying with you
+---
+>  一番いいみたいだから、残ったんだ。
+>  それが悪いっていうのかよ?」
+seems like the best bet, so I stayed. You saying that's a problem?”
+
+@20287 Aboly · アポリー
+> 「なにやってんだ、お前たち。
+>  いいじゃないか、人手はたりないんだ
+“What are you two doing? It's fine, isn't it? We're short on hands.
+---
+>  何も知らない奴よりは
+>  役に立つだろう」
+She'll be more use than someone who knows nothing.”
+
+@20288 Ark · アーク（按段落 3DD1）
+> 「僕は別に反対はしてませんよ」
+“I'm not objecting, for my part.”
+
+@20289 Selain · セレイン（按段落 3DD2）
+> 「他に異論がなければ
+>  私は構いませんが」
+“If no one else objects, I don't mind.”
+
+@20290 Aboly · アポリー
+> 「ならいいじゃないか。そういうことだ、
+>  そのかわり、ちゃんと働けよ」
+“Then it's settled. That's that. In exchange, you pull your weight, got it?”
+
+@20291 Lera · レラ
+> 「わかってるよ。礼はいわないからね」
+“I know. I'm not gonna thank you, though.”
+
+@20292 Aboly · アポリー
+> 「どうしたんだ、あいつ?」
+“What's with her?”
+
+@20293 David · デビッド
+> 「さあ?」
+“Beats me.”
+
+@20294 Lady · レディ
+> 「強化人間だの何だのと、
+>  あまりあてにはならんな」
+“Enhanced humans and whatnot... I can't say I put much stock in them.”
+
+@20295 Wong · ウォン
+> 「それはひどいおっしゃりようですな。
+>  あれはまだまだ実験段階だと
+“That's a harsh way to put it. I believe I told you that one is still
+---
+>  申し上げておいたはずですよ」
+very much in the experimental stage.”
+
+@20296 Lady · レディ
+> 「ふん、
+>  では追撃隊は出せないというのだな」
+“Hmph. So you're saying you can't send a pursuit force, then.”
+
+@20297 Wong · ウォン
+> 「いえいえ、そうは言っておりませんよ、
+>  レディ・アン特佐。ただ私も
+“No, no, I'm not saying that at all, Special Colonel Lady Une. It's just that,
+---
+>  帝国からネオホンコンをあずかって
+>  いる以上は、あまり無理はできない
+as long as I'm entrusted with Neo Hong Kong by the Empire, I can't push things
+---
+>  というわけでして。事情は
+>  ご理解いただきたいものですな」
+too far. I'd appreciate it if you understood the situation.”
+
+@20298 Lady · レディ
+> 「どちらでも同じことだ。まぁよい、
+>  追撃隊はこちらで手配する
+“It makes no difference either way. Very well, I'll arrange the pursuit force myself.
+---
+>  ただし、多少の兵は出してもらうぞ」
+However, you will provide some troops.”
+
+@20299 Wong · ウォン
+> 「それはもちろんですとも」
+“But of course.”

@@ -1,0 +1,1175 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@21139 Erika · エリカ
+> 「甲児さん、あなたはどうして帝国と
+>  戦っているの?」
+“Koji, why are you fighting the Empire?”
+
+@21140 Koji · 甲児
+> 「なんだって?」
+“What'd you say?”
+
+@21141 Erika · エリカ
+> 「いまに、殺されてしまうかもしれないわ」
+“You might be killed any day now.”
+
+@21142 Koji · 甲児
+> 「そうなっちまったら、しかたのないことさ」
+“If that happens, it can't be helped.”
+
+@21143 Erika · エリカ
+> 「えぇっ!?」
+“What?!”
+
+@21144 Koji · 甲児
+# 审校：“The Earth is in ruins”改为“already in ruins”，更贴合原文“もうボロボロだし”的语气。
+> 「今のこの世界を見てみなよ。
+>  地球はもうボロボロだし
+“Take a look at the world right now. The Earth is already in ruins,
+---
+>  大勢の人たちが苦しみながら生き
+>  ている。ロームフェラの連中以外に
+and so many people are living in suffering. Apart from the Romefeller
+---
+>  今の世界で幸せを感じられる
+>  地球人なんか、いやしない
+crowd, there isn't a single Earthling who can feel happy in this world.
+---
+>  帝国の情け容赦ないやり方に、
+>  みんな、おびえながら生きているんだ」
+Everyone lives in fear of the Empire's merciless ways.”
+
+@21145 Koji · 甲児
+> 「おまけに百鬼一族やミケーネのよう
+>  にこれまで機会をうかがってた奴らも
+“On top of that, guys like the Hyakki Clan and Mycenae, who'd been waiting
+---
+>  出てきて帝国につきやがった。帝
+>  国を倒さない限り俺たち人間に
+for their chance all along, have shown up and sided with the Empire. Unless we defeat
+---
+>  未来はないんだ。俺たちは戦って
+>  平和を取り戻さなくちゃならない
+the Empire, we humans have no future. We have to fight to win back peace.
+---
+>  そのために、もし犠牲になったとしても
+>  悔いはないのさ」
+And for that, even if I end up a sacrifice, I won't regret it.”
+
+@21146 Erika · エリカ
+> 「人間の……未来……。私は……」
+“Humanity's... future... I...”
+
+@21147 Boss · ボス
+> 「兜のやつ、どうしちまったんだ!?」
+“What's gotten into Kabuto?!”
+
+@21148 Sayaka · さやか
+> 「ふんっ、女の前でカッコつけてる
+>  だけよ!」
+“Hmph, he's just showing off in front of a girl!”
+
+@21149 Duo · デュオ
+> 「少なくとも間違っちゃいないぜ。
+>  帝国を倒したって、問題は
+“At least he's not wrong. Even if we beat the Empire, we'll still have
+---
+>  山積みだが、帝国を倒さなけりゃ
+>  始まらねぇからな」
+a mountain of problems, but we can't even start until we beat them.”
+
+@21150 Simone · シモーヌ
+> 「甲児、あの娘の記憶が戻った
+>  らしいってさ」
+“Koji, sounds like that girl got her memory back.”
+
+@21151 Koji · 甲児
+> 「本当かよ? やったぜ!」
+“For real? All right!”
+
+@21152 Simone · シモーヌ
+> 「どうもワケありみたいだけどね」
+“Though it seems there's more to it than that.”
+
+@21153 Koji · 甲児
+> 「どういうことだ?」
+“What do you mean?”
+
+@21154 Erika · エリカ
+> 「ああ、甲児さん。
+>  私、思い出したんです
+“Oh, Koji. I remembered.
+---
+>  私の町は帝国軍に襲われて……」
+My town was attacked by the Imperial army, and...”
+
+@21155 Koji · 甲児
+> 「なんだって!?」
+“What?!”
+
+@21156 Erika · エリカ
+> 「実験のためといって、
+>  人間狩りを……」
+“They said it was for experiments, and they hunted people...”
+
+@21157 Hayato · ハヤト
+> 「まさか百鬼一族か!?
+>  くそったれどもめ」
+“Don't tell me it was the Hyakki Clan?! Those bastards.”
+
+@21158 Koji · 甲児
+> 「行こう、エリカ。君の町へ案内
+>  してくれ!」
+“Let's go, Erika. Take us to your town!”
+
+@21159 Hayato · ハヤト
+> 「俺たちも行くぜ。いいだろう?
+>  リョウ、ムサシ」
+“We're coming too. That okay? Ryoma, Musashi.”
+
+@21160 Ryoma · リョウ
+> 「もちろんだ。そうと決まれば、
+>  すぐ出よう」
+“Of course. If that's decided, let's head out right away.”
+
+@21161 Emma · エマ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「待ちなさい、あなたたち。今の話では
+>  敵と遭遇することだって考えられる
+“Wait, you lot. From what she just said, you could run into the enemy.
+---
+>  ブライト艦長に相談してからに
+>  しなさい」
+Talk to Captain Bright first.”
+
+@21162 Simone · シモーヌ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「そういうことなら、ブライト艦長に
+>  相談してからの方がいいわ
+“If that's the case, you'd better talk to Captain Bright first.
+---
+>  敵と遭遇するかもしれないんだし」
+You might run into the enemy, after all.”
+
+@21163 Bright · ブライト
+> 「いいだろう、許可する。ただしアルビオ
+>  ンにもパイロットは待機させておけよ」
+“Fine, you have my permission. But keep pilots on standby on the Albion too.”
+
+@21164 Koji · 甲児
+> 「さっすが、話がわかるね艦長。
+>  よし、行こうエリカ」
+“As expected of you, Captain, you get it. All right, let's go, Erika.”
+
+@21165 Ryoma · リョウ
+> 「敵はいないようだな」
+“Doesn't look like there's any enemy around.”
+
+@21166 Quatre · カトル
+> 「でも本当に、ここが
+>  襲われたんですか?」
+“But was this place really attacked?”
+
+@21167 Sara · 沙羅
+> 「カトルの疑問も、もっともだね。ここは
+>  戦場になったような感じがないよ」
+“Quatre's question is fair. This place doesn't feel like it's seen battle.”
+
+@21168 Erika · エリカ
+> 「……本当です」
+“...It's true.”
+
+@21169 Koji · 甲児
+> 「人間狩りが目的だったら、
+>  そんなに破壊したりはしないだろう
+“If their goal was hunting people, they wouldn't destroy this much.
+---
+>  とにかく急ごうぜ」
+Anyway, let's hurry.”
+
+@21170 Koji · 甲児
+> 「たいした被害がなくて、
+>  よかったじゃないか」
+“Good thing there wasn't much damage.”
+
+@21171 Erika · エリカ
+> 「ありがとうございます。
+>  皆さん、たいしたものはありませんけど
+“Thank you. Everyone, we don't have much, but please
+---
+>  食事でもしていってください」
+stay and have a meal.”
+
+@21172 Musashi · ムサシ
+> 「そりゃありがたい。実は腹ペコで
+>  死にそうだったんだ」
+“That's a lifesaver. Truth is, I was starving to death.”
+
+@21173 Amuro · アムロ
+> 「ベルトーチカ、甲児くんたちから
+>  連絡は?」
+“Beltorchika, any word from Koji and the others?”
+
+@21174 Beltorchika · ベルトーチカ
+> 「いまのところはないわ」
+“Nothing so far.”
+
+@21175 Amuro · アムロ
+> 「敵には遭遇しなかったと
+>  いうことか……ん? なんだ!?」
+“So they haven't run into the enemy... Hm? What's that?!”
+
+@21176 Beltorchika · ベルトーチカ
+> 「こ、これは……艦長、敵に囲まれて
+>  います!」
+“Th-this is... Captain, we're surrounded by the enemy!”
+
+@21177 Bright · ブライト
+> 「なんだと!?
+>  なぜ今まで気づかなかった!
+“What?! Why didn't we notice until now!
+---
+>  すぐ迎撃に出させろ!
+>  町に行った連中を呼び戻せ!」
+Send out interceptors at once! Call back the group that went to town!”
+
+@21178 Beauty · ビューティ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「……だめです、ブライト艦長。
+>  応答がありません!」
+“...It's no good, Captain Bright. There's no response!”
+
+@21179 Bright · ブライト
+> 「く、とにかく応戦だ! ビューティ、
+>  甲児たちを呼び出し続けろ」
+“Ngh, just fight back! Beauty, keep trying to reach Koji and the others!”
+
+@21180 Beauty · ビューティ
+> 「はい!」
+“Yes!”
+
+@21181 Sayaka · さやか
+> 「まったく、甲児くんがあんな女に
+>  ついていくから、こうなるのよ」
+“Honestly, this is what happens because Koji went off with a woman like that.”
+
+@21182 Ryoma · リョウ
+> 「おい、アルビオンが攻撃を受けている
+>  んじゃないのか!?」
+“Hey, isn't the Albion under attack?!”
+
+@21183 Roux · ルー
+> 「なんですって!? すぐ戻りましょう」
+“What?! We have to get back right away.”
+
+@21184 Koji · 甲児
+> 「わかった。エリカ、悪いが俺たちは
+>  艦に……」
+“Got it. Erika, sorry, but we need to get back to the ship...”
+
+@21185 Erika · エリカ
+> 「ごめんなさい。動かないで」
+“I'm sorry. Don't move.”
+
+@21186 Koji · 甲児
+> 「ど、どうしたんだエリカ!?」
+“Wh-what's wrong, Erika?!”
+
+@21187 David · デビッド
+> 「……おいおい、まいったな。ここは
+>  武装した住民に囲まれてるぜ」
+“...Well, well, this is bad. We're surrounded by armed locals here.”
+
+@21188 Hayato · ハヤト
+> 「まさか、住民たちはすでに奴らに
+>  改造されちまってたのか……」
+“Don't tell me the townspeople were already remodeled by them...”
+
+@21189 Koji · 甲児
+> 「エリカ、いったいどうして君が!?」
+“Erika, why in the world are you—?!”
+
+@21190 Erika · エリカ
+> 「動かないで、お願い」
+“Don't move, please.”
+
+@21191 Koji · 甲児
+> 「エリカ……」
+“Erika...”
+
+@21192 Marquis Janus · ヤヌス侯爵
+> 「よくやった、エスピオナージR1」
+“Well done, Espionage R1.”
+
+@21193 Koji · 甲児
+> 「なんだ?」
+“What?”
+
+@21194 Roux · ルー
+> 「バカね、あの女の持ってる
+>  通信機よ」
+“Don't be stupid, it's the communicator that woman's holding.”
+
+@21195 Koji · 甲児
+> 「そいつが黒幕か!? てめぇ、エリカや
+>  ここの人たちに、いったい何を
+“So he's the one behind this?! What the hell did you do to Erika
+---
+>  しやがったんだ!?」
+and the people here?!”
+
+@21196 Marquis Janus · ヤヌス侯爵
+> 「ホホホホ、ばかな人間たちよ。
+>  そいつはエリカなどという名前ではない
+“Hohohoho, foolish humans. She is not named Erika.
+---
+>  エスピオナージR1だ。我々の
+>  スパイアンドロイドなのだ」
+She is Espionage R1. Our Spy Android.”
+
+@21197 Koji · 甲児
+> 「なんだって? 本当なのか、エリカ!?」
+“What?! Is that true, Erika?!”
+
+@21198 Erika · エリカ
+> 「…………」
+“...”
+
+@21199 Ryoma · リョウ
+> 「まさか、ここの住民たちも……」
+“Don't tell me the townspeople here too...”
+
+@21200 Marquis Janus · ヤヌス侯爵
+> 「そこの人間どもには何もしておらぬ。
+>  お前たちを捕らえるのに協力すれば
+“I have done nothing to the humans there. When I told them that if they cooperated
+---
+>  命は助けてやるといったら、喜んで
+>  協力してくれたわ。ホーッホッホッホ」
+in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-hoh.”
+
+@21201 Hayato · ハヤト
+> 「なんという卑劣なマネを!」
+“What a despicable thing to do!”
+
+@21202 Marquis Janus · ヤヌス侯爵
+> 「エスピオナージR1、例のデータは
+>  手に入れたのか?」
+“Espionage R1, did you get that data?”
+
+@21203 Erika · エリカ
+> 「……はい」
+“...Yes.”
+
+@21204 Marquis Janus · ヤヌス侯爵
+> 「よし。データを転送しろ」
+“Good. Transfer the data.”
+
+@21205 Erika · エリカ
+> 「……終わりました」
+“...It's done.”
+
+@21206 Marquis Janus · ヤヌス侯爵
+> 「フフフッ、これでいい。私は一足先
+>  にもどる。お前は、そやつらを
+“Heheheh, that will do. I'll return ahead of you. After you finish off
+---
+>  始末したあと、もう1度、艦に
+>  潜入し、エンジンを破壊しろ」
+those fools, infiltrate the ship once more and destroy the engine.”
+
+@21207 Koji · 甲児
+> 「エリカ……君は……」
+“Erika... you...”
+
+@21208 Marquis Janus · ヤヌス侯爵
+> 「よくやった、エスピオナージR1」
+“Well done, Espionage R1.”
+
+@21209 Koji · 甲児
+> 「てめぇが黒幕か。エリカや、ここの人
+>  たちにいったい何をしやがったんだ!」
+“So you're the one behind this. What the hell did you do to Erika and the people here?!”
+
+@21210 Marquis Janus · ヤヌス侯爵
+> 「ホホホホ、ばかな人間たちよ。
+>  こいつはエリカなどという名前ではない
+“Hohohoho, foolish humans. She is not named Erika.
+---
+>  エスピオナージR1だ。我々の
+>  スパイアンドロイドなのだ」
+She is Espionage R1. Our Spy Android.”
+
+@21211 Koji · 甲児
+> 「なんだって? 本当なのか、エリカ!?」
+“What?! Is that true, Erika?!”
+
+@21212 Erika · エリカ
+> 「…………」
+“...”
+
+@21213 Ryoma · リョウ
+> 「まさか、ここの住民たちも……」
+“Don't tell me the townspeople here too...”
+
+@21214 Marquis Janus · ヤヌス侯爵
+> 「そこの人間どもには何もしておらぬ。
+>  お前たちを捕らえるのに協力すれば
+“I have done nothing to the humans there. When I told them that if they cooperated
+---
+>  命は助けてやるといったら、喜んで
+>  協力してくれたわ。ホーッホッホッホ」
+in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-hoh.”
+
+@21215 Ryoma · リョウ
+> 「なんという卑劣なマネを!」
+“What a despicable thing to do!”
+
+@21216 Marquis Janus · ヤヌス侯爵
+> 「エスピオナージR1、例のデータは
+>  手に入れたのか?」
+“Espionage R1, did you get that data?”
+
+@21217 Erika · エリカ
+> 「……はい」
+“...Yes.”
+
+@21218 Marquis Janus · ヤヌス侯爵
+> 「よし。私は一足先にもどる。
+>  お前は、こやつらを始末したあと
+“Good. I'll return ahead of you. After you finish off these fools,
+---
+>  もう1度、艦に潜入し、
+>  エンジンを破壊しろ」
+infiltrate the ship once more and destroy the engine.”
+
+@21219 Erika · エリカ
+> 「…………」
+“...”
+
+@21220 Koji · 甲児
+> 「エリカ……君は……」
+“Erika... you...”
+
+@21221 Erika · エリカ
+> 「…………」
+“...”
+
+@21222 Koji · 甲児
+> 「ウソだろう、エリカ……君が人間じゃ
+>  ないだなんて」
+“You're kidding, Erika... You're not human?”
+
+@21223 Erika · エリカ
+> 「……私……私も人間になりたかった
+>  いつも、そう神様に祈っていたわ
+“...I... I wanted to be human too. I always prayed to God for that.
+---
+>  だけど……」
+But...”
+
+@21224 Koji · 甲児
+> 「やめるんだ、エリカ。あんな奴らのいうこ
+>  とを聞くことなんかない。俺たちを
+“Stop it, Erika. There's no reason to do what those people tell you. Let us
+---
+>  ここから出してくれ。一緒に奴らを
+>  やっつければいいんだ」
+out of here. We can just take them down together.”
+
+@21225 Sara · 沙羅
+> 「だめだよ甲児。まいったね……周りの
+>  連中、ずいぶん殺気だってきてるよ」
+“It's no good, Koji. This is bad... Everyone around us is getting awfully bloodthirsty.”
+
+@21226 Musashi · ムサシ
+> 「こりゃあ、無事ですみそうにないな」
+“This ain't gonna end without bloodshed.”
+
+@21227 Hayato · ハヤト
+> 「ああ。オレたちをやらなけりゃ、自分た
+>  ちが殺されると思っているんだ」
+“Yeah. They think if they don't kill us, they'll be killed themselves.”
+
+@21228 Quatre · カトル
+> 「そんな……」
+“That's...”
+
+@21229 Roux · ルー
+> 「冗談じゃないわよ! あたしたちは
+>  こんなところで死ぬわけには
+“You've gotta be kidding! We can't afford to die in a place
+---
+>  いかないんだから!」
+like this!”
+
+@21230 Erika · エリカ
+> 「………………」
+“...”
+
+@21231 Koji · 甲児
+> 「エリカ!」
+“Erika!”
+
+@21232 Erika · エリカ
+> 「……だめ……だめよ、だって、
+>  私は…………」
+“...I can't... I can't, because I'm...”
+
+@21233 Koji · 甲児
+> 「エリカ、君は人間だ」
+“Erika, you are human.”
+
+@21234 Erika · エリカ
+> 「え……?」
+“Huh...?”
+
+@21235 Koji · 甲児
+> 「君は、泣いたり笑ったりできる。
+>  恥ずかしがりもすれば怒りもするだろう
+“You can cry and laugh. You get embarrassed, and you get angry too.
+---
+>  そして、人を想うことができる。
+>  そうだろう?」
+And you can care about people. Isn't that right?”
+
+@21236 Erika · エリカ
+> 「………………」
+“...”
+
+@21237 Koji · 甲児
+> 「それは、心があるってことだ。
+>  心があれば、それは人間なんだと
+“That means you have a heart. And if you have a heart, then you're human—
+---
+>  オレは思ってるよ」
+that's what I believe.”
+
+@21238 Erika · エリカ
+> 「心があれば……人間……」
+“If I have a heart... human...”
+
+@21239 Koji · 甲児
+> 「エリカ、こんなことを続けていたら、
+>  君はその心まで失ってしまう」
+“Erika, if you keep doing this, you'll lose even that heart.”
+
+@21240 Erika · エリカ
+> 「甲児さん…………」
+“Koji...”
+
+@21241 Erika · エリカ
+> (だめ、やっぱり……私にはできない……)
+(No, I still can't... I can't do it...)
+
+@21242 Koji · 甲児
+> 「エリカ……?」
+“Erika...?”
+
+@21243 Erika · エリカ
+> 「みなさん……逃げてください。お願い、
+>  早く」
+“Everyone... please run. Please, hurry.”
+
+@21244 Sara · 沙羅
+> 「助けてくれようってのはうれしいけど、
+>  外の連中をなんとかしないと
+“I'm glad you want to help us, but unless we do something about the people
+---
+>  逃げられやしないよ」
+outside, we can't escape.”
+
+@21245 David · デビッド
+> 「ああ、連中そうとうあせってきてるぜ。
+>  俺たちが外へ出たとたん、銃弾の
+“Yeah, they're getting pretty desperate. The moment we step outside, it'll be a
+---
+>  雨が降るな」
+rain of bullets.”
+
+@21246 Hayato · ハヤト
+> 「こいつは、連中をやらずにすませるって
+>  わけには、いきそうもないな」
+“Looks like there's no way around taking them out.”
+
+@21247 Quatre · カトル
+> 「だめですよ! あの人たちだって、
+>  普通の人たちなんです!」
+“We can't! Those people are just ordinary people too!”
+
+@21248 David · デビッド
+> 「だが、これじゃどうにもならんぜ」
+“But like this, we've got no other choice.”
+
+@21249 Erika · エリカ
+> 「……私が行きます。私が話をすれば
+>  そのまま行かせてくれるかもしれない」
+“...I'll go. If I talk to them, they might just let you pass.”
+
+@21250 Koji · 甲児
+> 「君が?」
+“You will?”
+
+@21251 Sara · 沙羅
+> 「たしかに、それならなんとか行けるかも
+>  しれないね」
+“She's right—that might actually get us through.”
+
+@21252 Koji · 甲児
+> 「わかった、エリカ、頼む。そうと決まれ
+>  ば長居は無用だ。みんな行こうぜ!」
+“All right, Erika, I'm counting on you. If that's settled, there's no point in staying. Everyone, let's go!”
+
+@21253 Ryoma · リョウ
+> 「いけるか……」
+“Can we make it...”
+
+@21254 Musashi · ムサシ
+> 「でもよぉ、連中ついてくるぜ」
+“But hey, they're coming after us.”
+
+@21255 Roux · ルー
+> 「だめ! みんな、逃げて!」
+“No! Everyone, run!”
+
+@21256 Erika · エリカ
+> 「キャアァァッ!」
+“Aaaah!”
+
+@21257 Koji · 甲児
+> 「エリカ! 大丈夫か!? こっちだ!」
+“Erika! Are you okay?! Over here!”
+
+@21258 Hayato · ハヤト
+> 「くっ、だめだ、連中は何が何でも
+>  俺たちを殺す気だぞ!」
+“Ngh, it's no use—they're dead set on killing us no matter what!”
+
+@21259 Ryoma · リョウ
+> 「くっ……だがここまでくれば……
+>  大作くん!」
+“Ngh... but if we've made it this far... Daisaku!”
+
+@21260 Daisaku · 大作
+> 「はい! ロボォッ!!」
+“Yes! Robo!!”
+
+@21261 Daisaku · 大作
+> 「こい、ジャイアント・ロボ!!」
+“Come, Giant Robo!!”
+
+@21262 Koji · 甲児
+> 「うわっ!」
+“Whoa!”
+
+@21263 Sara · 沙羅
+> 「坊や、町の人にケガさせるんじゃない
+>  よ。ここの連中だって、被害者
+“Kid, don't go hurting the townsfolk. These people here are
+---
+>  なんだからね」
+victims too, you know.”
+
+@21264 Daisaku · 大作
+> 「わかってます! それから、坊やっていう
+>  の、やめてください!」
+“I know! And stop calling me kid!”
+
+@21265 Daisaku · 大作
+> 「よし、ロボ。僕たちを乗せて、移動
+>  するんだ!」
+“All right, Robo. Carry us and move out!”
+
+@21266 Sara · 沙羅
+> 「ふう、なんとか脱出できたようだね」
+“Phew, looks like we managed to escape.”
+
+@21267 Koji · 甲児
+> 「ああ、ここまでくればこっちのものだぜ!」
+“Yeah, once we've made it this far, we've got it made!”
+
+@21268 Ryoma · リョウ
+> 「よしみんな、俺たちもいくぞ!」
+“All right, everyone, we're going too!”
+
+@21269 Quatre · カトル
+> 「はい!」
+“Yes!”
+
+@21270 Bright · ブライト
+> 「あれは……」
+“That's...”
+
+@21271 Beauty · ビューティ
+> 「甲児たちよ!」
+“It's Koji and the others!”
+
+@21272 Bright · ブライト
+> 「無事だったか……よし、全力で
+>  敵を叩け!」
+“You made it... Good, hit the enemy with everything we've got!”
+
+@21273 Astonaige · アストナージ
+> 「こりゃ、だめですね。エンジンがイカれかけ
+>  てます。ここで、できる程度の
+“This is no good. The engine's about to give out. With the kind of
+---
+>  応急修理じゃ、そのうち動かなく
+>  なりますよ」
+patch job we can do here, it'll stop running before long.”
+
+@21274 Bright · ブライト
+> 「くそっ。とりあえず修理を急げ」
+“Damn. For now, hurry up with the repairs.”
+
+@21275 Banjo · 万丈
+> 「どうするつもりです?」
+“What do you intend to do?”
+
+@21276 Bright · ブライト
+> 「いったんチベットにでも戻って修理
+>  するしかあるまい」
+“We've no choice but to head back to Tibet for repairs.”
+
+@21277 Reika · レイカ
+> 「失礼します。甲児くんたちが
+>  戻りました」
+“Excuse me. Koji and the others have returned.”
+
+@21278 Bright · ブライト
+> 「わかった、すぐに行く」
+“Understood, I'll be right there.”
+
+@21279 Amuro · アムロ
+> 「それで君は、そのエリカっていう娘を
+>  連れて行きたいと?」
+“So you want to bring that girl Erika along?”
+
+@21280 Koji · 甲児
+> 「ほっとくわけにはいかないでしょう。
+>  彼女は俺たちを助けてくれたんです
+“We can't just leave her. She helped us out.
+---
+>  戻ったって殺されるだけです」
+If she goes back, she'll only be killed.”
+
+@21281 Sayaka · さやか
+> 「何いってるのよ。だいたい、その女が
+>  原因でこんなことになったんじゃない
+“What are you saying? She's the whole reason this happened in the first place,
+---
+>  かばうことなんてないわ」
+isn't she? There's no reason to protect her.”
+
+@21282 Koji · 甲児
+> 「本気でいってるのか、さやかさん。
+>  彼女だって好きでそうしたわけじゃ
+“Are you serious, Sayaka? She didn't do it because she wanted to.
+---
+>  ないんだ。それはみんなだってわかるはずだ」
+Everyone should be able to see that.”
+
+@21283 Bright · ブライト
+> 「しかしな……。竜馬やデビッドたちも
+>  同じなのか?」
+“But still... Ryoma, David, do you two feel the same?”
+
+@21284 Ryoma · リョウ
+> 「はい。悪いのは帝国とそれにくみする
+>  連中ですよ」
+“Yes. The ones at fault are the Empire and those who side with them.”
+
+@21285 Quattro · クワトロ
+> 「それは確かだが、彼女は君たちを
+>  殺すことができなかったという
+“That may be true, but all it means is that she couldn't bring herself to kill you.
+---
+>  だけにすぎない。同じ理由から、
+>  また敵に協力しないとも限らん」
+For the same reason, there's no telling whether she won't help the enemy again.”
+
+@21286 Daisaku · 大作
+> 「そんなことありません! あの人は、
+>  いい人です!」
+“That's not true! She's a good person!”
+
+@21287 Banjo · 万丈
+> 「大作くん、いい人だからこそ、それを
+>  利用されることだってあるんだ」
+“Daisaku, precisely because she's a good person, she can be taken advantage of.”
+
+@21288 Daisaku · 大作
+> 「……僕にはわかりません」
+“...I don't understand.”
+
+@21289 Banjo · 万丈
+> 「あるんだよ、そういうことは。
+>  特に敵が卑怯な場合はね
+“It happens, that sort of thing. Especially when the enemy is cowardly.
+---
+>  {HeroNick}、君はどう思う?」
+{HeroNick}, what do you think?”
+
+@21290
+> *  俺は構わないと思うぜ
+> *  俺は反対だな
+* I don't mind, I say we take her in
+* I'm against it
+
+@21291 Brad · ブラッド（按段落 3DD3）
+> 「俺は構わないと思うぜ。向こうを
+>  裏切ってまで俺たちを助けて
+“I don't mind, I say we take her in. She betrayed them to help us,
+---
+>  くれたんだろ? それに人手不足
+>  だってのは、あんたらがいってることだぜ」
+right? Besides, you're the ones saying we're short-handed.”
+
+@21292 Banjo · 万丈
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ふむ……どうする、ブライト艦長?
+>  クワトロ大尉?」
+“Hmm... What do you say, Captain Bright? Lieutenant Quattro?”
+
+@21293 Bright · ブライト
+> 「しかたあるまい、同行を認めよう。
+>  それでいいか、大尉?」
+“We've no choice. I'll allow her to come along. Is that fine, Lieutenant?”
+
+@21294 Quattro · クワトロ
+> 「これでは、同行させないといったら
+>  士気にかかわるな」
+“At this point, refusing to let her come would hurt morale.”
+
+@21295 Koji · 甲児
+> 「そうこなくっちゃ。さっそく伝えて
+>  くるぜ!」
+“That's what I like to hear. I'll go tell her right away!”
+
+@21296 Brad · ブラッド（按段落 3DD3）
+> 「俺は反対だな。もしそいつが、また
+>  敵と接触したら、俺たちを
+“I'm against it. If she makes contact with the enemy again,
+---
+>  殺さずにすむ程度なら、小細工
+>  くらいするかもしれない。悪いが、
+she might pull some trick as long as it doesn't get us killed.
+---
+>  俺はそんなのは、ごめんだぜ」
+Sorry, but I won't stand for that.”
+
+@21297 Koji · 甲児
+> 「だけどよ」
+“But still...”
+
+@21298 Banjo · 万丈
+> 「甲児くんたちには悪いが、僕もそう
+>  思う。別に今回のことで彼女を
+“Sorry, Koji, but I feel the same way. It's not that I want to do anything
+---
+>  どうこうしようっていうわけじゃない。ただ
+>  同行させるかどうかは別の問題さ
+to her over this. Whether she comes along or not is a separate matter.
+---
+>  そうだろう?」
+Right?”
+
+@21299 Bright · ブライト
+> 「結論が出たようだな。彼女がした
+>  ことの是非は問わない
+“It seems we've reached a conclusion. I won't question the rights and wrongs of what she did,
+---
+>  が、連れて行くわけにはいかん。それで
+>  納得してほしいものだな」
+but we can't take her with us. I hope you can accept that.”
+
+@21300 Koji · 甲児
+> 「…………わかったよ。そこまでいわれちゃ、
+>  しかたねぇや」
+“...All right. If you're going to put it that way, I've got no choice.”
+
+@21301 Banjo · 万丈
+> 「すまない、みんな」
+“Sorry, everyone.”
+
+@21302
+> *  あたしは構わないと思うわ
+> *  あたしは……反対だわ
+* I don't mind, I say we take her in
+* I'm... against it
+
+@21303 Manami · マナミ（按段落 3DD4）
+> 「あたしは構わないと思うわ。
+>  現に彼女は、あたしたちを助けて
+“I don't mind, I say we take her in. She did help us, after all,
+---
+>  くれたわけだし、なんといっても許せない
+>  のは、そんなことをさせた連中だもの」
+and what I really can't forgive is the bunch who made her do it.”
+
+@21304 Lawrence · ローレンス
+> 「それに人手不足でもあることですし
+>  わたくしもここはひとつ甲児さまがたの
+“Besides, we are short-handed, so I believe it would be best
+---
+>  いうようになさるのが、よろしいかと
+>  存じます」
+for you to do as Koji and the others say, my lady.”
+
+@21305 Banjo · 万丈
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ふむ……どうする、ブライト艦長?
+>  クワトロ大尉?」
+“Hmm... What do you say, Captain Bright? Lieutenant Quattro?”
+
+@21306 Bright · ブライト
+> 「しかたあるまい、同行を認めよう。
+>  それでいいか、大尉?」
+“We've no choice. I'll allow her to come along. Is that fine, Lieutenant?”
+
+@21307 Quattro · クワトロ
+> 「これでは、同行させないといったら
+>  士気にかかわるな」
+“At this point, refusing to let her come would hurt morale.”
+
+@21308 Koji · 甲児
+> 「そうこなくっちゃ。さっそく伝えて
+>  くるぜ!」
+“That's what I like to hear. I'll go tell her right away!”
+
+@21309 Manami · マナミ（按段落 3DD4）
+> 「あたしは……反対だわ。その人が
+>  また裏切るっていうわけじゃないけど
+“I'm... against it. It's not that I think she'll betray us again,
+---
+>  色々と問題は多いと思うの。
+>  自由にしてあげるのは構わないと
+but I think there are all sorts of problems. I don't mind setting her free,
+---
+>  思うけど、一緒に行くというのは
+>  ちょっとね」
+but having her come along with us is a bit much.”
+
+@21310 Lawrence · ローレンス
+> 「さようですな。心配ごとは少ない方
+>  がよろしいでしょう」
+“Indeed, my lady. Fewer worries is for the best.”
+
+@21311 Koji · 甲児
+> 「だけどよ」
+“But still...”
+
+@21312 Banjo · 万丈
+> 「甲児くんたちには悪いが、僕もそう
+>  思う。別に今回のことで彼女を
+“Sorry, Koji, but I feel the same way. It's not that I want to do anything
+---
+>  どうこうしようっていうわけじゃない。ただ
+>  同行させるかどうかは別の問題さ
+to her over this. Whether she comes along or not is a separate matter.
+---
+>  そうだろう?」
+Right?”
+
+@21313 Bright · ブライト
+> 「結論が出たようだな。彼女がした
+>  ことの是非は問わない
+“It seems we've reached a conclusion. I won't question the rights and wrongs of what she did,
+---
+>  が、連れて行くわけにはいかん。それで
+>  納得してほしいものだな」
+but we can't take her with us. I hope you can accept that.”
+
+@21314 Koji · 甲児
+> 「…………わかったよ。そこまでいわれちゃ、
+>  しかたねぇや」
+“...All right. If you're going to put it that way, I've got no choice.”
+
+@21315 Banjo · 万丈
+> 「すまない、みんな」
+“Sorry, everyone.”
+
+@21316 Shinobu · 忍
+> 「どうしたんだよ、艦長さん。もうすぐ
+>  修理も終わるんだろ?
+“What's up, Captain? The repairs are almost done, right?
+---
+>  なんか問題でもあるのかよ?」
+Is there some kind of problem?”
+
+@21317 Bright · ブライト
+> 「我々の艦がダメージを受けたのは
+>  敵も知っているはずだ。だから再び
+“The enemy must know our ship took damage. So I had the area thoroughly scanned,
+---
+>  敵の襲撃があると考えて周囲の
+>  偵察も厳重にさせていたんだが……」
+thinking they'd attack again, but...”
+
+@21318 Eiji · エイジ
+> 「この数日は動きがありませんでしたね
+>  確かにイヤな感じはあります」
+“There's been no movement for the past few days. It does feel unsettling, though.”
+
+@21319 Banjo · 万丈
+> 「艦長、まずいことになった」
+“Captain, we've got trouble.”
+
+@21320 Bright · ブライト
+> 「いったい何があったんだ?」
+“What on earth happened?”
+
+@21321 Banjo · 万丈
+> 「いま、アランから連絡があった。帝
+>  国が大規模なレジスタンスつぶしを
+“I just got word from Alan. The Empire has started a large-scale
+---
+>  始めたんだ」
+operation to wipe out the resistance.”
+
+@21322 Bright · ブライト
+> 「なんだって!? それで、状況は?」
+“What?! And the situation?”
+
+@21323 Banjo · 万丈
+> 「最悪だ。各地の抵抗組織は
+>  ほぼ壊滅したと考えていい
+“It's as bad as it gets. You can consider the resistance groups everywhere
+---
+>  カラバもかなりの人員と施設を
+>  失った」
+all but annihilated. Karaba lost a lot of people and facilities too.”
+
+@21324 Shinobu · 忍
+> 「なんだと!?
+>  マジかよ、冗談じゃねぇぞ!
+“What?! You've gotta be kidding me! This isn't funny!
+---
+>  艦長、解放戦線の方は
+>  どうなってるんだ!?」
+Captain, what about the Liberation Front?!”
+
+@21325 Banjo · 万丈
+> 「こちらの情報では、解放戦線の
+>  方も、かなりやられているはすだ」
+“According to our intel, the Liberation Front has taken heavy losses as well.”
+
+@21326 Bright · ブライト
+> 「ちょっと待て。ベルトーチカ、連絡は
+>  取れるか?」
+“Wait a moment. Beltorchika, can you reach them?”
+
+@21327 Beltorchika · ベルトーチカ
+> 「……本部は応答ありません」
+“...No response from headquarters.”
+
+@21328 Bright · ブライト
+> 「他はどうか?」
+“What about the others?”
+
+@21329 Beltorchika · ベルトーチカ
+> 「……だめです。どこも応答ありません」
+“...Nothing. No response from anywhere.”
+
+@21330 Bright · ブライト
+> 「なんということだ……くそっ、帝国め!」
+“How could this be... Damn it, those Imperials!”
+
+@21331 Amuro · アムロ
+> 「どうしたんだ、ブライト?」
+“What's wrong, Bright?”
+
+@21332 Bright · ブライト
+> 「帝国のレジスタンス壊滅作戦
+>  だ。解放戦線もカラバも
+“It's the Empire's resistance annihilation operation. The Liberation Front, Karaba,
+---
+>  各地の組織も壊滅的な
+>  打撃を受けた」
+and every organization out there has taken devastating damage.”
+
+@21333 Amuro · アムロ
+> 「まさか!? こちらだって、かなりの
+>  情報網があったはずだ。それだけ
+“No way! We should have had a considerable intelligence network ourselves. An operation
+---
+>  大規模な作戦なら少しくらいは
+>  事前の動きがつかめていたはずだろ?」
+that large should have shown some signs beforehand, shouldn't it?”
+
+@21334 Quattro · クワトロ
+> 「いや、ありうるな。ル・カインならば、
+>  もっと示威的に行動するはずだが
+“No, it's possible. If it were Le Cain, he'd act more for show, but
+---
+>  おそらくトレーズとジャミトフだろう」
+this is probably Treize and Jamitov.”
+
+@21335 Banjo · 万丈
+> 「まんまとしてやられたよ。
+>  我々の情報収集能力を
+“We've been completely outplayed. It seems we put too much
+---
+>  過信しすぎていたようだ。
+>  このままでは僕たちは負ける
+faith in our intelligence-gathering. At this rate, we're going to lose.
+---
+>  悪いが僕はここで別れる。
+>  カラバを立て直さなければ」
+Sorry, but I'm parting ways here. I have to rebuild Karaba.”
+
+@21336 Bright · ブライト
+> 「ああ。しかし……どうするか。
+>  アルビオンも次に敵と遭遇したら
+“Yeah. But... what do we do? The Albion might not hold together
+---
+>  持ちこたえられないかもしれん」
+if we run into the enemy again.”
+
+@21337 Duo · デュオ
+> 「よう、どうだったカトル?」
+“Hey, how'd it go, Quatre?”
+
+@21338 Quatre · カトル
+> 「なんとか連絡はついたよ」
+“I managed to get through to them somehow.”
+
+@21339 Bright · ブライト
+> 「あてになるのか? その、マグアナック隊
+>  というのは」
+“Can we count on them? This... Maganac Corps?”
+
+@21340 Quatre · カトル
+> 「はい。彼らの基地は町の地下に
+>  あって発見されずに済んだようです
+“Yes. Their base is underground in the town, so it seems it went undiscovered.
+---
+>  アルビオンの修理もできるといって
+>  いました」
+They said they can repair the Albion too.”
+
+@21341 Roux · ルー
+> 「それで、その基地っていうのはどこに
+>  あるの?」
+“So where exactly is this base?”
+
+@21342 Quatre · カトル
+> 「中東です」
+“The Middle East.”
+
+@21343 David · デビッド
+> 「中東だって!?
+>  かなり遠いじゃないか
+“The Middle East?! That's pretty far.
+---
+>  そこまで敵に発見されずに
+>  行けるのかよ」
+Can we really get there without the enemy spotting us?”
+
+@21344 Bright · ブライト
+> 「行くしかないだろう。
+>  現状では我々に選択肢はない
+“We've got no choice but to go. As things stand, we have no other option.
+---
+>  全員出発の準備をしておけ」
+Everyone, get ready to depart.”

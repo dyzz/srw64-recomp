@@ -1,0 +1,81 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12955 Sijima · シジーマ
+> 「ここがお前の死に場所よ!」
+“This is where you die!”
+
+@12956 Sijima · シジーマ
+# 审校：“struggle” 改为动名词“struggling”更自然
+> 「ムダなあがきはよしなさいってば」
+“Just give up the pointless struggling, I'm telling you.”
+
+@12957 Sijima · シジーマ
+> 「もらったわ」
+“Got you.”
+
+@12958 Sijima · シジーマ
+# 审校：“keep on attacking” 可接受，但“pressing the attack”更贴合战斗语气
+> 「このまま攻めさせてもらうわ!」
+“I'll just keep pressing the attack!”
+
+@12959 Sijima · シジーマ
+> 「とどめを刺してあげるわ!」
+“I'll finish you off!”
+
+@12960 Sijima · シジーマ
+> 「これで、最後よ」
+“This is the end.”
+
+@12961 Sijima · シジーマ
+# 审校：拟声词拼写统一为更接近原文的“Cheiyaaah”
+> 「ちぇぃやぁぁぁ!」
+“Cheiyaaah!”
+
+@12962 Sijima · シジーマ
+> 「ぎゃぁぁぁぁぁぁぁぁ!!」
+“Gyaaaaaaaaah!!”
+
+@12963 Sijima · シジーマ
+> 「こ、このままじゃやられるわ……」
+“A-At this rate I'll be done for...”
+
+@12964 Sijima · シジーマ
+> 「うぎゃぁぁぁぁぁ」
+“Ugyaaaaaaaa!”
+
+@12965 Sijima · シジーマ
+> 「こ、こいつぅ!?」
+“Wh-why you?!”
+
+@12966 Sijima · シジーマ
+> 「なんですってぇ!?」
+“What did you say?!”
+
+@12967 Sijima · シジーマ
+> 「ムダなことをするわねぇ」
+“What a pointless thing to do.”
+
+@12968 Sijima · シジーマ
+> 「効かないわよ」
+“That won't work on me.”
+
+@12969 Sijima · シジーマ
+# 审校：“you missed” 偏离“あたらないわ”的持续状态，改为“you can't hit me”
+> 「ふふふふ、あたらないわ」
+“Fufufufu, you can't hit me.”
+
+@12970 Sijima · シジーマ
+> 「お前の攻撃はあたらないわ」
+“Your attacks won't hit me.”
+
+@12971 Sijima · シジーマ
+> 「お前の攻撃はあたらないわ」
+“Your attacks won't hit me.”
+
+@12972 Sijima · シジーマ
+> 「は、反撃ができない!?」
+“I-I can't counterattack?!”
+
+@12973 Sijima · シジーマ
+> 「と、とどかないわ」
+“I-It won't reach.”

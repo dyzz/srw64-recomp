@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12342 Musy · ミュージィ
+> 「もらった!」
+“Got you!”
+
+@12343 Musy · ミュージィ
+# 审校：原文是“落ちろというのに”，应译为“我说了让你坠落”而非“我告诉过你要坠落”的别扭表达
+> 「落ちろというのに!」
+“I said fall!”
+
+@12344 Musy · ミュージィ
+> 「沈めっ!!」
+“Sink!!”
+
+@12345 Musy · ミュージィ
+> 「この一撃でけりをつける!」
+“I'll finish this with one strike!”
+
+@12346 Musy · ミュージィ
+> 「落としてみせる!」
+“I'll bring you down!”
+
+@12347 Musy · ミュージィ
+> 「とどめっ!」
+“Finishing blow!”
+
+@12348 Musy · ミュージィ
+> 「私のオーラ力を甘く見るなっ!」
+“Don't underestimate my aura power!”
+
+@12349 Musy · ミュージィ
+> 「やらせはしないっ!」
+“I won't let you!”
+
+@12350 Musy · ミュージィ
+> 「とどめだ!」
+“This is the end!”
+
+@12351 Musy · ミュージィ
+> 「そこだ!」
+“There!”
+
+@12352 Musy · ミュージィ
+> 「ううっ……ショット様……」
+“Ugh... Lord Shot...”
+
+@12353 Musy · ミュージィ
+> 「何っ!? 直撃なのか!?」
+“What?! A direct hit?!”
+
+@12354 Musy · ミュージィ
+> 「こ、このパワー……私のオーラ力が
+>  足りぬというのか……」
+“Th-this power... Is my aura power not enough...”
+
+@12355 Musy · ミュージィ
+> 「あうっ!! な、なんの!まだやられは
+>  しないっ!」
+“Agh!! N-no! I won't go down yet!”
+
+@12356 Musy · ミュージィ
+> 「あああっ! い、いかん、これ以上は
+>  機体が……」
+“Aaaah! N-no, the unit can't take any more...”
+
+@12357 Musy · ミュージィ
+> 「やるっ! だが、勝負はこれからだ!」
+“You're good! But the real fight starts now!”
+
+@12358 Musy · ミュージィ
+> 「こいつ……やるっ!」
+“This one... is good!”
+
+@12359 Musy · ミュージィ
+> 「くっ! こんな事で落ちるものか!!」
+“Ngh! Like I'd fall from this!!”
+
+@12360 Musy · ミュージィ
+> 「うっ! これ以上好きには
+>  させないっ!!」
+“Ugh! I won't let you have your way any longer!!”
+
+@12361 Musy · ミュージィ
+# 审校：原文“そんな攻撃など!”是轻蔑地表示这种攻击不算什么，初稿只译成疑问语气，不完整
+> 「そんな攻撃など!」
+“An attack like that is nothing!”
+
+@12362 Musy · ミュージィ
+> 「ふ……そんなものか!」
+“Hmph... Is that all you've got?!”
+
+@12363 Musy · ミュージィ
+> 「こんなダメージなど、たかが知れている!」
+“Damage like this is nothing!”
+
+@12364 Musy · ミュージィ
+> 「当たるものか!」
+“As if that would hit!”
+
+@12365 Musy · ミュージィ
+> 「なめるなっ!」
+“Don't mock me!”
+
+@12366 Musy · ミュージィ
+# 审校：原文“そこかっ!”是发现敌人位置时的喊声，不是疑问，应去掉问号
+> 「そこかっ!」
+“There!”
+
+@12367 Musy · ミュージィ
+> 「どこを狙っている!」
+“What are you aiming at?!”
+
+@12368 Musy · ミュージィ
+# 审校：原文“右かっ!”是判断来袭方向，不是疑问，应译为肯定语气
+> 「来る……右かっ!」
+“Here it comes... from the right!”
+
+@12369 Musy · ミュージィ
+# 审校：原文“そのようなビームなどっ!!”是轻蔑地表示这种光束不算什么，初稿只译成疑问语气，不完整
+> 「そのようなビームなどっ!!」
+“A beam like that is nothing!!”
+
+@12370 Musy · ミュージィ
+> 「弾切れ!? バカな……」
+“Out of ammo?! Impossible...”
+
+@12371 Musy · ミュージィ
+> 「なんだ!? あんな距離から攻撃が
+>  届くのか!?」
+“What?! They can hit me from that range?!”

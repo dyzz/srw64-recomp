@@ -1,0 +1,963 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@41941 Ginrei · 銀鈴
+> 「艦長、アクシズ軍が接近して
+>  きます!」
+“Captain, the Axis Forces are approaching!”
+
+@41942 Amuro · アムロ
+> 「……来たか……ハマーン・カーン……」
+“...So you've come... Haman Karn...”
+
+@41943 Haman · ハマーン
+> 「聞こえるか、{HeroMech}。
+>  異星人の兵士どもの降伏を
+“Can you hear me, {HeroMech}? I cannot have you accepting the surrender of
+---
+>  受けいれるなど、勝手なことを
+>  されては、困るな」
+alien soldiers on your own whim.”
+
+@41944 Bright · ブライト
+> 「なんだと?」
+“What did you say?”
+
+@41945 Gishin Soldier · ギシン星兵
+> 「!? ま、待ってくれ、俺たちは……」
+“?! W-Wait, we're...”
+
+@41946 Gishin Soldier · ギシン星兵
+> 「うわあぁぁぁぁぁぁぁぁーっ!!」
+“Uwaaaaaaaaah!!”
+
+@41947 Anna · アンナ
+> 「ひどい……」
+“How horrible...”
+
+@41948 Bright · ブライト
+> 「なんということを……」
+“What has she done...”
+
+@41949 Haman · ハマーン
+> 「戦意を失った異星人どもなど、
+>  恐れるに足りん。お前たちのおかげで
+“Aliens who have lost their will to fight are nothing to fear. Thanks to you,
+---
+>  銀河帝国軍のせん滅も
+>  時間の問題だな
+the annihilation of the Galactic Empire's forces is only a matter of time.
+---
+>  どうせ連中が地球圏に
+>  残留してもろくなことにはならん
+In any case, nothing good will come of letting them remain in the Earth Sphere.
+---
+>  ならばせめて楽に死なせてやるのが
+>  連中のためであろう?」
+So isn't it kinder to let them die painlessly?”
+
+@41950 Anna · アンナ
+> 「そんな……そんなことはないわ!」
+“That's... that's not true!”
+
+@41951 Amuro · アムロ
+> 「ハマーンめ、最初から
+>  そのつもりだったんだな」
+“Haman... so that was your plan from the start.”
+
+@41952 Haman · ハマーン
+> 「さて、{HeroMech}の諸君。
+>  もはや銀河帝国軍は
+“Now then, people of {HeroMech}. The Galactic Empire's forces are
+---
+>  ないに等しい。これでこの地球圏に
+>  残るのは、我がアクシズ軍と
+as good as gone. That leaves only my Axis Forces and
+---
+>  お前たちだけということになる」
+all of you remaining in the Earth Sphere.”
+
+@41953 Amuro · アムロ
+> 「だから、ここで決着を
+>  つけるというのか?」
+“So you mean to settle this here?”
+
+@41954 Haman · ハマーン
+> 「そう結論を急ぐこともあるまい。
+>  もしも私とともにくるというのであれば
+“There's no need to rush to conclusions. If you agree to come with me,
+---
+>  サイドの1つもまかせてもやろう。
+>  どうだ?」
+I could entrust one of the Sides to you. How about it?”
+
+@41955 Banjo · 万丈
+> 「あいにくだが、僕たちはそんなものの
+>  ために戦ってきたわけじゃないんでね
+“Sorry, but we haven't been fighting for anything like that.
+---
+>  丁重にお断わり申しあげよう、
+>  ハマーン」
+I must respectfully decline, Haman.”
+
+@41956 Haman · ハマーン
+> 「そうか。ならばズールのあとを追って、
+>  お前たちもここで死ぬがいい」
+“I see. Then follow after Zuhl and die here as well.”
+
+@41957 Amuro · アムロ
+> 「キャラ・スーンに、マシュマー・セロ
+>  もいるのか」
+“Chara Soon and Mashymre Cello are here too, huh.”
+
+@41958 Judau · ジュドー
+> 「いま一緒に戦ったばかりで、
+>  もうやりあおうっての!?」
+“We were just fighting together, and now you want to go at it?!”
+
+@41959 Chara · キャラ
+> 「あんたたちが仲間になってくれれば
+>  よかったんだけどね
+“It would've been nice if you'd joined us,
+---
+>  残念だけど、逃がしゃしないよ」
+but too bad — I'm not letting you get away.”
+
+@41960 Mashymre · マシュマー
+> 「先ほどまでともに戦った者たちと
+>  やりあうのは、私とて気がすすまぬ
+“Even I am reluctant to fight those who fought alongside us until moments ago.
+---
+>  だが、お前たちがハマーン様のお心づ
+>  かいを理解できぬというのであれば
+But if you cannot understand Lady Haman's kindness,
+---
+>  しかたあるまい。
+>  マシュマー・セロ、まいる!」
+then it can't be helped. Mashymre Cello, engaging!”
+
+@41961 Ple-Two · プルツー
+> 「こいつらをやればいいのか?
+>  ずいぶんと簡単そうじゃないか」
+“I just have to take these guys out? Doesn't look too hard.”
+
+@41962 Kamille · カミーユ
+> 「あれは……サイコガンダムmkⅡ!?」
+“That's... the Psyco Gundam Mk-II?!”
+
+@41963 Four · フォウ
+> 「あ……あぁ……いや、カミーユ……」
+“A... aah... no, Kamille...”
+
+@41964 Kamille · カミーユ
+> 「フォウ!? しっかりするんだ、フォウ。
+>  あのマシンの波動に、とりこまれちゃ
+“Four?! Pull yourself together, Four. Don't let that machine's waves
+---
+>  いけない」
+take you over.”
+
+@41965 Ple · プル
+> 「なに……この感触……
+>  サイコガンダム……?」
+“What... is this feeling... the Psyco Gundam...?”
+
+@41966 Judau · ジュドー
+> 「くっ、なんなんだよ、これは!」
+“Ngh, what the hell is this?!”
+
+@41967 Ple-Two · プルツー
+> 「な……なんだ!? この感じ、
+>  このざらつきは!? 貴様か!」
+“W-What?! This feeling, this grating sensation?! It's you!”
+
+@41968 Ple · プル
+> 「……!? なんであたしのことが
+>  わかるの!?」
+“...?! How do you know who I am?!”
+
+@41969 Judau · ジュドー
+> 「プル、どうした!?」
+“Ple, what's wrong?!”
+
+@41970 Ple · プル
+> 「……そっか……そういうことなんだ……」
+“...I see... so that's how it is...”
+
+@41971 Judau · ジュドー
+> 「プル?」
+“Ple?”
+
+@41972 Ple · プル
+> 「ジュドー、わかったよ、
+>  サイコガンダムのパイロットが」
+“Judau, I get it now — the Psyco Gundam's pilot.”
+
+@41973 Ple-Two · プルツー
+> 「くっ……不愉快な奴が!!」
+“Ngh... you unpleasant thing!!”
+
+@41974 Ple · プル
+> 「当たり前だよ、不愉快なのは」
+“Of course I'm unpleasant.”
+
+@41975 Ple-Two · プルツー
+> 「な、なんだと!? なんだ、何をいう!?」
+“W-What?! What, what are you saying?!”
+
+@41976 Ple · プル
+> 「人はね、人間はね、自分を見る
+>  のが不愉快なのよ。でもね、どんなに
+“People, you know — humans find it unpleasant to look at themselves. But no matter how
+---
+>  不愉快でも、どんなに憎くっても、
+>  自分をやめることはできないのよ!」
+unpleasant, no matter how much you hate it, you can't stop being yourself!”
+
+@41977 Ple-Two · プルツー
+> 「な……何をいってるんだ、お前は!?」
+“W-What are you talking about?!”
+
+@41978 Ple · プル
+> 「あたしはあなたよ。あなたはあたしなのよ!
+>  あなたはあたしのいっとう激しい
+“I am you. You are me! You're the person who has only my most violent
+---
+>  ところだけを持った人でしょ!?
+>  あたしは、エルピー・プル!」
+parts, aren't you?! I'm Elpeo Ple!”
+
+@41979 Ple-Two · プルツー
+> 「私はプルツーだ……
+>  私は、プルツーだ!!」
+“I am Ple-Two... I am Ple-Two!!”
+
+@41980 Judau · ジュドー
+> 「プルツー……? まるで……
+>  プルそっくりじゃないか……」
+“Ple-Two...? She's... just like Ple...”
+
+@41981 Ple-Two · プルツー
+> 「こいつらをやればいいのか?
+>  ずいぶんと簡単そうじゃないか」
+“All I have to do is take these guys out? Doesn't look too hard.”
+
+@41982 Kamille · カミーユ
+> 「あれは……サイコガンダムmkⅡ!?」
+“That's... the Psyco Gundam Mk-II?!”
+
+@41983 Four · フォウ
+> 「あ……あぁ……いや、カミーユ……」
+“Ah... aah... no, Kamille...”
+
+@41984 Kamille · カミーユ
+> 「フォウ!? しっかりするんだ、フォウ。
+>  あのマシンの波動に、とりこまれちゃ
+“Four?! Pull yourself together, Four. You mustn't let that machine's waves
+---
+>  いけない」
+pull you in.”
+
+@41985 Judau · ジュドー
+> 「なんだ……この感じ……」
+“What is this... this feeling...”
+
+@41986 Judau · ジュドー
+> 「くっ、プルと同じ顔でもさ!!」
+“Ngh, even if you've got the same face as Ple!!”
+
+@41987 Ple-Two · プルツー
+> 「邪魔だ!!」
+“Out of my way!!”
+
+@41988 Judau · ジュドー
+> 「このぉっ!!」
+“Why you!!”
+
+@41989 Ple-Two · プルツー
+> 「くっ……邪魔をするな!!」
+“Ngh... don't get in my way!!”
+
+@41990 Judau · ジュドー
+> 「プルツー!!」
+“Ple-Two!!”
+
+@41991 Ple-Two · プルツー
+> 「くっ……なんだ、なんでこんなに
+>  気持ちが悪い!? お前か
+“Ngh... what is this, why does it feel so awful?! Is it you?
+---
+>  お前がいけないのか!」
+Are you the one doing this?!”
+
+@41992 Judau · ジュドー
+> 「やめろプルツー!
+>  そんなことをしてるから
+“Stop it, Ple-Two! It's because you do things like this that
+---
+>  気持ち悪いんだって、
+>  なぜわからない!?」
+you feel awful — why can't you understand?!”
+
+@41993 Ple-Two · プルツー
+> 「うるさい! お前たちを倒せば、
+>  こんなのはすぐに治る!」
+“Shut up! Once I defeat you all, this will clear up in no time!”
+
+@41994 Judau · ジュドー
+> 「強がりをいうな、プルツー!
+>  プルを見ろ
+“Don't put on a brave face, Ple-Two! Look at Ple.
+---
+>  自分の心を見つめれば
+>  お前だって苦しまずに……」
+If you looked into your own heart, even you could live without suffering...”
+
+@41995 Ple-Two · プルツー
+> 「苦しくなんかあるものか!!」
+“As if I'd ever suffer!!”
+
+@41996 Haman · ハマーン
+> 「くっ……さすがについでで
+>  片づけられる相手ではなかったか……
+“Ngh... so they weren't opponents I could finish off in passing after all...
+---
+>  ここは出直すとしよう」
+I suppose I'll start over another time.”
+
+@41997 Haman · ハマーン
+> 「くっ……さすがについでで
+>  片づけられる相手ではなかったか……
+“Ngh... so they weren't opponents I could finish off in passing after all...
+---
+>  ここは出直すとしよう。
+>  全軍撤退しろ」
+I suppose I'll start over another time. All forces, retreat.”
+
+@41998 Haman · ハマーン
+> 「くっ……さすがについでで
+>  片づけられる相手ではなかったか……」
+“Ngh... so they weren't opponents I could finish off in passing after all...”
+
+@41999 Haman · ハマーン
+> 「くっ……さすがについでで
+>  片づけられる相手ではなかったか……
+“Ngh... so they weren't opponents I could finish off in passing after all...
+---
+>  ここは出直すとしよう。
+>  全軍撤退しろ」
+I suppose I'll start over another time. All forces, retreat.”
+
+@42000 Beltorchika · ベルトーチカ
+> 「……アクシズ軍の撤退を確認」
+“...Confirmed: the Axis Forces are retreating.”
+
+@42001 Bright · ブライト
+> 「ふう……いってくれたか……」
+“Phew... so they've gone...”
+
+@42002 ???
+> 「なるほど……これが例の
+>  地球人たちか……」
+“I see... so these are the Earthlings I've heard about...”
+
+@42003 Bright · ブライト
+> 「なんだ? まだいるのか!?」
+“What? There are more of them?!”
+
+@42004 J-Ren · ジェイ＝レン
+> 「……まさかとは思ったが……
+>  あのズールがやられるとは、我らの
+“...I thought it impossible, but... for that Zuhl to be defeated. Are they
+---
+>  予測を上まわる知性体か。
+>  アヴィ＝ルーのいうとおり
+intellects beyond our predictions? As Avie-Lu said,
+---
+>  確かに面白いかもしれぬ……」
+they may indeed prove interesting...”
+
+@42005 Ark · アーク（按段落 3DD1）
+> 「あいつはまさか……竜馬、あいつは……」
+“That guy can't be... Ryoma, that guy is...”
+
+@42006 Selain · セレイン（按段落 3DD2）
+> 「なんだ? あれは……
+>  あの時の奴に似ているが……」
+“What? That thing... it looks like the one from back then...”
+
+@42007 Brad · ブラッド（按段落 3DD3）
+> 「なんだ奴は!? まさか……
+>  あん時の奴の仲間か!?」
+“What is that thing?! Don't tell me... he's one of that guy's comrades from back then?!”
+
+@42008 Manami · マナミ（按段落 3DD4）
+> 「あれはもしかして……
+>  ローレンス、データ検索」
+“Could that be... Lawrence, search the data.”
+
+@42009 Lawrence · ローレンス
+> 「……類似データの登録がありますな」
+“...There is a matching record registered, my lady.”
+
+@42010 Manami · マナミ（按段落 3DD4）
+> 「やっぱり、あの時の敵の
+>  仲間なんだわ」
+“I knew it — they're comrades of that enemy from back then.”
+
+@42011 Ryoma · リョウ
+> 「ああ……間違いない」
+“Yeah... no doubt about it.”
+
+@42012 Hayato · ハヤト
+> 「あの時の奴と同様の奴だ。
+>  ムサシが死んだあの時と」
+“It's the same kind of thing as that one from back then. The same as when Musashi died.”
+
+@42013 Koji · 甲児
+> 「ちっきしょう! てめぇら
+>  いったいなんなんだよ!?」
+“Damn it! Just who the hell are you people?!”
+
+@42014 J-Ren · ジェイ＝レン
+> 「我らは“アル＝イー＝クイス”。
+>  大銀河の意思であり
+“We are Al-E-Quis. We are the will of the great galaxy,
+---
+>  それを体現するもの」
+and its embodiment.”
+
+@42015 Tetsuya · 鉄也
+> 「けっ、わけのわかんねぇことばっかり
+>  いいやがって
+“Tch, nothing but gibberish out of you.
+---
+>  いったい何が目的だ!?」
+What the hell is your goal?!”
+
+@42016 J-Ren · ジェイ＝レン
+# 审校：「永遠の存続を」指追求永远存续，Eternal continuation 生硬且不自然，改为 Eternal existence。
+> 「永遠の存続を」
+“Eternal existence.”
+
+@42017 Tetsuya · 鉄也
+> 「なんだと?」
+“What did you say?”
+
+@42018 J-Ren · ジェイ＝レン
+> 「……そろそろ確かめさせて
+>  もらうとしようか」
+“...I suppose it's about time we had you prove it.”
+
+@42019 Ryoma · リョウ
+> 「くっ……やはりやるしかないのか!?」
+“Ngh... so we've got no choice but to fight after all?!”
+
+@42020 J-Ren · ジェイ＝レン
+> 「……確かに、強いな。だがこの
+>  程度では……」
+“...You are indeed strong. But at this level...”
+
+@42021 J-Ren · ジェイ＝レン
+> 「我を倒すにはいたらぬぞ」
+“You are not yet strong enough to defeat me.”
+
+@42022 J-Ren · ジェイ＝レン
+> 「なるほど……この力か……」
+“I see... so this is the power...”
+
+@42023 Beltorchika · ベルトーチカ
+> 「反応、消えました。
+>  右舷に敵影なし」
+“The reaction's gone. No enemy contacts to starboard.”
+
+@42024 Reika · レイカ
+> 「左舷もよ」
+“Port side's clear too.”
+
+@42025 Bright · ブライト
+> 「ふぅ……どうやら今回は再生しない
+>  ようだな。みんな、よくがんばってくれた
+“Phew... seems it won't regenerate this time. Everyone, you did well.
+---
+>  帰還してくれ。我々はサイド2の
+>  宙域にいる、ラビアンローズとの
+Return to the ship. We're in the Side 2 area, heading to
+---
+>  合流に向かう」
+rendezvous with La Vie en Rose.”
+
+@42026 Kenji · ケンジ
+> 「…………」
+“...”
+
+@42027 Quatre · カトル
+> 「…………」
+“...”
+
+@42028 Roanne · ロアン
+> 「…………」
+“...”
+
+@42029 Duo · デュオ
+> 「なんだかなぁ～この雰囲気は。
+>  問題多いのはわかっちゃいるが
+“Man, what's with this mood? I know we've got plenty of problems,
+---
+>  もうちょっとなんとかなんねぇかな」
+but can't we do something about it?”
+
+@42030 Koji · 甲児
+> 「まったくだぜ。オレたちはズールを倒して
+>  とてもかないやしないって思ってた
+“You said it. We thought beating Zuhl was impossible,
+---
+>  銀河帝国軍だって
+>  もうほとんど敵じゃないんだぜ?」
+and now even the Galactic Empire forces are hardly a threat, right?”
+
+@42031 Chum · チャム
+> 「そうよ、すごいじゃない」
+“That's right, isn't that amazing?”
+
+@42032 Show · ショウ
+> 「しかしな……」
+“But still...”
+
+@42033 Garalia · ガラリア
+> 「敵がいなくなったわけではない」
+“It's not as if the enemy is gone.”
+
+@42034 Kamille · カミーユ
+> 「ああ……“アル＝イー＝クイス”と
+>  名のる謎の敵に、アクシズか……」
+“Yeah... a mysterious enemy calling itself Al-E-Quis, and Axis too...”
+
+@42035 Marvel · マーベル
+> 「大銀河の意思といっていたわね…
+>  ムゲゾルバドスや銀河帝国とは
+“They said they were the will of the great galaxy... I wonder if they have
+---
+>  関係ないのかしら」
+any connection to Muge Zorbados or the Galactic Empire.”
+
+@42036 Show · ショウ
+# 审校：与 L6 的「永遠の存続」统一为 eternal existence，并让后半句更自然。
+> 「わからないな。永遠の存続って
+>  いったって、何を存続させるんだかさ」
+“I don't get it. They said eternal existence, but exist as what?”
+
+@42037 Maria · マリア
+> 「……ねぇ兄さん、あたし
+>  “アル＝イー＝クイス”って
+“...Hey, brother, I feel like I've heard the name Al-E-Quis
+---
+>  どこかで聞いたことがあるような気が
+>  するんだけど……」
+somewhere before...”
+
+@42038 Daisuke · 大介
+> 「マリアが? ふむ……………そういえば……」
+“You have, Maria? Hmm... now that you mention it...”
+
+@42039 Koji · 甲児
+> 「何か知ってるのか、大介さん?」
+“Do you know something about it, Daisuke?”
+
+@42040 Daisuke · 大介
+> 「マリアにいわれて思い出したが、
+>  確かに僕も
+“Maria mentioning it reminded me — I'm sure I've heard
+---
+>  その言葉を聞いたことがある。
+>  フリード星の古い伝説だ」
+those words too. It's an old legend of Planet Fleed.”
+
+@42041 Naida · ナイーダ
+> 「あたしも聞いたことがあるわ」
+“I've heard of it too.”
+
+@42042 Maria · マリア
+> 「ああっ、そうそう!
+>  やっと思い出したわ」
+“Ah, yes, that's it! I finally remembered.”
+
+@42043 Duo · デュオ
+> 「へぇ、それってどういうやつなんだ?」
+“Oh? So what kind of thing is it?”
+
+@42044 Daisuke · 大介
+> 「我々フリード星やギシン星、
+>  グラドス星などに
+“In the legends of the galactic prehistoric civilization that ruled the entire
+---
+>  文明が生まれるよりも遙かな昔、
+>  銀河全域をも支配したという
+galaxy long before civilization was born on Fleed, Gishin,
+---
+>  銀河先史文明の伝説の
+>  中に確かその言葉があった
+Grados and the rest, those words were certainly there.
+---
+>  “アル＝イー＝クイス”、
+>  銀河をたばね護りし者……」
+‘Al-E-Quis,’ the one who binds and protects the galaxy...”
+
+@42045 Quatre · カトル
+> 「銀河をたばね……護る……?」
+“Binds... and protects the galaxy...?”
+
+@42046 Daisuke · 大介
+> 「あくまでも伝説だ。それに伝説では
+>  銀河先史文明を築いたのは
+“It's only a legend. And according to the legend, the ones who built the
+---
+>  あれほど人間に近い外見の
+>  生物ではなかったはずだ
+galactic prehistoric civilization weren't creatures that looked so
+---
+>  奴らも伝説を知っていると
+>  いうだけのことかもしれない」
+close to human. They may simply know the legend too.”
+
+@42047 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長ーッ!!」
+“Captain Bright!!”
+
+@42048 Bright · ブライト
+> 「エ、エマリー……」
+“E-Emary...”
+
+@42049 Emary · エマリー
+> 「よく……よくご無事で……
+>  あたし、心配で心配で……」
+“Thank goodness... thank goodness you're safe... I was so, so worried...”
+
+@42050 Judau · ジュドー
+> 「艦長さん、こんなところで女性を
+>  泣かすなんて、よくないんじゃないの?」
+“Captain, making a woman cry out here isn't a very nice thing to do, you know?”
+
+@42051 Bright · ブライト
+> 「な、何をいってるんだジュドー」
+“W-what are you talking about, Judau?”
+
+@42052 Kayra · ケーラ
+> 「ちょっと、落ち着きなよエマリー」
+“Hey, calm down, Emary.”
+
+@42053 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「そ、そうね。あたしったらブライト艦長
+>  のお顔を見たらうれしくってつい……」
+“R-right. Look at me, I was just so happy to see Captain Bright that I...”
+
+@42054 Shinobu · 忍
+> 「ちっ、まったくやってらんねぇぜ。
+>  それよかエマリーさんよ
+“Tch, I can't take this. Anyway, Emary,
+---
+>  状況はどうなってんだい」
+what's the situation?”
+
+@42055 Emary · エマリー
+> 「あ、ああ、そうだったわ。艦長、
+>  ロームフェラ財団がアクシズを
+“Oh, right, that's right. Captain, it seems the Romefeller Foundation has
+---
+>  受け入れる決定をしたそうです。
+>  これ以上戦乱が続くのを
+decided to accept Axis. They say it's to avoid any further
+---
+>  避けるためという名目ですが、
+>  OZのレディ・アンによれば
+warfare, but according to OZ's Lady Une,
+---
+>  彼らはアクシズ軍との和平が
+>  成立すると考えているようです
+they believe peace with the Axis Forces will be established.
+---
+>  {HeroMech}にも
+>  アクシズに対して
+There's also a request for the {HeroMech} to
+---
+>  降伏するよう要請がありました」
+surrender to Axis.”
+
+@42056 Shinobu · 忍
+> 「冗談じゃねぇぜ。
+>  あのハマーンがそんなタマかよ
+“You've gotta be kidding. You think that Haman would go along with that?
+---
+>  ロームフェラなんざ真っ先に
+>  片づけられるに決まってるじゃねぇか」
+Romefeller would obviously be wiped out first.”
+
+@42057 Alan · アラン
+> 「地上の物事しか見る必要が
+>  なかった時代をひきずっている
+“They're relics of the past, dragging around an era when they only
+---
+>  過去の遺物どもだ。そんなことも
+>  わからんのさ
+needed to look at things on Earth. They just don't get it.
+---
+>  しかし、OZはどうするのだ?」
+But what about OZ?”
+
+@42058 Emary · エマリー
+> 「OZは武装を治安維持に
+>  必要な最低レベルにとどめ
+“OZ will limit its armaments to the minimum level needed for
+---
+>  都市機能の回復や
+>  難民救助を目的とした
+maintaining order, and become an organization
+---
+>  組織とするそうです」
+dedicated to restoring city functions and rescuing refugees.”
+
+@42059 Ryo · 亮
+> 「それだけは立派なものだ」
+“That part at least is admirable.”
+
+@42060 Kamille · カミーユ
+> 「だけど、ハマーンが地上の正常化
+>  に興味があるとは思えないな」
+“But I can't believe Haman has any interest in normalizing things on Earth.”
+
+@42061 Masato · 雅人
+> 「それもそうだけど……俺、
+>  なんだか疲れちゃったな……」
+“That's true, but... I'm kind of exhausted.”
+
+@42062 Sara · 沙羅
+> 「雅人……あんた何いってんだい。
+>  まさか降伏したほうが
+“Masato... what are you saying? Don't tell me you think surrendering is
+---
+>  いいっていうのかい!? じゃあいったい、
+>  あたしらは何のためにあの時
+better?! Then what in the world did we fight even OZ
+---
+>  OZにまで戦いを挑んだっていうのさ!」
+for back then?!”
+
+@42063 Masato · 雅人
+> 「そりゃ、わかってるけどさ……」
+“I know that, but still...”
+
+@42064 Rosamia · ロザミア
+> 「お兄ちゃん、あたしも疲れちゃったよぉ」
+“Big brother, I'm tired too...”
+
+@42065 Kamille · カミーユ
+> 「わかってるよ、ロザミィ」
+“I know, Rosamy.”
+
+@42066 Garrison · ギャリソン
+> 「みなさん相当お疲れのようですな。
+>  少しお休みになられてはいかがですかな」
+“You all seem quite exhausted. Why not take a little rest?”
+
+@42067 Hasan · ハサン
+> 「その意見には賛成だ。
+>  疲労がたまっていると思考もにぶる
+“I agree with that. When fatigue builds up, your thinking dulls too.
+---
+>  いい状態とはいいがたいだろう」
+It's hard to call this a good state to be in.”
+
+@42068 Bright · ブライト
+> 「そう思います。みんな、
+>  ハマーンがどう動くかもわからん
+“I think so too. Everyone, we don't even know how Haman will move.
+---
+>  今のうちに少しでも多く休んでおく
+>  ことにしよう。話はそのあとだ」
+Let's rest as much as we can while we can. We'll talk after that.”
+
+@42069 Kappei · 勝平
+> 「やれやれ、ようやく休めるってか」
+“Man, so we finally get to rest, huh?”
+
+@42070 Keiko · 恵子
+> 「とはいってもね……
+>  ぐっすり眠れるって感じじゃないわね」
+“Even so... it doesn't feel like we'll get a good night's sleep.”
+
+@42071 Uchuta · 宇宙太
+> 「まだ敵が残ってるっていうことだからな」
+“That's because the enemy's still out there.”
+
+@42072 Kappei · 勝平
+> 「アルイー……なんとかってのとアクシズだろ
+>  気にするなよ、そんなの」
+“The Al... whatever-it's-called and Axis, right? Don't worry about stuff like that.”
+
+@42073 Keiko · 恵子
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「そうはいってもね、勝平。
+>  ブライト艦長やみんなが、あれだけ
+“Even so, Kappei. Captain Bright and everyone else are that
+---
+>  心配しているんだから、
+>  少しは気にかけてもいいんじゃないの」
+worried, so couldn't you at least show a little concern?”
+
+@42074 Kappei · 勝平
+> 「でもよぉ、俺たちがいくら考えたって、
+>  どうにかなるってもんじゃないだろ」
+“But come on, no matter how much we think about it, it's not like we can do anything about it.”
+
+@42075 Uchuta · 宇宙太
+> 「奴らが立ち向かってきたら、
+>  戦わなきゃいけないってことだけは
+“The one thing that's clear is that if they come at us,
+---
+>  ハッキリしてるな」
+we'll have to fight.”
+
+@42076 Kappei · 勝平
+> 「そういうこと! いまのところ俺たちに
+>  できることは戦うことだけさ……
+“Exactly! Right now, all we can do is fight...
+---
+>  そんじゃ、おやすみ…………」
+Well then, good night...”
+
+@42077 Keiko · 恵子
+> 「ま、勝平ったら、もう寝ちゃってるわ」
+“Oh, Kappei, you're already asleep.”
+
+@42078 Uchuta · 宇宙太
+> 「いまは勝平のいう通りかもな。
+>  俺たちも休めるだけ休んでおこうぜ」
+“Right now Kappei might be right. Let's rest as much as we can too.”
+
+@42079 Wufei · 五飛
+> 「う……なんだここは?
+>  貴様、俺に何をした!」
+“Ugh... where is this? You! What did you do to me?!”
+
+@42080 Cath · キャス
+> 「ひゃっ、なによいきなり。危ないじゃない」
+“Eek, what's with you all of a sudden? That's dangerous, you know.”
+
+@42081 Sally · サリィ
+> 「落ち着きなさい、五飛」
+“Calm down, Wufei.”
+
+@42082 Wufei · 五飛
+> 「……サリィ・ポオか。ここはどこだ」
+“...Sally Po. Where is this place?”
+
+@42083 Sally · サリィ
+> 「ここはネェル・アーガマの、
+>  メディカル・ルームよ
+“This is the Nahel Argama's medical room.
+---
+>  あなたは{HeroMech}に
+>  救助されたの」
+You were rescued by the {HeroMech}.”
+
+@42084 Wufei · 五飛
+> 「なんだと? この俺が……」
+“What? Me, of all people...”
+
+@42085 Amuro · アムロ
+> 「気がついたようだね、五飛」
+“Looks like you've come to, Wufei.”
+
+@42086 Quatre · カトル
+> 「五飛、大丈夫なんですか!?」
+“Wufei, are you all right?!”
+
+@42087 Duo · デュオ
+> 「なんだよ、
+>  じゅうぶん元気そうじゃないか」
+“What's this? You look plenty healthy to me.”
+
+@42088 Wufei · 五飛
+> 「貴様たちか……」
+“So it's you lot...”
+
+@42089 Duo · デュオ
+> 「なぁ五飛、一つ聞いておきたいんだ
+>  けどよ。お前、いまの地球圏で
+“Hey Wufei, there's one thing I wanna ask you. In the Earth Sphere right now,
+---
+>  悪ってのは誰だと思う?」
+who do you think is evil?”
+
+@42090 Wufei · 五飛
+> 「くだらん質問だ。銀河帝国の
+>  ズールと、アクシズのハマーン・カーンだ
+“What a stupid question. Zuhl of the Galactic Empire, and Haman Karn of Axis.
+---
+>  奴らが悪だ」
+They're the evil ones.”
+
+@42091 Quatre · カトル
+> 「五飛……洗脳がとけたんだ……
+>  よかった……」
+“Wufei... the brainwashing wore off... thank goodness...”
+
+@42092 Wufei · 五飛
+> 「洗脳? なんの話だ」
+“Brainwashing? What are you talking about?”
+
+@42093 Duo · デュオ
+> 「あ～あ、これだもんなぁ」
+“Ohh, see, this is what we're dealing with.”
+
+@42094 Wufei · 五飛
+> 「なんだと!? ……くっ、ズールめ!
+>  まさかこの俺が、悪のために
+“What?! ...Ngh, damn you, Zuhl! To think that I was made to
+---
+>  戦わされていたとは……くそぉっ!!」
+fight for evil... damn it!!”
+
+@42095 Amuro · アムロ
+> 「落ち着いてくれ、五飛。ズールは
+>  倒れた。いま俺たちが考えるべき
+“Calm down, Wufei. Zuhl has fallen. The problem we need to think about
+---
+>  問題は、アクシズのハマーンなんだ」
+now is Haman of Axis.”
+
+@42096 Wufei · 五飛
+> 「…………」
+“...”
+
+@42097 Quatre · カトル
+> 「五飛、僕たちと一緒に、
+>  戦おう」
+“Wufei, fight together with us.”
+
+@42098 Wufei · 五飛
+> 「……必要ならば、俺は一人でも
+>  戦う。ハマーンは悪だ。悪は、俺が
+“...If necessary, I'll fight alone. Haman is evil. I will defeat
+---
+>  倒す。だが、お前たちに正義がある
+>  のかどうか、俺はまだ確かめていない」
+evil. But whether you have justice on your side, I haven't confirmed yet.”
+
+@42099 Amuro · アムロ
+> 「しかし、アクシズ軍と戦わねばならない
+>  ことには、かわりがない」
+“But there's no changing the fact that we have to fight the Axis Forces.”
+
+@42100 Wufei · 五飛
+> 「……いいだろう。助けられた礼はする。
+>  その上で、お前たちが正しいのか
+“...Fine. I'll repay you for saving me. And on top of that,
+---
+>  俺が確かめてやる」
+I'll find out for myself whether you're in the right.”
+
+@42101 Sally · サリィ
+> 「五飛……」
+“Wufei...”

@@ -1,0 +1,109 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6122 Gaia · ガイア
+> 「くらえっ!」
+“Take this!”
+
+@6123 Gaia · ガイア
+> 「もらった!」
+“Got you!”
+
+@6124 Gaia · ガイア
+> 「黒い三連星の恐ろしさ、教えて
+>  やるわ!」
+“I'll teach you the terror of the Black Tri-Stars!”
+
+@6125 Gaia · ガイア
+> 「ふん、死ねっ!」
+“Hmph, die!”
+
+@6126 Gaia · ガイア
+# 审校：“Fall!” 语气偏弱，改为更符合战斗情境的 “Go down!”。
+> 「落ちろよ!」
+“Go down!”
+
+@6127 Gaia · ガイア
+> 「これで終わりだ!」
+“This is the end!”
+
+@6128 Gaia · ガイア
+> 「このっ!」
+“Why you!”
+
+@6129 Gaia · ガイア
+> 「やらせんわっ!」
+“I won't let you!”
+
+@6130 Gaia · ガイア
+> 「何だと!? バカな!?」
+“What?! Impossible!”
+
+@6131 Gaia · ガイア
+> 「マッシュ……オルテガ……すまん……」
+“Mash... Ortega... forgive me...”
+
+@6132 Gaia · ガイア
+> 「ぬううっ! このパイロット、
+>  ただものではないわっ!」
+“Ngh! This pilot is no ordinary foe!”
+
+@6133 Gaia · ガイア
+> 「ぐうううっ!
+>  バカな、押されているだと!?」
+“Guuh! Impossible, I'm being pushed back?!”
+
+@6134 Gaia · ガイア
+> 「何だ!?
+>  直撃を受けているだと!?」
+“What?! I'm taking direct hits?!”
+
+@6135 Gaia · ガイア
+> 「やるっ!
+>  だがこの程度ではやられんよ!」
+“Not bad! But this won't be enough to beat me!”
+
+@6136 Gaia · ガイア
+> 「ぬうっ! こいつ、意外とやるぞ!」
+“Ngh! This one's better than I expected!”
+
+@6137 Gaia · ガイア
+> 「ちいっ! この俺に当てるとは!」
+“Tch! To land a hit on me!”
+
+@6138 Gaia · ガイア
+> 「フン、そんなものか!?」
+“Hmph, is that all?!”
+
+@6139 Gaia · ガイア
+> 「効かんなぁ!」
+“That's nothing!”
+
+@6140 Gaia · ガイア
+# 审校：“you noisy fly” 稍显生硬，加 little 更自然且保留轻蔑语气。
+> 「ああ、うるさいハエめ!」
+“Yeah, yeah, you noisy little fly!”
+
+@6141 Gaia · ガイア
+> 「甘いわっ!」
+“Too naive!”
+
+@6142 Gaia · ガイア
+> 「当たるかよ!」
+“As if you'd hit me!”
+
+@6143 Gaia · ガイア
+> 「はっ! うわさほどではないわ!」
+“Ha! You're not as good as the rumors say!”
+
+@6144 Gaia · ガイア
+> 「はあん、ムダな事を!」
+“Hah, what a waste of effort!”
+
+@6145 Gaia · ガイア
+> 「なんだと!? 弾切れか!?」
+“What?! Out of ammo?!”
+
+@6146 Gaia · ガイア
+> 「くっ、この距離から攻撃できるのか
+>  あやつ!」
+“Tch, that thing can attack from this range?!”

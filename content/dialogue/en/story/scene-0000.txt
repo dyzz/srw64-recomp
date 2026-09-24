@@ -1,0 +1,526 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17347 Brad · ブラッド（本话主角）
+> 「師匠……」
+“Master...”
+
+@17348 Kurtz · カーツ（本话主角的对手）
+> 「いつまで、そうしているつもりだ、
+>  {HeroName}
+“How long do you intend to stay like that, {HeroName}?
+---
+>  もう師匠はいない
+Master is gone.
+---
+>  そして俺たちには、するべきことが
+>  あるはずだ」
+And there is something we ought to be doing.”
+
+@17349 Brad · ブラッド（本话主角）
+> 「{PartnerName}……しかし……」
+“{PartnerName}... But still...”
+
+@17350 Kurtz · カーツ（本话主角的对手）
+> 「あきれた軟弱さだな。貴様が
+>  それでは、師匠も草葉の陰で
+“What pathetic weakness. If you carry on like this, Master will be
+---
+>  泣いておられるだろうさ。もういい、
+>  俺はいくぞ。どのみち俺たちの戦いは
+weeping from beyond the grave. Enough, I am going. Either way, our battle is
+---
+>  まだ修行の一環。共にいかなくて
+>  はならん理由は、ないからな
+still part of our training. There is no reason we must go together.
+---
+>  貴様はそこで、いつまでも
+>  そうしているがいい」
+You can stay there and mope forever.”
+
+@17351 Kurtz · カーツ（本话主角的对手）
+> 「ムッ! これは!?」
+“Hm?! What is this?!”
+
+@17352 Brad · ブラッド（本话主角）
+> 「戦闘の音だ!
+“That is the sound of battle!
+---
+>  近くの町をゲリラが拠点に
+>  しているとは聞いていたが……」
+I had heard the guerrillas were using a nearby town as their base, but...”
+
+@17353 Kurtz · カーツ（本话主角的对手）
+> 「状況を確認するぞ、
+>  {HeroName}」
+“Let us confirm the situation, {HeroName}.”
+
+@17354 Dark General · 暗黒大将軍
+> 「ウワハハハハッ。
+>  よーし、やれぇっ!
+“MWAHAHAHA! Good, let them have it!
+---
+>  ムゲゾルバドス帝国の者どもに
+>  われらミケーネの力を
+Show the Muge Zorbados Empire the full power of Mycenae!
+---
+>  存分に見せてやるのだ!」
+Give them everything we have!”
+
+@17355 Brad · ブラッド（本话主角）
+> 「いかん、
+>  あの戦力差では勝てないぞ!」
+“This is bad, they cannot win with that difference in strength!”
+
+@17356 Kurtz · カーツ（本话主角的对手）
+> 「そうだな……
+>  全滅も時間の問題だ
+“Indeed... their annihilation is only a matter of time.
+---
+>  ここは俺たちが戦うべき敵を
+>  よく見ておくのがいいだろう」
+This is a good chance to get a clear look at the enemy we ought to be fighting.”
+
+@17357 Brad · ブラッド（本话主角）
+> 「なに!?
+>  ばかなことを言うな!
+“What?! Do not talk nonsense!
+---
+>  アースゲインとヴァイローズを
+>  出すんだ! 師匠の言葉をもう
+Launch Earthgain and Virose! Have you already
+---
+>  忘れたのか!?」
+forgotten Master's words?!”
+
+@17358 Kurtz · カーツ（本话主角的对手）
+> 「ばかは、貴様だ
+“You are the fool.
+---
+>  ゲリラが戦いで敗れるのは
+>  しかたのないこと
+It is only natural that guerrillas lose in battle.
+---
+>  今、俺たちがいったからといって、
+>  奴らには、なんの成長もない」
+Even if we fight now, they will gain nothing from it.”
+
+@17359 Brad · ブラッド（本话主角）
+> 「だが、このまま放っておいては
+>  町の人たちはどうなる!?
+“But if we leave them like this, what will happen to the townspeople?!
+---
+>  俺はゆくぞ!
+>  アースゲイン!!」
+I am going! Earthgain!!”
+
+@17360 Kurtz · カーツ（本话主角的对手）
+> 「ふん、いつまでたっても
+>  短絡的な奴だ
+“Hmph, you have always been short-sighted.
+---
+>  いいだろう、腕ならしには
+>  ちょうどいいくらいかもしれん」
+Fine. This may be just right for a little warm-up.”
+
+@17361 Brad · ブラッド（本话主角）
+> 「貴様ら、待て!」
+“You lot, wait!”
+
+@17362 Dark General · 暗黒大将軍
+> 「なんだ、お前らは?
+>  邪魔をするな!」
+“Who are you? Do not interfere!”
+
+@17363 Brad · ブラッド（本话主角）
+> 「黙れッ!
+“Silence!
+---
+>  なんの抵抗もできぬ町の人々まで
+>  をも巻き添えにするとは
+To drag in the townspeople, who cannot even resist,
+---
+>  なんと見下げ果てた奴らだ
+what despicable cowards you are.
+---
+>  俺たちが相手だ、来いっ!
+>  叩きつぶしてやる!」
+We are your opponents, come on! We will crush you!”
+
+@17364 Dark General · 暗黒大将軍
+> 「ぬうぅ、この暗黒大将軍に
+>  よくもほざいたな!
+“Grr, you dare spout such words to me, the Dark General!
+---
+>  それほど死にたいなら、貴様らも
+>  一緒に地獄へ送ってやろう
+If you wish to die so badly, I will send you all to hell together!
+---
+>  ゆけ!」
+Go!”
+
+@17365 ???
+> 「ほほぅ、なんとも勇敢な
+>  若者たちでございますな」
+“Ho ho, what brave young men they are.”
+
+@17366 ???
+> 「うん、先を越されたようだね
+“Yes, it seems they beat us to it.
+---
+>  だが、彼らはいい仲間となって
+>  くれそうだ」
+But they look like they will make fine comrades.”
+
+@17367 Brad · ブラッド（本话主角）
+> 「なんだと!?
+>  この、俺が負けたのか……!?」
+“What?! I... I lost...?!”
+
+@17368 Brad · ブラッド（本话主角）
+> 「ぐぅ、次から次へとっ!」
+“Ngh, one after another!”
+
+@17369 ???
+> 「これはちと、
+>  先がわからなくなってまいりましたな」
+“This is getting a bit hard to predict, I must say.”
+
+@17370 ???
+> 「さすがにあの数はきついようだね。
+>  やはり僕もいこう」
+“That many really is tough. I suppose I should go too.”
+
+@17371 Banjo · 万丈
+> 「カァァァムヒア!
+>  ダイタァァァンスリィーッ!!」
+“Cooome heeeere! Daitaaarn Threeee!!”
+
+@17372 Kurtz · カーツ（本话主角的对手）
+> 「なに!? また新手かぁっ!」
+“What?! More of them?!”
+
+@17373 Banjo · 万丈
+> 「待て、僕は反帝国組織
+>  カラバの破嵐万丈だ
+“Wait, I am Banjo Haran of the anti-Empire organization Karaba.
+---
+>  君たちに加勢する」
+I will lend you my strength.”
+
+@17374 Brad · ブラッド（本话主角）
+> 「なんだと!?」
+“What?!”
+
+@17375 Banjo · 万丈
+> 「敵ではない。僕も奴らを倒すために
+>  ここに来た」
+“I am not your enemy. I came here to defeat them too.”
+
+@17376 Brad · ブラッド（本话主角）
+> 「いいだろう。どうやら自信があるようだ
+>  腕前を見せてもらおう」
+“Fine. You seem confident. Let us see what you can do.”
+
+@17377 Banjo · 万丈
+> 「それはもう、たっぷりとね」
+“Oh, you will see plenty.”
+
+@17378 Banjo · 万丈
+> 「世のため人のため
+“For the world and for the people,
+---
+>  ムゲゾルバドス帝国の野望を
+>  打ち砕くダイターン3
+Daitarn 3, who will crush the ambitions of the Muge Zorbados Empire.
+---
+>  この日輪の輝きを、
+>  恐れぬのならばかかってこい!」
+If you do not fear the radiance of this sun, then come at me!”
+
+@17379 Dark General · 暗黒大将軍
+> 「ぐうぅぅぅ、おのれ人間どもめ。
+>  覚えておれ!」
+“Gwaaah, you wretched humans. Remember this!”
+
+@17380 Brad · ブラッド（本话主角）
+> 「逃げたか……
+>  残りも一気にいくぜ!」
+“He ran... Let us finish off the rest in one go!”
+
+@17381 Dark General · 暗黒大将軍
+> 「ぐうぅぅぅ、おのれ人間どもめ。
+>  覚えておれ!」
+“Gwaaah, you wretched humans. Remember this!”
+
+@17382 Brad · ブラッド（本话主角）
+> 「ふん、口ほどにもない奴だ。
+>  どうやら片づいたようだな」
+“Hmph, he was all talk. Looks like that is taken care of.”
+
+@17383 Dark General · 暗黒大将軍
+> 「おのれぇっ! 覚えておれ!!」
+“Curse you! Remember this!!”
+
+@17384 Banjo · 万丈
+> 「改めて自己紹介しよう。
+>  僕はカラバの破嵐万丈だ
+“Allow me to introduce myself properly. I am Banjo Haran of Karaba.
+---
+>  そして彼が……」
+And this is...”
+
+@17385 Garrison · ギャリソン
+> 「万丈様の執事、
+>  ギャリソン時田と申します
+“I am Banjo's butler, Garrison Tokita.
+---
+>  以後お見知りおきを」
+I hope we get along.”
+
+@17386 Kurtz · カーツ（本话主角的对手）
+> 「『武機覇拳流』
+>  {PartnerFull}だ」
+“‘Buki Haken-ryu’, {PartnerFull}.”
+
+@17387 Brad · ブラッド（本话主角）
+> 「『武機覇拳流』
+>  {HeroFull}
+“‘Buki Haken-ryu’, {HeroFull}.
+---
+>  礼はいわないぜ、
+>  万丈様とやら」
+I won't bow to you, Lord Banjo or whatever you are.”
+
+@17388 Banjo · 万丈
+> 「構わないさ。それから僕の事は
+>  万丈でいい
+“I don't mind. And you can just call me Banjo.
+---
+>  失礼だが『武機覇拳流』
+>  というのはなんだい?」
+Forgive me, but what exactly is this ‘Buki Haken-ryu’?”
+
+@17389 Brad · ブラッド（本话主角）
+> 「俺たちの師匠
+>  ヴィロー・スンダが、つくりあげた
+“The robot martial art that our master, Viro Sunda, created...
+---
+>  ロボットによる格闘術だ
+is a fighting art for robots.
+---
+>  俺のアースゲインと
+>  {PartnerName}のヴァイローズは
+My Earthgain and {PartnerName}'s Virose
+---
+>  その専用機体だ」
+are the machines built for it.”
+
+@17390 Kurtz · カーツ（本话主角的对手）
+> 「今は誰も知らなくとも、
+>  いずれ地球圏で知らぬものは
+“Even if no one knows of it now, eventually there will be no one in the Earth Sphere
+---
+>  いなくなる。
+>  俺たちの手によってな」
+who doesn't. And it will be by our hands.”
+
+@17391 Kurtz · カーツ（本话主角的对手）
+> 「察するところお前は
+>  金持ちのようだな
+“From what I gather, you seem to be a wealthy man.
+---
+>  だが最近では金持ちは
+>  帝国がいうところの
+But these days, the wealthy are always what the Empire calls
+---
+>  A級市民と
+>  決まっているはずだが?」
+A-class citizens, aren't they?”
+
+@17392 Banjo · 万丈
+> 「ああ、君のいうことは
+>  理解できる
+“Ah, I understand what you're saying.
+---
+>  こっちにも色々と
+>  複雑な事情があってね
+There are all sorts of complicated circumstances on my end too.
+---
+>  僕は戦前からそうだった
+>  わけじゃないのさ
+I wasn't like this before the war, you see.
+---
+>  だから目をつけられても資産を
+>  押さえられるということもなかった
+So even when they had their eye on me, they never seized my assets.
+---
+>  そのおかげで反帝国の人々に
+>  支援もできたし
+Thanks to that, I could support the anti-Imperial people,
+---
+>  そのための組織もつくれた
+>  というわけだ
+and build an organization for it.
+---
+>  つまりC級市民ですらない」
+In other words, I'm not even a C-class citizen.”
+
+@17393 Brad · ブラッド（本话主角）
+> 「帝国側じゃないなら、アンタらの
+>  背景事情はどうでもいいことだ
+“If you're not with the Empire, then your background doesn't matter to us.
+---
+>  いいかげんアンタが俺たちに
+>  加勢した理由を
+So how about you finally tell us
+---
+>  聞かせてくれないか?」
+why you lent us a hand?”
+
+@17394 Banjo · 万丈
+> 「おっと、僕としたことが
+“Whoops, how careless of me.
+---
+>  率直にいって、
+>  君たちの力を借りたい
+To put it bluntly, I want to borrow your strength.
+---
+>  僕たちの組織もかなり
+>  活動範囲を広げているが
+Our organization has been expanding its reach considerably,
+---
+>  帝国軍と直接、わたりあえる
+>  戦闘ロボットも
+but combat robots that can face the Imperial Army directly,
+---
+>  そのパイロットも、まだまだ
+>  不足している
+and pilots for them, are still in short supply.
+---
+>  君たちが帝国と戦う
+>  心と力をもっていることは
+You've already shown me that you have the heart and the power
+---
+>  すでに見せてもらった。
+>  ぜひ協力してほしい
+to fight the Empire. I truly want your help.
+---
+>  帝国軍と戦うつもりなら
+>  悪い話じゃないだろう?」
+If you intend to fight the Imperial Army, it's not a bad offer, is it?”
+
+@17395 Brad · ブラッド（本话主角）
+> 「1つだけ聞く。
+>  アンタらがしているのは
+“Just one question. What you're doing is
+---
+>  人々のための、
+>  正義の戦いなんだな?」
+a battle of justice, for the people. Right?”
+
+@17396 Banjo · 万丈
+> 「当然、世のため人のため、さ」
+“Of course. For the world and for the people.”
+
+@17397 Brad · ブラッド（本话主角）
+> 「いいだろう、その話のったぜ。
+>  {PartnerName}、お前もくるんだろう?」
+“All right, I'm in. {PartnerName}, you're coming too, right?”
+
+@17398 Kurtz · カーツ（本话主角的对手）
+> 「……そうだな。
+>  そうさせてもらうとするか」
+“...Yeah. I suppose I'll join you.”
+
+@17399 Banjo · 万丈
+> 「よし、決まりだ。これからよろしく頼む
+>  {HeroFull}、
+“Good, that settles it. I look forward to working with you, {HeroFull},
+---
+>  {PartnerName}。
+>  なにか必要なものがあったら、
+{PartnerName}. If you need anything,
+---
+>  僕かギャリソンに言ってくれ」
+just tell me or Garrison.”
+
+@17400 Brad · ブラッド（本话主角）
+> 「{HeroNick}と呼んでくれ。
+>  で、これからどうするんだ?」
+“Call me {HeroNick}. So, what do we do now?”
+
+@17401 Banjo · 万丈
+> 「とりあえず、カラバで研究を
+>  支援している博士の1人に
+“For now, we're going to meet one of the doctors
+---
+>  会いにいく予定だ」
+whose research Karaba supports.”
+
+@17402 Brad · ブラッド（本话主角）
+> 「へぇ、アンタら
+>  そんなこともしているのか」
+“Huh, so you guys do that kind of thing too.”
+
+@17403 Garrison · ギャリソン
+> 「科学者の方々、特に軍事
+>  関係や、それに転用できる
+“Scientists, especially those researching military matters
+---
+>  エネルギー関連の研究を
+>  されている方々は
+or energy-related fields that can be diverted to such uses,
+---
+>  帝国に目をつけられやすい
+>  ですからな
+tend to catch the Empire's eye.
+---
+>  ほかにも旧連邦の技術者など
+>  何人かの方がおりますが
+There are also several others, such as Former Federation engineers,
+---
+>  大半の方はもともと
+>  日本地区に研究施設を
+but most of them originally had research facilities
+---
+>  持たれていたのですよ
+in the Japan region.
+---
+>  ムゲゾルバドス帝国の占領前に
+>  私どもがご助力して
+Before the Muge Zorbados Empire occupied it, we assisted them
+---
+>  各地に散っていただいたので
+>  ございます」
+and had them scatter to various places.”
+
+@17404 Brad · ブラッド（本话主角）
+> 「……まぁいいや。で、
+>  その博士ってのは、どこにいるんだ?」
+“...Whatever. So where is this doctor?”
+
+@17405 Banjo · 万丈
+> 「カタールだ
+“Qatar.
+---
+>  今、僕のアシスタントが
+>  状況を調べに出ている」
+My assistant is out checking on the situation right now.”
+
+@17406 Brad · ブラッド（本话主角）
+> 「アシスタント?
+>  そんなのもいるのか」
+“Assistant? You have one of those too?”
+
+@17407 Banjo · 万丈
+> 「ああ、あとで紹介するよ」
+“Yeah, I'll introduce you later.”
+
+@17408 Kurtz · カーツ（本话主角的对手）
+> 「で、その博士というのは
+>  何を研究しているのだ?」
+“And what is this doctor researching?”
+
+@17409 Banjo · 万丈
+> 「光子力エネルギーさ」
+“Photon Power energy.”

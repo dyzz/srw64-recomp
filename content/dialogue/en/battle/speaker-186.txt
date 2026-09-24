@@ -1,0 +1,162 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12206 Tod · トッド
+> 「やらせるかよ!」
+“Like I'd let you!”
+
+@12207 Tod · トッド
+> 「落ちろってんだよ!!」
+“I said go down!!”
+
+@12208 Tod · トッド
+> 「もらった!!」
+“Got you!!”
+
+@12209 Tod · トッド
+> 「覚悟しな!!」
+“Say your prayers!!”
+
+@12210 Tod · トッド
+> 「こいつでとどめだ!!」
+“This one's the finisher!!”
+
+@12211 Tod · トッド
+> 「運が悪かったな!!」
+“Bad luck for you!!”
+
+@12212 Tod · トッド
+> 「これで終わりだ!!」
+“This is the end!!”
+
+@12213 Tod · トッド
+> 「このっ!!」
+“Why you!!”
+
+@12214 Tod · トッド
+> 「いけっ!!」
+“Go!!”
+
+@12215 Tod · トッド
+> 「貴様にも地獄を見せてやるぜ!!」
+“I'll show you hell too!!”
+
+@12216 Tod · トッド
+> 「落とさせてもらうぜ!!」
+“I'm gonna take you down!!”
+
+@12217 Tod · トッド
+> 「そんなにやられたいのかよ! なら、
+>  望みどおりにしてやるぜ!」
+“You wanna get hit that bad?! Then I'll give you what you want!”
+
+@12218 Tod · トッド
+> 「くっ! し、しまった!?」
+“Guh! D-damn it?!”
+
+@12219 Tod · トッド
+> 「くっ、しくじったってのか!?」
+“Guh, did I screw up?!”
+
+@12220 Tod · トッド
+> 「何っ!? なんだ、この力は……」
+“What?! What is this power...”
+
+@12221 Tod · トッド
+> 「うおっ!! くそ、ちょいとヤバいぜ……」
+“Whoa!! Damn, this is kinda bad...”
+
+@12222 Tod · トッド
+> 「バカな!? この俺が
+>  押されてるのか!?」
+“Impossible?! I'm being pushed back?!”
+
+@12223 Tod · トッド
+> 「ぬうっ! まだだ! この程度で俺が
+>  トッド・ギネスが落ちるかよっ!」
+“Ngh! Not yet! You think this is enough to bring down me, Tod Guines?!”
+
+@12224 Tod · トッド
+> 「ちいっ! やりやがったな!」
+“Tch! You got me!”
+
+@12225 Tod · トッド
+> 「くそっ! 当たっちまった!」
+“Damn! I got hit!”
+
+@12226 Tod · トッド
+> 「なめるなっ! こんな事で
+>  負けるもんか!!」
+“Don't mock me! Like I'd lose to something like this!!”
+
+@12227 Tod · トッド
+> 「こいつ!! 少しはできるようだな……
+>  だがっ!!」
+“Why you!! Seems you've got some skill... but!!”
+
+@12228 Tod · トッド
+> 「くっ! やるじゃないか!」
+“Guh! Not bad!”
+
+@12229 Tod · トッド
+> 「このっ! やらせるかよっ!!」
+“Why you! Like I'd let you!!”
+
+@12230 Tod · トッド
+> 「ハハハハ! そんなもんかよ!」
+“Hahahaha! Is that all you've got?!”
+
+@12231 Tod · トッド
+> 「効かないな!!」
+“That won't work!!”
+
+@12232 Tod · トッド
+> 「どうした、その程度か!?」
+“What's wrong, is that all?!”
+
+@12233 Tod · トッド
+> 「それがどうした!」
+“So what?!”
+
+@12234 Tod · トッド
+> 「並みの甲羅を使ってんじゃないよ!」
+“Don't go using run-of-the-mill armor!”
+
+@12235 Tod · トッド
+> 「当たるかよ!!」
+“Like that'll hit!!”
+
+@12236 Tod · トッド
+> 「甘いんだよ!」
+“Too soft!”
+
+@12237 Tod · トッド
+> 「なんのっ!」
+“No problem!”
+
+@12238 Tod · トッド
+> 「狙いが甘いぜ!」
+“Your aim's sloppy!”
+
+@12239 Tod · トッド
+> 「どこ狙ってやがる!」
+“What are you aiming at?!”
+
+@12240 Tod · トッド
+> 「させるかよっ!」
+“Like I'd let you!!”
+
+@12241 Tod · トッド
+> 「ムダなんだよ!」
+“It's useless!”
+
+@12242 Tod · トッド
+> 「ムダだといったろう!!」
+“I told you it's useless!!”
+
+@12243 Tod · トッド
+> 「ちっ、弾切れかよ! ついてねえぜ」
+“Tch, out of ammo?! Just my luck.”
+
+@12244 Tod · トッド
+> 「届かないだと!? ちっ、やってくれるぜ」
+“Can't reach?! Tch, you're good.”

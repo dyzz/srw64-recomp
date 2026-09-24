@@ -1,0 +1,132 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6042 Cecily · セシリー
+> 「敵!?」
+“Enemy?!”
+
+@6043 Cecily · セシリー
+# 审校：“There's no other way!”与“仕方がない”的无奈语气略有偏差，改为更贴切的表达。
+> 「仕方がないのよ!」
+“It can't be helped!”
+
+@6044 Cecily · セシリー
+> 「お願い、あたって!」
+“Please, hit!”
+
+@6045 Cecily · セシリー
+> 「あたれっ!」
+“Hit it!”
+
+@6046 Cecily · セシリー
+> 「これが!」
+“Take this!”
+
+@6047 Cecily · セシリー
+> 「これしかない!」
+“This is all I've got!”
+
+@6048 Cecily · セシリー
+# 审校：原文“人がつくったものなら”是条件句，初稿“If it's man-made!”省略了“なら”的语感，改为更完整自然的表达。
+> 「人がつくったものなら!」
+“If it was made by people!”
+
+@6049 Cecily · セシリー
+> 「きゃぁぁぁぁぁぁーっ!」
+“Kyaaaaaaaah!”
+
+@6050 Cecily · セシリー
+> 「あぁぁ!? シ、シーブック!」
+“Ahhh?! S-Seabook!”
+
+@6051 Cecily · セシリー
+> 「あぁ!? し、しまったっ!」
+“Ah?! Oh no!”
+
+@6052 Cecily · セシリー
+> 「あぁーっ!?
+>  シーブック……私どうしたらいい?」
+“Ahhh?! Seabook... what should I do?”
+
+@6053 Cecily · セシリー
+> 「あぁぁっ!?」
+“Ahhh?!”
+
+@6054 Cecily · セシリー
+> 「きゃぁぁぁぁーっ!」
+“Kyaaaaaah!”
+
+@6055 Cecily · セシリー
+> 「うぅっ脱出ポッドも動かないの!?」
+“Ugh, the escape pod won't move either?!”
+
+@6056 Cecily · セシリー
+> 「しまったっ!?」
+“Damn it?!”
+
+@6057 Cecily · セシリー
+> 「あぁ!?」
+“Ah?!”
+
+@6058 Cecily · セシリー
+> 「くっ、どうする!?」
+“Ngh, what do I do?!”
+
+@6059 Cecily · セシリー
+> 「くぅぅぅっ」
+“Nghhh!”
+
+@6060 Cecily · セシリー
+> 「ううぅっ」
+“Ugh!”
+
+@6061 Cecily · セシリー
+> 「あ、あたし……」
+“I-I...”
+
+@6062 Cecily · セシリー
+> 「あっ!?」
+“Ah?!”
+
+@6063 Cecily · セシリー
+> 「あ、あたったの!?」
+“I-it hit?!”
+
+@6064 Cecily · セシリー
+> 「よくも、くぐり抜けられた……」
+“To think it slipped through...”
+
+@6065 Cecily · セシリー
+> 「きたっ!」
+“Here it comes!”
+
+@6066 Cecily · セシリー
+> 「避け……られた?」
+“Did I... dodge?”
+
+@6067 Cecily · セシリー
+> 「あたるわけには!」
+“I can't let it hit!”
+
+@6068 Cecily · セシリー
+> 「みえるわっ!」
+“I can see it!”
+
+@6069 Cecily · セシリー
+> 「そんな攻撃!」
+“An attack like that!”
+
+@6070 Cecily · セシリー
+> 「なぜムダだと気づかないのですか!?」
+“Why don't you realize it's useless?!”
+
+@6071 Cecily · セシリー
+> 「ムダです!」
+“It's useless!”
+
+@6072 Cecily · セシリー
+> 「どういうこと!? 弾切れ!?」
+“What?! Out of ammo?!”
+
+@6073 Cecily · セシリー
+> 「届かないというの!?」
+“You mean it won't reach?!”

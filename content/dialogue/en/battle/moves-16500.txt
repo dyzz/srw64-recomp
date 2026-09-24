@@ -1,0 +1,498 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16500 Brad · ブラッド
+> 「やるなぁ……だがっ!」
+“Not bad... but!”
+
+@16501 Brad · ブラッド
+> 「くっ……やるな!」
+“Ngh... not bad!”
+
+@16502 Brad · ブラッド
+> 「さすがだな……だがこの程度で俺を
+>  止められるなどと思うな!」
+“Impressive... but don't think that's enough to stop me!”
+
+@16503 Brad · ブラッド
+> 「クッ、やるな{PartnerName}」
+“Ngh, not bad, {PartnerName}.”
+
+@16504 Brad · ブラッド
+> 「くっそぉ、なめやがって!」
+“Damn you, don't underestimate me!”
+
+@16505 Brad · ブラッド
+> 「{PartnerName}……
+>  お前の腕はこの程度か!?」
+“{PartnerName}... is that all you've got?!”
+
+@16506 Brad · ブラッド
+> 「どうした!?
+>  それがお前の本気の技か!?」
+“What's wrong?! Is that your real attack?!”
+
+@16507 Brad · ブラッド
+> 「ムダなことはやめろってんだよ!」
+“I'm telling you to cut the pointless crap!”
+
+@16508 Brad · ブラッド
+> 「瞬幻足っ!」
+“Phantom Step!”
+
+@16509 Brad · ブラッド
+> 「これが、瞬幻足だ!」
+“This is the Phantom Step!”
+
+@16510 Brad · ブラッド
+> 「みよ、瞬幻足!」
+“Behold, the Phantom Step!”
+
+@16511 Brad · ブラッド
+> 「この瞬幻足は貴様ごときに
+>  破られはしない!」
+“This Phantom Step won't be broken by the likes of you!”
+
+@16512 Brad · ブラッド
+> 「読み切ったぞ、{PartnerName}!」
+“I read you completely, {PartnerName}!”
+
+@16513 Kurtz · カーツ
+> 「くらいやがれ!」
+“Take this!”
+
+@16514 Kurtz · カーツ
+> 「はぁぁぁーっ!」
+“Haaaaah!”
+
+@16515 Kurtz · カーツ
+> 「{HeroName}!
+>  貴様にこれが受けきれるか!」
+“{HeroName}! Can you withstand this?!”
+
+@16516 Kurtz · カーツ
+> 「貴様をここで倒してみせる!」
+“I'll bring you down right here!”
+
+@16517 Kurtz · カーツ
+> 「{HeroName}!
+>  俺の技をくらってみろ!!」
+“{HeroName}! Taste my technique!!”
+
+@16518 Kurtz · カーツ
+> 「フン、動きが甘いぞ、{HeroName}!」
+“Hmph, your moves are sloppy, {HeroName}!”
+
+@16519 Kurtz · カーツ
+> 「貴様の動きなど、読むまでもない!」
+“I don't even need to read your movements!”
+
+@16520 Kurtz · カーツ
+> 「羅刹刃!」
+“Rasetsujin!”
+
+@16521 Kurtz · カーツ
+> 「敵を切り裂け!」
+“Slash the enemy apart!”
+---
+> 「羅刹刃!」
+“Rasetsujin!”
+
+@16522 Kurtz · カーツ
+> 「我が連撃は全てを貫く!」
+“My barrage pierces through everything!”
+---
+> 「魔槍連脚!」
+“Maso Renkyaku!”
+
+@16523 Kurtz · カーツ
+> 「魔槍連脚!!」
+“Maso Renkyaku!!”
+
+@16524 Kurtz · カーツ
+> 「止めれるものなら止めてみよ!」
+“Stop it if you can!”
+---
+> 「魔槍連脚!」
+“Maso Renkyaku!”
+
+@16525 Kurtz · カーツ
+> 「おぉぉぉーっ!」
+“Ooooh!”
+---
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16526 Kurtz · カーツ
+> 「くらいやがれっ!」
+“Take this!”
+---
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16527 Kurtz · カーツ
+> 「一撃必殺、爆斧無双断!」
+“One strike, certain kill: Bakufu Musodan!”
+
+@16528 Kurtz · カーツ
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16529 Kurtz · カーツ
+> 「いっくぞぉ! 受けろ、死の刃!」
+“Here I go! Take it, blade of death!”
+---
+> 「閃・剣・斬!!」
+“Sen! Ken! Zan!!”
+
+@16530 Kurtz · カーツ
+> 「受けろ! 閃剣斬!」
+“Take it! Senkenzan!”
+
+@16531 Kurtz · カーツ
+> 「貴様に見切れるか!」
+“Can you see through this?!”
+---
+> 「閃剣斬!」
+“Senkenzan!”
+
+@16532 Kurtz · カーツ
+> 「閃剣斬!!!」
+“Senkenzan!!!”
+
+@16533 Kurtz · カーツ
+> 「神槍裂脚!」
+“Shinso Rekkyaku!”
+
+@16534 Kurtz · カーツ
+> 「敵を滅せよ!」
+“Destroy the enemy!”
+---
+> 「神槍裂脚!」
+“Shinso Rekkyaku!”
+
+@16535 Kurtz · カーツ
+> 「我が連撃をもちて突き破れ!」
+“Pierce through with my barrage!”
+---
+> 「必殺! 神槍裂脚!」
+“Certain kill! Shinso Rekkyaku!”
+
+@16536 Kurtz · カーツ
+> 「俺の敵となったことを後悔しろ!」
+“Regret ever making an enemy of me!”
+---
+> 「必ぃぃーっ殺! 神槍裂脚!」
+“Certain kiiiill! Shinso Rekkyaku!”
+
+@16537 Kurtz · カーツ
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16538 Kurtz · カーツ
+> 「我が一撃はすべてを滅する!」
+“then my single strike shall destroy everything!”
+
+@16539 Kurtz · カーツ
+> 「恐怖を刻めぇぇぇーっ!」
+“Carve in the terror!”
+---
+> 「天王捷破斬ッ!」
+“Ten'o Shohazan!”
+
+@16540 Kurtz · カーツ
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16541 Kurtz · カーツ
+> 「我が一撃はすべてを滅する!」
+“then my single strike shall destroy everything!”
+
+@16542 Kurtz · カーツ
+> 「鬼神となりて討ち果たす!
+>  天王捷破斬ッ!」
+“Become a war god and strike them down! Ten'o Shohazan!”
+
+@16543 Kurtz · カーツ
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16544 Kurtz · カーツ
+> 「我が一撃はすべてを滅する!
+>  受けてみろ! 必殺奥義ぃぃぃ!」
+“then my single strike shall destroy everything! Take this! Ultimate secret technique!”
+
+@16545 Kurtz · カーツ
+# 审校：原文是招式名“天王捷破斬”的逐字喊法，词表必用译名为 Tenno Shohazan，不应拆成 Ten! No! Sho! Ha! Zan!
+> 「天・王・捷・破・斬!」
+“Ten'o Shohazan!”
+
+@16546 Brad · ブラッド
+> 「{PartnerNick}、あれをやるぞ!」
+“{PartnerNick}, let's do that one!”
+
+@16547 Kurtz · カーツ
+> 「あれか。いいだろう」
+“That one. Fine.”
+
+@16548 Kurtz · カーツ
+> 「いくぞッ!」
+“Here I go!”
+---
+> 「うなれ!
+>  この身に満ちる猛き闘気よ!」
+“Roar, fierce fighting spirit that fills me!”
+
+@16549 Brad · ブラッド
+# 审校：八部の鬼神指佛教八部众，原译“eight-fold demon gods”不准确；改为“gods of the eight legions”，并补出“very lives”以贴合“一命を賭して”的决绝语气。
+> 「天よ竜よ、八部の鬼神よ!
+>  我ら一命を賭して成就せんッ!」
+“Heaven and dragons, gods of the eight legions! We stake our very lives to see this through!”
+
+@16550 Kurtz · カーツ
+# 审校：“reduce all to nothing”偏直译，改为更自然的“That all may be annihilated”，保持Kurtz冷硬语气。
+> 「招雷せよ!
+>  すべてを滅却せんがため!」
+“Summon the lightning! That all may be annihilated!”
+
+@16551 Brad · ブラッド
+> 「冥府の鬼に語って聞かせよ!」
+“Tell it to the demons of the underworld!”
+
+@16552 Kurtz · カーツ
+> 「これが我らの必殺奥義ぃぃーっ!」
+“This is our ultimate secret art!”
+
+@16553 Brad · ブラッド
+> 「くらえぇぇーっ!」
+“Take this!”
+---
+> 「天・竜・魔・滅・陣!!」
+“Heaven-Dragon-Demon-Destruction-Formation!!”
+
+@16554 Kurtz · カーツ
+> 「うぉっ!?
+>  くっ、腕をあげたな、貴様!」
+“Whoa?! Hmph, you've improved, you bastard!”
+
+@16555 Kurtz · カーツ
+> 「バカな!?
+>  この俺がもろにくらっただと!?」
+“Impossible!? I took a direct hit!?”
+
+@16556 Kurtz · カーツ
+# 审校：原文“動きが読めなかったのか”是Kurtz说自己没读懂对方动作，原译“you read my moves”方向反了；改为“I couldn't read your moves”。
+> 「なに!?
+>  ぐ……動きが読めなかったのか!?」
+“What!? Ngh... I couldn't read your moves!?”
+
+@16557 Kurtz · カーツ
+# 审校：“play with you”语气偏轻佻，改为“take you on”更符合Kurtz冷硬傲慢的应战口吻。
+> 「く……面白い、相手をしてやろう!」
+“Hmph... interesting. I'll take you on!”
+
+@16558 Kurtz · カーツ
+> 「そうだ{HeroName}!
+>  もっと攻めてこいっ!」
+“That's right, {HeroName}! Come at me harder!”
+
+@16559 Kurtz · カーツ
+> 「{HeroName}……この俺相手では
+>  本気になれんとでもいうかぁっ!!」
+“{HeroName}... are you saying you can't get serious against me?!”
+
+@16560 Kurtz · カーツ
+> 「くっ……本気を出せ!」
+“Hmph... get serious!”
+
+@16561 Kurtz · カーツ
+> 「くっ……貴様、なめやがって!」
+“Hmph... you're mocking me, aren't you!”
+
+@16562 Kurtz · カーツ
+> 「貴っ様ぁぁーっ! ふざるなぁっ!!」
+“You bastard! Don't screw with me!!”
+
+@16563 Kurtz · カーツ
+> 「見たか、我が瞬幻足を!」
+“Did you see my Phantom Step?!”
+
+@16564 Kurtz · カーツ
+> 「ぬぅぅぅっ! 瞬幻足!」
+“Nghhh! Phantom Step!”
+
+@16565 Kurtz · カーツ
+> 「貴様ごときに、見切れはせんぞ!」
+“A wretch like you won't see through it!”
+
+@16566 Kurtz · カーツ
+> 「くっ、俺に瞬幻足を
+>  使わせるとはな」
+“Hmph, to make me use Phantom Step...”
+
+@16567 Manami · マナミ
+> 「ライトニングソォォード!」
+“Lightning Swoord!”
+
+@16568 Manami · マナミ
+> 「いくわよ! ライトニングソォォード!」
+“Here I go! Lightning Swoord!”
+
+@16569 Manami · マナミ
+> 「一刀両断!」
+“One clean cut!”
+---
+> 「ライトニングソォォード!」
+“Lightning Swoord!”
+
+@16570 Manami · マナミ
+> 「ダブルライトニングソォォォード!」
+“Double Lightning Swooord!”
+
+@16571 Manami · マナミ
+> 「受けてみなさい!」
+“Try and take this!”
+---
+> 「ダブルライトニングソォォォード!」
+“Double Lightning Swooord!”
+
+@16572 Manami · マナミ
+> 「いって! アッシャークルー!」
+“Go! Asher Crew!”
+
+@16573 Manami · マナミ
+> 「アッシャークルー!」
+“Asher Crew!”
+
+@16574 Manami · マナミ
+> 「やってみせる!」
+“I'll show you!”
+---
+> 「アッシャークルー!」
+“Asher Crew!”
+
+@16575 Manami · マナミ
+> 「さぁ、行くわよ!」
+“All right, here I go!”
+---
+> 「アッシャークルー!」
+“Asher Crew!”
+
+@16576 Manami · マナミ
+> 「アッシャークルー……シュート!」
+“Asher Crew... shoot!”
+
+@16577 Manami · マナミ
+> 「デストラクション・ブーメラン!」
+“Destruction Boomerang!”
+
+@16578 Manami · マナミ
+> 「観念しなさい!」
+“Give it up!”
+---
+> 「デストラクション・ブーメラン!」
+“Destruction Boomerang!”
+
+@16579 Manami · マナミ
+> 「逃がさないわ!」
+“You won't escape!”
+---
+> 「デストラクション・ブーメラン!」
+“Destruction Boomerang!”
+
+@16580 Manami · マナミ
+> 「これで終わりにするわ!」
+“I'll end this now!”
+---
+> 「デストラクションッブーメランッ!」
+“Destruction Boomerang!”
+
+@16581 Manami · マナミ
+> 「いくわ、必殺!」
+“Here I go, my finisher!”
+---
+> 「ブラッディィィハウリングッ!」
+“Bloody Howling!”
+
+@16582 Manami · マナミ
+> 「ブラッディィィーッハウリングッ!」
+“Bloody Howling!”
+
+@16583 Manami · マナミ
+> 「とどめよ!」
+“The finishing blow!”
+---
+> 「ブラッディハウリング!」
+“Bloody Howling!”
+
+@16584 Manami · マナミ
+> 「アルティメットォォーッビームッ!」
+“Ultimate Beam!”
+
+@16585 Manami · マナミ
+> 「とどめよ!」
+“The finishing blow!”
+---
+> 「アルティメットビーム!」
+“Ultimate Beam!”
+
+@16586 Manami · マナミ
+> 「これを受けてみなさい!」
+“Try and take this!”
+---
+> 「アルティメット・ビームッ!」
+“Ultimate Beam!”
+
+@16587 Manami · マナミ
+> 「いくわよ、ローレンス」
+“Here we go, Lawrence.”
+
+@16588 Lawrence · ローレンス
+> 「はいお嬢様」
+“Yes, my lady.”
+
+@16589 Manami · マナミ
+> 「ローレンス、照準セット!」
+“Lawrence, set the aim!”
+
+@16590 Lawrence · ローレンス
+> 「しかとあわせてございます」
+“It is perfectly aligned.”
+
+@16591 Manami · マナミ
+> 「ローレンス、あれを出すわ!」
+“Lawrence, bring that out!”
+
+@16592 Lawrence · ローレンス
+> 「準備万端ととのってございます」
+“Everything is fully prepared.”
+
+@16593 Manami · マナミ
+> 「武器選定、アッシャークルー」
+“Weapon selection: Asher Crew.”
+
+@16594 Lawrence · ローレンス
+> 「設定終了でございます、お嬢様」
+“Settings complete, my lady.”
+
+@16595 Manami · マナミ
+> 「{PartnerNick}!」
+“{PartnerNick}!”
+
+@16596 Aisha · アイシャ
+> 「わかっていますわ!」
+“I know!”
+
+@16597 Manami · マナミ
+> 「いくわよ、{PartnerNick}!」
+“Here we go, {PartnerNick}!”
+
+@16598 Aisha · アイシャ
+> 「発射はまかせていただくわ!」
+“Leave the firing to me!”
+
+@16599 Manami · マナミ
+> 「{PartnerNick}、照準はそっちへ」
+“{PartnerNick}, aim over there.”

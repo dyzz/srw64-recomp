@@ -1,0 +1,194 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11689 Aisha · アイシャ
+> 「ウフフ、いきますわよ」
+“Hehe, here I come.”
+
+@11690 Aisha · アイシャ
+> 「これを受けてごらんなさい!」
+“Try taking this!”
+
+@11691 Aisha · アイシャ
+> 「さぁ、いきますわよ!」
+“Now then, here I come!”
+
+@11692 Aisha · アイシャ
+> 「本気でやらせていただくわ!」
+“I'll show you my full power!”
+
+@11693 Aisha · アイシャ
+> 「この攻撃でどうかしら!?」
+“How do you like this attack?!”
+
+@11694 Aisha · アイシャ
+> 「なかなかよい動きのようですけれど、
+>  まだまだですわ!」
+“You move quite well, but you're still far from ready!”
+
+@11695 Aisha · アイシャ
+> 「さぁ、どうなさいます!?」
+“Now then, what will you do?!”
+
+@11696 Aisha · アイシャ
+> 「フフフ、それではだめですのよ!」
+“Hehehe, that simply won't do!”
+
+@11697 Aisha · アイシャ
+> 「そこですわね!」
+“Right there, isn't it?”
+
+@11698 Aisha · アイシャ
+> 「逃げられませんわよ!」
+“You can't escape!”
+
+@11699 Aisha · アイシャ
+> 「あら、お逃げになりませんの?」
+“Oh my, won't you run away?”
+
+@11700 Aisha · アイシャ
+> 「あなたたちは、許せませんわ!」
+“I will never forgive you people!”
+
+@11701 Aisha · アイシャ
+> 「さぁ……どうぞご覧になって」
+“Now... do take a look.”
+
+@11702 Aisha · アイシャ
+> 「どうやらわたくしの勝ちのようですわね」
+“It seems victory is mine.”
+
+@11703 Aisha · アイシャ
+> 「あぁ!? こ、このわたくしが……?」
+“What?! M-me, of all people...?”
+
+@11704 Aisha · アイシャ
+> 「こ、こんなのは何かの間違いですわ!」
+“Th-this must be some kind of mistake!”
+
+@11705 Aisha · アイシャ
+> 「そ、そんなことって……!?」
+“Th-this can't be...?!”
+
+@11706 Aisha · アイシャ
+> 「あぁっ! イヤァァーッ!」
+“Aah! Nooo!”
+
+@11707 Aisha · アイシャ
+> 「わ、わたくしはこんなところで
+>  倒れるわけにはまいりません!」
+“I-I cannot fall in a place like this!”
+
+@11708 Aisha · アイシャ
+> 「あぁ! い、いや、やめてぇ!」
+“Aah! N-no, stop!”
+
+@11709 Aisha · アイシャ
+> 「きゃぁぁーっ! もう……だめ」
+“Kyaaa! I... I can't...”
+
+@11710 Aisha · アイシャ
+> 「あぅぅ!?
+>  こんなにパワーが違うなんて!」
+“Agh?! Such a difference in power!”
+
+@11711 Aisha · アイシャ
+> 「こ、このわたくしが……!?」
+“M-me, of all people...?!”
+
+@11712 Aisha · アイシャ
+> 「うぅぅっ! もうだめですわ!」
+“Ugh! I can't go on!”
+
+@11713 Aisha · アイシャ
+> 「つっ、そうこなくてはウソですわね」
+“Tch, it wouldn't be right if you didn't fight back.”
+
+@11714 Aisha · アイシャ
+> 「これでこそ、倒す価値もありますわ!」
+“This is what makes defeating you worthwhile!”
+
+@11715 Aisha · アイシャ
+> 「うぅぅっ、ま、まだ、まだよ!」
+“Ugh, n-not yet! Not yet!”
+
+@11716 Aisha · アイシャ
+> 「フフフ、効きませんわね」
+“Hehehe, it doesn't work.”
+
+@11717 Aisha · アイシャ
+> 「ウフ、何かなさったのかしら?」
+“Hehe, did you do something just now?”
+
+@11718 Aisha · アイシャ
+> 「あらあら、それで精一杯ですの?」
+“Oh my, is that all you've got?”
+
+@11719 Aisha · アイシャ
+> 「あっ! ……油断してしまいましたわ」
+“Ah! ...I let my guard down.”
+
+@11720 Aisha · アイシャ
+> 「威力が弱すぎたようですわね?」
+“It seems your power was too weak?”
+
+@11721 Aisha · アイシャ
+> 「もう、やめたほうがよいのではなくて?」
+“Oh my, wouldn't you rather give up?”
+
+@11722 Aisha · アイシャ
+> 「フフフ、どこを狙ってらっしゃるの?」
+“Hehehe, whatever are you aiming at?”
+
+@11723 Aisha · アイシャ
+> 「そのような攻撃では、だめですわ」
+“An attack like that simply won't do.”
+
+@11724 Aisha · アイシャ
+> 「残念でしたわね、ウフフ」
+“Too bad for you. Hehe.”
+
+@11725 Aisha · アイシャ
+> 「そこですわね?」
+“Right there, isn't it?”
+
+@11726 Aisha · アイシャ
+> 「わたくしにもこの程度は!」
+“Even I can handle this much!”
+
+@11727 Aisha · アイシャ
+# 审校：Beam 前加不定冠词 a，更符合英语习惯。
+> 「あら、ビームは効きませんのよ?」
+“Oh my, a Beam won't work on me, you know?”
+
+@11728 Aisha · アイシャ
+# 审校：加强语气，使贵族女性口吻更自然。
+> 「あらあら、ムダでしたわねぇ」
+“Oh dear, oh dear, that was quite pointless, wasn't it?”
+
+@11729 Aisha · アイシャ
+# 审校：原文敬语口吻更明显，改为更礼貌的疑问。
+> 「これでよろしくて?」
+“Will this be quite all right?”
+
+@11730 Aisha · アイシャ
+> 「もうよろしいかしら?」
+“Is that quite enough for you?”
+
+@11731 Aisha · アイシャ
+# 审校：更贴合“わたくしとしたことが”的自责语气。
+> 「わたくしとしたことが……!」
+“To think that I, of all people...!”
+
+@11732 Aisha · アイシャ
+# 审校：failure 改为 mistake，更自然。
+> 「確認を怠ったのが失敗でしたわ」
+“My mistake was in failing to confirm it.”
+
+@11733 Aisha · アイシャ
+# 审校：reach 后补 him，使指代更明确。
+> 「と、届かないというのですか!?」
+“I-It won't reach him, you say?!”
+
+@11734 Aisha · アイシャ
+> 「くっ、なんて破廉恥な!」
+“Ngh, how shameless!”

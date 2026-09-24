@@ -1,0 +1,159 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12515 Black Knight · 黒騎士
+> 「勝負だ!」
+“Let's settle this!”
+
+@12516 Black Knight · 黒騎士
+> 「死ね!」
+“Die!”
+
+@12517 Black Knight · 黒騎士
+> 「そこかっ!」
+“There you are!”
+
+@12518 Black Knight · 黒騎士
+> 「やらせん!」
+“I won't let you!”
+
+@12519 Black Knight · 黒騎士
+> 「これでとどめだ!」
+“This is the finishing blow!”
+
+@12520 Black Knight · 黒騎士
+> 「ゆくぞ!」
+“Here I come!”
+
+@12521 Black Knight · 黒騎士
+> 「これでどうだっ!」
+“How's this?!”
+
+@12522 Black Knight · 黒騎士
+> 「なめるなっ」
+“Don't underestimate me!”
+
+@12523 Black Knight · 黒騎士
+> 「終わりだな!」
+“This is the end!”
+
+@12524 Black Knight · 黒騎士
+> 「逃がさん!」
+“You won't escape!”
+
+@12525 Black Knight · 黒騎士
+> 「フフフフッ」
+“Heheheheh.”
+
+@12526 Black Knight · 黒騎士
+# 审校：同上，黑骑士被击坠时的震惊，不是回应对方话语
+> 「なっ、なんだと!?」
+“W-what?!”
+
+@12527 Black Knight · 黒騎士
+> 「バカな……この私が……?」
+“Impossible... me...?”
+
+@12528 Black Knight · 黒騎士
+> 「やられたというのか!?」
+“I've been struck down?!”
+
+@12529 Black Knight · 黒騎士
+> 「なっ、なぜだ!?」
+“W-why?!”
+
+@12530 Black Knight · 黒騎士
+> 「おされている!? この私が!?」
+“I'm being pushed back?! Me?!”
+
+@12531 Black Knight · 黒騎士
+> 「うっ! なんというパワーだ!」
+“Ugh! What power!”
+
+@12532 Black Knight · 黒騎士
+> 「ぐぅぅっ! こ、こんなことでやられるわけ
+>  にはいかぬ」
+“Guh! I-I can't let this finish me.”
+
+@12533 Black Knight · 黒騎士
+> 「ぐぅっ! お、おのれぇ!」
+“Guh! Y-you bastard!”
+
+@12534 Black Knight · 黒騎士
+> 「まだだ! まだやられはせんよ!」
+“Not yet! I won't be defeated yet!”
+
+@12535 Black Knight · 黒騎士
+> 「ぐっ! 貴様ぁ!」
+“Guh! You wretch!”
+
+@12536 Black Knight · 黒騎士
+> 「うっ! 意外とやる」
+“Ugh! Better than I expected.”
+
+@12537 Black Knight · 黒騎士
+> 「なにっ! あたった!?」
+“What?! It hit?!”
+
+@12538 Black Knight · 黒騎士
+> 「うっ! この程度でいい気になるな」
+“Ugh! Don't get cocky over that.”
+
+@12539 Black Knight · 黒騎士
+> 「ちっ……やるな……」
+“Tch... not bad...”
+
+@12540 Black Knight · 黒騎士
+> 「くっ……共倒れはせぬ!」
+“Ngh... I won't go down with you!”
+
+@12541 Black Knight · 黒騎士
+> 「効かんな」
+“It's useless.”
+
+@12542 Black Knight · 黒騎士
+> 「その程度か」
+“Is that all?”
+
+@12543 Black Knight · 黒騎士
+> 「フッ、なめるな」
+“Hmph, don't underestimate me.”
+
+@12544 Black Knight · 黒騎士
+> 「ハッハッハッ、効かぬ!!」
+“Hahahahah, it's useless!!”
+
+@12545 Black Knight · 黒騎士
+> 「あまいな」
+“Too naive.”
+
+@12546 Black Knight · 黒騎士
+> 「こざかしい真似を」
+“What a petty trick.”
+
+@12547 Black Knight · 黒騎士
+> 「見切った!」
+“I saw through it!”
+
+@12548 Black Knight · 黒騎士
+> 「あたらん!!」
+“You won't hit me!!”
+
+@12549 Black Knight · 黒騎士
+> 「そんなものが通用するか!!」
+“You think that will work?!”
+
+@12550 Black Knight · 黒騎士
+> 「効かんといっている!」
+“I told you it's useless!”
+
+@12551 Black Knight · 黒騎士
+> 「ムダだ!」
+“Futile!”
+
+@12552 Black Knight · 黒騎士
+> 「しまった……反撃できん……」
+“Damn... I can't counter...”
+
+@12553 Black Knight · 黒騎士
+> 「なにっ!? 射程外からだと!?」
+“What?! From out of range?!”

@@ -1,0 +1,117 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7364 Alberto · アルベルト
+> 「逃がさん!」
+“You won't escape!”
+
+@7365 Alberto · アルベルト
+> 「チュアァァッ!」
+“Chuaaah!”
+
+@7366 Alberto · アルベルト
+> 「ヌゥアァァァァァァ!」
+“Nuaaaaaaah!”
+
+@7367 Alberto · アルベルト
+> 「とどめだっ!」
+“This is the finish!”
+
+@7368 Alberto · アルベルト
+> 「死ね」
+“Die.”
+
+@7369 Alberto · アルベルト
+> 「十傑集をなめるなぁぁぁぁぁっ!」
+“Don't underestimate the Ten Great Warriors!”
+
+@7370 Alberto · アルベルト
+> 「ハハハハッどうだぁっ」
+“Ha ha ha ha, how's that?!”
+
+@7371 Alberto · アルベルト
+> 「つおぅりゃぁぁぁっ!」
+“Tsooorryaaah!”
+
+@7372 Alberto · アルベルト
+> 「思い知れっ!」
+“Learn your place!”
+
+@7373 Alberto · アルベルト
+> 「さぁて決めてやるっ!」
+“Now then, I'll finish you off!”
+
+@7374 Alberto · アルベルト
+> 「フッフッフッフッフッ」
+“Heh heh heh heh heh.”
+
+@7375 Alberto · アルベルト
+> 「でぃやぁぁぁぁっ!」
+“Diiyaaaaaah!”
+
+@7376 Alberto · アルベルト
+> 「てこずらせおって」
+“You're making me work for it.”
+
+@7377 Alberto · アルベルト
+> 「問答無用!」
+“No questions asked!”
+
+@7378 Alberto · アルベルト
+> 「どけぇぃ!」
+“Out of my way!”
+
+@7379 Alberto · アルベルト
+> 「おおぉぉぅあぁぁぁっ」
+“Ooooh aaaah!”
+
+@7380 Alberto · アルベルト
+> 「き、貴様ぁぁっ!」
+“Y-you bastard!”
+
+@7381 Alberto · アルベルト
+> 「おおぉぉぅあぁぁぁっ」
+“Ooooh aaaah!”
+
+@7382 Alberto · アルベルト
+> 「な、なにぃっ!?」
+“Wh-what?!”
+
+@7383 Alberto · アルベルト
+> 「こしゃくなっ」
+“Insolent fool.”
+
+@7384 Alberto · アルベルト
+> 「ぬぅぅっ」
+“Ngh.”
+
+@7385 Alberto · アルベルト
+> 「フッフッ味な真似をっ」
+“Heh heh, clever trick.”
+
+@7386 Alberto · アルベルト
+> 「ふんっ」
+“Hmph.”
+
+@7387 Alberto · アルベルト
+> 「このザコがぁっ!」
+“You worthless grunt!”
+
+@7388 Alberto · アルベルト
+> 「どうした、よそ見はいかんぞ」
+“What's wrong? Don't look away.”
+
+@7389 Alberto · アルベルト
+> 「そこかぁっ!」
+“There you are!”
+
+@7390 Alberto · アルベルト
+> 「ふんっ」
+“Hmph.”
+
+@7391 Alberto · アルベルト
+> 「ふんっ」
+“Hmph.”
+
+@7392 Alberto · アルベルト
+> 「ふんっ」
+“Hmph.”

@@ -1,0 +1,438 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14500 Rei · レイ
+# 审校：同上，修正表达。
+> 「駆動部過大負荷!
+>  現状維持ハ危険!」
+“Drive unit overloaded! Maintaining current status is dangerous!”
+
+@14501 Eiji · エイジ
+> 「しまった!」
+“Damn!”
+
+@14502 Rei · レイ
+> 「燃料ポンプニ亀裂」
+“Crack in the fuel pump.”
+
+@14503 Eiji · エイジ
+# 审校：拖长音用连续 i 更自然，初稿“iiiit”拼写不规范。
+> 「くっそぉーっ!!」
+“Damn iiiiit!!”
+
+@14504 Rei · レイ
+> 「燃料ポンプニ亀裂」
+“Crack in the fuel pump.”
+
+@14505 Eiji · エイジ
+# 审校：同上，统一拖长音拼写。
+> 「くっそぉーっ!!」
+“Damn iiiiit!!”
+
+@14506 Rei · レイ
+> 「関節駆動部、過大負荷!」
+“Joint drive unit, overloaded!”
+
+@14507 Rei · レイ
+> 「関節駆動部、過大負荷!」
+“Joint drive unit, overloaded!”
+
+@14508 Eiji · エイジ
+# 审校：“急速回避だ”是战斗中的紧急指令，改为更自然的战斗用语。
+> 「レイ! 急速回避だ!」
+“Rei! Evasive action, now!”
+
+@14509 Eiji · エイジ
+# 审校：“出力最大”应译为 maximum output，初稿 max 过于口语化且与原文气势不符。
+> 「出力最大で回避!」
+“Evade at maximum output!”
+
+@14510 Rei · レイ
+> 「ターゲット、回避終了!」
+“Target, evasion complete!”
+
+@14511 Eiji · エイジ
+# 审校：同上，统一译法。
+> 「出力最大で回避!」
+“Evade at maximum output!”
+
+@14512 Rei · レイ
+> 「ターゲット、回避終了!」
+“Target, evasion complete!”
+
+@14513 Rei · レイ
+> 「アラームメッセージ!
+>  エネルギー残量ゼロ!」
+“Alarm message! Energy reserves at zero!”
+
+@14514 Eiji · エイジ
+# 审校：原文“くっ”是短促的咬牙声，句号多余，改为感叹号更符合战斗语气。
+> 「くっ」
+“Ngh!”
+
+@14515 Rei · レイ
+> 「アラームメッセージ!
+>  エネルギー残量ゼロ!」
+“Alarm message! Energy reserves at zero!”
+
+@14516 Eiji · エイジ
+# 审校：同上，统一语气。
+> 「くっ」
+“Ngh!”
+
+@14517 Rei · レイ
+> 「アラームメッセージ!
+>  敵対機射程外!」
+“Alarm message! Enemy out of range!”
+
+@14518 Eiji · エイジ
+# 审校：“卑怯なっ”是直接骂对方卑鄙，初稿“That's cowardly!”语气偏弱且不自然。
+> 「卑怯なっ!」
+“Coward!”
+
+@14519 Rei · レイ
+> 「アラームメッセージ!
+>  敵対機射程外!」
+“Alarm message! Enemy out of range!”
+
+@14520 Eiji · エイジ
+# 审校：同上，统一骂战语气。
+> 「卑怯なっ!」
+“Coward!”
+
+@14521 David · デビッド
+> 「ゴステロ! 俺が相手だ!」
+“Gosterro! I'm your opponent!”
+
+@14522 David · デビッド
+> 「ゴステロ! 俺が相手だ!」
+“Gosterro! I'm your opponent!”
+
+@14523 Simone · シモーヌ
+# 审校：“撃つわよっ”是女性角色简短有力的开火宣告，初稿“I'm firing!”稍显拖沓。
+> 「撃つわよっ!」
+“Firing!”
+
+@14524 Simone · シモーヌ
+> 「あたれっ!!」
+“Hit!!”
+
+@14525 Simone · シモーヌ
+# 审校：同上，统一译法。
+> 「撃つわよっ!」
+“Firing!”
+
+@14526 Simone · シモーヌ
+> 「あたれっ!!」
+“Hit!!”
+
+@14527 Le Cain · ル・カイン
+> 「V-MAXスーパーチャージ、オン!!」
+“V-MAX Super Charge, on!!”
+
+@14528 Le Cain · ル・カイン
+# 审校：“フン、愚かな”是两句短促的轻蔑语，用句号断开更贴合原文停顿。
+> 「フン、愚かな」
+“Hmph. Foolish.”
+
+@14529 Le Cain · ル・カイン
+> 「それで私に当てたつもりか?」
+“And you thought that hit me?”
+
+@14530 Le Cain · ル・カイン
+# 审校：“フッ”后应有停顿，改为句号更符合轻蔑语气。
+> 「フッ、貴様ごときでは、このザカールに
+>  傷一つつけることはできまい」
+“Heh. The likes of you couldn't put a single scratch on this Zakarl.”
+
+@14531 Le Cain · ル・カイン
+> 「V-MAXスーパーチャージ、オン!!」
+“V-MAX Super Charge, on!!”
+
+@14532 Gosterro · ゴステロ
+> 「ずたずたに切り刻んでやる!」
+“I'll cut you to ribbons!”
+
+@14533 Gosterro · ゴステロ
+# 审校：初稿“while you hear”翻译腔，改为更自然的祈使表达。
+> 「首の骨が砕ける音を聞きながら
+>  死んでいけぇ!」
+“Die listening to the sound of your neck bones shattering!”
+
+@14534 Gosterro · ゴステロ
+> 「骨という骨をきしませてやる!」
+“I'll make every bone in your body creak!”
+
+@14535 Gosterro · ゴステロ
+> 「切り刻んでやるっ!」
+“I'll cut you to pieces!”
+
+@14536 Gosterro · ゴステロ
+> 「レーザードパズソーで切り刻んでやる!」
+“I'll carve you up with the Laser Circular Saw!”
+
+@14537 Gosterro · ゴステロ
+# 审校：“ははははっ”后应有停顿，改为感叹号更符合狂笑语气。
+> 「ははははっ、今度は女か!
+>  気に入ったぜ!」
+“Hahahaha! A woman this time! I like it!”
+
+@14538 Gosterro · ゴステロ
+# 审校：“エイジィ、エイジィィィッ”是呼喊名字并拖长，初稿连写不自然，改为分开呼喊。
+> 「エイジィ、エイジィィィッ!」
+“Eijiii! Eijiiiii!”
+
+@14539 Getty · ゲティ
+> 「骨まで砕いてやるぅ!」
+“I'll crush you to the bone!”
+
+@14540 Karla · カルラ
+> 「シュート!!」
+“Shoot!!”
+
+@14541 Karla · カルラ
+> 「ゲイル中尉の仇!」
+“For Lieutenant Gale!”
+
+@14542 Karla · カルラ
+> 「貴様らは許さん!」
+“I won't forgive any of you!”
+
+@14543 Karla · カルラ
+> 「ゲイル中尉……自分は、
+>  あなたのためなら……」
+“Lieutenant Gale... for you, I would...”
+
+@14544 Karla · カルラ
+> 「エイジ! 貴様だけはこの手で
+>  殺してやる!」
+“Eiji! You alone I'll kill with my own hands!”
+
+@14545 Karla · カルラ
+> 「死ね、エイジ!」
+“Die, Eiji!”
+
+@14546 Shingo · 真吾
+> 「コスモビーム!!」
+“Cosmo Beam!!”
+
+@14547 Shingo · 真吾
+> 「レッドインパルサー!!」
+“Red Impulser!!”
+
+@14548 Shingo · 真吾
+> 「ホルスタービーム!!」
+“Holster Beam!!”
+
+@14549 Shingo · 真吾
+> 「ゴーサーベル!!」
+“Go Saber!!”
+
+@14550 Shingo · 真吾
+> 「ゴースティック!!」
+“Go Stick!!”
+
+@14551 Shingo · 真吾
+> 「スペースバズーカ!!」
+“Space Bazooka!!”
+
+@14552 Shingo · 真吾
+# 机翻疑问：新译名：ゴーフラッシャー=Go Flasher
+> 「ゴーフラッシャーッ!!」
+“Go Flasher!!”
+
+@14553 Shingo · 真吾
+> 「これで決める!」
+“This finishes it!
+---
+> 「ゴーフラッシャーッ!!」
+Go Flasher!!”
+
+@14554 Amuro · アムロ
+> 「いけっ! ファンネル!!」
+“Go! Funnel!!”
+
+@14555 Amuro · アムロ
+> 「ファンネル!!」
+“Funnel!!”
+
+@14556 Amuro · アムロ
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14557 Amuro · アムロ
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14558 Amuro · アムロ
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14559 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14560 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14561 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14562 Amuro · アムロ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14563 Amuro · アムロ
+> 「いけっ! ファンネル!!」
+“Go! Funnel!!”
+
+@14564 Amuro · アムロ
+> 「ファンネル!!」
+“Funnel!!”
+
+@14565 Amuro · アムロ
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14566 Amuro · アムロ
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14567 Amuro · アムロ
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14568 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14569 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14570 Amuro · アムロ
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam is no mere showpiece!”
+
+@14571 Amuro · アムロ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14572 Char · シャア
+> 「ファンネル!!」
+“Funnel!!”
+
+@14573 Char · シャア
+> 「いけっ! ファンネル!!」
+“Go! Funnel!!”
+
+@14574 Char · シャア
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14575 Char · シャア
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14576 Char · シャア
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14577 Char · シャア
+> 「フッ、甘いな」
+“Hmph, too soft.”
+
+@14578 Char · シャア
+> 「ダミーにかかったか」
+“You fell for the decoy.”
+
+@14579 Char · シャア
+> 「ダミーも使い方次第なのだよ」
+“Decoys are all in how you use them.”
+
+@14580 Char · シャア
+> 「その程度の攻撃では、やられんよ」
+“An attack like that won't bring me down.”
+
+@14581 Char · シャア
+> 「ダミーにいってくれたか……」
+“You went for the decoy, did you...”
+
+@14582 Char · シャア
+> 「フッ、その程度か」
+“Hmph, is that all?”
+
+@14583 Kayra · ケーラ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14584 Gyunei · ギュネイ
+> 「行けっ! ファンネルッ!!」
+“Go! Funnel!!”
+
+@14585 Gyunei · ギュネイ
+> 「このファンネルでっ!!」
+“With this Funnel!!”
+
+@14586 Gyunei · ギュネイ
+> 「はははっ! ダミーを使えばこのくらい
+>  の芸当は!」
+“Hahaha! With a decoy, a trick like this is easy!”
+
+@14587 Gyunei · ギュネイ
+> 「このギュネイ・ガスにあてるつもりか!?」
+“You think you can hit Gyunei Guss?!”
+
+@14588 Gyunei · ギュネイ
+> 「そんな攻撃、ムダなんだよ!」
+“An attack like that is useless!”
+
+@14589 Quess · クェス
+> 「いけっ! ファンネルたち!」
+“Go! Funnels!”
+
+@14590 Quess · クェス
+> 「ファンネル!!」
+“Funnel!!”
+
+@14591 Quess · クェス
+> 「ファンネル、いけっ!!」
+“Funnel, go!!”
+
+@14592 Quess · クェス
+> 「フィンファンネル、お願いっ!!」
+“Fin Funnels, please!!”
+
+@14593 Quess · クェス
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14594 Quess · クェス
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”
+
+@14595 Quess · クェス
+> 「いけっ! ファンネルたち!」
+“Go! Funnels!”
+
+@14596 Quess · クェス
+> 「ファンネル!!」
+“Funnel!!”
+
+@14597 Quess · クェス
+> 「ファンネル、いけっ!!」
+“Funnel, go!!”
+
+@14598 Quess · クェス
+> 「フィンファンネル、お願いっ!!」
+“Fin Funnels, please!!”
+
+@14599 Quess · クェス
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”

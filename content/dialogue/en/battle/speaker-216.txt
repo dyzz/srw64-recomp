@@ -1,0 +1,106 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7814 Mangelo · マンジェロ
+> 「くたばれっ!!」
+“Die!!”
+
+@7815 Mangelo · マンジェロ
+> 「ふははははっ」
+“Fuhahahaha.”
+
+@7816 Mangelo · マンジェロ
+> 「ひぃやぁぁぁっ!」
+“Hiiyaaaah!”
+
+@7817 Mangelo · マンジェロ
+> 「ひょうっ!」
+“Hyoh!”
+
+@7818 Mangelo · マンジェロ
+> 「あばよっ!!」
+“See ya!!”
+
+@7819 Mangelo · マンジェロ
+> 「ぶっ殺してやるっ!!」
+“I'll kill you dead!!”
+
+@7820 Mangelo · マンジェロ
+> 「イィィヤァァァァッ!! 死ねぇっ!!」
+“Iiiyaaaaaah!! Die!!”
+
+@7821 Mangelo · マンジェロ
+> 「やめろおぉぉぉぉっ!!」
+“Stop iiiiiit!!”
+
+@7822 Mangelo · マンジェロ
+> 「うわあっ!!」
+“Uwaah!!”
+
+@7823 Mangelo · マンジェロ
+> 「うわぁぁぁぁっ!!」
+“Uwaaaaaah!!”
+
+@7824 Mangelo · マンジェロ
+> 「あ……!? お、俺様の美しい顔が
+>  ……よくも!!」
+“Ah...!? M-my beautiful face... how dare you!!”
+
+@7825 Mangelo · マンジェロ
+> 「うおぉぉっ、殺してやる!
+>  殺してやる!」
+“Uooooh, I'll kill you! I'll kill you!”
+
+@7826 Mangelo · マンジェロ
+> 「なにっ!?」
+“What!?”
+
+@7827 Mangelo · マンジェロ
+> 「えーい、くそぉーっ!!」
+“Grr, daaaamn!!”
+
+@7828 Mangelo · マンジェロ
+> 「くそーっ!!」
+“Damn iiit!!”
+
+@7829 Mangelo · マンジェロ
+> 「お、俺にここまでして生き残った
+>  奴はいねぇ!」
+“N-no one's ever survived this long against me!”
+
+@7830 Mangelo · マンジェロ
+> 「ヒヤァーッ!!」
+“Hyaaah!!”
+
+@7831 Mangelo · マンジェロ
+> 「ウハハハハハハハハハ!!」
+“Uhahahahahahahaha!!”
+
+@7832 Mangelo · マンジェロ
+> 「フヘッヘッヘ!!」
+“Fuheh heh heh!!”
+
+@7833 Mangelo · マンジェロ
+> 「ひょぉぉぉぉっ!!」
+“Hyoooooh!!”
+
+@7834 Mangelo · マンジェロ
+> 「計算どおりだぜぇ!」
+“Just as calculated!”
+
+@7835 Mangelo · マンジェロ
+> 「ヒッヒッヒッヒッヒ!!」
+“Hih hih hih hih hih!!”
+
+@7836 Mangelo · マンジェロ
+> 「弾切れとは計算違いだったか!?」
+“Out of ammo? That wasn't in my calculations!?”
+
+@7837 Mangelo · マンジェロ
+> 「エネルギー切れとは計算違い
+>  だったか!?」
+“Out of energy? That wasn't in my calculations!?”
+
+@7838 Mangelo · マンジェロ
+> 「射程範囲を計算して
+>  攻撃してくるとは、俺よりできるな!」
+“Attacking from outside my range... you're better than me!”

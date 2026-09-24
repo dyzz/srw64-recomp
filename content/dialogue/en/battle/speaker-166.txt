@@ -1,0 +1,128 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9470 Alan · アラン
+> 「これでどうだっ!!」
+“How's this!!”
+
+@9471 Alan · アラン
+> 「勝負は見えたな!」
+“The outcome is clear!”
+
+@9472 Alan · アラン
+> 「計算通りだ!」
+“Just as calculated!”
+
+@9473 Alan · アラン
+# 审校：原文“そこかっ!”是发现目标/攻击时机时的短促喊声，原译“There you are!”偏“找到你了”，改为更战斗化的“There!”。
+> 「そこかっ!」
+“There!”
+
+@9474 Alan · アラン
+> 「いくぞっ!」
+“Here I come!”
+
+@9475 Alan · アラン
+> 「動きがあまい!」
+“Your movements are sloppy!”
+
+@9476 Alan · アラン
+> 「機械に頼りすぎだ!」
+“You rely on machines too much!”
+
+@9477 Alan · アラン
+> 「あまいぞ!」
+“Too naive!”
+
+@9478 Alan · アラン
+> 「今を逃せばチャンスはない!」
+“Miss this moment and there's no chance!”
+
+@9479 Alan · アラン
+> 「しまったっ!?」
+“Damn!?”
+
+@9480 Alan · アラン
+# 审校：原文“これまでかっ!”是“到此为止了吗”，原译“This is the end, huh!”语气偏陈述，改为更贴合战斗中的疑问感叹。
+> 「これまでかっ!」
+“Is this the end?!”
+
+@9481 Alan · アラン
+> 「くっ、予想以上か……」
+“Ngh, more than I expected...”
+
+@9482 Alan · アラン
+> 「しまった! ダメージを受けすぎたか!?」
+“Damn! Took too much damage, huh?!”
+
+@9483 Alan · アラン
+> 「このままでは……やられる!」
+“At this rate... I'll be destroyed!”
+
+@9484 Alan · アラン
+> 「ぐぅっ、もうもたんか……」
+“Guh, I can't hold out anymore...”
+
+@9485 Alan · アラン
+# 审校：原译“Th-this is!”不完整且不通顺，补成“Th-this is...!”以对应原文的惊愕中断感。
+> 「こ、これはっ!」
+“Th-this is...!”
+
+@9486 Alan · アラン
+> 「くっこのパワーはデータ以上か!?」
+“Ngh, this power exceeds the data?!”
+
+@9487 Alan · アラン
+> 「まだだ、まだいけるはずだっ!」
+“Not yet, I should still be able to go!”
+
+@9488 Alan · アラン
+> 「まだこんなものではっ!」
+“This is nothing yet!”
+
+@9489 Alan · アラン
+> 「この程度で!」
+“This little?!”
+
+@9490 Alan · アラン
+> 「この程度ならばな」
+“If it's only this much.”
+
+@9491 Alan · アラン
+> 「たいした攻撃ではないな」
+“Not much of an attack.”
+
+@9492 Alan · アラン
+> 「そんな攻撃など効きはしない!」
+“An attack like that won't work on me!”
+
+@9493 Alan · アラン
+> 「うるさいハエどもめ」
+“Noisy flies, the lot of you.”
+
+@9494 Alan · アラン
+> 「機械に頼りすぎるからこうなる!」
+“This is what happens when you rely on machines too much!”
+
+@9495 Alan · アラン
+> 「ねらいが甘いようだな!」
+“Your aim seems sloppy!”
+
+@9496 Alan · アラン
+> 「そんな腕では!」
+“With skill like that!”
+
+@9497 Alan · アラン
+> 「かわせる!」
+“Dodge this!”
+
+@9498 Alan · アラン
+> 「無駄だ!」
+“It's useless!”
+
+@9499 Alan · アラン
+> 「くっ、予想以上に早かったな……」
+“Ngh, faster than I expected...”
+
+@9500 Alan · アラン
+> 「ここからでは当たらんか!?」
+“Can't hit from here, huh?!”

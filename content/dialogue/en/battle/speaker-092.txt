@@ -1,0 +1,246 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6202 Duo · デュオ
+> 「よぉし、もらったぜぇ!」
+“All right, gotcha!”
+
+@6203 Duo · デュオ
+> 「今日は、後へは退けないぜぇ!」
+“Today I ain't backing down!”
+
+@6204 Duo · デュオ
+> 「こっちからいくぜぇ!」
+“I'm coming at ya!”
+
+@6205 Duo · デュオ
+> 「へへっ、死ぬぜぇ、死んじまうぞぉっ!」
+“Heh, you're dead, you're so dead!”
+
+@6206 Duo · デュオ
+> 「ばっかやろーっ!」
+“You idiot!”
+
+@6207 Duo · デュオ
+> 「はやいな」
+“You're fast.”
+
+@6208 Duo · デュオ
+> 「やられちまえってんだよ!!」
+“I'm tellin' ya to just die!!”
+
+@6209 Duo · デュオ
+> 「死ねよっ!!」
+“Die!!”
+
+@6210 Duo · デュオ
+> 「邪魔すんなっつってんだろ!!」
+“I said don't get in my way!!”
+
+@6211 Duo · デュオ
+> 「いっくぜぇぇぇぇっ!!」
+“Here I gooo!!”
+
+@6212 Duo · デュオ
+> 「覚悟しなっ!!」
+“Say your prayers!!”
+
+@6213 Duo · デュオ
+> 「このやろおぉぉぉっ!!」
+“You bastaard!!”
+
+@6214 Duo · デュオ
+> 「やろおぉぉぉぉーっ!」
+“You jeeerk!!”
+
+@6215 Duo · デュオ
+> 「じゃまだ、どけぇぇぇっ!!」
+“You're in the way, move it!!”
+
+@6216 Duo · デュオ
+> 「うかつに俺に近づくやつは……
+>  死ぬぜぇっ!」
+“Anyone who gets careless and comes near me... dies!”
+
+@6217 Duo · デュオ
+> 「俺と一緒に地獄へ行こうぜぇ!」
+“Come to hell with me!”
+
+@6218 Duo · デュオ
+> 「これで終わりだぁーっ!」
+“This is the end!!”
+
+@6219 Duo · デュオ
+> 「げ～……俺ってカッコわりぃ」
+“Ugh... I look so uncool.”
+
+@6220 Duo · デュオ
+> 「うわ!? チッ、悪いが俺はここでリタイア
+>  だ」
+“Whoa?! Tch, sorry, I'm bowing out here.”
+
+@6221 Duo · デュオ
+> 「あたた……こいつぁヤバイぜ」
+“Ouch... this is bad news.”
+
+@6222 Duo · デュオ
+> 「くうぅ～っ!! 効いたぁ……」
+“Gahh!! That hurt...”
+
+@6223 Duo · デュオ
+> 「うあっ!! ま、まじぃ……」
+“Ugh!! Th-this is serious...”
+
+@6224 Duo · デュオ
+> 「かあ～っ! やべえ、やられすぎたか」
+“Gahh! Damn, did I take too much?”
+
+@6225 Duo · デュオ
+> 「げ! マジかよおいっ!?」
+“Gah! You serious?!”
+
+@6226 Duo · デュオ
+> 「おぉぅ!? まいったねこりゃ……」
+“Whoa?! Man, this is rough...”
+
+@6227 Duo · デュオ
+> 「半端じゃないぜ、この攻撃は!」
+“This attack's no joke!”
+
+@6228 Duo · デュオ
+> 「ざまぁねぇや……」
+“Serves me right...”
+
+@6229 Duo · デュオ
+> 「冗談じゃねぇ!」
+“You gotta be kidding!”
+
+@6230 Duo · デュオ
+> 「うっ、なんてぇスピードとパワーなんだ!?」
+“Ugh, what speed and power is this?!”
+
+@6231 Duo · デュオ
+> 「つうっ、さすがはてごわいぜぇ」
+“Ngh, you're a tough one all right.”
+
+@6232 Duo · デュオ
+> 「な、なんのっ!!」
+“Wh-what was that?!”
+
+@6233 Duo · デュオ
+> 「あいてっ!! やるじゃねえか」
+“Ouch!! Not bad.”
+
+@6234 Duo · デュオ
+> 「こ、この! 俺を本気にさせたな!!」
+“Wh-why you! Now you've made me mad!!”
+
+@6235 Duo · デュオ
+> 「あつっ!!
+>  この……いい気になるんじゃねえっ!!」
+“Hot!! Why you... don't get cocky!!”
+
+@6236 Duo · デュオ
+> 「あうっ!! 何しやがる!!」
+“Agh!! What're you doing!!”
+
+@6237 Duo · デュオ
+> 「あたた……やってくれるじゃねえの!」
+“Ouch... you're really something!”
+
+@6238 Duo · デュオ
+> 「本気で俺を怒らせるなよ、
+>  長生きしたかったらな!」
+“Don't make me seriously mad, if you wanna live long!”
+
+@6239 Duo · デュオ
+> 「くそっ、ふざけやがって!」
+“Damn, you're messing with the wrong guy!”
+
+@6240 Duo · デュオ
+> 「こう攻撃が厳しいんじゃ動きが
+>  とれないぜ」
+“With an attack this fierce, I can't even move.”
+
+@6241 Duo · デュオ
+> 「くっ、これじゃ前へ進めないぜ」
+“Ngh, I can't push forward like this.”
+
+@6242 Duo · デュオ
+> 「なんだよ、そんなもんか?」
+“What's this, is that all you got?”
+
+@6243 Duo · デュオ
+> 「あ～ん? 効いてねえぜ」
+“Huuuh? That didn't even tickle.”
+
+@6244 Duo · デュオ
+> 「はははっ!! ち～っとも効かねえな!」
+“Hahaha!! That didn't hurt one bit!”
+
+@6245 Duo · デュオ
+> 「どうしたどうした、その程度か!?」
+“What's wrong, what's wrong, is that all?!”
+
+@6246 Duo · デュオ
+> 「お～っと!」
+“Whoa there!”
+
+@6247 Duo · デュオ
+> 「当たらねえよ!!」
+“You won't hit me!!”
+
+@6248 Duo · デュオ
+> 「どこ狙ってんだよ、へたくそ!」
+“Where're you aiming, you lousy shot!”
+
+@6249 Duo · デュオ
+> 「へへっ、なんだよ、余裕じゃねぇか」
+“Heh, what's this, easy as pie.”
+
+@6250 Duo · デュオ
+> 「よっと、こんなもんか?」
+“Whoops, is that all?”
+
+@6251 Duo · デュオ
+> 「甘いってんだよ!」
+“I said you're too soft!”
+
+@6252 Duo · デュオ
+> 「とりあえず、かわしときますか」
+“Guess I'll just dodge this one.”
+
+@6253 Duo · デュオ
+> 「このデュオ様に当てようなんて、
+>  100年早いんだよ!」
+“Trying to hit the great Duo? You're a hundred years too early!”
+
+@6254 Duo · デュオ
+> 「おっとっと、自慢じゃねえが、
+>  逃げるのは得意なんでね!」
+“Whoa whoa, not to brag, but running's my specialty!”
+
+@6255 Duo · デュオ
+> 「嘘はつかねぇが逃げ隠れは
+>  得意でねぇっ!」
+“I don't lie, but I'm no good at running and hiding!”
+
+@6256 Duo · デュオ
+> 「へん、そんなビームなんざ!!」
+“Hmph, a Beam like that?!”
+
+@6257 Duo · デュオ
+> 「ムダなんだよ、ムダムダ!!」
+“It's useless, useless useless!!”
+
+@6258 Duo · デュオ
+> 「あちゃあ……弾切れかよ」
+“Aw man... out of ammo already?”
+
+@6259 Duo · デュオ
+# 审校：原文是「届かねえんでやんの」，初稿译成“It doesn't even reach!”语气偏陈述，改为更口语、更符合Duo风格的“It won't reach!”
+> 「げっ!? 届かねえんでやんの」
+“Gah?! It won't reach!”
+
+@6260 Duo · デュオ
+> 「なんだぁ? 届かないってのかよ!?」
+“What the? You're telling me it won't reach?!”

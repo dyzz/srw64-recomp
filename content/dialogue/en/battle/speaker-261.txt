@@ -1,0 +1,152 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13094 Chibodee · チボデー
+> 「いくぜぇっ!」
+“Let's go!”
+
+@13095 Chibodee · チボデー
+> 「うぉぉぉぉぉっ!」
+“Woooooooh!”
+
+@13096 Chibodee · チボデー
+> 「おらおらおらぁっ!」
+“Ora ora ora!”
+
+@13097 Chibodee · チボデー
+> 「うらうらうらうらぁっ!」
+“Ura ura ura ura!”
+
+@13098 Chibodee · チボデー
+> 「くらいな!」
+“Take this!”
+
+@13099 Chibodee · チボデー
+> 「うおぅりゃぁぁぁぁっ!」
+“Woooryaaaaah!”
+
+@13100 Chibodee · チボデー
+> 「ちぇぁぁぁぁぁ!!」
+“Cheaaaaah!!”
+
+@13101 Chibodee · チボデー
+> 「でぇやぁぁぁ!!」
+“Deyaaaaah!!”
+
+@13102 Chibodee · チボデー
+> 「とりゃとりゃとりゃとりゃぁぁ!!」
+“Torya torya torya toryaaaah!!”
+
+@13103 Chibodee · チボデー
+> 「一発で決めてやるぜ」
+“I'll finish this in one shot.”
+
+@13104 Chibodee · チボデー
+> 「おおおぉぉぉぉぉ!」
+“Oooooooh!”
+
+@13105 Chibodee · チボデー
+> 「覚悟しな! ウィナーは俺たちだぜ!」
+“Get ready! The winner is us!”
+
+@13106 Chibodee · チボデー
+> 「くっ負けちまったか……」
+“Tch, I lost, huh...”
+
+@13107 Chibodee · チボデー
+> 「な、なんだとぉ!?」
+“W-what did you say?!”
+
+@13108 Chibodee · チボデー
+> 「オーマイガァッ!」
+“Oh my gaaah!”
+
+@13109 Chibodee · チボデー
+> 「シャリー、バニィ、キャス、ジャネット
+>  ……すまねぇ」
+“Shirley, Bunny, Cath, Janet... I'm sorry.”
+
+@13110 Chibodee · チボデー
+> 「俺は夢! 俺は希望!
+>  負けるわけにはっ!」
+“I'm a dream! I'm hope! I can't lose!”
+
+@13111 Chibodee · チボデー
+> 「ぐわぁぁ!?」
+“Guwaaah?!”
+
+@13112 Chibodee · チボデー
+> 「くっそぅ!」
+“Damn iiit!”
+
+@13113 Chibodee · チボデー
+> 「ノォゥッ、ノォゥッ!」
+“Nooo, nooo!”
+
+@13114 Chibodee · チボデー
+> 「ぐ、あぁぁぁぁぁ」
+“Guh, aaaaaah...”
+
+@13115 Chibodee · チボデー
+> 「やるじゃねぇか」
+“Not bad at all.”
+
+@13116 Chibodee · チボデー
+> 「なにっ!?」
+“What?!”
+
+@13117 Chibodee · チボデー
+> 「な、なにぃ、力負けしているだとぅ!?」
+“W-what, I'm losing on raw power?!”
+
+@13118 Chibodee · チボデー
+> 「俺は誓ったんだ!
+>  必ず勝つってなぁ!」
+“I made a vow! That I'd definitely win!”
+
+@13119 Chibodee · チボデー
+> 「そうこなくっちゃなぁ」
+“Now that's what I'm talking about.”
+
+@13120 Chibodee · チボデー
+> 「その程度で俺を倒そうってのか!」
+“You think that's enough to beat me?!”
+
+@13121 Chibodee · チボデー
+> 「その程度で俺をやろうってのか!」
+“You think that's enough to take me down?!”
+
+@13122 Chibodee · チボデー
+> 「笑わせるぜ!」
+“You've gotta be kidding me!”
+
+@13123 Chibodee · チボデー
+> 「どうした、この程度かよ!?」
+“What's wrong, is this all you've got?!”
+
+@13124 Chibodee · チボデー
+> 「はずれちまったようだなぁ」
+“Looks like I missed, huh.”
+
+@13125 Chibodee · チボデー
+> 「ヘイッ、どうしたどうした?」
+“Hey, what's wrong, what's wrong?”
+
+@13126 Chibodee · チボデー
+> 「へっすげぇすげぇ」
+“Heh, impressive, impressive.”
+
+@13127 Chibodee · チボデー
+> 「きかねぇんだよ!」
+“It doesn't even faze me!”
+
+@13128 Chibodee · チボデー
+> 「ムダだぜ、ベイビィ」
+“It's useless, baby.”
+
+@13129 Chibodee · チボデー
+> 「俺もヤキがまわったぜ」
+“Guess I'm getting old.”
+
+@13130 Chibodee · チボデー
+> 「くそっ、こっからじゃ届かねぇか」
+“Damn, I can't reach from here, huh.”

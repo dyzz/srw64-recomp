@@ -1,0 +1,75 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6888 Alex · アレックス
+> 「フン」
+“Hmph.”
+
+@6889 Alex · アレックス
+> 「フッフッフッフッ」
+“Heh heh heh heh.”
+
+@6890 Alex · アレックス
+> 「これは処刑なのだよ」
+“This is an execution.”
+
+@6891 Alex · アレックス
+> 「お望みの所に撃ちこんでやるぜ!」
+“I'll put one right where you want it!”
+
+@6892 Alex · アレックス
+> 「とどめだ!」
+“This is the finishing blow!”
+
+@6893 Alex · アレックス
+> 「我々がよどみを正すのだっ!」
+“We shall correct the stagnation!”
+
+@6894 Alex · アレックス
+> 「これは粛正なのだよ!」
+“This is a purge!”
+
+@6895 Alex · アレックス
+> 「時代の流れに逆らう
+>  愚か者がぁっ!」
+“You fool, defying the flow of the times!”
+
+@6896 Alex · アレックス
+> 「し、しまったぁぁぁっ!」
+“D-damn it all!”
+
+@6897 Alex · アレックス
+> 「き、貴様っ貴様ぁぁーっ!」
+“Y-you, youuu!”
+
+@6898 Alex · アレックス
+> 「ばかなばかなばかなぁぁーっ!」
+“Impossible, impossible, impossible!”
+
+@6899 Alex · アレックス
+> 「く! おのれっ!」
+“Ngh! Curse you!”
+
+@6900 Alex · アレックス
+> 「ぐぅぅっ、殺してやる!」
+“Guh, I'll kill you!”
+
+@6901 Alex · アレックス
+> 「ククク、こいつの性能を
+>  甘くみたようだな」
+“Kukuku, seems you underestimated this machine's performance.”
+
+@6902 Alex · アレックス
+> 「ハハハハ、余裕すぎるな」
+“Hahahaha, this is too easy.”
+
+@6903 Alex · アレックス
+> 「ハハハハ、余裕すぎるな」
+“Hahahaha, this is too easy.”
+
+@6904 Alex · アレックス
+> 「弾切れだと!? そんなばかな!」
+“Out of ammo?! That's impossible!”
+
+@6905 Alex · アレックス
+> 「く、くそっ、どこからの攻撃だ!?」
+“D-damn it, where's that attack coming from?!”

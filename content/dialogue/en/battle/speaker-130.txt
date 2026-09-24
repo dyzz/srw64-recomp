@@ -1,0 +1,112 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10028 Boryuki · 暴竜鬼
+> 「俺は、暴竜鬼だ!」
+“I am Boryuki!”
+
+@10029 Boryuki · 暴竜鬼
+> 「いくぞぉっ!」
+“Here I come!”
+
+@10030 Boryuki · 暴竜鬼
+> 「このやろうっ!」
+“Why you!”
+
+@10031 Boryuki · 暴竜鬼
+> 「金と力を手に入れるんだ!!」
+“I'll get money and power!!”
+
+@10032 Boryuki · 暴竜鬼
+> 「くらえっ!」
+“Take this!”
+
+@10033 Boryuki · 暴竜鬼
+> 「これでどうだ!!」
+“How's this!!”
+
+@10034 Boryuki · 暴竜鬼
+> 「俺は勝つ! 勝てばすべてが手に入る!」
+“I'll win! If I win, I get everything!”
+
+@10035 Boryuki · 暴竜鬼
+> 「俺は勝つ! 勝った者が正義だ!」
+“I'll win! The winner is justice!”
+
+@10036 Boryuki · 暴竜鬼
+> 「負けた者が邪悪になるのだ!」
+“The loser is the evil one!”
+
+@10037 Boryuki · 暴竜鬼
+> 「そ、そんな……俺は……」
+“N-no... I...”
+
+@10038 Boryuki · 暴竜鬼
+> 「な……こ、こんな……母ちゃん……」
+“What... n-no... Mama...”
+
+@10039 Boryuki · 暴竜鬼
+> 「うわあぁぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@10040 Boryuki · 暴竜鬼
+> 「ぐ……い、いやだ! 負けるのはいやだ!!」
+“Guh... N-no! I don't want to lose!!”
+
+@10041 Boryuki · 暴竜鬼
+> 「そ、そんな、メカ暴竜鬼が……!?」
+“N-no, Mecha Boryuki...?!”
+
+@10042 Boryuki · 暴竜鬼
+> 「おのれっ! 邪魔する奴は
+>  ゆるさんっ!」
+“Curse you! I won't forgive anyone who gets in my way!”
+
+@10043 Boryuki · 暴竜鬼
+> 「な、なんだ!? 何が起こったんだ!?」
+“W-what?! What happened?!”
+
+@10044 Boryuki · 暴竜鬼
+> 「くっ……自ら望んで鬼になった俺が
+>  これしきで負けるわけには!」
+“Guh... I chose to become a demon myself. I can't lose to something like this!”
+
+@10045 Boryuki · 暴竜鬼
+> 「へっ、なんともねえよ!」
+“Heh, that was nothing!”
+
+@10046 Boryuki · 暴竜鬼
+> 「邪魔だてするなっ!!」
+“Don't get in my way!!”
+
+@10047 Boryuki · 暴竜鬼
+> 「無駄だ!!」
+“It's useless!!”
+
+@10048 Boryuki · 暴竜鬼
+> 「よぉーし、きまったっ!」
+“All right, that did it!”
+
+@10049 Boryuki · 暴竜鬼
+# 审校：“Whoops-a-daisy”语气过于轻快，不符合暴竜鬼的战斗喊叫，改为更自然的短促战吼。
+> 「あらよっと」
+“Hup!”
+
+@10050 Boryuki · 暴竜鬼
+> 「フンッ!」
+“Hmph!”
+
+@10051 Boryuki · 暴竜鬼
+> 「見たか、俺の力を!」
+“Did you see my power?!”
+
+@10052 Boryuki · 暴竜鬼
+> 「見たか、俺の力を!」
+“Did you see my power?!”
+
+@10053 Boryuki · 暴竜鬼
+> 「なんだっ!? 反撃できないのか!?」
+“What?! You can't fight back?!”
+
+@10054 Boryuki · 暴竜鬼
+> 「くっ、届かないだと!?」
+“Guh, out of range?!”

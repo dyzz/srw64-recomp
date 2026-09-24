@@ -1,0 +1,955 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@31631 Dungele · ダンゲル
+> 「ガンダル司令、{HeroMech}の
+>  奴らが見えましたぞ」
+“Commander Gandal, I can see the {HeroMech} lot!”
+
+@31632 Gandal · ガンダル
+> 「うむ。今回こそは、何としても
+>  マーズの奴めを血祭りにあげるのだ
+“Mm. This time, no matter what, I'll make a blood offering of that Mars.
+---
+>  ロゼよ、わかっておろうな」
+Rose, you understand what that means.”
+
+@31633 Rose · ロゼ
+> 「はっ! おまかせを!」
+“Yes, sir! Leave it to me!”
+
+@31634 Gandal · ガンダル
+> 「皆の者、出撃!
+>  地球人どもを皆殺しにせよ!」
+“Everyone, launch! Wipe out every last Earthling!”
+
+@31635 Beltorchika · ベルトーチカ
+> 「敵部隊、来ます!」
+“Enemy forces, incoming!”
+
+@31636 Bright · ブライト
+> 「弾幕を張れ! ……くそっ、
+>  リーブラ攻撃隊はまだか!」
+“Lay down a barrage! ...Damn it, where's the Libra Attack Team?!”
+
+@31637 Ginrei · 銀鈴
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長! あれは……!」
+“Captain Bright! That's...!”
+
+@31638 Ark · アーク（按段落 3DD1）
+> 「遅くなってすまない!
+>  間に合ったようだな!」
+“Sorry I'm late! Looks like I made it in time!”
+
+@31639 Selain · セレイン（按段落 3DD2）
+> 「遅くなった!
+>  どうやら、間に合ったようだな!」
+“I'm late! Seems I made it in time, though!”
+
+@31640 Brad · ブラッド（按段落 3DD3）
+> 「遅くなってすまん!
+>  間に合ったようだな!」
+“Sorry I'm late! Looks like I made it in time!”
+
+@31641 Manami · マナミ（按段落 3DD4）
+> 「遅くなってごめんなさい!
+>  間に合ったようですね!」
+“Sorry I'm late! It seems I made it in time!”
+
+@31642 Beauty · ビューティ
+> 「{HeroNick}!
+>  ヒイロやノインも……!
+“{HeroNick}! Heero and Noin too...!
+---
+>  もう、ハラハラさせないでよね!」
+Honestly, don't go scaring me like that!”
+
+@31643 Bright · ブライト
+> 「来たか! よし、反撃開始だ!」
+“You're here! Good, begin the counterattack!”
+
+@31644 Rose · ロゼ
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「マーグ隊長、あれがマーズです」
+“Captain Marg, that's Mars.”
+
+@31645 Marg · マーグ
+> 「そうか。聞こえるか、裏切り者
+>  マーズ、ズール皇帝の命により
+“I see. Can you hear me, traitor Mars? By order of Emperor Zuul,
+---
+>  このマーグが、貴様を抹殺する!」
+I, Marg, will eliminate you!”
+
+@31646 Takeru · タケル
+> 「マーグ……兄さん!? いったい
+>  どうしたっていうんだ、マーグ!
+“Marg... brother?! What on earth happened to you, Marg?!
+---
+>  俺の兄は、そんな男じゃなかった」
+My brother was never that kind of man!”
+
+@31647 Marg · マーグ
+> 「兄だって!? ハハハハハッ、俺は
+>  ひとりだ。弟をもった覚えはない」
+“Brother?! Hahahahaha, I have no one. I don't recall ever having a little brother.”
+
+@31648 Takeru · タケル
+> 「マーグッ!!」
+“Marg!!”
+
+@31649 Marg · マーグ
+> 「問答無用。覚悟しろ、マーズ!」
+“No arguments. Prepare yourself, Mars!”
+
+@31650 Marg · マーグ
+> 「ロゼ、マーズはどこだ」
+“Rose, where is Mars?”
+
+@31651 Rose · ロゼ
+> 「どうやらマーズは
+>  出撃していないようです」
+“It seems Mars hasn't launched.”
+
+@31652 Marg · マーグ
+> 「そうか……ならば、
+>  奴らを全滅させるだけのことだ」
+“I see... Then all I have to do is annihilate them all.”
+
+@31653 Takeru · タケル
+> 「あれは……まさかマーグ……兄さん!?」
+“That's... no, it can't be, Marg... brother?!”
+
+@31654 Marg · マーグ
+> 「ほう……お前がマーズだな。
+>  裏切り者マーズ
+“Oh... so you're Mars. Traitor Mars,
+---
+>  ズール皇帝の命により、
+>  このマーグが貴様を抹殺する!」
+by order of Emperor Zuul, I, Marg, will eliminate you!”
+
+@31655 Takeru · タケル
+> 「いったいどうしたっていうんだ、マーグ!?
+>  俺の兄はそんな男じゃなかった」
+“What on earth happened to you, Marg?! My brother was never that kind of man!”
+
+@31656 Marg · マーグ
+# 审校：与L17保持一致，统一为“I am alone”。
+> 「兄だって!? ハハハハハッ、俺は
+>  ひとりだ。弟をもった覚えはない」
+“Brother?! Hahahahaha, I am alone. I don't recall ever having a little brother.”
+
+@31657 Takeru · タケル
+> 「マーグッ!!」
+“Marg!!”
+
+@31658 Marg · マーグ
+> 「問答無用。覚悟しろ、マーズ!」
+“No arguments. Prepare yourself, Mars!”
+
+@31659 Takeru · タケル
+> 「マーグ、お前は本当にマーグなのか?
+>  俺の兄なのか!?」
+“Marg, are you really Marg? Are you my brother?!”
+
+@31660 Marg · マーグ
+> 「俺はマーグだ。だがお前の兄ではない」
+“I am Marg. But I am not your brother.”
+
+@31661 Takeru · タケル
+> 「マーグ!」
+“Marg!”
+
+@31662 Marg · マーグ
+> 「貴様のような奴はズール皇帝の
+>  名のもとに処分してくれる!」
+“A man like you will be disposed of in the name of Emperor Zuul!”
+
+@31663 Takeru · タケル
+> 「マーグ、やめろぉぉーっ!」
+“Marg, stop it!!”
+
+@31664 Takeru · タケル
+> 「くっ……マーグ!」
+“Ngh... Marg!”
+
+@31665 Marg · マーグ
+> 「死ね、マーズ!
+>  ズール皇帝のために!」
+“Die, Mars! For Emperor Zuul!”
+
+@31666 Gandal · ガンダル
+> 「あれは……マーズか!
+>  ズール皇帝陛下にその命
+“That's... Mars?! I'll offer up your life
+---
+>  ささげてみせる!」
+to His Majesty Emperor Zuul!”
+
+@31667 Gandal · ガンダル
+> 「デュークフリードめ……!
+>  なんとしても奴らをせん滅せねば!」
+“Curse you, Duke Fleed...! I must wipe them out no matter what!”
+
+@31668 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「きゃぁぁぁぁーっ!
+>  ブライト艦長ーっ!!」
+“Aaaaaaah! Captain Bright!!”
+
+@31669 Bright · ブライト
+> 「エ、エマリーッ!!」
+“E-Emary!!”
+
+@31670 Marg · マーグ
+> 「ロゼ、あのマーズというのは何者
+>  なんだ? なぜ俺を兄という」
+“Rose, who is this Mars? Why does he call me brother?”
+
+@31671 Rose · ロゼ
+> 「隊長をまどわせようとしているのです。
+>  なぜそのようなことを気になさるのですか」
+“He is trying to confuse you, Commander. Why do you let it bother you?”
+
+@31672 Marg · マーグ
+> 「わからない……なぜかあいつの
+>  ことが気になる。マーズのことが
+“I don't understand... For some reason, I can't stop thinking about him. About Mars.
+---
+>  俺とそっくりの顔。しかも俺のことを
+>  兄と呼ぶ……」
+A face just like mine. And he calls me brother...”
+
+@31673 Rose · ロゼ
+> (いけない……洗脳が弱まって
+>  いる……?)
+(This is bad... The brainwashing is weakening...?)
+
+@31674 Rose · ロゼ
+# 审校：同上，ロゼ对マーグ的称呼应为“Captain”而非“Commander”。
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「マーグ隊長、私の目をみてください」
+“Captain Marg, look into my eyes.”
+
+@31675 Marg · マーグ
+> 「目……?」
+“My eyes...?”
+
+@31676 Marg · マーグ
+> 「う……」
+“Ugh...”
+
+@31677 Rose · ロゼ
+> 「マーズはあなたの敵、銀河帝国の
+>  敵。マーズを倒すのがあなたの使命
+“Mars is your enemy, the enemy of the Galactic Empire. It is your mission to defeat Mars.
+---
+>  マーズを倒すのよ」
+Defeat Mars.”
+
+@31678 Marg · マーグ
+> 「……マーズ……マーズは俺が倒す!
+>  マーズ!!」
+“...Mars... I will defeat Mars! Mars!!”
+
+@31679 Emperor Zuul · ズール皇帝
+> 「ワール、その後の経過はどうだ」
+“Wahl, what is the status since then?”
+
+@31680 Wahl · ワール
+> 「はっ、先遣艦隊は苦戦している
+>  模様です。マーズもいまだ
+“Yes, sir. The advance fleet appears to be struggling. Mars is still
+---
+>  健在であります」
+alive and well.”
+
+@31681 Emperor Zuul · ズール皇帝
+> 「たかが辺境の一惑星ごときに、
+>  これほど手間取るとはな。ガンダルめ
+“To think a single backwater planet would give us so much trouble. Gandal,
+---
+>  あるいはわしが買いかぶっておったか」
+perhaps I overestimated him.”
+
+@31682 Wahl · ワール
+> 「地球にはマーズのみならず
+>  フリード星のデュークフリードも
+“On Earth, not only Mars but also Duke Fleed of Planet Fleed is said to
+---
+>  存在するとか。ガンダル司令には
+>  荷が重すぎたのやも知れませぬ
+be present. The burden may have been too great for Commander Gandal.
+---
+>  いかがいたしましょうか、陛下」
+What shall we do, Your Majesty?”
+
+@31683 Emperor Zuul · ズール皇帝
+> 「ガンダルが苦戦しておるというのも地
+>  球がいかに危険であるかの証拠
+“The fact that Gandal is struggling is proof of just how dangerous Earth is.
+---
+>  ワール、艦隊の用意をせい。ワシ
+>  みずから地球とやらへ向かうとしよう」
+Wahl, prepare the fleet. I shall head for this Earth myself.”
+
+@31684 Wahl · ワール
+> 「はっ、かしこまりました、陛下」
+“Yes, understood, Your Majesty.”
+
+@31685 Emperor Zuul · ズール皇帝
+> 「指揮はお前にまかせる。副官と
+>  してジャネラを連れて行くがよい」
+“I leave the command to you. Take Janera with you as your adjutant.”
+
+@31686 Pagan · パーガン
+> 「リリーナ様、どうしても
+>  お行きになるのですか?
+“Lady Relena, must you really go?
+---
+>  宇宙は今、戦乱の
+>  まっただ中だといいますのに……」
+They say space is now in the thick of war...”
+
+@31687 Relena · リリーナ
+> 「パーガン、わたくしの決意は
+>  わかっているはずですよ。兄ミリアルドを
+“Pagan, you should know my resolve. I am the only one who can stop my brother
+---
+>  とめられるのは、わたくししかいません。
+>  いいえ、たとえ説得できなくても……
+Milliardo. No, even if I cannot persuade him... I cannot simply sit still
+---
+>  わたくしには、このままじっと戦争を
+>  ながめていることなど、できないのです」
+and watch this war go on.”
+
+@31688 Pagan · パーガン
+> 「リリーナ様……」
+“Lady Relena...”
+
+@31689 Relena · リリーナ
+> 「ジュリア様、行ってまいります。
+>  地上のことは
+“Lady Julia, I will be going. Please take care of matters
+---
+>  どうかよろしくお願いします」
+on the ground.”
+
+@31690 Julia · ジュリア
+> 「わかりました。あなたのその決意は、
+>  尊いと思います
+“Understood. I think your resolve is noble.
+---
+>  行ってらっしゃい、リリーナさん。
+>  だけど、これだけは聞いておいて」
+Take care, Relena. But let me ask you just this one thing.”
+
+@31691 Relena · リリーナ
+> 「何でしょう?」
+“What is it?”
+
+@31692 Julia · ジュリア
+> 「決して死んではだめ。あなたは、
+>  これからの地球に必要な人なのよ
+“You must never die. You are someone the Earth will need from now on.
+---
+>  必ず無事で帰っていらして……」
+Be sure to come back safely...”
+
+@31693 Relena · リリーナ
+> 「ジュリア様……。わかりました、
+>  必ず生きてもどると約束いたします
+“Lady Julia... I understand. I promise I will come back alive.
+---
+>  どうか心配なさらないで下さい。
+>  それでは……行ってまいります」
+Please do not worry. Well then... I am off.”
+
+@31694 Treize · トレーズ
+> 「歴史はやはり我々人類に過
+>  酷な方向へと流れているようだね」
+“It seems history is indeed flowing in a harsh direction for us humans.”
+
+@31695 Lady · レディ
+> 「はい、トレーズ様の予想
+>  された通りです。また
+“Yes, just as you predicted, Lord Treize. Also, in light of the deaths of
+---
+>  デルマイユ公・ジャミトフ閣下の
+>  ご両名がお亡くなりになったことを
+Duke Dermail and His Excellency Jamitov, the Foundation's supreme council
+---
+>  受け、財団の最高幹部会は
+>  満場一致でトレーズ様への
+has unanimously resolved to request your return, Lord Treize.
+---
+>  復帰要請を決議したとのこと
+>  です。OZそして財団の代表として」
+As the representative of OZ and the Foundation.”
+
+@31696 Treize · トレーズ
+> 「そうだろうね。事態がここまで
+>  推移すれば、指導者のいない
+“I thought as much. If matters have progressed this far, the Romefeller Foundation
+---
+>  ロームフェラ財団など烏合の衆に
+>  すぎない。協議制では、めまぐるしく
+without a leader is nothing but a rabble. A council system cannot respond to
+---
+>  移り行く事態に対応できまい」
+the rapidly shifting situation.”
+
+@31697 Lady · レディ
+> 「では、やはりお受けになるのですね?」
+“Then you will accept after all?”
+
+@31698 Treize · トレーズ
+> 「無論だよ、レディ。地球圏の、
+>  いや人類の未来を決する
+“Of course, Lady. The players for the great stage that will decide the future
+---
+>  大舞台の役者はそろった。
+>  残された時間はあまり多くない」
+of the Earth Sphere—no, of humanity—are assembled. There is little time left.”
+
+@31699 Lady · レディ
+> 「はい、トレーズ様」
+“Yes, Lord Treize.”
+
+@31700 Treize · トレーズ
+> 「……諸君、この戦いは、
+>  ムゲゾルバドス帝国の時とは違う
+“...Everyone, this battle is different from the one against the Muge Zorbados Empire.
+---
+>  この地球そのものの未来を、
+>  我々の、人類の存亡をかけた
+This will be a battle for the future of Earth itself, for our—for humanity's—survival.
+---
+>  戦いとなる。銀河帝国との
+>  戦いに敗れれば、我々
+If we lose to the Galactic Empire, we Earth humans will be annihilated.
+---
+>  地球人類は、滅亡するのだ。
+>  今ここにおいてこそOZを再編し
+It is now, here, that we must reorganize OZ, and I ask you to entrust
+---
+>  諸君らの意志と行動を
+>  このトレーズに預けてもらいたい……」
+your will and your actions to me, Treize...”
+
+@31701 Henken · ヘンケン
+> 「ホワイトファングの連中が
+>  馬鹿なことをしでかしたおかげで
+“Thanks to those White Fang fools pulling their stupid stunt,
+---
+>  宇宙は大混乱だ」
+space is in complete chaos.”
+
+@31702 Chan · チェーン
+> 「起こったことをあれこれいっても
+>  しょうがありません。今、重要なのは
+“There's no use complaining about what's happened. What matters now is
+---
+>  そのおかげでネェルアーガマを
+>  ラビアンローズまで
+that thanks to it, we can get the Nahel Argama
+---
+>  持って行けるってことです」
+to La Vie en Rose.”
+
+@31703 Henken · ヘンケン
+> 「まあ俺が月までこれたのもそうだがな。
+>  他の補給はどうだ?」
+“Well, that's how I got to the moon too. What about the other supplies?”
+
+@31704 Chan · チェーン
+> 「ZZガンダムとアシュクリーフは
+>  問題ありませんね」
+“The ZZ Gundam and the Ashcleef are no problem.”
+
+@31705 Henken · ヘンケン
+> 「アシュクリーフ? それもアナハイムで
+>  つくったMSか?」
+“The Ashcleef? Is that another MS Anaheim built?”
+
+@31706 Chan · チェーン
+> 「違いますよ。ゾルバドス帝国が
+>  いた頃、フレモントインダストリーが
+“No. It's a machine Fremont Industry was developing for
+---
+>  帝国用として開発していた機
+>  体です。ほら、{HeroMech}に
+the Empire back when the Zorbados Empire was around. You know how {HeroMech} has
+---
+>  ソルデファーという試作機が
+>  あるじゃないですか
+a prototype called the Soldifar?
+---
+>  ASSAULT-DRAGOONっていい
+>  ましたっけ。あれの後継機ですよ
+It was called the ASSAULT-DRAGOON. This is its successor.
+---
+>  バランスも性能も申し分ない
+>  機体です
+Its balance and performance are flawless.
+---
+>  D.P.S.って操縦システムは
+>  少し恐いところもありますけど」
+Though the D.P.S. control system has some frightening aspects.”
+
+@31707 Henken · ヘンケン
+> 「それがなぜ我々の手に入ったんだ?」
+“How did that end up in our hands?”
+
+@31708 Chan · チェーン
+> 「月面制圧時にOZが入手した
+>  そうです。ただ適応できるパイロットが
+“I hear OZ acquired it during the lunar suppression. But they couldn't find
+---
+>  見つからなくて、未完成機として
+>  放置されていたところを、アナハイムが
+a pilot who could handle it, so it was left as an incomplete unit, and Anaheim
+---
+>  買い取ったらしいですよ。
+>  そうですよね、オクトバーさん」
+apparently bought it up. Isn't that right, October?”
+
+@31709 October · オクトバー
+> 「ええ。我々は{HeroMech}の
+>  戦闘データをもらっています
+“Yes. We have received the combat data of {HeroMech}.
+---
+>  ソルデファーのパイロットなら、
+>  アシュクリーフも使えるはずですからね
+If one can pilot the Soldifar, one should be able to use the Ashcleef as well.
+---
+>  もっとも上の判断では、新しい
+>  技術のテストデータをほしいと
+Though the higher-ups probably just want
+---
+>  いうところでしょう」
+test data for the new technology.”
+
+@31710 Chan · チェーン
+> 「ZZガンダムは問題ありませんね」
+“The ZZ Gundam is no problem.”
+
+@31711 Henken · ヘンケン
+> 「それだけか。状況はかなり厳しいな」
+“Is that all? The situation is pretty grim.”
+
+@31712 Chan · チェーン
+> 「ZZガンダムは問題ありませんね」
+“The ZZ Gundam is no problem.”
+
+@31713 Henken · ヘンケン
+> 「それだけか。状況はかなり厳しいな」
+“Is that all? The situation is pretty grim.”
+
+@31714 Chan · チェーン
+> 「オクトバーさん、νガンダムの調整は
+>  どうなっているんです?」
+“October, how's the adjustment on the Nu Gundam coming along?”
+
+@31715 October · オクトバー
+> 「まだ時間がかかります。兵装も
+>  一部が取りつけられていません
+“It'll still take time. Some of the armaments haven't even been mounted yet.
+---
+>  実戦に出すのは無理ですね」
+There's no way it can go into combat.”
+
+@31716 Chan · チェーン
+> 「そんな、いま渡せなかったら次は
+>  いつになるかわからないんですよ!?」
+“Come on, if we can't hand it over now, who knows when the next chance will be?!”
+
+@31717 October · オクトバー
+> 「無理なものは無理ですよ」
+“Impossible is impossible.”
+
+@31718 Chan · チェーン
+> 「わかりました。調整は
+>  ネェルアーガマでやります
+“Understood. We'll do the adjustments aboard the Nahel Argama.
+---
+>  残りのデータ、まわしといてください」
+Please send over the rest of the data.”
+
+@31719 October · オクトバー
+> 「やめてください。未完成のまま
+>  持ち出すつもりですか」
+“Please don't. You intend to take it out unfinished?”
+
+@31720 Chan · チェーン
+# 审校：アムロ是大尉，应译为 Captain，不是 Lieutenant。
+> 「アムロ……大尉が待ってるんです!
+>  あとは私と彼で完成させるわ」
+“Amuro... the Captain is waiting! I'll finish it with him.”
+
+@31721 October · オクトバー
+> 「どうなっても知りませんよ」
+“Don't blame me for whatever happens.”
+
+@31722 Chan · チェーン
+> 「大丈夫です! ヘンケン中佐、
+>  ネェルアーガマの発進準備
+“It'll be fine! Lieutenant Colonel Henken, please get the Nahel Argama
+---
+>  急いでもらってください。私はνを
+>  搬入させます」
+ready to launch, and hurry. I'll have the Nu loaded aboard.”
+
+@31723 Henken · ヘンケン
+> 「あ、ああ」
+“O-oh, right.”
+
+@31724 Chan · チェーン
+> 「いいですね、オクトバーさん」
+“That's fine with you, isn't it, October?”
+
+@31725 October · オクトバー
+> 「しかたないですね。わかりました、データは
+>  整理して、ラビアンローズに
+“I suppose there's no helping it. All right, I'll organize the data and
+---
+>  送っておきますよ。そのかわり、実戦
+>  データは逐次こちらへ送ってください」
+send it to La Vie en Rose. In exchange, send me the combat data as it comes in.”
+
+@31726 Chan · チェーン
+> 「はい。ありがとうございますッ!」
+“Yes. Thank you so much!”
+
+@31727 Henken · ヘンケン
+> 「……なんだ、ありゃ」
+“...What on earth is that?”
+
+@31728 Selain · セレイン（按段落 3DD2）
+> 「ん? なんだ、
+>  見たことのない機体があるな
+“Hm? What's this, there's a machine I've never seen before.
+---
+>  私の機体に似ているようだが……?」
+It looks like mine, but...?”
+
+@31729 Rish · リッシュ（按段落 3DD2）
+> 「どれ…………おいおい、
+>  ありゃ“TYPE33”じゃねぇのか?」
+“Which one...? Hey, hey, isn't that a ‘TYPE33’?”
+
+@31730 Selain · セレイン（按段落 3DD2）
+> 「……TYPE33? おい言え、
+>  なんだそれは」
+“...TYPE33? Out with it, what is that?”
+
+@31731 Rish · リッシュ（按段落 3DD2）
+> 「まだ帝国がいた頃に、
+>  月のZ&R社で開発していた
+“Back when the Empire was still around, the lunar Z&R company was developing it—
+---
+>  ヴァルキュリア・シリーズの新型だ」
+a new model in the Valkyrie Series.”
+
+@31732 Selain · セレイン（按段落 3DD2）
+> 「新型のヴァルキュリア……」
+“A new Valkyrie...”
+
+@31733 Rish · リッシュ（按段落 3DD2）
+> 「ああ、お前のが3機だけ作られた
+>  試作型の“TYPE27”
+“Yeah, yours is the ‘TYPE27,’ a prototype of which only three were built.
+---
+>  俺のがその正式型の
+>  “TYPE28”
+Mine is the production model, the ‘TYPE28.’
+---
+>  “TYPE33”は
+>  “TYPE28”の再設計型を
+The ‘TYPE33’ is a heavy-armored machine based on
+---
+>  ベースにした重装機だ。
+>  だが“TYPE29”以降は
+a redesign of the ‘TYPE28.’ But after the ‘TYPE29,’
+---
+>  設計段階でOZのクーデターが
+>  起きちまったから
+OZ's coup happened while they were still at the design stage,
+---
+>  作られてないはずなんだが」
+so it shouldn't ever have been built.”
+
+@31734 Alan · アラン
+> 「その通り。あれは我々で製作した
+>  いわば“TYPE33改”とでも
+“Exactly. That one is what we built ourselves—you could call it a ‘TYPE33 Kai,’
+---
+>  いうべきものだ」
+so to speak.”
+
+@31735 Selain · セレイン（按段落 3DD2）
+> 「アラン、どういうことだ」
+“Alan, what do you mean by that?”
+
+@31736 Alan · アラン
+> 「解放戦線もカラバも、組織と
+>  しての形は無くしてしまったが
+“Both the Liberation Front and Karaba have lost their form as organizations,
+---
+>  それぞれの技術者集団は逆に
+>  合流することでより強化されている
+but their respective corps of engineers have only grown stronger by merging.
+---
+>  万丈とロス・イゴールの
+>  尽力のおかげでな
+That's thanks to the efforts of Banjo and Ross Igor.
+---
+>  ゴッドとライジングも
+>  そこから持ってきたのだよ」
+That's also where we got the God and the Rising from.”
+
+@31737 Selain · セレイン（按段落 3DD2）
+> 「それでは帝国の機体が存在する
+>  理由になっていない」
+“Then that doesn't explain why an Imperial machine exists.”
+
+@31738 Alan · アラン
+> 「それは簡単だ。OZが月面を
+>  制圧したとき、OZに反対する
+“That's simple. When OZ seized the lunar surface, the Z&R engineers who opposed
+---
+>  Z&Rの技術者が設計データ
+>  ごと我々のもとへやってきたのだ」
+OZ came to us, design data and all.”
+
+@31739 Selain · セレイン（按段落 3DD2）
+> 「なるほどな。それで合点がいった。
+>  で、あれのパイロットはどこだ?」
+“I see. That clears it up. So, where's the pilot for that thing?”
+
+@31740 Alan · アラン
+> 「パイロットは君だ、{HeroName}」
+“The pilot is you, {HeroName}.”
+
+@31741 Selain · セレイン（按段落 3DD2）
+> 「私はスヴァンヒルドを
+>  降りるつもりはない
+“I have no intention of leaving the Svanheld.
+---
+>  あれには私の癖が記録されている。
+>  いまさら他の機体になど移れない」
+It has my habits recorded in it. I can't switch to another machine now.”
+
+@31742 Astonaige · アストナージ
+> 「だからこそ、あれには
+>  お前が乗ってくれないと困るんだよ」
+“That's exactly why we're in trouble if you don't pilot it.”
+
+@31743 Selain · セレイン（按段落 3DD2）
+> 「アストナージ?」
+“Astonaige?”
+
+@31744 Astonaige · アストナージ
+# 审校：原文是“アランが改良型だといっただろう”，说话人是 Astonaige，初稿误写成“I told you Alan called it...”，改为“Alan said it was an improved model, didn't he?”。
+> 「アランが改良型だといっただろう。
+>  あれは、お前の操縦データをもとに
+“Alan said it was an improved model, didn't he? It was developed by running
+---
+>  シミュレーションして開発されたんだ。
+>  お前の癖は全部知っているし
+simulations based on your piloting data. It knows all your habits,
+---
+>  お前でなければ使いこなせないんだよ」
+and no one but you can handle it.”
+
+@31745 Selain · セレイン（按段落 3DD2）
+> 「いつの間にそんなことを……アストナージ
+>  私に黙って、データをコピーしたな」
+“When did you go and do that... Astonaige, you copied my data without telling me.”
+
+@31746 Alan · アラン
+> 「ははっ、まぁいいじゃないか。
+>  それより、せっかく持ってきたんだ
+“Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
+---
+>  乗ってくれるだろうな?」
+so you'll pilot it, won't you?”
+
+@31747 Selain · セレイン（按段落 3DD2）
+> 「いいだろう。使わせてもらうとしよう。
+>  しかしスヴァンヒルドはどうなるのだ?」
+“Fine. I'll put it to use. But what becomes of the Svanheld?”
+
+@31748 Rish · リッシュ（按段落 3DD2）
+> 「俺の機体の予備パーツだな」
+“Spare parts for my machine.”
+
+@31749 Selain · セレイン（按段落 3DD2）
+> 「お前は黙ってろ! ……といいたい
+>  ところだが、それが常道か」
+“You keep quiet! ...Is what I'd like to say, but I suppose that's the usual arrangement.”
+
+@31750 Alan · アラン
+> 「その辺はまかせる」
+“I'll leave that part to you.”
+
+@31751 Selain · セレイン（按段落 3DD2）
+> 「ああ。で、あれの名前は?」
+“Yeah. So, what's that one called?”
+
+@31752 Alan · アラン
+> 「“TYPE33改”
+>  ラーズグリーズだ」
+“It's the ‘TYPE33 Kai’ Razgreez.”
+
+@31753 Selain · セレイン（按段落 3DD2）
+> 「ん? なんだ、見たことのない
+>  機体があるな。ジャネット
+“Hm? What's this, there's a machine I've never seen before. Janet,
+---
+>  私の機体に似ているようだが、
+>  あれは何だ?」
+it looks like my machine, but what is that?”
+
+@31754 Janet · ジャネット
+> 「え? ああ、あれ?
+>  アランさんが持ってきたみたいよ
+“Huh? Oh, that? Looks like Alan brought it in.
+---
+>  新型のヴァルキュリアだって。
+>  スヴァンヒルドの後継機ね」
+They say it's a new model Valkyrie. The Svanheld's successor.”
+
+@31755 Selain · セレイン（按段落 3DD2）
+> 「スヴァンヒルドの……」
+“The Svanheld's...”
+
+@31756 Alan · アラン
+> 「その通り。あれは我々で製作した
+>  ヴァルキュリア
+“Exactly. That is a Valkyrie we built ourselves,
+---
+>  “TYPE33改”ラーズグリーズだ」
+the ‘TYPE33 Kai’ Razgreez.”
+
+@31757 Selain · セレイン（按段落 3DD2）
+> 「“TYPE33改”?
+>  アラン、どういうことだ」
+“‘TYPE33 Kai’? Alan, what do you mean by that?”
+
+@31758 Alan · アラン
+> 「“TYPE33”というのは、
+>  もともと帝国がZ&R社で
+“‘TYPE33’ was originally a heavy machine the Empire had Z&R
+---
+>  地球環境用に設計させていた
+>  重装機だ。君のスヴァンヒルドは
+design for Earth's environment. Your Svanheld is
+---
+>  試作型の“TYPE27”だから
+>  その直系といっていい
+the prototype ‘TYPE27,’ so you could call it a direct descendant.
+---
+>  OZの月面制圧後、
+>  OZに反抗するZ&Rの
+After OZ seized the lunar surface, Z&R engineers who resisted OZ
+---
+>  技術者が、設計データごと
+>  我々のもとへやってきた
+came to us with the design data in hand.
+---
+>  そのデータをもとに開発したのが、
+>  あの“TYPE33改”だ」
+What we developed from that data is that ‘TYPE33 Kai.’”
+
+@31759 Selain · セレイン（按段落 3DD2）
+> 「しかし、よくそんな余裕が
+>  あったものだな」
+“But I'm surprised you had that kind of leeway.”
+
+@31760 Alan · アラン
+> 「解放戦線もカラバも、組織と
+>  しての形は無くしてしまったが
+“Both the Liberation Front and Karaba have lost their form as organizations,
+---
+>  それぞれの技術者集団は逆に
+>  合流することでより強化されている
+but their respective corps of engineers have only grown stronger by merging.
+---
+>  万丈とロス・イゴールの
+>  尽力のおかげでな
+Thanks to Banjo and Ross Igor's efforts.
+---
+>  ゴッドとライジングも
+>  そこから持ってきたのだよ」
+That's also where we got the God and the Rising from.”
+
+@31761 Selain · セレイン（按段落 3DD2）
+> 「なるほどな。それで合点がいった。
+>  で、あれのパイロットはどこだ?」
+“I see. That clears it up. So, where's the pilot for that thing?”
+
+@31762 Alan · アラン
+> 「パイロットは君だ、{HeroName}」
+“The pilot is you, {HeroName}.”
+
+@31763 Selain · セレイン（按段落 3DD2）
+> 「私はスヴァンヒルドを
+>  降りるつもりはない
+“I have no intention of leaving the Svanheld.
+---
+>  あれには私の癖が記録されている。
+>  いまさら他の機体になど移れない」
+It has my habits recorded in it. I can't switch to another machine now.”
+
+@31764 Astonaige · アストナージ
+> 「だからこそ、あれには
+>  お前が乗ってくれないと困るんだよ」
+“That's exactly why we're in trouble if you don't pilot it.”
+
+@31765 Selain · セレイン（按段落 3DD2）
+> 「アストナージ?」
+“Astonaige?”
+
+@31766 Astonaige · アストナージ
+# 审校：同 L44，修正说话人逻辑错误。
+> 「アランが改良型だといっただろう。
+>  あれは、お前の操縦データをもとに
+“Alan said it was an improved model, didn't he? It was developed by running
+---
+>  シミュレーションして開発されたんだ
+>  お前の癖は全部知っているし
+simulations based on your piloting data. It knows all your habits,
+---
+>  お前でなければ使いこなせないんだよ」
+and no one but you can handle it.”
+
+@31767 Selain · セレイン（按段落 3DD2）
+> 「いつの間にそんなことを……アストナージ
+>  私に黙って、データをコピーしたな」
+“When did you go and do that... Astonaige, you copied my data without telling me.”
+
+@31768 Alan · アラン
+> 「ははっ、まぁいいじゃないか。
+>  それより、せっかく持ってきたんだ
+“Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
+---
+>  乗ってくれるだろうな?」
+so you'll pilot it, won't you?”
+
+@31769 Selain · セレイン（按段落 3DD2）
+> 「いいだろう。使わせてもらうとしよう。
+>  しかしスヴァンヒルドはどうなるのだ?」
+“Fine. I'll put it to use. But what becomes of the Svanheld?”
+
+@31770 Astonaige · アストナージ
+> 「予備パーツにまわすさ。
+>  どうせ必要になる」
+“It'll go to spare parts. We'll need them anyway.”
+
+@31771 Selain · セレイン（按段落 3DD2）
+> 「そうか……おしい気もするが、
+>  それが常道か。わかった、まかせる」
+“I see... It feels like a waste, but I suppose that's the usual arrangement. All right, I'll leave it to you.”

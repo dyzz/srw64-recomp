@@ -1,0 +1,590 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@42232 Glemy · グレミー
+> (タイミングが早すぎたか……
+>  しかし、遅らせれば、ハマーンは
+(Was my timing too early...? But if I'd delayed, Haman would have
+---
+>  手をうっていただろう。
+>  ハマーンをやりそこねた以上
+made her move. Having failed to finish Haman off,
+---
+>  状況はそれほどよいとは
+>  いえんな……いや)
+the situation isn't exactly favorable... no.)
+
+@42233 Glemy · グレミー
+> (味方をあざむくには、味方と
+>  同じ顔をせねばならん
+(To deceive your allies, you must wear the same face as them.
+---
+>  ましてや、1度振りあげた手だ)
+All the more so for a hand I've already raised once.)
+
+@42234 Glemy · グレミー
+> 「そのままで聞け、ジオンの兵士たちよ
+>  もはや忍従の時は去った
+“Hear me as you are, soldiers of Zeon! The time of silent obedience is over.
+---
+>  諸悪の根源はアクシズを動かし、
+>  ぎまんあふれるジオンを
+The root of all evil lies with Haman Karn, who moved Axis and sought
+---
+>  受け継ごうとした、
+>  ハマーン・カーンにある
+to inherit a Zeon steeped in deceit!
+---
+>  真なるジオンを、そして
+>  この地球圏をその手に握るのは
+The ones who will grasp true Zeon, and this Earth Sphere, in their hands
+---
+>  ハマーンの首を我が
+>  面前に差しだす諸君らである
+are you, who will lay Haman's head before me!
+---
+>  さすれば、地球圏の英雄として
+>  末代までたたえられよう!」
+Do so, and you shall be praised as heroes of the Earth Sphere for all generations!”
+
+@42235 Rakan · ラカン
+> 「フッ、青二才にしては
+>  うまいことをいう」
+“Heh, clever words for a greenhorn.”
+
+@42236 Ple-Two · プルツー
+> 「気にいったよ、グレミー。
+>  こういうの、好きだ」
+“I like it, Glemy. This kind of thing, I love it.”
+
+@42237 Glemy · グレミー
+> 「別にお前に喜んでもらうためではない
+>  昨日までハマーンに忠誠を誓って
+“It's not to please you. Those who swore loyalty to Haman until yesterday—
+---
+>  いた者たちには、地球をくれてやる
+>  くらいのことは、覚悟しないとな」
+I'd better be ready to give them the Earth itself.”
+
+@42238 Chara · キャラ
+> 「準備はいいようだよ、マシュマー」
+“Looks like we're ready, Mashymre.”
+
+@42239 Mashymre · マシュマー
+> 「うむ……では行くとするか」
+“Indeed... then let us go.”
+
+@42240 Mashymre · マシュマー
+> 「聞け、勇者たちよ! 今日この
+>  日を、我らの最良の日としたい
+“Hear me, brave warriors! Let us make this day our finest!
+---
+>  グレミーは反逆者である。
+>  悪い奴だということだ
+Glemy is a traitor. In other words, a villain.
+---
+>  私のあとに続いて、叩きつぶすのだ!」
+Follow me and crush him!”
+
+@42241 Illia · イリア
+> (ふむ……精神は安定している
+>  ようだな……これならば問題はないか)
+(Hmm... his mind seems stable... then there should be no problem.)
+
+@42242 Haman · ハマーン
+> 「……優劣はつけがたいか……
+>  長い戦いになるかもしれん……」
+“...Hard to say who has the upper hand... this may be a long battle...”
+
+@42243 Kamille · カミーユ
+> 「確かなのか?」
+“Are you sure?”
+
+@42244 Reika · レイカ
+> 「間違いないわよ」
+“There's no mistake.”
+
+@42245 Amuro · アムロ
+> 「どうしたんだ?」
+“What's going on?”
+
+@42246 Kamille · カミーユ
+> 「サイド3からハマーンの艦隊が
+>  出たそうです」
+“Haman's fleet has left Side 3.”
+
+@42247 Amuro · アムロ
+> 「いよいよか。数はわかるか?」
+“So it's time. Can you tell the numbers?”
+
+@42248 Reika · レイカ
+> 「いま月から来た映像を
+>  チェックしてもらってます」
+“We're having the footage just in from the Moon checked now.”
+
+@42249 Amuro · アムロ
+> 「ベルトーチカ?」
+“Beltorchika?”
+
+@42250 Beltorchika · ベルトーチカ
+# 审校：修正双重否定导致的语法错误，改为自然的英语表达。
+> 「はっきりとはわからないけど、
+>  サイド3には
+“I can't say for certain, but I don't think Side 3 has
+---
+>  ほとんど艦艇を残していないと
+>  思うわ」
+left many ships behind.”
+
+@42251 Amuro · アムロ
+> 「そうか……確認を続けてくれ」
+“I see... keep confirming.”
+
+@42252 Judau · ジュドー
+> 「結論が出たようじゃないの。
+>  サイド3に
+“Looks like we've got our answer. Not leaving any forces at
+---
+>  戦力を残さないってことは、
+>  ハマーンは本気だ。俺たちも
+Side 3 means Haman is serious. We should help
+---
+>  グレミーを叩くのを手伝うべきだ。
+>  そのうえでないと、後ろからやられる」
+crush Glemy too. Otherwise, we'll get hit from behind.”
+
+@42253 Alan · アラン
+# 审校：将句号改为逗号，使称呼与句子连接更自然。
+> 「うむ、その見方は正しいな。艦長」
+“Yes, that assessment is correct, Captain.”
+
+@42254 Bright · ブライト
+> 「……よし、我々もアクシズへ向かう。
+>  まずはアクシズのグレミーだ
+“...All right, we head for Axis as well. First, Glemy at Axis.
+---
+>  そのうえで、可能ならハマーンもだな」
+And after that, Haman too, if possible.”
+
+@42255 Banjo · 万丈
+> 「ちょっと厳しいが、
+>  しかたがないってところか」
+“It's a bit rough, but I guess there's no helping it.”
+
+@42256 Amuro · アムロ
+> 「ああ。だが苦しい戦いになる。
+>  みんな、覚悟しておいてくれ」
+“Yeah. But it'll be a hard fight. Everyone, be ready.”
+
+@42257 Bright · ブライト
+> 「そういうことだ。{HeroMech}は
+>  アクシズへ向けて出発する
+“That's how it is. The {HeroMech} departs for Axis.
+---
+>  補給と整備は終わらせておけよ!」
+Finish resupply and maintenance!”
+
+@42258 Amuro · アムロ
+> 「整備のほうはどうだ?
+>  調整は終わっているのか?」
+“How's the maintenance? Are the adjustments done?”
+
+@42259 Rain · レイン
+> 「大丈夫です。これ以上ないという
+>  くらい、キッチリ整備しておきましたよ」
+“All good. I've tuned it up so thoroughly you couldn't ask for better.”
+
+@42260 Shirley · シャリー
+> 「そう。こういう状況じゃ、あたしたちに
+>  できるのって、これくらいだものね」
+“Right. In a situation like this, this is about all we can do.”
+
+@42261 Amuro · アムロ
+> 「助かるよ。チェーン、どうだい?」
+“That helps. Chan, how about you?”
+
+@42262 Chan · チェーン
+> 「サイコミュの調整に手間どりました
+>  けど、もう終わりました
+“The Psycommu tuning took some time, but it's done now.
+---
+>  気をつけて、アムロ」
+Take care, Amuro.”
+
+@42263 Amuro · アムロ
+> 「わかってるさ。だけどここで
+>  グレミーとハマーンを叩いておかなきゃ
+“I know. But if we don't crush Glemy and Haman here,
+---
+>  俺たちにはもうあとがない」
+we won't have another chance.”
+
+@42264 Shinobu · 忍
+> 「ひゅ～っ、こいつはごきげんだぜ。
+>  新品より調子いいんじゃないのか?」
+“Whoa, this thing feels great. Might even run better than new, huh?”
+
+@42265 Astonaige · アストナージ
+> 「あったり前だ。誰の仕事だと
+>  思ってる。チェックは万全だ
+“Of course it does. Who do you think did the work? The checks are perfect.
+---
+>  すぐに出れるぞ」
+You can launch anytime.”
+
+@42266 Judau · ジュドー
+> 「さっすがアストナージさん、
+>  いい仕事してるよ」
+“As expected of you, Astonaige. Great work.”
+
+@42267 Astonaige · アストナージ
+> 「おせじはいいんだよ!
+>  みんな、今度で決めてくれよ」
+“Save the flattery! Everyone, settle it this time!”
+
+@42268 Bright · ブライト
+> 「戦闘宙域に入った。
+>  パイロット各員はスタンバっておけ!
+“We've entered the combat zone. All pilots, stand by!
+---
+>  いつでも出られるようにしていろよ!」
+Be ready to launch at any time!”
+
+@42269 Ryoma · リョウ
+> 「了解。行くぞ、ハヤト、ベンケイ」
+“Roger. Let's go, Hayato, Benkei.”
+
+@42270 Benkei · ベンケイ
+> 「おうっ!」
+“Yeah!”
+
+@42271 Glemy · グレミー
+> 「ハマーン、自らやられに出てくるとはな」
+“Haman, coming out to be finished off yourself, are you?”
+
+@42272 Ple-Two · プルツー
+> 「……来たぞ、用意はいいな?」
+“...They're here. Are you ready?”
+
+@42273 Ple Clone · プルクローン
+> 「はっ。グレミー様のために、命にかえて
+>  もハマーンの艦隊を叩いてみせます!」
+“Yes. For Lord Glemy, I'll strike down Haman's fleet even at the cost of my life!”
+
+@42274 Ple-Two · プルツー
+> 「よし、行けッ!」
+“Good, go!”
+
+@42275 Glemy · グレミー
+> 「なに!? {HeroMech}め、
+>  ハマーンに味方するつもりか!?」
+“What?! {HeroMech}, you intend to side with Haman?!”
+
+@42276 Bright · ブライト
+> 「グレミー・トト!? ハマーンまで
+>  いるのか!? どうする……?」
+“Glemy Toto?! Haman's here too?! What do we do...?”
+
+@42277 Glemy · グレミー
+> 「くっ……冗談ではない。
+>  プルツー、来い!」
+“Ngh... This is no joke. Ple-Two, come!”
+
+@42278 Ple-Two · プルツー
+> 「了解ッ」
+“Understood!”
+
+@42279 Chara · キャラ
+# 审校：原文“ハマーン様はグレミーを”省略了动词，补全为“You go after Glemy”，使指令更明确自然。
+> 「グレミー!? ハマーン様、ここは
+>  我らに。ハマーン様はグレミーを!」
+“Glemy?! Lady Haman, leave this to us. You go after Glemy!”
+
+@42280 Haman · ハマーン
+> 「そうさせてもらう」
+“I'll do just that.”
+
+@42281 Judau · ジュドー
+> 「ハマーン、待て!」
+“Haman, wait!”
+
+@42282 Haman · ハマーン
+> 「私は今グレミーを倒すことで
+>  手いっぱいだ
+“I have my hands full defeating Glemy right now.
+---
+>  お前たちを相手にしているヒマはない」
+I have no time to deal with you.”
+
+@42283 Kamille · カミーユ
+> 「それは、こっちで決めさせてもらう!」
+“Then we'll settle that ourselves!”
+
+@42284 Haman · ハマーン
+> 「お前たちにはグレミーが
+>  どれほど危険か、わかっていない」
+“You don't understand just how dangerous Glemy is.”
+
+@42285 Judau · ジュドー
+> 「わかるよ」
+“I do.”
+
+@42286 Haman · ハマーン
+> 「わかる?」
+“You do?”
+
+@42287 Judau · ジュドー
+> 「結局は、あなたのやろうと
+>  していることだって同じだってね。
+“In the end, what you're trying to do is the same thing.
+---
+>  同じ結果になる。
+>  それが俺にはわかるんだ」
+It'll end the same way. That much I can see.”
+
+@42288 Haman · ハマーン
+> 「聞いたふうな口をきく」
+“You talk as if you know.”
+
+@42289 Mashymre · マシュマー
+> 「ハマーン様、お早く!」
+“Lady Haman, hurry!”
+
+@42290 Haman · ハマーン
+> 「時間をつぶすわけにはいかん。
+>  互いに生き残れば
+“I can't afford to waste time. If we both survive,
+---
+>  少しは話につきあってもやろう」
+I'll hear a little more of what you have to say.”
+
+@42291 Kamille · カミーユ
+> 「ハマーンッ!」
+“Haman!”
+
+@42292 Amuro · アムロ
+> 「カミーユ、ジュドー、
+>  ここは最初の計画通り
+“Kamille, Judau, we stick to the original plan here.
+---
+>  まずグレミーを叩くことに
+>  専念するんだ」
+First, we focus on crushing Glemy.”
+
+@42293 Mashymre · マシュマー
+> 「ならば我らはまた一時的にでも
+>  同志となるわけだな
+“Then we shall be comrades again, even if only for a time.
+---
+>  よし、グレミーに従う反逆者どもを
+>  今ここで叩きつぶすのだ!
+All right, we crush the rebels who follow Glemy right here and now!
+---
+>  マシュマー・セロ、まいる!」
+Mashymre Cello, moving out!”
+
+@42294 Rakan · ラカン
+> 「{HeroMech}め、よけいなことを!
+>  だが、そうそう好きにはさせん!」
+“{HeroMech}, you meddler! But I won't let you have your way so easily!”
+
+@42295 Judau · ジュドー
+> 「マシュマー、死ぬなよ」
+“Mashymre, don't die.”
+
+@42296 Mashymre · マシュマー
+> 「いらぬことだ。このマシュマー・セロ、
+>  ハマーン様のためどこまでも戦いぬく!」
+“None of your concern. I, Mashymre Cello, will fight on to the end for Lady Haman!”
+
+@42297 Judau · ジュドー
+> 「死ぬなよ、キャラ」
+“Don't die, Chara.”
+
+@42298 Chara · キャラ
+> 「ジュドーかい?
+>  あたしを誰だと思ってるんだい
+“That you, Judau? Who do you think I am?
+---
+>  こんなことでくたばりゃしないよ!」
+I'm not going to kick the bucket over something like this!”
+
+@42299 Rakan · ラカン
+> 「なぜだ!? なぜこんなことが……!?」
+“Why?! Why did this happen...?!”
+
+@42300 Arius · アリアス
+> 「こ、こんなばかなぁぁぁーっ!」
+“Th-this can't beeeee!”
+
+@42301 Mashymre · マシュマー
+> 「私はやられんぞ! このマシュマー・セロ
+>  己の肉が、骨から
+“I won't be beaten! I, Mashymre Cello, will fight until my flesh is
+---
+>  そぎ取れるまで戦う!
+>  ハマーン様、バンザァァァーイッ!!」
+torn from my bones! Lady Haman, banzaiiiii!!”
+
+@42302 Bright · ブライト
+> 「な、なんだ? 誰が死んだ!?」
+“Wh-what? Who died?!”
+
+@42303 Chara · キャラ
+# 审校：原文结尾是「……!?」，初稿漏掉了省略号，补上。
+> 「ええいっ、あたしを誰だと思ってる
+>  んだい! あたしはキャラ・スーン……!?」
+“Gah, who do you think I am?! I'm Chara Soon...?!”
+
+@42304 Bright · ブライト
+> 「片づいたか……」
+“It's taken care of...”
+
+@42305 Reika · レイカ
+> 「敵の新手が来たわ!」
+“Enemy reinforcements are here!”
+
+@42306 Bright · ブライト
+> 「くっ……」
+“Ngh...”
+
+@42307 Mashymre · マシュマー
+> 「なにをやっている、{HeroMech}!
+>  グレミーはアクシズ内部にいるはずだ
+“What are you doing, {HeroMech}?! Glemy should be inside Axis.
+---
+>  ここは我々が引き受ける。
+>  お前たちはアクシズへ行け!」
+We'll hold them here. You go to Axis!”
+
+@42308 Bright · ブライト
+> 「なんだと?」
+“What did you say?”
+
+@42309 Mashymre · マシュマー
+> 「これは我々の戦いである!
+>  ハマーン様の騎士として
+“This is our battle! As knights of Lady Haman,
+---
+>  しんがりをつとめる義務があるのだ!」
+we have a duty to serve as the rear guard!”
+
+@42310 Chara · キャラ
+> 「そうさ。こんなところであんたたちに
+>  死なれちゃ、面白くないからね」
+“That's right. It wouldn't be any fun if you all died in a place like this.”
+
+@42311 Beltorchika · ベルトーチカ
+> 「!? 艦長、あの二人の機体、
+>  被弾しています」
+“?! Captain, those two units are taking hits.”
+
+@42312 Mashymre · マシュマー
+> 「心配は無用だ! お前たちとの
+>  決着も、いずれ必ずつける!
+“No need to worry! I'll settle things with you all someday, without fail!
+---
+>  行け!」
+Go!”
+
+@42313 Bright · ブライト
+> 「……よし、全機、
+>  アクシズへ突入しろ!」
+“...All right, all units, charge into Axis!”
+
+@42314 Bright · ブライト
+> 「片づいたか……」
+“It's taken care of...”
+
+@42315 Reika · レイカ
+> 「敵の新手が来たわ!」
+“Enemy reinforcements are here!”
+
+@42316 Mashymre · マシュマー
+> 「グレミーはアクシズ内部だ。
+>  行け{HeroMech}!」
+“Glemy is inside Axis. Go, {HeroMech}!”
+
+@42317 Bright · ブライト
+> 「マシュマー・セロ……?」
+“Mashymre Cello...?”
+
+@42318 Beltorchika · ベルトーチカ
+> 「!? 機体がかなり
+>  損傷している模様です」
+“?! It looks like his unit is heavily damaged.”
+
+@42319 Mashymre · マシュマー
+> 「お前たちとの決着もついていないのだ
+>  私もあとから、はせ参じる
+“Our score with you isn't settled yet. I'll come after you shortly,
+---
+>  ここは私にまかせて先へ行け!」
+so leave this to me and go on ahead!”
+
+@42320 Bright · ブライト
+> 「……よし、全機、
+>  アクシズへ突入しろ!」
+“...All right, all units, charge into Axis!”
+
+@42321 Mashymre · マシュマー
+> 「私はやられんぞ! このマシュマー・セロ
+>  己の肉が骨から
+“I won't be beaten! I, Mashymre Cello, will fight until my flesh is torn from my bones!
+---
+>  そぎ取れるまで戦う!
+>  ハマーン様、バンザァァァーイッ!!」
+Lady Haman, banzaiiiii!!”
+
+@42322 Bright · ブライト
+> 「片づいたか……」
+“It's taken care of...”
+
+@42323 Reika · レイカ
+> 「敵の新手が来たわ!」
+“Enemy reinforcements are here!”
+
+@42324 Chara · キャラ
+> 「なにやってんだい! グレミーは
+>  アクシズ内部だよ。早く行きなよ!」
+“What're you doing?! Glemy's inside Axis. Hurry up and go!”
+
+@42325 Bright · ブライト
+> 「キャラ・スーン……?」
+“Chara Soon...?”
+
+@42326 Beltorchika · ベルトーチカ
+> 「!? 機体がかなり
+>  損傷している模様です」
+“?! It looks like her unit is heavily damaged.”
+
+@42327 Chara · キャラ
+> 「この機体じゃアクシズに
+>  入る前につかまっちまうさ
+“In this thing, I'd get caught before I even got into Axis.
+---
+>  行きな! あたしはこんなところじゃ
+>  死にゃしないよ!」
+Go! I'm not gonna die in a place like this!”
+
+@42328 Bright · ブライト
+> 「……よし、全機、
+>  アクシズへ突入しろ!」
+“...All right, all units, charge into Axis!”
+
+@42329 Chara · キャラ
+> 「あたしを誰だと思ってるんだい!
+>  あたしは、キャラ・スーンだぞ!
+“Who do you think I am?! I'm Chara Soon!
+---
+>  うおぉぉぉぉぉぉーっ!!」
+Uwooooooooh!!”
+
+@42330 Chara · キャラ
+> 「……いったろうがさ、
+>  あたしはキャラ・スーン…………!?」
+“...Didn't I tell you? I'm Chara Soon...?!”
+
+@42331 Bright · ブライト
+> 「片づいたか……よし、
+>  全機、アクシズへ突入しろ!」
+“It's taken care of... All right, all units, charge into Axis!”

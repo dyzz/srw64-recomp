@@ -1,0 +1,90 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8535 Four · フォウ
+# 审校：原译“Fall, you doll”把“人形”当成呼语，实际是主语，改为“The doll... fall!!”更贴合原文。
+> 「人形が……落ちてしまえっ!!」
+“The doll... fall!!”
+
+@8536 Four · フォウ
+> 「目障りだっ!!」
+“You're in my way!!”
+
+@8537 Four · フォウ
+> 「ちょこまかと……消えろっ!!」
+“Quit scurrying around... disappear!!”
+
+@8538 Four · フォウ
+> 「じゃまだっ!!」
+“Out of my way!!”
+
+@8539 Four · フォウ
+> 「邪魔するやつは、許さないと
+>  いったはずだ!!」
+“I told you, I won't forgive anyone who gets in my way!!”
+
+@8540 Four · フォウ
+> 「そこか!!」
+“There you are!!”
+
+@8541 Four · フォウ
+> 「うああああっ!!」
+“Uwaaaaaah!!”
+
+@8542 Four · フォウ
+> 「あうっ! このパワー……
+>  あたしに向かってくる!?」
+“Agh! This power... it's coming at me?!”
+
+@8543 Four · フォウ
+> 「あああっ!!
+>  な、なぜ……みんな、嫌いだっ!!」
+“Aaaah!! W-why... I hate you all!!”
+
+@8544 Four · フォウ
+> 「ううっ……頭が……頭が痛い……」
+“Ngh... my head... my head hurts...”
+
+@8545 Four · フォウ
+> 「当たった!? ううっ……頭が……」
+“It hit?! Ngh... my head...”
+
+@8546 Four · フォウ
+> 「うあっ!
+>  みんな……みんなであたしをいじめる……」
+“Agh! Everyone... you're all picking on me...”
+
+@8547 Four · フォウ
+> 「ふん……そんなものか」
+“Hmph... is that all you've got?”
+
+@8548 Four · フォウ
+> 「ふ……笑わせるなっ!!」
+“Heh... don't make me laugh!!”
+
+@8549 Four · フォウ
+> 「ふん……」
+“Hmph...”
+
+@8550 Four · フォウ
+> 「どこを狙っている!」
+“What are you aiming at?!”
+
+@8551 Four · フォウ
+> 「当たるものか!!」
+“Like you could hit me!!”
+
+@8552 Four · フォウ
+> 「ムダな事を……」
+“What a waste of time...”
+
+@8553 Four · フォウ
+> 「そんなもの!」
+“As if that would work!”
+
+@8554 Four · フォウ
+> 「弾切れ!? バカな……」
+“Out of ammo?! Impossible...”
+
+@8555 Four · フォウ
+> 「この距離では届かない……か」
+“At this range it won't reach... huh.”

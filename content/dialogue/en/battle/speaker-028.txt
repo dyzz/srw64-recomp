@@ -1,0 +1,265 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11626 Manami · マナミ
+> 「許さない!」
+“I won't forgive you!”
+
+@11627 Manami · マナミ
+> 「絶対許さないわ!」
+“I will never forgive you!”
+
+@11628 Manami · マナミ
+# 审校：“当たりなさい” 是命令“命中吧”，改为 “Hit them!” 更自然
+> 「当たりなさい!」
+“Hit them!”
+
+@11629 Manami · マナミ
+> 「これでどう!?」
+“How's this?!”
+
+@11630 Manami · マナミ
+> 「これならいけるわ!」
+“This should do it!”
+
+@11631 Manami · マナミ
+> 「あたしがやってみせるわ!」
+“I'll show you how it's done!”
+
+@11632 Manami · マナミ
+# 审校：“落ちて” 是“坠落吧”，改为 “Go down!” 更贴切
+> 「落ちて!」
+“Go down!”
+
+@11633 Manami · マナミ
+> 「いくわよ!」
+“Here I go!”
+
+@11634 Manami · マナミ
+> 「さぁ、受けてみなさい!」
+“Now, try and take this!”
+
+@11635 Manami · マナミ
+> 「あなたたち、許さないわ!」
+“I won't forgive any of you!”
+
+@11636 Manami · マナミ
+> 「許せるものでは!」
+“This is unforgivable!”
+
+@11637 Manami · マナミ
+> 「やらせないわ!」
+“I won't let you!”
+
+@11638 Manami · マナミ
+> 「さぁ、観念しなさい!」
+“Now, give it up!”
+
+@11639 Manami · マナミ
+> 「もうあきらめなさい!」
+“Just give up already!”
+
+@11640 Manami · マナミ
+> 「まかせて!」
+“Leave it to me!”
+
+@11641 Manami · マナミ
+> 「きゃあぁぁぁーっ!」
+“Kyaaaaaah!”
+
+@11642 Manami · マナミ
+> 「そ、そんな、やられちゃったの!?」
+“N-no way, I got shot down?!”
+
+@11643 Manami · マナミ
+> 「そ、そんなっ!?」
+“N-no way?!”
+
+@11644 Manami · マナミ
+> 「いやぁぁぁぁーっ!」
+“Nooooo!”
+
+@11645 Manami · マナミ
+> 「あうぅぅ……こ、これ以上は……」
+“Ahhh... I-I can't take any more...”
+
+@11646 Manami · マナミ
+> 「きゃぁぁっ、こ、ここまでなの!?」
+“Kyaaah, th-this is as far as I go?!”
+
+@11647 Manami · マナミ
+# 审校：原译“You won't take me down”把主语换成了对方，语气也偏挑衅；改为保留第一人称的“I won't be taken down”，更贴合原文“やられないわ”的被动含义。
+> 「ま、まだ、やられないわ!」
+“N-not yet! I won't be taken down!”
+
+@11648 Manami · マナミ
+> 「はじめから無理は承知なんだから!」
+“I knew it'd be tough from the start!”
+
+@11649 Manami · マナミ
+> 「だ、だめっ!」
+“N-no! Stop!”
+
+@11650 Manami · マナミ
+> 「ああぁっ! そ、そんな……
+>  スイームルグが……!?」
+“Aah! N-no... not the Sweemurg...?!”
+
+@11651 Manami · マナミ
+> 「あうっ……許さない!
+>  絶対に許さないわ!」
+“Agh... I won't forgive you! I'll never forgive you!”
+
+@11652 Manami · マナミ
+> 「く、機体はもう限界……でもね!」
+“Ngh, the unit's at its limit... but still!”
+
+@11653 Manami · マナミ
+> 「きゃぁぁぁぁーっ!
+>  こ、これじゃやられてしまう!?」
+“Kyaaaaa! I-I'm going to be shot down?!”
+
+@11654 Manami · マナミ
+> 「あぅっ! な、なんて強い!
+>  勝てないの? あたしじゃ!?」
+“Agh! S-so strong! Can't I win? Not me?!”
+
+@11655 Manami · マナミ
+> 「や、やってくれるわね!」
+“Y-you'll pay for that!”
+
+@11656 Manami · マナミ
+> 「こ、これくらいでっ!」
+“Th-this is nothing!”
+
+@11657 Manami · マナミ
+> 「くっ、許さないわよ!」
+“Ngh, I won't forgive you!”
+
+@11658 Manami · マナミ
+> 「あうっ! よくもやったわね!」
+“Agh! How dare you!”
+
+@11659 Manami · マナミ
+> 「まだ! 勝負はこれからよっ!!」
+“Not yet! The real fight starts now!!”
+
+@11660 Manami · マナミ
+> 「くっ……すこしはできるようね!」
+“Ngh... you're not half bad!”
+
+@11661 Manami · マナミ
+> 「くぅっ! このくらいでやられるわけには!」
+“Ngh! I can't let myself go down from this!”
+
+@11662 Manami · マナミ
+> 「つっ! このくらい、なんでもないわ!」
+“Tch! This much is nothing!”
+
+@11663 Manami · マナミ
+> 「そんな攻撃ではスイームルグに
+>  傷をつけることもできないわよ」
+“An attack like that can't even scratch the Sweemurg.”
+
+@11664 Manami · マナミ
+> 「ムダな抵抗はおやめなさい!」
+“Stop this pointless resistance!”
+
+@11665 Manami · マナミ
+> 「ふふっ、そんな攻撃は効かないのよ」
+“Hehe, attacks like that don't work on me.”
+
+@11666 Manami · マナミ
+> 「そんな攻撃はムダです」
+“That attack is useless.”
+
+@11667 Manami · マナミ
+> 「このスイームルグをあなどってもらっては
+>  困るわ!」
+“You'd better not underestimate the Sweemurg!”
+
+@11668 Manami · マナミ
+> 「やめたほうがよいのではなくって?」
+“Wouldn't you rather give up?”
+
+@11669 Manami · マナミ
+> 「ぜ～んぜん、効かないわよ」
+“It doesn't work at a~ll!”
+
+@11670 Manami · マナミ
+> 「ふふっ
+>  このスイームルグを甘くみたわね!」
+“Hehe, you took the Sweemurg too lightly!”
+
+@11671 Manami · マナミ
+> 「スイームルグは伊達ではないのよ!」
+“The Sweemurg is no pushover!”
+
+@11672 Manami · マナミ
+> 「このくらいなら!」
+“This much is fine!”
+
+@11673 Manami · マナミ
+> 「ふふっ、だめよ、それでは」
+“Hehe, no good. Not like that.”
+
+@11674 Manami · マナミ
+> 「それで狙っているつもりなの?」
+“You call that aiming?”
+
+@11675 Manami · マナミ
+> 「か、かわせたわ」
+“I-I dodged it!”
+
+@11676 Manami · マナミ
+> 「下手ねぇ。それとも、
+>  あたしがすごいのかしら?」
+“How clumsy. Or am I just that good?”
+
+@11677 Manami · マナミ
+> 「あたらないわよ」
+“You won't hit me!”
+
+@11678 Manami · マナミ
+> 「読めるわ、あたしにも!」
+“I can read you too!”
+
+@11679 Manami · マナミ
+> 「どう、スイームルグのスピードは?」
+“How's that? The Sweemurg's speed?”
+
+@11680 Manami · マナミ
+> 「そんな攻撃は効かないわ!」
+“Attacks like that don't work!”
+
+@11681 Manami · マナミ
+> 「ビームなんてムダなのよ!」
+“Beams are useless!”
+
+@11682 Manami · マナミ
+> 「ビームは無効化するのよ」
+“I nullify beams.”
+
+@11683 Manami · マナミ
+> 「だめよ、そんな攻撃では」
+“No good. Not with an attack like that.”
+
+@11684 Manami · マナミ
+> 「スイームルグを甘くみないで!」
+“Don't underestimate the Sweemurg!”
+
+@11685 Manami · マナミ
+> 「フフフッ、効かないのよ、
+>  このスイームルグには!」
+“Hehehe, it doesn't work on the Sweemurg!”
+
+@11686 Manami · マナミ
+> 「えっ!? エネルギーがないの!?」
+“What?! I'm out of energy?!”
+
+@11687 Manami · マナミ
+> 「くっ、届かないなんてっ!」
+“Ngh, out of range?!”
+
+@11688 Manami · マナミ
+> 「そんなところからなんて、汚いわ!」
+“Attacking from way over there? That's dirty!”

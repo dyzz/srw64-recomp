@@ -1,0 +1,107 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10732 Danny · ダニー
+# 审校：原译“We can handle this easy”语法不自然，改为更口语化的表达。
+> 「俺たちにかかればわけないことだ」
+“With us on it, it's no problem.”
+
+@10733 Danny · ダニー
+> 「腕慣らしをしておくか」
+“Let's warm up a bit.”
+
+@10734 Danny · ダニー
+# 审校：“Sink!”缺少宾语，攻击台词应补上“it”。
+> 「沈め!」
+“Sink it!”
+
+@10735 Danny · ダニー
+> 「いくぞ!」
+“Here we go!”
+
+@10736 Danny · ダニー
+> 「1機だろうと2機だろうと!」
+“One or two, doesn't matter!”
+
+@10737 Danny · ダニー
+> 「ハハハハハッ!」
+“Hahahahaha!”
+
+@10738 Danny · ダニー
+> 「ナイスタイミングだ!」
+“Nice timing!”
+
+@10739 Danny · ダニー
+# 审校：“We're getting hit”未能体现“被击坠”的严重程度，改为更贴切的表达。
+> 「な、なにぃ!? 俺達がやられるっ!?」
+“W-what?! We're the ones getting taken out?!”
+
+@10740 Danny · ダニー
+> 「うおぉぉぉぉーっ!?」
+“Whoaaaaa!”
+
+@10741 Danny · ダニー
+> 「ば、ばかなぁ!?」
+“I-impossible!”
+
+@10742 Danny · ダニー
+> 「な、なんだとっ!?」
+“W-what did you say?!”
+
+@10743 Danny · ダニー
+# 审校：“is it a monster”指代不清，改为“some kind of monster”更自然。
+> 「こ、このパワー……化け物か!?」
+“Th-this power... is it some kind of monster?!”
+
+@10744 Danny · ダニー
+# 审校：“my Booster's hit”可理解为“被击中”，改为完成时更准确。
+> 「くっ、ブースターをやられた!?」
+“Ngh, my Booster's been hit?!”
+
+@10745 Danny · ダニー
+> 「うっ! さすが噂だけのことはある!」
+“Ugh! So the rumors were true!”
+
+@10746 Danny · ダニー
+> 「なにっ!?」
+“What?!”
+
+@10747 Danny · ダニー
+# 审校：“I like it”指代模糊，改为“this”更贴合语境。
+> 「くくく、うれしいねぇ」
+“Hehehe, I like this.”
+
+@10748 Danny · ダニー
+> 「ふん! 腕ならしにもならんぞ!」
+“Hmph! This isn't even a warm-up!”
+
+@10749 Danny · ダニー
+> 「このマシンにそんな攻撃は
+>  通用しない!」
+“That kind of attack won't work on this machine!”
+
+@10750 Danny · ダニー
+> 「クククククッ」
+“Kukukukuku.”
+
+@10751 Danny · ダニー
+# 审校：原译“You can't keep up with us!”语气偏陈述，改为“You'll never”更符合挑衅口吻。
+> 「俺たちの動きについてこれまい!」
+“You'll never keep up with us!”
+
+@10752 Danny · ダニー
+> 「遅いな……ハハハハッ!」
+“Too slow... hahahaha!”
+
+@10753 Danny · ダニー
+> 「クククククッ」
+“Kukukukuku.”
+
+@10754 Danny · ダニー
+# 审校：“nothing I can do”略显翻译腔，改为更口语的“nothing for it”。
+> 「弾が尽きたか……仕方がない」
+“Out of ammo... nothing for it.”
+
+@10755 Danny · ダニー
+> 「奴らはこんな距離から
+>  攻撃可能なのか!?」
+“They can attack from this range?!”

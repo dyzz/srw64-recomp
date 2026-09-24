@@ -1,0 +1,105 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7762 Getty · ゲティ
+> 「ぬぅああああっ!!」
+“Nwaaaah!!”
+
+@7763 Getty · ゲティ
+> 「ジタバタするんじゃねえ!」
+“Stop squirming!”
+
+@7764 Getty · ゲティ
+> 「このぉっ」
+“Why you...”
+
+@7765 Getty · ゲティ
+> 「ふひへへへへっ、どうしたぁ!?」
+“Fuhihihihi, what's wrong?!”
+
+@7766 Getty · ゲティ
+> 「死ねぇっ!!」
+“Die!!”
+
+@7767 Getty · ゲティ
+> 「くたばれっ!!」
+“Drop dead!!”
+
+@7768 Getty · ゲティ
+> 「もろい! もろいぞぉ!!」
+“So fragile! So fragile!!”
+
+@7769 Getty · ゲティ
+> 「そこを動くんじゃねえ!」
+“Don't move!”
+
+@7770 Getty · ゲティ
+> 「この野郎っ!!」
+“You bastard!!”
+
+@7771 Getty · ゲティ
+> 「うぎゃぁぁぁぁぁーっ!」
+“Ugraaaaaah!”
+
+@7772 Getty · ゲティ
+> 「ど、どういう事だ!?」
+“W-what's going on?!”
+
+@7773 Getty · ゲティ
+> 「ぐわあぁぁぁっ!」
+“Guwaaaah!”
+
+@7774 Getty · ゲティ
+> 「ぎ、ひぃぃぃぃっ!?」
+“Gih, hiiiii?!”
+
+@7775 Getty · ゲティ
+> 「ぐっ! ドジこいちまったか!?」
+“Ngh! Did I screw up?!”
+
+@7776 Getty · ゲティ
+> 「ううわっ!」
+“Uwoah!”
+
+@7777 Getty · ゲティ
+> 「ぎおぉぉっ!」
+“Giooooh!”
+
+@7778 Getty · ゲティ
+> 「くそぉぅっ!」
+“Damn iiit!”
+
+@7779 Getty · ゲティ
+> 「どおってことはねえ」
+“That was nothing.”
+
+@7780 Getty · ゲティ
+> 「たいしたことねえな!」
+“That was nothing special!”
+
+@7781 Getty · ゲティ
+> 「遊びにもならねぇ!」
+“This isn't even a game!”
+
+@7782 Getty · ゲティ
+> 「あたるかっ!!」
+“As if you'd hit me!!”
+
+@7783 Getty · ゲティ
+> 「のろまがっ!!」
+“Slowpoke!!”
+
+@7784 Getty · ゲティ
+> 「ふひひひひひ!」
+“Fuhihihihihi!”
+
+@7785 Getty · ゲティ
+> 「効かねぇっ!!」
+“That doesn't hurt!!”
+
+@7786 Getty · ゲティ
+> 「くっ、どうした!?」
+“Ngh, what's going on?!”
+
+@7787 Getty · ゲティ
+> 「と、届かない!? くぞぉっ!」
+“I-it won't reach?! Damn iiit!”

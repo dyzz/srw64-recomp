@@ -1,0 +1,2058 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@49340 Chizuru · ちずる
+# 审校：“火がつきました”指核脉冲点火/启动，初稿“has been ignited”可接受，但更自然应为“has ignited”；已改为更简洁自然的表达。
+> 「アムロさん、アクシズの核パルスに
+>  火がつきましたッ!
+“Amuro, the Axis nuclear pulse has ignited!
+---
+>  地球へ向けて
+>  移動を開始しています」
+It's starting to move toward Earth.”
+
+@49341 Hyoma · 豹馬
+> 「なんだって!?」
+“What?!”
+
+@49342 Amuro · アムロ
+> 「もうか!? 奴め、
+>  やはり一気にケリをつける気だな」
+“Already?! So the bastard really means to finish this in one blow.”
+
+@49343 Ark · アーク（按段落 3DD1）
+> 「俺たちも行きましょう。カトルも、
+>  もどりました。現状では
+“We're going too. Quatre is back as well. As things stand, he's
+---
+>  最大の戦力です。今、
+>  行かなくては取り返しがつかない」
+our greatest fighting strength. If we don't go now, there'll be no turning back.”
+
+@49344 Selain · セレイン（按段落 3DD2）
+> 「我々も出よう、大尉。
+>  カトルがもどったが、現状では
+“We're going out too, Captain. Quatre has returned, but as things stand,
+---
+>  これ以上の戦力は望めない。
+>  このままでやるしかない」
+we can't hope for any more fighting strength. We've no choice but to do this as we are.”
+
+@49345 Selain · セレイン（按段落 3DD2）
+# 机翻疑问：新译名：特佐=Special Colonel
+> 「我々も出よう、特佐。
+>  カトルがもどったが、現状では
+“We're going out too, Special Colonel. Quatre has returned, but as things stand,
+---
+>  これ以上の戦力は望めない。
+>  このままでやるしかない」
+we can't hope for any more fighting strength. We've no choice but to do this as we are.”
+
+@49346 Brad · ブラッド（按段落 3DD3）
+> 「早く俺たちも行こうぜ、大将!
+>  もうこのまんまやるしかねぇよ
+“Let's hurry up and go too, Chief! We've got no choice but to do this as we are,
+---
+>  カトルはもどってんだろ!?」
+and Quatre's back, right?!”
+
+@49347 Manami · マナミ（按段落 3DD4）
+> 「行きましょう、アムロさん。
+>  今のあたしたちだけでは
+“Let's go, Amuro. With just us as we are now,
+---
+>  とめられるかどうかわからない。だけど、
+>  今行かなくてはどうにもならなくなるわ」
+I don't know if we can stop it. But if we don't go now, there'll be no way to fix this.”
+
+@49348 Lawrence · ローレンス
+> 「カトル様もおもどりになりましたしな。
+>  現状ではこれ以上の
+“And Master Quatre has returned as well. As things stand, we can hardly hope for
+---
+>  戦力は望めないでしょう」
+any greater fighting strength.”
+
+@49349 Amuro · アムロ
+> 「ああ。{HeroMech}、
+>  出撃するぞ。目標は、アクシズだ」
+“Yeah. {HeroMech}, launching. Our target is Axis.”
+
+@49350 Quinze · カーンズ
+> 「総帥、兵たちにお言葉を」
+“Supreme Commander, a word to the troops.”
+
+@49351 Char · シャア
+> 「わかっている」
+“I know.”
+
+@49352 Char · シャア
+> 「ネオジオンの兵士諸君、聞いて
+>  もらいたい。数年にわたり続いた
+“Soldiers of Neo Zeon, I want you to hear me out. The years of
+---
+>  地球圏の争乱は、もはや
+>  終結したといってよい。ではなぜ
+turmoil in the Earth Sphere may now be called over. So then why
+---
+>  今になって、我々はまた戦いを
+>  おこしたのか。諸君、もう1度
+have we risen in battle once again now? Everyone, I want you
+---
+>  よく考えてみてほしい。このままでは
+>  我らスペースノイドにとっても
+to think it over once more. If things go on like this, for us Spacenoids,
+---
+>  そして地球そのものにとっても、
+>  かつての地球連邦の時代と
+and for Earth itself, nothing will differ from
+---
+>  何ら変わりはしないことを」
+the days of the old Earth Federation.”
+
+@49353 Gyunei · ギュネイ
+> 「…………」
+“...”
+
+@49354 Char · シャア
+> 「いや、ムゲゾルバドス帝国、
+>  そして銀河帝国の
+“No, one could say the situation is even worse, with Earth
+---
+>  攻撃にさらされ、疲弊しきった
+>  地球を前にすれば、状況は
+exposed to the attacks of the Muge Zorbados Empire and the
+---
+>  より悪化しているといいきれる。
+>  かつて私の父、ジオン・ダイクンが
+Galactic Empire, and utterly exhausted. Long ago, my father, Zeon Deikun,
+---
+>  宇宙移民者すなわち
+>  スペースノイドの自治権獲得を
+demanded from Earth the right of autonomy for the space emigrants,
+---
+>  地球に要求したとき、
+>  父ジオンはザビ家に暗殺された
+the Spacenoids. My father Zeon was assassinated by the Zabi family.
+---
+>  そしてそのザビ家はジオン公国を
+>  名のり、地球連邦政府に
+And that Zabi family took the name Principality of Zeon and
+---
+>  独立戦争を挑んだのである。
+>  その結果は諸君らの
+challenged the Earth Federation government to a war of
+---
+>  知っている通り、ザビ家の敗北に
+>  終わった。それはいい」
+independence. The result, as all of you know, was the defeat of the Zabi family. That much is fine.”
+
+@49355 Char · シャア
+> 「しかしその結果、
+>  地球連邦政府は増長し
+“But as a result, the Earth Federation government grew arrogant,
+---
+>  連邦軍内部は腐敗し、
+>  ゾルバドスの侵攻に対して何ら
+the Federation Forces rotted from within, and against the Zorbados
+---
+>  有効な抵抗もできず敗北した。
+>  その後の帝国の支配の時代に
+invasion they could offer no effective resistance and were defeated. In the age of
+---
+>  おいて、ロームフェラ財団は再び
+>  支配する側たらんとし
+Imperial rule that followed, the Romefeller Foundation sought once more to be among
+---
+>  帝国軍の一部としてスペシャルズ
+>  を組織した」
+the rulers, and organized the Specials as a part of the Imperial military.”
+
+@49356 Char · シャア
+> 「そして今、すべての異星人の
+>  支配を脱却し、ようやく
+“And now, even on an Earth finally freed from the rule of all
+---
+>  解放された地球にあっても、
+>  彼らは難民の救助、地球の
+aliens, under the pretext of rescuing refugees and rebuilding
+---
+>  再建という名目をかかげ、
+>  疲れきった地球の中で、再び
+Earth, amid an exhausted world, they are once again trying to turn back
+---
+>  時代をかつてのごとく、もどそうと
+>  している。ザビ家の残党を語る
+the age to what it once was. And yet the ones who created the causes that bred
+---
+>  ハマーン一党の跳梁を生んだ
+>  原因をつくったのもまた
+the rampages of Haman's faction, which speaks of the remnants of the Zabi family,
+---
+>  かつて連邦にくみした彼らである
+>  にもかかわらず、である
+are none other than they, who once sided with the Federation.
+---
+>  それは、許せることではない」
+That is something I cannot forgive.”
+
+@49357 Quess · クェス
+> 「……あたし、み～んな知っていたなぁ」
+“...I knew a~all about it.”
+
+@49358 Char · シャア
+> 「古い体制はすでに崩壊し、
+>  我々は未曾有の危機をも
+“The old order has already collapsed, and we have weathered an unprecedented
+---
+>  乗りこえた。人類はこれを機に、
+>  新たな時代に移行しなければ
+crisis. Mankind must use this as a chance to move to a new age.
+---
+>  ならないのである。我らが母なる
+>  地球を人類の手から解放し
+We must free our mother Earth from the hands of humanity,
+---
+>  再び人類同士の戦争の
+>  起こることのない世界にしなければ
+and make it a world where war among humans will never occur
+---
+>  ならないのだ。これが、アクシズを
+>  地球に落とす真の目的である」
+again. This is the true purpose of dropping Axis onto Earth.”
+
+@49359 Char · シャア
+> 「これにより地球を荒廃させ、
+>  地球に居続ける人々を
+“By this, we will lay Earth to waste and purge the people
+---
+>  粛清する! これによってのみ、
+>  人類すべてが宇宙に暮らす
+who remain on it! Only through this can we realize a new century
+---
+>  新世紀を実現できるのである!
+>  諸君! 新たなる時代を
+in which all of humanity lives in space! Everyone! To open up a new age,
+---
+>  拓くため、あと一息、諸君らの
+>  力を私に貸していただきたい!
+just a little more, I ask you to lend me your strength!
+---
+>  そして私は、父ジオンのもとへ
+>  召されるであろう!!」
+And I shall be summoned to my father Zeon's side!!”
+
+@49360 Quinze · カーンズ
+> 「お見事な演説でした」
+“A splendid speech.”
+
+@49361 Char · シャア
+> 「これでは道化だよ」
+“This makes me a clown.”
+
+@49362 Quinze · カーンズ
+> 「兵の士気は高すぎて悪いと
+>  いうことはありません。……しかしこれで
+“There is no such thing as troop morale being too high. ...But with this,
+---
+>  ようやくジオン・ダイクンの仇が……」
+at last the vengeance for Zeon Deikun...”
+
+@49363 Char · シャア
+> 「それ以上は口にするな。
+>  貴様がどういう腹づもりでいようが
+“Say no more. Whatever you intend by it
+---
+>  私には関係のないことだ。
+>  それで、あれはどうなっている?」
+is none of my concern. So, how is that thing coming along?”
+
+@49364 Quinze · カーンズ
+> 「すでにアクシズに運びこんであります。
+>  しかし、よろしいのですか?
+“It has already been carried into Axis. But, is this truly all right?
+---
+>  万全を期すならばレポートに
+>  あるように女を……
+If you want to be absolutely certain, then as the report says, the woman...
+---
+>  あのクェスという少女など、そのために
+>  連れてきたのだと思っておりましたが」
+I had thought that girl Quess was brought along precisely for that purpose.”
+
+@49365 Char · シャア
+> 「……あれはあのままでやれ。あくまでも
+>  アクシズ落としを補完する
+“...Let that one be as she is. It is merely a supplement to the Axis drop.
+---
+>  ものでしかない。それでもお前の
+>  オペレーション・メテオは完全な形で
+Even so, your Operation Meteor will be realized in complete form.
+---
+>  実現される。そのつもり
+>  だったのだろう?」
+That was your intention, was it not?”
+
+@49366 Quinze · カーンズ
+> 「はっ……」
+“Yes, sir...”
+
+@49367 Char · シャア
+> (アムロ……私はあこぎなことをやっている
+>  ……感じているのならば
+(Amuro... I am doing something merciless... If you sense it,
+---
+>  私をとめてみせろ)
+then try and stop me)
+
+@49368 Kamille · カミーユ
+> 「しかし、レディ・アン……博物館
+>  ものの核弾頭を送ってくるとは」
+“Still, Lady Une... sending us a warhead that belongs in a museum.”
+
+@49369 Show · ショウ
+> 「変わったとはいっても、
+>  あいかわらず怖い人だな」
+“Even if she's changed, she's still a frightening person.”
+
+@49370 Dr. Yotsuya · 四谷博士
+> 「使うつもりかね? 核を?」
+“Do you intend to use it? The nuke?”
+
+@49371 Amuro · アムロ
+> 「アクシズをとめるためなら、
+>  なんでもやってみせますよ」
+“If it's to stop Axis, I'll try anything.”
+
+@49372 Beltorchika · ベルトーチカ
+> 「……あれ……?」
+“...Huh...?”
+
+@49373 Kenji · ケンジ
+> 「アクシズが見えてきましたか?」
+“Can you see Axis?”
+
+@49374 Beltorchika · ベルトーチカ
+> 「そうだと思うんだけど……」
+“I think so, but...”
+
+@49375 Prof. Yumi · 弓教授
+> 「どうかしたのかね?」
+“Is something the matter?”
+
+@49376 Beltorchika · ベルトーチカ
+> 「データにあるものと形が違うんです。
+>  カトル、ウィナー家でもう
+“Its shape is different from what's in the data. Quatre, did the Winner family
+---
+>  あんなに手を入れたの?」
+really modify it that much?”
+
+@49377 Quatre · カトル
+> 「いいえ、アクシズにはまだ何もして
+>  いません。……そんなに違うんですか?」
+“No, nothing has been done to Axis yet. ...Is it that different?”
+
+@49378 Domon · ドモン
+> 「近づけば、もっとよく見えるだろう。
+>  もう少し待ってみたらどうだ?」
+“Once we get closer, we'll see it better. Why not wait a little longer?”
+
+@49379 Beltorchika · ベルトーチカ
+> 「そうね……」
+“I suppose so...”
+
+@49380 Beltorchika · ベルトーチカ
+> 「……これ……やっぱりアクシズとは
+>  形が違うわ!」
+“...This... this really doesn't have the same shape as Axis!”
+
+@49381 Mika · ミカ
+> 「ええっ!?」
+“What?!”
+
+@49382 Amuro · アムロ
+> 「映像を拡大して、
+>  正面のモニターに」
+“Magnify the image and put it on the front monitor.”
+
+@49383 Domon · ドモン
+> 「……なんだとッ!」
+“...What did you say?!”
+
+@49384 Chibodee · チボデー
+> 「オゥッ、ジーザス……」
+“Oh, Jesus...”
+
+@49385 Quatre · カトル
+> 「そんな……そんなはずはありません!
+>  僕が確認した時には
+“No... that can't be! When I checked,
+---
+>  あんなものはアクシズには
+>  なかったはずです!! それにあれは……」
+there was nothing like that on Axis!! And that thing is...”
+
+@49386 Argo · アルゴ
+> 「むう…………」
+“Mmm...”
+
+@49387 Sai Saici · サイ・サイシー
+> 「アニキィ……あれって……」
+“Bro... that's...”
+
+@49388 Domon · ドモン
+> 「ああ……間違いないッ!
+>  デビルガンダムだ!!」
+“Yeah... there's no mistake! It's the Dark Gundam!!”
+
+@49389 Juzo · 十三
+> 「ちょいまちいや。なんぼ何でも、
+>  あんなでかいわけあらへんやろ!?」
+“Hold on there. No matter how you slice it, it can't be that huge!”
+
+@49390 Kosuke · 小介
+> 「いえ、僕が独自に分析した
+>  デビルガンダムの能力が正しければ
+“No, if my independent analysis of the Dark Gundam's abilities is correct,
+---
+>  その程度のことはできますよ」
+it's entirely capable of that.”
+
+@49391 Juzo · 十三
+> 「なんやて!?」
+“Say what?!”
+
+@49392 Dr. Yotsuya · 四谷博士
+> 「ううむ……わしもこの目で見るまでは
+>  信じられなかったが……」
+“Hmm... I couldn't believe it either until I saw it with my own eyes...”
+
+@49393 Rain · レイン
+> 「どういうことなんです!?」
+“What does this mean?!”
+
+@49394 Kosuke · 小介
+> 「デビルガンダムがアクシズを取りこんだ、
+>  ということです。デビルガンダムの
+“It means the Dark Gundam has absorbed Axis. It's an application of the Dark Gundam's
+---
+>  基礎理論、自己進化と
+>  自己増殖の応用なんですよ」
+basic theory: self-evolution and self-replication.”
+
+@49395 George · ジョルジュ
+> 「どうやら、デビルガンダムの残骸を
+>  回収していた人がいるようですね」
+“It seems someone was collecting the Dark Gundam's remains.”
+
+@49396 Amuro · アムロ
+> 「シャアめ……本気で地上の
+>  人間を皆殺しにするつもりか」
+“That Char... does he really intend to slaughter every human on Earth?”
+
+@49397 Judau · ジュドー
+> 「問題はどうやって、とめるかって
+>  ことでしょ!? あれが全部
+“The question is how we stop it, right?! If all of that is
+---
+>  デビルガンダムなら、核をぶつけたって
+>  効くかどうか、わかりゃしないぜ」
+the Dark Gundam, there's no telling whether a nuke would even work.”
+
+@49398 Rain · レイン
+> 「デビルガンダムならばコアが必要な
+>  はずだわ。それを破壊できれば……」
+“If it's the Dark Gundam, it should need a core. If we can destroy that...”
+
+@49399 Kamille · カミーユ
+> 「あの中へ入るしかないっていうのか……」
+“You're saying we have no choice but to go inside...”
+
+@49400 Tetsuya · 鉄也
+> 「だが、あれをやった人間は
+>  そいつも知ってるはずだ
+“But whoever did this must know that too.
+---
+>  シャアは全力で守りにくる。
+>  近づくことすら容易じゃない
+Char will defend it with everything he has. Even getting close won't be easy,
+---
+>  今の俺たちの戦力ではな」
+not with the forces we have now.”
+
+@49401 Marvel · マーベル
+> 「さしずめデビルアクシズと
+>  いったところね……」
+“I suppose you could call it Dark Axis...”
+
+@49402 Domon · ドモン
+> 「シャアだろうがデビルアクシズだろうが、
+>  かまわん! デビルガンダムに
+“Char or Dark Axis, I don't care! As long as the Dark Gundam is
+---
+>  関わりのある限り、この俺が
+>  まとめて叩きつぶしてやるッ!!」
+involved, I'll smash them all to pieces myself!!”
+
+@49403 Rain · レイン
+> 「ドモン、お願いだから、落ち着いて」
+“Domon, please, calm down.”
+
+@49404 Henken · ヘンケン
+> 「どうする、大尉?」
+“What will you do, Captain?”
+
+@49405 Henken · ヘンケン
+> 「どうする、特佐?」
+“What will you do, Special Colonel?”
+
+@49406 Amuro · アムロ
+> 「……事情が変わった。
+>  こうなったらシャアの望むように
+“...The situation has changed. If it's come to this, then just as Char wants,
+---
+>  正面からぶつかるしかない」
+we charge him head-on.”
+
+@49407 Henken · ヘンケン
+> 「しかしこの戦力差だぞ?
+>  うまく中へ入りこめたとしても
+“But with this gap in forces? Even if we manage to get inside,
+---
+>  何が待っているかわかったものじゃない」
+there's no telling what's waiting for us.”
+
+@49408 Amuro · アムロ
+> 「だからといって、指をくわえて
+>  みているわけにはいかない」
+“Even so, we can't just sit here sucking our thumbs.”
+
+@49409 Henken · ヘンケン
+> 「そりゃそうだが……」
+“I suppose not, but...”
+
+@49410 Ark · アーク（按段落 3DD1）
+> 「アクシズはもう動いているんです。そんな
+>  問答をしている時間はありません!」
+“Axis is already moving. We don't have time for this debate!”
+
+@49411 Selain · セレイン（按段落 3DD2）
+# 检查提示：未用必用译名：ヘンケン艦→Henken's ship
+> 「ヘンケン艦長、戦力差のことも
+>  そうだが、我々にはなによりも
+“Captain Henken, the gap in forces aside, don't forget that above all else,
+---
+>  時間がないということをお忘れなく」
+we're out of time.”
+
+@49412 Brad · ブラッド（按段落 3DD3）
+> 「アクシズはもう動いてるんだぜ!?
+>  そんな問答している時間は
+“Axis is already on the move!? We don't have time for
+---
+>  ねぇだろうが!
+>  どうせやるしかねぇんなら
+this debate! If we've gotta do it anyway,
+---
+>  早めに動いたほうがいいってもんだ」
+we're better off moving fast.”
+
+@49413 Manami · マナミ（按段落 3DD4）
+# 审校：「後手にまわっている」译为 left behind 不准确，改为 a step behind，更符合“已经处于被动/落后一步”的原意。
+# 检查提示：未用必用译名：ヘンケン艦→Henken's ship
+> 「ヘンケン艦長、そんなことをいっている
+>  場合ではありませんわ
+“Captain Henken, this is no time for such talk.
+---
+>  あたしたちはすでに
+>  後手にまわっているんですよ!?」
+We're already a step behind, you know?!”
+
+@49414 Henken · ヘンケン
+> 「そうだな……それ以外に手はないか。
+>  よし、総員第一戦闘配置!
+“You're right... there's no other way. All right, all hands to battle stations!
+---
+>  本艦隊はこれより、デビルアクシズに
+>  対し艦隊特攻をかける!」
+This fleet will now launch a fleet charge against Dark Axis!”
+
+@49415 Kignan · キグナン
+> 「大佐、来ました」
+“Colonel, they're here.”
+
+@49416 Char · シャア
+> 「来たか、{HeroMech}。
+>  さすがに早いな
+“So you've come, {HeroMech}. Fast as expected.
+---
+>  こちらの動きを読んでいたということか」
+So you read our movements, did you?”
+
+@49417 Quinze · カーンズ
+> 「今の連中の戦力では、
+>  ネオジオン艦隊をぬいて
+“With their current forces, breaking through the Neo Zeon Fleet
+---
+>  アクシズをとめるのは、ほぼ不可能。
+>  我々の勝ちですな」
+and stopping Axis is all but impossible. Victory is ours.”
+
+@49418 Char · シャア
+> 「いや……どうやら、
+>  そうでもなくなってきたな……」
+“No... it seems that's no longer so certain...”
+
+@49419 Quinze · カーンズ
+> 「は?」
+“Huh?”
+
+@49420 Char · シャア
+> 「このプレッシャー……ガンドールが
+>  もどったか。万丈たちもいるな
+“This pressure... Gandor has returned. Banjo and the others are here too.
+---
+>  運の強い連中だ」
+They're a lucky bunch.”
+
+@49421 Quinze · カーンズ
+> 「な……なんですと!? 観測班、
+>  何をやっている!
+“W-what?! What is the observation team doing!
+---
+>  早く状況を知らせい!」
+Report the situation at once!”
+
+@49422 Char · シャア
+> 「これで戦力は五分五分と
+>  いったところか……面白い
+“So now our forces are evenly matched... interesting.
+---
+>  このアクシズをとめられるか、アムロ」
+Can you stop this Axis, Amuro?”
+
+@49423 Koji · 甲児
+> 「なぁ……オレたち……あと、
+>  どのくらい生きてられるんだ?」
+“Hey... how much longer do you think we... can keep living?”
+
+@49424 Duo · デュオ
+> 「あ～あ、ついにいいやがったよ。そのうち
+>  誰かいうだろうとは思ってたけどさぁ」
+“Oh, great, someone finally said it. I figured somebody would sooner or later.”
+
+@49425 Koji · 甲児
+> 「な、なんだよ、いっちゃいけなかった
+>  ってのかよ。だってよ、あれから
+“W-what, was I not supposed to say it? I mean, how many days do you think it's been since then?
+---
+>  何日たってると思ってるんだ?
+>  こんな何にもないところでさ」
+Stuck out here in the middle of nowhere.”
+
+@49426 Sayaka · さやか
+> 「もう、そんなこと誰も
+>  考えてないとでも思ったの?」
+“Oh, did you really think nobody else was thinking about it?”
+
+@49427 Maria · マリア
+> 「甲児、さいて～」
+“Koji, that's the worst~”
+
+@49428 Boss · ボス
+# 审校：「まったくだわさ」是 Boss 对甲児的附和，原译 He's got a point 指代和语气都不够贴切，改为更口语化的附和。
+> 「まったくだわさ」
+“You said it.”
+
+@49429 Koji · 甲児
+> 「なななな、なんだよなんだよ、みんなして。
+>  さやかさんだって、いま
+“Wha-wha-wha-what's with all of you? Even you, Sayaka, you just said
+---
+>  みんな考えてるって、いってたじゃないか」
+everyone's thinking about it.”
+
+@49430 Sayaka · さやか
+> 「考えてても口に出さなかった
+>  ってことなのよ」
+“Thinking about it and saying it out loud are two different things.”
+
+@49431 Daisuke · 大介
+> 「まぁまぁ、その辺でやめにしないか。
+>  確かに言い出しにくいことではあるが
+“Now, now, let's leave it at that. It's true it's hard to bring up,
+---
+>  かなりの問題であるのは
+>  間違いないことだ」
+but there's no doubt it's a serious problem.”
+
+@49432 Koji · 甲児
+> 「さすが大介さん。わかってるぜ」
+“That's Daisuke for you. You get it.”
+
+@49433 Daisuke · 大介
+> 「話が出たついでです。で、実際の
+>  ところはどうなんです、艦長?」
+“Since it's come up, then. What's the actual situation, Captain?”
+
+@49434 Garrison · ギャリソン
+> 「ふむ、では私からご説明
+>  いたしましょう。よろしいですかな?」
+“Hmm, then allow me to explain. Would that be all right?”
+
+@49435 Bright · ブライト
+> 「ああ……しかたがないな。いつまでもその
+>  問題にふれんわけにもいかないだろう」
+“Yeah... it can't be helped. We can't avoid the subject forever.”
+
+@49436 Garrison · ギャリソン
+> 「単刀直入に申しあげますと、
+>  本艦が通常の状態を
+“To put it bluntly, this ship can maintain normal conditions for
+---
+>  維持できるのは、残り
+>  約3日ほどといったところですな」
+about three more days, at most.”
+
+@49437 Koji · 甲児
+> 「3日だって!?
+>  たったそれだけだってのか!?」
+“Three days?! That's all we've got?!”
+
+@49438 Garrison · ギャリソン
+> 「さよう。私といたしましても、
+>  その先のことは
+“Indeed. As for me, I would rather not think too much
+---
+>  あまり考えたくはございませんが……」
+about what comes after that, but...”
+
+@49439 Ryoma · リョウ
+> 「それまでに助けがこなければ……
+>  ということか」
+“So if help doesn't come by then... that's it.”
+
+@49440 Trowa · トロワ
+> 「考えても無駄だ。
+>  すべてを受け入れるしかない」
+“There's no point thinking about it. We just have to accept it all.”
+
+@49441 Wufei · 五飛
+> 「俺はそんな情けない死に方は
+>  認めん!」
+“I won't accept such a pathetic way to die!”
+
+@49442 David · デビッド
+> 「認めんといわれてもなぁ……」
+“Even if you say you won't accept it...”
+
+@49443 Heero · ヒイロ
+# 审校：词表将「自爆」列为参考译名 Self-Destruct，战斗语境下应使用 Title Case，保持术语一致。
+> 「ならばMSに乗って
+>  自爆スイッチを押せ、五飛」
+“Then get in your MS and press the Self-Destruct switch, Wufei.”
+
+@49444 Wufei · 五飛
+> 「くっ……そんな意味のないことなど
+>  できるかッ!」
+“Ngh... like I'd do something so meaningless!”
+
+@49445 Heero · ヒイロ
+> 「意味ならある。
+>  俺たちの戦いは終わっている
+“There is meaning. Our battle is over.
+---
+>  俺たちはいらなくなった兵士だ」
+We're soldiers who are no longer needed.”
+
+@49446 Simone · シモーヌ
+> 「ちょっと、話が飛躍しすぎよ。
+>  まだ助からないと
+“Hey, you're jumping way too far ahead. It's not decided yet that we
+---
+>  決まったわけじゃないでしょ。
+>  それとも、それもゼロの予測?」
+can't be saved. Or is that another one of Zero's predictions?”
+
+@49447 Heero · ヒイロ
+> 「いや……ゼロはわずかだが
+>  生還の可能性も示している」
+“No... Zero does show a slight possibility of survival.”
+
+@49448 Simone · シモーヌ
+> 「なら、それを信じましょ。どうせ、
+>  あたしたちにはそれしかできないんだから」
+“Then let's believe in that. It's all we can do anyway.”
+
+@49449 Shinobu · 忍
+> 「う……ここは……どこだ……?」
+“Ugh... where... where am I...?”
+
+@49450 Ryo · 亮
+> 「気がついたようだな。ここは
+>  ネェルアーガマのメディカル・ルームだ」
+“So you're awake. This is the Nahel Argama's medical room.”
+
+@49451 Shinobu · 忍
+> 「そうか……情けねぇ。バカみたいに騒い
+>  だあげく、ぶっ倒れたのかよ、俺は」
+“I see... how pathetic. I made a big fool of myself and then just collapsed, huh.”
+
+@49452 Ryo · 亮
+> 「まったくだ……と言いたいが、違うな。
+>  どうやらムゲの宇宙での無理が
+“I'd like to say 'exactly'... but no, that's not it. It seems the strain from
+---
+>  たたったようだ」
+the Muge universe finally caught up with you.”
+
+@49453 Shinobu · 忍
+> 「どういうことだ?」
+“What do you mean?”
+
+@49454 Ryo · 亮
+> 「沙羅と同じだ。少しばかり休んで
+>  気を抜いたとたん、反動が来た
+“Same as Sara. The moment you relaxed after a little rest, the backlash hit.
+---
+>  俺すら倒れていたんだ。お前たちが
+>  全員倒れていたところで
+Even I collapsed. It's no wonder
+---
+>  不思議はない」
+all of you were down.”
+
+@49455 Shinobu · 忍
+# 审校：原译准确，无需修改。
+> 「……ダンクーガのシステムか……ムゲの
+>  宇宙は、きつかったからな」
+“...The Dancouga system, huh... The Muge universe was rough.”
+
+@49456 Ryo · 亮
+> 「そういうことだ。もともと俺たちにも、か
+>  なりの負荷はあった。気力で
+“That's right. We were under a heavy load to begin with. I can't deny that
+---
+>  もたせていた部分があったのは否定
+>  できんからな」
+we were partly running on sheer willpower.”
+
+@49457 Shinobu · 忍
+# 审校：原译准确，无需修改。
+> 「……沙羅と雅人はどうした?」
+“...What about Sara and Masato?”
+
+@49458 Ryo · 亮
+> 「まだだ。俺が先に回復したのは、
+>  日頃の鍛錬のたまものだな」
+“Not yet. The fact that I recovered first is the fruit of my daily training.”
+
+@49459 Shinobu · 忍
+> 「チッ、勝手にいってやがれ。
+>  で……どうなった?」
+“Tch, say whatever you want. So... what happened?”
+
+@49460 Ryo · 亮
+> 「状況はたいして変わっていない。
+>  変わったといえば、もうそれほど長くは
+“The situation hasn't changed much. If anything has, it's that we don't have
+---
+>  もたないということくらいか」
+much longer.”
+
+@49461 Shinobu · 忍
+> 「そういうことかよ。
+>  チッ、起きるんじゃなかったぜ」
+“So that's how it is. Tch, I shouldn't have woken up.”
+
+@49462 Ryo · 亮
+> 「ま、最後までそのままなら、
+>  確かに楽だったかもしれんがな」
+“Well, if you'd stayed out the whole time, it might've been easier, sure.”
+
+@49463 Shinobu · 忍
+> 「そうさ。俺たちは十分戦った。
+>  ムゲも倒した
+“That's right. We fought plenty. We beat Muge too.
+---
+>  死ぬ時くらいは、
+>  楽に死ねてもいいはずだぜ」
+When it's time to die, we ought to be allowed to go easy.”
+
+@49464 Ryo · 亮
+> 「なんなら、もう1度
+>  寝かせてやってもいいんだぞ」
+“If you want, I could put you back to sleep again.”
+
+@49465 Shinobu · 忍
+> 「バカか、てめぇ。状況を確認して
+>  からじゃ意味がねぇだろうが!」
+“Are you an idiot? There'd be no point if I checked the situation first!”
+
+@49466 Ryo · 亮
+> 「ふん、どうやら大丈夫のようだな。
+>  ま、歩けるなら他の連中のところへ
+“Hmph, seems you're fine after all. Well, if you can walk, go show your face to
+---
+>  顔を出しておけ」
+the others.”
+
+@49467 Shinobu · 忍
+> 「ちっ、亮のやつ……
+>  まわりくどいことしやがってよ」
+“Tch, that Ryo... always has to beat around the bush.”
+
+@49468 Sara · 沙羅
+> 「あいつはいい奴だからね。だけど……
+>  だいぶヤバイみたいだね」
+“He's a good guy, you know. But... it looks pretty bad for us.”
+
+@49469 Shinobu · 忍
+> 「なんだ沙羅、起きてたのか」
+“What, Sara, you were awake?”
+
+@49470 Sara · 沙羅
+> 「あんたのでかい声で起こされたのさ」
+“Your big mouth woke me up.”
+
+@49471 Shinobu · 忍
+> 「そいつは悪かったな。
+>  そのまま寝てりゃ楽だったのにな」
+“Sorry about that. You'd have had it easier if you'd just kept sleeping.”
+
+@49472 Sara · 沙羅
+> 「よけいなお世話だよ。
+>  あたしはあんたと違って
+“None of your business. Unlike you,
+---
+>  死ぬ時は自分で
+>  決めさせてもらうさ」
+when I die, I'll decide that for myself.”
+
+@49473 Shinobu · 忍
+> 「結構なことだ。だがな、これじゃ
+>  戦って死ぬってわけにはいかないぜ」
+“Good for you. But look, this way we don't get to die fighting.”
+
+@49474 Sara · 沙羅
+> 「わかってるよ。ムゲは倒した……
+>  あのおかしな奴もいなくなった……」
+“I know. We beat Muge... and that strange one is gone too...”
+
+@49475 Shinobu · 忍
+> 「この異空間に取り残されたのは、
+>  俺たちだけだ」
+“We're the only ones left behind in this other dimension.”
+
+@49476 Sara · 沙羅
+> 「なんだか……疲れたね」
+“Somehow... I'm exhausted.”
+
+@49477 Shinobu · 忍
+> 「ああ。正直やっと終わったって感じ
+>  だぜ。……かわりにまた、いろんなもんを
+“Yeah. Honestly, it finally feels like it's over. ...In exchange, we lost a lot of
+---
+>  失っちまった。おまけに今度は
+>  自分の命まで失いそうだしな」
+things again. And on top of that, now we're about to lose our own lives.”
+
+@49478 Sara · 沙羅
+> 「でも……その時はさ、忍。あたしも
+>  一緒でしょ?」
+“But... when that happens, Shinobu, I'll be with you, right?”
+
+@49479 Shinobu · 忍
+> 「沙羅……」
+“Sara...”
+
+@49480 Sara · 沙羅
+> 「ねぇ忍……もし……
+>  もし生きて地球へ帰れたら……」
+“Hey, Shinobu... if... if we make it back to Earth alive...”
+
+@49481 Shinobu · 忍
+> 「…………」
+“...”
+
+@49482 Sara · 沙羅
+> 「……パーッとやりましょ。みんなでね」
+“...Let's go all out. All of us together.”
+
+@49483 Shinobu · 忍
+> 「なんだそりゃ。俺はまたてっきり……」
+“What's that supposed to mean? And here I thought...”
+
+@49484 Sara · 沙羅
+> 「てっきり、何さ? いってごらんよ、忍」
+“Thought what? Go on, say it, Shinobu.”
+
+@49485 Shinobu · 忍
+> 「ちっ、なんでもねぇよ」
+“Tch, nothing.”
+
+@49486 Reika · レイカ
+> 「艦長、熱源反応です!」
+“Captain, heat source detected!”
+
+@49487 Bright · ブライト
+> 「なに? どういうことだ?」
+“What? What do you mean?”
+
+@49488 Alan · アラン
+> 「敵か!?」
+“The enemy?!”
+
+@49489 Reika · レイカ
+> 「そんなことわからないわよ」
+“How should I know?”
+
+@49490 Beauty · ビューティ
+> 「……艦長」
+“...Captain.”
+
+@49491 Bright · ブライト
+> 「なんだ!?」
+“What is it?!”
+
+@49492 Beauty · ビューティ
+> 「呼び出しが
+>  入ってるようなんですけど……」
+“It looks like we're receiving a call...”
+
+@49493 Bright · ブライト
+> 「なんだと!? すぐにつなげッ!!」
+“What?! Put it through, now!!”
+
+@49494 Takeru · タケル
+> 「本当にガンドールが来たんだって!?」
+“The Gandor really came?!”
+
+@49495 Hayato · ハヤト
+> 「どうやらそうらしいな」
+“Seems that way.”
+
+@49496 Koji · 甲児
+# 审校：「助かっちまったぜ」是“我们得救了”，原译“We actually made it”与后文L19重复且偏离原意。
+> 「おい信じられるかよ!?
+>  オレたち、助かっちまったぜ!」
+“Hey, can you believe it?! We're saved!”
+
+@49497 Maria · マリア
+# 审校：「助かったのが悪いみたいに」指“得救像坏事一样”，原译“surviving”不够贴切，改为“being saved”。
+> 「甲児! まるで助かったのが
+>  悪いみたいにいわないでよ!」
+“Koji! Don't say it like being saved is a bad thing!”
+
+@49498 Koji · 甲児
+# 审校：与L17、L18统一为“be saved”，避免同一段内“made it/surviving/saved”混用。
+> 「悪い悪い。まさか本当に
+>  助かるなんて思ってなかったからさ」
+“My bad, my bad. I just never thought we'd actually be saved.”
+
+@49499 Ryoma · リョウ
+> 「ああ……だがこれで地球へ帰れる」
+“Yeah... but now we can go back to Earth.”
+
+@49500 Bright · ブライト
+> 「よく来てくれました、博士」
+“Thank you for coming, Doctor.”
+
+@49501 Dr. Hazuki · 葉月博士
+> 「なんとか間にあったようだね」
+“It seems we made it just in time.”
+
+@49502 Bright · ブライト
+# 审校：「生きて地球へ帰ることができます」原译“make it back”可接受，但与L20等“go back to Earth”不一致，统一为“return to Earth alive”。
+> 「しかし、よくたった半月でガンドール
+>  の改修が終わりましたね。おかげで
+“Still, I'm amazed you finished the Gandor's refit in only half a month. Thanks to you,
+---
+>  我々も生きて地球へ帰ることが
+>  できます。感謝しますよ」
+we can return to Earth alive. You have my gratitude.”
+
+@49503 Dr. Hazuki · 葉月博士
+> 「何をいっているんです、艦長。いくら
+>  我々でもたったの半月では……
+“What are you saying, Captain? Even for us, in only half a month...
+---
+>  ……半月?」
+...Half a month?”
+
+@49504 Garrison · ギャリソン
+> 「はい、間違いございません。もう
+>  まもなく、本艦は生命維持に
+“Yes, there is no mistake. Before long, this ship would have reached the point of
+---
+>  支障をきたすところでした」
+failing to sustain life.”
+
+@49505 Dr. Hazuki · 葉月博士
+> 「……やはり、そうだったか」
+“...So that's how it was, after all.”
+
+@49506 Bright · ブライト
+> 「なにか?」
+“What is it?”
+
+@49507 Dr. Hazuki · 葉月博士
+> 「実は、我々はガンドールの改修に
+>  4ヶ月以上かかったのだ」
+“The truth is, it took us over four months to refit the Gandor.”
+
+@49508 Bright · ブライト
+> 「4ヶ月ですって!?」
+“Four months?!”
+
+@49509 Ryo · 亮
+> 「しかし博士、俺たちは確かにここで
+>  2週間ほどしか過ごしていない
+“But Doctor, we've certainly spent only about two weeks here.
+---
+>  この虚空で4ヶ月も生き延びる
+>  のは不可能だ」
+It's impossible to survive four months in this void.”
+
+@49510 Dr. Hazuki · 葉月博士
+> 「そう、その通りだ。つまり……」
+“Yes, exactly. In other words...”
+
+@49511 Daisuke · 大介
+> 「この閉じた空間の、時間の流れ
+>  が違うということですね。そのような
+“It means the flow of time differs in this closed space. I have heard of
+---
+>  存在を聞いたことがあります」
+such a phenomenon before.”
+
+@49512 Dr. Hazuki · 葉月博士
+> 「うむ、そうとでも考えなければ、
+>  説明がつかん」
+“Indeed. Unless we assume that, there's no explaining it.”
+
+@49513 Masato · 雅人
+> 「でも博士、『やはりそうだったか』って
+>  いってたじゃないですか」
+“But Doctor, you said ‘so that's how it was, after all,’ didn't you?”
+
+@49514 Dr. Hazuki · 葉月博士
+> 「他の博士方といろいろと研究
+>  した結果、そうではないか、と
+“After various studies with the other doctors, it was merely a hypothesis that it might be so.
+---
+>  推測されただけにすぎん。だが我々
+>  はその推測だけに期待を託し、
+But we pinned our hopes on that hypothesis alone, and
+---
+>  こうしてガンドールの改修を終わらせ
+>  この空間へやってきたのだ」
+that is how we finished the Gandor's refit and came to this space.”
+
+@49515 Shinobu · 忍
+# 审校：「助かったんだからよ」原译“We survived”与L17-L19的“saved”不一致，统一为“We're saved”。
+> 「チッ、なにごちゃごちゃいってやがんだよ。
+>  助かったんだからよ、んなこたぁどうでも
+“Tch, quit yammering on about all that. We're saved, so who cares about
+---
+>  いいじゃねぇか」
+any of that stuff.”
+
+@49516 Banjo · 万丈
+> 「それはそうだ。重要なのは僕たちが
+>  生きている間に、ガンドールが迎えに
+“That's right. What matters is that the Gandor came to pick us up
+---
+>  きてくれたってことさ」
+while we were still alive.”
+
+@49517 Garrison · ギャリソン
+> 「そうですな……もう少し遅ければ、
+>  大変なことになっているところでした」
+“Indeed... A little later, and things would have turned very bad.”
+
+@49518 Shinobu · 忍
+> 「大変じゃすまねぇだろ。
+>  それより葉月さんよ
+“Bad wouldn't even cover it. More importantly, Dr. Hazuki,
+---
+>  ムゲがどうなったか聞かねぇのかよ?」
+aren't you going to ask what happened to Muge?”
+
+@49519 Dr. Hazuki · 葉月博士
+> 「この様子を見ればわかる。
+>  みんな、よくやってくれたようだな」
+“I can tell just by looking at you all. It seems everyone did well.”
+
+@49520 Masato · 雅人
+> 「ちぇっ、それだけ?
+>  俺たち命がけで戦ったってのにさ」
+“Sheesh, that's all? And we fought for our lives, too.”
+
+@49521 Eiji · エイジ
+> 「地球はどうなっているんですか?
+>  あれから4ヶ月たっている
+“What's become of Earth? You said four months have passed
+---
+>  ということですが」
+since then.”
+
+@49522 Dr. Hazuki · 葉月博士
+> 「うむ。各地で小規模な戦闘は
+>  続いているが、とりあえず復興を
+“Indeed. Small-scale fighting continues in various places, but for the most part reconstruction has
+---
+>  始めている。これまでのことを考えれば
+>  おおむね平和といっていいだろう」
+begun. Considering all that's happened, you could say it's largely peaceful.”
+
+@49523 Koji · 甲児
+> 「それでこそ、オレたちが、
+>  がんばったかいがあるってもんだぜ」
+“That's what makes all our hard work worth it.”
+
+@49524 Boss · ボス
+> 「まったくだわさ」
+“You said it.”
+
+@49525 Daisuke · 大介
+> 「それで、博士。我々はすぐに
+>  地球へもどれるのですか?」
+“So, Doctor, can we return to Earth right away?”
+
+@49526 Dr. Hazuki · 葉月博士
+> 「むろんだ。伊達にこれだけの時間を
+>  費やしたわけではない
+“Of course. We didn't spend all this time for nothing.
+---
+>  このガンドールならば、
+>  明日にでも我々の宇宙へと
+With this Gandor, we can return to our universe
+---
+>  もどることができる」
+as early as tomorrow.”
+
+@49527 Duo · デュオ
+> 「だったら、こんなところでしゃべってないで
+>  早いとこ、もどる準備をしようぜ
+“Then let's stop standing around talking and get ready to head back.
+---
+>  もうこんな何にもないところはうんざりだ」
+I've had enough of this place with nothing in it.”
+
+@49528 Bright · ブライト
+> 「まったくだな。博士、
+>  ネェルアーガマは……」
+“Couldn't agree more. Doctor, what about the Nahel Argama...”
+
+@49529 Dr. Hazuki · 葉月博士
+> 「残念だがネェルアーガマは
+>  置いていかざるをえんな
+“Unfortunately, we'll have to leave the Nahel Argama behind.
+---
+>  みんなガンドールへ移ってくれ」
+Everyone, transfer to the Gandor.”
+
+@49530 Masato · 雅人
+> 「うわぁ、すっごいや」
+“Whoa, amazing!”
+
+@49531 David · デビッド
+> 「これだよ、これ。この星の海!
+>  やっぱり俺たちの宇宙はいいなぁ」
+“This is it, this is it. This sea of stars! Our universe really is the best.”
+
+@49532 Sayaka · さやか
+> 「ほんと、星の光がきれいだわ。
+>  それに、地球も……」
+“The starlight really is beautiful. And there's Earth, too...”
+
+@49533 Koji · 甲児
+> 「ああ、オレたちの地球だ。
+>  本当に帰ってきたんだな……」
+“Yeah, our Earth. We really made it back...”
+
+@49534 Shinobu · 忍
+> 「で、俺たちはいったい
+>  どのあたりに出てきたんだ?」
+“So where exactly did we come out?”
+
+@49535 Dr. Hazuki · 葉月博士
+> 「月軌道よりも少し外側のはずだ
+>  月の位置を確認してくれ
+“We should be a little outside lunar orbit. Check the moon's position.
+---
+>  とりあえずそこへ向かう」
+For now, we'll head there.”
+
+@49536 Banjo · 万丈
+> 「ん? どうした、レイカ?」
+“Hm? What's wrong, Reika?”
+
+@49537 Reika · レイカ
+> 「……ミノフスキー粒子濃度が
+>  普通じゃないわ
+“...The Minovsky particle density is abnormal.
+---
+>  これじゃまるで、
+>  大規模戦闘中なみよ」
+This is like being in the middle of a large-scale battle.”
+
+@49538 Maria · マリア
+> 「どういうこと?」
+“What do you mean?”
+
+@49539 Alan · アラン
+> 「どうやら……博士のいったほどには、
+>  平和になっていないということらしいな」
+“It seems... things haven't become as peaceful as the Doctor said.”
+
+@49540 Duo · デュオ
+> 「ちょっと待ってくれよ。いまさらいったい
+>  誰と誰が
+“Hold on a second. Who the hell is fighting whom
+---
+>  戦争やってるっていうんだ?」
+at this point?”
+
+@49541 Bright · ブライト
+> 「わからんな……」
+“I don't get it...”
+
+@49542 Trowa · トロワ
+> 「ああ、現状では推測不能だ」
+“Yeah, we can't even guess from here.”
+
+@49543 Koji · 甲児
+> 「くっそーっ、どういうことなんだよ!?」
+“Damn it, what the hell is going on?!”
+
+@49544 Reika · レイカ
+> 「オーラシップらしき艦影を
+>  捕捉したわ
+“I've picked up what looks like an Aura Ship.
+---
+>  {HeroMech}の
+>  艦隊じゃないかしら」
+Could it be the fleet of the {HeroMech}?”
+
+@49545 Bright · ブライト
+> 「よし、接近してくれ。レーザー通信
+>  での呼びかけも忘れるな」
+“All right, close in. And don't forget to hail them by laser comm.”
+
+@49546 Beauty · ビューティ
+> 「ちょっと待って!! あれ、なに!?」
+“Wait a second!! What is that?!”
+
+@49547 Ryoma · リョウ
+> 「どうしたんだ?」
+“What's wrong?”
+
+@49548 Duo · デュオ
+> 「……うわっ、なんだありゃあ!?」
+“...Whoa, what the hell is that?!”
+
+@49549 Ryo · 亮
+> 「アクシズ……か……?」
+“Axis... is that...?”
+
+@49550 Hayato · ハヤト
+> 「違うな。あの形は……」
+“No. That shape is...”
+
+@49551 Garrison · ギャリソン
+# 审校：ギャリソン是管家，对万丈说话时用敬语，但这里没有明确对象且原文无“sir”，删去多余的 sir。
+> 「なにやら顔がついているようにも
+>  見えますな」
+“It appears to have something like a face on it.”
+
+@49552 Heero · ヒイロ
+> 「……デビルガンダム」
+“...Dark Gundam.”
+
+@49553 Trowa · トロワ
+> 「どうやらそのようだな」
+“So it would seem.”
+
+@49554 Ryoma · リョウ
+> 「ばかな!」
+“Impossible!”
+
+@49555 Koji · 甲児
+> 「そうだぜ。デビルガンダムは倒した
+>  はずだろ? それに、あれはでかすぎるぜ?」
+“He's right. We destroyed the Dark Gundam, didn't we? And that thing's way too big!”
+
+@49556 Alan · アラン
+> 「博士?」
+“Doctor?”
+
+@49557 Dr. Hazuki · 葉月博士
+# 审校：“no such thing”语气稍硬，改为更自然的“nothing like that”。
+> 「……いや、私も知らん。私が出発
+>  する前にはあんなものはなかったはずだ」
+“...No, I don't know either. There was nothing like that before I departed.”
+
+@49558 Bright · ブライト
+> 「いったい、なにがどうなっているんだ!?」
+“Just what on earth is going on?!”
+
+@49559 Amuro · アムロ
+> 「ガンドールがもどっただって!?
+>  本当に!?」
+“The Gandor is back?! Really?!”
+
+@49560 Henken · ヘンケン
+> 「ああ大尉。いまコールがあった」
+“Yes, Captain. We just got the call.”
+
+@49561 Henken · ヘンケン
+> 「ああ特佐。いまコールがあった」
+“Yes, Lieutenant Colonel. We just got the call.”
+
+@49562 Amuro · アムロ
+> 「みんなは、
+>  連中は無事だったのか!?」
+“Are they all right?! Were they unharmed?!”
+
+@49563 Henken · ヘンケン
+> 「どうやらそうらしい。
+>  いまこちらに向かっているそうだ
+“It seems so. They're heading this way now.
+---
+>  まもなく合流できるだろう」
+We should be able to rendezvous soon.”
+
+@49564 Amuro · アムロ
+> 「ブライト! よく、無事で……」
+“Bright! Thank goodness you're safe...”
+
+@49565 Bright · ブライト
+> 「ああ、こっちは全員無事だよ。
+>  ムゲも倒した。しかしアムロ
+“Yeah, everyone here is fine. We beat Muge too. But Amuro,
+---
+>  あれはいったいなんだ!?
+>  デビルガンダムに似ているようだが
+what in the world is that?! It looks like the Dark Gundam,
+---
+>  あれはアクシズなのか!?
+>  いったい何がどうなっている!?」
+but is that Axis?! What on earth is going on?!”
+
+@49566 Amuro · アムロ
+> 「シャアだよ。奴がしかけたんだ。すでに
+>  フィフス・ルナを地球に落とされた」
+“It's Char. He's behind this. He's already dropped Fifth Luna on Earth.”
+
+@49567 Alan · アラン
+> 「なんだと!?」
+“What?!”
+
+@49568 Bright · ブライト
+> 「シャア? クワトロ大尉が!?」
+“Char? Captain Quattro?!”
+
+@49569 Banjo · 万丈
+> 「どういうことなんだ!?
+>  なぜクワトロ大尉が……」
+“What does this mean?! Why would Captain Quattro...”
+
+@49570 Amuro · アムロ
+> 「もう、クワトロ大尉はいないという
+>  ことさ。あのデビルアクシズにいるのは
+“It means Captain Quattro no longer exists. The one aboard that Dark Axis is
+---
+>  シャア・アズナブル、かつて俺が戦い、
+>  そして今も敵である男だ」
+Char Aznable, the man I once fought, and who is still my enemy now.”
+
+@49571 Bright · ブライト
+> 「シャア? クワトロ特尉が!?」
+“Char? Lieutenant Quattro?!”
+
+@49572 Banjo · 万丈
+> 「どういうことなんだ!?
+>  なぜクワトロ特尉が……」
+“What does this mean?! Why would Lieutenant Quattro...”
+
+@49573 Amuro · アムロ
+> 「もう、クワトロ・バジーナはいないというこ
+>  とさ。あのデビルアクシズにいるのは
+“It means Quattro Bajeena no longer exists. The one aboard that Dark Axis is
+---
+>  シャア・アズナブル、かつて俺たちが
+>  戦い、そして今も敵である男だ」
+Char Aznable, the man we once fought, and who is still our enemy now.”
+
+@49574 Bright · ブライト
+> 「デビルアクシズ……
+>  やはりデビルガンダムなのか?」
+“Dark Axis... so it really is the Dark Gundam?”
+
+@49575 Henken · ヘンケン
+> 「説明はあとだ。とにかく今はあの
+>  デビルアクシズが地球に落ちるのを
+“Explanations can wait. Right now we have to stop that Dark Axis from
+---
+>  とめにゃならん。そっちはやれるのか?」
+falling to Earth. Can you do it on your end?”
+
+@49576 Bright · ブライト
+> 「あ、ああ、もちろんだ」
+“Y-yeah, of course.”
+
+@49577 Koji · 甲児
+> 「オレたちなら、いつでも出られるぜ。
+>  じゅうぶん休んだからな」
+“We can launch anytime. We've had plenty of rest.”
+
+@49578 Ryoma · リョウ
+> 「ああ、まかせてくださいよ」
+“Yeah, leave it to us.”
+
+@49579 Amuro · アムロ
+> 「よし、作戦を変更する。まず
+>  第一部隊はアクシズ周囲に
+“All right, we're changing the plan. First, the first unit will engage the enemy
+---
+>  展開している敵と交戦、これを
+>  ひきつける。この間、ドモン以下
+deployed around Axis and draw them in. Meanwhile, Domon and
+---
+>  第二部隊は待機し、第一
+>  部隊が突破口を開いたあとに
+the second unit will stand by, and once the first unit opens a breach,
+---
+>  アクシズ内部へと突入、
+>  デビルガンダムのコアを叩く」
+they'll charge inside Axis and strike the Dark Gundam's core.”
+
+@49580 Domon · ドモン
+> 「いいだろう」
+“Fine by me.”
+
+@49581 Judau · ジュドー
+> 「なんだかやれそうになってきたじゃないの」
+“Looks like we might actually pull this off.”
+
+@49582 Char · シャア
+> 「私は宇宙に出た人類の
+>  革新を信じている。しかし
+“I believe in the evolution of mankind once it took to space. But
+---
+>  人類全体が新しい時代へ
+>  踏み出すためには、誰かが人類の
+for all of humanity to step into a new era, someone has to bear
+---
+>  業を背負わなければならないのさ」
+humanity's sins.”
+
+@49583 Quess · クェス
+> 「それで地球をつぶすんですか?」
+“And that's why you're going to crush the Earth?”
+
+@49584 Char · シャア
+> 「つぶしはしない。
+>  地球には少し休んでもらうのさ」
+“I won't crush it. I'll simply let the Earth rest for a while.”
+
+@49585 Quess · クェス
+> 「ああ……そっか。大佐……」
+“Ah... I see. Colonel...”
+
+@49586 Char · シャア
+> 「どうした?」
+“What is it?”
+
+@49587 Quess · クェス
+> 「大佐は人類の業っていったでしょ
+>  それを意識してしまう人って
+“You said someone has to bear humanity's sins. I was wondering...
+---
+>  不幸な人なんじゃないかって、
+>  気になったの」
+doesn't that make whoever takes that on an unhappy person?”
+
+@49588 Char · シャア
+> 「私は、信じる道を
+>  進んでいるつもりだ」
+“I intend to walk the path I believe in.”
+
+@49589 Quinze · カーンズ
+> 「総帥、アクシズが予定のポイントへ
+>  到達します」
+“Supreme Commander, Axis will reach the designated point.”
+
+@49590 Char · シャア
+> 「キグナン、連中の様子はどうだ」
+“Kignan, what of the enemy?”
+
+@49591 Kignan · キグナン
+> 「大佐の予測された通りです。
+>  確実にアクシズを捕捉しています」
+“Just as you predicted, Colonel. They've locked onto Axis for certain.”
+
+@49592 Char · シャア
+> 「残りの核パルスを点火しろ」
+“Ignite the remaining nuclear pulse engines.”
+
+@49593 Quinze · カーンズ
+> 「はっ」
+“Yes, sir.”
+
+@49594 Char · シャア
+> 「……行けアクシズ。
+>  忌まわしき記憶とともに」
+“...Go, Axis. Go, along with those cursed memories.”
+
+@49595 Amuro · アムロ
+> 「くっ、アクシズが最後の
+>  軌道修正を開始したか」
+“Ngh, so Axis has begun its final course correction.”
+
+@49596 Banjo · 万丈
+> 「あんなものを落とされたら、
+>  本当に地球は壊滅する
+“If something like that falls, the Earth really will be destroyed.
+---
+>  だが、その前にデビルガンダムを
+>  始末しなくては」
+But before that, we have to finish off the Dark Gundam.”
+
+@49597 Show · ショウ
+> 「時間との勝負か……」
+“So it's a race against time...”
+
+@49598 Duo · デュオ
+> 「おいおい、あいつは……」
+“Hey, hey, that guy is...”
+
+@49599 Heero · ヒイロ
+> 「ゼクスか……」
+“Zechs...”
+
+@49600 Quatre · カトル
+> 「ええ……」
+“Yeah...”
+
+@49601 Noin · ノイン
+> 「…………」
+“...”
+
+@49602 Henken · ヘンケン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、ラー・カイラムも
+>  基本的な呼吸は
+“Captain Bright, the Ra Cailum handles just like the ships we've had
+---
+>  これまでのものと同様だ。
+>  あとはまかせるが?」
+so far. I'll leave the rest to you, then?”
+
+@49603 Bright · ブライト
+> 「了解した。第一部隊、
+>  出撃しろ! 突入部隊の
+“Understood. First unit, launch! Just open a breach for the
+---
+>  突破口を開けばいい!
+>  アムロ、頼むぞ
+assault team! Amuro, I'm counting on you.
+---
+>  あの裏切り者の息の根は、
+>  俺たちでとめなきゃな?」
+We're the ones who have to put an end to that traitor, all right?”
+
+@49604 Amuro · アムロ
+> 「わかってるさ。νガンダム、出るぞ!」
+“I know. Nu Gundam, launching!”
+
+@49605 Char · シャア
+> 「{HeroMech}……このアクシズを
+>  とめられるというのなら
+“{HeroMech}... If you think you can stop this Axis,
+---
+>  やってみせるのだな」
+then show me you can do it.”
+
+@49606 Amuro · アムロ
+> 「シャア! 俺たちと一緒に戦った
+>  男が、なんで地球つぶしをする!」
+“Char! You fought alongside us! Why would you destroy the Earth?!”
+
+@49607 Char · シャア
+> 「地球に残っている連中は、
+>  地球を汚染しているだけの
+“The fools still on Earth are doing nothing but polluting
+---
+>  愚かな連中だ。地球は、
+>  それすらも気づけんような人間の
+it. The Earth cannot swallow all the ego of mankind,
+---
+>  エゴの全てを、飲みこめはしない!」
+not even for those who never notice it!”
+
+@49608 Amuro · アムロ
+> 「人間の知恵は、
+>  そんなものだって乗りこえられる!」
+“Human wisdom can overcome even that!”
+
+@49609 Char · シャア
+> 「ならば今すぐ、愚民どもに
+>  叡智をさずけてみせろ!!」
+“Then grant your wisdom to those fools right now, if you can!!”
+
+@49610 Quess · クェス
+> (そうだ……それができないから……)
+(That's right... because we can't do that...)
+
+@49611 Kamille · カミーユ
+> 「いまさら見苦しいですよ、
+>  シャア・アズナブル!
+“It's pathetic to watch, Char Aznable!
+---
+>  あなたはあの時、死んでしまった方が
+>  よかったんだ!
+You should have stayed dead back then!
+---
+>  今になってもどってきちゃ
+>  いけない人なんだ!」
+You're a man who should never have come back!”
+
+@49612 Char · シャア
+> 「カミーユか……私はあの戦いの中で、
+>  自分自身の偽らざる
+“Kamille... In that war, I found my own undeniable
+---
+>  真実というものを見つけたのだ。
+>  それが気に入らんというのはわかるが
+truth. I understand you don't like it, but
+---
+>  邪魔をさせるわけにはいかん!」
+I cannot let you stand in my way!”
+
+@49613 Kamille · カミーユ
+> 「そんな理屈でッ!!」
+“With logic like that?!”
+
+@49614 Heero · ヒイロ
+> 「ゼクス・マーキス、いったい何のつもりで
+>  そこにいる」
+“Zechs Merquise, just what do you intend by being there?”
+
+@49615 Milliardo · ミリアルド
+> 「ヒイロ・ユイ……戻ってきたのか。やはり
+>  貴様とは、こうなる運命のようだな
+“Heero Yuy... so you've come back. It seems you and I were destined for this.
+---
+>  ……アクシズは、落とす!
+>  この方法しか平和への道はない!」
+...Axis will fall! This is the only path to peace!”
+
+@49616 Noin · ノイン
+> 「ゼクス…………あなたは……」
+“Zechs... you...”
+
+@49617 Kou · コウ
+> 「ガトーもいるのか……」
+“So Gato's here too...”
+
+@49618 Gato · ガトー
+> 「待ちに待った時が来たのだ!
+>  多くの英霊が、無駄死にでは
+“The time I've waited for has come! For proof that the many heroic spirits did not die in
+---
+>  なかったことの証のために! そして、
+>  人類の新たな時代のために!」
+vain! And for humanity's new era!”
+
+@49619 Bright · ブライト
+> 「アクシズ内部への侵入路が
+>  確保できないだと!?」
+“You're telling me we can't secure a route into Axis?!”
+
+@49620 Reika · レイカ
+> 「そういってます。
+>  外の敵を排除しても
+“That's what he says. Even if we wipe out the enemies outside,
+---
+>  デビルアクシズ自体がいるから……」
+Dark Axis itself is still there...”
+
+@49621 Bunny · バニー
+> 「艦長、レーザー通信を受信!」
+“Captain, we're receiving a laser transmission!”
+
+@49622 Bright · ブライト
+> 「なんだと!? どこからだ!?」
+“What?! From where?!”
+
+@49623 Bunny · バニー
+> 「それが……アクシズからです」
+“That's just it... it's from Axis.”
+
+@49624 Reika · レイカ
+> 「アクシズ!?」
+“Axis?!”
+
+@49625 Beauty · ビューティ
+> 「どういうことなの?」
+“What does that mean?”
+
+@49626 Bright · ブライト
+> 「内容は!」
+“What does it say?!”
+
+@49627 Bunny · バニー
+> 「『デビルアクシズ内部への
+>  突破口は必ず開く
+“‘A breach into Dark Axis will surely be opened.
+---
+>  よろしく処理されたし。
+>  村雨』です」
+Handle the rest. Murasame.’”
+
+@49628 Bright · ブライト
+> 「村雨健二か!」
+“Kenji Murasame!”
+
+@49629 Beltorchika · ベルトーチカ
+> 「いつのまにアクシズに
+>  潜入していたの!?」
+“When did he infiltrate Axis?!”
+
+@49630 Bright · ブライト
+> 「わからん。わからんが、あいつが
+>  やるというならやってくれるさ
+“I don't know. I don't know, but if he says he'll do it, he'll do it.
+---
+>  よし、突破口の確保はいい。
+>  全機、敵の掃討に集中せよ!」
+All right, securing the breach is settled. All units, focus on sweeping the enemy!”
+
+@49631 Char · シャア
+> 「くっ、さすがにやる! だがデビルガンダム
+>  はそう簡単にはとめられんぞ」
+“Ngh, they're good! But the Dark Gundam won't be stopped so easily.”
+
+@49632 Char · シャア
+> 「くっ、さすがにやる! だがデビルガンダム
+>  はそう簡単にはとめられんよ!」
+“Ngh, they're good! But the Dark Gundam won't be stopped so easily!”
+
+@49633 Bright · ブライト
+> 「よし、敵がうすくなった。
+>  各自周囲を警戒
+“All right, the enemy's thinned out. Everyone stay alert.
+---
+>  突入部隊用意!
+>  村雨からの連絡はまだか!?」
+Prepare the assault team! Still no word from Murasame?!”
+
+@49634 Beltorchika · ベルトーチカ
+> 「やった!?」
+“We did it?!”
+
+@49635 Bunny · バニー
+> 「通信、来ました!
+>  『突入よろし』です」
+“Transmission received! ‘Assault approved.’”
+
+@49636 Bright · ブライト
+> 「やってくれたか!
+>  突入部隊、出ろ!
+“He pulled it off! Assault team, launch!
+---
+>  デビルガンダムのコアを叩きつぶせ!」
+Smash the Dark Gundam's core!”
+
+@49637 Reika · レイカ
+> 「艦長! 敵、第二陣来ます!」
+“Captain! Enemy second wave incoming!”
+
+@49638 Bright · ブライト
+> 「なんだと? くっ、シャアめ……」
+“What? Ngh, that Char...”
+
+@49639 Beltorchika · ベルトーチカ
+> 「こっちからも!?」
+“From over here too?!”
+
+@49640 Bright · ブライト
+> 「いや、あれは……」
+“No, that's...”
+
+@49641 Kyral · キラル
+> 「マンダラガンダムただいま見参!
+>  {HeroMech}の方々
+“Mandala Gundam, reporting in! To the people of the {HeroMech},
+---
+>  義によって助太刀いたす!」
+I lend my aid in the name of righteousness!”
+
+@49642 Domon · ドモン
+> 「マンダラガンダム…キラル・メキレルか!?
+>  来てくれたのか!」
+“Mandala Gundam... Kyral Mekirel?! You came!”
+
+@49643 Kyral · キラル
+> 「私だけではござらん」
+“I am not alone.”
+
+@49644 Rasid · ラシード
+> 「水くさいですよ、カトル様。我々は
+>  いつになったら呼んでもらえるのかと
+“That's cold of you, Master Quatre. We were waiting, wondering when you'd
+---
+>  思って、待っていたのに。さぁ、
+>  ここは我々にまかせてください!
+finally call on us. Now, leave this place to us!
+---
+>  野郎ども、カトル様に会うまでは、
+>  誰も死ぬんじゃないぞ!」
+Men, no one dies until we've seen Master Quatre!”
+
+@49645 Maganac Soldier · マグアナック兵
+> 「おぉぉーっ!!」
+“Ooooh!!”
+
+@49646 Quatre · カトル
+> 「ラシード……みんな……」
+“Rasid... everyone...”
+
+@49647 Kyral · キラル
+> 「我らが母なる星の危機、
+>  主義も主張もあるものか!
+“Our mother star is in peril—what need have we for ideology or claims!
+---
+>  我ら一同この地球を守るため、
+>  命という名の盾とならん
+We shall all become a shield named life to protect this Earth.
+---
+>  さぁ、おのおの方、
+>  アクシズへ突入されるがよい!」
+Now, everyone, go and breach Axis!”
+
+@49648 Domon · ドモン
+> 「お前たち……まったく……」
+“You guys... honestly...”
+
+@49649 Chibodee · チボデー
+> 「あぁ、大馬鹿野郎だ」
+“Yeah, a bunch of complete idiots.”
+
+@49650 Quatre · カトル
+> 「あれは……マグアナック隊!?」
+“That's... the Maganac Corps?!”
+
+@49651 Rasid · ラシード
+> 「水くさいですよ、カトル様。我々は
+>  いつになったら呼んでもらえるのかと
+“That's cold of you, Master Quatre. We were waiting, wondering when you'd
+---
+>  思って、待っていたのに。さぁ、
+>  ここは我々にまかせてください!
+finally call on us. Now, leave this place to us!
+---
+>  野郎ども、カトル様に会うまでは、
+>  誰も死ぬんじゃないぞ!」
+Men, no one dies until we've seen Master Quatre!”
+
+@49652 Maganac Soldier · マグアナック兵
+> 「おぉぉーっ!!」
+“Ooooh!!”
+
+@49653 Quatre · カトル
+> 「ラシード……みんな……」
+“Rasid... everyone...”
+
+@49654 Bright · ブライト
+> 「これでなんとか行けるか……
+>  よし、突入部隊、出させろ!
+“This should get us through somehow... All right, launch the assault team!
+---
+>  残りの者はデビルアクシズからの
+>  攻撃に注意しつつ
+The rest of you, watch out for attacks from Dark Axis
+---
+>  敵を近づけるな!
+>  ドモン、聞こえているな!?」
+and don't let the enemy get close! Domon, do you hear me?!”
+
+@49655 Domon · ドモン
+> 「聞こえている。
+>  いわれなくともデビルガンダムは
+“I hear you. Even if you hadn't said it, I'll be the one to
+---
+>  この俺が叩きつぶしてみせる!」
+smash the Dark Gundam to pieces!”
+
+@49656 Kyral · キラル
+> 「よぉし、我々はこのまま敵の
+>  守備隊撃滅に全戦力を
+“All right, we'll commit all our forces to annihilating the enemy garrison
+---
+>  かたむける。皆のもの、私に続け!
+>  1機たりとも寄せつけるでないぞ!」
+just like this. Everyone, follow me! Not a single unit gets through!”
+
+@49657 Kyral · キラル
+> 「な、なんと!? くっ……無念……」
+“W-what?! Ngh... how regrettable...”
+
+@49658 Bright · ブライト
+> 「どうにか外の敵は片づいたようだな……」
+“Looks like we've somehow dealt with the enemies outside...”
+
+@49659 Heero · ヒイロ
+> 「ゼクス……あの時エピオンが
+>  お前に見せた未来は、これか
+“Zechs... is this the future Epyon showed you back then?
+---
+>  ならば俺はお前を、殺す」
+Then I will kill you.”
+
+@49660 Milliardo · ミリアルド
+> 「ヒイロ……私はもはや以前の
+>  私ではない。シャア大佐の
+“Heero... I am no longer the man I once was. To realize Colonel Char's
+---
+>  理想を実現させるため、こうして
+>  生き恥をさらしているのだ
+ideals, I live on in shame like this.
+---
+>  貴様にやられてやるわけにはいかんな!」
+I cannot afford to be killed by you!”
+
+@49661 Amuro · アムロ
+> 「シャアッ!!」
+“Char!!”
+
+@49662 Char · シャア
+> 「アムロ、ララァが死んだ時の
+>  あの苦しみ、存分に思い出せ!」
+“Amuro, recall in full the agony you felt when Lalah died!”
+
+@49663 Kamille · カミーユ
+> 「あなたは! 自分が何をやっているか
+>  わかってるんですか!!」
+“You! Do you even know what you're doing?!”
+
+@49664 Char · シャア
+> 「充分すぎるほど理解して
+>  いるつもりだ、カミーユ。残念だが
+“I understand it more than well enough, Kamille. Unfortunately,
+---
+>  邪魔をするならば、たとえ君でも、
+>  落とさせてもらう!」
+if you stand in my way, even you I'll have to shoot down!”
+
+@49665 Kamille · カミーユ
+> 「くっ……やらせるものかよ! シャア!!」
+“Ngh... I won't let you! Char!!”
+
+@49666 Bright · ブライト
+> 「あとはデビルガンダムか……
+>  うまくやってくれよ……」
+“All that's left is the Dark Gundam, huh... Make it work...”

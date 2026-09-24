@@ -1,0 +1,141 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13371 Specials · スペシャルズ
+> 「邪魔なんだよ!」
+“You're in my way!”
+
+@13372 Specials · スペシャルズ
+> 「うおおおおっ!!」
+“Whoaaaa!!”
+
+@13373 Specials · スペシャルズ
+> 「これでとどめだ!!」
+“This is the finisher!!”
+
+@13374 Specials · スペシャルズ
+> 「こいつで決めてやる!」
+“I'll finish you with this!”
+
+@13375 Specials · スペシャルズ
+> 「やらせるかっ!!」
+“Like I'd let you!!”
+
+@13376 Specials · スペシャルズ
+> 「落ちろっ!!」
+“Fall!!”
+
+@13377 Specials · スペシャルズ
+> 「このっ!!」
+“Why you!!”
+
+@13378 Specials · スペシャルズ
+> 「行くぞっ!!」
+“Here I come!!”
+
+@13379 Specials · スペシャルズ
+> 「そこだっ!」
+“There!”
+
+@13380 Specials · スペシャルズ
+> 「もらった!」
+“Got you!”
+
+@13381 Specials · スペシャルズ
+> 「な、何だと!?」
+“W-what?!”
+
+@13382 Specials · スペシャルズ
+> 「しまった! 直撃か!?」
+“Damn! A direct hit?!”
+
+@13383 Specials · スペシャルズ
+> 「ぐうっ、い、いかん、やられる!?」
+“Guh, th-this is bad, I'm going down?!”
+
+@13384 Specials · スペシャルズ
+> 「うおっ!? くっ、こっちが不利か!」
+“Whoa?! Ngh, I'm at a disadvantage?!”
+
+@13385 Specials · スペシャルズ
+> 「ぬうううっ! つ、強いっ!」
+“Nghhh! S-strong!”
+
+@13386 Specials · スペシャルズ
+> 「やるっ! さすがは!」
+“Not bad! As expected!”
+
+@13387 Specials · スペシャルズ
+> 「ぐうぅっ!! パワーが違いすぎる!!」
+“Guh!! The power difference is too much!!”
+
+@13388 Specials · スペシャルズ
+> 「ちいっ! まだまだっ!」
+“Tch! I'm not done yet!”
+
+@13389 Specials · スペシャルズ
+> 「くっ! 少しはできるな!」
+“Ngh! You've got some skill!”
+
+@13390 Specials · スペシャルズ
+> 「ぬうっ! そう簡単にやられはせん!!」
+“Ngh! I won't go down that easily!!”
+
+@13391 Specials · スペシャルズ
+> 「うっ! やってくれたな!!」
+“Ugh! You'll pay for that!!”
+
+@13392 Specials · スペシャルズ
+> 「まだだっ! まだこれからよ!!」
+“Not yet! This is just the beginning!!”
+
+@13393 Specials · スペシャルズ
+> 「パワー不足だな!」
+“Not enough power!”
+
+@13394 Specials · スペシャルズ
+> 「その程度か!」
+“Is that all!”
+
+@13395 Specials · スペシャルズ
+> 「そんな攻撃など効くものかよ!」
+“An attack like that won't work on me!”
+
+@13396 Specials · スペシャルズ
+> 「ふん、かすっただけよ!」
+“Hmph, that just grazed me!”
+
+@13397 Specials · スペシャルズ
+> 「当たるものかよ!」
+“You won't hit me!”
+
+@13398 Specials · スペシャルズ
+> 「狙いが甘い!」
+“Your aim is sloppy!”
+
+@13399 Specials · スペシャルズ
+> 「バカめ。どこを狙っている!」
+“Fools. What are you aiming at!”
+
+@13400 Specials · スペシャルズ
+> 「ムダな攻撃をする……」
+“What a pointless attack...”
+
+@13401 Specials · スペシャルズ
+> 「ふ、そんなビームではな!」
+“Heh, a Beam like that won't do it!”
+
+@13402 Specials · スペシャルズ
+> 「ちっ、弾切れとはな……」
+“Tch, out of ammo...”
+
+@13403 Specials · スペシャルズ
+> 「弾切れか……しかたあるまい」
+“Out of ammo... nothing to be done.”
+
+@13404 Specials · スペシャルズ
+> 「ちっ、遠距離からの攻撃か……」
+“Tch, a long-range attack...”
+
+@13405 Specials · スペシャルズ
+> 「む……ここからでは反撃できん」
+“Hm... I can't counter from here.”

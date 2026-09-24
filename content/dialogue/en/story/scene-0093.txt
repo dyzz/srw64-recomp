@@ -1,0 +1,1708 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@44762 Roux · ルー
+> 「はぁ……これからどうなっちゃうんだろ」
+“Sigh... What's going to happen to us now?”
+
+@44763 Koji · 甲児
+> 「ちっ、何だよ辛気くせえな。
+>  そんなもん、やってみなきゃ、わかりっこ
+“Tch, what's with the gloomy face? We won't know unless we
+---
+>  ないじゃねえか!」
+try, will we?!”
+
+@44764 Simone · シモーヌ
+> 「……あんたって本当に、バカね。
+>  でも、いまはそれが少しだけ
+“...You really are an idiot. But right now, that seems just a
+---
+>  素敵に思えるわ」
+little bit wonderful.”
+
+@44765 Elle · エル
+> 「ホント、その気楽さをわけてほしいわよ」
+“Really, I wish you'd share some of that carefree attitude with me.”
+
+@44766 Koji · 甲児
+> 「ちぇっ。けなすか、ほめるか、どっちかに
+>  してくれよ」
+“Sheesh. Make up your mind—are you insulting me or praising me?”
+
+@44767 Sayaka · さやか
+> 「そうよ。甲児くんはバカなんじゃなくて
+>  あまり深く、物事を考えないだけ
+“That's right. Koji isn't an idiot—he just doesn't think things through
+---
+>  なんだから」
+very deeply.”
+
+@44768 Koji · 甲児
+> 「そりゃないぜ、さやかさん」
+“That's harsh, Sayaka.”
+
+@44769 Roux · ルー
+> 「……今まで必死に戦ってきて、
+>  何とか退けてきたけど……。それが
+“...We've fought desperately all this time and somehow held them off... But that's
+---
+>  敵全体のほんの一部だってのよ。
+>  悲観的な気分にもなっちゃうわ」
+only a tiny fraction of the enemy's whole force. It's enough to make you feel hopeless.”
+
+@44770 Takeru · タケル
+> 「……くそっ、ズールめ……」
+“...Damn it, Zuhl...”
+
+@44771 Masato · 雅人
+> 「ガンドールがあるおかげで、ずいぶんマシに
+>  なってはいるけど、向こうの数を
+“Thanks to Gandor, things are much better than they could be, but when you consider
+---
+>  考えりゃ、たいした違いもないもんね」
+their numbers, it doesn't make much difference.”
+
+@44772 Shinobu · 忍
+> 「だがよ、そんな簡単に地球が
+>  終わっちまうのかよ!? くそっ、なんか
+“But come on, is Earth really gonna end just like that?! Damn it, isn't there
+---
+>  ねぇのかよ、一発逆転とまではいわ
+>  ねぇが負けずにすむ方法くらいはよ!」
+something—I'm not asking for a miracle comeback, but at least a way to keep from losing?!”
+
+@44773 Kamille · カミーユ
+> 「……いまの状況では、難しいな」
+“...In the current situation, that's difficult.”
+
+@44774 Roanne · ロアン
+> 「そうですね。奇跡でもおこらない限り
+>  そうそう容易には、この状況は
+“Indeed. Unless a miracle happens, this situation won't be
+---
+>  くつがえりませんよ」
+overturned so easily.”
+
+@44775 Shinobu · 忍
+> 「んだと、てめぇ、いったいどっちの味方
+>  だ!?」
+“What'd you say, you—whose side are you on anyway?!”
+
+@44776 Sara · 沙羅
+> 「やめなよ、忍。みっともないったらありゃ
+>  しない」
+“Cut it out, Shinobu. You're just embarrassing yourself.”
+
+@44777 Ryo · 亮
+> 「奇跡か……だが、奇跡ならすでに
+>  おきているぜ」
+“A miracle, huh... But if it's a miracle, one has already happened.”
+
+@44778 Roux · ルー
+> 「どういうこと?」
+“What do you mean?”
+
+@44779 Ryo · 亮
+> 「タケルのことだ」
+“I mean Takeru.”
+
+@44780 Takeru · タケル
+> 「俺の?」
+“Me?”
+
+@44781 Hayato · ハヤト
+> 「なるほどな。確かに、こいつは奇跡
+>  だったな」
+“I see. Yeah, this guy really was a miracle.”
+
+@44782 Benkei · ベンケイ
+> 「なんだよ、ハヤト、どういうことだ?」
+“What are you talking about, Hayato?”
+
+@44783 Daisuke · 大介
+> 「……マーグがいっていたという、ズールの
+>  3つの誤算というやつか」
+“...You mean what Marg said—Zuhl's three miscalculations.”
+
+@44784 Ryo · 亮
+> 「ああ。でなければ、俺たちはとうの昔に
+>  存在しなくなってたはずだ」
+“Yeah. If not for those, we would've ceased to exist long ago.”
+
+@44785 Roux · ルー
+> 「なによ、それ」
+“What's that supposed to mean?”
+
+@44786 Maria · マリア
+> 「兄さん、どういうことなの?」
+“Brother, what does that mean?”
+
+@44787 Daisuke · 大介
+> 「聞いた話では、赤ん坊のタケルが
+>  入っていたカプセルは、ずっとそのままの
+“From what I heard, the capsule baby Takeru was in was supposed to
+---
+>  はずだったらしい。地殻変動が
+>  原因で、出てきてしまったんだ
+stay buried as it was. It was crustal movement that brought it out.
+---
+>  それが1つ。そして2つ目は、それを
+>  発見した地球人、……つまり
+That's one. The second is that the Earthlings who found it... in other words,
+---
+>  明神夫妻が、タケルに人を、
+>  地球を愛する心を教えたこと
+the Myojin couple, taught Takeru to love people, to love the Earth.
+---
+>  3つ目は、タケルの本当の父親が
+>  ズールに逆らってまで送りこんだ
+The third is that Takeru's real father sent in the Five God Robo even
+---
+>  五神ロボの存在。どれか1つが
+>  なかったとしても、ガイヤーにセットされた
+in defiance of Zuhl. If even one of those had been missing, the
+---
+>  反陽子爆弾が作動していた
+>  はずだ」
+antiproton bomb set in Gaia would have gone off.”
+
+@44788 Simone · シモーヌ
+> 「……確かに、奇跡みたいなものだわね」
+“...That really is something like a miracle.”
+
+@44789 Shinobu · 忍
+> 「だから何だってんだよ。都合よく、
+>  また奇跡がおきてくれるとでも
+“So what?! You're saying another miracle's just gonna conveniently
+---
+>  いうのか?」
+happen for us?”
+
+@44790 Ryo · 亮
+> 「いや。だが考えてもみろ、忍。いま
+>  俺たちが生き残っている状況と
+“No. But think about it, Shinobu. The fact that we're still alive right now
+---
+>  いうやつも、無数の偶然がなければ
+>  成り立たんものだ。そういったことは
+also depends on countless coincidences. Things like that happen
+---
+>  いくらでもある。見方によっては、
+>  奇跡と呼べるようなものもな。どれも
+all the time. Depending on how you look at it, some could even be called miracles. Every one of them
+---
+>  きっかけなど、ささいなものだ」
+starts from something trivial.”
+
+@44791 Shinobu · 忍
+> 「なにがいいたいんだよ、亮?」
+“What are you getting at, Ryo?”
+
+@44792 Ark · アーク（按段落 3DD1）
+> 「……奇跡はおきるのではなく、
+>  おこすもの。そういうことか?」
+“...Miracles aren't something that happen—they're something you make happen. Is that it?”
+
+@44793 Selain · セレイン（按段落 3DD2）
+> 「人の意思が介在しなければ、
+>  奇跡はおこらないということだ」
+“It means miracles don't happen unless human will is involved.”
+
+@44794 Brad · ブラッド（按段落 3DD3）
+> 「わかったぜ」
+“I get it now.”
+
+@44795 Koji · 甲児
+> 「ホントかよ」
+“You do?”
+
+@44796 Brad · ブラッド（按段落 3DD3）
+> 「つまりだな、奇跡ってのは、おこそうと
+>  するから、奇跡になるってことだ
+“In other words, a miracle becomes a miracle because you try to make it happen.
+---
+>  そういうこったろ、亮?」
+That's what you mean, right, Ryo?”
+
+@44797 Manami · マナミ（按段落 3DD4）
+> 「なるほどね。奇跡はおきるのではなく、
+>  おこすもの。そういうことね」
+“I see. Miracles aren't something that happen—they're something you make happen. That's it, then.”
+
+@44798 Lawrence · ローレンス
+> 「ふむ……確かに、そうかもしれませんな」
+“Hmm... Indeed, that may well be so.”
+
+@44799 Ryo · 亮
+> 「そういうことだ」
+“That's right.”
+
+@44800 Roux · ルー
+> 「なるほどねぇ。そういう考え方も
+>  あるんだ」
+“I see. So there's a way of thinking like that too.”
+
+@44801 Selain · セレイン（按段落 3DD2）
+> 「もっとも、私は奇跡など信じる
+>  つもりはないがな」
+“Though I have no intention of believing in miracles myself.”
+
+@44802 Quatre · カトル
+> 「……ヒイロ、君はどう思うの?」
+“...Heero, what do you think?”
+
+@44803 Heero · ヒイロ
+> 「……ゼロの予測では、俺たちが勝つ
+>  見こみはない」
+“...According to Zero's prediction, there's no chance we win.”
+
+@44804 Ryoma · リョウ
+> 「おい!」
+“Hey!”
+
+@44805 Sara · 沙羅
+> 「ちょっと、ヒイロ。いくらなんでも、もう
+>  ちょっといいかたってもんがあるでしょ
+“Come on, Heero. There's a limit to how blunt you can be, even for you.
+---
+>  せっかくみんな、ちょっとは前向きな
+>  気分になってたってのにさ」
+Everyone had just started to feel a little hopeful, you know.”
+
+@44806 Heero · ヒイロ
+> 「だが、それが事実だ」
+“But it's the truth.”
+
+@44807 Zechs · ゼクス
+> 「……エピオンの予測も同じだが……
+>  ヒイロ、なぜそれほど落ち着いて
+“...Epyon's prediction says the same. But, Heero, how can you stay so calm?
+---
+>  いられるのだ? あのシステムが見せる
+>  ものは、強迫観念のように
+What that system shows you binds the pilot like an obsession.
+---
+>  搭乗者をしばる。残念だが私は
+>  絶望するまいとしているだけで
+Sadly, all I can do is try not to despair—
+---
+>  精一杯だ」
+and that takes everything I have.”
+
+@44808 Heero · ヒイロ
+> 「ゼロの予測がどうであれ、奇跡が
+>  おきようとおきまいと、俺には戦うこと
+“Whatever Zero predicts, whether a miracle happens or not, all I can do
+---
+>  しかできない。ならば、考えることに
+>  意味はない。お前たちは違うのか?」
+is fight. So there's no point in thinking about it. Are all of you different?”
+
+@44809 Duo · デュオ
+> 「はいはい、その通りです。まったく、
+>  お前はいつも正しいよ」
+“Yeah, yeah, that's right. Man, you're always right about everything.”
+
+@44810 Shinobu · 忍
+> 「結局、覚悟を決めるしかねぇって
+>  ことか」
+“In the end, all we can do is steel ourselves for what's coming.”
+
+@44811 Sayaka · さやか
+> 「死ぬ覚悟なんて……したくないわよ」
+“I don't want to... steel myself to die.”
+
+@44812 Koji · 甲児
+> 「いや、さやかさん、
+>  死ぬ覚悟なんかじゃない。どこまでも
+“No, Sayaka, it's not about being ready to die. It's about being ready to
+---
+>  戦いぬく覚悟だよ」
+fight to the very end.”
+
+@44813 Reika · レイカ
+> 「みんな、食事だそうよ」
+“Everyone, I hear there's a meal for us.”
+
+@44814 Ark · アーク（按段落 3DD1）
+> 「食事? どういうことです?」
+“A meal? What do you mean?”
+
+@44815 Selain · セレイン（按段落 3DD2）
+> 「食事? そんなもの適当にすませて
+>  おけばいいだろう」
+“A meal? We can just grab something quick and be done with it.”
+
+@44816 Brad · ブラッド（按段落 3DD3）
+> 「食事だぁ? なんだよ、そりゃ」
+“A meal? What the hell is that about?”
+
+@44817 Manami · マナミ（按段落 3DD4）
+> 「食事? どういうことなの?」
+“A meal? What's this about?”
+
+@44818 Reika · レイカ
+> 「せっかくだからみんなで食事でも
+>  しましょうって、トレーズ特佐が」
+“Colonel Treize said that since we're all here, we should have a meal together.”
+
+@44819 Masato · 雅人
+> 「みんなで食事、か。まるで最後の
+>  晩さんみたいだね」
+“A meal together, huh. Sounds like a last supper.”
+
+@44820 Maria · マリア
+> 「なぁに、それ?」
+“What's that supposed to mean?”
+
+@44821 Simone · シモーヌ
+> 「ちょっと、縁起の悪いこといわないで
+>  ちょーだい!」
+“Hey, don't go saying such unlucky things!”
+
+@44822 Treize · トレーズ
+> 「このような時だ。たいしたものは用意
+>  できなかったが、量はある。君たちの
+“Given the circumstances, I couldn't prepare anything extravagant, but there's plenty of it. I hope it helps
+---
+>  力の回復に役立ててもらいたい」
+restore your strength.”
+
+@44823 Koji · 甲児
+> 「おっ、なかなかすごいじゃないか。さっすが
+>  わかってるぜ」
+“Oh, this is pretty impressive. I knew you understood.”
+
+@44824 Boss · ボス
+> 「もご、もごごごご、ごぐご」
+“Mmph, mmph mmph mmph, gulp gulp.”
+
+@44825 Jun · ジュン
+> 「ちょっと、もう食べはじめてるよ」
+“Hey, he's already started eating!”
+
+@44826 Sayaka · さやか
+> 「ボス! みっともないマネやめなさい!」
+“Boss! Stop making a spectacle of yourself!”
+
+@44827 Quatre · カトル
+> 「でも……いいんでしょうか。
+>  僕たちだけ、こんな……疲れているのは
+“But... is this really all right? Only us, getting something like this... Everyone else is
+---
+>  みんな一緒のはずです」
+just as exhausted as we are.”
+
+@44828 Roux · ルー
+> 「あらあら、カトルくんは、えらいわねぇ」
+“Oh my, Quatre, aren't you the thoughtful one.”
+
+@44829 Treize · トレーズ
+> 「安心したまえ。全将兵に、
+>  基本的に君たちと同じものを
+“Rest assured. All officers and soldiers are basically being served
+---
+>  支給してある」
+the same as you.”
+
+@44830 Naoto · ナオト
+> 「よろしいのですか?
+>  大切な物資を……」
+“Is that acceptable? Using such precious supplies...”
+
+@44831 Treize · トレーズ
+> 「いま目の前にひかえている戦いのほう
+>  が、大切だということだ。多少の
+“It means the battle before us now is more important. A little
+---
+>  物資など、問題にはならないだろう」
+supplies are hardly a concern.”
+
+@44832 Roux · ルー
+# 审校：L1 的“him”指代错误，说话对象是 Julia，应改为 her。
+> 「だって。よかったわね、カトルくん」
+“You heard her. Isn't that nice, Quatre?”
+
+@44833 Quatre · カトル
+> 「やめてくださいよ」
+“Please stop.”
+
+@44834 Judau · ジュドー
+> 「ま、そういうことなら遠慮なくいただく
+>  としようぜ」
+“Well, if that's how it is, let's dig in without holding back.”
+
+@44835 Elle · エル
+> 「待ってました!」
+“I've been waiting for this!”
+
+@44836 Bright · ブライト
+> 「ジュリアさん、何か?」
+“Julia, is something wrong?”
+
+@44837 Julia · ジュリア
+> 「やはり……皆さんでも、どうにもできない
+>  のですね」
+“So even all of you... can't do anything about it.”
+
+@44838 Amuro · アムロ
+> 「作戦なんて何もない。ただひたすら、
+>  耐えるだけでしょう」
+“There's no strategy. All we can do is endure.”
+
+@44839 Julia · ジュリア
+> 「……皆さん、いきましょう、クスコです。
+>  私をクスコへ連れていってください
+“...Everyone, let's go. To Cusco. Please take me to Cusco.
+---
+>  おごれる者の力をはばむのです。
+>  先人たちの偉大な知恵の力を
+We will stand against the power of the arrogant. By borrowing
+---
+>  借りて」
+the power of our predecessors' great wisdom.”
+
+@44840 Eiji · エイジ
+> 「姉さん……?」
+“Sis...?”
+
+@44841 Amuro · アムロ
+> 「クスコ? クスコに何かあるのですか?」
+“Cusco? Is there something at Cusco?”
+
+@44842 Julia · ジュリア
+> 「“グラドスの刻印”と呼ばれる
+>  ものが、そこに眠っています」
+“What is called the ‘Crest of Grados’ sleeps there.”
+
+@44843 Ryoma · リョウ
+> 「“グラドスの刻印”!?」
+“The ‘Crest of Grados’?!”
+
+@44844 Bright · ブライト
+> 「それはいったい……」
+“And what exactly is that...”
+
+@44845 Julia · ジュリア
+> 「これをお話するには、まず私たち
+>  グラドスと、地球との関係について
+“To explain this, I must first tell you about the relationship between us Grados and
+---
+>  お話ししなければなりません。
+>  ムゲゾルバドス帝国を構成する
+Earth. Not the Grados that make up the Muge Zorbados Empire, but Grados as
+---
+>  グラドスではなく、1つの独立した
+>  惑星文明としてのグラドスのことを」
+a single independent planetary civilization.”
+
+@44846 Quattro · クワトロ
+> 「グラドスと、地球の関係だと……?」
+“The relationship between Grados and Earth...?”
+
+@44847 Julia · ジュリア
+> 「皆さんはまず、両者が生命種と
+>  して兄弟にあることを、知らなければ
+“First, you must know that the two are brothers as life species.
+---
+>  なりません。グラドス人と地球人と
+>  は、同じ根から発生したのです」
+The Gradosians and the people of Earth were born from the same root.”
+
+@44848 Gale · ゲイル
+> 「な……なんだと?」
+“W-what did you say?”
+
+@44849 Treize · トレーズ
+> 「これは……興味深い話だね。
+>  あのグレスコやル・カインが、我々と
+“This is... a fascinating story. You mean that Gresco and Le Cain are
+---
+>  同じだと?」
+the same as us?”
+
+@44850 Alan · アラン
+> 「バカな! エイジ、君は、君はそれを
+>  知っていたのか!?」
+“Impossible! Eiji, did you, did you know this?!”
+
+@44851 Eiji · エイジ
+> 「ええ……知っていました。
+>  ご存じのように僕たちは、地球と
+“Yes... I knew. As you know, we are of mixed Earth and
+---
+>  グラドスの混血です。この僕と
+>  姉さんの存在が、なによりもそれを
+Grados blood. The very existence of my sister and me
+---
+>  裏づけています」
+proves it more than anything.”
+
+@44852 Alan · アラン
+> 「し、しかし……」
+“B-but still...”
+
+@44853 Eiji · エイジ
+> 「3年前……偶然からそれを知った
+>  僕はそれを根拠にグレスコ提督に
+“Three years ago... when I learned of it by chance, I tried to use it as grounds to make
+---
+>  戦いをやめさせようとしました。
+>  ……結果は、ご存じの通りです」
+Admiral Gresco stop the fighting. ...The result is as you know.”
+
+@44854 Gale · ゲイル
+> 「そうか……そうだったのか……」
+“I see... so that's how it was...”
+
+@44855 Amuro · アムロ
+> 「だが、いったいなぜ……?」
+“But why, exactly...?”
+
+@44856 Julia · ジュリア
+> 「はるかな昔、宇宙に進出した
+>  先住グラドス人はすでに種としての
+“Long, long ago, the ancestral Gradosians who had advanced into space were already
+---
+>  限界を、迎えつつありました。
+>  4万年前、彼らの宇宙船が
+approaching their limit as a species. Forty thousand years ago, their spacecraft
+---
+>  この地球を発見します。当時
+>  地球では、原人類ともいうべき
+discovered this Earth. At the time, on Earth, life that could be called
+---
+>  生命が誕生していました。
+>  調査の結果、それが種として
+proto-humans had been born. As a result of their investigation, judging that it was
+---
+>  自分たちと極めて近しいと
+>  判断した先住グラドス人たちは
+extremely close to themselves as a species, the ancestral Gradosians
+---
+>  滅びゆく種の存続のために、
+>  1つの試みをなしました」
+made one attempt for the survival of their dying species.”
+
+@44857 Julia · ジュリア
+> 「地球の原人類の生命核を、
+>  自らに移植することで、再び強い
+“By transplanting the life core of Earth's proto-humans into themselves, they sought
+---
+>  生命力を得ようとしたのです」
+to gain a strong life force once more.”
+
+@44858 Dr. Hazuki · 葉月博士
+> 「しかし……しかし、それでは、もはや
+>  別の種となってしまう」
+“But... but then, they would already become a different species.”
+
+@44859 Julia · ジュリア
+> 「そうです。種の亡びを止める
+>  ことができないと知った
+“Yes. Knowing they could not stop the extinction of their species,
+---
+>  先住グラドス人たちは、自分たち
+>  の文明を受け継ぐべき存在を
+the ancestral Gradosians wanted to create beings
+---
+>  作りたかったのです」
+who would inherit their civilization.”
+
+@44860 Dr. Hazuki · 葉月博士
+> 「そうか……それが今のグラドス人……
+>  つまり先住グラドス人とは違う
+“I see... so that means the present Gradosians... in other words, they are a brother species
+---
+>  我々地球人類の兄弟種と
+>  いうわけか」
+to us Earth humans, different from the ancestral Gradosians.”
+
+@44861 Julia · ジュリア
+> 「そして、そのとき先住グラドス人
+>  たちは、地球にひとつの機構を
+“And at that time, the ancestral Gradosians installed a single mechanism
+---
+>  設置しました。彼らは銀河に
+>  すでに無数の星間文明が
+on Earth. Taking into account that countless interstellar civilizations already
+---
+>  存在していることを考慮し、
+>  自分たちの後継者となった種の
+existed in the galaxy, they sought to protect the Earth humans, brothers to the species
+---
+>  兄弟である地球人類を、
+>  やがてくる不幸な出会いから
+that had become their successors, from the unfortunate encounters
+---
+>  守ろうとしたのです」
+that would eventually come.”
+
+@44862 Ark · アーク（按段落 3DD1）
+> 「不幸な……出会い?」
+“Unfortunate... encounters?”
+
+@44863 Selain · セレイン（按段落 3DD2）
+> 「不幸な出会い……どういうことだ?」
+“Unfortunate encounters... what do you mean?”
+
+@44864 Brad · ブラッド（按段落 3DD3）
+> 「聖女さん、頼むぜ、もっと
+>  わかりやすくいってくれないか」
+“Hey, Saint lady, come on, can't you explain it a bit more simply?”
+
+@44865 Koji · 甲児
+> 「そ、そうそう」
+“Y-yeah, yeah.”
+
+@44866 Manami · マナミ（按段落 3DD4）
+> 「不幸な出会い……私たちの……?」
+“Unfortunate encounters... ours...?”
+
+@44867 Julia · ジュリア
+> 「地球人が未成熟なまま、それと
+>  知らずに出会った兄弟たちが
+“Encounters in which Earth humans, still immature and without knowing it, meet their brothers
+---
+>  互いに滅ぼしあってしまうような
+>  出会い。他の星間種族と
+and end up destroying each other. The danger that immature Earth humans
+---
+>  接触して、未熟な地球人たち
+>  が滅ぼされてしまう危険
+might be destroyed through contact with other interstellar species
+---
+>  ……そういった出会いから守るための
+>  セーフティ機構」
+...A safety mechanism to protect against such encounters.”
+
+@44868 Ark · アーク（按段落 3DD1）
+> 「そうか……それが“グラドスの
+>  刻印”なんだ」
+“I see... so that's the ‘Crest of Grados.’”
+
+@44869 Selain · セレイン（按段落 3DD2）
+> 「それが“グラドスの刻印”という
+>  やつか」
+“So that's what the ‘Crest of Grados’ is.”
+
+@44870 Brad · ブラッド（按段落 3DD3）
+> 「わかったぜ! それが“グラドスの
+>  刻印”ってやつなんだな!?」
+“I get it! So that's what the ‘Crest of Grados’ is, huh?!”
+
+@44871 Manami · マナミ（按段落 3DD4）
+> 「それが“グラドスの刻印”……
+>  そういうことなのね」
+“So that's the ‘Crest of Grados’... that's what it means.”
+
+@44872 Treize · トレーズ
+> 「なるほど、お話はよくわかりました。
+>  その“グラドスの刻印”があれば
+“I see, I understand your story well. If we have that ‘Crest of Grados,’
+---
+>  我々は亡びずにすむ可能性が
+>  ある、と。いったい、どのような働きを
+there's a chance we won't be destroyed. I'd like to hear exactly how
+---
+>  するものか、お聞きしたい」
+it works.”
+
+@44873 Julia · ジュリア
+> 「空間を遮へいするもの、と認識
+>  しております」
+“I understand it to be something that shields space.”
+
+@44874 Quattro · クワトロ
+> 「空間を……?」
+“Shields... space?”
+
+@44875 Julia · ジュリア
+> 「それにより、グラドスからも、銀河
+>  帝国からも、この太陽系へは
+“Through it, neither Grados nor the Galactic Empire
+---
+>  くることができなくなります」
+will be able to come to this solar system.”
+
+@44876 Alan · アラン
+> 「すると、ムゲゾルバドス帝国もか」
+“Then that includes the Muge Zorbados Empire as well.”
+
+@44877 Julia · ジュリア
+> 「……ゾルバドス星は、そもそもこの
+>  銀河系宇宙にはありません
+“...The planet Zorbados is not originally in this galactic universe.
+---
+>  異次元にあると聞いております。
+>  それがどのように影響するのか
+I hear it exists in another dimension. How that would be affected,
+---
+>  わたくしにはわかりませんが……」
+I do not know, but...”
+
+@44878 Dr. Hazuki · 葉月博士
+> 「ともかく、銀河帝国とのつながりが
+>  断てるだけでも十分な意味がある
+“In any case, just being able to sever the connection with the Galactic Empire has enough meaning.
+---
+>  これはすごいことだ」
+This is an amazing thing.”
+
+@44879 Dr. Saotome · 早乙女博士
+> 「うむ……わしらには想像もつかん
+>  ことだ。機会があれば、ぜひ
+“Indeed... it's beyond anything we could imagine. If there's a chance, I'd certainly
+---
+>  研究してみたいが……」
+like to study it, but...”
+
+@44880 Koji · 甲児
+> 「こいつはすげぇぜ!」
+“This is amazing!”
+
+@44881 Boss · ボス
+> 「おう、なんだかすごいことになってきた
+>  だわさ」
+“Yeah, things are getting pretty incredible, that's for sure.”
+
+@44882 Banjo · 万丈
+> 「みんな、ちょっと待ってくれないか。
+>  確かにそれがすごいものであるのはわかる
+“Everyone, could you hold on a moment? I get that this thing is amazing,
+---
+>  だが、行き来できなくなるだけだ。
+>  銀河帝国がこれ以上増援を
+but all it does is cut off travel between here and there. Just because the Galactic Empire
+---
+>  送ってこれないからといって、いま
+>  地球圏に来ている軍勢が
+can't send any more reinforcements doesn't mean the forces already here in the Earth Sphere
+---
+>  消えてなくなるわけではない。そうだろ?
+>  そして僕たちは今まさに地球圏に
+are going to vanish. Right? And right now, we're about to be
+---
+>  いる敵軍に、押しつぶされようと
+>  している」
+crushed by the enemy armies already in the Earth Sphere.”
+
+@44883 Julia · ジュリア
+> 「その通りです。しかし、自らの国へ
+>  帰ることができなくなった兵士は
+“That's true. But soldiers who can no longer return to their own homeland—
+---
+>  なんらよるべき大義なくして、
+>  戦う意思を持ち続けることが
+can they really keep up the will to fight without any great cause
+---
+>  できるのでしょうか?」
+to fall back on?”
+
+@44884 Quattro · クワトロ
+> 「……無理だな。万丈、確かに
+>  帝国軍は残留するが、もしも
+“...Impossible. Banjo, it's true the imperial forces will remain, but if
+---
+>  刻印が発動できれば勝機はある
+>  軍隊とはそういうものだ」
+the Crest can be activated, there's a chance of victory. That's what an army is.”
+
+@44885 Treize · トレーズ
+> 「そう……その通りだろうね。現状では
+>  これ以上望むべくもない」
+“Yes... that's right. As things stand, we can't hope for anything more.”
+
+@44886 Daisuke · 大介
+> 「ええ。それに、ここに取り残されると
+>  すれば、彼らも地球を破壊して
+“Right. And if they're stranded here, they shouldn't be able to just destroy
+---
+>  しまうわけにはいかなくなるはず。これは
+>  大きい」
+the Earth either. That's huge.”
+
+@44887 Banjo · 万丈
+> 「……悪かった。僕も、信じよう。
+>  どのみち、他に選ぶべき道は
+“...Sorry. I'll believe in it too. Either way, it seems there's no other
+---
+>  存在しないようだ」
+path left for us to choose.”
+
+@44888 Ark · アーク（按段落 3DD1）
+> 「重要なのは、まだ俺たちにも望みが
+>  あるってことでしょう。きっと、これは
+“The important thing is that we still have hope. I'm sure this is
+---
+>  奇跡の種なんだ。そうだろ、亮」
+the seed of a miracle. Right, Ryo?”
+
+@44889 Ryo · 亮
+> 「そんなところだな」
+“Something like that.”
+
+@44890 Amuro · アムロ
+> 「奇跡の種? 何の話だ?」
+“The seed of a miracle? What are you talking about?”
+
+@44891 Roux · ルー
+> 「あたしたちが何とかできれば、これは
+>  奇跡と呼べるものになるってことです」
+“It means if we can pull this off, it'll be something you could call a miracle.”
+
+@44892 Simone · シモーヌ
+> 「……帝国のエイジとジュリアさんに、
+>  地球人の血が流れてたっていうの
+“...To think that imperial Eiji and Julia had Earthling blood in them.
+---
+>  奇跡だわ。でなければ、この希望は
+>  生まれなかった。……うまくいったあとの
+It's a miracle. Otherwise, this hope would never have been born. ...Though that's
+---
+>  話だけどね」
+assuming everything goes well.”
+
+@44893 Selain · セレイン（按段落 3DD2）
+> 「無数の偶然によって成り立つ
+>  状況……そして、奇跡はすでに
+“A situation built on countless coincidences... and the miracle has already
+---
+>  おこれり、か。亮、まるで知っていた
+>  みたいじゃないか」
+happened, huh. Ryo, you make it sound like you knew all along.”
+
+@44894 Roanne · ロアン
+> 「本当ですよ」
+“He really does.”
+
+@44895 Ryo · 亮
+> 「いや……これも、偶然だな」
+“No... this is a coincidence too.”
+
+@44896 Shinobu · 忍
+> 「フン、こいつを奇跡にするかどうかは、
+>  俺たち次第ってわけか」
+“Hmph. So whether this becomes a miracle or not is up to us.”
+
+@44897 Brad · ブラッド（按段落 3DD3）
+> 「フッ、亮、お前のいった通りになって
+>  きやがったな」
+“Heh, Ryo, it's turning out just like you said.”
+
+@44898 Maria · マリア
+> 「それって、あたしたちがうまくやれれば、
+>  奇跡はおきていたことになるってこと?」
+“Does that mean if we do well, it'll be that a miracle already happened?”
+
+@44899 Koji · 甲児
+> 「ああ、そうだよマリアちゃん。
+>  よぉし、こうなったら、俺たちで
+“Yeah, that's right, Maria. All right, if it's come to this, let's make
+---
+>  奇跡をつくってやろうぜ!」
+a miracle ourselves!”
+
+@44900 Manami · マナミ（按段落 3DD4）
+> 「4万年もの昔の出来事……
+>  ムゲ帝国の侵略……そしてエイジと
+“An event from 40,000 years ago... the Muge Empire's invasion... and Eiji and
+---
+>  ジュリアさま。すべては、気の遠くなる
+>  ほど昔から重ねられた偶然……」
+Julia. Everything is a coincidence piled up since a time so distant it makes your head spin...”
+
+@44901 George · ジョルジュ
+> 「ええ、マドモアゼル。
+>  もしも、我々人類がこれからも
+“Yes, mademoiselle. If we humans can keep spinning out our history
+---
+>  歴史をつむぐことができたとしたら……
+>  これは奇跡と呼ぶにふさわしいものと
+from here on... this will surely be worthy of being called a miracle.
+---
+>  なるでしょう」
+”
+
+@44902 Manami · マナミ（按段落 3DD4）
+> 「そして、それをするのは、あたしたち。
+>  そういうことね」
+“And the ones who'll do that are us. That's what it comes down to.”
+
+@44903 Maria · マリア
+# 审校：原译“it'll be that a miracle already happened”不自然，改为更口语化的“it'll be as if a miracle already happened”。
+> 「それって、あたしたちがうまくやれれば、
+>  奇跡はおきていたことになるってこと?」
+“Does that mean if we do well, it'll be as if a miracle already happened?”
+
+@44904 Koji · 甲児
+> 「ああ、そうだよマリアちゃん。
+>  よぉし、こうなったら、俺たちで
+“Yeah, that's right, Maria. All right, if it's come to this, let's make
+---
+>  奇跡をつくってやろうぜ!」
+a miracle ourselves!”
+
+@44905 Treize · トレーズ
+# 审校：“tiny sliver of hope”略显累赘，改为“faint hope”，更贴合特列斯的语气。
+> 「なるほど……ムゲ帝国に占領されて
+>  いたことが、このわずかな希望へと
+“I see... being occupied by the Muge Empire leads to this faint hope...
+---
+>  つながる……。もしもこれで地球が
+>  守られるのなら、確かに奇跡と
+If this lets us protect the Earth, then it's certainly fair to call it
+---
+>  呼んでいいだろう」
+a miracle.”
+
+@44906 Benkei · ベンケイ
+> 「なんだかやる気が出てきたぜ!」
+“Somehow I'm getting fired up!”
+
+@44907 Ryoma · リョウ
+# 审校：原译“the difference between night and day”虽可理解，但“makes all the difference in the world”更自然，且保留原文对比意味。
+> 「ああ、この話があるとないとじゃ、
+>  雲泥の差だな」
+“Yeah, whether we have this or not makes all the difference in the world.”
+
+@44908 Treize · トレーズ
+> 「まずは現状を確認せねばならないね
+>  レディ、いますぐ、クスコに調査隊を
+“First we must confirm the current situation. Lady, could you dispatch a survey team
+---
+>  派遣してくれないか」
+to Cusco at once?”
+
+@44909 Lady · レディ
+> 「はい、トレーズ様」
+“Yes, Lord Treize.”
+
+@44910 Komei · 孔明
+# 审校：原文“遺跡が存在すると”是传闻语气，原译“a ruin ... exists”过于肯定，改为“there are ruins ... in Cusco”更自然。
+> 「ほう、クスコですか。クスコに数万年
+>  前の遺跡が存在すると」
+“Oh, Cusco? So there are ruins tens of thousands of years old in Cusco.”
+
+@44911 Q Boss · Qボス
+> 「はい。もはや例のものに間違いありま
+>  せん」
+“Yes. There's no longer any doubt it's the thing in question.”
+
+@44912 Komei · 孔明
+# 审校：孔明语气较正式，原译“let's”偏随意，改为“let us”。
+> 「それはよかった。では、あの異星人
+>  たちに、それを教えてさしあげましょう」
+“That's good to hear. Then let us inform those aliens of it.”
+
+@44913 Alberto · アルベルト
+> 「……それで、どうするというのだ? 奴ら
+>  が勝てば、我々とて生き残る
+“...And then what? If they win, there's no guarantee we'll
+---
+>  保証はないぞ」
+survive either.”
+
+@44914 Komei · 孔明
+# 审校：“cooperation”较正式，孔明此处语气带算计，改为“help”更自然。
+> 「状況を見て、もう少し協力して
+>  さしあげましょう」
+“We'll watch how things go and lend them a little more help.”
+
+@44915 Alberto · アルベルト
+> 「なんだと!? 貴様、いったいどういう
+>  つもりだ!」
+“What?! Just what are you playing at?!”
+
+@44916 Komei · 孔明
+# 审校：原译“It's no use complaining to me”可接受，但“There's no point complaining to me”更口语自然。
+> 「すべては、ビッグファイアーのご意志に
+>  よるもの。私におっしゃられても
+“Everything is by Big Fire's will. There's no point complaining
+---
+>  困りますな」
+to me.”
+
+@44917 Alberto · アルベルト
+> 「ぬうぅぅぅぅ……」
+“Grrrrrr...”
+
+@44918 Gorman · ゴーマン
+> 「ワール総司令」
+“Commander-in-Chief Wahl.”
+
+@44919 Wahl · ワール
+> 「ゴーマン大尉、状況はどうなって
+>  いる?」
+“Captain Gorman, what's the situation?”
+
+@44920 Gorman · ゴーマン
+> 「たった今、陛下がお探しになって
+>  いたものが、地球人どもがクスコと
+“Just now, we received a report that the thing His Majesty has been searching for is located
+---
+>  呼ぶ地にあると、報告がありました」
+in the place the Earthlings call Cusco.”
+
+@44921 Wahl · ワール
+> 「間違いないのか!?」
+“Are you certain?!”
+
+@44922 Gorman · ゴーマン
+> 「こちらでも分析いたしました。
+>  確かに、数万年前のものと
+“We've analyzed it here as well. There does indeed appear to be a structure
+---
+>  思われる構造物が存在するよう
+>  です」
+believed to be tens of thousands of years old.”
+
+@44923 Gandal · ガンダル
+> 「ワール司令、陛下はずいぶんと、
+>  こだわりを持たれておるようだが
+“Commander Wahl, His Majesty seems remarkably fixated on this.
+---
+>  いったいその遺跡とはなんなのだ?」
+Just what is this ruin, anyway?”
+
+@44924 Wahl · ワール
+> 「私も詳しくは知らん。4万年前
+>  に何者かが残したものとしか
+“I don't know the details either. I've only heard that someone left it behind
+---
+>  聞いておらぬ」
+forty thousand years ago.”
+
+@44925 Janera · ジャネラ
+> 「ホホホ、そのようなもの、破壊して
+>  しまえばそれまででしょう」
+“Hohoho, a thing like that is finished the moment you destroy it.”
+
+@44926 Emperor Zuul · ズール皇帝
+> 「そうか、見つけたか」
+“I see. So you've found it.”
+
+@44927 Wahl · ワール
+> 「はっ、地球人どもが集結している
+>  のと、同じ大陸です」
+“Yes, sir. It's on the same continent where the Earthlings are gathering.”
+
+@44928 Emperor Zuul · ズール皇帝
+> 「ワールよ、地上部隊の全軍に
+>  伝えるのだ。その遺跡の破壊を
+“Wahl, relay this to all ground forces. The destruction of that ruin
+---
+>  最優先させよ、とな」
+is to be given top priority.”
+
+@44929 Kosuke · 小介
+> 「みんな、ちょっと聞いてください」
+“Everyone, listen up for a moment.”
+
+@44930 Juzo · 十三
+> 「なんや小介、今いそがしいんや。
+>  手短かに頼むで」
+“What is it, Kosuke? I'm busy right now. Make it quick.”
+
+@44931 Kosuke · 小介
+> 「前に話していたコン・バトラーVの
+>  強化についてなんですけど……」
+“It's about the Combattler V upgrades I mentioned before...”
+
+@44932 Hyoma · 豹馬
+> 「おっ! どこかパワーアップしたのか!?」
+“Oh! Did it get powered up somewhere?!”
+
+@44933 Kosuke · 小介
+> 「四谷博士に協力してもらって
+>  コン・バトラーVに新しく武器を
+“With Dr. Yotsuya's help, we fitted Combattler V with new
+---
+>  取りつけたんです」
+weapons.”
+
+@44934 Hyoma · 豹馬
+> 「小介、もったいぶらずに早く話して
+>  くれよ」
+“Kosuke, quit stalling and just tell us already.”
+
+@44935 Kosuke · 小介
+> 「グランダッシャーとツインランサー、それに
+>  Vレーザー、ビッグブラストディバイダーの
+“The Grand Dasher and the Twin Lancer, plus the V Laser and the Big Blast Divider.
+---
+>  4つです」
+That's four in all.”
+
+@44936 Hyoma · 豹馬
+> 「そんなに増えるのか!? 名前を
+>  聞いただけでも強そうじゃねえか」
+“That many?! Just hearing the names makes them sound strong!”
+
+@44937 Lady · レディ
+> 「トレーズさま、クスコの調査に
+>  向かった部隊からの報告です
+“Lord Treize, this is the report from the unit sent to investigate Cusco.
+---
+>  聖女ジュリアのおっしゃられたとおり、
+>  あの地に、はるか昔の遺跡が
+Just as the Holy Woman Julia said, we have confirmed that a ruin from
+---
+>  あることを確認いたしました。
+>  遺跡は帝国の攻撃目標と
+ages past exists in that land. The ruin has not become a target of the
+---
+>  なっておらず、破壊をまぬがれている
+>  とのことです。ただ……」
+Empire's attacks, and has escaped destruction. However...”
+
+@44938 Treize · トレーズ
+> 「……どうした、レディ?」
+“...What is it, Lady?”
+
+@44939 Lady · レディ
+> 「何者かが、遺跡を探っていたと。
+>  調査隊が交戦しましたが、すぐに
+“Someone had been searching the ruin. Our survey team engaged them, but they
+---
+>  ひきあげたとのことです。異星人では
+>  なかったようなのですが……」
+withdrew at once. They did not appear to be aliens, but...”
+
+@44940 Treize · トレーズ
+> 「では、地球人か? どういうことかな」
+“Then Earthlings? What could this mean?”
+
+@44941 Lady · レディ
+> 「申しわけありません。私にはわかりかね
+>  ます」
+“I'm sorry. I cannot say.”
+
+@44942 Lady · レディ
+> 「なにか? ……わかりました。お伝えして
+>  おきます」
+“What is it? ...Understood. I'll pass it along.”
+
+@44943 Bright · ブライト
+> 「……なにかあったのか?」
+“...Did something happen?”
+
+@44944 Lady · レディ
+> 「たったいま、各地の銀河帝国
+>  軍が移動を開始したようです
+“Just now, the Galactic Empire forces everywhere appear to have begun moving.
+---
+>  北米の動きから、目的地は
+>  やはり、この南米と思われます」
+Judging by the movements in North America, their destination is indeed this South America.”
+
+@44945 Quattro · クワトロ
+> 「ついに来るか……」
+“So they're finally coming...”
+
+@44946 Amuro · アムロ
+> 「エイジたちをクスコへ向かわせよう。
+>  俺たちは、少しでも時間をかせぐ」
+“Let's send Eiji and the others to Cusco. We'll buy as much time as we can.”
+
+@44947 Treize · トレーズ
+> 「……いや、残存する戦力のすべてを
+>  クスコへと移動させよう」
+“...No. Let's move all our remaining forces to Cusco.”
+
+@44948 Bright · ブライト
+> 「どういうことです?」
+“What do you mean?”
+
+@44949 Treize · トレーズ
+> 「遺跡を探っていた何者か、という
+>  のが気になる。我々は何としても
+“This someone who was searching the ruin concerns me. We cannot afford to lose
+---
+>  “グラドスの刻印”を失うわけ
+>  にはいかないのだ」
+the ‘Mark of Grados’ no matter what.”
+
+@44950 Banjo · 万丈
+> 「たしかにね。よし、みんな、クスコへ
+>  向かおう」
+“True enough. All right, everyone, let's head for Cusco.”
+
+@44951 Amuro · アムロ
+> 「遺跡周辺への布陣は、ほぼ
+>  終了したよ。敵の動きは?」
+“Our deployment around the ruin is nearly complete. What about the enemy?”
+
+@44952 Garrison · ギャリソン
+> 「どうやら銀河帝国軍は、
+>  間違いなくこのクスコに向かっている
+“It appears the Galactic Empire forces are indeed heading straight for this
+---
+>  ようでございますな」
+Cusco, sir.”
+
+@44953 Banjo · 万丈
+> 「敵さん、やはり刻印に気づいてるね
+>  こっちに来て正解だったようだ」
+“So the enemy has noticed the Mark after all. Looks like coming here was the right call.”
+
+@44954 Bright · ブライト
+> 「遺跡の周辺にいたというやつら……
+>  関係があると見るか……」
+“Those people who were around the ruin... Do you think they're connected...?”
+
+@44955 Banjo · 万丈
+> 「あるいは偶然か。いずれにせよ、
+>  僕たちは全力をあげて、ここを
+“Or perhaps it was coincidence. Either way, all we can do is give everything we've got
+---
+>  守るだけだ」
+to defend this place.”
+
+@44956 Bright · ブライト
+> 「もはや考えている時間は、ない
+>  ようだな。ジュリアさんはどうした?」
+“It seems there's no more time to think. What about Julia?”
+
+@44957 Amuro · アムロ
+> 「エイジたちと一緒に、すでに刻印の
+>  ところへ入った。あとはまかせるしかない」
+“She's already gone into the Mark with Eiji and the others. All we can do now is leave it to them.”
+
+@44958 Bright · ブライト
+> 「……そうだな」
+“...Right.”
+
+@44959 Noin · ノイン
+> 「ここが、地上で最後の防衛線
+>  ですね」
+“So this is the last line of defense on Earth.”
+
+@44960 Zechs · ゼクス
+> 「ああ……この人類最後の希望を
+>  我々は絶対に……
+“Yes... This last hope of humanity, we absolutely must...
+---
+>  死守しなければならん」
+hold it at all costs.”
+
+@44961 Relena · リリーナ
+> 「お兄様」
+“Brother.”
+
+@44962 Zechs · ゼクス
+> 「……リリーナか」
+“...Relena.”
+
+@44963 Relena · リリーナ
+> 「ノインさんからお聞きしました。あなたが
+>  わたくしの実の兄だと」
+“I heard it from Noin. That you are my real brother.”
+
+@44964 Zechs · ゼクス
+> 「すまなかった、リリーナ。
+>  私はサンクキングダムにいくわけには
+“Forgive me, Relena. I could not go to the Sanc Kingdom.
+---
+>  いかなかったのだ。私の手は、血に
+>  汚れすぎている」
+My hands are stained too deeply with blood.”
+
+@44965 Relena · リリーナ
+> 「お兄様……」
+“Brother...”
+
+@44966 Zechs · ゼクス
+> 「リリーナ、宇宙へあがってくれないか。
+>  ここは地獄と化すかもしれん
+“Relena, won't you go up into space? This place may turn into a hell.
+---
+>  宇宙の方が、まだマシなはずだ」
+Space should still be the better option.”
+
+@44967 Relena · リリーナ
+> 「いいえ、お兄様。わたくしは、ここで
+>  見届けます。この戦いの結末を」
+“No, brother. I will stay here and see it through. The end of this battle.”
+
+@44968 Zechs · ゼクス
+> 「……強くなったな、リリーナ」
+“...You've grown strong, Relena.”
+
+@44969 Noin · ノイン
+> 「ゼクス、そろそろ」
+“Zechs, it's about time.”
+
+@44970 Zechs · ゼクス
+> 「聖女のところへ行け、リリーナ。
+>  あそこがもっとも安全なはずだ」
+“Go to where the holy woman is, Relena. That should be the safest place.”
+
+@44971 Beltorchika · ベルトーチカ
+> 「アムロ、完全に包囲されたわ。敵
+>  は攻撃態勢に入っているようよ」
+“Amuro, we're completely surrounded. The enemy appears to be moving into attack formation.”
+
+@44972 Amuro · アムロ
+> 「“刻印”のほうは?」
+“What about the ‘Mark’?”
+
+@44973 Bunny · バニー
+> 「まだしばらく間がかかるそうです」
+“It seems it will still take a while longer.”
+
+@44974 Bright · ブライト
+> 「やるしかないな。トレーズ特佐」
+“Then we've no choice but to fight. Colonel Treize.”
+
+@44975 Treize · トレーズ
+> 「わかっている」
+“I know.”
+
+@44976 Bunny · バニー
+> 「回線ひらきます」
+“Opening the channel.”
+
+@44977 Treize · トレーズ
+> 「ここ、クスコに布陣するOZの
+>  兵士諸君。そのまま聞いてほしい
+“To all OZ soldiers deployed here at Cusco. Hear me out as you are.
+---
+>  いよいよ戦いが開始される。
+>  圧倒的な戦力差で攻めてきた
+The battle is about to begin at last. Against the
+---
+>  銀河帝国軍に対し、我々に
+>  残されている最後の切り札は
+Galactic Empire forces, who have attacked with overwhelming superiority,
+---
+>  この遺跡に、はるか昔から眠る
+>  “グラドスの刻印”である。これを
+the last trump card left to us is the ‘Mark of Grados,’ which has slept in this ruin since ages past. Only by
+---
+>  守りぬくことができて、はじめて
+>  我々に未来へいたる可能性が
+defending it to the end will any possibility of a future
+---
+>  残されるのだ。OZの兵士諸君、
+>  これは地球人類の存亡をかけた
+remain to us. Soldiers of OZ, this is a battle that decides the survival of Earth's humanity.
+---
+>  戦いである。全力で戦うことを
+>  期待する。以上だ」
+I expect you to fight with everything you have. That is all.”
+
+@44978 Bright · ブライト
+> 「総員、第一戦闘配置に
+>  つけ!」
+“All hands, man your first battle stations!”
+
+@44979 Eiji · エイジ
+> 「姉さん、上では敵が攻撃を
+>  開始したそうだ」
+“Sis, it seems the enemy has begun their attack up above.”
+
+@44980 Julia · ジュリア
+> 「……そうですか。急がなければなりません
+>  ね」
+“...I see. Then we must hurry.”
+
+@44981 Anna · アンナ
+> 「ジュリアさん……どうかなさったのですか?」
+“Julia... is something the matter?”
+
+@44982 Julia · ジュリア
+> 「……わたくしは今でも、人と人とが
+>  最善を尽くして理解しあうことが
+“...Even now, I believe that people doing their utmost to understand
+---
+>  一番大切なことと信じています。
+>  できることなら“グラドスの刻印”
+one another is the most important thing of all. If I could have helped it,
+---
+>  など、使いたくはありませんでした」
+I would never have wanted to use something like the ‘Mark of Grados.’”
+
+@44983 Relena · リリーナ
+> 「ジュリア様……」
+“Lady Julia...”
+
+@44984 Julia · ジュリア
+> 「しかし、やむをえません。
+>  これ以上、人々に無益な血を
+“But it cannot be helped. So that no more meaningless blood is
+---
+>  流させないために。地球人に
+>  絶望的な戦いを、させないために
+shed by the people. So that the people of Earth are not forced into a hopeless battle.
+---
+>  やはり私たち人類は、この大いなる
+>  宇宙の中では、まだ幼な子に
+After all, we humans are still nothing more than infants
+---
+>  すぎないのです。この刻印を残した、
+>  先住グラドス人の知恵に
+within this vast universe. We must rely upon the wisdom of the
+---
+>  私たちはすがらなければなりません」
+ancient Gradosians who left this Mark behind.”
+
+@44985 Beltorchika · ベルトーチカ
+> 「南方、第1防衛ライン、
+>  突破されました!」
+“The first defense line to the south has been breached!”
+
+@44986 Reika · レイカ
+> 「西方、第2防衛ライン、
+>  交戦を開始したわ!」
+“The second defense line to the west has engaged the enemy!”
+
+@44987 Bunny · バニー
+> 「第2から第5守備隊、
+>  応答ありません!」
+“No response from the 2nd through 5th garrisons!”
+
+@44988 Garrison · ギャリソン
+> 「やはり、ここまでくるようですな」
+“So they have come this far after all, it seems.”
+
+@44989 Bright · ブライト
+> 「ああ。パイロット各員、
+>  発進準備! トレーズ特佐は
+“Yeah. All pilots, prepare to launch! Has Colonel Treize
+---
+>  “刻印”へついたのか!?」
+reached the ‘Mark’?!”
+
+@44990 Bunny · バニー
+> 「はい!」
+“Yes!”
+
+@44991 Beltorchika · ベルトーチカ
+> 「敵、確認! 続々と最終
+>  防衛ラインを突破してきます!」
+“Enemy confirmed! They're breaking through the final defense line one after another!”
+
+@44992 Beauty · ビューティ
+> 「各機、発進願います!」
+“All units, please launch!”
+
+@44993 Bright · ブライト
+> 「全員聞け! 敵の目的は
+>  “刻印”と断定される
+“Everyone, listen! The enemy's objective is confirmed to be the ‘Mark.’
+---
+>  1機たりとも、遺跡に到達させる
+>  な!」
+Do not let a single unit reach the ruin!”
+
+@44994 Beltorchika · ベルトーチカ
+> 「……なんて数……」
+“...What numbers...”
+
+@44995 Bunny · バニー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、大変です!
+>  遺跡内の守備隊から
+“Captain Bright, it's terrible! An emergency transmission from the garrison
+---
+>  緊急連絡!」
+inside the ruin!”
+
+@44996 Bright · ブライト
+> 「どうした!?」
+“What is it?!”
+
+@44997 Bunny · バニー
+> 「封鎖してあった地下空洞側の
+>  進入路が、何者かによって
+“The sealed access route on the underground cavern side has been
+---
+>  襲撃されました! 迎撃に
+>  向かった部隊は壊滅です!
+attacked by someone! The unit sent to intercept has been wiped out!
+---
+>  現在、“刻印”の
+>  直接守備隊が交戦中!」
+Right now, the direct guard unit at the ‘Mark’ is engaged!”
+
+@44998 Bright · ブライト
+> 「なんだと!?」
+“What did you say?!”
+
+@44999 Reika · レイカ
+> 「地上の第8守備隊からも
+>  連絡! 解放された進入路を
+“Word from the 8th garrison on the surface as well! The Galactic Empire
+---
+>  銀河帝国軍が発見、地下
+>  へ入り始めています!」
+forces have discovered the opened access route and are beginning to enter underground!”
+
+@45000 Bunny · バニー
+> 「遺跡内守備隊より、救援
+>  要請! あと5分は死守するので
+“Request for reinforcements from the garrison inside the ruin! They say they can hold out
+---
+>  それまでに増援をまわしてほしいとの
+>  ことです!」
+for another five minutes, so they want reinforcements sent before then!”
+
+@45001 Bright · ブライト
+> 「くそっ、なんということだ……」
+“Damn it, how could this happen...”
+
+@45002 Beltorchika · ベルトーチカ
+> 「艦長、第一防衛ラインの
+>  残存部隊が、部隊を再編し
+“Captain, the surviving units from the first defense line have regrouped
+---
+>  こちらに急行中です」
+and are heading here at full speed.”
+
+@45003 Bunny · バニー
+> 「“刻印”のトレーズ特佐より
+>  通信入ります」
+“Incoming transmission from Colonel Treize at the ‘Mark.’”
+
+@45004 Treize · トレーズ
+> 「{HeroMech}の諸君、こちらの
+>  状況は極めて深刻だ。現在の
+“Crew of the {HeroMech}, our situation here is extremely grave. Once you
+---
+>  攻撃をしのいだら、ただちにこちらへ
+>  まわってもらいたい」
+weather the current attack, I want you to come to us at once.”
+
+@45005 Bright · ブライト
+> 「し、しかし、こちらも敵が
+>  波状攻撃をかけてきています」
+“B-But we're also under wave after wave of enemy attacks here.”
+
+@45006 Treize · トレーズ
+> 「現在、各防衛ラインの
+>  残存部隊が遺跡へむかっている
+“Right now, the surviving units from each defense line are heading for the ruin.
+---
+>  地上は、彼らにまかせたまえ」
+Leave the surface to them.”
+
+@45007 Bright · ブライト
+> 「……わかりました。総員に告ぐ!
+>  緊急事態だ! 我々は今から
+“...Understood. All hands, listen up! This is an emergency! From now, we will
+---
+>  5分以内に現在交戦中の
+>  敵を撃滅、遺跡内の守備に
+annihilate the enemies we're engaging within five minutes and move to
+---
+>  まわる! 頼む、5分以内だ!」
+defend the ruin! Please, within five minutes!”
+
+@45008 Beltorchika · ベルトーチカ
+> 「みんな、あと4分よ!」
+“Everyone, four minutes left!”
+
+@45009 Beltorchika · ベルトーチカ
+> 「あと3分! 急いで!」
+“Three minutes left! Hurry!”
+
+@45010 Bright · ブライト
+> 「くっ、あと2分だ! 守備隊が
+>  持ちこたえている間に、なんとしても
+“Ngh, two minutes left! While the garrison holds out, we've got to get
+---
+>  内部の防衛にまわるぞ!」
+inside and join the defense no matter what!”
+
+@45011 Bunny · バニー
+> 「遺跡内守備隊より緊急
+>  連絡! もうこれ以上、敵を
+“Emergency transmission from the garrison inside the ruin! They say they
+---
+>  抑えることができないとのことです!」
+can't hold the enemy back any longer!”
+
+@45012 Bright · ブライト
+> 「急げ! “刻印”を死守できなけ
+>  れば、死を待つ他はないぞ!」
+“Hurry! If we can't hold the ‘Mark,’ nothing awaits us but death!”
+
+@45013 Bunny · バニー
+> 「トレーズ特佐より連絡! 遺跡
+>  内守備隊は壊滅した模様!
+“Message from Colonel Treize! The garrison inside the ruin appears to have been wiped out!
+---
+>  もう“刻印”まで敵の侵攻を
+>  さまたげるものは、ありません!」
+There is nothing left to stop the enemy's advance to the ‘Mark’!”
+
+@45014 Bright · ブライト
+> 「くっ、いますぐにでも遺跡内へまわら
+>  ねば……。早く敵を片付けろ!!」
+“Ngh, we have to get inside the ruin right now... Finish off the enemy, quickly!!”
+
+@45015 Bunny · バニー
+> 「艦長! “刻印”内部が……
+>  敵に制圧されました……」
+“Captain! The interior of the ‘Mark’ is... the enemy has taken control of it...”
+
+@45016 Bright · ブライト
+> 「バカな……間に合わなかったのか……」
+“Impossible... We didn't make it in time...”
+
+@45017 Bright · ブライト
+> 「止まったか……敵は!?」
+“It's stopped... What about the enemy?!”
+
+@45018 Beltorchika · ベルトーチカ
+> 「再編した守備隊と交戦中!
+>  しばらくは維持できそうです」
+“They're engaging the regrouped garrison! We should be able to hold for a while.”
+
+@45019 Garrison · ギャリソン
+> 「あとは、彼らにまかせるほかは、
+>  ありますまい」
+“There is nothing left for us to do but leave it to them.”
+
+@45020 Bright · ブライト
+> 「……よし、全機帰還しろ!
+>  我々は遺跡内部の守備に
+“...All right, all units return! We'll move to defend the interior of the
+---
+>  まわる! 整備班、補給を
+>  最優先しろ! すぐに出させるぞ!」
+ruin! Maintenance crew, make resupply top priority! We're launching again immediately!”
+
+@45021 Shinobu · 忍
+> 「くっそぉっ、奴らやってくれるぜ!」
+“Damn it, those bastards are really something!”
+
+@45022 Sara · 沙羅
+> 「忍! 文句いってるヒマがあったら、
+>  手を動かしな!」
+“Shinobu! If you've got time to complain, put your hands to work!”
+
+@45023 Amuro · アムロ
+> 「アストナージ、急いでくれ!
+>  チェーン、こっちはいい! マジンガーや
+“Astonaige, hurry it up! Chan, never mind over here! Go check on the Mazinger and
+---
+>  ゲッターをみてやってくれ!」
+the Getter!”
+
+@45024 Astonaige · アストナージ
+> 「やってますよ!!」
+“I'm on it!!”
+
+@45025 Koji · 甲児
+> 「チェーンさん、こっちこっち!」
+“Chan, over here, over here!”
+
+@45026 Chan · チェーン
+> 「いま行くわ!」
+“I'm coming!”
+
+@45027 David · デビッド
+> 「エイジ、今いくからな、待ってろよ……」
+“Eiji, I'm coming now, so just wait...”

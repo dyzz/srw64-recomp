@@ -1,0 +1,124 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9588 Helmut · ヘルマット
+> 「ただの一度で、奴らの心臓に
+>  杭を打ちこんでみせるわ!」
+“With a single blow, I'll drive a stake through their hearts!”
+
+@9589 Helmut · ヘルマット
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「血塗られた心臓は、この
+>  ヘルマット大将軍のたなごころの中」
+“Their blood-soaked hearts are in the palm of my hand, Great General Helmut's hand.”],”
+
+@9590 Helmut · ヘルマット
+> 「感じる、感じるぞ! ピクピクと
+>  恐怖におののいている!」
+“I can feel it, I can feel it! They're trembling with fear!”
+
+@9591 Helmut · ヘルマット
+> 「まず、お前から血祭りにあげてやる!」
+“First, I'll make a blood offering of you!”
+
+@9592 Helmut · ヘルマット
+> 「押しつぶせっ!」
+“Crush them!”
+
+@9593 Helmut · ヘルマット
+> 「地獄の底まで叩きつぶすのだ!」
+“Smash them to the depths of hell!”
+
+@9594 Helmut · ヘルマット
+> 「攻撃をかけろっ!」
+“Open fire!”
+
+@9595 Helmut · ヘルマット
+> 「バカめ!」
+“Fools!”
+
+@9596 Helmut · ヘルマット
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@9597 Helmut · ヘルマット
+> 「わ、私の軍団がぁっ!!」
+“M-my army!!”
+
+@9598 Helmut · ヘルマット
+> 「き、貴様、図にのりおって!」
+“Y-you, getting carried away!”
+
+@9599 Helmut · ヘルマット
+> 「くっ……撃ち落とせ! 奴をしとめろ!!」
+“Ngh... shoot them down! Kill them!!”
+
+@9600 Helmut · ヘルマット
+> 「な……なんだとぉっ!?」
+“W-what?!”
+
+@9601 Helmut · ヘルマット
+> 「バカな……バカなバカなぁっ!!」
+“Impossible... impossible, impossible!!”
+
+@9602 Helmut · ヘルマット
+> 「な、なにをしておる、撃ちおとせぃ!」
+“W-what are you doing, shoot them down!”
+
+@9603 Helmut · ヘルマット
+> 「えぇぃ、これではシャピロに示しが
+>  つかんではないか!」
+“Gah, how can I show my face to Shapiro like this!”
+
+@9604 Helmut · ヘルマット
+> 「なーにをもたもたしている!
+>  散開して誘発を避けろ!」
+“What are you dawdling for! Spread out and avoid the provocation!”
+
+@9605 Helmut · ヘルマット
+> 「くっ……おのれ、よくもやってくれたな!」
+“Ngh... why you, you've done it now!”
+
+@9606 Helmut · ヘルマット
+> 「ええい、うろたえるな!」
+“Gah, don't panic!”
+
+@9607 Helmut · ヘルマット
+> 「ハーッハハハハッ!
+>  効かぬ、効かぬなぁ!」
+“Hahahahaha! It doesn't work, it doesn't work at all!”
+
+@9608 Helmut · ヘルマット
+> 「クククッ、あきらめのわるいやつらだ!」
+“Kukuku, you lot just don't know when to give up!”
+
+@9609 Helmut · ヘルマット
+> 「たとえ体当たりをしたところで
+>  このヘルマット艦は、びくともせんわ!」
+“Even if you ram me, this Helmut ship won't budge!”
+
+@9610 Helmut · ヘルマット
+> 「見よ、デスガイヤー、ギルドローム
+>  わしはお前たちとは違う!」
+“Behold, Death Gaia, Gildrome, I'm different from the likes of you!”
+
+@9611 Helmut · ヘルマット
+> 「わしの恐ろしさが身にしみたか!」
+“Have you felt just how terrifying I am!”
+
+@9612 Helmut · ヘルマット
+# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+> 「フッフッフ、どうだ、手が出まい」
+“Heh heh heh, well, you can't lay a hand on me.”],”
+
+@9613 Helmut · ヘルマット
+> 「くっ、使い物にならんとはな……」
+“Ngh, useless after all...”
+
+@9614 Helmut · ヘルマット
+> 「放っておけ!」
+“Leave them be!”
+
+@9615 Helmut · ヘルマット
+> 「ええい、追え、追うのだー!
+>  逃してはならん!」
+“Gah, chase them, chase them! Don't let them escape!”

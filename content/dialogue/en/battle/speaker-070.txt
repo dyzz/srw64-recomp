@@ -1,0 +1,197 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8060 Char · シャア
+> 「あたれぃ!」
+“Hit!”
+
+@8061 Char · シャア
+> 「そこかっ!!」
+“There!!”
+
+@8062 Char · シャア
+> 「沈めっ!」
+“Sink!”
+
+@8063 Char · シャア
+> 「やってみるさ!」
+“I'll give it a try!”
+
+@8064 Char · シャア
+> 「いけるかっ!?」
+“Can I do it?!”
+
+@8065 Char · シャア
+> 「そこだ!」
+“There!”
+
+@8066 Char · シャア
+> 「あたれよ!」
+“Hit, damn you!”
+
+@8067 Char · シャア
+> 「おそいっ!!」
+“Too slow!!”
+
+@8068 Char · シャア
+> 「直撃させる!」
+“I'll land a direct hit!”
+
+@8069 Char · シャア
+> 「やらせんっ!!」
+“I won't let you!!”
+
+@8070 Char · シャア
+> 「もらった!!」
+“Got you!!”
+
+@8071 Char · シャア
+> 「あまいなっ!!」
+“Too naive!!”
+
+@8072 Char · シャア
+> 「し、しまった!!」
+“D-Damn it!!”
+
+@8073 Char · シャア
+> 「直撃だと!?」
+“A direct hit?!”
+
+@8074 Char · シャア
+> 「やられた!?」
+“I'm hit?!”
+
+@8075 Char · シャア
+> 「なんだと!?」
+“What did you say?!”
+
+@8076 Char · シャア
+> 「くっ、直撃をくらったのか!?」
+“Ngh, I took a direct hit?!”
+
+@8077 Char · シャア
+> 「まだだ! まだ終わらんよ!」
+“Not yet! It's not over yet!”
+
+@8078 Char · シャア
+> 「くっ!! ダメージを受けすぎたか!?」
+“Ngh!! Too much damage?!”
+
+@8079 Char · シャア
+> 「くっ!
+>  パワー負けしているというのか!?」
+“Ngh! I'm losing in raw power?!”
+
+@8080 Char · シャア
+> 「モ、モニターが死ぬ!?」
+“Th-The monitor's going dead?!”
+
+@8081 Char · シャア
+> 「やるな! しかし!!」
+“Not bad! But still!”
+
+@8082 Char · シャア
+> 「なにっ!? こ、こいつっ!!」
+“What?! Th-this guy!”
+
+@8083 Char · シャア
+> 「ちいっ!」
+“Tch!”
+
+@8084 Char · シャア
+> 「うっ!! やるな!!」
+“Ugh! Not bad!”
+
+@8085 Char · シャア
+> 「ちぃっ!! まだだっ!」
+“Tch! Not yet!”
+
+@8086 Char · シャア
+> 「なんと!」
+“What!”
+
+@8087 Char · シャア
+> 「やるっ! だが勝負はこれからだ!」
+“Not bad! But the real fight starts now!”
+
+@8088 Char · シャア
+> 「むうっ! 当たっただと!?」
+“Hmph! It hit?!”
+
+@8089 Char · シャア
+> 「まだだ! この程度のダメージで!」
+“Not yet! Not from damage like this!”
+
+@8090 Char · シャア
+# 审校：原文是“パワーが負けている!?”，指自己力量处于下风，初稿“Outpowered?!”缺少主语且语气不完整，改为更自然的自述。
+> 「パワーが負けている!?」
+“I'm being outpowered?!”
+
+@8091 Char · シャア
+> 「まだまだだな!!」
+“You're still no match!”
+
+@8092 Char · シャア
+> 「くっ!! まだだ!!」
+“Ngh! Not yet!”
+
+@8093 Char · シャア
+> 「その程度では落ちんよ!!」
+“That won't be enough to bring me down!”
+
+@8094 Char · シャア
+> 「まだだ!!」
+“Not yet!”
+
+@8095 Char · シャア
+> 「かすっただけだ!」
+“It just grazed me!”
+
+@8096 Char · シャア
+> 「効かんな!」
+“That's useless!”
+
+@8097 Char · シャア
+> 「ちっ! まだだっ!」
+“Tch! Not yet!”
+
+@8098 Char · シャア
+> 「あまいなっ!」
+“Too naive!”
+
+@8099 Char · シャア
+> 「そうそうあたるものではない!」
+“You won't land hits that easily!”
+
+@8100 Char · シャア
+> 「あたりはせんよ!!」
+“You won't hit me!”
+
+@8101 Char · シャア
+> 「そこかっ!」
+“There!”
+
+@8102 Char · シャア
+> 「フッ 効かんよ!」
+“Hmph. Useless!”
+
+@8103 Char · シャア
+> 「ビームなど効かん!」
+“Beams won't work on me!”
+
+@8104 Char · シャア
+> 「なんの!」
+“Nothing to it!”
+
+@8105 Char · シャア
+# 审校：原文“こんなことで!”表示“竟然因为这种事”，初稿“You think this will stop me!”意思偏离，改为更贴近原意。
+> 「ええーい! こんなことで!」
+“Gah! Over something like this!”
+
+@8106 Char · シャア
+> 「ちぃっ、パワーダウンだと!?」
+“Tch, a power down?!”
+
+@8107 Char · シャア
+# 审校：原文“射程距離外からとはな”指对方从自己射程外攻击，初稿“Sniping from out of range”未体现“我的射程外”，补充主语关系。
+> 「くっ! 射程距離外からとはな」
+“Ngh! From outside my range, is it?”

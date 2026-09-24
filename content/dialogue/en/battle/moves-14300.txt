@@ -1,0 +1,450 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14300 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14301 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14302 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14303 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14304 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14305 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14306 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14307 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14308 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14309 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14310 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14311 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14312 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14313 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14314 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14315 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14316 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14317 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14318 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14319 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14320 Heero · ヒイロ
+> 「シールドも限界か……」
+“The shield's at its limit too...”
+
+@14321 Heero · ヒイロ
+> 「遅い、遅いぞエピオン!」
+“Too slow, Epyon! Too slow!”
+
+@14322 Heero · ヒイロ
+> 「遅い、遅いぞエピオン!」
+“Too slow, Epyon! Too slow!”
+
+@14323 Noin · ノイン
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14324 Noin · ノイン
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”
+
+@14325 Noin · ノイン
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”
+
+@14326 Noin · ノイン
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”
+
+@14327 Zechs · ゼクス
+> 「接近戦に持ち込めば
+>  なんとかなるな」
+“If I force it into close combat, I can manage.”
+
+@14328 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14329 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14330 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14331 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14332 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14333 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14334 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14335 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14336 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14337 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14338 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14339 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14340 Zechs · ゼクス
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14341 Zechs · ゼクス
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14342 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14343 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14344 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14345 Zechs · ゼクス
+> 「ぐぅぅぅっ、殺人的な加速だ!」
+“Ghh... this acceleration is murderous!”
+
+@14346 Zechs · ゼクス
+> 「接近戦に持ち込めば
+>  なんとかなるな」
+“If I force it into close combat, I can manage.”
+
+@14347 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14348 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14349 Zechs · ゼクス
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14350 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14351 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14352 Zechs · ゼクス
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14353 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14354 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14355 Zechs · ゼクス
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you're saying, Zero?”
+
+@14356 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14357 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14358 Zechs · ゼクス
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14359 Zechs · ゼクス
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14360 Zechs · ゼクス
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14361 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14362 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14363 Zechs · ゼクス
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14364 Zechs · ゼクス
+> 「ぐぅぅぅっ、殺人的な加速だ!」
+“Ghh... this acceleration is murderous!”
+
+@14365 Milliardo · ミリアルド
+> 「いくぞエピオン!」
+“Here we go, Epyon!”
+
+@14366 Milliardo · ミリアルド
+> 「いくぞエピオン!」
+“Here we go, Epyon!”
+
+@14367 Milliardo · ミリアルド
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let's see how far this Wing Zero can go!”
+
+@14368 Milliardo · ミリアルド
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let's see how far this Wing Zero can go!”
+
+@14369 Milliardo · ミリアルド
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let's see how far this Wing Zero can go!”
+
+@14370 Milliardo · ミリアルド
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14371 Milliardo · ミリアルド
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14372 Milliardo · ミリアルド
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14373 Milliardo · ミリアルド
+> 「ぐっ、私はコロニーの革命の意志
+>  を背負っているのだっ!」
+“Ngh, I carry the will of the colonies' revolution!”
+
+@14374 Milliardo · ミリアルド
+> 「ダミーにかかったな」
+“You fell for the decoy.”
+
+@14375 Milliardo · ミリアルド
+> 「ダミーも使い方しだいなのだ!」
+“Decoys are all in how you use them!”
+
+@14376 Milliardo · ミリアルド
+> 「しょせんはこの程度か」
+“So this is all you've got.”
+
+@14377 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14378 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14379 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14380 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14381 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14382 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14383 Quatre · カトル
+> 「撃つよ!」
+“I'm firing!”
+
+@14384 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「いくよ、サンドロック」
+“Let's go, Sandrock.”
+
+@14385 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「いくよ、サンドロック」
+“Let's go, Sandrock.”
+
+@14386 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「いくよ、サンドロック」
+“Let's go, Sandrock.”
+
+@14387 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「うぁぁっ、ごめんサンドロック……」
+“Aah, sorry, Sandrock...”
+
+@14388 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「うぁぁっ、ごめんサンドロック……」
+“Aah, sorry, Sandrock...”
+
+@14389 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「うぁぁっ、ごめんサンドロック……」
+“Aah, sorry, Sandrock...”
+
+@14390 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くぅ、にぶい!? サンドロック!」
+“Ngh, too slow?! Sandrock!”
+
+@14391 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くぅ、にぶい!? サンドロック!」
+“Ngh, too slow?! Sandrock!”
+
+@14392 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くぅ、にぶい!? サンドロック!」
+“Ngh, too slow?! Sandrock!”
+
+@14393 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くっ! 立ってサンドロック!
+>  まだやられるわけにはいかないんだ!」
+“Ngh! Get up, Sandrock! I can't afford to be beaten yet!”
+
+@14394 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くっ! 立ってサンドロック!
+>  まだやられるわけにはいかないんだ!」
+“Ngh! Get up, Sandrock! I can't afford to be beaten yet!”
+
+@14395 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「くっ! 立ってサンドロック!
+>  まだやられるわけにはいかないんだ!」
+“Ngh! Get up, Sandrock! I can't afford to be beaten yet!”
+
+@14396 Quatre · カトル
+# 检查提示：未用必用译名：サンドロック→Gundam Sandrock
+> 「よし、サンドロック」
+“All right, Sandrock.”
+
+@14397 Alex · アレックス
+# 审校：“これより敵を叩く”是即将开始攻击，初稿 engaging the enemy now 尚可，但 Red Cancer 为专名，按词表外专名应保留并确认；此处改为更贴切的“moving to engage the enemy”以体现“これより”。
+> 「こちらレッドキャンサー、
+>  これより敵を叩く!」
+“This is Red Cancer, moving to engage the enemy!”
+
+@14398 Rasid · ラシード
+> 「撃ちつづけろ!」
+“Keep firing!”
+
+@14399 Howard · ハワード
+# 审校：原文“威嚇射撃をするぞ”是复数概念，初稿 a warning shot 变成单发，改为 warning shots。
+> 「威嚇射撃をするぞ」
+“We'll fire warning shots.”

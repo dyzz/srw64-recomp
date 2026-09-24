@@ -1,0 +1,430 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14700 Roberto · ロベルト
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”
+
+@14701 Bask · バスク
+> 「主砲、一斉発射っ!」
+“Main cannons, fire all at once!”
+
+@14702 Bask · バスク
+> 「メガ粒子砲 撃てぃ!」
+“Mega Particle Cannon, fire!”
+
+@14703 Bask · バスク
+> 「ドゴスギアの装甲は並ではないわっ!」
+“The Dogosse Giar's armor is no ordinary armor!”
+
+@14704 Banjo · 万丈
+> 「ダイターンザンバー!!」
+“Daitarn Zamber!!”
+
+@14705 Banjo · 万丈
+> 「ダイターンハンマー!!」
+“Daitarn Hammer!!”
+
+@14706 Banjo · 万丈
+> 「ダイターンウェッブ!!」
+“Daitarn Web!!”
+
+@14707 Banjo · 万丈
+> 「ビッグウェッブ!!」
+“Big Web!!”
+
+@14708 Banjo · 万丈
+> 「ダイターンミサイル!!」
+“Daitarn Missile!!”
+
+@14709 Banjo · 万丈
+> 「ダイターンキャノン!!」
+“Daitarn Cannon!!”
+
+@14710 Banjo · 万丈
+> 「サンレーザー!!」
+“Sun Laser!!”
+
+@14711 Banjo · 万丈
+> 「ダイターンファン!!」
+“Daitarn Fan!!”
+
+@14712 Banjo · 万丈
+# 机翻疑问：新译名：ダイターンジャベリン=Daitarn Javelin
+> 「ダイターンジャベリン、のびろっ!!」
+“Daitarn Javelin, extend!!”
+
+@14713 Banjo · 万丈
+> 「ダイターンファン、出ろっ!!」
+“Daitarn Fan, come out!!”
+
+@14714 Banjo · 万丈
+# 机翻疑问：新译名：サン・アタァァァァック=Sun Attack
+> 「日輪の力を借りて、今、
+>  必殺の! サン・アタァァァァック!!」
+“By the power of the sun, now, the sure-kill! Sun Attaaack!!”
+
+@14715 Banjo · 万丈
+# 审校：原文「クラァァァッシュ」拖长音在 Crash 上，初稿拼写为 Claaash 不够准确，改为 Craaash。
+> 「ダイタァァァン・クラァァァッシュ!!」
+“Daitaaaan Craaash!!”
+
+@14716 Banjo · 万丈
+# 审校：爆雷为复数概念，Depth Charge 应使用复数形式。
+> 「爆雷投下!」
+“Depth Charges, drop!”
+
+@14717 Banjo · 万丈
+> 「用意はいいかい、君たち?」
+“Are you all ready?”
+
+@14718 Kappei · 勝平
+> 「おう!」
+“Yeah!”
+
+@14719 Kappei · 勝平
+> 「いつでも大丈夫だぜ!」
+“I'm ready anytime!”
+
+@14720 Banjo · 万丈
+> 「よし! ではいくぞ!」
+“All right! Here we go!”
+---
+> 「日輪の力を借りて、今、必殺の!」
+“By the power of the sun, now, the sure-kill!”
+
+@14721 Kappei · 勝平
+> 「ザンボットォォォッ!!」
+“Zambooooot!!”
+
+@14722 Banjo · 万丈
+> 「サン!」
+“Sun!”
+
+@14723 Kappei · 勝平
+> 「ムーン!」
+“Moon!”
+
+@14724 Banjo · 万丈
+> 「アタァァァァァーック!!」
+“Attaaack!!”
+
+@14725 Banjo · 万丈
+> 「コンビネーション!!」
+“Combination!!”
+
+@14726 Kappei · 勝平
+> 「クラァァァッシュ!!」
+“Craaash!!”
+
+@14727 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14728 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14729 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14730 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14731 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14732 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14733 Shinobu · 忍
+> 「くたばれムゲ野郎!」
+“Die, you Muge bastard!”
+
+@14734 Shinobu · 忍
+> 「行くぜ! 断空砲!!」
+“Here I go! Dancouho!!”
+
+@14735 Shinobu · 忍
+> 「いくぜっ!! 断空砲!!」
+“Here I go!! Dancouho!!”
+
+@14736 Shinobu · 忍
+> 「断空砲フォーメーションだ!!」
+“Dancouho formation!!”
+
+@14737 Shinobu · 忍
+> 「断空砲、発射!!」
+“Dancouho, fire!!”
+
+@14738 Shinobu · 忍
+> 「くらえっ!! 断空砲!!」
+“Take this!! Dancouho!!”
+
+@14739 Shinobu · 忍
+> 「愛の心にて悪しき空間を断つ!」
+“With a heart of love, I cut through evil space!”
+
+@14740 Shinobu · 忍
+> 「名付けて、断空光牙剣!!」
+“I call it the Dancou Kougaken!!”
+
+@14741 Shinobu · 忍
+> 「やぁぁぁぁっってやるぜっ!!!」
+“I'm gonna dooo it!!!”
+
+@14742 Shinobu · 忍
+> 「こいつで最後だ!」
+“This one's the last!”
+
+@14743 Shinobu · 忍
+> 「断空光牙剣!!
+>  やってやるぜっ!!」
+“Dancou Kougaken!! Here I go!!”
+
+@14744 Shinobu · 忍
+> 「でぇぇぇぇぇぇぃっ!!!」
+“Diiiiie!!!”
+
+@14745 Sara · 沙羅
+> 「忍! 一気にきめるよ!」
+“Shinobu! Let's finish this in one go!”
+
+@14746 Shinobu · 忍
+> 「わかってる!
+>  愛の心にて悪しき空間を断つ!」
+“I know! With a heart of love, I cleave the wicked space!”
+
+@14747 Shinobu · 忍
+> 「断・空・光・牙・剣!!」
+“Danku... Koga... Sword!!”
+
+@14748 Ryo · 亮
+> 「忍、もうこうなったらアレを使うしか
+>  ねぇぜ」
+“Shinobu, at this point we've got no choice but to use that!”
+
+@14749 Shinobu · 忍
+> 「ああ、あれか!」
+“Yeah, that one!”
+
+@14750 Shinobu · 忍
+# 审校：删去多余的引号，招式名保持词表拼写。
+> 「断空光牙剣!!
+>  やぁっってやるぜっ!!!」
+“Dancou Kougaken!! I'm gonna take you down!!!”
+
+@14751 Sara · 沙羅
+> 「こっちはいつでもいいよ、忍!」
+“I'm ready whenever, Shinobu!”
+
+@14752 Shinobu · 忍
+> 「いくぜ! 愛の心にて、悪しき
+>  空間を断つ!」
+“Here we go! With a heart of love, I cleave the wicked space!”
+
+@14753 Shinobu · 忍
+> 「名付けて、断空光牙剣!!
+>  やぁっってやるぜっ!!!」
+“I call it the Dancou Kougaken!! I'm gonna do it!!!”
+
+@14754 Masato · 雅人
+> 「忍、パーッとやっちまおうぜ!」
+“Shinobu, let's just blast 'em and be done with it!”
+
+@14755 Shinobu · 忍
+> 「よぉし、やってやるぜ!」
+“Alright, let's do this!”
+
+@14756 Shinobu · 忍
+> 「断・空・光・牙・剣!!」
+“Danku... Koga... Sword!!”
+
+@14757 Shinobu · 忍
+> 「心にて、悪しき空間を断つ!
+>  名付けて、断空剣!!」
+“With my heart, I cleave the wicked space! I call it the Dancouken!!”
+
+@14758 Shinobu · 忍
+> 「心にて悪しき空間を断つ、
+>  名づけて断空剣!」
+“With my heart I cleave the wicked space, I call it the Dancouken!”
+
+@14759 Shinobu · 忍
+> 「行くぜ! 断・空・剣!!」
+“Here I go! Danku... Sword!!”
+
+@14760 Shinobu · 忍
+> 「いくぜっ!! 断空剣!!」
+“Here I go!! Dancouken!!”
+
+@14761 Shinobu · 忍
+> 「断・空・剣!!」
+“Danku... Sword!!”
+
+@14762 Shinobu · 忍
+> 「いっけえぇぇぇっ!! 断空剣!!」
+“Goooooo!! Dancouken!!”
+
+@14763 Shinobu · 忍
+> 「ダイガン!」
+“Dai Gun!”
+
+@14764 Shinobu · 忍
+> 「マキシマムレベル、シューッ!」
+“Maximum level, shoo!”
+
+@14765 Shinobu · 忍
+> 「きやがれ! かたっぱしから
+>  撃ち落としてやるぜっ!!」
+“Bring it on! I'll shoot you all down one after another!!”
+
+@14766 Shinobu · 忍
+> 「ちきしょう! このままじゃダンクーガが
+>  もたねえ……」
+“Damn it! At this rate Dancouga won't hold out...”
+
+@14767 Shinobu · 忍
+> 「ちきしょう! このままじゃダンクーガが
+>  もたねえ……」
+“Damn it! At this rate Dancouga won't hold out...”
+
+@14768 Shinobu · 忍
+> 「くっそおおおっ!!」
+“Damn iiiit!!”
+
+@14769 Sara · 沙羅
+> 「うっ……忍! あんたらしくないよっ!?」
+“Ugh... Shinobu! This isn't like you!”
+
+@14770 Shinobu · 忍
+> 「ちっこれじゃばらばらだぜ!」
+“Tch, we're falling apart here!”
+
+@14771 Ryo · 亮
+> 「何やってるんだ忍! このままじゃ
+>  まずいぞ!!」
+“What are you doing, Shinobu! At this rate we're in trouble!!”
+
+@14772 Shinobu · 忍
+> 「このままじゃばらばらにされちまう!」
+“At this rate we're gonna get torn apart!”
+
+@14773 Sara · 沙羅
+> 「きゃっ! し、忍、このままじゃ
+>  ヤバいよ!」
+“Kya! S-Shinobu, at this rate we're in big trouble!”
+
+@14774 Shinobu · 忍
+> 「ぐおおおっ!!」
+“Guoooh!!”
+
+@14775 Masato · 雅人
+> 「わっ! ちゃ、ちゃんとやってよ、忍!!」
+“Whoa! G-get it together, Shinobu!!”
+
+@14776 Shinobu · 忍
+> 「くっそおおおっ!!」
+“Damn iiiit!!”
+
+@14777 Sara · 沙羅
+> 「あうっ、忍! あんたらしくないよっ!?」
+“Agh, Shinobu! This isn't like you!”
+
+@14778 Shinobu · 忍
+> 「ちっこれじゃばらばらだぜ!」
+“Tch, we're falling apart here!”
+
+@14779 Ryo · 亮
+> 「何やってるんだ忍! このままじゃ
+>  まずいぞ!!」
+“What are you doing, Shinobu! At this rate we're in trouble!!”
+
+@14780 Shinobu · 忍
+> 「このままじゃばらばらにされちまう!」
+“At this rate we're gonna get torn apart!”
+
+@14781 Sara · 沙羅
+> 「きゃっ! し、忍、このままじゃ
+>  ヤバいよ!」
+“Kya! S-Shinobu, at this rate we're in big trouble!”
+
+@14782 Shinobu · 忍
+> 「ぐおおおっ!!」
+“Guoooh!!”
+
+@14783 Masato · 雅人
+> 「わっ! ちゃ、ちゃんとやってよ、忍!!」
+“Whoa! G-get it together, Shinobu!!”
+
+@14784 Shinobu · 忍
+> 「ちっくしょーっ!!」
+“Damn iiiit!!”
+
+@14785 Ryo · 亮
+> 「どうした忍!? 一方的に
+>  やられているぞ!」
+“What's wrong, Shinobu?! We're getting beaten one-sidedly!”
+
+@14786 Shinobu · 忍
+> 「なにしやがる!」
+“What the hell are you doing!”
+
+@14787 Masato · 雅人
+> 「くっ! ダンクーガはこんなもんじゃ
+>  ないだろ!?」
+“Tch! Dancouga's not this weak, is it?!”
+
+@14788 Shinobu · 忍
+> 「しまった!?」
+“Damn!?”
+
+@14789 Shinobu · 忍
+> 「もうゆるさねぇ!!」
+“I won't forgive you anymore!!”
+
+@14790 Sara · 沙羅
+> 「忍! しっかりやんなよっ!!」
+“Shinobu! Get it together!!”
+
+@14791 Shinobu · 忍
+> 「なんだと!?」
+“What did you say!?”
+
+@14792 Sara · 沙羅
+> 「何ボーッとしてんだよ、忍!」
+“What are you spacing out for, Shinobu!”
+
+@14793 Shinobu · 忍
+> 「ちっくしょーっ!!」
+“Damn iiiit!!”
+
+@14794 Ryo · 亮
+> 「どうした忍!? 一方的に
+>  やられているぞ!」
+“What's wrong, Shinobu?! We're getting beaten one-sidedly!”
+
+@14795 Shinobu · 忍
+> 「なにしやがる!」
+“What the hell are you doing!”
+
+@14796 Masato · 雅人
+> 「くっ! ダンクーガはこんなもんじゃ
+>  ないだろ!?」
+“Tch! Dancouga's not this weak, is it?!”
+
+@14797 Shinobu · 忍
+> 「しまった!?」
+“Damn!?”
+
+@14798 Shinobu · 忍
+> 「もうゆるさねぇ!!」
+“I won't forgive you anymore!!”
+
+@14799 Sara · 沙羅
+> 「忍! しっかりやんなよっ!!」
+“Shinobu! Get it together!!”

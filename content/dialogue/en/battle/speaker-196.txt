@@ -1,0 +1,147 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10389 Koji · 甲児
+> 「このやろうっ!!」
+“Why you!!”
+
+@10390 Koji · 甲児
+> 「これでもくらえっ!!」
+“Take this!!”
+
+@10391 Koji · 甲児
+> 「こいつでとどめだ!!」
+“This'll finish you!!”
+
+@10392 Koji · 甲児
+> 「兜甲児が相手だ!」
+“You're up against Koji Kabuto!”
+
+@10393 Koji · 甲児
+> 「くそっ!! だめか!」
+“Damn!! No good!”
+
+@10394 Koji · 甲児
+> 「ちくしょう! やられちまった!」
+“Damn it! I got shot down!”
+
+@10395 Koji · 甲児
+> 「くそっ!! だめか!」
+“Damn!! No good!”
+
+@10396 Koji · 甲児
+> 「うわあああっ!」
+“Uwaaaah!”
+
+@10397 Koji · 甲児
+> 「うわあっ! な、なんてこったい!!」
+“Uwah! W-what the hell!!”
+
+@10398 Koji · 甲児
+> 「ぐっ! こいつはちとヤバイかな」
+“Guh! This is kinda bad.”
+
+@10399 Koji · 甲児
+> 「ちくしょう!! このままじゃ
+>  やられちまうぜっ!!」
+“Damn it!! At this rate I'm gonna get wrecked!!”
+
+@10400 Koji · 甲児
+> 「くっ! このままじゃヤバイぜ!」
+“Kuh! This is bad!”
+
+@10401 Koji · 甲児
+> 「くそっ! これじゃもたねえ!!」
+“Damn! I can't hold out!!”
+
+@10402 Koji · 甲児
+> 「くそぉっ! まずいぜ、こいつは!」
+“Damn it! This is bad!”
+
+@10403 Koji · 甲児
+> 「てめえ! やりゃあがったな!!」
+“You bastard! You did it!!”
+
+@10404 Koji · 甲児
+> 「やったな、このやろう!」
+“You got me, you jerk!”
+
+@10405 Koji · 甲児
+> 「や、やるじゃねえか……」
+“N-not bad...”
+
+@10406 Koji · 甲児
+> 「うわあっ!」
+“Uwah!”
+
+@10407 Koji · 甲児
+> 「やりやがったな、こんちくしょう!」
+“You got me, you son of a bitch!”
+
+@10408 Koji · 甲児
+> 「うわっ! この、やったな てめえっ!!」
+“Uwah! Why you, you got me!!”
+
+@10409 Koji · 甲児
+> 「ちっ! あたっちまったか!」
+“Tch! Got hit, huh!”
+
+@10410 Koji · 甲児
+> 「へへん! 効いてないぜ!」
+“Heh! That didn't hurt!”
+
+@10411 Koji · 甲児
+> 「ヘン、その程度かよ!」
+“Hah, is that all you got!”
+
+@10412 Koji · 甲児
+> 「何でえ、そんなもんかよ!」
+“What, is that all!”
+
+@10413 Koji · 甲児
+> 「そんな攻撃が通用すると
+>  思ってんのか!?」
+“You think an attack like that'll work on me?!”
+
+@10414 Koji · 甲児
+> 「まだまだ! 出直して来な!!」
+“Not even close! Come back when you're ready!!”
+
+@10415 Koji · 甲児
+> 「へへーんだ!」
+“Nyah nyah!”
+
+@10416 Koji · 甲児
+> 「へたくそっ!」
+“Amateur!”
+
+@10417 Koji · 甲児
+> 「おっとっと」
+“Whoa whoa!”
+
+@10418 Koji · 甲児
+> 「おっと、あぶねぇあぶねぇ」
+“Whoa, that was close, that was close.”
+
+@10419 Koji · 甲児
+> 「ほーれ、こっちこっち」
+“Over here, over here!”
+
+@10420 Koji · 甲児
+> 「どこ狙ってんだよ!」
+“What are you aiming at?!”
+
+@10421 Koji · 甲児
+> 「ムダだっ!」
+“It's useless!”
+
+@10422 Koji · 甲児
+> 「ムダだっていったろ!」
+“I told you it's useless!”
+
+@10423 Koji · 甲児
+> 「ちっ! 反撃できねえ!」
+“Tch! I can't fight back!”
+
+@10424 Koji · 甲児
+> 「だめだ! とどかねえっ!」
+“No good! I can't reach!”

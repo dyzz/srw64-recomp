@@ -1,0 +1,2540 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@38752 Beltorchika · ベルトーチカ
+> 「艦長、来ました! 百鬼と
+>  ミケーネです!」
+“Captain, they're here! Hyakki and Mycenae!”
+
+@38753 Bright · ブライト
+> 「くっ、もう来たか。やむを得ん、
+>  アーガマ発進させろ!」
+“Ngh, they're already here. It can't be helped. Launch the Argama!”
+
+@38754 Bright · ブライト
+> 「{HeroNick}はどうした!? 艦内の
+>  捜索、早く終わらせろ!」
+“What happened to {HeroNick}?! Hurry up and finish searching the ship!”
+
+@38755 Lera · レラ
+> 「サリィ? そんなところで何やってんの?」
+“Sally? What are you doing in a place like that?”
+
+@38756 Sally · サリィ
+# 审校：原文「何って」是回应对方问“在做什么”，初稿译成“what do you mean?”变成反问对方，语气和意思都不对。
+> 「え!? あ、ああ、何って、
+>  侵入者を探しているのよ」
+“Huh?! Oh, uh, what am I doing? I'm looking for intruders.”
+
+@38757 Lera · レラ
+> 「そうだけど……そんな狭いとこで?」
+“I get that, but... in a space that cramped?”
+
+@38758 Sally · サリィ
+> 「て、敵は人間とは限らないでしょ?」
+“W-well, the enemy isn't necessarily human, right?”
+
+@38759 Lera · レラ
+> 「だって、見覚えのない奴がいたって
+>  いったの、サリィじゃなかったっけ」
+“But weren't you the one who said there was someone you didn't recognize, Sally?”
+
+@38760 Sally · サリィ
+> 「もしかしたら、姿を変えられるかも
+>  しれないしね。探すなら徹底的に
+“Maybe they can change their appearance. If we're going to search, we have to do it
+---
+>  やらないと」
+thoroughly.”
+
+@38761 Lera · レラ
+> 「ふうん……」
+“Hmm...”
+
+@38762 Sally · サリィ
+> 「ほら、アーガマも発進しちゃったし、
+>  早く見つけなきゃ大変よ。私は
+“Look, the Argama's already launched, so we'd better find them fast or we're in trouble. I'm
+---
+>  別の場所へ行くわ」
+going to check somewhere else.”
+
+@38763 Lera · レラ
+# 审校：「まだよくわかんなくてさ」指对舰内情况不熟悉，初稿“how things work here”偏组织运作，改为更贴合语境的“know my way around”。
+> 「…………悪いね、アタシ入ったばかり
+>  だから、まだよくわかんなくてさ」
+“...Sorry. I just joined, so I still don't really know my way around.”
+
+@38764 Sally · サリィ
+> 「いいわよ、気にしないで。
+>  すぐになれるわ。じゃ」
+“It's fine, don't worry about it. You'll get used to it in no time. See you.”
+
+@38765 Lera · レラ
+> 「ッ!! アンタ、誰!?」
+“Hn?! Who are you?!”
+
+@38766 Sally · サリィ
+> 「誰って、何いってるの、レラ。
+>  私はサリィ・ポオよ」
+“Who am I? What are you talking about, Lera? I'm Sally Po.”
+
+@38767 Lera · レラ
+> 「動くな! アタシはサリィより前から
+>  この部隊にいるんだ。サリィならそれを
+“Don't move! I've been with this unit longer than Sally has. If you were really Sally, you
+---
+>  知らないはずがない!」
+couldn't possibly not know that!”
+
+@38768 Sally · サリィ
+> 「……ふっ、ほほほほ。よく見破ったわ!」
+“...Hmph, ho ho ho ho. You saw right through me!”
+
+@38769 Lera · レラ
+> 「く……このっ!」
+“Ngh... you!”
+
+@38770 Sally · サリィ
+> 「ほほほほほ! ムダなことじゃ。
+>  ミケーネの幹部……」
+“Ho ho ho ho ho! It's useless. A Mycenae executive...”
+
+@38771 Marquis Janus · ヤヌス侯爵
+> 「ヤヌス侯爵とは、わらわのことぞ!」
+“Marquis Janus is none other than I!”
+
+@38772 Lera · レラ
+> 「なっ……この化け物!! 離せ!!」
+“Wha... you monster!! Let go of me!!”
+
+@38773 Marquis Janus · ヤヌス侯爵
+> 「わらわに向かって化け物とはよくいっ
+>  たわ。小娘、貴様は人質じゃ
+“Calling me a monster to my face, how bold. Little girl, you'll be my hostage. I couldn't
+---
+>  爆弾はしかけきれなんだが、代わりに
+>  貴様を使ってやろう。こい!」
+finish setting the bombs, but I'll use you instead. Come!”
+
+@38774 Ark · アーク（按段落 3DD1）
+> 「え!? サリィ・ポォがニセ者!?」
+“What?! Sally Po is an impostor?!”
+
+@38775 Ginrei · 銀鈴
+> 「そう。いま基地のほうから連絡が
+>  あったの。本物のサリィが
+“That's right. The base just contacted us. The real Sally has been
+---
+>  保護されたわ」
+taken into protective custody.”
+
+@38776 Ark · アーク（按段落 3DD1）
+> 「くそっ、そういうことか」
+“Damn it, so that's what's going on.”
+
+@38777 Ginrei · 銀鈴
+> 「まだ艦内にいるはずよ。急いで
+>  探しましょ」
+“She should still be aboard the ship. Let's hurry and find her.”
+
+@38778 Ark · アーク（按段落 3DD1）
+> 「いたな…………
+“There you are...
+---
+>  レラ!?」
+Lera?!”
+
+@38779 Lera · レラ
+> 「あっ……」
+“Ah...”
+
+@38780 Sally · サリィ
+> 「あら{HeroNick}、そんなに慌てて、
+>  どうしたの?」
+“Oh my, {HeroNick}, what's got you in such a rush?”
+
+@38781 Lera · レラ
+> 「{HeroNick}、だまされちゃだめ! こいつ
+>  ニセ者だよ!」
+“{HeroNick}, don't let her fool you! This one's an impostor!”
+
+@38782 Ark · アーク（按段落 3DD1）
+> 「わかってる。基地で本物のサリィが
+>  見つかったって、連絡があった
+“I know. We got word that the real Sally was found at the base.
+---
+>  動くなよ、あんた。レラを放せ」
+Don't move, you. Let Lera go.”
+
+@38783 Sally · サリィ
+> 「ホホホ、バレているなら、このような姿を
+>  している理由もないわ」
+“Ho ho ho. If I've been found out, there's no reason to keep this form.”
+
+@38784 Ark · アーク（按段落 3DD1）
+> 「ミケーネか……!? 動くなと
+>  いっている!」
+“Mycenae...?! I said don't move!”
+
+@38785 Marquis Janus · ヤヌス侯爵
+# 审校：原文「このヤヌス侯爵にそんなものは効かぬ」是“对我这个雅努斯侯爵无效”，初稿“don't work on me, Marquis Janus”语序稍怪，改为更自然的“won't work on me, Marquis Janus”。
+> 「このヤヌス侯爵にそんなものは効かぬ
+>  お前こそ動くでない
+“Such things won't work on me, Marquis Janus. You're the one who shouldn't move.
+---
+>  この小娘の細首など、ひねるのは
+>  簡単ぞ!」
+Snapping this little girl's slender neck would be easy!”
+
+@38786 Ark · アーク（按段落 3DD1）
+> 「く……」
+“Ngh...”
+
+@38787 Marquis Janus · ヤヌス侯爵
+> 「ホホホホホッ、どうやらこの小娘を
+>  よほど死なせたくないようだな
+“Ho ho ho ho ho, it seems you really don't want this little girl to die.
+---
+>  邪魔が入ってしかけきれなんだが、
+>  せめて格納庫に最後の爆弾を
+I was interrupted before I could finish, but at least I'll set the last bomb
+---
+>  しかけるとしよう」
+in the hangar.”
+
+@38788 Marquis Janus · ヤヌス侯爵
+> 「む? ええい、時間をかけすぎたか」
+“Hm? Tch, did I take too long?”
+
+@38789 Ark · アーク（按段落 3DD1）
+> 「そうさ。すぐにみんなやってくる。
+>  あきらめてレラを放せ!」
+“That's right. Everyone will be here any moment. Give up and let Lera go!”
+
+@38790 Marquis Janus · ヤヌス侯爵
+> 「威勢のいいことよ。だが人質は2人
+>  もいらぬな。お前はここで死ぬがよい」
+“Such spirit. But I don't need two hostages. You can die here.”
+
+@38791 Lera · レラ
+> 「くっ……{HeroNick}!!」
+“Ngh... {HeroNick}!!”
+
+@38792 Ark · アーク（按段落 3DD1）
+> 「うっ……」
+“Ugh...”
+
+@38793 Lera · レラ
+> 「{HeroNick}!? {HeroName}!!
+>  早く逃げて!」
+“{HeroNick}?! {HeroName}!! Hurry, run!”
+
+@38794 Marquis Janus · ヤヌス侯爵
+> 「ほう、うまくよけたものじゃな。だが次は
+>  はずさぬぞ」
+“Oh? You dodged that well enough. But I won't miss next time.”
+
+@38795 Lera · レラ
+> 「くそっ、やめろ!
+>  やめろ、この化け物!!」
+“Damn you, stop it! Stop it, you monster!!”
+
+@38796 Marquis Janus · ヤヌス侯爵
+> 「ええい、あばれるでない!」
+“Enough, stop struggling!”
+
+@38797 Lera · レラ
+> 「うっ……このぉっ!!」
+“Ngh... you bastard!!”
+
+@38798 Marquis Janus · ヤヌス侯爵
+> 「邪魔をするなというておるに!」
+“I told you not to interfere!”
+
+@38799 Lera · レラ
+> 「あ……」
+“Ah...”
+
+@38800 Ark · アーク（按段落 3DD1）
+> 「え……?
+“Huh...?
+---
+>  …………
+...
+---
+>  ………………
+...
+---
+>  レラァァァァァァァーッ!!」
+LERAAAAAA!!”
+
+@38801 Rain · レイン
+> 「いたわ、みんな、こっちよ!!」
+“There you are! Everyone, over here!!”
+
+@38802 Marquis Janus · ヤヌス侯爵
+> 「ええい、もはや作戦の続行はムリか
+>  仕掛け終わった爆弾だけでも
+“Tch, no chance of carrying on the plan now. At least I'll set off
+---
+>  爆発させてくれるわ!」
+the bombs I've already planted!”
+
+@38803 Rain · レイン
+> 「みんなは敵を追って!」
+“Everyone, go after the enemy!”
+
+@38804 Ark · アーク（按段落 3DD1）
+> 「レラ、おいレラ! しっかりしろ!」
+“Lera, hey, Lera! Stay with me!”
+
+@38805 Lera · レラ
+> 「あ……{HeroNick}……」
+“Ah... {HeroNick}...”
+
+@38806 Ark · アーク（按段落 3DD1）
+> 「大丈夫か、レラ!?」
+“Are you all right, Lera?!”
+
+@38807 Lera · レラ
+> 「うん……{HeroNick}こそ無事で……
+>  よかっ……た…………
+“Yeah... I'm just glad... you're safe... {HeroNick}...
+---
+>  …………
+...
+---
+>  ……」
+...”
+
+@38808 Ark · アーク（按段落 3DD1）
+> 「レラ!?」
+“Lera?!”
+
+@38809 Rain · レイン
+> 「だめよ{HeroNick}! 下手に動かし
+>  ちゃだめ!
+“Don't, {HeroNick}! Don't move her carelessly!
+---
+>  ………………
+...
+---
+>  これは……」
+This is...”
+
+@38810 Ark · アーク（按段落 3DD1）
+# 审校：原文没有称呼“Doctor”，初稿多加了“Doctor?”，属于增译，应删除。
+> 「……どうなんです!?」
+“...How is she?!”
+
+@38811 Rain · レイン
+> 「……とにかく……すぐ治療をしなくちゃ
+>  あなたのケガは?」
+“...In any case... we have to treat her right away. What about your wounds?”
+
+@38812 Ark · アーク（按段落 3DD1）
+> 「俺は大丈夫です。それよりレラは
+>  助かるんですか!?」
+“I'm fine. Never mind me, is Lera going to make it?!”
+
+@38813 Rain · レイン
+> 「……わからないわ。……重傷よ」
+“...I don't know. ...It's serious.”
+
+@38814 Ark · アーク（按段落 3DD1）
+> 「そんな……」
+“No...”
+
+@38815 Ginrei · 銀鈴
+> 「敵は艦外へ出たわよ」
+“The enemy's gone outside the ship.”
+
+@38816 Rain · レイン
+> 「大丈夫なら、あなたも行って、
+>  {HeroNick}」
+“If you're all right, you go too, {HeroNick}.”
+
+@38817 Ark · アーク（按段落 3DD1）
+> 「だけど……レラが……」
+“But... Lera is...”
+
+@38818 Rain · レイン
+> 「あなたがいても、できることはないわ!
+>  あなたはパイロットでしょう!?」
+“There's nothing you can do here even if you stay! You're a pilot, aren't you?!”
+
+@38819 Ark · アーク（按段落 3DD1）
+> 「くっ……」
+“Ngh...”
+
+@38820 Selain · セレイン（按段落 3DD2）
+> 「サリィがニセ者だと?」
+“Sally's an impostor?”
+
+@38821 Ginrei · 銀鈴
+> 「そう。いま基地のほうから連絡が
+>  あったの。本物のサリィが
+“That's right. We just got word from the base. The real Sally has been
+---
+>  保護されたわ」
+taken into protective custody.”
+
+@38822 Selain · セレイン（按段落 3DD2）
+> 「なるほど……そういうことか」
+“I see... so that's how it is.”
+
+@38823 Ginrei · 銀鈴
+> 「まだ艦内にいるはずよ。急いで
+>  探しましょ」
+“She should still be aboard. Let's hurry and find her.”
+
+@38824 Selain · セレイン（按段落 3DD2）
+> 「あれか…………
+“Is that her...?
+---
+>  レラ!?」
+Lera?!”
+
+@38825 Lera · レラ
+> 「あっ……」
+“Ah...”
+
+@38826 Sally · サリィ
+> 「あら{HeroNick}、そんなに慌てて、
+>  どうしたの?」
+“Oh my, {HeroNick}, what's got you in such a rush?”
+
+@38827 Lera · レラ
+> 「{HeroNick}、だまされちゃだめ! こいつ
+>  ニセ者だよ!」
+“{HeroNick}, don't let her fool you! This one's an impostor!”
+
+@38828 Selain · セレイン（按段落 3DD2）
+> 「わかっている。動くな。どうせもう
+>  逃げられんぞ」
+“I know. Don't move. You can't escape now anyway.”
+
+@38829 Sally · サリィ
+> 「ホホホ、バレているなら、このような姿を
+>  している理由もないわ」
+“Ho ho ho. If I've been found out, there's no reason to keep this form.”
+
+@38830 Selain · セレイン（按段落 3DD2）
+> 「ミケーネか……!? 動くな!」
+“Mycenae...?! Don't move!”
+
+@38831 Marquis Janus · ヤヌス侯爵
+# 审校：修正语序和语气，使“このヤヌス侯爵に”的自称表达更自然，并让第二页与原文对应。
+> 「このヤヌス侯爵にそんなものは効かぬ
+>  お前こそ動くでない
+“Such things have no effect on me, Marquis Janus. You are the one who should not move.
+---
+>  この小娘の細首など、ひねるのは
+>  簡単ぞ!」
+Snapping this little girl's slender neck would be easy!”
+
+@38832 Selain · セレイン（按段落 3DD2）
+> 「なに……? く……」
+“What...? Ngh...”
+
+@38833 Marquis Janus · ヤヌス侯爵
+# 审校：将“邪魔が入って”改为“An interruption”，避免误译成“My interference”，并统一笑声写法。
+> 「ホホホホホッ、どうやらこの小娘を
+>  よほど死なせたくないようだな
+“Ho ho ho ho ho. It seems you are quite unwilling to let this little girl die.
+---
+>  邪魔が入ってしかけきれなんだが、
+>  せめて格納庫に最後の爆弾を
+An interruption kept me from finishing, but at least I shall plant one last bomb in
+---
+>  しかけるとしよう」
+the hangar.”
+
+@38834 Marquis Janus · ヤヌス侯爵
+> 「む? ええい、時間をかけすぎたか」
+“Hm? Tch, I've taken too long.”
+
+@38835 Selain · セレイン（按段落 3DD2）
+> 「………………」
+“...”
+
+@38836 Marquis Janus · ヤヌス侯爵
+# 审校：调整语气，使侯爵的贵族式说话方式更一致。
+> 「そうか、お前の目的は時間かせぎ
+>  か。そうとわかった以上、生かして
+“I see. So your aim was to buy time. Now that I know that, there is no need to
+---
+>  おく必要はない。人質は2人も
+>  いらぬでな」
+let you live. I do not need two hostages, after all.”
+
+@38837 Lera · レラ
+> 「くっ……{HeroNick}!!」
+“Ngh... {HeroNick}!!”
+
+@38838 Selain · セレイン（按段落 3DD2）
+> 「うっ……
+“Ugh...
+---
+>  ……下手くそめ。貴様ごときの
+>  腕で、私を撃ち殺せるものか!」
+...You clumsy fool. Do you really think a shot from the likes of you could kill me?!”
+
+@38839 Lera · レラ
+> 「{HeroNick}!? {HeroName}!!
+>  早く逃げて!」
+“{HeroNick}?! {HeroName}!! Hurry, run!”
+
+@38840 Selain · セレイン（按段落 3DD2）
+> 「バカ、お前を置いて逃げられるか」
+“Idiot. As if I could run and leave you behind.”
+
+@38841 Marquis Janus · ヤヌス侯爵
+# 审校：将“I won't miss”改为“I shall not miss”，保持侯爵的贵族语气。
+> 「うまくよけたようじゃが、動きがにぶい
+>  のう。次ははずさぬぞ」
+“You dodged well enough, but your movements are slow. I shall not miss next time.”
+
+@38842 Lera · レラ
+> 「くそっ、やめろ!
+>  やめろ、この化け物!!」
+“Damn you, stop it! Stop it, you monster!!”
+
+@38843 Marquis Janus · ヤヌス侯爵
+> 「ええい、あばれるでない!」
+“Enough, stop struggling!”
+
+@38844 Lera · レラ
+> 「うっ……このぉっ!!」
+“Ugh... you bastard!!”
+
+@38845 Marquis Janus · ヤヌス侯爵
+# 审校：原文“邪魔をするなというておるに”是“我说了别妨碍我”，初稿“stop interfering”可接受，但改为更贴近原文的“not to interfere”。
+> 「邪魔をするなというておるに!」
+“I told you not to interfere!”
+
+@38846 Lera · レラ
+> 「あ……」
+“Ah...”
+
+@38847 Selain · セレイン（按段落 3DD2）
+> 「な……に……?
+“Wh... what...?
+---
+>  …………
+...
+---
+>  ………………
+...
+---
+>  レラッ!?」
+Lera?!”
+
+@38848 Rain · レイン
+> 「いたわ、みんな、こっちよ!!」
+“Found them! Everyone, over here!!”
+
+@38849 Marquis Janus · ヤヌス侯爵
+# 审校：统一侯爵语气，将“I'll”改为“I shall”，并调整第二页表达。
+> 「ええい、もはや作戦の続行はムリか
+>  仕掛け終わった爆弾だけでも
+“Tch, continuing the operation is impossible now. At least I shall set off the bombs
+---
+>  爆発させてくれるわ!」
+I have already planted!”
+
+@38850 Rain · レイン
+> 「みんなは敵を追って!」
+“Everyone, go after the enemy!”
+
+@38851 Selain · セレイン（按段落 3DD2）
+> 「レラ、おいレラ! しっかりしろ!」
+“Lera, hey, Lera! Stay with me!”
+
+@38852 Lera · レラ
+> 「あ……{HeroNick}……」
+“Ah... {HeroNick}...”
+
+@38853 Selain · セレイン（按段落 3DD2）
+> 「大丈夫か、レラ!?」
+“Are you all right, Lera?!”
+
+@38854 Lera · レラ
+> 「うん……{HeroNick}こそ無事で……
+>  よかっ……た…………
+“Yeah... I'm just glad... you're safe... {HeroNick}...
+---
+>  …………
+...
+---
+>  ……」
+...”
+
+@38855 Selain · セレイン（按段落 3DD2）
+> 「レラ!?」
+“Lera?!”
+
+@38856 Rain · レイン
+> 「だめよ{HeroNick}! 下手に動かし
+>  ちゃだめ!
+“No, {HeroNick}! Don't move her carelessly!
+---
+>  ………………
+...
+---
+>  これは……」
+This is...”
+
+@38857 Selain · セレイン（按段落 3DD2）
+> 「……どうなんだレイン!?」
+“...How is she, Rain?!”
+
+@38858 Rain · レイン
+> 「……とにかく……すぐ治療をしなくちゃ
+>  あなたのケガは?」
+“...In any case... she needs treatment right away. What about your wounds?”
+
+@38859 Selain · セレイン（按段落 3DD2）
+> 「こんなもの、なんでもない!
+>  レラは大丈夫なのかと聞いている!」
+“This is nothing! I'm asking whether Lera is all right!”
+
+@38860 Rain · レイン
+> 「……わからないわ」
+“...I don't know.”
+
+@38861 Selain · セレイン（按段落 3DD2）
+> 「わからないだと!? どういうことだ!」
+“You don't know?! What do you mean?!”
+
+@38862 Rain · レイン
+> 「重傷よ……助かるかどうか……
+>  わからない。すぐに基地の方へ
+“She's badly wounded... I don't know if she'll make it. We have to get her to the base
+---
+>  運ばせなくちゃ。手は尽くすわ」
+right away. I'll do everything I can.”
+
+@38863 Selain · セレイン（按段落 3DD2）
+> 「私の……私のミスか……。レラ……」
+“Is this... my fault...? Lera...”
+
+@38864 Ginrei · 銀鈴
+> 「敵は艦外へ出たわよ」
+“The enemy's gone outside the ship.”
+
+@38865 Rain · レイン
+> 「大丈夫なら、あなたも行って、
+>  {HeroNick}」
+“If you're all right, you go too, {HeroNick}.”
+
+@38866 Selain · セレイン（按段落 3DD2）
+> 「…………」
+“...”
+
+@38867 Rain · レイン
+> 「{HeroNick}……?」
+“{HeroNick}...?”
+
+@38868 Selain · セレイン（按段落 3DD2）
+> 「レイン……頼む……あいつを……レラを
+>  助けてやってくれ……」
+“Rain... please... save her... save Lera...”
+
+@38869 Ginrei · 銀鈴
+> 「ここはいいから、早く出て!」
+“We've got things here, so get out there, quick!”
+
+@38870 Selain · セレイン（按段落 3DD2）
+> 「あいつは……あいつをこんな所で
+>  死なせるわけには……」
+“That one... I can't let that one die in a place like this...”
+
+@38871 Ginrei · 銀鈴
+> 「しっかりしなさい! そうした奴も外へ
+>  逃げてしまったわ。敵が来てるのよ
+“Pull yourself together! That thing has fled outside too. The enemy is coming.
+---
+>  あなたがこれまで戦ってきたのは、
+>  何のためなの!? いつものあなたは
+What have you been fighting for all this time?! Where has the you we know
+---
+>  どこへいってしまったの!? あなたは
+>  そんなに弱くはないでしょう!?」
+gone?! You're not this weak, are you?!”
+
+@38872 Selain · セレイン（按段落 3DD2）
+> 「お前に……お前たちに何がわかる!」
+“What do you... what do any of you know?!”
+
+@38873 Rain · レイン
+> 「そんなことわからないわよ!
+>  でも、あなたのいまするべきことは
+“I don't know about that! But what you ought to be doing
+---
+>  戦うことでしょう!? あの娘があなた
+>  を助けたのは、何のためだか、
+is fighting, isn't it?! Think hard about why
+---
+>  よく考えなさい!」
+that girl saved you!”
+
+@38874 Selain · セレイン（按段落 3DD2）
+> 「くっ……」
+“Ngh...”
+
+@38875 Bright · ブライト
+> 「くっ……遅かったのか!
+>  被害状況を報告しろ!」
+“Ngh... were we too late?! Report the damage!”
+
+@38876 Marquis Janus · ヤヌス侯爵
+> 「ほほほっ、これがわらわの本体よ。
+>  さぁお前たち、やっておしまい!」
+“Hohoho, this is my true body. Now then, my dears, finish them off!”
+
+@38877 Ark · アーク（按段落 3DD1）
+> 「ヤヌス……絶対に逃がすものか。
+>  ソルデファー、発進準備完了!」
+“Janus... I won't let you escape, not ever. Soldifar, launch preparations complete!”
+
+@38878 Bright · ブライト
+> 「よし出ろ!」
+“All right, go!”
+
+@38879 Ark · アーク（按段落 3DD1）
+> 「お前はぁぁぁぁぁぁーっ!!」
+“Youuuuuuuuu!!”
+
+@38880 Marquis Janus · ヤヌス侯爵
+# 审校：统一侯爵语气，将“I'll”改为“I shall”。
+> 「ほほほほほ、お前もさっきの小娘の
+>  あとを追わせてやろうぞ!
+“Hohohohoho, I shall send you after that little girl from before too!
+---
+>  あの世で仲よくするがよいわ!」
+Make merry together in the next world!”
+
+@38881 Selain · セレイン（按段落 3DD2）
+> 「ヤヌス……化け物ども……絶対に
+>  許さんぞ。スヴァンヒルド、出る!」
+“Janus... you monsters... I will never forgive you. Svanheld, launching!”
+
+@38882 Bright · ブライト
+> 「よし、許可する!」
+“All right, permission granted!”
+
+@38883 Selain · セレイン（按段落 3DD2）
+> 「貴様は……貴様だけは私が
+>  殺す! 絶対に逃さん!!」
+“You... you alone I will kill myself! I will never let you escape!!”
+
+@38884 Marquis Janus · ヤヌス侯爵
+# 审校：统一侯爵语气，将“I'll”改为“I shall”。
+> 「ほほほほほ、お前もさっきの小娘の
+>  あとを追わせてやろうぞ!
+“Hohohohoho, I shall send you after that little girl from before too!
+---
+>  あの世で仲よくするがよいわ!」
+Make merry together in the next world!”
+
+@38885 Ark · アーク（按段落 3DD1）
+> 「とまれ!」
+“Stop right there!”
+
+@38886 Sally · サリィ
+> 「!? どうしたの、{HeroNick}。いったい
+>  何ごと?」
+“?! What's wrong, {HeroNick}? What on earth is going on?”
+
+@38887 Ark · アーク（按段落 3DD1）
+> 「まったく、見事にだまされたよ。悪い
+>  けど基地の中に閉じこめられていた
+“I really was fooled but good. Sorry, but word came that the real Sally was found
+---
+>  本物のサリィが発見されたって
+>  連絡があってね」
+locked up inside the base.”
+
+@38888 Ginrei · 銀鈴
+> 「動かないで。お前は何者!?」
+“Don't move. Who are you?!”
+
+@38889 Sally · サリィ
+> 「ふっ、ほほほほほほ。バレてしまっては
+>  しかたない。ミケーネ幹部……」
+“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+
+@38890 Marquis Janus · ヤヌス侯爵
+> 「ヤヌス侯爵とは、わらわのことぞ!!」
+“Marquis Janus is none other than me!!”
+
+@38891 Rain · レイン
+> 「正体をあらわしたわね、この
+>  化け物! 観念しなさい!」
+“So you've shown your true form, you monster! Give it up!”
+
+@38892 Marquis Janus · ヤヌス侯爵
+> 「ほほほ、いまごろ遅いわ。もうわらわの
+>  目的は、ほとんど達成されたも
+“Hohoho, it's too late now. My objective is already as good as
+---
+>  同然じゃ」
+accomplished.”
+
+@38893 Ark · アーク（按段落 3DD1）
+# 审校：L2 的 ja 是“なんだって!?”，tr 为“What did you say?!”语气过重且与 L16、L44 相同，但 L2 是アーク，L16 是セレイン，L44 是マナミ，原文相同，tr 相同可以接受；不过“What did you say?!”比原文多出“you say”，改为更贴切的“What?!”。
+> 「なんだって!?」
+“What?!”
+
+@38894 Marquis Janus · ヤヌス侯爵
+> 「ほほほほっ。それ!」
+“Hohohoho. There!”
+
+@38895 Bright · ブライト
+> 「くっ……遅かったのか!
+>  被害状況を報告しろ!」
+“Ngh... were we too late?! Report the damage!”
+
+@38896 Marquis Janus · ヤヌス侯爵
+> 「ほほほっ、これがわらわの本体よ」
+“Hohoho, this is my true body.”
+
+@38897 Ark · アーク（按段落 3DD1）
+> 「くそっ、艦長、出撃します!」
+“Damn it, Captain, I'm launching!”
+
+@38898 Bright · ブライト
+> 「頼む!」
+“I'm counting on you!”
+
+@38899 Selain · セレイン（按段落 3DD2）
+> 「とまれ!」
+“Stop right there!”
+
+@38900 Sally · サリィ
+> 「!? どうしたの、{HeroNick}。いったい
+>  何ごと?」
+“?! What's wrong, {HeroNick}? What on earth is going on?”
+
+@38901 Selain · セレイン（按段落 3DD2）
+> 「芝居は終わりだ。本物のサリィは
+>  先ほど保護された。貴様が
+“The act is over. The real Sally was taken into protective custody a short while ago. You
+---
+>  潜入した敵なのだろう」
+must be the enemy who infiltrated us.”
+
+@38902 Ginrei · 銀鈴
+> 「動かないで。お前は何者!?」
+“Don't move. Who are you?!”
+
+@38903 Sally · サリィ
+> 「ふっ、ほほほほほほ。バレてしまっては
+>  しかたない。ミケーネ幹部……」
+“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+
+@38904 Marquis Janus · ヤヌス侯爵
+> 「ヤヌス侯爵とは、わらわのことぞ!!」
+“Marquis Janus is none other than me!!”
+
+@38905 Rain · レイン
+> 「正体をあらわしたわね、この
+>  化け物! 観念しなさい!」
+“So you've shown your true form, you monster! Give it up!”
+
+@38906 Marquis Janus · ヤヌス侯爵
+> 「ほほほ、いまごろ遅いわ。もうわらわの
+>  目的は、ほとんど達成されたも
+“Hohoho, it's too late now. My objective is already as good as
+---
+>  同然じゃ」
+accomplished.”
+
+@38907 Selain · セレイン（按段落 3DD2）
+> 「なんだと!?」
+“What did you say?!”
+
+@38908 Marquis Janus · ヤヌス侯爵
+> 「ほほほほっ。それ!」
+“Hohohoho. There!”
+
+@38909 Bright · ブライト
+> 「くっ……遅かったのか!
+>  被害状況を報告しろ!」
+“Ngh... were we too late?! Report the damage!”
+
+@38910 Marquis Janus · ヤヌス侯爵
+> 「ほほほっ、これがわらわの本体よ」
+“Hohoho, this is my true body.”
+
+@38911 Selain · セレイン（按段落 3DD2）
+> 「そうそう好きにさせるものか。
+>  艦長、出るぞ」
+“I won't let you have your way. Captain, I'm launching.”
+
+@38912 Bright · ブライト
+# 审校：L21 的 ja 是“頼む!”，tr 为“Please!”，但 L7 的 tr 为“I'm counting on you!”，L35 和 L49 的 tr 为“Please!”。原文相同，但 L21 是セレイン路线，L7 是アーク路线，L35 是ブラッド路线，L49 是マナミ路线，tr 不一致。为保持一致性，统一为“I'm counting on you!”。
+> 「頼む!」
+“I'm counting on you!”
+
+@38913 Brad · ブラッド（按段落 3DD3）
+> 「とまれ!」
+“Stop!”
+
+@38914 Sally · サリィ
+> 「!? どうしたの、{HeroNick}。いったい
+>  何ごと?」
+“?! What's wrong, {HeroNick}? What on earth is going on?”
+
+@38915 Brad · ブラッド（按段落 3DD3）
+> 「うるせぇ! よくも俺たちをだましやがっ
+>  たな。本物のサリィは基地ん中で
+“Shut up! You had a lot of nerve tricking us. The real Sally was
+---
+>  見つかったんだ。てめぇが敵だってのは
+>  もうバレてんだよ!!」
+found inside the base. We already know you're the enemy!!”
+
+@38916 Ginrei · 銀鈴
+> 「動かないで。お前は何者!?」
+“Don't move. Who are you?!”
+
+@38917 Sally · サリィ
+> 「ふっ、ほほほほほほ。バレてしまっては
+>  しかたない。ミケーネ幹部……」
+“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+
+@38918 Marquis Janus · ヤヌス侯爵
+> 「ヤヌス侯爵とは、わらわのことぞ!!」
+“Marquis Janus is none other than me!!”
+
+@38919 Rain · レイン
+> 「正体をあらわしたわね、この
+>  化け物! 観念しなさい!」
+“So you've shown your true form, you monster! Give it up!”
+
+@38920 Marquis Janus · ヤヌス侯爵
+> 「ほほほ、いまごろ遅いわ。もうわらわの
+>  目的は、ほとんど達成されたも
+“Hohoho, it's too late now. My objective is already as good as
+---
+>  同然じゃ」
+accomplished.”
+
+@38921 Brad · ブラッド（按段落 3DD3）
+> 「なにぃッ!?」
+“What?!”
+
+@38922 Marquis Janus · ヤヌス侯爵
+> 「ほほほほっ。それ!」
+“Hohohoho. There!”
+
+@38923 Bright · ブライト
+> 「くっ……遅かったのか!
+>  被害状況を報告しろ!」
+“Ngh... were we too late?! Report the damage!”
+
+@38924 Marquis Janus · ヤヌス侯爵
+> 「ほほほっ、これがわらわの本体よ」
+“Hohoho, this is my true body.”
+
+@38925 Brad · ブラッド（按段落 3DD3）
+> 「くっそぉっ!! アースゲイン、出るぞ!
+>  奴をぶっ倒してやるッ!」
+“Damn it!! Earthgain, I'm launching! I'll take that thing down!”
+
+@38926 Bright · ブライト
+> 「頼む!」
+“Please!”
+
+@38927 Manami · マナミ（按段落 3DD4）
+> 「とまりなさい!」
+“Stop!”
+
+@38928 Sally · サリィ
+> 「!? どうしたの、{HeroNick}。いったい
+>  何ごと?」
+“?! What's wrong, {HeroNick}? What on earth is going on?”
+
+@38929 Manami · マナミ（按段落 3DD4）
+> 「もうだまされないわよ。本物のサリィは
+>  基地の中に閉じこめられていたのが
+“You won't fool me again. The real Sally was found locked up
+---
+>  発見されたわ」
+inside the base.”
+
+@38930 Ginrei · 銀鈴
+> 「動かないで。お前は何者!?」
+“Don't move. Who are you?!”
+
+@38931 Sally · サリィ
+> 「ふっ、ほほほほほほ。バレてしまっては
+>  しかたない。ミケーネ幹部……」
+“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+
+@38932 Marquis Janus · ヤヌス侯爵
+> 「ヤヌス侯爵とは、わらわのことぞ!!」
+“Marquis Janus is none other than me!!”
+
+@38933 Rain · レイン
+> 「正体をあらわしたわね、この
+>  化け物! 観念しなさい!」
+“So you've shown your true form, you monster! Give it up!”
+
+@38934 Marquis Janus · ヤヌス侯爵
+> 「ほほほ、いまごろ遅いわ。もうわらわの
+>  目的は、ほとんど達成されたも
+“Hohoho, it's too late now. My objective is already as good as
+---
+>  同然じゃ」
+accomplished.”
+
+@38935 Manami · マナミ（按段落 3DD4）
+> 「なんですって!?」
+“What did you say?!”
+
+@38936 Marquis Janus · ヤヌス侯爵
+> 「ほほほほっ。それ!」
+“Hohohoho. There!”
+
+@38937 Bright · ブライト
+> 「くっ……遅かったのか!
+>  被害状況を報告しろ!」
+“Ngh... were we too late?! Report the damage!”
+
+@38938 Marquis Janus · ヤヌス侯爵
+> 「ほほほっ、これがわらわの本体よ」
+“Hohoho, this is my true body.”
+
+@38939 Manami · マナミ（按段落 3DD4）
+> 「許せない! あなたたちの好きにはさせ
+>  ないわ! 艦長、出撃するわよ!!」
+“I won't forgive this! I won't let you have your way! Captain, I'm launching!!”
+
+@38940 Bright · ブライト
+> 「頼む!」
+“Please!”
+
+@38941 主角
+> 「くっそぉぉぉぉぉーっ!!」
+“Damn iiiit!!”
+
+@38942 Marquis Janus · ヤヌス侯爵
+> 「ほほほほほ、やれるものならやってみるが
+>  よいわ!」
+“Hohohohoho, try it if you can!”
+
+@38943 Marquis Janus · ヤヌス侯爵
+> 「人間ごときがわらわと戦おうという
+>  のか?」
+“A mere human dares to fight me?”
+
+@38944 主角
+> 「この化け物め!」
+“You monster!”
+
+@38945 主角
+> 「てめぇ、よくもやってくれたな!」
+“You bastard, you'll pay for that!”
+
+@38946 Marquis Janus · ヤヌス侯爵
+> 「ほほほほ、死ぬがよい!」
+“Hohohoho, die!”
+
+@38947 主角
+> 「お前は絶対に許さないわ!」
+“I will never forgive you!”
+
+@38948 Marquis Janus · ヤヌス侯爵
+> 「人間ごときが!」
+“A mere human!”
+
+@38949 Marquis Janus · ヤヌス侯爵
+> 「おのれ! わらわが相手だ!」
+“Curse you! I'll be your opponent!”
+
+@38950 Tetsuya · 鉄也
+> 「フン、望むところだ!!」
+“Hmph, just what I wanted!!”
+
+@38951 Jun · ジュン
+> 「炎ジュンをなめないでよ!」
+“Don't underestimate Jun Hono!”
+
+@38952 Marquis Janus · ヤヌス侯爵
+> 「ふん、貴様から片づけてやるわ!」
+“Hmph, I'll finish you off first!”
+
+@38953 Marquis Janus · ヤヌス侯爵
+> 「こ、こんな……人間ごときに
+>  わらわが……」
+“Th-this... a mere human... beat me...”
+
+@38954 Hell Marshal · 地獄大元帥
+> 「よくやったぞヤヌス! 後は我が
+>  軍団をもって叩きつぶしてくれるわ!」
+“Well done, Janus! Now I'll crush them with my own army!”
+
+@38955 Emperor Burai · ブライ大帝
+> 「敵ながらなかなかやるようだが、それも
+>  ここまでだ。いまこそ我らが
+“They put up quite a fight for enemies, but this is as far as they go. Now we shall
+---
+>  地球支配に名乗りを上げるの
+>  だ! ウワハハハハハハッ!!!」
+declare ourselves rulers of Earth! Uwahahahahahaha!!!”
+
+@38956 Hell Marshal · 地獄大元帥
+> 「ヤヌスめ、やられてしまいおったか!
+>  だがよいわ。後は我が軍団をもって
+“Janus, defeated, was he?! But no matter. Now I'll crush them
+---
+>  叩きつぶしてくれる!」
+with my own army!”
+
+@38957 Emperor Burai · ブライ大帝
+> 「敵ながらなかなかやるようだが、それも
+>  ここまでだ。いまこそ我らが
+“They put up quite a fight for enemies, but this is as far as they go. Now we shall
+---
+>  地球支配に名乗りを上げるの
+>  だ! ウワハハハハハハッ!!!」
+declare ourselves rulers of Earth! Uwahahahahahaha!!!”
+
+@38958 Tetsuya · 鉄也
+> 「地獄大元帥! 貴様の
+>  野望もここまでだ!!」
+“Hell Marshal! Your ambitions end here!!”
+
+@38959 Hell Marshal · 地獄大元帥
+> 「おのれ剣鉄也め! け散らして
+>  くれるわ!」
+“Curse you, Tetsuya Tsurugi! I'll scatter you to the winds!”
+
+@38960 Koji · 甲児
+> 「地獄大元帥! 今度は
+>  逃がさねぇぞ!!」
+“Hell Marshal! You won't get away this time!!”
+
+@38961 Hell Marshal · 地獄大元帥
+> 「兜甲児め! わがミケーネのために
+>  死ねぇっ!!」
+“Koji Kabuto! Die for Mycenae!!”
+
+@38962 Jun · ジュン
+> 「観念なさい、地獄大元帥!」
+“Give it up, Hell Marshal!”
+
+@38963 Hell Marshal · 地獄大元帥
+> 「ふざけおって! 返り討ちだ!」
+“Don't mock me! I'll strike you down instead!”
+
+@38964 Sayaka · さやか
+> 「この! 覚悟しなさい!!」
+“Why you! Prepare yourself!!”
+
+@38965 Hell Marshal · 地獄大元帥
+> 「こざかしい小娘が!」
+“Insolent little girl!”
+
+@38966 Boss · ボス
+# 审校：ボス自称“ボスさま”，初稿只译成 Boss，未体现其自大语气，改为 the great Boss。
+> 「地獄大元帥め! このボスさまを
+>  忘れちゃこまるだわさ!!」
+“Hell Marshal! You'd better not forget about the great Boss here!!”
+
+@38967 Hell Marshal · 地獄大元帥
+> 「貴様など敵ではないわ!! 死ね!」
+“You're no match for me!! Die!”
+
+@38968 Hell Marshal · 地獄大元帥
+> 「おのれ……よくも、
+>  よくもこのワシをぉぉぉーっ!!」
+“Curse you... how dare you, how dare you do this to meee!!”
+
+@38969 Ryoma · リョウ
+> 「ブライ、人間をなめるんじゃないぜ!
+>  今度は貴様が地獄を
+“Burai, don't underestimate humans! Now it's your turn to
+---
+>  見る番だ!」
+see hell!”
+
+@38970 Emperor Burai · ブライ大帝
+# 审校：“stands”语气偏弱，改为 lives on 更贴合“健在”的威势。
+> 「負けはせぬ! わしの目の黒いうちは
+>  百鬼一族は健在だ!」
+“I will not lose! As long as my eyes are black, the Hyakki Clan lives on!”
+
+@38971 Hayato · ハヤト
+> 「仕上げは俺がやってやるぜ!
+>  ブライ、覚悟しな!」
+“I'll finish this myself! Burai, brace yourself!”
+
+@38972 Emperor Burai · ブライ大帝
+> 「地獄に叩き落としてくれるわ!」
+“I'll send you crashing down to hell!”
+
+@38973 Musashi · ムサシ
+> 「このぉ! これで終わりにしてやるぜ!」
+“Why you! I'll put an end to this right now!”
+
+@38974 Emperor Burai · ブライ大帝
+> 「わしは負けはせぬ!!」
+“I will not lose!!”
+
+@38975 Emperor Burai · ブライ大帝
+> 「グオォォォォォォォーッ!!」
+“Guoooooooooh!!”
+
+@38976 Bright · ブライト
+> 「やっと終わったか……これで残るは
+>  帝国軍だけだな……」
+“It's finally over... All that's left now is the Imperial Army...”
+
+@38977 ???
+> 「やれやれ、様子を見にきたダケなのに
+>  こういうのを見せられたらタダでは
+“Good grief, I only came to take a look, but when you show me something like this, I can't just
+---
+>  帰れないネェ」
+go home empty-handed.”
+
+@38978 Bright · ブライト
+> 「なんだ!? ベルトーチカ、敵か!?」
+“What?! Beltorchika, is it an enemy?!”
+
+@38979 Beltorchika · ベルトーチカ
+> 「……反応ありません」
+“...No response.”
+
+@38980 Bunny · バニー
+> 「すべての通信装置に異常が
+>  発生しています!」
+“All communication devices are malfunctioning!”
+
+@38981 ???
+> 「クククククク」
+“Kukukukuku.”
+
+@38982 Bright · ブライト
+> 「なんだと!?」
+“What did you say?!”
+
+@38983 Avie-Lu · アヴィ＝ルー
+> 「すごいネ……感じるヨ、お前たちの
+>  力を」
+“Amazing... I can feel it, your power.”
+
+@38984 Amuro · アムロ
+> 「くっ……なんだ、この強烈な
+>  プレッシャーは!?」
+“Ngh... what is this intense pressure?!”
+
+@38985 Quattro · クワトロ
+> 「むぅ…………」
+“Hmm...”
+
+@38986 Kamille · カミーユ
+> 「……間違いない……こいつは……
+>  こいつは危険な奴だ……」
+“...No doubt about it... this one... this one is dangerous...”
+
+@38987 Bright · ブライト
+> 「敵……なのか……?」
+“An enemy... is it...?”
+
+@38988 Ark · アーク（按段落 3DD1）
+> 「見たことのないタイプ……?
+>  なんだ……いったい……?」
+“A type I've never seen before...? What... what is this...?”
+
+@38989 Selain · セレイン（按段落 3DD2）
+> 「くっ……こんなタイプのマシンは
+>  見たことがない
+“Ngh... I've never seen a machine like this.
+---
+>  貴様、いったいどこの兵士だ!?」
+You, just whose soldier are you?!”
+
+@38990 Brad · ブラッド（按段落 3DD3）
+> 「なんだと!? グゥゥッ……なんて
+>  威圧感だ。ただ者ではない
+“What?! Guuuh... what overwhelming pressure. You're no ordinary foe.
+---
+>  貴様ぁ、いったい何者だ!?」
+You, just who are you?!”
+
+@38991 Manami · マナミ（按段落 3DD4）
+> 「な……なんなの、あれは!?」
+“Wh-what in the world is that?!”
+
+@38992 Lawrence · ローレンス
+> 「お嬢様、スキャンとデータ照合
+>  終了しました」
+“My lady, the scan and data comparison are complete.”
+
+@38993 Manami · マナミ（按段落 3DD4）
+> 「データ登録なし、
+>  類似するシステムなし
+“No data registered, no similar system.
+---
+>  生体反応? ……推測不能
+>  ですって!? あなた、何者なの!?」
+A bio-reaction? ...It says it's impossible to determine?! Just who are you?!”
+
+@38994 Avie-Lu · アヴィ＝ルー
+> 「“アル＝イー＝クイス”」
+“‘Al-E-Quis.’”
+
+@38995 Shinobu · 忍
+> 「なんだとぉ!? てめぇ、そりゃいったい
+>  なんなんだ!」
+“What?! You, just what the hell is that?!”
+
+@38996 Avie-Lu · アヴィ＝ルー
+> 「わかンなくていいのサ、アンタたちは。
+>  アタシが見たところじゃ、アンタたちは
+“You don't need to understan' that, you lot. From what I see, you've got
+---
+>  この惑星圏の中デモ、突出した
+>  潜在能力がある。確かめなくちゃ
+outstanding latent potential, even within this planetary sphere. I've gotta
+---
+>  ならないンだ。サァ、アタシと戦いなヨ!」
+confirm it. C'mon, fight me!”
+
+@38997 Bright · ブライト
+> 「終わったな……。正体不明の敵
+>  だったが、みんなよくやってくれた
+“It's over... An enemy of unknown origin, but you all did well.
+---
+>  帰還してくれ」
+Return to the ship.”
+
+@38998 Bunny · バニー
+> 「収容完了」
+“Recovery complete.”
+
+@38999 Beltorchika · ベルトーチカ
+> 「ッ!? 艦長!!」
+“Huh?! Captain!!”
+
+@39000 Bright · ブライト
+> 「な……なんだと!?」
+“Wh-what did you say?!”
+
+@39001 Avie-Lu · アヴィ＝ルー
+> 「…………クククッ」
+“...Kukuku.”
+
+@39002 Chibodee · チボデー
+> 「オゥッ……ジーザスッ!!」
+“Oh... Jesus!!”
+
+@39003 Eiji · エイジ
+> 「そんなばかな!?」
+“That's impossible?!”
+
+@39004 Avie-Lu · アヴィ＝ルー
+> 「ククク……まだまだだヨ。アンタたちの
+>  力はまだこんなものじゃナイ
+“Kukuku... not yet, not by a long shot. Your power's still nothin' like this.
+---
+>  サァ見せておくれヨ。もっと、もっと。
+>  でなきゃみんな死んでしまうヨ!?」
+C'mon, show me more. More, more. Otherwise you'll all die!?”
+
+@39005 Bright · ブライト
+> 「バカな……そんなことが……」
+“Impossible... that can't be...”
+
+@39006 Koji · 甲児
+# 审校：原文“こんな奴”未明确性别，アヴィ＝ルー性别未核实，初稿 a guy 可能误指，改为 someone 更稳妥。
+> 「くっ……こんな奴といったいどう戦えば
+>  いいんだよ!?」
+“Ngh... just how are we supposed to fight someone like this?!”
+
+@39007 Avie-Lu · アヴィ＝ルー
+> 「サァ、どうしたのサ?」
+“C'mon, what's the matter?”
+
+@39008 Ryoma · リョウ
+> 「……ハヤト、ムサシ。ゲッターはまだ
+>  いけるな?」
+“...Hayato, Musashi. The Getter can still go, right?”
+
+@39009 Musashi · ムサシ
+> 「ああ……だがリョウ、いったいどうする
+>  つもりなんだ?」
+“Yeah... but Ryoma, just what are you planning to do?”
+
+@39010 Hayato · ハヤト
+> 「リョウ……お前まさか!」
+“Ryoma... don't tell me you're gonna!”
+
+@39011 Ryoma · リョウ
+> 「ああ、ゲッター線エネルギーを暴走
+>  させて、ゲッターごと奴を
+“Yeah. I'll make the Getter Ray energy go out of control and blow that thing away,
+---
+>  吹き飛ばしてやる!」
+Getter and all!”
+
+@39012 Amuro · アムロ
+> 「ばかなことをいうなリョウ!」
+“Don't say crazy things, Ryoma!”
+
+@39013 Ryoma · リョウ
+> 「しかしもう他には方法がない!
+>  大丈夫、ちゃんと脱出しますって」
+“But there's no other way now! It's fine, we'll eject properly, I swear.”
+
+@39014 Hayato · ハヤト
+> 「了解だ、リョウ。やってみる価値は
+>  ある。いいなムサシ」
+“Understood, Ryoma. It's worth a try. Right, Musashi?”
+
+@39015 Musashi · ムサシ
+> 「ああ、おいらもかまわないぜ」
+“Yeah, I don't mind either.”
+
+@39016 Ryoma · リョウ
+> 「よし、いくぞ2人とも!!」
+“All right, let's go, you two!!”
+
+@39017 Avie-Lu · アヴィ＝ルー
+# 审校：初稿 plannin' 为错误拼写，改为 planning，保留 what're 口语缩略。
+> 「ククククッ、何をするつもりだイ?」
+“Kukukuku, what're you planning to do?”
+
+@39018 Ryoma · リョウ
+> 「いまだ、脱出するぞ!」
+“Now, eject!”
+
+@39019 Hayato · ハヤト
+> 「よし!」
+“Got it!”
+
+@39020 Musashi · ムサシ
+> 「最後はおいらの番だな……アレ?
+>  このやろう動けっ!」
+“Last one's my turn... Huh? Move, you damn thing!”
+
+@39021 Ryoma · リョウ
+> 「ムサシ、早くしろ!!」
+“Musashi, hurry!!”
+
+@39022 Musashi · ムサシ
+> 「…………ダメだ! 脱出装置が
+>  故障した!!」
+“...It's no good! The ejection system's broken!!”
+
+@39023 Ryoma · リョウ
+> 「なんだって!? しかたがない。ムサシ、
+>  もういい、早く回避しろ!!」
+“What?! It can't be helped. Musashi, forget it, evade now!!”
+
+@39024 Musashi · ムサシ
+> 「バカをいうな。どうせ、奴にちゃんと
+>  ゲッターをぶち当てるためには誰かが
+“Don't be stupid. Anyway, to slam the Getter into that thing properly, it's more
+---
+>  コントロールした方が確実なんだ」
+certain if someone controls it.”
+
+@39025 Ryoma · リョウ
+> 「なんだって!? やめろムサシ!!」
+“What?! Stop, Musashi!!”
+
+@39026 Hayato · ハヤト
+> 「ムサシ、待つんだ!!!」
+“Musashi, wait!!!”
+
+@39027 Musashi · ムサシ
+> 「うおおぉぉぉぉぉぉぉーっ!!!」
+“Uwooooooooooooh!!!”
+
+@39028 Avie-Lu · アヴィ＝ルー
+> 「まさかッ!?」
+“No way?!”
+
+@39029 Avie-Lu · アヴィ＝ルー
+> (ムゲゾルバドス帝国と……
+>  銀河帝国……。3つめとしては
+(The Muge Zorbados Empire... and the Galactic Empire... As a third,
+---
+>  悪くない……地球人か、
+>  おもしろいネ……)
+not bad... Earthlings, huh, interesting...)
+
+@39030 Bright · ブライト
+> 「なんだ! いったいどうなった!?」
+“What?! What in the world happened?!”
+
+@39031 Amuro · アムロ
+> 「……あの敵は復活してこないが……
+>  ゲッターが……」
+“...That enemy won't be coming back, but... the Getter...”
+
+@39032 Sayaka · さやか
+> 「そ……そんな……」
+“Th-That can't be...”
+
+@39033 Koji · 甲児
+> 「おい、ウソだろ!? だってよ、あれには
+>  ムサシが……」
+“Hey, you're kidding, right?! I mean, Musashi was in that thing...”
+
+@39034 Ryoma · リョウ
+> 「ク……ムサシィィィィィィィィーッッ!!!」
+“Kgh... MUSASHIIIIIIIIII!!!”
+
+@39035 Rain · レイン
+> 「…………」
+“...”
+
+@39036 Ark · アーク（按段落 3DD1）
+> 「そんな……ウソでしょう!?」
+“No... You're kidding, right?!”
+
+@39037 Cath · キャス
+> 「……意識だけは薬ではっきりしてる
+>  けど……もう……」
+“...The medicine's keeping my mind clear, but... it's already...”
+
+@39038 Rain · レイン
+> 「あなたを待ってるわ。いってあげて」
+“She's waiting for you. Go to her.”
+
+@39039 Ark · アーク（按段落 3DD1）
+> 「…………」
+“...”
+
+@39040 Lera · レラ
+> 「{HeroNick}……?」
+“{HeroNick}...?”
+
+@39041 Ark · アーク（按段落 3DD1）
+> 「……ここにいるよ。どうした、レラ?」
+“...I'm here. What is it, Lera?”
+
+@39042 Lera · レラ
+> 「よかった……元気そうで……」
+“Good... You look well...”
+
+@39043 Ark · アーク（按段落 3DD1）
+> 「お前のおかげだ。安心しろよ、
+>  俺たちが仇はとってやったからさ」
+“Thanks to you. Don't worry, we've avenged them for you.”
+
+@39044 Lera · レラ
+> 「うん……{HeroNick}、アタシ、お願いが
+>  あるんだ……」
+“Yeah... {HeroNick}, I have a favor to ask...”
+
+@39045 Ark · アーク（按段落 3DD1）
+> 「……ああ、いいよ」
+“...Yeah, anything.”
+
+@39046 Lera · レラ
+> 「約束してよ……{HeroNick}。
+>  あんたが……みんなが……きっと戦いを
+“Promise me... {HeroNick}. That you... that all of you... will definitely end this war.
+---
+>  終わらせるって。きっと……
+>  地球圏を平和にするってさ……」
+That you'll definitely... bring peace to the Earth Sphere...”
+
+@39047 Ark · アーク（按段落 3DD1）
+> 「ああ、約束する。絶対に、俺たち
+>  が実現してみせる。だから、死ぬな!
+“Yeah, I promise. We'll make it happen, no matter what. So don't die!
+---
+>  俺が絶対に平和な地球圏を
+>  見せてやるから!」
+I'll show you a peaceful Earth Sphere, I swear!”
+
+@39048 Lera · レラ
+> 「うん……きっとだよ。アタシ、ずっと……
+>  ずっと…………」
+“Yeah... You'd better. I'll always... always...”
+
+@39049 Ark · アーク（按段落 3DD1）
+> 「レラ……?」
+“Lera...?”
+
+@39050 Lera · レラ
+> 「アタシさ……アンタに会えて…………
+“You know... I'm glad...
+---
+>  良かった…………
+...I got to meet you...
+---
+>  ………
+...
+---
+>  ……
+...
+---
+>  …」
+...”
+
+@39051 Ark · アーク（按段落 3DD1）
+> 「おい……レラ!? レラ!!」
+“Hey... Lera?! Lera!!”
+
+@39052 Ark · アーク（按段落 3DD1）
+> 「レラ…………
+“Lera...
+---
+>  くっ………こんな……こんなのってあるかよ
+>  ……。お前、いつもいってたじゃないか
+Ngh... How... how can this happen... You always used to say it, didn't you?
+---
+>  ずっと戦ってきて、捕まったり、
+>  撃たれたりしたことだってあるって
+That you'd been fighting all this time, that you'd been captured, that you'd been shot...
+---
+>  なのに……なのにこんな……こんな…………」
+And yet... and yet like this... like this...”
+
+@39053 Rain · レイン
+> 「…………」
+“...”
+
+@39054 Selain · セレイン（按段落 3DD2）
+> 「……悪い冗談はやめろ。私はそんな
+>  気分じゃないんだ」
+“...Stop with the bad jokes. I'm not in the mood.”
+
+@39055 Rain · レイン
+> 「冗談で……冗談でいえること
+>  じゃないでしょう?」
+“This isn't... this isn't something you can joke about, is it?”
+
+@39056 Cath · キャス
+> 「……意識だけは薬ではっきりしてる
+>  けど……もう……」
+“...The medicine's keeping my mind clear, but... it's already...”
+
+@39057 Rain · レイン
+> 「あなたを待ってるわ。いってあげて」
+“She's waiting for you. Go to her.”
+
+@39058 Selain · セレイン（按段落 3DD2）
+> 「…………」
+“...”
+
+@39059 Lera · レラ
+> 「{HeroNick}……?」
+“{HeroNick}...?”
+
+@39060 Selain · セレイン（按段落 3DD2）
+> 「ああ、私だ。どうした、レラ?」
+“Yeah, it's me. What is it, Lera?”
+
+@39061 Lera · レラ
+> 「よかった……元気そうで……」
+“Good... You look well...”
+
+@39062 Selain · セレイン（按段落 3DD2）
+> 「まさか、お前に助けられるとは
+>  思わなかったぞ」
+“I never thought I'd be saved by you, of all people.”
+
+@39063 Lera · レラ
+> 「……カンザスのお返しができたね……」
+“...Guess I paid you back for Kansas...”
+
+@39064 Selain · セレイン（按段落 3DD2）
+> 「バカ、そんなこと気にしてたのか」
+“Idiot. You were still worrying about that?”
+
+@39065 Lera · レラ
+> 「{HeroNick}……死んじゃだめだよ……。
+>  生きてればさ、きっと……」
+“{HeroNick}... Don't you die... If you live, I'm sure...”
+
+@39066 Selain · セレイン（按段落 3DD2）
+> 「何をいっている。まだまだ戦いが続く
+>  といったのは、お前じゃないか
+“What are you saying? Weren't you the one who said the fighting would go on?
+---
+>  終わるまで一緒に戦って、
+>  それから……それから……」
+We'd fight together until it's over, and then... and then...”
+
+@39067 Lera · レラ
+> 「ごめんね……{HeroNick}……アタシ……」
+“I'm sorry... {HeroNick}... I...”
+
+@39068 Selain · セレイン（按段落 3DD2）
+> 「宇宙にいくんじゃなかったのか!?
+>  星の海を見るんじゃなかったのか!?」
+“Weren't you going to space?! Weren't you going to see the sea of stars?!”
+
+@39069 Lera · レラ
+> 「見たいな……どこで終わってもいいと
+>  思ってたけど……アンタと一緒に……
+“I wanted to see it... I thought I didn't care where it ended, but... with you...
+---
+>  行きたかったよ……」
+I wanted to go...”
+
+@39070 Selain · セレイン（按段落 3DD2）
+> 「なら、死ぬな! 私を……私を……
+>  置いていかないでくれ!」 
+“Then don't die! Don't... don't leave me behind!”
+
+@39071 Lera · レラ
+> 「……やっぱり、アタシと同じだ。苦しい
+>  のに、いつも、大丈夫だって……
+“...You're just like me, after all. Even when it hurt, you always said you were fine...
+---
+>  必死に自分にいい聞かせてた。
+>  {HeroNick}はアタシと同じ……」
+You kept desperately telling yourself that. {HeroNick}, you're just like me...”
+
+@39072 Selain · セレイン（按段落 3DD2）
+> 「レラ……頼む……」
+“Lera... please...”
+
+@39073 Lera · レラ
+> 「ごめんね……でもアタシ……
+>  アンタに会えて…………
+“I'm sorry... but I... I'm glad...
+---
+>  良かった…………
+I got to meet you...
+---
+>  …………
+...
+---
+>  ………
+...
+---
+>  ……」
+...”
+
+@39074 Selain · セレイン（按段落 3DD2）
+> 「おい……レラ!?
+“Hey... Lera?!
+---
+>  レラ!! 返事をしろ、レラ!!
+Lera!! Answer me, Lera!!
+---
+>  くっ……」
+Ngh...”
+
+@39075 Astonaige · アストナージ
+> 「ゲッターの回収、終わりましたが……
+>  修理とかそういうレベルじゃないですね」
+“We've finished recovering the Getter, but... this isn't something that can be fixed with repairs.”
+
+@39076 Ryoma · リョウ
+> 「ムサシ……」
+“Musashi...”
+
+@39077 Amuro · アムロ
+> 「く……」
+“Ngh...”
+
+@39078 Bright · ブライト
+> 「……誰だって……死ぬんだよ」
+“...Everyone dies. Every last one of us.”
+
+@39079 Kamille · カミーユ
+> 「ようやく……ようやく地上の敵が
+>  片づいたっていうのに……こんな……」
+“We finally... finally finished off the enemy on Earth, and yet... this...”
+
+@39080 Shinobu · 忍
+> 「……ムサシの奴、つまんねぇこと
+>  しやがってよ」
+“...That idiot Musashi, pulling a stupid stunt like that.”
+
+@39081 Masato · 雅人
+> 「忍、そりゃあんまりなんじゃないの?
+>  俺たち、あいつのおかげで
+“Shinobu, isn't that a bit much? We survived thanks to
+---
+>  助かったんじゃないか」
+him, didn't we?”
+
+@39082 Sara · 沙羅
+> 「やめな、雅人。忍がいってんのは
+>  そんなことじゃないさ」
+“Stop it, Masato. That's not what Shinobu means.”
+
+@39083 Shinobu · 忍
+> 「チッ」
+“Tch.”
+
+@39084 Masato · 雅人
+> 「ああ……そっか。ちぇっ、忍の奴」
+“Oh... right. Sheesh, that Shinobu.”
+
+@39085 Daisaku · 大作
+> 「……じゃあ、藤原さんはどうして
+>  あんなことをいったんですか? 僕は
+“...Then why did Mr. Fujiwara say something like that? I think
+---
+>  ひどすぎると思います。死んだ人に
+>  あんないい方……」
+it's just too cruel. Talking about the dead that way...”
+
+@39086 Sara · 沙羅
+> 「そうだね……あんたにもいつかわかるよ、
+>  大作。この戦いが終わる頃には
+“I suppose so... You'll understand someday too, Daisaku. By the time this war ends,
+---
+>  きっとね」
+I'm sure you will.”
+
+@39087 Tetsuya · 鉄也
+> 「もういいのかい」
+“Are you done already?”
+
+@39088 Ryoma · リョウ
+> 「ああ……俺たちがいつまでも悲しんで
+>  いたら、ムサシは成仏できなくて
+“Yeah... If we keep grieving forever, Musashi won't be able to rest in peace.
+---
+>  困るだろう」
+That'd be a problem.”
+
+@39089 Hayato · ハヤト
+> 「それにな、ムサシの死を無駄にしない
+>  ためにも俺たちは戦いをやめるわけには
+“Besides, so that Musashi's death isn't in vain, we can't afford to stop
+---
+>  いかないのさ」
+fighting.”
+
+@39090 Tetsuya · 鉄也
+> 「そうだな……だがゲッターはもう、
+>  ないんだろう?」
+“I suppose so... But the Getter is gone now, isn't it?”
+
+@39091 Ryoma · リョウ
+> 「いま、なんとか早乙女博士に
+>  連絡をつけてもらっているところだ」
+“Right now we're trying to get in touch with Dr. Saotome somehow.”
+
+@39092 Tetsuya · 鉄也
+> 「そうか。ま、しばらく休んでおくんだな。
+>  その間は絶対、帝国なんぞに
+“I see. Well, rest up for a while. In the meantime, we absolutely won't let the Empire
+---
+>  好きにはやらせねぇ。ムサシのためにもな」
+have its way. For Musashi's sake too.”
+
+@39093 Hayato · ハヤト
+> 「ああ。それで、あの敵に関して何か
+>  わかったのか?」
+“Yeah. So, did you find out anything about that enemy?”
+
+@39094 Tetsuya · 鉄也
+> 「いや、何もわからんらしい。トレーズも
+>  知らんそうだ」
+“No, apparently nothing at all. Even Treize doesn't seem to know.”
+
+@39095 Ryoma · リョウ
+> 「帝国でもなく、百鬼でもミケーネ
+>  でもない……か。バイストンウェルとも
+“Not the Empire, not the Hyakki, not Mycenae... huh. Doesn't seem to have anything
+---
+>  関係はなさそうだしな」
+to do with Byston Well either.”
+
+@39096 Tetsuya · 鉄也
+> 「いちおう回収した破片をあちこちに
+>  送って調べるとはいっていたがね」
+“They said they'd send the fragments we recovered to various places to have them analyzed, at least.”
+
+@39097 Ryoma · リョウ
+> 「ムサシの仇だというのに正体も
+>  わからないとは……くやしいな」
+“It's Musashi's enemy, and we don't even know what it is... How frustrating.”
+
+@39098 Hayato · ハヤト
+> 「あれが敵だってんなら、そのうちわかる
+>  だろう。どのみちゲッターがなければ
+“If that thing is an enemy, we'll find out eventually. Either way, without the Getter,
+---
+>  俺たちは戦いに参加できない」
+we can't take part in the fighting.”
+
+@39099 Ryoma · リョウ
+> 「ああ……そうだな」
+“Yeah... you're right.”
+
+@39100 Treize · トレーズ
+> 「彼らはやはりやってくれたようだ。
+>  少々無理をしてでも、OZへ
+“It seems they truly came through for us. It was worth having them come to OZ,
+---
+>  来てもらったかいがあった。彼らで
+>  なければ、これほど見事な結末は
+even if it took some pushing. If it hadn't been them, such a splendid conclusion
+---
+>  得られなかっただろう」
+could never have been achieved.”
+
+@39101 Lady · レディ
+> 「はい。では地上の問題で残って
+>  いるのは、反OZを掲げる少数の
+“Yes. Then the only remaining problem on Earth is the handful of
+---
+>  ゲリラたちだけとなったのですね」
+Guerrillas flying the banner of anti-OZ resistance.”
+
+@39102 Treize · トレーズ
+> 「そういうことになる。少なくとも人類
+>  に敵対する勢力はなくなったよ」
+“That would be the case. At the very least, no force hostile to humanity remains.”
+
+@39103 Lady · レディ
+> 「おめでとうございます。
+>  {HeroMech}はいつ頃こちらへ?」
+“Congratulations. When will the {HeroMech} be coming this way?”
+
+@39104 Treize · トレーズ
+> 「可能な限り早急に宇宙へ
+>  上がってもらおうと思っている」
+“I intend to have them go up to space as soon as possible.”
+
+@39105 Lady · レディ
+> 「こちらも準備は整いつつあります。
+>  月基地攻略には彼らにも
+“Our preparations are coming along as well. I believe we'll have them take part in
+---
+>  参加していただくことになると思いま
+>  すが……」
+the assault on the lunar base, but...”
+
+@39106 Treize · トレーズ
+> 「それでかまわない。彼らをはずしたら
+>  逆に私が責められてしまうだろう
+“That's fine. If we left them out, I'd be the one getting an earful instead.
+---
+>  ……ところでレディ」
+...By the way, Lady.”
+
+@39107 Lady · レディ
+> 「はい?」
+“Yes?”
+
+@39108 Treize · トレーズ
+> 「最近の噂では、君はコロニーに
+>  モビルドールのプラントを建設する
+“I've heard rumors lately that you're actively pushing a plan to build a Mobile Doll
+---
+>  計画を、積極的に進めていると
+>  聞いた。いったいどうしたというのだ?」
+plant in the colonies. What on earth has gotten into you?”
+
+@39109 Lady · レディ
+> 「MDは万が一、帝国軍との戦い
+>  が長引いた場合、地球の
+“If the war with the Imperial forces drags on, the MDs will be useful
+---
+>  戦力として有用です」
+as fighting strength for Earth.”
+
+@39110 Treize · トレーズ
+> 「ジャミトフやデルマイユは、別のことを
+>  考えているはずだと思うのだが」
+“I believe Jamitov and Dermail must have something else in mind.”
+
+@39111 Lady · レディ
+> 「そうでしょう。ですが私は、MDを
+>  地上へ降ろすつもりはありません」
+“I'm sure they do. But I have no intention of sending the MDs down to Earth.”
+
+@39112 Treize · トレーズ
+> 「……なるほど、すべて承知の上と
+>  いうことか。わかった、レディ
+“...I see. So you knew all along. Very well, Lady.
+---
+>  宇宙のことは君にまかせてある。
+>  好きにするといい」
+I'll leave matters in space to you. Do as you see fit.”
+
+@39113 Lady · レディ
+> 「……すべては閣下のためです。それを
+>  お忘れにはならないでください」
+“...Everything is for Your Excellency. Please do not forget that.”
+
+@39114 Fa · ファ
+> 「艦長、艦長!」
+“Captain! Captain!”
+
+@39115 Bright · ブライト
+> 「どうした、ファ。何か問題でもおきた
+>  のか」
+“What is it, Fa? Has something happened?”
+
+@39116 Fa · ファ
+> 「それが、ショウたちがもどってきたんです!」
+“Show and the others have come back!”
+
+@39117 Amuro · アムロ
+> 「なんだって!? しかしオーラマシンは
+>  搭乗者ごと、シーラ女王の力で
+“What?! But weren't the Aura Machines, riders and all,
+---
+>  地上から消えたんじゃなかったのか?」
+erased from the surface by Queen Ciela's power?”
+
+@39118 Fa · ファ
+> 「それが、オーラマシンもあるんです。
+>  とにかく来てください」
+“That's just it, the Aura Machines are here too. Please, just come.”
+
+@39119 Bright · ブライト
+> 「わかった、すぐに行く」
+“Understood. I'm on my way.”
+
+@39120 Quattro · クワトロ
+> 「ほぉ……。ショウたちと……
+>  シーラ・ラパーナもか」
+“Oh...? Show and the others...and Ciela Lapana too.”
+
+@39121 Anna · アンナ
+> 「はい。……でも、いったいどうしたん
+>  でしょう」
+“Yes. ...But what on earth could have happened?”
+
+@39122 Quattro · クワトロ
+> 「さてな、オーラ力というのは、
+>  我々にはわからんよ」
+“Who knows. This Aura Power is something we can't understand.”
+
+@39123 Bright · ブライト
+> 「それで、どういうことなのでしょう?」
+“So then, what does this mean?”
+
+@39124 Ciela · シーラ
+> 「私にもはっきりとはわかりません。
+>  しかし、我らだけがこうして、この地へ
+“I don't know for certain either. But I do feel there is a meaning
+---
+>  もどってきたことに、意味は感じます」
+in the fact that only we have returned to this land like this.”
+
+@39125 Bright · ブライト
+> 「とおっしゃると?」
+“And that would mean?”
+
+@39126 Ciela · シーラ
+> 「地上界……いいえ、あなたがたのいう
+>  地球圏には、いまだ悪意が
+“In the surface world...no, in what you call the Earth Sphere, malice still
+---
+>  うずまいています。それを取り除き、
+>  地上界に平穏をとりもどすことが
+swirls. To remove it and restore peace to the surface world—
+---
+>  我らに課せられた新たな役割では
+>  ないかと思えるのです」
+I feel that may be the new role imposed upon us.”
+
+@39127 Chum · チャム
+> 「じゃあシーラさま、それが終わるまで
+>  あたしたちバイストンウェルに
+“Then, Lady Ciela, until that's over, we can't go back to
+---
+>  帰れないの!?」
+Byston Well?!”
+
+@39128 Ciela · シーラ
+> 「そう思います。バイストンウェルと
+>  地上とは表裏の関係にあります
+“I believe so. Byston Well and the surface are two sides of the same coin.
+---
+>  地上の平穏なくして、
+>  バイストンウェルの平穏もまた、ないと
+Without peace on the surface, there can be no peace in
+---
+>  いうことなのでしょう」
+Byston Well either.”
+
+@39129 Chum · チャム
+> 「そんなぁ……」
+“No way...”
+
+@39130 Show · ショウ
+> 「チャムには悪いけど、俺もそう思いま
+>  す」
+“Sorry, Chum, but I feel the same way.”
+
+@39131 Koji · 甲児
+> 「ってことは、またオレたちと一緒に
+>  やってくれるってことか?」
+“So that means you'll keep fighting alongside us?”
+
+@39132 Show · ショウ
+> 「ああ」
+“Yeah.”
+
+@39133 Ciela · シーラ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「そうなりますね。ブライト艦長、それに
+>  皆さん、我らは今後も行動を
+“That's right. Captain Bright, everyone, we will continue to act
+---
+>  ともにさせていただきます。それがもっとも
+>  よい道だと思えるのです」
+together with you. I feel that is the best path.”
+
+@39134 Bright · ブライト
+> 「願ってもないことです。歓迎いたしま
+>  すよ」
+“Nothing could please us more. You're welcome aboard.”
+
+@39135 Roux · ルー
+> 「チャムもそんなにイヤそうな顔しないで。
+>  もうしばらくあたしたちに力を
+“Don't look so unhappy, Chum. Lend us your strength a while longer.
+---
+>  貸してちょうだい。ね?」
+Okay?”
+
+@39136 Amuro · アムロ
+> 「頼むよ、チャム」
+“Please, Chum.”
+
+@39137 Chum · チャム
+> 「わかったわよ! そういわれたらイヤって
+>  いえないじゃない」
+“Fine, you win! How can I say no when you put it like that?”
+
+@39138 Anna · アンナ
+> 「ウフフフ、チャムったら」
+“Hehehe, oh, Chum.”
+
+@39139 Quattro · クワトロ
+> 「ほぉ……。ショウたちと……エレ・ハンムも
+>  か」
+“Oh...? Show and the others...and Elle Hunm too.”
+
+@39140 Anna · アンナ
+> 「はい。……でも、いったいどうしたんで
+>  しょう」
+“Yes. ...But what on earth could have happened?”
+
+@39141 Quattro · クワトロ
+> 「さてな、オーラ力というのは、
+>  我々にはわからんよ」
+“Who knows. This Aura Power is something we can't understand.”
+
+@39142 Bright · ブライト
+> 「それで、どういうことなのでしょう?」
+“So then, what does this mean?”
+
+@39143 Elle · エレ
+> 「私にもわからないのです。ですが、
+>  我々だけがこうしてこの地へと
+“I don't understand it either. But I believe there is a meaning
+---
+>  もどってきたことには、意味があるのだ
+>  と思います」
+in the fact that only we have returned to this land like this.”
+
+@39144 Bright · ブライト
+> 「とおっしゃると?」
+“And that would mean?”
+
+@39145 Elle · エレ
+> 「地上界……いえ、皆さんのいう
+>  地球圏には、いまだ悪意の
+“In the surface world...no, in what you call the Earth Sphere, I can feel
+---
+>  オーラが渦をまいているのを感じます。
+>  それを取り除き、地上界に
+an aura of malice still swirling. To remove it and restore peace
+---
+>  平穏を取りもどすことが、私たちの
+>  担うべき新たな役割と
+to the surface world—that must have become the new role
+---
+>  なったのでしょう」
+we are meant to bear.”
+
+@39146 Chum · チャム
+> 「じゃあエレさま、それが終わるまで
+>  あたしたちバイストンウェルに
+“Then, Lady Elle, until that's over, we can't go back to
+---
+>  帰れないの!?」
+Byston Well?!”
+
+@39147 Elle · エレ
+> 「そうですよ、チャム。バイストンウェルと
+>  地上とは表裏の関係です
+“That's right, Chum. Byston Well and the surface are two sides of the same coin.
+---
+>  地上の平穏なくして、
+>  バイストンウェルの平穏もまた
+Without peace on the surface, there can be no peace in
+---
+>  ありえないのです」
+Byston Well either.”
+
+@39148 Chum · チャム
+> 「そんなぁ……」
+“No way...”
+
+@39149 Show · ショウ
+> 「チャムには悪いけど、俺もそう思いま
+>  す」
+“Sorry, Chum, but I feel the same way.”
+
+@39150 Koji · 甲児
+> 「ってことは、またオレたちと一緒に
+>  やってくれるってことか?」
+“So that means you'll keep fighting alongside us?”
+
+@39151 Show · ショウ
+> 「ああ」
+“Yeah.”
+
+@39152 Elle · エレ
+> 「はい。我らは今後もあなた方と
+>  行動をともにさせていただきたいのです
+“Yes. We wish to continue acting alongside you from now on.
+---
+>  それがもっともよい道と思えます」
+That seems to be the best path.”
+
+@39153 Bright · ブライト
+# 审校：L33 与 L52 原文相同，初稿分别译为“welcome aboard”和“welcome to stay”，应统一为“You're welcome aboard.”
+> 「願ってもないことです。歓迎いたしま
+>  すよ」
+“Nothing could please us more. You're welcome aboard.”
+
+@39154 Roux · ルー
+> 「チャムもそんなにイヤそうな顔しないで。
+>  もうしばらくあたしたちに力を
+“Don't look so unhappy, Chum. Lend us your strength a little longer.
+---
+>  貸してちょうだい。ね?」
+Okay?”
+
+@39155 Amuro · アムロ
+> 「頼むよ、チャム」
+“Please, Chum.”
+
+@39156 Chum · チャム
+# 审校：L36 与 L55 原文相同，初稿分别译为“Fine, you win!”和“Fine, I get it!”，应统一为“Fine, you win!”
+> 「わかったわよ! そういわれたらイヤって
+>  いえないじゃない」
+“Fine, you win! How can I say no when you put it like that?”
+
+@39157 Anna · アンナ
+> 「ウフフフ、チャムったら」
+“Hehehe, oh, Chum.”
+
+@39158 Amuro · アムロ
+> 「君も頼む、ガラリア」
+“You too, Garalia. Please.”
+
+@39159 Garalia · ガラリア
+> 「私は戦士だ。戦士としての
+>  役割をまっとうすることで
+“I am a warrior. If fulfilling my role as a warrior
+---
+>  バイストンウェルへ帰れるのなら、
+>  それはさせてもらう。それでいいのだろう?」
+lets me return to Byston Well, then I'll do it. That's fine, isn't it?”
+
+@39160 Amuro · アムロ
+> 「ああ。頼りにしている」
+“Yeah. I'm counting on you.”
+
+@39161 Garalia · ガラリア
+> 「フッ、こういうのも悪くないものだな」
+“Hmph. This isn't so bad, either.”
+
+@39162 Amuro · アムロ
+> 「……そうか……{HeroNick}はどうした?」
+“...I see... What about {HeroNick}?”
+
+@39163 David · デビッド
+# 审校：原文“自分の部屋ん中に閉じこもってますよ”未明确性别，但前文 L61 阿姆罗问 {HeroNick}，大卫回答的是 {HeroNick}；玩家角色性别不定，初稿用“his”可能误指。改为中性“He's shut himself up”仍含 he，应改为“They've shut themselves up in their room. Honestly.”
+> 「自分の部屋ん中に閉じ
+>  こもってますよ。まったく」
+“He's shut himself up in his room. Honestly.”
+
+@39164 Roux · ルー
+> 「そんなこといったってしょうがないでしょ」
+“Saying that doesn't change anything, you know.”
+
+@39165 David · デビッド
+> 「でもよ、俺たちがやってんのは、
+>  戦争なんだぜ!?
+“But what we're doing is war, you know?!
+---
+>  そんなことでつぶれちまってたら……
+>  戦い抜くことなんか、できやしない」
+If he falls apart over something like this... he'll never make it through the fight.”
+
+@39166 Roux · ルー
+# 审校：{HeroNick} 性别不定，初稿用“him”可能误指，改为“them”。
+> 「それは{HeroNick}だってわかってるわよ。
+>  でも、今は……今だけは、悲しむな
+“{HeroNick} knows that too. But right now... just for now, you can't tell them not to
+---
+>  なんて、いえないでしょう」
+grieve, can you?”
+
+@39167 Koji · 甲児
+> 「だけど、それをいうならリョウたちのほうが
+>  よっぽど……」
+“But if you put it that way, Ryoma and the others have it way worse...”
+
+@39168 Roux · ルー
+> 「比べられるもんじゃないでしょ、
+>  そういうのは」
+“That's not something you can compare, is it?”
+
+@39169 Chum · チャム
+> 「{HeroNick}……可哀想……」
+“{HeroNick}... Poor thing...”
+
+@39170 Show · ショウ
+> 「俺たちで様子をみてこようか?」
+“Should we go check on him?”
+
+@39171 Amuro · アムロ
+# 审校：{HeroNick} 性别不定，初稿用“him/he”可能误指，改为“them/they”。
+> 「いや、今はやめておいた方がいい。
+>  あとで俺とクワトロ特尉で
+“No, it's better to leave them alone for now. Later, Lieutenant Quattro and I will
+---
+>  話をしておくよ。大丈夫だ。
+>  彼はそれほど弱くはないさ」
+talk to them. They'll be fine. They're not that weak.”
+
+@39172 Kamille · カミーユ
+# 审校：原文“大丈夫ですよ”未明确指代对象，初稿译作“He'll be fine”添加了男性代词，可能误指；改为中性自然的“It'll be fine”。
+> 「そうですね……そう思います。
+>  大丈夫ですよ」
+“You're right... I think so too. It'll be fine.”
+
+@39173 Amuro · アムロ
+> 「ああ……そうさ」
+“Yeah... that's right.”
+
+@39174 Selain · セレイン（按段落 3DD2）
+> (……レラ……お前は……)
+(...Lera... you...)
+
+@39175 Anna · アンナ
+> 「{HeroNick}……大丈夫?
+>  少し休んだほうがいいわ」
+“{HeroNick}... Are you okay? You should rest a little.”
+
+@39176 Selain · セレイン（按段落 3DD2）
+> 「ああ……わかってる、アンナ。そんな顔を
+>  するな。仲間が死ぬのくらい、
+“Yeah... I know, Anna. Don't make that face. I've seen comrades die
+---
+>  いつだって見てきたんだ。私はそうして
+>  生き残ってきたんだから………」
+plenty of times. That's how I've survived this long...”
+
+@39177 Anna · アンナ
+> 「…………これ、精神安定剤。もし
+>  必要なら飲むようにってレインさんが」
+“...Here, a sedative. Rain said to take it if you need it.”
+
+@39178 Selain · セレイン（按段落 3DD2）
+# 审校：原文“すまない”是道歉，初稿“Thanks”误译为感谢；改为“Sorry”。
+> 「……すまない」
+“...Sorry.”
+
+@39179 Noin · ノイン
+> 「ゼクス、聞きましたか」
+“Zechs, did you hear?”
+
+@39180 Zechs · ゼクス
+> 「何をだ?」
+“Hear what?”
+
+@39181 Noin · ノイン
+> 「帝国に対するクーデターも含め、
+>  財団のすべての行動を
+“About the people criticizing everything the foundation has done,
+---
+>  批判している者たちのことです」
+including the coup against the Empire.”
+
+@39182 Zechs · ゼクス
+> 「何を考えているのか知らんが、
+>  少なくとも帝国軍を地上から
+“I don't know what they're thinking, but at the very least, I'd like them to acknowledge
+---
+>  追い出したことくらいは、認めて
+>  ほしいものだな」
+that we drove the Imperial forces off the Earth.”
+
+@39183 Noin · ノイン
+> 「彼らは徹底した平和主義者
+>  たちです。帝国の支配下に
+“They're thoroughgoing pacifists. When we were under
+---
+>  あった時には、帝国に対しても
+>  同様の批判をしていました
+Imperial rule, they criticized the Empire just the same.
+---
+>  グレスコ総督への直談判のために
+>  旧ニューヨークへも行ったというのは
+It's well known that they even went to old New York to
+---
+>  有名な話です」
+negotiate directly with Governor Gresco.”
+
+@39184 Zechs · ゼクス
+> 「クスコの聖女隊か」
+“Cusco's Saints, you mean.”
+
+@39185 Noin · ノイン
+> 「ええ。その聖女隊に、最近では
+>  聖女の他にもう1人指導者と
+“Yes. And lately, besides the Holy Woman, there's said to be another figure
+---
+>  目される人物がいるのだそうです」
+regarded as a leader of the Saints.”
+
+@39186 Zechs · ゼクス
+> 「ほう?」
+“Oh?”
+
+@39187 Noin · ノイン
+> 「その者の名はリリーナ・ピースクラフト」
+“Her name is Relena Peacecraft.”
+
+@39188 Zechs · ゼクス
+> 「なんだと? そうか、リリーナが……。では
+>  自分がドーリアンの娘ではないことを
+“What? I see, so Relena... Then she's learned that she isn't
+---
+>  知ったのだな」
+Darlian's daughter.”
+
+@39189 Noin · ノイン
+> 「そのようですね。彼女はあなたの
+>  期待通りに成長されたようです」
+“It seems so. She appears to have grown exactly as you hoped.”
+
+@39190 Zechs · ゼクス
+> 「当然だ。あいつは私とは違う。
+>  平和主義者の父を持ちながら
+“Of course. She's different from me. Unlike me, who walks a blood-soaked path
+---
+>  血ぬられた道をいく私とはな。
+>  ……ノイン」
+despite having a pacifist father. ...Noin.”
+
+@39191 Noin · ノイン
+> 「なんです?」
+“What is it?”
+
+@39192 Zechs · ゼクス
+> 「1つ頼まれてもらえないか」
+“Could I ask you a favor?”
+
+@39193 Noin · ノイン
+> 「私があなたの頼みを断ったことがない
+>  のは、ご存知でしょう?」
+“You know I've never refused a request from you, don't you?”
+
+@39194 Zechs · ゼクス
+> 「すまん」
+“Sorry.”
+
+@39195 Treize · トレーズ
+> 「どうかしたのか、ゼクス?」
+“What's the matter, Zechs?”
+
+@39196 Zechs · ゼクス
+> 「閣下、私はロームフェラ財団の
+>  意向には従えないと思われます」
+“Your Excellency, I don't believe I can follow the Romefeller Foundation's wishes.”
+
+@39197 Treize · トレーズ
+> 「月面攻略を間近にひかえた
+>  この時に、OZの英雄
+“With the lunar offensive so close at hand, you're telling me OZ's hero,
+---
+>  ライトニング・カウントがOZをぬけると
+>  いうのか?」
+the Lightning Count, means to leave OZ?”
+
+@39198 Zechs · ゼクス
+> 「このままいけば、私などいなくともOZは
+>  帝国軍に勝利することでしょう
+“At this rate, OZ will defeat the Imperial forces even without me.
+---
+>  しかし、そのあとの地球圏で財団
+>  の目指そうとしているものには
+But what the foundation intends for the Earth Sphere afterward—
+---
+>  賛同いたしかねます」
+I cannot bring myself to approve of it.”
+
+@39199 Treize · トレーズ
+> 「ゼクス……{HeroMech}と同行
+>  させてもか? 彼らもまた、財団の
+“Zechs... May I let {HeroMech} go with you, then? They too cannot truly be
+---
+>  方針に心から賛成しているわけ
+>  ではないだろう」
+in favor of the foundation's course.”
+
+@39200 Zechs · ゼクス
+> 「トレーズ。{HeroMech}は帝国
+>  に対するレジスタンスとして
+“Treize. {HeroMech} are the ones who have fought desperately as a
+---
+>  死に物狂いで戦ってきた者たちだ
+>  OZの中にあって、戦いの中に
+resistance against the Empire. Here in OZ, I brought my own selfish
+---
+>  勝手な美意識を持ちこんでいた
+>  私は、彼らとともにある資格はない
+sense of aesthetics into battle, and I have no right to stand at their side.
+---
+>  これは私の甘さの清算なのだ」
+This is me settling accounts with my own weakness.”
+
+@39201 Treize · トレーズ
+> 「決意は固いというわけか、
+>  ゼクス。いや
+“So your resolve is firm, Zechs. No—
+---
+>  我が友ミリアルド・ピースクラフト」
+my friend Milliardo Peacecraft.”
+
+@39202 Zechs · ゼクス
+> 「私は自分の納得のいく生き方
+>  をしたいだけだ」
+“I simply want to live in a way I can accept.”
+
+@39203 Treize · トレーズ
+> 「律義な男だよ、君は。いいだろう、
+>  君の気のすむようにするといい。だが
+“You're an honest man. Very well, do as you see fit. But
+---
+>  財団は君の行動を許さないかも
+>  しれない」
+the foundation may not permit your actions.”
+
+@39204 Zechs · ゼクス
+> 「承知している」
+“I'm aware.”

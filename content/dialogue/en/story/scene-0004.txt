@@ -1,0 +1,802 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17683 Brad · ブラッド（按段落 3DD3）
+> 「で、結局どういうことなんだ?」
+“So what's this all about, anyway?”
+
+@17684 Banjo · 万丈
+> 「発端はコロニー国家であった
+>  ジオン公国の
+“There's no doubt it all started with the Principality of Zeon's
+---
+>  独立戦争だといっても
+>  間違いないだろうね
+war of independence.
+---
+>  あの戦争で地球連邦軍は
+>  勝利したが
+The Earth Federation won that war, but
+---
+>  コロニーの大半は破壊され、
+>  地上も甚大な被害を受けた
+most of the colonies were destroyed, and the damage on Earth was catastrophic.
+---
+>  人口も激減し、
+>  地球圏を動かしてきた
+The population plummeted, and the very system that had kept
+---
+>  システムそのものが
+>  破綻をきたしてしまった
+the Earth Sphere running fell apart.
+---
+>  それがなかったら、もしかしたら
+>  まだ地球は占領されずに
+If that hadn't happened, maybe Earth would never have been occupied,
+---
+>  帝国軍と戦い続けていたかも
+>  しれない」
+and we'd still be fighting the Imperial Army.”
+
+@17685 Kurtz · カーツ（按段落 3DD3）
+> 「なるほどな。そこにあの
+>  異星人どもが、やってきて
+“I see. So that's when those aliens showed up,
+---
+>  あっという間に、やられちまったって
+>  わけか」
+and we got wiped out in the blink of an eye.”
+
+@17686 Brad · ブラッド（按段落 3DD3）
+> 「なにしろ俺たちは、そういうのとは
+>  まったく無関係だったからな
+“We had nothing to do with any of that, after all.
+---
+>  なんかすげぇことになっちまってるって
+>  のは、わかっていたんだが
+I knew something huge was going down, but...
+---
+>  それで?」
+So? What happened next?”
+
+@17687 Banjo · 万丈
+> 「帝国軍は地球圏を占領した
+>  占領軍の司令官だった
+“The Imperial Army's commander of the occupation forces,
+---
+>  グラドス人のグレスコが、地球圏
+>  総督になり地球は帝国によって
+a Gradosian named Gresco, became Governor-General of the Earth Sphere, and Earth was ruled by the Empire
+---
+>  死と、破壊と、恐怖とで
+>  支配された。地球人はその
+through death, destruction, and fear. Earthlings had their
+---
+>  文化を奪われ、帝国のいいなりに
+>  なるしか、生き残る道はなかった」
+culture stripped away, and the only way to survive was to do exactly as the Empire said.”
+
+@17688 Kurtz · カーツ（按段落 3DD3）
+> 「連中が言うところの
+>  “市民”ってやつだな」
+“What they call ‘citizens,’ right?”
+
+@17689 Brad · ブラッド（按段落 3DD3）
+> 「前にも聞いたが、なんなんだ?」
+“I've heard that before, but what does it mean?”
+
+@17690 Banjo · 万丈
+> 「占領政策の一環で、
+>  地球人をグループ分けしたのさ
+“It's part of their occupation policy. They sorted Earthlings into groups.
+---
+>  帝国に率先して協力し、
+>  かつ有益な者はA級
+Those who cooperated with the Empire first and were useful got A-rank.
+---
+>  積極的に協力する者が
+>  B級
+Those who actively cooperated got B-rank.
+---
+>  比較的協力的な者が
+>  C級
+Those who were relatively cooperative got C-rank.
+---
+>  それ以外の、反抗的でない
+>  者は、ただの市民」
+Everyone else, anyone who wasn't rebellious, was just a citizen.”
+
+@17691 Brad · ブラッド（按段落 3DD3）
+> 「じゃ、俺たちは?」
+“So what are we?”
+
+@17692 Banjo · 万丈
+> 「不穏分子とか反乱分子、
+>  あるいは単にゲリラ
+“They call us agitators, rebels, or just guerrillas.
+---
+>  レジスタンスなんて呼ばれてるようだ
+Resistance, that sort of thing.
+---
+>  それとたぶん君たちは知らない
+>  だろうが
+And there's one more important thing
+---
+>  もう1つ重要なことがある」
+you probably don't know.”
+
+@17693 Brad · ブラッド（按段落 3DD3）
+> 「なんだ?」
+“What?”
+
+@17694 Banjo · 万丈
+> 「ロームフェラ財団のことさ
+“The Romefeller Foundation.
+---
+>  地球人でありながら、
+>  占領直後から
+They're Earthlings, but right after the occupation began,
+---
+>  帝国に取り入っている
+>  たちの悪い連中で
+they wormed their way into the Empire's good graces. Nasty bunch.
+---
+>  帝国軍の一部として
+>  スペシャルズという軍事組織を
+They've got a military organization called the Specials,
+---
+>  持っている」
+operating as part of the Imperial Army.”
+
+@17695 Brad · ブラッド（按段落 3DD3）
+> 「地球人のくせに
+>  帝国軍だって!?」
+“Earthlings serving in the Imperial Army?!”
+
+@17696 Banjo · 万丈
+> 「そうだ!
+“That's right!
+---
+>  それも僕たちのような反帝国を
+>  掲げる人々を狩り出すことで
+And they earned the Empire's favor by hunting down people like us who stand against the Empire.
+---
+>  帝国に認められた、
+>  許されざる者たちだ」
+They're unforgivable.”
+
+@17697 Banjo · 万丈
+> 「発端はコロニー国家であった
+>  ジオン公国の
+“There's no doubt it all started with the Principality of Zeon's
+---
+>  独立戦争だといっても
+>  間違いないだろうね
+war of independence.
+---
+>  あの戦争で地球連邦軍は
+>  勝利したが
+The Earth Federation won that war, but
+---
+>  コロニーの大半は破壊され、
+>  地上も甚大な被害を受けた
+most of the colonies were destroyed, and the damage on Earth was catastrophic.
+---
+>  人口も激減し、
+>  地球圏を動かしてきた
+The population plummeted, and the very system that had kept
+---
+>  システムそのものが
+>  破綻をきたしてしまった」
+the Earth Sphere running fell apart.”
+
+@17698 Simone · シモーヌ
+> 「そうね。あれがなければ、
+>  地球連邦軍はまだ
+“That's right. If not for that, the Earth Federation might still be
+---
+>  ムゲゾルバドス帝国との戦争を
+>  続けていたかもしれない」
+fighting a war against the Muge Zorbados Empire.”
+
+@17699 Banjo · 万丈
+> 「そう。だが現実には
+>  地球圏は色々な意味で
+“Right. But in reality, the Earth Sphere was exhausted
+---
+>  疲弊しきっていた」
+in every possible way.”
+
+@17700 Manami · マナミ（按段落 3DD4）
+> 「そこへ帝国が侵略してきて、
+>  地球は、あっと言う間に
+“And then the Empire invaded, and Earth was occupied by the
+---
+>  帝国軍に占領されてしまったのね
+>  あたしは、まだその頃は地球が
+Imperial Army in no time. Back then, I had no idea things on Earth
+---
+>  そんなにひどいことになっているなんて
+>  知らなかった。誰も、ローレンスだって
+had gotten that bad. Nobody told me,
+---
+>  そんなこと教えてくれなかったわ」
+not even Lawrence.”
+
+@17701 Banjo · 万丈
+> 「それは、しかたのないことだよ。
+>  君の立場ではそれほど
+“That's understandable. Given your position, it wouldn't have been
+---
+>  めずらしいことではなかった
+>  だろうしね
+that unusual.
+---
+>  ご両親が亡くなったのを
+>  知らされたときには
+By the time you were told your parents had died,
+---
+>  もうロームフェラ財団は
+>  帝国軍に率先して
+the Romefeller Foundation had probably already started
+---
+>  協力を始めていたんだろう?」
+cooperating with the Imperial Army ahead of everyone else, right?”
+
+@17702 Manami · マナミ（按段落 3DD4）
+> 「だけど、みんなはその頃から
+>  戦っていたのでしょう?」
+“But everyone else had been fighting since back then, hadn't they?”
+
+@17703 Simone · シモーヌ
+> 「運が悪かったのかもね。アタシは
+>  地球人が最初に帝国からの
+“Maybe I was just unlucky. I was at the Mars research facility when Earthlings took the Empire's
+---
+>  攻撃を受けた、火星の研究
+>  施設にいたのよ。全滅した、ね
+first attack. Everyone there was wiped out.
+---
+>  今こうして、ここにいることすら
+>  不思議なくらい」
+It's a miracle I'm even here now.”
+
+@17704 Banjo · 万丈
+> 「火星、か…………」
+“Mars, huh...”
+
+@17705 Manami · マナミ（按段落 3DD4）
+> 「どうかして?」
+“What is it?”
+
+@17706 Banjo · 万丈
+> 「いや、なんでもない」
+“No, it's nothing.”
+
+@17707 Garrison · ギャリソン
+> 「万丈様、お話中申しわけ
+>  ありませんが
+“Master Banjo, I apologize for interrupting your conversation,
+---
+>  先に向かわれていたお二方から
+>  緊急通信が入りました」
+but we've received an emergency transmission from the two who went on ahead.”
+
+@17708 Banjo · 万丈
+> 「緊急通信?
+>  それで、どうしたっていうんだい?」
+“An emergency transmission? So what's going on?”
+
+@17709 Garrison · ギャリソン
+> 「どうも我々の目的地が
+>  帝国軍に襲撃されたようですな
+“It seems our destination has come under attack by the Imperial Army.
+---
+>  なにぶん、かなりあわてておいでの
+>  ご様子で、詳しい状況は
+They sounded quite frantic, so I'm afraid I couldn't confirm
+---
+>  確認できませんでしたが」
+the details of the situation.”
+
+@17710 Banjo · 万丈
+> 「なんだって!? ……
+>  よし、急いで向かおう!
+“What?! ...All right, let's hurry!
+---
+>  ギャリソン、
+>  すまないが弓教授に
+Garrison, sorry, but could you try to get in touch
+---
+>  なんとか連絡をつけておいて
+>  くれないか」
+with Prof. Yumi somehow?”
+
+@17711 Garrison · ギャリソン
+> 「承知いたしました」
+“Understood.”
+
+@17712 Banjo · 万丈
+> 「あそこか。みんな、いくぞ!」
+“That place, huh. Everyone, let's go!”
+
+@17713 Brad · ブラッド（按段落 3DD3）
+> 「おう!」
+“Yeah!”
+
+@17714 Manami · マナミ（按段落 3DD4）
+> 「ええ!」
+“Right!”
+
+@17715 Koji · 甲児
+> 「ちっきしょう!
+“Damn it!
+---
+>  こんなところで、おじいちゃんの恨みも
+>  晴らさずに死ねるかぁっ!!」
+I can't die in a place like this without avenging Grandpa!!”
+
+@17716 Hell Marshal · 地獄大元帥
+# 审校：原文「兜十蔵めが」指祖父兜十蔵，不是兜甲児；初稿误译为 Koji Kabuto's grandfather，改为 Juzo Kabuto。
+> 「フハハハハッ、観念せい!
+“Hahahaha, give it up!
+---
+>  兜十蔵めが、よくもこんな
+>  ロボットをつくったものだが
+To think Juzo Kabuto built a robot like this.
+---
+>  乗っているのが貴様のような
+>  奴では
+But with a brat like you piloting it,
+---
+>  我が軍団の前には
+>  ひとたまりもないわ!」
+it's no match for my army!”
+
+@17717 Koji · 甲児
+> 「なにを!」
+“What did you say?!”
+
+@17718 Hell Marshal · 地獄大元帥
+> 「隠してもワシにはわかるぞ
+“You can't hide it from me.
+---
+>  貴様は、そのロボットに
+>  乗ったばかりであろう
+You've only just started piloting that robot, haven't you?
+---
+>  貴様を倒して、そのロボットを
+>  ワシのものにしてくれるわ
+I'll defeat you and make that robot mine!
+---
+>  ゆけぃ!」
+Go!”
+
+@17719 Koji · 甲児
+> 「く、くそぉ……」
+“D-Damn it...”
+
+@17720 Brad · ブラッド（按段落 3DD3）
+> 「へっ、うようよいやがるぜ」
+“Heh, he sure likes to run his mouth.”
+
+@17721 Manami · マナミ（按段落 3DD4）
+> 「そこまでよ!
+>  それ以上は、やらせないわ!!」
+“That's enough! I won't let you go any further!!”
+
+@17722 Hell Marshal · 地獄大元帥
+> 「なに!? むぅ、
+>  反帝国ゲリラどもか」
+“What?! Hmph, anti-Imperial guerrillas, is it?”
+
+@17723 Banjo · 万丈
+> 「あれは……まさかマジンガーZか?
+>  乗っているのは誰なんだ!?」
+“That's... could that be Mazinger Z? Who's piloting it?!”
+
+@17724 Koji · 甲児
+> 「なんだ、てめぇらは!
+>  また敵が増えやがったのか!?」
+“Who the hell are you guys?! More enemies?!”
+
+@17725 Banjo · 万丈
+> 「僕はカラバの破嵐万丈だ。
+>  それは兜十蔵博士のつくった
+“I'm Banjo Haran of Karaba. That's Mazinger Z, built by Dr. Juzo Kabuto, isn't it?
+---
+>  マジンガーZだな?
+>  君は一体誰だ? 兜博士は?」
+Who exactly are you? And where's Dr. Kabuto?”
+
+@17726 Koji · 甲児
+> 「そう何もかもいっぺんにいわないでくれよ
+>  頭が、こんがらがっちまう
+“Don't dump it all on me at once, my head's spinning here.
+---
+>  カラバってのは、おじいちゃんからも
+>  聞いた名前だ
+Karaba's a name I heard from my grandpa too.
+---
+>  とりあえず敵じゃないってことで
+>  いいんだな?」
+So for now I can take it you're not an enemy, right?”
+
+@17727 Banjo · 万丈
+> 「そうだ」
+“That's right.”
+
+@17728 Koji · 甲児
+> 「こいつは確かにマジンガーZだ。
+>  オレは兜甲児
+“This is definitely Mazinger Z. I'm Koji Kabuto.
+---
+>  兜十蔵は、
+>  おじいちゃんは、奴らに殺された!」
+Juzo Kabuto... my grandpa... they killed him!”
+
+@17729 Banjo · 万丈
+> 「なんだって!?
+>  ……そうか、わかった
+“What?! ...I see. Understood.
+---
+>  話の続きは連中を倒してからに
+>  するとしよう
+Let's save the rest of the story for after we've beaten them.
+---
+>  やれるか、甲児くん?」
+Can you fight, Koji?”
+
+@17730 Koji · 甲児
+> 「ありがてぇ、加勢してくれる
+>  ってんならなんとかやってみるぜ
+“Thanks, if you're backing me up I'll manage somehow.
+---
+>  みてろよ化け物どもめ、
+>  おじいちゃんの仇をうってやる!」
+Just you watch, you monsters. I'll avenge my grandpa!”
+
+@17731 Brad · ブラッド（按段落 3DD3）
+> 「あれが次の仲間ってわけか
+“So that's our next comrade, huh.
+---
+>  お手並み拝見だな
+>  {PartnerName}」
+Let's see what you've got, {PartnerName}.”
+
+@17732 Kurtz · カーツ（按段落 3DD3）
+> 「動きを一目見てわからんとはな。
+>  あれは、まだ不慣れなパイロットだ
+“You can't tell from one glance at his movements? That's a pilot who's still green.
+---
+>  昨日今日乗ったばかりに
+>  相違ない」
+He must have only gotten in that thing yesterday or today.”
+
+@17733 Brad · ブラッド（按段落 3DD3）
+> 「ちっ」
+“Tch.”
+
+@17734 Simone · シモーヌ
+> 「アタシたちもいくわよ、{HeroNick}」
+“We're going too, {HeroNick}.”
+
+@17735 Manami · マナミ（按段落 3DD4）
+# 审校：Imperial army 改为 Imperial Army，保持专名大小写一致。
+> 「ええ、帝国軍の好きに
+>  させるわけにはいきません」
+“Yes. We can't let the Imperial Army do as they please.”
+
+@17736 Hell Marshal · 地獄大元帥
+> 「うぬぅ、ゲリラどもめ
+>  好き勝手なことをほざきおって
+“Grr, those blasted guerrillas, running their mouths as they please.
+---
+>  ゆけ、戦闘獣どもよ!
+>  奴らを皆殺しにするのじゃ!」
+Go, my battle beasts! Slaughter them all!”
+
+@17737 Koji · 甲児
+> 「この野郎、覚悟しやがれ!」
+“You bastard, get ready!”
+
+@17738 Hell Marshal · 地獄大元帥
+> 「こざかしい!
+>  返り討ちにしてくれるわ!」
+“Insolent fool! I'll strike you down instead!”
+
+@17739 Hell Marshal · 地獄大元帥
+> 「おのれマジンガーZ、
+>  おのれゲリラどもめぇぇっ!!」
+“Curse you, Mazinger Z! Curse you, guerrillas!!”
+
+@17740 Hell Marshal · 地獄大元帥
+> 「おのれマジンガーZ、
+>  おのれゲリラどもめ!!
+“Curse you, Mazinger Z! Curse you, guerrillas!!
+---
+>  覚えておれ!」
+I won't forget this!”
+
+@17741 Brad · ブラッド（按段落 3DD3）
+> 「素人にしては、まずまずだったな」
+“Not bad, for an amateur.”
+
+@17742 Koji · 甲児
+> 「なにぃ!?」
+“What did you say?!”
+
+@17743 Brad · ブラッド（按段落 3DD3）
+> 「短気な奴だな。
+>  ほめているのに、なぜ怒る?」
+“What a short temper. I'm complimenting you, so why get angry?”
+
+@17744 Koji · 甲児
+> 「……なんだか、お前には
+>  いわれたくない気がするぜ」
+“...Somehow, I feel like I don't want to hear that from you.”
+
+@17745 Banjo · 万丈
+> 「甲児くん、すぐに移動したいが、
+>  大丈夫かい?」
+“Koji, I'd like to move out right away. Are you okay with that?”
+
+@17746 Koji · 甲児
+> 「ああ、いつでもかまわないぜ」
+“Yeah, anytime's fine.”
+
+@17747 Banjo · 万丈
+> 「よし、じゃあみんな、
+>  ひきあげよう」
+“All right, then everyone, let's pull out.”
+
+@17748 Manami · マナミ（按段落 3DD4）
+> 「すごいのね、マジンガーZって」
+“Mazinger Z really is amazing.”
+
+@17749 Simone · シモーヌ
+> 「そうね、あれが敵にわたらなくて
+>  よかったわ」
+“It sure is. Good thing it's not in the enemy's hands.”
+
+@17750 Koji · 甲児
+> 「よせやい、
+>  おだてたって何にもでないぜ」
+“Cut it out, flattery won't get you anything.”
+
+@17751 Banjo · 万丈
+> 「甲児くん、すぐに移動したいが、
+>  大丈夫かい?」
+“Koji, I'd like to move out right away. Are you okay with that?”
+
+@17752 Koji · 甲児
+> 「ああ、いつでもかまわないぜ」
+“Yeah, anytime's fine.”
+
+@17753 Banjo · 万丈
+# 审校：原文是“みんな”作呼语，初稿“then everyone”不自然，改为直接呼语。
+> 「よし、じゃあみんな、
+>  ひきあげよう」
+“All right, everyone, let's pull out.”
+
+@17754 Koji · 甲児
+> 「で、おじいちゃんに呼ばれていってみたら
+>  もう奴らに攻撃された後だったんだ」
+“So anyway, Grandpa called me over, and by the time I got there they'd already attacked.”
+
+@17755 Banjo · 万丈
+> 「そうか……すまない。こちらがもっと
+>  早く動いていればよかったんだが」
+“I see... I'm sorry. If only we'd moved sooner.”
+
+@17756 Koji · 甲児
+> 「ま、しかたないさ。別に
+>  あんたのせいじゃない」
+“Well, it can't be helped. It's not your fault anyway.”
+
+@17757 Banjo · 万丈
+> 「そういってもらえると、助かる。
+>  続けてくれ」
+“I'm glad to hear you say that. Go on.”
+
+@17758 Koji · 甲児
+# 审校：“乗れ”是“坐上去/驾驶”，初稿“pilot”可接受但“get in”更贴切；祖父的话是直接引语，应用单引号括起，且末页引号需与整体引号配合。
+> 「ああ。くずれた地下施設に
+>  入ったら、おじいちゃんがいた
+“Yeah. When I went into the collapsed underground facility, Grandpa was there.
+---
+>  あのロボット、マジンガーZもそこに
+>  あったんだ。おじいちゃんはオレに、
+That robot, Mazinger Z, was there too. Grandpa told me
+---
+>  マジンガーZに乗れといった
+to get in Mazinger Z.
+---
+>  甲児、お前はあのマジンガーZさえ
+>  あれば、神にも悪魔にもなれる
+He said, 'Koji, with that Mazinger Z, you can become a god or a devil.
+---
+>  帝国は地球を悪魔の世界に
+>  しようとしている
+The Empire is trying to turn Earth into a world of devils.
+---
+>  お前は黙ってそれを見ているのか
+>  ってね」
+Are you just going to stand by and watch?'”
+
+@17759 Banjo · 万丈
+> 「それで、マジンガーZに
+>  乗り込んだってわけか
+“So that's how you ended up piloting Mazinger Z.
+---
+>  しかし、おしい人を亡くした。
+>  博士は有能な方だった」
+Still, what a loss. The doctor was a capable man.”
+
+@17760 Garrison · ギャリソン
+# 审校：“操縦訓練”指驾驶训练，初稿“Mazinger Z's pilot training”稍别扭，改为“Mazinger Z pilot training”。
+> 「万丈様、
+>  弓教授との連絡がつきました
+“Master Banjo, we've made contact with Prof. Yumi.
+---
+>  マジンガーZの操縦訓練の
+>  ために、ロボット1体と
+He says he'll send one robot and one pilot
+---
+>  パイロット1人を、こちらに
+>  向かわせるとのことです」
+here for Mazinger Z pilot training.”
+
+@17761 Banjo · 万丈
+> 「それはよかった」
+“That's good to hear.”
+
+@17762 Brad · ブラッド（按段落 3DD3）
+> 「誰だ、その弓教授ってのは」
+“Who's this Prof. Yumi?”
+
+@17763 Manami · マナミ（按段落 3DD4）
+> 「その弓教授という方は
+>  何をされている方なのですか?」
+“And what does this Prof. Yumi do?”
+
+@17764 Banjo · 万丈
+> 「以前に兜博士の助手をされて
+>  いた方だ。帝国の侵略前に
+“He used to be Dr. Kabuto's assistant. Before the Empire invaded,
+---
+>  博士から光子力の研究を
+>  まかされていた
+the doctor left him in charge of photon power research.
+---
+>  やはり僕たちが保護したうちの
+>  1人だ」
+He's one of the people we rescued, as it happens.”
+
+@17765 Beauty · ビューティ
+> 「万丈!
+>  意外と早く終わったわね」
+“Banjo! That wrapped up quicker than I expected.”
+
+@17766 Banjo · 万丈
+> 「ビューティー、レイカ。
+>  2人とも、どこにいってたんだ?」
+“Beauty, Reika. Where have you two been?”
+
+@17767 Reika · レイカ
+> 「邪魔になるといけないから、
+>  避難していたのよ」
+“We didn't want to get in the way, so we stayed out of sight.”
+
+@17768 Banjo · 万丈
+> 「みんな紹介しよう
+“Everyone, let me introduce you.
+---
+>  僕のアシスタント、
+>  ビューティーとレイカだ」
+These are my assistants, Beauty and Reika.”
+
+@17769 Beauty · ビューティ
+> 「あら失礼。
+>  ビューティフル・タチバナよ
+“Oh, how rude of me. I'm Beautiful Tachibana.
+---
+>  ビューティーって呼んでちょうだい。
+>  なかなかワイルドな人たちね」
+Call me Beauty. My, aren't you a wild-looking bunch.”
+
+@17770 Reika · レイカ
+> 「三条レイカよ、よろしく」
+“I'm Reika Sanjo. Nice to meet you.”
+
+@17771 Brad · ブラッド（按段落 3DD3）
+# 审校：“よ、よろしく、頼む”是结巴的客套，初稿“I hope we get along”不够贴切，改为更符合语境的“I'm in your care.”
+> 「あ……その……
+>  {HeroFull}だ
+“Ah... um... I'm {HeroFull}.
+---
+>  よ、よろしく、頼む」
+N-nice to meet you. I'm in your care.”
+
+@17772 Kurtz · カーツ（按段落 3DD3）
+> 「……{PartnerSurname}だ」
+“...{PartnerSurname}.”
+
+@17773 Koji · 甲児
+> 「オレ、兜甲児ってんだ
+“I'm Koji Kabuto.
+---
+>  こんな美人とご一緒できるなんて
+>  光栄だなぁ」
+Getting to share company with beauties like you, what an honor.”
+
+@17774 Beauty · ビューティ
+> 「うふふ、ありがと」
+“Hehe, thank you.”
+
+@17775 Beauty · ビューティ
+> 「あら失礼。
+>  シモーヌに{HeroName}ね
+“Oh, how rude of me. Simone and {HeroName}, was it?
+---
+>  ビューティフル・タチバナよ、
+>  ビューティって呼んでちょうだい」
+I'm Beautiful Tachibana. Call me Beauty.”
+
+@17776 Reika · レイカ
+> 「三条レイカよ、よろしく」
+“I'm Reika Sanjo. Nice to meet you.”
+
+@17777 Simone · シモーヌ
+> 「こっちこそ、よろしく頼むわ」
+“Likewise, I look forward to working with you.”
+
+@17778 Koji · 甲児
+> (うーん美人ばっかり、
+>  楽しくなりそうだぜ。へへっ)
+(Hmm, nothing but beauties. This is gonna be fun. Heheh.)
+
+@17779 Manami · マナミ（按段落 3DD4）
+> 「甲児さん?」
+“Koji?”
+
+@17780 Koji · 甲児
+> 「……え? あ、や、
+>  なんでもないぜ、うん」
+“...Huh? Oh, n-no, it's nothing, yeah.”
+
+@17781 Banjo · 万丈
+> 「ギャリソン、
+>  それで施設のほうは、どうだい?」
+“Garrison, so how are things at the facility?”
+
+@17782 Garrison · ギャリソン
+> 「はい、連絡はついております
+“Yes, we've made contact.
+---
+>  今のところ問題はないと
+>  思われます」
+As far as I can tell, there are no problems at present.”
+
+@17783 Brad · ブラッド（按段落 3DD3）
+> 「次の目的地か?
+>  今度は、どこにいくんだ?」
+“Our next destination? Where are we headed this time?”
+
+@17784 Manami · マナミ（按段落 3DD4）
+> 「次は、どこへいくのです?」
+“Where do we go next?”
+
+@17785 Banjo · 万丈
+> 「カラバの秘密施設のひとつさ。
+>  補給も、しなくちゃならないからね」
+“One of Karaba's secret facilities. We need to resupply too, after all.”
+
+@17786 Lawrence · ローレンス
+> 「ふむ、新鮮な紅茶も
+>  手に入るとよいですな」
+“Hmm, it would be nice if we could get our hands on some fresh tea as well.”
+
+@17787 Kurtz · カーツ（按段落 3DD3）
+> (……なんだというのだ、この虚しさは。
+>  俺は……このままでよいのか……?)
+(...What is this emptiness? I... is it really all right for me to stay like this...?)

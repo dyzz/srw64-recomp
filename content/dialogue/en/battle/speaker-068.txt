@@ -1,0 +1,102 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8893 Gates · ゲーツ
+> 「もらったっ!」
+“Got you!”
+
+@8894 Gates · ゲーツ
+> 「やらせん!」
+“I won't let you!”
+
+@8895 Gates · ゲーツ
+> 「そこかっ!」
+“There you are!”
+
+@8896 Gates · ゲーツ
+> 「いけっ!」
+“Go!”
+
+@8897 Gates · ゲーツ
+> 「消えろっ!」
+“Disappear!”
+
+@8898 Gates · ゲーツ
+> 「邪魔だっ!」
+“Out of my way!”
+
+@8899 Gates · ゲーツ
+> 「このっ!」
+“Why you!”
+
+@8900 Gates · ゲーツ
+> 「な、何!? うおっ!!」
+“W-what?! Whoa!!”
+
+@8901 Gates · ゲーツ
+> 「バカな……うあっ!」
+“Impossible... Ugh!”
+
+@8902 Gates · ゲーツ
+> 「うっ!! お、押されているだと!?」
+“Ugh!! I-I'm being pushed back?!”
+
+@8903 Gates · ゲーツ
+> 「くうっ!! な、なんだ、このパワーは!?」
+“Ngh!! W-what is this power?!”
+
+@8904 Gates · ゲーツ
+> 「むうっ! な、何者だ、こいつ……」
+“Hmph! W-who are you...?”
+
+@8905 Gates · ゲーツ
+> 「まだだっ! まだやられてはいない!」
+“Not yet! I'm not done yet!”
+
+@8906 Gates · ゲーツ
+> 「やるっ! しかしっ!」
+“Not bad! But still!”
+
+@8907 Gates · ゲーツ
+> 「ちっ! なんの、まだ落ちるものか!」
+“Tch! No way, I won't go down!”
+
+@8908 Gates · ゲーツ
+> 「くっ! 貴様、いい気になるなっ!」
+“Ngh! Don't get cocky, you bastard!”
+
+@8909 Gates · ゲーツ
+> 「ふん、その程度の攻撃!」
+“Hmph, is that all you've got?!”
+
+@8910 Gates · ゲーツ
+> 「効かんな」
+“That's nothing.”
+
+@8911 Gates · ゲーツ
+> 「甘いな!」
+“Too easy!”
+
+@8912 Gates · ゲーツ
+> 「そこか!」
+“There!”
+
+@8913 Gates · ゲーツ
+> 「当たるか!」
+“As if that'd hit!”
+
+@8914 Gates · ゲーツ
+> 「見える……見えるぞ!」
+“I can see it... I can see you!”
+
+@8915 Gates · ゲーツ
+> 「そんな攻撃が通用するか!」
+“That attack won't work on me!”
+
+@8916 Gates · ゲーツ
+> 「なんだ!? 弾切れか!?」
+“What?! Out of ammo?!”
+
+@8917 Gates · ゲーツ
+> 「ちっ……この距離では手出し
+>  できんか……」
+“Tch... I can't reach at this range...”

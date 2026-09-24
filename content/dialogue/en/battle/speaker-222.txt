@@ -1,0 +1,95 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10824 Wyme · ワイム
+> 「間合いが甘いんだよ!」
+“Your spacing's too sloppy!”
+
+@10825 Wyme · ワイム
+> 「おぉぉぉーっ!」
+“Ooooh!”
+
+@10826 Wyme · ワイム
+> 「さぁ正々堂々と勝負だ!」
+“Come, a fair and square duel!”
+
+@10827 Wyme · ワイム
+> 「我らと尋常に勝負せよ!」
+“Face us in honest combat!”
+
+@10828 Wyme · ワイム
+> 「いく!」
+“Here I go!”
+
+@10829 Wyme · ワイム
+> 「これならばっ!」
+“This should do it!”
+
+@10830 Wyme · ワイム
+> 「うわぁぁぁぁーっ!」
+“Uwaaaaaaah!”
+
+@10831 Wyme · ワイム
+> 「く、くそぅ、よくも!」
+“D-damn you, how dare you!”
+
+@10832 Wyme · ワイム
+> 「おぉぉ!? こ、こんなことがっ!」
+“Oh?! Th-this can't be!”
+
+@10833 Wyme · ワイム
+> 「ぐぅぅっ! やられる!?」
+“Guh! I'm being hit?!”
+
+@10834 Wyme · ワイム
+> 「くっ……なんということだ!」
+“Ngh... how can this be!”
+
+@10835 Wyme · ワイム
+> 「くっ! さすがにやるな!」
+“Ngh! You're good, I'll admit!”
+
+@10836 Wyme · ワイム
+> 「うぅ! 戦いがいのある相手だ!」
+“Ugh! A foe worth fighting!”
+
+@10837 Wyme · ワイム
+> 「かすっただけだ!」
+“It just grazed me!”
+
+@10838 Wyme · ワイム
+> 「そんなものでっ!」
+“That's nothing!”
+
+@10839 Wyme · ワイム
+> 「まだまだ!」
+“Not yet, not yet!”
+
+@10840 Wyme · ワイム
+> 「甘い甘い!」
+“Too naive, too naive!”
+
+@10841 Wyme · ワイム
+> 「なにを!」
+“What was that?!”
+
+@10842 Wyme · ワイム
+> 「見切った!」
+“I saw right through it!”
+
+@10843 Wyme · ワイム
+> 「甘い甘い!」
+“Too naive, too naive!”
+
+@10844 Wyme · ワイム
+> 「弾切れ!? これでは戦えんでは
+>  ないか!」
+“Out of ammo?! How am I supposed to fight like this!”
+
+@10845 Wyme · ワイム
+> 「な、なんと卑怯なやつらだ!」
+“W-what cowardly foes!”
+
+@10846 Wyme · ワイム
+> 「くっ……そんなところから撃つなど
+>  卑怯者のすることだぞ!」
+“Ngh... shooting from a place like that is the act of a coward!”

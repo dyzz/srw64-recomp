@@ -1,0 +1,446 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16000 Koji · 甲児
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16001 Koji · 甲児
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@16002 Koji · 甲児
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16003 Koji · 甲児
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@16004 Koji · 甲児
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@16005 Koji · 甲児
+> 「ボロットパーンチ!!」
+“Borot Punch!!”
+
+@16006 Koji · 甲児
+> 「スペシャルボロットパーンチ!!
+>  ……効かねえかな?」
+“Special Borot Punch!! ...Didn't even faze you, huh?”
+
+@16007 Koji · 甲児
+> 「スペシャルデラックスゴールデンデリシャッ
+>  ……あいて、舌かんだ」
+“Special Deluxe Golden Delish... ow, I bit my tongue.”
+
+@16008 Koji · 甲児
+> 「ちくしょう! グレートが
+>  やられるなんて!!」
+“Damn it! I can't believe Great got beaten!!”
+
+@16009 Koji · 甲児
+> 「ちくしょう! マジンガーが
+>  やられるなんて!!」
+“Damn it! I can't believe Mazinger got beaten!!”
+
+@16010 Koji · 甲児
+> 「ちくしょう! マジンガーが
+>  やられるなんて!!」
+“Damn it! I can't believe Mazinger got beaten!!”
+
+@16011 Koji · 甲児
+> 「くそっ! グレートがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Great would go down from that?!”
+
+@16012 Koji · 甲児
+> 「くそっ! マジンガーがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Mazinger would go down from that?!”
+
+@16013 Koji · 甲児
+> 「くそっ! マジンガーがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Mazinger would go down from that?!”
+
+@16014 Koji · 甲児
+> 「そんなもんでこのグレートを
+>  倒す気かよ!!」
+“You think that's enough to take down this Great?!”
+
+@16015 Koji · 甲児
+> 「そんなもんでこのマジンガーを
+>  倒す気かよ!!」
+“You think that's enough to take down this Mazinger?!”
+
+@16016 Koji · 甲児
+> 「そんなもんでこのマジンガーを
+>  倒す気かよ!!」
+“You think that's enough to take down this Mazinger?!”
+
+@16017 Koji · 甲児
+> 「超合金ニューZはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy New Z won't even flinch at an attack like that!”
+
+@16018 Koji · 甲児
+> 「超合金Zはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy Z won't even flinch at an attack like that!”
+
+@16019 Koji · 甲児
+> 「超合金Zはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy Z won't even flinch at an attack like that!”
+
+@16020 Sayaka · さやか
+> 「ミサイル発射!」
+“Missile, fire!”
+
+@16021 Sayaka · さやか
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16022 Sayaka · さやか
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@16023 Sayaka · さやか
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@16024 Sayaka · さやか
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@16025 Sayaka · さやか
+> 「ミサイル発射!!」
+“Missile, fire!!”
+
+@16026 Sayaka · さやか
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@16027 Sayaka · さやか
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@16028 Sayaka · さやか
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@16029 Sayaka · さやか
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@16030 Sayaka · さやか
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@16031 Sayaka · さやか
+# 机翻疑问：新译名：大車輪ロケットパンチ=Great Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!!」
+“Great Wheel Rocket Punch!!”
+
+@16032 Koji · 甲児
+# 审校：甲児对さやか用敬称“さやかさん”，初稿只译成 Sayaka，未体现称呼中的敬语；改为 Sayaka, ma'am 以保留对年长/女性的敬称语气。
+> 「さやかさん!」
+“Sayaka, ma'am!”
+
+@16033 Sayaka · さやか
+> 「わかってるわ、甲児くん!」
+“I know, Koji!”
+
+@16034 Koji · 甲児
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16035 Sayaka · さやか
+> 「ボス! なにやってんのよ!」
+“Boss! What are you doing?!”
+
+@16036 Boss · ボス
+> 「す、すまねぇ、さやか!」
+“S-sorry, Sayaka!”
+
+@16037 Sayaka · さやか
+> 「もう、いくわよ!」
+“Ugh, here we go!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16038 Jun · ジュン
+> 「さやか、いくわよ!」
+“Sayaka, let's go!”
+
+@16039 Sayaka · さやか
+> 「うるさいわね、わかってるわよ!」
+“Quit nagging, I know already!”
+
+@16040 Jun · ジュン
+> 「とどめよ!」
+“This is the finisher!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16041 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@16042 Sayaka · さやか
+> 「わかったわ!」
+“Got it!”
+
+@16043 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16044 Sayaka · さやか
+> 「いくわよ!」
+“Here we go!”
+
+@16045 Boss · ボス
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@16046 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16047 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@16048 Sayaka · さやか
+> 「わかったわ!」
+“Got it!”
+
+@16049 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16050 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16051 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@16052 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@16053 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16054 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16055 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@16056 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this!”
+
+@16057 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16058 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16059 Sayaka · さやか
+> 「いつでもいいわ!」
+“Any time!”
+
+@16060 Jun · ジュン
+> 「こっちもオッケイよ!」
+“I'm good here too!”
+
+@16061 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16062 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@16063 Sayaka · さやか
+> 「いいわよ、甲児くん!」
+“Go ahead, Koji!”
+
+@16064 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16065 Sayaka · さやか
+> 「チャンスだわ!」
+“Now's our chance!”
+
+@16066 Boss · ボス
+# 审校：ボス的“だわさ”是口癖，不是称呼 Boss；初稿误加 boss，删去。
+> 「ぶっとばしてやるだわさ!」
+“I'll knock 'em flying!”
+
+@16067 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16068 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@16069 Sayaka · さやか
+> 「覚悟しなさい!」
+“Prepare yourself!”
+
+@16070 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16071 Koji · 甲児
+> 「さやかさん、マジンガーブレードだ!」
+“Sayaka, the Mazinger Blade!”
+
+@16072 Sayaka · さやか
+> 「わかったわ、甲児くん!」
+“Got it, Koji!”
+
+@16073 Koji · 甲児
+> 「よぉし、くらいやがれ!」
+“All right, take this!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@16074 Sayaka · さやか
+> 「ボス、わかってる!?
+>  マジンガーブレードよ!」
+“Boss, you got it?! The Mazinger Blade!”
+
+@16075 Boss · ボス
+# 审校：同上，ボス的“だわさ”不是称呼 Boss，初稿误加 boss，删去。
+> 「おう、いくだわさ!」
+“Yeah, here we go!”
+
+@16076 Sayaka · さやか
+> 「よぉし!」
+“All right!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@16077 Jun · ジュン
+> 「さやかさん、剣をつかうのよ!」
+“Sayaka, use the sword!”
+
+@16078 Sayaka · さやか
+> 「ええ、わかってるわ!」
+“Yeah, I know!”
+
+@16079 Jun · ジュン
+> 「オッケイ、いくわよ!」
+“Okay, here we go!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@16080 Sayaka · さやか
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@16081 Sayaka · さやか
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@16082 Sayaka · さやか
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@16083 Sayaka · さやか
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@16084 Sayaka · さやか
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@16085 Sayaka · さやか
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@16086 Sayaka · さやか
+> 「マリンビーム!」
+“Marine Beam!”
+
+@16087 Sayaka · さやか
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@16088 Sayaka · さやか
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@16089 Sayaka · さやか
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16090 Sayaka · さやか
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16091 Sayaka · さやか
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16092 Sayaka · さやか
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16093 Sayaka · さやか
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16094 Sayaka · さやか
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16095 Sayaka · さやか
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@16096 Sayaka · さやか
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16097 Sayaka · さやか
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@16098 Sayaka · さやか
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@16099 Sayaka · さやか
+> 「バックスピンキック!」
+“Backspin Kick!”

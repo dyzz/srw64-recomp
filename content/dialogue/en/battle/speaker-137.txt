@@ -1,0 +1,29 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7178 Kenji · ケンジ
+> 「うおぉ!? 全員退避しろっ!」
+“Uwooo?! Everyone, fall back!”
+
+@7179 Kenji · ケンジ
+> 「くっ、なんとか持ちこたえろ!」
+“Ngh, hold out as best you can!”
+
+@7186 Kenji · ケンジ
+> 「ひるむな!」
+“Don't falter!”
+
+@7187 Kenji · ケンジ
+> 「うわぁぁぁっ!」
+“Uwaaaaaah!”
+
+@7196 Kenji · ケンジ
+> 「おぉ!?」
+“Oh?!”
+
+@7200 Kenji · ケンジ
+> 「旋回しろ!」
+“Bank around!”
+
+@7203 Kenji · ケンジ
+> 「よーし、いい調子だ!」
+“All right, we're doing great!”

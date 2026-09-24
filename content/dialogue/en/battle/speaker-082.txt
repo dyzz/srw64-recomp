@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8108 Rezin · レズン
+> 「はっ!」
+“Ha!”
+
+@8109 Rezin · レズン
+> 「落ちなっ!!」
+“Fall!”
+
+@8110 Rezin · レズン
+> 「もらったっ!!」
+“Got you!”
+
+@8111 Rezin · レズン
+> 「アハハハハ、落ちなよっ!!」
+“Ahahahaha, fall!”
+
+@8112 Rezin · レズン
+> 「くらいなよ!!」
+“Take this!”
+
+@8113 Rezin · レズン
+> 「かんねんしなっ!!」
+“Give it up!”
+
+@8114 Rezin · レズン
+> 「もらったっ!!」
+“Got you!”
+
+@8115 Rezin · レズン
+> 「アタシだけで掃除してやるよ!」
+“I'll wipe them all out myself!”
+
+@8116 Rezin · レズン
+> 「こういうときに数を減らす!」
+“This is when you thin out their numbers!”
+
+@8117 Rezin · レズン
+> 「みーつけた」
+“Found you.”
+
+@8118 Rezin · レズン
+> 「とりついた!」
+“I'm on you!”
+
+@8119 Rezin · レズン
+> 「あれかっ!?」
+“That one?!”
+
+@8120 Rezin · レズン
+> 「ニュータイプだ、強化人間だって、
+>  敵の足を止めてくれなくちゃさ!」
+“Newtype, enhanced human, whatever—you've gotta stop the enemy in their tracks!”
+
+@8121 Rezin · レズン
+> 「こ、このアタシが直撃をうけたのか!?」
+“I-I took a direct hit?!”
+
+@8122 Rezin · レズン
+> 「バカな!? このアタシが!?」
+“Impossible! Me?!”
+
+@8123 Rezin · レズン
+> 「直撃だと!?」
+“A direct hit?!”
+
+@8124 Rezin · レズン
+> 「いかん! やられる!?」
+“Damn! I'm going down?!”
+
+@8125 Rezin · レズン
+> 「くっ! ダメージがでかすぎるか!?」
+“Ngh! That's too much damage?!”
+
+@8126 Rezin · レズン
+> 「なんなんだ! この力は!?」
+“What is this power?!”
+
+@8127 Rezin · レズン
+> 「アタシが直撃を受けている!?」
+“I'm taking a direct hit?!”
+
+@8128 Rezin · レズン
+# 审校：原文“ちょこまかと”形容对方灵活闪躲，初稿“you little pest”带有额外贬义且不够贴切，改为更贴近原意。
+> 「やるじゃないか、ちょこまかと!」
+“Not bad, darting around like that!”
+
+@8129 Rezin · レズン
+> 「くっ! やるじゃないか!」
+“Ngh! Not bad!”
+
+@8130 Rezin · レズン
+> 「くっ!! やるなっ!!」
+“Ngh! Not bad!”
+
+@8131 Rezin · レズン
+> 「なにぃっ!?」
+“What?!”
+
+@8132 Rezin · レズン
+> 「なにっ!?」
+“What?!”
+
+@8133 Rezin · レズン
+> 「うっ!」
+“Ugh!”
+
+@8134 Rezin · レズン
+> 「ハン! そんなものかい!」
+“Hah! Is that all?!”
+
+@8135 Rezin · レズン
+> 「ハハハハ、その程度かいっ!!」
+“Hahahaha, is that all?!”
+
+@8136 Rezin · レズン
+> 「その程度かい!!」
+“Is that all?!”
+
+@8137 Rezin · レズン
+# 审校：原文“なまいきやっちゃって”是嘲讽对方狂妄，初稿“Don't get cocky!”是命令式，改为更贴近原文语气的陈述式。
+> 「なまいきやっちゃって!」
+“Getting cocky, aren't you!”
+
+@8138 Rezin · レズン
+> 「どこを狙ってる!」
+“What are you aiming at?!”
+
+@8139 Rezin · レズン
+> 「みえみえなんだよ!!」
+“It's so obvious!”
+
+@8140 Rezin · レズン
+> 「あたるかい!」
+“As if that'll hit!”
+
+@8141 Rezin · レズン
+# 审校：原文“ビームは効かないっていってる!!”强调“我说过了”，初稿缺少“I told you”的强调，补充逗号使语气更自然。
+> 「ビームは効かないっていってる!!」
+“I told you, beams don't work!”
+
+@8142 Rezin · レズン
+> 「効かないんだよ!!」
+“It doesn't work!”
+
+@8143 Rezin · レズン
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@8144 Rezin · レズン
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far?!”

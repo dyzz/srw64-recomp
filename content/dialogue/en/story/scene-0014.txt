@@ -1,0 +1,1109 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@19095 Quattro · クワトロ
+# 审校：原译“The occupation army's new commander?”漏译了“だと?”的疑问语气，改为完整疑问句。
+> 「占領軍の新司令官だと?」
+“A new commander for the occupation army?”
+
+@19096 Bright · ブライト
+> 「そうだ。先ほど准将から
+>  連絡があった
+“That's right. The Brigadier General contacted me a moment ago.
+---
+>  グレスコ総督の息子だそうだ」
+Apparently, he's Governor Gresco's son.”
+
+@19097 Eiji · エイジ
+> 「……ル・カイン」
+“...Le Cain.”
+
+@19098 Bright · ブライト
+> 「知っているのか、エイジ?」
+“You know him, Eiji?”
+
+@19099 Eiji · エイジ
+> 「天才的な戦術家、そして
+>  自信とうぬぼれの区別のつかない
+“A brilliant tactician, and a man who can't tell confidence apart from conceit.
+---
+>  男です。あいつが来た以上は、今
+>  以上に帝国の支配が強まる」
+With him here, the Empire's grip will only tighten.”
+
+@19100 Quattro · クワトロ
+> 「ふむ……
+>  それでブレックス准将はなんと?」
+“Hmm... So what did Brigadier General Blex say?”
+
+@19101 Bright · ブライト
+> 「しばらく様子をみるということだ」
+“That we should wait and see for a while.”
+
+@19102 Roux · ルー
+> 「ちょっと、聞いた?
+>  旧ニューヨークのゲリラが
+“Hey, did you hear? The guerrillas in old New York are apparently
+---
+>  ル・カインの襲撃を計画してる
+>  らしいよ」
+planning an attack on Le Cain.”
+
+@19103 David · デビッド
+> 「なんだって!? ……あいつらか」
+“What?! ...Those guys, huh.”
+
+@19104 Bright · ブライト
+> 「まずいな……。就任直後に襲撃
+>  されたとあっては
+“This is bad... If he's attacked right after taking office,
+---
+>  帝国軍も黙っているわけがない。
+>  こちらにも影響がでる」
+the Imperial Army won't stay quiet. It'll affect us too.”
+
+@19105 David · デビッド
+> 「俺たちが行ってやめさせてくるぜ。
+>  エイジ、来てくれ」
+“We'll go and stop them. Eiji, come with me.”
+
+@19106 David · デビッド
+> 「俺たちが行ってやめさせてくるぜ」
+“We'll go and stop them.”
+
+@19107 Bright · ブライト
+> 「よし、エイジと{HeroName}
+>  も一緒にいってくれ
+“All right, Eiji and {HeroName}, go with them.
+---
+>  ただし、不用意な真似はするなよ」
+But don't do anything reckless.”
+
+@19108 Selain · セレイン（按段落 3DD2）
+> 「わかりました」
+“Understood.”
+
+@19109 Bright · ブライト
+> 「我々はここで待機する。頼むぞ」
+“We'll wait here. I'm counting on you.”
+
+@19110 Eiji · エイジ
+> 「はい」
+“Yes.”
+
+@19111 Duo · デュオ
+> 「なんだよ、せっかく人が
+>  親切にしてやってんのに
+“What the hell, man? I'm being nice to you here.
+---
+>  お前のガンダムは
+>  修理が必要なんだろ」
+Your Gundam needs repairs, doesn't it?”
+
+@19112 Heero · ヒイロ
+> 「頼んだ覚えはない。それに俺のMSは
+>  他人にさわってほしくない。それだけだ」
+“I didn't ask for your help. And I don't want anyone touching my MS. That's all.”
+
+@19113 Duo · デュオ
+> 「へぇへぇ。そういや、お前聞いたか?
+>  帝国に新司令官が
+“Yeah, yeah. By the way, did you hear? The Empire's getting a new
+---
+>  来るんだってよ。噂じゃとんでもない
+>  ヤツらしいぜ」
+commander. Rumor is he's a real piece of work.”
+
+@19114 Heero · ヒイロ
+> 「……俺には関係ない」
+“...Not my problem.”
+
+@19115 Duo · デュオ
+> 「……まったくどうしてこんなヤツを
+>  助けちまったのかなぁ
+“...I really don't know why I saved a guy like you.
+---
+>  無口で無鉄砲で無愛想で
+>  あーやだやだ。俺がお前だったら
+Silent, reckless, and rude. Ugh, what a pain. If I were you,
+---
+>  その暗い性格のろって、
+>  とっくの昔に人間やめてるぜ」
+I'd have cursed this gloomy personality of yours and stopped being human ages ago.”
+
+@19116 Heero · ヒイロ
+> 「おい」
+“Hey.”
+
+@19117 Duo · デュオ
+> 「なんだよ。いまさら協力してくれって
+>  いっても遅いんだよ」
+“What? It's too late to ask for my help now.”
+
+@19118 Heero · ヒイロ
+> 「少し黙っててくれ」
+“Be quiet for a moment.”
+
+@19119 Duo · デュオ
+> 「……はいはい、
+>  どうもすいませんでしたぁ」
+“...Yeah, yeah. Sorry about that.”
+
+@19120 Duo · デュオ
+> (どうもこいつの次の目標は、
+>  俺と同じみたいだな
+(Looks like his next target is the same as mine.
+---
+>  ……まったくよく似てやがる。
+>  てことは6つめに関しても
+...We really are alike. Which means the sixth one is
+---
+>  同様ってわけか……)
+the same too, huh...)
+
+@19121 Le Cain · ル・カイン
+> (私が来たからには、
+>  帝国に刃を向ける者たちも
+(Now that I've come, those who dare raise their blades against the Empire
+---
+>  私の足もとに血まみれの体を
+>  投げ出す事になろう)
+will throw their blood-soaked bodies at my feet.)
+
+@19122 Giura · ギウラ
+> 「ご苦労様です。
+>  準備は整っております」
+“Thank you for your hard work. Everything is ready.”
+
+@19123 Le Cain · ル・カイン
+> 「そいつらか、
+>  使える地球人というのは」
+“So these are them? The Earthlings who are useful.”
+
+@19124 Giura · ギウラ
+> 「はっ、ロアン・デミトリッヒと
+>  トレーズ・クシュリナーダです」
+“Yes, sir. Roanne Demitrich and Treize Khushrenada.”
+
+@19125 Roanne · ロアン
+> 「お呼びいただき光栄です。
+>  私にできますことはなんなりと
+“I am honored by your summons. Whatever I can do, please
+---
+>  お申し付けください」
+command it of me.”
+
+@19126 Treize · トレーズ
+> 「スペシャルズを代表し、閣下の
+>  就任をお喜び申し上げます」
+“On behalf of the Specials, I offer my congratulations on Your Excellency's appointment.”
+
+@19127 Le Cain · ル・カイン
+> 「フッ、こういう地球人もいるか。
+>  よかろう、存分に働いてもらうぞ」
+“Heh, so there are Earthlings like this too. Very well, I'll have you work to your fullest.”
+
+@19128 David · デビッド
+> 「中止するまでは
+>  何度でも言ってやる!
+“I'll say it as many times as it takes until you call it off!
+---
+>  ル・カインを襲撃するなんて
+>  バカな真似はやめろ!」
+Stop this foolish attack on Le Cain!”
+
+@19129 Guerrilla · ゲリラ
+> 「バカな真似とはなんだ!
+“What do you mean, foolish?!
+---
+>  お前たち解放戦線の手を
+>  借りるわけではない
+We're not asking for help from you Liberation Front people.
+---
+>  グレスコの息子を倒して見ろ、
+>  帝国軍に与える精神的
+Just try defeating Gresco's son. The psychological blow to the
+---
+>  打撃は、はかりしれない」
+Imperial Army would be immeasurable.”
+
+@19130 David · デビッド
+> 「それが甘いんだ。
+>  みくびりすぎている
+“That's naive. You're underestimating him.
+---
+>  組織と仲間を失ってからでは、
+>  取り返しがつかないんだぞ」
+Once you lose your organization and your comrades, you can't take it back.”
+
+@19131 Selain · セレイン（按段落 3DD2）
+> 「それが甘いというのだ。仮にも
+>  占領軍の新司令官として
+“That's what naive means. A man coming to take up the post of
+---
+>  赴任してくる男が、そう簡単に
+>  やれるわけがない。全滅してからでは
+new commander of the occupation army wouldn't be that easy to beat. Once you're wiped out,
+---
+>  取り返しがつかないぞ」
+you can't take it back.”
+
+@19132 Guerrilla · ゲリラ
+> 「俺たちが銃やバズーカでやるとでも
+>  思ってるのか。MSだって
+“You think we're going to do this with guns and bazookas? We've even got
+---
+>  手に入れている。どうだ、
+>  文句はあるまい」
+MS. What, got any complaints?”
+
+@19133 Eiji · エイジ
+> 「無理だ。悪いことはいわない
+>  ル・カインの襲撃は中止するんだな」
+“It's impossible. I'm telling you for your own good, call off the attack on Le Cain.”
+
+@19134 Guerrilla · ゲリラ
+> 「なんだお前は」
+“Who the hell are you?”
+
+@19135 Eiji · エイジ
+> 「アルバトロ・ナル・エイジ・アスカ」
+“Albatro Null Eiji Asuka.”
+
+@19136 Guerrilla · ゲリラ
+> 「エイジ・アスカ……あの混血か。
+>  もういい。余計な手出しは
+“Eiji Asuka... that half-breed, huh. Enough. I'd like you to stop
+---
+>  やめてもらいたいね。俺たちの力を
+>  見せてやる」
+sticking your nose in. We'll show you what we can do.”
+
+@19137 Selain · セレイン（按段落 3DD2）
+> 「……こういう連中には何を言っても
+>  ムダだ。戻ろう」
+“...There's no point saying anything to these people. Let's go back.”
+
+@19138 Bright · ブライト
+> 「そうか、やはり無理だったか。
+>  しかたあるまい
+“I see, so it was no use after all. It can't be helped.
+---
+>  大尉、出撃の準備を
+>  しておいてくれ」
+Captain, get ready to launch.”
+
+@19139 Ark · アーク（按段落 3DD1）
+> 「どうするんです?」
+“What are we going to do?”
+
+@19140 Selain · セレイン（按段落 3DD2）
+> 「ああいう連中は自滅させたほうが
+>  よいと思いますが」
+“I think it's better to let people like that destroy themselves.”
+
+@19141 Quattro · クワトロ
+> 「見捨てるわけにも、いかんだろう。
+>  我々は帝国をこの地球より
+“We can't just abandon them, either. We have to drive the Empire from this Earth.
+---
+>  追い出さねばならん
+>  同志は多い方がいい」
+The more comrades we have, the better.”
+
+@19142 Bright · ブライト
+> 「ニューヨークか。少しばかり無茶を
+>  せにゃならんな」
+“New York, huh. We'll have to be a little reckless.”
+
+@19143 Guerrilla · ゲリラ
+> 「……見てろ……
+>  俺たちがやってやる」
+“...Just watch... We'll do it.”
+
+@19144 Guerrilla · ゲリラ
+> 「よし……いまだ、やれ!」
+“All right... now, go!”
+
+@19145 Le Cain · ル・カイン
+> 「なに!?」
+“What?!”
+
+@19146 Guerrilla · ゲリラ
+> 「あれが、ル・カインだ!
+>  一気にいくぞ!!」
+“That's Le Cain! We're going in all at once!!”
+
+@19147 Guerrilla · ゲリラ
+> 「やった!!
+>  誰が甘い、誰がバカなまねだ!
+“We did it!! Who's naive, who's the fool now?!
+---
+>  見ろ、ル・カインは俺たちが倒した!
+>  奇襲は成功だ!
+Look, we've beaten Le Cain! The surprise attack worked!
+---
+>  見たか、デビッド!
+>  解放戦線がなんだ!」
+You see that, David?! So much for the Liberation Front!”
+
+@19148 Giura · ギウラ
+> 「バカどもめが。一人たりとも
+>  生かして帰すな!」
+“You fools. Don't let a single one of them leave alive!”
+
+@19149 Guerrilla · ゲリラ
+> 「くそぅ帝国め……お、お前は!?」
+“Damn you, Empire... Y-you're?!”
+
+@19150 Le Cain · ル・カイン
+> 「私がお前らごとき地球人の
+>  ワナに、はまると思うのか
+“Do you think I'd fall into a trap set by Earthlings like you?
+---
+>  己の策のなさを恨め」
+Curse your own lack of cunning.”
+
+@19151 Guerrilla · ゲリラ
+> 「うわあぁぁぁぁぁーっ!!」
+“Uwaaaaaaaaah!!”
+
+@19152 Le Cain · ル・カイン
+> 「地球人どもよ、聞け! 私に
+>  立ち向かうことが、
+“Earthlings, hear me! I will now show you just how
+---
+>  いかに愚かな行為であるか、今から
+>  みせてやる。我々に逆らおうとするな
+foolish it is to stand against me. Do not defy us.
+---
+>  お前たち地球人の幸せは、
+>  我々に支配されることにあるのだ
+The happiness of you Earthlings lies in being ruled by us.
+---
+>  支配するものと、されるもの。
+>  およそ宇宙にはその原理しかない
+Rulers and ruled. In the universe, there is no principle but that.
+---
+>  よりよき支配、無垢なる従順。
+>  これこそが理想なる世を現出する
+Better rule, pure obedience. This alone is the truth that brings forth
+---
+>  ただ一つの真理だ。私が地球に
+>  来たのは、その原理に基づいて
+an ideal world. I came to Earth to establish true peace
+---
+>  真の平和を確立するためだ。
+>  地球的なるものは一切捨てよ!
+based on that principle. Cast aside everything Earthly!
+---
+>  我を信じよ! 帝国を信じよ!」
+Believe in me! Believe in the Empire!”
+
+@19153 Quattro · クワトロ
+> 「勝手なことを!」
+“How self-serving!”
+
+@19154 Le Cain · ル・カイン
+> 「なんだ貴様らは?」
+“Who are you people?”
+
+@19155 Roux · ルー
+> 「地球解放戦線機構よ!
+“The Liberation Front of the Earth! What we want
+---
+>  私たちが望むのは、帝国が
+>  地球から、いなくなることだわ!」
+is for the Empire to disappear from Earth!”
+
+@19156 Eiji · エイジ
+> 「俺たちは、あんたとグレスコ総督を
+>  かならずこの地球から
+“We will drive you and Governor Gresco
+---
+>  追い出してみせる!」
+off this Earth, no matter what!”
+
+@19157 Le Cain · ル・カイン
+> 「フッ、クズめが
+“Heh, you scum.
+---
+>  あいにくと私は
+>  道理のわからぬ地球のサルと
+Unfortunately, I have no ear for the ravings of Earth apes
+---
+>  血の濁った男の世迷いごとを
+>  聞く耳は、持ち合わせておらん」
+who know no reason, or of a man with tainted blood.”
+
+@19158 Eiji · エイジ
+> 「なに!?」
+“What?!”
+
+@19159 Le Cain · ル・カイン
+> 「アルバトロ・ナル・エイジ・アスカ……
+>  帝国の裏切り者
+“Albatro Null Eiji Asuka... traitor to the Empire.
+---
+>  お前とは必ず会えると思っていたぞ」
+I knew I would meet you again.”
+
+@19160 Quattro · クワトロ
+> 「いいか、作戦目標は
+>  ゲリラ機の脱出の援護だ
+“Listen, our objective is to cover the guerrillas' escape.
+---
+>  1機でも多く脱出させる。
+>  彼らの脱出が終わり次第
+We get as many units out as we can. Once their escape is complete,
+---
+>  我々も撤退するぞ」
+we withdraw as well.”
+
+@19161 Ark · アーク（按段落 3DD1）
+> 「わかりました」
+“Understood.”
+
+@19162 Selain · セレイン（按段落 3DD2）
+> 「了解」
+“Roger.”
+
+@19163 Quattro · クワトロ
+> 「聞こえているな?」
+“You hear me?”
+
+@19164 Guerrilla · ゲリラ
+> 「あ、ああ。ありがたい!」
+“Y-yeah. Thanks!”
+
+@19165 Le Cain · ル・カイン
+# 审校：原文为「フフフ」三音节，初稿只译出两个 heh，补为三个以更贴合原文笑声节奏。
+> 「フフフ、
+>  なかなか楽しませてくれそうだな
+“Heh heh heh, you look like you'll be quite entertaining.
+---
+>  ハーハハハハハッ、
+>  せん滅せよ!」
+Hahahahahaha! Annihilate them!”
+
+@19166 Karla · カルラ
+> (ゲイル中尉の仇は、この私が……)
+(I will avenge Lieutenant Gale myself...)
+
+@19167 Treize · トレーズ
+> 「…………」
+“...”
+
+@19168 Roanne · ロアン
+> 「……ばかなことを……」
+“...What foolishness...”
+
+@19169 David · デビッド
+> 「バカにしやがって、
+>  地球人を、なめきってやがる
+“They mock us, they underestimate Earthlings completely.
+---
+>  しかもあの裏切り者の
+>  ブタまで一緒だ」
+And that traitorous pig is with them too.”
+
+@19170 Gosterro · ゴステロ
+> 「ぐぐぅぅ……エイジーッ! エイジーッ!!」
+“Guguguh... Eiji! Eijiii!!”
+
+@19171 Eiji · エイジ
+> 「まさか……ゴステロ!?
+>  生きていたのか?」
+“No way... Gosterro?! You're alive?”
+
+@19172 Gosterro · ゴステロ
+> 「さぁてなぁ、貴様らのおかげで
+>  体中機械だらけだ
+“Who knows. Thanks to you lot, my whole body's nothing but machinery.
+---
+>  この体のどこからどこまでが
+>  生きていることやら
+I don't even know how much of this body is still alive.
+---
+>  お礼はたっぷりと、させてもらうぜぇ」
+I'll be giving you plenty of thanks.”
+
+@19173 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「特佐、ご無事で?」
+“Colonel, are you unharmed?”
+
+@19174 Treize · トレーズ
+> 「こちらは問題ない」
+“No problems here.”
+
+@19175 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「では我々は敵対機の撃破に
+>  かかります」
+“Then we'll begin destroying the enemy machines.”
+
+@19176 Treize · トレーズ
+> 「それで構わない。君たちにまかせる」
+“That will do. I leave it to you.”
+
+@19177 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「はっ。ガイア特尉、よろしく頼みます」
+“Yes, sir. Special Lieutenant Gaia, I'm counting on you.”
+
+@19178 Gaia · ガイア
+> 「まかせておけ。
+>  オルテガ、マッシュ
+“Leave it to me. Ortega, Mash,
+---
+>  敵の退路をふさぐぞ」
+we're blocking their escape route.”
+
+@19179 Ortega · オルテガ
+> 「おう。ガイア、整備兵に無理を
+>  いってつけさせたこの装備だ
+“Yeah. Gaia, this equipment's what we strong-armed the mechanics into fitting for us.
+---
+>  使わぬわけにはいくまいな」
+No way we're not using it.”
+
+@19180 Gaia · ガイア
+> 「むろんだ。使い勝手の報告も
+>  してやらねばならん
+“Of course. We've got to report back on how well it handles too.
+---
+>  機会があれば、あれをやるぞ」
+If we get the chance, we're doing that.”
+
+@19181 Mash · マッシュ
+> 「了解だ。ドライセンでどこまでできるか
+>  試してみるとしよう」
+“Understood. Let's see just how far the Dreissen can go.”
+
+@19182 Ark · アーク（按段落 3DD1）
+> 「またあいつだ……確か、
+>  {PartnerSurname}って……」
+“That guy again... I'm pretty sure his name's {PartnerSurname}...”
+
+@19183 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「あの少年……
+>  格段に腕をあげているようだな」
+“That boy... he seems to have improved by leaps and bounds.”
+
+@19184 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……あの少年は脱出したのか……。
+>  無理な戦いをする」
+“...So that boy escaped... He fights recklessly.”
+
+@19185 Rish · リッシュ（按段落 3DD2）
+> 「なんとも大胆なことをする連中だぜ
+>  なんでこうまで、できるのかね」
+“These guys pull some seriously bold stunts. How do they even manage it?”
+
+@19186 Treize · トレーズ
+> 「{PartnerSurname}特尉、
+>  ガイア特尉
+“Special Lieutenant {PartnerSurname}, Special Lieutenant Gaia,
+---
+>  ル・カイン閣下の部隊に協力し
+>  敵を撃滅してくれたまえ」
+cooperate with Lord Le Cain's forces and annihilate the enemy.”
+
+@19187 Rish · リッシュ（按段落 3DD2）
+> 「ま、やれるだけやってみましょう」
+“Well, I'll do what I can.”
+
+@19188 Gaia · ガイア
+> 「了解であります、特佐。オルテガ、
+>  マッシュ、敵の退路をふさぐぞ」
+“Understood, Colonel. Ortega, Mash, we're blocking their escape route.”
+
+@19189 Ortega · オルテガ
+> 「おう。ガイア、整備兵に無理を
+>  いってつけさせたこの装備、さっそく
+“Yeah. Gaia, this equipment we strong-armed the mechanics into fitting, the chance
+---
+>  試す機会がめぐってきたな」
+to try it out has come around already.”
+
+@19190 Gaia · ガイア
+> 「あの連中に使い勝手の報告も
+>  してやらねばならん
+“We've got to report back to those people on how well it handles too.
+---
+>  1度はあれをやっておきたいところだな」
+I'd like to pull that off at least once.”
+
+@19191 Mash · マッシュ
+> 「了解だ。ドライセンでどこまでできるか
+>  試してみるとしよう」
+“Understood. Let's see just how far the Dreissen can go.”
+
+@19192 Selain · セレイン（按段落 3DD2）
+> 「……奴か」
+“...It's him.”
+
+@19193 Rish · リッシュ（按段落 3DD2）
+# 审校：原文「なぁ{HeroName}ちゃん」带有亲昵调侃语气，初稿用 little {HeroName} 可接受，但为更自然改为直接称呼并保留轻浮感。
+> 「おっと、{HeroName}もいるのか
+“Whoa, {HeroName}'s here too.
+---
+>  なぁ{HeroName}ちゃん、
+>  ものは相談なんだが……」
+Hey there, {HeroName}, I've got a proposition for you...”
+
+@19194 Selain · セレイン（按段落 3DD2）
+> 「黙れ!」
+“Silence!”
+
+@19195 Rish · リッシュ（按段落 3DD2）
+> 「お前、こっちにつかねぇか?
+>  惚れた女とやりあうのは
+“Why don't you come over to our side? Fighting a woman I've fallen for
+---
+>  どうも性にあわねぇ」
+just doesn't sit right with me.”
+
+@19196 Selain · セレイン（按段落 3DD2）
+> 「な……に? 貴様、
+>  私をバカにしているのか」
+“Wha... what? Are you mocking me?”
+
+@19197 Rish · リッシュ（按段落 3DD2）
+> 「そんなつもりはねぇんだが……どうだ?
+>  長い目でみりゃお前らに
+“That's not my intent... So how about it? In the long run, you people
+---
+>  勝ち目はないぜ?」
+don't stand a chance, you know?”
+
+@19198 Selain · セレイン（按段落 3DD2）
+> 「……貴様に、そんなことをいわれる
+>  筋合いはない
+“...You've got no right to say such things to me.
+---
+>  帝国につくくらいなら、
+>  この場でル・カインと差し違えて
+If it means siding with the Empire, I'd rather take Le Cain down with me
+---
+>  死ぬほうがましだ。
+>  二度と口にするな!」
+and die here. Never say it again!”
+
+@19199 Rish · リッシュ（按段落 3DD2）
+> 「ひゅーっ、いいねぇ、
+>  さすが俺が見込んだ女だ
+“Whew, nice, just what I'd expect from the woman I've got my eye on.
+---
+>  そういうだろうと思ってたぜ」
+I figured you'd say that.”
+
+@19200 Selain · セレイン（按段落 3DD2）
+> 「貴様……やはり、ざれ言か!
+>  許さん!」
+“You... so it was just a joke after all! I won't forgive you!”
+
+@19201 Rish · リッシュ（按段落 3DD2）
+> 「おっと、あの部隊だってのに
+>  {HeroName}はやられちまったのか
+“Whoa, so {HeroName} got taken out even with that unit around.
+---
+>  俺が惚れた女にしちゃ、
+>  ちょっとばかり早すぎる気もするが
+For the woman I've fallen for, it feels a bit too soon, but
+---
+>  ま、やりあうよりはマシか」
+well, it beats fighting each other.”
+
+@19202 Quattro · クワトロ
+> 「くっ、全滅か……
+>  作戦は失敗だ
+“Ngh, wiped out... The operation's a failure.
+---
+>  全機撤退するぞ。
+>  グリーンエリアへの撤収急げよ」
+All units, retreat. Hurry back to the Green Area.”
+
+@19203 Quattro · クワトロ
+> 「よし、我々も撤退するぞ。
+>  全機グリーンエリアまで引け」
+“All right, we're retreating too. All units, fall back to the Green Area.”
+
+@19204 Eiji · エイジ
+> 「ル・カイン。誇りのためだけに戦うこと
+>  もできるのが、地球人だということを
+“Le Cain. Remember this well: Earthlings can fight for pride alone,
+---
+>  よく覚えておけ!」
+and nothing else!”
+
+@19205 Le Cain · ル・カイン
+> 「フフフ、おもしろい。
+>  この星は刺激に満ちている
+“Heh heh, interesting. This planet is full of thrills.
+---
+>  気に入った!
+>  ハーッハッハッハッハッ!!」
+I like it! Hahahahahaha!!”
+
+@19206 Le Cain · ル・カイン
+> 「なに!? フッフフフフフ、
+>  なるほど口だけではないようだな
+“What?! Heh heh heh heh, I see, so you're not all talk after all.
+---
+>  だがこの程度で帝国に
+>  逆らおうなど、片腹痛いわ」
+But thinking you can defy the Empire with this much is laughable.”
+
+@19207 Quattro · クワトロ
+> 「いかん、全員退くぞ!!」
+“This is bad, everyone retreat!!”
+
+@19208 Eiji · エイジ
+> 「ル・カイン、誇りのためだけに
+>  戦うこともできるのが
+“Le Cain, remember this well: Earthlings can fight for pride alone,
+---
+>  地球人だということを、
+>  よく覚えておけ!」
+and nothing else!”
+
+@19209 Le Cain · ル・カイン
+> 「フフフ、おもしろい。
+>  この星は刺激に満ちている
+“Heh heh, interesting. This planet is full of thrills.
+---
+>  気に入った!
+>  ハーッハッハッハッハッ!!」
+I like it! Hahahahahaha!!”
+
+@19210 Le Cain · ル・カイン
+> 「なに!? フッフフフフフ、
+>  なるほど口だけではないようだな
+“What?! Heh heh heh heh, I see, so you're not all talk after all.
+---
+>  だがこの程度で帝国に
+>  逆らおうなど、片腹痛いわ」
+But thinking you can defy the Empire with this much is laughable.”
+
+@19211 Quattro · クワトロ
+> 「いかん、全員退くぞ!!」
+“This is bad, everyone retreat!!”
+
+@19212 Eiji · エイジ
+> 「ル・カイン、誇りのためだけに
+>  戦うこともできるのが
+“Le Cain, remember this well: Earthlings can fight for pride alone,
+---
+>  地球人だということを、
+>  よく覚えておけ!」
+and nothing else!”
+
+@19213 Le Cain · ル・カイン
+> 「フフフ、おもしろい。
+>  この星は刺激に満ちている
+“Heh heh, interesting. This planet is full of thrills.
+---
+>  気に入った!
+>  ハーッハッハッハッハッ!!」
+I like it! Hahahahahaha!!”
+
+@19214 Eiji · エイジ
+> 「ル・カイン、覚悟!」
+“Le Cain, prepare yourself!”
+
+@19215 Le Cain · ル・カイン
+> 「貴様ごときが、この私に
+>  かなうと思うな!」
+“Don't think the likes of you can stand against me!”
+
+@19216 对手
+> 「腕をあげているな、少年。どうしても
+>  戦いをやめぬ気か?」
+“You've improved, boy. Are you truly set on never stopping this fight?”
+
+@19217 主角
+> 「お前が、それをいうのか!?」
+“You're the one saying that?!”
+
+@19218 主角
+> 「お前は目ざわりだ。沈め!」
+“You're an eyesore. Sink!”
+
+@19219 对手
+> 「ま、この場合しかたねぇよなぁ」
+“Well, guess there's no choice in this case.”
+
+@19220 Karla · カルラ
+> 「エイジ……貴様だけは許さんぞ!」
+“Eiji... You, of all people, I will never forgive!”
+
+@19221 Gosterro · ゴステロ
+> 「エイジィィ、貴様だけはこの俺の手
+>  でぶち殺してやる!」
+“Eijiii, you're the one I'm going to kill with my own hands!”
+
+@19222 Eiji · エイジ
+> 「ゴステロ! お前にやられるわけには
+>  いかない!」
+“Gosterro! I can't afford to be beaten by you!”
+
+@19223 Aboly · アポリー
+> 「結局ムダ足を踏みましたね」
+“In the end, we came all this way for nothing.”
+
+@19224 Bright · ブライト
+> 「しかたあるまい。ル・カインか……
+>  やっかいな相手だな」
+“It can't be helped. Le Cain, huh... He's a troublesome opponent.”
+
+@19225 Quattro · クワトロ
+> 「そうだな。それを直接確認できた
+>  だけでも、よしとするべきか……」
+“Indeed. I suppose we should count it as a gain that we could confirm that firsthand...”
+
+@19226 Kamille · カミーユ
+> 「……やりきれませんね」
+“...It leaves a bitter taste.”
+
+@19227 Quattro · クワトロ
+> 「ああ……そうだ」
+“Yeah... it does.”
+
+@19228 Quattro · クワトロ
+> 「これは?」
+“What's this?”
+
+@19229 Aboly · アポリー
+> 「例のゲリラたちですよ。しばらく
+>  活動を休止して地下に潜る
+“It's from those guerrillas. They've decided to lie low and go underground for a while,
+---
+>  ことにしたとかで、彼らが確保して
+>  いたMSと強化パーツの類を
+so they're handing over some of the mobile suits and enhancement parts
+---
+>  いくつか我々に譲渡してくれる
+>  そうです」
+they'd secured to us.”
+
+@19230 Quattro · クワトロ
+> 「そうか……ありがたく使わせてもらおう」
+“I see... We'll put them to good use, with thanks.”
+
+@19231 Roberto · ロベルト
+> 「艦長、さっきの連絡艇、
+>  なんだったんです?」
+“Captain, what was that liaison craft just now?”
+
+@19232 Bright · ブライト
+> 「ああ、ブレックス准将の使いだ。
+>  今回の件で、我々は敵に
+“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we've
+---
+>  その存在をさらけだしてしまった。
+>  これからは、かなり狙われるだろう
+exposed our existence to the enemy. From now on, we'll be targeted quite heavily.
+---
+>  部隊強化の足しにと、10000
+>  ほど、資金を送ってくれたのだ」
+He sent us about 10000 to help strengthen our forces.”
+
+@19233 Quattro · クワトロ
+> 「ほう、それは助かるな」
+“Oh, that's a help.”
+
+@19234 Roberto · ロベルト
+> 「艦長、さっきの連絡艇、
+>  なんだったんです?」
+“Captain, what was that liaison craft just now?”
+
+@19235 Bright · ブライト
+# 审校：数字加千分位逗号，更符合英文习惯。
+> 「ああ、ブレックス准将の使いだ。
+>  今回の件で、我々は敵に
+“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we've
+---
+>  その存在をさらけだしてしまった。
+>  これからは、かなり狙われるだろう
+exposed our existence to the enemy. From now on, we'll be targeted quite heavily.
+---
+>  部隊強化の足しにと、20000
+>  ほど、資金を送ってくれたのだ」
+He sent us about 20,000 to help strengthen our forces.”
+
+@19236 Quattro · クワトロ
+> 「ほう、それは助かるな」
+“Oh, that's a help.”
+
+@19237 Roberto · ロベルト
+> 「艦長、さっきの連絡艇、
+>  なんだったんです?」
+“Captain, what was that liaison craft just now?”
+
+@19238 Bright · ブライト
+# 审校：数字加千分位逗号，更符合英文习惯。
+> 「ああ、ブレックス准将の使いだ。
+>  今回の件で、我々は敵に
+“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we've
+---
+>  その存在をさらけだしてしまった。
+>  これからは、かなり狙われるだろう
+exposed our existence to the enemy. From now on, we'll be targeted quite heavily.
+---
+>  部隊強化の足しにと、35000
+>  ほど、資金を送ってくれたのだ」
+He sent us about 35,000 to help strengthen our forces.”
+
+@19239 Quattro · クワトロ
+> 「ほう、それは助かるな」
+“Oh, that's a help.”
+
+@19240 Gresco · グレスコ
+> 「だいぶ派手にやったそうだな?」
+“I hear you made quite a spectacle of yourself?”
+
+@19241 Le Cain · ル・カイン
+> 「もうお耳に入りましたか」
+“It's reached your ears already?”
+
+@19242 Gresco · グレスコ
+> 「お前を呼び寄せた理由は、
+>  わかっておろうな」
+“You know why I summoned you, don't you?”
+
+@19243 Le Cain · ル・カイン
+> 「心得ております、父上」
+“I understand, Father.”
+
+@19244 Gresco · グレスコ
+> 「意味のない殺戮と破壊は、
+>  民心を離反させるだけだ」
+“Pointless slaughter and destruction will only alienate the people.”
+
+@19245 Le Cain · ル・カイン
+> 「……!? 父上もかわられましたな。
+>  やはり3年も地球におられると
+“...?! You've changed too, Father. I suppose after three years on Earth,
+---
+>  地球病とやらにかかるのですかな」
+one does catch this so-called Earth disease.”
+
+@19246 Gresco · グレスコ
+> 「地球病?」
+“Earth disease?”
+
+@19247 Le Cain · ル・カイン
+> 「将軍どもが噂しております。
+>  父上、政策の不徹底や
+“The generals are whispering about it. Father, half-hearted policies and
+---
+>  不必要な甘さは、地球人ども
+>  に軽んぜられることになります」
+unnecessary leniency will only make the Earthlings look down on us.”
+
+@19248 Gresco · グレスコ
+> 「…………お前はまだ若い。
+>  わからぬことも多い」
+“...You are still young. There is much you do not understand.”
+
+@19249 Le Cain · ル・カイン
+> 「わかろうとも思いません。父上、
+>  いいかげんに目をさまされたらどうです」
+“I don't intend to understand. Father, why don't you wake up already?”
+
+@19250 Le Cain · ル・カイン
+# 审校：原文第3页结尾没有句号，初稿多加了句号；按页末标点规则删除。
+> 「父上!
+“Father!
+---
+>  ……そうか、そういうことなのか
+>  父上はご自分が
+...I see, so that's how it is. You know yourself that
+---
+>  地球の空気に感傷的に
+>  なっていることを、ご存じなのだ
+you've grown sentimental from Earth's air.
+---
+>  ですから私を招いたのですね
+>  ……父上」
+That's why you called for me... Father.”
+
+@19251 Lady · レディ
+> 「お呼びでしょうか」
+“You called for me?”
+
+@19252 Treize · トレーズ
+# 审校：ル・カイン閣下 应译为 His Excellency Le Cain，初稿用 Lord Le Cain 与词表及敬称规则不符。
+> 「レディ、ル・カイン閣下が
+>  就任されたことで
+“Lady, now that His Excellency Le Cain has taken office,
+---
+>  我々はこれまで以上に
+>  動きやすくなる」
+we can move more freely than ever before.”
+
+@19253 Lady · レディ
+> 「すでに例の計画を閣下に
+>  ご提案申し上げる用意が
+“We are already prepared to propose that plan
+---
+>  整っております」
+to His Excellency.”
+
+@19254 Treize · トレーズ
+> 「そのまま進めてくれ。
+>  ……ところで、レディ・アン」
+“Proceed as planned. ...By the way, Lady Une.”
+
+@19255 Lady · レディ
+> 「はい」
+“Yes.”
+
+@19256 Treize · トレーズ
+> 「ドーリアン氏なのだが、
+>  地球人の自治権獲得や
+“It's about Mr. Darlian. He seems to be working quite energetically
+---
+>  コロニーの再建について、ずいぶんと
+>  精力的に活動されているようだね」
+for the Earthlings' bid for autonomy and the reconstruction of the colonies.”
+
+@19257 Lady · レディ
+> 「承知いたしました。
+>  次のバスタイムには、バラのエッセンスを
+“Understood. I shall have the rose essence ready
+---
+>  用意いたします」
+for your next bath time.”
+
+@19258 Treize · トレーズ
+> 「頼む」
+“Please do.”
+
+@19259 Duo · デュオ
+> 「あいつが発進しただって!? マジで
+>  直しちまったのかよ。やるじゃねぇか」
+“That thing launched?! You actually fixed it? Not bad at all.”
+
+@19260 Howard · ハワード
+> 「おい、デュオ。お前、デスサイズを
+>  ばらして、どうするつもりだ?」
+“Hey, Duo. What do you plan to do, taking Deathscythe apart?”
+
+@19261 Duo · デュオ
+> 「あん? 俺はそんなことしちゃいないぜ?」
+“Huh? I didn't do anything like that.”
+
+@19262 Howard · ハワード
+> 「なら誰がデスサイズを解体するんじゃ」
+“Then who's going to dismantle Deathscythe?”
+
+@19263 Duo · デュオ
+> 「解体!? ……
+>  あーっ、あいつやりやがった!
+“Dismantle?! ...Ah—that bastard did it!
+---
+>  足りないパーツを俺のから
+>  とっていきやがったのかよ!
+He went and took the missing parts from mine!
+---
+>  ちっきしょーーっ!!」
+Damn iiiit!!”

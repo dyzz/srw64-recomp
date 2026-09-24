@@ -1,0 +1,134 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50857 Cecily · セシリー
+> 「……それじゃあなたたちも
+>  レジスタンス部隊に
+“...So you're joining up with the resistance
+---
+>  合流するんですか?」
+unit too?”
+
+@50858 Remy · レミー
+> 「ええ、聞きたいことがあるのよ。
+>  ……私たちはドクーガっていう組織を
+“Yes, there's something we want to ask. ...We're tracking an
+---
+>  追っているんだけど、帝国軍と
+>  共同で何らかの行動を
+organization called Docooga, and we got word that they're carrying out
+---
+>  起こすっていう情報があったのよ。
+>  レジスタンス部隊だったら
+some kind of operation together with the imperial army. We figured if
+---
+>  何か知っていることが
+>  あるんじゃないかって……」
+anyone knew something, it'd be a resistance unit...”
+
+@50859 Shingo · 真吾
+> 「でも助かったよ。俺たちのレーダーは
+>  故障しちまって部隊を探すの
+“But you really saved us. Our radar broke down, and we were just about
+---
+>  あきらめようかって時だったからな」
+to give up on finding the unit.”
+
+@50860 Seabook · シーブック
+> 「僕たちはあらかじめ
+>  部隊に連絡して
+“We'd contacted the unit in advance,
+---
+>  合流地点を決めていましたからね」
+so we'd already decided on a rendezvous point.”
+
+@50861 Killy · キリー
+> 「ま、でもそのおかげでこーんなかわいい
+>  お嬢さんに出会えたからね
+“Well, but thanks to that, I got to meet such a cute young lady.
+---
+>  俺の運もまだまだ捨てたもんじゃない」
+My luck still isn't all bad.”
+
+@50862 Remy · レミー
+> 「キリー、いいかげんにしなさいよ。
+>  ……もうそろそろ合流地点よ」
+“Killy, that's enough out of you. ...We're almost at the rendezvous point.”
+
+@50863 Shingo · 真吾
+> 「あれじゃないか?
+>  レジスタンス部隊ってのは……」
+“Isn't that them? The resistance unit, I mean...”
+
+@50864 Seabook · シーブック
+> 「……違うぞ! あれは敵だ!」
+“...No! That's the enemy!”
+
+@50865 Killy · キリー
+> 「どうもヤバイみたいよ。敵さん、
+>  俺たちのことに気づいたみたい!」
+“This looks bad. The enemy seems to have noticed us!”
+
+@50866 Seabook · シーブック
+> 「迎撃しましょう!
+>  セシリー、準備はいいかい」
+“Let's intercept them! Cecily, are you ready?”
+
+@50867 Cecily · セシリー
+# 审校：原文“ビギナ・ギナで出るわ”指驾驶该机体出击，初稿“take out the Vigna Ghina”会误解为击毁敌机，改为“sortie in the Vigna Ghina”。
+> 「ビギナ・ギナで出るわ」
+“I'll sortie in the Vigna-Ghina.”
+
+@50868 Shingo · 真吾
+> 「俺たちもいきましょうか!
+>  グッドサンダーチーム
+“Let's get going too! Good Thunder Team,
+---
+>  出撃ってことで!」
+moving out!”
+
+@50869 Seabook · シーブック
+> 「敵部隊を全滅させましょう!」
+“Let's wipe out the enemy unit!”
+
+@50870 Shingo · 真吾
+> 「ゴーショーグン、ゴー!」
+“GoShogun, go!”
+
+@50871 Seabook · シーブック
+> 「な、なんでだよ!」
+“Wh-why?!”
+
+@50872 Cecily · セシリー
+> 「あぁぁ!? シ、シーブック!」
+“Aaaah?! S-Seabook!”
+
+@50873 Killy · キリー
+> 「まだ『ブロンクスの狼』が
+>  書きあがってないのにね」
+“And 'The Wolf of Bronx' still isn't finished yet.”
+
+@50874 Shingo · 真吾
+> 「いっちょあがり!」
+“That's a wrap!”
+
+@50875 Cecily · セシリー
+> 「……なんとか終わったようね」
+“...Looks like it's finally over.”
+
+@50876 Seabook · シーブック
+> 「ああ。……でも戦いは、まだまだ続くさ」
+“Yeah. ...But the fight's still far from over.”
+
+@50877 Remy · レミー
+> 「見て、真吾。
+>  あれ、レジスタンス部隊じゃないかしら」
+“Look, Shingo. Isn't that the resistance unit?”
+
+@50878 Shingo · 真吾
+> 「……あれがレジスタンス部隊かい?」
+“...So that's the resistance unit?”
+
+@50879 Seabook · シーブック
+> 「……どうやらそうみたいです。
+>  合流しましょう」
+“...Seems that way. Let's join up with them.”

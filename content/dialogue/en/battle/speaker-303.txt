@@ -1,0 +1,133 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13637 Guerrilla · ゲリラ
+> 「このっ!!」
+“Why you...!!”
+
+@13638 Guerrilla · ゲリラ
+> 「覚悟しろ!」
+“Get ready!”
+
+@13639 Guerrilla · ゲリラ
+> 「くらえっ!!」
+“Take this!!”
+
+@13640 Guerrilla · ゲリラ
+> 「うけてみなよっ!!」
+“Try and take it!!”
+
+@13641 Guerrilla · ゲリラ
+> 「いけっ!」
+“Go!”
+
+@13642 Guerrilla · ゲリラ
+> 「させないっ!」
+“I won't let you!”
+
+@13643 Guerrilla · ゲリラ
+> 「そこっ!」
+“There!”
+
+@13644 Guerrilla · ゲリラ
+# 审校：「当たれっ！」是祈愿命中的喊声，不是命令同伴打中敌人，改为“Hit!”
+> 「当たれっ!」
+“Hit!”
+
+@13645 Guerrilla · ゲリラ
+> 「や、やられたっ!?」
+“I-I've been hit?!”
+
+@13646 Guerrilla · ゲリラ
+# 审校：原文「しまった!?」是懊悔，不是疑问，去掉问号
+> 「あうっ! しまった!?」
+“Agh! Damn it!”
+
+@13647 Guerrilla · ゲリラ
+# 审校：「なんてパワー!?」是感叹，不是疑问，改为感叹号
+> 「あぁぁっ!? なんてパワー!?」
+“Aaaah?! What power!”
+
+@13648 Guerrilla · ゲリラ
+> 「こ、こいつ、強い!」
+“Th-this guy's strong!”
+
+@13649 Guerrilla · ゲリラ
+# 审校：「そんな!?」是震惊感叹，不是疑问，改为感叹号
+> 「な、何っ!? そんな!?」
+“Wh-what?! No way!”
+
+@13650 Guerrilla · ゲリラ
+# 审校：「やられる!?」是危机感叹，不是疑问，改为感叹号
+> 「うぐっ! ま、まずい、やられる!?」
+“Ugh! Th-this is bad, I'm done for!”
+
+@13651 Guerrilla · ゲリラ
+> 「あうっ! こ、このままでは……」
+“Agh! A-at this rate...”
+
+@13652 Guerrilla · ゲリラ
+> 「くっ、さすがに……!」
+“Ngh, he's good...!”
+
+@13653 Guerrilla · ゲリラ
+> 「くうぅっ! でも、
+>  この程度ならまだっ!」
+“Ngh! But this much is nothing!”
+
+@13654 Guerrilla · ゲリラ
+> 「くっ! まだまだ勝負はこれからよ!」
+“Ngh! The fight's just getting started!”
+
+@13655 Guerrilla · ゲリラ
+# 审校：「やってくれたわね!!」是愤怒反击，不是单纯“You'll pay”，改为更贴切的“You'll pay for that!”
+> 「くぅっ! やってくれたわね!!」
+“Ngh! You'll pay for that!”
+
+@13656 Guerrilla · ゲリラ
+> 「このくらいなら!」
+“This is nothing!”
+
+@13657 Guerrilla · ゲリラ
+> 「効いていない!」
+“It doesn't hurt!”
+
+@13658 Guerrilla · ゲリラ
+> 「この程度のダメージなら!!」
+“This little damage is nothing!!”
+
+@13659 Guerrilla · ゲリラ
+> 「まだ!」
+“Not yet!”
+
+@13660 Guerrilla · ゲリラ
+> 「甘いっ!」
+“Too easy!”
+
+@13661 Guerrilla · ゲリラ
+> 「そこっ!」
+“There!”
+
+@13662 Guerrilla · ゲリラ
+> 「かわせたっ!」
+“I dodged it!”
+
+@13663 Guerrilla · ゲリラ
+> 「当たるものか!」
+“Like that'll hit me!”
+
+@13664 Guerrilla · ゲリラ
+# 审校：原文「そんなビームなど!」是轻视对方光束攻击，补全为完整句
+> 「そんなビームなど!」
+“A Beam like that won't hit me!”
+
+@13665 Guerrilla · ゲリラ
+> 「ムダなことを!」
+“What a waste of time!”
+
+@13666 Guerrilla · ゲリラ
+> 「しまった、弾切れ!?」
+“Damn, out of ammo?!”
+
+@13667 Guerrilla · ゲリラ
+> 「あんな遠くから攻撃してくるの!?」
+“He's attacking from that far away?!”

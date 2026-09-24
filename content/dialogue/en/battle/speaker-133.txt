@@ -1,0 +1,127 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7881 Shingo · 真吾
+> 「行くぞ!」
+“Here I go!”
+
+@7882 Shingo · 真吾
+> 「これでどうだ!」
+“How's this!”
+
+@7883 Shingo · 真吾
+> 「さあて、こいつでとどめだ!」
+“All right, this one's the finisher!”
+
+@7884 Shingo · 真吾
+> 「邪魔だ!」
+“Out of my way!”
+
+@7885 Shingo · 真吾
+> 「そろそろ本気で行くぞ!」
+“Time to get serious!”
+
+@7886 Shingo · 真吾
+> 「ゴーショーグンの力、見せてやるぜ!」
+“I'll show you GoShogun's power!”
+
+@7887 Shingo · 真吾
+# 审校：「何だと!?」是被击中时的惊呼，不是回应对方话语，改为更自然的“What?!”
+> 「何だと!?」
+“What?!”
+
+@7888 Shingo · 真吾
+> 「くそっ!! やられたっ!」
+“Damn it! I've been hit!”
+
+@7889 Shingo · 真吾
+> 「しまった!!」
+“Damn!”
+
+@7894 Shingo · 真吾
+> 「ちいっ! 調子に乗りすぎたかな?」
+“Tch! Guess I got too carried away?”
+
+@7895 Shingo · 真吾
+> 「ちっ!! このままじゃまずいな……」
+“Tch! At this rate we're in trouble...”
+
+@7896 Shingo · 真吾
+> 「うわっ!! これはちょっとヤバイかな……」
+“Whoa! This might be a bit bad...”
+
+@7900 Shingo · 真吾
+> 「まだまだ、この程度なら!」
+“I can still take this much!”
+
+@7901 Shingo · 真吾
+> 「ちっ、油断したか?」
+“Tch, I let my guard down?”
+
+@7902 Shingo · 真吾
+# 审校：原文「このっ!!」是愤怒的省略句，译文“Why you!”缺少破折号，改为“Why you—!”更自然。
+> 「やったな!! このっ!!」
+“You did it! Why you—!”
+
+@7903 Shingo · 真吾
+> 「うっ!! や、やるじゃないの!」
+“Ugh! N-Not bad!”
+
+@7908 Shingo · 真吾
+> 「何だ、そんなもの!」
+“What, is that all!”
+
+@7909 Shingo · 真吾
+> 「効かないな!」
+“That doesn't hurt!”
+
+@7910 Shingo · 真吾
+> 「ふん、効いてないぜ!」
+“Hmph, that didn't even scratch me!”
+
+@7911 Shingo · 真吾
+> 「この程度か!」
+“Is this all you've got!”
+
+@7916 Shingo · 真吾
+> 「おおっと、あぶない、あぶない」
+“Whoa there, that was close, close.”
+
+@7917 Shingo · 真吾
+> 「当たるものか!」
+“As if that'd hit!”
+
+@7918 Shingo · 真吾
+> 「ふ、どこをねらってる!」
+“Hmph, what are you aiming at!”
+
+@7919 Shingo · 真吾
+> 「おっと!!」
+“Whoa!”
+
+@7920 Shingo · 真吾
+> 「ムダだっ!!」
+“It's useless!”
+
+@7924 Shingo · 真吾
+> 「ふん、そんな攻撃が通用するか!」
+“Hmph, you think an attack like that'll work?!”
+
+@7925 Shingo · 真吾
+> 「ビームは効かないっていってる!!」
+“I told you, beams don't work!!”
+
+@7928 Shingo · 真吾
+> 「弾切れ!? しまった!」
+“Out of ammo?! Damn it!”
+
+@7929 Shingo · 真吾
+> 「くっ! だめか!?」
+“Ngh! No good?!”
+
+@7930 Shingo · 真吾
+> 「ちっ、ちょ～っと遠すぎるみたいね」
+“Tch, that's just a bit too far.”
+
+@7931 Shingo · 真吾
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far, huh!”

@@ -1,0 +1,263 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11504 Brad · ブラッド
+> 「うおぉぉぉぉっ!」
+“Whoooaaaaaah!”
+
+@11505 Brad · ブラッド
+> 「いっくぜぇ!」
+“Here I go!”
+
+@11506 Brad · ブラッド
+> 「せいやあぁぁぁっっ!」
+“Hyaaaah!”
+
+@11507 Brad · ブラッド
+> 「くらえぇぇーっ!」
+“Take this!”
+
+@11508 Brad · ブラッド
+# 审校：“technique”太生硬，改为更自然的战斗台词
+> 「俺の技を受けてみろ!」
+“Try and take my best shot!”
+
+@11509 Brad · ブラッド
+> 「でりゃぁぁーっ!」
+“Hrrraaah!”
+
+@11510 Brad · ブラッド
+> 「まとめて相手をしてやるぜ!」
+“I'll take you all on!”
+
+@11511 Brad · ブラッド
+> 「さぁ、覚悟を決めやがれ!!」
+“Now, brace yourselves!!”
+
+@11512 Brad · ブラッド
+# 审校：原文是“うおぉぉっちっくしょーっ”，初稿把“うおぉぉっ”译成“Ugh”不够贴切，改为“Whoa”
+> 「うおぉぉっちっくしょーっ!」
+“Whoa, damn it all!”
+
+@11513 Brad · ブラッド
+> 「くっそぉぉぉぉぉーっ!」
+“Damn iiiit!”
+
+@11514 Brad · ブラッド
+> 「うわぁぁぁぁーっ!!」
+“Waaaaaah!!”
+
+@11515 Brad · ブラッド
+> 「ぐぅっ、やられてたまるかぁっ!」
+“Ngh, like hell I'll go down!”
+
+@11516 Brad · ブラッド
+> 「くっそぉっ! まだまだっ!」
+“Damn it! I'm not done yet!”
+
+@11517 Brad · ブラッド
+> 「こ、こんなことでやられるか!」
+“N-no way I'm beaten by this!”
+
+@11518 Brad · ブラッド
+# 审校：初稿“This is great, having enemies this strong!”语序不自然，改为更口语化的表达
+> 「うれしいぜぇ、
+>  敵がこれだけ強いとよぉッ!」
+“I love it when the enemy's this strong!”
+
+@11519 Brad · ブラッド
+> 「ぐうぅぅーっ!」
+“Gnnngh!”
+
+@11520 Brad · ブラッド
+> 「があぁぁぁぁーっ!」
+“Gwaaaaah!”
+
+@11521 Brad · ブラッド
+> 「うおおぉぉぉーっ!」
+“Whoooaah!”
+
+@11522 Brad · ブラッド
+> 「うわっ!? や、やらせねぇ!」
+“Whoa?! N-no you don't!”
+
+@11523 Brad · ブラッド
+> 「なにぃ!? バカな、この俺が!?」
+“What?! Impossible, me of all people?!”
+
+@11524 Brad · ブラッド
+# 审校：原文“強い”未明确指代，但结合战斗语境指敌人，初稿“strong”缺主语，补上“they're”更自然
+> 「つ、強い!?
+>  ならば、余計に負けられん!!」
+“Th-they're strong?! Then I've got even more reason not to lose!!”
+
+@11525 Brad · ブラッド
+> 「これしきのことでぇっ!」
+“As if this little scratch matters!”
+
+@11526 Brad · ブラッド
+> 「ちいっ、俺はまだやれるぜぇ!」
+“Tch, I can still fight!”
+
+@11527 Brad · ブラッド
+> 「まだまだぁーっ!」
+“I'm not done yet!”
+
+@11528 Brad · ブラッド
+> 「おぉぅっ!?」
+“Whoa?!”
+
+@11529 Brad · ブラッド
+> 「こいつ、やるっ!?」
+“This guy's good?!”
+
+@11530 Brad · ブラッド
+> 「ク、クククッ、やるじゃないかよ!」
+“Heh heh heh, not bad at all!”
+
+@11531 Brad · ブラッド
+> 「くっ……この俺にこうも当てる!?」
+“Ngh... landing hits on me like that?!”
+
+@11532 Brad · ブラッド
+> 「やるなぁ……だがっ!」
+“You're good... but still!”
+
+@11533 Brad · ブラッド
+> 「く……そろそろ本気でいくとするか」
+“Ngh... guess it's time I got serious.”
+
+@11534 Brad · ブラッド
+> 「面白いッ! この俺と正面から
+>  やりあおうってんだな!」
+“Interesting! So you want to face me head-on!”
+
+@11535 Brad · ブラッド
+> 「くっ……やるな!」
+“Ngh... you're good!”
+
+@11536 Brad · ブラッド
+> 「くっ……だがこの程度で俺を止めら
+>  れるなどと思うな!」
+“Ngh... but don't think that's enough to stop me!”
+
+@11537 Brad · ブラッド
+> 「そんな攻撃が効くかよ!」
+“You think an attack like that'll work?!”
+
+@11538 Brad · ブラッド
+> 「ぜんぜん効かねぇぜ!」
+“That doesn't hurt me one bit!”
+
+@11539 Brad · ブラッド
+> 「うっ!? だがムダだ!」
+“Ugh?! But it's useless!”
+
+@11540 Brad · ブラッド
+> 「くっそぉ、なめやがって!」
+“Damn it, don't underestimate me!”
+
+@11541 Brad · ブラッド
+> 「フッ、さすが俺だぜ」
+“Hmph, that's me for you.”
+
+@11542 Brad · ブラッド
+> 「ムダなことはやめろってんだよ!」
+“I told you to quit wasting your time!”
+
+@11543 Brad · ブラッド
+> 「俺に当てるとは、やるな」
+“Landing a hit on me? Not bad.”
+
+@11544 Brad · ブラッド
+> 「チッ、ザコは下がってろ!!」
+“Tch, small fry like you stay back!!”
+
+@11545 Brad · ブラッド
+> 「そんな攻撃!
+>  何度やっても効きはしない!」
+“An attack like that! No matter how many times you try, it won't work!”
+
+@11546 Brad · ブラッド
+> 「なに!?
+>  この俺もずいぶんとなめられたもんだぜ」
+“What?! I've been underestimated way too much.”
+
+@11547 Brad · ブラッド
+> 「貴様など相手にしているヒマはない!」
+“I've got no time to deal with the likes of you!”
+
+@11548 Brad · ブラッド
+> 「見切ったぁーっ!」
+“I saw right through it!”
+
+@11549 Brad · ブラッド
+> 「見えるぞ、貴様の攻撃が!」
+“I can see it, your attack!”
+
+@11550 Brad · ブラッド
+> 「俺に当てるんじゃなかったのか!?」
+“Weren't you supposed to hit me?!”
+
+@11551 Brad · ブラッド
+> 「どうした! ハハハハハッ!」
+“What's wrong! Hahahahaha!”
+
+@11552 Brad · ブラッド
+> 「フッ……所詮はこの程度か」
+“Hmph... so this is all you've got.”
+
+@11553 Brad · ブラッド
+> 「遅い! 遅すぎるぜ!!」
+“Too slow! Way too slow!!”
+
+@11554 Brad · ブラッド
+> 「貴様の動き、読み切った!」
+“I've read your every move!”
+
+@11555 Brad · ブラッド
+> 「チッ、貴様など相手にならん!」
+“Tch, you're no match for me!”
+
+@11556 Brad · ブラッド
+> 「どうやらムダだったようだな!」
+“Looks like that was useless!”
+
+@11557 Brad · ブラッド
+> 「見たかっ!」
+“See that!”
+
+@11558 Brad · ブラッド
+> 「ムダだ!」
+“Useless!”
+
+@11559 Brad · ブラッド
+> 「貴様ごときにやぶられはしない!」
+“The likes of you won't beat me!”
+
+@11560 Brad · ブラッド
+> 「ハハハハハッ!! ムダだムダだ!」
+“Hahahahaha!! Useless, useless!”
+
+@11561 Brad · ブラッド
+> 「そんな攻撃など!」
+“An attack like that is nothing!”
+
+@11562 Brad · ブラッド
+> 「ちぃぃぃっ、エネルギー切れかぁ!」
+“Tch, out of energy already?!”
+
+@11563 Brad · ブラッド
+> 「なにっ!? やれないってのか!」
+“What?! I can't fire?!”
+
+@11564 Brad · ブラッド
+> 「くっそぉ! 届かないってのかよ!?」
+“Damn it! It won't reach?!”
+
+@11565 Brad · ブラッド
+> 「ちっくしょう! 汚ねぇぞ!」
+“Damn it! That's dirty!”
+
+@11566 Brad · ブラッド
+> 「くっ……俺と勝負しろ!」
+“Ngh... fight me fair and square!”

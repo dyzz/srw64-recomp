@@ -1,0 +1,89 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14127 Zombie Soldier · ゾンビ兵
+> 「………………!!」
+“......!!”
+
+@14128 Zombie Soldier · ゾンビ兵
+> 「グオオォォォッ!」
+“Guooooh!”
+
+@14129 Zombie Soldier · ゾンビ兵
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14130 Zombie Soldier · ゾンビ兵
+> 「………………」
+“......”
+
+@14131 Zombie Soldier · ゾンビ兵
+> 「グギャアァァァァッ!」
+“Gugyaaaaaah!”
+
+@14132 Zombie Soldier · ゾンビ兵
+> 「ギエェェェェェーッ!!」
+“Gieeeeeeeh!!”
+
+@14133 Zombie Soldier · ゾンビ兵
+> 「……!!」
+“...!!”
+
+@14134 Zombie Soldier · ゾンビ兵
+> 「グオオォォォッ!」
+“Guooooh!”
+
+@14135 Zombie Soldier · ゾンビ兵
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14136 Zombie Soldier · ゾンビ兵
+> 「………!!!!」
+“...!!!!”
+
+@14137 Zombie Soldier · ゾンビ兵
+> 「……!!」
+“...!!”
+
+@14138 Zombie Soldier · ゾンビ兵
+> 「ウゥゥゥゥゥッ!」
+“Uuuuuugh!”
+
+@14139 Zombie Soldier · ゾンビ兵
+> 「ガアァァッ!」
+“Gaaah!”
+
+@14140 Zombie Soldier · ゾンビ兵
+> 「………………!?」
+“...?!”
+
+@14141 Zombie Soldier · ゾンビ兵
+> 「……!!」
+“...!!”
+
+@14142 Zombie Soldier · ゾンビ兵
+> 「!!!!」
+“!!!!”
+
+@14143 Zombie Soldier · ゾンビ兵
+> 「…………」
+“......”
+
+@14144 Zombie Soldier · ゾンビ兵
+> 「………………!?」
+“...?!”
+
+@14145 Zombie Soldier · ゾンビ兵
+> 「…………」
+“......”
+
+@14146 Zombie Soldier · ゾンビ兵
+> 「…………」
+“......”
+
+@14147 Zombie Soldier · ゾンビ兵
+> 「…………」
+“......”
+
+@14148 Zombie Soldier · ゾンビ兵
+> 「…………」
+“......”

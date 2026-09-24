@@ -1,0 +1,183 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10938 Mashymre · マシュマー
+> 「私は胸のバラにかけてお前を倒す!」
+“I swear on the rose on my chest, I'll defeat you!”
+
+@10939 Mashymre · マシュマー
+> 「ハマーン様ご覧ください!」
+“Lady Haman, behold!”
+
+@10940 Mashymre · マシュマー
+> 「とどめ!!」
+“Finishing blow!!”
+
+@10941 Mashymre · マシュマー
+> 「でやあぁぁっ!!」
+“Take thaaaat!!”
+
+@10942 Mashymre · マシュマー
+> 「もらったあ!!」
+“Got you!!”
+
+@10943 Mashymre · マシュマー
+> 「勝負だ!」
+“Let's settle this!”
+
+@10944 Mashymre · マシュマー
+> 「いざ、尋常に勝負っ!!」
+“Come, a fair and square duel!!”
+
+@10945 Mashymre · マシュマー
+> 「落ちろおぉぉっ!!」
+“Fall, damn you!!”
+
+@10946 Mashymre · マシュマー
+> 「私が相手だっ!!」
+“I'll be your opponent!!”
+
+@10947 Mashymre · マシュマー
+> 「うおおおおっ!!」
+“Uwooooh!!”
+
+@10948 Mashymre · マシュマー
+> 「マシュマー・セロ、参る!!」
+“Mashymre Cello, engaging!!”
+
+@10949 Mashymre · マシュマー
+> 「行くぞっ!!」
+“Here I come!!”
+
+@10950 Mashymre · マシュマー
+> 「これでどうだっ!!」
+“How's this!!”
+
+@10951 Mashymre · マシュマー
+> 「な、なに!?」
+“W-what!?”
+
+@10952 Mashymre · マシュマー
+> 「しまった!? ええーい、出直しだ!」
+“Damn!? Fine, I'll try again!”
+
+@10953 Mashymre · マシュマー
+> 「ハ、ハマーン様っ!」
+“L-Lady Haman!”
+
+@10954 Mashymre · マシュマー
+> 「ええい! パワーが上がらんではないか!」
+“Gah! The power won't rise!”
+
+@10955 Mashymre · マシュマー
+> 「な、なんとっ!? これ程の威力が
+>  あるのか!?」
+“W-what!? It has this much power!?”
+
+@10956 Mashymre · マシュマー
+> 「な、なんというパワーだっ!?」
+“W-what power is this!?”
+
+@10957 Mashymre · マシュマー
+# 审校：原文“この胸のバラにかけても”是发誓语气，初稿译成“Not even for the rose on my chest”意思反了，改为“I swear it on this rose on my chest!”
+> 「ぬううっ! 私は負けるわけには
+>  いかんのだ!この胸のバラにかけても!」
+“Ngh! I cannot afford to lose! I swear it on this rose on my chest!”
+
+@10958 Mashymre · マシュマー
+> 「くっ! なかなかやるな!」
+“Ngh! You're quite good!”
+
+@10959 Mashymre · マシュマー
+> 「ちいっ! 見事だ!!」
+“Tch! Impressive!!”
+
+@10960 Mashymre · マシュマー
+> 「むっ! 少しはできるようだな!」
+“Hm! So you can fight a little!”
+
+@10961 Mashymre · マシュマー
+> 「うっ! なるほど、油断は禁物
+>  と言う事だな」
+“Ugh! I see, so one must never let their guard down.”
+
+@10962 Mashymre · マシュマー
+> 「ほう、やるな! 見直したぞ!」
+“Oh, not bad! You've earned my respect!”
+
+@10963 Mashymre · マシュマー
+> 「くっ! 貴様、私を怒らせたい
+>  らしいな!!」
+“Ngh! You, you're trying to anger me!!”
+
+@10964 Mashymre · マシュマー
+> 「その程度の腕で私に勝負を
+>  挑むとは……10年早いわ!!」
+“Challenging me with skill like that... you're ten years too early!!”
+
+@10965 Mashymre · マシュマー
+> 「ちいっ! かすっただけだっ!!」
+“Tch! It only grazed me!!”
+
+@10966 Mashymre · マシュマー
+> 「ふははは、効きはせんよ!!」
+“Fuhahaha, it has no effect!!”
+
+@10967 Mashymre · マシュマー
+> 「ふ…この私にかなうと思っているのか?」
+“Heh... you think you can match me?”
+
+@10968 Mashymre · マシュマー
+> 「無礼な!」
+“Insolent!”
+
+@10969 Mashymre · マシュマー
+# 审校：原文“私に勝てるもりでいるのか!?”中“もり”应为“つもり”，初稿意思正确但可更自然，改为“Do you think you can beat me!?”
+> 「私に勝てるもりでいるのか!?」
+“Do you think you can beat me!?”
+
+@10970 Mashymre · マシュマー
+> 「なんのっ!」
+“As if!”
+
+@10971 Mashymre · マシュマー
+> 「甘いな!」
+“Too naive!”
+
+@10972 Mashymre · マシュマー
+> 「当たるかっ!」
+“Like that would hit!”
+
+@10973 Mashymre · マシュマー
+# 审校：初稿“You were never my match to begin with!”稍显别扭，改为更自然的“You were never any match for me!”
+> 「所詮は私の敵ではないな!」
+“You were never any match for me!”
+
+@10974 Mashymre · マシュマー
+> 「ははははっ! 何をやっている!」
+“Hahahaha! What are you doing!”
+
+@10975 Mashymre · マシュマー
+> 「それで狙っているつもりか!」
+“You call that aiming!”
+
+@10976 Mashymre · マシュマー
+> 「見切ったわ!!」
+“I saw right through it!!”
+
+@10977 Mashymre · マシュマー
+> 「そんな攻撃が、この私に
+>  通用するか!!」
+“You think an attack like that works on me!!”
+
+@10978 Mashymre · マシュマー
+# 审校：“ぬかった”是“大意了”，初稿“I let my guard down”可接受但“I was careless”更贴切
+> 「なんと!? 弾切れか……ぬかった」
+“What!? Out of ammo... I was careless.”
+
+@10979 Mashymre · マシュマー
+> 「ええい、正々堂々と勝負しろ!」
+“Gah, fight me fair and square!”
+
+@10980 Mashymre · マシュマー
+> 「ぬぅ、なんと卑怯な」
+“Ngh, how cowardly.”

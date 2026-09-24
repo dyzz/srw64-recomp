@@ -1,0 +1,1311 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@38125 Bright · ブライト
+> 「クワトロ特尉、いいのか?」
+“Quattro, are you sure about this?”
+
+@38126 Quattro · クワトロ
+> 「ああ」
+“Yeah.”
+
+@38127 Bright · ブライト
+> 「それでは、行ってくる。
+>  索敵はおこたるなよ」
+“Then we're off. Don't slack on your scouting.”
+
+@38128 Beauty · ビューティ
+> 「あーん、心配だわー。
+>  ねえ、本当にそんな大勢で
+“Aww, I'm so worried. Hey, do we really have to go
+---
+>  行かなくちゃいけないの?」
+with that many people?”
+
+@38129 Banjo · 万丈
+> 「まあ、いってみれば
+>  全権使節団だからね
+“Well, you could say we're a plenipotentiary delegation.
+---
+>  それなりのメンバーでなければ、
+>  むこうさんに失礼というものだ」
+If we didn't bring a fitting lineup, it'd be rude to our hosts.”
+
+@38130 Garrison · ギャリソン
+> 「みなさま、くれぐれもお気をつけて」
+“Everyone, please do take care.”
+
+@38131 Banjo · 万丈
+> 「大丈夫、すぐに帰ってくるさ」
+“Relax, we'll be back before you know it.”
+
+@38132 Bright · ブライト
+> 「アムロ、万が一のときは、頼むぞ」
+“Amuro, if the worst happens, I'm counting on you.”
+
+@38133 Amuro · アムロ
+> 「そうならないようにするのが、
+>  そっちの役目だろ?」
+“Making sure it doesn't come to that is your job, isn't it?”
+
+@38134 Bright · ブライト
+> 「そうだが……」
+“That's true, but...”
+
+@38135 Alan · アラン
+> 「念のための用意は、
+>  しておいてほしいということさ
+“He means he wants you to be prepared, just in case.
+---
+>  アクシズ軍の戦艦グワダンの
+>  データもとっておいてくれ」
+Get me the data on the Axis Forces battleship Gwadan too.”
+
+@38136 Reika · レイカ
+> 「わかってるわ」
+“I know.”
+
+@38137 Haman · ハマーン
+> 「ようこそ、我がグワダンへ。先日の
+>  話は考えてもらえたようだな?」
+“Welcome aboard my Gwadan. I take it you've given thought to our earlier discussion?”
+
+@38138 Quattro · クワトロ
+> 「ああ」
+“Yeah.”
+
+@38139 Haman · ハマーン
+> 「ふむ。ではさっそくだが、
+>  返答を聞かせていただこうか」
+“Hmm. Then let's not waste time. Let me hear your answer.”
+
+@38140 Bright · ブライト
+> 「OZトレーズ派の総意として、
+>  回答をお伝えします
+“I convey this as the consensus of the OZ Treize faction.
+---
+>  我々は貴軍の申し出をうけ、
+>  対銀河帝国戦において
+We accept your offer, and in the war against the Galactic Empire,
+---
+>  アクシズ軍の協力を要請したい」
+we wish to request the cooperation of the Axis Forces.”
+
+@38141 Haman · ハマーン
+> 「ははっ、良い選択だな。
+>  それではこちらの条件を
+“Ha ha, a fine choice. Then I take it you agree
+---
+>  飲むということで、よいのだな?」
+to accept our conditions as well?”
+
+@38142 Quattro · クワトロ
+> 「……そうだ。サイド3の件では、
+>  我々は
+“...That's right. Regarding the matter of Side 3, we will
+---
+>  いっさいの干渉を行なわない。それが
+>  トレーズ・クシュリナーダの決定だ」
+exercise no interference whatsoever. That is Treize Khushrenada's decision.”
+
+@38143 Haman · ハマーン
+> 「フフフフ、いいだろう」
+“Heh heh heh, very well.”
+
+@38144 Quattro · クワトロ
+> 「血判の誓約書でもほしければ
+>  あとで届けさせるが」
+“If you want a pledge signed in blood, I can have one delivered later.”
+
+@38145 Haman · ハマーン
+> 「フッ、紙の上に血をおいただけの
+>  ものなど、何の役にたつ?」
+“Hmph. What use is a bit of blood on paper?”
+
+@38146 Alan · アラン
+> 「……では、これで我々の
+>  協力関係が成立したと
+“...Then may we consider our cooperative relationship
+---
+>  考えて、よろしいですな?」
+hereby established?”
+
+@38147 Haman · ハマーン
+> 「いや、もう1つほしいな」
+“No, there's one more thing I want.”
+
+@38148 Alan · アラン
+> 「なに?」
+“What?”
+
+@38149 Haman · ハマーン
+> 「我々はこのあと、OZの
+>  宇宙要塞バルジにおもむき
+“After this, we intend to proceed to the OZ space fortress Balji
+---
+>  ロームフェラ財団と、いや
+>  ロームフェラ派OZか
+and hold negotiations with the Romefeller Foundation—or rather, with Romefeller-faction OZ.
+---
+>  交渉を持つつもりでいる。だが、
+>  いささか危険をともなうのでな。そこで
+But it carries a fair degree of danger. So
+---
+>  {HeroMech}の諸君に、
+>  万一の時の支援を頼みたい」
+I'd like you people of the {HeroMech} to provide support in case something happens.”
+
+@38150 Banjo · 万丈
+> 「なんだって!?」
+“What did you say?!”
+
+@38151 Bright · ブライト
+> 「……それを我々が拒否すれば、
+>  ロームフェラ派につくというのか」
+“...And if we refuse, you'll side with the Romefeller faction?”
+
+@38152 Haman · ハマーン
+> 「どうとってもらっても結構だ。
+>  それで、どうなのだ?」
+“You may take it however you like. So, what will it be?”
+
+@38153 Bright · ブライト
+> 「……いいでしょう」
+“...Very well.”
+
+@38154 Haman · ハマーン
+> 「フフッ、ものわかりがよくて助かる。
+>  なに、安心するがいい。別に
+“Heh heh, I'm glad you're so reasonable. Come now, rest easy. I have no intention
+---
+>  お前たちを危うくするような真似を
+>  するつもりはない。今のところはな
+of doing anything to endanger you. For the time being, that is.
+---
+>  ……どうした、シャア?
+>  何かいいたそうだな?」
+...What's the matter, Char? You look like you have something to say.”
+
+@38155 Quattro · クワトロ
+> 「ハマーン……何を考えている?」
+“Haman... what are you thinking?”
+
+@38156 Haman · ハマーン
+> 「我々も足場は固めねばならんの
+>  でな。もとはといえば、地球圏の
+“We too must secure our footing. When you get down to it, building cooperative ties
+---
+>  組織と協力関係をつくると
+>  いうのは、お前の役目だったな」
+with organizations in the Earth Sphere was your role, wasn't it?”
+
+@38157 Quattro · クワトロ
+> 「…………」
+“...”
+
+@38158 Haman · ハマーン
+> 「フッ。では、
+>  {HeroMech}の諸君
+“Hmph. Then, people of the {HeroMech},
+---
+>  お互いの行く末が
+>  よきものとなることを期待しよう」
+let us hope the future holds good things for us both.”
+
+@38159 Alan · アラン
+> 「結局、向こうの思惑どおりに
+>  ことが動く、か」
+“So in the end, things move exactly as she wants them to.”
+
+@38160 Banjo · 万丈
+> 「こちらは手持ちのカードがない。
+>  しかたがないさ」
+“We've got no cards left to play. Nothing we can do about it.”
+
+@38161 Hayato · ハヤト
+> 「しかも、向こうはまだ
+>  その戦力の一部しか見せていない」
+“And she's still only shown us a fraction of her forces.”
+
+@38162 Tetsuya · 鉄也
+> 「地球が危ないってのにな。
+>  まったく、どういう神経した女だよ」
+“And Earth's in danger, no less. Just what kind of nerves does that woman have?”
+
+@38163 Daisuke · 大介
+> 「…………」
+“...”
+
+@38164 Koji · 甲児
+> 「どうかしたのか、大介さん?」
+“What's wrong, Daisuke?”
+
+@38165 Daisuke · 大介
+> 「いや……地球人というものの
+>  複雑さに、圧倒されただけだ
+“No... I'm just overwhelmed by how complicated Earthlings are.
+---
+>  母なる星の危機を前に、
+>  なぜこうもまとまることができないのか
+Why can't they pull together when their mother planet is in danger?
+---
+>  僕には理解できない」
+I just can't understand it.”
+
+@38166 Banjo · 万丈
+> 「ああ、まさしく君のいうとおり。
+>  それが地球人という奴さ
+“Yeah, you've got it exactly right. That's Earthlings for you.
+---
+>  まったく、度し難い」
+Truly, they're beyond saving.”
+
+@38167 Daisaku · 大作
+> 「どしがたい……?」
+“Beyond saving...?”
+
+@38168 Alan · アラン
+> 「言い聞かせてもわからせようがない、
+>  救いようがない、という意味だ
+“It means there's no reasoning with them, no hope for them.
+---
+>  ……情けないが、認めざるを得んな」
+...Pathetic as it is, I have to admit it.”
+
+@38169 Eiji · エイジ
+> 「しかし、その一方で、
+>  愛するもののために、誇りのために
+“But at the same time, Earthlings also have the strength to cast everything aside and fight
+---
+>  すべてを捨てて戦える
+>  強さをももっているのが、地球人だ
+for the ones they love, for their pride.
+---
+>  この数年の間、
+>  俺はそれを見てきた」
+I've seen that with my own eyes these past few years.”
+
+@38170 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@38171 Amuro · アムロ
+> 「そういってもらえると、
+>  少しは救われるな」
+“Hearing you say that makes me feel a little better.”
+
+@38172 Koji · 甲児
+> 「ま、そうでなくっちゃやってられねぇや」
+“Well, if it weren't like that, we couldn't keep going.”
+
+@38173 Sara · 沙羅
+> 「だけどさ、あの女がジャミトフのところへ
+>  行くのを支援するなんて
+“But still, backing that woman up so she can go meet Jamitov?
+---
+>  冗談じゃないよ」
+You've gotta be kidding me.”
+
+@38174 Duo · デュオ
+> 「なぁに、どうせ交渉なんざ
+>  成立するわきゃないぜ
+“Come on, there's no way those talks are gonna work out anyway.
+---
+>  ジャミトフやデルマイユなんてのは、
+>  自分のいうことを聞かない人間は
+Jamitov and Dermail are the type who eliminate anyone who won't do
+---
+>  排除するって連中だ。
+>  たぶん、ハマーンもな」
+what they say. Probably Haman too.”
+
+@38175 Amuro · アムロ
+# 审校：クワトロ的军衔是上尉（Captain），不是中校（Lieutenant Colonel），初稿译错。
+> 「ああ、それはクワトロ特尉も
+>  そう予想している」
+“Yeah, Captain Quattro figures the same thing.”
+
+@38176 Kamille · カミーユ
+> 「……あの人の目的、何なんです?」
+“...What is that man's goal, anyway?”
+
+@38177 Amuro · アムロ
+> 「カミーユ」
+“Kamille.”
+
+@38178 Kamille · カミーユ
+> 「気にするなっていう方が、
+>  無理な話ですよ」
+“Telling me not to worry about it is asking the impossible.”
+
+@38179 Amuro · アムロ
+# 审校：同上，クワトロ特尉应译为 Captain Quattro，而非 Lieutenant Colonel Quattro。
+> 「クワトロ特尉は、俺たちの
+>  味方だよ」
+“Captain Quattro is on our side.”
+
+@38180 Sara · 沙羅
+> 「そりゃね、信用はしちゃいるけどさ」
+“Sure, I trust him and all, but still.”
+
+@38181 Banjo · 万丈
+> 「まぁまぁ、いいじゃないか。
+>  彼がいなければ、いまの僕たちは
+“Now, now, isn't it fine? Without him, we might not be here today.
+---
+>  なかったかもしれない。その戦いに
+>  嘘はなかったはずだ。それを信じよう」
+There was no lie in the way he fought. Let's believe in that.”
+
+@38182 Gato · ガトー
+> (アクシズ……ハマーン殿が
+>  {HeroMech}に接触して
+(Axis... So Lady Haman has made contact with the {HeroMech}.
+---
+>  こられるとはな。だが、この状況は
+>  私にとってはありがたいことだ。いずれは
+But this situation works in my favor. Even if one day I must take up
+---
+>  大義をとらねばならんとしても
+>  ……英霊たちよ
+the great cause... Spirits of the fallen,
+---
+>  異星人を排除したその時こそ
+>  諸君らの声に応えよう。再び……
+when the aliens are driven out, that is when I shall answer your voices. Once more...
+---
+>  再びジオンの栄光をかかげるために)
+once more, to raise the glory of Zeon)
+
+@38183 Daisaku · 大作
+> 「あの……どうかしたんですか?」
+“Um... is something the matter?”
+
+@38184 Gato · ガトー
+> 「ん?」
+“Hm?”
+
+@38185 Daisaku · 大作
+> 「あ、いえ、その、なんだか
+>  考えこんでいるようだったから……」
+“Oh, no, it's just, you looked like you were deep in thought...”
+
+@38186 Gato · ガトー
+> 「フッ、気にするな、少年。いまは……
+>  そう、いまは
+“Hmph, pay it no mind, boy. For now... yes, for now,
+---
+>  ともに異星人を倒すことのみを
+>  考えようではないか」
+let us think only of defeating the aliens together.”
+
+@38187 Daisaku · 大作
+> 「はぁ……そうですね。あの、邪魔をして
+>  すみませんでした。僕、もう行きます」
+“Ah... right. Um, sorry for disturbing you. I'll be going now.”
+
+@38188 Gato · ガトー
+> 「うむ」
+“Very well.”
+
+@38189 Gato · ガトー
+> (しかし……大佐。志を
+>  持たぬ者とは思いたくないが……)
+(And yet... Colonel. I don't want to believe you're a man without conviction, but...)
+
+@38190 Jerid · ジェリド
+> 「ジェリド・メサ、入ります」
+“Jerid Messa, reporting in.”
+
+@38191 Jamitov · ジャミトフ
+> 「来たか。特尉、君はこれまで
+>  どうやって生き延びてきた」
+“You've come. Lieutenant, how have you managed to survive this long?”
+
+@38192 Jerid · ジェリド
+> 「は、自分は、ただ敵を倒すまでは
+>  死ねないと……」
+“Sir, I simply can't die until I've defeated the enemy...”
+
+@38193 Jamitov · ジャミトフ
+> 「ふむ……特尉、これをあずける。
+>  ハマーンとの会談には、同席しろ」
+“Hmm... Lieutenant, take this. You'll be sitting in on the talks with Haman.”
+
+@38194 Jerid · ジェリド
+# 审校：リスト型指腕部/手腕型装备，初稿误译为 list-type；原文句末是「……?」，应保留省略号加问号。
+> 「これは……
+>  リスト型の小型ロケット弾……?」
+“This is... a wrist-mounted micro rocket...?”
+
+@38195 Jamitov · ジャミトフ
+> 「ハマーンがおかしな動きをすれば、
+>  遠慮なく使え」
+“If Haman tries anything strange, use it without hesitation.”
+
+@38196 Jerid · ジェリド
+> 「はっ、了解です!」
+“Yes, understood!”
+
+@38197 Jamitov · ジャミトフ
+# 审校：“共闘を申し出たい”译为 propose joint operations 不够贴切，改为 propose a joint front，更符合军事同盟语境。
+> 「銀河帝国軍に対して
+>  共闘を申し出たい……か。よかろう
+“You wish to propose a joint front against the Galactic Empire... is that it? Very well.
+---
+>  我が部隊に属し、作戦に
+>  参加したいのならば、拒みはせん」
+If you wish to join my forces and take part in our operations, I won't refuse.”
+
+@38198 Haman · ハマーン
+> 「OZが我らアクシズに従う、の
+>  間違いではないのか?」
+“Shouldn't that be the other way around—that OZ will follow us at Axis?”
+
+@38199 Jamitov · ジャミトフ
+> 「何を根拠に
+>  それほどの強気でいられる?
+“On what grounds are you so confident?
+---
+>  貢献しだいでは、サイドの1つも
+>  まかせてやってもよいのだぞ」
+Depending on your contributions, I might even entrust a Side or two to you.”
+
+@38200 Haman · ハマーン
+> 「フッ、そんなものは、実力で手に
+>  入れてみせるよ、ジャミトフ・ハイマン」
+“Hmph. I'll take such things by my own strength, Jamitov Hymem.”
+
+@38201 Jamitov · ジャミトフ
+> 「何……?」
+“What...?”
+
+@38202 Haman · ハマーン
+> 「勘違いなさっては困る。
+>  我々は、望むなら力を
+“Don't misunderstand. We are merely saying we'll lend you our strength
+---
+>  貸してやろうといっているのだ。そちらの
+>  指揮など受けるつもりは毛頭ない」
+if you wish it. We have no intention whatsoever of taking your orders.”
+
+@38203 Dermail · デルマイユ
+> 「たかが亡国の残党の分際で、
+>  つけあがるな
+“Know your place, remnant of a fallen nation.
+---
+>  我がロームフェラ財団とOZの
+>  モビルドール部隊を敵にして
+Do you really think you can win with the Romefeller Foundation, OZ,
+---
+>  勝てるつもりでおるのか?」
+and our Mobile Doll Corps as your enemies?”
+
+@38204 Haman · ハマーン
+# 审校：“貴族どの”是哈曼对德尔迈尤的讽刺称呼，原译“My lord noble”不自然，改为“My dear noble”更符合讥讽语气。
+> 「勝てるつもりではなく、
+>  勝てるのだよ。貴族どの」
+“It's not that I think I can win—it's that I will win. My dear noble.”
+
+@38205 Jerid · ジェリド
+> (この女……)
+(This woman...)
+
+@38206 Dermail · デルマイユ
+> 「アステロイドに逃げこんだ
+>  敗残兵ごときが
+“A beaten remnant that fled to an Asteroid—
+---
+>  しょせんは伝統の重さを
+>  理解せぬ、下衆か」
+in the end, just a lowborn who can't grasp the weight of tradition.”
+
+@38207 Jamitov · ジャミトフ
+> 「ハマーン・カーン、いま1度聞く。
+>  我々に従う気はないのだな?」
+“Haman Karn, I'll ask you once more. You have no intention of obeying us?”
+
+@38208 Haman · ハマーン
+> 「交渉は決裂だな。
+>  我らの力、とくとお目にかけよう。が
+“Then the talks have broken down. You shall witness our power firsthand. But
+---
+>  貴様らはここで死んでもらう」
+you will die here.”
+
+@38209 Jerid · ジェリド
+> 「させるか!!」
+“Not if I can help it!”
+
+@38210 Haman · ハマーン
+> 「くっ!」
+“Ngh!”
+
+@38211 Jamitov · ジャミトフ
+> 「その女を逃がすな!」
+“Don't let that woman escape!”
+
+@38212 Dermail · デルマイユ
+> 「どうした!?」
+“What's going on?!”
+
+@38213 Specials · スペシャルズ
+> 「グワダンからの砲撃!
+>  直撃です!!」
+“Gunfire from the Gwadan! A direct hit!”
+
+@38214 Jamitov · ジャミトフ
+> 「なに!?」
+“What?!”
+
+@38215 Haman · ハマーン
+> 「フッ」
+“Hmph.”
+
+@38216 Jerid · ジェリド
+> 「待て、ハマーン!!」
+“Wait, Haman!”
+
+@38217 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長! グワダンが
+>  バルジに砲撃を開始しました!」
+“Captain Bright! The Gwadan has begun firing on Balji!”
+
+@38218 Bright · ブライト
+> 「何だと!?」
+“What did you say?!”
+
+@38219 Bunny · バニー
+> 「グワダンの発光信号確認!
+>  援護頼む、です」
+“Confirmed signal light from the Gwadan! Requesting support, sir.”
+
+@38220 Alan · アラン
+> 「早すぎるな」
+“Too soon.”
+
+@38221 Banjo · 万丈
+> 「ああ。だが、やはり最初からあてに
+>  されていたようだ。破廉恥な女だ」
+“Yeah. But it seems she was counting on us from the start after all. Shameless woman.”
+
+@38222 Bright · ブライト
+> 「約束だ、しかたあるまい。
+>  バルジ方面に一斉射!
+“It's a promise. There's no helping it. All guns, fire on the Balji area!
+---
+>  各機、出撃しろ!
+>  グワダンを落とさせるな!」
+All units, launch! Don't let the Gwadan get away!”
+
+@38223 Jamitov · ジャミトフ
+> 「む……戦闘が始まったか……
+>  ハマーンめ。誰かおらんのか!」
+“Mm... the battle's begun, has it... That Haman. Is anyone there?!”
+
+@38224 Scirocco · シロッコ
+> 「…………」
+“...”
+
+@38225 Jamitov · ジャミトフ
+> 「シロッコか? デルマイユはどうした」
+“Scirocco? Where's Dermail?”
+
+@38226 Scirocco · シロッコ
+> 「ここには我々しかいない」
+“There's no one here but us.”
+
+@38227 Jamitov · ジャミトフ
+> 「シロッコ? ……貴様!!」
+“Scirocco? ...You bastard!!”
+
+@38228 Scirocco · シロッコ
+> 「そういうことだ。悪いな、ジャミトフ」
+“That's how it is. Sorry, Jamitov.”
+
+@38229 Dermail · デルマイユ
+> 「おお、シロッコ特佐!
+>  ジャミトフはどうした?」
+“Oh, Colonel Scirocco! What's become of Jamitov?”
+
+@38230 Scirocco · シロッコ
+> 「……残念ながら、
+>  ジャミトフ閣下は亡くなられました」
+“...Regrettably, His Excellency Jamitov has passed away.”
+
+@38231 Dermail · デルマイユ
+> 「なっ……何だと!?」
+“Wha... What did you say?!”
+
+@38232 Scirocco · シロッコ
+> 「ハマーンにしてやられました。
+>  あの女、最初からそのつもりだったに
+“Haman got the better of him. That woman intended this from the very start—
+---
+>  相違ありません」
+of that there can be no doubt.”
+
+@38233 Dermail · デルマイユ
+> 「おおぉっ、なんということだ。
+>  ジャミトフ公が死んでしまうなどと……」
+“Ohhh, what a thing to happen. For Lord Jamitov to die...”
+
+@38234 Scirocco · シロッコ
+> 「デルマイユ公、
+>  このままハマーンを逃してはなりません
+“Lord Dermail, we must not let Haman escape like this.
+---
+>  本来ならばバスク特佐に
+>  指揮をとっていただくべきですが
+Normally Colonel Bask should take command, but
+---
+>  バルジは混乱しており、
+>  時間もありません」
+Balji is in chaos, and there's no time.”
+
+@38235 Dermail · デルマイユ
+> 「シロッコ……わ、わかった、まかせる」
+“Scirocco... u-understood, I leave it to you.”
+
+@38236 Scirocco · シロッコ
+> 「聞こえるか、全OZ艦隊。
+>  これはジャミトフ閣下の遺言である
+“Can you hear me, all OZ fleets? This is His Excellency Jamitov's dying wish.
+---
+>  閣下はハマーンに暗殺された!
+>  これは閣下の弔い合戦である!
+His Excellency was assassinated by Haman! This is a battle to avenge him!
+---
+>  ただちにグワダンを叩け!!」
+Strike the Gwadan at once!!”
+
+@38237 Bask · バスク
+> 「なんだと!? ジャミトフ閣下が
+>  亡くなられたというのか!?
+“What?! You're saying His Excellency Jamitov is dead?!
+---
+>  あの女狐め!!」
+That vixen!!”
+
+@38238 Specials · スペシャルズ
+> 「先ほどの通信は、
+>  シロッコ特佐のようです」
+“That transmission just now appears to have been from Colonel Scirocco.”
+
+@38239 Bask · バスク
+> 「シロッコめ……奴ごときが、何の
+>  つもりだ。出すぎたマネをしおって!」
+“Scirocco... That upstart, what does he think he's doing? He's overstepped himself!”
+
+@38240 Specials · スペシャルズ
+> 「どうなさいますか」
+“What are your orders?”
+
+@38241 Bask · バスク
+> 「閣下の弔い合戦とあらば、
+>  やらぬわけにはいかん
+“If it's a battle to avenge His Excellency, I can't very well refuse.
+---
+>  あとでみておれよ、シロッコ。
+>  ドゴスギアをグワダンへ向けい!」
+You'll see later, Scirocco. Point the Dogosse Giar toward the Gwadan!”
+
+@38242 Jerid · ジェリド
+> 「目標はグワダンだ! グワダンを
+>  落とせ! ハマーン、逃さんぞ!!」
+“The target is the Gwadan! Bring down the Gwadan! Haman, I won't let you escape!!”
+
+@38243 Jerid · ジェリド
+> 「なに、{HeroMech}だと!?
+>  ……そういうことかよ! 奴らめ!」
+“What, the {HeroMech}?! ...So that's how it is! Those bastards!”
+
+@38244 Axis Soldier · アクシズ兵
+> 「ハマーン様、{HeroMech}です」
+“Lady Haman, it's the {HeroMech}.”
+
+@38245 Haman · ハマーン
+> 「フフッ、律義な奴らだ。
+>  聞こえるか、{HeroMech}
+“Heh heh, how dutiful they are. Can you hear me, {HeroMech}?
+---
+>  グワダンを戦線から離脱させたい
+>  援護してくれると助かる」
+I'd appreciate your support in getting the Gwadan off the battle line.”
+
+@38246 Beauty · ビューティ
+> 「まぁ、いい気なもんね」
+“My, aren't we full of ourselves.”
+
+@38247 Reika · レイカ
+> 「ホント」
+“Tell me about it.”
+
+@38248 Bright · ブライト
+> 「ハマーンめ。ビューティー、
+>  パイロット各員に通達しろ!
+“That Haman. Beauty, relay this to all pilots!
+---
+>  グワダンとキュベレイを
+>  落とさせるなよ!!」
+Don't let the Gwadan and the Qubeley get away!!”
+
+@38249 Bask · バスク
+> 「ええい、何をやっておるか!
+>  おのれハマーン・カーン
+“Gah, what are you all doing?! Curse you, Haman Karn!
+---
+>  おのれ{HeroMech}め!
+>  ゲーツ・キャパ特尉、やれるな!?」
+Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+
+@38250 Gates · ゲーツ
+> 「はっ。問題ありません。
+>  ロザミアも順調です」
+“Yes, sir. No problem. Rosamia is coming along well too.”
+
+@38251 Bask · バスク
+> 「よぉし、奴らを生かして帰すな!」
+“All right, don't let them get out of here alive!”
+
+@38252 Bask · バスク
+> 「ええい、何をやっておるか!
+>  おのれハマーン・カーン
+“Gah, what are you all doing?! Curse you, Haman Karn!
+---
+>  {HeroMech}め!
+>  ゲーツ・キャパ特尉、やれるな!?」
+Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+
+@38253 Gates · ゲーツ
+> 「はっ。問題ありません。
+>  ロザミアも順調です」
+“Yes, sir. No problem. Rosamia is coming along well too.”
+
+@38254 Gato · ガトー
+> (くっ……まさか事態がこのように
+>  動くとは……不覚であった……)
+(Ngh... To think things would turn out like this... I was careless...)
+
+@38255 Bask · バスク
+> 「アナベル・ガトー、どうか!」
+“Anavel Gato, what say you?!”
+
+@38256 Gato · ガトー
+> 「……義は果たさせていただく」
+“...I shall see my duty through.”
+
+@38257 Bask · バスク
+> 「よぉし、奴らを生かして帰すな!」
+“All right, don't let them get out of here alive!”
+
+@38258 Bask · バスク
+> 「ええい、何をやっておるか!
+>  おのれハマーン・カーン
+“Gah, what are you all doing?! Curse you, Haman Karn!
+---
+>  おのれ{HeroMech}め!
+>  ゲーツ・キャパ特尉、やれるな!?」
+Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+
+@38259 Gates · ゲーツ
+> 「はっ。問題ありません。
+>  ロザミアも順調です」
+“Yes, sir. No problem. Rosamia is coming along well too.”
+
+@38260 Bask · バスク
+> 「よぉし、奴らを生かして帰すな!」
+“All right, don't let them get out of here alive!”
+
+@38261 Bask · バスク
+> 「ええい、何をやっておるか!
+>  おのれハマーン・カーン
+“Gah, what are you all doing?! Curse you, Haman Karn!
+---
+>  {HeroMech}め!
+>  ゲーツ・キャパ特尉、やれるな!?」
+Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+
+@38262 Gates · ゲーツ
+> 「はっ。問題ありません。
+>  ロザミアも順調です」
+“Yes, sir. No problem. Rosamia is coming along well too.”
+
+@38263 Gato · ガトー
+> (くっ……まさか事態がこのように
+>  動くとは……不覚であった……)
+(Ngh... To think things would turn out like this... I was careless...)
+
+@38264 Bask · バスク
+> 「アナベル・ガトー、どうか!」
+“Anavel Gato, what say you?!”
+
+@38265 Gato · ガトー
+> 「……義は果たさせていただく」
+“...I shall see my duty through.”
+
+@38266 Bask · バスク
+# 审校：原文“生かして帰すな”意为“别让他们活着回去”，初稿“get out of here alive”变成“别让他们活着离开这里”，方向反了。
+> 「よぉし、奴らを生かして帰すな!」
+“All right, don't let them get away alive!”
+
+@38267 Haman · ハマーン
+> 「グワダンが離脱したか。
+>  {HeroMech}、あとはまかせる」
+“The Gwadan has withdrawn. {HeroMech}, I leave the rest to you.”
+
+@38268 Bask · バスク
+> 「なんだと!? ええい、グワダンを逃した
+>  というのか! ビルゴはどうしたか!!」
+“What?! Gah, you mean the Gwadan got away?! What happened to the Virgo?!”
+
+@38269 Specials · スペシャルズ
+> 「はっ、試作型のため
+>  調整に手間どったようですが
+“Yes, sir. It seems the prototype required extra time for adjustments, but
+---
+>  まもなく到着します」
+it will arrive shortly.”
+
+@38270 Bask · バスク
+> 「急がせい! せめて
+>  {HeroMech}だけでも
+“Hurry it up! If nothing else, I have to take down {HeroMech},
+---
+>  やっておかねば、シロッコに対して
+>  示しがつかん!」
+or I'll have nothing to show Scirocco!”
+
+@38271 Specials · スペシャルズ
+> 「ビルゴ、来ました!」
+“The Virgo is here!”
+
+@38272 Bask · バスク
+> 「よぉし、出させろ!」
+“All right, send it out!”
+
+@38273 Bask · バスク
+> 「ぬおっ!? バ、バカな……!」
+“Ngh?! I-impossible...!”
+
+@38274 Gates · ゲーツ
+# 审校：“やられる”在战斗语境下指被击破/打倒，初稿“shot down”过于具体，改为更通用的“taken down”。
+> 「くっ……私がやられる……!?」
+“Ngh... I'm being taken down...?!”
+
+@38275 Rosamia · ロザミア
+> 「きゃああぁぁぁーっ!!」
+“Kyaaaaaaah!!”
+
+@38276 Gates · ゲーツ
+> 「ロザミア!? どうしたロザミア!!」
+“Rosamia?! What's wrong, Rosamia!!”
+
+@38277 Gates · ゲーツ
+# 审校：与 L10 同理，“やられた”改为“taken down”，保持同一批内用词一致。
+> 「なに!? やられたというのか、
+>  ロザミア……」
+“What?! You mean Rosamia was taken down...”
+
+@38278 Gato · ガトー
+# 审校：“不覚をとった”更自然译为“I was caught off guard”，初稿“I've been caught off guard”时态略别扭。
+> 「くっ、不覚をとったか……。
+>  だが……これで義理は果たした」
+“Ngh, I was caught off guard... But... with this, my duty is fulfilled.”
+
+@38279 Haman · ハマーン
+> 「なに!? バカな、私が……」
+“What?! Impossible, that I...”
+
+@38280 Haman · ハマーン
+> 「なんだと!? グワダンが落ちたのか!?」
+“What?! The Gwadan has fallen?!”
+
+@38281 Jerid · ジェリド
+> 「カミーユ!
+>  貴様から地獄へ送ってやる!」
+“Kamille! I'll send you straight to hell!”
+
+@38282 Kamille · カミーユ
+> 「そう簡単にやられるものかよ!」
+“You think I'll go down that easily?!”
+
+@38283 Jerid · ジェリド
+# 审校：原文是捷利特对哈曼的愤怒喊叫，初稿“A woman like you!!”语气偏平，改为破折号更符合被打断/爆发感。
+> 「貴様のような女がッ!!」
+“A woman like you—!”
+
+@38284 Haman · ハマーン
+# 审校：原文“この私にプレッシャーを与えるだと”带有“竟敢对我施压”的傲慢语气，初稿“You're putting pressure on me”太平淡。
+> 「なんだ!? この私に
+>  プレッシャーを与えるだと!?」
+“What?! You dare pressure me?!”
+
+@38285 Bunny · バニー
+> 「艦長、ハマーン・カーンから
+>  通信が入っています」
+“Captain, we're receiving a transmission from Haman Karn.”
+
+@38286 Bright · ブライト
+> 「つないでくれ」
+“Put her through.”
+
+@38287 Haman · ハマーン
+> 「{HeroMech}の諸君、
+>  ご苦労だった
+“People of the {HeroMech}, you've done well.
+---
+>  さすが{HeroMech}、
+>  約束をたがえることはなかったな
+As expected of the {HeroMech}, you did not break your promise.
+---
+>  うれしい限りだ」
+Nothing could please me more.”
+
+@38288 Bright · ブライト
+> 「……それはどうも」
+“...Much obliged.”
+
+@38289 Haman · ハマーン
+> 「私は信義を知らぬものではない。
+>  こちらも約束は果たさせていただく
+“I am not one who knows nothing of honor. I shall keep my end of the bargain as well.
+---
+>  銀河帝国軍を排除するまでは
+>  我がアクシズ軍は
+Until the Galactic Empire's forces are eliminated, our Axis Forces
+---
+>  トレーズ派OZに対し、
+>  全面的に協力しよう」
+shall cooperate fully with Treize's faction of OZ.”
+
+@38290 Judau · ジュドー
+> 「なにいってんの、
+>  そんなの当然じゃない!
+“What are you talking about? Of course you should!
+---
+>  こっちに尻ぬぐいさせてさ、
+>  恩着せがましいんだよ!」
+You made us clean up your mess, and now you act like you're doing us a favor!”
+
+@38291 Amuro · アムロ
+> 「ジュドー、よさないか」
+“Judau, that's enough.”
+
+@38292 Haman · ハマーン
+> 「フフッ、威勢がいいな、少年。
+>  だが、悪くはない。気に入ったよ」
+“Heh heh, you've got spirit, boy. But I don't dislike it. I like you.”
+
+@38293 Judau · ジュドー
+> 「あんたに気に入られたって、
+>  うれしくないっての」
+“Being liked by you doesn't exactly make me happy.”
+
+@38294 Roux · ルー
+> 「もう、やめなってジュドー」
+“Come on, knock it off, Judau.”
+
+@38295 Haman · ハマーン
+> 「ハハハハッ。今後は
+>  異星人に対する限り
+“Hahahaha. From now on, as long as it concerns the aliens,
+---
+>  無条件に協力すると
+>  考えてもらってかまわん」
+you may consider us your unconditional allies.”
+
+@38296 Alan · アラン
+> 「ああ、期待させていただくとしよう」
+“Ah, then I shall look forward to it.”
+
+@38297 Bright · ブライト
+> 「我々は近いうちに帝国艦隊に
+>  対し、こちらから攻撃をかける
+“We intend to launch an attack on the Imperial fleet ourselves before long.
+---
+>  予定でいる。作戦への参加を
+>  要請することになると思うが」
+I expect we'll be requesting your participation in the operation.”
+
+@38298 Haman · ハマーン
+> 「結構だ。たのしみなことだな」
+“Splendid. I look forward to it.”
+
+@38299 Scirocco · シロッコ
+> 「ほう……バスク特佐が戦死されたか」
+“Oh... So Colonel Bask was killed in action.”
+
+@38300 Yazan · ヤザン
+> 「ドゴスギアは大破だ。
+>  バスクはブリッジごと、ふっとんじまったよ」
+“The Dogosse Giar's been wrecked. Bask got blown to bits along with the bridge.”
+
+@38301 Scirocco · シロッコ
+> 「残念なことだ。
+>  これではロームフェラ派のOZも
+“How regrettable. At this rate, the Romefeller faction of OZ
+---
+>  組織を再編せねばならん」
+will have to reorganize as well.”
+
+@38302 Mouar · マウアー
+> 「…………」
+“...”
+
+@38303 Dermail · デルマイユ
+> 「おお、シロッコ特佐。バスク特佐が
+>  戦死したというのは……」
+“Oh, Colonel Scirocco. This business of Colonel Bask's death...”
+
+@38304 Scirocco · シロッコ
+> 「事実のようです」
+“It appears to be true.”
+
+@38305 Dermail · デルマイユ
+> 「な……なんと。ジャミトフ公に続いて
+>  バスク特佐までが……
+“W-what... After Lord Jamitov, now Colonel Bask too...
+---
+>  ど、どうするのだシロッコ!
+>  これでは異星人どころか
+Wh-what are we to do, Scirocco?! At this rate, forget the aliens—
+---
+>  トレーズやあの女にまで……」
+even Treize and that woman will...”
+
+@38306 Scirocco · シロッコ
+> 「そうはさせません」
+“I won't let that happen.”
+
+@38307 Dermail · デルマイユ
+> 「しかし……」
+“But even so...”
+
+@38308 Scirocco · シロッコ
+> 「閣下がなくなられたことで、
+>  財団の方も混乱することでしょう
+“With His Excellency gone, the Foundation will surely fall into chaos as well.
+---
+>  デルマイユ公には、
+>  それを抑えていただきたい」
+I would ask that you, Lord Dermail, keep it under control.”
+
+@38309 Dermail · デルマイユ
+> 「確かに、トレーズにつくような連中が
+>  出てはやっかいだな……
+“True, it would be troublesome if elements siding with Treize were to appear...
+---
+>  だが、OZはどうなるのだ?
+>  異星人に勝てねば、話にならんぞ」
+But what of OZ? If we can't beat the aliens, there's no point to any of it.”
+
+@38310 Scirocco · シロッコ
+> 「すでにビルゴの強化型であるビルゴⅡ
+>  も開発体制に入っております
+“The Virgo II, an enhanced model of the Virgo, is already in development.
+---
+>  ビルゴⅡの大量配備が
+>  実現すれば、私のような者でも
+If we can achieve mass deployment of the Virgo II, even someone like me
+---
+>  じゅうぶんにやれましょう」
+can handle the job well enough.”
+
+@38311 Dermail · デルマイユ
+> 「そうか……なるほど、我らにはMDが
+>  あったのだったな。ビルゴⅡが
+“I see... Of course, we do have the MDs. If the Virgo II is
+---
+>  量産されれば、安心だ。ツバロフが
+>  やってくれたか。なるほど……わかった
+mass-produced, we can rest easy. So Tubarov came through. I see... Understood.
+---
+>  財団の方はまかせておけ。
+>  OZは貴公にまかせるぞ、シロッコ」
+Leave the Foundation to me. I'll leave OZ in your hands, Scirocco.”
+
+@38312 Mouar · マウアー
+> 「ジェリド!」
+“Jerid!”
+
+@38313 Jerid · ジェリド
+> 「……マウアーか」
+“...Mouar.”
+
+@38314 Mouar · マウアー
+> 「ジェリド……よく無事で。
+>  こっちに編入になると聞いたわ
+“Jerid... I'm glad you're safe. I heard you're being transferred here.
+---
+>  また一緒の隊になるわね」
+We'll be in the same unit again.”
+
+@38315 Jerid · ジェリド
+> 「笑ってくれ、マウアー。
+>  俺は、チャンスをつかんでおきながら
+“Go ahead and laugh, Mouar. I had my chance,
+---
+>  またしくじっちまった。
+>  俺がハマーンをやっていれば……」
+and I blew it again. If only I'd finished off Haman...”
+
+@38316 Mouar · マウアー
+> 「でも、あなたは生きている。
+>  生きていれば、またチャンスもくるわ
+“But you're alive. As long as you're alive, another chance will come.
+---
+>  それが最も大事なことよ。あたし、
+>  あなたがもどってくれて、うれしかった」
+That's the most important thing. I was happy you came back.”
+
+@38317 Jerid · ジェリド
+> 「マウアー……そうだな。シロッコは
+>  どさくさにまぎれてトップに立った
+“Mouar... You're right. Scirocco seized the top spot amid the confusion.
+---
+>  俺にだって、やってやれないことはない。
+>  異星人どものことを考えれば
+It's not as if I couldn't do the same. And considering the aliens,
+---
+>  まだ先は長いしな」
+there's still a long road ahead.”
+
+@38318 Mouar · マウアー
+> 「ジェリド、シロッコは危険すぎるわ。
+>  もしいまの状態すら
+“Jerid, Scirocco is far too dangerous. If even the current situation
+---
+>  シロッコが望んだことだったとしら、
+>  シロッコは……」
+was something Scirocco wanted, then Scirocco is...”
+
+@38319 Jerid · ジェリド
+> 「わかっている。いまは、目に見えている
+>  状況を変えていけばいい」
+“I know. For now, we just have to change what we can see in front of us.”
+
+@38320 Mouar · マウアー
+> 「ジェリド……」
+“Jerid...”
+
+@38321 Jerid · ジェリド
+> 「君のほうこそ、無理はするなよ」
+“You be careful not to push yourself too hard.”
+
+@38322 Mouar · マウアー
+> 「あなたについていくつもりでいるのに、
+>  死にはしないわ」
+“I intend to follow you, so I won't die.”
+
+@38323 Emperor Zuul · ズール皇帝
+> 「ワール、その後の経過はどうだ」
+“Wahl, what's the status?”
+
+@38324 Wahl · ワール
+> 「はっ、先遣艦隊は
+>  意外に苦戦している模様です
+“Yes, sir. The advance fleet appears to be struggling more than expected.
+---
+>  マーズもいまだ健在であります」
+Mars is still holding out as well.”
+
+@38325 Emperor Zuul · ズール皇帝
+> 「バカ者が。マーズを倒しておったら、
+>  すでに地球など存在せぬわ
+“Fools. If Mars had been defeated, Earth would no longer exist.
+---
+>  ガンダルめ、なにをやっておる」
+That Gandal, what is he doing?”
+
+@38326 Wahl · ワール
+> 「しかし陛下、マーズは地球人の
+>  中でも特に戦闘能力が
+“But Your Majesty, Mars is said to be accompanied by
+---
+>  強化された者たちと、
+>  同行しているとのこと
+Earthlings whose combat abilities have been especially
+---
+>  先遣艦隊には
+>  少々荷が重いかと……」
+enhanced. It may be a bit much for the advance fleet...”
+
+@38327 Emperor Zuul · ズール皇帝
+> 「うぅむ、マーズめ。あやつに関しては
+>  ワシの誤算であったわ」
+“Hmm, that Mars. Where he is concerned, he was a miscalculation on my part.”
+
+@38328 Wahl · ワール
+> 「誤算、でございますか」
+“A miscalculation, Your Majesty?”
+
+@38329 Emperor Zuul · ズール皇帝
+> 「うむ。地球の火山活動の
+>  影響でマーズの眠っていたカプセルが
+“Yes. The capsule Mars slept in was discovered by Earthlings
+---
+>  地球人に発見されたこと、
+>  マーズを育てた地球人が地球を
+due to Earth's volcanic activity, the Earthlings who raised Mars
+---
+>  愛する心を教えたこと、そして
+>  ガイヤーを守るロボットの存在
+taught him to love Earth, and there is the robot that protects Gaia.
+---
+>  これらの1つでもなければ
+>  今ごろは地球など
+Without even one of these, Earth would by now
+---
+>  宇宙のチリとなっておったものをな」
+be nothing but dust in space.”
+
+@38330 Wahl · ワール
+> 「……いかがいたしましょうか、陛下」
+“...What shall we do, Your Majesty?”
+
+@38331 Emperor Zuul · ズール皇帝
+> 「ガンダルが苦戦しておるというのも、
+>  地球がいかに
+“The fact that Gandal is struggling is proof of just how
+---
+>  危険であるかの証拠。
+>  ワール、艦隊の用意をせい
+dangerous Earth is. Wahl, prepare the fleet.
+---
+>  ワシみずから地球へ向かうとしよう」
+I shall head for Earth myself.”
+
+@38332 Wahl · ワール
+> 「はっ、かしこまりました、陛下」
+“Yes, understood, Your Majesty.”
+
+@38333 Emperor Zuul · ズール皇帝
+> 「指揮はお前にまかせる。
+>  副官として、キャンベルのジャネラを
+“I leave the command to you. As your adjutant, summon
+---
+>  呼び寄せるがよい」
+Janera of Campbell.”
+
+@38334 Wahl · ワール
+> 「はっ。陛下、ガンダル殿から進言
+>  のあった、例の件はいかがいたしますか」
+“Yes. Your Majesty, regarding that matter Lord Gandal proposed, what shall we do?”
+
+@38335 Emperor Zuul · ズール皇帝
+# 审校：原文是陈述句“デューク・フリードが地球におったという件か”，初稿误译为疑问句“The matter of... being on Earth?”，改为陈述语气。
+> 「フリード星のデューク・フリードが、
+>  地球におったという件か
+“So Duke Fleed of Planet Fleed is on Earth.
+---
+>  確かフリード星の女がおったな。
+>  処置をして
+There was a woman from Planet Fleed, was there not? Deal with her
+---
+>  ガンダルのところへ送っておけ」
+and send her to Gandal.”
+
+@38336 Wahl · ワール
+> 「はっ」
+“Yes, sir.”

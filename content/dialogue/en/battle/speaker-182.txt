@@ -1,0 +1,37 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12431 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12432 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12433 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12434 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12435 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12436 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12437 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12438 Silky · シルキー
+> 「ばかめ!」
+“Fool!”
+
+@12439 Silky · シルキー
+> 「ばかめ!」
+“Fool!”

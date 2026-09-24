@@ -1,0 +1,122 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10320 Gorman · ゴーマン
+> 「地獄の底に送りこんでやるぞ!」
+“I'll send you to the depths of hell!”
+
+@10321 Gorman · ゴーマン
+> 「貴様はこの俺が倒すんだ」
+“I'm the one who's going to take you down.”
+
+@10322 Gorman · ゴーマン
+> 「攻撃開始だ!」
+“Commence the attack!”
+
+@10323 Gorman · ゴーマン
+> 「俺に狙われたら最後
+>  絶対に逃げられんぞ!」
+“Once I've got you in my sights, you'll never escape!”
+
+@10324 Gorman · ゴーマン
+> 「どけ!」
+“Out of my way!”
+
+@10325 Gorman · ゴーマン
+> 「ぐずぐずせずに早く攻撃しろ!」
+“Stop dawdling and attack already!”
+
+@10326 Gorman · ゴーマン
+> 「俺はゴーマン大尉だ!」
+“I am Captain Gorman!”
+
+@10327 Gorman · ゴーマン
+> 「真っ逆さまに地獄の底に
+>  落ちるのだ!」
+“You'll fall headlong into the depths of hell!”
+
+@10328 Gorman · ゴーマン
+> 「いくら逃げ回っても同じことだ!」
+“No matter how you run, it's all the same!”
+
+@10329 Gorman · ゴーマン
+> 「死ににやってきたか!」
+“So you've come to die!”
+
+@10330 Gorman · ゴーマン
+# 审校：拟声词“うおぉぉぉーっ”统一为更自然的英文拟声，并保持与原文相同的拖长音。
+> 「お、おのれぇぇっ! うおぉぉぉーっ!?」
+“Y-you bastard! Uwooooooh?!”
+
+@10331 Gorman · ゴーマン
+> 「くっ……バカな!? この俺がここまで
+>  やられるのか!?」
+“Ngh... Impossible! Me, beaten this badly?!”
+
+@10332 Gorman · ゴーマン
+> 「なんだと!? 冗談ではない!」
+“What?! You can't be serious!”
+
+@10333 Gorman · ゴーマン
+> 「バカな! こんなことはありえん!」
+“Impossible! This can't be happening!”
+
+@10334 Gorman · ゴーマン
+> 「ぐうっ、許さん! 必ず息の根を
+>  止めてくれる!」
+“Guh, I won't forgive this! I'll finish you off for sure!”
+
+@10335 Gorman · ゴーマン
+> 「お、おのれぇぇぇぇぇっ!」
+“Y-you bastaaaaard!”
+
+@10336 Gorman · ゴーマン
+> 「くっ……なんのこれしき!」
+“Ngh... This is nothing!”
+
+@10337 Gorman · ゴーマン
+> 「このゴーマンにここまでやるとは!
+>  覚えておくぞ!」
+“To push me, Gorman, this far! I'll remember this!”
+
+@10338 Gorman · ゴーマン
+> 「フフフッ、まだまだだ!」
+“Heh heh, not over yet!”
+
+@10339 Gorman · ゴーマン
+> 「命を捨てにわざわざ自分から
+>  出向いてきたか」
+“So you've gone out of your way to throw your life away.”
+
+@10340 Gorman · ゴーマン
+> 「俺に歯向かうつもりか?」
+“You intend to defy me?”
+
+@10341 Gorman · ゴーマン
+> 「自分から死ににやってきたか!」
+“So you've come to die on your own!”
+
+@10342 Gorman · ゴーマン
+> 「フフフ、この超合金の盾には
+>  どんな兵器も通用せんのだ!」
+“Heh heh, no weapon can pierce this super-alloy shield!”
+
+@10343 Gorman · ゴーマン
+> 「予想していた通りの力だな」
+“Just as much power as I expected.”
+
+@10344 Gorman · ゴーマン
+> 「フフフッ、この俺には通用せんぞ!」
+“Heh heh, that won't work on me!”
+
+@10345 Gorman · ゴーマン
+> 「フフフフフ、気がつくのが
+>  一足遅かったようだな」
+“Heh heh heh heh, seems you noticed a moment too late.”
+
+@10346 Gorman · ゴーマン
+> 「ぐずぐずせずに早く補給するんだ!」
+“Stop dawdling and resupply now!”
+
+@10347 Gorman · ゴーマン
+> 「くそっ、どこにいる!?」
+“Damn it, where are you?!”

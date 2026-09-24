@@ -1,0 +1,2675 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@37253 Reika · レイカ
+> 「あ、万丈、どうだった?」
+“Oh, Banjo, how did it go?”
+
+@37254 Banjo · 万丈
+> 「大丈夫だ。
+>  なんとか間に合うそうだよ」
+“It's fine. Looks like we'll make it in time somehow.”
+
+@37255 Kamille · カミーユ
+> 「何がです?」
+“Make what in time?”
+
+@37256 Banjo · 万丈
+> 「トレーズ派の作戦にあわせて、
+>  カラバの方でも
+“To go along with Treize's faction's operation, Karaba was putting together
+---
+>  キリマンジャロ攻めに参加できる
+>  部隊を編成していたんだ
+a unit that could join the attack on Kilimanjaro too.
+---
+>  それに、対銀河帝国軍用に
+>  準備を進めていたやつを
+And on top of that, the ones we'd been preparing
+---
+>  参加させることができそうなんだ」
+for use against the Galactic Empire look like they can join in.”
+
+@37257 Ryo · 亮
+> 「ほう、対銀河帝国軍用ね。
+>  そんな強力な機体が
+“Oh, for use against the Galactic Empire, huh. So a machine that powerful
+---
+>  まだ地上に残っていたとはな」
+was still left down here on Earth.”
+
+@37258 Ryoma · リョウ
+> 「ああ、グレンダイザーだけでもたいしたもの
+>  だったが、まだあるとはさすがだな
+“Yeah, Grendizer alone was impressive enough, but there's more? That's something.
+---
+>  それで、今度はどんな奴なんだ?
+>  まさか
+So what kind of thing is it this time? Don't tell me
+---
+>  また異星人ってわけでは
+>  ないんだろう?」
+it's another alien?”
+
+@37259 Banjo · 万丈
+> 「それは、内緒さ。ま、あとの
+>  お楽しみにとっておこうじゃないか」
+“That's a secret. Well, let's save it as a treat for later.”
+
+@37260 Quattro · クワトロ
+> 「それで、作戦へのトレーズ派
+>  兵士の参加状況は?」
+“So, how many of Treize's soldiers are taking part in the operation?”
+
+@37261 Bright · ブライト
+> 「悪くないな。
+>  予想以上の数になりそうだ
+“Not bad. Looks like we'll get more than expected.
+---
+>  ロームフェラ派にもっと
+>  やられているかと思っていたんだがね」
+I thought the Romefeller faction would have worn them down more.”
+
+@37262 Quattro · クワトロ
+> 「それに、トレーズ自身が指揮を
+>  とるということで、士気も高いか
+“And with Treize himself taking command, morale is high too.
+---
+>  やれそうだな?」
+Think we can pull it off?”
+
+@37263 Bright · ブライト
+> 「そう思うよ。まったく、
+>  これならさっさと出てきてくれれば
+“I think so. Honestly, if he'd just come out sooner,
+---
+>  もっといい状況もつくれたんだがな」
+we could have set up an even better situation.”
+
+@37264 Treize · トレーズ
+> 「まあ、そういわないでくれ。
+>  だから同行もするのだ」
+“Now, don't say that. That's exactly why I'm coming along.”
+
+@37265 Bright · ブライト
+> 「特佐、用意のほうは?」
+“Lieutenant Colonel, are the preparations ready?”
+
+@37266 Treize · トレーズ
+> 「終わっている。
+>  バイストン・ウェルの女王への
+“They're done. I've already paid my respects
+---
+>  ごあいさつもすませたことだしね」
+to the Queen of Byston Well as well.”
+
+@37267 Bright · ブライト
+> 「では、出発しましょう」
+“Then let's set off.”
+
+@37268 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}……」
+“{PartnerNick}...”
+
+@37269 Koji · 甲児
+> 「……あんまり気にするなよ」
+“...Don't beat yourself up over it.”
+
+@37270 Brad · ブラッド（按段落 3DD3）
+> 「甲児……」
+“Koji...”
+
+@37271 Sayaka · さやか
+> 「彼だって、こうなる可能性は
+>  考えてたでしょう
+“He must have known this could happen too.
+---
+>  あなたが悪いんじゃないんだから」
+It's not your fault.”
+
+@37272 Brad · ブラッド（按段落 3DD3）
+> 「さやか……」
+“Sayaka...”
+
+@37273 Roux · ルー
+> 「そうそう。まったくドモンといい
+>  あんたといい、単純な奴に限って
+“That's right. Honestly, Domon and you alike, it's always the simple ones
+---
+>  ショック受けると
+>  ズーンと沈んじゃうんだから
+who sink into a deep gloom when they get shocked.
+---
+>  もっとシャキッとしなさいよ」
+Snap out of it already.”
+
+@37274 Brad · ブラッド（按段落 3DD3）
+> 「ルー・ルカもか……」
+“Roux Louka too...”
+
+@37275 Koji · 甲児
+# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerName}']，实际为 []）
+# 草稿第 1 页：“Haha, it's not like you, but the only ones who've fought alongside
+# 草稿第 2 页：[Partner name] as comrades are me, Sayaka, and Roux.
+# 草稿第 3 页：Banjo was worried too, you know.”
+> 「ははっ、ガラじゃないけどさ。
+>  {PartnerName}と仲間として
+---
+>  戦ったことがあるのは、お前の他には
+>  俺とさやかさんとルーくらいだからな
+---
+>  万丈も気にしてたぜ」
+
+@37276 Brad · ブラッド（按段落 3DD3）
+> 「すまん……お前たち……」
+“Sorry... all of you...”
+
+@37277 Koji · 甲児
+> 「いいって。それより、大丈夫かよ?」
+“It's fine. More importantly, are you okay?”
+
+@37278 Brad · ブラッド（按段落 3DD3）
+> 「ああ。戦闘になれば、
+>  そんなこと考えているヒマはないからな」
+“Yeah. Once we're in battle, there's no time to be thinking about that.”
+
+@37279 Roux · ルー
+> 「ならいいんだけど。あ、そうそう、
+>  アストナージさんが
+“Then that's fine. Oh, right, Astonaige said he wants to talk
+---
+>  回収したヴァイローズの件で
+>  話があるっていってたわよ」
+about the Virose we recovered.”
+
+@37280 Brad · ブラッド（按段落 3DD3）
+> 「アストナージ、わかったのか?」
+“Astonaige, did you figure it out?”
+
+@37281 Astonaige · アストナージ
+> 「おう、来たな。
+>  お前のいった通りみたいだ」
+“Yeah, you're here. Looks like it's just as you said.”
+
+@37282 Brad · ブラッド（按段落 3DD3）
+> 「そうか……」
+“I see...”
+
+@37283 Astonaige · アストナージ
+> 「スーパーアースゲインといったところかな。
+>  かなりパワーアップするようだ
+“I'd call it the Super Earthgain. Seems it'll get a fair power boost.
+---
+>  操縦関連のシステムはいじらなくて
+>  すむから、俺たちでもなんとかできるが、
+We won't have to mess with the control systems, so even we can manage it,
+---
+>  どうする?」
+but what do you want to do?”
+
+@37284 Brad · ブラッド（按段落 3DD3）
+> ({PartnerNick}…………師匠……
+>  これで……これでよかったのですか……)
+({PartnerNick}... Master... was this... was this the right thing to do...)
+
+@37285 Astonaige · アストナージ
+> 「おい、{HeroNick}」
+“Hey, {HeroNick}.”
+
+@37286 Brad · ブラッド（按段落 3DD3）
+> 「……やってくれ。……頼む」
+“...Do it. ...Please.”
+
+@37287 Astonaige · アストナージ
+> 「よし、それじゃさっそくとりかかるとするか
+>  シャリー、ジャネット、来てくれないか」
+“Alright, then let's get started right away. Shirley, Janet, could you come here?”
+
+@37288 Brad · ブラッド（按段落 3DD3）
+> ({PartnerNick}……見ていろ。敵を
+>  滅するその日まで、俺は
+({PartnerNick}... Watch me. Until the day I destroy the enemy, I'll
+---
+>  戦いつづける。お前の魂とともに……
+>  このスーパーアースゲインで……)
+keep fighting. Together with your soul... in this Super Earthgain...)
+
+@37289 Manami · マナミ（按段落 3DD4）
+> 「シャリー、何か話が
+>  あるって聞いたけど?」
+“Shirley, I heard you had something to talk about?”
+
+@37290 Shirley · シャリー
+> 「ああ、来たわね。アストナージさん」
+“Ah, you're here. Astonaige.”
+
+@37291 Astonaige · アストナージ
+> 「悪いな、休んでるとこ呼び出して。
+>  ちょっと
+“Sorry for calling you out while you were resting. I just
+---
+>  確認したいことがあったもんでね」
+had something I wanted to confirm.”
+
+@37292 Manami · マナミ（按段落 3DD4）
+> 「なにかしら?」
+“What is it?”
+
+@37293 Astonaige · アストナージ
+> 「エルブルスの件でね。
+>  ほら、前にスイームルグとエルブルスが
+“It's about the Elbulls. Remember how I told you the Sweemurg and the Elbulls
+---
+>  ドッキングできるように設計されて
+>  いたっていう話をしただろう?
+were designed so they could dock together?
+---
+>  それで、俺たちでちょっと
+>  調べてたんだよ」
+So we've been looking into it a bit.”
+
+@37294 Shirley · シャリー
+> 「結論からいうとね、両方とも
+>  単体のみで動くように
+“To give you the conclusion first, both were redesigned to operate
+---
+>  再設計されているから、その機構
+>  をいまから用意するのは無理なの
+only on their own, so setting up that mechanism now is impossible.
+---
+>  だけど、一体化することは、
+>  可能みたいなのよ
+But it seems they can be joined together.
+---
+>  どうせ修理するんなら、ついでだしね」
+If we're going to repair them anyway, we might as well.”
+
+@37295 Manami · マナミ（按段落 3DD4）
+> 「スイームルグとエルブルスを!?」
+“The Sweemurg and the Elbulls?!”
+
+@37296 Astonaige · アストナージ
+> 「いまチェーンに見てもらってるんだが、
+>  当然飛行は可能になるし
+“Chan's taking a look at it right now, but naturally it'll be able to fly,
+---
+>  ジェネレーターが2つになるから、
+>  その余剰出力を利用して
+and with two generators, we can use the surplus output to mount
+---
+>  新しい武器もつけれそうなんだ。
+>  もちろん、基本性能も向上する」
+new weapons too. Of course, its base performance goes up as well.”
+
+@37297 Lawrence · ローレンス
+# 审校：原文没有称呼“my lady”，删去；ローレンス对マナミ的称呼在L52已体现，此处不应额外添加。
+> 「さようですな。わたくしの記憶に
+>  間違いがなければ、確か
+“Indeed. If my memory serves me correctly, I believe
+---
+>  デストラクション・ブーメラン以上の
+>  威力を持つ武器が
+a weapon with greater power than the Destruction Boomerang
+---
+>  設計段階では
+>  予定されていたはずです」
+was planned at the design stage.”
+
+@37298 Manami · マナミ（按段落 3DD4）
+> 「Dブーメランよりも強力な武器……」
+“A weapon stronger than the D Boomerang...”
+
+@37299 Shirley · シャリー
+> 「どうする? いまから始めたら、
+>  この作戦には間に合わないけど
+“What do you want to do? If we start now, it won't be ready for this operation,
+---
+>  次からは新型で
+>  出れるようにできるわよ」
+but from the next one you could sortie in the new model.”
+
+@37300 Manami · マナミ（按段落 3DD4）
+> 「……だめよ。エルブルスは
+>  {PartnerNick}のものだもの
+“...No. The Elbulls belongs to {PartnerNick}.
+---
+>  あたしが勝手に
+>  決めるわけには、いかないわ」
+I can't just decide that on my own.”
+
+@37301 Astonaige · アストナージ
+> 「だけどな、お前のいとこを部隊に
+>  加えるっての、お前がいってるだけで
+“But listen, adding your cousin to the unit is only something you've been saying.
+---
+>  本人がいいだしたことじゃないって
+>  いうじゃないか。反対している奴も
+I hear it wasn't his own idea. And a lot of people are against it, right?
+---
+>  多いって聞くぜ? なら、
+>  スイームルグにくっつけて、単独で
+Then wouldn't it be cleaner to attach it to the Sweemurg so it can't
+---
+>  出撃できないようにしちまうのが、
+>  おさまりがいいんじゃないか?」
+sortie on its own?”
+
+@37302 Shirley · シャリー
+> 「こっちとしても、敵かもしれない
+>  人間の機体の修理に
+“On our end too, we don't want to spend time repairing a machine
+---
+>  時間をとられたくないのよ」
+that might belong to the enemy.”
+
+@37303 Manami · マナミ（按段落 3DD4）
+> 「でも……」
+“But...”
+
+@37304 Lawrence · ローレンス
+> 「ふむ……確かに、
+>  あまりよろしい状況とは申せませんな」
+“Hmm... Indeed, I cannot say this is a very favorable situation, my lady.”
+
+@37305 Manami · マナミ（按段落 3DD4）
+> 「ローレンス!?
+>  あなたまでそんなことをいうなんて……」
+“Lawrence?! Even you would say such a thing...”
+
+@37306 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerName}']，实际为 []）
+# 草稿第 1 页：“At this point, it would be best to confirm directly
+# 草稿第 2 页：with Lady 【搭档名字】.”
+> 「ここはひとつ、
+>  {PartnerName}お嬢様に、直接
+---
+>  ご確認されるのがよろしいでしょう」
+
+@37307 Manami · マナミ（按段落 3DD4）
+> 「えっ……{PartnerNick}が回復したの?」
+“What... {PartnerNick} has recovered?”
+
+@37308 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……大丈夫なの?」
+“{PartnerNick}... Are you all right?”
+
+@37309 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ对マナミ说“贵女”，不是称呼“my lady”，删去误加的称呼。
+> 「いましばらく、時間は
+>  必要なようですけれどね
+“It seems some more time will be needed, I'm afraid.
+---
+>  ……話はローレンスからうかがいました。
+>  貴女のお好きなようになさいな」
+...I heard about it from Lawrence. Do as you please.”
+
+@37310 Manami · マナミ（按段落 3DD4）
+> 「でも……」
+“But...”
+
+@37311 Aisha · アイシャ（按段落 3DD4）
+> 「わたくしを{HeroMech}に
+>  加えるよう進言したそうですけれど
+“I hear you proposed adding me to the {HeroMech}.
+---
+>  無用のことですわ。
+>  わたくしにもプライドというものがあります」
+That is unnecessary. I have my pride as well.”
+
+@37312 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}、
+>  あたしはそんなつもりじゃ……」
+“{PartnerNick}, that's not what I meant...”
+
+@37313 Aisha · アイシャ（按段落 3DD4）
+> 「スイームルグの強化が
+>  したいのでしょう?」
+“You want to upgrade the Sweemurg, don't you?”
+
+@37314 Manami · マナミ（按段落 3DD4）
+> 「それは……そうだけど……」
+“That's... true, but...”
+
+@37315 Aisha · アイシャ（按段落 3DD4）
+> 「なら、そうなさい。わたくしの許可が
+>  なくてはできないとおっしゃるのなら
+“Then do so. If you say you cannot do it without my permission,
+---
+>  許可いたします」
+then I grant it.”
+
+@37316 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……わかったわ。
+>  貴女がそういうのなら……ありがとう」
+“{PartnerNick}... I understand. If that's how you feel... thank you.”
+
+@37317 Manami · マナミ（按段落 3DD4）
+> 「シャリー!」
+“Shirley!”
+
+@37318 Shirley · シャリー
+> 「来たわね。どう? これが、新しい
+>  スイームルグよ」
+“You're here. Well? This is the new Sweemurg.”
+
+@37319 Manami · マナミ（按段落 3DD4）
+> 「あたしの……新しいスイームルグ……。
+>  すごいわ。{PartnerNick}のエルブルスが
+“My... new Sweemurg... Amazing. {PartnerNick}'s Elbulls
+---
+>  あたしのスイームルグに新しい力をくれ
+>  たのね……」
+gave my Sweemurg new power...”
+
+@37320 Shirley · シャリー
+> 「そう、言葉通りにね。これでスイーム
+>  ルグは単体で飛行が可能になり
+“Yes, just as you said. Now the Sweemurg can fly on its own,
+---
+>  すべての装備がパワーアップしたわよ」
+and all its equipment has been powered up.”
+
+@37321 Manami · マナミ（按段落 3DD4）
+# 审校：原文“Splendidがいいわ……”意为“叫Splendid就好”，初稿误译成“Splendid is what I'll call it”且语序别扭，改为更自然的表达。
+> 「Splendidがいいわ……」
+“I'll call it Splendid...”
+
+@37322 Shirley · シャリー
+> 「え?」
+“Huh?”
+
+@37323 Manami · マナミ（按段落 3DD4）
+> 「この新しいスイームルグの名前よ。
+>  華麗とか、輝かしいとか
+“That's the name of this new Sweemurg. It means gorgeous, radiant,
+---
+>  すてきなって意味よ」
+wonderful.”
+
+@37324 Shirley · シャリー
+> 「スイームルグSっていうわけね」
+“So it's the Sweemurg S, then.”
+
+@37325 Manami · マナミ（按段落 3DD4）
+> 「ええ。これが、スイームルグの本当の
+>  姿……。ありがとう、シャリー
+“Yes. This is the Sweemurg's true form... Thank you, Shirley.
+---
+>  アストナージさんたちにも、お礼をいわな
+>  くてはね」
+I'll have to thank Astonaige and the others too.”
+
+@37326 Treize · トレーズ
+> 「第1次攻撃は、
+>  順調なようだね」
+“The first attack seems to be going well.”
+
+@37327 Alan · アラン
+> 「カラバも加わっています。
+>  かなりの戦力ですが……」
+“Karaba has joined in as well. They're considerable fighting strength, but...”
+
+@37328 Banjo · 万丈
+> 「やはり、この程度では落ちないな」
+“As expected, it won't fall at this rate.”
+
+@37329 Treize · トレーズ
+> 「そうだろうとは思ったがね。
+>  戦闘は継続しつつ
+“I thought as much. Keep the battle going,
+---
+>  {HeroMech}の攻撃隊は
+>  いったん退かせたまえ
+but pull the {HeroMech} attack force back for now.
+---
+>  第2次攻撃の準備に入ろう」
+Let's begin preparations for the second attack.”
+
+@37330 Bright · ブライト
+> 「わかりました。レイカ、発光信号だ」
+“Understood. Reika, signal light.”
+
+@37331 Reika · レイカ
+> 「了解」
+“Roger.”
+
+@37332 Quattro · クワトロ
+> 「ん?」
+“Hm?”
+
+@37333 Quattro · クワトロ
+> 「発光信号? ええい、
+>  やむをえんか……カミーユ、撤退するぞ」
+“Signal light? Ugh, I suppose there's no choice... Kamille, we're retreating.”
+
+@37334 Kamille · カミーユ
+# 审校：クワトロ的军衔是上尉，词表与角色卡均作 Captain，初稿误译为 Lieutenant。
+> 「クワトロ特尉……
+>  何か聞こえませんでしたか」
+“Captain Quattro... didn't you hear something?”
+
+@37335 Quattro · クワトロ
+> 「いや……何も聞こえんが」
+“No... I heard nothing.”
+
+@37336 Kamille · カミーユ
+> 「聞こえます、悲鳴のような叫びが。
+>  基地の中です。この波動は……」
+“I can hear it. A scream, like someone crying out. Inside the base. This wave...”
+
+@37337 Quattro · クワトロ
+> 「カミーユ、撤退だ!」
+“Kamille, we're retreating!”
+
+@37338 Kamille · カミーユ
+> 「くっ……わかりましたよッ!」
+“Ngh... fine, understood!”
+
+@37339 Kamille · カミーユ
+> (波動が消えた……? あれは……)
+(The wave vanished...? That was...)
+
+@37340 Beltorchika · ベルトーチカ
+> 「{HeroMech}は
+>  全員帰還しました
+“All {HeroMech} units have returned.
+---
+>  別働隊による攻撃は
+>  続行中です」
+The detached force's attack is still ongoing.”
+
+@37341 Banjo · 万丈
+> 「では僕たちの再突入は、明朝、
+>  夜明け前ということでよろしいですね」
+“Then our re-entry is set for tomorrow morning, before dawn. Is that acceptable?”
+
+@37342 Treize · トレーズ
+> 「それでかまわないよ。
+>  おそらくそう長くはかかるまい」
+“That's fine with me. It likely won't take that long.”
+
+@37343 Bright · ブライト
+> 「わかりました。明朝、
+>  0400をもって
+“Understood. At 0400 tomorrow morning,
+---
+>  第2次攻撃を開始する。
+>  各自、休息をとっておけ」
+we begin the second attack. Everyone, get some rest.”
+
+@37344 Kamille · カミーユ
+> 「…………」
+“...”
+
+@37345 Fa · ファ
+> 「カミーユ……?
+>  こんな時間にどこへ……?」
+“Kamille...? Where are you going at this hour...?”
+
+@37346 Kamille · カミーユ
+> 「……基地の水源か……水路が
+>  ある? ここから入れるか……?」
+“...The base's water source... is there a channel? Can I get in from here...?”
+
+@37347 Kamille · カミーユ
+> (うまく入れたのはいいけど……。
+>  ……ッ!? これは……)
+(Good thing I got in... ...Huh!? This is...)
+
+@37348 Kamille · カミーユ
+> (この感覚……間違いない、
+>  フォウがいるんだ。この基地の中に…)
+(This feeling... no doubt about it, Four is here. Inside this base...)
+
+@37349 Kamille · カミーユ
+> 「…………」
+“...”
+
+@37350 ???
+> 「止まれ、怪しい奴!
+>  動くと撃つ!」
+“Stop, you suspicious character! Move and I shoot!”
+
+@37351 Kamille · カミーユ
+> 「くっ!!」
+“Ngh!!”
+
+@37352 Four · フォウ
+> 「ばぁ～ん! あはっ、あははははっ!」
+“Baaang! Ahah, ahahahaha!”
+
+@37353 Kamille · カミーユ
+> 「フォウ……」
+“Four...”
+
+@37354 Four · フォウ
+> 「カミーユ」
+“Kamille.”
+
+@37355 Kamille · カミーユ
+> 「フォウ! フォウ、会いたかった……」
+“Four! Four, I wanted to see you...”
+
+@37356 Four · フォウ
+> 「カミーユッ! 必ず
+>  会いに来てくれるって、思ってたよ」
+“Kamille! I knew you'd come to see me for sure.”
+
+@37357 Four · フォウ
+> 「ここなら、誰もこないから大丈夫
+>  だよ。コーラにする? それとも……」
+“Nobody comes here, so it's safe. Want a cola? Or maybe...”
+
+@37358 Kamille · カミーユ
+> 「フォウ……本当の名前は、
+>  わかったのかい……?」
+“Four... did you find out your real name...?”
+
+@37359 Four · フォウ
+> 「ッ!!」
+“!!”
+
+@37360 ???
+> (フォウ、記憶がほしいなら
+>  敵を倒すことです)
+(Four, if you want your memories back, all you have to do is defeat the enemy.)
+
+@37361 Four · フォウ
+> 「……はい、冷たくておいしいよ」
+“...Yes, it's cold and tasty.”
+
+@37362 Kamille · カミーユ
+> 「フォウ……」
+“Four...”
+
+@37363 Four · フォウ
+> 「でも変だ。おフロに入るまで、カミーユ
+>  のこと忘れてたんだよ? なんでだろうね」
+“But it's strange. Until I got in the bath, I'd forgotten all about you, Kamille? I wonder why.”
+
+@37364 Kamille · カミーユ
+> 「僕のこと、キライになったんだろう」
+“I guess you came to hate me.”
+
+@37365 Four · フォウ
+> 「あはははは。ずっと好きよ。でもあたしは
+>  変わってしまうの。サイコガンダムに
+“Ahahahaha. I've always loved you. But I change. When I get in the Psyco Gundam,
+---
+>  乗ると。頭がカラッポになって、別の
+>  私が入りこんでくる。だから……」
+my head goes empty, and a different me slips inside. So...”
+
+@37366 Kamille · カミーユ
+> 「だめだ。フォウは
+>  あのマシーンに乗っちゃいけない」
+“No. Four, you mustn't get in that machine.”
+
+@37367 Four · フォウ
+> 「うん、カミーユがそうしろっていうんなら、
+>  もう乗らない
+“Okay. If you say so, Kamille, I won't ride it anymore.
+---
+>  ……ねぇカミーユ……あなた、
+>  あたしの敵じゃないよね?」
+...Hey, Kamille... you're not my enemy, are you?”
+
+@37368 Kamille · カミーユ
+> 「当たり前じゃないか。フォウ、いこう
+>  もうすぐ僕の仲間がくるんだ」
+“Of course not. Four, let's go. My comrades will be here soon.”
+
+@37369 Four · フォウ
+> 「……うん、カミーユと一緒なら、
+>  どこへでもいくよ」
+“...Okay. As long as I'm with you, Kamille, I'll go anywhere.”
+
+@37370 Noin · ノイン
+> 「……では、いくか」
+“...Then let's go.”
+
+@37371 Quatre · カトル
+> 「はい。しかし、いいんですか?
+>  リリーナさんには
+“Yes. But are you sure? I see you haven't told
+---
+>  いっていないと見ましたが」
+Miss Relena.”
+
+@37372 Noin · ノイン
+# 审校：原文“あの方”指リリーナ，且后文“御存知ない”的对象是女性，初稿用 He 造成性别错误，改为 She。
+> 「その通りだ。この戦力は
+>  ブレックス准将の協力で
+“That's right. This force was gathered with Brigadier General Blex's cooperation,
+---
+>  いざという時のために集めたものだ。
+>  あの方は御存知ない
+for a time of need. She doesn't know about it.
+---
+>  知っていれば、
+>  認めようとはしなかっただろう
+If she did, she would never have approved.
+---
+>  我々がキリマンジャロへ向かうのもな」
+Nor would she approve of us heading to Kilimanjaro.”
+
+@37373 Quatre · カトル
+> 「そうですね」
+“That's right.”
+
+@37374 Noin · ノイン
+> 「カトルこそ、いいのか?」
+“Quatre, are you sure about this?”
+
+@37375 Quatre · カトル
+> 「……はい。やはり、逃げていても、
+>  何も解決しません。自分ひとりの
+“...Yes. After all, running away solves nothing. For my own
+---
+>  都合で、地球を守る戦いから、
+>  逃げていてはいけなかったんです
+convenience, I shouldn't have run from the fight to protect the Earth.
+---
+>  それに……きっとヒイロもくるでしょうから」
+Besides... I'm sure Heero will come too.”
+
+@37376 Noin · ノイン
+> 「わかった。では、いこう。キリマンジャロへ」
+“Understood. Then let's go. To Kilimanjaro.”
+
+@37377 Quatre · カトル
+> 「トレーズ派の攻撃に
+>  間に合えばいいのですが……」
+“I hope we make it in time for Treize's attack...”
+
+@37378 Noin · ノイン
+> 「そう簡単に決着はつくまい。
+>  間に合うと思いたいな。……ッ!?
+“It won't be settled so easily. I'd like to think we'll make it. ...Hn?!
+---
+>  カトル、気をつけろ!
+>  何かくる! 速い!?」
+Quatre, watch out! Something's coming! It's fast?!”
+
+@37379 Quatre · カトル
+> 「くっ……変形した!?
+>  あれは……まさか……」
+“Ngh... It transformed?! That's... it can't be...”
+
+@37380 Noin · ノイン
+> 「まさか……ガンダムだと!? カトル、
+>  あの機体を知っているのか!?」
+“No way... a Gundam?! Quatre, do you know that machine?!”
+
+@37381 Quatre · カトル
+> 「……ゼロ」
+“...Zero.”
+
+@37382 Noin · ノイン
+> 「ゼロ!?」
+“Zero?!”
+
+@37383 Quatre · カトル
+> 「……ウイングガンダム・ゼロ。
+>  そんな……いったい誰が……」
+“...Wing Gundam Zero. This can't be... just who is piloting it...”
+
+@37384 ???
+> 「サンクキングダムの方とお見受けする
+>  キリマンジャロへ向かうなら
+“I take it you're from the Sanc Kingdom. If you're heading to Kilimanjaro,
+---
+>  ご同道願いたいが……」
+I'd like to accompany you...”
+
+@37385 Noin · ノイン
+> 「まさか…………ゼクス!?」
+“It can't be... Zechs?!”
+
+@37386 Zechs · ゼクス
+> 「……ノインか」
+“...Noin.”
+
+@37387 Noin · ノイン
+> 「ゼクス……やっぱり、
+>  生きていたのですね……」
+“Zechs... So you really were alive...”
+
+@37388 Zechs · ゼクス
+> 「死にそこなった、というのが
+>  正しいかもしれんがな
+“It might be more accurate to say I failed to die.
+---
+>  ……すまなかった。リリーナのことでは、
+>  苦労をかけたようだな」
+...I'm sorry. It seems I caused you trouble regarding Relena.”
+
+@37389 Noin · ノイン
+> 「いいえ、とんでもありません。
+>  あなたに頼っていただけることなら
+“No, not at all. If there's anything you'd entrust to me,
+---
+>  大歓迎ですよ。
+>  しかしゼクス、その機体は……」
+I'm more than glad. But Zechs, that machine...”
+
+@37390 Quatre · カトル
+> 「やめてください! そのマシンは……
+>  そのマシンは危険です!!」
+“Please stop! That machine is... that machine is dangerous!!”
+
+@37391 Zechs · ゼクス
+> 「承知している。これに搭載されて
+>  いるのが、どんなシステムかもな」
+“I know. I know exactly what kind of system it carries.”
+
+@37392 Quatre · カトル
+> 「だったら、どうして……」
+“Then why...”
+
+@37393 Zechs · ゼクス
+# 审校：将“これしかなくてな”改译为“this is all I have”，更自然且贴合原文“只有这个了”的语气。
+> 「運命だと思っている。この機体が
+>  私の前にあらわれたのはな。ならば
+“I believe it's fate. That this machine appeared before me. If so,
+---
+>  私はそれに従うまでのこと。それに……
+>  実をいうと、これしかなくてな」
+I have no choice but to follow it. Besides... to be honest, this is all I have.”
+
+@37394 Quatre · カトル
+> 「しかし……」
+“But...”
+
+@37395 Noin · ノイン
+> 「カトル、あのゼロという機体が
+>  どうしたというんだ?」
+“Quatre, what's the matter with that machine, Zero?”
+
+@37396 Quatre · カトル
+> 「あれは……」
+“That is...”
+
+@37397 Specials · スペシャルズ
+# 审校：“出迎えの艦艇”指前来迎接的舰艇，改为“the ship coming to meet us”更准确。
+> 「閣下、出迎えの艦艇が
+>  衛星軌道に入るのは
+“Your Excellency, the ship coming to meet us will enter satellite orbit
+---
+>  明朝とのことです」
+tomorrow morning.”
+
+@37398 Jamitov · ジャミトフ
+> 「そうか……」
+“I see...”
+
+@37399 Dermail · デルマイユ
+> 「明朝? ジャミトフ、我々は
+>  ちゃんと脱出できるのだろうな」
+“Tomorrow morning? Jamitov, we will be able to escape properly, won't we?”
+
+@37400 Jamitov · ジャミトフ
+> 「それくらいはもちこたえるだろう。
+>  ウォン、貴公のプロジェクトの
+“We should hold out that long. Wong, this is a good chance
+---
+>  成果を試す、いい機会だな」
+to test the results of your project.”
+
+@37401 Wong · ウォン
+> 「それはもう、
+>  すでに用意させておりますので」
+“That has already been prepared, of course.”
+
+@37402 Dermail · デルマイユ
+> 「期待しているぞ、ウォン」
+“I'm counting on you, Wong.”
+
+@37403 Wong · ウォン
+> 「おまかせください、デルマイユ公」
+“Leave it to me, Lord Dermail.”
+
+@37404 Ark · アーク（按段落 3DD1）
+> 「艦内にはいないようです」
+“It seems he's not aboard the ship.”
+
+@37405 Selain · セレイン（按段落 3DD2）
+> 「特尉、どうも艦内にはいないようだ」
+“Special Lieutenant, it seems he's not aboard the ship.”
+
+@37406 Brad · ブラッド（按段落 3DD3）
+> 「あいつ、見あたらないぜ?」
+“That guy's nowhere in sight.”
+
+@37407 Manami · マナミ（按段落 3DD4）
+> 「カミーユは艦内にはいないみたいね」
+“It looks like Kamille isn't aboard the ship.”
+
+@37408 Amuro · アムロ
+> 「まったく、もう時間だというのに、
+>  カミーユは何をやってるんだ」
+“Honestly, it's already time. What is Kamille doing?”
+
+@37409 Fa · ファ
+> 「カミーユがいないんですか!?」
+“Kamille is missing?!”
+
+@37410 Alan · アラン
+> 「そのようだな」
+“So it seems.”
+
+@37411 Fa · ファ
+> 「じゃ、やっぱりあのとき……」
+“Then it really was that time...”
+
+@37412 Amuro · アムロ
+> 「見たのか?
+>  どこへいったんだ、カミーユは」
+“You saw him? Where did Kamille go?”
+
+@37413 Fa · ファ
+> 「それが……わからないんです」
+“Well... I don't know.”
+
+@37414 Quattro · クワトロ
+> 「……カミーユめ……
+>  キリマンジャロに入ったな」
+“...That Kamille... He's gone into Kilimanjaro.”
+
+@37415 Amuro · アムロ
+> 「声が聞こえたという、あれか」
+“You mean that thing about hearing a voice.”
+
+@37416 Quattro · クワトロ
+> 「ああ。引き寄せられているのかもしれん」
+“Yeah. He might be drawn to it.”
+
+@37417 Amuro · アムロ
+> 「バカな。もし本当なら、危険すぎる」
+“That's insane. If it's true, it's far too dangerous.”
+
+@37418 Bright · ブライト
+> 「やむを得んな。
+>  カミーユは放っておくしかない
+“It can't be helped. We'll have to leave Kamille be.
+---
+>  我々は時間通りに出るぞ」
+We depart on schedule.”
+
+@37419 Bright · ブライト
+> 「そろそろ時間だな」
+“It's about time.”
+
+@37420 Treize · トレーズ
+> 「よし……第2次攻撃を
+>  開始してくれたまえ」
+“Good... Begin the second attack.”
+
+@37421 Four · フォウ
+> 「あうぅっ……」
+“Agh...”
+
+@37422 Kamille · カミーユ
+> 「フォウ、大丈夫か?
+>  薬が必要なのか?」
+“Four, are you all right? Do you need your medicine?”
+
+@37423 Four · フォウ
+> 「う、ううん、大丈夫よ」
+“N-no, I'm fine.”
+
+@37424 Specials · スペシャルズ
+> 「……ですから、もうしばらくすれば
+>  ギブスはとれます。ですが……」
+“...So, the cast can come off before long. However...”
+
+@37425 Jerid · ジェリド
+> 「なに……カミーユ・ビダンだと!?
+>  どけっ!!
+“What... Kamille Bidan?! Out of my way!!
+---
+>  カミーユ、貴様よくもぬけぬけと!!」
+Kamille, you bastard, you've got some nerve!!”
+
+@37426 Specials · スペシャルズ
+> 「特尉!? やめてください、何をする
+>  んです!!」
+“Special Lieutenant?! Stop, what are you doing!!”
+
+@37427 Jerid · ジェリド
+> 「奴はトレーズ派のパイロットだぞ!
+>  基地に潜入されたんだ!」
+“He's a Treize faction pilot! He's infiltrated the base!”
+
+@37428 Kamille · カミーユ
+> 「くっ、ジェリド特尉か!?
+>  フォウ、こっちだ」
+“Ngh, Special Lieutenant Jerid?! Four, this way.”
+
+@37429 Jerid · ジェリド
+> 「待て! カミーユッ!!」
+“Wait! Kamille!!”
+
+@37430 Manami · マナミ（按段落 3DD4）
+> 「みんな、頼むわよ!」
+“Everyone, I'm counting on you!”
+
+@37431 Markiroot · マーキロット
+> 「フン、反逆者どもめ。
+>  愚かな貴様たちには
+“Hmph, you rebels. You fools are in need of
+---
+>  神の手による裁きが必要!」
+judgment by the hand of God!”
+
+@37432 Sijima · シジーマ
+> 「クククククッ、ここがお前たちの
+>  死に場所よ!!」
+“Kukukukuku, this is where you die!!”
+
+@37433 Four · フォウ
+> 「雲のじゅうたん……あったかそう……」
+“A carpet of clouds... It looks so warm...”
+
+@37434 Kamille · カミーユ
+> 「{HeroMech}が出ている? もう
+>  そんな時間なのか。フォウ、急いで」
+“The {HeroMech} has launched? Is it that time already? Four, hurry.”
+
+@37435 Four · フォウ
+> 「カミーユ、どこへいくの……?」
+“Kamille, where are you going...?”
+
+@37436 Kamille · カミーユ
+> 「君の記憶を
+>  {HeroMech}で治す」
+“I'll use the {HeroMech} to heal your memories.”
+
+@37437 Four · フォウ
+> 「記憶? あたしの記憶……?」
+“Memories? My memories...?”
+
+@37438 Kamille · カミーユ
+> 「何をいってるんだ。
+>  ネオホンコンにいた時
+“What are you saying? Back in Neo Hong Kong,
+---
+>  あんなに記憶を
+>  ほしがっていたじゃないか」
+you wanted your memories back so badly.”
+
+@37439 ???
+> (記憶を取り戻したければ、
+>  敵を倒さなくてはね……)
+(If you want your memories back, you'll have to defeat the enemy...)
+
+@37440 Four · フォウ
+> 「うぅ……」
+“Ugh...”
+
+@37441 Kamille · カミーユ
+> 「フォウ!?」
+“Four?!”
+
+@37442 Four · フォウ
+> 「大丈夫……大丈夫よ……」
+“I'm all right... I'm all right...”
+
+@37443 Quatre · カトル
+> 「なんとか間に合いましたね」
+“We made it just in time.”
+
+@37444 Noin · ノイン
+> 「ああ。ゼクス、どうするんです?」
+“Yeah. Zechs, what will you do?”
+
+@37445 Zechs · ゼクス
+> 「決まっている。{HeroMech}に
+>  告ぐ。我々はサンクキングダムに
+“Isn't it obvious? To the {HeroMech}: we are people connected to the Sanc Kingdom.
+---
+>  縁の者である。トレーズ派OZに
+>  対し、協力を申し入れる」
+We offer our cooperation against Treize's OZ.”
+
+@37446 Heero · ヒイロ
+> 「ゼロか……」
+“Zero, huh...”
+
+@37447 Bright · ブライト
+> 「ゼクス・マーキス!?
+>  カトルもいるのか!?」
+“Zechs Merquise?! Quatre is with you too?!”
+
+@37448 Quatre · カトル
+> 「すみません、皆さんの前に
+>  顔を出せる義理ではないのは
+“I'm sorry. I know I have no right to show my face before you all.
+---
+>  わかっています。ですが僕は……」
+But I...”
+
+@37449 Ryoma · リョウ
+> 「過ぎたことをいつまでも気にするな。
+>  俺たちに合流するために
+“Don't keep dwelling on the past. You came to join up with us,
+---
+>  来てくれたんだろう?
+>  なら、それで十分さ」
+didn't you? Then that's enough.”
+
+@37450 Quatre · カトル
+> 「……はい」
+“...Yes.”
+
+@37451 Treize · トレーズ
+> 「ゼクス……」
+“Zechs...”
+
+@37452 Zechs · ゼクス
+> 「トレーズ……仮面のゼクス・マーキスと
+>  してではなく、君の友人として
+“Treize... I've come to fight alongside you not as the masked Zechs Merquise, but as your friend.
+---
+>  ともに戦うためにきた。
+>  認めてもらえるだろうか」
+Will you accept me?”
+
+@37453 Treize · トレーズ
+> 「もちろんだ。私は、友に対して
+>  閉ざす扉はもっていないよ
+“Of course. I keep no door closed to a friend.
+---
+>  {HeroMech}の諸君、
+>  それでかまわないかな?」
+What say you, people of the {HeroMech}?”
+
+@37454 Bright · ブライト
+> 「いいでしょう」
+“Very well.”
+
+@37455 Zechs · ゼクス
+> 「すまん、感謝する」
+“Sorry, and thank you.”
+
+@37456 Four · フォウ
+> 「あ……うぅぅぅ……」
+“Ah... uuuugh...”
+
+@37457 Kamille · カミーユ
+> 「フォウ、大丈夫か?」
+“Four, are you all right?”
+
+@37458 Four · フォウ
+> 「う、うん、ちょっとめまいがしただけ」
+“Y-yeah, I just got a little dizzy.”
+
+@37459 Kamille · カミーユ
+> 「やっぱり、薬がいるのか?」
+“Do you need your medicine after all?”
+
+@37460 Four · フォウ
+> 「だ、大丈夫よ……」
+“I-I'm fine...”
+
+@37461 Four · フォウ
+> 「あくぅぅぅ……ううぅっ……」
+“Agh... uuuugh...”
+
+@37462 Kamille · カミーユ
+> 「フォウ……フォウ!? 君は……」
+“Four... Four?! You're...”
+
+@37463 Four · フォウ
+> 「お前は……誰だ? 敵だな?」
+“You... who are you? You're the enemy, aren't you?”
+
+@37464 Kamille · カミーユ
+> 「何いってるんだよ!?
+>  待てよ、フォウ!
+“What are you saying?! Wait, Four!
+---
+>  俺だ、カミーユだ、わからないのか!?」
+It's me, Kamille! Don't you recognize me?!”
+
+@37465 Four · フォウ
+> 「わかる!」
+“I recognize you!”
+
+@37466 Kamille · カミーユ
+> 「わかる……?」
+“You recognize me...?”
+
+@37467 Four · フォウ
+# 审校：“トレーズ派”按词表 Treize 处理为“the Treize faction”，比“Treize's faction”更自然。
+> 「カミーユ・ビダンは{HeroMech}の
+>  戦闘パイロットだ
+“Kamille Bidan is the combat pilot of the {HeroMech}.
+---
+>  トレーズ派の中核の戦士として
+>  認知されている」
+He is recognized as a core warrior of the Treize faction.”
+
+@37468 Kamille · カミーユ
+> 「フォウ……カミーユなんだよ。
+>  俺、カミーユ・ビダンだ!」
+“Four... it's Kamille. I'm Kamille Bidan!”
+
+@37469 Four · フォウ
+> 「うるさい!」
+“Shut up!”
+
+@37470 Kamille · カミーユ
+> 「つっ……フォウ!?
+>  フォウ、待ってくれ!!」
+“Ngh... Four?! Four, wait!!”
+
+@37471 Kamille · カミーユ
+> 「あれは……サイコガンダム!!」
+“That's... the Psyco Gundam!!”
+
+@37472 Kamille · カミーユ
+> 「よせ! あれを呼んじゃいけない!
+>  フォウ!!」
+“Stop! You mustn't call that thing! Four!!”
+
+@37473 Four · フォウ
+> 「…………」
+“...”
+
+@37474 Kamille · カミーユ
+> 「だめだフォウ! それは悪魔の
+>  マシーンだ。それに乗っちゃいけない!」
+“No, Four! That's a demon of a machine. You mustn't get in it!”
+
+@37475 Four · フォウ
+> 「いいかげんにしろ!」
+“Enough of this!”
+
+@37476 Kamille · カミーユ
+> 「ぐ……フォウ!」
+“Guh... Four!”
+
+@37477 Four · フォウ
+> 「お前たちはあたしをいじめにきた。あたし
+>  の記憶を奪ったのは、お前たちだ!」
+“You all came to torment me. You're the ones who stole my memories!”
+
+@37478 Kamille · カミーユ
+> 「待ってくれ! フォウ!!」
+“Wait! Four!!”
+
+@37479 Amuro · アムロ
+> 「サイコガンダム!?」
+“The Psyco Gundam?!”
+
+@37480 Quattro · クワトロ
+> 「まさか、カミーユは……あそこか!?」
+“Don't tell me Kamille is... over there?!”
+
+@37481 Bright · ブライト
+> 「なんだと!? カミーユめ!
+>  ……アストナージ
+“What?! That fool Kamille!... Astonaige,
+---
+>  キャリアーでZを持っていけるか?」
+can you take the Z out in a carrier?”
+
+@37482 Astonaige · アストナージ
+> 「やるしかないんでしょう!?
+>  なら、やりますよ!」
+“It's not like I've got a choice, is it?! Then I'll do it!”
+
+@37483 Bright · ブライト
+> 「頼む」
+“I'm counting on you.”
+
+@37484 Astonaige · アストナージ
+> 「カミーユ!!」
+“Kamille!!”
+
+@37485 Kamille · カミーユ
+> 「アストナージさん!?」
+“Astonaige?!”
+
+@37486 Astonaige · アストナージ
+> 「カミーユ、早くZに乗れ!」
+“Kamille, get in the Z, quick!”
+
+@37487 Kamille · カミーユ
+> 「僕に……フォウと戦えって
+>  いうんですか!?」
+“You want me... to fight Four?!”
+
+@37488 Astonaige · アストナージ
+> 「俺が乗るわけにはいかんだろ!?」
+“It's not like I can pilot it, is it?!”
+
+@37489 Quattro · クワトロ
+> 「カミーユ、答えはZの中で
+>  見つけろ! 君にはそれしかあるまい」
+“Kamille, find your answer inside the Z! That's the only way for you.”
+
+@37490 Kamille · カミーユ
+> 「くっ……」
+“Ngh...”
+
+@37491 Kamille · カミーユ
+> 「フォウ! 戦っちゃいけない!」
+“Four! We mustn't fight!”
+
+@37492 Four · フォウ
+> 「出てきたか、Z」
+“So you've come out, Z.”
+
+@37493 Amuro · アムロ
+> 「カミーユ、離れていろ!」
+“Kamille, stay back!”
+
+@37494 Kamille · カミーユ
+> 「やめてくださいアムロさん!
+>  攻撃はしないで」
+“Please stop, Amuro! Don't attack!”
+
+@37495 Amuro · アムロ
+> 「どうしろというんだ!?」
+“Then what am I supposed to do?!”
+
+@37496 Beltorchika · ベルトーチカ
+> 「アウドムラ!?」
+“The Audhumla?!”
+
+@37497 Banjo · 万丈
+> 「おっと、ようやく来たようだね」
+“Whoa, looks like they've finally arrived.”
+
+@37498 Henken · ヘンケン
+> 「遅くなってすまんな」
+“Sorry we're late.”
+
+@37499 Emma · エマ
+> 「ヘンケン中佐!?」
+“Lieutenant Colonel Henken?!”
+
+@37500 Henken · ヘンケン
+> 「おお、エマ特尉か。
+>  元気そうでなによりだ」
+“Oh, Ensign Emma. Glad to see you're doing well.”
+
+@37501 Hyoma · 豹馬
+> 「よぉ、俺たちは
+>  もう出てもいいのかよ!?」
+“Hey, can we head out already or what?!”
+
+@37502 Henken · ヘンケン
+> 「博士?」
+“Doctor?”
+
+@37503 Dr. Yotsuya · 四谷博士
+> 「うむ、やってくれ」
+“Yes, go ahead.”
+
+@37504 Henken · ヘンケン
+> 「よし、出てくれ。ひさしぶりの
+>  実戦のはずだな。気をぬくなよ」
+“All right, launch. This is your first real battle in a while. Stay sharp.”
+
+@37505 Hyoma · 豹馬
+> 「上等上等!」
+“Bring it on!”
+
+@37506 Koji · 甲児
+> 「あーん? なんだよ、あの連中は。
+>  あんなのが役に立つのかよ!?」
+“Huh? What's with those guys? You think they'll be any use?!”
+
+@37507 Hyoma · 豹馬
+> 「なんだと!? てめぇ、
+>  もういっぺんいってみやがれ!!」
+“What?! You wanna say that again, punk?!”
+
+@37508 Chizuru · ちずる
+> 「豹馬! やめなさい! すみません、
+>  {HeroMech}のみなさん
+“Hyoma! Stop it! I'm sorry, everyone from the {HeroMech}.
+---
+>  コン・バトラーチームの南原ちずるです
+>  よろしくお願いします」
+I'm Chizuru Nambara of the Combattler team. Pleased to meet you.”
+
+@37509 Hyoma · 豹馬
+> 「ちぇっ、ちずるのやつ、
+>  ひとりでいい格好しやがって
+“Tch, that Chizuru, hogging all the good lines for herself.
+---
+>  葵豹馬だ。
+>  ま、ひとつよろしく頼むぜ」
+I'm Hyoma Aoi. Well, nice to be working with you.”
+
+@37510 Juzo · 十三
+> 「わいは浪花十三や。よろしゅう
+>  たのむわ」
+“I'm Juzo Naniwa. Pleased to make yer acquaintance.”
+
+@37511 Kosuke · 小介
+> 「北小介です。メカのことならボクに
+>  まかせてください」
+“I'm Kosuke Kita. Leave anything mechanical to me.”
+
+@37512 Daisaku · 大作
+> 「おいは西川大作ですたい。よろしく
+>  たのむばい」
+“I'm Daisaku Nishikawa. Pleased to meet y'all.”
+
+@37513 Dr. Yotsuya · 四谷博士
+> 「自己紹介などあとにせんか!
+>  コンバインだ!」
+“Save the introductions for later! Combine!”
+
+@37514 Koji · 甲児
+> 「コンバインでもダンバインでも
+>  なんでもいいから、さっさとしてくれよな」
+“Combine, Dunbine, whatever it is, just hurry up and do it.”
+
+@37515 Hyoma · 豹馬
+> 「なにぃっ!!」
+“What?!”
+
+@37516 Ropet · ロペット
+> 「豹馬サン、脳波乱レテマス!」
+“Hyoma, your brainwaves are a mess!”
+
+@37517 Chizuru · ちずる
+> 「豹馬、いいかげんにして!」
+“Hyoma, that's enough!”
+
+@37518 Hyoma · 豹馬
+> 「ちっ、わかりましたよ…………」
+“Tch, fine, I get it...”
+
+@37519 Hyoma · 豹馬
+> 「…………」
+“...”
+
+@37520 Ropet · ロペット
+> 「脳波ピッタリコン。
+>  コンバインオッケー、コンバインオッケー」
+“Brainwaves locked on. Combine okay, combine okay.”
+
+@37521 Hyoma · 豹馬
+> 「いいか、よっく見てろよ!!
+“All right, watch closely now!!
+---
+>  レェェッツ・コンバイン!!」
+Let's... Combine!!”
+
+@37522 Hyoma · 豹馬
+> 「コォォォォンバトラァァァァ・ブイ!!」
+“Combattler V!!”
+
+@37523 Koji · 甲児
+> 「な……なかなかやるじゃねぇか」
+“N... not bad at all.”
+
+@37524 Quattro · クワトロ
+> 「コン・バトラーVか。
+>  まさか無事で残っていたとはな」
+“Combattler V, huh. To think it survived intact.”
+
+@37525 Hyoma · 豹馬
+# 检查提示：未用必用译名：コン・バトラー→Combattler V
+> 「あったり前だい! コン・バトラーが
+>  そう簡単にやられるかよ!!」
+“Of course it did! You think Combattler goes down that easy?!”
+
+@37526 Ginrei · 銀鈴
+> 「知っているんですか?」
+“You know about it?”
+
+@37527 Quattro · クワトロ
+> 「うむ、南原博士の提案で
+>  建造された、対異星人用の
+“Yes. It was built on Dr. Nanbara's proposal as an anti-alien
+---
+>  戦闘ロボットだったはずだ。
+>  しかし、ムゲとの戦いで
+combat robot. But I thought it had been destroyed
+---
+>  破壊されたと思っていた」
+in the battle against the Muge.”
+
+@37528 Banjo · 万丈
+> 「驚いてもらえたかな?」
+“Were you surprised?”
+
+@37529 Bright · ブライト
+> 「ああ、十分にな」
+“Yes, quite enough.”
+
+@37530 Banjo · 万丈
+> 「感謝しますよ、博士。よくこれだけ
+>  の短期間で、ここまでしてくれました」
+“You have my thanks, Doctor. To pull this off in such a short time...”
+
+@37531 Dr. Yotsuya · 四谷博士
+> 「なに、気にすることはない。
+>  これも地球を守るためだ」
+“Think nothing of it. This is all to protect the Earth.”
+
+@37532 Specials · スペシャルズ
+> 「閣下、そろそろお時間です」
+“Your Excellency, it's about time.”
+
+@37533 Jamitov · ジャミトフ
+> 「そうか。ウォン、あとはまかせるぞ」
+“I see. Wong, I leave the rest to you.”
+
+@37534 Wong · ウォン
+> 「はい。では、こちらもそろそろ
+>  本気でとりかかるとしましょう」
+“Yes. Then we too shall begin in earnest.”
+
+@37535 Wong · ウォン
+> 「フォウ、閣下のシャトル発射を
+>  援護しなさい」
+“Four, cover His Excellency's shuttle launch.”
+
+@37536 Four · フォウ
+> 「く……了解……」
+“Ngh... understood...”
+
+@37537 Wong · ウォン
+> 「さて、次は……さぁ、
+>  デンジャラス・アレンビー、行きなさい
+“Now then, next... go on, Dangerous Allenby.
+---
+>  この完成されたサブリミナルシステムで
+>  君の潜在能力は
+With this perfected Subliminal System, your latent potential will be
+---
+>  120パーセント
+>  発揮されるのです」
+drawn out to 120 percent.”
+
+@37538 Allenby · アレンビー
+> 「うああぁぁぁぁーっ!」
+“Uwaaaaaaah!”
+
+@37539 Domon · ドモン
+> 「アレンビー!?」
+“Allenby?!”
+
+@37540 Amuro · アムロ
+> 「ドモン、あの娘を助けたければ、
+>  止めてみせろ!
+“Domon, if you want to save that girl, then show me you can stop her!
+---
+>  戦闘を強要するシステムは
+>  基地内にあるはずだ
+The system forcing her to fight should be inside the base.
+---
+>  彼女さえ無事なら、助けられる」
+If she alone is safe, we can save her.”
+
+@37541 Domon · ドモン
+> 「承知した! アレンビー、
+>  奪われたお前の魂は
+“Understood! Allenby, the soul they stole from you—
+---
+>  この俺の拳で、取りもどしてやる!」
+I'll take it back with these fists of mine!”
+
+@37542 Domon · ドモン
+> 「アレンビー……なのか?」
+“Allenby... is that you?”
+
+@37543 Wong · ウォン
+> 「さぁ、フォウ、アレンビー、
+>  お行きなさい!」
+“Now, Four, Allenby, go!”
+
+@37544 Kamille · カミーユ
+> 「サイコガンダム……フォウなのか!?」
+“The Psyco Gundam... is that you, Four?!”
+
+@37545 Amuro · アムロ
+> 「カミーユ、あれは危険だ。
+>  全力で落とす」
+“Kamille, that thing is dangerous. We take it down with everything we've got.”
+
+@37546 Kamille · カミーユ
+> 「でも、あれはフォウなんですよ!」
+“But that's Four in there!”
+
+@37547 Kamille · カミーユ
+> 「なんだ……このプレッシャー……
+>  あのマシーンか!?」
+“What is this... pressure... that machine?!”
+
+@37548 Amuro · アムロ
+> 「サイコガンダム!?
+>  ネオホンコンのときと同じ奴か?」
+“The Psyco Gundam?! The same one from Neo Hong Kong?”
+
+@37549 Quattro · クワトロ
+> 「このプレッシャー……乗っているのは
+>  あの時の強化人間だな」
+“This pressure... the one piloting it is that enhanced human from before.”
+
+@37550 Domon · ドモン
+> 「アレンビー!?」
+“Allenby?!”
+
+@37551 Amuro · アムロ
+> 「ドモン、あの娘を助けたければ、
+>  止めてみせろ!
+“Domon, if you want to save that girl, then show me you can stop her!
+---
+>  戦闘を強要するシステムは
+>  基地内にあるはずだ
+The system forcing her to fight should be inside the base.
+---
+>  ここを制圧できれば解除できる」
+If we can take this place, we can release her.”
+
+@37552 Domon · ドモン
+> 「承知した! アレンビー、
+>  奪われたお前の魂は
+“Understood! Allenby, the soul they stole from you—
+---
+>  この俺の拳で、取りもどしてやる!」
+I'll take it back with these fists of mine!”
+
+@37553 Domon · ドモン
+> 「アレンビー……なのか?」
+“Allenby... is that you?”
+
+@37554 Kamille · カミーユ
+> 「フォウ! 俺だ、カミーユだ。
+>  戦いをやめてくれ、フォウ!」
+“Four! It's me, Kamille. Stop fighting, Four!”
+
+@37555 Four · フォウ
+> 「ハエがちょこまかと……
+>  うぅ……頭が……!」
+“A fly buzzing around... ugh... my head...!”
+
+@37556 Kamille · カミーユ
+> 「フォウ、そのマシーンに
+>  乗っていちゃいけないんだ!
+“Four, you mustn't stay in that machine!
+---
+>  返事をしてくれ、フォウ!」
+Answer me, Four!”
+
+@37557 Four · フォウ
+> 「うぅっ……カ、カミーユ……あなたなの?」
+“Ugh... K-Kamille... is that you?”
+
+@37558 Kamille · カミーユ
+> 「フォウ、気がついたのか?
+>  よし、コクピットをあけるんだ
+“Four, you came to your senses? Good, open the cockpit.
+---
+>  サイコガンダムにいてはいけない。はやく!」
+You can't stay in the Psyco Gundam. Hurry!”
+
+@37559 Four · フォウ
+> 「で……でも、カミーユ……」
+“B... but, Kamille...”
+
+@37560 Kamille · カミーユ
+> 「いそいで、フォウ! そこにいると、また
+>  システムに取り込まれる!」
+“Hurry, Four! If you stay there, the system will take you over again!”
+
+@37561 Four · フォウ
+# 审校：原文“う……ん”是犹豫后应允，初稿“U... n”不自然，改为“U... yeah, all right, Kamille.”
+> 「う……ん、わかったわ、カミーユ」
+“U... yeah, all right, Kamille.”
+
+@37562 Kamille · カミーユ
+> 「よし……」
+“Good...”
+
+@37563 Kamille · カミーユ
+> 「フォウ、俺だ、カミーユだ!
+>  わからないのか!?」
+“Four, it's me, Kamille! Don't you know me?!”
+
+@37564 Four · フォウ
+> 「わかる!」
+“I know!”
+
+@37565 Kamille · カミーユ
+> 「わかる……?」
+“You know...?”
+
+@37566 Four · フォウ
+> 「カミーユ・ビダンは{HeroMech}の
+>  戦闘パイロットだ
+“Kamille Bidan is the combat pilot of the {HeroMech}.
+---
+>  トレーズ派の中核の戦士として
+>  認知されている」
+He is recognized as a core warrior of the Treize faction.”
+
+@37567 Kamille · カミーユ
+> 「フォウ!? 俺、カミーユなんだよ!!」
+“Four?! I'm Kamille!!”
+
+@37568 Kamille · カミーユ
+> 「フォウ、俺だ、カミーユだ!
+>  わからないのか!?」
+“Four, it's me, Kamille! Don't you know me?!”
+
+@37569 Four · フォウ
+> 「わかる!」
+“I know!”
+
+@37570 Kamille · カミーユ
+> 「わかる……?」
+“You know...?”
+
+@37571 Four · フォウ
+> 「カミーユ・ビダンは{HeroMech}の
+>  戦闘パイロットだ
+“Kamille Bidan is the combat pilot of the {HeroMech}.
+---
+>  トレーズ派の中核の戦士として
+>  認知されている」
+He is recognized as a core warrior of the Treize faction.”
+
+@37572 Kamille · カミーユ
+> 「フォウ!? 俺、カミーユなんだよ!!」
+“Four?! I'm Kamille!!”
+
+@37573 Four · フォウ
+> 「あ……カミーユ……?」
+“Ah... Kamille...?”
+
+@37574 Four · フォウ
+> 「あ……カミーユ……?」
+“Ah... Kamille...?”
+
+@37575 Four · フォウ
+> 「きゃあぁぁぁぁぁぁーっ!!」
+“Kyaaaaaaaaah!!”
+
+@37576 Jamitov · ジャミトフ
+> 「フッ……」
+“Hmph...”
+
+@37577 Bunny · バニー
+> 「艦長、シャトルが発進しました!!」
+“Captain, the shuttle has launched!!”
+
+@37578 Treize · トレーズ
+> 「あれは……ジャミトフとデルマイユか」
+“That's... Jamitov and Dermail.”
+
+@37579 Bright · ブライト
+> 「なんですって!?」
+“What did you say?!”
+
+@37580 Treize · トレーズ
+> 「どうやら、上に出迎えが
+>  来ていたようだね。残念だ」
+“It seems they had an escort waiting above. A pity.”
+
+@37581 Bright · ブライト
+> 「落ち着いている場合ですか!?
+>  あの2人を逃せば……」
+“Is this the time to stay calm?! If we let those two escape...”
+
+@37582 Treize · トレーズ
+> 「もう間に合わないよ。
+>  だがそう悲観したものではない
+“It's too late for that now. But it's not as bleak as it seems.
+---
+>  キリマンジャロが落ちれば、
+>  財団も動かしやすくなる」
+If Kilimanjaro falls, the Foundation will be easier to move.”
+
+@37583 Wong · ウォン
+> 「……状況はあまりよろしく
+>  ないようですね。しかたありません
+“...The situation doesn't look good. It can't be helped.
+---
+>  ここは、私も脱出するとしますか。
+>  残っているMDでも
+I suppose I'll evacuate as well. The remaining MDs should
+---
+>  多少の時間はかせげるでしょう」
+buy us some time.”
+
+@37584 Kamille · カミーユ
+> 「なに!? くっ……フォォォォォウ!!」
+“What?! Ngh... Foouuuuuur!!”
+
+@37585 Domon · ドモン
+> 「アレンビィィィィーッ!!」
+“Allenbyyyyy!!”
+
+@37586 Allenby · アレンビー
+> 「ドモン!? ドモンなの?
+>  さぁ……戦おうよ!
+“Domon?! Is that you, Domon? Come on... let's fight!
+---
+>  戦ってよ! アタシとぉぉーっ!」
+Fight me! Fight meeeee!”
+
+@37587 Domon · ドモン
+> 「待てアレンビー、思い出せ!
+>  俺たちはこんな形の戦いを
+“Wait, Allenby, remember! This isn't the kind of battle
+---
+>  望んでいたわけではなかったはずだ!
+>  お前の望みは、お前の魂の拳は
+we wanted! Your wish, the fist of your soul,
+---
+>  こんなものではなかったはずだ!
+>  思い出せ、アレンビー!!」
+was never meant for this! Remember, Allenby!!”
+
+@37588 Allenby · アレンビー
+> 「ううぅぅぅぅっ……ド、ドモン……?」
+“Uuuuuu... D-Domon...?”
+
+@37589 Domon · ドモン
+> 「アレンビー!? シャッフルの証しよ、
+>  願わくばアレンビーの
+“Allenby?! By the proof of the Shuffle Alliance, I beg you,
+---
+>  魂の拳を、呼びもどしてくれ!」
+call back the fist of Allenby's soul!”
+
+@37590 Allenby · アレンビー
+> 「う……ドモン……アタシ………」
+“U... Domon... I...”
+
+@37591 Domon · ドモン
+> 「ようやくもとにもどったな。大丈夫だ
+>  システムは破壊してやる
+“You've finally come back to yourself. It's all right, I'll destroy the system.
+---
+>  安心して休んでいろ」
+Rest easy now.”
+
+@37592 Allenby · アレンビー
+> 「うん……アタシ、とっても疲れちゃった
+>  ……少し、眠らせて……」
+“Yeah... I'm so tired... Let me sleep... a little...”
+
+@37593 Beltorchika · ベルトーチカ
+> 「敵、沈黙しました」
+“The enemy has gone silent.”
+
+@37594 Bright · ブライト
+> 「終わったか……」
+“It's over...”
+
+@37595 Bunny · バニー
+> 「キリマンジャロ基地より、
+>  降伏の申し入れです」
+“Kilimanjaro Base is offering its surrender.”
+
+@37596 Treize · トレーズ
+> 「彼らもOZの将兵だ。
+>  もちろん、受け入れるよ。艦長
+“They too are soldiers of OZ. Of course I accept. Captain,
+---
+>  全軍に通達してほしい。彼らは
+>  捕虜ではない。同志だ
+I want you to inform the entire fleet. They are not prisoners. They are comrades.
+---
+>  そのように扱ってもらいたいとね」
+I want them treated as such.”
+
+@37597 Bright · ブライト
+> 「了解です」
+“Understood.”
+
+@37598 Kamille · カミーユ
+> 「フォウ、フォウ!」
+“Four, Four!”
+
+@37599 Four · フォウ
+> (カミーユ……悲しまないで。
+>  これであたしは、いつでもあなたに
+(Kamille... don't be sad. Now I can see you anytime.
+---
+>  会えるわ。本当に……あなたの
+>  中へ入ることができるんだから……)
+Truly... because I can enter inside you...)
+
+@37600 Kamille · カミーユ
+> 「フォウ!? しっかりしろ、フォウ!
+>  目をあけろよ! ウソだろ
+“Four?! Stay with me, Four! Open your eyes! It can't be true.
+---
+>  こんなの、ウソだろ!?
+>  フォォォォォーウッ!!」
+This can't be true! Foouuuuuur!!”
+
+@37601 Amuro · アムロ
+> 「人は……同じ過ちを繰り返す……
+>  まったく……」
+“People... repeat the same mistakes... Truly...”
+
+@37602 Quattro · クワトロ
+> 「同じか……」
+“The same, huh...”
+
+@37603 Allenby · アレンビー
+> 「ドモン! ドモンはどこ!?
+>  きゃあぁぁぁーっ!!」
+“Domon! Where's Domon?! Kyaaaaaah!!”
+
+@37604 Domon · ドモン
+> 「アレンビーッ!? くっ……すまん……」
+“Allenby?! Ngh... I'm sorry...”
+
+@37605 Four · フォウ
+> 「カミーユ……カミーユゥッ!」
+“Kamille... Kamilleee!”
+
+@37606 Kamille · カミーユ
+> 「フォウ! 無事でよかった……フォウ」
+“Four! Thank goodness you're safe... Four.”
+
+@37607 Four · フォウ
+> 「カミーユがいてくれたからだよ」
+“It's because you were there, Kamille.”
+
+@37608 Kamille · カミーユ
+> 「フォウ、君の記憶は
+>  きっと取りもどすよ」
+“Four, I'm sure we'll get your memories back.”
+
+@37609 Four · フォウ
+> 「ううん、もういいの。だって、
+>  これからはずっとカミーユと一緒だもの
+“No, it's all right now. Because from now on I'll always be with you, Kamille.
+---
+>  思い出だって、
+>  いくらでもつくれるから……」
+We can make as many memories as we want...”
+
+@37610 Kamille · カミーユ
+> 「ああ……そうだ、フォウ。そうだよ」
+“Yeah... that's right, Four. That's right.”
+
+@37611 Quattro · クワトロ
+> 「カミーユ、サイコガンダムは破壊した。
+>  大丈夫だとは思うが
+“Kamille, the Psyco Gundam has been destroyed. I think you'll be fine, but
+---
+>  薬物の問題もある。
+>  ハサン先生にみてもらえ」
+there's also the matter of the drugs. Have Teacher Hasan take a look at you.”
+
+@37612 Kamille · カミーユ
+> 「ありがとうございます、クワトロ特尉。
+>  さぁ、行こう、フォウ」
+“Thank you, Lieutenant Quattro. Come on, let's go, Four.”
+
+@37613 Four · フォウ
+> 「うん、カミーユ」
+“Yeah, Kamille.”
+
+@37614 Amuro · アムロ
+> 「俺たちと同じにはならなかったか……
+>  よけいな心配だったようだな」
+“So they didn't end up like us... Seems I worried for nothing.”
+
+@37615 Quattro · クワトロ
+> 「ああ……そうでなくては、人の未来に
+>  期待など持てんよ……」
+“Yeah... If not, there'd be no hope for humanity's future...”
+
+@37616 Fa · ファ
+> 「……カミーユ……」
+“...Kamille...”
+
+@37617 Judau · ジュドー
+> 「あーあ、ファさんかわいそうに」
+“Man, poor Fa.”
+
+@37618 Koji · 甲児
+> 「でも、ファは押しが弱いからなぁ。
+>  カミーユもひどい奴だな」
+“But Fa's not pushy enough. Kamille's a real jerk.”
+
+@37619 Simone · シモーヌ
+> 「あんたも、
+>  よぉく気をつけたほうがいいわよ」
+“You'd better watch yourself too, you know.”
+
+@37620 Koji · 甲児
+> 「…………」
+“...”
+
+@37621 Kamille · カミーユ
+> 「フォウ…………」
+“Four...”
+
+@37622 Quattro · クワトロ
+> 「カミーユ……かわいそうだが、
+>  君はまだ戦うことを
+“Kamille... I'm sorry, but you're not in a position to stop fighting yet.
+---
+>  やめるわけにはいかない身だ。戦士は
+>  生きている限り戦わねばならんのだ」
+A warrior must fight as long as he lives.”
+
+@37623 Kamille · カミーユ
+> 「……特尉……シャア……アズナブル。
+>  あなたは……こんなことが
+“...Lieutenant... Char... Aznable. You... you have to build a world where this
+---
+>  もう起きないような世界を
+>  つくらなくちゃいけないんだ」
+never happens again.”
+
+@37624 Quattro · クワトロ
+> 「……ああ……そうだな、カミーユ……」
+“...Yeah... That's right, Kamille...”
+
+@37625 Kamille · カミーユ
+> 「う……うわぁぁぁぁぁぁーーっ!!」
+“U... Uwaaaaaaah!!”
+
+@37626 Kenji · ケンジ
+> 「降伏した兵士たちのチェックが
+>  終了したそうです。ほぼ全員が
+“The check of the surrendered soldiers is complete. Almost all of them
+---
+>  トレーズ特佐のもとで異星人と
+>  戦うことを希望しています」
+wish to fight the aliens under Lieutenant Colonel Treize.”
+
+@37627 Alan · アラン
+> 「ふむ……さすがというべきか。
+>  人徳というやつかな」
+“Hmm... I suppose that's to be expected. Or is it his charisma?”
+
+@37628 Tetsuya · 鉄也
+> 「基地の設備は、6割以上が
+>  使用可能な状態だ
+“Over sixty percent of the base's facilities are usable.
+---
+>  ジャミトフを逃したのは残念だったが
+>  おかげでとんだ拾い物をしたな」
+It's a shame Jamitov got away, but thanks to that we made quite a find.”
+
+@37629 Alan · アラン
+> 「そうだな……」
+“Indeed...”
+
+@37630 Quatre · カトル
+> 「ヒイロ!」
+“Heero!”
+
+@37631 Zechs · ゼクス
+> 「ヒイロ・ユイ……まさか貴様も
+>  いるとはな。不思議なものだ」
+“Heero Yuy... To think you'd be here too. How strange.”
+
+@37632 Heero · ヒイロ
+> 「ゼクス……貴様が
+>  その機体を選んだのは、ミスだ」
+“Zechs... Choosing that machine was a mistake.”
+
+@37633 Zechs · ゼクス
+> 「かもしれん。
+>  が、他に選びようもなかった」
+“Perhaps. But I had no other choice.”
+
+@37634 Heero · ヒイロ
+> 「ウイングゼロは、俺が乗る」
+“I'll pilot Wing Zero.”
+
+@37635 Quatre · カトル
+> 「ヒイロ!? だめだよ、あのガンダムは……」
+“Heero?! No, that Gundam is...”
+
+@37636 Heero · ヒイロ
+> 「カトル……これからの戦いの
+>  ためには、あの機体は必要だ」
+“Quatre... We'll need that machine for the battles ahead.”
+
+@37637 Quatre · カトル
+> 「だけど……」
+“But...”
+
+@37638 Zechs · ゼクス
+> 「貴様の乗っていたガンダムはどうする」
+“What about the Gundam you were piloting?”
+
+@37639 Heero · ヒイロ
+> 「好きに使え。あれは
+>  トレーズがつくったものだ
+“Use it as you like. Treize built it.
+---
+>  俺には理解できない機体だ」
+It's a machine I can't understand.”
+
+@37640 Zechs · ゼクス
+> 「確かに、その方がよさそうだな。
+>  貴様はこの部隊に
+“Indeed, that seems for the best. So you have no intention
+---
+>  残るつもりはないというわけか」
+of staying with this unit.”
+
+@37641 Heero · ヒイロ
+> 「俺にはトレーズの考えは
+>  理解できない」
+“I can't understand Treize's way of thinking.”
+
+@37642 Noin · ノイン
+> 「ヒイロは、また行ってしまったのか」
+“Heero's gone off again, has he.”
+
+@37643 Quatre · カトル
+> 「ええ……」
+“Yes...”
+
+@37644 Roux · ルー
+> 「ちょっと、なんだって
+>  止めなかったのよ!?」
+“Hey, why didn't you stop him?!”
+
+@37645 Quatre · カトル
+> 「止めても無駄ですよ。ヒイロは……
+>  最初からそのつもりだったんです」
+“Stopping him would've been pointless. Heero... meant to do this from the start.”
+
+@37646 Roux · ルー
+> 「……ま、いいわ。艦長たちが呼んでる
+>  わよ」
+“...Well, fine. The Captain and the others are calling for you.”
+
+@37647 Bright · ブライト
+> 「君とヒイロが、准将の死に
+>  立ちあったそうだな」
+“So you and Heero were present at the Brigadier General's death.”
+
+@37648 Quatre · カトル
+> 「はい」
+“Yes.”
+
+@37649 Alan · アラン
+> 「不幸な偶然とみるべきか、
+>  縁があるとみるべきか……」
+“Should we call it an unfortunate coincidence, or a twist of fate...”
+
+@37650 Quatre · カトル
+> 「僕がサンクキングダムにいたのは、
+>  ただ逃げていたからだけでした
+“The only reason I was in the Sanc Kingdom was because I was running away.
+---
+>  あの時までの僕なら、きっと皆さんと
+>  一緒に戦うことなど
+The me from back then would never have even thought of fighting
+---
+>  考えなかったでしょう。准将の
+>  言葉に導かれた、と思っています
+alongside all of you. I believe the Brigadier General's words guided me.
+---
+>  ここにはいませんけれど、
+>  きっとヒイロもそうだと思います」
+He isn't here now, but I'm sure Heero feels the same way.”
+
+@37651 Noin · ノイン
+> 「……申しわけない。
+>  私がよけいなことを頼まなければ
+“...I'm sorry. If I hadn't asked you to do that unnecessary thing,
+---
+>  こんなことにはならなかったのです」
+this never would have happened.”
+
+@37652 Quattro · クワトロ
+> 「いや……そうではあるまい。准将は
+>  ご自分の意思でそうされたのだ」
+“No... I don't think so. The Brigadier General did that of his own will.”
+
+@37653 Noin · ノイン
+> 「……はい」
+“...Yes.”
+
+@37654 Bright · ブライト
+> 「それで、准将の最期の言葉を
+>  聞いたといったな?」
+“And you heard the Brigadier General's final words, you said?”
+
+@37655 Quatre · カトル
+> 「ええ。地球圏を頼む、と。
+>  そう、皆さんに伝えてほしいと
+“Yes. He said, ‘I leave the Earth Sphere to you.’ He asked that I
+---
+>  そういっておられました」
+pass that on to all of you.”
+
+@37656 Bright · ブライト
+> 「そうか……」
+“I see...”
+
+@37657 Allenby · アレンビー
+> 「う……ん……ここは……?」
+“Nn... ngh... where is this...?”
+
+@37658 Cath · キャス
+> 「あら……気がついたわね。
+>  ドモン、目を覚ましたわよ」
+“Oh... you're awake. Domon, she's come to.”
+
+@37659 Domon · ドモン
+> 「そ、そうか。アレンビー、俺がわかるか」
+“R-right. Allenby, do you know who I am?”
+
+@37660 Allenby · アレンビー
+> 「ドモン……? ここは……」
+“Domon...? Where is this...?”
+
+@37661 Domon · ドモン
+> 「安心しろ、バーサーカーシステムは
+>  破壊した
+“Relax, the Berserker System is destroyed.
+---
+>  そうだ、ノーベルガンダムも修理して
+>  もらってるから、それも安心していい
+That's right, the Noble Gundam's being repaired too, so you can rest easy about that.
+---
+>  ちょっと変わった連中も多いが、
+>  お前ならうまくやれるさ」
+There are a lot of oddballs here, but you'll manage fine.”
+
+@37662 Cath · キャス
+> (もっとも変わってるうちの1人が、
+>  何いってるんだか)
+(And one of the biggest oddballs is one to talk.)
+
+@37663 Allenby · アレンビー
+> 「……ちょ、ちょっと、ドモン?」
+“...W-wait, Domon?”
+
+@37664 Domon · ドモン
+> 「心配するな、みんな事情は
+>  知ってるし、俺が紹介してやる
+“Don't worry, everyone knows the situation, and I'll introduce you.
+---
+>  そうそう、サイ・サイシーもいるんだ。
+>  体調はどうだ?
+Oh, right, Sai Saici's here too. How are you feeling?
+---
+>  気分は悪くないか?
+>  なんなら軽く組み手でも……」
+Not sick or anything? If you like, we could spar a little...”
+
+@37665 Allenby · アレンビー
+> 「ドモン!」
+“Domon!”
+
+@37666 Domon · ドモン
+> 「……どうした?」
+“...What is it?”
+
+@37667 Allenby · アレンビー
+> 「どうした、じゃないよ、もう。
+>  人の話を聞かないところは
+“Don't ‘what is it’ me. You still never listen to a
+---
+>  ちっとも変わってないんだから」
+word anyone says, not one bit.”
+
+@37668 Domon · ドモン
+> 「そ、そうか? で、なんだ?」
+“R-really? So, what was it?”
+
+@37669 Allenby · アレンビー
+> 「だぁかぁらぁ、
+>  ここはどこって聞いてるの!」
+“I'm asking where this place is!”
+
+@37670 Domon · ドモン
+> 「なんだ、そんなことか。
+>  ここはキリマンジャロだ」
+“Oh, that's all. This is Kilimanjaro.”
+
+@37671 Allenby · アレンビー
+> 「…………」
+“...”
+
+@37672 Cath · キャス
+> 「……{HeroMech}の
+>  戦艦アーガマの、メディカル・ルームよ」
+“...The medical room of the {HeroMech} battleship Argama.”
+
+@37673 Domon · ドモン
+> 「ああ、そういうことか」
+“Ah, so that's it.”
+
+@37674 Allenby · アレンビー
+> 「そおいうこと」
+“That's it.”
+
+@37675 Hasan · ハサン
+> 「その辺にしておきなさい。
+>  だいぶ消耗しとるようだから
+“Leave it at that. She seems quite worn out.
+---
+>  もうしばらく寝かせておいた方が
+>  いいだろう」
+It'd be best to let her sleep a while longer.”
+
+@37676 Domon · ドモン
+> 「ああ、まかせる」
+“Yeah, I'll leave her to you.”
+
+@37677 Allenby · アレンビー
+> 「あ、ドモン」
+“Ah, Domon.”
+
+@37678 Domon · ドモン
+> 「なんだ?」
+“What?”
+
+@37679 Allenby · アレンビー
+> 「いいそびれるトコだった。
+>  助けてくれて、ありがとう。うれしかった」
+“I almost forgot to say it. Thank you for saving me. I was glad.”
+
+@37680 Domon · ドモン
+# 审校：原译“It's you and me, isn't it.”语气生硬且句末句号与原文不符；改为更自然的口语表达，并去掉句末句号。
+> 「フッ、気にするな。
+>  俺とお前の仲じゃないか」
+“Heh, don't mention it. Aren't we past that?”
+
+@37681 Allenby · アレンビー
+> 「ドモン……」
+“Domon...”
+
+@37682 Cath · キャス
+> 「人助けはいいけど、
+>  あんまりレインを悲しませちゃだめよ」
+“Helping people is fine, but don't go making Rain sad.”
+
+@37683 Domon · ドモン
+> 「は? なんで、レインが関係あるんだ?」
+“Huh? What's Rain got to do with it?”
+
+@37684 Cath · キャス
+> 「…………」
+“...”
+
+@37685 Treize · トレーズ
+> 「ひさしいね、ゼクス」
+“It's been a long time, Zechs.”
+
+@37686 Zechs · ゼクス
+> 「トレーズ、君とは違う道を
+>  選んだつもりだったが
+“Treize, I thought I'd chosen a different path from yours, but
+---
+>  結局もどってきてしまったな」
+in the end I've come back.”
+
+@37687 Treize · トレーズ
+# 审校：“What does it matter.”语气过重且与原文“なに”的轻描淡写不符，改为“Well”更贴合特列斯的从容语气。
+> 「なに、地球圏を守ることが
+>  第一だということだ。そうではないかね」
+“Well, protecting the Earth Sphere comes first. Isn't that so?”
+
+@37688 Zechs · ゼクス
+> 「再びOZを指揮するつもりか?
+>  財団の幹部会も
+“Do you intend to command OZ again? The Foundation's executive council
+---
+>  さぞかし混乱しているだろう」
+must be in quite an uproar.”
+
+@37689 Treize · トレーズ
+> 「そろそろ、財団の連中も、
+>  現実をみるべき時だ
+“It's about time the Foundation crowd faced reality.
+---
+>  ……そういえば、ヒイロ・ユイは
+>  エピオンを君に渡したそうだね」
+...By the way, I hear Heero Yuy handed Epyon over to you.”
+
+@37690 Zechs · ゼクス
+> 「ゼロは私よりもヒイロにあっている。
+>  問題はなかろう?」
+“Zero suits Heero better than it does me. There's no problem, is there?”
+
+@37691 Treize · トレーズ
+# 审校：原文“むろんだ”是肯定回应，原译“Of course not.”意思相反，改为“Of course.”。
+> 「むろんだ。私としても、君がエピオンを
+>  使ってくれるのは、うれしい
+“Of course. For my part, I'm glad you'll be using Epyon.
+---
+>  ライトニング・カウントの活躍を
+>  期待しているよ」
+I look forward to seeing the Lightning Count in action.”
+
+@37692 Zechs · ゼクス
+> 「この部隊には強者が多い。
+>  私の出番も
+“This unit has many strong fighters. My turn in the spotlight
+---
+>  それほど多くはないだろうがね」
+won't come around all that often, I imagine.”
+
+@37693 Manami · マナミ（按段落 3DD4）
+> 「ほら見て、{PartnerNick}! あたしの
+>  スイームルグと、貴女のエルブルスが
+“Look, {PartnerNick}! My Sweemurg and your Elbulls
+---
+>  一つになったのよ」
+have become one.”
+
+@37694 Aisha · アイシャ（按段落 3DD4）
+> 「ええ。これで……わたくしがエルブルスに
+>  乗ることも、もうないということ……」
+“Yes. Which means... I will never pilot the Elbulls again...”
+
+@37695 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……」
+“{PartnerNick}...”
+
+@37696 Aisha · アイシャ（按段落 3DD4）
+> 「まぁ、なんて顔をしているの? 貴女
+>  が気にする必要はないわ。わたくしは
+“My, what a face you're making. You needn't worry about it. I have no
+---
+>  自分のしたことについて、後悔はし
+>  ていません。ただ……わたくしのするべき
+regrets about what I've done. It's simply... that what I had to do
+---
+>  ことは、もう終わったというだけの
+>  ことです」
+is already finished.”
+
+@37697 Manami · マナミ（按段落 3DD4）
+> 「そんな……そんなことはないわ!」
+“That's... that's not true!”
+
+@37698 Aisha · アイシャ（按段落 3DD4）
+> 「{HeroName}さん……」
+“{HeroName}...”
+
+@37699 Manami · マナミ（按段落 3DD4）
+> 「まだ何も、終わってなどいないわ。わか
+>  るでしょう、{PartnerNick}!? あたしたちは
+“Nothing is finished yet. You understand, don't you, {PartnerNick}!? We
+---
+>  まだまだ、戦い続けていかなくてはなら
+>  ないのよ」
+still have to keep on fighting.”
+
+@37700 Aisha · アイシャ（按段落 3DD4）
+> 「ここには、わたくしの居場所はありま
+>  せんわ。わたくしのエルブルスは
+“There is no place for me here. After all, I have
+---
+>  貴女にさしあげてしまったことですしね」
+given my Elbulls to you.”
+
+@37701 Manami · マナミ（按段落 3DD4）
+> 「違う、違うわ。あたしはそんなつもり
+>  じゃ……」
+“No, that's not it. That's not what I meant...”
+
+@37702 Lawrence · ローレンス
+> 「お話中、失礼いたします。よろしい
+>  ですかな?」
+“Forgive my interruption. Might I have a moment?”
+
+@37703 Aisha · アイシャ（按段落 3DD4）
+> 「よくってよ。なにかしら?」
+“Certainly. What is it?”
+
+@37704 Lawrence · ローレンス
+> 「実は……お嬢様がたに、ご相談が
+>  ごさいまして」
+“The truth is... I have a matter to discuss with you young ladies.”
+
+@37705 Manami · マナミ（按段落 3DD4）
+> 「どういうことなの、ローレンス?」
+“What do you mean, Lawrence?”
+
+@37706 Lawrence · ローレンス
+> 「これまで{HeroName}お嬢様とともに
+>  スイームルグに搭乗してまいりましたが
+“Until now I have been piloting the Sweemurg alongside you, my lady {HeroName}, but
+---
+>  さすがにこのところ、少々きつうなって
+>  まいりました。新しいスイームルグの
+I must confess it has grown rather hard on me of late. I am told the new Sweemurg's
+---
+>  パワーはさらに増大するとうかがってお
+>  りますし、このあたりでお役目を
+power will increase even further, so I thought this might be the time
+---
+>  解いていただければと……」
+to be relieved of my duties...”
+
+@37707 Manami · マナミ（按段落 3DD4）
+> 「そんな! ウソでしょう、ローレンス?」
+“No! You can't be serious, Lawrence?”
+
+@37708 Lawrence · ローレンス
+> 「申しわけございません、お嬢様。これ
+>  以上は私ではサポートしてさしあげる
+“I am sorry, my lady. Beyond this, I cannot
+---
+>  ことができないのです」
+support you any further.”
+
+@37709 Manami · マナミ（按段落 3DD4）
+> 「で、でも、それじゃあ……」
+“B-but then, that means...”
+
+@37710 Lawrence · ローレンス
+> 「はい、そこで{PartnerName}お嬢様に、
+>  後をお願いいたしたいと考えました
+“Yes. And so I thought I would ask you, my lady {PartnerName}, to take over
+---
+>  次第で……」
+for me...”
+
+@37711 Aisha · アイシャ（按段落 3DD4）
+> 「…………」
+“...”
+
+@37712 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}に……? でも……{PartnerNick}…
+>  あたしと一緒にやってくれるの?」
+“{PartnerNick}...? But... {PartnerNick}... will you do it with me?”
+
+@37713 Aisha · アイシャ（按段落 3DD4）
+> 「……まったく、貴女は昔からちっとも
+>  変わっていないのね。一人では
+“...Good grief, you haven't changed one bit since we were young. You can't
+---
+>  何もできない。しかたのないこと」
+do anything on your own. It can't be helped.”
+
+@37714 Manami · マナミ（按段落 3DD4）
+> 「{PartnerNick}……」
+“{PartnerNick}...”
+
+@37715 Aisha · アイシャ（按段落 3DD4）
+> 「ローレンスが乗れないというのなら、しか
+>  たがありません。わたくしが乗って
+“If Lawrence says he cannot pilot it, then there's no helping it. I shall
+---
+>  さしあげますわ」
+pilot it for you.”
+
+@37716 Manami · マナミ（按段落 3DD4）
+> 「本当に? 本当にいいの!?」
+“Really? You really will!?”
+
+@37717 Aisha · アイシャ（按段落 3DD4）
+> 「他にないのでしょう?」
+“There's no one else, is there?”
+
+@37718 Manami · マナミ（按段落 3DD4）
+> 「……うん……ありがとう、{PartnerNick}」
+“...Yeah... Thank you, {PartnerNick}.”
+
+@37719 Lawrence · ローレンス
+> 「…………」
+“...”
+
+@37720 Aisha · アイシャ（按段落 3DD4）
+> 「ローレンス……先ほどのあれは、ウソなの
+>  でしょう?」
+“Lawrence... that story just now was a lie, wasn't it?”
+
+@37721 Lawrence · ローレンス
+> 「……やはり、おわかりでしたか」
+“...So you saw through it after all.”
+
+@37722 Aisha · アイシャ（按段落 3DD4）
+> 「もちろんですわ。……礼をいいます、
+>  ローレンス。ありがとう」
+“Of course I did. ...I thank you, Lawrence. Thank you.”
+
+@37723 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
+# 草稿第 1 页：“Not at all, it was nothing. Please take good care of
+# 草稿第 2 页：my lady 【主角名字】.”
+> 「いいえ、とんでもございません。
+>  {HeroName}お嬢様を
+---
+>  よろしくお願いいたします」
+
+@37724 Scirocco · シロッコ
+> 「ほう、ジャミトフ閣下が
+>  バルジにもどられたか」
+“Oh? So His Excellency Jamitov has returned to Balji.”
+
+@37725 Specials · スペシャルズ
+> 「はい。財団のデルマイユ公も
+>  ご一緒です」
+“Yes, sir. Duke Dermail of the Foundation is with him as well.”
+
+@37726 Scirocco · シロッコ
+> 「わかった。ご苦労だった」
+“Understood. Good work.”
+
+@37727 Specials · スペシャルズ
+> 「はっ、失礼いたします」
+“Yes, sir. If you'll excuse me.”
+
+@37728 Scirocco · シロッコ
+> (トレーズが出てきたか……。やはり
+>  {HeroMech}……あなどれんな
+(So Treize has made his move... As I thought, the {HeroMech}... I can't afford to underestimate it.
+---
+>  異星人はいましばらく抑えておける
+>  として……あとはアクシズか……)
+The aliens can be held in check a while longer... That leaves Axis, then...)

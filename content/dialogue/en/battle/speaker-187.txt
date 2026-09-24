@@ -1,0 +1,154 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12372 Allen · アレン
+> 「落ちなっ!!」
+“Fall!!”
+
+@12373 Allen · アレン
+> 「もらった!」
+“Got you!”
+
+@12374 Allen · アレン
+> 「とどめだ!」
+“This is the end!”
+
+@12375 Allen · アレン
+> 「くたばりな!」
+“Die!”
+
+@12376 Allen · アレン
+# 审校：原文“このっ!”是咬牙切齿的咒骂，初稿“Why you!”缺少未说完的停顿感
+> 「このっ!」
+“Why you...!”
+
+@12377 Allen · アレン
+> 「あばよ! あの世で後悔するんだな」
+“So long! Regret it in the next world.”
+
+@12378 Allen · アレン
+> 「やらせるか!!」
+“Like I'd let you!!”
+
+@12379 Allen · アレン
+> 「消えろっ!!」
+“Vanish!!”
+
+@12380 Allen · アレン
+> 「観念するんだな!」
+“Give it up!”
+
+@12381 Allen · アレン
+> 「俺が引導を渡してやるぜ!」
+“I'll send you to your grave!”
+
+@12382 Allen · アレン
+> 「邪魔なんだよ!!」
+“You're in my way!!”
+
+@12383 Allen · アレン
+> 「何っ!? やられた!?」
+“What?! I've been hit?!”
+
+@12384 Allen · アレン
+# 审校：原文“なんだとっ!?”是震惊反问，不是“你说什么”，应更简洁有力
+> 「なんだとっ!?」
+“What?!”
+
+@12385 Allen · アレン
+> 「ちっ! こいつはまずいな……」
+“Tch! This is bad...”
+
+@12386 Allen · アレン
+> 「バカな!? 押されているだと!?」
+“Impossible!? I'm being pushed back?!”
+
+@12387 Allen · アレン
+> 「うおっ!! やられた!? どこだ!?」
+“Whoa!! I've been hit?! Where?!”
+
+@12388 Allen · アレン
+> 「な、なんだこのパワーは……
+>  やられるのか!?」
+“Wh-what is this power... Am I going down?!”
+
+@12389 Allen · アレン
+> 「くっ! いい気になるなっ!!」
+“Ngh! Don't get cocky!!”
+
+@12390 Allen · アレン
+> 「当たった!? バカな!」
+“It hit?! Impossible!”
+
+@12391 Allen · アレン
+> 「やるっ! だが俺だってな!!」
+“You're good! But so am I!!”
+
+@12392 Allen · アレン
+> 「むぅっ! やりやがったな!」
+“Mmph! You got me!”
+
+@12393 Allen · アレン
+> 「ちっ! 少しは手応えが
+>  ありそうだな!」
+“Tch! Seems you've got some fight in you!”
+
+@12394 Allen · アレン
+> 「どうした、そんなもんか!?」
+“What's wrong, is that all you've got?!”
+
+@12395 Allen · アレン
+> 「その程度の腕で、よく生き延びて
+>  こられたもんだ!」
+“With skill like that, I'm amazed you've survived this long!”
+
+@12396 Allen · アレン
+> 「ふん、大したダメージではないな」
+“Hmph, that's hardly any damage.”
+
+@12397 Allen · アレン
+> 「なんだ? それで攻撃してるつもりか?」
+“What? You call that an attack?”
+
+@12398 Allen · アレン
+# 审校：“甘いぜ!”与 L11 相同，是“太天真”而非“太软”
+> 「甘いぜ!」
+“Too naive!”
+
+@12399 Allen · アレン
+> 「当たるか!」
+“As if that'd hit!”
+
+@12400 Allen · アレン
+> 「まるで素人の攻撃だな!」
+“That's an amateur's attack!”
+
+@12401 Allen · アレン
+> 「狙いが甘いんだよ!」
+“Your aim's way off!”
+
+@12402 Allen · アレン
+# 审校：原文“こんなもんか”表示“就这种程度吗”，初稿“that's it”有歧义，改为更贴切的表达
+> 「ま……こんなもんか」
+“Well... I guess that's all.”
+
+@12403 Allen · アレン
+> 「これでも眼はいい方なんだぜ!」
+“Even so, my eyes are pretty sharp!”
+
+@12404 Allen · アレン
+> 「しゃらくさいんだよ!」
+“You're annoying me!”
+
+@12405 Allen · アレン
+# 审校：「ムダなんだよ」更接近“It's no use”，原译“It's useless”语气稍弱且不够口语化。
+> 「ムダなんだよ!」
+“It's no use!”
+
+@12406 Allen · アレン
+> 「バカな、弾切れだと!?」
+“Impossible, out of ammo?!”
+
+@12407 Allen · アレン
+# 审校：「遠すぎるか」应译为“too far away”，原译漏掉“away”，且句末原文无标点，保留句号即可。
+> 「ちっ、遠すぎるか」
+“Tch, too far away.”

@@ -1,0 +1,170 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10487 Boss · ボス
+> 「こんちくしょうっ!」
+“You son of a gun!”
+
+@10488 Boss · ボス
+> 「うりゃあーっ!!」
+“Hraaah!!”
+
+@10489 Boss · ボス
+> 「俺にまっかしとき! いくわよ!!」
+“Leave it to me! Here I go!!”
+
+@10490 Boss · ボス
+> 「行くだわさ!」
+“Here I go!”
+
+@10491 Boss · ボス
+> 「じゃ～んじゃじゃ～ん!」
+“Ta-daaa!”
+
+@10492 Boss · ボス
+> 「た、たすけてくれ～!」
+“H-help me out here!”
+
+@10493 Boss · ボス
+> 「うわあっ!! や、やられたあっ!」
+“Uwaah!! I-I got hit!”
+
+@10494 Boss · ボス
+> 「どわぁぁぁっ!! だじげでぐでぇ～!」
+“Dwaaah!! I'm doooone for!”
+
+@10495 Boss · ボス
+> 「くそっ!! やられちまったい!」
+“Damn!! I got taken out!”
+
+@10496 Boss · ボス
+> 「ちきしょぉぉぉっ!!」
+“Dammit all!!”
+
+@10497 Boss · ボス
+> 「うわぁぁぁぁぁっ!!」
+“Uwaaaaaah!!”
+
+@10498 Boss · ボス
+> 「ぎゃゃゃゃぁ……やや、や、や……」
+“Gyaaaa... I-I-I...”
+
+@10499 Boss · ボス
+> 「どひぇ～へへへは……ひぇ～!」
+“Dohyaa... hehehe... hyaa!”
+
+@10500 Boss · ボス
+> 「ひえ～……へへへ、ひぇ～!」
+“Hyaa... hehehe, hyaa!”
+
+@10501 Boss · ボス
+> 「やだぁ、タンマ、まってぇ～!」
+“No way, time out, wait up!”
+
+@10502 Boss · ボス
+> 「ヤバイっ! このままじゃ
+>  やられちまうっ!!」
+“This is bad! At this rate I'm gonna get wrecked!!”
+
+@10503 Boss · ボス
+> 「ちくしょう!! このままじゃ
+>  やられちまうぜっ!!」
+“Damn!! At this rate I'm gonna get wrecked!!”
+
+@10504 Boss · ボス
+> 「うわっ!! や、やべぇ!」
+“Uwah!! Th-this is bad!”
+
+@10505 Boss · ボス
+> 「くそぉぉぉっ!!」
+“Damn iiiit!!”
+
+@10506 Boss · ボス
+> 「弱っちまったわね、もう!
+>  ちきしょうめ!!」
+“I've gotten weak, huh! Dammit!!”
+
+@10507 Boss · ボス
+> 「あら～やだぁっ!!」
+“Oh no, stop it!!”
+
+@10508 Boss · ボス
+> 「あいたたっ! やったな
+>  こんちくしょうっ!!」
+“Oww! You did that, you jerk!!”
+
+@10509 Boss · ボス
+> 「あいてっ! よ～くもやりやがって!!」
+“Ouch! How dare you do that!!”
+
+@10510 Boss · ボス
+> 「てめえ! やってくれんじゃないのさ!!」
+“You! You think you can pull that on me?!”
+
+@10511 Boss · ボス
+> 「な、なんだとぉ!?」
+“W-what did you say?!”
+
+@10512 Boss · ボス
+> 「生意気な野郎だわね!!」
+“What a cheeky bastard!!”
+
+@10513 Boss · ボス
+> 「こ～んなもん、効くってかい!!」
+“Like this little thing could hurt me!!”
+
+@10514 Boss · ボス
+> 「あいてっ!」
+“Ouch!”
+
+@10515 Boss · ボス
+> 「へへん! 効いてないわよん!」
+“Heh! That didn't even tickle!”
+
+@10516 Boss · ボス
+> 「よくもやってくれたじゃねえのさ!」
+“You really went and did it, huh!”
+
+@10517 Boss · ボス
+> 「おお～っとっとのオットセイ!」
+“Whoa-whoa-whoa, whoops!”
+
+@10518 Boss · ボス
+> 「おっとっと」
+“Whoa there.”
+
+@10519 Boss · ボス
+> 「おっと、あぶない!」
+“Whoa, that was close!”
+
+@10520 Boss · ボス
+> 「ぎゃはははは、実力、実力」
+“Gyahahaha, pure skill, pure skill.”
+
+@10521 Boss · ボス
+> 「当たらないわよ」
+“You can't hit me.”
+
+@10522 Boss · ボス
+> 「おおっと!? 俺様を狙おうなんざ、
+>  ふてえ了見だ!」
+“Whoa?! Aiming at me, you've got some nerve!”
+
+@10523 Boss · ボス
+> 「へへん、だいじょーぶ!」
+“Heh, I'm just fine!”
+
+@10524 Boss · ボス
+> 「効いてねえんだわさ!」
+“That didn't hurt one bit!”
+
+@10525 Boss · ボス
+> 「ちっ! 反撃できねえ!!」
+“Tch! I can't fight back!!”
+
+@10526 Boss · ボス
+> 「どっから攻撃してきやがった!?」
+“Where'd that attack come from?!”
+
+@10527 Boss · ボス
+> 「くそおっ! とどかねえじゃんかよ!」
+“Damn! I can't even reach 'em!”

@@ -1,0 +1,109 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9151 Aboly · アポリー
+> 「照準セット」
+“Target set.”
+
+@9152 Aboly · アポリー
+> 「邪魔はさせない!」
+“I won't let you interfere!”
+
+@9153 Aboly · アポリー
+> 「アレを沈めりゃ……」
+“If I sink that thing...”
+
+@9154 Aboly · アポリー
+> 「落ちろよ!」
+“Go down!”
+
+@9155 Aboly · アポリー
+> 「当たってくれ!」
+“Please hit!”
+
+@9156 Aboly · アポリー
+> 「当たれよ!」
+“Hit it!”
+
+@9157 Aboly · アポリー
+> 「ここは俺がおさえる!」
+“I'll hold them here!”
+
+@9158 Aboly · アポリー
+> 「うわぁぁぁぁーっ!」
+“Uwaaaaaaah!”
+
+@9159 Aboly · アポリー
+> 「これ以上は持たないっ!」
+“I can't take any more!”
+
+@9160 Aboly · アポリー
+> 「パ、パワーがあがらないのか!?」
+“P-power won't rise?!”
+
+@9161 Aboly · アポリー
+> 「こ、こんなことで……」
+“N-not like this...”
+
+@9162 Aboly · アポリー
+> 「くっ……終わりはしない!」
+“Ngh... I'm not finished!”
+
+@9163 Aboly · アポリー
+> 「くっ、直撃をくらっちまったか!」
+“Ngh, took a direct hit!”
+
+@9164 Aboly · アポリー
+> 「まだいけるっ!」
+“I can still go!”
+
+@9165 Aboly · アポリー
+> 「この程度ならまだ持たせる!」
+“I can take this much!”
+
+@9166 Aboly · アポリー
+> 「くっ、当たっちまったか!」
+“Ngh, that one got me!”
+
+@9167 Aboly · アポリー
+> 「ん!?」
+“Hn?!”
+
+@9168 Aboly · アポリー
+> 「かすったのか!?」
+“Just a graze?!”
+
+@9169 Aboly · アポリー
+> 「当たりはしないって!」
+“It won't hit!”
+
+@9170 Aboly · アポリー
+> 「甘いんだよ」
+“Too naive.”
+
+@9171 Aboly · アポリー
+> 「この程度なら俺だって」
+“Even I can handle this much.”
+
+@9172 Aboly · アポリー
+> 「かわしてみせる!」
+“I'll dodge it!”
+
+@9173 Aboly · アポリー
+> 「なめるなよ!」
+“Don't underestimate me!”
+
+@9174 Aboly · アポリー
+> 「ビームなら無効化できる!」
+“I can nullify a Beam!”
+
+@9175 Aboly · アポリー
+> 「そんな攻撃は効かないぜ」
+“That kind of attack won't work.”
+
+@9176 Aboly · アポリー
+> 「弾切れだって!?」
+“Out of ammo?!”
+
+@9177 Aboly · アポリー
+> 「ここからじゃ届かないか……」
+“Can't reach from here...”

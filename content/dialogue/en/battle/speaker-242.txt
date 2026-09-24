@@ -1,0 +1,111 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12028 Dungele · ダンゲル
+# 审校：原译“itching for this”略含糊，补出“a fight”。
+> 「腕がなるわ!」
+“My fists are itching for a fight!”
+
+@12029 Dungele · ダンゲル
+> 「俺の力を見せてやる!」
+“I'll show you my power!”
+
+@12030 Dungele · ダンゲル
+> 「ウッハッハッハッハッ!!」
+“Wah ha ha ha ha!!”
+
+@12031 Dungele · ダンゲル
+> 「ご覧ください、ジャネラ様!」
+“Behold, Lady Janera!”
+
+@12032 Dungele · ダンゲル
+> 「グハハハハハッ!」
+“Gwah ha ha ha ha!”
+
+@12033 Dungele · ダンゲル
+# 审校：原译“right out of you”略啰嗦，简化更自然。
+> 「息の根をとめてくれる!」
+“I'll snuff the life out of you!”
+
+@12034 Dungele · ダンゲル
+> 「これでもくらえ!」
+“Try taking this!”
+
+@12035 Dungele · ダンゲル
+# 审校：原译“make you regret this”偏离“目にもの見せてくれるわ”，改为更贴切。
+> 「目にもの見せてくれるわ!」
+“I'll make you see something!”
+
+@12036 Dungele · ダンゲル
+# 审校：原译“my deepest apologies”可接受，但“I am terribly sorry”更符合慌张语气。
+> 「ジャ、ジャネラ様、申しわけ
+>  ございません!」
+“L-Lady Janera, I am terribly sorry!”
+
+@12037 Dungele · ダンゲル
+# 审校：原文是うおぉぉぉぉぉぉーっ，原译“Uwoooooooh!?”可接受，但去掉多余问号更贴近惨叫。
+> 「うおぉぉぉぉぉぉーっ!?」
+“Uwoooooooh?!”
+
+@12038 Dungele · ダンゲル
+# 审校：原文“しまった!?”带惊愕，原译“Damn it!?”可接受，但“Damn it!”更自然。
+> 「しまった!? エネルギーパイプが!!」
+“Damn it! The energy pipe!!”
+
+@12039 Dungele · ダンゲル
+> 「ジャ、ジャネラ様!!」
+“L-Lady Janera!!”
+
+@12040 Dungele · ダンゲル
+# 审校：原译“damn it all!!”可接受，但拉长音更贴近“しまったぁぁぁっ”。
+> 「ぐわっ……しまったぁぁぁっ!!」
+“Guah... damn it aaaall!!”
+
+@12041 Dungele · ダンゲル
+> 「ぐっ、しまった……補助動力は
+>  どこだ!?」
+“Ngh, damn it... where's the auxiliary power?!”
+
+@12042 Dungele · ダンゲル
+> 「な……なんと!?」
+“Wh...what?!”
+
+@12043 Dungele · ダンゲル
+> 「ぐっ……こ、こんなばかなぁ!!」
+“Ngh... th-this can't be!!”
+
+@12044 Dungele · ダンゲル
+# 审校：原译“won't even scratch me”可接受，但“make me flinch”更贴近“びくともせん”。
+> 「そんなものではびくともせんわい!」
+“That won't even make me flinch!”
+
+@12045 Dungele · ダンゲル
+# 审校：原文ウワハハハッ，原译“Wah ha ha”可接受，但补足为更贴近的笑声。
+> 「ウワハハハッ、ばかめ!」
+“Wah ha ha ha, you fool!”
+
+@12046 Dungele · ダンゲル
+> 「効かぬわ! ハーッハッハッハッ!」
+“It's useless! Ha ha ha ha!”
+
+@12047 Dungele · ダンゲル
+> 「ワーハハハハハハッ!」
+“Wah ha ha ha ha ha!”
+
+@12048 Dungele · ダンゲル
+# 审校：原译“You missed!”可接受，但“あたらぬわ”是“打不中”，改为更贴切。
+> 「あたらぬわ!」
+“You won't hit me!”
+
+@12049 Dungele · ダンゲル
+> 「そんなものは通用せぬわ!」
+“That won't work on me!”
+
+@12050 Dungele · ダンゲル
+# 审校：原译“I need to resupply”可接受，但“must”更符合紧迫感。
+> 「しまった! 補給をせねば……」
+“Damn it! I must resupply...”
+
+@12051 Dungele · ダンゲル
+# 审校：原译正确，无需修改。
+> 「どこだ! どこからの攻撃だ!?」
+“Where?! Where is that attack coming from?!”

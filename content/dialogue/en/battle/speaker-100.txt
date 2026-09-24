@@ -1,0 +1,144 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6974 Quinze · カーンズ
+> 「全砲門開け!
+>  何としても撃ち落とすのだ」
+“Open all gun ports! Shoot them down no matter what!”
+
+@6975 Quinze · カーンズ
+> 「敵部隊、
+>  有効射程距離内に入った!」
+“Enemy force has entered effective firing range!”
+
+@6976 Quinze · カーンズ
+> 「なんとしても撃破せよ!」
+“Destroy them no matter what!”
+
+@6977 Quinze · カーンズ
+> 「我々の未来のために、
+>  やっておかなければならないのだ!」
+“For our future, we must do this!”
+
+@6978 Quinze · カーンズ
+> 「これで決着がつく!」
+“This settles it!”
+
+@6979 Quinze · カーンズ
+> 「このまま放置しておくわけには
+>  いかんっ!」
+“We can't just leave them be!”
+
+@6980 Quinze · カーンズ
+> 「必ず、落とす!!」
+“I will shoot them down!!”
+
+@6981 Quinze · カーンズ
+> 「今度こそ、沈める!!」
+“This time, I'll sink them!!”
+
+@6982 Quinze · カーンズ
+> 「宇宙は我々コロニー市民の
+>  ものだ!」
+“Space belongs to us colony citizens!”
+
+@6983 Quinze · カーンズ
+> 「我々には大義がある!」
+“We have a righteous cause!”
+
+@6984 Quinze · カーンズ
+> 「……終わった……」
+“...It's over...”
+
+@6985 Quinze · カーンズ
+> 「バカ者っ! またしてもやられたのか!!」
+“You fools! Struck down again?!”
+
+@6986 Quinze · カーンズ
+> 「なんだと!? そんなムチャな!」
+“What?! That's absurd!”
+
+@6987 Quinze · カーンズ
+> 「制御回路がオーバーロードして
+>  しまっただと!?」
+“The control circuit overloaded?!”
+
+@6988 Quinze · カーンズ
+> 「えーい、修理はまだかっ!?」
+“Gah, is the repair not done yet?!”
+
+@6989 Quinze · カーンズ
+> 「こ、こんなバカなことが……」
+“Th-this can't be...”
+
+@6990 Quinze · カーンズ
+# 审校：原文「あれほど用心しろといったはずだ」意为“我明明叫你们那么小心”，初稿“that careful”不自然，改为“more careful”。
+> 「くっあれほど用心しろといったはずだ!」
+“Ngh, I told you to be more careful!”
+
+@6991 Quinze · カーンズ
+> 「主砲のシステムダウン……
+>  各部損傷だとぉ!?」
+“Main gun system down... damage to all sections?!”
+
+@6992 Quinze · カーンズ
+> 「しかし、このままでは……」
+“But at this rate...”
+
+@6993 Quinze · カーンズ
+> 「なにぃっ!?」
+“What?!”
+
+@6994 Quinze · カーンズ
+> 「なにごとだ!?」
+“What's going on?!”
+
+@6995 Quinze · カーンズ
+> 「これは子どもの遊びではないのだ」
+“This is no child's play.”
+
+@6996 Quinze · カーンズ
+> 「対処のしようがないのであろう!」
+“There's no way to deal with it!”
+
+@6997 Quinze · カーンズ
+> 「新たな武器でも用意してるかと
+>  思ったが……」
+“I thought you'd prepared some new weapon, but...”
+
+@6998 Quinze · カーンズ
+> 「作戦を続行しろ!!」
+“Continue the operation!!”
+
+@6999 Quinze · カーンズ
+> 「そんなものでは落ちんよ……」
+“That won't bring me down...”
+
+@7000 Quinze · カーンズ
+> 「ムダな抵抗はやめろ」
+“Stop this pointless resistance.”
+
+@7001 Quinze · カーンズ
+> 「宇宙の民のためにも当たるわけには
+>  いかんのだよ」
+“For the people of space, I cannot afford to be hit.”
+
+@7002 Quinze · カーンズ
+> 「ムダな抵抗はやめろ」
+“Stop this pointless resistance.”
+
+@7003 Quinze · カーンズ
+> 「くっ、次の攻撃までに要する
+>  時間は、どれぐらいかっ!?」
+“Ngh, how much time until the next attack?!”
+
+@7004 Quinze · カーンズ
+> 「弾切れだと!?」
+“Out of ammo?!”
+
+@7005 Quinze · カーンズ
+> 「射程に入っていないというのかっ!?」
+“You mean it's not in range?!”
+
+@7006 Quinze · カーンズ
+> 「どこからの攻撃か!?」
+“Where's that attack coming from?!”

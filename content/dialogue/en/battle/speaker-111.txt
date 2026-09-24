@@ -1,0 +1,115 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9782 Hell Marshal · 地獄大元帥
+> 「手並みをみせてもらうぞ!」
+“Show me what you've got!”
+
+@9783 Hell Marshal · 地獄大元帥
+> 「今こそチャンスだ!」
+“Now's our chance!”
+
+@9784 Hell Marshal · 地獄大元帥
+> 「勝つ見こみがなければやらぬわ!」
+“I won't fight unless I'm sure to win!”
+
+@9785 Hell Marshal · 地獄大元帥
+> 「戦いは勝てば、よいのだ」
+“In battle, winning is all that matters.”
+
+@9786 Hell Marshal · 地獄大元帥
+> 「今度という今度は必ず勝つ!」
+“This time, I will win for certain!”
+
+@9787 Hell Marshal · 地獄大元帥
+# 审校：「てえい!」是出手时的喊声，译为“Teei!”不像英语战斗喊声，改为“Take this!”
+> 「呪いをこめて、これから地獄に
+>  送ってやる! てえい!」
+“I'll send you to hell with a curse! Take this!”
+
+@9788 Hell Marshal · 地獄大元帥
+> 「最期を見とどけてやる!」
+“I'll see you to your end!”
+
+@9789 Hell Marshal · 地獄大元帥
+> 「どけーい!」
+“Out of my way!”
+
+@9790 Hell Marshal · 地獄大元帥
+> 「おのれ、今に見ておれ!!」
+“Curse you, just you wait!!”
+
+@9791 Hell Marshal · 地獄大元帥
+> 「ぐうぅぅ、信じられん、ワシの作戦が
+>  やぶれるとは」
+“Guhhh, I can't believe it... my plan, foiled.”
+
+@9792 Hell Marshal · 地獄大元帥
+> 「ワシは負けん、絶対に負けんぞ!」
+“I won't lose, I absolutely won't lose!”
+
+@9793 Hell Marshal · 地獄大元帥
+> 「おのれ、これしきのことで
+>  やられてなるものか!!」
+“Curse you, you think this is enough to beat me?!”
+
+@9794 Hell Marshal · 地獄大元帥
+> 「おのれ、こしゃくな、ええい、こうなったら
+>  一気にカタをつけてやるぞ!」
+“Curse you, impudent brat... fine, I'll finish this all at once!”
+
+@9795 Hell Marshal · 地獄大元帥
+> 「どうしたのだ!?」
+“What's the matter?!”
+
+@9796 Hell Marshal · 地獄大元帥
+> 「負け犬の遠吠えなど聞く耳を
+>  持たぬわ」
+“I won't listen to a loser's howling.”
+
+@9797 Hell Marshal · 地獄大元帥
+> 「せいぜい吠えるがいいわ!」
+“Bark all you like!”
+
+@9798 Hell Marshal · 地獄大元帥
+> 「泣きっツラが目に見えるようだわ、
+>  ヌハハハハハハ」
+“I can just picture you crying! Nuhahahahahaha!”
+
+@9799 Hell Marshal · 地獄大元帥
+> 「ムダな抵抗はやめろ!」
+“Stop this pointless resistance!”
+
+@9800 Hell Marshal · 地獄大元帥
+> 「その程度の攻撃では、
+>  びくともせんわ!」
+“An attack like that won't even scratch me!”
+
+@9801 Hell Marshal · 地獄大元帥
+> 「この地獄大元帥の実力を
+>  知ったか!」
+“Now you know the power of Hell Marshal!”
+
+@9802 Hell Marshal · 地獄大元帥
+> 「フハハハハハハハ、見える、見えるぞ!」
+“Fuhahahahahaha, I see it, I see it!”
+
+@9803 Hell Marshal · 地獄大元帥
+> 「ワシは負けん、絶対に負けんぞ!」
+“I won't lose, I absolutely won't lose!”
+
+@9804 Hell Marshal · 地獄大元帥
+> 「ワシは負けん、絶対に負けんぞ!」
+“I won't lose, I absolutely won't lose!”
+
+@9805 Hell Marshal · 地獄大元帥
+> 「その程度の攻撃では、びくとも
+>  せんわーっ!」
+“An attack like that won't even scratch me!”
+
+@9806 Hell Marshal · 地獄大元帥
+> 「くそう! なんとかするのだ!」
+“Damn it! Do something about this!”
+
+@9807 Hell Marshal · 地獄大元帥
+> 「ぬうう、今に見てろ」
+“Nghhh, just you wait.”

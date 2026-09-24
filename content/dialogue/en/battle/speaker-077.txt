@@ -1,0 +1,125 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8591 Mouar · マウアー
+> 「やらせはしないっ!!」
+“I won't let you!!”
+
+@8592 Mouar · マウアー
+> 「そこっ!!」
+“There!!”
+
+@8593 Mouar · マウアー
+> 「落ちろっ!」
+“Fall!”
+
+@8594 Mouar · マウアー
+> 「当てる!」
+“I'll hit you!”
+
+@8595 Mouar · マウアー
+> 「もらった!」
+“Got you!”
+
+@8596 Mouar · マウアー
+> 「これ以上好きにはさせない!」
+“I won't let you do as you please anymore!”
+
+@8597 Mouar · マウアー
+> 「私が相手だ!」
+“I'm your opponent!”
+
+@8598 Mouar · マウアー
+> 「沈めっ!」
+“Sink!”
+
+@8599 Mouar · マウアー
+> 「これで決めるっ!」
+“This will finish it!”
+
+@8600 Mouar · マウアー
+> 「そんな……」
+“No...”
+
+@8601 Mouar · マウアー
+> 「ジェ、ジェリド……」
+“J-Jerid...”
+
+@8602 Mouar · マウアー
+> 「ま……まだだ!! まだ落ちはしない!!」
+“N-not yet!! I'm not going down yet!!”
+
+@8603 Mouar · マウアー
+> 「くっ!! このままでは……」
+“Ngh!! At this rate...”
+
+@8604 Mouar · マウアー
+> 「しまった!? これ以上のダメージは…」
+“Damn!? Any more damage and...”
+
+@8605 Mouar · マウアー
+> 「あうっ!! な、なんてパワー……」
+“Agh!! W-what power...”
+
+@8606 Mouar · マウアー
+> 「つっ! この程度で!」
+“Tch! This much?!”
+
+@8607 Mouar · マウアー
+> 「まだっ! まだいける!」
+“Not yet! I can still fight!”
+
+@8608 Mouar · マウアー
+> 「くっ! 当たったところで!」
+“Ngh! Even if it hit!”
+
+@8609 Mouar · マウアー
+> 「やるっ! だがまだやられてはいない!」
+“Not bad! But I'm not down yet!”
+
+@8610 Mouar · マウアー
+> 「甘いな、この程度のダメージなど!」
+“Too bad, damage like this is nothing!”
+
+@8611 Mouar · マウアー
+> 「くっ、こんなもので!」
+“Ngh, as if this would!”
+
+@8612 Mouar · マウアー
+> 「ダメージ軽微、まだいける!」
+“Damage minimal, I can still go!”
+
+@8613 Mouar · マウアー
+> 「当たりはしない!」
+“You won't hit me!”
+
+@8614 Mouar · マウアー
+> 「甘いな」
+“Too soft.”
+
+@8615 Mouar · マウアー
+> 「そこか!」
+“There!”
+
+@8616 Mouar · マウアー
+> 「かわしてみせる!」
+“I'll show you how to dodge!”
+
+@8617 Mouar · マウアー
+> 「このっ!」
+“Why you!”
+
+@8618 Mouar · マウアー
+> 「この程度っ!」
+“Is that all?!”
+
+@8619 Mouar · マウアー
+> 「そんなビームが通用するものか!」
+“A beam like that won't work on me!”
+
+@8620 Mouar · マウアー
+> 「何っ!? 弾切れか!?」
+“What?! Out of ammo?!”
+
+@8621 Mouar · マウアー
+> 「くっ、この距離では反撃できない…」
+“Ngh, at this range I can't fight back...”

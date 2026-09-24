@@ -1,0 +1,119 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12486 Fei · フェイ
+> 「俺が相手をしてやるってんだよ!」
+“I'll take you on myself!”
+
+@12487 Fei · フェイ
+> 「覚悟しな!」
+“Get ready!”
+
+@12488 Fei · フェイ
+> 「もらったぜ!」
+“Got you!”
+
+@12489 Fei · フェイ
+> 「うおぉぉぉぉっ!!」
+“Whooooa!!”
+
+@12490 Fei · フェイ
+> 「そこかっ!」
+“There you are!”
+
+@12491 Fei · フェイ
+> 「これでとどめだ!」
+“This is the finishing blow!”
+
+@12492 Fei · フェイ
+> 「スキだらけだぜ!」
+“You're wide open!”
+
+@12493 Fei · フェイ
+> 「どうだ!」
+“How's that?!”
+
+@12494 Fei · フェイ
+# 审校：原译“what did you say”把“なんだと”误读为对话回应，这里是被击坠时的震惊，改为更贴切的“W...what?!”
+> 「な……なんだと!?」
+“W...what?!”
+
+@12495 Fei · フェイ
+> 「バカな……この俺が、こうも簡単に…」
+“Impossible... me, beaten so easily...”
+
+@12496 Fei · フェイ
+> 「ううっ……なんてパワーなんだ」
+“Ugh... what power.”
+
+@12497 Fei · フェイ
+> 「うっ……もうもたないのか?」
+“Ugh... can't hold out anymore?”
+
+@12498 Fei · フェイ
+> 「ま、まだだ……このフェイ・チェンカが
+>  そう簡単に!」
+“N-not yet... Fei Chenka won't go down that easily!”
+
+@12499 Fei · フェイ
+> 「おおおっ、こいつは……」
+“Whoa, this is...”
+
+@12500 Fei · フェイ
+> 「うおぉぉ! こいつは!?」
+“Whoa! What is this?!”
+
+@12501 Fei · フェイ
+> 「あたった? だがまだまだ!」
+“It hit? But I'm not done yet!”
+
+@12502 Fei · フェイ
+> 「けっ……俺を本気にさせたな」
+“Heh... you've made me get serious.”
+
+@12503 Fei · フェイ
+> 「くそぉ、まだやられるかよ」
+“Damn, still taking hits?”
+
+@12504 Fei · フェイ
+> 「くっ……思ったよりやるみたいじゃないか」
+“Ngh... you're tougher than I thought.”
+
+@12505 Fei · フェイ
+> 「ちっ……いい気になるなよ」
+“Tch... don't get cocky.”
+
+@12506 Fei · フェイ
+> 「へっ、かすった程度だ」
+“Heh, just a graze.”
+
+@12507 Fei · フェイ
+> 「効いてないな、そんな攻撃は」
+“That kind of attack won't do a thing.”
+
+@12508 Fei · フェイ
+> 「そんなものかよ」
+“Is that all you've got?”
+
+@12509 Fei · フェイ
+> 「甘いんだよ、お前さんは」
+“You're too soft, pal.”
+
+@12510 Fei · フェイ
+> 「あたるかよ」
+“Like you could hit me.”
+
+@12511 Fei · フェイ
+> 「おそいな」
+“Too slow.”
+
+@12512 Fei · フェイ
+> 「ビームが効くかよ!」
+“Beams won't work on me!”
+
+@12513 Fei · フェイ
+> 「ちっ!……反撃できないか……」
+“Tch!... Can't counter, huh...”
+
+@12514 Fei · フェイ
+> 「くそぉ……届かないか……」
+“Damn... out of reach...”

@@ -1,0 +1,414 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16200 Boss · ボス
+> 「光子力ビームをくらうだわさ!!」
+“Eat this Photon Beam!!”
+
+@16201 Boss · ボス
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@16202 Boss · ボス
+# 审校：原文有“だわさ”口癖，但英文难以自然再现；保留简洁喊招。
+> 「ミサイル発射だわさ!!」
+“Missile launch!!”
+
+@16203 Boss · ボス
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@16204 Boss · ボス
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@16205 Boss · ボス
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@16206 Boss · ボス
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@16207 Boss · ボス
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@16208 Boss · ボス
+> 「ブレストファイヤーでいくわよん!!」
+“Here comes the Breast Fire!!”
+
+@16209 Boss · ボス
+> 「大車輪ロケットパーンチッ……
+>  だわさ!!」
+“Big Wheel Rocket Punch... here it comes!!”
+
+@16210 Boss · ボス
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@16211 Boss · ボス
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@16212 Boss · ボス
+> 「ダブルカッター、だわさ!」
+“Double Cutter, comin' up!”
+
+@16213 Boss · ボス
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@16214 Boss · ボス
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@16215 Boss · ボス
+> 「ドリルアタック! だわさ!」
+“Drill Attack! Here it comes!”
+
+@16216 Boss · ボス
+> 「マリンビーム!」
+“Marine Beam!”
+
+@16217 Boss · ボス
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@16218 Boss · ボス
+> 「マリンミサイルよん!」
+“Marine Missile!”
+
+@16219 Boss · ボス
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16220 Boss · ボス
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16221 Boss · ボス
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16222 Boss · ボス
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16223 Boss · ボス
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16224 Boss · ボス
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16225 Boss · ボス
+> 「ドリルプレッシャーパーンチッ! だわさ」
+“Drill Pressure Punch! That's the stuff!”
+
+@16226 Boss · ボス
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16227 Boss · ボス
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@16228 Boss · ボス
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@16229 Boss · ボス
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@16230 Boss · ボス
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16231 Boss · ボス
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16232 Boss · ボス
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16233 Boss · ボス
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16234 Boss · ボス
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16235 Boss · ボス
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16236 Boss · ボス
+> 「ドリルプレッシャーパーンチッ! だわさ」
+“Drill Pressure Punch! That's the stuff!”
+
+@16237 Boss · ボス
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16238 Boss · ボス
+# 审校：原文“行くわよ～ん”有拉长音，初稿丢失了语气，补上波浪号以保留Boss的轻浮口吻。
+> 「行くわよ～ん! サンダーブレーク!」
+“Here I go~! Thunder Break!”
+
+@16239 Boss · ボス
+> 「グレートブースター!」
+“Great Booster!”
+
+@16240 Boss · ボス
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@16241 Boss · ボス
+> 「スカーレットビーム! だわさ」
+“Scarlet Beam! That's the stuff!”
+
+@16242 Boss · ボス
+# 审校：“ジャーンジャジャーン”是Boss的登场音效式喊叫，初稿直译成“Jaan jajaan”不自然，改为英文中对应的“Ta-daa!”。
+> 「ジャーンジャジャーン!」
+“Ta-daa!”
+---
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@16243 Boss · ボス
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@16244 Boss · ボス
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@16245 Boss · ボス
+> 「光子力ミサイルをくらってみろ
+>  ってのよ!」
+“Take a Photon Missile right in the face!”
+
+@16246 Boss · ボス
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@16247 Boss · ボス
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16248 Boss · ボス
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16249 Boss · ボス
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@16250 Boss · ボス
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@16251 Boss · ボス
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@16252 Boss · ボス
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@16253 Boss · ボス
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@16254 Boss · ボス
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@16255 Boss · ボス
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@16256 Boss · ボス
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@16257 Boss · ボス
+# 审校：原文“へへっ”是两声轻笑，初稿只译了一声，补全为“Heh heh”以更贴近原文。
+> 「へへっ、俺さまの出番だな」
+“Heh heh, it's my turn now!”
+---
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@16258 Boss · ボス
+> 「大車輪ロケットパーンチッ!!
+>  だわさ」
+“Big Wheel Rocket Punch!! That's the stuff!”
+
+@16259 Erika · エリカ
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@16260 Erika · エリカ
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@16261 Erika · エリカ
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@16262 Erika · エリカ
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@16263 Erika · エリカ
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@16264 Erika · エリカ
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@16265 Erika · エリカ
+> 「マリンビーム!」
+“Marine Beam!”
+
+@16266 Erika · エリカ
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@16267 Erika · エリカ
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@16268 Erika · エリカ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16269 Erika · エリカ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16270 Erika · エリカ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16271 Erika · エリカ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16272 Erika · エリカ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16273 Erika · エリカ
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16274 Erika · エリカ
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@16275 Erika · エリカ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16276 Erika · エリカ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@16277 Erika · エリカ
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@16278 Erika · エリカ
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@16279 Erika · エリカ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16280 Erika · エリカ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16281 Erika · エリカ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16282 Erika · エリカ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16283 Erika · エリカ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16284 Erika · エリカ
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16285 Erika · エリカ
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@16286 Erika · エリカ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16287 Erika · エリカ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@16288 Erika · エリカ
+> 「グレートブースター!」
+“Great Booster!”
+
+@16289 Erika · エリカ
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@16290 Erika · エリカ
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@16291 Erika · エリカ
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@16292 Erika · エリカ
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@16293 Erika · エリカ
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16294 Erika · エリカ
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16295 Erika · エリカ
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@16296 Erika · エリカ
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@16297 Erika · エリカ
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@16298 Erika · エリカ
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@16299 Erika · エリカ
+> 「ドリルミサイル!!」
+“Drill Missile!!”

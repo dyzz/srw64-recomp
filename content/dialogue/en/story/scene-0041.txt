@@ -1,0 +1,1797 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@26335 ???
+> 「マーズ……マーズよ。思いだせ、マーズ」
+“Mars... Mars. Remember, Mars.”
+
+@26336 Takeru · タケル
+> 「違う。俺は明神タケルだ」
+“No. I'm Takeru Myojin.”
+
+@26337 ???
+> 「お前はマーズだ。
+>  ワシが地球に送りこんだ、マーズだ」
+“You are Mars. The Mars I sent to Earth.”
+
+@26338 Emperor Zuul · ズール皇帝
+> 「銀河帝国皇帝、
+>  このズールの息子、マーズなのだ
+“You are Mars, son of Zuul, Emperor of the Galactic Empire.
+---
+>  よいか、地球は今や
+>  ムゲゾルバドス帝国よりも
+Listen well. Earth is now becoming a greater threat to the galaxy
+---
+>  銀河の脅威となりつつある。
+>  マーズ、地球を破壊するのだ」
+than even the Muge Zorbados Empire. Mars, destroy the Earth.”
+
+@26339 Takeru · タケル
+> 「俺はお前のような
+>  父をもった覚えはない。まして
+“I have no memory of having a father like you. And destroy
+---
+>  地球を破壊するなんて、そんな!」
+the Earth? That's...!”
+
+@26340 Emperor Zuul · ズール皇帝
+> 「お前はギシン星人だ。
+>  地球破壊のカギは
+“You are a Gishin. The key to destroying the Earth lies
+---
+>  お前の命令で運命をともにする
+>  ロボット、ガイヤーにある」
+in Gaia, the robot bound to your fate by your command.”
+
+@26341 Takeru · タケル
+> 「やめろぉっ! 消え失せろ! 俺は
+>  地球人だ。消えろ、悪魔め!」
+“Stop it! Get out of my head! I'm an Earthling. Begone, you devil!”
+
+@26342 Emperor Zuul · ズール皇帝
+# 检查提示：未用必用译名：銀河帝国→Galactic Empire
+> 「ワシに逆らうつもりか、マーズ。
+>  銀河帝国皇帝のこのワシに
+“You would defy me, Mars? Defy me, the Emperor of the Galactic
+---
+>  逆らって、生きのびた者はいないぞ。
+>  命令に逆らえば殺す!」
+Empire? None who have defied me have lived. Disobey, and you die!”
+
+@26343 Takeru · タケル
+> 「あぁぁ!? うわぁぁぁぁーっ!!」
+“Aaaah?! Uwaaaaaaah!!”
+
+@26344 Mika · ミカ
+> 「タケル、タケル?」
+“Takeru, Takeru?”
+
+@26345 Takeru · タケル
+> 「……ミカか……俺は……」
+“...Mika... I...”
+
+@26346 Mika · ミカ
+> 「大丈夫、タケル?
+>  すごくうなされてたわよ
+“Are you all right, Takeru? You were groaning so much in your sleep.
+---
+>  ドアの外まで聞こえてくるんだもん、
+>  びっくりしちゃった
+I could hear it all the way outside the door, it gave me a fright.
+---
+>  ハサン先生かレインさんに
+>  来てもらおうか?」
+Should I go get Teacher Hasan or Rain?”
+
+@26347 Takeru · タケル
+> 「いや……ちょっと嫌な夢を見ただけだ
+>  大丈夫だよ」
+“No... I just had a bad dream, that's all. I'm fine.”
+
+@26348 Manami · マナミ（按段落 3DD4）
+> 「シャリー!」
+“Shirley!”
+
+@26349 Shirley · シャリー
+> 「来たわね。どう? これが、新しい
+>  スイームルグよ」
+“You're here. Well? This is the new Sweemurg.”
+
+@26350 Manami · マナミ（按段落 3DD4）
+> 「あたしの……新しいスイームルグ……。
+>  すごいわ。{PartnerNick}のエルブルスが
+“My... my new Sweemurg... Amazing. So {PartnerNick}'s Elbulls
+---
+>  あたしのスイームルグに新しい力をくれ
+>  たのね……」
+gave my Sweemurg new power...”
+
+@26351 Shirley · シャリー
+> 「そう、言葉通りにね。これでスイーム
+>  ルグは単体で飛行が可能になり
+“That's right, just as promised. Now the Sweemurg can fly on its own,
+---
+>  すべての装備がパワーアップしたわよ」
+and all its equipment has been powered up.”
+
+@26352 Manami · マナミ（按段落 3DD4）
+> 「Splendidがいいわ……」
+“Splendid is what I'll call it...”
+
+@26353 Shirley · シャリー
+> 「え?」
+“Huh?”
+
+@26354 Manami · マナミ（按段落 3DD4）
+> 「この新しいスイームルグの名前よ。
+>  華麗とか、輝かしいとか
+“That's the name of this new Sweemurg. It means gorgeous, or radiant,
+---
+>  すてきなって意味よ」
+or wonderful.”
+
+@26355 Shirley · シャリー
+> 「スイームルグSっていうわけね」
+“So it's the Sweemurg S, then.”
+
+@26356 Manami · マナミ（按段落 3DD4）
+> 「ええ。これが、スイームルグの本当の
+>  姿……。ありがとう、シャリー
+“Yes. This is the Sweemurg's true form... Thank you, Shirley.
+---
+>  アストナージさんたちにも、お礼をいわな
+>  くてはね」
+I'll have to thank Astonaige and the others too.”
+
+@26357 ???
+> 「……セット終了。
+>  これで1つは片づいた
+“...Setup complete. That's one job done.
+---
+>  さて、もう1つの仕事を
+>  片づけに行くかな」
+Now then, I suppose I'll go take care of the other one.”
+
+@26358 Domon · ドモン
+> 「シュバルツ……
+>  お前はいったい何者だったんだ……」
+“Schwarz... Just who on earth were you...”
+
+@26359 Domon · ドモン
+> 「ムッ!? 何をする!」
+“Hm?! What are you doing!”
+
+@26360 ???
+> 「ククククク、さすがに
+>  そう簡単にはいかぬか」
+“Heh heh heh heh, so it won't be that easy after all.”
+
+@26361 Domon · ドモン
+> 「貴様ぁ、何者だッ!?」
+“You bastard, who are you?!”
+
+@26362 Kyral · キラル
+> 「殺し屋よ」
+“A hitman.”
+
+@26363 Domon · ドモン
+> 「なに?」
+“What?”
+
+@26364 Kyral · キラル
+> 「ドモン・カッシュ、お前に恨みはないが
+>  その命もらいうける!」
+“Domon Kasshu, I bear you no grudge, but I'll be taking your life!”
+
+@26365 Domon · ドモン
+> 「くっ……こいつ、できる!」
+“Ngh... This one's good!”
+
+@26366 Domon · ドモン
+> 「ちいッ!」
+“Tch!”
+
+@26367 Kyral · キラル
+> 「もうあとがないようだな。逃しはせんぞ」
+“You seem to have nowhere left to run. I won't let you escape.”
+
+@26368 Kyral · キラル
+> 「ドモン・カッシュ……死んでもらいます!」
+“Domon Kasshu... You're going to die!”
+
+@26369 Kyral · キラル
+> 「ぬっ!?」
+“Ngh?!”
+
+@26370 George · ジョルジュ
+> 「そこまでにしていただきましょう」
+“I suggest you stop right there.”
+
+@26371 Chibodee · チボデー
+> 「このジャブローに入りこむなんざ、
+>  いい度胸じゃねぇか」
+“Sneaking into Jaburo like this, you've got some nerve.”
+
+@26372 Sai Saici · サイ・サイシー
+> 「おっちゃん、オイラたち全員を
+>  相手にしてみるかい?」
+“Mister, you wanna try taking on all of us?”
+
+@26373 Kyral · キラル
+> 「ククククッ、ここまでか。今はこれで
+>  引きあげよう。だがお前たち
+“Heh heh heh, so this is as far as I go. I'll withdraw for now. But you lot,
+---
+>  足もとに気をつけるのだな。
+>  この基地ごと消えてなくならぬように」
+watch your step. Lest this whole base vanish into nothing.”
+
+@26374 Argo · アルゴ
+> 「なんだと?」
+“What did you say?”
+
+@26375 Kyral · キラル
+> 「さらばだ!」
+“Farewell!”
+
+@26376 Allenby · アレンビー
+> 「ドモン、大丈夫!?」
+“Domon, are you okay?!”
+
+@26377 Domon · ドモン
+> 「ああ、大丈夫だ。
+>  ふいをつかれたとはいえ
+“Yeah, I'm fine. Even if he caught me off guard,
+---
+>  この俺が後れをとるとは……
+>  あの男、強い」
+for me to be outmatched... That man is strong.”
+
+@26378 Allenby · アレンビー
+> 「もう、ケガしてるじゃない。
+>  ほら、アタシにつかまって」
+“Honestly, you're already hurt. Here, hold on to me.”
+
+@26379 Domon · ドモン
+> 「あ……ああ、すまない」
+“Ah... Yeah, thanks.”
+
+@26380 Kenji · ケンジ
+> 「確認しました、艦長。
+>  彼らのいったとおり
+“Confirmed, Captain. Just as they said,
+---
+>  基地の地下に埋められた
+>  爆弾が作動しています」
+the bombs buried under the base are going off.”
+
+@26381 Bright · ブライト
+> 「なんだと? とめられんのか!?」
+“What? Can't you stop them?!”
+
+@26382 Astonaige · アストナージ
+> 「あれはちょっと無理ですね」
+“That's a bit impossible, I'm afraid.”
+
+@26383 Bright · ブライト
+> 「なんということだ……」
+“This can't be happening...”
+
+@26384 Quattro · クワトロ
+> 「ぐずぐずしてはいられん。
+>  艦長、急いで脱出の準備だ
+“We can't stand around. Captain, hurry and prepare to evacuate.
+---
+>  ここの物資も可能な限り
+>  持ち出したい」
+I want as many of the supplies here taken out as possible.”
+
+@26385 Amuro · アムロ
+> 「そうだな。OZに対しての
+>  防衛拠点を失うのは痛いが
+“Right. Losing a defensive foothold against OZ hurts, but
+---
+>  このままではここにいてもしかたがない。
+>  ブライト」
+staying here like this gets us nowhere. Bright.”
+
+@26386 Bright · ブライト
+> 「よし、総員、脱出の
+>  準備にかかれ! それと同時に
+“All right, all hands, prepare to evacuate! At the same time,
+---
+>  迎撃の準備も怠るな! 手の
+>  空いているものは物資の搬入だ!」
+don't neglect combat readiness! Anyone free, start loading supplies!”
+
+@26387 Astonaige · アストナージ
+> 「無茶いわないでくださいよ」
+“Don't ask for the impossible.”
+
+@26388 Bright · ブライト
+> 「無茶でもなんでも、
+>  できなければこちらがやられる
+“Impossible or not, if we can't do it, we're done for.
+---
+>  文句をいうヒマがあったら、
+>  さっさとやるんだよ!」
+If you've got time to complain, get moving!”
+
+@26389 Milliardo · ミリアルド
+> 「OZがサンクキングダムを狙うのは
+>  当然か。もはや
+“It's only natural OZ would target the Sanc Kingdom. It may already
+---
+>  間に合わんかもしれんが……
+>  頼むウイングゼロ、急いでくれ!
+be too late, but... please, Wing Zero, hurry!
+---
+>  リリーナと聖女だけは、なんとしても
+>  救わねばならんのだ!!」
+Relena and the holy maiden must be saved, no matter what!!”
+
+@26390 ???
+> 「ふん……やけに騒がしいが……まぁいい。
+>  このくらいの方がやりやすくて助かる」
+“Hmph... Awfully noisy... but fine. This much chaos actually makes things easier.”
+
+@26391 ???
+> (マーズ、聞こえるかマーズ)
+(Mars, can you hear me, Mars?)
+
+@26392 Takeru · タケル
+> (……誰だ!?)
+(...Who's there?!)
+
+@26393 ???
+> (マーズ、無関係な人間を
+>  まきこみたくなければ、外へ出てこい)
+(Mars, if you don't want innocent people caught up in this, come outside.)
+
+@26394 Takeru · タケル
+> (なんだって!?)
+(What did you say?!)
+
+@26395 ???
+> (いいな)
+(Understood?)
+
+@26396 Takeru · タケル
+> 「どこだ、どこにいる?」
+“Where are you? Where are you hiding?”
+
+@26397 Baren · バレン
+> 「よく来たな、マーズ。よく聞け。
+>  私はお前の父上である
+“So you came, Mars. Listen well. I am your father,
+---
+>  ズール皇帝のお言葉を
+>  伝えに来た
+and I've come to relay Emperor Zuul's words.
+---
+>  陛下はお前の反逆行為に、
+>  たいそうお怒りだ」
+His Majesty is most displeased with your rebellion.”
+
+@26398 Takeru · タケル
+> 「黙れ!」
+“Shut up!”
+
+@26399 Baren · バレン
+> 「どうしても従う気はないということか?」
+“So you truly have no intention of obeying?”
+
+@26400 Takeru · タケル
+> 「当たり前だ! 誰が!」
+“Of course not! As if I would!”
+
+@26401 Baren · バレン
+> 「お前を殺しても目的は
+>  達成されるのだ。死ねマーズ!」
+“Even with you dead, our goal will be achieved. Die, Mars!”
+
+@26402 Takeru · タケル
+> 「うわぁぁっ! く、くそっ!」
+“Uwaaah! D-Damn it!”
+
+@26403 Baren · バレン
+> 「そんなもので!」
+“Is that all you've got?!”
+
+@26404 Takeru · タケル
+> 「あぁぁっ……う……」
+“Aaaah... ugh...”
+
+@26405 Takeru · タケル
+# 审校：原文是“うわぁっ!?”，初稿把“!?”译成“?!”且语气偏疑问；改为更自然的惊叫“Uwaaah!”
+> 「うわぁっ!?」
+“Uwaaah!”
+
+@26406 Baren · バレン
+# 审校：“ガイヤーか”在此是确认来袭者，初稿“Gaiya?!”疑问过重；改为“it's Gaiya!”更符合战斗中的反应
+> 「なに!? しまった、ガイヤーか!」
+“What?! Damn it, it's Gaia!”
+
+@26407 ???
+> (マーズ、恐れることはない。
+>  ガイヤーはお前を守るために来たのだ)
+(Mars, there is nothing to fear. Gaia has come to protect you.)
+
+@26408 Takeru · タケル
+> 「な、なんだこいつ……勝手に……」
+“W-What is this thing... moving on its own...”
+
+@26409 Takeru · タケル
+> 「なんだここは? 俺はいったい……
+>  ガイヤーだと? これがズールのいっていた
+“Where is this? What am I... Gaia? So this is what Zuul meant.
+---
+>  ……くそっ、もし俺の命令で自由
+>  になるというのなら、奴を倒せ!」
+...Damn it, if this thing will obey my commands, then destroy him!”
+
+@26410 Baren · バレン
+> 「くっ、ならばガイヤーごと
+>  葬り去ってやる!」
+“Ngh, then I'll destroy you along with Gaia!”
+
+@26411 Baren · バレン
+# 审校：原文“!?”是惊疑，初稿“?!”顺序不符合英文习惯；改为“!”
+> 「な……なんだこいつは?
+>  こんなものはデータにないぞ!?」
+“W-What is this thing? There's nothing like this in the data!”
+
+@26412 ???
+> (マーズ……ガイヤーが危機に
+>  おちいったとき、五神ロボはあらわれる
+(Mars... when Gaia is in danger, the five god robots appear.
+---
+>  これらの合体した姿を、
+>  ゴッドマーズと呼ぶがよい)
+Their combined form you may call Godmars.)
+
+@26413 Takeru · タケル
+> 「な……に? さっきも聞こえた……
+>  誰だ?」
+“W-What? I heard it again... Who are you?”
+
+@26414 ???
+> (マーズ……死ぬな……)
+(Mars... don't die...)
+
+@26415 Takeru · タケル
+# 审校：原文“!?”是追问，初稿“?!”顺序不符合英文习惯；改为“...!”
+> 「待て! お前はいったい……!?」
+“Wait! What in the world are you...!”
+
+@26416 Baren · バレン
+> 「しょせんはみかけ倒しにすぎない。
+>  一気にケリをつけてやる」
+“He's nothing but a bluff. I'll finish this in one blow.”
+
+@26417 Baren · バレン
+> 「きゃあああぁぁーっ!!」
+“Kyaaaaaaah!!”
+
+@26418 Takeru · タケル
+> 「はあっ……はあっ……はあっ……」
+“Hah... hah... hah...”
+
+@26419 Naoto · ナオト
+> 「おい、今のはなんだったんだ!?」
+“Hey, what the hell was that just now?!”
+
+@26420 Beecha · ビーチャ
+# 审校：原文“!?”是惊疑，初稿“?!”顺序不符合英文习惯；改为“?!”→“?!”并统一为“?!”
+> 「な、なんだよあれは!
+>  見たこともないロボットだぜ!?」
+“W-What was that?! That's a robot I've never seen before!”
+
+@26421 Bright · ブライト
+> 「なんだと? そこのロボット、
+>  聞こえるか! 正体をあかせ
+“What did you say? You there, the robot! Can you hear me? Identify yourself,
+---
+>  さもなくば攻撃する!」
+or we will open fire!”
+
+@26422 Takeru · タケル
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「待ってください、ブライト艦長!」
+“Please wait, Captain Bright!”
+
+@26423 Mika · ミカ
+> 「あの声、タケルだわ!」
+“That voice—it's Takeru!”
+
+@26424 Kenji · ケンジ
+> 「タケルだと? タケル、なんだって
+>  そんなロボットに乗っている!?」
+“Takeru? Takeru, why are you piloting a robot like that?!”
+
+@26425 Takeru · タケル
+> 「隊長、俺にもわからないんです。
+>  俺は……」
+“Commander, I don't understand it either. I just...”
+
+@26426 Bright · ブライト
+> 「どうした!」
+“What's wrong?!”
+
+@26427 Bunny · バニー
+> 「OZの降下部隊を捕捉。
+>  目標はこの基地と思われます」
+“OZ drop troops detected. Their target appears to be this base.”
+
+@26428 Bright · ブライト
+> 「もう来たのか!? やむを得ん、
+>  物資搬入は切りあげろ!
+“They're already here?! Can't be helped—cut the supply loading short!
+---
+>  敵部隊と交戦しつつ、
+>  ここを離れる!」
+We'll engage the enemy force while we pull out of here!”
+
+@26429 Kenji · ケンジ
+> 「艦長、タケルはどうするんですか!?」
+“Captain, what about Takeru?!”
+
+@26430 Bright · ブライト
+> 「あれが明神タケルなら、そのまま
+>  やらせろ! 事情はあとで聞く」
+“If that's Takeru Myojin, then let him do as he pleases! I'll hear the details later.”
+
+@26431 Kenji · ケンジ
+> 「了解!」
+“Understood!”
+
+@26432 Gates · ゲーツ
+> 「ロザミア、どうだ?」
+“Rosamia, how are you?”
+
+@26433 Rosamia · ロザミア
+> 「大丈夫よ、お兄ちゃん」
+“I'm fine, big brother.”
+
+@26434 Gates · ゲーツ
+> 「{HeroMech}はお前の
+>  倒すべき敵だ。わかるな、ロザミア」
+“The {HeroMech} is the enemy you must destroy. You understand, Rosamia?”
+
+@26435 Rosamia · ロザミア
+> 「うん、わかった。お兄ちゃん」
+“Yeah, I understand. Big brother.”
+
+@26436 Gates · ゲーツ
+> 「よし。全機、攻撃を開始せよ!」
+“Good. All units, begin the attack!”
+
+@26437 Astonaige · アストナージ
+> 「地下の爆弾が爆発するまで
+>  あと10分だ
+“There's ten minutes left until the underground bombs go off.
+---
+>  それまでになんとかしてくれよ!」
+Do something about it before then!”
+
+@26438 Bask · バスク
+> 「{HeroMech}め、
+>  貴様らの好きにはさせん!」
+“Curse you, {HeroMech}! I won't let you have your way!”
+
+@26439 Ehrlich · エルリッヒ（按段落 3DD1）
+> (私が討たれることで君の魂が
+>  救われるのならば、それもいいだろう
+(If my death can save your soul, then so be it.
+---
+>  奇妙な縁だったな、少年。
+>  ……さらばだアリンディーネ
+It was a strange bond we shared, boy. ...Farewell, Alindine.
+---
+>  この愚かな私を許してくれ)
+Forgive this foolish man.)
+
+@26440 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ゆくぞ、少年! 君の恨みと
+>  憎しみはすべてこの私が背負う
+“Here I come, boy! I shall bear all of your resentment and hatred myself.
+---
+>  みごと私を討ち果たしてみせろ!」
+Show me you can strike me down in fine style!”
+
+@26441 Ark · アーク（按段落 3DD1）
+> 「あいつ……死ぬ気なのか?
+>  まさかな……」
+“That guy... does he intend to die? It can't be...”
+
+@26442 Ehrlich · エルリッヒ（按段落 3DD1）
+> (アリンディーネを救うには
+>  私が戦ってみせるほかはない……)
+(To save Alindine, there is no other way but for me to fight...)
+
+@26443 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……あの少年はいないか……
+>  ゆくぞ{HeroMech}!
+“...Is that boy not here...? Here I come, {HeroMech}!
+---
+>  今度は引くわけにはいかんのだ!」
+This time I cannot afford to retreat!”
+
+@26444 Kurtz · カーツ（按段落 3DD3）
+> 「フン、いたな{HeroName}。勝負だ!」
+“Hmph, there you are, {HeroName}. Let's settle this!”
+
+@26445 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerName}……いいだろう、
+>  ここでケリをつけてやる!」
+“{PartnerName}... Fine, I'll finish this here and now!”
+
+@26446 Kurtz · カーツ（按段落 3DD3）
+> 「チッ、奴め! この俺に
+>  恐れをなしたか!? ふざけおって!」
+“Tch, that bastard! Did he take fright at me?! Don't mock me!”
+
+@26447 Kyral · キラル
+> 「キラル・メキレル、
+>  マンダラガンダム参上
+“Kyral Mekirel, Mandala Gundam, arriving!
+---
+>  貴様らにも見せてやろう。
+>  この世の闇をな」
+I shall show you as well—the darkness of this world!”
+
+@26448 Domon · ドモン
+> 「あいつ……さっきの奴か!」
+“That guy... it's the one from before!”
+
+@26449 Ark · アーク（按段落 3DD1）
+> 「どういうつもりか知らないが、
+>  俺はもうあんたを憎いとは思わないよ
+“I don't know what you're thinking, but I don't hate you anymore.
+---
+>  {PartnerFull}」
+{PartnerFull}”
+
+@26450 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「な……に? どういうことだ少年!?」
+“W-What? What do you mean, boy?!”
+
+@26451 Ark · アーク（按段落 3DD1）
+> 「この時代の中では、
+>  いつああなってもおかしくはなかった
+“In this era, it wouldn't have been strange for that to happen to anyone.
+---
+>  確かに不幸なことだ。許せないし
+>  認めたくはない。だけどね、そんなのは
+It's truly unfortunate. I can't forgive it, and I don't want to accept it. But you know, that sort of thing
+---
+>  世界中で起こった、そして
+>  今も起こり続けていることなんだ」
+has happened all over the world—and it's still happening right now.”
+
+@26452 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「少年、君は……」
+“Boy, you...”
+
+@26453 Ark · アーク（按段落 3DD1）
+> 「大勢の人が死んだんだ。
+>  苦しんだのは俺だけじゃない
+“So many people died. I wasn't the only one who suffered.
+---
+>  俺にそれを気づかせてくれた
+>  女の子がいったよ
+A girl made me realize that.
+---
+>  認められないものに対して
+>  抗い続けていれば
+She said that if you keep resisting what you can't accept,
+---
+>  戦い続けてさえいれば、
+>  誇りを持って生きられる
+if you just keep fighting, you can live with pride.
+---
+>  誇りを持って生きてさえいれば、
+>  いつ死んでもかまわないって」
+And if you live with pride, it doesn't matter when you die.”
+
+@26454 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「…………」
+“...”
+
+@26455 Ark · アーク（按段落 3DD1）
+> 「でもね、そんなのは間違ってるんだ。
+>  そんなふうにしか考えられないのは
+“But you know, that's wrong. Being able to think only that way is
+---
+>  不幸なことだ。そんなことは
+>  もう終わらせなくちゃいけないんだ
+unfortunate. We have to put an end to that.
+---
+>  俺は、そのために戦ってみせると
+>  決めた」
+I've decided I'll fight to make that happen.”
+
+@26456 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「時代の生んだ………不幸か……」
+“The misfortune... that the era gave birth to...”
+
+@26457 Ark · アーク（按段落 3DD1）
+> 「あんたの事情は知ったこっちゃない。
+>  だけどね、俺はあんたの自殺に
+“I don't care about your circumstances. But you know, I've no intention of
+---
+>  手を貸すつもりはないんだよ」
+helping you kill yourself.”
+
+@26458 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「君は……強くなったな。だが、私には
+>  ここで命賭して戦わねばならぬ
+“You've... grown strong. But I have a reason I must fight here, staking my life on it!
+---
+>  理由があるのだ!
+>  つきあってもらうぞ少年!」
+You're coming with me, boy!”
+
+@26459 Ark · アーク（按段落 3DD1）
+> 「なに!?」
+“What?!”
+
+@26460 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……ここで死ぬのか……私は。
+>  それもよかろう。すまん、アリンディーネ
+“...So I die here... do I? That's fine too. Forgive me, Alindine.
+---
+>  フッ……地獄はさぞかし、
+>  にぎやかだろうな」
+Heh... hell is sure to be a lively place.”
+
+@26461 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「くっ……死にそこなったというのか……
+>  アリンディーネ、私は……」
+“Ngh... so I failed to die, did I... Alindine, I...”
+
+@26462 Ark · アーク（按段落 3DD1）
+> 「あいつ……なんだっていうんだ、
+>  いったい……?」
+“That guy... just what is he, anyway...?”
+
+@26463 Kyral · キラル
+> 「……見事だドモン。
+>  貴様のような男と再び
+“...Splendid, Domon. To think I could cross
+---
+>  剣を交えることができようとは。
+>  クッ……楽しい戦いだったぞ」
+blades with a man like you once more. Heh... it was a joyful battle.”
+
+@26464 Domon · ドモン
+> 「キラル!? お前は……」
+“Kyral?! You're...”
+
+@26465 Kyral · キラル
+> 「この私の光を失った目にも、
+>  お前を支える仲間たちの姿が
+“Even to these eyes of mine that have lost their light, the forms of the comrades who support you
+---
+>  はっきりと見えた。まさかこの目に
+>  もう1度
+were clearly visible. To think these eyes could once more
+---
+>  あのようなものが見えるとはな。
+>  礼をいうぞ。……さらばだ!」
+see something like that. I thank you. ...Farewell!”
+
+@26466 Domon · ドモン
+> 「キラル・メキレル……お前とは
+>  もっと違う形で出会いたかった……」
+“Kyral Mekirel... I wish I could have met you in some other way...”
+
+@26467 Kyral · キラル
+> 「く……無念……」
+“Ngh... how regrettable...”
+
+@26468 Kamille · カミーユ
+> 「ロザミィ!? やっぱりロザミィじゃないか」
+“Rosamy?! It really is you, Rosamy!”
+
+@26469 Rosamia · ロザミア
+> 「お……お兄ちゃん……?」
+“B...Big brother...?”
+
+@26470 Kamille · カミーユ
+> 「そうだよ、お兄ちゃんだ!」
+“That's right, it's your big brother!”
+
+@26471 Rosamia · ロザミア
+> 「うぅ……頭が……痛い!」
+“Ugh... my head... it hurts!”
+
+@26472 Kamille · カミーユ
+> 「ロザミィ!」
+“Rosamy!”
+
+@26473 Rosamia · ロザミア
+> 「助けて、お兄ちゃん!
+>  どこなの? お兄ちゃん!?」
+“Help me, big brother! Where are you? Big brother?!”
+
+@26474 Gates · ゲーツ
+> 「ロザミアの脳波が乱れている!?
+>  あいつか、原因は!
+“Rosamia's brainwaves are in disarray?! Is it him, the cause?!
+---
+>  まどわされるな、ロザミア!」
+Don't let yourself be confused, Rosamia!”
+
+@26475 Kamille · カミーユ
+> 「ロザミィ! もう1度あのときの
+>  ロザミィに戻ってくれ!」
+“Rosamy! Come back to me—back to the Rosamy you were then!”
+
+@26476 Rosamia · ロザミア
+> 「お兄ちゃん!?」
+“Big brother?!”
+
+@26477 Kamille · カミーユ
+> 「そうだよ」
+“That's right.”
+
+@26478 Rosamia · ロザミア
+> 「違う! お前はお兄ちゃんじゃない!」
+“No! You're not my big brother!”
+
+@26479 Kamille · カミーユ
+> 「ロザミィ!!」
+“Rosamy!!”
+
+@26480 Kamille · カミーユ
+> 「ロザミィ!? やっぱりロザミィじゃないか」
+“Rosamy?! It really is you, Rosamy!”
+
+@26481 Rosamia · ロザミア
+> 「お……お兄ちゃん……?」
+“B...Big brother...?”
+
+@26482 Kamille · カミーユ
+> 「そうだよ、お兄ちゃんだ!」
+“That's right, it's your big brother!”
+
+@26483 Rosamia · ロザミア
+> 「うぅ……頭が……痛い!」
+“Ugh... my head... it hurts!”
+
+@26484 Kamille · カミーユ
+> 「ロザミィ!」
+“Rosamy!”
+
+@26485 Rosamia · ロザミア
+> 「助けて、お兄ちゃん!
+>  どこなの? お兄ちゃん!?」
+“Help me, big brother! Where are you? Big brother?!”
+
+@26486 Kamille · カミーユ
+> 「ロザミィ! もう1度、もう1度
+>  あのときのロザミィに戻ってくれ!」
+“Rosamy! Come back—come back to the Rosamy you were then, one more time!”
+
+@26487 Rosamia · ロザミア
+> 「お兄ちゃん!?」
+“Big brother?!”
+
+@26488 Kamille · カミーユ
+> 「そうだよ」
+“That's right.”
+
+@26489 Rosamia · ロザミア
+> 「あはは……見つけた、お兄ちゃん!」
+“Ahaha... I found you, big brother!”
+
+@26490 Kamille · カミーユ
+> 「よし、ロザミィ、
+>  そこを出てこっちにくるんだ」
+“All right, Rosamy, get out of there and come over here.”
+
+@26491 Rosamia · ロザミア
+> 「うん、わかったよ、お兄ちゃん」
+“Okay, I understand, big brother.”
+
+@26492 Kamille · カミーユ
+> 「ロザミィ……可哀想だけど……」
+“Rosamy... I'm sorry, but...”
+
+@26493 Rosamia · ロザミア
+> 「あ……見つけた! お兄ちゃん!」
+“Ah... I found you! Big brother!”
+
+@26494 Rosamia · ロザミア
+> 「ああぁぁーっ、お兄ちゃん!」
+“Aaaah, big brother!”
+
+@26495 Gates · ゲーツ
+> 「ロザミアァァァーッ!! うあぁぁぁ!!」
+“Rosamiaaaa!! Uwaaaah!!”
+
+@26496 Rosamia · ロザミア
+> 「どこ、どこにいるの……
+>  お兄ちゃん……!?」
+“Where... where are you... big brother...?!”
+
+@26497 Gates · ゲーツ
+> 「くっ……私がやられたらロザミアが……」
+“Ngh... if I'm taken down, then Rosamia will...”
+
+@26498 Rosamia · ロザミア
+> 「お、お兄ちゃん!?」
+“B-Big brother?!”
+
+@26499 Gates · ゲーツ
+> 「くっ……ロザミアさえ
+>  やられていなければ……!」
+“Ngh... if only Rosamia hadn't been defeated...!”
+
+@26500 Kurtz · カーツ（按段落 3DD3）
+> 「ばかな……ばかなばかなばかなぁ!!
+>  この俺が、奴よりも
+“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to him—
+---
+>  劣っているというのかぁぁぁーっ!
+>  認めん! 認められるものかぁっ!!」
+I won't accept it! How could I ever accept this!!”
+
+@26501 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}ッ!?」
+“{PartnerNick}?!”
+
+@26502 Kurtz · カーツ（按段落 3DD3）
+> 「ばかな……ばかなばかなばかなぁ!!
+>  この俺が、貴様よりも
+“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to you!
+---
+>  劣っているなどと! 認めん!
+>  俺は認めんぞ!
+I won't accept it! I refuse to accept it!
+---
+>  貴様などにぃぃぃーっ!!」
+Not to the likes of youuu!!”
+
+@26503 Brad · ブラッド（按段落 3DD3）
+> 「{PartnerNick}ッ!! くっ……お前は
+>  ……本当は何を手にしたかったんだ
+“{PartnerNick}!! Ngh... you... what was it you really wanted to gain...
+---
+>  ……{PartnerNick}……
+>  ばか野郎がぁぁぁぁぁーっ!」
+...{PartnerNick}... you damn foooool!!”
+
+@26504 Bright · ブライト
+> 「くっ……間に合わなかったというのか……」
+“Ngh... so we didn't make it in time...”
+
+@26505 Bunny · バニー
+> 「みんな、あと5分よ!」
+“Everyone, five minutes left!”
+
+@26506 Bunny · バニー
+> 「あと4分!」
+“Four minutes left!”
+
+@26507 Bunny · バニー
+> 「あと3分!」
+“Three minutes left!”
+
+@26508 Bunny · バニー
+> 「あと2分! 急いで!!」
+“Two minutes left! Hurry!!”
+
+@26509 Bunny · バニー
+> 「あと1分よ! 早く!!」
+“One minute left! Move it!!”
+
+@26510 Bright · ブライト
+> 「……なんとか間に合ったか。全艦、
+>  全速でこの空域を離脱する!」
+“...Looks like we made it somehow. All ships, withdraw from this airspace at full speed!”
+
+@26511 Takeru · タケル
+> (俺は……俺は……誰なんだ……)
+(Who... who am I...?)
+
+@26512 Shinobu · 忍
+> 「ちっ、せっかく落ち着いてたってのによ
+>  まぁたこうなんのかよ」
+“Tch, just when things had finally calmed down, here we go again.”
+
+@26513 Ryoma · リョウ
+> 「そういうなよ忍。で艦長、
+>  これからどうするんです?」
+“Don't say that, Shinobu. So, Captain, what do we do now?”
+
+@26514 Bright · ブライト
+> 「うむ……とりあえず
+>  ジャブローから運び出した物資を
+“Hmm... for now, I intend to hand over the supplies we hauled out of Jaburo
+---
+>  イゴール将軍や万丈くんたちに
+>  受け渡そうと思っている」
+to General Igor and Banjo and the others.”
+
+@26515 Hayato · ハヤト
+> 「アジア地域か。
+>  今はそこいらじゅうOZだらけだ
+“The Asian region, huh. Right now it's crawling with OZ everywhere.
+---
+>  敵と会わずにってわけには
+>  いかんだろうな」
+I doubt we can get through without running into the enemy.”
+
+@26516 Bright · ブライト
+> 「わかっている。だが、だからこそ、なおの
+>  こと、この物資を渡す必要もある」
+“I know. But that's exactly why we need to deliver these supplies all the more.”
+
+@26517 Alan · アラン
+> 「…………」
+“...”
+
+@26518 Quattro · クワトロ
+> 「やはり気になるか、将軍のことが?」
+“So you're still bothered about it—about the General?”
+
+@26519 Alan · アラン
+> 「……知っていて黙っていたとは、
+>  大尉も人が悪い」
+“...Keeping quiet when you knew—that's cruel of you, Captain.”
+
+@26520 Shinobu · 忍
+> 「あん? なんだよ、どういうことだ?」
+“Huh? What's this about?”
+
+@26521 Quattro · クワトロ
+> 「彼のフルネームはアラン・イゴールという」
+“His full name is Alan Igor.”
+
+@26522 Masato · 雅人
+> 「イゴールって、まさか……」
+“Igor—you don't mean...”
+
+@26523 Alan · アラン
+> 「別に隠していたわけではないぞ。
+>  必要がなかっただけだ」
+“I wasn't hiding it, you know. There simply was no need to bring it up.”
+
+@26524 Shinobu · 忍
+> 「……親子でレジスタンスやりながら、
+>  なんで別の組織だったんだよ」
+“...Father and son both in the resistance—so why were you in different organizations?”
+
+@26525 Alan · アラン
+> 「方法論の違いだ。
+>  あの人は古いタイプの軍人だ
+“A difference in methods. He's an old-school soldier.
+---
+>  あの人のやり方では、
+>  たいしたことはできなかったはずだ
+With his way of doing things, he could never have accomplished anything of note.
+---
+>  OZのジャミトフが
+>  ブレックス准将を暗殺しても
+Even when OZ's Jamitov assassinated Brigadier General Blex,
+---
+>  あの人にはそこまではしなかった。
+>  それが証拠だろう」
+he never went that far. That's proof enough.”
+
+@26526 Naoto · ナオト
+> 「タケル、お前……何者だよ!?
+>  なんであんなもんに乗ってやがったんだ?」
+“Takeru, you... what are you?! Why were you piloting a thing like that?”
+
+@26527 Takeru · タケル
+> 「俺は……俺は明神タケルだ。
+>  あれが何なのか俺にもわからないんだよ」
+“I'm... I'm Takeru Myojin. Even I don't know what that thing is.”
+
+@26528 Akira · アキラ
+> 「信用できないね。案外
+>  宇宙人のスパイかなんかじゃないのか」
+“I can't trust him. Maybe he's some kind of alien spy.”
+
+@26529 Mika · ミカ
+> 「アキラ! あなたなんてこというのよ!!
+>  タケルがかわいそうじゃない」
+“Akira! How could you say such a thing!! Don't you feel sorry for Takeru?”
+
+@26530 Takeru · タケル
+> 「どうしたんだみんな。
+>  俺たちは仲間だろう!?」
+“What's wrong with you all? We're comrades, aren't we?!”
+
+@26531 Naoto · ナオト
+> 「どうだかな。俺の仲間はあんな変な
+>  ロボットにゃ乗ってねぇんだけどな」
+“Who knows. My comrades don't go around piloting weird robots like that.”
+
+@26532 Mika · ミカ
+> 「ふたりともどうしちゃったのよ!」
+“What's gotten into you two?!”
+
+@26533 Akira · アキラ
+> 「どうかしちゃったのはこいつの方だろ、
+>  ミカ。いつあのロボットを呼んで
+“What's gotten into him, you mean, Mika. We never know when he'll call that robot
+---
+>  この艦が壊されるか
+>  わかったもんじゃないぜ」
+and get this ship destroyed.”
+
+@26534 Kenji · ケンジ
+> 「やめんか!」
+“Enough!”
+
+@26535 Takeru · タケル
+> 「隊長、俺は……」
+“Captain, I...”
+
+@26536 Kenji · ケンジ
+> 「お前自身にもわからんのだな、
+>  タケル?
+“Even you don't know what you are, Takeru?
+---
+>  異星人である可能性もあると?」
+There's a chance you're an alien too?”
+
+@26537 Takeru · タケル
+> 「……たとえ俺がどこの人間であっても
+>  俺の心はとうに地球人です」
+“...No matter where I come from, my heart has long been that of an Earthling.”
+
+@26538 Kenji · ケンジ
+> 「……わかった。みんないいか。
+>  タケルは俺たちの仲間だ
+“...Understood. Listen, everyone. Takeru is one of us.
+---
+>  それだけはいっておく。いいな」
+I'm putting that on the record. Got it?”
+
+@26539 Takeru · タケル
+> (……俺は……どんなことがあっても
+>  この地球を犠牲にはさせない……)
+(...I... no matter what happens, I won't let this Earth be sacrificed...)
+
+@26540 Jamitov · ジャミトフ
+> 「どういうことか?」
+“What is it?”
+
+@26541 Specials · スペシャルズ
+> 「はっ。正体不明の宇宙艦隊
+>  が接近中であるとの報告です」
+“Sir. We have a report that an unidentified space fleet is approaching.”
+
+@26542 Jamitov · ジャミトフ
+> 「地球のものではないのだな?」
+“So it's not from Earth?”
+
+@26543 Specials · スペシャルズ
+> 「それは間違いないようです」
+“That much seems certain.”
+
+@26544 Dermail · デルマイユ
+> 「まさかムゲゾルバドス軍が
+>  またやってきたのではないだろうな
+“Surely the Muge Zorbados Army hasn't come again.
+---
+>  大丈夫か、ジャミトフ」
+Are we all right, Jamitov?”
+
+@26545 Jamitov · ジャミトフ
+> 「ゾルバドスであれば、
+>  たいした脅威ではない
+“If it's Zorbados, they're no great threat.
+---
+>  すでに我々は奴らを研究ずみだ。
+>  が、対応はせねばならんな
+We've already studied them thoroughly. Still, we must respond.
+---
+>  コロニーに駐留させている部隊を
+>  集結させておく」
+I'll have the units stationed at the colonies assemble.”
+
+@26546 Wahl · ワール
+# 审校：ズール皇帝への敬称を「Your Majesty」から「Your Excellency」に修正（词表/设定上皇帝への呼称として統一）。
+> 「皇帝、各戦線の
+>  定時報告であります」
+“Your Excellency, the scheduled reports from each front.”
+
+@26547 Emperor Zuul · ズール皇帝
+> 「うむ」
+“Mm.”
+
+@26548 Wahl · ワール
+> 「宇宙時間1100現在
+>  イエロー戦線は85%制圧
+“As of 1100 space time, the Yellow Front is 85% suppressed.
+---
+>  完全勝利も間近と思われます
+>  バイオレット戦線は
+Total victory appears imminent. The Violet Front is
+---
+>  55%制圧、もっか一気に
+>  進攻中。オレンジ戦線は
+55% suppressed and advancing at full speed. The Orange Front—
+---
+>  たったいま、ゾルバドス軍が壊滅し
+>  完全勝利を得ました」
+just now, the Zorbados Army was annihilated and complete victory achieved.”
+
+@26549 Emperor Zuul · ズール皇帝
+> 「おお、ご苦労であった」
+“Oh, well done.”
+
+@26550 Wahl · ワール
+> 「はっ、では失礼します」
+“Yes, sir. If you'll excuse me.”
+
+@26551 Emperor Zuul · ズール皇帝
+> 「待てワール。
+>  シルバー戦線の報告がないが?」
+“Wait, Wahl. There's no report from the Silver Front?”
+
+@26552 Wahl · ワール
+> 「はっ。先遣艦隊司令
+>  ガンダル殿の報告によれば
+“Sir. According to the report from Lord Gandal, commander of the advance fleet,
+---
+>  すでに地球勢力の
+>  調査は終了し
+the survey of the Earth forces is already complete,
+---
+>  いよいよ攻略に
+>  取りかかるとのことです」
+and they are about to begin the assault.”
+
+@26553 Emperor Zuul · ズール皇帝
+> 「そうか……見事やってみせろ」
+“I see... See that you do it splendidly.”
+
+@26554 Marg · マーグ
+> (ズールめ……マーズが
+>  コントロールできないとなって
+(Zuul... so now that he can't control Mars,
+---
+>  地球制圧の軍を出したのか……)
+he's sent out an army to subjugate Earth...)
+
+@26555 Wahl · ワール
+> 「そこにいるのは誰だ!?」
+“Who's there?!”
+
+@26556 Marg · マーグ
+> 「鳥……鳥、どこ? 鳥?
+>  鳥、こっちへ」
+“Bird... bird, where? Bird? Bird, come here.”
+
+@26557 Wahl · ワール
+> 「お前か。スパイがいるらしいとは
+>  聞いたが、こいつでは頭が弱すぎて
+“So it's you. I'd heard there was a spy, but this one's too feeble-minded to
+---
+>  話にならん。おい、貴様、
+>  さっさと失せろ!」
+be worth talking to. Hey, you—get lost, now!”
+
+@26558 Marg · マーグ
+> (マーズ、お前に会いたい。オレは
+>  いつどういう運命をたどるかわからない
+(Mars, I want to see you. I don't know what fate awaits me.
+---
+>  弟よ。オレはお前に会ってどうしても
+>  伝えなくてはならないことがある)
+Little brother. There's something I absolutely must tell you in person.)
+
+@26559 Marg · マーグ
+> 「連絡艇……
+>  ワープカタパルトは動くか……」
+“The shuttle... will the warp catapult work...”
+
+@26560 Marg · マーグ
+> 「くっ……これは!?」
+“Ngh... what is this?!”
+
+@26561 Gorman · ゴーマン
+> 「マーグ、気の毒だが
+>  エネルギーは抜いてある
+“Marg, I'm sorry, but I've drained the energy.
+---
+>  まさか貴様が、頭の弱いフリを
+>  していたとはな
+To think you were only pretending to be feeble-minded.
+---
+>  まんまとだまされたよ」
+You had me completely fooled.”
+
+@26562 Marg · マーグ
+> 「親衛隊のゴーマン大尉か……
+>  くそっ!」
+“Captain Gorman of the Imperial Guard... damn you!”
+
+@26563 Gorman · ゴーマン
+> 「あきらめろ! ズール皇帝への
+>  反逆の罪は重いぞ」
+“Give it up! The crime of rebelling against Emperor Zuul is grave.”
+
+@26564 Emperor Zuul · ズール皇帝
+> 「マーグ、いままでよくも
+>  このワシをたばかってくれた
+“Marg, you've done well deceiving me all this time.
+---
+>  マーズとは血を分けた兄弟、
+>  さぞかし会いたいだろうな。いいだろう
+You and Mars are brothers by blood—you must be dying to see him. Very well.
+---
+>  会わせてやろう。ただし……
+>  マーズを殺すために」
+I'll let you meet. However... only to kill Mars.”
+
+@26565 Marg · マーグ
+> 「なんだと!?」
+“What?!”
+
+@26566 Emperor Zuul · ズール皇帝
+> 「このワシに逆らった者は、死刑!
+>  お前の生きのびる道はひとつしかない
+“Those who defy me shall die! There is only one way for you to survive.
+---
+>  マーズを殺せ!」
+Kill Mars!”
+
+@26567 Marg · マーグ
+> (く……マーズ……マーズ!)
+(Ngh... Mars... Mars!)
+
+@26568 Axis Soldier · アクシズ兵
+> 「ハマーン様、本当に本艦1隻で
+>  先行してよろしいのですか」
+“Lady Haman, are you truly sure about advancing alone with just this one ship?”
+
+@26569 Haman · ハマーン
+> 「かまわん、艦長。聞けばまた
+>  異星人の艦隊らしきものが
+“It's fine, Captain. I hear that what appears to be an alien fleet
+---
+>  あらわれたという。アクシズの戦力は
+>  温存しておく必要がある」
+has shown up again. We must conserve Axis's strength.”
+
+@26570 Axis Soldier · アクシズ兵
+> 「はっ、申し訳ありません。
+>  さしでがましいことを口にしました」
+“Yes, ma'am. My apologies. I spoke out of turn.”
+
+@26571 Haman · ハマーン
+> 「かまわんよ。
+>  艦長はよくやってくれている」
+“It's fine. You've been doing well, Captain.”
+
+@26572 Haman · ハマーン
+> (シャア……なぜ戻らぬのだ……)
+(Char... why won't you come back...)
+
+@26573 Brad · ブラッド（按段落 3DD3）
+> 「師匠……俺は、俺はどうしたらいい
+>  のですか……教えてください師匠……」
+“Master... what should I, what should I do... please tell me, Master...”
+
+@26574 Koji · 甲児
+> 「……あんまり気にするなよ」
+“...Don't take it so hard.”
+
+@26575 Brad · ブラッド（按段落 3DD3）
+> 「甲児……」
+“Koji...”
+
+@26576 Sayaka · さやか
+> 「彼だって、こうなる可能性は
+>  考えてたでしょう
+“He must have known this could happen, too.
+---
+>  あなたが悪いんじゃないんだから」
+It's not your fault.”
+
+@26577 Brad · ブラッド（按段落 3DD3）
+> 「さやか……」
+“Sayaka...”
+
+@26578 Roux · ルー
+> 「そうそう。まったくドモンといい
+>  あんたといい、単純な奴に限って
+“That's right. Honestly, whether it's Domon or you, it's always the simple ones
+---
+>  ショック受けると
+>  ズーンと沈んじゃうんだから
+who get all gloomy and depressed when they take a shock.
+---
+>  もっとシャキッとしなさいよ」
+Snap out of it already.”
+
+@26579 Brad · ブラッド（按段落 3DD3）
+> 「ルー・ルカもか……」
+“Roux Louka, too...”
+
+@26580 Koji · 甲児
+> 「ははっ、ガラじゃないけどさ。
+>  {PartnerName}と仲間として
+“Ha ha, guess it's not my style, but as far as fighting alongside {PartnerName} as comrades goes,
+---
+>  戦ったことがあるのは、お前の他には
+>  俺とさやかさんとルーくらいだからな
+besides you, there's only me, Sayaka, and Roux.
+---
+>  万丈はどっか行っちまったままだし」
+And Banjo's gone off somewhere and hasn't come back.”
+
+@26581 Brad · ブラッド（按段落 3DD3）
+> 「すまん……お前たち……」
+“Sorry... all of you...”
+
+@26582 Koji · 甲児
+> 「いいって。それより、大丈夫かよ?」
+“It's fine. More importantly, are you okay?”
+
+@26583 Brad · ブラッド（按段落 3DD3）
+> 「ああ。戦闘になれば、
+>  そんなこと考えているヒマはないからな」
+“Yeah. Once we're in battle, there's no time to be thinking about that.”
+
+@26584 Roux · ルー
+> 「ならいいんだけど。あ、そうそう、
+>  アストナージさんが
+“Then that's fine. Oh, right—Astonaige said he wants to talk to you
+---
+>  回収したヴァイローズの件で
+>  話があるっていってたわよ」
+about the Virose we recovered.”
+
+@26585 Brad · ブラッド（按段落 3DD3）
+> 「アストナージ、何の用だ?」
+“Astonaige, what do you want?”
+
+@26586 Astonaige · アストナージ
+> 「おう、来たな。
+>  ちょっとこれを見てくれないか」
+“Oh, you're here. Take a look at this for a moment.”
+
+@26587 Brad · ブラッド（按段落 3DD3）
+> 「こ、これは……アストナージ、こいつは
+>  いったい……」
+“Th-this is... Astonaige, what on earth is this...”
+
+@26588 Astonaige · アストナージ
+> 「ヴァイローズを調べてたら、このデータが
+>  出てきたんだ。どうやら、お前の
+“I found this data while examining the Virose. It seems that your
+---
+>  アースゲインとヴァイローズは、もとは一つ
+>  だったらしくてな」
+Earthgain and the Virose were originally one and the same.”
+
+@26589 Brad · ブラッド（按段落 3DD3）
+> 「俺のアースゲインと、{PartnerNick}の
+>  ヴァイローズが……」
+“My Earthgain and {PartnerNick}'s Virose...”
+
+@26590 Astonaige · アストナージ
+> 「スーパー・アースゲインといったところかな
+>  かなりパワーアップするようだ
+“I'd call it the Super Earthgain—it looks like it'll get a considerable power boost.
+---
+>  操縦関連のシステムはいじらなくて
+>  すむから、俺たちでもなんとかできるが、
+We won't have to mess with the control systems, so even we can manage it, but
+---
+>  どうする?」
+what do you say?”
+
+@26591 Brad · ブラッド（按段落 3DD3）
+> 「…………」
+“...”
+
+@26592 Astonaige · アストナージ
+> 「おい、{HeroNick}」
+“Hey, {HeroNick}.”
+
+@26593 Brad · ブラッド（按段落 3DD3）
+> 「……やってくれ。頼む」
+“...Do it. Please.”
+
+@26594 Astonaige · アストナージ
+> 「よし、それじゃさっそくとりかかるとするか
+>  シャリー、ジャネット、来てくれないか」
+“All right, then let's get started right away. Shirley, Janet, could you come here?”
+
+@26595 Brad · ブラッド（按段落 3DD3）
+> ({PartnerNick}……お前はそれを知って
+>  いたんだな……。だからなのか? だから
+({PartnerNick}... so you knew about it... Is that why? Is that why
+---
+>  あんなにも俺を……。師匠……どうして
+>  です。どうして……)
+you were so... Master... why? Why...)
+
+@26596 Ark · アーク（按段落 3DD1）
+> 「何かわかりましたか?」
+“Did you find out something?”
+
+@26597 Alan · アラン
+> 「ああ……ギャリソンに
+>  調べてもらったんだがね
+“Yes... I had Garrison look into it,
+---
+>  なかなか複雑な事情があるようだ」
+and it seems there are quite complicated circumstances.”
+
+@26598 Ark · アーク（按段落 3DD1）
+> 「複雑な事情?」
+“Complicated circumstances?”
+
+@26599 Alan · アラン
+> 「うむ。{PartnerFull}と
+>  いったか
+“Indeed. {PartnerFull}, was it?
+---
+>  彼はここしばらくOZの作戦に
+>  批判的だったらしい」
+He's apparently been critical of OZ's operations for some time now.”
+
+@26600 Ark · アーク（按段落 3DD1）
+> 「あいつが?」
+“He was?”
+
+@26601 Alan · アラン
+> 「だがそれはトレーズ派との内乱を
+>  見れば、それほど不思議でも
+“But given the civil strife with the Treize faction, that's hardly
+---
+>  あるまい。口にしないだけで
+>  そう思っている者もいるだろうからな」
+surprising. There are surely others who think the same without saying it.”
+
+@26602 Ark · アーク（按段落 3DD1）
+> 「それは、そうですね」
+“I suppose so.”
+
+@26603 Alan · アラン
+> 「それで、これはOZ内部でも
+>  一部しか知らないことだが
+“Now then, this is something only a few within OZ know, but
+---
+>  彼はバスクとよく衝突していた
+>  らしくてね。バスク・オムは彼の
+he apparently clashed with Bask often. Bask Om supposedly took his
+---
+>  恋人を人質にとって、作戦への
+>  参加を強要していたそうだ」
+lover hostage and forced him to take part in the operation.”
+
+@26604 Ark · アーク（按段落 3DD1）
+> 「人質!? 上官が部下に
+>  人質をとって脅迫するんですか?
+“A hostage?! A superior officer takes a subordinate's hostage and threatens him?
+---
+>  そんなバカな」
+That can't be.”
+
+@26605 Alan · アラン
+> 「バスクならやるな。普通なら
+>  命令拒否などには別の対応を
+“With Bask, it's possible. Normally, an army as an organization would handle
+---
+>  するのが軍隊という組織だ。
+>  OZは軍隊というよりも
+a refusal of orders differently. OZ is less an army and more
+---
+>  私兵に近いのだろう。少なくとも
+>  バスクやジャミトフにとってはな」
+a private force—at least as far as Bask and Jamitov are concerned.”
+
+@26606 Ark · アーク（按段落 3DD1）
+> 「そうか……それであいつは戦死して
+>  みせようとしたんだ…恋人の、ためにか」
+“I see... so that's why he tried to die in battle... for his lover's sake.”
+
+@26607 Alan · アラン
+> 「……軟禁場所もわかってはいるが
+>  ……どうするつもりだ?」
+“...I do know where she's being held, but... what do you intend to do?”
+
+@26608
+> *  別に、どうもしやしませんよ
+> *  わかりません……わかりませんけど……
+* “It's not like I'm going to do anything.”
+* “I don't know... I don't know, but...”
+
+@26609 Ark · アーク（按段落 3DD1）
+> 「別に、どうもしやしませんよ。
+>  ちょっと気になっただけです
+“It's not like I'm going to do anything. I was just a little curious.
+---
+>  あいつの事情はあいつが
+>  解決することでしかないんだ」
+His problems are something only he can resolve.”
+
+@26610 Alan · アラン
+> 「……そうか、ならばいい。我々ではどう
+>  にもならんことだ。気にすることはない」
+“...I see. Then that's fine. It's beyond our power to do anything about. Don't worry about it.”
+
+@26611 Ark · アーク（按段落 3DD1）
+> 「わかってます」
+“I understand.”
+
+@26612 Ark · アーク（按段落 3DD1）
+> 「わかりません……わかりませんけど、
+>  そういうの黙って見てるのって
+“I don't know... I don't know, but staying quiet and watching something like that
+---
+>  嫌ですよね」
+just doesn't sit right, does it?”
+
+@26613 Alan · アラン
+> 「それはそうだが……我々が何かした
+>  ところで逆に内通者と思われて
+“That may be so, but... if we do anything, we might be taken for traitors instead,
+---
+>  女は殺されるかもしれんぞ」
+and the woman could be killed.”
+
+@26614 Ark · アーク（按段落 3DD1）
+> 「だけど……知ってしまった以上は
+>  放ってはおけないですよ
+“But... now that I know, I can't just leave it alone.
+---
+>  別にあいつやその女の人のためなんか
+>  じゃない。そういうことを平然と
+It's not like it's for his sake or that woman's. Letting someone who can do that kind of thing
+---
+>  できる奴がしていることを、黙って
+>  やらせておくって、罪悪感ありますよ」
+calmly get away with it—just staying silent about it—leaves me feeling guilty.”
+
+@26615 Alan · アラン
+> 「なるほど。君は、まるで救出作戦
+>  でも考えているようだな」
+“I see. You look as though you're planning a rescue operation.”
+
+@26616 Ark · アーク（按段落 3DD1）
+> 「かもしれません。いけませんか、
+>  そういうことって」
+“Maybe I am. Is that so wrong?”
+
+@26617 Alan · アラン
+> 「いや、悪くはない。やってみる価値は
+>  ある。考えてみるのも面白いな
+“No, it's not bad. It's worth a try. It'd be interesting to think it over.
+---
+>  だが……戦力は割けんぞ」
+But... we can't spare the forces.”
+
+@26618 Ark · アーク（按段落 3DD1）
+> 「はい」
+“Understood.”
+
+@26619 Rain · レイン
+> 「あら? ゴッドガンダム……
+>  ノーベルガンダムも……」
+“Oh? The Burning Gundam... and the Noble Gundam too...”
+
+@26620 Allenby · アレンビー
+> 「……で、ここの支線入力スイッチを
+>  斜めにレイアウトするでしょ」
+“...and then you lay out the branch input switches diagonally, right?”
+
+@26621 Domon · ドモン
+> 「なるほど」
+“I see.”
+
+@26622 Allenby · アレンビー
+> 「それで、このチップをこっちに」
+“Then you put this chip over here.”
+
+@26623 Domon · ドモン
+> 「はぁ」
+“Uh-huh.”
+
+@26624 Rain · レイン
+> 「ドモン!? あなたたち、
+>  ゴッドの中で何やってるのよ!」
+“Domon?! What are you two doing inside the Burning Gundam?!”
+
+@26625 Domon · ドモン
+> 「レインか。いやぁ、ハイパーモードの
+>  エネルギー消費率を、最小限に
+“Rain. Well, I heard there's a trick to keep the Hyper Mode's energy consumption
+---
+>  押さえる裏技があるっていうから、
+>  教えてもらってるんだ」
+to a minimum, so she's teaching it to me.”
+
+@26626 Rain · レイン
+> 「えぇぇ!?」
+“Whaaat?!”
+
+@26627 Allenby · アレンビー
+> 「気にしないでぇ。ちょっと手間だった
+>  けど、これくらいどってことないんだから」
+“Don't worry about it. It took a little work, but this much is nothing.”
+
+@26628 Rain · レイン
+> 「何いってるのよ! だいたいあなた、
+>  ゴッドのシステムをよく知らないくせに
+“What are you saying?! You don't even know the Burning Gundam's systems that well,
+---
+>  勝手にコックピットに
+>  入られちゃ困るのよ!」
+and I can't have you climbing into the cockpit on your own!”
+
+@26629 Domon · ドモン
+> 「まぁいいじゃないか、別に」
+“Come on, it's fine, isn't it?”
+
+@26630 Allenby · アレンビー
+> 「そおよ、固いこといいっこなし!
+>  そういえばねぇドモン
+“That's right, no being so stiff! Oh, that reminds me, Domon—
+---
+>  ネオホンコンの屋台でさ、
+>  ひと口食べるたびに
+at a food stall in Neo Hong Kong, there was this old man who, with every bite,
+---
+>  「うまいぞぉぉーっ!」って叫ぶ
+>  おじいさんがいてさぁ」
+shouted ‘This is deliciousss!’”
+
+@26631 Rain · レイン
+> 「うまいぞぉぉ、じゃない!
+>  出て行きなさい!」
+“Don't you ‘this is delicious’ me! Get out!”
+
+@26632 Domon · ドモン
+> 「うわっ!!」
+“Whoa!!”
+
+@26633 Daisaku · 大作
+> 「……レインさんって、
+>  怒ると恐いんですね」
+“...Miss Rain sure is scary when she's angry.”
+
+@26634 Jun · ジュン
+> 「ま、女心ってやつさ」
+“Well, that's a woman's heart for you.”
+
+@26635 Allenby · アレンビー
+> 「あたし、何か悪いことしちゃったかな?」
+“Did I do something wrong?”
+
+@26636 Domon · ドモン
+> 「さぁ?」
+“Beats me.”
+
+@26637 Rain · レイン
+> (もう、仲がいいにもほどがあるわよ)
+(Honestly, there's a limit to how close you two can be.)
+
+@26638 Milliardo · ミリアルド
+> 「ヒイロめ……トレーズの作ったマシンを
+>  私に押しつけるとは。もっとも
+“That Heero... foisting Treize's machine onto me. Though, admittedly,
+---
+>  確かにトレーズなら私にエピオンを
+>  託しただろうがな。トレーズ、君とは
+Treize would surely have entrusted Epyon to me. Treize, I meant to choose
+---
+>  違う道を選んだつもりだったが、
+>  今はこのエピオンをつかわせてもらう
+a different path from yours, but for now I'll make use of this Epyon.
+---
+>  頼むエピオンよ。
+>  私に……私に未来を見せてくれ!」
+I beg you, Epyon. Show me... show me the future!”

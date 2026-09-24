@@ -1,0 +1,149 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13936 Grados Soldier · グラドス兵
+# 审校：でやあああっ是战斗吼叫，不是完整句子，改为拟声吼叫更自然。
+> 「でやあああっ!!」
+“Deyaaaah!!”
+
+@13937 Grados Soldier · グラドス兵
+# 审校：こ、このおっ是咬牙切齿的咒骂，去掉 little 更贴近原句的短促语气。
+> 「こ、このおっ!」
+“Why, you—!”
+
+@13938 Grados Soldier · グラドス兵
+> 「やってやる、やってやるぞ!」
+“I'll do it, I'm gonna do it!”
+
+@13939 Grados Soldier · グラドス兵
+# 审校：当たれっ是祈使式喊叫，Hit him 增加了原文没有的宾语，改为简短有力的 Hit!
+> 「当たれっ!」
+“Hit!”
+
+@13940 Grados Soldier · グラドス兵
+> 「うおおおおっ!」
+“Uwooooh!”
+
+@13941 Grados Soldier · グラドス兵
+> 「行くぜっ!」
+“Here I come!”
+
+@13942 Grados Soldier · グラドス兵
+> 「落ちろってんだよ!!」
+“I said go down!!”
+
+@13943 Grados Soldier · グラドス兵
+> 「こいつっ!」
+“You bastard!”
+
+@13944 Grados Soldier · グラドス兵
+> 「やってやる!!」
+“I'll do it!!”
+
+@13945 Grados Soldier · グラドス兵
+> 「う、うわあああっ!!」
+“W-waaaaah!!”
+
+@13946 Grados Soldier · グラドス兵
+> 「ぐあっ!! や、やられたっ!!」
+“Gwah!! I-I'm hit!!”
+
+@13947 Grados Soldier · グラドス兵
+> 「うわあっ! や、やられちまうっ!!」
+“Uwaah! I-I'm going down!!”
+
+@13948 Grados Soldier · グラドス兵
+> 「ぐあっ! こ、これじゃもたない!?」
+“Gwah! I-I can't hold out!?”
+
+@13949 Grados Soldier · グラドス兵
+> 「つ、強い、強すぎる!?」
+“S-strong, way too strong!?”
+
+@13950 Grados Soldier · グラドス兵
+> 「な、なんだこいつのパワーは!?」
+“W-what is with this guy's power!?”
+
+@13951 Grados Soldier · グラドス兵
+> 「がああっ! パ、パワーが違いすぎる……」
+“Gaaah! H-his power's on another level...”
+
+@13952 Grados Soldier · グラドス兵
+> 「うおっ!? や、やってくれる!」
+“Uwoh!? Y-you're good!”
+
+@13953 Grados Soldier · グラドス兵
+> 「な、なんの、まだまだっ!!」
+“N-no way, I'm not done yet!!”
+
+@13954 Grados Soldier · グラドス兵
+> 「くっ! さすがにやるじゃないか!」
+“Kuh! You're pretty good after all!”
+
+@13955 Grados Soldier · グラドス兵
+> 「ちっ! この程度ならまだ戦える!」
+“Tch! I can still fight at this rate!”
+
+@13956 Grados Soldier · グラドス兵
+> 「このっ! やったな!」
+“Why you! You got me!”
+
+@13957 Grados Soldier · グラドス兵
+> 「クソっ!! こんなもんでやられるか!!」
+“Damn!! You think this'll finish me!!”
+
+@13958 Grados Soldier · グラドス兵
+> 「効かないな、そんな攻撃!」
+“That kind of attack won't work on me!”
+
+@13959 Grados Soldier · グラドス兵
+> 「そんなものか!」
+“Is that all you've got!”
+
+@13960 Grados Soldier · グラドス兵
+> 「たかがかすり傷だっ!!」
+“It's just a scratch!!”
+
+@13961 Grados Soldier · グラドス兵
+> 「当たっただけだ!」
+“It only grazed me!”
+
+@13962 Grados Soldier · グラドス兵
+> 「こんなダメージなど!」
+“This is nothing!”
+
+@13963 Grados Soldier · グラドス兵
+> 「あ、危なかった……」
+“Th-that was close...”
+
+@13964 Grados Soldier · グラドス兵
+> 「かわせた!」
+“I dodged it!”
+
+@13965 Grados Soldier · グラドス兵
+> 「当たってたまるか!」
+“Like I'd let that hit me!”
+
+@13966 Grados Soldier · グラドス兵
+> 「外れた!」
+“It missed!”
+
+@13967 Grados Soldier · グラドス兵
+> 「な、なんとか……」
+“I-I managed somehow...”
+
+@13968 Grados Soldier · グラドス兵
+> 「そこか!」
+“There you are!”
+
+@13969 Grados Soldier · グラドス兵
+> 「このっ! 効かないんだよっ!!」
+“Why you! It doesn't even hurt!!”
+
+@13970 Grados Soldier · グラドス兵
+> 「え!? しまった、弾切れか!?」
+“Eh!? Damn, out of ammo!?”
+
+@13971 Grados Soldier · グラドス兵
+> 「な、なんだ!?
+>  あんな距離から攻撃できるのか!?」
+“W-what!? He can attack from that range!?”

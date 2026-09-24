@@ -1,0 +1,166 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10592 Elle · エル
+> 「こんのぉーっ!」
+“You little—!”
+
+@10593 Elle · エル
+> 「いくわっ!」
+“Here I go!”
+
+@10594 Elle · エル
+> 「あたしだって!」
+“I can do it too!”
+
+@10595 Elle · エル
+> 「もらったぁっ!」
+“Got you!”
+
+@10596 Elle · エル
+> 「好きにはさせない!」
+“I won't let you do as you please!”
+
+@10597 Elle · エル
+> 「あんたたちの好きにはさせないって、
+>  言ってるだろ!」
+“I said I won't let you do as you please!”
+
+@10598 Elle · エル
+> 「やってみる!」
+“I'll give it a try!”
+
+@10599 Elle · エル
+> 「ルーにはまけるもんかっ!」
+“I won't lose to Roux!”
+
+@10600 Elle · エル
+> 「まかせてよ!」
+“Leave it to me!”
+
+@10601 Elle · エル
+> 「落ちなよ!」
+“Go down!”
+
+@10602 Elle · エル
+> 「やだ! やられちゃった!?」
+“No! Did I get hit?!”
+
+@10603 Elle · エル
+> 「きゃあぁぁぁーっ!」
+“Kyaaaaa!”
+
+@10604 Elle · エル
+> 「あうっ! このままじゃやられる!?」
+“Agh! At this rate I'll be done for!”
+
+@10605 Elle · エル
+> 「あぁぁーっ!」
+“Aaaaa!”
+
+@10606 Elle · エル
+> 「あぁぁーっ、
+>  ジュドー、ビーチャ、助けてぇ!」
+“Aaaaa, Judau, Beecha, help me!”
+
+@10607 Elle · エル
+> 「うわっ! 何よこれ、
+>  パワーが違いすぎる!?」
+“Whoa! What is this, the power's way too different!”
+
+@10608 Elle · エル
+> 「あぅっ! こ、こいつ、強い!?」
+“Agh! Th-this one's strong!”
+
+@10609 Elle · エル
+# 审校：原文没有引号，初稿多加了引号，已改为普通台词。
+> 「ちょ、ちょっと!?」
+“W-wait a second?!”
+
+@10610 Elle · エル
+> 「くっ、性能が違うとこれか!」
+“Ugh, so this is what a performance gap does!”
+
+@10611 Elle · エル
+> 「きゃーっ!」
+“Kyaa!”
+
+@10612 Elle · エル
+> 「や、やってくれんじゃないの!」
+“Y-you're pretty good!”
+
+@10613 Elle · エル
+> 「いったぁ……なにすんのさ!」
+“Ow... what're you doing!”
+
+@10614 Elle · エル
+> 「この! まだやられちゃいないよ!」
+“Why you! I'm not down yet!”
+
+@10615 Elle · エル
+> 「や、やだ!」
+“N-no!”
+
+@10616 Elle · エル
+> 「いってーっ!」
+“Owww!”
+
+@10617 Elle · エル
+> 「うぅっ、やったなぁ!」
+“Ugh, you did it now!”
+
+@10618 Elle · エル
+> 「なーにさ、こんな攻撃」
+“What's this, an attack like that?”
+
+@10619 Elle · エル
+> 「ぜんぜん効かないよ!」
+“It doesn't work at all!”
+
+@10620 Elle · エル
+> 「んーっ、なんという腕の冴え!」
+“Mm, what skill!”
+
+@10621 Elle · エル
+> 「やったぁ!」
+“I did it!”
+
+@10622 Elle · エル
+> 「ほらほら、こっちこっちぃ!」
+“Hey hey, over here, over here!”
+
+@10623 Elle · エル
+> 「どこ狙ってるのさ!」
+“What're you aiming at!”
+
+@10624 Elle · エル
+> 「ちょっと! 当たったらどうする
+>  つもり!?」
+“Hey! What if you hit me?!”
+
+@10625 Elle · エル
+> 「へへーん、ビームなんて効かないよ!」
+“Heh, beams don't work on me!”
+
+@10626 Elle · エル
+> 「なにさビームなんて!」
+“What's a beam supposed to do!”
+
+@10627 Elle · エル
+> 「フフン、たいしたことないじゃん?」
+“Hmph, that's nothing!”
+
+@10628 Elle · エル
+> 「弾切れ!? なんでさ!?」
+“Out of ammo?! Why?!”
+
+@10629 Elle · エル
+> 「ちょ、ちょっと待ってよ!」
+“H-hey, wait up!”
+
+@10630 Elle · エル
+> 「あんなところから攻撃してくんの!?」
+“You're attacking from way over there?!”
+
+@10631 Elle · エル
+> 「なによ、届かないじゃない!」
+“What, it doesn't even reach!”

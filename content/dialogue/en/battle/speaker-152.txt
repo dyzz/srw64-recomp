@@ -1,0 +1,108 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11830 Kappei · 勝平
+> 「このやろ、このやろ!」
+“Why you, why you!”
+
+@11831 Kappei · 勝平
+> 「こんにゃろ!!」
+“You little punk!!”
+
+@11832 Kappei · 勝平
+> 「これでもくらえっ!!」
+“Take this!!”
+
+@11833 Kappei · 勝平
+> 「いっけぇぇぇぇぇっ!!!」
+“Gooooooo!!!”
+
+@11834 Kappei · 勝平
+> 「ちっくしょおおおおおっ!!」
+“Daaaamn iiiit!!”
+
+@11835 Kappei · 勝平
+> 「ちくしょうっ! やられちまった!」
+“Damn! I got taken down!”
+
+@11836 Kappei · 勝平
+> 「うわああああっ!!」
+“Whoaaaaa!!”
+
+@11837 Kappei · 勝平
+> 「ヤバイっ! このままじゃ
+>  やられちまうっ!!」
+“This is bad! At this rate I'm gonna get wrecked!!”
+
+@11838 Kappei · 勝平
+> 「ちくしょう!! このままじゃ
+>  やられちまうぜっ!!」
+“Damn!! At this rate I'm gonna get wrecked!!”
+
+@11839 Kappei · 勝平
+> 「くっ! ちくしょう、ヤバイぜ!」
+“Ngh! Damn it, this is bad!”
+
+@11840 Kappei · 勝平
+> 「あいたたっ! やったな、
+>  こんちくしょうっ!!」
+“Owww! You got me, you little bastard!!”
+
+@11841 Kappei · 勝平
+> 「くっ! やるじゃん!」
+“Ngh! Not bad!”
+
+@11842 Kappei · 勝平
+> 「なんの、これしき!」
+“No way, that's nothing!”
+
+@11843 Kappei · 勝平
+> 「うわっ! やってくれんじゃねえの!」
+“Whoa! You've got some nerve!”
+
+@11844 Kappei · 勝平
+> 「あいてっ!」
+“Ouch!”
+
+@11845 Kappei · 勝平
+> 「へん、その程度かよ!」
+“Heh, is that all you've got?!”
+
+@11846 Kappei · 勝平
+> 「なんでぇ、そんなもんかよ!」
+“What, is that all?!”
+
+@11847 Kappei · 勝平
+> 「やりゃあがったな、こんちくしょう!!」
+“You did it now, you little bastard!!”
+
+@11848 Kappei · 勝平
+> 「やったな、この野郎!!」
+“You got me, you jerk!!”
+
+@11849 Kappei · 勝平
+> 「おっとっと」
+“Whoa, whoa.”
+
+@11850 Kappei · 勝平
+> 「なんとっ!」
+“What?!”
+
+@11851 Kappei · 勝平
+> 「へん、くやしかったらあててみな!」
+“Heh, try and hit me if you can!”
+
+@11852 Kappei · 勝平
+> 「ムダだっていってんじゃん!」
+“I told you it's useless!”
+
+@11853 Kappei · 勝平
+> 「この程度のビームなんざへでもねえぜ!」
+“A Beam like that is nothing to me!”
+
+@11854 Kappei · 勝平
+> 「ちっ! 反撃できねえ!!」
+“Tch! I can't fight back!!”
+
+@11855 Kappei · 勝平
+> 「だめだ! とどかねえっ!!」
+“No good! It won't reach!!”

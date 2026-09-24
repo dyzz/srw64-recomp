@@ -1,0 +1,155 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6402 Lady · レディ
+> 「ここまでだ、死ねぇ!」
+“This is the end. Die!”
+
+@6403 Lady · レディ
+> 「いい気になるな!!」
+“Don't get cocky!!”
+
+@6404 Lady · レディ
+> 「これ以上先に行かせはしない!!」
+“I won't let you go any further!!”
+
+@6405 Lady · レディ
+> 「トレーズ様のために!!」
+“For Lord Treize!!”
+
+@6406 Lady · レディ
+> 「愚か者が!」
+“Fool!”
+
+@6407 Lady · レディ
+> 「もらった!!」
+“Got you!!”
+
+@6408 Lady · レディ
+> 「死ねっ!」
+“Die!”
+
+@6409 Lady · レディ
+> 「スキだらけだよ!」
+“You're wide open!”
+
+@6410 Lady · レディ
+> 「理想をかなえるため、トレーズ様の
+>  ために戦う!」
+“I fight to make our ideals real, for Lord Treize!”
+
+@6411 Lady · レディ
+> 「死にに、きたか……なら望みどおりに
+>  してやるよ!」
+“Come to die, have you... Then I'll grant your wish!”
+
+@6412 Lady · レディ
+> 「これで終わりだ!!」
+“This is the end!!”
+
+@6413 Lady · レディ
+> 「なにっ!?」
+“What?!”
+
+@6414 Lady · レディ
+# 审校：原文是“しまった!?”，表示懊悔，不是疑问；初稿“Damn?!”带问号语气不对，改为“Damn!”。
+> 「しまった!?」
+“Damn!”
+
+@6415 Lady · レディ
+> 「バカな……これ程のパワーがあるのか!?」
+“Impossible... Such power?!”
+
+@6416 Lady · レディ
+# 审校：原文“やられる!?”在此是危机感叹，不是疑问；去掉问号，改为“finished!”。
+> 「くっ……このままではやられる!?」
+“Ngh... At this rate I'll be finished!”
+
+@6417 Lady · レディ
+# 审校：词表要求トレーズ为 Treize，且原文用“トレーズ閣下”，应保留敬称“His Excellency Treize”，初稿误为“Lord Treize”。
+> 「うおっ! や、やらせん……
+>  トレーズ閣下のためにも!」
+“Ugh! I-I won't let you... not for His Excellency Treize!”
+
+@6418 Lady · レディ
+> 「な、なんだとっ!? お、おのれぇっ!」
+“W-What?! Y-You bastard!”
+
+@6419 Lady · レディ
+> 「むっ! 私をここまでてこずらせるとは!」
+“Hmph! To think you'd give me this much trouble!”
+
+@6420 Lady · レディ
+> 「ちぃっ! 意外とやるっ!」
+“Tch! You're better than I expected!”
+
+@6421 Lady · レディ
+> 「くっ! なめるなっ!」
+“Ngh! Don't underestimate me!”
+
+@6422 Lady · レディ
+> 「ちいっ! いい気になるなっ!!」
+“Tch! Don't get cocky!!”
+
+@6423 Lady · レディ
+> 「効かんな」
+“That's useless.”
+
+@6424 Lady · レディ
+> 「甘いな……その程度か!」
+“Too naive... Is that all?!”
+
+@6425 Lady · レディ
+> 「なっていないな」
+“Pathetic.”
+
+@6426 Lady · レディ
+> 「ふん、こけおどしか!」
+“Hmph, just a bluff!”
+
+@6427 Lady · レディ
+> 「しょせんその程度か」
+“So that's all you've got.”
+
+@6428 Lady · レディ
+# 审校：原文“そんなものとはな”指对方的攻击不过如此，初稿“to think you'd try that on me”添加了原文没有的意思，改为更贴切的表达。
+> 「くだらん……そんなものとはな」
+“Ridiculous... to think that's all it was.”
+
+@6429 Lady · レディ
+> 「狙いが甘いな」
+“Your aim is poor.”
+
+@6430 Lady · レディ
+> 「当たりはせん!」
+“You won't hit me!”
+
+@6431 Lady · レディ
+> 「遅いっ!」
+“Too slow!”
+
+@6432 Lady · レディ
+> 「ふ、貴様の攻撃など、とうに
+>  見切った!」
+“Hmph. I saw through your attack long ago!”
+
+@6433 Lady · レディ
+> 「そこかっ!」
+“There!”
+
+@6434 Lady · レディ
+> 「ムダなんだよ……」
+“It's pointless...”
+
+@6435 Lady · レディ
+> 「愚かな……ムダだということに
+>  なぜ気づかん」
+“Foolish... Why can't you see it's useless?”
+
+@6436 Lady · レディ
+> 「弾切れか!? しくじった……」
+“Out of ammo?! I've blundered...”
+
+@6437 Lady · レディ
+> 「ち、遠距離からの攻撃か……
+>  卑怯な」
+“Tch, attacking from long range... How cowardly.”

@@ -1,0 +1,37 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12440 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12441 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12442 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12443 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12444 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12445 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12446 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12447 Chum · チャム
+> 「ばかめ!」
+“Fool!”
+
+@12448 Chum · チャム
+> 「ばかめ!」
+“Fool!”

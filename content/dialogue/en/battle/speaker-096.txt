@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6617 Milliardo · ミリアルド
+> 「次で決まりだぁっ!」
+“The next one settles it!”
+
+@6618 Milliardo · ミリアルド
+> 「…………」
+“...”
+
+@6619 Milliardo · ミリアルド
+> 「これまでだ!」
+“This is the end!”
+
+@6620 Milliardo · ミリアルド
+> 「必要ないのだ……貴様たちは!」
+“You are unnecessary... all of you!”
+
+@6621 Milliardo · ミリアルド
+> 「教えてやろう。要は戦い方次第
+>  なのだと」
+“Let me teach you. It all comes down to how you fight.”
+
+@6622 Milliardo · ミリアルド
+> 「まずは頭を叩いておきたいのだよ!」
+“First, I'd like to strike at the head!”
+
+@6623 Milliardo · ミリアルド
+> 「フォーメーションなど取らせはしない!」
+“I won't let you form up!”
+
+@6624 Milliardo · ミリアルド
+> 「お遊びにつきあっているヒマはない!」
+“I have no time to play games with you!”
+
+@6625 Milliardo · ミリアルド
+> 「悪いが、死んでもらおう!」
+“Sorry, but you're going to die!”
+
+@6626 Milliardo · ミリアルド
+> 「とどめだっ!!」
+“This is the end!!”
+
+@6627 Milliardo · ミリアルド
+> 「直撃させる!」
+“Direct hit!”
+
+@6628 Milliardo · ミリアルド
+> 「決着をつける!」
+“Let's finish this!”
+
+@6629 Milliardo · ミリアルド
+> 「ぐぅぅっ! 私はどこまでも
+>  生き抜いてみせる!」
+“Guh! I'll survive no matter what!”
+
+@6630 Milliardo · ミリアルド
+> 「な……なんだとッ!?」
+“Wha... What did you say?!”
+
+@6631 Milliardo · ミリアルド
+> 「ぬぅおあぁぁぁっ!」
+“Nwaaaah!”
+
+@6632 Milliardo · ミリアルド
+> 「おおぉぉぉぉっ!」
+“Ooooh!”
+
+@6633 Milliardo · ミリアルド
+> 「うっ……こうも直撃をくらうとは!」
+“Ugh... To take a direct hit like that!”
+
+@6634 Milliardo · ミリアルド
+> 「くっ、問題は敵よりも
+>  私自身だな……」
+“Ngh, the problem is me more than the enemy...”
+
+@6635 Milliardo · ミリアルド
+> 「やられはせんよ!」
+“I won't be beaten!”
+
+@6636 Milliardo · ミリアルド
+> 「さすがにやるっ!!」
+“You're good, I'll give you that!!”
+
+@6637 Milliardo · ミリアルド
+> 「ぐぅっっ……!」
+“Guh...!”
+
+@6638 Milliardo · ミリアルド
+> 「その程度で戦おうというのか、
+>  貴様は!?」
+“Is that all it takes for you to fight?!”
+
+@6639 Milliardo · ミリアルド
+> 「ええぃっ邪魔だ!」
+“Tch, out of my way!”
+
+@6640 Milliardo · ミリアルド
+> 「死なない程度には十分だな」
+“Enough to keep you from dying, at least.”
+
+@6641 Milliardo · ミリアルド
+> 「貴様には無理だな」
+“You're no match for me.”
+
+@6642 Milliardo · ミリアルド
+> 「この程度か」
+“Is this all you've got?”
+
+@6643 Milliardo · ミリアルド
+> 「かわす!」
+“Dodge!”
+
+@6644 Milliardo · ミリアルド
+> 「貴様などを相手にしているヒマは
+>  ない!」
+“I have no time to waste on the likes of you!”
+
+@6645 Milliardo · ミリアルド
+> 「貴様などを相手にしているヒマは
+>  ない!」
+“I have no time to waste on the likes of you!”
+
+@6646 Milliardo · ミリアルド
+> 「弾切れか!? だがこの程度で!」
+“Out of ammo?! But this won't stop me!”
+
+@6647 Milliardo · ミリアルド
+> 「むっ……ここからでは届かんか!?」
+“Hmph... can't reach from here?!”

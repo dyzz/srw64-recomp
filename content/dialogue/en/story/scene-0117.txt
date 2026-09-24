@@ -1,0 +1,155 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50880 Cecily · セシリー
+> 「……それじゃあなたたちも
+>  レジスタンス部隊に合流するの?」
+“...So you're joining up with the resistance too?”
+
+@50881 Kappei · 勝平
+> 「そうなんだよね。俺は乗り気じゃ
+>  ないんだけど、じっちゃんのいいつけでね」
+“That's right. I'm not exactly keen on it, but Gramps gave the order.”
+
+@50882 Keiko · 恵子
+> 「地球を救うために、
+>  レジスタンス部隊と協力して
+“He told us to work with the resistance and fight the enemy
+---
+>  敵と戦えっていわれたんです」
+to save the Earth.”
+
+@50883 Cecily · セシリー
+> 「私たちもレジスタンス部隊と
+>  合流しろという命令を受けて
+“We got orders to join up with the resistance too,
+---
+>  動いていたのよ」
+so we were on our way.”
+
+@50884 Kappei · 勝平
+> 「でもホント、助かったよ。
+>  こっちのレーダーは故障しちまって
+“But man, you really saved us. Our radar's busted,
+---
+>  部隊を探すの、
+>  あきらめようかって時だったから」
+and we were about to give up on finding the unit.”
+
+@50885 Seabook · シーブック
+> 「俺たちはあらかじめ部隊に連絡
+>  して合流地点を決めていたからね」
+“We'd contacted the unit beforehand and set a rendezvous point.”
+
+@50886 Kappei · 勝平
+> 「旅は道連れ、世は情けってね。
+>  ま、仲良く行きましょうや」
+“Travelers need companions, and the world runs on kindness. Well, let's all get along.”
+
+@50887 Uchuta · 宇宙太
+> 「もうそろそろ合流地点だぜ……あれ
+>  かな? レジスタンス部隊とやらは……」
+“We should be near the rendezvous point... Is that them? The resistance, I mean...”
+
+@50888 Seabook · シーブック
+> 「違うぞ! あれは敵だ!
+>  おそらくレジスタンス部隊を
+“No! Those are the enemy! They're probably
+---
+>  追って来たんだろう」
+chasing after the resistance.”
+
+@50889 Kappei · 勝平
+> 「ヤバイぜ! 俺たちのこと、
+>  気づいたみたいだ!」
+“This is bad! Looks like they've spotted us!”
+
+@50890 Seabook · シーブック
+> 「しかたがないな。迎撃しよう!
+>  セシリー、準備はいいかい」
+“Nothing for it. We'll intercept them! Cecily, are you ready?”
+
+@50891 Cecily · セシリー
+# 审校：“take out” 会误读为“摧毁”，改为“sortie in”以符合出击语境。
+> 「ビギナ・ギナで出るわ」
+“I'll sortie in the Vigna-Ghina.”
+
+@50892 Seabook · シーブック
+> 「君たちはどうする!?」
+“What about you guys?!”
+
+@50893 Kappei · 勝平
+> 「俺たちもいくぜ!
+>  宇宙太、恵子、出撃だ!」
+“We're coming too! Uchuta, Keiko, launch!”
+
+@50894 Seabook · シーブック
+> 「敵部隊を全滅させる!」
+“Wipe out the enemy force!”
+
+@50895 Kappei · 勝平
+> 「ザンボットコンビネーション!」
+“Zambot Combination!”
+
+@50896 Chiyonishiki · 千代錦
+> 「ワン!」
+“Woof!”
+
+@50897 Uchuta · 宇宙太
+> 「ツー!」
+“Two!”
+
+@50898 Keiko · 恵子
+> 「スリー!」
+“Three!”
+
+@50899 Seabook · シーブック
+> 「な、なんでだよ!」
+“W-why?!”
+
+@50900 Cecily · セシリー
+> 「あぁぁ!? シ、シーブック!」
+“Aaaah?! S-Seabook!”
+
+@50901 Kappei · 勝平
+> 「そんなバカな……
+>  クソッ、負けるのかよぉ」
+“That can't be... Damn it, are we gonna lose?”
+
+@50902 Keiko · 恵子
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@50903 Uchuta · 宇宙太
+> 「うわあぁぁっ!」
+“Uwaaaaaah!”
+
+@50904 Seabook · シーブック
+> 「やったぞ! 全滅だ!」
+“We did it! They're all wiped out!”
+
+@50905 Cecily · セシリー
+> 「……なんとか終わったようね」
+“...Looks like it's finally over.”
+
+@50906 Seabook · シーブック
+> 「ああ。……でも戦いは、まだまだ続くさ」
+“Yeah. ...But the fighting's still far from over.”
+
+@50907 Keiko · 恵子
+> 「見て、勝平。
+>  あれ、レジスタンス部隊じゃないかしら」
+“Look, Kappei. Isn't that the resistance?”
+
+@50908 Kappei · 勝平
+> 「シーブックの兄ちゃん、
+>  あれってレジスタンス部隊かい?」
+“Seabook, is that the resistance over there?”
+
+@50909 Seabook · シーブック
+> 「……どうやらそうみたいだ。
+>  やっと合流できるな」
+“...Seems like it. We can finally join up.”
+
+@50910 Kappei · 勝平
+> 「へへん、いっちょ暴れてやりますか」
+“Heh, guess it's time to raise some hell.”

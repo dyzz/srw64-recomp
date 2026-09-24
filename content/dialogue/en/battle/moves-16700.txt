@@ -1,0 +1,428 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16700 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「バスターミサイルだっ!!」
+“Here comes the Buster Missile!!”
+
+@16701 Kappei · 勝平
+> 「バードガン!!」
+“Bird Gun!!”
+
+@16702 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「バードガンだっ!!」
+“Here comes the Bird Gun!!”
+
+@16703 Kappei · 勝平
+> 「大型ミサイル!!」
+“Large Missile!!”
+
+@16704 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「大型ミサイルだっ!!」
+“Here comes the Large Missile!!”
+
+@16705 Kappei · 勝平
+> 「トレンブルホーン!!」
+“Tremble Horn!!”
+
+@16706 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「トレンブルホーンだっ!!」
+“Here comes the Tremble Horn!!”
+
+@16707 Kappei · 勝平
+> 「ムーンアタァァァック!!」
+“Moon Attaaack!!”
+
+@16708 Kappei · 勝平
+> 「ザンボット・ムーンアタァァァック!!」
+“Zambot Moon Attaaack!!”
+
+@16709 Uchuta · 宇宙太
+> 「勝平、いつでもいけるぜ!」
+“Kappei, I'm ready anytime!”
+
+@16710 Kappei · 勝平
+> 「わかった! ザンボット・ムーン
+>  アタァァァック!!」
+“Got it! Zambot Moon Attaaack!!”
+
+@16711 Uchuta · 宇宙太
+> 「やるぞ勝平!!」
+“Let's do this, Kappei!!”
+
+@16712 Kappei · 勝平
+> 「いっけぇぇぇ!! ザンボット・ムーン
+>  アタァァァーック!!」
+“Gooo!! Zambot Moon Attaaaack!!”
+
+@16713 Keiko · 恵子
+> 「勝平、敵の弱点がわかったわ!」
+“Kappei, I've found the enemy's weak point!”
+
+@16714 Kappei · 勝平
+> 「よぉし!! いっくぞぉぉーっ!!」
+“Alright!! Here we gooo!!”
+
+@16715 Banjo · 万丈
+# 审校：原文“君たち”是万丈对胜平等人说话，初稿“you all”较平淡，改为“you kids”更符合万丈对少年们的口吻。
+> 「用意はいいかい、君たち?」
+“Are you kids ready?”
+
+@16716 Kappei · 勝平
+> 「おう!」
+“Yeah!”
+
+@16717 Kappei · 勝平
+> 「いつでも大丈夫だぜ!」
+“I'm always ready!”
+
+@16718 Banjo · 万丈
+> 「よし! ではいくぞ!」
+“Good! Then here we go!”
+---
+> 「日輪の力を借りて、今、必殺の!」
+“With the power of the sun, now, the finishing blow!”
+
+@16719 Kappei · 勝平
+> 「ザンボットォォォッ!!」
+“Zambotooo!!”
+
+@16720 Banjo · 万丈
+> 「サン!」
+“Sun!”
+
+@16721 Kappei · 勝平
+> 「ムーン!」
+“Moon!”
+
+@16722 Banjo · 万丈
+> 「アタァァァァァーック!!」
+“Attaaaack!!”
+
+@16723 Banjo · 万丈
+> 「コンビネーション!!」
+“Combination!!”
+
+@16724 Kappei · 勝平
+> 「クラァァァッシュ!!」
+“Craaaash!!”
+
+@16725 Uchuta · 宇宙太
+> 「くっ……勝平ッ! ひとまず
+>  ひきあげよう!」
+“Ngh... Kappei! Let's pull back for now!”
+
+@16726 Kappei · 勝平
+> 「くっ……ヤバイぜ」
+“Ngh... This is bad.”
+
+@16727 Keiko · 恵子
+> 「勝平、もうもたないわ!!」
+“Kappei, we can't hold out anymore!!”
+
+@16728 Keiko · 恵子
+> 「勝平、このままだとザンボットの
+>  回路がボロボロになるわ!」
+“Kappei, at this rate Zambot's circuits will be shredded!”
+
+@16729 Keiko · 恵子
+> 「あぅぅっ! お願い、勝平だけが
+>  頼りなのよ!」
+“Ahh! Please, you're the only one we can count on, Kappei!”
+
+@16730 Kappei · 勝平
+> 「わ、わかってらぁ!!」
+“I-I know!!”
+
+@16731 Kappei · 勝平
+> 「くっ、ちっきしょう!!」
+“Ngh, damn it!!”
+
+@16732 Keiko · 恵子
+> 「勝平、落ち着いて!」
+“Kappei, calm down!”
+
+@16733 Uchuta · 宇宙太
+> 「くっ、なにやってんだよ勝平!!」
+“Ngh, what are you doing, Kappei!!”
+
+@16734 Kappei · 勝平
+> 「うるせーっ!! こっちだって
+>  一生懸命やってんだい!!」
+“Shut up!! I'm doing my best here too!!”
+
+@16735 Uchuta · 宇宙太
+> 「うわっ、勝平!?」
+“Whoa, Kappei?!”
+
+@16736 Kappei · 勝平
+> 「こんぐらいでガタガタ抜かすな!」
+“Don't go whining over something like this!”
+
+@16737 Uchuta · 宇宙太
+> 「最大パワーがでるぞ! 上昇だ、
+>  勝平!」
+“We can get max power! Ascend, Kappei!”
+
+@16738 Kappei · 勝平
+> 「わかった!」
+“Got it!”
+
+@16739 Kappei · 勝平
+> 「おっとっとぉ!」
+“Whoa, whoa!”
+
+@16740 Keiko · 恵子
+> 「もう! 遊んでないでちゃんとやって!」
+“Honestly! Stop fooling around and do it right!”
+
+@16741 Kappei · 勝平
+> 「へへーん、効きゃしないぜ!」
+“Heh, that doesn't hurt a bit!”
+
+@16742 Keiko · 恵子
+> 「ちょっと、油断しすぎよ!」
+“Hey, you're way too careless!”
+
+@16743 Keiko · 恵子
+> 「ベースミサイル!」
+“Base Missile!”
+
+@16744 Keiko · 恵子
+> 「ベースミサイル、発射!」
+“Base Missile, fire!”
+
+@16745 Keiko · 恵子
+> 「ベースミサイルで攻撃するわ!」
+“I'll attack with the Base Missile!”
+
+@16746 Keiko · 恵子
+> 「ベースレーザー!」
+“Base Laser!”
+
+@16747 Uchuta · 宇宙太
+> 「クラッシャードリル!」
+“Crusher Drill!”
+
+@16748 Uchuta · 宇宙太
+> 「アームパンチだ!」
+“Arm Punch!”
+
+@16749 Uchuta · 宇宙太
+> 「アームパンチ!」
+“Arm Punch!”
+
+@16750 Uchuta · 宇宙太
+> 「ブルミサイル!」
+“Bull Missile!”
+
+@16751 Uchuta · 宇宙太
+> 「ビッグキャノン!」
+“Big Cannon!”
+
+@16752 Uchuta · 宇宙太
+> 「ビッグミサイル!」
+“Big Missile!”
+
+@16753 Uchuta · 宇宙太
+> 「ビーッグミサイル!」
+“Biiig Missile!”
+
+@16754 Hyoma · 豹馬
+> 「スカイリッパー!!」
+“Sky Ripper!!”
+
+@16755 Hyoma · 豹馬
+> 「ドスブレッシャー!!」
+“Dos Blesser!!”
+
+@16756 Hyoma · 豹馬
+> 「マグネレーザー!!」
+“Magne Laser!!”
+
+@16757 Hyoma · 豹馬
+# 审校：原文是合体技起句，喊的是招式名「超電磁タツマキ」，不是“spin”的拟声；改为保留招式名音译并去掉多余拉长。
+> 「超電磁タ・ツ・マ・キーーーーッ!!」
+“Super Electromagnetic Tatsu-maki!!”
+
+@16758 Hyoma · 豹馬
+> 「超電磁スピーーーーーン!!」
+“Super Electromagnetic Spiiiiin!!”
+
+@16759 Hyoma · 豹馬
+> 「超電磁ヨーヨー!!」
+“Super Electromagnetic Yo-Yo!!”
+
+@16760 Hyoma · 豹馬
+> 「ロックファイター!!」
+“Rock Fighter!!”
+
+@16761 Hyoma · 豹馬
+> 「バトルリターン!!」
+“Battle Return!!”
+
+@16762 Hyoma · 豹馬
+> 「バトルガレッガー!!」
+“Battle Garegga!!”
+
+@16763 Hyoma · 豹馬
+> 「超電磁クレーン!!」
+“Super Electromagnetic Crane!!”
+
+@16764 Hyoma · 豹馬
+> 「マグネクロー!!」
+“Magne Claw!!”
+
+@16765 Hyoma · 豹馬
+> 「スプリングクラッシャー!!」
+“Spring Crusher!!”
+
+@16766 Hyoma · 豹馬
+> 「アトミックバーナー!!」
+“Atomic Burner!!”
+
+@16767 Hyoma · 豹馬
+> 「ツインランサー!!」
+“Twin Lancer!!”
+
+@16768 Hyoma · 豹馬
+> 「Vレーザー!!」
+“V Laser!!”
+
+@16769 Hyoma · 豹馬
+> 「バトルチェーンソー!!」
+“Battle Chainsaw!!”
+
+@16770 Hyoma · 豹馬
+> 「ビッグブラスト!!」
+“Big Blast!!”
+
+@16771 Hyoma · 豹馬
+> 「大作、ビッグブラストだ!!」
+“Daisaku, Big Blast!!”
+
+@16772 Hyoma · 豹馬
+> 「ビッグブラスト・ディバイダー!!」
+“Big Blast Divider!!”
+
+@16773 Hyoma · 豹馬
+> 「超電磁スパーク!!」
+“Super Electromagnetic Spark!!”
+
+@16774 Hyoma · 豹馬
+> 「グランダッシャー!!」
+“Grand Dasher!!”
+
+@16775 Daisaku · 大作
+> 「わああっ! ひょ、豹馬、
+>  これ以上は危険たい!」
+“Waaah! H-Hyoma, any more of this is dangerous!”
+
+@16776 Kosuke · 小介
+> 「だ、ダメだ! このままじゃもちませんよ!」
+“N-No good! We can't hold out like this!”
+
+@16777 Chizuru · ちずる
+> 「ああっ!? ひょ、豹馬! これじゃ
+>  もたないわ!」
+“Ah!? H-Hyoma! We can't take much more of this!”
+
+@16778 Juzo · 十三
+> 「ぐああっ! 豹馬、どないしたんや!?」
+“Gwaaah! Hyoma, what's goin' on!?”
+
+@16779 Daisaku · 大作
+> 「うああっ! 豹馬!
+>  どげんしたとね!?」
+“Uwaaah! Hyoma! What're ya doin'!?”
+
+@16780 Kosuke · 小介
+> 「だ、大丈夫です豹馬さん! 僕
+>  の計算では、まだやられたりしません!」
+“I-I'm fine, Hyoma! By my calculations, we won't be beaten yet!”
+
+@16781 Chizuru · ちずる
+> 「あうっ! 豹馬、しっかりして!
+>  押されてるわよ!」
+“Agh! Hyoma, get it together! We're being pushed back!”
+
+@16782 Juzo · 十三
+> 「うわっ! 豹馬、しっかりせんかい!」
+“Whoa! Hyoma, pull yourself together!”
+
+@16783 Daisaku · 大作
+# 检查提示：未用必用译名：コン・バトラー→Combattler V
+> 「ばってん、たいしたことなか! さすがは
+>  コン・バトラーたい」
+“But that ain't nothin'! That's the Combattler for ya!”
+
+@16784 Juzo · 十三
+# 检查提示：未用必用译名：コン・バトラー→Combattler V
+> 「見てみい! コン・バトラーは
+>  無敵やで!」
+“Take a look! Combattler's invincible!”
+
+@16785 Chizuru · ちずる
+> 「大丈夫よ、豹馬! 大した
+>  ダメージは受けてないわ!」
+“It's all right, Hyoma! We haven't taken much damage!”
+
+@16786 Kosuke · 小介
+# 检查提示：未用必用译名：コン・バトラー→Combattler V
+> 「さっすがコン・バトラー! すごいや!」
+“That's the Combattler for ya! Amazing!”
+
+@16787 Juzo · 十三
+> 「ロックファィター!」
+“Rock Fighter!”
+
+@16788 Juzo · 十三
+> 「エレクトロダート!」
+“Electro Dart!”
+
+@16789 Juzo · 十三
+> 「マグネクロー!」
+“Magne Claw!”
+
+@16790 Juzo · 十三
+> 「アトミックバーナー!」
+“Atomic Burner!”
+
+@16791 Chizuru · ちずる
+> 「機雷発射!」
+“Launching mines!”
+
+@16792 Chizuru · ちずる
+> 「爆雷投下!」
+“Dropping depth charges!”
+
+@16793 Kosuke · 小介
+> 「クラフトドリル!」
+“Craft Drill!”
+
+@16794 Kosuke · 小介
+> 「クラフトミサァァイル!」
+“Craft Missiiile!”
+
+@16795 Kosuke · 小介
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16796 Daisaku · 大作
+> 「アンカーナックル!!」
+“Anchor Knuckle!!”
+
+@16797 Warchimedes · ワルキメデス
+> 「ダークロンドリルでとどめをさしてやる!」
+“I'll finish you with the Darkron Drill!”
+
+@16798 Warchimedes · ワルキメデス
+> 「ツメミサイル!」
+“Claw Missile!”
+
+@16799 Marvel · マーベル
+> 「そこっ!」
+“There!”

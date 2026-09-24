@@ -1,0 +1,97 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9957 Musashi · ムサシ
+> 「でやあぁぁっ!」
+“Deyaaaah!”
+
+@9958 Musashi · ムサシ
+> 「このっ!」
+“Why you!”
+
+@9959 Musashi · ムサシ
+> 「よぉしいまだ! いくぞぉーっ!」
+“All right, now! Here I gooo!”
+
+@9960 Musashi · ムサシ
+> 「それっ!」
+“Take that!”
+
+@9961 Musashi · ムサシ
+> 「うぉぉっ、すまねぇ!」
+“Whoa, sorry!”
+
+@9962 Musashi · ムサシ
+> 「ぐわぁぁぁぁーっっ!!」
+“Guwaaaaaaah!!”
+
+@9963 Musashi · ムサシ
+> 「ちくしょぉぉぉーっ!」
+“Damn iiiit!”
+
+@9964 Musashi · ムサシ
+> 「くそぉっ! どうにもならねぇのかよ!」
+“Damn! There's nothin' I can do?!”
+
+@9965 Musashi · ムサシ
+> 「へへっ、いよいよやばくなってきたな……」
+“Heh, things are really gettin' bad...”
+
+@9966 Musashi · ムサシ
+> 「うわぁぁぁぁーっ!」
+“Uwaaaaaaah!”
+
+@9967 Musashi · ムサシ
+> 「おぉぉ!? エンジントラブルか!」
+“Oh?! Engine trouble?!”
+
+@9968 Musashi · ムサシ
+> 「うぅぅっ!」
+“Ugh!”
+
+@9969 Musashi · ムサシ
+> 「ううっ! こうなったらやぶれかぶれだ!」
+“Ugh! If it's come to this, I'll go all out!”
+
+@9970 Musashi · ムサシ
+> 「あぁっ、しまったぁ!」
+“Ah, I messed up!”
+
+@9971 Musashi · ムサシ
+> 「ん!?」
+“Hm?!”
+
+@9972 Musashi · ムサシ
+> 「でぇぇい! くそっ! しくじったぁ!」
+“Deeei! Damn! I blew it!”
+
+@9973 Musashi · ムサシ
+> 「おぉっと! かすっちまったか」
+“Whoa! Just grazed me, huh.”
+
+@9974 Musashi · ムサシ
+> 「おっと!」
+“Whoa!”
+
+@9975 Musashi · ムサシ
+> 「ふぅ、危なかったぁ」
+“Phew, that was close.”
+
+@9976 Musashi · ムサシ
+> 「助かったぁ」
+“I'm saved.”
+
+@9977 Musashi · ムサシ
+> 「やったーっ!」
+“All right!”
+
+@9978 Musashi · ムサシ
+> 「そんなもんが効くかぁ!」
+“Like that could work on me!”
+
+@9979 Musashi · ムサシ
+> 「しまった、エネルギーが!?」
+“Oh no, the energy?!”
+
+@9980 Musashi · ムサシ
+> 「ダメだ! 反撃できねぇ!」
+“No good! I can't counter!”

@@ -1,0 +1,2250 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@47577 Glemy · グレミー
+# 审校：「手をうって」在此指哈曼会采取行动，初稿 struck first 意思接近但不够准确，改为 made her move。
+> (タイミングが早すぎたか……しかし、
+>  遅らせばハマーンは、手をうって
+(Was my timing too early...? But if I had delayed, Haman would have
+---
+>  いたはずだ。{HeroMech}が
+>  邪魔をしてくれたおかげで、状況は
+made her move. Thanks to {HeroMech} interfering, the situation isn't
+---
+>  それほどよいとはいえん。……しかし……)
+all that good. ...Still...)
+
+@47578 Glemy · グレミー
+> (味方をあざむくには、味方と
+>  同じ顔をせねばならん
+(To deceive your allies, you must wear the same face as your allies.
+---
+>  ましてや、1度振りあげた手だ)
+All the more so for a hand I've already raised once.)
+
+@47579 Glemy · グレミー
+> 「全艦隊のジオン将兵たちよ、その
+>  ままで聞け! もはや忍従の時は
+“All ships, soldiers of Zeon, hear me as you are! The time of silent
+---
+>  去った。諸悪の根源はアクシズを
+>  動かし、ぎまんあふれるジオンを
+endurance is over. The root of all evil lies with Haman Karn, who moved Axis
+---
+>  受け継ごうとした、ハマーン・カーンに
+>  ある。真なるジオンを、そしてこの
+and sought to inherit a Zeon steeped in deceit. It is you who shall grasp
+---
+>  地球圏をその手に握るのは、
+>  ハマーンの首を我が面前に
+true Zeon, and this Earth Sphere, by laying Haman's head
+---
+>  差しだす、諸君らである。さすれば、
+>  この地球圏の英雄として、
+before me. Do so, and as heroes of this Earth Sphere, you shall be praised
+---
+>  末代までたたえられよう!」
+for all generations!”
+
+@47580 Axis Soldier · アクシズ兵
+> 「おい、聞いたかよ。コロニーどころか、
+>  大陸の一つもくれるかもしれないぜ」
+“Hey, did you hear that? Forget a colony, they might even give us a whole continent.”
+
+@47581 Axis Soldier · アクシズ兵
+> 「ハマーンを殺せば……」
+“If we kill Haman...”
+
+@47582 Axis Soldier · アクシズ兵
+> 「ちょっと活躍すりゃ、コロニーの一つ
+>  や二つはもらえるってよ」
+“Put in a little effort, and they say you'll get a colony or two.”
+
+@47583 Axis Soldier · アクシズ兵
+> 「バカ、地球に住めるっていうぜ」
+“Idiot, they say we'll get to live on Earth.”
+
+@47584 Rakan · ラカン
+> 「フッ、青二才にしては
+>  うまいことをいう」
+“Heh, that's a clever thing to say for a greenhorn.”
+
+@47585 Ple-Two · プルツー
+> 「気にいったよ、グレミー。
+>  こういうの、好きだ」
+“I like it, Glemy. This kind of thing, I love it.”
+
+@47586 Glemy · グレミー
+> 「別にお前に喜んでもらうためではない
+>  昨日までハマーンに忠誠を誓って
+“It's not that I want you to be pleased. For those who swore loyalty to Haman
+---
+>  いた者たちには、地球をくれてやる
+>  くらいのことは、覚悟しないとな」
+until yesterday, I'd better be ready to give them the Earth at least.”
+
+@47587 Chara · キャラ
+> 「準備はいいようだよ、少佐」
+“Looks like we're ready, Major.”
+
+@47588 Gato · ガトー
+> 「うむ。聞け、兵士たちよ。グレミー
+>  艦隊は我らの敵となった
+“Indeed. Hear me, soldiers. Glemy's fleet has become our enemy.
+---
+>  我々の手で、叩くのだ。グレミー
+>  艦隊を排除してこそはじめて
+We shall strike them down with our own hands. Only by eliminating Glemy's fleet
+---
+>  我らが悲願、ジオンの再興が
+>  実現されるのだ!」
+can our long-cherished wish, the restoration of Zeon, be realized!”
+
+@47589 Mashymre · マシュマー
+> 「少佐の言われる通りである。
+>  勇者たちよ、今日この日を、
+“It is exactly as the Major says. Brave warriors, let us make this very day
+---
+>  我らの最良の日としたい。グレミー
+>  は反逆者である。ハマーン様に
+our finest. Glemy is a traitor. He has wronged Lady Haman
+---
+>  仇をなし、ジオン再興をはばむ、
+>  悪い奴だということだ。我らのあとに
+and stands in the way of Zeon's restoration. He is a villain. Follow after us
+---
+>  続いて、叩きつぶすのだ!」
+and crush him!”
+
+@47590 Axis Soldier · アクシズ兵
+> 「ネオ・ジオン万歳!
+>  ハマーン様万歳!」
+“Long live Neo Zeon! Long live Lady Haman!”
+
+@47591 Axis Soldier · アクシズ兵
+> 「ネオ・ジオン万歳!
+>  ハマーン様万歳!」
+“Long live Neo Zeon! Long live Lady Haman!”
+
+@47592 Axis Soldier · アクシズ兵
+> 「おおぉぉぉぉぉぉーっ!!」
+“Oooooooh!!”
+
+@47593 Gato · ガトー
+> 「出撃せよ!」
+“Launch!”
+
+@47594 Haman · ハマーン
+> (地球制圧艦隊は、ほぼすべて
+>  グレミーに取り込まれたか……
+(The Earth suppression fleet has been almost entirely absorbed by Glemy...
+---
+>  優劣はつけがたい……問題は、
+>  {HeroMech}がどう動くかだな)
+The advantage is hard to judge... The question is how {HeroMech} will move.)
+
+@47595 Beltorchika · ベルトーチカ
+> 「……アムロ、始まったわ」
+“...Amuro, it's begun.”
+
+@47596 Amuro · アムロ
+> 「どのくらいの艦艇が出ているか、
+>  わかるか?」
+“Can you tell how many ships have launched?”
+
+@47597 Reika · レイカ
+> 「グレミーの方は、たぶんすべてね。
+>  ハマーンの方も、あの様子では
+“Glemy's side, probably all of them. And from the look of it, Haman's side
+---
+>  サイド3に残している艦艇はほとんど
+>  ないわ」
+has almost no ships left at Side 3 either.”
+
+@47598 Bright · ブライト
+# 检查提示：未用必用译名：アクシズ軍→Axis Forces
+> 「すると、コロニーに派遣された部隊
+>  以外では、あれがアクシズ軍の
+“Then aside from the units dispatched to the colonies, that's the entirety of the Axis
+---
+>  すべてか。アラン、全員をたたき
+>  起こしてくれ」
+Forces. Alan, wake everyone up.”
+
+@47599 Alan · アラン
+> 「了解だ」
+“Understood.”
+
+@47600 Eiji · エイジ
+> 「すごい数の艦隊だ……」
+“That's an incredible number of ships...”
+
+@47601 Kayra · ケーラ
+> 「あたりまえだろ、エイジ。連中は
+>  総力戦をやってるんだからさ」
+“Of course, Eiji. They're fighting an all-out war, after all.”
+
+@47602 Sai Saici · サイ・サイシー
+> 「で、オイラたちは、どうしようっての?」
+“So what are we supposed to do, then?”
+
+@47603 Roanne · ロアン
+> 「ここが天王山ですね。動き方を
+>  間違えると、僕らではどうにも
+“This is the decisive moment. If we misstep, there'll be nothing
+---
+>  できなくなる」
+we can do.”
+
+@47604 Alan · アラン
+> 「その通りだ。まずは状況を見極め
+>  ねば……」
+“Exactly. First we must assess the situation...”
+
+@47605 Judau · ジュドー
+> 「結論は出てるじゃないの。サイド3に
+>  戦力を残さないってことは
+“The conclusion's already clear, isn't it? Leaving no forces at Side 3 means
+---
+>  ハマーンは本気だ。俺たちも、
+>  グレミーを叩くのを手伝うべきだ
+Haman is serious. We should help strike down Glemy too.
+---
+>  そのうえでないと、グレミーの奴に後ろ
+>  からやられる」
+Otherwise, that bastard Glemy will get us from behind.”
+
+@47606 Alan · アラン
+> 「うむ、その見方は正しいな」
+“Yes, that assessment is correct.”
+
+@47607 Amuro · アムロ
+> 「そう思う。先の戦いのことを考えれ
+>  ば、俺たちがグレミーを相手にして
+“I agree. Considering the last battle, as long as we're dealing with Glemy,
+---
+>  いる限りは、ハマーンがしかけてくること
+>  はないと思える。少なくとも
+Haman won't make a move on us. At least not until
+---
+>  自分の勝利が確信できるまでは」
+she's certain of her own victory.”
+
+@47608 Shinobu · 忍
+> 「チッ、いい根性してやがんぜ、あの女」
+“Tch, that woman's got some nerve.”
+
+@47609 Masato · 雅人
+> 「ハマーンがそういう性格だから、こっち
+>  もやりようがあるってものだろ、忍」
+“It's because Haman's that kind of person that we have a way to play this too, Shinobu.”
+
+@47610 Ryo · 亮
+> 「利用されるのと、こちらが利用する
+>  のとでは、まるで別物だ。それを
+“Being used and doing the using are completely different things. That's
+---
+>  考えるんだな」
+what you need to think about.”
+
+@47611 Shinobu · 忍
+> 「けっ、どうでもいいさ。どうせ俺は、
+>  目の前の敵をぶっつぶすだけだ」
+“Keh, I don't care. Either way, I'll just crush whatever enemy is in front of me.”
+
+@47612 Bright · ブライト
+> 「……よし、まずはアクシズのグレミーだ。
+>  そのうえで、可能ならハマーンもだな」
+“...All right, first Axis's Glemy. And after that, Haman too, if possible.”
+
+@47613 Banjo · 万丈
+> 「なんとか、終わらせたいところだけどね」
+“I'd like to put an end to this somehow, though.”
+
+@47614 Amuro · アムロ
+> 「ああ。だが……苦しいな」
+“Yeah. But... it's rough.”
+
+@47615 Marvel · マーベル
+> 「いまさらもう、それは口にしないほうが
+>  良いでしょうね」
+“At this point, it's probably best not to say that out loud.”
+
+@47616 Chum · チャム
+> 「ずーっと、そうだもんね」
+“It's been that way the whole time, after all.”
+
+@47617 Amuro · アムロ
+> 「ははっ、すまない。そうだったな」
+“Haha, sorry. You're right.”
+
+@47618 Bright · ブライト
+> 「やむを得んさ。よし、我々は戦況
+>  を確認しつつ、アクシズ周辺の
+“It can't be helped. All right, we'll enter the combat zone around Axis while
+---
+>  戦闘宙域に入るぞ」
+checking on the battle situation.”
+
+@47619 Shinobu · 忍
+> 「おい、冗談じゃねぇぞ!」
+“Hey, you've gotta be kidding me!”
+
+@47620 Hyoma · 豹馬
+> 「ああ、なんだってそんなことに
+>  なっちまうんだよ!?」
+“Yeah, why the hell does it have to turn out like this?!”
+
+@47621 Koji · 甲児
+> 「そうだぜ。連中同士やりあってんな
+>  ら、連中だって俺たちだけにかまって
+“That's right. If those guys are fighting each other, then even they can't afford to
+---
+>  いるわけには、いかないってことだろ?
+>  前と同じでいいじゃないかよ」
+focus only on us, right? Why can't it be the same as before?”
+
+@47622 Daisuke · 大介
+> 「いや、この前とは展開している数が
+>  違う。双方を相手にしていては
+“No, the numbers deployed this time are different from before. If we take on both sides,
+---
+>  アクシズにもたどり着けないかもしれない」
+we might not even reach Axis.”
+
+@47623 Amuro · アムロ
+> 「そういうことだ。気持ちはわかるが、
+>  ここはジュドーの感じ方を
+“That's how it is. I understand how you feel, but here we'd better
+---
+>  信じたほうがいい」
+trust Judau's read on things.”
+
+@47624 Bright · ブライト
+> 「……よし、まずはアクシズのグレミーだ。
+>  そのうえで、可能ならハマーンも叩く
+“...All right, first Axis's Glemy. And after that, Haman too, if possible.
+---
+>  それで納得しろ」
+Settle for that.”
+
+@47625 Shinobu · 忍
+> 「チッ、しかたねぇな」
+“Tch, guess there's no choice.”
+
+@47626 Banjo · 万丈
+> 「なんとか、ここで終わらせたいところだね」
+“I'd like to put an end to this here somehow.”
+
+@47627 Amuro · アムロ
+> 「ああ。だが……苦しいな」
+“Yeah. But... it's rough.”
+
+@47628 Marvel · マーベル
+> 「いまさらもう、それは口にしないほうが
+>  良いでしょうね」
+“At this point, it's probably best not to say that out loud.”
+
+@47629 Chum · チャム
+> 「ずーっと、そうだもんね」
+“It's been that way the whole time, after all.”
+
+@47630 Amuro · アムロ
+> 「ははっ、すまない。そうだったな」
+“Haha, sorry. You're right.”
+
+@47631 Bright · ブライト
+> 「やむを得んさ。よし、我々は戦況
+>  を確認しつつ、アクシズ周辺の
+“It can't be helped. All right, we'll enter the combat zone around Axis while
+---
+>  戦闘宙域に入るぞ」
+checking on the battle situation.”
+
+@47632 Sai Saici · サイ・サイシー
+> 「なあ、奴らを勝手にやらせておいてさ
+>  後からオイラたちが行くってのは
+“Hey, how about we just let those guys fight it out on their own and then move in afterward?
+---
+>  やらないのか? そのほうがずっと
+>  楽そうなのになぁ」
+Wouldn't that be way easier?”
+
+@47633 Maria · マリア
+> 「あたしもそう思うわ。なんでそうしない
+>  のよ?」
+“I think so too. Why don't we do that?”
+
+@47634 Ryo · 亮
+> 「それで、待っている間に決着がつい
+>  たらどうする? 指揮官はともかく
+“And what if it's all settled while we wait? The commanders aside,
+---
+>  兵士たちは、またもとのサヤに戻る
+>  かもしれんぞ。結局、規模としては
+the soldiers might just go back to the way they were. In the end, the scale wouldn't
+---
+>  そう変わらんが、一枚岩の
+>  軍勢が残ることになる」
+change much, but a unified army would be left standing.”
+
+@47635 George · ジョルジュ
+> 「そうです。それに、万が一双方が
+>  撤退して状況が安定して
+“Exactly. And if by some chance both sides withdraw and the situation stabilizes,
+---
+>  しまえば、また戦いが長引くだけで
+>  しょう。その時点で、我々が
+the war will only drag on longer. At that point, there's no guarantee
+---
+>  彼らに勝てる保証もない」
+we could beat them.”
+
+@47636 Maria · マリア
+> 「そっか。なるほどねぇ」
+“I see. That makes sense.”
+
+@47637 Chibodee · チボデー
+> 「だいたいな、楽して勝とうなんて
+>  考えんのは危険だぜ、ベイビィ」
+“Besides, thinking you can win the easy way is dangerous, baby.”
+
+@47638 Amuro · アムロ
+> 「整備のほうはどうだ?
+>  調整は終わっているのか?」
+“How's the maintenance? Are the adjustments finished?”
+
+@47639 Rain · レイン
+> 「なんとか大丈夫だと思います。
+>  この時間内で、できる範囲の
+“I think we're all right somehow. We did everything we could
+---
+>  ことは、すべてやっておきましたから」
+within the time we had.”
+
+@47640 Shirley · シャリー
+> 「そう。こういう状況じゃ、あたしたちに
+>  できるのって、これくらいだものね」
+“Yeah. In a situation like this, this is about all we can do, after all.”
+
+@47641 Amuro · アムロ
+> 「助かるよ。チェーン、どうだい?」
+“That helps. Chan, how about you?”
+
+@47642 Chan · チェーン
+> 「サイコミュの再調整に手間どり
+>  ましたけど、もう終わりました
+“The Psycommu readjustment took some time, but it's done now.
+---
+>  気をつけて、アムロ」
+Be careful, Amuro.”
+
+@47643 Amuro · アムロ
+> 「わかってるさ。だけどここでグレミーと
+>  ハマーンを叩いておかなきゃ、いつまで
+“I know. But if we don't strike down Glemy and Haman here, this war
+---
+>  たっても戦争は終わらない」
+will never end.”
+
+@47644 Shinobu · 忍
+> 「ヒューッ、こいつはごきげんだぜ。
+>  新品より調子いいんじゃないのか?」
+“Whew, this baby feels great. Isn't it running better than new?”
+
+@47645 Astonaige · アストナージ
+> 「バカいってんなよ。少なくともチェックは
+>  万全だ。すぐに出れるぞ」
+“Don't be stupid. At the very least, the checks are perfect. You can launch right away.”
+
+@47646 Judau · ジュドー
+> 「さっすがアストナージさん、
+>  いい仕事してるよ」
+“As expected of you, Astonaige. You do good work.”
+
+@47647 Astonaige · アストナージ
+> 「おせじはいいんだよ!
+>  みんな、今度で決めてくれよ」
+“Save the flattery! Everyone, finish it this time.”
+
+@47648 Hyoma · 豹馬
+> 「へへっ、まかせとけって」
+“Heh, leave it to me.”
+
+@47649 Chizuru · ちずる
+> 「豹馬、十三くんたちはもう先に
+>  いってるわよ。発進スタンバイしておけ
+“Hyoma, Juzo and the others have already gone ahead. The Captain said to stand by for launch,
+---
+>  って、艦長がいってたでしょ」
+remember?”
+
+@47650 Hyoma · 豹馬
+> 「おっといけねぇ。いくぞ、ちずる」
+“Whoops, my bad. Let's go, Chizuru.”
+
+@47651 Bright · ブライト
+> 「戦闘宙域に入るぞ。総員、
+>  第一戦闘配置につけ!
+“We're entering the combat zone. All hands, man your first battle stations!
+---
+>  ネェル・アーガマ最大戦速!
+>  全艦、突入するぞ。目標、
+Nahel Argama, maximum battle speed! All ships, we're charging in. Target,
+---
+>  アクシズのグレミー軍本隊だ!
+>  一気に叩くぞ!」
+the main force of Axis's Glemy Army! We'll hit them all at once!”
+
+@47652 Rakan · ラカン
+> 「くっ、また奴らか」
+“Ngh, them again.”
+
+@47653 Glemy · グレミー
+> 「なんだと? まさかハマーンよりも先に、
+>  OZが来るとはな。クズどもが、
+“What? OZ is coming before Haman? You trash,
+---
+>  どうしても私の邪魔をしたいようだな」
+you're really that desperate to get in my way.”
+
+@47654 Domon · ドモン
+> 「当然だ! 貴様のような悪党は
+>  俺たちが叩きつぶしてやる!」
+“Of course! Villains like you are the ones we're going to crush!”
+
+@47655 Glemy · グレミー
+> 「私には戦わねばならぬ大義がある!
+>  貴様らこそ、なぜそんな状態に
+“I have a great cause I must fight for! You're the ones who won't stop fighting
+---
+>  なってまで戦いをやめない!」
+even when things have come to this!”
+
+@47656 Hyoma · 豹馬
+> 「なんだと、てめぇっ!」
+“What'd you say, you bastard?!”
+
+@47657 Glemy · グレミー
+> 「しょせん、貴様らが戦っているのは、
+>  自分のためにすぎん!
+“In the end, all you fight for is yourselves!
+---
+>  だが私は違う。自ら過酷な生き
+>  方を選び、後悔はしていない
+But I'm different. I chose this harsh path myself, and I have no regrets.
+---
+>  貴様たちには、内からわきあがる
+>  衝動はあるまい! そんなクズは
+You lot have no impulse welling up from within! Trash like that—
+---
+>  私の前から去れ!」
+get out of my sight!”
+
+@47658 Judau · ジュドー
+> 「何が大義だよ! 大義があれば
+>  何だっていいってのかよ!?」
+“What great cause?! So as long as you've got a cause, anything goes?!”
+
+@47659 Glemy · グレミー
+> 「私は、ザビ家の血をひく者として、
+>  この地球圏を正しく導かねば
+“As one who carries the blood of the Zabi family, I must guide this Earth Sphere
+---
+>  ならんのだ! 貴様にはわかるまい!」
+rightly! You could never understand!”
+
+@47660 Judau · ジュドー
+> 「わかってたまるかよ!
+>  地球はメチャメチャだし
+“Like I'd ever understand! The Earth is a wreck,
+---
+>  コロニーだって半分も残っちゃいない
+>  今はね、人類全体が
+and not even half the colonies are left. Now humanity as a whole has to
+---
+>  新しくやりなおさなければいけないんだ。
+>  あんたみたいな小さなことにこだわる
+start over. As long as people like you cling to petty things,
+---
+>  人間は、倒さなくちゃ地球圏に
+>  未来は見えないんだよ!」
+we'll never see a future for the Earth Sphere unless we bring them down!”
+
+@47661 Glemy · グレミー
+> 「小さなことだと!? 私の大義を
+>  小さなことだというのか!」
+“Petty?! You call my great cause petty?!”
+
+@47662 Judau · ジュドー
+> 「血に縛られたような連中は、
+>  邪魔なんだよ! 人間の
+“People chained by blood are just in the way! I won't let humanity's
+---
+>  可能性をちっぽけな自己満足
+>  のために、つぶされてたまるか!
+potential be crushed for the sake of your tiny self-satisfaction!
+---
+>  結局はあんたみたいな奴が、一番
+>  自分のことしか考えていないんだ!」
+In the end, it's people like you who think only of themselves!”
+
+@47663 Glemy · グレミー
+> 「くっ、貴様……」
+“Ngh, you...”
+
+@47664 Gato · ガトー
+> 「己の器の小ささを露呈したよう
+>  だな、グレミー・トト。口先だけの
+“It seems you've exposed how small you really are, Glemy Toto. A greenhorn
+---
+>  青二才が。地球圏に光をもた
+>  らすのは、血などではない!
+with nothing but talk. What brings light to the Earth Sphere isn't blood!
+---
+>  高くかかげられた理想だ! 崇高
+>  なる大義だ! ただ受け継いだ
+It's an ideal held high! A noble cause! To seek it in blood alone,
+---
+>  だけの、血のみにそれを求めるなど、
+>  笑止! 貴様のような奴が
+merely inherited, is laughable! If a man like you takes up the name of
+---
+>  ジオンの名を継ぎ、地球圏を
+>  統一などしては、死んでいった
+Zeon and unifies the Earth Sphere, I could never face those who
+---
+>  者たちに、申しわけが立たぬ!」
+died for it!”
+
+@47665 Kou · コウ
+> 「ガトー……?」
+“Gato...?”
+
+@47666 Glemy · グレミー
+> 「ハマーンにはそれがあるとでもいうのか!
+>  しょせんはあの女も、地球圏を
+“Are you saying Haman has that? In the end, that woman thinks of nothing but
+---
+>  我がものとすることしか考えて
+>  おらぬぞ!」
+making the Earth Sphere her own!”
+
+@47667 Gato · ガトー
+> 「貴様のような小物には、ハマーン
+>  殿のお心が見えぬのも道理
+“It's only natural that a small man like you cannot see Lady Haman's heart.
+---
+>  もはや、理解せよなどとは言わん。
+>  ただ葬り去るのみ!」
+I will no longer ask you to understand. I will simply bury you!”
+
+@47668 Chara · キャラ
+> 「いうじゃないか、少佐」
+“Well said, Major.”
+
+@47669 Gato · ガトー
+# 机翻疑问：占位符【主角机体名】原样保留
+> 「残念なことだな、{HeroMech}
+>  道が違ったばかりに、我らは敵と
+“A pity, {HeroMech}. Merely because our paths differed, we became enemies.
+---
+>  なった。だが……」
+But...”
+
+@47670 Banjo · 万丈
+> 「とりあえずグレミーを倒すまでは、それは
+>  忘れよう。それでどうだい」
+“For now, let's forget that until Glemy is defeated. How about it?”
+
+@47671 Gato · ガトー
+> 「フッ……承知した」
+“Heh... Understood.”
+
+@47672 Banjo · 万丈
+> 「と、いうわけだ、グレミー・トト。ここが、
+>  貴様の野望の最後だ!
+“So there you have it, Glemy Toto. This is the end of your ambition!
+---
+>  僕たちが貴様の野望を
+>  打ち砕く!」
+We will crush your ambition!”
+
+@47673 Glemy · グレミー
+> 「貴様らごときに、やらせるものか!」
+“I won't let the likes of you do it!”
+
+@47674 Glemy · グレミー
+> 「来たかプルツー」
+“So you've come, Ple-Two.”
+
+@47675 Ple-Two · プルツー
+> 「うっ……」
+“Ugh...”
+
+@47676 Glemy · グレミー
+> 「どうした、プルツー。このクズどもを
+>  片付けてしまえ!」
+“What's wrong, Ple-Two? Wipe out this trash!”
+
+@47677 Ple-Two · プルツー
+> 「わかっているッ!!」
+“I know!!”
+
+@47678 Ple-Two · プルツー
+> 「くっ……奴らか……」
+“Ngh... them again...”
+
+@47679 Ple · プル
+> 「もうやめて、プルツー! ジュドーや
+>  カミーユたちの邪魔をしないで!」
+“Stop it, Ple-Two! Don't get in Judau and Kamille's way!”
+
+@47680 Ple-Two · プルツー
+> 「くっ……お前か! さっきから私の
+>  頭に入り込もうとするのは!」
+“Ngh... it's you! You're the one who's been trying to get into my head!”
+
+@47681 Ple · プル
+> 「ジュドーたちは敵じゃない。ジュドーたち
+>  といると、気持ちがいいんだってこと
+“Judau and the others aren't enemies. Being with them feels good—
+---
+>  なんで気づかないの!?」
+why can't you realize that?!”
+
+@47682 Ple-Two · プルツー
+> 「やめろぉぉぉーっ!
+>  私を混乱させるなぁッ!!」
+“Stop it! Don't confuse me!!”
+
+@47683 Ple · プル
+> 「ジュドー、お願い、プルツーを
+>  助けてあげて!」
+“Judau, please, help Ple-Two!”
+
+@47684 Judau · ジュドー
+> 「わかってる、わかってるけど……」
+“I know, I know, but...”
+
+@47685 Judau · ジュドー
+> 「プルツー! グレミーの人形になってし
+>  まって、それでいいのか!? プルツー!」
+“Ple-Two! Are you really okay with being Glemy's puppet?! Ple-Two!”
+
+@47686 Ple-Two · プルツー
+> 「……ジュドー……」
+“...Judau...”
+
+@47687 Judau · ジュドー
+> 「お前だって、もうわかっているはずだ、
+>  プルツー」
+“You already understand too, Ple-Two.”
+
+@47688 Ple-Two · プルツー
+> 「…………」
+“...”
+
+@47689 Ple · プル
+> 「プルツー、ジュドーやカミーユたちは、
+>  みんなやさしいんだよ。プルツー」
+“Ple-Two, Judau and Kamille and everyone are kind. Ple-Two.”
+
+@47690 Ple-Two · プルツー
+> 「プル……」
+“Ple...”
+
+@47691 Glemy · グレミー
+> 「何をしているプルツー、惑わされるな!
+>  奴らは敵だ! 倒すべき敵だ!
+“What are you doing, Ple-Two? Don't let them fool you! They're the enemy! The enemy
+---
+>  お前は奴らを倒せばそれでいいのだ!
+>  プルツー!」
+you must defeat! You just have to defeat them, Ple-Two!”
+
+@47692 Ple-Two · プルツー
+> 「グレミー……!?
+“Glemy...?!
+---
+>  …………
+...
+---
+>  ……ジュドー……私も、私も一緒に
+>  連れていって!」
+...Judau... take me with you too! Take me with you!”
+
+@47693 Glemy · グレミー
+> 「バカな!? 戻れ、プルツー!!」
+“Impossible?! Come back, Ple-Two!!”
+
+@47694 Ple-Two · プルツー
+> 「いやだ! 私はジュドーたちの所へ
+>  いく!」
+“No! I'm going to where Judau and the others are!”
+
+@47695 Judau · ジュドー
+> 「よし、こっちだプルツー」
+“All right, over here, Ple-Two.”
+
+@47696 Glemy · グレミー
+> 「待て! プルツー!!」
+“Wait! Ple-Two!!”
+
+@47697 Judau · ジュドー
+> 「プルツー、そのマシンの波動が、
+>  お前を束縛しているんだ」
+“Ple-Two, the waves from that machine are binding you.”
+
+@47698 Ple-Two · プルツー
+> 「ジュドー……私も、私も一緒に
+>  連れていって!」
+“Judau... take me with you too! Take me with you!”
+
+@47699 Judau · ジュドー
+> 「よし、こっちだプルツー」
+“All right, over here, Ple-Two.”
+
+@47700 Judau · ジュドー
+> 「くっ……」
+“Ngh...”
+
+@47701 Ple-Two · プルツー
+> 「ジュドー……」
+“Judau...”
+
+@47702 Judau · ジュドー
+> 「大丈夫か、プルツー。ちょっと狭い
+>  けど、終わるまで我慢しててくれよな」
+“Are you all right, Ple-Two? It's a little cramped, but bear with it until this is over.”
+
+@47703 Ple-Two · プルツー
+> 「うん……つっ……」
+“Yeah... ngh...”
+
+@47704 Judau · ジュドー
+> 「……ケガをしたのか!?」
+“...Are you hurt?!”
+
+@47705 Ple-Two · プルツー
+> 「だ、大丈夫。気にしないで」
+“I-I'm fine. Don't worry about it.”
+
+@47706 Glemy · グレミー
+> 「くっ……おのれプルツー、お前まで
+>  この私を裏切るのか!」
+“Ngh... Curse you, Ple-Two. Even you would betray me?!”
+
+@47707 Judau · ジュドー
+> 「あんたと一緒じゃ、プルもプルツーも
+>  不幸になる!」
+“Staying with you will only make both Ple and Ple-Two unhappy!”
+
+@47708 Glemy · グレミー
+> 「黙れ! 貴様などにいったい
+>  何がわかるというのだ!!」
+“Silence! What could a wretch like you possibly understand?!”
+
+@47709 Bright · ブライト
+> 「……グレミーの本隊をせん滅したか。
+>  状況を確認しろ!」
+“...So we've wiped out Glemy's main force. Confirm the situation!”
+
+@47710 Beltorchika · ベルトーチカ
+> 「アクシズ軍接近!」
+“Axis Forces approaching!”
+
+@47711 Bright · ブライト
+> 「どっちのだ!?」
+“Whose?!”
+
+@47712 Beltorchika · ベルトーチカ
+> 「確認できません。来ます!」
+“Can't confirm. They're coming!”
+
+@47713 Kamille · カミーユ
+> 「ハマーンの部隊か……」
+“Haman's unit...”
+
+@47714 Mashymre · マシュマー
+> 「ハマーン様、グレミーの部隊は
+>  いないようです」
+“Lady Haman, Glemy's forces don't appear to be here.”
+
+@47715 Haman · ハマーン
+> 「ほう……どうやら、遅かったようだな」
+“Oh... It seems we were too late.”
+
+@47716 Gato · ガトー
+> 「ハマーン殿が来られたか」
+“So Lady Haman has come.”
+
+@47717 Chara · キャラ
+> 「ハマーン様!」
+“Lady Haman!”
+
+@47718 Haman · ハマーン
+# 审校：将 you've 改为 you have，使哈曼对部下的语气更正式庄重
+> 「少佐、キャラ、ご苦労。見事
+>  グレミーを倒したようだな」
+“Major, Chara, well done. It seems you have splendidly defeated Glemy.”
+
+@47719 Gato · ガトー
+> 「いえ、{HeroMech}の協力が
+>  あったればこその勝利。我々は
+“No, this victory was only possible with the aid of the {HeroMech}. We did
+---
+>  たいしたことは、しておりません」
+nothing of consequence.”
+
+@47720 Haman · ハマーン
+# 审校：同上，将 you've 改为 you have，保持哈曼正式语气
+> 「キャラ・スーンは落ちたか……
+“So Chara Soon has fallen...
+---
+>  少佐、ご苦労。見事グレミーを
+>  倒したようだな」
+Major, well done. It seems you have splendidly defeated Glemy.”
+
+@47721 Gato · ガトー
+> 「いえ、{HeroMech}の協力が
+>  あったればこその勝利
+“No, this victory was only possible with the aid of the {HeroMech}.
+---
+>  それに、キャラ殿は……」
+Besides, Lady Chara...”
+
+@47722 Haman · ハマーン
+> 「よい、戦に犠牲はつきものだ。
+>  少佐が無事であっただけでも
+“Enough. Sacrifice is inseparable from war. We should be grateful
+---
+>  よしとしなければな」
+that you at least are safe.”
+
+@47723 Gato · ガトー
+> 「はっ」
+“Yes, ma'am.”
+
+@47724 Haman · ハマーン
+# 审校：同上，将 you've 改为 you have，保持哈曼正式语气
+> 「アナベル・ガトーは落ちたか……
+“So Anavel Gato has fallen...
+---
+>  キャラ、ご苦労。見事グレミーを
+>  倒したようだな」
+Chara, well done. It seems you have splendidly defeated Glemy.”
+
+@47725 Chara · キャラ
+> 「ありがとうございます、ハマーン様。
+>  しかし、ガトー少佐は……」
+“Thank you, Lady Haman. But Major Gato...”
+
+@47726 Haman · ハマーン
+> 「ん……残念だが、しかたあるまい。
+>  お前が無事であっただけでも
+“Mm... It's a shame, but it can't be helped. We should be grateful
+---
+>  よしとしなければな。あまり気にするな」
+that you at least are safe. Don't dwell on it too much.”
+
+@47727 Chara · キャラ
+> 「はい、ハマーン様」
+“Yes, Lady Haman.”
+
+@47728 Mashymre · マシュマー
+> 「ハマーン様、ガトー少佐、および
+>  キャラ・スーンは、撃墜されたようです」
+“Lady Haman, Major Gato and Chara Soon appear to have been shot down.”
+
+@47729 Haman · ハマーン
+# 审校：原文「おしいことをしたな」是对失去部下的惋惜，What a waste 语气偏轻蔑，改为 What a shame 更贴合语境
+> 「そうか……おしいことをしたな」
+“I see... What a shame.”
+
+@47730 Haman · ハマーン
+> 「イリア、残存するグレミー艦隊の
+>  者たちに、降伏を勧告しろ
+“Illia, advise the survivors of Glemy's fleet to surrender.
+---
+>  罪は問わぬゆえ、いま一度、我が
+>  もとに戻れとな」
+Tell them their crimes will not be questioned, and to return to me once more.”
+
+@47731 Illia · イリア
+> 「はい、ハマーン様。ただちに」
+“Yes, Lady Haman. At once.”
+
+@47732 Haman · ハマーン
+> 「さて、{HeroMech}の諸君。グ
+>  レミーを倒してくれたこと、礼をいおう」
+“Now then, people of the {HeroMech}. I thank you for defeating Glemy.”
+
+@47733 Kamille · カミーユ
+> 「別にお前のためにやったわけじゃない!」
+“It's not like we did it for you!”
+
+@47734 Haman · ハマーン
+# 审校：同上，将 what a waste 改为 what a shame，表达惋惜而非轻蔑
+> 「結果は同じだよ、カミーユ・ビダン。
+>  まったく、おしいな。なぜお前たちがあの
+“The result is the same, Kamille Bidan. Truly, what a shame. Why you would side with that
+---
+>  くだらぬロームフェラ財団などにつく
+>  のか、理解に苦しむ」
+worthless Romefeller Foundation, I cannot comprehend.”
+
+@47735 Amuro · アムロ
+> 「俺たちは、財団の指示で
+>  動いているわけじゃない」
+“We're not acting on the Foundation's orders.”
+
+@47736 Ryoma · リョウ
+> 「俺たちはOZだ。そして、今のOZは、
+>  財団の下部組織なんかじゃない」
+“We're OZ. And OZ today is no mere subordinate organ of the Foundation.”
+
+@47737 Haman · ハマーン
+> 「フフフッ、バックボーンがロームフェラだと
+>  いう点では、変わらんよ。連中は
+“Heh heh, in that your backbone is Romefeller, nothing changes. Those people
+---
+>  しょせん、地上のことしか知らぬ
+>  者どもだ」
+only know of things on the ground, after all.”
+
+@47738 Banjo · 万丈
+> 「それで、何が言いたいんだい、
+>  ハマーン?」
+“So what are you trying to say, Haman?”
+
+@47739 Haman · ハマーン
+> 「もう一度だけ聞こう。私のもとへ
+>  こい、{HeroMech}。真に
+“I will ask you once more. Come to my side, {HeroMech}. If you truly
+---
+>  地球圏の未来のことを考える
+>  ならば、それがもっとも正しき道だ
+think of the future of the Earth Sphere, that is the most correct path.
+---
+>  ともに、地球圏を再建させよう
+>  ではないか」
+Together, let us rebuild the Earth Sphere.”
+
+@47740 Judau · ジュドー
+> 「同じだよ」
+“It's the same.”
+
+@47741 Haman · ハマーン
+> 「なに?」
+“What?”
+
+@47742 Judau · ジュドー
+> 「結局はグレミーが勝ったのと同じ
+>  ことになる。それが俺にはわかるんだ」
+“In the end it comes to the same thing as Glemy winning. I can see that.”
+
+@47743 Haman · ハマーン
+> 「きいた風な口をきく。私はアステロイ
+>  ドベルトの、ぞっとするほど暗く冷たい
+“You speak as if you know. I have lived gazing at the Asteroid Belt, at a
+---
+>  宇宙を見つめながら生きてきた。
+>  その間に、地球の愚かな
+space so dark and cold it chills you to the bone. And in all that time, what have the foolish
+---
+>  人間たちは何をした?
+>  今の地球圏はどうなっている?
+people of Earth done? What has the Earth Sphere become now?
+---
+>  荒廃しきった地球が残っている
+>  だけだ。許すわけにはいかない」
+Nothing remains but a ruined Earth. I cannot forgive that.”
+
+@47744 Kamille · カミーユ
+> 「それは、ムゲ帝国や銀河帝国の
+>  せいだろう!?
+“That's because of the Muge Empire and the Galactic Empire, isn't it?!
+---
+>  だいたいジオンがあんな戦争なんか
+>  起こさなけりゃ、この地球は
+Besides, if Zeon hadn't started that war, this Earth might have
+---
+>  ムゲに占領されずに、
+>  すんだかもしれないんだぞ!」
+escaped being occupied by the Muge!”
+
+@47745 Haman · ハマーン
+> 「きっかけを作ったのは地球連邦だ
+>  よ。地球の重力に魂を引かれた
+“It was the Earth Federation that lit the fuse. The very existence of those
+---
+>  愚劣な連中の存在が、そもそも
+>  の原因となったのだ。もう一度
+wretched people, their souls dragged down by Earth's gravity, was the root cause. I cannot
+---
+>  繰り返させるわけにはいかんな」
+allow it to happen again.”
+
+@47746 Judau · ジュドー
+> 「前にもいったはずだ。結局はあなたの
+>  しようとしていることだって、グレミーと
+“I should have told you before. In the end, what you're trying to do is the same as
+---
+>  同じだってね。それは俺たちの望む
+>  未来じゃない」
+Glemy's. That's not the future we want.”
+
+@47747 Haman · ハマーン
+> 「そうか……ならばやむを得ん。お前たち
+>  を排除し、それから地球圏を
+“I see... then it cannot be helped. I will eliminate you, and then take control of the
+---
+>  支配するとしよう。お前たちさえいな
+>  ければ、もはやOZなど何の役にも
+Earth Sphere. As long as you are gone, OZ will be of no use to anyone.
+---
+>  立たん。ロームフェラの連中もな。
+>  あのような愚劣な連中を排除
+Nor will the Romefeller lot. Only by eliminating such wretched people
+---
+>  してこそ、地球圏はよりよく生まれ
+>  変わる」
+can the Earth Sphere be reborn for the better.”
+
+@47748 Shinobu · 忍
+> 「好きにいってくれるぜ。グレミーの
+>  艦隊とやりあって、そっちだって
+“Say whatever you like. You fought Glemy's fleet, so you can't be
+---
+>  無事じゃないはずだ。なら、いま俺た
+>  ちがお前を倒せばそれで終わりだぜ!」
+unscathed either. Then if we beat you here and now, that's the end of it!”
+
+@47749 Banjo · 万丈
+> 「そういうこと。いまここでやるなら、
+>  僕らにも勝機はある」
+“Exactly. If we do it here and now, we have a chance of winning too.”
+
+@47750 Kamille · カミーユ
+> 「そうだ! 逆にこっちこそ、お前を
+>  逃がすわけにはいかない!」
+“That's right! If anything, we're the ones who can't let you get away!”
+
+@47751 Haman · ハマーン
+> 「私を倒せるつもりでいるのか?
+>  いいだろう、望み通り、ここで
+“You intend to defeat me? Very well, as you wish, I will settle this
+---
+>  決着をつけてやろう!」
+here and now!”
+
+@47752 Judau · ジュドー
+> 「あんたはもう終わりなんだよ!」
+“You're finished already!”
+
+@47753 Glemy · グレミー
+> 「道理のわからぬ子供がッ!!」
+“You unreasonable child!!”
+
+@47754 Judau · ジュドー
+> 「ハマーン!」
+“Haman!”
+
+@47755 Haman · ハマーン
+> 「なんだ? ……人の想いが、
+>  人の意思が力となっていくのか!?」
+“What? ...People's feelings, people's wills, are becoming power?!”
+
+@47756 Judau · ジュドー
+> 「そうだ、あなたにも見えているはずだ。
+>  戦いで無駄死にをした
+“That's right, you should be able to see it too. The wills of those who died
+---
+>  人の意思が!」
+in vain in battle!”
+
+@47757 Haman · ハマーン
+> 「……人は生きる限りひとりだよ、
+>  ジュドー。人類そのものもそうだ
+“...People are alone as long as they live, Judau. Humanity itself is the same.
+---
+>  人類すべてがそうやすやすと変われる
+>  ものか! その前に人類は地球を
+Do you think all of humanity can change so easily?! Before that, humanity will devour
+---
+>  食い尽くすよ!」
+the Earth!”
+
+@47758 Judau · ジュドー
+> 「憎しみは憎しみを呼ぶだけだって、
+>  わかれ!」
+“Understand this: hatred only calls forth more hatred!”
+
+@47759 Haman · ハマーン
+> 「憎しみがあってこそ、
+>  人は強くなれる!
+“It is because of hatred that people can become strong!
+---
+>  私はそうやって地球圏へと
+>  もどってきた!」
+That is how I have made my way back to the Earth Sphere!”
+
+@47760 Judau · ジュドー
+> 「そんなもので地球が救えるか!
+>  憎しみを生むもの
+“Can something like that save the Earth?! Spit out the blood
+---
+>  憎しみを育てる血を、吐き出せ!」
+that breeds hatred, that nurtures hatred!”
+
+@47761 Haman · ハマーン
+> 「吐き出すものなど、ないッ!!」
+“There is nothing to spit out!!”
+
+@47762 Kamille · カミーユ
+> 「これで終わりだ! 暗黒の世界へ
+>  帰れ、ハマーン・カーン!」
+“This is the end! Go back to the world of darkness, Haman Karn!”
+
+@47763 Haman · ハマーン
+> 「貴様かニュータイプ!
+>  このキュベレイをなめてもらっては困る!」
+“You, a Newtype! Do not think you can underestimate this Qubeley!”
+
+@47764 Kou · コウ
+> 「ガトーッ!!」
+“Gato!!”
+
+@47765 Gato · ガトー
+> 「……コウ・ウラキ……二度と忘れん!」
+“...Kou Uraki... I will never forget you!”
+
+@47766 Gato · ガトー
+> 「確か……ウラキとかいったな」
+“I believe... you were called Uraki.”
+
+@47767 Kou · コウ
+> 「な、なに?」
+“W-what?”
+
+@47768 Gato · ガトー
+> 「二度と忘れん!」
+“I will never forget you!”
+
+@47769 Judau · ジュドー
+> 「プルツー……かわいそうだけど!」
+“Ple-Two... I'm sorry, but!”
+
+@47770 Ple-Two · プルツー
+> 「くっ……お前などにっ!!」
+“Ngh... someone like you!!”
+
+@47771 Ple · プル
+> 「プルツー、止められないのなら、せめて!」
+“Ple-Two, if I can't stop you, then at least!”
+
+@47772 Ple-Two · プルツー
+> 「お前がいるから私が気持ち悪く
+>  なるんだ! ここからいなくなれ!!」
+“It's because you exist that I feel so sick! Get out of here!!”
+
+@47773 Judau · ジュドー
+> 「マシュマー!」
+“Mashymre!”
+
+@47774 Mashymre · マシュマー
+> 「ジュドー・アーシタ!
+>  いざ、尋常に勝負!」
+“Judau Ashta! Now then, a fair and square duel!”
+
+@47775 Amuro · アムロ
+> 「ハマーン! なぜそう何もかもを
+>  否定する!
+“Haman! Why do you deny everything?!
+---
+>  そういう意思をなくせば、俺たち
+>  だってわかりあえて、シャアだって……」
+If you would let go of that will, we could understand each other, and even Char...”
+
+@47776 Haman · ハマーン
+> 「やさしさがニュータイプの力だと
+>  勘違いしている男が!
+“You man who mistakes kindness for the power of a Newtype!
+---
+>  女が誰でもそれを受け入れるなどと
+>  思うな、アムロ・レイ!」
+Do not think any woman will accept that, Amuro Ray!”
+
+@47777 Amuro · アムロ
+> 「なに!?」
+“What?!”
+
+@47778 Rakan · ラカン
+> 「何故だッ! あれには子供が
+>  乗っているんだぞ!?」
+“Why?! There's a child piloting that thing!”
+
+@47779 Rakan · ラカン
+> 「なぜだ!? なぜこんなことが……!?」
+“Why?! How could this happen...?!”
+
+@47780 Arius · アリアス
+> 「こ、こんなばかなぁぁぁーっ!」
+“Th-this is impossible!”
+
+@47781 Mashymre · マシュマー
+> 「私はやられんぞ! このマシュマー・セロ
+>  己の肉が骨から
+“I will not be defeated! I, Mashymre Cello, will fight until my flesh is
+---
+>  そぎ取れるまで戦う!
+>  ハマーン様、バンザァァァーイッ!!」
+torn from my bones! Lady Haman, banzai!!”
+
+@47782 Chara · キャラ
+> 「ええいっ、あたしを誰だと思ってる
+>  んだい! あたしは、キャラ・スーン………」
+“Gah, who do you think I am?! I'm Chara Soon...”
+
+@47783 Glemy · グレミー
+> 「こ……こんなことが……
+>  お前たちなどにぃぃぃーっ!!」
+“Th-this can't be... by the likes of you!!”
+
+@47784 Ple-Two · プルツー
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@47785 Glemy · グレミー
+> 「プルツー、どうしたプルツー!」
+“Ple-Two, what's wrong, Ple-Two?!”
+
+@47786 Glemy · グレミー
+> 「プルツー!? おのれぇぇぇーっ!」
+“Ple-Two?! You bastards!!”
+
+@47787 Gato · ガトー
+> 「くっ、不覚をとったか……」
+“Ngh, I let my guard down...”
+
+@47788 Illia · イリア
+> 「なに……私がやられただと!?」
+“What... I've been defeated?!”
+
+@47789 Haman · ハマーン
+> 「くっ……まだやられんといいたいが……
+>  私の負けだな」
+“Ngh... I'd like to say I'm not done yet... but I've lost.”
+
+@47790 Judau · ジュドー
+> 「ハマーン……その力のすべてを
+>  いい方向に使えば
+“Haman... if you'd used all that power for good,
+---
+>  地球だって救えたかもしれないのに!」
+you might even have saved the Earth!”
+
+@47791 Haman · ハマーン
+> 「無駄だよ、ジュドー。
+>  アステロイドベルトまで行った人間が
+“It's pointless, Judau. The fact that people who went as far as the Asteroid Belt
+---
+>  もどってくるっていうのはな、人類が
+>  まだ地球という存在に
+come back is proof that humanity is still
+---
+>  縛りつけられている、証拠だろ」
+bound to the existence that is Earth.”
+
+@47792 Judau · ジュドー
+> 「だからって、こんな戦いをしたって
+>  なんにも……」
+“Even so, fighting a war like this won't accomplish anything...”
+
+@47793 Haman · ハマーン
+> 「そうさ、賢しいお前らのおかげで、
+>  人類が負わされた
+“That's right. Thanks to you clever ones, I was never able to
+---
+>  地球の呪縛を、断ち切って
+>  やることができなかったよ……」
+sever the curse of Earth that humanity was burdened with...”
+
+@47794 Judau · ジュドー
+> 「ハマーン!?」
+“Haman?!”
+
+@47795 Haman · ハマーン
+# 审校：原文“なぜ私と……”是哈曼对夏亚未说完的话，初稿“why won't you...”意思偏差且不完整，改为更贴近原意的未完成表达。
+> 「シャア……なぜ私と……」
+“Char... why couldn't you and I...”
+
+@47796 Haman · ハマーン
+> 「貴様か……カミーユ・ビダン。
+>  まさか貴様にやられようとは……」
+“It's you... Kamille Bidan. To think I'd be defeated by you...”
+
+@47797 Haman · ハマーン
+# 审校：同L9，修正未完成句的翻译，使哈曼对夏亚的遗憾语气更准确。
+> 「くっ……シャア……なぜ私と……」
+“Ngh... Char... why couldn't you and I...”
+
+@47798 Mashymre · マシュマー
+# 审校：“おのれぇぇっ”是愤怒的骂声，初稿“you fiends”不够自然，改为“you wretches”更贴合马修马的怒吼。
+> 「ハマーン様!? くっ、おのれぇぇっ!
+>  許さん、許さんぞ!!」
+“Lady Haman?! Ngh, you wretches! I won't forgive you, I won't forgive you!!”
+
+@47799 Chara · キャラ
+> 「ハマーン様が!? お前たち、
+>  絶対に許さないよ!」
+“Lady Haman?! You lot, I'll never forgive you!”
+
+@47800 Illia · イリア
+> 「な……そ、そんな……。おのれっ!」
+“Wh... th-that can't be... You wretches!”
+
+@47801 Gato · ガトー
+> 「ハマーン殿が落ちたというのか!?
+>  ええぃ、なんということだ! このままでは
+“Lady Haman has fallen?! Gah, how could this be! It can't
+---
+>  終われん!!」
+end like this!!”
+
+@47802 Bright · ブライト
+> 「くっ……なんとかハマーンを倒したか……」
+“Ngh... we managed to defeat Haman somehow...”
+
+@47803 Amuro · アムロ
+> 「ふぅ……残った連中の様子は?」
+“Phew... What's the status of the survivors?”
+
+@47804 Beltorchika · ベルトーチカ
+> 「一部がサイド3へ戻った以外は、
+>  散り散りにこの宙域を脱出して
+“Aside from some who returned to Side 3, the rest seem to be fleeing
+---
+>  いるみたいよ。ハマーンの艦隊と
+>  グレミーの艦隊の戦闘は、かなり
+this area in scattered groups. The battle between Haman's fleet and Glemy's fleet was
+---
+>  激しかったから、そうとう消耗
+>  しているはずだけど……」
+fierce, so they must be badly worn down...”
+
+@47805 Alan · アラン
+> 「降伏勧告だけは、しておいたほうが
+>  いいだろうな」
+“We'd best at least issue a call for surrender.”
+
+@47806 Banjo · 万丈
+> 「そう思う。ま、よほどの指導力を
+>  もった人間が現れないかぎり
+“I agree. Well, unless someone with exceptional leadership appears,
+---
+>  まとまることはあり得ないだろう。
+>  OZでも抑えていけると思うけどね」
+they'll never unite. Though I think even OZ could keep them in check.”
+
+@47807 Amuro · アムロ
+> 「にしても、全体としてみればかなりの
+>  戦力が残ってる。抵抗を
+“Even so, looking at the whole picture, a considerable force remains. If they
+---
+>  続けられたら、やっかいだな」
+keep resisting, it'll be trouble.”
+
+@47808 Bright · ブライト
+# 审校：原文“戦争は終わりだと思いたいな?”是布莱特带感叹的陈述，初稿句末问号不符合语气，改为句号。
+> 「やっかい程度ならいいさ。
+>  ……戦争は終わりだと思いたいな?」
+“Trouble would be fine. ...I'd like to think the war is over.”
+
+@47809 Amuro · アムロ
+> 「ああ……」
+“Yeah...”
+
+@47810 Sayaka · さやか
+> 「……これで終わったのかしら、
+>  本当に……」
+“...Is it really over now, I wonder...”
+
+@47811 Koji · 甲児
+> 「なに言ってんだよ、さやかさん。ハマーン
+>  もグレミーも、たったいま倒した
+“What are you saying, Sayaka? We just defeated both Haman and Glemy,
+---
+>  じゃないか。宇宙にはもう俺たちの
+>  敵は、残ってないんだぜ!」
+didn't we? There are no more enemies of ours left in space!”
+
+@47812 Ryo · 亮
+> 「そいつは少し乱暴な意見だな。
+>  まぁ、生きるか死ぬか、なんてことには
+“That's a bit of a rough opinion. Well, it probably won't come down to
+---
+>  そうそうならんだろうが……」
+life or death so easily, but...”
+
+@47813 Sara · 沙羅
+> 「これまでのことを考えたら、天国
+>  みたいなもんさ。たとえ、こっちも
+“Considering everything up to now, this is practically heaven. Even if we're
+---
+>  ボロボロだったとしてもね」
+in pretty bad shape ourselves.”
+
+@47814 Maria · マリア
+> 「……さやか、嬉しくないの?」
+“...Sayaka, aren't you happy?”
+
+@47815 Sayaka · さやか
+> 「そうじゃないけど……」
+“It's not that...”
+
+@47816 Trowa · トロワ
+> 「わかる気がするな」
+“I think I understand.”
+
+@47817 Duo · デュオ
+> 「ああ。戦争の終わり……終わりか。
+>  実感がわかないのは、確かなんだよな」
+“Yeah. The end of the war... the end, huh. One thing's for sure, it doesn't feel real.”
+
+@47818 Trowa · トロワ
+> 「それに、戦争の終わりと平和とは
+>  違うものだ」
+“Besides, the end of a war and peace are not the same thing.”
+
+@47819 Ryo · 亮
+> 「確かにな。だが、戦争が終わらねば
+>  平和にはならん」
+“True enough. But unless the war ends, there'll be no peace.”
+
+@47820 Duo · デュオ
+> 「俺は……信じられなくなっちまってるの
+>  かもしれない。俺たちが夢見た
+“Maybe... maybe I've just stopped believing. In the
+---
+>  未来を。平和なんかしょせん、
+>  実現しない夢なんじゃないかってな」
+future we dreamed of. That peace is nothing but a dream that'll never come true.”
+
+@47821 Hilde · ヒルデ
+> 「デュオ……」
+“Duo...”
+
+@47822 Quatre · カトル
+> 「すべてはこれからですよ、デュオ。僕たち
+>  が未来を作っていくんです
+“Everything starts from here, Duo. We're the ones who'll build the future.
+---
+>  地球圏を再建して、人類が
+>  平和に生きることのできる……
+We'll rebuild the Earth Sphere, so humanity can live in peace...
+---
+>  未来を」
+A future like that.”
+
+@47823 Bright · ブライト
+> 「さてと。ではとりあえず月に帰還
+>  するか」
+“Well then. For now, let's head back to the moon.”
+
+@47824 Banjo · 万丈
+> 「それがいい。何をするにも、まずは
+>  休息が必要だ。僕らが月へ
+“That's the way to go. Whatever we do, we need rest first. Once we're on the
+---
+>  入れば、とりあえず他の連中に
+>  哨戒に出てもらうこともできる」
+moon, we can at least have the others take up patrol duty.”
+
+@47825 Bright · ブライト
+> 「よし、全艦、月へ戻るぞ」
+“All right, all ships, return to the moon.”
+
+@47826 Judau · ジュドー
+> 「…………」
+“...”
+
+@47827 Kamille · カミーユ
+> 「どうした、ジュドー」
+“What's wrong, Judau?”
+
+@47828 Judau · ジュドー
+> 「俺……考えてたことがあんですよ。
+>  もしかしたら、ハマーンは俺たちと
+“I... I've been thinking about something. Maybe Haman wanted to settle things
+---
+>  決着をつけたかったのかもしれないって
+>  でなければ、わざわざ俺たちの前に
+with us. Otherwise, she wouldn't have gone out of her way to
+---
+>  出てくることはなかった」
+show herself before us.”
+
+@47829 Kamille · カミーユ
+> 「ジュドー……。ああ……そうかもしれないな」
+“Judau... Yeah... maybe you're right.”
+
+@47830 Judau · ジュドー
+> 「…………」
+“...”
+
+@47831 Amuro · アムロ
+> 「わかりあえるはずなのに、すれ違いを
+>  続けていくんだ。人は……いつまでも
+“We should be able to understand each other, yet we keep missing each other. People... forever
+---
+>  同じことを繰り返す」
+repeat the same thing.”
+
+@47832 Kamille · カミーユ
+> 「アムロさん……」
+“Amuro...”
+
+@47833 Amuro · アムロ
+> 「ハマーンは苦しんでいた。俺たちは
+>  それをわかっていたはずなのに
+“Haman was suffering. We should have understood that, and yet
+---
+>  どうにもできなかった」
+there was nothing we could do.”
+
+@47834 Kamille · カミーユ
+> 「それは違いますよ。ハマーンはそれを
+>  認めはしなかったでしょう。ああいう
+“That's not true. Haman would never have admitted it. In that kind of
+---
+>  状況の中では、僕らにできたことは
+>  一つだけです。それに、もしもハマーンが
+situation, there was only one thing we could do. And even if Haman was
+---
+>  そうだったとしても、僕らにはやっぱり
+>  どうにもできなかった
+like that, there was still nothing we could have done.
+---
+>  それができたはずの人は……」
+The person who could have done it...”
+
+@47835 Judau · ジュドー
+> 「クワトロ・バジーナ……
+>  シャア・アズナブルだけってことか……」
+“Quattro Bajeena... only Char Aznable, you mean...”
+
+@47836 Amuro · アムロ
+> 「しかし、奴にはハマーンを受け入れる
+>  ことはできなかったさ。奴もハマーンと
+“But he could never accept Haman. He's the same as
+---
+>  同じなんだ」
+Haman.”
+
+@47837 Judau · ジュドー
+> 「あの人が消えた理由って、それなの
+>  か……地球圏に戻ってきた
+“Is that why he disappeared...? Because he met
+---
+>  ハマーンと会ったから……」
+Haman when she came back to the Earth Sphere...”
+
+@47838 Kamille · カミーユ
+> 「もしそうなら、それは許せないな。いまの
+>  ような時こそ必要とされるって
+“If that's the case, I can't forgive him. He should have known that someone like him
+---
+>  わかっているはずなんだ」
+is exactly what's needed at a time like this.”
+
+@47839 Amuro · アムロ
+> 「カミーユ……」
+“Kamille...”
+
+@47840 Hyoma · 豹馬
+> 「あれ?」
+“Huh?”
+
+@47841 Juzo · 十三
+> 「どないしたんや、豹馬」
+“What's the matter, Hyoma?”
+
+@47842 Hyoma · 豹馬
+> 「いや……アラン、いま出ていった部隊
+>  って、どこへ行くんだ?」
+“No... Alan, that unit that just left, where are they headed?”
+
+@47843 Alan · アラン
+> 「サイド3とアクシズだ。残ったアクシズ
+>  軍の残党が、集結する
+“Side 3 and Axis. The remnants of the Axis Forces might
+---
+>  可能性があるからな」
+regroup there.”
+
+@47844 Show · ショウ
+> 「OZも早く組織を再編しないと、
+>  大変だな」
+“OZ had better reorganize quickly too, or they're in for trouble.”
+
+@47845 Alan · アラン
+> 「レディ・アンが、準備を始めて
+>  くれているそうだがね」
+“I hear Lady Une has begun the preparations.”
+
+@47846 Show · ショウ
+> 「しかし……ロームフェラ財団、そんなに
+>  変われるものなのか?」
+“But... can the Romefeller Foundation really change that much?”
+
+@47847 Alan · アラン
+> 「連中には、伝統とやらがあるからな
+>  財団の一部には、デルマイユの
+“They do have their so-called traditions, after all. Even now, some in the Foundation,
+---
+>  ような連中だってまだ残っている。
+>  敵がいなくなったことで、自分たちが
+people like Dermail, still remain. With the enemy gone, it seems some of them
+---
+>  地球圏を支配できると考えた
+>  奴もいたそうだ」
+thought they could rule the Earth Sphere themselves.”
+
+@47848 Hyoma · 豹馬
+> 「そいつはどうなったんだよ。まさか、
+>  そのまんまにしてるわけじゃないだろうな」
+“And what happened to them? Don't tell me you just left them be.”
+
+@47849 Alan · アラン
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“Lady Une told them, if that's what they want, then be prepared to make an enemy
+# 草稿第 2 页：of the 【主角机体名】. Every one of them went pale and
+# 草稿第 3 页：promised to cooperate, so I hear.”
+> 「レディ・アンがな、そうしたいなら、
+>  {HeroMech}を敵に回す
+---
+>  覚悟をしなさい、といってやったそうだ
+>  全員真っ青な顔で、協力を
+---
+>  約束してくれたということだ」
+
+@47850 Ryoma · リョウ
+> 「はははっ、そいつはいいや」
+“Hahaha, that's a good one.”
+
+@47851 Hayato · ハヤト
+> 「しかし……OZを再編して、
+>  地球圏の再建と再統一を
+“But... to reorganize OZ and carry out the rebuilding and reunification of the
+---
+>  やっていくためには、財団のバック
+>  アップが不可欠だ。財団の
+Earth Sphere, the Foundation's backing is indispensable. Unless we change the
+---
+>  体質そのものを変えていかないと、
+>  オレたちもつらいぜ」
+Foundation itself from the ground up, we're in for a hard time too.”
+
+@47852 Alan · アラン
+> 「ま、確かにな。我々には政治
+>  向きの人間はいないからな」
+“Well, that's true enough. We don't have anyone with a head for politics.”
+
+@47853 Hyoma · 豹馬
+> 「レディ・アンがやってくれんだろ」
+“Lady Une will handle it, won't she?”
+
+@47854 Hayato · ハヤト
+> 「トレーズがいなくなったことで、
+>  一番こたえているのはあの女だ」
+“With Treize gone, that woman's taken it the hardest.”
+
+@47855 Juzo · 十三
+> 「まかせてばかりっちゅうわけには、
+>  いかんちゅうことか」
+“Guess we can't just leave everything to her, huh.”
+
+@47856 Show · ショウ
+> 「そういうことだろうな」
+“That's about the size of it.”
+
+@47857 Koji · 甲児
+> 「なぁ、さっきフォン・ブラウン市の話を
+>  聞いたんだけどさ、なんか異星人が
+“Hey, I heard about Von Braun City earlier—apparently it's crawling with
+---
+>  うじゃうじゃしてんだって?」
+aliens?”
+
+@47858 Jun · ジュン
+> 「それは、そうでしょう? 投降した
+>  彼らも、帝国には戻れないんだから」
+“Well, of course it is, isn't it? Even the ones who surrendered can't go back to the Empire.”
+
+@47859 Koji · 甲児
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「だけどよ、なんだかあんまりいい
+>  雰囲気じゃないって話だぜ?
+“But I hear the mood there isn't all that great, you know?
+---
+>  あの連中どうするつもりなんだよ、
+>  ブライト艦長」
+What are you planning to do with those people, Captain Bright?”
+
+@47860 Bright · ブライト
+> 「いつまでもこのままでは、まずいだろうな。
+>  他のコロニーに収容してもらっている
+“We can't leave things as they are forever. Some of them are being taken in
+---
+>  連中もいるし……」
+by other colonies, after all...”
+
+@47861 Amuro · アムロ
+> 「地上に降ろすわけにもいかないしな。
+>  どこかのコロニーを復旧して
+“We can't exactly send them down to Earth either. I suppose we've got no choice
+---
+>  移住してもらうしかないんじゃないのか」
+but to restore one of the colonies and have them move in.”
+
+@47862 Eiji · エイジ
+> 「もしよければ、その件については俺たち
+>  にやらせてください」
+“If you don't mind, please let us handle that matter.”
+
+@47863 Daisuke · 大介
+> 「僕たちなら、ここに取り残された
+>  連中の気持ちを理解してやれる
+“We can understand how the people left behind here feel.
+---
+>  その方が問題が少なくてすむと
+>  思う」
+I think that way, there'll be fewer problems.”
+
+@47864 Maria · マリア
+> 「そう。あたしやタケル、ロゼにゲイルさんや
+>  ジュリアさんなら、少しは不安を
+“That's right. If it's me, Takeru, Rose, Gale, and Julia, we can ease their worries
+---
+>  解消してあげられるわ」
+at least a little.”
+
+@47865 Maria · マリア
+> 「そう。あたしやタケル、ロゼにジュリアさん
+>  なら、少しは不安を解消して
+“That's right. If it's me, Takeru, Rose, and Julia, we can ease their worries
+---
+>  あげられるわ」
+at least a little.”
+
+@47866 Maria · マリア
+> 「そう。あたしやタケル、ゲイルさんに
+>  ジュリアさんなら、少しは不安を
+“That's right. If it's me, Takeru, Gale, and Julia, we can ease their worries
+---
+>  解消してあげられるわ」
+at least a little.”
+
+@47867 Maria · マリア
+> 「そう。あたしやタケル、ジュリアさんなら
+>  少しは不安を解消してあげられるわ」
+“That's right. If it's me, Takeru, and Julia, we can ease their worries at least a little.”
+
+@47868 Amuro · アムロ
+> 「そうだな。彼らと直接話をするのは
+>  君たちに頼んだほうが
+“You're right. It might be better to leave talking to them directly
+---
+>  いいかもしれないな」
+to you lot.”
+
+@47869 Bright · ブライト
+> 「しかしな……復旧できそうなコロニーは
+>  いくつもあるだろうが……大変だぞ
+“But still... there may be plenty of colonies we could restore, but it won't be easy.
+---
+>  ロームフェラ財団を動かすだけでは、
+>  どうにもならん」
+Just getting the Romefeller Foundation to move won't be enough.”
+
+@47870 Quatre · カトル
+> 「それは……僕がなんとかできると
+>  思います。まかせてください」
+“That... I think I can manage somehow. Please leave it to me.”
+
+@47871 Koji · 甲児
+> 「カトルが? ウィナー家ってやつか?」
+“You can, Quatre? That Winner family thing?”
+
+@47872 Quatre · カトル
+> 「ええ」
+“Yes.”
+
+@47873 Bright · ブライト
+> 「あとは……もっとも工業力を残して
+>  いる、サイド3あたりの協力も
+“After that... we'll also need the cooperation of Side 3,
+---
+>  必要だな」
+which still has the most industrial power left.”
+
+@47874 Eiji · エイジ
+> 「その作業に、彼ら自身に参加し
+>  てもらえばいいんですよ。技術レベルは
+“Why not have them take part in the work themselves? Their technical level is
+---
+>  地球より高いし、宇宙空間
+>  にもなれているはずです」
+higher than Earth's, and they should be used to outer space.”
+
+@47875 Amuro · アムロ
+> 「なるほど、そういう見方もあるのか……」
+“I see, so there's a way of looking at it like that...”
+
+@47876 Koji · 甲児
+> 「それはそうとさ、とにかく休養ってやつ
+>  をとろうぜ。艦長たちがいって
+“Anyway, let's just get some rest already. If you and the others don't give the order,
+---
+>  くれねぇと、みんな休めないんだからさ」
+Captain, nobody can relax.”
+
+@47877 David · デビッド
+> 「なんだ、{HeroNick}、まだこんな所に
+>  いたのかよ」
+“What's this, {HeroNick}, you're still in a place like this?”
+
+@47878 Ark · アーク（按段落 3DD1）
+> 「ああ……ちょっとね。星を見てた」
+“Yeah... just for a bit. I was looking at the stars.”
+
+@47879 David · デビッド
+> 「星ぃ? そんなもん、うんざりするくらい
+>  見てるじゃないか。変なやつだな」
+“Stars? We see so many of those we're sick of them. You're a strange one.”
+
+@47880 Anna · アンナ
+> 「デビッド、{HeroNick}は考えごとをして
+>  たのよ。邪魔しちゃ悪いわ。じゃ、
+“David, {HeroNick} was thinking about something. It's rude to interrupt. Well,
+---
+>  わたしたち、もう行くから。
+>  {HeroNick}も休まないとだめよ」
+we're going now. You need to rest too, {HeroNick}.”
+
+@47881 Ark · アーク（按段落 3DD1）
+> 「ありがとう、アンナ。すぐにそうするよ」
+“Thanks, Anna. I'll do that right away.”
+
+@47882 Ark · アーク（按段落 3DD1）
+> (ようやく……ようやくだ、レラ。とりあえず
+>  終わったよ。平和には、まだまだ
+(Finally... finally, Lera. For now, it's over. We're still far, far from peace, though...
+---
+>  ほど遠いけど……。俺たちさ、これから
+>  別の戦いをしなくちゃならないみたいだ
+It looks like we've got to fight a different kind of battle from now on.
+---
+>  おかしいよな。最初は、ただ必死に
+>  戦ってただけだったのに……。だけど、
+It's strange, isn't it? At first, I was just fighting desperately... But,
+---
+>  それもいいんじゃないかって思ってるよ。
+>  レラ、君が……)
+I think that's fine too. Lera, you...)
+
+@47883 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「すまない、邪魔をしたようだな」
+“Sorry, it seems I was interrupting.”
+
+@47884 Ark · アーク（按段落 3DD1）
+> 「いや……なんです?」
+“No... what is it?”
+
+@47885 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「終わったな。……ずいぶんと、遠回り
+>  をしてしまったが」
+“It's over. ...Though we took quite a long detour.”
+
+@47886 Ark · アーク（按段落 3DD1）
+> 「……結局、どうするのが正しいのか
+>  なんて、結果をみるまでは誰にも
+“...In the end, no one knows what the right thing to do was until they see
+---
+>  わからないんだ。だけど……これで、
+>  よかったんだと思いたい」
+the result. But... I want to believe this was for the best.”
+
+@47887 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「たぶんな。君がいま言ったように、
+>  結果がでるまでは、確たることは
+“Probably. As you just said, until the results come in, nothing is certain.
+---
+>  言えん。しかし……」
+However...”
+
+@47888 Ark · アーク（按段落 3DD1）
+> 「そう信じることはできる」
+“We can believe it.”
+
+@47889 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「そういうことだ。食事をしにいく所
+>  だったんだが……つきあわないか」
+“That's right. I was just on my way to get something to eat... care to join me?”
+
+@47890 Ark · アーク（按段落 3DD1）
+> 「……それも、いいかな。あんたの
+>  旧OZ時代の話も聞きたいしね」
+“...That sounds good, actually. I'd like to hear about your old OZ days too.”
+
+@47891 Ark · アーク（按段落 3DD1）
+> (ようやく……ようやくだ、レラ。とりあえず
+>  終わったよ。平和には、まだまだ
+(Finally... finally, Lera. For now, it's over. We're still far, far from peace, though...
+---
+>  ほど遠いけど……。俺たちさ、これから
+>  別の戦いをしなくちゃならないみたいだ
+It looks like we've got to fight a different kind of battle from now on.
+---
+>  おかしいよな。最初は、ただ必死に
+>  戦ってただけだったのに……。だけど、
+It's strange, isn't it? At first, I was just fighting desperately... But,
+---
+>  それもいいんじゃないかって思ってるよ。
+>  レラ、もしお前がいたら……)
+I think that's fine too. Lera, if you were here...)
+
+@47892 Simone · シモーヌ
+> 「あら{HeroNick}、まだこんな所にいたの?」
+“Oh my, {HeroNick}, you're still in a place like this?”
+
+@47893 Selain · セレイン（按段落 3DD2）
+> 「なんだお前たち、戻ってきたのか」
+“What, you guys, you came back?”
+
+@47894 Simone · シモーヌ
+> 「エイジが艦長たちと話し込んでる
+>  のよ。アンナがすねちゃって」
+“Eiji's been deep in conversation with the captain and the others. Anna's pouting.”
+
+@47895 Anna · アンナ
+> 「シモーヌ、私は別に……」
+“Simone, I'm not...”
+
+@47896 David · デビッド
+> 「いまさら、隠すこともないだろう」
+“No point hiding it now.”
+
+@47897 Anna · アンナ
+> 「もう、デビッドったら」
+“Oh, David, honestly.”
+
+@47898 Selain · セレイン（按段落 3DD2）
+> 「…………」
+“...”
+
+@47899 David · デビッド
+> 「どうした?」
+“What's wrong?”
+
+@47900 Selain · セレイン（按段落 3DD2）
+> 「いや……平和な光景だと思ってな」
+“Nothing... I was just thinking what a peaceful sight this is.”
+
+@47901 Simone · シモーヌ
+> 「{HeroNick}……」
+“{HeroNick}...”
+
+@47902 Anna · アンナ
+> 「……{HeroNick}は考えごとをしてたのよ。
+>  邪魔しちゃ悪いわ。{HeroNick}も
+“...{HeroNick} was lost in thought. We shouldn't disturb them. {HeroNick},
+---
+>  休まないとだめよ」
+you need to rest too.”
+
+@47903 Selain · セレイン（按段落 3DD2）
+> 「ああ……わかってる」
+“Yeah... I know.”
+
+@47904 Selain · セレイン（按段落 3DD2）
+> (戦いは終わったが……まだ残党が
+>  残っている。私のような人間でも
+(The battle is over, but... remnants still remain. Even for someone like me,
+---
+>  まだすることはある……。だけど……それ
+>  すらも終わってしまったら……
+there are still things to do... But... if even that comes to an end...
+---
+>  私はどうすればいい。レラ……)
+what am I supposed to do? Lera...)
+
+@47905 Rish · リッシュ（按段落 3DD2）
+> 「おいおい、そんな面してんなよ。他の
+>  連中は、のんきにやってるってのによ」
+“Hey, hey, don't make a face like that. Everyone else is taking it easy, you know.”
+
+@47906 Selain · セレイン（按段落 3DD2）
+> 「貴様か……何の用だ」
+“You... What do you want?”
+
+@47907 Rish · リッシュ（按段落 3DD2）
+> 「自分で道をふさぐなよ、
+>  {HeroNick}。苦しいのはわかるが……
+“Don't block your own path, {HeroNick}. I know it's hard, but...
+---
+>  時間をかけなけりゃ、どうにもならん
+>  問題だぜ?」
+it's a problem that won't be solved unless you give it time, all right?”
+
+@47908 Selain · セレイン（按段落 3DD2）
+> 「お前……」
+“You...”
+
+@47909 Rish · リッシュ（按段落 3DD2）
+> 「俺が言いたかったのは、それだけだ。
+>  じゃな、{HeroNick}。後で
+“That's all I wanted to say. See you, {HeroNick}. Later,
+---
+>  食事くらいはつきあってくれよな。
+>  お前には、生死をともにした
+at least have a meal with me. You've got plenty of comrades
+---
+>  仲間って奴が大勢いるんだろ。
+>  それを、忘れるなよ」
+who've shared life and death with you, right? Don't forget that.”
+
+@47910 Selain · セレイン（按段落 3DD2）
+> 「まったく……ずけずけとよくも人の中に
+>  入ってくる奴だ。……少しは……
+“Honestly... what a guy, barging right into someone's heart like that. ...Maybe...
+---
+>  少しは、大丈夫かもしれないって
+>  思ってもいいのかな。なぁ……レラ」
+maybe it's all right to think that I might be okay. Right... Lera?”
+
+@47911 Selain · セレイン（按段落 3DD2）
+> (戦いは終わったが……まだ残党が
+>  残っている。私のような人間でも
+(The battle is over, but... remnants still remain. Even for someone like me,
+---
+>  まだすることはある……。だけど……それ
+>  すらも終わってしまったら……
+there are still things to do... But... if even that comes to an end...
+---
+>  私はどうすればいい。レラ……)
+what am I supposed to do? Lera...)
+
+@47912 Cecily · セシリー
+> 「こんなふうにゆったりと過ごせる日が
+>  くるなんて、ここ数年考えたことが
+“I never thought I'd see days where we could relax like this, not in all these years.
+---
+>  なかったわ」
+”
+
+@47913 Seabook · シーブック
+> 「ああ。
+>  戦ってばかりの毎日だったものな」
+“Yeah. Every day was nothing but fighting.”
+
+@47914 Cecily · セシリー
+> 「本当にそうね……命令を受けて
+>  {HeroMech}と合流してから
+“That's true... Ever since we received our orders and rendezvoused with the {HeroMech},
+---
+>  ずっと戦い続けて……」
+we've been fighting nonstop...”
+
+@47915 Seabook · シーブック
+> 「それも、もうすぐ終わりさ」
+“And that's about to end soon too.”
+
+@47916 Cecily · セシリー
+> 「……コロニーのみんなは、元気かな」
+“...I wonder if everyone at the colony is doing well.”
+
+@47917 Seabook · シーブック
+> 「大丈夫だよ、みんな元気でいるよ
+>  この戦いが終わったら、また会えるさ」
+“They're fine, everyone's doing well. Once this battle is over, we can see them again.”
+
+@47918 Cecily · セシリー
+> 「ええ。その時はあなたも一緒よ」
+“Yes. And you'll be with me then too.”
+
+@47919 Seabook · シーブック
+> 「ああ……もちろんだ」
+“Yeah... of course.”
+
+@47920 Sally · サリィ
+> 「え? それ本当なんですか?」
+“What? Is that really true?”
+
+@47921 Dr. Hazuki · 葉月博士
+> 「うむ。アステロイドに設置した
+>  監視衛星だ
+“Indeed. It's a surveillance satellite we placed on the Asteroid.
+---
+>  いま、ギャリソンに分析して
+>  もらっているが……」
+Right now, we're having Garrison analyze it, but...”
+
+@47922 Dr. Saotome · 早乙女博士
+> 「……やはり、奴らかね」
+“...So it's them after all, is it?”
+
+@47923 Dr. Hazuki · 葉月博士
+> 「間違いないでしょう。
+>  やはり連中は“刻印”の
+“There's no doubt about it. As expected, they don't seem to be affected
+---
+>  影響を受けないようですな」
+by the ‘Mark,’ do they?”
+
+@47924 Prof. Yumi · 弓教授
+> 「たった数日か……命がけで
+>  戦ってきた彼らには
+“Only a few days, huh... For them, who've been fighting for their lives,
+---
+>  少々短い休暇だったね」
+it was a rather short leave.”
+
+@47925 Sally · サリィ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「なんてこと……ブライト艦長たちに
+>  連絡を……」
+“How awful... We have to contact Captain Bright and the others...”
+
+@47926 Dr. Yotsuya · 四谷博士
+> 「待ちなさい。まだしばらくは
+>  余裕がある
+“Wait. We still have some time to spare.
+---
+>  彼らにはもうしばらく
+>  休んでいてもらおう
+Let them rest a while longer.
+---
+>  今の地球には、彼ら以外に
+>  対応できる者はおらんだろう」
+Right now, there's no one on Earth but them who can handle this.”
+
+@47927 Dr. Hazuki · 葉月博士
+> 「ええ。我々はその間に
+>  観測データの収集と分析に
+“Yes. In the meantime, let's begin collecting and analyzing the observation data.
+---
+>  とりかかりましょう。奴らがどこから
+>  くるのか特定しなければなりません」
+We must pinpoint where they're coming from.”
+
+@47928 Dr. Saotome · 早乙女博士
+> 「ふむ、それと可能なら、
+>  そこへ我々が行く方法もだな」
+“Hmm, and if possible, a way for us to get there as well.”
+
+@47929 Prof. Yumi · 弓教授
+> 「どうやら、我々も
+>  忙しくなりそうですな」
+“It seems we're going to be busy too.”

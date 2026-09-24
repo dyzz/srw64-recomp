@@ -1,0 +1,160 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50911 Remy · レミー
+# 审校：“resistance”后补上 forces，与原文“レジスタンス部隊”对应，且与后文一致。
+> 「……それじゃあなたたちも
+>  レジスタンス部隊に合流するの?」
+“...So you're joining up with the resistance forces too?”
+
+@50912 Kappei · 勝平
+> 「そうなんだよね。俺は乗り気じゃ
+>  ないんだけど、じっちゃんのいいつけでね」
+“That's right. I'm not exactly thrilled about it, but Gramps gave the order.”
+
+@50913 Keiko · 恵子
+# 审校：“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
+> 「地球を救うために、
+>  レジスタンス部隊と協力して
+“He told us to work with the resistance forces and fight the enemy
+---
+>  敵と戦えっていわれたんです」
+to save the Earth.”
+
+@50914 Remy · レミー
+# 审校：两处“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
+> 「私たちもレジスタンス部隊に
+>  聞きたいことがあるのよ
+“We've got questions for the resistance forces too.
+---
+>  ……私たちはドクーガっていう組織を
+>  追っているんだけど、帝国軍と
+...We're chasing an organization called Docooga, and we got word
+---
+>  共同で何らかの行動を
+>  起こすっていう情報があったのよ
+they're working with the imperial army on some kind of operation.
+---
+>  レジスタンス部隊だったら
+>  何か知っていることが
+We figured the resistance forces might know
+---
+>  あるんじゃないかって……」
+something about it...”
+
+@50915 Kappei · 勝平
+# 审校：补上“just”，更贴合原文“あきらめようかって時だった”的时机语气。
+> 「でもホント、助かったよ。
+>  こっちのレーダーは故障しちまって
+“But man, you really saved us. Our radar's busted,
+---
+>  部隊を探すの、
+>  あきらめようかって時だったから」
+and we were just about to give up on finding the unit.”
+
+@50916 Shingo · 真吾
+> 「俺たちはあらかじめ
+>  部隊に連絡して
+“We contacted the unit ahead of time
+---
+>  合流地点を決めておいたからな」
+and set a rendezvous point.”
+
+@50917 Kappei · 勝平
+> 「旅は道連れ、世は情けってね。
+>  ま、仲良く行きましょうや」
+“Travel's better with company, and kindness makes the world go round. Let's all get along, huh?”
+
+@50918 Uchuta · 宇宙太
+# 审校：“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
+> 「もうそろそろ合流地点だぜ……あれ
+>  かな? レジスタンス部隊とやらは……」
+“We should be near the rendezvous point... Is that them? The resistance forces or whatever...”
+
+@50919 Remy · レミー
+> 「……違うみたいね。
+>  どうやら敵部隊のお出ましのようね」
+“...Doesn't look like it. Seems we've got an enemy unit coming our way.”
+
+@50920 Kappei · 勝平
+> 「ヤバイぜ! 俺たちのこと、
+>  気づいたみたいだ!」
+“This is bad! I think they spotted us!”
+
+@50921 Killy · キリー
+> 「奴らを倒さなきゃこれ以上は
+>  先に進めそうもないようだ」
+“Looks like we can't go any further unless we take them down.”
+
+@50922 Shingo · 真吾
+> 「そんじゃ、出撃しますか」
+“Well then, let's launch.”
+
+@50923 Kappei · 勝平
+> 「俺たちもいくぜ!
+>  宇宙太、恵子、出撃だ!」
+“We're going too! Uchuta, Keiko, launch!”
+
+@50924 Shingo · 真吾
+> 「ゴーショーグン、ゴー!」
+“GoShogun, go!”
+
+@50925 Kappei · 勝平
+> 「ザンボットコンビネーション!」
+“Zambot Combination!”
+
+@50926 Chiyonishiki · 千代錦
+> 「ワン!」
+“Woof!”
+
+@50927 Uchuta · 宇宙太
+> 「ツー!」
+“Two!”
+
+@50928 Keiko · 恵子
+> 「スリー!」
+“Three!”
+
+@50929 Killy · キリー
+> 「まだ『ブロンクスの狼』が
+>  書きあがってないのにね」
+“And I haven't even finished writing ‘The Wolf of the Bronx’ yet.”
+
+@50930 Kappei · 勝平
+> 「そんなバカな……
+>  クソッ、負けるのかよぉ」
+“No way... Damn it, are we gonna lose?”
+
+@50931 Keiko · 恵子
+> 「きゃあぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@50932 Uchuta · 宇宙太
+> 「うわあぁぁっ!」
+“Uwaaaaaah!”
+
+@50933 Kappei · 勝平
+> 「へへーん、ざまぁみろ」
+“Heh heh, serves you right.”
+
+@50934 Remy · レミー
+> 「……終わったわね。グッドサンダーチーム
+>  ここにありって感じ!」
+“...It's over. Feels like the Good Thunder Team was really here!”
+
+@50935 Keiko · 恵子
+> 「見て、勝平。
+>  あれ、レジスタンス部隊じゃないかしら」
+“Look, Kappei. Isn't that the resistance?”
+
+@50936 Kappei · 勝平
+> 「……あれってレジスタンス部隊かい?」
+“...Is that the resistance?”
+
+@50937 Shingo · 真吾
+> 「……どうやらそうみたいだ。
+>  やっと合流できるな」
+“...Looks like it. We can finally link up.”
+
+@50938 Kappei · 勝平
+> 「へへん、いっちょ暴れてやりますか」
+“Heh, let's go raise some hell.”

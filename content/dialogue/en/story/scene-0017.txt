@@ -1,0 +1,1197 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@19829 Roux · ルー
+> 「艦長、イゴール将軍から
+>  通信が入っています」
+“Captain, we're receiving a communication from General Igor.”
+
+@19830 Beauty · ビューティ
+> 「艦長、
+>  ライフのイゴール将軍から通信よ」
+“Captain, there's a communication from General Igor on the line.”
+
+@19831 Bright · ブライト
+> 「イゴール将軍から? まわしてくれ」
+“From General Igor? Put him through.”
+
+@19832 Igor · イゴール
+> 「おお、ブライト中佐。
+>  そちらもなかなか、大変なようだな」
+“Ah, Lieutenant Colonel Bright. Things seem quite difficult on your end as well.”
+
+@19833 Bright · ブライト
+> 「はい。連中の策略に、
+>  はまってしまいました」
+“Yes. We fell right into their scheme.”
+
+@19834 Igor · イゴール
+> 「その件の影響については我々の
+>  方で多少押さえてはいるがな」
+“We've managed to contain some of the fallout from that incident on our side, at least.”
+
+@19835 Igor · イゴール
+> 「おお、中佐。万丈くんもいるのか」
+“Ah, Lieutenant Colonel. So Banjo is there too.”
+
+@19836 Banjo · 万丈
+> 「ごぶさたしております、将軍」
+“It's been a while, General.”
+
+@19837 Igor · イゴール
+> 「カラバも苦労しているようだな」
+“Karaba seems to be having a hard time of it as well.”
+
+@19838 Bright · ブライト
+> 「それで、どのようなご用件です?」
+“So, what is it you need?”
+
+@19839 Igor · イゴール
+> 「うむ。実はカンザスシティで
+>  武装市民が占領軍に
+“Yes. Actually, armed citizens in Kansas City have
+---
+>  反発して一斉蜂起したのだ。
+>  しかし占領軍の
+risen up in revolt against the occupation forces. But it seems
+---
+>  鎮圧部隊によって、街が
+>  攻撃を受けているらしい
+the occupation army's suppression unit is attacking the city.
+---
+>  そこで、君たちに市民の救援に
+>  向かってほしいのだ」
+So I want you to head there and rescue the citizens.”
+
+@19840 Quattro · クワトロ
+> 「しかし、我々も補給をしませんと」
+“But we need to resupply as well.”
+
+@19841 Igor · イゴール
+> 「わかっている。すでにカラバとも
+>  連絡をとって手配してある
+“I know. I've already contacted Karaba and made arrangements.
+---
+>  補充の人員もまわしてある。
+>  もうじき、そちらに合流できるはずだ」
+I'm sending replacement personnel too. They should be able to join you before long.”
+
+@19842 Bright · ブライト
+> 「わかりました。では我々は
+>  補給物資を受け取ったのち
+“Understood. Then once we've received the supplies,
+---
+>  カンザスシティに向かいます」
+we'll head for Kansas City.”
+
+@19843 Banjo · 万丈
+> 「蜂起した市民が攻撃されて
+>  いるとあれば放ってはおけないな
+“If citizens who rose up are under attack, we can't just ignore it.
+---
+>  わかりました。我々はカンザスシティに
+>  向かいましょう」
+Understood. We'll head for Kansas City.”
+
+@19844 Igor · イゴール
+> 「頼んだぞ」
+“I'm counting on you.”
+
+@19845 Kamille · カミーユ
+> 「アムロさん、もうすぐ補給部隊と
+>  合流だそうですよ」
+“Amuro, it looks like we'll be linking up with the supply unit soon.”
+
+@19846 Amuro · アムロ
+> 「……わかっている。あとで行く」
+“...I know. I'll go later.”
+
+@19847 Amuro · アムロ
+> 「……シャアもブライトも、
+>  俺にあてつけているんだ
+“...Char and Bright are both throwing it in my face.
+---
+>  ガンダムを若い奴に使わせて……」
+Letting some kid pilot the Gundam...”
+
+@19848 Sara · 沙羅
+> 「もと地球連邦軍第13特殊
+>  機甲部隊所属、
+“Formerly of the Earth Federation 13th Special Armored Unit,
+---
+>  結城沙羅、司馬亮、
+>  式部雅人、着任いたしました」
+Sara Yuki, Ryo Shiba, and Masato Shikibu, reporting for duty.”
+
+@19849 Bright · ブライト
+> 「ご苦労。まさか獣戦機隊が
+>  無事だったとはな。よく来てくれた」
+“Good work. I never thought the Cyber Beast Force was still intact. I'm glad you came.”
+
+@19850 Sara · 沙羅
+> 「イゴール将軍の指示で、一旦
+>  解散して身を隠してましたから」
+“On General Igor's orders, we disbanded and went into hiding for a while.”
+
+@19851 Bright · ブライト
+> 「そうか……獣戦機隊は4名では
+>  なかったか? 1人たりないようだが」
+“I see... Wasn't the Cyber Beast Force four people? Looks like you're one short.”
+
+@19852 Masato · 雅人
+> 「忍は見つからないんですよね、
+>  どっかいっちゃったまま
+“We can't find Shinobu. He just took off somewhere.
+---
+>  沙羅が寂しがっちゃって
+>  大変なんですから」
+Sara's been so lonely it's a real handful.”
+
+@19853 Sara · 沙羅
+> 「うっさいんだよ、雅人。
+>  居場所は大体見当ついてんだ
+“Shut up, Masato. I've got a pretty good idea where he is.
+---
+>  首に縄つけてでも、
+>  ひっぱってきてやるさ」
+I'll drag him back by the neck if I have to.”
+
+@19854 Ryo · 亮
+> 「まったくあのバカはな。獣戦機隊も
+>  4機そろわなけりゃ、さまにならん」
+“That idiot, honestly. The Cyber Beast Force can't be complete without all four machines.”
+
+@19855 Bright · ブライト
+> 「……そうか。それで、
+>  補給物資の方はどうなっている?」
+“...I see. So, how are the supplies coming along?”
+
+@19856 Masato · 雅人
+> 「それなら、カラバのベルトーチカっていう
+>  美人さんがやってくれてますよ」
+“That's being handled by a real beauty from Karaba named Beltorchika.”
+
+@19857 Sara · 沙羅
+> 「あんた、相変わらずそればっかりだね」
+“You never change, do you? It's always that with you.”
+
+@19858 Masato · 雅人
+> 「人生楽しく生きなきゃ
+>  ここは美人が多くて、
+“You've gotta enjoy life. There are lots of beauties here,
+---
+>  やりがいがありそうだよ」
+so it seems worth doing.”
+
+@19859 Beltorchika · ベルトーチカ
+> 「艦長、搬入した物資のチェック
+>  終了しました」
+“Captain, I've finished checking the supplies we loaded.”
+
+@19860 Bright · ブライト
+> 「ああ、ご苦労さま。少し休んでくれ
+>  アムロも来たな、紹介しよう」
+“Ah, good work. Take a little rest. Amuro, you're here too. Let me introduce you.”
+
+@19861 Beltorchika · ベルトーチカ
+> 「カラバのベルトーチカ・イルマです」
+“I'm Beltorchika Irma, from Karaba.”
+
+@19862 Amuro · アムロ
+> 「よろしく。アムロ・レイです」
+“Nice to meet you. I'm Amuro Ray.”
+
+@19863 Beltorchika · ベルトーチカ
+> 「アムロ……あなたが。あら?
+>  この香り……ヘレンヘレンでしょ」
+“Amuro... so you're the one. Oh? This scent... it's Helen Helen, isn't it?”
+
+@19864 Amuro · アムロ
+> 「え?」
+“Huh?”
+
+@19865 Beltorchika · ベルトーチカ
+> 「あたしの好きなセッケン」
+“My favorite soap.”
+
+@19866 Amuro · アムロ
+> (……なんでアウドムラに
+>  ヘレンヘレンがあるんだ?)
+(...Why is there Helen Helen on the Audhumla?)
+
+@19867 Bright · ブライト
+> (俺は知らんよ)
+(Don't ask me.)
+
+@19868 Beltorchika · ベルトーチカ
+> 「……あなたがアムロ・レイ? ふぅん、
+>  ニュータイプっていっても普通の人ね」
+“...You're Amuro Ray? Hmm, even if you're a Newtype, you're just an ordinary person.”
+
+@19869 Amuro · アムロ
+> 「すいませんね」
+“Sorry about that.”
+
+@19870 Beltorchika · ベルトーチカ
+> 「あたしね、アムロ・レイってもっと
+>  好戦的なタイプと思っていたの
+“You know, I thought Amuro Ray would be a much more warlike type.
+---
+>  安心したわ。あたし、ライフとか
+>  カラバが帝国と同じように
+I'm relieved. I was afraid that Life, or Karaba, might be just like the Empire—
+---
+>  ううん、スペシャルズみたいに、
+>  大義名分を隠れみのに平気で
+no, like the Specials—hiding behind some noble cause while calmly
+---
+>  同じ地球人を殺すような
+>  集団だったらどうしようって
+killing fellow Earthlings.
+---
+>  怖かったの」
+I was scared.”
+
+@19871 Amuro · アムロ
+> 「それなのに、カラバに?」
+“And yet, you joined Karaba?”
+
+@19872 Beltorchika · ベルトーチカ
+> 「町はゲリラ狩りで焼かれてしまったし
+>  占領軍も嫌いだったから」
+“My town was burned down in the guerrilla hunts, and I hated the occupation army too.”
+
+@19873 Quattro · クワトロ
+> 「艦長、時間が押している。
+>  作業を急がせてくるが」
+“Captain, we're running behind schedule. I'll go hurry up the work.”
+
+@19874 Bright · ブライト
+> 「ああ、頼む」
+“Yeah, please do.”
+
+@19875 Beltorchika · ベルトーチカ
+> 「あの人、誰?」
+“Who's that man?”
+
+@19876 Amuro · アムロ
+> 「解放戦線の、クワトロ大尉だよ」
+“That's Lieutenant Quattro, from the Liberation Front.”
+
+@19877 Beltorchika · ベルトーチカ
+> 「……恐い感じの人ね。あの人には、
+>  平和なインテリジェンスを感じないわ」
+“...He seems scary. I don't sense any peaceful intelligence in him.”
+
+@19878 Amuro · アムロ
+> 「クワトロ大尉はそんな人じゃない。
+>  本質的にはやさしい人だ」
+“Lieutenant Quattro isn't like that. Deep down, he's a gentle person.”
+
+@19879 Beltorchika · ベルトーチカ
+> 「……あたし、何か悪いこといいました?」
+“...Did I say something wrong?”
+
+@19880 Bright · ブライト
+> 「いや、気にすることはない」
+“No, don't worry about it.”
+
+@19881 Beltorchika · ベルトーチカ
+> 「……ウソよ」
+“...You're lying.”
+
+@19882 Rain · レイン
+> 「バランサー、パワーバランスシステム……
+>  OK。オープンゲージ……
+“Balancer, power balance system... OK. Open gauge...
+---
+>  誤差ゼロコンマ+2。
+>  変形システム……正常。よしっと」
+error zero point +2. Transform system... normal. All right.”
+
+@19883 Astonaige · アストナージ
+> 「すまない、それが終わったら
+>  こっちも見てやってくれないか」
+“Sorry, when you're done with that, could you take a look at this too?”
+
+@19884 Rain · レイン
+> 「はい、構いませんよ。
+>  ちょっと待ってください」
+“Yes, that's fine. Just a moment, please.”
+
+@19885 Astonaige · アストナージ
+> 「助かるよ。なにしろ人手不足でね」
+“You're a lifesaver. We're really short-handed, you see.”
+
+@19886 Ark · アーク（按段落 3DD1）
+> 「アストナージさん、
+>  システムのバックアップ終わりましたよ」
+“Astonaige, I've finished the system backup.”
+
+@19887 Astonaige · アストナージ
+> 「スクリーン回りの不具合は
+>  どうした?」
+“What about the trouble around the screen?”
+
+@19888 Ark · アーク（按段落 3DD1）
+> 「データ表示のエラーですか?
+>  修正しましたよ」
+“The data display error? I fixed it.”
+
+@19889 Aboly · アポリー
+> 「よう、がんばってるじゃないか」
+“Hey, you're working hard, aren't you.”
+
+@19890 Ark · アーク（按段落 3DD1）
+> 「できることはやっておかないと、
+>  あとが大変ですから。ソルデファーは
+“If I don't do what I can now, it'll be a lot worse later. The Soldifar
+---
+>  試作機だけあって、ソフト
+>  関係にも問題多いですからね」
+is a prototype, after all, so it's got plenty of problems with its software too.”
+
+@19891 Aboly · アポリー
+> 「結構、結構」
+“Good, good.”
+
+@19892 Bright · ブライト
+> 「そろそろだな。総員、
+>  第一戦闘配備のまま待機!」
+“It's about time. All hands, stand by at first battle stations!”
+
+@19893 Quattro · クワトロ
+> 「カミーユ、エマ特尉の保護観察
+>  をとく。戦闘に参加させろ」
+“Kamille, I'm lifting Ensign Emma's probation. Let her join the battle.”
+
+@19894 Kamille · カミーユ
+> 「はい!」
+“Yes, sir!”
+
+@19895 Quattro · クワトロ
+> 「万丈くん、エマ特尉の
+>  保護観察をとくが、いいか」
+“Banjo, I'm lifting Ensign Emma's probation. Is that all right?”
+
+@19896 Banjo · 万丈
+> 「いいでしょう。彼女なら大丈夫」
+“That's fine. She'll be all right.”
+
+@19897 Heero · ヒイロ
+> 「……みじめな仕事だ……くそっ」
+“...What a miserable job... damn it.”
+
+@19898 Heero · ヒイロ
+> 「ん……? あれは……」
+“Hm...? What's that...”
+
+@19899 Relena · リリーナ
+> 「早く、みなさん避難してください!
+>  ヒイロ……? ヒイロが戦っている」
+“Hurry, everyone, please evacuate! Heero...? Heero is fighting.”
+
+@19900 Heero · ヒイロ
+# 审校：原文是确认语气的「か」，初稿译成疑问句“is it”语气不对，改为陈述式确认。
+> 「……リリーナ・ドーリアンか」
+“...Relena Darlian.”
+
+@19901 Specials · スペシャルズ
+> 「いたぞ、リリーナ・ドーリアンだ」
+“There she is, Relena Darlian!”
+
+@19902 Relena · リリーナ
+> 「スペシャルズ……お父さまを殺して……」
+“The Specials... you killed my father...”
+
+@19903 Relena · リリーナ
+> 「あぁ……ヒイロ……」
+“Ah... Heero...”
+
+@19904 Specials · スペシャルズ
+> 「やれ」
+“Do it.”
+
+@19905 Relena · リリーナ
+> 「……ヒイロ!? ヒイロがわたくしを
+>  助けてくれたの……?」
+“...Heero?! Heero saved me...?”
+
+@19906 Heero · ヒイロ
+> 「……くっ、何をしているんだ、俺は」
+“...Ngh, what am I doing?”
+
+@19907 Specials · スペシャルズ
+> 「だ、だめだっ! 退却しろ!」
+“N-No good! Retreat!”
+
+@19908 Relena · リリーナ
+> 「ヒイロ…ヒイロ、聞こえているのでしょう?
+>  なぜわたくしを助けたの?
+“Heero... Heero, you can hear me, can't you? Why did you save me?
+---
+>  殺すのではなくって? 答えて、ヒイロ!」
+Instead of killing me? Answer me, Heero!”
+
+@19909 Heero · ヒイロ
+> 「…………くっ」
+“...Ngh.”
+
+@19910 Relena · リリーナ
+> 「逃げないで! お願い、ヒイロ!」
+“Don't run away! Please, Heero!”
+
+@19911 Dr. Gura · グラー博士
+> 「たくさん生け捕りにするのだ。
+>  改造して我らの兵士にしてくれる」
+“Take plenty of them alive. We'll remodel them into soldiers for our cause.”
+
+@19912 Dark General · 暗黒大将軍
+> 「百鬼一族め。
+>  ……む、レジスタンスか!?」
+“Those Hyakki Clan vermin. ...Hm, the Resistance?!”
+
+@19913 Dr. Gura · グラー博士
+> 「おぉ!? この反応は……
+>  間違いない
+“Oh?! That reading is... no mistake about it.
+---
+>  きゃつらめ、ゲッターロボが
+>  混じっておるぞ」
+Those curs have a Getter Robo mixed in with them!”
+
+@19914 Bright · ブライト
+> 「くっ、あれはミケーネと百鬼か。
+>  帝国についた悪魔め
+“Ngh, that's Mycenae and the Hyakki, is it. Devils who've thrown in with the Empire.
+---
+>  総員、戦闘開始だ!
+>  出撃しろ!」
+All hands, commence battle! Launch!”
+
+@19915 Banjo · 万丈
+> 「ミケーネと百鬼一族か!悪魔め
+>  帝国と手を組んで人類を
+“Mycenae and the Hyakki Clan! You devils mean to join hands with the Empire and
+---
+>  滅ぼすつもりか。みんな、いくぞ!」
+destroy mankind? Everyone, let's go!”
+
+@19916 Amuro · アムロ
+> 「くっ……」
+“Ngh...”
+
+@19917 Bright · ブライト
+> 「ん? やめておけ! 3年間も
+>  モビルスーツは、いじってないんだろう!?」
+“Hm? Don't bother! You haven't touched a Mobile Suit in three years, have you?!”
+
+@19918 Beltorchika · ベルトーチカ
+> 「機銃座でしょ?」
+“The gun turret, right?”
+
+@19919 Amuro · アムロ
+> 「俺は、ガンダムのパイロットだったんだ」
+“I was the pilot of the Gundam.”
+
+@19920 Beltorchika · ベルトーチカ
+> (アムロ……レイ……
+>  やっぱりこの人もパイロットだった
+(Amuro... Rei... so this man was a pilot too.
+---
+>  戦う人だったんだわ……)
+He was a man who fought...)
+
+@19921 Bright · ブライト
+> 「各パイロットは出撃しろ!」
+“All pilots, launch!”
+
+@19922 Amuro · アムロ
+> 「くそ……」
+“Damn it...”
+
+@19923 Beltorchika · ベルトーチカ
+> (なぜ? いま口では戦うと
+>  いっていた人が、怖がっているなんて
+(Why? A man who just said he'd fight, and he's terrified?
+---
+>  あれがニュータイプといわれた人なの?
+>  ……違う、あたしが空が
+Is that what a so-called Newtype is?... No, just like I'm afraid the sky
+---
+>  落ちてくるのが怖いように、この人も
+>  戦うことが怖いんだわ……だけど!)
+is falling, this man is afraid to fight... but still!)
+
+@19924 Beltorchika · ベルトーチカ
+> 「機銃座に案内して!」
+“Take me to the gun turret!”
+
+@19925 Quattro · クワトロ
+> (どうしたのだ、アムロ君……
+>  こうして若者たちも戦っている
+(What's wrong, Amuro... even the young ones are fighting like this.
+---
+>  あのときの血の騒ぎはなくなったのか?)
+Has the stirring of blood from back then faded?)
+
+@19926 Tekkoki · 鉄甲鬼
+> 「ひけ、グラー。あとは俺にまかせて
+>  もらおう。地球人ども、俺は
+“Fall back, Gura. Leave the rest to me. Earthlings, I am
+---
+>  百鬼一族の鉄甲鬼だ。さぁ、
+>  この俺と正々堂々、戦え!」
+Tekkoki of the Hyakki Clan. Now, face me fair and square!”
+
+@19927 Musashi · ムサシ
+> 「貴様らが正々堂々だと?
+>  笑わせるな」
+“You lot, fair and square? Don't make me laugh.”
+
+@19928 Dr. Gura · グラー博士
+> (奴のいうことを真に受けておっては
+>  我が百鬼一族の野望は
+(If we take that one at his word, the ambition of our Hyakki Clan will
+---
+>  達成されぬわ)
+never be fulfilled.)
+
+@19929 Tekkoki · 鉄甲鬼
+> 「なに!? グラー、手を出すな!
+>  約束を忘れたのか!?」
+“What?! Gura, don't interfere! Have you forgotten our promise?!”
+
+@19930 Dr. Gura · グラー博士
+> 「だまれ。ここで、きゃつらを倒して
+>  ゲッター線増幅炉を手にいれれば
+“Silence. If we defeat them here and obtain the Getter Ray Amplification Reactor,
+---
+>  我らの野望は
+>  大きく前進するのじゃ!」
+our ambition will advance by leaps and bounds!”
+
+@19931 Ark · アーク（按段落 3DD1）
+> 「こ、こんなにいるのか……!?」
+“Th-There are this many...?!”
+
+@19932 Selain · セレイン（按段落 3DD2）
+> 「……この数では、不利か……」
+“...With this many, we're at a disadvantage...”
+
+@19933 Brad · ブラッド（按段落 3DD3）
+> 「ケッ、どれだけこようと構いやしないぜ。
+>  片っ端から、ぶっつぶしてやる!」
+“Heh, I don't care how many come. I'll smash every last one of them!”
+
+@19934 Manami · マナミ（按段落 3DD4）
+> 「なんて数……でも、
+>  ここで負けるわけにはいかないわ!」
+“What numbers... but I can't afford to lose here!”
+
+@19935 Lawrence · ローレンス
+> 「はい、お嬢様」
+“Yes, my lady.”
+
+@19936 Tekkoki · 鉄甲鬼
+> 「クソッ、グラーめ!
+>  こんな戦いは俺のプライドが許さん
+“Damn it, that Gura! My pride won't allow this kind of battle.
+---
+>  貴様ら、勝負は、おあずけだ。
+>  また会おう」
+You lot, we'll settle this another time. We'll meet again.”
+
+@19937 Dr. Gura · グラー博士
+> 「なに!? おのれ、鉄甲鬼め……!」
+“What?! Curse you, Tekkoki...!”
+
+@19938 Ryoma · リョウ
+> 「ふぅ、なんだか知らないが助かったな」
+“Phew, I don't know what happened, but we were saved.”
+
+@19939 Hayato · ハヤト
+> 「ああ、百鬼一族にもあんな奴が
+>  いるとはな。たいした奴だぜ」
+“Yeah, to think the Hyakki Clan had a guy like that. He's quite something.”
+
+@19940 Tekkoki · 鉄甲鬼
+> 「グラーはやられたのか。まぁいい、あとは
+>  俺にまかせてもらおう。地球人ども
+“So Gura's been finished, has he. Fine, leave the rest to me. Earthlings,
+---
+>  俺は百鬼一族の鉄甲鬼だ。
+>  さぁ、この俺と、正々堂々戦え!」
+I am Tekkoki of the Hyakki Clan. Now, face me fair and square!”
+
+@19941 Musashi · ムサシ
+> 「貴様らが正々堂々だと?
+>  笑わせるな」
+“You lot, fair and square? Don't make me laugh.”
+
+@19942 Tekkoki · 鉄甲鬼
+> 「なに!? くっ、グラーめ、まだこれだけの
+>  戦力を隠していたのか」
+“What?! Ngh, that Gura, he was still hiding this much fighting strength.”
+
+@19943 Ryoma · リョウ
+> 「ちっ、まだこんなに来るのか。おい、
+>  鉄甲鬼とかいったな。帝国の
+“Tch, there are still this many coming? Hey, you, Tekkoki or whatever. Bringing the Empire's
+---
+>  無人機まで連れてきて、どこが
+>  正々堂々だというんだ!」
+unmanned machines along — where's the fair and square in that?!”
+
+@19944 Tekkoki · 鉄甲鬼
+> 「クソッ、こんな戦いは俺のプライドが
+>  許さん! 貴様ら、勝負は
+“Damn it, my pride won't allow this kind of battle! You lot, we'll settle this
+---
+>  おあずけだ。また会おう」
+another time. We'll meet again.”
+
+@19945 Ryoma · リョウ
+> 「おい、待て!!」
+“Hey, wait!!”
+
+@19946 Hayato · ハヤト
+> 「フッ、百鬼一族にもあんな奴が
+>  いるとはな」
+“Hmph, to think the Hyakki Clan had a guy like that.”
+
+@19947 Bright · ブライト
+> 「どうやら終わったようだな。よし、
+>  負傷者の救助にあたれ!」
+“Looks like it's over. All right, see to the wounded!”
+
+@19948 Lera · レラ
+> 「う……うぅ……」
+“U... Ugh...”
+
+@19949 Ark · アーク（按段落 3DD1）
+> 「あ……きみ、大丈夫か?」
+“Ah... hey, are you all right?”
+
+@19950 Lera · レラ
+> 「アタシにさわるな! くっ……」
+“Don't touch me! Ngh...”
+
+@19951 Ark · アーク（按段落 3DD1）
+> 「でも、ケガをしてるじゃないか。
+>  ほら、アウドムラに行こう
+“But you're hurt. Come on, let's get you to the Audhumla.
+---
+>  すぐに手当てをしなくちゃ」
+We need to treat that right away.”
+
+@19952 Lera · レラ
+> 「アタシは1人で大丈夫だ!
+>  あんたたちの世話になんかならない
+“I'm fine on my own! I don't need your help.
+---
+>  恩着せがましいんだよ!」
+You're just trying to make me owe you!”
+
+@19953 Ark · アーク（按段落 3DD1）
+> 「そんなこといってる場合じゃない
+>  だろ!? ほら、血が出てるじゃないか」
+“This isn't the time to say that! Look, you're bleeding.”
+
+@19954 Lera · レラ
+> 「放せっ、バカやろう! あぅぅっ!」
+“Let go of me, you idiot! Ahh!”
+
+@19955 Ark · アーク（按段落 3DD1）
+> 「無茶するなよ……
+>  おい、大丈夫か? きみ!?」
+“Don't push yourself... Hey, are you okay?! Hey!”
+
+@19956 Lera · レラ
+> 「…………」
+“...”
+
+@19957 Ark · アーク（按段落 3DD1）
+> 「大変だ……レインさーん!」
+“This is bad... Rain!”
+
+@19958 Lera · レラ
+> 「う……うぅ……」
+“U... Ugh...”
+
+@19959 Selain · セレイン（按段落 3DD2）
+> 「お前、ひどいケガをしているな。
+>  来い、手当てが必要だろう」
+“You're badly wounded. Come, you need treatment.”
+
+@19960 Lera · レラ
+> 「ほ……ほっといてよ!」
+“L-Leave me alone!”
+
+@19961 Selain · セレイン（按段落 3DD2）
+> 「そうしても構わないが、このまま
+>  死にでもされたら寝覚めが悪い
+“I don't mind if you refuse, but if you die like this, I won't sleep well.
+---
+>  いいから来い」
+Enough, come with me.”
+
+@19962 Lera · レラ
+> 「アタシは1人で大丈夫だ!
+>  あんたたちの世話になんかならない
+“I'm fine on my own! I don't need your help.
+---
+>  恩着せがましいんだよ!」
+You're just trying to make me owe you!”
+
+@19963 Selain · セレイン（按段落 3DD2）
+> 「しょうがないガキだな。格好からすれば
+>  お前もゲリラの一員だろう
+“What a stubborn kid. Judging by your outfit, you're a guerrilla too.
+---
+>  お前が死んでも
+>  喜ぶのは帝国軍だけだぞ」
+If you die, the only ones who'll be happy are the Imperial Army.”
+
+@19964 Lera · レラ
+> 「くっ……わかったよ。
+>  さわんないで! 1人で行けるよ」
+“Ngh... Fine. Don't touch me! I can walk on my own.”
+
+@19965 Selain · セレイン（按段落 3DD2）
+> 「ならば早く来い」
+“Then hurry up and come.”
+
+@19966 Lera · レラ
+> 「行って……やるよ…………あうぅっ……」
+“I'm... going... Ahh...”
+
+@19967 Selain · セレイン（按段落 3DD2）
+> 「おい」
+“Hey.”
+
+@19968 Lera · レラ
+> 「……う……」
+“...Ugh...”
+
+@19969 Selain · セレイン（按段落 3DD2）
+> 「ふん」
+“Hmph.”
+
+@19970 Banjo · 万丈
+> 「よし、みんな、
+>  負傷者の救助を急ごう」
+“All right, everyone, hurry and rescue the wounded.”
+
+@19971 Bright · ブライト
+> 「せっかく補給した物資も、
+>  カンザスシティで放出してしまったな」
+“All the supplies we went to the trouble of getting, and we ended up unloading them at Kansas City.”
+
+@19972 Beltorchika · ベルトーチカ
+> 「ええ。現在の状態では、
+>  このあたりでこれ以上の補給は
+“Yes. In our current state, I doubt we can get any more supplies around here.
+---
+>  無理でしょう。ネオホンコンの
+>  ルオ商会なら
+I hear the Luo Company in Neo Hong Kong
+---
+>  手配してくれるはずだと聞いています」
+should be able to arrange some for us.”
+
+@19973 Bright · ブライト
+> 「ホンコンか……どう思う、大尉」
+“Hong Kong, huh... What do you think, Captain?”
+
+@19974 Quattro · クワトロ
+> 「現在の状態が長びけば士気に
+>  かかわる。行くしかないだろう」
+“If our current situation drags on, it'll affect morale. We've no choice but to go.”
+
+@19975 Bright · ブライト
+> 「そうだな……。
+>  よし、アウドムラはホンコンに向かう」
+“You're right... All right, the Audhumla is heading for Hong Kong.”
+
+@19976 Banjo · 万丈
+> 「ギャリソン、
+>  物資の状況はどうだい?」
+“Garrison, how are our supplies?”
+
+@19977 Garrison · ギャリソン
+> 「はい、先だっての補給で
+>  武器弾薬、パーツ類は
+“Yes. Thanks to the recent resupply, we have plenty of weapons, ammunition, and parts,
+---
+>  十分なのですが、食料、
+>  医療品などはカンザスシティで
+but as for food and medical supplies, we unloaded them at Kansas City,
+---
+>  放出してしまいましたので、
+>  ほとんど残っておりません」
+so almost nothing remains.”
+
+@19978 Koji · 甲児
+> 「なんだって!? じゃあオレたちの
+>  食べるものがないってことか?」
+“What?! You mean we've got nothing to eat?”
+
+@19979 David · デビッド
+> 「そりゃ冗談じゃないぜ!」
+“That's no joke!”
+
+@19980 Simone · シモーヌ
+> 「あーったく、いやしいのね、あんたたちは」
+“Oh, honestly, you guys are so greedy.”
+
+@19981 Koji · 甲児
+> 「だけどよ、
+>  メシも食わずに戦えやしないぜ?」
+“But we can't fight on an empty stomach, can we?”
+
+@19982 Garrison · ギャリソン
+> 「ほほぅ、めずらしく正論でございますな」
+“Oh ho, a rare bit of sound reasoning from you.”
+
+@19983 Koji · 甲児
+> 「めずらしいは余計だい」
+“You didn't have to say 'rare.'”
+
+@19984 Banjo · 万丈
+> 「しかたがないな。
+>  艦長、ホンコンへ行こう」
+“It can't be helped. Captain, let's head for Hong Kong.”
+
+@19985 Bright · ブライト
+> 「ホンコン? ずいぶんと遠いな」
+“Hong Kong? That's quite far.”
+
+@19986 Banjo · 万丈
+> 「しかし、あそこのルオ商会なら
+>  なんとか手配してくれるはずさ」
+“But the Luo Company there should be able to arrange something for us.”
+
+@19987 Bright · ブライト
+> 「やむをえんということか。
+>  よし、アウドムラはホンコンに向かおう」
+“I suppose we've no choice. All right, the Audhumla will head for Hong Kong.”
+
+@19988 Masato · 雅人
+> 「ちょっと沙羅
+>  今勝手に出ちゃまずいんじゃない?」
+“Hey, Sara, isn't it bad for you to just go off on your own right now?”
+
+@19989 Sara · 沙羅
+> 「すぐに戻ってくるよ。ちょっと
+>  寄らなきゃならないところがあるんだ」
+“I'll be right back. There's just somewhere I have to stop by.”
+
+@19990 Masato · 雅人
+> 「いくらランドクーガーは、置いて
+>  いくからって……ちょっと沙羅ってば」
+“Even if you're leaving the Land Cougar behind... come on, Sara.”
+
+@19991 Ryo · 亮
+> 「行かせてやれ、雅人。どこに行く
+>  つもりなのかはお前もわかっているだろう」
+“Let her go, Masato. You know where she's headed, don't you?”
+
+@19992 Masato · 雅人
+> 「ちぇっ、俺1人悪者かい。
+>  わかりましたよ、ほっときゃいいんでしょ」
+“Tch, so I'm the bad guy here. Fine, I get it, just leave her alone.”
+
+@19993 Duo · デュオ
+> 「よっと。連絡艇で出るんだろ?
+>  キーカード持ってきてやったぜ」
+“Whoa there. You're heading out in the shuttle, right? I brought you the key card.”
+
+@19994 Sara · 沙羅
+> 「サンキュ。気がきくじゃないか」
+“Thanks. You're pretty thoughtful.”
+
+@19995 Duo · デュオ
+> 「へへっ、お礼はいらないぜ」
+“Heh, no thanks needed.”
+
+@19996 Lera · レラ
+> 「う……ん……」
+“Mm... ngh...”
+
+@19997 Ark · アーク（按段落 3DD1）
+> 「気づいたか?」
+“You're awake?”
+
+@19998 Lera · レラ
+> 「ここは……」
+“Where am I...”
+
+@19999 Ark · アーク（按段落 3DD1）
+> 「アウドムラの中だ。君が失血と
+>  痛みで意識を失ってしまったから
+“You're inside the Audhumla. You lost consciousness from the blood loss and the pain,
+---
+>  運び込んだんだ。
+>  大丈夫、治療は終わってるよ
+so we carried you in. Don't worry, the treatment's finished.
+---
+>  レインさんはあまり体を動かすなってさ
+>  ……ってちょっと、どこ行くつもりだよ?」
+Rain said not to move around too much... hey, wait, where do you think you're going?”
+
+@20000 Lera · レラ
+> 「放せ! アタシは街に戻る。
+>  またいつ、奴らが来るかもしれないんだ」
+“Let go of me! I'm going back to the city. Those bastards could come again any time.”
+
+@20001 Ark · アーク（按段落 3DD1）
+> 「悪いが、アウドムラはホンコンに
+>  向かってる途中だ。引き返せない」
+“Sorry, but the Audhumla's on its way to Hong Kong. We can't turn back.”
+
+@20002 Lera · レラ
+> 「な……なんだって!?」
+“Wha... what did you say?!”
+
+@20003 Ark · アーク（按段落 3DD1）
+> 「意識不明のまま、
+>  おいてくるわけにはいかなかったんだ
+“I couldn't just leave you behind while you were unconscious.
+---
+>  それに、どうせ当分まともに
+>  動けないだろ」
+Besides, you won't be able to move properly for a while anyway.”
+
+@20004 Lera · レラ
+> 「くっ……ふざけるな! 今すぐおろせ、
+>  自分で戻る」
+“Ngh... don't mess with me! Put me down right now, I'll go back on my own.”
+
+@20005 Ark · アーク（按段落 3DD1）
+> 「無茶いうなよ! 大体お前
+>  あのままじゃ死んでたんだぞ
+“Don't be ridiculous! You would've died if we'd left you like that.
+---
+>  助けてもらって礼のひとつも
+>  いえないのかよ」
+Can't you at least say thanks when someone saves your life?”
+
+@20006 Lera · レラ
+> 「アタシが頼んだわけじゃない!」
+“I never asked you to!”
+
+@20007 Ark · アーク（按段落 3DD1）
+> 「……勝手にしろ! とにかく、
+>  治るまではここにいろ
+“...Do whatever you want! Anyway, stay here until you're healed.
+---
+>  その後は好きにすればいいさ。
+>  ……不便だから名前くらいは
+After that, do as you please. ...Since it'd be awkward, at least tell me your name.
+---
+>  教えてほしいな。
+>  俺は{HeroFull}だ」
+I'm {HeroFull}.”
+
+@20008 Lera · レラ
+> 「……レラだよ」
+“...It's Lera.”
+
+@20009 Lera · レラ
+> 「う……ん……」
+“Mm... ngh...”
+
+@20010 Selain · セレイン（按段落 3DD2）
+> 「気づいたようだな」
+“So you're awake.”
+
+@20011 Lera · レラ
+> 「ここは……」
+“Where am I...”
+
+@20012 Selain · セレイン（按段落 3DD2）
+> 「地球解放戦線機構のガルダ
+>  アウドムラの中だ
+“You're aboard the Liberation Front of the Earth's Garuda Audhumla.
+---
+>  死なずにすんでよかったな
+>  ……どこへ行くつもりだ?」
+Good thing you didn't die... where do you think you're going?”
+
+@20013 Lera · レラ
+> 「アタシは街に戻る。
+>  またいつ、奴らが来るかもしれないんだ」
+“I'm going back to the city. Those bastards could come again any time.”
+
+@20014 Selain · セレイン（按段落 3DD2）
+> 「無理だな。今はホンコンに
+>  向かっている。空の上だ」
+“That's impossible. We're heading to Hong Kong right now. We're in the sky.”
+
+@20015 Lera · レラ
+> 「な……なんだって!? どうしてなのさ!」
+“Wha... what?! Why?!”
+
+@20016 Selain · セレイン（按段落 3DD2）
+> 「お前の都合で動くわけじゃない。
+>  そういうことだ」
+“We don't move at your convenience. That's how it is.”
+
+@20017 Lera · レラ
+> 「冗談じゃない! 今すぐおろしてよ。
+>  そうすりゃ自分で帰るから。うぅっ」
+“You've gotta be kidding! Put me down right now. Then I'll go back myself. Ugh.”
+
+@20018 Selain · セレイン（按段落 3DD2）
+> 「もうわかったと思うが、お前はまともに
+>  動ける状態じゃない。そんなに
+“I think you understand by now, but you're in no state to move properly. If you hate it that much,
+---
+>  嫌ならば治ってからなら好きに
+>  するがいい。それくらいは手配してやる」
+then once you're healed, do as you like. I'll arrange at least that much.”
+
+@20019 Lera · レラ
+> 「くぅ……」
+“Ngh...”
+
+@20020 Selain · セレイン（按段落 3DD2）
+> 「痛むのか? いっておくが私は別に
+>  お前に親切にしてやっている
+“Does it hurt? Let me tell you, I'm not being kind to you or anything.
+---
+>  わけじゃない。動けるものなら
+>  放り出していただろうからな」
+If you could move, I'd have thrown you out already.”
+
+@20021 Lera · レラ
+> 「なら、礼はいわなくていいね」
+“Then I don't have to thank you, do I.”
+
+@20022 Selain · セレイン（按段落 3DD2）
+> 「ああ、好きにするがいい。
+>  しかし当分はここにいるんだ
+“Yeah, do as you like. But for now you're staying here.
+---
+>  不便だから名前くらいは
+>  聞いておこうか」
+Since it'd be awkward, I might as well ask your name.”
+
+@20023 Lera · レラ
+> 「……レラ」
+“...Lera.”
+
+@20024 Selain · セレイン（按段落 3DD2）
+> 「私は、{HeroFull}だ」
+“I'm {HeroFull}.”
+
+@20025 Sara · 沙羅
+> 「やっぱりこんなトコにいたんだね……忍。
+>  うすぎたなくて、あんたにピッタリだよ」
+“I knew you'd be in a place like this... Shinobu. Filthy and grimy, just perfect for you.”
+
+@20026 Shinobu · 忍
+> 「…………沙羅……か」
+“...Sara... huh.”
+
+@20027 Sara · 沙羅
+> 「召集命令は聞いてるんでしょ、
+>  忍。亮も雅人も、もう戻って
+“You heard the call-up order, didn't you, Shinobu? Ryo and Masato have already gone back
+---
+>  ムゲ野郎と戦ってるよ。なのに
+>  あんたは、なんだってこんなトコで
+and are fighting those Muge bastards. And yet here you are, moping around
+---
+>  ウダウダやってんのさ」
+in a place like this.”
+
+@20028 Shinobu · 忍
+> 「…………」
+“...”
+
+@20029 Sara · 沙羅
+> 「黙ってないで、なんとかお言いよ!」
+“Don't just stand there silent, say something!”
+
+@20030 Shinobu · 忍
+> 「…………うるせぇな……帰れよ」
+“...Man, you're annoying... Go home.”
+
+@20031 Sara · 沙羅
+> 「忍!? どうしたっていうのさ?
+>  ふぬけになっちまったっていうのかい!?」
+“Shinobu?! What's gotten into you? Are you telling me you've turned into a spineless wreck?!”
+
+@20032 Shinobu · 忍
+> 「俺は……もうじゅうぶん戦った」
+“I've... fought enough already.”
+
+@20033 Sara · 沙羅
+> 「忍……あんた……。そうだね、
+>  長い長い戦いだったさ
+“Shinobu... you... Yeah, I guess so. It's been a long, long war.
+---
+>  とっても長いね。失うものばっかりで、
+>  気がついてみれば裸同然に
+A really long one. We lost and lost until, before we knew it, we were stripped bare.
+---
+>  されてたよ。いったいなんのために戦って
+>  きたのか……ってね、そう思ったよ」
+I found myself thinking... just what were we fighting for all this time?”
+
+@20034 Shinobu · 忍
+> 「沙羅…………」
+“Sara...”
+
+@20035 Sara · 沙羅
+> 「だけどさ……信じられるものだって、手
+>  に入れたんだよね。違うかい、忍?」
+“But you know... we did gain something we can believe in, didn't we? Isn't that right, Shinobu?”
+
+@20036 Shinobu · 忍
+> 「…………」
+“...”
+
+@20037 Sara · 沙羅
+> 「あたしは……あんたを信じてる。じゃあね
+>  忍、久しぶりに会えて、よかったよ」
+“I... I believe in you. See you, Shinobu. I'm glad I got to see you after so long.”
+
+@20038 Shinobu · 忍
+> 「…………くそ……」
+“...Damn it...”
+
+@20039 Ark · アーク（按段落 3DD1）
+> 「デュオ……? こんなところで何を?」
+“Duo...? What are you doing in a place like this?”
+
+@20040 Selain · セレイン（按段落 3DD2）
+> 「ん? デュオ・マックスウェル、
+>  こんなところで何をしている?」
+“Hm? Duo Maxwell, what are you doing in a place like this?”
+
+@20041 Brad · ブラッド（按段落 3DD3）
+> 「お? デュオじゃないか。何やってんだよ」
+“Oh? If it isn't Duo. What are you up to?”
+
+@20042 Manami · マナミ（按段落 3DD4）
+> 「あらデュオ。こんなところでどうしたの?」
+“Oh, Duo. What brings you here?”
+
+@20043 Duo · デュオ
+> 「あんたか……いや、地球で見る月は
+>  キレイだなと思ってさ
+“It's you... No, I was just thinking the moon looks beautiful from Earth.
+---
+>  コロニーじゃ月がはっきり見えすぎて、
+>  まるで墓場みたいだった
+From the colonies you could see the moon too clearly — it was like a graveyard.
+---
+>  帝国の基地もあったしな。俺は
+>  いつまでこの月を見ていられるのかなぁ
+And there was an Imperial base there too. I wonder how much longer I'll get to look at this moon.
+---
+>  ……あいつは月なんか見やしないだろう
+>  けどな……」
+...Though I doubt she ever looks at the moon at all...”

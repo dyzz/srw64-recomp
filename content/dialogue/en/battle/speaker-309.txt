@@ -1,0 +1,166 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13740 Axis Soldier · アクシズ兵
+> 「このおぉぉぉっ!!」
+“Why youuuu!!”
+
+@13741 Axis Soldier · アクシズ兵
+> 「覚悟!」
+“Prepare yourself!”
+
+@13742 Axis Soldier · アクシズ兵
+> 「くらえっ!!」
+“Take this!!”
+
+@13743 Axis Soldier · アクシズ兵
+> 「うけてみろっ!!」
+“Try and take it!!”
+
+@13744 Axis Soldier · アクシズ兵
+> 「いけっ!」
+“Go!”
+
+@13745 Axis Soldier · アクシズ兵
+> 「させるかっ!」
+“Like I'd let you!”
+
+@13746 Axis Soldier · アクシズ兵
+> 「うおおっ!」
+“Whoaah!”
+
+@13747 Axis Soldier · アクシズ兵
+> 「そこだっ!」
+“Right there!”
+
+@13748 Axis Soldier · アクシズ兵
+> 「当たれっ!」
+“Hit him!”
+
+@13749 Axis Soldier · アクシズ兵
+> 「とどめっ!!」
+“Finishing blow!!”
+
+@13750 Axis Soldier · アクシズ兵
+> 「こいつでどうだっ!」
+“How's this one!”
+
+@13751 Axis Soldier · アクシズ兵
+> 「うわっ! や、やられたっ!」
+“Waaah! I-I'm hit!”
+
+@13752 Axis Soldier · アクシズ兵
+> 「ぐうっ! しまった!」
+“Guuh! Damn it!”
+
+@13753 Axis Soldier · アクシズ兵
+> 「うおおっ! く、なんてパワーなんだ!?」
+“Whoaah! W-what power!?”
+
+@13754 Axis Soldier · アクシズ兵
+> 「ぐあっ! こ、こいつ、強いぞ!」
+“Gah! Th-this guy's strong!”
+
+@13755 Axis Soldier · アクシズ兵
+> 「な、何っ!? バカな!?」
+“W-what!? Impossible!?”
+
+@13756 Axis Soldier · アクシズ兵
+> 「うぐっ! い、いかん、やられる!?」
+“Ugh! N-no, I'm going down!?”
+
+@13757 Axis Soldier · アクシズ兵
+> 「あうっ! ま、まずい、このままでは……」
+“Agh! Th-this is bad, at this rate...”
+
+@13758 Axis Soldier · アクシズ兵
+> 「ちっ、さすがにできるな!」
+“Tch, you're good, I'll give you that!”
+
+@13759 Axis Soldier · アクシズ兵
+> 「ぐっ! だが、この程度ならまだっ!」
+“Ngh! But I can still take this much!”
+
+@13760 Axis Soldier · アクシズ兵
+> 「くっ! まだまだ勝負はこれからよ!」
+“Ngh! The real fight's just beginning!”
+
+@13761 Axis Soldier · アクシズ兵
+> 「うっ! やるな!!」
+“Ugh! Not bad!!”
+
+@13762 Axis Soldier · アクシズ兵
+> 「くぅっ! やってくれたな!!」
+“Kuh! You got me!!”
+
+@13763 Axis Soldier · アクシズ兵
+> 「ふん、かすった程度のものよ!」
+“Hmph, it barely grazed me!”
+
+@13764 Axis Soldier · アクシズ兵
+> 「こそばゆいぜ!」
+“That tickles!”
+
+@13765 Axis Soldier · アクシズ兵
+> 「ちっ、あたっちまった!」
+“Tch, it got me!”
+
+@13766 Axis Soldier · アクシズ兵
+> 「この程度のダメージなど!!」
+“Damage like this is nothing!!”
+
+@13767 Axis Soldier · アクシズ兵
+> 「当たっただけだ!」
+“It barely grazed me!”
+
+@13768 Axis Soldier · アクシズ兵
+> 「甘いっ!」
+“Too soft!”
+
+@13769 Axis Soldier · アクシズ兵
+> 「そこかっ!」
+“There you are!”
+
+@13770 Axis Soldier · アクシズ兵
+> 「かわせたっ!」
+“I dodged it!”
+
+@13771 Axis Soldier · アクシズ兵
+> 「当たるか!」
+“Like that would hit!”
+
+@13772 Axis Soldier · アクシズ兵
+> 「なんの!」
+“No problem!”
+
+@13773 Axis Soldier · アクシズ兵
+> 「かわしてみせる!!」
+“I'll show you a dodge!!”
+
+@13774 Axis Soldier · アクシズ兵
+> 「残念だったな!」
+“Too bad for you!”
+
+@13775 Axis Soldier · アクシズ兵
+> 「そんなビームなど!」
+“A Beam like that is nothing!”
+
+@13776 Axis Soldier · アクシズ兵
+> 「ふん、ムダなことをする!」
+“Hmph, what a waste of effort!”
+
+@13777 Axis Soldier · アクシズ兵
+> 「ちっ、しまった! 弾切れか!」
+“Tch, damn! Out of ammo!”
+
+@13778 Axis Soldier · アクシズ兵
+> 「くそっ! 弾切れかよ!」
+“Damn! Out of ammo already!”
+
+@13779 Axis Soldier · アクシズ兵
+> 「くっ! ここからでは
+>  反撃は無理か……」
+“Ngh! I can't counter from here...”
+
+@13780 Axis Soldier · アクシズ兵
+> 「あんな遠くから攻撃してくるのか!?」
+“He can attack from that far away!?”

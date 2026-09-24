@@ -1,0 +1,1999 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@29415 Sayaka · さやか
+> 「グワダンが見えるわ……」
+“I can see the Gwadan...”
+
+@29416 Roux · ルー
+> 「アクシズ軍と共同作戦かあ。
+>  いろいろあるわよねえ」
+“A joint operation with the Axis Forces, huh. There's always something going on.”
+
+@29417 Koji · 甲児
+> 「なあんか、あの船についてこられると
+>  落ちつかねえんだよな」
+“Somehow, having that ship tag along just doesn't sit right with me.”
+
+@29418 David · デビッド
+> 「ま、救いといえば、つるむ相手が
+>  バスクなんてオヤジじゃなくて仮にも
+“Well, if there's a silver lining, it's that our partner is at least a
+---
+>  お姉ちゃんってことかなあ」
+lady, and not some old geezer like Bask.”
+
+@29419 Sayaka · さやか
+# 审校：原文用间隔号强调，译文应保留同样节奏，改为 Un・be・liev・able。
+> 「あ・き・れ・た……」
+“Un・be・liev・able...”
+
+@29420 Koji · 甲児
+> 「おいまさか、お前あーゆうのが好みか?
+>  そういう趣味か?
+“Hey, don't tell me you're into that type? Is that your thing?
+---
+>  まあほんのちょっとはわからないでもない
+>  けどさ……」
+Well, I guess I can sort of see it... just a little.”
+
+@29421 Boss · ボス
+# 审校：Boss 是男性，原译“how scandalous”语气偏女性化，改为更贴合其夸张口吻的“how dreadful”。
+> 「女王様ってこと?
+>  ああら、いやだわさ」
+“You mean like a queen? Oh my, how dreadful.”
+
+@29422 David · デビッド
+> 「いやあ、女王様ならやっぱし
+>  リリーナさんみたいにさ、気品があって
+“Nah, if we're talking queens, it'd have to be someone like Miss Relena,
+---
+>  こう……エレガントっての?」
+you know? Refined and... elegant?”
+
+@29423 Roux · ルー
+> 「あーもうこのバカどもは……
+>  いいかげんにしなさい!」
+“Oh, enough already, you idiots... cut it out!”
+
+@29424 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  3時方向より機体接近!
+“Captain Bright, a mobile suit is approaching from 3 o'clock!
+---
+>  ガンダムエピオンと思われます!」
+It appears to be the Gundam Epyon!”
+
+@29425 Bright · ブライト
+> 「ガンダムエピオン? ということは……
+>  乗っているのは、ゼクス・マーキスか!?」
+“The Gundam Epyon? Then that means... the pilot is Zechs Merquise?!”
+
+@29426 Noin · ノイン
+> 「何だって、ゼクスが!?」
+“What, Zechs?!”
+
+@29427 Quatre · カトル
+> 「ゼクス……彼が来たのか」
+“Zechs... so he's come.”
+
+@29428 Zechs · ゼクス
+> 「ここが私の戦場だと判断した。
+>  できるなら諸君の作戦に
+“I've judged that this is where my battlefield lies. If you'll have me,
+---
+>  参加させてもらいたい」
+I'd like to join your operation.”
+
+@29429 Bright · ブライト
+> 「もちろんだ。来てくれて感謝する」
+“Of course. We're grateful you came.”
+
+@29430 Noin · ノイン
+> 「ゼクス特佐……、来てくれたのですね
+>  今までどこに?」
+“Lieutenant Colonel Zechs... so you've come. Where have you been all this time?”
+
+@29431 Zechs · ゼクス
+> 「考えていた。愚かな人類に、まだ
+>  希望は残されているのかを
+“I was thinking. About whether hope still remains for foolish humanity.
+---
+>  エピオンと共にな」
+Together with Epyon.”
+
+@29432 Duo · デュオ
+> 「へえ、それで? エピオンのゼロ・システム
+>  が見せた未来から、お前はここを
+“Oh yeah? And so? From the future the Epyon's ZERO System showed you,
+---
+>  選んだというわけかい?」
+you chose this place?”
+
+@29433 Zechs · ゼクス
+> 「人の真の未来などわからんという
+>  のが、私とエピオンの答えだ。ならば
+“That humanity's true future cannot be known is the answer Epyon and I reached.
+---
+>  私は戦って生きる。誰よりも
+>  厳しく、戦士としてな」
+So then, I will live by fighting. As a warrior, harsher than anyone.”
+
+@29434 Treize · トレーズ
+> 「ひさしいね、ミリアルド」
+“It's been a long time, Milliardo.”
+
+@29435 Zechs · ゼクス
+> 「トレーズ、君とは違う道を
+>  選んだつもりだったが
+“Treize, I thought I'd chosen a different path from yours,
+---
+>  結局もどってきてしまったな」
+but in the end I've come back.”
+
+@29436 Treize · トレーズ
+> 「なに、地球圏を守ることが
+>  第一だということだ。何より私は
+“No matter. Protecting the Earth Sphere comes first. Above all, I keep no door
+---
+>  友に対して閉ざす扉は持って
+>  いない。君が来てくれて、うれしいよ」
+closed to a friend. I'm glad you've come.”
+
+@29437 Zechs · ゼクス
+> 「財団総帥に復帰したそうだな。
+>  リリーナのこと……感謝している
+“I hear you've returned as head of the foundation. About Relena... thank you.
+---
+>  今の状況はあれにとって
+>  過酷すぎる」
+The current situation is far too harsh for her.”
+
+@29438 Treize · トレーズ
+> 「彼女は今、
+>  再びジュリア・アスカたちと行動を
+“She is now once again acting together with Julia Asuka and the others.
+---
+>  ともにしている。彼女の身辺は、
+>  神に誓って我々が保護しよう
+Her safety, I swear to God, we shall protect.
+---
+>  安心してくれたまえ」
+Rest easy.”
+
+@29439 Zechs · ゼクス
+> 「すまない。もしも地球人類に
+>  未来があるなら、その時は
+“Thank you. If humanity on Earth has a future, then when that time comes,
+---
+>  彼女たちが必要になるだろう。
+>  今必要とされているのは、戦って
+she and the others will be needed. What's needed now are those who will fight,
+---
+>  血にまみれることをいとわない者だ。
+>  我々のようにな……」
+who don't mind being stained with blood. People like us...”
+
+@29440 Garrison · ギャリソン
+> 「レディ・アン様から連絡が入りまし
+>  た。OZ宇宙軍別働隊が
+“A message has come in from Lady Une. The OZ space force detachment
+---
+>  月方面のシロッコの軍勢を
+>  掃討したとのことです。これで
+has swept away Scirocco's forces in the lunar region. With this,
+---
+>  月面基地はトレーズ派が抑えた
+>  ことになりますな」
+the lunar base is now under Treize faction control.”
+
+@29441 Alan · アラン
+> 「ほう、あざやかだな。やはりトレーズが
+>  復帰すると兵の士気が違うのか」
+“Oh, splendid work. I suppose the troops' morale really is different with Treize back.”
+
+@29442 Garrison · ギャリソン
+> 「さようで。月内部にもトレーズ様を
+>  密かに信奉する者が
+“Indeed. There must have been no small number of those within the lunar forces
+---
+>  少なくなかったのでしょうな。バルジと
+>  違い、ロームフェラの本拠地から
+secretly loyal to Lord Treize as well. Unlike Balgi, it's quite far from
+---
+>  遠うございますから」
+Romefeller's home base, after all.”
+
+@29443 Banjo · 万丈
+> 「これでロームフェラ派……
+>  いやシロッコ派は、バルジとリーブラに
+“With this, the Romefeller faction... no, the Scirocco faction, will concentrate
+---
+>  戦力を集中するだろうね。
+>  月の奪還に出て戦力を
+its forces at Balgi and Libra. That man wouldn't split his forces
+---
+>  分散させるようなことは、
+>  あの男はしないだろう」
+to retake the moon.”
+
+@29444 Reika · レイカ
+> 「そうかしら。私たちが銀河帝国に
+>  釘づけになってるスキを狙うかもよ?」
+“You think so? He might try to strike while we're pinned down by the Galactic Empire, you know?”
+
+@29445 Banjo · 万丈
+> 「そいつはないね。バスクあたりならともかく
+>  奴は頭がいい。そして何より
+“Not a chance. Bask might, but that man is smart. And above all,
+---
+>  冒険はしない主義さ。
+>  臆病な敵は、無謀な敵より
+he never takes risks. A cowardly enemy is, if anything,
+---
+>  むしろやっかいだぞ」
+more troublesome than a reckless one.”
+
+@29446 Mouar · マウアー
+> 「月面はどうやら完全に制圧
+>  されたようです。増援部隊を
+“The lunar surface appears to have been completely subdued. Shall we
+---
+>  派遣しますか?」
+dispatch reinforcements?”
+
+@29447 Scirocco · シロッコ
+> 「いや、その必要はない。
+>  残った艦隊を引き上げさせろ」
+“No, that won't be necessary. Have the remaining fleet withdraw.”
+
+@29448 Jerid · ジェリド
+> 「ちょっ、ちょっと待った。
+>  月を放棄するんですか?」
+“W-wait a second. You're abandoning the moon?”
+
+@29449 Scirocco · シロッコ
+> 「そうだ。リーブラとバルジに勢力を
+>  集中させる。いい機会だ」
+“That's right. We'll concentrate our strength at Libra and Balgi. It's a good opportunity.”
+
+@29450 Mouar · マウアー
+> 「しかし……」
+“But...”
+
+@29451 Scirocco · シロッコ
+> 「兵は集中して用いてこそ、その
+>  威力を十分に発揮する
+“Only by concentrating and employing troops do they fully display their might.
+---
+>  戦術の基本中の基本だ。
+>  知らぬわけでもあるまい?」
+That is the most basic of all tactics. Surely you know that?”
+
+@29452 Mouar · マウアー
+> 「は……。了解しました、
+>  残存部隊に帰還命令を
+“Yes... Understood. I'll issue the order for the remaining forces
+---
+>  出します」
+to return.”
+
+@29453 Scirocco · シロッコ
+> 「ジェリド特尉、状況を判断する
+>  ためには、大局を見ることだ
+“Lieutenant Jerid, to judge a situation, one must look at the big picture.
+---
+>  時の運は、まだ十分に傾いては
+>  いない。今は、我々の敵が互いに
+Fortune's tide has not yet tilted far enough. For now, we need only sit here
+---
+>  争うのを、ここで見物していれば
+>  いいのだ。そうは思わんかね」
+and watch our enemies fight among themselves. Don't you agree?”
+
+@29454 Jerid · ジェリド
+> 「はっ、なるほどね。そういうことなら
+>  了解しましょう、特佐殿」
+“Yes, I see. If that's the case, I understand, Lieutenant Colonel.”
+
+@29455 Wahl · ワール
+> 「苦戦しておるようだな、
+>  ガンダル司令」
+“You seem to be having a hard time of it, Commander Gandal.”
+
+@29456 Gandal · ガンダル
+> 「む……。なんの、確かに思ったよりは
+>  手こずっているが、それも時間の
+“Hmph... Not at all. True, they've put up more of a fight than I expected, but that's only a matter of
+---
+>  問題だ。この次の攻撃で、
+>  必ずや……」
+time. With the next attack, I will most certainly...”
+
+@29457 Wahl · ワール
+> 「黙れ。貴様、そうやって何度
+>  マーズと{HeroMech}を
+“Silence. How many times have you let Mazinger and the {HeroMech}
+---
+>  討ちもらした。ズール皇帝はお怒り
+>  になっておられる。貴様に
+slip through your grasp like that? Emperor Zuul is furious. He says
+---
+>  先遣艦隊をまかせたのは誤り
+>  だったとな」
+entrusting you with the advance fleet was a mistake.”
+
+@29458 Gandal · ガンダル
+> 「な、何と! 皇帝陛下が!?」
+“W-what?! His Majesty the Emperor?!”
+
+@29459 Wahl · ワール
+> 「この上は、おそれ多くも陛下
+>  おん自ら艦隊を率いて地球を
+“Furthermore, His Majesty has graciously declared that he will personally lead the fleet
+---
+>  めざすといっておられる。お叱りは
+>  覚悟しておくのだな、ガンダル司令」
+to Earth. Prepare yourself for his reprimand, Commander Gandal.”
+
+@29460 Gandal · ガンダル
+> 「ま、待て。皇帝陛下にお伝え
+>  下され。今しばらく、今しばらくの
+“W-wait. Tell His Majesty the Emperor, I beg you. Grant me a little more
+---
+>  お時間をたまわりたい。このガンダル、
+>  命にかえてもマーズと地球人を
+time, just a little more. This Gandal will slay Mazinger and the Earthlings
+---
+>  しとめてみせる。どうか今一度の
+>  機会を……」
+even at the cost of my life. Please, just one more chance...”
+
+@29461 Wahl · ワール
+> 「ふん、まあよい。いちおうお伝え申し
+>  あげておく。だがもう一度でも
+“Hmph, very well. I shall relay your message, for what it's worth. But if you fail even once more,
+---
+>  しくじったら、その時はわかっておるな。
+>  せいぜい励むが良いぞ
+you know what that means. You'd best apply yourself,
+---
+>  ガンダル司令……」
+Commander Gandal...”
+
+@29462 Gandal · ガンダル
+> 「おっ、おのれおのれえっ! マーズ!
+>  {HeroMech}! このうえは
+“D-damn you, damn you all! Mazinger! {HeroMech}! Now I must wash away
+---
+>  何としても恥をそそがねば、この
+>  ガンダル、死んでも死にきれぬわ!
+this shame no matter what, or this Gandal cannot die in peace!
+---
+>  ええい、どうしてくれよう!」
+Grr, what am I to do?!”
+
+@29463 Vega Soldier · ベガ星兵
+> 「申し上げます!」
+“Reporting, sir!”
+
+@29464 Gandal · ガンダル
+> 「何だあっ!!!」
+“What is it?!”
+
+@29465 Vega Soldier · ベガ星兵
+> 「わっ、わあっ! そ、その、て、敵艦
+>  2隻が接近中であります!
+“Y-yes, sir! Th-that is, t-two enemy ships are approaching!
+---
+>  1隻は、{HeroMech}と
+>  思われ……」
+One appears to be the {HeroMech}...”
+
+@29466 Gandal · ガンダル
+> 「何だとお!!!」
+“What did you say?!”
+
+@29467 Vega Soldier · ベガ星兵
+> 「もっ、申し訳ありません!」
+“I-I'm very sorry, sir!”
+
+@29468 Gandal · ガンダル
+> 「たわけが、何をしておるか!
+>  総員出撃! 迎え撃てい!!」
+“You fools, what are you doing?! All hands, launch! Intercept them!!”
+
+@29469 Vega Soldier · ベガ星兵
+> 「はっ、ははあっ!」
+“Y-yes, sir!”
+
+@29470 Gandal · ガンダル
+> 「ふっ、ふはははは! マーズ、
+>  {HeroMech}! 奴らの方から
+“Heh, heheheheh! Mazinger, {HeroMech}! To think they'd come
+---
+>  出向いてくれるとはなあ!
+>  礼をいうぞ! わしも出撃する!」
+to us! I thank you! I'll launch as well!”
+
+@29471 Koji · 甲児
+> 「キュベレイ……ハマーンかよ。
+>  頼むからファンネル使うときは
+“The Qubeley... So it's Haman. Come on, when you use your Funnels,
+---
+>  ちゃんと狙ってくれよな。
+>  後ろから撃たれるのは、ごめんだぜ」
+at least aim properly. I don't fancy getting shot in the back.”
+
+@29472 Haman · ハマーン
+> 「フッ、そんなことはせんよ、少年。
+>  よけいなことを気にしている
+“Heh, I wouldn't do such a thing, boy. Having the composure to worry about
+---
+>  余裕があるのは、たのもしいがな」
+unnecessary things is reassuring, though.”
+
+@29473 Koji · 甲児
+> 「ちっ」
+“Tch.”
+
+@29474 Marg · マーグ
+> 「マーズ……今度こそ貴様を倒す」
+“Mazinger... This time I will defeat you for certain.”
+
+@29475 Takeru · タケル
+> 「マーグ!? 思い出せ!
+>  俺たちは双子の兄弟!
+“Marg?! Remember! We're twin brothers!
+---
+>  ともに宇宙の平和のために
+>  戦うと誓った!」
+We swore to fight together for the peace of the universe!”
+
+@29476 Marg · マーグ
+> 「世迷いごとを!」
+“Rubbish!”
+
+@29477 Takeru · タケル
+> 「マーグ!! ……なんだ
+>  ……いま見えたマーグの心は……?
+“Marg!! ...What was that...? The heart I just glimpsed in Marg...?
+---
+>  やはり洗脳されていたのか!?」
+So you really were brainwashed?!”
+
+@29478 Naida · ナイーダ
+> 「あれは……グレンダイザー。
+>  ガンダル司令のいっていたことは
+“That's... Grendizer. What Commander Gandal said was
+---
+>  本当だった………」
+true after all...”
+
+@29479 Maria · マリア
+> 「……兄さん」
+“...Brother.”
+
+@29480 Duke · デューク
+> 「どうした、マリア」
+“What is it, Maria?”
+
+@29481 Maria · マリア
+> 「あれに乗っているのは
+>  フリード星人だわ!」
+“The one piloting that is a Fleed!”
+
+@29482 Duke · デューク
+> 「なんだって?」
+“What did you say?”
+
+@29483 Maria · マリア
+> 「間違いないわ、兄さん」
+“There's no mistake, brother.”
+
+@29484 Duke · デューク
+> 「フリード星人……
+>  生き残りがいたのか?
+“A Fleed... There were survivors?
+---
+>  しかし、なぜ……」
+But why...”
+
+@29485 Blacky · ブラッキー
+> 「地球人どもめ……
+>  地獄のダンスを躍らせてやるぞ……」
+“You Earthlings... I'll make you dance a dance of hell...”
+
+@29486 Vega Soldier · ベガ星兵
+> 「ブラッキー隊長、報告いたします。
+>  敵は艦隊を二手にわけ
+“Captain Blacky, reporting. The enemy has split their fleet in two
+---
+>  我が方の側面へ
+>  まわりこんでおります!!」
+and is circling around to our flank!!”
+
+@29487 Blacky · ブラッキー
+> 「なに!? いかん、それでは
+>  ガンダル司令の旗艦を狙われる
+“What?! Damn it, at this rate they'll target Commander Gandal's flagship.
+---
+>  ええい、お前たちはそやつらの進路を
+>  抑えろ!」
+Grr, you men, block their path!”
+
+@29488 Vega Soldier · ベガ星兵
+> 「はっ!」
+“Yes, sir!”
+
+@29489 Takeru · タケル
+> 「マーグ、お前は心の中まで
+>  ズール皇帝のものに
+“Marg, have you become Emperor Zuul's creature down to your very heart?!
+---
+>  なってしまったのか!?
+>  答えろ、マーグ!!」
+Answer me, Marg!!”
+
+@29490 Marg · マーグ
+> 「ふざけたことを! おかしなことをいって
+>  俺をまどわすつもりか!?」
+“Don't be absurd! Are you trying to confuse me with such nonsense?!”
+
+@29491 Takeru · タケル
+> 「マーグ! 俺を忘れてしまったのか!?」
+“Marg! Have you forgotten me?!”
+
+@29492 Marg · マーグ
+> 「貴様が誰であろうと、ズール皇帝
+>  の意思にそむく者は倒す!」
+“Whoever you are, anyone who defies Emperor Zuul's will shall be destroyed!”
+
+@29493 Takeru · タケル
+> 「マーグ、目を覚ましてくれ!」
+“Marg, snap out of it!”
+
+@29494 Marg · マーグ
+> 「黙れ、裏切り者!」
+“Silence, traitor!”
+
+@29495 Takeru · タケル
+> 「違う!」
+“No!”
+
+@29496 Marg · マーグ
+> 「……う…………」
+“...Ugh...”
+
+@29497 Takeru · タケル
+> 「マーグ……お前が地球に害を
+>  及ぼす以上やむをえない……殺す」
+“Marg... As long as you bring harm to Earth, there's no other way... I'll kill you.”
+
+@29498 Marg · マーグ
+> 「あ……マーズ? マーズだな……
+>  俺はいったい
+“Ah... Mars? It's Mars, isn't it... What's happened to me...
+---
+>  俺はいったい
+>  どうしたっていうんだ……!?」
+What in the world has happened to me...?!”
+
+@29499 Takeru · タケル
+> 「マーグ!?」
+“Marg?!”
+
+@29500 Marg · マーグ
+> 「マーズ……」
+“Mars...”
+
+@29501 Takeru · タケル
+> 「俺が、俺がわかるのか!?」
+“You... you recognize me?!”
+
+@29502 Marg · マーグ
+> 「お、俺の、俺のたった1人の
+>  大事な弟だ」
+“Y-you're my... my one and only precious little brother.”
+
+@29503 Takeru · タケル
+> 「兄さん……兄さん!」
+“Brother... Brother!”
+
+@29504 Marg · マーグ
+> 「マーズ……何が起こったんだ?」
+“Mars... What happened?”
+
+@29505 Takeru · タケル
+> 「兄さん……
+>  ようやく思い出してくれたんだね」
+“Brother... You've finally remembered me.”
+
+@29506 Marg · マーグ
+> 「……ああ……そうか、俺は
+>  ズール皇帝に過去を奪われたのだ
+“...Yeah... I see. Emperor Zuul stole my past from me.
+---
+>  そして俺は、ズールの意のままに
+>  戦う男にされてしまった……」
+And he turned me into a man who fights exactly as Zuul wills...”
+
+@29507 Takeru · タケル
+> 「マーグ、もう大丈夫だ。
+>  絶対に離さない!」
+“Marg, it's all right now. I'll never let you go!”
+
+@29508 Rose · ロゼ
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「マーグ隊長、どきなさい!
+>  マーズ、覚悟!」
+“Captain Marg, get out of the way! Mars, prepare yourself!”
+
+@29509 Marg · マーグ
+> 「ロゼ、やめろッ!」
+“Rose, stop!”
+
+@29510 Takeru · タケル
+> 「マーグ!? やめろぉぉぉぉぉっ!!」
+“Marg?! Stop it!!”
+
+@29511 Marg · マーグ
+> 「うわあぁぁぁぁぁーっ!?」
+“Uwaaaaaaah?!”
+
+@29512 Rose · ロゼ
+> 「くっ……ばかな……」
+“Ngh... Impossible...”
+
+@29513 Marg · マーグ
+> 「……うぅ……」
+“...Ugh...”
+
+@29514 Takeru · タケル
+> 「マーグ!? よかった、
+>  無事だったんだね
+“Marg?! Thank goodness, you're safe.
+---
+>  マーグ、もう誰にも渡さない。
+>  兄さんは俺のものだ」
+Marg, I won't give you to anyone anymore. My brother belongs to me.”
+
+@29515 Rose · ロゼ
+> 「マーズッ!!」
+“Mars!!”
+
+@29516 Marg · マーグ
+> 「……う…………」
+“...Ugh...”
+
+@29517 Takeru · タケル
+> 「マーグ……お前が地球に害を
+>  及ぼす以上やむをえない……殺す」
+“Marg... As long as you bring harm to Earth, there's no other way... I'll kill you.”
+
+@29518 Marg · マーグ
+> 「あ……マーズ? マーズだな……
+>  俺はいったい
+“Ah... Mars? It's Mars, isn't it... What's happened to me...
+---
+>  俺はいったい
+>  どうしたっていうんだ……!?」
+What in the world has happened to me...?!”
+
+@29519 Takeru · タケル
+> 「マーグ!?」
+“Marg?!”
+
+@29520 Marg · マーグ
+> 「マーズ……」
+“Mars...”
+
+@29521 Takeru · タケル
+> 「俺が、俺がわかるのか!?」
+“You... you recognize me?!”
+
+@29522 Marg · マーグ
+> 「お、俺の、俺のたった1人の
+>  大事な弟だ」
+“Y-you're my... my one and only precious little brother.”
+
+@29523 Takeru · タケル
+> 「兄さん……兄さん!」
+“Brother... Brother!”
+
+@29524 Marg · マーグ
+> 「マーズ……何が起こったんだ?」
+“Mars... What happened?”
+
+@29525 Takeru · タケル
+> 「兄さん……
+>  ようやく思い出してくれたんだね」
+“Brother... You've finally remembered me.”
+
+@29526 Marg · マーグ
+> 「……ああ……そうか、俺は
+>  ズール皇帝に過去を奪われたのだ
+“...Yeah... I see. Emperor Zuul stole my past from me.
+---
+>  そして俺は、ズールの意のままに
+>  戦う男にされてしまった……」
+And he turned me into a man who fights exactly as Zuul wills...”
+
+@29527 Takeru · タケル
+> 「マーグ、もう大丈夫だ。
+>  絶対に離さない!」
+“Marg, it's all right now. I'll never let you go!”
+
+@29528 Rose · ロゼ
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「マーグ隊長、どきなさい!
+>  マーズ、覚悟!」
+“Captain Marg, get out of the way! Mars, prepare yourself!”
+
+@29529 Marg · マーグ
+> 「ロゼ、やめろッ!」
+“Rose, stop!”
+
+@29530 Takeru · タケル
+> 「マーグ!? やめろぉぉぉぉぉっ!!」
+“Marg?! Stop it!!”
+
+@29531 Marg · マーグ
+> 「うわあぁぁぁぁぁーっ!?」
+“Uwaaaaaaah?!”
+
+@29532 Rose · ロゼ
+> 「くっ……ばかな……」
+“Ngh... Impossible...”
+
+@29533 Takeru · タケル
+> 「貴様ぁぁぁーっ!!」
+“You baaastard!!”
+
+@29534 Marg · マーグ
+> 「……うぅ……」
+“...Ugh...”
+
+@29535 Takeru · タケル
+> 「兄さん!?」
+“Brother?!”
+
+@29536 Marg · マーグ
+> 「マーズ……悪いのはズール皇帝だ……
+>  銀河帝国のすべてが……
+“Mars... The one to blame is Emperor Zuul... Not all of the Galactic Empire...
+---
+>  ズールと同じわけではない。
+>  俺はそう信じて……しん……じて………」
+is the same as Zuul. I believed that... I belie...ved it.........”
+
+@29537 Takeru · タケル
+> 「兄さん……兄さぁぁぁん!!」
+“Brother... Brotheeeer!!”
+
+@29538 Rose · ロゼ
+> 「マーグ……隊長……!?
+>  おのれ、マーズ!!」
+“Marg... Captain...?! Curse you, Mars!!”
+
+@29539 Marg · マーグ
+> 「……う…………」
+“...Ugh.........”
+
+@29540 Takeru · タケル
+> 「マーグ……お前が地球に害を
+>  及ぼす以上やむをえない……殺す」
+“Marg... As long as you bring harm to Earth, there's no other way... I'll kill you.”
+
+@29541 Marg · マーグ
+> 「あ……マーズ? マーズだな……
+>  俺はいったい
+“Ah... Mars? It's you, Mars... What in the world
+---
+>  俺はいったい
+>  どうしたっていうんだ……!?」
+has happened to me...?!”
+
+@29542 Takeru · タケル
+> 「マーグ!?」
+“Marg?!”
+
+@29543 Marg · マーグ
+> 「マーズ……」
+“Mars...”
+
+@29544 Takeru · タケル
+> 「俺が、俺がわかるのか!?」
+“You... you recognize me?!”
+
+@29545 Marg · マーグ
+> 「お、俺の、俺のたった1人の
+>  大事な弟だ」
+“Y-you're my... my one and only precious little brother.”
+
+@29546 Takeru · タケル
+> 「兄さん……兄さん!」
+“Brother... Brother!”
+
+@29547 Marg · マーグ
+> 「マーズ……何が起こったんだ?」
+“Mars... What happened?”
+
+@29548 Takeru · タケル
+> 「兄さん……
+>  ようやく思い出してくれたんだね」
+“Brother... You've finally remembered me.”
+
+@29549 Marg · マーグ
+> 「……ああ……そうか、俺は
+>  ズール皇帝に過去を奪われたのだ
+“...Yeah... I see. Emperor Zuul stole my past from me.
+---
+>  そして俺は、ズールの意のままに
+>  戦う男にされてしまった……」
+And he turned me into a man who fights exactly as Zuul wills...”
+
+@29550 Takeru · タケル
+> 「マーグ、もう大丈夫だ。絶対に
+>  離さない! さぁ、早くこっちへ」
+“Marg, it's all right now. I'll never let you go! Come on, hurry over here.”
+
+@29551 Marg · マーグ
+> 「ああ……わかったよマーズ」
+“Yeah... I understand, Mars.”
+
+@29552 Takeru · タケル
+> 「あぶないところだった……」
+“That was close...”
+
+@29553 Marg · マーグ
+> 「ありがとう、マーズ……俺の弟よ。
+>  ぐっ……」
+“Thank you, Mars... my little brother. Ngh...”
+
+@29554 Takeru · タケル
+> 「兄さん、大丈夫か!? 待って
+>  いてくれ、すぐ残りの敵を片づける」
+“Brother, are you all right?! Wait for me, I'll finish off the rest of the enemy right away.”
+
+@29555 Marg · マーグ
+# 审校：原文省略号后没有多余句点，初稿结尾多出句点，已删去。
+> 「……う…………」
+“...Ugh...”
+
+@29556 Takeru · タケル
+> 「マーグ……お前が地球に害を
+>  及ぼす以上やむをえない……殺す」
+“Marg... As long as you bring harm to Earth, there's no other way... I'll kill you.”
+
+@29557 Marg · マーグ
+> 「あ……マーズ? マーズだな……
+>  俺はいったい
+“Ah... Mars? It's you, Mars... What in the world
+---
+>  俺はいったい
+>  どうしたっていうんだ……!?」
+has happened to me...?!”
+
+@29558 Takeru · タケル
+> 「マーグ!?」
+“Marg?!”
+
+@29559 Marg · マーグ
+> 「マーズ……」
+“Mars...”
+
+@29560 Takeru · タケル
+> 「俺が、俺がわかるのか!?」
+“You... you recognize me?!”
+
+@29561 Marg · マーグ
+> 「お、俺の、俺のたった1人の
+>  大事な弟だ」
+“Y-you're my... my one and only precious little brother.”
+
+@29562 Takeru · タケル
+> 「兄さん……兄さん!」
+“Brother... Brother!”
+
+@29563 Marg · マーグ
+> 「マーズ……何が起こったんだ?」
+“Mars... What happened?”
+
+@29564 Takeru · タケル
+> 「兄さん……
+>  ようやく思い出してくれたんだね」
+“Brother... You've finally remembered me.”
+
+@29565 Marg · マーグ
+> 「……ああ……そうか、俺は
+>  ズール皇帝に過去を奪われたのだ
+“...Yeah... I see. Emperor Zuul stole my past from me.
+---
+>  そして俺は、ズールの意のままに
+>  戦う男にされてしまった……」
+And he turned me into a man who fights exactly as Zuul wills...”
+
+@29566 Takeru · タケル
+> 「兄さん!」
+“Brother!”
+
+@29567 Marg · マーグ
+> 「ああ、マーズ……最後に
+>  お前と話せてよかった……」
+“Yeah, Mars... I'm glad I got to talk with you one last time...”
+
+@29568 Takeru · タケル
+> 「兄さん!? 兄さぁぁぁぁぁぁんっ!!」
+“Brother?! Brotheeeer!!”
+
+@29569 Marg · マーグ
+> 「うわああぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@29570 Rose · ロゼ
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「くっ、マーグ隊長!?
+>  おのれ、許さん!」
+“Ngh, Captain Marg?! Curse you, I won't forgive this!”
+
+@29571 Marg · マーグ
+> 「……!? マーズ……俺はいったい、
+>  いったいどうしたと……!?」
+“...?! Mars... What in the world, what in the world has happened to me...?!”
+
+@29572 Takeru · タケル
+> 「貴様、それでも
+>  血のかよった人間か?
+“You bastard, are you even a human with blood in your veins?
+---
+>  ズール皇帝が怖くて
+Are you so afraid of Emperor Zuul
+---
+>  人間の心を捨てたのか!?」
+that you threw away your human heart?!”
+
+@29573 Rose · ロゼ
+> 「私たちはすべてズール皇帝の
+>  子供だ。血がかよおうと
+“We are all Emperor Zuul's children. Whether blood runs in our veins
+---
+>  かようまいとすべて、ズール皇帝の
+>  威光のもとで暮らしている
+or not, we all live beneath Emperor Zuul's glory.
+---
+>  ズール皇帝は我々のすべてだ」
+Emperor Zuul is everything to us.”
+
+@29574 Takeru · タケル
+> 「違う! そんなことは間違っている!」
+“No! That's wrong!”
+
+@29575 Rose · ロゼ
+> 「黙れ、黙れ黙れッ!」
+“Shut up, shut up, shut uuup!”
+
+@29576 Duke · デューク
+> 「待て! 君はフリード星人では
+>  ないのか!? なぜこんなことをする!」
+“Wait! Aren't you a Fleed? Why are you doing this?!”
+
+@29577 Naida · ナイーダ
+> 「クッ……グレンダイザー!?」
+“Ngh... Grendizer?!”
+
+@29578 Duke · デューク
+> 「これは……ナイーダ?
+>  君はナイーダだろう!?
+“This is... Naida? You're Naida, aren't you?!
+---
+>  僕だ、デューク・フリードだ!」
+It's me, Duke Fleed!”
+
+@29579 Naida · ナイーダ
+> 「あなたがデューク……
+>  デューク、ああデューク!
+“You're Duke... Duke, oh Duke!
+---
+>  もう会えないかと思っていたわ」
+I thought I'd never see you again.”
+
+@29580 Duke · デューク
+> 「僕もだよナイーダ。よく生きていて
+>  くれた。君はフリード星の首都が
+“So did I, Naida. I'm glad you survived. When the Fleed capital came under
+---
+>  総攻撃を受けた時に、死んで
+>  しまったと思っていたんだ。しかし……
+full-scale attack, I thought you had died. But...
+---
+>  よかった。ナイーダ、君はそんなところに
+>  いちゃいけない。こっちに移るんだ」
+thank goodness. Naida, you can't stay in a place like this. Come over to our side.”
+
+@29581 Naida · ナイーダ
+> 「え、ええデューク。わかったわ」
+“Y-yes, Duke. I understand.”
+
+@29582 Dungele · ダンゲル
+> 「ワーハハハハッ、かかりおったな!!」
+“Wahahahaha, you've taken the bait!!”
+
+@29583 Gandal · ガンダル
+> 「よし、一気にせん滅してしまえ!!」
+“Good, wipe them all out in one go!!”
+
+@29584 Zechs · ゼクス
+> 「む……ウイングゼロか……」
+“Hm... Wing Zero...”
+
+@29585 Heero · ヒイロ
+> 「……状況確認、攻撃に移る」
+“...Situation confirmed. Moving to attack.”
+
+@29586 Quatre · カトル
+> 「あれは……ヒイロっ!
+>  来てくれたんですね!?」
+“That's... Heero! You came?!”
+
+@29587 Duo · デュオ
+> 「何だってえ!? おいっ、ヒイロ!
+>  お前、生きてたのかよ!」
+“What the?! Hey, Heero! You're alive?!”
+
+@29588 Heero · ヒイロ
+> 「うるさいぞデュオ・マックスウェル。
+>  戦闘に集中しろ」
+“Quiet, Duo Maxwell. Focus on the battle.”
+
+@29589 Ark · アーク（按段落 3DD1）
+> 「まったく、素直じゃないな、あいつ」
+“Honestly, that guy just can't be honest.”
+
+@29590 Selain · セレイン（按段落 3DD2）
+> 「まったく、忙しい奴だな」
+“Honestly, what a busy guy.”
+
+@29591 Brad · ブラッド（按段落 3DD3）
+> 「なんだよあいつ。出たり入ったり、
+>  めんどくせぇ奴だな、まったくよ」
+“What's with that guy? Coming and going, what a pain in the ass, seriously.”
+
+@29592 Manami · マナミ（按段落 3DD4）
+> 「やっぱりね。
+>  どうせすぐ、もどってくると思ってたわ」
+“I knew it. I figured he'd come right back anyway.”
+
+@29593 Gandal · ガンダル
+> 「く、くそう……
+>  もう一歩のところで……おのれぇっ!!」
+“D-damn it... just one step short... curse you!!”
+
+@29594 Gandal · ガンダル
+> 「グレンダイザーか。
+>  フリード星の生き残りめ
+“Grendizer, is it? You Fleed survivor.
+---
+>  今度こそ最後だ!」
+This time it really is the end!”
+
+@29595 Duke · デューク
+> 「ガンダル! 貴様は絶対に
+>  許さんぞ!」
+“Gandal! I will never forgive you!”
+
+@29596 Marg · マーグ
+> 「死ね、マーズ!!」
+“Die, Mars!!”
+
+@29597 Takeru · タケル
+> 「くっ……兄さん!!」
+“Ngh... Brother!!”
+
+@29598 Rose · ロゼ
+> 「マーズ、今度こそ終わりにしてやる!」
+“Mars, this time I'll finish you for good!”
+
+@29599 Takeru · タケル
+> 「くそっ、こんなことでやられるものか!」
+“Damn it, you think I'd go down over something like this?!”
+
+@29600 Hyoma · 豹馬
+> 「このやろう! 地球は
+>  お前らなんかにやらせねぇぞ!!」
+“You bastard! We won't let the likes of you have Earth!!”
+
+@29601 Dungele · ダンゲル
+> 「ウッハッハッハッ! 地球人め、
+>  目に物みせてやるわ!」
+“Uhahahaha! Earthlings, I'll show you what real power looks like!”
+
+@29602 Ryoma · リョウ
+> 「やった! 勝ったぞ!」
+“We did it! We won!”
+
+@29603 Hayato · ハヤト
+> 「まずは先遣艦隊をおっぱらった
+>  か……」
+“So we've driven off the advance fleet for now...”
+
+@29604 Benkei · ベンケイ
+> 「さすがに手強かったがな。だが、
+>  俺たちがいる限り好きにはさせねえ」
+“They were tough, all right. But as long as we're here, we won't let them do as they please.”
+
+@29605 Maria · マリア
+> 「兄さん……。やったわね」
+“Brother... We did it.”
+
+@29606 Daisuke · 大介
+> 「ああ。父さん、母さん、見ていてくれ
+>  たかい? ガンダルの先遣艦隊は
+“Yeah. Father, Mother, were you watching? We've defeated Gandal's advance fleet.
+---
+>  打ち敗った。この地球は必ず
+>  守り通してみせる……」
+I swear I'll protect this Earth to the very end...”
+
+@29607 Haman · ハマーン
+> 「{HeroMech}、
+>  なかなか見事な戦いぶりだったな
+“{HeroMech}, that was quite a splendid display of combat.
+---
+>  さすがといっておこうか」
+I suppose I'll grant you that much.”
+
+@29608 Banjo · 万丈
+> 「そっちこそ。ご協力に感謝するよ」
+“Same to you. I appreciate your cooperation.”
+
+@29609 Haman · ハマーン
+> 「たまたま利害が一致しただけのこと
+>  だがな。まあ、我々の戦力も
+“It was merely a coincidence that our interests aligned. Well, our forces did
+---
+>  いささかの助けにはなっただろう。
+>  どうだ、シャア? 貴様もそれなりの
+prove to be of some help, I imagine. What say you, Char? Surely you could
+---
+>  態度を示してよいのではないか?」
+show a little more of a gracious attitude yourself?”
+
+@29610 Quattro · クワトロ
+> 「……その通りだ。感謝する」
+“...You're right. I thank you.”
+
+@29611 Haman · ハマーン
+> 「ははは、よかろう。今後もこうありたい
+>  ものだな。では我々はこれより
+“Hahaha, very well. I hope things continue this way. Now then, we shall
+---
+>  アクシズに帰還する」
+return to Axis.”
+
+@29612 Bright · ブライト
+> 「銀河帝国は再びやってくるだろう
+>  その時、あなた方はどうするつもりだ?」
+“The Galactic Empire will come again. When that time comes, what do you intend to do?”
+
+@29613 Haman · ハマーン
+> 「さあな。だがいっておく。我らが
+>  ジオン復興の大義を阻む者は
+“Who knows. But I'll say this: anyone who stands in the way of our grand cause of Zeon's revival
+---
+>  全て敵だ。その上で必要とあらば
+>  また手を組むこともあるかも知れん
+is our enemy. That said, if necessary, we may join hands again,
+---
+>  あるいは戦うことになるかもな」
+or we may end up fighting.”
+
+@29614 Banjo · 万丈
+> 「わかった。いずれ再会することになる
+>  だろうね。できれば敵同士では
+“Understood. We'll surely meet again someday. If possible, I'd rather not
+---
+>  会いたくないものだ」
+meet as enemies.”
+
+@29615 Haman · ハマーン
+> 「ふふふ、それはどうなるかな。
+>  では諸君、さらばだ」
+“Hehehe, who can say? Well then, everyone, farewell.”
+
+@29616 Masato · 雅人
+> 「……行っちまったか。確かに敵には
+>  したくないよね、あのお姉さんは」
+“...She's gone. I sure wouldn't want to make an enemy of that lady.”
+
+@29617 Sara · 沙羅
+> 「あんたはそうだろうさ。
+>  まあ、やばい女には違いないよ」
+“You would, of course. Well, she's definitely a dangerous woman.”
+
+@29618 Shinobu · 忍
+> 「俺はやっぱり気にいらねえがな。だが、
+>  約束はきちんと守りやがった
+“I still don't like it, though. But she did keep her promise,
+---
+>  そこんとこは認めてやるぜ」
+I'll give her that.”
+
+@29619 Roanne · ロアン
+> 「約束といえば……
+>  サイド3の件は、どうなるんでしょうね
+“Speaking of promises... what's to become of the Side 3 matter?
+---
+>  コロニー共和国との兼ね合いも
+>  ある。短時間では無理だと
+There's the matter of the Colony Republic to consider too. I don't think
+---
+>  思いますが……」
+it can be done in a short time, but...”
+
+@29620 David · デビッド
+> 「その辺のことはトレーズが何とか
+>  するんだろ。俺たちが心配しても
+“Treize will handle that sort of thing. No use in us worrying about it.
+---
+>  しょうがねえ。こっちには、もっとでっかい
+>  頭痛のタネがあるんだからな……」
+We've got a much bigger headache on our hands...”
+
+@29621 Scirocco · シロッコ
+> 「お待ちください、デルマイユ公」
+“Please wait, Duke Dermail.”
+
+@29622 Dermail · デルマイユ
+> 「なにをいうか! 財団のバカ者どもは
+>  トレーズの総帥復帰を正式に
+“What are you saying?! The Foundation's fools have officially
+---
+>  認めてしまったのだ!
+>  ロームフェラ財団代表代行の
+recognized Treize's return as Supreme Commander! And without me, the
+---
+>  このワシがいないのにだ! こんなことを
+>  許しておくわけにはいかん!
+acting representative of the Romefeller Foundation! I cannot allow this!
+---
+>  ワシは地上に降りねばならんのだ!」
+I must descend to the surface!”
+
+@29623 Scirocco · シロッコ
+> 「しかし……」
+“However...”
+
+@29624 Dermail · デルマイユ
+> 「しかしではない!
+>  しかも{HeroMech}の連中は
+“'However' nothing! And on top of that, {HeroMech} and the others
+---
+>  帝国軍に勝ってしまったのだぞ!?」
+have actually beaten the Imperial forces?!”
+
+@29625 Scirocco · シロッコ
+> 「私の予想では、
+>  銀河帝国軍の
+“By my estimation, the Galactic Empire's
+---
+>  本格的な侵攻はこれからですよ」
+full-scale invasion is yet to come.”
+
+@29626 Dermail · デルマイユ
+# 审校：「可能だといったではないか」是反问“你不是说过可以吗”，初稿译成陈述句“I told you it was possible”，说话人变成德鲁麦尤自己，逻辑错误，改为反问。
+> 「だが、そのおかげで財団は
+>  トレーズ派の方を頼りに
+“But thanks to that, the Foundation is starting to rely on the Treize faction!
+---
+>  しはじめておる! いいかシロッコ。
+>  ワシが財団を抑えている間に
+Listen, Scirocco. While I hold the Foundation in check, wipe out
+---
+>  トレーズ派の連中を
+>  一掃してしまえ! ビルゴⅡがあれば
+the Treize faction! Did you not say it was possible with the Virgo II?!
+---
+>  可能だといったではないか!
+>  それとも貴様ごときでは
+Or are you saying that even someone like you
+---
+>  やはり無理だというのか!?」
+can't manage it?!”
+
+@29627 Scirocco · シロッコ
+> 「……そこまでおっしゃるのなら、
+>  いいでしょう。シャトルと
+“...If you insist that much, very well. I'll prepare a shuttle and
+---
+>  護衛のMD部隊を用意します。
+>  どうぞ地上にお降りください
+an escort MD unit. Please descend to the surface.
+---
+>  あとのことは、私におまかせを」
+Leave the rest to me.”
+
+@29628 Dermail · デルマイユ
+> 「うむ、頼むぞ、シロッコ。
+>  ワシもなんとか時間をかせぐ
+“Mm, I'm counting on you, Scirocco. I'll buy us some time somehow.
+---
+>  MDの有用性を知らしめるために、
+>  ツバロフも連れていくぞ」
+To make the MD's usefulness known, I'll take Tubarov along as well.”
+
+@29629 Yazan · ヤザン
+> 「デルマイユが出るそうだな。
+>  いいのか、シロッコ」
+“So Dermail's heading out. Are you sure about this, Scirocco?”
+
+@29630 Scirocco · シロッコ
+> 「ふん……しょせんは重力に
+>  縛られた過去の遺物にすぎん
+“Hmph... He's nothing but a relic of the past, bound by gravity.
+---
+>  あのような俗物には、用はない。
+>  これ以上生かしておいても、役には
+I have no use for a vulgar man like him. Keeping him alive any longer serves
+---
+>  立たんよ、MDの識別コードから、
+>  シャトルを除外しておけばいい」
+no purpose. Just exclude the shuttle from the MD's identification codes.”
+
+@29631 Yazan · ヤザン
+> 「ふん、なるほどな」
+“Hmph, I see.”
+
+@29632 Tubarov · ツバロフ
+> 「まもなく大気圏突入ですな。
+>  しかしデルマイユ公、シロッコ特佐は
+“We'll be entering the atmosphere shortly. But Duke Dermail, shouldn't you
+---
+>  あまり信用せぬほうが
+>  よろしいのではありませんか?」
+be a little less trusting of Special Officer Scirocco?”
+
+@29633 Dermail · デルマイユ
+> 「ワシもそれは考えておる。だが、
+>  今はまだ奴の統率力が必要だ」
+“I've considered that as well. But for now, I still need his leadership.”
+
+@29634 Tubarov · ツバロフ
+> 「なに、配備された全MSが
+>  MDシステムになれば
+“Why, once every deployed MS is on the MD system,
+---
+>  人間の兵士など
+>  不要になりましょう」
+human soldiers will become unnecessary.”
+
+@29635 Dermail · デルマイユ
+> 「うむ。そうなったら、ツバロフ、
+>  お前に指揮をまかすぞ」
+“Indeed. When that happens, Tubarov, I'll leave the command to you.”
+
+@29636 Dermail · デルマイユ
+> 「どうした!?」
+“What's going on?!”
+
+@29637 Specials · スペシャルズ
+> 「トレーズ派の
+>  パトロール部隊1個小隊です
+“It's a platoon of Treize-faction patrol troops.
+---
+>  接近してきます。
+>  MDを起動させますか?」
+They're approaching. Shall we activate the MDs?”
+
+@29638 Tubarov · ツバロフ
+> 「ビルゴⅡだったな?
+>  1機で十分だ。やれ」
+“The Virgo II, was it? One unit is enough. Do it.”
+
+@29639 Specials · スペシャルズ
+> 「はっ」
+“Yes, sir.”
+
+@29640 Specials · スペシャルズ
+> 「うわあぁぁぁっ!?」
+“Uwaaaaaaah?!”
+
+@29641 Dermail · デルマイユ
+> 「なんだ!?
+>  なぜビルゴがこちらに攻撃してくる!?」
+“What?! Why is the Virgo attacking us?!”
+
+@29642 Tubarov · ツバロフ
+# 审校：「まさかシロッコが!?」是怀疑“难道是西罗克干的”，初稿“Don't tell me Scirocco?!”缺谓语且语气不完整，改为完整疑问句。
+> 「こ、こんなはずは……まさかシロッコが!?」
+“Th-This can't be... Don't tell me it was Scirocco?!”
+
+@29643 Dermail · デルマイユ
+> 「バ、バカな……」
+“I-Impossible...”
+
+@29644 Lady · レディ
+> 「トレーズさま、報告が入りました。
+>  先ほど、財団代表代行の
+“Lord Treize, we've received a report. The shuttle carrying the Foundation's
+---
+>  デルマイユ公爵が乗ったシャトルが、
+>  我が方のパトロール隊に
+acting representative, Duke Dermail, was just shot down by our patrol unit.
+---
+>  撃墜されたとのことです。
+>  デルマイユ公の生存は
+Duke Dermail's survival cannot be confirmed. Also, though unverified,
+---
+>  確認できません。
+>  なお未確認ですが、このシャトルに
+there's information that Chief Engineer Tubarov
+---
+>  ツバロフ技師長も
+>  同乗していたという情報もあります」
+was aboard the same shuttle.”
+
+@29645 Treize · トレーズ
+> 「デルマイユ公がなくなられたか……
+>  それはこちらの不手際だったね」
+“Duke Dermail is dead... That was our blunder, then.”
+
+@29646 Lady · レディ
+> 「そのことですが、シャトルは
+>  こちらのパトロール隊の攻撃ではなく
+“Regarding that, the shuttle wasn't destroyed by our patrol unit's attack,
+---
+>  護衛のMDの誤作動が原因で
+>  破壊されたとか」
+but rather by a malfunction of its escort MDs.”
+
+@29647 Treize · トレーズ
+# 审校：「妙だね」在此表示“蹊跷、不对劲”，初稿“too convenient”添加了原文没有的“太方便”含义，改为“too strange”更贴切。
+> 「ほう……私は決して
+>  あのシステムが好きではないが
+“Oh... I've never liked that system, but
+---
+>  信頼性の高さは
+>  実証されていたはずだ
+its high reliability should have been proven.
+---
+>  事故にしてはいささか妙だね」
+As an accident, it's a bit too strange.”
+
+@29648 Lady · レディ
+> 「はい。人為的なものと考えられます」
+“Yes. It's believed to be man-made.”
+
+@29649 Treize · トレーズ
+> 「なるほど……パプティマス・シロッコか。
+>  ……無茶をする」
+“I see... Paptimus Scirocco, then. ...He's reckless.”
+
+@29650 Takeru · タケル
+> 「レインさん、マーグは、
+>  兄さんは大丈夫ですか!?」
+“Rain, is Marg—is my brother all right?!”
+
+@29651 Rain · レイン
+> 「命に別状はないわ。ただ、かなりの
+>  重傷よ。早くちゃんとした施設に
+“His life isn't in danger. But his injuries are quite severe. It'd be best to get him
+---
+>  預けた方がいいわね。このまま
+>  同行させるのは危ないわよ」
+to a proper facility soon. It's dangerous to keep bringing him along like this.”
+
+@29652 Takeru · タケル
+# 审校：「いまは大丈夫ですか?」问的是“现在（他的状态）没问题吗”，初稿“Can I see him now?”误译为请求探视，与后文“请便”不匹配，改为询问状态。
+> 「そうですか……いまは大丈夫ですか?」
+“I see... Is he all right for now?”
+
+@29653 Rain · レイン
+> 「ええ、どうぞ」
+“Yes, go ahead.”
+
+@29654 Marg · マーグ
+> 「……マーズか……すまない、一緒に
+>  戦うことはできそうにないな」
+“...Mars, huh... Sorry, but it doesn't look like I'll be able to fight alongside you.”
+
+@29655 Takeru · タケル
+> 「いいんだよ、兄さん。今はケガを治す
+>  ことだけを考えてくれればいいんだ」
+“It's all right, brother. For now, just focus on getting better.”
+
+@29656 Marg · マーグ
+> 「……マーズ……頼みがある」
+“...Mars... I have a favor to ask.”
+
+@29657 Takeru · タケル
+> 「なんだい?」
+“What is it?”
+
+@29658 Marg · マーグ
+> 「ロゼを、彼女を助けてやってくれ」
+“Save Rose. Save her.”
+
+@29659 Takeru · タケル
+> 「なんだって!? でもあの女は……」
+“What?! But that woman...”
+
+@29660 Marg · マーグ
+> 「彼女もまた苦しんでいるんだ。
+>  ロゼはギシン星人じゃない
+“She's suffering too. Rose isn't a Gishin.
+---
+>  帝国に征服された星の出なんだ」
+She comes from a world conquered by the Empire.”
+
+@29661 Takeru · タケル
+> 「しかし、兄さん」
+“But, brother...”
+
+@29662 Marg · マーグ
+> 「マーズ、悪いのはズールだ。
+>  銀河帝国の人々すべてが
+“Mars, Zuhl is the one to blame. Not everyone in the Galactic Empire
+---
+>  ズールと同じわけではない。
+>  俺はそう信じている」
+is the same as Zuhl. I believe that.”
+
+@29663 Takeru · タケル
+> 「わかったよ、兄さん。なんとかやってみる」
+“I understand, brother. I'll try to manage somehow.”
+
+@29664 Marg · マーグ
+> 「ああ……頼む……」
+“Yeah... I'm counting on you...”
+
+@29665 Takeru · タケル
+> 「マーグ!?」
+“Marg?!”
+
+@29666 Rain · レイン
+> 「眠ったようね。
+>  心も体も休息を求めているんだわ
+“He seems to have fallen asleep. His mind and body are both crying out for rest.
+---
+>  今日はこのくらいにしておきましょう」
+Let's leave it at that for today.”
+
+@29667 Takeru · タケル
+> 「はい……レインさん、兄さんを頼みます」
+“All right... Rain, please take care of my brother.”
+
+@29668 Takeru · タケル
+> 「レインさん、マーグは、
+>  兄さんは大丈夫ですか!?」
+“Rain, is Marg—is my brother all right?!”
+
+@29669 Rain · レイン
+> 「命に別状はないわ。ただ、かなりの
+>  重傷よ。早くちゃんとした施設に
+“His life isn't in danger. But his injuries are quite severe. It'd be best to get him
+---
+>  預けた方がいいわね。このまま
+>  同行させるのは危ないわよ」
+to a proper facility soon. It's dangerous to keep bringing him along like this.”
+
+@29670 Takeru · タケル
+# 审校：同 L28，修正误译。
+> 「そうですか……いまは大丈夫ですか?」
+“I see... Is he all right for now?”
+
+@29671 Rain · レイン
+> 「ええ、どうぞ」
+“Yes, go ahead.”
+
+@29672 Marg · マーグ
+> 「……マーズか……すまない、一緒に
+>  戦うことはできそうにないな」
+“...Mars, huh... Sorry, but it doesn't look like I'll be able to fight alongside you.”
+
+@29673 Takeru · タケル
+> 「いいんだよ、兄さん。今はケガを治す
+>  ことだけを考えてくれればいいんだ」
+“It's all right, brother. For now, just focus on getting better.”
+
+@29674 Marg · マーグ
+> 「ああ……マーズ、悪いのはズールだ。
+>  銀河帝国のすべてがズールと
+“Yeah... Mars, Zuhl is the one to blame. Not everyone in the Galactic Empire
+---
+>  同じわけじゃない。
+>  ズールを倒すんだ、マーズ
+is the same as Zuhl. Defeat Zuhl, Mars.
+---
+>  でなければ、いつまでもこんなことが
+>  繰り返される」
+Otherwise, this will just keep happening forever.”
+
+@29675 Takeru · タケル
+> 「……わかったよ、兄さん。
+>  ズールは俺たちが必ず倒してみせる」
+“...I understand, brother. We'll make sure to defeat Zuhl.”
+
+@29676 Marg · マーグ
+> 「頼んだぞ……マーズ……」
+“I'm counting on you... Mars...”
+
+@29677 Takeru · タケル
+> 「兄さん……」
+“Brother...”
+
+@29678 Mika · ミカ
+> 「タケル……無理をしちゃだめよ」
+“Takeru... don't push yourself too hard.”
+
+@29679 Takeru · タケル
+> 「わかってるよ! わかってるけど……」
+“I know! I know, but...”
+
+@29680 Anna · アンナ
+> 「でも、あなたがそれでは
+>  きっとマーグさんは悲しむわ」
+“But if you stay like this, Marg will surely be sad.”
+
+@29681 Takeru · タケル
+> 「アンナ……?」
+“Anna...?”
+
+@29682 Anna · アンナ
+> 「だって、マーグさんの体はなくなって
+>  しまっても、きっと心はあなたの中に
+“Because even if Marg's body is gone, his heart surely lives on inside you.
+---
+>  生きているもの。生まれた時に
+>  2つに分かれてしまった命が、また
+The life that was split in two when you were born has become one again
+---
+>  あなたの中で1つになったんだって、
+>  私、そう思う」
+inside you. That's what I believe.”
+
+@29683 Takeru · タケル
+> 「マーグの心が俺の中に……」
+“Marg's heart is inside me...”
+
+@29684 Mika · ミカ
+> 「さっすがアンナ、いいこというじゃない。
+>  そうよ、タケル。だから、これからはもっと
+“That's our Anna, saying something wonderful. That's right, Takeru. So from now on,
+---
+>  がんばらなくっちゃね」
+you've got to try even harder.”
+
+@29685 Mika · ミカ
+> 「……でも、あの人どうするのかしら……」
+“...But what are we going to do about her...”
+
+@29686 Takeru · タケル
+> 「あの人?」
+“Her?”
+
+@29687 Mika · ミカ
+> 「あのロゼって女の人」
+“That woman, Rose.”
+
+@29688 Takeru · タケル
+> 「……どうだっていいさ。あいつはマーグを
+>  殺したんだ。もしまた現れたら……」
+“...Who cares. She killed Marg. If she shows up again...”
+
+@29689 Mika · ミカ
+> 「うん……でもなんだかあの人、
+>  苦しそうな気がしたから
+“Yeah... but somehow she seemed to be suffering,
+---
+>  自分の言葉を自分に
+>  いい聞かせているような気がして……」
+like she was trying to convince herself of her own words...”
+
+@29690 Takeru · タケル
+> 「…………」
+“...”
+
+@29691 Takeru · タケル
+> 「兄さん……」
+“Brother...”
+
+@29692 Mika · ミカ
+> 「タケル……無理をしちゃだめよ」
+“Takeru... don't push yourself too hard.”
+
+@29693 Takeru · タケル
+> 「わかってるよ! わかってるけど……」
+“I know! I know, but...”
+
+@29694 Anna · アンナ
+> 「でも、あなたがそれでは
+>  きっとマーグさんは悲しむわ」
+“But if you stay like this, Marg will surely be sad.”
+
+@29695 Takeru · タケル
+> 「アンナ……?」
+“Anna...?”
+
+@29696 Anna · アンナ
+> 「だって、マーグさんの体はなくなって
+>  しまっても、きっと心はあなたの中に
+“Because even if Marg's body is gone, his heart surely lives on
+---
+>  生きているもの。生まれた時に
+>  2つに分かれてしまった命が、また
+inside you. The life that split in two when you were born has become
+---
+>  あなたの中で1つになったんだって、
+>  私、そう思う」
+one again inside you. That's what I believe.”
+
+@29697 Takeru · タケル
+> 「マーグの心が俺の中に……」
+“Marg's heart is inside me...”
+
+@29698 Mika · ミカ
+> 「さっすがアンナ、いいこというじゃない。
+>  そうよ、タケル。だから、これからはもっと
+“That's our Anna, saying something wonderful. That's right, Takeru. So from now on,
+---
+>  がんばらなくっちゃいけないんだから」
+you've got to try even harder.”
+
+@29699 Takeru · タケル
+> 「……そう……だな。そうかもしれない。
+>  俺はマーグの分まで戦うよ
+“...Yeah... I suppose so. Maybe you're right. I'll fight for Marg too,
+---
+>  そうして、きっと地球を守ってみせる」
+and I swear I'll protect the Earth.”
+
+@29700 Mika · ミカ
+> 「その意気、その意気。ほら、
+>  みんなが心配してるから、行きましょ」
+“That's the spirit, that's the spirit. Come on, everyone's worried about you, so let's go.”
+
+@29701 Maria · マリア
+> 「でもあたしたちの他にも、
+>  フリード星の生き残りがいたなんて」
+“But to think there were other survivors from Planet Fleed besides us.”
+
+@29702 Daisuke · 大介
+> 「ああ、ナイーダ、よく無事でいてくれた」
+“Yeah, Naida, I'm glad you made it through safely.”
+
+@29703 Banjo · 万丈
+> 「失礼、お嬢さん。
+>  僕は破嵐万丈
+“Excuse me, miss. I'm Banjo Haran.
+---
+>  いやなことを思いださせるようで悪いが
+>  よかったら銀河帝国に
+I'm sorry to make you remember painful things, but if you don't mind,
+---
+>  攻めこまれたあとのことを
+>  きかせてはもらえないかな?」
+could you tell me what happened after the Galactic Empire attacked?”
+
+@29704 Naida · ナイーダ
+> 「ええ……まさに地獄としかいいようが
+>  ありませんでした
+“Yes... it was nothing short of hell.
+---
+>  わずかに生き残った人々に
+>  残された道は、強制労働と
+The only paths left to the few survivors were forced labor and
+---
+>  実験用のモルモット。そして……
+>  やがて訪れる絶望への死
+being guinea pigs for experiments. And then... the death that despair eventually brings.
+---
+>  私たちは何度も脱出を試みて
+>  そのつど捕まった……」
+We tried to escape many times, and each time we were caught...”
+
+@29705 Hikaru · ひかる
+> 「まぁ、なんてひどい……」
+“My, how terrible...”
+
+@29706 Koji · 甲児
+> 「オレたちが負けたら
+>  地球人もそうなるってことか
+“So if we lose, that's what happens to Earthlings too, huh.
+---
+>  くそっ、銀河帝国め
+>  なんてことをしやがるッ!」
+Damn it, what the hell is the Galactic Empire doing?!”
+
+@29707 Daisuke · 大介
+# 审校：“everyone here is a good person” 语法上应指众人，改为 “Everyone here is a good person”；后半句更自然。
+> 「ナイーダ……大丈夫だ。ここにいる
+>  人たちはみんないい人たちばかりだ
+“Naida... it's all right. Everyone here is a good person.
+---
+>  君の傷ついた心もやがていやされ、
+>  昔の君にもどることができるよ」
+Your wounded heart will heal in time, and you'll be your old self again.”
+
+@29708 Banjo · 万丈
+> 「その通り。君さえよければ
+>  いつまでだっていてくれていい
+“Exactly. As long as you're fine with it, you're welcome to stay as long as you like.
+---
+>  きれいな女性は大歓迎だ」
+Beautiful women are always welcome.”
+
+@29709 Naida · ナイーダ
+> 「ありがとう……ございます」
+“Thank you... very much.”
+
+@29710 Maria · マリア
+> 「…………?」
+“...?”
+
+@29711 Naida · ナイーダ
+> (デューク……あなたが好きだったのよ……
+>  片時も
+(Duke... I loved you... so much that I couldn't
+---
+>  忘れられなかったくらいなのに……)
+forget you for even a moment...)
+
+@29712 Chan · チェーン
+> 「ZZガンダムが届いたんですって?」
+“The ZZ Gundam arrived, I hear?”
+
+@29713 Amuro · アムロ
+# 检查提示：未用必用译名：エマリー艦→Emary's ship
+> 「ああ、エマリー艦長代理が
+>  手配してくれたようだね」
+“Yeah, it seems Acting Captain Emary arranged it.”
+
+@29714 Chan · チェーン
+# 审校：“amazing” 未能体现原文“すごいですから”在此处略带调侃、夸张的语气，改为更口语的 “something else”。
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「エマリーさん、ブライト艦長のことが
+>  からむと、すごいですから」
+“When it comes to Captain Bright, Emary is something else.”
+
+@29715 Bright · ブライト
+> 「本人がいないかのように話すのは、
+>  やめてくれないか」
+“Could you stop talking as if I'm not here?”
+
+@29716 Amuro · アムロ
+# 审校：原文“おかげで”指エマリー，初稿用 “that” 指代模糊，改为 “her”。
+> 「いいじゃないか。
+>  おかげでかなりの戦力アップができた
+“It's fine, isn't it? Thanks to her, we've boosted our fighting strength considerably.
+---
+>  感謝しないとな?」
+We should be grateful, right?”
+
+@29717 Bright · ブライト
+> 「それはそうだが……」
+“That may be so, but...”
+
+@29718 Koji · 甲児
+> 「なにはともあれ、とりあえずはこれで
+>  ひと安心だな」
+“Anyway, for now we can breathe a little easier.”
+
+@29719 Tetsuya · 鉄也
+> 「あくまでとりあえず、だがな。
+>  先遣艦隊を撃破したことは
+“Only for now, though. Destroying their advance fleet will
+---
+>  銀河帝国を本気にさせるに
+>  ちがいない」
+surely make the Galactic Empire get serious.”
+
+@29720 Jun · ジュン
+> 「そうね。束の間の平和ってところか」
+“Right. A brief moment of peace, I suppose.”
+
+@29721 Sayaka · さやか
+> 「これであきらめてくれたりはしないの?」
+“You don't think they'll give up after this?”
+
+@29722 Daisuke · 大介
+> 「残念だが、その可能性はない。
+>  奴らは必ずくる。おそらく今度は
+“Sadly, there's no chance of that. They'll definitely come. Probably with
+---
+>  本隊級の大部隊でな」
+a main-force-class armada this time.”
+
+@29723 David · デビッド
+> 「前途多難だな。まったく、いつに
+>  なったら休めることやら」
+“Rough road ahead. Honestly, when will we ever get a rest?”
+
+@29724 Koji · 甲児
+> 「ちぇっ、せっかくの気分に水を
+>  さすなよな。明日のことは
+“Tch, don't go ruining the mood. Tomorrow's problems can be
+---
+>  明日考えりゃいいじゃねえか」
+dealt with tomorrow, right?”
+
+@29725 Alan · アラン
+> 「ふっ、あいかわらず大ざっぱな奴だ。
+>  だが、それでいい」
+“Heh, still as rough-and-ready as ever. But that's fine.”
+
+@29726 Banjo · 万丈
+> 「明日は明日の風が吹くってね。
+>  先のことはわからないさ。それより
+“Tomorrow brings tomorrow's winds, as they say. We can't know what's ahead. So instead,
+---
+>  今しかできないことをやっておこうじゃ
+>  ないか」
+let's do what we can only do now.”
+
+@29727 Reika · レイカ
+> 「今しかできないことって?」
+“What can we only do now?”
+
+@29728 Banjo · 万丈
+> 「もちろん、休養さ。いま艦長たちが
+>  トレーズと相談しているよ」
+“Rest, of course. Right now the captains are discussing it with Treize.”
+
+@29729 Bright · ブライト
+> 「それでは、我々は月面に?」
+“So then, we're headed to the lunar surface?”
+
+@29730 Treize · トレーズ
+> 「ああ。月で確保した補充戦力
+>  を受け取ってもらいたい。敵の
+“Yes. I'd like you to receive the replacement forces we've secured on the Moon. Before the enemy
+---
+>  再来の前に、できるだけ戦力を
+>  充実させておかなければな」
+returns, we must build up our forces as much as possible.”
+
+@29731 Quattro · クワトロ
+> 「シロッコ軍の動きはないのか?」
+“Any movement from Scirocco's forces?”
+
+@29732 Treize · トレーズ
+> 「今はない。部隊の再編に専念
+>  しているらしいな。彼らも当然
+“Not for now. They seem focused on reorganizing their troops. They must be
+---
+>  銀河帝国のことは警戒している
+>  だろう」
+wary of the Galactic Empire as well, naturally.”
+
+@29733 Bright · ブライト
+> 「了解しました。{HeroMech}は
+>  これより補給のため月へ向かいます」
+“Understood. The {HeroMech} will now head to the Moon for resupply.”
+
+@29734 Treize · トレーズ
+> 「いうまでもないことだが、可能な時に
+>  休息をとっておきたまえ。戦いは
+“Needless to say, but take your rest whenever you can. There's no telling
+---
+>  いつまで続くか予想できないからな」
+how long this battle will continue.”
+
+@29735 Amuro · アムロ
+> 「その言葉はあなたにお返しした方が
+>  いいな。復帰して以来、あなたは
+“That's a word I'd rather return to you. Since you came back, you look
+---
+>  生き急いでるように見える。
+>  気のまわしすぎだろうがな」
+like you're rushing to live. You worry too much, though.”
+
+@29736 Treize · トレーズ
+> 「忠告はありがたく受け取っておくよ
+>  では通信を終わる」
+“I'll gratefully accept the advice. Ending transmission.”
+
+@29737 Beltorchika · ベルトーチカ
+> 「進路固定、
+>  月面基地に向かいます!」
+“Course locked, heading for the lunar base!”

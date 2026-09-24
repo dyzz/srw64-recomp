@@ -1,0 +1,137 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7331 Ivan · イワン
+> 「貴様らがどんな小細工をしようと
+>  我々の敵ではない」
+“No matter what little tricks you pull, you are no match for us.”
+
+@7332 Ivan · イワン
+> 「さぁ死んでもらおうか」
+“Now, shall I have you die?”
+
+@7333 Ivan · イワン
+> 「そこまでにしていただきたいですな」
+“I would like you to stop there.”
+
+@7334 Ivan · イワン
+> 「ふふふふっ、アーッハッハッハッ」
+“Fufufufu, ahahahaha!”
+
+@7335 Ivan · イワン
+> 「ははははっ、今日こそBF団の
+>  勝利だ」
+“Hahahaha, today is the BF Group's victory.”
+
+@7336 Ivan · イワン
+> 「いくぞぉっ!」
+“Here I go!”
+
+@7337 Ivan · イワン
+> 「ほらほらお前もだよ!」
+“Come on, you too!”
+
+@7338 Ivan · イワン
+> 「さぁ急がせてもらうぞ」
+“Now, let's hurry this along.”
+
+@7339 Ivan · イワン
+> 「つぶせ、ウラエヌス!」
+“Crush them, Uranus!”
+
+@7340 Ivan · イワン
+> 「やれっ、ウラエヌス!」
+“Do it, Uranus!”
+
+@7341 Ivan · イワン
+> 「いけ、ウラエヌス!」
+“Go, Uranus!”
+
+@7342 Ivan · イワン
+> 「ウラエヌスゥ!」
+“Uranus!”
+
+@7343 Ivan · イワン
+> 「こちらイワン、これまでです」
+“This is Ivan. It's over for me.”
+
+@7344 Ivan · イワン
+> 「ビッグファイアーのために! 後は
+>  頼みます!」
+“For Big Fire! I leave the rest to you!”
+
+@7345 Ivan · イワン
+> 「ああっ、私のウラエヌスが!?」
+“Aah, my Uranus?!”
+
+@7346 Ivan · イワン
+> 「があぁぁぁぁっ!」
+“Gwaaaaaah!”
+
+@7347 Ivan · イワン
+> 「うぅっなぜだ!? なぜだっ!?」
+“Ugh, why?! Why?!”
+
+@7348 Ivan · イワン
+> 「しまったぁっ!」
+“Damn it!”
+
+@7349 Ivan · イワン
+> 「なめてくれたな、だがそこまでだ」
+“You've underestimated me, but this is as far as you go.”
+
+@7350 Ivan · イワン
+> 「ぐぅっ、なんというパワーだ」
+“Guh, what power.”
+
+@7351 Ivan · イワン
+> 「よけいなことをしてくれた」
+“You've done something unnecessary.”
+
+@7352 Ivan · イワン
+> 「どうした、ウラエヌス!?」
+“What's wrong, Uranus?!”
+
+@7353 Ivan · イワン
+> 「うわぁっ!?」
+“Whoa?!”
+
+@7354 Ivan · イワン
+> 「カカカカカカッ!」
+“Kah kah kah kah kah!”
+
+@7355 Ivan · イワン
+> 「このウラエヌスをなめてもらっては」
+“You must not underestimate this Uranus.”
+
+@7356 Ivan · イワン
+> 「うっ!?」
+“Ugh?!”
+
+@7357 Ivan · イワン
+> 「かわせっ! ウラエヌスッ!」
+“Dodge it, Uranus!”
+
+@7358 Ivan · イワン
+> 「ははははっ、あたりはせんよ」
+“Ha ha ha ha, you won't hit me.”
+
+@7359 Ivan · イワン
+> 「そう簡単にこの特殊バリアは
+>  やぶられはせんよ」
+“This special barrier won't be broken so easily.”
+
+@7360 Ivan · イワン
+> 「まぁせいぜい頑張りたまえ」
+“Well, do try your best.”
+
+@7361 Ivan · イワン
+> 「なんだと!? 弾切れだというのか」
+“What?! You mean I'm out of ammo?”
+
+@7362 Ivan · イワン
+> 「くっ、とどかないというのか!?」
+“Tch, it won't reach?!”
+
+@7363 Ivan · イワン
+> 「や、やつらは!?」
+“Wh-where are they?!”

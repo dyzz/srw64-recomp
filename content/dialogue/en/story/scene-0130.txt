@@ -1,0 +1,532 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@43321 Beltorchika · ベルトーチカ
+> 「高原地帯に敵が防衛線を
+>  はっています!」
+“Enemy forces have set up a defense line in the highlands!”
+
+@43322 Bright · ブライト
+> 「ここを突破すればクスコまですぐだ
+>  一気に突破するぞ!」
+“Once we break through here, Cusco is just ahead. We push through in one go!”
+
+@43323 Amuro · アムロ
+> 「みんないいか、とにかく敵を突破する
+>  んだ」
+“Everyone, listen up. Just break through the enemy no matter what.”
+
+@43324 Rose · ロゼ
+> 「私は自分が助かろうとは思わない
+>  だがマーグの復讐、これだけは……」
+“I don't care about saving myself. But avenging Marg... that alone...”
+
+@43325 Takeru · タケル
+> 「あれは……ロゼか」
+“That's... Rose?”
+
+@43326 Rose · ロゼ
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「マーズ……お前は私が殺す。
+>  マーグ隊長の仇をうたせてもらう!」
+“Mars... I'm going to kill you. I'll make you pay for Commander Marg!”
+
+@43327 Takeru · タケル
+# 审校：“those are my lines” 是复数，原文“俺のセリフだ”是单数，改为 that's my line。
+> 「なんだって!? ばかな、それは
+>  俺のセリフだ!」
+“What?! That's crazy, that's my line!”
+
+@43328 Rose · ロゼ
+> 「問答無用!!」
+“No arguments!!”
+
+@43329 Takeru · タケル
+> 「お前がそうなら、俺こそマーグの仇を
+>  うたせてもらう。ロゼッ!」
+“If that's how you want it, then I'll be the one to avenge Marg. Rose!”
+
+@43330 Julia · ジュリア
+> 「おやめなさい。復讐は復讐を
+>  呼びます。誰かが、その鎖を
+“Stop this. Revenge only calls for more revenge. Someone must
+---
+>  断ち切らねばならないのです」
+break that chain.”
+
+@43331 Takeru · タケル
+# 审校：原文“あの女はマーグを……”未明确说杀了玛格，初稿补成 killed Marg 过度推断，改为保留省略。
+> 「聖女ジュリア!? だが、あの女は
+>  マーグを……」
+“The Holy Woman Julia?! But that woman... Marg...”
+
+@43332 Julia · ジュリア
+> 「かつては、わたくしも復讐のために、
+>  それがすべてと信じて、自分の弟と
+“Long ago, I too believed revenge was everything, and I fought
+---
+>  戦いました」
+my own younger brother.”
+
+@43333 Takeru · タケル
+> 「あなたが……エイジと?」
+“You fought... Eiji?”
+
+@43334 Julia · ジュリア
+> 「それがいかに無意味であったかは、
+>  今のわたくしはよく知っているのです
+“How meaningless that was, I know all too well now.
+---
+>  鎖を断ち切りなさい。
+>  あなたなら、できるはずです」
+Break the chain. You can do it.”
+
+@43335 Takeru · タケル
+> 「……マーグ……兄さん……
+>  兄さんもそう思うのかい……?」
+“...Marg... brother... is that what you'd want too...?”
+
+@43336 Takeru · タケル
+> 「ロゼか!?」
+“Rose?!”
+
+@43337 Rose · ロゼ
+> 「マーズ……ここで失敗すれば
+>  私は死を選ぶしかない
+“Mars... if I fail here, I have no choice but to die.
+---
+>  ズール皇帝の名において、
+>  お前を殺す」
+In the name of Emperor Zuul, I will kill you.”
+
+@43338 Takeru · タケル
+> 「やめろ、ロゼ! マーグに聞いた。
+>  君は本当は戦うことを
+“Stop it, Rose! I heard it from Marg. You don't really want to
+---
+>  望んではいないはずだ」
+fight, do you?”
+
+@43339 Rose · ロゼ
+> 「マーグ……隊長が……。だめだっ!
+>  私はズール皇帝の兵士
+“Marg... the Commander... No! I am a soldier of Emperor Zuul,
+---
+>  皇帝の命のままに動く道具だ。
+>  戦って、お前を倒す以外の道は
+a tool that moves only by the Emperor's command. I have no path
+---
+>  選べない!」
+but to fight and defeat you!”
+
+@43340 Takeru · タケル
+> 「ロゼ!」
+“Rose!”
+
+@43341 Takeru · タケル
+> 「やめろ、やめるんだロゼ!」
+“Stop it, stop it, Rose!”
+
+@43342 Rose · ロゼ
+> 「黙れ!」
+“Silence!”
+
+@43343 Takeru · タケル
+> 「君はズールの道具でも、命じられた
+>  ままに戦うバトルマシンでもないはずだ
+“You're not Zuul's tool, and you're not a battle machine that fights on command.
+---
+>  人間なんだ。マーグは君を助けたい
+>  といった。俺も……
+You're human. Marg said he wanted to save you. And I...
+---
+>  俺も君を殺したくない」
+I don't want to kill you either.”
+
+@43344 Rose · ロゼ
+> 「マーズ……なぜ……なぜ敵である私を
+>  助けようとする? 任務のためなら
+“Mars... why... why would you try to save me, your enemy? For the mission,
+---
+>  味方ですら私を殺すだろうと
+>  いうのに。なぜ!?」
+even your own allies would kill me. Why?!”
+
+@43345 Takeru · タケル
+> 「俺は、俺たちはそんな戦い方は
+>  しない。マーグはいったよ。悪いのは
+“I won't fight that way, and neither will we. Marg told me. The one who's wrong
+---
+>  ズールだと。銀河帝国のすべてが
+>  ズールと同じわけではないと
+is Zuul. Not everyone in the Galactic Empire is like Zuul.
+---
+>  俺もそう思う。間違っているのは
+>  ズールなんだ」
+I believe that too. Zuul is the one who's wrong.”
+
+@43346 Rose · ロゼ
+> 「マーズ……私……私は……。くっ」
+“Mars... I... I... Ngh.”
+
+@43347 Takeru · タケル
+> 「ロゼ……!?」
+“Rose...?!”
+
+@43348 Rose · ロゼ
+> 「マーズ、よくもぬけぬけと」
+“Mars, you shameless liar.”
+
+@43349 Takeru · タケル
+> 「待て、ロゼ。戦うことはいつでもできる
+>  その前に聞きたいことがある
+“Wait, Rose. We can fight anytime. Before that, there's something I want to ask you.
+---
+>  マーグは俺たちが復讐しあうのを
+>  喜ぶと思うか?」
+Do you think Marg would be happy to see us take revenge on each other?”
+
+@43350 Rose · ロゼ
+> 「…………ズール皇帝の命令は、
+>  すべてに優先する」
+“...Emperor Zuul's orders take priority over everything.”
+
+@43351 Takeru · タケル
+> 「やめるんだ、ロゼ!
+>  君を殺したくはない。もうやめてくれ!」
+“Stop it, Rose! I don't want to kill you. Please, stop!”
+
+@43352 Rose · ロゼ
+# 审校：同上，“味方ですら私を殺すだろう”应指罗泽自己的同伴，改为 even my allies。
+> 「!? なぜ敵である私を助けようと
+>  する。任務のためなら、味方ですら
+“?! Why would you try to save me, your enemy? For the mission, even my allies
+---
+>  私を殺すだろうというのに。
+>  私はマーグの仇だろう!? なぜ!?」
+would kill me. I'm Marg's enemy, aren't I?! Why?!”
+
+@43353 Takeru · タケル
+> 「君を倒してもマーグは喜ばない……
+>  ロゼ、君はバトルマシンではない
+“Defeating you wouldn't make Marg happy... Rose, you're not a battle machine.
+---
+>  人間なんだ。ズールの道具なんか
+>  では、ないはずだ」
+You're human. You can't be Zuul's tool.”
+
+@43354 Rose · ロゼ
+> 「マーズ……? 私……私は……」
+“Mars...? I... I...”
+
+@43355 Takeru · タケル
+> 「もうやめるんだ、ロゼ。君だって本当
+>  はこんな戦いを望んじゃいないはずだ
+“Stop this already, Rose. You don't really want this kind of fight either,
+---
+>  そうだろう?」
+do you?”
+
+@43356 Rose · ロゼ
+> 「くっ……」
+“Ngh...”
+
+@43357 Takeru · タケル
+> 「ロゼッ!?」
+“Rose?!”
+
+@43358 Banjo · 万丈
+> 「やれやれ、なんとか突破できたようだね」
+“Well, well. Looks like we managed to break through somehow.”
+
+@43359 Garrison · ギャリソン
+> 「そうですな。銀河帝国軍が
+>  我々の動きを察知して
+“Indeed, sir. The Galactic Empire forces have caught on to our movements and
+---
+>  南米に集結を始めておりますが、
+>  クスコのOZ軍は、まだ
+have begun gathering in South America, but the OZ forces at Cusco appear to be
+---
+>  もちこたえている様子。これで
+>  我々もどうにか間にあいましたな」
+holding out still. It seems we've made it in time after all.”
+
+@43360 Bright · ブライト
+> 「よし、クスコへ急ぐぞ」
+“All right, hurry to Cusco.”
+
+@43361 Alan · アラン
+> 「くそっ、敵の勢力圏は突破
+>  できたが、予想以上の時間が
+“Damn it. We broke through the enemy's sphere of influence, but it took longer than
+---
+>  かかってしまった。これでは……」
+expected. At this rate...”
+
+@43362 Bright · ブライト
+> 「とにかく、クスコへ向かうぞ」
+“In any case, we're heading for Cusco.”
+
+@43363 Sayaka · さやか
+> 「あら……あれは銀河帝国の……。
+>  ちょっとボス、タケルを呼んできて
+“Oh... that's a Galactic Empire... Hey Boss, go call Takeru for me,
+---
+>  ちょうだい」
+would you?”
+
+@43364 Boss · ボス
+> 「おう、わかったわよん」
+“Yeah, got it!”
+
+@43365 Sayaka · さやか
+> 「タケル、ほら、あれよ」
+“Takeru, look, over there.”
+
+@43366 Takeru · タケル
+> 「ロゼ!? いったいどうして……」
+“Rose?! What on earth are you doing here...”
+
+@43367 Rose · ロゼ
+> 「マーズ……あなたには負けたわ。
+>  でも、あなたの強さは何なの?
+“Mars... I lost to you. But what is this strength of yours?
+---
+>  地球人でもないのに、命をかけて
+>  まで地球のために戦えるのは
+You're not even an Earthling, so why can you fight for Earth even at the risk of your life?
+---
+>  なぜなの?」
+Why?”
+
+@43368 Takeru · タケル
+> 「俺は……確かにギシン星人だ。
+>  だけど、心は地球人だ
+“I am... a Gishin, it's true. But my heart is an Earthling's.
+---
+>  俺は地球で育ったんだよ」
+I was raised on Earth.”
+
+@43369 Rose · ロゼ
+> 「地球人の心……」
+“An Earthling's heart...”
+
+@43370 Takeru · タケル
+> 「ロゼ、君はこれからどうするつもり
+>  なんだ?」
+“Rose, what do you plan to do now?”
+
+@43371 Rose · ロゼ
+# 审校：原文“マーグ隊長”应译为 Commander Marg，初稿误译为 Captain Marg。
+# 检查提示：未用必用译名：マーグ隊→Marg Squad
+> 「……マーグ隊長はどうされているの?」
+“...How is Commander Marg doing?”
+
+@43372 Takeru · タケル
+> 「マーグは療養中だよ。ここにはいない」
+“Marg is recuperating. He's not here.”
+
+@43373 Rose · ロゼ
+> 「そう……マーズ、私は……」
+“I see... Mars, I...”
+
+@43374 Banjo · 万丈
+> 「彼女かい、投降してきた銀河
+>  帝国軍の兵士というのは?」
+“Is this her, the Galactic Empire soldier who surrendered to us?”
+
+@43375 Takeru · タケル
+> 「万丈さん……ええ、そうです」
+“Banjo... yes, that's right.”
+
+@43376 Banjo · 万丈
+> 「悪いが僕たちにはあまり時間がない
+>  のんびりと話をしているわけには
+“Sorry, but we don't have much time. We can't afford to sit around chatting,
+---
+>  いかないんだが……」
+but...”
+
+@43377 Rose · ロゼ
+> 「状況は理解しているつもりです。
+>  私も一緒に連れて行ってください」
+“I believe I understand the situation. Please take me with you.”
+
+@43378 Takeru · タケル
+> 「君を!?」
+“You?!”
+
+@43379 Banjo · 万丈
+> 「別に君を疑うわけじゃないが……」
+“It's not that I doubt you, but...”
+
+@43380 Rose · ロゼ
+> 「お願いします。もっとよく知りたい
+>  んです。地球人のものの考え方を」
+“Please. I want to understand better. The way Earthlings think.”
+
+@43381 Takeru · タケル
+> 「万丈さん、彼女がいれば作戦が
+>  成功した時に、敵に与える
+“Banjo, if she's with us, when the operation succeeds, we might be able to cause
+---
+>  動揺を大きくできるかもしれない」
+even more unrest among the enemy.”
+
+@43382 Banjo · 万丈
+# 审校：原文“艦長たち”是复数，初稿“the captains”正确；本条无实质错误，不返回。
+> 「そうだな……わかった、艦長たちと
+>  相談してみよう」
+“I suppose so... All right, I'll discuss it with the captain.”
+
+@43383 Takeru · タケル
+> 「ありがとうございます」
+“Thank you.”
+
+@43384 Rose · ロゼ
+> 「マーズ……」
+“Mars...”
+
+@43385 Sayaka · さやか
+> 「あら……あれは銀河帝国の……。
+>  ちょっとボス、タケルを呼んできて
+“Oh... that's a Galactic Empire... Hey Boss, go call Takeru for me,
+---
+>  ちょうだい」
+would you?”
+
+@43386 Boss · ボス
+> 「おう、わかったわよん」
+“Yeah, got it!”
+
+@43387 Sayaka · さやか
+> 「タケル、ほら、あれよ」
+“Takeru, look, over there.”
+
+@43388 Takeru · タケル
+> 「ロゼ!? いったいどうして……」
+“Rose?! What on earth are you doing here...”
+
+@43389 Rose · ロゼ
+> 「マーズ……あなたには負けたわ。
+>  でも、あなたの強さは何なの?
+“Mars... I lost to you. But what is this strength of yours?
+---
+>  地球人でもないのに、命をかけて
+>  まで地球のために戦えるのは
+You're not even an Earthling, so why can you fight for Earth even at the risk of your life?
+---
+>  なぜなの?」
+Why?”
+
+@43390 Takeru · タケル
+> 「俺は……確かにギシン星人だ。
+>  だけど、心は地球人だ
+“I am... a Gishin, it's true. But my heart is an Earthling's.
+---
+>  俺は地球で育ったんだよ」
+I was raised on Earth.”
+
+@43391 Rose · ロゼ
+> 「地球人の心……」
+“An Earthling's heart...”
+
+@43392 Takeru · タケル
+> 「ロゼ、君は……」
+“Rose, you...”
+
+@43393 Rose · ロゼ
+> 「マーズ、私はたぶん、あなたにあえて
+>  よかったのだと思う
+“Mars, I think I'm probably glad I met you.
+---
+>  それを伝えたかったの。私の星も
+>  銀河帝国にせめこまれた星だった」
+That's what I wanted to tell you. My planet was also a world invaded by the Galactic Empire.”
+
+@43394 Takeru · タケル
+> 「ロゼ……これからどうするんだ?」
+“Rose... what will you do now?”
+
+@43395 Rose · ロゼ
+> 「私は、また任務に失敗したわ。
+>  もう、もどっても名誉な死すらも
+“I failed my mission again. Even if I go back, they probably won't grant me
+---
+>  与えられないでしょう。
+>  きっと洗脳されて、戦うだけの
+an honorable death. I'll surely be brainwashed and turned into nothing but a
+---
+>  バトルマシンにされてしまう。だけど……
+>  もどらないわけにはいかないもの」
+battle machine that fights. But... I have no choice but to go back.”
+
+@43396 Takeru · タケル
+> 「ダメだ! もどっちゃいけない、ロゼ。
+>  自分の命を無駄にするな!」
+“No! You can't go back, Rose. Don't throw your life away!”
+
+@43397 Rose · ロゼ
+> 「マーズ……!? でも私は……」
+“Mars...?! But I...”
+
+@43398 Koji · 甲児
+> 「話は聞いてたけどさ、
+>  別に帝国にもどる以外にも
+“I heard the whole thing, but there's got to be another way besides
+---
+>  やりようは、あるんじゃないのか?
+>  どこか適当なところへ逃げちまえば
+going back to the Empire, right? You could just run off somewhere,
+---
+>  いいじゃないか」
+couldn't you?”
+
+@43399 Banjo · 万丈
+> 「そういうこと。嫌なことを無理にする
+>  ことはない」
+“That's right. You don't have to force yourself to do something you hate.”
+
+@43400 Takeru · タケル
+> 「万丈さん……」
+“Banjo...”
+
+@43401 Rose · ロゼ
+> 「敵の私を、そこまで自由にさせると
+>  いうの? なぜ……?」
+“You'd give an enemy like me that much freedom? Why...?”
+
+@43402 Banjo · 万丈
+> 「別に、坊主憎けりゃ袈裟まで
+>  憎いってわけでもないからね
+“It's not like I hate the robe along with the monk, you know.
+---
+>  ま、実際のところは僕たちもまったく
+>  余裕がないんでね。よけいなことに
+Well, the truth is, we don't have any room to spare either. We can't afford
+---
+>  かかわっていられないのさ」
+to get mixed up in anything extra.”
+
+@43403 Rose · ロゼ
+> 「……なら……私も一緒に連れて
+>  行ってください」
+“...Then... please take me with you.”
+
+@43404 Banjo · 万丈
+> 「君を?」
+“You?”
+
+@43405 Rose · ロゼ
+> 「状況は知っています。少なくとも、
+>  役には立つはずです」
+“I know the situation. At the very least, I should be of use.”
+
+@43406 Banjo · 万丈
+> 「それはそうだが……」
+“That may be so, but...”
+
+@43407 Rose · ロゼ
+> 「それに……もっと知りたいんです。
+>  地球人のものの考え方を」
+“Besides... I want to know more. About how Earthlings think.”

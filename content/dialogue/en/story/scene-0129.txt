@@ -1,0 +1,1724 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@43023 Domon · ドモン
+> 「どうした、レイン。具合いでも
+>  悪いのか?」
+“What's wrong, Rain? Are you feeling sick?”
+
+@43024 Rain · レイン
+> 「……え? う、ううん、なんでもないわ」
+“...Huh? N-no, it's nothing.”
+
+@43025 Schwarz · シュバルツ
+> 「…………」
+“...”
+
+@43026 Duo · デュオ
+> 「何にもないぜ。本当に、ここに
+>  デビルガンダムがいるのかよ」
+“There's nothing here. Is the Dark Gundam really in a place like this?”
+
+@43027 Domon · ドモン
+> 「ああ……そのはずだ」
+“Yeah... it should be.”
+
+@43028 Schwarz · シュバルツ
+> 「いや、確かにここで間違いないようだ
+>  見ろ」
+“No, there's no mistake. It's here. Look.”
+
+@43029 Domon · ドモン
+> 「マーキロット!? シジーマもか!」
+“Markiroot?! Sijima too?!”
+
+@43030 George · ジョルジュ
+> 「どうやらDG細胞におかされているよう
+>  ですね」
+“It seems they've been taken over by the DG Cells.”
+
+@43031 Quatre · カトル
+> 「……なんとか助けられないのでしょうか」
+“...Isn't there some way we can save them?”
+
+@43032 Schwarz · シュバルツ
+> 「無理だな。我々にできるのは、
+>  もはや眠らせてやることだけだ」
+“Impossible. All we can do now is put them to rest.”
+
+@43033 Wong · ウォン
+> 「あれは……アレンビー・ビアズリー。
+>  ククククッ、私のところへ
+“That's... Allenby Beardsley. Kukukuku, so you've come back
+---
+>  もどってきてくれたというわけですか。
+>  これは好都合
+to me. This is convenient.
+---
+>  強化型バーサーカーシステムを
+>  作動させろ!」
+Activate the enhanced Berserker System!”
+
+@43034 Allenby · アレンビー
+> 「……!! あ、や、やめて……」
+“...!! N-no, stop...”
+
+@43035 Domon · ドモン
+> 「どうしたアレンビー!?」
+“What's wrong, Allenby?!”
+
+@43036 Allenby · アレンビー
+> 「うわぁぁぁぁぁーっ!! イヤッ!
+>  ドモン、助けてっ!!」
+“Uwaaaaaaah!! No! Domon, help me!!”
+
+@43037 Domon · ドモン
+> 「待て、アレンビー!」
+“Wait, Allenby!”
+
+@43038 Domon · ドモン
+> 「アレンビィィィーッ!!」
+“Allenbyyyyy!!”
+
+@43039 Markiroot · マーキロット
+> 「フハハハッ、さあ神の裁きを受けよ!」
+“Fuhahaha, now receive the judgment of God!”
+
+@43040 Argo · アルゴ
+> 「ドモン、くるぞ!」
+“Domon, here they come!”
+
+@43041 Domon · ドモン
+> 「くっ!」
+“Ngh!”
+
+@43042 Allenby · アレンビー
+> 「う……うぅぅぅっ……」
+“U... uuuugh...”
+
+@43043 Wong · ウォン
+> 「!? どうしたアレンビー!」
+“?! What's wrong, Allenby?!”
+
+@43044 Allenby · アレンビー
+> 「あぁ……うあぁぁぁーっ!!」
+“Ah... uwaaaaaah!!”
+
+@43045 Wong · ウォン
+> 「しまった、ノーベルガンダムとDG細胞
+>  の融合を急がせすぎたか
+“Damn, did I rush the fusion of the Noble Gundam and the DG Cells too much?
+---
+>  しかたがない、アレンビー、
+>  撤退しなさい!」
+It can't be helped. Allenby, retreat!”
+
+@43046 Domon · ドモン
+> 「クッ……アレンビーッ!!」
+“Ngh... Allenby!!”
+
+@43047 Domon · ドモン
+> 「アレンビー! 頼む、正気に
+>  もどってくれ!!」
+“Allenby! Please, come back to your senses!!”
+
+@43048 Allenby · アレンビー
+> 「ドモン!?
+>  ファイト、ファイトしようよぉぉぉっ!
+“Domon?! Let's fight, let's fight!
+---
+>  ドモォォンッ!!」
+Domonnn!!”
+
+@43049 Domon · ドモン
+> 「クッ……アレンビー……お前の魂は
+>  もう、もどらないのか……!?」
+“Ngh... Allenby... is your soul never coming back...?!”
+
+@43050 Rain · レイン
+> 「やめなさい、アレンビー!!」
+“Stop it, Allenby!!”
+
+@43051 Allenby · アレンビー
+> 「レイン……!?」
+“Rain...?!”
+
+@43052 Rain · レイン
+> 「そうよ、私よ。アレンビー、お願い
+>  だから、もとにもどって! あなたも
+“That's right, it's me. Allenby, please, come back to yourself! If you're
+---
+>  ドモンと魂の拳を交えたファイター
+>  なら、DG細胞に負けちゃいけない!」
+a fighter who crossed fists with Domon soul to soul, you can't lose to the DG Cells!”
+
+@43053 Allenby · アレンビー
+> 「ドモン、ドモンはどこなの!? アタシを
+>  ひとりぼっちにしないで! だってアタシ
+“Domon, where's Domon?! Don't leave me all alone! Because I...
+---
+>  アタシだって、ドモンのこと
+>  好きなんだからぁっ!!」
+I love Domon too!!”
+
+@43054 Rain · レイン
+> 「アレンビー……あなた……」
+“Allenby... you...”
+
+@43055 Allenby · アレンビー
+> 「うわぁぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@43056 Rain · レイン
+> (……これは……以前の時とは違う?
+>  DG細胞がノーベルガンダムの
+(...This is... different from last time? The DG Cells are invading the Noble Gundam's
+---
+>  システムに侵入しているんだわ。
+>  なら、アムロさんがいっていたように
+system. Then, like Amuro said, if I can just stop the system...
+---
+>  システムだけ停止できれば……
+>  できるの、私に?)
+can I do it? Can I?)
+
+@43057 Allenby · アレンビー
+> 「アタシだって、アタシだってぇぇぇ!!」
+“I... I toooo!!”
+
+@43058 Rain · レイン
+> 「やるしかない! この一矢にかけるわ!」
+“I have no choice! I'll stake everything on this one arrow!”
+
+@43059 Allenby · アレンビー
+> 「ドモン! ドモンはどこなのぉぉぉーっ!!」
+“Domon! Where's Domonnn!!”
+
+@43060 Rain · レイン
+> 「私はドモンたちのように、武闘家の
+>  心なんて持ってない。でも
+“I don't have the heart of a martial artist like Domon and the others. But
+---
+>  あなたのような人を、救いたいという
+>  想いは、誰にも負けない! だから!」
+my desire to save someone like you won't lose to anyone! So!”
+
+@43061 Rain · レイン
+> 「やった!?」
+“Did it work?!”
+
+@43062 Allenby · アレンビー
+> 「きゃああぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@43063 Domon · ドモン
+> 「アレンビー!? レイン、まさか……」
+“Allenby?! Rain, you don't mean...”
+
+@43064 Rain · レイン
+> 「……大丈夫、うまくいったわ。
+>  アレンビーは無事よ」
+“...It's all right, it worked. Allenby is safe.”
+
+@43065 Domon · ドモン
+> 「……そうか……よかった」
+“...I see... thank goodness.”
+
+@43066 Rain · レイン
+> 「お願い、もうやめて! あなたも
+>  かわいそうだとは思うけど、これ以上
+“Please, stop this! I know you're pitiful too, but don't torment
+---
+>  ドモンを苦しめないで!」
+Domon any more!”
+
+@43067 Allenby · アレンビー
+> 「ドモン……ドモンはどこなの!?
+>  アタシをひとりぼっちにしないで!
+“Domon... where's Domon?! Don't leave me all alone!
+---
+>  アタシ、アタシ、ドモンのこと
+>  好きだったのにぃ!」
+I... I loved Domon, you know!”
+
+@43068 Rain · レイン
+> 「えっ!? あ、あなた……」
+“Huh?! Y-you're...”
+
+@43069 Allenby · アレンビー
+> 「うわぁぁぁぁぁっ!!」
+“Uwaaaaaaah!!”
+
+@43070 Rain · レイン
+> (……これは……以前の時とは違う?
+>  DG細胞がノーベルガンダムの
+(...This is... different from last time? The DG Cells are invading the Noble Gundam's
+---
+>  システムに侵入しているんだわ。
+>  なら、アムロさんがいっていたように
+system. Then, like Amuro said,
+---
+>  システムだけ停止できれば……
+>  できるの、私に?)
+if I can just stop the system... can I do it? Can I?)
+
+@43071 Allenby · アレンビー
+> 「アタシだって、アタシだってぇぇぇ!!」
+“I... I toooo!!”
+
+@43072 Rain · レイン
+> 「やるしかない! この一矢にかけるわ!
+>  この娘を死なせはしない!」
+“I have no choice! I'll stake everything on this one arrow! I won't let this girl die!”
+
+@43073 Allenby · アレンビー
+> 「ドモン! ドモンはどこなのぉぉぉーっ!!」
+“Domon! Where's Domonnn!!”
+
+@43074 Rain · レイン
+> 「私はドモンたちのように、武闘家の
+>  心なんて持ってない。でも
+“I don't have the heart of a martial artist like Domon and the others. But
+---
+>  あなたのような人を、救いたいという
+>  想いは、誰にも負けない! だから!」
+my desire to save someone like you won't lose to anyone! So!”
+
+@43075 Rain · レイン
+> 「やった!?」
+“Did it work?!”
+
+@43076 Allenby · アレンビー
+> 「きゃああぁぁぁーっ!!」
+“Kyaaaaaah!!”
+
+@43077 Domon · ドモン
+> 「アレンビー!? レインまさか……」
+“Allenby?! Rain, you don't mean...”
+
+@43078 Rain · レイン
+> 「……大丈夫、うまくいったわ。
+>  アレンビーは無事よ」
+“...It's all right, it worked. Allenby is safe.”
+
+@43079 Domon · ドモン
+> 「……そうか……よかった」
+“...I see... thank goodness.”
+
+@43080 Allenby · アレンビー
+> 「あ……ド、ドモン……あたし……」
+“Ah... D-Domon... I...”
+
+@43081 Domon · ドモン
+> 「……アレンビー……すまない……」
+“...Allenby... I'm sorry...”
+
+@43082 Schwarz · シュバルツ
+> 「くっ、うかつだったか……!?」
+“Ngh, was I careless...?!”
+
+@43083 Domon · ドモン
+> 「バカな!? この俺が……!?」
+“Impossible!? Me...?!”
+
+@43084 Wong · ウォン
+> 「ええい、こうなったら、しかたがない」
+“Enough, if it's come to this, there's no other way.”
+
+@43085 Master · マスター
+> 「なんだと!? ウォン、何をする気だ!
+>  キョウジの命はもはや風前のともしび
+“What?! Wong, what are you planning to do?! Kyoji's life is already flickering like a candle in the wind.
+---
+>  パイロットが、コアがいなくてはデビル
+>  ガンダムの完全復活はないのだぞ!」
+Without a pilot, without the core, the Dark Gundam can never fully revive!”
+
+@43086 Domon · ドモン
+> 「デビルガンダム……キョウジ!」
+“The Dark Gundam... Kyoji!”
+
+@43087 Rain · レイン
+> 「こんなに進化しているなんて……
+>  キョウジさん……」
+“To think it's evolved this much... Kyoji...”
+
+@43088 Chibodee · チボデー
+> 「ヘッ、でやがったな。覚悟しな、
+>  デビルガンダム!!」
+“Heh, so it's finally shown up. Brace yourself, Dark Gundam!!”
+
+@43089 Sai Saici · サイ・サイシー
+> 「オイラたちも強くなってるんだ。
+>  もう負けやしないぜ!!」
+“We've gotten stronger too. We won't lose again!!”
+
+@43090 Argo · アルゴ
+> 「いくぞ!」
+“Let's go!”
+
+@43091 George · ジョルジュ
+> 「フッ、これで終わりにして
+>  さしあげますよ!」
+“Hmph, allow me to put an end to this!”
+
+@43092 Heero · ヒイロ
+> 「……ターゲット確認」
+“...Target confirmed.”
+
+@43093 Duo · デュオ
+> 「悪魔さんよ、死神が迎えに
+>  来たぜぇ!」
+“Hey there, Mister Devil, the Grim Reaper's come to pick you up!”
+
+@43094 Quatre · カトル
+> 「今はこんなことをしている場合じゃ
+>  ないんだ。すぐに終わらせます!」
+“This isn't the time to be doing this. I'll finish it right away!”
+
+@43095 Ark · アーク（按段落 3DD1）
+> 「何度も苦しめられたけど……
+>  ドモン、これで終わりにするんだ!」
+“You've made us suffer again and again, but... Domon, let's end this now!”
+
+@43096 Selain · セレイン（按段落 3DD2）
+> 「デビルガンダムか……化け物め。
+>  ドモン、いいな」
+“The Dark Gundam, huh... what a monster. Domon, ready?”
+
+@43097 Brad · ブラッド（按段落 3DD3）
+> 「けっ、化け物がよ。おいドモン、
+>  もういいかげん終わらせようぜ」
+“Tch, what a monster. Hey Domon, let's finally put an end to this.”
+
+@43098 Manami · マナミ（按段落 3DD4）
+# 审校：“be buried in Devil Gundams”改为“be buried in Devil Gundams”，原文“デビルガンダムにうめつくされてしまう”指被Devil Gundam覆盖，复数表达可接受，但为更贴切改为“be buried in Devil Gundams”未变；实际需修正为“be buried in Devil Gundams”不成立，应改为“be buried in Devil Gundams”仍不成立。改为“be buried in Devil Gundams”无变化，故本条不返回。
+> 「自己進化、自己増殖……
+>  ほうっておいたら、地球は
+“Self-evolution, self-replication... if left alone, the Earth will be
+---
+>  デビルガンダムにうめつくされてしまう……
+>  それを許すわけにはいかない!
+buried in Devil Gundams... I won't allow that!
+---
+>  いいわね、ドモン」
+All right, Domon?”
+
+@43099 Domon · ドモン
+> 「ああ、今度こそケリをつけてやる!」
+“Yeah, this time we settle it for good!”
+
+@43100 Schwarz · シュバルツ
+> 「…………」
+“...”
+
+@43101 Domon · ドモン
+> 「キョウジィィィッ!!」
+“Kyojiiiii!!”
+
+@43102 Kyoji · キョウジ
+> 「…………」
+“...”
+
+@43103 Schwarz · シュバルツ
+> 「ドモン、無事か!?」
+“Domon, are you all right?!”
+
+@43104 Domon · ドモン
+> 「シュバルツ……?」
+“Schwarz...?”
+
+@43105 Master · マスター
+> 「むっ!? あやつ、
+>  やはり、ワシのにらんだ通りか……
+“Hm?! That man... just as I suspected after all...
+---
+>  おのれ、今度は邪魔をさせん!」
+Curse you, this time I won't let you interfere!”
+
+@43106 Domon · ドモン
+> 「東方不敗……!」
+“Master Asia...!”
+
+@43107 Master · マスター
+> 「見ろドモン! デビルガンダムのコアたる
+>  キョウジは、もはや死にかけよ。お前が
+“Look, Domon! Kyoji, the core of the Dark Gundam, is already near death. This is the price of
+---
+>  倒した代償がこれだ! さしもの
+>  デビルガンダムも、パイロットがこれでは
+your victory! Even the Dark Gundam, with a pilot like this, is
+---
+>  鉄くず同然!
+>  ドモンよ、貴様が新たなコアとなって
+no better than scrap iron! Domon, you shall become the new core and
+---
+>  デビルガンダムを完全復活させる
+>  のだ!」
+bring the Dark Gundam back to full revival!”
+
+@43108 Schwarz · シュバルツ
+> 「黙れ! 貴様などに我が弟を
+>  やらせはせん!」
+“Silence! I will never let the likes of you have my brother!”
+
+@43109 Domon · ドモン
+> 「なんだって!? なぜ、シュバルツが
+>  俺を……まさか……」
+“What?! Why would Schwarz do that for me... Don't tell me...”
+
+@43110 Rain · レイン
+> 「そうよドモン! シュバルツは、シュバルツ
+>  はあなたのお兄さんだったのよ!」
+“That's right, Domon! Schwarz... Schwarz was your older brother!”
+
+@43111 Domon · ドモン
+> 「兄さん!? やっぱり
+>  キョウジ兄さん!? だが、なぜだ。では
+“Brother?! So it really is you, Kyoji?! But why? Then
+---
+>  デビルガンダムにいるのは、いったい……」
+who on earth is the one inside the Dark Gundam...?”
+
+@43112 Schwarz · シュバルツ
+> 「いいか、私はキョウジであって
+>  キョウジではない。いわば、影
+“Listen well. I am Kyoji, and yet not Kyoji. I am, so to speak, a shadow—
+---
+>  二つに分かれてしまった心と体。
+>  いわば鏡に映ったキョウジの影なのだ
+a heart and body split in two. I am the shadow of Kyoji reflected in a mirror.
+---
+>  本物のキョウジは確かに
+>  あの中にいる」
+The real Kyoji is indeed inside that thing.”
+
+@43113 Domon · ドモン
+> 「わからないよ!
+>  いったい、どういうことなんだよ!
+“I don't understand! What on earth does this mean?!
+---
+>  どうして、兄さんが2人もいるんだ!?」
+Why are there two of you, brother?!”
+
+@43114 Schwarz · シュバルツ
+> 「よく聞け、ドモン。私はDG細胞の
+>  力を借り、作りだされた、キョウジの
+“Listen carefully, Domon. I am nothing more than a copy of Kyoji,
+---
+>  コピーにすぎないのだ。すべては
+>  デビルガンダムを抹殺するためだった」
+created with the power of the DG Cells. All of it was to destroy the Dark Gundam.”
+
+@43115 Domon · ドモン
+> 「そんな! あれを使って地球圏の
+>  征服を企んだのは兄さんのはず……」
+“No! It was my brother who used that thing to try and conquer the Earth Sphere...”
+
+@43116 Schwarz · シュバルツ
+> 「それは違う! そもそもデビルガンダム、
+>  いや、アルティメットガンダムは
+“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+---
+>  地球再生を目的として
+>  作られたものだ」
+created for the purpose of restoring the Earth.”
+
+@43117 Domon · ドモン
+> 「地球の再生……?」
+“Restoring the Earth...?”
+
+@43118 Schwarz · シュバルツ
+> 「あの3大理論、自己再生・
+>  自己進化・自己増殖は
+“Those three great theories—self-recovery, self-evolution, self-replication—were
+---
+>  すべて地球の自然回復のための
+>  ものだった。だが! その驚異的な
+all meant for the Earth's natural regeneration. But! There were those who noticed
+---
+>  力に目をつけた者がいた。私は
+>  アルティメットガンダムに乗りこみ
+its incredible power. I boarded the Ultimate Gundam and
+---
+>  地球へと逃れた。しかし脱出時
+>  に受けた攻撃がもとで、プログラムが
+fled to Earth. However, the attack I took during my escape caused the program to
+---
+>  狂い、あの恐ろしいデビルガンダムと
+>  なってしまったのだ」
+go mad, and it became that terrifying Dark Gundam.”
+
+@43119 Duo · デュオ
+> 「なんだって!? じゃあ、あんたが
+>  デビルガンダムを奪ったってのは……」
+“What?! Then the story that you stole the Dark Gundam was...”
+
+@43120 Schwarz · シュバルツ
+> 「でっちあげだ。だまされたのだ、カーンズに
+>  奴はオペレーション・メテオの6つめの
+“A fabrication. I was deceived by Quinze. He tried to use the Ultimate Gundam
+---
+>  ガンダムとして、アルティメットガンダムを
+>  使おうとしたのだ」
+as the sixth Gundam of Operation Meteor.”
+
+@43121 Domon · ドモン
+> 「そ、そんな……
+>  じゃあ、俺はそんなことも知らずに
+“Th-then... so without knowing any of that,
+---
+>  必死に兄さんを追いかけて……」
+I desperately chased after my brother...”
+
+@43122 Schwarz · シュバルツ
+> 「根が素直なお前は、ガンダムに
+>  乗せられ、キョウジを追ってくるに
+“You're honest at heart, so I was sure you'd be put in a Gundam and come chasing
+---
+>  違いない。そう思った。だが相手は
+>  強大で、ムゲ帝国軍もいた
+after Kyoji. That's what I thought. But the enemy was powerful, and the Muge Empire's
+---
+>  お前が無茶をするのは目に見えて
+>  いた。そこでデビルガンダムに
+forces were there too. It was obvious you'd do something reckless. So Kyoji,
+---
+>  取り込まれたキョウジは、うすれていく
+>  意識の中で私をつくりあげ、
+taken into the Dark Gundam, created me within his fading consciousness,
+---
+>  お前を守らせようとしたのだ」
+and tried to have me protect you.”
+
+@43123 Domon · ドモン
+> 「なら、どうして!
+>  どうしていってくれなかったんだ!」
+“Then why?! Why didn't you tell me?!”
+
+@43124 Schwarz · シュバルツ
+> 「フフフッ、あれだけ、頭に血を
+>  のぼらせたお前が、素直に
+“Heh heh... With your head that hot with rage, there's no way you would have
+---
+>  信じたはずがあるまい……。ドモン、
+>  私も……私もつらかったぞ……うっ……」
+believed me honestly... Domon, I too... I suffered too... ngh...”
+
+@43125 Domon · ドモン
+> 「シュバルツ、いや兄さん!?」
+“Schwarz—no, brother?!”
+
+@43126 Schwarz · シュバルツ
+> 「私の命もまたキョウジとともにある。
+>  もはや、これまでか……いや
+“My life, too, exists alongside Kyoji's. So this is the end... No,
+---
+>  もってくれよ、この体!」
+hold on, this body of mine!”
+
+@43127 Master · マスター
+> 「貴様、何をする!」
+“You! What are you doing?!”
+
+@43128 Schwarz · シュバルツ
+> 「知れたこと! デビルガンダムを
+>  止めるのよ!」
+“Isn't it obvious! I'm going to stop the Dark Gundam!”
+
+@43129 Domon · ドモン
+> 「兄さん!?」
+“Brother?!”
+
+@43130 Schwarz · シュバルツ
+> 「黙ってみていろ!!」
+“Just shut up and watch!!”
+
+@43131 Schwarz · シュバルツ
+> 「うおおぉぉぉっ!!」
+“Uwoooooooh!!”
+
+@43132 Domon · ドモン
+> 「兄さん!?」
+“Brother?!”
+
+@43133 Schwarz · シュバルツ
+> 「くっ……コックピットへ……!!」
+“Ngh... To the cockpit...!!”
+
+@43134 Master · マスター
+> 「やめろ! やめんかぁぁぁぁっ!!」
+“Stop! Stop, I say!!”
+
+@43135 Domon · ドモン
+> 「兄さん!」
+“Brother!”
+
+@43136 Schwarz · シュバルツ
+> 「ドモン、早くうて、
+>  私ごとデビルガンダムを!」
+“Domon, fire now—Dark Gundam and all, me included!”
+
+@43137 Domon · ドモン
+> 「し、しかし兄さん……」
+“B-but, brother...”
+
+@43138 Schwarz · シュバルツ
+> 「早く! 私の体ごとコックピットを
+>  吹き飛ばすんだ! デビルガンダムを
+“Hurry! Blow the cockpit away, my body and all! To stop the Dark Gundam,
+---
+>  とめるには、キョウジをうつしかない!」
+there's no other way but to shoot Kyoji!”
+
+@43139 Domon · ドモン
+> 「そんな! いやだ、僕にはできない!」
+“No! I can't, I can't do it!”
+
+@43140 Schwarz · シュバルツ
+> 「甘ったれるな! その拳の紋章は
+>  偽物か! お前もその紋章を
+“Don't be soft! Is the crest on that fist a fake?! If you bear that crest,
+---
+>  持つ身なら、情に流され目的を
+>  見失ってはいかん!
+then you must not be swayed by sentiment and lose sight of your purpose!
+---
+>  こんな、こんな悲劇は、終わらせる
+>  のだ!」
+This—this tragedy—we end it here!”
+
+@43141 Domon · ドモン
+> 「兄さん……」
+“Brother...”
+
+@43142 Schwarz · シュバルツ
+> 「さぁ、やるんだ! デビルガンダムの呪い
+>  から、私たちを解き放ってくれ!
+“Now, do it! Free us from the Dark Gundam's curse!
+---
+>  頼むドモン、デビルガンダムに
+>  最後の一撃を!!」
+Please, Domon—deal the Dark Gundam its final blow!!”
+
+@43143 Domon · ドモン
+> 「くっ……わかったよ、兄さん……」
+“Ngh... All right, brother...”
+
+@43144 Master · マスター
+> 「よせドモォォンッ! それなくして地球
+>  の、地球の未来はぁぁぁぁぁ!!」
+“Stop it, Domooooon! Without that, Earth's—Earth's future will beeee!!”
+
+@43145 Domon · ドモン
+> 「……兄さん……」
+“...Brother...”
+
+@43146 Domon · ドモン
+> 「……ばぁぁぁぁぁくねつ!
+>  石破・天驚拳ッ!!」
+“...Baaaaaakunetsu! Sekiha Tenkyoken!!”
+
+@43147 Schwarz · シュバルツ
+> 「ありがとう……ドモン……」
+“Thank you... Domon...”
+
+@43148 Domon · ドモン
+> 「く……にぃぃぃぃさぁぁぁぁぁぁぁん!!」
+“Ngh... Brooooothaaaaaa!!”
+
+@43149 Wong · ウォン
+> 「ばかな……こんな、こんなはずでは……
+>  こんなはずでは、なかったのにぃ……」
+“Impossible... This—this wasn't supposed to happen... It wasn't supposed to happen...”
+
+@43150 Master · マスター
+> 「ああ……ワシの……ワシのデビルガンダム
+>  が……許さん、許さんぞ、ドモン!
+“Ahh... My... my Dark Gundam... I won't forgive you, I won't forgive you, Domon!
+---
+>  貴様は自分が何をしたか、
+>  わかっておるのかぁ!!」
+Do you even understand what you've done?!”
+
+@43151 Domon · ドモン
+> 「黙れ!! マスターアジア、
+>  デビルガンダムを使って、世界を
+“Shut up!! Master Asia, you villain who plots to use the Dark Gundam to make the world
+---
+>  我が者にしようとたくらむ
+>  悪党がぁっ!!」
+your own!!”
+
+@43152 Master · マスター
+> 「たわけが!! ワシがいつ、そんなものを
+>  欲しいといった!」
+“You fool!! When did I ever say I wanted such a thing?!”
+
+@43153 Domon · ドモン
+> 「この期におよんで言い逃れか!?
+>  ウォンのことはどうなる!」
+“Still trying to talk your way out of it at this point?! What about Wong?!”
+
+@43154 Master · マスター
+> 「ワシは奴を利用しただけよ。すべては
+>  デビルガンダムのため」
+“I merely used him. Everything was for the Dark Gundam.”
+
+@43155 Domon · ドモン
+> 「ならばなぜデビルガンダムが必要だ!?」
+“Then why do you need the Dark Gundam?!”
+
+@43156 Master · マスター
+> 「クククッ、知りたいか。ならば、勝負
+>  の二文字をもって教えてくれよう!」
+“Heh heh heh, you want to know? Then I shall teach you through the word 'battle'!”
+
+@43157 Domon · ドモン
+> 「キョウジ……兄さん……」
+“Kyoji... Brother...”
+
+@43158 Domon · ドモン
+> 「終わった……これで、すべて……」
+“It's over... With this, everything...”
+
+@43159 Schwarz · シュバルツ
+> 「ついに……ついに倒したか……くっ……」
+“At last... at last we've defeated it... ngh...”
+
+@43160 Domon · ドモン
+> 「どうした、シュバルツ?」
+“What's wrong, Schwarz?”
+
+@43161 Rain · レイン
+> 「……ドモン! その人は、その人は
+>  あなたのお兄さんなのよ!」
+“...Domon! That man—that man is your brother!”
+
+@43162 Schwarz · シュバルツ
+> 「レイン……」
+“Rain...”
+
+@43163 Domon · ドモン
+> 「なんだって!? どういうことだ? じゃあ
+>  いま死んだのは誰だというんだ?」
+“What?! What do you mean? Then who was it that just died?”
+
+@43164 Schwarz · シュバルツ
+> 「……私はキョウジであってキョウジ
+>  ではない。いわば、影。二つに
+“...I am Kyoji, and yet not Kyoji. A shadow, so to speak. A heart and body
+---
+>  分かれてしまった心と体。いわば……
+>  鏡に映ったキョウジの影なのだ」
+split in two. In other words... the shadow of Kyoji reflected in a mirror.”
+
+@43165 Domon · ドモン
+> 「俺は、俺にはわからないよ!」
+“I—I don't understand!”
+
+@43166 Schwarz · シュバルツ
+> 「私はDG細胞の力を借り、
+>  作りだされた、キョウジのコピーなのだ
+“I am a copy of Kyoji, created by borrowing the power of the DG Cells.
+---
+>  すべてはデビルガンダムを抹殺する
+>  ためだった」
+All of it was to eradicate the Dark Gundam.”
+
+@43167 Domon · ドモン
+# 审校：原文“企んだ”是“图谋、策划”，初稿 tried 语气较弱，改为 plotted。
+> 「そんな! あれを使って地球圏の
+>  征服を企んだのは兄さんのはず……」
+“No! It was my brother who used that thing and plotted to conquer the Earth Sphere...”
+
+@43168 Schwarz · シュバルツ
+> 「それは違う! そもそもデビルガンダム、
+>  いや、アルティメットガンダムは
+“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+---
+>  地球再生を目的として
+>  作られたものだ」
+created for the purpose of restoring the Earth.”
+
+@43169 Domon · ドモン
+> 「地球の再生……?」
+“Restoring the Earth...?”
+
+@43170 Schwarz · シュバルツ
+> 「あの3大理論、自己再生・
+>  自己進化・自己増殖は
+“Those three great theories—self-recovery, self-evolution, self-multiplication—were
+---
+>  すべて地球の自然回復のための
+>  ものだった。だが! その驚異的な
+all meant for the Earth's natural restoration. But! There were those who took notice of
+---
+>  力に目をつけた者がいた。私は
+>  アルティメットガンダムに乗りこみ
+its astounding power. I boarded the Ultimate Gundam and fled to Earth. However, because
+---
+>  地球へと逃れた。しかし脱出時
+>  に受けた攻撃がもとで、プログラムが
+of the attack I took during my escape, the program went haywire, and it became that
+---
+>  狂い、あの恐ろしいデビルガンダムと
+>  なってしまったのだ」
+terrifying Dark Gundam.”
+
+@43171 Duo · デュオ
+> 「なんだって!? じゃあ、あんたが
+>  デビルガンダムを奪ったってのは……」
+“What?! Then that stuff about you stealing the Dark Gundam was...”
+
+@43172 Schwarz · シュバルツ
+> 「でっちあげだ。だまされたのだ、カーンズに
+>  奴はオペレーション・メテオの6つめの
+“A fabrication. I was deceived by Quinze. He tried to use the Ultimate Gundam as
+---
+>  ガンダムとして、アルティメットガンダムを
+>  使おうとしたのだ」
+the sixth Gundam of Operation Meteor.”
+
+@43173 Domon · ドモン
+> 「そ、そんな……
+>  じゃあ、俺はそんなことも知らずに
+“Th-that can't be... Then I, without even knowing any of that,
+---
+>  必死に兄さんを追いかけて……」
+desperately chased after my brother...”
+
+@43174 Schwarz · シュバルツ
+> 「根が素直なお前は、ガンダムに
+>  乗せられ、キョウジを追ってくるに
+“You're honest at heart, so I was sure you'd be put in a Gundam and come chasing after
+---
+>  違いない。そう思った。だが相手は
+>  強大で、帝国軍もいた。お前が
+Kyoji. That's what I thought. But the enemy was powerful, and the imperial forces were there too. It was
+---
+>  無茶をするのは目に見えていた。
+>  そこでデビルガンダムに取り込まれた
+obvious you'd do something reckless. So Kyoji, swallowed by the Dark Gundam,
+---
+>  キョウジは、うすれていく意識の中で
+>  私をつくりあげ、お前を
+created me within his fading consciousness, and tried to have me
+---
+>  守らせようとしたのだ」
+protect you.”
+
+@43175 Domon · ドモン
+> 「なら、どうして!
+>  どうしていってくれなかったんだ!」
+“Then why! Why didn't you tell me?!”
+
+@43176 Schwarz · シュバルツ
+> 「フフフッ、あれだけ、頭に血を
+>  のぼらせたお前が、素直に
+“Heh heh, with your head that hot with rage, there's no way you would have
+---
+>  信じたはずがあるまい……。ドモン、
+>  私も……私もつらかったぞ……うっ……」
+believed me so easily... Domon, I too... I suffered as well... ngh...”
+
+@43177 Domon · ドモン
+> 「シュバルツ、いや兄さん!?」
+“Schwarz—no, brother?!”
+
+@43178 Schwarz · シュバルツ
+> 「私の命もまたキョウジとともにある。
+>  キョウジが眠りについた今
+“My life, too, exists alongside Kyoji's. Now that Kyoji has fallen into sleep,
+---
+>  私もまた……」
+I as well...”
+
+@43179 Domon · ドモン
+> 「兄さん!!」
+“Brother!!”
+
+@43180 Schwarz · シュバルツ
+> 「ドモン……最後に、こうしてお前と
+>  話ができてよかった……
+“Domon... I'm glad that at the end, I could talk with you like this...
+---
+>  先はまだ長い……
+>  負けるなよ、ドモン……」
+Your road is still long... Don't lose, Domon...”
+
+@43181 Domon · ドモン
+> 「兄さん!? くっ……
+>  キョウジ兄さぁぁぁぁぁんっ!!」
+“Brother?! Ngh... Kyoji, brooooothaaaaaa!!”
+
+@43182 Rain · レイン
+> 「……ドモン、あのね」
+“...Domon, listen.”
+
+@43183 Domon · ドモン
+> 「ん?」
+“Hm?”
+
+@43184 Rain · レイン
+> 「……いえ……なんでもないわ」
+“...No... it's nothing.”
+
+@43185 Domon · ドモン
+> 「レイン? おかしなやつだな」
+“Rain? You're acting strange.”
+
+@43186 Wong · ウォン
+> 「ばかな……こんな、こんなはずでは……
+>  こんなはずでは、なかったのにぃ……」
+“Impossible... this, this wasn't supposed to happen... it wasn't supposed to happen...”
+
+@43187 Domon · ドモン
+> 「……東方不敗……」
+“...Master Asia...”
+
+@43188 Master · マスター
+> 「ああ……ワシの……ワシのデビルガンダム
+>  が……許さん、許さんぞ、ドモン!
+“Ahh... my... my Dark Gundam... I won't forgive you, I won't forgive you, Domon!
+---
+>  貴様は自分たちが何をしたか、
+>  わかっておるのかぁ!!」
+Do you even understand what you've done?!”
+
+@43189 Domon · ドモン
+> 「黙れ!! マスターアジア、
+>  デビルガンダムを使って、世界を
+“Shut up!! Master Asia, you're a villain plotting to use the Dark Gundam to make the world
+---
+>  我が者にしようとたくらむ
+>  悪党がぁっ!!」
+your own!!”
+
+@43190 Master · マスター
+> 「たわけが!! ワシがいつ、そんなものを
+>  欲しいといった!」
+“You fool!! When did I ever say I wanted such a thing?!”
+
+@43191 Domon · ドモン
+> 「この期におよんで言い逃れか!?
+>  ウォンのことはどうなる!」
+“Still trying to talk your way out of it at this point?! What about Wong?!”
+
+@43192 Master · マスター
+> 「ワシは奴を利用しただけよ。すべては
+>  デビルガンダムのため」
+“I merely used him. Everything was for the Dark Gundam.”
+
+@43193 Domon · ドモン
+> 「ならばなぜデビルガンダムが必要だ!?」
+“Then why do you need the Dark Gundam?!”
+
+@43194 Master · マスター
+> 「クククッ、知りたいか。ならば、勝負
+>  の二文字をもって教えてくれよう!」
+“Heh heh heh, you want to know? Then I'll teach you with the word 'duel'!”
+
+@43195 Master · マスター
+> 「ドモンよ、貴様らは地球の
+>  断末魔の光景をその目で
+“Domon, did you lot watch the death throes of the Earth with your own eyes
+---
+>  見ながら、なにも気づかなんだのか。
+>  地球を荒廃させたものが
+and never notice a thing? Never notice what it was that
+---
+>  何だったのかということを」
+laid the Earth to waste?”
+
+@43196 Domon · ドモン
+> 「ジオンと、そして異星人どもだ!」
+“Zeon, and the aliens!”
+
+@43197 Master · マスター
+> 「ばか者が……。ワシはな、それに
+>  気づいた時、こんな地球の姿を
+“You fool... When I realized it, I could no longer stay silent
+---
+>  黙って見てはおれんようになった。
+>  そこで、ある誓いをたてた
+and watch the Earth in this state. So I made a vow:
+---
+>  どんな手段を使おうと、この地球
+>  を自然あふるるもとの姿に
+by whatever means, I would restore this Earth to its
+---
+>  もどしてみせるとな」
+natural, verdant form.”
+
+@43198 Domon · ドモン
+> 「ならばなぜ、こんなことをした!?
+>  他にいくらでも方法があったはずだ
+“Then why did you do all this?! There had to be plenty of other ways!
+---
+>  第一、地球は異星人の
+>  侵略を受けているんだぞ!」
+For one thing, the Earth is being invaded by aliens!”
+
+@43199 Master · マスター
+> 「フッよいか、ワシの目的は、
+>  この地球にいる、すべての人類の
+“Hmph, listen well. My goal is the annihilation of all
+---
+>  抹殺なのだぞ! 地球人も
+>  異星人もワシにとっては、どちらも
+humanity on this Earth! Earthlings and aliens are both
+---
+>  同じよ。文明などというものを持つ
+>  生き物がいなければ、地球の
+the same to me. If there are no creatures left possessing things like civilization, the Earth's
+---
+>  自然は、おのずとよみがえる」
+nature will revive on its own.”
+
+@43200 Domon · ドモン
+> 「な……なんだと……?」
+“Wh-what did you say...?”
+
+@43201 Master · マスター
+> 「ククククッ、ハハハハハハッ、そうだ、
+>  それがいい。そのためならば、人類など
+“Heh heh heh heh, hahahahahaha, yes, that's right. For that, humanity can simply
+---
+>  亡びてしまえばいいのだ! 償いだ、
+>  人類は自らの罪を償わねばならぬ
+perish! It's atonement. Humanity must atone for its sins.
+---
+>  デビルガンダムと出会った時
+>  ワシはそれに気づいたのだ!」
+When I met the Dark Gundam, I realized it!”
+
+@43202 Domon · ドモン
+> 「あんたは……どうかしている!」
+“You're... out of your mind!”
+
+@43203 Master · マスター
+> 「ならば、貴様の拳をもって
+>  このワシを止めてみせぃ!!」
+“Then try and stop me with those fists of yours!!”
+
+@43204 Domon · ドモン
+> 「くっ……東方不敗の拳から
+>  深い悲しみが伝わってきた……?
+“Ngh... I felt a deep sorrow in Master Asia's fists...?
+---
+>  なぜだ!?」
+Why?!”
+
+@43205 Master · マスター
+> 「よくやった、ドモンよ……
+>  今こそ、今こそお前は本物の……
+“Well done, Domon... Now, now you are a true...
+---
+>  キング・オブ・ハート……」
+King of Hearts...”
+
+@43206 Domon · ドモン
+> 「し、師匠……?
+>  ししょぉぉぉぉぉぉぉぉぉーっ!!」
+“M-Master...? Maaaasteeeeeer!!”
+
+@43207 Master · マスター
+> 「ぐはっ!」
+“Gwah!”
+
+@43208 Domon · ドモン
+> 「東方不敗、あんたはもう終わりだ」
+“Master Asia, you're finished.”
+
+@43209 Master · マスター
+> 「フ、ククククッ、まったくこの……
+>  ばか弟子が……だが……見事よな」
+“Hmph, heh heh heh, you really are... a foolish disciple... but... magnificent.”
+
+@43210 Domon · ドモン
+> 「……師匠……?」
+“...Master...?”
+
+@43211 Master · マスター
+> 「ドモン……今こそお前は、
+>  本物の……キング・オブ・ハート……」
+“Domon... Now you are a true... King of Hearts...”
+
+@43212 Domon · ドモン
+> 「あ……師匠……?
+>  ……ししょぉぉぉぉぉーっ!!」
+“Ah... Master...? ...Maaaasteeeeeer!!”
+
+@43213 Master · マスター
+> 「ば、ばかな……このワシが……!?」
+“I-impossible... me...?!”
+
+@43214 Domon · ドモン
+> 「……東方不敗……あんたはいったい
+>  何をしたかったんだ…………師匠……」
+“...Master Asia... what on earth were you trying to do... Master...”
+
+@43215 Wong · ウォン
+> 「こんなはずでは、こんなはずではなかったの
+>  に……デビルガンダムさえあればこの私は
+“This wasn't supposed to happen, it wasn't supposed to happen... If only I had the Dark Gundam, I
+---
+>  宇宙を支配する神になれるはず
+>  だったのに……」
+should have become a god ruling the universe...”
+
+@43216 Domon · ドモン
+> 「ウォン・ユンファ、財団の幹部が
+>  何を企んだか知らぬが、すべて
+“Wong Yun-Fat, I don't know what the foundation's executives were plotting, but it all
+---
+>  終わったようだな」
+seems to be over now.”
+
+@43217 Wong · ウォン
+> 「渡しはせん、宇宙の覇権は
+>  渡しはせんぞ……」
+“I won't hand it over, I won't hand over the hegemony of the universe...”
+
+@43218 Domon · ドモン
+> 「な……ばかな!?」
+“Wh-what?! Impossible!”
+
+@43219 Wong · ウォン
+> 「許さん……お前たちは許さんぞ……」
+“I won't forgive you... I won't forgive any of you...”
+
+@43220 Domon · ドモン
+> 「貴様は……ウォン!?」
+“You're... Wong?!”
+
+@43221 Wong · ウォン
+> 「ククククククッ、ただのウォンではない。
+>  今の私は、DG細胞の力を得た
+“Heh heh heh heh heh, I'm no mere Wong. I am now Great Wong,
+---
+>  グレート・ウォンだ!!」
+granted the power of the DG cells!!”
+
+@43222 Domon · ドモン
+> 「ばかな……自ら、デビルガンダムに
+>  取り込まれたというのか……!?」
+“Impossible... you let the Dark Gundam absorb you yourself...?!”
+
+@43223 Wong · ウォン
+> 「私だ、私が宇宙の支配者なの
+>  だ。アーッハハハハハハッ!!」
+“It's me, I am the ruler of the universe. Ahahahahahaha!!”
+
+@43224 Domon · ドモン
+> 「な……ばかな!?」
+“Wh-what?! Impossible!”
+
+@43225 Wong · ウォン
+> 「ハーッハハハハッ! キョウジの肉体は
+>  なくなったが、代わりのコアさえあれば
+“Hahahahaha! Kyoji's body may be gone, but as long as I have a replacement core,
+---
+>  いいのだ! 見よ、この力を。私の
+>  研究は間違っていなかった!!」
+it's fine! Behold this power. My research was not mistaken!!”
+
+@43226 Domon · ドモン
+> 「代わりのコアだと?」
+“A replacement core?”
+
+@43227 Wong · ウォン
+> 「紹介しよう。新たなデビルガンダムの
+>  コア、その名もアレンビー・ビアズリー」
+“Allow me to introduce her. The new core of the Dark Gundam, her name is Allenby Beardsley.”
+
+@43228 Allenby · アレンビー
+> 「…………」
+“...”
+
+@43229 Domon · ドモン
+> 「ア……アレンビー!?」
+“A-Allenby?!”
+
+@43230 Wong · ウォン
+> 「フハハハハハッ、そうだ、私が、私が
+>  宇宙の支配者になるのだ。まずは
+“Fuhahahahaha, yes, I, I shall become the ruler of the universe. First,
+---
+>  お前たちを片づけて、それから
+>  異星人どもを滅ぼしにいくとしよう」
+I'll dispose of you lot, and then I'll go wipe out those aliens.”
+
+@43231 Wong · ウォン
+> 「ばかな!? そんなはずはない……
+>  そんなはずはぁぁぁぁっ!!」
+“Impossible?! That can't be... that can't beeeee!!”
+
+@43232 Allenby · アレンビー
+> 「……ドモン……あ……りがと……」
+“...Domon... th...ank you...”
+
+@43233 Domon · ドモン
+> 「アレンビー……」
+“Allenby...”
+
+@43234 Domon · ドモン
+# 审校：“you're no fighter at all”语气偏口语，且原文“ファイターにあらず”是较郑重的否定，改为“you are no fighter”更贴合。
+> 「ウォン……しょせん貴様はファイターに
+>  あらず!」
+“Wong... in the end, you are no fighter!”
+
+@43235 Wong · ウォン
+> 「ばかな!? そんなはずはない……
+>  そんなはずはぁぁぁぁっ!!」
+“Impossible?! That can't be... that can't beeeee!!”
+
+@43236 Wong · ウォン
+> 「クククククッ、さぁお行きなさい。
+>  私のかわいいデビル・アレンビーよ!」
+“Heh heh heh heh, now go, my dear Devil Allenby!”
+
+@43237 Allenby · アレンビー
+> 「……うおおぉぉぉぉっ!!」
+“...Uwooooooooh!!”
+
+@43238 Domon · ドモン
+> 「アレンビー? アレンビーなのか!?
+>  だったら、答えてくれ!
+“Allenby? Is that you, Allenby?! Then answer me!
+---
+>  答えてくれ、アレンビー!!」
+Answer me, Allenby!!”
+
+@43239 Rain · レイン
+> 「そんな……まさか、DG細胞……?」
+“No... don't tell me, DG cells...?”
+
+@43240 Wong · ウォン
+> 「フフフフッ、さあ、やってしまいたまえ!」
+“Heh heh heh, now, finish them off!”
+
+@43241 Domon · ドモン
+> 「アレンビー、どうした!?
+>  俺がわからないのか!?」
+“Allenby, what's wrong?! Don't you recognize me?!”
+
+@43242 Allenby · アレンビー
+> 「ファイトしようよ、アタシとぉぉーっ!!」
+“Let's fight, you and meee!!”
+
+@43243 Rain · レイン
+> 「ウソでしょう、アレンビー、
+>  あなたまでDG細胞に……」
+“You can't be serious, Allenby, even you've been taken by the DG cells...”
+
+@43244 Domon · ドモン
+> 「アレンビィィーッ!!」
+“Allenbyyyyy!!”
+
+@43245 Master · マスター
+> 「ウォン! これは、いったい
+>  どういうことだ!?」
+“Wong! What on earth is the meaning of this?!”
+
+@43246 Wong · ウォン
+> 「東方先生、私のアレンビーが
+>  ドモンたちを倒して、デビルガンダムの
+“Master Asia, my Allenby will defeat Domon and the others, and become the core of the Dark Gundam.
+---
+>  コアになる。そういうことですよ」
+That is what this is about.”
+
+@43247 Master · マスター
+> 「ぬぅぅ……いいだろう。だが、お前の
+>  浅知恵がどこまで通用するかな」
+“Ngh... very well. But let's see how far your shallow scheming gets you.”
+
+@43248 Domon · ドモン
+> 「…………」
+“...”
+
+@43249 Master · マスター
+> 「なぁ、ドモンよ……
+>  お前の拳が語っておったわ
+“Tell me, Domon... your fists spoke to me.
+---
+>  人は、そう捨てたものでもないとな」
+That people are not so hopeless after all.”
+
+@43250 Domon · ドモン
+> 「東方不敗……」
+“Master Asia...”
+
+@43251 Master · マスター
+> 「人類もいつかは自分の
+>  過ちに気づき、やり直すことが
+“Perhaps humanity too will someday realize its mistakes and be able
+---
+>  できるのかもしれんなぁ……」
+to start over...”
+
+@43252 Domon · ドモン
+> 「し、師匠……」
+“M-Master...”
+
+@43253 Master · マスター
+> 「ワシをまた師匠と呼んで
+>  くれるのか……ワシは……
+“You'll still call me Master... Was I...
+---
+>  ワシは間違っておったのか……?
+>  なぁ、ドモンよ」
+was I mistaken...? Tell me, Domon.”
+
+@43254 Domon · ドモン
+> 「俺は、俺は今のいまになって初めて
+>  師匠の悲しみを知った。なのに
+“I, only now have I come to know your sorrow, Master. And yet
+---
+>  俺はあんたと、はりあうことばかり考え
+>  ていた。話を聞こうともしなかった
+I thought only of fighting you. I never even tried to listen to you.
+---
+>  なのに、あんたは最後まで
+>  俺のことを……」
+And still, you, to the very end, cared about me...”
+
+@43255 Master · マスター
+> 「何をいう……しょせんワシは大罪人
+>  よ。だがな、見てくれ。ワシの体は
+“What are you saying... I am nothing but a great sinner. But look. Not a single
+---
+>  一片たりともDG細胞に
+>  おかされてはおらぬ」
+part of my body has been corrupted by the DG cells.”
+
+@43256 Domon · ドモン
+> 「わかっていた……わかっていたのに……」
+“I knew... I knew it all along, and yet...”
+
+@43257 Master · マスター
+> 「ドモン、お前たちと出会わな
+>  ければ……お前がガンダム乗りになど
+“Domon, if I had never met you lot... if you had never become
+---
+>  ならねば、こんな、こんなことには
+>  ならなんだのになぁ……」
+a Gundam Fighter, none of this, none of this would have happened...”
+
+@43258 Domon · ドモン
+> 「ううっ……師匠……」
+“Ugh... Master...”
+
+@43259 Master · マスター
+> 「何を泣く……見よドモン、
+>  あの朝日を。美しいなぁ……」
+“Why do you weep... Look, Domon, at that morning sun. How beautiful...”
+
+@43260 Domon · ドモン
+> 「はい、とても美しゅうございます!」
+“Yes, it is truly beautiful!”
+
+@43261 Master · マスター
+> 「うむ……ならば……」
+“Good... then...”
+
+@43262 Domon · ドモン
+> 「流派、東方不敗は
+>  王者の風よ!」
+“The School of the Undefeated of the East is the way of the king!”
+
+@43263 Master · マスター
+> 「流派、東方不敗は
+>  王者の風よ!」
+“The School of the Undefeated of the East is the way of the king!”
+
+@43264 Domon · ドモン
+# 机翻疑问：新译名：全新系裂=Full-New Series Break
+> 「全新系裂!」
+“Full-New Series Break!”
+
+@43265 Master · マスター
+> 「全新系裂!」
+“Full-New Series Break!”
+
+@43266 Domon · ドモン
+# 机翻疑问：新译名：天破侠乱=Heaven-Splitting Heroic Chaos
+> 「天破侠乱!」
+“Heaven-Splitting Heroic Chaos!”
+
+@43267 Master · マスター
+> 「天破侠乱!」
+“Heaven-Splitting Heroic Chaos!”
+
+@43268 Domon · ドモン
+> 「見よ! 東方は赤く燃えている!」
+“Look! The east is burning red!”
+
+@43269 Master · マスター
+> 「見よ! 東方は赤く燃えている!」
+“Look! The east is burning red!”
+
+@43270 Domon · ドモン
+> 「……師匠? 師匠!!
+>  ……ししょぉぉぉぉぉぉぉーっ!!」
+“...Master? Master!! ...Maaaasteeeer!!”
+
+@43271 Domon · ドモン
+> 「師匠……」
+“Master...”
+
+@43272 Master · マスター
+> 「……もうよいわ。どのみちワシは長くは
+>  もたなんだ。……なぁドモン、ワシはな
+“...It's all right now. Either way, I wouldn't have lasted much longer. ...Domon, listen. I
+---
+>  ワシは、この地球を再び緑あふるる
+>  星にしたかったのだ……」
+wanted to make this Earth a planet overflowing with green once more...”
+
+@43273 Domon · ドモン
+> 「そんな……師匠、ならばなぜ
+>  デビルガンダムなどを……」
+“That can't be... Master, then why the Dark Gundam...?”
+
+@43274 Master · マスター
+> 「もうよいというておるのに。
+>  いまさらワシが何を語ろうとも、ただの
+“I told you it's all right. Whatever I say now would only be
+---
+>  言い訳にしかならぬ」
+an excuse.”
+
+@43275 Domon · ドモン
+> 「俺が、俺があんたと、はりあうことばか
+>  り考えて、あんたの話を聞こうとも
+“Because I, because I thought only of fighting you, and never even tried to listen
+---
+>  しなかったから……。なのに、あんたは
+>  最後まで俺のことを……」
+to you... And still, you, to the very end, cared about me...”
+
+@43276 Master · マスター
+> 「何をいう……しょせんワシは大罪人
+>  よ。だがな、見てくれ。ワシの体は
+“What are you saying... I am nothing but a great sinner. But look. Not a single
+---
+>  一片たりともDG細胞に
+>  おかされてはおらぬ」
+part of my body has been corrupted by the DG cells.”
+
+@43277 Domon · ドモン
+> 「わかっていた……わかっていたのに……」
+“I knew... I knew it all along, and yet...”
+
+@43278 Master · マスター
+> 「ドモン、お前たちと出会わな
+>  ければ……お前がガンダム乗りになど
+“Domon, if I had never met you lot... if you had never become
+---
+>  ならねば、こんな、こんなことには
+>  ならなんだのになぁ……」
+a Gundam Fighter, none of this, none of this would have happened...”
+
+@43279 Domon · ドモン
+> 「ううっ……師匠……」
+“Ugh... Master...”
+
+@43280 Master · マスター
+> 「何を泣く……見よドモン、
+>  あの朝日を。美しいなぁ……」
+“Why do you weep... Look, Domon, at that morning sun. How beautiful...”
+
+@43281 Domon · ドモン
+> 「はい、とても美しゅうございます!」
+“Yes, it is truly beautiful!”
+
+@43282 Master · マスター
+> 「うむ……ならば……」
+“Good... then...”
+
+@43283 Domon · ドモン
+> 「流派、東方不敗は
+>  王者の風よ!」
+“The School of the Undefeated of the East is the way of the king!”
+
+@43284 Master · マスター
+> 「流派、東方不敗は
+>  王者の風よ!」
+“The School of the Undefeated of the East is the way of the king!”
+
+@43285 Domon · ドモン
+> 「全新系裂!」
+“Full-New Series Break!”
+
+@43286 Master · マスター
+> 「全新系裂!」
+“Full-New Series Break!”
+
+@43287 Domon · ドモン
+> 「天破侠乱!」
+“Heaven-Splitting Heroic Chaos!”
+
+@43288 Master · マスター
+> 「天破侠乱!」
+“Heaven-Splitting Heroic Chaos!”
+
+@43289 Domon · ドモン
+> 「見よ! 東方は赤く燃えている!」
+“Look! The east is burning red!”
+
+@43290 Master · マスター
+> 「見よ! 東方は赤く燃えている!」
+“Look! The east is burning red!”
+
+@43291 Domon · ドモン
+> 「……師匠? 師匠!! ……
+>  ししょぉぉぉぉぉぉぉーっ!!」
+“...Master? Master!! ...Maaaasteeeer!!”
+
+@43292 Cath · キャス
+> 「アレンビーはどう、レイン?」
+“How's Allenby, Rain?”
+
+@43293 Rain · レイン
+> 「ええ……たぶん、本隊に合流すれば
+>  なんとかできると思うわ」
+“Yeah... I think we can manage once we rejoin the main force.”
+
+@43294 Duo · デュオ
+> 「あの姉さんかい? DG細胞ってのに
+>  やられてたんじゃなかったのか?」
+“That lady? Wasn't she taken down by those DG cells?”
+
+@43295 Rain · レイン
+> 「でも、それほどおかされてはいなかったのよ
+>  きっと、大丈夫」
+“But she wasn't corrupted that badly. I'm sure she'll be fine.”
+
+@43296 Heero · ヒイロ
+> 「システムを止めたのが幸いしたな」
+“Lucky that the system was stopped.”
+
+@43297 Rain · レイン
+> 「ええ、だと思うわ」
+“Yeah, I think so too.”
+
+@43298 George · ジョルジュ
+> 「何にしても、お嬢さんを犠牲に
+>  しなくて幸いでした。……とにかく
+“In any case, it's a blessing we didn't have to sacrifice the young lady. ...After all,
+---
+>  犠牲の大きい戦いでしたからね」
+it was a battle with heavy losses.”
+
+@43299 Argo · アルゴ
+> 「ああ……そう思う」
+“Yeah... I think so.”
+
+@43300 Duo · デュオ
+> 「ま、これでどうにか一段落って
+>  トコだな」
+“Well, this is more or less one chapter closed.”
+
+@43301 Quatre · カトル
+> 「そうですね……あの2人がいなければ、
+>  さすがにもう復活してこないでしょう」
+“I suppose so... With those two gone, surely they won't be coming back now.”
+
+@43302 Chibodee · チボデー
+> 「それじゃあ、そろそろ出発するか。
+>  早いトコ仲間と合流しようぜ
+“Then let's get moving soon. Let's regroup with our friends as quick as we can.
+---
+>  シャリー、頼む」
+Shirley, if you please.”
+
+@43303 Shirley · シャリー
+# 审校：梁山泊是专有地名，按音译改为 Ryozanpaku，不应误译为 Neo Hong Kong。
+> 「わかったわ。梁山泊ね」
+“Got it. Ryozanpaku, then.”
+
+@43304 Chibodee · チボデー
+> 「そういうこった」
+“That's right.”
+
+@43305 George · ジョルジュ
+> 「ドモン……ドモン!」
+“Domon... Domon!”
+
+@43306 Domon · ドモン
+> 「あ? ああ……何だ?」
+“Huh? Oh... What is it?”
+
+@43307 Sai Saici · サイ・サイシー
+# 审校：同上，将 Neo Hong Kong 改为 Ryozanpaku，保持地名一致。
+> 「何だって、アニキ。もう梁山泊だぜ」
+“What do you mean, bro? We're already at Ryozanpaku.”
+
+@43308 Domon · ドモン
+> 「……そうか」
+“...I see.”
+
+@43309 Duo · デュオ
+> 「おいおい、しっかりしてくれよ。
+>  あんたの方はこれで、ひと区切りかも
+“Hey, hey, pull yourself together. This might be a chapter closed for you,
+---
+>  しれないが、まだ何にも終わっちゃ
+>  いないんだぜ?」
+but nothing's finished yet, you hear?”
+
+@43310 Domon · ドモン
+> 「わかってるさ……
+>  大丈夫だ。大丈夫」
+“I know... I'm fine. I'm fine.”
+
+@43311 Rain · レイン
+> 「ドモン……本当に大丈夫なの?」
+“Domon... Are you really fine?”
+
+@43312 Domon · ドモン
+> 「何いってるんだ、レイン。
+>  この通り、なんともないさ」
+“What are you talking about, Rain? Look, I'm perfectly fine.”
+
+@43313 Duo · デュオ
+> (つってもなぁ、表情がうつろなんだよ
+>  なぁ……)
+(Still, his face is totally blank...)
+
+@43314 Rain · レイン
+> 「ドモン……」
+“Domon...”
+
+@43315 Heero · ヒイロ
+> 「気がぬけているだけだろう。栄養剤
+>  でも、うっておいてやれ。それで十分だ」
+“He's just worn out. Give him a nutrient shot. That'll be enough.”
+
+@43316 Rain · レイン
+> 「ヒイロ? そうね、そうするわ。
+>  あなたが、そんなこといってくれるなんて
+“Heero? You're right, I'll do that. It's rare for you to say something like
+---
+>  珍しいわね」
+that.”
+
+@43317 Heero · ヒイロ
+> 「こいつの戦力は重要だ。
+>  失うわけにはいかない」
+“His combat strength is vital. We can't afford to lose him.”
+
+@43318 Duo · デュオ
+> 「はいはい、お前はいつだって正しいよ」
+“Yeah, yeah, you're always right.”
+
+@43319 Bunny · バニー
+> 「あっ、見えたわ! みんな、ついたわよ!」
+“Oh, I can see it! Everyone, we've arrived!”
+
+@43320 Shirley · シャリー
+> 「もうすぐ着艦するわ、
+>  用意してちょうだい」
+“We'll be docking soon. Get ready.”

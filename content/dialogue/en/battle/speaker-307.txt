@@ -1,0 +1,161 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13447 Specials · スペシャルズ
+> 「もらったな!」
+“Got you now!”
+
+@13448 Specials · スペシャルズ
+> 「沈めっ!」
+“Sink!”
+
+@13449 Specials · スペシャルズ
+> 「落ちろっ!!」
+“Fall!”
+
+@13450 Specials · スペシャルズ
+> 「やらせんっ!」
+“I won't let you!”
+
+@13451 Specials · スペシャルズ
+> 「こいつでとどめだ!!」
+“This is the finishing blow!”
+
+@13452 Specials · スペシャルズ
+> 「甘く見るなっ!!」
+“Don't underestimate me!”
+
+@13453 Specials · スペシャルズ
+> 「死ねっ!」
+“Die!”
+
+@13454 Specials · スペシャルズ
+> 「くらえっ!」
+“Eat this!”
+
+@13455 Specials · スペシャルズ
+> 「行くぞっ!」
+“Here I come!”
+
+@13456 Specials · スペシャルズ
+> 「これでどうだ!!」
+“How's this?!”
+
+@13457 Specials · スペシャルズ
+> 「な……バカなっ!?」
+“Wha... Impossible!”
+
+@13458 Specials · スペシャルズ
+> 「やられただと!?」
+“I've been hit?!”
+
+@13459 Specials · スペシャルズ
+> 「ぐうっ! バカなっ、
+>  これ程のパワーが!?」
+“Guh! Impossible, this much power?!”
+
+@13460 Specials · スペシャルズ
+> 「な、なんだと!? この力……
+>  化け物か!?」
+“Wh-what?! This power... is it a monster?!”
+
+@13461 Specials · スペシャルズ
+> 「うおおっ!? こ、こいつは……」
+“Whoaah?! Th-this is...”
+
+@13462 Specials · スペシャルズ
+> 「何っ!? お、押されている!?」
+“What?! I-I'm being pushed back?!”
+
+@13463 Specials · スペシャルズ
+> 「こ、こいつら、ただもんじゃない!!」
+“Th-these guys are no ordinary foes!”
+
+@13464 Specials · スペシャルズ
+> 「ちいっ、このままですむと思うなっ!」
+“Tch, don't think this is over!”
+
+@13465 Specials · スペシャルズ
+> 「ぐあっ! この、黙ってやられるものか!」
+“Gah! You think I'll just take this?!”
+
+@13466 Specials · スペシャルズ
+> 「くっ! やるな!」
+“Kuh! Not bad!”
+
+@13467 Specials · スペシャルズ
+> 「うおっ! なんの、まだまだっ!」
+“Whoa! No way, not even close!”
+
+@13468 Specials · スペシャルズ
+> 「つうっ! こ、この程度でっ!」
+“Ugh! Th-this little?!”
+
+@13469 Specials · スペシャルズ
+> 「ふん、その程度か!」
+“Hmph, is that all?!”
+
+@13470 Specials · スペシャルズ
+> 「効かんな!」
+“That didn't hurt!”
+
+@13471 Specials · スペシャルズ
+> 「フ……うわさほどではないな!」
+“Heh... not as tough as the rumors say!”
+
+@13472 Specials · スペシャルズ
+> 「こんなものとはな……失望したぜ!」
+“So this is all you've got... I'm disappointed!”
+
+@13473 Specials · スペシャルズ
+> 「しょせんその程度よ!」
+“Just that much, after all!”
+
+@13474 Specials · スペシャルズ
+> 「そこだ!」
+“There!”
+
+@13475 Specials · スペシャルズ
+> 「当たりはせん!」
+“It won't hit!”
+
+@13476 Specials · スペシャルズ
+> 「貴様らの攻撃パターンなど、
+>  お見通しよ!」
+“I see right through your attack patterns!”
+
+@13477 Specials · スペシャルズ
+> 「甘いな!」
+“Too easy!”
+
+@13478 Specials · スペシャルズ
+> 「かわしてみせる!」
+“I'll dodge it!”
+
+@13479 Specials · スペシャルズ
+> 「来た……そこかっ!」
+“Here it comes... there!”
+
+@13480 Specials · スペシャルズ
+> 「その程度のビームが効くか!」
+“A Beam like that won't work on me!”
+
+@13481 Specials · スペシャルズ
+> 「ムダな攻撃を……」
+“What a pointless attack...”
+
+@13482 Specials · スペシャルズ
+> 「ちっ、弾切れか……」
+“Tch, out of ammo...”
+
+@13483 Specials · スペシャルズ
+> 「くそっ! 弾切れだと!」
+“Damn! Out of ammo?!”
+
+@13484 Specials · スペシャルズ
+> 「射程距離外からだと!?
+>  意外とセコい手を使うやつだ」
+“Attacking from out of range?! What a sneaky trick.”
+
+@13485 Specials · スペシャルズ
+> 「くそっ! 届かん!」
+“Damn! Can't reach!”

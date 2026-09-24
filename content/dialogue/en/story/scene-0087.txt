@@ -1,0 +1,804 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@42102 Amuro · アムロ
+> 「ベル、ハマーンの艦隊の動きは
+>  どうだい?」
+“Belt, what's Haman's fleet doing?”
+
+@42103 Beltorchika · ベルトーチカ
+> 「サイド3へ入るみたいね」
+“Looks like they're heading into Side 3.”
+
+@42104 Amuro · アムロ
+> 「サイド3? あそこの共和政府が
+>  いまさら受け入れるとも思えないが…」
+“Side 3? I can't imagine the republican government there would welcome them at this point...”
+
+@42105 Beltorchika · ベルトーチカ
+> 「足場は必要だということでしょ。
+>  いくら大きな居住区画があっても
+“They must need a foothold. No matter how big the residential blocks are,
+---
+>  アクシズではね」
+Axis won't cut it.”
+
+@42106 Amuro · アムロ
+> 「ああ……クワトロ大尉の話では、
+>  非戦闘員も
+“Yeah... According to Captain Quattro, there were quite a lot of
+---
+>  相当な数がいたはずだものな?」
+noncombatants aboard too, right?”
+
+@42107 Beltorchika · ベルトーチカ
+> 「そう」
+“Right.”
+
+@42108 Amuro · アムロ
+> 「問題はハマーンの
+>  このあとの動きか……」
+“The question is what Haman does next...”
+
+@42109 Haman · ハマーン
+> 「栄光あるアクシズの兵士たちよ。
+>  我々はついにここへと帰ってきた
+“Soldiers of glorious Axis. We have finally returned to this place.
+---
+>  かつて我々を暗黒の世界へ
+>  押しやった者たちはすでになく
+Those who once drove us into a world of darkness are gone,
+---
+>  いまや我々の足もとに
+>  その残滓が残るのみである。それら
+and now only their remnants lie at our feet. The time has come to make
+---
+>  愚かな人間たちに、思い知らせる
+>  時がきた。いまや地球圏は
+those foolish humans understand. The Earth Sphere now belongs
+---
+>  我々アクシズのものであると」
+to us, to Axis.”
+
+@42110 Mashymre · マシュマー
+> 「アクシズ万歳!
+>  ハマーン様万歳!」
+“Long live Axis! Long live Lady Haman!”
+
+@42111 Axis Soldier · アクシズ兵
+> 「アクシズ万歳!
+>  ハマーン様万歳!」
+“Long live Axis! Long live Lady Haman!”
+
+@42112 Axis Soldier · アクシズ兵
+> 「アクシズ万歳!
+>  ハマーン様万歳!」
+“Long live Axis! Long live Lady Haman!”
+
+@42113 Haman · ハマーン
+> 「フッ……」
+“Hmph...”
+
+@42114 Haman · ハマーン
+> 「で、各コロニーの様子はどうだ?」
+“So, what is the situation on each colony?”
+
+@42115 Illia · イリア
+> 「おおむね良好ですが、政府の
+>  非協力的な態度を受けて
+“Largely favorable, but in response to the government's uncooperative attitude,
+---
+>  一部住民の間で
+>  反対運動が起こっているようです」
+opposition movements appear to have broken out among some of the residents.”
+
+@42116 Haman · ハマーン
+> 「異星人に滅ぼされるかも
+>  知れなかった時には、何も
+“When they might have been wiped out by aliens, they could do
+---
+>  できなかったくせにな。鎮圧しろ。
+>  サイド3を完全に手中に
+nothing. Crush them. Unless we bring Side 3 completely under our
+---
+>  おさめねば、ネオ・ジオンは名のれん」
+control, Neo Zeon cannot call itself by that name.”
+
+@42117 Illia · イリア
+> 「はっ」
+“Yes, ma'am!”
+
+@42118 Glemy · グレミー
+> 「お呼びですか、ハマーン様」
+“You summoned me, Lady Haman?”
+
+@42119 Haman · ハマーン
+> 「来たか、グレミー・トト」
+“So you've come, Glemy Toto.”
+
+@42120 Glemy · グレミー
+> 「なにか?」
+“What is it?”
+
+@42121 Haman · ハマーン
+> 「お前に地上の制圧をまかせる。
+>  連中など、もはや烏合の衆に
+“I leave the suppression of the surface to you. Those people are nothing
+---
+>  すぎんが、ロームフェラの生き残りは
+>  放ってはおけん。それにムゲ帝国に
+more than a rabble now, but we cannot leave the remnants of Romefeller alone. I also hear that
+---
+>  協力していた旧連邦の高官の
+>  一部が、OZの粛清を逃れて
+some of the Former Federation officials who cooperated with the Muge Empire
+---
+>  生きのびているとも聞く。
+>  これらは完全に抹殺せねばならん」
+escaped OZ's purge and survived. They must be completely wiped out.”
+
+@42122 Glemy · グレミー
+> 「地上では“クスコの聖女”や
+>  ピースクラフトが
+“There are rumors that on the surface, the ‘Holy Woman of Cusco’ and the Peacecrafts
+---
+>  人心を集めているという噂です。
+>  これはどうしますか」
+are gathering popular support. What shall we do about them?”
+
+@42123 Haman · ハマーン
+> 「平和論者に何ができる?
+>  現状ではロームフェラの
+“What can pacifists do? As things stand, without Romefeller's
+---
+>  バックアップがなければ、せいぜいが
+>  教祖にしかなれんよ
+backing, they can be nothing more than figureheads at best.
+---
+>  それもロームフェラに利用される
+>  形でな」
+And even that only as tools for Romefeller.”
+
+@42124 Glemy · グレミー
+> 「わかりました。では私は、
+>  部隊の編成にかかります」
+“Understood. Then I will begin organizing the units.”
+
+@42125 Haman · ハマーン
+> 「あとは{HeroMech}か……」
+“And then there's the {HeroMech}...”
+
+@42126 Glemy · グレミー
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“...Haman is troubled by the civil unrest on Side 3 and by the movements of
+# 草稿第 2 页：the 【主角机体名】. Otherwise she would never have
+# 草稿第 3 页：left the surface suppression to me.”
+> 「……ハマーンはサイド3の内乱やら、
+>  {HeroMech}の動向に
+---
+>  悩まされている。でなければあえて私に
+>  地上制圧などを
+---
+>  まかせなかったものをな」
+
+@42127 Rakan · ラカン
+> 「ふん、だからどうだというのだ」
+“Hmph. And what of it?”
+
+@42128 Glemy · グレミー
+> 「どうやらアクシズまでは
+>  目がいってないようだと思ってな
+“It seems her eyes haven't turned toward Axis itself, that's all.
+---
+>  アクシズの設備は重要だよ」
+Axis's facilities are important.”
+
+@42129 Rakan · ラカン
+> 「アクシズだと?」
+“Axis?”
+
+@42130 Glemy · グレミー
+> 「そうだ。アクシズそのものがあってこその
+>  我々だということを、ハマーンは
+“That's right. Haman has forgotten that we exist only because of Axis
+---
+>  忘れている。あれはジオンを継ぐ者の
+>  象徴たりえるものだ」
+itself. That place can serve as the symbol of those who inherit Zeon.”
+
+@42131 Rakan · ラカン
+> 「グレミー・トト……ザビの血を
+>  ひくというのは本当だったのか」
+“Glemy Toto... so it's true you carry the blood of Zabi.”
+
+@42132 Glemy · グレミー
+> 「ああ。だから私は、ハマーンなどに
+>  いつまでも好きにさせておくつもりはない
+“Yes. That's why I have no intention of letting Haman keep doing as she pleases forever.
+---
+>  どうだラカン、私に協力しないか
+>  アリアスもすでにこちらについたぞ」
+How about it, Rakan? Won't you lend me your aid? Arius has already sided with me too.”
+
+@42133 Rakan · ラカン
+> 「アクシズ軍はハマーンが掌握している
+>  俺は勝てぬ戦はせん」
+“Haman holds the Axis Forces in her grip. I don't fight battles I can't win.”
+
+@42134 Glemy · グレミー
+> 「勝てるとは断言できん。
+>  が、そうそう負けるとも思わんよ
+“I can't promise we'll win. But I don't think we'll lose so easily either.
+---
+>  いいものを見せよう。ついてこい」
+Let me show you something good. Come with me.”
+
+@42135 Ple-Two · プルツー
+> 「グレミーか」
+“Glemy.”
+
+@42136 Glemy · グレミー
+> 「どうだプルツー、順調か?」
+“How goes it, Ple-Two? On schedule?”
+
+@42137 Ple-Two · プルツー
+> 「ああ。まもなく目覚める」
+“Yes. It will awaken soon.”
+
+@42138 Rakan · ラカン
+> 「こ、これは……まさかこれがすべて……」
+“Th-this is... don't tell me all of these are...”
+
+@42139 Glemy · グレミー
+> 「どうだ? お前が味方してくれれば、
+>  私が勝つ可能性は
+“Well? If you were to side with me, my chances of victory would
+---
+>  ずいぶんと高まるのだがな」
+rise considerably.”
+
+@42140 Rakan · ラカン
+> 「フ……クククク、面白いな。
+>  いいだろうグレミー・トト
+“Heh... kukukuku, interesting. Very well, Glemy Toto.
+---
+>  貴様の策にのってやる」
+I'll play along with your scheme.”
+
+@42141 Eiji · エイジ
+> 「サイド3から艦隊が出た?」
+“A fleet has left Side 3?”
+
+@42142 Banjo · 万丈
+> 「ああ。ルートから考えて地球に
+>  降下する部隊と見て
+“Yeah. Judging by their route, there's no doubt they're a unit headed down to Earth.
+---
+>  間違いないね。悔しいが
+>  今の僕たちには止められない」
+Frustrating as it is, we can't stop them right now.”
+
+@42143 Koji · 甲児
+> 「ちぇっ、結局、ふりだしに
+>  もどったようなもんだってことかよ」
+“Sheesh, so in the end we're basically back to square one.”
+
+@42144 Daisuke · 大介
+> 「地球人同士の戦いであるだけ
+>  ましだよ、甲児くん
+“At least it's a fight between Earthlings, Koji.
+---
+>  最悪の場合でも、
+>  地球人類が滅亡することはない」
+Even in the worst case, humanity on Earth won't be wiped out.”
+
+@42145 Kamille · カミーユ
+> 「だからって、それは受け入れられないな」
+“That doesn't mean I can accept it, though.”
+
+@42146 Judau · ジュドー
+> 「何いってんの。
+>  そんなの当たり前でしょうが」
+“What are you talking about? That's obvious, isn't it?”
+
+@42147 Banjo · 万丈
+> 「とにかく、地球の方はレディに
+>  まかせておくしかない。こっちはこっちで…」
+“In any case, we've no choice but to leave Earth to Lady. We'll handle things on our end...”
+
+@42148 Banjo · 万丈
+> 「万丈だ」
+“Banjo here.”
+
+@42149 Amuro · アムロ
+> 「接近中のアクシズの艦艇が
+>  確認された。来てくれないか」
+“An Axis vessel has been confirmed approaching. Could you come?”
+
+@42150 Banjo · 万丈
+> 「了解。まぁそうだとは思ったがね」
+“Roger. Well, I figured as much.”
+
+@42151 Kamille · カミーユ
+> 「ハマーン……」
+“Haman...”
+
+@42152 Eiji · エイジ
+> 「どうあっても俺たちを
+>  放っておくつもりはないってことか」
+“So no matter what, they've no intention of leaving us alone.”
+
+@42153 Koji · 甲児
+> 「上等じゃねぇか。そう簡単には
+>  オレたちはやれないってことを
+“Fine by me. We'll make them realize
+---
+>  思い知らせてやろうぜ」
+we won't go down that easily.”
+
+@42154 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、敵です!」
+“Captain Bright, enemies!”
+
+@42155 Bright · ブライト
+> 「来たか……」
+“So they've come...”
+
+@42156 Amuro · アムロ
+> 「キュベレイだと!? ハマーンめ、
+>  どうしても自分の手で
+“A Qubeley?! Haman... so she really wants to
+---
+>  俺たちをやりたいらしいな」
+take us on with her own hands.”
+
+@42157 Banjo · 万丈
+> 「よし、行こうみんな!」
+“All right, let's go, everyone!”
+
+@42158 Mashymre · マシュマー
+> 「出てきたか{HeroMech}。
+>  お前たちは我らアクシズの
+“So you've come out, {HeroMech}. You are obstacles to Lady Haman
+---
+>  ハマーン様の邪魔となる
+>  存在である。よって、せん滅する!」
+of our Axis. Therefore, we shall annihilate you!”
+
+@42159 Gato · ガトー
+> 「肝にめいじておくがいい。ジオン再興
+>  をはばむものは、必ず私に
+“Bear this well in mind. Anyone who stands in the way of Zeon's revival will be
+---
+>  葬りさられるということを」
+buried by my hand.”
+
+@42160 Bright · ブライト
+> 「好きなことを!」
+“Do as you please!”
+
+@42161 Ple-Two · プルツー
+> 「……見つけたよ、ハマーン」
+“...Found you, Haman.”
+
+@42162 Haman · ハマーン
+> 「なんだ? グレミーのニュータイプか!?」
+“What? One of Glemy's Newtypes?!”
+
+@42163 Ple-Two · プルツー
+> 「わざわざ自らこんなところまで
+>  出てきたのは失敗だったね」
+“Coming all the way out here yourself was a mistake.”
+
+@42164 Haman · ハマーン
+> 「なに?」
+“What?”
+
+@42165 Mashymre · マシュマー
+> 「なんと!? ハマーン様、
+>  これはいったい……」
+“What?! Lady Haman, what on earth is this...”
+
+@42166 Haman · ハマーン
+> 「量産型のキュベレイだと?
+>  ……グレミーめ、そういうことか」
+“Mass-produced Qubeleys? ...So that's your game, Glemy.”
+
+@42167 Ple-Two · プルツー
+> 「そうさ。ハマーン、ここで死んでもらおう」
+“That's right. Haman, you're going to die here.”
+
+@42168 Bright · ブライト
+> 「なんだ? 敵の別働隊……
+>  ではないのか……?」
+“What? An enemy detachment... no, is that what this is...?”
+
+@42169 Mashymre · マシュマー
+> 「グレミーの叛乱か! おのれッ!
+>  ハマーン様おさがりください
+“Glemy's rebellion?! Curse him! Lady Haman, please withdraw.
+---
+>  ここは我らにおまかせを!」
+Leave this place to us!”
+
+@42170 Haman · ハマーン
+> 「……わかった。少佐、マシュマー、
+>  キャラ、イリア、あとは頼むぞ」
+“...Understood. Major, Mashymre, Chara, Illia, I leave the rest to you.”
+
+@42171 Gato · ガトー
+> 「承知した!」
+“Understood!”
+
+@42172 Chara · キャラ
+> 「おまかせください、
+>  お美しいハマーン様!」
+“Leave it to us, beautiful Lady Haman!”
+
+@42173 Ple-Two · プルツー
+> 「逃がさないよ!
+>  お前たちは{HeroMech}と
+“You won't escape! You lot, deal with {HeroMech} and
+---
+>  マシュマーたちをやれ!」
+Mashymre's group!”
+
+@42174 Ple Clone · プルクローン
+> 「はっ!」
+“Yes, ma'am!”
+
+@42175 Mashymre · マシュマー
+> 「プルツー!? くっ、ハマーン様!!」
+“Ple-Two?! Ngh, Lady Haman!!”
+
+@42176 Illia · イリア
+> 「マシュマー! プルツーごときにやられる
+>  ハマーン様ではない
+“Mashymre! Lady Haman is not one to be beaten by the likes of Ple-Two.
+---
+>  ここは連中を叩くことを
+>  優先するのだ!」
+Our priority here is to crush these people!”
+
+@42177 Mashymre · マシュマー
+> 「そ、そうだな。わかった」
+“R-right. Understood.”
+
+@42178 Ple · プル
+> 「プルツー……。みんな気をつけて!
+>  あの子たち、強いよ!」
+“Ple-Two... Everyone, be careful! Those girls are strong!”
+
+@42179 Ple-Two · プルツー
+> 「ハマーンを逃した……
+>  このうえはこいつらを叩いておく!」
+“Haman got away... In that case, I'll at least crush these ones!”
+
+@42180 Judau · ジュドー
+> 「プルツー!」
+“Ple-Two!”
+
+@42181 Ple-Two · プルツー
+> 「くっ……またあいつか!」
+“Ngh... That guy again!”
+
+@42182 Judau · ジュドー
+> 「プルツー、お前はだまされているんだ」
+“Ple-Two, you're being deceived.”
+
+@42183 Ple-Two · プルツー
+> 「うっ……ジュドーか!?」
+“Ugh... Judau?!”
+
+@42184 Judau · ジュドー
+> 「お前は利用されているだけだ、
+>  プルツー。お前は人形でいいのか!?」
+“You're just being used, Ple-Two. Are you fine with being a puppet?!”
+
+@42185 Ple-Two · プルツー
+> 「人形……?」
+“A puppet...?”
+
+@42186 Judau · ジュドー
+> 「そうだろ? お前は、
+>  長い眠りの間に
+“That's right, isn't it? During that long sleep, you were made into a puppet that follows others' thoughts—
+---
+>  他人の考えに従うようにつくられた
+>  人形だって、なぜ気づかないの!?」
+why don't you realize that?!”
+
+@42187 Ple-Two · プルツー
+> 「ウソだ……ウソだ! ウソだぁーっ!!」
+“It's a lie... It's a lie! It's a liiie!!”
+
+@42188 Ple · プル
+> 「プルツー……。ジュドー、お願い、
+>  プルツーを助けてあげて」
+“Ple-Two... Judau, please, help Ple-Two.”
+
+@42189 Judau · ジュドー
+> 「わかってる。わかってるけど……」
+“I know. I know, but...”
+
+@42190 Judau · ジュドー
+> 「やめろ、プルツー!!」
+“Stop it, Ple-Two!!”
+
+@42191 Ple-Two · プルツー
+> 「黙れッ!」
+“Shut up!”
+
+@42192 Judau · ジュドー
+> 「なんでハマーンなんかに
+>  忠誠を誓う!?」
+“Why swear loyalty to someone like Haman?!”
+
+@42193 Mashymre · マシュマー
+> 「ハマーン様は地球圏を
+>  統べるにふさわしいお方だ
+“Lady Haman is a person worthy of ruling the Earth Sphere.
+---
+>  あのお方に従えば間違いはない!」
+If you follow her, you can't go wrong!”
+
+@42194 Judau · ジュドー
+> 「キャラ・スーンッ!!」
+“Chara Soon!!”
+
+@42195 Chara · キャラ
+> 「あんたに恨みはないけどね、
+>  ジュドー。残念だよ」
+“I've got nothing against you, Judau. But it's a shame.”
+
+@42196 Ple · プル
+> 「プルツー! 自分が間違ってるって
+>  こと、なんで気がつかないの!?」
+“Ple-Two! Why can't you see that you're the one who's wrong?!”
+
+@42197 Ple-Two · プルツー
+> 「くっ……不愉快な奴めッ!!」
+“Ngh... You irritating little brat!!”
+
+@42198 Kou · コウ
+> 「お前たちに、好きにやらせてたまるか!」
+“I won't let you people do as you please!”
+
+@42199 Gato · ガトー
+> 「私に挑む勇気は認めよう。だが
+>  ……未熟!」
+“I'll acknowledge the courage it takes to challenge me. But... you're still green!”
+
+@42200 Koji · 甲児
+# 检查提示：未用必用译名：アクシズ軍→Axis Forces
+> 「へっ、ざまあみろってんだ。
+>  オレたちをやりたいなら
+“Heh, serves them right. If they want a piece of us,
+---
+>  アクシズ軍全軍でも
+>  持ってこいってんだよ」
+they can bring the whole Axis army for all I care.”
+
+@42201 Sayaka · さやか
+> 「もう甲児くんたら。でも……なんだか
+>  そうはなりそうにない様子だったわね」
+“Honestly, Koji. But... somehow it didn't look like that's how it's going to turn out.”
+
+@42202 Shinobu · 忍
+> 「ああ、なんか連中、うちわもめを
+>  始めたらしいな。どういうことなんだ?」
+“Yeah, seems like they've started fighting among themselves. What's going on?”
+
+@42203 Alan · アラン
+> 「また、同じことを繰り返しているのさ」
+“They're repeating the same thing all over again.”
+
+@42204 Quatre · カトル
+> 「ええ。異星人にはあまりそういう
+>  ことはなかったみたいですけどね
+“Yes. It seems that didn't happen much with the aliens, but
+---
+>  地球圏を支配しかけると、
+>  内部分裂する
+once they're on the verge of ruling the Earth Sphere, they split from within.
+---
+>  そういうことですよね」
+That's what this is, isn't it.”
+
+@42205 Banjo · 万丈
+> 「僕たちにとっては都合がいいが、
+>  まったく度しがたいね
+“It works in our favor, but it's truly incorrigible.
+---
+>  いつまで同じことを繰り返せば
+>  気が済むのか……」
+How long will they be satisfied repeating the same thing...”
+
+@42206 Daisaku · 大作
+> 「どしがたい……?」
+“Incorrigible...?”
+
+@42207 Alan · アラン
+> 「言い聞かせてもわからせようがない、
+>  救いようがない、という意味だ
+“It means there's no getting through to them no matter how you explain, no hope of saving them.
+---
+>  ……情けない話だな」
+...It's a pitiful story.”
+
+@42208 Kamille · カミーユ
+> 「それが地球人の性だというのは、
+>  認めたくはないな」
+“I don't want to admit that that's just human nature.”
+
+@42209 Show · ショウ
+> 「個人の勝手な妄想が、混乱
+>  した時代の中では、世界に
+“It's a fact that an individual's selfish delusions can, in a chaotic era,
+---
+>  影響を与えることがあるのは、
+>  事実さ。それが世界の動きに
+affect the world. And it's not impossible for that to become the world's course of events.
+---
+>  なってしまうことだって、ないとはいえない
+>  バイストンウェルだってそうだ」
+It's the same in Byston Well.”
+
+@42210 Ryo · 亮
+> 「野心と欲望……それと
+>  ゆがんだ理想。あるいは焦燥か
+“Ambition and desire... and twisted ideals. Or perhaps impatience.
+---
+>  人の連なりがなけば世界は
+>  成り立たんのだがな」
+Without people banding together, the world wouldn't stand, though.”
+
+@42211 Duo · デュオ
+> 「世界を支配しようとか、
+>  自分が世界を導こうとかさ
+“Trying to rule the world, or thinking you'll lead it yourself—
+---
+>  いいたいことはわかるけど、
+>  ごう慢なんだよな
+I get what they're saying, but it's just arrogance.
+---
+>  結局はそのごう慢さのせいで、
+>  足もとが見えなくなっちまうのさ」
+In the end, that arrogance is what blinds them to what's right under their feet.”
+
+@42212 Daisaku · 大作
+> 「僕たちは大丈夫ですよね?
+>  そんなことには、ならないですよね?」
+“We'll be all right, won't we? It won't come to that for us, will it?”
+
+@42213 Ark · アーク（按段落 3DD1）
+> 「当たり前だろ。もしそうなら、
+>  今こうやって戦っている意味だって
+“Of course not. If it did, then there'd be no point in us fighting like this,
+---
+>  なくなって、俺たちは人殺しの
+>  集団と変わらなくなる。だけど
+and we'd be no different from a band of murderers. But
+---
+>  俺はそんな人間を
+>  仲間にしているつもりはないよ」
+I don't intend to have that kind of person as my comrade.”
+
+@42214 Selain · セレイン（按段落 3DD2）
+> 「そう願いたいものだな。でなければ
+>  死んでいった者たちが浮かばれない」
+“I'd like to hope so. Otherwise, those who died can't rest in peace.”
+
+@42215 Brad · ブラッド（按段落 3DD3）
+> 「そんな心配はいらねぇだろ。
+>  俺たちの仲間にそんな奴はいないぜ
+“No need to worry about that. There's no one like that among us.
+---
+>  だいたいな、大作、
+>  そういうのは勝ってから考えるもんだぜ」
+Besides, Daisaku, that's the kind of thing you think about after you've won.”
+
+@42216 Manami · マナミ（按段落 3DD4）
+> 「なにいってるのよ、もちろん
+>  大丈夫に決まってるじゃない
+“What are you talking about? Of course we'll be fine.
+---
+>  そんな心配するもんじゃないわ。
+>  あたしたちは大丈夫だって
+Don't go worrying about that. We'll be all right.
+---
+>  あたしたちが信じなくてどうするの?」
+If we don't believe in ourselves, who will?”
+
+@42217 Daisaku · 大作
+> 「そう……ですよね。変なこといって
+>  ごめんなさい」
+“You're... right. Sorry for saying something strange.”
+
+@42218 Banjo · 万丈
+> 「とにかく今後の行動だが……」
+“Anyway, about what we do from here on...”
+
+@42219 Amuro · アムロ
+> 「ハマーンの出方次第だろう。
+>  グレミーはアクシズを落とすつもりだ
+“It depends on how Haman makes her move. Glemy intends to take down Axis.
+---
+>  サイド3のハマーンとまともに
+>  やりあう気でいると見えるな」
+It looks like he means to have a real showdown with Haman on Side 3.”
+
+@42220 Judau · ジュドー
+> 「決まってるさ。ハマーンはグレミーを
+>  やるよ。あの女はそういう女だ」
+“It's obvious. Haman will go after Glemy. That woman is exactly that kind of person.”
+
+@42221 Amuro · アムロ
+> 「だとは思うけどね。
+>  どう出るか見極めたあとでないと
+“I think so too. But until we see how things play out,
+---
+>  うかつには動けない」
+we can't make any careless moves.”
+
+@42222 Koji · 甲児
+> 「まったく、何考えてるんだか
+>  わかんねぇよな、ああいう連中は」
+“Honestly, I just can't figure out what those guys are thinking.”
+
+@42223 Tetsuya · 鉄也
+> 「そうだな」
+“Yeah.”
+
+@42224 Koji · 甲児
+> 「おっ、珍しく意見があうじゃねぇか」
+“Oh, you actually agree with me for once!”
+
+@42225 Tetsuya · 鉄也
+> 「まったく、みんなお前くらい単純なら
+>  世の中はもっとわかりやすいだろうにな」
+“Honestly, if everyone were as simple as you, the world would be a lot easier to understand.”
+
+@42226 Haman · ハマーン
+> 「結局失敗したか……
+>  {HeroMech}め……」
+“So it ended in failure after all... {HeroMech}...”
+
+@42227 Illia · イリア
+> 「申しわけありません」
+“My apologies.”
+
+@42228 Haman · ハマーン
+> 「それで、グレミーの方はどうなっている?
+>  あのような行動をしたのだ
+“So, what's become of Glemy? After pulling a stunt like that,
+---
+>  まさかそのまま地球へ
+>  降りたわけもなかろう」
+surely he didn't just descend to Earth as he was.”
+
+@42229 Illia · イリア
+> 「はい。グレミーの艦隊は
+>  進路を変更しました
+“Yes. Glemy's fleet has changed course.
+---
+>  目標はアクシズと考えて
+>  間違いないでしょう」
+There's no doubt their target is Axis.”
+
+@42230 Haman · ハマーン
+> 「グレミーが、アクシズを?
+>  くくくくく、奴め
+“Glemy, Axis? Kukukukuku, that fool.
+---
+>  ついに我慢できなくなって、
+>  早とちりの行動を起こしたか」
+So he finally couldn't hold back and made his move too soon.”
+
+@42231 Haman · ハマーン
+> (グレミーめ……私がこのような日が
+>  くるのをまったく予想していなかったと
+(That Glemy... does he think I never
+---
+>  思うのか?)
+expected a day like this would come?)

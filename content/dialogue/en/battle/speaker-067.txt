@@ -1,0 +1,117 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10674 Glemy · グレミー
+> 「はははははっ、当たれ、当たれ!」
+“Hahahahaha, hit, hit!”
+
+@10675 Glemy · グレミー
+> 「逃がすか!」
+“You won't escape!”
+
+@10676 Glemy · グレミー
+> 「死ね!」
+“Die!”
+
+@10677 Glemy · グレミー
+> 「邪魔をするな!」
+“Don't get in my way!”
+
+@10678 Glemy · グレミー
+> 「そこか!」
+“There you are!”
+
+@10679 Glemy · グレミー
+> 「トドメをさしてくれる!」
+“I'll finish you off!”
+
+@10680 Glemy · グレミー
+> 「いくぞ!」
+“Here I come!”
+
+@10681 Glemy · グレミー
+> 「これで終わりにしてくれる!」
+“I'll end this now!”
+
+@10682 Glemy · グレミー
+> 「落ちろ!」
+“Fall!”
+
+@10683 Glemy · グレミー
+> 「私の前から去れ!」
+“Get out of my sight!”
+
+@10684 Glemy · グレミー
+> 「な、なんだと!? この私が……!?」
+“W-what?! Me, of all people...?!”
+
+@10685 Glemy · グレミー
+> 「こ、この私がやられるというのか!?」
+“Y-you mean I'm being beaten?!”
+
+@10686 Glemy · グレミー
+> 「こんなところで終わるわけには、いかん!」
+“I can't let it end here!”
+
+@10687 Glemy · グレミー
+> 「わ、私には大儀があるのだ!」
+“I-I have a great cause!”
+
+@10688 Glemy · グレミー
+> 「うわぁぁっ! バカなっ!?」
+“Uwaaaah! Impossible?!”
+
+@10689 Glemy · グレミー
+# 审校：原译“make you pay for this grudge”把“この無念”的遗憾/怨恨对象表达得不够准确，改为更贴合原意的“see this grudge avenged”。
+> 「くっこの無念は晴らさせてもらう!」
+“Ngh, I will see this grudge avenged!”
+
+@10690 Glemy · グレミー
+> 「くっ、なんと品性のないパイロットだ」
+“Ngh, what a vulgar pilot.”
+
+@10691 Glemy · グレミー
+# 审校：原译“At this rate?!”未完整表达“これではっ”的震惊与否定语气，改为更自然的“This can't be!”。
+> 「な、なに!? これではっ!」
+“W-what?! This can't be!”
+
+@10692 Glemy · グレミー
+# 审校：原译用问号，但原文是“このままではっ”表示焦虑未完，改为省略号更贴切。
+> 「くっ! このままではっ!」
+“Ngh! At this rate...!”
+
+@10693 Glemy · グレミー
+> 「そんな攻撃はきかんよ!」
+“That kind of attack won't work on me!”
+
+@10694 Glemy · グレミー
+> 「くっ!」
+“Ngh!”
+
+@10695 Glemy · グレミー
+> 「はははははっ」
+“Hahahahaha.”
+
+@10696 Glemy · グレミー
+> 「そうそうあたるものではない!」
+“It's not that easy to hit me!”
+
+@10697 Glemy · グレミー
+> 「所詮はこんなものか」
+“So that's all you've got.”
+
+@10698 Glemy · グレミー
+# 审校：原文“な?”是轻微反问语气，英文问号显得像疑问，改为陈述句更自然。
+> 「この程度はよけてみせねばな?」
+“I must show you how to dodge something like this.”
+
+@10699 Glemy · グレミー
+> 「所詮はこんなものか」
+“So that's all you've got.”
+
+@10700 Glemy · グレミー
+> 「弾切れだと!? バカなっ!」
+“Out of ammo?! Impossible!”
+
+@10701 Glemy · グレミー
+> 「なんだと!? あんな距離から……」
+“What?! From that distance...”

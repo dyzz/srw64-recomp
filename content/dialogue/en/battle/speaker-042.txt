@@ -1,0 +1,209 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11078 Judau · ジュドー
+> 「そこだあっ!!」
+“There!!”
+
+@11079 Judau · ジュドー
+# 审校：“This one finishes it!!”语法略生硬，改为更自然的“This one ends it!!”
+> 「こいつで終わりだっ!!」
+“This one ends it!!”
+
+@11080 Judau · ジュドー
+> 「どけえっ!」
+“Out of my way!”
+
+@11081 Judau · ジュドー
+> 「しつこいんだよっ!」
+“You're persistent!”
+
+@11082 Judau · ジュドー
+> 「くらえっ!」
+“Take this!”
+
+@11083 Judau · ジュドー
+> 「やるかよっ!」
+“You wanna go?!”
+
+@11084 Judau · ジュドー
+> 「消えろっ!」
+“Disappear!”
+
+@11085 Judau · ジュドー
+> 「そう簡単に、やらせるかよっ!」
+“You think I'll let you do that?!”
+
+@11086 Judau · ジュドー
+> 「あまいんだよっ!」
+“Too naive!”
+
+@11087 Judau · ジュドー
+> 「直撃させるっ!!」
+“I'll hit you dead-on!!”
+
+@11088 Judau · ジュドー
+> 「このおっ!」
+“Why you!”
+
+@11089 Judau · ジュドー
+> 「やらせるかっ!」
+“Like I'd let you!”
+
+@11090 Judau · ジュドー
+# 审校：“でやあーっ!”是战斗呐喊，初稿“Take thaaat!”译成了具体台词，改为保留气势的拟声呐喊“Deyaaah!!”
+> 「でやあーっ!」
+“Deyaaah!!”
+
+@11091 Judau · ジュドー
+# 审校：“んなくそぉーっ!”是粗口，初稿“Damn youuu!”已合适，不修改。
+> 「んなくそぉーっ!」
+“Damn youuu!!”
+
+@11092 Judau · ジュドー
+> 「なめるなぁーっ!!」
+“Don't underestimate me!!”
+
+@11093 Judau · ジュドー
+> 「おかえしだぜっ!」
+“Payback time!”
+
+@11094 Judau · ジュドー
+> 「うわっ!やられたっ!!」
+“Whoa! I'm hit!!”
+
+@11095 Judau · ジュドー
+> 「うわっちゃあ!やられちまったぜ!!」
+“Whoa! They got me!!”
+
+@11096 Judau · ジュドー
+> 「し、しまった!!」
+“D-Damn it!!”
+
+@11097 Judau · ジュドー
+> 「わああっ! ダメージがでかすぎるぜ!!」
+“Waaah! That's way too much damage!!”
+
+@11098 Judau · ジュドー
+> 「うわあっ!! こ、このままじゃ……」
+“Waaah!! A-At this rate...”
+
+@11099 Judau · ジュドー
+> 「くそっ! なんてパワーだ!?」
+“Damn! What kind of power is that?!”
+
+@11100 Judau · ジュドー
+> 「うわああっ! まずい、パワーが段ちだ!」
+“Waaah! This is bad, his power's on another level!”
+
+@11101 Judau · ジュドー
+> 「くっ!!ヤバイな……」
+“Ngh!! This is bad...”
+
+@11102 Judau · ジュドー
+> 「くっ!ダメージがでかすぎるか!?」
+“Ngh! Is the damage too much?!”
+
+@11103 Judau · ジュドー
+> 「ちいっ!!ちょいとヤバイぜ!」
+“Tch!! This is kinda bad!”
+
+@11104 Judau · ジュドー
+> 「まだまだあっ!! いいようにさせるか!!」
+“Not yet!! Like I'd let you have your way!!”
+
+@11105 Judau · ジュドー
+> 「うっ! す、好き勝手やってくれ
+>  ちゃって!!」
+“Ugh! D-Doing whatever you want!!”
+
+@11106 Judau · ジュドー
+> 「落ちるかよっ!!」
+“Like I'd go down!!”
+
+@11107 Judau · ジュドー
+> 「ぐっ! な、何の、これからこれから!」
+“Guh! W-What, we're just getting started!”
+
+@11108 Judau · ジュドー
+> 「ま、まだやられるかよっ!」
+“N-No way I'm going down yet!”
+
+@11109 Judau · ジュドー
+> 「くっ!やるじゃないの!」
+“Ngh! Not bad!”
+
+@11110 Judau · ジュドー
+> 「まだまだぁっ!!」
+“Not done yet!!”
+
+@11111 Judau · ジュドー
+> 「くっ!!まだいけるぜ!!」
+“Ngh!! I can still go!!”
+
+@11112 Judau · ジュドー
+> 「こんなもん、効くかよ!!」
+“That little thing? Like it'd work!!”
+
+@11113 Judau · ジュドー
+> 「そんな攻撃でっ!」
+“An attack like that!”
+
+@11114 Judau · ジュドー
+> 「当たった!? けど、このくらいでっ!」
+“It hit?! But this much!”
+
+@11115 Judau · ジュドー
+> 「なんのっ!!」
+“No problem!!”
+
+@11116 Judau · ジュドー
+> 「その程度かよ!」
+“Is that all you got!”
+
+@11117 Judau · ジュドー
+> 「おおっと!!」
+“Whoa there!!”
+
+@11118 Judau · ジュドー
+> 「何やってんだよ、ヘタクソ!」
+“What are you doing, you amateur!”
+
+@11119 Judau · ジュドー
+> 「ひょいっと」
+“Easy does it.”
+
+@11120 Judau · ジュドー
+> 「当たらないね!」
+“You can't hit me!”
+
+@11121 Judau · ジュドー
+> 「あたってたまるかよっ!!」
+“Like I'd ever get hit!!”
+
+@11122 Judau · ジュドー
+> 「あぶねぇ、あぶねぇ」
+“That was close, that was close.”
+
+@11123 Judau · ジュドー
+> 「ねらいがあまいぜ!」
+“Your aim's way off!”
+
+@11124 Judau · ジュドー
+> 「効かないってよ!」
+“I told you it doesn't work!”
+
+@11125 Judau · ジュドー
+> 「ムダだっていってんじゃん!」
+“I said it's useless!”
+
+@11126 Judau · ジュドー
+> 「こんなもん、効くかい!!」
+“That little thing? Like it'd work!!”
+
+@11127 Judau · ジュドー
+> 「ちっ!反撃できねえ!!」
+“Tch! I can't counter!!”
+
+@11128 Judau · ジュドー
+> 「だめだ!とどかねえっ!」
+“No good! It won't reach!”

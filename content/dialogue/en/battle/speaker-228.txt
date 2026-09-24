@@ -1,0 +1,99 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8869 Dunkel · ダンケル
+> 「もらったっ!」
+“Got you!”
+
+@8870 Dunkel · ダンケル
+> 「くらえっ!」
+“Take this!”
+
+@8871 Dunkel · ダンケル
+> 「行くぞっ!」
+“Here I come!”
+
+@8872 Dunkel · ダンケル
+> 「このっ!」
+“Why you!”
+
+@8873 Dunkel · ダンケル
+> 「ここまでだっ!」
+“This is the end!”
+
+@8874 Dunkel · ダンケル
+> 「落ちろってんだよ!」
+“I said fall!”
+
+@8875 Dunkel · ダンケル
+> 「やらせるかっ!」
+“Like I'd let you!”
+
+@8876 Dunkel · ダンケル
+> 「し、しまった!? うわあっ!!」
+“D-damn!? Uwaaah!!”
+
+@8877 Dunkel · ダンケル
+# 检查提示：未用必用译名：ヤザン隊→Yazan Team
+> 「うあぁっ! ヤ、ヤザン隊長!
+>  これ以上は!」
+“Uwaaah! C-Commander Yazan! Any more than this is!”
+
+@8878 Dunkel · ダンケル
+> 「ぐああっ! な、なんてパワーだっ!」
+“Guaaah! W-what power!”
+
+@8879 Dunkel · ダンケル
+> 「い、いかん、やられるっ!」
+“N-no good, I'm done for!”
+
+@8880 Dunkel · ダンケル
+> 「ちいっ! やるなっ!」
+“Tch! Not bad!”
+
+@8881 Dunkel · ダンケル
+> 「このっ! まだやられるかっ!」
+“Why you! You're still up!?”
+
+@8882 Dunkel · ダンケル
+> 「くっ! やってくれるっ!」
+“Ngh! You're good!”
+
+@8883 Dunkel · ダンケル
+> 「この程度でっ!」
+“This much won't!”
+
+@8884 Dunkel · ダンケル
+> 「効くかよっ!」
+“As if that works!”
+
+@8885 Dunkel · ダンケル
+> 「パワー不足だな!」
+“Not enough power!”
+
+@8886 Dunkel · ダンケル
+> 「させるかっ!」
+“Like I'd let you!”
+
+@8887 Dunkel · ダンケル
+> 「遅いぜ!」
+“Too slow!”
+
+@8888 Dunkel · ダンケル
+> 「甘いなっ!」
+“Too naive!”
+
+@8889 Dunkel · ダンケル
+> 「どこを狙ってる!」
+“What are you aiming at!”
+
+@8890 Dunkel · ダンケル
+> 「効かねえんだよっ!」
+“It doesn't even hurt!”
+
+@8891 Dunkel · ダンケル
+> 「くそっ! 弾切れか!」
+“Damn! Out of ammo!”
+
+@8892 Dunkel · ダンケル
+> 「何っ!? あんな距離から!?」
+“What!? From that range!?”

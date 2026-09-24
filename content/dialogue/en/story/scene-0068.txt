@@ -1,0 +1,783 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@29296 Jamitov · ジャミトフ
+# 审校：“We've got trouble”语气偏随意，与贾米托夫对德尔迈的严肃开场不符，改为更贴合原意的“This is bad.”
+> 「デルマイユか、まずいことになった」
+“Dermail. This is bad.”
+
+@29297 Dermail · デルマイユ
+> 「ジャミトフか。例の艦隊の正体は
+>  つかめたのであろうな」
+“Jamitov. I trust you've identified that fleet by now?”
+
+@29298 Jamitov · ジャミトフ
+> 「そのことだ。第一次偵察隊は
+>  消息を絶った
+“That's just it. The first reconnaissance unit went silent.
+---
+>  ただちに第二次偵察隊を
+>  出したのだが……」
+We sent out a second one at once, but...”
+
+@29299 Dermail · デルマイユ
+> 「何だと!? そやつらも
+>  消息不明というのではあるまいな!」
+“What?! Don't tell me they've gone missing as well!”
+
+@29300 Jamitov · ジャミトフ
+> 「む……。謎の艦隊と接触、
+>  戦闘状態に入った、との
+“Mm... Their last report said they had made contact with the mysterious fleet and entered combat.
+---
+>  報告を最後にな……。全滅だ」
+After that, nothing... They were wiped out.”
+
+@29301 Dermail · デルマイユ
+> 「全滅……。ツバロフよ、貴公、
+>  護衛部隊をつけなかったのか?」
+“Wiped out... Tubarov, did you not assign them an escort?”
+
+@29302 Tubarov · ツバロフ
+> 「とんでもない。第二次偵察の
+>  際には、MD輸送艦からなる
+“Certainly not, sir. For the second reconnaissance, I had three companies of MD transport ships accompany them.
+---
+>  3個中隊を同行させて
+>  おりました。正直、敵がこんなに……」
+Honestly, to think the enemy was this...”
+
+@29303 Jamitov · ジャミトフ
+> 「もうよい。いい訳は無用だ」
+“That's enough. No excuses.”
+
+@29304 Tubarov · ツバロフ
+> 「はっ。それで、いかが致しましょう。
+>  引き続き偵察を……」
+“Yes, sir. Then what shall we do? Continue reconnaissance...”
+
+@29305 Jamitov · ジャミトフ
+> 「いや、もはやそのような段階ではない。
+>  敵はすでに地球圏に
+“No, we're past that stage. The enemy is already reaching the Earth Sphere.
+---
+>  到達しつつある。デルマイユよ、
+>  どうやら事態は切迫しつつあるぞ」
+Dermail, it seems the situation is growing critical.”
+
+@29306 Dermail · デルマイユ
+> 「むう、わかった。至急
+>  バスクを呼びもどし、防衛のための
+“Hmm, understood. I'll recall Bask at once and have him organize a defensive force.
+---
+>  部隊を編成させる。まったく、
+>  何ということだ。ようやく地球を
+Good heavens, what a mess. Just when we were finally about to take control of the Earth...
+---
+>  制圧しようというこの時に……。
+>  ツバロフ、MD生産のピッチを上げろ
+Tubarov, step up MD production.
+---
+>  コロニー労働者を限界まで
+>  投入するのだ」
+Throw the colony laborers into it until they drop.”
+
+@29307 Tubarov · ツバロフ
+> 「は、了解いたしました。なお、
+>  偵察隊の最後の通信では
+“Yes, understood. Also, in the reconnaissance unit's final transmission,
+---
+>  敵は銀河帝国軍
+>  先遣艦隊と
+the enemy identified themselves as the Galactic Empire's
+---
+>  名のったよしにございます」
+advance fleet, sir.”
+
+@29308 Dermail · デルマイユ
+> 「銀河帝国軍……
+>  先遣艦隊? ちっ、ふざけおって!」
+“The Galactic Empire's... advance fleet? Tch, what a joke!”
+
+@29309 David · デビッド
+> 「ここんとこ戦闘がないのはありがてえが
+>  ……逃げまわってるだけってのも
+“I'm grateful there's been no fighting lately, but... just running around all the time
+---
+>  いい気分じゃないよなあ」
+doesn't feel too good either.”
+
+@29310 Simone · シモーヌ
+> 「しかたないじゃない。まわりは全部、
+>  OZの支配地域なのよ
+“It can't be helped. Everything around us is OZ territory.
+---
+>  発見されたら、あっという間に取り
+>  囲まれて、ふくろ叩きにされちゃうわ」
+If we're spotted, they'll surround us in no time and catch us in a pincer.”
+
+@29311 Kamille · カミーユ
+> 「その支配地域が、
+>  どこまで続くのか……
+“And who knows how far their territory extends...
+---
+>  地上のおもだった場所は、
+>  もう完全に抑えられている
+The major places on the ground are already completely under their control.
+---
+>  奴らの勢力は、広がる一方だ」
+Their power just keeps growing.”
+
+@29312 Alan · アラン
+> 「いや、その一方で
+>  ほころびも出始めているぞ
+“No, but cracks are starting to show on their side too.
+---
+>  例のトレーズ派の抵抗は
+>  予想以上に続いている
+That Treize faction's resistance is lasting longer than expected.
+---
+>  噂だが、一部で攻勢に
+>  転じたところもあるらしい」
+Rumor has it some of them have even gone on the offensive.”
+
+@29313 Roux · ルー
+> 「本当? やるじゃない」
+“Really? Not bad at all.”
+
+@29314 Alan · アラン
+> 「正確には、ロームフェラ派が
+>  自ら兵を引いたという事だがな
+“To be precise, the Romefeller faction pulled back its troops on its own.
+---
+>  その理由というのが……」
+And the reason for that is...”
+
+@29315 Amuro · アムロ
+> 「謎の宇宙艦隊だというのか?
+>  外宇宙からの……」
+“You mean that mysterious space fleet? From outer space...”
+
+@29316 Quattro · クワトロ
+> 「即座には信じられん話だがな。
+>  OZの動きがあわただしいのは本当だ
+“It's hard to believe at once, but it's true OZ has been in a frenzy.
+---
+>  あるいは……」
+Perhaps...”
+
+@29317 Hayato · ハヤト
+> 「事実かもしれねえ、か。
+>  まったく、これからどうなることやら
+“Maybe it's the real thing, huh. Honestly, who knows what'll happen now.
+---
+>  予想もつかんな。
+>  新たな侵略者など
+I can't even imagine. A new invader...
+---
+>  さすがのジャミトフも
+>  計算には入れてなかったろうぜ」
+Even Jamitov surely never factored that in.”
+
+@29318 Eiji · エイジ
+> 「リリーナさんは、どうしただろう。
+>  無事だといいが……」
+“I wonder how Miss Relena is doing. I hope she's safe...”
+
+@29319 Anna · アンナ
+> 「気になるのね、エイジ。…ジュリアさんに
+>  似てらっしゃるから?」
+“You're worried about her, aren't you, Eiji? ...Is it because she resembles Miss Julia?”
+
+@29320 Eiji · エイジ
+> 「…………」
+“...”
+
+@29321 David · デビッド
+> 「単に美人だからとか」
+“Or maybe just because she's pretty.”
+
+@29322 Simone · シモーヌ
+> 「あんたはっ!
+>  人が深刻な話をしてる時に……」
+“You! When people are having a serious conversation...”
+
+@29323 David · デビッド
+> 「いてっ! ま、まてっ!
+>  俺はただ、雰囲気をだな……」
+“Ow! W-wait! I was just trying to lighten the mood...”
+
+@29324 Quatre · カトル
+> 「あの人は強い。きっと大丈夫です
+>  そうですよね?」
+“She's strong. I'm sure she'll be fine. Right?”
+
+@29325 Noin · ノイン
+> 「……ああ……」
+“...Yeah...”
+
+@29326 Dermail · デルマイユ
+> 「リリーナ嬢、いかがです。
+>  ご決心はつきましたかな?」
+“Miss Relena, how about it? Have you made up your mind?”
+
+@29327 Relena · リリーナ
+> 「デルマイユ公、何度聞かれても
+>  答えは変わりません
+“Lord Dermail, no matter how many times you ask, my answer won't change.
+---
+>  私は、財団の代表になど
+>  なるつもりはありません」
+I have no intention of becoming the Foundation's representative.”
+
+@29328 Dermail · デルマイユ
+> 「強情なお方だ。
+>  なるほど、かつての支持者に
+“What a stubborn young lady. I see, it's fine that you keep faith with
+---
+>  義理立てなさるのは結構だ。
+>  ですが、いま地球は
+your former supporters. But right now, the Earth faces
+---
+>  かつてなかった危機に
+>  直面しているのですぞ」
+a crisis unlike any before.”
+
+@29329 Relena · リリーナ
+> 「危機とは、あなた方
+>  OZではありませんか?
+“The crisis is you people in OZ, isn't it?
+---
+>  あなた方が戦闘をやめれば、
+>  全ては解決するのです」
+If you would stop fighting, everything would be resolved.”
+
+@29330 Dermail · デルマイユ
+> 「残念ながら、それは昨日までの
+>  話ですな。外部にはふせてあるが
+“Unfortunately, that was true only until yesterday. We've kept it from the public, but
+---
+>  実は外宇宙から新たなる
+>  侵略者が現れたのです」
+in truth, a new invader has appeared from outer space.”
+
+@29331 Relena · リリーナ
+> 「何ですって? ……デルマイユ公、
+>  そのようなことをいって、この私が
+“What? ...Lord Dermail, do you really think I would
+---
+>  信じるとでもお思いですか?」
+believe you if you said such a thing?”
+
+@29332 Dermail · デルマイユ
+> 「このデルマイユ、家名と貴族の
+>  名誉に賭けて、嘘は申しません
+“I, Dermail, stake my family name and noble honor that I speak no lie.
+---
+>  お疑いなら、観測室で
+>  お確かめになっても結構」
+If you doubt me, you're welcome to confirm it in the observation room.”
+
+@29333 Relena · リリーナ
+> 「……信じられない……何てこと……」
+“...I can't believe it... How awful...”
+
+@29334 Dermail · デルマイユ
+> 「リリーナ嬢、地球は
+>  ひとつにならなければならない
+“Miss Relena, the Earth must be united.
+---
+>  それでこそ、ムゲソルバドスの時の
+>  失敗を繰り返さずに
+Only then can we avoid repeating the failure of the Muge Zorbados incident.
+---
+>  すむのではありませんかな? そして我が
+>  ロームフェラ財団こそが
+And it is our Romefeller Foundation alone that
+---
+>  地球を統一することができる」
+can unify the Earth.”
+
+@29335 Relena · リリーナ
+> 「……反対する人々を圧殺して、
+>  でしょう」
+“...By crushing everyone who opposes you, you mean.”
+
+@29336 Dermail · デルマイユ
+> 「まあ、もうしばらくお考え下さい、
+>  リリーナ嬢
+“Well, please think it over a while longer, Miss Relena.
+---
+>  ですが、これだけは申しておく。
+>  あなたが我々に従わなければ
+But let me say this much. If you do not obey us,
+---
+>  それだけ多くの地球人の命が
+>  奪われていくのです。よろしいですな
+that many more Earth people's lives will be taken. Is that clear?
+---
+>  では、今日はこれで失礼」
+Well then, I shall take my leave for today.”
+
+@29337 Relena · リリーナ
+> 「…………」
+“...”
+
+@29338 Kenji · ケンジ
+> 「タケルの奴はどうしたんだ?」
+“What happened to Takeru?”
+
+@29339 Naoto · ナオト
+> 「どうも調子が悪いとかで、
+>  休んでます。疲れてるんですかね」
+“He said he wasn't feeling well, so he's resting. Maybe he's just tired.”
+
+@29340 Kenji · ケンジ
+> 「そんなことじゃ困るな。
+>  ミカ、あとで様子を見てやれ」
+“That won't do. Mika, go check on him later.”
+
+@29341 Mika · ミカ
+> 「はい、わかりました」
+“Yes, understood.”
+
+@29342 ???
+> 「マーズ……マーズよ。思いだせ、マーズ」
+“Mars... Mars. Remember, Mars.”
+
+@29343 Takeru · タケル
+> 「違う。俺は明神タケルだ」
+“No. I am Takeru Myojin.”
+
+@29344 ???
+> 「お前はマーズだ。
+>  ワシが地球に送りこんだ、マーズだ」
+“You are Mars. The Mars I sent to Earth.”
+
+@29345 Emperor Zuul · ズール皇帝
+> 「銀河帝国皇帝、
+>  このズールの息子、マーズなのだ
+“You are Mars, son of Zuul, Emperor of the Galactic Empire.
+---
+>  よいか、地球は今や
+>  ムゲゾルバドス帝国よりも
+Listen well. Earth is now becoming a greater threat to the galaxy
+---
+>  銀河の脅威となりつつある。
+>  マーズ、地球を破壊するのだ」
+than even the Muge Zorbados Empire. Mars, destroy the Earth.”
+
+@29346 Takeru · タケル
+> 「俺はお前のような
+>  父をもった覚えはない。まして
+“I have no memory of having a father like you. And besides,
+---
+>  地球を破壊するなんて、そんな!」
+destroy the Earth? That's insane!”
+
+@29347 Emperor Zuul · ズール皇帝
+> 「お前はギシン星人だ。
+>  地球破壊のカギは
+“You are a Gishin. The key to destroying the Earth
+---
+>  お前の命令で運命をともにする
+>  ロボット、ガイヤーにある」
+lies in Gaia, the robot whose fate is bound to your command.”
+
+@29348 Takeru · タケル
+> 「やめろぉっ! 消え失せろ! 俺は
+>  地球人だ。消えろ、悪魔め!」
+“Stop it! Get out of my head! I'm an Earthling. Begone, you devil!”
+
+@29349 Emperor Zuul · ズール皇帝
+> 「ワシに逆らうつもりか、マーズ。
+>  銀河帝国皇帝のこのワシに
+“You would defy me, Mars? No one who has defied me,
+---
+>  逆らって、生きのびた者はいないぞ。
+>  命令に逆らえば殺す!」
+the Emperor of the Galactic Empire, has ever lived. Disobey and I will kill you!”
+
+@29350 Takeru · タケル
+> 「あぁぁ!? うわぁぁぁぁーっ!!」
+“Aaaah?! Uwaaaaaaah!!”
+
+@29351 Mika · ミカ
+> 「タケル、タケル?」
+“Takeru, Takeru?”
+
+@29352 Takeru · タケル
+# 审校：原文有引号，初稿漏掉开闭引号，补上
+> 「……ミカか……俺は……」
+“...Mika... I...”
+
+@29353 Mika · ミカ
+> 「大丈夫、タケル?
+>  すごくうなされてたわよ
+“Are you all right, Takeru? You were groaning so much in your sleep.
+---
+>  ドアの外まで聞こえてくるんだもん、
+>  びっくりしちゃった」
+I could hear it all the way outside the door. It startled me.”
+
+@29354 Takeru · タケル
+> 「いや……ちょっと嫌な夢を見ただけだ
+>  大丈夫だよ」
+“No... I just had a bad dream. I'm fine.”
+
+@29355 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、1時方向に
+>  機影! 回避しますか?」
+“Captain Bright, a craft at one o'clock! Shall we evade?”
+
+@29356 Bright · ブライト
+> 「待て、このあたりにOZの部隊は
+>  存在しないはずだ……
+“Wait. There shouldn't be any OZ forces in this area...
+---
+>  識別は確認できるか?」
+Can you confirm identification?”
+
+@29357 Beltorchika · ベルトーチカ
+> 「いえ……。変ね、相手も
+>  信号を出していないようです
+“No... Strange, the other side doesn't seem to be sending signals either.
+---
+>  スクリーンに投影します!」
+I'll put it on the screen!”
+
+@29358 Koji · 甲児
+> 「ん……、おい、ありゃあ……」
+“Hm... Hey, that's...”
+
+@29359 Sayaka · さやか
+> 「もしかして……」
+“Could it be...”
+
+@29360 Boss · ボス
+> 「どうしたのよ兜、まさか
+>  あんなちっこいのが見えるってのか?」
+“What's wrong, Koji? You can't really see something that tiny, can you?”
+
+@29361 Koji · 甲児
+> 「ああ、このオレが
+>  見まちがえるわけがねえ!
+“Yeah, there's no way these eyes of mine are mistaken!
+---
+>  あれはマジンガー!
+>  グレートマジンガーだ!」
+That's Mazinger! Great Mazinger!”
+
+@29362 Sayaka · さやか
+> 「ビューナスAも!
+>  2人とも無事だったんだわ!」
+“Venus A too! They're both safe!”
+
+@29363 Jun · ジュン
+> 「ちょっと鉄也!
+>  あれは{HeroMech}だよ!」
+“Hey, Tetsuya! That's {HeroMech}!”
+
+@29364 Tetsuya · 鉄也
+> 「ああ、そうらしいな」
+“Yeah, seems so.”
+
+@29365 Jun · ジュン
+> 「なんてラッキーなんだろ。
+>  鉄也、力をかしてもらおうよ」
+“What luck! Tetsuya, let's ask them to lend us a hand.”
+
+@29366 Tetsuya · 鉄也
+> 「しかしな、連中とは……」
+“But you know, with them...”
+
+@29367 Jun · ジュン
+> 「そんなこといってられる場合じゃ
+>  ないでしょ!? 私たちだけで、あれを
+“This is no time to say that! Do you really think we can
+---
+>  何とかできるとでも思ってるの!?」
+handle that thing on our own?!”
+
+@29368 Tetsuya · 鉄也
+> 「わかった、わかったよ。しょうがない、
+>  もう1度連中とつるむとするか
+“All right, all right. Fine, we'll team up with them one more time.
+---
+>  アーガマ、聞こえるか。
+>  こちらグレートマジンガー、剣鉄也」
+Argama, do you read me? This is Great Mazinger, Tetsuya Tsurugi.”
+
+@29369 Bright · ブライト
+> 「2人ともひさしぶりだな。
+>  無事だったか……」
+“It's been a while, both of you. You made it through...”
+
+@29370 Tetsuya · 鉄也
+> 「まあ、ごらんの通りだ。
+>  あんたたちの方こそどうなんだ?
+“Well, as you can see. How about you people?
+---
+>  サンクキングダムは、結局
+>  OZにつぶされたらしいじゃないか」
+I heard the Sanc Kingdom was crushed by OZ in the end.”
+
+@29371 Alan · アラン
+> 「残念ながらな。だが、我々の
+>  行動は無駄だったわけではない」
+“Unfortunately. But our actions were not in vain.”
+
+@29372 Jun · ジュン
+> 「ちょっと鉄也、
+>  今はそんなことより……」
+“Hey, Tetsuya, never mind that for now...”
+
+@29373 Tetsuya · 鉄也
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ああ、わかってるさ。ブライト艦長、
+>  あんたたちはサンクキングダムで
+“Yeah, I know. Captain Bright, you people drove back
+---
+>  百鬼・ミケーネ軍を
+>  撃退しただろう」
+the Hyakki-Mycenae Army at the Sanc Kingdom, didn't you?”
+
+@29374 Bright · ブライト
+> 「うむ」
+“Indeed.”
+
+@29375 Tetsuya · 鉄也
+> 「そのあとだ。やつら、追いつめられて
+>  最後の賭けに出た
+“It was after that. They were cornered and made their final gamble.
+---
+>  残った全勢力をつぎこんで、
+>  どえらいものを作り始めたぜ」
+They threw in all their remaining forces and started building something huge.”
+
+@29376 Ryoma · リョウ
+> 「どえらいもの!? 何だそれは!?」
+“Something huge?! What is it?!”
+
+@29377 Jun · ジュン
+> 「移動要塞よ。とてつもなく
+>  大きい……。その移動要塞は
+“A mobile fortress. An enormous one... Once that mobile fortress is
+---
+>  完成すれば、深海や地中、
+>  マグマの中、そして宇宙まで
+completed, they say it'll be able to move freely through the deep sea, underground,
+---
+>  あらゆる場所を自在に
+>  移動できるものになるというわ」
+through magma, and even into space — anywhere at all.”
+
+@29378 Benkei · ベンケイ
+> 「何だって!? おいおい、
+>  そんなものが完成したら……」
+“What?! Hey, hey, if something like that gets finished...”
+
+@29379 Jun · ジュン
+> 「そう、大変なことになる。私と
+>  鉄也は、何とかそれを完成前に
+“Right, it'll be a disaster. Tetsuya and I tried to destroy it before it was
+---
+>  破壊しようとしたんだけど、
+>  2人だけじゃどうにもできなかった
+completed, but the two of us just couldn't manage it.
+---
+>  どうしようかと考えているときに、
+>  あなたたちと出会ったのよ」
+While we were wondering what to do, we ran into you all.”
+
+@29380 Tetsuya · 鉄也
+> 「そういうわけだ。さすがの俺も、
+>  少しばかり相手がでかすぎた
+“That's how it is. Even for me, the enemy was a bit too big.
+---
+>  どうだ……手を貸す気はあるか?」
+So... are you willing to lend a hand?”
+
+@29381 Jun · ジュン
+> 「鉄也ってば、まだそんないい方……。
+>  お願い、力を貸して
+“Tetsuya, you're still talking like that... Please, lend us your strength.
+---
+>  {HeroMech}のみんなでやれば、
+>  何とかなるかもしれない」
+If everyone with the {HeroMech} works together, we might manage somehow.”
+
+@29382 Daisaku · 大作
+> 「もちろんですよ!
+>  ほっとけるわけないじゃないですか!」
+“Of course! We can't just ignore this!”
+
+@29383 Hayato · ハヤト
+> 「百鬼とくりゃあ、
+>  黙ってるわけにいかねえ
+“When it comes to the Hyakki, I can't stay quiet.
+---
+>  そっちが断っても、行かせてもらうぜ」
+Even if you refuse, we're coming along.”
+
+@29384 Amuro · アムロ
+> 「奴らを再起させるわけにはいかないな
+>  その移動要塞が完成する前に
+“We can't let them rise again. Before that mobile fortress is completed,
+---
+>  何としても叩く必要がある」
+we have to strike it no matter what.”
+
+@29385 Bright · ブライト
+> 「2人とも、聞いての通りだ。
+>  我々も協力する
+“You heard them, both of you. We'll cooperate as well.
+---
+>  {HeroMech}を挙げて
+>  移動要塞を攻撃しよう」
+We'll send out the {HeroMech} and attack the mobile fortress.”
+
+@29386 Jun · ジュン
+> 「みんな、ありがとう! ほら鉄也、
+>  あんたもお礼いわなきゃ!」
+“Everyone, thank you! Come on, Tetsuya, you have to say thanks too!”
+
+@29387 Tetsuya · 鉄也
+> 「……まあ、助太刀には感謝するぜ」
+“...Well, I appreciate the help.”
+
+@29388 Koji · 甲児
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「へっ、あいかわらずだなあ。まあいいや、
+>  行こうぜブライト艦長!」
+“Heh, you haven't changed a bit. Anyway, let's go, Captain Bright!”
+
+@29389 Bright · ブライト
+> 「よし。進路変更、
+>  目標敵移動要塞!
+“All right. Change course, target the enemy mobile fortress!
+---
+>  鉄也くん、ジュンくん、
+>  案内を頼むぞ!」
+Tetsuya, Jun, you lead the way!”
+
+@29390 Tetsuya · 鉄也
+> 「了解だ!」
+“Roger!”
+
+@29391 Tetsuya · 鉄也
+> 「見えてきたぞ、あれだ」
+“I can see it. That's the one.”
+
+@29392 Roux · ルー
+> 「あれが!? ちょっと、
+>  この距離であの大きさ?」
+“That's it?! Wait, it's that big at this distance?”
+
+@29393 Ryoma · リョウ
+> 「何てデカさだ……
+>  想像以上だぜ……」
+“How huge... It's bigger than I imagined...”
+
+@29394 Hayato · ハヤト
+> 「確かにこれが完成した日にゃ、
+>  どうにも手がつけられなくなるだろうな…」
+“Yeah, once this thing is finished, there'd be no stopping it...”
+
+@29395 Bright · ブライト
+> 「よし、総員戦闘配置につけ!
+>  攻撃開始だ!」
+“All right, all hands to battle stations! Begin the attack!”
+
+@29396 Dark General · 暗黒大将軍
+> 「何度きても同じだ!
+>  またやられにきたか!?」
+“It makes no difference how many times you come! Back to be beaten again?!”
+
+@29397 Tetsuya · 鉄也
+> 「覚悟しろ! 今度こそ最期だ」
+“Prepare yourself! This time it's the end!”
+
+@29398 Dark General · 暗黒大将軍
+> 「おのれ! やりおったな!」
+“Curse you! You've done it!”
+
+@29399 Dark General · 暗黒大将軍
+> 「こ、これまでか!
+>  グ、グオォォォォーッ!!」
+“Th-this is the end?! G-gwaaaaaaah!!”
+
+@29400 Dark General · 暗黒大将軍
+> 「ぐっ、いい気になりおって。……フフ、
+>  面白い物を見せてやろう……」
+“Guh, getting so full of yourselves. ...Heh heh, I'll show you something interesting...”
+
+@29401 Tetsuya · 鉄也
+> 「あ……あれはグレートマジンガー!?」
+“Th-that's Great Mazinger?!”
+
+@29402 Jun · ジュン
+> 「なんで……グレートマジンガーが……!?」
+“Why... is Great Mazinger...?!”
+
+@29403 Koji · 甲児
+> 「や、やつらが……
+>  どうしてグレートマジンガーを……!?」
+“Th-they... how did they get Great Mazinger...?!”
+
+@29404 Sayaka · さやか
+> 「グレートマジンガーが……
+>  あんなにたくさん……!?」
+“Great Mazinger... so many of them...?!”
+
+@29405 Boss · ボス
+> 「ありゃー、グレートマジンガーが
+>  いっぱいいるだわさ!?」
+“Whoa, there's a whole bunch of Great Mazingers!”
+
+@29406 Dark General · 暗黒大将軍
+> 「お前らの仲間だった
+>  科学者が裏切ったのよ
+“A scientist who was your comrade betrayed you.
+---
+>  礼をたんまりはずむといったら
+>  グレートマジンガーの設計図を
+When I offered him a generous reward, he stole the blueprints
+---
+>  盗んできてくれたわ。ウワッハハハハハ!」
+of Great Mazinger for me. Uwahahahahaha!”
+
+@29407 Tetsuya · 鉄也
+> 「闇の世界へ帰れ!」
+“Go back to the world of darkness!”
+
+@29408 Dark General · 暗黒大将軍
+> 「うぬっ、そうはさせるか!」
+“Hmph, I won't let you!”
+
+@29409 Jun · ジュン
+> 「これで終わりよ!」
+“This is the end!”
+
+@29410 Dark General · 暗黒大将軍
+> 「まだまだよ! まだやられんわ!」
+“Not yet! I won't be beaten yet!”
+
+@29411 Boss · ボス
+> 「このボス様が倒しちゃうわよん」
+“The great Boss here is gonna take you down!”
+
+@29412 Dark General · 暗黒大将軍
+> 「貴様などにやられては
+>  末代までの恥!」
+“To be beaten by the likes of you would be a disgrace for all eternity!”
+
+@29413 Koji · 甲児
+> 「やった! 暗黒大将軍の野郎
+>  とうとう最後だ。ざまあみやがれ!」
+“We did it! That Dark General bastard is finally finished. Serves him right!”
+
+@29414 Bright · ブライト
+> 「みんな、これより要塞の内部に
+>  突入する。気をぬくな!」
+“Everyone, we're entering the fortress now. Stay sharp!”

@@ -1,0 +1,143 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8556 Four · フォウ
+> 「やらせないっ!!」
+“I won't let you!!”
+
+@8557 Four · フォウ
+> 「そこっ!」
+“There!”
+
+@8558 Four · フォウ
+> 「当てる!」
+“I'll hit you!”
+
+@8559 Four · フォウ
+> 「これ以上好きにはやらせないっ!」
+“I won't let you do as you please anymore!”
+
+@8560 Four · フォウ
+> 「やってみる!!」
+“I'll try it!!”
+
+@8561 Four · フォウ
+> 「これならっ!」
+“This should do it!”
+
+@8562 Four · フォウ
+> 「落ちろっ!」
+“Fall!”
+
+@8563 Four · フォウ
+> 「そう簡単にっ!」
+“Not so easily!”
+
+@8564 Four · フォウ
+> 「邪魔をしないでっ!!」
+“Don't get in my way!!”
+
+@8565 Four · フォウ
+> 「この一撃で決めるっ!」
+“I'll finish this with one strike!”
+
+@8566 Four · フォウ
+> 「行けっ!」
+“Go!”
+
+@8567 Four · フォウ
+> 「くうっ!! しまった!!」
+“Ngh!! Damn it!!”
+
+@8568 Four · フォウ
+> 「カ、カミーユッ!!」
+“K-Kamille!!”
+
+@8569 Four · フォウ
+> 「くうっ! な、なんてパワー……」
+“Ngh! W-what power...”
+
+@8570 Four · フォウ
+> 「ま、まだっ!! まだ落ちないよっ!!」
+“N-not yet!! I'm not going down yet!!”
+
+@8571 Four · フォウ
+> 「あうっ! つ、強い……」
+“Agh! S-so strong...”
+
+@8572 Four · フォウ
+> 「ううっ! まだ……まだ負けちゃいない!」
+“Ngh! Not... not yet, I haven't lost!”
+
+@8573 Four · フォウ
+> 「つっ!
+>  この程度のダメージなら、まだ!」
+“Tch! If it's only this much damage, I'm fine!”
+
+@8574 Four · フォウ
+> 「まだっ! まだやられたわけじゃないっ!」
+“Not yet! I'm not beaten yet!”
+
+@8575 Four · フォウ
+> 「うっ! やる……でもっ!」
+“Ugh! Not bad... but still!”
+
+@8576 Four · フォウ
+> 「あうっ!
+>  こ、こんな事でやられるもんかっ!」
+“Agh! L-like this could take me down!”
+
+@8577 Four · フォウ
+> 「この程度でっ!」
+“This much?!”
+
+@8578 Four · フォウ
+> 「当たった!? けど、それだけっ!」
+“It hit?! But that's all it did!”
+
+@8579 Four · フォウ
+> 「こんなダメージっ!」
+“Damage like this?!”
+
+@8580 Four · フォウ
+> 「大丈夫、かすっただけ!」
+“I'm fine, it just grazed me!”
+
+@8581 Four · フォウ
+> 「当たらないよ!」
+“You won't hit me!”
+
+@8582 Four · フォウ
+> 「見える!」
+“I can see it!”
+
+@8583 Four · フォウ
+> 「甘いね!」
+“Too easy!”
+
+@8584 Four · フォウ
+> 「来る……そこっ!」
+“Here it comes... there!”
+
+@8585 Four · フォウ
+> 「こんなものっ!」
+“As if that's enough!”
+
+@8586 Four · フォウ
+> 「避けてみせるっ!」
+“I'll dodge it, just watch!”
+
+@8587 Four · フォウ
+> 「効かないよっ!」
+“It won't work!”
+
+@8588 Four · フォウ
+> 「この程度のビームでっ!」
+“A Beam like this?!”
+
+@8589 Four · フォウ
+> 「そんな……弾切れなの?」
+“No... I'm out of ammo?”
+
+@8590 Four · フォウ
+> 「あ……届かない」
+“Ah... it won't reach.”

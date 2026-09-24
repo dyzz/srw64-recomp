@@ -1,0 +1,449 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17620 Hamilton · ハミルトン
+# 审校：原文「こんなところにいたのか」是“原来你在这里”，初稿“you were here”语气不够贴切，改为更自然的确认语气。
+> 「よぉ{HeroName}、
+>  こんなところにいたのか」
+“Yo, {HeroName}. So this is where you were.”
+
+@17621 Selain · セレイン（本话主角）
+> 「ハミルトンか。……何か用か?」
+“Hamilton. ...What do you want?”
+
+@17622 Hamilton · ハミルトン
+# 审校：「バチはあたらんぜ」是“不会遭报应/没坏处”，初稿“No harm in helping”可以，但语气略正式；改为更口语的“won't hurt, right?”。
+> 「例のやつを回収した。まだ修理
+>  しなくちゃならんが、いずれお前が
+“I recovered that thing. It still needs repairs, but sooner or later it's the unit you'll be piloting.
+---
+>  乗る機体だ。システムのチェック
+>  くらい手伝っても、バチはあたらんぜ?」
+Helping check the systems won't hurt, right?”
+
+@17623 Selain · セレイン（本话主角）
+> 「わかった、いこう」
+“Understood. Let's go.”
+
+@17624 Selain · セレイン（本话主角）
+> 「帝国の試作機か……。よく
+>  これだけの損傷で残っていたものだ」
+“An Imperial prototype... Hard to believe it survived with only this much damage.”
+
+@17625 Hamilton · ハミルトン
+> 「ぶっ倒れたとたんにパイロットは
+>  逃げ出しちまったからな
+“The pilot bolted the moment it went down.
+---
+>  ま、おかげで俺たちも戦力の
+>  強化ができるってわけさ」
+Well, thanks to that, we get to boost our own firepower.”
+
+@17626 Selain · セレイン（本话主角）
+> 「しかし……まずいな……」
+“But... this is bad...”
+
+@17627 Hamilton · ハミルトン
+> 「あ? 何がだ?」
+“Huh? What is?”
+
+@17628 Selain · セレイン（本话主角）
+> 「帝国の試作機といっても、
+>  既存の機種のマイナーチェンジだと
+“Even if it's an Imperial prototype, I assumed it was just a minor upgrade of an existing model.
+---
+>  思っていた。しかしこれは
+>  完全な新型だ」
+But this is a completely new type.”
+
+@17629 Hamilton · ハミルトン
+> 「結構なことじゃないか」
+“Isn't that a good thing?”
+
+@17630 Selain · セレイン（本话主角）
+> 「バカな。これだけの機体となれば、
+>  帝国が黙って放っておくわけがない
+“Don't be a fool. With a unit like this, the Empire won't just sit back and let it go.
+---
+>  大きな抵抗組織では、独自に
+>  兵器を開発できる所もあると
+I hear some of the larger resistance groups can develop their own weapons.
+---
+>  聞く。帝国軍は機密保持の
+>  ために、回収か完全な破壊を
+To keep it secret, the Imperial military will send in a unit tasked with either
+---
+>  目的とした部隊を、
+>  送りこんでくるぞ」
+recovering it or destroying it completely.”
+
+@17631 Hamilton · ハミルトン
+> 「……確かにそいつはまずい。
+>  お前のいうことは間違ったためしが
+“...Yeah, that is bad. You've never been wrong before.
+---
+>  ないからな。いつ頃ここを
+>  嗅ぎつけると思う?」
+When do you think they'll sniff out this place?”
+
+@17632 Selain · セレイン（本话主角）
+> 「今夜にも来るな。
+>  帝国の無人機に……
+“Tonight, most likely. Imperial drones...
+---
+>  恐らくスペシャルズが」
+and probably the Specials.”
+
+@17633 Hamilton · ハミルトン
+> 「地球人のくせにムゲ野郎どもに
+>  くっついた、胸くそ悪い
+“Those Earthlings who've thrown in with the Muge bastards — disgusting
+---
+>  裏切り者どもか。奴らには
+>  うってつけの役回りだな
+traitors. It's the perfect role for them.
+---
+>  だが、事態は深刻か。いまからじゃ
+>  撤収もできん。くそっ、うかつだったぜ
+But this is serious. There's no time to pull out now. Damn, I was careless.
+---
+>  ……勝てると思うか?」
+...You think we can win?”
+
+@17634 Selain · セレイン（本话主角）
+> 「……無理だろう。一昨日の
+>  戦闘で、まともに動く機体は
+“...Probably not. After the battle two days ago, we only have four units
+---
+>  4機しかのこっていない。可能なら
+>  撤収の準備も進めたほうがいい
+still in working order. If we can, we should start preparing to withdraw.
+---
+>  どっちにしろ、ここはもう放棄する
+>  しかない」
+Either way, we've got no choice but to abandon this place.”
+
+@17635 Hamilton · ハミルトン
+> 「わかったよ。でも、こいつのシステムの
+>  再起動くらいは、やっておいてくれ
+“All right. But at least get this thing's systems rebooted.
+---
+>  まったく、お前のいうことが
+>  間違いであってほしいと
+Honestly, I've never wanted so badly for you to be wrong
+---
+>  今ほど思ったことはないぜ」
+as I do right now.”
+
+@17636 Hamilton · ハミルトン
+> 「きやがったな。{HeroName}、
+>  運があったらまた会おう!」
+“They're here. {HeroName}, if we're lucky, we'll meet again!”
+
+@17637 Selain · セレイン（本话主角）
+> 「……ああ」
+“...Yeah.”
+
+@17638 Hamilton · ハミルトン
+> 「やられちまったか……くっ、
+>  俺はもうだめだな
+“So I bought it... ngh, I'm done for.
+---
+>  お前と一緒にやれて……
+>  よかったぜ……
+I'm glad... I got to fight alongside you...
+---
+>  {HeroNick}、なんとかお前だけでも……」
+{HeroNick}, at least you have to make it out...”
+
+@17639 Selain · セレイン（本话主角）
+> 「ハミルトン!? くっ……」
+“Hamilton?! Ngh...”
+
+@17640 Selain · セレイン（本话主角）
+> 「ぐうぅぅっ、これまでか……
+>  いや、まだだ!」
+“Guhhh, so this is it... No, not yet!”
+
+@17641 Selain · セレイン（本话主角）
+> 「火はいれたままのはず……
+>  よし!!」
+“The ignition should still be on... All right!!”
+
+@17642 Selain · セレイン（本话主角）
+> 「さぁ来い、
+>  まだ私は死んでいないぞっ!
+“Come on, then! I'm not dead yet!
+---
+>  1機でも多く道連れにしてやる!」
+I'll take as many of you down with me as I can!”
+
+@17643 Rish · リッシュ（本话主角的对手）
+> 「あーん? ありゃ“スヴァンヒルド”
+>  じゃねぇか
+“Huuuh? Isn't that the ‘Svanheld’?
+---
+>  けっ、なんだよゲリラどもが、もう使って
+>  やがんのか
+Heh, what the hell, those guerrillas are already using it?
+---
+>  おい、報告書じゃ確か
+>  大破してたはずだな?」
+Hey, the report said it was heavily damaged, right?”
+
+@17644 Specials · スペシャルズ
+> 「その通りです、特尉」
+“That is correct, Special Lieutenant.”
+
+@17645 Rish · リッシュ（本话主角的对手）
+> 「大破した機体がこんなに早く
+>  動かせるかよ、まったく
+“A heavily damaged unit can't be up and running this fast, seriously.
+---
+>  楽な任務のはずだったんだがな……」
+This was supposed to be an easy mission, too...”
+
+@17646 Selain · セレイン（本话主角）
+> 「新手か……どうやらここが
+>  墓場になりそうだな……」
+“Reinforcements... Looks like this place is going to be my grave...”
+
+@17647 Rish · リッシュ（本话主角的对手）
+> 「おいそこの。俺はスペシャルズの
+>  {PartnerFull}だ
+“Hey, you there. I'm {PartnerFull} of the Specials.
+---
+>  降りるか、やるのか、選ばせてやる。
+>  もっともどちらにしても、命の保証は
+Surrender or fight — I'll let you choose. Though either way, I won't
+---
+>  してやらんがな」
+guarantee your life.”
+
+@17648 Selain · セレイン（本话主角）
+> 「笑わせるな! 貴様が
+>  誰であろうと関係ない
+“Don't make me laugh! I don't care who you are.
+---
+>  私の最後の戦いに
+>  つきあってもらう!」
+You're going to keep me company in my final battle!”
+
+@17649 Rish · リッシュ（本话主角的对手）
+> 「女? 女だと……!?
+>  ふん、いい覚悟だ。気に入ったぜ
+“A woman? A woman...?! Hmph, good resolve. I like it.
+---
+>  名前を聞いておいてやる」
+I'll ask your name.”
+
+@17650 Selain · セレイン（本话主角）
+> 「……{HeroFull}だ」
+“...It's {HeroFull}.”
+
+@17651 Quattro · クワトロ
+> 「どうやら遅かったようだな
+“It seems we were too late.
+---
+>  が、例の機体が残っている
+>  だけでもよしとするべきか……
+But we should count ourselves lucky that the unit is still here...
+---
+>  アポリー中尉、どうか?」
+Lieutenant Aboly, how is it?”
+
+@17652 Aboly · アポリー
+> 「コックピットが違っても
+>  三日もあれば
+“Even if the cockpit is different, give me three days and I can make it
+---
+>  自分の手足にすることが
+>  できます。 大丈夫です」
+feel like my own limbs. It'll be fine.”
+
+@17653 Roberto · ロベルト
+> 「自分たちはマニュアル通りの
+>  訓練などやっておりません
+“We haven't been through any by-the-book training.
+---
+>  それで、1年戦争も
+>  くぐり抜けてきたのですから」
+That's how we survived the One Year War, after all.”
+
+@17654 Quattro · クワトロ
+> 「ロベルト中尉、その過信は
+>  自分の足をすくうぞ」
+“Lieutenant Roberto, that overconfidence will trip you up.”
+
+@17655 Roberto · ロベルト
+> 「はっ、クワトロ大尉」
+“Yes, Captain Quattro.”
+
+@17656 Quattro · クワトロ
+> 「そこのパイロット、聞こえるか?
+>  私は地球解放戦線機構の
+“Pilot over there, can you hear me? I'm Captain Quattro Bajeena of the
+---
+>  クワトロ・バジーナ大尉だ。
+>  これより援護するが、まだやれそうか?」
+Liberation Front of the Earth. We'll cover you from here — can you still fight?”
+
+@17657 Selain · セレイン（本话主角）
+> 「……大丈夫だ。
+>  感謝する、大尉」
+“...I'm fine. Thank you, Captain.”
+
+@17658 Quattro · クワトロ
+> 「よし。いくぞ、
+>  アポリー中尉、ロベルト中尉」
+“Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
+
+@17659 Rish · リッシュ（本话主角的对手）
+> 「ゲリラの増援か!?
+>  しかも見たことのない機体とくる
+“Guerrilla reinforcements?! And in units I've never seen before.
+---
+>  ちっとばかり分が悪いが……
+>  ま、なるようになるさ」
+The odds are a bit against us, but... well, it'll work out somehow.”
+
+@17660 Quattro · クワトロ
+> 「どうやら遅かったようだな。かなりの
+>  数が出ていたはずだが……
+“It seems we were too late. There should have been quite a few of them out here...
+---
+>  あの1機が退けたか」
+Did that one unit drive them off?”
+
+@17661 Aboly · アポリー
+> 「大尉、あれは例の機体です」
+“Captain, that's the unit.”
+
+@17662 Quattro · クワトロ
+> 「そのようだ。そこのパイロット、
+>  聞こえるか? 私は
+“So it seems. Pilot over there, can you hear me? I'm
+---
+>  地球解放戦線機構の
+>  クワトロ・バジーナ大尉だ
+Captain Quattro Bajeena of the Liberation Front of the Earth.
+---
+>  この付近には別件で出ている
+>  無人機がいる。脱出を
+There are unmanned units operating nearby on other business. We'll cover
+---
+>  援護するが、動けるか」
+your escape — can you move?”
+
+@17663 Selain · セレイン（本话主角）
+> 「……大丈夫だ。感謝する、
+>  大尉」
+“...I'm fine. Thank you, Captain.”
+
+@17664 Quattro · クワトロ
+> 「よし。いくぞ、
+>  アポリー中尉、ロベルト中尉」
+“Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
+
+@17665 Rish · リッシュ（本话主角的对手）
+> 「ちぃっ、まいったぜ。
+>  しかたがねぇ、ここは撤退するぞっ!」
+“Tch, you've got me. Can't help it — we're retreating!”
+
+@17666 Rish · リッシュ（本话主角的对手）
+> 「まいったぜ、こりゃ。
+>  まぁ生きてりゃ再戦もできるか
+“You've got me, all right. Well, as long as I'm alive, we can have a rematch.
+---
+>  また会おうぜ」
+Let's meet again.”
+
+@17667 Rish · リッシュ（本话主角的对手）
+> 「ちぃっ、まいったぜ。
+>  レジスタンスの新型が出てきたのは
+“Tch, you've got me. The Resistance rolling out a new model was
+---
+>  予想外だったな。しかたがねぇ、
+>  ここは撤退するぞっ!」
+unexpected. Can't help it — we're retreating!”
+
+@17668 Rish · リッシュ（本话主角的对手）
+> 「まいったぜ、こりゃ。
+>  ここは引いとくとするか
+“You've got me, all right. I'll pull back here.
+---
+>  また会おうぜ、{HeroName}」
+Let's meet again, {HeroName}.”
+
+@17669 Selain · セレイン（本话主角）
+> 「これで、終わりか……」
+“So this is the end...”
+
+@17670 Selain · セレイン（本话主角）
+> (また、生き残ったのか、私は……)
+(I survived again, didn't I...)
+
+@17671 Quattro · クワトロ
+> 「どうした、動けないのか?」
+“What's wrong, can't move?”
+
+@17672 Selain · セレイン（本话主角）
+> 「……いえ、大丈夫です」
+“...No, I'm fine.”
+
+@17673 Quattro · クワトロ
+> 「それが帝国の試作機
+>  “スヴァンヒルド”だな?」
+“So that's the Empire's prototype, ‘Svanheld’?”
+
+@17674 Selain · セレイン（本话主角）
+> 「はい。{HeroFull}です
+>  助けていただいて、感謝します」
+“Yes. I'm {HeroFull}. Thank you for saving me.”
+
+@17675 Quattro · クワトロ
+> 「構わんさ。どのみち試作機を
+>  入手した君たちと接触する
+“Don't mention it. We were scheduled to make contact with you anyway,
+---
+>  予定だったのだ。もう少し早ければ
+>  他のメンバーも救えたかもしれんが……」
+since you've acquired the prototype. If we'd been a little faster, we might have saved the others, though...”
+
+@17676 Selain · セレイン（本话主角）
+> 「戦闘の結果です。しかたありません」
+“That's how the battle went. It can't be helped.”
+
+@17677 Quattro · クワトロ
+> 「よい覚悟だが、
+>  それでは早死にをするな」
+“Good resolve, but that's how you die young.”
+
+@17678 Aboly · アポリー
+> 「大尉、急がないと危ないですよ」
+“Captain, we'd better hurry or we're in trouble.”
+
+@17679 Quattro · クワトロ
+> 「そうだな。我々はこれから仲間と
+>  合流する。君の機体の修理も
+“Right. We're going to rendezvous with our comrades now. We should be able to
+---
+>  できるはずだが、どうする?」
+repair your unit too — what do you say?”
+
+@17680 Selain · セレイン（本话主角）
+> 「いきます。1人で生き残ってしまい
+>  ましたし、ここに残ってもムダですから」
+“I'll come. I'm the only one who survived, and staying here would be pointless.”
+
+@17681 Quattro · クワトロ
+> 「よし、移動するぞ。
+>  敵はすぐに来るかもしれん」
+“Good, let's move out. The enemy may arrive at any moment.”
+
+@17682 Rish · リッシュ（本话主角的对手）
+> 「始末書1枚じゃ済まんか……
+>  それにしても、あのパイロット……
+“One written apology won't cover this... Still, that pilot...
+---
+>  あれはいい女だったな……」
+she was a fine woman...”

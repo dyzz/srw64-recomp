@@ -1,0 +1,269 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9271 Shinobu · 忍
+> 「くらえっ!!」
+“Take this!!”
+
+@9272 Shinobu · 忍
+> 「くらいやがれっ!!」
+“Eat this!!”
+
+@9273 Shinobu · 忍
+> 「くたばれっ!!!」
+“Die!!!”
+
+@9274 Shinobu · 忍
+> 「覚悟しやがれ!!」
+“Get ready!!”
+
+@9275 Shinobu · 忍
+> 「なろうっ!」
+“Nah!”
+
+@9276 Shinobu · 忍
+> 「いくぜ!」
+“Here I go!”
+
+@9277 Shinobu · 忍
+> 「さっさとかえんな!」
+“Get outta here, now!”
+
+@9278 Shinobu · 忍
+> 「いけぇいっ!」
+“Go!”
+
+@9279 Shinobu · 忍
+> 「くたばりやがれ!」
+“Just die already!”
+
+@9280 Shinobu · 忍
+> 「もー許さねぇ! やってやるぜ!」
+“I've had enough! Let's do this!”
+
+@9281 Shinobu · 忍
+> 「これでもくらいなっ!」
+“Take this and like it!”
+
+@9282 Shinobu · 忍
+> 「こいつでとどめだ!!」
+“This one's the finisher!!”
+
+@9283 Shinobu · 忍
+> 「うぅぅおおおおっ!!」
+“Uwaaaaaaah!!”
+
+@9284 Shinobu · 忍
+> 「いっけぇーっ!!!」
+“Gooo!!!”
+
+@9285 Shinobu · 忍
+> 「いやっってやるぜっっ!!!」
+“I'll mess you up!!!”
+
+@9286 Shinobu · 忍
+> 「いくぜっ!!」
+“Here I go!!”
+
+@9287 Shinobu · 忍
+> 「やってやるぜっっ!!」
+“I'm gonna do it!!”
+
+@9288 Shinobu · 忍
+> 「くそっ!! やられちまったっ!」
+“Damn!! I got hit!”
+
+@9289 Shinobu · 忍
+> 「ちっくしょおおおおおっ!!」
+“Daaamn iiiit!!”
+
+@9290 Shinobu · 忍
+> 「チッ! しくじったか!?」
+“Tch! Did I screw up?!”
+
+@9291 Shinobu · 忍
+> 「うっ! ま、まずいっ!!」
+“Ugh! Th-this is bad!!”
+
+@9292 Shinobu · 忍
+> 「くっ! 損傷率70%
+>  オーバーか!?」
+“Ngh! Damage over 70 percent?!”
+
+@9293 Shinobu · 忍
+> 「くっ!! ヤバイな……」
+“Ngh!! This is bad...”
+
+@9294 Shinobu · 忍
+> 「ちくしょう!! このままじゃ
+>  やられちまうぜっ!!」
+“Damn!! At this rate I'm gonna get shot down!!”
+
+@9295 Shinobu · 忍
+> 「ちくしょう、くたばってたまるかよ」
+“Damn it, like hell I'm dying”
+
+@9296 Shinobu · 忍
+> 「うわあああああっ!!」
+“Uwaaaaaaah!!”
+
+@9297 Shinobu · 忍
+> 「今てめーらにやられるわけには
+>  いかねえんだよ!」
+“I can't afford to go down to you punks right now!”
+
+@9298 Shinobu · 忍
+> 「てめぇっ、許せねぇ!」
+“You bastard, I won't forgive you!”
+
+@9299 Shinobu · 忍
+> 「やりゃあがったな、こんちくしょう!!」
+“You did it, you son of a bitch!!”
+
+@9300 Shinobu · 忍
+> 「いてっ! てめえ、何しやがるっ!」
+“Ow! What the hell are you doing?!”
+
+@9301 Shinobu · 忍
+> 「まだまだ! やらせるかっ!!」
+“Not yet! Like I'd let you!!”
+
+@9302 Shinobu · 忍
+> 「ちっ! 意外とやるじゃねえかよ!」
+“Tch! You're better than I thought!”
+
+@9303 Shinobu · 忍
+> 「ぐっ! ちっ、当たっちまったぜ!」
+“Guh! Tch, I got hit!”
+
+@9304 Shinobu · 忍
+> 「くっ!! まだいけるぜ!!」
+“Ngh!! I can still go!!”
+
+@9305 Shinobu · 忍
+> 「てめえ! やりゃあがったな!!」
+“You! You did it!!”
+
+@9306 Shinobu · 忍
+> 「ちくしょお! なめやがって!!」
+“Damn it! Don't underestimate me!!”
+
+@9307 Shinobu · 忍
+> 「ちくしょう! もう許さねぇぜ!」
+“Damn! I won't forgive you now!”
+
+@9308 Shinobu · 忍
+> 「やりやがったな!!」
+“You did it!!”
+
+@9309 Shinobu · 忍
+> 「へっ、余裕、余裕」
+“Heh, easy, easy”
+
+@9310 Shinobu · 忍
+> 「効いてねえぜ!」
+“That didn't hurt!”
+
+@9311 Shinobu · 忍
+> 「くそっ! うるせぇんだよ!!」
+“Damn! Shut the hell up!!”
+
+@9312 Shinobu · 忍
+> 「くっ!」
+“Ngh!”
+
+@9313 Shinobu · 忍
+> 「なろー!」
+“Nah!”
+
+@9314 Shinobu · 忍
+> 「ちっ」
+“Tch”
+
+@9315 Shinobu · 忍
+> 「その程度かよ!」
+“Is that all you got?!”
+
+@9316 Shinobu · 忍
+> 「なんだ? きかねぇな!」
+“What? That didn't hurt!”
+
+@9317 Shinobu · 忍
+> 「その程度かよ!」
+“Is that all you got?!”
+
+@9318 Shinobu · 忍
+> 「当たるかよ!」
+“Like you'd hit me!”
+
+@9319 Shinobu · 忍
+> 「おおっと!」
+“Whoa there!”
+
+@9320 Shinobu · 忍
+> 「当たらねえな!」
+“You missed!”
+
+@9321 Shinobu · 忍
+> 「もっとしっかり狙いな!」
+“Aim better than that!”
+
+@9322 Shinobu · 忍
+> 「どこ狙ってやがる!へたくそが!」
+“What are you aiming at?! You suck!”
+
+@9323 Shinobu · 忍
+> 「まだまだ! あまいんだよ!」
+“Not yet! You're too soft!”
+
+@9324 Shinobu · 忍
+> 「おっと、あぶねえ」
+“Whoa, that was close”
+
+@9325 Shinobu · 忍
+> 「おっと!」
+“Whoa!”
+
+@9326 Shinobu · 忍
+> 「おっと、危ない!!」
+“Whoa, that's dangerous!!”
+
+@9327 Shinobu · 忍
+> 「まだまだ、あまいんだよ!」
+“Not yet, you're too soft!”
+
+@9328 Shinobu · 忍
+> 「狙いがあまいんだよ!」
+“Your aim's too soft!”
+
+@9329 Shinobu · 忍
+> 「おっと、あぶねえ!」
+“Whoa, that was close!”
+
+@9330 Shinobu · 忍
+> 「ざっとこんなもんさ」
+“That's about it”
+
+@9331 Shinobu · 忍
+> 「この程度のビームなんざへでも
+>  ねえぜ!!」
+“A Beam like this is nothing!!”
+
+@9332 Shinobu · 忍
+> 「そんなもん効くかよっ!!」
+“Like that would work on me!!”
+
+@9333 Shinobu · 忍
+> 「あまいんだよ!!」
+“Too soft!!”
+
+@9334 Shinobu · 忍
+> 「ちっ! 反撃できねえ!」
+“Tch! I can't counterattack!”
+
+@9335 Shinobu · 忍
+> 「エネルギー切れ? くそぉーっ!!」
+“Out of energy? Daaamn!!”
+
+@9336 Shinobu · 忍
+> 「くそっ!! とどかねえ!」
+“Damn!! I can't reach!”

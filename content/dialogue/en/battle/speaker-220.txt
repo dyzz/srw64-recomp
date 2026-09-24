@@ -1,0 +1,106 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8918 Wooder · ウッダー
+> 「落とさせてもらう!!」
+“I'll shoot you down!!”
+
+@8919 Wooder · ウッダー
+> 「沈め!!」
+“Sink!!”
+
+@8920 Wooder · ウッダー
+> 「もらった!」
+“Got you!”
+
+@8921 Wooder · ウッダー
+> 「そこっ!」
+“There!”
+
+@8922 Wooder · ウッダー
+> 「やらせん!!」
+“I won't let you!!”
+
+@8923 Wooder · ウッダー
+> 「落ちろっ!!」
+“Fall!!”
+
+@8924 Wooder · ウッダー
+> 「このっ!」
+“Why you!”
+
+@8925 Wooder · ウッダー
+> 「ならばっ!」
+“Then take this!”
+
+@8926 Wooder · ウッダー
+> 「いけっ!」
+“Go!”
+
+@8927 Wooder · ウッダー
+> 「うおっ! し、しまった!」
+“Whoa! D-damn it!”
+
+@8928 Wooder · ウッダー
+> 「ぐあっ! つ、強い……」
+“Gah! S-strong...”
+
+@8929 Wooder · ウッダー
+> 「ぬうううっ! このまま黙ってやられる
+>  ものか!」
+“Nghhh! I won't just take this lying down!”
+
+@8930 Wooder · ウッダー
+> 「うおっ! まだだ、まだ落ちるなっ!」
+“Whoa! Not yet, I won't go down!”
+
+@8931 Wooder · ウッダー
+> 「そう簡単にやられはせんよ!!」
+“I won't be beaten that easily!!”
+
+@8932 Wooder · ウッダー
+> 「やるっ! さすがはっ!」
+“Not bad! As expected!”
+
+@8933 Wooder · ウッダー
+> 「まだだっ! まだ落ちはせん!」
+“Not yet! I'm not going down!”
+
+@8934 Wooder · ウッダー
+> 「こんなダメージなどっ!」
+“This damage is nothing!”
+
+@8935 Wooder · ウッダー
+> 「効かんな!」
+“That's nothing!”
+
+@8936 Wooder · ウッダー
+> 「ふん、その程度か」
+“Hmph, is that all?”
+
+@8937 Wooder · ウッダー
+> 「当たらんよ!」
+“You won't hit me!”
+
+@8938 Wooder · ウッダー
+> 「なんの!」
+“No problem!”
+
+@8939 Wooder · ウッダー
+> 「そこか!」
+“There!”
+
+@8940 Wooder · ウッダー
+> 「させるかっ!」
+“Like I'd let you!”
+
+@8941 Wooder · ウッダー
+> 「その程度のビームなど、効きはせん!」
+“A Beam like that won't hurt me!”
+
+@8942 Wooder · ウッダー
+> 「何っ!? 弾切れか!」
+“What?! Out of ammo?!”
+
+@8943 Wooder · ウッダー
+> 「むう、この距離では手が出せん……」
+“Hmph, I can't reach at this range...”

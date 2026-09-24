@@ -1,0 +1,425 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16600 Aisha · アイシャ
+> 「セット! 発射よろしくてよ」
+“Set! Ready to fire whenever you are.”
+
+@16601 Manami · マナミ
+> 「{PartnerNick}、出力最大よ!」
+“{PartnerNick}, full power!”
+
+@16602 Aisha · アイシャ
+> 「MAXレベル到達、いけますわよ!」
+“MAX level reached, we can do it!”
+
+@16603 Manami · マナミ
+> 「{PartnerNick}、いけるわ!」
+“{PartnerNick}, we can do it!”
+
+@16604 Aisha · アイシャ
+> 「ブラッディハウリング発射!」
+“Bloody Howling, fire!”
+
+@16605 Manami · マナミ
+> 「いくわよ、{PartnerNick}!」
+“Here we go, {PartnerNick}!”
+
+@16606 Manami · マナミ
+> 「邪魔はさせないわ!」
+“I won't let you interfere!”
+
+@16607 Manami · マナミ
+> 「あたしは、貴女に負けるわけには
+>  いかないのよ!」
+“I can't afford to lose to you!”
+
+@16608 Manami · マナミ
+> 「負けられないの、あたしは!」
+“I can't lose, not me!”
+
+@16609 Manami · マナミ
+> 「見せてあげるわ、{PartnerNick}!」
+“I'll show you, {PartnerNick}!”
+
+@16610 Manami · マナミ
+> 「{PartnerNick}、これ以上邪魔は
+>  させない!」
+“{PartnerNick}, I won't let you interfere any more!”
+
+@16611 Manami · マナミ
+> 「{PartnerNick}……どうしてもやめないと
+>  いうのなら……」
+“{PartnerNick}... if you truly won't stop...”
+
+@16612 Lawrence · ローレンス
+# 审校：原文是结巴的“お、お嬢様”，初稿只译出省略号，改为“M-My lady!”更贴合结巴语气。
+> 「お、お嬢様ぁぁーっ!」
+“M-My lady!”
+
+@16613 Lawrence · ローレンス
+> 「お嬢様っ、おはやく!」
+“My lady, hurry!”
+
+@16614 Manami · マナミ
+> 「だ、だめっ!」
+“N-No!”
+
+@16615 Lawrence · ローレンス
+> 「お、お嬢様、緊急退避をっ!」
+“M-My lady, emergency retreat!”
+
+@16616 Lawrence · ローレンス
+> 「くっ、私がついていながら!」
+“Ngh, and I was right there with you!”
+
+@16617 Lawrence · ローレンス
+> 「くっ、私の腕も落ちたものですな……」
+“Ngh, I fear my skills have dulled...”
+
+@16618 Aisha · アイシャ
+> 「も、もう危ないのではなくって!?」
+“I-Isn't it dangerous already?!”
+
+@16619 Aisha · アイシャ
+> 「キャァ! は、はやく逃げて!」
+“Eek! H-Hurry, run!”
+
+@16620 Aisha · アイシャ
+> 「あぅぅ!?
+>  こんなにパワーが違うなんて!」
+“Ahh?! Such a difference in power!”
+
+@16621 Lawrence · ローレンス
+> 「くっ、{PartnerName}お嬢様……
+>  なんとお強い……」
+“Ngh, Lady {PartnerName}... how strong you are...”
+
+@16622 Manami · マナミ
+> 「あぁぁぁぁ!?」
+“Aaaaaah?!”
+
+@16623 Lawrence · ローレンス
+> 「お嬢様、危険でございます」
+“My lady, it is dangerous.”
+
+@16624 Lawrence · ローレンス
+> 「むぅ! こ、このままではまずいですぞ!」
+“Mm! A-At this rate we're in trouble!”
+
+@16625 Lawrence · ローレンス
+> 「ぬぅ……私も甘くなりましたな」
+“Ngh... I've grown soft as well.”
+
+@16626 Aisha · アイシャ
+> 「なにをやってらっしゃるの!?」
+“What are you doing?!”
+
+@16627 Manami · マナミ
+> 「ごめんね、{PartnerNick}」
+“Sorry, {PartnerNick}.”
+
+@16628 Aisha · アイシャ
+> 「うぅぅっ、ま、まだ、まだよ!」
+“Ugh, n-not yet, not yet!”
+
+@16629 Aisha · アイシャ
+> 「つっ、そうこなくてはウソですわね」
+“Tch, now that's more like it.”
+
+@16630 Manami · マナミ
+> 「こ、これくらいでっ!」
+“Th-This much won't stop me!”
+
+@16631 Manami · マナミ
+> 「まだ! 勝負はこれからよっ!!」
+“Not yet! The real fight starts now!!”
+
+@16632 Manami · マナミ
+> 「くぅっ! このくらいでやられるわけには!」
+“Ngh! I can't afford to go down from this!”
+
+@16633 Manami · マナミ
+> 「くうっ……{PartnerNick}!」
+“Ngh... {PartnerNick}!”
+
+@16634 Manami · マナミ
+> 「あぁぁぁぁ!?」
+“Aaaaaah?!”
+
+@16635 Lawrence · ローレンス
+> 「お嬢様、危険でございます」
+“My lady, it is dangerous.”
+
+@16636 Lawrence · ローレンス
+> 「むぅ! こ、このままではまずいですぞ!」
+“Mm! A-At this rate we're in trouble!”
+
+@16637 Manami · マナミ
+> 「ローレンス?」
+“Lawrence?”
+
+@16638 Lawrence · ローレンス
+> 「損傷軽微、問題ございません」
+“Damage is minor, no problem at all.”
+
+@16639 Lawrence · ローレンス
+> 「この程度なら問題ございませんぞ」
+“This much is no problem at all.”
+
+@16640 Manami · マナミ
+> 「そうね、ローレンス」
+“Indeed, Lawrence.”
+
+@16641 Aisha · アイシャ
+> 「フフフ
+>  この程度なら大丈夫ですわね」
+“Hehehe, this much is quite all right.”
+
+@16642 Manami · マナミ
+> 「もちろんだわ、{PartnerNick}」
+“Of course, {PartnerNick}.”
+
+@16643 Aisha · アイシャ
+> 「ウフ、何かなさったのかしら?」
+“Oh my, whatever did you do?”
+
+@16644 Aisha · アイシャ
+> 「あらあら、それで精一杯ですの?」
+“My, my, is that all you've got?”
+
+@16645 Aisha · アイシャ
+> 「もう、やめたほうがよいのではなくて?」
+“Really, wouldn't it be better to give up?”
+
+@16646 Manami · マナミ
+> 「余裕すぎるわね」
+“Too easy.”
+
+@16647 Lawrence · ローレンス
+> 「油断は禁物ですぞ!」
+“Carelessness is forbidden!”
+
+@16648 Lawrence · ローレンス
+> 「回避成功ですぞ、お嬢様」
+“Evasion successful, my lady.”
+
+@16649 Manami · マナミ
+> 「当然だわ」
+“But of course.”
+
+@16650 Lawrence · ローレンス
+> 「無事回避できたようでございますな」
+“It seems we evaded safely.”
+
+@16651 Aisha · アイシャ
+> 「フフフ、どこを狙ってらっしゃるの?」
+“Hehehe, just where are you aiming?”
+
+@16652 Aisha · アイシャ
+> 「そのような攻撃では、だめですわ」
+“An attack like that simply won't do.”
+
+@16653 Lawrence · ローレンス
+> 「この機体にはムダな攻撃ですな」
+“Attacks like that are wasted on this unit.”
+
+@16654 Aisha · アイシャ
+> 「フフ、わたくしたちには効きませんわよ!」
+“Hehe, they don't work on us!”
+
+@16655 Aisha · アイシャ
+> 「あら、ビームは効きませんのよ?」
+“Oh my, beams don't work, you know?”
+
+@16656 Aisha · アイシャ
+> 「もうよろしいかしら?」
+“Are you quite finished?”
+
+@16657 Manami · マナミ
+> 「ローレンス!?」
+“Lawrence?!”
+
+@16658 Lawrence · ローレンス
+> 「エネルギーゼロです、お嬢様」
+“Energy zero, my lady.”
+
+@16659 Manami · マナミ
+> 「{PartnerNick}!?」
+“{PartnerNick}?!”
+
+@16660 Aisha · アイシャ
+> 「ダメ、エネルギー切れですわ」
+“No good, we're out of energy.”
+
+@16661 Aisha · アイシャ
+> 「確認を怠ったのが失敗でしたわ」
+“Failing to confirm was my mistake.”
+
+@16662 Manami · マナミ
+> 「ローレンス、敵は!?」
+“Lawrence, the enemy?!”
+
+@16663 Lawrence · ローレンス
+> 「攻撃可能範囲の外のようです」
+“They appear to be outside attack range.”
+
+@16664 Manami · マナミ
+> 「{PartnerNick}、敵はどこ?」
+“{PartnerNick}, where's the enemy?”
+
+@16665 Aisha · アイシャ
+> 「射程外、攻撃はできませんわね」
+“Out of range, we cannot attack.”
+
+@16666 Aisha · アイシャ
+> 「これを受けてごらんなさい!」
+“Try taking this!”
+
+@16667 Aisha · アイシャ
+> 「{HeroName}さん……
+>  さぁ、いきますわよ!」
+“{HeroName}... now, here I come!”
+
+@16668 Aisha · アイシャ
+> 「本気でやらせていただくわ!」
+“I'll show you my full strength!”
+
+@16669 Aisha · アイシャ
+> 「この攻撃でどうかしら!?」
+“How do you like this attack?!”
+
+@16670 Aisha · アイシャ
+> 「なかなかよい動きのようですけれど、
+>  まだまだですわ!」
+“You move quite well, but you're still no match!”
+
+@16671 Aisha · アイシャ
+> 「そこですわね!」
+“There you are!”
+
+@16672 Aisha · アイシャ
+> 「逃げられませんわよ、
+>  {HeroName}さん!」
+“You can't escape, {HeroName}!”
+
+@16673 Aisha · アイシャ
+> 「どうやらわたくしの勝ちのようですわね」
+“It seems victory is mine.”
+
+@16674 Aisha · アイシャ
+> 「ノーブルフェニックス!」
+“Noble Phoenix!”
+
+@16675 Aisha · アイシャ
+> 「これで最後ですわ!」
+“This is the end!”
+---
+> 「ノーブルフェニックス!」
+“Noble Phoenix!”
+
+@16676 Aisha · アイシャ
+> 「わ、わたくしはこんなところで
+>  倒れるわけにはまいりません!」
+“I-I cannot fall in a place like this!”
+
+@16677 Aisha · アイシャ
+> 「あぅぅ!?
+>  こんなにパワーが違うなんて!」
+“Ahh?! Such a difference in power!”
+
+@16678 Aisha · アイシャ
+> 「うぅっ……{HeroName}さん……
+>  本気でこのわたくしを……」
+“Ugh... {HeroName}... you would truly go this far against me...”
+
+@16679 Aisha · アイシャ
+> 「こ、このわたくしが……!?」
+“Th-This me...?!”
+
+@16680 Aisha · アイシャ
+> 「つっ、そうこなくてはウソですわね」
+“Tch, now that's more like it.”
+
+@16681 Aisha · アイシャ
+> 「これでこそ、倒す価値もありますわ!」
+“This is what makes you worth defeating!”
+
+@16682 Aisha · アイシャ
+> 「くっ……よろしいですわ。
+>  もう手加減はいたしません!」
+“Ngh... very well. I shall hold back no longer!”
+
+@16683 Aisha · アイシャ
+> 「{HeroName}さん……それで精一杯ですの?」
+“{HeroName}... is that all you've got?”
+
+@16684 Aisha · アイシャ
+> 「あっ! ……油断してしまいましたわ」
+“Ah! ...I let my guard down.”
+
+@16685 Aisha · アイシャ
+> 「威力が弱すぎたようですわね?」
+“The power was too weak, it seems?”
+
+@16686 Aisha · アイシャ
+> 「もう、やめたほうがよいのではなくて?」
+“Really, wouldn't it be better to give up?”
+
+@16687 Avie-Lu · アヴィ＝ルー
+# 审校：原文句尾的“かイ”带有说话人的口癖，初稿漏译，补上“eh”以保留语气。
+> 「この炎に、耐えられるかイ」
+“Can you withstand this flame, eh?”
+
+@16688 Avie-Lu · アヴィ＝ルー
+# 审校：原文“みせてあげるヨ”的“ヨ”是口癖，初稿未体现，改为带“eh”的口语表达。
+> 「みせてあげるヨ、混沌の幻を」
+“I'll show you, eh—the illusion of chaos.”
+
+@16689 Kappei · 勝平
+> 「ザンボットグラップ!!」
+“Zambot Grap!!”
+
+@16690 Kappei · 勝平
+# 审校：“だっ”是喊招式时的强调语气，初稿“It's the...”偏书面，改为更自然的战斗喊话。
+> 「ザンボットグラップだっ!!」
+“Here comes the Zambot Grap!!”
+
+@16691 Kappei · 勝平
+> 「ザンボットブロー!!」
+“Zambot Blow!!”
+
+@16692 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「ザンボットブローだっ!!」
+“Here comes the Zambot Blow!!”
+
+@16693 Kappei · 勝平
+> 「ザンボットバスター!!」
+“Zambot Buster!!”
+
+@16694 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「ザンボットバスターだっ!!」
+“Here comes the Zambot Buster!!”
+
+@16695 Kappei · 勝平
+> 「ザンボットカッター!!」
+“Zambot Cutter!!”
+
+@16696 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「ザンボットカッターだっ!!」
+“Here comes the Zambot Cutter!!”
+
+@16697 Kappei · 勝平
+> 「アームパンチ!!」
+“Arm Punch!!”
+
+@16698 Kappei · 勝平
+# 审校：同上，统一“だっ”的喊招语气。
+> 「アームパンチだっ!!」
+“Here comes the Arm Punch!!”
+
+@16699 Kappei · 勝平
+> 「バスターミサイル!!」
+“Buster Missile!!”

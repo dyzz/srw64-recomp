@@ -1,0 +1,175 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9084 Quattro · クワトロ
+> 「いけるかっ!?」
+“Can I make it?!”
+
+@9085 Quattro · クワトロ
+> 「あたれよ!」
+“Hit!”
+
+@9086 Quattro · クワトロ
+> 「やらせるかっ!」
+“I won't let you!”
+
+@9087 Quattro · クワトロ
+> 「おそいっ!!」
+“Too slow!!”
+
+@9088 Quattro · クワトロ
+> 「そこだっ!!」
+“There!!”
+
+@9089 Quattro · クワトロ
+> 「そこかっ!!」
+“There, huh!!”
+
+@9090 Quattro · クワトロ
+> 「沈めっ!!」
+“Sink!!”
+
+@9091 Quattro · クワトロ
+> 「遅いな」
+“Too slow.”
+
+@9092 Quattro · クワトロ
+> 「そこだ」
+“There.”
+
+@9093 Quattro · クワトロ
+> 「やらせはせんよ」
+“I won't let you.”
+
+@9094 Quattro · クワトロ
+> 「甘いな!」
+“Too naive!”
+
+@9095 Quattro · クワトロ
+> 「邪魔をするな!」
+“Don't get in my way!”
+
+@9096 Quattro · クワトロ
+> 「直撃させるっ!!」
+“I'll land a direct hit!!”
+
+@9097 Quattro · クワトロ
+> 「これ以上はやらせん!」
+“I won't let you do any more!”
+
+@9098 Quattro · クワトロ
+> 「やってみるさ!」
+“I'll give it a try!”
+
+@9099 Quattro · クワトロ
+> 「ちいっ!」
+“Tch!”
+
+@9100 Quattro · クワトロ
+> 「くうっ! やる!!」
+“Kuh! You're good!!”
+
+@9101 Quattro · クワトロ
+> 「し、しまった!!」
+“D-damn it!!”
+
+@9102 Quattro · クワトロ
+> 「直撃!?」
+“A direct hit?!”
+
+@9103 Quattro · クワトロ
+> 「まだだ! まだ終わらんよ!」
+“Not yet! It's not over yet!”
+
+@9104 Quattro · クワトロ
+> 「くっ!! ダメージを受けすぎたか!?」
+“Kuh!! Did I take too much damage?!”
+
+@9105 Quattro · クワトロ
+> 「ええい! あたり所が悪いと
+>  こんなものか!?」
+“Eei! Is this all I can do when I'm hit in a bad spot?!”
+
+@9106 Quattro · クワトロ
+> 「ッ!? まだだ!!」
+“Hn?! Not yet!!”
+
+@9107 Quattro · クワトロ
+> 「うっ!! やるな!!」
+“Ugh!! You're good!!”
+
+@9108 Quattro · クワトロ
+> 「ちっ!! まだだっ!!」
+“Tch!! Not yet!!”
+
+@9109 Quattro · クワトロ
+> 「く、この程度で!」
+“Kuh, this much?!”
+
+@9110 Quattro · クワトロ
+> 「くっ、まだこんなものでは!」
+“Kuh, this is nothing yet!”
+
+@9111 Quattro · クワトロ
+> 「その程度では落ちんよ!!」
+“That won't bring me down!!”
+
+@9112 Quattro · クワトロ
+> 「効かんよ」
+“It doesn't work.”
+
+@9113 Quattro · クワトロ
+> 「ムダなことを……」
+“What a waste of effort...”
+
+@9114 Quattro · クワトロ
+> 「あまいなっ!」
+“Too naive!”
+
+@9115 Quattro · クワトロ
+> 「ちいっ!」
+“Tch!”
+
+@9116 Quattro · クワトロ
+> 「そうそうあたるものではない!」
+“You won't hit me that easily!”
+
+@9117 Quattro · クワトロ
+> 「あたりはせんよ!」
+“It won't hit!”
+
+@9118 Quattro · クワトロ
+> 「遅いな」
+“Too slow.”
+
+@9119 Quattro · クワトロ
+> 「効かんよ!」
+“It doesn't work!”
+
+@9120 Quattro · クワトロ
+> 「ビームなどで!」
+“A beam, of all things!”
+
+@9121 Quattro · クワトロ
+> 「この程度ならばっ!」
+“If it's only this much!”
+
+@9122 Quattro · クワトロ
+> 「ビームなど効かん!」
+“Beams won't work on me!”
+
+@9123 Quattro · クワトロ
+> 「フッ、効かんよ」
+“Hmph, it doesn't work.”
+
+@9124 Quattro · クワトロ
+> 「ええい! こんなことで!」
+“Eei! To let this happen!”
+
+@9125 Quattro · クワトロ
+> 「くっ、だめか!?」
+“Kuh, no good?!”
+
+@9126 Quattro · クワトロ
+> 「くっ! 射程距離外からの
+>  攻撃とはな」
+“Kuh! An attack from out of range, huh.”

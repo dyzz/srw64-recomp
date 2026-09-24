@@ -1,0 +1,466 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16100 Sayaka · さやか
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@16101 Sayaka · さやか
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@16102 Sayaka · さやか
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@16103 Sayaka · さやか
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@16104 Sayaka · さやか
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@16105 Sayaka · さやか
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@16106 Sayaka · さやか
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@16107 Sayaka · さやか
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@16108 Sayaka · さやか
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@16109 Sayaka · さやか
+> 「グレートブースター!」
+“Great Booster!”
+
+@16110 Sayaka · さやか
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@16111 Sayaka · さやか
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@16112 Sayaka · さやか
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@16113 Sayaka · さやか
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@16114 Sayaka · さやか
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16115 Sayaka · さやか
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@16116 Sayaka · さやか
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16117 Sayaka · さやか
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@16118 Sayaka · さやか
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@16119 Sayaka · さやか
+> 「ボロットパーンチッ!!」
+“Borot Punch!!”
+
+@16120 Sayaka · さやか
+# 审校：原文「……スペシャルよ」是沙也加在补充招式名，初稿“...Special!”语气生硬且丢失了「よ」的说明感，改为更自然的“...Special, you know.”
+> 「ボロットパーンチッ!! ……スペシャルよ」
+“Borot Punch!! ...Special, you know.”
+
+@16121 Sayaka · さやか
+# 审校：原文「もういいわ!」是沙也加放弃继续喊招式名，初稿“Oh, forget it!”语气偏重，改为更贴合她语气的“Oh, that's enough!”
+> 「スペシャルデラックス……もういいわ!」
+“Special Deluxe... Oh, that's enough!”
+
+@16122 Boss · ボス
+> 「ボスボロットと勝負しろっ!!」
+“Take on Boss Borot!!”
+
+@16123 Boss · ボス
+> 「ボロットパーンチ!! だわさ」
+“Borot Punch!! That's the way, see.”
+
+@16124 Boss · ボス
+> 「行くだわさ! ボロットパーンチ!!」
+“Here we go, see! Borot Punch!!”
+
+@16125 Boss · ボス
+> 「うりゃあっ!!」
+“Hrrrah!!”
+---
+> 「ボロットパーンチ!!」
+“Borot Punch!!”
+
+@16126 Boss · ボス
+> 「スペシャルボロットパーンチッ!!」
+“Special Borot Punch!!”
+
+@16127 Boss · ボス
+> 「じゃ～んじゃじゃ～ん!」
+“Ta-daaa, ta-da-daaa!”
+---
+> 「スペシャルボロットパーンチッ!!」
+“Special Borot Punch!!”
+
+@16128 Boss · ボス
+> 「俺にまっかしとき! いくわよ!!」
+“Leave it to me! Here we go!!”
+---
+> 「スペシャルボロットパーンチッ!!」
+“Special Borot Punch!!”
+
+@16129 Boss · ボス
+> 「スペシャルデラックスゴールデンデリシャス
+>  ボロットパーンチッ!!!」
+“Special Deluxe Golden Delicious Borot Punch!!!”
+
+@16130 Boss · ボス
+> 「ボロットさまの怖さを教えてやるわよ!」
+“I'll show you how scary Borot is!”
+---
+> 「スペシャルデラックスゴールデンデリシャス
+>  ボロットパーンチッ!!!」
+“Special Deluxe Golden Delicious Borot Punch!!!”
+
+@16131 Boss · ボス
+> 「スペシャルデラックスゴールデンデリシャス
+>  ハイパーマグナムボロットパーンチ!!」
+“Special Deluxe Golden Delicious Hyper Magnum Borot Punch!!”
+
+@16132 Boss · ボス
+> 「スペシャルデラックスゴールデンデリシャス
+>  ハイパーマグナムウルトラパーフェクト……」
+“Special Deluxe Golden Delicious Hyper Magnum Ultra Perfect...”
+---
+> 「ボロットパーンチ!!」
+“Borot Punch!!”
+
+@16133 Koji · 甲児
+> 「ボス! あれやるぞ、あれ!」
+“Boss! Let's do that thing, that one!”
+
+@16134 Boss · ボス
+> 「おう、オレさまにまかせとけ!」
+“Yeah, leave it to me!”
+
+@16135 Koji · 甲児
+> 「いっくぞぉっ!」
+“Here we gooo!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16136 Tetsuya · 鉄也
+> 「ボス! わかってんだろうな!?」
+“Boss! You know what to do, right?!”
+
+@16137 Boss · ボス
+> 「あったり前だわさ!」
+“Of course I do, see!”
+
+@16138 Tetsuya · 鉄也
+> 「信じるぜ!」
+“I'm counting on you!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16139 Sayaka · さやか
+> 「ボス! なにやってんのよ!」
+“Boss! What are you doing?!”
+
+@16140 Boss · ボス
+> 「す、すまねぇ、さやか!」
+“S-sorry, Sayaka!”
+
+@16141 Sayaka · さやか
+> 「もう、いくわよ!」
+“Alright, here we go!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16142 Jun · ジュン
+> 「ボス!」
+“Boss!”
+
+@16143 Boss · ボス
+> 「おう、わかってるわよん」
+“Yeah, I know, I know!”
+
+@16144 Jun · ジュン
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@16145 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@16146 Boss · ボス
+> 「わかっただわさ!」
+“Got it, sure thing!”
+
+@16147 Koji · 甲児
+> 「いくぜ!」
+“Here we go!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16148 Duke · デューク
+> 「いくぞ、みんな!」
+“Let's go, everyone!”
+
+@16149 Boss · ボス
+> 「わかっただわさ!」
+“Got it, sure thing!”
+
+@16150 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16151 Sayaka · さやか
+> 「いくわよ!」
+“Here we go!”
+
+@16152 Boss · ボス
+> 「わかっただわさ!」
+“Got it, sure thing!”
+
+@16153 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16154 Jun · ジュン
+> 「いくわよ、みんな!」
+“Let's go, everyone!”
+
+@16155 Boss · ボス
+> 「わかっただわさ!」
+“Got it, sure thing!”
+
+@16156 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@16157 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16158 Duke · デューク
+> 「準備完了!」
+“Ready and waiting!”
+
+@16159 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@16160 Koji · 甲児
+> 「見せてやるぜ!」
+“I'll show you!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16161 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16162 Duke · デューク
+> 「準備完了!」
+“Ready and waiting!”
+
+@16163 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@16164 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16165 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16166 Sayaka · さやか
+> 「いつでもいいわ!」
+“Ready anytime!”
+
+@16167 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@16168 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16169 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@16170 Jun · ジュン
+> 「こっちはオッケイよ!」
+“We're all good here!”
+
+@16171 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's do this thing!”
+
+@16172 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@16173 Duke · デューク
+> 「よし、いまだ!」
+“Alright, now!”
+
+@16174 Boss · ボス
+> 「頼むぜぇ、兜よぉ!」
+“You're up, Koji!”
+
+@16175 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16176 Duke · デューク
+> 「よし、いまだ!」
+“Alright, now!”
+
+@16177 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'll knock 'em flying!”
+
+@16178 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16179 Sayaka · さやか
+> 「チャンスだわ!」
+“Now's our chance!”
+
+@16180 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'll knock 'em flying!”
+
+@16181 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16182 Jun · ジュン
+> 「いまだわ!」
+“Now!”
+
+@16183 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'll knock 'em flying!”
+
+@16184 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@16185 Koji · 甲児
+> 「ボス、大丈夫だろうな!?」
+“Boss, you sure you're up for this?!”
+
+@16186 Boss · ボス
+> 「じゃ～んじゃじゃ～ん! いくぜ、兜ぉ!」
+“Ta-daaa! Let's go, Koji!”
+
+@16187 Koji · 甲児
+> 「おう!」
+“Yeah!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@16188 Tetsuya · 鉄也
+> 「ボス、はさみ撃ちといこうぜ!」
+“Boss, let's catch 'em in a pincer!”
+
+@16189 Boss · ボス
+> 「おう! いっちょやるだわさ!」
+“Yeah! Let's give it a shot!”
+
+@16190 Tetsuya · 鉄也
+> 「いくぞ!」
+“Here we go!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@16191 Sayaka · さやか
+> 「ボス、わかってる!?
+>  マジンガーブレードよ!」
+“Boss, you got it?! The Mazinger Blade!”
+
+@16192 Boss · ボス
+> 「おう、いくだわさ!」
+“Yeah, here goes!”
+
+@16193 Sayaka · さやか
+> 「よぉし!」
+“Alright!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@16194 Jun · ジュン
+> 「ボス! 応援してちょうだい!」
+“Boss! Back me up!”
+
+@16195 Boss · ボス
+> 「そういうことならよ、このボスさまに
+>  おまかせだぜ!」
+“Well, if that's how it is, leave it to the great Boss!”
+
+@16196 Jun · ジュン
+> 「あてにしてるわよ!」
+“I'm counting on you!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@16197 Boss · ボス
+> 「ミサイル発射!」
+“Missile launch!”
+
+@16198 Boss · ボス
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@16199 Boss · ボス
+> 「冷凍ビーム!!」
+“Freeze Beam!!”

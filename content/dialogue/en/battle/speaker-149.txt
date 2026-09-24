@@ -1,0 +1,88 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11918 Juzo · 十三
+> 「いくでーっ!」
+“Here I go!”
+
+@11919 Juzo · 十三
+> 「もろたっ!」
+“Gotcha!”
+
+@11920 Juzo · 十三
+> 「やらせるかいなっ!」
+“Like I'd let ya!”
+
+@11921 Juzo · 十三
+> 「こいつでどやっ!」
+“Take this and how's that!”
+
+@11922 Juzo · 十三
+> 「やったろやないけ!」
+“Told ya I'd do it!”
+
+@11923 Juzo · 十三
+> 「しもたっ! やられてもた!」
+“Dang it! They got me!”
+
+@11924 Juzo · 十三
+> 「あかん! こいつはまずいで!」
+“No good! This ain't lookin' good!”
+
+@11925 Juzo · 十三
+> 「うわああっ! な、なんなんや、こいつ!」
+“Whoaah! Wh-what the heck is this thing?!”
+
+@11926 Juzo · 十三
+> 「わああっ! あ、あかん、このままやと
+>  もたん!」
+“Waaah! N-no good, I can't take this much longer!”
+
+@11927 Juzo · 十三
+> 「うっ! やってくれるやないけ!」
+“Ugh! You're gonna pay for that!”
+
+@11928 Juzo · 十三
+> 「くっ! そう簡単にやられるかいな!」
+“Ngh! Like I'd go down that easy!”
+
+@11929 Juzo · 十三
+> 「なんのっ! まだやられてへんで!」
+“No way! I ain't beaten yet!”
+
+@11930 Juzo · 十三
+> 「なあんや、そんなもんかいな」
+“What, is that all ya got?”
+
+@11931 Juzo · 十三
+> 「あかんあかん、話にならんぐらい
+>  弱いで!」
+“No good, no good, you're so weak it ain't even funny!”
+
+@11932 Juzo · 十三
+> 「ちゃっちい攻撃やなあ」
+“What a puny attack.”
+
+@11933 Juzo · 十三
+> 「ほれほれ、こっちや、こっち!」
+“Come on, over here, over here!”
+
+@11934 Juzo · 十三
+> 「どこねらっとるんや!」
+“What're ya even aimin' at?!”
+
+@11935 Juzo · 十三
+> 「へたくそが!」
+“You're terrible at this!”
+
+@11936 Juzo · 十三
+> 「そんなもん効くかい!」
+“That ain't gonna do a thing!”
+
+@11937 Juzo · 十三
+> 「なんやて!? 弾切れ? しもた、
+>  もっと節約しとくんやった」
+“What?! Out of ammo? Dang it, should've conserved more.”
+
+@11938 Juzo · 十三
+> 「なんや!? とどかへんのか!?」
+“What?! It won't reach?!”

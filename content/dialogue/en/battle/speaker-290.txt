@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14010 Maganac Soldier · マグアナック兵
+> 「邪魔なんだよ!」
+“You're in the way!”
+
+@14011 Maganac Soldier · マグアナック兵
+> 「うおおおおっ!!」
+“Uwooooh!!”
+
+@14012 Maganac Soldier · マグアナック兵
+> 「これでとどめだ!!」
+“This is the finishing blow!!”
+
+@14013 Maganac Soldier · マグアナック兵
+> 「こいつで決めてやる!」
+“I'll finish you with this!”
+
+@14014 Maganac Soldier · マグアナック兵
+> 「やらせるかっ!!」
+“Like I'd let you!!”
+
+@14015 Maganac Soldier · マグアナック兵
+> 「落ちろっ!!」
+“Go down!!”
+
+@14016 Maganac Soldier · マグアナック兵
+> 「このっ!!」
+“Why you!!”
+
+@14017 Maganac Soldier · マグアナック兵
+> 「行くぞっ!!」
+“Here I come!!”
+
+@14018 Maganac Soldier · マグアナック兵
+> 「そこだっ!」
+“Right there!”
+
+@14019 Maganac Soldier · マグアナック兵
+> 「もらった!」
+“Got you!”
+
+@14020 Maganac Soldier · マグアナック兵
+> 「な、何だと!?」
+“W-what did you say?!”
+
+@14021 Maganac Soldier · マグアナック兵
+> 「しまった! 直撃か!?」
+“Damn! A direct hit?!”
+
+@14022 Maganac Soldier · マグアナック兵
+> 「ぐうっ、い、いかん、やられる!?」
+“Guh, th-this is bad, I'm done for?!”
+
+@14023 Maganac Soldier · マグアナック兵
+> 「うおっ!? くっ、こっちが不利か!」
+“Whoa?! Tch, I'm at a disadvantage!”
+
+@14024 Maganac Soldier · マグアナック兵
+> 「ぬうううっ! つ、強いっ!」
+“Nghhh! H-he's strong!”
+
+@14025 Maganac Soldier · マグアナック兵
+> 「やるっ! さすがは!」
+“Not bad! As expected!”
+
+@14026 Maganac Soldier · マグアナック兵
+> 「ぐうぅっ!! パワーが違いすぎる!!」
+“Guhh!! The power difference is too much!!”
+
+@14027 Maganac Soldier · マグアナック兵
+> 「ちいっ! まだまだっ!」
+“Tch! It's not over yet!”
+
+@14028 Maganac Soldier · マグアナック兵
+> 「くっ! 少しはできるな!」
+“Tch! You're not half bad!”
+
+@14029 Maganac Soldier · マグアナック兵
+> 「ぬうっ! そう簡単にやられはせん!!」
+“Ngh! I won't go down that easily!!”
+
+@14030 Maganac Soldier · マグアナック兵
+> 「うっ! やってくれたな!!」
+“Ugh! You'll pay for that!!”
+
+@14031 Maganac Soldier · マグアナック兵
+> 「まだだっ! まだこれからよ!!」
+“Not yet! This is just the beginning!!”
+
+@14032 Maganac Soldier · マグアナック兵
+> 「非力なんだよ!」
+“You're just weak!”
+
+@14033 Maganac Soldier · マグアナック兵
+> 「パワー不足だな!」
+“Not enough power!”
+
+@14034 Maganac Soldier · マグアナック兵
+> 「その程度か!」
+“Is that all you've got?!”
+
+@14035 Maganac Soldier · マグアナック兵
+> 「そんな攻撃など効くものかよ!」
+“An attack like that won't do a thing!”
+
+@14036 Maganac Soldier · マグアナック兵
+> 「ふん、かすっただけよ!」
+“Hmph, that just grazed me!”
+
+@14037 Maganac Soldier · マグアナック兵
+> 「当たるものかよ!」
+“Like that could hit me!”
+
+@14038 Maganac Soldier · マグアナック兵
+> 「踏み込みが足りん!」
+“You're not committing enough!”
+
+@14039 Maganac Soldier · マグアナック兵
+> 「間合いが遠いわっ!」
+“Your spacing's way off!”
+
+@14040 Maganac Soldier · マグアナック兵
+> 「狙いが甘い!」
+“Your aim's too soft!”
+
+@14041 Maganac Soldier · マグアナック兵
+> 「バカめ。どこを狙っている!」
+“Fool. What are you aiming at?!”
+
+@14042 Maganac Soldier · マグアナック兵
+> 「ムダな攻撃をする……」
+“What a waste of an attack...”
+
+@14043 Maganac Soldier · マグアナック兵
+> 「ふ、そんなビームではな!」
+“Hah, a beam like that won't work!”
+
+@14044 Maganac Soldier · マグアナック兵
+> 「ちっ、弾切れとはな……」
+“Tch, out of ammo, huh...”
+
+@14045 Maganac Soldier · マグアナック兵
+> 「弾切れか……しかたあるまい」
+“Out of ammo... nothing I can do about it.”
+
+@14046 Maganac Soldier · マグアナック兵
+> 「ちっ、遠距離からの攻撃か……」
+“Tch, attacking from long range, huh...”
+
+@14047 Maganac Soldier · マグアナック兵
+> 「む……ここからでは反撃できん」
+“Hm... I can't counter from here.”

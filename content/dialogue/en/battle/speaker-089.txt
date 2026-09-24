@@ -1,0 +1,153 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6744 Quatre · カトル
+> 「今日は話していられない。
+>  僕の方が不利だから」
+“I can't talk today. I'm at the disadvantage.”
+
+@6745 Quatre · カトル
+> 「一気にいきます!」
+“I'll finish this in one go!”
+
+@6746 Quatre · カトル
+> 「やらせない!」
+“I won't let you!”
+
+@6747 Quatre · カトル
+> 「出てくるから!」
+“Here I come!”
+
+@6748 Quatre · カトル
+> 「うかつなっ!」
+“Careless!”
+
+@6749 Quatre · カトル
+> 「このぉっ」
+“Why you...!”
+
+@6750 Quatre · カトル
+> 「邪魔をしないで!」
+“Don't get in my way!”
+
+@6751 Quatre · カトル
+> 「これで!」
+“Take this!”
+
+@6752 Quatre · カトル
+> 「いくよ!」
+“Here I go!”
+
+@6753 Quatre · カトル
+# 审校：やらせるもんか是强烈否定，初稿“I won't let you do this!”语气不够有力。
+> 「やらせるもんかぁぁっ!」
+“Like I'd let you!”
+
+@6754 Quatre · カトル
+> 「容赦はしない!」
+“I won't show mercy!”
+
+@6755 Quatre · カトル
+> 「必要なことなんだ!」
+“This is necessary!”
+
+@6756 Quatre · カトル
+> 「うわぁぁぁぁーっ!」
+“Uwaaaaaaah!”
+
+@6757 Quatre · カトル
+# 审校：こんなところで指地点，初稿“here”丢失了“这种地方”的语义。
+> 「こ、こんなところでっ!?」
+“N-not in a place like this?!”
+
+@6758 Quatre · カトル
+> 「あう! つ、強い……」
+“Agh! H-he's strong...”
+
+@6759 Quatre · カトル
+> 「や、やられるわけにはいかないんだ!」
+“I-I can't afford to be beaten!”
+
+@6760 Quatre · カトル
+> 「くぅぅっ、こ、このままじゃ……!」
+“Ngh, a-at this rate...!”
+
+@6761 Quatre · カトル
+> 「こ、これは、この力は!?」
+“Th-this, this power is?!”
+
+@6762 Quatre · カトル
+> 「む、無茶でもいいんだ!」
+“I-it's fine even if it's reckless!”
+
+@6763 Quatre · カトル
+> 「ぐぅぅっ、もうそんなに持たない!?」
+“Guh, I can't last much longer?!”
+
+@6764 Quatre · カトル
+> 「こ、このままじゃねらい撃ちされてしまう」
+“A-at this rate I'll be picked off.”
+
+@6765 Quatre · カトル
+> 「わぁぁぁーっ!」
+“Waaaaaah!”
+
+@6766 Quatre · カトル
+> 「あぁぁ!?」
+“Aaaah?!”
+
+@6767 Quatre · カトル
+> 「こ、このままじゃ……」
+“A-at this rate...”
+
+@6768 Quatre · カトル
+> 「うわっ」
+“Uwah!”
+
+@6769 Quatre · カトル
+> 「やはりそうか……」
+“I thought so...”
+
+@6770 Quatre · カトル
+> 「効かないよ、そんな攻撃は」
+“That kind of attack won't work on me.”
+
+@6771 Quatre · カトル
+> 「くっ!」
+“Ngh!”
+
+@6772 Quatre · カトル
+> 「いける!」
+“I can do this!”
+
+@6773 Quatre · カトル
+> 「これなら!」
+“With this!”
+
+@6774 Quatre · カトル
+> 「この程度の攻撃、よけてみせるよ!」
+“An attack like that, I'll dodge it!”
+
+@6775 Quatre · カトル
+> 「あたりはしないよ!」
+“You won't hit me!”
+
+@6776 Quatre · カトル
+> 「あたらない!」
+“You missed!”
+
+@6777 Quatre · カトル
+# 审校：初稿已可；本条不改。
+> 「残念だけど、効かないんだ」
+“Sorry, but it won't work.”
+
+@6778 Quatre · カトル
+> 「ビームは効かないよ」
+“Beams won't work on me.”
+
+@6779 Quatre · カトル
+> 「弾切れ!? そんな!」
+“Out of ammo?! No way!”
+
+@6780 Quatre · カトル
+> 「くっ、届かないなんてっ!」
+“Ngh, it won't reach?!”

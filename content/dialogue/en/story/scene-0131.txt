@@ -1,0 +1,735 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@43408 Bright · ブライト
+> 「いいか、なんとしても“刻印”を
+>  確保するんだ!」
+“Listen up. We secure the ‘Seal’ no matter what!”
+
+@43409 Julia · ジュリア
+> 「ゲイル、わたくしを“刻印”の
+>  場所まで連れて行ってください」
+“Gale, take me to the location of the ‘Seal.’”
+
+@43410 Gale · ゲイル
+> 「ああ、ジュリア。どうやら敵も
+>  こちらの侵入に気づいたようだ
+“Yeah, Julia. Seems the enemy has noticed our intrusion, too.
+---
+>  急がねばならんようだな」
+We need to hurry.”
+
+@43411 Julia · ジュリア
+> 「エイジ、わたくしを“刻印”の
+>  場所まで連れて行ってください」
+“Eiji, take me to the location of the ‘Seal.’”
+
+@43412 Eiji · エイジ
+> 「わかってるよ、姉さん」
+“I know, sis.”
+
+@43413 Rei · レイ
+> 「アラームメッセージ!
+>  敵対機多数接近!
+“Alarm message! Multiple hostile units approaching!
+---
+>  目標地点へ先ニ到着デキル
+>  確率46%!」
+Probability of reaching the target point first: 46%!”
+
+@43414 Eiji · エイジ
+> 「敵より先に“刻印”に
+>  行かなければ……」
+“We have to get to the ‘Seal’ before the enemy...”
+
+@43415 Julia · ジュリア
+> 「エイジ、急いで」
+“Eiji, hurry.”
+
+@43416 Wahl · ワール
+> 「ガンダルめ、地球人ごときの侵入
+>  を許すとは。よいか、奴らをあそこへ
+“That fool Gandal, letting Earthlings intrude. Listen, do not let them get near that place!
+---
+>  近づけさせてはならん!
+>  なんとしても確保しろ!」
+Secure it no matter what!”
+
+@43417 Julia · ジュリア
+> 「あぁぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@43418 Eiji · エイジ
+> 「しまった、姉さん!?」
+“Damn it, sis?!”
+
+@43419 Julia · ジュリア
+> 「あぁぁぁぁーっ!!」
+“Aaaaaaah!!”
+
+@43420 Gale · ゲイル
+> 「ジュリア!?
+>  くっ、なんと、うかつな……!」
+“Julia?! Ngh, how could I be so careless...!”
+
+@43421 Julia · ジュリア
+> 「……どうやら間にあわなかった
+>  ようですね……残念です……」
+“...It seems we did not make it in time... How unfortunate...”
+
+@43422 Julia · ジュリア
+> 「……どうやら間にあわなかった
+>  ようですね……残念です……」
+“...It seems we did not make it in time... How unfortunate...”
+
+@43423 Eiji · エイジ
+> 「ついたよ、姉さん」
+“We made it, sis.”
+
+@43424 Julia · ジュリア
+> 「ありがとう、エイジ。みなさん、
+>  “刻印”を発動させます
+“Thank you, Eiji. Everyone, I am activating the ‘Seal.’
+---
+>  準備が整うまで、守っていて
+>  ください」
+Please hold them off until it is ready.”
+
+@43425 Wahl · ワール
+> 「おのれ、まさかとは思ったが、やはり
+>  あの装置を動かすつもりか!」
+“Curse them! I suspected as much, but they really mean to activate that device!”
+
+@43426 Wahl · ワール
+> 「おのれ、まさかとは思ったが、やはり
+>  あの装置を動かすつもりか!
+“Curse them! I suspected as much, but they really mean to activate that device!
+---
+>  全軍突撃せよ!
+>  なんとしても奴らをとめるのだ!!」
+All forces, charge! Stop them no matter what!!”
+
+@43427 Gale · ゲイル
+> 「ジュリア、どうにか間にあったようだ」
+“Julia, looks like we made it just in time.”
+
+@43428 Julia · ジュリア
+> 「ありがとう、ゲイル。みなさん、
+>  “刻印”を発動させます
+“Thank you, Gale. Everyone, I am activating the ‘Seal.’
+---
+>  準備が整うまで、守っていて
+>  ください」
+Please hold them off until it is ready.”
+
+@43429 Wahl · ワール
+> 「おのれ、まさかとは思ったが、やはり
+>  あの装置を動かすつもりか!」
+“Curse them! I suspected as much, but they really mean to activate that device!”
+
+@43430 Wahl · ワール
+> 「おのれ、まさかとは思ったが、やはり
+>  あの装置を動かすつもりか!
+“Curse them! I suspected as much, but they really mean to activate that device!
+---
+>  全軍突撃せよ!
+>  なんとしても奴らをとめるのだ!!」
+All forces, charge! Stop them no matter what!!”
+
+@43431 Dr. Hazuki · 葉月博士
+> 「むっ……このエネルギー反応は……」
+“Hm... This energy reaction is...”
+
+@43432 Bright · ブライト
+> 「なんだ? “グラドスの刻印”
+>  が……発動するのか……?」
+“What? The ‘Seal of Grados’ is... activating...?”
+
+@43433 Julia · ジュリア
+> 「みなさん、
+>  よくもちこたえてくれました
+“Everyone, you held out well.
+---
+>  これより“刻印”を発動させま
+>  す。遺跡内より退避してください」
+I am activating the ‘Seal’ now. Evacuate from within the ruins.”
+
+@43434 Dr. Hazuki · 葉月博士
+> 「むっ……このエネルギー反応は……」
+“Hm... This energy reaction is...”
+
+@43435 Bright · ブライト
+> 「なんだ? “グラドスの刻印”
+>  が……発動するのか……?」
+“What? The ‘Seal of Grados’ is... activating...?”
+
+@43436 Julia · ジュリア
+> 「みなさん、
+>  よくもちこたえてくれました
+“Everyone, you held out well.
+---
+>  これより“刻印”を発動させま
+>  す。遺跡内より退避してください」
+I am activating the ‘Seal’ now. Evacuate from within the ruins.”
+
+@43437 Alberto · アルベルト
+> 「どういうことだ、孔明。
+>  これでは失敗ではないのか!?」
+“What does this mean, Komei? Isn't this a failure?!”
+
+@43438 Komei · 孔明
+> 「フフフ、失敗などと、とんでもありま
+>  せん。これでよいのです」
+“Heh heh heh. Failure? Not at all. This is exactly as it should be.”
+
+@43439 Alberto · アルベルト
+> 「なんだと?」
+“What did you say?”
+
+@43440 Komei · 孔明
+> 「よくお聞きなさい。この作戦こそ、
+>  我らBF団の悲願の
+“Listen carefully. This operation is the first step toward our BF Group's dearest wish.
+---
+>  第1歩なのですぞ。これすべて我らが
+>  ビッグファイアーのご意志なのです」
+All of this is the will of our Big Fire.”
+
+@43441 Show · ショウ
+> 「これが“グラドスの刻印”……」
+“So this is the ‘Seal of Grados’...”
+
+@43442 Marvel · マーベル
+> 「こんなものが4万年も眠っていた
+>  なんて、信じられないわね……」
+“I can't believe something like this slept for 40,000 years...”
+
+@43443 Anna · アンナ
+> 「みて、光の柱が空へと上っていくわ」
+“Look, a pillar of light is rising into the sky.”
+
+@43444 Daisaku · 大作
+> 「……すごい……」
+“...Amazing...”
+
+@43445 Duo · デュオ
+> 「ああ、こいつはすげぇや」
+“Yeah, this is incredible.”
+
+@43446 Janera · ジャネラ
+# 审校：末页“兵を退かせぬ方がよかった”是“不撤退更好”，初稿译成“keep the troops in retreat”意思反了，改为 not to withdraw the troops。
+> 「ワール司令、
+>  いったいどうなったのじゃ!?
+“Commander Wahl, what in the world happened?!
+---
+>  陛下のご心配なされようから、
+>  何かとてつもない兵器だとばかり
+I was sure His Majesty was so worried it must be some tremendous weapon,
+---
+>  思っておったが、我が軍にはあれに
+>  よる被害は出ておらぬ。これでは
+but our forces suffered no damage from it. In that case,
+---
+>  兵を退かせぬ方がよかったのでは
+>  ないか?」
+would it not have been better not to withdraw the troops?”
+
+@43447 Wahl · ワール
+> 「陛下があれほど強く
+>  破壊を指示されたもの
+“His Majesty ordered its destruction so strongly.
+---
+>  何も影響がないとは思えん」
+I cannot believe it had no effect at all.”
+
+@43448 Warchimedes · ワルキメデス
+> 「報告いたします。遺跡より発した
+>  謎の発光体は、大気圏をぬけ
+“Reporting. The mysterious luminous body emitted from the ruins has passed through the atmosphere
+---
+>  宇宙へと出るもようです」
+and appears to be heading into space.”
+
+@43449 Wahl · ワール
+> 「宇宙へ……ええい、いったい
+>  どうなっているのだ!? まさか
+“Into space...? Damn it, what in the world is going on?! To think
+---
+>  このようなことになるとは……」
+it would come to this...”
+
+@43450 Janera · ジャネラ
+> 「どうするおつもりか?」
+“What do you intend to do?”
+
+@43451 Wahl · ワール
+> 「……ゴーマン、ここはまかせる。ジャネラ、
+>  ガンダル、我らは宇宙へもどるぞ
+“...Gorman, I leave things here to you. Janera, Gandal, we are returning to space.
+---
+>  どのみち地球人どもの
+>  残存兵力など、たかがしれている
+Either way, the surviving forces of the Earthlings are hardly worth fearing.
+---
+>  あれが何であれ、我らの勝利は
+>  揺るがぬが、体勢を
+Whatever that thing is, our victory is unshaken, but there is no harm
+---
+>  立て直しておくにこしたことはない」
+in regrouping and rebuilding our position.”
+
+@43452 Gale · ゲイル
+> 「ジュリア……あれで終わったのか?」
+“Julia... is that the end of it?”
+
+@43453 Julia · ジュリア
+> 「ええ……“グラドスの刻印”は
+>  発動しました。あの柱が宇宙へと
+“Yes... the ‘Seal of Grados’ has been activated. Once that pillar
+---
+>  出れば、空間をゆがめる機構が
+>  動き始めます」
+reaches space, the mechanism that warps space will begin to move.”
+
+@43454 Gale · ゲイル
+> 「そうか……」
+“I see...”
+
+@43455 Julia · ジュリア
+> 「しかしこれで、あともどりはできなくなり
+>  ました。この星系に来た者たちは
+“But now there is no turning back. Those who came to this star system
+---
+>  帰るべき場所を失ったのです。私
+>  たちもゾルバドス星の仲介なくしては
+have lost the place they should return to. Without the Zorbados star's mediation,
+---
+>  本星にもどれないでしょう」
+we too will likely never return to our homeworld.”
+
+@43456 Gale · ゲイル
+> 「地球圏に残留することになる、か
+>  しかたあるまい
+“We will remain in the Earth Sphere, then. It cannot be helped.
+---
+>  もしも生き残れるならば、
+>  その者たちの処遇については
+If any of them survive, we must do all we can
+---
+>  我々が尽力せねばな」
+for their treatment.”
+
+@43457 Julia · ジュリア
+> 「ええ、もちろんです」
+“Yes, of course.”
+
+@43458 Gale · ゲイル
+> 「そうか……君は“聖女”だった
+>  のだな」
+“I see... so you were the ‘Holy Woman.’”
+
+@43459 Julia · ジュリア
+> 「わたくしは人々が望んでいることを
+>  するだけです」
+“I merely do what the people wish for.”
+
+@43460 Banjo · 万丈
+> 「みんな、気をぬくなよ。“刻印”
+>  の発動が成功したからといって
+“Everyone, don't let your guard down. Just because the ‘Seal’ activated successfully,
+---
+>  単身遺跡まで突入した
+>  僕たちが圧倒的多数の敵に
+it doesn't change the fact that we, who charged into the ruins alone,
+---
+>  囲まれていることは変わらないんだ」
+are surrounded by an overwhelming number of enemies.”
+
+@43461 Bright · ブライト
+> 「ジュリアさん、あれで終わったのでしょう
+>  か」
+“Miss Julia, is that the end of it?”
+
+@43462 Julia · ジュリア
+> 「はい……“グラドスの刻印”は
+>  発動しました。あの柱が宇宙へと
+“Yes... the ‘Seal of Grados’ has been activated. Once that pillar
+---
+>  出れば、空間をゆがめる機構が
+>  動き始めます」
+reaches space, the mechanism that warps space will begin to move.”
+
+@43463 Amuro · アムロ
+> 「そうか……」
+“I see...”
+
+@43464 Julia · ジュリア
+> 「しかしこれで、あともどりはできなくなった
+>  ことをご承知ください
+“But please understand that there is no turning back now.
+---
+>  この星系に来た者たちは、
+>  帰るべき場所を失ったのです
+Those who came to this star system have lost the place they should return to.
+---
+>  戦いがどのようになろうとも、
+>  彼らもまたのちの地球圏の
+No matter how the battle turns out, they too must become
+---
+>  住人とならねばなりません」
+residents of the Earth Sphere in time.”
+
+@43465 Chum · チャム
+> 「それって、あたしたちがバイストンウェルに
+>  帰れないのと同じようなこと?」
+“Is that like how we can't go back to Byston Well?”
+
+@43466 Marvel · マーベル
+> 「そうね」
+“That's right.”
+
+@43467 Chum · チャム
+> 「えー、なんだかかわいそう……」
+“Aww, that's kind of sad...”
+
+@43468 Kamille · カミーユ
+> 「考えてみれば当然の話ですね。
+>  まさか、皆殺しなんてできるはずがない」
+“When you think about it, it's only natural. There's no way we could just kill them all.”
+
+@43469 Ryoma · リョウ
+> 「ああ……そうだな」
+“Yeah... that's right.”
+
+@43470 Banjo · 万丈
+> 「そんなことを考えている時じゃない。
+>  まだ銀河帝国軍は、そのまま
+“This isn't the time to be thinking about that. The Galactic Empire's forces are
+---
+>  残っているんだ。戦いに
+>  勝てねば、我々が地球圏から
+still out there. If we don't win this battle, we'll be the ones
+---
+>  排除される側にまわることになる」
+driven out of the Earth Sphere.”
+
+@43471 Shinobu · 忍
+> 「ああ、いわれなくてもわかってるさ。
+>  まだまだ、これからだ
+“Yeah, you don't have to tell me. We're just getting started.
+---
+>  敵の動きはどうなってんだ?
+>  戦闘は停止しているようだけどよ」
+What's the enemy doing? It looks like the fighting's stopped.”
+
+@43472 Sally · サリィ
+> 「一部部隊が残留し包囲網
+>  をしいているけど、大半は撤退を
+“Some units remain and have set up an encirclement, but it looks like
+---
+>  開始しているみたいね」
+the majority have begun to withdraw.”
+
+@43473 Bright · ブライト
+> 「ふむ……ジュリアさん、彼らは何が
+>  起こったか理解しているのだろうか?」
+“Hmm... Miss Julia, do they understand what has happened?”
+
+@43474 Julia · ジュリア
+> 「わかりません。銀河帝国と
+>  先住グラドス人は数万年の
+“I don't know. The Galactic Empire and the native Gradosians must have
+---
+>  昔に接触したことがあるはずです。
+>  あれが何か、知っていたとしても
+made contact tens of thousands of years ago. It wouldn't be strange if they knew
+---
+>  不思議ではありませんが、実際に
+>  何が起こったかは、彼ら自身が
+what that is, but what actually happened is something
+---
+>  確認することになるでしょう」
+they will have to confirm for themselves.”
+
+@43475 Bright · ブライト
+> 「なるほど……よし、銀河帝国軍に
+>  対して“グラドスの刻印”の
+“I see... All right, let us announce to the Galactic Empire's forces
+---
+>  発動とその影響について、告知
+>  しよう。戦意をそげるかもしれん」
+the activation of the ‘Seal of Grados’ and its effects. It may weaken their will to fight.”
+
+@43476 Banjo · 万丈
+> 「そういうことなら、ロゼにやってもらおう。
+>  それがもっとも効果的だろう」
+“If that's the case, let's have Rose do it. That would be the most effective.”
+
+@43477 Takeru · タケル
+> 「しかし……」
+“But...”
+
+@43478 Rose · ロゼ
+> 「いいわ、マーズ。私がやります」
+“It's fine, Mars. I'll do it.”
+
+@43479 Takeru · タケル
+> 「ロゼ……」
+“Rose...”
+
+@43480 Rose · ロゼ
+> 「悪いのはズールだ、そういったのはマーズ
+>  あなたよ。私が呼びかけることで
+“The one at fault is Zuul. You were the one who said that, Mars. If there are people
+---
+>  戦いをやめてくれる人がいるのなら、
+>  私はそれでいい」
+who will stop fighting because I call out to them, then that's enough for me.”
+
+@43481 Bright · ブライト
+> 「ふむ……頼めるか、ロゼ」
+“Hmm... Can I leave it to you, Rose?”
+
+@43482 Rose · ロゼ
+> 「はい」
+“Yes.”
+
+@43483 Alan · アラン
+> 「よし、そういうことなら、帝国軍に
+>  向けて発信する通信文について
+“All right, if that's the case, let's discuss the message
+---
+>  検討しよう」
+we'll transmit to the Imperial forces.”
+
+@43484 Bright · ブライト
+> 「そうだな。
+>  サリィ、敵の監視は続けてくれ
+“Yes. Sally, keep monitoring the enemy.
+---
+>  それと、トレーズに連絡を頼む」
+Also, please contact Treize.”
+
+@43485 Sally · サリィ
+> 「わかりました」
+“Understood.”
+
+@43486 Daisuke · 大介
+# 审校：修正语法：主语位置用 me 而非 I。
+> 「そういうことなら、僕とマリアで
+>  やりましょう」
+“If that's the case, let Maria and me handle it.”
+
+@43487 Alan · アラン
+> 「君が?」
+“You?”
+
+@43488 Daisuke · 大介
+> 「奴らに滅ぼされたフリード星の
+>  生き残りである、僕とマリアの
+“If it's words from Maria and me, the survivors of the Fleed Star that they destroyed,
+---
+>  言葉なら、より動揺を大きく
+>  できるはずです」
+we should be able to shake them up even more.”
+
+@43489 Bright · ブライト
+> 「ふむ……頼めるか、デューク、マリア」
+“Hmm... Can I leave it to you, Duke, Maria?”
+
+@43490 Maria · マリア
+> 「もっちろん。まかせて、みんな」
+“Of course. Leave it to us, everyone.”
+
+@43491 Alan · アラン
+> 「よし、そういうことなら、帝国軍に
+>  向けて発信する通信文について
+“All right, if that's the case, let's discuss the message
+---
+>  検討しよう」
+we'll transmit to the Imperial forces.”
+
+@43492 Bright · ブライト
+> 「そうだな。
+>  サリィ、敵の監視は続けてくれ
+“Yes. Sally, keep monitoring the enemy.
+---
+>  それと、トレーズに連絡を頼む」
+Also, please contact Treize.”
+
+@43493 Sally · サリィ
+> 「わかりました」
+“Understood.”
+
+@43494 Banjo · 万丈
+> 「さて……あとは敵の動きを待つだけか
+>  うまくいってくれると、いいんだけどね」
+“Well then... now all we can do is wait for the enemy to move. I hope it goes well.”
+
+@43495 Beauty · ビューティ
+> 「万丈、もしもうまくいかなかったら
+>  どうなるの?」
+“Banjo, what happens if it doesn't go well?”
+
+@43496 Reika · レイカ
+> 「ばかね、決まってるでしょ。残った
+>  銀河帝国軍の数だけでも
+“Don't be silly, it's obvious. Even with just the remaining Galactic Empire forces,
+---
+>  圧倒的だわ。私たちは、
+>  負けるのよ」
+they're overwhelming. We'll lose.”
+
+@43497 Amuro · アムロ
+> 「まぁ、そうと決まったわけでもないが……
+>  しかし、うまくいくにこしたことはない」
+“Well, it's not as if that's been decided yet... but it would be best if it goes well.”
+
+@43498 Banjo · 万丈
+> 「ああ……どうなることかな……」
+“Yeah... I wonder how it'll turn out...”
+
+@43499 Anna · アンナ
+> 「みんな、見て!」
+“Everyone, look!”
+
+@43500 Banjo · 万丈
+> 「どうした、アンナ?」
+“What is it, Anna?”
+
+@43501 David · デビッド
+> 「なんだぁ!?」
+“What the?!”
+
+@43502 Amuro · アムロ
+> 「これは……
+>  これが刻印の影響なのか……?」
+“This is... Is this the effect of the Mark...?”
+
+@43503 Sara · 沙羅
+> 「……空が……なんて光景だい、
+>  まったく」
+“...The sky... What a sight, honestly.”
+
+@43504 Duo · デュオ
+> 「ああ……こいつはまったく……
+>  宇宙が、ゆがんでるみたいだぜ」
+“Yeah... this is really... it's like space itself is warping.”
+
+@43505 Kamille · カミーユ
+> 「ゆがむ……宇宙か……」
+“Warping... space, huh...”
+
+@43506 Bright · ブライト
+> 「なんだ!?」
+“What is it?!”
+
+@43507 Chief Chujo · 中条長官
+> 「艦長、
+>  早乙女博士はそちらかね?」
+“Captain, is Dr. Saotome over there?”
+
+@43508 Dr. Saotome · 早乙女博士
+> 「わしはここにおるよ。何か?」
+“I'm right here. What is it?”
+
+@43509 Chief Chujo · 中条長官
+> 「博士、すぐに来てください。
+>  ゲッター線実験中のゲッター1に
+“Doctor, come at once. Something strange is happening to Getter-1
+---
+>  異変が生じているそうです」
+during the Getter Ray experiment.”
+
+@43510 Dr. Saotome · 早乙女博士
+> 「なんですと!? すぐに行きます!」
+“What?! I'll be right there!”
+
+@43511 Ryoma · リョウ
+> 「博士、いったいどうしたんです?」
+“Doctor, what on earth happened?”
+
+@43512 Dr. Saotome · 早乙女博士
+> 「お前たち、近づくんじゃない!」
+“You lot, don't come any closer!”
+
+@43513 Hayato · ハヤト
+> 「ああ、こいつはひどいな。どうしたって
+>  いうんです」
+“Yeah, this is bad. What happened?”
+
+@43514 Dr. Saotome · 早乙女博士
+> 「うむ……あやうくゲッター炉が
+>  暴走しかけおった」
+“Hmm... the Getter reactor nearly went out of control.”
+
+@43515 Dr. Yotsuya · 四谷博士
+> 「早乙女博士、数値は
+>  正常値までもどっておるぞ」
+“Dr. Saotome, the readings have returned to normal levels.”
+
+@43516 Dr. Saotome · 早乙女博士
+> 「……もう大丈夫なようだな。危ない
+>  ところだった。あいつが暴走したら
+“...It seems to be all right now. That was close. If it had gone out of control,
+---
+>  ガンドールも無事ではすまなかった
+>  だろう」
+the Gandor wouldn't have escaped unharmed either.”
+
+@43517 Hayato · ハヤト
+> 「原因はわかっているんですか、
+>  博士?」
+“Do you know the cause, Doctor?”
+
+@43518 Dr. Saotome · 早乙女博士
+> 「ううむ……」
+“Hmm...”
+
+@43519 Prof. Yumi · 弓教授
+> 「早乙女博士、このデータを
+>  見てください」
+“Dr. Saotome, take a look at this data.”
+
+@43520 Dr. Saotome · 早乙女博士
+> 「……これは! バカな、こんなことはあり
+>  えん! 弓教授、このデータは……」
+“...This is! Impossible, this can't be! Prof. Yumi, this data is...”
+
+@43521 Prof. Yumi · 弓教授
+> 「暴走直前に、モニターした時の
+>  ものです」
+“It was monitored just before the runaway.”
+
+@43522 Benkei · ベンケイ
+> 「何だよ、どうしたんだよ博士」
+“What is it, what's going on, Doctor?”
+
+@43523 Dr. Saotome · 早乙女博士
+> 「わからん……この異常な数値は……」
+“I don't know... these abnormal readings...”
+
+@43524 Dr. Yotsuya · 四谷博士
+> 「もしやとは思うが……
+>  “グラドスの刻印”の発動が
+“I may be wrong, but... perhaps the activation of the ‘Grados Mark’
+---
+>  影響しておるのではないかな」
+is having an effect.”
+
+@43525 Dr. Saotome · 早乙女博士
+> 「だとすれば……この数値をもとに
+>  計算をやりなおし……いかん!」
+“If that's the case... I'll redo the calculations based on these readings... No good!”
+
+@43526 Ryoma · リョウ
+> 「こんどは何です」
+“What is it this time?”
+
+@43527 Dr. Saotome · 早乙女博士
+> 「いまの暴走で、ゲッター線
+>  増幅炉が使えなくなってしまった
+“The runaway just now has made the Getter Ray amplification reactor unusable.
+---
+>  くそ、これでは実験を続けることが
+>  できん……」
+Damn it, now we can't continue the experiment...”

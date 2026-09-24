@@ -1,0 +1,247 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6147 Wufei · 五飛
+# 审校：原文用逗号连接两个分句，英文用破折号更自然，避免逗号拼接。
+> 「邪悪な意思を持つ者は、すべて
+>  この俺が消し去る!」
+“Anyone with an evil will—I will erase them all myself!”
+
+@6148 Wufei · 五飛
+> 「貴様らが正しいのであれば、俺を
+>  倒せるはずだ!」
+“If you lot are in the right, then you should be able to defeat me!”
+
+@6149 Wufei · 五飛
+> 「警戒があますぎる。自業自得だ」
+“You let your guard down too much. You brought this on yourself.”
+
+@6150 Wufei · 五飛
+> 「さぁお前たちの力をみせろ!」
+“Come, show me your strength!”
+
+@6151 Wufei · 五飛
+> 「俺は逃げも隠れもしない!」
+“I will neither run nor hide!”
+
+@6152 Wufei · 五飛
+> 「この戦い、すぐにケリをつける!」
+“I'll end this battle right now!”
+
+@6153 Wufei · 五飛
+# 审校：原文「貴様ぁーっ!」是拖长音的怒吼，用破折号表现拖长更贴切。
+> 「貴様ぁーっ!」
+“You bastard—!”
+
+@6154 Wufei · 五飛
+> 「問答無用っ!」
+“No questions asked!”
+
+@6155 Wufei · 五飛
+> 「俺は俺の道をいく!」
+“I walk my own path!”
+
+@6156 Wufei · 五飛
+> 「……誰にも俺を止める事はできん!」
+“...No one can stop me!”
+
+@6157 Wufei · 五飛
+> 「酔うな、おのれの戦いに!」
+“Don't get drunk on your own battle!”
+
+@6158 Wufei · 五飛
+# 审校：原文是命令语气，改为 shouldn't 更自然，避免直译的别扭感。
+> 「力のないものが、ウロウロするなあっ!!」
+“Those without strength shouldn't go wandering around!!”
+
+@6159 Wufei · 五飛
+> 「正義は俺が決めるっ!!」
+“I decide what justice is!!”
+
+@6160 Wufei · 五飛
+> 「これで決着をつける!!」
+“I'll settle this now!!”
+
+@6161 Wufei · 五飛
+> 「うおおおっ!!」
+“Whoaah!!”
+
+@6162 Wufei · 五飛
+# 审校：原文「どけえぇぇぇっ!!」有明显拖长音，译文用 waaay 表现。
+> 「どけえぇぇぇっ!!」
+“Out of my waaay!!”
+
+@6163 Wufei · 五飛
+> 「戦いをみくびるな!!」
+“Don't underestimate battle!!”
+
+@6164 Wufei · 五飛
+> 「これでどうだっ!!」
+“How's this!!”
+
+@6165 Wufei · 五飛
+# 审校：原文「はあぁぁぁっ!!」拖长音，改为 Haaaah 更贴切。
+> 「はあぁぁぁっ!!」
+“Haaaah!!”
+
+@6166 Wufei · 五飛
+> 「俺の進む道は正しいのだ!」
+“The path I walk is just!”
+
+@6167 Wufei · 五飛
+> 「どけっ!!」
+“Move!!”
+
+@6168 Wufei · 五飛
+> 「ここで仕留めてやる!!」
+“I'll finish you here!!”
+
+@6169 Wufei · 五飛
+> 「弱いものが戦ったりするな!」
+“The weak have no business fighting!”
+
+@6170 Wufei · 五飛
+> 「なにっ! しまった!!」
+“What?! Damn it!!”
+
+@6171 Wufei · 五飛
+# 审校：“there's no better time than now” 稍显冗长，改为更简洁有力的表达。
+> 「むうっ、こい! この俺を倒すなら、
+>  今をおいてないぞ!」
+“Ngh, come! If you want to defeat me, now is the time!”
+
+@6172 Wufei · 五飛
+> 「ぬうっ! こんな事で、俺は負ける
+>  わけにはいかん!!」
+“Ngh! I can't afford to lose over something like this!!”
+
+@6173 Wufei · 五飛
+> 「くっ! 思ったよりはやるようだな
+>  ……だがっ!」
+“Tch! You're better than I thought... but!”
+
+@6174 Wufei · 五飛
+> 「うっ! 貴様ごときにっ!!」
+“Ugh! By the likes of you!!”
+
+@6175 Wufei · 五飛
+> 「うおおっ! ま、まだだっ!
+>  まだ決着はついていないっ!」
+“Whoa! N-not yet! It's not over yet!”
+
+@6176 Wufei · 五飛
+> 「ぬぅぅぅっ! 望むところだ!」
+“Ngh! Just what I wanted!”
+
+@6177 Wufei · 五飛
+> 「くっ……推進システム異常、
+>  レフトアーム作動不能だと!?」
+“Tch... propulsion system abnormal, left arm inoperable?!”
+
+@6178 Wufei · 五飛
+> 「ちいっ! 俺はやられはしないっ!!」
+“Tch! I won't be beaten!!”
+
+@6179 Wufei · 五飛
+# 审校：原文“この程度でやられはせんっ”是“这种程度不会被打倒”，初稿译成反问“You think this is enough to take me down?!”语气和意思有偏差，改为更贴合的否定句。
+> 「まだだ! この程度でやられはせんっ!」
+“Not yet! This much won't take me down!”
+
+@6180 Wufei · 五飛
+# 审校：“やるっ”在这里是夸对方“挺行/有两下子”，初稿“Nice one!”不够准确，改为“You're good!”。
+> 「やるっ! だが、まだ!!」
+“You're good! But still not enough!!”
+
+@6181 Wufei · 五飛
+> 「俺は負けん!」
+“I won't lose!”
+
+@6182 Wufei · 五飛
+> 「くっ! この程度で俺を倒せると
+>  思うなっ!!」
+“Ngh! Don't think you can beat me with that!!”
+
+@6183 Wufei · 五飛
+# 审校：“相手になってやる”是“我来做你的对手”，初稿“I'll take you on”可以，但“be your opponent”更贴合原文。
+> 「むうっ! 上等だ、相手に
+>  なってやる!」
+“Hmph! Fine, I'll be your opponent!”
+
+@6184 Wufei · 五飛
+# 审校：“構わん”在战斗语境下更接近“无所谓/我不在乎”，初稿“I don't care!”语气偏冲，改为“I don't mind!”更自然。
+> 「構わん!」
+“I don't mind!”
+
+@6185 Wufei · 五飛
+> 「弱いものが、戦いに出て来るなっ!」
+“The weak have no business on the battlefield!”
+
+@6186 Wufei · 五飛
+> 「その程度の力で……」
+“With that kind of power...”
+
+@6187 Wufei · 五飛
+> 「敵が弱いと、戦った後
+>  むなしくなるんだ……くそぉっ!」
+“When the enemy's weak, the fight leaves you empty... damn it!”
+
+@6188 Wufei · 五飛
+> 「この程度か……とうてい俺には
+>  及ばんぞ!」
+“Is that all...? You're nowhere near my level!”
+
+@6189 Wufei · 五飛
+> 「それで本気か!? 情けないやつだ…」
+“That's your best?! How pathetic...”
+
+@6190 Wufei · 五飛
+> 「どけ! もういいだろう、お前では
+>  俺に勝てない!!」
+“Out of my way! Enough, you can't beat me!!”
+
+@6191 Wufei · 五飛
+> 「なぜ戦う!? 勝てもしない
+>  相手に対して」
+“Why fight?! Against an opponent you can't possibly beat!”
+
+@6192 Wufei · 五飛
+> 「こんなものではないだろう、お前たちの力
+>  は。お前たちは汚らしく強いはずだ!」
+“This can't be all you've got. You're supposed to be filthy strong!”
+
+@6193 Wufei · 五飛
+> 「当たらん!!」
+“You missed!!”
+
+@6194 Wufei · 五飛
+> 「それで狙っているつもりか!!」
+“You call that aiming?!”
+
+@6195 Wufei · 五飛
+> 「甘いぞっ!!」
+“Too soft!!”
+
+@6196 Wufei · 五飛
+> 「貴様らには俺を倒せん!」
+“You lot can't defeat me!”
+
+@6197 Wufei · 五飛
+> 「そこかっ!」
+“There you are!”
+
+@6198 Wufei · 五飛
+> 「フン、なにをやっている!!」
+“Hmph, what are you doing?!”
+
+@6199 Wufei · 五飛
+> 「この俺にビームが通用すると
+>  思っているのか?」
+“You think a Beam can touch me?”
+
+@6200 Wufei · 五飛
+> 「弾切れだと……こんな時に!」
+“Out of ammo... now of all times?!”
+
+@6201 Wufei · 五飛
+> 「臆病者め……正々堂々と
+>  勝負しろ!」
+“Coward... fight me fair and square!”

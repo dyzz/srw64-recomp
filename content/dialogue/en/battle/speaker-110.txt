@@ -1,0 +1,152 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9808 Dark General · 暗黒大将軍
+> 「くらえ!」
+“Take this!”
+
+@9809 Dark General · 暗黒大将軍
+> 「死ねい!」
+“Die!”
+
+@9810 Dark General · 暗黒大将軍
+> 「バカめ!!」
+“Fools!!”
+
+@9811 Dark General · 暗黒大将軍
+> 「憎悪と呪いをこめて!」
+“With hatred and curses!”
+
+@9812 Dark General · 暗黒大将軍
+> 「葬り去ってくれる!」
+“I'll wipe you out!”
+
+@9813 Dark General · 暗黒大将軍
+> 「地獄の責め苦が待っているぞ!」
+“The torments of hell await you!”
+
+@9814 Dark General · 暗黒大将軍
+> 「地獄へ送りこんでやる!」
+“I'll send you straight to hell!”
+
+@9815 Dark General · 暗黒大将軍
+> 「とどめをさしてやる!」
+“I'll finish you off!”
+
+@9816 Dark General · 暗黒大将軍
+> 「息の根を止めてやる!」
+“I'll put an end to you!”
+
+@9817 Dark General · 暗黒大将軍
+> 「覚悟はいいな!」
+“You'd better be ready!”
+
+@9818 Dark General · 暗黒大将軍
+> 「なに!? くそう、今に見ていろ」
+“What?! Damn you, just you wait.”
+
+@9819 Dark General · 暗黒大将軍
+> 「くっ、必ず地獄へ送ってやるぞ!」
+“Ngh, I'll send you to hell for sure!”
+
+@9820 Dark General · 暗黒大将軍
+> 「くそう、今日の屈辱は生涯
+>  忘れぬぞ」
+“Damn it, I'll never forget today's humiliation!”
+
+@9821 Dark General · 暗黒大将軍
+> 「次は必ず勝てる、必ず……」
+“Next time I'll win for sure, for sure...”
+
+@9822 Dark General · 暗黒大将軍
+> 「くそう、奴らだけいい気にはさせんぞ」
+“Damn it, I won't let them have it all their way.”
+
+@9823 Dark General · 暗黒大将軍
+> 「せっかくのチャンスをみすみす逃しおって」
+“To let such a golden chance slip through my fingers...”
+
+@9824 Dark General · 暗黒大将軍
+> 「むうう、やむをえん」
+“Mmm, it can't be helped.”
+
+@9825 Dark General · 暗黒大将軍
+> 「俺は1人では死なんぞ!」
+“I won't die alone!”
+
+@9826 Dark General · 暗黒大将軍
+> 「なんだと!?」
+“What did you say?!”
+
+@9827 Dark General · 暗黒大将軍
+> 「ぬう、くそう、味なマネを」
+“Ngh, damn you, clever little trick.”
+
+@9828 Dark General · 暗黒大将軍
+> 「いくらあがいてもムダだ!」
+“Struggle all you want, it's useless!”
+
+@9829 Dark General · 暗黒大将軍
+> 「この暗黒大将軍、これしきでは負けん
+>  ぞ!」
+“I, Dark General, won't lose to the likes of this!”
+
+@9830 Dark General · 暗黒大将軍
+> 「それがどうした」
+“So what?”
+
+@9831 Dark General · 暗黒大将軍
+> 「クククク、ばかめ!」
+“Kukukuku, you fool!”
+
+@9832 Dark General · 暗黒大将軍
+> 「フフ、飛んで火に入る夏の虫か
+>  ハハハハ」
+“Heh, like a moth to a flame... hahahaha!”
+
+@9833 Dark General · 暗黒大将軍
+> 「おもしろくなってきたぞ!」
+“Now it's getting interesting!”
+
+@9834 Dark General · 暗黒大将軍
+> 「見苦しいぞ! ハーッハッハッハッ!」
+“How pathetic! Hahahahaha!”
+
+@9835 Dark General · 暗黒大将軍
+> 「うむ、勝利は間違いない!」
+“Yes, victory is certain!”
+
+@9836 Dark General · 暗黒大将軍
+> 「愚かな奴らよ、よく見ろ!」
+“You foolish lot, take a good look!”
+
+@9837 Dark General · 暗黒大将軍
+> 「ハーッハッハッハッ!!」
+“Hahahahaha!!”
+
+@9838 Dark General · 暗黒大将軍
+> 「ハーッハッハッハッ、いいぞ!」
+“Hahahahaha, excellent!”
+
+@9839 Dark General · 暗黒大将軍
+> 「ハハハッ、バカめ!」
+“Hahaha, you fool!”
+
+@9840 Dark General · 暗黒大将軍
+> 「もうよい、力のあるのはわかった」
+“Enough, I've seen your strength.”
+
+@9841 Dark General · 暗黒大将軍
+> 「ハーッハッハッハッ、いいぞ!」
+“Hahahahaha, excellent!”
+
+@9842 Dark General · 暗黒大将軍
+> 「なに? それは残念だな」
+“What? That's a shame.”
+
+@9843 Dark General · 暗黒大将軍
+> 「な、なんだと!? ばかもの!」
+“W-what did you say?! You idiot!”
+
+@9844 Dark General · 暗黒大将軍
+> 「おのれえぇ!」
+“Curse you!”

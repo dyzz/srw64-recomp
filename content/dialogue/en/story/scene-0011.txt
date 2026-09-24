@@ -1,0 +1,1251 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18545 Anna · アンナ
+> 「アフターコロニー195年。
+>  かつてここは地球でもっとも栄え
+“After Colony 195. This was once one of the most prosperous
+---
+>  もっとも自由に満ちていた
+>  都市の一つでした
+and most free cities on Earth.
+---
+>  今は、暗やみと恐怖の支配する
+>  名を禁じられた
+Now it is a town of the Muge Zorbados Empire, ruled by darkness and fear,
+---
+>  ムゲゾルバドス帝国の町。それでも
+>  いつかきっとくる自由の光を待って
+its very name forbidden. Yet everyone here holds their breath,
+---
+>  町の誰もが、息を潜めている。
+>  私の名は、アンナ・ステファニー」
+waiting for the light of freedom that will surely come one day. My name is Anna Stephanie.”
+
+@18546 David · デビッド
+> 「なんだアンナ、
+>  また日記を録音してたのか
+“What's this, Anna, recording your diary again?
+---
+>  もうすぐ出発だぞ」
+We're leaving soon.”
+
+@18547 Anna · アンナ
+> 「デビッド……
+>  本当にこの町を出て行くの?」
+“David... are you really leaving this town?”
+
+@18548 David · デビッド
+> 「ここは奴らのおひざ元だ。捕まらない
+>  程度にちまちまやっているだけじゃ
+“This place is right under their noses. Poking at them bit by bit so we don't get caught
+---
+>  ラチがあかねぇ。ここを離れて、もっと
+>  大規模に抵抗運動を
+gets us nowhere. We're leaving here to carry on the resistance
+---
+>  やろうっていうんだ。
+>  悪い話じゃないだろう」
+on a much bigger scale. Not a bad deal, is it?”
+
+@18549 Anna · アンナ
+> 「でも……」
+“But...”
+
+@18550 David · デビッド
+> 「アンナの言いたいことはわかるが、
+>  置いていくわけにはいかないぜ
+“I know what you want to say, Anna, but I can't leave you behind.
+---
+>  ここにいれば銃を持っていなく
+>  たって捕まっちまうんだ
+If you stay here, you'll get caught even without a gun in your hands.
+---
+>  もう仲間たちも出発を待ってる。
+>  いこうぜ」
+The others are already waiting to go. Let's move.”
+
+@18551 Grados Soldier · グラドス兵
+> 「そこのお前たち、動くな!」
+“You there, don't move!”
+
+@18552 David · デビッド
+> 「ちっ!」
+“Tch!”
+
+@18553 Grados Soldier · グラドス兵
+> 「ムダだ。お前たちは包囲されている」
+“It's useless. You're surrounded.”
+
+@18554 David · デビッド
+> 「くそぉ……」
+“Damn it...”
+
+@18555 Roanne · ロアン
+> 「おとなしくした方がいいですよ。
+>  無理をしてむざむざ命を
+“You'd best do as they say. There's no need to throw your lives away
+---
+>  捨てることも、ないでしょう」
+for nothing.”
+
+@18556 David · デビッド
+> 「ッ!! 貴様……
+>  噂は本当だったのか!?」
+“Hngh!! You... so the rumors were true?!”
+
+@18557 Anna · アンナ
+> 「どういうこと!?
+>  ロアン、説明して!
+“What does that mean?! Roanne, explain yourself!
+---
+>  私には信じられない」
+I can't believe this.”
+
+@18558 Roanne · ロアン
+> 「僕の方こそ驚きましたよ。2人
+>  そろって、こんなことをしているなんてね」
+“I'm the one who's surprised. The two of you, doing something like this together.”
+
+@18559 David · デビッド
+> 「売ったのは貴様か!
+>  このクソヤロウがっ!!」
+“You're the one who sold us out?! You bastard!!”
+
+@18560 Roanne · ロアン
+> 「君たちが見ているとおり
+>  僕は裏切り者
+“As you can see, I'm a traitor.
+---
+>  いまさら何をいわれても、こたえませんよ」
+Nothing you say now will make any difference to me.”
+
+@18561 Anna · アンナ
+> 「どうしてなの!?
+>  どうしてあなたが帝国の側に!?」
+“Why?! Why would you side with the Empire?!”
+
+@18562 Roanne · ロアン
+> 「つまらない地球人の誇りなどすてて
+>  帝国の支配を受け入れれば
+“Just throw away your worthless Earthling pride and accept the Empire's rule.
+---
+>  いいのです。そうすればそれなりに
+>  平和に生活していけます
+Do that, and you can live in a reasonable amount of peace.
+---
+>  君たちも僕を見習って
+>  そうしたらどうです」
+Why don't you two follow my example?”
+
+@18563 Anna · アンナ
+> 「えぇっ!? ロアン、あなたって人は……」
+“What?! Roanne, you...”
+
+@18564 Grados Soldier · グラドス兵
+> 「なんだ! ゲリラか!?」
+“What's this?! Guerrillas?!”
+
+@18565 Roux · ルー
+> 「あんたたち、早く逃げるのよ!」
+“You two, hurry up and run!”
+
+@18566 David · デビッド
+> 「ありがてぇ、助かったぜ!」
+“Thanks, you saved us!”
+
+@18567 Roux · ルー
+> 「そんなことはいいから、
+>  例の場所へ急いで!」
+“Never mind that, hurry to the usual place!”
+
+@18568 David · デビッド
+> 「ああっ。アンナ、走れ!」
+“Right. Anna, run!”
+
+@18569 Anna · アンナ
+> 「え、ええ!」
+“R-right!”
+
+@18570 Aboly · アポリー
+> 「どうした?」
+“What's wrong?”
+
+@18571 Ark · アーク（按段落 3DD1）
+> 「いえ……
+>  このミデアって
+“Nothing... I was just thinking this Medea
+---
+>  ずいぶん、のりごこちが悪いんだなと
+>  思って」
+rides pretty rough.”
+
+@18572 Roberto · ロベルト
+> 「ハハハ、そりゃ当たり前だ
+“Hahaha, of course it does.
+---
+>  こいつは、ただのポンコツ輸送機
+>  だからな」
+This thing's just a beat-up old transport.”
+
+@18573 Aboly · アポリー
+> 「無理やり改装してあるだけ
+>  なんだ
+“It's been forcibly modified, that's all.
+---
+>  下を歩かなくていいぶんは、
+>  勘弁してもらわないとな」
+Just be glad you don't have to walk.”
+
+@18574 Ark · アーク（按段落 3DD1）
+> 「……どうなるんです、これから?」
+“...What's going to happen to us from here?”
+
+@18575 Aboly · アポリー
+> 「なんだ、いきなり」
+“What, all of a sudden?”
+
+@18576 Ark · アーク（按段落 3DD1）
+> 「だって、地球上はどこも帝国軍
+>  に支配されているっていうのに
+“I mean, the whole Earth is under the Empire's control,
+---
+>  いつまでもこんな戦い方ばかり
+>  してたら、そのうち……」
+and if we keep fighting like this forever, sooner or later...”
+
+@18577 Aboly · アポリー
+> 「まぁ、大規模で組織的な
+>  抵抗運動は、始まったばかり
+“Well, large-scale organized resistance has only just begun.
+---
+>  だからな。ただ世界中で結構
+>  そういう動きってのは、活発になって
+But movements like that are getting more active all over the world.
+---
+>  きているんだ。俺たちはこれからどんどん
+>  そういうのを、増やそうとしてるんだよ
+We're going to keep increasing them, one after another.
+---
+>  そうなれば戦力も増えるし、
+>  もっとましな状態になるさ」
+Once that happens, our forces will grow too, and things'll get better.”
+
+@18578 Ark · アーク（按段落 3DD1）
+> 「…………」
+“...”
+
+@18579 Aboly · アポリー
+> 「あまり考えすぎるなよ。今お前が
+>  するべきなのは、自分の機体を
+“Don't overthink it. What you need to do right now is get your machine
+---
+>  ちゃんと整備して、1回ごとの戦い
+>  に、しっかり生き残ることなんだからな」
+properly maintained and survive each battle, one at a time.”
+
+@18580 Bright · ブライト
+> 「さすがにかなり状況は
+>  かわってきているな」
+“The situation really has changed quite a bit.”
+
+@18581 Quattro · クワトロ
+> 「ああ、帝国軍も本格的に
+>  レジスタンスへの対応に
+“Yes, the Imperial forces are now seriously moving to deal with
+---
+>  乗り出して来ている。
+>  スペシャルズの動きも
+the resistance. The Specials' movements are
+---
+>  気になるところだが……
+>  どうした、{HeroName}」
+a concern too... What is it, {HeroName}?”
+
+@18582 Selain · セレイン（按段落 3DD2）
+> 「我々は、勝てるのでしょうか?」
+“Can we really win?”
+
+@18583 Quattro · クワトロ
+> 「らしくないな。君はこれまでずっと
+>  帝国軍と、戦ってきたのだと
+“That's not like you. I thought you'd been fighting the Imperial forces
+---
+>  思ったが」
+all this time.”
+
+@18584 Selain · セレイン（按段落 3DD2）
+> 「中佐のいったように
+>  状況がかわっています
+“As you said, Lieutenant Colonel, the situation is changing.
+---
+>  私は限定された地域内で、
+>  帝国軍の末端の
+I was only fighting the Empire's low-level
+---
+>  ゲリラ狩り部隊と戦っていた
+>  だけですから
+guerrilla-hunting units within a limited area.
+---
+>  それも、ただその場その時に
+>  小競り合いをしていただけで
+And even then, it was just skirmishes here and there.
+---
+>  みな帝国の支配を
+>  受け入れるのがいやだから
+Everyone was fighting simply because they didn't want
+---
+>  戦っていたにすぎません。
+>  誰も本気で今の地球から
+to accept the Empire's rule. No one truly believed
+---
+>  帝国を排除できるとは
+>  考えていませんでした
+we could drive the Empire from Earth as things stood.
+---
+>  地球解放戦線機構は、
+>  帝国と真正面から戦うつもり
+Does the Liberation Front of the Earth intend to fight the Empire
+---
+>  なのではないのですか」
+head-on?”
+
+@18585 Quattro · クワトロ
+> 「無茶をいう。しかし、
+>  我々が戦うことで
+“That's asking too much. But if our fighting
+---
+>  潜在的な戦力が
+>  増加してくるのであれば
+increases the pool of potential fighting strength,
+---
+>  ある程度の対応はできる。
+>  我々もカラバも、独自に兵器を
+then we can respond to some extent. Both we and Karaba
+---
+>  開発できるようになってきてもいる。
+>  が、君の最初の質問に対しての
+are becoming able to develop our own weapons. But to your first question,
+---
+>  回答は、今の私にはできん」
+I can't give you an answer right now.”
+
+@18586 Selain · セレイン（按段落 3DD2）
+> 「でも、いつか力尽きて倒れることに
+>  なるとは、思っていないのですね」
+“But you don't think we'll eventually run out of strength and fall, do you?”
+
+@18587 Bright · ブライト
+> 「これ以上時が過ぎるのを
+>  見ていたら
+“If we just watched more time pass,
+---
+>  地球圏を地球人の手に
+>  戻すことは、かなわなくなる
+returning the Earth Sphere to human hands would become impossible.
+---
+>  そういう危機感があったからこそ、
+>  我々のような敗残兵が
+It's precisely because of that sense of crisis that remnants like us
+---
+>  いまさらのように戦っている。勝てるか
+>  と聞かれれば、答えようがないが、
+are fighting again after all this time. If you ask whether we can win, I can't answer,
+---
+>  勝算がまるでないわけでもないと、
+>  我々は考えている」
+but we believe it's not as if we have no chance at all.”
+
+@18588 Selain · セレイン（按段落 3DD2）
+> 「ではロームフェラについては?
+>  彼らは地球人でありながら
+“Then what about Romefeller? They're Earthlings, yet
+---
+>  昔とそれほど変わることのない
+>  生活をしています
+they live much as they always have.
+---
+>  帝国の支配下であっても、
+>  いずれ地球人による自治は
+Even under the Empire's rule, some say Earthling self-rule
+---
+>  可能となるという見方も
+>  あるのでは?」
+could eventually become possible, don't they?”
+
+@18589 Quattro · クワトロ
+> 「どちらにしても、このままでは
+>  地球そのものがもたなくなる」
+“Either way, at this rate the Earth itself won't last.”
+
+@18590 Selain · セレイン（按段落 3DD2）
+> 「地球が……ですか?」
+“The Earth...?”
+
+@18591 Quattro · クワトロ
+> 「そうだ。重要なことだ」
+“That's right. It's important.”
+
+@18592 Guerrilla · ゲリラ
+> 「小隊長……小隊長!!」
+“Commander... Commander!!”
+
+@18593 Shiro · シロー
+> 「あ……なんだ?」
+“Ah... what is it?”
+
+@18594 Guerrilla · ゲリラ
+> 「まぁたその時計ですか。女ものじゃな
+>  いんですかい、それ。恋人のやつとか?」
+“That watch again, huh. Isn't that a woman's, though? Your girlfriend's or something?”
+
+@18595 Shiro · シロー
+> 「そんなんじゃない。で、なんだ?」
+“It's nothing like that. So, what is it?”
+
+@18596 Guerrilla · ゲリラ
+> 「ここに潜伏してもう1週間ですぜ。
+>  本当に奴は来るんですか?」
+“We've been lying low here a whole week now. Is he really coming?”
+
+@18597 Shiro · シロー
+> 「来る。ここが奴のテスト飛行の
+>  ルートなのは、確実なんだ」
+“He's coming. It's certain this is the route for his test flight.”
+
+@18598 Guerrilla · ゲリラ
+> 「かもしれませんけど、また来るっていう
+>  保証は……」
+“Maybe so, but there's no guarantee he'll come again...”
+
+@18599 Shiro · シロー
+> 「!? 静かにしろ!」
+“?! Quiet!”
+
+@18600 Guerrilla · ゲリラ
+> 「ビンゴだ。本当に来やがった。
+>  やるかい、小隊長」
+“Bingo. He really came. Shall we do it, Commander?”
+
+@18601 Shiro · シロー
+> 「まだだ、十分引きつけてからだ!」
+“Not yet, let him get in close enough first!”
+
+@18602 Aina · アイナ
+> 「…………」
+“...”
+
+@18603 Specials · スペシャルズ
+> 「なんだ、待ち伏せか!?」 
+“What, an ambush?!”
+
+@18604 Shiro · シロー
+> 「よぉし、正面ポイントデルタより、
+>  集中攻撃かける!」
+“All right, concentrated attack from front point delta!”
+
+@18605 Shiro · シロー
+> 「……だめか!?」
+“...No good?!”
+
+@18606 Guerrilla · ゲリラ
+> 「小隊長、こいつはヤバイ!
+>  引き上げよう!」
+“Commander, this is bad! Let's pull back!”
+
+@18607 Shiro · シロー
+> 「もう遅い!」
+“Too late!”
+
+@18608 Guerrilla · ゲリラ
+> 「うわあぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@18609 Shiro · シロー
+> 「くっそぉぉーっ!!」
+“Damn iiiit!!”
+
+@18610 Aina · アイナ
+> 「離れなさい! 死にたいのですか!?」
+“Get away! Do you want to die?!”
+
+@18611 Shiro · シロー
+> 「……その声は……まさか……」
+“...That voice... it can't be...”
+
+@18612 Aina · アイナ
+> 「……!?」
+“...?!”
+
+@18613 Shiro · シロー
+> 「そんな……この化け物のパイロットが…
+>  …アイナ……?」
+“No... the pilot of this monster is... Aina...?”
+
+@18614 Shiro · シロー
+> 「アイナ、アイナ・サハリン!
+>  聞こえるか!?
+“Aina, Aina Sakhalin! Can you hear me?!
+---
+>  アイナなんだろ!? 応えてくれ!!」
+It's you, Aina, isn't it?! Answer me!!”
+
+@18615 Aina · アイナ
+> 「…………」
+“...”
+
+@18616 Shiro · シロー
+> 「覚えていないか!? 俺だ、
+>  シロー・アマダ! 生きているんなら
+“Don't you remember?! It's me, Shiro Amada! If you're alive,
+---
+>  返事をしてくれ!!」
+answer me!!”
+
+@18617 Aina · アイナ
+> 「本当に……本当に
+>  シロー・アマダ……?」
+“Really... it really is Shiro Amada...?”
+
+@18618 Shiro · シロー
+> 「覚えていてくれたか。無事でよかった
+>  また会えるなんて、思わなかった」
+“You remembered me. I'm glad you're safe. I never thought we'd meet again.”
+
+@18619 Aina · アイナ
+> 「私も……あっ!」
+“Me neither... ah!”
+
+@18620 Shiro · シロー
+> 「どうしたアイナ!?」
+“What's wrong, Aina?!”
+
+@18621 Aina · アイナ
+> 「くっ、機体の安定を保てない……」
+“Ngh, I can't keep the machine stable...”
+
+@18622 Aina · アイナ
+> 「別の部隊が接近中……?」
+“Another unit is approaching...?”
+
+@18623 Shiro · シロー
+> 「アイナ!?」
+“Aina?!”
+
+@18624 Aina · アイナ
+> 「シロー……離れてください」
+“Shiro... get away from me.”
+
+@18625 Shiro · シロー
+> 「アイナ? ……待ってくれアイナ!!」
+“Aina? ...Wait, Aina!!”
+
+@18626 Shiro · シロー
+> 「アイナッ!!」
+“Aina!!”
+
+@18627 Shiro · シロー
+> 「くっ、オーバーヒート!? くそっ、
+>  こんなときに! アイナァァァーッ!!」
+“Ngh, overheating?! Damn it, not now! Ainaaaaa!!”
+
+@18628 Shiro · シロー
+> 「うわあぁぁぁぁぁーっ!!」
+“Uwaaaaaaaaah!!”
+
+@18629 Shiro · シロー
+> 「くそ……こんな時に故障だなんて……
+>  アイナ……」
+“Damn... breaking down at a time like this... Aina...”
+
+@18630 Shiro · シロー
+> 「あの化け物のパイロットが、アイナ
+>  だったなんて……。くそ、こいつも
+“To think the pilot of that monster was Aina... Damn, this thing won't
+---
+>  動かないか……」
+move either...”
+
+@18631 Shiro · シロー
+> 「……だめかぁ。やっぱり修理は
+>  ムリか……くそっ」
+“...No good, huh. So it really can't be repaired... damn.”
+
+@18632 Shiro · シロー
+> 「……なんだ?」
+“...What is it?”
+
+@18633 David · デビッド
+> 「みんな急げ、おいつかれるぞ!」
+“Everyone, hurry! They'll catch up!”
+
+@18634 Gosterro · ゴステロ
+> 「ふん、サルどもが
+“Hmph, you monkeys
+---
+>  逃げられるとでも思っていやがるのか?
+think you can get away?
+---
+>  ええ、お笑いだなぁ」
+Ha, how laughable.”
+
+@18635 David · デビッド
+> 「ジョージ!? マイケルッ!
+>  ジェイムズーッ!
+“George?! Michael! James!
+---
+>  くそっ……ちくしょうっ!!」
+Damn it... damn it!!”
+
+@18636 Gosterro · ゴステロ
+> 「ひゃーっははははっ、たまらないなぁ
+>  人殺しというのはぁっ!」
+“Hyahahahaha, killing people is just irresistible!”
+
+@18637 Roux · ルー
+> 「くっ、まいったわね
+“Ngh, this is bad.
+---
+>  これほどしつこく追撃隊まで
+>  出してくるなんて、予想外だわ」
+Sending out a pursuit squad this persistent is beyond anything I expected.”
+
+@18638 David · デビッド
+> 「ロアンのやつめ……
+“That Roanne...
+---
+>  どうするんだよ、仲間もほとんど
+>  やられちまったぞ!」
+What are we supposed to do? Most of our comrades are down!”
+
+@18639 Roux · ルー
+> 「どうするったって……
+>  とにかく逃げ切るしかないでしょ!」
+“What are we supposed to do? We just have to run for it, that's all!”
+
+@18640 Anna · アンナ
+> 「デビッド……」
+“David...”
+
+@18641 David · デビッド
+> 「アンナ、しっかりつかまってろ!」
+“Anna, hold on tight!”
+
+@18642 Gosterro · ゴステロ
+> 「逃げろ逃げろ。ひーっひっひっひ。
+>  残りはじわじわと殺してやる」
+“Run, run. Heeheeheehee. I'll kill the rest of you slowly.”
+
+@18643 Gosterro · ゴステロ
+> 「さぁて、そろそろサルどもの狩りを
+>  再開するとしようか」
+“Now then, it's about time we resumed the monkey hunt.”
+
+@18644 David · デビッド
+> 「くそっ、やつめ
+“Damn it, that bastard
+---
+>  俺たちを、なぶり殺しにして
+>  楽しんでやがる!」
+is enjoying toying us to death!”
+
+@18645 Gosterro · ゴステロ
+> 「なにぃ、増援だとぉ!?
+>  サルのくせに、なめたまねしやがって
+“What, reinforcements?! You monkeys, pulling such a cheeky stunt.
+---
+>  しかたがねぇ、お前ら、
+>  全員迎撃しろ!」
+Can't be helped. All of you, intercept them!”
+
+@18646 Quattro · クワトロ
+> 「遅かったか。せめて、あの2機だけでも
+>  救助せねばな。全機、続け!」
+“We're too late, then. At least we must save those two. All units, follow me!”
+
+@18647 Roux · ルー
+> 「きゃーっ、やったぁ!
+>  あれ、解放戦線よ
+“Kyaa, we did it! That's the Liberation Front—
+---
+>  迎えに来てくれたんだわ!」
+they came to rescue us!”
+
+@18648 Anna · アンナ
+> 「デビッド見て!
+>  あれはレイズナーよ!」
+“David, look! That's the Layzner!”
+
+@18649 David · デビッド
+> 「レイズナー!?
+>  まさかエイジだってのか!?」
+“The Layzner?! You mean that's Eiji?!”
+
+@18650 Anna · アンナ
+> 「間違いないわ! きっとそうよ!」
+“No doubt about it! It has to be him!”
+
+@18651 Shiro · シロー
+> 「あれは……確か新型のシュツルム
+>  ディアスだ。ブライト中佐の部隊に
+“That's... a new-model Sturm Dias, if I'm right. It's only supposed to be
+---
+>  しか、まわされていないはずだ……」
+assigned to Lieutenant Colonel Bright's unit...”
+
+@18652 David · デビッド
+> 「エイジ、おいエイジ!
+“Eiji, hey Eiji!
+---
+>  レイズナーに乗ってるのは
+>  エイジなんだろ!?
+The one piloting the Layzner is you, Eiji, isn't it?!
+---
+>  俺だ、デビッドだ!」
+It's me, David!”
+
+@18653 Eiji · エイジ
+> 「デビッド!?
+>  本当に君なのか?」
+“David?! Is it really you?”
+
+@18654 David · デビッド
+> 「やっぱりエイジだ!
+>  俺だけじゃない、アンナもいるぜ!」
+“It really is you, Eiji! And it's not just me—Anna's here too!”
+
+@18655 Eiji · エイジ
+> 「アンナまで?」
+“Anna too?”
+
+@18656 Anna · アンナ
+> 「エイジ……本当に……
+>  本当にエイジなのね!?」
+“Eiji... it really... it really is you, Eiji?!”
+
+@18657 Eiji · エイジ
+> 「ああ、本当だ
+“Yeah, it's really me.
+---
+>  アンナ……久しぶりだね。
+>  元気そうでよかった」
+Anna... it's been a while. I'm glad you're doing well.”
+
+@18658 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@18659 Aboly · アポリー
+> 「おしゃべりはその辺でやめにしろ!
+“That's enough chatting!
+---
+>  そこの2機、
+>  我々の指揮下に入れ
+You two machines there, place yourselves under our command.
+---
+>  追撃隊を片付けるぞ」
+We're wiping out the pursuit squad.”
+
+@18660 Roux · ルー
+> 「了解!」
+“Roger!”
+
+@18661 David · デビッド
+> 「了解したっ!
+“Understood!
+---
+>  野郎、仲間の仇は
+>  うたせてもらうぜ!」
+You bastards, I'm going to make you pay for my comrades!”
+
+@18662 Gosterro · ゴステロ
+> 「なにぃ!? ゲイル、
+>  貴様、何しにきやがった!」
+“What?! Gale, you bastard, what did you come here for?!”
+
+@18663 Gale · ゲイル
+> 「ゴステロ中尉、現状には
+>  ふさわしくない言葉だな
+“Lieutenant Gosterro, those are hardly fitting words for the situation.
+---
+>  レジスタンス追撃にこれほど
+>  時間がかかった理由は
+The reason it took so long to pursue the Resistance—
+---
+>  後で追及させてもらうとしよう」
+I'll have you answer for that later.”
+
+@18664 Gosterro · ゴステロ
+> (くそーっ。ゲイルの野郎、
+>  ふざけやがってっ!)
+(Damn it! That bastard Gale, making a fool of me!)
+
+@18665 Karla · カルラ
+# 检查提示：未用必用译名：ゲイル隊→Gale Team
+> 「ゲイル隊長、
+>  ゴステロ中尉はいないようです」
+“Captain Gale, Lieutenant Gosterro doesn't seem to be here.”
+
+@18666 Gale · ゲイル
+> 「そうだな。
+>  また悪いクセが出たか……」
+“I see. His bad habit's acting up again, has it...”
+
+@18667 Eiji · エイジ
+> 「ゲイル先輩か……」
+“Senior Gale, huh...”
+
+@18668 Gale · ゲイル
+> 「エイジ……
+>  今度は本気でいかせてもらうぞ」
+“Eiji... this time I'm coming at you for real.”
+
+@18669 Gale · ゲイル
+> 「エイジはいないか……」
+“Is Eiji not here...”
+
+@18670 Eiji · エイジ
+> 「ゴステロっ!
+>  貴様は遊びで人をっ!」
+“Gosterro! You toy with people's lives for fun!”
+
+@18671 Gosterro · ゴステロ
+> 「裏切り者のこぞうが!
+>  演説はいい!
+“You traitorous little brat! Save your speeches!
+---
+>  俺はゲイルと違って
+>  話しあいなどせん!」
+Unlike Gale, I don't settle things by talking!”
+
+@18672 Gosterro · ゴステロ
+> 「こぞう、たっぷりとかわいがってやる!」
+“Little brat, I'm going to give you a proper thrashing!”
+
+@18673 Eiji · エイジ
+> 「ゴステロッ!」
+“Gosterro!”
+
+@18674 Gale · ゲイル
+> 「エイジ……容赦はせんぞ」
+“Eiji... I won't hold back.”
+
+@18675 Eiji · エイジ
+> 「ゲイル先輩、俺もここで
+>  やられるわけにはいかないんです!」
+“Senior Gale, I can't afford to be beaten here either!”
+
+@18676 Gale · ゲイル
+> 「ならば、その覚悟を
+>  見せてみろ、エイジ!」
+“Then show me that resolve, Eiji!”
+
+@18677 Gosterro · ゴステロ
+> 「なにぃ!? ゲイル、
+>  貴様、何しにきやがった!」
+“What?! Gale, you bastard, what did you come here for?!”
+
+@18678 Gale · ゲイル
+> 「ゴステロ中尉、現状には
+>  ふさわしくない言葉だな
+“Lieutenant Gosterro, those are hardly fitting words for the situation.
+---
+>  レジスタンス追撃にこれほど
+>  時間がかかった理由は
+The reason it took so long to pursue the Resistance—
+---
+>  後で追及させてもらうとしよう」
+I'll have you answer for that later.”
+
+@18679 Gosterro · ゴステロ
+> (くそーっ。ゲイルの野郎、
+>  ふざけやがってっ!)
+(Damn it! That bastard Gale, making a fool of me!)
+
+@18680 Karla · カルラ
+# 检查提示：未用必用译名：ゲイル隊→Gale Team
+> 「ゲイル隊長、
+>  ゴステロ中尉はいないようです」
+“Captain Gale, Lieutenant Gosterro doesn't seem to be here.”
+
+@18681 Gale · ゲイル
+> 「そうだな。
+>  また悪いクセが出たか……」
+“I see. His bad habit's acting up again, has it...”
+
+@18682 Eiji · エイジ
+> 「ゲイル先輩か……」
+“Senior Gale, huh...”
+
+@18683 Gale · ゲイル
+> 「エイジ……
+>  今度は本気でいかせてもらうぞ」
+“Eiji... this time I'm coming at you for real.”
+
+@18684 Gale · ゲイル
+> 「エイジはいないか……」
+“Is Eiji not here...”
+
+@18685 David · デビッド
+> 「エイジ!」
+“Eiji!”
+
+@18686 Eiji · エイジ
+> 「デビッド!」
+“David!”
+
+@18687 David · デビッド
+# 审校：“this three years”语法错误，改为“these last three years”，更自然。
+> 「あっははははははっ。貴様ぁ、
+>  どこへいってたんだ、この3年」
+“Ah ha ha ha ha ha! You bastard, where the hell have you been these last three years?”
+
+@18688 Eiji · エイジ
+> 「会いたかったよ。
+>  きっと、会えると思っていた」
+“I wanted to see you. I knew we'd meet again.”
+
+@18689 David · デビッド
+> 「こいつぅ。ははははははっ
+“You little... ha ha ha ha ha ha!
+---
+>  アンナ、こっちにこいよ。
+>  本物のエイジだぜ!」
+Anna, come over here. It's the real Eiji!”
+
+@18690 Eiji · エイジ
+> 「アンナ……」
+“Anna...”
+
+@18691 Anna · アンナ
+> 「……エイジ……エイジっ!」
+“...Eiji... Eiji!”
+
+@18692 Anna · アンナ
+> 「エイジ……会いたかった……」
+“Eiji... I wanted to see you...”
+
+@18693 Eiji · エイジ
+> 「……すまない。ずいぶん長い間
+>  連絡もできずに……」
+“...I'm sorry. I couldn't even get in touch for so long...”
+
+@18694 Anna · アンナ
+> 「いいの……もう、いいの」
+“It's all right... it's all right now.”
+
+@18695 Ark · アーク（按段落 3DD1）
+> 「…………」
+“...”
+
+@18696 Aboly · アポリー
+> 「ん? どうしたんだ、あいつ」
+“Hm? What's with him?”
+
+@18697 Roberto · ロベルト
+> 「さあ?」
+“Beats me.”
+
+@18698 Aboly · アポリー
+# 审校：原文“お前たち”指艾吉和安娜两人，初稿“you two”正确，但第二页“and fast”前逗号使语气略碎，改为更顺口的断句。
+> 「お前たち、
+>  感動のご対面中に悪いが
+“Sorry to interrupt your touching reunion,
+---
+>  とっとと、ここから逃げるぞ」
+but we're getting out of here, and fast.”
+
+@18699 Eiji · エイジ
+> 「あ、ああ、すまない」
+“Ah, yeah, sorry.”
+
+@18700 Selain · セレイン（按段落 3DD2）
+> 「すまないが、
+>  すぐに移動しなければならない
+“Sorry, but we have to move out immediately.
+---
+>  続きは、あとでやってもらいたい」
+You can continue this later.”
+
+@18701 Eiji · エイジ
+> 「あ、ああ、すまない」
+“Ah, yeah, sorry.”
+
+@18702 David · デビッド
+# 审校：“Quite the unfriendly woman”偏书面，改为更口语的“She's a cold one”，符合大卫随性语气。
+> 「なんだ、
+>  ずいぶん無愛想な女だな」
+“What's with her? She's a cold one.”
+
+@18703 Selain · セレイン（按段落 3DD2）
+# 审校：“simply”略生硬，改为“just”，更符合赛莱因简洁冷淡的口吻。
+> 「愛想よくする理由が
+>  思いつかないだけだ。急いでくれ」
+“I just can't think of a reason to be friendly. Hurry it up.”
+
+@18704 Shiro · シロー
+> 「気づいてくれよ……」
+“Please notice me...”
+
+@18705 Aboly · アポリー
+> 「ん? ……大尉、解放戦線の
+>  発光信号です」
+“Hm? ...Captain, it's a light signal from the Liberation Front.”
+
+@18706 Quattro · クワトロ
+> 「こんなところでか。間違いないのか?
+>  場所は?」
+“Here, of all places? You're sure? Where?”
+
+@18707 Aboly · アポリー
+> 「あそこの森の中ほどですね」
+“About halfway into that forest over there.”
+
+@18708 Quattro · クワトロ
+> 「ふむ……中佐、確認してくるが」
+“Hmm... Lieutenant Colonel, I'll go confirm it.”
+
+@18709 Bright · ブライト
+> 「ああ、そうしてくれ。アポリー、ロベルト、
+>  周囲の警戒を怠るな」
+“Yes, go ahead. Aboly, Roberto, stay alert all around us.”
+
+@18710 Roberto · ロベルト
+> 「了解」
+“Understood.”
+
+@18711 Shiro · シロー
+> 「くる……? 気づいてくれたか」
+“They're coming...? Did they notice me?”
+
+@18712 Quattro · クワトロ
+> 「ほう……陸戦型のガンダムか。
+>  ずいぶんとくたびれているな
+“Oh... a ground-combat Gundam. It's seen quite a lot of wear.
+---
+>  そこのパイロット、解放戦線の
+>  者か?」
+You there, pilot. Are you with the Liberation Front?”
+
+@18713 Shiro · シロー
+> 「シロー・アマダ少尉であります。
+>  お手数をおかけして
+“Ensign Shiro Amada, sir. I'm sorry to have put you to
+---
+>  申しわけありません」
+so much trouble.”
+
+@18714 Quattro · クワトロ
+> 「かまわんよ。他にもまだいるのか?」
+“It's no trouble. Are there others with you?”
+
+@18715 Shiro · シロー
+> 「いえ、自分だけです。あとは……
+>  やられてしまいました」
+“No, just me. The rest... they were killed.”
+
+@18716 Quattro · クワトロ
+> 「……そうか。そのガンダムは動けない
+>  ようだな?」
+“...I see. That Gundam doesn't look like it can move.”
+
+@18717 Shiro · シロー
+> 「はい。焼き切れた電装部品の
+>  スペアを持ってきておりませんでしたので」
+“No, sir. I didn't bring spare parts for the burnt-out electronics.”
+
+@18718 Quattro · クワトロ
+> 「わかった。
+>  我々のミデアへ運びこむが、いいか?」
+“Understood. We'll load it onto our Medea. All right?”
+
+@18719 Shiro · シロー
+> 「おまかせします」
+“I'll leave it to you.”
+
+@18720 Bright · ブライト
+> 「ふむ……テスト中のモビルアーマーか。
+>  データはとっているのか?」
+“Hmm... a Mobile Armor still under testing. Have you collected the data?”
+
+@18721 Shiro · シロー
+> 「はい。いまコピーしてもらっています」
+“Yes. They're copying it for me right now.”
+
+@18722 Bright · ブライト
+> 「機体のほうは、今すぐに動くよう
+>  にはできんらしい。多少時間が
+“Apparently the unit can't be made to move right away. It'll take some time,
+---
+>  かかるが、我々もいつまでもここにいる
+>  わけにもいかん。同行してくれたほうが
+but we can't stay here forever either. It'd be easier if you came along with us.
+---
+>  楽なのだが、どうする?」
+What do you say?”
+
+@18723 Shiro · シロー
+> 「よろしいのですか?」
+“Are you sure that's all right?”
+
+@18724 Quattro · クワトロ
+> 「どのみち、戦力を集めているところ
+>  だった。ここへ来たのも、そのためでな
+“We were gathering forces anyway. That's why we came here.
+---
+>  君がその気ならば、准将のほうへは
+>  話をしておく
+If you're willing, I'll speak to the Brigadier General about it.
+---
+>  ここに残りたいというのなら、
+>  別だが……」
+If you'd rather stay here, that's another matter...”
+
+@18725 Shiro · シロー
+> 「いえ、お願いします、大尉」
+“No, please, Captain.”
+
+@18726 Bright · ブライト
+> 「なるほど、情勢はかなり厳しいという
+>  ことか。アマダ少尉も同様のことを
+“I see, so the situation is quite grim. Ensign Amada said
+---
+>  いっていたな」
+the same thing.”
+
+@18727 Roux · ルー
+> 「はい。申しわけありません。結局、
+>  みな、ここまでたどり着けませんでした」
+“Yes. I'm sorry. In the end, none of the others made it this far.”
+
+@18728 Quattro · クワトロ
+> 「気にすることはない。君とデビッドくん
+>  を拾えただけでも、十分に
+“Don't worry about it. Just picking up you and David
+---
+>  意味はあった。それに、偶然とは
+>  いえ、アマダ少尉も救助できた」
+was meaningful enough. And even if it was by chance, we were able to rescue Ensign Amada too.”
+
+@18729 Roux · ルー
+> 「ありがとうございます」
+“Thank you.”
+
+@18730 Roux · ルー
+> 「へぇ、じゃ、あなたたちは、あの
+>  最初に帝国軍に襲われた
+“Wow, so you're survivors from Mars, the place the Imperial army
+---
+>  火星の生き残りなんだ?」
+attacked first?”
+
+@18731 David · デビッド
+> 「そうさ。エイジがいなけりゃ
+>  火星で、なくしてた命だ
+“That's right. If it weren't for Eiji, we'd have lost our lives on Mars.
+---
+>  だから俺たちは、あの時の
+>  エイジの志をムダにしないために
+So we've kept up the resistance for three years, so that Eiji's resolve
+---
+>  3年間抵抗を続けてきたんだ」
+back then won't go to waste.”
+
+@18732 Aboly · アポリー
+> 「エイジはあのSPTに乗ってたんだろ?
+>  よく信じる気になったな」
+“Eiji was piloting that SPT, right? I'm surprised you came to trust him.”
+
+@18733 David · デビッド
+> 「最初は、俺たちも
+>  信用しなかったんですけどね
+“At first, we didn't trust him either.
+---
+>  ま、いろいろあったわけで」
+Well, a lot happened along the way.”
+
+@18734 Anna · アンナ
+> 「最初はデビッドが一番
+>  エイジを嫌ってたのよね」
+“At first, David was the one who hated Eiji the most.”
+
+@18735 David · デビッド
+> 「アンナは最初っからエイジを
+>  好きだったんだよな」
+“And Anna liked Eiji from the very start.”
+
+@18736 Anna · アンナ
+> 「そんな、私は、ただ……」
+“That's not... I just...”
+
+@18737 Roux · ルー
+> 「ただ、なによ?」
+“Just what?”
+
+@18738 Anna · アンナ
+> 「……この人は信じられる、
+>  信じなきゃって……そう思ったの」
+“...I thought I could trust this person. That I had to trust him.”
+
+@18739 Roux · ルー
+> 「はいはい」
+“Yeah, yeah.”
+
+@18740 Bright · ブライト
+> 「大尉、ちょっといいか?」
+“Captain, do you have a moment?”
+
+@18741 Quattro · クワトロ
+> 「ああ、ブレックス准将はなんと?」
+“Yes. What did Brigadier General Blex say?”
+
+@18742 Bright · ブライト
+> 「それなんだが……
+“That's the thing...
+---
+>  大尉はコロニーのM作戦のことを
+>  聞いたことはあるか?」
+Captain, have you heard about the colonies' Operation M?”
+
+@18743 Quattro · クワトロ
+> 「流星に偽装した兵器を
+>  地球に落とすというあれか?
+“You mean dropping weapons disguised as meteors onto Earth?
+---
+>  スウィートウォーターで入手した
+>  情報だな」
+That's the intel we obtained at Sweetwater.”
+
+@18744 Bright · ブライト
+> 「そうだ。それがどうも実際に
+>  行われるらしい
+“Exactly. It seems they really are going to carry it out.
+---
+>  准将はそれを我々の側へ
+>  取り込みたがっている」
+The Brigadier General wants to bring it over to our side.”
+
+@18745 Quattro · クワトロ
+> 「やれやれ、ずいぶんと
+>  無理難題をおっしゃる
+“Good grief. He certainly doesn't ask for anything easy.
+---
+>  スペシャルズあたりに利用
+>  されたくないというのはわかるが」
+I understand not wanting the Specials to get their hands on it, but still.”
+
+@18746 Bright · ブライト
+> 「まだ我々の行動範囲内に
+>  来るかどうかはわからんがね
+“We don't even know yet whether it'll come within our operational range.
+---
+>  一応、準備だけは
+>  しておいてほしい
+Still, I'd like you to at least be prepared.
+---
+>  我々はとりあえず南方へ
+>  向けて移動する」
+For the time being, we'll head south.”
+
+@18747 Quattro · クワトロ
+> 「了解だ」
+“Understood.”

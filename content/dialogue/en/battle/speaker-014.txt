@@ -1,0 +1,105 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13029 Wong · ウォン
+> 「ふふふふふふ」
+“Fufufufufu.”
+
+@13030 Wong · ウォン
+> 「ははははははっ!」
+“Hahahahaha!”
+
+@13031 Wong · ウォン
+> 「ふはははははっ!」
+“Fuhahahaha!”
+
+@13032 Wong · ウォン
+> 「ふふふふふはっははははっ!」
+“Fufufufuhahahaha!”
+
+@13033 Wong · ウォン
+> 「そうだ、感じる、感じるぞ!」
+“Yes, I feel it, I feel it!”
+
+@13034 Wong · ウォン
+> 「落ちろ!」
+“Fall!”
+
+@13035 Wong · ウォン
+> 「殺してやる、殺してやるぞ!」
+“I'll kill you, I'll kill you!”
+
+@13036 Wong · ウォン
+> 「落ちろ! 落ちてくだけろぉぉぉ!」
+“Fall! Fall and be crushed!”
+
+@13037 Wong · ウォン
+> 「た、助けてくれぇ!」
+“H-help me!”
+
+@13038 Wong · ウォン
+> 「どうせお前たちは終わりだぁぁぁ!」
+“Either way, you're all finished!”
+
+@13039 Wong · ウォン
+> 「な、なんだと!?」
+“W-what did you say?!”
+
+@13040 Wong · ウォン
+> 「や、やめろぉぉぉ!」
+“S-stop it!”
+
+@13041 Wong · ウォン
+> 「うわぁぁぁぁぁ!」
+“Uwaaaaaaah!”
+
+@13042 Wong · ウォン
+> 「き、貴様ごときにぃっ!」
+“B-by the likes of you?!”
+
+@13043 Wong · ウォン
+> 「ああぁぁぁ!?」
+“Aaaaaah?!”
+
+@13044 Wong · ウォン
+> 「うわぁぁ!」
+“Uwaaaah!”
+
+@13045 Wong · ウォン
+> 「お、おのれぇ!」
+“Y-you bastard!”
+
+@13046 Wong · ウォン
+> 「その程度の攻撃などはっ!」
+“An attack like that is nothing!”
+
+@13047 Wong · ウォン
+> 「うるさい!」
+“Shut up!”
+
+@13048 Wong · ウォン
+> 「はははははは」
+“Hahahahaha.”
+
+@13049 Wong · ウォン
+> 「それがどうした」
+“So what?”
+
+@13050 Wong · ウォン
+> 「当たらんなぁ!」
+“Can't even hit me!”
+
+@13051 Wong · ウォン
+> 「ふははははははっ!」
+“Fuhahahahaha!”
+
+@13052 Wong · ウォン
+> 「ははははっ、無駄なことを!」
+“Hahahaha, what a waste of effort!”
+
+@13053 Wong · ウォン
+> 「な、なんだとぉぉぉぉ!?」
+“W-what did you say?!”
+
+@13054 Wong · ウォン
+> 「ば、ばかな、そんな距離から!?」
+“I-impossible, from that distance?!”

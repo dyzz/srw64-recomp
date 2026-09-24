@@ -1,0 +1,438 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15000 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15001 Boss · ボス
+> 「ぶっとばしてやるだわさ!」
+“I'm gonna knock 'em flying, I tell ya!”
+
+@15002 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15003 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15004 Jun · ジュン
+> 「頼むわ、鉄也!」
+“I'm counting on you, Tetsuya!”
+
+@15005 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15006 Tetsuya · 鉄也
+> 「甲児くん、マジンガーブレードを使え!」
+“Koji, use the Mazinger Blade!”
+
+@15007 Koji · 甲児
+> 「わかってらぁ!」
+“I know already!”
+
+@15008 Tetsuya · 鉄也
+> 「よし、甲児くん、いくぜ!」
+“All right, Koji, here we go!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15009 Tetsuya · 鉄也
+> 「ボス、はさみ撃ちといこうぜ!」
+“Boss, let's catch 'em in a pincer attack!”
+
+@15010 Boss · ボス
+> 「おう! いっちょやるだわさ!」
+“Yeah! Let's do this, I tell ya!”
+
+@15011 Tetsuya · 鉄也
+> 「いくぞ!」
+“Here we go!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@15012 Tetsuya · 鉄也
+> 「ジュン、バラバラに攻撃していては
+>  意味がない!」
+“Jun, attacking separately is pointless!”
+
+@15013 Jun · ジュン
+> 「そうね、わかったわ鉄也!」
+“You're right, got it, Tetsuya!”
+
+@15014 Tetsuya · 鉄也
+> 「よぉし、同時に集中攻撃だ!」
+“All right, concentrated attack, all at once!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@15015 Tetsuya · 鉄也
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15016 Tetsuya · 鉄也
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15017 Tetsuya · 鉄也
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15018 Tetsuya · 鉄也
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15019 Tetsuya · 鉄也
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15020 Tetsuya · 鉄也
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15021 Tetsuya · 鉄也
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15022 Tetsuya · 鉄也
+> 「ミサイル発射ッ!!」
+“Missile launch!!”
+
+@15023 Tetsuya · 鉄也
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15024 Tetsuya · 鉄也
+> 「ロケットパンチ!」
+“Rocket Punch!”
+
+@15025 Tetsuya · 鉄也
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15026 Tetsuya · 鉄也
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15027 Tetsuya · 鉄也
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15028 Tetsuya · 鉄也
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15029 Tetsuya · 鉄也
+> 「大車輪ロケットパンチ!」
+“Big Wheel Rocket Punch!”
+
+@15030 Tetsuya · 鉄也
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15031 Tetsuya · 鉄也
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15032 Tetsuya · 鉄也
+> 「ロケットパンチ!」
+“Rocket Punch!”
+
+@15033 Tetsuya · 鉄也
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15034 Tetsuya · 鉄也
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15035 Tetsuya · 鉄也
+> 「ボロットパンチ! ……でいいのか?」
+“Borot Punch! ...That's the one, right?”
+
+@15036 Tetsuya · 鉄也
+> 「スペシャルボロットパンチ!」
+“Special Borot Punch!”
+
+@15037 Tetsuya · 鉄也
+> 「スペシャル……なんとかボロットパンチ!」
+“Special... whatever Borot Punch!”
+
+@15038 Tetsuya · 鉄也
+> 「バカな!? グレートがやられるなんて……」
+“Impossible?! Great can't be beaten...”
+
+@15039 Tetsuya · 鉄也
+> 「うおおっ! くそっ! ボロットじゃ
+>  勝手が違うぜ!」
+“Uwooo! Damn it! Borot handles nothing like this!”
+
+@15040 Tetsuya · 鉄也
+> 「バカなっ!? グレートが、これほどの
+>  ダメージを受けるとは!?」
+“Impossible?! Great taking this much damage?!”
+
+@15041 Tetsuya · 鉄也
+> 「うっ! グレートが、これしきのことで
+>  やられるものか!」
+“Ugh! As if Great would go down from something like this!”
+
+@15042 Tetsuya · 鉄也
+> 「うっ! マジンガーが、これしきのことで
+>  やられるものか!」
+“Ugh! As if Mazinger would go down from something like this!”
+
+@15043 Tetsuya · 鉄也
+> 「うっ! マジンガーが、これしきのことで
+>  やられるものか!」
+“Ugh! As if Mazinger would go down from something like this!”
+
+@15044 Tetsuya · 鉄也
+> 「超合金ニューZの、このボディに
+>  そんな攻撃が通用するものか!!」
+“As if an attack like that would work on this Super Alloy New Z body!!”
+
+@15045 Tetsuya · 鉄也
+> 「超合金Zの、このボディに
+>  そんな攻撃が通用するものか!!」
+“As if an attack like that would work on this Super Alloy Z body!!”
+
+@15046 Tetsuya · 鉄也
+> 「超合金Zの、このボディに
+>  そんな攻撃が通用するものか!!」
+“As if an attack like that would work on this Super Alloy Z body!!”
+
+@15047 Marquis Janus · ヤヌス侯爵
+> 「とどめをさせ!」
+“Finish them off!”
+
+@15048 Marquis Janus · ヤヌス侯爵
+> 「フハハハ、こいつらを血祭りにあげろ」
+“Fuhahaha, make a bloody offering of these lot.”
+
+@15049 Marquis Janus · ヤヌス侯爵
+> 「ようし、今だ! ようく狙え!」
+“All right, now! Take good aim!”
+
+@15050 Marquis Janus · ヤヌス侯爵
+> 「準備はいいか? 攻撃を開始
+>  するぞ!」
+“Ready? We begin the attack!”
+
+@15051 Marquis Janus · ヤヌス侯爵
+> 「とどめをさせ!」
+“Finish them off!”
+
+@15052 Marquis Janus · ヤヌス侯爵
+> 「フハハハ、こいつらを血祭りにあげろ」
+“Fuhahaha, make a bloody offering of these lot.”
+
+@15053 Marquis Janus · ヤヌス侯爵
+> 「ようし、今だ! ようく狙え!」
+“All right, now! Take good aim!”
+
+@15054 Marquis Janus · ヤヌス侯爵
+> 「準備はいいか? 攻撃を開始
+>  するぞ!」
+“Ready? We begin the attack!”
+
+@15055 Marquis Janus · ヤヌス侯爵
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15056 Marquis Janus · ヤヌス侯爵
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15057 Marquis Janus · ヤヌス侯爵
+> 「よし、発射!」
+“Good, fire!”
+
+@15058 Marquis Janus · ヤヌス侯爵
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15059 Marquis Janus · ヤヌス侯爵
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15060 Marquis Janus · ヤヌス侯爵
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15061 Marquis Janus · ヤヌス侯爵
+> 「よし、発射!」
+“Good, fire!”
+
+@15062 Marquis Janus · ヤヌス侯爵
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15063 Marquis Janus · ヤヌス侯爵
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15064 Marquis Janus · ヤヌス侯爵
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15065 Marquis Janus · ヤヌス侯爵
+> 「よし、発射!」
+“Good, fire!”
+
+@15066 Marquis Janus · ヤヌス侯爵
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15067 Marquis Janus · ヤヌス侯爵
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15068 Marquis Janus · ヤヌス侯爵
+> 「脱出だ! 脱出しろ!」
+“Escape! Everyone escape!”
+
+@15069 Marquis Janus · ヤヌス侯爵
+> 「退け! ひきあげろ!」
+“Retreat! Pull back!”
+
+@15070 Marquis Janus · ヤヌス侯爵
+> 「ええい、出直しじゃ!」
+“Grr, we'll try again!”
+
+@15071 Marquis Janus · ヤヌス侯爵
+# 审校：原文是重复命令“脱出だ! 脱出しろ!”，初稿译成“Everyone, escape!”丢失了重复强调的语气，改为更贴近原文的重复命令。
+> 「脱出だ! 脱出しろ!」
+“Escape! Escape now!”
+
+@15072 Marquis Janus · ヤヌス侯爵
+> 「退け! ひきあげろ!」
+“Fall back! Retreat!”
+
+@15073 Marquis Janus · ヤヌス侯爵
+# 审校：“another day”语气稍弱，改为“another time”更贴合“出直しじゃ”的撤退重来之意。
+> 「ええい、出直しじゃ!」
+“Gah, we'll try again another time!”
+
+@15074 Marquis Janus · ヤヌス侯爵
+> 「うろたえるな!」
+“Don't panic!”
+
+@15075 Marquis Janus · ヤヌス侯爵
+> 「うろたえるな!」
+“Don't panic!”
+
+@15076 Marquis Janus · ヤヌス侯爵
+> 「1人残らず片づけて
+>  しまえ!」
+“Wipe them out, every last one!”
+
+@15077 Marquis Janus · ヤヌス侯爵
+> 「何をしている!? グズグズするな!」
+“What are you doing?! Stop dawdling!”
+
+@15078 Marquis Janus · ヤヌス侯爵
+# 审校：“lagging around”不够自然，改为更常见的“dawdling”，与 L41 等同类台词保持一致。
+> 「なにをもたもたしている」
+“What are you dawdling for?”
+
+@15079 Marquis Janus · ヤヌス侯爵
+> 「1人残らず片づけて
+>  しまえ!」
+“Wipe them out, every last one!”
+
+@15080 Marquis Janus · ヤヌス侯爵
+> 「何をしている!? グズグズするな!」
+“What are you doing?! Stop dawdling!”
+
+@15081 Marquis Janus · ヤヌス侯爵
+# 审校：同上，统一“もたもた”的译法为“dawdling”。
+> 「なにをもたもたしている」
+“What are you dawdling for?”
+
+@15082 Hell Marshal · 地獄大元帥
+# 审校：原文“ミサイルを撃てい”是命令发射导弹，复数更自然；词表 Missile 保留但用复数形式。
+> 「ミサイルを撃てい!」
+“Fire the Missiles!”
+
+@15083 Hell Marshal · 地獄大元帥
+> 「ミサイルだ! ミサイルで撃ちおとせい!」
+“Missiles! Shoot them down with Missiles!”
+
+@15084 Hell Marshal · 地獄大元帥
+> 「撃ちおとしてやる! ミサイル発射!」
+“I'll shoot you down! Missile, fire!”
+
+@15085 Hell Marshal · 地獄大元帥
+> 「今日こそ勝利を手中にしてみせ
+>  るぞ! 撃って撃って撃ちまくれい!」
+“Today we claim victory for sure! Fire, fire, keep firing!”
+
+@15086 Hell Marshal · 地獄大元帥
+> 「撃滅するのだ!」
+“Annihilate them!”
+
+@15087 Hell Marshal · 地獄大元帥
+# 审校：“集中攻撃”指集中火力攻击，复数“attacks”更自然；词表 Focus 为参考，此处用动词短语更顺。
+> 「集中攻撃しろ!」
+“Focus your attacks!”
+
+@15088 Hell Marshal · 地獄大元帥
+> 「作戦開始!」
+“Begin the operation!”
+
+@15089 Hell Marshal · 地獄大元帥
+> 「ようし、叩き落としてやれい!」
+“All right, knock them out of the sky!”
+
+@15090 Hell Marshal · 地獄大元帥
+> 「奴らを叩き落とせーっ!」
+“Shoot those bastards down!”
+
+@15091 Hell Marshal · 地獄大元帥
+> 「ええい、奴を片づけろ!」
+“Gah, finish that one off!”
+
+@15092 Hell Marshal · 地獄大元帥
+# 审校：同上，统一“集中攻撃しろ”的译法。
+> 「集中攻撃しろ!」
+“Focus your attacks!”
+
+@15093 Hell Marshal · 地獄大元帥
+> 「作戦開始!」
+“Begin the operation!”
+
+@15094 Hell Marshal · 地獄大元帥
+> 「ようし、叩き落としてやれい!」
+“All right, knock them out of the sky!”
+
+@15095 Hell Marshal · 地獄大元帥
+> 「奴らを叩き落とせーっ!」
+“Shoot those bastards down!”
+
+@15096 Hell Marshal · 地獄大元帥
+> 「ええい、奴を片づけろ!」
+“Gah, finish that one off!”
+
+@15097 Hell Marshal · 地獄大元帥
+> 「ゆけぇ! 接近して、とどめを
+>  さしてやれい!」
+“Go! Close in and finish them off!”
+
+@15098 Hell Marshal · 地獄大元帥
+> 「引きあげろ!」
+“Retreat!”
+
+@15099 Hell Marshal · 地獄大元帥
+> 「引きあげろ!」
+“Retreat!”

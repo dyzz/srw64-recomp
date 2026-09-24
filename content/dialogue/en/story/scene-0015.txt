@@ -1,0 +1,1725 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@19264 Lady · レディ
+> 「……そろそろ時間だな」
+“...It's about time.”
+
+@19265 Relena · リリーナ
+> 「え……何!?」
+“Huh... What?!”
+
+@19266 Lady · レディ
+> 「うまくいったか……」
+“Did it work...?”
+
+@19267 Relena · リリーナ
+> 「お父さま!? お父さまッ!!」
+“Father?! Father!!”
+
+@19268 Lady · レディ
+> 「ドーリアンの娘か!?
+>  その娘も逃がすな!」
+“Darlian's daughter?! Don't let her get away either!”
+
+@19269 Relena · リリーナ
+> 「うっ……お父さま!?」
+“Ugh... Father?!”
+
+@19270 Alan · アラン
+> 「くそっ遅かったか。ドーリアン氏を
+>  はやく運び出せ!」
+“Damn, were we too late? Get Mr. Darlian out of here, quickly!”
+
+@19271 Guerrilla · ゲリラ
+> 「はい!」
+“Yes, sir!”
+
+@19272 Alan · アラン
+> 「ここは危険だ、急いで外へ」
+“It's dangerous here. Hurry, outside!”
+
+@19273 Relena · リリーナ
+> 「あ、あなたがたは何なの!? やめて!
+>  お父さまをどうしようというの!?」
+“Wh-Who are you people?! Stop it! What are you going to do with my father?!”
+
+@19274 Alan · アラン
+> 「ここにいては君も殺される。とにかく
+>  来るんだ!」
+“If you stay here, you'll be killed too. Just come with me!”
+
+@19275 Relena · リリーナ
+> 「やめて! お父さまを病院へ連れて
+>  いって! このままでは死んでしまうわ!」
+“No! Take my father to a hospital! He'll die if you leave him like this!”
+
+@19276 Lady · レディ
+> 「くっ、なぜレジスタンスがここへ!?
+>  そいつらを止めろ!」
+“Ngh, why is the resistance here?! Stop them!”
+
+@19277 Relena · リリーナ
+> 「ん…………ここは……」
+“Nn... Where am I...?”
+
+@19278 Alan · アラン
+> 「気がついたね。ここは安全だ。
+>  申しわけない。我々がもう少し
+“So you're awake. You're safe here. I'm sorry. If we had gotten the information a little
+---
+>  はやく情報をつかんでいたら
+>  こんなことには、ならなかったんだが……」
+sooner, this never would have happened...”
+
+@19279 Relena · リリーナ
+> 「あなた…………人殺し! お父さまを
+>  病院にも連れていかずに!
+“You... You murderer! You wouldn't even take my father to a hospital!
+---
+>  すぐに病院へ行けば、お父さまは
+>  助かったかもしれないのに!」
+If he'd gotten to a hospital right away, he might have survived!”
+
+@19280 Alan · アラン
+> 「病院は敵の手がまわっていた。
+>  それに、残念だがドーリアン氏は
+“The enemy had people at the hospitals. And unfortunately, Mr. Darlian was
+---
+>  もう手遅れだった」
+already beyond saving.”
+
+@19281 Relena · リリーナ
+> 「あなたがたはいったい何なの! どうして
+>  お父さまが殺されなきゃならないの!?」
+“Just who are you people?! Why did my father have to be killed?!”
+
+@19282 Alan · アラン
+> 「我々はカラバだ、反帝国組織
+>  の。ドーリアン氏を狙ったのは
+“We are Karaba, an anti-imperial organization. The ones who targeted Mr. Darlian were
+---
+>  スペシャルズ、いやロームフェラ財団だ」
+the Specials — no, the Romefeller Foundation.”
+
+@19283 Relena · リリーナ
+> 「ロームフェラ財団……」
+“The Romefeller Foundation...”
+
+@19284 Alan · アラン
+> 「そうだ。連中はドーリアン氏の
+>  活動が邪魔になると
+“That's right. They must have decided Mr. Darlian's activities were in their way.
+---
+>  判断したのだろう。奴らのやり方は
+>  昔からちっとも変わっていない」
+Their methods haven't changed one bit since long ago.”
+
+@19285 Relena · リリーナ
+> 「そんな……お父さまは平和のために
+>  努力されていたというのに……」
+“No... And yet my father was working so hard for peace...”
+
+@19286 Alan · アラン
+> 「ドーリアン氏から、君あての伝言を
+>  ……いや……遺言か。君に向けた
+“I have a message for you from Mr. Darlian... no... his will, I suppose. His final
+---
+>  最期の言葉を、あずかっている」
+words, addressed to you, were entrusted to me.”
+
+@19287 Relena · リリーナ
+> 「…………聞かせてください」
+“...Please, tell me.”
+
+@19288 Alan · アラン
+> 「……『リリーナ、私はもうだめだろう。
+>  お前にどうしても話しておかなければ
+“...‘Relena, I must be done for now. There is something I absolutely must tell you.
+---
+>  ならないことがある。私はあなたの
+>  本当の父ではない……
+I am not your real father...
+---
+>  あなたの本当の名は
+>  リリーナ・ピースクラフト……
+Your true name is Relena Peacecraft...
+---
+>  かつて完全平和主義を唱えた
+>  ピースクラフト家のご息女です
+You are the daughter of the Peacecraft family, who once advocated total pacifism.
+---
+>  しかしお父上は暗殺され、逃げ
+>  延びた私はあなたを娘として……』」
+But your father was assassinated, and I, having escaped, raised you as my own daughter...’”
+
+@19289 Relena · リリーナ
+> 「…………」
+“...”
+
+@19290 Alan · アラン
+> 「……そこで、ドーリアン氏は
+>  息を引き取られた」
+“...And with that, Mr. Darlian passed away.”
+
+@19291 Relena · リリーナ
+> 「お父様が……本当のお父様では
+>  ない……? ウソ……そ、そんなのウソよ!」
+“Father... isn't my real father...? No... Th-That can't be true!”
+
+@19292 Bright · ブライト
+> 「ニューエドワーズ基地の情報は
+>  本当か?」
+“Is the intel on New Edwards Base reliable?”
+
+@19293 Quattro · クワトロ
+> 「それに関する情報はほとんどつかめて
+>  いないのが現状のようだ
+“From what I gather, we've barely been able to obtain any information on that.
+---
+>  帝国上層部とスペシャルズの
+>  幹部がレジスタンス対策のために
+If it's true that the imperial high command and Specials officers are gathering
+---
+>  集まるというのが本当ならば、これは
+>  チャンスとみるべきだろうが……」
+to plan countermeasures against the resistance, we should see this as a chance, but...”
+
+@19294 Aboly · アポリー
+> 「カラバの方に問い合わせてみたら
+>  どうです?」
+“Why don't we try asking Karaba?”
+
+@19295 Quattro · クワトロ
+> 「やらせている。准将でなくとも、ここは
+>  無理をしたいところだな」
+“I already have. Even without the Brigadier General, this is a place where we want to push our luck.”
+
+@19296 Bright · ブライト
+> 「よし、厳重な警戒が予想される
+>  が、とりあえずニューエドワーズを
+“All right. Heavy security is expected, but for now let's proceed with preparations
+---
+>  襲撃する方向で準備を進めよ
+>  う。准将には船をまわして
+to raid New Edwards. I'll make arrangements so we can get a ship from
+---
+>  もらえるよう手配しておく」
+the Brigadier General.”
+
+@19297 Quattro · クワトロ
+> 「了解だ、中佐」
+“Understood, Lieutenant Colonel.”
+
+@19298 Banjo · 万丈
+> 「ニューエドワーズ基地だって?」
+“New Edwards Base, you say?”
+
+@19299 Garrison · ギャリソン
+> 「はい、そこに帝国軍上層部と
+>  スペシャルズの幹部が集まるという
+“Yes. We have information that the imperial high command and Specials officers
+---
+>  情報がございます」
+are gathering there.”
+
+@19300 Banjo · 万丈
+> 「すごいな。何があるんだ?」
+“Impressive. What's going on there?”
+
+@19301 Garrison · ギャリソン
+> 「活発化してきた反帝国運動
+>  の対策会議であるとか。しかし
+“Apparently a strategy meeting to deal with the increasingly active anti-imperial movement. However,
+---
+>  これに関しては、まだほとんど実態を
+>  つかめておりません
+we still haven't grasped much of the actual situation regarding this.
+---
+>  今後の調査待ちといったところで
+>  しょうな」
+I'd say we're waiting on further investigation.”
+
+@19302 Banjo · 万丈
+> 「解放戦線の方ではなんと
+>  いっている?」
+“What does the Liberation Front have to say?”
+
+@19303 Garrison · ギャリソン
+> 「状況はこちらと大差ないようで」
+“Their situation seems much the same as ours.”
+
+@19304 Banjo · 万丈
+> 「ふむ……どうするか……」
+“Hmm... what to do...”
+
+@19305 Lady · レディ
+> 「帝国とスペシャルズの上層部
+>  すべてがニューエドワーズ基地に
+“I have cleverly increased the amount of information suggesting that the imperial and Specials high commands
+---
+>  集まるという情報量を、巧妙に
+>  増加させておきました」
+are all gathering at New Edwards Base.”
+
+@19306 Treize · トレーズ
+> 「少なくとも、私と君が出席するの
+>  は事実だ」
+“At the very least, it's a fact that you and I will be attending.”
+
+@19307 Lady · レディ
+> 「ご自身も、おとりのうちですか」
+“So you're part of the bait yourself.”
+
+@19308 Treize · トレーズ
+> 「ル・カイン閣下も大変乗り気で
+>  おられる。ありがたいことに、ね」
+“His Excellency Le Cain is quite enthusiastic as well. Thankfully, that is.”
+
+@19309 Duo · デュオ
+> 「よ、また会ったな。輸送機
+>  ぶんどって、ニューエドワーズにむかう
+“Yo, we meet again. You were planning to hijack a transport and head to New Edwards,
+---
+>  つもりだったんだろ? 俺のはもう積ん
+>  であるぜ。お前もさっさと積んじまえよ」
+right? Mine's already loaded. Hurry up and load yours too.”
+
+@19310 Heero · ヒイロ
+> 「……今度の任務の重要性を
+>  理解しているのか」
+“...Do you understand how important this mission is?”
+
+@19311 Duo · デュオ
+> 「ああ。うまくいきゃ残る仕事は1つ
+>  だけだ。早めに宇宙に帰れる」
+“Yeah. If it goes well, we've only got one job left. We can head back to space early.”
+
+@19312 Heero · ヒイロ
+> 「……いいだろう、デュオ・マックスウェル。
+>  エンジンに火をいれてくれ」
+“...Fine, Duo Maxwell. Start the engines.”
+
+@19313 Duo · デュオ
+> 「あいつ、俺の名前おぼえやがった……」
+“He actually remembered my name...”
+
+@19314 Quatre · カトル
+> 「僕はカトル・ラバーバ・ウィナー。
+>  君は?」
+“I'm Quatre Raberba Winner. And you?”
+
+@19315 Trowa · トロワ
+> 「名前などない。どうしても呼びたけれ
+>  ばトロワだ。トロワ・バートンとでも
+“I have no name. If you must call me something, call me Trowa. Trowa Barton,
+---
+>  呼んでくれ」
+if you like.”
+
+@19316 Quatre · カトル
+> 「トロワ、君もいくんだろう、
+>  あの基地へ」
+“Trowa, you're going too, aren't you? To that base.”
+
+@19317 Trowa · トロワ
+> 「お前には関係ない」
+“It's none of your concern.”
+
+@19318 Quatre · カトル
+> 「でも、助け合えばきっとうまくいく」
+“But if we help each other, I'm sure it'll work out.”
+
+@19319 Trowa · トロワ
+> 「どうかな」
+“We'll see.”
+
+@19320 Wufei · 五飛
+> 「助かります」
+“Thank you.”
+
+@19321 Guerrilla · ゲリラ
+> 「物資はどこへ運びましょうか」
+“Where should we deliver the supplies?”
+
+@19322 Guerrilla · ゲリラ
+> 「ここでよい」
+“Here is fine.”
+
+@19323 Guerrilla · ゲリラ
+> 「こんなところで? こんなところで
+>  子供1人に大量の弾薬を
+“In a place like this? What are you doing handing a mountain of ammunition to a single kid
+---
+>  渡してどうするんです?」
+out here?”
+
+@19324 Guerrilla · ゲリラ
+> 「なにも聞くな。輸送機代も
+>  もらっている。お気をつけて」
+“Don't ask questions. I've already been paid for the transport. Take care.”
+
+@19325 Wufei · 五飛
+> 「すみません」
+“Sorry.”
+
+@19326 Ark · アーク（按段落 3DD1）
+> 「ニューエドワーズを攻撃するって、
+>  決行するんですか?」
+“Are we really going through with the attack on New Edwards?”
+
+@19327 Aboly · アポリー
+> 「そういうことだ。アウドムラも手配でき
+>  たそうだからな」
+“That's right. I hear they've arranged the Audhumla for us too.”
+
+@19328 Ark · アーク（按段落 3DD1）
+> 「アウドムラ?」
+“The Audhumla?”
+
+@19329 Aboly · アポリー
+> 「ガルダだ。超巨大輸送機。
+>  カミーユ、整備は終わったのか!?」
+“It's a Garuda. A colossal transport. Kamille, are the repairs done?!”
+
+@19330 Kamille · カミーユ
+> 「やってますよ!」
+“I'm working on it!”
+
+@19331 Kamille · カミーユ
+> (いつの間にか戦争させられてさ……)
+(Before I knew it, they had me fighting a war...)
+
+@19332 Ark · アーク（按段落 3DD1）
+> 「でも、かなり厳しいって聞きましたけど」
+“But I heard it's going to be pretty tough.”
+
+@19333 Aboly · アポリー
+> 「そういうもんさ。楽な戦争なんかある
+>  わけないだろ
+“That's how it goes. There's no such thing as an easy war.
+---
+>  それにカラバの支援だってあるっていう
+>  ぜ?」
+Besides, they say we'll have Karaba's support too, right?”
+
+@19334 Ark · アーク（按段落 3DD1）
+> 「………………」
+“...”
+
+@19335 Quattro · クワトロ
+> 「アポリー中尉、来てくれ」
+“Lieutenant Aboly, come here.”
+
+@19336 Aboly · アポリー
+> 「なんです、大尉」
+“What is it, Captain?”
+
+@19337 Quattro · クワトロ
+> 「{HeroName}とカミーユはよくみてやって
+>  くれ。成り行きで加わったせいか、
+“Keep a close eye on {HeroName} and Kamille. Perhaps because they joined by circumstance,
+---
+>  2人とも迷いがあるようだ」
+both of them seem to have doubts.”
+
+@19338 Aboly · アポリー
+> 「わかりました。でもいつまでもそれじゃ、
+>  こっちが危ういですよ」
+“Understood. But if they stay like that forever, it'll put us in danger.”
+
+@19339 Quattro · クワトロ
+> 「わかっている。いずれ戦う理由を自
+>  分で見いだしてくれると信じたいな」
+“I know. I want to believe that in time they'll find their own reason to fight.”
+
+@19340 Roux · ルー
+> 「なにやってるんです? こんなところで
+>  男2人でこそこそと」
+“What are you two doing? Sneaking around in a place like this, just the two of you.”
+
+@19341 Aboly · アポリー
+> 「なんでもないの。作戦が決まったんだ
+>  お前も準備しておけよ」
+“It's nothing. The operation's been decided, so you get ready too.”
+
+@19342 Roux · ルー
+> 「もー、バッチリですよ」
+“Geez, I'm totally ready.”
+
+@19343 Selain · セレイン（按段落 3DD2）
+> 「ニューエドワーズの襲撃、決まったと
+>  聞きましたが」
+“I heard the raid on New Edwards has been decided.”
+
+@19344 Aboly · アポリー
+> 「そういうことだ。アウドムラも手配でき
+>  たそうだからな」
+“That's right. They say they've managed to arrange the Audhumla too.”
+
+@19345 Selain · セレイン（按段落 3DD2）
+> 「ガルダが? よく手に入ったものですね」
+“The Garuda? I'm surprised they got their hands on one.”
+
+@19346 Aboly · アポリー
+> 「本部だって遊んでるわけじゃないさ。
+>  カミーユ、整備は終わったのか!?」
+“It's not like Headquarters is sitting around doing nothing. Kamille, are the repairs done?!”
+
+@19347 Kamille · カミーユ
+> 「やってますよ!」
+“I'm doing them!”
+
+@19348 Kamille · カミーユ
+> (いつの間にか戦争させられてさ……)
+(Before I knew it, they had me fighting a war...)
+
+@19349 Selain · セレイン（按段落 3DD2）
+> 「しかし彼我の戦力差を考えると
+>  かなり厳しいか……」
+“But considering the gap in forces between us and them, this could be pretty tough...”
+
+@19350 Aboly · アポリー
+> 「やるしかないんだよ、どのみち。カラバの
+>  支援もあるっていうぜ?」
+“We've got no choice but to do it, either way. They say we'll have Karaba's support too, right?”
+
+@19351 Quattro · クワトロ
+> 「アポリー中尉、いいか?」
+“Lieutenant Aboly, do you have a moment?”
+
+@19352 Aboly · アポリー
+> 「なんです、大尉」
+“What is it, Captain?”
+
+@19353 Quattro · クワトロ
+> 「カミーユを見てやってくれ。成り行き
+>  で加わったせいか、迷いがあるようだ」
+“Keep an eye on Kamille. Perhaps because he joined by circumstance, he seems to have doubts.”
+
+@19354 Aboly · アポリー
+> 「わかりました。でもいつまでもそれじゃ、
+>  こっちが危ういですよ」
+“Understood. But if he stays like that forever, it'll put us in danger.”
+
+@19355 Quattro · クワトロ
+> 「わかっている。いずれ戦う理由を自
+>  分で見いだしてくれると信じたいな
+“I know. I want to believe that in time he'll find his own reason to fight.
+---
+>  君の方でも頼む、{HeroName}」
+I'm counting on you too, {HeroName}.”
+
+@19356 Selain · セレイン（按段落 3DD2）
+> 「私ですか? 無理です。私は
+>  ああいうの苦手ですから」
+“Me? I can't. I'm no good with that sort of thing.”
+
+@19357 Banjo · 万丈
+> 「みんな、聞いてくれ。僕たちはこれから
+>  ニューエドワーズ基地へむかう
+“Everyone, listen up. We're heading to New Edwards Base now.
+---
+>  すでに知っての通り、この基地には
+>  帝国とスペシャルズの上層部が
+As you already know, the upper echelons of the Empire and the Specials are
+---
+>  集結することになっているため、かなり
+>  の数の警備隊が配備されている」
+set to gather at this base, so a considerable number of guards have been deployed.”
+
+@19358 Simone · シモーヌ
+> 「そんなトコに本当にいくつもりなの?」
+“You really mean to go to a place like that?”
+
+@19359 Koji · 甲児
+> 「あったりまえだぜ。オレたちだっていつまで
+>  も、ちまちまやってるわけにはいかねぇんだ」
+“Of course we do. We can't keep piddling around forever either.”
+
+@19360 David · デビッド
+> 「そうだ、ここらで一発でかく
+>  いかないとな」
+“That's right. It's time we made one big move.”
+
+@19361 Brad · ブラッド（按段落 3DD3）
+> 「フッ、腕がなるぜ」
+“Heh, my fists are itching.”
+
+@19362 Simone · シモーヌ
+> 「あんたたちねぇ……。ま、いいわ」
+“You guys, honestly... Well, fine.”
+
+@19363 Manami · マナミ（按段落 3DD4）
+> 「そうね。かなり厳しいでしょうけど、
+>  ここでうまくやれれば、状況はかなり
+“That's right. It'll be pretty tough, but if we can pull this off, the situation should
+---
+>  変わるはずだわ」
+change considerably.”
+
+@19364 Lawrence · ローレンス
+# 审校：ローレンス回应マナミ的话，应表示“确实如此”，初稿“Indeed it will”时态和指代不够贴切，改为“Indeed it is, my lady.”更自然。
+> 「その通りでございますな」
+“Indeed it is, my lady.”
+
+@19365 Banjo · 万丈
+> 「そうだ。すでにギャリソンたちに先行さ
+>  せて状況を確認させている
+“Right. I've already sent Garrison and the others ahead to confirm the situation.
+---
+>  みんな、気を引き締めていってくれ」
+Everyone, brace yourselves and let's go.”
+
+@19366 Walker · ワーカー
+> 「ゼクス特尉!」
+“Special Officer Zechs!”
+
+@19367 Zechs · ゼクス
+> 「ワーカー特士、久しぶりだな」
+“Specialist Walker. It's been a while.”
+
+@19368 Walker · ワーカー
+> 「ゼクス特尉も、お元気そうで。
+>  ライトニングバロンの噂は聞いています」
+“You look well too, Special Officer Zechs. I've heard the rumors about the Lightning Baron.”
+
+@19369 Zechs · ゼクス
+> 「噂の先行は好きではないのだがな」
+“I'm not fond of rumors getting ahead of me.”
+
+@19370 Walker · ワーカー
+> 「しかし特尉のご活躍は、異星
+>  人に対する我々の立場を
+“But I believe your achievements, Special Officer, have improved
+---
+>  良好にしてくれていると思えます」
+our standing with the aliens.”
+
+@19371 Zechs · ゼクス
+> 「その結果、同じ地球人からは
+>  嫌われる。しかし貴様も配備
+“And as a result, our fellow Earthlings despise us. Still, to think you were
+---
+>  されていたとはな。ここは、かなり厳しい
+>  戦場になるぞ」
+stationed here too. This is going to be a fairly harsh battlefield.”
+
+@19372 Walker · ワーカー
+> 「やはり特尉も、そう思われますか。
+>  帝国側の指揮官などは、
+“So you think so too, Special Officer. I hear the Imperial commanders say
+---
+>  この警備で攻めてくるバカはいないと
+>  いっているそうですが」
+no fool would attack with this much security.”
+
+@19373 Zechs · ゼクス
+> 「いや、バカはくる。今我々が相手
+>  にしているのは、そういう連中だ」
+“No, fools will come. The ones we're dealing with now are exactly that kind.”
+
+@19374 Walker · ワーカー
+> 「はい。この戦場で私のするべきことは
+>  理解しているつもりです」
+“Yes. I believe I understand what I must do on this battlefield.”
+
+@19375 Zechs · ゼクス
+> 「!?……死ぬ気か、ワーカー?」
+“?! ...Do you intend to die, Walker?”
+
+@19376 Walker · ワーカー
+> 「特尉が教えてくださった『後の
+>  兵士たちのために戦え』というのが
+“What you taught me, Special Officer — ‘fight for the soldiers who come after’ —
+---
+>  今の私の行動理念です」
+is my guiding principle now.”
+
+@19377 Zechs · ゼクス
+> 「……今は貴様の方が勇敢な
+>  兵士だな」
+“...Right now, you're the braver soldier.”
+
+@19378 Giura · ギウラ
+> 「ふん、地球人どもめはりきりおって。
+>  まぁよい、とどこおりなく終われば
+“Hmph, these Earthlings are all worked up. Well, fine. If this ends without a hitch,
+---
+>  この私の実績になるというもの」
+it'll be a credit to me.”
+
+@19379 Giura · ギウラ
+> 「な、な、なんだ!? どうしたのだ!?」
+“W-w-what?! What's going on?!”
+
+@19380 Gosterro · ゴステロ
+> 「どうしたもこうしたもねぇ。敵が
+>  きたんじゃねぇか。ひゃはははははっ」
+“What's going on is obvious. The enemy's here, ain't they? Hyahahahaha!”
+
+@19381 Borne · ボーン
+> 「ひへへへへへへっ」
+“Hiheheheheheheh!”
+
+@19382 Giura · ギウラ
+> 「そ、そんなバカな……」
+“Th-that can't be...”
+
+@19383 Mangelo · マンジェロ
+> 「ひぃやぁっ! オレの計算どおりだぁ!」
+“Hiiyaa! Just as I calculated!”
+
+@19384 Giura · ギウラ
+> 「き、貴様ら、敵が来たなら早く
+>  出撃しないかっ!」
+“Y-you lot, if the enemy's here, get out there and sortie already!”
+
+@19385 Getty · ゲティ
+> 「慌てるんじゃねぇ。まずは地球人
+>  どもにやらせりゃいいんだ。ふひひひひ」
+“Don't get your panties in a twist. Just let the Earthlings do the work first. Fuhihihihi.”
+
+@19386 Giura · ギウラ
+> 「く…………」
+“Ngh...”
+
+@19387 Giura · ギウラ
+> (なぜル・カイン閣下はこんな連中を
+>  親衛隊にしているのだ)
+(Why does His Excellency Le Cain keep trash like this in his personal guard?)
+
+@19388 Bright · ブライト
+> 「いいか、目標ポイントはこのエリアだ。
+>  情報では、ここに高官たちが
+“Listen up. The target point is this area. According to our intel, the high-ranking officers
+---
+>  集まっているはずだ」
+should be gathered here.”
+
+@19389 Bright · ブライト
+> 「3機以上でこのエリアを占拠
+>  するんだ。時間をかけすぎると、
+“Occupy this area with three units or more. If we take too long,
+---
+>  敵の増援に包囲されるおそれが
+>  ある。急げよ」
+we risk being surrounded by enemy reinforcements. Move fast.”
+
+@19390 Ark · アーク（按段落 3DD1）
+> 「わかりました」
+“Understood.”
+
+@19391 Selain · セレイン（按段落 3DD2）
+> 「了解」
+“Roger.”
+
+@19392 Banjo · 万丈
+> 「ギャリソンたちの情報では、あのエリア
+>  にターゲットが集中しているはずだ」
+“According to Garrison's intel, the targets should be concentrated in that area.”
+
+@19393 Banjo · 万丈
+> 「3機以上侵入して、あそこを
+>  占拠するぞ。時間をかけすぎれば
+“We'll break in with three units or more and seize it. If we take too long,
+---
+>  他の基地からの増援に取り
+>  囲まれるハメになる。みんな、急ぐぞ」
+we'll end up surrounded by reinforcements from the other bases. Everyone, hurry.”
+
+@19394 Brad · ブラッド（按段落 3DD3）
+> 「よし、いくぜぇっ!」
+“All right, let's go!”
+
+@19395 Manami · マナミ（按段落 3DD4）
+> 「わかったわ」
+“Got it.”
+
+@19396 Noventa · ノベンタ
+> 「ど、どうしたことだ、これは!?」
+“W-what is the meaning of this?!”
+
+@19397 Treize · トレーズ
+> 「反帝国のレジスタンスの襲撃です
+>  会談は中断です」
+“It's an attack by the anti-Imperial resistance. The talks are suspended.”
+
+@19398 Noventa · ノベンタ
+> 「バカな。ようやくグレスコ総督が地
+>  球人の権利を認め、このような
+“Impossible. Governor Gresco has finally recognized the rights of Earthlings, and we've even
+---
+>  会談の場も用意できたというのに
+>  ……不幸な偶然なのだ
+prepared a place for talks like this... It's just an unfortunate coincidence.
+---
+>  私はこれを自治権獲得の
+>  平和への障害とは思わん」
+I refuse to see this as an obstacle to peace and the acquisition of autonomy.”
+
+@19399 Treize · トレーズ
+> 「お気持ちはよくわかります。レジスタン
+>  スは早急に排除せねばなりません」
+“I understand your feelings well. We must eliminate the resistance at once.”
+
+@19400 Noventa · ノベンタ
+> 「バカをいうな!」
+“Don't be a fool!”
+
+@19401 Noventa · ノベンタ
+> 「自分たちのみの安泰を得ている
+>  ロームフェラ財団の幹部に
+“What could the executives of the Romefeller Foundation, who secure only their own comfort,
+---
+>  何がわかるというのだ。彼らは真剣
+>  に地球の未来を考える
+possibly understand? They are young people who seriously think about the future of Earth.
+---
+>  若者たちだ。それを排除して、この
+>  地球に何が残る
+Eliminate them, and what's left on this Earth?
+---
+>  グレスコ総督もレジスタンスたちの説
+>  得に意義を見いだして
+Governor Gresco, too, finds meaning in persuading the resistance,
+---
+>  下さっているのだぞ!?」
+don't you see?!”
+
+@19402 Treize · トレーズ
+> 「おっしゃることは、私にもよくわかります
+>  しかし、ここはともかく脱出するのが
+“I understand what you're saying perfectly well. But regardless, escaping should come first
+---
+>  先決でしょう。ガルダが待機して
+>  おります。それでお逃げください
+here. The Garuda is standing by. Please flee aboard it.
+---
+>  死んでしまっては何ごとも成せません
+>  ノベンタもと元帥がなくなられては、
+If you die, nothing can be accomplished. If you, Marshal Noventa, were to die,
+---
+>  これまでの努力が無駄に
+>  なりましょう」
+all your efforts up to now would be wasted.”
+
+@19403 Noventa · ノベンタ
+> 「しかし……」
+“But...”
+
+@19404 Treize · トレーズ
+> 「他の皆様もすでにそちらへ向かって
+>  いただくよう手配しております
+“I've already arranged for the others to head there as well.
+---
+>  お急ぎください」
+Please hurry.”
+
+@19405 Noventa · ノベンタ
+> 「…………わかった、まかせる」
+“...Understood. I'll leave it to you.”
+
+@19406 Zechs · ゼクス
+> 「ワーカー!!」
+“Walker!!”
+
+@19407 Zechs · ゼクス
+> 「ワーカー!!」
+“Walker!!”
+
+@19408 Walker · ワーカー
+> 「くっ……やはり、だめか。……戦闘デー
+>  タの記録、よろしく頼みます
+“Ngh... So it's no good after all. ...Please make sure the combat data is recorded.
+---
+>  後の兵士たちのために!」
+For the soldiers who come after!”
+
+@19409 Zechs · ゼクス
+> 「すまん、ワーカー……」
+“Forgive me, Walker...”
+
+@19410 Zechs · ゼクス
+> 「すまん、ワーカー……」
+“Forgive me, Walker...”
+
+@19411 Bask · バスク
+> 「バカが、突っ込みすぎおって。
+>  エマ特尉、ル・カイン直属の
+“Fool, he charged in too far. Lieutenant Emma, what happened to Le Cain's direct
+---
+>  死鬼隊とやらはどうしたか!?」
+Demon Death Platoon unit or whatever it's called?!”
+
+@19412 Emma · エマ
+> 「ル・カイン司令の親衛隊が
+>  出ます!」
+“Commander Le Cain's personal guard is moving out!”
+
+@19413 Bask · バスク
+> 「いまさらか」
+“About time.”
+
+@19414 Bask · バスク
+# 审校：同上，エマ特尉应体现“特尉”而非普通 Lieutenant。
+> 「バカが、突っ込みすぎおって。
+>  エマ特尉、ル・カイン直属の
+“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's direct
+---
+>  死鬼隊とやらはどうしたか!?」
+Demon Death Platoon unit or whatever it's called?!”
+
+@19415 Emma · エマ
+> 「ル・カイン司令の親衛隊が
+>  出ます!」
+“Commander Le Cain's personal guard is moving out!”
+
+@19416 Bask · バスク
+> 「いまさらか」
+“About time.”
+
+@19417 Gosterro · ゴステロ
+> 「ひぃははははぁっ! あのコゾウどもかぁ、
+>  ぶっ殺してやるぅ! いくぞお前らぁ!」
+“Hiihahahaha! Those little brats, huh? I'll slaughter 'em! Let's go, you lot!”
+
+@19418 Getty · ゲティ
+> 「お、俺に命令するんじゃねぇ!
+>  貴様がリーダーってわけじゃねぇんだ!」
+“D-don't you give me orders! You ain't the leader here!”
+
+@19419 Duo · デュオ
+> 「おっと、先客がいたようだな。ありゃ
+>  レジスタンスの連中か……ん?
+“Whoa, looks like we've got company already. That the resistance bunch... Hm?
+---
+>  おいおい、ほかにも似たようなのがいるぜ」
+Hey hey, there's more of the same kind over there.”
+
+@19420 Aboly · アポリー
+> 「大尉! あのときのガンダムタイプが
+>  います」
+“Captain! There's that Gundam type from back then.”
+
+@19421 Quattro · クワトロ
+> 「そのようだ。どうやら無事だったようだ
+>  な。とすると他のガンダムタイプも
+“So it seems. Looks like it made it through all right. Which means the other Gundam types
+---
+>  M作戦で降下したものと考えて
+>  よさそうだな……」
+probably descended in Operation M as well...”
+
+@19422 Heero · ヒイロ
+> 「地球解放戦線機構か……」
+“The Liberation Front of the Earth organization, huh...”
+
+@19423 Quatre · カトル
+> 「見てよトロワ! レジスタンスも
+>  他のガンダムも、きっとみんな目的は
+“Look, Trowa! The resistance and the other Gundams — I'm sure they all share
+---
+>  一緒だよ!」
+the same goal!”
+
+@19424 Trowa · トロワ
+> 「なんであろうと、邪魔になるなら
+>  排除するだけだ……」
+“Whatever it is, if it gets in my way, I'll just eliminate it...”
+
+@19425 Quatre · カトル
+> 「あれは……。カラバのみなさん、また
+>  お会いしましたね」
+“That's... Everyone from Karaba, we meet again.”
+
+@19426 Brad · ブラッド（按段落 3DD3）
+> 「あんときのコロニーの坊ちゃんか。1つ
+>  だけ聞く。今度は敵か味方か?」
+“The colony kid from back then, huh? One question. This time, are you enemy or ally?”
+
+@19427 Brad · ブラッド（按段落 3DD3）
+> 「あんときのコロニーの坊ちゃんか。1つ
+>  だけ聞く。今度は敵か味方か?」
+“The colony kid from back then, huh? One question. This time, are you enemy or ally?”
+
+@19428 Manami · マナミ（按段落 3DD4）
+> 「あのときの子ね……敵なの、味方な
+>  の? 敵なら容赦はしないわよ」
+“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+
+@19429 Manami · マナミ（按段落 3DD4）
+> 「あのときの子ね……敵なの、味方な
+>  の? 敵なら容赦はしないわよ」
+“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+
+@19430 Trowa · トロワ
+> 「…………」
+“...”
+
+@19431 Quatre · カトル
+> 「今あなた方と戦う意味はありませ
+>  ん。目的は恐らく同じでしょうから
+“There's no point in fighting you now. Our goals are probably the same, so
+---
+>  味方といっていいと思います。
+>  トロワ、彼らと一緒に戦おう」
+I'd say we're allies. Trowa, let's fight alongside them.”
+
+@19432 Trowa · トロワ
+> 「……俺には味方などいない。任務
+>  遂行の邪魔になれば、排除する」
+“...I have no allies. If you get in the way of my mission, I'll eliminate you.”
+
+@19433 Koji · 甲児
+> 「なんだよ、辛気くさいガキだな。みんな
+>  こんな連中ほっといてさっさと
+“What's with this gloomy kid? Everyone, let's just leave these guys alone and
+---
+>  片付けちまおうぜ」
+finish this up quick.”
+
+@19434 Duo · デュオ
+# 审校：与 L16 相同，补上问句感。
+> 「おっと、先客がいたようだな。ありゃ
+>  レジスタンスの連中か……ん?
+“Whoa, looks like we've got company already. Is that the resistance bunch... Hm?
+---
+>  おいおい、ほかにも似たようなのがいるぜ」
+Hey hey, there's more of the same kind over there.”
+
+@19435 Aboly · アポリー
+> 「大尉! あのときのガンダムタイプが
+>  います」
+“Captain! There's that Gundam type from back then.”
+
+@19436 Quattro · クワトロ
+> 「そのようだ。どうやら無事だったようだ
+>  な。とすると他のガンダムタイプも
+“So it seems. Looks like it made it through all right. Which means the other Gundam types
+---
+>  M作戦で降下したものと考えて
+>  よさそうだな……」
+probably descended in Operation M as well...”
+
+@19437 Heero · ヒイロ
+> 「地球解放戦線機構か……」
+“The Liberation Front of the Earth organization, huh...”
+
+@19438 Quatre · カトル
+> 「見てよトロワ! レジスタンスも
+>  他のガンダムも、きっとみんな目的は
+“Look, Trowa! The resistance and the other Gundams — I'm sure they all share
+---
+>  一緒だよ!」
+the same goal!”
+
+@19439 Trowa · トロワ
+> 「なんであろうと、邪魔になるなら
+>  排除するだけだ……」
+“Whatever it is, if it gets in my way, I'll just eliminate it...”
+
+@19440 Quatre · カトル
+> 「あれは……。カラバのみなさん、また
+>  お会いしましたね」
+“That's... Everyone from Karaba, we meet again.”
+
+@19441 Brad · ブラッド（按段落 3DD3）
+> 「あんときのコロニーの坊ちゃんか。1つ
+>  だけ聞く。今度は敵か味方か?」
+“The colony kid from back then, huh? One question. This time, are you enemy or ally?”
+
+@19442 Brad · ブラッド（按段落 3DD3）
+> 「あんときのコロニーの坊ちゃんか。1つ
+>  だけ聞く。今度は敵か味方か?」
+“The colony kid from back then, huh? One question. This time, are you enemy or ally?”
+
+@19443 Manami · マナミ（按段落 3DD4）
+> 「あのときの子ね……敵なの、味方な
+>  の? 敵なら容赦はしないわよ」
+“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+
+@19444 Manami · マナミ（按段落 3DD4）
+> 「あのときの子ね……敵なの、味方な
+>  の? 敵なら容赦はしないわよ」
+“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+
+@19445 Trowa · トロワ
+> 「…………」
+“...”
+
+@19446 Quatre · カトル
+> 「今あなた方と戦う意味はありませ
+>  ん。目的は恐らく同じでしょうから
+“There's no point in fighting you now. Our goals are probably the same, so
+---
+>  味方といっていいと思います。
+>  トロワ、彼らと一緒に戦おう」
+I'd say we're allies. Trowa, let's fight alongside them.”
+
+@19447 Trowa · トロワ
+> 「……俺には味方などいない。任務
+>  遂行の邪魔になれば、排除する」
+“...I have no allies. If you get in the way of my mission, I'll eliminate you.”
+
+@19448 Koji · 甲児
+> 「なんだよ、辛気くさいガキだな。みんな
+>  こんな連中ほっといてさっさと
+“What's with this gloomy kid? Everyone, let's just leave these guys alone and
+---
+>  片付けちまおうぜ」
+finish this up quick.”
+
+@19449 Quattro · クワトロ
+> 「あれは……スペシャルズのガルダか!」
+“That's... a Specials Garuda!”
+
+@19450 Garrison · ギャリソン
+> 「万丈さま、スペシャルズのガルダです」
+“Lord Banjo, it's a Specials Garuda.”
+
+@19451 Banjo · 万丈
+> 「しまった、脱出する気か!?」
+“Damn, they're trying to escape?!”
+
+@19452 Heero · ヒイロ
+> 「くっ……機体のダメージが大きすぎる
+>  だが……任務は継続する……」
+“Ngh... The damage to my unit is too great... but I'll continue the mission...”
+
+@19453 Bright · ブライト
+> 「あいつ……あんな機体で
+>  まだやる気なのか!?」
+“That guy... He still means to fight in a unit like that?!”
+
+@19454 Banjo · 万丈
+> 「なんだ!? あの機体で
+>  まだやるつもりなのか!?」
+“What?! He still means to fight in that unit?!”
+
+@19455 Duo · デュオ
+> 「やっべぇ、ターゲットが逃げちまうぜ!」
+“Oh crap, the target's gonna get away!”
+
+@19456 Heero · ヒイロ
+> 「スペシャルズと帝国の高官が
+>  脱出する……? 逃がしはしない……」
+“The Specials and the imperial brass are escaping...? I won't let them get away...”
+
+@19457 Heero · ヒイロ
+> 「逃がしはしない……」
+“I won't let them get away...”
+
+@19458 Bright · ブライト
+> 「我々もあれを叩くぞ!
+>  逃がしてはこの作戦は失敗だ!」
+“We'll hit that too! If it escapes, this operation fails!”
+
+@19459 Banjo · 万丈
+> 「みんな、僕たちもあれを叩く。
+>  逃げられてはこの作戦は失敗だ!」
+“Everyone, we'll hit that too. If it gets away, this operation fails!”
+
+@19460 Reika · レイカ
+> 「みんな、あれを逃がしちゃためよ!
+>  逃がしたら作戦は失敗だわ!」
+“Everyone, don't let that escape! If it gets away, the operation fails!”
+
+@19461 Noventa · ノベンタ
+> 「なに……!?」
+“What...?!”
+
+@19462 Heero · ヒイロ
+> 「ターゲット捕捉。破壊する……」
+“Target acquired. Destroying...”
+
+@19463 Noventa · ノベンタ
+> 「早まるな……若者よ……」
+“Don't be hasty... young man...”
+
+@19464 Heero · ヒイロ
+> 「任務……完了……」
+“Mission... complete...”
+
+@19465 Duo · デュオ
+> 「やった! あいつ、やりやがったぜ!」
+“He did it! That guy actually pulled it off!”
+
+@19466 Noventa · ノベンタ
+> 「くっ……若者たちよ、なんという
+>  早まったことを……」
+“Ngh... young ones, what a rash thing you've done...”
+
+@19467 Emma · エマ
+> 「なんてことを! 全機、レジスタンスを
+>  逃がすな!」
+“What have you done?! All units, don't let the resistance escape!”
+
+@19468 Wufei · 五飛
+> 「貴様ら、まだ無意味な戦いに
+>  あきたらないのか!? 貴様らは……
+“You lot, are you still not tired of meaningless fighting?! You've been...
+---
+>  まんまと、はめられたのだ! 連中の
+>  通信を聞いてみろ。貴様らは
+neatly played! Listen to their communications. You've
+---
+>  ようやく帝国の譲歩をとりつけた、
+>  地球の平和論者たちを
+wiped out the Earth's pacifists, who had finally
+---
+>  一掃してしまったのだぞ!」
+secured the Empire's concessions!”
+
+@19469 Bright · ブライト
+> 「な……なんだと!?」
+“Wha... what did you say?!”
+
+@19470 Trowa · トロワ
+> 「……なんだと……?」
+“...What did you say...?”
+
+@19471 Quatre · カトル
+> 「……そ、そんな……」
+“...Th-that can't be...”
+
+@19472 Duo · デュオ
+> 「なんだ、どういうことだよ!?」
+“What, what the hell does that mean?!”
+
+@19473 Wufei · 五飛
+> 「踊らされたんだ。ル・カインと
+>  トレーズ・クシュリナーダの手の中で」
+“We were dancing in their hands. In the hands of Le Cain and Treize Khushrenada.”
+
+@19474 Heero · ヒイロ
+> 「俺は………」
+“I...”
+
+@19475 Emma · エマ
+> 「なに……なにを言っているの、
+>  彼らは……?」
+“What... what are they saying...?”
+
+@19476 Emma · エマ
+> 「なに……なにを言っているの、
+>  彼らは……?」
+“What... what are they saying...?”
+
+@19477 Quattro · クワトロ
+> 「ばかな……ええい、全機撤退だ!
+>  急げ!」
+“Impossible... Damn it, all units retreat! Hurry!”
+
+@19478 Garrison · ギャリソン
+# 审校：将“I've confirmed it”改为更符合老管家语气的“I have confirmed it”，并保持两页断句自然。
+> 「万丈さま、確認いたしました。
+>  どうやらあの少年のいうとおりの
+“Lord Banjo, I have confirmed it. It appears to be exactly as
+---
+>  ようでございます」
+that boy said.”
+
+@19479 Reika · レイカ
+> 「万丈、それに帝国軍の部隊が
+>  接近しているわよ!」
+“Banjo, an imperial force is approaching too!”
+
+@19480 Banjo · 万丈
+> 「く……スペシャルズめ……。みんな、
+>  撤退だ!」
+“Ngh... those Specials... Everyone, retreat!”
+
+@19481 Heero · ヒイロ
+> 「俺の……俺のミスだ!」
+“This... this is my mistake!”
+
+@19482 Bask · バスク
+> 「エマ特尉、帰投してすぐに追撃
+>  の準備にかかれ!
+“Lieutenant Emma, begin preparations for pursuit the moment you return!
+---
+>  奴らを逃がしてはならん!」
+We must not let them escape!”
+
+@19483 Emma · エマ
+> 「はっ!」
+“Yes, sir!”
+
+@19484 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと? まさか……)
+(He said... we were played... what does that mean? Don't tell me...)
+
+@19485 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと?)
+(He said... we were played... what does that mean?)
+
+@19486 Bask · バスク
+> 「エマ特尉、汚名返上のチャンス
+>  をやる。追撃隊の指揮をまかせる
+“Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+---
+>  奴らを逃がすな!」
+command of the pursuit force to you. Don't let them escape!”
+
+@19487 Emma · エマ
+> 「はっ、バスク特尉。では追撃隊の
+>  編成にかかります」
+“Yes, Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+
+@19488 Bask · バスク
+> 「急げよ」
+“Make it quick.”
+
+@19489 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと? まさか……)
+(He said... we were played... what does that mean? Don't tell me...)
+
+@19490 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと?)
+(He said... we were played... what does that mean?)
+
+@19491 Wufei · 五飛
+> 「貴様ら、まだ無意味な戦いに
+>  あきたらないのか!? 貴様らは……
+“You lot, are you still not tired of meaningless fighting?! You've been...
+---
+>  まんまと、はめられたのだ! 連中の
+>  通信を聞いてみろ。貴様らは
+neatly played! Listen to their communications. You've
+---
+>  ようやく帝国の譲歩をとりつけた、
+>  地球の平和論者たちを
+wiped out the Earth's pacifists, who had finally
+---
+>  一掃してしまったのだぞ!」
+secured the Empire's concessions!”
+
+@19492 Bright · ブライト
+> 「な……なんだと!?」
+“Wha... what did you say?!”
+
+@19493 Trowa · トロワ
+> 「……なんだと……?」
+“...What did you say...?”
+
+@19494 Quatre · カトル
+> 「……そ、そんな……」
+“...Th-that can't be...”
+
+@19495 Duo · デュオ
+> 「なんだ、どういうことだよ!?」
+“What, what the hell does that mean?!”
+
+@19496 Wufei · 五飛
+# 审校：“We were dancing in their hands”表达不自然，改为“We were made to dance”，更贴近“踊らされたんだ”的被动含义。
+> 「踊らされたんだ。ル・カインと
+>  トレーズ・クシュリナーダの手の中で」
+“We were made to dance. In the hands of Le Cain and Treize Khushrenada.”
+
+@19497 Heero · ヒイロ
+> 「俺は………」
+“I...”
+
+@19498 Emma · エマ
+> 「なに……なにを言っているの、
+>  彼らは……?」
+“What... what are they saying...?”
+
+@19499 Emma · エマ
+> 「なに……なにを言っているの、
+>  彼らは……?」
+“What... what are they saying...?”
+
+@19500 Quattro · クワトロ
+> 「ばかな……ええい、全機撤退だ!
+>  急げ!」
+“Impossible... Damn it, all units retreat! Hurry!”
+
+@19501 Garrison · ギャリソン
+# 审校：同L5，将“I've confirmed it”改为更符合老管家语气的“I have confirmed it”。
+> 「万丈さま、確認いたしました。
+>  どうやらあの少年のいうとおりの
+“Lord Banjo, I have confirmed it. It appears to be exactly as
+---
+>  ようでございます」
+that boy said.”
+
+@19502 Reika · レイカ
+> 「万丈、それに帝国軍の部隊が
+>  接近しているわよ!」
+“Banjo, an imperial force is approaching too!”
+
+@19503 Banjo · 万丈
+> 「く……スペシャルズめ……。みんな、
+>  撤退だ!」
+“Ngh... those Specials... Everyone, retreat!”
+
+@19504 Heero · ヒイロ
+> 「俺の……俺のミスだ!」
+“It's my... it's my mistake!”
+
+@19505 Bask · バスク
+> 「エマ特尉、帰投してすぐに追撃
+>  の準備にかかれ!
+“Lieutenant Emma, begin preparations for pursuit the moment you return!
+---
+>  奴らを逃がしてはならん!」
+We must not let them escape!”
+
+@19506 Emma · エマ
+> 「はっ!」
+“Yes, sir!”
+
+@19507 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと? まさか……)
+(I'm sure he said... we were set up... what did he mean? Could it be...)
+
+@19508 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと?)
+(I'm sure he said... we were set up... what did he mean?)
+
+@19509 Bask · バスク
+# 审校：同L13，按原文页末断句调整。
+> 「エマ特尉、汚名返上のチャンス
+>  をやる。追撃隊の指揮をまかせる
+“Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+---
+>  奴らを逃がすな!」
+command of the pursuit force to you. Don't let them escape!”
+
+@19510 Emma · エマ
+> 「はっ、バスク特尉。では追撃隊の
+>  編成にかかります」
+“Yes, Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+
+@19511 Bask · バスク
+> 「急げよ」
+“Make it quick.”
+
+@19512 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと? まさか……)
+(I'm sure he said... we were set up... what did he mean? Could it be...)
+
+@19513 Emma · エマ
+> (確か……はめられたって……
+>  どういうこと?)
+(I'm sure he said... we were set up... what did he mean?)
+
+@19514 Zechs · ゼクス
+> 「このガンダム……あのときのパイロットか?
+>  まさか、生きていたとはな」
+“This Gundam... the pilot from back then? To think you were still alive.”
+
+@19515 Zechs · ゼクス
+> 「私が落としたガンダムか!? まさか、
+>  無事だったとはな」
+“The Gundam I shot down?! To think it survived.”
+
+@19516 Heero · ヒイロ
+> 「…………ゼクス・マーキスか」
+“...Zechs Merquise.”
+
+@19517 Zechs · ゼクス
+> 「よくよく貴様とは縁があるようだな。
+>  エアリーズで再会したくはなかったが…
+“It seems I'm bound to you by fate. I'd rather not have met again in an Aries...
+---
+>  やむを得んか」
+but I suppose there's no helping it.”
+
+@19518 Eiji · エイジ
+> 「ゴステロ!
+>  今度こそ終わりにしてやる!!」
+“Gosterro! This time I'm finishing you for good!!”
+
+@19519 Gosterro · ゴステロ
+> 「小僧が!! 貴様にできるのか!」
+“You brat!! Do you really think you can?!”
+
+@19520 Heero · ヒイロ
+> 「くっ……まだだ……」
+“Ngh... not yet...”
+
+@19521 Quattro · クワトロ
+> 「スードリを逃したのか!?
+>  くっ、作戦は失敗か……」
+“You let Sudori get away?! Ngh, the operation's a failure...”
+
+@19522 Garrison · ギャリソン
+> 「万丈様、作戦は失敗でございます!」
+“Lord Banjo, the operation has failed!”
+
+@19523 Reika · レイカ
+> 「万丈、帝国軍の部隊も
+>  こっちに接近中よ!」
+“Banjo, an imperial force is approaching us too!”
+
+@19524 Banjo · 万丈
+> 「僕としたことが……。くっ、作戦は
+>  失敗か……」
+“To think I'd slip up like this... Ngh, the operation's a failure...”
+
+@19525 Lady · レディ
+> 「処理は完璧です、トレーズ様」
+“The arrangements are complete, Lord Treize.”
+
+@19526 Treize · トレーズ
+> 「そのようだね。これで人々は迷うこと
+>  なく歴史の流れに身をまかせられる」
+“So it seems. Now the people can surrender themselves to the flow of history without hesitation.”
+
+@19527 Bright · ブライト
+> 「なんということだ……」
+“How could this happen...”
+
+@19528 Quattro · クワトロ
+> 「いまさら言ってもしかたがない。すぐに
+>  追撃隊も出てくるだろう」
+“There's no use saying it now. A pursuit force will be out soon enough.”
+
+@19529 Ark · アーク（按段落 3DD1）
+> 「あの2人はどうするんですか?」
+“What about those two?”
+
+@19530 Selain · セレイン（按段落 3DD2）
+> 「それで、残った2人は?」
+“So, what about the two who stayed?”
+
+@19531 Bright · ブライト
+> 「ああ……後の3人はどこかへいって
+>  しまったのか……」
+“Yeah... the other three seem to have gone off somewhere...”
+
+@19532 Quattro · クワトロ
+> 「彼らは敵ではない。准将の希望
+>  通り我々に同行してもらうのが
+“They're not our enemies. It would be best if they came along with us, just as the Commodore hopes.
+---
+>  いいだろう。彼らがそれを望めば、だが」
+That is, if that's what they want.”
+
+@19533 Eiji · エイジ
+> 「よかったら一緒にこないか?
+>  今の状態では君たちもつらいだろう」
+“If you'd like, why not come with us? Things must be rough for you as it is.”
+
+@19534 Anna · アンナ
+> 「それがいいわ。一緒にいらっしゃいよ」
+“That's a good idea. Come along with us.”
+
+@19535 Selain · セレイン（按段落 3DD2）
+> 「お前たち、よければ一緒にこい。
+>  しくじったことをつらいと思うのは
+“You two, come with us if you like. We know just as well how hard it is
+---
+>  こちらも一緒だ」
+to bear the weight of failure.”
+
+@19536 Anna · アンナ
+> 「それがいいわ。一緒にいらっしゃいよ」
+“That's a good idea. Come along with us.”
+
+@19537 Koji · 甲児
+> 「ちくしょうめ、まんまとしてやられたって
+>  わけかよ!?」
+“Damn it, so we got completely played, huh?!”
+
+@19538 Banjo · 万丈
+> 「敵の方が一枚上だったようだ。
+>  ギャリソンでもつかめなかったんだ
+“It seems the enemy was one step ahead. Even Garrison couldn't figure it out.
+---
+>  しかたがないさ」
+It can't be helped.”
+
+@19539 Koji · 甲児
+> 「それでいいのかよ!?」
+“And you're okay with that?!”
+
+@19540 Sayaka · さやか
+> 「落ち着きなさいよ甲児くん。
+>  今そんなこといってもしょうがないでしょ」
+“Calm down, Koji. There's no point saying that now.”
+
+@19541 Koji · 甲児
+> 「わかってるよ。けどさ」
+“I know. But still.”
+
+@19542 Banjo · 万丈
+> 「よりつらいのは、彼らの方だろう」
+“The ones hurting more are probably them.”
+
+@19543 Simone · シモーヌ
+> 「2人、残ったわね。後の3人は
+>  すぐにどこかへ消えちゃったけど」
+“Two of them stayed. The other three vanished somewhere right away, though.”
+
+@19544 Banjo · 万丈
+> 「君たちはどうするんだ? もしよければ
+>  一緒にいかないか?」
+“What about you two? If you'd like, why not come with us?”
+
+@19545 Duo · デュオ
+> 「頼む……今は、同情が気持ち
+>  いいぜ……」
+“Please... right now, a little sympathy feels good...”
+
+@19546 Quatre · カトル
+> 「僕も、同行させてください。今は、
+>  その方がいいと思います」
+“Please let me come along as well. I think that's for the best right now.”
+
+@19547 Rasid · ラシード
+> 「カトル様! 我々はそんなに
+>  頼りないですか?」
+“Master Quatre! Are we truly so unreliable?”
+
+@19548 Quatre · カトル
+> 「違うよラシード。マグアナック隊にだっ
+>  てまだやることはたくさんあるはずでしょう
+“That's not it, Rasid. Surely the Maganac Corps still has plenty of work to do.
+---
+>  まだまだ戦いは続くのだから」
+The fighting will go on for a long while yet.”
+
+@19549 Rasid · ラシード
+> 「まぁ、カトル様がそういうんならしかた
+>  ないですな。わかりました、我々は
+“Well, if that's how you feel, Master Quatre, it can't be helped. Understood. We'll
+---
+>  基地に戻ります。でも、なにかあった
+>  ら必ず呼んでくださいよ」
+head back to base. But if anything happens, you must call on us.”
+
+@19550 Quatre · カトル
+> 「もちろん。では、よろしくお願いします。
+>  僕はカトル、
+“Of course. Then I look forward to working with you. I'm Quatre,
+---
+>  カトル・ラバーバ・ウィナーです」
+Quatre Raberba Winner.”
+
+@19551 Quatre · カトル
+> 「もちろん。では、よろしくお願いします。
+>  万丈さん。改めて名乗ります
+“Of course. Then I look forward to working with you, Banjo. Let me introduce myself properly.
+---
+>  僕はカトル、カトル・ラバーバ・ウィナー
+>  です」
+I'm Quatre, Quatre Raberba Winner.”
+
+@19552 Duo · デュオ
+> 「俺はデュオ、デュオ・マックスウェルだ。
+>  逃げも隠れもするが、ウソはいわねぇ
+“I'm Duo, Duo Maxwell. I may run and hide, but I never tell a lie.
+---
+>  デュオ・マックスウェルだ」
+Duo Maxwell.”
+
+@19553 Roux · ルー
+> 「ブライト中佐たちが来たんですって?」
+“Lieutenant Colonel Bright and the others have arrived?”
+
+@19554 Simone · シモーヌ
+> 「今、万丈たちと話してるわ。サング
+>  ラスの人も一緒よ」
+“He's talking with Banjo and the others right now. The man in sunglasses is with him too.”
+
+@19555 David · デビッド
+> 「ブライトって、あのブライト・ノアだろう、
+>  一年戦争の?
+“Bright? You mean that Bright Noa, from the One Year War?
+---
+>  生きてるとは思わなかったぜ」
+I never thought he was still alive.”
+
+@19556 Roux · ルー
+> 「ブライト中佐もクワトロ大尉も、
+>  ライフの中核よ
+“Lieutenant Colonel Bright and Captain Quattro are the core of Liffe.
+---
+>  一体どうしたっていうんだか」
+What on earth is going on?”
+
+@19557 Banjo · 万丈
+> 「では我々に同行してもらえると?」
+“Then you'll come along with us?”
+
+@19558 Garrison · ギャリソン
+> 「それはそれは、心強いかぎりですな」
+“My, my, that is most reassuring.”
+
+@19559 Bright · ブライト
+> 「いや、しばらく船には乗っていなかった
+>  のです。カンがにぶっている」
+“No, I haven't been aboard a ship for a while. My instincts have gotten dull.”
+
+@19560 Banjo · 万丈
+> 「ブライトさんなら大丈夫。しかし解
+>  放戦線でも事態は深刻だと
+“With you around, Bright, we'll be fine. But even the Liberation Front
+---
+>  考えているわけか……」
+considers the situation serious, then...”
+
+@19561 Quattro · クワトロ
+> 「今回のことで士気がいちじるしく
+>  低下している。ブレックス准将や
+“Morale has dropped sharply because of this incident. Commodore Blex and
+---
+>  イゴール将軍はそれを憂慮している
+>  のだ。一部では我々が
+General Igor are worried about it. Some are even saying that we push too hard
+---
+>  異星人との徹底抗戦を求め
+>  すぎるあまり犠牲をかえりみない
+for all-out war with the aliens and care nothing for the sacrifices,
+---
+>  戦争を引き起こそうとしていると
+>  いう意見も出てきている」
+that we're trying to drag everyone into war.”
+
+@19562 Banjo · 万丈
+> 「それはカラバも同様だ。今まともに
+>  動けるのは我々だけだろうね」
+“It's the same for Karaba. Right now, we're probably the only ones who can move properly.”
+
+@19563 Quattro · クワトロ
+> 「そうだ。だから解放戦線も期待
+>  したいのさ。でなければ我々も
+“Exactly. That's why the Liberation Front wants to count on you too. Otherwise we
+---
+>  出張ってはこない」
+wouldn't have come out here ourselves.”
+
+@19564 Banjo · 万丈
+> 「なるほど。つまりこの部隊はカラバと
+>  解放戦線の双方が
+“I see. In other words, this unit will be backed by both Karaba
+---
+>  バックアップする部隊となるわけだね」
+and the Liberation Front.”
+
+@19565 Quattro · クワトロ
+> 「そういうことだ。よろしく頼む、
+>  万丈くん」
+“That's right. We're counting on you, Banjo.”
+
+@19566 Banjo · 万丈
+> 「こちらこそ。レイカ、みんなを集めてくれ
+>  解放戦線から加わった人たちを
+“Likewise. Reika, gather everyone. Let's introduce the people who joined us from the Liberation Front
+---
+>  みんなに紹介しよう」
+to the rest of the group.”
+
+@19567 Reika · レイカ
+> 「ええ。すぐ集まらせるわね」
+“Sure. I'll have them all assembled right away.”

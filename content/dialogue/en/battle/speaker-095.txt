@@ -1,0 +1,262 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6341 Heero · ヒイロ
+> 「敵対機発見……」
+“Hostile unit spotted...”
+
+@6342 Heero · ヒイロ
+> 「敵確認。これより突入する」
+“Enemy confirmed. Moving in.”
+
+@6343 Heero · ヒイロ
+> 「目標確認……破壊する」
+“Target confirmed... destroying it.”
+
+@6344 Heero · ヒイロ
+# 审校：“You ready to die?” 过度意译，原文“覚悟はいいな”只是问对方是否做好觉悟，未明确说死。
+> 「……覚悟はいいな」
+“...Are you prepared?”
+
+@6345 Heero · ヒイロ
+> 「戦闘レベル、ターゲット確認
+>  ……排除開始!」
+“Combat level, target confirmed... commencing elimination!”
+
+@6346 Heero · ヒイロ
+> 「障害は、取り除く」
+“Obstacles will be removed.”
+
+@6347 Heero · ヒイロ
+> 「俺の邪魔を……するな!」
+“Don't... get in my way!”
+
+@6348 Heero · ヒイロ
+# 审校：“picked the wrong fight” 语气偏口语，且与 L54 相同译文重复；改为更贴合 Heero 冷峻语气的说法。
+> 「相手が悪かったな」
+“You chose the wrong opponent.”
+
+@6349 Heero · ヒイロ
+> 「貴様の運はつきた」
+“Your luck's run out.”
+
+@6350 Heero · ヒイロ
+> 「ふ……」
+“Hmph...”
+
+@6351 Heero · ヒイロ
+> 「ターゲット確認!」
+“Target confirmed!”
+
+@6352 Heero · ヒイロ
+> 「む!!」
+“Ngh!!”
+
+@6353 Heero · ヒイロ
+> 「破壊してみせる!」
+“I'll destroy you!”
+
+@6354 Heero · ヒイロ
+> 「お前を……殺す!」
+“I'll... kill you!”
+
+@6355 Heero · ヒイロ
+# 审校：“direct hit!” 漏译了“させる”所表达的“我会让它直击”的动作意图。
+> 「ターゲット確認……直撃させる!」
+“Target confirmed... I'll hit it directly!”
+
+@6356 Heero · ヒイロ
+# 审校：原文省略号在“どこだ”前，译文把省略号位置放错，改为与原文停顿一致。
+> 「俺の敵は……どこだ!」
+“Where is my enemy...?!”
+
+@6357 Heero · ヒイロ
+> 「ターゲット、ロックオン……」
+“Target, lock on...”
+
+@6358 Heero · ヒイロ
+> 「オートロックオン……
+>  障害を排除する」
+“Auto lock-on... removing obstacles.”
+
+@6359 Heero · ヒイロ
+> 「戦術レベル最大効果確認!」
+“Maximum tactical effect confirmed!”
+
+@6360 Heero · ヒイロ
+> 「任務……失敗……」
+“Mission... failed...”
+
+@6361 Heero · ヒイロ
+> 「く……これまでか……」
+“Ngh... this is it...”
+
+@6362 Heero · ヒイロ
+> 「これで……何もかも終わりだ……」
+“This is... the end of everything...”
+
+@6363 Heero · ヒイロ
+> 「くっ、しまった……」
+“Ngh, damn it...”
+
+@6364 Heero · ヒイロ
+> 「俺は……俺は……俺は……
+>  俺は死なない!」
+“I... I... I... I won't die!”
+
+@6365 Heero · ヒイロ
+> 「まだしばらくはもつ……
+>  任務を継続する!」
+“I can hold out a while longer... continuing the mission!”
+
+@6366 Heero · ヒイロ
+> 「むっ! だが、まだ戦闘は可能だ」
+“Ngh! But I can still fight.”
+
+@6367 Heero · ヒイロ
+# 审校：“Situation unfavorable” 缺少冠词，英文不自然。
+> 「状況は不利……だが!」
+“The situation is unfavorable... but!”
+
+@6368 Heero · ヒイロ
+> 「まだ……戦える」
+“I can... still fight.”
+
+@6369 Heero · ヒイロ
+> 「俺は……死なない!」
+“I... won't die!”
+
+@6370 Heero · ヒイロ
+# 审校：原文是疑问语气“あったか”，译文用句号丢失了疑问感。
+> 「何っ! ここまでのパワーがあったか……」
+“What! It had this much power...?”
+
+@6371 Heero · ヒイロ
+> 「うぅ……くっ……!」
+“Ugh... ngh...!”
+
+@6372 Heero · ヒイロ
+> 「俺はひかない!」
+“I won't back down!”
+
+@6373 Heero · ヒイロ
+> 「まだまだ!」
+“Not done yet!”
+
+@6374 Heero · ヒイロ
+> 「つぅっ! ……当たったか……」
+“Tch! ...It hit, huh...”
+
+@6375 Heero · ヒイロ
+> 「ちっ、油断したか……」
+“Tch, I let my guard down...”
+
+@6376 Heero · ヒイロ
+> 「くっ! 少しはできるようだ」
+“Ngh! You're not half bad.”
+
+@6377 Heero · ヒイロ
+> 「くっ……!」
+“Ngh...!”
+
+@6378 Heero · ヒイロ
+# 审校：“What did you say...!” 是误译，原文“なんだと”在此是震惊的“什么”，不是“你说什么”。
+> 「なんだと……!」
+“What...?!”
+
+@6379 Heero · ヒイロ
+> 「うっ……」
+“Ugh...”
+
+@6380 Heero · ヒイロ
+# 审校：“thruster” 与原文“推進システム”不完全对应，且“やるなっ”是称赞对方，保留“not bad”即可；改为 propulsion system 更准确。
+> 「左推進システム異常……
+>  やるなっ!」
+“Left propulsion system abnormal... not bad!”
+
+@6381 Heero · ヒイロ
+> 「やるなっ!」
+“Not bad!”
+
+@6382 Heero · ヒイロ
+> 「くっ、進撃に時間がかかりすぎる!」
+“Ngh, this advance is taking too long!”
+
+@6383 Heero · ヒイロ
+> 「損傷軽微……任務続行」
+“Damage minor... continuing mission.”
+
+@6384 Heero · ヒイロ
+> 「この程度か」
+“Is that all?”
+
+@6385 Heero · ヒイロ
+> 「そんなものか!」
+“Is that all you've got!”
+
+@6386 Heero · ヒイロ
+> 「ふ……はははははっ!」
+“Heh... hahahahaha!”
+
+@6387 Heero · ヒイロ
+> 「ふん……笑わせるな」
+“Hmph... don't make me laugh.”
+
+@6388 Heero · ヒイロ
+# 审校：“その程度の力”带有轻视语气，应译为“that little power”而非中性的“that much power”。
+> 「その程度の力で、お前は何を
+>  するつもりだ」
+“With that little power, what do you intend to do?”
+
+@6389 Heero · ヒイロ
+> 「各部異常なし……」
+“All sections normal...”
+
+@6390 Heero · ヒイロ
+# 审校：“あまいな”在此是“太天真/太嫩”，不是“太慢”。
+> 「あまいな」
+“Too naive.”
+
+@6391 Heero · ヒイロ
+> 「残念だったな」
+“Too bad for you.”
+
+@6392 Heero · ヒイロ
+# 审校：与 L10 统一为“chose the wrong opponent”，避免同一句两种译法。
+> 「ふ……相手が悪かったな」
+“Heh... you chose the wrong opponent.”
+
+@6393 Heero · ヒイロ
+> 「そこかっ!」
+“There!”
+
+@6394 Heero · ヒイロ
+> 「当たりはしない」
+“You won't hit me.”
+
+@6395 Heero · ヒイロ
+> 「回避、成功」
+“Evasion successful.”
+
+@6396 Heero · ヒイロ
+> 「回避運動、完了」
+“Evasive maneuver complete.”
+
+@6397 Heero · ヒイロ
+> 「余裕で逃げきれる」
+“I can dodge this easily.”
+
+@6398 Heero · ヒイロ
+> 「ダメージ、0……ムダな事をする」
+“Damage, zero... what a waste of effort.”
+
+@6399 Heero · ヒイロ
+> 「各部正常、ダメージ……0」
+“All sections normal, damage... zero.”
+
+@6400 Heero · ヒイロ
+> 「弾がつきたか」
+“Out of ammo, huh.”
+
+@6401 Heero · ヒイロ
+> 「レンジ外からの攻撃か……」
+“An attack from out of range...”

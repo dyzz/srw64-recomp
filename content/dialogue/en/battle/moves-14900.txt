@@ -1,0 +1,442 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14900 Jun · ジュン
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@14901 Jun · ジュン
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@14902 Jun · ジュン
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@14903 Jun · ジュン
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@14904 Jun · ジュン
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@14905 Jun · ジュン
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@14906 Jun · ジュン
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@14907 Jun · ジュン
+> 「ミサイル発射ッ!!」
+“Missile launch!!”
+
+@14908 Jun · ジュン
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@14909 Jun · ジュン
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@14910 Jun · ジュン
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@14911 Jun · ジュン
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@14912 Jun · ジュン
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@14913 Jun · ジュン
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@14914 Jun · ジュン
+> 「大車輪ロケットパーンチッ!」
+“Great Wheel Rocket Punch!”
+
+@14915 Jun · ジュン
+> 「ミサイル発射!」
+“Missile launch!”
+
+@14916 Jun · ジュン
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@14917 Jun · ジュン
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@14918 Jun · ジュン
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@14919 Jun · ジュン
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@14920 Jun · ジュン
+> 「え? 言わなきゃダメ?
+>  じゃ、じゃあ……ボロットパンチ!」
+“Huh? I have to say it? O-okay then... Borot Punch!”
+
+@14921 Jun · ジュン
+> 「ス、スペシャルパンチ!」
+“S-Special Punch!”
+
+@14922 Jun · ジュン
+> 「ス、スペシャルデラックス、ゴールデンデリ
+>  シャス……なんか恥ずかしいわ」
+“S-Special Deluxe, Golden Delicious... this is kind of embarrassing.”
+
+@14923 Jun · ジュン
+> 「やん! やっぱりボロットじゃ無理よ!」
+“Eek! I knew Borot just can't do it!”
+
+@14924 Jun · ジュン
+> 「ダメっ! ビューナス、立って!
+>  戦うのよっ!」
+“No! Venus, stand up! Fight!”
+
+@14925 Jun · ジュン
+> 「あうっ! そんな、グレートでも歯が
+>  立たないの!?」
+“Ouch! No way, even Great can't beat it?!”
+
+@14926 Jun · ジュン
+> 「ビューナスの力、なめないでよね!」
+“Don't underestimate Venus's power!”
+
+@14927 Jun · ジュン
+> 「さすがはグレートマジンガー、
+>  大したものね」
+“As expected of Great Mazinger, impressive.”
+
+@14928 Jun · ジュン
+> 「超合金のボディ、甘くみないでよ!」
+“Don't underestimate this super-alloy body!”
+
+@14929 Jun · ジュン
+> 「超合金のボディ、甘くみないでよ!」
+“Don't underestimate this super-alloy body!”
+
+@14930 Jun · ジュン
+> 「超合金のボディ、甘くみないでよ!」
+“Don't underestimate this super-alloy body!”
+
+@14931 Tetsuya · 鉄也
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@14932 Tetsuya · 鉄也
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@14933 Tetsuya · 鉄也
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@14934 Tetsuya · 鉄也
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@14935 Tetsuya · 鉄也
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@14936 Tetsuya · 鉄也
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@14937 Tetsuya · 鉄也
+> 「マリンビーム!」
+“Marine Beam!”
+
+@14938 Tetsuya · 鉄也
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@14939 Tetsuya · 鉄也
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@14940 Tetsuya · 鉄也
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@14941 Tetsuya · 鉄也
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@14942 Tetsuya · 鉄也
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@14943 Tetsuya · 鉄也
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@14944 Tetsuya · 鉄也
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@14945 Tetsuya · 鉄也
+> 「アトミックパンチ!」
+“Atomic Punch!”
+
+@14946 Tetsuya · 鉄也
+> 「ドリルプレッシャーパンチ!」
+“Drill Pressure Punch!”
+
+@14947 Tetsuya · 鉄也
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@14948 Tetsuya · 鉄也
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@14949 Tetsuya · 鉄也
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@14950 Tetsuya · 鉄也
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@14951 Tetsuya · 鉄也
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@14952 Tetsuya · 鉄也
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@14953 Tetsuya · 鉄也
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@14954 Tetsuya · 鉄也
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@14955 Tetsuya · 鉄也
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@14956 Tetsuya · 鉄也
+> 「アトミックパンチ!」
+“Atomic Punch!”
+
+@14957 Tetsuya · 鉄也
+> 「ドリルプレッシャーパンチ!」
+“Drill Pressure Punch!”
+
+@14958 Tetsuya · 鉄也
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@14959 Tetsuya · 鉄也
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@14960 Tetsuya · 鉄也
+> 「グレートブースター!」
+“Great Booster!”
+
+@14961 Ryoma · リョウ
+> 「そっちはいけるのか!?」
+“Can you make it on your end?!”
+
+@14962 Tetsuya · 鉄也
+> 「いつでもいいぜ!」
+“I'm ready anytime!”
+
+@14963 Ryoma · リョウ
+> 「いくぞ、俺たちのパワーを受けてみろ!」
+“Here we go, take the power of all of us!”
+---
+> 「ツイィィィン・ビィィィィィィィィムッ!!」
+“Twi-i-i-in Be-e-e-e-e-e-eam!!”
+
+@14964 Duke · デューク
+> 「鉄也くん、頼むぞ!」
+“Tetsuya, I'm counting on you!”
+
+@14965 Tetsuya · 鉄也
+> 「そっちこそ、はずさないでくれよ!」
+“Same to you, don't you miss!”
+
+@14966 Duke · デューク
+> 「まかせてくれ!」
+“Leave it to me!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@14967 Koji · 甲児
+> 「すまねぇ、頼むぜ!」
+“Sorry, I'm counting on you!”
+
+@14968 Tetsuya · 鉄也
+> 「まかせな!」
+“Leave it to me!”
+
+@14969 Koji · 甲児
+> 「よーし!」
+“All right!”
+---
+> 「ダブルバーニングファイヤーッ!!」
+“Double Burning Fire!!”
+
+@14970 Tetsuya · 鉄也
+> 「ボス! わかってんだろうな!?」
+“Boss! You know what to do, right?!”
+
+@14971 Boss · ボス
+> 「あったり前だわさ!」
+“'Course I do, boss!”
+
+@14972 Tetsuya · 鉄也
+> 「信じるぜ!」
+“I believe in you!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@14973 Tetsuya · 鉄也
+> 「ジュン、いいな!?」
+“Jun, you ready?!”
+
+@14974 Jun · ジュン
+> 「もちろん、鉄也!」
+“Of course, Tetsuya!”
+
+@14975 Tetsuya · 鉄也
+> 「くらいやがれ!」
+“Take this!”
+---
+> 「ダブルバーニングファイヤー!!」
+“Double Burning Fire!!”
+
+@14976 Duke · デューク
+> 「いくぞ、みんな!」
+“Here we go, everyone!”
+
+@14977 Koji · 甲児
+> 「わかったぜ!」
+“Got it!”
+
+@14978 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14979 Duke · デューク
+> 「いくぞ、みんな!」
+“Here we go, everyone!”
+
+@14980 Boss · ボス
+> 「わかっただわさ!」
+“Got it, boss!”
+
+@14981 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14982 Duke · デューク
+> 「いくぞ、みんな!」
+“Here we go, everyone!”
+
+@14983 Jun · ジュン
+> 「わかったわ!」
+“Got it!”
+
+@14984 Tetsuya · 鉄也
+> 「くらえ!」
+“Take this!”
+---
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@14985 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14986 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@14987 Koji · 甲児
+> 「いつでもいいぜ!」
+“I'm ready anytime!”
+
+@14988 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14989 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14990 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@14991 Boss · ボス
+> 「やってやろうじゃないのよ!」
+“Let's get 'em!”
+
+@14992 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14993 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@14994 Duke · デューク
+> 「準備完了!」
+“Ready!”
+
+@14995 Jun · ジュン
+> 「いつでもいいわよ!」
+“Any time you are!”
+
+@14996 Tetsuya · 鉄也
+> 「これで決まりだ!」
+“This settles it!”
+---
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@14997 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@14998 Koji · 甲児
+> 「たたきこんでやるぜ!」
+“I'm gonna smash 'em in!”
+
+@14999 Tetsuya · 鉄也
+> 「うなれ、鉄拳!」
+“Roar, iron fist!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”

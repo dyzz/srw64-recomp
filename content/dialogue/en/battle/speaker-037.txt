@@ -1,0 +1,62 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10632 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「見ててください、ブライト艦長」
+“Please watch me, Captain Bright.”
+
+@10633 Emary · エマリー
+> 「やらせませんよ!」
+“I won't let you!”
+
+@10634 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、私、やります!」
+“Captain Bright, I'll do it!”
+
+@10635 Emary · エマリー
+> 「ブライトォォォーッ!」
+“Briiiight!”
+
+@10636 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「あぁぁーっ!?
+>  ブライト艦長、守ってください!」
+“Aaaa?! Captain Bright, please protect me!”
+
+@10637 Emary · エマリー
+> 「きゃあぁぁぁぁぁぁーっ!」
+“Kyaaaaaaa!”
+
+@10638 Emary · エマリー
+> 「ど、どうしましょう!?」
+“Wh-what should we do?!”
+
+@10639 Emary · エマリー
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「あうぅっ! ブ、ブライト艦長……」
+“Agh! C-Captain Bright...”
+
+@10640 Emary · エマリー
+> 「あたったの!?」
+“We got hit?!”
+
+@10641 Emary · エマリー
+> 「ひ、被害状況は!?」
+“Wh-what's the damage?!”
+
+@10642 Emary · エマリー
+> 「はずれた!?」
+“It missed?!”
+
+@10643 Emary · エマリー
+> 「ど、どうしましょう!?」
+“Wh-what should we do?!”
+
+@10644 Emary · エマリー
+> 「ど、どうしましょう!?」
+“Wh-what should we do?!”
+
+@10645 Emary · エマリー
+> 「あ、あんな所から攻撃してくるの!?」
+“Th-they're attacking from over there?!”

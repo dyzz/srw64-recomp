@@ -1,0 +1,427 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15900 Koji · 甲児
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15901 Koji · 甲児
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15902 Koji · 甲児
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15903 Koji · 甲児
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15904 Koji · 甲児
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15905 Koji · 甲児
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15906 Koji · 甲児
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15907 Koji · 甲児
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15908 Koji · 甲児
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15909 Koji · 甲児
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15910 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「このやろう!」
+“Why you!”
+---
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15911 Koji · 甲児
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15912 Koji · 甲児
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15913 Koji · 甲児
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15914 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「こいつでとどめだ!!」
+“This finishes it!!”
+---
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15915 Koji · 甲児
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15916 Koji · 甲児
+# 审校：原文第1页结尾有句号，译文应保留句号；第2页开头不需要重复左引号。
+> 「こいつでとどめだ!!」
+“This finishes it!!”
+---
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15917 Koji · 甲児
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15918 Koji · 甲児
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15919 Koji · 甲児
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15920 Koji · 甲児
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15921 Koji · 甲児
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15922 Koji · 甲児
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15923 Koji · 甲児
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15924 Koji · 甲児
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15925 Koji · 甲児
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15926 Koji · 甲児
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15927 Koji · 甲児
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15928 Koji · 甲児
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15929 Koji · 甲児
+> 「グレートブースター!」
+“Great Booster!”
+
+@15930 Koji · 甲児
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15931 Koji · 甲児
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15932 Koji · 甲児
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15933 Koji · 甲児
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15934 Koji · 甲児
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15935 Koji · 甲児
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15936 Koji · 甲児
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15937 Koji · 甲児
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15938 Koji · 甲児
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15939 Koji · 甲児
+> 「ボロットパーンチ!!」
+“Borot Punch!!”
+
+@15940 Koji · 甲児
+> 「スペシャルボロットパーンチ!!
+>  ……効かねえかな?」
+“Special Borot Punch!! ...Didn't even faze you, huh?”
+
+@15941 Koji · 甲児
+> 「スペシャルデラックスゴールデンデリシャッ
+>  ……あいて、舌かんだ」
+“Special Deluxe Golden Delish... ow, I bit my tongue.”
+
+@15942 Koji · 甲児
+> 「ちくしょう! グレートが
+>  やられるなんて!!」
+“Damn it! I can't believe Great got beaten!!”
+
+@15943 Koji · 甲児
+> 「ちくしょう! マジンガーが
+>  やられるなんて!!」
+“Damn it! I can't believe Mazinger got beaten!!”
+
+@15944 Koji · 甲児
+> 「ちくしょう! マジンガーが
+>  やられるなんて!!」
+“Damn it! I can't believe Mazinger got beaten!!”
+
+@15945 Koji · 甲児
+> 「くそっ! グレートがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Great would go down from that?!”
+
+@15946 Koji · 甲児
+> 「くそっ! マジンガーがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Mazinger would go down from that?!”
+
+@15947 Koji · 甲児
+> 「くそっ! マジンガーがこんなもんで
+>  やられるかよっ!」
+“Damn! You think Mazinger would go down from that?!”
+
+@15948 Koji · 甲児
+> 「そんなもんでこのグレートを
+>  倒す気かよ!!」
+“You think that's enough to take down this Great?!”
+
+@15949 Koji · 甲児
+> 「そんなもんでこのマジンガーを
+>  倒す気かよ!!」
+“You think that's enough to take down this Mazinger?!”
+
+@15950 Koji · 甲児
+> 「そんなもんでこのマジンガーを
+>  倒す気かよ!!」
+“You think that's enough to take down this Mazinger?!”
+
+@15951 Koji · 甲児
+> 「超合金ニューZはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy New Z won't even flinch at an attack like that!”
+
+@15952 Koji · 甲児
+> 「超合金Zはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy Z won't even flinch at an attack like that!”
+
+@15953 Koji · 甲児
+> 「超合金Zはそんな攻撃じゃ
+>  ビクともしないぜ!」
+“Super Alloy Z won't even flinch at an attack like that!”
+
+@15954 Koji · 甲児
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15955 Koji · 甲児
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15956 Koji · 甲児
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15957 Koji · 甲児
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15958 Koji · 甲児
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15959 Koji · 甲児
+> 「ミサイル!!」
+“Missile!!”
+
+@15960 Koji · 甲児
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15961 Koji · 甲児
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15962 Koji · 甲児
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15963 Koji · 甲児
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15964 Koji · 甲児
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15965 Koji · 甲児
+> 「大車輪ロケットパーンチッ!!」
+“Big Wheel Rocket Punch!!”
+
+@15966 Koji · 甲児
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15967 Koji · 甲児
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15968 Koji · 甲児
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@15969 Koji · 甲児
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15970 Koji · 甲児
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15971 Koji · 甲児
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15972 Koji · 甲児
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15973 Koji · 甲児
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15974 Koji · 甲児
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15975 Koji · 甲児
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15976 Koji · 甲児
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15977 Koji · 甲児
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15978 Koji · 甲児
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15979 Koji · 甲児
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15980 Koji · 甲児
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15981 Koji · 甲児
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15982 Koji · 甲児
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15983 Koji · 甲児
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15984 Koji · 甲児
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15985 Koji · 甲児
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15986 Koji · 甲児
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15987 Koji · 甲児
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15988 Koji · 甲児
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15989 Koji · 甲児
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15990 Koji · 甲児
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15991 Koji · 甲児
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15992 Koji · 甲児
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15993 Koji · 甲児
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15994 Koji · 甲児
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15995 Koji · 甲児
+> 「グレートブースター!」
+“Great Booster!”
+
+@15996 Koji · 甲児
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15997 Koji · 甲児
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15998 Koji · 甲児
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15999 Koji · 甲児
+> 「光子力ミサイル!」
+“Photon Missile!”

@@ -1,0 +1,425 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14400 Takeru · タケル
+# 审校：原文“衝撃波ぁぁぁっ!”有拖长音，初稿丢失气势，改为拖长音写法。
+# 检查提示：未用必用译名：衝撃波→Shockwave
+> 「衝撃波ぁぁぁっ!」
+“Shockwaaave!”
+
+@14401 Takeru · タケル
+# 审校：同 L36，保留拖长音。
+# 检查提示：未用必用译名：衝撃波→Shockwave
+> 「衝撃波ぁぁぁっ!」
+“Shockwaaave!”
+
+@14402 Takeru · タケル
+# 审校：原文“ゴッドファイヤァァーッ!”有拖长音，初稿丢失气势，改为拖长音写法。
+> 「ゴッドファイヤァァーッ!」
+“God Fiiire!”
+
+@14403 Takeru · タケル
+# 审校：原文“マァァァズフラァッシュ!”有拖长音，初稿丢失气势，改为拖长音写法。
+> 「マァァァズフラァッシュ!」
+“Maaars Flaaash!”
+
+@14404 Takeru · タケル
+# 审校：原文“ファイナル・ゴッドマァァァァァズ!!”有拖长音，初稿丢失气势，改为拖长音写法。
+> 「ファイナル・ゴッドマァァァァァズ!!」
+“Final Godmaaaars!!”
+
+@14405 Takeru · タケル
+> 「いくんだ! ゴッドマーズ!」
+“Let's go! Godmars!”
+
+@14406 Baren · バレン
+> 「マーズ覚悟!」
+“Prepare yourself, Mars!”
+
+@14407 Baren · バレン
+> 「フフフ、ゆくぞマーズ!」
+“Heh heh, here I come, Mars!”
+
+@14408 Baren · バレン
+> 「死ねマーズ!」
+“Die, Mars!”
+
+@14409 Baren · バレン
+# 审校：原文“どうだマーズ!”是感叹句，初稿加了问号，改为感叹号。
+> 「どうだマーズ!」
+“How's that, Mars!”
+
+@14410 Baren · バレン
+> 「マーズ、もはや最後だ。観念するが
+>  いい!」
+“Mars, this is the end. Give it up!”
+
+@14411 Baren · バレン
+> 「おのれマーズ!」
+“Curse you, Mars!”
+
+@14412 Baren · バレン
+> 「フフ、その程度かマーズ」
+“Heh, is that all, Mars?”
+
+@14413 Emperor Zuul · ズール皇帝
+> 「マーズ! 裏切り者は死ね!」
+“Mars! Traitors must die!”
+
+@14414 Emperor Zuul · ズール皇帝
+> 「ワシに逆らった者は死ぬのだ、
+>  マーズ!」
+“Those who defy me die, Mars!”
+
+@14415 Emperor Zuul · ズール皇帝
+> 「あきらめの悪い奴めっ!」
+“You just won't give up!”
+
+@14416 Emperor Zuul · ズール皇帝
+> 「生かしては帰さぬ!」
+“I won't let you leave alive!”
+
+@14417 Emperor Zuul · ズール皇帝
+# 审校：原文“フハハハハハハッ!”笑声拼写更接近 Fwahahaha，初稿 Fuhahaha 不够自然，改为 Fwahahahahaha。
+> 「フハハハハハハッ!」
+“Fwahahahahaha!”
+
+@14418 Emperor Zuul · ズール皇帝
+> 「ばかめぇ!」
+“You fool!”
+
+@14419 Kenji · ケンジ
+> 「よし、いくぞ!」
+“All right, let's go!”
+
+@14420 Naoto · ナオト
+> 「逃がすもんかい!」
+“You think I'll let you get away?!”
+
+@14421 Naoto · ナオト
+# 审校：原文“しゃらくせぇ”是“しゃらくさい”的粗俗说法，意为“狂妄/不知天高地厚”，初稿 Don't mess with me 偏离原意，改为 Cheeky。
+> 「しゃらくせぇ」
+“Cheeky.”
+
+@14422 Naoto · ナオト
+> 「いまだ!」
+“Now!”
+
+@14423 Naoto · ナオト
+> 「よし! いただきだ!」
+“Yes! It's mine!”
+
+@14424 Naoto · ナオト
+> 「くらえ!」
+“Take this!”
+
+@14425 Naoto · ナオト
+> 「許せねぇ!」
+“I won't forgive you!”
+
+@14426 Kenji · ケンジ
+> 「よしっ、攻撃だ!」
+“All right, attack!”
+
+@14427 Naoto · ナオト
+> 「了解」
+“Roger.”
+
+@14428 Kenji · ケンジ
+> 「ナオト、攻撃用意!」
+“Naoto, prepare to attack!”
+
+@14429 Naoto · ナオト
+> 「了解」
+“Roger.”
+
+@14430 Kenji · ケンジ
+> 「攻撃開始!」
+“Begin the attack!”
+
+@14431 Naoto · ナオト
+> 「了解」
+“Roger.”
+
+@14432 Kenji · ケンジ
+> 「コスモレーザーだ」
+“Cosmo Laser.”
+
+@14433 Naoto · ナオト
+> 「了解」
+“Roger.”
+
+@14434 Kenji · ケンジ
+> 「目標はわかっているな。タイミングを
+>  あわせろ!」
+“You know the target. Match your timing!”
+
+@14435 Naoto · ナオト
+> 「了解」
+“Roger.”
+
+@14436 Kenji · ケンジ
+> 「ナオト、攻撃だ!」
+“Naoto, attack!”
+
+@14437 Naoto · ナオト
+> 「OK!」
+“OK!”
+
+@14438 Mika · ミカ
+> 「目標発見!」
+“Target spotted!”
+
+@14439 Kenji · ケンジ
+> 「よしっ、攻撃しろ!」
+“All right, fire!”
+
+@14440 Naoto · ナオト
+# 审校：「いやがったな」在此处是发现敌人后的感叹，初稿“They're here”语气偏陈述，改为“There they are”更自然。
+> 「いやがったな。アキラ、しっかり
+>  操縦してろよ!」
+“There they are. Akira, keep this thing steady!”
+
+@14441 Akira · アキラ
+> 「まかしといて!」
+“Leave it to me!”
+
+@14442 Naoto · ナオト
+> 「アキラ、いくぞ」
+“Akira, here we go.”
+
+@14443 Akira · アキラ
+> 「おおっ!」
+“Ohh!”
+
+@14444 Naoto · ナオト
+> 「アキラ! 狙いがつけられないぞ!」
+“Akira! I can't get a lock!”
+
+@14445 Akira · アキラ
+# 审校：「人のせいにしないの!」是“别怪别人/别推到我头上”，初稿“for it”多余且语气略弱，改为更口语的“Don't blame me!”
+> 「人のせいにしないの!」
+“Don't blame me!”
+
+@14446 Mika · ミカ
+> 「隊長!?」
+“Commander?!”
+
+@14447 Kenji · ケンジ
+> 「まだ大丈夫だ」
+“I'm still fine.”
+
+@14448 Naoto · ナオト
+> 「もっとスピードはあがらないのか!?」
+“Can't you go any faster?!”
+
+@14449 Akira · アキラ
+# 审校：「これで精いっぱいなの!」表示“已经到极限了”，初稿“as fast as it goes”不自然，改为“as fast as it gets”。
+> 「これで精いっぱいなの!」
+“This is as fast as it gets!”
+
+@14450 Kenji · ケンジ
+> 「みんな気を抜くな!」
+“Everyone, stay sharp!”
+
+@14451 Mika · ミカ
+> 「了解!」
+“Roger!”
+
+@14452 Kenji · ケンジ
+> 「ナオト!?」
+“Naoto?!”
+
+@14453 Naoto · ナオト
+> 「隊長、弾切れです!」
+“Commander, I'm out of ammo!”
+
+@14454 Kenji · ケンジ
+> 「ミカ!?」
+“Mika?!”
+
+@14455 Mika · ミカ
+# 审校：「敵は射程外です」中“敵”是单数，初稿“The enemy's”缩写虽可接受，但正式战斗报告语气下用“The enemy is”更清晰。
+> 「敵は射程外です!」
+“The enemy is out of range!”
+
+@14456 Daisaku · 大作
+> 「撃て! ロボ!」
+“Fire! Robo!”
+
+@14457 Daisaku · 大作
+> 「撃て! ロボ!」
+“Fire! Robo!”
+
+@14458 Daisaku · 大作
+> 「撃て! ロボ!」
+“Fire! Robo!”
+
+@14459 Daisaku · 大作
+> 「うてっ! ジャイアント・ロボォォォォッ!」
+“Fire! Giant Roboooooo!”
+
+@14460 Daisaku · 大作
+> 「うてっ! ジャイアント・ロボォォォォッ!」
+“Fire! Giant Roboooooo!”
+
+@14461 Daisaku · 大作
+> 「うてっ! ジャイアント・ロボォォォォッ!」
+“Fire! Giant Roboooooo!”
+
+@14462 Daisaku · 大作
+> 「叩け、ジャイアント・ロボ!」
+“Strike, Giant Robo!”
+
+@14463 Daisaku · 大作
+> 「叩け! ロボ!」
+“Strike! Robo!”
+
+@14464 Daisaku · 大作
+> 「くだけ! ロボ!」
+“Smash it! Robo!”
+
+@14465 Daisaku · 大作
+> 「パンチだ、ロボ!」
+“Punch, Robo!”
+
+@14466 Daisaku · 大作
+> 「ロボ、そいつを叩きだせ!」
+“Robo, knock that one down!”
+
+@14467 Daisaku · 大作
+> 「くだけっ、ジャイアント・ロボ!」
+“Smash it, Giant Robo!”
+
+@14468 Ginrei · 銀鈴
+> 「銀鈴アターッック!」
+“Ginrei Attaaack!”
+
+@14469 Ginrei · 銀鈴
+> 「いくわよ! 銀鈴アターッック!」
+“Here I go! Ginrei Attaaack!”
+
+@14470 Ginrei · 銀鈴
+> 「ミサイルパーンチッ!」
+“Missile Paaunch!”
+
+@14471 Ginrei · 銀鈴
+> 「銀鈴ーっキィィーック!」
+“Ginrei Kiiiiick!”
+
+@14472 Ginrei · 銀鈴
+> 「オッパイィミサイルッ!」
+“Oppai Missiiile!”
+
+@14473 Ginrei · 銀鈴
+> 「オッパイミサイル、発射!」
+“Oppai Missile, fire!”
+
+@14474 Alberto · アルベルト
+> 「ダミーだっ!」
+“It's a decoy!”
+
+@14475 Ko Enshaku · コエンシャク
+> 「……………」
+“...”
+
+@14476 Alberto · アルベルト
+> 「貴様、余計な事をっ」
+“You... you meddlesome fool!”
+
+@14477 Ko Enshaku · コエンシャク
+> 「……………」
+“...”
+
+@14478 Alberto · アルベルト
+> 「ふんっ」
+“Hmph.”
+
+@14479 Eiji · エイジ
+> 「こいゴステロ! 勝負だ!」
+“Come on, Gosterro! Let's settle this!”
+
+@14480 Eiji · エイジ
+> 「こいゴステロ! 勝負だ!」
+“Come on, Gosterro! Let's settle this!”
+
+@14481 Eiji · エイジ
+> 「レイ、ナックルへのエネルギー最大!」
+“Rei, max energy to the knuckle!”
+
+@14482 Rei · レイ
+> 「レディ」
+“Lady.”
+
+@14483 Eiji · エイジ
+> 「レイ、V-MAX発動!」
+“Rei, activate V-MAX!”
+
+@14484 Rei · レイ
+> 「レディ」
+“Lady.”
+
+@14485 Eiji · エイジ
+> 「カーフミサイル、発射」
+“Calf Missile, fire.”
+
+@14486 Rei · レイ
+> 「ターゲット捕捉!」
+“Target captured!”
+
+@14487 Eiji · エイジ
+> 「いまだっ!」
+“Now!”
+
+@14488 Rei · レイ
+> 「ターゲット捕捉!」
+“Target captured!”
+
+@14489 Eiji · エイジ
+> 「いまだっ!」
+“Now!”
+
+@14490 Rei · レイ
+> 「左上腕部駆動回路切断」
+“Left upper arm drive circuit severed.”
+
+@14491 Eiji · エイジ
+> 「くそぉっ!」
+“Damn it!”
+
+@14492 Rei · レイ
+> 「左上腕部駆動回路切断」
+“Left upper arm drive circuit severed.”
+
+@14493 Eiji · エイジ
+> 「くそぉっ!」
+“Damn it!”
+
+@14494 Rei · レイ
+# 审校：“状況好転ノ見込ミナシ”应译为“no prospect of improvement”，初稿的 recovery 偏离原意。
+> 「アラーム! 状況好転ノ
+>  見込ミナシ!」
+“Alarm! No prospect of improvement!”
+
+@14495 Eiji · エイジ
+> 「まだ……まだだ!!」
+“Not yet... not yet!!”
+
+@14496 Rei · レイ
+# 审校：同上，修正误译。
+> 「アラーム! 状況好転ノ
+>  見込ミナシ!」
+“Alarm! No prospect of improvement!”
+
+@14497 Eiji · エイジ
+> 「まだ……まだだ!!」
+“Not yet... not yet!!”
+
+@14498 Rei · レイ
+# 审校：“現状維持ハ危険”指维持现状很危险，初稿“Maintaining status is dangerous”不自然且意思含糊。
+> 「駆動部過大負荷!
+>  現状維持ハ危険!」
+“Drive unit overloaded! Maintaining current status is dangerous!”
+
+@14499 Eiji · エイジ
+> 「しまった!」
+“Damn!”

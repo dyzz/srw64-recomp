@@ -1,0 +1,137 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9749 Marquis Janus · ヤヌス侯爵
+> 「いるいる、獲物がいるぞ!」
+“There, there, there's prey!”
+
+@9750 Marquis Janus · ヤヌス侯爵
+> 「勝利はこちらのもの」
+“Victory is ours.”
+
+@9751 Marquis Janus · ヤヌス侯爵
+> 「勝負はこっちのもの!」
+“The battle is ours!”
+
+@9752 Marquis Janus · ヤヌス侯爵
+> 「フハハハハ、たっぷり歓迎してあげるよ!」
+“Fuhahahaha, I'll give you a warm welcome!”
+
+@9753 Marquis Janus · ヤヌス侯爵
+> 「よく来たね、おまえたち!」
+“Welcome, all of you!”
+
+@9754 Marquis Janus · ヤヌス侯爵
+> 「ハハハハ、これからが楽しみだわ!」
+“Hahahaha, the fun's just beginning!”
+
+@9755 Marquis Janus · ヤヌス侯爵
+> 「生意気な奴め!
+>  これでもくらえ!」
+“Insolent fool! Take this!”
+
+@9756 Marquis Janus · ヤヌス侯爵
+> 「連続的に攻撃するのは
+>  勝利への道だ!」
+“Attacking relentlessly is the road to victory!”
+
+@9757 Marquis Janus · ヤヌス侯爵
+> 「くそう、あと一歩というところで……」
+“Curse it, just one step short...”
+
+@9758 Marquis Janus · ヤヌス侯爵
+> 「こ、こんなバカな……!?」
+“Th-this can't be...?!”
+
+@9759 Marquis Janus · ヤヌス侯爵
+> 「ぎゃあぁぁぁぁぁぁっ!!」
+“Gyaaaaaaah!”
+
+@9760 Marquis Janus · ヤヌス侯爵
+> 「おのれ! おのれおのれぇっ!!」
+“Curse you! Curse you, curse you!”
+
+@9761 Marquis Janus · ヤヌス侯爵
+> 「ううう、覚えていろ!」
+“Ugh, you'll remember this!”
+
+@9762 Marquis Janus · ヤヌス侯爵
+> 「な、何ごとがおこったのじゃ!?」
+“W-what in the world happened?!”
+
+@9763 Marquis Janus · ヤヌス侯爵
+> 「くっ……このままではすまさんぞ!!」
+“Ngh... you won't get away with this!”
+
+@9764 Marquis Janus · ヤヌス侯爵
+> 「あくまで勝負する気だな」
+“So you mean to fight to the end.”
+
+@9765 Marquis Janus · ヤヌス侯爵
+> 「どうした?」
+“What's the matter?”
+
+@9766 Marquis Janus · ヤヌス侯爵
+> 「おとなしくしてればいい気になりおって
+>  見ていろ、叩きつぶしてやる!」
+“Just because I stay quiet, you get cocky. Watch me crush you!”
+
+@9767 Marquis Janus · ヤヌス侯爵
+> 「くそう、敵もやるな」
+“Curse it, the enemy's good too.”
+
+@9768 Marquis Janus · ヤヌス侯爵
+> 「束の間の夢を見てるがいい」
+“Enjoy your fleeting dream while you can.”
+
+@9769 Marquis Janus · ヤヌス侯爵
+> 「フハハハハ、さぞかし悔しいだろうよ」
+“Fuhahahaha, you must be so frustrated.”
+
+@9770 Marquis Janus · ヤヌス侯爵
+> 「ハハハハ、頼りにならない者たちよ」
+“Hahahaha, what unreliable lot you are.”
+
+@9771 Marquis Janus · ヤヌス侯爵
+> 「まぬけな奴らだ!」
+“What fools!”
+
+@9772 Marquis Janus · ヤヌス侯爵
+> 「ハハハッ、まだ抵抗するつもりか!?」
+“Hahaha, you still mean to resist?!”
+
+@9773 Marquis Janus · ヤヌス侯爵
+> 「今度はお前の落ちる番だな!」
+“Now it's your turn to fall!”
+
+@9774 Marquis Janus · ヤヌス侯爵
+> 「フフフ、万事うまくいっている」
+“Hehehe, everything is going well.”
+
+@9775 Marquis Janus · ヤヌス侯爵
+> 「そうはさせぬぞ、フフフフフ」
+“I won't let you, hehehehe.”
+
+@9776 Marquis Janus · ヤヌス侯爵
+> 「これでいい、これでいいのだ!」
+“This is good, this is how it should be!”
+
+@9777 Marquis Janus · ヤヌス侯爵
+> 「これでいい、これでいいのだ!」
+“This is good, this is how it should be!”
+
+@9778 Marquis Janus · ヤヌス侯爵
+> 「どうだ? 観念したかね?」
+“Well? Have you given up?”
+
+@9779 Marquis Janus · ヤヌス侯爵
+> 「反撃できぬというのか!?
+>  ええぃ、なんというザマだ!」
+“You can't counterattack?! Ugh, what a sorry sight!”
+
+@9780 Marquis Janus · ヤヌス侯爵
+> 「ど、どうしたのだ!?」
+“W-what's going on?!”
+
+@9781 Marquis Janus · ヤヌス侯爵
+> 「ええい、届かぬではないかぁっ!!」
+“Ugh, it doesn't reach!”

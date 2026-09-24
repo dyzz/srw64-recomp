@@ -1,0 +1,130 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6680 Hilde · ヒルデ
+> 「やらせないわ」
+“I won't let you.”
+
+@6681 Hilde · ヒルデ
+> 「あたしがやらせないわっ!」
+“I won't let you do it!”
+
+@6682 Hilde · ヒルデ
+> 「さぁおとなしくしなさい」
+“Now, be a good boy and give up.”
+
+@6683 Hilde · ヒルデ
+> 「逃がすものか」
+“Like I'd let you get away.”
+
+@6684 Hilde · ヒルデ
+> 「まてっ!」
+“Wait!”
+
+@6685 Hilde · ヒルデ
+> 「抵抗すれば容赦しない!」
+“Resist and I won't show mercy!”
+
+@6686 Hilde · ヒルデ
+> 「地球圏の平和のために!」
+“For the peace of the Earth Sphere!”
+
+@6687 Hilde · ヒルデ
+> 「あたしはあたしのやり方で戦うわ」
+“I'll fight my own way.”
+
+@6688 Hilde · ヒルデ
+> 「やってみせる!」
+“I'll show you!”
+
+@6689 Hilde · ヒルデ
+> 「きゃあぁぁぁぁぁぁっっっ!」
+“Kyaaaaaaaah!”
+
+@6690 Hilde · ヒルデ
+> 「デュオ! きゃぁぁーっ!」
+“Duo! Kyaaaaah!”
+
+@6691 Hilde · ヒルデ
+> 「あぁ!? あたし、死ぬ……!?」
+“Ah?! I'm... going to die...?!”
+
+@6692 Hilde · ヒルデ
+> 「くっ死ぬ覚悟ならできているわっ!」
+“Ngh, I'm ready to die if I have to!”
+
+@6693 Hilde · ヒルデ
+> 「あぅっ! 絶対にやられるもんかっ!」
+“Agh! Like I'd ever let you get me!”
+
+@6694 Hilde · ヒルデ
+> 「あぁぁぁぁぁっ!?」
+“Aaaaaaah?!”
+
+@6695 Hilde · ヒルデ
+> 「こんなところでやられるわけには
+>  いかないわっ!」
+“I can't afford to go down in a place like this!”
+
+@6696 Hilde · ヒルデ
+> 「うぅっ! まけるもんかっ!」
+“Ugh! Like I'd lose!”
+
+@6697 Hilde · ヒルデ
+> 「うっ!」
+“Ugh!”
+
+@6698 Hilde · ヒルデ
+> 「くっ絶対にやらせない!」
+“Ngh, I absolutely won't let you!”
+
+@6699 Hilde · ヒルデ
+> 「あぁーっ!?」
+“Aaaah?!”
+
+@6700 Hilde · ヒルデ
+> 「やられるもんかっ」
+“Like I'd let you get me!”
+
+@6701 Hilde · ヒルデ
+> 「その程度なら!」
+“If that's all you've got!”
+
+@6702 Hilde · ヒルデ
+> 「うっでも!」
+“Ugh, but still!”
+
+@6703 Hilde · ヒルデ
+> 「やった!」
+“I did it!”
+
+@6704 Hilde · ヒルデ
+> 「かわせた!?」
+“I dodged it?!”
+
+@6705 Hilde · ヒルデ
+> 「……ふうっ」
+“...Phew.”
+
+@6706 Hilde · ヒルデ
+> 「んっ!」
+“Nn!”
+
+@6707 Hilde · ヒルデ
+> 「な、なんとか……」
+“I-I managed somehow...”
+
+@6708 Hilde · ヒルデ
+> 「そんな攻撃でやられるもんか!」
+“Like that attack would take me down!”
+
+@6709 Hilde · ヒルデ
+> 「効くもんか!」
+“Like that would hurt!”
+
+@6710 Hilde · ヒルデ
+> 「た、弾切れ!? そんなっ」
+“O-Out of ammo?! No way!”
+
+@6711 Hilde · ヒルデ
+> 「あと、あと少しなのにっ」
+“Just a little... just a little more!”

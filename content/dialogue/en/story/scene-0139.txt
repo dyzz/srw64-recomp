@@ -1,0 +1,2695 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@48192 Bright · ブライト
+> 「なんだと!?」
+“What did you say?!”
+
+@48193 Banjo · 万丈
+> 「ムゲ……ゾルバドス帝国だというのか?
+>  ギャリソン、詳しく話してくれ」
+“Muge... the Zorbados Empire, you mean? Garrison, tell me everything.”
+
+@48194 Garrison · ギャリソン
+# 审校：补上漏译的“配置してありました”中“我们”的所属关系，改为“we had stationed”。
+> 「はい。先ごろ、アステロイドに配置
+>  してありました監視装置に
+“Yes, sir. Recently, the monitoring devices we had stationed at the Asteroid picked up a
+---
+>  反応がありました。その出現の
+>  唐突さ、アステロイド方面よりの
+response. Given how suddenly they appeared and that they came in from the
+---
+>  侵入ということで、ムゲゾルバドス
+>  帝国軍の可能性が高いと
+Asteroid direction, we were contacted that they are most likely
+---
+>  こちらに連絡があったのです」
+Muge Zorbados Empire forces.”
+
+@48195 Ark · アーク（按段落 3DD1）
+> 「バカな……なんでいまさら……」
+“Impossible... why now, of all times...”
+
+@48196 Selain · セレイン（按段落 3DD2）
+> 「……なるほど。まだ何も、終わっては
+>  いない。そういうことか」
+“...I see. So nothing is over yet. That's what this means.”
+
+@48197 Brad · ブラッド（按段落 3DD3）
+> 「ちぃっ、冗談じゃねぇぜ!」
+“Tch, you've gotta be kidding me!”
+
+@48198 Manami · マナミ（按段落 3DD4）
+> 「そんな……なんてこと……」
+“No... how could this be...”
+
+@48199 Amuro · アムロ
+> 「それで、ギャリソン、敵の様子は?」
+“So, Garrison, what's the enemy's status?”
+
+@48200 Garrison · ギャリソン
+> 「はい、その編成から考えて、先の
+>  アステロイド基地での戦いの際に
+“Yes, sir. Judging by their formation, we can confirm they are the fleet of
+---
+>  撤収した、ギルドローム将軍の
+>  艦隊と断定されます」
+General Gildrome, which withdrew during the earlier battle at the Asteroid Base.”
+
+@48201 Duo · デュオ
+> 「な～んてこったぁ。そういや
+>  あの将軍ども、まだ
+“Well, whaddya know. Come to think of it, those generals were still
+---
+>  残ってやがったんだよなぁ。
+>  すっかり忘れてたぜ。なぁヒイロ」
+hanging around, weren't they? I totally forgot. Right, Heero?”
+
+@48202 Heero · ヒイロ
+> 「俺はくると思っていた。
+>  忘れていたのは、お前のミスだ」
+“I knew they would come. Forgetting was your mistake.”
+
+@48203 Duo · デュオ
+> 「へぇへぇ。お前を驚かすにゃ、
+>  あのお嬢さんでも連れてこなくちゃ
+“Yeah, yeah. To surprise you, I'd have to bring that young lady along,
+---
+>  だめだよな。そいつも忘れてたぜ」
+wouldn't I? I forgot about her too.”
+
+@48204 Heero · ヒイロ
+> 「リリーナは関係ない」
+“Relena has nothing to do with this.”
+
+@48205 Duo · デュオ
+> 「おっと、俺はリリーナ・ピースクラフトだ
+>  なんて、ひと言もいってないぜ?」
+“Whoa there, I never said a word about Relena Peacecraft, did I?”
+
+@48206 Heero · ヒイロ
+> 「…………」
+“...”
+
+@48207 Amuro · アムロ
+> 「デュオ、そういうことはあとにしてくれ。
+>  それで、連中はいったいどうやって
+“Duo, save that for later. So how on earth did they manage to reach the
+---
+>  “刻印”で閉鎖されている
+>  はずの太陽系へ到達できたんだ?」
+solar system, which should be sealed off by the ‘Mark’?”
+
+@48208 Garrison · ギャリソン
+> 「それに関しましては、
+>  ゾルバドス星の位置も含め
+“Regarding that, including the location of the planet Zorbados,
+---
+>  現在、博士様方が分析と
+>  研究に取りかかっております
+the doctors are currently analyzing and researching it.
+---
+>  今回は観測データも
+>  そろっておりますからな」
+This time we have the observation data as well, after all.”
+
+@48209 Banjo · 万丈
+# 审校：“地球の誇る”改为“Earth's proudest”更贴切。
+> 「それは期待できるね。なにしろここには
+>  地球の誇る天才科学者が
+“Then we can count on them. After all, Earth's proudest genius scientists are
+---
+>  集まっているからね」
+gathered right here.”
+
+@48210 Shinobu · 忍
+> 「そんなこたぁどうだっていいぜ。
+>  ムゲ野郎どもがもどってきたってんなら
+“Who cares about all that. If those Muge bastards have come back,
+---
+>  俺たちがぶっつぶしてやりゃあ
+>  いいだけの話だろう」
+we just have to smash them to bits, that's all.”
+
+@48211 Koji · 甲児
+> 「ああ、やってやろうぜ! せっかく
+>  終わったと思ったのによ、いまさら
+“Yeah, let's do it! Just when we thought it was finally over, they come
+---
+>  のこのこ出て来やがって」
+crawling out now, of all times.”
+
+@48212 Hyoma · 豹馬
+> 「またあんなことになるのは絶対にごめん
+>  だ。徹底的に叩きつぶしてやるぜ!」
+“I absolutely refuse to let things turn out like that again. We'll crush them completely!”
+
+@48213 Sara · 沙羅
+> 「バカだね、あんたたち。アムロ特尉は、
+>  根っこから解決しないと、キリがない
+“You guys are such idiots. Lieutenant Amuro's worried that unless we solve this
+---
+>  かもしれないって、気にしてんのさ」
+at the root, there might be no end to it.”
+
+@48214 Alan · アラン
+> 「そうだ、藤原。いつくるかわからない
+>  敵におびえてなくてはならん状態では
+“That's right, Shinobu. If we have to live in fear of an enemy that could come at any
+---
+>  地球圏の再建などおぼつかん。
+>  力押ししか考えられんのは
+moment, rebuilding the Earth Sphere is out of the question. Thinking only of
+---
+>  お前の悪いクセだ」
+brute force is your bad habit.”
+
+@48215 Shinobu · 忍
+> 「チッ、あんたの説教は聞き飽きたぜ
+>  最近ますます
+“Tch, I'm sick of your lectures. Lately you've been sounding more and more
+---
+>  長官に似てきたな、アラン」
+like the Commander, Alan.”
+
+@48216 Ryoma · リョウ
+> 「しかし、とりあえずはギルドロームを
+>  叩かなければならないのは
+“But for now, it's a fact that we have to strike down Gildrome,
+---
+>  事実だろう? ぐずぐずしては
+>  いられないな」
+isn't it? We can't afford to sit around.”
+
+@48217 Bright · ブライト
+> 「そうだな。チャム、悪いが
+>  シーラ女王を呼んできてくれ
+“Right. Chum, sorry, but go call Queen Ciela.
+---
+>  どうやらすぐにでも出る
+>  必要がありそうだ」
+It looks like we'll need to depart right away.”
+
+@48218 Bright · ブライト
+> 「そうだな。チャム、悪いが
+>  エレ女王を呼んできてくれ
+“Right. Chum, sorry, but go call Queen Elle.
+---
+>  どうやらすぐにでも出る
+>  必要がありそうだ」
+It looks like we'll need to depart right away.”
+
+@48219 Chum · チャム
+> 「いいわよ。すぐに呼んでくるッ!」
+“Sure thing. I'll go call her right now!”
+
+@48220 Roux · ルー
+> 「……まいったわね」
+“...This is just great.”
+
+@48221 Chizuru · ちずる
+> 「……私たち……いつになったら、この
+>  悪夢から抜け出せるのかしら……」
+“...When... when will we ever be able to escape this nightmare...”
+
+@48222 Banjo · 万丈
+> 「終わらせるまでだ。僕たちが、
+>  自分の手で。でなければ、いつまでも
+“We end it ourselves. With our own hands. Otherwise, the Earth Sphere,
+---
+>  地球圏は、人類は悪夢に
+>  うなされる」
+all of humanity, will be haunted by this nightmare forever.”
+
+@48223 Bright · ブライト
+> 「アムロ、全員を呼び戻せ。出港
+>  の準備だ。ベルトーチカ、
+“Amuro, call everyone back. Prepare for departure. Beltorchika,
+---
+>  全OZ部隊に通達しておけ。
+>  それと、レディ・アンへの連絡も頼む」
+notify all OZ units. And contact Lady Une as well.”
+
+@48224 Sayaka · さやか
+> 「どう、お父さま?
+>  なんとかなりそうなの?」
+“How is it, Father? Do you think you can manage something?”
+
+@48225 Prof. Yumi · 弓教授
+> 「さやか、甲児くんたちも一緒かね。
+>  まぁ座りたまえ」
+“Sayaka, are Koji and the others with you too? Well, have a seat.”
+
+@48226 Hyoma · 豹馬
+> 「で、どうなんだよ博士たち?」
+“So, what's the verdict, Doctors?”
+
+@48227 Dr. Hazuki · 葉月博士
+> 「アステロイドに監視衛星を残した
+>  のは正解だった。そのデータのおかげで
+“Leaving a surveillance satellite at the Asteroid was the right call. Thanks to that data,
+---
+>  彼らがいったいどこからやってくるのかは
+>  ほぼわかってきている」
+we've almost figured out exactly where they're coming from.”
+
+@48228 Koji · 甲児
+> 「どこからって、異次元なんだろ?」
+“Where from? You mean another dimension, right?”
+
+@48229 Maria · マリア
+> 「黙って聞きなさいよ、甲児」
+“Just be quiet and listen, Koji.”
+
+@48230 Dr. Saotome · 早乙女博士
+> 「いちがいに異次元とはいっても、これ
+>  まで我々には、それが実際にどの
+“Even if we simply call it another dimension, up to now we could say we never actually
+---
+>  ようなものかはわかっていなかったといえる
+>  それがわかってきたといっておるんだ」
+knew what it was really like. I'm telling you we're starting to understand that.”
+
+@48231 Boss · ボス
+> 「それがわかったらどうなるのよ?」
+“And what happens once you figure that out?”
+
+@48232 Dr. Hazuki · 葉月博士
+> 「やれやれ、わからんかね?
+>  まずそこから始めなければ
+“Good grief, don't you get it? We have to start there first,
+---
+>  何も対応策は見つけられないと
+>  いうことだ」
+or we won't find any countermeasure at all.”
+
+@48233 Maria · マリア
+> 「つまり、それがわかれば対応策も
+>  考えられるってことね」
+“In other words, once we understand that, we can think of a countermeasure too.”
+
+@48234 Dr. Hazuki · 葉月博士
+> 「それはわからん。
+>  可能性があるという話だ」
+“That I don't know. I'm saying there's a possibility.”
+
+@48235 Koji · 甲児
+> 「なんだよ、はっきりしないなぁ」
+“What the heck, that's so vague.”
+
+@48236 Prof. Yumi · 弓教授
+> 「甲児くん、我々も
+>  全力で解明にあたっている
+“Koji, we're also doing everything we can to figure it out.
+---
+>  もうしばらく時間をくれないかね」
+Could you give us a little more time?”
+
+@48237 Dr. Hazuki · 葉月博士
+> 「君たちは戦いに
+>  集中してくれればいい。まずは
+“You just focus on the fighting. First of all,
+---
+>  敵の部隊を迎撃できなくては、
+>  どうにもならんのだからな」
+if we can't intercept the enemy forces, nothing else matters.”
+
+@48238 Reika · レイカ
+> 「ゾルバドス軍と思われる敵部隊、
+>  接近。熱源反応、来ます!」
+“Enemy force, believed to be the Zorbados Army, approaching. Heat source reaction, incoming!”
+
+@48239 Bright · ブライト
+> 「迎撃ミサイル出せ!
+>  パイロット各員、発進用意!」
+“Fire the intercept missiles! All pilots, prepare to launch!”
+
+@48240 Beltorchika · ベルトーチカ
+> 「敵戦闘艦捕捉。
+>  間違いありません。ムゲゾルバドスです」
+“Enemy warship captured. There's no mistake. It's Muge Zorbados.”
+
+@48241 Bright · ブライト
+> 「奴らめ。あの時のようにはさせんぞ」
+“Those bastards. I won't let them do what they did last time.”
+
+@48242 Beltorchika · ベルトーチカ
+> 「そういえば最初の侵略時も、
+>  アムロや艦長たちは
+“Come to think of it, during the first invasion too, Amuro and the Captain
+---
+>  彼らと戦ったんでしたね」
+fought against them, didn't you?”
+
+@48243 Bright · ブライト
+> 「ああ……もうずいぶん年をくったような
+>  気がするよ。たった数年だってのにな」
+“Yeah... feels like I've aged a good many years. And it's only been a few.”
+
+@48244 Shinobu · 忍
+> 「ムゲ野郎め! 1度は負けて
+>  逃げ帰りやがった奴が
+“You Muge bastard! You lost once and ran home with your tail between your legs,
+---
+>  またのこのこ出てきやがって。
+>  今度こそぶっつぶしてやるぜッ!!」
+and now you've come crawling back again. This time I'll crush you flat!!”
+
+@48245 Domon · ドモン
+> 「ああ、俺たち{HeroMech}がいる
+>  限り、何度でも叩きつぶしてやる!」
+“Yeah, as long as our {HeroMech} is here, we'll smash you down as many times as it takes!”
+
+@48246 Gildrome · ギルドローム
+> 「ハハハハハッ! 愚かな地球人よ。
+>  貴様たちの勝利など
+“Hahahahaha! Foolish Earthlings. Let this Gildrome teach you
+---
+>  つかの間の夢であったことを、
+>  このギルドロームが教えてやろう
+that your victory was nothing but a fleeting dream.
+---
+>  そして、この戦いが悪夢の
+>  続きであることを知るであろう」
+And you will learn that this battle is but the continuation of the nightmare.”
+
+@48247 Shinobu · 忍
+> 「ぬかしやがれッ!」
+“Don't give me that crap!”
+
+@48248 Bright · ブライト
+> 「全員、聞け! あいつはジャブローで
+>  戦った奴だ。必ずまた
+“Everyone, listen! That's the one we fought at Jaburo. He's sure to
+---
+>  精神攻撃を使ってくるに違い
+>  ない。気をつけろ!」
+use his mental attack again. Be careful!”
+
+@48249 Gildrome · ギルドローム
+> 「ぬうぅぅっ……!」
+“Nghhh...!”
+
+@48250 Gildrome · ギルドローム
+> 「未開の星のマシーンにしては、
+>  スピード・パワーともになかなかやる
+“For a machine from an uncivilized planet, your speed and power are quite something.
+---
+>  だがギルドローム流のやり方は
+>  スピードでもパワーでもない! それを、
+But the Gildrome Style is neither speed nor power! I'll make you
+---
+>  思い出させてやろう!!」
+remember that!!”
+
+@48251 Bright · ブライト
+> 「まさか……気をつけろ!
+>  奴の精神攻撃がくるぞ!」
+“No way... Watch out! His mental attack is coming!”
+
+@48252 Gildrome · ギルドローム
+> 「マシーンは壊れなくとも、
+>  貴様たちの脳
+“Your machines may not break, but what of your brains,
+---
+>  精神は果たしてどうかな。
+>  クククククッ」
+your minds? Kukukukuku.”
+
+@48253 Bright · ブライト
+> 「くっ……しまった、力が入らん……
+>  状況は!?」
+“Ngh... Damn, I can't muster any strength... What's the situation?!”
+
+@48254 Bunny · バニー
+> 「……だめです! 全機、敵の攻撃
+>  の影響下にあります!」
+“...It's no good! All units are under the effects of the enemy's attack!”
+
+@48255 Bright · ブライト
+> 「なんだと!? いかん、みんな持ち
+>  こたえてくれよ!」
+“What?! This is bad, everyone hold on!”
+
+@48256 Ciela · シーラ
+> 「いけません、ギルドロームの
+>  精神攻撃が来ます!
+“It's no use, Gildrome's mental attack is coming!
+---
+>  心を集中させるのです!」
+Focus your minds!”
+
+@48257 Gildrome · ギルドローム
+> 「マシーンは壊れなくとも、
+>  貴様たちの脳
+“Your machines may not break, but what of your brains,
+---
+>  精神は果たしてどうかな。
+>  クククククッ」
+your minds? Kukukukuku.”
+
+@48258 Ciela · シーラ
+> 「うっ……どうしたか!
+>  みなは無事か!?」
+“Ugh... What happened?! Is everyone all right?!”
+
+@48259 Bright · ブライト
+> 「シーラ女王、大丈夫ですか!?
+>  どうやら我々は
+“Queen Ciela, are you okay?! It seems we've
+---
+>  敵の術中にはまったようです」
+fallen into the enemy's trap.”
+
+@48260 Ciela · シーラ
+> 「わかっていながら避けられぬとは……
+>  これ以上やらせてはなりません!」
+“To see it coming and still be unable to avoid it... We must not let him do any more!”
+
+@48261 Elle · エレ
+> 「精神攻撃!? させません!」
+“A mental attack?! I won't let you!”
+
+@48262 Gildrome · ギルドローム
+> 「マシーンは壊れなくとも、
+>  貴様たちの脳
+“Your machines may not break, but what of your brains,
+---
+>  精神は果たしてどうかな。
+>  クククククッ」
+your minds? Kukukukuku.”
+
+@48263 Elle · エレ
+> 「うっ……悪しきオーラを
+>  中和しきれなかった!?」
+“Ugh... I couldn't fully neutralize the evil aura?!”
+
+@48264 Bright · ブライト
+> 「エレ女王、ご無事ですか!?
+>  どうやら我々は
+“Queen Elle, are you safe?! It seems we've
+---
+>  敵の術中にはまったようです」
+fallen into the enemy's trap.”
+
+@48265 Elle · エレ
+> 「オーラ力も減退している……いけない
+>  皆さん、気をつけてください!」
+“My aura power is fading too... This is bad, everyone, please be careful!”
+
+@48266 Dr. Hazuki · 葉月博士
+> 「なんだ!? 何をするつもりだ!?」
+“What?! What are you planning to do?!”
+
+@48267 Bright · ブライト
+> 「博士、敵は精神攻撃を
+>  しかけてくる!」
+“Doctor, the enemy is launching a mental attack!”
+
+@48268 Dr. Hazuki · 葉月博士
+> 「精神攻撃!?」
+“A mental attack?!”
+
+@48269 Gildrome · ギルドローム
+> 「マシーンは壊れなくとも、
+>  貴様たちの脳
+“Your machines may not break, but what of your brains,
+---
+>  精神は果たしてどうかな。
+>  クククククッ」
+your minds? Kukukukuku.”
+
+@48270 Dr. Hazuki · 葉月博士
+> 「くっ……いったい何が……」
+“Ngh... What on earth is...”
+
+@48271 Bright · ブライト
+> 「博士、大丈夫ですか!?
+>  どうやら敵の術中にはまったようです」
+“Doctor, are you all right?! It seems we've fallen into the enemy's trap.”
+
+@48272 Dr. Hazuki · 葉月博士
+> 「くっ……い、いかん、このままでは……」
+“Ngh... Th-this is bad. At this rate...”
+
+@48273 Howard · ハワード
+> 「なんだ? 奴はいったい何をする
+>  つもりだ!?」
+“What? What on earth is he planning to do?!”
+
+@48274 Bright · ブライト
+> 「ハワード、敵は精神攻撃を
+>  しかけてくる!」
+“Howard, the enemy is launching a mental attack!”
+
+@48275 Howard · ハワード
+> 「精神攻撃だと!?」
+“A mental attack?!”
+
+@48276 Gildrome · ギルドローム
+> 「マシーンは壊れなくとも、
+>  貴様たちの脳
+“Your machines may not break, but what of your brains,
+---
+>  精神は果たしてどうかな。
+>  クククククッ」
+your minds? Kukukukuku.”
+
+@48277 Howard · ハワード
+> 「おおっ!? ……こいつは、効くわ。
+>  全員やられてしまったようだな」
+“Whoa?! ...This one really hurts. Looks like everyone's been taken down.”
+
+@48278 Bright · ブライト
+> 「え、ええ……どうやら敵の術中に
+>  はまったようです」
+“Y-yes... It seems we've fallen into the enemy's trap.”
+
+@48279 Howard · ハワード
+> 「どうもいかんな……やっかいなことに
+>  なりおったわい」
+“This is bad... Things have gotten troublesome, I tell you.”
+
+@48280 Gildrome · ギルドローム
+> 「お、おのれぇぇ。だが
+>  これで勝ったと思うでないぞ!
+“Y-you bastards. But don't think you've won!
+---
+>  貴様らにとっての悪夢は、
+>  終わってなどいないのだ!
+The nightmare for you lot is far from over!
+---
+>  愚かな貴様たちに、安息の時は
+>  やってこぬわ! ワーッハッハッハーッ!」
+For you fools, the time of rest will never come! Wahahahaha!”
+
+@48281 Shinobu · 忍
+# 审校：「1つ目の化け物」指独眼怪物，初稿译成 first monster 误译。
+> 「来やがれ! 1つ目の化け物め!」
+“Bring it on! You one-eyed monster!”
+
+@48282 Gildrome · ギルドローム
+> 「ダンクーガ! この宇宙を
+>  貴様の墓場としてくれる!」
+“Dancouga! I'll make this space your grave!”
+
+@48283 Bright · ブライト
+> 「……しかし……まいったな」
+“...But still... this is a problem.”
+
+@48284 Banjo · 万丈
+> 「確かにね……こいつは、ちょっと
+>  問題だ」
+“Yeah... this is a bit of a problem.”
+
+@48285 Shinobu · 忍
+> 「万丈、てめぇなに言ってやがる!?
+>  ちょっとどころじゃねぇだろうが!!」
+“Banjo, what the hell are you saying?! This is way more than a bit of a problem!!”
+
+@48286 Ryo · 亮
+> 「騒いでみたところで、どうにもならん」
+“Making a fuss won't change anything.”
+
+@48287 Koji · 甲児
+> 「でもよぉ、ギルドロームのいった
+>  言葉をみんなも聞いたろ?
+“But come on, you all heard what Gildrome said, right?
+---
+>  やっぱり奴らまだあきらめちゃいないぜ」
+They still haven't given up, after all.”
+
+@48288 Show · ショウ
+> 「ああ……このままじゃ
+>  何度でも攻めてくるな
+“Yeah... At this rate they'll keep attacking again and again.
+---
+>  いつまで持ちこたえることができるか……」
+How long can we hold out...”
+
+@48289 Chum · チャム
+> 「ショウ、そんな不吉なこといわないでよ」
+“Show, don't say such ominous things.”
+
+@48290 Alan · アラン
+> 「いや、ショウのいう通りだ。
+>  ギルドロームを退けたところで
+“No, Show is right. Driving off Gildrome doesn't mean
+---
+>  ムゲゾルバドス帝国の脅威が
+>  消え去ったわけではない」
+the threat of the Muge Zorbados Empire is gone.”
+
+@48291 Simone · シモーヌ
+> 「あの火星から始まった悪夢は……
+>  まだ終わっていないのね……やっぱり」
+“That nightmare that began on Mars... it still isn't over... just as I thought.”
+
+@48292 Amuro · アムロ
+> 「ああ……こうしてギルドロームが戻ってき
+>  た以上は、奴の言葉も現実の
+“Yeah... Now that Gildrome has come back like this, we'd better assume his words are
+---
+>  ものと考えたほうがいいのは、確かだな
+>  だが……どうすればいい?」
+the truth. But... what should we do?”
+
+@48293 Bright · ブライト
+> 「バニー……博士たちの方は
+>  どうなっているか、ガンドールに確認を
+“Bunny... check with Gandor on how the doctors are
+---
+>  とってくれ」
+doing.”
+
+@48294 Bunny · バニー
+> 「ちょっと待ってください…………」
+“Just a moment...”
+
+@48295 Bunny · バニー
+> 「はい……ええ、お願いします
+“Yes... Right, please do.
+---
+>  今こちらへこられるそうです」
+They say they're coming over here now.”
+
+@48296 Kosuke · 小介
+> 「博士、ムゲの宇宙について
+>  何かわかったんですか?」
+“Doctor, have you found out anything about the Muge universe?”
+
+@48297 Dr. Yotsuya · 四谷博士
+> 「わしらも遊んでいたわけではないのでな。
+>  葉月博士」
+“We haven't been idle either, you know. Dr. Hazuki.”
+
+@48298 Dr. Hazuki · 葉月博士
+> 「ええ。さまざまな情報を
+>  検討した結果
+“Yes. After examining all sorts of data,
+---
+>  この宇宙とは位相を異にする
+>  ムゲの宇宙が
+we've determined that the Muge universe, which differs in phase from our own,
+---
+>  ギルドロームが出現した方向に
+>  存在することが判明した
+exists in the direction from which Gildrome appeared.
+---
+>  だが残念ながら、我々には
+>  先住グラドス人のような
+Unfortunately, however, we lack the scientific power of the original Gradosians.
+---
+>  科学力はない。“刻印”の
+>  ようにムゲの宇宙と我々の
+We cannot realize a mechanism like the ‘Crest’ that would make travel between
+---
+>  宇宙との行き来を不可能に
+>  するような機構は、実現できない」
+the Muge universe and ours impossible.”
+
+@48299 Koji · 甲児
+> 「なんだよ、それじゃ何にも
+>  意味がないじゃないか」
+“What the hell, then it's all meaningless!”
+
+@48300 Prof. Yumi · 弓教授
+> 「あわてるものではないよ、甲児くん。
+>  話にはまだ続きがあるのだ」
+“Don't be hasty, Koji. There's more to the story.”
+
+@48301 Dr. Hazuki · 葉月博士
+> 「そう、ゾルバドス軍の襲来を防ぐ
+>  手だてがない代わりに、我々もまた
+“Right. While we have no means to prevent the Zorbados Army's invasion, we too
+---
+>  必要な手段を講じることができ
+>  れば、ムゲの宇宙へと到達できる」
+can reach the Muge universe if we can devise the necessary means.”
+
+@48302 Hayato · ハヤト
+> 「俺たちがムゲの宇宙へか……」
+“Us, into the Muge universe...”
+
+@48303 Tetsuya · 鉄也
+> 「つまり、受けにまわる必要は
+>  ないということだな」
+“In other words, we don't have to stay on the defensive.”
+
+@48304 Koji · 甲児
+> 「博士、そいつはすごいぜ!」
+“Doctor, that's amazing!”
+
+@48305 Shinobu · 忍
+> 「ああ。見てろよムゲ野郎、
+>  今度はこっちから
+“Yeah. Just you watch, Muge bastards. This time we'll come
+---
+>  てめぇらのところへ乗りこんでやるぜ。
+>  で、葉月さんよ、俺たちはどうやって
+right into your territory. So, Dr. Hazuki, how do we
+---
+>  奴らの宇宙とやらへ行くんだ!?」
+get to their universe?!”
+
+@48306 Dr. Hazuki · 葉月博士
+> 「藤原、私は必要な手段を
+>  講じることができればといったのだ」
+“Fujiwara, I said if we can devise the necessary means.”
+
+@48307 Bright · ブライト
+> 「つまり、今はそれがないと?」
+“In other words, right now we don't have it?”
+
+@48308 Dr. Saotome · 早乙女博士
+> 「そうだ。今のところ我々には、
+>  超空間を越えて
+“Correct. At present, we have no way to cross hyperspace
+---
+>  ムゲの宇宙へ到達する術がない」
+and reach the Muge universe.”
+
+@48309 Domon · ドモン
+> 「どうやら長々と話を聞いていたのも
+>  無駄だったようだな」
+“Seems listening to all that long talk was a waste of time.”
+
+@48310 Duo · デュオ
+> 「ちぇっ、やっぱり結局はもぐら叩きを
+>  やるしかないってことか」
+“Tch, so in the end we've got no choice but to play whack-a-mole after all.”
+
+@48311 Trowa · トロワ
+> 「ハンマーである俺たちよりも、もぐらの
+>  ほうがでかいことも、十分ありえるがな」
+“Though it's quite possible the moles are bigger than us hammers.”
+
+@48312 Dr. Hazuki · 葉月博士
+> 「いや、そう結論を急ぐものでもない。
+>  艦長、先の戦闘で破壊した
+“No, there's no need to jump to conclusions. Captain, I'd like permission to recover
+---
+>  敵艦の残骸を
+>  回収させてもらいたい」
+the wreckage of the enemy ship we destroyed in the last battle.”
+
+@48313 Bright · ブライト
+> 「敵艦の? どういうことです?」
+“The enemy ship's? What do you mean?”
+
+@48314 Dr. Hazuki · 葉月博士
+> 「ムゲの宇宙へ行く方法は、
+>  あと1歩で実現できるところまで
+“We're one step away from making travel to the Muge universe a reality.
+---
+>  来ている。敵艦の残骸を
+>  調べれば、何かわかるかもしれない」
+If we examine the enemy ship's wreckage, we may learn something.”
+
+@48315 Bright · ブライト
+> 「なるほど、わかりました。
+>  万丈、手のあいている者を
+“I see, understood. Banjo, could you take a few people who are free
+---
+>  何人か連れていって、
+>  回収に当たってくれないか」
+and handle the recovery?”
+
+@48316 Banjo · 万丈
+> 「もちろんだ、艦長。今ここにいるのが
+>  手のあいている人間ってことだからね」
+“Of course, Captain. Everyone here right now counts as free hands, after all.”
+
+@48317 Duo · デュオ
+> 「それってもしかして、俺たちのことかぁ?」
+“Does that by any chance mean us?”
+
+@48318 Koji · 甲児
+> 「……わかったよ、やりゃいいんだろ」
+“...Fine, I get it. I'll do it.”
+
+@48319 Domon · ドモン
+> 「いいだろう。それが役に立つなら、
+>  何でもやってやるさ」
+“Very well. If it helps, I'll do anything.”
+
+@48320 Bright · ブライト
+> 「よし、さっそく始めてくれ」
+“Good, get started right away.”
+
+@48321 Shinobu · 忍
+> 「沙羅が倒れた?
+>  どういうことだよ、先生」
+“Sara collapsed? What do you mean, Teacher?”
+
+@48322 Hasan · ハサン
+> 「どうもこうも、また例のやつだな」
+“What do you mean, what do I mean? It's that same thing again.”
+
+@48323 Simone · シモーヌ
+> 「だけど、月で
+>  少しは休めたはずでしょ?」
+“But she should have gotten at least some rest on the Moon, right?”
+
+@48324 Sally · サリィ
+# 审校：原文「まずかった」指休息反而造成反效果，初稿 did the damage 不够准确。
+> 「どうやらそれがまずかったみたいね」
+“Seems that's exactly what made it worse.”
+
+@48325 Masato · 雅人
+> 「どういうことさ?」
+“What do you mean?”
+
+@48326 Hasan · ハサン
+> 「沙羅くんの件は、もともと
+>  ダンクーガのシステムの負荷が
+“Sara's condition was originally a problem of the load the Dancouga system
+---
+>  問題だったわけだ。これまでは
+>  気がはっていたために
+places on its pilot. Until now, her tension kept it from
+---
+>  表面化せずにすんでいたのだが……」
+surfacing, but...”
+
+@48327 Ryo · 亮
+> 「なるほど、月で休んだことで気がぬけ
+>  反動が出たということか」
+“I see. So resting on the Moon made her relax, and the backlash hit her.”
+
+@48328 Hasan · ハサン
+> 「そういうことになるな。そのまま休んで
+>  いられれば良かったんだろうが、また
+“That's about the size of it. It would have been fine if she could have kept resting, but
+---
+>  ゾルバドス軍が出現したことで、より
+>  反動が大きくなったと考えられる」
+with the Zorbados Army appearing again, the backlash likely grew even worse.”
+
+@48329 Masato · 雅人
+> 「そっか……ゾルバドスっていえば
+>  シャピロのこと考えちゃうもんなぁ」
+“I see... When you say Zorbados, I can't help thinking about Shapiro.”
+
+@48330 Shinobu · 忍
+> 「沙羅のやつ……。
+>  で、どうすりゃいいんだ?」
+“That Sara... So what are we supposed to do?”
+
+@48331 Hasan · ハサン
+> 「まぁとりあえず1週間ほどは
+>  休ませることだ
+“Well, for the time being, let her rest for about a week.
+---
+>  無理をさせるのがいちばん良くない」
+Forcing her is the worst thing we could do.”
+
+@48332 Shinobu · 忍
+> 「1週間もかよ……」
+“A whole week...”
+
+@48333 Takeru · タケル
+> 「あれからまだ2日か……
+>  ひどく長く感じるな」
+“Only two days since then... It feels terribly long.”
+
+@48334 Mika · ミカ
+> 「あせっちゃだめよ、タケル。
+>  これまでのことに比べたら
+“Don't be impatient, Takeru. Compared to what we've been through,
+---
+>  たいしたことじゃないじゃない」
+this is nothing, isn't it?”
+
+@48335 David · デビッド
+> 「違いない。なにしろ今度はこっちから
+>  攻めてやろうってんだからな
+“No doubt about it. After all, this time we're the ones going on the offensive.
+---
+>  どうしたエイジ?」
+What's wrong, Eiji?”
+
+@48336 Eiji · エイジ
+> 「いや……本当にそこまでする必要が
+>  あるのかと思って」
+“Nothing... I was just wondering if we really need to go that far.”
+
+@48337 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@48338 Koji · 甲児
+> 「ははぁ～ん、エイジ、お前もそのクチか
+>  防衛のための戦いならともかく
+“Heh, I get it, Eiji. You're one of those too. Fighting in self-defense is one thing,
+---
+>  こっちから攻めるのは、ってんだろ?」
+but going on the offensive is another, right?”
+
+@48339 Eiji · エイジ
+> 「……そうだ」
+“...That's right.”
+
+@48340 Koji · 甲児
+> 「だけどよ、奴らがまだ
+>  あきらめちゃいない以上
+“But as long as they haven't given up yet,
+---
+>  そこまでやらないと戦いは終わらないぜ」
+the fighting won't end unless we go that far.”
+
+@48341 Eiji · エイジ
+> 「わかってる。それはわかっているんだ」
+“I know. I know that.”
+
+@48342 Takeru · タケル
+> 「エイジ、それは俺も同じだよ。
+>  でも今は……」
+“Eiji, I feel the same way. But right now...”
+
+@48343 Quatre · カトル
+> 「ええ。そのやさしさは、僕たちが決して
+>  忘れてはいけないものだとは思います
+“Yes. I believe that kindness is something we must never forget.
+---
+>  しかしこの広い宇宙の中には、
+>  いろいろな意味で
+However, it is also a fact that in this vast universe, there are beings
+---
+>  それがあてはまらない存在が
+>  あるというのも、また事実です」
+to whom, in various senses, that does not apply.”
+
+@48344 Koji · 甲児
+> 「ああ。グラドスはともかく、ムゲの
+>  中枢の連中はまさしくそれだぜ」
+“Yeah. Grados aside, the top brass of Muge are exactly that.”
+
+@48345 Ark · アーク（按段落 3DD1）
+> 「それで葉月博士、どうなんです?」
+“So, Dr. Hazuki, how did it go?”
+
+@48346 Selain · セレイン（按段落 3DD2）
+> 「博士、そろそろ結果を
+>  教えてもらいたいな」
+“Doctor, I'd like to hear the results soon.”
+
+@48347 Brad · ブラッド（按段落 3DD3）
+> 「で、どうなってんだ、博士?」
+“So, what's the word, Doctor?”
+
+@48348 Manami · マナミ（按段落 3DD4）
+> 「葉月博士、お話を
+>  聞かせていただけるとのことでしたが?」
+“Dr. Hazuki, you said you would tell us what you found?”
+
+@48349 Dr. Hazuki · 葉月博士
+> 「うむ、ムゲの戦艦を
+>  分析した結果、ガンドール砲の
+“Indeed. As a result of analyzing the Muge battleship, it has become clear that by
+---
+>  システムを転用することで、
+>  我々は超空間を通り
+repurposing the Gandor Cannon's system, we can pass through
+---
+>  ムゲの宇宙へと向かうことが
+>  可能であると、明らかになった」
+hyperspace and make our way to the Muge universe.”
+
+@48350 Masato · 雅人
+> 「やったね! これでバッチリじゃん!」
+“All right! Now we're all set!”
+
+@48351 Kappei · 勝平
+> 「ムゲの奴らをたたきつぶしてやろうぜ!」
+“Let's smash the Muge bastards to pieces!”
+
+@48352 Dr. Hazuki · 葉月博士
+> 「だが……」
+“But...”
+
+@48353 Bright · ブライト
+> 「何か問題でも……?」
+“Is there some problem...?”
+
+@48354 Dr. Hazuki · 葉月博士
+> 「超空間を通ってムゲの宇宙へ
+>  到達するには莫大なエネルギーが
+“Reaching the Muge universe through hyperspace requires an enormous amount of energy.
+---
+>  必要とされる。知っての通り竜の
+>  命、このガンドールのエネルギーは
+As you know, the life of the dragon—the Gandor's energy—is
+---
+>  もう残り少ない」
+already running low.”
+
+@48355 Alan · アラン
+> 「エネルギーが不足しているということか」
+“So you're saying we're short on energy.”
+
+@48356 Dr. Hazuki · 葉月博士
+> 「そうだ。無理をすれば
+>  我々は超空間へ入ったきり
+“That's right. If we force it, we'll enter hyperspace and never
+---
+>  この宇宙へもムゲの宇宙へも
+>  出られなくなってしまうだろう
+emerge into this universe or the Muge universe again.
+---
+>  その場合どうなってしまうかは、
+>  想像もつかん」
+What would become of us then, I cannot even imagine.”
+
+@48357 Kosuke · 小介
+> 「……なら、ガンドール自体ではなく、
+>  他のものをムゲの宇宙へと
+“...Then instead of the Gandor itself, couldn't we send
+---
+>  送りこむってことはできないんですか?」
+something else into the Muge universe?”
+
+@48358 Dr. Yotsuya · 四谷博士
+> 「それは我々も検討した。計算で
+>  はネェルアーガマ1隻を中心として
+“We considered that as well. By our calculations, we could send in one Nahel Argama as the core,
+---
+>  ある程度の装備と人員なら
+>  送りこめるとわかったものの……」
+along with a certain amount of equipment and personnel, but...”
+
+@48359 Koji · 甲児
+> 「なんだ、結局行けるんじゃないか。
+>  ならそれで十分だぜ」
+“What, so we can go after all. Then that's good enough.”
+
+@48360 Dr. Yotsuya · 四谷博士
+> 「最後まで聞かんか。送りこめると
+>  わかったものの、それだけなのだ
+“Will you not hear me out to the end? We could send them in, yes, but that is all.
+---
+>  ムゲの宇宙へと向かった者たちが
+>  もどってこれる保証などどこにもない」
+There is no guarantee whatsoever that those who head for the Muge universe can come back.”
+
+@48361 Dr. Hazuki · 葉月博士
+> 「そう、ガンドールが残ってしまう以上
+>  帰る手段を
+“Indeed. As long as the Gandor remains behind, I cannot imagine
+---
+>  確保できるとは思えないのだ」
+we could secure a means of return.”
+
+@48362 Koji · 甲児
+> 「ってことは……」
+“Which means...”
+
+@48363 Banjo · 万丈
+> 「……地獄への
+>  片道キップってわけだね」
+“...A one-way ticket to hell, huh.”
+
+@48364 Tetsuya · 鉄也
+> 「ちっ、それじゃまるでカミカゼだぜ」
+“Tch, that's a kamikaze mission, plain and simple.”
+
+@48365 Dr. Hazuki · 葉月博士
+> 「だから我々もそれは避けたいと
+>  思っている」
+“That is why we wish to avoid it as well.”
+
+@48366 Amuro · アムロ
+> 「ああ……むろん別の方法があるならば
+>  それにこしたことはないが……あるのか?」
+“Yeah... Of course, if there's another way, that would be best... but is there one?”
+
+@48367 Dr. Hazuki · 葉月博士
+> 「数ヶ月後ならば、だな。それだけ
+>  時間があれば、我々はガンドールを
+“If we wait a few months, yes. With that much time, we can remodel the Gandor
+---
+>  その用途にあわせて改造できる。
+>  弓教授と早乙女博士に
+to suit that purpose. With the cooperation of Prof. Yumi and Dr. Saotome,
+---
+>  協力してもらい、ゲッター線と
+>  光子力を利用するシステムを
+if we build in a system that uses Getter Rays and Photon Power,
+---
+>  組みこめば、エネルギー問題も
+>  解決できるだろう」
+the energy problem should be solved as well.”
+
+@48368 Bright · ブライト
+> 「数ヶ月後…………」
+“A few months...”
+
+@48369 Alan · アラン
+> 「そんなには待てん! ギルドロームを
+>  倒した直後の今だからこそ
+“We cannot wait that long! It is precisely now, right after defeating Gildrome,
+---
+>  こちらから奴らの本拠地にしかける
+>  意味があるのだ。地球には
+that it means something for us to strike at their home base. Earth no longer has
+---
+>  数ヶ月待ち、その間に幾度も
+>  侵攻してくるだろうゾルバドス軍と
+the strength to wait months while fighting a quagmire war against the Zorbados Army
+---
+>  泥沼の戦争を続けるだけの
+>  力はもはやない。これが最初で
+as they invade again and again. I believe this is our first
+---
+>  最後のチャンスだと私は考えている」
+and last chance.”
+
+@48370 Shinobu · 忍
+> 「へっ、あんたとはさんざんやりあったが、
+>  その意見にだけは賛成だ
+“Heh, you and I have gone at it plenty, but on this point alone I agree with you.
+---
+>  俺は行くぜ。行ってムゲ野郎を
+>  この手でぶっつぶしてやる」
+I'm going. I'll go and crush the Muge bastards with my own hands.”
+
+@48371 Amuro · アムロ
+> 「バカなことをいうな、忍」
+“Don't be a fool, Shinobu.”
+
+@48372 Shinobu · 忍
+> 「こればっかりは、いくら
+>  あんたのいうことでも聞けねぇよ
+“This is the one thing I can't listen to you on, no matter what you say.
+---
+>  俺はムゲの宇宙へ行く」
+I'm going to the Muge universe.”
+
+@48373 Masato · 雅人
+> 「怖いけど……僕も行く」
+“I'm scared, but... I'm going too.”
+
+@48374 Ryo · 亮
+> 「だがな、忍」
+“But listen, Shinobu.”
+
+@48375 Shinobu · 忍
+> 「なんだよ亮、まさか
+>  おじけづいたってわけか!?」
+“What is it, Ryo? Don't tell me you're chickening out?!”
+
+@48376 Ryo · 亮
+> 「いや、沙羅のことだ。
+>  ダンクーガは俺たち4人の
+“No, it's about Sara. The Dancouga is the union of the battle energy
+---
+>  戦闘エネルギーの集合体だ。
+>  1人欠けても力は発揮できん」
+of the four of us. If even one is missing, it can't show its full power.”
+
+@48377 Shinobu · 忍
+> 「沙羅か……くそっ!」
+“Sara, huh... Damn it!”
+
+@48378 Sara · 沙羅
+> 「ちょいと、何ばか面さらして
+>  叫んでんのさ、忍」
+“Hey now, what are you shouting about with that stupid look on your face, Shinobu?”
+
+@48379 Shinobu · 忍
+> 「沙羅、お前いつから……」
+“Sara, since when have you been...”
+
+@48380 Sara · 沙羅
+> 「あたしも行くよ。もうあたしには
+>  失うものなんて何もないんだ
+“I'm going too. I've got nothing left to lose anymore.
+---
+>  どこまでも行くよ。行ってやるよ」
+I'll go anywhere. I'll go, all right.”
+
+@48381 Simone · シモーヌ
+> 「だめよ沙羅、そんなことしたら
+>  命にかかわるわ」
+“No, Sara. If you do that, it could cost you your life.”
+
+@48382 Sara · 沙羅
+> 「はん、上等だよ。どうせ
+>  ムゲの宇宙に行けば
+“Hah, fine by me. If we go to the Muge universe, we might not
+---
+>  もどってこれないかもしれないんだろ。
+>  ならあたしはムゲの宇宙へ行くさ
+make it back anyway, right? Then I'll go to the Muge universe.
+---
+>  行って、戦って、死んでやるよ」
+I'll go, I'll fight, and I'll die.”
+
+@48383 Shinobu · 忍
+> 「お前……」
+“You...”
+
+@48384 Sara · 沙羅
+> 「どうせあんたもそのつもりだったんだろ、
+>  忍。まさか今さら
+“You were planning the same thing anyway, weren't you, Shinobu? Surely you're not
+---
+>  ダメだなんて、いわないよね」
+going to tell me no at this point.”
+
+@48385 Shinobu · 忍
+> 「……ああ、4人そろってこその
+>  ダンクーガだからな」
+“...Yeah. It's only Dancouga when all four of us are together, after all.”
+
+@48386 Sara · 沙羅
+> 「なら決まりだね」
+“Then it's settled.”
+
+@48387 Heero · ヒイロ
+> 「……俺も行かせてもらおう」
+“...I'll be going as well.”
+
+@48388 Roux · ルー
+# 审校：原文“2度ともどれないかもしれない”意为“可能再也回不来”，初稿误译为“a second time”。
+> 「ヒイロ!? あんた、どういうことか
+>  わかってるの?
+“Heero?! Do you understand what this means?
+---
+>  2度ともどれないかもしれないんだよ?」
+You might not be able to come back, you know?”
+
+@48389 Heero · ヒイロ
+> 「命なんて安いものだ。
+>  特に、俺のはな」
+“A life is a cheap thing. Mine especially.”
+
+@48390 Trowa · トロワ
+> 「戦略的にみて
+>  この作戦の有効性は高い
+“From a strategic standpoint, this operation's effectiveness is high.
+---
+>  俺も参加させてもらおう」
+I'll be joining as well.”
+
+@48391 Duo · デュオ
+> 「まったく、何でこんな連中と
+>  知りあっちまったんだろうなぁ
+“Honestly, how did I ever end up friends with a bunch like this?
+---
+>  しゃあねぇ、俺も行くか。
+>  死神の出張サービスだぜ」
+Oh well, guess I'll go too. The God of Death, making a house call.”
+
+@48392 Hilde · ヒルデ
+> 「デュオ……」
+“Duo...”
+
+@48393 Duo · デュオ
+> 「そんな顔すんなよ。それで地球圏が
+>  平和になるってんなら
+“Don't make that face. If it'll bring peace to the Earth Sphere,
+---
+>  おやすいご用だ。お前はどうすんだ、
+>  五飛」
+it's no trouble at all. What about you, Wufei?”
+
+@48394 Wufei · 五飛
+> 「攻撃こそ最大の防御だ。
+>  守ることばかり考えていては、
+“Attack is the greatest defense. If you think only of defending,
+---
+>  身動きがとれん」
+you can't move.”
+
+@48395 Duo · デュオ
+> 「素直じゃねぇなぁ、相変わらず」
+“Still not honest with yourself, huh. Same as ever.”
+
+@48396 Wufei · 五飛
+> 「お前たちとつるむ気はない。
+>  だが、ムゲゾルバドスは倒す
+“I have no intention of tagging along with you lot. But I will defeat Muge Zorbados.
+---
+>  それが俺の正義だ」
+That is my justice.”
+
+@48397 Koji · 甲児
+# 审校：“この兜甲児様”是甲児自夸口吻，初稿“Koji Kabuto here”气势不足，改为“The great Koji Kabuto”。
+> 「お前ら、オレを忘れてもらっちゃ
+>  困るぜ。オレだってムゲ野郎にはもう
+“Hey, don't go forgetting about me. I can't take the Muge bastards anymore
+---
+>  ガマンできねぇんだ。この兜甲児様
+>  もひと口のらせてもらうぜ」
+either. The great Koji Kabuto is getting in on this too.”
+
+@48398 Sayaka · さやか
+> 「ちょっと甲児くん!?」
+“Wait, Koji?!”
+
+@48399 Maria · マリア
+> 「甲児が行くっていうのに、
+>  あたしたちが行かないわけには
+“If Koji's going, then we can't very well stay behind,
+---
+>  いかないわよね、兄さん」
+can we, brother?”
+
+@48400 Daisuke · 大介
+> 「そうだな、マリア」
+“That's right, Maria.”
+
+@48401 Bright · ブライト
+> 「お、お前たち、
+>  何を勝手なことを……」
+“H-hey, you lot, who said you could just...”
+
+@48402 Banjo · 万丈
+# 审校：「ここはひとつ、賭けてみよう」译为“Let's stake everything on this”语气过重，改为更贴合万丈轻松口吻的“Let's take the gamble”。
+> 「いや、艦長。僕も彼らに賛成だ
+>  ムゲ帝国の野望を打ち砕かない
+“No, Captain. I agree with them. Unless we crush the Muge Empire's ambitions,
+---
+>  かぎり、地球圏に安息はない。
+>  ここはひとつ、賭けてみよう」
+there will be no peace in the Earth Sphere. Let's take the gamble.”
+
+@48403 Reika · レイカ
+> 「ちょっと万丈、本気!? まさか
+>  あなたも行くつもりじゃないでしょうね?」
+“Banjo, are you serious?! Don't tell me you're planning to go too?”
+
+@48404 Banjo · 万丈
+> 「当然さ。カラバをつくって
+>  帝国に対抗しようとした僕が
+“Of course. I'm the one who formed Karaba to stand against the Empire, so
+---
+>  行かないわけにはいかないね。
+>  いや、僕たちかな?」
+I can't very well stay behind. Or should I say, we can't?”
+
+@48405 Alan · アラン
+> 「フッ、そうだな」
+“Heh, indeed.”
+
+@48406 Amuro · アムロ
+> 「……ムゲを叩ければ、たとえ
+>  もどってこれなかったとしても
+“...If we can strike at Muge, then even if we can't come back,
+---
+>  地球圏の安全は
+>  確保できるか……」
+the Earth Sphere's safety can be secured...”
+
+@48407 Bright · ブライト
+> 「おいアムロ。お前までそんな無茶な
+>  作戦を、やろうっていうのか!?」
+“Hey, Amuro. You're going along with such a reckless operation too?!”
+
+@48408 Amuro · アムロ
+> 「ブライト、状況はアランの
+>  いった通りだよ
+“Bright, the situation is just as Alan said.
+---
+>  次にはデスガイヤーが、倍以上の
+>  兵力で攻めてくるかもしれない
+Next time Death Gaia may attack with more than double our forces.
+---
+>  俺たちには数ヶ月もの
+>  時間はないんだ」
+We don't have months to spare.”
+
+@48409 Bright · ブライト
+> 「しかしな、もどる方法はないんだぞ?
+>  生きては帰れん」
+“But there's no way back, you know? You won't return alive.”
+
+@48410 Ark · アーク（按段落 3DD1）
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、俺たちは
+>  これまでだって、生きて帰れないと
+“Captain Bright, we've surely faced times before when we resolved ourselves
+---
+>  覚悟したことが何度もあった
+>  はずです。いまさらそれは、聞けませんよ」
+to not coming back alive. It's too late to bring that up now.”
+
+@48411 Kamille · カミーユ
+> 「そうですよ。それにまだもどれないと
+>  確定したわけじゃない」
+“That's right. Besides, it's not confirmed that we can't return.”
+
+@48412 Selain · セレイン（按段落 3DD2）
+> 「艦長、そんなことはこれまでにも
+>  何度もありました。だが今回は
+“Captain, we've been through this many times before. But this time,
+---
+>  勝って終われる可能性があります
+>  ずっとましだと思いますが?」
+there's a chance we can end it with victory. I'd say that's far better, wouldn't you?”
+
+@48413 Simone · シモーヌ
+> 「そうね。それに艦長、
+>  もしかしたら向こうで
+“That's right. And Captain, maybe over there
+---
+>  もどる方法だって
+>  見つけられるかもしれないわ」
+we could even find a way back.”
+
+@48414 Brad · ブラッド（按段落 3DD3）
+> 「いまさらそんなことでやめられるかよ、
+>  艦長。そんなこたぁこれまでだって
+“You think we'd back out now over something like that, Captain? We've been through this
+---
+>  何度もあったじゃねぇか。
+>  しかも、こいつで
+plenty of times before. And besides, with this,
+---
+>  最後にできるかもしれねぇんだぜ?」
+it might be the last time we can do it, right?”
+
+@48415 Domon · ドモン
+> 「ああ。それにまだ絶対にもどれないと
+>  決まったわけじゃない」
+“Yeah. And it's not certain yet that we absolutely can't return.”
+
+@48416 Manami · マナミ（按段落 3DD4）
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、いまさらそれは
+>  聞けませんわ。これまでも何度も
+“Captain Bright, it's too late to bring that up now. We've faced such crises
+---
+>  そのような危機はありました。
+>  でも今回はこれまでと違い
+many times before. But this time is different from all those times.
+---
+>  負けないため、ではなく、
+>  勝つために向かうのです」
+We're not going so we won't lose — we're going so we'll win.”
+
+@48417 Lawrence · ローレンス
+# 审校：原译“it's not yet decided”偏口语，与老管家极其恭敬的措辞不符，改为“it is not yet decided”。
+> 「確かに。それに艦長、まだもどれぬと
+>  決まったわけではありますまい」
+“Indeed. And Captain, it is not yet decided that we cannot return, is it?”
+
+@48418 Bright · ブライト
+> 「わかった、わかったよ。まったく、
+>  どいつもこいつも」
+“All right, all right. Honestly, every last one of you.”
+
+@48419 Banjo · 万丈
+> 「では艦長……?」
+“Then, Captain...?”
+
+@48420 Bright · ブライト
+> 「ネェルアーガマを使うのだろう?
+>  俺が行かなくてどうするんだ」
+“You're going to use the Nahel Argama, aren't you? How could I not go?”
+
+@48421 Beecha · ビーチャ
+> 「あ、なんなら俺が艦長代理を
+>  やりましょうか」
+“Oh, if you want, I could act as captain in your place.”
+
+@48422 Elle · エル
+> 「ビーチャがぁ!? あんたは絶対
+>  行かないもんだと思ってたわ」
+“Beecha?! I was sure you'd never go.”
+
+@48423 Beecha · ビーチャ
+> 「え? あ、そうか、行ったら戻って
+>  これないかもしれないんだっけ!?
+“Huh? Oh, right, if we go we might not be able to come back?!
+---
+>  や、やっぱやめようかな～」
+M-maybe I'll pass after all...”
+
+@48424 Elle · エル
+> 「だったら最初からいうんじゃない!」
+“Then don't say it in the first place!”
+
+@48425 Koji · 甲児
+> 「よっしゃ、ブライトさんが来てくれんなら
+>  こいつで決まりだな。へへっ、
+“All right, if Bright's coming along, then it's settled. Heh,
+---
+>  獣戦機隊ばっかりに、いいカッコは
+>  させらんねぇぜ」
+I can't let the Cyber Beast Force hog all the glory.”
+
+@48426 Roux · ルー
+> 「もう、あんたたち本当のバカね。
+>  いいわよ
+“Honestly, you guys are real idiots. Fine,
+---
+>  みんなが行くんならあたしも行くわ」
+if everyone's going, then I'll go too.”
+
+@48427 Dr. Hazuki · 葉月博士
+> 「おいおい、ちょっと待ってくれ。
+>  全員が行けるほどの余裕は
+“Hey, hey, hold on a moment. I told you we don't have enough room
+---
+>  ないといったはずだ」
+for everyone to go.”
+
+@48428 Prof. Yumi · 弓教授
+> 「それに君たちが皆でいなくなってしまっ
+>  たら、OZはどうなるのかね。君たちが
+“And what will become of OZ if all of you disappear? Without you,
+---
+>  いなければ再編もままならんだろう。
+>  それでは、異星人やアクシズ軍の
+its reorganization won't go smoothly. At that rate, if the aliens or the Axis Forces'
+---
+>  残党が、何か騒ぎを起こしても、
+>  止められないのではないかね」
+remnants cause trouble, no one will be able to stop them.”
+
+@48429 Dr. Saotome · 早乙女博士
+# 审校：原译准确，无需修改。
+> 「うむ。それに、財団のこともあるだろ
+>  う。君たちのいない間に、財団の
+“Indeed. And there is the Foundation to consider as well. If, while you are gone, the Foundation's
+---
+>  連中がまたよからぬことを企めば、
+>  残るOZではレディ・アン特佐が
+people plot something wicked again, the remaining OZ — even with Lieutenant Colonel Lady Une —
+---
+>  いたとしても、抑えられないかもしれんぞ」
+might not be able to hold them back.”
+
+@48430 Sally · サリィ
+> 「そうですね。残存する各コロニーの
+>  政庁や、人々の支持を得る
+“That's right. To gain the support of the surviving colonies' governments and their people,
+---
+>  ためにも、OZを再編して、地球
+>  圏を守れる組織としての存在を
+we must reorganize OZ and show that it exists as an organization capable of protecting
+---
+>  示さなければ、まずいでしょう。それには
+>  {HeroMech}が不可欠です」
+the Earth Sphere. For that, the {HeroMech} is essential.”
+
+@48431 Banjo · 万丈
+> 「なるほどね。となると……
+>  アムロ特尉、残ってもらえないか」
+“I see. In that case... Captain Amuro, could you stay behind?”
+
+@48432 Amuro · アムロ
+> 「俺がか?」
+“Me?”
+
+@48433 Banjo · 万丈
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「誰かが残って、{HeroMech}を
+>  率いてOZの再編と
+“Someone has to stay behind and lead the {HeroMech} to reorganize OZ and
+---
+>  治安維持をしなくては。ブライト
+>  艦長もそうしてほしいところだが
+keep the peace. I'd like Captain Bright to do it too, but
+---
+>  ネェル・アーガマでいく以上は、
+>  来てもらわないとしかたがないからね
+since he's taking the Nahel Argama, we've got no choice but to have him go.
+---
+>  最悪の状況も想定しておく
+>  必要がある。特尉がいちばん
+We need to prepare for the worst-case scenario too. You're the most
+---
+>  適任だ」
+suitable for it, Captain.”
+
+@48434 Amuro · アムロ
+> 「しかたないな。わかったよ、俺は残ろう
+>  {HeroNick}、君はどうする?」
+“Can't be helped. All right, I'll stay. {HeroNick}, what about you?”
+
+@48435 Ark · アーク（按段落 3DD1）
+> 「そうですね……」
+“Well...”
+
+@48436 Selain · セレイン（按段落 3DD2）
+> 「ふむ……」
+“Hmm...”
+
+@48437 Brad · ブラッド（按段落 3DD3）
+> 「どうすっかな……」
+“What should I do...”
+
+@48438 Manami · マナミ（按段落 3DD4）
+> 「そうね……」
+“I suppose...”
+
+@48439 Banjo · 万丈
+> 「そう悩むことはないさ。どうせみんなが
+>  行けるわけじゃない。それになにしろ、
+“There's nothing to agonize over. Not everyone can go anyway. Besides, whatever happens,
+---
+>  異空間だ。ムゲの宇宙にいくのは
+>  おそらくパワーのあるマシンがメインに
+it's another dimension. The ones heading into the Muge universe will probably be mainly
+---
+>  なってくると思う。参考までにね」
+high-powered machines. Just for your reference.”
+
+@48440
+> *  ムゲの宇宙へ行く
+> *  地球圏に残留する
+* Go to the Muge universe
+* Remain in the Earth Sphere
+
+@48441 Ark · アーク（按段落 3DD1）
+> 「俺はムゲの宇宙へ
+>  行かせてもらいますよ。これ以上
+“I'll be going to the Muge universe. To keep this war from dragging on any longer,
+---
+>  戦争を長びかせないためにも、
+>  ムゲは叩かなくちゃならないんだ」
+we have to strike at Muge.”
+
+@48442 Selain · セレイン（按段落 3DD2）
+> 「私はムゲの宇宙へ行きます。
+>  もともとムゲを倒すために
+“I'm going to the Muge universe. This fight began as a way to defeat Muge in the first place.
+---
+>  始めた戦いです。ここまでこれるとは
+>  思っていませんでしたが
+I never thought we'd make it this far, but
+---
+>  来たからには行けるところまで
+>  行くだけです」
+since we have, I'll just go as far as I can.”
+
+@48443 Brad · ブラッド（按段落 3DD3）
+> 「俺はムゲの宇宙に行くぜ。奴らを
+>  倒さなきゃ平和がこないってんなら
+“I'm going to the Muge universe. If beating them is the only way to bring peace,
+---
+>  俺が奴らを叩く」
+then I'll be the one to crush them.”
+
+@48444 Manami · マナミ（按段落 3DD4）
+> 「あたしはムゲの宇宙へ
+>  行かせてもらいます、特尉
+“I'll be going to the Muge universe, Captain.
+---
+>  あいつらは絶対に許せない。あたし
+>  たちの手で倒してみせます」
+I can never forgive those bastards. I'll defeat them with my own hands.”
+
+@48445 Ark · アーク（按段落 3DD1）
+> 「そういうことなら俺も残りますよ。
+>  どうせそれほど人数が
+“If that's how it is, then I'll stay too. If not many of us can
+---
+>  行けないのなら、地球圏の
+>  混乱を少しでも早く終わらせたい」
+go anyway, I want to end the chaos in the Earth Sphere as soon as possible.”
+
+@48446 Selain · セレイン（按段落 3DD2）
+# 审校：原译“There's still the matter”和“They'll still need”偏口语，与塞莱因冷静知性的语气略不符，改为更正式的“There is still”和“They will still”。
+> 「でしたら、私も残りましょう。
+>  銀河帝国やアクシズの残党の
+“Then I shall stay as well. There is still the matter of the Galactic Empire and the Axis
+---
+>  件もあります。こちらにもまだ、
+>  私のような人間でも必要でしょう」
+remnants. They will still need people like me here too.”
+
+@48447 Brad · ブラッド（按段落 3DD3）
+> 「そういう事情なら
+>  俺も残らせてもらうぜ
+“If that's the situation, then I'll stay too.
+---
+>  ムゲ野郎を倒す役は、
+>  忍たちにゆずってやるさ」
+I'll leave the job of crushing those Muge bastards to Shinobu and the others.”
+
+@48448 Manami · マナミ（按段落 3DD4）
+> 「そういうことならばあたしも
+>  残らせてもらいますわ
+“If that's how it is, then I shall stay as well.
+---
+>  アムロさんだけに押しつけるわけにも
+>  いきませんしね?」
+I can't very well leave it all to you alone, Mr. Amuro, now can I?”
+
+@48449 Lawrence · ローレンス
+> 「さようでございますな」
+“Indeed, my lady.”
+
+@48450 Amuro · アムロ
+> 「そうか……残念だな」
+“I see... That's a shame.”
+
+@48451 Amuro · アムロ
+> 「すまない、助かるよ」
+“Thanks, that helps.”
+
+@48452 Bright · ブライト
+> 「オーラマシンの件があるので、
+>  ショウやマーベルは残ってもらうとして
+“Since there's the matter of the Aura Machine, Show and Marvel will stay behind.
+---
+>  他に地球圏に残るという者は?」
+Anyone else staying in the Earth Sphere?”
+
+@48453 Bright · ブライト
+> 「……これだけか?」
+“...Is that all?”
+
+@48454 Banjo · 万丈
+> 「艦長、これではらちがあかない。
+>  どうせたいした人数が行けるわけでは
+“Captain, this is getting us nowhere. Not many can go anyway.
+---
+>  ないんだ。ここは希望だけとって
+>  我々で決めてしまおう」
+Let's just take everyone's wishes into account and decide among ourselves.”
+
+@48455 Bright · ブライト
+> 「しかたないな。みんな、それでいいか?」
+“I suppose so. Everyone, is that all right with you?”
+
+@48456 Kenji · ケンジ
+> 「ええ。それで結構です、艦長」
+“Yes. That's fine with me, Captain.”
+
+@48457 Domon · ドモン
+> 「ああ、まかせる」
+“Yeah, leave it to you.”
+
+@48458 Remy · レミー
+> 「グッドサンダーチームもOKよ」
+“The Good Thunder Team's OK with that too.”
+
+@48459 Alan · アラン
+> 「では葉月博士。ガンドールの方の
+>  準備をお願いします」
+“Then, Dr. Hazuki, please make preparations for the Gandor.”
+
+@48460 Dr. Hazuki · 葉月博士
+> 「わかった。そこまでいうのなら
+>  私も止めはしない
+“Understood. If you've all come this far, I won't stop you either.
+---
+>  みなさん、準備を開始しましょう」
+Everyone, let's begin preparations.”
+
+@48461 Sally · サリィ
+> 「ムゲの宇宙へ向かうメンバーが
+>  決まったんだって?
+“So the members heading to the Muge universe have been decided?
+---
+>  で、結局誰が行くことになったの?」
+Well, who's going in the end?”
+
+@48462 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、万丈、アラン、
+>  獣戦機隊にヒイロたち
+“Captain Bright, Banjo, Alan, the Cyber Beast Force, Heero and the others,
+---
+>  それと甲児たち、デュークたち。あとは
+>  ……ゲッターチームに、タケルたちと、
+plus Koji and the others, Duke and the others. And then... the Getter Team, Takeru and the others,
+---
+>  エイジとデビッド、シモーヌだったか」
+and Eiji, David, and Simone, was it?”
+
+@48463 Ginrei · 銀鈴
+> 「それと、{HeroNick}と
+>  {PartnerFull}ね」
+“And {HeroNick} and {PartnerFull}.”
+
+@48464 Ginrei · 銀鈴
+> 「それと、{HeroNick}よ」
+“And {HeroNick}.”
+
+@48465 Ginrei · 銀鈴
+> 「それと、{HeroNick}と
+>  {PartnerFull}ね」
+“And {HeroNick} and {PartnerFull}.”
+
+@48466 Ginrei · 銀鈴
+> 「それと、{HeroNick}よ」
+“And {HeroNick}.”
+
+@48467 Ginrei · 銀鈴
+> 「それと、{HeroNick}と{PartnerNick}よ」
+“And {HeroNick} and {PartnerNick}.”
+
+@48468 Ginrei · 銀鈴
+> 「それと、{HeroNick}よ」
+“And {HeroNick}.”
+
+@48469 Ginrei · 銀鈴
+> 「それと、{HeroNick}と{PartnerNick}ね」
+“And {HeroNick} and {PartnerNick}.”
+
+@48470 Ginrei · 銀鈴
+> 「それと、{HeroNick}ね」
+“And {HeroNick}.”
+
+@48471 Marvel · マーベル
+> 「だと思うわ。あ、でも確か
+>  クラッシャー隊とカトルは残るはずよ」
+“I think so. Oh, but I'm pretty sure the Crusher Team and Quatre are staying.”
+
+@48472 Sally · サリィ
+> 「カトルが? そういえばあの子、
+>  ウィナー家の現当主になったのよね
+“Quatre? Now that you mention it, that kid became the current head of the Winner family, didn't he?
+---
+>  確かに残ってもらったほうが
+>  都合がよさそうね」
+You're right, it probably works out better if he stays behind.”
+
+@48473 Chum · チャム
+> 「まだいるわよ、マーベル。シーブックと
+>  セシリーも、ゴーショーグンもザンボットも
+“There are still more, Marvel. Seabook and Cecily, and GoShogun and Zambot too—
+---
+>  いくって言ってたもの」
+they all said they're going.”
+
+@48474 Chum · チャム
+> 「まだいるわよ、マーベル。シーブックと
+>  セシリーも、ゴーショーグンもいくって
+“There are still more, Marvel. Seabook and Cecily, and GoShogun too—
+---
+>  言ってたもの」
+they all said they're going.”
+
+@48475 Chum · チャム
+> 「まだいるわよ、マーベル。シーブックと
+>  セシリーも、ザンボットもいくって
+“There are still more, Marvel. Seabook and Cecily, and Zambot too—
+---
+>  言ってたもの」
+they all said they're going.”
+
+@48476 Chum · チャム
+> 「まだいるわよ、マーベル。シーブックと
+>  セシリーも、いくって言ってたもの」
+“There are still more, Marvel. Seabook and Cecily said they're going too.”
+
+@48477 Chum · チャム
+> 「まだいるわよ、マーベル。ゴーショーグンも
+>  ザンボットもいくって言ってたもの」
+“There are still more, Marvel. GoShogun and Zambot said they're going too.”
+
+@48478 Chum · チャム
+# 审校：GoShogun 是机器人/团队，初稿用 he 指代不当，改为 they。
+> 「まだいるわよ、マーベル。ゴーショーグンも
+>  いくって言ってたもの」
+“There are still more, Marvel. GoShogun said they're going too.”
+
+@48479 Chum · チャム
+> 「まだいるわよ、マーベル。ザンボットも
+>  いくって言ってたもの」
+“There are still more, Marvel. Zambot said they're going too.”
+
+@48480 Chum · チャム
+> 「ちゃんと覚えておかないとだめなんだから」
+“You really have to remember these things properly.”
+
+@48481 Marvel · マーベル
+> 「わかってるわよ、チャム」
+“I know, Chum.”
+
+@48482 Death Gaia · デスガイヤー
+> 「ムゲ帝王様」
+“Emperor Muge.”
+
+@48483 Emperor Muge · ムゲ帝王
+> 「デスガイヤーか。どうした」
+“Death Gaia. What is it?”
+
+@48484 Death Gaia · デスガイヤー
+> 「ギルドローム将軍からの報告が
+>  届かぬようです
+“It seems no report has arrived from General Gildrome.
+---
+>  もしやとは思いますが、
+>  地球人どもに破れたのでは……」
+I may be wrong, but could he have been defeated by the Earthlings...?”
+
+@48485 Emperor Muge · ムゲ帝王
+> 「かもしれぬ。ギルドロームのたっての
+>  希望があったので行かせたが、
+“Perhaps. I sent him because Gildrome insisted on it,
+---
+>  やはり戦力が不足しておったよう
+>  だな。まぁよい。準備が整い次第
+but it seems our forces were indeed insufficient. No matter. Once preparations are complete,
+---
+>  デスガイヤー、お前にやって
+>  もらうとしよう」
+Death Gaia, I shall have you handle it.”
+
+@48486 Death Gaia · デスガイヤー
+> 「はっ。しかし帝王様、もし
+>  地球人どもがギルドローム将軍を
+“Yes, sir. But Your Majesty, if the Earthlings were to defeat General Gildrome
+---
+>  破った後、万が一にも
+>  ここまで攻めてきた場合は……」
+and, by some chance, push all the way here...”
+
+@48487 Emperor Muge · ムゲ帝王
+> 「フフフ、それも面白いではないか
+>  デスガイヤー。もしそのような強敵が
+“Heh heh, wouldn't that be interesting too, Death Gaia? If such a powerful enemy
+---
+>  この宇宙に現れたのであれば、
+>  貴様とふたり、また思う存分
+were to appear in this universe, then you and I could once again fight to our hearts' content.
+---
+>  戦おうではないか。そして、
+>  再び力の帝国を築き直すのだ
+And then we shall rebuild the Empire of Power once more.
+---
+>  さぁ立て、デスガイヤー」
+Now rise, Death Gaia.”
+
+@48488 Death Gaia · デスガイヤー
+> 「はっ! ありがたきお言葉、
+>  身に余る光栄。このデスガイヤー
+“Yes, sir! Such gracious words are more than I deserve. I, Death Gaia,
+---
+>  若き日を思いだし、
+>  思う存分に戦う覚悟」
+shall recall the days of my youth and fight to my heart's content.”
+
+@48489 Emperor Muge · ムゲ帝王
+> 「うむ」
+“Good.”
+
+@48490 Death Gaia · デスガイヤー
+> 「くるならこい、地球人ども!
+>  貴様らはこのデスガイヤーが倒す!
+“Come if you dare, Earthlings! I, Death Gaia, will strike you down!
+---
+>  必ず、叩きつぶす! 燃える、燃え
+>  るぞ! 血が、戦いの血が騒ぐッ!」
+I will crush you all, without fail! It burns, it burns! My blood, the blood of battle, is stirring!”
+
+@48491 Sally · サリィ
+> 「ムゲの宇宙へ向かうメンバーが
+>  決まったんだって?
+“So the members heading to the Muge universe have been decided?
+---
+>  で、結局誰が行くことになったの?」
+Well, who's going in the end?”
+
+@48492 Noin · ノイン
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、万丈、アラン、
+>  獣戦機隊にヒイロたち
+“Captain Bright, Banjo, Alan, the Cyber Beast Force, Heero and the others,
+---
+>  それと甲児たち、デュークたち。あとは
+>  ……ゲッターチームに、タケルたちと、
+plus Koji and the others, Duke and the others. And then... the Getter Team, Takeru and the others,
+---
+>  エイジとデビッド、シモーヌだったか」
+and Eiji, David, and Simone, was it?”
+
+@48493 Marvel · マーベル
+> 「だと思うわ。あ、でも確か
+>  クラッシャー隊とカトルは残るはずよ」
+“I think so. Oh, but I'm pretty sure the Crusher Team and Quatre are staying.”
+
+@48494 Sally · サリィ
+> 「カトルが? そういえばあの子、
+>  ウィナー家の現当主になったのよね
+“Quatre? Now that you mention it, that kid became the current head of the Winner family, didn't he?
+---
+>  確かに残ってもらったほうが
+>  都合がよさそうね」
+You're right, it probably works out better if he stays behind.”
+
+@48495 Anna · アンナ
+> 「エイジ」
+“Eiji.”
+
+@48496 David · デビッド
+> 「アンナじゃないか。いったいどうしたんだ?」
+“Anna, isn't it? What's the matter?”
+
+@48497 Simone · シモーヌ
+> 「エイジ、あたしたち先に
+>  搬入に行ってるわね
+“Eiji, we're going on ahead to load the cargo, okay?
+---
+>  ほらデビッド、いらっしゃい」
+Come on, David, let's go.”
+
+@48498 David · デビッド
+> 「ちょっ、なんだよシモーヌ」
+“Hey, what the—what is it, Simone?”
+
+@48499 Simone · シモーヌ
+> 「いいから、くるのよ」
+“Never mind, just come on.”
+
+@48500 David · デビッド
+> 「わかった、わかったからひっぱるなよ」
+“All right, all right, just stop pulling me!”
+
+@48501 Simone · シモーヌ
+> 「じゃエイジ、あとでね」
+“See you later, Eiji.”
+
+@48502 Anna · アンナ
+> 「…………」
+“...”
+
+@48503 Eiji · エイジ
+> 「アンナ……どうしたんだ?」
+“Anna... what's wrong?”
+
+@48504 Anna · アンナ
+> 「エイジ……これ、私が部屋で育てて
+>  いた花なの。持って行ってくれる?」
+“Eiji... this is a flower I was growing in my room. Will you take it with you?”
+
+@48505 Eiji · エイジ
+> 「……ひな菊だね」
+“...A daisy, huh.”
+
+@48506 Anna · アンナ
+> 「覚えていてくれたの?」
+“You remembered?”
+
+@48507 Eiji · エイジ
+> 「忘れはしないさ。あの時、
+>  俺が生き残れたのも
+“I could never forget. The reason I survived back then
+---
+>  きっとこの花のおかげだ。アンナ……
+>  ありがとう。俺はきっと帰ってくる」
+was surely thanks to this flower. Anna... thank you. I'll definitely come back.”
+
+@48508 Anna · アンナ
+> 「うん……」
+“Yeah...”
+
+@48509 Amuro · アムロ
+> 「ベル、物資の積み替えは?」
+“Bel, how's the cargo transfer going?”
+
+@48510 Beltorchika · ベルトーチカ
+> 「終わったわよ。ネェルアーガマには
+>  積めるだけ積んだわ。こっちにはもう
+“It's done. We loaded the Nahel Argama with as much as it can carry. We've only kept
+---
+>  このまま月まで帰るのに必要な
+>  分しか残してないもの。いいんでしょ?」
+enough here to make it back to the moon as is. That's fine, right?”
+
+@48511 Amuro · アムロ
+> 「ああ。それでかまわないさ。必要に
+>  なるとしたら連中のほうだからね」
+“Yeah. That's fine. If anyone needs it, it'll be them.”
+
+@48512 Bright · ブライト
+> 「準備は整ったようだな」
+“Looks like we're ready.”
+
+@48513 Alan · アラン
+> 「大丈夫だ。いつでも出発できる」
+“No problem. We can leave anytime.”
+
+@48514 Duo · デュオ
+> 「ああ。後はガンドール砲の改造が
+>  うまくいってることを祈るだけさ」
+“Yeah. Now all we can do is pray the Gandor Cannon modifications went well.”
+
+@48515 Banjo · 万丈
+> 「はははっ、なにしろガンドール砲を
+>  直接受けるわけだからね
+“Hahaha, after all, we're taking the Gandor Cannon's blast head-on.
+---
+>  失敗してたら大変なことになる」
+If it failed, we'd be in serious trouble.”
+
+@48516 Koji · 甲児
+> 「頼むぜ博士」
+“We're counting on you, Doctor.”
+
+@48517 Bright · ブライト
+> 「……では、行くとするか」
+“...Then let's go.”
+
+@48518 Amuro · アムロ
+> 「そうだな。博士、発射の用意を」
+“Right. Doctor, prepare to fire.”
+
+@48519 Dr. Hazuki · 葉月博士
+> 「うむ。ガンドール砲、発射スタンバイ」
+“Very well. Gandor Cannon, firing standby.”
+
+@48520 Chan · チェーン
+> 「ガンドール砲、
+>  発射待機状態へ
+“Gandor Cannon, entering firing standby.
+---
+>  エネルギー臨界まであと1分」
+One minute to energy critical.”
+
+@48521 Anna · アンナ
+> 「みんな……気をつけてね」
+“Everyone... be careful.”
+
+@48522 Simone · シモーヌ
+> 「アンナ、留守番よろしくね。エイジは
+>  あたしが絶対連れて帰ってくるから」
+“Anna, hold down the fort. I'll bring Eiji back no matter what.”
+
+@48523 David · デビッド
+> 「シモーヌ、俺はどうでもいいのかよ」
+“Simone, what about me?”
+
+@48524 Simone · シモーヌ
+> 「あんたもエイジのついでに、
+>  連れて帰ってあげるわよ」
+“I'll bring you back too, as a bonus with Eiji.”
+
+@48525 Bright · ブライト
+> 「ではみんな、あとを頼むぞ」
+“Everyone, I leave the rest to you.”
+
+@48526 Koji · 甲児
+> 「そんじゃちょっくら行ってくるぜ。
+>  宴会の用意して待っててくれよな」
+“Well then, I'm off for a bit. Get the party ready and wait for us.”
+
+@48527 Amuro · アムロ
+> 「ああ、そうさせてもらうよ」
+“Yeah, we'll do just that.”
+
+@48528 Sai Saici · サイ・サイシー
+> 「帰ってきたら、オイラが
+>  腕によりをかけた
+“When you get back, I'll cook you the best meal
+---
+>  最高の料理を食わしてやるぜ」
+I can make with all my skill.”
+
+@48529 Chibodee · チボデー
+> 「そうさ。だからお前ら、
+>  生きて帰ってこいよ」
+“That's right. So all of you, come back alive.”
+
+@48530 Dr. Saotome · 早乙女博士
+> 「こちらでも我々の総力をあげて、
+>  ガンドールの改造を行なう
+“We'll also throw everything we have into modifying the Gandor here.
+---
+>  万が一、君たちが
+>  もどってこれなかった場合でも
+Even if, by some chance, you can't make it back,
+---
+>  こちらから迎えに行ける
+>  可能性もある」
+there's a chance we can come get you from this side.”
+
+@48531 Ryoma · リョウ
+> 「ははっ、期待しないで待ってますよ」
+“Haha, we'll wait without getting our hopes up.”
+
+@48532 Chan · チェーン
+> 「ガンドール砲、エネルギー臨界。
+>  いつでもどうぞ」
+“Gandor Cannon, energy critical. Ready whenever you are.”
+
+@48533 Elle · エレ
+> 「みなさん、どうかご無事で」
+“Everyone, please stay safe.”
+
+@48534 Ciela · シーラ
+> 「みなのご武運を祈っています」
+“I pray for all of your good fortune in battle.”
+
+@48535 Chum · チャム
+> 「みんな、がんばってね!」
+“Everyone, do your best!”
+
+@48536 Shinobu · 忍
+> 「やるぜ、俺たちは。イゴール将軍、
+>  ブレックス准将、みんな見ていてくれ」
+“We're gonna do this. General Igor, Brigadier General Blex, all of you, watch over us.”
+
+@48537 Ryo · 亮
+> 「これも、運命だな」
+“This too is fate.”
+
+@48538 Amuro · アムロ
+> 「葉月博士、頼みます」
+“Dr. Hazuki, please.”
+
+@48539 Dr. Hazuki · 葉月博士
+> 「うむ……ガンドール砲、発射!」
+“Very well... Gandor Cannon, fire!”
+
+@48540 Chan · チェーン
+> 「エネルギー120%で持続」
+“Sustaining at 120% energy.”
+
+@48541 Bunny · バニー
+> 「データ良好」
+“Data looks good.”
+
+@48542 Dr. Hazuki · 葉月博士
+> 「よしチェーン、そのまま
+>  月への帰還分を残し
+“Good, Chan, keep it up while leaving enough for the return to the moon,
+---
+>  限界まで出力を維持してくれ
+and maintain output to the limit.
+---
+>  …………頼むぞ、みんな」
+...I'm counting on you all.”
+
+@48543 Tetsuya · 鉄也
+> 「……行っちまったか……」
+“...They're gone...”
+
+@48544 Domon · ドモン
+> 「ああ……行っちまったな」
+“Yeah... they're gone.”
+
+@48545 Rain · レイン
+> 「……本当に大丈夫なのかしら……」
+“...Are they really going to be all right...”
+
+@48546 Domon · ドモン
+> 「なに、奴らなら大丈夫だ。
+>  心配することはない」
+“Come on, those guys will be fine. Nothing to worry about.”
+
+@48547 Show · ショウ
+> 「そう思うよ。彼らならきっと
+>  ムゲを倒し、生きて帰ってくる」
+“I think so too. They'll surely defeat Muge and come back alive.”
+
+@48548 Chum · チャム
+> 「そうよ。大丈夫なんだから」
+“That's right. They'll be fine.”
+
+@48549 Arthur · アーサー
+> 「だけどアンナ、よくエイジに
+>  ついていかなかったね」
+“But Anna, I'm surprised you didn't go with Eiji.”
+
+@48550 Anna · アンナ
+> 「だって……エイジにはきっと、
+>  帰ってくるところが必要だから……」
+“Because... Eiji surely needs a place to come back to...”
+
+@48551 Quatre · カトル
+> 「そうです。そのためにも、
+>  僕たちもがんばらなくては」
+“That's right. And for that sake, we have to do our best too.”
+
+@48552 Roux · ルー
+> 「アンナがいってるのは、ちょ～っと
+>  ニュアンスが違うんだけどね」
+“What Anna said is just a tiny bit different in nuance, though.”
+
+@48553 Quatre · カトル
+> 「どういうことです?」
+“What do you mean?”
+
+@48554 Roux · ルー
+> 「アッハハハハッ。気にしない気にしない
+>  あんたのいってることも
+“Ahahahaha! Don't worry about it, don't worry about it. What you said
+---
+>  間違ってるわけじゃないしね」
+isn't wrong either.”
+
+@48555 Judau · ジュドー
+> 「ああ、やることは山積みだからな。
+>  エル、そういやビーチャたちが
+“Yeah, there's a mountain of things to do. Elle, come to think of it, Beecha and the others
+---
+>  いなかったみたいだけど、
+>  あいつらどうしたんだ?」
+didn't seem to be around. What happened to them?”
+
+@48556 Elle · エル
+> 「ビーチャとモンドなら、ネェルアーガマに
+>  搬入する食料をくすねようと
+“Beecha and Mondo got caught trying to swipe the food supplies being loaded onto the Nahel Argama,
+---
+>  してたのが見つかって、罰として
+>  ファさんに芋の皮むきやらされてるよ」
+so as punishment Fa's making them peel potatoes.”
+
+@48557 Judau · ジュドー
+> 「なんだそりゃ。しょうがない奴らだな」
+“What's that about? Those guys are hopeless.”
+
+@48558 Roux · ルー
+> 「あんただって少し前までは
+>  一緒だったでしょ」
+“You were right there with them not long ago, you know.”
+
+@48559 Kamille · カミーユ
+> 「ああ。こっちが大変だってのに、
+>  Zを盗んでくれたものな?」
+“Yeah. And here we are in a crisis, and they went and stole the Z on us, didn't they?”
+
+@48560 Judau · ジュドー
+> 「あれは未遂でしょ。勘弁してよ」
+“That was only an attempt. Give me a break.”
+
+@48561 Ark · アーク（按段落 3DD1）
+> 「ムゲの宇宙……か。アムロさん、
+>  もう俺たちが
+“Muge's space... huh. Amuro, there's no reason for us
+---
+>  ここにとどまる理由もないんでしょう?」
+to stay here anymore, is there?”
+
+@48562 Selain · セレイン（按段落 3DD2）
+> 「特尉、私たちがここにとどまる
+>  理由はもうない。引きあげよう」
+“Special Lieutenant, there's no longer any reason for us to stay here. Let's pull out.”
+
+@48563 Brad · ブラッド（按段落 3DD3）
+> 「さてと。それじゃ俺たちも、俺たちの
+>  やるべきことをするとしようぜ」
+“Well then. Guess it's time for us to go do what we've got to do.”
+
+@48564 Manami · マナミ（按段落 3DD4）
+> 「さてと。それじゃあたしたちは
+>  帰りましょう
+“Well then. Let's be on our way, shall we?
+---
+>  あたしたちだってずいぶんと
+>  忙しくなるもの」
+We're going to be plenty busy ourselves.”
+
+@48565 Amuro · アムロ
+> 「ああ、そうだな。よし、
+>  俺たちは急いで月へ帰還しよう
+“Yeah, that's right. All right, let's hurry back to the moon.
+---
+>  葉月博士、ガンドールの
+>  改造の方、よろしく頼みますよ」
+Dr. Hazuki, please take care of the Gandor's modifications.”
+
+@48566 Dr. Hazuki · 葉月博士
+> 「わかっている。もう弓教授たちとも
+>  プランは練ってある
+“I know. I've already worked out the plan with Prof. Yumi and the others.
+---
+>  一刻も早く彼らを迎えに
+>  行ってやらなくてはな」
+We have to go pick them up as soon as possible.”
+
+@48567 Ple · プル
+> 「やだやだやだやだ! 絶対いやーっ!」
+“No, no, no, no! Absolutely not!”
+
+@48568 Ark · アーク（按段落 3DD1）
+> 「なんの騒ぎだ? プル、どうした?」
+“What's all the racket? Ple, what's wrong?”
+
+@48569 Selain · セレイン（按段落 3DD2）
+> 「うるさいぞ。いったい何の騒ぎだ」
+“You're being loud. What on earth is all this commotion?”
+
+@48570 Brad · ブラッド（按段落 3DD3）
+> 「あ～うるせぇな。
+>  いったいどうしたってんだよ」
+“Ah, you're so damn loud. What the hell's going on?”
+
+@48571 Manami · マナミ（按段落 3DD4）
+> 「あら、どうしたの、プル?」
+“Oh my, what's the matter, Ple?”
+
+@48572 Ple · プル
+> 「プルツーがあたしのキュベレイを、赤く
+>  するっていうの!」
+“Ple-Two says she's going to paint my Qubeley red!”
+
+@48573 Ple-Two · プルツー
+> 「私が乗ることだってあるから、色を
+>  変えたい、といっただけじゃないか」
+“I only said I want to change the color, since I ride it sometimes too.”
+
+@48574 Ple · プル
+> 「あれはあたしのMSだもん!」
+“That's my MS!”
+
+@48575 Astonaige · アストナージ
+> 「おい{HeroNick}、なんとかしてくれ。さっき
+>  からこの調子なんだよ」
+“Hey {HeroNick}, do something about this. They've been at it like this for a while now.”
+
+@48576 Ark · アーク（按段落 3DD1）
+> 「なんとかっていわれても……」
+“Even if you say do something...”
+
+@48577 Selain · セレイン（按段落 3DD2）
+> 「私にどうしろというんだ、アストナージ」
+“What do you expect me to do, Astonaige?”
+
+@48578 Brad · ブラッド（按段落 3DD3）
+> 「そんなこといわれてもなぁ」
+“Even if you tell me that...”
+
+@48579 Manami · マナミ（按段落 3DD4）
+> 「それはそうかもしれないけど……」
+“I suppose you might be right, but...”
+
+@48580 Astonaige · アストナージ
+> 「お前たち、キュベレイの色については、
+>  いまから{HeroNick}に決めさせるぞ」
+“You two, about the Qubeley's color, I'm having {HeroNick} decide it right now.”
+
+@48581 Ple · プル
+> 「え～っ、やだやだ、色変えるなんて
+>  いやー!」
+“Whaaat? No, no, I don't want the color changed!”
+
+@48582 Ple-Two · プルツー
+> 「私はそれでいい。{HeroName}の
+>  判断は信用している」
+“I'm fine with that. I trust {HeroName}'s judgment.”
+
+@48583 Ple · プル
+> 「あ、ずるい!」
+“Ah, no fair!”
+
+@48584 Astonaige · アストナージ
+> 「そう思うんなら、{HeroNick}にまかせれば
+>  いいだろ」
+“If you think so, then just leave it to {HeroNick}, why don't you.”
+
+@48585 Ple · プル
+> 「……わかった。あたしもそれでいい」
+“...Fine. I'm okay with that too.”
+
+@48586 Astonaige · アストナージ
+> 「やれやれ。ま、そういうわけだ。とにかく
+>  バッと決めちまってくれ。こういうのは
+“Good grief. Well, that's how it is. Anyway, just make a quick decision. This kind of thing
+---
+>  話しあいなんかしてても無駄だからな」
+is pointless no matter how much you talk it over.”
+
+@48587 Ark · アーク（按段落 3DD1）
+> 「しかたないな……」
+“Guess there's no helping it...”
+
+@48588 Selain · セレイン（按段落 3DD2）
+> 「……わかったよ」
+“...All right.”
+
+@48589 Brad · ブラッド（按段落 3DD3）
+> 「まったく、めんどくせぇなぁ」
+“Man, what a pain in the ass.”
+
+@48590 Manami · マナミ（按段落 3DD4）
+> 「そうね……わかったわ」
+“I suppose so... all right.”
+
+@48591 Ple · プル
+> 「{HeroNick}、あたしはいまの黒いままが
+>  いいんだからね」
+“{HeroNick}, I want it to stay black like it is now, got it?”
+
+@48592 Ple-Two · プルツー
+> 「私は、赤い方がいいと思う」
+“I think red would be better.”
+
+@48593
+> *  プル用の黒のまま残す
+> *  プルツー用に赤くする
+* Leave it black for Ple
+* Make it red for Ple-Two
+
+@48594 Ple · プル
+> 「わーい、やったぁっ!
+>  {HeroNick}大好きっ!」
+“Yaaay, all right! I love you, {HeroNick}!”
+
+@48595 Ark · アーク（按段落 3DD1）
+> 「やっぱりさ、プルがもってきたやつだから、
+>  それは優先しないとな」
+“After all, it's the one Ple brought, so we've gotta give that priority.”
+
+@48596 Selain · セレイン（按段落 3DD2）
+> 「わるいな、後で面倒がおきにくい方
+>  にさせてもらった」
+“Sorry about that. I went with the one that'll cause less trouble later.”
+
+@48597 Brad · ブラッド（按段落 3DD3）
+> 「ま、最初の乗り手の意見にあわ
+>  せるのが、筋ってもんだろうな」
+“Well, going along with the first pilot's opinion is the proper way, I'd say.”
+
+@48598 Manami · マナミ（按段落 3DD4）
+> 「ごめんね、プルツー。でもプルがあんなに
+>  嫌がってるから……」
+“Sorry, Ple-Two. But Ple was so dead set against it...”
+
+@48599 Ple-Two · プルツー
+> 「しかたがないな。わからないでもないし、
+>  あきらめるよ」
+“It can't be helped. I do sort of understand, so I'll give up.”
+
+@48600 Ple · プル
+> 「え～っ!? ひどいよ、{HeroNick}なんか
+>  だいっきらい! べ～っだ!」
+“Whaaat?! You're awful, {HeroNick}! I hate you, hate you! Bleh!”
+
+@48601 Ple-Two · プルツー
+> 「いいの?」
+“Are you sure?”
+
+@48602 Ark · アーク（按段落 3DD1）
+> 「そうしたいんだろ? 気分の
+>  問題ってさ、けっこう大きいからな
+“That's what you want, right? Matters of mood are a pretty big deal, after all.
+---
+>  プルはわかってくれるよ。後でジュドー
+>  にもいっておくから」
+Ple will understand. I'll talk to Judau about it later too.”
+
+@48603 Selain · セレイン（按段落 3DD2）
+> 「かまわないだろう。機体のカラーを
+>  変えるのも、たまにはいいさ。プルの
+“You don't mind, do you? Changing a machine's color is fine once in a while. I'll leave
+---
+>  フォローは、ジュドーにでも頼んでおく」
+Ple's side of things to Judau or someone.”
+
+@48604 Brad · ブラッド（按段落 3DD3）
+> 「いい、いい。気にするな。さっさとやって
+>  もらっちまえよ」
+“Fine, fine. Don't worry about it. Just get it done quick.”
+
+@48605 Manami · マナミ（按段落 3DD4）
+> 「そうしたかったんでしょう? なら、そんな
+>  こといってないで、素直に喜びなさい
+“That's what you wanted, isn't it? Then quit saying that and just be happy about it.
+---
+>  プルには、あとでちゃんとあやまっておくか
+>  ら」
+I'll apologize properly to Ple later.”
+
+@48606 Ple-Two · プルツー
+> 「うれしいな。ありがとう、{HeroName}」
+“I'm so happy. Thank you, {HeroName}.”
+
+@48607 Death Gaia · デスガイヤー
+> 「ムゲ帝王様」
+“Emperor Muge, sir.”
+
+@48608 Emperor Muge · ムゲ帝王
+> 「デスガイヤーか。どうした」
+“Death Gaia. What is it?”
+
+@48609 Death Gaia · デスガイヤー
+> 「ギルドローム将軍からの報告が
+>  届かぬようです
+“It seems no report has arrived from General Gildrome.
+---
+>  もしやとは思いますが、
+>  地球人どもに破れたのでは……」
+I may be wrong, but could he have been defeated by the Earthlings...?”
+
+@48610 Emperor Muge · ムゲ帝王
+> 「かもしれぬ。ギルドロームのたっての
+>  希望があったので行かせたが、
+“Perhaps. I sent him because Gildrome insisted so strongly, but
+---
+>  やはり戦力が不足しておったよう
+>  だな。まぁよい。準備が整い次第
+it seems our forces were insufficient after all. No matter. Once preparations are complete,
+---
+>  デスガイヤー、お前にやって
+>  もらうとしよう」
+Death Gaia, I shall have you handle it.”
+
+@48611 Death Gaia · デスガイヤー
+> 「はっ。しかし帝王様、もし
+>  地球人どもがギルドローム将軍を
+“Yes, sir. But Your Majesty, if the Earthlings defeat General Gildrome
+---
+>  破った後、万が一にも
+>  ここまで攻めてきた場合は……」
+and, by some chance, push all the way here...”
+
+@48612 Emperor Muge · ムゲ帝王
+# 审校：“力の帝国”按词表/世界观应译为 Empire of Power，而非 Empire of Might；调整语序使英文更自然。
+> 「フフフ、それも面白いではないか
+>  デスガイヤー。もしそのような強敵が
+“Heh heh heh, would that not be interesting too, Death Gaia? If such a mighty foe
+---
+>  この宇宙に現れたのであれば、
+>  貴様とふたり、また思う存分
+were to appear in this universe, then you and I could once again fight
+---
+>  戦おうではないか。そして、
+>  再び力の帝国を築き直すのだ
+to our hearts' content. And then we shall rebuild the Empire of Power anew.
+---
+>  さぁ立て、デスガイヤー」
+Now rise, Death Gaia.”
+
+@48613 Death Gaia · デスガイヤー
+# 审校：“身に余る光栄”译为 beyond my deserts 不自然，改为 more than I deserve。
+> 「はっ! ありがたきお言葉、
+>  身に余る光栄。このデスガイヤー
+“Yes, sir! Such gracious words, an honor more than I deserve. I, Death Gaia,
+---
+>  若き日を思いだし、
+>  思う存分に戦う覚悟」
+recalling the days of my youth, am resolved to fight to my heart's content.”
+
+@48614 Emperor Muge · ムゲ帝王
+> 「うむ」
+“Mm.”
+
+@48615 Death Gaia · デスガイヤー
+> 「くるならこい、地球人ども!
+>  貴様らはこのデスガイヤーが倒す!
+“Come if you dare, Earthlings! I, Death Gaia, will strike you down!
+---
+>  必ず、叩きつぶす! 燃える、燃え
+>  るぞ! 血が、戦いの血が騒ぐッ!」
+I will crush you all, without fail! It burns, it burns! My blood, my warrior's blood, races!”

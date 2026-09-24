@@ -1,0 +1,201 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8174 Gyunei · ギュネイ
+> 「よけられるか?」
+“Think you can dodge?”
+
+@8175 Gyunei · ギュネイ
+> 「いけぇーっ!!」
+“Gooo!”
+
+@8176 Gyunei · ギュネイ
+# 审校：“あたれぇーっ!!”是祈使“命中吧”，原译“Hit him!”添加了对象，原文无明确对象，改为“Hit!”更忠实
+> 「あたれぇーっ!!」
+“Hit!”
+
+@8177 Gyunei · ギュネイ
+> 「そこまでだっ!!」
+“This is as far as you go!”
+
+@8178 Gyunei · ギュネイ
+> 「くらえっ!!」
+“Take this!”
+
+@8179 Gyunei · ギュネイ
+> 「そこっ!」
+“There!”
+
+@8180 Gyunei · ギュネイ
+> 「このぉ!」
+“Why you!”
+
+@8181 Gyunei · ギュネイ
+> 「おそいっ!!」
+“Too slow!”
+
+@8182 Gyunei · ギュネイ
+> 「いかせるか!」
+“Like I'd let you!”
+
+@8183 Gyunei · ギュネイ
+> 「逃すか!」
+“You won't escape!”
+
+@8184 Gyunei · ギュネイ
+> 「来たなプレッシャー!」
+“So that pressure's here!”
+
+@8185 Gyunei · ギュネイ
+> 「じゃまだっ!!」
+“Out of my way!”
+
+@8186 Gyunei · ギュネイ
+> 「こんな連中など、オレ1機で!」
+“I'll take on all these guys with just my one unit!”
+
+@8187 Gyunei · ギュネイ
+> 「今の俺ならガンダムだろうが、
+>  何だろうがっ!!」
+“With me as I am now, Gundam or whatever it is!”
+
+@8188 Gyunei · ギュネイ
+> 「このギュネイ・ガスの警告を無視
+>  するから!」
+“That's what you get for ignoring Gyunei Guss's warning!”
+
+@8189 Gyunei · ギュネイ
+> 「邪魔だっ!!」
+“Out of my way!”
+
+@8190 Gyunei · ギュネイ
+> 「し、しまった!!」
+“D-Damn it!”
+
+@8191 Gyunei · ギュネイ
+> 「クェスッ!!」
+“Quess!”
+
+@8192 Gyunei · ギュネイ
+> 「くっ! しまったっ!!」
+“Ngh! Damn it!”
+
+@8193 Gyunei · ギュネイ
+> 「馬鹿な……この俺が!?」
+“Impossible... me of all people?!”
+
+@8194 Gyunei · ギュネイ
+> 「なにっ!?」
+“What?!”
+
+@8195 Gyunei · ギュネイ
+> 「くっ!! ダメージを受けすぎたか!?」
+“Ngh! Did I take too much damage?!”
+
+@8196 Gyunei · ギュネイ
+> 「バカな!? このオレが押されて
+>  いるだと!?」
+“Impossible!? I'm being pushed back?!”
+
+@8197 Gyunei · ギュネイ
+> 「うっ! やられる!?」
+“Ugh! I'm going down?!”
+
+@8198 Gyunei · ギュネイ
+> 「くそっ!」
+“Damn it!”
+
+@8199 Gyunei · ギュネイ
+> 「くっ! まだまだ!」
+“Ngh! Not even close!”
+
+@8200 Gyunei · ギュネイ
+> 「ちいっ!
+>  だが、まだやられたワケじゃないぜ!」
+“Tch! But it's not like I'm beaten yet!”
+
+@8201 Gyunei · ギュネイ
+> 「うおっ! なんの、これからだっ!!」
+“Whoa! No way, this is just the start!”
+
+@8202 Gyunei · ギュネイ
+> 「ぐっ!! 貴様、よくもっ!」
+“Guh! You bastard, how dare you!”
+
+@8203 Gyunei · ギュネイ
+> 「このプレッシャーはなんだ!?」
+“What is this pressure?!”
+
+@8204 Gyunei · ギュネイ
+> 「この損傷なら爆発しない!」
+“With this much damage, it won't explode!”
+
+@8205 Gyunei · ギュネイ
+> 「その程度かよ!」
+“Is that all you've got?”
+
+@8206 Gyunei · ギュネイ
+> 「効くかよ!!」
+“Like that'll work!”
+
+@8207 Gyunei · ギュネイ
+> 「この程度でっ!!」
+“That's all you've got!”
+
+@8208 Gyunei · ギュネイ
+> 「たいした攻撃じゃないぜ!」
+“That wasn't much of an attack!”
+
+@8209 Gyunei · ギュネイ
+> 「効かないな!」
+“It's not working!”
+
+@8210 Gyunei · ギュネイ
+> 「あたってたまるかよっ!!」
+“Like I'd let that hit me!”
+
+@8211 Gyunei · ギュネイ
+> 「きたっ!」
+“Here it comes!”
+
+@8212 Gyunei · ギュネイ
+> 「みえみえなんだよ!!」
+“I can see it coming a mile away!”
+
+@8213 Gyunei · ギュネイ
+> 「見えるぜ!」
+“I can see it!”
+
+@8214 Gyunei · ギュネイ
+> 「はははっ! 俺だってこれ位の芸当
+>  はできる!」
+“Hahaha! Even I can pull off a trick like that!”
+
+@8215 Gyunei · ギュネイ
+> 「ムダだっ!!」
+“It's useless!”
+
+@8216 Gyunei · ギュネイ
+> 「効くかよ!」
+“Like that'll work!”
+
+@8217 Gyunei · ギュネイ
+> 「ビームなんざ無駄なんだよっ!」
+“Beams are useless against me!”
+
+@8218 Gyunei · ギュネイ
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@8219 Gyunei · ギュネイ
+> 「ちっ! せっかくの反撃のチャンス
+>  だってのに、弾切れかよ!!」
+“Tch! Just when I finally had a chance to fight back, I'm out of ammo!”
+
+@8220 Gyunei · ギュネイ
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far, huh!”
+
+@8221 Gyunei · ギュネイ
+> 「くそっ! なんて所から攻撃して
+>  くるんだ!!」
+“Damn it! Attacking from a place like that!”

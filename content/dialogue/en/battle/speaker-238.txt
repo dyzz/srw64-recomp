@@ -1,0 +1,118 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8145 Kayra · ケーラ
+> 「やらせない!」
+“I won't let you!”
+
+@8146 Kayra · ケーラ
+> 「落ちなっ!!」
+“Fall!”
+
+@8147 Kayra · ケーラ
+> 「そこっ!!」
+“There!”
+
+@8148 Kayra · ケーラ
+> 「もらったっ!!」
+“Got you!”
+
+@8149 Kayra · ケーラ
+# 审校：补足语气，使英文更自然，避免“stop you”缺少宾语感
+> 「なんとしても足を止める!」
+“I'll stop you no matter what it takes!”
+
+@8150 Kayra · ケーラ
+> 「つかまえたっ!」
+“Caught you!”
+
+@8151 Kayra · ケーラ
+> 「こいつ!」
+“Why you!”
+
+@8152 Kayra · ケーラ
+> 「しまった! 脱出を!」
+“Damn! Eject!”
+
+@8153 Kayra · ケーラ
+> 「くっ! しまったっ!!」
+“Ngh! Damn it!”
+
+@8154 Kayra · ケーラ
+> 「直撃!?」
+“A direct hit?!”
+
+@8155 Kayra · ケーラ
+> 「くっ! も、もたない!?」
+“Ngh! I-I can't hold out?!”
+
+@8156 Kayra · ケーラ
+> 「まだやられるわけには!!」
+“I can't go down yet!”
+
+@8157 Kayra · ケーラ
+> 「ま、まだやられるわけには!」
+“I-I can't go down yet!”
+
+@8158 Kayra · ケーラ
+> 「ま、まだもう一撃できる!」
+“I-I can take one more shot!”
+
+@8159 Kayra · ケーラ
+> 「ああぁぁ!?」
+“Aaaah?!”
+
+@8160 Kayra · ケーラ
+> 「ちっ!! やるな!!」
+“Tch! Not bad!”
+
+@8161 Kayra · ケーラ
+> 「くっ!! でもまだ!」
+“Ngh! But I'm not done!”
+
+@8162 Kayra · ケーラ
+> 「やるな! しかし!!」
+“Not bad! But still!”
+
+@8163 Kayra · ケーラ
+> 「かざりをやられただけなんだから!」
+“It's just the decorations that got hit!”
+
+@8164 Kayra · ケーラ
+> 「こいつ!!」
+“Why you!”
+
+@8165 Kayra · ケーラ
+> 「この程度で!」
+“That's all you've got!”
+
+@8166 Kayra · ケーラ
+> 「まだまだっ!!」
+“Not even close!”
+
+@8167 Kayra · ケーラ
+> 「あまいなっ!」
+“Too naive!”
+
+@8168 Kayra · ケーラ
+> 「まだまだ! あまいんだよ!」
+“Not even close! You're too naive!”
+
+@8169 Kayra · ケーラ
+> 「つっこみがたらない!」
+“Your attacks aren't sharp enough!”
+
+@8170 Kayra · ケーラ
+> 「ビームは効かないって!!」
+“I told you beams don't work!”
+
+@8171 Kayra · ケーラ
+> 「ムダだっ!!」
+“It's useless!”
+
+@8172 Kayra · ケーラ
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@8173 Kayra · ケーラ
+> 「遠すぎる!」
+“Too far!”

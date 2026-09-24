@@ -1,0 +1,1135 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@29124 Noin · ノイン
+> 「カトル・ラバーバ・ウィナー。
+>  ひさしぶりだな」
+“Quatre Raberba Winner. It's been a while.”
+
+@29125 Quatre · カトル
+> 「ノインさん!? ノインさんじゃない
+>  ですか! よく、ここがわかりましたね……」
+“Noin?! Isn't that you, Noin? How did you find this place...”
+
+@29126 Noin · ノイン
+> 「迎えに来た。
+>  私と一緒に来てくれないか」
+“I've come to get you. Won't you come with me?”
+
+@29127 Quatre · カトル
+> 「…………」
+“...”
+
+@29128 Noin · ノイン
+> 「サンクキングダムのことは
+>  聞いているだろう。力をかしてほしい」
+“You've heard about the Sanc Kingdom, haven't you? I need your strength.”
+
+@29129 Quatre · カトル
+> 「ノインさん……。僕は戦いの中で、
+>  大切な仲間を
+“Noin... In battle, I lost precious comrades
+---
+>  この手でなくしてしまいました。
+>  僕は……」
+with my own hands. I...”
+
+@29130 Noin · ノイン
+> 「トロワ・バートンのことは知っている。
+>  だが、私たちは戦う力を持つ者が
+“I know about Trowa Barton. But we need those who possess the power to fight.
+---
+>  必要なのだ。力のない人々の
+>  願いが、理不尽な力によって
+The wishes of the powerless are about to be trampled
+---
+>  じゅうりんされようとしている。頼む」
+by unreasonable force. Please.”
+
+@29131 Quatre · カトル
+> 「……戦う力を持つ者は、力のない
+>  人たちのために戦わなければいけない…
+“...Those who possess the power to fight must fight for those without power...
+---
+>  それが義務だというんですね。
+>  ……わかりました
+You're saying that's our duty. ...I understand.
+---
+>  ノインさん、サンクキングダムへ
+>  行きましょう」
+Noin, let's go to the Sanc Kingdom.”
+
+@29132 Noin · ノイン
+> 「ありがとう……。感謝する」
+“Thank you... I'm grateful.”
+
+@29133 Quatre · カトル
+> 「いえ。僕たちガンダムパイロットは、
+>  やはり戦うことで
+“No. We Gundam pilots can only go on living
+---
+>  生きて行くしかないんです。
+>  ヒイロがいたら、きっとそういうでしょう」
+by fighting, after all. If Heero were here, I'm sure he'd say the same.”
+
+@29134 Noin · ノイン
+> 「ヒイロ・ユイ……? 君と一緒では
+>  なかったのか? どこに行った?」
+“Heero Yuy...? Weren't you together? Where did he go?”
+
+@29135 Quatre · カトル
+> 「ヒイロは……。ヒイロは選んだんです。
+>  最も死の確率の高い、戦場を」
+“Heero... Heero chose it. The battlefield with the highest probability of death.”
+
+@29136 Specials · スペシャルズ
+# 审校：「このままつぶせ」译为“Crush it as we are”不通顺，改为“Crush it now!”以符合战斗命令语气。
+> 「ひるむな! ガンダムとはいえ、
+>  相手は1機だ。このままつぶせ!」
+“Don't falter! It may be a Gundam, but it's only one unit. Crush it now!”
+
+@29137 Heero · ヒイロ
+> 「右上腕部被弾……
+>  機体損傷度85パーセント
+“Right upper arm hit... Unit damage at 85 percent.
+---
+>  くっ……、俺もここまでか……」
+Ngh... So this is as far as I go...”
+
+@29138 Treize · トレーズ
+> 「死んではならない」
+“You must not die.”
+
+@29139 Heero · ヒイロ
+> 「何……?」
+“What...?”
+
+@29140 Treize · トレーズ
+> 「君にはまだやるべきことが残っている。
+>  死ぬことは許可できない……」
+“You still have things you must do. I cannot permit you to die...”
+
+@29141 Heero · ヒイロ
+> 「……トレーズか……」
+“...Treize...”
+
+@29142 Specials · スペシャルズ
+# 审校：“He self-destructed?!”语气偏陈述，改为“Did he just self-destruct?!”更符合目睹突发自爆时的惊呼。
+> 「何だ? ……う、うわっ!
+>  ……奴め、自爆したというのか!」
+“What? ...W-whoa! ...Did he just self-destruct?!”
+
+@29143 Specials · スペシャルズ
+> 「パイロットを確認しろ!」
+“Check the pilot!”
+
+@29144 Specials · スペシャルズ
+# 审校：“blown away”不够准确，改为“blown to bits”更贴合“ふっとんじまってる”的惨状。
+> 「だめだ、ふっとんじまってる。
+>  今ので死んだんじゃないのか?」
+“No good, he's been blown to bits. Didn't that just kill him?”
+
+@29145 Specials · スペシャルズ
+> 「相手はガンダムパイロットだ。
+>  まさかとは思うが……
+“The enemy is a Gundam pilot. I doubt it, but...
+---
+>  付近を捜索するんだ!」
+Search the area!”
+
+@29146 Treize · トレーズ
+# 审校：“from the heart”略显生硬，改为“with all my heart”更自然。
+> 「よく来てくれた。心から歓迎する」
+“I'm glad you came. I welcome you with all my heart.”
+
+@29147 Heero · ヒイロ
+> 「トレーズなのか」
+“So it's you, Treize.”
+
+@29148 Treize · トレーズ
+> 「問いただすまでもない。私を撃つのか
+>  ヒイロ・ユイ? それもいいだろう
+“There's no need to ask. Will you shoot me, Heero Yuy? That would be fine too.
+---
+>  さぁ、撃ちたまえ」
+Come now, shoot.”
+
+@29149 Heero · ヒイロ
+> 「俺はお前の命に興味などない」
+“I have no interest in your life.”
+
+@29150 Treize · トレーズ
+> 「ヒイロ・ユイ。君には
+>  今後の生き方を示す
+“Heero Yuy. I've prepared a guidepost to show you how to live
+---
+>  道しるべを用意した。使ってくれ。
+>  名を、エピオンという」
+from now on. Use it. Its name is Epyon.”
+
+@29151 Heero · ヒイロ
+> 「……いいだろうトレーズ」
+“...Fine, Treize.”
+
+@29152 Treize · トレーズ
+> 「サンクキングダムへ行くがいい。
+>  君の求める戦いがそこにある
+“Go to the Sanc Kingdom. The battle you seek is there.
+---
+>  ただし、気をつけたまえ。この機体に
+>  乗って勝者になってはならない」
+However, be careful. You must not become the victor while piloting this unit.”
+
+@29153 Heero · ヒイロ
+> 「…………」
+“...”
+
+@29154 Beltorchika · ベルトーチカ
+# 审校：“Our scale is larger”表达不自然，改为“Our side is larger in scale”更清晰。
+> 「OZのMD部隊が続々と
+>  国境地帯に集まっています
+“OZ's MD units are gathering at the border one after another.
+---
+>  なお、沖合いに空母艦隊が……
+>  規模はこちらの方が大きいですね」
+Also, there's a carrier fleet offshore... Our side is larger in scale, though.”
+
+@29155 Quattro · クワトロ
+> 「海岸に上陸されたら
+>  市街地がすぐ目の前だ
+“If they land on the coast, the city will be right in front of us.
+---
+>  まったく、機雷の1つも
+>  敷設できんとは……」
+Honestly, to think we couldn't even lay a single mine...”
+
+@29156 Hayato · ハヤト
+# 审校：“putting on big faces”不自然，改为“acting all high and mighty”更符合英语表达。
+> 「こっちから、討って出ねえことを
+>  知って、でかいツラしてやがる
+“They know we won't come out and fight, so they're acting all high and mighty.
+---
+>  全く、ヘドが出る連中だぜ」
+Really, they make me sick.”
+
+@29157 Bright · ブライト
+> 「とうとう全面戦争だ。
+>  我々だけで守りきれるかどうか……」
+“It's finally all-out war. Whether we can hold out on our own...”
+
+@29158 Show · ショウ
+# 审校：“talk about being sad”略显生硬，改为“be talking about sadness”更自然。
+> 「だけどやるしかありませんよ。
+>  悲しいなんていってる場合じゃない」
+“But we've got no choice but to do it. This isn't the time to be talking about sadness.”
+
+@29159 Chum · チャム
+> 「そーよ! 悪い奴は
+>  みんなやっつけちゃえ!」
+“That's right! Let's beat up all the bad guys!”
+
+@29160 Kamille · カミーユ
+# 审校：“it saves me”直译感强，改为“it's a real comfort”更自然。
+> 「ははは、チャムがそういうと
+>  元気が出るな
+“Hahaha, when you say that, Chum, it cheers me up.
+---
+>  今みたいな時は、救われるよ」
+At times like this, it's a real comfort.”
+
+@29161 Chum · チャム
+> 「そーお? あたしはいつも通りよ?」
+“Really? I'm just the same as always, you know?”
+
+@29162 Koji · 甲児
+> 「おっしゃ、オレももう腹をくくったぜ。
+>  いつでも来やがれってんだ、タコメガネ!」
+“All right, I've made up my mind too. Come at me anytime, Octopus Glasses!”
+
+@29163 Sayaka · さやか
+> 「タコメガネって……バスクのこと?」
+“Octopus Glasses... You mean Bask?”
+
+@29164 Simone · シモーヌ
+> 「ぶっ!」
+“Buh!”
+
+@29165 David · デビッド
+# 审校：“beat them at their own game”与“返り討ち”意思略有偏差，改为“give them a taste of their own medicine”更贴切。
+> 「わはははは、そりゃいい! 返り討ちに
+>  してやろうぜ、タコメガネをよ!」
+“Wahahaha, that's rich! Let's give them a taste of their own medicine, that Octopus Glasses!”
+
+@29166 ???
+> 「マーズ……マーズよ」
+“Mars... Mars.”
+
+@29167 Takeru · タケル
+> 「う……うぅ……」
+“U... ugh...”
+
+@29168 ???
+> 「目覚めよマーズ」
+“Awaken, Mars.”
+
+@29169 Takeru · タケル
+> 「う……な、なんだ?」
+“Ugh... w-what?”
+
+@29170 ???
+> 「マーズ、この時のために
+>  地球に送られたマーズよ」
+“Mars. You are Mars, sent to Earth for this very moment.”
+
+@29171 Takeru · タケル
+> 「……マーズ……!?
+>  俺は明神タケルだ
+“...Mars...?! I'm Takeru Myojin.
+---
+>  マーズなんて名前じゃない!」
+My name isn't Mars!”
+
+@29172 ???
+> 「……違う、お前はマーズだ。
+>  だが多少の手違いがあったようだな
+“...No, you are Mars. But it seems there was some mistake.
+---
+>  もう少し時間をかけねばならぬか……」
+Perhaps I must take a little more time...”
+
+@29173 Takeru · タケル
+> 「……はっ!? ……夢……か。
+>  なんだったんだ……マーズって……」
+“...Hah?! ...A dream...? What was that... Mars...”
+
+@29174 Beltorchika · ベルトーチカ
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、
+>  未確認機が接近してきます!」
+“Captain Bright, an unidentified unit is approaching!”
+
+@29175 Bright · ブライト
+> 「何!? 敵か?」
+“What?! Is it an enemy?”
+
+@29176 Beltorchika · ベルトーチカ
+> 「わかりません、見たこともない
+>  機体です……。あ、でも、これって……」
+“I don't know. It's a unit I've never seen before... Ah, but wait, this is...”
+
+@29177 Judau · ジュドー
+> 「おいおい、これってガンダムじゃねえの?」
+“Hey hey, isn't this a Gundam?”
+
+@29178 Kamille · カミーユ
+> 「未登録の機体……、
+>  新型のガンダムだって?」
+“An unregistered unit... a new type of Gundam?”
+
+@29179 David · デビッド
+> 「あれもガンダムっていうのか?
+>  まあ、ドモンたちのこともあるしなあ……
+“You call that a Gundam too? Well, there's Domon and the others, so...
+---
+>  よくわからねえな、こればっかりは」
+I just can't tell anymore, not with this stuff.”
+
+@29180 Heero · ヒイロ
+> 「こちらガンダムエピオン、
+>  パイロットのヒイロ・ユイ
+“This is Gundam Epyon, pilot Heero Yuy.
+---
+>  着艦許可を要請する」
+Requesting permission to land.”
+
+@29181 Quatre · カトル
+> 「ヒイロ! ヒイロだって!?」
+“Heero! Did you say Heero?!”
+
+@29182 Koji · 甲児
+> 「何てこった……。あいつかよ!」
+“What the hell... It's him!”
+
+@29183 Bright · ブライト
+> 「ヒイロ・ユイ……。
+>  君がくるとは思わなかった
+“Heero Yuy... I never thought you'd come.
+---
+>  君もサンクキングダムを
+>  守ろうというのか?」
+So you intend to protect the Sanc Kingdom as well?”
+
+@29184 Heero · ヒイロ
+> 「俺はこの国の存亡になど興味は
+>  ない。敵と戦いに来ただけだ」
+“I have no interest in this country's fate. I only came to fight the enemy.”
+
+@29185 Roux · ルー
+> 「で、その敵はOZなんでしょ?
+>  だったら同じことじゃない」
+“And that enemy is OZ, right? Then it's the same thing.”
+
+@29186 Quatre · カトル
+> 「ヒイロ、この国は今、
+>  僕たちを必要としているんだ
+“Heero, this country needs us right now.
+---
+>  僕たちは、完全平和の理想を
+>  守らなくちゃいけない
+We have to protect the ideal of total peace.
+---
+>  ……君が来てくれて、うれしいよ」
+...I'm glad you came.”
+
+@29187 Heero · ヒイロ
+> 「関係ない。おれはただ、
+>  エピオンにしたがってやって来ただけだ」
+“It doesn't matter. I simply came here following Epyon.”
+
+@29188 David · デビッド
+> 「ちっ、無愛想に訳のわからねえ
+>  ことをいうのも変わってねえな、まったく」
+“Tch, still as curt and cryptic as ever, I see.”
+
+@29189 Alan · アラン
+> 「まあいいじゃないか。
+>  心強いことに変わりはない」
+“Well, isn't that fine? It's still reassuring to have him.”
+
+@29190 Heero · ヒイロ
+> 「……リリーナか」
+“...Relena.”
+
+@29191 Relena · リリーナ
+> 「ヒイロ……ヒイロ、教えて。
+>  わたくしの考えは夢?
+“Heero... Heero, tell me. Is my way of thinking a dream?
+---
+>  それとも過ちなのでしょうか?
+>  どんなにきれいごとをならべても
+Or is it a mistake? No matter how many pretty words I line up,
+---
+>  私には誰ひとり
+>  助けることなどできない。そうでしょう?」
+I can't save a single person. Isn't that right?”
+
+@29192 Heero · ヒイロ
+> 「…………」
+“...”
+
+@29193 Relena · リリーナ
+> 「わたくしはいつも助けられてばかり。
+>  武力の必要ない平和など
+“I'm always the one being saved. Is a peace that doesn't need military force
+---
+>  ありえないのでしょうか?
+>  完全平和など
+simply impossible? Is total peace nothing but
+---
+>  戦うことのできない者の
+>  たわごとなのではないでしょうか」
+the idle talk of those who cannot fight?”
+
+@29194 Heero · ヒイロ
+> 「お前のしていることがなんであろうと、
+>  OZは待ってはくれない
+“Whatever it is you're doing, OZ won't wait for you.
+---
+>  俺は兵士だ。戦うことしかできない
+>  そして、いまは戦うことが必要だ
+I'm a soldier. All I can do is fight. And right now, fighting is what's needed.
+---
+>  たとえ相手が、同じ地球人でも」
+Even if the enemy is a fellow Earthling.”
+
+@29195 Relena · リリーナ
+> 「わたくしは……いつか見い出します。
+>  何がみんなを戦いに走らせるのかを」
+“I will... someday find it. What it is that drives everyone to fight.”
+
+@29196 Milliardo · ミリアルド
+# 审校：“間もなく大気圏だ”指即将进入大气层，原译“The atmosphere is coming up soon”不自然；改为更贴切的表达。
+> 「間もなく大気圏だ、
+>  このままサンクキングダムに突入する!
+“We're about to enter the atmosphere. We'll plunge into the Sanc Kingdom as is!
+---
+>  急げ、急いでくれ、ゼロ!」
+Hurry, Zero, hurry!”
+
+@29197 Bask · バスク
+> 「サンクキングダムの政府代表、
+>  および国民に告ぐ
+“To the government representatives and citizens of the Sanc Kingdom:
+---
+>  貴殿らはただちに
+>  政府を解体し、国家代表
+You are to dismantle your government immediately and dismiss
+---
+>  リリーナ・ピースクラフトを元首から
+>  解任せよ
+your head of state, Relena Peacecraft.
+---
+>  そうすれば貴国の安全は、
+>  我々OZ治安維持軍が
+If you do so, your nation's safety will be
+---
+>  保証するものである。なお、これは
+>  最後通告であり
+guaranteed by our OZ peacekeeping force. Note that this is a final notice;
+---
+>  返答なき場合は、地球圏の
+>  秩序維持のため強行手段に
+should you fail to respond, we will resort to forceful measures
+---
+>  訴える。繰り返す、返答無き
+>  場合は、強行手段に訴える!」
+to maintain order in the Earth Sphere. I repeat: should you fail to respond, we will resort to forceful measures!”
+
+@29198 Specials · スペシャルズ
+> 「……返答はありません」
+“...There is no reply.”
+
+@29199 Bask · バスク
+> 「当たり前だ。この期に及んで
+>  無条件降伏などされて
+“Of course there isn't. As if they'd surrender unconditionally
+---
+>  たまるものかよ。全軍に告ぐ!
+>  ただ今より
+at this stage. To all forces! From this moment,
+---
+>  サンクキングダム制圧作戦を
+>  開始する
+we begin the operation to subdue the Sanc Kingdom.
+---
+>  敵対する物は全て排除せよ!
+>  攻撃開始!」
+Eliminate all hostiles! Begin the attack!”
+
+@29200 Relena · リリーナ
+> 「ここは危険だから早くお逃げなさい」
+“It's dangerous here, so please flee at once.”
+
+@29201 Noin · ノイン
+> 「私はここにおります。
+>  ……リリーナ様をお守りしなくては」
+“I will stay here. ...I must protect Lady Relena.”
+
+@29202 Dorothy · ドロシー
+> 「逃げませんわ。この事態の
+>  なりゆきを見届けなくては
+“I won't run. I must see how this situation unfolds.
+---
+>  ここ……サンクキングダムにきた意味が
+>  ありませんもの」
+Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
+
+@29203 Milliardo · ミリアルド
+> 「なぜ、お前がここに……」
+“Why are you here...”
+
+@29204 Heero · ヒイロ
+> 「ゼクスか。……貴様が
+>  その機体を選んだのはミスだ」
+“Zechs. ...Choosing that machine was a mistake on your part.”
+
+@29205 Milliardo · ミリアルド
+> 「ヒイロ、状況を確認する……
+>  貴様は敵か!?」
+“Heero, I'm checking the situation... Are you an enemy?!”
+
+@29206 Heero · ヒイロ
+> 「ゼロに聞け」
+“Ask Zero.”
+
+@29207 Milliardo · ミリアルド
+> 「なに!?
+“What?!
+---
+>  ……殺しに来た者は殺せか……
+>  そういうのだな、ゼロ……
+...Kill those who come to kill, is it... So that's what you're saying, Zero...
+---
+>  いいだろう、純粋な戦士として
+>  貴様との因縁の戦い、今ここで
+Fine. As a pure soldier, I'll settle this fated battle with you, here and now!
+---
+>  決着をつけてやる!」
+Let's finish it!”
+
+@29208 Milliardo · ミリアルド
+> 「戦いは……
+>  サンクキングダムはどうなったのだ!?」
+“The battle... What happened to the Sanc Kingdom?!”
+
+@29209 Noin · ノイン
+> 「ゼクス特佐……!」
+“Colonel Zechs...!”
+
+@29210 Relena · リリーナ
+> 「……どうしたの?」
+“...What is it?”
+
+@29211 Noin · ノイン
+> 「リリーナ様、あの方は……
+>  あなたのお兄様です」
+“Lady Relena, that man is... your brother.”
+
+@29212 Relena · リリーナ
+> 「兄……? わたくしの、お兄様!?」
+“Brother...? My brother?!”
+
+@29213 Koji · 甲児
+> 「まだこんなにいるのかよ、くそっ!」
+“There are still this many left?! Damn it!”
+
+@29214 Relena · リリーナ
+> 「わたくしはサンクキングダム代表、
+>  リリーナ・ピースクラフト」
+“I am the representative of the Sanc Kingdom, Relena Peacecraft.”
+
+@29215 Heero · ヒイロ
+> 「リリーナ!」
+“Relena!”
+
+@29216 Relena · リリーナ
+> 「現在、わが国はOZとの
+>  戦闘状態にあります。しかしこれは
+“At present, our nation is in a state of war with OZ. But this is not
+---
+>  わたくしたちの望むところではありません
+>  平和を得るため武力を使わねば
+what we desire. If we must use force to obtain peace,
+---
+>  ならないのならば、わがサンクキングダムは
+>  主権を放棄し
+then the Sanc Kingdom will renounce its sovereignty
+---
+>  国を解体いたします」
+and dismantle our nation.”
+
+@29217 Bright · ブライト
+> 「国を解体…………!」
+“Dismantle the nation...?!”
+
+@29218 Relena · リリーナ
+> 「完全平和主義は
+>  いかなる理由でも武器をとって
+“Absolute pacifism means that for no reason may one take up arms
+---
+>  戦ってはいけないのです。
+>  ただちに戦闘を中止しなさい
+and fight. Cease combat immediately.
+---
+>  ……なおも戦う意志をもつ者は
+>  この地より去りなさい!!」
+...Those who still wish to fight, leave this land at once!!”
+
+@29219 Noin · ノイン
+> 「リリーナ様……」
+“Lady Relena...”
+
+@29220 Relena · リリーナ
+> 「この身はロームフェラに
+>  お預けしましょう」
+“I shall place myself in Romefeller's custody.”
+
+@29221 Dorothy · ドロシー
+> 「すごーい! なんてすごいの、リリーナさま
+>  ますますファンになっちゃったわ
+“Amazing! How amazing, Lady Relena, I've become an even bigger fan of yours!
+---
+>  大丈夫、わたくしが一緒に
+>  まいります。悪いようにはいたしませんわ」
+Don't worry, I'll come along with you. I won't let any harm come to you.”
+
+@29222 Bright · ブライト
+> 「……やむをえん。
+>  サンクキングダムを出るぞ」
+“...It can't be helped. We're leaving the Sanc Kingdom.”
+
+@29223 Quatre · カトル
+> 「リリーナさんは僕たちに
+>  逃げるチャンスをくれたんだ」
+“Miss Relena gave us a chance to escape.”
+
+@29224 Milliardo · ミリアルド
+> 「く……撤退か……」
+“Ngh... A retreat, is it...”
+
+@29225 Relena · リリーナ
+> 「わたくしはサンクキングダム代表、
+>  リリーナ・ピースクラフト」
+“I am the representative of the Sanc Kingdom, Relena Peacecraft.”
+
+@29226 Heero · ヒイロ
+> 「リリーナ!」
+“Relena!”
+
+@29227 Relena · リリーナ
+> 「現在、わが国はOZとの
+>  戦闘状態にあります。しかしこれは
+“At present, our nation is in a state of war with OZ. But this is not
+---
+>  わたくしたちの望むところではありません
+>  平和を得るため武力を使わねば
+what we desire. If we must use force to obtain peace,
+---
+>  ならないのならば、わがサンクキングダムは
+>  主権を放棄し
+then the Sanc Kingdom will renounce its sovereignty
+---
+>  国を解体いたします」
+and dismantle our nation.”
+
+@29228 Bright · ブライト
+> 「国を解体…………!」
+“Dismantle the nation...?!”
+
+@29229 Relena · リリーナ
+> 「完全平和主義は
+>  いかなる理由でも武器をとって
+“Absolute pacifism means that for no reason may one take up arms
+---
+>  戦ってはいけないのです。
+>  ただちに戦闘を中止しなさい
+and fight. Cease combat immediately.
+---
+>  ……なおも戦う意志をもつ者は
+>  この地より去りなさい!!」
+...Those who still wish to fight, leave this land at once!!”
+
+@29230 Noin · ノイン
+> 「リリーナ様……」
+“Lady Relena...”
+
+@29231 Relena · リリーナ
+> 「この身はロームフェラに
+>  お預けしましょう」
+“I shall place myself in Romefeller's custody.”
+
+@29232 Dorothy · ドロシー
+> 「すごーい! なんてすごいの、リリーナさま
+>  ますますファンになっちゃったわ
+“Amazing! How amazing, Lady Relena, I've become an even bigger fan of yours!
+---
+>  大丈夫、わたくしが一緒に
+>  まいります。悪いようにはいたしませんわ」
+Don't worry, I'll come along with you. I won't let any harm come to you.”
+
+@29233 Bright · ブライト
+> 「……やむをえん。
+>  サンクキングダムを出るぞ」
+“...It can't be helped. We're leaving the Sanc Kingdom.”
+
+@29234 Quatre · カトル
+> 「リリーナさんは僕たちに
+>  逃げるチャンスをくれたんだ」
+“Miss Relena gave us a chance to escape.”
+
+@29235 Milliardo · ミリアルド
+> 「く……撤退か……」
+“Ngh... A retreat, is it...”
+
+@29236 Heero · ヒイロ
+> 「ちょうどいい、決着をつける!」
+“Perfect timing. Let's settle this!”
+
+@29237 Milliardo · ミリアルド
+> 「君が望むなら、うけてたとう!」
+“If that's what you wish, I'll take you on!”
+
+@29238 Dorothy · ドロシー
+> 「さあリリーナ様、まいりましょう
+>  ロームフェラ財団には
+“Now then, Lady Relena, let us be off. To the Romefeller Foundation,
+---
+>  私がご同行しますわ」
+I shall accompany you.”
+
+@29239 Relena · リリーナ
+> (ごめんなさい、皆さん……。私は、
+>  このような道しか選べないのです……)
+(Forgive me, everyone... This is the only path I can choose...)
+
+@29240 Dorothy · ドロシー
+> 「リリーナ様がロームフェラにつくまでの
+>  身の安全は、私が保証します
+“I will guarantee your safety until you reach Romefeller, Lady Relena.
+---
+>  でも…財団がリリーナ様の身柄を
+>  どうするのかは、私にもわかりませんけど」
+But... even I don't know what the Foundation intends to do with you.”
+
+@29241 Relena · リリーナ
+> (わからない……この先どうやって
+>  理想を実現したらいいのか……)
+(I don't know... how I should go about realizing my ideal from here...)
+
+@29242 Dorothy · ドロシー
+> 「リリーナ様、そんなお顔なさらないで。
+>  内緒だけど、私、おじいさまの
+“Lady Relena, please don't make such a face. Just between us, I have a vague idea
+---
+>  考えてらっしゃる事を
+>  うすうす知ってるの
+of what Grandfather is thinking.
+---
+>  きっと悪いようにはなさらないわ……。
+>  だから安心してくださいな」
+Surely he won't do anything unkind... So please, rest easy.”
+
+@29243 Relena · リリーナ
+> 「おじいさま……?
+>  なんのことをいっているの?」
+“Grandfather...? What are you talking about?”
+
+@29244 Dorothy · ドロシー
+> 「それは着いてからのお楽しみ。
+>  ふふふふ……」
+“That's something to look forward to once we arrive. Heh heh heh...”
+
+@29245 Dorothy · ドロシー
+> 「おじいさま、リリーナ・ピースクラフト様
+>  をお連れいたしました」
+“Grandfather, I've brought Lady Relena Peacecraft.”
+
+@29246 Dermail · デルマイユ
+> 「おおドロシー、ご苦労だった。
+>  下がって休むがよい」
+“Ah, Dorothy, well done. You may withdraw and rest.”
+
+@29247 Relena · リリーナ
+> 「デルマイユ公? ドロシー、あなた……」
+“Duke Dermail? Dorothy, you...”
+
+@29248 Dorothy · ドロシー
+> 「ふふ、がんばって、リリーナ様。
+>  あなたの戦いの始まりですわよ……」
+“Heh heh, do your best, Lady Relena. Your battle begins now...”
+
+@29249 Dermail · デルマイユ
+> 「ご気分はいかがですかな、
+>  プリンセス・リリーナ」
+“And how are you feeling, Princess Relena?”
+
+@29250 Bright · ブライト
+> 「追撃隊は、まだ追ってくるのか!?」
+“Are the pursuers still after us?!”
+
+@29251 Ginrei · 銀鈴
+> 「いえ……。どうやらふりきったみたいです。
+>  ミノフスキー粒子
+“No... It seems we've shaken them off. Minovsky particle
+---
+>  散布、終了します」
+dispersion, terminating.”
+
+@29252 Bright · ブライト
+> 「そうか、ひとまず安心だが……
+>  こういう結果になるとは……」
+“I see. That's a relief for now, but... to think it would end like this...”
+
+@29253 Koji · 甲児
+> 「くそっ、こんなことってありかよ!
+>  オレたちのやったことは
+“Damn it, how can this be?! Does that mean everything we did
+---
+>  全部ムダだったってのか!?」
+was for nothing?!”
+
+@29254 Ark · アーク（按段落 3DD1）
+> 「リリーナさんが自ら決めたことだから、
+>  しょうがない
+“Miss Relena decided this for herself, so it can't be helped.
+---
+>  俺たちにはそれを止める
+>  権利などないんだ」
+We have no right to stop her.”
+
+@29255 Selain · セレイン（按段落 3DD2）
+> 「リリーナ代表自ら決めたことだ、
+>  しかたがない
+“Representative Relena decided this herself. It can't be helped.
+---
+>  我々にはそれを止める
+>  権利などない」
+We have no right to stop her.”
+
+@29256 Brad · ブラッド（按段落 3DD3）
+> 「リリーナ王女が自分で
+>  決めたってんだから、しょうがねぇさ
+“Princess Relena decided it herself, so there's nothin' we can do.
+---
+>  俺たちにはそれを止める
+>  権利なんかねぇ」
+We've got no right to stop her.”
+
+@29257 Manami · マナミ（按段落 3DD4）
+> 「リリーナさんが自ら決めたことだから、
+>  しかたないわ
+“Miss Relena decided this for herself, so it can't be helped.
+---
+>  あたしたちにはそれを止める
+>  権利なんかないもの」
+We don't have any right to stop her.”
+
+@29258 David · デビッド
+> 「それにしたって、ひでえ話だぜ。
+>  別に損得で戦ってるわけじゃねえが
+“Even so, this is a rough deal. It's not like we're fighting for profit,
+---
+>  やりきれねえよなあ。あーあ、
+>  また宿なしの逃亡生活かい」
+but it's hard to swallow. Ahh, back to life as homeless fugitives, huh.”
+
+@29259 Simone · シモーヌ
+> 「ちょっと、そんないい方やめなさい!
+>  いちばんつらいのは、リリーナさんなのよ!」
+“Hey, don't put it like that! The one hurting most is Miss Relena!”
+
+@29260 David · デビッド
+> 「……すまん。どうも、気持ちの
+>  持って行き所がないみたいだ」
+“...Sorry. I guess I just don't know where to put these feelings.”
+
+@29261 Alan · アラン
+> 「……考えようによっては、
+>  これで良かったのかもしれん」
+“...Depending on how you look at it, this may have been for the best.”
+
+@29262 Daisaku · 大作
+> 「それってどういうことですか?」
+“What do you mean by that?”
+
+@29263 Alan · アラン
+> 「完全平和主義の理想は、
+>  まだ時期が早すぎたということだ
+“It simply means the ideal of complete pacifism came too early.
+---
+>  俺たちがサンクキングダムで
+>  戦ったことは、多くの人たちに
+The fact that we fought in the Sanc Kingdom must have confronted
+---
+>  現実と理想の問題を
+>  投げかけたことだろう。そして
+many people with the problem of reality versus ideals. And
+---
+>  サンクキングダムはなくなった……。だが、
+>  理想までなくなったわけじゃない
+the Sanc Kingdom is gone... But the ideal itself is not gone.
+---
+>  俺たちには、まだ他の場所で
+>  やるべきことがある……
+We still have things we must do elsewhere...
+---
+>  未来の完全平和のために、な」
+For the sake of future complete peace.”
+
+@29264 Eiji · エイジ
+# 审校：原文“俺たちだって……”承接前句，补出并列关系更自然。
+> 「そうですね……。そう思いましょう。
+>  姉さんだって戦ってる
+“You're right... Let's believe that. My sister is fighting too,
+---
+>  俺たちだって……」
+and so are we...”
+
+@29265 Koji · 甲児
+# 审校：“always saying good stuff”语气太轻浮，改为更符合甲児热血直率语气的说法。
+> 「さすがアランさん、いいこというぜ。
+>  で、これからどうするんだ?」
+“That's Alan for you—he says good things. So, what do we do now?”
+
+@29266 Alan · アラン
+> 「さあな。考えてない」
+“Beats me. I haven't thought about it.”
+
+@29267 Koji · 甲児
+> 「あらら……」
+“Oh, come on...”
+
+@29268 Amuro · アムロ
+# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
+# 草稿第 1 页：“Hahaha, well, it's fine. This marks a fresh start for the
+# 草稿第 2 页：【主角机体名】. Come on, everyone, cheer up.”
+> 「ははは、まあいいさ。これから改めて、
+>  {HeroMech}の
+---
+>  再出発というわけだ。
+>  みんな、元気を出そう」
+
+@29269 Heero · ヒイロ
+> 「ぐっ……。ここは……?」
+“Ngh... Where is this...?”
+
+@29270 Milliardo · ミリアルド
+> 「気づいたか……。
+>  ここは{HeroMech}の戦艦だ」
+“You're awake... This is the {HeroMech}'s battleship.”
+
+@29271 Heero · ヒイロ
+> 「……なぜ、こんなところにいる!?」
+“...Why am I in a place like this?!”
+
+@29272 Milliardo · ミリアルド
+> 「我々は救助されたのだよ。
+>  {HeroMech}にな
+“We were rescued. By the {HeroMech}.
+---
+>  2人とも、かなり疲れていたのだろう。
+>  発見された時は、まるで意識が
+You two must have been quite exhausted. When you were found, you were apparently
+---
+>  なかったらしい」
+completely unconscious.”
+
+@29273 Heero · ヒイロ
+> 「心まで支配するシステムか……」
+“A system that controls even your mind...”
+
+@29274 Milliardo · ミリアルド
+> 「ゼロシステムもそうだ……お互い、
+>  機械にほんろうされたようだな」
+“The same goes for the ZERO System... Seems we've both been toyed with by machines.”
+
+@29275 Heero · ヒイロ
+> 「…………」
+“...”
+
+@29276 Milliardo · ミリアルド
+> 「どこへ行く気だ?」
+“Where do you intend to go?”
+
+@29277 Heero · ヒイロ
+> 「俺はゼロで行く、
+>  貴様はエピオンに乗れ……
+“I'll go in the ZERO. You take the Epyon...
+---
+>  エピオンはトレーズの作った機体だ。
+>  俺には奴の考えがわからん……」
+The Epyon is a machine Treize built. I can't understand what he was thinking...”
+
+@29278 Milliardo · ミリアルド
+> 「何だと? 貴様、
+>  これからどうするつもりだ?」
+“What?! What do you intend to do now?”
+
+@29279 Heero · ヒイロ
+> 「さあな……。俺の敵は、
+>  ゼロが教えてくれる……」
+“Who knows... The ZERO will tell me who my enemy is...”
+
+@29280 Milliardo · ミリアルド
+> 「エピオンか……確かにトレーズなら、この
+>  機体を私に託しただろうがな……」
+“The Epyon, huh... If it was Treize, he certainly would have entrusted this machine to me...”
+
+@29281 Noin · ノイン
+> 「ゼクス!」
+“Zechs!”
+
+@29282 Milliardo · ミリアルド
+# 审校：“Noin, is it.”不自然，改为更口语的确认语气。
+> 「ノイン……ノインか」
+“Noin... So it's Noin.”
+
+@29283 Noin · ノイン
+> 「おひさしぶりです……」
+“It's been a long time...”
+
+@29284 Milliardo · ミリアルド
+> 「ああ、そうだな……」
+“Yeah, that's right...”
+
+@29285 Noin · ノイン
+> 「申しわけありません、
+>  私がついていながら、リリーナ様を……」
+“I'm sorry. I was with her, and yet Lady Relena...”
+
+@29286 Milliardo · ミリアルド
+> 「いや、あれが自分で決意したことだ
+>  誰にも止められまい
+“No. That was a decision she made herself. No one could stop her—
+---
+>  たとえ私ですらもな……」
+not even me...”
+
+@29287 Noin · ノイン
+> 「どちらへ行かれるのです!?」
+“Where are you going?!”
+
+@29288 Milliardo · ミリアルド
+> 「私もまた、これから成すべきことが
+>  見い出せずにいる……
+“I, too, have yet to find what I should do from here...
+---
+>  私はエピオンと行く。
+>  たった今、戦いの中で何かが
+I'll go with the Epyon. Just now, in battle, I felt as though I caught a glimpse of something.
+---
+>  見えたような気がした。
+>  それを確かめる」
+I mean to find out what it was.”
+
+@29289 Noin · ノイン
+> 「お待ちになって下さい!」
+“Please wait!”
+
+@29290 Milliardo · ミリアルド
+> 「エピオンよ……、
+>  私に未来を見せてくれ!」
+“Epyon... show me the future!”
+
+@29291 Jamitov · ジャミトフ
+> 「正体不明の艦隊だと……?
+>  それだけではわからん
+“An unidentified fleet...? That alone tells me nothing.
+---
+>  詳しく報告しろ」
+Report in detail.”
+
+@29292 Tubarov · ツバロフ
+> 「それが、皆目わからないのです。
+>  登録されている、いかなるタイプの
+“That's just it—we have no idea. It doesn't match any registered type of
+---
+>  艦とも合致しません。
+>  あるいはムゲ帝国の
+ship. I thought it might be remnants of the Muge Empire,
+---
+>  残党かとも思いましたが、
+>  その可能性も低く……」
+but that possibility seems unlikely as well...”
+
+@29293 Jamitov · ジャミトフ
+> 「ふん、もうよい。偵察隊を出して
+>  詳しく調べさせろ。監視を怠るな
+“Hmph, that's enough. Send out a reconnaissance team to investigate thoroughly. Don't neglect your surveillance.
+---
+>  万が一のために警戒態勢を
+>  とっておけ。何かあったら報告しろ」
+Maintain a state of alert just in case. Report anything that happens.”
+
+@29294 Tubarov · ツバロフ
+> 「は、かしこまりました。それでは……」
+“Yes, understood. Then, if you'll excuse me...”
+
+@29295 Jamitov · ジャミトフ
+> 「正体不明の艦隊が
+>  出現しただと……。いままで単に
+“An unidentified fleet has appeared... If it was merely
+---
+>  未確認だっただけならば良し、
+>  そうでないとしたら……外宇宙からの
+unconfirmed until now, fine. If not... then it's an intruder from outer space.
+---
+>  侵入者ということになる。
+>  だとするとやはり
+Which would mean the Muge Empire after all...? Honestly, just when the surface is finally
+---
+>  ムゲ帝国か……? まったく、ようやく
+>  地上が片づきつつあるという時に
+being cleaned up, I hope this doesn't turn into
+---
+>  面倒なことにならねばよいがな……」
+a nuisance...”

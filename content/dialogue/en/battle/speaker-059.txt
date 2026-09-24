@@ -1,0 +1,120 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9055 Rosamia · ロザミア
+# 审校：“そこねっ!”是攻击时喊出的短句，初稿“Got you there!”语气偏对话，改为更贴合战斗喊话的“Right there!”。
+> 「そこねっ!」
+“Right there!”
+
+@9056 Rosamia · ロザミア
+> 「やらせないっ!!」
+“I won't let you!!”
+
+@9057 Rosamia · ロザミア
+> 「みんなを守るのよ!」
+“I'll protect everyone!”
+
+@9058 Rosamia · ロザミア
+> 「あたしだって、やれるんだからっ!」
+“I can do it too, you know!”
+
+@9059 Rosamia · ロザミア
+> 「このっ!」
+“Why you!”
+
+@9060 Rosamia · ロザミア
+> 「お兄ちゃん、見てて!」
+“Big brother, watch me!”
+
+@9061 Rosamia · ロザミア
+# 审校：“あっち行っちゃえーっ!”是带拖长音的驱赶语气，初稿“Get out of here!”偏重，改为更贴近原文语气的“Go away!”。
+> 「あっち行っちゃえーっ!」
+“Go away!”
+
+@9062 Rosamia · ロザミア
+# 审校：“落ちなさいよっ!”是击坠敌人时的喊话，初稿“Just fall already!”中的“Just”多余，改为更直接的“Fall already!”。
+> 「落ちなさいよっ!」
+“Fall already!”
+
+@9063 Rosamia · ロザミア
+> 「どいてっ!」
+“Out of my way!”
+
+@9064 Rosamia · ロザミア
+> 「ああっ! お兄ちゃん!!」
+“Ahh! Big brother!!”
+
+@9065 Rosamia · ロザミア
+> 「ああっ! だ、ダメぇ! やられちゃうっ!」
+“Ahh! N-no! I'm gonna get hit!”
+
+@9066 Rosamia · ロザミア
+> 「うああっ! あ、頭が……い、痛い……」
+“Uwaaah! M-my head... it hurts...”
+
+@9067 Rosamia · ロザミア
+> 「きゃああっ! ど、どうして!?」
+“Kyaaah! W-why?!”
+
+@9068 Rosamia · ロザミア
+> 「あうっ! ま、まだよ、こんなのっ!」
+“Agh! I-I'm not done yet, not by a long shot!”
+
+@9069 Rosamia · ロザミア
+> 「ううっ! や、やられてないよね、まだ……」
+“Ugh! I-I haven't been beaten yet, right...”
+
+@9070 Rosamia · ロザミア
+> 「きゃっ! やったわねえっ!」
+“Kya! You'll pay for that!”
+
+@9071 Rosamia · ロザミア
+> 「なにさ、そんな攻撃っ!」
+“What, an attack like that?!”
+
+@9072 Rosamia · ロザミア
+> 「効かないのよっ!」
+“It doesn't work on me!”
+
+@9073 Rosamia · ロザミア
+> 「この程度でっ!」
+“That's all you've got?!”
+
+@9074 Rosamia · ロザミア
+> 「やったあ、かわせた!」
+“Yes, I dodged it!”
+
+@9075 Rosamia · ロザミア
+> 「どんなもんよ!」
+“How's that!”
+
+@9076 Rosamia · ロザミア
+> 「当たらないもん!」
+“You can't hit me!”
+
+@9077 Rosamia · ロザミア
+> 「きゃっ! ちょっと、危ないじゃないっ!」
+“Kya! Hey, that was dangerous!”
+
+@9078 Rosamia · ロザミア
+> 「あ……見える!?」
+“Ah... you can see it?!”
+
+@9079 Rosamia · ロザミア
+> 「やったよ、お兄ちゃん!」
+“I did it, big brother!”
+
+@9080 Rosamia · ロザミア
+> 「効かないのよっ!」
+“It doesn't work on me!”
+
+@9081 Rosamia · ロザミア
+> 「ムダよ!」
+“It's useless!”
+
+@9082 Rosamia · ロザミア
+> 「あれ? 弾がでない! どうしたんだろ?」
+“Huh? The bullets won't come out! What's wrong?”
+
+@9083 Rosamia · ロザミア
+> 「ウソ、届かないの?」
+“No way, it won't reach?”

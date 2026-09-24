@@ -1,0 +1,70 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50789 Cecily · セシリー
+> 「レジスタンス部隊は、まだ発見でき
+>  ないの?」
+“Still no sign of the resistance unit?”
+
+@50790 Seabook · シーブック
+> 「だめだな。……そろそろ合流地点
+>  なんだけどな」
+“No good. ...We should be at the rendezvous point by now.”
+
+@50791 Cecily · セシリー
+> 「いくら命令だからといって、私たち
+>  2人だけで派遣されるなんてね」
+“Orders or not, sending just the two of us out here is something else.”
+
+@50792 Seabook · シーブック
+> 「しかたがないさ、セシリー。今はどこの
+>  組織だって、ひとりでも戦力を
+“It can't be helped, Cecily. Right now every group out there wants to secure
+---
+>  確保しておきたいんだ。2人も
+>  出られるだけでも、たいしたもんだよ」
+even one more fighter. Being able to send two of us is already a lot.”
+
+@50793 Cecily · セシリー
+> 「そうかもね。……えっ、何の音?
+>  ……あ、あれは何!」
+“Maybe so. ...Huh, what's that sound? ...Ah, what is that?!”
+
+@50794 Seabook · シーブック
+> 「レジスタンス部隊が来たのか?
+>  ……違う! 敵だ!」
+“Is that the resistance unit? ...No! It's the enemy!”
+
+@50795 Seabook · シーブック
+> 「2人だけでもできるってとこ、
+>  見せてやるさ」
+“We'll show them what the two of us can do.”
+
+@50796 Seabook · シーブック
+> 「な、なんでだよ!」
+“Wh-why?!”
+
+@50797 Cecily · セシリー
+> 「あぁぁ!? シ、シーブック!」
+“Aaaah?! S-Seabook!”
+
+@50798 Seabook · シーブック
+> 「やったぞ! 全滅だ!」
+“We did it! They're all wiped out!”
+
+@50799 Cecily · セシリー
+> 「……なんとか終わったようね」
+“...Looks like it's finally over.”
+
+@50800 Seabook · シーブック
+> 「ああ。……でも戦いは、まだまだ続くさ」
+“Yeah. ...But the fighting's still far from over.”
+
+@50801 Cecily · セシリー
+> 「見て! あれ、レジスタンス部隊じゃ
+>  ないかしら」
+“Look! Isn't that the resistance unit?”
+
+@50802 Seabook · シーブック
+> 「やっと来たか……
+>  セシリー、彼らと合流しよう」
+“They're finally here... Cecily, let's link up with them.”

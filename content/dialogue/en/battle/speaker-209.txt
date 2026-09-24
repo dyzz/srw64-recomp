@@ -1,0 +1,91 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7839 Karla · カルラ
+> 「いさぎよく死ぬがいい!」
+“Die with some dignity!”
+
+@7840 Karla · カルラ
+> 「この私に勝てると思っているのか!?」
+“You think you can beat me!?”
+
+@7841 Karla · カルラ
+> 「死ぬがいい!!」
+“Die!!”
+
+@7842 Karla · カルラ
+> 「これがお前の最後だっ!!」
+“This is your end!!”
+
+@7843 Karla · カルラ
+> 「落ちろっ!」
+“Fall!”
+
+@7844 Karla · カルラ
+> 「無駄なあがきをっ!」
+“What a pointless struggle!”
+
+@7845 Karla · カルラ
+> 「お前がっ!」
+“You!”
+
+@7846 Karla · カルラ
+> 「し、しまった……!」
+“D-damn it...!”
+
+@7847 Karla · カルラ
+> 「この私を、ここまで追い詰める
+>  とは!?」
+“To push me this far!?”
+
+@7848 Karla · カルラ
+> 「うわぁぁぁぁっっ!!」
+“Uwaaaaaaah!!”
+
+@7849 Karla · カルラ
+> 「しまった! このままではもたん!」
+“Damn! I can't hold out like this!”
+
+@7850 Karla · カルラ
+> 「なんだと!?」
+“What did you say!?”
+
+@7851 Karla · カルラ
+> 「くぅぅっ!」
+“Kuh!”
+
+@7852 Karla · カルラ
+> 「うぅっ!」
+“Ugh!”
+
+@7853 Karla · カルラ
+> 「なにっ!?」
+“What!?”
+
+@7854 Karla · カルラ
+> 「その程度の攻撃で何をしようと
+>  いうのだ!」
+“What do you hope to do with an attack like that!”
+
+@7855 Karla · カルラ
+> 「あまいっ!!」
+“Too soft!!”
+
+@7856 Karla · カルラ
+> 「おそいっ!!」
+“Too slow!!”
+
+@7857 Karla · カルラ
+> 「そんな構えで当てられるか!」
+“You think you can hit me with that stance!”
+
+@7858 Karla · カルラ
+> 「効きはせん!!」
+“It won't work!!”
+
+@7859 Karla · カルラ
+> 「くっ、だめか!?」
+“Kuh, no good!?”
+
+@7860 Karla · カルラ
+> 「くっ、届かぬというのか!?」
+“Kuh, it won't reach!?”

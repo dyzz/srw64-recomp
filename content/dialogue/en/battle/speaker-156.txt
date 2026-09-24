@@ -1,0 +1,143 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7238 Daisaku · 大作
+> 「思い知れ! やれ、ロボ!」
+“You'll learn your lesson! Get him, Robo!”
+
+@7239 Daisaku · 大作
+> 「あいつだ!」
+“That's the one!”
+
+@7240 Daisaku · 大作
+> 「じゃましないでくださいっ!」
+“Please don't get in my way!”
+
+@7241 Daisaku · 大作
+> 「やれっ、ジャイアント・ロボ!」
+“Get him, Giant Robo!”
+
+@7242 Daisaku · 大作
+> 「いまだ、ロボ!」
+“Now, Robo!”
+
+@7243 Daisaku · 大作
+> 「いけっ、ジャイアント・ロボ!」
+“Go, Giant Robo!”
+
+@7244 Daisaku · 大作
+> 「いっけえぇぇぇぇぇっ!」
+“Gooooooo!”
+
+@7245 Daisaku · 大作
+> 「いまだっ、ジャイアント・ロボ!」
+“Now, Giant Robo!”
+
+@7246 Daisaku · 大作
+> 「ロボ、行け!」
+“Robo, go!”
+
+@7247 Daisaku · 大作
+> 「ロボ! そいつをやっつけろ!」
+“Robo! Take that one down!”
+
+@7248 Daisaku · 大作
+> 「ジャイアント・ロボ、そいつを
+>  やっつけるんだ!」
+“Giant Robo, take that one down!”
+
+@7249 Daisaku · 大作
+> 「ロボォォォォォォッッ!」
+“Roboooooo!”
+
+@7250 Daisaku · 大作
+> 「うわっ……うわあぁぁぁぁっ!」
+“Whoa... whoaaaaa!”
+
+@7251 Daisaku · 大作
+> 「うわぁぁぁぁぁぁーっ!」
+“Whoaaaaaaa!”
+
+@7252 Daisaku · 大作
+> 「と、とうさん、僕に力を!」
+“D-Dad, give me strength!”
+
+@7253 Daisaku · 大作
+> 「ロ、ロボォォォッ!?」
+“R-Roboooo?!”
+
+@7254 Daisaku · 大作
+> 「と、とうさん、僕は精一杯
+>  やってみますっ!」
+“D-Dad, I'll do my very best!”
+
+@7255 Daisaku · 大作
+> 「うぅ、はやくっはやく動くんだロボッ!」
+“Ugh, hurry, hurry and move, Robo!”
+
+@7256 Daisaku · 大作
+> 「うわぁっ!」
+“Whoa!”
+
+@7257 Daisaku · 大作
+> 「ロボ!?」
+“Robo?!”
+
+@7258 Daisaku · 大作
+> 「あぅ、立つんだロボ!」
+“Ah, get up, Robo!”
+
+@7259 Daisaku · 大作
+> 「負けるな、ロボ!」
+“Don't lose, Robo!”
+
+@7260 Daisaku · 大作
+> 「このくらいでやられるロボじゃないぞ!」
+“This isn't enough to take Robo down!”
+
+@7261 Daisaku · 大作
+> 「そんな攻撃、ロボには効かないぞ!」
+“That kind of attack won't hurt Robo!”
+
+@7262 Daisaku · 大作
+> 「まだだっ、ロボ!」
+“Not yet, Robo!”
+
+@7263 Daisaku · 大作
+> 「いいぞ、ロボ」
+“Nice one, Robo.”
+
+@7264 Daisaku · 大作
+> 「ぐっうぅっ」
+“Guh, ugh.”
+
+@7265 Daisaku · 大作
+> 「かわせっロボ!」
+“Dodge it, Robo!”
+
+@7266 Daisaku · 大作
+> 「よけろ! ジャイアント・ロボ!」
+“Get out of the way, Giant Robo!”
+
+@7267 Daisaku · 大作
+> 「ロボ、急速回避だ!」
+“Robo, evasive action, fast!”
+
+@7268 Daisaku · 大作
+> 「ロボにそんな攻撃っ!」
+“That kind of attack on Robo?!”
+
+@7269 Daisaku · 大作
+> 「ロボっ! 大丈夫か!?」
+“Robo! Are you okay?!”
+
+@7270 Daisaku · 大作
+> 「ロボ!? 弾切れなのか!?」
+“Robo?! Are you out of ammo?!”
+
+@7271 Daisaku · 大作
+> 「ロボの攻撃が届かない!?」
+“Robo's attack can't reach?!”
+
+@7272 Daisaku · 大作
+> 「卑怯だぞっ!」
+“That's dirty!”

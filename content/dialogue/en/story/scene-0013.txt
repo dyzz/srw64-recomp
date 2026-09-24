@@ -1,0 +1,1272 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18898 David · デビッド
+> 「そういえば、結局ほかのは
+>  どうだったんだ?」
+“By the way, what ever happened with the others?”
+
+@18899 Roux · ルー
+> 「どうって……なにが?」
+“What do you mean... what?”
+
+@18900 Aboly · アポリー
+> 「M作戦についてだろう
+“About Operation M.
+---
+>  地球に降下したのは
+>  6つだったという話だ」
+They say six of them came down to Earth.”
+
+@18901 Roux · ルー
+> 「でもそれらしい騒ぎが
+>  確認できたのは5か所で
+“But we could only confirm trouble at five locations,
+---
+>  もう1つは不明だって話よ」
+and the last one's still unknown.”
+
+@18902 David · デビッド
+> 「やっぱり全部あれみたいな
+>  やつだったのか?」
+“So they were all like that thing after all?”
+
+@18903 Roux · ルー
+> 「ちゃんとは確認できてない
+>  みたいだけどね
+“Doesn't look like anyone got a good look at them, though.
+---
+>  残り4か所は遭遇した部隊が
+>  全滅してるって聞いたわ」
+I heard the units that ran into the other four were wiped out.”
+
+@18904 Selain · セレイン（按段落 3DD2）
+> 「ガンダムタイプが5機、か。
+>  もう1つも気になるところだな」
+“Five Gundam-types, huh. I'd like to know about the last one too.”
+
+@18905 David · デビッド
+> 「だけどよ、たいしたことはなかったな。
+>  あっさりやられちまったみたいだし」
+“Still, it wasn't much of a fight. Sounds like it went down easy.”
+
+@18906 Selain · セレイン（按段落 3DD2）
+> 「あれは相手が悪かったな。
+>  その証拠に他の4か所では
+“It just had bad luck with its opponent. Proof of that is, at the other four sites,
+---
+>  遭遇した部隊や襲撃された
+>  基地、すべて全滅だそうだ
+the units it met and the bases it raided were all wiped out.
+---
+>  どれも単独行動というのが
+>  解せないが」
+What I don't get is why it acted alone every time.”
+
+@18907 Anna · アンナ
+> 「いったい、どんな人たちなのかしら」
+“I wonder what kind of people they are.”
+
+@18908 Aboly · アポリー
+> 「やられないかぎりは、
+>  いずれ会うこともあるさ
+“As long as we don't get killed, we'll run into them sooner or later.
+---
+>  それよりもアンナ、
+>  エイジの方は大丈夫なのか?」
+More importantly, Anna, how's Eiji holding up?”
+
+@18909 Anna · アンナ
+> 「……とりあえず、落ち着いては
+>  いるみたいです。でも……」
+“...For now, he seems calm. But still...”
+
+@18910 Aboly · アポリー
+> 「姉の婚約者だったって
+>  話だからな
+“He was your sister's fiance, after all.
+---
+>  ま、少しくらいはしかたがないか……」
+Well, I suppose a little of that's only natural...”
+
+@18911 David · デビッド
+> 「なに、あいつだって、だてに帝国に
+>  戦いを挑んでるわけじゃない
+“Come on, it's not like he's been fighting the Empire for nothing.
+---
+>  大丈夫さ」
+He'll be fine.”
+
+@18912 Heero · ヒイロ
+> 「A級市民の学校か……
+>  ちょうどいい
+“A Class-A citizen school... just what I needed.
+---
+>  転入手続き……クリア。
+>  各種入金……クリア
+Transfer procedures... clear. All payments... clear.
+---
+>  帝国軍の基地データの
+>  アクセスは……」
+Access to Imperial military base data is...”
+
+@18913 Teacher · 先生
+> 「今日からみなさんと一緒に
+>  学ぶことになった
+“Starting today, he'll be studying alongside all of you.
+---
+>  ヒイロ・ユイくんです」
+This is Heero Yuy.”
+
+@18914 Heero · ヒイロ
+> 「よろしく」
+“Nice to meet you.”
+
+@18915 Relena · リリーナ
+> (あの子……あのときの……
+>  間違いないわ)
+(That boy... from back then... it's definitely him.)
+
+@18916 Karla · カルラ
+> 「……ジュリア・アスカ……まさかお前が
+>  くるとはな」
+“...Julia Asuka... I never thought you'd show up here.”
+
+@18917 Julia · ジュリア
+> 「……………………」
+“...”
+
+@18918 Karla · カルラ
+> 「お前にブラッディカイザルに乗る
+>  資格などない! ゲイル中尉の
+“You have no right to pilot the Bloodykaiser! This machine is the same type as
+---
+>  愛機と同型のこの機体には、
+>  中尉の復讐をとげられる者が
+Lieutenant Gale's beloved unit, and it must be piloted by one who can
+---
+>  乗らねばならない。お前にその資格
+>  があるのか!?
+carry out the Lieutenant's revenge. Do you have that right?!
+---
+>  エイジと血のつながっているお前に!」
+You, who share blood with Eiji!”
+
+@18919 Julia · ジュリア
+> 「……………………」
+“...”
+
+@18920 Karla · カルラ
+> 「なんとかいったらどうだ。ふん、何もいえ
+>  まい。もともとこのブラッディカイザルは
+“Say something, why don't you. Hmph, I thought as much. This Bloodykaiser was
+---
+>  中尉の信頼と愛を得ていた私
+>  が乗っていて当然なのだ。なのに
+always meant for me, the one who earned the Lieutenant's trust and love. And yet,
+---
+>  どうしてお前のような女が!」
+why someone like you?!”
+
+@18921 Julia · ジュリア
+> 「愛とはどういう意味です」
+“What do you mean by love?”
+
+@18922 Karla · カルラ
+> 「……中尉は男、私は女、男と
+>  女の間に何があったかぐらい
+“...The Lieutenant was a man, I am a woman. Surely you can imagine
+---
+>  想像がつくだろう」
+what happens between a man and a woman.”
+
+@18923 Julia · ジュリア
+> 「嘘です。あの人とあなたの間に、
+>  上官と部下以外の関係が
+“That's a lie. There's no way anything beyond a superior-and-subordinate relationship
+---
+>  存在するはずがありません」
+could have existed between you and him.”
+
+@18924 Karla · カルラ
+> 「どうしてそんなことがわかる!? 中尉
+>  と私は寝食をともにしながら
+“How could you possibly know that?! The Lieutenant and I shared food and board,
+---
+>  生活をしてきたのだ。その間のことが
+>  おまえにわかってたまるか!」
+we lived together. How could you understand what went on between us?!”
+
+@18925 Julia · ジュリア
+> 「いいえ…………」
+“No...”
+
+@18926 Karla · カルラ
+> 「くっ……なにがおかしい!」
+“Ngh... what's so funny?!”
+
+@18927 Julia · ジュリア
+> 「わかっていないのは、あなたのほうです。
+>  あの人は私の胸で生きています
+“You're the one who doesn't understand. He lives on in my heart.
+---
+>  私はあの人との愛を貫くために
+>  家族と決別し、弟のエイジとの
+To see my love for him through, I cut ties with my family and resolved to
+---
+>  戦いをまっとうしようとしているのです。
+>  私の中のあの人はそのことをすべて
+fight my own brother Eiji to the end. The man inside me understands all of that.
+---
+>  理解しています。あなたのいっている
+>  嘘は彼への侮辱でしかありません」
+The lies you're telling are nothing but an insult to him.”
+
+@18928 Karla · カルラ
+> 「なんだと!? くっ……いいだろう、せいぜ
+>  いやってみせるがいい。エイジと
+“What?! Ngh... fine, then. Go ahead and try your best. Just don't let yourself
+---
+>  地球人どもに、やられてしまわなけれ
+>  ばいいがな」
+get killed by Eiji and those Earthlings.”
+
+@18929 Julia · ジュリア
+> 「…………」
+“...”
+
+@18930 Bright · ブライト
+> 「作戦の手順は説明したとおりだ
+>  敵の新型のデータ収集が
+“The operation procedure is as I explained. Our objective is to gather data on
+---
+>  目的だが、可能ならば捕獲
+>  したい。もう1つの目的は
+the enemy's new model, and if possible, to capture it. Our other objective is
+---
+>  我々が帝国に対して
+>  積極的に戦う意思と力を
+to make them know that we possess both the will and the strength
+---
+>  持っているということを
+>  知らしめることにある。大尉」
+to fight the Empire head-on. Captain.”
+
+@18931 Quattro · クワトロ
+> 「こちらから敵の基地に
+>  奇襲をかけるのは初めてだが
+“This is our first surprise attack on an enemy base, but judging by the fact
+---
+>  試作機のテストをやっていることから
+>  考えても、この基地にはたいした
+that they're running prototype tests there, this base can't have much in the way of
+---
+>  戦力はない。しかし、帝国軍の
+>  増援はくる。我々の目的が
+fighting strength. However, Imperial reinforcements will come. Don't forget that
+---
+>  敵基地のせん滅にあるのではない
+>  ことを、忘れるな」
+destroying the enemy base is not our objective.”
+
+@18932 Bright · ブライト
+> 「そういうことだ。みんな頼むぞ。
+>  では、出撃だ」
+“That's how it is. I'm counting on all of you. Now, launch.”
+
+@18933 Fa · ファ
+> 「カミーユ、 待ってよカミーユ」
+“Kamille, wait, Kamille!”
+
+@18934 Kamille · カミーユ
+> 「いうなよ、
+>  カミーユだってのが俺だって
+“Don't say that. The name Kamille is who I am—
+---
+>  誰にでもわかってしまうだろ」
+anyone would figure it out.”
+
+@18935 Fa · ファ
+# 审校：“admit it”语气稍偏，改为“accept it”更贴合“本人不承认”的语境。
+> 「みんな知ってるわよ
+“Everyone already knows.
+---
+>  本人だけが承知して
+>  ないんじゃない
+You're the only one who won't accept it.
+---
+>  どこいくのよ」
+Where are you going?”
+
+@18936 Kamille · カミーユ
+> 「どこだっていいだろ」
+“None of your business.”
+
+@18937 Kacricon · カクリコン
+> 「ジェリド!」
+“Jerid!”
+
+@18938 Jerid · ジェリド
+# 检查提示：未用必用译名：スペシャルズ→Specials
+> 「カクリコン!
+>  スペシャルズらしくなって
+“Kacricon! You're looking like a proper Special now—
+---
+>  よくきてくれた」
+glad you could make it.”
+
+@18939 Kamille · カミーユ
+> 「……スペシャルズか……」
+“...The Specials, huh...”
+
+@18940 Fa · ファ
+> 「カミーユ!」
+“Kamille!”
+
+@18941 Jerid · ジェリド
+> 「ん?」
+“Hm?”
+
+@18942 Fa · ファ
+> 「カミーユ、待ってよ」
+“Kamille, wait!”
+
+@18943 Jerid · ジェリド
+# 审校：原译“and yet... it's a guy?”略显生硬，改为更自然的转折。
+> 「女の名前なのに……なんだ男か」
+“A girl's name... but it's a guy?”
+
+@18944 Kamille · カミーユ
+> 「!!」
+“!!”
+
+@18945 Fa · ファ
+> 「どうしたの、カミーユ?
+>  ……カミーユ、だめよ、そっちは!」
+“What's wrong, Kamille? ...Kamille, no, not that way!”
+
+@18946 Jerid · ジェリド
+> 「ん?
+>  カクリコン特尉の知り合いか?」
+“Hm? You know Lieutenant Kacricon?”
+
+@18947 Kamille · カミーユ
+> 「なめるなっ!!」
+“Don't mock me!!”
+
+@18948 Jerid · ジェリド
+> 「ぐっ!?」
+“Guh?!”
+
+@18949 Kacricon · カクリコン
+> 「なんだ貴様!?
+“What are you?!
+---
+>  俺たちがスペシャルズと知って
+>  ちょっかいを出してきたのか!?
+You picked a fight with us knowing we're the Specials?!
+---
+>  とり押さえろ!」
+Hold him down!”
+
+@18950 Kamille · カミーユ
+> 「くっ、
+>  カミーユが男の名前で
+“Ngh, what's so wrong with Kamille being
+---
+>  なんで悪いんだ!
+>  俺は男だよ!!」
+a man's name?! I'm a guy!!”
+
+@18951 Kacricon · カクリコン
+> 「こいつ!」
+“Why you!”
+
+@18952 Kamille · カミーユ
+> 「ぐぅっ」
+“Guh!”
+
+@18953 Jerid · ジェリド
+> 「なんだ、こいつは」
+“What's with this guy?”
+
+@18954 Kamille · カミーユ
+> 「く……言っていいことと、
+>  悪いことがある!
+“Ngh... there are things you can say and things you can't!
+---
+>  男に向かって、
+>  なんだはないだろう!」
+You don't call a man that!”
+
+@18955 Jerid · ジェリド
+> 「そうか……そういうことか。
+>  なら男らしく扱ってやるよ。そらっ」
+“I see... so that's how it is. Then I'll treat you like a man. Take this.”
+
+@18956 Kamille · カミーユ
+> 「あぅっ」
+“Agh!”
+
+@18957 Jerid · ジェリド
+> 「ハハハハハハハッ!」
+“Hahahahahahaha!”
+
+@18958 Kacricon · カクリコン
+> 「連れていけ!」
+“Take him away!”
+
+@18959 Fa · ファ
+> 「カミーユッ!?」
+“Kamille?!”
+
+@18960 Kacricon · カクリコン
+> 「レジスタンスでないものが、
+>  なんでスペシャルズに
+“If you're not with the Resistance, why would you pick a fight
+---
+>  ケンカをふっかけるんだ!?
+>  ええ? おかしいじゃないか!」
+with the Specials?! Huh? Doesn't that strike you as strange?!”
+
+@18961 Kamille · カミーユ
+> 「…………」
+“...”
+
+@18962 Kacricon · カクリコン
+# 审校：原译“You won't get anywhere staying quiet!”可接受，但改为更自然的命令语气。
+> 「黙ってちゃわからんだろうが!」
+“Staying quiet won't get you anywhere!”
+
+@18963 Kacricon · カクリコン
+> 「なんだ!?」
+“What the?!”
+
+@18964 Kacricon · カクリコン
+> 「まさか……
+>  敵の攻撃だってのか!?」
+“Don't tell me... that's an enemy attack?!”
+
+@18965 Kamille · カミーユ
+> 「なにが……起こっているんだ……?」
+“What... is happening...?”
+
+@18966 Kacricon · カクリコン
+> 「こんなところに敵がくるのかよ」
+“The enemy's coming here, of all places?”
+
+@18967 Jerid · ジェリド
+> 「レジスタンスだってのか!?
+>  一体何の目的で!」
+“The Resistance?! What in the world are they after?!”
+
+@18968 Lila · ライラ
+# 审校：“respond to it”语气偏书面，改为更自然的“deal with it”。
+> 「ガンダムmkⅡが目的だと
+>  思いたいけどね
+“I'd like to think they're after the Gundam Mk-II.
+---
+>  とにかく、対応するんだよ。
+>  来たよ」
+Anyway, deal with it. Here it comes.”
+
+@18969 Quattro · クワトロ
+> 「あれか……黒いMS
+>  ……ガンダムだと!?」
+“That's it... a black MS... a Gundam?!”
+
+@18970 Aboly · アポリー
+> 「どうしますか、大尉」
+“What should we do, Captain?”
+
+@18971 Quattro · クワトロ
+# 审校：“continue”未体现“跟上我”的指令含义，改为“follow me”。
+> 「戦闘データをとる
+>  ……全機、続け」
+“We'll gather combat data... All units, follow me.”
+
+@18972 Kamille · カミーユ
+> 「戻ってこない……なんだっていうんだ。
+>  ……開いている?」
+“It's not coming back... What's going on? ...It's open?”
+
+@18973 Kamille · カミーユ
+> 「誰もいないのか……?」
+“Is there no one here...?”
+
+@18974 Aboly · アポリー
+> 「大尉、あそこの格納庫に
+>  もう1機いるようです」
+“Captain, there seems to be another unit in that hangar.”
+
+@18975 Quattro · クワトロ
+> 「出てこないということは……
+>  動けないのか?
+“If it's not coming out... then it can't move?
+---
+>  よし、捕獲するぞ」
+All right, we're capturing it.”
+
+@18976 Kamille · カミーユ
+> (あのMS……)
+(That MS...)
+
+@18977 Emma · エマ
+# 审校：补逗号使呼喊更自然。
+> 「!? ちょっとあなた、何をするの!
+>  あぶないから、やめなさい!」
+“?! Hey, you! What are you doing?! It's dangerous, stop that!”
+
+@18978 Kamille · カミーユ
+> 「……火が入っている」
+“...It's powered up.”
+
+@18979 Emma · エマ
+> 「ちょっとあなた、待ちなさい!」
+“Hey you, wait!”
+
+@18980 Kamille · カミーユ
+> 「危ないですよ!
+>  下がっていてください!」
+“It's dangerous! Stay back!”
+
+@18981 Emma · エマ
+> 「きゃあっ!! なに、この子……
+>  MSを知っている!?」
+“Kyaa!! What is this kid...? He knows about MS?!”
+
+@18982 Bask · バスク
+> 「何をしておる!
+>  はやく出させいっ!」
+“What are you doing?! Get him out of there, now!”
+
+@18983 Emma · エマ
+> 「バスク特佐! あれに乗って
+>  いるのは、パイロットじゃありません!」
+“Colonel Bask! The one piloting that isn't a pilot!”
+
+@18984 Bask · バスク
+> 「なんだと!?
+“What?!
+---
+>  パイロットでない者が何故
+>  mkⅡに乗っているか!
+How is a non-pilot riding the Mk-II?!
+---
+>  やめさせろ!」
+Stop him!”
+
+@18985 Aboly · アポリー
+> 「大尉、あれを!」
+“Captain, look at that!”
+
+@18986 Quattro · クワトロ
+> 「なに、動くのか?」
+“What, it moves?”
+
+@18987 Lila · ライラ
+> 「遅いぞ、援護しろ!
+>  おい、聞こえているのか!」
+“You're late! Cover me! Hey, are you listening?!”
+
+@18988 Jerid · ジェリド
+> 「来たか、こっちを援護してくれ!
+>  おい、聞いているのか!?」
+“So you've come! Cover me here! Hey, are you listening?!”
+
+@18989 Kacricon · カクリコン
+> 「早く援護してくれ!
+>  おい! 早く!」
+“Cover me, quick! Hey! Hurry!”
+
+@18990 Kamille · カミーユ
+> 「…………」
+“...”
+
+@18991 Emma · エマ
+> 「3号機に乗っているのは
+>  パイロットじゃないわ。押さえて!」
+“The one in Unit 3 isn't a pilot. Hold him down!”
+
+@18992 Quattro · クワトロ
+> 「ほう……あの機体には手はだすな、
+>  敵ではないようだ」
+“Oh... Don't touch that unit. It doesn't seem to be an enemy.”
+
+@18993 Kamille · カミーユ
+> 「そうだ、僕は敵じゃない。
+>  あなたがたの、味方だ!」
+“That's right, I'm not your enemy. I'm on your side!”
+
+@18994 Lila · ライラ
+> 「子供だと!?
+>  なぜ子供が乗っているのだ!?」
+“A child?! Why is a child piloting it?!”
+
+@18995 Jerid · ジェリド
+> 「なんだと!?
+>  何を言ってるんだ?」
+“What?! What are you saying?”
+
+@18996 Kacricon · カクリコン
+> 「ばかな、なんでパイロットじゃない者が
+>  mkⅡに乗る!?」
+“Impossible! Why would a non-pilot ride the Mk-II?!”
+
+@18997 Kamille · カミーユ
+> 「証拠を見せてやる!」
+“I'll show you proof!”
+
+@18998 Bask · バスク
+# 审校：“show our faces to the regular army”误解了“示しがつかん”，改为“set an example for the regular army”。
+> 「レジスタンスどもが
+>  調子に乗りおって
+“Those Resistance dogs are getting cocky.
+---
+>  これでは正規軍にたいして
+>  示しがつかん
+At this rate we can't set an example for the regular army.
+---
+>  やつらを逃がすな!」
+Don't let them escape!”
+
+@18999 Giura · ギウラ
+> 「苦戦しているようだな。
+>  我々が援護しよう」
+“You seem to be struggling. We'll lend you support.”
+
+@19000 Bask · バスク
+> 「く……正規軍か……。
+>  貴公らの協力に感謝する」
+“Ngh... the regular army... I thank you for your cooperation.”
+
+@19001 Giura · ギウラ
+> 「うむ。かかれ!
+>  レジスタンスをせん滅するのだ!」
+“Indeed. Attack! Annihilate the Resistance!”
+
+@19002 Quattro · クワトロ
+> 「新手か……まずいな、
+>  時間をかけすぎたか……」
+“Reinforcements...? This is bad. Did we take too long...?”
+
+@19003 Julia · ジュリア
+> 「…………」
+“...”
+
+@19004 Eiji · エイジ
+> 「赤いグライムカイザル……
+>  ゲイル先輩が生きていたのか!?」
+“The red Greimkaiser...? Was Senior Gale alive?!”
+
+@19005 Julia · ジュリア
+> 「エイジ……」
+“Eiji...”
+
+@19006 Eiji · エイジ
+> 「まさか……姉さん!?
+>  そんな、どうして姉さんがここに!?」
+“No way... Sis?! How could you be here, Sis?!”
+
+@19007 Julia · ジュリア
+> 「エイジ、答えなさい
+“Eiji, answer me.
+---
+>  お前たちは本当に
+>  ゲイルを殺したのですか?」
+Did you really kill Gale?”
+
+@19008 Eiji · エイジ
+> 「ね、姉さん……」
+“S-Sis...”
+
+@19009 Julia · ジュリア
+> 「どうしたのです?
+>  答えなさい、エイジ」
+“What's wrong? Answer me, Eiji.”
+
+@19010 Eiji · エイジ
+> 「……ほ、本当だよ。
+>  だけど姉さん……」
+“...Y-Yes, it's true. But Sis...”
+
+@19011 Julia · ジュリア
+> 「……ゲイルは私のすべてだった
+“...Gale was everything to me.
+---
+>  私はお前たちを
+>  許すわけにはいかない」
+I can't forgive you people.”
+
+@19012 Eiji · エイジ
+> 「待ってくれ、姉さん!」
+“Wait, Sis!”
+
+@19013 Julia · ジュリア
+> 「死になさい、エイジ!」
+“Die, Eiji!”
+
+@19014 Gosterro · ゴステロ
+> 「ゲイルの後を追わせてやろうかぁ
+“Shall I let you follow Gale?
+---
+>  えぇっ! たまらないなぁ
+>  人殺しというのはぁ!」
+Eeeh! Killing people is just irresistible!”
+
+@19015 Gosterro · ゴステロ
+> 「こぞうは、いないようだなぁ、
+>  ええ、ジュリア」
+“The brat doesn't seem to be here, eh, Julia?”
+
+@19016 Julia · ジュリア
+> 「エイジ……ゲイルは私のすべてだった
+“Eiji... Gale was everything to me.
+---
+>  私はお前たちを
+>  許すわけにはいかない」
+I can't forgive you people.”
+
+@19017 Gosterro · ゴステロ
+> 「ひゃーはははははぁ。
+>  皆殺しにしてやるぜぇっ!」
+“Hyahahahaha! I'll kill every last one of you!”
+
+@19018 Gosterro · ゴステロ
+> 「貴様ら、影も形もないように
+>  してやる!!」
+“You lot, I'll wipe you from existence!!”
+
+@19019 Julia · ジュリア
+> 「あぁぁぁぁぁぁぁぁーっ!!」
+“Aaaaaaaaaaah!!”
+
+@19020 Eiji · エイジ
+> 「くっ、姉さん……俺は……」
+“Ngh, Sis... I...”
+
+@19021 Quattro · クワトロ
+> 「どうやらこの辺りが限界か……
+“Looks like this is our limit...
+---
+>  目的は充分に達成した。
+>  全機撤退するぞ!」
+We've accomplished our objective well enough. All units, retreat!”
+
+@19022 Emma · エマ
+> 「レジスタンスにあれほど強力な
+>  部隊が編成されているなんて
+“To think the Resistance could field such a powerful unit.
+---
+>  それに、あの子……」
+And that boy, too...”
+
+@19023 Gosterro · ゴステロ
+> 「くそぉぉっ、貴様ら、貴様らッ
+>  こ、この俺をぉぉぉーっ!!!」
+“Damn youuu, you, you lot, me, ME of all peopleee!!!”
+
+@19024 Quattro · クワトロ
+> 「どうやらこの辺りが限界か……
+“Looks like this is our limit...
+---
+>  目的は充分に達成した
+>  全機撤退するぞ!」
+We've accomplished our objective well enough. All units, retreat!”
+
+@19025 Emma · エマ
+> 「レジスタンスにあれほど強力な
+>  部隊が編成されているなんて
+“To think the Resistance could field such a powerful unit.
+---
+>  それに、あの子……」
+And that boy, too...”
+
+@19026 Kamille · カミーユ
+> 「お前はぁっ!」
+“You're—!”
+
+@19027 Jerid · ジェリド
+> 「この声、カミーユとかって女みたいな
+>  名前の……あんな子供に!」
+“That voice... Kamille, the one with the girly name... beaten by a kid like that!”
+
+@19028 Lila · ライラ
+> 「くっ、赤い彗星が相手だったと
+>  思いたい……
+“Ngh, I'd like to believe I was up against the Red Comet...
+---
+>  でなければ、立場がない……」
+Otherwise I'd have no excuse...”
+
+@19029 Lila · ライラ
+> 「く、なんだ!? まだ子供なのに、
+>  私の動きについてくる!?」
+“Ngh, what?! He's just a kid, yet he's keeping up with my moves?!”
+
+@19030 Kamille · カミーユ
+> 「子供で悪いか!」
+“Got a problem with me being a kid?!”
+
+@19031 Julia · ジュリア
+> 「戦いなさい、エイジ!」
+“Fight, Eiji!”
+
+@19032 Eiji · エイジ
+> 「くっ……姉さん!」
+“Ngh... Sis!”
+
+@19033 Quattro · クワトロ
+> 「どうやらこの辺りが限界か……
+“Looks like this is our limit...
+---
+>  目的は充分に達成した
+>  全機撤退するぞ!」
+We've accomplished our objective well enough. All units, retreat!”
+
+@19034 Emma · エマ
+> 「レジスタンスにあれほど強力な
+>  部隊が編成されているなんて
+“To think the Resistance could field such a powerful unit.
+---
+>  それに、あの子……」
+And that boy, too...”
+
+@19035 Kamille · カミーユ
+> (こんなことしちゃって……俺……。
+>  ファは無事なんだろうか……)
+(Doing something like this... what have I... Is Fa all right...)
+
+@19036 Quattro · クワトロ
+> 「どうした カミーユ・ビダンくん。
+>  こないのか?」
+“What's wrong, Kamille Bidan? Aren't you coming?”
+
+@19037 Kamille · カミーユ
+> 「……いえ、いきます。
+>  帝国軍は嫌いですし
+“...No, I'm coming. I hate the Imperial Army,
+---
+>  なによりスペシャルズは
+>  もっと嫌いなんです」
+and more than anything, I hate the Specials even more.”
+
+@19038 Eiji · エイジ
+> 「くっ……姉さん……」
+“Ngh... Sis...”
+
+@19039 Anna · アンナ
+> 「エイジ……」
+“Eiji...”
+
+@19040 David · デビッド
+> 「しばらくそっとしといてやれよ、
+>  アンナ」
+“Just leave him alone for a while, Anna.”
+
+@19041 Anna · アンナ
+> 「でも……」
+“But...”
+
+@19042 David · デビッド
+> 「言っただろ、
+>  あいつはそんなにヤワじゃないさ」
+“I told you, he's not that fragile.”
+
+@19043 Anna · アンナ
+> 「だけど、実のお姉さんだったのよ!?
+>  どうして……どうして……」
+“But she was his real sister! Why... why...”
+
+@19044 Quattro · クワトロ
+> 「彼は祖国を捨てて
+>  地球のために戦ってくれている
+“He abandoned his homeland to fight for Earth.
+---
+>  それは、並大抵の覚悟では
+>  できないことだ
+That's not something anyone can do with ordinary resolve.
+---
+>  その彼に我々がしてやれる
+>  ことがあるならば
+If there's anything we can do for him,
+---
+>  それは、彼の志を
+>  無駄にしないことだ」
+it's to make sure his resolve isn't wasted.”
+
+@19045 Anna · アンナ
+> 「でも、
+>  でも戦わずにすむ方法だって……」
+“But, but there has to be a way to do this without fighting...”
+
+@19046 Quattro · クワトロ
+> 「ないな。
+>  皆が君のように
+“There isn't. If everyone had
+---
+>  やさしい心を持っているのならば
+>  可能かもしれんが
+a gentle heart like yours, it might be possible,
+---
+>  我々にはその方法は
+>  見つけられなかった
+but we couldn't find such a way.
+---
+>  帝国のことを、もっともよく知って
+>  いるはずのエイジくんの行動も
+Eiji's actions, when he should know the Empire better than anyone,
+---
+>  それを裏づけている」
+prove that.”
+
+@19047 Anna · アンナ
+> 「だけどそんなの……
+>  悲しすぎるわ……」
+“But that's just... too sad...”
+
+@19048 Quattro · クワトロ
+> 「ああ……そうだな……」
+“Yeah... I know...”
+
+@19049 Roux · ルー
+> 「ブライト中佐、
+>  ブレックス准将からです」
+“Lieutenant Colonel Bright, it's from Brigadier General Blex.”
+
+@19050 Bright · ブライト
+> 「まわしてくれ」
+“Put him through.”
+
+@19051 Blex · ブレックス
+> 「報告は聞いたよ、中佐。
+>  すごいものだな……
+“I heard the report, Lieutenant Colonel. Impressive work...
+---
+>  彼がカミーユくんかね?」
+Is this him, young Kamille?”
+
+@19052 Bright · ブライト
+> 「はい」
+“Yes.”
+
+@19053 Blex · ブレックス
+> 「よい若者たちが集まってきたと
+>  いうことか」
+“So fine young men have been gathering, have they.”
+
+@19054 Kamille · カミーユ
+> 「いえ、そんな……」
+“No, it's nothing like that...”
+
+@19055 Blex · ブレックス
+> 「{HeroName}くんや君の協力で
+“Thanks to your cooperation, {HeroName},
+---
+>  帝国の試作機が2機も
+>  手に入った
+we've gotten our hands on two Imperial prototypes.
+---
+>  普通ではできないことだ」
+That's no ordinary feat.”
+
+@19056 Ark · アーク（按段落 3DD1）
+> 「僕も……ですか?」
+“Me too...?”
+
+@19057 Kamille · カミーユ
+> 「偶然が重なっただけです」
+“It was just a series of coincidences.”
+
+@19058 Selain · セレイン（按段落 3DD2）
+> 「たまたま結果がそうなっただけに
+>  過ぎません」
+“It just happened to turn out that way.”
+
+@19059 Kamille · カミーユ
+> 「僕の場合も、そう思います。
+>  偶然が重なっただけです」
+“In my case too, I think so. It was just a series of coincidences.”
+
+@19060 Blex · ブレックス
+# 审校：初稿混入了全角斜线“／”，改为正常英文断句。
+> 「その偶然も、
+>  人の力があってのものだと
+“I want to believe that even those coincidences
+---
+>  信じたいのだよ。私は」
+only happen because of people's strength.”
+
+@19061 Blex · ブレックス
+# 审校：原文句末为“が”，表示委婉转折，但英文以“but”结尾不自然；改为完整句，保留语气。
+> 「私の期待しすぎかな。
+>  彼らをニュータイプと思いたいが」
+“Perhaps I expect too much. I want to think of them as Newtypes.”
+
+@19062 Bright · ブライト
+> 「……大尉はどう思う?」
+“...What do you think, Captain?”
+
+@19063 Quattro · クワトロ
+> 「ニュータイプはエスパーではありません
+“Newtypes are not espers.
+---
+>  目に見えて違うところは
+>  ありませんが、資質は感じます」
+There's nothing visibly different about them, but I sense the quality.”
+
+@19064 Blex · ブレックス
+> 「そう思う。
+>  大切にしてやってくれ
+“I think so too. Take good care of them.
+---
+>  3年前の戦争で、
+>  地球圏は中高年者の
+In the war three years ago, the Earth Sphere's social structure
+---
+>  極端に少ない社会構造に
+>  なってしまった
+ended up with extremely few middle-aged and older people.
+---
+>  生き残った若者たちには、次の
+>  時代をつくってもらわねばならん」
+The young people who survived must build the next era.”
+
+@19065 Quattro · クワトロ
+> 「はい。しかしそれが、帝国の
+>  支配を受け入れた上での
+“Yes. But the Specials went toward rebuilding Earth
+---
+>  地球再建に向かって
+>  しまったのがスペシャルズです
+on the premise of accepting the Empire's rule.
+---
+>  それは、認めたくはありません」
+That, I cannot accept.”
+
+@19066 Blex · ブレックス
+> 「そうだな……」
+“Indeed...”
+
+@19067 Henken · ヘンケン
+# 审校：原文“ですな?”是带确认语气的陈述，英文用问号会显得像疑问句；改为句号更自然。
+> 「状況は好転しつつあると
+>  思いたいですな?」
+“I'd like to think the situation is improving.”
+
+@19068 Blex · ブレックス
+> 「そうさせるのだよ。
+>  我々でな
+“Then let's make it so. With our own hands.
+---
+>  ……君は知っているかね、
+>  赤い彗星のことを」
+...Do you know about the Red Comet?”
+
+@19069 Henken · ヘンケン
+> 「自分はジオンとの
+>  ア・バオア・クー決戦のときは
+“During the decisive battle at A Baoa Qu against Zeon,
+---
+>  後方の戦艦におりましたので、
+>  直接は見ていません
+I was on a rear battleship, so I never saw him directly.
+---
+>  しかし赤い彗星の力というものは
+>  感じましたし……いまも感じますね」
+But I felt the Red Comet's power... and I still feel it now.”
+
+@19070 Blex · ブレックス
+> 「ほう、誰にだ?」
+“Oh? From whom?”
+
+@19071 Henken · ヘンケン
+> 「クワトロ・バジーナ大尉にです」
+“From Captain Quattro Bajeena.”
+
+@19072 Blex · ブレックス
+> 「……彼はこの戦いの中で、
+>  ジオン・ダイクンの遺志を
+“...Perhaps, in this battle, he is trying to convey
+---
+>  我々に伝えようとしているのかも
+>  しれん」
+Zeon Deikun's will to us.”
+
+@19073 Henken · ヘンケン
+> 「すべては強圧的な異星人から
+>  地球を解放した後の話です」
+“All of that comes after we liberate Earth from the oppressive aliens.”
+
+@19074 Blex · ブレックス
+> 「そうだな。
+>  我々は地球圏を
+“Indeed. We must take the Earth Sphere
+---
+>  再び人類の手に
+>  取り戻さねばならん
+back into humanity's hands once more.
+---
+>  かつて地球連邦は腐敗し、
+>  宇宙の民をかえりみなかった
+Long ago, the Earth Federation grew corrupt and ignored the people of space.
+---
+>  そのために起きたのが
+>  ジオン独立戦争だ
+That is what caused the Zeon Independence War.
+---
+>  が、今となってはそれすらも、
+>  ムゲゾルバドス帝国と比べれば
+But now we must admit that even that was a trivial matter
+---
+>  取るに足らない問題だったと
+>  認めねばならん」
+compared to the Muge Zorbados Empire.”
+
+@19075 Henken · ヘンケン
+> 「しかし難を逃れている連中は、
+>  帝国が去れば再び
+“But those who escaped the hardship will surely want to seize
+---
+>  地球の実権を手にしたがる
+>  でしょう」
+real power over Earth again once the Empire is gone.”
+
+@19076 Blex · ブレックス
+> 「それはさせるわけにはいかんな
+“We cannot let them do that.
+---
+>  それに、ロームフェラの動きも
+>  気になる
+Besides, Romefeller's movements worry me too.
+---
+>  むしろ危険なのは
+>  スペシャルズを創設し
+If anything, the dangerous ones may be those who founded the Specials
+---
+>  帝国に食い込む
+>  彼らかもしれんが……
+and wormed their way into the Empire...
+---
+>  今の我々には、現状を打開
+>  することに尽力する以外はないか」
+For now, all we can do is devote ourselves to breaking the deadlock.”
+
+@19077 Heero · ヒイロ
+> 「………………」
+“...”
+
+@19078 Relena · リリーナ
+> 「やはり、普通ではないわ。
+>  軍の施設へ入っていくなんて」
+“He really isn't normal. Going into a military facility like that.”
+
+@19079 Relena · リリーナ
+> 「お待ちなさい」
+“Wait.”
+
+@19080 Heero · ヒイロ
+> 「お前は……」
+“You are...”
+
+@19081 Relena · リリーナ
+# 审校：“You're called Heero”语气生硬，改为更自然的“Your name is Heero, isn't it.”。
+> 「あなた、ヒイロといったわね
+“Your name is Heero, isn't it.
+---
+>  こんな軍の港で何をしているの、
+>  教えて
+Tell me what you're doing at a military port like this.
+---
+>  そしてあなたは何者?
+>  わたくし知りたいの、あなたのことを
+And who are you? I want to know about you.
+---
+>  なぜパイロットスーツのようなものを
+>  着て、海岸に倒れていたのか
+Why were you collapsed on the beach wearing something like a pilot suit?
+---
+>  話しなさい、ヒイロ」
+Answer me, Heero.”
+
+@19082 Heero · ヒイロ
+> 「リリーナ・ドーリアン……
+>  A級市民だったな
+“Relena Darlian... an A-class citizen, weren't you.
+---
+>  深入りしすぎた。
+>  お前を、殺す」
+You've pried too deep. I'll kill you.”
+
+@19083 Relena · リリーナ
+> 「えっ!?」
+“What?!”
+
+@19084 Heero · ヒイロ
+> 「く……」
+“Ngh...”
+
+@19085 Duo · デュオ
+> 「こういう場合、どう見たって
+>  お前の方が悪者だろ
+“In a situation like this, no matter how you look at it, you're the bad guy.
+---
+>  ケガはないかい、お嬢さん?」
+Are you hurt, my lady?”
+
+@19086 Relena · リリーナ
+> 「大丈夫、ヒイロ? もうやめて。
+>  この人に、なんのうらみがあるんです」
+“Are you all right, Heero? Stop it already. What grudge do you have against this person?”
+
+@19087 Duo · デュオ
+> 「は……?
+“Huh...?
+---
+>  おいおい、ちょっと待ってくれよ
+Hey, hey, hold on a second.
+---
+>  俺の方が悪者になっちまってる
+>  じゃねぇか」
+Now I'm the one who's turned into the bad guy.”
+
+@19088 Heero · ヒイロ
+> 「……?」
+“...?”
+
+@19089 Heero · ヒイロ
+> (あれは俺のガンダム……こいつが
+>  海中から引き上げたのか?)
+(That's my Gundam... did this guy pull it up from the sea?)
+
+@19090 Relena · リリーナ
+> 「え……何……?」
+“Huh... what...?”
+
+@19091 Duo · デュオ
+> 「おっと、みちゃいけねぇ。お嬢さん、
+>  なんかわけありみたいだけど
+“Whoa, I shouldn't look. My lady, seems like you've got some kind of situation,
+---
+>  すぐ、こっから立ち去るのが
+>  身のためだ
+but for your own good, you should get out of here right away.
+---
+>  この時代に立派な身なりの
+>  A級市民とはいえ
+Even if you're a fine-dressed A-class citizen in this era,
+---
+>  お嬢さんを殺すのは、忍びない」
+I can't bring myself to kill you, my lady.”
+
+@19092 Relena · リリーナ
+> 「ヒイロ!?」
+“Heero?!”
+
+@19093 Duo · デュオ
+> 「まだやんのか!」
+“Still going at it?!”
+
+@19094 Relena · リリーナ
+> (なんなの!?
+>  一体なんなの、この人たち!?)
+(What is this?! Just what is wrong with these people?!)

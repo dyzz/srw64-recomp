@@ -1,0 +1,148 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7546 Simone · シモーヌ
+> 「負けるもんか!!」
+“Like I'd lose!!”
+
+@7547 Simone · シモーヌ
+> 「あんたたち、絶対に許さないよ!」
+“I'll never forgive you guys!”
+
+@7548 Simone · シモーヌ
+> 「このっ!!」
+“Why you!!”
+
+@7549 Simone · シモーヌ
+> 「いけっ!!」
+“Go!!”
+
+@7550 Simone · シモーヌ
+> 「やらせるもんか!」
+“Like I'd let you!”
+
+@7551 Simone · シモーヌ
+> 「よぉし!」
+“All right!”
+
+@7552 Simone · シモーヌ
+> 「いい気になってんじゃないよ!」
+“Don't get so cocky!”
+
+@7553 Simone · シモーヌ
+> 「くらいなっ!」
+“Take this!”
+
+@7554 Simone · シモーヌ
+> 「それっ、いくよ!」
+“Here I go!”
+
+@7555 Simone · シモーヌ
+> 「エイジ! デビッド!!」
+“Eiji! David!!”
+
+@7556 Simone · シモーヌ
+> 「そ、そんな……!?」
+“Th-That can't be...?!”
+
+@7557 Simone · シモーヌ
+> 「きゃぁぁっ!!」
+“Kyaaaah!!”
+
+@7558 Simone · シモーヌ
+> 「きゃぁぁぁぁぁーっ!!」
+“Kyaaaaaaaah!!”
+
+@7559 Simone · シモーヌ
+> 「きゃあああっ!! な、何なの?
+>  威力が違い過ぎる!?」
+“Kyaaaah!! Wh-What is this? The power's on another level?!”
+
+@7560 Simone · シモーヌ
+> 「くっ……! やられる!?」
+“Ngh...! I'm going down?!”
+
+@7561 Simone · シモーヌ
+> 「うぅぅっ、だめ!?」
+“Uuugh, no?!”
+
+@7562 Simone · シモーヌ
+> 「あうぅっ!」
+“Augh!”
+
+@7563 Simone · シモーヌ
+> 「これぐらいなら、まだ!」
+“This much, I can still take!”
+
+@7564 Simone · シモーヌ
+# 审校：原文句末有句号，补上句号。
+> 「大丈夫、まだ大丈夫よ」
+“I'm fine, I'm still fine.”
+
+@7565 Simone · シモーヌ
+# 审校：原文句末有句号，补上句号。
+> 「うっ……まだ、かすり傷よ」
+“Ugh... it's just a scratch.”
+
+@7566 Simone · シモーヌ
+> 「間に合った!?」
+“I made it in time?!”
+
+@7567 Simone · シモーヌ
+> 「おそいよっ!!」
+“Too slow!!”
+
+@7568 Simone · シモーヌ
+> 「あたってなんかやるもんか!」
+“Like I'd let myself get hit!”
+
+@7569 Simone · シモーヌ
+> 「このぐらいアタシだって!」
+“Even I can handle this much!”
+
+@7570 Simone · シモーヌ
+> 「そんな攻撃になんかあたるもんか!」
+“Like I'd get hit by an attack like that!”
+
+@7571 Simone · シモーヌ
+> 「誰があたるものか!」
+“As if I'd get hit!”
+
+@7572 Simone · シモーヌ
+> 「残念でした!」
+“Too bad!”
+
+@7573 Simone · シモーヌ
+> 「そんなのでやられるもんか!」
+“Like that would take me down!”
+
+@7574 Simone · シモーヌ
+> 「くっ……」
+“Ngh...”
+
+@7575 Simone · シモーヌ
+> 「効かないわよ!!」
+“It doesn't hurt me!!”
+
+@7576 Simone · シモーヌ
+> 「どうやら無駄だったみたいだね」
+“Looks like it was useless.”
+
+@7577 Simone · シモーヌ
+> 「効くもんか!」
+“Like that would work!”
+
+@7578 Simone · シモーヌ
+> 「た、弾が切れたの……?」
+“I-I'm out of ammo...?”
+
+@7579 Simone · シモーヌ
+> 「くっ……エネルギーが切れるなんて!?」
+“Ngh... Out of energy?!”
+
+@7580 Simone · シモーヌ
+> 「うっ、遠すぎるの!?」
+“Ugh, too far?!”
+
+@7581 Simone · シモーヌ
+> 「だめっ、届かない!」
+“No, it won't reach!”

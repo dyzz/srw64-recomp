@@ -1,0 +1,88 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10756 Deune · デューン
+> 「敵を倒せば、言いよる女も
+>  増えるってもんだぜ」
+“Take down the enemy, and the ladies come flocking.”
+
+@10757 Deune · デューン
+> 「そらっ!」
+“There!”
+
+@10758 Deune · デューン
+> 「逃がしはせんぞ!」
+“I won't let you get away!”
+
+@10759 Deune · デューン
+> 「落ちろ!」
+“Fall!”
+
+@10760 Deune · デューン
+> 「俺たちにかかれば!」
+“With us on the job!”
+
+@10761 Deune · デューン
+> 「このスピードならば!」
+“At this speed!”
+
+@10762 Deune · デューン
+> 「ば、ばかなぁぁぁーっ!!」
+“I-impossiblllle!”
+
+@10763 Deune · デューン
+> 「うわぁっ! こ、こんなことが……!」
+“Whoa! Th-this can't be...!”
+
+@10764 Deune · デューン
+> 「そ、そんなばかなことがっ!?」
+“Th-that's impossible!”
+
+@10765 Deune · デューン
+> 「も、もたないというのか!?」
+“W-we can't hold out?!”
+
+@10766 Deune · デューン
+> 「ぐぅっ! ええい、まぐれだ!」
+“Guh! Tch, just a fluke!”
+
+@10767 Deune · デューン
+> 「なにっ直撃だと!? だがっ!」
+“What, a direct hit?! But still!”
+
+@10768 Deune · デューン
+> 「くっ! なかなかやるっ!」
+“Ngh! You're pretty good!”
+
+@10769 Deune · デューン
+# 审校：“I'll praise you”过于直译，改为更自然的“give you credit”。
+> 「よくあてたとほめてやろう」
+“I'll give you credit for landing that.”
+
+@10770 Deune · デューン
+> 「あたった!? この俺がか!」
+“It hit?! Me?!”
+
+@10771 Deune · デューン
+> 「くっあてられたのか!?」
+“Ngh, I got hit?!”
+
+@10772 Deune · デューン
+> 「フン、こいつにくらべれば遅すぎるぜ」
+“Hmph, compared to this one you're way too slow.”
+
+@10773 Deune · デューン
+> 「このスピードからかわせる!」
+“I can dodge at this speed!”
+
+@10774 Deune · デューン
+# 审校：与L38保持一致。
+> 「よくあてたとほめてやろう」
+“I'll give you credit for landing that.”
+
+@10775 Deune · デューン
+> 「弾切れだとぉ!?」
+“Out of ammo?!”
+
+@10776 Deune · デューン
+> 「届かないだと!?」
+“Can't reach?!”

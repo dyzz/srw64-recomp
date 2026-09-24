@@ -1,0 +1,166 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@14048 Byston Well Soldier · バイストンウェル兵
+> 「このおぉぉぉっ!!」
+“Why youuuu!!”
+
+@14049 Byston Well Soldier · バイストンウェル兵
+> 「覚悟!」
+“Prepare yourself!”
+
+@14050 Byston Well Soldier · バイストンウェル兵
+> 「くらえっ!!」
+“Take this!!”
+
+@14051 Byston Well Soldier · バイストンウェル兵
+> 「うけてみろっ!!」
+“Try and take it!!”
+
+@14052 Byston Well Soldier · バイストンウェル兵
+> 「いけっ!」
+“Go!”
+
+@14053 Byston Well Soldier · バイストンウェル兵
+> 「させるかっ!」
+“Like I'd let you!”
+
+@14054 Byston Well Soldier · バイストンウェル兵
+> 「うおおっ!」
+“Uwooooh!”
+
+@14055 Byston Well Soldier · バイストンウェル兵
+> 「そこだっ!」
+“Right there!”
+
+@14056 Byston Well Soldier · バイストンウェル兵
+> 「当たれっ!」
+“Hit him!”
+
+@14057 Byston Well Soldier · バイストンウェル兵
+> 「とどめっ!!」
+“Finishing blow!!”
+
+@14058 Byston Well Soldier · バイストンウェル兵
+> 「こいつでどうだっ!」
+“How's this?!”
+
+@14059 Byston Well Soldier · バイストンウェル兵
+> 「うわっ! や、やられたっ!」
+“Uwah! I-I've been hit!”
+
+@14060 Byston Well Soldier · バイストンウェル兵
+> 「ぐうっ! しまった!」
+“Guh! Damn it!”
+
+@14061 Byston Well Soldier · バイストンウェル兵
+> 「うおおっ! く、なんてパワーなんだ!?」
+“Uwooooh! Wh-what power is this?!”
+
+@14062 Byston Well Soldier · バイストンウェル兵
+> 「ぐあっ! こ、こいつ、強いぞ!」
+“Gah! Th-this guy's strong!”
+
+@14063 Byston Well Soldier · バイストンウェル兵
+> 「な、何っ!? バカな!?」
+“W-what?! Impossible?!”
+
+@14064 Byston Well Soldier · バイストンウェル兵
+> 「うぐっ! い、いかん、やられる!?」
+“Ugh! Th-this is bad, I'm done for?!”
+
+@14065 Byston Well Soldier · バイストンウェル兵
+> 「あうっ! ま、まずい、このままでは……」
+“Agh! Th-this is bad, at this rate...”
+
+@14066 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、さすがにできるな!」
+“Tch, you're pretty good after all!”
+
+@14067 Byston Well Soldier · バイストンウェル兵
+> 「ぐっ! だが、この程度ならまだっ!」
+“Guh! But this much is nothing yet!”
+
+@14068 Byston Well Soldier · バイストンウェル兵
+> 「くっ! まだまだ勝負はこれからよ!」
+“Tch! The real fight's just getting started!”
+
+@14069 Byston Well Soldier · バイストンウェル兵
+> 「うっ! やるな!!」
+“Ugh! Not bad!!”
+
+@14070 Byston Well Soldier · バイストンウェル兵
+> 「くぅっ! やってくれたな!!」
+“Kuh! You'll pay for that!!”
+
+@14071 Byston Well Soldier · バイストンウェル兵
+> 「ふん、かすった程度のものよ!」
+“Hmph, that barely grazed me!”
+
+@14072 Byston Well Soldier · バイストンウェル兵
+> 「こそばゆいぜ!」
+“That tickles!”
+
+@14073 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、あたっちまった!」
+“Tch, it got me!”
+
+@14074 Byston Well Soldier · バイストンウェル兵
+> 「この程度のダメージなど!!」
+“Damage like this is nothing!!”
+
+@14075 Byston Well Soldier · バイストンウェル兵
+> 「当たっただけだ!」
+“It just grazed me!”
+
+@14076 Byston Well Soldier · バイストンウェル兵
+> 「甘いっ!」
+“Too soft!”
+
+@14077 Byston Well Soldier · バイストンウェル兵
+> 「そこかっ!」
+“There?!”
+
+@14078 Byston Well Soldier · バイストンウェル兵
+> 「かわせたっ!」
+“Dodged it!”
+
+@14079 Byston Well Soldier · バイストンウェル兵
+> 「当たるか!」
+“As if that'd hit!”
+
+@14080 Byston Well Soldier · バイストンウェル兵
+> 「なんの!」
+“No problem!”
+
+@14081 Byston Well Soldier · バイストンウェル兵
+> 「かわしてみせる!!」
+“I'll dodge it, just watch!!”
+
+@14082 Byston Well Soldier · バイストンウェル兵
+> 「残念だったな!」
+“Too bad for you!”
+
+@14083 Byston Well Soldier · バイストンウェル兵
+> 「そんなビームなど!」
+“A beam like that is nothing!”
+
+@14084 Byston Well Soldier · バイストンウェル兵
+> 「ふん、ムダなことをする!」
+“Hmph, what a waste of effort!”
+
+@14085 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、しまった! 弾切れか!」
+“Tch, damn! Out of ammo?!”
+
+@14086 Byston Well Soldier · バイストンウェル兵
+> 「くそっ! 弾切れかよ!」
+“Damn! Out of ammo?!”
+
+@14087 Byston Well Soldier · バイストンウェル兵
+> 「くっ! ここからでは
+>  反撃は無理か……」
+“Tch! No way to counter from here, huh...”
+
+@14088 Byston Well Soldier · バイストンウェル兵
+> 「あんな遠くから攻撃してくるのか!?」
+“They're attacking from that far away?!”

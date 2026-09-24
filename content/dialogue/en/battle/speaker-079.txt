@@ -1,0 +1,164 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8944 Yazan · ヤザン
+> 「落ちなっ!」
+“Fall!”
+
+@8945 Yazan · ヤザン
+> 「いただきだな!!」
+“This one's mine!!”
+
+@8946 Yazan · ヤザン
+> 「落ちろっつってんだよ!!」
+“I said fall, damn it!!”
+
+@8947 Yazan · ヤザン
+> 「ちょろちょろと……目障りなんだよ!!」
+“Flitting around... You're in my way!!”
+
+@8948 Yazan · ヤザン
+> 「ネズミが……死になっ!!」
+“You rat... Die!!”
+
+@8949 Yazan · ヤザン
+> 「ほらよっ!!」
+“Take this!!”
+
+@8950 Yazan · ヤザン
+> 「終わりだな!!」
+“This is the end!!”
+
+@8951 Yazan · ヤザン
+> 「この俺に向かってくるとは、
+>  いい度胸だ……だがなっ!!」
+“Coming at me takes guts... but too bad!!”
+
+@8952 Yazan · ヤザン
+> 「ふん、身の程知らずがっ!!」
+“Hmph, you don't know your place!!”
+
+@8953 Yazan · ヤザン
+> 「観念しなっ!!」
+“Give it up!!”
+
+@8954 Yazan · ヤザン
+> 「ははははっ! 落ちろっ!!」
+“Hahahaha! Fall!!”
+
+@8955 Yazan · ヤザン
+> 「もらったあっ!!」
+“Got you!!”
+
+@8956 Yazan · ヤザン
+> 「これまでだっ!!」
+“This is the end!!”
+
+@8957 Yazan · ヤザン
+> 「なんだと!?」
+“What did you say?!”
+
+@8958 Yazan · ヤザン
+> 「バカなっ!? この俺が落ちるだと……」
+“Impossible?! Me, shot down...?”
+
+@8959 Yazan · ヤザン
+> 「なんなんだ! こいつは!?」
+“What the hell is this thing?!”
+
+@8960 Yazan · ヤザン
+> 「なにいっ!? パワーダウンか!?」
+“What?! Power down?!”
+
+@8961 Yazan · ヤザン
+> 「こ、こいつ……なめるなっ!!」
+“Y-you... Don't underestimate me!!”
+
+@8962 Yazan · ヤザン
+> 「ぐおっ!? バカな……」
+“Gah?! Impossible...”
+
+@8963 Yazan · ヤザン
+> 「でえい、ダメージを受けすぎたか!?」
+“Damn, did I take too much damage?!”
+
+@8964 Yazan · ヤザン
+> 「なんだと!? 直撃をくらったのか!?」
+“What?! I took a direct hit?!”
+
+@8965 Yazan · ヤザン
+> 「ちっ、少しは歯ごたえがありそうだな」
+“Tch, this one might put up a fight.”
+
+@8966 Yazan · ヤザン
+> 「くっ! 楽しませてくれるじゃねえか!」
+“Ngh! You're gonna be fun!”
+
+@8967 Yazan · ヤザン
+> 「ち、当たっちまったか!」
+“Tch, I got hit!”
+
+@8968 Yazan · ヤザン
+> 「つう……やってくれるぜ!」
+“Ugh... You're good!”
+
+@8969 Yazan · ヤザン
+> 「ちいっ! なんの、まだまだぁっ!」
+“Tch! No way, I'm not done yet!”
+
+@8970 Yazan · ヤザン
+> 「ふん、やるな!」
+“Hmph, not bad!”
+
+@8971 Yazan · ヤザン
+> 「どうした、その程度か!」
+“What's wrong, is that all?!”
+
+@8972 Yazan · ヤザン
+> 「ははははっ!! 笑わせやがる!!」
+“Hahahaha!! You're killing me!!”
+
+@8973 Yazan · ヤザン
+# 审校：“take me down” 改为 “bring me down”，更符合雅赞对自身被击坠的表述。
+> 「そんな攻撃で、俺を落とせると
+>  思っているのか!?」
+“You think an attack like that can bring me down?!”
+
+@8974 Yazan · ヤザン
+> 「当たらんな!」
+“You missed!”
+
+@8975 Yazan · ヤザン
+> 「甘いんだよ!!」
+“Too soft!!”
+
+@8976 Yazan · ヤザン
+> 「まだ子供の間合いだな!!」
+“Your timing's still a kid's!!”
+
+@8977 Yazan · ヤザン
+> 「見え見えなんだよ!」
+“It's plain as day!”
+
+@8978 Yazan · ヤザン
+> 「フン! へたくそが!!」
+“Hmph! Amateur!!”
+
+@8979 Yazan · ヤザン
+# 审校：原文是被动语态“あたったら”，初稿“taking a hit”不够贴切，改为更忠实表达。
+> 「ハッ、こんな攻撃にあたったら
+>  減俸ものだな」
+“Ha, if I got hit by an attack like that, it'd cost me my pay.”
+
+@8980 Yazan · ヤザン
+# 审校：“Beams don't work on me!” 语气较平，改为更口语且贴合雅赞的挑衅口吻。
+> 「バカが! ビームが効くかよ!」
+“Idiot! Like a beam would work on me!”
+
+@8981 Yazan · ヤザン
+> 「弾切れか!!」
+“Out of ammo?!”
+
+@8982 Yazan · ヤザン
+# 审校：原文“射程距離外からか”指对方从射程外攻击，初稿“From out of range”缺少主语，补足为更清晰。
+> 「ちっ! 射程距離外からか……」
+“Tch! Attacking from out of range, huh...”

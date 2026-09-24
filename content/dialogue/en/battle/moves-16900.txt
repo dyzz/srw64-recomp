@@ -1,0 +1,423 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16900 Chum · チャム
+> 「右から!?」
+“From the right?!”
+
+@16901 Garalia · ガラリア
+> 「左さ!!」
+“The left!!”
+
+@16902 Garalia · ガラリア
+> 「そんな攻撃がっ!」
+“An attack like that!”
+
+@16903 Chum · チャム
+> 「効くわけないじゃない!」
+“Of course it doesn't hurt!”
+
+@16904 Garalia · ガラリア
+> 「ハハハッ、ムダだよ!」
+“Hahaha, it's useless!”
+
+@16905 Chum · チャム
+> 「そうよ!」
+“That's right!”
+
+@16906 Garalia · ガラリア
+> 「弾切れだと!?」
+“Out of ammo?!”
+
+@16907 Chum · チャム
+> 「そんなぁーっ!」
+“No waaay!”
+
+@16908 Garalia · ガラリア
+> 「くっ……届かないというのか!?」
+“Ngh... it can't reach?!”
+
+@16909 Chum · チャム
+> 「だめなの!?」
+“It's no good?!”
+
+@16910 Elle · エレ
+> 「悪意に満ちたオーラ力よ、さがれ!」
+“O aura power filled with malice, begone!”
+
+@16911 Elle · エレ
+> 「これ以上やらせてはなりません!」
+“I cannot let you do any more!”
+
+@16912 Elle · エレ
+> 「前方の敵に攻撃を集中せよ!」
+“Focus your attack on the enemy ahead!”
+
+@16913 Elle · エレ
+> 「各砲座、撃て!」
+“All gun turrets, fire!”
+
+@16914 Elle · エレ
+> 「全砲門、一斉射撃!」
+“All guns, full volley!”
+
+@16915 Elle · エレ
+> 「落ちなさいっ!」
+“Fall!”
+
+@16916 Elle · エレ
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16917 Elle · エレ
+> 「撃てっ!」
+“Fire!”
+
+@16918 Elle · エレ
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16919 Chum · チャム
+> 「いっけぇぇーっ!」
+“Gooo!”
+
+@16920 Chum · チャム
+> 「エレさま、来る!」
+“Lady Elle, incoming!”
+
+@16921 Elle · エレ
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16922 Elle · エレ
+> 「各砲座、撃て!」
+“All gun turrets, fire!”
+
+@16923 Chum · チャム
+> 「やっちゃえーっ!」
+“Let 'em have it!”
+
+@16924 Elle · エレ
+> 「落ちなさいっ!」
+“Fall!”
+
+@16925 Chum · チャム
+> 「落ちちゃえーっ!」
+“Just fall already!”
+
+@16926 Elle · エレ
+> 「これ以上やらせてはなりません!」
+“I cannot let you do any more!”
+
+@16927 Chum · チャム
+# 审校：原译“Don't you dare let them!”语气过重且意思偏离；原文是“不能让他们得逞/别让他们做”，改为更贴切的祈使句。
+> 「やらせちゃだめっ!」
+“Don't let them do it!”
+
+@16928 Chum · チャム
+> 「エレさま、来る!」
+“Lady Elle, here it comes!”
+
+@16929 Elle · エレ
+# 审校：“Focus your attack”单数不自然，且原文“攻撃を集中”指集中攻击，改为复数更符合战斗指令。
+> 「前方の敵に攻撃を集中せよ!」
+“Concentrate your attacks on the enemy ahead!”
+
+@16930 Elle · エレ
+> 「きゃあぁぁーっ!!」
+“Kyaaaaah!!”
+
+@16931 Chum · チャム
+> 「エレさまっ!?」
+“Lady Elle?!”
+
+@16932 Chum · チャム
+> 「きゃあぁぁーっ!」
+“Kyaaaaah!”
+
+@16933 Elle · エレ
+# 审校：“we can still hold”缺少宾语，补为“hold on”更自然。
+> 「だ、大丈夫です、まだもちます!」
+“I-I'm all right. We can still hold on!”
+
+@16934 Elle · エレ
+# 审校：原文“対空砲火、どうしたか”是问对空炮火怎么了，原译“What's with that AA fire”语气像抱怨，改为更贴切的疑问。
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「うっ!? 対空砲火、どうしたか!」
+“Ngh?! What happened to the AA fire?!”
+
+@16935 Chum · チャム
+> 「はやくぅーっ!」
+“Hurry uuup!”
+
+@16936 Chum · チャム
+> 「エレさまぁぁーっ!!」
+“Lady Elleeee!!”
+
+@16937 Elle · エレ
+> 「大丈夫です。チャム、
+>  落ち着きなさい!」
+“It's all right. Chum, calm down!”
+
+@16938 Elle · エレ
+> 「たいした被害ではありませんね」
+“The damage isn't serious.”
+
+@16939 Chum · チャム
+> 「ぜーんぜん大丈夫よ!」
+“We're totally fine!”
+
+@16940 Elle · エレ
+> 「このゴラオンはこの程度の
+>  攻撃では!」
+“This Goraon won't fall to an attack like that!”
+
+@16941 Chum · チャム
+> 「落ちないんだから!」
+“We're not going down!”
+
+@16942 Elle · エレ
+# 审校：“急速回頭”是急速转向，原译“hard about”航海用语可用但不够直观；改为“hard to port”更明确，且保留军事口令感。
+> 「ゴラオン、急速回頭!」
+“Goraon, hard to port!”
+
+@16943 Chum · チャム
+> 「やったぁーっ!」
+“We did it!”
+
+@16944 Elle · エレ
+> 「右です! 急いで!!」
+“To the right! Hurry!!”
+
+@16945 Chum · チャム
+> 「はやくぅーっ!」
+“Hurry uuup!”
+
+@16946 Elle · エレ
+> 「ゴラオンのオーラバリアなら
+>  この程度は!」
+“With Goraon's Aura Barrier, this much is nothing!”
+
+@16947 Chum · チャム
+> 「すごーい!」
+“Amazing!”
+
+@16948 Chum · チャム
+> 「エレさまぁっ!」
+“Lady Elle!”
+
+@16949 Elle · エレ
+# 审校：“strong Aura Power”把“よき”译成“strong”不够准确，原文是“我们良好的奥拉力”，改为“good”更贴切。
+> 「我々のよきオーラ力を信じましょう」
+“Let us trust in our good Aura Power.”
+
+@16950 Elle · エレ
+# 审校：“At this level, there's no problem”略显翻译腔，改为更口语化的“This much is no problem.”
+> 「この程度なら問題ありません」
+“This much is no problem.”
+
+@16951 Chum · チャム
+> 「大丈夫なんだからっ!」
+“We're just fine!”
+
+@16952 Show · ショウ
+> 「はああっ!! オーラ斬りっ!!」
+“Haaah!! Aura Slash!!”
+
+@16953 Chum · チャム
+> 「そうよ、やっちゃえ!!」
+“That's right, go get 'em!!”
+
+@16954 Show · ショウ
+> 「いっけえぇぇっ!!」
+“Gooo!!”
+
+@16955 Chum · チャム
+> 「やっちゃえーっ!」
+“Go get 'em!”
+
+@16956 Show · ショウ
+> 「俺のオーラ力を受けてみろっ!」
+“Take my Aura Power!”
+
+@16957 Chum · チャム
+> 「必殺の、オーラ斬りだぁっ!!」
+“The sure-kill Aura Slash!!”
+
+@16958 Chum · チャム
+> 「いっけぇぇぇっ!!
+>  ハイパーオーラ斬りだぁっ!!」
+“Gooo!! Hyper Aura Slash!!”
+
+@16959 Show · ショウ
+> 「マーベル! オーラ力を俺に
+>  集中してくれ!」
+“Marvel! Focus your Aura Power into me!”
+
+@16960 Marvel · マーベル
+> 「ええ! 私のオーラ力はいつもショウと
+>  一緒よ!」
+“Yes! My Aura Power is always with you, Show!”
+
+@16961 Chum · チャム
+> 「ショウ! マーベル!
+>  やっちゃえぇぇーっ!!」
+“Show! Marvel! Go get 'em!!”
+
+@16962 Show · ショウ
+> 「マーベル! オーラ力を俺に
+>  集中してくれ!」
+“Marvel! Focus your Aura Power into me!”
+
+@16963 Marvel · マーベル
+> 「ええ! 私のオーラ力はいつもショウと
+>  一緒よ!」
+“Yes! My Aura Power is always with you, Show!”
+
+@16964 Show · ショウ
+> 「よし、いくぞ!」
+“All right, here we go!”
+
+@16965 Show · ショウ
+> 「ガラリア! 俺にあわせてくれ!」
+“Garalia! Match my timing!”
+
+@16966 Garalia · ガラリア
+> 「わかった!」
+“Got it!”
+
+@16967 Chum · チャム
+> 「2人とも、いっけぇぇぇぇーっ!!」
+“You two, gooo!!”
+
+@16968 Show · ショウ
+> 「ガラリア! 俺にあわせてくれ!」
+“Garalia! Match my timing!”
+
+@16969 Garalia · ガラリア
+> 「わかった!」
+“Got it!”
+
+@16970 Show · ショウ
+> 「はあぁぁぁぁっ!!」
+“Haaaaaah!!”
+
+@16971 Show · ショウ
+> 「トッド! 同時にしかけるぞ!」
+“Tod! We strike at the same time!”
+
+@16972 Tod · トッド
+> 「おう、まかせな!」
+“Yeah, leave it to me!”
+
+@16973 Chum · チャム
+> 「いっけぇぇっ!
+>  ツインオーラアタックだぁっ!!」
+“Gooo! Twin Aura Attack!!”
+
+@16974 Show · ショウ
+> 「トッド! 同時にしかけるぞ!」
+“Tod! We strike at the same time!”
+
+@16975 Tod · トッド
+> 「おう、まかせな!」
+“Yeah, leave it to me!”
+
+@16976 Show · ショウ
+> 「いっけえぇぇぇぇっ!!」
+“Goooooo!!”
+
+@16977 Show · ショウ
+> 「くっ! このままでは!」
+“Ngh! At this rate...!”
+
+@16978 Chum · チャム
+> 「ダメ、あきらめないでっ!!」
+“No, don't give up!!”
+
+@16979 Chum · チャム
+> 「ショウ、しっかりしてよ、ショウ!!」
+“Show, pull yourself together, Show!!”
+
+@16980 Show · ショウ
+# 审校：“At this level”与前文重复且略显生硬，改为“this much”更自然。
+> 「うっ!! だが、この程度なら!」
+“Ugh!! But this much is nothing!”
+
+@16981 Chum · チャム
+> 「もっとよく見て、ショウ!!」
+“Look more carefully, Show!!”
+
+@16982 Show · ショウ
+# 审校：“at this level, I can still go”翻译腔较重，改为更口语化的“this much is still manageable”。
+> 「くっ!! だが、この程度ならまだ
+>  いける!」
+“Ngh!! But this much is still manageable!”
+
+@16983 Chum · チャム
+> 「そうよ、まだまだっ!」
+“That's right, we're not done yet!”
+
+@16984 Chum · チャム
+> 「ショウ! 戦い方が荒いわよ!」
+“Show! You're fighting too recklessly!”
+
+@16985 Chum · チャム
+# 审校：“なにさ!”是口语化的不满反问，原译“What's that?!”语气不对，改为更简洁的“What?!”。
+> 「なにさ!」
+“What?!”
+
+@16986 Show · ショウ
+> 「くっ! まだいける!」
+“Ngh! I can still go!”
+
+@16987 Chum · チャム
+> 「オーラ力はこっちが上なんだからっ!」
+“Our aura power is way stronger than yours!”
+
+@16988 Show · ショウ
+> 「あたりはしないっ!!」
+“You won't hit me!!”
+
+@16989 Chum · チャム
+> 「さっすがぁ!」
+“Just as expected!”
+
+@16990 Chum · チャム
+> 「ショウ、右っ!!」
+“Show, to the right!!”
+
+@16991 Show · ショウ
+> 「耳元で怒鳴るな!」
+“Don't yell in my ear!”
+
+@16992 Chum · チャム
+> 「ショウ、下よ!!」
+“Show, below!!”
+
+@16993 Show · ショウ
+> 「わかってる!」
+“I know!”
+
+@16994 Chum · チャム
+> 「正面、当たっちゃうっ!!」
+“Dead ahead, we're gonna get hit!!”
+
+@16995 Show · ショウ
+> 「あたるかっ!」
+“Like that'll hit!”
+
+@16996 Show · ショウ
+> 「ムダだっ!!」
+“It's useless!!”
+
+@16997 Chum · チャム
+> 「そうよ、ムダよっ!!」
+“That's right, useless!!”
+
+@16998 Chum · チャム
+> 「やらせないよぉーっ!!」
+“I won't let you!”
+
+@16999 Chum · チャム
+> 「あーっ! ずるぅいっ!」
+“Ah! No fair!”

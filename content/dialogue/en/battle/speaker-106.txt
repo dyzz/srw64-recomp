@@ -1,0 +1,73 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6906 Walker · ワーカー
+> 「いくぞ!」
+“Here I go!”
+
+@6907 Walker · ワーカー
+> 「ただちに攻撃にでる!」
+“Commencing attack immediately!”
+
+@6908 Walker · ワーカー
+> 「動きが速いが……かまわん!」
+“It's fast... but I don't care!”
+
+@6909 Walker · ワーカー
+> 「ここでミスをおかすわけには!」
+“I can't afford to make a mistake here!”
+
+@6910 Walker · ワーカー
+> 「こい!」
+“Come on!”
+
+@6911 Walker · ワーカー
+> 「うおおぉぉぉっ!?」
+“Uwooooh?!”
+
+@6912 Walker · ワーカー
+> 「くっ……だがデータは取ることが
+>  できたか……」
+“Ngh... but at least we got the data...”
+
+@6913 Walker · ワーカー
+> 「ぐ、この武器の力も見て
+>  おきたかった……」
+“Guh, I wanted to see what this weapon could do too...”
+
+@6914 Walker · ワーカー
+> 「おおぉぉぉぉぉーっ!」
+“Oooooooh!”
+
+@6915 Walker · ワーカー
+> 「ぐぅ、記録班! データは取って
+>  いるか!?」
+“Guh, Recording Team! Are you getting the data?!”
+
+@6916 Walker · ワーカー
+> 「さ、さすがに……」
+“Th-this is just too much...”
+
+@6917 Walker · ワーカー
+> 「本当にこの程度なら楽だが……」
+“If it's really only this much, it's easy, but...”
+
+@6918 Walker · ワーカー
+> 「おかしい、こんなものではないはずだ……」
+“Strange, it shouldn't be like this...”
+
+@6919 Walker · ワーカー
+> 「か、かわせたのか!?」
+“D-did I dodge it?!”
+
+@6920 Walker · ワーカー
+> 「か、かわせたのか!?」
+“D-did I dodge it?!”
+
+@6921 Walker · ワーカー
+> 「くっ、こんなときに弾切れとは!」
+“Ngh, out of ammo at a time like this?!”
+
+@6922 Walker · ワーカー
+> 「くっ、この射程距離……
+>  他の武器は……!?」
+“Ngh, this range... what about my other weapons...?!”

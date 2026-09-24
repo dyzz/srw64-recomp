@@ -1,0 +1,73 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7180 Naoto · ナオト
+> 「た、隊長! 機体に亀裂が!!」
+“C-Commander! The hull's cracking!!”
+
+@7181 Naoto · ナオト
+> 「うわっ! 出力がさがっている!?」
+“Whoa! Output's dropping?!”
+
+@7188 Naoto · ナオト
+> 「くそぅ」
+“Damn it.”
+
+@7189 Naoto · ナオト
+> 「おぉぉぉぉ!?」
+“Oooooooh?!”
+
+@7190 Naoto · ナオト
+> 「隊長っ!?」
+“Commander?!”
+
+@7197 Naoto · ナオト
+> 「ぐうぅぅぅっ!」
+“Guuuuh!”
+
+@7201 Naoto · ナオト
+> 「ふぅ、あぶないところだったぜ!」
+“Phew, that was close!”
+
+@7204 Naoto · ナオト
+> 「ヘッ、そんなもんきかねぇってんだよ!」
+“Heh, that ain't gonna work on me!”
+
+@7206 Naoto · ナオト
+> 「ちっ、弾がねぇのか!?」
+“Tch, out of ammo already?!”
+
+@7220 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7221 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7222 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7223 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7224 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7225 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7226 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7227 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”
+
+@7228 Naoto · ナオト
+> 「ばかめ!」
+“Fool!”

@@ -1,0 +1,902 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18192 Banjo · 万丈
+> 「新司令官のル・カインか。
+>  一体、どんな人物なんだ?」
+“So Le Cain's the new commander. Just what kind of man is he?”
+
+@18193 Garrison · ギャリソン
+> 「さて。個人情報は
+>  入ってきておりませんが……
+“Well now. I've received no personal information on him, but...
+---
+>  アラン様のお話ですと、我々に
+>  合流していただく方々が
+according to Lord Alan, the people joining up with us
+---
+>  よくご存じとか」
+know him quite well.”
+
+@18194 Brad · ブラッド（按段落 3DD3）
+> 「あんたもつかめないような情報を、
+>  なんだってそいつらが知ってるんだ
+“If even you couldn't dig up anything on him, how the hell do those guys know?
+---
+>  どういう連中なんだよ?」
+Who are these people, anyway?”
+
+@18195 Manami · マナミ（按段落 3DD4）
+> 「どういう人たちなの?」
+“What kind of people are they?”
+
+@18196 Garrison · ギャリソン
+> 「なんでも3年前地球が侵略を
+>  受けた際にも
+“By all accounts, they're the ones who fought the Empire
+---
+>  帝国と戦った方々だとか」
+when Earth was invaded three years ago.”
+
+@18197 Koji · 甲児
+> 「だけど連邦軍ってわけじゃ
+>  ないんだろう」
+“But they're not with the Federation Forces, right?”
+
+@18198 Garrison · ギャリソン
+> 「左様で
+“Indeed not.
+---
+>  当時、地球側について戦った
+>  帝国の方と
+I understand they are an Imperial who sided with Earth in those days,
+---
+>  そのお仲間の方々と
+>  うかがっております」
+along with his comrades.”
+
+@18199 Banjo · 万丈
+> 「あのとき地球についた帝国人……
+>  聞いたことがある」
+“An Imperial who sided with Earth back then... I've heard of that.”
+
+@18200 Garrison · ギャリソン
+> 「軍の機密扱いでございましたな」
+“It was classified military information, you see.”
+
+@18201 Brad · ブラッド（按段落 3DD3）
+> 「3年もか。いまだに戦いつづけて
+>  いるんだ、期待できそうじゃないか」
+“Three whole years. They're still fighting after all this time. Sounds promising, doesn't it?”
+
+@18202 Banjo · 万丈
+> 「そう思うね」
+“I'd say so.”
+
+@18203 Simone · シモーヌ
+> 「……まさか……」
+“...It can't be...”
+
+@18204 Manami · マナミ（按段落 3DD4）
+> 「どうしたの?」
+“What's wrong?”
+
+@18205 Simone · シモーヌ
+> 「前に、火星の生き残りだって
+>  話はしたわよね?」
+“I told you before about the survivors from Mars, remember?”
+
+@18206 Manami · マナミ（按段落 3DD4）
+> 「ええ」
+“Yes.”
+
+@18207 Simone · シモーヌ
+> 「そのときアタシたちが助かった理由は
+>  エイジが、いてくれたからなの
+“The reason we made it out alive back then was because Eiji was there for us.
+---
+>  アルバトロ・ナル・エイジ・アスカ……
+Albatro Null Eiji Asuka...
+---
+>  地球と帝国領のグラドスとの
+>  混血の」
+Half Earthling, half Gradosian from Imperial territory.”
+
+@18208 Manami · マナミ（按段落 3DD4）
+> 「地球と帝国の……」
+“Half Earthling, half Imperial...”
+
+@18209 Simone · シモーヌ
+> 「たぶん、その仲間っていうのも
+>  アタシの知り合いだと思う
+“I think these comrades of his are probably people I know, too.
+---
+>  アタシたちはみんな、エイジが
+>  いなかったら、生きてはいなかった」
+None of us would be alive if it weren't for Eiji.”
+
+@18210 Banjo · 万丈
+> 「へえ、それは頼もしいな」
+“Heh, that's reassuring.”
+
+@18211 Le Cain · ル・カイン
+> (地球か……。私が来たからには、
+>  帝国に刃を向ける者たちも
+(Earth, is it... Now that I have come, those who would turn their blades on the Empire
+---
+>  私の足もとに血まみれの体を
+>  投げ出すことになろう)
+shall throw their blood-soaked bodies down at my feet.)
+
+@18212 Giura · ギウラ
+> 「ご苦労様です、ル・カイン閣下」
+“Thank you for your hard work, Your Excellency Le Cain.”
+
+@18213 Le Cain · ル・カイン
+> 「そいつらか、
+>  使える地球人というのは」
+“So these are them. The Earthlings who are of use.”
+
+@18214 Giura · ギウラ
+> 「はっ、ロアン・デミトリッヒと
+>  トレーズ・クシュリナーダです」
+“Yes, sir. Roanne Demitrich and Treize Khushrenada.”
+
+@18215 Roanne · ロアン
+> 「お呼びいただき光栄です。
+>  私にできますことは、
+“It is an honor to be summoned. Whatever I can do for you,
+---
+>  なんなりとお申し付けください」
+please command it without hesitation.”
+
+@18216 Treize · トレーズ
+> 「スペシャルズを代表し、
+>  閣下の就任を
+“On behalf of the Specials, I offer my congratulations
+---
+>  お喜び申し上げます」
+on Your Excellency's appointment.”
+
+@18217 Le Cain · ル・カイン
+> 「フッ、こういう地球人もいるか。
+>  よかろう。貴様たちはギウラとともに
+“Hmph, so Earthlings like these exist as well. Very well. You two, along with Giura,
+---
+>  私の就任パレードの準備をしろ」
+make preparations for my inauguration parade.”
+
+@18218 Treize · トレーズ
+> 「閣下、ゲリラの間で不穏な
+>  動きがあると聞いております」
+“Your Excellency, I hear there is unrest stirring among the guerrillas.”
+
+@18219 Le Cain · ル・カイン
+> 「私が、それを知らないとでも
+>  思ったか
+“Did you think I was unaware of that?
+---
+>  貴様らのするべきことは、
+>  そやつらを引きずり出すことだ
+What you are to do is drag them out into the open.
+---
+>  就任パレードの間にな」
+During my inauguration parade.”
+
+@18220 Roanne · ロアン
+> 「すばらしいお考えです、閣下。
+>  彼らは、きわめて短絡的です
+“A splendid plan, Your Excellency. They are extremely short-sighted.
+---
+>  必ずや出てくることでしょう」
+They will surely come out.”
+
+@18221 Garrison · ギャリソン
+> 「ふむ……これは、しかし……」
+“Hmm... This, however...”
+
+@18222 Banjo · 万丈
+> 「どうしたんだ?」
+“What's the matter?”
+
+@18223 Garrison · ギャリソン
+> 「実は新司令官の
+>  就任パレードの情報を
+“The truth is, I have obtained information about
+---
+>  入手したのですが……」
+the new commander's inauguration parade, but...”
+
+@18224 Brad · ブラッド（按段落 3DD3）
+> 「わかった。そこを襲撃するっていう
+>  わけだな?」
+“Got it. So we're going to raid it, right?”
+
+@18225 Manami · マナミ（按段落 3DD4）
+> 「ですが?」
+“But?”
+
+@18226 Garrison · ギャリソン
+> 「それが、どうもワナではないかと」
+“It seems to me it may well be a trap.”
+
+@18227 Banjo · 万丈
+> 「何故だい?」
+“Why do you say that?”
+
+@18228 Garrison · ギャリソン
+> 「まず各方面から一斉に
+>  情報が入り始めたことといい
+“For one thing, information began pouring in from every quarter all at once.
+---
+>  また警備情報までもが
+>  そっくり流れている点といい
+For another, even the security details have been leaked wholesale.
+---
+>  不信な点が多すぎるのですよ。
+>  さらに警備がこうも
+There are far too many suspicious points. And on top of that, the guard is so
+---
+>  手薄とあっては……」
+thin that...”
+
+@18229 Banjo · 万丈
+> 「なるほど、クサイな。どう思う?」
+“I see, it does smell fishy. What do you think?”
+
+@18230 Brad · ブラッド（按段落 3DD3）
+> 「どうもこうもない。もしそれが本当なら
+>  そいつは俺たちが
+“There's nothing to think about. If it's real, then that means he knew we were
+---
+>  襲撃するつもりなのを知ってて
+>  ワザとそうしてるってことだろ?
+planning to raid it and set it up on purpose, right?
+---
+>  こいつは明らかに俺たち
+>  地球人に対する挑戦だぜ」
+This is clearly a challenge to us Earthlings.”
+
+@18231 Koji · 甲児
+> 「やれるもんなら、やってみろってわけか。
+>  っきしょう、なんて奴だ」
+“So it's a 'come at me if you can,' huh. Damn, what a guy.”
+
+@18232 Sayaka · さやか
+> 「それなら、やめておいたほうがいいわね」
+“Then we'd better not go through with it.”
+
+@18233 Koji · 甲児
+> 「なにいってんだい、さやかさん。そこまで
+>  されて黙ってみてろってのか?」
+“What are you saying, Sayaka? Are you telling me to just sit back and watch after all that?”
+
+@18234 Brad · ブラッド（按段落 3DD3）
+> 「そうだ。こいつは受けて立つべきだ」
+“That's right. This is a challenge we should accept.”
+
+@18235 Simone · シモーヌ
+> 「明らかにワナだけど、
+>  露骨すぎるのも気になるわ」
+“It's obviously a trap, but the fact that it's so blatant bothers me too.”
+
+@18236 Manami · マナミ（按段落 3DD4）
+> 「あからさまにワナと見せておいて
+>  襲撃を避けるつもりなのか
+“Are they showing us an obvious trap so we'll avoid the raid,
+---
+>  あるいは……」
+or else...”
+
+@18237 Lawrence · ローレンス
+> 「挑戦……でございますな」
+“A challenge... indeed, my lady.”
+
+@18238 Manami · マナミ（按段落 3DD4）
+> 「そうね。やれるものならやってみろ、
+>  というわけね」
+“That's right. It's a 'come at us if you can,' isn't it.”
+
+@18239 Koji · 甲児
+> 「どうするんだ?
+“What are we going to do?
+---
+>  だからって、はいそうですかと
+>  黙ってみてろっていうのかよ」
+Does that mean we're supposed to just sit back and take it?”
+
+@18240 Banjo · 万丈
+> 「ル・カインか……大胆なことをする。
+>  だが、僕たちがこれから
+“Le Cain, huh... He's being bold. But as we go on fighting from here,
+---
+>  戦っていく上で、
+>  彼の出端をくじくのは
+crushing his opening move will carry great significance.
+---
+>  重要な意味がある。アランもいって
+>  いたが、彼を倒すことができれば
+Alan said it too, but if we can defeat him,
+---
+>  帝国に与える打撃は
+>  計り知れない」
+the blow dealt to the Empire will be immeasurable.”
+
+@18241 Reika · レイカ
+> 「じゃあ……」
+“Then...”
+
+@18242 Banjo · 万丈
+> 「ル・カインの挑戦を受けよう。
+>  旧ニューヨーク方面へ向かうぞ」
+“We'll accept Le Cain's challenge. We're heading for the old New York area.”
+
+@18243 Garrison · ギャリソン
+> 「そろそろ時間でございますな」
+“It's about time, my lord.”
+
+@18244 Banjo · 万丈
+> 「来たぞ。みんな、準備はいいな」
+“Here they come. Everyone, are you ready?”
+
+@18245 Banjo · 万丈
+> 「よし、いまだ!」
+“All right, now!”
+
+@18246 Le Cain · ル・カイン
+> 「なに!? ゲリラか、おのれッ!
+>  迎撃せよ!」
+“What?! Guerrillas, damn them! Intercept them!”
+
+@18247 Le Cain · ル・カイン
+> 「うわあぁぁぁぁーっ!!」
+“Uwaaaaaaaah!!”
+
+@18248 Roux · ルー
+> 「あっけなさすぎる……
+>  やっぱり、おとりだわ」
+“That was far too easy... So he really was bait.”
+
+@18249 Beauty · ビューティ
+> 「ウッソーッ!
+>  ホントに倒しちゃったの!?」
+“No way! Did we really beat him?!”
+
+@18250 Reika · レイカ
+> 「あっけなさすぎるわ。
+>  やっぱり、おとりね」
+“That was far too easy. He really was bait.”
+
+@18251 Garrison · ギャリソン
+# 审校：ギャリソン是万丈的管家，称呼万丈应为“my lord”，原译误为“my lady”。
+> 「そのようですな
+“So it seems, my lord.
+---
+>  すっかり囲まれてしまって
+>  おりますぞ」
+We've been completely surrounded.”
+
+@18252 Koji · 甲児
+> 「ちっ、うじゃうじゃいるぜ!?」
+“Tch, there's a whole swarm of them!”
+
+@18253 Banjo · 万丈
+> 「ああ、どうやら
+>  本物が出てきたようだね」
+“Yeah, looks like the real one has shown up.”
+
+@18254 Le Cain · ル・カイン
+> 「なるほど、ワナと知りつつ
+>  あえて出てきたというのか
+“I see, so you dared to come out knowing full well it was a trap.
+---
+>  地球人ごときが、
+>  こざかしい真似をする
+For mere Earthlings, you put on quite a clever act.
+---
+>  だが、その浅はかさを
+>  身をもって知ることになる」
+But you will learn that foolishness firsthand.”
+
+@18255 Le Cain · ル・カイン
+> 「地球人どもよ、聞け!
+>  私に立ち向かうことが、
+“Hear me, Earthlings! I will now show you
+---
+>  いかに愚かな行為であるか、
+>  今から見せてやる
+just how foolish an act it is to stand against me.
+---
+>  我々に逆らおうとするな。
+>  お前たち地球人の幸せは、
+Do not defy us. The happiness of you Earthlings
+---
+>  我々に支配されることにあるのだ。
+>  支配するものと、されるもの、
+lies in being ruled by us. The ruler and the ruled—
+---
+>  およそ宇宙にはその原理しかない。
+>  よりよき支配、無垢なる従順
+in all the universe, there is no principle but that. Better rule, pure obedience—
+---
+>  これこそが理想なる世を
+>  現出するただ一つの真理だ」
+this alone is the one truth that brings forth an ideal world.”
+
+@18256 Le Cain · ル・カイン
+> 「私が地球に来たのは
+>  その原理に基づいて
+“I came to Earth based on that principle,
+---
+>  真の平和を確立するためだ。
+>  地球的なるものは一切捨てよ!
+to establish true peace. Cast aside everything Earthly!
+---
+>  我を信じよ 帝国を信じよ!」
+Believe in me! Believe in the Empire!”
+
+@18257 Banjo · 万丈
+> 「黙れ! この地球に
+>  僕たちがいるかぎり
+“Silence! As long as we are on this Earth,
+---
+>  かならず帝国の支配を
+>  打ち砕いてみせる!」
+we will surely crush the Empire's rule!”
+
+@18258 Le Cain · ル・カイン
+> 「フフフ、なかなか楽しませて
+>  くれそうだな
+“Heh heh heh, you look like you'll be quite entertaining.
+---
+>  ならばまず、ここでそれを
+>  見せてもらおうか」
+Then first, let me see it right here.”
+
+@18259 Eiji · エイジ
+> 「カラバの方、遅れてすまない」
+“Sorry I'm late, Karaba.”
+
+@18260 Banjo · 万丈
+> 「いや、そう悪くないタイミングだ」
+“No, your timing isn't bad at all.”
+
+@18261 Banjo · 万丈
+> 「おっと、どうやらこっちの増援も
+>  到着したようだね」
+“Whoa, looks like our reinforcements have arrived too.”
+
+@18262 Simone · シモーヌ
+> 「あれは……レイズナー!
+>  エイジ、やっぱりエイジなのね!?」
+“That's... the Layzner! Eiji, so it really is you?!”
+
+@18263 Eiji · エイジ
+> 「シモーヌ? まさかレジスタンスに
+>  君がいるとは……」
+“Simone? I never thought you'd be with the resistance...”
+
+@18264 David · デビッド
+> 「シモーヌだって!?
+>  エイジだけじゃねぇ、俺もいるぜ!」
+“Simone?! It's not just Eiji—I'm here too!”
+
+@18265 Simone · シモーヌ
+> 「あらデビッド、よく生きてたわね」
+“Oh, David. So you managed to survive.”
+
+@18266 David · デビッド
+> 「……ちぇっ、それだけかよ」
+“...Tch, is that all you've got to say?”
+
+@18267 Le Cain · ル・カイン
+> 「貴様……エイジ・アスカ
+>  ……帝国の裏切り者
+“You... Eiji Asuka... traitor to the Empire.
+---
+>  フッ、お前とは必ず
+>  会えると思っていたぞ」
+Hmph, I knew I would meet you again for certain.”
+
+@18268 David · デビッド
+> 「おっと、あいつがル・カインか」
+“Whoa, so that's Le Cain.”
+
+@18269 Eiji · エイジ
+> 「ああ。自信とうぬぼれの
+>  区別のつかない男だ
+“Yeah. He's a man who can't tell confidence from arrogance.
+---
+>  俺は、貴様とグレスコ総督は
+>  必ず地球から
+I swear I'll drive you and Governor Gresco
+---
+>  追い出してみせる!」
+off this Earth!”
+
+@18270 Le Cain · ル・カイン
+> 「あいにくだが私は、血の濁った男の
+>  世迷いごとを聞く耳は
+“Unfortunately, I have no ear for the ravings of a man
+---
+>  持ち合わせておらん」
+with tainted blood.”
+
+@18271 Gosterro · ゴステロ
+# 审校：原文是拖长音的怒吼，初稿只译成普通疑问，改为拉长 Eiji 的拼写以保留气势。
+> 「エイジ……
+>  エイジだとぉぉぉぉぉぉーっ!?」
+“Eiji... Eijiiiiiiiiiiii?!”
+
+@18272 Eiji · エイジ
+> 「この声……まさかゴステロか!?」
+“That voice... is that you, Gosterro?!”
+
+@18273 Gosterro · ゴステロ
+> 「エイジィィーッ、貴様が
+>  生きていてくれて、うれしいぜぇ
+“Eijiiiii! I'm so glad you're alive,
+---
+>  これで貴様をぶっ殺してやる
+>  楽しみができたからなぁ!!」
+now I get the pleasure of killing you myself!!”
+
+@18274 Eiji · エイジ
+> 「生きていたのか、ゴステロ」
+“So you survived, Gosterro.”
+
+@18275 Gosterro · ゴステロ
+> 「さぁてなぁ。この体のどこからどこまで
+>  が生きているのやら
+“Who knows. I can't tell which parts of this body are still alive.
+---
+>  甘ちゃんのクセにゲイルを殺し、
+>  自分の姉まで殺しておいて
+You were supposed to be soft, yet you killed Gale, you even killed your own sister,
+---
+>  よくも生きていられたもんだなぁ、
+>  エイジィ」
+and you still had the nerve to keep living, Eijiii.”
+
+@18276 Eiji · エイジ
+> 「俺は……」
+“I...”
+
+@18277 Gosterro · ゴステロ
+> 「まぁいい、
+>  貴様はここで死ぬんだぁ
+“Ah, whatever. You're going to die here.
+---
+>  ぐぅぅ、の、脳がいてぇ」
+Ghh, my—my brain hurts.”
+
+@18278 Reika · レイカ
+# 审校：「なんて数なの!?」指敌人数量多，初稿直译成“这个数字是什么”不通顺，改为自然表达。
+> 「なんて数なの!?」
+“How many of them are there?!”
+
+@18279 Garrison · ギャリソン
+> 「これはいけません。皆様方、
+>  ここは撤退いたしましょう」
+“This won't do. Everyone, we should retreat here.”
+
+@18280 Banjo · 万丈
+> 「くっ、確かにここは
+>  一旦ひくしかないようだね
+“Tch, it seems we really have no choice but to pull back for now.
+---
+>  みんな、ひきあげるぞ!」
+Everyone, we're withdrawing!”
+
+@18281 Eiji · エイジ
+> 「ル・カイン、誇りのためだけに
+>  戦うこともできるのが
+“Le Cain, remember this well—Earthlings can also fight
+---
+>  地球人だということを、
+>  よく覚えておけ!」
+for nothing but their pride!”
+
+@18282 Le Cain · ル・カイン
+> 「フフフ、おもしろい。
+>  この星は刺激に満ちている
+“Heh heh heh, interesting. This planet is full of excitement.
+---
+>  気に入った!
+>  ハーッハッハッハッハッ!!」
+I like it! Hahahahahaha!!”
+
+@18283 Le Cain · ル・カイン
+> 「なに!? フッフフフフフ、
+>  なるほど口だけではないようだな
+“What?! Heh heh heh heh, I see, so you're not all talk after all.
+---
+>  だがこの程度で帝国に
+>  逆らおうなど、片腹痛いわ」
+But to defy the Empire with only this much—how laughable.”
+
+@18284 Reika · レイカ
+# 审校：同 L17，修正直译导致的生硬表达。
+> 「なんて数なの!?」
+“How many of them are there?!”
+
+@18285 Garrison · ギャリソン
+> 「これはいけません。皆様方、
+>  ここは撤退いたしましょう」
+“This won't do. Everyone, we should retreat here.”
+
+@18286 Banjo · 万丈
+> 「くっ、確かにここは
+>  一旦ひくしかないようだね
+“Tch, it seems we really have no choice but to pull back for now.
+---
+>  みんな、ひきあげるぞ!」
+Everyone, we're withdrawing!”
+
+@18287 Eiji · エイジ
+> 「ル・カイン、誇りのためだけに
+>  戦うこともできるのが
+“Le Cain, remember this well—Earthlings can also fight
+---
+>  地球人だということを、
+>  よく覚えておけ!」
+for nothing but their pride!”
+
+@18288 Le Cain · ル・カイン
+> 「フフフ、おもしろい。
+>  この星は刺激に満ちている
+“Heh heh heh, interesting. This planet is full of excitement.
+---
+>  気に入った!
+>  ハーッハッハッハッハッ!!」
+I like it! Hahahahahaha!!”
+
+@18289 Eiji · エイジ
+> 「ル・カイン、覚悟!」
+“Le Cain, prepare yourself!”
+
+@18290 Le Cain · ル・カイン
+> 「フッ、面白い。相手をしてやろう」
+“Hmph, interesting. I'll play with you.”
+
+@18291 Gosterro · ゴステロ
+> 「エイジィィ、貴様だけはこの俺の手
+>  でぶち殺してやる!」
+“Eijiii, you and you alone I'll kill with my own hands!”
+
+@18292 Eiji · エイジ
+> 「ゴステロ! お前にやられるわけには
+>  いかない!」
+“Gosterro! I can't afford to be beaten by you!”
+
+@18293 Banjo · 万丈
+> 「よくきてくれたね。
+>  カラバの破嵐万丈だ」
+“Glad you could make it. I'm Banjo Haran of Karaba.”
+
+@18294 Eiji · エイジ
+> 「エイジ・アスカです。それから、
+>  デビッドとシモーヌとアンナ」
+“I'm Eiji Asuka. And this is David, Simone, and Anna.”
+
+@18295 David · デビッド
+> 「デビッド・ラザフォードだ。
+>  よろしく頼むぜ」
+“I'm David Rutherford. Pleasure to meet you.”
+
+@18296 Anna · アンナ
+> 「お世話になります。
+>  アンナ・ステファニーです」
+“I'll be in your care. I'm Anna Stephanie.”
+
+@18297 Simone · シモーヌ
+> 「シモーヌ・ルフランよ。よろしく」
+“I'm Simone Reflann. Nice to meet you.”
+
+@18298 Banjo · 万丈
+> 「シモーヌ…… ルフラン侯爵家の
+>  ご令嬢かな?」
+“Simone... the young lady of the Reflann marquis family, is it?”
+
+@18299 David · デビッド
+> 「なんだ、知り合いか?」
+“What, you two know each other?”
+
+@18300 Simone · シモーヌ
+> 「違うわよ。アタシはこっちに来る前は
+>  ロームフェラの情報を
+“Not exactly. Before I came here, I was feeding Romefeller intelligence
+---
+>  カラバに流してたのよ。直接お会い
+>  するのは初めてだわ」
+to Karaba. This is the first time we've met in person.”
+
+@18301 Banjo · 万丈
+> 「君の情報には、ずいぶんと
+>  助けられた
+“Your information has helped us a great deal.
+---
+>  あらためて、お礼を言おう」
+Let me thank you properly.”
+
+@18302 David · デビッド
+> 「シモーヌ……シモーヌ!」
+“Simone... Simone!”
+
+@18303 Simone · シモーヌ
+> 「…………」
+“...”
+
+@18304 David · デビッド
+> 「シモーヌ、一体……!?」
+“Simone, what in the world...?!”
+
+@18305 Simone · シモーヌ
+# 审校：原文「奪われた唇の、おかえしよ」指被夺走的吻，初稿“the kiss you stole”方向正确，但“payback for the kiss you stole”可保留；此处仅确认无改动，不返回。
+> 「奪われた唇の、おかえしよ。
+>  3年間ずーっと考えてたんだから」
+“That's payback for the kiss you stole. I've been thinking about it for three whole years.”
+
+@18306 Anna · アンナ
+> 「ウフフフフフ」
+“Hehehehehe.”
+
+@18307 Banjo · 万丈
+> 「よくきてくれたね。
+>  カラバの破嵐万丈だ」
+“Glad you could make it. I'm Banjo Haran of Karaba.”
+
+@18308 Eiji · エイジ
+> 「エイジ・アスカです。
+>  彼がデビッドで……」
+“I'm Eiji Asuka. He's David, and...”
+
+@18309 Anna · アンナ
+> 「アンナ・ステファニーです。
+>  よろしくお願いします」
+“I'm Anna Stephanie. It's a pleasure to meet you.”
+
+@18310 Banjo · 万丈
+> 「こちらこそ、お嬢さん」
+“The pleasure is mine, my lady.”
+
+@18311 Simone · シモーヌ
+> 「エイジ……顔さわらせて。
+>  エイジ、本当に生きてたのね
+“Eiji... let me touch your face. Eiji, you really are alive.
+---
+>  ……もう二度と会えないかも
+>  しれないって思ってた……
+...I thought I might never see you again...
+---
+>  うぅっ……ごめんなさい
+>  ……やだ、みっともないわ」
+Ah... I'm sorry... no, I'm such a mess.”
+
+@18312 David · デビッド
+> 「あーあ、全然ちがうでやんの
+>  俺なんかいきなり、バシーッだもんな」
+“Aw, man, I'm totally different from him. I get a smackdown right off the bat.”
+
+@18313 Gresco · グレスコ
+> 「だいぶ派手に、やったそうだな?」
+“I hear you made quite a flashy mess of things?”
+
+@18314 Le Cain · ル・カイン
+> 「もうお耳に入りましたか」
+“Word has already reached you, then.”
+
+@18315 Gresco · グレスコ
+> 「お前を呼び寄せた理由は、
+>  わかっておろうな」
+“You know why I summoned you, don't you.”
+
+@18316 Le Cain · ル・カイン
+> 「心得ております、父上」
+“I understand, Father.”
+
+@18317 Gresco · グレスコ
+> 「意味のない殺戮と破壊は、
+>  民心を離反させるだけだ」
+“Pointless slaughter and destruction will only turn the people against us.”
+
+@18318 Le Cain · ル・カイン
+# 审校：原文开头「……!?」在引号内，初稿漏掉引号，补上。
+> 「……!? 父上もかわられましたな。
+>  やはり3年も地球におられると、
+“...?! So you've changed too, Father. I suppose after three years on Earth,
+---
+>  地球病とやらにかかるのですかな」
+you've caught this so-called Earth disease.”
+
+@18319 Gresco · グレスコ
+> 「地球病?」
+“Earth disease?”
+
+@18320 Le Cain · ル・カイン
+> 「将軍どもが噂しております。
+>  父上、政策の不徹底や
+“The generals are whispering about it. Father, half-hearted policies and
+---
+>  不必要な甘さは、地球人ども
+>  に軽んぜられることになります」
+needless leniency will only make the Earthlings look down on us.”
+
+@18321 Gresco · グレスコ
+> 「…………お前はまだ若い。
+>  わからぬことも多い」
+“...You are still young. There is much you do not understand.”
+
+@18322 Le Cain · ル・カイン
+> 「わかろうとも思いません。父上、
+>  いいかげんに目をさまされたらどうです」
+“I have no wish to understand. Father, why don't you wake up already?”
+
+@18323 Le Cain · ル・カイン
+> 「父上!?
+>  ……そうか、そういうことなのか
+“Father?! ...I see, so that's how it is.
+---
+>  父上はご自分が地球の空気
+>  に感傷的になっていることを
+You know full well that you've grown sentimental from Earth's air.
+---
+>  ご存じなのだ。
+>  ですから私を招いたのですね
+That's why you called me here.
+---
+>  ……父上」
+...Father.”
+
+@18324 Lady · レディ
+> 「お呼びでしょうか」
+“You called for me?”
+
+@18325 Treize · トレーズ
+> 「レディ、ル・カイン閣下が
+>  就任されたことで
+“Lady, now that Lord Le Cain has taken office,
+---
+>  我々はこれまで以上に
+>  動きやすくなる」
+we can move more freely than ever before.”
+
+@18326 Lady · レディ
+> 「すでに例の計画を閣下に
+>  ご提案申し上げる用意が
+“I am already prepared to present that plan
+---
+>  整っております」
+to His Excellency.”
+
+@18327 Treize · トレーズ
+> 「さすがだね。そのまま進めてくれ。
+>  ところで、レディ・アン」
+“Just as I expected. Carry on as planned. By the way, Lady Une.”
+
+@18328 Lady · レディ
+> 「はい」
+“Yes.”
+
+@18329 Treize · トレーズ
+> 「ドーリアン氏なのだが、
+>  地球人の自治権獲得や
+“It's about Mr. Darlian. He seems to be quite actively campaigning
+---
+>  コロニーの再建について、
+>  ずいぶんと精力的に
+for Earthlings to gain autonomy and for the colonies
+---
+>  活動されているようだね」
+to be rebuilt.”
+
+@18330 Lady · レディ
+> 「承知いたしました。
+>  次のバスタイムには
+“Understood. For your next bath time,
+---
+>  バラのエッセンスをご用意いたします」
+I shall prepare the rose essence.”
+
+@18331 Treize · トレーズ
+> 「頼む」
+“Please do.”

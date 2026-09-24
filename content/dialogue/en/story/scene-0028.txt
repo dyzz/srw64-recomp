@@ -1,0 +1,1510 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@22295 Masato · 雅人
+> 「なんだよ、いったいどうなっちゃったんだ?
+>  やつら、引き上げたっきり、
+“What the heck, what on earth happened? Those guys pulled back and
+---
+>  戻ってこないじゃんか」
+they're just not coming back.”
+
+@22296 Koji · 甲児
+> 「へっ、オレたちに恐れをなして、
+>  逃げたんじゃないのか?」
+“Heh, maybe they got scared of us and ran away?”
+
+@22297 Sayaka · さやか
+> 「バカね。そんなわけないでしょう?」
+“Don't be stupid. There's no way that's it.”
+
+@22298 Koji · 甲児
+> 「ちぇっ、じゃあ、なんだってんだよ」
+“Tch, then what the hell is it?”
+
+@22299 Eiji · エイジ
+> 「わからないな。敵に何か不都合が
+>  起きたのかもしれない」
+“I don't get it. Something bad might have happened on the enemy's side.”
+
+@22300 Ginrei · 銀鈴
+> 「……艦長、カラバのアランさんから
+>  通信が入っています」
+“...Captain, we're getting a transmission from Alan of Karaba.”
+
+@22301 Bright · ブライト
+> 「来たか。まわしてくれ」
+“So it's come. Put him through.”
+
+@22302 Bright · ブライト
+> 「なるほど、やはり敵が引き上げたのは
+>  そちらがうまくいったからか」
+“I see, so the enemy pulled back because things went well on your end.”
+
+@22303 Alan · アラン
+> 「そうだ。これでこれまで
+>  帝国占領軍の中心であった
+“That's right. With this, Grados Tower, which had been the center of the
+---
+>  グラドスタワーはもはや機能しない。
+>  奴らの指揮系統も
+imperial occupation forces, no longer functions. Their chain of command is
+---
+>  相当に乱れている。再建には
+>  多少ならず時間がかかるだろう」
+in considerable disarray. Rebuilding will take no small amount of time.”
+
+@22304 Boss · ボス
+> (おい兜、あの通信の相手って
+>  いったいだれなんだよ)
+(Hey, Kabuto, just who the heck is that guy on the other end?)
+
+@22305 Koji · 甲児
+> (そんなことオレが知るもんかよ。
+>  ……顔は見たことあるんだけどな)
+(How should I know? ...I have seen his face before, though.)
+
+@22306 Ryoma · リョウ
+> (あれはカラバのアランだ。かつては
+>  黒騎士とよばれ、帝国を
+(That's Alan of Karaba. I've heard he was once called the Black Knight and
+---
+>  相手に、独自のゲリラ活動を
+>  展開していたと聞いている
+waged his own guerrilla campaign against the empire. Along with
+---
+>  万丈とともに、カラバを
+>  作り上げた男だ)
+Banjo, he's the man who built Karaba.)
+
+@22307 Masato · 雅人
+> (でもさ、グラドスタワーっていったら
+>  総督府や司令本部が
+(But still, Grados Tower is where the governor's office and the command
+---
+>  あったトコだろ。そんな簡単に
+>  占拠できるものなのかな)
+headquarters were, right? Could they really take it that easily?)
+
+@22308 Bright · ブライト
+> 「お前たち、何をこそこそやっている!」
+“You there, what are you whispering about!”
+
+@22309 Alan · アラン
+> 「ハハハハハッ、かまわないさ艦長。
+>  確かに我々の組織も相当の
+“Hahahahaha, it's quite all right, Captain. It's true our organization has taken
+---
+>  ダメージを受けている。我々だけでは
+>  不可能だったのは間違いない」
+considerable damage as well. There's no doubt we couldn't have done it alone.”
+
+@22310 Shinobu · 忍
+> 「じゃあ、あんたらはなんでそんなことが
+>  できたんだよ。えぇ、黒騎士さんよ?」
+“Then how the hell were you able to pull it off? Huh, Mr. Black Knight?”
+
+@22311 Alan · アラン
+> 「フッ、お前もあいかわらずだな、藤原
+>  力だけでは戦いには勝てんぞ」
+“Heh, you haven't changed either. You won't win battles on sheer guts alone.”
+
+@22312 Shinobu · 忍
+> 「うるせーッ、
+>  そんなこたぁ聞いちゃいねぇんだよ!」
+“Shut up! That's not what I asked!”
+
+@22313 Alan · アラン
+> 「短気なのも変わらず、か。
+>  お前たちもル・カインの放送を
+“Still short-tempered, I see. If you saw Le Cain's broadcast, you should know
+---
+>  見たのなら知っていると思うが、
+>  ル・カインが登用した地球人
+this already, but the Earthling Le Cain appointed, Roanne Demitrich,
+---
+>  ロアン・デミトリッヒ、
+>  彼が計画の立案者だ」
+he's the one who drafted the plan.”
+
+@22314 David · デビッド
+> 「なんだって!?」
+“What did you say?!”
+
+@22315 Alan · アラン
+> 「もっとも最初の予定では
+>  ああまではうまくいかず、彼も
+“Though by the original schedule it wasn't supposed to go that well, and he
+---
+>  死ぬ可能性が高かったのだがね。
+>  運よくあの作戦中に
+had a high chance of dying as well. But by luck he gained command
+---
+>  指揮権を得たことで、
+>  計画はほぼ完璧に成功したのだ」
+authority during that operation, and the plan succeeded almost perfectly.”
+
+@22316 David · デビッド
+> 「じゃ……じゃあ、ロアンの奴は
+>  最初っからそのために!?」
+“Then... then Roanne was after that from the very start?!”
+
+@22317 Alan · アラン
+> 「そういうことになるな。我々も彼から
+>  連絡を受けたときには
+“That's how it is. When we received word from him, we suspected it might be
+---
+>  罠ではないかと疑ったが、彼は
+>  以前からレジスタンスに
+a trap, but it turned out he had long been leaking information on the
+---
+>  占領軍の情報をリークしていた
+>  人物であったことがわかってね」
+occupation forces to the resistance.”
+
+@22318 Anna · アンナ
+> 「デビッド!
+>  ロアンは……ロアンはやっぱり……」
+“David! Roanne... Roanne really was...”
+
+@22319 David · デビッド
+> 「くそっ……あの野郎…………。
+>  あのバカヤロウがッ!」
+“Damn it... that bastard... That stupid idiot!”
+
+@22320 Eiji · エイジ
+> 「それで、彼は?」
+“So, where is he now?”
+
+@22321 Alan · アラン
+> 「敵の混乱がおさまる前に
+>  しなければならないことは多い
+“There's a lot that must be done before the enemy's confusion settles.
+---
+>  精力的に動いてくれているよ」
+He's been working energetically.”
+
+@22322 Bright · ブライト
+> 「話の途中で悪いが、
+>  状況の整理を続けたいのだが?」
+“Sorry to interrupt, but I'd like to continue sorting out our situation?”
+
+@22323 Koji · 甲児
+> 「ちょっと待った。艦長、
+>  あんたもしかして今の話
+“Hold on a second. Captain, did you know about all this
+---
+>  最初っから知ってたのか?」
+from the very start?”
+
+@22324 Bright · ブライト
+> 「あ……あぁ、まぁな」
+“Ah... yeah, well, I did.”
+
+@22325 Boss · ボス
+> 「じゃあオレたちがあれが最後だと
+>  思って、あんなに大騒ぎしてたのは
+“Then what was all that fuss we made, thinking that was the end?
+---
+>  いったいなんだったんだわさ。
+>  ひどいわよ艦長!」
+That's terrible, Captain!”
+
+@22326 Masato · 雅人
+> 「そーだそーだ!」
+“Yeah, yeah!”
+
+@22327 Bright · ブライト
+> 「ひ、人聞きの悪いことをいうな。
+>  俺はただ、成功するかわからんものを
+“D-Don't make me sound so bad. I just couldn't count on something
+---
+>  あてにはできないとだな……」
+that might not succeed, that's all...”
+
+@22328 Alan · アラン
+> 「ハハハハハッ。
+>  その話はまたあとにしておいてくれ
+“Hahahahaha. Save that talk for later. So, Captain, now that both the
+---
+>  それで艦長、総督も
+>  占領軍司令もいなくなった今、
+governor and the occupation army commander are gone, it seems those
+---
+>  アステロイドから例の将軍たちが
+>  くることになっているらしい」
+generals will be coming from the Asteroid.”
+
+@22329 Bright · ブライト
+> 「……3年前に地球を侵略した
+>  指揮官たちだな」
+“...The commanders who invaded Earth three years ago.”
+
+@22330 Alan · アラン
+> 「そうだ。だが彼らがいきなりやってきた
+>  としても、今の状況では軍を
+“That's right. But even if they arrive suddenly, in the current situation it will
+---
+>  掌握するのには時間がかかる。
+>  万丈とも話したが、我々は
+take time to seize control of the military. I've spoken with Banjo as well, and
+---
+>  その間にライフのブレックス准将らと
+>  なんとか体制を整えるため
+in the meantime we intend to do all we can to help Brigadier General Blex of
+---
+>  尽力するつもりだ」
+Lives and the others put together some kind of framework.”
+
+@22331 Bright · ブライト
+> 「なるほど、では我々も
+>  准将と合流しましょう」
+“I see. Then we'll join up with the Brigadier General as well.”
+
+@22332 Alan · アラン
+> 「いや、それは待ってもらいたい」
+“No, I'd like you to hold off on that.”
+
+@22333 Shinobu · 忍
+> 「なんだよ、まさか
+>  ボロボロになるまで戦った俺たちに、
+“What? Don't tell me you're going to make us, who've fought to the point of
+---
+>  まだこのまま
+>  やらせようってんじゃねぇだろうな」
+falling apart, keep going like this.”
+
+@22334 Alan · アラン
+> 「違う。ル・カインが親衛隊とともに
+>  姿をくらましている。狙いはおそらく
+“No. Le Cain has vanished along with his bodyguards. His target is likely
+---
+>  エイジ・アスカと、彼とともに
+>  戦った者……つまり君たちだ」
+Eiji Asuka, and those who fought alongside him... in other words, all of you.”
+
+@22335 Eiji · エイジ
+> 「ル・カインが……」
+“Le Cain...”
+
+@22336 Bright · ブライト
+> 「……つまり我々はル・カインを
+>  迎撃する必要があると?」
+“...So you're saying we need to intercept Le Cain?”
+
+@22337 Alan · アラン
+> 「そうだ。それまで他に危険が
+>  およぶのは避けたい」
+“That's right. Until then, I want to avoid any other danger spreading.”
+
+@22338 Bright · ブライト
+> 「しかたがないな。いいでしょう」
+“It can't be helped, then. Very well.”
+
+@22339 Alan · アラン
+> 「頼みます。それとギャリソンのつかんだ
+>  情報では以前そちらから
+“I'm counting on you. Also, according to intel Garrison picked up, something that appears to be that unit you told us about before
+---
+>  聞いていた、例の機体らしきものが
+>  発見されたと……」
+has been found...”
+
+@22340 Amuro · アムロ
+> 「……旧日本地区か」
+“...The old Japan region.”
+
+@22341 Bright · ブライト
+> 「うむ……おそらくあの時の奴に
+>  間違いはないだろう」
+“Yes... It's almost certainly that one from back then.”
+
+@22342 Quattro · クワトロ
+> 「帝国の混乱したこの時期に
+>  なって動きがつかめるか……
+“To catch a lead now, while the Empire is in chaos...
+---
+>  少しタイミングが良すぎる
+>  気もするが……」
+It feels a little too well-timed, though...”
+
+@22343 Amuro · アムロ
+> 「しかし今の段階では
+>  なんともいえないだろう」
+“But at this stage, there's no way to be sure.”
+
+@22344 Quattro · クワトロ
+> 「それはそうだが……」
+“That's true, but...”
+
+@22345 Bright · ブライト
+> 「ル・カインのこともある。
+>  俺としては
+“There's also the matter of Le Cain. Personally,
+---
+>  まずはル・カインを押さえてから
+>  考えたいと思っているんだが……」
+I'd like to deal with Le Cain first and then think about it...”
+
+@22346 Domon · ドモン
+> 「奴の情報が入ったというのは
+>  本当か!?」
+“Is it true you've got intel on him?!”
+
+@22347 Bright · ブライト
+> 「いきなりなんだ!」
+“What's with you, all of a sudden!”
+
+@22348 Domon · ドモン
+> 「うるさい!
+>  デビルガンダムの居場所を
+“Shut up! I'm asking if you've found out
+---
+>  つかんだのかと聞いているんだ!」
+where the Dark Gundam is!”
+
+@22349 Amuro · アムロ
+> 「落ち着けドモン。これから
+>  君たちにも知らせるところだったんだ」
+“Calm down, Domon. We were just about to tell all of you.”
+
+@22350 Domon · ドモン
+> 「では本当なんだな!?」
+“Then it's true?!”
+
+@22351 Bright · ブライト
+> 「そうだ。デビルガンダムは
+>  おそらく旧日本地区にいる」
+“Yes. The Dark Gundam is most likely in the old Japan region.”
+
+@22352 Domon · ドモン
+> 「そうか……世話になったな」
+“I see... Thanks for everything.”
+
+@22353 Amuro · アムロ
+> 「待てドモン!」
+“Wait, Domon!”
+
+@22354 Domon · ドモン
+> 「待っていられるか!
+>  俺は奴を追わせてもらう
+“Like I can wait! I'm going after him.
+---
+>  最初からその約束だったはずだ」
+That was the deal from the start.”
+
+@22355 Duo · デュオ
+> 「待ちなよ、熱血兄ちゃん。悪いが
+>  俺たちも一緒に行かせてもらうぜ」
+“Hold on, hot-blooded brother. Sorry, but we're coming with you too.”
+
+@22356 Domon · ドモン
+> 「なに?」
+“What?”
+
+@22357 Trowa · トロワ
+> 「ああ。俺たちのもうひとつの目的は、
+>  デビルガンダムを破壊することだ
+“Yeah. Our other objective is to destroy the Dark Gundam.
+---
+>  あんたをひとりで行かせるわけには
+>  いかないな」
+We can't let you go alone.”
+
+@22358 Wufei · 五飛
+> 「フンッ、俺はひとりでも
+>  行かせてもらうぞ」
+“Hmph. I'll go on my own if I have to.”
+
+@22359 Heero · ヒイロ
+> 「好きにしろ」
+“Do as you like.”
+
+@22360 Quatre · カトル
+> 「ちょっと待ってください!
+>  いくら帝国軍が
+“Please wait! Even if the Imperial forces are
+---
+>  混乱しているとはいえ、今
+>  僕たちがバラバラになるのは危険です」
+in chaos, it's dangerous for us to split up now.”
+
+@22361 Amuro · アムロ
+> 「カトルのいう通りだ。
+>  行くなら我々も一緒に行こう
+“Quatre's right. If we're going, we'll all go together.
+---
+>  いいだろう、ブライト?」
+That's fine, isn't it, Bright?”
+
+@22362 Quatre · カトル
+> 「アムロさん……」
+“Amuro...”
+
+@22363 Bright · ブライト
+> 「おいアムロ、俺は……」
+“Hey, Amuro, I'm...”
+
+@22364 Quattro · クワトロ
+> 「いや、私もアムロ大尉の意見に
+>  賛成だ。ル・カインを
+“No, I agree with Lieutenant Amuro as well. For intercepting
+---
+>  迎え撃つのにも、あのあたりの方が
+>  面倒が少なくていい」
+Le Cain too, that area will cause us less trouble.”
+
+@22365 Heero · ヒイロ
+> 「俺はどっちでもかまわん。
+>  早く決めてくれ」
+“Either way is fine by me. Just hurry up and decide.”
+
+@22366 Bright · ブライト
+> 「わかった、わかったよ。
+>  我々は旧日本地区へ向かう
+“All right, all right. We'll head for the old Japan region.
+---
+>  それでいいんだろう」
+That's acceptable, isn't it?”
+
+@22367 Quatre · カトル
+# 检查提示：未用必用译名：ブライト艦→Bright's ship
+> 「ブライト艦長、ありがとうございます」
+“Captain Bright, thank you very much.”
+
+@22368 Amuro · アムロ
+> 「そういうことだ、ドモン。
+>  君の気持ちはわかるが
+“That's how it is, Domon. I understand how you feel, but
+---
+>  先走るのはやめてくれ」
+don't go rushing off on your own.”
+
+@22369 Domon · ドモン
+> 「ちっ、いいだろう。勝手にしろ」
+“Tch. Fine. Do whatever you want.”
+
+@22370 Ryoma · リョウ
+> 「なつかしいな、このあたりも」
+“This area brings back memories.”
+
+@22371 Hayato · ハヤト
+> 「そうだな。だがこの荒れようは
+>  想像以上だったな」
+“Yeah. But the devastation is worse than I imagined.”
+
+@22372 Show · ショウ
+> 「かつての大都市も今じゃ
+>  オールドシティと呼ばれる……か
+“The old metropolis is now called Old City...
+---
+>  トーキョーもかなりやられたんだな。
+>  ほとんど廃墟だ」
+Tokyo really got hit hard too. It's almost all ruins.”
+
+@22373 Ryo · 亮
+> 「ああ。ここがやられたおかげで、
+>  アジアの経済はまっさきに破綻した
+“Yeah. Because this place was hit, Asia's economy collapsed first.
+---
+>  ある意味それも
+>  目的のひとつだったんだろうがな」
+In a way, that was probably one of their goals too.”
+
+@22374 Sara · 沙羅
+> 「いつまでも、しみったれたこと
+>  いってんじゃないよ
+“Stop moping all the time.
+---
+>  手分けして偵察に出るんだろ。
+>  さっさとおしよ」
+We're splitting up to go on reconnaissance, right? Hurry up and get moving.”
+
+@22375 Shinobu · 忍
+> 「ちっ、うるせぇのが来やがったぜ」
+“Tch. Here comes the noisy one.”
+
+@22376 Sara · 沙羅
+> 「なんかいったかい、忍」
+“Did you say something, Shinobu?”
+
+@22377 Ryoma · リョウ
+> 「確かにあまりのんびりはしていられないな
+>  よし、行こう」
+“True, we can't afford to take it easy. All right, let's go.”
+
+@22378 Duo · デュオ
+> 「なぁ、本当にこんなところに
+>  デビルガンダムがいるのかよ
+“Hey, is the Dark Gundam really in a place like this?
+---
+>  もういいかげん疲れちまったぜ」
+I'm worn out already.”
+
+@22379 Heero · ヒイロ
+> 「おい」
+“Hey.”
+
+@22380 Trowa · トロワ
+> 「お前も気づいたか」
+“So you noticed it too.”
+
+@22381 Domon · ドモン
+> 「フッ、アレに気づくとは、
+>  なかなかやるじゃないか」
+“Heh. Noticing that... you're pretty good.”
+
+@22382 Ark · アーク（按段落 3DD1）
+> 「何だよ、何か問題でもあったのか?」
+“What? Is something wrong?”
+
+@22383 Trowa · トロワ
+> 「問題といえば問題かもしれないな」
+“You could say there is.”
+
+@22384 Domon · ドモン
+> 「……静かにしろっ」
+“...Quiet.”
+
+@22385 Heero · ヒイロ
+> 「いや……発見された。くるぞ」
+“No... we've been spotted. Here they come.”
+
+@22386 Ark · アーク（按段落 3DD1）
+> 「何がくるって……?」
+“What's coming...?”
+
+@22387 Ark · アーク（按段落 3DD1）
+> 「うわっ! モビルスーツか!?」
+“Whoa! Mobile Suits?!”
+
+@22388 Selain · セレイン（按段落 3DD2）
+> 「どうかしたのか?」
+“What's the matter?”
+
+@22389 Trowa · トロワ
+> 「あそこだ。見えるか」
+“Over there. Can you see it?”
+
+@22390 Selain · セレイン（按段落 3DD2）
+> 「あれは……モビルスーツか……?」
+“Is that... a Mobile Suit...?”
+
+@22391 Heero · ヒイロ
+> 「……発見されたな。くるぞ」
+“...We've been spotted. Here they come.”
+
+@22392 Brad · ブラッド（按段落 3DD3）
+> 「なんだあれは。モビルスーツなのか?」
+“What is that? Is it a Mobile Suit?”
+
+@22393 Duo · デュオ
+> 「なんだよ、どこにそんなもんが……」
+“What the...? Where'd something like that come from...”
+
+@22394 Heero · ヒイロ
+> 「……発見された。くるぞ」
+“...We've been spotted. Here they come.”
+
+@22395 Manami · マナミ（按段落 3DD4）
+> 「もう、いったいなんなの?
+>  あたしにもわかるように会話してよ」
+“Honestly, what is going on? Talk so I can understand too.”
+
+@22396 Duo · デュオ
+> 「まったくだ。あーやだやだ。
+>  なんでこんな口数の少ない奴らと
+“Tell me about it. Ugh, I hate this. Why do I always end up
+---
+>  ばっかり、一緒になっちまうんだかなぁ」
+stuck with these guys who barely say a word?”
+
+@22397 Domon · ドモン
+> 「……静かにしろっ」
+“...Quiet.”
+
+@22398 Heero · ヒイロ
+> 「いや……発見された。くるぞ」
+“No... we've been spotted. Here they come.”
+
+@22399 Manami · マナミ（按段落 3DD4）
+> 「な、なに!? モビルスーツなの、あれ?」
+“W-what?! Is that thing a Mobile Suit?”
+
+@22400 Domon · ドモン
+> 「ちっ、どうやらすっかり囲まれたようだな」
+“Tch. Looks like we're completely surrounded.”
+
+@22401 Eiji · エイジ
+> 「これでは、やるしかないか……」
+“Then I guess we've got no choice but to fight...”
+
+@22402 Domon · ドモン
+# 审校：原文没有拖长音，初稿多出空格且气势不足，改为简洁的 Come out!
+> 「当然だ。でろぉぉぉっ!」
+“Of course. Come out!”
+
+@22403 Domon · ドモン
+> 「ガンダァァァ……」
+“Gundaaaaam...”
+
+@22404 ???
+> 「待てぃ! こんなところでやたらと
+>  ロボットを出すでない」
+“Hold it! Don't go flaunting your robots in a place like this!”
+
+@22405 Duo · デュオ
+> 「な……なんだぁ!?」
+“W-what the...?!”
+
+@22406 Ark · アーク（按段落 3DD1）
+> 「な……そんな、バカな!!」
+“Th-that's impossible!!”
+
+@22407 Heero · ヒイロ
+> 「やるな」
+“Impressive.”
+
+@22408 Trowa · トロワ
+> 「ああ……かなりの使い手だ」
+“Yeah... he's quite skilled.”
+
+@22409 Duo · デュオ
+> 「ちょっと待てお前ら、何
+>  落ち着いてやがんだよ!!
+“Hold on, you guys, how can you stay so calm?!
+---
+>  あいつ素手でモビルスーツを
+>  破壊しやがったんだぞ!?」
+He just destroyed a Mobile Suit with his bare hands!”
+
+@22410 Trowa · トロワ
+> 「ああ、そうそうできることじゃない」
+“Yeah. That's not something just anyone can do.”
+
+@22411 Duo · デュオ
+> 「じゃなくて、普通ムリだろ!?
+>  わかってんのか!?」
+“That's not the point, normally it's impossible! Don't you get it?!”
+
+@22412 Heero · ヒイロ
+> 「お前にはできない。奴にはできる」
+“You can't do it. He can.”
+
+@22413 Duo · デュオ
+> 「……はぁ。だめだこりゃ」
+“...Sigh. This is hopeless.”
+
+@22414 Ark · アーク（按段落 3DD1）
+> 「う、うそだろ……?」
+“Th-this can't be real...?”
+
+@22415 Selain · セレイン（按段落 3DD2）
+> 「な……なんだと!?
+>  こんなバカなことが……!?」
+“W-what?! This can't be happening...?!”
+
+@22416 Heero · ヒイロ
+> 「やるな」
+“Impressive.”
+
+@22417 Trowa · トロワ
+> 「ああ……かなりの使い手だ」
+“Yeah... he's quite skilled.”
+
+@22418 Duo · デュオ
+# 审校：第二页不应重复开引号，跨页引用只在首尾加引号
+> 「ちょっと待てお前ら、何
+>  落ち着いてやがんだよ!!
+“Hold on, you guys, how can you stay so calm?!
+---
+>  あいつ素手でモビルスーツを
+>  破壊しやがったんだぞ!?」
+He just destroyed a Mobile Suit with his bare hands!”
+
+@22419 Trowa · トロワ
+> 「ああ、そうそうできることじゃない」
+“Yeah. That's not something just anyone can do.”
+
+@22420 Duo · デュオ
+> 「じゃなくて、普通ムリだろ!?
+>  わかってんのか!?」
+“That's not the point, normally it's impossible! Don't you get it?!”
+
+@22421 Heero · ヒイロ
+> 「お前にはできない。奴にはできる」
+“You can't do it. He can.”
+
+@22422 Duo · デュオ
+> 「……はぁ。だめだこりゃ」
+“...Sigh. This is hopeless.”
+
+@22423 Selain · セレイン（按段落 3DD2）
+> 「安心しろ、デュオ。私は正常だ。
+>  信じられん」
+“Relax, Duo. I'm perfectly sane. I just can't believe it.”
+
+@22424 Duo · デュオ
+> 「だろ?」
+“Right?”
+
+@22425 Brad · ブラッド（按段落 3DD3）
+> 「ななななな、なんだよありゃ!
+>  俺は夢でも見てんのか!?」
+“Wh-wh-wh-wh-what the hell is that?! Am I dreaming or something?!”
+
+@22426 Heero · ヒイロ
+> 「やるな」
+“Impressive.”
+
+@22427 Trowa · トロワ
+> 「ああ……かなりの使い手だ」
+“Yeah... he's quite skilled.”
+
+@22428 Duo · デュオ
+# 审校：第二页不应重复开引号，跨页引用只在首尾加引号
+> 「ちょっと待てお前ら、何
+>  落ち着いてやがんだよ!!
+“Hold on, you guys, how can you stay so calm?!
+---
+>  あいつ素手でモビルスーツを
+>  破壊しやがったんだぞ!?」
+He just destroyed a Mobile Suit with his bare hands!”
+
+@22429 Trowa · トロワ
+> 「ああ、そうそうできることじゃない」
+“Yeah. That's not something just anyone can do.”
+
+@22430 Duo · デュオ
+> 「じゃなくて、普通ムリだろ!?
+>  わかってんのか!?」
+“That's not the point, normally it's impossible! Don't you get it?!”
+
+@22431 Heero · ヒイロ
+> 「お前にはできない。奴にはできる」
+“You can't do it. He can.”
+
+@22432 Duo · デュオ
+> 「……はぁ。だめだこりゃ」
+“...Sigh. This is hopeless.”
+
+@22433 Brad · ブラッド（按段落 3DD3）
+> 「マジかよ、おい……!?」
+“You've gotta be kidding me...?!”
+
+@22434 Manami · マナミ（按段落 3DD4）
+# 审校：第二页不应重复开引号，跨页引用只在首尾加引号
+> 「な……な……なんなのあれ!?
+>  ウソでしょう!?
+“Wh-wha... what in the world is that?! You're joking, right?!
+---
+>  こんなこと……ありえないわ!」
+This... this can't be real!”
+
+@22435 Heero · ヒイロ
+> 「やるな」
+“Impressive.”
+
+@22436 Trowa · トロワ
+> 「ああ……かなりの使い手だ」
+“Yeah... he's quite skilled.”
+
+@22437 Duo · デュオ
+# 审校：原文第二页以“!?”结尾，初稿漏掉了结尾的引号；同时补上第二页的闭合引号。
+> 「ちょっと待てお前ら、何
+>  落ち着いてやがんだよ!!
+“Hold on, you guys, how can you stay so calm?!
+---
+>  あいつ素手でモビルスーツを
+>  破壊しやがったんだぞ!?」
+He just destroyed a Mobile Suit with his bare hands!”
+
+@22438 Trowa · トロワ
+> 「ああ、そうそうできることじゃない」
+“Yeah. That's not something just anyone can do.”
+
+@22439 Duo · デュオ
+> 「じゃなくて、普通ムリだろ!?
+>  わかってんのか!?」
+“That's not the point, normally it's impossible! Don't you get it?!”
+
+@22440 Heero · ヒイロ
+> 「お前にはできない。奴にはできる」
+“You can't do it. He can.”
+
+@22441 Duo · デュオ
+> 「……はぁ。だめだこりゃ」
+“...Sigh. This is hopeless.”
+
+@22442 Manami · マナミ（按段落 3DD4）
+> 「あたし……気が遠くなりそう……」
+“I... I think I'm going to faint...”
+
+@22443 Domon · ドモン
+> 「あの技は……」
+“That technique...”
+
+@22444 Domon · ドモン
+> 「やはりあのお方は……と、
+>  東方不敗、マスターアジア!!」
+“As I thought, that man is... the Undefeated of the East, Master Asia!!”
+
+@22445 Trowa · トロワ
+> 「なるほど。あれがあんたの師匠で、
+>  前のキング・オブ・ハートというわけか」
+“I see. So that's your Master, and the former King of Hearts.”
+
+@22446 Duo · デュオ
+> 「は? おいトロワ、
+>  お前なんでそんなこと知ってんだよ」
+“Huh? Hey, Trowa, how do you know that?”
+
+@22447 Trowa · トロワ
+> 「お前は知らないのか?」
+“You didn't know?”
+
+@22448 Duo · デュオ
+> 「知るかよ、そんなもん」
+“How would I know something like that?”
+
+@22449 Trowa · トロワ
+> 「そうか」
+“I see.”
+
+@22450 Duo · デュオ
+> 「いや、そうかじゃなくて……もういいわ」
+“No, don't just say ‘I see’... never mind.”
+
+@22451 Domon · ドモン
+> 「師匠ッ!!」
+“Master!!”
+
+@22452 Master · マスター
+> 「まだザコが残っておる。やれるな、ドモン」
+“There are still small fry left. You can handle them, can't you, Domon?”
+
+@22453 Domon · ドモン
+> 「は、はい!」
+“Y-yes, sir!”
+
+@22454 Duo · デュオ
+> 「かーっ、あいつも
+>  人間じゃなかったんだなぁ……」
+“Man, so that guy wasn't human either...”
+
+@22455 Domon · ドモン
+> 「師匠? ……師匠!?」
+“Master? ... Master?!”
+
+@22456 Master · マスター
+> 「どこを見ておる。
+>  ワシはここだ。ここにおる!」
+“Where are you looking? I'm right here. Here!”
+
+@22457 Domon · ドモン
+> 「師匠!!」
+“Master!!”
+
+@22458 Master · マスター
+> 「喝ッ! 答えよドモン!
+>  流派、東方不敗は……」
+“Hah! Answer me, Domon! The school of the Undefeated of the East is...”
+
+@22459 Domon · ドモン
+# 审校：“王者の風よ”是流派问答的固定台词，初稿误译为“The King of Hearts”，与词表中“King of Hearts”指称号的用法混淆；改为对应原文的直译。
+> 「王者の風よ!」
+“The winds of the king!”
+
+@22460 Master · マスター
+> 「全新!」
+“Zenshin!”
+
+@22461 Domon · ドモン
+> 「系裂!」
+“Keiretsu!”
+
+@22462 Master · マスター
+> 「天破!」
+“Tenpa!”
+
+@22463 Domon · ドモン
+> 「侠乱!」
+“Kyoran!”
+
+@22464 Domon · ドモン
+> 「見よ!
+>  東方は赤く燃えているッ!!」
+“Look! The East is burning red!!”
+
+@22465 Master · マスター
+> 「見よ!
+>  東方は赤く燃えているッ!!」
+“Look! The East is burning red!!”
+
+@22466 Master · マスター
+> 「フッ、久しぶりだな、ドモン。いや、
+>  ワシが認めたキング・オブ・ハートよ」
+“Heh, it's been a long time, Domon. No, my acknowledged King of Hearts.”
+
+@22467 Domon · ドモン
+> 「師匠……
+>  お会いしとうございましたッッ!!」
+“Master... I have longed to see you!!”
+
+@22468 Master · マスター
+> 「どうした、男子たるものがなんで泣く」
+“What's wrong? Why is a man crying?”
+
+@22469 Duo · デュオ
+> 「なんなんだよ、こいつら……。
+>  もうついていけねぇぜ……」
+“What's with these guys... I can't keep up anymore...”
+
+@22470 Master · マスター
+> 「そうか……ワシがお前のもとから姿を
+>  消してから、そんなことがあったのか」
+“I see... So that's what happened after I vanished from your side.”
+
+@22471 Domon · ドモン
+> 「はい」
+“Yes.”
+
+@22472 Master · マスター
+> 「ふむ……やはりワシとお前は、
+>  目に見えぬ縁で
+“Hmm... It seems you and I are, after all, bound by a bond unseen,
+---
+>  結ばれておるのやもしれんな」
+perhaps.”
+
+@22473 Domon · ドモン
+> 「どういうことですか、師匠?」
+“What do you mean, Master?”
+
+@22474 Master · マスター
+> 「ワシがここにいる理由も、
+>  そのデビルガンダムに関係があるからだ」
+“The reason I am here is also connected to that Dark Gundam.”
+
+@22475 Domon · ドモン
+> 「師匠が!?」
+“You, Master?!”
+
+@22476 Trowa · トロワ
+> 「ほう、それは興味深い話だな」
+“Oh, that is an interesting story.”
+
+@22477 Duo · デュオ
+> (……おいおい)
+(...Oh boy.)
+
+@22478 Domon · ドモン
+> 「むっ!? 新手かぁ!!」
+“Hm?! More enemies!!”
+
+@22479 Master · マスター
+> 「どうやら先ほどの騒ぎを聞きつけた
+>  ようだな。ドモンよ、あれこそが
+“It seems they heard the commotion from before. Domon, those are
+---
+>  デビルガンダムの手先、デスアーミーよ」
+the Dark Gundam's minions, the Death Army.”
+
+@22480 Domon · ドモン
+> 「デビルガンダムの手先……
+>  デスアーミー……」
+“The Dark Gundam's minions... the Death Army...”
+
+@22481 Master · マスター
+> 「あれだけの数が来てはしかたあるまい。
+>  ドモンよ、ガンダムを呼ぶがよい」
+“With that many coming, it can't be helped. Domon, call your Gundam.”
+
+@22482 Domon · ドモン
+> 「はい師匠!」
+“Yes, Master!”
+
+@22483 Master · マスター
+> 「他の皆様方もよろしいな?」
+“And the rest of you, if you would?”
+
+@22484 Heero · ヒイロ
+> 「あんたはどうするんだ」
+“What will you do?”
+
+@22485 Master · マスター
+> 「ワシか? ワシは愛弟子の
+>  戦いぶりを見物させてもらうとしよう」
+“Me? I believe I'll sit back and watch my beloved pupil fight.”
+
+@22486 Heero · ヒイロ
+> 「そうか」
+“I see.”
+
+@22487 Domon · ドモン
+> 「いくぞぉ!!」
+“Here I go!!”
+
+@22488 Domon · ドモン
+> 「でろぉぉぉぉぉっ!
+>  ガンダァァァァームッッ!!」
+“Come out! Gundaaam!!”
+
+@22489 Bright · ブライト
+> 「なんとか間に合ったようだな」
+“Looks like we made it in time.”
+
+@22490 Elle · エレ
+> 「間に合ったようですね」
+“It seems we made it in time.”
+
+@22491 Ciela · シーラ
+> 「どうやら間に合ったみたいですね」
+“Looks like we made it in time.”
+
+@22492 Amuro · アムロ
+> 「みんな大丈夫か?」
+“Is everyone all right?”
+
+@22493 Ryoma · リョウ
+> 「遅くなってすまない!
+>  もう大丈夫だ」
+“Sorry we're late! We're all right now.”
+
+@22494 Le Cain · ル・カイン
+> 「戦闘光が確認されたので見に
+>  来てみたが……やはり奴らか」
+“I detected combat flashes and came to investigate... So it's them after all.”
+
+@22495 Eiji · エイジ
+> 「あれは……ザカール!? ル・カインか!!」
+“That's... Zakarl?! Le Cain!!”
+
+@22496 Le Cain · ル・カイン
+> 「見つけたぞ、エイジ・アスカ! そして
+>  愚かな地球人どもよ! 私の
+“Found you, Eiji Asuka! And you foolish Earthlings! My
+---
+>  理想はもはやかなわぬかもしれぬ。だが
+>  エイジ、貴様らとの決着だけは、
+ideal may no longer be within reach. But Eiji, this reckoning with you
+---
+>  この私自身の手でつけてくれる!」
+I will settle with my own hands!”
+
+@22497 Gosterro · ゴステロ
+> 「ひぃぃひゃははははぁっ!
+>  お前ら、まとめてぶち殺してやるぅ!」
+“Hee hee hyahahahaha! I'll kill every last one of you!”
+
+@22498 Le Cain · ル・カイン
+> 「エイジ……私を倒せばお前の
+>  望みはかなう。……勝負!」
+“Eiji... Defeat me, and your wish will be granted. ...Let's settle this!”
+
+@22499 Gosterro · ゴステロ
+> 「ぐっそぉぉぉーッッ!!
+>  貴様らァァァァーーーッッ!!」
+“Damn youuuu!! You bastardssss!!”
+
+@22500 Le Cain · ル・カイン
+> 「私の夢……私の理想……
+>  こんなところで……
+“My dream... my ideal... in a place like this...
+---
+>  父上……」
+Father...”
+
+@22501 Eiji · エイジ
+> 「ル・カイン…………」
+“Le Cain...”
+
+@22502 Le Cain · ル・カイン
+> 「エイジ・アスカ……勝負だ!」
+“Eiji Asuka... Let's settle this!”
+
+@22503 Eiji · エイジ
+> 「ル・カイン、ここで終わらせてやる!」
+“Le Cain, I'll end it here!”
+
+@22504 Master · マスター
+> 「うむ、見事な戦いぶりよ。
+>  この東方不敗
+“Hmm, a splendid fight. This Master Asia
+---
+>  久しぶりにいいものを見せてもらったわ」
+hasn't seen such a fine display in a long while.”
+
+@22505 Koji · 甲児
+> 「はぁ? おいデュオ、
+>  なんだよあの、濃いおっさんは」
+“Huh? Hey Duo, who's that... intense old guy?”
+
+@22506 Duo · デュオ
+> 「……俺はいいたくない」
+“...I'd rather not say.”
+
+@22507 Domon · ドモン
+> 「おっさんではない!
+>  失礼なことをいうな! あの方は、
+“He is no old man! Don't be rude! That man is
+---
+>  俺の師匠、東方不敗、
+>  マスターアジアだ!」
+my Master, Master Asia, the Undefeated of the East!”
+
+@22508 ???
+# 审校：原文“倒せませんか”是说话人对ドモン等人说“你们”，初稿译成 them 指代错误，改为 you。
+> 「フフフフ、やはり
+>  あの程度では倒せませんか」
+“Heh heh heh, so that level of foe won't bring you down after all.”
+
+@22509 ???
+> 「ああ。奴らもだてに
+>  生き延びちゃいねぇってワケだ」
+“Yeah. Guess those guys didn't survive this long for nothing.”
+
+@22510 ???
+# 审校：“my fists are itching for a fight”略显翻译腔，改为更自然的“I'm itching for a fight!”。
+> 「ヘヘヘッ、オイラ腕がなるぜ!」
+“Heh heh, I'm itching for a fight!”
+
+@22511 ???
+> 「うむ……」
+“Hmm...”
+
+@22512 Bright · ブライト
+> 「ではあれをデビルガンダムが
+>  操っていると?」
+“So you're saying the Dark Gundam is controlling that thing?”
+
+@22513 Master · マスター
+> 「うむ。デビルガンダムは確かにこの地の
+>  どこかに潜伏しておる。そして
+“Indeed. The Dark Gundam is surely lurking somewhere in this land. And
+---
+>  デスアーミーどもを使ってなにやら
+>  たくらんでおるのだ。おかげでこの地に
+it's scheming something using the Death Army. Thanks to that, the people
+---
+>  残った民衆は恐怖におびえ、
+>  夜も眠れぬありさまよ」
+left in this land tremble in fear and cannot sleep at night.”
+
+@22514 Domon · ドモン
+> 「それで師匠が立たれたと
+>  いうわけですね」
+“So that's why you took a stand, Master.”
+
+@22515 Master · マスター
+> 「民衆の嘆きを放っては
+>  おけなんだでな。だが、いかんせん
+“I could not simply ignore the people's grief. But alas,
+---
+>  ワシひとりでは難儀しておったところよ
+>  ドモン、それに他の方々よ
+on my own I was struggling. Domon, and all of you as well,
+---
+>  今はひとりでも味方がほしい。
+>  ここで出会うたのも何かの縁
+right now I want allies, even one more. Meeting you here must be fate.
+---
+>  ともに戦ってはくれまいか。
+>  そう、この東方不敗
+Will you not fight alongside me? Yes, this Master Asia,
+---
+>  マスターアジアが頼む」
+the Undefeated of the East, asks it of you.”
+
+@22516 Bright · ブライト
+> 「我々も、もともとそのために
+>  来たのです。協力いたしましょう」
+“We came here for that very reason to begin with. We'll cooperate.”
+
+@22517 Master · マスター
+> 「かたじけない」
+“My thanks.”
+
+@22518 Quattro · クワトロ
+> 「ほう、こんな所で救難信号だと?」
+“Oh? A distress signal in a place like this?”
+
+@22519 Beltorchika · ベルトーチカ
+> 「ええ。どうします、艦長?」
+“Yes. What shall we do, Captain?”
+
+@22520 Bright · ブライト
+> 「我々のコードを知っているからには
+>  仲間に違いないな
+“Since they know our code, they must be allies.
+---
+>  デスアーミーとやらのせいで、身動きが
+>  取れなくなっているのかもしれん」
+They may be unable to move because of those Death Army fellows.”
+
+@22521 Amuro · アムロ
+> 「俺が行って見てこようか、ブライト」
+“Want me to go take a look, Bright?”
+
+@22522 Bright · ブライト
+> 「うむ……そうだな、アムロなら……」
+“Hmm... yes, if it's you, Amuro...”
+
+@22523 Master · マスター
+> 「いや、待たれよ艦長どの」
+“Nay, wait, Captain.”
+
+@22524 Bright · ブライト
+> 「どうされました?」
+“What is it?”
+
+@22525 Master · マスター
+> 「先の件でおわかりの通り、
+>  ここで機動兵器を使っては
+“As you saw earlier, using mobile weapons here makes us
+---
+>  目立ちすぎる。状況もわからぬゆえ
+>  まずはワシとドモンで見てまいりましょう」
+far too conspicuous. Since we don't know the situation, let me and Domon go look first.”
+
+@22526 Bright · ブライト
+> 「あなたが?」
+“You?”
+
+@22527 Master · マスター
+> 「他に数人、体術に長けた者が
+>  おると、なお良いのだが」
+“It would be even better if a few others skilled in martial arts came along.”
+
+@22528 Ryo · 亮
+> 「あんたらほどじゃないが、俺も多少は
+>  覚えがある。行かせてもらおう」
+“I'm not at your level, but I've had some training. Let me come along.”
+
+@22529 Shinobu · 忍
+> (おい亮、こんな連中に
+>  つきあってたら、命がいくつあっても
+“(Hey Ryo, if you keep company with these guys, you won't have
+---
+>  足りねぇぞ)
+enough lives to spare.)”
+
+@22530 Ryo · 亮
+> 「これも修業のうちだ。
+>  お前にはわからんだろうがな、忍」
+“This is part of my training too. You wouldn't understand, Shinobu.”
+
+@22531 Trowa · トロワ
+> 「俺たちも行こう」
+“We'll go too.”
+
+@22532 Wufei · 五飛
+> 「フッ、面白い」
+“Hmph, interesting.”
+
+@22533 Heero · ヒイロ
+> 「いいだろう」
+“Fine.”
+
+@22534 Duo · デュオ
+> 「……いうと思ったぜ。
+>  俺は行かないからな。ヒイロ、
+“...Knew you'd say that. I'm not going. Heero,
+---
+>  お前も体が頑丈なのはいいが、
+>  やめといた方がいいんじゃないか?」
+it's fine that you're tough, but wouldn't it be better to sit this one out?”
+
+@22535 Heero · ヒイロ
+> 「お前にはできない。俺にはできる」
+“You can't do it. I can.”
+
+@22536 Duo · デュオ
+> 「へぇへぇ、聞いた俺がばかでしたぁ」
+“Yeah, yeah, that's what I get for asking.”
+
+@22537 Ginrei · 銀鈴
+> 「では私も行きますわ」
+“Then I'll come too.”
+
+@22538 Daisaku · 大作
+> 「銀鈴さんが!?」
+“You will, Ginrei?!”
+
+@22539 Koji · 甲児
+> 「危険ですよ。
+>  銀鈴さんは残った方がいい」
+“It's dangerous. You should stay behind, Ginrei.”
+
+@22540 Ginrei · 銀鈴
+> 「私も、もとは国際警察機構の
+>  エキスパートよ
+“I was an expert with the International Police Organization once, you know.
+---
+>  心配しないで、甲児くん」
+Don't worry, Koji.”
+
+@22541 Master · マスター
+> 「これで7人か。
+>  あとひとりいるとよいのだが」
+“That makes seven. It would be good to have one more.”
+
+@22542 Hayato · ハヤト
+> 「フッ……ではオレも行くとしよう」
+“Hmph... then I suppose I'll come as well.”
+
+@22543 Master · マスター
+> 「うむ……。よろしいかな、艦長どの」
+“Very well... Is that acceptable, Captain?”
+
+@22544 Bright · ブライト
+> 「いいでしょう。頼みます。お前たち、
+>  あまり無理をするんじゃないぞ」
+“That will do. I'm counting on you. All of you, don't push yourselves too hard.”
+
+@22545 Rain · レイン
+> 「…………」
+“...”
+
+@22546 Ryo · 亮
+> 「信号が発信されたのは、
+>  あのタワーのあたりだったな」
+“The signal was sent from around that tower, wasn't it.”
+
+@22547 Master · マスター
+> 「どのようなルートで行くのがよいか……。
+>  ここは念のため
+“Which route should we take... Just to be safe,
+---
+>  二手にわかれるとしよう。
+>  ドモン、一方はまかせるぞ」
+let's split into two groups. Domon, I'll leave one to you.”
+
+@22548 Domon · ドモン
+> 「はい、師匠。ではトロワ、五飛、
+>  銀鈴は俺と来てくれ」
+“Yes, Master. Then Trowa, Wufei, and Ginrei, come with me.”
+
+@22549 Trowa · トロワ
+> 「了解した」
+“Understood.”
+
+@22550 Master · マスター
+> 「フフフ、ではどちらが先にたどり着くか
+>  競争といくか」
+“Heh heh, then shall we race to see who arrives first?”
+
+@22551 Domon · ドモン
+> 「こっちも負けませんよ、師匠」
+“We won't lose either, Master.”
+
+@22552 Ginrei · 銀鈴
+> 「……確かこのあたりだったはずだけど……
+>  お師匠さんたちは
+“...It should be somewhere around here... It seems Master and the others
+---
+>  まだ来ていないようね」
+haven't arrived yet.”
+
+@22553 Domon · ドモン
+> 「ああ……しかし誰もいないな」
+“Yeah... but there's no one here.”
+
+@22554 Ginrei · 銀鈴
+> 「ッ! なに!?」
+“Huh?! What?!”
+
+@22555 ???
+> 「ヘヘヘヘッ、さすがにこの程度じゃ、
+>  やれねぇようだな」
+“Heh heh heh, seems a trap this simple won't do the trick.”
+
+@22556 Wufei · 五飛
+> 「フン、どうやらワナにはまったようだな」
+“Hmph, looks like we've walked right into a trap.”
+
+@22557 Trowa · トロワ
+> 「ああ、そのようだ」
+“Yeah, seems so.”
+
+@22558 ???
+> 「フフフ、頭の回転もいいようですね。
+>  お嬢さんがいるのは意外でしたが
+“Heh heh, you're quick on the uptake too, I see. I didn't expect the young lady to be here, though.
+---
+>  しかたがありません」
+It can't be helped.”
+
+@22559 Domon · ドモン
+> 「……ッ!! お前たち……まさか!?」
+“...!! You guys... don't tell me?!”
+
+@22560 ???
+> 「ヘヘヘッ、久しぶりだなドモン」
+“Heh heh, long time no see, Domon.”
+
+@22561 Domon · ドモン
+> 「チボデー、なぜこんなところに?」
+“Chibodee, why are you here?”
+
+@22562 Chibodee · チボデー
+> 「お前と戦うためさ!」
+“To fight you, that's why!”
+
+@22563 Domon · ドモン
+> 「やめろチボデー!
+>  今はそれどころじゃない!」
+“Stop it, Chibodee! This isn't the time for that!”
+
+@22564 Wufei · 五飛
+> 「チィッッ!!」
+“Tch!!”
+
+@22565 Domon · ドモン
+> 「サイ・サイシー……お前まで!?」
+“Sai Saici... you too?!”
+
+@22566 Sai Saici · サイ・サイシー
+> 「強くなったろう、オイラたち。
+>  セイヤァッ!!」
+“We've gotten stronger, haven't we. Hyaaah!!”
+
+@22567 Ginrei · 銀鈴
+> 「ハッ!!」
+“Hah!!”
+
+@22568 Sai Saici · サイ・サイシー
+> 「やるねえ、お姉ちゃん」
+“You're good, big sister.”
+
+@22569 Domon · ドモン
+> 「お前たち、その力はいったい……!?」
+“You guys, just what is that power...?!”
+
+@22570 Argo · アルゴ
+> 「体の中から力があふれてくるようだ」
+“It feels like power is overflowing from inside my body.”
+
+@22571 Sai Saici · サイ・サイシー
+> 「ドモンのアニキもほしいだろう」
+“You want it too, don't you, Domon?”
+
+@22572 George · ジョルジュ
+> 「あの方にいただいた、この力を!」
+“This power, granted to us by that man!”
+
+@22573 Trowa · トロワ
+> 「……どうやら普通ではないらしいな」
+“...It seems this is no ordinary power.”
+
+@22574 Domon · ドモン
+> 「あれは……まさかDG細胞!?
+>  そうか……お前たちがデビルガンダムの
+“That's... don't tell me, DG Cells?! I see... so you've become pawns of the Dark Gundam.
+---
+>  いや、キョウジの手先に
+>  なってしまったのなら
+No, of Kyoji.
+---
+>  俺は、負けるわけにはいかない!
+>  キング・オブ・ハートの名にかけても!!」
+I can't afford to lose! Not in the name of the King of Hearts!!”

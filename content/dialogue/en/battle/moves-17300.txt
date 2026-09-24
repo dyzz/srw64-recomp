@@ -1,0 +1,202 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17300 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17301 Kyoji · キョウジ
+> 「撃て」
+“Fire.”
+
+@17302 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17303 Kyoji · キョウジ
+> 「撃て」
+“Fire.”
+
+@17304 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17305 Kyoji · キョウジ
+> 「撃て」
+“Fire.”
+
+@17306 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17307 Kyoji · キョウジ
+> 「撃て」
+“Fire.”
+
+@17308 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17309 Kyoji · キョウジ
+> 「撃て」
+“Fire.”
+
+@17310 Kyoji · キョウジ
+> 「うて!」
+“Fire!”
+
+@17311 Argo · アルゴ
+> 「グラビトンハンマァァァッ!」
+“Graviton Hammmeeeer!”
+
+@17312 Argo · アルゴ
+> 「さぁくれつ! ガイアクラッシャーッ!」
+“Now, explode! Gaia Crusher!”
+
+@17313 Argo · アルゴ
+> 「炸裂! ガイアクラッシャー!」
+“Blast! Gaia Crusher!”
+
+@17314 Chibodee · チボデー
+> 「シューッ!」
+“Shoo!”
+
+@17315 Chibodee · チボデー
+> 「ギガンテックマグナムゥ、シュート!」
+“Gigantic Magnum, shoot!”
+
+@17316 Chibodee · チボデー
+> 「うぉぉぉサイクロンパンチィィィ!」
+“Whoa, Cyclone Punch!”
+
+@17317 Chibodee · チボデー
+> 「バーニングパンチ!」
+“Burning Punch!”
+
+@17318 Chibodee · チボデー
+> 「バーニングパンチ! シュゥトォォ!」
+“Burning Punch! Shoot!”
+
+@17319 Chibodee · チボデー
+> 「ゴウネェェツ、マシンガンンパァァンチッ!」
+“Gounetsu, Machine Gun Punch!”
+
+@17320 Chibodee · チボデー
+> 「豪熱! マシンガン、パァァァンチィ!」
+“Gounetsu! Machine Gun, Punch!”
+
+@17321 Sai Saici · サイ・サイシー
+> 「無影脚ぅぅぅ!」
+“Shadowless Kick!”
+
+@17322 Sai Saici · サイ・サイシー
+> 「こうなったら決めてやる!
+>  まわれ、フェイロンフラッグ!」
+“Then I'll finish this! Spin, Feilong Flag!”
+
+@17323 Sai Saici · サイ・サイシー
+> 「フェイロンフラッグ!」
+“Feilong Flag!”
+
+@17324 Sai Saici · サイ・サイシー
+> 「はしれ! パオペイ!」
+“Fly, Paopei!”
+
+@17325 Sai Saici · サイ・サイシー
+> 「ドラゴンファイヤー!」
+“Dragon Fire!”
+
+@17326 Sai Saici · サイ・サイシー
+# 机翻疑问：新译名：宝華教典=Hokake Scripture；十絶陣=Tenzetsujin
+> 「宝華教典…十絶陣!!
+>  たああっ!!」
+“Hokake Scripture... Tenzetsujin!! Take that!!”
+
+@17327 Sai Saici · サイ・サイシー
+> 「天に竹林、地に少林寺、
+>  目にもの見せるは最終秘伝!」
+“Bamboo grove in the heavens, Shaolin on the earth—witness the final secret!”
+
+@17328 Sai Saici · サイ・サイシー
+> 「真・流星胡蝶剣!」
+“Shin Ryusei Kochoken!”
+
+@17329 Sai Saici · サイ・サイシー
+> 「天に竹林、地に少林寺、
+>  目にもの見せよ最終奥義ぃ!」
+“Bamboo grove in the heavens, Shaolin on the earth—behold the ultimate secret!”
+
+@17330 Sai Saici · サイ・サイシー
+> 「いっくぞぉ! 真・流星胡蝶剣」
+“Here I go! Shin Ryusei Kochoken”
+
+@17331 George · ジョルジュ
+> 「ローズ!」
+“Rose!”
+
+@17332 George · ジョルジュ
+> 「ローズ!」
+“Rose!”
+
+@17333 George · ジョルジュ
+> 「この剣が受けられますか!?」
+“Can you parry this blade?!”
+
+@17334 George · ジョルジュ
+> 「ローゼスビット!」
+“Rose Bits!”
+
+@17335 George · ジョルジュ
+> 「ゆけ! ローゼスビットォッ!」
+“Go! Rose Bits!”
+
+@17336 George · ジョルジュ
+> 「受けよ我が洗礼!
+>  ローゼスビット!」
+“Receive my baptism! Rose Bits!”
+
+@17337 George · ジョルジュ
+> 「いかがかな、
+>  変幻自在のローゼスビットは!?」
+“How do you like the ever-changing Rose Bits?!”
+
+@17338 George · ジョルジュ
+> 「受けよ我が洗礼!
+>  ローゼススクリーマー!」
+“Receive my baptism! Rose Screamer!”
+
+@17339 George · ジョルジュ
+> 「ゆけっローゼスハリケーン!」
+“Go, Rose Hurricane!”
+
+@17340 George · ジョルジュ
+> 「このエネルギーの渦から逃がれることは
+>  不可能!」
+“There is no escape from this vortex of energy!”
+
+@17341 George · ジョルジュ
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I will not lose! Here I go, Gundam Rose!”
+
+@17342 George · ジョルジュ
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I will not lose! Here I go, Gundam Rose!”
+
+@17343 George · ジョルジュ
+> 「ガ、ガンダムローズが……」
+“G-Gundam Rose is...”
+
+@17344 George · ジョルジュ
+> 「ガ、ガンダムローズが……」
+“G-Gundam Rose is...”
+
+@17345 George · ジョルジュ
+> 「それではこのガンダムローズに傷ひとつ
+>  つきませんよ」
+“Then this Gundam Rose won't take a single scratch.”
+
+@17346 George · ジョルジュ
+> 「それではこのガンダムローズに傷ひとつ
+>  つきませんよ」
+“Then this Gundam Rose won't take a single scratch.”

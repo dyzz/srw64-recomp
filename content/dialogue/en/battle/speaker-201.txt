@@ -1,0 +1,154 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7419 Eiji · エイジ
+> 「はあぁぁぁぁっ!」
+“Haaaaaah!”
+
+@7420 Eiji · エイジ
+> 「どけぇっ!」
+“Out of my way!”
+
+@7421 Eiji · エイジ
+> 「そこだっ!」
+“There!”
+
+@7422 Eiji · エイジ
+> 「いくぞ!」
+“Here I go!”
+
+@7423 Eiji · エイジ
+> 「このぉっ!」
+“Why you...!”
+
+@7424 Eiji · エイジ
+> 「好き勝手にはさせないぞ!!」
+“I won't let you do as you please!!”
+
+@7425 Eiji · エイジ
+> 「邪魔をしないでくれっ!」
+“Don't get in my way!”
+
+@7426 Eiji · エイジ
+> 「ターゲット捕捉!」
+“Target acquired!”
+
+@7427 Eiji · エイジ
+> 「はぁぁぁぁーっ!」
+“Haaaaaah!”
+
+@7428 Eiji · エイジ
+> 「ここで食い止めてやる!」
+“I'll stop you right here!”
+
+@7429 Eiji · エイジ
+> 「今だッ!」
+“Now!”
+
+@7430 Eiji · エイジ
+> 「ぐわぁぁぁぁっ!!」
+“Gwaaaaaah!!”
+
+@7431 Eiji · エイジ
+> 「バカなっ!?」
+“Impossible?!”
+
+@7432 Eiji · エイジ
+> 「し、しまった……!」
+“D-Damn it...!”
+
+@7433 Eiji · エイジ
+> 「死にはしない……このまま死んで
+>  たまるか!!」
+“I won't die... I refuse to die like this!!”
+
+@7434 Eiji · エイジ
+> 「ぐぅっ……くそぅっ!」
+“Ngh... damn it!”
+
+@7435 Eiji · エイジ
+> 「ば、ばかな!?」
+“I-Impossible?!”
+
+@7436 Eiji · エイジ
+> 「やられた!?」
+“I've been hit?!”
+
+@7437 Eiji · エイジ
+> 「うわぁぁぁっ!!」
+“Uwaaaaaah!!”
+
+@7438 Eiji · エイジ
+> 「う、ううっ!」
+“U-Ugh!”
+
+@7439 Eiji · エイジ
+> 「こ、これは……!?」
+“W-What is this...?!”
+
+@7440 Eiji · エイジ
+> 「うっ! この程度!」
+“Ugh! Is that all!”
+
+@7441 Eiji · エイジ
+> 「やられはしない!!」
+“I won't go down!!”
+
+@7442 Eiji · エイジ
+> 「うわっ」
+“Whoa!”
+
+@7443 Eiji · エイジ
+> 「まだだ!」
+“Not yet!”
+
+@7444 Eiji · エイジ
+> 「くっ……何とか回避できたか」
+“Ngh... I managed to dodge, huh.”
+
+@7445 Eiji · エイジ
+> 「あたるわけにはいかない!」
+“I can't afford to get hit!”
+
+@7446 Eiji · エイジ
+> 「急速回避!」
+“Emergency evasion!”
+
+@7447 Eiji · エイジ
+> 「ここでやられるわけには!」
+“I can't be taken down here!”
+
+@7448 Eiji · エイジ
+> 「くっ、かわせたか」
+“Ngh, dodged it, huh.”
+
+@7449 Eiji · エイジ
+> 「この程度ならっ!」
+“If that's all you've got!”
+
+@7450 Eiji · エイジ
+> 「まだまだっ!」
+“Not even close!”
+
+@7451 Eiji · エイジ
+> 「かわせる!」
+“I can dodge this!”
+
+@7452 Eiji · エイジ
+> 「ビームは効かない!」
+“Beams don't work on me!”
+
+@7453 Eiji · エイジ
+> 「その程度の攻撃ならダメージは!」
+“An attack like that won't do any damage!”
+
+@7454 Eiji · エイジ
+> 「エルシエンパウダー散布!」
+“Dispersing Elshien Powder!”
+
+@7455 Eiji · エイジ
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@7456 Eiji · エイジ
+> 「卑怯者!」
+“Coward!”

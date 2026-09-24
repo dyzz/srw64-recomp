@@ -1,0 +1,174 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6481 Noin · ノイン
+> 「とまれぇ!」
+“Stop right there!”
+
+@6482 Noin · ノイン
+> 「汚い戦いをするな!」
+“Don't fight dirty!”
+
+@6483 Noin · ノイン
+> 「逃げられるわけがない!」
+“You can't escape!”
+
+@6484 Noin · ノイン
+> 「やらせはしないっ!」
+“I won't let you!”
+
+@6485 Noin · ノイン
+> 「この命にかえてもっ!!」
+“Even if it costs me my life!”
+
+@6486 Noin · ノイン
+> 「落ちろっ!!」
+“Fall!”
+
+@6487 Noin · ノイン
+> 「そこっ!」
+“There!”
+
+@6488 Noin · ノイン
+> 「もらった!!」
+“Got you!”
+
+@6489 Noin · ノイン
+> 「これでとどめだっ!」
+“This is the finishing blow!”
+
+@6490 Noin · ノイン
+> 「うかつなっ!」
+“Careless!”
+
+@6491 Noin · ノイン
+> 「貴様っ!」
+“You bastard!”
+
+@6492 Noin · ノイン
+> 「ここまでだっ!」
+“This is as far as you go!”
+
+@6493 Noin · ノイン
+> 「ガードがなってないっ!」
+“Your guard's wide open!”
+
+@6494 Noin · ノイン
+> 「覚悟っ!」
+“Prepare yourself!”
+
+@6495 Noin · ノイン
+> 「くうっ……ゼクス……」
+“Ngh... Zechs...”
+
+@6496 Noin · ノイン
+> 「だ、だめか……」
+“N-no good, huh...”
+
+@6497 Noin · ノイン
+> 「な、なんの! まだやられたわけではない!」
+“W-what?! I'm not down yet!”
+
+@6498 Noin · ノイン
+> 「つっ……このままでは危険か……」
+“Tch... at this rate, I'm in danger...”
+
+@6499 Noin · ノイン
+> 「うあっ! な、なんてパワー……」
+“Ugh! W-what power...”
+
+@6500 Noin · ノイン
+> 「くううっ! このまま黙って
+>  やられるわけには……」
+“Ngh! I can't just sit here and take it...”
+
+@6501 Noin · ノイン
+> 「あぁぅっ、う、動けぇ!」
+“Ah, ugh... m-move!”
+
+@6502 Noin · ノイン
+> 「まだだ! まだ私は戦える!」
+“Not yet! I can still fight!”
+
+@6503 Noin · ノイン
+> 「うっ!! さ、さすがに……」
+“Ugh! A-as expected...”
+
+@6504 Noin · ノイン
+> 「しまった、当たった!?」
+“Damn, it hit?!”
+
+@6505 Noin · ノイン
+> 「つっ! やる! しかし!!」
+“Tch! Not bad! But still!”
+
+@6506 Noin · ノイン
+> 「あうっ!! や、やらせないっ!」
+“Agh! I-I won't let you!”
+
+@6507 Noin · ノイン
+> 「まだまだっ!! これしきのことでっ!!」
+“Not yet! Not over something like this!”
+
+@6508 Noin · ノイン
+> 「やる! だがっここまでだ!」
+“Not bad! But this is the end!”
+
+@6509 Noin · ノイン
+> 「くそっどうした!?」
+“Damn, what's going on?!”
+
+@6510 Noin · ノイン
+> 「この程度でっ!!」
+“Is that all you've got?!”
+
+@6511 Noin · ノイン
+> 「効きはしないっ!」
+“It won't work on me!”
+
+@6512 Noin · ノイン
+> 「当たっただけだ、こんなもの!」
+“It just grazed me, that's all!”
+
+@6513 Noin · ノイン
+> 「そんな攻撃で落ちるものか!」
+“You think that'll bring me down?!”
+
+@6514 Noin · ノイン
+> 「損傷軽微、いける!!」
+“Minor damage. I can keep going!”
+
+@6515 Noin · ノイン
+> 「甘いなっ!!」
+“Too naive!”
+
+@6516 Noin · ノイン
+> 「当たるものかっ!!」
+“Like you could hit me!”
+
+@6517 Noin · ノイン
+> 「なんのっ!」
+“No problem!”
+
+@6518 Noin · ノイン
+> 「ふ……まるで素人だな」
+“Hmph... you're a complete amateur.”
+
+@6519 Noin · ノイン
+> 「見切った!」
+“I saw right through it!”
+
+@6520 Noin · ノイン
+> 「遅いっ!」
+“Too slow!”
+
+@6521 Noin · ノイン
+> 「ビームなど、効きはしないっ!!」
+“A beam like that won't work on me!”
+
+@6522 Noin · ノイン
+> 「なにっ!? 弾切れだと……」
+“What?! Out of ammo...”
+
+@6523 Noin · ノイン
+> 「ちっ、この距離ではどうしようもない…」
+“Tch, at this range there's nothing I can do...”

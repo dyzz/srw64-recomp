@@ -1,0 +1,135 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10099 Emperor Burai · ブライ大帝
+> 「手段は選ばぬ!」
+“I'll use any means necessary!”
+
+@10100 Emperor Burai · ブライ大帝
+> 「そこをどけぇっ!」
+“Out of my way!”
+
+@10101 Emperor Burai · ブライ大帝
+> 「だまれぇい!」
+“Silence!”
+
+@10102 Emperor Burai · ブライ大帝
+> 「我々、百鬼一族が世界を
+>  征服する時が来たのだ!」
+“The time has come for us, the Hyakki Clan, to conquer the world!”
+
+@10103 Emperor Burai · ブライ大帝
+> 「全世界をワシのものにするのだぁ!」
+“The entire world shall be mine!”
+
+@10104 Emperor Burai · ブライ大帝
+> 「一気に片づけてやる!」
+“I'll finish them all at once!”
+
+@10105 Emperor Burai · ブライ大帝
+> 「何としてもこやつらを倒し、ゲッター
+>  線増幅装置を奪いとるのだ!」
+“We must defeat them at any cost and seize the Getter Ray Amplifier!”
+
+@10106 Emperor Burai · ブライ大帝
+> 「おのれぇ、この恨みは死ぬまで
+>  忘れんぞっ!」
+“Curse you! I'll never forget this grudge as long as I live!”
+
+@10107 Emperor Burai · ブライ大帝
+> 「これで勝ったと思うなよ!」
+“Don't think you've won!”
+
+@10108 Emperor Burai · ブライ大帝
+# 审校：初稿漏译“このままでは”的强调语气，补上 so 更自然。
+> 「貴様もこのままでは、すまんぞぉ!」
+“You won't get off so easily!”
+
+@10109 Emperor Burai · ブライ大帝
+> 「あきらめるな!」
+“Don't give up!”
+
+@10110 Emperor Burai · ブライ大帝
+# 审校：“なんたることだ”是震惊“怎么会这样”，初稿“What is the meaning of this”偏质问，改为更贴切的震惊表达。
+> 「な、なんたることだ!」
+“Wh-What is this?!”
+
+@10111 Emperor Burai · ブライ大帝
+> 「我ら百鬼一族を侮りおって……
+>  あとで後悔するなよ」
+“You dare mock the Hyakki Clan... you'll regret this later.”
+
+@10112 Emperor Burai · ブライ大帝
+# 审校：原文“相手”是单数，初稿用复数 they're tougher 与单数不一致，改为单数表达。
+> 「ぬうっ、思ったより手ごわい相手だ」
+“Ngh, they're a tougher opponent than I expected.”
+
+@10113 Emperor Burai · ブライ大帝
+> 「ええい、手をぬいてはならんっ!」
+“Enough, do not hold back!”
+
+@10114 Emperor Burai · ブライ大帝
+> 「何をもたもたしておる!」
+“What are you dawdling for?!”
+
+@10115 Emperor Burai · ブライ大帝
+> 「なんたるヘマを!」
+“What a blunder!”
+
+@10116 Emperor Burai · ブライ大帝
+> 「んっ、何ごとだっ!」
+“Hm? What's going on?!”
+
+@10117 Emperor Burai · ブライ大帝
+> 「フッフフフ……敵ながらなかなかやるのう」
+“Heh heh heh... quite impressive, for an enemy.”
+
+@10118 Emperor Burai · ブライ大帝
+> 「見ておったかぁ!」
+“Did you see that?!”
+
+@10119 Emperor Burai · ブライ大帝
+> 「ハハハッ、どんな攻撃を受けようとも
+>  びくともせんわ!」
+“Hahaha! No matter what attack I take, I won't flinch!”
+
+@10120 Emperor Burai · ブライ大帝
+> 「ワーッハハハッ!
+>  もはや勝ったも同じだ!」
+“Wahahaha! Victory is already as good as mine!”
+
+@10121 Emperor Burai · ブライ大帝
+> 「これでは、歯ごたえがなさすぎるわ」
+“This is far too easy.”
+
+@10122 Emperor Burai · ブライ大帝
+> 「お前ごときに指1本ふれさせるかぁ」
+“I won't let the likes of you lay a single finger on me.”
+
+@10123 Emperor Burai · ブライ大帝
+> 「でかしたぞ!」
+“Well done!”
+
+@10124 Emperor Burai · ブライ大帝
+> 「まだわからんのか!」
+“Still don't understand?!”
+
+@10125 Emperor Burai · ブライ大帝
+> 「まだわからんのかぁ!」
+“Still don't understand?!”
+
+@10126 Emperor Burai · ブライ大帝
+> 「ええい、なんというまぬけだ!」
+“Ugh, what a fool!”
+
+@10127 Emperor Burai · ブライ大帝
+> 「どうしたのだ!?」
+“What's the matter?!”
+
+@10128 Emperor Burai · ブライ大帝
+> 「なんだと!?」
+“What did you say?!”
+
+@10129 Emperor Burai · ブライ大帝
+> 「ばかなっ! 今こそ絶好のチャンス
+>  ではないか!」
+“Impossible! Now is the perfect chance!”

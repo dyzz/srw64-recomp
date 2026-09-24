@@ -1,0 +1,113 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@5956 Aina · アイナ
+> 「撃ちます……」
+“I'm firing...”
+
+@5957 Aina · アイナ
+> 「離れなさい、死にたいのですか!?」
+“Get away! Do you want to die?!”
+
+@5958 Aina · アイナ
+> 「仕方がないのです!」
+“There's no other way!”
+
+@5959 Aina · アイナ
+> 「なんて無謀な」
+“How reckless...”
+
+@5960 Aina · アイナ
+> 「直撃させます!」
+“I'll hit you dead-on!”
+
+@5961 Aina · アイナ
+> 「いきます!」
+“Here I go!”
+
+@5962 Aina · アイナ
+> 「離れなさい!」
+“Get away!”
+
+@5963 Aina · アイナ
+> 「撃ちます!」
+“I'm firing!”
+
+@5964 Aina · アイナ
+> 「出てこなければ!」
+“Come out, or else!”
+
+@5965 Aina · アイナ
+> 「シローッッ!」
+“Shiro!”
+
+@5966 Aina · アイナ
+> 「きゃあぁぁぁぁっっ!」
+“Kyaaaaaah!”
+
+@5967 Aina · アイナ
+> 「も、もうもたない……」
+“I-I can't hold out...”
+
+@5968 Aina · アイナ
+> 「も、もう限界です!」
+“I-I'm at my limit!”
+
+@5969 Aina · アイナ
+> 「くっ! かなりやられてしまったわね……」
+“Ngh! I've taken quite a beating...”
+
+@5970 Aina · アイナ
+> 「ここで……死ぬの!?」
+“Am I... going to die here?!”
+
+@5971 Aina · アイナ
+> 「うっ、過重が大きすぎるの!?」
+“Ugh, the G-force is too much?!”
+
+@5972 Aina · アイナ
+> 「機体の安定が……っ!」
+“The unit's stability...!”
+
+@5973 Aina · アイナ
+> 「あぁっ、だめだわっ!」
+“Ah, no, this can't be!”
+
+@5974 Aina · アイナ
+> 「あぁぁぁーっ!」
+“Aaaaaah!”
+
+@5975 Aina · アイナ
+> 「うっ、まだこの程度では」
+“Ngh, this much won't...”
+
+@5976 Aina · アイナ
+> 「はっ」
+“Hah!”
+
+@5977 Aina · アイナ
+> 「くっ」
+“Ngh!”
+
+@5978 Aina · アイナ
+> 「ふぅ、なんとかかわせたようですね」
+“Phew, looks like I managed to dodge.”
+
+@5979 Aina · アイナ
+> 「あぶないところでした」
+“That was close.”
+
+@5980 Aina · アイナ
+> 「あたるわけにはいかないのです!」
+“I can't afford to get hit!”
+
+@5981 Aina · アイナ
+> 「思ったより振動は小さいわ……」
+“The shaking's less than I thought...”
+
+@5982 Aina · アイナ
+> 「も、もう撃ちつくしてしまった!?」
+“I-I'm all out of ammo?!”
+
+@5983 Aina · アイナ
+> 「くっ、この距離ではだめ!」
+“Ngh, this distance is no good!”

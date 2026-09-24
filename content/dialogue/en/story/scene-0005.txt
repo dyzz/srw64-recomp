@@ -1,0 +1,684 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17788 Guerrilla · ゲリラ
+> 「ご苦労様です
+“Thank you for your hard work.
+---
+>  機体はすべて倉庫の方へまわして
+>  ください。そこで整備しますので」
+Please send all the units to the warehouse. We'll do the maintenance there.”
+
+@17789 Banjo · 万丈
+> 「すまない。アランの方は順調なのか?」
+“Sorry about that. How are things going with Alan?”
+
+@17790 Guerrilla · ゲリラ
+> 「そう聞いています
+“That's what I hear.
+---
+>  各プロジェクトは急ピッチで
+>  進んでいるようです」
+Every project seems to be moving along at a rapid pace.”
+
+@17791 Banjo · 万丈
+> 「そうか。では、こちらはしばらく
+>  様子見となるかな……
+“I see. Then I suppose we'll just wait and see for a while...
+---
+>  君たち、ここはカラバの施設だ。
+>  あまりきれいとはいえないが
+You lot, this is a Karaba facility. It's not much to look at,
+---
+>  少し休んでくれ」
+but take a rest.”
+
+@17792 Brad · ブラッド（按段落 3DD3）
+> 「そうさせてもらう。あーっ、そこのお前!
+>  アースゲインを勝手に動かすな!
+“We'll take you up on that. Ah, hey, you there! Don't move the Earthgain on your own!
+---
+>  俺がやる!」
+I'll do it!”
+
+@17793 Koji · 甲児
+> 「なんだよ、こんな狭いところに
+>  入れるのか!?
+“What the, you're putting it in a space this tight?!
+---
+>  ……うわーっ!!」
+...Whoa!!”
+
+@17794 Reika · レイカ
+> 「きゃっ! ちょっと、
+>  あぶないじゃないのっ!!」
+“Kya! Hey, watch it, that's dangerous!!”
+
+@17795 Koji · 甲児
+> 「あいててて……悪い悪い
+“Oww... my bad, my bad.
+---
+>  くっそぉ、
+>  なんでまっすぐ歩かないんだ……」
+Damn it, why won't this thing walk straight...”
+
+@17796 Guerrilla · ゲリラ
+> 「…………」
+“...”
+
+@17797 Banjo · 万丈
+> 「はははっ、すまない。彼らは、あまり
+>  こういうのになれてないんだ」
+“Hahaha, sorry about that. They're just not used to this sort of thing.”
+
+@17798 Guerrilla · ゲリラ
+> 「いえ、いいですよ。
+>  彼らの活躍は聞いています
+“No, it's fine. We've heard of their exploits.
+---
+>  私らにはできないことです」
+It's something we could never do.”
+
+@17799 Manami · マナミ（按段落 3DD4）
+> 「ええ、そうさせてもらうわ。
+>  シャワー、借りられるかしら?」
+“Yes, we'll take you up on that. Could I borrow a shower?”
+
+@17800 Guerrilla · ゲリラ
+> 「もちろんです。
+>  ご案内しましょう」
+“Of course. Allow me to show you the way.”
+
+@17801 Manami · マナミ（按段落 3DD4）
+> 「ありがとう、助かるわ」
+“Thank you, that helps.”
+
+@17802 Simone · シモーヌ
+> 「あ、ちょっと、
+>  アタシも一緒にいくわ」
+“Oh, wait, I'll come along too.”
+
+@17803 Lawrence · ローレンス
+> 「ふむ、ではわたくしは、お茶の
+>  用意でもするといたしましょう」
+“Hmm, then I suppose I shall prepare some tea.”
+
+@17804 Banjo · 万丈
+> 「僕たちの分も頼めるかな?」
+“Could you make some for us too?”
+
+@17805 Lawrence · ローレンス
+> 「もちろんでございますよ」
+“But of course.”
+
+@17806 Beauty · ビューティ
+> 「うふ、よろしくね
+“Ufu, nice to meet you.
+---
+>  じゃあ、私はお茶菓子の
+>  用意をしようかしら」
+Then I suppose I'll get some tea snacks ready.”
+
+@17807 Garrison · ギャリソン
+> 「私は整備の方を
+>  手伝ってまいります」
+“I'll go help with the maintenance.”
+
+@17808 Garrison · ギャリソン
+> 「……ああ、これ、そこの整備士、
+>  そのようなもので扱っては
+“...Ah, here, you there, mechanic, don't handle it like that,
+---
+>  キズがついて……」
+you'll scratch it...”
+
+@17809 Dark General · 暗黒大将軍
+> 「奴らの潜伏場所がわかった。
+>  今度は俺が行かせてもらう
+“We've found where they're hiding. This time, let me go.
+---
+>  我らミケーネが帝国の軍門に
+>  くだったのも
+The only reason we Mycenae submitted to the Empire's banner
+---
+>  いずれはこの地球を
+>  支配せんがため
+was so that one day we might rule this Earth.
+---
+>  これ以上の屈辱など、そうそう
+>  ありえんわ」
+I will not suffer any further humiliation.”
+
+@17810 Dr. Gura · グラー博士
+> 「ブライ大帝さま、
+>  ミケーネの動きをつかみました」
+“Emperor Burai, we've caught wind of Mycenae's movements.”
+
+@17811 Emperor Burai · ブライ大帝
+> 「ほう、申せ」
+“Oh? Speak.”
+
+@17812 Dr. Gura · グラー博士
+> 「はっ、帝国に反抗する
+>  人間どもの組織“カラバ”の
+“Yes. They appear to be preparing to attack the base of
+---
+>  基地を襲撃する様子で
+>  ございます」
+'Karaba,' the organization of humans resisting the Empire.”
+
+@17813 Emperor Burai · ブライ大帝
+> 「なに、カラバをか。ふむ……
+“What, Karaba? Hmm...
+---
+>  例のエネルギー源に関しては
+>  どうなっておるか」
+And what of that energy source?”
+
+@17814 Dr. Gura · グラー博士
+> 「はっ、やはり人間どもが
+>  研究していた“ゲッター線”が
+“Yes. As expected, the 'Getter Rays' the humans were researching
+---
+>  最適であると思われます」
+appear to be the most suitable.”
+
+@17815 Emperor Burai · ブライ大帝
+> 「光子力とやらは、どうなった?」
+“And what became of this 'Photon Power'?”
+
+@17816 Dr. Gura · グラー博士
+> 「有用ではありますが
+“It is useful, but
+---
+>  ゲッター線の方が我々の
+>  目的にはあっております」
+Getter Rays better suit our purposes.”
+
+@17817 Emperor Burai · ブライ大帝
+> 「なるほどな」
+“I see.”
+
+@17818 Dr. Gura · グラー博士
+> 「しかし帝国軍が侵攻してきた
+>  おかげで
+“However, thanks to the Imperial Army's invasion,
+---
+>  人間の研究者どもは
+>  行方を、くらましております
+the human researchers have gone into hiding.
+---
+>  帝国軍に潜り込ませた
+>  鬼兵士の報告では
+According to reports from the oni soldiers we've infiltrated into the Imperial Army,
+---
+>  カラバに保護されている
+>  可能性が高いと」
+there's a high possibility they're being protected by Karaba.”
+
+@17819 Emperor Burai · ブライ大帝
+> 「ふむ、人間どもめ、
+>  なかなかやるのう
+“Hmm, those humans, they're quite resourceful.
+---
+>  だが、それを手に入れねば、我らの
+>  もくろみは達成できぬのであろう」
+But if we don't obtain it, our scheme can never be achieved.”
+
+@17820 Dr. Gura · グラー博士
+> 「はい。すでに帝国軍の中にも、
+>  密かに改造手術で
+“Yes. We already have some within the Imperial Army who were secretly
+---
+>  百鬼兵士にしたてあげた者が
+>  おりますが、月に一度はエネルギーを
+remade into Hyakki soldiers through modification surgery, but they must have their energy
+---
+>  補充しなければならないため、
+>  これ以上は増やせません。もしも
+replenished once a month, so we cannot increase their numbers further. If we
+---
+>  無理をして1度でも失敗すれば
+>  我らは帝国に滅ぼされましょう」
+push too hard and fail even once, we will be destroyed by the Empire.”
+
+@17821 Emperor Burai · ブライ大帝
+> 「わかっておる。我ら百鬼一族を
+>  あなどりおって、帝国め
+“I know. To think the Empire would underestimate us, the Hyakki Clan.
+---
+>  グラー博士、その装置に
+>  関するものが、ミケーネが向かう
+Dr. Gura, there's still a chance that the device we seek lies in the
+---
+>  人間の基地にある可能性も
+>  捨てきれぬ
+human base Mycenae is heading for.
+---
+>  増援と称して調査に向かえ」
+Go there under the guise of reinforcements and investigate.”
+
+@17822 Dr. Gura · グラー博士
+> 「はっ!」
+“Yes, sir!”
+
+@17823 Emperor Burai · ブライ大帝
+> 「エネルギー源さえ確保できれば、
+>  全宇宙でもっとも有能な
+“Once we secure the energy source, we, the Hyakki Clan, the most capable
+---
+>  我が百鬼一族が
+>  帝国を排除し
+in all the universe, can eliminate the Empire
+---
+>  無能な人間どもにかわって
+>  世界を支配できるのだ
+and rule the world in place of the incompetent humans.
+---
+>  なんとしても手に入れねば
+>  ならん……」
+We must obtain it no matter what...”
+
+@17824 Koji · 甲児
+> 「なんだって!? 君が、オレに
+>  操縦を教えにきたっていうのか?」
+“What?! You're telling me you came to teach me how to pilot it?”
+
+@17825 Sayaka · さやか
+> 「そうよ、お父さまにいわれて
+>  しかたなく来たんだから
+“That's right. Father told me to, so I came, no choice in the matter.
+---
+>  ちゃんと覚えてちょうだい」
+So make sure you learn properly.”
+
+@17826 Koji · 甲児
+> 「冗談じゃないぜ、
+>  女になんか教われるかってんだ」
+“You've gotta be kidding. Like I'd let a girl teach me.”
+
+@17827 Sayaka · さやか
+> 「まぁっ、なによそれ!
+“What?! How dare you!
+---
+>  ろくに操縦もできないのに
+>  よく言うわね
+You can barely pilot it yourself, and you say that?
+---
+>  いっときますけど、
+>  あのタイプのロボットの操縦は
+Let me tell you something, when it comes to piloting that type of robot,
+---
+>  あたしの方がずっと上手なのよ」
+I'm way better at it than you.”
+
+@17828 Koji · 甲児
+> 「そんなもんすぐに慣れてみせるさ。
+>  オレはすでに1回、戦ってるんだぜ?
+“I'll get used to it in no time. I've already fought once, haven't I?
+---
+>  君に教わる必要なんて
+>  ぜ～んぜんないね」
+I don't need you teaching me, not one bi~it.”
+
+@17829 Sayaka · さやか
+> 「甲児くんが慣れるまで待ってる
+>  余裕がないから、あたしが
+“It's not like we have time to wait for you to get used to it, Koji. That's why I
+---
+>  来たんじゃない。ぐずぐずいってないで、
+>  ついてらっしゃい。それから、あたしは
+came. Stop dawdling and come along. And besides, I
+---
+>  さやかっていう名前が、ちゃんと
+>  あるんですからね」
+have a proper name, you know. It's Sayaka.”
+
+@17830 Koji · 甲児
+> 「ちぇっ」
+“Tch.”
+
+@17831 Koji · 甲児
+> (かわいくないなぁ
+(She's not cute at all.
+---
+>  あのお姉さんたちの爪の垢でも
+>  せんじて飲ませてやりたいぜ)
+I'd like to make her drink some of those older girls' nail scrapings.)
+
+@17832 Sayaka · さやか
+> 「なに? 何か言った?」
+“What? Did you say something?”
+
+@17833 Koji · 甲児
+> 「い～や、なんにも言ってないぜ」
+“No~, I didn't say anything.”
+
+@17834 Sayaka · さやか
+> 「そうそう、だいぶ上手に
+>  なってきたじゃない」
+“That's right, you're getting pretty good at this.”
+
+@17835 Koji · 甲児
+> 「…………」
+“...”
+
+@17836 Koji · 甲児
+> (みてろよぉ、そのうち絶対
+>  鼻をあかしてやるんだからな)
+(Just you wait. One of these days I'm definitely gonna wipe that smug look off your face.)
+
+@17837 Sayaka · さやか
+> 「なーにぶつくさ言ってるのよ。
+>  ほら、あと3回。走って走って!」
+“What are you muttering about? Come on, three more laps. Run, run!”
+
+@17838 Banjo · 万丈
+> 「どうした!?」
+“What's going on?!”
+
+@17839 Garrison · ギャリソン
+> 「帝国軍が接近しておる
+>  ようですな
+“It seems the Imperial Army is approaching.
+---
+>  進行ルートを考えましても、ここが
+>  目的であると思われます」
+Judging by their route, I believe this place is their objective.”
+
+@17840 Brad · ブラッド（按段落 3DD3）
+> 「見つかったのか!?」
+“They found us?!”
+
+@17841 Banjo · 万丈
+> 「どうやらそうらしい
+“Seems so.
+---
+>  帝国軍も甘くはなくなって
+>  きているようだね」
+The Imperial Army isn't pulling its punches anymore, it seems.”
+
+@17842 Brad · ブラッド（按段落 3DD3）
+> 「ふん、だがまた返り討ちにして
+>  やるだけだ!」
+“Hmph, but all that means is we beat them back again!”
+
+@17843 Manami · マナミ（按段落 3DD4）
+> 「見つかってしまったの!?」
+“They found us?!”
+
+@17844 Simone · シモーヌ
+> 「どうやらそのようね。
+>  帝国軍がゲリラ狩りに
+“It seems so. So it's true that the Imperial Army has
+---
+>  本腰を入れ始めたっていうの、
+>  やっぱり本当ね
+started hunting guerrillas in earnest.
+---
+>  以前だったらここまで追っては
+>  こなかったわ」
+They never used to chase us this far before.”
+
+@17845 Banjo · 万丈
+> 「こうなった以上は
+>  隠れていてもムダだ
+“Now that it's come to this, hiding is pointless.
+---
+>  迎撃しよう」
+Let's intercept them.”
+
+@17846 Manami · マナミ（按段落 3DD4）
+> 「わかったわ。ローレンス!
+“Understood. Lawrence!
+---
+>  お茶の片付けなんて
+>  後でいいから、急いで」
+Clearing away the tea can wait, hurry!”
+
+@17847 Lawrence · ローレンス
+> 「はい、ただいま まいります」
+“Yes, right away.”
+
+@17848 Banjo · 万丈
+> 「レイカ、外の2人にも
+>  伝えてくれ
+“Reika, tell the other two outside as well.
+---
+>  敵を迎え撃つ」
+We're meeting the enemy head-on.”
+
+@17849 Reika · レイカ
+> 「了解」
+“Roger.”
+
+@17850 Koji · 甲児
+> 「さやかさん、聞いたか?
+>  帝国軍がくる
+“Sayaka, did you hear that? The Imperial Army is coming.
+---
+>  さやかさんは中へ入っていてくれ」
+You should get inside.”
+
+@17851 Sayaka · さやか
+> 「いやよ。アフロダイAだって十分
+>  役にたつんだから!」
+“No way. Aphrodai A can be plenty useful too!”
+
+@17852 Koji · 甲児
+> 「勝手にしろ!
+>  助けてなんか、やらないからな」
+“Do what you want! I'm not gonna save you, you know.”
+
+@17853 Sayaka · さやか
+> 「結構です! あたしだってカラバの
+>  一員なんですからね!」
+“Fine by me! I'm a member of Karaba too, you know!”
+
+@17854 Koji · 甲児
+> 「もう来やがったのか
+“They're already here, huh.
+---
+>  さぁどっからでも、かかって
+>  こいってんだ!」
+All right, come at me from wherever you like!”
+
+@17855 Brad · ブラッド（按段落 3DD3）
+> 「甲児、意気込むのはいいが、
+>  俺たちがいるのも忘れんなよ」
+“Koji, it's fine to be fired up, but don't forget we're here too.”
+
+@17856 Manami · マナミ（按段落 3DD4）
+> 「甲児、ひとりで無茶しないで。
+>  みんなで戦うのよ」
+“Koji, don't go doing anything reckless on your own. We fight together.”
+
+@17857 Dark General · 暗黒大将軍
+> 「でてきおったな、レジスタンスどもめが
+>  まとめて片付けてやるわ!」
+“So you've come out, you Resistance lot. I'll wipe you all out at once!”
+
+@17858 Dark General · 暗黒大将軍
+# 审校：“出直しだ”不是“start over”，而是撤退、改日再来的意思；改为更符合 Dark General 语气的“I must withdraw!”
+> 「うぬぅ、これはいかん! 出直しだ!」
+“Ngh, this is bad! I must withdraw!”
+
+@17859 Dark General · 暗黒大将軍
+> 「おのれ、ぬかったわ。次を見ておれよ!」
+“Curse you, I let my guard down. Just you wait until next time!”
+
+@17860 Dr. Gura · グラー博士
+# 审校：“め”在此是轻蔑语气，改为“is surprisingly useless”更自然；第二页句末补句号以符合原文断句
+> 「暗黒大将軍め、
+>  意外にふがいない……
+“That Dark General is surprisingly useless...
+---
+>  ゲッター線のロボットは、
+>  ないようだな
+There doesn't seem to be a Getter Ray robot here.
+---
+>  生意気な人間どもを倒し、
+>  あそこを調べるとするか」
+I'll defeat these insolent humans and then search that place.”
+
+@17861 Dark General · 暗黒大将軍
+> 「ぬう、百鬼一族が何の用で
+>  来おった?」
+“Ngh, what business does the Hyakki Clan have here?”
+
+@17862 Dr. Gura · グラー博士
+> 「なに、同じ帝国に属する者
+>  同士ではないか
+“What, are we not fellow servants of the same Empire?
+---
+>  レジスタンスどもを排除するのは
+>  我らが帝国から負った
+Eliminating the Resistance is the mission we've been charged with
+---
+>  使命であろう」
+by the Empire, is it not?”
+
+@17863 Dark General · 暗黒大将軍
+> 「何をたくらんでおるのか知らんが、
+>  まぁよい
+“I don't know what you're plotting, but very well.
+---
+>  だが、俺が要請したのではない
+>  ことだけは、肝に命じておけ」
+Just remember this: it was not I who requested you.”
+
+@17864 Dr. Gura · グラー博士
+> 「心得ておる」
+“Understood.”
+
+@17865 Reika · レイカ
+> 「新手が来たわ!
+>  みんな、気をつけて!!」
+“New enemies incoming! Everyone, be careful!!”
+
+@17866 Brad · ブラッド（按段落 3DD3）
+> 「新手かっ!?
+>  ふん、いくらでも来るがいい!」
+“Reinforcements?! Hmph, let them come, as many as they like!”
+
+@17867 Reika · レイカ
+> 「新手が来たわ!
+>  みんな、気をつけて!!」
+“New enemies incoming! Everyone, be careful!!”
+
+@17868 Manami · マナミ（按段落 3DD4）
+> 「新手!?
+>  いいわ、いくらでも来なさい!」
+“Reinforcements?! Fine, let them come, as many as they like!”
+
+@17869 Dr. Gura · グラー博士
+> 「くっ、いかん、
+>  これ以上は危険すぎる」
+“Ngh, this is bad. Any more of this is too dangerous.”
+
+@17870 Dr. Gura · グラー博士
+> 「ええい、カラバの施設の調査も
+>  できんとは!」
+“Damn it, and I couldn't even investigate the Karaba facility!”
+
+@17871 Koji · 甲児
+> 「へへーん、どうだ見たか さやかさん。
+>  ざっとこんなもんだぜ」
+“Heh heh, how's that? See that, Sayaka? That's about all there is to it.”
+
+@17872 Sayaka · さやか
+# 审校：原文是肯定句“あたしの教え方が、よかったのね”，初稿的反问“wasn't it”语气不对，改为陈述句
+> 「あたしの教え方が、よかったのね」
+“It's because my teaching was so good.”
+
+@17873 Koji · 甲児
+> 「…………」
+“...”
+
+@17874 Brad · ブラッド（按段落 3DD3）
+> 「よお、どうすんだ?
+>  またすぐ移動するのか?」
+“Yo, so what's the plan? We moving out again right away?”
+
+@17875 Banjo · 万丈
+> 「いや、もうしばらくここにいる。
+>  敵もすぐにはこないはずだ」
+“No, we'll stay here a while longer. The enemy shouldn't be coming right away either.”
+
+@17876 Brad · ブラッド（按段落 3DD3）
+> 「わかった、まかせるぜ」
+“Got it, I'll leave it to you.”
+
+@17877 Garrison · ギャリソン
+> 「万丈様」
+“Master Banjo.”
+
+@17878 Banjo · 万丈
+> 「なんだい?」
+“What is it?”
+
+@17879 Garrison · ギャリソン
+# 审校：“地球解放戦線機構”中的“機構”是组织名的一部分，但英文中“Earth Liberation Front”已足够，去掉“mechanism”避免生硬直译
+> 「それが、
+>  地球解放戦線機構の
+“Well, we've received a telegram from
+---
+>  イゴール将軍よりの電文で
+General Igor of the Liberation Front of the Earth,
+---
+>  親書を持ったスタッフを1人
+>  こちらに向かわせたとの事です」
+saying they've sent one staff member our way carrying a personal letter.”
+
+@17880 Banjo · 万丈
+> 「イゴール将軍が? そうか、
+>  アランのことは知らないのだったな
+“From General Igor? I see, so he doesn't know about Alan.
+---
+>  しかし、この時期に僕たちに
+>  接触してくるとは……
+Still, to make contact with us at a time like this...
+---
+>  で、いつごろここへ来ると?」
+So, when will they arrive here?”
+
+@17881 Garrison · ギャリソン
+> 「おそらく数日は、かかるものと
+>  思われますが」
+“I believe it will likely take several days.”
+
+@17882 Banjo · 万丈
+> 「数日か。どうせしばらく
+>  留まるつもりだったんだ
+“Several days, huh. We were planning to stay put for a while anyway.
+---
+>  ちょうどいい。
+>  それまで待つとしようか」
+That works out fine. Let's wait until then.”
+
+@17883 Simone · シモーヌ
+> 「どうするの、万丈。
+>  また移動?」
+“What are we doing, Banjo? Moving again?”
+
+@17884 Banjo · 万丈
+> 「いや、もうしばらくここにいよう
+“No, let's stay here a while longer.
+---
+>  いま、ギャリソンたちに状況を
+>  確認してもらっている
+Garrison and the others are checking on the situation right now.
+---
+>  動くのは、それからにしたほうがいい」
+It'd be better to move after that.”
+
+@17885 Manami · マナミ（按段落 3DD4）
+> 「そうですわね
+“You're right.
+---
+>  ロームフェラとスペシャルズのことも
+>  気にかかりますし」
+I'm also worried about Romefeller and the Specials.”
+
+@17886 Banjo · 万丈
+> 「そういうことだ」
+“That settles it, then.”

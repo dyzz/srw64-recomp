@@ -1,0 +1,428 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15600 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15601 Duke · デューク
+> 「よし、いまだ!」
+“All right, now!”
+
+@15602 Maria · マリア
+# 审校：原文“頼むわよ”是“拜托你了”，初稿“You're up”语气不够准确。
+> 「頼むわよ、甲児!」
+“I'm counting on you, Koji!”
+
+@15603 Koji · 甲児
+> 「まかせとけ!」
+“Leave it to me!”
+---
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15604 Maria · マリア
+> 「いまだわ! 兄さん」
+“Now, brother!”
+
+@15605 Hikaru · ひかる
+> 「チャンスよ!」
+“This is our chance!”
+
+@15606 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15607 Koji · 甲児
+# 审校：原文“剣で同時攻撃だ”指用剑同时攻击，初稿“attack together with swords”可以，但补上 our 更自然。
+> 「マリアちゃん、剣で同時攻撃だ!」
+“Maria, let's attack together with our swords!”
+
+@15608 Maria · マリア
+> 「わかったわ、甲児!」
+“Got it, Koji!”
+
+@15609 Koji · 甲児
+> 「よし、マリアちゃん、俺にあわせてくれ!」
+“All right, Maria, follow my lead!”
+---
+> 「ダブル・マジンガーブレードッ!!」
+“Double Mazinger Blade!!”
+
+@15610 Maria · マリア
+# 审校：原文“叩き切ってやるんだから”语气更狠，初稿“cut you right open”不够贴切。
+> 「このぉ! 叩き切ってやるんだから!」
+“Take this! I'll cut you to pieces!”
+
+@15611 Hikaru · ひかる
+# 审校：原文“こっちはいいわよ”表示这边准备好了，初稿“I'm good here”略显含糊。
+> 「こっちはいいわよ、マリアちゃん!」
+“I'm ready here, Maria!”
+
+@15612 Maria · マリア
+> 「よぉし!」
+“All right!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@15613 Hikaru · ひかる
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15614 Hikaru · ひかる
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15615 Hikaru · ひかる
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@15616 Hikaru · ひかる
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15617 Hikaru · ひかる
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15618 Hikaru · ひかる
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15619 Hikaru · ひかる
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15620 Hikaru · ひかる
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15621 Hikaru · ひかる
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15622 Hikaru · ひかる
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15623 Hikaru · ひかる
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15624 Hikaru · ひかる
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15625 Hikaru · ひかる
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15626 Hikaru · ひかる
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15627 Hikaru · ひかる
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15628 Hikaru · ひかる
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15629 Hikaru · ひかる
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15630 Hikaru · ひかる
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15631 Hikaru · ひかる
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15632 Hikaru · ひかる
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15633 Hikaru · ひかる
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15634 Hikaru · ひかる
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15635 Hikaru · ひかる
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15636 Hikaru · ひかる
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15637 Hikaru · ひかる
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15638 Hikaru · ひかる
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15639 Hikaru · ひかる
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15640 Hikaru · ひかる
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15641 Hikaru · ひかる
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15642 Hikaru · ひかる
+> 「グレートブースター!」
+“Great Booster!”
+
+@15643 Hikaru · ひかる
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15644 Hikaru · ひかる
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15645 Hikaru · ひかる
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15646 Hikaru · ひかる
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15647 Hikaru · ひかる
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15648 Hikaru · ひかる
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15649 Hikaru · ひかる
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15650 Hikaru · ひかる
+> 「ミサイル発射!!」
+“Missile fire!!”
+
+@15651 Hikaru · ひかる
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15652 Hikaru · ひかる
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15653 Hikaru · ひかる
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15654 Hikaru · ひかる
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15655 Hikaru · ひかる
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15656 Hikaru · ひかる
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15657 Hikaru · ひかる
+# 机翻疑问：新译名：大車輪ロケットパーンチッ=Big Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!」
+“Big Wheel Rocket Punch!”
+
+@15658 Hikaru · ひかる
+> 「ボロットパーンチッ!」
+“Borot Punch!”
+
+@15659 Hikaru · ひかる
+> 「スペシャルボロットパーンチッ!」
+“Special Borot Punch!”
+
+@15660 Hikaru · ひかる
+> 「スペシャルデラックスボロットパーンチッ!
+>  ……でいいのよね……」
+“Special Deluxe Borot Punch! ...That's right, isn't it...”
+
+@15661 Hikaru · ひかる
+> 「ミサイル発射!」
+“Missile, fire!”
+
+@15662 Hikaru · ひかる
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15663 Hikaru · ひかる
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15664 Hikaru · ひかる
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15665 Hikaru · ひかる
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15666 Maria · マリア
+> 「これで終わりにしてやるわ!」
+“Let's finish this!”
+
+@15667 Hikaru · ひかる
+> 「いけるわ、マリアちゃん」
+“We can do it, Maria!”
+
+@15668 Maria · マリア
+> 「よぉし、ダブルバーニングファイヤー!!」
+“All right, Double Burning Fire!!”
+
+@15669 Duke · デューク
+> 「ひかるさん、大丈夫か!」
+“Hikaru, are you all right?!”
+
+@15670 Hikaru · ひかる
+> 「ええ、大介さん。いけるわ!」
+“Yes, Daisuke. I'm good to go!”
+
+@15671 Duke · デューク
+> 「よし、いくぞ!」
+“All right, here we go!”
+---
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15672 Maria · マリア
+> 「いいわよ! 兄さん」
+“Sounds good, brother!”
+
+@15673 Hikaru · ひかる
+> 「お願い!」
+“Please!”
+
+@15674 Duke · デューク
+> 「マジンガートルネード!!」
+“Mazinger Tornado!!”
+
+@15675 Ryoma · リョウ
+> 「みんな、用意はいいか!?」
+“Everyone, ready?!”
+
+@15676 Maria · マリア
+> 「いつでもいいわよ!」
+“I'm ready anytime!”
+
+@15677 Hikaru · ひかる
+> 「こちらも準備完了です!」
+“Ready here too!”
+
+@15678 Duke · デューク
+> 「ファイナルダイナミックスペシャル!!」
+“Final Dynamic Special!!”
+
+@15679 Maria · マリア
+> 「いまだわ! 兄さん」
+“Now, brother!”
+
+@15680 Hikaru · ひかる
+> 「チャンスよ!」
+“This is our chance!”
+
+@15681 Duke · デューク
+> 「トリプルマジンガーパンチ!!」
+“Triple Mazinger Punch!!”
+
+@15682 Maria · マリア
+> 「このぉ! 叩き切ってやるんだから!」
+“Take this! I'll slice you right through!”
+
+@15683 Hikaru · ひかる
+> 「こっちはいいわよ、マリアちゃん!」
+“I'm set on my end, Maria!”
+
+@15684 Maria · マリア
+> 「よぉし!」
+“All right!”
+---
+> 「ダブル・マジンガーブレード!!」
+“Double Mazinger Blade!!”
+
+@15685 Naida · ナイーダ
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15686 Naida · ナイーダ
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15687 Naida · ナイーダ
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@15688 Naida · ナイーダ
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15689 Naida · ナイーダ
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15690 Naida · ナイーダ
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15691 Naida · ナイーダ
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15692 Naida · ナイーダ
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15693 Naida · ナイーダ
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15694 Naida · ナイーダ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15695 Naida · ナイーダ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15696 Naida · ナイーダ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15697 Naida · ナイーダ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15698 Naida · ナイーダ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15699 Naida · ナイーダ
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”

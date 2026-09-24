@@ -1,0 +1,166 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13522 Guerrilla · ゲリラ
+> 「このおぉぉぉっ!!」
+“Why youuuu!!”
+
+@13523 Guerrilla · ゲリラ
+> 「覚悟!」
+“Prepare yourself!”
+
+@13524 Guerrilla · ゲリラ
+> 「くらえっ!!」
+“Take this!!”
+
+@13525 Guerrilla · ゲリラ
+> 「うけてみろっ!!」
+“Try and take it!!”
+
+@13526 Guerrilla · ゲリラ
+> 「いけっ!」
+“Go!”
+
+@13527 Guerrilla · ゲリラ
+> 「させるかっ!」
+“Like I'd let you!”
+
+@13528 Guerrilla · ゲリラ
+> 「うおおっ!」
+“Uwooo!”
+
+@13529 Guerrilla · ゲリラ
+> 「そこだっ!」
+“Right there!”
+
+@13530 Guerrilla · ゲリラ
+> 「当たれっ!」
+“Hit 'em!”
+
+@13531 Guerrilla · ゲリラ
+> 「とどめっ!!」
+“Finish it!!”
+
+@13532 Guerrilla · ゲリラ
+> 「こいつでどうだっ!」
+“How's this!”
+
+@13533 Guerrilla · ゲリラ
+> 「うわっ! や、やられたっ!」
+“Uwah! I-I'm hit!”
+
+@13534 Guerrilla · ゲリラ
+> 「ぐうっ! しまった!」
+“Guuh! Damn it!”
+
+@13535 Guerrilla · ゲリラ
+> 「うおおっ! く、なんてパワーなんだ!?」
+“Uwooo! W-What power!?”
+
+@13536 Guerrilla · ゲリラ
+> 「ぐあっ! こ、こいつ、強いぞ!」
+“Gah! Th-This one's strong!”
+
+@13537 Guerrilla · ゲリラ
+> 「な、何っ!? バカな!?」
+“W-What!? Impossible!?”
+
+@13538 Guerrilla · ゲリラ
+> 「うぐっ! い、いかん、やられる!?」
+“Ugh! N-No, I'm done for!?”
+
+@13539 Guerrilla · ゲリラ
+> 「あうっ! ま、まずい、このままでは……」
+“Augh! Th-This is bad, at this rate...”
+
+@13540 Guerrilla · ゲリラ
+> 「ちっ、さすがにできるな!」
+“Tch, you're good after all!”
+
+@13541 Guerrilla · ゲリラ
+> 「ぐっ! だが、この程度ならまだっ!」
+“Guh! But this much is nothing yet!”
+
+@13542 Guerrilla · ゲリラ
+> 「くっ! まだまだ勝負はこれからよ!」
+“Kuh! The real fight's just starting!”
+
+@13543 Guerrilla · ゲリラ
+> 「うっ! やるな!!」
+“Uh! You're good!!”
+
+@13544 Guerrilla · ゲリラ
+> 「くぅっ! やってくれたな!!」
+“Kuh! You got me!!”
+
+@13545 Guerrilla · ゲリラ
+> 「ふん、かすった程度のものよ!」
+“Hmph, it barely grazed me!”
+
+@13546 Guerrilla · ゲリラ
+> 「こそばゆいぜ!」
+“That tickles!”
+
+@13547 Guerrilla · ゲリラ
+> 「ちっ、あたっちまった!」
+“Tch, it got me!”
+
+@13548 Guerrilla · ゲリラ
+> 「この程度のダメージなど!!」
+“Damage like this is nothing!!”
+
+@13549 Guerrilla · ゲリラ
+> 「当たっただけだ!」
+“It only grazed me!”
+
+@13550 Guerrilla · ゲリラ
+> 「甘いっ!」
+“Too soft!”
+
+@13551 Guerrilla · ゲリラ
+> 「そこかっ!」
+“There!”
+
+@13552 Guerrilla · ゲリラ
+> 「かわせたっ!」
+“Dodged it!”
+
+@13553 Guerrilla · ゲリラ
+> 「当たるか!」
+“As if that'd hit!”
+
+@13554 Guerrilla · ゲリラ
+> 「なんの!」
+“No problem!”
+
+@13555 Guerrilla · ゲリラ
+> 「かわしてみせる!!」
+“I'll dodge it, just watch!!”
+
+@13556 Guerrilla · ゲリラ
+> 「残念だったな!」
+“Too bad for you!”
+
+@13557 Guerrilla · ゲリラ
+> 「そんなビームなど!」
+“A Beam like that is nothing!”
+
+@13558 Guerrilla · ゲリラ
+> 「ふん、ムダなことをする!」
+“Hmph, what a waste of effort!”
+
+@13559 Guerrilla · ゲリラ
+> 「ちっ、しまった! 弾切れか!」
+“Tch, damn! Out of ammo!”
+
+@13560 Guerrilla · ゲリラ
+> 「くそっ! 弾切れかよ!」
+“Damn! Out of ammo!”
+
+@13561 Guerrilla · ゲリラ
+> 「くっ! ここからでは
+>  反撃は無理か……」
+“Kuh! From here I can't fight back...”
+
+@13562 Guerrilla · ゲリラ
+> 「あんな遠くから攻撃してくるのか!?」
+“They're attacking from that far away!?”

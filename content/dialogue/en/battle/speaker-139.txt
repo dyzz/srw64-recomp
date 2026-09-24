@@ -1,0 +1,65 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7184 Akira · アキラ
+> 「推力がどんどん落ちていきます!」
+“Thrust is falling fast!”
+
+@7185 Akira · アキラ
+> 「ああ!? 舵がききません!」
+“Ah?! I can't steer!”
+
+@7194 Akira · アキラ
+> 「バランサー損傷!」
+“Balancer damaged!”
+
+@7195 Akira · アキラ
+> 「うわぁぁぁぁっ」
+“Uwaaaaaaah!”
+
+@7199 Akira · アキラ
+> 「く、負けるかってぇ!」
+“Ngh, like I'd lose!”
+
+@7202 Akira · アキラ
+> 「やった!」
+“Got 'em!”
+
+@7210 Akira · アキラ
+> 「だめだ! とても届かない!」
+“No way! It's way out of range!”
+
+@7229 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7230 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7231 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7232 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7233 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7234 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7235 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7236 Akira · アキラ
+> 「ばかめ!」
+“Fool!”
+
+@7237 Akira · アキラ
+> 「ばかめ!」
+“Fool!”

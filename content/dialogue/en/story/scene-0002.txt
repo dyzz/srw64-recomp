@@ -1,0 +1,729 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17503 Ark · アーク（本话主角）
+> 「オレンジが手に入らなかったのは
+>  予定外だったな
+“Not getting any oranges was a miscalculation.
+---
+>  エミリア、怒るだろうなぁ……。
+>  でも、しかたないよな
+Emilia's going to be mad... But I guess there's nothing I can do.
+---
+>  かわりにチーズも手に入ったし……」
+At least I got some cheese instead...”
+
+@17504 Ark · アーク（本话主角）
+> 「なんだ……?」
+“What the...?”
+
+@17505 Ark · アーク（本话主角）
+> 「うわぁぁーっ!! て、帝国軍!?
+>  は……はやく戻らなくちゃ!」
+“Uwaaaah!! I-Imperial forces?! I... I have to get back!”
+
+@17506 Specials · スペシャルズ
+> 「{PartnerSurname}特尉」
+“Special Lieutenant {PartnerSurname}.”
+
+@17507 Ehrlich · エルリッヒ（本话主角的对手）
+> 「場所は確認できたか?」
+“Have you confirmed the location?”
+
+@17508 Specials · スペシャルズ
+> 「はい。しかし……」
+“Yes. However...”
+
+@17509 Ehrlich · エルリッヒ（本话主角的对手）
+> 「どうした?」
+“What is it?”
+
+@17510 Specials · スペシャルズ
+> 「どうも正規軍の無人機が
+>  出ているようです。当該地域に
+“It seems regular army drones have been deployed. Code C has been
+---
+>  コードCが発令されています」
+issued for the area in question.”
+
+@17511 Ehrlich · エルリッヒ（本话主角的对手）
+> 「バカな。無人機にコードCでは、
+>  無差別攻撃と同じではないか
+“That's absurd. Code C with drones is no different from indiscriminate attack.
+---
+>  ゲリラ掃討のためとはいえ、
+>  それでは何も残らん」
+Even if it's to sweep out guerrillas, that would leave nothing behind.”
+
+@17512 Specials · スペシャルズ
+> 「このところかなり多くなってますね。
+>  どうしますか?」
+“It's been happening quite a lot lately. What will you do?”
+
+@17513 Ehrlich · エルリッヒ（本话主角的对手）
+> 「追跡していた試作機の行方が
+>  そこだというのなら、いくしかなかろう?
+“If the prototype we were tracking is there, we have no choice but to go, do we?
+---
+>  それに、我々もこの任務のために
+>  それなりの権限が与えられている
+Besides, we've been given considerable authority for this mission.
+---
+>  間に合えば無人機の攻撃を
+>  抑制することもできよう
+If we make it in time, we can even suppress the drones' attack.
+---
+>  放っておけば住人も全滅するぞ」
+If we leave it alone, the residents will be wiped out too.”
+
+@17514 Specials · スペシャルズ
+> 「了解です。無人機は容赦が
+>  ありませんからね」
+“Understood. Those drones show no mercy, after all.”
+
+@17515 Guerrilla · ゲリラ
+> 「くそっ、帝国めッ!
+>  散開して迎撃しろ!!」
+“Damn it, those Imperials! Spread out and intercept them!!”
+
+@17516 Guerrilla · ゲリラ
+> 「ちっ……だめかな、こいつは。
+>  ……ん?」
+“Tch... I guess this one's no good. ...Hm?”
+
+@17517 Ark · アーク（按段落 3DD1）
+> 「はぁっ、はぁっ、みんな、はやく!!」
+“Hah, hah, everyone, hurry!!”
+
+@17518 Guerrilla · ゲリラ
+> 「くっ……逃げ遅れた連中か!」
+“Ngh... People who didn't make it out in time!”
+
+@17519 Ark · アーク（按段落 3DD1）
+> 「うわぁぁぁぁぁーっ!!」
+“Uwaaaaaaah!!”
+
+@17520 Guerrilla · ゲリラ
+> 「しまった!? くっ……」
+“Damn it!? Ngh...”
+
+@17521 Guerrilla · ゲリラ
+> 「坊や、おい坊や、生きてるか!?
+>  早く逃げるんだ!」
+“Kid, hey kid, are you alive?! Hurry and run!”
+
+@17522 Ark · アーク（按段落 3DD1）
+> 「う……あ……
+>  み、みんなは……?」
+“Ugh... ah... E-everyone...?”
+
+@17523 Guerrilla · ゲリラ
+> 「残念だが……瓦礫の下だろう
+“I'm sorry, but... they're under the rubble.
+---
+>  くそっ帝国め、見境いなしに
+>  攻撃してやがる
+Damn those Imperials, attacking without a thought for anyone.
+---
+>  おい坊や、何をしてる!?」
+Hey kid, what are you doing!?”
+
+@17524 Ark · アーク（按段落 3DD1）
+> 「……おばさん、おばさん! おじさん!?」
+“...Auntie, Auntie! Uncle!?”
+
+@17525 Guerrilla · ゲリラ
+> 「バカなことはやめて早く逃げろ!
+>  お前も死ぬぞ!!」
+“Stop doing foolish things and run! You'll die too!!”
+
+@17526 Ark · アーク（按段落 3DD1）
+> 「エミリア!
+>  返事をしてくれ、エミリア!!」
+“Emilia! Answer me, Emilia!!”
+
+@17527 Guerrilla · ゲリラ
+> 「やめろ坊や!
+>  みんな死んじまってる!」
+“Stop it, kid! They're all dead!”
+
+@17528 Guerrilla · ゲリラ
+> 「くっ!!」
+“Ngh!!”
+
+@17529 Ark · アーク（按段落 3DD1）
+> 「エミリア……なんで……なんで……」
+“Emilia... why... why...”
+
+@17530 Ark · アーク（按段落 3DD1）
+> 「あ、あんたたちがこんな所で戦争
+>  なんて始めるからっ!
+“I-it's because you people started a war in a place like this!
+---
+>  うあぁぁぁぁっ!」
+Uwaaaaaah!”
+
+@17531 Guerrilla · ゲリラ
+> 「……すまんな、坊や。
+>  だが言い訳をするわけじゃないが、
+“...I'm sorry, kid. But I'm not making excuses when I say this:
+---
+>  奴らは、はなからこの町が
+>  狙いだったんだ
+they had their sights on this town from the very start.
+---
+>  皆殺しにするつもりだったのさ。
+>  あの無人機をみりゃわかる
+They meant to kill everyone. One look at those drones tells you that.
+---
+>  奴らのやり方は3年前から
+>  少しもかわっちゃいない」
+Their methods haven't changed one bit since three years ago.”
+
+@17532 Ark · アーク（按段落 3DD1）
+> 「うぅっ……うっ……」
+“Ugh... ugh...”
+
+@17533 Guerrilla · ゲリラ
+> 「逃げろ坊や。
+>  俺たちはもう長くは持たない
+“Run, kid. We won't last much longer.
+---
+>  頼む、せめて君だけでも
+>  逃げてくれ!」
+Please, at least you have to get away!”
+
+@17534 Guerrilla · ゲリラ
+> 「くっそぉぉぉーっ!!」
+“Daaamn iiit!!”
+
+@17535 Ark · アーク（按段落 3DD1）
+> 「うわっっ!」
+“Uwah!!”
+
+@17536 Ark · アーク（按段落 3DD1）
+> 「ひっ!?」
+“Hii!?”
+
+@17537 Ark · アーク（按段落 3DD1）
+> 「う……ううっ……」
+“U... uuugh...”
+
+@17538 Ark · アーク（按段落 3DD1）
+> 「なんで……なんで……」
+“Why... why...”
+
+@17539 Ark · アーク（按段落 3DD1）
+> 「うわあぁぁぁぁぁーっっ!!」
+“Uwaaaaaaaah!!”
+
+@17540 Ark · アーク（按段落 3DD1）
+> 「うぅっ……」
+“Ugh...”
+
+@17541 Ark · アーク（按段落 3DD1）
+> 「……ちくしょう……なんで……」
+“...Damn it... why...”
+
+@17542 Ark · アーク（按段落 3DD1）
+> 「くっ…………!?
+“Ngh......!?
+---
+>  うわっ、な……なんだ!?
+>  中にもいるのか!?」
+Uwah, w-what?! Is there someone inside too!?”
+
+@17543 Ark · アーク（按段落 3DD1）
+> 「違う……こいつ……
+>  レジスタンスの……?」
+“No... this thing... it's the Resistance's...?”
+
+@17544 Ark · アーク（按段落 3DD1）
+> 「シ……システムが生きてる……?
+>  これ……どうやって……」
+“Th... the system's still alive...? How... how do I...”
+
+@17545 Ark · アーク（按段落 3DD1）
+> 「う、動くのか!?
+“I-it moves?!
+---
+>  動作モード……市街戦……
+>  セミオート?
+Combat mode... urban warfare... semi-auto?
+---
+>  このディスプレイに出てるのは
+>  操作ガイダンスなのか……」
+Is what's on this display an operation guide...?”
+
+@17546 Ark · アーク（按段落 3DD1）
+> 「ちくしょう!! どうせ死ぬんなら、
+>  1機くらいはっ!!」
+“Damn it!! If I'm gonna die anyway, I'll take at least one with me!!”
+
+@17547 Ark · アーク（按段落 3DD1）
+> 「うわぁぁーっ!
+>  動け、動けよ!」
+“Uwaaah! Move, move, damn it!”
+
+@17548 Ark · アーク（按段落 3DD1）
+> 「はぁっはぁっはぁっ
+>  ……やった……のか……?」
+“Hah, hah, hah... did I... do it...?”
+
+@17549 Ark · アーク（按段落 3DD1）
+> 「く……くそぉぉーっ!!」
+“D... damn iiit!!”
+
+@17550 Ark · アーク（本话主角）
+> 「なんで……」
+“Why...”
+
+@17551 Specials · スペシャルズ
+> 「ひと足遅かったようですね」
+“Seems we were a step too late.”
+
+@17552 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「うむ……ひどい有り様だ。帝国の
+>  無人機などに好きにやらせるから、
+“Mm... what a sight. Because they let the Empire's drones run wild,
+---
+>  非武装の市民まで巻き添えに
+>  なる」
+even unarmed civilians get caught in it.”
+
+@17553 Specials · スペシャルズ
+> 「レジスタンスは、ほぼ壊滅
+>  したようですが、どうしますか?」
+“The Resistance appears to be all but wiped out. What shall we do?”
+
+@17554 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ケガ人の救助を優先しろ……
+>  いや、待て。あれは……ソルデファーか
+“Prioritize rescuing the wounded... no, wait. Is that... the Soldifar?
+---
+>  やはりレジスタンスの手に
+>  渡っていたな」
+So it did end up in the Resistance's hands after all.”
+
+@17555 Ark · アーク（按段落 3DD1）
+> 「ま、まだいる!? うぅ……
+>  やっぱりだめなのか……ちくしょう
+“Th-there are more?! Ugh... so it really is hopeless... damn it.
+---
+>  エミリア……俺もすぐいくから……」
+Emilia... I'll be there soon too...”
+
+@17556 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「聞こえるか、そこのパイロット。
+>  残っているのは貴君だけだ
+“Can you hear me, pilot out there? You're the only one left.
+---
+>  無益な戦いはやめ、投降したまえ」
+Cease this pointless fighting and surrender.”
+
+@17557 Ark · アーク（按段落 3DD1）
+> 「……人の声!? だ、誰がっ!」
+“...A human voice?! W-who's there?!”
+
+@17558 Ehrlich · エルリッヒ（按段落 3DD1）
+> (……若いな、あのパイロット……)
+(...So young, that pilot...)
+
+@17559 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「少年、私の任務はレジスタンスに
+>  強奪された試作機の回収
+“Boy, my mission is to recover the prototype the Resistance stole,
+---
+>  あるいは破壊だ。おとなしく
+>  そのマシンをおりてくれれば、この私……
+or else destroy it. If you come down from that machine quietly, I,
+---
+>  {PartnerFull}の名に
+>  かけて、君の命は保証しよう
+{PartnerFull}, give you my word your life will be spared.
+---
+>  だが、聞き入れてもらえぬならば……」
+But if you refuse to listen...”
+
+@17560 Ark · アーク（按段落 3DD1）
+> 「うるさいんだよ、この人殺しが!
+>  今さら俺一人生き残ったって!」
+“Shut up, you murderer! What's the point of me being the only one left alive?!”
+
+@17561 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「……やむを得まい。これ以上
+>  死者を増やすのは忍びないが、
+“...It can't be helped. I hate to add to the death toll,
+---
+>  これも任務なのでな」
+but this too is my duty.”
+
+@17562 Aboly · アポリー
+> 「大尉、こいつは……」
+“Captain, this one is...”
+
+@17563 Quattro · クワトロ
+> 「間に合わなかったか……」
+“So we didn't make it in time...”
+
+@17564 Quattro · クワトロ
+> 「いや……あの1機、
+>  例の試作機か?」
+“No... that machine, is it the prototype?”
+
+@17565 Aboly · アポリー
+> 「そのようです」
+“It appears so.”
+
+@17566 Quattro · クワトロ
+> 「あれはまだやれるようだな。
+>  あれだけでも回収せねば
+“It looks like it can still fight. We have to recover at least that one.
+---
+>  危険をおかしてここまで来た
+>  意味がない……」
+Otherwise there was no point in coming this far at such risk...”
+
+@17567 Aboly · アポリー
+> 「どうします、大尉?」
+“What are your orders, Captain?”
+
+@17568 Quattro · クワトロ
+> 「アポリー中尉、
+>  その機体でやれそうか?」
+“Lieutenant Aboly, can you handle that machine?”
+
+@17569 Aboly · アポリー
+> 「コックピットが違っても、三日も
+>  あれば自分の手足にすることが
+“Even if the cockpit's different, give me three days and I can make it
+---
+>  できます。大丈夫です」
+like my own limbs. No problem.”
+
+@17570 Roberto · ロベルト
+> 「自分たちはマニュアル通りの
+>  訓練など、やっておりません
+“We've never done by-the-book training, you see.
+---
+>  それで、1年戦争もくぐり抜けて
+>  きたのですから」
+That's how we made it through the One Year War.”
+
+@17571 Quattro · クワトロ
+> 「ロベルト中尉、その過信は
+>  自分の足をすくうぞ」
+“Lieutenant Roberto, that overconfidence will trip you up.”
+
+@17572 Roberto · ロベルト
+> 「はっ、クワトロ大尉」
+“Yes, Captain Quattro.”
+
+@17573 Quattro · クワトロ
+> 「よし、敵を牽制しつつ
+>  あの試作機を確保する」
+“All right, keep the enemy in check while we secure that prototype.”
+
+@17574 Specials · スペシャルズ
+> 「特尉、あれは!?」
+“Sir, what is that?!”
+
+@17575 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「ん? 見たことのない機体だな
+“Hm? A machine I've never seen before.
+---
+>  レジスタンスが独自に
+>  開発したものか?
+Did the Resistance develop it on their own?
+---
+>  情報部もあてにならん。
+>  狙いは、あれか……」
+Even Intelligence is unreliable. So that's their target...”
+
+@17576 Specials · スペシャルズ
+> 「やはりレジスタンスでしょうか?
+>  どうしますか!?」
+“The Resistance after all, then? What are your orders?!”
+
+@17577 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「あれを持っていかれるわけにはいかん。
+>  二手に分かれるぞ」
+“We can't let them take that. We'll split into two groups.”
+
+@17578 Specials · スペシャルズ
+> 「はっ!」
+“Yes, sir!”
+
+@17579 Ark · アーク（按段落 3DD1）
+> 「な、なんだ……?
+>  敵……じゃないのか……?」
+“W-what the...? They're not... the enemy...?”
+
+@17580 Ark · アーク（按段落 3DD1）
+> 「え……?」
+“Huh...?”
+
+@17581 Quattro · クワトロ
+> 「そこのパイロット、まだやれそうか?」
+“Pilot out there, can you still fight?”
+
+@17582
+> *  は、はい……
+> *  ほっといてくれ!
+> *  …………
+* “Y-yes...”
+* “Leave me alone!”
+* “...”
+
+@17583 Ark · アーク（按段落 3DD1）
+> 「は、はい……」
+“Y-yes...”
+
+@17584 Quattro · クワトロ
+> 「よし、援護する」
+“All right, we'll cover you.”
+
+@17585 Ark · アーク（按段落 3DD1）
+> 「ほっといてくれッ!!」
+“Leave me alone!!”
+
+@17586 Quattro · クワトロ
+> 「残念だがそういうわけにもいかん
+“Sorry, but I can't do that.
+---
+>  それは我々が苦労して入手
+>  したものだ。放ってはおけない
+That's something we went through a lot of trouble to get. I can't just leave it.
+---
+>  それに、君のような若者を
+>  無駄死にさせるわけにもな」
+Besides, I can't let a young man like you die for nothing.”
+
+@17587 Ark · アーク（按段落 3DD1）
+> 「勝手なことを……」
+“Doing whatever you want...”
+
+@17588 Quattro · クワトロ
+> 「どう思ってもらっても構わんが、
+>  今は敵を排除することが先決だ
+“Think whatever you like, but right now clearing out the enemy comes first.
+---
+>  動けるのなら戦うのだな。
+>  援護する」
+If you can still move, then fight. We'll cover you.”
+
+@17589 Quattro · クワトロ
+> 「しかたあるまい。アポリー、ロベルト、あの
+>  機体は確保したい。援護するぞ」
+“It can't be helped. Aboly, Roberto, I want that machine secured. We're covering it.”
+
+@17590 Aboly · アポリー
+> 「了解です」
+“Understood.”
+
+@17591 Ehrlich · エルリッヒ（本话主角的对手）
+> 「くっ、やむを得ん。
+>  ここはひとまず引くしかないか……」
+“Ngh, it can't be helped. I suppose we have no choice but to withdraw for now...”
+
+@17592 Ehrlich · エルリッヒ（本话主角的对手）
+> 「くっ、やむを得ん。
+>  全機、撤退せよ!」
+“Ngh, it can't be helped. All units, retreat!”
+
+@17593 Ehrlich · エルリッヒ（按段落 3DD1）
+> 「くっ、やむを得ん。
+>  ここはひとまず引くしかないか……」
+“Ngh, it can't be helped. I suppose we have no choice but to withdraw for now...”
+
+@17594 Roberto · ロベルト
+> 「コックピット、開きます」
+“Opening the cockpit.”
+
+@17595 Quattro · クワトロ
+> 「君、大丈夫か?」
+“You there, are you all right?”
+
+@17596 Ark · アーク（按段落 3DD1）
+> 「……う、
+>  うぅっ……うっ……」
+“...Ugh, ugh... ngh...”
+
+@17597 Quattro · クワトロ
+> 「……生きては、いるようだな……」
+“...He's alive, at least...”
+
+@17598 Ark · アーク（本话主角）
+> 「あの……ありがとうございました。
+>  ……大尉」
+“Um... thank you. ...Captain.”
+
+@17599 Quattro · クワトロ
+# 检查提示：未用必用译名：連邦軍→Federation Forces
+> 「反帝国運動組織、
+>  地球解放戦線機構の
+“Quattro Bajeena, of the anti-Imperial movement, the Liberation Front of the Earth.
+---
+>  クワトロ・バジーナだ。もと連邦
+>  軍人が中核となっている
+It's a Resistance organization with former Federation soldiers at its core.
+---
+>  レジスタンス組織でな。おかげで、
+>  いまだに階級で呼びあうクセが
+Thanks to that, I still can't shake the habit of
+---
+>  抜けずにいる」
+addressing people by rank.”
+
+@17600 Ark · アーク（本话主角）
+> 「{HeroFull}……です
+“I'm {HeroFull}.
+---
+>  地球解放戦線機構の
+>  名前は、聞いたことがあります
+I've heard of the Liberation Front of the Earth.
+---
+>  この町はレジスタンスを支援する
+>  人たちが、多くいましたから」
+A lot of people in this town supported the Resistance.”
+
+@17601 Quattro · クワトロ
+> 「ああ。君が落ち着いて話ができる
+>  ようになってくれて、助かる
+“Yeah. I'm glad you've calmed down enough to talk.
+---
+>  またすぐ、帝国軍がくるだろう。
+>  できれば我々と一緒に
+The Imperial Army will be back before long. If possible, I'd like you
+---
+>  来てもらいたいのだが、どうする?
+>  君がここに残りたいというのなら、
+to come with us. What do you say? If you want to stay here,
+---
+>  止めはしないが……」
+I won't stop you, but...”
+
+@17602 Ark · アーク（本话主角）
+> 「…………いえ、いきます。僕には……もう
+>  何も残っていませんから
+“...No, I'll come. I... don't have anything left anymore.
+---
+>  ……ここに残っても、帝国軍と
+>  うまくやる自信はありませんし……」
+...Even if I stayed here, I don't think I could get along with the Imperial Army...”
+
+@17603 Quattro · クワトロ
+> 「そうか……」
+“I see...”
+
+@17604 Ark · アーク（本话主角）
+> 「あの、少し時間をください。
+>  おば夫婦や……友達を……
+“Um, please give me a little time. My aunt and her husband... and my friends...
+---
+>  せめて埋葬してあげたいんです」
+I want to at least bury them.”
+
+@17605 Quattro · クワトロ
+> 「構わんが……我々も手伝おう」
+“I don't mind, but... we'll help too.”
+
+@17606 Ark · アーク（本话主角）
+> 「でも……」
+“But...”
+
+@17607 Quattro · クワトロ
+> 「君はあまり見ないほうがいい
+>  ……それに、急ぐ必要もある」
+“You'd better not look too much... Besides, we need to hurry.”
+
+@17608 Ark · アーク（本话主角）
+> 「はい……」
+“Yes...”
+
+@17609 Quattro · クワトロ
+> 「ロベルトはここで待機。
+>  アポリーは私と一緒にきてくれ」
+“Roberto, stay here. Aboly, come with me.”
+
+@17610 Aboly · アポリー
+> 「……ひどいもんですね。
+>  どこもかしこもめちゃめちゃだ」
+“...What a mess. Everything's in ruins.”
+
+@17611 Quattro · クワトロ
+> 「そうだな……」
+“Yeah...”
+
+@17612 Ark · アーク（本话主角）
+> (ごめん……エミリア。今は、どうしたら
+>  いいのかわからないんだ
+(I'm sorry... Emilia. Right now, I don't know what to do.
+---
+>  俺、とりあえずこの人たちと一緒に
+>  いくよ。必ずもどってくるから……
+I'll go with these people for now. I'll definitely come back, so...
+---
+>  さよなら、エミリア……)
+Goodbye, Emilia...)
+
+@17613 Ark · アーク（本话主角）
+> 「あの、これからどうするんですか?」
+“Um, what will you do now?”
+
+@17614 Quattro · クワトロ
+> 「仲間と合流する。このところ
+>  各地の抵抗運動が活発に
+“We'll regroup with our comrades. With resistance movements stirring
+---
+>  なっているせいで、帝国軍も
+>  ゲリラ狩りに本腰をいれてきている
+all over lately, the Imperial Army has gotten serious about guerrilla hunting.
+---
+>  我々としては、高まりつつある
+>  気運を維持したい。そのために
+As for us, we want to keep the momentum building. That's why
+---
+>  各地の活動を支援しているのだ
+>  君が守ってくれた帝国の
+we're supporting movements everywhere. That Imperial
+---
+>  試作機、開発コードは
+>  ソルデファーというが、あれを帝国から
+prototype you protected, its development code is Soldifar, and
+---
+>  奪取したのも、その一環でな。
+>  反帝国の抵抗運動の
+seizing it from the Empire was part of that effort. It's a machine
+---
+>  象徴とできる機体だ」
+that can serve as a symbol of the anti-Imperial resistance.”
+
+@17615 Ark · アーク（本话主角）
+> 「……そのために、
+>  僕の町は攻撃されたんですか」
+“...Is that why my town was attacked?”
+
+@17616 Quattro · クワトロ
+> 「理由の一つではあるだろうが、
+>  ……違うな」
+“It may be one of the reasons, but... no, that's not it.”
+
+@17617 Ark · アーク（本话主角）
+> 「……なんで……いいきれるんです」
+“...How can you... say that so surely?”
+
+@17618 Quattro · クワトロ
+> 「理由は君が口にしている
+“The reason is what you just said.
+---
+>  ゲリラが潜伏し、その
+>  支持者が多かったのだろう?
+Guerrillas were hiding there, and they had many supporters, didn't they?
+---
+>  帝国軍はそういう場所を
+>  つぶしにかかっているのだ」
+The Imperial Army is out to crush places like that.”
+
+@17619 Ark · アーク（本话主角）
+> 「…………」
+“...”

@@ -1,0 +1,456 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@50547 Bright · ブライト
+> 「突入部隊は!?」
+“What about the strike team?!”
+
+@50548 Amuro · アムロ
+> 「大丈夫だ。うまく突入して
+>  くれたよ」
+“They're fine. They broke through without a hitch.”
+
+@50549 Bright · ブライト
+> 「アムロ、戻ったのか」
+“Amuro, you're back.”
+
+@50550 Amuro · アムロ
+> 「後は、待つだけさ。ドモンたちがうまく
+>  やってくれるのをね」
+“Now all we can do is wait. Wait for Domon and the others to pull it off.”
+
+@50551 Bright · ブライト
+> 「ああ…………」
+“Yeah...”
+
+@50552 Quinze · カーンズ
+> 「くっ……まさかここまで来るとは……」
+“Ngh... To think they'd make it this far...”
+
+@50553 Domon · ドモン
+# 审校：原译“You had no trouble deceiving me and using me”语气太平，未体现“よくも”的愤怒；改为更符合多蒙热血性格的强烈谴责。
+> 「カーンズ!? やはり貴様か! よくも
+>  この俺をだまし、利用してくれたな!」
+“Quinze?! So it was you after all! You tricked me and used me, and now you'll pay!”
+
+@50554 Quinze · カーンズ
+> 「ドモン・カッシュか……フフ、だがもはや
+>  遅いわ。この無敵の動力炉を
+“Domon Kasshu... Heh, but it's too late now. Against this invincible power reactor,
+---
+>  相手に、勝てるはずがない」
+you don't stand a chance.”
+
+@50555 Domon · ドモン
+> 「無敵の動力炉だろうが
+>  なんだろうが
+“Invincible power reactor or not,
+---
+>  貴様の野望はすべて叩きつぶす!
+>  そこで見ているがいい!
+I'll crush every last bit of your ambition! Just sit there and watch!
+---
+>  ゆくぞ、お前たち!」
+Let's go, all of you!”
+
+@50556 Quinze · カーンズ
+> 「そ、そんなばかな……
+>  だ、だが動力炉を失った程度で
+“I-Impossible... B-But losing the power reactor alone
+---
+>  この最終形デビルガンダムは
+>  とめられはせんぞ……」
+won't stop this final form of Dark Gundam...”
+
+@50557 Murasame · 村雨
+> 「やはり動力炉をとめても無駄か…
+>  本体を叩かねば
+“So stopping the power reactor really is useless... It seems we have to strike
+---
+>  だめだということだな」
+the main body itself.”
+
+@50558 Ginrei · 銀鈴
+> 「健二さん!?」
+“Kenji?!”
+
+@50559 Murasame · 村雨
+> 「ファルメール、ここをぬけて、
+>  さらに奥へと向かえ
+“Falmel, break through here and head further in.
+---
+>  そこに、デビルガンダムの本体がいる」
+The main body of the Dark Gundam is in there.”
+
+@50560 Ginrei · 銀鈴
+> 「でも、健二さん、そのバリアーは……」
+“But, Kenji, that barrier is...”
+
+@50561 Murasame · 村雨
+> 「こいつは俺がなんとかする……くっ」
+“I'll do something about this one... Ngh.”
+
+@50562 Murasame · 村雨
+> 「ぐうぅぅぅぅぅ……」
+“Gwaaah...”
+
+@50563 Ginrei · 銀鈴
+> 「健二さん!?」
+“Kenji?!”
+
+@50564 Murasame · 村雨
+> 「……俺のことはいいんだ。デビルガンダムの
+>  残骸を回収した奴がいると
+“...Never mind me. Ever since I learned someone had salvaged the Dark Gundam's wreckage,
+---
+>  知った時から、こうなることはわかって
+>  いたさ。でも……
+I knew it would come to this. But still...
+---
+>  やっぱりいつものようにファルメール、
+>  お前はそっちで俺はこっちだったよ
+Just like always, Falmel, you went that way and I went this way.
+---
+>  なに、どうせ俺は死ねない男だ。
+>  どうせすぐに生き返る
+Don't worry, I'm a man who can't die. I'll come back to life soon enough anyway.
+---
+>  ……お前だけだったよ、死ねない男の
+>  つらさをわかってくれたのは。ありがとう…」
+...You were the only one who understood how hard it is to be a man who can't die. Thank you...”
+
+@50565 Ginrei · 銀鈴
+> 「健二さん、やめて!!
+>  私が、私が飛べば……」
+“Kenji, stop!! If I—if I fly out there...”
+
+@50566 Murasame · 村雨
+> 「ファルメール、君は力を使っちゃ
+>  いけない。いつかまた会おう……そうだ
+“Falmel, you mustn't use your power. We'll meet again someday... Yes,
+---
+>  俺が死ねる、その日がくれば…………」
+if the day ever comes when I can die...”
+
+@50567 Quinze · カーンズ
+> 「ばかな…………」
+“Impossible...”
+
+@50568 Ginrei · 銀鈴
+> 「健二さん……
+“Kenji...
+---
+>  みんな、行きましょう
+>  デビルガンダムを倒すのよ」
+Everyone, let's go. We're going to destroy the Dark Gundam.”
+
+@50569 Murasame · 村雨
+> 「いま、バリアーを切った。
+>  お前たち、この奥へと向かえ
+“I've cut the barrier now. All of you, head in there.
+---
+>  そこにデビルガンダムの本体が
+>  いるはずだ
+The main body of the Dark Gundam should be there.
+---
+>  そいつを叩けば、
+>  デビルアクシズもまた亡びる」
+Strike it down, and Dark Axis will fall as well.”
+
+@50570 Domon · ドモン
+> 「デビルガンダム……これが最終形態
+>  ……どうやら俺たちの想像以上の
+“Dark Gundam... So this is its final form... It seems it's gained even more power
+---
+>  力をつけたようだな。だがっ!!」
+than we imagined. But!!”
+
+@50571 Wong · ウォン
+> 「………………」
+“...”
+
+@50572 Domon · ドモン
+> 「コアはウォンか……哀れな男だ。
+>  せめて、一気にケリをつけてやる!」
+“The core is Wong... What a pitiful man. At least I'll finish this in one blow!”
+
+@50573 Quinze · カーンズ
+> 「くっ……おのれ、我々の
+>  オペレーション・メテオを
+“Ngh... Curse you, I won't let you interfere with our Operation Meteor!
+---
+>  邪魔させはせん!
+>  この最終形態のデビルガンダムが
+This final form of the Dark Gundam
+---
+>  貴様らを始末してくれるわ。
+>  ゆけ、デビルウォン!」
+will dispose of you all. Go, Devil Wong!”
+
+@50574 Wong · ウォン
+> 「…………」
+“...”
+
+@50575 Domon · ドモン
+> 「……さぁこい、デビルガンダム!
+>  貴様の最後の姿、この俺が
+“...Come on, Dark Gundam! I'll be the one to witness
+---
+>  見届けてやる!」
+your final form!”
+
+@50576 Domon · ドモン
+> 「フン……出たな。いいかお前たち!
+>  これが最後だ!」
+“Hmph... There it is. Listen up, all of you! This is the last one!”
+
+@50577 Domon · ドモン
+> 「……やったよ兄さん……
+>  今度こそ、デビルガンダムを……」
+“...I did it, brother... This time for sure, the Dark Gundam is...”
+
+@50578 Rain · レイン
+> 「やったわ、ドモン!
+>  今度こそ、本当に終わりよ」
+“You did it, Domon! This time it's really over.”
+
+@50579 Duo · デュオ
+> 「へへっ、やったぜ。
+>  もう2度と出てくんじゃねぇぞ!」
+“Heh, we did it. Don't you ever show your face again!”
+
+@50580 Heero · ヒイロ
+> 「デビルガンダムの破壊を確認……
+>  任務完了」
+“Destruction of the Dark Gundam confirmed... Mission complete.”
+
+@50581 Amuro · アムロ
+> 「デビルアクシズが崩壊する……
+>  ドモンたちはまだ出てこないのか?」
+“Dark Axis is collapsing... Domon and the others still haven't come out?”
+
+@50582 Beltorchika · ベルトーチカ
+> 「ええ…………あ、来たわ!」
+“Yes... Ah, they're here!”
+
+@50583 Bright · ブライト
+> 「よし、収容次第、離脱する!
+>  急げよ!」
+“All right, we depart as soon as they're aboard! Hurry!”
+
+@50584 Dr. Hazuki · 葉月博士
+> 「アクシズの様子はどうかね?」
+“How does Axis look?”
+
+@50585 Henken · ヘンケン
+> 「アクシズを取り込んでいた
+>  デビルガンダムはなくなったようですな
+“It appears the Dark Gundam that had absorbed Axis is gone.
+---
+>  が、我々が思っていたほどアクシズ
+>  本体に影響はなかったとみえます」
+However, it seems Axis itself was not affected as much as we thought.”
+
+@50586 Sally · サリィ
+> 「どういうことです?」
+“What do you mean?”
+
+@50587 Henken · ヘンケン
+> 「ん……アクシズの核パルスは
+>  いまだに稼働を続けている
+“Hm... Axis's nuclear pulse is still running.
+---
+>  つまりアクシズはまだ地球へ向けて
+>  落下中だということだ」
+In other words, Axis is still falling toward Earth.”
+
+@50588 Anna · アンナ
+> 「そんな……じゃあ……」
+“No... then that means...”
+
+@50589 Henken · ヘンケン
+> 「無駄だったとはいわんよ。
+>  ただ、まだ足りないということだな」
+“I won't say it was pointless. It just means it wasn't enough.”
+
+@50590 Shinobu · 忍
+> 「チッ、いってぇどういうことだよ」
+“Tch, what the hell is that supposed to mean?”
+
+@50591 Bright · ブライト
+> 「アクシズはとまらんか……」
+“So Axis won't stop...”
+
+@50592 Amuro · アムロ
+> 「シャアの奴……デビルガンダムを滅ぼし
+>  ても影響はないと知ってたんだ」
+“That Char... he knew destroying the Dark Gundam wouldn't affect it.”
+
+@50593 Banjo · 万丈
+> 「やはりアクシズそのものを
+>  破壊するしかないようだね」
+“It seems we've got no choice but to destroy Axis itself.”
+
+@50594 Alan · アラン
+> 「ああ……だが、もうアクシズは
+>  地球の引力に引かれ始める」
+“Yeah... but Axis has already begun to be pulled in by Earth's gravity.”
+
+@50595 Shinobu · 忍
+> 「ぐだぐだいっててもしかたがねぇ。
+>  もう1回やんなきゃならねぇんだろ!?」
+“There's no point sittin' around whining. We've gotta do it one more time, right?!”
+
+@50596 Show · ショウ
+> 「それも、すぐにな」
+“And soon, at that.”
+
+@50597 Bright · ブライト
+> 「そうだな……補給を急がせろ。
+>  修理は応急処置でかまわん!
+“Right... Get the resupply moving. Emergency repairs will do!
+---
+>  またすぐに出すぞ!」
+We're launching again right away!”
+
+@50598 Astonaige · アストナージ
+# 机翻疑问：新译名：レインジャネット=Ray, Janet（原文疑似将レイ、ジャネット连写，按两人处理）
+> 「違う、それはこっちにまわせ!! レイン
+>  ジャネット、デッキにあがってくれ!
+“No, send that over here!! Ray, Janet, get up on the deck!
+---
+>  シャリー、急いで!
+>  時間ないんだぞ!!」
+Shirley, hurry! We don't have time!!”
+
+@50599 Koji · 甲児
+> 「うっへぇ、大変そうだなぁ。
+>  アストナージさん、オレもなんか
+“Whoa, that looks rough. Astonaige, you want me to
+---
+>  手伝おうか?」
+give you a hand with something?”
+
+@50600 Astonaige · アストナージ
+> 「ばかいってないで、パイロットは
+>  ハサン先生のとこで栄養剤でも
+“Don't be stupid. Pilots, go get Teacher Hasan to give you some
+---
+>  うってもらって、少しでも休めよ。
+>  こっちは俺たちでなんとかするから!」
+vitamins and rest up as much as you can. We'll manage things here!”
+
+@50601 Beltorchika · ベルトーチカ
+> 「……どういうこと?」
+“...What do you mean?”
+
+@50602 Amuro · アムロ
+> 「だからさ、シャアは、
+>  俺と決着をつけたいんだ
+“I mean, Char wants to settle things with me.
+---
+>  だからあえて俺たちの前に出てくる」
+That's why he deliberately comes out in front of us.”
+
+@50603 Beltorchika · ベルトーチカ
+> 「まさか! そんなことしたって何にも……」
+“No way! Even if he did that, it wouldn't accomplish anything...”
+
+@50604 Amuro · アムロ
+> 「意味はある。シャアはそういう奴だ。
+>  もしかしたら、俺たちと
+“It does mean something. That's the kind of man Char is. Maybe he's been
+---
+>  一緒にいた時期から
+>  それを考えていたのかもしれない」
+thinking about it since the time we were together.”
+
+@50605 Beltorchika · ベルトーチカ
+> 「ばかばかしい。地球の
+>  寒冷化作戦なんでしょ?」
+“That's ridiculous. It's a plan to freeze Earth, isn't it?”
+
+@50606 Amuro · アムロ
+> 「そうだが……」
+“It is, but...”
+
+@50607 Beltorchika · ベルトーチカ
+> 「本気じゃないとでも?」
+“You're saying he's not serious?”
+
+@50608 Amuro · アムロ
+> 「いや、奴は本気だよ。
+>  俺と対決したいというのもね
+“No, he's serious. About wanting to face me, too.
+---
+>  そういうことのために
+>  命をはってみせるのがシャアだ
+Char is the kind of man who'll risk his life for something like that.
+---
+>  両立させたいんだよ、奴は」
+He wants to have it both ways.”
+
+@50609 Beltorchika · ベルトーチカ
+> 「アムロ……」
+“Amuro...”
+
+@50610 Amuro · アムロ
+> 「大丈夫さ。俺は、俺たちは
+>  奴に勝って、アクシズもとめてみせる
+“It'll be all right. I—we—will beat him and stop Axis.
+---
+>  そのうえで生きて帰るさ。でないと、
+>  ベルにもチェーンにも、悪いものな?」
+And then we'll come back alive. Otherwise, I'd be doing wrong by both Belt and Chan, wouldn't I?”
+
+@50611 Quess · クェス
+> 「あ……うぅぅ……」
+“Ah... ugh...”
+
+@50612 Char · シャア
+> 「ん? どうした?」
+“Hm? What's wrong?”
+
+@50613 Quess · クェス
+> 「……大佐……あたし……
+>  敵をみんな殺さないと……あたし
+“...Colonel... I... I have to kill all the enemy... or I...
+---
+>  あたし……駄目になっちゃう!!」
+I... I'll fall apart!!”
+
+@50614 Char · シャア
+# 审校：原文是夏亚对克艾斯的内心独白，主语应为“她”而非“他”；原译误用 he，改为 she。
+> (死にゆく人間の意思を
+>  もろに受けすぎたか……)
+(She took in the will of dying people too directly...)
+
+@50615 Quess · クェス
+> 「みんな……みんな苦しんだんだよ!?」
+“Everyone... everyone suffered so much!?”
+
+@50616 Char · シャア
+> 「わかっている。すぐにもう1度
+>  出られるが、クェスには私を
+“I know. We can launch again soon, but I need you to
+---
+>  守ってもらわねばならん。おびえを
+>  隠すために戦うのでは、よくないな?」
+protect me, Quess. Fighting just to hide your fear isn't good, is it?”
+
+@50617 Quess · クェス
+> 「大佐……」
+“Colonel...”
+
+@50618 Char · シャア
+> 「私は準備をせねばならん。少し
+>  休め。いいな」
+“I have to get ready. Rest a little. Understood?”
+
+@50619 Quess · クェス
+> 「……はい」
+“...Yes.”
+
+@50620 Char · シャア
+> (次で終わらせるぞ……アムロ、
+>  そして{HeroMech})
+(We'll end it next time... Amuro, and {HeroMech}.)

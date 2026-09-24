@@ -1,0 +1,107 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11796 J-Ren · ジェイ＝レン
+> 「消えてなくなれ」
+“Just disappear.”
+
+@11797 J-Ren · ジェイ＝レン
+> 「くらうがいい」
+“Take this.”
+
+@11798 J-Ren · ジェイ＝レン
+> 「その力……我に示してみよ」
+“Show me... that power of yours.”
+
+@11799 J-Ren · ジェイ＝レン
+> 「見るがいい……存在の死の闇を」
+“Behold... the darkness of existence's death.”
+
+@11800 J-Ren · ジェイ＝レン
+> 「死にたくなければ、我と戦え」
+“If you don't want to die, fight me.”
+
+@11801 J-Ren · ジェイ＝レン
+> 「……消滅させる」
+“...I'll annihilate you.”
+
+@11802 J-Ren · ジェイ＝レン
+> 「終わりだ」
+“This is the end.”
+
+@11803 J-Ren · ジェイ＝レン
+> 「な……なに!?」
+“Wha... what?!”
+
+@11804 J-Ren · ジェイ＝レン
+> 「くっ……まさか、これほどとは……」
+“Ngh... To think it was this much...”
+
+@11805 J-Ren · ジェイ＝レン
+> 「いったい……この力はどこからくるのだ」
+“Just... where does this power come from?”
+
+@11806 J-Ren · ジェイ＝レン
+> 「く……これほどの力があるのか?」
+“Ngh... You have this much power?”
+
+@11807 J-Ren · ジェイ＝レン
+> 「まさかとは思ったが……我らの予想を上
+>  回るか……」
+“I doubted it, but... you surpass our expectations...”
+
+@11808 J-Ren · ジェイ＝レン
+> 「ほう……ズールを倒しただけのことはある」
+“Oh... worthy of one who defeated Zuhl.”
+
+@11809 J-Ren · ジェイ＝レン
+> 「なるほど……こういうことか」
+“I see... so that's how it is.”
+
+@11810 J-Ren · ジェイ＝レン
+> 「……確かに、面白い知性体だ……」
+“...Truly, an interesting intellect...”
+
+@11811 J-Ren · ジェイ＝レン
+> 「この程度とは……無駄だったか」
+“Only this much... Was it pointless?”
+
+@11812 J-Ren · ジェイ＝レン
+> 「……本気でこい。でなければ、消滅させ
+>  る」
+“...Come at me seriously. Otherwise, I'll annihilate you.”
+
+@11813 J-Ren · ジェイ＝レン
+> 「その程度で“アル＝イー＝クイス”と
+>  戦おうというのか?」
+“You think you can fight Al-E-Quis with that?”
+
+@11814 J-Ren · ジェイ＝レン
+> 「愚かな……」
+“Foolish...”
+
+@11815 J-Ren · ジェイ＝レン
+> 「無駄なことがわからぬようだな」
+“You seem unable to see the futility.”
+
+@11816 J-Ren · ジェイ＝レン
+# 审校：原译“beyond reasoning”不通顺，改为更自然的表达。
+> 「これでは、話にならぬな」
+“This is getting us nowhere.”
+
+@11817 J-Ren · ジェイ＝レン
+> 「ばかめ」
+“Fool.”
+
+@11818 J-Ren · ジェイ＝レン
+# 审校：原译“Am I draining too fast?”主语不明确，补充为“My energy”更清楚。
+> 「いかん……消耗が激しすぎるか」
+“No... My energy is draining too fast.”
+
+@11819 J-Ren · ジェイ＝レン
+> 「くっ……これ以上エネルギーを失っては…
+>  …」
+“Ngh... If I lose any more energy...”
+
+@11820 J-Ren · ジェイ＝レン
+> 「ほう……なかなかやるな」
+“Oh... You're quite good.”

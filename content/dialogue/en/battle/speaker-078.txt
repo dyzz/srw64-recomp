@@ -1,0 +1,97 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6099 Mash · マッシュ
+> 「行くぞっ!」
+“Here I come!”
+
+@6100 Mash · マッシュ
+> 「くらえっ!」
+“Take this!”
+
+@6101 Mash · マッシュ
+> 「もらった!」
+“Got you!”
+
+@6102 Mash · マッシュ
+> 「やらせん!」
+“I won't let you!”
+
+@6103 Mash · マッシュ
+> 「なめるなっ!」
+“Don't underestimate me!”
+
+@6104 Mash · マッシュ
+> 「させるかよっ!」
+“Like hell I'll let you!”
+
+@6105 Mash · マッシュ
+> 「これで終わりだ!」
+“This is the end!”
+
+@6106 Mash · マッシュ
+> 「な、何っ!? うおおおっ!」
+“Wha—what?! Whoaah!”
+
+@6107 Mash · マッシュ
+> 「ぐわっ!
+>  い、いかん、動力部をやられたか!?」
+“Gwah! D-damn it, did they get my power unit?!”
+
+@6108 Mash · マッシュ
+> 「うおっ!? な、なんだこいつは!?」
+“Whoa?! W-what the hell is this thing?!”
+
+@6109 Mash · マッシュ
+> 「バカなっ!? これ程のパワーが!?」
+“Impossible! This much power?!”
+
+@6110 Mash · マッシュ
+> 「ちいっ! やるな!」
+“Tch! Not bad!”
+
+@6111 Mash · マッシュ
+> 「くっ! 楽しませてもらえそうだな!!」
+“Hmph! Looks like you'll be fun!!”
+
+@6112 Mash · マッシュ
+# 审校：“Don't get cocky forever” 直译且不自然，改为更口语化的表达。
+> 「このっ! いつまでもいい気になるなっ!」
+“Why you! Don't get cocky!”
+
+@6113 Mash · マッシュ
+> 「こんな攻撃で、この俺がやられると
+>  思うなよ!」
+“Don't think an attack like that can take me down!”
+
+@6114 Mash · マッシュ
+> 「ふん、効かんわっ!」
+“Hmph, that's nothing!”
+
+@6115 Mash · マッシュ
+> 「貴様などにやられる俺ではないわ!」
+“I'm not the kind to be beaten by the likes of you!”
+
+@6116 Mash · マッシュ
+> 「黒い三連星の名は、ダテじゃ
+>  ねえってよ!」
+“The name of the Black Tri-Stars ain't just for show!”
+
+@6117 Mash · マッシュ
+> 「当たるかっ!」
+“You'll never hit me!”
+
+@6118 Mash · マッシュ
+> 「なめるなっ!」
+“Don't underestimate me!”
+
+@6119 Mash · マッシュ
+> 「バカめ、ムダなんだよ!」
+“Fool, it's useless!”
+
+@6120 Mash · マッシュ
+> 「ちっ、弾切れか」
+“Tch, out of ammo.”
+
+@6121 Mash · マッシュ
+> 「ぬうう、この距離では反撃できん!」
+“Ngh, at this range I can't fight back!”

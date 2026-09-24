@@ -1,0 +1,87 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9981 Gyugaki · 牛餓鬼
+> 「なまいきな奴らめっ! それっ!」
+“Insolent fools! Take that!”
+
+@9982 Gyugaki · 牛餓鬼
+> 「俺の父さんの牛剣鬼は
+>  空の英雄といわれているんだっ!」
+“My father, Gyukenki, is called the hero of the skies!”
+
+@9983 Gyugaki · 牛餓鬼
+> 「俺は牛剣鬼の息子だ!」
+“I am Gyukenki's son!”
+
+@9984 Gyugaki · 牛餓鬼
+> 「それっ!!」
+“Take that!!”
+
+@9985 Gyugaki · 牛餓鬼
+> 「くらえ!」
+“Take this!”
+
+@9986 Gyugaki · 牛餓鬼
+> 「いくぞ!」
+“Here I come!”
+
+@9987 Gyugaki · 牛餓鬼
+> 「俺だってぇ!」
+“I can do it too!”
+
+@9988 Gyugaki · 牛餓鬼
+> 「うわああぁあああああぁぁぁぁっ!」
+“Uwaaaaaaaaah!”
+
+@9989 Gyugaki · 牛餓鬼
+> 「ううわっ!?」
+“Uwhoa?!”
+
+@9990 Gyugaki · 牛餓鬼
+> 「ぐっ……おめおめと引き返せないっ!」
+“Ngh... I can't just slink back home!”
+
+@9991 Gyugaki · 牛餓鬼
+> 「うわあぁぁっ!? そ、そんな!?」
+“Uwaaah?! Th-That can't be!”
+
+@9992 Gyugaki · 牛餓鬼
+> 「く、くそーっ、なまいきな奴らめっ!」
+“D-Damn it, insolent fools!”
+
+@9993 Gyugaki · 牛餓鬼
+> 「だ、大丈夫だ! 俺は
+>  牛剣鬼の息子だ!」
+“I-I'm fine! I am Gyukenki's son!”
+
+@9994 Gyugaki · 牛餓鬼
+> 「ま、まだだ! こんなことでぇっ!」
+“N-Not yet! Not over something like this!”
+
+@9995 Gyugaki · 牛餓鬼
+> 「これしきの攻撃で!!」
+“An attack like that won't!!”
+
+@9996 Gyugaki · 牛餓鬼
+> 「この牛餓鬼には、効かないぞ!」
+“It won't work on me, Gyugaki!”
+
+@9997 Gyugaki · 牛餓鬼
+> 「見たか!」
+“You see that!”
+
+@9998 Gyugaki · 牛餓鬼
+> 「俺だってこのくらいはっ!」
+“Even I can do at least this much!”
+
+@9999 Gyugaki · 牛餓鬼
+> 「バカめ!」
+“Fools!”
+
+@10000 Gyugaki · 牛餓鬼
+> 「こ、攻撃できないのか!?」
+“I-I can't attack?!”
+
+@10001 Gyugaki · 牛餓鬼
+> 「届かない!? くそっ、卑怯者め!!」
+“It won't reach?! Damn you, cowards!!”

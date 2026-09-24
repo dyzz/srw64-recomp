@@ -1,0 +1,69 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10528 Erika · エリカ
+> 「ええいっ!!」
+“Hah!!”
+
+@10529 Erika · エリカ
+> 「アァァァッ、神様ぁぁっ!」
+“Aaaah, God!”
+
+@10530 Erika · エリカ
+> 「キャアァァァァーッ!!」
+“Kyaaaaaah!!”
+
+@10531 Erika · エリカ
+> 「あぁっ、神様……お願い!」
+“Ah, God... please!”
+
+@10532 Erika · エリカ
+> 「うぅっ、だめ!?」
+“Ngh, no!?”
+
+@10533 Erika · エリカ
+> 「あうぅっ、いけない!!」
+“Ah, this can't be!!”
+
+@10534 Erika · エリカ
+> 「あぁっ、いや……いやよ!!」
+“Ah, no... no!!”
+
+@10535 Erika · エリカ
+> 「うっううっ!!」
+“Ugh, ugh!!”
+
+@10536 Erika · エリカ
+> 「キャア! このままでは……」
+“Kya! At this rate...”
+
+@10537 Erika · エリカ
+> 「うぅっ!」
+“Ngh!”
+
+@10538 Erika · エリカ
+> 「あ、あたってしまった!?」
+“I-I got hit!?”
+
+@10539 Erika · エリカ
+> 「あぁっ、神様!」
+“Ah, God!”
+
+@10540 Erika · エリカ
+> 「か、かわせた? 私が……?」
+“D-Did I dodge? Me...?”
+
+@10541 Erika · エリカ
+> 「こ、これなら……」
+“I-If it's like this...”
+
+@10542 Erika · エリカ
+> 「大丈夫のはずだわ……」
+“It should be all right...”
+
+@10543 Erika · エリカ
+> 「エネルギーがないの!?」
+“No energy!?”
+
+@10544 Erika · エリカ
+> 「ここからでは届かないわ……」
+“It won't reach from here...”

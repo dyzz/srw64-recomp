@@ -1,0 +1,443 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@18125 主角
+> 「あーあ、対空監視ってのは
+>  たまんねぇな。これじゃ寝ちまうぜ
+“Ahh, this anti-air watch is a killer. I'm gonna fall asleep here.
+---
+>  まったく、なんだってこんなこと
+>  しなくちゃならないんだよ」
+Seriously, why do we even have to do this?”
+
+@18126 Roux · ルー
+> 「ミノフスキー粒子のおかげで
+>  レーダーが、きかないからでしょう」
+“Because the Minovsky particles are jamming our radar, that's why.”
+
+@18127 主角
+> 「おっと、脅かすなよ」
+“Whoa, don't scare me like that.”
+
+@18128 Roux · ルー
+> 「聞いてはいたけど、ほんとに
+>  世捨て人だったのね、あなたたち
+“I'd heard about it, but you really are a bunch of hermits.
+---
+>  大体そのおかげでレジスタンスも
+>  これだけ組織を大きくできるし
+Thanks to that, the resistance can grow this big
+---
+>  あちこちで活動できるんじゃないの」
+and operate all over the place, right?”
+
+@18129 Roux · ルー
+> 「じゃなかったら、すぐ発見されて、
+>  ミサイル撃ちこまれて
+“Otherwise we'd be spotted right away, get a missile fired at us,
+---
+>  終わっちゃうでしょ」
+and that'd be the end of it.”
+
+@18130 主角
+> 「そうなのか?」
+“Is that so?”
+
+@18131 Roux · ルー
+> 「そうなのかって、あなたねぇ」
+“'Is that so,' he says. Come on.”
+
+@18132 主角
+> 「ああ、わかったわかった。
+>  で、なんだ?」
+“Yeah, yeah, I get it. So, what is it?”
+
+@18133 Roux · ルー
+> 「なんだって……交代よ
+“What is it...? It's time to switch.
+---
+>  もう数時間ここにいたいんなら、
+>  私は、かまわないけど」
+If you want to stay here a few more hours, I don't mind.”
+
+@18134 主角
+> 「冗談はやめてくれ……ん?
+>  なんか変な音がしないか?」
+“Don't joke around... Huh? Don't you hear something weird?”
+
+@18135 Roux · ルー
+> 「音? ……あらやだ、
+>  これってエンジンじゃないの!?」
+“A sound? ...Oh no, isn't that an engine?!”
+
+@18136 主角
+> 「なんだと! おい、まてよ、
+>  墜落なんて、ごめんだぜ!?」
+“What?! Hey, wait, I am not up for crashing!”
+
+@18137 Roux · ルー
+> 「まぁ、いきなり墜落なんて
+>  しないと思うけど……」
+“Well, I don't think it'll just suddenly crash...”
+
+@18138 Beauty · ビューティ
+> 「みんな聞こえる?
+>  当機はエンジントラブルのため
+“Can everyone hear me? This craft is having engine trouble,
+---
+>  50キロほど北にある廃空港へ
+>  緊急着陸します
+so we'll make an emergency landing at an abandoned airfield about 50 kilometers north.
+---
+>  大丈夫とは思うけど、
+>  念のため衝撃にそなえておいてね」
+I'm sure it'll be fine, but just in case, brace for impact.”
+
+@18139 Roux · ルー
+> 「あらら。
+>  さい先いいとはいえないわね」
+“Oh boy. Not exactly an auspicious start.”
+
+@18140 Koji · 甲児
+> 「まったく、ひやっとしたぜ」
+“Man, that gave me a scare.”
+
+@18141 Banjo · 万丈
+> 「様子はどうだい?」
+“How are things looking?”
+
+@18142 Garrison · ギャリソン
+> 「1日もあれば、修理は可能と
+>  思われますな」
+“I believe we can have it repaired in about a day.”
+
+@18143 Banjo · 万丈
+> 「1日か……
+“A day, huh...
+---
+>  余裕をみてあるから
+>  タイムスケジュールは問題ないが
+We've got some slack in the schedule, so that's no problem,
+---
+>  敵に発見される可能性は
+>  あるか……」
+but there's a chance the enemy could find us...”
+
+@18144 Reika · レイカ
+> 「万丈、ちょっとここの配線を
+>  確認したいの。手伝ってよ」
+“Banjo, I want to check this wiring here. Give me a hand.”
+
+@18145 Banjo · 万丈
+> 「いまいく。
+>  甲児くん、悪いがみんなに
+“I'm coming. Koji, sorry, but tell everyone
+---
+>  対空監視を強化するように
+>  伝えてくれ」
+to tighten up the anti-air watch.”
+
+@18146 Koji · 甲児
+> 「あいよ」
+“Got it.”
+
+@18147 主角
+> 「{PartnerName}、どうしたんだ
+>  最近おかしいぞ」
+“{PartnerName}, what's wrong? You've been acting strange lately.”
+
+@18148 对手
+> 「貴様に、いわれたくはないな
+“I don't want to hear that from you.
+---
+>  ……{HeroNick}
+>  貴様は現状をどう思っている」
+...{HeroNick}, what do you make of the current situation?”
+
+@18149 主角
+> 「どうって、別に
+“What do I make of it? Nothing much.
+---
+>  万丈たちと一緒に
+>  ムゲ野郎と戦うのは
+Fighting those Muge bastards alongside Banjo and the others
+---
+>  師匠の遺言にもあっているしな
+fits with Master's dying wish,
+---
+>  実戦を通して修行もできる
+>  問題ないだろう」
+and I can train through real combat. No problem.”
+
+@18150 对手
+> 「フッ……フハハハハハッ、そうか。
+>  やはり貴様と……」
+“Heh... Hahahahaha, I see. So after all, with you...”
+
+@18151 主角
+> 「敵か!? いくぞ{PartnerName}」
+“Enemy?! Let's go, {PartnerName}!”
+
+@18152 对手
+> 「……やはり貴様と共にくるべきでは
+>  なかったのだ……{HeroName}」
+“...I knew I should never have come with you... {HeroName}.”
+
+@18153 Banjo · 万丈
+> 「たいした数じゃない。
+>  偵察部隊だな
+“Not a big force. A scouting unit.
+---
+>  一気にせん滅するぞ」
+We'll wipe them out in one go.”
+
+@18154 主角
+> 「了解だ、いくぞアースゲイン」
+“Roger. Let's go, Earthgain!”
+
+@18155 主角
+> 「{PartnerName}、撤収するぞ」
+“{PartnerName}, we're pulling out.”
+
+@18156 对手
+> 「……やはり、
+>  このままでは、いられん……」
+“...I can't go on like this after all...”
+
+@18157 主角
+> 「なんだって? おい{PartnerName}、
+>  聞いてるのか!?」
+“What was that? Hey, {PartnerName}, are you listening?!”
+
+@18158 对手
+> 「{HeroName}」
+“{HeroName}.”
+
+@18159 主角
+> 「なんだ?」
+“What?”
+
+@18160 对手
+> 「俺と戦え」
+“Fight me.”
+
+@18161 主角
+> 「な……なんだと!?」
+“Wha... what did you say?!”
+
+@18162 对手
+> 「聞こえなかったのか?
+>  俺と戦え、と言ったのだ」
+“Didn't you hear me? I said fight me.”
+
+@18163 主角
+> 「今戦ったばかりなのに組み手か?
+>  いいだろう、久々にやるか」
+“We just fought, and now you want a sparring match? Fine, let's go like old times.”
+
+@18164 对手
+> 「ク、クハハハハッ、ばかか、貴様は。
+>  俺が言っているのは
+“Heh, hahahahaha, are you an idiot? What I'm saying is
+---
+>  俺と貴様どちらが上か、
+>  優劣を決しようということだ
+let's settle which of us is superior, you or me.
+---
+>  どちらかが、死んだとしてもな」
+Even if one of us dies.”
+
+@18165 主角
+> 「なに!? {PartnerName}、
+>  一体、どうしたというんだ!?」
+“What?! {PartnerName}, what on earth has gotten into you?!”
+
+@18166 对手
+> 「貴様は甘くなった
+“You've gone soft.
+---
+>  もっとも最初から
+>  甘ちゃんだったがな
+Though you were a softie from the start.
+---
+>  俺は貴様と違って
+>  仲間ごっこなど趣味ではない
+Unlike you, I've no taste for playing at being comrades.
+---
+>  貴様の、その甘ちゃんヅラを
+>  見ているとヘドがでる」
+Looking at that soft face of yours makes me sick.”
+
+@18167 对手
+> 「もっと腹立たしいのは
+“What infuriates me more is
+---
+>  そんな貴様と、この俺が
+>  同列だと思われることだ
+that I'm thought to be on the same level as you.
+---
+>  貴様ごときと並んで
+>  称されるのは我慢ならん!」
+I won't stand being named alongside the likes of you!”
+
+@18168 主角
+> 「{PartnerName}、貴様ぁぁーっ!」
+“{PartnerName}, you baaastard!”
+
+@18169 对手
+> 「そうだ、来い!
+“That's right, come on!
+---
+>  今ここで貴様に
+>  引導を渡してくれる!
+I'll send you off to the next world right here and now!
+---
+>  “武機覇拳流”の
+>  正当なる伝承者が
+That I am the true successor of the ‘Buki Haken-ryu’—
+---
+>  この俺であるということを、
+>  貴様の体に叩きこんでやる!!」
+I'll pound that into your body!!”
+
+@18170 主角
+> 「ぬうぅぅ…………」
+“Nghhhhh...”
+
+@18171 对手
+> 「さぁどうした
+“Well, what's wrong?
+---
+>  この俺が“仲間”だから
+>  戦えん、とでもいうか!?
+Are you saying you can't fight me because I'm a ‘comrade’?!
+---
+>  来い{HeroName}!!
+>  俺と戦え!!」
+Come, {HeroName}!! Fight me!!”
+
+@18172 主角
+> 「……断る!」
+“...I refuse!”
+
+@18173 对手
+> 「なんだと!? 貴様そこまでふぬけに
+>  なったというのか!?」
+“What?! Have you gone that spineless?!”
+
+@18174 主角
+> 「今の俺は、師匠の遺言を受け
+>  正義を、この地球を守るために
+“Right now I fight to carry out Master's dying wish—to protect justice, and this Earth.
+---
+>  戦っている。まだ先は長く、
+>  敵は強大だ
+The road ahead is long, and the enemy is mighty.
+---
+>  こんなところでムダな戦いを
+>  しているヒマはない!」
+I've no time to waste on a pointless fight here!”
+
+@18175 主角
+> 「{PartnerName}、貴様は
+“{PartnerName}, have you
+---
+>  師匠の最期の言葉を
+>  忘れたのか!?」
+forgotten Master's final words?!”
+
+@18176 对手
+> 「……いいだろう」
+“...Very well.”
+
+@18177 主角
+> 「なに?」
+“What?”
+
+@18178 对手
+> 「貴様が戦えん、というなら
+>  それもよかろう
+“If you say you can't fight, then so be it.
+---
+>  だが、忘れるな{HeroNick}。
+>  いずれ必ず、俺と戦ってもらう
+But don't forget, {HeroNick}. Someday, you will fight me.
+---
+>  必ずだ。この次に会うときは、
+>  俺は手段を選ばん!」
+Without fail. The next time we meet, I'll hold nothing back!”
+
+@18179 主角
+> 「{PartnerName}、待て!」
+“{PartnerName}, wait!”
+
+@18180 对手
+> 「忘れるなよ{HeroName}。
+>  次に会うときは……」
+“Don't forget, {HeroName}. The next time we meet...”
+
+@18181 主角
+> 「{PartnerName}!!」
+“{PartnerName}!!”
+
+@18182 Banjo · 万丈
+> 「修理も終わった。
+>  出発しよう」
+“The repairs are done. Let's move out.”
+
+@18183 Beauty · ビューティ
+> 「でも」
+“But...”
+
+@18184 Banjo · 万丈
+> 「彼は、戻ってはこないさ」
+“He won't be coming back.”
+
+@18185 Beauty · ビューティ
+> 「{HeroName}、かわいそう……」
+“{HeroName}, how sad...”
+
+@18186 Garrison · ギャリソン
+> 「やはり、こうなってしまいましたか。
+>  最初から気になってはおりました
+“So it's come to this after all. I had been worried from the start.
+---
+>  あの若者のまなざしは険しく、
+>  そして心は、激しすぎたのですな」
+That young man's gaze was harsh, and his heart far too fierce.”
+
+@18187 Garrison · ギャリソン
+> 「自分を常に、ギリギリのところへと
+>  追いやっていなければ気がすまぬ
+“He won't be satisfied unless he's always driving himself to the very edge.
+---
+>  そういう若者なのでしょう
+That's the kind of young man he is.
+---
+>  あの激しさが、いずれは彼自身を
+>  焼きつくしてしまうやもしれませんが」
+That fierceness may one day burn him up from within.”
+
+@18188 Banjo · 万丈
+> 「彼らは独自の道を
+>  歩いてきたがゆえに
+“They've walked their own path, and so
+---
+>  彼らなりの生き方がある
+they have their own way of living.
+---
+>  僕たちがそれに、口を差し挟む
+>  必要はない」
+There's no need for us to interfere.”
+
+@18189 Garrison · ギャリソン
+> 「さようでございますな、確かに」
+“Indeed, you are quite right.”
+
+@18190 Banjo · 万丈
+> 「さぁ、出発だ。僕たちには、まだまだ
+>  やらなければならないことがある」
+“Now, let's move out. There's still so much we have to do.”
+
+@18191 主角
+> 「{PartnerNick}……なぜお前は……」
+“{PartnerNick}... why did you...”

@@ -1,0 +1,884 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@40924 Avie-Lu · アヴィ＝ルー
+> 「……地球はもうだめかもネ」
+“...Maybe Earth is done for.”
+
+@40925 ???
+# 审校：原文是“ムゲかズール”，应译为 Muge or Zul，初稿误作 Muge and Zul。
+> 「ならばムゲかズールが選ばれるだけのこと
+>  どうせ最初から候補に入っては
+“Then Muge or Zul will simply be the ones chosen. They were never
+---
+>  いなかった奴らではないか」
+in the running from the start, were they?”
+
+@40926 Avie-Lu · アヴィ＝ルー
+> 「そうだけどサ。あいつらがいちばん
+>  面白いんだヨ」
+“True, but they're the most fun of all.”
+
+@40927 ???
+> 「……いよいよ終局が近づいてきたよう
+>  ですね。アヴィ＝ルー、ジェイ＝レン
+“...It seems the final act is drawing near. Avie-Lu, J-Ren,
+---
+>  それぞれの役目を果たしなさい。
+>  それが我ら大銀河の意思たる
+fulfill your respective roles. That is the will of our great galaxy—
+---
+>  “アル＝イー＝クイス”が、
+>  なさねばならぬこと」
+what ‘Al-E-Quis’ must do.”
+
+@40928 Avie-Lu · アヴィ＝ルー
+> 「わかってるヨ……ヴァル＝ア。もう1度
+>  やりなおす余裕は、もうないからネ」
+“I know... Val-A. There's no room left to start over again.”
+
+@40929 Amuro · アムロ
+> 「問題は、我々が敵の勢力圏
+>  突破に手間どっている間に
+“The question is how things have shifted while we've been struggling
+---
+>  状況がどう動いたかだが……」
+to break through the enemy's sphere of influence...”
+
+@40930 Bunny · バニー
+# 审校：トレーズ総帥应译为 Commander Treize，初稿 General 不准确。
+> 「艦長、OZのトレーズ総帥です」
+“Captain, it's OZ's Commander Treize.”
+
+@40931 Bright · ブライト
+> 「トレーズ?
+>  いったい何があったんだ……」
+“Treize? What on earth happened...”
+
+@40932 Treize · トレーズ
+> 「諸君、残念なことに君たちは、
+>  ひと足遅かったようだ」
+“Gentlemen, regrettably, it seems you were a step too late.”
+
+@40933 Alan · アラン
+> 「どういうことだ。まさか……」
+“What do you mean? Surely not...”
+
+@40934 Treize · トレーズ
+> 「銀河帝国軍は地上降下
+>  部隊の大部分を投入してきた
+“The Galactic Empire committed the bulk of its ground landing forces.
+---
+>  我々も必死の抵抗を試みたが
+>  クスコはすでに……
+We tried to resist with everything we had, but Cusco has already...
+---
+>  銀河帝国の手に落ちた」
+fallen into the Galactic Empire's hands.”
+
+@40935 Amuro · アムロ
+> 「なんだって!?」
+“What did you say?!”
+
+@40936 Bright · ブライト
+> 「なんということだ……我々は……
+>  間にあわなかったというのか……」
+“How could this be... We... we didn't make it in time...”
+
+@40937 Chief Chujo · 中条長官
+> 「くっ……我々はいつもそうだ。
+>  いつも遅すぎる」
+“Ngh... It's always like this for us. Always too late.”
+
+@40938 Garrison · ギャリソン
+> 「なるほど……これでわかりました。
+>  つまり、帝国軍が探していたものは
+“I see... now I understand. In other words, what the Imperial forces were after
+---
+>  “刻印”そのものであったと、
+>  こういうことでしょう」
+was the ‘Crest’ itself. That's what this means.”
+
+@40939 Treize · トレーズ
+> 「私もそう思う。どうやら敵は
+>  我々がそれに触れるのを、どうしても
+“I believe so as well. It seems the enemy was absolutely determined
+---
+>  避けたかったようだ」
+to keep us from touching it.”
+
+@40940 Koji · 甲児
+> 「おい、冗談じゃねぇぞ! “グラドス
+>  の刻印”をおさえられちゃ
+“Hey, don't give me that! If they've got the ‘Crest of Grados’ under their control,
+---
+>  オレたちには勝ち目がないんだろ!?」
+we don't stand a chance, do we?!”
+
+@40941 Chibodee · チボデー
+> 「オーマイガッ!」
+“Oh my god!”
+
+@40942 Judau · ジュドー
+> 「な、なんだよ、いったいどうするんだよ!?
+>  俺たちは……」
+“W-what the hell, what are we supposed to do?! We...”
+
+@40943 Roux · ルー
+> 「黙って! 勝ち目のない戦いなんて
+>  これまでだって何度もあったわ
+“Quiet! We've faced hopeless battles plenty of times before.
+---
+>  今に始まったことじゃない。やるのよ。
+>  何がなんでも、“刻印”のある
+This is nothing new. We do it. No matter what, we're going
+---
+>  遺跡へ行くの!」
+to the ruins where the ‘Crest’ is!”
+
+@40944 Julia · ジュリア
+> 「……その通りです。あきらめては
+>  なりません」
+“...Exactly. We must not give up.”
+
+@40945 Shinobu · 忍
+> 「ああ、そうだな。よーし、そうと決まった
+>  ら、行こうぜ、クスコに!」
+“Yeah, that's right. All right, if that's decided, let's go—to Cusco!”
+
+@40946 Quatre · カトル
+> 「そう……ですよね、まだ間にあわないと
+>  決まったわけではありませんよね」
+“That's... right, isn't it? It's not decided that we're too late yet.”
+
+@40947 Heero · ヒイロ
+> 「だが、クスコ一帯は敵が制圧して
+>  いる。容易には突破できない
+“But the entire Cusco area is under enemy control. We can't break through easily.
+---
+>  どうするつもりだ」
+What do you intend to do?”
+
+@40948 Alan · アラン
+> 「うむ……この戦力差だ。そんな
+>  力まかせの方法では、どうにもならん」
+“Hmm... with this disparity in forces, brute force won't get us anywhere.”
+
+@40949 Sara · 沙羅
+> 「なにいってんだい! どうせここで
+>  やらなきゃ、あたしらはおしまいさ
+“What are you saying?! If we don't do it here, we're finished anyway.
+---
+>  容易だろうが容易じゃなかろうが、
+>  やるしかないんだよ!」
+Easy or not, we've got no choice but to do it!”
+
+@40950 Duo · デュオ
+> 「そういうこった。やれやれ、しんどい戦い
+>  になりそうだぜ」
+“That's how it is. Man, this is gonna be a rough fight.”
+
+@40951 Shinobu · 忍
+> 「けっ、楽な戦いなんてもんがあるんなら
+>  俺は昼寝でもしてるさ
+“Heh, if there were such a thing as an easy battle, I'd be taking a nap.
+---
+>  アラン、やっぱりあんたと将軍は
+>  間違いなく親子だよ
+Alan, you and the General really are father and son, no doubt about it.
+---
+>  よく似てやがるぜ」
+You're just alike.”
+
+@40952 Alan · アラン
+> 「藤原、私は……」
+“Fujiwara, I...”
+
+@40953 Treize · トレーズ
+> 「なるほど、君たちの覚悟のほどは
+>  よくわかった。そういうことならば
+“I see, I understand your resolve well enough. If that's the case,
+---
+>  我々OZも全力をあげて協力
+>  しよう。遺跡への突破口は
+we of OZ will cooperate with all our strength. We will open
+---
+>  我々が開く」
+the breach to the ruins.”
+
+@40954 Amuro · アムロ
+> 「しかし、それでは……」
+“But that would mean...”
+
+@40955 Treize · トレーズ
+> 「我がOZの兵士諸君は、
+>  この戦いのもつ意味を正しく
+“My OZ soldiers understand the true meaning of this battle.
+---
+>  理解している。全力をつくして
+>  戦ってくれるだろう。君は、君たちは
+They will fight with everything they have. You—all of you—
+---
+>  遺跡へ到達することだけを考えて
+>  もらいたい」
+need only think about reaching the ruins.”
+
+@40956 Bright · ブライト
+> 「……それしかないか。よし、作戦を
+>  検討しよう」
+“...That's our only option, then. All right, let's work out the operation.”
+
+@40957 Show · ショウ
+> 「……OZの攻撃が始まったか」
+“...So OZ's attack has begun.”
+
+@40958 Chum · チャム
+> 「ショウ……」
+“Show...”
+
+@40959 Show · ショウ
+> 「大丈夫さ、チャム。トレーズだって
+>  馬鹿じゃない」
+“It's all right, Chum. Treize isn't a fool either.”
+
+@40960 Marvel · マーベル
+> 「…………」
+“...”
+
+@40961 Chum · チャム
+> 「マーベル、どうしたの?」
+“Marvel, what's wrong?”
+
+@40962 Marvel · マーベル
+> 「……ねぇ、ショウ。出撃するたびに
+>  これでお別れか、なんて
+“...Hey, Show. Every time we sortie, I don't want to think
+---
+>  思いたくはないけど……」
+this might be goodbye, but...”
+
+@40963 Show · ショウ
+> 「それ以上はいうなよ。オーラ力には
+>  呼び合う力だってあるんだ
+“Don't say any more. Aura Power has the power to call out to one another.
+---
+>  別れることなんてないさ」
+We'll never be parted.”
+
+@40964 Marvel · マーベル
+> 「本当にそう思えて?」
+“Can you really believe that?”
+
+@40965 Show · ショウ
+# 检查提示：未用必用译名：マーベル→Marvel
+> 「そうでなければ、バイストンウェルから
+>  今まで、マーベルと一緒には
+“If that weren't so, I couldn't have stayed with you all this way from Byston Well
+---
+>  いられやしないさ」
+up to now.”
+
+@40966 Marvel · マーベル
+> 「……信じたいわね」
+“...I'd like to believe it.”
+
+@40967 Show · ショウ
+> 「信じろよ。地球が平和になった
+>  あとでだって、一緒にいられるさ
+“Believe it. Even after Earth is at peace, we'll still be together.
+---
+>  じっとしてるからそんなこと考えるんだ。
+>  整備でも手伝ってこよう」
+You only think things like that because you're sitting around doing nothing. I'm going to go help with the maintenance.”
+
+@40968 David · デビッド
+> 「なんなんだ?」
+“What's with them?”
+
+@40969 Chum · チャム
+> 「2人ともすっごい不器用なのよ」
+“Those two are hopeless, both of them.”
+
+@40970 Simone · シモーヌ
+> 「ああ、そういうこと」
+“Ah, so that's what it is.”
+
+@40971 Chum · チャム
+> 「そういうこと」
+“That's what it is.”
+
+@40972 Tetsuya · 鉄也
+> 「しかし、待つだけというのは確かに
+>  つらいな」
+“Still, just waiting around really is hard.”
+
+@40973 Jun · ジュン
+# 审校：原文“マーベルじゃなくても”意为“即使不是玛贝尔（也会这样想）”，初稿“Even if it isn't you, Marvel”把对象弄反了。
+> 「そうだね……マーベルじゃなくても、
+>  もしも……って考えちゃうもんね」
+“Yeah... Even if you're not Marvel, you can't help thinking 'what if'...”
+
+@40974 Ark · アーク（按段落 3DD1）
+> 「ネガティブな思考じゃ、そういう
+>  結果しか得られない。そういうのは
+“If you think negatively, that's the only outcome you'll get. That kind of
+---
+>  よくないんじゃないか?」
+thinking isn't good, is it?”
+
+@40975 Ryoma · リョウ
+> 「それはそうだな。俺たちはここまで戦い
+>  続けてきた。まだやれると信じよう」
+“That's true. We've kept fighting this far. Let's believe we can still do it.”
+
+@40976 Hayato · ハヤト
+> 「ああ、まだこんなもんじゃ、俺たちの
+>  戦いを終わらせるわけにはいかんな」
+“Yeah, we can't let our fight end at a time like this.”
+
+@40977 Jun · ジュン
+> 「そうだね……そう思うよ」
+“Yeah... I think so too.”
+
+@40978 Ark · アーク（按段落 3DD1）
+> 「そうさ。こんなところで、こんなところで
+>  終わらせちゃいけないんだ」
+“That's right. We can't let it end here, of all places.”
+
+@40979 Chum · チャム
+> 「{HeroNick}……なんだか怖いよ。
+>  いつもと違う」
+“{HeroNick}... I'm kind of scared. You're not like yourself.”
+
+@40980 Ark · アーク（按段落 3DD1）
+> 「そうかい? 気のせいだよ、チャム」
+“Is that so? You're imagining things, Chum.”
+
+@40981 Selain · セレイン（按段落 3DD2）
+> 「目の前の戦いに勝つことだけを
+>  考えていればいい。もしもは、ないんだ」
+“Just think about winning the battle in front of you. There is no 'what if.'”
+
+@40982 Ryoma · リョウ
+> 「それはそうだな。俺たちはここまで戦い
+>  続けてきた。まだやれると信じよう」
+“That's true. We've kept fighting this far. Let's believe we can still do it.”
+
+@40983 Hayato · ハヤト
+> 「ああ、まだこんなもんじゃ、俺たちの
+>  戦いを終わらせるわけにはいかんな」
+“Yeah, we can't let our fight end at a time like this.”
+
+@40984 Jun · ジュン
+> 「そうだね……そう思うよ」
+“Yeah... I think so too.”
+
+@40985 Selain · セレイン（按段落 3DD2）
+> 「それでいい。だからこそ、私たちは
+>  今までやってこれたんだ」
+“That's right. That's exactly why we've been able to make it this far.”
+
+@40986 Duo · デュオ
+> 「ああ……あんたらとあったのも、ずいぶん
+>  昔の気がするぜ
+“Yeah... Feels like it's been ages since I met you guys.
+---
+>  あぁーあ、考えてみりゃ、あの頃は
+>  もっとずっと単純だったんだよなぁ……」
+Ahh, come to think of it, things were a lot simpler back then...”
+
+@40987 Brad · ブラッド（按段落 3DD3）
+> 「バカなことをいうな! 俺たちは必ず
+>  勝つ。俺たちがそう信じなくて
+“Don't talk nonsense! We will win. If we don't believe that,
+---
+>  どうして戦いに勝てる!?」
+how could we ever win a battle?!”
+
+@40988 Domon · ドモン
+> 「その通りだ。俺たちはホーロー虫を
+>  見習うべきだな」
+“Exactly. We should learn from the horo bug.”
+
+@40989 Chum · チャム
+> 「ねぇ、ほうろうむしってなぁに?」
+“Hey, what's a horo bug?”
+
+@40990 Ryoma · リョウ
+> 「知ってるか?」
+“You know it?”
+
+@40991 Tetsuya · 鉄也
+> 「いいや、聞いたこともないな」
+“No, never even heard of it.”
+
+@40992 Hayato · ハヤト
+> 「それで、そのホーロー虫ってのは
+>  何なんだ、ドモン?」
+“So what is this horo bug, Domon?”
+
+@40993 Domon · ドモン
+> 「ホーロー虫というやつはな、体長が
+>  2センチほどしかないくせに、自分の
+“The horo bug is a brave little insect—only about two centimeters long, yet it charges
+---
+>  数倍もある虫をエサとして向かって
+>  いく勇敢な虫だ。弱いくせに
+at prey several times its own size. It's weak,
+---
+>  自分が生きるためには、絶対に
+>  あきらめん」
+but to survive, it never, ever gives up.”
+
+@40994 Chum · チャム
+> 「ふぅーん」
+“Hmm.”
+
+@40995 Ryoma · リョウ
+> 「なるほど、今の俺たちは
+>  そうならなくちゃいけない、というわけか」
+“I see. So that's what we have to become now.”
+
+@40996 Brad · ブラッド（按段落 3DD3）
+> 「まさにそうだな。ホーロー虫か……
+>  いい話だぜ」
+“Exactly. The horo bug, huh... That's a good story.”
+
+@40997 Chibodee · チボデー
+> 「おいドモーン、お前またホーロー虫の
+>  話をしてたんだってなぁ」
+“Hey Domon, I hear you were telling that horo bug story again.”
+
+@40998 Rain · レイン
+> 「えーっ! ドモンったら、またあの話を
+>  してたの?」
+“What?! Domon, you were telling that story again?”
+
+@40999 Sai Saici · サイ・サイシー
+# 审校：原文只说“不存在的虫”，初稿加了 insect 不算错，但为更口语化改为 bug，与 horo bug 呼应。
+> 「だめだよ、アニキ。そんな存在しない
+>  虫の話なんかしちゃ」
+“That's no good, bro. You can't go telling stories about a bug that doesn't even exist.”
+
+@41000 Domon · ドモン
+> 「お、お前たち、この話はだな……」
+“Y-you guys, this story is, uh...”
+
+@41001 George · ジョルジュ
+> 「はいはい、もう何度も聞きましたよ、
+>  ドモン。しかし、いくら自分がかつて
+“Yeah, yeah, we've heard it plenty of times already, Domon. But even if it once
+---
+>  勇気づけられたからといって、
+>  人をだますのはあまり感心しませんね」
+gave you courage, I can't say I approve of deceiving people.”
+
+@41002 Domon · ドモン
+> 「…………」
+“...”
+
+@41003 Manami · マナミ（按段落 3DD4）
+> 「だめよ、そんなことじゃ。あたしたちは
+>  今、この地球を背負っているのよ
+“That won't do at all. Right now, we're carrying this whole Earth on our shoulders.
+---
+>  信じましょう。ここまで戦い続けて
+>  きた、あたしたちの力を」
+Let's believe—in the strength that's kept us fighting all this way.”
+
+@41004 Ryoma · リョウ
+> 「それはそうだな。俺たちはここまで戦い
+>  続けてきた。まだやれると信じよう」
+“That's right. We've kept fighting this long. Let's believe we can still do it.”
+
+@41005 Hayato · ハヤト
+> 「ああ、まだこんなもんじゃ、俺たちの
+>  戦いを終わらせるわけにはいかんな」
+“Yeah. We can't let our fight end at a time like this.”
+
+@41006 Jun · ジュン
+> 「そうだね……そう思うよ」
+“Yeah... I think so too.”
+
+@41007 Lawrence · ローレンス
+> 「そうでございますとも。想いは力となり
+>  信じることもまた、力となるのです」
+“Indeed, my lady. Feelings become strength, and believing is also a source of strength.”
+
+@41008 Kamille · カミーユ
+> 「まだか……トレーズの合図は……」
+“Not yet...? Treize's signal...”
+
+@41009 Koji · 甲児
+> 「ああ、早いトコ終わらせたいもんだぜ。
+>  ジュリアさん、遺跡まで行ったら
+“Yeah, I want to get this over with fast. Miss Julia, once we reach the ruins,
+---
+>  “刻印”を発動させるまでに、
+>  どれくらい時間が、かかるんだい?」
+how long will it take to activate the ‘Mark’?”
+
+@41010 Julia · ジュリア
+> 「……確実なことはいえませんが、
+>  それほど長くは、かからないでしょう」
+“...I cannot say for certain, but it should not take very long.”
+
+@41011 Ryo · 亮
+> 「“クスコの聖女”、か。
+>  ムゲ帝国の一兵士が聖女と
+“‘The Holy Woman of Cusco,’ huh. So that ruin is connected to how a mere soldier of the Muge Empire
+---
+>  呼ばれるようになったのも、その遺跡
+>  が関係してたってわけか」
+came to be called a holy woman.”
+
+@41012 Koji · 甲児
+> 「そういえば前にアンナがいってたな。
+>  クスコのあたりから噂が広まったって」
+“Now that you mention it, Anna said that before. The rumor spread from around Cusco.”
+
+@41013 Anna · アンナ
+> 「ええ……」
+“Yes...”
+
+@41014 Ryo · 亮
+> 「しかし……どうやら聖女さんは
+>  自分でいっているほどには
+“But... it seems the holy woman isn't as
+---
+>  乗り気じゃないようだ」
+enthusiastic about this as she claims.”
+
+@41015 Anna · アンナ
+> 「やっぱり……そうなんですか? 私も、
+>  そうじゃないかっていう気はしていました」
+“Is that... really so? I had a feeling that might be the case too.”
+
+@41016 Julia · ジュリア
+> 「そうですね……わたくしは今でも、
+>  人と人とが最善をつくして
+“Yes... Even now, I believe that people doing their utmost to
+---
+>  理解しあうことが、いちばん大切な
+>  ことと信じています。できることならば
+understand one another is the most important thing of all. If I could have helped it,
+---
+>  “グラドスの刻印”などは
+>  使いたくありませんでした」
+I would never have wanted to use the ‘Mark of Grados.’”
+
+@41017 Eiji · エイジ
+> 「ジュリア姉さん……」
+“Julia...”
+
+@41018 Anna · アンナ
+> 「それで、今まで
+>  “グラドスの刻印”のことを
+“So that is why you kept the ‘Mark of Grados’
+---
+>  秘密になさっていたのですね?」
+a secret all this time?”
+
+@41019 Julia · ジュリア
+> 「ええ。けれどやむをえません。これ以上
+>  無益な血を流させないために
+“Yes. But it cannot be helped. To keep any more pointless blood from being spilled,
+---
+>  地球人に絶望的な戦いを
+>  させないために。私たち人類は
+to keep humanity from fighting a hopeless battle. We humans are
+---
+>  この大いなる宇宙の中では、
+>  まだ幼な子にすぎないのです
+still nothing but infants in this vast universe.
+---
+>  この刻印を残した先住グラドス
+>  人たちの知恵に、私たちは
+We must rely on the wisdom of the ancient Gradosians,
+---
+>  すがらねばなりません」
+who left this Mark behind.”
+
+@41020 Bunny · バニー
+> 「艦長、衛星軌道上のグワダン
+>  から通信です」
+“Captain, we have a communication from the Gwadan in satellite orbit.”
+
+@41021 Quattro · クワトロ
+> 「グワダン……ハマーンか。
+>  どういうつもりだ……?」
+“The Gwadan... Haman? What does she want...?”
+
+@41022 Bright · ブライト
+> 「バニー、メインスクリーンに出してくれ」
+“Bunny, put it on the main screen.”
+
+@41023 Bunny · バニー
+> 「はい」
+“Yes.”
+
+@41024 Haman · ハマーン
+> 「{HeroMech}は銀河帝国
+>  軍に対しての反攻作戦を
+“So the {HeroMech} intends to carry out a counteroffensive
+---
+>  行なうそうだな」
+against the Galactic Empire's forces.”
+
+@41025 Quattro · クワトロ
+> 「ハマーン、何の用だ」
+“Haman, what do you want?”
+
+@41026 Haman · ハマーン
+> 「シャア……我々とて銀河帝国
+>  軍には勝たねばならんと
+“Char... Even we believe we must defeat the Galactic Empire's forces.
+---
+>  思っているのだ。現在も我々と
+>  ホワイトファングは銀河帝国軍と
+Even now, we and White Fang are engaged with the Galactic Empire.
+---
+>  交戦中だ。が、そちらの作戦が
+>  終了するまで、これ以上やつらの
+But until your operation is complete, I will not let any more of their
+---
+>  降下部隊は降ろさせん」
+landing forces touch down.”
+
+@41027 Bright · ブライト
+> 「ハマーン・カーン……協力には感謝
+>  するが……」
+“Haman Karn... I appreciate the cooperation, but...”
+
+@41028 Haman · ハマーン
+> 「別に見返りなど要求せんよ。
+>  人類存亡のかかった戦いだからな
+“I ask for no reward. This is a battle for humanity's very survival.
+---
+>  では{HeroMech}の諸君、
+>  作戦の成功を祈る」
+Now then, people of the {HeroMech}, I wish you success in your operation.”
+
+@41029 Quattro · クワトロ
+> 「……いまだグワダン1隻しか出さずに、
+>  よくいう」
+“...She talks big, for someone still only sending out a single Gwadan.”
+
+@41030 Amuro · アムロ
+> 「クワトロ大尉、今は作戦に
+>  集中するんだ。ここで勝てなければ
+“Captain Quattro, focus on the operation for now. If we don't win here,
+---
+>  アクシズがどうでも関係なくなる」
+it won't matter what Axis does.”
+
+@41031 Quattro · クワトロ
+> 「ああ……そうだな、アムロ」
+“Yeah... you're right, Amuro.”
+
+@41032 Quattro · クワトロ
+> 「……来たか」
+“...Here it comes.”
+
+@41033 Bright · ブライト
+> 「間違いないんだな!?」
+“There's no mistake?!”
+
+@41034 Beltorchika · ベルトーチカ
+> 「ありません。確認しました」
+“None. Confirmed.”
+
+@41035 Amuro · アムロ
+> 「トレーズからの合図か?」
+“Is that the signal from Treize?”
+
+@41036 Bright · ブライト
+> 「そうだ。総員、持ち場につけ!
+>  これより{HeroMech}はクスコの
+“Yes. All hands, to your posts! The {HeroMech} will now
+---
+>  遺跡へ強行突破をかける!」
+break through to the Cusco ruins!”
+
+@41037 Eiji · エイジ
+> 「じゃあアンナ、またあとで……」
+“Then, Anna, see you later...”
+
+@41038 Anna · アンナ
+> 「ええ……エイジ。気をつけて……」
+“Yes... Eiji. Be careful...”
+
+@41039 Anna · アンナ
+> 「AC195年10月1日……OZは
+>  圧倒的な銀河帝国軍に
+“October 1, A.C. 195... OZ began its do-or-die assault on Cusco,
+---
+>  制圧されたクスコへの、
+>  決死の攻撃を開始しました
+which had been overrun by the overwhelming forces of the Galactic Empire.
+---
+>  私たちもまた、勝つ見こみもないまま
+>  に、クスコへ突入しようとしています
+We too are about to charge into Cusco with no prospect of victory,
+---
+>  クスコの遺跡に眠る“グラドスの
+>  刻印”を奪還するために
+to reclaim the ‘Mark of Grados’ sleeping in the Cusco ruins,
+---
+>  人類に残された最後の希望を
+>  手にするために……」
+to seize the last hope left to humanity...”
+
+@41040 Shinobu · 忍
+> 「へっ、ウジャウジャいやがる。こいつは
+>  突破しがいがありそうだぜ」
+“Heh, they're swarming like flies. This looks like it'll be worth breaking through.”
+
+@41041 Sara · 沙羅
+> 「冗談やってんじゃないんだよ、忍!」
+“This is no time for jokes, Shinobu!”
+
+@41042 Bright · ブライト
+> 「いいから、さっさと発進の準備を
+>  しろ! まったく……」
+“Enough, just hurry up and get ready to launch! Honestly...”
+
+@41043 Bright · ブライト
+> 「アーマス・ゲイル、君には
+>  遺跡突入後、聖女を
+“Ahmos Gale, once we enter the ruins, you'll have to carry the holy woman
+---
+>  “刻印”まで、運んでもらわねば
+>  ならん。すまないが待機していてくれ」
+to the ‘Mark.’ Sorry, but stand by until then.”
+
+@41044 Gale · ゲイル
+> 「了解した、艦長。
+>  グライムカイザルで待機する」
+“Understood, Captain. I'll stand by in the Greimkaiser.”
+
+@41045 Bright · ブライト
+> 「頼む」
+“I'm counting on you.”
+
+@41046 Bright · ブライト
+> 「オペレーター何やってんの!
+>  敵の状況を知らせろ!
+“Operator, what are you doing?! Report the enemy's status!
+---
+>  パイロット各員は発進急げよ!」
+All pilots, hurry up and launch!”
+
+@41047 Bright · ブライト
+> 「エイジ、君には遺跡突入後、
+>  聖女を“刻印”まで
+“Eiji, once we enter the ruins, you'll have to carry the holy woman
+---
+>  運んでもらわねばならん。すまないが
+>  待機していてくれ」
+to the ‘Mark.’ Sorry, but stand by until then.”
+
+@41048 Eiji · エイジ
+> 「了解です、艦長。
+>  レイズナーで待機します」
+“Understood, Captain. I'll stand by in the Layzner.”
+
+@41049 Bright · ブライト
+> 「頼む」
+“I'm counting on you.”
+
+@41050 Bright · ブライト
+> 「オペレーター何やってんの!
+>  敵の状況を知らせろ!
+“Operator, what are you doing?! Report the enemy's status!
+---
+>  パイロット各員は発進急げよ!」
+All pilots, hurry up and launch!”
+
+@41051 Quattro · クワトロ
+> 「すでに我々の目的は敵に察知
+>  されている。敵が“刻印”を
+“The enemy has already caught on to our objective. We must reach the ‘Mark’
+---
+>  破壊してしまう前にたどり着かねば
+>  ならん。あまり時間はかけられん
+before they destroy it. We don't have much time.
+---
+>  遺跡到達を最優先
+>  とする。いいな!」
+Reaching the ruins is our top priority. Understood?!”
+
+@41052 Gandal · ガンダル
+> 「ふん、愚かな地球人どもめ、
+>  のこのことやってきおって。迎撃だ
+“Hmph, foolish Earthlings, strolling in here like this. Intercept them!
+---
+>  奴らを生かして帰すな!!」
+Don't let a single one of them leave alive!!”
+
+@41053 Gandal · ガンダル
+> 「ええい、何をやっておるか! くそぉ、
+>  このまま地球人どもに好きにさせる
+“Gah, what are you all doing?! Damn it, I can't let these Earthlings have their way.
+---
+>  わけにはいかん。遺跡内部の
+>  部隊に破壊を急げと伝えろ!」
+Tell the troops inside the ruins to hurry up and destroy it!”
+
+@41054 Vega Soldier · ベガ星兵
+> 「はっ!」
+“Yes, sir!”
+
+@41055 Garrison · ギャリソン
+> 「少々時間がかかりすぎておるよう
+>  ですな」
+“It seems this is taking a bit too long.”
+
+@41056 Bright · ブライト
+> 「このままではまずいな……急げよ!」
+“At this rate we're in trouble... Hurry!”
+
+@41057 Bright · ブライト
+> 「もう時間がないぞ、急げ! なんとか
+>  あと2分以内に到達するんだ!」
+“There's no time left, hurry! We have to reach it within two minutes somehow!”
+
+@41058 Roux · ルー
+> 「艦長!!」
+“Captain!!”
+
+@41059 Bright · ブライト
+> 「くっ、奴らめ。もう余裕がないぞ!
+>  あと1分以内になんとしても
+“Ngh, those bastards. We're out of leeway! Reach the ruins within one minute,
+---
+>  遺跡にたどり着け!」
+no matter what!”
+
+@41060 Bright · ブライト
+> 「いかん、もう限界か!?」
+“No, are we already at the limit?!”
+
+@41061 Beltorchika · ベルトーチカ
+> 「艦長! “刻印”が……
+>  破壊されました!!」
+“Captain! The ‘Mark’ has been... destroyed!!”
+
+@41062 Bright · ブライト
+> 「なんだと!?
+>  くっ……作戦失敗だ……」
+“What?! Ngh... The operation's a failure...”
+
+@41063 Beltorchika · ベルトーチカ
+> 「艦長! “刻印”が……
+>  破壊されました!!」
+“Captain! The ‘Mark’ has been... destroyed!!”
+
+@41064 Bright · ブライト
+> 「なんだと!?
+>  くっ……作戦失敗だ……」
+“What?! Ngh... The operation's a failure...”
+
+@41065 Bright · ブライト
+> 「どうにか突破できたか……
+>  よし、遺跡内を制圧するぞ!」
+“We managed to break through somehow... All right, we're securing the inside of the ruins!”

@@ -1,0 +1,78 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10202 Hikaru · ひかる
+> 「いきますっ!」
+“Here I go!”
+
+@10203 Hikaru · ひかる
+> 「これでっ!」
+“Take this!”
+
+@10204 Hikaru · ひかる
+> 「あぁっ、だめだわ! 大介さん!」
+“Ah, no good! Daisuke!”
+
+@10205 Hikaru · ひかる
+> 「キャアァァァァーッ!」
+“Eeeeeeek!”
+
+@10206 Hikaru · ひかる
+> 「うっ! だめだわっ!」
+“Ugh! No good!”
+
+@10207 Hikaru · ひかる
+> 「うぅっ! あぁぁぁーっ!!」
+“Ugh! Aaaah!”
+
+@10208 Hikaru · ひかる
+> 「あぁぁぁぁーっ!」
+“Aaaaaah!”
+
+@10209 Hikaru · ひかる
+> 「あっ!? 大変、これ以上は
+>  危険だわ!」
+“Ah?! Oh no, any more than this is dangerous!”
+
+@10210 Hikaru · ひかる
+> 「うわぁぁっ! ま、負けるもんですか!」
+“Whoa! I-I won't lose!”
+
+@10211 Hikaru · ひかる
+> 「アァッ!」
+“Aah!”
+
+@10212 Hikaru · ひかる
+> 「くっ、まだ大丈夫だわ」
+“Ngh, I'm still okay.”
+
+@10213 Hikaru · ひかる
+> 「えぇっ!?」
+“Huh?!”
+
+@10214 Hikaru · ひかる
+> 「このくらいならっ!」
+“This much is nothing!”
+
+@10215 Hikaru · ひかる
+> 「よかったわ、当たらなくて」
+“Thank goodness, it missed.”
+
+@10216 Hikaru · ひかる
+> 「大丈夫、かわせたわ!」
+“I'm fine, I dodged it!”
+
+@10217 Hikaru · ひかる
+> 「よかったわ、きかなくて」
+“Thank goodness, it didn't work.”
+
+@10218 Hikaru · ひかる
+> 「ビームは効かないわ!」
+“Beams don't work on me!”
+
+@10219 Hikaru · ひかる
+> 「えぇっ!? エネルギーがないわ!」
+“Huh?! I'm out of energy!”
+
+@10220 Hikaru · ひかる
+> 「だめだわ、届かない……」
+“No good, it won't reach...”

@@ -1,0 +1,139 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13131 Sai Saici · サイ・サイシー
+> 「はぁぁぁぁ!」
+“Haaaaaah!”
+
+@13132 Sai Saici · サイ・サイシー
+> 「その首もらったぁ!」
+“That head's mine!”
+
+@13133 Sai Saici · サイ・サイシー
+> 「覚悟ぉ!」
+“Get ready!”
+
+@13134 Sai Saici · サイ・サイシー
+> 「お前の負けだ!」
+“You lose!”
+
+@13135 Sai Saici · サイ・サイシー
+> 「いけぇぇいっ!」
+“Gooo!”
+
+@13136 Sai Saici · サイ・サイシー
+> 「もらったぁ!」
+“Gotcha!”
+
+@13137 Sai Saici · サイ・サイシー
+> 「容赦しないぜ!」
+“I won't go easy on you!”
+
+@13138 Sai Saici · サイ・サイシー
+> 「くらえぃ!」
+“Take this!”
+
+@13139 Sai Saici · サイ・サイシー
+# 审校：原译“I'll finish yaaa!”拖长音位置不自然，改为更自然的战斗喊声。
+> 「とぉどめぇぇ!」
+“I'll finish you!”
+
+@13140 Sai Saici · サイ・サイシー
+> 「トリャァァァァ!」
+“Hraaaah!”
+
+@13141 Sai Saici · サイ・サイシー
+> 「こうなりゃ奥の手だ!」
+“Guess I'll pull out my trump card!”
+
+@13142 Sai Saici · サイ・サイシー
+> 「オイラの……負けだ」
+“I... I lost.”
+
+@13143 Sai Saici · サイ・サイシー
+> 「くっそぉぉぉぉぉぉ!」
+“Daaamn iiiit!”
+
+@13144 Sai Saici · サイ・サイシー
+> 「ド、ドモンのアニキ……」
+“B-Brother Domon...”
+
+@13145 Sai Saici · サイ・サイシー
+> 「父さん……父さぁぁぁん……」
+“Dad... Daaad...”
+
+@13146 Sai Saici · サイ・サイシー
+> 「負けられないんだぁぁ!」
+“I can't lose!”
+
+@13147 Sai Saici · サイ・サイシー
+> 「ぐぅぅ、死んでも負けるわけにはぁ!」
+“Ngh, I can't lose even if it kills me!”
+
+@13148 Sai Saici · サイ・サイシー
+> 「うわぁぁぁぁ!」
+“Uwaaaaaah!”
+
+@13149 Sai Saici · サイ・サイシー
+> 「うおおぉぉぉぉぉぉーっ!」
+“Uoooooooh!”
+
+@13150 Sai Saici · サイ・サイシー
+> 「こんなものでぇ負けられるかぁぁぁ!」
+“You think this is enough to beat me?!”
+
+@13151 Sai Saici · サイ・サイシー
+> 「まだだっ!」
+“Not yet!”
+
+@13152 Sai Saici · サイ・サイシー
+> 「や、やったな!」
+“Y-you got me!”
+
+@13153 Sai Saici · サイ・サイシー
+> 「こんなに強い奴がいたとは、
+>  うれしいねぇ」
+“I'm glad there's someone this strong!”
+
+@13154 Sai Saici · サイ・サイシー
+> 「そんなんでオイラを倒そうっての!?」
+“You think that's gonna beat me?!”
+
+@13155 Sai Saici · サイ・サイシー
+> 「へへっ効いてないぜ」
+“Heh, that didn't even hurt.”
+
+@13156 Sai Saici · サイ・サイシー
+> 「あまいあまい」
+“Too easy, too easy.”
+
+@13157 Sai Saici · サイ・サイシー
+> 「かわした!」
+“Dodged it!”
+
+@13158 Sai Saici · サイ・サイシー
+> 「そんなもの!」
+“As if!”
+
+@13159 Sai Saici · サイ・サイシー
+> 「ははははははっ、オイラはここさ!」
+“Hahahahaha, I'm over here!”
+
+@13160 Sai Saici · サイ・サイシー
+> 「ヘヘンッ、オイラの姿が見えるかい!?」
+“Heh, can you even see me?!”
+
+@13161 Sai Saici · サイ・サイシー
+> 「どうだ! びびって口もきけねぇだろ!」
+“How's that?! You're too scared to speak!”
+
+@13162 Sai Saici · サイ・サイシー
+> 「へへっ効くわけないだろっ!」
+“Heh, of course that wouldn't work!”
+
+@13163 Sai Saici · サイ・サイシー
+> 「オイラとしたことが……」
+“To think I'd slip up like that...”
+
+@13164 Sai Saici · サイ・サイシー
+> 「ちくしょう、卑怯だぞ!」
+“Damn it, that's dirty!”

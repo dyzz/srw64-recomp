@@ -1,0 +1,592 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@17887 Banjo · 万丈
+> 「そういえば ローレンス、
+>  前に言っていたスイームルグの
+“By the way, Lawrence, that design document you mentioned before,
+---
+>  背面に取りつけるはずだった
+>  ものの設計図っていうのは
+the one for the thing that was supposed to attach to the Sweemurg's
+---
+>  どうなったんだい?
+back, what ever happened to it?
+---
+>  ウチの技術者はブースターだろうと
+>  いっていたが」
+Our engineers said it was a booster.”
+
+@17888 主角
+> 「あら、そういえばあたしも聞いたこと
+>  なかったわ。どうなの?」
+“Oh, now that you mention it, I'd never heard about that either. So what is it?”
+
+@17889 Lawrence · ローレンス
+> 「はい、確かわたくしの記憶では、
+>  単体で活動可能な
+“Yes, if my memory serves me correctly, it was a flight booster
+---
+>  飛行ブースターであったと
+>  記憶しております」
+capable of operating on its own.”
+
+@17890 主角
+> 「じゃあ、戦闘機のようにもなるのね」
+“So it could function like a fighter plane, then.”
+
+@17891 Lawrence · ローレンス
+> 「はい。先々代は、そのような機構
+>  に、大変興味をお持ちでしたので
+“Indeed. The master two generations back took great interest in such mechanisms.
+---
+>  しかし、わたくしがお預かりしたのは
+>  スイームルグの設計図のみでしたので
+However, all that was entrusted to me were the Sweemurg's design documents,
+---
+>  それがどうなったかについては
+>  存じ上げません」
+so I do not know what became of it.”
+
+@17892 主角
+> 「残念ね。それがあればスイームルグも
+>  飛べたのでしょうに」
+“What a shame. With that, the Sweemurg would have been able to fly.”
+
+@17893 Koji · 甲児
+> 「おっいたいた。みんな、
+>  なんかギャリソンさんが
+“Oh, there you all are. Everyone, Mr. Garrison says
+---
+>  来てくれっていってるぜ」
+he wants us to come.”
+
+@17894 Banjo · 万丈
+> 「わかった、すぐいこう」
+“Got it. Let's go right away.”
+
+@17895 Garrison · ギャリソン
+> 「南方の山中に設置した
+>  監視カメラが
+“This is footage captured by the surveillance cameras
+---
+>  とらえた映像です」
+installed in the mountains to the south.”
+
+@17896 Banjo · 万丈
+> 「これは……スペシャルズか?
+>  たいした数じゃないな」
+“Is this... the Specials? That's not much of a force.”
+
+@17897 主角
+> 「スペシャルズですって!?」
+“The Specials?!”
+
+@17898 Garrison · ギャリソン
+> 「左様で。しかし、ちと妙なところが
+>  ありましてな」
+“Indeed. However, there is something rather strange about it.”
+
+@17899 Simone · シモーヌ
+> 「っていうと?」
+“Such as?”
+
+@17900 Garrison · ギャリソン
+> 「はい、ローレンス殿の
+>  ご協力により
+“Yes. With Lord Lawrence's cooperation,
+---
+>  私の情報網でも、ロームフェラや
+>  スペシャルズの動きならば
+even my information network should be able to grasp the movements of Romefeller and the Specials
+---
+>  ある程度把握できる
+>  はずなのです
+to a certain extent.
+---
+>  が、それによれば現在この地域で
+>  活動しているスペシャルズの
+Yet according to that, there are currently no regular Specials units
+---
+>  正規部隊はないようなのですよ」
+operating in this region.”
+
+@17901 Banjo · 万丈
+> 「……正規部隊ではない
+>  スペシャルズか……
+“...Specials who aren't a regular unit, huh...
+---
+>  確かに気になるな
+That is certainly concerning.
+---
+>  帝国は僕たちがここにいるのは
+>  すでにわかっているはずだから
+The Empire should already know that we're here,
+---
+>  この施設を攻撃するには
+>  少なすぎる戦力だ
+so this is far too few forces to attack this facility.
+---
+>  彼らの目的がわからないうちは、
+>  うかつに動けないか」
+Until we know their objective, we can't move carelessly.”
+
+@17902 Koji · 甲児
+> 「いいじゃねぇか、そんなの
+>  とっつかまえて聞けば
+“Who cares? Let's just grab one of them and ask.
+---
+>  オレが、ちょっと行ってきてやるぜ」
+I'll go do it myself.”
+
+@17903 Simone · シモーヌ
+> 「だめよ甲児。敵の出方を待つっ
+>  ていうのも、戦い方のうちよ」
+“No, Koji. Waiting to see how the enemy moves is a tactic too.”
+
+@17904 Beauty · ビューティ
+> 「万丈、敵がこのエリアに
+>  侵入したわよ」
+“Banjo, the enemy has entered this area!”
+
+@17905 Banjo · 万丈
+> 「来たか……さて、どうなるかな。
+>  映像出せるかい?」
+“So they've come... Now then, how will this play out? Can you put up the visuals?”
+
+@17906 Koji · 甲児
+> 「なんでぇ、ほんとにこれっぽっちかよ。
+>  どっかにまだ隠れてんじゃないの?」
+“What the heck, is this really all of them? Aren't some still hiding somewhere?”
+
+@17907 Simone · シモーヌ
+> 「可能性は低いわね」
+“The odds of that are low.”
+
+@17908 Lawrence · ローレンス
+> (む……あれは……もしや……)
+(Hm... that is... could it be...)
+
+@17909 Banjo · 万丈
+> 「とりあえず、僕たちも出よう」
+“For now, let's head out too.”
+
+@17910 Lawrence · ローレンス
+> 「……やはり間違いない。
+>  お嬢様」
+“...There is no mistake after all. My lady.”
+
+@17911 主角
+> 「なに?」
+“What is it?”
+
+@17912 Lawrence · ローレンス
+> 「あの戦闘機が
+>  お見えになりますか」
+“Do you see that fighter plane?”
+
+@17913 Lawrence · ローレンス
+> 「あれはエルブルス。スイームルグとともに
+>  設計された機体です」
+“That is the Elbulls. It was designed together with the Sweemurg.”
+
+@17914 主角
+> 「本当なの、ローレンス!?」
+“Really, Lawrence?!”
+
+@17915 Lawrence · ローレンス
+> 「わたくしの目に狂いはございません。
+>  あれは間違いなくエルブルスです」
+“My eyes do not deceive me. That is without a doubt the Elbulls.”
+
+@17916 主角
+> 「そんな……おじいさまの残して
+>  くださったものを一体誰が……?」
+“No... Who on earth could have taken what Grandfather left behind...?”
+
+@17917 ???
+> 「やはりここにいらしたのね、
+>  {HeroName}さん
+“So you really were here after all, {HeroName}.
+---
+>  ずいぶんと探しましたわよ」
+I searched for you quite a long time.”
+
+@17918 主角
+> 「誰!?」
+“Who's there?!”
+
+@17919 ???
+> 「わたくしの声をお忘れになったの
+>  かしら? 3年ぶりですものね」
+“Have you forgotten my voice? It has been three years, after all.”
+
+@17920 主角
+> 「3年ぶり……?
+>  まさか……{PartnerName}なの!?」
+“Three years...? No way... Is that you, {PartnerName}?!”
+
+@17921 对手
+> 「思い出していただけたようですわね」
+“It seems you remember me.”
+
+@17922 Koji · 甲児
+> 「じいさん、あれ誰だい?
+>  あんたも知ってるんだろ?」
+“Old man, who is that? You know her too, don't you?”
+
+@17923 Lawrence · ローレンス
+# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerSurname}', '{PartnerName}']，实际为 []）
+# 草稿第 1 页：“...That is Lady [搭档名字] of the [搭档姓氏] Viscount family.
+# 草稿第 2 页：She is your cousin, my lady [主角名字].
+# 草稿第 3 页：I see, so the Elbrus's design documents were in the [搭档姓氏] family's
+# 草稿第 4 页：possession.”
+> 「……{PartnerSurname}子爵家の、
+>  {PartnerName}お嬢様です
+---
+>  {HeroName}お嬢様の
+>  いとこにあたる方です
+---
+>  なるほど、エルブルスの設計図は
+>  {PartnerSurname}家にあったと
+---
+>  いうわけですな」
+
+@17924 Simone · シモーヌ
+> 「ああ、そういえば{HeroSurname}家と、
+>  {PartnerSurname}家は、血縁だったわね
+“Ah, now that you mention it, the {HeroSurname} family and the {PartnerSurname} family were related by blood.
+---
+>  じゃあ、あの娘も仲間になってくれる
+>  のかしら」
+So will that girl join us too, then?”
+
+@17925 Banjo · 万丈
+> 「いや、どうやらそんな雰囲気
+>  じゃないようだ
+“No, it doesn't seem that way.
+---
+>  それに、あれはスペシャルズで
+>  建造されたものに違いない」
+Besides, that machine must have been built by the Specials.”
+
+@17926 主角
+> 「{PartnerName}、
+>  あなた一体……どうして?」
+“{PartnerName}, what on earth... why?”
+
+@17927 对手
+> 「どうしてですって!?
+>  申し上げたはずよ
+“Why, you ask?! I told you,
+---
+>  アナタを探していたのですわ」
+I was looking for you.”
+
+@17928 主角
+> 「では、なぜスペシャルズと一緒なの!?
+“Then why are you with the Specials?!
+---
+>  同じ地球人を平然と狩り立
+>  てる、裏切り者のスペシャルズと!?」
+With those traitors who hunt down their fellow Earthlings without a second thought?!”
+
+@17929 对手
+> 「裏切り者ですって? それをアナタに
+>  言われるのは心外ですわ
+“Traitors, you say? I take offense at hearing that from you.
+---
+>  アナタがそうやってレジスタンスと
+>  一緒になって邪魔をするから、
+Because you keep siding with the resistance and getting in the way,
+---
+>  {PartnerSurname}の家までもあらぬ疑いを
+>  かけられるはめになったのです!」
+even the {PartnerSurname} family has come under suspicion!”
+
+@17930 对手
+> 「お戻りなさい、{HeroName}さん
+>  今ならばまだ、わたくしが
+“Come back, {HeroName}. Even now, I could still
+---
+>  とりなして差し上げるわ」
+put in a good word for you.”
+
+@17931 主角
+> 「待って{PartnerName}!
+>  あなたは間違っているわ
+“Wait, {PartnerName}! You're wrong.
+---
+>  ロームフェラは……」
+Romefeller is...”
+
+@17932 对手
+> 「お黙りなさい! もしもアナタに
+>  戻る気がないとおっしゃるのなら
+“Silence! If you say you have no intention of returning,
+---
+>  わたくしは{PartnerSurname}の名誉のため
+>  にアナタを倒させていただくわ!」
+then for the honor of the {PartnerSurname} family, I will strike you down!”
+
+@17933 主角
+> 「なぜ!? なぜいまこの時に地球人
+>  同士で争わなければならないの!?
+“Why?! Why must Earthlings fight each other at a time like this?!
+---
+>  敵はムゲゾルバドス帝国の
+>  はずでしょう!?」
+Our enemy is supposed to be the Muge Zorbados Empire?!”
+
+@17934 对手
+> 「ロームフェラの導く、
+>  新たな時代のためですわ!」
+“For the new era that Romefeller will lead!”
+
+@17935 主角
+> 「{PartnerNick}!」
+“{PartnerNick}!”
+
+@17936 对手
+> 「問答は無用です!」
+“There is nothing more to discuss!”
+
+@17937 对手
+> 「くっ、なんてこと、このわたくしが……
+>  撤退します!
+“Ngh, how could this happen... to me... I'm retreating!
+---
+>  {HeroName}さん、わたくしは必ず
+>  アナタを倒してご覧にいれますわ!」
+{HeroName}, I swear I will most certainly defeat you!”
+
+@17938 主角
+> 「待って{PartnerName}!
+>  あたしは……」
+“Wait, {PartnerName}! I...”
+
+@17939 对手
+> 「くっ、ア、アナタ、本気でわたくしを
+>  亡き者にしようというのね!?
+“Ngh... Y-You really mean to do me in?!
+---
+>  もう許しませんわ! 覚えておきなさい
+>  わたくしは、必ずアナタを倒して
+I will not forgive you! Mark my words, I will most certainly defeat you
+---
+>  ご覧にいれますわ!」
+and show you!”
+
+@17940 主角
+> 「{PartnerName}……」
+“{PartnerName}...”
+
+@17941 对手
+> 「くっ……こ、このわたくしが……。
+>  覚えておきなさい、{HeroName}さん
+“Ngh... T-To think this would happen to me... Mark my words, {HeroName}.
+---
+>  いずれ必ず、アナタを
+>  倒してご覧にいれますわ」
+One day, I will most certainly defeat you.”
+
+@17942 主角
+> 「{PartnerName}!」
+“{PartnerName}!”
+
+@17943 对手
+> 「戻らぬというのなら、
+>  今ここでわたくしに
+“If you will not return, then let me strike you down
+---
+>  倒されてしまいなさい!
+>  それがアナタのためですわ!」
+here and now! It is for your own good!”
+
+@17944 Banjo · 万丈
+> 「{HeroNick}は僕たちの
+>  大切な仲間だ
+“{HeroNick} is a precious comrade of ours.
+---
+>  悪いが、君に連れていかせる
+>  わけにはいかない」
+Sorry, but I can't let you take them away.”
+
+@17945 对手
+> 「破嵐万丈……反帝国組織
+>  カラバをつくった一人ですわね
+“Banjo Haran... One of the founders of the anti-imperial organization Karaba.
+---
+>  わたくしを止められるというのなら、
+>  やってごらんなさい!」
+If you think you can stop me, then just try!”
+
+@17946 Simone · シモーヌ
+> 「悪いけど、あたしも{HeroName}も、
+>  家だとかメンツなんてものに
+“Sorry, but neither {HeroName} nor I have time to worry about
+---
+>  こだわってはいられないのよ!」
+family names or pride!”
+
+@17947 对手
+> 「ルフラン公爵家のシモーヌ・ルフラン
+>  ……貴女まで一緒だったのですね
+“Simone Reflann of the Ducal House of Reflann... So you're with them too.
+---
+>  わたくしの邪魔をするというのなら、
+>  容赦いたしません!」
+If you mean to stand in my way, I will show you no mercy!”
+
+@17948 Koji · 甲児
+> 「やいやいやい!
+>  お家だか財団だか知らないが
+“Hey, hey, hey! I don't care if it's your family or your foundation,
+---
+>  勝手なことばっかり言うな!
+stop saying whatever you please!
+---
+>  いくら顔がよくったって、
+>  こっちだって黙っちゃいないぜ!」
+No matter how pretty your face is, we're not gonna stay quiet either!”
+
+@17949 对手
+> 「お黙りなさいッ!
+>  それ以上の暴言は許しませんわ!」
+“Silence! I will not permit another insult like that!”
+
+@17950 主角
+> 「…………{PartnerName}……どうして……」
+“...{PartnerName}... Why...”
+
+@17951 Lawrence · ローレンス
+> 「お嬢様……」
+“My lady...”
+
+@17952 Koji · 甲児
+> 「しっかし女ってのは怖いねぇ」
+“Man, women sure are scary.”
+
+@17953 Reika · レイカ
+> 「あら、もっと怖い思いを
+>  させてあげてもいいのよ?」
+“Oh, I could give you an even scarier time if you'd like?”
+
+@17954 Sayaka · さやか
+> 「甲児くん、不謹慎よ」
+“Koji, that's insensitive.”
+
+@17955 主角
+> 「…………」
+“...”
+
+@17956 Koji · 甲児
+> 「あ、わりぃ、そういうつもりじゃ……」
+“Ah, sorry, I didn't mean it like that...”
+
+@17957 主角
+> 「いいのよ、別に。気をつかって
+>  いただく必要はないわ」
+“It's fine. You don't need to worry about me.”
+
+@17958 Sayaka · さやか
+# 审校：原文“あの人”指代前文提到的表亲，结合语境应为男性，初稿用 she/her 误判性别。
+> 「でも……いとこなんでしょ、あの人?
+>  きっとわかってもらえるわよ」
+“But... he's your cousin, isn't he? I'm sure he'll understand.”
+
+@17959 主角
+> 「ええ……あたしもそう思いたいけれど……」
+“Yes... I'd like to think so too, but...”
+
+@17960 Lawrence · ローレンス
+> 「お嬢様、
+>  ジャスミンティーが入りました
+“My lady, your jasmine tea is ready.
+---
+>  少し、お気を落ち着かせなさいませ」
+Please, do try to calm yourself a little.”
+
+@17961 主角
+> 「……ありがとう、ローレンス」
+“...Thank you, Lawrence.”
+
+@17962 Banjo · 万丈
+> 「シモーヌ、どう思う?」
+“Simone, what do you think?”
+
+@17963 Simone · シモーヌ
+# 审校：{PartnerName} 性别由玩家路线决定，初稿固定为 she/her 不妥，改为中性 they。
+> 「{PartnerName}のこと? パーティーで
+>  何度かみかけたことがあるだけだから、
+“About {PartnerName}? I've only seen them a few times at parties, so I can't really say,
+---
+>  なんともいえないけど……何か
+>  価値観を一新させるような
+but... unless something happens to completely change their values,
+---
+>  出来事でもないかぎり、何度でも
+>  来るわね」
+they'll keep coming back, no matter how many times.”
+
+@17964 Banjo · 万丈
+> 「そうか。しかしいくら素敵なお嬢さん
+>  でも、スペシャルズの一員として
+“I see. But no matter how lovely a young lady she is, as long as she comes
+---
+>  来る以上は、こちらも手段を
+>  選ぶわけにはいかないな」
+as a member of the Specials, we can't afford to hold back.”
+
+@17965 Simone · シモーヌ
+> 「それはそうなんだけどね。ただ{HeroNick}
+>  に相手をさせるのは、やめた方が
+“That's true, but... it might be better not to have {HeroNick} face her.
+---
+>  いいかもしれないわ。あの娘みたいな
+>  タイプって、後に引けなくなってくると
+With that type of girl, once she's backed into a corner,
+---
+>  何をするかわからないもの」
+there's no telling what she'll do.”
+
+@17966 Garrison · ギャリソン
+> 「万丈様」
+“Master Banjo.”
+
+@17967 Banjo · 万丈
+> 「なんだい?」
+“What is it?”
+
+@17968 Garrison · ギャリソン
+> 「それが、
+>  地球解放戦線機構の
+“It's just that we've received a telegram from General Igor of the Liberation Front of the Earth.
+---
+>  イゴール将軍よりの電文で
+>  親書を持ったスタッフを1人
+A staff member carrying a personal letter has been sent
+---
+>  こちらに向かわせたとの事です」
+our way, it seems.”
+
+@17969 Banjo · 万丈
+> 「イゴール将軍が? そうか、
+>  アランのことは知らないのだったな
+“General Igor? I see... so he doesn't know about Alan yet.
+---
+>  しかし、この時期に僕たちに
+>  接触してくるとは……
+But to make contact with us at a time like this...
+---
+>  で、いつごろここへ着くと?」
+So, when will he arrive here?”
+
+@17970 Garrison · ギャリソン
+> 「おそらく数日は、かかるものと
+>  思われますが」
+“It will likely take a few days, I believe.”
+
+@17971 Banjo · 万丈
+> 「しかたないな。ではもうしばらく
+>  ここにとどまるとしようか」
+“Can't be helped, then. Let's stay here a while longer.”

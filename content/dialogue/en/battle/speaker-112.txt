@@ -1,0 +1,82 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10157 Duke · デューク
+> 「くそっ!! だめか!」
+“Damn it! No good!”
+
+@10158 Duke · デューク
+> 「しまった!!」
+“I blew it!”
+
+@10159 Duke · デューク
+> 「し、しまった!!」
+“I-I blew it!”
+
+@10160 Duke · デューク
+# 审校：原文没有疑问语气，删去多余的 ?!
+> 「ダメだ、このままじゃやられる!?」
+“No good, at this rate I'm done for!”
+
+@10161 Duke · デューク
+> 「くっ!! も、もつのか!?」
+“Ngh! C-can I hold out?!”
+
+@10162 Duke · デューク
+> 「くっ! まだだ! まだ倒れる
+>  わけにはっ!」
+“Ngh! Not yet! I can't fall yet!”
+
+@10163 Duke · デューク
+> 「くっ! やるな! だが、まだ!!」
+“Ngh! You're good! But not yet!”
+
+@10164 Duke · デューク
+> 「!? ま、まだだ!!」
+“?! N-not yet!”
+
+@10165 Duke · デューク
+> 「やるな! だが効かんぞ!!」
+“You're good! But that won't stop me!”
+
+@10166 Duke · デューク
+# 审校：原译“This much?!”误为疑问，改为符合原文的轻蔑语气
+> 「このぐらいっ!!」
+“This much is nothing!”
+
+@10167 Duke · デューク
+> 「まだまだ!!」
+“Not even close!”
+
+@10168 Duke · デューク
+> 「この程度の損傷など!!」
+“Damage like this is nothing!”
+
+@10169 Duke · デューク
+> 「あぶないっ!」
+“That was close!”
+
+@10170 Duke · デューク
+> 「なんのっ!」
+“No problem!”
+
+@10171 Duke · デューク
+> 「そんなもの!」
+“As if that would work!”
+
+@10172 Duke · デューク
+# 审校：原文是轻视光束攻击，原译疑问语气不对
+> 「ビームなど!」
+“A Beam like that is nothing!”
+
+@10173 Duke · デューク
+> 「ムダなことを!」
+“What a waste of effort!”
+
+@10174 Duke · デューク
+# 审校：手が出せない在此指无法出手攻击，改为更贴切表达
+> 「ダメだ、手が出せない!!」
+“No good, I can't get a shot in!”
+
+@10175 Duke · デューク
+> 「ダメだ、とどかない!」
+“No good, it won't reach!”

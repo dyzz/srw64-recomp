@@ -1,0 +1,253 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12592 Master · マスター
+# 审校：「でやあぁぁぁっ」是战斗呐喊，原译“Doryaaaaaah”可接受，改为更贴近发音。
+> 「でやあぁぁぁっ!!」
+“Deyaaaaaah!!”
+
+@12593 Master · マスター
+# 审校：「身の程知らず」是“不知分寸”，原译“insolent fool”可接受，改为更贴切。
+> 「この身の程知らずがぁ!!」
+“You don't know your place!!”
+
+@12594 Master · マスター
+> 「はあぁぁぁぁぁ……はあっ!!」
+“Haaaaaah... hah!!”
+
+@12595 Master · マスター
+# 审校：原译正确，无需修改。
+> 「とおぉぉぉっ!!」
+“Tooooh!!”
+
+@12596 Master · マスター
+# 审校：「バカ者め」是“蠢货”，原译“idiot”可接受，改为更贴切。
+> 「このバカ者めっ!!」
+“You fool!!”
+
+@12597 Master · マスター
+> 「ゆくぞっ!!」
+“Here I come!!”
+
+@12598 Master · マスター
+> 「さあ、おとなしく最後を迎えるが
+>  よい!」
+“Now, accept your end quietly!”
+
+@12599 Master · マスター
+> 「つけあがるなぁっ!!」
+“Don't get cocky!!”
+
+@12600 Master · マスター
+> 「とどめを刺してくれるわ!!」
+“I'll finish you off!!”
+
+@12601 Master · マスター
+> 「しねいっ!!」
+“Die!!”
+
+@12602 Master · マスター
+# 审校：「でやぁっ」是战斗呐喊，原译“Doryah”可接受，改为更贴近发音。
+> 「でやぁっ!!」
+“Deyah!!”
+
+@12603 Master · マスター
+> 「うおおおおおおっ!!」
+“Uwooooooooh!!”
+
+@12604 Master · マスター
+# 审校：原译“what, this can't be”略生硬，改为更自然。
+> 「な、何だとこんなバカな……!?」
+“W-what?! This can't be...?!”
+
+@12605 Master · マスター
+> 「そんな!? この東方不敗が
+>  手も足もだせんなどと……」
+“No!? That I, Master Asia, could be rendered helpless...”
+
+@12606 Master · マスター
+> 「ぬおおっ! な、なんの!この東方不
+>  敗がそう易々とやられるものかっ!」
+“Ngh! W-what! I, Master Asia, won't be beaten so easily!”
+
+@12607 Master · マスター
+> 「ぐわああっ!!
+>  き、貴様、これほどの力を……」
+“Guwaaah!! Y-you, to have such power...”
+
+@12608 Master · マスター
+> 「があああっ!! お、おのれ、よくもっ!!」
+“Gaaah!! D-damn you, how dare you!!”
+
+@12609 Master · マスター
+> 「うおおっ! こ、こんな事で
+>  このわしが参ると思ってかっ!!」
+“Uwoh! Y-you think this would make me yield!!”
+
+@12610 Master · マスター
+> 「なんだと!? そんなばかな!!」
+“What?! That's impossible!!”
+
+@12611 Master · マスター
+> 「おのれぇぇぇっ!!」
+“Damn youuuu!!”
+
+@12612 Master · マスター
+> 「うわっ! なんと!?」
+“Uwah! What?!”
+
+@12613 Master · マスター
+# 审校：「こしゃくな真似を」是“竟敢耍这种小聪明”，原译“You impudent little!!”不完整，改为更自然。
+> 「こしゃくな真似を!!」
+“You impudent little—!”
+
+@12614 Master · マスター
+> 「貴様っ!!」
+“You!!”
+
+@12615 Master · マスター
+# 审校：原译正确，无需修改。
+> 「なにっ!?」
+“What?!”
+
+@12616 Master · マスター
+> 「どおわぁっ!!」
+“Dohwaaah!!”
+
+@12617 Master · マスター
+> 「こんなばかなことがあってたまるかぁぁぁ!」
+“This can't possibly be happening!”
+
+@12618 Master · マスター
+# 审校：原译“You, I held back”不通顺，改为更自然。
+> 「何っ!? 貴様、手加減して
+>  おればいい気になりおって!!」
+“What?! You— I held back and you got full of yourself!!”
+
+@12619 Master · マスター
+> 「むうっ!
+>  わしとした事が油断したわ!」
+“Mmph! To think I let my guard down!”
+
+@12620 Master · マスター
+> 「こざかしい……!」
+“Insolent...!”
+
+@12621 Master · マスター
+> 「くっ!!」
+“Ngh!!”
+
+@12622 Master · マスター
+> 「なんと……!?」
+“What...?!”
+
+@12623 Master · マスター
+> 「つけあがるなぁっ!!」
+“Don't get cocky!!”
+
+@12624 Master · マスター
+> 「ぐ……ゴホッゴホッ、こ、こんな時に……」
+“Guh... cough cough, o-of all times...”
+
+@12625 Master · マスター
+# 审校：原译“After all”可接受，改为更自然。
+> 「しょせん貴様はその程度よ!」
+“In the end, you're only that much!”
+
+@12626 Master · マスター
+> 「非力よのう」
+“How feeble.”
+
+@12627 Master · マスター
+> 「どうした! 腰がはいっとらんぞ!」
+“What's wrong! You're not putting your back into it!”
+
+@12628 Master · マスター
+> 「笑止っ!」
+“Ridiculous!”
+
+@12629 Master · マスター
+> 「ちっ! うるさいやつめっ!」
+“Tch! Noisy pest!”
+
+@12630 Master · マスター
+> 「貴様の力はその程度のものかぁ!」
+“Is your power only that much?!”
+
+@12631 Master · マスター
+> 「そんな腕でわしを倒せるとでも思って
+>  おるのか!?」
+“You think you can defeat me with such skill?!”
+
+@12632 Master · マスター
+> 「ふっふっふっ……
+>  このザコどもが……ほざきよるわ……!」
+“Heh heh heh... you small fry... running your mouth...!”
+
+@12633 Master · マスター
+> 「ほーれ、ほれ! もっとよく狙わんか!」
+“Come on, come on! Aim better!”
+
+@12634 Master · マスター
+> 「ふ、貴様の攻撃など、とうに
+>  見切っておるわ!」
+“Hmph. I saw through your attack long ago!”
+
+@12635 Master · マスター
+# 审校：原文「わしを狙ったのではなかったのか!?」是反问“不是要瞄准我吗”，初稿“Weren't you aiming for me?!”已可，但为更贴近反问语气改为“Were you not aiming for me?!”。
+> 「どうした! わしを狙ったのでは
+>  なかったのか!?」
+“What's wrong?! Were you not aiming for me?!”
+
+@12636 Master · マスター
+> 「たわけがっ!!」
+“You fool!!”
+
+@12637 Master · マスター
+# 审校：原文「次々とかかってこんかっ!!」是催促对方接二连三攻过来，初稿“Keep them coming”稍弱，改为更贴近原意。
+> 「さあ! 次々とかかってこんかっ!!」
+“Come! Keep coming at me, one after another!!”
+
+@12638 Master · マスター
+> 「何処を見ておる?
+>  わしはここだ、ここにおる!」
+“Where are you looking? I'm here, right here!”
+
+@12639 Master · マスター
+> 「バカ者がぁ!!」
+“You idiot!!”
+
+@12640 Master · マスター
+> 「あまいぞっ!!」
+“Too soft!!”
+
+@12641 Master · マスター
+> 「おそい! おそすぎるっ!!」
+“Too slow! Far too slow!!”
+
+@12642 Master · マスター
+> 「なっちゃいない!
+>  本当になっちゃいないぞ!」
+“You're hopeless! Truly hopeless!”
+
+@12643 Master · マスター
+> 「だからお前はアホなのだぁ!」
+“That's why you're such a fool!”
+
+@12644 Master · マスター
+> 「貴様の攻撃などこのわしには
+>  効きはせぬわ!」
+“Your attacks won't work on me!”
+
+@12645 Master · マスター
+> 「貴様の力もどうやらこれが
+>  限界のようだな……」
+“It seems this is the limit of your power...”
+
+@12646 Master · マスター
+> 「ぬぅ、ぬかったわ!」
+“Ngh, I let my guard down!”
+
+@12647 Master · マスター
+> 「射程外からとは……
+>  卑怯なヤツめ!」
+“Attacking from out of range... you coward!”

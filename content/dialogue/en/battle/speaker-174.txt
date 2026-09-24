@@ -1,0 +1,131 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9501 Shapiro · シャピロ
+> 「死ぬがいい」
+“Die.”
+
+@9502 Shapiro · シャピロ
+> 「これで貴様も終わりだ」
+“This is the end for you too.”
+
+@9503 Shapiro · シャピロ
+> 「あの世で後悔するんだな」
+“Regret it in the next world.”
+
+@9504 Shapiro · シャピロ
+> 「フフフ……死ね」
+“Heh heh heh... die.”
+
+@9505 Shapiro · シャピロ
+> 「ここまでだな」
+“This is as far as you go.”
+
+@9506 Shapiro · シャピロ
+> 「茶番はここまでだ」
+“The farce ends here.”
+
+@9507 Shapiro · シャピロ
+> 「私にかなうと思っているのか」
+“You think you can match me?”
+
+@9508 Shapiro · シャピロ
+> 「身の程知らずが……」
+“You don't know your place...”
+
+@9509 Shapiro · シャピロ
+> 「今は相手をしているヒマはない!」
+“I have no time to deal with you now!”
+
+@9510 Shapiro · シャピロ
+> 「別れの杯を受けてくれ」
+“Accept this parting cup.”
+
+@9511 Shapiro · シャピロ
+> 「俺の野望をくずせはせん!」
+“You will never crush my ambition!”
+
+@9512 Shapiro · シャピロ
+> 「俺は全宇宙の神となるのだ!!」
+“I shall become the god of the entire universe!!”
+
+@9513 Shapiro · シャピロ
+> 「バ、バカな……こんな……」
+“I-Impossible... this can't...”
+
+@9514 Shapiro · シャピロ
+> 「うおぉぉぉぉぉぉ!?」
+“Uwaaaaaaaah?!”
+
+@9515 Shapiro · シャピロ
+> 「うおっ!? な、何だと!? この
+>  私が……」
+“Ugh?! W-What?! Me, of all people...”
+
+@9516 Shapiro · シャピロ
+> 「バカな……こんな、こんな事が……」
+“Impossible... this, this can't be...”
+
+@9517 Shapiro · シャピロ
+> 「な、なぜだ!? なぜこれほどに……」
+“W-Why?! Why so much...”
+
+@9518 Shapiro · シャピロ
+> 「ぬうっ! いつまでもいい気になるな!」
+“Ngh! Don't get so full of yourself!”
+
+@9519 Shapiro · シャピロ
+> 「ぐうっ! 貴様……殺してやるっ!!」
+“Guh! You... I'll kill you!!”
+
+@9520 Shapiro · シャピロ
+> 「くっ! やりおったな……」
+“Ngh! You've done it...”
+
+@9521 Shapiro · シャピロ
+> 「よくぞ私を悩ませたと、ほめるべきか」
+“Should I praise you for troubling me so?”
+
+@9522 Shapiro · シャピロ
+> 「貴様の腕はその程度か」
+“Is that all your skill amounts to?”
+
+@9523 Shapiro · シャピロ
+> 「この私に逆らうとは……愚かな……」
+“To defy me... how foolish...”
+
+@9524 Shapiro · シャピロ
+> 「クズ共が……」
+“You scum...”
+
+@9525 Shapiro · シャピロ
+> 「愚かな……」
+“Foolish...”
+
+@9526 Shapiro · シャピロ
+> 「それで狙っているつもりか」
+“You call that aiming?”
+
+@9527 Shapiro · シャピロ
+> 「当たらんな」
+“You won't hit me.”
+
+@9528 Shapiro · シャピロ
+> 「バカめ……」
+“Fool...”
+
+@9529 Shapiro · シャピロ
+> 「貴様の攻撃など、私には
+>  通用せんのだ」
+“Your attacks are useless against me.”
+
+@9530 Shapiro · シャピロ
+> 「弾切れだと!? ぬうう……」
+“Out of ammo?! Nghhh...”
+
+@9531 Shapiro · シャピロ
+> 「ここからでは届かんか……」
+“Can't reach from here, huh...”
+
+@9532 Shapiro · シャピロ
+> 「こしゃくな真似をする……」
+“Such impudent tricks...”

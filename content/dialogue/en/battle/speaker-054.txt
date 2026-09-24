@@ -1,0 +1,110 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11164 Ple · プル
+> 「そこねっ!!」
+“Right there!!”
+
+@11165 Ple · プル
+> 「もらったっ!!」
+“Got you!!”
+
+@11166 Ple · プル
+> 「おちちゃえーっ!!」
+“Fall down already!!”
+
+@11167 Ple · プル
+> 「やらせないよっ!!」
+“I won't let you!!”
+
+@11168 Ple · プル
+> 「そこ!」
+“There!”
+
+@11169 Ple · プル
+> 「あたって!」
+“Hit!”
+
+@11170 Ple · プル
+> 「も、もうだめっ!!」
+“I-I can't take anymore!!”
+
+@11171 Ple · プル
+> 「きゃあああっ!!」
+“Kyaaaaa!!”
+
+@11172 Ple · プル
+> 「きゃあっ!! やられちゃった!」
+“Kyaa!! I got hit!”
+
+@11173 Ple · プル
+> 「きゃあっ!! ダメ、助けてっ!」
+“Kyaa!! No, help me!”
+
+@11174 Ple · プル
+> 「うっ! ダメだわ、これじゃやられちゃう!」
+“Ugh! No good, at this rate I'll be shot down!”
+
+@11175 Ple · プル
+> 「きゃっ! も、もつの!?」
+“Kya! C-can I hold out?!”
+
+@11176 Ple · プル
+> 「つっ!! よくもやったわねっ!」
+“Ngh!! How dare you do that to me!”
+
+@11177 Ple · プル
+> 「きゃっ! 何よ、痛いじゃないっ!」
+“Kya! What the heck, that hurts!”
+
+@11178 Ple · プル
+> 「まだよ! このくらいっ!」
+“Not yet! That's nothing!”
+
+@11179 Ple · プル
+> 「いったあぁぁぁい!」
+“Owwwwww!”
+
+@11180 Ple · プル
+> 「へーき、へーき!」
+“I'm fine, I'm fine!”
+
+@11181 Ple · プル
+> 「へーきだもん!」
+“I'm totally fine!”
+
+@11182 Ple · プル
+> 「へたくそっ!」
+“You're terrible!”
+
+@11183 Ple · プル
+> 「へへーんだ!」
+“Nyah nyah!”
+
+@11184 Ple · プル
+> 「べーだ! あたんないわよ!」
+“Blehh! You can't hit me!”
+
+@11185 Ple · プル
+> 「ムダだっていったろ!!」
+“I told you it's useless!!”
+
+@11186 Ple · プル
+> 「へーき、へーき!」
+“I'm fine, I'm fine!”
+
+@11187 Ple · プル
+> 「へーきだもん!」
+“I'm totally fine!”
+
+@11188 Ple · プル
+> 「ビームなんて!!」
+“A Beam like that?!”
+
+@11189 Ple · プル
+> 「だめ、反撃不可能!」
+“No good, I can't counterattack!”
+
+@11190 Ple · プル
+> 「ちょっと!! どっから攻撃して
+>  くんのよ! このヒキョーモノ!!」
+“Hey!! Where are you even attacking from?! You coward!!”

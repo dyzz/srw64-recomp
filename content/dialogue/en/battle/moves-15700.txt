@@ -1,0 +1,418 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@15700 Naida · ナイーダ
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15701 Naida · ナイーダ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15702 Naida · ナイーダ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15703 Naida · ナイーダ
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15704 Naida · ナイーダ
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15705 Naida · ナイーダ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15706 Naida · ナイーダ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15707 Naida · ナイーダ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15708 Naida · ナイーダ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15709 Naida · ナイーダ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15710 Naida · ナイーダ
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15711 Naida · ナイーダ
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15712 Naida · ナイーダ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15713 Naida · ナイーダ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15714 Naida · ナイーダ
+> 「グレートブースター!」
+“Great Booster!”
+
+@15715 Naida · ナイーダ
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15716 Naida · ナイーダ
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15717 Naida · ナイーダ
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15718 Naida · ナイーダ
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15719 Naida · ナイーダ
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15720 Naida · ナイーダ
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15721 Naida · ナイーダ
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15722 Naida · ナイーダ
+> 「ミサイル発射!!」
+“Missile, fire!!”
+
+@15723 Naida · ナイーダ
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15724 Naida · ナイーダ
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15725 Naida · ナイーダ
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15726 Naida · ナイーダ
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15727 Naida · ナイーダ
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15728 Naida · ナイーダ
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15729 Naida · ナイーダ
+# 机翻疑问：新译名：大車輪ロケットパーンチッ=Big Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!」
+“Big Wheel Rocket Punch!”
+
+@15730 Naida · ナイーダ
+> 「ボ……ボロットパンチ!」
+“B-Borot Punch!”
+
+@15731 Naida · ナイーダ
+> 「スペシャルボロットパンチだわ!」
+“It's the Special Borot Punch!”
+
+@15732 Naida · ナイーダ
+> 「と……とにかく、攻撃するわ!」
+“A-Anyway, I'm attacking!”
+
+@15733 Naida · ナイーダ
+> 「ミサイル発射!」
+“Missile, fire!”
+
+@15734 Naida · ナイーダ
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15735 Naida · ナイーダ
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15736 Naida · ナイーダ
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15737 Naida · ナイーダ
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15738 Duke · デューク
+> 「ナイーダ、いくぞ!」
+“Naida, let's go!”
+
+@15739 Naida · ナイーダ
+> 「ええ、デューク!!」
+“Yeah, Duke!!”
+
+@15740 Duke · デューク
+> 「ダブルライトニングバスター!!」
+“Double Lightning Buster!!”
+
+@15741 Kirika · キリカ
+> 「ダブルミサイル!」
+“Double Missile!”
+
+@15742 Kirika · キリカ
+> 「サイクロンビーム!」
+“Cyclone Beam!”
+
+@15743 Kirika · キリカ
+> 「ダブルカッター!」
+“Double Cutter!”
+
+@15744 Kirika · キリカ
+> 「ドリルミサイル!」
+“Drill Missile!”
+
+@15745 Kirika · キリカ
+> 「スパークボンバー!」
+“Spark Bomber!”
+
+@15746 Kirika · キリカ
+> 「ドリルアタック!」
+“Drill Attack!”
+
+@15747 Kirika · キリカ
+> 「マリンビーム!」
+“Marine Beam!”
+
+@15748 Kirika · キリカ
+> 「マリンカッター!」
+“Marine Cutter!”
+
+@15749 Kirika · キリカ
+> 「マリンミサイル!」
+“Marine Missile!”
+
+@15750 Kirika · キリカ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15751 Kirika · キリカ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15752 Kirika · キリカ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15753 Kirika · キリカ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15754 Kirika · キリカ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15755 Kirika · キリカ
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15756 Kirika · キリカ
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15757 Kirika · キリカ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15758 Kirika · キリカ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15759 Kirika · キリカ
+> 「ニーインパルスキック!」
+“Knee Impulse Kick!”
+
+@15760 Kirika · キリカ
+> 「バックスピンキック!」
+“Backspin Kick!”
+
+@15761 Kirika · キリカ
+> 「グレートタイフーン!」
+“Great Typhoon!”
+
+@15762 Kirika · キリカ
+> 「スクランブルカッター!」
+“Scramble Cutter!”
+
+@15763 Kirika · キリカ
+> 「ネーブルミサイル!」
+“Navel Missile!”
+
+@15764 Kirika · キリカ
+> 「マジンガーブレード!」
+“Mazinger Blade!”
+
+@15765 Kirika · キリカ
+> 「グレートブーメラン!」
+“Great Boomerang!”
+
+@15766 Kirika · キリカ
+# 机翻疑问：新译名：アトミックパーンチッ=Atomic Punch
+> 「アトミックパーンチッ!」
+“Atomic Punch!”
+
+@15767 Kirika · キリカ
+# 机翻疑问：新译名：ドリルプレッシャーパーンチッ=Drill Pressure Punch
+> 「ドリルプレッシャーパーンチッ!」
+“Drill Pressure Punch!”
+
+@15768 Kirika · キリカ
+> 「ブレストバーン!」
+“Breast Burn!”
+
+@15769 Kirika · キリカ
+> 「サンダーブレーク!」
+“Thunder Break!”
+
+@15770 Kirika · キリカ
+> 「グレートブースター!」
+“Great Booster!”
+
+@15771 Kirika · キリカ
+> 「スカーレットビーム!」
+“Scarlet Beam!”
+
+@15772 Kirika · キリカ
+> 「ダイアナンミサイル!」
+“Dianan Missile!”
+
+@15773 Kirika · キリカ
+> 「フィンガーミサイル!」
+“Finger Missile!”
+
+@15774 Kirika · キリカ
+> 「光子力ミサイル!」
+“Photon Missile!”
+
+@15775 Kirika · キリカ
+> 「冷凍ビーム!!」
+“Freeze Beam!!”
+
+@15776 Kirika · キリカ
+> 「ドリルミサイル!!」
+“Drill Missile!!”
+
+@15777 Kirika · キリカ
+> 「光子力ビーム!!」
+“Photon Beam!!”
+
+@15778 Kirika · キリカ
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@15779 Kirika · キリカ
+> 「サザンクロスナイフ!!」
+“Southern Cross Knife!!”
+
+@15780 Kirika · キリカ
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15781 Kirika · キリカ
+> 「ルストハリケーン!!」
+“Rust Hurricane!!”
+
+@15782 Kirika · キリカ
+> 「スクランダーカッター!!」
+“Scrander Cutter!!”
+
+@15783 Kirika · キリカ
+> 「アイアンカッター!!」
+“Iron Cutter!!”
+
+@15784 Kirika · キリカ
+> 「ブレストファイヤー!!」
+“Breast Fire!!”
+
+@15785 Kirika · キリカ
+# 机翻疑问：新译名：大車輪ロケットパーンチッ=Big Wheel Rocket Punch
+> 「大車輪ロケットパーンチッ!」
+“Big Wheel Rocket Punch!”
+
+@15786 Kirika · キリカ
+# 机翻疑问：新译名：ボロットパーンチッ=Borot Punch
+> 「えいっ! ボロットパーンチッ!」
+“Hah! Borot Punch!”
+
+@15787 Kirika · キリカ
+> 「スペシャルボロットパンチなんだからッ!」
+“It's the Special Borot Punch!”
+
+@15788 Kirika · キリカ
+# 机翻疑问：新译名：スペシャルデラックスボロットパーンチッ=Special Deluxe Borot Punch
+> 「もうっ、長すぎるわよ!
+>  スペシャルデラックスボロットパーンチッ!」
+“Ugh, that's way too long! Special Deluxe Borot Punch!”
+
+@15789 Kirika · キリカ
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15790 Kirika · キリカ
+> 「光子力ビーム!」
+“Photon Beam!”
+
+@15791 Kirika · キリカ
+# 机翻疑问：新译名：ロケットパーンチッ=Rocket Punch
+> 「ロケットパーンチッ!」
+“Rocket Punch!”
+
+@15792 Kirika · キリカ
+> 「ルストハリケーン!」
+“Rust Hurricane!”
+
+@15793 Kirika · キリカ
+> 「ブレストファイヤー!」
+“Breast Fire!”
+
+@15794 Gandal · ガンダル
+# 机翻疑问：新译名：スパーク攻撃=Spark Attack
+> 「スパーク攻撃!」
+“Spark Attack!”
+
+@15795 Gorman · ゴーマン
+> 「このまま押しつぶされたいのか!」
+“Do you want to be crushed just like this?!”
+
+@15796 Gorman · ゴーマン
+> 「いくぞ、グレンダイザー!!」
+“Let's go, Grendizer!!”
+
+@15797 Gorman · ゴーマン
+> 「いくぞ、デューク・フリード!!」
+“Let's go, Duke Fleed!!”
+
+@15798 Gorman · ゴーマン
+> 「デューク・フリード!
+>  貴様はこの俺が倒す!」
+“Duke Fleed! I'm the one who'll take you down!”
+
+@15799 Gorman · ゴーマン
+> 「デューク・フリード!
+>  貴様の命は今日かぎりだ!」
+“Duke Fleed! Your life ends today!”

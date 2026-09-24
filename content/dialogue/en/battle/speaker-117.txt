@@ -1,0 +1,241 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@10263 Gandal · ガンダル
+> 「攻撃作戦開始!
+>  全軍発進せよーっ!」
+“Begin the attack! All forces, launch!”
+
+@10264 Gandal · ガンダル
+> 「攻めろ! 攻めまくるのだ!」
+“Attack! Attack them all!”
+
+@10265 Gandal · ガンダル
+> 「出撃だ! 破壊するのだ!」
+“Launch! Destroy them!”
+
+@10266 Gandal · ガンダル
+> 「奴を叩きつぶせ!」
+“Crush him!”
+
+@10267 Gandal · ガンダル
+> 「よし、殺してもかまわん。倒せ!」
+“Good, kill them if you must. Take them down!”
+
+@10268 Gandal · ガンダル
+> 「血祭りにあげろ!」
+“Make a bloodbath of them!”
+
+@10269 Gandal · ガンダル
+> 「とどめをさしてやろう!」
+“I'll finish them off!”
+
+@10270 Gandal · ガンダル
+> 「敵をだまらせろ!」
+“Silence the enemy!”
+
+@10271 Gandal · ガンダル
+> 「息の根を止めてやれ!」
+“Put an end to them!”
+
+@10272 Gandal · ガンダル
+> 「攻撃開始!」
+“Commence attack!”
+
+@10273 Gandal · ガンダル
+> 「叩き落とせい!」
+“Shoot them down!”
+
+@10274 Gandal · ガンダル
+> 「そろそろとどめをさしてやるとするか」
+“Time to finish them off, I suppose.”
+
+@10275 Gandal · ガンダル
+> 「よし! 発射!」
+“Good! Fire!”
+
+@10276 Gandal · ガンダル
+> 「ぐわっ、うわっ、ぐわぁっ!」
+“Guwah, uwah, guwaah!”
+
+@10277 Gandal · ガンダル
+> 「なんだと!?」
+“What did you say?!”
+
+@10278 Gandal · ガンダル
+> 「ええぃ、作戦は失敗だ!」
+“Grr, the operation is a failure!”
+
+@10279 Gandal · ガンダル
+> 「しまった、やられた!? ええぃ、
+>  これまでか!」
+“Damn, I've been hit?! Grr, is this the end?!”
+
+@10280 Gandal · ガンダル
+> 「ぐわあぁぁっ!! このガンダルの命、
+>  まもなく果てるだろう……」
+“Guwaaaah!! My life as Gandal will soon be over...”
+
+@10281 Gandal · ガンダル
+> 「あと一息で……あと一息で倒せたものを
+>  ……」
+“One more push... one more push and I would have beaten them...”
+
+@10282 Gandal · ガンダル
+> 「避難準備を始めろ
+>  脱出用円盤だーーーっ!」
+“Begin evacuation preparations! The escape saucer!”
+
+@10283 Gandal · ガンダル
+> 「全員緊急退避だ、
+>  急げ! 爆発するぞ!」
+“Everyone, emergency retreat, hurry! It's going to explode!”
+
+@10284 Gandal · ガンダル
+> 「おおおっ!? くっ……なんと強い!」
+“Ooooh?! Ngh... how strong!”
+
+@10285 Gandal · ガンダル
+> 「ぐうぅっ、だめだ!」
+“Guuuh, no good!”
+
+@10286 Gandal · ガンダル
+> 「ええぃ、なぜ勝てんのだ!?」
+“Grr, why can't I win?!”
+
+@10287 Gandal · ガンダル
+> 「なんだと!? こ、これほどのパワーが
+>  あるのか!?」
+“What?! Th-this much power?!”
+
+@10288 Gandal · ガンダル
+> 「そ、そんなばかな!」
+“Th-that's impossible!”
+
+@10289 Gandal · ガンダル
+> 「どうした!? 何があったのだ!?」
+“What's going on?! What happened?!”
+
+@10290 Gandal · ガンダル
+> 「失敗はゆるされんぞ!」
+“Failure will not be tolerated!”
+
+@10291 Gandal · ガンダル
+> 「遅い! 何をボヤボヤしておる!」
+“Too slow! What are you dawdling for?!”
+
+@10292 Gandal · ガンダル
+> 「なんたること!」
+“This cannot be!”
+
+@10293 Gandal · ガンダル
+> 「何ごとだ!?」
+“What is the meaning of this?!”
+
+@10294 Gandal · ガンダル
+> 「ぐうぅっ、だがこのまま退却はできん!」
+“Guuuh, but I cannot retreat like this!”
+
+@10295 Gandal · ガンダル
+> 「なにをぐずぐずしておる!」
+“What are you hesitating for?!”
+
+@10296 Gandal · ガンダル
+> 「ばかめ、うまくこちらの誘いに
+>  乗ってきたぞ」
+“Fools, they took our bait perfectly.”
+
+@10297 Gandal · ガンダル
+> 「また、しゃしゃりでおって!」
+“Meddling again, are you!”
+
+@10298 Gandal · ガンダル
+> 「どうしたというのだ!」
+“What is the matter?!”
+
+@10299 Gandal · ガンダル
+> 「ゆるせん、成敗してくれる」
+“Unforgivable, I'll punish you.”
+
+@10300 Gandal · ガンダル
+> 「侮辱するのか!!」
+“You dare insult me?!”
+
+@10301 Gandal · ガンダル
+> 「ははは、ほざくだけほざくがいい!」
+“Hahaha, go on and bluster all you like!”
+
+@10302 Gandal · ガンダル
+> 「何ごとだ、そうぞうしい」
+“What's going on? Such a racket.”
+
+@10303 Gandal · ガンダル
+> 「降伏するなら今のうちだぞ」
+“If you're going to surrender, do it now.”
+
+@10304 Gandal · ガンダル
+> 「やったぞ! その調子だ!」
+“You did it! Keep it up!”
+
+@10305 Gandal · ガンダル
+> 「フッフッフッフッ、バカめ!」
+“Heh heh heh heh, you fool!”
+
+@10306 Gandal · ガンダル
+> 「よくやったぞ!」
+“Well done!”
+
+@10307 Gandal · ガンダル
+> 「当然だ!」
+“Of course!”
+
+@10308 Gandal · ガンダル
+> 「さすが、たいした力だ!」
+“As expected, impressive power!”
+
+@10309 Gandal · ガンダル
+> 「無知無能な奴らがあわて
+>  ふためいておるぞ」
+“The ignorant, incompetent fools are in a panic.”
+
+@10310 Gandal · ガンダル
+> 「無知無能な地球人どもが
+>  あわてふためいておるぞ」
+“The ignorant, incompetent Earthlings are in a panic.”
+
+@10311 Gandal · ガンダル
+# 审校：原文“ばかめ”是单数，初稿译成复数“Fools”，改为单数。
+> 「ばかめ!」
+“You fool!”
+
+@10312 Gandal · ガンダル
+> 「さすが、たいした力だ!」
+“As expected, impressive power!”
+
+@10313 Gandal · ガンダル
+> 「ええーい、どうした、とどめをさすんだ!」
+“Gah, what are you doing? Finish them off!”
+
+@10314 Gandal · ガンダル
+> 「たわけめ!」
+“Imbecile!”
+
+@10315 Gandal · ガンダル
+> 「くそう、もう一歩のところで」
+“Damn it, we were so close.”
+
+@10316 Gandal · ガンダル
+> 「おのれ! あと一息だというのに」
+“Curse you! And we were just one step away!”
+
+@10317 Gandal · ガンダル
+> 「あと一息で、あと一息で
+>  倒せたものを……」
+“One more step, one more step and we'd have finished them...”
+
+@10318 Gandal · ガンダル
+> 「ええぃ、放っておけ!」
+“Gah, leave it be!”
+
+@10319 Gandal · ガンダル
+> 「気にするな! 近い敵を探せ!」
+“Never mind that! Find a nearby enemy!”

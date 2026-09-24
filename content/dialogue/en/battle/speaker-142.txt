@@ -1,0 +1,99 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7093 Baren · バレン
+> 「死ね!」
+“Die!”
+
+@7094 Baren · バレン
+> 「いくぞ!」
+“Here I come!”
+
+@7095 Baren · バレン
+> 「これでもくらえぃ!」
+“Take this!”
+
+@7096 Baren · バレン
+> 「えぇぃっ!」
+“Hah!”
+
+@7097 Baren · バレン
+> 「はっはっはっはっ!」
+“Hahahahaha!”
+
+@7098 Baren · バレン
+> 「もはや最後だ。観念するがいい!」
+“This is the end. Give it up!”
+
+@7099 Baren · バレン
+> 「覚悟!」
+“Prepare yourself!”
+
+@7100 Baren · バレン
+> 「フフフ、ゆくぞ!」
+“Hehehe, here I go!”
+
+@7101 Baren · バレン
+# 审校：原文「どうだ!」是反问/威吓语气，初稿用句号语气不对，改为问号加感叹号。
+> 「どうだ!」
+“How's that?!”
+
+@7102 Baren · バレン
+> 「ああぁぁぁぁぁぁぁぁっ!」
+“Aaaaaaaaaah!”
+
+@7103 Baren · バレン
+> 「あぁぁぁぁっ!」
+“Aaaaaaah!”
+
+@7104 Baren · バレン
+> 「おのれっ!」
+“You bastard!”
+
+@7105 Baren · バレン
+> 「きゃぁぁぁぁっ!」
+“Kyaaaaaah!”
+
+@7106 Baren · バレン
+> 「このままでは済まさん!」
+“You won't get away with this!”
+
+@7107 Baren · バレン
+> 「ぬぅ、おのれぇ!」
+“Ngh, you bastard!”
+
+@7108 Baren · バレン
+> 「うわぁぁっ!」
+“Uwaaah!”
+
+@7109 Baren · バレン
+> 「よくも、よくも!」
+“How dare you, how dare you!”
+
+@7110 Baren · バレン
+> 「どうした、もうおしまいか!」
+“What's wrong, is that all?!”
+
+@7111 Baren · バレン
+> 「フフフ、そんな攻撃が効くと
+>  思ったか!」
+“Hehehe, did you think that attack would work?!”
+
+@7112 Baren · バレン
+> 「フフ、その程度か」
+“Heh, is that all?”
+
+@7113 Baren · バレン
+> 「ばかめっ! こっちの思うつぼだ」
+“Fool! Just as I planned.”
+
+@7114 Baren · バレン
+> 「フフ、その程度か」
+“Heh, is that all?”
+
+@7115 Baren · バレン
+> 「なに!? エネルギー切れか!」
+“What?! Out of energy?!”
+
+@7116 Baren · バレン
+> 「くっ、ここからでは!」
+“Ngh, not from here!”

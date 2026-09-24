@@ -1,0 +1,108 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11981 Daisaku · 大作
+> 「まかせんしゃい!」
+“Leave it to me!”
+
+@11982 Daisaku · 大作
+> 「どきんしゃーい!」
+“Outta my way!”
+
+@11983 Daisaku · 大作
+> 「いくぞっ!」
+“Here I go!”
+
+@11984 Daisaku · 大作
+> 「くらえっ!」
+“Take this!”
+
+@11985 Daisaku · 大作
+# 审校：补出九州方言口吻，原译丢失了“ば…けん”的语气。
+> 「九州男児の底力ば、
+>  見せてやるけん!」
+“I'll show you the guts of a Kyushu man, I tell ya!”
+
+@11986 Daisaku · 大作
+# 审校：用更明显的方言/口语感表现“しもた”“ばいっ”。
+> 「しもた! やられてしもたばいっ!」
+“Dang it! I done got myself hit!”
+
+@11987 Daisaku · 大作
+# 审校：原译“Th-this kinda power?!”不完整，补成自然英语并保留结巴。
+> 「ぐわあああっ!こ、こげんパワーの
+>  あるとか!?」
+“Gwaaah! H-how can it be this powerful?!”
+
+@11988 Daisaku · 大作
+# 审校：原译“I can't!”偏离“ダメばい”的承受不住感，改为更贴切。
+> 「うあああっ! だ、ダメばい!
+>  どげんすっとな!?」
+“Uaaah! I-I can't take it! What am I supposed to do?!”
+
+@11989 Daisaku · 大作
+# 审校：“強か”在此是“强/难缠”，原译“strong”可接受，但“tough”更符合战斗语境。
+> 「くうぅぅぅっ! 強か!」
+“Kuhh! He's tough!”
+
+@11990 Daisaku · 大作
+# 审校：原译“Not yet, damn it!”语序略生硬，调整更自然。
+> 「うううっ! こなくそっ!」
+“Ugh! Damn it, not yet!”
+
+@11991 Daisaku · 大作
+# 审校：补出“ですたい”的方言语气。
+> 「むうっ! や、やるもんですたい!」
+“Mmph! Y-you're pretty good, I'll give ya that!”
+
+@11992 Daisaku · 大作
+# 审校：补出“とよ”的方言语气。
+> 「うおっ! やられるわけにはいかんとよ!」
+“Whoa! I can't afford to go down, I tell ya!”
+
+@11993 Daisaku · 大作
+# 审校：“なんばしよっと”是九州方言，原译偏普通，改为更有方言色彩。
+> 「なんばしよっと!」
+“What in tarnation are you doin'?!”
+
+@11994 Daisaku · 大作
+# 审校：补出“ばい”的语气。
+> 「そげん攻撃、効かんばい!」
+“That kinda attack won't do a thing, I tell ya!”
+
+@11995 Daisaku · 大作
+# 审校：“しぇからしか”是“吵死了”，原译“Quit your yappin'!”可接受，但改为更直接的口语。
+> 「しぇからしか!」
+“Shut yer trap!”
+
+@11996 Daisaku · 大作
+> 「どっこい!」
+“Not so fast!”
+
+@11997 Daisaku · 大作
+# 审校：补出“とよ”的语气。
+> 「当たるわけにゃあいかんとよ!」
+“No way I'm lettin' that hit, I tell ya!”
+
+@11998 Daisaku · 大作
+> 「ふう、危なかあ」
+“Whew, that was close.”
+
+@11999 Daisaku · 大作
+# 审校：原译“Is that all you got?!”意思偏了，原文是“怎么样/如何”。
+> 「どげなもんな!」
+“How's that?!”
+
+@12000 Daisaku · 大作
+# 审校：补出“とよ”的语气。
+> 「効きやせんとよ!」
+“It ain't doin' a thing, I tell ya!”
+
+@12001 Daisaku · 大作
+# 审校：原译“Outta ammo?!”缺主语，补上更自然。
+> 「しもうたっ! 弾切れね!?」
+“Dang it! I'm outta ammo?!”
+
+@12002 Daisaku · 大作
+# 审校：原译“that's a real shame”语气太弱，改为更符合“くやしか”的懊恼。
+> 「反撃できんちゃ、ほんなこつくやしか!」
+“Can't fight back—now that really burns me up!”

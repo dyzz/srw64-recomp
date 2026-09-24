@@ -1,0 +1,475 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@16400 Ple · プル
+> 「いけっ! フィンファンネルたち!!」
+“Go! Fin Funnels!!”
+
+@16401 Ple · プル
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”
+
+@16402 Ple-Two · プルツー
+> 「サイコガンダムの前には、赤子も
+>  同然だな」
+“Before the Psyco Gundam, you're no better than a baby.”
+
+@16403 Ple-Two · プルツー
+> 「サイコガンダムの前には、赤子も
+>  同然だな」
+“Before the Psyco Gundam, you're no better than a baby.”
+
+@16404 Ple-Two · プルツー
+> 「いけっ! ファンネルたち!」
+“Go! Funnels!”
+
+@16405 Ple-Two · プルツー
+> 「いっけぇーっ!! ファンネル!!」
+“Gooo!! Funnel!!”
+
+@16406 Ple-Two · プルツー
+> 「いっけぇーっ!! フィンファンネル!!」
+“Gooo!! Fin Funnels!!”
+
+@16407 Ple-Two · プルツー
+> 「いけっ! フィンファンネルたち!!」
+“Go! Fin Funnels!!”
+
+@16408 Ple-Two · プルツー
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”
+
+@16409 Chara · キャラ
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I'll shoot you!”
+
+@16410 Chara · キャラ
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I'll shoot you!”
+
+@16411 Chara · キャラ
+> 「ファンネルっ!」
+“Funnel!”
+
+@16412 Chara · キャラ
+> 「フィンファンルっ!!」
+“Fin Funnels!!”
+
+@16413 Chara · キャラ
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”
+
+@16414 Ark · アーク
+> 「{PartnerNick}ッ!」
+“{PartnerNick}!”
+
+@16415 Ark · アーク
+> 「頼む、あたってくれ!」
+“Please, hit!”
+
+@16416 Ark · アーク
+> 「あんたはぁぁぁーっ!」
+“Youuu!”
+
+@16417 Ark · アーク
+> 「やってやる……
+>  俺だって死にたくないんだ!」
+“I'll do it... I don't wanna die either!”
+
+@16418 Ark · アーク
+> 「あんたが相手でもッ!!」
+“Even if it's you!!”
+
+@16419 Ark · アーク
+> 「ミサイルでいけるか!?」
+“Can I get them with missiles?!”
+
+@16420 Ark · アーク
+> 「ミサイルでしのぐ!」
+“I'll hold them off with missiles!”
+
+@16421 Ark · アーク
+> 「散れ!」
+“Scatter!”
+
+@16422 Ark · アーク
+> 「飛び散れっ!」
+“Break apart!”
+
+@16423 Ark · アーク
+> 「散れ!」
+“Scatter!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”
+
+@16424 Ark · アーク
+> 「いっけぇぇぇーっっ!」
+“Gooo!!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”
+
+@16425 Ark · アーク
+> 「いけるか!?」
+“Can I do it?!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”
+
+@16426 Ehrlich · エルリッヒ
+> 「なぜ君はそうも戦える!?」
+“Why can you still fight like that?!”
+
+@16427 Ehrlich · エルリッヒ
+> 「悪いが、落とさせてもらう!」
+“Sorry, but I'm taking you down!”
+
+@16428 Ehrlich · エルリッヒ
+> 「いくぞ!」
+“Here I come!”
+
+@16429 Ehrlich · エルリッヒ
+# 审校：原文是“做好觉悟”，不是“准备去死”，初稿过度意译。
+> 「戦いに出るのなら……
+>  覚悟を決めろ!」
+“If you're going into battle, then steel yourself!”
+
+@16430 Selain · セレイン
+> 「貴様ぁーっ!」
+“You bastard!”
+
+@16431 Selain · セレイン
+> 「貴様のような奴は!」
+“Someone like you!”
+
+@16432 Selain · セレイン
+> 「{PartnerFull}……
+>  落ちろ」
+“{PartnerFull}... fall.”
+
+@16433 Selain · セレイン
+> 「私の前に出るならば、落とす」
+“If you stand before me, I'll shoot you down.”
+
+@16434 Selain · セレイン
+> 「集束荷電粒子砲で
+>  なぎ払ってやる!」
+“I'll sweep you away with the Convergent Charged Particle Cannon!”
+
+@16435 Selain · セレイン
+> 「集束荷電粒子砲、スタンバイ」
+“Convergent Charged Particle Cannon, standby.”
+---
+> 「シュート!!」
+“Shoot!!”
+
+@16436 Rish · リッシュ
+> 「わるいな、{HeroNick}ちゃん」
+“Sorry about this, {HeroNick}.”
+
+@16437 Rish · リッシュ
+> 「本当はあんまりやりたかないんだがよ」
+“I really don't wanna do this, y'know.”
+
+@16438 Rish · リッシュ
+> 「しかたねぇな」
+“Guess I've got no choice.”
+
+@16439 Rish · リッシュ
+> 「直撃しちまったら勘弁しろよ」
+“If it's a direct hit, don't blame me.”
+
+@16440 Rish · リッシュ
+> 「俺は乗り気じゃないんだが」
+“I'm not exactly eager for this.”
+
+@16441 Rish · リッシュ
+# 审校：原文是叮嘱语气“しっかりよけろよ”，句末用问号更自然。
+> 「しっかりよけろよ」
+“Dodge properly, got it?”
+
+@16442 Brad · ブラッド
+> 「{PartnerName}!
+>  お前に俺の技が見切れるか!?」
+“{PartnerName}! Can you see through my technique?!”
+
+@16443 Brad · ブラッド
+> 「くらえぇぇーっ!!」
+“Take thiiis!!”
+
+@16444 Brad · ブラッド
+> 「いくぞ、{PartnerName}!!」
+“Let's go, {PartnerName}!!”
+
+@16445 Brad · ブラッド
+> 「うおおぉぉぉぉーっ!!」
+“Uwoooooooh!!”
+
+@16446 Brad · ブラッド
+> 「手加減はしないぞ、{PartnerName}!」
+“I won't hold back, {PartnerName}!”
+
+@16447 Brad · ブラッド
+> 「せいやあぁぁぁーっ!」
+“Seiyaaaaaah!”
+
+@16448 Brad · ブラッド
+> 「そこかぁっ!!」
+“There you are!!”
+
+@16449 Brad · ブラッド
+> 「虎閃掌!」
+“Kosensho!”
+
+@16450 Brad · ブラッド
+> 「虎閃掌だ!」
+“It's the Kosensho!”
+
+@16451 Brad · ブラッド
+> 「いくぜッ! 虎閃掌!!」
+“Here it comes! Kosensho!!”
+
+@16452 Brad · ブラッド
+> 「くらえっ、虎閃掌だ!!」
+“Take this, Kosensho!!”
+
+@16453 Brad · ブラッド
+> 「この閃光が敵を貫く!」
+“This flash will pierce the enemy!”
+---
+> 「虎閃掌ぉぉぉーっ!!」
+“Kosenshoooo!!”
+
+@16454 Brad · ブラッド
+> 「狼牙っ!」
+“Roga!”
+
+@16455 Brad · ブラッド
+> 「いくぞ、狼牙だ!」
+“Here it comes, Roga!”
+
+@16456 Brad · ブラッド
+> 「狼牙ぁぁぁぁーっ!!」
+“Rogaaaaaah!!”
+
+@16457 Brad · ブラッド
+> 「奴の喉元を喰い破れ!」
+“Tear out its throat!”
+---
+> 「狼牙ァァッ!!」
+“Rogaaaah!!”
+
+@16458 Brad · ブラッド
+> 「餓狼爪撃!」
+“Garo Sogeki!”
+
+@16459 Brad · ブラッド
+> 「くらえっ、餓狼爪撃ッ!」
+“Take this, Garo Sogeki!”
+
+@16460 Brad · ブラッド
+> 「受けてみやがれ!」
+“Try and take it!”
+---
+> 「餓狼爪撃ッ!」
+“Garo Sogeki!”
+
+@16461 Brad · ブラッド
+> 「我が手より出でて敵を裂け!」
+“Come forth from my hand and tear the enemy apart!”
+---
+> 「餓狼爪撃ィィィッ!」
+“Garo Sogekiiiii!”
+
+@16462 Brad · ブラッド
+> 「獅子よ吼えろっ!」
+“Roar, lion!”
+
+@16463 Brad · ブラッド
+> 「獅子吼裂破!」
+“Shishiko Reppa!”
+
+@16464 Brad · ブラッド
+> 「受けてみろ!」
+“Take this!”
+---
+> 「獅子吼裂破ぁぁーっ!」
+“Shishiku Reppaaaaah!”
+
+@16465 Brad · ブラッド
+# 审校：第二页拖长音应体现，初稿第二页未拖长，需修改。
+> 「うおぉぉぉーっ!!」
+“Uwooooooh!!”
+---
+> 「獅子吼裂破だぁぁーっ!!」
+“Shishiku Reppaaaaah!!”
+
+@16466 Brad · ブラッド
+> 「こいつで決める!」
+“I'll finish it with this!”
+---
+> 「くらえっ、竜王双撃!」
+“Take this, Ryuo Sogeki!”
+
+@16467 Brad · ブラッド
+> 「見せてやるっ!」
+“I'll show you!”
+---
+> 「秘技・竜王双撃ィィィーッ!」
+“Secret Art: Ryuo Sogekiiiii!”
+
+@16468 Brad · ブラッド
+> 「秘技、竜・王・双・撃ッ!」
+“Secret Art: Ryu-O-So-Geki!”
+
+@16469 Brad · ブラッド
+> 「一撃で決める!」
+“I'll finish it in one strike!”
+---
+> 「秘技、竜・王・双・撃ッ!」
+“Secret Art: Ryu-O-So-Geki!”
+
+@16470 Brad · ブラッド
+> 「天を翔けよ! 空を裂け!
+>  我が魂の力、いまこそ見せん!」
+“Soar through the heavens! Split the sky! Now I show you the power of my soul!”
+
+@16471 Brad · ブラッド
+> 「いっくぞぉっ、ひぃーっさつ!」
+“Here we gooo, secret technique!”
+
+@16472 Brad · ブラッド
+> 「天・馬・翔・覇ぁぁーっ!!」
+“Ten-Ma-Sho-Haaaaah!!”
+
+@16473 Brad · ブラッド
+> 「天を翔けよ! 空を裂け!
+>  全てを滅する光となりて!」
+“Soar through the heavens! Split the sky! Become the light that destroys all!”
+
+@16474 Brad · ブラッド
+> 「我が魂の力、いまこそ見せん!
+>  必殺奥義ぃぃぃーっ!」
+“Now I show you the power of my soul! Ultimate secret technique!”
+
+@16475 Brad · ブラッド
+> 「天馬ぁぁっ翔覇ぁぁーっ!」
+“Tenmaaa Sho-haaaaah!”
+
+@16476 Brad · ブラッド
+> 「打ち倒せ! この魂を修羅と化し
+>  我が命のすべてをもって成す!」
+“Strike them down! Turn this soul into a shura and do it with all my life!”
+
+@16477 Brad · ブラッド
+> 「うおぉぉぉぉぉぉぉぉぉーーっ!!」
+“Uwooooooooooooh!!”
+
+@16478 Brad · ブラッド
+> 「必殺ッ!
+>  天馬翔覇ァァァァーーッ!!」
+“Finishing move! Tenma Shohaaaaaah!!”
+
+@16479 Brad · ブラッド
+> 「我が身に宿る鬼神が放つ!
+>  この閃光は究極不敗!」
+“The demon god within me unleashes it! This flash is invincible!”
+
+@16480 Brad · ブラッド
+> 「その身をもってとくと知れ!
+>  武機覇拳流が最終奥義!」
+“Know it with your own body! The ultimate secret of Buki Haken-ryu!”
+
+@16481 Brad · ブラッド
+> 「鳳・凰・光・覇ァァァーっ!」
+“Ho-O-Ko-Haaaaah!”
+
+@16482 Brad · ブラッド
+> 「我が身に宿る鬼神が放つ!
+>  この閃光は究極不敗ぃぃっ!」
+“The demon god within me unleashes it! This flash is invincible!”
+
+@16483 Brad · ブラッド
+> 「貴様に見せてやる!!
+>  武機覇拳流が最終奥義!」
+“I'll show you!! The ultimate secret of Buki Haken-ryu!”
+
+@16484 Brad · ブラッド
+> 「いっくぞぉぉぉーっ!!
+>  鳳・凰・光・覇ぁぁぁぁぁーっ!」
+“Here we gooo!! Ho-O-Ko-Haaaaaaah!”
+
+@16485 Brad · ブラッド
+> 「天に舞え鳳凰!
+>  その光翼で敵を無に帰せ!」
+“Dance in the heavens, phoenix! Return the enemy to nothing with your wings of light!”
+
+@16486 Brad · ブラッド
+> 「いまより放つこの一撃は
+>  絶対無敵の不破の技!」
+“The strike I now unleash is the absolute invincible, unbreakable technique!”
+
+@16487 Brad · ブラッド
+> 「“武機覇拳流”神技!
+>  鳳・凰・光・覇ぁぁぁーっ!!」
+“Buki Haken-ryu divine technique! Ho-O-Ko-Haaaaah!!”
+
+@16488 Brad · ブラッド
+> 「{PartnerNick}、あれをやるぞ!」
+“{PartnerNick}, let's do that one!”
+
+@16489 Kurtz · カーツ
+> 「あれか。いいだろう」
+“That's it. Fine.”
+
+@16490 Kurtz · カーツ
+> 「いくぞッ!」
+“Here I go!”
+---
+> 「うなれ!
+>  この身に満ちる猛き闘気よ!」
+“Roar, fierce fighting spirit that fills me!”
+
+@16491 Brad · ブラッド
+> 「天よ竜よ、八部の鬼神よ!
+>  我ら一命を賭して成就せんッ!」
+“Heaven, dragon, and the eight war gods! We stake our lives to see it done!”
+
+@16492 Kurtz · カーツ
+> 「招雷せよ!
+>  すべてを滅却せんがため!」
+“Summon the lightning! To annihilate everything!”
+
+@16493 Brad · ブラッド
+> 「冥府の鬼に語って聞かせよ!」
+“Go tell it to the demons of the underworld!”
+
+@16494 Kurtz · カーツ
+> 「これが我らの必殺奥義ぃぃーっ!」
+“This is our ultimate secret technique!”
+
+@16495 Brad · ブラッド
+> 「くらえぇぇーっ!」
+“Take this!”
+---
+> 「天・竜・魔・滅・陣!!」
+“Heaven! Dragon! Demon! Annihilation! Formation!!”
+
+@16496 Brad · ブラッド
+> 「ぐうっ! さすがだな、{PartnerName}!」
+“Guh! Impressive as ever, {PartnerName}!”
+
+@16497 Brad · ブラッド
+> 「くっ、やはり、強い」
+“Ngh, you really are strong.”
+
+@16498 Brad · ブラッド
+> 「ちいっ、腕をあげたな{PartnerName}!」
+“Tch, you've gotten better, {PartnerName}!”
+
+@16499 Brad · ブラッド
+> 「まだまだぁーっ!」
+“Not done yet!”

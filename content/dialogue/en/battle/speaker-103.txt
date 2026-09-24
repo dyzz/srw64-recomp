@@ -1,0 +1,145 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@6712 Treize · トレーズ
+# 审校：「まいる」在此是出击/进攻宣告，初稿“I'm coming!”语气太弱且易误解。
+> 「まいる!」
+“I'm coming for you!”
+
+@6713 Treize · トレーズ
+> 「いざ!」
+“Here I go!”
+
+@6714 Treize · トレーズ
+> 「私の攻撃を受けきれるか!」
+“Can you withstand my attack?!”
+
+@6715 Treize · トレーズ
+> 「さぁ、君の戦いを見せてくれ!」
+“Come, show me how you fight!”
+
+@6716 Treize · トレーズ
+# 审校：与L1同理，保持出击宣告气势。
+> 「トレーズ・クシュリナーダ、まいる!」
+“Treize Khushrenada, coming for you!”
+
+@6717 Treize · トレーズ
+> 「まかせてくれたまえ」
+“Leave it to me.”
+
+@6718 Treize · トレーズ
+> 「私の勝ちだ」
+“I win.”
+
+@6719 Treize · トレーズ
+> 「お手合わせ願おう!」
+“Let's have a match!”
+
+@6720 Treize · トレーズ
+> 「終わったな」
+“It's over.”
+
+@6721 Treize · トレーズ
+> 「私がお相手いたそう」
+“I shall be your opponent.”
+
+@6722 Treize · トレーズ
+> 「手加減はしない」
+“I won't hold back.”
+
+@6723 Treize · トレーズ
+> 「私の負けだな……」
+“I suppose I've lost...”
+
+@6724 Treize · トレーズ
+> 「見事だ……」
+“Splendid...”
+
+@6725 Treize · トレーズ
+> 「私は退かない、私は地球を
+>  愛しているのだ」
+“I will not retreat. I love the Earth.”
+
+@6726 Treize · トレーズ
+# 审校：機体在战斗语境中译为 machine 更自然，unit 偏军事报告腔。
+> 「む!? 機体の損傷が
+>  大きすぎるか」
+“Hm?! Is the damage to my machine too great?”
+
+@6727 Treize · トレーズ
+# 审校：落ちる指被击坠，初稿 fall over 不准确。
+> 「これしきのことで落ちるわけにはいかんな」
+“I cannot afford to be shot down by something like this.”
+
+@6728 Treize · トレーズ
+> 「人に必要なのは勝利ではなく
+>  戦う意思なのだ」
+“What people need is not victory, but the will to fight.”
+
+@6729 Treize · トレーズ
+> 「良い戦いだ」
+“A good fight.”
+
+@6730 Treize · トレーズ
+> 「これは楽しみだ」
+“This should be enjoyable.”
+
+@6731 Treize · トレーズ
+> 「なるほど、手加減の必要は
+>  ないようだな」
+“I see, it seems there's no need to hold back.”
+
+@6732 Treize · トレーズ
+> 「なかなかやるようだな」
+“You're quite good, it seems.”
+
+@6733 Treize · トレーズ
+# 审校：この程度か指对方实力仅此而已，初稿 you have 不完整。
+> 「なるほど、この程度か……」
+“I see, so this is all you amount to...”
+
+@6734 Treize · トレーズ
+> 「君では私の相手にならない、
+>  残念だよ」
+“You're no match for me. What a shame.”
+
+@6735 Treize · トレーズ
+> 「この程度か……私を失望させない
+>  でくれ」
+“Is this all? ...Don't disappoint me.”
+
+@6736 Treize · トレーズ
+> 「どうした?」
+“What's wrong?”
+
+@6737 Treize · トレーズ
+> 「私を失望させないでくれ」
+“Don't disappoint me.”
+
+@6738 Treize · トレーズ
+# 审校：甘い指瞄准不精准，poor 可接受但 sloppy 更贴战斗语气。
+> 「狙いが甘いぞ。私はここだ!」
+“Your aim is sloppy. I'm right here!”
+
+@6739 Treize · トレーズ
+> 「あせりすぎたようだな」
+“Seems you were too hasty.”
+
+@6740 Treize · トレーズ
+> 「どうしたというのだ? それでは私は
+>  倒せない」
+“What's the matter? You can't defeat me like that.”
+
+@6741 Treize · トレーズ
+> 「残念だが、その攻撃では
+>  無理だな」
+“Sorry, but that attack won't do it.”
+
+@6742 Treize · トレーズ
+> 「弾がない、か。しかたあるまい」
+“Out of ammo, is it? It can't be helped.”
+
+@6743 Treize · トレーズ
+# 审校：よい戦法译为 fine tactic 稍弱，sound tactic 更符合 Treize 的军人评价口吻。
+> 「射程外から? よい戦法だが、
+>  面白味にかけるな」
+“From out of range? A sound tactic, but it lacks flair.”

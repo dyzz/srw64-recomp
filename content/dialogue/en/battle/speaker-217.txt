@@ -1,0 +1,128 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@7637 Le Cain · ル・カイン
+> 「愚か者めっ!!」
+“You fool!!”
+
+@7638 Le Cain · ル・カイン
+> 「貴様はここで死ぬのだ!!」
+“You're going to die right here!!”
+
+@7639 Le Cain · ル・カイン
+> 「貴様!!」
+“You!!”
+
+@7640 Le Cain · ル・カイン
+# 审校：「問答無用」在此是战斗中的威吓，意为不留情面，初稿直译成“No questions asked”不符合语境。
+> 「問答無用!」
+“No quarter!”
+
+@7641 Le Cain · ル・カイン
+> 「ハッハッハッハ!!」
+“Hah hah hah hah!!”
+
+@7642 Le Cain · ル・カイン
+> 「生きてここを去れると思って
+>  いるのか?」
+“You think you'll leave here alive?”
+
+@7643 Le Cain · ル・カイン
+> 「覚悟っ!!」
+“Prepare yourself!!”
+
+@7644 Le Cain · ル・カイン
+> 「勝負!!」
+“Let's settle this!!”
+
+@7645 Le Cain · ル・カイン
+> 「恨むなら、己を恨め!」
+“If you must hate, hate yourself!”
+
+@7646 Le Cain · ル・カイン
+> 「私が貴様らごときに……!?」
+“Me, beaten by the likes of you...?!”
+
+@7647 Le Cain · ル・カイン
+> 「おのれぇぇぇぇぇっ!」
+“Curse youuuuuu!”
+
+@7648 Le Cain · ル・カイン
+> 「ゆるせん……断じて許せん!!」
+“Unforgivable... absolutely unforgivable!!”
+
+@7649 Le Cain · ル・カイン
+> 「私に恥をかかせてくれた礼は、
+>  タップリとさせてもらうぞ!」
+“You'll pay in full for humiliating me!”
+
+@7650 Le Cain · ル・カイン
+> 「ぐぅぅぅぅぅっ!」
+“Guhhhhh!”
+
+@7651 Le Cain · ル・カイン
+> 「くっ! 私に立ち向かう気か!」
+“Ngh! You dare stand against me?!”
+
+@7652 Le Cain · ル・カイン
+> 「お、おのれっ!!」
+“Y-you bastard!!”
+
+@7653 Le Cain · ル・カイン
+> 「ハッハッハッ、気に入った!
+>  フハハハハハハッ!」
+“Hah hah hah, I like it! Fuhahahahahaha!”
+
+@7654 Le Cain · ル・カイン
+> 「こ、この程度で!」
+“Th-this much?!”
+
+@7655 Le Cain · ル・カイン
+> 「ぬぅぅっ!」
+“Nghh!”
+
+@7656 Le Cain · ル・カイン
+> 「この程度か!」
+“Is that all?!”
+
+@7657 Le Cain · ル・カイン
+> 「効かぬわ、愚か者め!」
+“It's useless, you fool!”
+
+@7658 Le Cain · ル・カイン
+> 「ふん、それでは相手にならん!」
+“Hmph, you're no match for me!”
+
+@7659 Le Cain · ル・カイン
+> 「フフッ、なかなか楽しませてくれるな」
+“Heh heh, you're quite entertaining.”
+
+@7660 Le Cain · ル・カイン
+> 「愚かな」
+“Foolish.”
+
+@7661 Le Cain · ル・カイン
+> 「そんな腕で私を倒そうというのか!?
+>  笑わせるな!」
+“You think you can beat me with that skill?! Don't make me laugh!”
+
+@7662 Le Cain · ル・カイン
+> 「貴様ごときの攻撃が、この私に
+>  あたるなどと思うな!」
+“Don't think an attack from the likes of you could ever hit me!”
+
+@7663 Le Cain · ル・カイン
+> 「私にダメージを与える事など
+>  貴様らにはできん!」
+“None of you could ever so much as scratch me!”
+
+@7664 Le Cain · ル・カイン
+> 「そんな攻撃など効かぬわっ!」
+“An attack like that won't work on me!”
+
+@7665 Le Cain · ル・カイン
+> 「くっ、この私が!?」
+“Ngh, me of all people?!”
+
+@7666 Le Cain · ル・カイン
+> 「おのれ卑怯な!」
+“Curse you, you coward!”

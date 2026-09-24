@@ -1,0 +1,191 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8327 Bright · ブライト
+> 「前方の敵に集中砲火だ!」
+“Focus all fire on the enemy ahead!”
+
+@8328 Bright · ブライト
+> 「てーーっ!!」
+“Fiiire!!”
+
+@8329 Bright · ブライト
+> 「撃てーっ!!」
+“Fire!!”
+
+@8330 Bright · ブライト
+> 「前方の敵を排除しろっ!」
+“Eliminate the enemy ahead!”
+
+@8331 Bright · ブライト
+> 「何としてでも落とせーっ!」
+“Shoot them down no matter what!”
+
+@8332 Bright · ブライト
+> 「弾幕を張れっ!!」
+“Lay down a barrage!!”
+
+@8333 Bright · ブライト
+> 「撃てーーーっ!!」
+“Fiiire!!”
+
+@8334 Bright · ブライト
+> 「てーーーっ!!」
+“Fiiire!!”
+
+@8335 Bright · ブライト
+> 「やらせんっ!!」
+“I won't let you!!”
+
+@8336 Bright · ブライト
+> 「しまった!!」
+“Damn!!”
+
+@8337 Bright · ブライト
+> 「くっ!! 総員退避!!」
+“Ngh!! All hands, evacuate!!”
+
+@8338 Bright · ブライト
+> 「直撃だと!?」
+“A direct hit?!”
+
+@8339 Bright · ブライト
+> 「ま、まだだっ!! 持ちこたえろ!」
+“N-not yet!! Hold together!”
+
+@8340 Bright · ブライト
+> 「むうっ! このままではもたんぞ!」
+“Mmph! At this rate we won't hold!”
+
+@8341 Bright · ブライト
+> 「直撃!?」
+“A direct hit?!”
+
+@8342 Bright · ブライト
+> 「くっ! まだだ! まだおちるな!」
+“Ngh! Not yet! Don't go down yet!”
+
+@8343 Bright · ブライト
+> 「対空砲火、なにしてんの!!」
+“AA Gun, what are you doing!!”
+
+@8344 Bright · ブライト
+> 「ぐっ! どうした、対空防御!!」
+“Guh! What's wrong, anti-air defense!!”
+
+@8345 Bright · ブライト
+> 「うっ! 被害状況を調べろ!」
+“Ugh! Check the damage!”
+
+@8346 Bright · ブライト
+> 「被弾状況知らせ!」
+“Report hit status!”
+
+@8347 Bright · ブライト
+> 「隔壁! 消火剤防御!」
+“Bulkheads! Fire suppressant defense!”
+
+@8348 Bright · ブライト
+> 「何やってんの!?」
+“What are you doing?!”
+
+@8349 Bright · ブライト
+> 「くっ! 消火作業、急げ!!」
+“Ngh! Hurry the firefighting!!”
+
+@8350 Bright · ブライト
+> 「くっ! ひるむな!」
+“Ngh! Don't falter!”
+
+@8351 Bright · ブライト
+> 「砲撃手! なにをやっている!」
+“Gunner! What are you doing!”
+
+@8352 Bright · ブライト
+> 「弾幕うすいぞ!! 何やってんの!!」
+“The barrage is too thin!! What are you doing!!”
+
+@8353 Bright · ブライト
+> 「左舷弾幕うすいぞ!!
+>  何やってんの!!」
+“The barrage on the port side is too thin!! What are you doing!!”
+
+@8354 Bright · ブライト
+> 「この程度で落ちはしない」
+“We won't go down from this much”
+
+@8355 Bright · ブライト
+> 「ふむ、大した被害はないな?」
+“Hmm, no significant damage?”
+
+@8356 Bright · ブライト
+> 「各部、損傷チェック!」
+“All sections, check for damage!”
+
+@8357 Bright · ブライト
+> 「くっ! まだまだ!!」
+“Ngh! Not yet, not yet!!”
+
+@8358 Bright · ブライト
+> 「くっ! まだ、こんなもので!」
+“Ngh! Not from something like this!”
+
+@8359 Bright · ブライト
+> 「機銃座、弾幕を張れ!
+>  まったく手が遅いんだから」
+“Gun turrets, lay down a barrage! You're all so slow”
+
+@8360 Bright · ブライト
+> 「回避運動、急げ!!」
+“Evasive maneuvers, hurry!!”
+
+@8361 Bright · ブライト
+> 「急速降下!」
+“Rapid descent!”
+
+@8362 Bright · ブライト
+> 「面舵! かわせ!」
+“Hard to port! Evade!”
+
+@8363 Bright · ブライト
+> 「よし、かわした!」
+“Good, we dodged it!”
+
+@8364 Bright · ブライト
+> 「あぶないっ!」
+“That was close!”
+
+@8365 Bright · ブライト
+> 「ムダだっ!!」
+“It's useless!!”
+
+@8366 Bright · ブライト
+> 「ムダなことを!」
+“What a waste of effort!”
+
+@8367 Bright · ブライト
+> 「この程度のビームならダメージはないな」
+“A Beam like that won't do any damage”
+
+@8368 Bright · ブライト
+> 「ムダだ!」
+“It's useless!”
+
+@8369 Bright · ブライト
+> 「ムダなことを!」
+“What a waste of effort!”
+
+@8370 Bright · ブライト
+> 「反撃は……だめか!」
+“Counterattack is... no good!”
+
+@8371 Bright · ブライト
+> 「くっ、だめか!?」
+“Ngh, no good?!”
+
+@8372 Bright · ブライト
+> 「くっ! この距離では遠すぎるか!」
+“Ngh! Too far at this range?!”
+
+@8373 Bright · ブライト
+> 「くっ! 遠すぎるか!」
+“Ngh! Too far?!”

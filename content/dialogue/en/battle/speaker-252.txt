@@ -1,0 +1,119 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9026 Rosamia · ロザミア
+> 「沈めっ!」
+“Sink!”
+
+@9027 Rosamia · ロザミア
+> 「邪魔をするかっ!」
+“You dare get in my way?!”
+
+@9028 Rosamia · ロザミア
+> 「貴様ぁっ!」
+“You bastard!”
+
+@9029 Rosamia · ロザミア
+> 「死んでもらうよ!」
+“I'll have you die!”
+
+@9030 Rosamia · ロザミア
+> 「捕まえたよ」
+“Got you.”
+
+@9031 Rosamia · ロザミア
+> 「逃がさないよ」
+“I won't let you escape.”
+
+@9032 Rosamia · ロザミア
+> 「死ねいっ!!」
+“Die!!”
+
+@9033 Rosamia · ロザミア
+> 「やらせるかいっ!」
+“Like I'd let you!!”
+
+@9034 Rosamia · ロザミア
+> 「速い? しかし、私にかなうかな」
+“Fast? But can you match me?”
+
+@9035 Rosamia · ロザミア
+> 「フフ、もう逃がさないよ」
+“Heh heh, I won't let you escape now.”
+
+@9036 Rosamia · ロザミア
+> 「あ、ああ……うあああっ!!」
+“A-Ahh... uwaaaah!!”
+
+@9037 Rosamia · ロザミア
+> 「くっ! しくじった!!」
+“Ngh! I messed up!!”
+
+@9038 Rosamia · ロザミア
+> 「あああっ! 空が……空が落ちる……」
+“Aaaah! The sky... the sky is falling...”
+
+@9039 Rosamia · ロザミア
+> 「何っ!? な、何だ、この力は!?」
+“What?! W-What is this power?!”
+
+@9040 Rosamia · ロザミア
+> 「あうぅっ!
+>  何だ、直撃だというのか!?」
+“Agh! What, a direct hit?!”
+
+@9041 Rosamia · ロザミア
+> 「くうっ! やるじゃないかっ!」
+“Ngh! Not bad!”
+
+@9042 Rosamia · ロザミア
+> 「うっ! このっ、生意気なんだよっ!」
+“Ugh! Why you, you're getting cocky!”
+
+@9043 Rosamia · ロザミア
+> 「ちいっ! やってくれる!」
+“Tch! You've got some nerve!”
+
+@9044 Rosamia · ロザミア
+> 「ふん、その程度かい」
+“Hmph, is that all?”
+
+@9045 Rosamia · ロザミア
+> 「効かないねっ!」
+“It doesn't work!”
+
+@9046 Rosamia · ロザミア
+> 「そんな攻撃でやられるものか!」
+“Like an attack like that could take me down!”
+
+@9047 Rosamia · ロザミア
+> 「当たりはしないっ!」
+“It won't hit!”
+
+@9048 Rosamia · ロザミア
+> 「機動性はこっちが上だって
+>  いったろう?」
+“Didn't I tell you I'm more maneuverable?”
+
+@9049 Rosamia · ロザミア
+> 「甘いんだよっ!」
+“Too soft!”
+
+@9050 Rosamia · ロザミア
+> 「遅いっ!」
+“Too slow!”
+
+@9051 Rosamia · ロザミア
+> 「ん? 何かの作戦なのか?」
+“Hm? Is this some kind of plan?”
+
+@9052 Rosamia · ロザミア
+> 「ムダなのさ!」
+“It's pointless!”
+
+@9053 Rosamia · ロザミア
+> 「弾切れか!? ぬかった!」
+“Out of ammo?! I slipped up!”
+
+@9054 Rosamia · ロザミア
+> 「ふん、遠くからこそこそと……ネズミめ!」
+“Hmph, sneaking around from far away... you rat!”

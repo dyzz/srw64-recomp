@@ -1,0 +1,268 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11378 Selain · セレイン
+> 「一機でも多く敵を倒す!」
+“I'll take down as many enemies as I can!”
+
+@11379 Selain · セレイン
+> 「私が落とす!」
+“I'll shoot it down!”
+
+@11380 Selain · セレイン
+> 「当ててみせる!」
+“I'll hit you, just watch!”
+
+@11381 Selain · セレイン
+> 「そこか!」
+“There you are!”
+
+@11382 Selain · セレイン
+> 「貴様らのような奴がっ!」
+“Scum like you!”
+
+@11383 Selain · セレイン
+> 「貴様は、ここで終わりだ!」
+“You're finished here!”
+
+@11384 Selain · セレイン
+> 「やらせない!」
+“I won't let you!”
+
+@11385 Selain · セレイン
+> 「そんな動きでは!」
+“Not with moves like that!”
+
+@11386 Selain · セレイン
+> 「これで!」
+“With this!”
+
+@11387 Selain · セレイン
+> 「ええい、落ちろ!」
+“Come on, go down!”
+
+@11388 Selain · セレイン
+> 「落としてみせる!」
+“I'll bring you down!”
+
+@11389 Selain · セレイン
+> 「そこ!」
+“There!”
+
+@11390 Selain · セレイン
+> 「ここは私が!」
+“I'll handle this one!”
+
+@11391 Selain · セレイン
+> 「つぎは……」
+“Next is...”
+
+@11392 Selain · セレイン
+> 「邪魔をするな!」
+“Don't get in my way!”
+
+@11393 Selain · セレイン
+> 「やってみせる!」
+“I'll do it, just watch!”
+
+@11394 Selain · セレイン
+> 「あまい!」
+“Too easy!”
+
+@11395 Selain · セレイン
+> 「これなら!」
+“This should do it!”
+
+@11396 Selain · セレイン
+> 「もらった!」
+“Got you!”
+
+@11397 Selain · セレイン
+> 「あっ!? あぁぁーっ!!」
+“Ah!? Aaaah!!”
+
+@11398 Selain · セレイン
+> 「わ、私もこの程度か……!」
+“I-I'm only this good...!”
+
+@11399 Selain · セレイン
+> 「きゃあぁぁぁぁーーっ!」
+“Kyaaaaaaah!”
+
+@11400 Selain · セレイン
+> 「なんだとっ!?」
+“What did you say!?”
+
+@11401 Selain · セレイン
+> 「くっ、機体がもう限界かっ!」
+“Ngh, is my unit already at its limit!?”
+
+@11402 Selain · セレイン
+> 「あぅっ! も、もたない!?」
+“Ah! I-I can't hold out!?”
+
+@11403 Selain · セレイン
+> 「だ、だめか!?」
+“N-No good!?”
+
+@11404 Selain · セレイン
+> 「あぁ!! こ、これ以上は!」
+“Aah!! I-I can't take any more!”
+
+@11405 Selain · セレイン
+> 「くうぅぅぅーっ!」
+“Nghhhhh!”
+
+@11406 Selain · セレイン
+> 「くぅっ……パ、パワーダウン!?」
+“Ngh... P-Power down!?”
+
+@11407 Selain · セレイン
+> 「し、しまった!?
+>  出力が上がらないとは……」
+“D-Damn!? The output won't rise...”
+
+@11408 Selain · セレイン
+> 「ぐ……ダメージが大きすぎるか!?」
+“Ugh... Is the damage too heavy!?”
+
+@11409 Selain · セレイン
+> 「ううっ、直撃をくらってしまった!?」
+“Ugh, I took a direct hit!?”
+
+@11410 Selain · セレイン
+> 「ま、まだ、まだやれる!」
+“I-I can still keep going!”
+
+@11411 Selain · セレイン
+> 「あぁぁーっ!」
+“Aaaah!”
+
+@11412 Selain · セレイン
+> 「くぅっ、この程度のダメージでっ!」
+“Ngh, this little damage won't stop me!”
+
+@11413 Selain · セレイン
+> 「なに!? あたったのか!?」
+“What!? It hit!?”
+
+@11414 Selain · セレイン
+> 「くっ……油断があったということか」
+“Ngh... So I let my guard down.”
+
+@11415 Selain · セレイン
+> 「多少装甲が削られたくらいっ」
+“Just a little armor scraped off!”
+
+@11416 Selain · セレイン
+> 「この程度なら、いけるな」
+“This much, I can handle.”
+
+@11417 Selain · セレイン
+> 「こんなもので……」
+“Is that all...”
+
+@11418 Selain · セレイン
+> 「くっ、損傷はほとんどないな」
+“Ngh, barely any damage.”
+
+@11419 Selain · セレイン
+> 「そんな攻撃でやれるものか」
+“You think an attack like that can take me down?”
+
+@11420 Selain · セレイン
+> 「敵のパワー不足に救われたか……」
+“Saved by the enemy's lack of power...”
+
+@11421 Selain · セレイン
+> 「バカにしているのか!?」
+“Are you mocking me!?”
+
+@11422 Selain · セレイン
+> 「やらせはしない!」
+“I won't let you!”
+
+@11423 Selain · セレイン
+> 「そこか!」
+“There you are!”
+
+@11424 Selain · セレイン
+> 「まだまだ!」
+“Not yet, not by a long shot!”
+
+@11425 Selain · セレイン
+> 「かわせる!」
+“I can dodge it!”
+
+@11426 Selain · セレイン
+> 「甘いッ!」
+“Too easy!”
+
+@11427 Selain · セレイン
+> 「見えた!」
+“I saw it!”
+
+@11428 Selain · セレイン
+> 「私にもこの程度の技量は!」
+“Even I have this much skill!”
+
+@11429 Selain · セレイン
+> 「くうっ……」
+“Ngh...”
+
+@11430 Selain · セレイン
+> 「単純な攻撃パターンだ。
+>  読みきれる」
+“A simple attack pattern. I can read it.”
+
+@11431 Selain · セレイン
+> 「この程度で私をやろうなどと!」
+“You think this is enough to beat me!”
+
+@11432 Selain · セレイン
+> 「私だって、伊達に
+>  戦い続けてはいない!」
+“I haven't kept fighting all this time for nothing!”
+
+@11433 Selain · セレイン
+> 「このパターンなら、かわせる」
+“With this pattern, I can dodge.”
+
+@11434 Selain · セレイン
+> 「そんな攻撃で」
+“An attack like that won't—”
+
+@11435 Selain · セレイン
+> 「ビーム攻撃はムダだ」
+“Beam attacks are useless.”
+
+@11436 Selain · セレイン
+> 「効きはしない」
+“It won't work.”
+
+@11437 Selain · セレイン
+> 「そんなものなら!」
+“If that's all you've got!”
+
+@11438 Selain · セレイン
+> 「くっ、性能に助けられたか……」
+“Ngh, saved by my unit's performance...”
+
+@11439 Selain · セレイン
+> 「よくもそんな攻撃をしかけてくる」
+“How dare you launch an attack like that.”
+
+@11440 Selain · セレイン
+> 「……弾切れか……」
+“...Out of ammo, huh...”
+
+@11441 Selain · セレイン
+> 「これ以上は撃てないか……」
+“I can't fire any more, huh...”
+
+@11442 Selain · セレイン
+> 「射程距離外? よくやる」
+“Out of range? Nice try.”
+
+@11443 Selain · セレイン
+> 「無駄弾は撃てないな……」
+“I can't waste bullets...”

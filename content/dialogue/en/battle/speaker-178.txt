@@ -1,0 +1,37 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@9666 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9667 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9668 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9669 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9670 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9671 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9672 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9673 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”
+
+@9674 Luna · ルーナ
+> 「ばかめ!」
+“Fool!”

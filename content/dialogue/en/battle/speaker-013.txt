@@ -1,0 +1,168 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12823 Chibodee · チボデー
+> 「いくぜぇっ!」
+“Here I go!”
+
+@12824 Chibodee · チボデー
+> 「うぉぉぉぉぉっ!」
+“Whooooa!!”
+
+@12825 Chibodee · チボデー
+> 「おらおらおらぁっ!」
+“Orararara!”
+
+@12826 Chibodee · チボデー
+> 「うらうらうらうらぁっ!」
+“Uraurauraura!”
+
+@12827 Chibodee · チボデー
+> 「くらいな!」
+“Take this!”
+
+@12828 Chibodee · チボデー
+> 「うおぅりゃぁぁぁぁっ!」
+“Woooryaaaah!!”
+
+@12829 Chibodee · チボデー
+> 「ちぇぁぁぁぁぁ!!」
+“Cheaaaaa!!”
+
+@12830 Chibodee · チボデー
+> 「でぇやぁぁぁ!!」
+“Deyaaaah!!”
+
+@12831 Chibodee · チボデー
+> 「とりゃとりゃとりゃとりゃぁぁ!!」
+“Toryatoryatorya!!”
+
+@12832 Chibodee · チボデー
+> 「一発で決めてやるぜ」
+“I'll finish this in one shot.”
+
+@12833 Chibodee · チボデー
+> 「おおおぉぉぉぉぉ!」
+“Oooooooh!!”
+
+@12834 Chibodee · チボデー
+# 审校：「ウィナーは俺たちだぜ」意为“赢家是我们”，原译“The winner is us”语法不自然。
+> 「覚悟しな! ウィナーは俺たちだぜ!」
+“Get ready! We're the winners!”
+
+@12835 Chibodee · チボデー
+> 「くっ負けちまったか……」
+“Ngh, I lost, huh...”
+
+@12836 Chibodee · チボデー
+> 「な、なんだとぉ!?」
+“W-What did you say?!”
+
+@12837 Chibodee · チボデー
+> 「オーマイガァッ!」
+“Oh my gaaah!”
+
+@12838 Chibodee · チボデー
+> 「シャリー、バニィ、キャス、ジャネット
+>  ……すまねぇ」
+“Shirley, Bunny, Cath, Janet... I'm sorry.”
+
+@12839 Chibodee · チボデー
+> 「ぐっ!? 俺は夢……俺は希望!
+>  負けるわけにはっ!」
+“Guh?! I am a dream... I am hope! I can't afford to lose!”
+
+@12840 Chibodee · チボデー
+> 「ぐわぁぁ!?」
+“Guwaaah?!”
+
+@12841 Chibodee · チボデー
+> 「うおぉぉっ!? くっそぅ!!」
+“Whoa?! Damn it!!”
+
+@12842 Chibodee · チボデー
+> 「ノォゥッ、ノォゥッ!」
+“Nooo, nooo!”
+
+@12843 Chibodee · チボデー
+> 「ぐ、あぁぁぁぁぁ!!」
+“Guh, aaaaaah!!”
+
+@12844 Chibodee · チボデー
+> 「くっ、やるじゃねぇか」
+“Ngh, not bad.”
+
+@12845 Chibodee · チボデー
+> 「なにっ!?」
+“What?!”
+
+@12846 Chibodee · チボデー
+> 「な、なにぃ、力負けしているだとぅ!?」
+“W-What, I'm losing in a contest of strength?!”
+
+@12847 Chibodee · チボデー
+> 「く……俺は誓ったんだ!
+>  必ず勝つってなぁ!」
+“Ngh... I made a vow! That I'd definitely win!”
+
+@12848 Chibodee · チボデー
+> 「へっ、そうこなくっちゃなぁ」
+“Heh, now that's more like it.”
+
+@12849 Chibodee · チボデー
+> 「その程度で俺を倒そうってのか!」
+“You think that's enough to beat me?!”
+
+@12850 Chibodee · チボデー
+> 「その程度で俺をやろうってのか!」
+“You think that's enough to take me down?!”
+
+@12851 Chibodee · チボデー
+> 「笑わせるぜ!」
+“You're a joke!”
+
+@12852 Chibodee · チボデー
+# 审校：修正误译：原文“この程度かよ”是“就这点程度吗”，初稿“is that all you got”缺少“got”的时态且不够自然，改为“you've got”更符合英语口语。
+> 「どうした、この程度かよ!?」
+“What's wrong, is that all you've got?!”
+
+@12853 Chibodee · チボデー
+> 「やめとけよ、ベイビィ!」
+“Give it up, baby!”
+
+@12854 Chibodee · チボデー
+> 「はずれちまったようだなぁ」
+“Looks like I missed.”
+
+@12855 Chibodee · チボデー
+> 「ヘイッ、どうしたどうした?」
+“Hey, what's the matter, what's the matter?”
+
+@12856 Chibodee · チボデー
+> 「へっ、すげぇすげぇ」
+“Heh, impressive, impressive.”
+
+@12857 Chibodee · チボデー
+> 「あたらねぇようだなぁ!」
+“You can't hit me!”
+
+@12858 Chibodee · チボデー
+> 「おいおい、遊んでんじゃねぇんだぜ!?」
+“Hey hey, this ain't a game!”
+
+@12859 Chibodee · チボデー
+# 审校：修正语法：初稿“That don't do a thing!”不符合标准英语，改为“That doesn't do a thing!”。
+> 「効かねぇんだよ!」
+“That doesn't do a thing!”
+
+@12860 Chibodee · チボデー
+> 「ムダだぜ、ベイビィ」
+“It's useless, baby.”
+
+@12861 Chibodee · チボデー
+> 「エネルギー切れ!?
+>  俺もヤキがまわったぜ」
+“Out of energy?! Guess I'm getting rusty.”
+
+@12862 Chibodee · チボデー
+> 「くそっ、こっからじゃ届かねぇか」
+“Damn, I can't reach from here.”

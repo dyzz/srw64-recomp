@@ -1,0 +1,105 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@12116 Shot · ショット
+> 「撃てっ!」
+“Fire!”
+
+@12117 Shot · ショット
+> 「させるな!撃ち落とせ!」
+“Don't let them! Shoot them down!”
+
+@12118 Shot · ショット
+> 「好きにはさせん!」
+“I won't let you do as you please!”
+
+@12119 Shot · ショット
+> 「やらせん!」
+“I won't let you!”
+
+@12120 Shot · ショット
+> 「落とせよ!」
+“Shoot them down!”
+
+@12121 Shot · ショット
+> 「スプリガンのパワー、思い知れ!」
+“Feel the power of the Spriggan!”
+
+@12122 Shot · ショット
+> 「うおっ! な、なんだと……」
+“Whoa! W-what the...”
+
+@12123 Shot · ショット
+> 「バカな!? ミュージィ……」
+“Impossible?! Musy...”
+
+@12124 Shot · ショット
+> 「ぬうっ! 機関部に損傷か!?」
+“Ngh! Damage to the engine section?!”
+
+@12125 Shot · ショット
+> 「ぐうっ! い、いかん、これ以上
+>  やられては……」
+“Guh! N-no good, if I take any more...”
+
+@12126 Shot · ショット
+> 「うおっ! ま、まさかこれ程とは……」
+“Whoa! T-to think it was this strong...”
+
+@12127 Shot · ショット
+> 「くっ!! どこをやられたか!?」
+“Gah!! Where did it hit me?!”
+
+@12128 Shot · ショット
+> 「ちいっ! まだだ! まだ落ちるな!」
+“Tch! Not yet! Don't go down yet!”
+
+@12129 Shot · ショット
+# 审校：原文是对空炮火，指敌方防空炮火，不是呼叫己方AA Gun单位，改为“AA fire”更准确。
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「くっ! 対空砲火! 何を
+>  している!」
+“Guh! AA fire! What are you doing?!”
+
+@12130 Shot · ショット
+> 「私とて、オーラ力はある!!」
+“Even I have aura power!!”
+
+@12131 Shot · ショット
+> 「その程度の攻撃など……」
+“An attack like that...”
+
+@12132 Shot · ショット
+> 「スプリガンの装甲は、並みでは
+>  ないのだ!」
+“The Spriggan's armor is no ordinary armor!”
+
+@12133 Shot · ショット
+> 「よく見て回避しろ!」
+“Watch closely and evade!”
+
+@12134 Shot · ショット
+> 「正面! 回避だ!」
+“In front! Evade!”
+
+@12135 Shot · ショット
+> 「動けよ! 私の操るままに!」
+“Move! Just as I command!”
+
+@12136 Shot · ショット
+# 审校：原译句意不完整，补充“nothing”使句子完整自然。
+> 「スプリガンの機動性ならば、
+>  この程度の攻撃は!」
+“With the Spriggan's mobility, an attack like this is nothing!”
+
+@12137 Shot · ショット
+> 「効かんよ! そんな攻撃など」
+“It won't work! An attack like that!”
+
+@12138 Shot · ショット
+> 「何っ!? 弾切れか!」
+“What?! Out of ammo?!”
+
+@12139 Shot · ショット
+> 「ちいっ、このスプリガンの射程をも
+>  上回るとは……」
+“Tch, to outrange even this Spriggan...”

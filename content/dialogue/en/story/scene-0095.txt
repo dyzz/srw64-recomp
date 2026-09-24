@@ -1,0 +1,1029 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@45028 Wong · ウォン
+# 审校：原文“東方先生”指东方不败，不是 Wong；初稿误译为 Master Wong。
+> 「東方先生」
+“Master Asia.”
+
+@45029 Master · マスター
+> 「……ウォンか。どうした、例の
+>  光の柱の正体はわかったのか
+“...Wong. What is it? Have you found out what that pillar of light was?
+---
+>  あれ以降、異星人どもが、
+>  地上から撤退しておるが」
+Since then, the aliens have withdrawn from the surface.”
+
+@45030 Wong · ウォン
+> 「それはもう。あれはクスコにあった、
+>  “グラドスの刻印”と呼ばれるものが
+“That I have. It was the thing called the ‘Mark of Grados’ in Cusco—
+---
+>  発動したのですよ」
+it activated.”
+
+@45031 Master · マスター
+> 「“グラドスの刻印”とな?」
+“The ‘Mark of Grados,’ you say?”
+
+@45032 Wong · ウォン
+> 「どうやら、運は我々に味方して
+>  いますよ。異星人どもが地球を
+“It seems fortune is on our side. The aliens will no longer
+---
+>  破壊するようなことは、もうないそう
+>  ですからね」
+destroy the Earth, or so it appears.”
+
+@45033 Master · マスター
+> 「ふん……」
+“Hmph...”
+
+@45034 Wong · ウォン
+# 审校：同上，“東方先生”应译为 Master Asia，不是 Master Wong。
+> 「しかし、いつ見てもすばらしいですな、
+>  東方先生。このデビルガンダムさえ
+“Still, it is a magnificent sight no matter how often I see it, Master Asia. With this Dark Gundam,
+---
+>  あれば、OZも、アクシズも
+>  異星人どもも、恐れるにたりません」
+we need not fear OZ, Axis, or the aliens.”
+
+@45035 Master · マスター
+> 「だが、すでにキョウジの肉体は、
+>  ボロボロになりすぎておる
+“But Kyoji's body is already far too battered.
+---
+>  もはやコアとしての役割を、ほとんど
+>  果たしておらん。デビルガンダムを
+He barely serves as the core anymore. To make the Dark Gundam
+---
+>  完全なものとするためには、強じんな
+>  肉体と精神をもつ、新しいコアが
+complete, we need a new core with a strong body and spirit.
+---
+>  必要だ」
+That is what we require.”
+
+@45036 Wong · ウォン
+> 「……それが、ドモン・カッシュというわけ
+>  ですか? 別にドモンより強ければ
+“...And that would be Domon Kasshu? Anyone stronger than Domon
+---
+>  誰でもかまわぬでしょうに。
+>  どうやら、師弟の関係は
+would do just as well. It seems the bond between master and pupil
+---
+>  断ち難いようですね」
+is hard to sever.”
+
+@45037 Master · マスター
+> 「くだらん。奴とワシは仇同士だ。
+>  それに、お前に真の強さが何か
+“Foolishness. He and I are sworn enemies. Besides, do you
+---
+>  わかるというのか」
+even understand what true strength is?”
+
+@45038 Wong · ウォン
+> 「……まぁ、いいでしょう。異星人に
+>  地球を制圧されてしまう前に
+“...Well, very well. Before the aliens conquer the Earth,
+---
+>  デビルガンダムを完全なものに
+>  しなければならない。その点で
+we must complete the Dark Gundam. On that point,
+---
+>  私とあなたの意見は共通している」
+you and I are in agreement.”
+
+@45039 Master · マスター
+> 「さよう。すでにそのための手はうっておる」
+“Indeed. I have already taken steps to that end.”
+
+@45040 Wong · ウォン
+# 审校：同上，“東方先生”应译为 Master Asia。
+> 「さすがは東方先生。よろしく
+>  頼みますよ。もはやBF団など
+“As expected of Master Asia. I leave it to you. The BF Group
+---
+>  あてにできません」
+is no longer reliable.”
+
+@45041 Master · マスター
+> 「グッ……く、ワシの体も、もう長くは
+>  もたんか……だがお前が完全に
+“Guh... my body won't last much longer either... But if you are fully
+---
+>  よみがえれば、そのために戦い続けて
+>  きたワシもまた、報われるというもの
+revived, then I, who have kept fighting for that sake, will be rewarded.
+---
+>  いや、報われなんでもよい。だが
+>  このままにだけは、このままにだけは……」
+No, I need no reward. But not like this, not like this...”
+
+@45042 Wong · ウォン
+# 审校：同上，“東方先生”应译为 Master Asia。
+> 「……東方先生、夢を見るのは
+>  勝手ですが、デビルガンダムは
+“...Master Asia, dream all you like, but the Dark Gundam is
+---
+>  あくまでも私のもの。
+>  ククク、デビルガンダムさえあれば
+mine and mine alone. Heh heh. With the Dark Gundam,
+---
+>  デビルガンダムさえあれば、全宇宙が
+>  私のものに……」
+with the Dark Gundam, the entire universe will be mine...”
+
+@45043 Beltorchika · ベルトーチカ
+> 「周囲に敵影なし。進路クリア」
+“No enemy contacts nearby. Course is clear.”
+
+@45044 Bright · ブライト
+> 「ドモンたちとは、まだ連絡がつかない
+>  のか?」
+“Still no contact with Domon and the others?”
+
+@45045 Bunny · バニー
+> 「だめです!」
+“No good!”
+
+@45046 Beauty · ビューティ
+> 「バニー、なに怒ってるのよ」
+“Bunny, what are you so angry about?”
+
+@45047 Bunny · バニー
+> 「だって、チボデーはあたしたちを
+>  置いていっちゃったのよ!? ひどいと
+“Because Chibodee went off and left us behind! Don't you think
+---
+>  思わない!? あなたたちだって、
+>  万丈に置いてかれたら、いやでしょ」
+that's awful?! You'd hate it too if Banjo left you behind, wouldn't you?”
+
+@45048 Reika · レイカ
+> 「それは……そうかも」
+“Well... I suppose so.”
+
+@45049 Beauty · ビューティ
+> 「怒る怒る」
+“See, you'd be furious!”
+
+@45050 Bunny · バニー
+> 「でしょ、でしょ。
+>  もうシャリーたちなんか……」
+“Right, right? And Shirley and the others...”
+
+@45051 Beltorchika · ベルトーチカ
+> 「あなたたち、ちゃんと仕事しなさいよ」
+“You girls, do your jobs properly.”
+
+@45052 Beauty · ビューティ
+> 「でも、ベルトーチカだって、アムロさんが
+>  チェーンと一緒にどこかへ
+“But if Amuro went off somewhere with Chan, you'd be angry too,
+---
+>  行っちゃったら、怒るわよ、絶対」
+Beltorchika. Absolutely.”
+
+@45053 Beltorchika · ベルトーチカ
+> 「それとこれとは、話が違うわ」
+“That's a completely different matter.”
+
+@45054 Bright · ブライト
+> 「お前たち、状況を考えてくれ。
+>  まったく……」
+“You two, consider the situation. Honestly...”
+
+@45055 Shinobu · 忍
+> 「ちっ。あいつら、先走りやがってよ。
+>  熱くなりゃあ、いいってもんじゃねえぜ」
+“Tch. Those guys ran off ahead. Getting all fired up doesn't make everything fine.”
+
+@45056 Sara · 沙羅
+> 「へぇ……あんたがそれをいうのかい」
+“Oh...? Coming from you, that's rich.”
+
+@45057 Ryo · 亮
+> 「奴らのことだ。デビルガンダムを見つけ
+>  次第、すぐにしかける気だろう
+“Knowing them, the moment they find the Dark Gundam, they'll attack at once.
+---
+>  ……急がないと、面倒なことになる
+>  かもしれん」
+...If we don't hurry, things could get messy.”
+
+@45058 Amuro · アムロ
+> 「デビルガンダムだけを相手にするのなら
+>  あの連中だけでも、そうそう遅れを
+“If the Dark Gundam were the only enemy, I think those guys alone wouldn't
+---
+>  とることはないと思うが……他に何が
+>  でるか、わからないからな」
+fall behind so easily... but we don't know what else might show up.”
+
+@45059 Dr. Saotome · 早乙女博士
+> 「……やけに騒がしいようだが、何か
+>  あったのか?」
+“...It sounds awfully noisy. Did something happen?”
+
+@45060 Hayato · ハヤト
+> 「デビルガンダムがまた現れたそうです。
+>  我々はいま、ネオ・ホンコンへ
+“The Dark Gundam has appeared again. We're currently heading
+---
+>  向かっていますよ」
+for Neo Hong Kong.”
+
+@45061 Dr. Saotome · 早乙女博士
+> 「そうか」
+“I see.”
+
+@45062 Ryoma · リョウ
+> 「……博士、少し休まなくて
+>  大丈夫ですか? もう2日も
+“...Doctor, are you sure you don't need to rest? You haven't slept
+---
+>  寝てないでしょう」
+for two days now.”
+
+@45063 Dr. Saotome · 早乙女博士
+> 「なに、たいしたことはないわ。実験
+>  準備完了まで、もう少しじゃ
+“It's nothing serious. We're almost ready for the experiment.
+---
+>  それより演算済みのデータは、
+>  どんどんこっちに送ってくれよ」
+More importantly, keep sending me the computed data.”
+
+@45064 Hayato · ハヤト
+> 「……了解」
+“...Understood.”
+
+@45065 Ryoma · リョウ
+> 「しかし、ゲッターGと真ゲッターの
+>  増幅炉を直結して、実験を
+“Still, directly connecting the Getter G and Shin Getter's amplification reactors
+---
+>  再開するとはな……」
+to resume the experiment...”
+
+@45066 Tetsuya · 鉄也
+> 「ゲッターのエネルギーを、真ゲッターに
+>  注ぎこむってわけか。しかし、いま
+“So we're pouring the Getter's energy into the Shin Getter. But if anything
+---
+>  何かあったら、ゲッターは使えんぞ」
+happens now, the Getter won't be usable.”
+
+@45067 Ryoma · リョウ
+> 「その時は、みんなにまかせるさ。俺は、
+>  いや俺たちは、なんとか真ゲッターを
+“In that case, we leave it to everyone else. I—no, we—want to get the Shin Getter
+---
+>  動かしたいんだ。真ゲッターのパワーが
+>  あれば、戦いをぐっと有利にできる」
+moving somehow. With the Shin Getter's power, we can turn the battle greatly in our favor.”
+
+@45068 Dr. Saotome · 早乙女博士
+> 「よし……インプット完了じゃ。
+>  モニターに注意してくれ。危険な
+“All right... input complete. Keep an eye on the monitor. If you see any dangerous
+---
+>  兆候が見えたら、すぐに接続を
+>  切るんだ。いいな」
+signs, cut the connection at once. Understood?”
+
+@45069 Hayato · ハヤト
+> 「了解……」
+“Understood...”
+
+@45070 Hayato · ハヤト
+> 「うわっ!? こ……こいつはすげえ!
+>  何てぇパワーだ……どんどんゲージが
+“Whoa?! Th-this is incredible! What a hell of a power... the gauge keeps
+---
+>  上がっていく……」
+climbing...”
+
+@45071 Dr. Saotome · 早乙女博士
+> 「よし、いいぞ……
+>  やはり思った通りじゃ!
+“Good, that's it... just as I thought!
+---
+>  ハヤト、もういい。接続を落とせ」
+Hayato, that's enough. Cut the connection.”
+
+@45072 Hayato · ハヤト
+> 「了解…………
+>  くっ!?」
+“Understood... Ngh?!”
+
+@45073 Dr. Saotome · 早乙女博士
+> 「何じゃ、どうした!?」
+“What is it, what's wrong?!”
+
+@45074 Hayato · ハヤト
+> 「博士、接続が切れません!」
+“Doctor, the connection won't cut!”
+
+@45075 Dr. Saotome · 早乙女博士
+> 「これは……真ゲッターとゲッターGが、
+>  呼応しあっているのか……!?」
+“Is this... the Shin Getter and the Getter G resonating with each other...?!”
+
+@45076 Hayato · ハヤト
+> 「いかん! 博士、こいつはヤバイ!
+>  制御が、制御がきかねぇ!」
+“This is bad! Doctor, this thing's dangerous! I can't control it, I can't control it!”
+
+@45077 Dr. Saotome · 早乙女博士
+> 「何じゃと!? こっちにまわせ!
+>  ……くっ……い、いかん!
+“What did you say?! Route it over here! ...Ngh... th-this is bad!
+---
+>  みんな、ここから離れるんじゃ!」
+Everyone, get away from here!”
+
+@45078 Hayato · ハヤト
+> 「博士も退避してください!」
+“Doctor, you evacuate too!”
+
+@45079 Dr. Saotome · 早乙女博士
+> 「バカもん! ここで暴走させてみろ、
+>  ガンドールごと大爆発だぞ!
+“Don't be a fool! If it goes berserk here, the whole Gandor will blow sky-high!
+---
+>  何としても止めんと……!」
+We have to stop it no matter what...!”
+
+@45080 Hayato · ハヤト
+> 「だったら、ここは俺が!」
+“Then let me handle this!”
+
+@45081 Dr. Saotome · 早乙女博士
+> 「バカなことをぬかすな! だ、だめだ!
+>  間に合わん……!」
+“Don't talk nonsense! N-no, it's no good! We won't make it...!”
+
+@45082 Ryoma · リョウ
+> 「ハヤト! 早乙女博士!?」
+“Hayato! Dr. Saotome?!”
+
+@45083 Dr. Saotome · 早乙女博士
+> 「……う……、うう……」
+“...Ugh... uuu...”
+
+@45084 Hayato · ハヤト
+> 「博士! 大丈夫ですか!?」
+“Doctor! Are you all right?!”
+
+@45085 Dr. Saotome · 早乙女博士
+> 「むう、し、心配いらん……。
+>  どうやら、助かったらしいな……
+“Mmm, d-don't worry about me... Looks like we made it somehow...
+---
+>  とんだ事になるところだった、すまん……」
+That could have turned into a real disaster. Sorry...”
+
+@45086 Hayato · ハヤト
+> 「とんでもない、無事でよかった……」
+“Not at all. I'm just glad you're safe...”
+
+@45087 Dr. Saotome · 早乙女博士
+> 「そ、それよりゲッターは……、
+>  ゲッターはどうなったんじゃ……?
+“M-more importantly, the Getter... what happened to the Getter...?
+---
+>  お……、おお、これは……!!」
+O-oh, ohh, this is...!!”
+
+@45088 Ryoma · リョウ
+> 「ゲッターが……俺たちのゲッターが
+>  大破しちまったのか!?」
+“The Getter... our Getter's been wrecked?!”
+
+@45089 Benkei · ベンケイ
+> 「いや……リョウ、見ろ!
+>  真ゲッターが……
+“No... Ryoma, look! The Shin Getter...
+---
+>  真ゲッターが起動してるぞ!」
+the Shin Getter's activated!”
+
+@45090 Hayato · ハヤト
+> 「何だと!?」
+“What?!”
+
+@45091 Dr. Saotome · 早乙女博士
+> 「まさか……わからん、なぜこんなことが……」
+“Impossible... I don't understand, how could this happen...”
+
+@45092 Hayato · ハヤト
+> 「真ゲッターが……ゲッターGの命を
+>  吸ったのか……」
+“The Shin Getter... drained the life out of the Getter G...”
+
+@45093 Ryoma · リョウ
+# 检查提示：未用必用译名：銀河帝国→Galactic Empire
+> 「真ゲッターが、目覚めた……。
+>  ようし、これで銀河帝国の奴らに
+“The Shin Getter has awakened... All right, now we can give those Galactic
+---
+>  一泡吹かせてやれるぜ!」
+Empire bastards a real shock!”
+
+@45094 Dr. Saotome · 早乙女博士
+> 「な、何じゃと!? い、いかん!
+>  何をバカなことをいっとるんだ!」
+“W-what did you say?! Th-this is bad! What kind of nonsense are you spouting?!”
+
+@45095 Benkei · ベンケイ
+> 「どうしてです? 一時はどうなるかと
+>  思ったが、とにかく真ゲッターが
+“Why not? For a moment there I thought we were done for, but at least the Shin Getter
+---
+>  動かせるんだ。良かったじゃないですか」
+can move now. Isn't that a good thing?”
+
+@45096 Dr. Saotome · 早乙女博士
+> 「いま目の前で起こったことを、
+>  もう忘れたのか! 動いたとはいえ
+“Have you already forgotten what just happened right before your eyes?! Even if it moved,
+---
+>  真ゲッターの正体は、まだほとんど
+>  わかっておらん。危険すぎる!
+we still barely know anything about what the Shin Getter really is. It's far too dangerous!
+---
+>  こいつを使用する許可などできん!」
+I cannot permit its use!”
+
+@45097 Hayato · ハヤト
+> 「ふ……。しかしまあ、動くには動いたん
+>  だ。戦いにはこれで十分でしょう」
+“Hmph... But still, it did move. For battle, that's more than enough.”
+
+@45098 Dr. Saotome · 早乙女博士
+> 「お、お前までそんなことを……」
+“Y-you too, saying things like that...”
+
+@45099 Ryoma · リョウ
+> 「博士、俺たちには、こいつが必要
+>  なんです」
+“Doctor, we need this thing.”
+
+@45100 Benkei · ベンケイ
+> 「何しろゲッターGは、壊れちまったしな」
+“After all, the Getter G's been destroyed.”
+
+@45101 Dr. Saotome · 早乙女博士
+> 「し、しかし……」
+“B-but still...”
+
+@45102 Ryoma · リョウ
+> 「大丈夫です、早乙女博士。
+>  俺たちに伝わってくる……
+“It's all right, Dr. Saotome. It's coming through to us...
+---
+>  真ゲッターが俺たちに乗れといって
+>  いる。やらせてください、博士
+The Shin Getter is telling us to ride it. Please let us do this, Doctor.
+---
+>  俺たちだって、昔の俺たちとは
+>  違います!」
+We're not the same as we used to be!”
+
+@45103 Dr. Saotome · 早乙女博士
+> 「……わかった、好きにせい! ただし、
+>  扱いには十分気をつけるんじゃ」
+“...Fine, do as you like! But be extremely careful with how you handle it.”
+
+@45104 Hayato · ハヤト
+> 「もちろんですよ」
+“Of course.”
+
+@45105 Ryoma · リョウ
+> 「真ゲッターよ、よろしく頼むぜ!」
+“Shin Getter, we're counting on you!”
+
+@45106 Rain · レイン
+> 「……ひどい……」
+“...This is terrible...”
+
+@45107 George · ジョルジュ
+> 「これが、あのネオ・ホンコンだと
+>  いうのですか……この廃墟が?」
+“So this is Neo Hong Kong... this ruin?”
+
+@45108 Argo · アルゴ
+> 「うむ……銀河帝国軍だな」
+“Mm... It's the Galactic Empire's army.”
+
+@45109 Duo · デュオ
+# 审校：“地上の7割”指地球表面，不是地面，改为 surface。
+> 「地上に残った最後のまともな
+>  都市も、もはやない、か。気のめいる
+“So there's not a single decent city left on the surface anymore, huh. What a depressing
+---
+>  光景だぜ。ジオンのせいでコロニーの
+>  大半もなくなっちまった。そのあとの
+sight. Thanks to Zeon, most of the colonies are gone too. And after that, the Muge
+---
+>  ムゲで地上の7割も焼かれた。
+>  ここもこのありさま、欧州も同じ
+burned seventy percent of the surface. This place is a wreck, and Europe's the same.
+---
+>  いったいこれから
+>  どうなっちまうんだろうなぁ」
+I wonder what's going to become of us all.”
+
+@45110 Quatre · カトル
+> 「僕たちが、そんなことをいっていて、
+>  どうするんです、デュオ」
+“If we talk like that, what are we supposed to do, Duo?”
+
+@45111 Sai Saici · サイ・サイシー
+> 「そうさ、オイラたちが、これから
+>  どうにかしようってんだろ」
+“That's right. We're the ones who are gonna do something about it, aren't we?”
+
+@45112 Duo · デュオ
+> 「そりゃ、そうなんだけどなぁ」
+“Well, yeah, that's true, but still...”
+
+@45113 Domon · ドモン
+> 「本当にこのあたりなのか?」
+“Is it really around here?”
+
+@45114 Schwarz · シュバルツ
+# 审校：“影を見たという”是报告看到影子，原译“said it saw”不够自然，改为 reported seeing。
+> 「うむ。偵察機が影を見たというの
+>  は、このあたりの地域だったはずだ」
+“Indeed. The scout plane reported seeing a shadow somewhere in this area.”
+
+@45115 Duo · デュオ
+> 「ヒイロ、なんかわかるか?」
+“Heero, can you tell anything?”
+
+@45116 Heero · ヒイロ
+> 「……反応はない」
+“...No reaction.”
+
+@45117 Chibodee · チボデー
+> 「そんな簡単に見つかりゃ、
+>  苦労はねぇか。で、どうするんだ?」
+“If it were that easy to find, we wouldn't be in this mess. So, what do we do?”
+
+@45118 Schwarz · シュバルツ
+> 「手分けをして探すのだ。もしも
+>  本当にデビルガンダムがいるならば
+“We split up and search. If the Dark Gundam really is here,
+---
+>  我々を察知して、向こうから
+>  出てくることも考えられる」
+it may sense us and come out on its own.”
+
+@45119 Rain · レイン
+> 「でも、わかれるのは危険じゃないかしら」
+“But isn't it dangerous to split up?”
+
+@45120 Domon · ドモン
+> 「フン、そんなことは、いまにはじまったこと
+>  じゃない」
+“Hmph. That's nothing new.”
+
+@45121 Chibodee · チボデー
+> 「おっしゃ。それじゃ、化け物探しと
+>  いくかい」
+“All right. Then let's go monster hunting.”
+
+@45122 Schwarz · シュバルツ
+> 「……レイン、私と一緒に来て
+>  くれないか」
+“...Rain, would you come with me?”
+
+@45123 Rain · レイン
+> 「え? ええ、私はかまわないけど……」
+“Huh? Sure, I don't mind, but...”
+
+@45124 Domon · ドモン
+> 「そうしろ、レイン。お前は1人じゃ
+>  無理だ」
+“Do that, Rain. You can't manage on your own.”
+
+@45125 Rain · レイン
+> 「もう、そんなにはっきりいうことは
+>  ないじゃない」
+“Honestly, you don't have to say it so bluntly.”
+
+@45126 Rain · レイン
+> 「このあたりにはいないようね。
+>  ……シュバルツ? シュバルツ!?」
+“It doesn't seem to be around here. ...Schwarz? Schwarz?!”
+
+@45127 Schwarz · シュバルツ
+> 「くっ……やはり無理か……」
+“Ngh... So it's no use after all...”
+
+@45128 Rain · レイン
+> 「やっぱり、どこかおかしいのね?」
+“So something really is wrong with you, isn't it?”
+
+@45129 Schwarz · シュバルツ
+> 「すまん、君に来てもらって
+>  正解だったようだ……」
+“Sorry. It seems I was right to bring you along...”
+
+@45130 Schwarz · シュバルツ
+> 「見てくれ」
+“Look at this.”
+
+@45131 Rain · レイン
+> 「シュバルツ!? その体は……まさか
+>  DG細胞! それに機械……!?」
+“Schwarz?! That body... Don't tell me it's DG cells! And machinery...?!”
+
+@45132 Schwarz · シュバルツ
+> 「1人では直せそうにない。
+>  応急処置でいい
+“I can't seem to fix it alone. Field repairs will do.
+---
+>  手伝ってくれ、レイン」
+Lend me a hand, Rain.”
+
+@45133 Rain · レイン
+> 「で、でも……私、どうしたらいいか
+>  わからないわ」
+“B-but... I don't know what to do.”
+
+@45134 Schwarz · シュバルツ
+> 「君なら……大丈夫だ。
+>  君の腕はよく知っている
+“You'll be fine... I know your skill well.
+---
+>  私のいう通りにやってくれればいい……」
+Just do as I say...”
+
+@45135 Rain · レイン
+> 「……キョウジ……さん?
+>  やっぱり、そうなのね? でもどうして!?
+“...Kyoji...? So it really is you? But why?!
+---
+>  それにこの体はいったい……」
+And what is this body...?”
+
+@45136 Schwarz · シュバルツ
+> 「……聞かせてあげよう、レイン。
+>  あれは、デビルガンダムが完成して
+“...Let me tell you, Rain. It was shortly after the Dark Gundam was completed.
+---
+>  まもなくのことだった。もっとも
+>  最初は、あれをデビルガンダムとは
+Though at first, we didn't call it the Dark Gundam.
+---
+>  呼んでいなかったがな。すべては、
+>  カーンズが地球へ落とす6体目の
+It all began when Quinze chose it as the sixth Gundam
+---
+>  ガンダムに、あれを選んだ時に
+>  始まったのだ……」
+to drop onto Earth...”
+
+@45137 Domon · ドモン
+> 「……どこだ、デビルガンダム。
+>  早く出てこい」
+“...Where are you, Dark Gundam? Come out already.”
+
+@45138 ???
+> 「ククククククッ、やはり来たか」
+“Kukukukukuku, so you came after all.”
+
+@45139 Domon · ドモン
+> 「誰だ!?」
+“Who's there?!”
+
+@45140 ???
+> 「誰だ、だと? このたわけが!
+>  ワシの声を忘れたと申すか!?」
+“Who's there, you say? You fool! Have you forgotten my voice?!”
+
+@45141 Domon · ドモン
+> 「そ、そんなまさか!?
+>  あんたは確かにあの時……」
+“Th-that can't be! You were definitely, at that time...”
+
+@45142 Master · マスター
+> 「ひさしいな、ドモン。何をほうけておる。
+>  声をかけられるまで、ワシの存在に
+“It's been a long time, Domon. What are you spacing out for? Not noticing my presence
+---
+>  気づかぬとは、未熟千万。
+>  そんなことで異星人どもに勝てると
+until I spoke to you is utter immaturity. Do you think you can beat those aliens
+---
+>  思っているのか」
+like that?”
+
+@45143 Domon · ドモン
+> 「東方不敗!」
+“Master Asia!”
+
+@45144 Master · マスター
+> 「そんな未熟者は、異星人に
+>  倒される前に、このワシが
+“An immature fool like you, before the aliens finish you off,
+---
+>  倒してくれるわ!」
+I'll finish you off myself!”
+
+@45145 Domon · ドモン
+> 「なにをぉっ!」
+“What did you say?!”
+
+@45146 Domon · ドモン
+> 「くっ……」
+“Ngh...”
+
+@45147 Domon · ドモン
+> 「なに!?」
+“What?!”
+
+@45148 Master · マスター
+> 「……まさかウォンめ……」
+“...Don't tell me Wong...”
+
+@45149 Domon · ドモン
+> 「東方不敗!
+>  これもあんたのしわざか」
+“Master Asia! Was this your doing too?”
+
+@45150 Master · マスター
+> 「ばかをいえ」
+“Don't be a fool.”
+
+@45151 Domon · ドモン
+> 「ならば、いったい誰が……」
+“Then who in the world...”
+
+@45152 Domon · ドモン
+> 「うわぁぁぁーっ!?」
+“Uwaaaaaaah?!”
+
+@45153 Master · マスター
+> 「ドモン! この未熟者めぇ!!」
+“Domon! You immature fool!!”
+
+@45154 Domon · ドモン
+> 「と、東方不敗……」
+“M-Master Asia...”
+
+@45155 Master · マスター
+> 「気をぬくな!」
+“Don't let your guard down!”
+
+@45156 Domon · ドモン
+> 「終わったか……」
+“It's over...”
+
+@45157 Master · マスター
+> 「なんとぉ!?」
+“Whaaat?!”
+
+@45158 Master · マスター
+> 「地下通路か……ガレキにうめられた
+>  ようだな」
+“An underground passage... Seems it's been buried in rubble.”
+
+@45159 Domon · ドモン
+> 「東方不敗、さっきは、なぜ俺を
+>  助けた」
+“Master Asia, why did you save me back there?”
+
+@45160 Master · マスター
+> 「助けたわけではない。あわてるな、こんな
+>  ところでやりあえば、ガレキの下敷きだ
+“I didn't save you. Don't be hasty. If we fight here, we'll be crushed under the rubble.
+---
+>  そんなこともわからんのか。
+>  一時休戦だ、いいな」
+Can't you even understand that? A temporary truce, agreed?”
+
+@45161 Domon · ドモン
+> 「……どうするつもりだ」
+“...What are you planning?”
+
+@45162 Master · マスター
+> 「外に出られる場所を探すのだ」
+“We search for a way out.”
+
+@45163 Domon · ドモン
+> 「なぁ、師匠……
+>  あ、いや……東方不敗。なぜ
+“Hey, Master... ah, no... Master Asia. Why are you
+---
+>  あんたが襲われる?
+>  あんた、奴らの仲間だろう」
+the one being attacked? You're one of them, aren't you?”
+
+@45164 Domon · ドモン
+> 「うっ……しまった、ふさがれた!?」
+“Ugh... Damn, it's blocked?!”
+
+@45165 Master · マスター
+> 「……このままでは長くは、もたんな。
+>  覚えておるか、ドモン。以前にも
+“...At this rate, we won't last long. Do you remember, Domon? There was
+---
+>  こんなことがあった。そしてあの時も、
+>  この流派東方不敗の
+a time like this before. And back then too, I must have unleashed
+---
+>  最終奥義を放ったはず。
+>  その名は、石破天驚拳!」
+the final secret of the School of the Undefeated of the East. Its name: Sekiha Tenkyoken!”
+
+@45166 Domon · ドモン
+> (覚えている……覚えているぞ。
+>  あの時も同じだった。俺はこの人に
+(I remember... I remember it. It was the same back then. I was saved
+---
+>  助けられたんだ……)
+by this man...)
+
+@45167 Master · マスター
+> 「どうやら命びろいしたようだな」
+“Seems we've had a narrow escape.”
+
+@45168 Domon · ドモン
+> 「師匠……」
+“Master...”
+
+@45169 Master · マスター
+> 「ついにあの技だけはお前に伝えられな
+>  かった。お前はあの頃から、まったく
+“In the end, that technique alone I could never pass on to you. You haven't changed
+---
+>  変わっておらん。目先のことにとらわ
+>  れ、いちばん大切なことを見失う」
+one bit since those days. You fixate on what's in front of you and lose sight of what matters most.”
+
+@45170 Domon · ドモン
+> 「どういうことだ……?」
+“What do you mean...?”
+
+@45171 Master · マスター
+> 「よく見ておけ、ドモン。ネオホンコン、
+>  一年戦争後の地球でもっとも
+“Look well, Domon. Neo Hong Kong, the most prosperous city on Earth
+---
+>  繁栄した街も、もはやこの通りだ。
+>  世界中、いや地球そのものに
+after the One Year War, is now like this. Across the whole world, no, upon the Earth itself,
+---
+>  破滅は確実に迫っておる。だがな
+>  それを招いたのは何だ?
+ruin is closing in, that much is certain. But what invited it?
+---
+>  異星人か? いや、そうではない」
+The aliens? No, it wasn't them.”
+
+@45172 Domon · ドモン
+> 「…………」
+“...”
+
+@45173 Master · マスター
+> 「……人間とは、つくづく度しがたい
+>  存在だと思わぬか。だからこそ
+“...Don't you think humans are, through and through, beyond saving? That is exactly why,
+---
+>  だからこそワシは……」
+exactly why I...”
+
+@45174 Domon · ドモン
+> 「しまった、まだいたのか!?」
+“Damn, there are still more?!”
+
+@45175 Master · マスター
+> 「ドモン、こやつらを片づけるぞ!
+>  ガンダムを出せ」
+“Domon, we're finishing these ones off! Bring out your Gundam!”
+
+@45176 Domon · ドモン
+# 审校：原文“出ろぉぉぉっ!”是拖长音的喊叫，初稿“Come out!”没有体现气势，改为“Come oooout!”
+> 「はい! 出ろぉぉぉっ!」
+“Yes! Come oooout!”
+
+@45177 Domon · ドモン
+> 「ガンダァァァァァム!!」
+“Gundaaaaaam!!”
+
+@45178 Master · マスター
+> 「ドモン、ゆくぞ!」
+“Domon, let's go!”
+
+@45179 Domon · ドモン
+# 审校：原文“この俺が!?”强调“我竟然”，初稿“Don't tell me, me of all people?!”逗号使语气断裂，改为破折号更自然
+> 「なに!? まさか、この俺が!?」
+“What?! Don't tell me—me of all people?!”
+
+@45180 Master · マスター
+# 审校：原文“あぁぁぁっ”拖长音，初稿“bee”只两个e，气势不足，改为“beeeee”
+> 「な、なんだと!?
+>  こんなバカなあぁぁぁっ!!」
+“Wha—what?! This can't beeeee!!”
+
+@45181 Domon · ドモン
+> 「……終わったか……」
+“...It's over...”
+
+@45182 Master · マスター
+> 「いや、まだ1匹残っておる!」
+“No, one of them is still left!”
+
+@45183 Master · マスター
+> 「ドモン! 石破天驚拳、
+>  今こそ、うってみせい!」
+“Domon! The Sekiha Tenkyoken—now is the time to unleash it!”
+
+@45184 Domon · ドモン
+> 「うおおぉぉぉぉぉぉーっ!!」
+“Uwooooooooh!!”
+
+@45185 Domon · ドモン
+> 「で、できた……」
+“I-I did it...”
+
+@45186 Master · マスター
+> 「ドモンよ。流派東方不敗が
+>  最終奥義、石破天驚拳
+“Domon. The final secret of the School of the Undefeated of the East, the Sekiha Tenkyoken—
+---
+>  確かに伝授したぞ」
+I have indeed passed it on to you.”
+
+@45187 Domon · ドモン
+> 「待ってください、俺は、まだ師匠に
+>  聞きたいことが!」
+“Wait, please! I still have things I want to ask you, Master!”
+
+@45188 Master · マスター
+> 「よいか、すべては人間の業の深さ
+>  から発したのだ
+“Listen well. Everything sprang from the depths of humanity's karma.
+---
+>  この人類の黄昏の光景を、
+>  胸に刻んでおけ」
+Burn this sight of mankind's twilight into your heart.”
+
+@45189 Domon · ドモン
+> 「人類の……黄昏……?」
+“Mankind's... twilight...?”
+
+@45190 Master · マスター
+> 「ランタオ島で待っておるぞ、ドモン。
+>  デビルガンダムもな。決着をつけたくば
+“I will be waiting on Lantau Island, Domon. The Dark Gundam too. If you wish to settle this,
+---
+>  くるがよい」
+then come.”
+
+@45191 Domon · ドモン
+> 「し、師匠……師匠ーっ!!」
+“M-Master... Master!!”
+
+@45192 Rain · レイン
+> 「ドモン!? なにがあったの!?」
+“Domon?! What happened?!”
+
+@45193 Domon · ドモン
+> 「レイン……それにシュバルツか……」
+“Rain... and Schwarz too...”
+
+@45194 Schwarz · シュバルツ
+> 「やはり、デビルガンダムがいたのか、ドモン」
+“So the Dark Gundam really was there, Domon.”
+
+@45195 Domon · ドモン
+> 「いや……だが、デビルガンダムのいる
+>  場所はわかった」
+“No... but I found out where the Dark Gundam is.”
+
+@45196 Rain · レイン
+> 「え!? じゃ、間違いないのね?」
+“What?! Then there's no doubt about it?”
+
+@45197 Domon · ドモン
+> 「ああ。デビルガンダムは、ランタオ島に
+>  いる」
+“Yeah. The Dark Gundam is on Lantau Island.”
+
+@45198 Rain · レイン
+> 「ランタオ島……。みんなを呼びもどすわ」
+“Lantau Island... I'll call everyone back.”
+
+@45199 Domon · ドモン
+> (……東方不敗……
+>  あんたはいったい……)
+(...Master Asia... just who are you...)

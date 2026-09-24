@@ -1,0 +1,167 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@8622 Haman · ハマーン
+> 「小賢しいっ!!」
+“Insolent fool!!”
+
+@8623 Haman · ハマーン
+> 「俗物がっ!」
+“You commoner!”
+
+@8624 Haman · ハマーン
+> 「私に倒されること、幸運に
+>  思うのだな!」
+“Consider it good fortune to be struck down by me!”
+
+@8625 Haman · ハマーン
+> 「もらったぁっ!!」
+“Got you!!”
+
+@8626 Haman · ハマーン
+> 「そこかっ!」
+“There!”
+
+@8627 Haman · ハマーン
+> 「消えろ、目障りだっ!!」
+“Vanish, you're an eyesore!!”
+
+@8628 Haman · ハマーン
+> 「邪魔だっ!」
+“Out of my way!”
+
+@8629 Haman · ハマーン
+> 「これで終わりだっ!」
+“This ends now!”
+
+@8630 Haman · ハマーン
+> 「失せろっ!」
+“Begone!”
+
+@8631 Haman · ハマーン
+> 「ここまでだっ!」
+“This is as far as you go!”
+
+@8632 Haman · ハマーン
+> 「やらせんっ!」
+“I won't let you!”
+
+@8633 Haman · ハマーン
+> 「行けっ!」
+“Go!”
+
+@8634 Haman · ハマーン
+> 「ここまでのようだな……覚悟っ!」
+“So this is your limit... Prepare yourself!”
+
+@8635 Haman · ハマーン
+> 「なんだと!?」
+“What did you say?!”
+
+@8636 Haman · ハマーン
+> 「ちいっ……」
+“Tch...”
+
+@8637 Haman · ハマーン
+> 「くっ!? お、押されているのか!?」
+“Ngh?! A-Am I being pushed back?!”
+
+@8638 Haman · ハマーン
+> 「むうっ!? こ、このパワー……」
+“Mmph?! Th-This power...”
+
+@8639 Haman · ハマーン
+> 「な、何だこの力は!?
+>  これ程の力があるのか!?」
+“Wh-What is this strength?! You had this much power?!”
+
+@8640 Haman · ハマーン
+> 「ぬううっ! この私が追い詰められて
+>  いるというのか!?」
+“Nghhh! Am I, of all people, being cornered?!”
+
+@8641 Haman · ハマーン
+> 「ちっ! なめたマネを!!」
+“Tch! You dare mock me!!”
+
+@8642 Haman · ハマーン
+> 「くっ! そういつまでも好きには
+>  させんぞっ!!」
+“Ngh! I won't let you keep having your way forever!!”
+
+@8643 Haman · ハマーン
+> 「うっ! 貴様……つけあがるなっ!」
+“Ugh! You... don't get cocky!”
+
+@8644 Haman · ハマーン
+> 「何っ!? 私の動きが
+>  読まれたのか!?」
+“What?! You read my movements?!”
+
+@8645 Haman · ハマーン
+> 「俗物が私に!」
+“A commoner, against me!”
+
+@8646 Haman · ハマーン
+> 「その程度か……みくびられたものだ」
+“Is that all... They underestimate me.”
+
+@8647 Haman · ハマーン
+> 「ふ……なめられたものだな!」
+“Hmph... I've been taken lightly.”
+
+@8648 Haman · ハマーン
+> 「そんなものでっ!」
+“With something like that?!”
+
+@8649 Haman · ハマーン
+> 「そんな腕で私と戦おうとはな……」
+“To think you'd fight me with such skill...”
+
+@8650 Haman · ハマーン
+> 「思い上がるなっ!」
+“Don't get above yourself!”
+
+@8651 Haman · ハマーン
+> 「甘いな!」
+“Too soft!”
+
+@8652 Haman · ハマーン
+> 「そうか……見える!」
+“I see... I can see it!”
+
+@8653 Haman · ハマーン
+> 「なめるなっ!」
+“Don't underestimate me!”
+
+@8654 Haman · ハマーン
+> 「当たりはせんよ!」
+“You won't hit me!”
+
+@8655 Haman · ハマーン
+> 「当たってやるわけにはいかんな!」
+“I can't afford to be hit!”
+
+@8656 Haman · ハマーン
+> 「遅いな!」
+“Too slow!”
+
+@8657 Haman · ハマーン
+> 「このキュベレイをなめてもらってはこまる!」
+“I won't have you underestimating this Qubeley!”
+
+@8658 Haman · ハマーン
+> 「ムダなことを……」
+“What a waste of effort...”
+
+@8659 Haman · ハマーン
+> 「愚かな……」
+“Foolish...”
+
+@8660 Haman · ハマーン
+> 「何っ!? 弾切れか!? ええいっ!」
+“What?! Out of ammo?! Damn it!”
+
+@8661 Haman · ハマーン
+> 「賢しいな……射程外から攻撃
+>  してるとは」
+“Clever... attacking from out of range.”

@@ -1,0 +1,147 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11129 Rakan · ラカン
+> 「貴様らに絶望という言葉を
+>  思い知らせてやろう!」
+“I'll teach you lot the meaning of despair!”
+
+@11130 Rakan · ラカン
+> 「もらった!」
+“Got you!”
+
+@11131 Rakan · ラカン
+> 「ガードが、がら空きだぞっ!」
+“Your guard's wide open!”
+
+@11132 Rakan · ラカン
+> 「ぬおおおおおっ!!」
+“Nwooooh!!”
+
+@11133 Rakan · ラカン
+> 「なめるなあっ!!」
+“Don't underestimate me!!”
+
+@11134 Rakan · ラカン
+> 「よけられるか!!」
+“Like I'd let you dodge!!”
+
+@11135 Rakan · ラカン
+> 「生意気ぃっ!!」
+“Insolent brat!!”
+
+@11136 Rakan · ラカン
+> 「くらえぇっ!!」
+“Take this!!”
+
+@11137 Rakan · ラカン
+> 「ひと思いに楽にしてやる。
+>  心配するな」
+“I'll put you out of your misery. Don't worry.”
+
+@11138 Rakan · ラカン
+> 「ここまでだな!」
+“This is the end for you!”
+
+@11139 Rakan · ラカン
+> 「邪魔だ、どけえっ!」
+“Out of my way, move it!”
+
+@11140 Rakan · ラカン
+> 「観念するんだな!」
+“Give it up!”
+
+@11141 Rakan · ラカン
+> 「バカなっ!? この俺が……」
+“Impossible!? Me, of all people...”
+
+@11142 Rakan · ラカン
+> 「ぬぅっ、貴様、忘れんぞっ!」
+“Ngh, you, I won't forget this!”
+
+@11143 Rakan · ラカン
+> 「むうっ!! この機体が……
+>  パワー負けするのか!?」
+“Mmph!! This machine... is outmatched in power?!”
+
+@11144 Rakan · ラカン
+> 「何いっ!? こ、こやつ、ただ者では
+>  ないなっ!!」
+“What?! Th-This one's no ordinary foe!!”
+
+@11145 Rakan · ラカン
+> 「ぬううっ! ち、直撃だというのか!?」
+“Nghhh! A-A direct hit?!”
+
+@11146 Rakan · ラカン
+> 「バカなっ!? これほどとは……」
+“Impossible!? To think it was this much...”
+
+@11147 Rakan · ラカン
+> 「まだまだぁっ!」
+“Not done yet!!”
+
+@11148 Rakan · ラカン
+> 「ぐぅっ! この、図に乗るなぁっ!!」
+“Guh! You, don't get cocky!!”
+
+@11149 Rakan · ラカン
+> 「ぐっ! ふふ、やるなっ!」
+“Guh! Heh, not bad!”
+
+@11150 Rakan · ラカン
+> 「ちいっ! このラカン・ダカラン、
+>  この程度でやられはせん!!」
+“Tch! I, Rakan Dahkaran, won't fall to the likes of this!!”
+
+@11151 Rakan · ラカン
+> 「な、なんだと!?」
+“W-What did you say?!”
+
+@11152 Rakan · ラカン
+> 「どうした、そんなものか!」
+“What's wrong, is that all you've got!”
+
+@11153 Rakan · ラカン
+> 「並みのモビルスーツとは違うんだよっ!」
+“I'm not like your average Mobile Suit!”
+
+@11154 Rakan · ラカン
+> 「パワー不足だな!」
+“Not enough power!”
+
+@11155 Rakan · ラカン
+> 「甘いわっ!」
+“Too naive!”
+
+@11156 Rakan · ラカン
+> 「当たらん!」
+“You won't hit me!”
+
+@11157 Rakan · ラカン
+> 「遅いっ!」
+“Too slow!”
+
+@11158 Rakan · ラカン
+> 「見え見えなんだよ!」
+“I can see right through you!”
+
+@11159 Rakan · ラカン
+> 「そこかっ!」
+“There you are!”
+
+@11160 Rakan · ラカン
+> 「ふ、ムダな攻撃だ」
+“Hmph, a pointless attack.”
+
+@11161 Rakan · ラカン
+> 「効かんわっ!!」
+“That won't even scratch me!!”
+
+@11162 Rakan · ラカン
+> 「弾切れか!? うかつな……」
+“Out of ammo?! How careless...”
+
+@11163 Rakan · ラカン
+> 「ちっ、あんな距離から攻撃してくる
+>  とは……」
+“Tch, attacking from that range...”

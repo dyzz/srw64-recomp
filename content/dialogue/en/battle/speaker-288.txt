@@ -1,0 +1,146 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@13296 Specials · スペシャルズ
+> 「でやあああっ!!」
+“Take thiiis!!”
+
+@13297 Specials · スペシャルズ
+> 「こ、このおっ!」
+“Why, you...!”
+
+@13298 Specials · スペシャルズ
+> 「やってやる、やってやるぞ!」
+“I'll do it, I'm gonna do it!”
+
+@13299 Specials · スペシャルズ
+> 「当たれっ!」
+“Hit 'em!”
+
+@13300 Specials · スペシャルズ
+> 「うおおおおっ!」
+“Whoooa!”
+
+@13301 Specials · スペシャルズ
+> 「行くぜっ!」
+“Here I go!”
+
+@13302 Specials · スペシャルズ
+> 「落ちろってんだよ!!」
+“I said go down!!”
+
+@13303 Specials · スペシャルズ
+> 「こいつっ!」
+“You bastard!”
+
+@13304 Specials · スペシャルズ
+> 「やってやる!!」
+“I'll do it!!”
+
+@13305 Specials · スペシャルズ
+> 「う、うわあああっ!!」
+“W-whoooa!!”
+
+@13306 Specials · スペシャルズ
+> 「ぐあっ!! や、やられたっ!!」
+“Gah!! I-I've been hit!!”
+
+@13307 Specials · スペシャルズ
+> 「うわあっ! や、やられちまうっ!!」
+“Whoa! I-I'm going down!!”
+
+@13308 Specials · スペシャルズ
+> 「ぐあっ! こ、これじゃもたない!?」
+“Gah! I-I can't hold out!?”
+
+@13309 Specials · スペシャルズ
+> 「つ、強い、強すぎる!?」
+“S-strong, way too strong!?”
+
+@13310 Specials · スペシャルズ
+> 「な、なんだこいつのパワーは!?」
+“W-what is with this guy's power!?”
+
+@13311 Specials · スペシャルズ
+> 「がああっ! パ、パワーが違いすぎる……」
+“Gwaaah! H-his power's on another level...”
+
+@13312 Specials · スペシャルズ
+> 「うおっ!? や、やってくれる!」
+“Whoa!? Y-you're pretty good!”
+
+@13313 Specials · スペシャルズ
+> 「な、なんの、まだまだっ!!」
+“N-no way, I'm not done yet!!”
+
+@13314 Specials · スペシャルズ
+> 「くっ! さすがにやるじゃないか!」
+“Tch! You're good, I'll give you that!”
+
+@13315 Specials · スペシャルズ
+> 「ちっ! この程度ならまだ戦える!」
+“Tch! This much and I can still fight!”
+
+@13316 Specials · スペシャルズ
+> 「このっ! やったな!」
+“Why you! You got me!”
+
+@13317 Specials · スペシャルズ
+> 「クソっ!! こんなもんでやられるか!!」
+“Damn!! You think this'll take me down!!”
+
+@13318 Specials · スペシャルズ
+> 「効かないな、そんな攻撃!」
+“That attack won't work on me!”
+
+@13319 Specials · スペシャルズ
+> 「そんなものか!」
+“Is that all you've got!”
+
+@13320 Specials · スペシャルズ
+> 「たかがかすり傷だっ!!」
+“It's just a scratch!!”
+
+@13321 Specials · スペシャルズ
+> 「当たっただけだ!」
+“It only grazed me!”
+
+@13322 Specials · スペシャルズ
+> 「こんなダメージなど!」
+“This is nothing!”
+
+@13323 Specials · スペシャルズ
+> 「あ、危なかった……」
+“Th-that was close...”
+
+@13324 Specials · スペシャルズ
+> 「かわせた!」
+“Dodged it!”
+
+@13325 Specials · スペシャルズ
+> 「当たってたまるか!」
+“Like I'd let that hit me!”
+
+@13326 Specials · スペシャルズ
+> 「外れた!」
+“It missed!”
+
+@13327 Specials · スペシャルズ
+> 「な、なんとか……」
+“I-I made it...”
+
+@13328 Specials · スペシャルズ
+> 「そこか!」
+“There you are!”
+
+@13329 Specials · スペシャルズ
+> 「このっ! 効かないんだよっ!!」
+“Why you! It doesn't work on me!!”
+
+@13330 Specials · スペシャルズ
+> 「え!? しまった、弾切れか!?」
+“Huh!? Damn, out of ammo!?”
+
+@13331 Specials · スペシャルズ
+> 「な、なんだ!?
+>  あんな距離から攻撃できるのか!?」
+“W-what!? He can attack from that far!?”
