@@ -69,6 +69,7 @@
     "rule_boss_dummy_none": "Boss dummies: none (wins over halved)",
     "rule_upgrade_cap_break": "Upgrade cap: every unit up to 15 (original: 6–15 per unit)",
     "rule_upgrade_refund": "Departure refund: story removals return upgrade funds",
+    "rule_parts_carry_over": "Parts carry over: a swap re-equips them on the new machine",
     "refund_notice": "{unit} left the team — {amount} in upgrade funds refunded",
     "link_title": "Choose Series to Link",
     "link_hint": "Checked series join in a special stage before the next battle. The original link screen follows.",

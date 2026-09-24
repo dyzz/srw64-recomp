@@ -69,6 +69,7 @@
     "rule_boss_dummy_none": "ボスの身代わり：なし（半分より優先）",
     "rule_upgrade_cap_break": "改造上限：全機体 15 段まで（原作は機体ごとに 6～15）",
     "rule_upgrade_refund": "離脱返金：シナリオで機体が消えると改造資金を返す",
+    "rule_parts_carry_over": "パーツ引き継ぎ：乗り換えで強化パーツを新機体へ（枠が足りない分は倉庫）",
     "refund_notice": "{unit}が部隊を離れました。改造資金 {amount} を返金しました",
     "link_title": "リンクする作品を選択",
     "link_hint": "チェックした作品は次の戦闘の前に特別ステージで参戦します。続けて元のリンク画面へ進みます。",
