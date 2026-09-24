@@ -1,8 +1,10 @@
 SRW64 Symbols (content/fonts/SRW64Symbols.ttf)
 ===============================================
 
-This font holds the four symbols the SRW64 text needs that HarmonyOS Sans lacks:
-U+25B6 ▶, U+25B7 ▷, U+25C0 ◀ and U+1F527 🔧. It is built by
+This font holds the symbols the SRW64 text needs that HarmonyOS Sans lacks:
+U+25B6 ▶, U+25B7 ▷, U+25C0 ◀, U+1F527 🔧, and the weapon markers in the Private
+Use Area: U+E0F1 circled P, U+E0F2 circled B, U+E0F3 the ranged-attack gunsight,
+U+E0F4 the melee fist and U+E23F the MAP badge. It is built by
 tools/content/build_symbol_font.py.
 
 - The three triangles are outlines taken from DejaVu Sans (Book), rescaled and
@@ -10,8 +12,10 @@ tools/content/build_symbol_font.py.
   Vera copyright and licence, DejaVu changes in the public domain. As that licence
   requires for modified fonts, this font's name contains neither "Bitstream" nor
   "Vera", and the notices below travel with every copy.
-- The wrench glyph was drawn for the SRW64 project after the original game's repair
-  icon and is distributed under the same terms as the rest of this font.
+- The wrench and weapon marker glyphs were drawn for the SRW64 project after the
+  original game's icons and are distributed under the same terms as the rest of
+  this font. The letters in the P, B and MAP markers are outlines taken from DejaVu
+  Sans Bold, under the same DejaVu licence.
 
 --------------------------------------------------------------------------------
 Licence of DejaVu Sans (verbatim)

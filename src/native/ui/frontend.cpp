@@ -212,6 +212,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
 .im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
 .im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:6dp; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
+.im-mark {color:#ffffff; vertical-align:middle;} .im-mark.map {color:#de416a;}
 .im-badge.melee {background-color:#c8501e;} .im-badge.ranged {background-color:#2d6fd8;} .im-badge.post {background-color:#2a9a4a;} .im-badge.beam {background-color:#a04fd0;} .im-badge.map {background-color:#c09a1a; border-radius:3dp;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
@@ -551,6 +552,10 @@ void intermission_sync() {
 // 16 with the original 格／射 icon before the name and the P／B／MAP icons after it,
 // then the selected weapon's 弾数, terrain letters, 必要気力, 消費EN, 必要技能 and
 // クリティカル補正 in the boxed bands at y 160 and 180. Returns the panel body.
+// The weapon markers in the symbol font, at U+E000 + their ROM glyph id.
+const char* marker_glyph(const std::string& token) {
+    return token=="格"?"\uE0F4":token=="射"?"\uE0F3":token=="P"?"\uE0F1":token=="B"?"\uE0F2":token=="MAP"?"\uE23F":nullptr;
+}
 std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
@@ -561,10 +566,14 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
     const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("\u00b1 0");};
     const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
-    // The original's own icons (battle_assets.py) at their pixel size; a text badge
-    // only when a profile has none.
+    // HD images: the symbol font's markers (U+E000 + ROM glyph id, drawn after the ROM
+    // icons, build_symbol_font.py). Original images: the icons cut from the ROM font
+    // (battle_assets.py) at their pixel size. A text badge only when neither is there.
     const json icons=W.value("icons",json::object());
+    const bool vector_marks=!symbol_font.empty() && (hd_portraits() || icons.empty());
     const auto badge=[&](const std::string& token){
+        if(const char* glyph=marker_glyph(token); glyph && vector_marks)
+            return "<span class='im-mark"+std::string(token=="MAP"?" map":"")+"' style='font-size:"+px(13)+"; margin:0 "+px(1)+";'>"+glyph+"</span>";
         if(const auto found=icons.find(token);found!=icons.end() && found->contains("path")) {
             const float w=found->value("width",8.f),h=found->value("height",10.f);
             return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='width:"+px(w)+"; height:"+px(h)+

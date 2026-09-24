@@ -32,7 +32,9 @@ def prepared(output: Path) -> bool:
         path = output / name
         if not path.is_file() or sha256(path.read_bytes()) != row["sha256"]:
             return False
-    return all((output / name).is_file() for name in manifest["bundled"])
+    # The bundled files are tracked: a rebuilt symbol font must replace the prepared copy.
+    return all((output / name).is_file() and (output / name).read_bytes() == (MANIFEST.parent / name).read_bytes()
+               for name in manifest["bundled"])
 
 
 def prepare(archive: Path = ARCHIVE, output: Path = OUTPUT) -> Path:
