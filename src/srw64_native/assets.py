@@ -49,6 +49,32 @@ def portrait_lookup(art_directory: Path, output: Path):
     return lookup
 
 
+def whole_images(root: Path, spec: dict, index_name: str, schema: str, what: str):
+    """A folder of whole images the host draws itself, checked against its index."""
+    folder = inside(root, spec["path"])
+    index_bytes = (folder / index_name).read_bytes()
+    if sha(index_bytes) != spec["manifest_sha256"]:
+        raise ValueError(f"{what} manifest changed")
+    index = json.loads(index_bytes)
+    if index.get("schema") != schema:
+        raise ValueError(f"Unsupported {what.lower()} image set")
+    files = []
+    for row in index["images"]:
+        path = inside(folder, row["file"])
+        if sha(path.read_bytes()) != row["sha256"]:
+            raise ValueError(f"{what} pixels changed: {row.get('image', row['file'])}")
+        files.append((path, row))
+    return index, files
+
+
+def copy_whole_images(index: dict, files: list, output: Path, folder: str, runtime_name: str) -> None:
+    (output / folder).mkdir()
+    for path, row in files:
+        shutil.copyfile(path, output / folder / row["file"])
+    runtime = {**index, "images": [{**row, "file": f"{folder}/{row['file']}"} for _, row in files]}
+    (output / runtime_name).write_text(json.dumps(runtime, indent=2) + "\n")
+
+
 def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if manifest.get("schema") != "srw64.art-pack.v1" or manifest.get("locale") != "neutral":
         raise ValueError("Image toggle accepts only a language-neutral art pack")
@@ -76,34 +102,27 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         spec = manifest["worldmap"]
         if set(spec["hashes"]) != {r["hash"] for r in manifest["textures"] if r["kind"] == "worldmap"}:
             raise ValueError("Worldmap audit identities differ from art manifest")
-    # Whole-image portraits for the host's sprite-mode-7 replacement (native_portrait.cpp).
+    # Whole-image portraits (sprite mode 7, native_portrait.cpp) and intermission
+    # backgrounds (sprite mode 4, native_background.cpp).
     portrait_index, portrait_files = None, []
     if "portraits" in manifest:
-        folder = inside(root, manifest["portraits"]["path"])
-        index_bytes = (folder / "portraits.json").read_bytes()
-        if sha(index_bytes) != manifest["portraits"]["manifest_sha256"]:
-            raise ValueError("Portrait manifest changed")
-        portrait_index = json.loads(index_bytes)
-        if portrait_index.get("schema") != "srw64.portrait-images.v1":
-            raise ValueError("Unsupported portrait image set")
-        for row in portrait_index["images"]:
-            path = inside(folder, row["file"])
-            if sha(path.read_bytes()) != row["sha256"]:
-                raise ValueError(f"Portrait pixels changed: {row['image']}")
-            portrait_files.append((path, row))
+        portrait_index, portrait_files = whole_images(root, manifest["portraits"], "portraits.json",
+                                                      "srw64.portrait-images.v1", "Portrait")
+    background_index, background_files = None, []
+    if "backgrounds" in manifest:
+        background_index, background_files = whole_images(root, manifest["backgrounds"], "backgrounds.json",
+                                                          "srw64.background-images.v1", "Background")
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
         shutil.copyfile(path, output / name)
     if portrait_index is not None:
-        (output / "portraits").mkdir()
-        for path, row in portrait_files:
-            shutil.copyfile(path, output / "portraits" / row["file"])
-        runtime = {**portrait_index, "images": [{**row, "file": f"portraits/{row['file']}"} for _, row in portrait_files]}
-        (output / "srw64-portraits-hd.json").write_text(json.dumps(runtime, indent=2) + "\n")
+        copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json")
+    if background_index is not None:
+        copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json")
     (output / "rt64.json").write_text(json.dumps({"configuration": database["configuration"], "textures": textures}, indent=2) + "\n")
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files),
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}

@@ -427,5 +427,9 @@
   "portraits": {
     "path": "assets/hd-ai/portrait-batch/whole-v1",
     "manifest_sha256": "d672172500f8b5ab6e95fa9d00e9efe02699496099c39f3cb90f235a26c31ac9"
+  },
+  "backgrounds": {
+    "path": "assets/hd-ai/backgrounds/whole-v1",
+    "manifest_sha256": "df27d4f06c729266c0e38d5e5bd1e84768d4181f005993ca12e1fc44fd0209bb"
   }
 }
