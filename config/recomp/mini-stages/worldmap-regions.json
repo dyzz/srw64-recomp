@@ -1,0 +1,214 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "worldmap-regions",
+  "note": "Visits one world-map location per Earth surface so the HD surfaces (docs/native/native-worldmap-regions-hd.md) can be compared with F6: 3 Central Asia (5605), 9 North America (5606), 7 the whole Earth (5602), 2 the whole Earth on the 5603 mesh, 0 the Mediterranean (5604). Each location holds about 5 s.",
+  "slot": 84,
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            3
+          ],
+          "note": "Central Asia 5605"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            9
+          ],
+          "note": "North America 5606"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            7
+          ],
+          "note": "whole Earth 5602"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            2
+          ],
+          "note": "whole Earth mesh 5603"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            0
+          ],
+          "note": "Mediterranean 5604"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

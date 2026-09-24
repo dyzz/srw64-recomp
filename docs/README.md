@@ -81,6 +81,7 @@
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
 | [人物头像 HD](native/native-portraits-hd.md) | 全部头像的 2×2 拼图生成、逐格配准与抠图，模式 7 绘制的整张 768×768 替换（宿主 Metal 绘制） |
 | [场间背景 HD](native/native-backgrounds-hd.md) | インターミッション 8 张背景的亮／暗 HD、模式 4 分块绘制的整张替换 |
+| [剧情世界地图 HD](native/native-worldmap-regions-hd.md) | 剧情世界地图的全部地球区域与宇宙：按第一话欧洲画风分窗口重绘、陆海分布自动检查、星空整张绘制 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
 | [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |
 | [内容架构第一批实现](native/native-content-foundation.md) | 语言、图片、5600 模型配置及扩展方式 |
