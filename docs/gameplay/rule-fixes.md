@@ -39,6 +39,7 @@
 | `boss-dummy-none` | 头目不再拥有假身；与减半同时勾选时以本项为准 |
 | `upgrade-cap-break` | 改造上限突破：改造画面里所有机体可改到 15 段（原作按机体 6～15），刻度用 ●／☆ 标出原作上限之外的格子；EW 换装、满改追加武器、出售价仍按原作上限。改上去的段数是持久状态，关掉后保留但不能再改。详见[改造段数与上限](upgrade-limits.md)第 7 节，同页还有可改每段增量、价格、上限与武器类型的升级规则文件（`--upgrade-rules`） |
 | `upgrade-refund` | 离队退款：剧情让机体离开部队（离队、换乘后旧机被删除、ゴッドマーズ合体）时，按现价退回玩家花在这台机体上的改造资金，并在画面顶部和对话回看里提示；换机被继承的段数、剧情用 `3D6C` 赠送的段数不退。见 §2.6 |
+| `parts-carry-over` | 部件随行：换机时把旧机体装着的强化パーツ直接装到新机体上（原版一律卸回仓库，要等下次整备才能重装）；新机体槽位不够时多出来的仍留在仓库。见 §2.7 |
 
 - 选择写入试玩目录下的 `rules.json`（统一 profile 入口为 `build/recomp/profile-play/rules.json`，schema `srw64.rule-settings.v1`），之后不带参数启动时沿用。**没有该文件时按默认全开**；文件里是空列表表示明确选择了原版规则，不会被当成“没选过”。启动时终端打印当前规则。
 - 无窗口的诊断／探针宿主不走启动器：直接运行 `run_host_probe.py` 时没有 `SRW64_RULE_FIXES` 即原版规则，保证有界运行的证据可复现。
@@ -169,6 +170,14 @@
 
 **持久性**：退款写进资金，随游戏存档保存；之后关闭本项不会收回，打开也不会追溯已经发生过的删除。开启期间每次剧情删除（包括不退款的）都在运行目录追加 `upgrade-refund-events.jsonl`（schema `srw64.upgrade-refund.v1`：机体、来源、是否被继承、免费段数、五项与武器金额、前后资金），调试接口可用 `srw64ctl events refunds` 读取。
 
+### 2.7 部件随行（`parts-carry-over`）
+
+原版释放机体实例时会顺手卸下它的全部强化パーツ：`800AA3C4` → `800A9DCC(.., 0, 1)` → `800A9D60` 把槽位写 −1、机体的装备数清零、库存记录（`D_8015E990`，每个部件 u16：高字节持有数、低字节装备中数）的装备中数减 1。**持有数不动，所以部件不会消失**，只是回到仓库，要等下次整备才能重装——换机后立刻自动出击的那一关就只能光着打。ダンクーガ 的原地升级（`800ACB74`）也照样卸自己和各兽战机形态的部件。
+
+开启本项后，`800AAD28` 的包装在原函数之前记下驾驶员当前机体的部件，原函数返回后按原顺序装到新机体的空槽里，并把库存的装备中数加回来，最后照整备画面的做法调 `800A5924(机体, 1)` 传播。装不下的留在仓库：五台 EW（ウイングゼロカスタム、サンドロックカスタム、デスサイズHカスタム、ヘビーアームズカスタム、アルトロンカスタム）和三台真ゲッター 的槽位都是 1，而前任是 2，所以这些换机每次会留下一件。
+
+不重复装：如果原函数因为「这个驾驶员已经在这台机体上」提前返回、根本没卸过部件，包装会发现旧机体的装备数没变而跳过。持有数少于装备中数、没有空槽、找不到新机体实例时同样跳过。每次成功携带在运行目录追加 `parts-carry-events.jsonl`（schema `srw64.parts-carry.v1`：前后机体编号、携带的部件、留在仓库的部件）。
+
 ## 3. 实现
 
 | 位置 | 内容 |
@@ -183,6 +192,7 @@
 | `src/srw64_native/rule_settings.py` | 启动器与探针脚本共用的规则目录、保存与会话记录读取；`CORRECTIONS`／`DIFFICULTY` 决定首次启动默认开哪些。 |
 | `tools/recomp/run/play_native.py`、`run_host_probe.py` | `--rules`／`--rule-fixes`；报告字段 `rule_fixes`、`rule_probe_enabled`。 |
 | `src/host/upgrade_refund.hpp` | 离队退款：四个包装用的范围、前任实例查找、改造花费与免费段数、资金写入与日志、机体名读取（文本表 0，id 527 起）。`generate_cpu.py` 为 `800AAD28`、`800AA464`、`800AB808`、`800AA3C4` 另加四个改名（`srw64_original_unit_register`、`_unit_remove`、`_unit_merge`、`_unit_delete`）。 |
+| `src/host/parts_carry.hpp` | 部件随行：捕捉旧机体的部件、判断原函数是否真的卸过、按空槽装到新机体、库存装备中数回加与日志。复用 `800AAD28` 已有的改名包装。 |
 | `src/host/native_dialogue.cpp`、`dialogue_model.hpp`、`native_dialogue_text.cpp` | 退款提示：三种语言的文案（`refund_notice`）、回看里的提示行（`Entry::notice`，不参与说话人配色，插在正在读的片段之前）。 |
 | `src/host/notices.hpp`（实现在 `src/native/ui/frontend.cpp`） | 游戏窗口顶部的提示条（RmlUi，任意线程投递、窗口线程显示），调试接口的 `status.notices` 与截图都能看到。 |
 
@@ -194,6 +204,7 @@
 - `tests/test_rule_fixes.py`：设置保存与读取、会话记录、难度调整默认关闭、宿主与 Python 目录一致、钩子改名与包装存在；ROM 事实（两个空函数、钩子入口字节、NT 表与未引用表同曲线、屏障表为其 10 倍、底力表形状与首档为 1、用途参数被覆盖、状态页的限界比较）。
 - 菜单：`SRW64_WINDOW_CONTROL=1` 时写 `rule-control.json`（schema `srw64.rule-control.v1`，字段 `sequence` 与 `item`，`item` 为规则 ID、`original` 或 `all`），宿主通过菜单自身的 `performActionForItemAtIndex:` 按下该项，并把按下结果、全部条目标题与勾选状态写入 `rule-menu-events.jsonl`。实测见 §5 末。
 - `make recomp-upgrade-refund-test`（已并入 `recomp-native-check`）：价格累加、免费段数（拿到／没拿到赠送）、规则关闭与范围之外不退、被继承的实例不退但记日志、其他池与非对齐地址、资金封顶、日志字段、机体名读取。回看提示行的顺序、配色与语言切换在 `tests/native_dialogue.cpp`。
+- `make recomp-parts-carry-test`（已并入 `recomp-native-check`）：规则关闭时不捕捉、槽位不足时只装得下的那件、槽位足够时全装、原函数未卸时不重复装、持有数不足／新机体不在名册／无驾驶员的情况都不写内存、日志字段。
 - `tests/test_upgrade_refund.py`：四个钩子改名与包装、难度组与三种语言文案；ROM 事实（`3D6C` 共 38 条、赠送表逐项一致、机体名 id 起点 527、前任表内容与 `800AA814` 的查表指令）。
 - 实机探针：见 §5。
 

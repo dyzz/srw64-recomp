@@ -72,7 +72,8 @@ class RuleSettingsTests(unittest.TestCase):
         # Bug fixes are on for a first launch; the boss dummy and upgrade cap choices
         # change the original balance on purpose, so they are not in the default set.
         self.assertEqual(rule_settings.DEFAULT + rule_settings.DIFFICULTY, tuple(rule_settings.RULE_FIXES))
-        self.assertEqual(rule_settings.DIFFICULTY, ("boss-dummy-half", "boss-dummy-none", "upgrade-cap-break", "upgrade-refund"))
+        self.assertEqual(rule_settings.DIFFICULTY, ("boss-dummy-half", "boss-dummy-none", "upgrade-cap-break",
+                                                    "upgrade-refund", "parts-carry-over"))
         self.assertEqual(rule_settings.select(self.path), rule_settings.DEFAULT)
 
     def test_host_catalog_matches(self):

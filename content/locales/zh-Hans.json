@@ -69,6 +69,7 @@
     "rule_boss_dummy_none": "头目假身：取消（优先于减半）",
     "rule_upgrade_cap_break": "改造上限突破：全部机体可改到 15 段（原版按机体 6～15）",
     "rule_upgrade_refund": "离队退款：剧情移除机体时退回改造资金",
+    "rule_parts_carry_over": "部件随行：换机时强化部件直接装到新机体（装不下的留仓库）",
     "refund_notice": "{unit} 已离开部队，退回改造资金 {amount}",
     "link_title": "选择联动作品",
     "link_hint": "勾选的作品会在下一场战斗前通过特别关卡加入，接着进入原版的联动画面。",

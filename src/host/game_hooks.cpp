@@ -11,12 +11,14 @@
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
+#include "parts_carry.hpp"
 #include "link_battler.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
 namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
+namespace parts_carry=srw64::parts_carry;
 extern "C" {
 void load_000AB160_func_801C8AB4(uint8_t* ram,recomp_context* ctx) {
     if(!srw64_game_hooks.battle_spirit_return || !srw64_game_hooks.battle_spirit_return(ram,ctx))srw64_original_return_to_map(ram,ctx);
@@ -562,7 +564,19 @@ void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
     // Registration (a1 the new machine): its predecessor's levels move to it, so
     // deleting that instance here is not a loss.
     refund::Registration registration(rdram, int16_t(ctx->r5));
+    // Freeing the old machine unequips its parts (parts_carry.hpp); with the carry
+    // rule on they go back on the successor once it exists.
+    const auto carry = parts_carry::capture(rdram, int16_t(ctx->r4), int16_t(ctx->r5));
     srw64_original_unit_register(rdram, ctx);
+    if (const auto carried = parts_carry::apply(rdram, carry)) {
+        // The same propagation the parts screen runs after a slot changes.
+        auto c = *ctx;
+        c.r29 = int32_t(uint32_t(ctx->r29) - 0x200);
+        c.r4 = int32_t(parts_carry::instance_of(rdram, carried->unit));
+        c.r5 = 1;
+        resident_func_800A5924(rdram, &c);
+        parts_carry::record(carry, *carried);
+    }
 }
 void resident_func_800AA464(uint8_t* rdram, recomp_context* ctx) {
     // Pilot a0 leaves machine a1; the instance numbered a2 is deleted (3D5A modes

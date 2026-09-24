@@ -26,7 +26,7 @@ using guest::write16;
 
 enum Fix : unsigned {esp_level=1,seisenshi_level=2,limit_cap=4,potential_bands=8,potential_half=16,
                      boss_dummy_half=32,boss_dummy_none=64,weapon_inherit_map=128,upgrade_cap_break=256,
-                     aura_slash_power=512,upgrade_refund=1024};
+                     aura_slash_power=512,upgrade_refund=1024,parts_carry_over=2048};
 // Each entry says which kind it is, so the UI grouping and the default set come
 // from the catalog itself instead of a second list that can drift: corrections
 // repair places where the original contradicts its own data or UI and are on by
@@ -44,7 +44,8 @@ inline constexpr Entry catalog[]={
     {boss_dummy_half,"boss-dummy-half",Kind::difficulty},
     {boss_dummy_none,"boss-dummy-none",Kind::difficulty},
     {upgrade_cap_break,"upgrade-cap-break",Kind::difficulty},
-    {upgrade_refund,"upgrade-refund",Kind::difficulty}};
+    {upgrade_refund,"upgrade-refund",Kind::difficulty},
+    {parts_carry_over,"parts-carry-over",Kind::difficulty}};
 consteval unsigned mask_of(Kind kind) {
     unsigned mask=0;
     for(const auto& entry:catalog)if(entry.kind==kind)mask|=entry.fix;
