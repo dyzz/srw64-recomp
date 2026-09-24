@@ -30,9 +30,9 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 
 ## 通用规范
 
-**中文（简体）**：采用大陆玩家的通行译名（高达、魔神Z、盖塔），不用港台译名（钢弹、无敌铁金刚、盖特）。人名中间用间隔号 `·`（U+00B7）；感叹号、问号、括号用全角。机体型号、`HP`、`EN`、`MAP`、`L1`–`L9`、`S`／`M`／`L` 尺寸等保留原样。没有通行译名的片假名按音译，尽量用人名常用字；已有官方中文的以官方为准。
+**中文（简体）**：采用大陆玩家的通行译名（高达、魔神Z、盖塔），不用港台译名（钢弹、无敌铁金刚、盖特）。人名中间用间隔号 `·`（U+00B7）；感叹号、问号、括号用全角。机体型号、`HP`、`EN`、`MAP`、`L1`–`L9`、`S`／`M`／`L` 尺寸等保留原样。通行叫法优先于官方写法：现译就是大陆通行叫法的保留（卡缪·比丹、希罗·唯、扎古、东方不败）；没有通行叫法时用官方简中或繁中（繁中转成简体）；两者都没有的按音译，尽量用人名常用字。
 
-**英文**：优先使用 Bandai Namco 官方英文版（超级机器人大战 V／X／T／30）与各作品官方英文名；没有的按通行罗马字与英文圈惯例（Hepburn，长音不加符号：`Koji Kabuto`）。标签尽量短：原生页面列宽按日文设计，超长文字会被裁掉。
+**英文**：优先使用官方写法：Bandai Namco 官方英文版（超级机器人大战 V／X／T／30）、高达官方英文站、官方英文发行（Discotek 等）与官方卡牌；没有的按通行罗马字与英文圈惯例（Hepburn，长音不加符号：`Koji Kabuto`）。标签尽量短：原生页面列宽按日文设计，超长文字会被裁掉。
 
 **两种语言都**：保持原文的信息，不加解释；保留原文里的数字、`+`、`%`；原文里连续两个以上的空格是填数字的占位（`第  話`、`(最大で  段階まで)`、`あと  機`、`命中率    %`），原生页面把第一处双空格换成数字，译文必须原样保留这些空格（`第  话`、`(最多  段)`、`Stage  `）；多行提示里 `<BR>` 的位置可以调整。
 
@@ -51,17 +51,17 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 | 新機動戦記ガンダムW | 新机动战记高达W | Mobile Suit Gundam Wing |
 | マジンガーZ | 魔神Z | Mazinger Z |
 | グレートマジンガー | 大魔神 | Great Mazinger |
-| UFOロボ グレンダイザー | UFO机器人 古连泰沙 | UFO Robo Grendizer |
+| UFOロボ グレンダイザー | UFO机器人 古连泰沙 | UFO Robot Grendizer |
 | ゲッターロボ／ゲッターロボG | 盖塔机器人／盖塔机器人G | Getter Robo / Getter Robo G |
-| 超電磁ロボ コン・バトラーV | 超电磁机器人 孔巴特拉V | Super Electromagnetic Robo Combattler V |
-| 無敵超人 ザンボット3 | 无敌超人 赞博特3 | Invincible Super Man Zambot 3 |
+| 超電磁ロボ コン・バトラーV | 超电磁机器人 孔巴特拉V | Super Electromagnetic Robot Combattler V |
+| 無敵超人 ザンボット3 | 无敌超人 赞波3 | Invincible Super Man Zambot 3 |
 | 無敵鋼人 ダイターン3 | 无敌钢人 泰坦3 | Invincible Steel Man Daitarn 3 |
 | 戦国魔神ゴーショーグン | 战国魔神 豪将军 | Sengoku Majin GoShogun |
 | 聖戦士ダンバイン | 圣战士丹拜因 | Aura Battler Dunbine |
-| 超獣機神ダンクーガ | 超兽机神断空我 | Super Beast Machine God Dancouga |
+| 超獣機神ダンクーガ | 超兽机神断空我 | Dancouga: Super Beast Machine God |
 | 蒼き流星SPTレイズナー | 苍之流星SPT雷兹纳 | Blue Comet SPT Layzner |
-| 六神合体ゴッドマーズ | 六神合体 戈德马斯 | Six God Combination Godmars |
-| ジャイアント・ロボ | 巨大机器人 | Giant Robo |
+| 六神合体ゴッドマーズ | 六神合体 雷霆王 | Six God Combination God Mars |
+| ジャイアント・ロボ | 大铁人 | Giant Robo |
 | オリジナル | 原创 | Original |
 
 ## 常用构词
@@ -83,8 +83,8 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 | ファンネル | 浮游炮 | Funnel |
 | ドリル | 钻头 | Drill |
 | ロケットパンチ | 火箭飞拳 | Rocket Punch |
-| 光子力ビーム | 光子力光束 | Photon Beam |
-| ブレストファイヤー | 胸部热线 | Breast Fire |
+| 光子力ビーム | 光子力射线 | Photon Beam |
+| ブレストファイヤー | 胸部火焰 | Breast Fire |
 | トマホーク | 战斧 | Tomahawk |
 | ミノフスキー | 米诺夫斯基 | Minovsky |
 | Iフィールド | I力场 | I-Field |
@@ -106,9 +106,9 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 | 葵豹馬 | 葵豹马 | Hyoma Aoi |
 | 神勝平 | 神胜平 | Kappei Jin |
 | 破嵐万丈 | 破岚万丈 | Banjo Haran |
-| ショウ・ザマ | 修·撒玛 | Show Zama |
+| ショウ・ザマ | 座间翔 | Show Zama |
 | 藤原忍 | 藤原忍 | Shinobu Fujiwara |
-| 明神タケル | 明神尊 | Takeru Myojin |
+| 明神タケル | 明神武 | Takeru Myojin |
 | 草間大作 | 草间大作 | Daisaku Kusama |
 
 原创角色的默认姓名与驾驶员表里的同一人物用同一译名（例如 マナミ・ハミル：玛娜米·哈米尔／Manami Hamill）。
@@ -147,14 +147,31 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 - **状态与技能**：気力 英文统一为 Will，战前页原来的 Morale 已改。聖戦士 英文统一为 Holy Warrior，规则开关原来的 Aura Warrior 已改。切り払い 中文为“切落”，強化 为“强化人”，S防御 保持“S防御”。战前页手写标签已按词条统一：奥拉屏障、I力场、行星防御器、马赫特技、神之影。
 - **硬件与专名**：コントローラパック 为“手柄记忆卡”，64GBパック 为“64GB传输卡”，シャッフル 统一为“洗牌同盟”。マスターアジア 中文用大陆通行的“东方不败”，对应机体为“尊者高达”。
 - **英文 MAP 武器**写成 `Buster Rifle MAP`。拼出的列表文字在标记前会多一个空格，但运行时按原版语法拆分必须保留它，显示上看不出。
-- **ROM 笔误**不照抄：モンド・アガケ 与 モンド・アカゲ 都译作 Mondo Akage（蒙多·阿卡凯）；ゲーツ・キャバ 与 ゲーツ・キャパ 同译。
+- **ROM 笔误**不照抄：モンド・アガケ 与 モンド・アカゲ 都译作 Mondo Agake（蒙多·阿伽克）。官方写法是 Agake，ROM 里的 アカゲ 是笔误（首批曾按 アカゲ 译作 Akage，2026-09-24 改正）。ゲーツ・キャバ 与 ゲーツ・キャパ 同译为盖茨·卡帕／Gates Capa。
 - **胜败条件**里的「・」中文改为顿号、英文改为分号。“〜の撃破”写成中性的“〜被击破／〜 destroyed”，因为同一句会出现在胜利和败北两种列表里。
+
+## 官方与通行译名核对（2026-09-24）
+
+「文本格式化系统导出与翻译规划」会话按上面的规范逐条查了各作品的官方与通行译名，参考了机战官方中英文版、GUNDAM.INFO、Discotek、B 站正版、百度百科、萌娘百科等。原始对照表在 `assets/translation-runs/official-names/`（不进 git），取舍原则见同目录的 `POLICY.md`。
+- 共 625 条，其中研究过的 595 条，另 30 条是关卡名、胜败条件里随改名同步的写法。剧情专名表归对方维护。
+- 写进词条表的：中文 403 个值、英文 174 个值。
+- 例子：
+  - 中文：花·园丽、座间翔、明神武、深村玲、赞波3、雷霆王、大铁人（作品名与机体）、胸部火焰、光子力射线；
+  - 英文：G 高达用北美名 Burning Gundam／Dark Gundam；原创机体用官方卡牌拼法 Sweemurg、Virose、Razgreez。
+- 原创对手的英文保留现译 Kurtz Forneus、Rish Griswell、Ehrlich Stasen：社区拼法是误读，Forneus 是魔神名。
+- 台词正文里的名字由对方按同一张表替换，所以对白框的说话人和正文一致。
+
+暂缓、等用户决定的 14 条（仍是现译）：
+- 台版谐音名，可能退回音译：ボチューン（波丘恩 → 伯胄）、ミュージィ・ポー（缪吉 → 谬季）、ドズドズ（多兹多兹 → 土头土头）、ギンギン（金金 → 基基）；
+- 只有中文维基一个出处：アラン（阿兰 → 亚兰）、ケンジ（健二 → 健治）、アキラ（明 → 辉）；
+- ヴェスバー（维斯巴 → VSBR）：台词里喊招会变成“VSBR！！”。
+- 这 14 条分布在驾驶员、全名、人物列表、机体和武器分区。决定后改词条表、重跑 `apply_terms.py`。
 
 ## 待审校与未验证
 
 - 所有译文都是草稿（`review_status: draft`）。审校后逐条改为 `reviewed`：词条表里改好，重新运行 `apply_terms.py`，再在语言目录里标记。
-- 下面这些只是暂定：没有通行中文名的原创机体、敌机与招式的音译，例如アースゲイン 阿斯盖因、ヴァルディスキューズ、シャインスパーク 闪光火花、ストナーサンシャイン 斯托纳阳光；部分 G 高达与巨大机器人人物的译法，例如レイン·美加村、孔明；Layzner 的“刻印”（Seal）。
-- 英文长名在原生列表里可能被裁掉。列表用的简称已把「暗黒大将軍」「地獄大元帥」改短为 Dark General、Hell Marshal，全名保留官方译名。
+- 下面这些只是暂定：没有通行中文名的原创机体、敌机与招式的音译，例如アースゲイン 阿斯盖因、ヴァルディスキューズ 瓦尔迪斯丘兹；Layzner 的“刻印”（Seal）；孔明 等只有一个出处的人名。2026-09-24 的核对已定下シャインスパーク 闪光爆烈、ストナーサンシャイン 盖塔烈日弹、レイン・ミカムラ 深村玲。
+- 英文长名在原生列表里可能被裁掉。列表用的简称已把「暗黒大将軍」「地獄大元帥」改短为 Dark General、Hell Marshal，全名保留官方译名。原生列表会按格宽缩小字号；核对后最长的英文机体名是 Super Beast Shishiris Garo／Kiba（26 个字符）。
 - 拆成多条的提示按顺序拼读来翻译，包括 Pak 提示、反击命令说明、满改奖励和“X が、Y になります”。实际拼接方式与换行还没有在画面上核对。
 - 原生页面的中英文实机截图已由 `check_localization.py` 生成并检查，见上文。
 - 剧情与战斗台词不在本文范围内：它们在台词文本文件里，由另一条机翻流程生成，译名以这里的词条表为准。
