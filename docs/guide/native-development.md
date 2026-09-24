@@ -140,8 +140,6 @@ make recomp-native-check
 | `RUN/report.json` | 实际宿主退出码、ROM/二进制/手写源码/依赖适配摘要、音频状态、输入与保存来源。 |
 | `RUN.native.log` | 与 RUN 同级的宿主日志；窗口退出事件、诊断和错误。 |
 | `RUN/live-state.json`、`control-events.jsonl` | 当前 VI、输入请求是否已应用。 |
-| `RUN/name-entry-acceptance.json`、`names-readback.json` | UI 流程结果及进入剧情后的原游戏姓名内存字段。 |
-| `RUN/page-*-window.png` | 实际 macOS 游戏窗口；姓名页自身缓存图不能替代最终外观。 |
 | `RUN/present-*.png/json`、`dialogue-raster.json` | 已完成 GPU 帧及其模式/尺寸、对应原生文字排版。 |
 | `RUN/runtime-data/saves/` | 本次隔离运行的 SRAM；正常试玩历史在 `build/recomp/profile-play/sessions/`。 |
 
