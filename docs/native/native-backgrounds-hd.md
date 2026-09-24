@@ -43,7 +43,7 @@
 
 两个模型都保住了构图、零件和标志文字。Pro 的阴影和曲面更干净，普通版稍锐、边缘略有锯齿，缩回原尺寸后与原图的差异两者都在 2–5 级。默认用 Pro，可以用 `build --choice '{"background-5470": "qwen-image-3.0"}'` 逐张改选。
 
-资源在 `assets/hd-ai/backgrounds/whole-v1`：16 张 1920×1440，共 42 MB。[`stage1-hd.json`](../../content/art/stage1-hd.json) 的 `backgrounds` 段列出它们，`compile_art` 校验后复制到运行目录 `art/backgrounds/`。
+资源在 `assets/hd-ai/backgrounds/whole-v1`：16 张 1920×1440，共 42 MB。清单现在用的是 `whole-v2`，即 whole-v1 加剧情世界地图的星空（[剧情世界地图 HD](native-worldmap-regions-hd.md)）。[`stage1-hd.json`](../../content/art/stage1-hd.json) 的 `backgrounds` 段列出它们，`compile_art` 校验后复制到运行目录 `art/backgrounds/`。
 
 ## 实机（2026-09-24，HD 模式）
 
