@@ -83,6 +83,7 @@
 | [场间背景 HD](native/native-backgrounds-hd.md) | インターミッション 8 张背景的亮／暗 HD、模式 4 分块绘制的整张替换 |
 | [剧情世界地图 HD](native/native-worldmap-regions-hd.md) | 剧情世界地图的全部地球区域与宇宙：按第一话欧洲画风分窗口重绘、陆海分布自动检查、星空整张绘制 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
+| [世界地图过场模型 HD](native/native-ship-model.md) | 世界地图模型表、`3D72` 载具与场景地标、15 个舰船／地标按设定重建、平滑航迹与实机对照 |
 | [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |
 | [内容架构第一批实现](native/native-content-foundation.md) | 语言、图片、5600 模型配置及扩展方式 |
 | [三项底座验证](native/native-foundations-verification.md) | 语言设置与覆盖报告、保存集合原型、冷启动及随机状态差异 |

@@ -44,6 +44,24 @@ PATCHES = {
                 state->flush();
                 state->drawCall.nativeMeshId = 0;
             }
+        }'''),
+        # World-map ships are built from TRI2 commands; both triangles share the mark.
+        ('''        void tri2(State *state, DisplayList **dl) {
+            state->rsp->drawIndexedTri((*dl)->p0(17, 7), (*dl)->p0(9, 7), (*dl)->p0(1, 7));
+            state->rsp->drawIndexedTri((*dl)->p1(17, 7), (*dl)->p1(9, 7), (*dl)->p1(1, 7));
+        }''', '''        void tri2(State *state, DisplayList **dl) {
+            auto *hook = GetNativeMeshClassify();
+            const uint32_t nativeId = hook ? hook(state, *dl) : 0;
+            if (nativeId) {
+                state->flush();
+                state->drawCall.nativeMeshId = nativeId;
+            }
+            state->rsp->drawIndexedTri((*dl)->p0(17, 7), (*dl)->p0(9, 7), (*dl)->p0(1, 7));
+            state->rsp->drawIndexedTri((*dl)->p1(17, 7), (*dl)->p1(9, 7), (*dl)->p1(1, 7));
+            if (nativeId) {
+                state->flush();
+                state->drawCall.nativeMeshId = 0;
+            }
         }''')],
     # Texture rectangles use the same classification: the HD tactical map marks one
     # rectangle per map draw and the host paints the whole map in its place.

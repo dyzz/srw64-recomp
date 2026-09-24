@@ -1,0 +1,174 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "worldmap-libra",
+  "note": "Bound to scene 84 (勝利者のいない戦い), whose world-map setup 801C310C places the Libra landmark (5590) at location 86; holds on it so HD and original can be compared with F6.",
+  "slot": 84,
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            86
+          ],
+          "note": "space: the Libra landmark at location 86"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ]
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

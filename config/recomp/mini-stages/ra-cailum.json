@@ -1,0 +1,48 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "ra-cailum",
+  "note": "World-map showcase for the HD Ra Cailum (docs/native/native-ship-model.md). 3D72 14 makes 3D33 take world-map model index D_801C5644[14] = 7, whose resource in table 801C5670 is 5591, the Ra Cailum (unit 69 maps to the same index in the pair table 801C560C). Two journeys on the Earth map and two in space (surface 5599), each followed by a hold. Press F6 during a hold to compare the original and the HD model. Falls back to the flow baseline so the run reaches victory without a battle.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D72", "args": [14], "note": "traveller 14 -> model index 7 -> resource 5591 Ra Cailum"},
+        {"op": "3D33", "args": [2], "note": "Earth: to the Mediterranean"},
+        {"op": "3D38", "args": [150]},
+        {"op": "3D33", "args": [69], "note": "Earth: long westward journey"},
+        {"op": "3D38", "args": [150]},
+
+        {"op": "3D32", "args": [71], "note": "space: surface index 14 (resource 5599)"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D33", "args": [70]},
+        {"op": "3D38", "args": [150]},
+        {"op": "3D33", "args": [74]},
+        {"op": "3D38", "args": [150]},
+
+        {"op": "3D32", "args": [4], "note": "back to the baseline before leaving the world map"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D47"},
+        {"op": "3D3B", "args": [0]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}
