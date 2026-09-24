@@ -40,6 +40,7 @@ struct PageStyle {
 inline constexpr std::u16string_view sentence_end_marks=u"。！？…!?.」』）”\"";
 inline constexpr std::u16string_view comma_marks=u"，、；：—,;:";
 inline constexpr std::u16string_view halvable_marks=u"。，、；：」』）》】〕";
+inline constexpr std::u16string_view opening_marks=u"“「『（《【〔\"";   // not counted in a short last line
 struct TextColor { uint8_t r=255, g=255, b=255, a=255; };
 struct TextClip { double x{}, y{}, width{}, height{}; };
 struct TextDraw {
