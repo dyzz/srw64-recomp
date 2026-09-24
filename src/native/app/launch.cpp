@@ -85,6 +85,23 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
                 throw std::runtime_error("Battle art is absent from the verified inventory: "+id);
             art["path"]=verified.at(relative).string();
         }
+    // A full-HD build bundles Contents/Resources/hd (tools/release/prepare_hd_bundle.py):
+    // the compiled art, the page portraits by (image, palette), and the model packs.
+    const auto hd=bundled_resource("hd");
+    const bool hd_art=!hd.empty() && fs::is_regular_file(hd/"art"/"rt64.json");
+    if(hd_art) {
+        const auto pages=read_json(hd/"art"/"srw64-page-portraits.json");
+        if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");
+        const auto& index=pages.at("portraits");
+        const auto attach=[&](json& row,unsigned image,unsigned palette) {
+            const auto key=std::to_string(image)+":"+std::to_string(palette);
+            if(index.contains(key))row["hd"]=(hd/"art"/index.at(key).get<std::string>()).string();
+        };
+        for(auto& [id,portrait]:portraits.items())
+            attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
+        if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
+            attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
+    }
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");
 
@@ -93,7 +110,9 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     const auto language_file=session.user_dir()/"presentation.json";
     std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native";
     if(fs::exists(language_file)) {
-        const auto saved=read_json(language_file,65536);
+        // Unreadable settings count as invalid: an explicit --language replaces them.
+        json saved=json::object();
+        try{saved=read_json(language_file,65536);}catch(const std::exception&){}
         if(saved.value("schema","")!="srw64.presentation-settings.v1") {
             if(locale.empty())throw std::runtime_error("Invalid language settings; pass --language to replace them explicitly");
         } else {
@@ -127,12 +146,19 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
         {"SRW64_DIALOGUE_DATA",dialogue.string()},{"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
-        {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
+        // HD starts on when the bundle has it; F6 or the settings window switch to Original.
+        {"SRW64_HD_AVAILABLE",hd_art?"1":"0"},{"SRW64_IMAGE_MODE",hd_art?"hd":"original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
         // The dialogue text shipped with the program, and the player's own edits.
         {"SRW64_DIALOGUE_TEXT",bundled_resource("dialogue").string()},{"SRW64_DIALOGUE_OVERRIDES",(session.user_dir()/"dialogue").string()},
         // HarmonyOS Sans and the symbol font shipped in the bundle.
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()}})
         set_environment(key,value);
+    if(hd_art) {
+        set_environment("SRW64_ART_PACK",(hd/"art").string());
+        // The golden beacon replaces the dashed ring only with both model packs loaded.
+        for(const auto& [key,name]:{std::pair{"SRW64_NATIVE_MARKER","native-marker"},std::pair{"SRW64_NATIVE_MODELS","native-models"}})
+            if(fs::is_regular_file(hd/name/"manifest.json"))set_environment(key,(hd/name).string());
+    }
     std::vector<std::string> arguments={"srw64-gfx-host",options.rom.string(),session.output_dir().string(),"0","-"};
     if(session.initial_save())arguments.push_back(session.initial_save()->string());
     std::vector<char*> argv;

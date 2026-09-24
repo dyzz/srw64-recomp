@@ -54,7 +54,7 @@ SRW64_TEST_ROM=/absolute/path/to/rom.z64 \
 
 ## 仍然缺少
 
-本批只覆盖 Original 呈现，不迁移 HD 包；旧 Python 试玩入口的 HD 功能保留。桌面文件选择及 `.app` 暂存/依赖收集已加入，见下节；Developer ID 公证、真实游戏和干净机器验收仍未完成。Metal/CoreText/AppKit 解耦、Win/Linux 图形、IME 和手柄仍是后续阶段。
+本批只覆盖 Original 呈现，不迁移 HD 包；旧 Python 试玩入口的 HD 功能保留。2026-09-24 起可以打本机自用的全 HD 应用包（[macOS 本地兼容构建](../native/macos-release.md#全-hd-自用包)）：HD 素材在打包时带进 `Contents/Resources/hd`，首次导入仍只从 ROM 生成原版内容。桌面文件选择及 `.app` 暂存/依赖收集已加入，见下节；Developer ID 公证、真实游戏和干净机器验收仍未完成。Metal/CoreText/AppKit 解耦、Win/Linux 图形、IME 和手柄仍是后续阶段。
 
 ## P1b：macOS 桌面入口与应用打包
 

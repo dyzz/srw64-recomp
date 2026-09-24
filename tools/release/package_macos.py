@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Build-side macOS bundle staging. Never used by the player's application.
 
-Copies only a named executable, its linked dependencies and explicit notices.
-Never copy the repository, ROM, imported content cache, saves or font files.
+Copies only a named executable, its linked dependencies, explicit notices, the
+dialogue text, the prepared fonts and, for a full-HD build, the HD folder made by
+tools/release/prepare_hd_bundle.py. Never copies the repository, ROM, imported
+content cache or saves.
 An ad-hoc signature permits local testing; it is NOT Developer ID/notarization.
 """
 from __future__ import annotations
@@ -103,7 +105,7 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
-                 dialogue: Path | None = None, fonts: Path | None = None) -> Path:
+                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -160,7 +162,10 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
             "SRW64 Recompiled experimental application. ROM not included.\n"
             "Imported game content and saves remain in your private user directory.\n"
             "Hold Option when launching to choose another ROM, or use --choose-rom.\n"
-            "Public distribution requires dependency-license review and Developer ID notarization.\n",
+            "Public distribution requires dependency-license review and Developer ID notarization.\n"
+            + ("This build bundles HD art and model packs prepared on the builder's machine, including\n"
+               "reference bytes copied from the ROM. It is for that player's own use: do not distribute it.\n"
+               if hd is not None else ""),
             encoding="utf-8")
         if dialogue is not None:
             # The dialogue text players can override (docs/guide/dialogue-text.md): text files only.
@@ -176,6 +181,12 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
             for path in sorted(source.iterdir()):
                 if path.suffix in (".ttf", ".txt"):
                     shutil.copyfile(path, resources / "fonts" / path.name)
+        if hd is not None:
+            # The launcher starts in HD when Resources/hd/art is present (src/native/app/launch.cpp).
+            source = hd.resolve(strict=True)
+            if not (source / "hd.json").is_file() or not (source / "art/rt64.json").is_file():
+                raise ValueError(f"Not a prepared HD folder: {source}")
+            shutil.copytree(source, resources / "hd", symlinks=False)
         for index, notice in enumerate(resolved_notices):
             licenses = resources / "licenses"
             licenses.mkdir(exist_ok=True)
@@ -216,6 +227,7 @@ def main() -> int:
                         help="dialogue text directory copied to Contents/Resources/dialogue")
     parser.add_argument("--fonts", type=Path, default=Path(__file__).resolve().parents[2] / "build/fonts",
                         help="prepared fonts (tools/content/prepare_fonts.py) copied to Contents/Resources/fonts")
+    parser.add_argument("--hd", type=Path, help="HD folder (tools/release/prepare_hd_bundle.py): the app starts in HD")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
                         help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
     args = parser.parse_args()
@@ -223,12 +235,13 @@ def main() -> int:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
-                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts)
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")
     print(f"Staged {result}; signature={'ad-hoc (local tests only)' if args.sign_identity == '-' else 'Developer-supplied identity'}.")
-    print("Not notarized. No ROM, imported game content, saves or fonts were bundled.")
+    print("Not notarized. No ROM, imported game content or saves were bundled"
+          + ("; the HD folder was, so keep this build to yourself." if args.hd else "."))
     return 0
 
 
