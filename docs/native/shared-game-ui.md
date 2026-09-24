@@ -36,10 +36,11 @@ UI 只读 `names::Request`、`link_page::Request`、不可变语言目录及设�
 RecompFrontend 与 RmlUi；不会覆盖脏上游或错误版本。源码准备、编译需要开发工具，游戏
 运行和本地 ROM 导入仍无需 Python。独立姓名页原型保留为 `make recomp-ui-probe`。
 
-共享 UI 使用 FreeType 读取本机字体。开发环境可设置 `SRW64_UI_FONT`，否则依次查找本机
-Arial Unicode、微软雅黑或 Noto Sans CJK 的已知文件位置；找不到时明确报错，不显示乱码。
-`--play` 入口会清除开发环境变量，因此目前使用默认字体发现。字体不复制、不入库；发行
-字体与可配置的正式字体选项尚待落实。对白使用同样基于文件的跨平台字体选择，见下文。
+共享 UI 与对白用同一套打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
+准备的目录（HarmonyOS Sans SC 与 Condensed，外加仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`），
+缺文件时明确报错。应用包在 `Contents/Resources/fonts/` 带上这些字体与许可，设置页底部注明字体来源。
+开发环境可用 `SRW64_UI_FONT` 指定单个字体；没有 `SRW64_FONT_DIR` 时（单元测试、旧探针）才查找本机
+Arial Unicode、微软雅黑或 Noto Sans CJK。见[中日英跨平台文字与游戏对白](portable-text.md)。
 
 ## 调试和回归
 

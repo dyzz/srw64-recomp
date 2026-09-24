@@ -19,8 +19,6 @@
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
-#include "dialogue_layout.hpp"
-#include "dialogue_style.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
@@ -32,9 +30,6 @@
 #include "swap_page.hpp"
 #include "save_page.hpp"
 #include "native_dialogue.hpp"
-#endif
-#ifdef SRW64_CORETEXT_PROBE
-#include "coretext_probe.hpp"
 #endif
 #include "ultramodern/ultramodern.hpp"
 #include "librecomp/game.hpp"
@@ -68,9 +63,6 @@ SDL_GameController* pad{};
 
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
-#ifdef SRW64_CORETEXT_PROBE
-    srw64_coretext_draw(list, framebuffer);
-#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::dialogue::metal_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
     // Clear workload-keyed guest naming frames before the shared UI renders.
@@ -214,9 +206,6 @@ public:
             srw64::dialogue::metal_init(device, capture_directory);
             srw64::ui::render_init(rhi,device);
 #endif
-#ifdef SRW64_CORETEXT_PROBE
-            srw64_coretext_init(device, capture_directory);
-#endif
         }, capture_frame, [] {
             srw64::marker::shutdown();
             srw64::portraits::shutdown();
@@ -224,9 +213,6 @@ public:
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::ui::render_shutdown();
             srw64::dialogue::metal_shutdown();
-#endif
-#ifdef SRW64_CORETEXT_PROBE
-            srw64_coretext_shutdown();
 #endif
         });
         RT64::Application::Core core{};
@@ -323,8 +309,6 @@ public:
                     srw64::portraits::configure(directory, capture_directory);
                     srw64::backgrounds::configure(directory, capture_directory);
                 }
-                dialogue_padding = std::filesystem::exists(std::filesystem::path(directory) / "srw64-dialogue-padding-v1");
-                dialogue_blue_names = std::filesystem::exists(std::filesystem::path(directory) / "srw64-dialogue-name-blue-v1");
                 const auto map_spec = std::filesystem::path(directory) / "srw64-worldmap-hd.json";
                 if (std::filesystem::exists(map_spec)) {
                     std::ifstream input(map_spec);
@@ -365,16 +349,8 @@ public:
         const bool name_cover=srw64::names::request().visible;
         srw64::names::queue_cover(app->state->workloadId+1,name_cover);
 #endif
-        const bool padded=native_text || (dialogue_padding && srw64_pad_dialogue(app->core.RDRAM,start,task->t.data_size,display_copy));
-        if (!native_text && padded && dialogue_blue_names) {
-            const auto names=srw64_blue_dialogue_names(app->core.RDRAM,start,task->t.data_size,display_copy);
-            if (names && !reported_blue_names) {
-                fprintf(stderr,"SRW64_DIALOGUE_NAMES_BLUE glyphs=%u rgb=69bfff vi=%llu\n",names,
-                        (unsigned long long)srw64_current_vi());
-                reported_blue_names=true;
-            }
-        }
-        app->processDisplayLists(padded ? display_copy.data() : app->core.RDRAM, start, 0, true);
+        // The native dialogue submits an edited copy of the display list.
+        app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
 #ifdef SRW64_NATIVE_DIALOGUE
         srw64::dialogue::queue_frame(app->state->workloadId,native_frame);
         srw64::names::queue_cover(app->state->workloadId,name_cover);
@@ -453,8 +429,6 @@ private:
     std::vector<uint64_t> worldmap_hashes;
     size_t worldmap_verified=0;
     unsigned worldmap_tile_size=0;
-    bool dialogue_padding=false;
-    bool dialogue_blue_names=false, reported_blue_names=false;
     std::vector<uint8_t> display_copy;
 };
 }

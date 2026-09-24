@@ -179,8 +179,6 @@ void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");
     if(!path || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
     std::ifstream source(path);nlohmann::json data;source>>data;
-    // Legacy patched ROMs keep their existing name adapter and original UI.
-    if(data.at("schema")!="srw64.native-dialogue-data.v2")return;
     for(const auto& [key,value]:data.at("glyphs").items())codec.add(std::stoul(key),dialogue::utf16(value.get<std::string>()));
     if(data.contains("name_entry_assets")) {
         const auto& art=data.at("name_entry_assets");

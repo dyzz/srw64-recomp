@@ -13,9 +13,9 @@
 | 5600 模型 | Original 保留原版八面模型；HD 按 profile 使用原生 GPU 水滴。任意模型包接口尚未开放。 |
 | 阅读体验 | 四档自动、逐字、分页、回看、速度/进度和活动对话框指示；原脚本保留事件推进权。 |
 | 存档恢复 | 历史 SRAM 按完成报告、ROM 身份和摘要筛选，支持列表/显式恢复；已验证第一话通关档冷启动到整备和驾驶员详情。安全节点自动保存尚未实现，见[恢复记录](native-save-recovery.md)。 |
-| 姓名输入 | macOS 游戏窗口内的主角选择页与姓名页、原生字段与双人确认；原字库范围与原 7/7/5 字数上限。输入法组字可经调试接口模拟；任意 Unicode、SRAM 冷启动往返和输入法候选窗未验收。 |
+| 姓名输入 | 游戏窗口内的主角选择页与姓名页（SDL／RmlUi 页面）、原生字段与双人确认；原字库范围与原 7/7/5 字数上限。输入法组字可经调试接口模拟；任意 Unicode、SRAM 冷启动往返和输入法候选窗未验收。 |
 | 玩法 Mod | `gameplay_mods` 必须为空。机体/人物/武器 schema、关卡编辑、内容类型注册和公开 SDK 仍是计划。 |
-| 平台 | 只支持 macOS：图形宿主为 SDL2 + RT64/Metal，姓名页、菜单栏与设置窗口为 AppKit。其他平台暂不考虑。 |
+| 平台 | 只支持 macOS：图形宿主为 SDL2 + RT64/Metal；游戏内页面（姓名页、设置、场间与战前页）都是 SDL／RmlUi，只有菜单栏入口用 AppKit。文字由跨平台的 FreeType＋HarfBuzz＋ICU 引擎排版。其他平台暂不考虑。 |
 | 调试 | `SRW64_DEBUG=1` 时宿主提供 JSON-RPC 调试接口，命令行与 MCP 可驱动全部游戏输入和原生界面，见[调试接口与 MCP](debug-interface.md)。 |
 
 **退出生命周期：** 已增加游戏线程登记、协作停止、等待唤醒和完整 join，再释放 RDRAM；现代姓名→剧情关窗、原版姓名页关窗及 VI 自动退出均有最终版本验证。入口范围、系统采样缺失与剩余限制见[修复证据](../native/native-window-close.md)。这不替代存档冷启动恢复验收。
@@ -43,11 +43,11 @@
 | --- | --- |
 | `tools/recomp/toolchain/` | 工具链与代码生成：`bootstrap.py`、`analyze_layout.py`、`scan_functions.py`、`generate_cpu.py`、符号与变体审计、`prepare_rt64.py`、`prepare_runtime_lifecycle.py` |
 | `tools/recomp/run/` | 启动与驱动宿主：`play_native.py`、`run_host_probe.py`、`control_host.py`、`step_host.py`、输入编译与验证公共代码 |
-| `tools/recomp/verify/` | 有界实机验证：语言切换、原生对白、姓名页、图片模式、阅读指示、关窗 |
+| `tools/recomp/verify/` | 有界实机验证：图片模式、阅读指示、共享界面、关窗；语言、对白与姓名页的实机检查在 `tools/recomp/debug/`（`check_localization.py`、`check_dialogue.py`、`check_name_entry_ui_switch.py`） |
 | `tools/recomp/script_lab/` | 脚本注入、迷你关卡、场景脚本阅读与按指令切音频 |
 | `tools/recomp/gameplay/` | 改造规则文件与受控存档编辑 |
 | `tools/recomp/model5600/` | 5600 模型的高模、原生水滴与对应验证 |
-| `tools/recomp/probes/` | 帧／音频／LZ／CoreText 重放探针、参考模拟器与 RSP 捕获 |
+| `tools/recomp/probes/` | 帧／音频／LZ 重放探针、参考模拟器与 RSP 捕获 |
 | `tools/recomp/analysis/` | 帧、脚本、移动与状态对比的离线分析 |
 | `tools/recomp/debug/` | 调试接口的会话客户端、命令行 `srw64ctl.py` 与 MCP 服务器，见[调试接口与 MCP](debug-interface.md) |
 
@@ -89,7 +89,7 @@ flowchart LR
 
 ```sh
 cmake --build build/recomp/gfx-build \
-  --target srw64-gfx-host srw64-frame-host srw64-coretext-frame-host -j 6
+  --target srw64-gfx-host srw64-frame-host -j 6
 make recomp-native-check
 ```
 
@@ -108,29 +108,13 @@ make recomp-native-check
   --profile config/recomp/profiles/play-profile.json --new-game --mute
 ```
 
-自动探针默认静音，**测试时不传 `--audio`**；例外是要分辨只有声音不同的演出指令时（见[迷你关卡](../script/mini-stage.md)的开音频运行），此时必须同时给出采集窗口。完整命名流程需要两个终端，先启动宿主，再启动验证脚本；运行目录必须不存在：
-
-```sh
-SRW64_NAME_ENTRY_CONTROL=1 SRW64_WINDOW_CONTROL=1 SRW64_SHUTDOWN_TRACE=1 \
-.venv/bin/python tools/recomp/run/run_host_probe.py \
-  --graphics --profile config/recomp/profiles/play-profile.json \
-  --input config/recomp/inputs/native-name-entry.json \
-  --output build/recomp/qa/new-name-window --vis 9000
-```
-
-```sh
-.venv/bin/python tools/recomp/verify/verify_native_name_entry.py \
-  --run build/recomp/qa/new-name-window --exit-mode window
-```
-
-改为 `--exit-mode control` 可以对照 VI 脚本退出。旧 N64 按键路线不能填写原生字段；复跑旧路线须显式使用 `--original-name-entry`。原版姓名 UI 的关窗对照可使用 `verify_window_close.py --run RUN --at-vi 1350`，同样要求 `SRW64_WINDOW_CONTROL=1`。
+自动探针默认静音，**测试时不传 `--audio`**；例外是要分辨只有声音不同的演出指令时（见[迷你关卡](../script/mini-stage.md)的开音频运行），此时必须同时给出采集窗口。姓名页的完整流程用调试接口驱动，见[原生姓名输入](../native/native-name-entry.md#验证与证据)。旧 N64 按键路线不能填写原生字段；复跑旧路线须显式使用 `--original-name-entry`。原版姓名 UI 的关窗对照可使用 `verify_window_close.py --run RUN --at-vi 1350`，同样要求 `SRW64_WINDOW_CONTROL=1`。
 
 | 开关 / 文件 | 责任与格式 |
 | --- | --- |
 | `SRW64_WINDOW_CONTROL=1` / `window-close.txt` | `SRWX1 sequence at_vi`；到达 VI 后调用真实 `NSWindow.performClose`，记录 `window-close-events.jsonl`。 |
 | 同一开关 / `window-control.txt` | `SRWW1 sequence width height`；窗口线程调用 SDL resize，允许 640–2560 × 480–1600。 |
 | 同一开关 / `image-control.txt` | `SRWI1 sequence original或hd`；与 F6 共用请求路径。 |
-| `SRW64_NAME_ENTRY_CONTROL=1` / `name-entry-control.json` | 姓名页专用字段/按钮/键盘 QA；校验打开序号、字段、递增 sequence 和活动状态。 |
 | `SRW64_SHUTDOWN_TRACE=1` | macOS 下记录释放 RDRAM 前后的游戏线程数，仅诊断，不改变退出顺序。 |
 | `control.txt` | `control_host.py` 提交 N64 输入/退出请求，宿主以 VI 处理并写回事件。 |
 | `SRW64_SCRIPT_INJECT=1` / `script-inject.txt` | `SRWJ1 sequence at_vi hex`；`script_debug.py` 把自定义事件脚本写入 `807F0000` 暂存区，战术地图空闲时由原脚本引擎执行，事件写入 `script-inject-events.jsonl`。见[脚本注入调试](../script/script-debug-injection.md)。 |

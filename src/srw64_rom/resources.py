@@ -215,22 +215,6 @@ def decode_i4_texture(decoded: bytes) -> tuple[Image.Image, int]:
     return image, flags
 
 
-def encode_i4_texture(image: Image.Image, flags: int) -> bytes:
-    if image.mode == "P":
-        indices = image.tobytes()
-        if indices and max(indices) > 15:
-            raise ResourceError("paletted image contains an index above 15")
-    else:
-        grayscale = image.convert("L").tobytes()
-        indices = bytes(min(15, (value + 8) // 17) for value in grayscale)
-    packed = bytearray()
-    for position in range(0, len(indices), 2):
-        high = indices[position]
-        low = indices[position + 1] if position + 1 < len(indices) else 0
-        packed.append((high << 4) | low)
-    return struct.pack(">HHHH", FORMAT_I4, image.width, image.height, flags) + bytes(packed)
-
-
 def patch_resource_to_pool(
     rom: bytes,
     resource_id: int,

@@ -7,7 +7,7 @@
 - [来源、哈希与范围记录](../../assets/hd-ai/dialogue-frame-ai/v1/manifest.json)。
 - [输入的实际渲染图](../../build/recomp/coretext-probe/run-3/system-39/present-60.png)：960×720，Core Text / PingFang SC Medium 39px。
 
-此图是 AI 外观预览，尚未接入游戏；它不是 GPU 截图，也不是可直接替换的透明边框纹理。生成过程会重新采样场景和字形，不能用此图验证文字后端或颜色一致性。实际文字渲染和 gamma 修正的证据见 [Core Text 验证记录](native-coretext-probe.md)。
+此图是 AI 外观预览，尚未接入游戏；它不是 GPU 截图，也不是可直接替换的透明边框纹理。生成过程会重新采样场景和字形，不能用此图验证文字后端或颜色一致性。游戏里的文字现在由跨平台文字引擎绘制，见[中日英跨平台文字与游戏对白](../native/portable-text.md)。
 
 用户随后明确要求通过游戏资源和代码实现。后续[地图、边框高清与蓝色人名的实际接入](../native/native-dialogue-runtime-hd.md) 使用原始地图／边框资源和渲染代码，没有使用此整图预览作为运行资产。
 

@@ -18,7 +18,7 @@
 | `hd-ai/dialogue-runtime/v3/`、`hd-ai/dialogue-type/medium-pack/` | 对白框 HD 素材，世界地图包的构建基础 | `tools/hd_ai/build_*_runtime_pack.py` |
 | `hd-ai/terrain-runtime/pack-v5/` | 地形素材最终版 | — |
 | `hd-ai/2026-09-08/` | HD 素材的来源：导出样本、AI 生成结果（`runs/`）、评审与图库 | `tools/hd_ai/` 的样本、基准与打包脚本 |
-| `hd-ai/dialogue-polish/`、`hd-ai/dialogue-type/` | 字体（`fonts/`、`*-fonts/`）与对白排版实验素材 | `tools/hd_ai/build_stage1_gallery.py`、`tools/recomp/probes/run_coretext_probe.py` |
+| `hd-ai/dialogue-polish/`、`hd-ai/dialogue-type/` | 字体（`fonts/`、`*-fonts/`）与对白排版实验素材；`dialogue-polish/HarmonyOS-Sans.zip` 是官方字体包，`tools/content/prepare_fonts.py` 从这里解出游戏字体 | `tools/hd_ai/build_stage1_gallery.py`、`tools/content/prepare_fonts.py` |
 | `hd-ai/jp-emulator-reference/` | 日版在参考模拟器上的对照截图 | HD 对照与图库 |
 | `hd-ai/research/` | 云端模型可用性调研记录 | 文档引用 |
 | `original-graphics/` | 按机体／人物命名整理的原版图像：机体战斗图与图集、动画零件、地图图标、头像、战斗特效、cut-in 与合体动画、章节标题、战场底图，附 `index.html` 图库与数值总表 | `tools/content/export_graphics.py` 生成，每次整体替换；见 `docs/data/battle-graphics.md` |

@@ -29,7 +29,7 @@
 
 核查提交 `b1a1477c6556aeb7ed45defbfb5924f721efebc1`。其 `recompinput` 管键盘、鼠标、手柄与映射；`recompui` 管设置、Mod 菜单和 Mod 自建 UI，内部使用 RmlUi 和 RT64/plume。[项目说明](https://github.com/N64Recomp/RecompFrontend/blob/b1a1477c6556aeb7ed45defbfb5924f721efebc1/README.md)
 
-它适合作为启动器、输入和管理菜单的集成候选。当前 SRW64 Core Text 对话布局及 Metal 合成应保留在平台后端中，通过统一的多语言服务供给文字。本次检查没有找到现成的完整多语言目录服务，不能把接入 RecompFrontend 当作日中切换已实现。集成原型需验证两个 UI 层的输入消费、呈现顺序和语言更新。
+它适合作为启动器、输入和管理菜单的集成候选。当前 SRW64 的对话排版（跨平台文字引擎）及 Metal 合成应保留在平台后端中，通过统一的多语言服务供给文字。本次检查没有找到现成的完整多语言目录服务，不能把接入 RecompFrontend 当作日中切换已实现。集成原型需验证两个 UI 层的输入消费、呈现顺序和语言更新。
 
 ### Wesnoth：借鉴战棋内容与语言的分离
 
@@ -60,7 +60,7 @@ src/native/
   content/             包解析、schema、内容注册表、合并和来源记录
   localization/        TextKey、目录、回退、格式参数、语言配置
   presentation/        对话与界面模型、资源解析、模型替换接口
-  platform/macos/      Core Text 与 Metal 实现
+  platform/macos/      Metal 合成与菜单栏
   mod_api/             版本化导出、语义事件与命令
 tools/content/         提取、校验、导入导出、打包、差异报告
 ```

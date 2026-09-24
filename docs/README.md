@@ -56,7 +56,7 @@
 
 | 文档 | 内容 |
 | --- | --- |
-| [对白 UI](native/native-dialogue-ui.md) | 双框对白、原生字体、分页、回看、自动阅读、快进与跳过 |
+| [对白 UI](native/native-dialogue-ui.md) | 双框对白、整条连排与后台确认、分页、回看、自动阅读、快进与跳过 |
 | [阅读指示器](native/native-reading-indicators.md) | 自动档位、下一句进度、当前说话框 |
 | [对白闪烁](native/native-dialogue-flicker.md) | 间歇性画面／底栏消失的原因与修复证据 |
 | [高清对白实现](native/native-dialogue-runtime-hd.md) | 实际地图／边框资源高清替换与蓝色人名 |
@@ -125,7 +125,6 @@
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
-| [字库替换](design/native-font-probe.md)、[Core Text 固定帧验证](design/native-coretext-probe.md) | 字体探针 |
 | [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md)、[对话框预览](design/dialogue-frame-ai-preview.md) | 美术高清化实验 |
 
 ## 验证层次

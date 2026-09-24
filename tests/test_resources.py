@@ -5,7 +5,9 @@ import unittest
 
 from PIL import Image
 
-from srw64_rom.resources import decode_i4_texture, encode_i4_texture, lz_decode, lz_encode
+import struct
+
+from srw64_rom.resources import FORMAT_I4, decode_i4_texture, lz_decode, lz_encode
 
 
 class ResourceCodecTests(unittest.TestCase):
@@ -25,10 +27,12 @@ class ResourceCodecTests(unittest.TestCase):
                 self.assertEqual(decoded, sample)
                 self.assertEqual(consumed, len(encoded))
 
-    def test_i4_texture_round_trip(self) -> None:
+    def test_i4_texture_decodes(self) -> None:
         image = Image.new("P", (7, 3))
         image.putdata([index % 16 for index in range(21)])
-        encoded = encode_i4_texture(image, flags=0x1234)
+        indices = image.tobytes() + b"\0"
+        packed = bytes((indices[i] << 4) | indices[i + 1] for i in range(0, 21, 2))
+        encoded = struct.pack(">HHHH", FORMAT_I4, 7, 3, 0x1234) + packed
         decoded, flags = decode_i4_texture(encoded)
         self.assertEqual(flags, 0x1234)
         self.assertEqual(decoded.size, image.size)

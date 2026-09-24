@@ -35,7 +35,7 @@ ROM 身份、文本表和资源解析由 `src/srw64_rom/` 独立完成。
 
 1. 从 ROM 资源 0/1 解出字库位图（I4，504×504 与 504×252；半角 8×14 对应 ID 0–314，
    全角 14×14 从 `0x13B` 起，资源 1 从 `0x597` 起，与
-   `tools/recomp/probes/build_native_font_probe.py` 的 `glyph_id` 同一套排布），按 ID 切出每个图块；
+   `src/srw64_native/battle_assets.py` 的 `font_tile` 同一套排布），按 ID 切出每个图块；
 2. 用系统日文字体渲染全部 7,335 个 CP932 字符，对每个图块做形状排序：映射字排第一且
    领先明显的 1,149 行判为位图一致（随机抽 72 行人工复核，全部正确）；
 3. 其余 602 个全角图块和全部 315 个半角图块逐个放大人工比对，并用修正后的文本上下文复核
@@ -129,7 +129,7 @@ token 拆武器标记；575 是 MAP 武器图标；258（🔧）与 259（小号
 条后可选 259（小号 E），11 档 × 4 种组合，另加 271、272 各一条。扳手与 E 暗示和修理、
 EN 有关，但具体界面未经运行确认。
 
-原生字体由 `content/locales/` 声明，macOS 当前使用系统字体；字体文件不随仓库分发。
+原生字体是 HarmonyOS Sans（`tools/content/prepare_fonts.py` 从华为官方包核对后解出，不进仓库，随应用包分发）和仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`。
 
 ## Libretro 核心
 

@@ -2,6 +2,8 @@
 
 2026-09-12。范围为项目自有模块，不接入外部 MOD。语言内容生产另排期；原版随机时序保持不变，只验证并记录差异。
 
+> 这是 2026-09-12 的验证记录。其中的译文规模（153 条）、Cocoa F7 与控制文件脚本都已被取代：现在的译文见[原生内容架构](native-content-foundation.md#多语言内容)，语言切换的实机检查见 `tools/recomp/debug/check_localization.py`。
+
 ## 语言设置与覆盖
 
 统一 profile 运行中按 **F7** 按**日文 → 中文 → 英文**循环热切换，**没有弹窗**，同时记住下次启动的选择；窗口标题显示当前语言。设置写到 `build/recomp/profile-play/presentation.json`，与游戏 SRAM 和玩法身份分开。启动器优先级为显式 `--language`、保存的设置、profile 默认值。无效设置明确报错，可用显式语言覆盖恢复启动。
@@ -19,7 +21,7 @@
 窗口及回归证据：
 
 - 早期重启生效及弹窗热切换的记录保留在 `build/recomp/three-foundations/settings-live/`、`language-restart-ui/`、`hot-locale-flow-final/`；这些界面已被直接热键替代。
-- 此前双语版本的 `tools/recomp/verify/verify_locale_switch.py` 发送实际 Cocoa F7 按下/释放事件，验证四次双向切换、没有 sheet、同一片段/历史数量、回看翻译、重复/修饰键不触发及提交前后观察区一致；最终运行记录为 `hotkey-flow-final/hot-locale-verification.json`，窗口截图为 `hotkey-flow-final/hotkey-ja-window.png`。
+- 此前双语版本的 verify_locale_switch.py（已删除，现由 `tools/recomp/debug/check_localization.py` 实机检查）发送实际 Cocoa F7 按下/释放事件，验证四次双向切换、没有 sheet、同一片段/历史数量、回看翻译、重复/修饰键不触发及提交前后观察区一致；最终运行记录为 `hotkey-flow-final/hot-locale-verification.json`，窗口截图为 `hotkey-flow-final/hotkey-ja-window.png`。
 - 原输入脚本仍按住 START/R 时曾形成新按键并关闭回看；`ModalInputRelease` 已修复，最终热键运行仍覆盖这一按住输入的场景。
 - 姓名页的 F7、组字保护、未提交文本保留与 HD/Original 独立切换单独验证通过，记录为 `hotkey-name-final/hotkey-name-verification.json`。测试输入 `ナナ` 在日文＋HD、中文＋Original 两次切换后保持原字段，未向游戏确认姓名。
 - 切换请求通过原版帧末空函数 `80085F30` 的适配桥处理，因此姓名页/非对白场景也能应用；原函数调用保留，适配器不写 guest context 或玩法 RAM。首次姓名页测试暴露的“只在对白更新时处理请求”问题保留在 `hotkey-name/`，未算通过。

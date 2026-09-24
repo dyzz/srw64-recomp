@@ -124,7 +124,7 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 1. **原生页面排版**：
    - 按日文语序拼接的片段改成带 `{name}` 的界面模板：满改奖励、妖精搭乘、存档介质、Pak 提示、场间页脚。
    - 双空格数字占位改成 `{n}` 模板。英文目前会显示 `Stage12`。
-   - RmlUi 按语言加载字体：简体中文已改用 Hiragino Sans GB（`b2bc835`，对白同样处理），修正了 Arial Unicode 把「，」「！」「（」画在正中的繁体标点位置。日文仍用 Arial Unicode 的字形，所有语言都还没有粗体字重。
+   - ~~RmlUi 按语言加载字体~~：2026-09-23 起中英日都用打包的 HarmonyOS Sans（`3beb303`），不再用 Hiragino、Arial Unicode 这些系统字体；还没有粗体字重。
    - 宽度改为实测，并加最小字号和省略号。驾驶员能力页有几处标签会与数值重叠。
    - ~~武器标记徽章改用标记 id 加界面文案~~：2026-09-24 改为直接画原版图标，各语言相同，见 [改造画面](native-upgrade-screens.md)。
    - 战前页与能力页的技能名统一为同一来源。

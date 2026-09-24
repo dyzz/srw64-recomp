@@ -154,7 +154,7 @@ RT64 当前提供 Metal、Vulkan 和 D3D12 后端，macOS 首选 Metal；SRW64 �
 原始日文 ROM、完整 TextKey、原文摘要和脚本屏障保持固定，原生字体负责换行、
 分页与阅读呈现。旧补丁 ROM 和字形分配流程已移除。
 
-当前已迁入 153 条中文草稿并接入原生宿主，详见[内容架构](../native/native-content-foundation.md)。
+现在数据文本由词条表、剧情与战斗台词由台词文本文件提供中英文译文，详见[内容架构](../native/native-content-foundation.md)。
 全量翻译、其他菜单消费者、名字本地化与各路线存读档仍须逐项验证；
 不能以目录可解析代替目标画面验收。
 
