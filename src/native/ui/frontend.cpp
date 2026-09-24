@@ -548,7 +548,7 @@ void intermission_sync() {
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
 // The weapon table the original draws on the 武器改造 list (layout 0x77) and the
 // 武器一覧 (0x7A): a boxed header row (page / 武器名 / 攻撃力 / 射程 / 命中), rows of
-// 16 with the 格／射 marker as a round icon before the name and P／B／MAP after it,
+// 16 with the original 格／射 icon before the name and the P／B／MAP icons after it,
 // then the selected weapon's 弾数, terrain letters, 必要気力, 消費EN, 必要技能 and
 // クリティカル補正 in the boxed bands at y 160 and 180. Returns the panel body.
 std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
@@ -561,7 +561,15 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
     const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("\u00b1 0");};
     const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
+    // The original's own icons (battle_assets.py) at their pixel size; a text badge
+    // only when a profile has none.
+    const json icons=W.value("icons",json::object());
     const auto badge=[&](const std::string& token){
+        if(const auto found=icons.find(token);found!=icons.end() && found->contains("path")) {
+            const float w=found->value("width",8.f),h=found->value("height",10.f);
+            return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='width:"+px(w)+"; height:"+px(h)+
+                "; vertical-align:middle; margin:0 "+px(1)+";'/>";
+        }
         const char* cls=token=="格"?"melee":token=="射"?"ranged":token=="P"?"post":token=="B"?"beam":"map";
         const float w=token=="MAP"?22.f:11.f;
         return "<span class='im-badge "+std::string(cls)+"' style='width:"+px(w)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(token=="MAP"?6.f:7.f)+";'>"+escape(token)+"</span>";

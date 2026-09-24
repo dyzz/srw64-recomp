@@ -152,6 +152,7 @@ void labels(const uint8_t* ram) {
     const char* weapon_keys[]={"weapon","power","range","hit","ammo","terrain","air","land","sea","space","morale","en","skill","critical"};
     json wl;
     for(unsigned n=0;n<14;++n)wl[weapon_keys[n]]=text(ram,text_weapon_labels+n);
+    wl["icons"]=art.value("weapon_markers",json::object());
     current["weapon_labels"]=wl;
     current["bonus_labels"]={text(ram,text_bonus_a),text(ram,text_bonus_b),text(ram,text_bonus_c)};
     current["title"]=text(ram,weapons?text_weapons_title:text_stats_title);
@@ -547,6 +548,8 @@ json weapon_labels_json(const uint8_t* ram) {
     const char* weapon_keys[]={"weapon","power","range","hit","ammo","terrain","air","land","sea","space","morale","en","skill","critical"};
     json wl;
     for(unsigned n=0;n<14;++n)wl[weapon_keys[n]]=text(ram,text_weapon_labels+n);
+    // The 格／射／P／B／MAP icons cut from the ROM font (battle_assets.py).
+    wl["icons"]=art.value("weapon_markers",json::object());
     return wl;
 }
 json state(){std::lock_guard lock(mutex);return current;}
