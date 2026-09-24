@@ -127,13 +127,13 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
         art = compile_art(root, json.loads(art_bytes), output / "art")
         hd_portrait = portrait_lookup(output / "art", output / "portraits")
         art_sha = sha(art_bytes)
-        name_assets = prepare_name_assets(root, rom.read_bytes(), output / "name-entry", hd_portrait=hd_portrait)
+        name_assets = prepare_name_assets(rom.read_bytes(), output / "name-entry", hd_portrait=hd_portrait)
     except FileNotFoundError as error:
         if p["images"] != "original":
             raise
         unavailable_reason = f"Missing HD resource: {error.filename}"
         art = None
-        name_assets = prepare_name_assets(root, rom.read_bytes(), output / "name-entry", include_hd=False)
+        name_assets = prepare_name_assets(rom.read_bytes(), output / "name-entry")
     data = {"schema": "srw64.native-dialogue-data.v2", "config": {
         "font": language["font"], "locale": p["locale"], "font_size": p["font_size"], "mode": "replace"},
         "entries": entries, "source_entries": sources, "glyphs": glyphs, "ui": ui,

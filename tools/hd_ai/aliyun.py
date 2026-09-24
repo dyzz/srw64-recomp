@@ -1,4 +1,11 @@
-"""Budgeted, explicit one-output Aliyun image-edit requests; never retries POSTs."""
+"""Aliyun (DashScope) image-edit requests for the HD generators.
+
+`run_one` sends one frozen sample once and never retries a POST: the request
+record is written before sending, so an interrupted run cannot pay twice. Every
+output folder carries its own spending reservation cap.
+
+    .venv/bin/python -m tools.hd_ai.aliyun --output DIR --sample ID --model MODEL --env-file .env
+"""
 from __future__ import annotations
 
 import argparse
@@ -16,9 +23,20 @@ import urllib.request
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_OUT = ROOT / "assets/hd-ai/2026-09-08"
 PRICES = {"qwen-image-3.0-pro": .52, "qwen-image-3.0": .20,
           "wan2.7-image-pro": .50, "qwen-image-2.0-pro-2026-06-22": .50}
+
+
+def load_env(path: Path) -> dict:
+    """DASHSCOPE_API_KEY and DASHSCOPE_BASE_URL from a dotenv file; other keys are ignored."""
+    config = {}
+    for line in path.read_text().splitlines():
+        line = line.strip().removeprefix('export ')
+        if line and not line.startswith('#') and '=' in line:
+            key, value = line.split('=', 1)
+            if key.strip() in ('DASHSCOPE_API_KEY', 'DASHSCOPE_BASE_URL'):
+                config[key.strip()] = value.strip().strip('"\'')
+    return config
 
 
 def digest(data: bytes) -> str:
@@ -101,25 +119,20 @@ def run_one(out: Path, sample: dict, model: str, candidate: int, config: dict) -
 
 
 def main() -> None:
-    parser=argparse.ArgumentParser()
-    parser.add_argument("--output",type=Path,default=DEFAULT_OUT)
-    parser.add_argument("--sample",required=True)
-    parser.add_argument("--model",choices=PRICES,required=True)
-    parser.add_argument("--candidate",type=int,choices=(1,2),default=1)
-    parser.add_argument("--env-file",type=Path,required=True)
-    args=parser.parse_args()
-    config={}
-    for line in args.env_file.read_text().splitlines():
-        line=line.strip().removeprefix("export ")
-        if not line or line.startswith("#") or "=" not in line: continue
-        key,value=line.split("=",1)
-        if key.strip() in ("DASHSCOPE_API_KEY","DASHSCOPE_BASE_URL"):
-            config[key.strip()]=value.strip().strip("\"'")
-    manifest=json.loads((args.output/"samples.json").read_text())
-    assert manifest["schema"]=="srw64.hd-ai-samples.v1"
-    sample=next(s for s in manifest["samples"] if s["id"]==args.sample)
-    report=run_one(args.output,sample,args.model,args.candidate,config)
-    print(json.dumps({k:report.get(k) for k in ("sample_id","model","candidate","status","http_status","error_code","dimensions","elapsed_seconds")}),flush=True)
+    parser = argparse.ArgumentParser(description="Send one frozen sample from OUTPUT/samples.json once.")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--sample", required=True)
+    parser.add_argument("--model", choices=PRICES, required=True)
+    parser.add_argument("--candidate", type=int, choices=(1, 2), default=1)
+    parser.add_argument("--env-file", type=Path, required=True)
+    args = parser.parse_args()
+    manifest = json.loads((args.output / "samples.json").read_text())
+    assert manifest["schema"] == "srw64.hd-ai-samples.v1"
+    sample = next(s for s in manifest["samples"] if s["id"] == args.sample)
+    report = run_one(args.output, sample, args.model, args.candidate, load_env(args.env_file))
+    print(json.dumps({k: report.get(k) for k in ("sample_id", "model", "candidate", "status", "http_status",
+                                                 "error_code", "dimensions", "elapsed_seconds")}), flush=True)
 
 
-if __name__=="__main__": main()
+if __name__ == "__main__":
+    main()

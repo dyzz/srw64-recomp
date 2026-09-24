@@ -9,7 +9,6 @@ from pathlib import Path
 
 from PIL import Image
 from srw64_rom.resources import ResourceTable
-from .assets import inside
 from .catalog import sha
 
 # Link Battler series in link::series order, the lead pilot first: シーブック セシリー;
@@ -17,29 +16,14 @@ from .catalog import sha
 LINK_FACES = ((41, 230), (133, 131, 132), (152, 151, 153))
 
 
-def prepare_name_assets(root: Path, rom: bytes, output: Path, *, include_hd: bool = True, hd_portrait=None) -> dict:
+def prepare_name_assets(rom: bytes, output: Path, *, hd_portrait=None) -> dict:
+    """Extract the portraits; `hd_portrait(image, palette)` names the whole HD portrait, if any."""
     table = ResourceTable(rom)
     # 801C3398 selects these face-table indices for the four protagonist routes.
     route_offset = 0x1090A0 + 0x801C6BF0 - 0x801C2600
     faces = struct.unpack_from(">8H", rom, route_offset)
     if faces != (27, 28, 25, 26, 31, 32, 29, 30):
         raise ValueError("Opening character portrait table changed")
-    spec_path = root / "content/ui/name-entry.json"
-    hd_sources = {}
-    spec_sha = None
-    if include_hd:
-        spec_bytes = spec_path.read_bytes()
-        spec = json.loads(spec_bytes)
-        spec_sha = sha(spec_bytes)
-        if spec.get("schema") != "srw64.name-entry-art.v1":
-            raise ValueError("Unsupported name-entry art")
-        # Validate before creating output so missing optional art can fall back
-        # to a fresh ROM-only extraction without leaving partial portraits.
-        for key, override in spec["hd_portraits"].items():
-            pixels = inside(root, override["path"]).read_bytes()
-            if sha(pixels) != override["sha256"]:
-                raise ValueError("Reviewed name-entry portrait changed")
-            hd_sources[key] = pixels
     output.mkdir(parents=True, exist_ok=False)
     portraits = {}
     for face in faces + tuple(face for group in LINK_FACES for face in group):
@@ -59,16 +43,12 @@ def prepare_name_assets(root: Path, rom: bytes, output: Path, *, include_hd: boo
         Image.frombytes("RGBA", (width, height), rgba).save(path)
         row = {"original": str(path), "resource_id": image_id, "palette_id": palette_id,
                "original_sha256": sha(path.read_bytes())}
-        if (pixels := hd_sources.get(str(image_id))) is not None:
-            hd = output / f"face-{face}-hd.png"
-            hd.write_bytes(pixels)
-            row.update(hd=str(hd), hd_sha256=sha(hd.read_bytes()))
-        elif hd_portrait and (whole := hd_portrait(image_id, palette_id)):
+        if hd_portrait and (whole := hd_portrait(image_id, palette_id)):
             row["hd"] = whole  # the whole HD portrait set (native_portrait.cpp)
         portraits[str(face)] = row
     result = {"schema": "srw64.name-entry-assets.v1", "portraits": portraits,
               "route_faces": [list(faces[:4]), list(faces[4:])],
               "link_faces": [list(group) for group in LINK_FACES],
-              "source_sha256": spec_sha}
+              "source_sha256": None}
     (output / "manifest.json").write_text(json.dumps(result, indent=2)+"\n")
     return result

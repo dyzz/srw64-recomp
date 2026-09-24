@@ -46,7 +46,7 @@
 | `tools/recomp/verify/` | 有界实机验证：图片模式、阅读指示、共享界面、关窗；语言、对白与姓名页的实机检查在 `tools/recomp/debug/`（`check_localization.py`、`check_dialogue.py`、`check_name_entry_ui_switch.py`） |
 | `tools/recomp/script_lab/` | 脚本注入、迷你关卡、场景脚本阅读与按指令切音频 |
 | `tools/recomp/gameplay/` | 改造规则文件与受控存档编辑 |
-| `tools/recomp/model5600/` | 5600 模型的高模、原生水滴与对应验证 |
+| `tools/recomp/model5600/` | 5600 剧情地图标记的原生 HD 网格：打包、遮挡回放测试与实机验证 |
 | `tools/recomp/probes/` | 帧／音频／LZ 重放探针、参考模拟器与 RSP 捕获 |
 | `tools/recomp/analysis/` | 帧、脚本、移动与状态对比的离线分析 |
 | `tools/recomp/debug/` | 调试接口的会话客户端、命令行 `srw64ctl.py` 与 MCP 服务器，见[调试接口与 MCP](debug-interface.md) |
@@ -83,7 +83,7 @@ flowchart LR
 
 各目标也可单独运行。基础 Python 检查不需要 ROM、字体或模拟器：`make bootstrap check`。
 
-`run_host_probe.py` 会复核 ROM 变体、代码兼容性、生成结果与上游版本，并按需配置/构建宿主。HD 模式要求 `content/art/stage1-hd.json` 和 `content/ui/name-entry.json` 引用的本地美术文件存在且摘要一致。profile 默认 `images: original`：Original 在缺少 HD 素材时从原 ROM 提取原图启动，新克隆不需要 `assets/`；`--new-game` 不依赖开发者本地通关档。当前没有预编译发布包。
+`run_host_probe.py` 会复核 ROM 变体、代码兼容性、生成结果与上游版本，并按需配置/构建宿主。HD 模式要求 `content/art/stage1-hd.json` 引用的本地美术文件存在且摘要一致。profile 默认 `images: original`：Original 在缺少 HD 素材时从原 ROM 提取原图启动，新克隆不需要 `assets/`；`--new-game` 不依赖开发者本地通关档。当前没有预编译发布包。
 
 已经配置 `build/recomp/gfx-build` 后，只编译、不启动游戏：
 

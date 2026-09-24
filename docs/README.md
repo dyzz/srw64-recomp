@@ -59,7 +59,7 @@
 | [对白 UI](native/native-dialogue-ui.md) | 双框对白、整条连排与后台确认、分页、回看、自动阅读、快进与跳过 |
 | [阅读指示器](native/native-reading-indicators.md) | 自动档位、下一句进度、当前说话框 |
 | [对白闪烁](native/native-dialogue-flicker.md) | 间歇性画面／底栏消失的原因与修复证据 |
-| [高清对白实现](native/native-dialogue-runtime-hd.md) | 实际地图／边框资源高清替换与蓝色人名 |
+| [对话框 HD 边框](native/native-dialogue-runtime-hd.md) | 资源 1296 的 13 张边框切片按原版设计重画，RT64 哈希替换 |
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
 | [场间主菜单接管](native/native-intermission-menu.md) | 原版调度表、布局表、面板几何与 8 张背景的静态分析；保持原构图的 RmlUi 接管、实机验证（12 项）与未验证清单 |
@@ -125,7 +125,7 @@
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
-| [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md)、[对话框预览](design/dialogue-frame-ai-preview.md) | 美术高清化实验 |
+| [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md) | 美术高清化实验 |
 
 ## 验证层次
 

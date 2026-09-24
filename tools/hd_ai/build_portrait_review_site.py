@@ -14,7 +14,7 @@ import struct
 
 from srw64_rom.resources import ResourceTable
 from tools.hd_ai.portrait_batch import ACTORS, FACE_TABLE, SILHOUETTE, decode, portraits
-from tools.hd_ai.run_benchmark import ROOT
+from tools.hd_ai.aliyun import ROOT
 
 
 def names() -> tuple[list[str], dict[str, str]]:

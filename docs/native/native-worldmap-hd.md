@@ -8,7 +8,7 @@
 
 原始资源为 **5604**，完整解压数据唯一匹配捕获内存 `0x2CF200`。从原显示列表的顶点和 UV 还原地图，再取欧洲区域，得到 512×512 源图。原地图采用 64×64 CI4 图块；512×512 是旧素材尺寸，不是 native recomp 或 RT64 的上限。
 
-[`build_worldmap_runtime_pack.py`](../../tools/hd_ai/build_worldmap_runtime_pack.py) 将高清地图按原坐标切回 **512×512** 图块，即原纹理的 **8 倍线性密度**，对应 **4096×4096** 地图画布。游戏仍提交原来的地图 mesh、相机和标记，RT64 用已验证的纹理哈希选择高清资源。地图没有被重新压回 CI4，也没有被制作成包含人物和文字的整屏覆盖图。
+当时的打包脚本 `build_worldmap_runtime_pack.py`（2026-09-24 已删除）将高清地图按原坐标切回 **512×512** 图块，即原纹理的 **8 倍线性密度**，对应 **4096×4096** 地图画布。游戏仍提交原来的地图 mesh、相机和标记，RT64 用已验证的纹理哈希选择高清资源。地图没有被重新压回 CI4，也没有被制作成包含人物和文字的整屏覆盖图。
 
 [`graphics.cpp`](../../src/host/graphics.cpp) 读取包内 `srw64-worldmap-hd.json`，在纹理缓存的锁内检查实际替换尺寸和 UV 倍率，并将结果写到运行目录的 `worldmap-texture-runtime.json`。这是 GPU tile 构建器读取的同一组数据；检查不会修改纹理的访问记录或游戏 RDRAM。已在同任务回放中确认 57 / 57 个图块的原始尺寸为 64×64、替换尺寸为 512×512、坐标倍率为 8×8。
 
@@ -27,31 +27,8 @@ RT64 的 `TextureSampler.hlsli` 对替换纹理使用实际 `tcScale`；其低�
 
 57 个已核验地图哈希被替换；有邻接歧义的共享哈希继续使用原包。欧洲裁块之外保留既有资源。本次没有宣称全部世界地图或战斗地图均已完成高清化。
 
-## 重建与验证
+## 现在的打包
 
-最终合并素材包为 `assets/hd-ai/worldmap-runtime/pack-v6/pack`。高清入口现在用的是它的派生包 `portrait-matte/v2/pack`，其中只重做了头像透明，见[原图与高清图](native-content-foundation.md#原图与高清图)。重建 v6 到新目录：
+这 57 块欧洲图块保存在 `assets/hd-ai/worldmap-runtime/pack-v6/`。现在由 [`worldmap_surfaces.py`](../../tools/hd_ai/worldmap_surfaces.py) 读取，与其他区域一起并入 `worldmap-surfaces/pack-v1`，美术清单 `content/art/stage1-hd.json` 引用的是后者，见[剧情世界地图 HD](native-worldmap-regions-hd.md)。所以 pack-v6 要保留，它是第一话图块的来源。
 
-```sh
-.venv/bin/python -m tools.hd_ai.build_worldmap_runtime_pack \
-  --ai assets/hd-ai/worldmap-runtime/ai-v1 \
-  --detail assets/hd-ai/worldmap-runtime/ai-detail-registered-v2 \
-  --fonts assets/hd-ai/worldmap-runtime/pingfang-fonts-v7 \
-  --scale 8 --output assets/hd-ai/worldmap-runtime/rebuild
-```
-
-合并包共有 5,018 个纹理条目：57 个地图条目及 4,842 个字体条目更新，119 个其他条目的资源逐字节相同。银蓝色窗口、人物头像与蓝色人名继续工作。
-
-当前原 ROM 入口：
-
-```sh
-.venv/bin/python tools/recomp/run/play_native.py \
-  --profile config/recomp/profiles/play-profile.json --new-game --mute
-```
-
-以下保留历史渲染验证记录，不能视为清理后的重新验收。
-
-该命令从实际 ROM 启动并运行 CPU／游戏逻辑，使用独立输出与存档目录；GPU 完成后回读截图。它与同任务 replay 分开记录。验收结果以 `live-v6/report.json`、`worldmap-texture-runtime.json`、实际截图及 `acceptance.json` 为准。
-
-最终 `live-v6` 完成 **7,200 VI，exit 0**。实际纹理缓存验证 **57 / 57**，均为 512×512、UV 倍率 8。已查看 [目标对话的实际 GPU 截图](../../assets/hd-ai/worldmap-runtime/live-v6/present-3540.png)，两个姓名区域分别有 896 和 755 个精确蓝色实心像素。2,023 个不同字符的检查未发现缺字或上下裁切；43 项 Python 测试、编译与依赖检查通过。
-
-当前 `scripts/Play SRW64 Native.command` 通过纯美术允许清单读取该包。当前美术为接近参考方向的首版，仍保留海岸保护区的柔化，山体与树冠细节也不等同于参考图；运行管线已确认支持更高密度素材。详见 [验收记录](../../assets/hd-ai/worldmap-runtime/acceptance.json)。
+原来的打包脚本、苹方字形包，以及把字形、头像切片与地图合在一起的旧包，都已在 2026-09-24 的 HD 遗留清理中删除。上文 2026-09-09 的 57/57 纹理核对和 `live-v6` 运行记录只作历史参考，不代表当前包的重新验收。

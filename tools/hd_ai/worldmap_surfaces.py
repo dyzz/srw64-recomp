@@ -31,10 +31,9 @@ import time
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageMath, ImageStat
 
 from srw64_rom.resources import ResourceTable
-from tools.hd_ai.extract_samples import indexed, rgba16
-from tools.hd_ai.portrait_batch import load_env
+from tools.hd_ai.aliyun import ROOT, load_env, run_one
+from tools.hd_ai.rom_images import indexed, rgba16
 from tools.hd_ai.rt64_hash import hasher, map_hash
-from tools.hd_ai.run_benchmark import ROOT, run_one
 
 SURFACES = {5602: 'earth', 5605: 'central-asia', 5606: 'coast'}
 # 5604 keeps the reviewed first-stage tiles (worldmap-runtime/pack-v6); their painted

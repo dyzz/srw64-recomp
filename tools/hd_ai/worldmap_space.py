@@ -30,10 +30,9 @@ import time
 from PIL import Image, ImageFilter
 
 from srw64_rom.resources import ResourceTable
-from tools.hd_ai.extract_samples import indexed, rgba16
-from tools.hd_ai.portrait_batch import load_env
+from tools.hd_ai.aliyun import ROOT, load_env, run_one
+from tools.hd_ai.rom_images import indexed, rgba16
 from tools.hd_ai.rt64_hash import hasher
-from tools.hd_ai.run_benchmark import ROOT, run_one
 from tools.hd_ai.worldmap_surfaces import parts, place, register
 
 SPACE, STARFIELD, STARFIELD_PALETTE = 5599, 5582, 5583

@@ -154,76 +154,9 @@ def main() -> None:
                          'rank':record['local_coordinate_rank'],'bounds':record['bounds'],
                          'texture_count':len({b['texture'] for b in parts if b['texture']}),
                          'texture_notes':errors,'sha256':record['sha256'],'bytes':len(data)})
-    probe=ROOT/'assets/models/model-5600-probe';evidence=[]
-    for label,title in [('baseline','原始画面'),('hidden','隐藏 5600'),('stretched','仅拉伸立体部分')]:
-        path=probe/label/'present-60.png'
-        if path.exists():
-            shutil.copy2(path,OUT/'evidence'/f'5600-{label}.png')
-            evidence.append({'title':title,'path':f'evidence/5600-{label}.png','sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
-    if (probe/'acceptance.json').exists():
-        acceptance=json.loads((probe/'acceptance.json').read_text())
-        if acceptance.get('status')=='verified':
-            next(x for x in manifest if x['id']==5600).update(status='verified',note='同任务 GPU 对照已确认：隐藏后标记及其环形平面消失；仅修改六个顶点后立体部分变形。')
-        shutil.copy2(probe/'acceptance.json',OUT/'evidence/5600-acceptance.json')
-    highpoly=ROOT/'assets/models/model-5600-highpoly'
-    if (highpoly/'acceptance.json').exists():
-        accepted=json.loads((highpoly/'acceptance.json').read_text())
-        mesh_bytes=(highpoly/'mesh.json').read_bytes()
-        if accepted.get('status')!='verified' or hashlib.sha256(mesh_bytes).hexdigest()!=accepted['mesh_sha256']:
-            raise RuntimeError('High-poly acceptance or geometry drift')
-        mesh=json.loads(mesh_bytes)
-        original=json.loads((OUT/'models/5600.json').read_text())
-        # Preserve every original ring draw; replace only the solid batches.
-        high_parts=original['batches'][:1]
-        for face,color in zip(mesh['faces'],mesh['colors']):
-            high_parts.append({'part':0,'positions':[v for i in face for v in mesh['positions'][i]],
-                               'uvs':[0]*6,'color':color,'texture':None,'wrap_s':2,'wrap_t':2,'shading':'unlit'})
-        write_json(OUT/'models/5600-highpoly.json',{'schema':'srw64.model-viewer-geometry.v1',
-                   'id':5600,'variant':'highpoly','batches':high_parts,'part_count':1})
-        resource=next(r for r in manifest if r['id']==5600)
-        resource['original_variant_label']='原版 · 8 面'
-        resource['variants']=[{'key':'highpoly','label':'高模试作 · 96 面','file':'models/5600-highpoly.json',
-            'overrides':{'title':'剧情地图标记 · 高模试作','status':'prototype','triangles':104,'vertices':54,'texture_count':1,
-                'note':'立体菱形从 8 面增加至 96 面，增加圆角与腰部倒角；保持原尺寸和虚线环。已通过同任务 GPU 对照，尚未接入实时游戏。',
-                'material_note':'菱形使用黄色切面颜色，虚线环保留原贴图；灰模与线框可查看新增几何。',
-                'source_note':f'原创高模试作 · 几何 SHA-256 {accepted["mesh_sha256"]}'}}]
-        frame=highpoly/'highpoly/present-60.png'
-        if hashlib.sha256(frame.read_bytes()).hexdigest()!=accepted['frames']['highpoly']['sha256']:
-            raise RuntimeError('High-poly GPU frame drift')
-        shutil.copy2(frame,OUT/'evidence/5600-highpoly.png')
-        shutil.copy2(highpoly/'acceptance.json',OUT/'evidence/5600-highpoly-acceptance.json')
-        evidence.append({'title':'高模试作 · 立体 96 面','path':'evidence/5600-highpoly.png',
-                         'sha256':accepted['frames']['highpoly']['sha256']})
-    live_evidence=None
-    live=ROOT/'build/recomp/model-5600'
-    if (live/'acceptance.json').exists():
-        accepted=json.loads((live/'acceptance.json').read_text())
-        if accepted.get('status')!='verified-bounded-native-run':
-            raise RuntimeError('Live model experiment not verified')
-        if hashlib.sha256((highpoly/'mesh.json').read_bytes()).hexdigest()!=accepted['mesh_sha256']:
-            raise RuntimeError('Viewer geometry differs from the live experiment')
-        for name,run in accepted['runs'].items():
-            if hashlib.sha256((live/name/'report.json').read_bytes()).hexdigest()!=run['report_sha256']:
-                raise RuntimeError('Live run report drift')
-        live_frames=[]
-        for i,frame in enumerate(accepted['frames']):
-            path=live/frame['path']
-            if hashlib.sha256(path.read_bytes()).hexdigest()!=frame['sha256']:
-                raise RuntimeError('Live GPU image drift')
-            destination=f'evidence/5600-live-{i}.png'
-            shutil.copy2(path,OUT/destination)
-            live_frames.append({**frame,'path':destination})
-        live_evidence={'frames':live_frames,
-            'summary':'高模通过原游戏资源加载器载入，保留原旋转与剧情位置更新，已运行至第一话战术地图（16,800 VI，约 4 分 40 秒）。前两图为同一 VI 的原版与高模，1,032 个差异像素全部位于菱形本体，虚线环与周围画面一致。验证环境为原生重编译游戏 + RT64 / Metal；尚未覆盖完整路线或 N64 硬件。'}
-        shutil.copy2(live/'acceptance.json',OUT/'evidence/5600-live-acceptance.json')
-        resource=next(r for r in manifest if r['id']==5600)
-        for variant in resource.get('variants',[]):
-            if variant['key']=='highpoly':
-                variant['overrides'].update(status='live',
-                    note='立体菱形 8 → 96 面，增加圆角与腰部倒角；保持原尺寸和虚线环。已在实际游戏开场验证加载、旋转、位置更新及切入战术地图。')
     from native_marker import add_native_marker
     native_evidence = add_native_marker(ROOT, OUT, manifest)
-    write_json(OUT/'manifest.json',{'schema':'srw64.model-viewer.v1','resources':manifest,'evidence5600':evidence,'liveEvidence5600':live_evidence,'nativeEvidence5600':native_evidence,
+    write_json(OUT/'manifest.json',{'schema':'srw64.model-viewer.v1','resources':manifest,'nativeEvidence5600':native_evidence,
         'scope':'局部几何与简化源贴图预览；不模拟原游戏相机、场景变换、材质混合和动画。'})
     print(json.dumps({'output':str(OUT),'models':len(manifest),'textures':len(list((OUT/'textures').glob('*.png'))),
                       'resources_with_texture_notes':sum(bool(x['texture_notes']) for x in manifest)},ensure_ascii=False))
