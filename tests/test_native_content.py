@@ -119,6 +119,27 @@ class NativeArtTests(unittest.TestCase):
                 compile_art(root, manifest, root / "failed")
             self.assertFalse((root / "failed").exists())
 
+    def test_whole_backgrounds_are_copied_beside_the_pack(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "input").mkdir()
+            (root / "input/rt64.json").write_text(json.dumps({"configuration": {}, "textures": []}))
+            folder = root / "backgrounds"
+            folder.mkdir()
+            (folder / "background-5470-5478.png").write_bytes(b"bright")
+            index = {"schema": "srw64.background-images.v1", "size": [1920, 1440], "source_size": [320, 240],
+                     "images": [{"image": 5470, "palette": 5478, "file": "background-5470-5478.png", "sha256": sha(b"bright")}]}
+            (folder / "backgrounds.json").write_text(json.dumps(index))
+            manifest = {"schema": "srw64.art-pack.v1", "locale": "neutral", "textures": [],
+                        "source": {"path": "input", "manifest_sha256": sha((root / "input/rt64.json").read_bytes())},
+                        "backgrounds": {"path": "backgrounds", "manifest_sha256": sha((folder / "backgrounds.json").read_bytes())}}
+            self.assertEqual(compile_art(root, manifest, root / "out")["backgrounds"], 1)
+            runtime = json.loads((root / "out/srw64-backgrounds-hd.json").read_text())
+            self.assertEqual(runtime["images"][0]["file"], "backgrounds/background-5470-5478.png")
+            (folder / "background-5470-5478.png").write_bytes(b"edited")
+            with self.assertRaisesRegex(ValueError, "Background pixels changed"):
+                compile_art(root, manifest, root / "failed")
+
     def test_page_portraits_pick_base_or_silhouette(self):
         from PIL import Image
         with tempfile.TemporaryDirectory() as tmp:

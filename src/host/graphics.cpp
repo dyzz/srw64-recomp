@@ -8,6 +8,7 @@
 #include "window_test_control.hpp"
 #include "native_marker.hpp"
 #include "native_portrait.hpp"
+#include "native_background.hpp"
 #include "presentation/image_mode.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
@@ -208,6 +209,7 @@ public:
             capture_device = device;
             srw64::marker::metal_init(device);
             srw64::portraits::metal_init(device);
+            srw64::backgrounds::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::dialogue::metal_init(device, capture_directory);
             srw64::ui::render_init(rhi,device);
@@ -218,6 +220,7 @@ public:
         }, capture_frame, [] {
             srw64::marker::shutdown();
             srw64::portraits::shutdown();
+            srw64::backgrounds::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::ui::render_shutdown();
             srw64::dialogue::metal_shutdown();
@@ -308,6 +311,7 @@ public:
                     // Whole-image portraits ship beside the RT64 pack; they chain their
                     // native draw hooks after the marker's.
                     srw64::portraits::configure(directory, capture_directory);
+                    srw64::backgrounds::configure(directory, capture_directory);
                 }
                 dialogue_padding = std::filesystem::exists(std::filesystem::path(directory) / "srw64-dialogue-padding-v1");
                 dialogue_blue_names = std::filesystem::exists(std::filesystem::path(directory) / "srw64-dialogue-name-blue-v1");
