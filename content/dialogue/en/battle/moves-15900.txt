@@ -138,7 +138,7 @@
 
 @15931 Koji · 甲児
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @15932 Koji · 甲児
 > 「フィンガーミサイル!」
@@ -416,7 +416,7 @@
 
 @15997 Koji · 甲児
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @15998 Koji · 甲児
 > 「フィンガーミサイル!」

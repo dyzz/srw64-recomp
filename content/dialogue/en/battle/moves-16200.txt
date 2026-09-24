@@ -177,11 +177,11 @@
 “Ta-daa!”
 ---
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @16243 Boss · ボス
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @16244 Boss · ボス
 > 「フィンガーミサイル!」
@@ -375,7 +375,7 @@
 
 @16290 Erika · エリカ
 > 「ダイアナンミサイル!」
-“Dianan Missile!”
+“Diana Missile!”
 
 @16291 Erika · エリカ
 > 「フィンガーミサイル!」
