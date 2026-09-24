@@ -7,6 +7,7 @@
 #include "diagnostics.hpp"
 #include "window_test_control.hpp"
 #include "native_marker.hpp"
+#include "native_map.hpp"
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "presentation/image_mode.hpp"
@@ -197,9 +198,11 @@ class SRW64Renderer final : public ultramodern::renderer::RendererContext {
 public:
     SRW64Renderer(uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
         srw64::marker::configure(capture_directory);
+        srw64::hdmap::configure(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
             srw64::marker::metal_init(device);
+            srw64::hdmap::metal_init(device);
             srw64::portraits::metal_init(device);
             srw64::backgrounds::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -208,6 +211,7 @@ public:
 #endif
         }, capture_frame, [] {
             srw64::marker::shutdown();
+            srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
             srw64::backgrounds::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -305,7 +309,7 @@ public:
                     srw64::presentation::image_mode.configure(mode && std::string(mode)=="hd");
                     apply_images();
                     // Whole-image portraits ship beside the RT64 pack; they chain their
-                    // native draw hooks after the marker's.
+                    // native draw hooks after marker/hdmap.
                     srw64::portraits::configure(directory, capture_directory);
                     srw64::backgrounds::configure(directory, capture_directory);
                 }

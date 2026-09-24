@@ -4,6 +4,7 @@
 #include <atomic>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <memory>
@@ -25,6 +26,7 @@
 #include "app/desktop.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
+#include "native_map.hpp"
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "game_hooks.hpp"
@@ -333,6 +335,21 @@ static int run_host(int argc, char** argv) {
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
+    srw64_game_hooks.map_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
+        // Sprite record read by 800945D4: base 800FFA70 + slot*0xC4, sub-record at +0x3C + sub*0x30.
+        const uint32_t base = 0x000FFA70 + slot * 0xC4, record = base + 0x3C + sub * 0x30;
+        auto byte = [&](uint32_t a) { return ram[a ^ 3]; };
+        auto half = [&](uint32_t a) { uint16_t v; std::memcpy(&v, ram + (a ^ 2), 2); return v; };
+        auto word = [&](uint32_t a) { uint32_t v; std::memcpy(&v, ram + a, 4); return v; };
+        if (byte(record + 3)) return;  // overview scaling (800943E0) keeps the original cells
+        float origin_x, origin_y;
+        const uint32_t ox = word(base + 4), oy = word(base + 8);
+        std::memcpy(&origin_x, &ox, 4); std::memcpy(&origin_y, &oy, 4);
+        int32_t offset_x = int32_t(origin_x), offset_y = int32_t(origin_y);
+        if (byte(record + 2) == 1) { offset_x += int32_t(word(0x0010F5D4)); offset_y += int32_t(word(0x0010F5D8)); }
+        // Screen = map + offset, so the map pixel at screen (0,0) is -offset.
+        srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y});
+    };
     srw64_game_hooks.portrait_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t, uint32_t) {
         // The sprite record only holds resource handles; the portrait is recognised from
         // the texture data the drawn display list points at.

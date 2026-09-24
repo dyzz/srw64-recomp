@@ -1,0 +1,21 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "map20-view",
+  "note": "Map viewer for the HD tactical-map sample: map 20 (scene 1's battlefield, river palette cycle 6422 and red pulse 6429) with no units on either side. 3D61 1 suspends the all-units-destroyed defeat check, as scene 11 does for its unit-less opening. Launch with SRW64_MINI_STAGE_ARM_VI=1 so the first Start on the title menu enters it.",
+  "map": 20,
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D61", "args": [1], "note": "no player units: keep the defeat check from ending the stage"},
+        {"op": "3D3B", "args": [1], "note": "fade in"}
+      ]
+    }
+  ]
+}

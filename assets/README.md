@@ -32,6 +32,7 @@
 | `backgrounds/` | 场间背景：`run-1` 是付费生成的原始输出，`whole-v1` 由它构建，`whole-v2` = `whole-v1` 加星空，是清单引用的整张图 | 美术清单 `backgrounds`；`tools/hd_ai/background_hd.py`、`worldmap_space.py` |
 | `title/` | 标题 Logo 与火焰：`v1`、`whole-v1` 是来源，`whole-v2` 是清单引用的整帧图 | 美术清单 `scene_images`；`title_hd.py`、`flat_scene_hd.py` |
 | `dialogue-runtime/v4/` | 当前对话框边框的预览与构建记录 | `dialogue_frame_asset.py` |
+| `tactical-maps/` | 战术地图 HD 样板：请求清单、生成结果（`runs/`）、合成中间文件，`runtime/` 是宿主读取的底图与色号图 | `tools/hd_ai/tactical_map_hd.py`；运行时由 `SRW64_HD_MAPS` 指向 `runtime/` |
 | `weapon-markers/` | 武器标记图标的 AI 描摹来源 | 武器标记符号字体 |
 | `dialogue-polish/HarmonyOS-Sans.zip` | 官方字体包 | `tools/content/prepare_fonts.py` 解出游戏字体 |
 | `native-support/` | RT64 哈希的本机实现（`libhash.dylib`）与 xBRZ 源码 | `tools/hd_ai/rt64_hash.py` |
