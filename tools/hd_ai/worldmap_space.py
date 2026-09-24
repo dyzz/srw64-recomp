@@ -1,14 +1,15 @@
 """HD space region of the story world map (5599) and its starfield (5582).
 
-Space is the most used world-map region in the story (about 87 of the ~260
-3D32/3D33 placements). It is drawn from:
+Space is the most used world-map region in the story (369 of the 827
+3D32/3D33 placements, 32 of the 127 locations). It is drawn from:
 - the starfield 5582 (CI4 320x240, palette 5583) on sprite slot 0 behind
   everything (native_background.cpp draws it whole, like the intermission
   backgrounds);
 - billboards in 5599: the Earth (part 4, 4x4 tiles of 64x64 CI4), the Moon
   (part 5, 2x2), four asteroids (parts 13-16, 32x32);
 - two small textured models (parts 1 and 3, a 32x32 texture pair each);
-- seven name plates (parts 6-12), Japanese text, left original here.
+- seven name plates (parts 6-12, Side 1/2/3/5/6/7 and Sweetwater): text, redrawn
+  per language by the native model pack (tools/models/build_native_models.py BOARDS).
 
 `prepare` assembles each billboard (Y up) and packs the 32x32 textures into
 one grid; `run` sends one qwen-image-3.0-pro request per picture; `compose`

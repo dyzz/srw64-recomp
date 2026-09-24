@@ -5,13 +5,14 @@ table 801C5670 names the region surfaces: 5602/5603 the whole Earth (identical
 tiles, two meshes), 5604 the Mediterranean, 5605 Central Asia, 5606 a coast, and
 5599 space. Each Earth surface is a flat mesh of 64x64 CI4 tiles with their own
 16-colour palettes; the transparent ocean shows the clear colour RGB(0,55,90).
-3D32/3D33 in the scripts place scenes on them about 260 times; 5604 alone (the
-only one with HD so far, a 57-tile crop) is the least used.
+The location table 801C5310 has 127 entries (surface, x, y); the scripts' 827
+3D32/3D33 placements use space 369 times, 5602/5603 348, 5606 70, 5604 (the first
+stage, 57 approved tiles) 28 and 5605 12.
 
 `prepare` assembles each surface into one atlas (north up) and cuts it into
 overlapping 256x256 windows, one qwen-image-3.0-pro request each at 2048x2048
-(8x). `compose` registers every window to its source, blends the overlaps, keeps
-the source's low-frequency colour (so windows agree), and takes the coastline
+(8x). `compose` registers every window to its source, blends the overlaps (optionally
+locking the source's low-frequency colour, --colour-lock), and takes the coastline
 from the source mask, smoothed, instead of the model's. `pack` cuts the HD
 atlas back into 512x512 tiles under their RT64 hashes (rt64_hash.map_hash).
 """
