@@ -2,7 +2,13 @@
 
 2026-09-23 起草，2026-09-24 按实际实现改写。产品边界沿用[内置 MOD 路线图](mod-roadmap.md) §6（Original / HD 逐项可回退，缺哪项就用原图）。全 ROM 资源盘点、每类的阿里云模型选择见 [HD 资产盘点](../data/hd-asset-inventory.md)；战术地图逐张的动态效果见[战术地图清单](../data/tactical-maps.md)。
 
-profile 默认 `images: original`，HD 要用 `--images hd` 启动或在游戏里按 F6。美术清单是 `content/art/stage1-hd.json`。
+美术清单是 `content/art/stage1-hd.json`。开发用的 profile 默认 `images: original`，HD 要用 `--images hd` 启动或在游戏里按 F6。
+
+全 HD 自用包（2026-09-24）从 HD 启动，做法见 [macOS 构建 · 全 HD 自用包](../native/macos-release.md#全-hd-自用包)：
+- [`prepare_hd_bundle.py`](../../tools/release/prepare_hd_bundle.py) 编译美术清单，并拷入核对过的舰船模型包和 5600 标记包；
+- `package_macos.py --hd` 把它放进应用；启动器看到它就打开 HD 和两个模型包。
+
+这个包只供本机使用，不分发。战术地图样板没有放进去。
 
 ## 1. 现状
 
@@ -16,7 +22,7 @@ profile 默认 `images: original`，HD 要用 `--images hd` 启动或在游戏�
 | 世界地图舰船、地标、航迹 | 原生模型 | 已接入 | [世界地图过场模型 HD](../native/native-ship-model.md) |
 | 5600 剧情地图标记 | 原生模型 | 已接入 | [模型替换](../native/native-model-replacement.md) |
 | 对话框边框 | RT64 哈希替换，按原版设计代码重画 | 已接入 | [对话框 HD 边框](../native/native-dialogue-runtime-hd.md) |
-| 战术地图（158 条记录，155 份布局） | 宿主整张绘制，色号图 + 实时调色板 | 地图 20 样板，未提交 | §3 |
+| 战术地图（158 条记录，155 份布局） | 宿主整张绘制，色号图 + 实时调色板 | 地图 20 样板，靠 `SRW64_HD_MAPS` 开启，不进全 HD 包 | §3 |
 | 机体标识（地图单位图标 323 张） | 像素画算法放大，风格待定 | 未做 | [HD 资产盘点](../data/hd-asset-inventory.md#机体标识地图单位图标) |
 | 战斗：精灵、特效、cut-in、3D 背景 | — | 暂缓（2026-09-23 决定） | 同上 |
 
@@ -114,7 +120,7 @@ profile 默认 `images: original`，HD 要用 `--images hd` 启动或在游戏�
 
 ## 5. 后续
 
-1. **战术地图**：先提交地图 20 样板，再按 §3「待做」逐项推进。
+1. **战术地图**：按 §3「待做」逐项推进；画质经用户认可后再登记进美术清单、放进全 HD 包。
 2. **机体标识**：从最近邻、MMPX、Scale4x、xBR 里定一种风格。结果从本地 ROM 算出，不需要分发美术文件。
 3. **战斗**：暂缓。恢复时，精灵和特效按图集做母版再切零件，3D 背景走贴图替换加原生几何。
 4. **宽屏**：整张绘制的图以后可以画得比 4:3 更宽，但要等宽屏容器落地后再做。
