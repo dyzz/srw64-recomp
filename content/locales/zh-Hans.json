@@ -789,7 +789,7 @@
     {
       "key": "base:t00_00077",
       "source_sha256": "bdd3bbf34c2f11c9ce39b4442ad7c333482c7731de6ed3a3043b3432ca38c7ed",
-      "target": "无敌超人 赞博特3<END>",
+      "target": "无敌超人 赞波3<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -831,14 +831,14 @@
     {
       "key": "base:t00_00083",
       "source_sha256": "ab1c1c27e2b363147f84ad9a5b4ee551bf772fc06cc36109dde3c14640ecb3ea",
-      "target": "六神合体 戈德马斯<END>",
+      "target": "六神合体雷霆王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00084",
       "source_sha256": "42ed00d6a5122922ee376ca35db9be9f9a7e41da4a1a28d5b62d599761e04af6",
-      "target": "巨大机器人<END>",
+      "target": "大铁人<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -957,7 +957,7 @@
     {
       "key": "base:t00_00102",
       "source_sha256": "ebeff160ef04d272cb6e39de878137b4a32824b557ea753b19ac1d4d579074fc",
-      "target": "无敌超人<BR>赞博特3<END>",
+      "target": "无敌超人<BR>赞波3<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -999,14 +999,14 @@
     {
       "key": "base:t00_00108",
       "source_sha256": "219efd8cda82ba31dd575348a8720ad5593c983b0779e6473f004a5c7acf2e29",
-      "target": "六神合体<BR>戈德马斯<END>",
+      "target": "六神合体<BR>雷霆王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00109",
       "source_sha256": "42ed00d6a5122922ee376ca35db9be9f9a7e41da4a1a28d5b62d599761e04af6",
-      "target": "巨大机器人<END>",
+      "target": "大铁人<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1244,7 +1244,7 @@
     {
       "key": "base:t00_00306",
       "source_sha256": "2b4f41554c8addf95b202513efdda4b4a46e8293a319f2c22a9ab157bc9de0fb",
-      "target": "夏皮罗，转生！<END>",
+      "target": "夏比罗，转生！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1314,7 +1314,7 @@
     {
       "key": "base:t00_00316",
       "source_sha256": "25db76c4624f6e7cb590be525957f51157b9931deaf1b91e185ae96d3b08bbc0",
-      "target": "激斗！拉维安罗斯<END>",
+      "target": "激斗！玫瑰人生号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1328,7 +1328,7 @@
     {
       "key": "base:t00_00318",
       "source_sha256": "d89fba67712104c6a0893bb6c14c0d1f6bff852ce03a1b1d348138d198157ab0",
-      "target": "斯威特沃特防卫战<END>",
+      "target": "甘泉防卫战<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1363,7 +1363,7 @@
     {
       "key": "base:t00_00323",
       "source_sha256": "a410282a1d22d298efa9080acfa63903e45a969b13836f3fcf56dc8f2ede67b4",
-      "target": "马斯与马格<END>",
+      "target": "马斯与马可<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1538,7 +1538,7 @@
     {
       "key": "base:t00_00348",
       "source_sha256": "966687114d4a341c2baddae191c4f52d599048ac97719a9a531fde1b0a39e132",
-      "target": "桑克王国，崩溃<END>",
+      "target": "桑古王国，崩溃<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1573,7 +1573,7 @@
     {
       "key": "base:t00_00353",
       "source_sha256": "a88c9a8a1ec4060c2c40e97074dbca18d848280fc3c64c6dbeb525e7f3f946f2",
-      "target": "白牙<END>",
+      "target": "白色獠牙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1622,7 +1622,7 @@
     {
       "key": "base:t00_00360",
       "source_sha256": "ded35dbc0b7c42638eda394c407ee65e946feac576ee2e640f74f8187442767e",
-      "target": "死斗！大屿山岛大决战（前）<END>",
+      "target": "死斗！大屿山大决战（前）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1860,14 +1860,14 @@
     {
       "key": "base:t00_00394",
       "source_sha256": "15d56febdab1daa2e82fb14d9a27170993bc7a4738668f5e9e0680c613dce232",
-      "target": "赞博特3出现！<END>",
+      "target": "赞波3出现！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00395",
       "source_sha256": "15d56febdab1daa2e82fb14d9a27170993bc7a4738668f5e9e0680c613dce232",
-      "target": "赞博特3出现！<END>",
+      "target": "赞波3出现！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1972,7 +1972,7 @@
     {
       "key": "base:t00_00410",
       "source_sha256": "f685280dfadce40113cb0b245f25adf4a959075b7458f8860cf65a7f5a3ad662",
-      "target": "死斗！大屿山岛大决战（后）<END>",
+      "target": "死斗！大屿山大决战（后）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2539,7 +2539,7 @@
     {
       "key": "base:t00_00492",
       "source_sha256": "ee69489c19117f71d29ff0273aa890e502b68708bb975c42f360e464cb56ef33",
-      "target": "利希<END>",
+      "target": "利修<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2595,14 +2595,14 @@
     {
       "key": "base:t00_00500",
       "source_sha256": "86a9b324e543f7cc9378f52ec42e12cf6ba5549be277c3e958b07dbb84d7fdac",
-      "target": "利希·格里斯韦尔<END>",
+      "target": "利修·格里斯韦尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00501",
       "source_sha256": "90645ec51c7220324cdcfb3d785747b5a6e6a1ba445f1add006740929bca7f7d",
-      "target": "卡茨·弗尔涅乌斯<END>",
+      "target": "卡茨·弗尔纽斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2784,7 +2784,7 @@
     {
       "key": "base:t00_00527",
       "source_sha256": "f3534a365e465efbd33a1087a1db4c00a25e5efa73ae6b85f7b1e9d946dfd59f",
-      "target": "施皮格尔高达<END>",
+      "target": "明镜高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2847,14 +2847,14 @@
     {
       "key": "base:t00_00536",
       "source_sha256": "151cae00180629c41f2a72f1d5ac66d349e606d81296550be0e2be53b5890777",
-      "target": "麦克斯达高达<END>",
+      "target": "极限之星高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00537",
       "source_sha256": "8d99e2ebd0b1a17489826287280f071a067bfbfd48de5a9cee18831e510186ee",
-      "target": "麦克斯达高达S<END>",
+      "target": "极限之星高达S<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2875,28 +2875,28 @@
     {
       "key": "base:t00_00540",
       "source_sha256": "8edc1c4ab7ef96c76f5cc141f91a417f639183a4b45b044322ac99855078f2d2",
-      "target": "龙高达<END>",
+      "target": "飞龙高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00541",
       "source_sha256": "773ec66db9384a47cbe0d10e2212126b41302dad892826f50c24d7ca4da12d6c",
-      "target": "龙高达S<END>",
+      "target": "飞龙高达S<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00542",
       "source_sha256": "e13352dfc841ad7f9b6a5397496d5eb33020e740cfb29d59a6b6b325e75e59ff",
-      "target": "螺栓高达<END>",
+      "target": "雷霆高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00543",
       "source_sha256": "562eb8fecd403d6f725eb88f433dff8a89d95c2d79378c5622f2238605b8fb49",
-      "target": "螺栓高达S<END>",
+      "target": "雷霆高达S<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3071,7 +3071,7 @@
     {
       "key": "base:t00_00568",
       "source_sha256": "8d4a1c297d527d8ea7777d060b5cc4ad2641039e3905bbc1b4a5732c6d272a13",
-      "target": "杰克拉普斯<END>",
+      "target": "杰伊克拉普斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3092,7 +3092,7 @@
     {
       "key": "base:t00_00572",
       "source_sha256": "b3821001a07d39190db239b460d24827b20613bcd4cc4c725d17b707cc228638",
-      "target": "G防御者<END>",
+      "target": "G防卫者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3134,14 +3134,14 @@
     {
       "key": "base:t00_00578",
       "source_sha256": "04b69f3a91954ea88f5217fde5f8182dba17efbeb5a4ac01973cb417a058ca3f",
-      "target": "阿卡马<END>",
+      "target": "阿伽玛<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00579",
       "source_sha256": "872288dabe55986250f4e75b0f97016480624b745a3ba2d268d6dee0d4804760",
-      "target": "奥德穆拉<END>",
+      "target": "奥多姆拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3197,7 +3197,7 @@
     {
       "key": "base:t00_00587",
       "source_sha256": "59741e3c204425f972b60f1f20f7261fdc54758b27b7fc1e21c608cdc451bb39",
-      "target": "突击迪亚斯<END>",
+      "target": "疾风迪亚斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3218,7 +3218,7 @@
     {
       "key": "base:t00_00590",
       "source_sha256": "1b3a8411a11b16aadde97bf00af8672dfca4cc8dd515e513af4f514a151de245",
-      "target": "奈尔·阿卡马<END>",
+      "target": "新阿伽玛号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3267,21 +3267,21 @@
     {
       "key": "base:t00_00597",
       "source_sha256": "1eedfd5efd673eea9b1e731f7d0e1215b04f0d613307141c6e6430c2585f976e",
-      "target": "拉维安罗斯<END>",
+      "target": "玫瑰人生号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00598",
       "source_sha256": "392a88ded7286178e45b9f4d0f262916fefe812618151a38f5f5c5b384c386cb",
-      "target": "里·卡兹<END>",
+      "target": "灵格斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00599",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "里·卡兹（BWS）<END>",
+      "target": "灵格斯（BWS）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3344,7 +3344,7 @@
     {
       "key": "base:t00_00608",
       "source_sha256": "a8eb3a9fa7434ffbd1fda4302e20d7a1a696e581f863dd22c9e5a6ea5b958e0a",
-      "target": "吉·O<END>",
+      "target": "铁奥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3358,7 +3358,7 @@
     {
       "key": "base:t00_00610",
       "source_sha256": "def3a4a641b64c020be333c26891b5f8e22eb64ee32639d10a03005791c3105b",
-      "target": "阿修玛<END>",
+      "target": "亚希玛<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3372,14 +3372,14 @@
     {
       "key": "base:t00_00612",
       "source_sha256": "62e56981a89f18a85d08963513bc237f58181fe35df9f06b7f9d1cf1665ccf97",
-      "target": "亚历山德里亚<END>",
+      "target": "亚历山大<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00613",
       "source_sha256": "c6f2a6dc9687c1f265989de072105658cadaebf233e2a85c34a4c79722385919",
-      "target": "恩德拉<END>",
+      "target": "恩多拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3421,7 +3421,7 @@
     {
       "key": "base:t00_00619",
       "source_sha256": "3ce693da55d84832454ed8d8b94094f76b919dbdf7ad20f66d43c76a1a590614",
-      "target": "奎因·曼莎<END>",
+      "target": "昆曼沙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3526,7 +3526,7 @@
     {
       "key": "base:t00_00634",
       "source_sha256": "ce7d93c62e0f5031fb2a14447abdee02f9ea38c987c8d9359b63a354d0bfd66f",
-      "target": "汉马·汉马<END>",
+      "target": "悍马·悍马<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3631,7 +3631,7 @@
     {
       "key": "base:t00_00649",
       "source_sha256": "a44c0a465e97867c50f15931d815f6eedde0c4b8dbee897400823b61ec0ea215",
-      "target": "白羊座<END>",
+      "target": "艾亚里斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3673,35 +3673,35 @@
     {
       "key": "base:t00_00655",
       "source_sha256": "4a40c24ebf0f07ebb60d8c25655a1543f885e117e33d300ac7a3349be9c0e9fb",
-      "target": "死神高达H<END>",
+      "target": "地狱死神高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00656",
       "source_sha256": "d692fe1dbbf79852cad87024254d4068e1670b5db661c7f7684f0012e8408268",
-      "target": "死神H特装型<END>",
+      "target": "地狱死神特装型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00657",
       "source_sha256": "bd5b2ff4fd7c88f6ff2852529660b4d072dc270425c50dc06297dc155a8fc300",
-      "target": "重武装高达<END>",
+      "target": "重装高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00658",
       "source_sha256": "7ec9627edfe689ab0b67ebd25cab122a0abb30782c2a2fbfbe73af94c8b00794",
-      "target": "重武装特装型<END>",
+      "target": "重装特装型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00659",
       "source_sha256": "1ab1774e88fadcfdee121424ec9db42fa0dcb90cc9b6347361678aa4ab32b88f",
-      "target": "重武装高达改<END>",
+      "target": "重装高达改<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3715,7 +3715,7 @@
     {
       "key": "base:t00_00661",
       "source_sha256": "25208aed197631bd10127b17d0461f351c96bc87496c6c798375e060fc4d76ed",
-      "target": "金牛座<END>",
+      "target": "陶拉斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3736,21 +3736,21 @@
     {
       "key": "base:t00_00664",
       "source_sha256": "4fd38de58a9cb0ca4bd5eb061a33eb59941ab16caf953a09708402e4278a1bb7",
-      "target": "和平百万号<END>",
+      "target": "万年和平号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00665",
       "source_sha256": "8be03195f8361cc189d0ec04dfdce962df6816a8896a682128357bb5341b35e6",
-      "target": "马古阿纳克<END>",
+      "target": "马格纳克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00666",
       "source_sha256": "8be03195f8361cc189d0ec04dfdce962df6816a8896a682128357bb5341b35e6",
-      "target": "马古阿纳克<END>",
+      "target": "马格纳克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3764,14 +3764,14 @@
     {
       "key": "base:t00_00668",
       "source_sha256": "89b92f8cd557dacda365d0647495ad797ec6cd1aad8f6907c05025862f4ce41e",
-      "target": "巨蟹座<END>",
+      "target": "坎沙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00669",
       "source_sha256": "25208aed197631bd10127b17d0461f351c96bc87496c6c798375e060fc4d76ed",
-      "target": "金牛座<END>",
+      "target": "陶拉斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3785,28 +3785,28 @@
     {
       "key": "base:t00_00671",
       "source_sha256": "ea4cadb3a3dc6e137773c9bc2c54e574908d335e0ce558b0f263ac296299630a",
-      "target": "特拉格斯<END>",
+      "target": "特拉哥斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00672",
       "source_sha256": "bc2633497ec67a4bde80c692da4a63a3902ae8c743307aa3746ddb5b219b97ed",
-      "target": "双鱼座<END>",
+      "target": "派西斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00673",
       "source_sha256": "c4464e345be432f170706c233a95ec2b1466b33c013b95d41d3ac4351a18cd7a",
-      "target": "处女座<END>",
+      "target": "比尔哥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00674",
       "source_sha256": "ef3914593c253e7a7c053a58860273fed4af462642ca27d747bfba312b17d287",
-      "target": "处女座Ⅱ<END>",
+      "target": "比尔哥Ⅱ<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3841,21 +3841,21 @@
     {
       "key": "base:t00_00679",
       "source_sha256": "7380beeb9dc6ab9e7dd4335d42a3fd0d38a59cdca182a0e22af8b141c2bd9602",
-      "target": "战斗兽奥贝留斯<END>",
+      "target": "战斗兽欧贝琉斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00680",
       "source_sha256": "e525ff7a7e9fa572ad7e965e2c0e28df9e7eceffb216bd42dc4f82c350f2cc0d",
-      "target": "战斗兽兹加尔<END>",
+      "target": "战斗兽斯伽尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00681",
       "source_sha256": "c8a0500789887b71e3b4ba6097655417b5dff0f59e4cf8f4f473bf280b391e93",
-      "target": "米凯罗斯<END>",
+      "target": "迈锡罗斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3911,63 +3911,63 @@
     {
       "key": "base:t00_00689",
       "source_sha256": "d22629f75ae7e116e60676634d0fb6060b8d4d2c67a147ee81692b7854dbaf30",
-      "target": "斯佩泽<END>",
+      "target": "飞天神机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00690",
       "source_sha256": "7419397cbbf616c76163de4145943ad42a9d2cc5d8d95b3be5ec8732e2a7103d",
-      "target": "双重斯佩泽<END>",
+      "target": "双重飞天神机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00691",
       "source_sha256": "beb0b838c9a3a8edf872dcab59cfd934a24647b816d0ddddf55c27535d7421eb",
-      "target": "钻头斯佩泽<END>",
+      "target": "钻头飞天神机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00692",
       "source_sha256": "69d094acdb8d273c6d2b659498802c25f9564fab68ae92afb5eafca03fb4ed92",
-      "target": "海洋斯佩泽<END>",
+      "target": "海洋飞天神机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00693",
       "source_sha256": "8559096383e6289b593d8c3ec0ced05185af7801e59b8a5b5d4341cea9021d20",
-      "target": "圆盘兽基尔基尔<END>",
+      "target": "飞碟兽吉尔吉尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00694",
       "source_sha256": "ef0a29b29bacc63c67d950f6aa0e1fe95324bf7e624e8980d6bec01f0a9bfd11",
-      "target": "贝加兽金哥利<END>",
+      "target": "贝加兽大金刚<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00695",
       "source_sha256": "475fb17d999036faf775a3a0960770ed649869a648b169727b69884002cc90fc",
-      "target": "圆盘兽戈斯戈斯<END>",
+      "target": "飞碟兽戈斯戈斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00696",
       "source_sha256": "5f4c009587b760c0afc8d570006553f189d6c3e511b2db93474a07e22baa412b",
-      "target": "母舰巴恩<END>",
+      "target": "飞碟母船<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00697",
       "source_sha256": "3f8528f0ad0c20098fe04635f896d9a8ca3f70c7c0fe8787c0bdeb1cf3a1a10d",
-      "target": "迷你飞碟<END>",
+      "target": "迷你碟<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4016,21 +4016,21 @@
     {
       "key": "base:t00_00704",
       "source_sha256": "daa218d7a1854d3e4d79ebe948b3374c7393b70394ff4983bd20820b2e4d2f13",
-      "target": "真·盖塔1<END>",
+      "target": "真盖塔1<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00705",
       "source_sha256": "0d8e3d4031c975a1849f9015f77c7a8209be8cb72f72af5d00bc987dc8fbe3b4",
-      "target": "真·盖塔2<END>",
+      "target": "真盖塔2<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00706",
       "source_sha256": "2aada33fa566d5dc956da1a96843ef3f1f37d37e8ebaa1c22cf64895079e2ce5",
-      "target": "真·盖塔3<END>",
+      "target": "真盖塔3<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4079,14 +4079,14 @@
     {
       "key": "base:t00_00713",
       "source_sha256": "02bd4621cf061c91336cd478429b427e758f14d60cac69b70f58e2d0359cac20",
-      "target": "宇宙粉碎者<END>",
+      "target": "宇宙粉碎机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00714",
       "source_sha256": "28ef42bbe28bc67cb6233303822e9372c346675b0e3078d2b53cb7116db33ca9",
-      "target": "戈德马斯<END>",
+      "target": "雷霆王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4114,7 +4114,7 @@
     {
       "key": "base:t00_00718",
       "source_sha256": "b334f3c79feb8d16db84b4e09b812893aa249d8f71deef5d1e6d3174a7a620ea",
-      "target": "兹尔皇帝<END>",
+      "target": "祖鲁皇帝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4135,7 +4135,7 @@
     {
       "key": "base:t00_00721",
       "source_sha256": "6eeca930641deafb37aa6be1e7b2c02fdf8d31daffd97e9db8c3a83052b82a71",
-      "target": "马格司令船<END>",
+      "target": "马可司令船<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4156,14 +4156,14 @@
     {
       "key": "base:t00_00724",
       "source_sha256": "6cb169df8a1b7e9eaa37585240e2cdd2f7148f1dcbaf2793879123d911e11aa5",
-      "target": "战斗粉碎者<END>",
+      "target": "战斗爆击机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00725",
       "source_sha256": "35af5f5fd9ff6ec9802a2a77f13b2cf014a3f670d67afa29ff62bf333e248e41",
-      "target": "战斗飞艇<END>",
+      "target": "战斗装甲车<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4212,21 +4212,21 @@
     {
       "key": "base:t00_00732",
       "source_sha256": "47ad2aeb58420eafd70ca9e44c386fcdb3f4150b3c496fa7b546458f6da8e2a4",
-      "target": "赞博王牌<END>",
+      "target": "赞波王牌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00733",
       "source_sha256": "9298b3ab6b2aabd9c07af9564642d41437c0d5e8706dac25afc6599f76ccd945",
-      "target": "赞博特3<END>",
+      "target": "赞波3<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00734",
       "source_sha256": "7e48f4459ea5155c6a0128036af87be7d9bec54e94c3dd1c519a1a024079bef0",
-      "target": "巨大机器人<END>",
+      "target": "大铁人<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4254,7 +4254,7 @@
     {
       "key": "base:t00_00738",
       "source_sha256": "a86766b65a39ed473ace5af17d2c2c77ecf76e5793360d09559fc357253f9dc9",
-      "target": "阿尔贝鲁特<END>",
+      "target": "阿尔伯特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4310,28 +4310,28 @@
     {
       "key": "base:t00_00746",
       "source_sha256": "d3b9aa2a8adcb9801ce4a4cebf07ffcdd82d882027fcd2b316f84c66e230eb40",
-      "target": "鹰式战机<END>",
+      "target": "鹰战机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00747",
       "source_sha256": "198d2a21255cadaabb932e767fca182a3a8df0417f7122794fd1e2597fbf5f45",
-      "target": "鹰式战机A<END>",
+      "target": "鹰战机A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00748",
       "source_sha256": "a731d9c85d2c6fe795a46c3d3ac11b062d345bc63ca8efb96b7bd5b1539d944b",
-      "target": "鹰式战机H<END>",
+      "target": "鹰战机H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00749",
       "source_sha256": "0d99116dc0d7409006d2415c748f96547a017550327e603461be4edffd6c44fe",
-      "target": "冈多尔<END>",
+      "target": "钢铎尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4352,21 +4352,21 @@
     {
       "key": "base:t00_00752",
       "source_sha256": "97763585011ed9973a8d2b086399426d78ce7a80781a20864661ff04747c4bc6",
-      "target": "巨象<END>",
+      "target": "象战机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00753",
       "source_sha256": "763501980f54dc7a5ee4d7c3546bdfeb8ec86098e753e5fab3d58af8d8bbc4fc",
-      "target": "巨象A<END>",
+      "target": "象战机A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00754",
       "source_sha256": "de9ff5c166dde81db0799e038b8073dfd3e8e305df065852f015d07b552a1052",
-      "target": "巨象H<END>",
+      "target": "象战机H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4387,42 +4387,42 @@
     {
       "key": "base:t00_00757",
       "source_sha256": "bb15d3cffa7dcc0a08d58c7cc6749464dfef0ec79b2558231f1fa1789b16254a",
-      "target": "陆地美洲狮<END>",
+      "target": "豹战机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00758",
       "source_sha256": "d55a5a5b42a53d02def1cbe74a88b33c7da66a399aff150d373478bc4080265e",
-      "target": "陆地美洲狮A<END>",
+      "target": "豹战机A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00759",
       "source_sha256": "fb3a290004dcb38050294346ee1335a92137b8191e3eef586e2290bb25a54e36",
-      "target": "陆地美洲狮H<END>",
+      "target": "豹战机H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00760",
       "source_sha256": "27eac5730f1625ea5d1f34bc853e75c8637bf8d7393c1dd3027110aeb9f96e9c",
-      "target": "陆地狮虎<END>",
+      "target": "狮战机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00761",
       "source_sha256": "c3d1f8fb25f2154a68011d77c24540a6f76c6ce7e52431563a87eb52982c659f",
-      "target": "陆地狮虎A<END>",
+      "target": "狮战机A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00762",
       "source_sha256": "40f0dbef7825bde1ffaa5b069fdd51161aea4bc8993e798b002f9f1ea3166bac",
-      "target": "陆地狮虎H<END>",
+      "target": "狮战机H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4464,7 +4464,7 @@
     {
       "key": "base:t00_00768",
       "source_sha256": "e29be4247eb8c2809589581d367da654e1dfd3531a87f9e1e7cc44795dcbfc0c",
-      "target": "夏皮罗战斗机械<END>",
+      "target": "夏比罗战斗机械<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4478,14 +4478,14 @@
     {
       "key": "base:t00_00770",
       "source_sha256": "f2bd9fb140321b1716443d577684d8d88723796378cfda7c63a1b0b12d625183",
-      "target": "格兰·加兰<END>",
+      "target": "古兰·加兰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00771",
       "source_sha256": "81a6ac14e4f4dbefc41e2324c5433d3a82b97155ddf3486d7ef5c0c72ccc2355",
-      "target": "戈拉翁<END>",
+      "target": "哥拉翁<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4541,7 +4541,7 @@
     {
       "key": "base:t00_00779",
       "source_sha256": "6993f11736865fd054b48a2cc00d13fa94e77b8daa9e60c557d34e4b2ca9cdbd",
-      "target": "加拉巴<END>",
+      "target": "卡拉巴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4555,35 +4555,35 @@
     {
       "key": "base:t00_00781",
       "source_sha256": "d165a7d4b3768dc63f3b97ccc3540189d39ea2580901bf6d33d25482ff1a0906",
-      "target": "兹瓦斯<END>",
+      "target": "滋华斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00782",
       "source_sha256": "7f201d7d85f05b5868b68d8f86f9bd6a1f482b5c822d539fbe25551ff675693d",
-      "target": "德拉姆罗<END>",
+      "target": "德拉姆洛<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00783",
       "source_sha256": "2c3ec209e7f5fc78a475335b2c9e7419208647c64b9dc917c9c757845e72ac54",
-      "target": "比亚雷斯<END>",
+      "target": "毕亚雷斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00784",
       "source_sha256": "72536cd76e8a3e66d3fa2dd5909433b906be5ad4ad6f0cf86de6ce191172e156",
-      "target": "莱内克<END>",
+      "target": "莱聂克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00785",
       "source_sha256": "4d36e649b0dca277b93295b6816c71341068143550c76e67e94494bf2829ab69",
-      "target": "莱普拉康<END>",
+      "target": "雷普拉卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4625,7 +4625,7 @@
     {
       "key": "base:t00_00791",
       "source_sha256": "9886ddeea954d78ff1712ee9ece91582f414e22e6eee8e52d25934da041cf23a",
-      "target": "密涅瓦X<END>",
+      "target": "米涅瓦X<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4786,14 +4786,14 @@
     {
       "key": "base:t00_00814",
       "source_sha256": "0270a649387035998daeadf8f5cfa94e5acad49427960962856f34e6242957d3",
-      "target": "加·佐姆<END>",
+      "target": "加佐姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00815",
       "source_sha256": "06a6810d6d5861306b9dcda4cfaaec6e3b7f59d51f0f28070e9e9efee498d99c",
-      "target": "贾姆鲁·芬<END>",
+      "target": "杰姆鲁·芬<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4807,14 +4807,14 @@
     {
       "key": "base:t00_00817",
       "source_sha256": "73696c33b62d2239bc0a49c0a28e4bcb78c5e30dce098669c387fd8beca05c06",
-      "target": "麦克斯达高达B<END>",
+      "target": "极限之星高达B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00818",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "金牛座（MA）<END>",
+      "target": "陶拉斯（MA）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4905,7 +4905,7 @@
     {
       "key": "base:t00_00831",
       "source_sha256": "a79875181ab351da4b6e8f55e6b8ad10c33cfcb943ffb53dad8402d7154188eb",
-      "target": "迪莫尼卡<END>",
+      "target": "德摩尼卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5010,14 +5010,14 @@
     {
       "key": "base:t00_00846",
       "source_sha256": "a44c0a465e97867c50f15931d815f6eedde0c4b8dbee897400823b61ec0ea215",
-      "target": "白羊座<END>",
+      "target": "艾亚里斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00847",
       "source_sha256": "d165a7d4b3768dc63f3b97ccc3540189d39ea2580901bf6d33d25482ff1a0906",
-      "target": "兹瓦斯<END>",
+      "target": "滋华斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5080,21 +5080,21 @@
     {
       "key": "base:t00_00856",
       "source_sha256": "3afee5ce2c63c9c68dded1724f2cbadb411d12c8b7f1dfc10db75d7ed803844c",
-      "target": "苏德利<END>",
+      "target": "苏德里<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00857",
       "source_sha256": "ca9591e1fbf5d9825f446b5c048a186facd33711ca196a00c7d6337de9b426b0",
-      "target": "兹梅兹梅<END>",
+      "target": "兹美兹美<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00858",
       "source_sha256": "6f26b7b40702b6c713236cb35dd93f968007d10d3352841d743c61c2ec92f288",
-      "target": "夫伊夫伊<END>",
+      "target": "飞飞<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5115,7 +5115,7 @@
     {
       "key": "base:t00_00861",
       "source_sha256": "6be6e9e3565396c010f52ac8c5d8a75543b390b9f1b1538304566a6690209a05",
-      "target": "夫比夫比<END>",
+      "target": "胡比胡比<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5164,14 +5164,14 @@
     {
       "key": "base:t00_00868",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "里·卡兹（BWS）<END>",
+      "target": "灵格斯（BWS）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00869",
       "source_sha256": "392a88ded7286178e45b9f4d0f262916fefe812618151a38f5f5c5b384c386cb",
-      "target": "里·卡兹<END>",
+      "target": "灵格斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5192,42 +5192,42 @@
     {
       "key": "base:t00_00872",
       "source_sha256": "59741e3c204425f972b60f1f20f7261fdc54758b27b7fc1e21c608cdc451bb39",
-      "target": "突击迪亚斯<END>",
+      "target": "疾风迪亚斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00873",
       "source_sha256": "59741e3c204425f972b60f1f20f7261fdc54758b27b7fc1e21c608cdc451bb39",
-      "target": "突击迪亚斯<END>",
+      "target": "疾风迪亚斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00874",
       "source_sha256": "1bcaf3396f1df514f77cc9c571f3243a1f21cdf4b9ae31814aca88aaa4b9f9de",
-      "target": "超级加拉巴<END>",
+      "target": "超级卡拉巴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00875",
       "source_sha256": "69bdde6fd011ddafa66185b057199e425a52d046a81800b38d2f4a35a631cf7d",
-      "target": "超级兹瓦斯<END>",
+      "target": "超级滋华斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00876",
       "source_sha256": "1d8a8739ce814a5d8aa264c664832b4c8eb3bc5302a7e3a4861e6efc363ac9f8",
-      "target": "超级莱内克<END>",
+      "target": "超级莱聂克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00877",
       "source_sha256": "d0eafe18d7afc9a0294a63f0a4dfdff18c39034cf4e8787c47cc3cbf58207f7d",
-      "target": "超级莱普拉康<END>",
+      "target": "超级雷普拉卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5241,21 +5241,21 @@
     {
       "key": "base:t00_00879",
       "source_sha256": "25208aed197631bd10127b17d0461f351c96bc87496c6c798375e060fc4d76ed",
-      "target": "金牛座<END>",
+      "target": "陶拉斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00880",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "金牛座（MA）<END>",
+      "target": "陶拉斯（MA）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00881",
       "source_sha256": "67717b7ab6ae018ea8cb6614f2aa6ee765605c09dd0b9ef0105dba50b1b3ca09",
-      "target": "鹰号<END>",
+      "target": "飞鹰号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5269,7 +5269,7 @@
     {
       "key": "base:t00_00883",
       "source_sha256": "0b5873511348d0726870c28660284e8eba3b66bb74fe5cbbd97ece79a0f04b4f",
-      "target": "熊号<END>",
+      "target": "巨熊号<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5311,7 +5311,7 @@
     {
       "key": "base:t00_00889",
       "source_sha256": "3ad1524b6cded5faa0f3bd3e47494cd57111d0d8d3d28143187fb8c43766bf97",
-      "target": "修巴尔兹<END>",
+      "target": "修巴鲁兹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7222,14 +7222,14 @@
     {
       "key": "base:t00_01372",
       "source_sha256": "36b091504f822eb8ea1fab6fb0e80625dfb947b5d4d26b59cab1c2f69d50d1ac",
-      "target": "施皮格尔打击<END>",
+      "target": "明镜打击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01373",
       "source_sha256": "6a247a0e4fc350583cfdad0cfe5173cb4e05402268fdc2f36695baa707f13ed2",
-      "target": "施皮格尔之刃<END>",
+      "target": "明镜剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7250,7 +7250,7 @@
     {
       "key": "base:t00_01376",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7264,14 +7264,14 @@
     {
       "key": "base:t00_01378",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "神之斩击<END>",
+      "target": "神之斩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01379",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "神之斩击台风<END>",
+      "target": "神之斩台风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7285,7 +7285,7 @@
     {
       "key": "base:t00_01381",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7299,14 +7299,14 @@
     {
       "key": "base:t00_01383",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "神之斩击<END>",
+      "target": "神之斩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01384",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "神之斩击台风<END>",
+      "target": "神之斩台风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7327,14 +7327,14 @@
     {
       "key": "base:t00_01387",
       "source_sha256": "bb1fb90a1604215d23e46f5ffdd1b7c37a74c244e5b9e1ca64de57d6aad5c21f",
-      "target": "爆热神之斩击<END>",
+      "target": "爆热神之斩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01388",
       "source_sha256": "c026678a3ed4c1f970c536cf89d197c2b32144786b56d7646004a5995a602c04",
-      "target": "爆热神之手指<END>",
+      "target": "爆热神之指<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7376,7 +7376,7 @@
     {
       "key": "base:t00_01394",
       "source_sha256": "42d18fbd844b00462a436e3af816c035b712c47184b35e957c434c6c15ee456f",
-      "target": "闪光手指<END>",
+      "target": "闪光指<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7411,14 +7411,14 @@
     {
       "key": "base:t00_01399",
       "source_sha256": "42d18fbd844b00462a436e3af816c035b712c47184b35e957c434c6c15ee456f",
-      "target": "闪光手指<END>",
+      "target": "闪光指<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01400",
       "source_sha256": "28e86c42923aeaff88f22ecc7e40a4464b97d509408f6cc941c7d460e096a8e9",
-      "target": "闪光手指剑<END>",
+      "target": "闪光指剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7509,7 +7509,7 @@
     {
       "key": "base:t00_01413",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7600,14 +7600,14 @@
     {
       "key": "base:t00_01426",
       "source_sha256": "4be867f8640f8a9025d6caa0765f80464ed2ca2c1c21172b64ec1febb6809bb2",
-      "target": "玫瑰比特<END>",
+      "target": "玫瑰浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01427",
       "source_sha256": "5de01f2d14ce3da0c22b8e8518ae63578a835f8724836ecb8ed9f11f06441e0e",
-      "target": "玫瑰尖啸<END>",
+      "target": "玫瑰怒吼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7628,21 +7628,21 @@
     {
       "key": "base:t00_01430",
       "source_sha256": "4be867f8640f8a9025d6caa0765f80464ed2ca2c1c21172b64ec1febb6809bb2",
-      "target": "玫瑰比特<END>",
+      "target": "玫瑰浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01431",
       "source_sha256": "5de01f2d14ce3da0c22b8e8518ae63578a835f8724836ecb8ed9f11f06441e0e",
-      "target": "玫瑰尖啸<END>",
+      "target": "玫瑰怒吼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01432",
       "source_sha256": "f15adbe3433a8a95c44da4b0191b4bada949f033d123b72e6b88046eaeadba86",
-      "target": "玫瑰旋风<END>",
+      "target": "玫瑰飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7705,7 +7705,7 @@
     {
       "key": "base:t00_01441",
       "source_sha256": "49e9bff95ecc485b463e3c49ebdb7e85cff4f0c20da56a32ebd30d2623080c28",
-      "target": "真·流星胡蝶剑<END>",
+      "target": "真·流星蝴蝶剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7719,7 +7719,7 @@
     {
       "key": "base:t00_01443",
       "source_sha256": "2513c2de1e5793553e76b6d5d67ec75cfb7aed1830c5998b879baa1ec253d8ab",
-      "target": "重力子锤<END>",
+      "target": "重力流星锤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7733,14 +7733,14 @@
     {
       "key": "base:t00_01445",
       "source_sha256": "2513c2de1e5793553e76b6d5d67ec75cfb7aed1830c5998b879baa1ec253d8ab",
-      "target": "重力子锤<END>",
+      "target": "重力流星锤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01446",
       "source_sha256": "ec20df6e4f63f8275f917936cc4f576130a3f75841b19ec456c8b88c6f9cbc68",
-      "target": "盖亚粉碎<END>",
+      "target": "大地粉碎击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7768,7 +7768,7 @@
     {
       "key": "base:t00_01450",
       "source_sha256": "733a2a3115e51e50869f62a674f5ea5bffbe7316668932aa5d80955b297d9715",
-      "target": "沃尔特之牙<END>",
+      "target": "沃尔特獠牙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7824,7 +7824,7 @@
     {
       "key": "base:t00_01458",
       "source_sha256": "d71d076d158f678a8c5c6fc9e2ae9cfbce8a0350e3ed75319f00489e8d2b5fae",
-      "target": "审判之雷<END>",
+      "target": "制裁之雷<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7950,7 +7950,7 @@
     {
       "key": "base:t00_01476",
       "source_sha256": "aa7ba1c4d5a08b67e60c0108421a7d410b08a4b75d9d7b402e4cd44c754b7db0",
-      "target": "尊者布带<END>",
+      "target": "尊者之布<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7992,7 +7992,7 @@
     {
       "key": "base:t00_01482",
       "source_sha256": "219af4770f8c797d323229a51c6adadc39e76b3244969c4f621d6aade7c0798f",
-      "target": "黑暗手指<END>",
+      "target": "黑暗指<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8013,7 +8013,7 @@
     {
       "key": "base:t00_01485",
       "source_sha256": "aa7ba1c4d5a08b67e60c0108421a7d410b08a4b75d9d7b402e4cd44c754b7db0",
-      "target": "尊者布带<END>",
+      "target": "尊者之布<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8055,7 +8055,7 @@
     {
       "key": "base:t00_01491",
       "source_sha256": "219af4770f8c797d323229a51c6adadc39e76b3244969c4f621d6aade7c0798f",
-      "target": "黑暗手指<END>",
+      "target": "黑暗指<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8083,7 +8083,7 @@
     {
       "key": "base:t00_01495",
       "source_sha256": "aa7ba1c4d5a08b67e60c0108421a7d410b08a4b75d9d7b402e4cd44c754b7db0",
-      "target": "尊者布带<END>",
+      "target": "尊者之布<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8146,14 +8146,14 @@
     {
       "key": "base:t00_01504",
       "source_sha256": "94c420d49d68a0a7cddbd6034556529d53002a0f26f0dfd905bf1d34edc3fc73",
-      "target": "飞溅破碎<END>",
+      "target": "飞溅破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01505",
       "source_sha256": "c8c8ff9f95bc3b0e36b3bb84323a67755dd611d976dc99f541117996b8ab27c2",
-      "target": "飞溅破碎MAP<END>",
+      "target": "飞溅破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8489,7 +8489,7 @@
     {
       "key": "base:t00_01553",
       "source_sha256": "3444095eba816face1a44eb00c12200b43a49eb1599d574883a1bdf1232d2739",
-      "target": "长步枪<END>",
+      "target": "长距离步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8510,7 +8510,7 @@
     {
       "key": "base:t00_01556",
       "source_sha256": "b53cb6609441a606954090350eb2b8fe1f9cfc6ad38399c7d23df14d5ce35feb",
-      "target": "双光束步枪<END>",
+      "target": "2连装光束步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8538,7 +8538,7 @@
     {
       "key": "base:t00_01560",
       "source_sha256": "b53cb6609441a606954090350eb2b8fe1f9cfc6ad38399c7d23df14d5ce35feb",
-      "target": "双光束步枪<END>",
+      "target": "2连装光束步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8818,7 +8818,7 @@
     {
       "key": "base:t00_01600",
       "source_sha256": "af5c57ae4c00dee20ff0a70e269a771cd9193f166b0908528e9c3a2257d8b1bb",
-      "target": "超级锤<END>",
+      "target": "超级流星锤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8972,7 +8972,7 @@
     {
       "key": "base:t00_01622",
       "source_sha256": "aad841b802b6e41d485ccd99054ca9a5c52a0805df69d32402bde5f419bc9f5f",
-      "target": "火神炮吊舱<END>",
+      "target": "火神炮舱<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9014,7 +9014,7 @@
     {
       "key": "base:t00_01628",
       "source_sha256": "3444095eba816face1a44eb00c12200b43a49eb1599d574883a1bdf1232d2739",
-      "target": "长步枪<END>",
+      "target": "长距离步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9378,7 +9378,7 @@
     {
       "key": "base:t00_01680",
       "source_sha256": "a6b0c4345115cf2dc9356b6a1dbbdc949b904931ab88c146b4066458439d966a",
-      "target": "附刺刀光束步枪<END>",
+      "target": "枪刃型光束步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9567,7 +9567,7 @@
     {
       "key": "base:t00_01707",
       "source_sha256": "756caaed07254aeb227162db7d41be189fcfc5cb96d2618d4756758b785bb816",
-      "target": "有线式米加臂炮<END>",
+      "target": "有线式米加手臂炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9679,14 +9679,14 @@
     {
       "key": "base:t00_01723",
       "source_sha256": "a9610b16663d6d6e17dabe964baba0548e22c319d6b00db536667a4557b2cee5",
-      "target": "费达因步枪<END>",
+      "target": "斗士步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01724",
       "source_sha256": "aad841b802b6e41d485ccd99054ca9a5c52a0805df69d32402bde5f419bc9f5f",
-      "target": "火神炮吊舱<END>",
+      "target": "火神炮舱<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9763,7 +9763,7 @@
     {
       "key": "base:t00_01735",
       "source_sha256": "e0ef33c43fbf1cbe87de90b67e6f55f34c43c5b42efc43177b3cc2a895b90173",
-      "target": "铁拳火箭筒<END>",
+      "target": "暴风铁拳火箭弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9938,7 +9938,7 @@
     {
       "key": "base:t00_01760",
       "source_sha256": "47a2365f6abb80c6ef6744d8db1fc6359693d2d992c3b79b2604bd8319387626",
-      "target": "反射比特<END>",
+      "target": "反射浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9973,7 +9973,7 @@
     {
       "key": "base:t00_01765",
       "source_sha256": "e0ef33c43fbf1cbe87de90b67e6f55f34c43c5b42efc43177b3cc2a895b90173",
-      "target": "铁拳火箭筒<END>",
+      "target": "暴风铁拳火箭弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10225,7 +10225,7 @@
     {
       "key": "base:t00_01801",
       "source_sha256": "a9610b16663d6d6e17dabe964baba0548e22c319d6b00db536667a4557b2cee5",
-      "target": "费达因步枪<END>",
+      "target": "斗士步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10246,7 +10246,7 @@
     {
       "key": "base:t00_01804",
       "source_sha256": "ac5c255ab0b85fd6d6f40685758cdb89e332b11d08a71bf83caf1b5f95b2dac2",
-      "target": "海蛇<END>",
+      "target": "海蛇鞭<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10456,7 +10456,7 @@
     {
       "key": "base:t00_01834",
       "source_sha256": "87ca4f09720f4bb94ccd496b6a8a5ea513b47995767548871e0ddb0eedde40b0",
-      "target": "主动加农炮<END>",
+      "target": "可动式光束加农<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10533,7 +10533,7 @@
     {
       "key": "base:t00_01845",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10582,7 +10582,7 @@
     {
       "key": "base:t00_01852",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10596,42 +10596,42 @@
     {
       "key": "base:t00_01854",
       "source_sha256": "f5462e75ba0ff48babb54e78f71291ce7a18a807a4bedfdf36bd7a25e6e5fb6e",
-      "target": "双破坏步枪MAP<END>",
+      "target": "双管破坏步枪MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01855",
       "source_sha256": "e5ed700027b1c56644ab10fdfdcbc11a82838eb46afad5b1dd15215d35f9ab93",
-      "target": "双破坏步枪<END>",
+      "target": "双管破坏步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01856",
       "source_sha256": "7b29c55918b48c63619e9b5c1f8da796b811e25a38c0495e615f3cbd9d237adc",
-      "target": "双破坏步枪2MAP<END>",
+      "target": "双管破坏步枪2MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01857",
       "source_sha256": "f5462e75ba0ff48babb54e78f71291ce7a18a807a4bedfdf36bd7a25e6e5fb6e",
-      "target": "双破坏步枪MAP<END>",
+      "target": "双管破坏步枪MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01858",
       "source_sha256": "e5ed700027b1c56644ab10fdfdcbc11a82838eb46afad5b1dd15215d35f9ab93",
-      "target": "双破坏步枪<END>",
+      "target": "双管破坏步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01859",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10645,14 +10645,14 @@
     {
       "key": "base:t00_01861",
       "source_sha256": "e5ed700027b1c56644ab10fdfdcbc11a82838eb46afad5b1dd15215d35f9ab93",
-      "target": "双破坏步枪<END>",
+      "target": "双管破坏步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01862",
       "source_sha256": "f5462e75ba0ff48babb54e78f71291ce7a18a807a4bedfdf36bd7a25e6e5fb6e",
-      "target": "双破坏步枪MAP<END>",
+      "target": "双管破坏步枪MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10715,7 +10715,7 @@
     {
       "key": "base:t00_01871",
       "source_sha256": "f1c1b323bf03c9eb7ca88797c0cb9da9b9f6290bb0c79706223235836edf29d5",
-      "target": "十字粉碎<END>",
+      "target": "十字粉碎机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10736,7 +10736,7 @@
     {
       "key": "base:t00_01874",
       "source_sha256": "f1c1b323bf03c9eb7ca88797c0cb9da9b9f6290bb0c79706223235836edf29d5",
-      "target": "十字粉碎<END>",
+      "target": "十字粉碎机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10785,7 +10785,7 @@
     {
       "key": "base:t00_01881",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10813,7 +10813,7 @@
     {
       "key": "base:t00_01885",
       "source_sha256": "d164ddd27b67929a0fa3a4fdac3b6050ee31a0f9f4f01b061c15d0dd141eb641",
-      "target": "双光束镰刀<END>",
+      "target": "双刃光束镰刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10862,7 +10862,7 @@
     {
       "key": "base:t00_01892",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10897,7 +10897,7 @@
     {
       "key": "base:t00_01897",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10960,7 +10960,7 @@
     {
       "key": "base:t00_01906",
       "source_sha256": "f49cf0c1ce8359ee4cb83b6a0d30102ad8db1834932105434a71234fba6f2106",
-      "target": "机炮<END>",
+      "target": "机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11205,7 +11205,7 @@
     {
       "key": "base:t00_01941",
       "source_sha256": "2088456accd7a8c4542701c314d7433d7c3d92a4bef2f9acc858ad1bbe81b9c1",
-      "target": "粉碎盾<END>",
+      "target": "冲击盾牌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11240,7 +11240,7 @@
     {
       "key": "base:t00_01946",
       "source_sha256": "91ca5797d154987a1237d64575eb925eab99d1d520a96693f8c38ac699b76e97",
-      "target": "后旋踢<END>",
+      "target": "后回旋踢<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11254,21 +11254,21 @@
     {
       "key": "base:t00_01948",
       "source_sha256": "dc1c64451c1e5aeb2c3ee12ceec150f023c06b048eb5eb5b0689ddbabc719dbc",
-      "target": "紧急翼刃<END>",
+      "target": "冲刺飞翼切割<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01949",
       "source_sha256": "2684bdbd0125167846fb7cae67ac040c62df05a03fa18bd0036a93855e892b49",
-      "target": "肚脐导弹<END>",
+      "target": "腹部导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01950",
       "source_sha256": "dc4224e4ab0c72c77532d7c663a8dff82568ccb0585185a74d9250054b58d584",
-      "target": "魔神剑<END>",
+      "target": "魔神宝剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11289,7 +11289,7 @@
     {
       "key": "base:t00_01953",
       "source_sha256": "bab0c6c9a8adc8c0d1bd57349ba9defd4aa5c0fe4b57e529dd2c725411180ea1",
-      "target": "钻头压力飞拳<END>",
+      "target": "旋钻飞拳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11303,14 +11303,14 @@
     {
       "key": "base:t00_01955",
       "source_sha256": "790f820a619ac6e3867e61264223f8842288ef653cf14025b271b1cac7d8bbda",
-      "target": "雷霆霹雳<END>",
+      "target": "轰天雷<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01956",
       "source_sha256": "72333ca92d23205062cb56eade01cff011e09d878752803ee3b81dd26a05f875",
-      "target": "大魔神推进器<END>",
+      "target": "超级喷射机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11338,7 +11338,7 @@
     {
       "key": "base:t00_01960",
       "source_sha256": "d09af3fcc0e976c4dcc5afa11317f0d336a932aba0c69d2fe7e7353b6d6455e6",
-      "target": "光子力光束<END>",
+      "target": "光子力射线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11443,7 +11443,7 @@
     {
       "key": "base:t00_01975",
       "source_sha256": "2efa5e1952cbe74ff9ce0f9facc108edfd1fb915cc92c86f374e46d0c567acc7",
-      "target": "旋风<END>",
+      "target": "飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11464,21 +11464,21 @@
     {
       "key": "base:t00_01978",
       "source_sha256": "dc1c64451c1e5aeb2c3ee12ceec150f023c06b048eb5eb5b0689ddbabc719dbc",
-      "target": "紧急翼刃<END>",
+      "target": "冲刺飞翼切割<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01979",
       "source_sha256": "2684bdbd0125167846fb7cae67ac040c62df05a03fa18bd0036a93855e892b49",
-      "target": "肚脐导弹<END>",
+      "target": "腹部导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01980",
       "source_sha256": "dc4224e4ab0c72c77532d7c663a8dff82568ccb0585185a74d9250054b58d584",
-      "target": "魔神剑<END>",
+      "target": "魔神宝剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11499,7 +11499,7 @@
     {
       "key": "base:t00_01983",
       "source_sha256": "bab0c6c9a8adc8c0d1bd57349ba9defd4aa5c0fe4b57e529dd2c725411180ea1",
-      "target": "钻头压力飞拳<END>",
+      "target": "旋钻飞拳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11513,7 +11513,7 @@
     {
       "key": "base:t00_01985",
       "source_sha256": "790f820a619ac6e3867e61264223f8842288ef653cf14025b271b1cac7d8bbda",
-      "target": "雷霆霹雳<END>",
+      "target": "轰天雷<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11527,14 +11527,14 @@
     {
       "key": "base:t00_01987",
       "source_sha256": "0849ec04d581fdb58157fa0d51916b5cd4190304357d5d06fa3075da319c1c4e",
-      "target": "肩部回旋镖<END>",
+      "target": "肩射回旋镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01988",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "双镰刀<END>",
+      "target": "双头新月镰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11548,14 +11548,14 @@
     {
       "key": "base:t00_01990",
       "source_sha256": "5a4702a30d5fd4f3b34613018ac45a901107fe3993a24c896c0b9305fd5db4d1",
-      "target": "反重力风暴<END>",
+      "target": "反重力龙卷风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01991",
       "source_sha256": "710db006e5c04055f92c85bde02ba9843b36d28647b67986f069ccb77e5b54a1",
-      "target": "宇宙雷霆<END>",
+      "target": "宇宙雷鸣<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11569,14 +11569,14 @@
     {
       "key": "base:t00_01993",
       "source_sha256": "715a2ea21340c8a2b5f65e65b93975396e2f27e94e08961babd4071ba060a0fe",
-      "target": "双导弹<END>",
+      "target": "双重导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01994",
       "source_sha256": "0849ec04d581fdb58157fa0d51916b5cd4190304357d5d06fa3075da319c1c4e",
-      "target": "肩部回旋镖<END>",
+      "target": "肩射回旋镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11590,21 +11590,21 @@
     {
       "key": "base:t00_01996",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "双镰刀<END>",
+      "target": "双头新月镰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01997",
       "source_sha256": "0f43b7962ab649ed373247bd83dcd9a0b5ca1136efd2a902a589075531f1df2b",
-      "target": "双刃<END>",
+      "target": "双重旋刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01998",
       "source_sha256": "5a4702a30d5fd4f3b34613018ac45a901107fe3993a24c896c0b9305fd5db4d1",
-      "target": "反重力风暴<END>",
+      "target": "反重力龙卷风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11618,7 +11618,7 @@
     {
       "key": "base:t00_02000",
       "source_sha256": "710db006e5c04055f92c85bde02ba9843b36d28647b67986f069ccb77e5b54a1",
-      "target": "宇宙雷霆<END>",
+      "target": "宇宙雷鸣<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11639,7 +11639,7 @@
     {
       "key": "base:t00_02003",
       "source_sha256": "0849ec04d581fdb58157fa0d51916b5cd4190304357d5d06fa3075da319c1c4e",
-      "target": "肩部回旋镖<END>",
+      "target": "肩射回旋镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11653,7 +11653,7 @@
     {
       "key": "base:t00_02005",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "双镰刀<END>",
+      "target": "双头新月镰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11667,7 +11667,7 @@
     {
       "key": "base:t00_02007",
       "source_sha256": "5a4702a30d5fd4f3b34613018ac45a901107fe3993a24c896c0b9305fd5db4d1",
-      "target": "反重力风暴<END>",
+      "target": "反重力龙卷风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11681,7 +11681,7 @@
     {
       "key": "base:t00_02009",
       "source_sha256": "710db006e5c04055f92c85bde02ba9843b36d28647b67986f069ccb77e5b54a1",
-      "target": "宇宙雷霆<END>",
+      "target": "宇宙雷鸣<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11695,7 +11695,7 @@
     {
       "key": "base:t00_02011",
       "source_sha256": "0849ec04d581fdb58157fa0d51916b5cd4190304357d5d06fa3075da319c1c4e",
-      "target": "肩部回旋镖<END>",
+      "target": "肩射回旋镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11716,7 +11716,7 @@
     {
       "key": "base:t00_02014",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "双镰刀<END>",
+      "target": "双头新月镰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11730,7 +11730,7 @@
     {
       "key": "base:t00_02016",
       "source_sha256": "5a4702a30d5fd4f3b34613018ac45a901107fe3993a24c896c0b9305fd5db4d1",
-      "target": "反重力风暴<END>",
+      "target": "反重力龙卷风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11744,7 +11744,7 @@
     {
       "key": "base:t00_02018",
       "source_sha256": "710db006e5c04055f92c85bde02ba9843b36d28647b67986f069ccb77e5b54a1",
-      "target": "宇宙雷霆<END>",
+      "target": "宇宙雷鸣<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11758,35 +11758,35 @@
     {
       "key": "base:t00_02020",
       "source_sha256": "f8c93126455975e2f1f969beab752f680035c9ae90bbb7236eb50d6c62962e38",
-      "target": "熔解喷雾<END>",
+      "target": "溶解光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02021",
       "source_sha256": "b26a886f22ef5a0e3045382ba04ca9ed6f7cc9f031b50783e40ce4c7c7777454",
-      "target": "旋转飞碟<END>",
+      "target": "旋转飞轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02022",
       "source_sha256": "f6d90b7dc2f9528cc4dae9f913a7ee2000085f3984e0c0dd7dcd4a27085a9285",
-      "target": "旋转钻头<END>",
+      "target": "旋转钻孔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02023",
       "source_sha256": "0849ec04d581fdb58157fa0d51916b5cd4190304357d5d06fa3075da319c1c4e",
-      "target": "肩部回旋镖<END>",
+      "target": "肩射回旋镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02024",
       "source_sha256": "5a4702a30d5fd4f3b34613018ac45a901107fe3993a24c896c0b9305fd5db4d1",
-      "target": "反重力风暴<END>",
+      "target": "反重力龙卷风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11800,14 +11800,14 @@
     {
       "key": "base:t00_02026",
       "source_sha256": "710db006e5c04055f92c85bde02ba9843b36d28647b67986f069ccb77e5b54a1",
-      "target": "宇宙雷霆<END>",
+      "target": "宇宙雷鸣<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02027",
       "source_sha256": "715a2ea21340c8a2b5f65e65b93975396e2f27e94e08961babd4071ba060a0fe",
-      "target": "双导弹<END>",
+      "target": "双重导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11821,7 +11821,7 @@
     {
       "key": "base:t00_02029",
       "source_sha256": "0f43b7962ab649ed373247bd83dcd9a0b5ca1136efd2a902a589075531f1df2b",
-      "target": "双刃<END>",
+      "target": "双重旋刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11933,7 +11933,7 @@
     {
       "key": "base:t00_02045",
       "source_sha256": "552461b200831a4bf259afed6c24cb47b90da2b69d6379a1a8df9714c9b0c863",
-      "target": "巨型维加特隆光束炮<END>",
+      "target": "巨型贝加能源光束炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11954,14 +11954,14 @@
     {
       "key": "base:t00_02048",
       "source_sha256": "87d0be3e759baf205ddc4d49672c334356be08db0ce3f117224cf0eca4dd4616",
-      "target": "维加特隆光束<END>",
+      "target": "贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02049",
       "source_sha256": "2fdb6a0bc937d64bb574d06260854826ee9bd0d3da5c15d23f5bd844a843790f",
-      "target": "盖塔利刃<END>",
+      "target": "盖塔腕刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12031,7 +12031,7 @@
     {
       "key": "base:t00_02059",
       "source_sha256": "1dda7f542e18ebc99ae1dbecd20d814b34cf49e22872dd875e1f60fc4e2c19c2",
-      "target": "大雪山颪<END>",
+      "target": "大雪山崩落<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12066,7 +12066,7 @@
     {
       "key": "base:t00_02064",
       "source_sha256": "df30a7f94597c9cfeec8070a7e97553500c39709081aba2f67f7f6f5af00be87",
-      "target": "闪光火花<END>",
+      "target": "闪光爆烈<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12094,14 +12094,14 @@
     {
       "key": "base:t00_02068",
       "source_sha256": "1dda7f542e18ebc99ae1dbecd20d814b34cf49e22872dd875e1f60fc4e2c19c2",
-      "target": "大雪山颪<END>",
+      "target": "大雪山崩落<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02069",
       "source_sha256": "2db79ae374522f8ef11a3784069d32f20c9da14945b42725bcec9f0b5cde7217",
-      "target": "莱加导弹<END>",
+      "target": "狮虎导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12143,7 +12143,7 @@
     {
       "key": "base:t00_02075",
       "source_sha256": "17dd730441b77934fa773ea3a8777e448e8fa7ff12a5c61e22b3e32cb5758ab0",
-      "target": "斯托纳阳光<END>",
+      "target": "盖塔烈日弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12192,7 +12192,7 @@
     {
       "key": "base:t00_02082",
       "source_sha256": "729050c707bfe3edd43e7f2241d075d4494dd1625ac702c319861f946e67838a",
-      "target": "大雪山颪二段返<END>",
+      "target": "大雪山崩落二段返<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12388,21 +12388,21 @@
     {
       "key": "base:t00_02110",
       "source_sha256": "2e41fec3210b957c08ef5add6f640808c72a0912a613e619831daba6faab4416",
-      "target": "马斯闪光<END>",
+      "target": "雷霆闪电<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02111",
       "source_sha256": "cfe316713a92c11c8c3cf57df5a574f4c3f4415cfebdd839ad3009df91b82c5e",
-      "target": "戈德火焰<END>",
+      "target": "金光火焰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02112",
       "source_sha256": "417871e9732c53b30ff5d74dff56e4ad7b4b1580a88d9669efcc62790ba9775e",
-      "target": "终极戈德马斯<END>",
+      "target": "终极雷霆王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12598,7 +12598,7 @@
     {
       "key": "base:t00_02140",
       "source_sha256": "83c9ea42b7d553aed763592987ef81f678aae1cae6a4db3a66ae1d98794b875a",
-      "target": "双长枪<END>",
+      "target": "双刃对枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12612,7 +12612,7 @@
     {
       "key": "base:t00_02142",
       "source_sha256": "020b224a7440cca13e557e5d70c5abd8bdcd4d3fc609c2be612e12373d36207d",
-      "target": "超电磁溜溜球<END>",
+      "target": "超电磁悠悠球<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12647,14 +12647,14 @@
     {
       "key": "base:t00_02147",
       "source_sha256": "0fd1231767a0a6719cf37494a91a3524d46eececf3146700920fcf78e1699bf9",
-      "target": "大地冲锋<END>",
+      "target": "巨战车冲击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02148",
       "source_sha256": "f76258d7b1d5921d3e800e943a2d8ab6e4b71bd9500c34cf54b64e2d8c3bb580",
-      "target": "超电磁旋转<END>",
+      "target": "超电磁回旋<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12689,14 +12689,14 @@
     {
       "key": "base:t00_02153",
       "source_sha256": "b96348d03b5fc92a340350ee7a248accaa3b57b38122531564fa08b03a11e075",
-      "target": "克拉夫特钻头<END>",
+      "target": "装甲车钻头<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02154",
       "source_sha256": "b640387576f1246440037168394b030024c64dc1b840a43898af03cae2bf4fe5",
-      "target": "克拉夫特导弹<END>",
+      "target": "装甲车导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12843,14 +12843,14 @@
     {
       "key": "base:t00_02175",
       "source_sha256": "4dc35de168b7c7a72ef778d744e0d414ab9a99c59430e84dbf7061edcf61deca",
-      "target": "赞博马格南<END>",
+      "target": "赞波马格南<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02176",
       "source_sha256": "326afee4c6b5cef34555cfc392ddbec4c6a0fb1bf47419d39af9f1863dc923db",
-      "target": "赞博步枪<END>",
+      "target": "赞波步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12878,28 +12878,28 @@
     {
       "key": "base:t00_02180",
       "source_sha256": "f0e66c5063f65588829aa6716961f736c8eeed95d05982fa9ca4e1f76d453bc6",
-      "target": "赞博特破坏者<END>",
+      "target": "赞波破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02181",
       "source_sha256": "a288988fca4a252c4c30b4a0440e4fbb05aaf3704b078967819fe42b5b4f4889",
-      "target": "赞博特格拉普<END>",
+      "target": "赞波格拉普<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02182",
       "source_sha256": "3203c0494e63cde374bf55e9c0d64dd2d0ddd7d286f0d3542c85a83acb6f727d",
-      "target": "赞博特重击<END>",
+      "target": "赞波重击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02183",
       "source_sha256": "e441296672237af59522ae1a1822ad19940c94c7d985a37a0f34bca6516ccb6f",
-      "target": "赞博特切割刃<END>",
+      "target": "赞波切割刃<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13109,7 +13109,7 @@
     {
       "key": "base:t00_02213",
       "source_sha256": "edab90666aeff8f7e75b68f2d9ba47f1ddc4f3e2812902956574400cfd85451c",
-      "target": "泰坦斩刀<END>",
+      "target": "泰坦斩马刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13151,7 +13151,7 @@
     {
       "key": "base:t00_02219",
       "source_sha256": "08e20d78085520295bbf6e965880f6e655758bfb6b1ea9999573ca2b0bd8b2a0",
-      "target": "太阳攻击<END>",
+      "target": "日轮攻击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13291,7 +13291,7 @@
     {
       "key": "base:t00_02239",
       "source_sha256": "e1a2e8b672b43314b5ce95c8495568eb248b77d038d53746808c163e8690cf2b",
-      "target": "冈多尔炮<END>",
+      "target": "钢铎尔炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13767,7 +13767,7 @@
     {
       "key": "base:t00_02307",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14096,7 +14096,7 @@
     {
       "key": "base:t00_02354",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14124,7 +14124,7 @@
     {
       "key": "base:t00_02358",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14222,7 +14222,7 @@
     {
       "key": "base:t00_02372",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14348,7 +14348,7 @@
     {
       "key": "base:t00_02390",
       "source_sha256": "c1ae96e1213c13146120cf989a571880f7a92790baf4833053ad0ee664148975",
-      "target": "冷冻光束<END>",
+      "target": "冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14362,7 +14362,7 @@
     {
       "key": "base:t00_02392",
       "source_sha256": "d09af3fcc0e976c4dcc5afa11317f0d336a932aba0c69d2fe7e7353b6d6455e6",
-      "target": "光子力光束<END>",
+      "target": "光子力射线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14383,21 +14383,21 @@
     {
       "key": "base:t00_02395",
       "source_sha256": "cad884cbd52a6d53d89d93fe095686e3df60cc8dd4471be66c00d4b86f086a8d",
-      "target": "锈蚀飓风<END>",
+      "target": "腐蚀飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02396",
       "source_sha256": "7ed37112476f037db84e431ee3dd0545cdf1a93a537ef4f2e2d06debb57fc991",
-      "target": "胸部热线<END>",
+      "target": "胸部火焰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02397",
       "source_sha256": "c1ae96e1213c13146120cf989a571880f7a92790baf4833053ad0ee664148975",
-      "target": "冷冻光束<END>",
+      "target": "冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14411,7 +14411,7 @@
     {
       "key": "base:t00_02399",
       "source_sha256": "d09af3fcc0e976c4dcc5afa11317f0d336a932aba0c69d2fe7e7353b6d6455e6",
-      "target": "光子力光束<END>",
+      "target": "光子力射线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14425,7 +14425,7 @@
     {
       "key": "base:t00_02401",
       "source_sha256": "ed44152470635d512472710b2bacac0697860fd15f743fbbb8e04aaed250034c",
-      "target": "南十字飞刀<END>",
+      "target": "南星十字镖<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14439,28 +14439,28 @@
     {
       "key": "base:t00_02403",
       "source_sha256": "cad884cbd52a6d53d89d93fe095686e3df60cc8dd4471be66c00d4b86f086a8d",
-      "target": "锈蚀飓风<END>",
+      "target": "腐蚀飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02404",
       "source_sha256": "1c5bedef585af4337636e28d509caf76f0169cc39eb35088fcc2e720a56a77c9",
-      "target": "飞翼切割刃<END>",
+      "target": "飞翼切割<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02405",
       "source_sha256": "23c41772aaa3d688f6bc88452760ef59692740e82ba8136d70666da19c048e2a",
-      "target": "钢铁切割刃<END>",
+      "target": "切割飞拳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02406",
       "source_sha256": "7ed37112476f037db84e431ee3dd0545cdf1a93a537ef4f2e2d06debb57fc991",
-      "target": "胸部热线<END>",
+      "target": "胸部火焰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14474,14 +14474,14 @@
     {
       "key": "base:t00_02408",
       "source_sha256": "a5c30dd4b078a0df361936ca8c8c97101b1a25a953f6634669ad3c47781d06c7",
-      "target": "胸部热线MAP<END>",
+      "target": "胸部火焰MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02409",
       "source_sha256": "d09af3fcc0e976c4dcc5afa11317f0d336a932aba0c69d2fe7e7353b6d6455e6",
-      "target": "光子力光束<END>",
+      "target": "光子力射线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14495,14 +14495,14 @@
     {
       "key": "base:t00_02411",
       "source_sha256": "cad884cbd52a6d53d89d93fe095686e3df60cc8dd4471be66c00d4b86f086a8d",
-      "target": "锈蚀飓风<END>",
+      "target": "腐蚀飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02412",
       "source_sha256": "7ed37112476f037db84e431ee3dd0545cdf1a93a537ef4f2e2d06debb57fc991",
-      "target": "胸部热线<END>",
+      "target": "胸部火焰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15188,7 +15188,7 @@
     {
       "key": "base:t00_02514",
       "source_sha256": "b2ad038d8402b9fcd1a7aec7ee690519ff3bcf4aa42938df554a5673a8de89af",
-      "target": "长型米加破坏炮<END>",
+      "target": "长距离米加破坏炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15538,14 +15538,14 @@
     {
       "key": "base:t00_02564",
       "source_sha256": "94c420d49d68a0a7cddbd6034556529d53002a0f26f0dfd905bf1d34edc3fc73",
-      "target": "飞溅破碎<END>",
+      "target": "飞溅破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02565",
       "source_sha256": "c8c8ff9f95bc3b0e36b3bb84323a67755dd611d976dc99f541117996b8ab27c2",
-      "target": "飞溅破碎MAP<END>",
+      "target": "飞溅破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15601,7 +15601,7 @@
     {
       "key": "base:t00_02573",
       "source_sha256": "7b29c55918b48c63619e9b5c1f8da796b811e25a38c0495e615f3cbd9d237adc",
-      "target": "双破坏步枪2MAP<END>",
+      "target": "双管破坏步枪2MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15636,7 +15636,7 @@
     {
       "key": "base:t00_02578",
       "source_sha256": "7524b0dc557f88f052e9049d5b89b6982b3c76e0dc403e6e76eb45125a61043a",
-      "target": "冈多尔炮MAP<END>",
+      "target": "钢铎尔炮MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15650,7 +15650,7 @@
     {
       "key": "base:t00_02580",
       "source_sha256": "a5c30dd4b078a0df361936ca8c8c97101b1a25a953f6634669ad3c47781d06c7",
-      "target": "胸部热线MAP<END>",
+      "target": "胸部火焰MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15762,7 +15762,7 @@
     {
       "key": "base:t00_02597",
       "source_sha256": "a15db373957c0d3393c02704afcdfc8af2c3ea9bc8e2d77855a3fe39492591cc",
-      "target": "双重魔神剑<END>",
+      "target": "双重魔神宝剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15790,7 +15790,7 @@
     {
       "key": "base:t00_02601",
       "source_sha256": "16a0c587b4fd7724e7209f2bf730868c6ea867b93881c12da9926544e187bd92",
-      "target": "卡扎风暴<END>",
+      "target": "加萨风暴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15832,7 +15832,7 @@
     {
       "key": "base:t00_02608",
       "source_sha256": "2e6e7561fcd84fdb5c83290e65241c590242d84a4f09eeaa757396d72dee9f08",
-      "target": "双重燃烧火焰（密涅瓦）<END>",
+      "target": "双重燃烧火焰（米涅瓦）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16000,7 +16000,7 @@
     {
       "key": "base:t00_02632",
       "source_sha256": "062535e848ca995f1bcef66f761a8bc0c8d9fd38cd1bb010d3064763b9d539a4",
-      "target": "维加特隆冷冻光线<END>",
+      "target": "贝加能源冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16014,21 +16014,21 @@
     {
       "key": "base:t00_02634",
       "source_sha256": "87d0be3e759baf205ddc4d49672c334356be08db0ce3f117224cf0eca4dd4616",
-      "target": "维加特隆光束<END>",
+      "target": "贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02635",
       "source_sha256": "416c89834029921b42edc86dad350c88ad29e8eb5561dfac79824efbef14150b",
-      "target": "维加特隆激光<END>",
+      "target": "贝加能源激光<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02636",
       "source_sha256": "87d0be3e759baf205ddc4d49672c334356be08db0ce3f117224cf0eca4dd4616",
-      "target": "维加特隆光束<END>",
+      "target": "贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16056,14 +16056,14 @@
     {
       "key": "base:t00_02640",
       "source_sha256": "87d0be3e759baf205ddc4d49672c334356be08db0ce3f117224cf0eca4dd4616",
-      "target": "维加特隆光束<END>",
+      "target": "贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02641",
       "source_sha256": "87d0be3e759baf205ddc4d49672c334356be08db0ce3f117224cf0eca4dd4616",
-      "target": "维加特隆光束<END>",
+      "target": "贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16315,7 +16315,7 @@
     {
       "key": "base:t00_02677",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16399,7 +16399,7 @@
     {
       "key": "base:t00_02689",
       "source_sha256": "a6ffeed27e75001afe0a54b58e88c0e636e7a61a7015b29269a18b3a350da92e",
-      "target": "弗雷炸弹<END>",
+      "target": "火焰炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16483,14 +16483,14 @@
     {
       "key": "base:t00_02701",
       "source_sha256": "597362120306a25070134878a42f161cb8e4fe41d43ce4580514511984b8c669",
-      "target": "格施皮格尔打击P<END>",
+      "target": "格明镜打击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02702",
       "source_sha256": "4810fd2efb5fe2f8f7b3adae3d4aa1a1cf71bb59641aaf5bc811ca09c4eba6a6",
-      "target": "格施皮格尔之刃P<END>",
+      "target": "格明镜剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16511,7 +16511,7 @@
     {
       "key": "base:t00_02705",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16525,14 +16525,14 @@
     {
       "key": "base:t00_02707",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格神之斩击P<END>",
+      "target": "格神之斩P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02708",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格神之斩击台风P<END>",
+      "target": "格神之斩台风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16546,7 +16546,7 @@
     {
       "key": "base:t00_02710",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16560,14 +16560,14 @@
     {
       "key": "base:t00_02712",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格神之斩击P<END>",
+      "target": "格神之斩P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02713",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格神之斩击台风P<END>",
+      "target": "格神之斩台风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16588,14 +16588,14 @@
     {
       "key": "base:t00_02716",
       "source_sha256": "dd4f055b379c97b74c8db57da695defac4cdf157971bea00a4278e44563088e8",
-      "target": "格爆热神之斩击P<END>",
+      "target": "格爆热神之斩P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02717",
       "source_sha256": "d3118d3ede9107ebecf1ea8631c649c84be19e64531dd132c678289922f7258d",
-      "target": "格爆热神之手指P<END>",
+      "target": "格爆热神之指P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16637,7 +16637,7 @@
     {
       "key": "base:t00_02723",
       "source_sha256": "41e8ce7943f254c787945ca0d2e120584c9cd487a8b246cdd3e0ee056e2cd37a",
-      "target": "格闪光手指P<END>",
+      "target": "格闪光指P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16672,14 +16672,14 @@
     {
       "key": "base:t00_02728",
       "source_sha256": "41e8ce7943f254c787945ca0d2e120584c9cd487a8b246cdd3e0ee056e2cd37a",
-      "target": "格闪光手指P<END>",
+      "target": "格闪光指P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02729",
       "source_sha256": "3c944b3a6ef9ec6da54d8cbdb8f5fcf5d57362390b2721af081ffbd0804ef6d1",
-      "target": "格闪光手指剑P<END>",
+      "target": "格闪光指剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16770,7 +16770,7 @@
     {
       "key": "base:t00_02742",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16861,14 +16861,14 @@
     {
       "key": "base:t00_02755",
       "source_sha256": "8b1ee296b95e70353a6b725d7756ad3563ea2fa85550aaacb45ee6efae2ce093",
-      "target": "格玫瑰比特<END>",
+      "target": "格玫瑰浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02756",
       "source_sha256": "56248936f1abadc093a719d290db148274a2d1080dd2cf9c71366934e5ad0c0a",
-      "target": "格玫瑰尖啸<END>",
+      "target": "格玫瑰怒吼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16889,21 +16889,21 @@
     {
       "key": "base:t00_02759",
       "source_sha256": "8b1ee296b95e70353a6b725d7756ad3563ea2fa85550aaacb45ee6efae2ce093",
-      "target": "格玫瑰比特<END>",
+      "target": "格玫瑰浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02760",
       "source_sha256": "56248936f1abadc093a719d290db148274a2d1080dd2cf9c71366934e5ad0c0a",
-      "target": "格玫瑰尖啸<END>",
+      "target": "格玫瑰怒吼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02761",
       "source_sha256": "4ae872542c2649d25dbd4dd70e82ab8eb102dd0e7befb6560678d2fd1e6bcd82",
-      "target": "格玫瑰旋风<END>",
+      "target": "格玫瑰飓风<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16966,7 +16966,7 @@
     {
       "key": "base:t00_02770",
       "source_sha256": "a7c6625c625eccc6d7db5485fac2a3f3758294856dc7177d36aec9fcb87dd7ca",
-      "target": "格真·流星胡蝶剑P<END>",
+      "target": "格真·流星蝴蝶剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16980,7 +16980,7 @@
     {
       "key": "base:t00_02772",
       "source_sha256": "00f5ea354ac0bd022839ce2e848e03fe1ec46e4c880108f9979675dc255d029c",
-      "target": "格重力子锤P<END>",
+      "target": "格重力流星锤P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16994,14 +16994,14 @@
     {
       "key": "base:t00_02774",
       "source_sha256": "00f5ea354ac0bd022839ce2e848e03fe1ec46e4c880108f9979675dc255d029c",
-      "target": "格重力子锤P<END>",
+      "target": "格重力流星锤P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02775",
       "source_sha256": "9cf6d6614368f8214a1e915dec8f8d9a655c5b4ef2eb78af806b7ca7c75271be",
-      "target": "格盖亚粉碎P<END>",
+      "target": "格大地粉碎击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17029,7 +17029,7 @@
     {
       "key": "base:t00_02779",
       "source_sha256": "6a056d9506cb742a31030b3d1befc6f14d20ea2a05bca32970fc6f7221558492",
-      "target": "格沃尔特之牙P<END>",
+      "target": "格沃尔特獠牙P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17085,7 +17085,7 @@
     {
       "key": "base:t00_02787",
       "source_sha256": "cf755541f86533f2322e0daa54da7187ce6acb548d449d17cd585216979e5df6",
-      "target": "格审判之雷P<END>",
+      "target": "格制裁之雷P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17211,7 +17211,7 @@
     {
       "key": "base:t00_02805",
       "source_sha256": "79bbe914ba756b3c18050db151dae75da59f9dc5ed4cc5e5bc98c93dcc2b5787",
-      "target": "格尊者布带P<END>",
+      "target": "格尊者之布P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17253,7 +17253,7 @@
     {
       "key": "base:t00_02811",
       "source_sha256": "f50dacb09fad9a14dd06e671fc28757babc042314dec525822904a6f8df5c20f",
-      "target": "格黑暗手指P<END>",
+      "target": "格黑暗指P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17274,7 +17274,7 @@
     {
       "key": "base:t00_02814",
       "source_sha256": "79bbe914ba756b3c18050db151dae75da59f9dc5ed4cc5e5bc98c93dcc2b5787",
-      "target": "格尊者布带P<END>",
+      "target": "格尊者之布P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17316,7 +17316,7 @@
     {
       "key": "base:t00_02820",
       "source_sha256": "f50dacb09fad9a14dd06e671fc28757babc042314dec525822904a6f8df5c20f",
-      "target": "格黑暗手指P<END>",
+      "target": "格黑暗指P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17344,7 +17344,7 @@
     {
       "key": "base:t00_02824",
       "source_sha256": "79bbe914ba756b3c18050db151dae75da59f9dc5ed4cc5e5bc98c93dcc2b5787",
-      "target": "格尊者布带P<END>",
+      "target": "格尊者之布P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17407,14 +17407,14 @@
     {
       "key": "base:t00_02833",
       "source_sha256": "c4cab8ab7f8b29b57365a83f101c5090fc20b37f0d9f97f4ec331ea48fc0f684",
-      "target": "射飞溅破碎<END>",
+      "target": "射飞溅破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02834",
       "source_sha256": "570003e32e610ef3a1cd323af713b697690df80c0e486c644fcd89d67dbca790",
-      "target": "射飞溅破碎MAP<END>",
+      "target": "射飞溅破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17750,7 +17750,7 @@
     {
       "key": "base:t00_02882",
       "source_sha256": "6d3659ff3732c5958bcc91e04586b710b3e7246c7a6bb61ff18042efd4f249ab",
-      "target": "射长步枪B<END>",
+      "target": "射长距离步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17771,7 +17771,7 @@
     {
       "key": "base:t00_02885",
       "source_sha256": "43efa3674958442d8e4b1ea113fa274422c180c464c2853dba1d868870c66e54",
-      "target": "射双光束步枪B<END>",
+      "target": "射2连装光束步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17799,7 +17799,7 @@
     {
       "key": "base:t00_02889",
       "source_sha256": "43efa3674958442d8e4b1ea113fa274422c180c464c2853dba1d868870c66e54",
-      "target": "射双光束步枪B<END>",
+      "target": "射2连装光束步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18079,7 +18079,7 @@
     {
       "key": "base:t00_02929",
       "source_sha256": "4e9d6f5568afd896f57cc3dbc6d409982870044ce5954fba8e8f5ea4558cea2d",
-      "target": "格超级锤P<END>",
+      "target": "格超级流星锤P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18233,7 +18233,7 @@
     {
       "key": "base:t00_02951",
       "source_sha256": "6418054f9ac4658aa524caf825a9200e1de9c24c800426763fead0b5b6942266",
-      "target": "射火神炮吊舱P<END>",
+      "target": "射火神炮舱P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18275,7 +18275,7 @@
     {
       "key": "base:t00_02957",
       "source_sha256": "6d3659ff3732c5958bcc91e04586b710b3e7246c7a6bb61ff18042efd4f249ab",
-      "target": "射长步枪B<END>",
+      "target": "射长距离步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18639,7 +18639,7 @@
     {
       "key": "base:t00_03009",
       "source_sha256": "930dd5d57bfc2aa56e83bf7aa4326f42a930fee1b425fb249e531a32ee73685f",
-      "target": "射附刺刀光束步枪B<END>",
+      "target": "射枪刃型光束步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18828,7 +18828,7 @@
     {
       "key": "base:t00_03036",
       "source_sha256": "16c1b9ab142cc8a62ca127eca121246b138df9b71e14d128f492b53f94cf7e92",
-      "target": "格有线式米加臂炮P<END>",
+      "target": "格有线式米加手臂炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18940,14 +18940,14 @@
     {
       "key": "base:t00_03052",
       "source_sha256": "36d816b697759d92826575455fe1a7238e065d351c6396dee292cd5c0c6475fa",
-      "target": "射费达因步枪B<END>",
+      "target": "射斗士步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03053",
       "source_sha256": "6418054f9ac4658aa524caf825a9200e1de9c24c800426763fead0b5b6942266",
-      "target": "射火神炮吊舱P<END>",
+      "target": "射火神炮舱P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19024,7 +19024,7 @@
     {
       "key": "base:t00_03064",
       "source_sha256": "f73fbb41eb3063db47dc42fa1aa2a4a1c12859bf6621e6e55dc0daf91e944da7",
-      "target": "射铁拳火箭筒<END>",
+      "target": "射暴风铁拳火箭弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19199,7 +19199,7 @@
     {
       "key": "base:t00_03089",
       "source_sha256": "42df5d6f1c4d79640625546cad9e84b6aa7b337622a953ac46fb08af3e1f8937",
-      "target": "射反射比特<END>",
+      "target": "射反射浮游炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19234,7 +19234,7 @@
     {
       "key": "base:t00_03094",
       "source_sha256": "f73fbb41eb3063db47dc42fa1aa2a4a1c12859bf6621e6e55dc0daf91e944da7",
-      "target": "射铁拳火箭筒<END>",
+      "target": "射暴风铁拳火箭弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19486,7 +19486,7 @@
     {
       "key": "base:t00_03130",
       "source_sha256": "36d816b697759d92826575455fe1a7238e065d351c6396dee292cd5c0c6475fa",
-      "target": "射费达因步枪B<END>",
+      "target": "射斗士步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19507,7 +19507,7 @@
     {
       "key": "base:t00_03133",
       "source_sha256": "e3e51bb244bc566575a16f7a91a10d0ae77bd26324766b58e6d923f0a3a3ffbe",
-      "target": "格海蛇P<END>",
+      "target": "格海蛇鞭P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19717,7 +19717,7 @@
     {
       "key": "base:t00_03163",
       "source_sha256": "b0358ee1e554d7640c130791a09634a69b15c6cc42e60e042d507ddae3c2fe5c",
-      "target": "射主动加农炮B<END>",
+      "target": "射可动式光束加农B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19794,7 +19794,7 @@
     {
       "key": "base:t00_03174",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19843,7 +19843,7 @@
     {
       "key": "base:t00_03181",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19857,42 +19857,42 @@
     {
       "key": "base:t00_03183",
       "source_sha256": "353f6c5d9f6573cb6b63daac376d9c6d7006c301140dacfeb4c207d5475bab6e",
-      "target": "射双破坏步枪BMAP<END>",
+      "target": "射双管破坏步枪BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03184",
       "source_sha256": "d44ced2e4c6ddab8ddf0745208b43e5c9fcc3c0fc5fa761f2b9bf4ef6c5d7a82",
-      "target": "射双破坏步枪B<END>",
+      "target": "射双管破坏步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03185",
       "source_sha256": "dcfb58dae1aeebdf6cd2666405a70d592040d7e26bfcd88a3753c2a8a2a2086a",
-      "target": "射双破坏步枪2BMAP<END>",
+      "target": "射双管破坏步枪2BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03186",
       "source_sha256": "353f6c5d9f6573cb6b63daac376d9c6d7006c301140dacfeb4c207d5475bab6e",
-      "target": "射双破坏步枪BMAP<END>",
+      "target": "射双管破坏步枪BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03187",
       "source_sha256": "d44ced2e4c6ddab8ddf0745208b43e5c9fcc3c0fc5fa761f2b9bf4ef6c5d7a82",
-      "target": "射双破坏步枪B<END>",
+      "target": "射双管破坏步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03188",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19906,14 +19906,14 @@
     {
       "key": "base:t00_03190",
       "source_sha256": "d44ced2e4c6ddab8ddf0745208b43e5c9fcc3c0fc5fa761f2b9bf4ef6c5d7a82",
-      "target": "射双破坏步枪B<END>",
+      "target": "射双管破坏步枪B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03191",
       "source_sha256": "353f6c5d9f6573cb6b63daac376d9c6d7006c301140dacfeb4c207d5475bab6e",
-      "target": "射双破坏步枪BMAP<END>",
+      "target": "射双管破坏步枪BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19976,7 +19976,7 @@
     {
       "key": "base:t00_03200",
       "source_sha256": "1179829468e36e3e821a0cbc4049be5a5c0e66a44673f5a9dd879ac90a9582d3",
-      "target": "格十字粉碎P<END>",
+      "target": "格十字粉碎机P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19997,7 +19997,7 @@
     {
       "key": "base:t00_03203",
       "source_sha256": "1179829468e36e3e821a0cbc4049be5a5c0e66a44673f5a9dd879ac90a9582d3",
-      "target": "格十字粉碎P<END>",
+      "target": "格十字粉碎机P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20046,7 +20046,7 @@
     {
       "key": "base:t00_03210",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20074,7 +20074,7 @@
     {
       "key": "base:t00_03214",
       "source_sha256": "b4de9205c98e76149388fb77db170b6c07ae5492497b4d962c43a10106a15d37",
-      "target": "格双光束镰刀P<END>",
+      "target": "格双刃光束镰刀P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20123,7 +20123,7 @@
     {
       "key": "base:t00_03221",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20158,7 +20158,7 @@
     {
       "key": "base:t00_03226",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20221,7 +20221,7 @@
     {
       "key": "base:t00_03235",
       "source_sha256": "f6268c1a9cb12d22fba13760c2ad66c480926db0f35800930fb5e1e84e8449f1",
-      "target": "射机炮<END>",
+      "target": "射机关炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20466,7 +20466,7 @@
     {
       "key": "base:t00_03270",
       "source_sha256": "977a24bde1e724e4b17cd19c0faac00075f0d7eb170d7486ae3c46e8f02b1d03",
-      "target": "格粉碎盾P<END>",
+      "target": "格冲击盾牌P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20501,7 +20501,7 @@
     {
       "key": "base:t00_03275",
       "source_sha256": "e83b1eee9301532a70b4f8c17d2b3325b7f3fb659b40871a5a786dd2ecaaffec",
-      "target": "格后旋踢P<END>",
+      "target": "格后回旋踢P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20515,21 +20515,21 @@
     {
       "key": "base:t00_03277",
       "source_sha256": "263b6d32173fd50ce3de8edf6f3dbbaa42399032254d673746cff38566150959",
-      "target": "格紧急翼刃P<END>",
+      "target": "格冲刺飞翼切割P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03278",
       "source_sha256": "fb0ae76edd627222465d9d8d70345f58aa76fedc1127e6fe98523509b1f04254",
-      "target": "射肚脐导弹<END>",
+      "target": "射腹部导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03279",
       "source_sha256": "d3f388b59def38ea3e857d78ca694764c736c8b3e2442ceac23b2f038d23d88f",
-      "target": "格魔神剑P<END>",
+      "target": "格魔神宝剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20550,7 +20550,7 @@
     {
       "key": "base:t00_03282",
       "source_sha256": "edca1b35eb2be9f029e9c09ac61a277be5120c015013bab18f38cc1acdb025c9",
-      "target": "格钻头压力飞拳P<END>",
+      "target": "格旋钻飞拳P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20564,14 +20564,14 @@
     {
       "key": "base:t00_03284",
       "source_sha256": "4c6e7e4b59c5ffc8ae29d3916a640ccebe738f07571a3d868107b142150441b6",
-      "target": "格雷霆霹雳P<END>",
+      "target": "格轰天雷P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03285",
       "source_sha256": "b5629d5998fbd2cb63f19b82dd83f66de4bc397de7663a082c4a19a78b13ad68",
-      "target": "格大魔神推进器<END>",
+      "target": "格超级喷射机<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20599,7 +20599,7 @@
     {
       "key": "base:t00_03289",
       "source_sha256": "04aea6cad4556775d698827b1a1114c135beab465cace26d383909f375f61b05",
-      "target": "格光子力光束P<END>",
+      "target": "格光子力射线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20704,7 +20704,7 @@
     {
       "key": "base:t00_03304",
       "source_sha256": "2d6d7fcdd2fc22bdaec8c7075b083e48f6e0eba727b9ff09b6e39476f19b691e",
-      "target": "格旋风P<END>",
+      "target": "格飓风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20725,21 +20725,21 @@
     {
       "key": "base:t00_03307",
       "source_sha256": "263b6d32173fd50ce3de8edf6f3dbbaa42399032254d673746cff38566150959",
-      "target": "格紧急翼刃P<END>",
+      "target": "格冲刺飞翼切割P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03308",
       "source_sha256": "fb0ae76edd627222465d9d8d70345f58aa76fedc1127e6fe98523509b1f04254",
-      "target": "射肚脐导弹<END>",
+      "target": "射腹部导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03309",
       "source_sha256": "d3f388b59def38ea3e857d78ca694764c736c8b3e2442ceac23b2f038d23d88f",
-      "target": "格魔神剑P<END>",
+      "target": "格魔神宝剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20760,7 +20760,7 @@
     {
       "key": "base:t00_03312",
       "source_sha256": "edca1b35eb2be9f029e9c09ac61a277be5120c015013bab18f38cc1acdb025c9",
-      "target": "格钻头压力飞拳P<END>",
+      "target": "格旋钻飞拳P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20774,7 +20774,7 @@
     {
       "key": "base:t00_03314",
       "source_sha256": "4c6e7e4b59c5ffc8ae29d3916a640ccebe738f07571a3d868107b142150441b6",
-      "target": "格雷霆霹雳P<END>",
+      "target": "格轰天雷P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20788,14 +20788,14 @@
     {
       "key": "base:t00_03316",
       "source_sha256": "cda65536aad4cb32f401f27aebb586b308ecaef33ba011e36c6418abd4d64792",
-      "target": "格肩部回旋镖P<END>",
+      "target": "格肩射回旋镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03317",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格双镰刀P<END>",
+      "target": "格双头新月镰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20809,14 +20809,14 @@
     {
       "key": "base:t00_03319",
       "source_sha256": "52ac8fc0af9a80cc7249bfd3462e7349c23ddbf601bc314e5a8437cacbe152f7",
-      "target": "格反重力风暴P<END>",
+      "target": "格反重力龙卷风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03320",
       "source_sha256": "8a3ba5e4d336f7bc0fa3a828dc2ec42813f9732bac614d33e80325e0445142a6",
-      "target": "格宇宙雷霆P<END>",
+      "target": "格宇宙雷鸣P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20830,14 +20830,14 @@
     {
       "key": "base:t00_03322",
       "source_sha256": "52a111837eeaef06d39594d94fff12bd4bfb6c697ac9679f4da0a84079f14f0f",
-      "target": "射双导弹<END>",
+      "target": "射双重导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03323",
       "source_sha256": "cda65536aad4cb32f401f27aebb586b308ecaef33ba011e36c6418abd4d64792",
-      "target": "格肩部回旋镖P<END>",
+      "target": "格肩射回旋镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20851,21 +20851,21 @@
     {
       "key": "base:t00_03325",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格双镰刀P<END>",
+      "target": "格双头新月镰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03326",
       "source_sha256": "467e3fc30c3fde8688cf1e785c4a351b4ba2237351a2194e7f518056918891c7",
-      "target": "射双刃<END>",
+      "target": "射双重旋刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03327",
       "source_sha256": "52ac8fc0af9a80cc7249bfd3462e7349c23ddbf601bc314e5a8437cacbe152f7",
-      "target": "格反重力风暴P<END>",
+      "target": "格反重力龙卷风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20879,7 +20879,7 @@
     {
       "key": "base:t00_03329",
       "source_sha256": "8a3ba5e4d336f7bc0fa3a828dc2ec42813f9732bac614d33e80325e0445142a6",
-      "target": "格宇宙雷霆P<END>",
+      "target": "格宇宙雷鸣P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20900,7 +20900,7 @@
     {
       "key": "base:t00_03332",
       "source_sha256": "cda65536aad4cb32f401f27aebb586b308ecaef33ba011e36c6418abd4d64792",
-      "target": "格肩部回旋镖P<END>",
+      "target": "格肩射回旋镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20914,7 +20914,7 @@
     {
       "key": "base:t00_03334",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格双镰刀P<END>",
+      "target": "格双头新月镰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20928,7 +20928,7 @@
     {
       "key": "base:t00_03336",
       "source_sha256": "52ac8fc0af9a80cc7249bfd3462e7349c23ddbf601bc314e5a8437cacbe152f7",
-      "target": "格反重力风暴P<END>",
+      "target": "格反重力龙卷风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20942,7 +20942,7 @@
     {
       "key": "base:t00_03338",
       "source_sha256": "8a3ba5e4d336f7bc0fa3a828dc2ec42813f9732bac614d33e80325e0445142a6",
-      "target": "格宇宙雷霆P<END>",
+      "target": "格宇宙雷鸣P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20956,7 +20956,7 @@
     {
       "key": "base:t00_03340",
       "source_sha256": "cda65536aad4cb32f401f27aebb586b308ecaef33ba011e36c6418abd4d64792",
-      "target": "格肩部回旋镖P<END>",
+      "target": "格肩射回旋镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20977,7 +20977,7 @@
     {
       "key": "base:t00_03343",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格双镰刀P<END>",
+      "target": "格双头新月镰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20991,7 +20991,7 @@
     {
       "key": "base:t00_03345",
       "source_sha256": "52ac8fc0af9a80cc7249bfd3462e7349c23ddbf601bc314e5a8437cacbe152f7",
-      "target": "格反重力风暴P<END>",
+      "target": "格反重力龙卷风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21005,7 +21005,7 @@
     {
       "key": "base:t00_03347",
       "source_sha256": "8a3ba5e4d336f7bc0fa3a828dc2ec42813f9732bac614d33e80325e0445142a6",
-      "target": "格宇宙雷霆P<END>",
+      "target": "格宇宙雷鸣P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21019,35 +21019,35 @@
     {
       "key": "base:t00_03349",
       "source_sha256": "b9fa640367e934f44c2d2cdf20f39709153af55014c0cbbc750f9d5a15e80713",
-      "target": "格熔解喷雾P<END>",
+      "target": "格溶解光束P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03350",
       "source_sha256": "7920651a523eb52fb865a9437ebfb008a57f4af855bd880d399fcfd2f44e39e5",
-      "target": "射旋转飞碟<END>",
+      "target": "射旋转飞轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03351",
       "source_sha256": "07aae24dd5504ee72754ab3743b0ab8d2e35658fd2a5c66d3156b1303d230b7a",
-      "target": "射旋转钻头<END>",
+      "target": "射旋转钻孔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03352",
       "source_sha256": "cda65536aad4cb32f401f27aebb586b308ecaef33ba011e36c6418abd4d64792",
-      "target": "格肩部回旋镖P<END>",
+      "target": "格肩射回旋镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03353",
       "source_sha256": "52ac8fc0af9a80cc7249bfd3462e7349c23ddbf601bc314e5a8437cacbe152f7",
-      "target": "格反重力风暴P<END>",
+      "target": "格反重力龙卷风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21061,14 +21061,14 @@
     {
       "key": "base:t00_03355",
       "source_sha256": "8a3ba5e4d336f7bc0fa3a828dc2ec42813f9732bac614d33e80325e0445142a6",
-      "target": "格宇宙雷霆P<END>",
+      "target": "格宇宙雷鸣P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03356",
       "source_sha256": "52a111837eeaef06d39594d94fff12bd4bfb6c697ac9679f4da0a84079f14f0f",
-      "target": "射双导弹<END>",
+      "target": "射双重导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21082,7 +21082,7 @@
     {
       "key": "base:t00_03358",
       "source_sha256": "467e3fc30c3fde8688cf1e785c4a351b4ba2237351a2194e7f518056918891c7",
-      "target": "射双刃<END>",
+      "target": "射双重旋刀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21194,7 +21194,7 @@
     {
       "key": "base:t00_03374",
       "source_sha256": "66ff31d1f74494760edb44f675dc212121a4bca4ba22e8747c02c35f1705e651",
-      "target": "射巨型维加特隆光束炮<END>",
+      "target": "射巨型贝加能源光束炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21215,14 +21215,14 @@
     {
       "key": "base:t00_03377",
       "source_sha256": "345758d54163f0e73e89f495013f3b1c56a88c279b3d87b0c2ba8cbe219474db",
-      "target": "射维加特隆光束<END>",
+      "target": "射贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03378",
       "source_sha256": "3f8c303072d171bc70b2046f51bb8fc7b3e96e2aa1b6f8d4b7c91df3c1e643bb",
-      "target": "格盖塔利刃P<END>",
+      "target": "格盖塔腕刀P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21292,7 +21292,7 @@
     {
       "key": "base:t00_03388",
       "source_sha256": "fe69d930f4e4dd0dfc824a3d3343c2eda2b055dba27e99c1cbddb86d348bc1bd",
-      "target": "格大雪山颪P<END>",
+      "target": "格大雪山崩落P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21327,7 +21327,7 @@
     {
       "key": "base:t00_03393",
       "source_sha256": "b510f1b96eb1a79adcfbcec2f779cdb570bff045aad520cc871d87e6f4a5dbcb",
-      "target": "格闪光火花P<END>",
+      "target": "格闪光爆烈P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21355,14 +21355,14 @@
     {
       "key": "base:t00_03397",
       "source_sha256": "fe69d930f4e4dd0dfc824a3d3343c2eda2b055dba27e99c1cbddb86d348bc1bd",
-      "target": "格大雪山颪P<END>",
+      "target": "格大雪山崩落P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03398",
       "source_sha256": "42727dd6d12f0726582f6ae4934b089a0c0d4b659388f15d9a40d42d96f26376",
-      "target": "射莱加导弹<END>",
+      "target": "射狮虎导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21404,7 +21404,7 @@
     {
       "key": "base:t00_03404",
       "source_sha256": "3f0224dc2ac0fcdb293ca769028f235c2679e83937c49f6f54a753e7ab2aaf1e",
-      "target": "格斯托纳阳光P<END>",
+      "target": "格盖塔烈日弹P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21453,7 +21453,7 @@
     {
       "key": "base:t00_03411",
       "source_sha256": "d4cf18e1ed29c87d4237c0bd10259321d1e76673dc4914bc0deffa4e822f7cfb",
-      "target": "格大雪山颪二段返P<END>",
+      "target": "格大雪山崩落二段返P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21649,21 +21649,21 @@
     {
       "key": "base:t00_03439",
       "source_sha256": "1eb387d6bd34ec0a2550586374b536ddf9e8769a0072ea3e59b5b1bd4d6a6692",
-      "target": "格马斯闪光P<END>",
+      "target": "格雷霆闪电P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03440",
       "source_sha256": "85487ffc4cd2d0653708d20f3d9bb44b6f9664eca00fc296bd4049bdcd692714",
-      "target": "格戈德火焰<END>",
+      "target": "格金光火焰<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03441",
       "source_sha256": "3e75f851596fa06a7fc08aa4884fbfcd17b2cb656c2da5b8e523623661f44e86",
-      "target": "格终极戈德马斯P<END>",
+      "target": "格终极雷霆王P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21859,7 +21859,7 @@
     {
       "key": "base:t00_03469",
       "source_sha256": "75e463c6ce64f25616b182a86df6966eb548fde8dc16893d6140c55e564edd2c",
-      "target": "格双长枪P<END>",
+      "target": "格双刃对枪P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21873,7 +21873,7 @@
     {
       "key": "base:t00_03471",
       "source_sha256": "fad7f9e652b9873e2409e697fc2da614a4bdb5821ad82913d31094f6788539bb",
-      "target": "格超电磁溜溜球P<END>",
+      "target": "格超电磁悠悠球P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21908,14 +21908,14 @@
     {
       "key": "base:t00_03476",
       "source_sha256": "fe1341ef484cb7770d605c47185ec14e1efbebe2608406116b78f18a1df3b4c2",
-      "target": "格大地冲锋P<END>",
+      "target": "格巨战车冲击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03477",
       "source_sha256": "ec618caf128374ac65ad7bd4f91ccb54f80652c69e0aa69f746d49bc1904ac46",
-      "target": "格超电磁旋转P<END>",
+      "target": "格超电磁回旋P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -21950,14 +21950,14 @@
     {
       "key": "base:t00_03482",
       "source_sha256": "4c4d0bb1c8907e2e224f7b52d562de4e75cac3f3aba6b6b49322055f10fa7e65",
-      "target": "格克拉夫特钻头P<END>",
+      "target": "格装甲车钻头P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03483",
       "source_sha256": "d9b49688583bfb97ad45ddcb0ea8b467d220b0a8ad4f096e025af0da546f01c1",
-      "target": "射克拉夫特导弹<END>",
+      "target": "射装甲车导弹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22104,14 +22104,14 @@
     {
       "key": "base:t00_03504",
       "source_sha256": "0f1ca91f6ee421320e11d06b23d6a9fc9f67267bdac0ef59d88f5abe36f6326f",
-      "target": "射赞博马格南P<END>",
+      "target": "射赞波马格南P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03505",
       "source_sha256": "567673c72cd131e4920270a068a85a75bb887a220a8c463e540d7da083a59175",
-      "target": "射赞博步枪<END>",
+      "target": "射赞波步枪<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22139,28 +22139,28 @@
     {
       "key": "base:t00_03509",
       "source_sha256": "3ba417df7ea0c4ef4faf1edd73d45b4cfd20143f74d620d4c3f449ffc7c1f386",
-      "target": "格赞博特破坏者P<END>",
+      "target": "格赞波破坏者P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03510",
       "source_sha256": "73d122ec68a5a727251fb317fa531b0e645ba964e2432ce4736fa2b1e23ed3f7",
-      "target": "格赞博特格拉普P<END>",
+      "target": "格赞波格拉普P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03511",
       "source_sha256": "978e8d8559be7c6d3ccd7b648bba97e9c712a6d0551799770f9d9f2c71265e45",
-      "target": "格赞博特重击P<END>",
+      "target": "格赞波重击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03512",
       "source_sha256": "12c2101b717886d2a2cb559287f1ce9ed3b1afd01e6492aa7c36577095b3892b",
-      "target": "格赞博特切割刃P<END>",
+      "target": "格赞波切割刃P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22370,7 +22370,7 @@
     {
       "key": "base:t00_03542",
       "source_sha256": "690c0e756022d69be818595f09fc068a4039043dcaa3dc278ba883a7df56a940",
-      "target": "格泰坦斩刀P<END>",
+      "target": "格泰坦斩马刀P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22412,7 +22412,7 @@
     {
       "key": "base:t00_03548",
       "source_sha256": "83fce9f36d9c31c32a8c44fb0d0be81409623083e41f35ebe2371818d7314717",
-      "target": "格太阳攻击P<END>",
+      "target": "格日轮攻击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22552,7 +22552,7 @@
     {
       "key": "base:t00_03568",
       "source_sha256": "e712db5410f46a19635d23187c34931b0f4cb0365bb0f563457e8e4b079f07f2",
-      "target": "射冈多尔炮<END>",
+      "target": "射钢铎尔炮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23028,7 +23028,7 @@
     {
       "key": "base:t00_03636",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23357,7 +23357,7 @@
     {
       "key": "base:t00_03683",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23385,7 +23385,7 @@
     {
       "key": "base:t00_03687",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23483,7 +23483,7 @@
     {
       "key": "base:t00_03701",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23609,7 +23609,7 @@
     {
       "key": "base:t00_03719",
       "source_sha256": "b2994e90cb52c4a282bbfb1e58549ddb337c15d91333660f6f55a5c33a6bc2c9",
-      "target": "格冷冻光束P<END>",
+      "target": "格冷冻光线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23623,7 +23623,7 @@
     {
       "key": "base:t00_03721",
       "source_sha256": "04aea6cad4556775d698827b1a1114c135beab465cace26d383909f375f61b05",
-      "target": "格光子力光束P<END>",
+      "target": "格光子力射线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23644,21 +23644,21 @@
     {
       "key": "base:t00_03724",
       "source_sha256": "27d48a0ebcd77b4586c3ddb47c2fbc9b87073363046cbd7c054a15c45b9899a0",
-      "target": "格锈蚀飓风P<END>",
+      "target": "格腐蚀飓风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03725",
       "source_sha256": "364ac9a8ce8d57071e6a7a9555918240b86ff61e1d365cfc878260bfffc926e0",
-      "target": "格胸部热线P<END>",
+      "target": "格胸部火焰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03726",
       "source_sha256": "b2994e90cb52c4a282bbfb1e58549ddb337c15d91333660f6f55a5c33a6bc2c9",
-      "target": "格冷冻光束P<END>",
+      "target": "格冷冻光线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23672,7 +23672,7 @@
     {
       "key": "base:t00_03728",
       "source_sha256": "04aea6cad4556775d698827b1a1114c135beab465cace26d383909f375f61b05",
-      "target": "格光子力光束P<END>",
+      "target": "格光子力射线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23686,7 +23686,7 @@
     {
       "key": "base:t00_03730",
       "source_sha256": "e27ddfd5ce92c7e43f70044b53efc1a941475d9a0e24172d0a48e3f0ee18bf52",
-      "target": "射南十字飞刀P<END>",
+      "target": "射南星十字镖P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23700,28 +23700,28 @@
     {
       "key": "base:t00_03732",
       "source_sha256": "27d48a0ebcd77b4586c3ddb47c2fbc9b87073363046cbd7c054a15c45b9899a0",
-      "target": "格锈蚀飓风P<END>",
+      "target": "格腐蚀飓风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03733",
       "source_sha256": "6dddc15d127089c39713c76e184bf91f7a518fd4949a858ca02691a4764202aa",
-      "target": "格飞翼切割刃P<END>",
+      "target": "格飞翼切割P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03734",
       "source_sha256": "957d916ba2233b0577c7c8e5d3a2a2a7dd9e1e83da16575b9ab6767c51633078",
-      "target": "格钢铁切割刃P<END>",
+      "target": "格切割飞拳P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03735",
       "source_sha256": "364ac9a8ce8d57071e6a7a9555918240b86ff61e1d365cfc878260bfffc926e0",
-      "target": "格胸部热线P<END>",
+      "target": "格胸部火焰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23735,14 +23735,14 @@
     {
       "key": "base:t00_03737",
       "source_sha256": "0749148dd7674224b0bd708ad907147b746ea7cda8bd2e75d4b3204993ac0017",
-      "target": "格胸部热线MAP<END>",
+      "target": "格胸部火焰MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03738",
       "source_sha256": "04aea6cad4556775d698827b1a1114c135beab465cace26d383909f375f61b05",
-      "target": "格光子力光束P<END>",
+      "target": "格光子力射线P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23756,14 +23756,14 @@
     {
       "key": "base:t00_03740",
       "source_sha256": "27d48a0ebcd77b4586c3ddb47c2fbc9b87073363046cbd7c054a15c45b9899a0",
-      "target": "格锈蚀飓风P<END>",
+      "target": "格腐蚀飓风P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03741",
       "source_sha256": "364ac9a8ce8d57071e6a7a9555918240b86ff61e1d365cfc878260bfffc926e0",
-      "target": "格胸部热线P<END>",
+      "target": "格胸部火焰P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24449,7 +24449,7 @@
     {
       "key": "base:t00_03843",
       "source_sha256": "25ca484737edc55bca71c1582ef8a8a04a5c544d9c2de4e3dd756cccb519ef9c",
-      "target": "射长型米加破坏炮BMAP<END>",
+      "target": "射长距离米加破坏炮BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24799,14 +24799,14 @@
     {
       "key": "base:t00_03893",
       "source_sha256": "c4cab8ab7f8b29b57365a83f101c5090fc20b37f0d9f97f4ec331ea48fc0f684",
-      "target": "射飞溅破碎<END>",
+      "target": "射飞溅破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03894",
       "source_sha256": "570003e32e610ef3a1cd323af713b697690df80c0e486c644fcd89d67dbca790",
-      "target": "射飞溅破碎MAP<END>",
+      "target": "射飞溅破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24862,7 +24862,7 @@
     {
       "key": "base:t00_03902",
       "source_sha256": "dcfb58dae1aeebdf6cd2666405a70d592040d7e26bfcd88a3753c2a8a2a2086a",
-      "target": "射双破坏步枪2BMAP<END>",
+      "target": "射双管破坏步枪2BMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24897,7 +24897,7 @@
     {
       "key": "base:t00_03907",
       "source_sha256": "803f687c01e8f0f6cb0ee7a178888f3acd5344b36fa29c5c9fe808f246894d39",
-      "target": "射冈多尔炮MAP<END>",
+      "target": "射钢铎尔炮MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24911,7 +24911,7 @@
     {
       "key": "base:t00_03909",
       "source_sha256": "0749148dd7674224b0bd708ad907147b746ea7cda8bd2e75d4b3204993ac0017",
-      "target": "格胸部热线MAP<END>",
+      "target": "格胸部火焰MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25023,7 +25023,7 @@
     {
       "key": "base:t00_03926",
       "source_sha256": "4cc9295e08b3588b6ea52255e5a32b6526396dc83ecc939c032152b2a3b3e5ad",
-      "target": "格双重魔神剑P<END>",
+      "target": "格双重魔神宝剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25051,7 +25051,7 @@
     {
       "key": "base:t00_03930",
       "source_sha256": "a3513d0dc75ad486700188747a806fcbefa6463f910c5060fe42e57be10d2f5e",
-      "target": "格卡扎风暴P<END>",
+      "target": "格加萨风暴P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25093,7 +25093,7 @@
     {
       "key": "base:t00_03937",
       "source_sha256": "839f95d448030896088b75ee3dd4bddf86f29152787c6e4cc3a6a6748a81a0ef",
-      "target": "格双重燃烧火焰（密涅瓦）P<END>",
+      "target": "格双重燃烧火焰（米涅瓦）P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25261,7 +25261,7 @@
     {
       "key": "base:t00_03961",
       "source_sha256": "9c3d9b9e25e482e79c8b2c46bce121f0b09915a26c419957bf82837f17e09a40",
-      "target": "射维加特隆冷冻光线<END>",
+      "target": "射贝加能源冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25275,21 +25275,21 @@
     {
       "key": "base:t00_03963",
       "source_sha256": "345758d54163f0e73e89f495013f3b1c56a88c279b3d87b0c2ba8cbe219474db",
-      "target": "射维加特隆光束<END>",
+      "target": "射贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03964",
       "source_sha256": "c7604009a242649193e840008b167c1f07ae1cea97c063a38db070cd896474ae",
-      "target": "射维加特隆激光<END>",
+      "target": "射贝加能源激光<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03965",
       "source_sha256": "345758d54163f0e73e89f495013f3b1c56a88c279b3d87b0c2ba8cbe219474db",
-      "target": "射维加特隆光束<END>",
+      "target": "射贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25317,14 +25317,14 @@
     {
       "key": "base:t00_03969",
       "source_sha256": "345758d54163f0e73e89f495013f3b1c56a88c279b3d87b0c2ba8cbe219474db",
-      "target": "射维加特隆光束<END>",
+      "target": "射贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03970",
       "source_sha256": "345758d54163f0e73e89f495013f3b1c56a88c279b3d87b0c2ba8cbe219474db",
-      "target": "射维加特隆光束<END>",
+      "target": "射贝加能源光束<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25576,7 +25576,7 @@
     {
       "key": "base:t00_04006",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25660,7 +25660,7 @@
     {
       "key": "base:t00_04018",
       "source_sha256": "1c557da1963c7e65389663e52a642344509e832904db342d7458a0db12fb9497",
-      "target": "射弗雷炸弹P<END>",
+      "target": "射火焰炮P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26591,14 +26591,14 @@
     {
       "key": "base:t00_04384",
       "source_sha256": "7a2622ceb7cea1e0d0e648fd93f127ffec57868939f71244a0fd86a73531a292",
-      "target": "雪莉<END>",
+      "target": "夏莉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04385",
       "source_sha256": "3ad1524b6cded5faa0f3bd3e47494cd57111d0d8d3d28143187fb8c43766bf97",
-      "target": "修巴尔兹<END>",
+      "target": "修巴鲁兹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26626,7 +26626,7 @@
     {
       "key": "base:t00_04389",
       "source_sha256": "0ca1ddbae5e75f849fce03312490f57f647fb34d98bb04a425fdd2abae908206",
-      "target": "蕾茵<END>",
+      "target": "玲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26640,7 +26640,7 @@
     {
       "key": "base:t00_04391",
       "source_sha256": "d64069af5631a094c5310f8c94877cd41f0a8bf381f7373774282076347c7f18",
-      "target": "艾伦比<END>",
+      "target": "阿莲比<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26654,7 +26654,7 @@
     {
       "key": "base:t00_04393",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26675,7 +26675,7 @@
     {
       "key": "base:t00_04396",
       "source_sha256": "d2c259fb26221e9cbcb690dce1b84c3ad53bdfb3fc11e1b2e96349f14db1558a",
-      "target": "黄<END>",
+      "target": "黄润发<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26689,14 +26689,14 @@
     {
       "key": "base:t00_04398",
       "source_sha256": "9676092ee0da2430b4c9af1bd1ba1377d338c701eb422d41fd35c62b6c9d0a5e",
-      "target": "西吉马<END>",
+      "target": "施哲马<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04399",
       "source_sha256": "01554019ba388e6f8f15ddacc4942b5d8fe1bb51e016e8b9081cd57d3f46708e",
-      "target": "马基洛特<END>",
+      "target": "马基特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26766,7 +26766,7 @@
     {
       "key": "base:t00_04412",
       "source_sha256": "ee69489c19117f71d29ff0273aa890e502b68708bb975c42f360e464cb56ef33",
-      "target": "利希<END>",
+      "target": "利修<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26864,14 +26864,14 @@
     {
       "key": "base:t00_04426",
       "source_sha256": "9bc7ceba3031667e7bcfdad524804887db35bf2d58e8ba4b2839155cdb4e0592",
-      "target": "赛拉<END>",
+      "target": "塞拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04427",
       "source_sha256": "513e88f898225d57b6166869ac6a43cee407b5626d9ecaf36e7b7b2fad5215e0",
-      "target": "法<END>",
+      "target": "花<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26892,14 +26892,14 @@
     {
       "key": "base:t00_04430",
       "source_sha256": "847509595ee57ff8b0ea1162548bd707256c95a9d86946c973485cdd01f54eb5",
-      "target": "贝尔托琪卡<END>",
+      "target": "贝托蒂嘉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04431",
       "source_sha256": "f0a9a01c8451f2870b89fb488b8efa15cb78381a86f4c5f07534d92c083d288d",
-      "target": "亨肯<END>",
+      "target": "汉肯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26941,28 +26941,28 @@
     {
       "key": "base:t00_04437",
       "source_sha256": "ec6931d33d98600ff9af8f88aacef72dfd5922ab718863b4e43f97a68dbfbb89",
-      "target": "奎丝<END>",
+      "target": "葵丝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04438",
       "source_sha256": "4529ca1f2e439a56a58a4e59d8fb753a05482f5a9fe17d269ac613d3d49bbc29",
-      "target": "佛<END>",
+      "target": "凤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04439",
       "source_sha256": "57477184f98bc7b747b61351822f202b3f9962bd0b3a2287683f4669832b96f6",
-      "target": "普露2号<END>",
+      "target": "普露兹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04440",
       "source_sha256": "9913018e8a08d44e2923d404582a30012fad97594e99da5736812d971c5b9d8f",
-      "target": "马修马<END>",
+      "target": "马修玛<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27011,14 +27011,14 @@
     {
       "key": "base:t00_04447",
       "source_sha256": "5dd09ff314c0245453c05633e7e4e144666f46b50eb8c33127ba730cd85c8cb3",
-      "target": "卡拉<END>",
+      "target": "姬拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04448",
       "source_sha256": "27abf5c3ee1dfa0d3501938c9464d205d22443a371c36231ea319843cd962f66",
-      "target": "裘尼<END>",
+      "target": "邱尼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27032,7 +27032,7 @@
     {
       "key": "base:t00_04450",
       "source_sha256": "a2fc88d00a6e02d2b969fcaa2e0888cf054e4f8dc119dcf5803b60f75a48ebf2",
-      "target": "盖兹<END>",
+      "target": "盖茨<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27095,7 +27095,7 @@
     {
       "key": "base:t00_04459",
       "source_sha256": "9df8cf55516c6d7d2abbc0cb1c7455e09f6154770340b10c15d0d7fe148784c5",
-      "target": "玛乌亚<END>",
+      "target": "玛雅<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27158,14 +27158,14 @@
     {
       "key": "base:t00_04468",
       "source_sha256": "f4d0b5dc85d6eeea6608da7f52a0a06f89da4d15d7e3ec568ac637666beb6b76",
-      "target": "希尔德<END>",
+      "target": "希尔妲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04469",
       "source_sha256": "25c2cc83d9a195b1c6a5a87e90704b399adfac4278002b71b5f948def1c64d04",
-      "target": "拉希德<END>",
+      "target": "拉席德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27228,7 +27228,7 @@
     {
       "key": "base:t00_04478",
       "source_sha256": "868993c3e212da7a085ad39ad7801d972310f5c54ae0cd80511b272ab6b92bd1",
-      "target": "米利亚尔多<END>",
+      "target": "米利亚尔特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27256,7 +27256,7 @@
     {
       "key": "base:t00_04482",
       "source_sha256": "bf46c2876da24f5c3adba6d12221ce3529aa5ded859d0ff167b0466694725350",
-      "target": "昆兹<END>",
+      "target": "坎斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27270,7 +27270,7 @@
     {
       "key": "base:t00_04484",
       "source_sha256": "86848f7302a46dc53334d9da3fff11c191d892af70fff9be1d1210600185d1c9",
-      "target": "德尔麦尤<END>",
+      "target": "迪鲁马尤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27375,7 +27375,7 @@
     {
       "key": "base:t00_04499",
       "source_sha256": "72c7dff867c3dc686178e00dbd2e225ca1dc263fb78cc6550fe5ad84ec8511d2",
-      "target": "冈达尔<END>",
+      "target": "甘达尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27389,7 +27389,7 @@
     {
       "key": "base:t00_04501",
       "source_sha256": "74e13f588abef44a48dfd2eda822f840bec348006540bdacdcb6d29e64eeb7be",
-      "target": "布拉基<END>",
+      "target": "布拉奇<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27501,14 +27501,14 @@
     {
       "key": "base:t00_04517",
       "source_sha256": "29b6adcfa9ddfdd708a8e463c7b49dd39d30b972626f18816a0bff2d16039b80",
-      "target": "大塚长官<END>",
+      "target": "大冢长官<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04518",
       "source_sha256": "1decf2ea033ad497617c4b051d38a39e7fb182cd7188f9c9d81dde4dd8067dba",
-      "target": "美加<END>",
+      "target": "美佳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27522,7 +27522,7 @@
     {
       "key": "base:t00_04520",
       "source_sha256": "93f0abef7463fa2612ab9b76a587a169b055c84ba38a4901a3f492aa85163edb",
-      "target": "尊<END>",
+      "target": "武<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27536,14 +27536,14 @@
     {
       "key": "base:t00_04522",
       "source_sha256": "ab63435580e172653a24bd00759a455760fb266b8c10ba8dad670ff679721546",
-      "target": "萝泽<END>",
+      "target": "萝洁<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04523",
       "source_sha256": "b334f3c79feb8d16db84b4e09b812893aa249d8f71deef5d1e6d3174a7a620ea",
-      "target": "祖尔皇帝<END>",
+      "target": "祖鲁皇帝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27557,7 +27557,7 @@
     {
       "key": "base:t00_04525",
       "source_sha256": "3ec553fbff22050130e5915076733ea29663bf5e82bd99ec3b395849cb3eb421",
-      "target": "马格<END>",
+      "target": "马可<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27669,7 +27669,7 @@
     {
       "key": "base:t00_04541",
       "source_sha256": "4be01274e73efb670a46cb840e3cac5c0c26d9e318683d92133b979cb1aee1f5",
-      "target": "红色面具<END>",
+      "target": "赤假面<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27683,7 +27683,7 @@
     {
       "key": "base:t00_04543",
       "source_sha256": "a86766b65a39ed473ace5af17d2c2c77ecf76e5793360d09559fc357253f9dc9",
-      "target": "阿尔贝鲁特<END>",
+      "target": "阿尔伯特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27725,7 +27725,7 @@
     {
       "key": "base:t00_04549",
       "source_sha256": "e91c3e8177051e88ccee083daef632db1e59fefc2867b0d9be1343cb0cefed12",
-      "target": "伊戈尔<END>",
+      "target": "伊格尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27774,7 +27774,7 @@
     {
       "key": "base:t00_04556",
       "source_sha256": "9c087af536bab67aa72e304b24340f3b457dd2bf62bc6916ad49ad79497cfe9f",
-      "target": "夏皮罗<END>",
+      "target": "夏比罗<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27816,49 +27816,49 @@
     {
       "key": "base:t00_04562",
       "source_sha256": "bcba69c81987c8853c172e760f7a0817dbc182ccfc85556a2088d087433bb5a8",
-      "target": "西拉<END>",
+      "target": "席拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04563",
       "source_sha256": "5a2bb859633dad4cd22bf1258b4b75ce6b90ca9218da41704564dc23ef0d0889",
-      "target": "修<END>",
+      "target": "翔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04564",
       "source_sha256": "0a1fa674ea4f3a20a01c980537f1ecd2b7116dec8e675daed5f69f426cee69e7",
-      "target": "希尔琪<END>",
+      "target": "希露奇<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04565",
       "source_sha256": "f547854989fc86ea7e4fdcb20e8c483584304e1853390e1b8994ee5e69e3f56e",
-      "target": "查姆<END>",
+      "target": "恰姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04566",
       "source_sha256": "5bfcb2cd031d8c7ab1e10b56874ea3d6776fdbe5ca1d73dfbf306a0baffcb8d1",
-      "target": "玛贝尔<END>",
+      "target": "玛蓓儿<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04567",
       "source_sha256": "5f2f1ea1173883c27541e5ebde1a06412a041a06fd9231139659d9a5164904c2",
-      "target": "加拉莉亚<END>",
+      "target": "卡拉利亚<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04568",
       "source_sha256": "05b91f7dfe1cf8c1c25d95e81503e5b469530ad999b64368177055f79d44e501",
-      "target": "托德<END>",
+      "target": "陶德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27872,14 +27872,14 @@
     {
       "key": "base:t00_04570",
       "source_sha256": "e1adfc55f5844a4a24584a678ae38501a25ea2033273eb07240f812b39b1af31",
-      "target": "杰丽尔<END>",
+      "target": "洁丽露<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04571",
       "source_sha256": "30328a621cd3169ab82262b6174f39cdcb70bbc831a3f83b881b46079e54213c",
-      "target": "肖特<END>",
+      "target": "秀特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27921,7 +27921,7 @@
     {
       "key": "base:t00_04577",
       "source_sha256": "e3659f5664104af48e4dc257c2239b0d75af93340783a74bee52a32f0e3a2a76",
-      "target": "老大<END>",
+      "target": "波士<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28096,7 +28096,7 @@
     {
       "key": "base:t00_04602",
       "source_sha256": "25d153fc41aa89070d425159f0061f7f7aee10398e6dfc359ac6beff8487108a",
-      "target": "伍达<END>",
+      "target": "伍德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28152,7 +28152,7 @@
     {
       "key": "base:t00_04610",
       "source_sha256": "8ced4c0266b30881fb641965b52f3b75eab829fd69ee3a6f91842d626ef780f1",
-      "target": "丹凯尔<END>",
+      "target": "邓克尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28194,7 +28194,7 @@
     {
       "key": "base:t00_04616",
       "source_sha256": "7d8d0645c262855bdceab9d88eca52133b165cc943eac90809220e6a57eda8ed",
-      "target": "艾尔<END>",
+      "target": "艾露<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28236,7 +28236,7 @@
     {
       "key": "base:t00_04622",
       "source_sha256": "f1159be5fe01d8842ec2bf4d736eaf71fb9fd9e181502322f04385a4ac9820c7",
-      "target": "琪恩<END>",
+      "target": "倩恩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28257,7 +28257,7 @@
     {
       "key": "base:t00_04625",
       "source_sha256": "8b4558c6d45c762ec6d5be370d04698b2c58c601faf71b797cbc614a809e7041",
-      "target": "瓦尔基米德斯<END>",
+      "target": "瓦基米德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28278,7 +28278,7 @@
     {
       "key": "base:t00_04628",
       "source_sha256": "5dd09ff314c0245453c05633e7e4e144666f46b50eb8c33127ba730cd85c8cb3",
-      "target": "卡拉<END>",
+      "target": "姬拉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28292,7 +28292,7 @@
     {
       "key": "base:t00_04630",
       "source_sha256": "d64069af5631a094c5310f8c94877cd41f0a8bf381f7373774282076347c7f18",
-      "target": "艾伦比<END>",
+      "target": "阿莲比<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28313,7 +28313,7 @@
     {
       "key": "base:t00_04633",
       "source_sha256": "4529ca1f2e439a56a58a4e59d8fb753a05482f5a9fe17d269ac613d3d49bbc29",
-      "target": "佛<END>",
+      "target": "凤<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28334,7 +28334,7 @@
     {
       "key": "base:t00_04636",
       "source_sha256": "e8a8683bc9557abdc47260d614cb7ad00a6cc77ae6408aade27e0df53794ef30",
-      "target": "罗佩特<END>",
+      "target": "洛比特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28348,7 +28348,7 @@
     {
       "key": "base:t00_04638",
       "source_sha256": "3ec553fbff22050130e5915076733ea29663bf5e82bd99ec3b395849cb3eb421",
-      "target": "马格<END>",
+      "target": "马可<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28369,7 +28369,7 @@
     {
       "key": "base:t00_04641",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28404,7 +28404,7 @@
     {
       "key": "base:t00_04646",
       "source_sha256": "513e88f898225d57b6166869ac6a43cee407b5626d9ecaf36e7b7b2fad5215e0",
-      "target": "法<END>",
+      "target": "花<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28418,7 +28418,7 @@
     {
       "key": "base:t00_04648",
       "source_sha256": "f4d0b5dc85d6eeea6608da7f52a0a06f89da4d15d7e3ec568ac637666beb6b76",
-      "target": "希尔德<END>",
+      "target": "希尔妲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28488,7 +28488,7 @@
     {
       "key": "base:t00_04658",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28523,7 +28523,7 @@
     {
       "key": "base:t00_04663",
       "source_sha256": "944eaf9c297b721e0767cd8ba1a69f037a87db8a2f3b1615e9215e20a65901e8",
-      "target": "呼延灼<END>",
+      "target": "呼炎灼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28544,7 +28544,7 @@
     {
       "key": "base:t00_04666",
       "source_sha256": "ec6931d33d98600ff9af8f88aacef72dfd5922ab718863b4e43f97a68dbfbb89",
-      "target": "奎丝<END>",
+      "target": "葵丝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28565,21 +28565,21 @@
     {
       "key": "base:t00_04670",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04671",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04672",
       "source_sha256": "d68e99068a55874a8d5b1db4843e2b894180dd4a42edf9b4bcb95db556660d87",
-      "target": "马古阿纳克兵<END>",
+      "target": "马格纳克兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28607,7 +28607,7 @@
     {
       "key": "base:t00_04676",
       "source_sha256": "704313ca948d91708af015abd2e5a34b4702f15d76f5722472616306cdf7a20a",
-      "target": "基辛星兵<END>",
+      "target": "吉森星兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28684,28 +28684,28 @@
     {
       "key": "base:t00_04687",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04688",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04689",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04690",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28810,7 +28810,7 @@
     {
       "key": "base:t00_04739",
       "source_sha256": "11f2fdf0f4277d0807309a231b36770c9a4166407761f2b3bc9a35013c8b6944",
-      "target": "殖民地代表<END>",
+      "target": "殖民卫星代表<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28845,14 +28845,14 @@
     {
       "key": "base:t00_04745",
       "source_sha256": "7a2622ceb7cea1e0d0e648fd93f127ffec57868939f71244a0fd86a73531a292",
-      "target": "雪莉<END>",
+      "target": "夏莉<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04746",
       "source_sha256": "70b0ee1cc5f9d44aaf0b8c29825a17891e69b2cae9a49ce31b5a20dca04ddb03",
-      "target": "修巴尔兹·布鲁达<END>",
+      "target": "修巴鲁兹·布鲁达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28880,7 +28880,7 @@
     {
       "key": "base:t00_04750",
       "source_sha256": "39a71bfd7ff1e22fff38effc4cb58b386a7a76d30c81794372d20ca76f7c5b60",
-      "target": "蕾茵·美加村<END>",
+      "target": "深村玲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28894,28 +28894,28 @@
     {
       "key": "base:t00_04752",
       "source_sha256": "61506b42ee0905d5eb80fbd8d4720b749643716a2794b39c42c8a89636013ba5",
-      "target": "艾伦比·比亚兹利<END>",
+      "target": "阿莲比·比亚兹利<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04753",
       "source_sha256": "bf331cd1075579845994c04219f7f3cec8112d06c5abe9fe93419114472528fb",
-      "target": "基拉尔·麦基雷尔<END>",
+      "target": "基拉尔·梅奇雷尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04754",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04755",
       "source_sha256": "7f694d23a5deb215b54e756ef440a800edd72da9c56e27e14100a158a4cd3bbd",
-      "target": "乔治·德·桑德<END>",
+      "target": "乔治·迪·桑德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28943,14 +28943,14 @@
     {
       "key": "base:t00_04759",
       "source_sha256": "1bca36dec22c86296d51367981b6ed89bf3fac02a57e0d60261b7dc8d6d5a744",
-      "target": "钱德拉·西吉马<END>",
+      "target": "钱德拉·施哲马<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04760",
       "source_sha256": "20eff9a9046edd8f7a9b324746681ce2cc85cdd1f0fd35b74fdb7354b3f253b2",
-      "target": "马基洛特·克罗诺斯<END>",
+      "target": "马基特·克洛诺斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29020,14 +29020,14 @@
     {
       "key": "base:t00_04773",
       "source_sha256": "86a9b324e543f7cc9378f52ec42e12cf6ba5549be277c3e958b07dbb84d7fdac",
-      "target": "利希·格里斯韦尔<END>",
+      "target": "利修·格里斯韦尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04774",
       "source_sha256": "90645ec51c7220324cdcfb3d785747b5a6e6a1ba445f1add006740929bca7f7d",
-      "target": "卡茨·弗尔涅乌斯<END>",
+      "target": "卡茨·弗尔纽斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29118,14 +29118,14 @@
     {
       "key": "base:t00_04787",
       "source_sha256": "28a4605bf05a6d0bd1808ef163066f30fb9ee2f4264c1990f246fd05fc661b07",
-      "target": "赛拉·玛斯<END>",
+      "target": "塞拉·玛斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04788",
       "source_sha256": "1afc250ec145ede7c9899d00342423eaf6d1cc6fb1ff1617147bb76a69197c06",
-      "target": "法·尤伊利<END>",
+      "target": "花·园丽<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29146,14 +29146,14 @@
     {
       "key": "base:t00_04791",
       "source_sha256": "2d0d7769f58ac1bf952a47273c5b7e89997f142077661143d032d555f41158c8",
-      "target": "贝尔托琪卡·伊尔玛<END>",
+      "target": "贝托蒂嘉·伊露玛<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04792",
       "source_sha256": "91d1516018dae6cfb6938ce3c454f2ccd11e31d897df31d6f1a3de30ac5b421a",
-      "target": "亨肯·贝克纳<END>",
+      "target": "汉肯·贝克纳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29188,35 +29188,35 @@
     {
       "key": "base:t00_04797",
       "source_sha256": "b874509354df8caa3934cf26a99a5967a9d2506c3315098955a3e6a4ba61d315",
-      "target": "艾尔皮·普露<END>",
+      "target": "艾露比·普露<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04798",
       "source_sha256": "79fa1d83909084b7d94ebd718f26e180f7d2ee4a0adbeb1d88c2d88e3e0129d2",
-      "target": "奎丝·帕拉雅<END>",
+      "target": "葵丝·帕拉雅<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04799",
       "source_sha256": "ba35f5f21c1aa15ef6b89bcce4a6878834821442127e0a480c942642b88ab9be",
-      "target": "佛·村雨<END>",
+      "target": "凤·村雨<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04800",
       "source_sha256": "57477184f98bc7b747b61351822f202b3f9962bd0b3a2287683f4669832b96f6",
-      "target": "普露2号<END>",
+      "target": "普露兹<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04801",
       "source_sha256": "14026852b19b36c9d579c077e5c43b8376734bf066174f42de4fb25666b34a82",
-      "target": "马修马·塞罗<END>",
+      "target": "马修玛·塞罗<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29265,28 +29265,28 @@
     {
       "key": "base:t00_04808",
       "source_sha256": "e6a4fdde19c722a75816541063e8d589dd25ad464a0b766e6bd4ff466a18dfc8",
-      "target": "卡拉·苏恩<END>",
+      "target": "姬拉·森<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04809",
       "source_sha256": "779efb06755b4606edc16ef434aad95c041517ea6af50fd5d29c7776802219d0",
-      "target": "裘尼·加斯<END>",
+      "target": "邱尼·盖斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04810",
       "source_sha256": "6f92f9654476e4c3987eb3d64901a89f4d6120eff9627a38cd0ca33032a678ce",
-      "target": "格雷米·托特<END>",
+      "target": "格雷米·托托<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04811",
       "source_sha256": "52da881631a6e0c67e451f16df0b567b21948cee009204989e870cefcea08d21",
-      "target": "盖兹·卡帕<END>",
+      "target": "盖茨·卡帕<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29349,7 +29349,7 @@
     {
       "key": "base:t00_04820",
       "source_sha256": "8221852778c00854227633325fb5a3fd471be7298420eedd40bc0e6c948bc8df",
-      "target": "玛乌亚·法拉奥<END>",
+      "target": "玛雅·法拉奥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29412,14 +29412,14 @@
     {
       "key": "base:t00_04829",
       "source_sha256": "5dcec492f7c3e46df28c99d8b965f748b8a486d2f2bbd18ce69989739482529e",
-      "target": "希尔德·修拜卡<END>",
+      "target": "希尔妲·修拜卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04830",
       "source_sha256": "25c2cc83d9a195b1c6a5a87e90704b399adfac4278002b71b5f948def1c64d04",
-      "target": "拉希德<END>",
+      "target": "拉席德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29433,14 +29433,14 @@
     {
       "key": "base:t00_04832",
       "source_sha256": "c6e1f21dbd76eeef6dfb3480fdd377f91f12d876a1fd3ef2be824c6d77fd3712",
-      "target": "卡特尔·拉巴巴·温拿<END>",
+      "target": "卡特尔·拉巴伯·温拿<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04833",
       "source_sha256": "7318d3a7ea392c94e461f64f0668f56054a9c3848602bb6eb24aa7712e6ee4bb",
-      "target": "莎莉·坡<END>",
+      "target": "莎莉·鲍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29482,7 +29482,7 @@
     {
       "key": "base:t00_04839",
       "source_sha256": "0f87a0c312cec31440d4903b2ae744483173ded0960f625f762588af38ee187b",
-      "target": "米利亚尔多·匹斯克拉福特<END>",
+      "target": "米利亚尔特·匹斯克拉福特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29510,7 +29510,7 @@
     {
       "key": "base:t00_04843",
       "source_sha256": "bf46c2876da24f5c3adba6d12221ce3529aa5ded859d0ff167b0466694725350",
-      "target": "昆兹<END>",
+      "target": "坎斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29524,7 +29524,7 @@
     {
       "key": "base:t00_04845",
       "source_sha256": "1a19a0e6787dda4da66595d850e456d31228bfde949d8690f124c74ee6f93222",
-      "target": "德尔麦尤公爵<END>",
+      "target": "迪鲁马尤公爵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29594,14 +29594,14 @@
     {
       "key": "base:t00_04855",
       "source_sha256": "fabb656f360c2bae2bddcc185fcbaecca7c5befb197c040e4b9bbc6c1563ca4f",
-      "target": "杜克·弗利德<END>",
+      "target": "杜克·弗里德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04856",
       "source_sha256": "59001a3436e69613e42c5133c099c4e369e3be1d91110e0d917dfe82a1aa7e82",
-      "target": "玛丽亚·弗利德<END>",
+      "target": "玛丽亚·弗里德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29629,7 +29629,7 @@
     {
       "key": "base:t00_04860",
       "source_sha256": "f146a7d12e7cb4692e16a7866d5435a7ed50862fb9a83bffcbec321e7146dde5",
-      "target": "冈达尔司令<END>",
+      "target": "甘达尔司令<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29643,7 +29643,7 @@
     {
       "key": "base:t00_04862",
       "source_sha256": "bfe7bdc6ab46f35ac85dddd76bb85dd8cdd3c6bc2d08a704391543db98ddd68d",
-      "target": "布拉基队长<END>",
+      "target": "布拉奇队长<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29734,7 +29734,7 @@
     {
       "key": "base:t00_04875",
       "source_sha256": "444857b318c0197b04026a8c820e5eb5631eebcc6db133c42324f6b558a53e11",
-      "target": "蕾米岛田<END>",
+      "target": "蕾米·岛田<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29755,14 +29755,14 @@
     {
       "key": "base:t00_04878",
       "source_sha256": "29b6adcfa9ddfdd708a8e463c7b49dd39d30b972626f18816a0bff2d16039b80",
-      "target": "大塚长官<END>",
+      "target": "大冢长官<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04879",
       "source_sha256": "997f98325c4e3cba7fc94b85f06d73b338e4404648ebeb1072e022b445bfe783",
-      "target": "日向美加<END>",
+      "target": "日向美佳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29776,7 +29776,7 @@
     {
       "key": "base:t00_04881",
       "source_sha256": "9bb8cd147a9aaabd5a54db23451b1e4f9aab6961e9c4beb8895f683fe19d4455",
-      "target": "明神尊<END>",
+      "target": "明神武<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29790,14 +29790,14 @@
     {
       "key": "base:t00_04883",
       "source_sha256": "ab63435580e172653a24bd00759a455760fb266b8c10ba8dad670ff679721546",
-      "target": "萝泽<END>",
+      "target": "萝洁<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04884",
       "source_sha256": "b334f3c79feb8d16db84b4e09b812893aa249d8f71deef5d1e6d3174a7a620ea",
-      "target": "祖尔皇帝<END>",
+      "target": "祖鲁皇帝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29811,7 +29811,7 @@
     {
       "key": "base:t00_04886",
       "source_sha256": "3ec553fbff22050130e5915076733ea29663bf5e82bd99ec3b395849cb3eb421",
-      "target": "马格<END>",
+      "target": "马可<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29916,14 +29916,14 @@
     {
       "key": "base:t00_04901",
       "source_sha256": "4b23b4a96a3f8e7f09f6c0f47826badb42b9ad275b380703e144fe8a1b584a54",
-      "target": "奥罗夏的伊万<END>",
+      "target": "俄罗斯的伊万<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04902",
       "source_sha256": "9ddc9b4f79ce1c3e57291ceacb82b044e748baa714895ccdcc19abc17b7f40a3",
-      "target": "红色面具<END>",
+      "target": "赤假面<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29937,14 +29937,14 @@
     {
       "key": "base:t00_04904",
       "source_sha256": "b1f7735ce3076cd5ed1c69b875472d4d8e20f590d4dc74151b877cebab1fcd6f",
-      "target": "冲击的阿尔贝鲁特<END>",
+      "target": "冲击的阿尔伯特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04905",
       "source_sha256": "018398a2c2d9d9fe26b40ca5a6e3a003c59b3461e4b17664957cba12548aea77",
-      "target": "加里森时田<END>",
+      "target": "加里森·时田<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29979,7 +29979,7 @@
     {
       "key": "base:t00_04910",
       "source_sha256": "ca8f70ec4571639f00109ca47753e4e317376b1945a43d23bde829466f3a03c1",
-      "target": "罗斯·伊戈尔<END>",
+      "target": "罗斯·伊格尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30028,7 +30028,7 @@
     {
       "key": "base:t00_04917",
       "source_sha256": "db063e4a75f414db86fd01c58bef22baffa494186d64401040c2e434ac9cc1e7",
-      "target": "夏皮罗·基茨<END>",
+      "target": "夏比罗·基斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30063,56 +30063,56 @@
     {
       "key": "base:t00_04922",
       "source_sha256": "dff0e30480b81726f61a888e894b7c687b4e8559ac6ef8dadaee628b0163a603",
-      "target": "艾蕾·哈姆<END>",
+      "target": "艾蕾·汉姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04923",
       "source_sha256": "2095e002c7a269be12b54649e2ad5ea58e28af3ac4bf8552a94ebe5fdf339b29",
-      "target": "西拉·拉帕娜<END>",
+      "target": "席拉·拉巴纳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04924",
       "source_sha256": "d6150ae1ae49ce1201f679d2ca8f75058a2e601c1ca5987d78195302fae9d2a4",
-      "target": "修·撒玛<END>",
+      "target": "座间翔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04925",
       "source_sha256": "d81e36047527dd6c2911a7868e65cb2d6067f39e13268106394cd43c78c0aab4",
-      "target": "希尔琪·玛乌<END>",
+      "target": "希露奇·马乌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04926",
       "source_sha256": "c9c6088c9974f2aa567b064136d8b6dcaf7177432af7f4f1e430ef353633b625",
-      "target": "查姆·法乌<END>",
+      "target": "恰姆·法乌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04927",
       "source_sha256": "754bcbb1b7a86d308f8504f2ecde14a26c3bc113e8d979acc4454e0d407f4155",
-      "target": "玛贝尔·弗罗珍<END>",
+      "target": "玛蓓儿·佛罗森<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04928",
       "source_sha256": "eeeba0945c35fc9a0e97c1d936bacdc81b4537f311aee37c11aec6260270fc02",
-      "target": "加拉莉亚·妮亚姆希<END>",
+      "target": "卡拉利亚·妮亚姆希<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04929",
       "source_sha256": "7a798e062937252fdca8a912d45c90326917b8ae8c2f4520c517be8074920dfd",
-      "target": "托德·吉尼斯<END>",
+      "target": "陶德·基尼斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30126,14 +30126,14 @@
     {
       "key": "base:t00_04931",
       "source_sha256": "671fd939d399cde73f90a0db57bc7794b8d60588768e6170eec60f3de9052f74",
-      "target": "杰丽尔·库契比<END>",
+      "target": "洁丽露·克吉比<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04932",
       "source_sha256": "c7659c6c75f846e823d2c483ec8231739a01d60da16c0dd98b6ce5abe975d52d",
-      "target": "肖特·韦邦<END>",
+      "target": "秀特·威朋<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30175,7 +30175,7 @@
     {
       "key": "base:t00_04938",
       "source_sha256": "e3659f5664104af48e4dc257c2239b0d75af93340783a74bee52a32f0e3a2a76",
-      "target": "老大<END>",
+      "target": "波士<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30217,7 +30217,7 @@
     {
       "key": "base:t00_04944",
       "source_sha256": "023289a025ec0f80f6348401ec8a56b1002b02fb324da16b21c66e7f42f9bc5f",
-      "target": "阿尔巴特罗·纳尔·英二·飞鸟<END>",
+      "target": "阿尔巴特罗·纳鲁·英二·飞鸟<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30231,7 +30231,7 @@
     {
       "key": "base:t00_04946",
       "source_sha256": "c458a3ff389fa75cd5a96fd0db9104a824b312257d0d059f80c905c9efe0b601",
-      "target": "伊丽莎白·格雷布利<END>",
+      "target": "伊丽莎白·克雷布利<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30350,7 +30350,7 @@
     {
       "key": "base:t00_04963",
       "source_sha256": "3531b41e248d38f11220caf7bf393fc672505b2f208b9a436abb42a491403027",
-      "target": "本·伍达<END>",
+      "target": "本·伍德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30406,7 +30406,7 @@
     {
       "key": "base:t00_04971",
       "source_sha256": "aa5b49f62273a647f619c315c79f8ab35718b0c64093fcdc0a51ce22e51d896d",
-      "target": "丹凯尔·库柏<END>",
+      "target": "邓克尔·库珀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30420,7 +30420,7 @@
     {
       "key": "base:t00_04973",
       "source_sha256": "0b8a40cfd10fe25aeba4196535db40384ee5d66098357c4a06582f1fc340cbd4",
-      "target": "塞西莉·费尔柴尔德<END>",
+      "target": "塞西莉·菲亚查德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30448,14 +30448,14 @@
     {
       "key": "base:t00_04977",
       "source_sha256": "f571eae06cbd6a6c2e9da7b04594750ca2ac875ecf44291df583468c53f7a838",
-      "target": "艾尔·比安诺<END>",
+      "target": "艾露·比安诺<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04978",
       "source_sha256": "210502d863803f93ed589d1fc0519ca9ebcf1773b122de83f73270ceaf501c0e",
-      "target": "蒙多·阿卡凯<END>",
+      "target": "蒙多·阿伽克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30490,7 +30490,7 @@
     {
       "key": "base:t00_04983",
       "source_sha256": "7ba14c6b9b3ca0cea1dff34ae6f1dc7c93181e2e88d3ea4d2b9693fa500cb4fc",
-      "target": "琪恩·阿基<END>",
+      "target": "倩恩·亚奇<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30511,7 +30511,7 @@
     {
       "key": "base:t00_04986",
       "source_sha256": "8b4558c6d45c762ec6d5be370d04698b2c58c601faf71b797cbc614a809e7041",
-      "target": "瓦尔基米德斯<END>",
+      "target": "瓦基米德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30532,7 +30532,7 @@
     {
       "key": "base:t00_04989",
       "source_sha256": "e6a4fdde19c722a75816541063e8d589dd25ad464a0b766e6bd4ff466a18dfc8",
-      "target": "卡拉·苏恩<END>",
+      "target": "姬拉·森<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30546,14 +30546,14 @@
     {
       "key": "base:t00_04991",
       "source_sha256": "61506b42ee0905d5eb80fbd8d4720b749643716a2794b39c42c8a89636013ba5",
-      "target": "艾伦比·比亚兹利<END>",
+      "target": "阿莲比·比亚兹利<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04992",
       "source_sha256": "c6e1f21dbd76eeef6dfb3480fdd377f91f12d876a1fd3ef2be824c6d77fd3712",
-      "target": "卡特尔·拉巴巴·温拿<END>",
+      "target": "卡特尔·拉巴伯·温拿<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30567,7 +30567,7 @@
     {
       "key": "base:t00_04994",
       "source_sha256": "ba35f5f21c1aa15ef6b89bcce4a6878834821442127e0a480c942642b88ab9be",
-      "target": "佛·村雨<END>",
+      "target": "凤·村雨<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30588,7 +30588,7 @@
     {
       "key": "base:t00_04997",
       "source_sha256": "e8a8683bc9557abdc47260d614cb7ad00a6cc77ae6408aade27e0df53794ef30",
-      "target": "罗佩特<END>",
+      "target": "洛比特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30602,7 +30602,7 @@
     {
       "key": "base:t00_04999",
       "source_sha256": "3ec553fbff22050130e5915076733ea29663bf5e82bd99ec3b395849cb3eb421",
-      "target": "马格<END>",
+      "target": "马可<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30623,14 +30623,14 @@
     {
       "key": "base:t00_05002",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05003",
       "source_sha256": "7f694d23a5deb215b54e756ef440a800edd72da9c56e27e14100a158a4cd3bbd",
-      "target": "乔治·德·桑德<END>",
+      "target": "乔治·迪·桑德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30658,7 +30658,7 @@
     {
       "key": "base:t00_05007",
       "source_sha256": "1afc250ec145ede7c9899d00342423eaf6d1cc6fb1ff1617147bb76a69197c06",
-      "target": "法·尤伊利<END>",
+      "target": "花·园丽<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30672,7 +30672,7 @@
     {
       "key": "base:t00_05009",
       "source_sha256": "5dcec492f7c3e46df28c99d8b965f748b8a486d2f2bbd18ce69989739482529e",
-      "target": "希尔德·修拜卡<END>",
+      "target": "希尔妲·修拜卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30742,14 +30742,14 @@
     {
       "key": "base:t00_05019",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05020",
       "source_sha256": "7f694d23a5deb215b54e756ef440a800edd72da9c56e27e14100a158a4cd3bbd",
-      "target": "乔治·德·桑德<END>",
+      "target": "乔治·迪·桑德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30777,7 +30777,7 @@
     {
       "key": "base:t00_05024",
       "source_sha256": "944eaf9c297b721e0767cd8ba1a69f037a87db8a2f3b1615e9215e20a65901e8",
-      "target": "呼延灼<END>",
+      "target": "呼炎灼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30798,7 +30798,7 @@
     {
       "key": "base:t00_05027",
       "source_sha256": "79fa1d83909084b7d94ebd718f26e180f7d2ee4a0adbeb1d88c2d88e3e0129d2",
-      "target": "奎丝·帕拉雅<END>",
+      "target": "葵丝·帕拉雅<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30819,21 +30819,21 @@
     {
       "key": "base:t00_05031",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05032",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05033",
       "source_sha256": "d68e99068a55874a8d5b1db4843e2b894180dd4a42edf9b4bcb95db556660d87",
-      "target": "马古阿纳克兵<END>",
+      "target": "马格纳克兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30861,7 +30861,7 @@
     {
       "key": "base:t00_05037",
       "source_sha256": "704313ca948d91708af015abd2e5a34b4702f15d76f5722472616306cdf7a20a",
-      "target": "基辛星兵<END>",
+      "target": "吉森星兵<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30938,28 +30938,28 @@
     {
       "key": "base:t00_05048",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05049",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05050",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05051",
       "source_sha256": "10c07625a7513f14554afb7ac44afe40fc6c669ba54e941cc3016f82c1bafe5d",
-      "target": "特别部队<END>",
+      "target": "特殊部队<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31064,7 +31064,7 @@
     {
       "key": "base:t00_05100",
       "source_sha256": "11f2fdf0f4277d0807309a231b36770c9a4166407761f2b3bc9a35013c8b6944",
-      "target": "殖民地代表<END>",
+      "target": "殖民卫星代表<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31617,7 +31617,7 @@
     {
       "key": "base:t00_05450",
       "source_sha256": "70b0ee1cc5f9d44aaf0b8c29825a17891e69b2cae9a49ce31b5a20dca04ddb03",
-      "target": "修巴尔兹·布鲁达<END>",
+      "target": "修巴鲁兹·布鲁达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31631,7 +31631,7 @@
     {
       "key": "base:t00_05452",
       "source_sha256": "39a71bfd7ff1e22fff38effc4cb58b386a7a76d30c81794372d20ca76f7c5b60",
-      "target": "蕾茵·美加村<END>",
+      "target": "深村玲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31645,14 +31645,14 @@
     {
       "key": "base:t00_05454",
       "source_sha256": "61506b42ee0905d5eb80fbd8d4720b749643716a2794b39c42c8a89636013ba5",
-      "target": "艾伦比·比亚兹利<END>",
+      "target": "阿莲比·比亚兹利<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05455",
       "source_sha256": "bf331cd1075579845994c04219f7f3cec8112d06c5abe9fe93419114472528fb",
-      "target": "基拉尔·麦基雷尔<END>",
+      "target": "基拉尔·梅奇雷尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31680,7 +31680,7 @@
     {
       "key": "base:t00_05459",
       "source_sha256": "1bca36dec22c86296d51367981b6ed89bf3fac02a57e0d60261b7dc8d6d5a744",
-      "target": "钱德拉·西吉马<END>",
+      "target": "钱德拉·施哲马<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31757,14 +31757,14 @@
     {
       "key": "base:t00_05470",
       "source_sha256": "28a4605bf05a6d0bd1808ef163066f30fb9ee2f4264c1990f246fd05fc661b07",
-      "target": "赛拉·玛斯<END>",
+      "target": "塞拉·玛斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05471",
       "source_sha256": "1afc250ec145ede7c9899d00342423eaf6d1cc6fb1ff1617147bb76a69197c06",
-      "target": "法·尤伊利<END>",
+      "target": "花·园丽<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31785,7 +31785,7 @@
     {
       "key": "base:t00_05474",
       "source_sha256": "91d1516018dae6cfb6938ce3c454f2ccd11e31d897df31d6f1a3de30ac5b421a",
-      "target": "亨肯·贝克纳<END>",
+      "target": "汉肯·贝克纳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31820,28 +31820,28 @@
     {
       "key": "base:t00_05479",
       "source_sha256": "b874509354df8caa3934cf26a99a5967a9d2506c3315098955a3e6a4ba61d315",
-      "target": "艾尔皮·普露<END>",
+      "target": "艾露比·普露<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05480",
       "source_sha256": "79fa1d83909084b7d94ebd718f26e180f7d2ee4a0adbeb1d88c2d88e3e0129d2",
-      "target": "奎丝·帕拉雅<END>",
+      "target": "葵丝·帕拉雅<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05481",
       "source_sha256": "ba35f5f21c1aa15ef6b89bcce4a6878834821442127e0a480c942642b88ab9be",
-      "target": "佛·村雨<END>",
+      "target": "凤·村雨<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05482",
       "source_sha256": "14026852b19b36c9d579c077e5c43b8376734bf066174f42de4fb25666b34a82",
-      "target": "马修马·塞罗<END>",
+      "target": "马修玛·塞罗<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31876,28 +31876,28 @@
     {
       "key": "base:t00_05487",
       "source_sha256": "e6a4fdde19c722a75816541063e8d589dd25ad464a0b766e6bd4ff466a18dfc8",
-      "target": "卡拉·苏恩<END>",
+      "target": "姬拉·森<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05488",
       "source_sha256": "779efb06755b4606edc16ef434aad95c041517ea6af50fd5d29c7776802219d0",
-      "target": "裘尼·加斯<END>",
+      "target": "邱尼·盖斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05489",
       "source_sha256": "6f92f9654476e4c3987eb3d64901a89f4d6120eff9627a38cd0ca33032a678ce",
-      "target": "格雷米·托特<END>",
+      "target": "格雷米·托托<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05490",
       "source_sha256": "7c246c2f3be6bd6dc9e9733213e0749fbbb4838e9b2369fd00bd8cb6b45ffc5c",
-      "target": "盖兹·卡帕<END>",
+      "target": "盖茨·卡帕<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31953,7 +31953,7 @@
     {
       "key": "base:t00_05498",
       "source_sha256": "8221852778c00854227633325fb5a3fd471be7298420eedd40bc0e6c948bc8df",
-      "target": "玛乌亚·法拉奥<END>",
+      "target": "玛雅·法拉奥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31988,7 +31988,7 @@
     {
       "key": "base:t00_05503",
       "source_sha256": "5dcec492f7c3e46df28c99d8b965f748b8a486d2f2bbd18ce69989739482529e",
-      "target": "希尔德·修拜卡<END>",
+      "target": "希尔妲·修拜卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32009,7 +32009,7 @@
     {
       "key": "base:t00_05506",
       "source_sha256": "7318d3a7ea392c94e461f64f0668f56054a9c3848602bb6eb24aa7712e6ee4bb",
-      "target": "莎莉·坡<END>",
+      "target": "莎莉·鲍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32037,7 +32037,7 @@
     {
       "key": "base:t00_05510",
       "source_sha256": "0f87a0c312cec31440d4903b2ae744483173ded0960f625f762588af38ee187b",
-      "target": "米利亚尔多·匹斯克拉福特<END>",
+      "target": "米利亚尔特·匹斯克拉福特<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32079,14 +32079,14 @@
     {
       "key": "base:t00_05516",
       "source_sha256": "fabb656f360c2bae2bddcc185fcbaecca7c5befb197c040e4b9bbc6c1563ca4f",
-      "target": "杜克·弗利德<END>",
+      "target": "杜克·弗里德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05517",
       "source_sha256": "59001a3436e69613e42c5133c099c4e369e3be1d91110e0d917dfe82a1aa7e82",
-      "target": "玛丽亚·弗利德<END>",
+      "target": "玛丽亚·弗里德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32107,63 +32107,63 @@
     {
       "key": "base:t00_05520",
       "source_sha256": "db063e4a75f414db86fd01c58bef22baffa494186d64401040c2e434ac9cc1e7",
-      "target": "夏皮罗·基茨<END>",
+      "target": "夏比罗·基斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05521",
       "source_sha256": "dff0e30480b81726f61a888e894b7c687b4e8559ac6ef8dadaee628b0163a603",
-      "target": "艾蕾·哈姆<END>",
+      "target": "艾蕾·汉姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05522",
       "source_sha256": "2095e002c7a269be12b54649e2ad5ea58e28af3ac4bf8552a94ebe5fdf339b29",
-      "target": "西拉·拉帕娜<END>",
+      "target": "席拉·拉巴纳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05523",
       "source_sha256": "d6150ae1ae49ce1201f679d2ca8f75058a2e601c1ca5987d78195302fae9d2a4",
-      "target": "修·撒玛<END>",
+      "target": "座间翔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05524",
       "source_sha256": "d81e36047527dd6c2911a7868e65cb2d6067f39e13268106394cd43c78c0aab4",
-      "target": "希尔琪·玛乌<END>",
+      "target": "希露奇·马乌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05525",
       "source_sha256": "c9c6088c9974f2aa567b064136d8b6dcaf7177432af7f4f1e430ef353633b625",
-      "target": "查姆·法乌<END>",
+      "target": "恰姆·法乌<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05526",
       "source_sha256": "754bcbb1b7a86d308f8504f2ecde14a26c3bc113e8d979acc4454e0d407f4155",
-      "target": "玛贝尔·弗罗珍<END>",
+      "target": "玛蓓儿·佛罗森<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05527",
       "source_sha256": "eeeba0945c35fc9a0e97c1d936bacdc81b4537f311aee37c11aec6260270fc02",
-      "target": "加拉莉亚·妮亚姆希<END>",
+      "target": "卡拉利亚·妮亚姆希<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05528",
       "source_sha256": "7a798e062937252fdca8a912d45c90326917b8ae8c2f4520c517be8074920dfd",
-      "target": "托德·吉尼斯<END>",
+      "target": "陶德·基尼斯<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32177,14 +32177,14 @@
     {
       "key": "base:t00_05530",
       "source_sha256": "671fd939d399cde73f90a0db57bc7794b8d60588768e6170eec60f3de9052f74",
-      "target": "杰丽尔·库契比<END>",
+      "target": "洁丽露·克吉比<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05531",
       "source_sha256": "7c86b53d75d8d284c6fcad1952fae01c3ba6ffc5ab38511a236c20f45fd0381f",
-      "target": "肖特·韦邦<END>",
+      "target": "秀特·威朋<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32240,7 +32240,7 @@
     {
       "key": "base:t00_05539",
       "source_sha256": "c458a3ff389fa75cd5a96fd0db9104a824b312257d0d059f80c905c9efe0b601",
-      "target": "伊丽莎白·格雷布利<END>",
+      "target": "伊丽莎白·克雷布利<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32289,7 +32289,7 @@
     {
       "key": "base:t00_05546",
       "source_sha256": "3531b41e248d38f11220caf7bf393fc672505b2f208b9a436abb42a491403027",
-      "target": "本·伍达<END>",
+      "target": "本·伍德<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32303,7 +32303,7 @@
     {
       "key": "base:t00_05548",
       "source_sha256": "aa5b49f62273a647f619c315c79f8ab35718b0c64093fcdc0a51ce22e51d896d",
-      "target": "丹凯尔·库柏<END>",
+      "target": "邓克尔·库珀<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32324,14 +32324,14 @@
     {
       "key": "base:t00_05551",
       "source_sha256": "f571eae06cbd6a6c2e9da7b04594750ca2ac875ecf44291df583468c53f7a838",
-      "target": "艾尔·比安诺<END>",
+      "target": "艾露·比安诺<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05552",
       "source_sha256": "f709138b4fbaf40f1e9818fc219ab3fca5f0935145e61ba65498be9e8c80049c",
-      "target": "蒙多·阿卡凯<END>",
+      "target": "蒙多·阿伽克<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32352,7 +32352,7 @@
     {
       "key": "base:t00_05555",
       "source_sha256": "7ba14c6b9b3ca0cea1dff34ae6f1dc7c93181e2e88d3ea4d2b9693fa500cb4fc",
-      "target": "琪恩·阿基<END>",
+      "target": "倩恩·亚奇<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32366,7 +32366,7 @@
     {
       "key": "base:t00_05557",
       "source_sha256": "ff207911d9b0df2b46654ee32fda0fdf30f4d87f1545bd85bb33e8aa66421fb4",
-      "target": "赛·赛西<END>",
+      "target": "蔡赛西<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32499,7 +32499,7 @@
     {
       "key": "base:t00_05576",
       "source_sha256": "6fda224263f5e33c86fbcfe88cb45e9319b3b5ce9b87c984655880be87d74bc7",
-      "target": "苏德利被摧毁<END>",
+      "target": "苏德里被摧毁<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32520,7 +32520,7 @@
     {
       "key": "base:t00_05579",
       "source_sha256": "1ac212b7e101a8a2277e7237410e68851f07b467cdb5c79a48a21c2d2c2cca93",
-      "target": "全灭马格以外的敌军<END>",
+      "target": "全灭马可以外的敌军<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32632,14 +32632,14 @@
     {
       "key": "base:t00_05595",
       "source_sha256": "44b1a62d34b432779be633cb253b9eed3670dfba9adcb01fd5bbd3013f01216a",
-      "target": "阿卡马被击破<END>",
+      "target": "阿伽玛被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05596",
       "source_sha256": "16485b498be721f9be0a78eb0942ddcaf1cd82aa0c6976306fd95e7299ea8c79",
-      "target": "奥德穆拉被击破<END>",
+      "target": "奥多姆拉被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32667,7 +32667,7 @@
     {
       "key": "base:t00_05600",
       "source_sha256": "55341edf2b77bec9da131a9e9eaa22527e839a94519efb8d5dcbb29a913ae070",
-      "target": "格兰·加兰被击破<END>",
+      "target": "古兰·加兰被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32695,7 +32695,7 @@
     {
       "key": "base:t00_05604",
       "source_sha256": "011d0370f8ef426e006f5f5b7d80f190af558d159e5b311ee3042763569ae8af",
-      "target": "巨大机器人被击破<END>",
+      "target": "大铁人被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32737,21 +32737,21 @@
     {
       "key": "base:t00_05610",
       "source_sha256": "efaf7314cb0ebfe94cbb150f5d7907507cd6e4306391f417a5c8423b8624d070",
-      "target": "拉·凯拉姆被击破、冈多尔被击破、阿克西斯坠落<END>",
+      "target": "拉·凯拉姆被击破、钢铎尔被击破、阿克西斯坠落<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05611",
       "source_sha256": "a22fa03155a688c4bcc45d3e10c9e1f64f5d85bece399e993c4061fecfbec31d",
-      "target": "拉维安罗斯被击破、阿卡马被击破<END>",
+      "target": "玫瑰人生号被击破、阿伽玛被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05612",
       "source_sha256": "66701bc0ef51c5eee611f3caab34d5824781ddf13d49d3108ac1187e85707cdc",
-      "target": "拉维安罗斯被击破<END>",
+      "target": "玫瑰人生号被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32807,14 +32807,14 @@
     {
       "key": "base:t00_05620",
       "source_sha256": "957cb773a29524a9e9e93042365d45a4a65a3511d7253f5a48945434e90efd56",
-      "target": "我军战舰被击破、马格被击破<END>",
+      "target": "我军战舰被击破、马可被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05621",
       "source_sha256": "de5b6e9adb43821bd7324bb832047502ba340eec93ee2a61e9ad9d61bed60d20",
-      "target": "我军战舰被击破、拉维安罗斯被击破<END>",
+      "target": "我军战舰被击破、玫瑰人生号被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32891,7 +32891,7 @@
     {
       "key": "base:t00_05632",
       "source_sha256": "0ba07ff3d6b2886edead6da1a491f0e7b836e71d088e60611699ab47a5e754b8",
-      "target": "我方全灭、苏德利撤退<END>",
+      "target": "我方全灭、苏德里撤退<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32912,14 +32912,14 @@
     {
       "key": "base:t00_05635",
       "source_sha256": "dd5e1a32e482a90f51305948629b29c2dcaec8138803c1c7884decd6ae95b48d",
-      "target": "阿卡马被击破、经过10回合<END>",
+      "target": "阿伽玛被击破、经过10回合<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05636",
       "source_sha256": "c49e3a019ec40a6cb0502224040d671392ec9318386cdfa1ec3007b02116db80",
-      "target": "拉维安罗斯被击破、马格被击破<END>",
+      "target": "玫瑰人生号被击破、马可被击破<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32940,7 +32940,7 @@
     {
       "key": "base:t00_05639",
       "source_sha256": "3a54bc078a24c4914057885056d5c9bbc99daf55fb62577d0733762c3ee3b1f7",
-      "target": "奥德穆拉被击破、苏德利撤退<END>",
+      "target": "奥多姆拉被击破、苏德里撤退<END>",
       "review_status": "draft",
       "origin": "terms"
     },

@@ -53,7 +53,7 @@ and do nothing?!
 ---
 >  おじい様の残してくださった
 >  “スイームルグ”さえ完成すれば…
-If only the Simurgh Grandfather left me were finished...
+If only the Sweemurg Grandfather left me were finished...
 ---
 >  ローレンス、あなたまさか」
 Lawrence, you haven't...”
@@ -152,7 +152,7 @@ You've had to put up with that unpleasant work for far too long.”
 ---
 >  スイームルグも調整まで
 >  終わったそうだ」
-I'm told the Simurgh's final adjustments are complete, too.”
+I'm told the Sweemurg's final adjustments are complete, too.”
 
 @17430 マナミ（本话主角）
 > 「本当ですか!?
@@ -179,12 +179,12 @@ There's someone else I need to contact now.”
 ---
 >  やはりロームフェラ財団の、
 >  ルフラン公爵家のご令嬢だ」
-She's also from Romefeller: the daughter of Duke Lefranc.”
+She's also from Romefeller: the daughter of Duke Reflann.”
 
 @17434 マナミ（本话主角）
 > 「ルフラン公爵家……
 >  シモーヌ様ですね?
-“Duke Lefranc's family... You mean Lady Simone?
+“Duke Reflann's family... You mean Lady Simone?
 ---
 >  そういえば、あの方は3年前にも
 >  帝国と戦ったことがあったと
@@ -224,7 +224,7 @@ so why not take a look at your machine? This way.”
 
 @17440 マナミ（本话主角）
 > 「これが……あたしのスイームルグ!?」
-“This is... my Simurgh?!”
+“This is... my Sweemurg?!”
 
 @17441 ローレンス
 > 「ふむ、さすがでございますな」
@@ -266,7 +266,7 @@ I'm just putting on the finishing touches. Please bear with me a moment longer.�
 ---
 >  スイームルグにワックスがけを
 >  しているんだ」
-He's waxing the Simurgh.”
+He's waxing the Sweemurg.”
 
 @17446 マナミ（本话主角）
 > 「なに、これは!?」
@@ -340,7 +340,7 @@ Unforgivable... I'll never forgive them!”
 @17457 マナミ（本话主角）
 > 「なにをしているの、ローレンス!
 >  スイームルグを出すのよ!!」
-“What are you waiting for, Lawrence?! Launch the Simurgh!”
+“What are you waiting for, Lawrence?! Launch the Sweemurg!”
 
 @17458 ローレンス
 > 「お嬢様! いきなり実戦を
@@ -354,7 +354,7 @@ Unforgivable... I'll never forgive them!”
 @17460 マナミ（本话主角）
 > 「すごいわ……これが、おじい様の
 >  スイームルグなのね……」
-“Incredible... So this is Grandfather's Simurgh...”
+“Incredible... So this is Grandfather's Sweemurg...”
 
 @17461 万丈
 > 「やれやれ、さすがに行動力にとんだ

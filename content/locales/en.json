@@ -754,7 +754,7 @@
     {
       "key": "base:t00_00072",
       "source_sha256": "a73b51e71a749318aba22eca1b499c7c53c17070127272ae0e6db8c3e637ab51",
-      "target": "UFO Robo Grendizer<END>",
+      "target": "UFO Robot Grendizer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -782,7 +782,7 @@
     {
       "key": "base:t00_00076",
       "source_sha256": "e3dfb808606d045465117fdecf099b99b13aa81b2aef8e0362e10eb7b28bc031",
-      "target": "Super Electromagnetic Robo Combattler V<END>",
+      "target": "Super Electromagnetic Robot Combattler V<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -817,7 +817,7 @@
     {
       "key": "base:t00_00081",
       "source_sha256": "542fe56b9665087022ae4c1f09c7ccac746b48024375853b21a99d6104890abb",
-      "target": "Super Beast Machine God Dancouga<END>",
+      "target": "Dancouga: Super Beast Machine God<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -831,7 +831,7 @@
     {
       "key": "base:t00_00083",
       "source_sha256": "ab1c1c27e2b363147f84ad9a5b4ee551bf772fc06cc36109dde3c14640ecb3ea",
-      "target": "Six God Combination Godmars<END>",
+      "target": "Six God Combination God Mars<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -922,7 +922,7 @@
     {
       "key": "base:t00_00097",
       "source_sha256": "db05ad9259fd07afc91f83dc5b8c88bb7855fcc3c039a6c07f6b5fa62129373f",
-      "target": "UFO Robo<BR>Grendizer<END>",
+      "target": "UFO Robot<BR>Grendizer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -950,7 +950,7 @@
     {
       "key": "base:t00_00101",
       "source_sha256": "8658be9998f5d6725c2192a644522e16535953a872dec227836751e170ee87b8",
-      "target": "Super Electromagnetic Robo<BR>Combattler V<END>",
+      "target": "Super Electromagnetic Robot<BR>Combattler V<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -985,7 +985,7 @@
     {
       "key": "base:t00_00106",
       "source_sha256": "386a852bf583db4e592c214ee5437eea7cbf0176b70470b542c4e4b81f32b611",
-      "target": "Super Beast Machine God<BR>Dancouga<END>",
+      "target": "Dancouga:<BR>Super Beast Machine God<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -999,7 +999,7 @@
     {
       "key": "base:t00_00108",
       "source_sha256": "219efd8cda82ba31dd575348a8720ad5593c983b0779e6473f004a5c7acf2e29",
-      "target": "Six God Combination<BR>Godmars<END>",
+      "target": "Six God Combination<BR>God Mars<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1076,7 +1076,7 @@
     {
       "key": "base:t00_00282",
       "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
-      "target": "Launch! Simurgh<END>",
+      "target": "Launch! Sweemurg<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1111,7 +1111,7 @@
     {
       "key": "base:t00_00287",
       "source_sha256": "abc824ddfc857a11ae2a01be4eaf072a2ed279160ef19230316ec24410a1dbcd",
-      "target": "Fierce! The Assault on Elbrus<END>",
+      "target": "Fierce! The Assault on Elbulls<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1615,7 +1615,7 @@
     {
       "key": "base:t00_00359",
       "source_sha256": "7d0856880cba2c3b69b9a0b205ce0f35ef91a38274af7be60842366b63b268fa",
-      "target": "All-Out Attack on the Beast Fighter Base<END>",
+      "target": "All-Out Attack on the Cyber Beast Force Base<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1797,7 +1797,7 @@
     {
       "key": "base:t00_00385",
       "source_sha256": "8569aa78b8df0ba5c3447f09ecb7329c2ffe454d01a716363e96f230bd7bb9f8",
-      "target": "Terror! Devil Axis Activates! (Part 1)<END>",
+      "target": "Terror! Dark Axis Activates! (Part 1)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2007,7 +2007,7 @@
     {
       "key": "base:t00_00415",
       "source_sha256": "804feebce174693f7e038bec719a5873c839d1580086e4c893f7ac97b27b0abc",
-      "target": "Terror! Devil Axis Activates! (Part 2)<END>",
+      "target": "Terror! Dark Axis Activates! (Part 2)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2784,21 +2784,21 @@
     {
       "key": "base:t00_00527",
       "source_sha256": "f3534a365e465efbd33a1087a1db4c00a25e5efa73ae6b85f7b1e9d946dfd59f",
-      "target": "Gundam Spiegel<END>",
+      "target": "Shadow Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00528",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "God Gundam<END>",
+      "target": "Burning Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00529",
       "source_sha256": "e42ffdc8d8463dfce20cd136183ff261850861fe286d2b7a13ec4dfa00f715cd",
-      "target": "God Gundam H<END>",
+      "target": "Burning Gundam H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2826,14 +2826,14 @@
     {
       "key": "base:t00_00533",
       "source_sha256": "c02059e73edd5e64102e42be04030db7577b60c20368a013d41addafdee258f4",
-      "target": "Nobel Gundam<END>",
+      "target": "Noble Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00534",
       "source_sha256": "9783471e2d1d97019447452e80350801985c66e574ea48b6a73666f9a8af5f52",
-      "target": "Nobel Gundam B<END>",
+      "target": "Noble Gundam B<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2952,21 +2952,21 @@
     {
       "key": "base:t00_00551",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Devil Gundam<END>",
+      "target": "Dark Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00552",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Devil Gundam<END>",
+      "target": "Dark Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00553",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Devil Gundam<END>",
+      "target": "Dark Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3008,14 +3008,14 @@
     {
       "key": "base:t00_00559",
       "source_sha256": "fdac88b1e1fad146cc15dd04890ac1090ede1c5ce15cfedfe0476113a74a3c7b",
-      "target": "Svanhild<END>",
+      "target": "Svanheld<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00560",
       "source_sha256": "a56dd8f90d157995dc8f31843a157951da8724e4241a5142fb0464093e550294",
-      "target": "Razgriz<END>",
+      "target": "Razgreez<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3029,28 +3029,28 @@
     {
       "key": "base:t00_00562",
       "source_sha256": "b5556d27fdfc8aed58c6d9c41c93212f086ac98fbda7db51c5bb3599e6b9772b",
-      "target": "Vairose<END>",
+      "target": "Virose<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00563",
       "source_sha256": "6540e7e52671d83e7bc1698619e6e227db25996034b3a03187f71e0a61ff1cf6",
-      "target": "Simurgh<END>",
+      "target": "Sweemurg<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00564",
       "source_sha256": "6a111ec7a406f9f069fc6e01bafb21972460c99bdb29442e14b2cb9bdd5fa984",
-      "target": "Elbrus<END>",
+      "target": "Elbulls<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00565",
       "source_sha256": "20b2c755b35a300e5915e52aad56f7ae61c931cd54022982b8cd50d27c1f65c4",
-      "target": "Devil Axis<END>",
+      "target": "Dark Axis<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3064,14 +3064,14 @@
     {
       "key": "base:t00_00567",
       "source_sha256": "5dc34a68dfc5cc91d89c0f85a4fcda403afd275f0334d5fa747f563b1f7c6591",
-      "target": "Aviesrealm<END>",
+      "target": "Avieslelm<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00568",
       "source_sha256": "8d4a1c297d527d8ea7777d060b5cc4ad2641039e3905bbc1b4a5732c6d272a13",
-      "target": "Jayclaps<END>",
+      "target": "JClaps<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3288,7 +3288,7 @@
     {
       "key": "base:t00_00600",
       "source_sha256": "bd49679c37a5e1ef85d49cff4d5cc9f0996d283f164089264cb17279bf0869d0",
-      "target": "Hyaku Shiki<END>",
+      "target": "Hyaku-Shiki<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3344,14 +3344,14 @@
     {
       "key": "base:t00_00608",
       "source_sha256": "a8eb3a9fa7434ffbd1fda4302e20d7a1a696e581f863dd22c9e5a6ea5b958e0a",
-      "target": "The O<END>",
+      "target": "The-O<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00609",
       "source_sha256": "1906a2ede126cac6da706be8b3fb1f092d3b15413a310eba5ca818a3f141597f",
-      "target": "α Azieru<END>",
+      "target": "Alpha Azieru<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3365,7 +3365,7 @@
     {
       "key": "base:t00_00611",
       "source_sha256": "e026b16d180f9efca5b006e197b31e03ee926eb55e5403fbf8cd88981b20a2ea",
-      "target": "Apsalus<END>",
+      "target": "Apsaras<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3526,7 +3526,7 @@
     {
       "key": "base:t00_00634",
       "source_sha256": "ce7d93c62e0f5031fb2a14447abdee02f9ea38c987c8d9359b63a354d0bfd66f",
-      "target": "Hamma Hamma<END>",
+      "target": "Hamma-Hamma<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3673,14 +3673,14 @@
     {
       "key": "base:t00_00655",
       "source_sha256": "4a40c24ebf0f07ebb60d8c25655a1543f885e117e33d300ac7a3349be9c0e9fb",
-      "target": "Gundam Deathscythe H<END>",
+      "target": "Gundam Deathscythe Hell<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00656",
       "source_sha256": "d692fe1dbbf79852cad87024254d4068e1670b5db661c7f7684f0012e8408268",
-      "target": "Deathscythe H Custom<END>",
+      "target": "Deathscythe Hell Custom<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3939,7 +3939,7 @@
     {
       "key": "base:t00_00693",
       "source_sha256": "8559096383e6289b593d8c3ec0ced05185af7801e59b8a5b5d4341cea9021d20",
-      "target": "Saucer Beast Girugiru<END>",
+      "target": "Saucer Beast Gilgil<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3953,7 +3953,7 @@
     {
       "key": "base:t00_00695",
       "source_sha256": "475fb17d999036faf775a3a0960770ed649869a648b169727b69884002cc90fc",
-      "target": "Saucer Beast Gosugosu<END>",
+      "target": "Saucer Beast Gosgos<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4072,7 +4072,7 @@
     {
       "key": "base:t00_00712",
       "source_sha256": "d0e10bc1fcb5e46377c898c05cdad3e8d331a7c451b50a12cf32a2f338e9828b",
-      "target": "Gaiya<END>",
+      "target": "Gaia<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4100,7 +4100,7 @@
     {
       "key": "base:t00_00716",
       "source_sha256": "47f56cf8fdae89398624237f379fd3f013a7841c8ce7578942bf25596ca5d412",
-      "target": "Kyurutakus<END>",
+      "target": "Curtax<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4191,28 +4191,28 @@
     {
       "key": "base:t00_00729",
       "source_sha256": "30e9c9cbe814397be9f70e44a27a0320fa18418b5bb4bfae573d3d9515ee4ead",
-      "target": "Zanbird<END>",
+      "target": "Zambird<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00730",
       "source_sha256": "283bfa2fe0b504914a76d87403618476e35228f524bae5db27203d99dc5e042e",
-      "target": "Zanbull<END>",
+      "target": "Zambull<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00731",
       "source_sha256": "271bb2dd0ee340db2fd3c9541d9729b9aa179e54bc427b996391d686345ea3f1",
-      "target": "Zanbase<END>",
+      "target": "Zambase<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00732",
       "source_sha256": "47ad2aeb58420eafd70ca9e44c386fcdb3f4150b3c496fa7b546458f6da8e2a4",
-      "target": "Zambo Ace<END>",
+      "target": "Zambo-Ace<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4443,7 +4443,7 @@
     {
       "key": "base:t00_00765",
       "source_sha256": "8fd67ac75139d0628cb3b392d5c31920da973d6da13bd4ffc871ecdd6bc207bb",
-      "target": "Zei Far<END>",
+      "target": "Zei-Fer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4478,7 +4478,7 @@
     {
       "key": "base:t00_00770",
       "source_sha256": "f2bd9fb140321b1716443d577684d8d88723796378cfda7c63a1b0b12d625183",
-      "target": "Gran Garan<END>",
+      "target": "Gran-Garan<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4534,14 +4534,14 @@
     {
       "key": "base:t00_00778",
       "source_sha256": "b62ab642513a8341d4cc2b809feede3140465bbc5d20d34aef10bb9208976a2a",
-      "target": "Wil Wiph<END>",
+      "target": "Will-Wips<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00779",
       "source_sha256": "6993f11736865fd054b48a2cc00d13fa94e77b8daa9e60c557d34e4b2ca9cdbd",
-      "target": "Galaba<END>",
+      "target": "Gallaba<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4569,7 +4569,7 @@
     {
       "key": "base:t00_00783",
       "source_sha256": "2c3ec209e7f5fc78a475335b2c9e7419208647c64b9dc917c9c757845e72ac54",
-      "target": "Bierres<END>",
+      "target": "Vierres<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4800,7 +4800,7 @@
     {
       "key": "base:t00_00816",
       "source_sha256": "43ebc9881b085f0e546a3fc7a8c7332b82ded37955d5462fa12857a95e5efac2",
-      "target": "Vigna Ghina<END>",
+      "target": "Vigna-Ghina<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4842,7 +4842,7 @@
     {
       "key": "base:t00_00822",
       "source_sha256": "9180e1ead9795088934d2b5decec983905599bfb309dfc25abf588e003528eb5",
-      "target": "FA Hyaku Shiki Kai<END>",
+      "target": "FA Hyaku-Shiki Kai<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4856,7 +4856,7 @@
     {
       "key": "base:t00_00824",
       "source_sha256": "0658d18ddedb2ec9cd62a14042939e5bc87c23692a5d7dcc90b4c8e02774a8cb",
-      "target": "Super Beast Sisiris Garo<END>",
+      "target": "Super Beast Shishiris Garo<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4884,7 +4884,7 @@
     {
       "key": "base:t00_00828",
       "source_sha256": "ea97105655ec192f07597fc8f8a7ce9369c7e3730638e083aa5baf6fd4b25724",
-      "target": "Super Beast Sisiris Kiba<END>",
+      "target": "Super Beast Shishiris Kiba<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4898,7 +4898,7 @@
     {
       "key": "base:t00_00830",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Devil Gundam<END>",
+      "target": "Dark Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4912,7 +4912,7 @@
     {
       "key": "base:t00_00832",
       "source_sha256": "bf92bc413096b56869666de4a09ba00e8957673332ebaa19ebbb9c372955966d",
-      "target": "Muge Zolbados Castle<END>",
+      "target": "Muge Zorbados Castle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4926,7 +4926,7 @@
     {
       "key": "base:t00_00834",
       "source_sha256": "f0f8e57c1ceba6bc5fe332c8b5e4d17b4c94cdbfcb144a501ed0e265c5ecddab",
-      "target": "Simurgh S<END>",
+      "target": "Sweemurg S<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4940,7 +4940,7 @@
     {
       "key": "base:t00_00836",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "God Gundam<END>",
+      "target": "Burning Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4968,7 +4968,7 @@
     {
       "key": "base:t00_00840",
       "source_sha256": "c02059e73edd5e64102e42be04030db7577b60c20368a013d41addafdee258f4",
-      "target": "Nobel Gundam<END>",
+      "target": "Noble Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5066,7 +5066,7 @@
     {
       "key": "base:t00_00854",
       "source_sha256": "2ad0862f646b883acd3dc25a9f312faf151bcbcedecfc215a239df6808e8b44b",
-      "target": "Nowruz<END>",
+      "target": "Norouz<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5122,14 +5122,14 @@
     {
       "key": "base:t00_00862",
       "source_sha256": "030f15c887af9e819b14e5e06990754296a4c6b3124bf945a73fddf081cdaa67",
-      "target": "Kolgatch<END>",
+      "target": "Callgatti<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00863",
       "source_sha256": "722d234b524ac09085e77e0246e9c390f339796d4a4b65a04077595671cf5a46",
-      "target": "Randora<END>",
+      "target": "Landora<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5143,7 +5143,7 @@
     {
       "key": "base:t00_00865",
       "source_sha256": "9502667b3a0439512436a1599259ea63f11c81cf52ad66abcc820e03128d2649",
-      "target": "Gyandora<END>",
+      "target": "Gandora<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5206,7 +5206,7 @@
     {
       "key": "base:t00_00874",
       "source_sha256": "1bcaf3396f1df514f77cc9c571f3243a1f21cdf4b9ae31814aca88aaa4b9f9de",
-      "target": "Hyper Galaba<END>",
+      "target": "Hyper Gallaba<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7257,21 +7257,21 @@
     {
       "key": "base:t00_01377",
       "source_sha256": "3286ad4318f1c0596822f2a87e746dd939cb93bfd5d92e6b6a502fd7a952880d",
-      "target": "God Strike<END>",
+      "target": "Burning Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01378",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "God Slash<END>",
+      "target": "Burning Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01379",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "God Slash Typhoon<END>",
+      "target": "Burning Slash Typhoon<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7292,28 +7292,28 @@
     {
       "key": "base:t00_01382",
       "source_sha256": "3286ad4318f1c0596822f2a87e746dd939cb93bfd5d92e6b6a502fd7a952880d",
-      "target": "God Strike<END>",
+      "target": "Burning Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01383",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "God Slash<END>",
+      "target": "Burning Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01384",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "God Slash Typhoon<END>",
+      "target": "Burning Slash Typhoon<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01385",
       "source_sha256": "39f483c68cfd01d5dfb41195e6e3b8e242c25a7d041e71297d15934b6f8d7609",
-      "target": "God Field Dash<END>",
+      "target": "Burning Field Dash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7327,14 +7327,14 @@
     {
       "key": "base:t00_01387",
       "source_sha256": "bb1fb90a1604215d23e46f5ffdd1b7c37a74c244e5b9e1ca64de57d6aad5c21f",
-      "target": "Erupting God Slash<END>",
+      "target": "Erupting Burning Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01388",
       "source_sha256": "c026678a3ed4c1f970c536cf89d197c2b32144786b56d7646004a5995a602c04",
-      "target": "Erupting God Finger<END>",
+      "target": "Erupting Burning Finger<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7453,7 +7453,7 @@
     {
       "key": "base:t00_01405",
       "source_sha256": "9914e979bc90db8f68bd42581c6410a5068676011d98b25e0f7f7c31c93e4481",
-      "target": "Nobel Strike<END>",
+      "target": "Noble Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7481,7 +7481,7 @@
     {
       "key": "base:t00_01409",
       "source_sha256": "9914e979bc90db8f68bd42581c6410a5068676011d98b25e0f7f7c31c93e4481",
-      "target": "Nobel Strike<END>",
+      "target": "Noble Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7579,7 +7579,7 @@
     {
       "key": "base:t00_01423",
       "source_sha256": "09cd80421e04b49baef8b3c2dd74dfd221f619b4d0a7f231e693860a52f7ff6b",
-      "target": "Blazing Machine Gun Punch<END>",
+      "target": "Burning Machine Gun Punch<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7600,14 +7600,14 @@
     {
       "key": "base:t00_01426",
       "source_sha256": "4be867f8640f8a9025d6caa0765f80464ed2ca2c1c21172b64ec1febb6809bb2",
-      "target": "Roses Bit<END>",
+      "target": "Rose Bits<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01427",
       "source_sha256": "5de01f2d14ce3da0c22b8e8518ae63578a835f8724836ecb8ed9f11f06441e0e",
-      "target": "Roses Screamer<END>",
+      "target": "Rose Screamer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7628,21 +7628,21 @@
     {
       "key": "base:t00_01430",
       "source_sha256": "4be867f8640f8a9025d6caa0765f80464ed2ca2c1c21172b64ec1febb6809bb2",
-      "target": "Roses Bit<END>",
+      "target": "Rose Bits<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01431",
       "source_sha256": "5de01f2d14ce3da0c22b8e8518ae63578a835f8724836ecb8ed9f11f06441e0e",
-      "target": "Roses Screamer<END>",
+      "target": "Rose Screamer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01432",
       "source_sha256": "f15adbe3433a8a95c44da4b0191b4bada949f033d123b72e6b88046eaeadba86",
-      "target": "Roses Hurricane<END>",
+      "target": "Rose Hurricane<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7887,7 +7887,7 @@
     {
       "key": "base:t00_01467",
       "source_sha256": "64b29a08d62f3f166db47e5a035d22715dd9863ce6c4aad639d99af15f1d836c",
-      "target": "Devil Fang<END>",
+      "target": "Dark Fang<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8265,7 +8265,7 @@
     {
       "key": "base:t00_01521",
       "source_sha256": "e2e6ee7da395331db7038f8492b717796bd847e6727f829aba98617399863560",
-      "target": "Shishiku Reppa<END>",
+      "target": "Shishiko Reppa<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8321,7 +8321,7 @@
     {
       "key": "base:t00_01529",
       "source_sha256": "08a02a899cdf7f0c7e327d8511d321d0a4e4006324f915a25828738d250716cd",
-      "target": "Tenno Shohazan<END>",
+      "target": "Ten'o Shohazan<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8433,7 +8433,7 @@
     {
       "key": "base:t00_01545",
       "source_sha256": "7a0d9d5f2031812c64e6fd85afe40fafb6fc527c0756550e5aa3305b70abe849",
-      "target": "Detonating Cord<END>",
+      "target": "Demolition Chain<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8664,14 +8664,14 @@
     {
       "key": "base:t00_01578",
       "source_sha256": "0c4454e17e0b4750a06b84ad0817c9724b5eff4b552800ca7d1a07b452dc6f59",
-      "target": "Fin Funnel MAP<END>",
+      "target": "Fin Funnels MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01579",
       "source_sha256": "d4e8b4b92cbfd74494bb30776f64343112815e1078dd61f93464ff80336d22b1",
-      "target": "Fin Funnel<END>",
+      "target": "Fin Funnels<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9448,7 +9448,7 @@
     {
       "key": "base:t00_01690",
       "source_sha256": "33bf5cfe6c52ccef82d3e27fdda02b5192a3d4e197b77d5ec2eede98497cea7e",
-      "target": "Hyde Bomb<END>",
+      "target": "Hide Bomb<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -9777,7 +9777,7 @@
     {
       "key": "base:t00_01737",
       "source_sha256": "142bb85d2a0b573ddecd2743c7ea8f73a3697c37e20dab3717d4481240e99d7f",
-      "target": "Beam Sword Axe<END>",
+      "target": "Beam Sword-Axe<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11037,7 +11037,7 @@
     {
       "key": "base:t00_01917",
       "source_sha256": "6bfd42f4e99ce061630c456869b5f1963760afe28ffe956353e23badf1e24f6c",
-      "target": "Dober Gun<END>",
+      "target": "Dobergun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11142,7 +11142,7 @@
     {
       "key": "base:t00_01932",
       "source_sha256": "6bfd42f4e99ce061630c456869b5f1963760afe28ffe956353e23badf1e24f6c",
-      "target": "Dober Gun<END>",
+      "target": "Dobergun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11534,7 +11534,7 @@
     {
       "key": "base:t00_01988",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "Double Harken<END>",
+      "target": "Double Haken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11590,7 +11590,7 @@
     {
       "key": "base:t00_01996",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "Double Harken<END>",
+      "target": "Double Haken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11653,7 +11653,7 @@
     {
       "key": "base:t00_02005",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "Double Harken<END>",
+      "target": "Double Haken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11716,7 +11716,7 @@
     {
       "key": "base:t00_02014",
       "source_sha256": "9aa9e47b6e3088bd9f7a5ed4cf6af253f962778110dcf048483648b4f0f77f23",
-      "target": "Double Harken<END>",
+      "target": "Double Haken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13319,21 +13319,21 @@
     {
       "key": "base:t00_02243",
       "source_sha256": "c0db01a034ca659426758b78dfadfb66f3c349fad955feed5f3c4ac13dc35fea",
-      "target": "Danku Sword<END>",
+      "target": "Dancouken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02244",
       "source_sha256": "0df8323560495acb6fcd83bd74e537f3f52ae3748d063a9e87e5dae20d6157ca",
-      "target": "Danku Koga Sword<END>",
+      "target": "Dancou Kougaken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02245",
       "source_sha256": "2208947c6367d6fa9c04fe60fa965ff0804f61f7988c8e8a83bba90652b58072",
-      "target": "Danku Cannon<END>",
+      "target": "Dancouho<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13368,21 +13368,21 @@
     {
       "key": "base:t00_02250",
       "source_sha256": "c0db01a034ca659426758b78dfadfb66f3c349fad955feed5f3c4ac13dc35fea",
-      "target": "Danku Sword<END>",
+      "target": "Dancouken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02251",
       "source_sha256": "0df8323560495acb6fcd83bd74e537f3f52ae3748d063a9e87e5dae20d6157ca",
-      "target": "Danku Koga Sword<END>",
+      "target": "Dancou Kougaken<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02252",
       "source_sha256": "2208947c6367d6fa9c04fe60fa965ff0804f61f7988c8e8a83bba90652b58072",
-      "target": "Danku Cannon<END>",
+      "target": "Dancouho<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14600,7 +14600,7 @@
     {
       "key": "base:t00_02426",
       "source_sha256": "7cb809fe8b335c1680f66b3e0c36c4c30d64214668cda44e3f3958bad0af6ade",
-      "target": "2-Barrel Laserd Rifle<END>",
+      "target": "2-Barrel Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14628,7 +14628,7 @@
     {
       "key": "base:t00_02430",
       "source_sha256": "4e88e658a1290f4566c27c97166226097b7026ad2a1eb1565cc38bc4acc2d7ff",
-      "target": "Rapid Laserd Rifle<END>",
+      "target": "Rapid Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14649,7 +14649,7 @@
     {
       "key": "base:t00_02435",
       "source_sha256": "4e01fa7b2da942535d5f1a115407d917992ff068585ffce1cebfd81431c67905",
-      "target": "Burst Laserd Rifle<END>",
+      "target": "Burst Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14670,7 +14670,7 @@
     {
       "key": "base:t00_02438",
       "source_sha256": "4e01fa7b2da942535d5f1a115407d917992ff068585ffce1cebfd81431c67905",
-      "target": "Burst Laserd Rifle<END>",
+      "target": "Burst Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14705,7 +14705,7 @@
     {
       "key": "base:t00_02443",
       "source_sha256": "4e88e658a1290f4566c27c97166226097b7026ad2a1eb1565cc38bc4acc2d7ff",
-      "target": "Rapid Laserd Rifle<END>",
+      "target": "Rapid Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14740,7 +14740,7 @@
     {
       "key": "base:t00_02449",
       "source_sha256": "5c2c5782be365a6fbb05ae584a8d83c8b02ab9a4f32ebdde29e90cb84341ad60",
-      "target": "2-Barrel Laserd Gun<END>",
+      "target": "2-Barrel Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14768,7 +14768,7 @@
     {
       "key": "base:t00_02453",
       "source_sha256": "5c2c5782be365a6fbb05ae584a8d83c8b02ab9a4f32ebdde29e90cb84341ad60",
-      "target": "2-Barrel Laserd Gun<END>",
+      "target": "2-Barrel Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14782,7 +14782,7 @@
     {
       "key": "base:t00_02455",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14810,7 +14810,7 @@
     {
       "key": "base:t00_02459",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14824,7 +14824,7 @@
     {
       "key": "base:t00_02461",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14859,7 +14859,7 @@
     {
       "key": "base:t00_02467",
       "source_sha256": "5512fa6b54b45f9a701030e94ab56189120612727ae899b698491c7402631dea",
-      "target": "Rapid Laserd Gun<END>",
+      "target": "Rapid Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14873,7 +14873,7 @@
     {
       "key": "base:t00_02469",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14887,7 +14887,7 @@
     {
       "key": "base:t00_02471",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14901,7 +14901,7 @@
     {
       "key": "base:t00_02473",
       "source_sha256": "7824b9d11a422dab35538bc2244d69679ac66ee95bb89f89d73c096dac47f7e1",
-      "target": "Long-Range Laserd Rifle<END>",
+      "target": "Long-Range Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14922,7 +14922,7 @@
     {
       "key": "base:t00_02476",
       "source_sha256": "a0b248e57dd38dcae5ff83192058619ff3fe542e9e3cd85e059d80e9aacdd6aa",
-      "target": "Burst Laserd Gun<END>",
+      "target": "Burst Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14943,14 +14943,14 @@
     {
       "key": "base:t00_02479",
       "source_sha256": "354477389aaab97fb46871f575385bdfbce12126999b981a8912dec006de4780",
-      "target": "Laserd Rifle<END>",
+      "target": "Lasered Rifle<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02480",
       "source_sha256": "5c2c5782be365a6fbb05ae584a8d83c8b02ab9a4f32ebdde29e90cb84341ad60",
-      "target": "2-Barrel Laserd Gun<END>",
+      "target": "2-Barrel Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -14964,7 +14964,7 @@
     {
       "key": "base:t00_02482",
       "source_sha256": "18d482d7e1b7b50c6c113f7f18466898b5cc201f04b19fd5cfbeb8f21f9eb097",
-      "target": "Rapid-Fire Laserd Gun<END>",
+      "target": "Rapid-Fire Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15097,7 +15097,7 @@
     {
       "key": "base:t00_02501",
       "source_sha256": "c8a1b6cb0f85ea53fbde899fc1c18a6bb3e8e3c4fb0c7e0617d57b1de24438ae",
-      "target": "Laserd Gun<END>",
+      "target": "Lasered Gun<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15146,14 +15146,14 @@
     {
       "key": "base:t00_02508",
       "source_sha256": "d4e8b4b92cbfd74494bb30776f64343112815e1078dd61f93464ff80336d22b1",
-      "target": "Fin Funnel<END>",
+      "target": "Fin Funnels<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02509",
       "source_sha256": "0c4454e17e0b4750a06b84ad0817c9724b5eff4b552800ca7d1a07b452dc6f59",
-      "target": "Fin Funnel MAP<END>",
+      "target": "Fin Funnels MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15440,21 +15440,21 @@
     {
       "key": "base:t00_02550",
       "source_sha256": "e2e6ee7da395331db7038f8492b717796bd847e6727f829aba98617399863560",
-      "target": "Shishiku Reppa<END>",
+      "target": "Shishiko Reppa<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02551",
       "source_sha256": "08a02a899cdf7f0c7e327d8511d321d0a4e4006324f915a25828738d250716cd",
-      "target": "Tenno Shohazan<END>",
+      "target": "Ten'o Shohazan<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02552",
       "source_sha256": "77e40e1f23dad5248e5a04a333fdedd22f15cc77c8762c84dfc2468a4905e701",
-      "target": "Phoenix Light Blast<END>",
+      "target": "Hoo Koha<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15678,7 +15678,7 @@
     {
       "key": "base:t00_02585",
       "source_sha256": "538c7163abd85d77ee0a7674c807ae694a2b17611089ec2556a0263585019276",
-      "target": "Double God Finger<END>",
+      "target": "Double Burning Finger<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15706,7 +15706,7 @@
     {
       "key": "base:t00_02589",
       "source_sha256": "26d05855452f826b834993bfb72cfd5176f6697e7b1c4de359278a208ab0eaf6",
-      "target": "Thunder Call Dragon Doom Array<END>",
+      "target": "Shorai Tenryu Mametsujin<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16518,21 +16518,21 @@
     {
       "key": "base:t00_02706",
       "source_sha256": "afaf30e61a71a335334fc2d6aa6d677cf4fb50b86deee9585b16d39b3de425c7",
-      "target": "格God StrikeP<END>",
+      "target": "格Burning StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02707",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格God SlashP<END>",
+      "target": "格Burning SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02708",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格God Slash TyphoonP<END>",
+      "target": "格Burning Slash TyphoonP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16553,28 +16553,28 @@
     {
       "key": "base:t00_02711",
       "source_sha256": "afaf30e61a71a335334fc2d6aa6d677cf4fb50b86deee9585b16d39b3de425c7",
-      "target": "格God StrikeP<END>",
+      "target": "格Burning StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02712",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格God SlashP<END>",
+      "target": "格Burning SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02713",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格God Slash TyphoonP<END>",
+      "target": "格Burning Slash TyphoonP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02714",
       "source_sha256": "07e7c258cc7f51274b1f57390d40861f53c5da8fdcda4da617b2ea81321547e5",
-      "target": "格God Field DashP<END>",
+      "target": "格Burning Field DashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16588,14 +16588,14 @@
     {
       "key": "base:t00_02716",
       "source_sha256": "dd4f055b379c97b74c8db57da695defac4cdf157971bea00a4278e44563088e8",
-      "target": "格Erupting God SlashP<END>",
+      "target": "格Erupting Burning SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02717",
       "source_sha256": "d3118d3ede9107ebecf1ea8631c649c84be19e64531dd132c678289922f7258d",
-      "target": "格Erupting God FingerP<END>",
+      "target": "格Erupting Burning FingerP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16714,7 +16714,7 @@
     {
       "key": "base:t00_02734",
       "source_sha256": "26c505223b795b4f1c49d92d6c7f4eba01c4d0114c0ea38dbbb966e0635e0bad",
-      "target": "格Nobel StrikeP<END>",
+      "target": "格Noble StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16742,7 +16742,7 @@
     {
       "key": "base:t00_02738",
       "source_sha256": "26c505223b795b4f1c49d92d6c7f4eba01c4d0114c0ea38dbbb966e0635e0bad",
-      "target": "格Nobel StrikeP<END>",
+      "target": "格Noble StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16840,7 +16840,7 @@
     {
       "key": "base:t00_02752",
       "source_sha256": "f1540af4d5c9f2483c34f7802a4c4c473b79b3abcc470ec75e28a8548a38fd72",
-      "target": "格Blazing Machine Gun PunchP<END>",
+      "target": "格Burning Machine Gun PunchP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16861,14 +16861,14 @@
     {
       "key": "base:t00_02755",
       "source_sha256": "8b1ee296b95e70353a6b725d7756ad3563ea2fa85550aaacb45ee6efae2ce093",
-      "target": "格Roses Bit<END>",
+      "target": "格Rose Bits<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02756",
       "source_sha256": "56248936f1abadc093a719d290db148274a2d1080dd2cf9c71366934e5ad0c0a",
-      "target": "格Roses Screamer<END>",
+      "target": "格Rose Screamer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16889,21 +16889,21 @@
     {
       "key": "base:t00_02759",
       "source_sha256": "8b1ee296b95e70353a6b725d7756ad3563ea2fa85550aaacb45ee6efae2ce093",
-      "target": "格Roses Bit<END>",
+      "target": "格Rose Bits<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02760",
       "source_sha256": "56248936f1abadc093a719d290db148274a2d1080dd2cf9c71366934e5ad0c0a",
-      "target": "格Roses Screamer<END>",
+      "target": "格Rose Screamer<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02761",
       "source_sha256": "4ae872542c2649d25dbd4dd70e82ab8eb102dd0e7befb6560678d2fd1e6bcd82",
-      "target": "格Roses Hurricane<END>",
+      "target": "格Rose Hurricane<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17148,7 +17148,7 @@
     {
       "key": "base:t00_02796",
       "source_sha256": "1da61e74669c5cbf5ae61eb788ff5d2a88d0194d00c268b3d220f8e1af96bdcc",
-      "target": "格Devil FangP<END>",
+      "target": "格Dark FangP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17526,7 +17526,7 @@
     {
       "key": "base:t00_02850",
       "source_sha256": "f2191140906500cde04ae279a2ff439f1ea1e730295be0ccf1325fd14ea57273",
-      "target": "格Shishiku ReppaP<END>",
+      "target": "格Shishiko ReppaP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17582,7 +17582,7 @@
     {
       "key": "base:t00_02858",
       "source_sha256": "8b114be4090b09a05c6f9c58bfb55f7153f8de4db8a58491e61a0cda9af558e8",
-      "target": "格Tenno ShohazanP<END>",
+      "target": "格Ten'o ShohazanP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17694,7 +17694,7 @@
     {
       "key": "base:t00_02874",
       "source_sha256": "662f1c021ded45f90773a31918cde02df3ddddf54e85924310c273b8f773340e",
-      "target": "射Detonating CordMAP<END>",
+      "target": "射Demolition ChainMAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17925,14 +17925,14 @@
     {
       "key": "base:t00_02907",
       "source_sha256": "3001cd0aeed9ad59a347ac5f76712e6108cf6c043c400928c9383b06f1d97ad1",
-      "target": "射Fin Funnel MAP<END>",
+      "target": "射Fin Funnels MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02908",
       "source_sha256": "4e7d67a125554f06a5b97e46debd2b3ecbc703cea89425684f5ebac07485e26b",
-      "target": "射Fin Funnel<END>",
+      "target": "射Fin Funnels<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -18709,7 +18709,7 @@
     {
       "key": "base:t00_03019",
       "source_sha256": "cf810ad65f09ad9e32a4fed4d47061d70d3c174b4aa847a706f1949552189f39",
-      "target": "射Hyde Bomb<END>",
+      "target": "射Hide Bomb<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -19038,7 +19038,7 @@
     {
       "key": "base:t00_03066",
       "source_sha256": "eabcfb1f57e3751cdf5f73b33c7a6ca15e7379d5323e447fd6ce202c92cb2c4e",
-      "target": "格Beam Sword AxeP<END>",
+      "target": "格Beam Sword-AxeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20298,7 +20298,7 @@
     {
       "key": "base:t00_03246",
       "source_sha256": "e53fb857a72fcf86cb4d7e1f290dba86c455aebc5cd82d4be82ce339a3fa49e5",
-      "target": "射Dober GunB<END>",
+      "target": "射DobergunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20403,7 +20403,7 @@
     {
       "key": "base:t00_03261",
       "source_sha256": "e53fb857a72fcf86cb4d7e1f290dba86c455aebc5cd82d4be82ce339a3fa49e5",
-      "target": "射Dober GunB<END>",
+      "target": "射DobergunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20795,7 +20795,7 @@
     {
       "key": "base:t00_03317",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格Double HarkenP<END>",
+      "target": "格Double HakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20851,7 +20851,7 @@
     {
       "key": "base:t00_03325",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格Double HarkenP<END>",
+      "target": "格Double HakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20914,7 +20914,7 @@
     {
       "key": "base:t00_03334",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格Double HarkenP<END>",
+      "target": "格Double HakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -20977,7 +20977,7 @@
     {
       "key": "base:t00_03343",
       "source_sha256": "e6e8fd7d577ec20845264b3d87a38edf0c1f421067d1572b875b9576fb1e1e28",
-      "target": "格Double HarkenP<END>",
+      "target": "格Double HakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22580,21 +22580,21 @@
     {
       "key": "base:t00_03572",
       "source_sha256": "75e58660c1ac9f70200e377faabe3dd676a2eb8b73d205abf9c77f44606294f9",
-      "target": "格Danku SwordP<END>",
+      "target": "格DancoukenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03573",
       "source_sha256": "0d80a919929f85eec8aecc6ed9734124683ffd70fa30abc5816622eae0698e35",
-      "target": "格Danku Koga SwordP<END>",
+      "target": "格Dancou KougakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03574",
       "source_sha256": "cd5ddf1499713d32c6b6cc8958da7a1da977461a3bc4d4a3b980f4abadb4316a",
-      "target": "射Danku Cannon<END>",
+      "target": "射Dancouho<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22629,21 +22629,21 @@
     {
       "key": "base:t00_03579",
       "source_sha256": "75e58660c1ac9f70200e377faabe3dd676a2eb8b73d205abf9c77f44606294f9",
-      "target": "格Danku SwordP<END>",
+      "target": "格DancoukenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03580",
       "source_sha256": "0d80a919929f85eec8aecc6ed9734124683ffd70fa30abc5816622eae0698e35",
-      "target": "格Danku Koga SwordP<END>",
+      "target": "格Dancou KougakenP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03581",
       "source_sha256": "cd5ddf1499713d32c6b6cc8958da7a1da977461a3bc4d4a3b980f4abadb4316a",
-      "target": "射Danku Cannon<END>",
+      "target": "射Dancouho<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23861,7 +23861,7 @@
     {
       "key": "base:t00_03755",
       "source_sha256": "87fcf75dda0ea5ccb3e39441ad597662db7953490d732e7785a960502fc5ddec",
-      "target": "射2-Barrel Laserd RifleB<END>",
+      "target": "射2-Barrel Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23889,7 +23889,7 @@
     {
       "key": "base:t00_03759",
       "source_sha256": "52d45b701deb545ca0eec827b14f4b5ce024a2d0d5e99f266ea2c0c46083be87",
-      "target": "射Rapid Laserd RifleB<END>",
+      "target": "射Rapid Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23910,7 +23910,7 @@
     {
       "key": "base:t00_03764",
       "source_sha256": "245713053a993d4dd1b9d829b88476eaf9d79b6b4224713d7001abefbfe2a3cb",
-      "target": "射Burst Laserd RifleB<END>",
+      "target": "射Burst Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23931,7 +23931,7 @@
     {
       "key": "base:t00_03767",
       "source_sha256": "245713053a993d4dd1b9d829b88476eaf9d79b6b4224713d7001abefbfe2a3cb",
-      "target": "射Burst Laserd RifleB<END>",
+      "target": "射Burst Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23966,7 +23966,7 @@
     {
       "key": "base:t00_03772",
       "source_sha256": "52d45b701deb545ca0eec827b14f4b5ce024a2d0d5e99f266ea2c0c46083be87",
-      "target": "射Rapid Laserd RifleB<END>",
+      "target": "射Rapid Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24001,7 +24001,7 @@
     {
       "key": "base:t00_03778",
       "source_sha256": "7bbdf1136b134d937bc561aeedd68b311ecb9094e920803d0ad7389233ef5641",
-      "target": "射2-Barrel Laserd GunB<END>",
+      "target": "射2-Barrel Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24029,7 +24029,7 @@
     {
       "key": "base:t00_03782",
       "source_sha256": "7bbdf1136b134d937bc561aeedd68b311ecb9094e920803d0ad7389233ef5641",
-      "target": "射2-Barrel Laserd GunB<END>",
+      "target": "射2-Barrel Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24043,7 +24043,7 @@
     {
       "key": "base:t00_03784",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24071,7 +24071,7 @@
     {
       "key": "base:t00_03788",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24085,7 +24085,7 @@
     {
       "key": "base:t00_03790",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24120,7 +24120,7 @@
     {
       "key": "base:t00_03796",
       "source_sha256": "03da69ac4dc058b2afe04427555cf76c669637c5ebbaf0773bf6c04ae7e9fb3e",
-      "target": "射Rapid Laserd GunB<END>",
+      "target": "射Rapid Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24134,7 +24134,7 @@
     {
       "key": "base:t00_03798",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24148,7 +24148,7 @@
     {
       "key": "base:t00_03800",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24162,7 +24162,7 @@
     {
       "key": "base:t00_03802",
       "source_sha256": "920264bb6083866c52b17cca24588046aea97641924eec9e29b840fc49bf0d44",
-      "target": "射Long-Range Laserd RifleB<END>",
+      "target": "射Long-Range Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24183,7 +24183,7 @@
     {
       "key": "base:t00_03805",
       "source_sha256": "bdc4e0e7d172588fb5f8aa7fcb0e674e1c7187d9bb2cea05fa8d3e0a43971da5",
-      "target": "射Burst Laserd GunB<END>",
+      "target": "射Burst Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24204,14 +24204,14 @@
     {
       "key": "base:t00_03808",
       "source_sha256": "43be7d3e78e4624f7cc6e79c8bbbb5ed1194053d68266ff4e6b9f614150d4107",
-      "target": "射Laserd RifleB<END>",
+      "target": "射Lasered RifleB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03809",
       "source_sha256": "7bbdf1136b134d937bc561aeedd68b311ecb9094e920803d0ad7389233ef5641",
-      "target": "射2-Barrel Laserd GunB<END>",
+      "target": "射2-Barrel Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24225,7 +24225,7 @@
     {
       "key": "base:t00_03811",
       "source_sha256": "d7ae52053f959e7d3f28d550766ad4bd5c7138716ef34d0706be42d7f524b5ab",
-      "target": "射Rapid-Fire Laserd GunB<END>",
+      "target": "射Rapid-Fire Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24358,7 +24358,7 @@
     {
       "key": "base:t00_03830",
       "source_sha256": "ee566449886d8c97343032d484ca47f82615300caf17452b09caf260417933f3",
-      "target": "射Laserd GunB<END>",
+      "target": "射Lasered GunB<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24407,14 +24407,14 @@
     {
       "key": "base:t00_03837",
       "source_sha256": "4e7d67a125554f06a5b97e46debd2b3ecbc703cea89425684f5ebac07485e26b",
-      "target": "射Fin Funnel<END>",
+      "target": "射Fin Funnels<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03838",
       "source_sha256": "3001cd0aeed9ad59a347ac5f76712e6108cf6c043c400928c9383b06f1d97ad1",
-      "target": "射Fin Funnel MAP<END>",
+      "target": "射Fin Funnels MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24701,21 +24701,21 @@
     {
       "key": "base:t00_03879",
       "source_sha256": "f2191140906500cde04ae279a2ff439f1ea1e730295be0ccf1325fd14ea57273",
-      "target": "格Shishiku ReppaP<END>",
+      "target": "格Shishiko ReppaP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03880",
       "source_sha256": "8b114be4090b09a05c6f9c58bfb55f7153f8de4db8a58491e61a0cda9af558e8",
-      "target": "格Tenno ShohazanP<END>",
+      "target": "格Ten'o ShohazanP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03881",
       "source_sha256": "fa35ec43e65044b5667f77a260aad7b7e72051c5d3cde559b6e8380cca405b84",
-      "target": "格Phoenix Light BlastP<END>",
+      "target": "格Hoo KohaP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24939,7 +24939,7 @@
     {
       "key": "base:t00_03914",
       "source_sha256": "e0f84b529d3c7f959243429f5adf076f26b703c431af4b5740c26a1f9a747247",
-      "target": "格Double God FingerP<END>",
+      "target": "格Double Burning FingerP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24967,7 +24967,7 @@
     {
       "key": "base:t00_03918",
       "source_sha256": "38fc8e22609e77fa91f45f8a047515630968cc5b54d962348999676f845dee28",
-      "target": "格Thunder Call Dragon Doom ArrayP<END>",
+      "target": "格Shorai Tenryu MametsujinP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26794,14 +26794,14 @@
     {
       "key": "base:t00_04416",
       "source_sha256": "3a3c404f28a2185fb1fd7c6fb1763a8f711f378e1963714d5847bb09676807fc",
-      "target": "Avi-Lu<END>",
+      "target": "Avie-Lu<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04417",
       "source_sha256": "4564e0c40a265f7c6c08edd674126f62e1b3ba012f98523d92971e795d2deb5a",
-      "target": "Jay-Ren<END>",
+      "target": "J-Ren<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26955,7 +26955,7 @@
     {
       "key": "base:t00_04439",
       "source_sha256": "57477184f98bc7b747b61351822f202b3f9962bd0b3a2287683f4669832b96f6",
-      "target": "Ple Two<END>",
+      "target": "Ple-Two<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26976,7 +26976,7 @@
     {
       "key": "base:t00_04442",
       "source_sha256": "1354a234428a75d988de1c86d50f45407b80267a267fccc6577acb58431a221c",
-      "target": "Arias<END>",
+      "target": "Arius<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27081,7 +27081,7 @@
     {
       "key": "base:t00_04457",
       "source_sha256": "bb0f07f2d673c8bdfb7c1521503538d6e0f11f0d175bb9b4e0e35f67724e2c4b",
-      "target": "Bran<END>",
+      "target": "Buran<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27137,7 +27137,7 @@
     {
       "key": "base:t00_04465",
       "source_sha256": "162d6a808f04292bcd27894d9239a0a6467afbd8b0765c389ac7b4d4e4b6761d",
-      "target": "Catherine<END>",
+      "target": "Cathrine<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27165,7 +27165,7 @@
     {
       "key": "base:t00_04469",
       "source_sha256": "25c2cc83d9a195b1c6a5a87e90704b399adfac4278002b71b5f948def1c64d04",
-      "target": "Rashid<END>",
+      "target": "Rasid<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27781,14 +27781,14 @@
     {
       "key": "base:t00_04557",
       "source_sha256": "19f24ff15ab49f680dfd22666ad749abac1f2bb324d89a590fedfd622d7b9e00",
-      "target": "Deathgaiyer<END>",
+      "target": "Death Gaia<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04558",
       "source_sha256": "36db5a82cbff4efa14c66a86886715f7e8a8bf14d9481b5d644db2999e0517bc",
-      "target": "Hellmat<END>",
+      "target": "Helmut<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27816,7 +27816,7 @@
     {
       "key": "base:t00_04562",
       "source_sha256": "bcba69c81987c8853c172e760f7a0817dbc182ccfc85556a2088d087433bb5a8",
-      "target": "Sheela<END>",
+      "target": "Ciela<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27837,7 +27837,7 @@
     {
       "key": "base:t00_04565",
       "source_sha256": "f547854989fc86ea7e4fdcb20e8c483584304e1853390e1b8994ee5e69e3f56e",
-      "target": "Cham<END>",
+      "target": "Chum<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27858,7 +27858,7 @@
     {
       "key": "base:t00_04568",
       "source_sha256": "05b91f7dfe1cf8c1c25d95e81503e5b469530ad999b64368177055f79d44e501",
-      "target": "Todd<END>",
+      "target": "Tod<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27872,7 +27872,7 @@
     {
       "key": "base:t00_04570",
       "source_sha256": "e1adfc55f5844a4a24584a678ae38501a25ea2033273eb07240f812b39b1af31",
-      "target": "Jeryl<END>",
+      "target": "Jeril<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27893,7 +27893,7 @@
     {
       "key": "base:t00_04573",
       "source_sha256": "cb363887d8ed7c1c3b76259f615e9928f8d0e2e10a3bcd190b299e5a14275557",
-      "target": "Burn<END>",
+      "target": "Bern<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28012,7 +28012,7 @@
     {
       "key": "base:t00_04590",
       "source_sha256": "b87633c38b56fef682ab6ef0fddc595dfa38e71f9cd5d523e563c678cd62b76f",
-      "target": "Roan<END>",
+      "target": "Roanne<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28110,21 +28110,21 @@
     {
       "key": "base:t00_04604",
       "source_sha256": "7a63f5b6612be281e5b16550d89ab366e65d0a55df3ebe908d7cc5882f3f83c5",
-      "target": "Waim<END>",
+      "target": "Wyme<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04605",
       "source_sha256": "3e444587c3a67f56e959d8722552b5edc89837c42e12c9e0b2f42c6c319b0d8a",
-      "target": "Bian<END>",
+      "target": "Beanne<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04606",
       "source_sha256": "5547b8afdec87f7e72d42b7cd0f687e841546cb3d839cd83308a85e59368a86c",
-      "target": "Del<END>",
+      "target": "Dale<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28138,7 +28138,7 @@
     {
       "key": "base:t00_04608",
       "source_sha256": "8bbe4e667c34d7a9a85cb3e4ec341649c3f3aec5c78936e159bf99e86184c266",
-      "target": "Dune<END>",
+      "target": "Deune<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28208,7 +28208,7 @@
     {
       "key": "base:t00_04618",
       "source_sha256": "9db442150096bfc4b92bca326de311ac7227149a00f967a861ccdc981b721400",
-      "target": "Apolly<END>",
+      "target": "Aboly<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28250,14 +28250,14 @@
     {
       "key": "base:t00_04624",
       "source_sha256": "3c0bf7d31102e37bbaea5250bdcf8d8e9319c97814b243cc8f82e8e61377b01a",
-      "target": "Dangel<END>",
+      "target": "Dungele<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04625",
       "source_sha256": "8b4558c6d45c762ec6d5be370d04698b2c58c601faf71b797cbc614a809e7041",
-      "target": "Warukimedes<END>",
+      "target": "Warchimedes<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28334,7 +28334,7 @@
     {
       "key": "base:t00_04636",
       "source_sha256": "e8a8683bc9557abdc47260d614cb7ad00a6cc77ae6408aade27e0df53794ef30",
-      "target": "Lopet<END>",
+      "target": "Ropet<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28460,7 +28460,7 @@
     {
       "key": "base:t00_04654",
       "source_sha256": "b87633c38b56fef682ab6ef0fddc595dfa38e71f9cd5d523e563c678cd62b76f",
-      "target": "Roan<END>",
+      "target": "Roanne<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28523,7 +28523,7 @@
     {
       "key": "base:t00_04663",
       "source_sha256": "944eaf9c297b721e0767cd8ba1a69f037a87db8a2f3b1615e9215e20a65901e8",
-      "target": "Koenshaku<END>",
+      "target": "Ko Enshaku<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28537,7 +28537,7 @@
     {
       "key": "base:t00_04665",
       "source_sha256": "6239b275ffe9451fb1c990092df878966dfdfaf155709320a866aaf1eaf64a8e",
-      "target": "Tsubarov<END>",
+      "target": "Tubarov<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28929,7 +28929,7 @@
     {
       "key": "base:t00_04757",
       "source_sha256": "7b5994de9453d3e257d795ccec50372a2e1df2c56c247a79623d7b59ca926cd3",
-      "target": "Wong Yunfat<END>",
+      "target": "Wong Yun-Fat<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29048,14 +29048,14 @@
     {
       "key": "base:t00_04777",
       "source_sha256": "3a3c404f28a2185fb1fd7c6fb1763a8f711f378e1963714d5847bb09676807fc",
-      "target": "Avi-Lu<END>",
+      "target": "Avie-Lu<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04778",
       "source_sha256": "4564e0c40a265f7c6c08edd674126f62e1b3ba012f98523d92971e795d2deb5a",
-      "target": "Jay-Ren<END>",
+      "target": "J-Ren<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29167,7 +29167,7 @@
     {
       "key": "base:t00_04794",
       "source_sha256": "179bc414c2359bb86f9796c193c31b5bcfec9a06464e68dedb17786d4709c3bb",
-      "target": "Aina Saharin<END>",
+      "target": "Aina Sakhalin<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29209,7 +29209,7 @@
     {
       "key": "base:t00_04800",
       "source_sha256": "57477184f98bc7b747b61351822f202b3f9962bd0b3a2287683f4669832b96f6",
-      "target": "Ple Two<END>",
+      "target": "Ple-Two<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29230,7 +29230,7 @@
     {
       "key": "base:t00_04803",
       "source_sha256": "30ea51b2d8777a670ffbc0ce84b10e133633f5b006457bc2df7c420d3b4d059b",
-      "target": "Arias Moma<END>",
+      "target": "Arius Moma<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29335,7 +29335,7 @@
     {
       "key": "base:t00_04818",
       "source_sha256": "c81e822e15a567d8945c52f26d01cfed7e19ac9ce4e484faa8edc7e2475c24af",
-      "target": "Bran Blutarch<END>",
+      "target": "Buran Blutarch<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29391,7 +29391,7 @@
     {
       "key": "base:t00_04826",
       "source_sha256": "2a31ddb6f0a0b458802f1f019dd830b387940da1efc22aea884468bbc6ff27ca",
-      "target": "Catherine Bloom<END>",
+      "target": "Cathrine Bloom<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29419,7 +29419,7 @@
     {
       "key": "base:t00_04830",
       "source_sha256": "25c2cc83d9a195b1c6a5a87e90704b399adfac4278002b71b5f948def1c64d04",
-      "target": "Rashid<END>",
+      "target": "Rasid<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29839,7 +29839,7 @@
     {
       "key": "base:t00_04890",
       "source_sha256": "9036458dbaa632a732056f715b4c9a787970fe0bcf54a5d2c7dac1a1982fcd50",
-      "target": "Chizuru Nanbara<END>",
+      "target": "Chizuru Nambara<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29937,7 +29937,7 @@
     {
       "key": "base:t00_04904",
       "source_sha256": "b1f7735ce3076cd5ed1c69b875472d4d8e20f590d4dc74151b877cebab1fcd6f",
-      "target": "Alberto the Shockwave<END>",
+      "target": "Shockwave Alberto<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30035,14 +30035,14 @@
     {
       "key": "base:t00_04918",
       "source_sha256": "dd8c4f40f844eb09a8297f010984c0f31959dda36bf86c1fc8f1868ad25a794a",
-      "target": "General Deathgaiyer<END>",
+      "target": "General Death Gaia<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04919",
       "source_sha256": "791feeb13dcb9015fd4217a7e9082a76f194a50ff1174d448350de976b4440f0",
-      "target": "General Hellmat<END>",
+      "target": "General Helmut<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30063,14 +30063,14 @@
     {
       "key": "base:t00_04922",
       "source_sha256": "dff0e30480b81726f61a888e894b7c687b4e8559ac6ef8dadaee628b0163a603",
-      "target": "Elle Hamm<END>",
+      "target": "Elle Hunm<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04923",
       "source_sha256": "2095e002c7a269be12b54649e2ad5ea58e28af3ac4bf8552a94ebe5fdf339b29",
-      "target": "Sheela Lapana<END>",
+      "target": "Ciela Lapana<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30091,7 +30091,7 @@
     {
       "key": "base:t00_04926",
       "source_sha256": "c9c6088c9974f2aa567b064136d8b6dcaf7177432af7f4f1e430ef353633b625",
-      "target": "Cham Huau<END>",
+      "target": "Chum Huau<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30112,7 +30112,7 @@
     {
       "key": "base:t00_04929",
       "source_sha256": "7a798e062937252fdca8a912d45c90326917b8ae8c2f4520c517be8074920dfd",
-      "target": "Todd Guinness<END>",
+      "target": "Tod Guines<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30126,7 +30126,7 @@
     {
       "key": "base:t00_04931",
       "source_sha256": "671fd939d399cde73f90a0db57bc7794b8d60588768e6170eec60f3de9052f74",
-      "target": "Jeryl Kuchibi<END>",
+      "target": "Jeril Coochibi<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30147,7 +30147,7 @@
     {
       "key": "base:t00_04934",
       "source_sha256": "2e679793c98ccd28af93bfdd810dd74dcd41c21d06a8c88ffbe1fa11e242ad43",
-      "target": "Burn Bunnings<END>",
+      "target": "Bern Bunnings<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30231,14 +30231,14 @@
     {
       "key": "base:t00_04946",
       "source_sha256": "c458a3ff389fa75cd5a96fd0db9104a824b312257d0d059f80c905c9efe0b601",
-      "target": "Elizabeth Grebley<END>",
+      "target": "Elizabeth Crebley<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04947",
       "source_sha256": "0bf3855a39064fcabefbb8e786b2248b07e90f8e0d91e0b04faf3d541cd84304",
-      "target": "Simone Lefranc<END>",
+      "target": "Simone Reflann<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30252,7 +30252,7 @@
     {
       "key": "base:t00_04949",
       "source_sha256": "a2899a8667bb8a935c6e5cbc9e9405303268ecb96befcd64c3d7b60b3c0c62ab",
-      "target": "Armas Gale<END>",
+      "target": "Ahmos Gale<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30266,14 +30266,14 @@
     {
       "key": "base:t00_04951",
       "source_sha256": "60705fb08640515357a258ad9870bde59744ae3e4562ddfc85c20c22cf4075e6",
-      "target": "Roan Demitrich<END>",
+      "target": "Roanne Demitrich<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04952",
       "source_sha256": "99513b7c07f5163685b1ce290cbcd832358a98cde5f4b461ee5f616e998900dd",
-      "target": "Ejil Karla<END>",
+      "target": "Karla Egiel<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30364,21 +30364,21 @@
     {
       "key": "base:t00_04965",
       "source_sha256": "7a63f5b6612be281e5b16550d89ab366e65d0a55df3ebe908d7cc5882f3f83c5",
-      "target": "Waim<END>",
+      "target": "Wyme<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04966",
       "source_sha256": "3e444587c3a67f56e959d8722552b5edc89837c42e12c9e0b2f42c6c319b0d8a",
-      "target": "Bian<END>",
+      "target": "Beanne<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04967",
       "source_sha256": "5547b8afdec87f7e72d42b7cd0f687e841546cb3d839cd83308a85e59368a86c",
-      "target": "Del<END>",
+      "target": "Dale<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30392,7 +30392,7 @@
     {
       "key": "base:t00_04969",
       "source_sha256": "8bbe4e667c34d7a9a85cb3e4ec341649c3f3aec5c78936e159bf99e86184c266",
-      "target": "Dune<END>",
+      "target": "Deune<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30455,14 +30455,14 @@
     {
       "key": "base:t00_04978",
       "source_sha256": "210502d863803f93ed589d1fc0519ca9ebcf1773b122de83f73270ceaf501c0e",
-      "target": "Mondo Akage<END>",
+      "target": "Mondo Agake<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04979",
       "source_sha256": "9db442150096bfc4b92bca326de311ac7227149a00f967a861ccdc981b721400",
-      "target": "Apolly<END>",
+      "target": "Aboly<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30504,14 +30504,14 @@
     {
       "key": "base:t00_04985",
       "source_sha256": "3c0bf7d31102e37bbaea5250bdcf8d8e9319c97814b243cc8f82e8e61377b01a",
-      "target": "Dangel<END>",
+      "target": "Dungele<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04986",
       "source_sha256": "8b4558c6d45c762ec6d5be370d04698b2c58c601faf71b797cbc614a809e7041",
-      "target": "Warukimedes<END>",
+      "target": "Warchimedes<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30588,7 +30588,7 @@
     {
       "key": "base:t00_04997",
       "source_sha256": "e8a8683bc9557abdc47260d614cb7ad00a6cc77ae6408aade27e0df53794ef30",
-      "target": "Lopet<END>",
+      "target": "Ropet<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30714,7 +30714,7 @@
     {
       "key": "base:t00_05015",
       "source_sha256": "60705fb08640515357a258ad9870bde59744ae3e4562ddfc85c20c22cf4075e6",
-      "target": "Roan Demitrich<END>",
+      "target": "Roanne Demitrich<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30777,7 +30777,7 @@
     {
       "key": "base:t00_05024",
       "source_sha256": "944eaf9c297b721e0767cd8ba1a69f037a87db8a2f3b1615e9215e20a65901e8",
-      "target": "Koenshaku<END>",
+      "target": "Ko Enshaku<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30791,7 +30791,7 @@
     {
       "key": "base:t00_05026",
       "source_sha256": "6239b275ffe9451fb1c990092df878966dfdfaf155709320a866aaf1eaf64a8e",
-      "target": "Tsubarov<END>",
+      "target": "Tubarov<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31666,7 +31666,7 @@
     {
       "key": "base:t00_05457",
       "source_sha256": "7b5994de9453d3e257d795ccec50372a2e1df2c56c247a79623d7b59ca926cd3",
-      "target": "Wong Yunfat<END>",
+      "target": "Wong Yun-Fat<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31799,7 +31799,7 @@
     {
       "key": "base:t00_05476",
       "source_sha256": "179bc414c2359bb86f9796c193c31b5bcfec9a06464e68dedb17786d4709c3bb",
-      "target": "Aina Saharin<END>",
+      "target": "Aina Sakhalin<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31855,7 +31855,7 @@
     {
       "key": "base:t00_05484",
       "source_sha256": "30ea51b2d8777a670ffbc0ce84b10e133633f5b006457bc2df7c420d3b4d059b",
-      "target": "Arias Moma<END>",
+      "target": "Arius Moma<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31946,7 +31946,7 @@
     {
       "key": "base:t00_05497",
       "source_sha256": "c81e822e15a567d8945c52f26d01cfed7e19ac9ce4e484faa8edc7e2475c24af",
-      "target": "Bran Blutarch<END>",
+      "target": "Buran Blutarch<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31981,7 +31981,7 @@
     {
       "key": "base:t00_05502",
       "source_sha256": "2a31ddb6f0a0b458802f1f019dd830b387940da1efc22aea884468bbc6ff27ca",
-      "target": "Catherine Bloom<END>",
+      "target": "Cathrine Bloom<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32114,14 +32114,14 @@
     {
       "key": "base:t00_05521",
       "source_sha256": "dff0e30480b81726f61a888e894b7c687b4e8559ac6ef8dadaee628b0163a603",
-      "target": "Elle Hamm<END>",
+      "target": "Elle Hunm<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05522",
       "source_sha256": "2095e002c7a269be12b54649e2ad5ea58e28af3ac4bf8552a94ebe5fdf339b29",
-      "target": "Sheela Lapana<END>",
+      "target": "Ciela Lapana<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32142,7 +32142,7 @@
     {
       "key": "base:t00_05525",
       "source_sha256": "c9c6088c9974f2aa567b064136d8b6dcaf7177432af7f4f1e430ef353633b625",
-      "target": "Cham Huau<END>",
+      "target": "Chum Huau<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32163,7 +32163,7 @@
     {
       "key": "base:t00_05528",
       "source_sha256": "7a798e062937252fdca8a912d45c90326917b8ae8c2f4520c517be8074920dfd",
-      "target": "Todd Guinness<END>",
+      "target": "Tod Guines<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32177,7 +32177,7 @@
     {
       "key": "base:t00_05530",
       "source_sha256": "671fd939d399cde73f90a0db57bc7794b8d60588768e6170eec60f3de9052f74",
-      "target": "Jeryl Kuchibi<END>",
+      "target": "Jeril Coochibi<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32198,7 +32198,7 @@
     {
       "key": "base:t00_05533",
       "source_sha256": "2e679793c98ccd28af93bfdd810dd74dcd41c21d06a8c88ffbe1fa11e242ad43",
-      "target": "Burn Bunnings<END>",
+      "target": "Bern Bunnings<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32240,14 +32240,14 @@
     {
       "key": "base:t00_05539",
       "source_sha256": "c458a3ff389fa75cd5a96fd0db9104a824b312257d0d059f80c905c9efe0b601",
-      "target": "Elizabeth Grebley<END>",
+      "target": "Elizabeth Crebley<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05540",
       "source_sha256": "0bf3855a39064fcabefbb8e786b2248b07e90f8e0d91e0b04faf3d541cd84304",
-      "target": "Simone Lefranc<END>",
+      "target": "Simone Reflann<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32261,7 +32261,7 @@
     {
       "key": "base:t00_05542",
       "source_sha256": "a2899a8667bb8a935c6e5cbc9e9405303268ecb96befcd64c3d7b60b3c0c62ab",
-      "target": "Armas Gale<END>",
+      "target": "Ahmos Gale<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32275,14 +32275,14 @@
     {
       "key": "base:t00_05544",
       "source_sha256": "60705fb08640515357a258ad9870bde59744ae3e4562ddfc85c20c22cf4075e6",
-      "target": "Roan Demitrich<END>",
+      "target": "Roanne Demitrich<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05545",
       "source_sha256": "99513b7c07f5163685b1ce290cbcd832358a98cde5f4b461ee5f616e998900dd",
-      "target": "Ejil Karla<END>",
+      "target": "Karla Egiel<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32331,7 +32331,7 @@
     {
       "key": "base:t00_05552",
       "source_sha256": "f709138b4fbaf40f1e9818fc219ab3fca5f0935145e61ba65498be9e8c80049c",
-      "target": "Mondo Akage<END>",
+      "target": "Mondo Agake<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32506,7 +32506,7 @@
     {
       "key": "base:t00_05577",
       "source_sha256": "2af323f78c86cd0f5bd10dacb0cd0bb5aa582da8993e9cc57a6c1b3a1cf3f005",
-      "target": "Devil Gundam destroyed<END>",
+      "target": "Dark Gundam destroyed<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32667,7 +32667,7 @@
     {
       "key": "base:t00_05600",
       "source_sha256": "55341edf2b77bec9da131a9e9eaa22527e839a94519efb8d5dcbb29a913ae070",
-      "target": "Gran Garan destroyed<END>",
+      "target": "Gran-Garan destroyed<END>",
       "review_status": "draft",
       "origin": "terms"
     },
