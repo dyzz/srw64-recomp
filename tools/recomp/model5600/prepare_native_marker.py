@@ -124,13 +124,16 @@ def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def validate(directory):
     directory=directory.resolve();m=json.loads((directory/'manifest.json').read_text())
-    if m['schema']!='srw64.native-marker.v1' or m.get('resource_id')!=5600:raise ValueError('Unsupported native mesh pack')
-    required={'reference.bin','vertices.bin','indices.bin','mesh.json','waterdrop.obj'}
+    if m['schema']!='srw64.native-marker.v2' or m.get('resource_id')!=5600:raise ValueError('Unsupported native mesh pack')
+    # No ROM bytes: the host takes resource 5600 from the player's ROM and checks its digest.
+    required={'vertices.bin','indices.bin','mesh.json','waterdrop.obj'}
     if set(m['files'])!=required:raise ValueError('Incomplete native mesh pack')
+    stray=sorted(p.name for p in directory.iterdir() if p.name not in required|{'manifest.json'})
+    if stray:raise ValueError(f'Unlisted files in the native marker pack: {stray}')
     for name,expected in m['files'].items():
         p=directory/name
         if p.parent!=directory or digest(p)!=expected:raise ValueError('Native marker asset drift')
-    if m.get('original_resource_sha256')!='3891b8b1462c80159de4da706b8523aa4e3c1f2c71bbefc1beb4acd0fe67d069' or m['files']['reference.bin']!='9f97063fbdc656bb4fe0355ebffe710b9b3a1ec3eb89a35769526188daf432ad':
+    if m.get('original_resource_sha256')!='3891b8b1462c80159de4da706b8523aa4e3c1f2c71bbefc1beb4acd0fe67d069':
         raise ValueError('Unrecognized original marker')
     mesh=json.loads((directory/'mesh.json').read_text())
     if len(mesh['positions'])!=m['vertices'] or len(mesh['normals'])!=m['vertices'] or len(mesh['faces'])!=m['triangles']:
@@ -155,7 +158,6 @@ def main():
     original,_=ResourceTable(rom).extract(5600)
     if hashlib.sha256(original).hexdigest()!='3891b8b1462c80159de4da706b8523aa4e3c1f2c71bbefc1beb4acd0fe67d069':raise ValueError('Wrong 5600')
     mesh=make_mesh();out=args.output;out.mkdir(parents=True,exist_ok=False)
-    (out/'reference.bin').write_bytes(b''.join(original[i:i+4][::-1] for i in range(0,len(original),4)))
     (out/'vertices.bin').write_bytes(b''.join(struct.pack('<6f',*p,*n) for p,n in zip(mesh['positions'],mesh['normals'])))
     (out/'indices.bin').write_bytes(b''.join(struct.pack('<3I',*f) for f in mesh['faces']))
     (out/'mesh.json').write_text(json.dumps(mesh,separators=(',',':'))+'\n')
@@ -163,10 +165,10 @@ def main():
     (out/'waterdrop.obj').write_text('# Native host geometry, no N64 vertex quantization\n'+'\n'.join(
         ['v '+' '.join(map(str,p)) for p in mesh['positions']]+['vn '+' '.join(map(str,n)) for n in mesh['normals']]+
         ['f '+' '.join(f'{i+1}//{i+1}' for i in f) for f in mesh['faces']])+'\n')
-    manifest={'schema':'srw64.native-marker.v1','resource_id':5600,'vertices':len(mesh['positions']),'triangles':len(mesh['faces']),
+    manifest={'schema':'srw64.native-marker.v2','resource_id':5600,'vertices':len(mesh['positions']),'triangles':len(mesh['faces']),
               'material':'golden faceted marker (original eight faces, 0.5-unit rounded edges); per-fragment studio lighting, specular highlights and Fresnel rim',
               'original_resource_sha256':hashlib.sha256(original).hexdigest(),
-              'files':{name:digest(out/name) for name in ('reference.bin','vertices.bin','indices.bin','mesh.json','waterdrop.obj')}}
+              'files':{name:digest(out/name) for name in ('vertices.bin','indices.bin','mesh.json','waterdrop.obj')}}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps(validate(out)))
 
 

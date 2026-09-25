@@ -102,7 +102,8 @@
 
 - [`native_model_hook_patches.py`](../../tools/recomp/toolchain/native_model_hook_patches.py) 让 RT64 的 `TRI2`（`G_QUAD` 也走这里）调用分类钩子；舰船 DL 主要是 `TRI2`。
 - [`native_marker.cpp`](../../src/host/native_marker.cpp) 在段 4 基址逐字节核对完整原资源，命令偏移落在被替换显示列表的三角形命令表里才命中；第一条带原生绘制标记，其余抑制（id 段 `0x534D`），航迹 id 段 `0x5452`。变换取自该 draw 所在的不可变 workload，深度设置跟随原 draw；舰船着色为顶点色加主光、补光、高光与边缘光。
-- [`build_native_models.py`](../../tools/models/build_native_models.py) 从 ROM 取出各资源（核对 SHA-256）、解析被替换显示列表的三角形命令（拒绝矩阵变更与子列表调用），连同网格写入 `build/recomp/native-models/assets/`；航行舰船打包时放大 1.3 倍（呈现选择，网格仍按设定比例），带名牌与地标不放大。清单记录航迹代码指纹，以及缺网格与不处理的资源。
+- [`build_native_models.py`](../../tools/models/build_native_models.py) 从 ROM 取出各资源（核对 SHA-256）、解析被替换显示列表的三角形命令（拒绝矩阵变更与子列表调用），连同网格写入 `build/recomp/native-models/assets/`；航行舰船打包时放大 1.3 倍（呈现选择，网格仍按设定比例），带名牌与地标不放大。清单记录航迹代码的 ROM 位置与指纹，以及缺网格与不处理的资源。
+- **资源包不含 ROM 数据**（2026-09-25 起，清单 `srw64.native-models.v2`、`srw64.native-marker.v2`）：原资源只以资源号、解码后字节数和 SHA-256 记在清单里，航迹代码记 ROM 偏移、长度和 SHA-256。宿主在第一次识别显示列表时从玩家的 ROM 解码这些原件（`src/native/app/rom_import_codec.hpp`，与导入器同一套），核对摘要后按 RDRAM 字序保存，此后仍逐字节比对。渲染器建立时游戏还没载入 ROM，所以放在第一次识别时做；摘要不符就不替换，并在日志写 `SRW64 native models disabled`。只回放显示列表的帧探针不载入游戏，用 `SRW64_ROM_PATH` 指向 `.z64`。包内其余文件都是新做的：网格来自 Blender 建模（原模型只用于对照渲染），名牌由 HarmonyOS Sans 和绘制的边框生成（日文也是重新排字），5600 网格按原版双锥尺寸生成。`validate()` 要求目录里每个文件都在清单里，多出的文件（例如旧版的 `*.reference.bin`）直接报错。
 - 抗锯齿（下图左为关闭、右为 4× MSAA，原始像素放大）：宿主默认让 RT64 以 4 倍 MSAA 绘制整个场景（`SRW64_MSAA`，见[开发指南](../guide/native-development.md)），这些原生管线都按场景目标的采样数建立，因此舰船与名牌边缘同样抗锯齿；5600 水滴管线也改为按目标格式缓存，避免原尺寸与放大目标交替时反复编译。实机对照了带对白的整段迷你关卡流程（世界地图、战术地图、场间与存档页）与 MSAA 关闭时逐帧对照，画面内容一致、没有缺失或错位（边缘像素本就不同）；转场里的横条两者相同，是游戏自带的扫描线效果。
 
   ![MSAA 前后](images/worldmap-msaa.png)
@@ -134,4 +135,4 @@ SRW64_NATIVE_MODELS=build/recomp/native-models/assets .venv/bin/python tools/rec
 - 5597（デビルアクシズ）与 5601（红色标记）没有出场路径，暂不处理；地图地表属贴图高清化另行处理。
 - 原剧情场景本身没有实机走到；验证走的是原版世界地图 overlay、原版 `3D72`／`3D33` 与场景地标初始化。
 - 光照为固定视空间近似，没有阴影或环境反射；喷口自发光与航迹光晕是新增表现。
-- 与 5600 相同，仅接入 macOS Metal 路径；网格资产与资源包在本地生成，发布时的分发与默认开关尚未决定。
+- 与 5600 相同，仅接入 macOS Metal 路径。网格资产（`assets/models/`）只在本地；资源包不含 ROM 数据，可以随 HD 包单独发布。
