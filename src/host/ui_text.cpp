@@ -13,6 +13,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
+#include <map>
 #include <mutex>
 #include <set>
 #include <string>
@@ -400,6 +401,51 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         const double limit = std::min(double(next - x), found[self].translated ? width * 1.35 + 4 : width + 2.0);
         return std::max(double(width) - (found[self].translated ? 0 : 2), limit);
     };
+    // Text printed glyph by glyph (カラオケ lyrics are one label per glyph): the ROM's kana are
+    // half-width cells, the font's full-width, so where a run of touching cells is too
+    // narrow for the font it is set as one line: each glyph gets a share of the run's width
+    // by its font width, all narrowed alike and at the same size.
+    struct Fit { float x; Style style; };
+    std::map<std::pair<size_t, size_t>, Fit> fitted;   // (label, cell)
+    {
+        struct Glyph { size_t label, cell; int x, y, width; double em; };
+        std::vector<Glyph> glyphs;
+        for (size_t i = 0; i < found.size(); ++i) {
+            const Label& l = found[i];
+            if (l.id != 0 || l.consumed) continue;
+            for (size_t k = 0; k < l.cells.size(); ++k) {
+                const auto& c = l.cells[k];
+                if (c.icon) continue;
+                const std::string name = dialogue::glyph_string(c.code);
+                const bool narrow = !icon(c.code).empty() || name.empty() || uint8_t(name[0]) < 0x80;
+                glyphs.push_back({i, k, c.x, c.y, c.width, narrow ? .6 : 1.0});
+            }
+        }
+        std::sort(glyphs.begin(), glyphs.end(), [](const Glyph& a, const Glyph& b) { return a.y != b.y ? a.y < b.y : a.x < b.x; });
+        const Style base = label_style("ja", 0, true);
+        for (size_t a = 0, b = 0; a < glyphs.size(); a = b) {
+            // Cells a space (8) or more apart start a new run: the lyrics' own gaps stay.
+            for (b = a + 1; b < glyphs.size() && glyphs[b].y == glyphs[a].y; ++b) {
+                const int gap = glyphs[b].x - (glyphs[b - 1].x + glyphs[b - 1].width);
+                if (gap < -1 || gap >= int(kNarrow)) break;
+            }
+            double ems = 0;
+            for (size_t n = a; n < b; ++n) ems += glyphs[n].em;
+            const double span = glyphs[b - 1].x + glyphs[b - 1].width - glyphs[a].x, f = span / (ems * base.size);
+            if (b - a < 2 || f >= 1) continue;
+            const double narrowed = std::floor(f * 50) / 50;   // a few widths, so glyphs share renders
+            double left = glyphs[a].x;
+            for (size_t n = a; n < b; ++n) {
+                const double share = span * glyphs[n].em / ems;
+                Style s = base;
+                s.min_size = s.size;
+                s.max_width = glyphs[n].em * s.size * narrowed;
+                s.condense_min = narrowed - .005;
+                fitted[{glyphs[n].label, glyphs[n].cell}] = {float(left + share / 2), s};
+                left += share;
+            }
+        }
+    }
     // 3. Draw.
     for (size_t i = 0; i < found.size(); ++i) {
         Label& l = found[i];
@@ -420,7 +466,10 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 std::string glyph = icon(c.code);
                 if (glyph.empty()) glyph = c.code == kLongDash ? std::string("-") : dialogue::glyph_string(c.code);
                 // Cell by cell the regular face in every language: Condensed digits leave gaps.
-                items.push_back(placed(label_style("ja", 0, true), "ja", glyph, "glyph", c.x + c.width / 2.f, float(c.y), tint));
+                if (const auto fit = fitted.find({i, k}); fit != fitted.end())
+                    items.push_back(placed(fit->second.style, "ja", glyph, "glyph", fit->second.x, float(c.y), tint));
+                else
+                    items.push_back(placed(label_style("ja", 0, true), "ja", glyph, "glyph", c.x + c.width / 2.f, float(c.y), tint));
                 take(k);
             }
             counts.glyphs += l.cells.size();

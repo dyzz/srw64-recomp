@@ -55,6 +55,9 @@ std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 // The last input was a controller: hints use the "_pad" labels (Steam Deck).
 bool pad_mode{};
+// The mouse is in use: hover highlights show only then, not under a pointer left resting
+// on a page while the keys or a controller move the cursor.
+bool pointer_mode{};
 ModalInputRelease settings_release;
 link_page::Request link_request;
 std::array<bool,3> ticked{};
@@ -216,13 +219,13 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .im-root {position:absolute; color:#ffffff; font-weight:bold;}
 .im-panel {position:absolute; box-sizing:border-box; overflow:hidden; background-color:#0a0e3cc8; border-color:#3a78e0; white-space:nowrap;}
 .im-panel button {display:block; width:100%; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
-.im-panel button:hover {background-color:#00c80055;} .im-panel button:focus {border:0;}
+body.pointer .im-panel button:hover {background-color:#00c80055;} .im-panel button:focus {border:0;}
 .im-panel button.on,.im-panel button.on:hover {background-color:#00c800;} .im-panel button:disabled {opacity:1;} .im-panel button.tp-playing {color:#8fe8ff;} .im-panel button.on.tp-playing {color:#ffffff;}
 .im-line {display:flex; justify-content:space-between;} .im-line span {display:inline-block;}
 .im-hint {position:absolute; text-align:center; font-weight:normal; color:#d6e2efb0; white-space:nowrap;}
 .im-refused {color:#ffd75e;}
 .im-funds {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:transparent; border:0; border-radius:0; margin:0; padding:0;}
-.im-funds:hover,.im-funds:focus {background-color:#00c80055; border:0;}
+body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border:0;}
 .im-funds-input {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:#122131; border:0; border-radius:0; margin:0; padding:0 2dp; tab-index:auto;}
 .im-funds-input selection {color:#0b1421; background-color:#9be4f7;}
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
@@ -250,7 +253,7 @@ struct Actions : Rml::EventListener {
     }
 } actions;
 Rml::ElementDocument* document(const std::string& body,bool modal) {
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+"'>"+body+"</body></rml>");
+    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+body+"</body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);return doc;
 }
@@ -1545,6 +1548,11 @@ void pad_keys(uint32_t now,uint32_t pressed) {
         {0x1000,SDLK_RETURN},{0x2000,SDLK_SPACE},{0x0020,SDLK_q},{0x0010,SDLK_e},{0x0008,SDLK_i},{0x0004,SDLK_k},
         {0x0002,SDLK_j},{0x0001,SDLK_l},{0x0800|(1u<<16),names_page?SDLK_TAB:SDLK_UP},
         {0x0400|(1u<<17),names_page?SDLK_TAB:SDLK_DOWN},{0x0200|(1u<<18),SDLK_LEFT},{0x0100|(1u<<19),SDLK_RIGHT}};
+void set_pointer_mode(bool on) {
+    if(pointer_mode==on)return;
+    pointer_mode=on;
+    for(int i=0;i<context->GetNumDocuments();++i)context->GetDocument(i)->SetClass("pointer",on);
+}
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
     for(const auto& [mask,key]:keys)if(presses&mask)
         send_key(key,(repeats&mask) && !(pressed&mask),names_page && (mask&0x0800)?KMOD_SHIFT:KMOD_NONE);
@@ -1583,7 +1591,7 @@ void sync() {
         // Controller edges; a button already down when a page opens is not a press.
         static uint32_t pad_before=0;
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
-        if(pad_pressed)set_pad_mode(true);
+        if(pad_pressed){set_pad_mode(true);set_pointer_mode(false);}
         // Page requests stay null until their page first reports.
         const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
         if(pad_pressed&input::pad_view)choose(settings_open?"settings-close":"settings-open");
@@ -1653,6 +1661,8 @@ bool dispatch(SDL_Event& event) {
                 funds_editing.clear();return true;
             }
             if(k==SDLK_ESCAPE){funds_editing.clear();return true;}
+    if(event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL || (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pointer_mode(true);
+    else if(event.type==SDL_KEYDOWN && event.key.windowID)set_pointer_mode(false);
         }
         // Digits, backspace and the cursor keys belong to the edit box.
     } else if(settings_open){
