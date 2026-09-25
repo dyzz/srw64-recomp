@@ -6,9 +6,11 @@ SRW64 Recompiled — HD 图片包 / HD image pack
 这个包只能配同一版本的应用使用；换版本时整个替换。
 
 来源说明
-- 头像、场间背景、剧情世界地图、宇宙物件和标题 Logo 与火焰，
+- 头像、场间背景、宇宙物件和标题 Logo 与火焰，
   由阿里云百炼的通义千问图像模型（qwen-image-3.0 / qwen-image-3.0-pro）
   以原版画面为参考生成，属于 AI 生成内容。
+- 剧情世界地图由 OpenAI 的图像模型（通过 Codex 的 image_gen）
+  以原版画面为参考绘制，属于 AI 生成内容。
 - 对话框和战斗界面边框由代码绘制；世界地图的舰船、地标与 5600 标记是自制模型。
 - 包内不含 ROM 数据。BANPRESTO 标志、GAME OVER 和窗口边框由原版画面算出，不在包里，由游戏处理。
 
@@ -20,9 +22,10 @@ Install: put this hd folder in the user directory
 F6 or Images in the settings window switches back to the original. Use the pack with
 the app of the same version, and replace it as a whole when you update.
 
-The portraits, intermission backgrounds, story world map, space objects and the title
-logo and flames are AI-generated with Alibaba Cloud Model Studio (Qwen image models
-qwen-image-3.0 / qwen-image-3.0-pro), using the original graphics as reference. The
+The portraits, intermission backgrounds, space objects and the title logo and flames
+are AI-generated with Alibaba Cloud Model Studio (Qwen image models qwen-image-3.0 /
+qwen-image-3.0-pro), and the story world map with OpenAI's image model (Codex
+image_gen), using the original graphics as reference. The
 dialogue and battle frames are drawn by code; the world-map ships, landmarks and the
 5600 marker are models made for this project. The pack contains no ROM data: the
 BANPRESTO logo, GAME OVER and the window frames are computed from the original

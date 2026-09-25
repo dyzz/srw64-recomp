@@ -13,7 +13,7 @@ and drawn on top as shapes, so every replacement keeps its own decoration and ru
 boundary join up.
 
     PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/dialogue_frame_asset.py \\
-        --pack assets/hd-ai/worldmap-surfaces/pack-v4 --output build/hd-ai/dialogue-frame \\
+        --pack assets/hd-ai/worldmap-surfaces/pack-v5 --output build/hd-ai/dialogue-frame \\
         --art content/art/stage1-hd.json
 """
 from __future__ import annotations

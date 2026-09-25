@@ -22,6 +22,8 @@ image_gen); its land swatches are still the style reference `prepare` sends. Sin
 (worldmap-surfaces/europe-2: its 9 windows cut from approved_canvas are the inputs,
 samples.json holds them); `restyle` redraws the other surfaces from run-5 toward
 the same style. `pack --extra-run` joins the runs, and the pack-v6 tiles leave the pack.
+The user preferred image_gen over both: `imagegen` composes the Codex image_gen kit
+(assets/hd-ai/imagegen-kit), a whole picture and 3:2 windows per surface.
 """
 from __future__ import annotations
 
@@ -76,6 +78,8 @@ RESTYLE_PROMPT = ('图1是游戏世界地图的一块高清局部，地理位置
                   '图1里褐色、土黄色的高原和山地仍画成褐色、土黄色的岩石山地（高处可带少量积雪），黄色的地方仍是沙漠，'
                   '只有图1里本来是绿色的地方才画草原和森林。不要把褐色或黄色的地方画成绿色，不要新增湖泊、河流、海、城市、道路、文字或边框。'
                   '严格保持每一处海岸线的位置和形状，海面保持与图1相同的纯色深蓝，不改变画幅。')
+KIT_COLOUR_RADIUS = 48                     # HD px: an image_gen kit's whole picture sets the colour above this scale
+KIT_BASE_WEIGHT = .02                      # the whole picture's blend weight under the windows
 RESTYLE_COLOUR = 1.3                      # saturation boost of the input, so the terrain colours read clearly
 
 
@@ -416,9 +420,9 @@ def coast(source: Image.Image) -> Image.Image:
     return big.point(lambda v: max(0, min(255, int((v - 128) * 4 + 128))))
 
 
-def land_blur(image: Image.Image, alpha: Image.Image) -> Image.Image:
+def land_blur(image: Image.Image, alpha: Image.Image, radius: float = COLOUR_RADIUS) -> Image.Image:
     """Gaussian blur weighted by the land mask: blur(rgb * a) / blur(a)."""
-    blur = ImageFilter.GaussianBlur(COLOUR_RADIUS)
+    blur = ImageFilter.GaussianBlur(radius)
     a = alpha.convert('F')
     weight = alpha.filter(blur).convert('F')
     channels = []
@@ -478,6 +482,99 @@ def compose(args: argparse.Namespace) -> None:
         result.save(path)
         report[name] = {'file': str(path.relative_to(out)), 'size': [W, H], 'windows': fits}
         print(name, (W, H), {k: v['x'][0] for k, v in fits.items()})
+    (out / 'compose' / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+
+
+def kit_weight(size: tuple[int, int], box: tuple, full: tuple[int, int]) -> Image.Image:
+    """Blend weight of a kit window ("F"): (distance to its nearest edge that meets another
+    window, in 64 source px)^4. Kit windows overlap by up to two thirds; averaging two
+    paintings there smears them, so the window reaching deepest dominates and only the
+    hand-over near the dividing line stays soft."""
+    w, h = size
+    far = float(max(full) * SCALE)
+
+    def axis(length: int, inner_start: bool, inner_end: bool) -> list[float]:
+        return [min(i + .5 if inner_start else far, length - i - .5 if inner_end else far) for i in range(length)]
+    row = Image.new('F', (w, 1)); row.putdata(axis(w, box[0] > 0, box[2] < full[0]))
+    col = Image.new('F', (1, h)); col.putdata(axis(h, box[1] > 0, box[3] < full[1]))
+    unit = 64 * SCALE
+    return ImageMath.lambda_eval(lambda a: (a['min'](a['r'], a['c']) / unit) ** 4,
+                                 r=row.resize((w, h), Image.Resampling.NEAREST), c=col.resize((w, h), Image.Resampling.NEAREST))
+
+
+def not_sea(image: Image.Image) -> Image.Image:
+    """255 where a painted pixel does not look like sea (blue above red and green)."""
+    r, g, b = image.convert('RGB').split()
+    sea = ImageMath.lambda_eval(lambda a: (a['b'] > a['r'] + 30) & (a['b'] > a['g'] + 10), r=r, g=g, b=b).convert('L')
+    return sea.point(lambda v: 0 if v else 255)
+
+
+def near(land: Image.Image) -> Image.Image:
+    """255 where painted land fills a quarter or more of the KIT_COLOUR_RADIUS neighbourhood."""
+    return land.filter(ImageFilter.GaussianBlur(KIT_COLOUR_RADIUS)).point(lambda v: min(255, v * 4))
+
+
+def imagegen(args: argparse.Namespace) -> None:
+    """Compose the Codex image_gen kit (imagegen-kit/manifest.json) into a run folder `pack` reads.
+
+    Per surface the whole-region picture is registered onto the full HD grid. The detail
+    windows are registered and feathered, and their colour above KIT_COLOUR_RADIUS is the
+    whole picture's, so neighbouring windows meet in one colour. Where no window reaches
+    (mostly sea) the whole picture shows. The coastline comes from the source mask."""
+    kit, out = args.kit, args.output
+    manifest = json.loads((kit / 'manifest.json').read_text())
+    (out / 'inputs').mkdir(parents=True, exist_ok=False)
+    (out / 'compose').mkdir()
+    surfaces, report = {}, {}
+    rounded = lambda fit: {k: (v if k == 'windows' else [round(v[0], 5), round(v[1], 2)]) for k, v in fit.items()}
+    for name, region in manifest['regions'].items():
+        shutil.copyfile(kit / region['source'], out / 'inputs' / f'{name}-source.png')
+        source = Image.open(kit / region['source']).convert('RGBA')
+        full = source.size
+        W, H = full[0] * SCALE, full[1] * SCALE
+        surfaces[name] = {'resource': region['resource'], 'source': f'inputs/{name}-source.png', 'size': list(full)}
+        whole = Image.open(kit / region['whole']['output'])
+        fit = register(whole, flat(source))
+        base = place(whole, fit, (W, H))
+        fits = {Path(region['whole']['output']).stem: rounded(fit)}
+        alpha = coast(source)
+        # The pictures' own coasts are a little off the source's, and the source's land takes in
+        # a shallow-water rim the pictures paint as sea: colours come from painted land only.
+        base_land = ImageChops.multiply(alpha, not_sea(base))
+        colour, colour_there = land_blur(base, base_land, KIT_COLOUR_RADIUS), near(base_land)
+        # The whole picture carries a small weight everywhere, so it fills in smoothly
+        # where the windows' feathered weights run out.
+        sums = [ImageMath.lambda_eval(lambda a: a['c'] * KIT_BASE_WEIGHT, c=c.convert('F')) for c in base.split()]
+        weight = Image.new('F', (W, H), KIT_BASE_WEIGHT)
+        for window in region['windows']:
+            box = tuple(window['box'])
+            output = Image.open(kit / window['output'])
+            fit = register(output, flat(source).crop(box))
+            size = ((box[2] - box[0]) * SCALE, (box[3] - box[1]) * SCALE)
+            area = (box[0] * SCALE, box[1] * SCALE, box[0] * SCALE + size[0], box[1] * SCALE + size[1])
+            piece = place(output, fit, size)
+            land_here = ImageChops.multiply(alpha.crop(area), not_sea(piece))
+            # Own colour where the piece has painted land nearby, else the piece itself (so
+            # painted sea keeps its look); the whole picture's colour wherever it has land.
+            own = Image.composite(land_blur(piece, land_here, KIT_COLOUR_RADIUS), piece, near(land_here))
+            target = Image.composite(colour.crop(area), own, colour_there.crop(area))
+            piece = ImageChops.add(ImageChops.subtract(piece, own, 1, 128), target, 1, -128)
+            mask = kit_weight(size, box, full)
+            for c, channel in enumerate(piece.split()):
+                sums[c].paste(ImageMath.lambda_eval(lambda a: a['s'] + a['p'] * a['m'], s=sums[c].crop(area),
+                                                    p=channel.convert('F'), m=mask), area[:2])
+            weight.paste(ImageMath.lambda_eval(lambda a: a['w'] + a['m'], w=weight.crop(area), m=mask), area[:2])
+            fits[window['id']] = rounded(fit)
+        land = Image.merge('RGB', [ImageMath.lambda_eval(lambda a: a['s'] / a['w'], s=sums[c], w=weight).convert('L') for c in range(3)])
+        land.putalpha(alpha)
+        sea = Image.new('RGBA', (W, H), OCEAN + (0,))
+        path = out / 'compose' / f'{name}.png'
+        Image.composite(land, sea, alpha.point(lambda v: 255 if v else 0)).save(path)
+        report[name] = {'file': str(path.relative_to(out)), 'size': [W, H], 'windows': fits}
+        print(name, (W, H), {k: v['x'][0] for k, v in fits.items()}, flush=True)
+    (out / 'samples.json').write_text(json.dumps({'schema': 'srw64.hd-ai-samples.v1',
+        'purpose': f'world-map surfaces drawn with Codex image_gen from {kit.name}', 'surfaces': surfaces, 'samples': []},
+        ensure_ascii=False, indent=2) + '\n')
     (out / 'compose' / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
 
 
@@ -559,9 +656,11 @@ def pack(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     commands = parser.add_subparsers(dest='command', required=True)
-    for name in ('prepare', 'restyle', 'run', 'compose', 'pack'):
+    for name in ('prepare', 'restyle', 'run', 'compose', 'imagegen', 'pack'):
         sub = commands.add_parser(name)
         sub.add_argument('--output', type=Path, required=True)
+        if name == 'imagegen':
+            sub.add_argument('--kit', type=Path, required=True, help='image_gen kit folder with manifest.json and outputs/')
         if name == 'restyle':
             sub.add_argument('--from', type=Path, required=True, help='composed run folder whose surface is redrawn')
             sub.add_argument('--surface', required=True)
@@ -575,7 +674,7 @@ def main() -> None:
             sub.add_argument('--extra-run', type=Path, action='append', help='another run folder whose surfaces join the pack')
             sub.add_argument('--bind', action='store_true')
     args = parser.parse_args()
-    {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'pack': pack}[args.command](args)
+    {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'imagegen': imagegen, 'pack': pack}[args.command](args)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 # 剧情世界地图 HD：全部区域
 
-2026-09-24。剧情里场景之间的背景是世界地图 overlay（`load_000A7EC0`）画的，现在所有区域都是 HD，画风都往第一话欧洲的 image_gen 版（[世界地图 HD](native-worldmap-hd.md)）靠。2026-09-25 起欧洲改由百炼在 image_gen 版上补细节，见[欧洲改用百炼](#欧洲改用百炼2026-09-25)。
+2026-09-24。剧情里场景之间的背景是世界地图 overlay（`load_000A7EC0`）画的，现在所有区域都是 HD。2026-09-25 起全部四个地表由 Codex 的 image_gen 重画（[改用 image_gen](#改用-image_gen2026-09-25)），画风沿用第一话欧洲的 image_gen 版（[世界地图 HD](native-worldmap-hd.md)）。2026-09-25 起欧洲改由百炼在 image_gen 版上补细节，见[欧洲改用百炼](#欧洲改用百炼2026-09-25)。
 
 ## 有哪些区域
 
@@ -40,7 +40,7 @@
   - 同一个键对应两种不同内容的有 2 块，保持原样；
   - 第一话已审的 57 块原样保留（2026-09-25 前）。
 
-结果：新增 152 块，加上已审的 57 块，一共 209 块地图替换。2026-09-25 欧洲改用百炼、其他区域换画风后仍是 213 块（`pack-v4`）。`srw64-worldmap-hd.json` 新增 `resources` 字段，宿主接受 5602–5606，第一话的单区域旧格式照样可用。
+结果：新增 152 块，加上已审的 57 块，一共 209 块地图替换。2026-09-25 欧洲改用百炼、其他区域换画风后仍是 213 块（`pack-v4`），改用 image_gen 后同样 213 块（`pack-v5`）。`srw64-worldmap-hd.json` 新增 `resources` 字段，宿主接受 5602–5606，第一话的单区域旧格式照样可用。
 
 ### 个别窗口
 
@@ -87,6 +87,19 @@
 - 人工复查后另补了几次：`earth-01` 取第 3 个候选；`central-asia-04` 取第 3 个（第 1 个是杂乱的马赛克）；`earth-04` 第 2 个偏淡但其余候选把整块陆地挪了位，保留；`central-asia-07` 第 1 个偏杂，但另两个把孟加拉–中南半岛画成沙漠，保留第 1 个。
 - 结果在 `restyle-earth`、`restyle-central-asia`、`restyle-coast`，与欧洲的 `europe-2` 一起打进 `pack-v4`。所有地表可见像素里与原图放大相同的为 0。
 
+## 改用 image_gen（2026-09-25）
+
+千问的两种做法（`europe-2`、`restyle-*`）用户看后都认为远不如 image_gen，于是四个地表改由用户在 Codex 里用 image_gen 画：
+
+- 生成包 `assets/hd-ai/imagegen-kit`：每个区域 1 张整区（原图最近邻放大作图1）加 3:2 局部窗口（384×256 源像素，4 倍，1536×1024；几乎全海的窗口不画），共 24 张。图2 一律是 9-09 image_gen 画的欧洲局部（`worldmap-runtime/ai-detail-v1/map-ai.png`）。提示词由 9-09 的两段改写，另要求每处地貌类型不变；`manifest.json` 记窗口位置，Codex 的生成记录在 `outputs/generation-records.json`（工具只报 `image_gen.imagegen (built-in)`，不报具体模型）。
+- 合成 `worldmap_surfaces.py imagegen --kit … --output worldmap-surfaces/imagegen-1`：
+  - 整区图配准到 8 倍网格当底；窗口逐张配准。
+  - 窗口重叠多达三分之二，平均两张画会糊，所以按「离自己的内侧边最远的窗口占主导」混合（`kit_weight`），只在分界线附近软过渡。
+  - 窗口保留自己的细节，48 HD 像素以上的颜色取整区图，相邻窗口颜色一致；颜色只从画成陆地的像素取，海岸偏差带不进海色。
+  - 原图陆地遮罩外圈有一条浅海边，画里是海：附近没有画成陆地的像素时，保留画面原样，不硬涂成陆地色。
+  - 海岸仍按原图遮罩切出。
+- 结果打进 `pack-v5`：四个地表的可见像素里与原图放大相同的为 0。右上角俄罗斯共用纹理的 5 块仍是原图。
+
 ## 花费
 
 - 地球地表：34 次，17.68 元。其中 3 个试验窗口 5 次、其余 20 个窗口 27 次（含 7 次自动重画）、补 5604 一次、青藏高原第四张一次。
@@ -106,7 +119,18 @@
 
 ## 命令
 
-现在的包 `pack-v4` 是 2026-09-25 在 `pack-v3`（已含宇宙、对话框边框和战斗 HUD 边框）上重打的：地球、中亚、北美用 `restyle-*`，欧洲用 `europe-2`，第一话 image_gen 画的 57 块不再进包。
+现在的包 `pack-v5` 是 2026-09-25 在 `pack-v4` 上重打的：四个地表都取 image_gen 合成的 `imagegen-1`。
+
+```sh
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces imagegen --kit assets/hd-ai/imagegen-kit \
+  --output assets/hd-ai/worldmap-surfaces/imagegen-1
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces pack --output assets/hd-ai/worldmap-surfaces/imagegen-1 \
+  --base-pack assets/hd-ai/worldmap-surfaces/pack-v4 --pack-output assets/hd-ai/worldmap-surfaces/pack-v5 --bind
+```
+
+`pack-v4`（千问版）的做法：
+
+`pack-v4` 是 2026-09-25 在 `pack-v3`（已含宇宙、对话框边框和战斗 HUD 边框）上重打的：地球、中亚、北美用 `restyle-*`，欧洲用 `europe-2`，第一话 image_gen 画的 57 块不再进包。
 
 ```sh
 for s in earth central-asia coast; do

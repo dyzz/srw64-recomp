@@ -9,8 +9,9 @@ native pages show by (image, palette), the silhouette being each portrait's alph
 file, and copies the world-map model pack and the 5600 marker pack after
 validating them. The app's launcher starts in HD when it finds this folder.
 
-The result is a public download: AI-generated art (Alibaba Cloud Model Studio,
-Qwen image models) and no ROM data; build_release.py adds NOTICE.txt.
+The result is a public download: AI-generated art (Alibaba Cloud Qwen image models;
+the world map with OpenAI's image model via Codex image_gen) and no ROM data;
+build_release.py adds NOTICE.txt.
 The tactical-map sample (SRW64_HD_MAPS) is not included."""
 from __future__ import annotations
 
@@ -62,7 +63,7 @@ def prepare(output: Path, art_manifest: Path = ART, marker: Path = MARKER, model
     pages = page_portraits(output / "art")
     shutil.copytree(marker, output / "native-marker")
     shutil.copytree(models, output / "native-models")
-    report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Model Studio, Qwen image models); no ROM data; see NOTICE.txt",
+    report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Qwen image models; world map: OpenAI image model via Codex); no ROM data; see NOTICE.txt",
               "art_source_sha256": sha(art_manifest.read_bytes()),
               "art": {key: art[key] for key in ("count", "portraits", "backgrounds", "scene_images")},
               "page_portraits": len(pages), "compressed": compressed,
