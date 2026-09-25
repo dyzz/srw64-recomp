@@ -6868,6 +6868,22 @@
    "sections": [
     "weapons"
    ]
+  },
+  {
+   "ja": [
+    "パイロット"
+   ],
+   "zh-Hans": {
+    "old": "驾驶员",
+    "new": "机师"
+   },
+   "gate": false,
+   "sections": [
+    "intermission",
+    "pak_messages",
+    "status_labels"
+   ],
+   "note": "2026-09-25 用户定：驾驶员一律改成机师（副驾驶员→副机师），台词里不论日文原词。"
   }
  ]
 }
