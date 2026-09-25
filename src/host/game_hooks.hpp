@@ -14,6 +14,9 @@ struct SRW64GameHooks {
     // pool, class 1 labels, numbers of types 1-6) and 8008EB5C (front: class 2 labels drawn
     // over pop-up windows, numbers of types 7+). docs/native/native-ui-text.md
     void (*ui_text_drawn)(uint8_t*, uint32_t begin, uint32_t end, bool front){};
+    // 80209900 (tactical map overlay) wrote [begin, end): the damage or recovery figure a
+    // map battle without animation shows, up to six 8x8 cells of resource 1159.
+    void (*damage_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800945D4 (tactical map and other mode 8/9 sprites) wrote [begin, end) for sprite slot/sub.
     void (*map_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     // 800964E4 (sprite mode 7: every character portrait) wrote [begin, end) for slot/sub.
