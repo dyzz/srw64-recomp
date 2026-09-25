@@ -148,7 +148,7 @@
   - Steam Runtime sniper（glibc 2.31）留到以后：需要从源码编 DXC，或者从别处喂入预编译的着色器。
 - **Steam Deck：**
   - 全屏 1280×800。
-  - 所有 RmlUi 页面都能只用手柄操作。
+  - 所有 RmlUi 页面都能只用手柄操作；键位、设置入口与按键图标见 [Steam Deck 键位与按键图标](steam-deck-controls.md)。
   - 游戏模式下没有桌面对话框，所以 ROM 选择和错误提示改成 RmlUi 页面，与“界面只用 RmlUi”的方针一致。建议 macOS 也改用这个页面，然后删掉 `desktop_macos.mm`。
   - 字体用随包的 HarmonyOS；`frontend.cpp:1449` 的后备字体列表补上 Arch 的 `noto-cjk/` 路径。
 - **验收：** Linux 桌面和 Deck 游戏模式各跑一遍，Deck 上只用手柄：

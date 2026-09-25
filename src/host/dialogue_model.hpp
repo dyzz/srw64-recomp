@@ -186,6 +186,14 @@ struct Reader {
         if(pending && !end_sent) {end_sent=true;return Confirm::end;}
         return Confirm::none;
     }
+    // A controller's L2 (docs/design/steam-deck-controls.md): automatic reading on at the
+    // last speed (2 the first time), or off. Turned on over a page already shown in full,
+    // the page waits its full time from now, not from when it appeared.
+    void toggle_auto(uint64_t now) {
+        if(!active || history_open || layout.pages.empty())return;
+        auto_read=!auto_read;skipping=false;
+        if(auto_read){if(!speed)speed=2;if(visible>=layout.pages.at(page).end)page_started=now;}
+    }
     void boundary(bool clear_history=false) {
         active=history_open=skipping=pending=auto_read=fast=end_sent=false;
         event=0; page=visible=history_offset=0; stops.clear(); guest=0; stop_sent=~0U;

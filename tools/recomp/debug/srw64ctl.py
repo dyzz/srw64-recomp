@@ -4,6 +4,7 @@
   srw64ctl.py launch [--language zh-Hans] [--images original] [--rules fixed] [--reuse-build] [--diagnostics light]
   srw64ctl.py status [--history]
   srw64ctl.py keys e+return i i k e+z:600      # a key chord, or chord:hold_ms; "wait:500" pauses
+  srw64ctl.py pad r2 l2:600 wait:300 view      # controller chords (Steam Deck names: a b x y menu view l1 r1 l2 r2 up ...)
   srw64ctl.py buttons r+start [--vis 30]
   srw64ctl.py shot [--window Options] [--no-overlays]
   srw64ctl.py tree [--window game]
@@ -22,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from pathlib import Path
 import sys
 
@@ -59,6 +61,8 @@ def main() -> int:
     status.add_argument("--history", action="store_true")
     keys = commands.add_parser("keys")
     keys.add_argument("chords", nargs="+")
+    pad = commands.add_parser("pad")
+    pad.add_argument("chords", nargs="+")
     buttons = commands.add_parser("buttons")
     buttons.add_argument("buttons")
     buttons.add_argument("--vis", type=int, default=6)
@@ -115,7 +119,7 @@ def main() -> int:
         if args.command == "launch":
             session = Session.launch(**optional(language=args.language, images=args.images, rules=args.rules,
                                                 save=args.save, mini_stage=args.mini_stage, diagnostics=args.diagnostics),
-                                     reuse_build=args.reuse_build, binary=args.binary)
+                                     reuse_build=args.reuse_build, binary=args.binary, detach=True)
             print(session.run)
             return 0
         session = Session.attach(args.run)
@@ -125,6 +129,13 @@ def main() -> int:
         elif args.command == "keys":
             replies = [row for row in run_keys(client, key_steps(args.chords)) if "waited_ms" not in row]
             result = replies[-1] if replies else {"waited": True}
+        elif args.command == "pad":
+            result = {"waited": True}
+            for step in key_steps(args.chords):
+                if "wait_ms" in step:
+                    time.sleep(step["wait_ms"] / 1000)
+                else:
+                    result = client.call("pad", **step)
         elif args.command == "buttons":
             result = client.call("buttons", buttons=args.buttons, vis=args.vis)
         elif args.command == "shot":

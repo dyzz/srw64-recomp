@@ -78,6 +78,16 @@ int main() {
     assert(reader.font_size==14);
     reader.relayout(typeset(reader.layout.text,reader.font_size));
     assert(reader.page<reader.layout.pages.size());
+    // L2 on a controller toggles automatic reading at the last speed, 2 the first time,
+    // and does nothing while the history is open.
+    reader.toggle_auto(187);assert(reader.auto_read && reader.speed==2);
+    reader.toggle_auto(188);assert(!reader.auto_read && reader.speed==2);
+    {
+        Reader fresh;fresh.begin(9,17413,u"玛娜米",typeset(u"一句。",13),0);
+        fresh.toggle_auto(1);assert(fresh.auto_read && fresh.speed==2);
+        fresh.update(Reader::L,2);assert(fresh.history_open);
+        fresh.toggle_auto(3);assert(fresh.auto_read);
+    }
     // Revealing a combining sequence never cuts its UTF-16 representation.
     reader.begin(4,100,u"测试",typeset(utf16("éが甲"),13),200);
     reader.update(0,202);assert(reader.visible==2);

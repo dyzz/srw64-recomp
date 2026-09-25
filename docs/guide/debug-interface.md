@@ -48,6 +48,7 @@
 | --- | --- | --- |
 | `status` | `history` | VI、运行目录、窗口焦点与尺寸、语言、画面模式、规则、开场状态（`title_major` 3 为主菜单，`step` 为当前页）、对白阅读器（页、字号、速度、自动、回看、跳过、各对白框文字）、姓名页请求、联动页（`link_page`）、场间主菜单（`intermission_page`）、改造画面（`upgrade_page`）、战前确认页（`battle_page`）、迷你关卡状态（`mini_stage.available/entering/active/ready`）、最近的原生提示条（`notices`，如离队退款）、原生窗口与焦点、按住的虚拟键 |
 | `keys` | `press`+`hold_ms` / `down` / `up` / `release_all` | 游戏键盘；键名 `z x space return up down left right q e i k j l w a s d escape f6 f7 f8 f5`（F5 重新载入台词文本），组合用 `+`，如 `e+return` |
+| `pad` | `press`+`hold_ms` / `down` / `up` / `release_all` | 虚拟手柄，每帧并入真实手柄的状态（手柄提示、页面、L2/R2 等宿主键都当真手柄处理）；键名按 Steam Deck：`a b x y menu view l1 r1 l2 r2 up down left right ls_up… rs_down…`，组合用 `+`。命令行 `srw64ctl.py pad r2 l2:600 wait:300` |
 | `buttons` | `buttons`、`vis` | N64 手柄层按键（`a b z start up down left right l r c_up c_down c_left c_right`），立即生效，不经过键盘层 |
 | `screenshot` | `path`、`overlays`、`window`、`timeout_ms` | 抓下一次呈现的 GPU 回读，已包含共享 UI。`window` 使用默认游戏窗口；不再提供独立设置窗口或 AppKit 合成。 |
 | `ui.tree` | `window` | RmlUi 元素树：tag、`id`、`frame`（窗口点坐标）、文字、可用、焦点；像素 = 点 × `scale`。 |

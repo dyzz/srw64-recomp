@@ -1,0 +1,166 @@
+{
+ "schema": "srw64.mini-stage.v1",
+ "name": "enemy-cycle",
+ "note": "L2 / R2 enemy cycling QA (docs/native/enemy-cycle.md): タケル at 8,8 with the camera on him; three foes spread over map 20 (448x512), one of them far off screen, and one third-party unit, so the order, the wrap, the camera and side 2 are all exercised.",
+ "map": 20,
+ "deployments": [
+  {
+   "template": "base:stage_deployments:001f0f1c",
+   "group": 0,
+   "x": 8,
+   "y": 8,
+   "faction": 0,
+   "note": "タケル / ガイヤー"
+  },
+  {
+   "template": "base:stage_deployments:001f2720",
+   "group": 1,
+   "x": 13,
+   "y": 10,
+   "faction": 1,
+   "note": "ロゼ / ゼーロン — on screen"
+  },
+  {
+   "template": "base:stage_deployments:001e8d68",
+   "group": 1,
+   "x": 3,
+   "y": 4,
+   "faction": 1,
+   "note": "ガラリア / バストール — on screen, top left"
+  },
+  {
+   "template": "base:stage_deployments:001e40dc",
+   "group": 1,
+   "x": 20,
+   "y": 26,
+   "unit": 170,
+   "faction": 1,
+   "note": "ムゲ兵 in ミニフォー — far off screen"
+  },
+  {
+   "template": "base:stage_deployments:001e40dc",
+   "group": 2,
+   "x": 22,
+   "y": 5,
+   "unit": 170,
+   "faction": 2,
+   "note": "a third-party ミニフォー — roster side 2"
+  }
+ ],
+ "events": [
+  {
+   "name": "opening",
+   "type": 12,
+   "header": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D32",
+     "args": [
+      4
+     ]
+    },
+    {
+     "op": "3D4D"
+    },
+    {
+     "op": "3D65",
+     "args": [
+      17,
+      31
+     ]
+    },
+    {
+     "op": "3D3B",
+     "args": [
+      1
+     ]
+    },
+    {
+     "op": "3D45",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "3D45",
+     "args": [
+      1
+     ]
+    },
+    {
+     "op": "3D45",
+     "args": [
+      2
+     ]
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    },
+    {
+     "op": "3D54",
+     "args": [
+      138
+     ]
+    },
+    {
+     "op": "3D35",
+     "args": [
+      16384,
+      0
+     ],
+     "note": "camera on タケル"
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    },
+    {
+     "op": "3D47"
+    },
+    {
+     "op": "3D48"
+    }
+   ]
+  },
+  {
+   "name": "ending",
+   "type": 14,
+   "header": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D3A",
+     "args": [
+      48
+     ]
+    },
+    {
+     "op": "3D4B",
+     "args": [
+      4
+     ]
+    }
+   ]
+  }
+ ]
+}

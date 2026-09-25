@@ -16,6 +16,8 @@
 #include "title_page.hpp"
 #include "ui_text.hpp"
 #include "move_jump.hpp"
+#include "enemy_cycle.hpp"
+#include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "presentation_settings.hpp"
 #include "presentation/image_mode.hpp"
@@ -117,13 +119,51 @@ uint16_t button_mask(const json& value) {
     return mask;
 }
 
+// Controller buttons by name, "a+r2": the Steam Deck default template's names.
+uint32_t pad_mask(const std::string& text) {
+    static const std::pair<const char*,uint32_t> names[]={{"a",0x8000},{"b",0x4000},{"x",0x4000},{"y",0x2000},
+        {"menu",0x1000},{"up",0x800},{"down",0x400},{"left",0x200},{"right",0x100},{"l1",0x20},{"r1",0x10},
+        {"rs_up",8},{"rs_down",4},{"rs_left",2},{"rs_right",1},
+        {"ls_up",1u<<16},{"ls_down",1u<<17},{"ls_left",1u<<18},{"ls_right",1u<<19},
+        {"view",input::pad_view},{"l2",input::pad_l2},{"r2",input::pad_r2}};
+    uint32_t mask=0;
+    size_t start=0;
+    while(start<=text.size()) {
+        const auto plus=text.find('+',start);
+        const auto name=text.substr(start,plus==std::string::npos?std::string::npos:plus-start);
+        bool known=false;
+        for(const auto& [key,bit]:names)if(name==key){mask|=bit;known=true;}
+        if(!known)throw RpcError(InvalidParams,"unknown pad button '"+name+"'");
+        if(plus==std::string::npos)break;
+        start=plus+1;
+    }
+    return mask;
+}
+// Same fields as keys: down, up, press (+ hold_ms), release_all.
+json pad_buttons(const json& params) {
+    auto& held=pad();
+    auto mask=[&](const char* field){return pad_mask(params[field].get<std::string>());};
+    if(params.value("release_all",false))held=0;
+    if(params.contains("down"))held|=mask("down");
+    if(params.contains("up"))held&=~mask("up");
+    if(params.contains("press")) {
+        const auto buttons=mask("press");
+        const auto hold=params.value("hold_ms",120);
+        if(hold<0 || hold>10000)throw RpcError(InvalidParams,"hold_ms must be 0..10000");
+        held|=buttons;
+        std::this_thread::sleep_for(std::chrono::milliseconds(hold));
+        held&=~buttons;
+    }
+    return {{"held",held.load()},{"vi",srw64_current_vi()}};
+}
+
 json status(const json& params) {
     json state={{"vi",srw64_current_vi()},{"pid",getpid()},{"run",output.string()},{"host",host_info},
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"move_jump",move_jump::state()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
+        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};
@@ -238,6 +278,7 @@ json wait_vi(const json& params) {
 json dispatch(const std::string& method,const json& params) {
     if(method=="status")return status(params);
     if(method=="keys")return keys(params);
+    if(method=="pad")return pad_buttons(params);
     if(method=="buttons") {
         if(!params.contains("buttons"))throw RpcError(InvalidParams,"buttons needs buttons");
         const auto vis=params.value("vis",6);
@@ -259,7 +300,7 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="wait_vi")return wait_vi(params);
     if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
-    if(method=="methods")return {"status","keys","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
+    if(method=="methods")return {"status","keys","pad","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
                                  "menu","settings","window","wait_vi","mini_stage.load","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

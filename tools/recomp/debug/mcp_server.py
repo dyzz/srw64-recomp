@@ -22,6 +22,7 @@ srw64_screenshot. Two input layers:
 - srw64_keys: the game keyboard (Z=A, X=B, Enter=START, arrows, E=R, Q=L, I/K=C-up/down,
   WASD stick, F5 reload dialogue text, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
   window focus not required. Reading controls: E+Z fast-forward, E+Enter skip, I/K text size.
+- srw64_pad: a virtual controller (Steam Deck names; View opens the settings, L2/R2 are host keys).
 - srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the shared SDL/RmlUi UI that
   replaces game screens (name page, settings window, menu bar), by generic keyboard and mouse.
 Coordinates are points from the window's top-left; use srw64_ui_tree to find controls.
@@ -29,7 +30,7 @@ Every session runs in its own directory under build/recomp/debug/ and never touc
 
 WINDOW = {"description": "\"game\" (default), \"key\", a window number, or a title substring", "type": ["string", "integer"]}
 TOOLS = [
-    {"name": "srw64_launch", "description": "Build if needed and start a debug session of the game (interactive window, isolated run directory). Replaces the current session handle; an earlier game keeps running until quit.",
+    {"name": "srw64_launch", "description": "Build if needed and start a debug session of the game (interactive window, isolated run directory). Replaces the current session handle; an earlier game keeps running until quit or until this server exits.",
      "inputSchema": {"type": "object", "properties": {
          "language": {"type": "string", "enum": ["ja", "zh-Hans", "en"]},
          "images": {"type": "string", "enum": ["original", "hd"]},
@@ -45,6 +46,10 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string"}, "hold_ms": {"type": "integer"},
          "steps": {"type": "array", "items": {"type": "object"}}}}},
+    {"name": "srw64_pad", "description": "A virtual controller merged into the real one every frame (controller hints, native pages, and the host keys View, L2, R2). Names follow the Steam Deck: a b x y menu view l1 r1 l2 r2 up down left right ls_up ls_down ls_left ls_right rs_up rs_down rs_left rs_right; combine with +. {press, hold_ms} or {down} / {up} / {release_all: true}.",
+     "inputSchema": {"type": "object", "properties": {
+         "press": {"type": "string", "description": "e.g. \"r2\" or \"r1+menu\""}, "hold_ms": {"type": "integer", "minimum": 0, "maximum": 10000},
+         "down": {"type": "string"}, "up": {"type": "string"}, "release_all": {"type": "boolean"}}}},
     {"name": "srw64_buttons", "description": "N64 controller buttons directly, below the keyboard layer (a b z start up down left right l r c_up c_down c_left c_right), held for vis frames.",
      "inputSchema": {"type": "object", "required": ["buttons"], "properties": {
          "buttons": {"type": "string", "description": "e.g. \"r+start\""}, "vis": {"type": "integer", "minimum": 1, "maximum": 600}}}},
@@ -114,6 +119,8 @@ class Server:
             if not steps:
                 raise HostError("srw64_keys needs press or steps")
             return text(run_keys(client, steps))
+        if name == "srw64_pad":
+            return text(client.call("pad", **args))
         if name == "srw64_buttons":
             return text(client.call("buttons", **args))
         if name == "srw64_screenshot":

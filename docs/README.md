@@ -88,6 +88,7 @@
 | [标题菜单画面](native/native-title-menus.md) | 环形菜单之后的 ロード、オプション、サウンドセレクト、カラオケモード 原生接管，原版/新版切换；コンティニュー 没有画面，两个隐藏列表不可达；标题 overlay 主状态表与解锁条件 |
 | [原版界面文字](native/native-ui-text.md) | 战术地图、战斗等原版界面的标签、数字与正文窗口按阅读语言原生重画（文字引擎池与显示列表核对、数字移进译句、先压窄后缩字）；战斗 HUD 徽章、能力横幅与边框高清化 |
 | [移动选格：按住 R 跳到最远格](native/move-jump.md) | 现代机战式操作：选移动目的地时按住 R 高亮最远格、方向键在其间跳；状态 0xC 选格 `801CBB04`、范围绘制 `801E4760`、输入字与镜头的静态分析 |
+| [L2 / R2 切换敌方机体](native/enemy-cycle.md) | 现代机战式操作：地图空闲时用手柄扳机遍历敌方与第三方机体；空闲状态 `801C8B04` 里原版 L/R 切换我方的静态分析与接管方式 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
 | [世界地图过场模型 HD](native/native-ship-model.md) | 世界地图模型表、`3D72` 载具与场景地标、15 个舰船／地标按设定重建、平滑航迹与实机对照 |
 | [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |
@@ -131,6 +132,7 @@
 | [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
+| [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面改版（待定）、待定键位、自绘图标字体方案与验证计划 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
