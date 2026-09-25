@@ -22,11 +22,11 @@
 
 ## 重建
 
-13 张切片写进世界地图包 `worldmap-surfaces/pack-v1`，`--art` 同时更新美术清单里这 13 条的 SHA-256；给 `--capture` 时再用真实 TMEM 装载逐个核对哈希：
+13 张切片写进世界地图包 `worldmap-surfaces/pack-v4`，`--art` 同时更新美术清单里这 13 条的 SHA-256；给 `--capture` 时再用真实 TMEM 装载逐个核对哈希：
 
 ```sh
 PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/dialogue_frame_asset.py \
-  --pack assets/hd-ai/worldmap-surfaces/pack-v1 --output build/hd-ai/dialogue-frame \
+  --pack assets/hd-ai/worldmap-surfaces/pack-v4 --output build/hd-ai/dialogue-frame \
   --art content/art/stage1-hd.json
 ```
 

@@ -29,6 +29,6 @@ RT64 的 `TextureSampler.hlsli` 对替换纹理使用实际 `tcScale`；其低�
 
 ## 现在的打包
 
-这 57 块欧洲图块保存在 `assets/hd-ai/worldmap-runtime/pack-v6/`。现在由 [`worldmap_surfaces.py`](../../tools/hd_ai/worldmap_surfaces.py) 读取，与其他区域一起并入 `worldmap-surfaces/pack-v1`，美术清单 `content/art/stage1-hd.json` 引用的是后者，见[剧情世界地图 HD](native-worldmap-regions-hd.md)。所以 pack-v6 要保留，它是第一话图块的来源。
+这 57 块欧洲图块保存在 `assets/hd-ai/worldmap-runtime/pack-v6/`。2026-09-25 起它们不再进包：欧洲改由百炼以它们为底图补细节重画，见[欧洲改用百炼](native-worldmap-regions-hd.md#欧洲改用百炼2026-09-25)。pack-v6 仍要保留：它是新欧洲的底图，[`worldmap_surfaces.py`](../../tools/hd_ai/worldmap_surfaces.py) `prepare` 的画风样张也从它的陆地纹理里取。
 
 原来的打包脚本、苹方字形包，以及把字形、头像切片与地图合在一起的旧包，都已在 2026-09-24 的 HD 遗留清理中删除。上文 2026-09-09 的 57/57 纹理核对和 `live-v6` 运行记录只作历史参考，不代表当前包的重新验收。
