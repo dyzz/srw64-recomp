@@ -26,6 +26,7 @@
 #include "modal_input.hpp"
 #include "presentation/image_mode.hpp"
 #include "input_mode.hpp"
+#include "presentation/rgba_file.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <array>
@@ -259,6 +260,13 @@ std::string button(const std::string& id,const std::string& text,bool on=false,b
 std::string image(const std::string& path) {
     if(path.empty())return {};
     if(auto found=images.find(path);found!=images.end())return found->second;
+    if(!presentation::alpha_beside(path).empty()) {
+        // A released HD portrait: JPEG colour with its alpha beside it.
+        auto rgba=presentation::load_rgba(path);
+        const auto name="portrait-"+std::to_string(images.size());
+        renderer->queue_image_from_bytes_rgba32(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
+        return images[path]=name;
+    }
     std::ifstream file(path,std::ios::binary);
     if(!file)throw std::runtime_error("Cannot load shared UI portrait: "+path);
     // RmlUi normalizes leading slashes in URLs. Stable relative resource keys
@@ -280,10 +288,10 @@ std::string image(const std::string& path,int width) {
     if(path.empty() || width<=0)return image(path);
     const auto key=path+"@"+std::to_string(width);
     if(auto found=images.find(key);found!=images.end())return found->second;
-    int w=0,h=0,n=0;
-    uint8_t* data=stbi_load(path.c_str(),&w,&h,&n,4);
-    if(!data)throw std::runtime_error("Cannot load shared UI portrait: "+path);
-    if(width>=w){stbi_image_free(data);return images[key]=image(path);}
+    const auto file=presentation::load_rgba(path);
+    const int w=file.width,h=file.height;
+    const uint8_t* data=file.pixels.data();
+    if(width>=w)return images[key]=image(path);
     const int ow=width,oh=std::max(1,int(float(h)*width/w+.5f));
     std::vector<float> row(size_t(ow)*h*4),out(size_t(ow)*oh*4);
     const float sx=float(w)/ow,sy=float(h)/oh;
@@ -296,7 +304,6 @@ std::string image(const std::string& path,int width) {
             row[(size_t(y)*ow+ox)*4+c]=sum/sx;
         }
     }
-    stbi_image_free(data);
     for(int oy=0;oy<oh;++oy)for(int ox=0;ox<ow;++ox){
         const float y0=oy*sy,y1=y0+sy;
         for(int c=0;c<4;++c){
