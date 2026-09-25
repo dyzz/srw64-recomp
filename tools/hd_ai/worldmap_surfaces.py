@@ -15,6 +15,13 @@ overlapping 256x256 windows, one qwen-image-3.0-pro request each at 2048x2048
 locking the source's low-frequency colour, --colour-lock), and takes the coastline
 from the source mask, smoothed, instead of the model's. `pack` cuts the HD
 atlas back into 512x512 tiles under their RT64 hashes (rt64_hash.map_hash).
+
+5604 was first drawn outside this pipeline (worldmap-runtime/pack-v6, a built-in
+image_gen); its land swatches are still the style reference `prepare` sends. Since
+2026-09-25 5604 is that image_gen map redrawn by qwen with more detail
+(worldmap-surfaces/europe-2: its 9 windows cut from approved_canvas are the inputs,
+samples.json holds them); `restyle` redraws the other surfaces from run-5 toward
+the same style. `pack --extra-run` joins the runs, and the pack-v6 tiles leave the pack.
 """
 from __future__ import annotations
 
@@ -28,7 +35,9 @@ import shutil
 import struct
 import time
 
-from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageMath, ImageStat
+import colorsys
+
+from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter, ImageMath, ImageStat
 
 from srw64_rom.resources import ResourceTable
 from tools.hd_ai.aliyun import ROOT, load_env, run_one
@@ -36,8 +45,8 @@ from tools.hd_ai.rom_images import indexed, rgba16
 from tools.hd_ai.rt64_hash import hasher, map_hash
 
 SURFACES = {5602: 'earth', 5605: 'central-asia', 5606: 'coast'}
-# 5604 keeps the reviewed first-stage tiles (worldmap-runtime/pack-v6); their painted
-# style is the reference every other surface is redrawn in.
+# 5604's first-stage tiles (worldmap-runtime/pack-v6): their painted style is the reference
+# every surface is redrawn in. A run that redraws all of 5604 replaces them in `pack`.
 APPROVED = 5604
 # ...except five land tiles in its top-right corner (Russia) that never got HD: one window
 # there, packed only for tiles without an approved replacement.
@@ -60,6 +69,14 @@ PROMPT = ('图1是1999年游戏里世界地图的一块低分辨率局部，深�
 SWATCHES = ((2300, 500), (1500, 1050), (1000, 2700), (1750, 2550))
 LAND_IOU = .90                             # least land-mask agreement before a retry
 CANDIDATES = 3
+# `restyle`: a surface's HD windows redrawn toward the first-stage (image_gen) style.
+RESTYLE_PROMPT = ('图1是游戏世界地图的一块高清局部，地理位置和地貌都正确，但画法偏写实、偏灰。图2是目标画法的样张，'
+                  '由森林、山地、沙丘、沙漠山地四种地貌纹理拼成，不是地图的一部分。只改变画法，不改变内容：用图2那种饱满的手绘笔触重画图1，'
+                  '山地画成一簇簇有受光面和投影的立体山峰，树冠分明，沙丘纹理细腻。每一处的颜色和地貌类型必须与图1相同：'
+                  '图1里褐色、土黄色的高原和山地仍画成褐色、土黄色的岩石山地（高处可带少量积雪），黄色的地方仍是沙漠，'
+                  '只有图1里本来是绿色的地方才画草原和森林。不要把褐色或黄色的地方画成绿色，不要新增湖泊、河流、海、城市、道路、文字或边框。'
+                  '严格保持每一处海岸线的位置和形状，海面保持与图1相同的纯色深蓝，不改变画幅。')
+RESTYLE_COLOUR = 1.3                      # saturation boost of the input, so the terrain colours read clearly
 
 
 def sha(path: Path) -> str:
@@ -217,6 +234,59 @@ def land_iou(source: Image.Image, output: Image.Image) -> float:
     return both / either if either else 1.0
 
 
+def terrain(image: Image.Image, size: int = 96) -> list[str]:
+    """Coarse terrain class per cell: water, snow, green, sand or rock."""
+    out = []
+    for r, g, b in image.convert('RGB').resize((size, size), Image.Resampling.BOX).get_flattened_data():
+        h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        h *= 360
+        if b > r + 25 and b > g and v < .75 and s > .35: out.append('water')
+        elif s < .18 and v > .72: out.append('snow')
+        elif 65 <= h <= 170 and s > .2: out.append('green')
+        elif 38 <= h < 65 and v > .62: out.append('sand')
+        else: out.append('rock')
+    return out
+
+
+def terrain_agreement(source: Image.Image, output: Image.Image) -> tuple[float, float]:
+    """Share of the source's land keeping its class (rock and snow count as one), and share turned to water."""
+    a, b = terrain(source), terrain(output)
+    land = [i for i, c in enumerate(a) if c != 'water']
+    same = sum(1 for i in land if a[i] == b[i] or {a[i], b[i]} <= {'rock', 'snow'})
+    water = sum(1 for i in land if b[i] == 'water')
+    return same / max(len(land), 1), water / max(len(land), 1)
+
+
+def restyle(args: argparse.Namespace) -> None:
+    """Windows of a composed surface as 图1, the style swatches as 图2 (run with the terrain check)."""
+    out, base, name = args.output, getattr(args, 'from'), args.surface
+    (out / 'inputs').mkdir(parents=True, exist_ok=False)
+    spec = json.loads((base / 'samples.json').read_text())
+    surface = dict(spec['surfaces'][name])
+    shutil.copyfile(base / surface['source'], out / 'inputs' / f'{name}-source.png')
+    surface['source'] = f'inputs/{name}-source.png'
+    reference = out / 'inputs' / 'style-reference.png'
+    shutil.copyfile(base / 'inputs' / 'style-reference.png', reference)
+    hd = Image.open(base / json.loads((base / 'compose' / 'report.json').read_text())[name]['file']).convert('RGBA')
+    whole = Image.new('RGBA', hd.size, OCEAN + (255,))
+    whole.alpha_composite(hd)
+    whole = ImageEnhance.Color(whole.convert('RGB')).enhance(RESTYLE_COLOUR)
+    samples = []
+    for sample in spec['samples']:
+        if sample['surface'] != name:
+            continue
+        request = out / 'inputs' / f"{sample['id']}.png"
+        crop = whole.crop(tuple(v * SCALE for v in sample['box']))
+        crop.save(request)
+        samples.append({'id': sample['id'], 'surface': name, 'box': sample['box'], 'input': str(request.relative_to(out)),
+                        'input_sha256': sha(request), 'output_size': f'{crop.width}*{crop.height}', 'prompt': RESTYLE_PROMPT,
+                        'references': [str(reference.relative_to(out))], 'check': 'terrain'})
+    (out / 'samples.json').write_text(json.dumps({'schema': 'srw64.hd-ai-samples.v1',
+        'purpose': f'{name} from {base.name} redrawn toward the first-stage style', 'surfaces': {name: surface},
+        'samples': samples}, ensure_ascii=False, indent=2) + '\n')
+    print({'surface': name, 'requests': len(samples), 'estimated_cny': round(len(samples) * .52, 2)})
+
+
 def run(args: argparse.Namespace) -> None:
     out = args.output
     config = load_env(args.env_file)
@@ -239,14 +309,23 @@ def run(args: argparse.Namespace) -> None:
                 time.sleep(5)
             if report['status'] != 'completed':
                 raise SystemExit(f"stopped at {sample['id']}: {report['status']}")
-            iou = land_iou(source, Image.open(out / report['output']))
-            tried.append([candidate, round(iou, 4)])
+            output = Image.open(out / report['output'])
+            iou = land_iou(source, output)
+            ok = iou >= LAND_IOU
+            row = [candidate, round(iou, 4)]
+            if sample.get('check') == 'terrain':
+                # Recorded for the visual review only: texture changes the colour classes as much
+                # as a real terrain swap does, so these numbers cannot pick a candidate.
+                agree, water = terrain_agreement(Image.open(out / sample['input']), output)
+                row += [round(agree, 4), round(water, 4)]
+            tried.append(row)
             print(json.dumps({'sample_id': sample['id'], 'candidate': candidate, 'land_iou': round(iou, 4),
+                              **({'terrain': row[2], 'new_water': row[3]} if len(row) > 2 else {}),
                               'elapsed_seconds': report.get('elapsed_seconds')}), flush=True)
-            if iou >= LAND_IOU:
+            if ok:
                 break
             time.sleep(13)
-        best = max(tried, key=lambda row: row[1])
+        best = max(tried, key=lambda r: r[1])
         choices[sample['id']] = {'candidate': best[0], 'land_iou': best[1], 'tried': tried}
         choice_path.write_text(json.dumps(choices, indent=2) + '\n')
         time.sleep(13)
@@ -405,22 +484,28 @@ def compose(args: argparse.Namespace) -> None:
 def pack(args: argparse.Namespace) -> None:
     """RT64 tiles for every surface, next to the pack's other (non-world-map) textures."""
     out = args.output
-    spec = json.loads((out / 'samples.json').read_text())
-    report = json.loads((out / 'compose' / 'report.json').read_text())
     table = ResourceTable((ROOT / 'rom.z64').read_bytes())
     xxh = hasher()
+    # Every run's surfaces, the first run's first.
+    runs = [out] + list(args.extra_run or [])
+    surfaces = [(run, name, surface, json.loads((run / 'compose' / 'report.json').read_text())[name])
+                for run in runs for name, surface in json.loads((run / 'samples.json').read_text())['surfaces'].items()]
+    whole = {s['resource'] for _, _, s, _ in surfaces if 'fill_only' not in s}
+    # A run that redraws all of 5604 replaces the first-stage tiles and makes its fill window moot.
+    approved = set() if APPROVED in whole else set(approved_tiles(table))
+    surfaces = [row for row in surfaces if not ('fill_only' in row[2] and row[2]['resource'] in whole)]
     target = args.pack_output
     shutil.copytree(args.base_pack, target)
     database = json.loads((target / 'rt64.json').read_text())
     entries = {e['hashes']['rt64']: e for e in database['textures']}
-    approved = set(approved_tiles(table))
-    old = {h for h, e in entries.items() if e['path'].startswith('map-') and h not in approved}
+    first_stage = set(approved_tiles(table)) - approved
+    old = {h for h, e in entries.items() if (e['path'].startswith('map-') and h not in approved) or h in first_stage}
     for h in old:
         (target / entries[h]['path']).unlink(missing_ok=True)
         del entries[h]
     claims: dict[str, list] = {}
-    for name, surface in spec['surfaces'].items():
-        hd = Image.open(out / report[name]['file']).convert('RGBA')
+    for run, name, surface, composed in surfaces:
+        hd = Image.open(run / composed['file']).convert('RGBA')
         for rid in [surface['resource']] + [r for r, same in SAME_TILES.items() if same == surface['resource']]:
             d = table.extract(rid)[0]
             _, tiles = assemble(d)
@@ -447,18 +532,19 @@ def pack(args: argparse.Namespace) -> None:
         hashes.append(digest)
     database['textures'] = sorted(entries.values(), key=lambda e: e['hashes']['rt64'])
     (target / 'rt64.json').write_text(json.dumps(database, indent=2) + '\n')
-    worldmap = {'schema': 'srw64.worldmap-hd.v1', 'resources': sorted(set(spec_r for spec_r in [s['resource'] for s in spec['surfaces'].values()] + list(SAME_TILES))),
+    worldmap = {'schema': 'srw64.worldmap-hd.v1', 'resources': sorted({s['resource'] for _, _, s, _ in surfaces} | set(SAME_TILES) | ({APPROVED} if approved else set())),
                 'source_tile_size': 64, 'replacement_tile_size': 64 * SCALE, 'hashes': sorted(set(hashes) | approved)}
-    (out / 'pack-report.json').write_text(json.dumps({'tiles': len(hashes), 'conflicts_kept_original': conflicts,
-                                                      'removed_old_map_tiles': len(old)}, indent=2) + '\n')
+    (target / 'pack-report.json').write_text(json.dumps({'runs': [str(run.resolve().relative_to(ROOT)) for run in runs], 'tiles': len(hashes),
+                                                         'conflicts_kept_original': conflicts, 'removed_old_map_tiles': len(old)}, indent=2) + '\n')
     print({'tiles': len(hashes), 'conflicts': len(conflicts), 'removed_old': len(old)})
     if args.bind:
         path = ROOT / 'content/art/stage1-hd.json'
         manifest = json.loads(path.read_text())
         base = json.loads((target / 'rt64.json').read_text())
         paths = {e['hashes']['rt64']: e['path'] for e in base['textures']}
-        # space rows are re-added by worldmap_space pack onto this pack
-        rows = [r for r in manifest['textures'] if r['kind'] not in ('worldmap', 'space')]
+        # Space rows stay when the base pack already holds their tiles; on a base
+        # without them, worldmap_space pack adds them again.
+        rows = [r for r in manifest['textures'] if r['kind'] != 'worldmap' and (r['kind'] != 'space' or r['hash'] in paths)]
         for r in rows:
             if r['hash'] not in paths:
                 raise ValueError(f"{r['hash']} missing from the new pack")
@@ -473,9 +559,12 @@ def pack(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     commands = parser.add_subparsers(dest='command', required=True)
-    for name in ('prepare', 'run', 'compose', 'pack'):
+    for name in ('prepare', 'restyle', 'run', 'compose', 'pack'):
         sub = commands.add_parser(name)
         sub.add_argument('--output', type=Path, required=True)
+        if name == 'restyle':
+            sub.add_argument('--from', type=Path, required=True, help='composed run folder whose surface is redrawn')
+            sub.add_argument('--surface', required=True)
         if name == 'run':
             sub.add_argument('--env-file', type=Path, required=True)
         if name == 'compose':
@@ -483,9 +572,10 @@ def main() -> None:
         if name == 'pack':
             sub.add_argument('--base-pack', type=Path, required=True)
             sub.add_argument('--pack-output', type=Path, required=True)
+            sub.add_argument('--extra-run', type=Path, action='append', help='another run folder whose surfaces join the pack')
             sub.add_argument('--bind', action='store_true')
     args = parser.parse_args()
-    {'prepare': prepare, 'run': run, 'compose': compose, 'pack': pack}[args.command](args)
+    {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'pack': pack}[args.command](args)
 
 
 if __name__ == '__main__':

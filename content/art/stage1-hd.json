@@ -3,8 +3,8 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "assets/hd-ai/worldmap-surfaces/pack-v1",
-    "manifest_sha256": "3e86a46f9d54c6af9671ff4bd1c7488da3af1c055c7afd67fd12debbcae93bf5"
+    "path": "assets/hd-ai/worldmap-surfaces/pack-v4",
+    "manifest_sha256": "e746c7f7671f18f827d2a5c5255d2c9fbf0a88d60c63116d859ecca07b21ccab"
   },
   "textures": [
     {
@@ -71,1051 +71,6 @@
       "hash": "361bfd6d684de600",
       "kind": "frame",
       "sha256": "8ac90fec0c5477ffc20c0e96176d5c92e16efda778e4ffe6d25de657b137938f"
-    },
-    {
-      "hash": "00d8727cb2bc5f0e",
-      "kind": "worldmap",
-      "sha256": "ab4132e606094d0befd1b05b44a7ca0d15ade1831f4d0c6b6763183f501fdb43"
-    },
-    {
-      "hash": "020bfcfe27211630",
-      "kind": "worldmap",
-      "sha256": "30057d1e12d9462ff1cd5ea56bc15ae836410a216358b5811f3658eb79da72b8"
-    },
-    {
-      "hash": "0283f4850bdf9d67",
-      "kind": "worldmap",
-      "sha256": "4bc3916060353cc32cf8b3305a948cd7ae0e07488b33d1cca0b124d1191e48bc"
-    },
-    {
-      "hash": "02b789a647e2d885",
-      "kind": "worldmap",
-      "sha256": "699a15900b1f859b9ce3e2021f4095cd0275d025161f184c3be679008fa60ffc"
-    },
-    {
-      "hash": "075d13e11d9ee0e3",
-      "kind": "worldmap",
-      "sha256": "f440f991247cd769e93c3e8d43b123934179eb85fa008fe0a402e35ac009d5cc"
-    },
-    {
-      "hash": "0923ed37739b4469",
-      "kind": "worldmap",
-      "sha256": "45d619cfba765ee164efcca5b23dfc79dd352b3817723de7b1c3bad60a808d70"
-    },
-    {
-      "hash": "09fd723e16244686",
-      "kind": "worldmap",
-      "sha256": "909008e5c90b7c7cd79b5743d8daa7f73a080579e57b6a34c129e1b775a35bdd"
-    },
-    {
-      "hash": "0ac2bb3d66d8ce93",
-      "kind": "worldmap",
-      "sha256": "16b6dda242b97628e2ba6ae3a0be7847fc1d6cf027f9e933786b0386c489ba16"
-    },
-    {
-      "hash": "0f59b30fc88bb65c",
-      "kind": "worldmap",
-      "sha256": "49844edefdbc15c1eda3de28c0a38408db29a19fe4516e9ee511a433d7262897"
-    },
-    {
-      "hash": "10205e9441de415d",
-      "kind": "worldmap",
-      "sha256": "e4df690110fe081aad0b1c8dc8942b39050667ef1a3d0b18650b00efcb5e5ef2"
-    },
-    {
-      "hash": "11f6d27d0e1cf652",
-      "kind": "worldmap",
-      "sha256": "dc4cd54e9ffbc1b7c59f2f846f2921cd44d1c41c67a6094e0d221411f1c92aa0"
-    },
-    {
-      "hash": "12f35cfa1e90e5fa",
-      "kind": "worldmap",
-      "sha256": "7eb3291a720e436477ebbeff6ce687b0c7ca816a86bcb4cb1b2918542218d15d"
-    },
-    {
-      "hash": "13970f1deedbfbc8",
-      "kind": "worldmap",
-      "sha256": "3ca7f9c603b157cc8f8c92fd628e22d0fc52a1fb0155238e01afc6818b8ac225"
-    },
-    {
-      "hash": "1399a81256d01d70",
-      "kind": "worldmap",
-      "sha256": "d72a41b2cee2efbafe2f3a72d85600f485a196da660ca1f4a1164637df372c73"
-    },
-    {
-      "hash": "15502cf35997afdf",
-      "kind": "worldmap",
-      "sha256": "0d2dda90d75294a3218eb281c9f8bcce57529c7a5826da2f93bcd9cdfd3f28f7"
-    },
-    {
-      "hash": "15bce41b627b7d21",
-      "kind": "worldmap",
-      "sha256": "a2d8a15d091899dbd68d91714e63a54233723a455697c00416948d16f537b16a"
-    },
-    {
-      "hash": "19cfd4acfa7963ae",
-      "kind": "worldmap",
-      "sha256": "34427fa3b3bdda5ccdb9e7cd1b7bde1f6259332bf986bdd889d16b8d12fd025a"
-    },
-    {
-      "hash": "1c65bfedcc558739",
-      "kind": "worldmap",
-      "sha256": "7a6e2ed6275b70aa933538e8c128ac68b22892e87758642815187bc53c8d01b4"
-    },
-    {
-      "hash": "1cd89a5ea6055d58",
-      "kind": "worldmap",
-      "sha256": "7cb40ca40e41ae19389e008b330e29e219ef6e427a2376495d60fc99e06fe0f0"
-    },
-    {
-      "hash": "1dcd01a4b9c1d534",
-      "kind": "worldmap",
-      "sha256": "07a01f9bc16565e244fb7c86cb6af10adc4a60f16eae1e07a007e547dd904d3f"
-    },
-    {
-      "hash": "1ed7181b90284013",
-      "kind": "worldmap",
-      "sha256": "4db607239dea6b189c17dfa34afd389ccd52a28e0f0571e84efc4d91505ba7fe"
-    },
-    {
-      "hash": "214c53cc957d2ac0",
-      "kind": "worldmap",
-      "sha256": "6d73a7a1248996d8216845f3f9832262fb1443499ea9241c29d19ad98fd22995"
-    },
-    {
-      "hash": "22e709bbfe02d2a8",
-      "kind": "worldmap",
-      "sha256": "4044233c2821862bc352a5353c030be3b98d5766024e6e4a81ac2d78fb0a9dda"
-    },
-    {
-      "hash": "24ee5d1fbb07c870",
-      "kind": "worldmap",
-      "sha256": "41ae56d9ac2ce27f49d94cb1397a0003bd4ea81cd700379a3a7bcd12837e5899"
-    },
-    {
-      "hash": "27e132a702f7169d",
-      "kind": "worldmap",
-      "sha256": "2cc96780ce160b01ed7696b99f035bf807b6d213e453fca32ea2a1ad4126d4f3"
-    },
-    {
-      "hash": "29830bf1bbdb366a",
-      "kind": "worldmap",
-      "sha256": "fbc75ce3a0c254ab0fad79b993eabfc93d236586e14ad898c6094d013582dfca"
-    },
-    {
-      "hash": "2a1268c80935cc24",
-      "kind": "worldmap",
-      "sha256": "045547b83802f8f8d8ec9e34a52a74097ce7e3787194b610391652456b649803"
-    },
-    {
-      "hash": "2b67a2c70ddc31ce",
-      "kind": "worldmap",
-      "sha256": "b579308e85964b87241698fc01fdee3fb00d3fcb80d2d02699e5fdec5a4ba848"
-    },
-    {
-      "hash": "2c49d81d64198ef9",
-      "kind": "worldmap",
-      "sha256": "cdead5d5286920ed665ed9f7c7950eec1eab5e7a8556a4336066a2d0da4a5818"
-    },
-    {
-      "hash": "2d151df9b0329cee",
-      "kind": "worldmap",
-      "sha256": "b14cff62a2d664d2ceac082f574b6da2678c20873b4db7f2eb8fd654fc1c1ce5"
-    },
-    {
-      "hash": "2e33683d969f5c2f",
-      "kind": "worldmap",
-      "sha256": "07bd6a463700d135221143ec47c78d377536f85931c9ed48c946e7bc25e51976"
-    },
-    {
-      "hash": "2ea6910a98d72ce7",
-      "kind": "worldmap",
-      "sha256": "fc644e0ead551941ba9ca0e67f87710cacb89f8c66f5ea37ebd031d072ee4676"
-    },
-    {
-      "hash": "318364dd97e47c64",
-      "kind": "worldmap",
-      "sha256": "c69c0623bd87123e9e876c736f458316a5271f94f39c07670903a1e0288bfe97"
-    },
-    {
-      "hash": "31a38c1088ad75fd",
-      "kind": "worldmap",
-      "sha256": "6578ff21cfd95bcaf9453f1e0c7de8b55f71f5a21b4d01b4eed517f3b5da5d3c"
-    },
-    {
-      "hash": "3313e01536e4e0e5",
-      "kind": "worldmap",
-      "sha256": "8f62106606f1e877c6aa17a5a0425711fe8a38374567edacf14a512c5a3c2927"
-    },
-    {
-      "hash": "36c55b114f8dd6a8",
-      "kind": "worldmap",
-      "sha256": "eae4a06c613027dc9e1071bfe5d14809a7c9f46242053dfe7df2b4dc096d3066"
-    },
-    {
-      "hash": "3c7c21e5db45f10a",
-      "kind": "worldmap",
-      "sha256": "0290c97de052b60aa44b5d5afd1a736c990514a24fedcd79a91290afd26e715f"
-    },
-    {
-      "hash": "4067be5351892339",
-      "kind": "worldmap",
-      "sha256": "a022c036c707520f6791433cea7e93920c54a540b3fa344c362f30922e82ae25"
-    },
-    {
-      "hash": "416a2d8df682032d",
-      "kind": "worldmap",
-      "sha256": "09e5c2f8a739bba0b9bc8c61017976a7202b272c0947d78d8c2792781df879a2"
-    },
-    {
-      "hash": "44c3b1013d61f606",
-      "kind": "worldmap",
-      "sha256": "2bd6820530a24c41713a8e6d40a186bca197d6f891dc552c45505c9a012c10f7"
-    },
-    {
-      "hash": "45a6df81c9be5d77",
-      "kind": "worldmap",
-      "sha256": "dedbf98925f4aec775427b4cbaa5aa8cedd830d9f2c15d08850d2f8c43ba1f92"
-    },
-    {
-      "hash": "46ab05e860f0e667",
-      "kind": "worldmap",
-      "sha256": "5a87fbee2a8544ff5d5440fa6aaaeed4664ca17c426ba4262eb87b9057e7b243"
-    },
-    {
-      "hash": "48a0d506ea3380d0",
-      "kind": "worldmap",
-      "sha256": "3f8ec472512ba853e4ed8033e131db16b3e576479a58d7df7e478b8cc169a570"
-    },
-    {
-      "hash": "4a20a4d2c09da52c",
-      "kind": "worldmap",
-      "sha256": "a1304e7a369c1bec535d83f4e424263d203426f97ebd9e6b66a803557f90902b"
-    },
-    {
-      "hash": "4a66d83d294c7b3e",
-      "kind": "worldmap",
-      "sha256": "9b5922a0e1fe1b4101ee7d3a577cd85eb67697ad036e4a9c1da8d711e90c691b"
-    },
-    {
-      "hash": "4abe2eab5fcd6096",
-      "kind": "worldmap",
-      "sha256": "acf9be2b24f35655b02d16623f93e382523cb152f65ff3c4937ddabe86a0ecc1"
-    },
-    {
-      "hash": "4b400ab2eabf16ae",
-      "kind": "worldmap",
-      "sha256": "88fe51ef1b9d779271f96f4f2ccb09f41c54d5f82f928b2fc6f0751ffa9cd359"
-    },
-    {
-      "hash": "4b9232027a41f7bc",
-      "kind": "worldmap",
-      "sha256": "ccd1f9931e70847e4b7062bfea05b43a90f4d4211dbce0ab484fad0fc3dafc3b"
-    },
-    {
-      "hash": "4cd521e551d1517f",
-      "kind": "worldmap",
-      "sha256": "2ee4a900f0597c4ce0b3fdde46932c01b83bc6a991d5379f81a01f74d28e0ffe"
-    },
-    {
-      "hash": "4ce10c84c4db3256",
-      "kind": "worldmap",
-      "sha256": "6dc68333ee0749f06fcf52d8bbcd4a934ad830b1d230d16eee415323df961122"
-    },
-    {
-      "hash": "4eba62d0fb4eeeb5",
-      "kind": "worldmap",
-      "sha256": "f8002a85cb2b45acc18a86dfa7dc46e84f49c85ad8feb115da64e648a146c20e"
-    },
-    {
-      "hash": "4f2fb1aec9a5dfe6",
-      "kind": "worldmap",
-      "sha256": "0063ce04eabeb9a5bc2935a28b635dd566371f0b9ee74ccd741b167b93c117df"
-    },
-    {
-      "hash": "4fe76d3591aa2ce8",
-      "kind": "worldmap",
-      "sha256": "e13d33acdb0fc3ca19b0cb27ea17fa1fba3164ba2c5f8a535c0704d61278e52f"
-    },
-    {
-      "hash": "532a4124c9cec979",
-      "kind": "worldmap",
-      "sha256": "0a7103908bd7478e946cdd651c5ceca2a55e30dad06b661de7be258259e47a8e"
-    },
-    {
-      "hash": "53ae9318cb168912",
-      "kind": "worldmap",
-      "sha256": "fa2c1bef530c421c51d947c407d595077872bbde39eb4554f2b9de7fe8e4e9b6"
-    },
-    {
-      "hash": "54b248b4d8298dc8",
-      "kind": "worldmap",
-      "sha256": "52f50d1058f6bedf6a168bfc425687c29cdb914187eeb282430bf4c712113a26"
-    },
-    {
-      "hash": "55349180f12ddae2",
-      "kind": "worldmap",
-      "sha256": "6bc83a89ce82f44acfe0fb063475ec46a9bea25e0543a8848d43f8deca276f01"
-    },
-    {
-      "hash": "5554e8b1a794c0e4",
-      "kind": "worldmap",
-      "sha256": "ec71a49a8acb9535dacf13131b24f54cf6c3ffaadb1a3c1498505374896ba04e"
-    },
-    {
-      "hash": "560afa1f4c33c573",
-      "kind": "worldmap",
-      "sha256": "3740097e06eb3342b02fb127d9feeeda6a11102cca735ce48ad089954bc7431c"
-    },
-    {
-      "hash": "566b1bcc5ed9cd40",
-      "kind": "worldmap",
-      "sha256": "2782aee31e92564374b1cbc56400190fa9e05b2bcdc30da9c453322aab46947c"
-    },
-    {
-      "hash": "57cae5bbe0d29288",
-      "kind": "worldmap",
-      "sha256": "5d7e70957c9ab89ffd8c52c580e2c9773560b8f49ce93577c3329ee931f63f80"
-    },
-    {
-      "hash": "588e48795a87023c",
-      "kind": "worldmap",
-      "sha256": "dc56ee03c95ec2f3eefc8dd15ac0f0cf2fde59078216e0091e0c6a716c7ec8b6"
-    },
-    {
-      "hash": "58dcc31eea1da5f1",
-      "kind": "worldmap",
-      "sha256": "890a547a0add9c26433e36c78d8b25894f79f4cb6d896e657c0d31f6aa57cf3e"
-    },
-    {
-      "hash": "5969a36af6250c0e",
-      "kind": "worldmap",
-      "sha256": "6df291418101b30ba92426a116cd535f9be905c8948795fdf61e059f58e603dc"
-    },
-    {
-      "hash": "5a28de7d397aa056",
-      "kind": "worldmap",
-      "sha256": "0c1e88c5ca15b169674aa915427af4462b7136c23c0727a7d6890171f0805f03"
-    },
-    {
-      "hash": "5cb0e8b2fa3ca07f",
-      "kind": "worldmap",
-      "sha256": "a406bddca6ad509ee10ff062203104b5805415950a158fe9a46a817283cf7d98"
-    },
-    {
-      "hash": "5cb7f5bf9ebf8f7d",
-      "kind": "worldmap",
-      "sha256": "8b5a2d3b7aec2c10c68c3381740d475bf92c0354cbac78e99a8af4c077a60273"
-    },
-    {
-      "hash": "6112529f7a9bdf41",
-      "kind": "worldmap",
-      "sha256": "741350ddd07078bc51b2d459554806d9c7902058a9f31743d97acaa8a1497a7f"
-    },
-    {
-      "hash": "61b2b127a9a0f358",
-      "kind": "worldmap",
-      "sha256": "9d83c9e53001f4822e03feaa2de815724726663c5a8cadf43b78b32240aed83b"
-    },
-    {
-      "hash": "61f4f47bf72c77cb",
-      "kind": "worldmap",
-      "sha256": "a285427159b798b212b17e1c3805dab9f1a09a5c0be576149dcadccf430dd947"
-    },
-    {
-      "hash": "636c82e21bef96d2",
-      "kind": "worldmap",
-      "sha256": "f9b844449de8f4d63b2e235afc406940b77afbde12fe498c17b62c7827c1d412"
-    },
-    {
-      "hash": "64c3fc3954ec356d",
-      "kind": "worldmap",
-      "sha256": "ea6ca47cd39bc487f6e4e1914f11050f55fa00c2489b623e0d7126571a15602e"
-    },
-    {
-      "hash": "669d65a0f0691899",
-      "kind": "worldmap",
-      "sha256": "5416376bac78c6a11ee3661e2918e7536fc856fa854b4140079c05b731759f81"
-    },
-    {
-      "hash": "678b9f55ff4f5c38",
-      "kind": "worldmap",
-      "sha256": "88f7474b5e3043184b59738d5c35efe80bedcc5081787c80ebe6954c2ac507f1"
-    },
-    {
-      "hash": "68fdeb2093d972d0",
-      "kind": "worldmap",
-      "sha256": "a3893260ca935cfce84c2edcb5b00893e0cfffe52fa09969e5f8c80e8bccd2b6"
-    },
-    {
-      "hash": "6a31de260490617c",
-      "kind": "worldmap",
-      "sha256": "f62ecd0127207ce5b2aae8e7ed58cb2e2d851f600b2e556811f4e891a8d26e57"
-    },
-    {
-      "hash": "6ae2b4b28d0357a5",
-      "kind": "worldmap",
-      "sha256": "298c91035949fb0598304d1383b67407572e4a71156d176f316c957ea6f62986"
-    },
-    {
-      "hash": "6d8aba51dc775aaa",
-      "kind": "worldmap",
-      "sha256": "4f9a94a1cb8ecc79f606d3b926b73b70cf0cb74c75d55636d4345f96962c147d"
-    },
-    {
-      "hash": "6e1ecaa26181adce",
-      "kind": "worldmap",
-      "sha256": "a70e281aee654b959bd300747e6b7924ad3d628ed43a850b90981329622b31c6"
-    },
-    {
-      "hash": "6e51e9d12b66b84a",
-      "kind": "worldmap",
-      "sha256": "2cfebb2162ff3b7d6d2641fb1df969f3b426770104ae5ae33e00b164ffbd46cc"
-    },
-    {
-      "hash": "6f886e322835b932",
-      "kind": "worldmap",
-      "sha256": "2756c8ffefe6251938c54c5915d2c0da9a3f4164f3ed7441ab335fe6eb74360e"
-    },
-    {
-      "hash": "7100219aa05b45ba",
-      "kind": "worldmap",
-      "sha256": "6f0c7033b940e6dfea0c5140397a9bf934740b7f3eb4b8b2b5dab942f6df11df"
-    },
-    {
-      "hash": "71e2429d990840fe",
-      "kind": "worldmap",
-      "sha256": "bc697377b1d866d748b031039c381fc987a597982a90393724d748d152ff5ba6"
-    },
-    {
-      "hash": "73d962c0bc36a87a",
-      "kind": "worldmap",
-      "sha256": "3159432de0d04471ced9ee9a968bef6eea5d84cf24fe7158ba05d35903f9789d"
-    },
-    {
-      "hash": "78face421b4e3f4f",
-      "kind": "worldmap",
-      "sha256": "4f1ec765e19f74ffe514d23d678c0af42dd6650255c72bb66a2a36dc1a08ff60"
-    },
-    {
-      "hash": "79bb6b935e9dd3e4",
-      "kind": "worldmap",
-      "sha256": "0f52b7e3b9f0584b7a55830abc4a30a5be8cdb0ac90d70539e8dbec7299c568e"
-    },
-    {
-      "hash": "7a55d44e46be29d3",
-      "kind": "worldmap",
-      "sha256": "9a6018e21751b6bf7e0b1567e9f0108cfc855e5bddde48ec6aa0c40171fed6d4"
-    },
-    {
-      "hash": "7a68dd10932c44f4",
-      "kind": "worldmap",
-      "sha256": "51598d08dfa3ccae02627472b05c95bda1b64f6918c4d0b174d59c580be0467b"
-    },
-    {
-      "hash": "7c64c08eebe4760c",
-      "kind": "worldmap",
-      "sha256": "fd8608aa771816c95cf841760bf1856d144c534b42b0d2920f827a5b9a5b2fd8"
-    },
-    {
-      "hash": "7dccba16409c7cc1",
-      "kind": "worldmap",
-      "sha256": "0c93f09d82a21d56e495e7badb0a24010f9f2a8c4d448d7194aee74cfd21f71e"
-    },
-    {
-      "hash": "7dd93361549dd599",
-      "kind": "worldmap",
-      "sha256": "776a2e3048b97fa15ed5d94aedf62377efee740f3b511f932a5d9b30b7c50af4"
-    },
-    {
-      "hash": "7de65fd0376e00bf",
-      "kind": "worldmap",
-      "sha256": "2248c929c5349974ebabc0d3604a49518c86386266dfc9dd9a4b58b9f5a041b0"
-    },
-    {
-      "hash": "7ff3c2205a8f5ea0",
-      "kind": "worldmap",
-      "sha256": "b4176b43f4a024dec7f8f9ed13aaff9c5c5a7d7b25d8cfd728f36ac95c42e901"
-    },
-    {
-      "hash": "80b47a75d13d7ede",
-      "kind": "worldmap",
-      "sha256": "c97ffefd874bd06f12e480e8d6ff025bf0552e83cd63eb952bd0f174e2daa9d7"
-    },
-    {
-      "hash": "81c8e51d2dbbae83",
-      "kind": "worldmap",
-      "sha256": "a0fee61ccb311e2bb8295d79408570d7f47a7b1cac63278d4c661e9e8b10083e"
-    },
-    {
-      "hash": "83235e7017c7b886",
-      "kind": "worldmap",
-      "sha256": "5e01f11bd1cbb2afe1dde32d4276e70c6eb9a9f63c1025cb92eb3192f45859b0"
-    },
-    {
-      "hash": "83de1b4f4d8cfd81",
-      "kind": "worldmap",
-      "sha256": "f14077524102987ec0786c6624f489bba4083521d9a9765f38c4c98830975417"
-    },
-    {
-      "hash": "859771bb606fe225",
-      "kind": "worldmap",
-      "sha256": "5864348d4de62cb8f30c9e4e36dbca2155b87d11725a31cefbcf4f145e27375a"
-    },
-    {
-      "hash": "86839bf8c7dcdaed",
-      "kind": "worldmap",
-      "sha256": "7ef8307e9bd35c00e1c41b35944224102ff130ea59d3658c1231920fafa60fb7"
-    },
-    {
-      "hash": "894281e8915a409f",
-      "kind": "worldmap",
-      "sha256": "91a5552675b6f5dfc3325e98d3b68a98383315ac045e3692778c2b6861f7e91b"
-    },
-    {
-      "hash": "89996f76543db0b8",
-      "kind": "worldmap",
-      "sha256": "7399faa8a51926ef4de3b909ffb34743931914dbea434b1aa21dab9db452feef"
-    },
-    {
-      "hash": "89f2b9f4c4f06552",
-      "kind": "worldmap",
-      "sha256": "965e159c5aee80d10eb62008c6e6bbdcc67ed1b5522900c1edc1cab4d4026c70"
-    },
-    {
-      "hash": "8a6ed1d70440ea72",
-      "kind": "worldmap",
-      "sha256": "fd8ad4df263f512e00be32d4b8ee4ac49644b492bb487a20caa57b900e0bb94b"
-    },
-    {
-      "hash": "8b222954addd9504",
-      "kind": "worldmap",
-      "sha256": "60955c51e95c744450f6c579cf19c0528a18fba4731f0a6eb73a8b492c6557f7"
-    },
-    {
-      "hash": "8cf1b5d1a0d463ea",
-      "kind": "worldmap",
-      "sha256": "82b61e2c457804578a5b7f6cd3404a8791920aa98b1e5a474a3addcb743c4345"
-    },
-    {
-      "hash": "8d87e28dd8dbd06e",
-      "kind": "worldmap",
-      "sha256": "0d592382c27cddb148a2d28b2df36c6ef25c15997c468489b34385ad61a9cadc"
-    },
-    {
-      "hash": "907543f905613d6e",
-      "kind": "worldmap",
-      "sha256": "4f7105325a29e37605407036cfec5bd6f67491d61c5e35eecd86e7b0e9c60e1b"
-    },
-    {
-      "hash": "91c370b47a94d0a7",
-      "kind": "worldmap",
-      "sha256": "6a1cd82484b2b4879398f131457c4993def957e582d03e6cc1a9c293388e8f8b"
-    },
-    {
-      "hash": "92f33614551e8f7f",
-      "kind": "worldmap",
-      "sha256": "48a958d2f69c9f67f296089aac22e722bdf89f666eba1dbc63d08ef1e508746a"
-    },
-    {
-      "hash": "95ac6e4ee9593359",
-      "kind": "worldmap",
-      "sha256": "53c65c5c53239fb7c29f6ea7abd37a10029127d85acd1931282dea8402968e92"
-    },
-    {
-      "hash": "964421de2b8a6574",
-      "kind": "worldmap",
-      "sha256": "3dea8d297bf2f3120064a982fd77e907e7f847398b62ab0b04e640ef2fa39e1d"
-    },
-    {
-      "hash": "9685f0c2f80df2e3",
-      "kind": "worldmap",
-      "sha256": "651d7050357b593931e1e8e551c1886b9617cc30a9e960df4076abdd9cd06f19"
-    },
-    {
-      "hash": "96d153e5a97959fb",
-      "kind": "worldmap",
-      "sha256": "504e3f0ee48a8597769572d69c4ceedec67bb5aafb9d860efdebfe730c6f3f97"
-    },
-    {
-      "hash": "971aab8258e65d85",
-      "kind": "worldmap",
-      "sha256": "478f6f4f73ff7488d848a8c07efacca44ca7cdaf44601f1e6b97a02712628c19"
-    },
-    {
-      "hash": "98aed14041f39f85",
-      "kind": "worldmap",
-      "sha256": "31a7e762b46be7486bfd582645cf925b2bb7cf8ccc69286bf397129831c73093"
-    },
-    {
-      "hash": "997587bb6f8c5fd8",
-      "kind": "worldmap",
-      "sha256": "9644abb82a7dcacb0b38dd8e632e7f5e968d2739517ccd9d27650f3934991acf"
-    },
-    {
-      "hash": "9a1ad093e83c9013",
-      "kind": "worldmap",
-      "sha256": "c54042b55c70be505c1e49b1c56b6ee0830bfaf04a0e4a52bffeaaedc21ed256"
-    },
-    {
-      "hash": "9ce0c27af1a76a78",
-      "kind": "worldmap",
-      "sha256": "63f4c970700924307a78bbdaf1783bbab9b45a393be290eab122cd075c36b755"
-    },
-    {
-      "hash": "9f7935c30cb1984f",
-      "kind": "worldmap",
-      "sha256": "5460cff19e4722b6d49f5c4017887dea902597d64373303fd6530d50139efe97"
-    },
-    {
-      "hash": "a032fe04a058bc57",
-      "kind": "worldmap",
-      "sha256": "6b22b82925c524dd26611bab20315ef8782bc7cb6c7fdde2ef90317b76363939"
-    },
-    {
-      "hash": "a03eceec0e28e182",
-      "kind": "worldmap",
-      "sha256": "bae1c2e6b0704ede7933535f472625ba42a8ce3a65481d8e04bf8e3edd9c9bba"
-    },
-    {
-      "hash": "a136bacb053faf8f",
-      "kind": "worldmap",
-      "sha256": "5e5bf275b49f8ca7c1f2fb9edf5e4ee2ec16da96f837829918bb4596e38c1af7"
-    },
-    {
-      "hash": "a17da9d3a5dfa88c",
-      "kind": "worldmap",
-      "sha256": "f591df2d564e2d21a5c903675eab08f1a7239f2f070efc8a4e3683cacbfa82f7"
-    },
-    {
-      "hash": "a255d9c6b0b1ea10",
-      "kind": "worldmap",
-      "sha256": "9f90fb6d3b3f150b5ce06ed716e41cc39e9a9596b3d0ef0a04794d24e63f6e4b"
-    },
-    {
-      "hash": "a2e85d8f678996bc",
-      "kind": "worldmap",
-      "sha256": "67be90fcba990e8a3f8880e91e4745afe03f39f1c54444dbf6c611ae0e5000a7"
-    },
-    {
-      "hash": "a361996e9ca2fe57",
-      "kind": "worldmap",
-      "sha256": "ea5323a984e404e124e884452583b8ff97bf9acc044d55fe0267d180d27d9671"
-    },
-    {
-      "hash": "a362d21984b1e900",
-      "kind": "worldmap",
-      "sha256": "826399a8a414026881377a67c790bb61d4da9c8a298bac2b55fd1bfd6b1e6dd9"
-    },
-    {
-      "hash": "a3df43d81c8cfdc5",
-      "kind": "worldmap",
-      "sha256": "d6c04ee140bae2cf13812907ab3f2c9a1eabd9d112b573796f76bfb9b36d55d9"
-    },
-    {
-      "hash": "a42809756c29c66a",
-      "kind": "worldmap",
-      "sha256": "02f2f9fd0e904bfcf4c150f1c91f1a2d7ca8ffa84f8dd899b87bb70ff5a827d1"
-    },
-    {
-      "hash": "a542e20ea8f7a3da",
-      "kind": "worldmap",
-      "sha256": "c86e0cf06ee2346f02e4a15505c46f00e8ffed50e5e9fa627f5ddbd63cc47a3b"
-    },
-    {
-      "hash": "a8c2c88ceb12b084",
-      "kind": "worldmap",
-      "sha256": "a8a55ddb4a4a083c850230e45848fe69499d0e958de2737182b29d17d48cf6bb"
-    },
-    {
-      "hash": "a8da5f454b5a2ca8",
-      "kind": "worldmap",
-      "sha256": "acf7f68bbfdcf5644d0bcc6eefde8581ac5ba2a1319ac5181092e468f6791d12"
-    },
-    {
-      "hash": "a9bd576e9df63483",
-      "kind": "worldmap",
-      "sha256": "6312dbdbf0140529de8cb0b6c0c8c6c6fabeff8eec2ab3dfddcbe485136fc4ac"
-    },
-    {
-      "hash": "a9ec9371a0929df4",
-      "kind": "worldmap",
-      "sha256": "ef1bc4aa2ca3e0fbeca3f7bfc91de2f11f2efe2890e292c2afd62adc095e41da"
-    },
-    {
-      "hash": "abde104f5b36589b",
-      "kind": "worldmap",
-      "sha256": "fdcd425a0240dc0b89f4d2a86c657f349a5e0f0956033d0f0438c2087a97ecbb"
-    },
-    {
-      "hash": "ac309f8ddf9fff85",
-      "kind": "worldmap",
-      "sha256": "fb5b9affb6c5979a9b7c7acc45dae3a9316932c9aac86a4722779ebb0c54dcc5"
-    },
-    {
-      "hash": "ae3f3b061a3e597b",
-      "kind": "worldmap",
-      "sha256": "b70cff102621af57553191a816e71291a9fb683c4922d01df4354321f50a60bb"
-    },
-    {
-      "hash": "aec781e0164035a9",
-      "kind": "worldmap",
-      "sha256": "07ccebe5f4352853d2d62a9a0bccee2a2283632c76a155ca0722a9a668548958"
-    },
-    {
-      "hash": "b28ed4b49cc18e3f",
-      "kind": "worldmap",
-      "sha256": "94e1c86ce3041802424953a15d5afa023cb42f72cfe60bd8c5f139e72ce25431"
-    },
-    {
-      "hash": "b4e8fd3541cf2c68",
-      "kind": "worldmap",
-      "sha256": "65be774766017a578cc4e07c0f632d2a8a8350fdb286a1ecb7fc922f326799e5"
-    },
-    {
-      "hash": "b630958f961db0d4",
-      "kind": "worldmap",
-      "sha256": "b2da04bc0505f7b43598dc40a19963b9e3ba3b95ac6cc24c10903da9e552b8ac"
-    },
-    {
-      "hash": "b67f80a3be8afa2d",
-      "kind": "worldmap",
-      "sha256": "0ef702c4d3928b2f09d8b32f5c30e0ed2c87976726c526408a84df2df9f50a8c"
-    },
-    {
-      "hash": "b73b6a7580ef2082",
-      "kind": "worldmap",
-      "sha256": "64e86d6ab8806799819a5330a28b4e1a735922e31ac9f099514702870a2d3bab"
-    },
-    {
-      "hash": "b7a5b96571adacdd",
-      "kind": "worldmap",
-      "sha256": "3079b61731d6af341662eca0d21e4773cc3101b118ab808e470b534bffd3e0e2"
-    },
-    {
-      "hash": "b8e81c6be8652b68",
-      "kind": "worldmap",
-      "sha256": "411921261b0246ef71b6dc15aebb20e670de0d6271ab98614f7acdbdb084868e"
-    },
-    {
-      "hash": "bb6ca53ebd98d7cf",
-      "kind": "worldmap",
-      "sha256": "94ae411f157f01f70f014d054fcb9b4eca21293a6a353d971babafc59ca89d57"
-    },
-    {
-      "hash": "bbdce31fd9918ce0",
-      "kind": "worldmap",
-      "sha256": "3938a8c37d8390364a5a76f4dc9c26593a05838f968f6d90385ae275e588dd19"
-    },
-    {
-      "hash": "bf45141120168cd6",
-      "kind": "worldmap",
-      "sha256": "3724004190b58c1d46b89870533fdcb7a68ab8b3067c08d0478aaa83e21ecdfb"
-    },
-    {
-      "hash": "bf6d9c77adb4d1a4",
-      "kind": "worldmap",
-      "sha256": "779f559121634b352010bdab120f6ef00dc2891350e39cacc76cb212dfd492a8"
-    },
-    {
-      "hash": "bfdb53722d1d4a84",
-      "kind": "worldmap",
-      "sha256": "cc54bb26cf5bcfd34474907712775e1784ea8b8deb47efd3981162307cb0aea0"
-    },
-    {
-      "hash": "c16581b6e1e74082",
-      "kind": "worldmap",
-      "sha256": "c6970a6e32e9d63be16bcb648cefcb79f7344520a142074526ee7a006456b841"
-    },
-    {
-      "hash": "c2ba2c4d367c9232",
-      "kind": "worldmap",
-      "sha256": "8912ef1b974435a852bfa9391b7fa47ed5108400fd47cd9e31dad7ca715bd03b"
-    },
-    {
-      "hash": "c2d7f8cdbf056062",
-      "kind": "worldmap",
-      "sha256": "8a7735d306437c22bc72a08703e449c18c09fd205774f06fd26d3c57b67d2769"
-    },
-    {
-      "hash": "c37f49af54c50e31",
-      "kind": "worldmap",
-      "sha256": "ae7293ddf4b30fb86259195c04d66332811bfc5fdbc2b22f64c79f55acbcca26"
-    },
-    {
-      "hash": "c3d0fab60d72c99f",
-      "kind": "worldmap",
-      "sha256": "27ef964e2b60c1cb0356f3df658b9882e5ad2710eb7e6f7eb25a7b4c5ce1a2bd"
-    },
-    {
-      "hash": "c44a53200fedabc2",
-      "kind": "worldmap",
-      "sha256": "7400ed7c90650e73dc7c1196b6a2b6b8e6ca45cd576c18dc1dfb67898fc0abe5"
-    },
-    {
-      "hash": "c44cf9399de29bfb",
-      "kind": "worldmap",
-      "sha256": "7438f561b6bfb1e6dcb182dd270cc4eed71b23f342b082232e8dc42f64b425ad"
-    },
-    {
-      "hash": "c5f2aed45679a8f3",
-      "kind": "worldmap",
-      "sha256": "7841abc9602a09f64a64b44d2d82f217337c0d09bf47f34d80229fce2fc3f960"
-    },
-    {
-      "hash": "c8188d507d80c759",
-      "kind": "worldmap",
-      "sha256": "a134173036b30975782fb2fc329496afb0f0a1b21f852a9a2c69fd7723e1fd86"
-    },
-    {
-      "hash": "cc45b731112a66c9",
-      "kind": "worldmap",
-      "sha256": "e5dcafd5120d1fadea67ddbd3c1cae5a24de77c8f764e6b75be6f8ffc830aa29"
-    },
-    {
-      "hash": "cc5febfab738ce02",
-      "kind": "worldmap",
-      "sha256": "e998f07682a48eab5b6f243a613b4eedc991f587971a029a9125900e10c995c8"
-    },
-    {
-      "hash": "ce21916bba3b7167",
-      "kind": "worldmap",
-      "sha256": "92bd0083edcd2764ac912ae9732e99a324e8594e881125564d2bb40e543126b9"
-    },
-    {
-      "hash": "ce7944e540d2d4bd",
-      "kind": "worldmap",
-      "sha256": "8610356619c3bcdf74b24b040d608e4cd4042040cdda55e8c654d13d99d95a8d"
-    },
-    {
-      "hash": "cf78eb724080876e",
-      "kind": "worldmap",
-      "sha256": "fcaddf6cbc40b3426d80e9f4a8a10b318581ad4ab66f7b77fda9f184ea4c2371"
-    },
-    {
-      "hash": "d00b22775dff9a97",
-      "kind": "worldmap",
-      "sha256": "cf06956709ccc6992184b97a4d8c2b87afb89ad9424c1ab1f0ec54d27b4eb2f0"
-    },
-    {
-      "hash": "d1be1e250c3016c9",
-      "kind": "worldmap",
-      "sha256": "4d2ce86ce1ed55042ebc17bdb30039b1c06006f1071ca598c0c2ee848648de7f"
-    },
-    {
-      "hash": "d41ff512e866325c",
-      "kind": "worldmap",
-      "sha256": "26770fbe634dd0af0202d24cf47913dc535f744d551f99b86873b4cf6ee88a87"
-    },
-    {
-      "hash": "d527f81b4fbb8c3c",
-      "kind": "worldmap",
-      "sha256": "8a7cd8a38e795d090461b49a0b3e3d679964551238b18d582abc611a46f5c289"
-    },
-    {
-      "hash": "d55d0b0c88766573",
-      "kind": "worldmap",
-      "sha256": "51d0f24380212e757d577594b00a847ec0f03356b2c1867cc527dff971ee389e"
-    },
-    {
-      "hash": "d5eca79fe8a6ff69",
-      "kind": "worldmap",
-      "sha256": "29e3900fae9ad09fb04ae9af6828b93ee0f36da9cdd561cd299584a1b34e47b5"
-    },
-    {
-      "hash": "d62914f6c71f1716",
-      "kind": "worldmap",
-      "sha256": "2c49ecad9621014ca47d6c839ed404e38f57675b32d644e8964cbd43f86e91bc"
-    },
-    {
-      "hash": "d7e022d1af0cee39",
-      "kind": "worldmap",
-      "sha256": "74c9650ca7c34d9601dfbc927dfb236949a4b9758188b802f98fa2a0d25479ed"
-    },
-    {
-      "hash": "d9865957004901e6",
-      "kind": "worldmap",
-      "sha256": "1ac7a41bb8bbd9fc62936b94b48113771eb3665b7bd5bc2e425d377ca4eabc04"
-    },
-    {
-      "hash": "daf140ad96952d8b",
-      "kind": "worldmap",
-      "sha256": "4f11141cbe8299d2e409116767b06c40e57c578f3b3caef4ab9d0b03a838a30d"
-    },
-    {
-      "hash": "daf4ebe4a6481f6a",
-      "kind": "worldmap",
-      "sha256": "e11cc97dab46a3ef24db80047d75502ad4f2898fbf0c75689dd73c1dac501519"
-    },
-    {
-      "hash": "dbe5653d1f294d20",
-      "kind": "worldmap",
-      "sha256": "0340e5d21ffbd4b6dd44f2fa5dd3cee857243f779025c79894faf45c74ce38f4"
-    },
-    {
-      "hash": "dd9adaf41789656f",
-      "kind": "worldmap",
-      "sha256": "d667809e3971603c56eb3f730e7476af850ed33556960c3a898eea2e326a6400"
-    },
-    {
-      "hash": "de8a9c542b82e397",
-      "kind": "worldmap",
-      "sha256": "7bef3f8a0838d70d2e67599dde9c9dc5210ed3e9d83983480030237a971b7ec7"
-    },
-    {
-      "hash": "dfc5eaedbb97f50a",
-      "kind": "worldmap",
-      "sha256": "d145f7de312fa5c7768f88df520f32199cda4190fb3ff5bf258b1af881c57afd"
-    },
-    {
-      "hash": "e01382ebc35e9225",
-      "kind": "worldmap",
-      "sha256": "f6e9f665549d0038b4a4bf59254e7457cf73a3056d6e89aee64e1a5047bb3e6b"
-    },
-    {
-      "hash": "e13ee931c6684d94",
-      "kind": "worldmap",
-      "sha256": "3008f948784ac06f4b54b79b5faf1ddd9a29ec8422a9790e3ce200e7f3342da8"
-    },
-    {
-      "hash": "e15f58b5a95fe2f2",
-      "kind": "worldmap",
-      "sha256": "a5e42d31a03074caa95c3aaa5de67ca8089d997bf4c9da96df094ee9cf2894db"
-    },
-    {
-      "hash": "e1e270c072afba8d",
-      "kind": "worldmap",
-      "sha256": "caa0c0ce0bfd67f5993f5ddc82e60f4997ede9570dae7a52b2c7a8578927244a"
-    },
-    {
-      "hash": "e3155e091b37dc0b",
-      "kind": "worldmap",
-      "sha256": "0e7d05ceee65708b0c62100c39ff30cb343700f609643ae78e2ce2aea96f6d19"
-    },
-    {
-      "hash": "e31f27b22bc1870a",
-      "kind": "worldmap",
-      "sha256": "bf2e72c9ee65b7fe7cc65daa505e9beef88180112b72874d81fb4f2415094e2d"
-    },
-    {
-      "hash": "e4634c38e34c9d36",
-      "kind": "worldmap",
-      "sha256": "35040cc902bc697ae72601126041c97a2b6088a7565d97c086ecebeed6b3d050"
-    },
-    {
-      "hash": "e4b876da186c9842",
-      "kind": "worldmap",
-      "sha256": "d66e6a077ba399b34338195e1a8017184069d0b1ba98443801950b65f561ecdb"
-    },
-    {
-      "hash": "e630904c80e0ca7c",
-      "kind": "worldmap",
-      "sha256": "2e661e49ae7325d067657753600757b2222f67fa33329c97bf5ef8094f24c583"
-    },
-    {
-      "hash": "e79b9882d958eca8",
-      "kind": "worldmap",
-      "sha256": "751cac841205b9b9ed6578f86258dd1c4858e154e2a0a1feff9752e9781fdf4e"
-    },
-    {
-      "hash": "e7acf28b112ef579",
-      "kind": "worldmap",
-      "sha256": "227038d5f068d2735cc55cbc8da43eb95b0dbe2351f9d9a1eaacf6806781fa44"
-    },
-    {
-      "hash": "e8edb8b9cd1bc2a2",
-      "kind": "worldmap",
-      "sha256": "d7e29c9892b1459cbc0219754a581b997dba42a1a7603d7ac2e3000be989d9ed"
-    },
-    {
-      "hash": "ea1e4beef639a66a",
-      "kind": "worldmap",
-      "sha256": "42ffce7caa4a133c690bf68c27a9d807223e2b6c1249dd1c4ff7c2fd22de793c"
-    },
-    {
-      "hash": "ea8fc65683e05d43",
-      "kind": "worldmap",
-      "sha256": "0ef18d8f340106ecd88af5dc637de02adafba2e168d78c0ba0f36a8089540e51"
-    },
-    {
-      "hash": "ece8ace8d8d9d999",
-      "kind": "worldmap",
-      "sha256": "98a9ec171361cdf409a5465cba7853468483947af28bd6ad9bd9338179512b42"
-    },
-    {
-      "hash": "ed618dca79d394dd",
-      "kind": "worldmap",
-      "sha256": "7879b2c7863098b28da4b57b1c43b37ba934938bc626fd3c4b55bf67efe8c371"
-    },
-    {
-      "hash": "efcad749a4b206d0",
-      "kind": "worldmap",
-      "sha256": "78f437cff018b69860b5b17fa10d4e31d6ecb1f7df6b9601d8ee6e49375e4b12"
-    },
-    {
-      "hash": "efd98f0bf09839e9",
-      "kind": "worldmap",
-      "sha256": "8f6f33d8a0fbaac26b437762ddb8e42d78d89844dd5bd15dd0f24facce9a9071"
-    },
-    {
-      "hash": "f1f51eb1e7394af7",
-      "kind": "worldmap",
-      "sha256": "673af5bd7ec2d360c9c972ab6e7be104b6b43c1c6d63041427959f5934b57b19"
-    },
-    {
-      "hash": "f331cfbd603ddd85",
-      "kind": "worldmap",
-      "sha256": "4363f46e85332a0ae32ad6be69d523dc0a5649c39ef0d416855d1aa9ce182e2b"
-    },
-    {
-      "hash": "f374ed26c8e6ed5e",
-      "kind": "worldmap",
-      "sha256": "675f6ac3dfb4e89f65defc3673bea16eb05aa490c5ac5bdf2f1e7f2b96808868"
-    },
-    {
-      "hash": "f652856a1d17aff3",
-      "kind": "worldmap",
-      "sha256": "3b3286f5c2a467259b21211e680ed2102e8d21b88990847cfd1cbba0b706d98a"
-    },
-    {
-      "hash": "f65b918fe977497f",
-      "kind": "worldmap",
-      "sha256": "366c5951babba821233d4251d8334f5f6ac5f64297717689bb2123dcbec4fd10"
-    },
-    {
-      "hash": "f7c525d19294cb92",
-      "kind": "worldmap",
-      "sha256": "f68e724f90701136e5d5db6c8c0b7ac7b6c37d10a6c8f6dd54d9cd77da6fafee"
-    },
-    {
-      "hash": "f9510137c84bca6d",
-      "kind": "worldmap",
-      "sha256": "602977b6a60767c4b0ff2cb23dcaa016b08baa946bc73aec5e2f6f2a89abb1fa"
-    },
-    {
-      "hash": "fbc807fc2b50805b",
-      "kind": "worldmap",
-      "sha256": "625288ad00f49d44dea97af6f5ea96ff1df78e61f7e7c7db782229a6cc213642"
-    },
-    {
-      "hash": "fe21a56870c562ae",
-      "kind": "worldmap",
-      "sha256": "ff9fd151c84808b687ec9778022d8924365cebfed3c9694fd4952515c8c938ff"
-    },
-    {
-      "hash": "fe4edbaba8746158",
-      "kind": "worldmap",
-      "sha256": "f6813f120cfd57a46c54cf692d55ca16ef3222002043d9b5c5ef72e16239a40a"
-    },
-    {
-      "hash": "fec6ee0e08062eb1",
-      "kind": "worldmap",
-      "sha256": "993273ea3154277859f246f46b0440f4d1c93bce6db5b26d181071880d913e0d"
-    },
-    {
-      "hash": "ffb6b59c74615865",
-      "kind": "worldmap",
-      "sha256": "a1113348e819d2ea7de3ad09ebd9ceb822f618535e5a851b0a69d5fb38607aeb"
     },
     {
       "hash": "193618389fee9a2e",
@@ -1251,6 +206,1156 @@
       "hash": "fd1cebd038ec0071",
       "kind": "space",
       "sha256": "789590e48700aef8a34686a0bc0f4cba06ef785c02cdd2529c761441dd1df803"
+    },
+    {
+      "hash": "ba319d9158e858af",
+      "kind": "frame",
+      "sha256": "b617398fe29302a3a9bdb8f1e57178b4a2e8dd896df9c3e54c29e239833ea4bc"
+    },
+    {
+      "hash": "05e649abaf24f0bd",
+      "kind": "frame",
+      "sha256": "b20d814af183413d154face74e51c32dceba7f53aa434fcabaafc804aa8f4704"
+    },
+    {
+      "hash": "9421ff1964bbee7b",
+      "kind": "frame",
+      "sha256": "05edb20f2d0379ec30a9c35a83980619e19961aa7b52179cdf9d517be6e9a9cb"
+    },
+    {
+      "hash": "95dea33f165b322a",
+      "kind": "frame",
+      "sha256": "f9014de4443cab569b24b0e94c5ba812dcf1ce63e29cda33d4d7febbe86efd09"
+    },
+    {
+      "hash": "0fd33a8f32b9e694",
+      "kind": "frame",
+      "sha256": "05eac0629821df34b3517e3380e66175f0377560f8b22d8cd5251abb105f8a26"
+    },
+    {
+      "hash": "9d08978693102a55",
+      "kind": "frame",
+      "sha256": "8556cd71a0943b3e2b55dec19bb2d82a9bf334c418c5b63bd367e76893b4f7ed"
+    },
+    {
+      "hash": "1e30fd7c48ef8719",
+      "kind": "frame",
+      "sha256": "95a0a996ddb45501eeb12bee0b57704904bb1503d36f06ae19f3e8f63255b2d6"
+    },
+    {
+      "hash": "a254c31595699fe0",
+      "kind": "frame",
+      "sha256": "70409c0d73ca3ce32d691fdb6fa26cab0f80408a53c6e291720abc1e29fdc1cf"
+    },
+    {
+      "hash": "7030130d76738c1f",
+      "kind": "frame",
+      "sha256": "78a5f695f5b92fb80abcd030e70f65d969d4074028f10f81426f0b26f73c5ace"
+    },
+    {
+      "hash": "644b36ad00c8e4f2",
+      "kind": "frame",
+      "sha256": "f6a61a530ae179cc904edd78affb3bf58c5e41923b8c754c188bfae564160221"
+    },
+    {
+      "hash": "8ee3fc795f1fbf95",
+      "kind": "frame",
+      "sha256": "6e787e6e15b5e73d270a2135a08da7058afd57dda1f1be95309a3dff5f2a11f6"
+    },
+    {
+      "hash": "dd32dc574b16ae8b",
+      "kind": "frame",
+      "sha256": "4315bbdce21782e66372c8b68877a78040448179bed6c923a2419dab036a6bc8"
+    },
+    {
+      "hash": "baabef5bdf60545a",
+      "kind": "frame",
+      "sha256": "4d689cdd41ddd954bc8fa6e1e8089d98ec750590d8cc665b387f66ee98653364"
+    },
+    {
+      "hash": "48b9fde4f917a771",
+      "kind": "frame",
+      "sha256": "826ad6e7ccbb1faaccbffd2d4d85582aa0de105702eef049dccb0e46118117d6"
+    },
+    {
+      "hash": "5d74ea236cefa12f",
+      "kind": "frame",
+      "sha256": "ad728d26aafeb90c5579b8039a86de61f9f9474a72720007bad2c82469e2e8c0"
+    },
+    {
+      "hash": "59e51b1b1253fb1b",
+      "kind": "frame",
+      "sha256": "dcf95ee81999d787bd11a379feb0b42bab0de7f7d89f0a66f82c3d2dd99c71af"
+    },
+    {
+      "hash": "6ea0af6e76d07170",
+      "kind": "frame",
+      "sha256": "c62e21922face7bf874e4bbecd1a6e8d999822d6542b6c990c318be2549983b7"
+    },
+    {
+      "hash": "00d8727cb2bc5f0e",
+      "kind": "worldmap",
+      "sha256": "a68c177c002ec570867d7dd976f7fe480df91b3a2e2e073281c7ee31dc35cf73"
+    },
+    {
+      "hash": "020bfcfe27211630",
+      "kind": "worldmap",
+      "sha256": "35b11062c5522ebf6086cede2cae62fb592a814a79d338ebc52b6bbf4a3b6ee7"
+    },
+    {
+      "hash": "0283f4850bdf9d67",
+      "kind": "worldmap",
+      "sha256": "0a3017d24bf11d67472f44630d4027627d58acc7d15efa9774dbc266c8ae0a92"
+    },
+    {
+      "hash": "02b789a647e2d885",
+      "kind": "worldmap",
+      "sha256": "8ca53096093679e1c38785a8546f886c798705e2c68c653b5e0871c3b6db8194"
+    },
+    {
+      "hash": "03dabae7a8f80414",
+      "kind": "worldmap",
+      "sha256": "de6ee202e2ff38826d14982ce187f247da2dc9394f16032914033c26fe981e0e"
+    },
+    {
+      "hash": "075d13e11d9ee0e3",
+      "kind": "worldmap",
+      "sha256": "8215355120c0aaa496f5c9dc13855fc6d3446a19806f6edb7901a1a99436bb21"
+    },
+    {
+      "hash": "0923ed37739b4469",
+      "kind": "worldmap",
+      "sha256": "e127f6aff4785b176bdf3bdb24a3d9bb01ebd9a582cabf392410f5952e9b9123"
+    },
+    {
+      "hash": "09fd723e16244686",
+      "kind": "worldmap",
+      "sha256": "7e43b5710e1dd9ba39ac3f8c30f69ac57505b0b95b3add52fe1faa1638af1564"
+    },
+    {
+      "hash": "0ac2bb3d66d8ce93",
+      "kind": "worldmap",
+      "sha256": "7ac26bb284b4a710cb90ebb4db0e5c156b42ed8754b276e661363ba61756ea72"
+    },
+    {
+      "hash": "0f59b30fc88bb65c",
+      "kind": "worldmap",
+      "sha256": "39be91907ede1a9ea300884c2d97671101d1a91e3e3b17a1df85768f5e310164"
+    },
+    {
+      "hash": "10205e9441de415d",
+      "kind": "worldmap",
+      "sha256": "b99ef908505afb2a0c26d82f77595ba7acd05c6184161afc2a82d57e1c2ccecf"
+    },
+    {
+      "hash": "11f6d27d0e1cf652",
+      "kind": "worldmap",
+      "sha256": "079b29b6fa52ee64af4168fc10b53c5d29044c4b5208042f61acd9e70318d026"
+    },
+    {
+      "hash": "12f35cfa1e90e5fa",
+      "kind": "worldmap",
+      "sha256": "915ee3f7d0e8280a1b0d3401d38ec3a31129b006e23212d77370ec47ea6f154b"
+    },
+    {
+      "hash": "13970f1deedbfbc8",
+      "kind": "worldmap",
+      "sha256": "df7bfc44eb73efcc70ae642cdab2a8b6401070b1e1c22663b1c3c84e8837a180"
+    },
+    {
+      "hash": "1399a81256d01d70",
+      "kind": "worldmap",
+      "sha256": "f8752da782b9f334a582e1af59df9bf4c9d2464b046a6eba5ea5a8bb26d205e2"
+    },
+    {
+      "hash": "15502cf35997afdf",
+      "kind": "worldmap",
+      "sha256": "126ae9130b9d697f9c9c5cd29575363e595c3d7b71191795993dadc01484307e"
+    },
+    {
+      "hash": "15bce41b627b7d21",
+      "kind": "worldmap",
+      "sha256": "ad9541865d258aca336d2160989170c5b938d5d2af042aa4286a2642d41dc1fe"
+    },
+    {
+      "hash": "19cfd4acfa7963ae",
+      "kind": "worldmap",
+      "sha256": "e0c2d901505e10faec17bc9ab413a6bd55f103d1cd7819eca6333250cd86b84e"
+    },
+    {
+      "hash": "1c65bfedcc558739",
+      "kind": "worldmap",
+      "sha256": "2edaa2212f29e9d3b67a41349dcf87c76ff5aa8ebf3ee71904c04f67cd1290a2"
+    },
+    {
+      "hash": "1cd89a5ea6055d58",
+      "kind": "worldmap",
+      "sha256": "02ebfb89c1182b26cbd9a64d106ea532cfa44a009308f534c7d2cbc17ca40c0b"
+    },
+    {
+      "hash": "1dcd01a4b9c1d534",
+      "kind": "worldmap",
+      "sha256": "54083f48a3ca71d2c4ed70dd544c1e06cc2fa78580dc51ace9f0757274371ca3"
+    },
+    {
+      "hash": "1ed7181b90284013",
+      "kind": "worldmap",
+      "sha256": "6b45f4f795b8be13cfcecdb97e5e99a3ea5131758996b868aa8b8cc105f1d551"
+    },
+    {
+      "hash": "214c53cc957d2ac0",
+      "kind": "worldmap",
+      "sha256": "dd0d12e60388b4b77af847437765c89e6ccec24050ba25ffd711dc997a8a1d26"
+    },
+    {
+      "hash": "22e709bbfe02d2a8",
+      "kind": "worldmap",
+      "sha256": "120e581875f1df17587a69508e5d4cbdb26ca19f28209fd85bfde70434368967"
+    },
+    {
+      "hash": "24ee5d1fbb07c870",
+      "kind": "worldmap",
+      "sha256": "5ba0844d1ab3e275001f0cba0bb9cf9879c404933374427b67de81749e88273c"
+    },
+    {
+      "hash": "27e132a702f7169d",
+      "kind": "worldmap",
+      "sha256": "1738d7077e462404099bbfe778f3e583565776394f22060f268ecb317de4aff8"
+    },
+    {
+      "hash": "29830bf1bbdb366a",
+      "kind": "worldmap",
+      "sha256": "e9a12e7ad1a102d03a1993f7883659f1ce6468c09c6c2f0591c4bf8cd2c923cf"
+    },
+    {
+      "hash": "2a1268c80935cc24",
+      "kind": "worldmap",
+      "sha256": "b7cc658cbd464220c7f141be4dd826f1a4f1ebb1367e6d9e558ad1c5286b80cf"
+    },
+    {
+      "hash": "2b67a2c70ddc31ce",
+      "kind": "worldmap",
+      "sha256": "de5bca503323004854ebbfcdab34f79e1c9e7643e17428e2f6c21cfecc382a8f"
+    },
+    {
+      "hash": "2c49d81d64198ef9",
+      "kind": "worldmap",
+      "sha256": "821b574ed7cc0de4e8bb80ce16e5bf2071520dafa67697045978fdc5a8acfb5a"
+    },
+    {
+      "hash": "2d151df9b0329cee",
+      "kind": "worldmap",
+      "sha256": "c1a6db94d28af17bb8fc04b113c7add573862892333cf6c06fd31367d4c7d610"
+    },
+    {
+      "hash": "2e33683d969f5c2f",
+      "kind": "worldmap",
+      "sha256": "027a3c12e88c4c7c0db2211737214277657a0be17f28b5aa1ac031582b49fb70"
+    },
+    {
+      "hash": "2ea6910a98d72ce7",
+      "kind": "worldmap",
+      "sha256": "08a8bba0ae93fe747bb0790d4fedbd702baefd6cd3256d2b33c88b93f2f0d675"
+    },
+    {
+      "hash": "318364dd97e47c64",
+      "kind": "worldmap",
+      "sha256": "47a6e7dc480e02ef2f2d03576baa3d8bf9413e954e7d4d000aaf5f90c1cea633"
+    },
+    {
+      "hash": "31a38c1088ad75fd",
+      "kind": "worldmap",
+      "sha256": "fb3d550b945d721f7c0357ad72bdd7968c2a0fecb69cb2ad8091631e0d5e6882"
+    },
+    {
+      "hash": "3313e01536e4e0e5",
+      "kind": "worldmap",
+      "sha256": "18c630202841dfc5a728965e4cdd685f541d8f8b8341a16f13a2eaaa050aa552"
+    },
+    {
+      "hash": "36c55b114f8dd6a8",
+      "kind": "worldmap",
+      "sha256": "509325e13cd4f26fcaffbdbfa2835fe020c5b2d2be206388881e54954e7d7e59"
+    },
+    {
+      "hash": "3c7c21e5db45f10a",
+      "kind": "worldmap",
+      "sha256": "c6d86efb36f77956e8c42802a917562fea619bffaf6c96f582f2a347ef467bcd"
+    },
+    {
+      "hash": "4067be5351892339",
+      "kind": "worldmap",
+      "sha256": "9b979be14dfd9a6c36745a6a28603818d7f80a85b0a071d0f4da1d933f5bb37a"
+    },
+    {
+      "hash": "416a2d8df682032d",
+      "kind": "worldmap",
+      "sha256": "bc9b1683b5580968c02a5f057ca8364d69cca80d5d1909fbbf1dc93a9e39f618"
+    },
+    {
+      "hash": "44c3b1013d61f606",
+      "kind": "worldmap",
+      "sha256": "3749bf3c3fa4501005b6ce3150cbef1edcffb97dfe17856ef8fb179851aca8c6"
+    },
+    {
+      "hash": "45a6df81c9be5d77",
+      "kind": "worldmap",
+      "sha256": "9d425a2ad2c928a27fde3a41e1b67a391377ddf64c47e38b0e857b834d872c1f"
+    },
+    {
+      "hash": "46ab05e860f0e667",
+      "kind": "worldmap",
+      "sha256": "cf4525165af278b9631f13052a25a8b2ac1848ef0eadf6721dd88f9559675acc"
+    },
+    {
+      "hash": "48a0d506ea3380d0",
+      "kind": "worldmap",
+      "sha256": "1bda3654222dbc1d10ec5804a2d0445e709cdb5428311b0b176ea5525de1e7c7"
+    },
+    {
+      "hash": "4a20a4d2c09da52c",
+      "kind": "worldmap",
+      "sha256": "b5844de9c229cc9e17d4b2a6a6c25c6ddb1b225346ae8d8e1b909504d9df4dae"
+    },
+    {
+      "hash": "4a66d83d294c7b3e",
+      "kind": "worldmap",
+      "sha256": "2418b7aa01897b63b45671e76645139e2c5c04a7371d070509c14c4c06de8974"
+    },
+    {
+      "hash": "4abe2eab5fcd6096",
+      "kind": "worldmap",
+      "sha256": "462bd2fa4c4ec41c346df9ea71073d89b0f37bc805a34b772082c1eda5e2fa01"
+    },
+    {
+      "hash": "4b400ab2eabf16ae",
+      "kind": "worldmap",
+      "sha256": "7dbc7308b42ae9d25ce1c12a839af3685375ff380f811c75b73b00a366b6e2e9"
+    },
+    {
+      "hash": "4b9232027a41f7bc",
+      "kind": "worldmap",
+      "sha256": "125d3ae9110a66779562b975616ff50fee454347a5ae090c32e3630a69b689db"
+    },
+    {
+      "hash": "4cd521e551d1517f",
+      "kind": "worldmap",
+      "sha256": "402b56411e5e7ebe414e58dad2557882f638c5ae933f0b192a20b93f9503742c"
+    },
+    {
+      "hash": "4ce10c84c4db3256",
+      "kind": "worldmap",
+      "sha256": "f2d0e6e6dcb3c171a6133a9ec3713c034631ba14548bc63ebf1e0b4a815e3bda"
+    },
+    {
+      "hash": "4eba62d0fb4eeeb5",
+      "kind": "worldmap",
+      "sha256": "f4764784ff8bd247105fab4d1356f115400c68340231e0fe5aca63270b1fadec"
+    },
+    {
+      "hash": "4f2a135c40e56816",
+      "kind": "worldmap",
+      "sha256": "a845a40071c1fa0666141d93c0219a9de613cf66cf26cc37c138ace0b8603498"
+    },
+    {
+      "hash": "4f2fb1aec9a5dfe6",
+      "kind": "worldmap",
+      "sha256": "267391b20b16906088adbce9fc77460943a9828601422d9ddf51f67b452c71b3"
+    },
+    {
+      "hash": "4fe76d3591aa2ce8",
+      "kind": "worldmap",
+      "sha256": "13fc85f371abf1d4b1813c766b20bcaa7a2962e32730d77d6f1ded8a4c077fe6"
+    },
+    {
+      "hash": "532a4124c9cec979",
+      "kind": "worldmap",
+      "sha256": "8539c506d93c5de7ef97d65d9d4a1fdbea8a58c4c2a7d10f123ec6a2497fc95c"
+    },
+    {
+      "hash": "53ae9318cb168912",
+      "kind": "worldmap",
+      "sha256": "d3c3893f5ee8969944f79b289548852212b922000c2528547d354b378a8d397c"
+    },
+    {
+      "hash": "54b248b4d8298dc8",
+      "kind": "worldmap",
+      "sha256": "65c1cd0b2aa19e8c08cac16cac7d81f498489de27e82a280d477f566e671e364"
+    },
+    {
+      "hash": "55349180f12ddae2",
+      "kind": "worldmap",
+      "sha256": "901fde6ae19dd4e07f8b28c87634c78a0f61f9d08ad523d0ef97b29aad5cfc4c"
+    },
+    {
+      "hash": "5554e8b1a794c0e4",
+      "kind": "worldmap",
+      "sha256": "985471445268e61193eacb5cae054fafb65d4c0b01a9bbf4d2a73e010b9dc87f"
+    },
+    {
+      "hash": "560afa1f4c33c573",
+      "kind": "worldmap",
+      "sha256": "c407baf73bb10267d1eeece0b50d240f65d37a05310ebed52fef25cddf4c9c6e"
+    },
+    {
+      "hash": "566b1bcc5ed9cd40",
+      "kind": "worldmap",
+      "sha256": "8ce5a2f58336039564e269636e66f81f7c98743832c2a3c97cfed4caa7d79b95"
+    },
+    {
+      "hash": "57cae5bbe0d29288",
+      "kind": "worldmap",
+      "sha256": "796542fbe442fa58163ed2192740bd2bf323364bba7d5b5cdff96599d79ed5cb"
+    },
+    {
+      "hash": "588e48795a87023c",
+      "kind": "worldmap",
+      "sha256": "6327d0aa2a2918c90e97e69b1c09cdadb8402fa6e690703115a5cb1e38fc568d"
+    },
+    {
+      "hash": "58dcc31eea1da5f1",
+      "kind": "worldmap",
+      "sha256": "bcb720195afaac29a6a50213cee3c47709485ef21466f7431e3252531b804c1d"
+    },
+    {
+      "hash": "5969a36af6250c0e",
+      "kind": "worldmap",
+      "sha256": "45b58745406da612ea24456a43b7e3e5c830df8d8697563f30b5e2238888fee5"
+    },
+    {
+      "hash": "5a28de7d397aa056",
+      "kind": "worldmap",
+      "sha256": "fbf12e255b62edfcb14671cc51474f26de5728dc19c6eed0d1db1b6adf9a262c"
+    },
+    {
+      "hash": "5cb0e8b2fa3ca07f",
+      "kind": "worldmap",
+      "sha256": "0cb615bc9b9d767d6b05b885161e06ee12e197d44909a36ab48ae39c1db5243e"
+    },
+    {
+      "hash": "5cb7f5bf9ebf8f7d",
+      "kind": "worldmap",
+      "sha256": "3ae996a049e6e032e9d75b4ce15a5d7fee09ad618a9dd1a3e4e8f3f8ca177aa5"
+    },
+    {
+      "hash": "6112529f7a9bdf41",
+      "kind": "worldmap",
+      "sha256": "53db49ddb7f87e049d31cd86428f5f9939c12d7fdaf9b7f867e52ee09ca0772a"
+    },
+    {
+      "hash": "61b2b127a9a0f358",
+      "kind": "worldmap",
+      "sha256": "a5f1401f41883a005ddbb0144da236e3abec8efc11ba030468bddc37b4e39273"
+    },
+    {
+      "hash": "61f4f47bf72c77cb",
+      "kind": "worldmap",
+      "sha256": "a6991256eb2bd678fbaae526962eab94edb05422b2a2b09985536e9f9cdba173"
+    },
+    {
+      "hash": "636c82e21bef96d2",
+      "kind": "worldmap",
+      "sha256": "4eb8815d3bdcff2bb4fec22cfe83b383a322553a7fc828ffc1be9253d313e699"
+    },
+    {
+      "hash": "64c3fc3954ec356d",
+      "kind": "worldmap",
+      "sha256": "a8b3dfc3fab9ff86cf12e74bb771cf985d0140febc2a52c8fd8455af03c2e8ce"
+    },
+    {
+      "hash": "669d65a0f0691899",
+      "kind": "worldmap",
+      "sha256": "1a50d9b1eac13eb4e0378019aa8eb8688a1fa436e4eeb48b8deceab9f9162dac"
+    },
+    {
+      "hash": "678b9f55ff4f5c38",
+      "kind": "worldmap",
+      "sha256": "f355692b0fa831820fb7f86464027aa23c4fd36f2a9f712365cba112938828f1"
+    },
+    {
+      "hash": "68fdeb2093d972d0",
+      "kind": "worldmap",
+      "sha256": "6d3d832cd127345d246ab5080e6124d091d571ba1b45bcf00e74ef71ab4609fd"
+    },
+    {
+      "hash": "6a31de260490617c",
+      "kind": "worldmap",
+      "sha256": "57b3f756893a466fb2c2b39874043d5f4ad20581ba4db5896a443bd1bc6f35de"
+    },
+    {
+      "hash": "6ae2b4b28d0357a5",
+      "kind": "worldmap",
+      "sha256": "f97d7fda0bb0c0729501cfb8c5e4e06e6359dbf50a8c1674b381edd8541f4011"
+    },
+    {
+      "hash": "6d8aba51dc775aaa",
+      "kind": "worldmap",
+      "sha256": "e444d05c557a4fd5a5cdb3e07b065fc7f2723eb71c170cba09404077552793e0"
+    },
+    {
+      "hash": "6e1ecaa26181adce",
+      "kind": "worldmap",
+      "sha256": "ed76c2e6165a39137dc71857953a4f7bbad3165ece4fce5f4ae57cc65169439d"
+    },
+    {
+      "hash": "6e51e9d12b66b84a",
+      "kind": "worldmap",
+      "sha256": "a960ed43ac437ac54f1e3eb3230dd2baf8ba109f9b74d724b89196b63380d6f3"
+    },
+    {
+      "hash": "6f886e322835b932",
+      "kind": "worldmap",
+      "sha256": "cc874944fd0c3058466b65fe7c1e8285540b5e584390fbbf30fd02fc8b1be46d"
+    },
+    {
+      "hash": "7100219aa05b45ba",
+      "kind": "worldmap",
+      "sha256": "5152da2ccb8c7795e98a394efdef94951d34d76f6ba970bb63a9f862591f68a0"
+    },
+    {
+      "hash": "71e2429d990840fe",
+      "kind": "worldmap",
+      "sha256": "ca4e6377592ccbc8e0d17d920ccb99a1c7d98c456886254ff272dc191553ac0e"
+    },
+    {
+      "hash": "73d962c0bc36a87a",
+      "kind": "worldmap",
+      "sha256": "3826d375589053e5c7fc33cb3b6ffe84261cc9fdac7344e38982861398441f6b"
+    },
+    {
+      "hash": "78face421b4e3f4f",
+      "kind": "worldmap",
+      "sha256": "168c2bcc832188a6efe7b7a6c480cad2acdd75059a172cfcd33bf118111460fc"
+    },
+    {
+      "hash": "79bb6b935e9dd3e4",
+      "kind": "worldmap",
+      "sha256": "38366f7b1bc8905c76a495bf710898a925bea150a0b3bd2f9159da73b69c955c"
+    },
+    {
+      "hash": "7a55d44e46be29d3",
+      "kind": "worldmap",
+      "sha256": "0b7c4786d3dfa00da54c6c1797274f868960a63c8d0ab69506546db39f433a46"
+    },
+    {
+      "hash": "7a68dd10932c44f4",
+      "kind": "worldmap",
+      "sha256": "429bcd960eb91d6e4607f88d14aaa65d8fbf7bf8896419abb876ab4cb35d667f"
+    },
+    {
+      "hash": "7c64c08eebe4760c",
+      "kind": "worldmap",
+      "sha256": "606e5d05e03804b71988a35aa185572107a5e5c57be717ed535170593df802b7"
+    },
+    {
+      "hash": "7dccba16409c7cc1",
+      "kind": "worldmap",
+      "sha256": "498a7a6769339fad7ebd994c5ac10d6d12aeac0d02c7e0279eb42ace0cf44d35"
+    },
+    {
+      "hash": "7dd93361549dd599",
+      "kind": "worldmap",
+      "sha256": "b72dae6af70873c8d022be8ae3330841ad26b9e216f733bafbf9c5d63fe456f5"
+    },
+    {
+      "hash": "7de65fd0376e00bf",
+      "kind": "worldmap",
+      "sha256": "2fe06cc2d2cfc211369e443eca133850117e76ea8761d9b77aa787c807cb8aad"
+    },
+    {
+      "hash": "7ff3c2205a8f5ea0",
+      "kind": "worldmap",
+      "sha256": "eb26342293a4d7c6cc878e25d471de5bae78523bf4efea5c2473b5c1f71a2645"
+    },
+    {
+      "hash": "80b47a75d13d7ede",
+      "kind": "worldmap",
+      "sha256": "3a270858664afb9788f5662dca45783453e6ebc99b101595dbe7ea9fd2413a9b"
+    },
+    {
+      "hash": "80c36b72acaf8942",
+      "kind": "worldmap",
+      "sha256": "d90845c1946229aece2da403629812112890482f5dc6e06714c0f9c0a5ac9214"
+    },
+    {
+      "hash": "81c8e51d2dbbae83",
+      "kind": "worldmap",
+      "sha256": "749df797c29547cb4c43a0e3c37cf0f3149303a1dd4d183abf3744a746f50b13"
+    },
+    {
+      "hash": "83235e7017c7b886",
+      "kind": "worldmap",
+      "sha256": "ba5526b3da35b95f4947cc326dfdbb25d5343fff358b0b48ba6ccbe87322cbd4"
+    },
+    {
+      "hash": "83de1b4f4d8cfd81",
+      "kind": "worldmap",
+      "sha256": "d8e4b02a1cb82e9a67fac887add606e02527f421592f293fb5c0b1cab1f21d65"
+    },
+    {
+      "hash": "859771bb606fe225",
+      "kind": "worldmap",
+      "sha256": "3b7dfb66373643e1276c3658b7598fa7bac561907d743f731aeb9809a38ad4a8"
+    },
+    {
+      "hash": "86839bf8c7dcdaed",
+      "kind": "worldmap",
+      "sha256": "36cf9b245ccf48d9f62f33fa23a4b31e861a7fef74848994fc9dc4e1be85f78d"
+    },
+    {
+      "hash": "894281e8915a409f",
+      "kind": "worldmap",
+      "sha256": "75ec01c3df8d2075d96c650b21476a28e753710189df17b1ad39354cf502df75"
+    },
+    {
+      "hash": "89996f76543db0b8",
+      "kind": "worldmap",
+      "sha256": "24c973de0937dbf87dcbd654fc3bf22abed948fd3db42d3475fe9b3cdd175115"
+    },
+    {
+      "hash": "89f2b9f4c4f06552",
+      "kind": "worldmap",
+      "sha256": "5870abbf32ff1e259500b5c75ee61b9f87400c219c08c4419f6af034874b122f"
+    },
+    {
+      "hash": "8a6ed1d70440ea72",
+      "kind": "worldmap",
+      "sha256": "95968b46911ac6a0bda71a71fc2e474a450a0781bd76f2d83b6644754b47ed2b"
+    },
+    {
+      "hash": "8b222954addd9504",
+      "kind": "worldmap",
+      "sha256": "16397e1b2b94e49418662329410f2ca3b7c4e89b6ec1b800e06d1ca41252178f"
+    },
+    {
+      "hash": "8cf1b5d1a0d463ea",
+      "kind": "worldmap",
+      "sha256": "b0f0ebd0f8eae7d5737fab6e61b2dd3f324ef8670d6d2a3babe83a2a5c116620"
+    },
+    {
+      "hash": "8d87e28dd8dbd06e",
+      "kind": "worldmap",
+      "sha256": "95e0f6e092b41734520be7a0cc220cc1b862204e77a3ff52a5b8e712461023f4"
+    },
+    {
+      "hash": "907543f905613d6e",
+      "kind": "worldmap",
+      "sha256": "a5b5c4c19add42015e51ccd7cd6fe82a993f1c27417ae4869d7230cd604b9137"
+    },
+    {
+      "hash": "91c370b47a94d0a7",
+      "kind": "worldmap",
+      "sha256": "e1fa076195911815ce19b68e0d6307758a918e75e8d5218d18e636ba2d911238"
+    },
+    {
+      "hash": "92f33614551e8f7f",
+      "kind": "worldmap",
+      "sha256": "d7bc0028a9745cb36468fc8f9953c3acce44bb439cc39a3f94ebd81208cb12c5"
+    },
+    {
+      "hash": "95ac6e4ee9593359",
+      "kind": "worldmap",
+      "sha256": "f07cecd8980806cb837ac11999f385046bfbddcaf0309724fac3c91e94d0fcf7"
+    },
+    {
+      "hash": "964421de2b8a6574",
+      "kind": "worldmap",
+      "sha256": "e5161dbd79f5a2ee8f10fc5eca1c95004a98a84fc4f14b05318360a212575572"
+    },
+    {
+      "hash": "9685f0c2f80df2e3",
+      "kind": "worldmap",
+      "sha256": "97da2ce91978990965985ea8256ba6808cdcdfec8c81ee71ed5efe36603ec1e9"
+    },
+    {
+      "hash": "96d153e5a97959fb",
+      "kind": "worldmap",
+      "sha256": "462a43e71c837068c0e0de4703c90b9baa781ee3511fd4307a3bb24a22a8a300"
+    },
+    {
+      "hash": "971aab8258e65d85",
+      "kind": "worldmap",
+      "sha256": "b609dcde8d0716d3862911947b8f9511a6ef62b3de82bffc677102b91e3ede21"
+    },
+    {
+      "hash": "98aed14041f39f85",
+      "kind": "worldmap",
+      "sha256": "68e2db7c7d2b95b65a603d6506eed1120e2a53c118776ca2566805ceebe36be0"
+    },
+    {
+      "hash": "997587bb6f8c5fd8",
+      "kind": "worldmap",
+      "sha256": "8f5a0117c974f37a2f0735d313609000be7c51314429ba6450443084b7f8c036"
+    },
+    {
+      "hash": "9a1ad093e83c9013",
+      "kind": "worldmap",
+      "sha256": "6130a2a1b8007ae1788424e8b88714b18c327a498190808d8b03b427bbd70fce"
+    },
+    {
+      "hash": "9ce0c27af1a76a78",
+      "kind": "worldmap",
+      "sha256": "9869a947bc69e0395ddae96360469dabf5b91832b97e866aa561fc376e87c255"
+    },
+    {
+      "hash": "9f7935c30cb1984f",
+      "kind": "worldmap",
+      "sha256": "161558fe1873a3fe9be7222afe71415df8370a0b9ee5bb568e19e365deadcfc7"
+    },
+    {
+      "hash": "a032fe04a058bc57",
+      "kind": "worldmap",
+      "sha256": "0d445ca225fde35fdba6322a71302e1b9c123e4d383d781f9cdbe4b775313c3b"
+    },
+    {
+      "hash": "a03eceec0e28e182",
+      "kind": "worldmap",
+      "sha256": "b60d8cea5836ae9c3a1cfe7c1209b178123bae6ada4daa5e299744c7912a98a3"
+    },
+    {
+      "hash": "a136bacb053faf8f",
+      "kind": "worldmap",
+      "sha256": "acd776f62e510863cc3170c99259d98063ca0494ba237df6715bf5e4c0bbaa77"
+    },
+    {
+      "hash": "a17da9d3a5dfa88c",
+      "kind": "worldmap",
+      "sha256": "8c0e37f7afc5487cb36f2ed050d425649aba637b3b64329a239f10ec51b5f83d"
+    },
+    {
+      "hash": "a255d9c6b0b1ea10",
+      "kind": "worldmap",
+      "sha256": "7a839c2a2f090d86a63dde52467d5fc140dc3493198a63383ff243160e743d55"
+    },
+    {
+      "hash": "a2e85d8f678996bc",
+      "kind": "worldmap",
+      "sha256": "ce5175afc85adf785517bf43acaa627fbb297cfaefc927465de1b6a2ee5b876d"
+    },
+    {
+      "hash": "a361996e9ca2fe57",
+      "kind": "worldmap",
+      "sha256": "ccf37125a8e1a1ab2025ecd3b6aed61a295510c7636c2c74460d1e64e810bf4a"
+    },
+    {
+      "hash": "a362d21984b1e900",
+      "kind": "worldmap",
+      "sha256": "dded4a7618a2f7a4f9667a61b155afe29cad50f11a0dc38517835c51c4547772"
+    },
+    {
+      "hash": "a3df43d81c8cfdc5",
+      "kind": "worldmap",
+      "sha256": "39c239f1ecae0ecc2402d55405b27926ff439c90266cb01275307571ef4df3ca"
+    },
+    {
+      "hash": "a42809756c29c66a",
+      "kind": "worldmap",
+      "sha256": "881dce90ab805666bbbf07c16e19bdde7ff59b2e660300964c990606086ed516"
+    },
+    {
+      "hash": "a542e20ea8f7a3da",
+      "kind": "worldmap",
+      "sha256": "6e5f0f383aa061b200bf77c548f76feac9845dca4bb98525bac10db104b9f4d3"
+    },
+    {
+      "hash": "a8c2c88ceb12b084",
+      "kind": "worldmap",
+      "sha256": "4338a121ff8e52c24ad5a21ca1a0be05948035f0eea1aeb95620ff92a5502918"
+    },
+    {
+      "hash": "a8da5f454b5a2ca8",
+      "kind": "worldmap",
+      "sha256": "aafebb0a64a6ba51f57f92dee82def836b33416a855d37bcd7c5726a76dbbc24"
+    },
+    {
+      "hash": "a9bd576e9df63483",
+      "kind": "worldmap",
+      "sha256": "0f49c3bc394bd655fe011e4adfc57c3928131f80c007b9c6c58f3fa9251e33e7"
+    },
+    {
+      "hash": "a9ec9371a0929df4",
+      "kind": "worldmap",
+      "sha256": "1d23d8b8d35e82d05ca9bfff86572230f6258cf00b3c820d6d001524b31f95d5"
+    },
+    {
+      "hash": "abde104f5b36589b",
+      "kind": "worldmap",
+      "sha256": "d1d8cfdb903acf33b91f9511685fe333aef0395f1ef949a36853908c60aa644a"
+    },
+    {
+      "hash": "ac309f8ddf9fff85",
+      "kind": "worldmap",
+      "sha256": "dcae905d87fc997c6ee4f105d3bfa064036561be69818d60869149fbd1a6eb17"
+    },
+    {
+      "hash": "ae3f3b061a3e597b",
+      "kind": "worldmap",
+      "sha256": "b5711bc486a50ad55ddce3c1a5aa2c17a453208a48af474acc1b847afa5f6d84"
+    },
+    {
+      "hash": "aec781e0164035a9",
+      "kind": "worldmap",
+      "sha256": "b44b8777a95a8849a0513c1782791979f0db03d586fc0e59075ed6c3ba476493"
+    },
+    {
+      "hash": "b28ed4b49cc18e3f",
+      "kind": "worldmap",
+      "sha256": "2729e88908276c4f25895f6c6f61f4f22f198a8845d824eb1e15f63ae4b3f247"
+    },
+    {
+      "hash": "b4e8fd3541cf2c68",
+      "kind": "worldmap",
+      "sha256": "7f60b559cac914094d167a43788951b759e505cb22a4d0362f48d397c827d581"
+    },
+    {
+      "hash": "b630958f961db0d4",
+      "kind": "worldmap",
+      "sha256": "2496f5bd3fcb1fd73163042fed66663001cef1c1dce2d45984bc2ebe9fa1ba35"
+    },
+    {
+      "hash": "b67f80a3be8afa2d",
+      "kind": "worldmap",
+      "sha256": "f1bcee499801da17b8aff6164674e77bae68f6e3f2556a657287fe752ee95167"
+    },
+    {
+      "hash": "b73b6a7580ef2082",
+      "kind": "worldmap",
+      "sha256": "9a01fd2fe06dbd3fe2c9cb921388531bf44d5e37b108041ac55c6996351f02f6"
+    },
+    {
+      "hash": "b7a5b96571adacdd",
+      "kind": "worldmap",
+      "sha256": "c5b8f433a52583ddd1ae9d6ac62fb33a8bbe3353c59e534723ec067c848aae05"
+    },
+    {
+      "hash": "b8e81c6be8652b68",
+      "kind": "worldmap",
+      "sha256": "559d2a6a3412033755940ea950e379b46bcf918f3c6839c0a08466d2f710741e"
+    },
+    {
+      "hash": "bb6ca53ebd98d7cf",
+      "kind": "worldmap",
+      "sha256": "075a2490d3d87619c36804c65b549633188a10c2bb0c9b2f115b8e82fb0e38d5"
+    },
+    {
+      "hash": "bbdce31fd9918ce0",
+      "kind": "worldmap",
+      "sha256": "1238b20aee5154a3d74970f2cfdf650b24dbc49beb27a5ebd79d06e01199b0bb"
+    },
+    {
+      "hash": "bf45141120168cd6",
+      "kind": "worldmap",
+      "sha256": "4c2fb1ed46a8ef99908edf99ddd6cc49f1c91c0657c17503e9fc1367531b20b5"
+    },
+    {
+      "hash": "bf6d9c77adb4d1a4",
+      "kind": "worldmap",
+      "sha256": "61f27972d3a582450d3c8c8f94dadab395ab98e073c051d6994a0ac866effa5e"
+    },
+    {
+      "hash": "bfdb53722d1d4a84",
+      "kind": "worldmap",
+      "sha256": "f8d317d80c17c8959e94c98a9ad6cbf6351f4f78f720f07d8576ecec8f4ca96d"
+    },
+    {
+      "hash": "c16581b6e1e74082",
+      "kind": "worldmap",
+      "sha256": "ec80fc749ef248cb054f45271e71e5f1f7941ecd57d7b5e7b67a85efd222a679"
+    },
+    {
+      "hash": "c2ba2c4d367c9232",
+      "kind": "worldmap",
+      "sha256": "0ed5cd2a2b37d3bc8d57ca703d9b1a92982c2af7acd0497853817de04669419e"
+    },
+    {
+      "hash": "c2d7f8cdbf056062",
+      "kind": "worldmap",
+      "sha256": "504c65392c18ac20f87c6ce3a4a00a6646fd24297933a23dfadb45dcc55e1331"
+    },
+    {
+      "hash": "c37f49af54c50e31",
+      "kind": "worldmap",
+      "sha256": "600c16f5a5d4c7fdc1ba9f2a67f3d7c72154bb38758aa3783afea523d870a398"
+    },
+    {
+      "hash": "c3d0fab60d72c99f",
+      "kind": "worldmap",
+      "sha256": "b0526d36955439848f23e163b4a4f8fb53777256c9c61e4eb1178b3acbf2eae4"
+    },
+    {
+      "hash": "c44a53200fedabc2",
+      "kind": "worldmap",
+      "sha256": "ee998a5638f167d47f6d5292340b10249eaff056438574f353a591c7a9e84cb9"
+    },
+    {
+      "hash": "c44cf9399de29bfb",
+      "kind": "worldmap",
+      "sha256": "a2e2e87f3554156793081b6417e47abf906f10fb71bbdaaf90937ce52eae06ea"
+    },
+    {
+      "hash": "c5f2aed45679a8f3",
+      "kind": "worldmap",
+      "sha256": "9972cbfcb7c93664c293fb176b9649a443894cf4bd79dcf514e0335bbd1082be"
+    },
+    {
+      "hash": "c8188d507d80c759",
+      "kind": "worldmap",
+      "sha256": "50c1443e919f78cf77c00373ec1185941b1d3651eddc078cf4705f23c8ac3f1f"
+    },
+    {
+      "hash": "cc45b731112a66c9",
+      "kind": "worldmap",
+      "sha256": "8553ec0f8bc8a3e031694e4297c879da9f01ec64b94ce2d97d5ef67c4c12391b"
+    },
+    {
+      "hash": "cc5febfab738ce02",
+      "kind": "worldmap",
+      "sha256": "48d2eca8486d61320265fac51bb60d6eba716b6bf7f5493d4aec6973b95accd2"
+    },
+    {
+      "hash": "ce21916bba3b7167",
+      "kind": "worldmap",
+      "sha256": "679174c20930b49f9c742a745e60710ba8dcc030d063ce4e13b8082ad33d470d"
+    },
+    {
+      "hash": "ce7944e540d2d4bd",
+      "kind": "worldmap",
+      "sha256": "203f58f509afa680202bf17d77785512a616615e7a5b60a8f27ec0d0e90e3fa5"
+    },
+    {
+      "hash": "cf78eb724080876e",
+      "kind": "worldmap",
+      "sha256": "f6f3b44b34bfdb387af90f63f0e2f94c8cfa089ab195344f0b989d11e89800f1"
+    },
+    {
+      "hash": "d00b22775dff9a97",
+      "kind": "worldmap",
+      "sha256": "b63aa39e632212540b19573f38554c4ba2420f1aeb456b0801d4b5852712ae87"
+    },
+    {
+      "hash": "d1be1e250c3016c9",
+      "kind": "worldmap",
+      "sha256": "2e507138827cb650b53276d3a340a43c02697ce0cfa5eede356208b3d772ba4c"
+    },
+    {
+      "hash": "d41ff512e866325c",
+      "kind": "worldmap",
+      "sha256": "ebba4ad709458bee523828550b2ca6f8348e5f09b1d78fbbbc86aba4f127a14e"
+    },
+    {
+      "hash": "d527f81b4fbb8c3c",
+      "kind": "worldmap",
+      "sha256": "b5f66099e3637c31fc2cc9c122c8988062d4f9b8eb7bed9261e553f46b90606c"
+    },
+    {
+      "hash": "d55d0b0c88766573",
+      "kind": "worldmap",
+      "sha256": "378796f0d78138add3e47e2f3bf1e12c91cd10c151624f797b29d540b6695ac1"
+    },
+    {
+      "hash": "d5eca79fe8a6ff69",
+      "kind": "worldmap",
+      "sha256": "46dce90d0e4ef7898628cc491836e1d4b531ffa03542fadbf2e756faad5e8589"
+    },
+    {
+      "hash": "d62914f6c71f1716",
+      "kind": "worldmap",
+      "sha256": "241f061f8915d7c41573edb55f088fa9fcad14a3f0667f89b48a5ee07f487cba"
+    },
+    {
+      "hash": "d7e022d1af0cee39",
+      "kind": "worldmap",
+      "sha256": "a8e708dc276a5dd95257c95a724f3281a30bde5f496fb581a780691e107c57fb"
+    },
+    {
+      "hash": "d9865957004901e6",
+      "kind": "worldmap",
+      "sha256": "2d23c47cda9ba52575edbc1a05b67c0f8e13e087ccf56a54b1c2001c8574ae89"
+    },
+    {
+      "hash": "daf140ad96952d8b",
+      "kind": "worldmap",
+      "sha256": "fe08bd9323061fcd78f704fd8188b4c9d1e3150622173abc10f70f60a64233de"
+    },
+    {
+      "hash": "daf4ebe4a6481f6a",
+      "kind": "worldmap",
+      "sha256": "02a30ddb1d5f06f8f28ec3f3b283d670ee8a2debfd7961c6bc1c14abfee1dfd9"
+    },
+    {
+      "hash": "dbe5653d1f294d20",
+      "kind": "worldmap",
+      "sha256": "86b7ece9b7df10f48dbc7ac9dd3bc5baf21214ecad2990d6105102eb9bbbc6be"
+    },
+    {
+      "hash": "dd9adaf41789656f",
+      "kind": "worldmap",
+      "sha256": "b378d84996eae3f429646ddaba1edc69d498dc278d241cf3841d3b47a2f39edd"
+    },
+    {
+      "hash": "de8a9c542b82e397",
+      "kind": "worldmap",
+      "sha256": "6b5a7c3a012117ebe576fd9bf43672ff91dc4ed1668cfc70019e3dc7a5946ae6"
+    },
+    {
+      "hash": "dfc5eaedbb97f50a",
+      "kind": "worldmap",
+      "sha256": "ebf0c4d7745c6b0bcd73278f1719aaa953819f7624572cad5268e646f7df928b"
+    },
+    {
+      "hash": "e01382ebc35e9225",
+      "kind": "worldmap",
+      "sha256": "0b9b79cbc51c10600ce35941e961ab5eac7aaff678cd7543d379a848afcb16fa"
+    },
+    {
+      "hash": "e13ee931c6684d94",
+      "kind": "worldmap",
+      "sha256": "5a483ce869367296bec5c11a7d2ec0b69386d7ece75fb7486f45dff293caee79"
+    },
+    {
+      "hash": "e15f58b5a95fe2f2",
+      "kind": "worldmap",
+      "sha256": "8f9672fe1ddbb675648d62b4fc925214200d0edfab1064b2fb54371ffe026c42"
+    },
+    {
+      "hash": "e1e270c072afba8d",
+      "kind": "worldmap",
+      "sha256": "c6e256f565cbf192345fc0c2f5adc10031d2d19eaf3e5f821b61be4ef92c2508"
+    },
+    {
+      "hash": "e3155e091b37dc0b",
+      "kind": "worldmap",
+      "sha256": "2e6a3c12d89c9fa5627ba216b801542d819deb2c7b12bb0b26dda76331ef6402"
+    },
+    {
+      "hash": "e31f27b22bc1870a",
+      "kind": "worldmap",
+      "sha256": "09062ec2ca8524e49855e57f254e6a3c825474c32ed8c69396ff0e42f12a2692"
+    },
+    {
+      "hash": "e4634c38e34c9d36",
+      "kind": "worldmap",
+      "sha256": "1b468a2628c801069b69ca6148c7c40aedb7de6b5ea3b28537db27bb14e50e0f"
+    },
+    {
+      "hash": "e4b876da186c9842",
+      "kind": "worldmap",
+      "sha256": "e575eff4023fd9e3dad6545e92bb5ba54fe3366c06e79ea81e60158d8625e40f"
+    },
+    {
+      "hash": "e630904c80e0ca7c",
+      "kind": "worldmap",
+      "sha256": "3f0242d2cd6d89302f7713df3e78a8470de8099cda2d8b44c74703c22b97f4a7"
+    },
+    {
+      "hash": "e79b9882d958eca8",
+      "kind": "worldmap",
+      "sha256": "cb8e7aa9e8af385e525f26d90c87e259119234463cbab2a79d3e40ab587321e5"
+    },
+    {
+      "hash": "e7acf28b112ef579",
+      "kind": "worldmap",
+      "sha256": "94daa60c407a453afe49032b336388bedc3036159a80282ecebbaca0c8db4e4e"
+    },
+    {
+      "hash": "e8edb8b9cd1bc2a2",
+      "kind": "worldmap",
+      "sha256": "31427c455eb4cd4cf1032daf6906b85034c46b8918a2a5045bc7523b7dc0cc23"
+    },
+    {
+      "hash": "ea1e4beef639a66a",
+      "kind": "worldmap",
+      "sha256": "157ddcc210074a8d6c2d354f9eb1a411a0b3d31a83708a29206d6ed1d0db6ab0"
+    },
+    {
+      "hash": "ea8fc65683e05d43",
+      "kind": "worldmap",
+      "sha256": "0a1f556b26e2af432e1eaa61314cf291fb00b11f926e163890343b4b45f674a3"
+    },
+    {
+      "hash": "ece8ace8d8d9d999",
+      "kind": "worldmap",
+      "sha256": "c0ea739735764fdb979e292a15cdf314a573b5e4e942455f14e305cadefe80ff"
+    },
+    {
+      "hash": "ed2aa9df78af4ab2",
+      "kind": "worldmap",
+      "sha256": "27620e3e0c3eea31e63c7adc1af93c16cdb55f64f64645bfe86734dc37780960"
+    },
+    {
+      "hash": "ed618dca79d394dd",
+      "kind": "worldmap",
+      "sha256": "5e6811f77665beb2163904f5d355817b484c5753dd0cee1ab2b6be01c0143576"
+    },
+    {
+      "hash": "efcad749a4b206d0",
+      "kind": "worldmap",
+      "sha256": "58e5142639da24478fda9cf61ac293efa48d13d5ad0358fe096984875cf0dcf2"
+    },
+    {
+      "hash": "efd98f0bf09839e9",
+      "kind": "worldmap",
+      "sha256": "22d407926e6d0043f880fa43a5631af481cd85c707803238e8b478503d923060"
+    },
+    {
+      "hash": "f1f51eb1e7394af7",
+      "kind": "worldmap",
+      "sha256": "d472a5828d8237aa49491dcbdbcb84ce9006107885a19363975bc6bbaa75f79b"
+    },
+    {
+      "hash": "f331cfbd603ddd85",
+      "kind": "worldmap",
+      "sha256": "0651dda9b021976d1cae59176da075267e49688d46d1caa08c537e4e431c4b67"
+    },
+    {
+      "hash": "f374ed26c8e6ed5e",
+      "kind": "worldmap",
+      "sha256": "4068356260c09f79ec918d62c00c06467b5a5b12759f752d1d5db79bb33ede7c"
+    },
+    {
+      "hash": "f652856a1d17aff3",
+      "kind": "worldmap",
+      "sha256": "5fc4130d39aa27c8767cf03b2b0e5d4af5778b2ff8fa2b0677b90c5af71bdc0a"
+    },
+    {
+      "hash": "f65b918fe977497f",
+      "kind": "worldmap",
+      "sha256": "37e97a81bd21816b0fd744ea96cf927fcdccb703c457570d1b75cd76a7e2b8ca"
+    },
+    {
+      "hash": "f7c525d19294cb92",
+      "kind": "worldmap",
+      "sha256": "aee69114369aec5865bf98ae044f68f286cd4105433ac2f7aa5d27c7706b7d2a"
+    },
+    {
+      "hash": "f9510137c84bca6d",
+      "kind": "worldmap",
+      "sha256": "89a32ecebd526739f7469c8f8ee8db0caf27b71103265580ff577b5781891fc5"
+    },
+    {
+      "hash": "fbc807fc2b50805b",
+      "kind": "worldmap",
+      "sha256": "56d78b98cbb1ca451a51340f9a7ae8b99be201567a58e01dad7227ae1a97eb41"
+    },
+    {
+      "hash": "fe21a56870c562ae",
+      "kind": "worldmap",
+      "sha256": "2a9e824b48b343f940a2fd64d7e91a89607db5ed045cd76413a8e9dd33dd844f"
+    },
+    {
+      "hash": "fe4edbaba8746158",
+      "kind": "worldmap",
+      "sha256": "dac2c14b04dadda6dc93d5154a25b4e59607485680df750d02f1b433cd99801a"
+    },
+    {
+      "hash": "fec6ee0e08062eb1",
+      "kind": "worldmap",
+      "sha256": "17fe9ca4b333765c9d0eaadf1969c25abf1f945ef55ee14ac292236d52ac8430"
+    },
+    {
+      "hash": "ffb6b59c74615865",
+      "kind": "worldmap",
+      "sha256": "455454e995e6aa172ec3f5584ba01a903bbe78c547b9ecc67e49c99cfb7d1c08"
     }
   ],
   "worldmap": {
@@ -1269,6 +1374,7 @@
       "020bfcfe27211630",
       "0283f4850bdf9d67",
       "02b789a647e2d885",
+      "03dabae7a8f80414",
       "075d13e11d9ee0e3",
       "0923ed37739b4469",
       "09fd723e16244686",
@@ -1316,6 +1422,7 @@
       "4cd521e551d1517f",
       "4ce10c84c4db3256",
       "4eba62d0fb4eeeb5",
+      "4f2a135c40e56816",
       "4f2fb1aec9a5dfe6",
       "4fe76d3591aa2ce8",
       "532a4124c9cec979",
@@ -1359,6 +1466,7 @@
       "7de65fd0376e00bf",
       "7ff3c2205a8f5ea0",
       "80b47a75d13d7ede",
+      "80c36b72acaf8942",
       "81c8e51d2dbbae83",
       "83235e7017c7b886",
       "83de1b4f4d8cfd81",
@@ -1459,6 +1567,7 @@
       "ea1e4beef639a66a",
       "ea8fc65683e05d43",
       "ece8ace8d8d9d999",
+      "ed2aa9df78af4ab2",
       "ed618dca79d394dd",
       "efcad749a4b206d0",
       "efd98f0bf09839e9",
