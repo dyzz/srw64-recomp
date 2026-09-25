@@ -183,6 +183,14 @@ void load_000AB160_func_80209900(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t end = MEM_W(0, pointer) & 0x1FFFFFFF;
     if (srw64_game_hooks.damage_drawn) srw64_game_hooks.damage_drawn(rdram, begin, end);
 }
+void load_000AB160_func_801CBB04(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.move_select || !srw64_game_hooks.move_select(rdram, ctx)) srw64_original_move_select(rdram, ctx);
+}
+void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
+    const uint32_t list = uint32_t(ctx->r4);
+    srw64_original_move_range_draw(rdram, ctx);
+    if (srw64_game_hooks.move_range_drawn) srw64_game_hooks.move_range_drawn(rdram, list);
+}
 void resident_func_800945D4(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
