@@ -79,6 +79,11 @@ struct SRW64GameHooks {
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};
+    // Tactical map, choosing a move destination (docs/native/move-jump.md): 801CBB04 runs
+    // (state 0xC, sub-state 0); true: the host handled this frame and the original does not
+    // run. 801E4760 drew the move range into the display list whose Gfx* is at `list`.
+    bool (*move_select)(uint8_t*, recomp_context*){};
+    void (*move_range_drawn)(uint8_t*, uint32_t list){};
 };
 // ロード: 801C6F3C / 801C709C medium choice, 801C7328 / 801C783C slots, 801C7A48 load window,
 // 801C7C90 / 801C8074 Controller Pak message. オプション: 801C697C / 801C6B14. サウンドセレクト:

@@ -100,6 +100,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE ui_text.cpp)
     # The title screen's ロード, オプション and song lists (docs/native/native-title-menus.md).
     target_sources(srw64-gfx-host PRIVATE title_page.cpp)
+    # Holding R while choosing a move destination: the farthest squares (docs/native/move-jump.md).
+    target_sources(srw64-gfx-host PRIVATE move_jump.cpp)
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
     if(APPLE)
         target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
