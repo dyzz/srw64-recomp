@@ -8,6 +8,9 @@
 #include "plume_metal.h"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
+#include "app/rom_import_codec.hpp"
+#include "app/sha256.hpp"
+#include "librecomp/game.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "localization/catalog.hpp"
 #endif
@@ -16,6 +19,7 @@
 #include <atomic>
 #include <chrono>
 #include <cmath>
+#include <cstdio>
 #include <cstring>
 #include <fstream>
 #include <map>
@@ -68,7 +72,8 @@ constexpr size_t kModelStride = 28;           // float3 position, float3 normal,
 struct Model {
     uint32_t resource = 0;
     std::string name;
-    std::vector<uint8_t> reference, vertices, indices;
+    std::vector<uint8_t> reference, vertices, indices;  // reference: taken from the ROM, see originals_ready()
+    size_t referenceBytes = 0;
     std::vector<uint32_t> commands;  // sorted; the first carries the native draw
     uint32_t draw_command = 0;
     MTL::Buffer *vertexBuffer{}, *indexBuffer{};
@@ -130,6 +135,69 @@ std::vector<uint8_t> read(const std::filesystem::path& path) {
     std::ifstream stream(path, std::ios::binary);
     if (!stream) throw std::runtime_error("Missing native marker asset: " + path.string());
     return {std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>()};
+}
+
+// Packs carry no ROM bytes: each names an original resource and the SHA-256 of its
+// decoded bytes, and the host takes it from the player's ROM (docs/native/native-ship-model.md).
+constexpr size_t kResourceTable = 0x00A20BD0;
+
+std::span<const uint8_t> player_rom() {
+    if (recomp::is_rom_loaded()) return recomp::get_rom();
+    // Frame probes replay display lists without loading a game.
+    static std::vector<uint8_t> file;
+    if (file.empty()) {
+        const char *path = std::getenv("SRW64_ROM_PATH");
+        if (!path || !*path) throw std::runtime_error("Native model packs need the game ROM (SRW64_ROM_PATH)");
+        file = read(path);
+        if (file.size() < 4 || file[0] != 0x80 || file[1] != 0x37) throw std::runtime_error("SRW64_ROM_PATH is not a .z64 ROM");
+    }
+    return file;
+}
+
+std::string sha256(std::span<const uint8_t> bytes) {
+    srw64::app::Sha256 hash;
+    hash.update(bytes);
+    return hash.finish();
+}
+
+// RDRAM holds big-endian words byte-swapped on a little-endian host.
+std::vector<uint8_t> rdram_image(std::span<const uint8_t> bytes) {
+    std::vector<uint8_t> image(bytes.begin(), bytes.end());
+    for (size_t i = 0; i < image.size(); i += 4) std::reverse(image.begin() + i, image.begin() + std::min(i + 4, image.size()));
+    return image;
+}
+
+std::vector<uint8_t> original_resource(uint32_t id, size_t bytes, const std::string& expected) {
+    const auto decoded = srw64::app::rom_import::resource(player_rom(), kResourceTable, id).bytes;
+    if (decoded.size() != bytes || sha256(decoded) != expected)
+        throw std::runtime_error("ROM resource " + std::to_string(id) + " differs from the one the pack was made for");
+    return rdram_image(decoded);
+}
+
+bool markerPack = false;
+struct PendingOriginal { std::vector<uint8_t> *target; uint32_t id; size_t bytes; std::string sha256; };
+std::vector<PendingOriginal> pendingOriginals;
+struct { size_t rom = 0, bytes = 0; std::string sha256; } pendingTrail;
+
+// The renderer is configured before the game loads its ROM, so the originals are taken
+// from it when the first display list is classified. Without them nothing is replaced.
+bool originals_ready() {
+    static std::once_flag once;
+    static bool ready = false;
+    std::call_once(once, [] {
+        try {
+            for (const auto& p : pendingOriginals) *p.target = original_resource(p.id, p.bytes, p.sha256);
+            if (trail.enabled) {
+                const auto code = srw64::app::rom_import::slice(player_rom(), pendingTrail.rom, pendingTrail.bytes);
+                if (sha256(code) != pendingTrail.sha256) throw std::runtime_error("ROM trail code differs from the pack's");
+                trail.code = rdram_image(code);
+            }
+            ready = true;
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64 native models disabled: %s\n", error.what());
+        }
+    });
+    return ready;
 }
 
 bool hd_mode() {
@@ -237,6 +305,7 @@ uint32_t classify_trail(RT64::State *state, const RT64::DisplayList *dl) {
 }
 
 uint32_t classify(RT64::State *state, const RT64::DisplayList *dl) {
+    if (!originals_ready()) return 0;
     if (trail.enabled)
         if (const uint32_t id = classify_trail(state, dl)) return id;
     // Segment 4 is established by the game each time it calls a model. Never
@@ -246,7 +315,7 @@ uint32_t classify(RT64::State *state, const RT64::DisplayList *dl) {
     const auto start = reinterpret_cast<uintptr_t>(state->RDRAM) + base;
     if (pointer < start) return 0;
     const uintptr_t offset = pointer - start;
-    if (!reference.empty())
+    if (markerPack)
         if (const uint32_t id = classify_marker(state, base, offset)) return id;
     return models.empty() ? 0 : classify_models(state, base, offset);
 }
@@ -652,7 +721,7 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
     if (m.plateCommands.empty()) throw std::runtime_error("Native plate without commands");
     m.plateDraw = m.plateCommands.front();
     std::sort(m.plateCommands.begin(), m.plateCommands.end());
-    if (m.plateCommands.back() + 8 > m.reference.size()) throw std::runtime_error("Invalid native plate command offsets");
+    if (m.plateCommands.back() + 8 > m.referenceBytes) throw std::runtime_error("Invalid native plate command offsets");
     for (size_t l = 0; l < kPlateLocales.size(); ++l) {
         const auto file = pack / plate.at("textures").at(kPlateLocales[l]).get<std::string>();
         int width = 0, height = 0, channels = 0;
@@ -669,22 +738,22 @@ void load_models(const std::filesystem::path& pack) {
     std::ifstream stream(pack / "manifest.json");
     if (!stream) throw std::runtime_error("Native model pack without manifest.json: " + pack.string());
     const json manifest = json::parse(stream);
-    if (manifest.at("schema") != "srw64.native-models.v1") throw std::runtime_error("Unknown native model pack schema");
+    if (manifest.at("schema") != "srw64.native-models.v2") throw std::runtime_error("Unknown native model pack schema");
     for (const auto& entry : manifest.at("models")) {
         auto m = std::make_unique<Model>();
         m->resource = entry.at("resource_id");
         m->name = entry.at("name");
-        m->reference = read(pack / entry.at("reference").get<std::string>());
+        m->referenceBytes = entry.at("original_bytes");
+        pendingOriginals.push_back({&m->reference, m->resource, m->referenceBytes, entry.at("original_sha256").get<std::string>()});
         m->vertices = read(pack / entry.at("vertices").get<std::string>());
         m->indices = read(pack / entry.at("indices").get<std::string>());
         m->commands = entry.at("triangle_commands").get<std::vector<uint32_t>>();
-        if (m->commands.empty() || m->reference.size() != entry.at("reference_bytes").get<size_t>()
-            || m->vertices.empty() || m->vertices.size() % kModelStride || m->indices.empty() || m->indices.size() % 12)
+        if (m->commands.empty() || m->vertices.empty() || m->vertices.size() % kModelStride || m->indices.empty() || m->indices.size() % 12)
             throw std::runtime_error("Invalid native model sizes for resource " + std::to_string(m->resource));
         m->draw_command = m->commands.front();
         std::sort(m->commands.begin(), m->commands.end());
         if (entry.contains("plate") && !entry.at("plate").is_null()) load_plate(*m, pack, entry.at("plate"));
-        if (m->draw_command != m->commands.front() || m->commands.back() + 8 > m->reference.size())
+        if (m->draw_command != m->commands.front() || m->commands.back() + 8 > m->referenceBytes)
             throw std::runtime_error("Invalid native model command offsets");
         const size_t count = m->vertices.size() / kModelStride;
         for (size_t i = 0; i < m->indices.size(); i += 4) {
@@ -704,9 +773,8 @@ void load_models(const std::filesystem::path& pack) {
         auto m = std::make_unique<Model>();
         m->resource = entry.at("resource_id");
         m->name = entry.at("name");
-        m->reference = read(pack / entry.at("reference").get<std::string>());
-        if (m->reference.size() != entry.at("reference_bytes").get<size_t>())
-            throw std::runtime_error("Invalid native plate reference for resource " + std::to_string(m->resource));
+        m->referenceBytes = entry.at("original_bytes");
+        pendingOriginals.push_back({&m->reference, m->resource, m->referenceBytes, entry.at("original_sha256").get<std::string>()});
         load_plate(*m, pack, entry);
         models.push_back(std::move(m));
     }
@@ -715,9 +783,8 @@ void load_models(const std::filesystem::path& pack) {
         trail.codeAddress = t.at("code_vram");
         trail.vertexBuffer = t.at("vertex_buffer");
         trail.vertexBytes = t.at("vertex_bytes");
-        const std::string hex = t.at("code");
-        for (size_t i = 0; i + 1 < hex.size(); i += 2) trail.code.push_back(uint8_t(std::stoul(hex.substr(i, 2), nullptr, 16)));
-        if (trail.code.empty() || trail.code.size() % 4 || trail.vertexBytes < 0x80)
+        pendingTrail = {t.at("code_rom").get<size_t>(), t.at("code_bytes").get<size_t>(), t.at("code_sha256").get<std::string>()};
+        if (!pendingTrail.bytes || pendingTrail.bytes % 4 || trail.vertexBytes < 0x80)
             throw std::runtime_error("Invalid native trail description");
         trail.enabled = true;
     }
@@ -725,15 +792,22 @@ void load_models(const std::filesystem::path& pack) {
 }
 
 bool replacement_enabled() {
-    return !reference.empty() && hd_mode();
+    return markerPack && hd_mode();
 }
 
 void configure(const std::filesystem::path& directory) {
     output = directory;
     if (const char *pack = std::getenv("SRW64_NATIVE_MARKER"); pack && *pack) {
         const std::filesystem::path path(pack);
-        reference = read(path / "reference.bin"); vertices = read(path / "vertices.bin"); indices = read(path / "indices.bin");
-        if (reference.size() != 7048 || vertices.empty() || vertices.size()%24 || indices.empty() || indices.size()%12)
+        std::ifstream stream(path / "manifest.json");
+        if (!stream) throw std::runtime_error("Native marker pack without manifest.json: " + path.string());
+        const json manifest = json::parse(stream);
+        if (manifest.at("schema") != "srw64.native-marker.v2" || manifest.at("resource_id") != 5600)
+            throw std::runtime_error("Unknown native marker pack schema");
+        markerPack = true;
+        pendingOriginals.push_back({&reference, 5600, 7048, manifest.at("original_resource_sha256").get<std::string>()});
+        vertices = read(path / "vertices.bin"); indices = read(path / "indices.bin");
+        if (vertices.empty() || vertices.size()%24 || indices.empty() || indices.size()%12)
             throw std::runtime_error("Invalid native marker asset sizes");
         for (size_t i=0; i<indices.size(); i+=4) {
             uint32_t index; std::memcpy(&index,indices.data()+i,4);
@@ -745,15 +819,15 @@ void configure(const std::filesystem::path& directory) {
         }
     }
     if (const char *pack = std::getenv("SRW64_NATIVE_MODELS"); pack && *pack) load_models(pack);
-    if (reference.empty() && models.empty() && !trail.enabled) return;
+    if (!markerPack && models.empty() && !trail.enabled) return;
     draws.open(output / "native-model-draws.jsonl");
     RT64::SetNativeMeshHooks(classify, render);
 }
 
 void metal_init(plume::RenderDevice *value) {
-    if (reference.empty() && models.empty() && !trail.enabled) return;
+    if (!markerPack && models.empty() && !trail.enabled) return;
     device = static_cast<plume::MetalDevice *>(value)->mtl;
-    if (!reference.empty()) {
+    if (markerPack) {
         vertexBuffer = device->newBuffer(vertices.data(),vertices.size(),MTL::ResourceStorageModeShared);
         indexBuffer = device->newBuffer(indices.data(),indices.size(),MTL::ResourceStorageModeShared);
         if (!vertexBuffer || !indexBuffer) throw std::runtime_error("Native marker GPU allocation failed");
@@ -800,8 +874,8 @@ void metal_init(plume::RenderDevice *value) {
 }
 
 void shutdown() {
-    if (reference.empty() && models.empty() && !trail.enabled) return;
-    if (!reference.empty())
+    if (!markerPack && models.empty() && !trail.enabled) return;
+    if (markerPack)
         std::ofstream(output / "native-model-summary.json") << json({{"schema","srw64.native-marker-run.v1"},
             {"classified_triangles",classified.load()},{"native_draws",rendered},{"suppressed_triangles",suppressed},
             {"original_model_classifications",original_models.load()},

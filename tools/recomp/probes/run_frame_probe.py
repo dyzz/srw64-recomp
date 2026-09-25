@@ -41,6 +41,8 @@ def main() -> int:
         from recomp.model5600.prepare_native_marker import validate
         native_marker = validate(args.native_marker)
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
+        # The pack names resource 5600; the frame host loads no game, so it reads the ROM.
+        environment["SRW64_ROM_PATH"] = str(ROOT / "rom.z64")
     if args.resolution_scale:
         environment["SRW64_RESOLUTION_SCALE"] = str(args.resolution_scale)
     pack = None

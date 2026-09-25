@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Pack authored HD meshes for the host's native model replacement.
 
-Each model replaces one original ROM model resource. The pack carries the
-resource exactly as the game loads it into RDRAM (recognised through segment 4),
-the offsets of all of its triangle commands (the first one is drawn natively,
+Each model replaces one original ROM model resource. The pack names the resource
+and the SHA-256 of its decoded bytes (the host takes the bytes from the player's
+ROM and recognises them in RDRAM through segment 4; no ROM data is packed), the
+offsets of all of its triangle commands (the first one is drawn natively,
 the rest are suppressed) and the authored mesh as float position/normal plus
 RGBA8 colour. See docs/native/native-ship-model.md.
 
@@ -182,11 +183,6 @@ def render_plate(text: str):
     return plate
 
 
-def rdram_image(resource: bytes) -> bytes:
-    # RDRAM holds big-endian words byte-swapped on a little-endian host.
-    return b''.join(resource[i:i + 4][::-1] for i in range(0, len(resource), 4))
-
-
 def check_mesh(mesh: dict) -> None:
     positions, normals, colors, faces = mesh['positions'], mesh['normals'], mesh['colors'], mesh['faces']
     if not positions or not faces or not len(positions) == len(normals) == len(colors):
@@ -233,10 +229,8 @@ def build(output: Path) -> dict:
         mesh = json.loads(model['mesh'].read_text())
         check_mesh(mesh)
         commands = triangle_commands(original, model.get('display_list'))
-        files = {'reference': f"{model['resource_id']}.reference.bin",
-                 'vertices': f"{model['resource_id']}.vertices.bin",
+        files = {'vertices': f"{model['resource_id']}.vertices.bin",
                  'indices': f"{model['resource_id']}.indices.bin"}
-        (output / files['reference']).write_bytes(rdram_image(original))
         scale = model.get('display_scale', 1.0)
         (output / files['vertices']).write_bytes(pack_vertices(mesh, scale))
         (output / files['indices']).write_bytes(pack_indices(mesh))
@@ -252,7 +246,7 @@ def build(output: Path) -> dict:
                      'text': names, 'textures': textures, 'size': [200 * PLATE_SCALE, 30 * PLATE_SCALE]}
             files.update({f'plate.{locale}': name for locale, name in textures.items()})
         entries.append({'resource_id': model['resource_id'], 'name': model['name'], 'plate': plate, **files,
-                        'reference_bytes': len(original), 'original_sha256': digest(original),
+                        'original_bytes': len(original), 'original_sha256': digest(original),
                         'display_list': model.get('display_list'), 'triangle_commands': commands, 'vertex_stride': STRIDE,
                         'vertices_count': len(mesh['positions']), 'triangles': len(mesh['faces']),
                         'display_scale': scale, 'bounds': [[v * scale for v in b] for b in mesh['bounds']] if mesh.get('bounds') else None,
@@ -263,53 +257,73 @@ def build(output: Path) -> dict:
         original, _ = table.extract(resource)
         if digest(original) != board['original_sha256']:
             raise ValueError(f'resource {resource} differs from the recorded original')
-        reference = f'{resource}.reference.bin'
-        (output / reference).write_bytes(rdram_image(original))
         for plate_list, text, key, suffix in board['plates']:
             names = {'ja': text, **{locale: name + suffix for locale, name in plate_names(key).items()}}
             textures = {locale: f'{resource}.{plate_list}.plate.{locale}.png' for locale in PLATE_LOCALES}
             for locale, name in textures.items():
                 render_plate(names[locale]).save(output / name)
-            boards.append({'resource_id': resource, 'name': f"{board['name']}: {names['en']}", 'reference': reference,
-                           'reference_bytes': len(original), 'original_sha256': digest(original),
+            boards.append({'resource_id': resource, 'name': f"{board['name']}: {names['en']}",
+                           'original_bytes': len(original), 'original_sha256': digest(original),
                            'display_list': plate_list, 'triangle_commands': triangle_commands(original, plate_list),
                            'text': names, 'textures': textures, 'size': [200 * PLATE_SCALE, 30 * PLATE_SCALE],
-                           'sha256': {name: digest((output / name).read_bytes()) for name in (reference, *textures.values())}})
+                           'sha256': {name: digest((output / name).read_bytes()) for name in textures.values()}})
     code = trail_code(rom)
-    trail = {'code_vram': TRAIL['code_vram'], 'code': rdram_image(code).hex(), 'code_sha256': digest(code),
+    trail = {'code_vram': TRAIL['code_vram'], 'code_rom': OVERLAY_ROM + TRAIL['code_vram'] - OVERLAY_VRAM,
+             'code_bytes': len(code), 'code_sha256': digest(code),
              'vertex_buffer': TRAIL['vertex_buffer'], 'vertex_bytes': TRAIL['vertex_bytes']}
-    manifest = {'schema': 'srw64.native-models.v1', 'rom_sha256': ROM_SHA256, 'models': entries, 'plates': boards, 'trail': trail,
+    for stale in output.glob('*.reference.bin'):  # packs before v2 carried ROM bytes
+        stale.unlink()
+    manifest = {'schema': 'srw64.native-models.v2', 'rom_sha256': ROM_SHA256, 'models': entries, 'plates': boards, 'trail': trail,
                 'without_mesh': skipped, 'not_handled': {str(k): v for k, v in NOT_HANDLED.items()}}
     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     return validate(output)
 
 
-def validate(directory: Path) -> dict:
-    """Checked before a run; the host repeats the size and range checks."""
+def validate(directory: Path, rom: bytes | None = None) -> dict:
+    """Checked before a run; the host repeats the size and range checks and takes the
+    originals from the player's ROM. The pack holds no ROM bytes: every file in it is
+    listed and hashed, and each original is named by resource number and SHA-256. With
+    the ROM (given, or rom.z64 at the repository root) the command offsets are rechecked."""
     directory = directory.resolve()
     manifest = json.loads((directory / 'manifest.json').read_text())
-    if manifest.get('schema') != 'srw64.native-models.v1' or manifest.get('rom_sha256') != ROM_SHA256:
+    if manifest.get('schema') != 'srw64.native-models.v2' or manifest.get('rom_sha256') != ROM_SHA256:
         raise ValueError('unsupported native model pack')
+    if rom is None and (ROOT / 'rom.z64').exists():
+        rom = (ROOT / 'rom.z64').read_bytes()
+    table = ResourceTable(rom) if rom is not None and digest(rom) == ROM_SHA256 else None
+    listed = {'manifest.json'}
+
+    def check_files(entry: dict, label: str) -> None:
+        for name, expected in entry['sha256'].items():
+            path = directory / name
+            if path.parent != directory or digest(path.read_bytes()) != expected:
+                raise ValueError(f'native {label} asset drift: {name}')
+            listed.add(name)
+
+    def check_original(entry: dict, recorded: str, lists: list) -> None:
+        if entry['original_sha256'] != recorded:
+            raise ValueError(f"resource {entry['resource_id']} differs from the recorded original")
+        if table is None:
+            return
+        original, _ = table.extract(entry['resource_id'])
+        if len(original) != entry['original_bytes'] or digest(original) != recorded:
+            raise ValueError(f"ROM resource {entry['resource_id']} differs from the recorded original")
+        for display_list, commands in lists:
+            if triangle_commands(original, display_list) != commands:
+                raise ValueError('triangle command offsets differ')
+
     known = {m['resource_id']: m for m in MODELS}
     for entry in manifest['models']:
         if entry['resource_id'] not in known:
             raise ValueError(f"unknown model resource {entry['resource_id']}")
-        for name, expected in entry['sha256'].items():
-            path = directory / name
-            if path.parent != directory or digest(path.read_bytes()) != expected:
-                raise ValueError(f'native model asset drift: {name}')
-        reference = (directory / entry['reference']).read_bytes()
-        original = rdram_image(reference)  # the swap is its own inverse
-        if len(original) != entry['reference_bytes'] or digest(original) != known[entry['resource_id']]['original_sha256']:
-            raise ValueError('reference differs from the recorded original resource')
-        if triangle_commands(original, entry.get('display_list')) != entry['triangle_commands']:
-            raise ValueError('triangle command offsets differ')
+        check_files(entry, 'model')
         plate = entry.get('plate')
+        lists = [(entry.get('display_list'), entry['triangle_commands'])]
         if plate is not None:
-            if triangle_commands(original, plate['display_list']) != plate['triangle_commands']:
-                raise ValueError('plate command offsets differ')
+            lists.append((plate['display_list'], plate['triangle_commands']))
             if set(plate['textures']) != set(PLATE_LOCALES) or set(plate['textures'].values()) - set(entry['sha256']):
                 raise ValueError('plate textures missing or unchecked')
+        check_original(entry, known[entry['resource_id']]['original_sha256'], lists)
         vertices = (directory / entry['vertices']).read_bytes()
         indices = (directory / entry['indices']).read_bytes()
         if len(vertices) != entry['vertices_count'] * STRIDE or len(indices) != entry['triangles'] * 12:
@@ -321,24 +335,22 @@ def validate(directory: Path) -> dict:
         board = BOARDS.get(entry['resource_id'])
         if board is None or (entry['display_list'], entry['text']['ja']) not in {p[:2] for p in board['plates']}:
             raise ValueError(f"unknown plate {entry['resource_id']}/{entry['display_list']}")
-        for name, expected in entry['sha256'].items():
-            path = directory / name
-            if path.parent != directory or digest(path.read_bytes()) != expected:
-                raise ValueError(f'native plate asset drift: {name}')
-        original = rdram_image((directory / entry['reference']).read_bytes())
-        if len(original) != entry['reference_bytes'] or digest(original) != board['original_sha256']:
-            raise ValueError('plate reference differs from the recorded original resource')
-        if triangle_commands(original, entry['display_list']) != entry['triangle_commands']:
-            raise ValueError('plate command offsets differ')
-        if set(entry['textures']) != set(PLATE_LOCALES) or {entry['reference'], *entry['textures'].values()} - set(entry['sha256']):
+        check_files(entry, 'plate')
+        if set(entry['textures']) != set(PLATE_LOCALES) or set(entry['textures'].values()) - set(entry['sha256']):
             raise ValueError('plate textures missing or unchecked')
+        check_original(entry, board['original_sha256'], [(entry['display_list'], entry['triangle_commands'])])
     trail = manifest.get('trail')
     if trail is not None:
-        code = rdram_image(bytes.fromhex(trail['code']))
-        if trail['code_vram'] != TRAIL['code_vram'] or len(code) != TRAIL['code_bytes'] or digest(code) != trail['code_sha256']:
+        if (trail['code_vram'], trail['code_rom'], trail['code_bytes']) != (
+                TRAIL['code_vram'], OVERLAY_ROM + TRAIL['code_vram'] - OVERLAY_VRAM, TRAIL['code_bytes']):
             raise ValueError('trail code identity differs')
+        if table is not None and digest(trail_code(rom)) != trail['code_sha256']:
+            raise ValueError('ROM trail code differs')
         if (trail['vertex_buffer'], trail['vertex_bytes']) != (TRAIL['vertex_buffer'], TRAIL['vertex_bytes']):
             raise ValueError('trail vertex buffer differs')
+    stray = sorted(p.name for p in directory.iterdir() if p.name not in listed)
+    if stray:
+        raise ValueError(f'unlisted files in the native model pack: {stray}')
     return {'path': str(directory), 'manifest_sha256': digest((directory / 'manifest.json').read_bytes()),
             'trail': trail is not None,
             'models': [{k: e[k] for k in ('resource_id', 'name', 'vertices_count', 'triangles')} for e in manifest['models']],

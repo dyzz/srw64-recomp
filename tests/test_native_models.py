@@ -56,8 +56,17 @@ class NativeModelPackTests(unittest.TestCase):
             with mock.patch.object(models, 'MODELS', table):
                 report = models.build(Path(folder)/'pack')
                 self.assertEqual(report['models'][0]['triangles'], 4)
-                reference = (Path(folder)/'pack/5591.reference.bin').read_bytes()
-                self.assertEqual(models.rdram_image(reference), self.resource)
+                # No ROM bytes in the pack: the original is named by number and digest only.
+                entry = json.loads((Path(folder)/'pack/manifest.json').read_text())['models'][0]
+                self.assertEqual((entry['original_bytes'], entry['original_sha256']),
+                                 (len(self.resource), models.digest(self.resource)))
+                binaries = sorted(p.name for p in (Path(folder)/'pack').glob('*.bin'))
+                self.assertEqual(binaries, ['5591.indices.bin', '5591.vertices.bin'])   # plates are PNGs we draw
+                stray = Path(folder)/'pack/5591.reference.bin'
+                stray.write_bytes(self.resource)
+                with self.assertRaisesRegex(ValueError, 'unlisted files'):
+                    models.validate(Path(folder)/'pack')
+                stray.unlink()
                 vertices = Path(folder)/'pack/5591.vertices.bin'
                 self.assertEqual(len(vertices.read_bytes()), 4*models.STRIDE)
                 data = bytearray(vertices.read_bytes()); data[0] ^= 1
