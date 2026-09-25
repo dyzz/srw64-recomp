@@ -101,6 +101,7 @@ PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/hud_frame_asset.py \
     2. 按调色板亮度分成蓝线和暗影两类；
     3. 在 4 倍分辨率上重画：每个像素是半径 0.5 的圆头笔画，连向同类的上下左右和斜向邻居（有直角邻居时不连斜线，免得填角），边缘抗锯齿，蓝线盖在暗影上；
     4. 笔画上每个纹素取最近原像素的色号。原版靠调色板循环让光沿框线流动，这样照样生效。
+  - 同一个文件还生成 BANPRESTO 标志和 GAME OVER 的整帧高清图，见[标题画面与剧情文字图](native-title-and-story-images.md)。
 - **核对**：`make recomp-rom-art-test` 检查以下三项。[`frame_hd.py`](../../tools/hd_ai/frame_hd.py) 用同样的场景表和裁剪写出对照目录 `assets/hd-ai/frames/v1`（只在本机，不进 HD 包）。
   - 146 个场景的表、裁剪、参考调色板与 `frame_hd.py` 一致；
   - 每个原版线条像素的中心都被笔画盖住；

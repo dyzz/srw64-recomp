@@ -44,6 +44,12 @@ struct TextJob {
 // Game thread: the text a sprite shows, or false to leave it to the images.
 using Describe = bool (*)(const uint8_t* rdram, const SceneId&, TextJob&);
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& output);
+// A scene image the host makes at run time (rom_art.cpp: BANPRESTO, GAME OVER) instead of
+// an art-pack file, drawn the same way and before any file for the same scene. `render`
+// runs on the worker, returns premultiplied RGBA8 (units unused), and runs again when the
+// texture was released. Queued at once, so it is usually ready by its first draw.
+void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::vector<uint8_t> frames,
+                         std::function<TextImage()> render);
 void set_text(Describe describe);
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();

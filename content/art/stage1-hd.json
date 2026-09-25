@@ -1590,8 +1590,8 @@
     "manifest_sha256": "d672172500f8b5ab6e95fa9d00e9efe02699496099c39f3cb90f235a26c31ac9"
   },
   "scene_images": {
-    "path": "assets/hd-ai/title/whole-v2",
-    "manifest_sha256": "e4cc55d2046c0805db9f3908c6dabba60f0101ecbdbf6efedfffbabe92757b5c"
+    "path": "assets/hd-ai/title/whole-v1",
+    "manifest_sha256": "c3cae3c013e2d7a0ebd60849db1b9a723b95777c071be9a0afdee99100e44213"
   },
   "backgrounds": {
     "path": "assets/hd-ai/backgrounds/whole-v2",

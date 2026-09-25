@@ -202,4 +202,226 @@ IndexImage frame_image(const FrameSpec& spec) {
     image.source = std::move(crop);
     return image;
 }
+// --- Flat-colour scenes (tools/hd_ai/flat_scene_hd.py) --------------------------------
+
+namespace {
+struct Key { float r, g, b; };
+struct FlatDef { FlatSpec spec; std::vector<std::vector<Key>> layers; };
+const std::vector<FlatDef> kFlat = {
+    {{619, 617, 618}, {{{8, 8, 8}, {0, 0, 0}}, {{255, 255, 255}}, {{189, 49, 49}}}},                      // BANPRESTO
+    {{614, 615, 616}, {{{255, 255, 255}, {239, 239, 239}, {222, 222, 222}},
+                       {{16, 16, 16}, {33, 33, 33}, {49, 49, 49}, {74, 74, 74}, {90, 90, 90}, {107, 107, 107}}}},  // GAME OVER
+};
+constexpr int kFlatScale = 8;
+constexpr double kBlur = .45, kSharp = 2.0;
+
+using Plane = std::vector<float>;
+
+// The scene's one frame, straight RGBA8 (battle_graphics.render_scene with decode_indexed).
+bool flat_frame(const FlatSpec& spec, int& width, int& height, std::vector<uint8_t>& rgba) {
+    const auto scene = extract(spec.scene), image = extract(spec.atlas), palette = extract(spec.palette);
+    if (!scene || !image || !palette || scene->size() < 6 || image->size() < 8 || palette->size() < 8) return false;
+    const auto& d = *scene;
+    const auto u16 = [&](size_t p) -> int { return p + 1 < d.size() ? d[p] << 8 | d[p + 1] : -1; };
+    const int count = d[0];
+    const size_t table = 2 + size_t(count) * 2 + 2;
+    const int first = u16(table);
+    if (first <= int(table)) return false;
+    // One frame: its parts, 16 bytes each, until END_PART (0x8000).
+    struct Part { int flags, s, t, w, h, x, y; };
+    std::vector<Part> parts;
+    for (size_t offset = size_t(first);; offset += 16) {
+        if (offset + 16 > d.size()) return false;
+        const int flags = u16(offset);
+        if (flags & 0x8000) break;
+        parts.push_back({flags, u16(offset + 2), u16(offset + 4), d[offset + 6], d[offset + 7],
+                         int16_t(u16(offset + 8)), int16_t(u16(offset + 10))});
+    }
+    if (parts.empty()) return false;
+    int x0 = INT32_MAX, y0 = INT32_MAX, x1 = INT32_MIN, y1 = INT32_MIN;
+    for (const auto& p : parts) { x0 = std::min(x0, p.x); y0 = std::min(y0, p.y); x1 = std::max(x1, p.x + p.w); y1 = std::max(y1, p.y + p.h); }
+    const auto& im = *image;
+    const int kind = im[0] << 8 | im[1], aw = im[2] << 8 | im[3], ah = im[4] << 8 | im[5];
+    const bool ci4 = kind == 5 || kind == 14;
+    const auto& pal = *palette;
+    const size_t colours = (pal.size() - 8) / 2;
+    const auto pixel = [&](int x, int y) -> std::array<uint8_t, 4> {
+        if (x < 0 || y < 0 || x >= aw || y >= ah) return {0, 0, 0, 0};
+        const size_t i = size_t(y) * aw + x;
+        size_t n;
+        if (ci4) { if (8 + i / 2 >= im.size()) return {}; n = i & 1 ? im[8 + i / 2] & 15 : im[8 + i / 2] >> 4; }
+        else { if (8 + i >= im.size()) return {}; n = im[8 + i]; }
+        if (n >= colours) return {};
+        const uint16_t c = uint16_t(pal[8 + 2 * n] << 8 | pal[9 + 2 * n]);
+        const auto ch = [&](int shift) { return uint8_t(std::lround(((c >> shift) & 31) * 255.0 / 31)); };
+        return {ch(11), ch(6), ch(1), uint8_t(c & 1 ? 255 : 0)};
+    };
+    width = x1 - x0; height = y1 - y0;
+    rgba.assign(size_t(width) * height * 4, 0);
+    for (const auto& p : parts)
+        for (int r = 0; r < p.h; ++r)
+            for (int c = 0; c < p.w; ++c) {
+                const auto v = pixel(p.flags & 0x10 ? p.s + p.w - 1 - c : p.s + c, p.t + r);
+                if (!v[3]) continue;
+                const int X = p.x - x0 + c, Y = p.y - y0 + r;
+                if (X < 0 || Y < 0 || X >= width || Y >= height) continue;
+                std::copy(v.begin(), v.end(), &rgba[(size_t(Y) * width + X) * 4]);
+            }
+    return true;
+}
+
+// Pillow's resize coefficients (BICUBIC, a = -0.5), for one axis.
+struct Coeffs { std::vector<int> start, size; std::vector<double> weights; int taps = 0; };
+Coeffs bicubic(int in, int out) {
+    const double scale = double(in) / out, filterscale = std::max(scale, 1.0), support = 2 * filterscale;
+    Coeffs c; c.taps = int(std::ceil(support)) * 2 + 1;
+    c.start.resize(out); c.size.resize(out); c.weights.assign(size_t(out) * c.taps, 0);
+    const auto cubic = [](double x) {
+        constexpr double a = -.5;
+        x = std::abs(x);
+        if (x < 1) return ((a + 2) * x - (a + 3)) * x * x + 1;
+        if (x < 2) return (((x - 5) * x + 8) * x - 4) * a;
+        return 0.0;
+    };
+    for (int o = 0; o < out; ++o) {
+        const double centre = (o + .5) * scale;
+        const int x0 = std::max(int(centre - support + .5), 0), x1 = std::min(int(centre + support + .5), in);
+        double total = 0;
+        for (int x = x0; x < x1; ++x) total += c.weights[size_t(o) * c.taps + (x - x0)] = cubic((x - centre + .5) / filterscale);
+        for (int x = x0; x < x1; ++x) if (total) c.weights[size_t(o) * c.taps + (x - x0)] /= total;
+        c.start[o] = x0; c.size[o] = x1 - x0;
+    }
+    return c;
+}
+Plane resize(const Plane& in, int w, int h, int W, int H) {
+    const Coeffs cx = bicubic(w, W), cy = bicubic(h, H);
+    Plane mid(size_t(W) * h), out(size_t(W) * H);
+    for (int y = 0; y < h; ++y)
+        for (int x = 0; x < W; ++x) {
+            double v = 0;
+            for (int k = 0; k < cx.size[x]; ++k) v += in[size_t(y) * w + cx.start[x] + k] * cx.weights[size_t(x) * cx.taps + k];
+            mid[size_t(y) * W + x] = float(v);
+        }
+    for (int y = 0; y < H; ++y)
+        for (int x = 0; x < W; ++x) {
+            double v = 0;
+            for (int k = 0; k < cy.size[y]; ++k) v += mid[size_t(cy.start[y] + k) * W + x] * cy.weights[size_t(y) * cy.taps + k];
+            out[size_t(y) * W + x] = float(v);
+        }
+    return out;
+}
+// Pillow's GaussianBlur: three extended box passes per axis on 8-bit values.
+void box_blur(std::vector<uint8_t>& v, int w, int h, double radius) {
+    const double sigma2 = radius * radius / 3, L = std::sqrt(12 * sigma2 + 1);
+    const double l = std::floor((L - 1) / 2);
+    const double box = l + (2 * l + 1) * (l * (l + 1) - 3 * sigma2) / (6 * (sigma2 - (l + 1) * (l + 1)));
+    const int whole = int(box);
+    const double part = box - whole, norm = 2 * box + 1;
+    std::vector<uint8_t> line;
+    const auto pass = [&](int count, int length, auto get, auto set) {
+        line.resize(size_t(length));
+        for (int i = 0; i < count; ++i) {
+            for (int k = 0; k < length; ++k) line[size_t(k)] = get(i, k);
+            for (int k = 0; k < length; ++k) {
+                double sum = 0;
+                for (int j = -whole; j <= whole; ++j) sum += line[size_t(std::clamp(k + j, 0, length - 1))];
+                sum += part * (line[size_t(std::clamp(k - whole - 1, 0, length - 1))] + line[size_t(std::clamp(k + whole + 1, 0, length - 1))]);
+                set(i, k, uint8_t(std::clamp(std::lround(sum / norm), 0L, 255L)));
+            }
+        }
+    };
+    for (int n = 0; n < 3; ++n)
+        pass(h, w, [&](int y, int x) { return v[size_t(y) * w + x]; }, [&](int y, int x, uint8_t o) { v[size_t(y) * w + x] = o; });
+    for (int n = 0; n < 3; ++n)
+        pass(w, h, [&](int x, int y) { return v[size_t(y) * w + x]; }, [&](int x, int y, uint8_t o) { v[size_t(y) * w + x] = o; });
+}
+// flat_scene_hd._smooth: bicubic up, to 8 bits, Gaussian, back to [0, 1].
+Plane smooth(const Plane& layer, int w, int h, int W, int H, double radius) {
+    const Plane big = resize(layer, w, h, W, H);
+    std::vector<uint8_t> bytes(big.size());
+    for (size_t i = 0; i < big.size(); ++i) bytes[i] = uint8_t(std::clamp(std::lround(big[i] * 255), 0L, 255L));
+    box_blur(bytes, W, H, radius);
+    Plane out(bytes.size());
+    for (size_t i = 0; i < bytes.size(); ++i) out[i] = bytes[i] / 255.f;
+    return out;
+}
+}
+
+const std::vector<FlatSpec>& flat_scenes() {
+    static const std::vector<FlatSpec> list = [] { std::vector<FlatSpec> out; for (const auto& f : kFlat) out.push_back(f.spec); return out; }();
+    return list;
+}
+
+RgbaImage flat_image(const FlatSpec& spec) {
+    RgbaImage result;
+    const auto def = std::find_if(kFlat.begin(), kFlat.end(), [&](const FlatDef& f) { return f.spec.scene == spec.scene; });
+    int w = 0, h = 0;
+    std::vector<uint8_t> source;
+    if (def == kFlat.end() || !ready() || !flat_frame(def->spec, w, h, source)) return result;
+    std::vector<Key> keys;
+    for (const auto& group : def->layers) for (const auto& k : group) keys.push_back({k.r / 255, k.g / 255, k.b / 255});
+    // memberships: per key colour (and transparency last), how much of each pixel it covers.
+    std::vector<Plane> m(keys.size() + 1, Plane(size_t(w) * h));
+    for (size_t p = 0; p < size_t(w) * h; ++p) {
+        const float r = source[p * 4] / 255.f, g = source[p * 4 + 1] / 255.f, b = source[p * 4 + 2] / 255.f, a = source[p * 4 + 3] / 255.f;
+        m.back()[p] = 1 - a;
+        if (a == 0) continue;
+        float best = 1e30f; size_t bi = 0, bj = 0; float bt = 0;
+        for (size_t i = 0; i < keys.size(); ++i)
+            for (size_t j = i; j < keys.size(); ++j) {
+                const float d[3] = {keys[j].r - keys[i].r, keys[j].g - keys[i].g, keys[j].b - keys[i].b};
+                const float dd = d[0] * d[0] + d[1] * d[1] + d[2] * d[2];
+                const float t = dd == 0 ? 0 : std::clamp(((r - keys[i].r) * d[0] + (g - keys[i].g) * d[1] + (b - keys[i].b) * d[2]) / dd, 0.f, 1.f);
+                const float e0 = r - (keys[i].r + t * d[0]), e1 = g - (keys[i].g + t * d[1]), e2 = b - (keys[i].b + t * d[2]);
+                const float err = e0 * e0 + e1 * e1 + e2 * e2;
+                if (err < best) { best = err; bi = i; bj = j; bt = t; }
+            }
+        m[bi][p] += a * (1 - bt);
+        m[bj][p] += a * bt;
+    }
+    const int W = w * kFlatScale, H = h * kFlatScale;
+    const double radius = kBlur * kFlatScale;
+    std::vector<Plane> covers;
+    std::vector<std::array<Plane, 3>> colours;
+    size_t start = 0;
+    for (const auto& group : def->layers) {
+        Plane total(size_t(w) * h);
+        for (size_t i = start; i < start + group.size(); ++i) for (size_t p = 0; p < total.size(); ++p) total[p] += m[i][p];
+        covers.push_back(smooth(total, w, h, W, H, radius));
+        std::array<Plane, 3> rgb;
+        for (int c = 0; c < 3; ++c) {
+            Plane mix(size_t(w) * h);
+            for (size_t i = start; i < start + group.size(); ++i) {
+                const float key = c == 0 ? keys[i].r : c == 1 ? keys[i].g : keys[i].b;
+                for (size_t p = 0; p < mix.size(); ++p) mix[p] += m[i][p] * key;
+            }
+            rgb[c] = smooth(mix, w, h, W, H, radius);
+            for (size_t p = 0; p < rgb[c].size(); ++p) rgb[c][p] /= std::max(covers.back()[p], 1e-4f);
+        }
+        colours.push_back(std::move(rgb));
+        start += group.size();
+    }
+    covers.push_back(smooth(m.back(), w, h, W, H, radius));
+    const float gain = float(kSharp * kFlatScale);
+    const size_t n = size_t(W) * H;
+    result.width = W; result.height = H; result.rgba.assign(n * 4, 0);
+    std::vector<float> weight(covers.size());
+    for (size_t p = 0; p < n; ++p) {
+        float total = 0, opaque = 0;
+        for (size_t i = 0; i < covers.size(); ++i) {
+            float top = -1e30f;
+            for (size_t j = 0; j < covers.size(); ++j) if (j != i) top = std::max(top, covers[j][p]);
+            weight[i] = std::clamp((covers[i][p] - top) * gain + .5f, 0.f, 1.f);
+            total += weight[i];
+            if (i + 1 < covers.size()) opaque += weight[i];
+        }
+        result.rgba[p * 4 + 3] = uint8_t(std::lround(std::min(opaque / std::max(total, 1e-6f), 1.f) * 255));
+        for (int c = 0; c < 3; ++c) {
+            float mix = 0;
+            for (size_t i = 0; i + 1 < covers.size(); ++i) mix += weight[i] * colours[i][c][p];
+            result.rgba[p * 4 + c] = uint8_t(std::lround(std::clamp(mix / std::max(opaque, 1e-4f), 0.f, 1.f) * 255));
+        }
+    }
+    return result;
+}
 }

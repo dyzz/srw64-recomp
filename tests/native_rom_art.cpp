@@ -8,6 +8,7 @@
 #include "stb/stb_image.h"
 #include "json/json.hpp"
 #include "rom_art.hpp"
+#include <algorithm>
 #include <cstdio>
 #include <filesystem>
 #include <fstream>
@@ -82,6 +83,36 @@ int main(int argc, char** argv) {
     }
     for (const auto scene : expected)
         if (!made.count(scene)) { std::printf("scene %u: missing at run time\n", scene); ++failures; }
+    // Flat-colour scenes against flat_scene_hd.py's output: same size, close in every channel
+    // (Pillow's bicubic and box-blur Gaussian are matched in method, not bit for bit).
+    const fs::path flats = frames.parent_path().parent_path() / "title/whole-v2";
+    const std::pair<uint16_t, const char*> references[] = {{619, "banpresto-logo.png"}, {614, "game-over.png"}};
+    for (const auto& spec : srw64::rom_art::flat_scenes()) {
+        const auto image = srw64::rom_art::flat_image(spec);
+        const auto ref = std::find_if(std::begin(references), std::end(references), [&](const auto& r) { return r.first == spec.scene; });
+        if (ref == std::end(references) || !fs::exists(flats / ref->second)) continue;
+        int w = 0, h = 0, channels = 0;
+        uint8_t* pixels = stbi_load((flats / ref->second).c_str(), &w, &h, &channels, 4);
+        if (!pixels || w != image.width || h != image.height) {
+            std::printf("flat %u: size %dx%d, reference %dx%d\n", spec.scene, image.width, image.height, w, h); ++failures;
+        } else {
+            double total = 0;
+            int worst = 0;
+            // Premultiplied: colour under a transparent texel never shows.
+            for (size_t i = 0; i < image.rgba.size(); i += 4)
+                for (int c = 0; c < 4; ++c) {
+                    const int a = c == 3 ? 255 : image.rgba[i + 3], b = c == 3 ? 255 : pixels[i + 3];
+                    const int d = std::abs(int(image.rgba[i + c]) * a / 255 - int(pixels[i + c]) * b / 255);
+                    total += d; worst = std::max(worst, d);
+                }
+            const double mean = total / double(image.rgba.size());
+            std::printf("flat %u: mean difference %.3f, largest %d\n", spec.scene, mean, worst);
+            // BANPRESTO lands within 0.2 levels. GAME OVER's six grey keys make its outline
+            // edges shift by a pixel with Pillow's rounding: about 4 levels, same picture.
+            if (mean > 5.0) ++failures;
+        }
+        stbi_image_free(pixels);
+    }
     std::printf("rom art: %zu frame scenes drawn and checked, %d failure(s)\n", made.size(), failures);
     return failures ? 1 : 0;
 }
