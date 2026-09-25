@@ -614,6 +614,43 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
 }
 
 namespace srw64::dialogue {
+std::string label_text(const uint8_t* ram,uint32_t label) {
+    if(!enabled)return {};
+    // As speaker_name, but a label may run past its 20 glyphs into the next slot:
+    // the original fetcher does not check the length.
+    label&=0x1FFFFFFF;
+    const auto shown=decode(ram,label+12,64);
+    const uint16_t id=half(ram,label);
+    const auto japanese=localization::find("ja");
+    if(!id || entered_name(id) || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    return record_text(ram,localization::catalog(),id);
+}
+std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit) {
+    return enabled?decode(ram,address&0x1FFFFFFF,limit):std::string();
+}
+std::string glyph_string(uint16_t code){return enabled?glyph(code):std::string();}
+std::string body_page(const uint8_t* ram,uint32_t body) {
+    if(!enabled)return {};
+    body&=0x1FFFFFFF;
+    const unsigned page=byte(ram,body+0x214) && byte(ram,body+0x215)?byte(ram,body+0x215):0;
+    const auto shown=segment(decode(ram,body+12,256),page);
+    const uint16_t id=half(ram,body);
+    const auto japanese=localization::find("ja");
+    if(!id || !japanese || segment(record_text(ram,*japanese,id),page)!=shown)return shown;
+    const auto translated=segment(record_text(ram,localization::catalog(),id),page);
+    return translated.empty()?shown:translated;
+}
+bool reader_owns(unsigned label_slot,double x,double y) {
+    std::lock_guard lock(mutex);
+    for(const auto& box:current) {
+        if(!box.visible)continue;
+        if(label_slot==box.slot)return true;
+        // take_frame's box area: speaker row above, text area below.
+        if(x>=box.x-4 && x<=box.x+177 && y>=box.y-19 && y<=box.y+32)return true;
+    }
+    return false;
+}
+bool reader_configured(){return enabled;}
 std::string page_text(const std::string& locale,unsigned resource) {
     std::lock_guard lock(page_mutex);
     const auto language=page_texts.find(locale);
