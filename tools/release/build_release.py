@@ -34,6 +34,7 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 # toolchain and the ROM, not on the project's sources.
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
+ROM_DERIVED = ("art/frames",)
 
 
 def sha256(path: Path) -> str:
@@ -139,6 +140,12 @@ def main() -> int:
     pack_dir = output / "pack"
     pack_dir.mkdir()
     steps.run("hd-pack", [python, "tools/release/prepare_hd_bundle.py", "--output", str(pack_dir / "hd")], source, env)
+    # ROM-derived images stay out of the public pack; without the folder the game draws the
+    # originals. The window frames are Scale2x upscales of ROM tiles (tools/hd_ai/frame_hd.py).
+    for relative in ROM_DERIVED:
+        if (pack_dir / "hd" / relative).exists():
+            shutil.rmtree(pack_dir / "hd" / relative)
+            print(f"     left out {relative} (ROM-derived)", flush=True)
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
     hd_zip = output / f"SRW64-{args.version}-HD.zip"
