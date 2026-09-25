@@ -27,6 +27,13 @@ constexpr uint16_t kCopyrightAtlas = 620, kCopyrightPalette = 621;  // boot copy
 constexpr uint32_t kTitleSlot = 0x9C;          // 801C72C8: the card's title; 0x9D draws 第 N 話
 constexpr uint32_t kStageScene = 0x0010F5F0;   // current stage scene, physical
 constexpr const char* kMenuLabels[] = {"title_press_start", "title_start", "title_load", "title_continue", "title_option"};
+// Battle HUD scenes in atlas 1159 / palette 1160 (docs/native/native-ui-text.md §4): the
+// ability banners 1142-1153 and 1157, the response badges 反 防 回 1154-1156. Banner
+// text records, 0 where the table has none and a UI label stands in.
+constexpr uint16_t kHudAtlas = 1159, kHudPalette = 1160, kBannerFirst = 1142, kBadgeFirst = 1154, kHyperJammer = 1157;
+constexpr uint16_t kBannerRecords[] = {1020, 1019, 1026, 1022, 1021, 1024, 1025, 1023, 0, 0, 1100, 1101};
+constexpr const char* kBannerLabels[] = {"", "", "", "", "", "", "", "", "hud_shield_defense", "hud_critical", "", ""};
+constexpr const char* kBadgeLabels[] = {"hud_counter", "hud_defend", "hud_evade"};
 
 std::u16string utf16(const std::string& text) {
     std::u16string out;
@@ -122,6 +129,25 @@ Style menu_style(bool press) {
     s.outline_px = 1.0; s.shadow_px = .8; s.shadow_alpha = .45;
     return s;
 }
+Style banner_style(bool badge, const std::string& locale) {
+    Style s;
+    s.bold = true;
+    s.size = badge ? (locale == "en" ? 7.5 : 12) : 11; s.min_size = 6; s.pitch = badge ? 1.1 : 1.3;
+    s.max_width = badge ? 26 : 200;
+    const float green_top[3] = {.90f, 1.f, .90f}, green_bottom[3] = {.29f, .87f, .55f};
+    const float yellow_top[3] = {1.f, 1.f, .09f}, yellow_bottom[3] = {.64f, .64f, .03f};
+    for (int c = 0; c < 3; ++c) {
+        s.fill_top[c] = badge ? yellow_top[c] : green_top[c];
+        s.fill_bottom[c] = badge ? yellow_bottom[c] : green_bottom[c];
+        s.outline[c] = .02f;
+    }
+    s.outline_px = .6; s.outline_alpha = .8;
+    s.plate[0] = .12f; s.plate[1] = .14f; s.plate[2] = badge ? .42f : .27f; s.plate[3] = badge ? .95f : .88f;
+    s.plate_pad = badge ? 1.5 : 2.5;
+    s.min_plate[0] = badge ? 16 : 0; s.min_plate[1] = 16;
+    if (badge) { s.border[0] = 1; s.border[1] = 1; s.border[2] = .1f; s.border_px = 1; }
+    return s;
+}
 Style card_style(double size) {
     Style s;
     s.size = size; s.min_size = 11; s.pitch = 1.3;
@@ -155,8 +181,9 @@ Style copyright_style(const std::string& locale) {
 // Hash for cache keys: the style's numbers and the text.
 std::string style_key(const Style& s) {
     char buffer[160];
-    std::snprintf(buffer, sizeof buffer, "%d%d/%.2f/%.2f/%.2f/%.1f/%.1f/%.1f/%.2f/%.2f", s.bold, s.center, s.size, s.min_size,
-                  s.pitch, s.width, s.max_width, s.max_height, s.outline_px, s.shadow_px);
+    std::snprintf(buffer, sizeof buffer, "%d%d%d/%.2f/%.2f/%.3f/%.1f/%.1f/%.1f/%.2f/%.2f/%.2f/%.2f/%.2f", s.bold, s.center, int(s.origin), s.size,
+                  s.min_size, s.pitch, s.width, s.max_width, s.max_height, s.outline_px, s.shadow_px, s.outline_alpha, s.shadow_alpha,
+                  s.condense_min);
     return buffer;
 }
 
@@ -179,6 +206,8 @@ float brightest(const sprites::SceneId& id, int channel) {
 }
 }
 
+std::string key(const Style& style) { return style_key(style); }
+
 sprites::TextImage draw(const Style& style, const std::string& locale, const std::string& body, double density) {
     const auto set = fonts(locale, style.bold);
     const auto source = paragraphs(body);
@@ -192,7 +221,7 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
             auto layout = set->layout(paragraph, size, style.width > 0 ? style.width : 100000, locale);
             for (size_t i = 0; i < layout.lines().size(); ++i) {
                 const auto& line = layout.lines()[i];
-                overflow = overflow || line.overflow || (style.max_width > 0 && line.width > style.max_width);
+                overflow = overflow || line.overflow || (style.max_width > 0 && line.width * style.condense_min > style.max_width);
                 block_width = std::max(block_width, line.width);
                 lines.push_back({layout, i, line.width, false});
             }
@@ -205,6 +234,19 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
     TextImage image;
     image.units[0] = float(block_width + 2 * pad);
     image.units[1] = float(lines.size() * pitch + 2 * pad);
+    // Where the text block starts, and the plate box (units) when there is one.
+    double left = pad, top = pad, plate_box[4]{};
+    const bool plated = style.plate[3] > 0;
+    if (plated) {
+        const double w = std::max(block_width + 2 * style.plate_pad, style.min_plate[0]);
+        const double h = std::max(lines.size() * pitch + 2 * style.plate_pad, style.min_plate[1]);
+        image.units[0] = float(w + 2); image.units[1] = float(h + 2);
+        plate_box[0] = 1; plate_box[1] = 1; plate_box[2] = 1 + w; plate_box[3] = 1 + h;
+        left = 1 + (w - block_width) / 2; top = 1 + (h - lines.size() * pitch) / 2;
+    }
+    image.origin[0] = float(left + (style.origin == Style::Origin::right ? block_width
+                                    : style.origin == Style::Origin::center ? block_width / 2 : 0));
+    image.origin[1] = float(top);
     image.width = uint32_t(std::ceil(image.units[0] * density));
     image.height = uint32_t(std::ceil(image.units[1] * density));
     if (image.width > 4096 || image.height > 4096) {
@@ -216,11 +258,11 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
     double glyph_height = size * 1.22;
     for (size_t n = 0; n < lines.size(); ++n) {
         const auto& line = lines[n];
-        const double box_top = pad + n * pitch;
+        const double box_top = top + n * pitch;
         if (line.blank) continue;
         glyph_height = line.layout.line_height();
         const double y = box_top + (pitch - glyph_height) / 2;
-        const double x = pad + (style.center ? (block_width - line.width) / 2 : 0);
+        const double x = left + (style.center ? (block_width - line.width) / 2 : 0);
         text::TextDraw options;
         options.x = x * density; options.y = y * density; options.scale = density;
         options.first_line = line.index; options.line_count = 1;
@@ -246,7 +288,21 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
         for (int x = 0; x < w; ++x) {
             const size_t i = size_t(y) * w + x;
             float a = 0, rgb[3] = {0, 0, 0};
-            if (shift > 0 && x >= shift && y >= shift) a = ring[size_t(y - shift) * w + (x - shift)] * float(style.shadow_alpha);
+            if (plated) {
+                // Premultiplied plate, its border a band just inside the edge; edges antialiased.
+                const double ux = (x + .5) / density, uy = (y + .5) / density;
+                const double inside = std::min({ux - plate_box[0], plate_box[2] - ux, uy - plate_box[1], plate_box[3] - uy});
+                const float cover_plate = float(std::clamp(inside * density + .5, 0.0, 1.0));
+                const float edge = style.border_px > 0 ? float(std::clamp((style.border_px - inside) * density + .5, 0.0, 1.0)) : 0.f;
+                const float plate_a = style.plate[3] * cover_plate * (1 - edge), border_a = cover_plate * edge;
+                for (int c = 0; c < 3; ++c) rgb[c] = style.plate[c] * plate_a + style.border[c] * border_a;
+                a = plate_a + border_a;
+            }
+            if (shift > 0 && x >= shift && y >= shift) {
+                const float s2 = ring[size_t(y - shift) * w + (x - shift)] * float(style.shadow_alpha);
+                for (int c = 0; c < 3; ++c) rgb[c] *= 1 - s2;
+                a = s2 + a * (1 - s2);
+            }
             const float o = ring[i];
             for (int c = 0; c < 3; ++c) rgb[c] = style.outline[c] * o + rgb[c] * (1 - o);
             a = o + a * (1 - o);
@@ -257,6 +313,28 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
             image.rgba[i * 4 + 3] = uint8_t(std::lround(std::clamp(a, 0.f, 1.f) * 255));
         }
     }
+    // Narrowed to max_width: area-average each row onto fewer texels (premultiplied).
+    if (style.max_width > 0 && block_width > style.max_width && style.condense_min < 1) {
+        const double f = std::max(style.condense_min, style.max_width / block_width);
+        const int nw = std::max(1, int(std::ceil(w * f)));
+        std::vector<uint8_t> out(size_t(nw) * h * 4);
+        for (int y = 0; y < h; ++y)
+            for (int x = 0; x < nw; ++x) {
+                const double s0 = x / f, s1 = std::min(double(w), (x + 1) / f);
+                double sum[4]{}, total = 0;
+                for (int sx = int(s0); sx < int(std::ceil(s1)); ++sx) {
+                    const double wgt = std::min(s1, sx + 1.0) - std::max(s0, double(sx));
+                    if (wgt <= 0) continue;
+                    for (int c = 0; c < 4; ++c) sum[c] += wgt * image.rgba[(size_t(y) * w + sx) * 4 + c];
+                    total += wgt;
+                }
+                for (int c = 0; c < 4; ++c) out[(size_t(y) * nw + x) * 4 + c] = uint8_t(std::lround(total > 0 ? sum[c] / total : 0));
+            }
+        image.rgba = std::move(out);
+        image.width = uint32_t(nw);
+        image.units[0] = float(image.units[0] * f);
+        image.origin[0] = float(image.origin[0] * f);
+    }
     return image;
 }
 
@@ -264,6 +342,19 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
     const auto catalog = localization::snapshot();
     const std::string locale = catalog->locale;
     const bool cjk = locale != "en";
+    // Battle HUD: ability banners and the response badges.
+    if (id.atlas == kHudAtlas && id.palette == kHudPalette && id.scene >= kBannerFirst && id.scene <= kHyperJammer) {
+        const bool badge = id.scene >= kBadgeFirst && id.scene < kHyperJammer;
+        std::string text;
+        if (badge) text = catalog->ui(kBadgeLabels[id.scene - kBadgeFirst]);
+        else if (id.scene == kHyperJammer) text = dialogue::ui_text(rdram, 1116);
+        else if (const uint16_t record = kBannerRecords[id.scene - kBannerFirst]) text = dialogue::ui_text(rdram, record);
+        else text = catalog->ui(kBannerLabels[id.scene - kBannerFirst]);
+        if (const auto end = text.find("<END>"); end != std::string::npos) text.erase(end);
+        if (text.empty()) return false;
+        job_for(job, banner_style(badge, locale), locale, text, badge ? "hud-badge" : "hud-banner");
+        return true;
+    }
     // Title ring menu and PRESS START BUTTON; the palette's brightest colour tints it.
     if (id.atlas == kTitleAtlas && id.scene >= kPressStart && id.scene <= kMenuLast) {
         const auto label = catalog->ui(kMenuLabels[id.scene - kPressStart]);

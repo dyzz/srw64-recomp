@@ -32,12 +32,13 @@ struct SceneId {
 struct TextImage {
     uint32_t width = 0, height = 0;
     float units[2]{};
+    float origin[2]{};                  // Anchor::origin: the image point placed on the given position
     std::vector<uint8_t> rgba;
 };
 struct TextJob {
     std::string key;                    // same key, same image: the cache identity
     std::function<TextImage()> render;  // runs on a worker thread
-    enum class Anchor { center, top } anchor = Anchor::center;
+    enum class Anchor { center, top, origin } anchor = Anchor::center;
     float tint[3]{1, 1, 1};             // multiplies the image colour (title menu palettes)
 };
 // Game thread: the text a sprite shows, or false to leave it to the images.
@@ -48,4 +49,21 @@ void metal_init(plume::RenderDevice* device);
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const SceneDraw& draw);
+// Mode 9 scenes (800945D4: 16x16 cells of a type-6 grid scene), game thread: when the
+// text describer names the scene (battle HUD banners and badges), its cells go and the
+// text is drawn centred on them. Other scenes are left alone.
+void rewrite_grid(uint8_t* rdram, const SceneDraw& draw);
+// Original UI text (docs/native/native-ui-text.md), game thread: one native draw for a
+// whole text pass, in place of the texture rectangle at `marker` (G_TEXRECT, E1, F1,
+// after a SETTILESIZE the tag replaces), which is resized to `bounds` (x0, y0, x1, y1).
+// Each item's image origin goes on its (x, y) in N64 screen pixels. False when the host
+// cannot draw text: the caller then leaves the original glyphs. The caller blanks the rest.
+struct PlacedText {
+    TextJob job;
+    float x = 0, y = 0;
+};
+bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const std::vector<PlacedText>& items);
+// Text jobs placed and drawn, for the caller's summary.
+struct TextCounts { uint64_t placed = 0, waiting = 0; };
+TextCounts text_counts();
 }

@@ -44,7 +44,7 @@ struct Asset {
     std::function<TextImage()> render;       // native text
     enum State { idle, queued, ready, failed } state = idle;
     uint32_t width = 0, height = 0;
-    float units[2]{};
+    float units[2]{}, origin[2]{};
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mips, dropped after upload
     MTL::Texture* texture{};
     Clock::time_point used{};
@@ -62,7 +62,10 @@ struct Draw {
     bool quad = false, wrap = false, text = false;
     TextJob::Anchor anchor = TextJob::Anchor::center;
     float rect[4]{};      // union of the parts: screen x0,y0,x1,y1 (N64 px), or model x0,top,x1,bottom (y up)
+    float at[2]{};        // Anchor::origin: where the image origin goes (screen N64 px)
     float z = 0;
+    struct Item { int asset = -1; float at[2]{}, tint[3]{1, 1, 1}; };
+    std::vector<Item> items;  // a UI text pass: many images in one draw
     float uv[4]{0, 0, 1, 1};
     float color[4]{1, 1, 1, 1};  // tint and prim alpha
 };
@@ -87,6 +90,7 @@ std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger, bool>, MTL
 std::array<MTL::DepthStencilState*, 4> depth_states{};
 MTL::SamplerState *clamp_sampler{}, *wrap_sampler{};
 std::atomic<uint64_t> rewritten{}, rendered{}, pending{}, skipped{}, unexpected{}, decoded{}, released{}, failures{};
+std::atomic<uint64_t> text_placed{}, text_waiting{};
 std::mutex log_mutex;
 std::set<std::string> logged;
 std::ofstream log;
@@ -164,12 +168,13 @@ void work() {
         }
         std::vector<uint8_t> pixels;
         uint32_t w = 0, h = 0;
-        float units[2]{};
+        float units[2]{}, origin[2]{};
         bool ok = false;
         try {
             if (render) {
                 auto image = render();
                 w = image.width; h = image.height; units[0] = image.units[0]; units[1] = image.units[1];
+                origin[0] = image.origin[0]; origin[1] = image.origin[1];
                 pixels = std::move(image.rgba);
                 ok = w && h && pixels.size() == size_t(w) * h * 4;
             } else {
@@ -191,6 +196,7 @@ void work() {
         if (!ok) { asset.state = Asset::failed; ++failures; continue; }
         asset.width = w; asset.height = h;
         asset.units[0] = units[0]; asset.units[1] = units[1];
+        asset.origin[0] = origin[0]; asset.origin[1] = origin[1];
         asset.levels.clear();
         asset.levels.push_back(std::move(pixels));
         add_mips(asset);
@@ -321,6 +327,70 @@ MTL::Texture* texture_for(Asset& asset) {
     return asset.texture;
 }
 
+struct Uniforms {
+    float mvp[16], viewportScale[4], viewportTranslate[4], resolution[4], screen[4];
+    float rect[4], uv[4], color[4], z[4];
+};
+
+MTL::RenderCommandEncoder* begin_pass(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer,
+                                      const RT64::NativeMeshDraw& call, bool quad, const char* label) {
+    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
+    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
+        throw std::runtime_error("Scene sprites require the scene color and depth attachments");
+    auto* color = fb->colorAttachments[0].getTexture();
+    auto* depth = fb->depthAttachment.getTexture();
+    auto* pipeline = pipeline_for(color, depth, quad);
+    auto* command = static_cast<plume::MetalCommandList*>(list);
+    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
+    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
+    auto* attachment = pass->colorAttachments()->object(0);
+    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
+    pass->depthAttachment()->setTexture(depth);
+    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
+    auto* encoder = command->mtl->renderCommandEncoder(pass);
+    encoder->setLabel(NS::String::string(label, NS::UTF8StringEncoding));
+    encoder->setRenderPipelineState(pipeline);
+    encoder->setDepthStencilState(depth_states[call.depthCompare ? 1 : 0]);  // blended: never write depth
+    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
+    const auto& sc = call.scissor;
+    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(sc.left), NS::UInteger(sc.top), NS::UInteger(sc.right - sc.left), NS::UInteger(sc.bottom - sc.top)});
+    encoder->setCullMode(MTL::CullModeNone);
+    return encoder;
+}
+
+// A UI text pass: every item in one encoder, at its label position (screen N64 px).
+bool render_items(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call, const Draw& draw) {
+    struct Ready { MTL::Texture* texture; float units[2], origin[2]; };
+    std::vector<std::pair<const Draw::Item*, Ready>> drawable;
+    {
+        std::lock_guard lock(asset_mutex);
+        for (const auto& item : draw.items) {
+            if (item.asset < 0) continue;
+            Asset& asset = *assets[size_t(item.asset)];
+            if (auto* texture = texture_for(asset))
+                drawable.push_back({&item, {texture, {asset.units[0], asset.units[1]}, {asset.origin[0], asset.origin[1]}}});
+        }
+    }
+    if (drawable.empty()) { ++skipped; return true; }
+    auto* encoder = begin_pass(list, framebuffer, call, false, "SRW64 UI text");
+    encoder->setFragmentSamplerState(clamp_sampler, 0);
+    for (const auto& [item, image] : drawable) {
+        Uniforms u{};
+        u.rect[0] = item->at[0] - image.origin[0]; u.rect[1] = item->at[1] - image.origin[1];
+        u.rect[2] = u.rect[0] + image.units[0]; u.rect[3] = u.rect[1] + image.units[1];
+        u.uv[2] = u.uv[3] = 1;
+        u.color[0] = item->tint[0]; u.color[1] = item->tint[1]; u.color[2] = item->tint[2]; u.color[3] = 1;
+        u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
+        encoder->setVertexBytes(&u, sizeof(u), 0);
+        encoder->setFragmentBytes(&u, sizeof(u), 0);
+        encoder->setFragmentTexture(image.texture, 0);
+        encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
+    }
+    encoder->endEncoding();
+    rendered += drawable.size();
+    return true;
+}
+
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
     if ((call.id & 0xFFFF0000u) != kIdBase) return previous_render ? previous_render(list, framebuffer, call) : false;
     Draw draw;
@@ -330,13 +400,15 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     }
     // The original parts are gone either way: a stale id or a texture not ready draws nothing.
     if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !device || (draw.quad && !call.workload)) { ++skipped; return true; }
+    if (!draw.items.empty()) return render_items(list, framebuffer, call, draw);
     MTL::Texture* texture;
-    float units[2];
+    float units[2], origin[2];
     {
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(draw.asset)];
         texture = texture_for(asset);
         units[0] = asset.units[0]; units[1] = asset.units[1];
+        origin[0] = asset.origin[0]; origin[1] = asset.origin[1];
     }
     if (!texture) { ++skipped; return true; }
     struct {
@@ -344,7 +416,11 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         float rect[4], uv[4], color[4], z[4];
     } u{};
     float rect[4] = {draw.rect[0], draw.rect[1], draw.rect[2], draw.rect[3]};
-    if (draw.text) {
+    if (draw.text && draw.anchor == TextJob::Anchor::origin) {
+        // UI text: the image origin on the label's own position.
+        rect[0] = draw.at[0] - origin[0]; rect[1] = draw.at[1] - origin[1];
+        rect[2] = rect[0] + units[0]; rect[3] = rect[1] + units[1];
+    } else if (draw.text) {
         // Text keeps its own size, centred on the original frame or hung from its top.
         const float cx = (rect[0] + rect[2]) / 2, w = units[0], h = units[1];
         rect[0] = cx - w / 2; rect[2] = cx + w / 2;
@@ -579,6 +655,105 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     put(rdram, marker - 8, kTagW0); put(rdram, marker - 4, kTagW1 | record.id);
     ++rewritten;
 }
+
+void rewrite_grid(uint8_t* rdram, const SceneDraw& draw) {
+    if (!installed || !describe || draw.dl_end <= draw.dl_begin || draw.slot >= 300 || draw.sub >= 4) return;
+    const uint32_t sub = kSlots + draw.slot * kSlotSize + kSubBase + draw.sub * kSubSize;
+    SceneId id;
+    uint32_t scene_data, atlas_data, palette_data;
+    if (!resource(rdram, int16_t(half(rdram, sub + 0xA)), id.scene, scene_data) ||
+        !resource(rdram, int16_t(half(rdram, sub + 0xC)), id.atlas, atlas_data) ||
+        !resource(rdram, int16_t(half(rdram, sub + 0xE)), id.palette, palette_data)) return;
+    for (int i = 0; i < 16; ++i) id.colors[i] = half(rdram, palette_data + 8 + 2u * i);
+    id.slot = draw.slot; id.sub = draw.sub;
+    TextJob job;
+    if (!describe(rdram, id, job)) {
+        note("grid-seen:" + std::to_string(id.scene) + "/" + std::to_string(id.palette),
+             {{"kind", "grid seen"}, {"scene", id.scene}, {"atlas", id.atlas}, {"palette", id.palette}, {"slot", draw.slot}});
+        return;
+    }
+    std::vector<uint32_t> rects;
+    float x0 = 1e9f, y0 = 1e9f, x1 = -1e9f, y1 = -1e9f;
+    for (uint32_t p = draw.dl_begin; p + 24 <= draw.dl_end; p += 8) {
+        const uint32_t w0 = word(rdram, p), op = w0 >> 24;
+        if ((op != 0xE4 && op != 0xE5) || (word(rdram, p + 8) >> 24) != 0xE1 || (word(rdram, p + 16) >> 24) != 0xF1) continue;
+        const uint32_t w1 = word(rdram, p + 4);
+        x0 = std::min(x0, ((w1 >> 12) & 0xFFF) / 4.f); y0 = std::min(y0, (w1 & 0xFFF) / 4.f);
+        x1 = std::max(x1, ((w0 >> 12) & 0xFFF) / 4.f); y1 = std::max(y1, (w0 & 0xFFF) / 4.f);
+        rects.push_back(p);
+        p += 16;
+    }
+    // The tag goes where it cannot hit a load: over a SETTILESIZE or a blanked rectangle.
+    uint32_t marker = 0;
+    for (size_t r = 0; r < rects.size() && !marker; ++r)
+        if ((word(rdram, rects[r] - 8) >> 24) == 0xF2 || (r && rects[r - 1] + 24 == rects[r])) marker = rects[r];
+    const std::string identity = std::to_string(id.scene) + "/" + std::to_string(id.atlas) + "/" + std::to_string(id.palette);
+    if (!marker || x1 <= x0 || y1 <= y0) {
+        ++unexpected;
+        note("grid-odd:" + identity, {{"kind", "left original"}, {"scene", id.scene}, {"rects", rects.size()}});
+        return;
+    }
+    Draw record;
+    record.asset = text_asset(job);
+    record.text = true;
+    record.anchor = TextJob::Anchor::center;
+    std::copy(std::begin(job.tint), std::end(job.tint), record.color);
+    record.rect[0] = x0; record.rect[1] = y0; record.rect[2] = x1; record.rect[3] = y1;
+    if (!ready(record.asset)) ++pending;
+    uint32_t id_number;
+    {
+        std::lock_guard lock(ring_mutex);
+        id_number = record.id = next_id;
+        next_id = next_id % 0xFFFF + 1;
+        ring[id_number % kRing] = std::move(record);
+    }
+    note("grid:" + identity + ":" + job.key, {{"kind", "grid text"}, {"scene", id.scene}, {"rects", rects.size()},
+         {"rect", {x0, y0, x1, y1}}, {"key", job.key}});
+    for (const uint32_t p : rects)
+        if (p != marker) for (uint32_t k = 0; k < 24; k += 4) put(rdram, p + k, 0);
+    const auto coord = [](float v) { return uint32_t(std::clamp(v * 4.f, 0.f, 4095.f)); };
+    put(rdram, marker, 0xE4000000 | coord(x1) << 12 | coord(y1));
+    put(rdram, marker + 4, coord(x0) << 12 | coord(y0));
+    put(rdram, marker + 8, 0xE1000000); put(rdram, marker + 12, 0);
+    put(rdram, marker + 16, 0xF1000000); put(rdram, marker + 20, 0x04000400);
+    put(rdram, marker - 8, kTagW0); put(rdram, marker - 4, kTagW1 | id_number);
+    ++rewritten;
+}
+
+bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const std::vector<PlacedText>& items) {
+    if (!installed || items.empty() || (word(rdram, marker) >> 24) != 0xE4 || (word(rdram, marker - 8) >> 24) != 0xF2 ||
+        (word(rdram, marker + 8) >> 24) != 0xE1 || (word(rdram, marker + 16) >> 24) != 0xF1) return false;
+    Draw record;
+    record.text = true;
+    record.anchor = TextJob::Anchor::origin;
+    std::copy(bounds, bounds + 4, record.rect);
+    for (const auto& item : items) {
+        Draw::Item entry;
+        entry.asset = text_asset(item.job);
+        entry.at[0] = item.x; entry.at[1] = item.y;
+        std::copy(std::begin(item.job.tint), std::end(item.job.tint), entry.tint);
+        // Text not drawn yet shows nothing this frame, as the story text does.
+        if (!ready(entry.asset)) ++text_waiting;
+        record.items.push_back(entry);
+    }
+    record.asset = record.items.front().asset;
+    uint32_t id;
+    {
+        std::lock_guard lock(ring_mutex);
+        id = record.id = next_id;
+        next_id = next_id % 0xFFFF + 1;
+        ring[id % kRing] = std::move(record);
+    }
+    const auto coord = [](float v) { return uint32_t(std::clamp(v * 4.f, 0.f, 4095.f)); };
+    put(rdram, marker, 0xE4000000 | coord(bounds[2]) << 12 | coord(bounds[3]));
+    put(rdram, marker + 4, coord(bounds[0]) << 12 | coord(bounds[1]));
+    put(rdram, marker + 8, 0xE1000000); put(rdram, marker + 12, 0);
+    put(rdram, marker + 16, 0xF1000000); put(rdram, marker + 20, 0x04000400);
+    put(rdram, marker - 8, kTagW0); put(rdram, marker - 4, kTagW1 | id);
+    text_placed += items.size();
+    return true;
+}
+TextCounts text_counts() { return {text_placed.load(), text_waiting.load()}; }
 
 void shutdown() {
     if (!installed) return;

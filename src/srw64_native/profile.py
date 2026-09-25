@@ -38,6 +38,8 @@ UI_KEYS |= {"title_press_start", "title_start", "title_load", "title_continue", 
 # The title menu pages (title_page.cpp) and their original/native switch.
 UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_original", "settings_title_ui_note",
             "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint"}
+# Battle HUD banners and response badges drawn natively (sprite_text.cpp).
+UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
 UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}

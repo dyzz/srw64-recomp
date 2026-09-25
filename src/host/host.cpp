@@ -32,6 +32,7 @@
 #include "native_background.hpp"
 #include "native_sprite.hpp"
 #include "sprite_text.hpp"
+#include "ui_text.hpp"
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
@@ -348,6 +349,8 @@ static int run_host(int argc, char** argv) {
         auto byte = [&](uint32_t a) { return ram[a ^ 3]; };
         auto half = [&](uint32_t a) { uint16_t v; std::memcpy(&v, ram + (a ^ 2), 2); return v; };
         auto word = [&](uint32_t a) { uint32_t v; std::memcpy(&v, ram + a, 4); return v; };
+        // Mode 9 scenes the text describer knows (battle HUD banners and badges).
+        srw64::sprites::rewrite_grid(ram, {begin, end, slot, sub, false});
         if (byte(record + 3)) return;  // overview scaling (800943E0) keeps the original cells
         float origin_x, origin_y;
         const uint32_t ox = word(base + 4), oy = word(base + 8);
@@ -369,6 +372,7 @@ static int run_host(int argc, char** argv) {
         srw64::sprites::rewrite(ram, {begin, end, slot, sub, quads});
     };
     srw64::sprites::set_text(srw64::sprite_text::describe);
+    srw64::ui_text::configure(output_dir);
     srw64::names::configure(output_dir);
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);

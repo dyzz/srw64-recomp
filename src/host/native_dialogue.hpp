@@ -16,6 +16,23 @@ std::string ui_text(const uint8_t* ram,uint16_t id);
 // catalog form (<BR> lines, <STOP> blank lines, <END>); Japanese is the entries' original
 // lines. Empty when no dialogue text file has the page. Any thread.
 std::string page_text(const std::string& locale,unsigned resource);
+// Original UI text (docs/native/native-ui-text.md), game thread. A label of the text
+// engine (a 0x34-byte slot of the pool at 8015CB00) in the reading language: the
+// record's translation while the label still shows that record's Japanese text, else
+// the glyphs as drawn, lines split by '\n'. Empty when the reader is not configured.
+std::string label_text(const uint8_t* ram,uint32_t label);
+// Glyph codes as text, up to 0xFFFF; empty for an unterminated buffer.
+std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit);
+// One ROM font glyph as text.
+std::string glyph_string(uint16_t code);
+// A body text slot (0x218 bytes at 800FBAB0: choice and objective windows when the
+// reader shows no box there): the page it draws, in the reading language while it is
+// that record's Japanese page, else as drawn. Lines split by '\n'.
+std::string body_page(const uint8_t* ram,uint32_t body);
+// Whether the reader draws this label slot or this screen position itself: the
+// speaker names and everything inside a dialogue box it shows.
+bool reader_owns(unsigned label_slot,double x,double y);
+bool reader_configured();
 std::u16string utf16(const std::string&);
 std::string utf8(const std::u16string&);
 // Plain lines 1.22 x size apart: names, history and the typesetting check.

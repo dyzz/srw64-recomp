@@ -234,6 +234,11 @@
     "title_options_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   Esc / X 返回",
     "title_sound_hint": "↑↓ 选曲   ·   Enter / Z 播放   ·   Q / E 上一首／下一首   ·   Esc / X 停止或返回",
     "title_karaoke_hint": "↑↓ 选曲   ·   Enter / Z 开始   ·   Esc / X 返回",
+    "hud_counter": "反",
+    "hud_defend": "防",
+    "hud_evade": "避",
+    "hud_shield_defense": "盾牌防御",
+    "hud_critical": "暴击",
     "intermission_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   也可以直接点击",
     "intermission_swap_hint": "↑↓ 选择   ·   Enter / Z 确定   ·   Esc / X 关闭",
     "intermission_swap_refused": "现在没有可以换乘的对象。",
@@ -5430,7 +5435,7 @@
     {
       "key": "base:t00_00906",
       "source_sha256": "ebd247f95e40b72f19cf42eecbd7045506603e6556d94eda1cf116a16131afd4",
-      "target": "驾驶员能力<END>",
+      "target": "机师能力<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25807,7 +25812,7 @@
     {
       "key": "base:t00_04049",
       "source_sha256": "80d672d5c9801c74ab45484a201f74ea7f10f3a5176707e452228709f6da66c6",
-      "target": "驾驶员能力<END>",
+      "target": "机师能力<END>",
       "review_status": "draft",
       "origin": "terms"
     },

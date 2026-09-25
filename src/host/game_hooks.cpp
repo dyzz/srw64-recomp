@@ -167,6 +167,14 @@ void resident_func_8008DC40(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, pointer) & 0x1FFFFFFF;
     if (srw64_game_hooks.text_drawn) srw64_game_hooks.text_drawn(rdram, begin, end);
+    if (srw64_game_hooks.ui_text_drawn) srw64_game_hooks.ui_text_drawn(rdram, begin, end, false);
+}
+void resident_func_8008EB5C(uint8_t* rdram, recomp_context* ctx) {
+    const int32_t pointer = ctx->r4;
+    const uint32_t begin = MEM_W(0, pointer) & 0x1FFFFFFF;
+    srw64_original_text_front_draw(rdram, ctx);
+    const uint32_t end = MEM_W(0, pointer) & 0x1FFFFFFF;
+    if (srw64_game_hooks.ui_text_drawn) srw64_game_hooks.ui_text_drawn(rdram, begin, end, true);
 }
 void resident_func_800945D4(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
