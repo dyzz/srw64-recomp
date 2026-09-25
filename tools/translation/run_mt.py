@@ -993,8 +993,9 @@ def cmd_collect(args) -> None:
                                **({"flag": item["flag"]} if item.get("flag") else {}),
                                **({"reason": item["reason"]} if item.get("reason") else {}),
                                **({"warnings": item["warnings"]} if item.get("warnings") else {})}})
-    document = {"schema": "srw64.locale.v1", "locale": locale, "source_locale": "ja", "font": catalog["font"],
-                "ui": {}, "entries": entries}
+    # The catalog's "font" is only a cache key now and is going away; pass it on while it exists.
+    document = {"schema": "srw64.locale.v1", "locale": locale, "source_locale": "ja",
+                **({"font": catalog["font"]} if "font" in catalog else {}), "ui": {}, "entries": entries}
     compiled = compile_locale(document, sources, hashes)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps({"schema": "srw64.mt-drafts.v1", "locale": locale, "runs": args.tag,
