@@ -35,6 +35,8 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
 ROM_DERIVED = ("art/frames",)
+# Scene images that are algorithmic upscales of ROM frames (tools/hd_ai/flat_scene_hd.py).
+ROM_DERIVED_SCENES = ("scene-images/banpresto-logo.png", "scene-images/game-over.png")
 
 
 def sha256(path: Path) -> str:
@@ -146,6 +148,15 @@ def main() -> int:
         if (pack_dir / "hd" / relative).exists():
             shutil.rmtree(pack_dir / "hd" / relative)
             print(f"     left out {relative} (ROM-derived)", flush=True)
+    scenes = pack_dir / "hd/art/srw64-scene-images.json"
+    if scenes.is_file():
+        index = json.loads(scenes.read_text())
+        kept = [row for row in index["images"] if row["file"] not in ROM_DERIVED_SCENES]
+        for row in index["images"]:
+            if row not in kept:
+                (pack_dir / "hd/art" / row["file"]).unlink()
+                print(f"     left out {row['file']} (ROM-derived)", flush=True)
+        scenes.write_text(json.dumps({**index, "images": kept}, indent=2) + "\n")
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
     hd_zip = output / f"SRW64-{args.version}-HD.zip"

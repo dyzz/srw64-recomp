@@ -9,9 +9,8 @@ SRW64 Recompiled — HD 图片包 / HD image pack
 - 头像、场间背景、剧情世界地图、宇宙物件和标题 Logo 与火焰，
   由阿里云百炼的通义千问图像模型（qwen-image-3.0 / qwen-image-3.0-pro）
   以原版画面为参考生成，属于 AI 生成内容。
-- BANPRESTO 标志与 GAME OVER 由原图按算法放大；对话框和战斗界面边框由代码绘制；
-  世界地图的舰船、地标与 5600 标记是自制模型。
-- 包内不含 ROM 数据。
+- 对话框和战斗界面边框由代码绘制；世界地图的舰船、地标与 5600 标记是自制模型。
+- 包内不含 ROM 数据。BANPRESTO 标志、GAME OVER 和窗口边框由原版画面算出，不在包里，由游戏处理。
 
 这是非官方的粉丝作品，与万代南梦宫、万普（BANPRESTO）及各作品的版权方无关。
 原作角色、美术与商标的权利归各自的权利人所有。
@@ -24,9 +23,10 @@ the app of the same version, and replace it as a whole when you update.
 The portraits, intermission backgrounds, story world map, space objects and the title
 logo and flames are AI-generated with Alibaba Cloud Model Studio (Qwen image models
 qwen-image-3.0 / qwen-image-3.0-pro), using the original graphics as reference. The
-BANPRESTO logo and GAME OVER are algorithmic upscales of the originals; the dialogue
-and battle frames are drawn by code; the world-map ships, landmarks and the 5600 marker
-are models made for this project. The pack contains no ROM data.
+dialogue and battle frames are drawn by code; the world-map ships, landmarks and the
+5600 marker are models made for this project. The pack contains no ROM data: the
+BANPRESTO logo, GAME OVER and the window frames are computed from the original
+graphics, so they are not in the pack and the game handles them.
 
 This is an unofficial fan work, not affiliated with Bandai Namco, BANPRESTO or the
 rights holders of the series. The original characters, art and trademarks belong to
