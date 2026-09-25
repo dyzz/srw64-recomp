@@ -446,6 +446,35 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             }
         }
     }
+    // A printed number padded between its sign and its digits ("+     0", "+    5") has the
+    // digits right-aligned but the sign at the string's own start, so rows whose numbers are
+    // padded to different widths (the map's 資金 / 経験値 reward box) show their signs a cell
+    // apart. Give the sign the leftmost column its row group uses, so it lines up the way the
+    // digits already do. Signs written tight against their digits ("+30", "+10%") keep theirs.
+    std::map<size_t, float> sign_x;   // label -> where its leading sign goes
+    {
+        struct Sign { size_t label; int x, y, right; };
+        std::vector<Sign> signs;
+        for (size_t i = 0; i < found.size(); ++i) {
+            const Label& l = found[i];
+            if (l.id != 0 || l.consumed || l.cells.size() < 2) continue;
+            const auto& lead = l.cells.front();
+            const std::string mark = lead.code == kLongDash ? std::string("-") : dialogue::glyph_string(lead.code);
+            if (lead.icon || (mark != "+" && mark != "-")) continue;
+            // Padded: a gap between the sign's cell and the digits that follow it.
+            const auto& next = l.cells[1];
+            if (next.y != lead.y || next.x <= lead.x + lead.width) continue;
+            const auto& last = l.cells.back();
+            signs.push_back({i, lead.x, lead.y, last.x + last.width});
+        }
+        for (const auto& a : signs) {
+            int column = a.x;
+            for (const auto& b : signs)
+                if (std::abs(b.y - a.y) > int(kLine) && b.right == a.right)
+                    column = std::min(column, b.x);
+            if (column != a.x) sign_x[a.label] = float(column) + kNarrow / 2.f;
+        }
+    }
     // 3. Draw.
     for (size_t i = 0; i < found.size(); ++i) {
         Label& l = found[i];
@@ -468,8 +497,11 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 // Cell by cell the regular face in every language: Condensed digits leave gaps.
                 if (const auto fit = fitted.find({i, k}); fit != fitted.end())
                     items.push_back(placed(fit->second.style, "ja", glyph, "glyph", fit->second.x, float(c.y), tint));
-                else
-                    items.push_back(placed(label_style("ja", 0, true), "ja", glyph, "glyph", c.x + c.width / 2.f, float(c.y), tint));
+                else {
+                    float x = c.x + c.width / 2.f;
+                    if (k == 0) if (const auto moved = sign_x.find(i); moved != sign_x.end()) x = moved->second;
+                    items.push_back(placed(label_style("ja", 0, true), "ja", glyph, "glyph", x, float(c.y), tint));
+                }
                 take(k);
             }
             counts.glyphs += l.cells.size();
