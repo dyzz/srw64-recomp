@@ -117,6 +117,19 @@ void on_init(uint8_t* rdram, recomp_context*) {
 #if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
     srw64::rom_art::initialize({rom.data(),rom.size()});
+    // With an HD art pack, BANPRESTO and GAME OVER are upscaled from the ROM here rather
+    // than shipped (docs/native/native-title-and-story-images.md).
+    if(const char* art=std::getenv("SRW64_ART_PACK");art && *art)
+        for(const auto& spec:srw64::rom_art::flat_scenes())
+            srw64::sprites::add_generated_image(spec.scene,spec.atlas,spec.palette,{0},[spec] {
+                srw64::sprites::TextImage out;
+                auto image=srw64::rom_art::flat_image(spec);
+                out.width=uint32_t(image.width);out.height=uint32_t(image.height);
+                for(size_t i=0;i<image.rgba.size();i+=4)
+                    for(int c=0;c<3;++c)image.rgba[i+c]=uint8_t((image.rgba[i+c]*image.rgba[i+3]+127)/255);
+                out.rgba=std::move(image.rgba);
+                return out;
+            });
 #endif
     // The generic runtime initially loads/registers 1 MiB. Only the resident
     // section belongs at this entrypoint; the game's own loader owns overlays.

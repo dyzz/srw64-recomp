@@ -14,6 +14,7 @@
 //   the palette index of the nearest original pixel, so the colour cycling that runs light
 //   along the frames still plays. Crop and table match tools/hd_ai/frame_hd.py
 //   (tests/native_rom_art.cpp).
+// - The BANPRESTO logo and GAME OVER: flat-colour scenes, upscaled (flat_image below).
 namespace srw64::rom_art {
 // The ROM the runtime loaded; it must outlive every call.
 void initialize(std::span<const uint8_t> rom);
@@ -37,4 +38,14 @@ struct IndexImage {
 };
 // Empty (width 0) when the scene has no picture or does not decode.
 IndexImage frame_image(const FrameSpec& spec);
+
+// Flat-colour scenes upscaled 8x (the BANPRESTO logo 619 and GAME OVER 614): every pixel
+// split between its two nearest key colours, each colour group upscaled and smoothed,
+// the strongest group winning with a steep soft-argmax. Same method as
+// tools/hd_ai/flat_scene_hd.py (Pillow's filters are matched closely, not bit for bit).
+struct FlatSpec { uint16_t scene = 0, atlas = 0, palette = 0; };
+const std::vector<FlatSpec>& flat_scenes();
+// Straight-alpha RGBA8 at 8x the scene's frame; empty (width 0) when it does not decode.
+struct RgbaImage { int width = 0, height = 0; std::vector<uint8_t> rgba; };
+RgbaImage flat_image(const FlatSpec& spec);
 }

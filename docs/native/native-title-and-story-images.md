@@ -12,7 +12,7 @@
 | 结局 | 7 张（5570–5576） | 原生文字，译文取自 `ending.txt`（本次新写） |
 | 制作人员名单 | 20 页（5544–5563），在尾声与「終」之间 | 原生文字，跟随语言，取自 `credits.txt` |
 | 版权页 | 开机时的 620（场景 622） | 原生文字，各语言都保留原文 |
-| BANPRESTO 标志、GAME OVER | 617（场景 619）、615（场景 614） | 整帧高清图，跟随 F6；不经 AI |
+| BANPRESTO 标志、GAME OVER | 617（场景 619）、615（场景 614） | 整帧高清图，游戏运行时从 ROM 生成，跟随 F6；不经 AI |
 
 没有处理：标题集中线（611，调色板动画）、演示战斗里飞过的作品名和机体名。
 
@@ -88,7 +88,10 @@
 
 - **制作人员名单**：与结局页同一种处理，[`sprite_text.cpp`](../../src/host/sprite_text.cpp) 的 `staff_style` 居中、行距约 30 单位（原图的行距）。文字在 `content/dialogue/<语言>/credits.txt` 的 `@intro:<资源号>` 条目：职位译出；中文人名沿用日文汉字转简体，假名笔名保持原样；英文人名罗马字、名在前。原文行（`>`）就是日文显示的内容。
 - **版权页**：`copyright_style` 左对齐，同样放在 `credits.txt`（`@intro:620`）。按用户要求只换成原生文字，三种语言都是原文。
-- **BANPRESTO 标志与 GAME OVER**：[`flat_scene_hd.py`](../../tools/hd_ai/flat_scene_hd.py) 放大 8 倍（1792×768、1280×256）。标志是商标，不经 AI：两者都只有几种平涂色加抗锯齿，每个像素按最近的两种关键色分解，各色层放大、平滑后取陡峭的软最大值，边缘约 1 个输出像素宽；GAME OVER 灰色描边层保留原来的明暗。缩回原尺寸与原图平均差 5.6 级。输出在 `assets/hd-ai/title/whole-v2`（whole-v1 加这两张），`stage1-hd.json` 的 `scene_images` 指向它。
+- **BANPRESTO 标志与 GAME OVER**：放大 8 倍（1792×768、1280×256）。标志是商标，不经 AI：两者都只有几种平涂色加抗锯齿，每个像素按最近的两种关键色分解，各色层放大、平滑后取陡峭的软最大值，边缘约 1 个输出像素宽；GAME OVER 灰色描边层保留原来的明暗。
+  - 2026-09-25 起由游戏运行时从玩家的 ROM 生成（用户决定），HD 包里没有这两张图：[`rom_art.cpp`](../../src/host/rom_art.cpp) 的 `flat_image` 移植了 [`flat_scene_hd.py`](../../tools/hd_ai/flat_scene_hd.py) 的算法（Pillow 的双三次缩放、盒式模糊近似高斯都照着实现），`host.cpp` 在 `on_init` 用 [`native_sprite`](../../src/host/native_sprite.cpp) 的 `add_generated_image` 登记，场景第一次出现时在解码线程上生成，与文件图一样走整帧绘制。有 HD 美术包（`SRW64_ART_PACK`）时才登记。
+  - `stage1-hd.json` 的 `scene_images` 改回 `assets/hd-ai/title/whole-v1`（标题 Logo 与火焰）。`flat_scene_hd.py` 的输出 `whole-v2` 只在本机作对照：`make recomp-rom-art-test` 比较预乘后的差，BANPRESTO 平均 0.2 级；GAME OVER 约 4 级，差在描边边缘错开一个像素，画面相同。
+  - 实机：BANPRESTO 开机第 147 帧起画生成图（`build/recomp/debug/20260925T071832.109292Z/banpresto.png`）；GAME OVER 在测试关卡里画生成图（`20260925T072039.132657Z`、`20260925T072411.224535Z` 的 `scene-sprites.jsonl` 有场景 614 的 `image` 行），用户实机看过没有问题。
 - 测试关卡 `game-over.json`：开场切到战场后直接 `3D4C`。
 
 ## 文字识别

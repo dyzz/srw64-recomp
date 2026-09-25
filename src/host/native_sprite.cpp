@@ -76,6 +76,7 @@ Describe describe{};
 std::vector<std::unique_ptr<Asset>> assets;
 std::map<std::string, int> by_key;
 std::vector<Image> images;
+std::mutex image_mutex;                      // images: the art pack and the ROM register on different threads
 std::mutex asset_mutex;                      // assets, levels and states cross threads
 std::deque<int> queue;
 std::condition_variable queue_ready;
@@ -393,8 +394,12 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing scene image " + asset->file.string());
             asset->key = "image:" + row.at("file").get<std::string>();
-            image.asset = int(assets.size());
-            assets.push_back(std::move(asset));
+            {
+                std::lock_guard lock(asset_mutex);
+                image.asset = int(assets.size());
+                assets.push_back(std::move(asset));
+            }
+            std::lock_guard lock(image_mutex);
             images.push_back(image);
         }
         fprintf(stderr, "SRW64_SCENE_IMAGES loaded %zu frame image(s)\n", images.size());
@@ -407,6 +412,26 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+}
+
+void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::vector<uint8_t> frames,
+                         std::function<TextImage()> render) {
+    Image image;
+    image.scene = scene; image.atlas = atlas; image.palette = palette;
+    image.frames.insert(frames.begin(), frames.end());
+    {
+        std::lock_guard lock(asset_mutex);
+        auto asset = std::make_unique<Asset>();
+        asset->key = "generated:" + std::to_string(scene);
+        asset->render = std::move(render);
+        asset->state = Asset::queued;
+        image.asset = int(assets.size());
+        assets.push_back(std::move(asset));
+        queue.push_back(image.asset);
+        queue_ready.notify_one();
+    }
+    std::lock_guard lock(image_mutex);
+    images.insert(images.begin(), image);
 }
 
 void set_text(Describe value) { describe = value; }
@@ -433,6 +458,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         std::copy(std::begin(job.tint), std::end(job.tint), record.color);
     } else {
         if (!hd_enabled()) return;
+        std::lock_guard lock(image_mutex);
         const auto found = std::find_if(images.begin(), images.end(), [&](const Image& image) {
             return image.scene == id.scene && image.atlas == id.atlas && image.palette == id.palette && image.frames.count(id.frame);
         });

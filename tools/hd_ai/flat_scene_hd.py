@@ -14,9 +14,12 @@ deterministically instead:
 - a layer's colour is the smoothed mix of its own keys, so shading inside a
   layer (GAME OVER's grey outline) survives.
 
-`build` renders the original frames from the ROM, upscales them and writes a
-new scene-image set: the existing set plus these frames. With --bind it points
-content/art/stage1-hd.json's scene_images at the new set.
+The game now makes both at run time from the player's ROM (src/host/rom_art.cpp,
+a C++ port of this method), so the HD pack ships neither. This script stays as
+the reference: `build` renders the original frames from the ROM, upscales them
+and writes a new scene-image set, the existing set plus these frames, which
+tests/native_rom_art.cpp compares against. Do not --bind it: that would point
+content/art/stage1-hd.json's scene_images at a set with the ROM-derived frames.
 
   .venv/bin/python -m tools.hd_ai.flat_scene_hd build \\
       --base assets/hd-ai/title/whole-v1 --target assets/hd-ai/title/whole-v2 --bind
