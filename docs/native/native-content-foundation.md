@@ -69,7 +69,7 @@ TextKey 示例为 `base:t00_17412`；另一个表的 `base:t01_17412` 是不同�
 
 `content/art/stage1-hd.json` 列出两类 HD 美术（2026-09-24）：
 
-- **RT64 纹理哈希替换，270 条**：剧情世界地图地表（资源 5602–5606）213 条、宇宙物件 27 条、边框切片 30 条（对话框 13、战斗 HUD 17）。来源包是 `assets/hd-ai/worldmap-surfaces/pack-v4`。包里的字库图等其他贴图不在清单里，编译时不会带上；筛选在离线编译时完成，运行时不凭文件名猜资源类别。
+- **RT64 纹理哈希替换，270 条**：剧情世界地图地表（资源 5602–5606）213 条、宇宙物件 27 条、边框切片 30 条（对话框 13、战斗 HUD 17）。来源包是 `assets/hd-ai/worldmap-surfaces/pack-v5`。包里的字库图等其他贴图不在清单里，编译时不会带上；筛选在离线编译时完成，运行时不凭文件名猜资源类别。
 - **宿主整张绘制**：头像（`portraits` 段，见[人物头像 HD](native-portraits-hd.md)）、场间背景（`backgrounds`，见[场间背景 HD](native-backgrounds-hd.md)）、标题 Logo 与火焰（`scene_images`，见[标题画面与剧情文字图](native-title-and-story-images.md)）。BANPRESTO 标志、GAME OVER 和窗口边框不在包里，游戏运行时从 ROM 生成（`src/host/rom_art.cpp`）。
 
 profile 默认 `images: original`；用 `--images hd` 启动，或在游戏里按 F6，才会用 HD。

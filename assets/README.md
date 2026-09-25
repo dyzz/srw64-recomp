@@ -22,8 +22,9 @@
 
 | 路径 | 内容 | 来源／使用者 |
 | --- | --- | --- |
-| `worldmap-surfaces/pack-v4/` | RT64 哈希替换包：世界地图地表 213 条、宇宙物件 27 条、对话框与战斗 HUD 边框 30 条（2026-09-25 起：欧洲由百炼在 image_gen 版上补细节，其他区域往同一画风重绘）。`pack-v1/`–`pack-v3/` 是之前的版本 | 美术清单 `source`；`tools/hd_ai/worldmap_surfaces.py`、`dialogue_frame_asset.py` 写入 |
-| `worldmap-surfaces/restyle-*/`、`europe-2/`、`run-5/` | 地表的生成与合成记录（`choices.json` 等）：`restyle-earth`、`restyle-central-asia`、`restyle-coast` 与 `europe-2` 是现用的；`run-5` 是它们的上一版，也是 restyle 的输入。`europe-1/` 未采用，`restyle-trial-central-asia/` 是提示词试验 | `worldmap_surfaces.py` |
+| `worldmap-surfaces/pack-v5/` | RT64 哈希替换包：世界地图地表 213 条、宇宙物件 27 条、对话框与战斗 HUD 边框 30 条（2026-09-25 起：四个地表由 Codex 的 image_gen 画）。`pack-v1/`–`pack-v4/` 是之前的版本（v4 是千问版） | 美术清单 `source`；`tools/hd_ai/worldmap_surfaces.py`、`dialogue_frame_asset.py` 写入 |
+| `imagegen-kit/`、`worldmap-surfaces/imagegen-1/` | 现用的世界地图：Codex image_gen 生成包（输入、提示词、`outputs/` 与生成记录）和它的合成结果 | `worldmap_surfaces.py imagegen` |
+| `worldmap-surfaces/restyle-*/`、`europe-2/`、`run-5/` | 千问版地表的生成与合成记录（`choices.json` 等），`pack-v4` 用的是它们；`europe-1/` 未采用，`restyle-trial-central-asia/` 是提示词试验 | `worldmap_surfaces.py` | `worldmap_surfaces.py` |
 | `worldmap-runtime/pack-v6/` | 第一话欧洲 57 块图块（image_gen），pack-v2 起不再进包；它是 europe-2 的底图，也是 `prepare` 画风样张的来源；同目录的 `ai-*`、`live-v6` 是当时的来源与运行证据 | `worldmap_surfaces.py` |
 | `portrait-matte/v2/` | `pack/` 是世界地图打包的基础包（`--base-pack`），pack-v1 由它加上地图、宇宙图块而来；另有 4 张已审核头像母版（29、33、166、169），`generation/` 存着它们的百炼原始输出、请求记录和输入图 | `worldmap_surfaces.py`；`build_portrait_images.py --reviewed` |
 | `worldmap-space/run-1/` | 宇宙星空与物件的生成记录 | `tools/hd_ai/worldmap_space.py` |
