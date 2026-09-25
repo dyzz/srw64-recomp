@@ -144,10 +144,11 @@ def main() -> int:
     steps.run("hd-pack", [python, "tools/release/prepare_hd_bundle.py", "--output", str(pack_dir / "hd")], source, env)
     # ROM-derived images stay out of the public pack; without the folder the game draws the
     # originals. The window frames are Scale2x upscales of ROM tiles (tools/hd_ai/frame_hd.py).
+    left_out = []
     for relative in ROM_DERIVED:
         if (pack_dir / "hd" / relative).exists():
             shutil.rmtree(pack_dir / "hd" / relative)
-            print(f"     left out {relative} (ROM-derived)", flush=True)
+            left_out.append(relative)
     scenes = pack_dir / "hd/art/srw64-scene-images.json"
     if scenes.is_file():
         index = json.loads(scenes.read_text())
@@ -155,8 +156,13 @@ def main() -> int:
         for row in index["images"]:
             if row not in kept:
                 (pack_dir / "hd/art" / row["file"]).unlink()
-                print(f"     left out {row['file']} (ROM-derived)", flush=True)
+                left_out.append(f"art/{row['file']}")
         scenes.write_text(json.dumps({**index, "images": kept}, indent=2) + "\n")
+        about = json.loads((pack_dir / "hd/hd.json").read_text())
+        about["art"]["scene_images"] = len(kept)
+        (pack_dir / "hd/hd.json").write_text(json.dumps({**about, "left_out_rom_derived": left_out}, indent=2) + "\n")
+    for relative in left_out:
+        print(f"     left out {relative} (ROM-derived)", flush=True)
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
     hd_zip = output / f"SRW64-{args.version}-HD.zip"
