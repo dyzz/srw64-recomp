@@ -14,6 +14,7 @@
 #include <memory>
 #include <span>
 #include <tuple>
+#include <variant>
 #include <vector>
 
 namespace srw64::gpu {
@@ -33,7 +34,8 @@ struct State {
 };
 
 struct Sampler {
-    bool linear = true, mipmaps = false, repeat = false;
+    bool linear = true, mipmaps = false;
+    bool repeat_u = false, repeat_v = false;  // otherwise clamped
 };
 
 // Called from the render hooks' init and deinit.
@@ -42,8 +44,12 @@ void shutdown();
 bool ready();
 
 // Stores one draw's constants in the shared ring and returns the index of its first
-// float4, for NativeParams.data. Returns false when there is no device.
+// float4, for NativeParams.data (0 without a device). At most kMaxDrawData float4s.
+inline constexpr uint32_t kMaxDrawData = 1u << 14;
 uint32_t push_data(const void* data, size_t bytes);
+
+// A box-filtered RGBA8 mip chain from level 0 (odd edges clamp), for Texture.
+std::vector<std::vector<uint8_t>> rgba_mips(std::vector<uint8_t> level0, uint32_t width, uint32_t height);
 
 // Keeps a GPU object alive until the work recorded with it has finished.
 void retire(std::shared_ptr<void> object);
@@ -67,13 +73,35 @@ private:
     std::unique_ptr<plume::RenderTexture> texture;
 };
 
-// One shader pair with its own textures (t0.. in space1) and immutable samplers
-// (bound after the textures). Pipelines are made per RT64 target and State.
+// Immutable shader-readable data (StructuredBuffer<uint>), such as mesh vertices and
+// indices. Needs gpu::init.
+class Buffer {
+public:
+    explicit Buffer(const std::vector<uint8_t>& bytes);
+    ~Buffer();
+    plume::RenderBuffer* get() const { return buffer.get(); }
+    uint64_t size() const { return size_; }
+private:
+    uint64_t size_;
+    std::unique_ptr<plume::RenderBuffer> buffer;
+};
+
+// A program's own resources in set 1 (space1), one binding each, in this order.
+struct Slot {
+    enum Kind : uint8_t { texture, buffer, sampler } kind = texture;
+    Sampler filter{};  // for samplers (immutable)
+};
+using Resource = std::variant<Texture*, Buffer*>;
+
+// One shader pair with its own resources. Pipelines are made per RT64 target and State.
 class Program {
 public:
+    Program(const char* name, std::vector<Slot> slots);
+    // Textures t0.. then immutable samplers.
     Program(const char* name, uint32_t textures, std::vector<Sampler> samplers);
     ~Program();
-    // A descriptor set holding these textures, in order (all must be uploaded).
+    // A descriptor set with the textures and buffers, in slot order (textures uploaded).
+    std::unique_ptr<plume::RenderDescriptorSet> bind(std::initializer_list<Resource> resources) const;
     std::unique_ptr<plume::RenderDescriptorSet> bind_textures(std::span<Texture* const> textures) const;
     // Sets pipeline, descriptors, push constants, viewport and scissor for a draw on
     // RT64's scene target; issue the draw call after. False if the target is unusable.
@@ -82,7 +110,7 @@ public:
 private:
     struct Shaders;
     const char* name;
-    uint32_t texture_count;
+    std::vector<Slot> slots;
     std::vector<std::unique_ptr<plume::RenderSampler>> samplers;
     std::unique_ptr<Shaders> shaders;
     plume::RenderDescriptorSetDesc texture_set_desc{};

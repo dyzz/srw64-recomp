@@ -69,8 +69,8 @@ def main() -> int:
     for repository, allowed in ((checkout, {"CMakeLists.txt", "src/contrib/plume",
                                            "src/tools/spirv_cross_msl/CMakeLists.txt",
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
-                                           "src/rhi/rt64_render_hooks.cpp"} | set(NATIVE_MODEL_PATCHES)),
-                                (plume, {"plume_metal.cpp"})):
+                                           "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp"} | set(NATIVE_MODEL_PATCHES)),
+                                (plume, {"plume_metal.cpp", "plume_vulkan.cpp"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
             raise RuntimeError(f"unrelated local changes in graphics dependency: {changed - allowed}")
@@ -135,11 +135,40 @@ def main() -> int:
     }
 
     bool MetalSwapChain::needsResize() const'''
+    old_copy = """            vkCmdCopyBufferToImage(vk, srcBuffer->vk, dstTexture->vk, toImageLayout(dstTexture->textureLayout), 1, &imageCopy);
+        }
+        else {"""
+    new_copy = """            vkCmdCopyBufferToImage(vk, srcBuffer->vk, dstTexture->vk, toImageLayout(dstTexture->textureLayout), 1, &imageCopy);
+        }
+        else if ((dstLocation.type == RenderTextureCopyType::PLACED_FOOTPRINT) && (srcLocation.type == RenderTextureCopyType::SUBRESOURCE)) {
+            assert(dstBuffer != nullptr);
+            assert(srcTexture != nullptr);
+
+            const uint32_t blockWidth = RenderFormatBlockWidth(srcTexture->desc.format);
+            VkBufferImageCopy imageCopy = {};
+            imageCopy.bufferOffset = dstLocation.placedFootprint.offset;
+            imageCopy.bufferRowLength = ((dstLocation.placedFootprint.rowWidth + blockWidth - 1) / blockWidth) * blockWidth;
+            imageCopy.bufferImageHeight = ((dstLocation.placedFootprint.height + blockWidth - 1) / blockWidth) * blockWidth;
+            imageCopy.imageSubresource.aspectMask = toAspectFlags(srcTexture->desc.format, srcTexture->desc.flags);
+            imageCopy.imageSubresource.baseArrayLayer = srcLocation.subresource.arrayIndex;
+            imageCopy.imageSubresource.layerCount = 1;
+            imageCopy.imageSubresource.mipLevel = srcLocation.subresource.mipLevel;
+            imageCopy.imageExtent.width = dstLocation.placedFootprint.width;
+            imageCopy.imageExtent.height = dstLocation.placedFootprint.height;
+            imageCopy.imageExtent.depth = dstLocation.placedFootprint.depth;
+            vkCmdCopyImageToBuffer(vk, srcTexture->vk, toImageLayout(srcTexture->textureLayout), dstBuffer->vk, 1, &imageCopy);
+        }
+        else {"""
     records = [patch(checkout, "CMakeLists.txt", old_cmake, new_cmake),
                patch(checkout, "src/tools/spirv_cross_msl/CMakeLists.txt",
                      "set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)",
                      "set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})"),
-               patch(plume, "plume_metal.cpp", old_library, new_library, [(old_resize, new_resize)])]
+               patch(plume, "plume_metal.cpp", old_library, new_library, [(old_resize, new_resize)]),
+               # Screenshots on Vulkan: read the swapchain image back into a buffer.
+               patch(plume, "plume_vulkan.cpp",
+                     "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
+                     "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
+                     [(old_copy, new_copy)])]
     # Match a native text snapshot to the workload actually being presented.
     # The draw callback must never read live guest RDRAM or the latest CPU frame.
     # After the present queue's own fence wait, report that the command list the
@@ -150,6 +179,20 @@ def main() -> int:
                              "    using RenderHookPresented = void(unsigned long long workloadId);\n"
                              "    void SetRenderHookPresented(RenderHookPresented *presented);\n"
                              "    RenderHookPresented *GetRenderHookPresented();")
+    # The swapchain texture behind the draw hook's framebuffer, for screenshots: Plume
+    # framebuffers expose no texture to copy from.
+    swapchain_declaration = ("    RenderHookPresented *GetRenderHookPresented();",
+                             "    RenderHookPresented *GetRenderHookPresented();\n"
+                             "    void SetRenderHookSwapChainTexture(RenderTexture *texture);\n"
+                             "    RenderTexture *GetRenderHookSwapChainTexture();")
+    swapchain_definition = ("    RenderHookPresented *GetRenderHookPresented() { return presentedHook; }",
+                            "    RenderHookPresented *GetRenderHookPresented() { return presentedHook; }\n"
+                            "    static thread_local RenderTexture *hookSwapChainTexture = nullptr;\n"
+                            "    void SetRenderHookSwapChainTexture(RenderTexture *texture) { hookSwapChainTexture = texture; }\n"
+                            "    RenderTexture *GetRenderHookSwapChainTexture() { return hookSwapChainTexture; }")
+    swapchain_call = ("                    SetRenderHookWorkloadId(present.workloadId);\n",
+                      "                    SetRenderHookWorkloadId(present.workloadId);\n"
+                      "                    SetRenderHookSwapChainTexture(swapChainTexture);\n")
     presented_definition = ("    static RenderHookDeinit *deinit = nullptr;",
                             "    static RenderHookDeinit *deinit = nullptr;\n"
                             "    static RenderHookPresented *presentedHook = nullptr;\n"
@@ -166,17 +209,24 @@ def main() -> int:
                       "    RenderHookInit *GetRenderHookInit();",
                       "    void SetRenderHookWorkloadId(unsigned long long id);\n"
                       "    unsigned long long GetRenderHookWorkloadId();\n"
-                      "    RenderHookInit *GetRenderHookInit();", [presented_declaration]),
+                      "    RenderHookInit *GetRenderHookInit();", [presented_declaration, swapchain_declaration]),
                 patch(checkout, "src/rhi/rt64_render_hooks.cpp",
                       "    static RenderHookInit *init = nullptr;",
                       "    static thread_local unsigned long long hookWorkloadId = 0;\n"
                       "    void SetRenderHookWorkloadId(unsigned long long id) { hookWorkloadId = id; }\n"
                       "    unsigned long long GetRenderHookWorkloadId() { return hookWorkloadId; }\n"
-                      "    static RenderHookInit *init = nullptr;", [presented_definition]),
+                      "    static RenderHookInit *init = nullptr;", [presented_definition, swapchain_definition]),
                 patch(checkout, "src/hle/rt64_present_queue.cpp",
                       "                    drawHook(commandList, swapChainFramebuffer);",
                       "                    SetRenderHookWorkloadId(present.workloadId);\n"
-                      "                    drawHook(commandList, swapChainFramebuffer);", [presented_call])]
+                      "                    drawHook(commandList, swapChainFramebuffer);", [presented_call, swapchain_call])]
+    # RT64 quits the file-dialog library even when it failed to start (no D-Bus session
+    # bus, as in containers): the xdg-portal build then aborts in dbus_connection_unref.
+    records.append(patch(checkout, "src/gui/rt64_file_dialog.cpp",
+                         "    void FileDialog::initialize() {\n        NFD_Init();\n    }\n\n    void FileDialog::finish() {\n        NFD_Quit();\n    }",
+                         "    static bool nfdReady = false;\n\n"
+                         "    void FileDialog::initialize() {\n        nfdReady = (NFD_Init() == NFD_OKAY);\n    }\n\n"
+                         "    void FileDialog::finish() {\n        if (nfdReady) {\n            NFD_Quit();\n        }\n\n        nfdReady = false;\n    }"))
     recorded = {r['path'] for r in records}
     for relative in NATIVE_MODEL_PATCHES:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:

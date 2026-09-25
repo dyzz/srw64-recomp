@@ -128,5 +128,10 @@ PATCHES = {
          '                    native.screenOffset[1] = triangles.screenOffset.y;\n'
          '                    native.colorFormat = (fbStorage->colorTarget != nullptr) ? fbStorage->colorTarget->format : RenderFormat::UNKNOWN;\n'
          '                    native.depthFormat = (fbStorage->depthTarget != nullptr) ? fbStorage->depthTarget->format : RenderFormat::UNKNOWN;\n'
-         '                    native.sampleCount = (fbStorage->colorTarget != nullptr) ? fbStorage->colorTarget->multisampling.sampleCount : RenderSampleCount::COUNT_1;\n')],
+         '                    native.sampleCount = (fbStorage->colorTarget != nullptr) ? fbStorage->colorTarget->multisampling.sampleCount : RenderSampleCount::COUNT_1;\n'),
+        # Draws marked on a texture rectangle have no triangles: their face index is out
+        # of range (a read past the vector that faulted on Linux). Only meshes use it.
+        ('                    native.vertexIndex = drawData.faceIndices[call.meshDesc.faceIndicesStart];',
+         '                    native.vertexIndex = (call.meshDesc.faceIndicesStart < drawData.faceIndices.size())\n'
+         '                        ? drawData.faceIndices[call.meshDesc.faceIndicesStart] : 0;')],
 }

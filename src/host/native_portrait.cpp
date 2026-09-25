@@ -3,7 +3,7 @@
 #include "presentation/image_mode.hpp"
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
-#include "plume_metal.h"
+#include "native_gpu.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -37,7 +37,8 @@ struct Asset {
     uint16_t image = 0;
     std::filesystem::path file;
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mip chain, dropped after upload
-    MTL::Texture* texture{};
+    std::unique_ptr<gpu::Texture> texture;
+    std::unique_ptr<plume::RenderDescriptorSet> set;
     Clock::time_point used{};
 };
 
@@ -61,10 +62,7 @@ std::mutex ring_mutex;
 uint32_t next_id = 1;
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
-MTL::Device *device{};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState*> pipelines;
-MTL::DepthStencilState *depth_state{};
-MTL::SamplerState *sampler{};
+std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdPortrait{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, unexpected{}, unknown{}, decoded{}, released{};
 std::map<std::string, uint64_t> unexpected_shapes;  // "rects/width/height/texture width" of draws left original
 std::mutex shape_mutex;
@@ -128,73 +126,27 @@ uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     return previous_classify ? previous_classify(state, dl) : 0;
 }
 
-MTL::RenderPipelineState* pipeline_for(MTL::Texture* color, MTL::Texture* depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = pipelines.find(key); found != pipelines.end()) return found->second;
-    const char* source = R"(
-        #include <metal_stdlib>
-        using namespace metal;
-        struct Uniforms { float4 rect, uv, resolution; };
-        struct Fill { float4 rgb_on; };
-        struct V { float4 p [[position]]; float2 uv; };
-        vertex V vs(uint i [[vertex_id]], constant Uniforms& u [[buffer(0)]]) {
-            const float2 corner = float2(i & 1, i >> 1);
-            const float2 p = mix(u.rect.xy, u.rect.zw, corner);
-            const float2 clip = (p - u.resolution.xy * .5f) / (u.resolution.xy * float2(.5f, -.5f));
-            return {float4(clip, 0, 1), mix(u.uv.xy, u.uv.zw, corner)};
-        }
-        fragment float4 fs(V in [[stage_in]], texture2d<float> image [[texture(0)]], sampler s [[sampler(0)]],
-                           constant Fill& fill [[buffer(0)]]) {
-            const float4 c = image.sample(s, in.uv);   // premultiplied
-            // The silhouette palette paints every opaque texel one dark grey.
-            return fill.rgb_on.w > 0 ? float4(fill.rgb_on.rgb * c.a, c.a) : c;
-        }
-    )";
-    NS::Error* error{};
-    auto* library = device->newLibrary(NS::String::string(source, NS::UTF8StringEncoding), nullptr, &error);
-    if (!library) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD portrait shader failed");
-    auto* vs = library->newFunction(NS::String::string("vs", NS::UTF8StringEncoding));
-    auto* fs = library->newFunction(NS::String::string("fs", NS::UTF8StringEncoding));
-    auto* desc = MTL::RenderPipelineDescriptor::alloc()->init();
-    desc->setVertexFunction(vs); desc->setFragmentFunction(fs);
-    auto* attachment = desc->colorAttachments()->object(0);
-    attachment->setPixelFormat(color->pixelFormat());
-    attachment->setBlendingEnabled(true);
-    attachment->setSourceRGBBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    attachment->setSourceAlphaBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    desc->setDepthAttachmentPixelFormat(depth->pixelFormat());
-    desc->setRasterSampleCount(color->sampleCount());
-    auto* next = device->newRenderPipelineState(desc, &error);
-    desc->release(); vs->release(); fs->release(); library->release();
-    if (!next) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD portrait pipeline failed");
-    return pipelines[key] = next;
-}
-
-// GPU thread. Upload on first use; release textures idle long enough that no command
-// buffer can still reference them.
-MTL::Texture* texture_for(Asset& asset) {
+// Workload thread. Upload on first use; release textures idle long enough that no
+// recorded work can still read them (gpu::Texture also waits before freeing).
+plume::RenderDescriptorSet* texture_for(Asset& asset, plume::RenderCommandList* list) {
     std::lock_guard lock(asset_mutex);
     const auto now = Clock::now();
-    if (!asset.texture) {
+    if (!asset.set) {
         if (asset.levels.empty()) return nullptr;
         size_t resident = 0;
-        for (auto& other : assets) resident += other.texture != nullptr;
+        for (auto& other : assets) resident += other.set != nullptr;
         if (resident >= kResident)
             for (auto& other : assets)
-                if (other.texture && now - other.used > kIdle) { other.texture->release(); other.texture = nullptr; ++released; }
-        auto* desc = MTL::TextureDescriptor::texture2DDescriptor(MTL::PixelFormatRGBA8Unorm, size, size, true);
-        desc->setUsage(MTL::TextureUsageShaderRead);
-        asset.texture = device->newTexture(desc);
-        if (!asset.texture) throw std::runtime_error("HD portrait texture allocation failed");
-        for (size_t level = 0, s = size_t(size); level < asset.levels.size(); ++level, s = std::max<size_t>(1, s / 2))
-            asset.texture->replaceRegion(MTL::Region(0, 0, s, s), level, asset.levels[level].data(), s * 4);
+                if (other.set && now - other.used > kIdle) { other.set.reset(); other.texture.reset(); ++released; }
+        asset.texture = std::make_unique<gpu::Texture>(uint32_t(size), uint32_t(size), plume::RenderFormat::R8G8B8A8_UNORM,
+                                                       std::move(asset.levels));
         asset.levels.clear();
         asset.levels.shrink_to_fit();
+        if (!asset.texture->upload(list)) { asset.texture.reset(); return nullptr; }
+        asset.set = program->bind({asset.texture.get()});
     }
     asset.used = now;
-    return asset.texture;
+    return asset.set.get();
 }
 
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
@@ -204,42 +156,21 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         std::lock_guard lock(ring_mutex);
         draw = ring[call.id % kRing];
     }
-    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !device) { ++skipped; return true; }
-    MTL::Texture* texture = texture_for(assets[size_t(draw.asset)]);
-    if (!texture) { ++skipped; return true; }
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("HD portrait requires the scene color and depth attachments");
-    auto* color = fb->colorAttachments[0].getTexture();
-    auto* depth = fb->depthAttachment.getTexture();
-    auto* pipeline = pipeline_for(color, depth);
-    struct { float rect[4], uv[4], resolution[4]; } u{};
+    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !program) { ++skipped; return true; }
+    auto* set = texture_for(assets[size_t(draw.asset)], list);
+    if (!set) { ++skipped; return true; }
+    // HdPortraitVS/PS data: rect, uv, resolution, fill.
+    struct { float rect[4], uv[4], resolution[4], fill[4]; } u{};
     std::memcpy(u.rect, draw.rect, sizeof(u.rect));
     // The quad is in full-frame N64 coordinates (see native_map.cpp on screenScale).
     u.uv[0] = draw.flip ? 1.f : 0.f; u.uv[1] = 0; u.uv[2] = draw.flip ? 0.f : 1.f; u.uv[3] = 1;
     u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
-    struct { float rgb_on[4]; } fill{{silhouette_rgb[0], silhouette_rgb[1], silhouette_rgb[2], draw.silhouette ? 1.f : 0.f}};
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto* attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto* encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string("SRW64 HD portrait", NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(pipeline);
-    encoder->setDepthStencilState(depth_state);
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& s = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(s.left), NS::UInteger(s.top), NS::UInteger(s.right - s.left), NS::UInteger(s.bottom - s.top)});
-    encoder->setCullMode(MTL::CullModeNone);
-    encoder->setVertexBytes(&u, sizeof(u), 0);
-    encoder->setFragmentTexture(texture, 0);
-    encoder->setFragmentSamplerState(sampler, 0);
-    encoder->setFragmentBytes(&fill, sizeof(fill), 0);
-    encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
-    encoder->endEncoding();
+    u.fill[0] = silhouette_rgb[0]; u.fill[1] = silhouette_rgb[1]; u.fill[2] = silhouette_rgb[2];
+    u.fill[3] = draw.silhouette ? 1.f : 0.f;
+    gpu::State state;
+    state.blend = gpu::Blend::premultiplied;
+    if (!program->begin(list, framebuffer, call, state, set, gpu::push_data(&u, sizeof(u)))) { ++skipped; return true; }
+    list->drawInstanced(4, 1, 0, 0);
     ++rendered;
     return true;
 }
@@ -276,21 +207,9 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     fprintf(stderr, "SRW64_HD_PORTRAITS loaded %zu portrait(s) at %dpx\n", assets.size(), size);
 }
 
-void metal_init(plume::RenderDevice* value) {
-    device = static_cast<plume::MetalDevice*>(value)->mtl;
-    if (!depth_state) {
-        auto* depth = MTL::DepthStencilDescriptor::alloc()->init();
-        depth->setDepthCompareFunction(MTL::CompareFunctionAlways);
-        depth->setDepthWriteEnabled(false);
-        depth_state = device->newDepthStencilState(depth); depth->release();
-    }
-    if (!sampler) {
-        auto* sampling = MTL::SamplerDescriptor::alloc()->init();
-        sampling->setMinFilter(MTL::SamplerMinMagFilterLinear); sampling->setMagFilter(MTL::SamplerMinMagFilterLinear);
-        sampling->setMipFilter(MTL::SamplerMipFilterLinear);
-        sampling->setSAddressMode(MTL::SamplerAddressModeClampToEdge); sampling->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
-        sampler = device->newSamplerState(sampling); sampling->release();
-    }
+void gpu_init() {
+    // A linear, mipmapped, clamped sampler after the portrait.
+    program = std::make_unique<gpu::Program>("HdPortrait", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
 }
 
 void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
@@ -332,7 +251,7 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     Asset& asset = assets[size_t(found->second.first)];
     {
         std::lock_guard lock(asset_mutex);
-        if (!asset.texture && asset.levels.empty()) decode(asset);
+        if (!asset.set && asset.levels.empty()) decode(asset);
     }
     Draw record;
     record.asset = found->second.first;
@@ -367,18 +286,14 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
 void shutdown() {
     if (!output.empty() && !assets.empty()) {
         size_t resident = 0;
-        for (const auto& asset : assets) resident += asset.texture != nullptr;
+        for (const auto& asset : assets) resident += asset.set != nullptr;
         std::ofstream(output / "hd-portrait-summary.json") << json({{"schema", "srw64.hd-portrait-run.v1"},
             {"portraits", assets.size()}, {"size", size}, {"rewritten_draws", rewritten.load()}, {"native_draws", rendered.load()},
             {"skipped", skipped.load()}, {"unexpected_layout", unexpected.load()}, {"unknown_content", unknown.load()},
             {"decoded", decoded.load()}, {"released", released.load()}, {"resident_at_exit", resident},
             {"unexpected_shapes", [] { std::lock_guard lock(shape_mutex); return json(unexpected_shapes); }()}}).dump(2) << '\n';
     }
-    for (auto& asset : assets) if (asset.texture) { asset.texture->release(); asset.texture = nullptr; }
-    for (auto& [key, state] : pipelines) state->release();
-    pipelines.clear();
-    if (depth_state) depth_state->release(); depth_state = nullptr;
-    if (sampler) sampler->release(); sampler = nullptr;
-    device = nullptr;
+    for (auto& asset : assets) { asset.set.reset(); asset.texture.reset(); }
+    program.reset();
 }
 }

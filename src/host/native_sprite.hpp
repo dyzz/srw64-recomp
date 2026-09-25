@@ -45,7 +45,8 @@ struct TextJob {
 using Describe = bool (*)(const uint8_t* rdram, const SceneId&, TextJob&);
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& output);
 void set_text(Describe describe);
-void metal_init(plume::RenderDevice* device);
+// Render-hook init, after gpu::init (native_gpu.hpp).
+void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const SceneDraw& draw);

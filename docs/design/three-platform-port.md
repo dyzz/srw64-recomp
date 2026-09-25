@@ -88,10 +88,19 @@
 - **辅助层：** `src/host/native_gpu.{hpp,cpp}`；着色器是 `src/host/shaders/` 下的 HLSL，由 `cmake/NativeGpu.cmake` 编成 SPIR-V、MSL（经 RT64 的转换工具，`flip_vert_y` 抵消 `-fvk-invert-y`）和 DXIL。
 - **每次绘制的数据：** 写进一个共享的 `StructuredBuffer<float4>` 环形缓冲，下标经 push constant 传给着色器。RT64 每个 workload 提交后都等 GPU 完成（`rt64_workload_queue.cpp:843-844`），所以复用环形槽位是安全的；这样也避开了 Vulkan 128 字节 push constant 的下限。
 - **RT64 补丁：** `NativeMeshDraw` 带上场景目标的颜色格式、深度格式和采样数（`native_model_hook_patches.py`）。
-- **已移植：**
-  - 场间背景 `native_background.cpp`：Mac 上前后对比，同一存档、HD 模式的场间画面，两张截图最大差 1 级（约 2% 像素），肉眼无别。
-  - 战术地图 `native_map.cpp`：还没实机对比，它只在设了 `SRW64_HD_MAPS` 时启用；新增 `"alpha": true` 的半透明素材（预乘，供窗框用）。
-- **待移植：** 标记（`native_marker.cpp`）、精灵（`native_sprite.cpp`）、头像（`native_portrait.cpp`）。
+- **五个图层都已移植（2026-09-25）：** 地图、背景、标记（金色标记、光环、舰船与地标模型、航迹、名牌）、场景精灵（标题卡、剧情文字图、原版 UI 文字）、整张头像。Linux 空实现已删除，所有图层在三个平台上都编译。
+- **Mac 上逐层前后对比**（同一场景，移植前 Metal 与移植后 plume）：
+  - 场间背景：同一存档的 HD 场间画面最大差 1 级。
+  - 标记：`ra-cailum`、`worldmap-libra` 迷你关卡的绘制次数一致，截图只差动画相位（由宿主时间驱动）。
+  - 精灵：`act` 标题卡、`ending` 结局页逐帧一致或只差过渡帧。
+  - 头像：`scene8` 按 Z 推进对白，比优蒂、甲儿、万丈、加里森的 HD 头像一致。
+  - 战术地图只在设了 `SRW64_HD_MAPS` 时启用，未单独对比。
+- **Vulkan 路径（MoltenVK）：** `SRW64_GRAPHICS_API=vulkan`（仅测试用）让 Mac 上的 RT64 走 Vulkan 后端；为此 SPIR-V 着色器在所有平台都嵌入，`graphics.cpp`、`dialogue_plume.cpp` 按实际后端而不是按平台选 Metal 专用路径。同样四个场景加场间画面：Vulkan 与 Metal 的截图一致，包括对白框和 RmlUi 页面。
+- **Vulkan/D3D12 截图读回：** plume 的 Vulkan 后端补上纹理→缓冲拷贝，交换链图像加 `TRANSFER_SRC`，RT64 给绘制钩子提供当前交换链纹理（`GetRenderHookSwapChainTexture`）。调试接口的截图在 Vulkan 上可用了。
+- **Linux 上发现并修掉的 RT64 问题：**
+  - 以纹理矩形标记的原生绘制没有三角形，旧补丁读 `faceIndices` 越界。Mac 上恰好没崩，Linux 上段错误；现在越界时取 0。
+  - 没有 D-Bus 会话总线时，RT64 的文件对话框库初始化失败，退出时却仍然调用 `NFD_Quit` 而中止；现在只在初始化成功时调用。
+- **崩溃调用栈：** Linux 宿主收到 SIGSEGV 等信号时把调用栈打印到 stderr（`host.cpp`），用未 strip 的构建和 `addr2line` 解析。
 - **前后对比方法：** `srw64ctl launch --binary PATH`（即 `run_host_probe.py --binary`）运行指定的程序。移植前的程序由一个 worktree 构建：当前源码加上 HEAD 版的待移植层。
 
 这是最大的一块，而且全程可以在 Mac 上验证：plume 的 Metal 后端就是现在的底层。
@@ -122,11 +131,11 @@
 2026-09-25 调整顺序：用户要先在 Steam Deck 上玩，所以 X2 先于 X1 开始，分两步：
 
 - **D1 原版画面版**（已写好代码，构建与说明见 [Linux 构建](../guide/linux-build.md)）：
-  - 五个 HD 图层在非 Apple 平台上换成空实现（`native_layers_stub.cpp`），交给 RT64 按原版显示列表绘制。
+  - 五个 HD 图层在非 Apple 平台上先换成空实现，交给 RT64 按原版显示列表绘制（X1 完成后已删除）。
   - 窗口、后端选择、GPU 完成通知（RT64 补丁 `RenderHookPresented`）、姓名页遮挡、对白合成都已与后端无关。
-  - 调试截图在 Vulkan 上暂时返回错误。
+  - 调试截图当时在 Vulkan 上返回错误（X1 已补上读回）。
   - 共享界面加了手柄→按键桥接：除战斗页以外的原生页面原来只认键盘，现在手柄按下会转成同一套键（`frontend.cpp` 的 `pad_keys`），Deck 只用手柄也能操作场间、标题、存档和姓名页。
-- **D2 HD 版**：X1 完成后去掉空实现，Linux 与 Mac 共用 plume 实现。
+- **D2 HD 版**（2026-09-25 代码完成）：五个 HD 图层都改走 plume，空实现已删除，Linux 与 Mac 共用同一套实现；Vulkan 路径已在 Mac 上用 MoltenVK 与 Metal 对比过（见 X1）。Deck 上用 HD 素材包即是完整 HD 版，**尚待 Deck 实机确认**。
 
 以下是 X2 的完整清单：
 

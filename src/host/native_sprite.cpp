@@ -4,7 +4,7 @@
 #include "hle/rt64_state.h"
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
-#include "plume_metal.h"
+#include "native_gpu.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -46,7 +46,8 @@ struct Asset {
     uint32_t width = 0, height = 0;
     float units[2]{}, origin[2]{};
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mips, dropped after upload
-    MTL::Texture* texture{};
+    std::unique_ptr<gpu::Texture> texture;
+    std::unique_ptr<plume::RenderDescriptorSet> set;
     Clock::time_point used{};
 };
 struct Image {
@@ -85,10 +86,7 @@ std::mutex ring_mutex;
 uint32_t next_id = 1;
 RT64::NativeMeshClassify* previous_classify{};
 RT64::NativeMeshRender* previous_render{};
-MTL::Device* device{};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger, bool>, MTL::RenderPipelineState*> pipelines;
-std::array<MTL::DepthStencilState*, 4> depth_states{};
-MTL::SamplerState *clamp_sampler{}, *wrap_sampler{};
+std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdSprite{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, pending{}, skipped{}, unexpected{}, decoded{}, released{}, failures{};
 std::atomic<uint64_t> text_placed{}, text_waiting{};
 std::mutex log_mutex;
@@ -234,146 +232,65 @@ uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     return previous_classify ? previous_classify(state, dl) : 0;
 }
 
-constexpr const char* kShader = R"(
-    #include <metal_stdlib>
-    using namespace metal;
-    struct Uniforms {
-        float4x4 mvp;
-        float4 viewportScale, viewportTranslate, resolution, screen;
-        float4 rect, uv, color, z;
-    };
-    struct V { float4 p [[position]]; float2 uv; };
-    float4 to_clip(float3 position, constant Uniforms& u) {
-        float4 p = u.mvp * float4(position, 1);
-        float3 screen = p.xyz / float3(p.w, -p.w, p.w) * u.viewportScale.xyz + u.viewportTranslate.xyz;
-        float2 clip = (screen.xy - u.resolution.xy * .5f) / (u.resolution.xy * float2(.5f, -.5f));
-        clip = clip * u.screen.xy + u.screen.zw;
-        return float4(clip * p.w, screen.z * p.w, p.w);
-    }
-    // Texture rectangles: rect is in full-frame N64 screen pixels.
-    vertex V rect_vs(uint i [[vertex_id]], constant Uniforms& u [[buffer(0)]]) {
-        const float2 corner = float2(i & 1, i >> 1);
-        const float2 p = mix(u.rect.xy, u.rect.zw, corner);
-        const float2 clip = (p - u.resolution.xy * .5f) / (u.resolution.xy * float2(.5f, -.5f));
-        return {float4(clip, 0, 1), mix(u.uv.xy, u.uv.zw, corner)};
-    }
-    // Quads: rect is (left, top, right, bottom) in the sprite's model space, y up.
-    vertex V quad_vs(uint i [[vertex_id]], constant Uniforms& u [[buffer(0)]]) {
-        const float2 corner = float2(i & 1, i >> 1);
-        return {to_clip(float3(mix(u.rect.x, u.rect.z, corner.x), mix(u.rect.y, u.rect.w, corner.y), u.z.x), u),
-                mix(u.uv.xy, u.uv.zw, corner)};
-    }
-    fragment float4 fs(V in [[stage_in]], texture2d<float> image [[texture(0)]], sampler s [[sampler(0)]],
-                       constant Uniforms& u [[buffer(0)]]) {
-        const float4 c = image.sample(s, in.uv);   // premultiplied
-        return float4(c.rgb * u.color.rgb, c.a) * u.color.a;
-    }
-)";
-
-MTL::RenderPipelineState* pipeline_for(MTL::Texture* color, MTL::Texture* depth, bool quad) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount(), quad);
-    if (auto found = pipelines.find(key); found != pipelines.end()) return found->second;
-    NS::Error* error{};
-    auto* library = device->newLibrary(NS::String::string(kShader, NS::UTF8StringEncoding), nullptr, &error);
-    if (!library) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "Scene sprite shader failed");
-    auto* vs = library->newFunction(NS::String::string(quad ? "quad_vs" : "rect_vs", NS::UTF8StringEncoding));
-    auto* fs = library->newFunction(NS::String::string("fs", NS::UTF8StringEncoding));
-    auto* desc = MTL::RenderPipelineDescriptor::alloc()->init();
-    desc->setVertexFunction(vs); desc->setFragmentFunction(fs);
-    auto* attachment = desc->colorAttachments()->object(0);
-    attachment->setPixelFormat(color->pixelFormat());
-    attachment->setBlendingEnabled(true);
-    attachment->setSourceRGBBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    attachment->setSourceAlphaBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    desc->setDepthAttachmentPixelFormat(depth->pixelFormat());
-    desc->setRasterSampleCount(color->sampleCount());
-    auto* next = device->newRenderPipelineState(desc, &error);
-    desc->release(); vs->release(); fs->release(); library->release();
-    if (!next) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "Scene sprite pipeline failed");
-    return pipelines[key] = next;
-}
-
-// GPU thread. Upload on first use; release textures idle long enough that no command
-// buffer can still reference them.
-MTL::Texture* texture_for(Asset& asset) {
+// Workload thread. Upload on first use; release textures idle long enough that no
+// recorded work can still read them (gpu::Texture also waits before freeing).
+plume::RenderDescriptorSet* texture_for(Asset& asset, plume::RenderCommandList* list) {
     const auto now = Clock::now();
-    if (!asset.texture) {
+    if (!asset.set) {
         if (asset.state != Asset::ready || asset.levels.empty()) return nullptr;
         size_t resident = 0;
-        for (auto& other : assets) resident += other->texture != nullptr;
+        for (auto& other : assets) resident += other->set != nullptr;
         if (resident >= kResident)
             for (auto& other : assets)
-                if (other->texture && now - other->used > kIdle) {
-                    other->texture->release(); other->texture = nullptr; ++released;
+                if (other->set && now - other->used > kIdle) {
+                    other->set.reset(); other->texture.reset(); ++released;
                     // A released text or frame is drawn again from its source when needed.
                     other->state = Asset::idle;
                 }
-        auto* desc = MTL::TextureDescriptor::texture2DDescriptor(MTL::PixelFormatRGBA8Unorm, asset.width, asset.height, true);
-        desc->setUsage(MTL::TextureUsageShaderRead);
-        desc->setMipmapLevelCount(asset.levels.size());
-        asset.texture = device->newTexture(desc);
-        if (!asset.texture) throw std::runtime_error("Scene sprite texture allocation failed");
-        uint32_t w = asset.width, h = asset.height;
-        for (size_t level = 0; level < asset.levels.size(); ++level) {
-            asset.texture->replaceRegion(MTL::Region(0, 0, w, h), level, asset.levels[level].data(), size_t(w) * 4);
-            w = std::max(1u, w / 2); h = std::max(1u, h / 2);
-        }
+        asset.texture = std::make_unique<gpu::Texture>(asset.width, asset.height, plume::RenderFormat::R8G8B8A8_UNORM,
+                                                       std::move(asset.levels));
         asset.levels.clear();
         asset.levels.shrink_to_fit();
+        if (!asset.texture->upload(list)) { asset.texture.reset(); asset.state = Asset::idle; return nullptr; }
+        asset.set = program->bind({asset.texture.get()});
     }
     asset.used = now;
-    return asset.texture;
+    return asset.set.get();
 }
 
+// HdSpriteVS/PS data; the transform and viewport only matter for quads.
 struct Uniforms {
     float mvp[16], viewportScale[4], viewportTranslate[4], resolution[4], screen[4];
     float rect[4], uv[4], color[4], z[4];
 };
 
-MTL::RenderCommandEncoder* begin_pass(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer,
-                                      const RT64::NativeMeshDraw& call, bool quad, const char* label) {
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("Scene sprites require the scene color and depth attachments");
-    auto* color = fb->colorAttachments[0].getTexture();
-    auto* depth = fb->depthAttachment.getTexture();
-    auto* pipeline = pipeline_for(color, depth, quad);
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto* attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto* encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string(label, NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(pipeline);
-    encoder->setDepthStencilState(depth_states[call.depthCompare ? 1 : 0]);  // blended: never write depth
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& sc = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(sc.left), NS::UInteger(sc.top), NS::UInteger(sc.right - sc.left), NS::UInteger(sc.bottom - sc.top)});
-    encoder->setCullMode(MTL::CullModeNone);
-    return encoder;
+// Blended: the game's depth test, never a depth write; no culling (the chapter card
+// turns its back while it flips).
+bool draw_sprite(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call,
+                 plume::RenderDescriptorSet* set, const Uniforms& u, bool quad, bool wrap) {
+    gpu::State state;
+    state.blend = gpu::Blend::premultiplied;
+    state.depth_test = call.depthCompare;
+    if (!program->begin(list, framebuffer, call, state, set, gpu::push_data(&u, sizeof(u)), (wrap ? 1u : 0u) | (quad ? 2u : 0u)))
+        return false;
+    list->drawInstanced(4, 1, 0, 0);
+    return true;
 }
 
-// A UI text pass: every item in one encoder, at its label position (screen N64 px).
+// A UI text pass: every item at its label position (screen N64 px).
 bool render_items(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call, const Draw& draw) {
-    struct Ready { MTL::Texture* texture; float units[2], origin[2]; };
+    struct Ready { plume::RenderDescriptorSet* set; float units[2], origin[2]; };
     std::vector<std::pair<const Draw::Item*, Ready>> drawable;
     {
         std::lock_guard lock(asset_mutex);
         for (const auto& item : draw.items) {
             if (item.asset < 0) continue;
             Asset& asset = *assets[size_t(item.asset)];
-            if (auto* texture = texture_for(asset))
-                drawable.push_back({&item, {texture, {asset.units[0], asset.units[1]}, {asset.origin[0], asset.origin[1]}}});
+            if (auto* set = texture_for(asset, list))
+                drawable.push_back({&item, {set, {asset.units[0], asset.units[1]}, {asset.origin[0], asset.origin[1]}}});
         }
     }
     if (drawable.empty()) { ++skipped; return true; }
-    auto* encoder = begin_pass(list, framebuffer, call, false, "SRW64 UI text");
-    encoder->setFragmentSamplerState(clamp_sampler, 0);
     for (const auto& [item, image] : drawable) {
         Uniforms u{};
         u.rect[0] = item->at[0] - image.origin[0]; u.rect[1] = item->at[1] - image.origin[1];
@@ -381,12 +298,8 @@ bool render_items(plume::RenderCommandList* list, plume::RenderFramebuffer* fram
         u.uv[2] = u.uv[3] = 1;
         u.color[0] = item->tint[0]; u.color[1] = item->tint[1]; u.color[2] = item->tint[2]; u.color[3] = 1;
         u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
-        encoder->setVertexBytes(&u, sizeof(u), 0);
-        encoder->setFragmentBytes(&u, sizeof(u), 0);
-        encoder->setFragmentTexture(image.texture, 0);
-        encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
+        if (!draw_sprite(list, framebuffer, call, image.set, u, false, false)) { ++skipped; return true; }
     }
-    encoder->endEncoding();
     rendered += drawable.size();
     return true;
 }
@@ -399,22 +312,19 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         draw = ring[call.id % kRing];
     }
     // The original parts are gone either way: a stale id or a texture not ready draws nothing.
-    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !device || (draw.quad && !call.workload)) { ++skipped; return true; }
+    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !program || (draw.quad && !call.workload)) { ++skipped; return true; }
     if (!draw.items.empty()) return render_items(list, framebuffer, call, draw);
-    MTL::Texture* texture;
+    plume::RenderDescriptorSet* set;
     float units[2], origin[2];
     {
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(draw.asset)];
-        texture = texture_for(asset);
+        set = texture_for(asset, list);
         units[0] = asset.units[0]; units[1] = asset.units[1];
         origin[0] = asset.origin[0]; origin[1] = asset.origin[1];
     }
-    if (!texture) { ++skipped; return true; }
-    struct {
-        float mvp[16], viewportScale[4], viewportTranslate[4], resolution[4], screen[4];
-        float rect[4], uv[4], color[4], z[4];
-    } u{};
+    if (!set) { ++skipped; return true; }
+    Uniforms u{};
     float rect[4] = {draw.rect[0], draw.rect[1], draw.rect[2], draw.rect[3]};
     if (draw.text && draw.anchor == TextJob::Anchor::origin) {
         // UI text: the image origin on the label's own position.
@@ -444,33 +354,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         const auto& viewport = d.rspViewports.at(call.viewProjIndex);
         hlslpp::store(viewport.scale, u.viewportScale); hlslpp::store(viewport.translate, u.viewportTranslate);
     }
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("Scene sprites require the scene color and depth attachments");
-    auto* color = fb->colorAttachments[0].getTexture();
-    auto* depth = fb->depthAttachment.getTexture();
-    auto* pipeline = pipeline_for(color, depth, draw.quad);
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto* attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto* encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string("SRW64 scene sprite", NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(pipeline);
-    encoder->setDepthStencilState(depth_states[call.depthCompare ? 1 : 0]);  // blended: never write depth
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& s = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(s.left), NS::UInteger(s.top), NS::UInteger(s.right - s.left), NS::UInteger(s.bottom - s.top)});
-    encoder->setCullMode(MTL::CullModeNone);   // the chapter card turns its back while it flips
-    encoder->setVertexBytes(&u, sizeof(u), 0);
-    encoder->setFragmentBytes(&u, sizeof(u), 0);
-    encoder->setFragmentTexture(texture, 0);
-    encoder->setFragmentSamplerState(draw.wrap ? wrap_sampler : clamp_sampler, 0);
-    encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
-    encoder->endEncoding();
+    if (!draw_sprite(list, framebuffer, call, set, u, draw.quad, draw.wrap)) { ++skipped; return true; }
     ++rendered;
     return true;
 }
@@ -527,23 +411,11 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 
 void set_text(Describe value) { describe = value; }
 
-void metal_init(plume::RenderDevice* value) {
-    device = static_cast<plume::MetalDevice*>(value)->mtl;
-    for (int i = 0; i < 4; ++i) {
-        if (depth_states[i]) continue;
-        auto* desc = MTL::DepthStencilDescriptor::alloc()->init();
-        desc->setDepthCompareFunction((i & 1) ? MTL::CompareFunctionLessEqual : MTL::CompareFunctionAlways);
-        desc->setDepthWriteEnabled(i & 2);
-        depth_states[i] = device->newDepthStencilState(desc); desc->release();
-    }
-    for (auto [sampler, mode] : {std::pair{&clamp_sampler, MTL::SamplerAddressModeClampToEdge}, std::pair{&wrap_sampler, MTL::SamplerAddressModeRepeat}}) {
-        if (*sampler) continue;
-        auto* sampling = MTL::SamplerDescriptor::alloc()->init();
-        sampling->setMinFilter(MTL::SamplerMinMagFilterLinear); sampling->setMagFilter(MTL::SamplerMinMagFilterLinear);
-        sampling->setMipFilter(MTL::SamplerMipFilterLinear);
-        sampling->setSAddressMode(mode); sampling->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
-        *sampler = device->newSamplerState(sampling); sampling->release();
-    }
+void gpu_init() {
+    // The picture, a clamped sampler, and one that repeats across (clamped vertically).
+    program = std::make_unique<gpu::Program>("HdSprite", std::vector<gpu::Slot>{{gpu::Slot::texture},
+        {gpu::Slot::sampler, {.linear = true, .mipmaps = true}},
+        {gpu::Slot::sampler, {.linear = true, .mipmaps = true, .repeat_u = true}}});
 }
 
 void rewrite(uint8_t* rdram, const SceneDraw& draw) {
@@ -765,19 +637,14 @@ void shutdown() {
     if (worker.joinable()) worker.join();
     if (!output.empty()) {
         size_t resident = 0;
-        for (const auto& asset : assets) resident += asset->texture != nullptr;
+        for (const auto& asset : assets) resident += asset->set != nullptr;
         std::ofstream(output / "scene-sprite-summary.json") << json({{"schema", "srw64.scene-sprite-run.v1"},
             {"frame_images", images.size()}, {"assets", assets.size()}, {"rewritten_draws", rewritten.load()},
             {"native_draws", rendered.load()}, {"waiting_for_texture", pending.load()}, {"skipped", skipped.load()},
             {"left_original", unexpected.load()}, {"decoded", decoded.load()}, {"failed", failures.load()},
             {"released", released.load()}, {"resident_at_exit", resident}}).dump(2) << '\n';
     }
-    for (auto& asset : assets) if (asset->texture) { asset->texture->release(); asset->texture = nullptr; }
-    for (auto& [key, state] : pipelines) state->release();
-    pipelines.clear();
-    for (auto& state : depth_states) { if (state) state->release(); state = nullptr; }
-    if (clamp_sampler) clamp_sampler->release(); clamp_sampler = nullptr;
-    if (wrap_sampler) wrap_sampler->release(); wrap_sampler = nullptr;
-    device = nullptr;
+    for (auto& asset : assets) { asset->set.reset(); asset->texture.reset(); }
+    program.reset();
 }
 }

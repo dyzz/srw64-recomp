@@ -9,23 +9,64 @@
 #include <stdexcept>
 #include <string_view>
 
-// Embedded shader binaries (cmake/NativeGpu.cmake); add each new program here.
+// Embedded shader binaries (cmake/NativeGpu.cmake); add each new program here and
+// to SRW64_NATIVE_PROGRAMS.
+#include "HdMapVS.hlsl.spirv.h"
+#include "HdMapPS.hlsl.spirv.h"
+#include "HdBackgroundVS.hlsl.spirv.h"
+#include "HdBackgroundPS.hlsl.spirv.h"
+#include "HdMarkerVS.hlsl.spirv.h"
+#include "HdMarkerPS.hlsl.spirv.h"
+#include "HdModelVS.hlsl.spirv.h"
+#include "HdModelPS.hlsl.spirv.h"
+#include "HdRingVS.hlsl.spirv.h"
+#include "HdRingPS.hlsl.spirv.h"
+#include "HdTrailVS.hlsl.spirv.h"
+#include "HdTrailPS.hlsl.spirv.h"
+#include "HdPlateVS.hlsl.spirv.h"
+#include "HdPlatePS.hlsl.spirv.h"
+#include "HdSpriteVS.hlsl.spirv.h"
+#include "HdSpritePS.hlsl.spirv.h"
+#include "HdPortraitVS.hlsl.spirv.h"
+#include "HdPortraitPS.hlsl.spirv.h"
 #if defined(__APPLE__)
 #include "HdMapVS.hlsl.metal.h"
 #include "HdMapPS.hlsl.metal.h"
 #include "HdBackgroundVS.hlsl.metal.h"
 #include "HdBackgroundPS.hlsl.metal.h"
-#else
-#include "HdMapVS.hlsl.spirv.h"
-#include "HdMapPS.hlsl.spirv.h"
-#include "HdBackgroundVS.hlsl.spirv.h"
-#include "HdBackgroundPS.hlsl.spirv.h"
-#ifdef _WIN32
+#include "HdMarkerVS.hlsl.metal.h"
+#include "HdMarkerPS.hlsl.metal.h"
+#include "HdModelVS.hlsl.metal.h"
+#include "HdModelPS.hlsl.metal.h"
+#include "HdRingVS.hlsl.metal.h"
+#include "HdRingPS.hlsl.metal.h"
+#include "HdTrailVS.hlsl.metal.h"
+#include "HdTrailPS.hlsl.metal.h"
+#include "HdPlateVS.hlsl.metal.h"
+#include "HdPlatePS.hlsl.metal.h"
+#include "HdSpriteVS.hlsl.metal.h"
+#include "HdSpritePS.hlsl.metal.h"
+#include "HdPortraitVS.hlsl.metal.h"
+#include "HdPortraitPS.hlsl.metal.h"
+#elif defined(_WIN32)
 #include "HdMapVS.hlsl.dxil.h"
 #include "HdMapPS.hlsl.dxil.h"
 #include "HdBackgroundVS.hlsl.dxil.h"
 #include "HdBackgroundPS.hlsl.dxil.h"
-#endif
+#include "HdMarkerVS.hlsl.dxil.h"
+#include "HdMarkerPS.hlsl.dxil.h"
+#include "HdModelVS.hlsl.dxil.h"
+#include "HdModelPS.hlsl.dxil.h"
+#include "HdRingVS.hlsl.dxil.h"
+#include "HdRingPS.hlsl.dxil.h"
+#include "HdTrailVS.hlsl.dxil.h"
+#include "HdTrailPS.hlsl.dxil.h"
+#include "HdPlateVS.hlsl.dxil.h"
+#include "HdPlatePS.hlsl.dxil.h"
+#include "HdSpriteVS.hlsl.dxil.h"
+#include "HdSpritePS.hlsl.dxil.h"
+#include "HdPortraitVS.hlsl.dxil.h"
+#include "HdPortraitPS.hlsl.dxil.h"
 #endif
 
 namespace srw64::gpu {
@@ -36,19 +77,17 @@ template<size_t N> Bytes bytes(const char (&value)[N]) { return {reinterpret_cas
 struct Blobs { std::string_view name; Bytes vertex, pixel; RenderShaderFormat format; };
 
 // Every embedded program, for each shader format this platform builds.
-#define SRW64_NATIVE_PROGRAMS(X) X(HdMap) X(HdBackground)
+#define SRW64_NATIVE_PROGRAMS(X) X(HdMap) X(HdBackground) X(HdMarker) X(HdModel) X(HdRing) X(HdTrail) X(HdPlate) X(HdSprite) X(HdPortrait)
 std::vector<Blobs> embedded() {
     std::vector<Blobs> all;
+#define SRW64_SPIRV(name) all.push_back({#name, bytes(name##VSBlobSPIRV), bytes(name##PSBlobSPIRV), RenderShaderFormat::SPIRV});
+    SRW64_NATIVE_PROGRAMS(SRW64_SPIRV)
 #if defined(__APPLE__)
 #define SRW64_MSL(name) all.push_back({#name, bytes(name##VSBlobMSL), bytes(name##PSBlobMSL), RenderShaderFormat::METAL});
     SRW64_NATIVE_PROGRAMS(SRW64_MSL)
-#else
-#define SRW64_SPIRV(name) all.push_back({#name, bytes(name##VSBlobSPIRV), bytes(name##PSBlobSPIRV), RenderShaderFormat::SPIRV});
-    SRW64_NATIVE_PROGRAMS(SRW64_SPIRV)
-#ifdef _WIN32
+#elif defined(_WIN32)
 #define SRW64_DXIL(name) all.push_back({#name, bytes(name##VSBlobDXIL), bytes(name##PSBlobDXIL), RenderShaderFormat::DXIL});
     SRW64_NATIVE_PROGRAMS(SRW64_DXIL)
-#endif
 #endif
     return all;
 }
@@ -58,10 +97,10 @@ template<class T> std::unique_ptr<T> require(std::unique_ptr<T> value, const cha
     return value;
 }
 
-// Per-draw constants: 64K float4 (1 MiB) in one persistently mapped upload buffer,
+// Per-draw constants: 128K float4 (2 MiB) in one persistently mapped upload buffer,
 // read as StructuredBuffer<float4>. A layer draws a handful of times per workload, so
 // a slot is reused only long after RT64 has waited for the workload that read it.
-constexpr uint32_t kDataEntries = 1u << 16;
+constexpr uint32_t kDataEntries = 1u << 17;
 // Retired objects outlive the recording that used them by at least this long; RT64
 // has waited for that workload long before.
 constexpr auto kRetireDelay = std::chrono::seconds(2);
@@ -119,7 +158,7 @@ uint32_t push_data(const void* data, size_t bytes) {
     if (!context) return 0;
     std::lock_guard lock(context->mutex);
     const uint32_t entries = uint32_t((bytes + 15) / 16);
-    if (entries == 0 || entries > kDataEntries / 4) throw std::runtime_error("HD layer draw data size out of range");
+    if (entries == 0 || entries > kMaxDrawData) throw std::runtime_error("HD layer draw data size out of range");
     if (context->cursor + entries > kDataEntries) context->cursor = 0;
     const uint32_t index = context->cursor;
     std::memcpy(context->mapped + size_t(index) * 16, data, bytes);
@@ -188,12 +227,55 @@ bool Texture::upload(RenderCommandList* list) {
     return true;
 }
 
+Buffer::Buffer(const std::vector<uint8_t>& bytes) : size_(bytes.size()) {
+    if (!context) throw std::runtime_error("HD layer buffer created before the GPU context");
+    if (bytes.empty() || bytes.size() % 4) throw std::runtime_error("HD layer buffer size must be a positive multiple of 4");
+    buffer = require(context->device->createBuffer(RenderBufferDesc::UploadBuffer(size_, RenderBufferFlag::STORAGE)),
+                     "HD layer buffer allocation failed");
+    auto* destination = buffer->map();
+    if (!destination) throw std::runtime_error("Cannot map an HD layer buffer");
+    std::memcpy(destination, bytes.data(), bytes.size());
+    buffer->unmap();
+}
+
+Buffer::~Buffer() {
+    if (buffer) retire(std::shared_ptr<RenderBuffer>(buffer.release()));
+}
+
+std::vector<std::vector<uint8_t>> rgba_mips(std::vector<uint8_t> level0, uint32_t width, uint32_t height) {
+    if (level0.size() != size_t(width) * height * 4) throw std::runtime_error("RGBA level has the wrong size");
+    std::vector<std::vector<uint8_t>> levels;
+    levels.push_back(std::move(level0));
+    uint32_t w = width, h = height;
+    while (w > 1 || h > 1) {
+        const auto& src = levels.back();
+        const uint32_t dw = std::max(1u, w / 2), dh = std::max(1u, h / 2);
+        std::vector<uint8_t> next(size_t(dw) * dh * 4);
+        for (uint32_t y = 0; y < dh; ++y)
+            for (uint32_t x = 0; x < dw; ++x)
+                for (uint32_t c = 0; c < 4; ++c) {
+                    const auto at = [&](uint32_t xx, uint32_t yy) { return src[(size_t(std::min(yy, h - 1)) * w + std::min(xx, w - 1)) * 4 + c]; };
+                    next[(size_t(y) * dw + x) * 4 + c] = uint8_t((at(2 * x, 2 * y) + at(2 * x + 1, 2 * y) + at(2 * x, 2 * y + 1) + at(2 * x + 1, 2 * y + 1) + 2) / 4);
+                }
+        levels.push_back(std::move(next));
+        w = dw; h = dh;
+    }
+    return levels;
+}
+
 struct Program::Shaders {
     std::unique_ptr<RenderShader> vertex, pixel;
 };
 
 Program::Program(const char* name, uint32_t textures, std::vector<Sampler> sampler_descs)
-    : name(name), texture_count(textures), shaders(std::make_unique<Shaders>()) {
+    : Program(name, [&] {
+          std::vector<Slot> slots(textures, Slot{Slot::texture});
+          for (const auto& filter : sampler_descs) slots.push_back({Slot::sampler, filter});
+          return slots;
+      }()) {}
+
+Program::Program(const char* name, std::vector<Slot> slot_list)
+    : name(name), slots(std::move(slot_list)), shaders(std::make_unique<Shaders>()) {
     if (!context) throw std::runtime_error("HD layer program created before the GPU context");
     for (const auto& blobs : embedded()) {
         if (blobs.name != name || blobs.format != context->format) continue;
@@ -203,42 +285,66 @@ Program::Program(const char* name, uint32_t textures, std::vector<Sampler> sampl
                                  "HD layer pixel shader failed");
     }
     if (!shaders->vertex) throw std::runtime_error(std::string("No embedded HD layer shaders for ") + name + " on this backend");
-    for (const auto& desc : sampler_descs) {
-        RenderSamplerDesc sampler;
-        sampler.minFilter = sampler.magFilter = desc.linear ? RenderFilter::LINEAR : RenderFilter::NEAREST;
-        sampler.mipmapMode = desc.linear ? RenderMipmapMode::LINEAR : RenderMipmapMode::NEAREST;
-        if (!desc.mipmaps) sampler.maxLOD = 0;
-        sampler.addressU = sampler.addressV = sampler.addressW =
-            desc.repeat ? RenderTextureAddressMode::WRAP : RenderTextureAddressMode::CLAMP;
-        samplers.push_back(require(context->device->createSampler(sampler), "HD layer sampler failed"));
+    // Set 1: one binding per slot, in order (NativeGpu.hlsli).
+    sampler_pointers.reserve(slots.size());
+    for (uint32_t binding = 0; binding < slots.size(); ++binding) {
+        const auto& slot = slots[binding];
+        if (slot.kind == Slot::texture) texture_ranges.emplace_back(RenderDescriptorRangeType::TEXTURE, binding, 1, nullptr);
+        else if (slot.kind == Slot::buffer) texture_ranges.emplace_back(RenderDescriptorRangeType::STRUCTURED_BUFFER, binding, 1, nullptr);
+        else {
+            RenderSamplerDesc sampler;
+            sampler.minFilter = sampler.magFilter = slot.filter.linear ? RenderFilter::LINEAR : RenderFilter::NEAREST;
+            sampler.mipmapMode = slot.filter.linear ? RenderMipmapMode::LINEAR : RenderMipmapMode::NEAREST;
+            if (!slot.filter.mipmaps) sampler.maxLOD = 0;
+            sampler.addressU = slot.filter.repeat_u ? RenderTextureAddressMode::WRAP : RenderTextureAddressMode::CLAMP;
+            sampler.addressV = slot.filter.repeat_v ? RenderTextureAddressMode::WRAP : RenderTextureAddressMode::CLAMP;
+            sampler.addressW = RenderTextureAddressMode::CLAMP;
+            samplers.push_back(require(context->device->createSampler(sampler), "HD layer sampler failed"));
+            sampler_pointers.push_back(samplers.back().get());
+            texture_ranges.emplace_back(RenderDescriptorRangeType::SAMPLER, binding, 1, &sampler_pointers.back());
+        }
     }
-    // Set 1: textures at bindings 0.., then the samplers (NativeGpu.hlsli).
-    for (uint32_t i = 0; i < texture_count; ++i) texture_ranges.emplace_back(RenderDescriptorRangeType::TEXTURE, i, 1, nullptr);
-    sampler_pointers.reserve(samplers.size());
-    for (const auto& sampler : samplers) sampler_pointers.push_back(sampler.get());
-    for (uint32_t i = 0; i < samplers.size(); ++i)
-        texture_ranges.emplace_back(RenderDescriptorRangeType::SAMPLER, texture_count + i, 1, &sampler_pointers[i]);
     texture_set_desc.descriptorRanges = texture_ranges.data();
     texture_set_desc.descriptorRangesCount = uint32_t(texture_ranges.size());
     RenderPipelineLayoutBuilder builder;
     builder.begin();
     builder.addPushConstant(0, 0, 16, RenderShaderStageFlag::VERTEX | RenderShaderStageFlag::PIXEL);
     builder.addDescriptorSet(context->data_builder.descriptorSetDesc);
-    builder.addDescriptorSet(texture_set_desc);
+    if (!slots.empty()) builder.addDescriptorSet(texture_set_desc);
     builder.end();
     layout = require(builder.create(context->device), "HD layer pipeline layout failed");
 }
 
 Program::~Program() = default;
 
-std::unique_ptr<RenderDescriptorSet> Program::bind_textures(std::span<Texture* const> textures) const {
-    if (textures.size() != texture_count) throw std::runtime_error("HD layer texture count differs from its program");
-    auto set = require(context->device->createDescriptorSet(texture_set_desc), "HD layer texture descriptors failed");
-    for (uint32_t i = 0; i < texture_count; ++i) {
-        if (!textures[i]->get()) throw std::runtime_error("HD layer texture bound before its upload");
-        set->setTexture(i, textures[i]->get(), RenderTextureLayout::SHADER_READ);
+std::unique_ptr<RenderDescriptorSet> Program::bind(std::initializer_list<Resource> resources) const {
+    auto set = require(context->device->createDescriptorSet(texture_set_desc), "HD layer descriptors failed");
+    auto next = resources.begin();
+    uint32_t index = 0;  // descriptor index: every range here holds one
+    for (const auto& slot : slots) {
+        if (slot.kind != Slot::sampler) {
+            if (next == resources.end()) throw std::runtime_error(std::string("Too few resources for ") + name);
+            if (slot.kind == Slot::texture) {
+                auto* texture = std::get<Texture*>(*next);
+                if (!texture->get()) throw std::runtime_error("HD layer texture bound before its upload");
+                set->setTexture(index, texture->get(), RenderTextureLayout::SHADER_READ);
+            } else {
+                const RenderBufferStructuredView view(4);
+                auto* buffer = std::get<Buffer*>(*next);
+                set->setBuffer(index, buffer->get(), buffer->size(), &view);
+            }
+            ++next;
+        }
+        ++index;
     }
+    if (next != resources.end()) throw std::runtime_error(std::string("Too many resources for ") + name);
     return set;
+}
+
+std::unique_ptr<RenderDescriptorSet> Program::bind_textures(std::span<Texture* const> textures) const {
+    if (textures.size() == 1) return bind({textures[0]});
+    if (textures.size() == 2) return bind({textures[0], textures[1]});
+    throw std::runtime_error("HD layer texture count unsupported");
 }
 
 bool Program::begin(RenderCommandList* list, RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call,

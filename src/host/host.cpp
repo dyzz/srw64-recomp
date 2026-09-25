@@ -432,8 +432,31 @@ static int run_host(int argc, char** argv) {
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
 }
 
+#ifdef __linux__
+// A crash leaves its stack on stderr (the session's native.log), for reports from
+// Linux and the Steam Deck: addresses resolve with addr2line on the unstripped build.
+#include <execinfo.h>
+#include <csignal>
+#include <unistd.h>
+namespace {
+void crash_backtrace(int signal) {
+    static const char header[] = "SRW64_CRASH signal ";
+    char number[4] = {char('0' + signal / 10 % 10), char('0' + signal % 10), '\n', 0};
+    (void)!::write(2, header, sizeof(header) - 1);
+    (void)!::write(2, number, 3);
+    void* frames[64];
+    backtrace_symbols_fd(frames, backtrace(frames, 64), 2);
+    std::signal(signal, SIG_DFL);
+    std::raise(signal);
+}
+}
+#endif
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
+#ifdef __linux__
+    for (int signal : {SIGSEGV, SIGBUS, SIGILL, SIGFPE, SIGABRT}) std::signal(signal, crash_backtrace);
+#endif
 #if defined(__APPLE__) && defined(SRW64_WITH_RT64)
     // Finder supplies no arguments. Explicit --play and the diagnostic ABI
     // below remain non-GUI and deterministic for the existing developer tools.

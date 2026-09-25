@@ -22,9 +22,11 @@ std::unique_ptr<PixelCompositor> compositor;
 PixelCompositor::Image image;
 std::filesystem::path output;
 std::string cached_key;
+bool metal = false;  // Plume's Metal backend: its framebuffer reports its format
 }
 void gpu_init(plume::RenderInterface* rhi, plume::RenderDevice* device, const std::filesystem::path& directory) {
     image.reset(); cached_key.clear(); output = directory;
+    metal = rhi->getCapabilities().shaderFormat == plume::RenderShaderFormat::METAL;
     compositor = std::make_unique<PixelCompositor>(*device,
         presentation::embedded_pixel_shaders(rhi->getCapabilities().shaderFormat));
 }
@@ -33,21 +35,22 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
     if (!frame || std::none_of(frame->boxes.begin(),frame->boxes.end(),[](const auto& b){return b.visible;})) return;
     if (!compositor) throw std::runtime_error("Dialogue compositor is not initialized");
     localization::Scope locale(frame->catalog);
-#ifdef __APPLE__
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || fb->colorAttachments[0].getTexture()->sampleCount() != 1)
-        throw std::runtime_error("Dialogue requires one non-MSAA color target");
-    const auto format = fb->colorAttachments[0].format;
-    if (format != plume::RenderFormat::B8G8R8A8_UNORM && format != plume::RenderFormat::R8G8B8A8_UNORM)
-        throw std::runtime_error("Unvalidated native UI color target");
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    const char* surface = "Plume (Metal surface)";
-#else
     // The present hook always draws into RT64's swapchain framebuffer, which is
     // B8G8R8A8 without MSAA (rt64_application.cpp); Plume has no format query.
-    const auto format = plume::RenderFormat::B8G8R8A8_UNORM;
+    auto format = plume::RenderFormat::B8G8R8A8_UNORM;
     const char* surface = "Plume (swapchain)";
+#ifdef __APPLE__
+    if (metal) {
+        const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
+        if (fb->colorAttachments.size() != 1 || fb->colorAttachments[0].getTexture()->sampleCount() != 1)
+            throw std::runtime_error("Dialogue requires one non-MSAA color target");
+        format = fb->colorAttachments[0].format;
+        if (format != plume::RenderFormat::B8G8R8A8_UNORM && format != plume::RenderFormat::R8G8B8A8_UNORM)
+            throw std::runtime_error("Unvalidated native UI color target");
+        auto* command = static_cast<plume::MetalCommandList*>(list);
+        command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
+        surface = "Plume (Metal surface)";
+    }
 #endif
     // Preserve the existing workload/cache identity and CPU raster behavior.
     std::ostringstream key;
