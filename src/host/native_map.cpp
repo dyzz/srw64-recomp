@@ -5,6 +5,7 @@
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
+#include "rom_art.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -39,8 +40,10 @@ struct Asset {
     Palette reference{};
     bool alpha = false;                      // meta "alpha": premultiplied base, drawn translucent
     std::filesystem::path folder;
-    // Maps decode at start; window frames (docs/native/native-ui-text.md §4) the first time
-    // one is drawn, on the decoder thread, and draw from the next frame on.
+    // Maps decode at start. Window frames (docs/native/native-ui-text.md §4) are made from
+    // the ROM (rom_art.cpp) the first time one is drawn, on the decoder thread, and draw
+    // from the next frame on.
+    bool from_rom = false;
     enum class State { waiting, queued, decoded, ready } state = State::waiting;
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
@@ -67,6 +70,7 @@ std::deque<size_t> decode_queue;
 std::thread decoder;
 bool stopping = false;
 size_t frame_assets = 0;
+bool rom_frames = false;                     // an HD art pack is present: frames come from the ROM
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, no_marker{};
 std::filesystem::path output;
 
@@ -111,8 +115,30 @@ Asset load_meta(const std::filesystem::path& folder) {
     return asset;
 }
 
+// A window frame drawn from the ROM's line layout (rom_art.cpp): indices, coverage, the
+// reference palette and the painted base.
+void generate(Asset& asset) {
+    const auto spec = rom_art::frame(asset.layout);
+    if (!spec) return;
+    const auto image = rom_art::frame_image(*spec);
+    if (!image.width) return;
+    asset.width = image.width; asset.height = image.height; asset.scale = image.scale;
+    asset.origin[0] = image.origin[0]; asset.origin[1] = image.origin[1];
+    std::copy(image.palette.begin(), image.palette.end(), asset.reference.begin());
+    asset.index = image.index;
+    asset.base.resize(asset.index.size() * 4);
+    for (size_t i = 0; i < asset.index.size(); ++i) {
+        // The strokes' antialiased coverage on top of the palette entry's own alpha.
+        const uint32_t c = image.palette[asset.index[i]], a = (c >> 24) * image.coverage[i] / 255;
+        for (int k = 0; k < 3; ++k) asset.base[i * 4 + k] = uint8_t((((c >> (8 * k)) & 0xFF) * a + 127) / 255);
+        asset.base[i * 4 + 3] = uint8_t(a);
+    }
+    asset.alpha = true;
+}
+
 // The images, off the game thread for window frames.
 void decode(Asset& asset) {
+    if (asset.from_rom) { generate(asset); return; }
     const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
@@ -156,7 +182,8 @@ void decode_loop() {
         // Only this thread touches a queued asset's pixels.
         decode(assets[index]);
         std::lock_guard lock(asset_mutex);
-        assets[index].state = Asset::State::decoded;
+        // A frame that does not decode stays original: waiting again would retry forever.
+        assets[index].state = assets[index].index.empty() ? Asset::State::queued : Asset::State::decoded;
     }
 }
 
@@ -224,28 +251,20 @@ void configure(const std::filesystem::path& directory) {
                 decode(assets.back());
                 assets.back().state = Asset::State::decoded;
             }
-    // Window frames (tools/hd_ai/frame_hd.py): keyed by scene, decoded when first drawn. The
-    // art pack carries them in frames/; SRW64_HD_FRAMES points elsewhere for a trial set.
-    std::filesystem::path frames;
-    if (const char* root = std::getenv("SRW64_HD_FRAMES"); root && *root) frames = root;
-    else if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art && std::filesystem::is_directory(std::filesystem::path(art) / "frames"))
-        frames = std::filesystem::path(art) / "frames";
-    if (!frames.empty())
-        for (const auto& entry : std::filesystem::directory_iterator(frames))
-            if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
-                assets.push_back(load_meta(entry.path()));
-                ++frame_assets;
-            }
-    if (assets.empty()) return;
-    if (frame_assets) decoder = std::thread(decode_loop);
+    // Window frames come from the player's ROM (rom_art.cpp) when an HD art pack is present,
+    // as assets added the first time each frame scene is drawn.
+    if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art) rom_frames = true;
+    assets.reserve(assets.size() + 512);     // frames join later: no reallocation under the renderer
+    if (assets.empty() && !rom_frames) return;
+    decoder = std::thread(decode_loop);
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
-    fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s), %zu window frame(s)\n", assets.size() - frame_assets, frame_assets);
+    fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)%s\n", assets.size(), rom_frames ? ", window frames from the ROM" : "");
 }
 
 void gpu_init() {
-    if (assets.empty()) return;
+    if (assets.empty() && !rom_frames) return;
     // The textures upload on first draw, on RT64's workload command list.
     {
         std::lock_guard lock(asset_mutex);
@@ -257,8 +276,18 @@ void gpu_init() {
 }
 
 void rewrite(uint8_t* rdram, const MapDraw& draw) {
-    if (assets.empty()) return;
-    const int asset_index = find_asset(draw.layout);
+    if (assets.empty() && !rom_frames) return;
+    int asset_index = find_asset(draw.layout);
+    if (asset_index < 0 && rom_frames && rom_art::ready() && rom_art::frame(draw.layout) && assets.size() < assets.capacity()) {
+        // A window frame drawn for the first time: its asset joins, made on the decoder thread.
+        std::lock_guard lock(asset_mutex);
+        Asset frame;
+        frame.layout = draw.layout;
+        frame.from_rom = true;
+        assets.push_back(std::move(frame));
+        ++frame_assets;
+        asset_index = int(assets.size() - 1);
+    }
     if (asset_index < 0 || !hd_enabled()) return;
     {
         // A frame not decoded yet: queue it and leave the original this time.
@@ -337,7 +366,7 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
 }
 
 void shutdown() {
-    if (assets.empty()) return;
+    if (assets.empty() && !rom_frames) return;
     {
         std::lock_guard lock(asset_mutex);
         stopping = true;

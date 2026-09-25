@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test
+recomp-native-check: recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -139,6 +139,12 @@ recomp-upgrade-refund-test:
 	mkdir -p build/recomp/upgrade-refund-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_upgrade_refund.cpp -o build/recomp/upgrade-refund-test/test
 	rm -rf build/recomp/upgrade-refund-test/test-run && build/recomp/upgrade-refund-test/test build/recomp/upgrade-refund-test/test-run
+
+.PHONY: recomp-rom-art-test
+recomp-rom-art-test:
+	mkdir -p build/recomp/rom-art-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Isrc/native -Ibuild/recomp/upstream/RT64/src/contrib tests/native_rom_art.cpp src/host/rom_art.cpp -o build/recomp/rom-art-test/test
+	build/recomp/rom-art-test/test rom.z64 assets/hd-ai/frames/v1
 
 .PHONY: recomp-parts-carry-test
 recomp-parts-carry-test:

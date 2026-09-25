@@ -33,6 +33,7 @@
 #include "native_sprite.hpp"
 #include "sprite_text.hpp"
 #include "ui_text.hpp"
+#include "rom_art.hpp"
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
@@ -115,6 +116,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::parts_carry::configure(output_dir);
 #if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
+    srw64::rom_art::initialize({rom.data(),rom.size()});
 #endif
     // The generic runtime initially loads/registers 1 MiB. Only the resident
     // section belongs at this entrypoint; the game's own loader owns overlays.
