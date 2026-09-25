@@ -35,6 +35,7 @@
 | [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、姓名页与「选项」菜单、存档历史 |
 | [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
 | [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
+| [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |

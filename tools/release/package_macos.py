@@ -163,9 +163,11 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum:
             "Imported game content and saves remain in your private user directory.\n"
             "Hold Option when launching to choose another ROM, or use --choose-rom.\n"
             "Public distribution requires dependency-license review and Developer ID notarization.\n"
-            + ("This build bundles HD art and model packs prepared on the builder's machine, including\n"
-               "reference bytes copied from the ROM. It is for that player's own use: do not distribute it.\n"
-               if hd is not None else ""),
+            + ("This build bundles the HD pack prepared on the builder's machine (AI-generated images,\n"
+               "see Resources/hd/NOTICE.txt). It is a personal build: do not distribute it.\n"
+               if hd is not None else
+               "HD images: download the HD pack of the same version and put its hd folder in\n"
+               "~/Library/Application Support/SRW64Recomp/ (see its NOTICE.txt).\n"),
             encoding="utf-8")
         if dialogue is not None:
             # The dialogue text players can override (docs/guide/dialogue-text.md): text files only.
