@@ -12,7 +12,8 @@ struct MapDraw {
     int32_t camera_x = 0, camera_y = 0;  // map pixels at screen (0,0)
 };
 void configure(const std::filesystem::path& output);
-void metal_init(plume::RenderDevice* device);
+// Render-hook init, after gpu::init (native_gpu.hpp).
+void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const MapDraw& draw);

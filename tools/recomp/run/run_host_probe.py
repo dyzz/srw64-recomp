@@ -29,6 +29,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, help="new run directory (required unless --build-only)")
     parser.add_argument("--build-only", action="store_true", help="check the inputs and build the host, then exit without running it")
+    parser.add_argument("--binary", type=Path, help="run this prebuilt host instead of building one (before/after comparisons)")
     parser.add_argument("--reuse-build-from", type=Path, help="reuse an identical existing binary from a prior run after checking source, ROM and ABI fingerprints")
     parser.add_argument("--variant", choices=("jp",), default="jp", help="pinned ROM resource variant; code compatibility is verified before building")
     parser.add_argument("--vis", type=int, default=600)
@@ -227,6 +228,9 @@ def main() -> int:
             raise RuntimeError("prior run build fingerprints differ; refusing binary reuse")
         reused_build = {"report": str(prior_path), "report_sha256": digest(prior_path),
                         "binary_sha256": digest(binary)}
+        commands = []
+    if args.binary:
+        binary = args.binary.resolve(strict=True)
         commands = []
     for index, command in enumerate(commands):
         with (build / f"probe-build-{index}.log").open("w") as log:

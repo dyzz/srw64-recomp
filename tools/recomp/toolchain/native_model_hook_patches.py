@@ -17,7 +17,13 @@ PATCHES = {
     using NativeMeshRender = bool(RenderCommandList *, RenderFramebuffer *, const NativeMeshDraw &);
     void SetNativeMeshHooks(NativeMeshClassify *, NativeMeshRender *);
     NativeMeshClassify *GetNativeMeshClassify();
-    NativeMeshRender *GetNativeMeshRender();''')],
+    NativeMeshRender *GetNativeMeshRender();'''),
+        # The scene target, so host draws build matching pipelines on any Plume backend
+        # (the public framebuffer has no format or sample-count query).
+        ('        bool depthCompare = false, depthWrite = false;\n    };',
+         '        bool depthCompare = false, depthWrite = false;\n'
+         '        RenderFormat colorFormat = RenderFormat::UNKNOWN, depthFormat = RenderFormat::UNKNOWN;\n'
+         '        RenderSampleCounts sampleCount = RenderSampleCount::COUNT_1;\n    };')],
     'src/rhi/rt64_render_hooks.cpp': [('    static RenderHookInit *init = nullptr;', '''    static NativeMeshClassify *nativeClassify = nullptr;
     static NativeMeshRender *nativeRender = nullptr;
     void SetNativeMeshHooks(NativeMeshClassify *classify, NativeMeshRender *render) {
@@ -117,5 +123,10 @@ PATCHES = {
                     }
                 }
 
-                // A new pass must be started if decals are required and something wrote to the depth buffer before this call.''')],
+                // A new pass must be started if decals are required and something wrote to the depth buffer before this call.'''),
+        ('                    native.screenOffset[1] = triangles.screenOffset.y;\n',
+         '                    native.screenOffset[1] = triangles.screenOffset.y;\n'
+         '                    native.colorFormat = (fbStorage->colorTarget != nullptr) ? fbStorage->colorTarget->format : RenderFormat::UNKNOWN;\n'
+         '                    native.depthFormat = (fbStorage->depthTarget != nullptr) ? fbStorage->depthTarget->format : RenderFormat::UNKNOWN;\n'
+         '                    native.sampleCount = (fbStorage->colorTarget != nullptr) ? fbStorage->colorTarget->multisampling.sampleCount : RenderSampleCount::COUNT_1;\n')],
 }

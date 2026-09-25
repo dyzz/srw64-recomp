@@ -3,7 +3,7 @@
 #include "presentation/image_mode.hpp"
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
-#include "plume_metal.h"
+#include "native_gpu.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -36,7 +36,8 @@ struct Asset {
     std::filesystem::path file;
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mip chain, dropped after upload
     std::vector<std::pair<int, int>> sizes;
-    MTL::Texture* texture{};
+    std::unique_ptr<gpu::Texture> texture;
+    std::unique_ptr<plume::RenderDescriptorSet> textures;
 };
 
 struct Quad { float rect[4], uv[4]; };        // N64 screen pixels; normalised picture coordinates
@@ -56,10 +57,7 @@ std::mutex ring_mutex;
 uint32_t next_id = 1;
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
-MTL::Device *device{};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState*> pipelines;
-MTL::DepthStencilState *depth_state{};
-MTL::SamplerState *sampler{};
+std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdBackground{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, unexpected{}, decoded{};
 std::ofstream dump;          // SRW64_BG_DUMP: the first draw of each picture without HD, for new layouts
 std::set<std::pair<uint16_t, uint16_t>> dumped;
@@ -121,66 +119,19 @@ uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     return previous_classify ? previous_classify(state, dl) : 0;
 }
 
-MTL::RenderPipelineState* pipeline_for(MTL::Texture* color, MTL::Texture* depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = pipelines.find(key); found != pipelines.end()) return found->second;
-    const char* source = R"(
-        #include <metal_stdlib>
-        using namespace metal;
-        struct Quad { float4 rect, uv; };
-        struct Frame { float4 resolution, prim; };
-        struct V { float4 p [[position]]; float2 uv; };
-        vertex V vs(uint i [[vertex_id]], uint q [[instance_id]], const device Quad* quads [[buffer(0)]],
-                    constant Frame& f [[buffer(1)]]) {
-            const float2 corner = float2(i & 1, i >> 1);
-            const float2 p = mix(quads[q].rect.xy, quads[q].rect.zw, corner);
-            const float2 clip = (p - f.resolution.xy * .5f) / (f.resolution.xy * float2(.5f, -.5f));
-            return {float4(clip, 0, 1), mix(quads[q].uv.xy, quads[q].uv.zw, corner)};
-        }
-        fragment float4 fs(V in [[stage_in]], texture2d<float> image [[texture(0)]], sampler s [[sampler(0)]],
-                           constant Frame& f [[buffer(0)]]) {
-            const float4 c = image.sample(s, in.uv);   // premultiplied
-            return float4(c.rgb * f.prim.rgb * f.prim.a, c.a * f.prim.a);
-        }
-    )";
-    NS::Error* error{};
-    auto* library = device->newLibrary(NS::String::string(source, NS::UTF8StringEncoding), nullptr, &error);
-    if (!library) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD background shader failed");
-    auto* vs = library->newFunction(NS::String::string("vs", NS::UTF8StringEncoding));
-    auto* fs = library->newFunction(NS::String::string("fs", NS::UTF8StringEncoding));
-    auto* desc = MTL::RenderPipelineDescriptor::alloc()->init();
-    desc->setVertexFunction(vs); desc->setFragmentFunction(fs);
-    auto* attachment = desc->colorAttachments()->object(0);
-    attachment->setPixelFormat(color->pixelFormat());
-    attachment->setBlendingEnabled(true);
-    attachment->setSourceRGBBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    attachment->setSourceAlphaBlendFactor(MTL::BlendFactorOne);
-    attachment->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    desc->setDepthAttachmentPixelFormat(depth->pixelFormat());
-    desc->setRasterSampleCount(color->sampleCount());
-    auto* next = device->newRenderPipelineState(desc, &error);
-    desc->release(); vs->release(); fs->release(); library->release();
-    if (!next) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD background pipeline failed");
-    return pipelines[key] = next;
-}
-
-// GPU thread: upload on first use. There are only sixteen pictures and one shows at a
-// time, so textures stay resident once made.
-MTL::Texture* texture_for(Asset& asset) {
+// Workload thread: upload on first use. There are only sixteen pictures and one shows
+// at a time, so textures stay resident once made.
+plume::RenderDescriptorSet* textures_for(Asset& asset, plume::RenderCommandList* list) {
     std::lock_guard lock(asset_mutex);
-    if (asset.texture) return asset.texture;
+    if (asset.textures) return asset.textures.get();
     if (asset.levels.empty()) return nullptr;
-    auto* desc = MTL::TextureDescriptor::texture2DDescriptor(MTL::PixelFormatRGBA8Unorm, width, height, true);
-    desc->setUsage(MTL::TextureUsageShaderRead);
-    asset.texture = device->newTexture(desc);
-    if (!asset.texture) throw std::runtime_error("HD background texture allocation failed");
-    for (size_t level = 0; level < asset.levels.size() && level < asset.texture->mipmapLevelCount(); ++level) {
-        const auto [w, h] = asset.sizes[level];
-        asset.texture->replaceRegion(MTL::Region(0, 0, w, h), level, asset.levels[level].data(), size_t(w) * 4);
-    }
-    asset.levels.clear(); asset.levels.shrink_to_fit();
-    return asset.texture;
+    asset.texture = std::make_unique<gpu::Texture>(uint32_t(width), uint32_t(height), plume::RenderFormat::R8G8B8A8_UNORM,
+                                                   std::move(asset.levels));
+    asset.levels.clear(); asset.sizes.clear();
+    if (!asset.texture->upload(list)) return nullptr;
+    gpu::Texture* const textures[] = {asset.texture.get()};
+    asset.textures = program->bind_textures(textures);
+    return asset.textures.get();
 }
 
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
@@ -190,39 +141,21 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         std::lock_guard lock(ring_mutex);
         draw = ring[call.id % kRing];
     }
-    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !device || draw.quads.empty()) { ++skipped; return true; }
-    MTL::Texture* texture = texture_for(assets[size_t(draw.asset)]);
-    if (!texture) { ++skipped; return true; }
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("HD background requires the scene color and depth attachments");
-    auto* color = fb->colorAttachments[0].getTexture();
-    auto* depth = fb->depthAttachment.getTexture();
-    auto* pipeline = pipeline_for(color, depth);
-    struct { float resolution[4], prim[4]; } frame{{float(call.fbWidth), float(call.fbHeight), 0, 0},
-                                                   {draw.prim[0], draw.prim[1], draw.prim[2], draw.prim[3]}};
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto* attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto* encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string("SRW64 HD background", NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(pipeline);
-    encoder->setDepthStencilState(depth_state);
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& s = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(s.left), NS::UInteger(s.top), NS::UInteger(s.right - s.left), NS::UInteger(s.bottom - s.top)});
-    encoder->setCullMode(MTL::CullModeNone);
-    encoder->setVertexBytes(draw.quads.data(), draw.quads.size() * sizeof(Quad), 0);
-    encoder->setVertexBytes(&frame, sizeof(frame), 1);
-    encoder->setFragmentTexture(texture, 0);
-    encoder->setFragmentSamplerState(sampler, 0);
-    encoder->setFragmentBytes(&frame, sizeof(frame), 0);
-    encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4), NS::UInteger(draw.quads.size()));
-    encoder->endEncoding();
+    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !program || draw.quads.empty()) { ++skipped; return true; }
+    auto* textures = textures_for(assets[size_t(draw.asset)], list);
+    if (!textures) { ++skipped; return true; }
+    // HdBackgroundVS/PS data: resolution, PRIM, then rect and uv per quad.
+    std::vector<float> data(8 + draw.quads.size() * 8);
+    data[0] = float(call.fbWidth); data[1] = float(call.fbHeight);
+    std::memcpy(&data[4], draw.prim, sizeof(draw.prim));
+    std::memcpy(&data[8], draw.quads.data(), draw.quads.size() * sizeof(Quad));
+    gpu::State state;
+    state.blend = gpu::Blend::premultiplied;
+    if (!program->begin(list, framebuffer, call, state, textures, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
+        ++skipped;
+        return true;
+    }
+    list->drawInstanced(4, uint32_t(draw.quads.size()), 0, 0);
     ++rendered;
     return true;
 }
@@ -257,21 +190,9 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     fprintf(stderr, "SRW64_HD_BACKGROUNDS loaded %zu background(s) at %dx%d\n", assets.size(), width, height);
 }
 
-void metal_init(plume::RenderDevice* value) {
-    device = static_cast<plume::MetalDevice*>(value)->mtl;
-    if (!depth_state) {
-        auto* depthDesc = MTL::DepthStencilDescriptor::alloc()->init();
-        depthDesc->setDepthCompareFunction(MTL::CompareFunctionAlways);
-        depthDesc->setDepthWriteEnabled(false);
-        depth_state = device->newDepthStencilState(depthDesc); depthDesc->release();
-    }
-    if (!sampler) {
-        auto* sampling = MTL::SamplerDescriptor::alloc()->init();
-        sampling->setMinFilter(MTL::SamplerMinMagFilterLinear); sampling->setMagFilter(MTL::SamplerMinMagFilterLinear);
-        sampling->setMipFilter(MTL::SamplerMipFilterLinear);
-        sampling->setSAddressMode(MTL::SamplerAddressModeClampToEdge); sampling->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
-        sampler = device->newSamplerState(sampling); sampling->release();
-    }
+void gpu_init() {
+    // One linear, mipmapped, clamped sampler after the picture.
+    program = std::make_unique<gpu::Program>("HdBackground", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
 }
 
 void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
@@ -333,7 +254,7 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     {
         std::lock_guard lock(asset_mutex);
         Asset& asset = assets[size_t(record.asset)];
-        if (!asset.texture && asset.levels.empty()) decode(asset);
+        if (!asset.textures && asset.levels.empty()) decode(asset);
     }
     {
         std::lock_guard lock(ring_mutex);
@@ -372,11 +293,7 @@ void shutdown() {
             {"native_draws", rendered.load()}, {"skipped", skipped.load()}, {"unexpected_layout", unexpected.load()},
             {"decoded", decoded.load()}, {"resident_at_exit", resident}}).dump(2) << '\n';
     }
-    for (auto& asset : assets) if (asset.texture) { asset.texture->release(); asset.texture = nullptr; }
-    for (auto& [key, state] : pipelines) state->release();
-    pipelines.clear();
-    if (depth_state) depth_state->release(); depth_state = nullptr;
-    if (sampler) sampler->release(); sampler = nullptr;
-    device = nullptr;
+    for (auto& asset : assets) { asset.textures.reset(); asset.texture.reset(); }
+    program.reset();
 }
 }

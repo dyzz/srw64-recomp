@@ -8,7 +8,8 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-HEADERS = ("native_marker", "native_map", "native_portrait", "native_background", "native_sprite")
+# Layers still drawn with raw Metal; the ported ones build everywhere (native_gpu.cpp).
+HEADERS = ("native_marker", "native_portrait", "native_sprite")
 DECLARATION = re.compile(r"^[A-Za-z_][\w:<>, ]*[\s*&]+(\w+)\([^;{]*\);", re.MULTILINE)
 
 

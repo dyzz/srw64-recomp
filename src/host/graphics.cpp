@@ -9,6 +9,7 @@
 #include "input_mode.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
+#include "native_gpu.hpp"
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
@@ -233,10 +234,11 @@ public:
         srw64::hdmap::configure(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
+            srw64::gpu::init(rhi, device);
             srw64::marker::metal_init(device);
-            srw64::hdmap::metal_init(device);
+            srw64::hdmap::gpu_init();
             srw64::portraits::metal_init(device);
-            srw64::backgrounds::metal_init(device);
+            srw64::backgrounds::gpu_init();
             srw64::sprites::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::dialogue::gpu_init(rhi, device, capture_directory);
@@ -256,6 +258,7 @@ public:
             srw64::ui::render_shutdown();
             srw64::dialogue::gpu_shutdown();
 #endif
+            srw64::gpu::shutdown();
         });
 #ifndef __APPLE__
         RT64::SetRenderHookPresented([](unsigned long long) { run_after_present(true); });

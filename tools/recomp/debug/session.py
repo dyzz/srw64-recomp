@@ -105,7 +105,7 @@ class Session:
 
     @classmethod
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
-               mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False,
+               mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                timeout: float = 900.0, env: dict | None = None, diagnostics: str = "full") -> "Session":
         """Build if needed and start a session; returns once the host listens."""
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -120,6 +120,8 @@ class Session:
             command += ["--save-from", str(Path(save).resolve())]
         if audio:
             command.append("--audio")
+        if binary:
+            command += ["--binary", str(Path(binary).resolve())]
         if reuse_build:
             previous = cls.previous_run()
             if previous is not None:
