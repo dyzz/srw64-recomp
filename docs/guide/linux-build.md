@@ -1,6 +1,6 @@
 # Linux 与 Steam Deck 构建
 
-2026-09-25。[三平台移植计划](../design/three-platform-port.md) X2 的第一个版本：Linux x64 上用 Vulkan 运行游戏，**只有原版画面**。HD 图层（整张头像、背景、剧情文字图、3D 标记与舰船）仍然直接调用 Metal，要等 X1 移植到 plume，所以在 Linux 上由 `native_layers_stub.cpp` 关掉，交给 RT64 按原版显示列表绘制。
+2026-09-25。[三平台移植计划](../design/three-platform-port.md) X2 的第一个版本：Linux x64 上用 Vulkan 运行游戏。HD 图层正在移到 plume（X1）：战术地图和场间背景已经在所有平台上编译；整张头像、剧情文字图、3D 标记与舰船仍然直接调用 Metal，在 Linux 上由 `native_layers_stub.cpp` 关掉，交给 RT64 按原版显示列表绘制。Linux 包还没有带 HD 素材包，所以目前看到的是原版画面。
 
 ## 从 Mac 构建
 
@@ -76,7 +76,7 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 
 | 项目 | Linux 现状 | 由哪一阶段补上 |
 | --- | --- | --- |
-| HD 图层 | 关闭，只有原版画面 | X1 |
+| HD 图层 | 地图、背景已走 plume；标记、精灵、头像是空实现；包里没有 HD 素材 | X1，之后给 Deck 包加 HD 素材 |
 | 调试接口截图 | 返回错误：plume 的 Vulkan 后端没有纹理→缓冲拷贝，交换链也不能作为拷贝源 | X1 |
 | GPU 完成通知 | 由 RT64 呈现队列的 fence 等待之后调用 `RenderHookPresented`（`prepare_rt64.py` 补丁），代替 Metal 的 completion handler | 已完成 |
 | 菜单栏 | 没有；设置窗口用 Ctrl+, 打开（`frontend.cpp:1537`）。Deck 只用手柄时暂时打不开，可以在 Steam 输入里把一个背键映射成 Ctrl+, | X2 后续：手柄 Select 键打开设置 |

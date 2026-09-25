@@ -83,6 +83,17 @@
 
 ### X1 图形层改走 plume（在 Mac 上完成并验收）
 
+**2026-09-25 进展：**
+
+- **辅助层：** `src/host/native_gpu.{hpp,cpp}`；着色器是 `src/host/shaders/` 下的 HLSL，由 `cmake/NativeGpu.cmake` 编成 SPIR-V、MSL（经 RT64 的转换工具，`flip_vert_y` 抵消 `-fvk-invert-y`）和 DXIL。
+- **每次绘制的数据：** 写进一个共享的 `StructuredBuffer<float4>` 环形缓冲，下标经 push constant 传给着色器。RT64 每个 workload 提交后都等 GPU 完成（`rt64_workload_queue.cpp:843-844`），所以复用环形槽位是安全的；这样也避开了 Vulkan 128 字节 push constant 的下限。
+- **RT64 补丁：** `NativeMeshDraw` 带上场景目标的颜色格式、深度格式和采样数（`native_model_hook_patches.py`）。
+- **已移植：**
+  - 场间背景 `native_background.cpp`：Mac 上前后对比，同一存档、HD 模式的场间画面，两张截图最大差 1 级（约 2% 像素），肉眼无别。
+  - 战术地图 `native_map.cpp`：还没实机对比，它只在设了 `SRW64_HD_MAPS` 时启用；新增 `"alpha": true` 的半透明素材（预乘，供窗框用）。
+- **待移植：** 标记（`native_marker.cpp`）、精灵（`native_sprite.cpp`）、头像（`native_portrait.cpp`）。
+- **前后对比方法：** `srw64ctl launch --binary PATH`（即 `run_host_probe.py --binary`）运行指定的程序。移植前的程序由一个 worktree 构建：当前源码加上 HEAD 版的待移植层。
+
 这是最大的一块，而且全程可以在 Mac 上验证：plume 的 Metal 后端就是现在的底层。
 
 - **共用辅助层**（暂名 `native_gpu`）：

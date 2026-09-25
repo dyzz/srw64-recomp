@@ -4,7 +4,7 @@
 #include "presentation/image_mode.hpp"
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
-#include "plume_metal.h"
+#include "native_gpu.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -33,8 +33,10 @@ struct Asset {
     uint16_t layout = 0;
     int width = 0, height = 0, scale = 0;
     Palette reference{};
+    bool alpha = false;                      // meta "alpha": premultiplied base, drawn translucent
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
-    MTL::Texture *base_texture{}, *index_texture{};
+    std::unique_ptr<gpu::Texture> base_texture, index_texture;
+    std::unique_ptr<plume::RenderDescriptorSet> textures;
 };
 
 struct Draw {
@@ -50,12 +52,7 @@ std::mutex ring_mutex;
 uint32_t next_id = 1;
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
-MTL::Device *device{};
-// RT64 renders each frame into two targets (native 320x240 and the scaled one); keep one
-// pipeline per attachment format instead of recompiling when they alternate.
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState*> pipelines;
-MTL::DepthStencilState *depth_state{};
-MTL::SamplerState *sampler{};
+std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdMap{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, no_marker{};
 std::filesystem::path output;
 
@@ -105,6 +102,12 @@ Asset load(const std::filesystem::path& folder) {
     };
     read("base.png", 4, asset.base);
     read("index.png", 1, asset.index);
+    // Translucent assets (window frames) filter premultiplied: straight alpha would pull
+    // the colour of transparent texels into the edges.
+    asset.alpha = meta.value("alpha", false);
+    if (asset.alpha)
+        for (size_t i = 0; i < asset.base.size(); i += 4)
+            for (int c = 0; c < 3; ++c) asset.base[i + c] = uint8_t((asset.base[i + c] * asset.base[i + 3] + 127) / 255);
     return asset;
 }
 
@@ -123,51 +126,6 @@ uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     return previous_classify ? previous_classify(state, dl) : 0;
 }
 
-MTL::RenderPipelineState* pipeline_for(MTL::Texture* color, MTL::Texture* depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = pipelines.find(key); found != pipelines.end()) return found->second;
-    const char* source = R"(
-        #include <metal_stdlib>
-        using namespace metal;
-        struct Uniforms { float4 rect, uv, resolution, screen; };
-        struct Palettes { uchar4 reference[256]; uchar4 live[256]; };
-        struct V { float4 p [[position]]; float2 uv; };
-        vertex V vs(uint i [[vertex_id]], constant Uniforms& u [[buffer(0)]]) {
-            const float2 corner = float2(i & 1, i >> 1);
-            const float2 p = mix(u.rect.xy, u.rect.zw, corner);
-            float2 clip = (p - u.resolution.xy * .5f) / (u.resolution.xy * float2(.5f, -.5f));
-            clip = clip * u.screen.xy + u.screen.zw;
-            return {float4(clip, 0, 1), mix(u.uv.xy, u.uv.zw, corner)};
-        }
-        fragment float4 fs(V in [[stage_in]], texture2d<float> base [[texture(0)]],
-                           texture2d<uint> index [[texture(1)]], sampler s [[sampler(0)]],
-                           constant Palettes& pal [[buffer(0)]]) {
-            const float4 painted = base.sample(s, in.uv);
-            const uint2 size = uint2(index.get_width(), index.get_height());
-            const uint2 texel = min(uint2(in.uv * float2(size)), size - 1);
-            const uint i = index.read(texel).r;
-            // The base was composed with the reference palette; follow whatever the
-            // game has loaded now (palette cycles, day/night swaps) by that difference.
-            const float3 shift = float3(pal.live[i].rgb) / 255.0f - float3(pal.reference[i].rgb) / 255.0f;
-            return float4(saturate(painted.rgb + shift), 1);
-        }
-    )";
-    NS::Error* error{};
-    auto* library = device->newLibrary(NS::String::string(source, NS::UTF8StringEncoding), nullptr, &error);
-    if (!library) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD map shader failed");
-    auto* vs = library->newFunction(NS::String::string("vs", NS::UTF8StringEncoding));
-    auto* fs = library->newFunction(NS::String::string("fs", NS::UTF8StringEncoding));
-    auto* desc = MTL::RenderPipelineDescriptor::alloc()->init();
-    desc->setVertexFunction(vs); desc->setFragmentFunction(fs);
-    desc->colorAttachments()->object(0)->setPixelFormat(color->pixelFormat());
-    desc->setDepthAttachmentPixelFormat(depth->pixelFormat());
-    desc->setRasterSampleCount(color->sampleCount());
-    auto* next = device->newRenderPipelineState(desc, &error);
-    desc->release(); vs->release(); fs->release(); library->release();
-    if (!next) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : "HD map pipeline failed");
-    return pipelines[key] = next;
-}
-
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
     if ((call.id & 0xFFFF0000u) != kIdBase) return previous_render ? previous_render(list, framebuffer, call) : false;
     Draw draw;
@@ -175,48 +133,34 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         std::lock_guard lock(ring_mutex);
         draw = ring[call.id % kRing];
     }
-    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !device) { ++skipped; return true; }
+    if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !program) { ++skipped; return true; }
     Asset& asset = assets[size_t(draw.asset)];
-    if (!asset.base_texture) { ++skipped; return true; }
-    const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("HD map requires the scene color and depth attachments");
-    auto* color = fb->colorAttachments[0].getTexture();
-    auto* depth = fb->depthAttachment.getTexture();
-    auto* pipeline = pipeline_for(color, depth);
-    struct { float rect[4], uv[4], resolution[4], screen[4]; } u{};
-    std::memcpy(u.rect, draw.rect, sizeof(u.rect)); std::memcpy(u.uv, draw.uv, sizeof(u.uv));
-    u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
+    if (!asset.textures) {
+        if (!asset.base_texture->upload(list) || !asset.index_texture->upload(list)) { ++skipped; return true; }
+        gpu::Texture* const textures[] = {asset.base_texture.get(), asset.index_texture.get()};
+        asset.textures = program->bind_textures(textures);
+    }
+    // HdMapVS/PS data: rect, uv, resolution, screen, then the reference and live palettes.
+    struct {
+        float rect[4], uv[4], resolution[4], screen[4];
+        uint32_t reference[256], live[256];
+    } data{};
+    std::memcpy(data.rect, draw.rect, sizeof(data.rect)); std::memcpy(data.uv, draw.uv, sizeof(data.uv));
+    data.resolution[0] = float(call.fbWidth); data.resolution[1] = float(call.fbHeight);
     // RT64's screenScale/screenOffset for a rectangle describe that rectangle's own
     // viewport (width / frame width, centre offset). The quad is already in full-frame
     // N64 coordinates, so applying them stretched the map by the marker's overhang and
     // made it breathe as the culled bottom edge moved while scrolling.
-    u.screen[0] = 1; u.screen[1] = 1; u.screen[2] = 0; u.screen[3] = 0;
-    struct { uint32_t reference[256], live[256]; } palettes{};
-    std::memcpy(palettes.reference, asset.reference.data(), sizeof(palettes.reference));
-    std::memcpy(palettes.live, draw.live.data(), sizeof(palettes.live));
-    auto* command = static_cast<plume::MetalCommandList*>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto* pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto* attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto* encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string("SRW64 HD tactical map", NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(pipeline);
-    encoder->setDepthStencilState(depth_state);
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& s = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(s.left), NS::UInteger(s.top), NS::UInteger(s.right - s.left), NS::UInteger(s.bottom - s.top)});
-    encoder->setCullMode(MTL::CullModeNone);
-    encoder->setVertexBytes(&u, sizeof(u), 0);
-    encoder->setFragmentTexture(asset.base_texture, 0);
-    encoder->setFragmentTexture(asset.index_texture, 1);
-    encoder->setFragmentSamplerState(sampler, 0);
-    encoder->setFragmentBytes(&palettes, sizeof(palettes), 0);
-    encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
-    encoder->endEncoding();
+    data.screen[0] = 1; data.screen[1] = 1; data.screen[2] = 0; data.screen[3] = 0;
+    std::memcpy(data.reference, asset.reference.data(), sizeof(data.reference));
+    std::memcpy(data.live, draw.live.data(), sizeof(data.live));
+    gpu::State state;
+    if (asset.alpha) state.blend = gpu::Blend::premultiplied;
+    if (!program->begin(list, framebuffer, call, state, asset.textures.get(), gpu::push_data(&data, sizeof(data)), asset.alpha ? 1 : 0)) {
+        ++skipped;
+        return true;
+    }
+    list->drawInstanced(4, 1, 0, 0);
     ++rendered;
     return true;
 }
@@ -235,28 +179,21 @@ void configure(const std::filesystem::path& directory) {
     fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)\n", assets.size());
 }
 
-void metal_init(plume::RenderDevice* value) {
+void gpu_init() {
     if (assets.empty()) return;
-    device = static_cast<plume::MetalDevice*>(value)->mtl;
+    // The textures upload on first draw, on RT64's workload command list.
+    const auto level = [](std::vector<uint8_t>& pixels) {
+        std::vector<std::vector<uint8_t>> levels;
+        levels.push_back(std::move(pixels));
+        return levels;
+    };
     for (auto& asset : assets) {
-        const NS::UInteger w = asset.width * asset.scale, h = asset.height * asset.scale;
-        auto* desc = MTL::TextureDescriptor::texture2DDescriptor(MTL::PixelFormatRGBA8Unorm, w, h, false);
-        desc->setUsage(MTL::TextureUsageShaderRead);
-        asset.base_texture = device->newTexture(desc);
-        asset.base_texture->replaceRegion(MTL::Region(0, 0, w, h), 0, asset.base.data(), w * 4);
-        desc->setPixelFormat(MTL::PixelFormatR8Uint);
-        asset.index_texture = device->newTexture(desc);
-        asset.index_texture->replaceRegion(MTL::Region(0, 0, w, h), 0, asset.index.data(), w);
-        if (!asset.base_texture || !asset.index_texture) throw std::runtime_error("HD map texture allocation failed");
+        const uint32_t w = asset.width * asset.scale, h = asset.height * asset.scale;
+        asset.base_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8G8B8A8_UNORM, level(asset.base));
+        asset.index_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8_UINT, level(asset.index));
     }
-    auto* depth = MTL::DepthStencilDescriptor::alloc()->init();
-    depth->setDepthCompareFunction(MTL::CompareFunctionAlways);
-    depth->setDepthWriteEnabled(false);
-    depth_state = device->newDepthStencilState(depth); depth->release();
-    auto* sampling = MTL::SamplerDescriptor::alloc()->init();
-    sampling->setMinFilter(MTL::SamplerMinMagFilterLinear); sampling->setMagFilter(MTL::SamplerMinMagFilterLinear);
-    sampling->setSAddressMode(MTL::SamplerAddressModeClampToEdge); sampling->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
-    sampler = device->newSamplerState(sampling); sampling->release();
+    // One linear clamp sampler after the base and index textures.
+    program = std::make_unique<gpu::Program>("HdMap", 2, std::vector<gpu::Sampler>{{}});
 }
 
 void rewrite(uint8_t* rdram, const MapDraw& draw) {
@@ -326,14 +263,10 @@ void shutdown() {
         {"maps", assets.size()}, {"rewritten_draws", rewritten.load()}, {"native_draws", rendered.load()},
         {"skipped", skipped.load()}, {"unmarked_draws", no_marker.load()}}).dump(2) << '\n';
     for (auto& asset : assets) {
-        if (asset.base_texture) asset.base_texture->release();
-        if (asset.index_texture) asset.index_texture->release();
-        asset.base_texture = asset.index_texture = nullptr;
+        asset.textures.reset();
+        asset.base_texture.reset();
+        asset.index_texture.reset();
     }
-    for (auto& [key, state] : pipelines) state->release();
-    pipelines.clear();
-    if (depth_state) depth_state->release(); depth_state = nullptr;
-    if (sampler) sampler->release(); sampler = nullptr;
-    device = nullptr;
+    program.reset();
 }
 }

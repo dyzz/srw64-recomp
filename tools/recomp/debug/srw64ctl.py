@@ -52,6 +52,7 @@ def main() -> int:
     launch.add_argument("--save", help="32 KiB SRAM to start from")
     launch.add_argument("--mini-stage")
     launch.add_argument("--reuse-build", action="store_true")
+    launch.add_argument("--binary", help="run this prebuilt host instead of building (before/after comparisons)")
     launch.add_argument("--diagnostics", choices=("full", "light"),
                         help="full (default) captures a frame every 60 presents; light skips it for smooth play")
     status = commands.add_parser("status")
@@ -114,7 +115,7 @@ def main() -> int:
         if args.command == "launch":
             session = Session.launch(**optional(language=args.language, images=args.images, rules=args.rules,
                                                 save=args.save, mini_stage=args.mini_stage, diagnostics=args.diagnostics),
-                                     reuse_build=args.reuse_build)
+                                     reuse_build=args.reuse_build, binary=args.binary)
             print(session.run)
             return 0
         session = Session.attach(args.run)
