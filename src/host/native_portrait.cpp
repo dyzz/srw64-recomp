@@ -1,6 +1,7 @@
 #define HLSL_CPU
 #include "native_portrait.hpp"
 #include "presentation/image_mode.hpp"
+#include "presentation/rgba_file.hpp"
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
@@ -95,12 +96,9 @@ bool hd_enabled() {
 // Premultiplied RGBA with a box-filtered mip chain, so linear sampling at any window
 // scale never pulls colour from transparent texels.
 void decode(Asset& asset) {
-    int w = 0, h = 0, n = 0;
-    uint8_t* pixels = stbi_load(asset.file.c_str(), &w, &h, &n, 4);
-    if (!pixels) throw std::runtime_error("Cannot read HD portrait " + asset.file.string());
-    if (w != size || h != size) { stbi_image_free(pixels); throw std::runtime_error("HD portrait size differs from the manifest: " + asset.file.string()); }
-    std::vector<uint8_t> level(pixels, pixels + size_t(w) * h * 4);
-    stbi_image_free(pixels);
+    auto image = presentation::load_rgba(asset.file);
+    if (image.width != size || image.height != size) throw std::runtime_error("HD portrait size differs from the manifest: " + asset.file.string());
+    std::vector<uint8_t> level = std::move(image.pixels);
     for (size_t i = 0; i < level.size(); i += 4)
         for (int c = 0; c < 3; ++c) level[i + c] = uint8_t((level[i + c] * level[i + 3] + 127) / 255);
     asset.levels.clear();

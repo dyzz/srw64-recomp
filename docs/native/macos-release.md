@@ -59,10 +59,15 @@ Mach-O 的最低系统版本、依赖路径和签名。整个过程仅本地运�
 ```
 
 - `prepare_hd_bundle.py` 从本机 `assets/` 编译美术清单 `content/art/stage1-hd.json`：世界地图地表、
-  宇宙物件、对话框边框这 249 张 RT64 替换贴图，304 张整张头像，17 张场间背景，19 张标题图。
-  它还给原生页面的头像按（图，调色板）建索引，每张附一份剪影；再校验并复制
+  宇宙物件、对话框与战斗 HUD 边框这 270 张 RT64 替换贴图，304 张整张头像，17 张场间背景，19 张标题图。
+  头像和背景随后由 [`compress_hd.py`](../../tools/release/compress_hd.py) 转成 JPEG（质量 95，不做色度抽样）：
+  头像的颜色存为 `.jpg`，透明度另存为同名 `.alpha.png`（灰度加透明，灰度即剪影色），游戏载入时合并两者；
+  背景不透明，只存一张 `.jpg`。实测头像 PSNR 不低于 44.6 dB、中位数 47.4 dB，透明度逐像素不变；
+  背景 PSNR 不低于 46.9 dB。RT64 贴图和标题图仍是 PNG。
+  它还给原生页面的头像按（图，调色板）建索引，剪影直接用头像的 `.alpha.png`；再校验并复制
   世界地图舰船与地标包（`build/recomp/native-models/assets`）和 5600 标记包
-  （`build/recomp/native-marker/assets`）。战术地图样板（`SRW64_HD_MAPS`）不在里面。目录约 324 MB。
+  （`build/recomp/native-marker/assets`）。战术地图样板（`SRW64_HD_MAPS`）不在里面。
+  美术部分由约 315 MB 降到约 151 MB：头像 182 → 60 MB、背景 45 → 10 MB、剪影 7 MB 不再单独存放。
 - 启动器看到 `Contents/Resources/hd/art` 就设 `SRW64_ART_PACK`，以 HD 开局（`SRW64_IMAGE_MODE=hd`），
   给姓名页、战前确认、存档与联动页的头像接上 HD 图，两个模型包存在时再设
   `SRW64_NATIVE_MARKER`、`SRW64_NATIVE_MODELS`。F6 或设置窗口可以切回原版，选择不写入设置文件。
