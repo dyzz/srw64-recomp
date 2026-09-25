@@ -10,12 +10,15 @@
 #include <algorithm>
 #include <array>
 #include <atomic>
+#include <condition_variable>
 #include <cstring>
+#include <deque>
 #include <fstream>
 #include <map>
 #include <tuple>
 #include <mutex>
 #include <stdexcept>
+#include <thread>
 #include <vector>
 
 namespace srw64::hdmap {
@@ -30,10 +33,15 @@ constexpr uint32_t kIdBase = 0x48440000;     // native draw ids handed to RT64
 constexpr size_t kRing = 1024;
 
 struct Asset {
-    uint16_t layout = 0;
+    uint16_t layout = 0;                     // map layout, or a window frame's scene (mode 9)
     int width = 0, height = 0, scale = 0;
+    int origin[2]{};                         // meta "origin": the crop's corner in scene pixels
     Palette reference{};
     bool alpha = false;                      // meta "alpha": premultiplied base, drawn translucent
+    std::filesystem::path folder;
+    // Maps decode at start; window frames (docs/native/native-ui-text.md §4) the first time
+    // one is drawn, on the decoder thread, and draw from the next frame on.
+    enum class State { waiting, queued, decoded, ready } state = State::waiting;
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
@@ -53,6 +61,12 @@ uint32_t next_id = 1;
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
 std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdMap{VS,PS}.hlsl
+std::mutex asset_mutex;                      // Asset::state and the decode queue
+std::condition_variable decode_wake;
+std::deque<size_t> decode_queue;
+std::thread decoder;
+bool stopping = false;
+size_t frame_assets = 0;
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, no_marker{};
 std::filesystem::path output;
 
@@ -77,7 +91,7 @@ uint32_t rgba5551(uint16_t v) {
     return c((v >> 11) & 31) | c((v >> 6) & 31) << 8 | c((v >> 1) & 31) << 16 | (v & 1 ? 0xFFu : 0u) << 24;
 }
 
-Asset load(const std::filesystem::path& folder) {
+Asset load_meta(const std::filesystem::path& folder) {
     std::ifstream stream(folder / "meta.json");
     if (!stream) throw std::runtime_error("HD map without meta.json: " + folder.string());
     const json meta = json::parse(stream);
@@ -91,6 +105,15 @@ Asset load(const std::filesystem::path& folder) {
         const auto& c = palette[i];
         asset.reference[i] = c[0].get<uint32_t>() | c[1].get<uint32_t>() << 8 | c[2].get<uint32_t>() << 16 | c[3].get<uint32_t>() << 24;
     }
+    asset.alpha = meta.value("alpha", false);
+    if (meta.contains("origin")) { asset.origin[0] = meta["origin"][0]; asset.origin[1] = meta["origin"][1]; }
+    asset.folder = folder;
+    return asset;
+}
+
+// The images, off the game thread for window frames.
+void decode(Asset& asset) {
+    const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
         int x = 0, y = 0, n = 0;
@@ -104,11 +127,37 @@ Asset load(const std::filesystem::path& folder) {
     read("index.png", 1, asset.index);
     // Translucent assets (window frames) filter premultiplied: straight alpha would pull
     // the colour of transparent texels into the edges.
-    asset.alpha = meta.value("alpha", false);
     if (asset.alpha)
         for (size_t i = 0; i < asset.base.size(); i += 4)
             for (int c = 0; c < 3; ++c) asset.base[i + c] = uint8_t((asset.base[i + c] * asset.base[i + 3] + 127) / 255);
-    return asset;
+}
+
+void make_textures(Asset& asset) {
+    const auto level = [](std::vector<uint8_t>& pixels) {
+        std::vector<std::vector<uint8_t>> levels;
+        levels.push_back(std::move(pixels));
+        return levels;
+    };
+    const uint32_t w = asset.width * asset.scale, h = asset.height * asset.scale;
+    asset.base_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8G8B8A8_UNORM, level(asset.base));
+    asset.index_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8_UINT, level(asset.index));
+    asset.state = Asset::State::ready;
+}
+
+void decode_loop() {
+    for (;;) {
+        size_t index;
+        {
+            std::unique_lock lock(asset_mutex);
+            decode_wake.wait(lock, [] { return stopping || !decode_queue.empty(); });
+            if (stopping) return;
+            index = decode_queue.front(); decode_queue.pop_front();
+        }
+        // Only this thread touches a queued asset's pixels.
+        decode(assets[index]);
+        std::lock_guard lock(asset_mutex);
+        assets[index].state = Asset::State::decoded;
+    }
 }
 
 int find_asset(uint16_t layout) {
@@ -167,30 +216,41 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 }
 
 void configure(const std::filesystem::path& directory) {
-    const char* root = std::getenv("SRW64_HD_MAPS");
-    if (!root || !*root) return;
     output = directory;
-    for (const auto& entry : std::filesystem::directory_iterator(root))
-        if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) assets.push_back(load(entry.path()));
+    if (const char* root = std::getenv("SRW64_HD_MAPS"); root && *root)
+        for (const auto& entry : std::filesystem::directory_iterator(root))
+            if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
+                assets.push_back(load_meta(entry.path()));
+                decode(assets.back());
+                assets.back().state = Asset::State::decoded;
+            }
+    // Window frames (tools/hd_ai/frame_hd.py): keyed by scene, decoded when first drawn. The
+    // art pack carries them in frames/; SRW64_HD_FRAMES points elsewhere for a trial set.
+    std::filesystem::path frames;
+    if (const char* root = std::getenv("SRW64_HD_FRAMES"); root && *root) frames = root;
+    else if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art && std::filesystem::is_directory(std::filesystem::path(art) / "frames"))
+        frames = std::filesystem::path(art) / "frames";
+    if (!frames.empty())
+        for (const auto& entry : std::filesystem::directory_iterator(frames))
+            if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
+                assets.push_back(load_meta(entry.path()));
+                ++frame_assets;
+            }
     if (assets.empty()) return;
+    if (frame_assets) decoder = std::thread(decode_loop);
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
-    fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)\n", assets.size());
+    fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s), %zu window frame(s)\n", assets.size() - frame_assets, frame_assets);
 }
 
 void gpu_init() {
     if (assets.empty()) return;
     // The textures upload on first draw, on RT64's workload command list.
-    const auto level = [](std::vector<uint8_t>& pixels) {
-        std::vector<std::vector<uint8_t>> levels;
-        levels.push_back(std::move(pixels));
-        return levels;
-    };
-    for (auto& asset : assets) {
-        const uint32_t w = asset.width * asset.scale, h = asset.height * asset.scale;
-        asset.base_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8G8B8A8_UNORM, level(asset.base));
-        asset.index_texture = std::make_unique<gpu::Texture>(w, h, plume::RenderFormat::R8_UINT, level(asset.index));
+    {
+        std::lock_guard lock(asset_mutex);
+        for (auto& asset : assets)
+            if (asset.state == Asset::State::decoded) make_textures(asset);
     }
     // One linear clamp sampler after the base and index textures.
     program = std::make_unique<gpu::Program>("HdMap", 2, std::vector<gpu::Sampler>{{}});
@@ -200,6 +260,18 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
     if (assets.empty()) return;
     const int asset_index = find_asset(draw.layout);
     if (asset_index < 0 || !hd_enabled()) return;
+    {
+        // A frame not decoded yet: queue it and leave the original this time.
+        std::lock_guard lock(asset_mutex);
+        Asset& lazy = assets[size_t(asset_index)];
+        if (lazy.state == Asset::State::waiting) {
+            lazy.state = Asset::State::queued;
+            decode_queue.push_back(size_t(asset_index));
+            decode_wake.notify_one();
+        }
+        if (lazy.state == Asset::State::decoded) make_textures(lazy);
+        if (lazy.state != Asset::State::ready) return;
+    }
     const Asset& asset = assets[size_t(asset_index)];
     // Walk the commands the drawer wrote: remember its TLUT source and every
     // 24-byte texture rectangle (E4 + E1 + F1).
@@ -222,17 +294,24 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
     // so the tag never overwrites a tile load or state command.
     size_t marker = 0;
     for (size_t r = 1; r < rects.size() && !marker; ++r) if (rects[r - 1] + 24 == rects[r]) marker = r;
-    if (!marker || !tlut || x1 <= x0 || y1 <= y0) { ++no_marker; return; }
+    // Small window frames load every cell's tile anew, so no two rectangles touch; the
+    // SETTILESIZE just before one is also safe, as every rectangle of this draw goes.
+    bool after_size = false;
+    if (!marker)
+        for (size_t r = 0; r < rects.size() && !marker && !after_size; ++r)
+            if ((word(rdram, rects[r] - 8) >> 24) == 0xF2 && rects[r] - 8 >= draw.dl_begin) { marker = r; after_size = true; }
+    if ((!marker && !after_size) || !tlut || x1 <= x0 || y1 <= y0) { ++no_marker; return; }
     Draw record;
     record.asset = asset_index;
     for (int i = 0; i < 256; ++i) record.live[i] = rgba5551(half(rdram, tlut + i * 2));
     // Texture rectangle corners are 10.2 fixed point; the lower-right is exclusive.
     record.rect[0] = x0 / 4.0f; record.rect[1] = y0 / 4.0f;
     record.rect[2] = x1 / 4.0f; record.rect[3] = y1 / 4.0f;
-    record.uv[0] = (record.rect[0] + draw.camera_x) / asset.width;
-    record.uv[1] = (record.rect[1] + draw.camera_y) / asset.height;
-    record.uv[2] = (record.rect[2] + draw.camera_x) / asset.width;
-    record.uv[3] = (record.rect[3] + draw.camera_y) / asset.height;
+    // Cropped assets (window frames) start at their origin in scene pixels.
+    record.uv[0] = (record.rect[0] + draw.camera_x - asset.origin[0]) / asset.width;
+    record.uv[1] = (record.rect[1] + draw.camera_y - asset.origin[1]) / asset.height;
+    record.uv[2] = (record.rect[2] + draw.camera_x - asset.origin[0]) / asset.width;
+    record.uv[3] = (record.rect[3] + draw.camera_y - asset.origin[1]) / asset.height;
     {
         std::lock_guard lock(ring_mutex);
         record.id = next_id;
@@ -259,8 +338,17 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
 
 void shutdown() {
     if (assets.empty()) return;
+    {
+        std::lock_guard lock(asset_mutex);
+        stopping = true;
+    }
+    decode_wake.notify_all();
+    if (decoder.joinable()) decoder.join();
+    size_t frames_ready = 0;
+    for (const auto& asset : assets) frames_ready += asset.state == Asset::State::ready && asset.alpha;
     std::ofstream(output / "hd-map-summary.json") << json({{"schema", "srw64.hd-map-run.v0"},
-        {"maps", assets.size()}, {"rewritten_draws", rewritten.load()}, {"native_draws", rendered.load()},
+        {"maps", assets.size() - frame_assets}, {"frames", frame_assets}, {"frames_drawn", frames_ready},
+        {"rewritten_draws", rewritten.load()}, {"native_draws", rendered.load()},
         {"skipped", skipped.load()}, {"unmarked_draws", no_marker.load()}}).dump(2) << '\n';
     for (auto& asset : assets) {
         asset.textures.reset();

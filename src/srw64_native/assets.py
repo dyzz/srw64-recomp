@@ -127,6 +127,23 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
             if sha(path.read_bytes()) != row["sha256"]:
                 raise ValueError(f"Scene image pixels changed: {row['file']}")
             scene_files.append((path, row))
+    # HD window frames (tools/hd_ai/frame_hd.py): per scene an index image, its painted base
+    # and meta.json, drawn by the HD map layer with the live palette (native_map.cpp).
+    frame_index, frame_dirs = None, []
+    if "frames" in manifest:
+        folder = inside(root, manifest["frames"]["path"])
+        index_bytes = (folder / "frames.json").read_bytes()
+        if sha(index_bytes) != manifest["frames"]["manifest_sha256"]:
+            raise ValueError("Frame manifest changed")
+        frame_index = json.loads(index_bytes)
+        if frame_index.get("schema") != "srw64.hd-frames.v1":
+            raise ValueError("Unsupported frame set")
+        for row in frame_index["scenes"]:
+            scene = inside(folder, str(int(row["scene"])))
+            for name, digest in row["sha256"].items():
+                if sha((scene / name).read_bytes()) != digest:
+                    raise ValueError(f"Frame pixels changed: {row['scene']}/{name}")
+            frame_dirs.append(scene)
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
@@ -141,9 +158,14 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
             shutil.copyfile(path, output / "scene-images" / row["file"])
         runtime = {**scene_index, "images": [{**row, "file": f"scene-images/{row['file']}"} for _, row in scene_files]}
         (output / "srw64-scene-images.json").write_text(json.dumps(runtime, indent=2) + "\n")
+    if frame_index is not None:
+        (output / "frames").mkdir()
+        for scene in frame_dirs:
+            shutil.copytree(scene, output / "frames" / scene.name)
+        (output / "frames" / "frames.json").write_text(json.dumps(frame_index, indent=1) + "\n")
     (output / "rt64.json").write_text(json.dumps({"configuration": database["configuration"], "textures": textures}, indent=2) + "\n")
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files), "scene_images": len(scene_files), "frames": len(frame_dirs),
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}
