@@ -85,10 +85,19 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
                 throw std::runtime_error("Battle art is absent from the verified inventory: "+id);
             art["path"]=verified.at(relative).string();
         }
-    // A full-HD build bundles Contents/Resources/hd (tools/release/prepare_hd_bundle.py):
-    // the compiled art, the page portraits by (image, palette), and the model packs.
-    const auto hd=bundled_resource("hd");
-    const bool hd_art=!hd.empty() && fs::is_regular_file(hd/"art"/"rt64.json");
+    // The HD pack (tools/release/prepare_hd_bundle.py): the compiled art, the page
+    // portraits by (image, palette), and the model packs. A downloaded pack goes in
+    // the user directory as hd/; a full-HD build bundles it as Contents/Resources/hd.
+    const auto installed=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir)/"hd";
+    const auto hd=fs::exists(installed)?installed:bundled_resource("hd");
+    if(!hd.empty() && fs::exists(hd)) {
+        const auto about=hd/"hd.json";
+        if(!fs::is_regular_file(about) || read_json(about,1024*1024).value("schema","")!="srw64.hd-bundle.v1"
+           || !fs::is_regular_file(hd/"art"/"rt64.json"))
+            throw std::runtime_error("The HD pack at "+hd.string()+" is incomplete or of another version: "
+                                     "replace it with the pack for this release, or remove it to play in Original");
+    }
+    const bool hd_art=!hd.empty() && fs::exists(hd);
     if(hd_art) {
         const auto pages=read_json(hd/"art"/"srw64-page-portraits.json");
         if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");

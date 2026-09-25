@@ -129,16 +129,20 @@ void fail_closed() {
 }
 // A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
 // beside the executable when it is not inside a .app.
-void bundled_hd(const fs::path& beside) {
-    const auto hd=beside/"hd";
-    struct Remove{fs::path path;~Remove(){std::error_code ignored;fs::remove_all(path,ignored);}} cleanup{hd};
-    fs::remove_all(hd);
+void make_pack(const fs::path& hd) {
     fs::create_directories(hd/"art/page-portraits");fs::create_directories(hd/"native-marker");
+    atomic_write(hd/"hd.json",json({{"schema","srw64.hd-bundle.v1"}}).dump());
     atomic_write(hd/"art/rt64.json","{}");
     atomic_write(hd/"art/page-portraits/face.png","synthetic HD portrait");
     atomic_write(hd/"art/srw64-page-portraits.json",json({{"schema","srw64.page-portraits.v1"},
         {"portraits",{{"5:6","page-portraits/face.png"}}}}).dump());
     atomic_write(hd/"native-marker/manifest.json","{}");
+}
+void bundled_hd(const fs::path& beside) {
+    const auto hd=beside/"hd";
+    struct Remove{fs::path path;~Remove(){std::error_code ignored;fs::remove_all(path,ignored);}} cleanup{hd};
+    fs::remove_all(hd);
+    make_pack(hd);
     Fixture f;
     auto& face=f.data["name_entry_assets"]["portraits"]["27"];face["resource_id"]=5;face["palette_id"]=6;
     const auto art=[&](unsigned image,unsigned palette){return json{{"path","name-entry/face-27.png"},
@@ -162,7 +166,25 @@ void bundled_hd(const fs::path& beside) {
         return 0;
     })==0,"bundled HD launch failed");
 }
+// A downloaded pack unpacked into the user directory as hd/ wins over no pack;
+// a pack of another version or an incomplete one is an error, not a silent Original.
+void installed_hd() {
+    Fixture f;
+    auto& face=f.data["name_entry_assets"]["portraits"]["27"];face["resource_id"]=5;face["palette_id"]=6;
+    f.publish_content();
+    f.options.language="en";
+    const auto hd=f.options.user_dir/"hd";
+    make_pack(hd);
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(fs::equivalent(env("SRW64_ART_PACK"),hd/"art") && env("SRW64_IMAGE_MODE")=="hd","installed HD pack not loaded");
+        return 0;
+    })==0,"installed HD launch failed");
+    atomic_write(hd/"hd.json",json({{"schema","srw64.hd-bundle.v0"}}).dump());
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"an HD pack of another version was accepted");
+    fs::remove(hd/"hd.json");
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"an incomplete HD pack was accepted");
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());
+}
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}
