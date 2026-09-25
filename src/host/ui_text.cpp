@@ -518,12 +518,56 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
 }
 }
 
+namespace {
+// Map battle figures (80209900, tactical map overlay): per cell 0-5 the 1159 cell index at
+// 80228530, a shown flag at 80228536 and x, y words at 80228548. Cell indices: 0 blank,
+// 1 '+', 2 '-', 3-12 the outlined digits, 13-22 the shadowed ones.
+constexpr uint32_t kDamageCells = 0x228530, kDamageShown = 0x228536, kDamagePlaces = 0x228548;
+void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
+    if (end <= begin || end > 0x800000 || !active()) return;
+    std::lock_guard lock(mutex);
+    const auto list = records(ram, begin, end);
+    if (list.size() != 1) return;
+    const auto& rects = list.front().rects;
+    std::vector<sprites::PlacedText> items;
+    float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
+    size_t next = 0;
+    std::string figure;
+    for (uint32_t k = 0; k < 6; ++k) {
+        if (!byte(ram, kDamageShown + k)) continue;
+        if (next >= rects.size()) return;
+        const uint32_t rect = rects[next++];
+        const unsigned cell = byte(ram, kDamageCells + k);
+        const int x = int32_t(word(ram, kDamagePlaces + 8 * k)), y = int32_t(word(ram, kDamagePlaces + 8 * k + 4));
+        if (!at(ram, rect, x, y)) { note("damage-place", {{"kind", "mismatch"}, {"what", "damage"}}); return; }
+        const auto [x0, y0] = corner(ram, rect);
+        const uint32_t w0 = word(ram, rect);
+        bounds[0] = std::min(bounds[0], x0 / 4.f); bounds[1] = std::min(bounds[1], y0 / 4.f);
+        bounds[2] = std::max(bounds[2], ((w0 >> 12) & 0xFFF) / 4.f); bounds[3] = std::max(bounds[3], (w0 & 0xFFF) / 4.f);
+        const std::string glyph = cell == 1 ? "+" : cell == 2 ? "-" : cell >= 3 && cell <= 12 ? std::string(1, char('0' + cell - 3))
+                                  : cell >= 13 && cell <= 22 ? std::string(1, char('0' + cell - 13)) : std::string();
+        figure += glyph.empty() ? " " : glyph;
+        if (glyph.empty()) continue;
+        const float white[3] = {1, 1, 1};
+        items.push_back(placed(number_style(cell <= 12), "ja", glyph, "number", x + kCell / 2.f, float(y), white));
+    }
+    if (next != rects.size() || items.empty()) return;
+    if (!sprites::place_texts(ram, rects.front(), bounds, items)) return;
+    for (const uint32_t rect : rects)
+        if (rect != rects.front())
+            for (uint32_t k = 0; k < 24; k += 4) put(ram, rect + k, 0);
+    ++counts.numbers;
+    note("damage:" + figure, {{"kind", "damage"}, {"figure", figure}});
+}
+}
+
 void configure(const std::filesystem::path& output) {
     if (installed) return;
     installed = true;
     if (const char* value = std::getenv("SRW64_NATIVE_UI_TEXT"); value && std::string(value) == "0") disabled = true;
     if (!output.empty()) log.open(output / "ui-text.jsonl");
     srw64_game_hooks.ui_text_drawn = drawn;
+    srw64_game_hooks.damage_drawn = damage_drawn;
 }
 
 json state() {

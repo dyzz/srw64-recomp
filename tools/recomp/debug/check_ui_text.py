@@ -2,7 +2,7 @@
 """Check the original UI drawn natively (docs/native/native-ui-text.md) on the battle-ui mini stage.
 
 Walks the unit command menu, the phase menu, the unit list (部隊表), the end-turn confirmation, the
-objectives window (作戦目的), the enemy phase's original weapon list and the battle HUD, and checks
+objectives window (作戦目的), the enemy phase's original weapon list, the battle HUD and a map battle's damage figure, and checks
 the ui_text status (labels in the reading language, the number moved into the confirmation
 sentence, the objective bodies, no pass left original for a mismatch) and the HUD badge drawn as
 text. Screenshots and ui-text-checks.json go to the run directory."""
@@ -118,5 +118,21 @@ check('hud-numbers', len(numbers) >= 4, numbers)
 grid = [json.loads(line) for line in (s.run / 'scene-sprites.jsonl').read_text().splitlines() if '"grid text"' in line]
 check('hud-badge', any(row['scene'] in (1154, 1155, 1156) for row in grid), [row['scene'] for row in grid])
 check('no-mismatch', st['ui_text']['mismatched'] == 0, {k: st['ui_text'][k] for k in ('passes', 'drawn', 'mismatched')})
+# The next enemy attack without animation: the damage figure pops up on the map (80209900).
+end = time.monotonic() + 90
+while time.monotonic() < end and not status()['battle_page'].get('visible'):
+    time.sleep(.2)
+if status()['battle_page'].get('animation'):
+    s.client.call('ui.click', id='battle-animation')
+    time.sleep(.5)
+s.client.call('ui.click', id='battle-confirm')
+figures = []
+end = time.monotonic() + 40
+while time.monotonic() < end and not figures:
+    figures = [json.loads(line) for line in (s.run / 'ui-text.jsonl').read_text().splitlines() if '"damage"' in line]
+    time.sleep(.2)
+time.sleep(.6)
+shot('map-damage')
+check('map-damage-figure', any(any(c.isdigit() for c in row['figure']) for row in figures), [row['figure'] for row in figures])
 print(json.dumps({'passed': sum(c['passed'] for c in checks), 'checks': len(checks)}), flush=True)
 s.quit()
