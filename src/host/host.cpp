@@ -47,6 +47,7 @@
 #include "save_page.hpp"
 #include "title_page.hpp"
 #include "move_jump.hpp"
+#include "enemy_cycle.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #endif
@@ -400,6 +401,7 @@ static int run_host(int argc, char** argv) {
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);
     srw64::move_jump::configure(output_dir);
+    srw64::enemy_cycle::configure(output_dir);
     srw64::intro::configure(output_dir);
     srw64_configure_audio(std::getenv("SRW64_AUDIO_OUTPUT") && std::string(std::getenv("SRW64_AUDIO_OUTPUT")) == "1", output_dir);
     cfg.gfx_callbacks.create_window = srw64_create_window;

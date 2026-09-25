@@ -710,14 +710,19 @@ void srw64_update_window(void*) {
         button(SDL_CONTROLLER_BUTTON_DPAD_UP, 0x0800); button(SDL_CONTROLLER_BUTTON_DPAD_DOWN, 0x0400);
         button(SDL_CONTROLLER_BUTTON_DPAD_LEFT, 0x0200); button(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, 0x0100);
         button(SDL_CONTROLLER_BUTTON_LEFTSHOULDER, 0x0020); button(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER, 0x0010);
-        axis(SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1, 0x2000);
         axis(SDL_CONTROLLER_AXIS_RIGHTY, -1, 0x0008); axis(SDL_CONTROLLER_AXIS_RIGHTY, 1, 0x0004);
         axis(SDL_CONTROLLER_AXIS_RIGHTX, -1, 0x0002); axis(SDL_CONTROLLER_AXIS_RIGHTX, 1, 0x0001);
         axis(SDL_CONTROLLER_AXIS_LEFTY, -1, 1U << 16); axis(SDL_CONTROLLER_AXIS_LEFTY, 1, 1U << 17);
         axis(SDL_CONTROLLER_AXIS_LEFTX, -1, 1U << 18); axis(SDL_CONTROLLER_AXIS_LEFTX, 1, 1U << 19);
-        // Host-only: View opens the settings window (Steam Deck: no keyboard needed).
+        // Host-only (docs/design/steam-deck-controls.md): View opens the settings window
+        // (Steam Deck: no keyboard needed); the triggers serve dialogue and the map's enemy
+        // cycling. Z is Y alone, so L2 + Menu no longer makes the original's quit-the-stage
+        // Z + START.
         button(SDL_CONTROLLER_BUTTON_BACK, srw64::input::pad_view);
+        axis(SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1, srw64::input::pad_l2);
+        axis(SDL_CONTROLLER_AXIS_TRIGGERRIGHT, 1, srw64::input::pad_r2);
     }
+    buttons |= srw64::debug::pad().load(std::memory_order_relaxed);
     // Controller play hides the pointer; the mouse or touch screen brings it back.
     static int cursor=-1;
     const int wanted=srw64::input::pad_hints ? SDL_DISABLE : SDL_ENABLE;
@@ -726,6 +731,7 @@ void srw64_update_window(void*) {
     keyboard_state.store(state | buttons, std::memory_order_relaxed);
 }
 uint32_t srw64_pad_state() { return pad_state.load(std::memory_order_relaxed); }
+uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
 
 nlohmann::json srw64_window_status() {
     if (!window) return nullptr;

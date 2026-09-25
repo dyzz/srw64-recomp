@@ -186,6 +186,9 @@ void load_000AB160_func_80209900(uint8_t* rdram, recomp_context* ctx) {
 void load_000AB160_func_801CBB04(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64_game_hooks.move_select || !srw64_game_hooks.move_select(rdram, ctx)) srw64_original_move_select(rdram, ctx);
 }
+void load_000AB160_func_801C8B04(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.map_idle || !srw64_game_hooks.map_idle(rdram, ctx)) srw64_original_map_idle(rdram, ctx);
+}
 void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t list = uint32_t(ctx->r4);
     srw64_original_move_range_draw(rdram, ctx);

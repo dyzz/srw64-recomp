@@ -20,12 +20,14 @@
 #include <stdexcept>
 
 uint64_t srw64_current_vi();
+uint32_t srw64_pad_state();
 namespace srw64::dialogue {
 namespace {
 using json=nlohmann::json;
 constexpr uint32_t body_base=0xFBAB0, name_base=0x15CB00, stride=0x218;
 std::recursive_mutex mutex;
 std::atomic<uint16_t> raw_buttons{};
+std::atomic_bool auto_toggle{};              // an L2 press, for the next reading step
 std::atomic_bool owns_input{};
 uint16_t consumed_hold{};
 bool enabled{}, observe{}, scene_supported{}, display_only{};
@@ -420,13 +422,17 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     if(observe) {state_report();return false;}
     if(settings::owns_input() && reader.active) {
         const auto now=srw64_current_vi();reader.page_started+=now-reader.tick;reader.tick=now;
-        state_report();return true;
+        auto_toggle=false;state_report();return true;
     }
     if(!reader.active) {
-        reader.update(raw_buttons.load(),srw64_current_vi());state_report();return false;
+        auto_toggle=false;reader.update(raw_buttons.load(),srw64_current_vi());state_report();return false;
     }
     const auto old_font=reader.font_size,old_speed=reader.speed;
     const bool was_history=reader.history_open,was_skip=reader.skipping;
+    if(auto_toggle.exchange(false)) {
+        reader.toggle_auto(srw64_current_vi());
+        record("auto",{{"automatic",reader.auto_read},{"level",reader.speed}});
+    }
     reader.update(raw_buttons.load(),srw64_current_vi());
     if(reader.skipping && !was_skip) {
         if(reading_owner) {skip_owner=reading_owner;record("skip_start",{{"owner",skip_owner}});}
@@ -557,7 +563,14 @@ uint64_t request_locale(const std::string& locale) {
 LocaleStatus locale_status(){std::lock_guard lock(mutex);return language_status;}
 void request_reload(){if(enabled)reload_requested=true;}
 uint16_t input(uint16_t buttons) {
-    raw_buttons=buttons;
+    // The controller's triggers are the reader's alone (docs/design/steam-deck-controls.md):
+    // R2 held reads as R + A, fast-forward, and with Menu as R + START, the segment skip;
+    // an L2 press toggles automatic reading. The game never sees either trigger.
+    const uint32_t pad=srw64_pad_state();
+    static bool l2_before=false;
+    if((pad&srw64::input::pad_l2) && !l2_before)auto_toggle=true;
+    l2_before=pad&srw64::input::pad_l2;
+    raw_buttons=uint16_t(buttons|((pad&srw64::input::pad_r2)?(Reader::R|Reader::A):0));
     consumed_hold &= buttons;
     if(owns_input)consumed_hold |= buttons & (Reader::A|Reader::B|Reader::START|Reader::UP|Reader::DOWN|Reader::L|Reader::R|Reader::BIGGER|Reader::SMALLER);
     return buttons & ~consumed_hold;

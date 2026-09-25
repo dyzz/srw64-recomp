@@ -79,10 +79,13 @@ Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
 std::string mini_stamp;
+// The title screen's settings entry, for players with no menu bar (Steam Deck).
+Rml::ElementDocument* home_doc{};
+std::string home_stamp;
 // Every page's rebuild stamp, cleared when the hints change device.
-std::array<std::string*,13> all_stamps() {
+std::array<std::string*,14> all_stamps() {
     return {&settings_stamp,&link_stamp,&notice_stamp,&battle_stamp,&original_stamp,&title_stamp,&upgrade_stamp,
-            &parts_stamp,&ability_stamp,&swap_stamp,&save_stamp,&intermission_stamp,&mini_stamp};
+            &parts_stamp,&ability_stamp,&swap_stamp,&save_stamp,&intermission_stamp,&mini_stamp,&home_stamp};
 }
 std::string preedit;
 std::mutex notice_mutex;
@@ -200,6 +203,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .bp-original {position:absolute; bottom:14dp; left:0; width:100%; text-align:center; font-size:15dp; color:#a4b0d2;}
 .bp-original div {display:inline-block; padding:5dp 16dp; background-color:#0c122ceb; border:1dp #3fd0ff;}
 .bp-original .key {color:#ffd75e;} .bp-original b {color:#e8eefc;}
+.home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
 .bp-hints {text-align:center; font-size:10dp; color:#a4b0d2; height:14dp; white-space:nowrap; overflow:hidden;}
 .bp-hints span {margin:0 9dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
 .spirit-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071299;}
@@ -1259,6 +1263,16 @@ void mini_sync() {
     body+="<p>"+escape(state.value("name",std::string{}))+"</p></div>";
     mini_doc=document(body,true);if(!entering)mini_doc->SetClass("modal",false);
 }
+// PRESS START and the ring menu (title 主状態 2 and 3): the settings window's entry, for
+// players with no menu bar. A controller shows the View button; a tap or click opens it.
+void home_sync() {
+    const int major=intro::title_major();
+    if((major!=2 && major!=3) || settings_open || (!pad_mode && app_menu::available())){document_close(home_doc);home_stamp.clear();return;}
+    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"");
+    if(home_doc && stamp==home_stamp)return;
+    document_close(home_doc);home_stamp=stamp;
+    home_doc=document("<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>",false);
+}
 void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
     if(!next.value("visible",false)) {
@@ -1267,7 +1281,7 @@ void battle_sync() {
         const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
         if(stamp!=original_stamp) {
             document_close(original_doc);original_stamp=stamp;
-            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>[K / C\xe2\x96\xbc]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
+            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):std::string("K / C\xe2\x96\xbc"))+"]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
         }
         return;
     }
@@ -1298,8 +1312,11 @@ void battle_sync() {
     if(next.value("can_cancel",false))body+=button("battle-back",label("battle_back"),false,selecting_spirit);
     body+="</div></div>"+battle_pilot(player,false)+"</div><div class='bp-hints'>";
     const auto hint=[&](const char* key,const std::string& text){body+="<span><b>["+std::string(key)+"]</b> "+text+"</span>";};
-    hint("Z / A",label("battle_confirm"));hint("Q / L",label("battle_change_weapon"));hint("E / R",label("battle_spirits"));hint("K / C▼",label("battle_animation"));
-    if(next.value("can_cancel",false))hint("X / B",label("battle_back"));
+    // The keyboard and N64 keys, or the controller's buttons (battle_buttons below).
+    const auto key=[&](const char* keys,const std::string& pad){return pad_mode?pad:std::string(keys);};
+    hint(key("Z / A","A").c_str(),label("battle_confirm"));hint(key("Q / L","L1").c_str(),label("battle_change_weapon"));
+    hint(key("E / R","R1").c_str(),label("battle_spirits"));hint(key("K / C▼",label("pad_rstick_down")).c_str(),label("battle_animation"));
+    if(next.value("can_cancel",false))hint(key("X / B","B").c_str(),label("battle_back"));
     body+="</div></div>";
     if(selecting_spirit) {
         body+="<div class='spirit-shade'></div><div class='spirit-overlay'><h2>"+label("battle_spirits")+" · "+escape(player.at("unit_name").get<std::string>())+"</h2><p>"+label("battle_spirit_hint")+"</p><div class='spirit-options'>";
@@ -1510,13 +1527,18 @@ bool held() {
     return debug::keyboard().held()!=0;
 }
 bool dispatch(SDL_Event& event);
-std::array<std::string*,13> all_stamps();
+std::array<std::string*,14> all_stamps();
 // Hints follow the last input device. Switching rebuilds every page once, the way
 // a language change does, so no page shows the other device's keys.
 void set_pad_mode(bool on) {
     if(pad_mode==on)return;
     pad_mode=on;input::pad_hints=on;
     for(auto* stamp:all_stamps())stamp->clear();
+}
+void set_pointer_mode(bool on) {
+    if(pointer_mode==on)return;
+    pointer_mode=on;
+    for(int i=0;i<context->GetNumDocuments();++i)context->GetDocument(i)->SetClass("pointer",on);
 }
 // Controller presses, with held directions repeating like a held key (400 ms, then
 // every 80 ms); `repeats` marks the repeated directions.
@@ -1548,11 +1570,6 @@ void pad_keys(uint32_t now,uint32_t pressed) {
         {0x1000,SDLK_RETURN},{0x2000,SDLK_SPACE},{0x0020,SDLK_q},{0x0010,SDLK_e},{0x0008,SDLK_i},{0x0004,SDLK_k},
         {0x0002,SDLK_j},{0x0001,SDLK_l},{0x0800|(1u<<16),names_page?SDLK_TAB:SDLK_UP},
         {0x0400|(1u<<17),names_page?SDLK_TAB:SDLK_DOWN},{0x0200|(1u<<18),SDLK_LEFT},{0x0100|(1u<<19),SDLK_RIGHT}};
-void set_pointer_mode(bool on) {
-    if(pointer_mode==on)return;
-    pointer_mode=on;
-    for(int i=0;i<context->GetNumDocuments();++i)context->GetDocument(i)->SetClass("pointer",on);
-}
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
     for(const auto& [mask,key]:keys)if(presses&mask)
         send_key(key,(repeats&mask) && !(pressed&mask),names_page && (mask&0x0800)?KMOD_SHIFT:KMOD_NONE);
@@ -1601,7 +1618,7 @@ void sync() {
             pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();
     app_menu::update(language->ui("settings_open"),language->ui("dialogue_reload"));
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
@@ -1631,6 +1648,8 @@ bool dispatch(SDL_Event& event) {
     // screen bring the keyboard hints back.
     if((event.type==SDL_KEYDOWN && event.key.windowID) || event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL ||
        (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pad_mode(false);
+    if(event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL || (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pointer_mode(true);
+    else if(event.type==SDL_KEYDOWN && event.key.windowID)set_pointer_mode(false);
     if(input.event(event))return true;
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F7 && !input.has_composition() &&
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
@@ -1661,8 +1680,6 @@ bool dispatch(SDL_Event& event) {
                 funds_editing.clear();return true;
             }
             if(k==SDLK_ESCAPE){funds_editing.clear();return true;}
-    if(event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL || (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pointer_mode(true);
-    else if(event.type==SDL_KEYDOWN && event.key.windowID)set_pointer_mode(false);
         }
         // Digits, backspace and the cursor keys belong to the edit box.
     } else if(settings_open){

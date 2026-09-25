@@ -102,6 +102,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE title_page.cpp)
     # Holding R while choosing a move destination: the farthest squares (docs/native/move-jump.md).
     target_sources(srw64-gfx-host PRIVATE move_jump.cpp)
+    # L2 / R2 on the idle tactical map: the cursor steps through the enemy units (docs/native/enemy-cycle.md).
+    target_sources(srw64-gfx-host PRIVATE enemy_cycle.cpp)
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
     if(APPLE)
         target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)

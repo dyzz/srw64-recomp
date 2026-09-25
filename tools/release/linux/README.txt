@@ -19,11 +19,15 @@ SRW64 Recompiled, Steam Deck edition (experimental). English below.
   菜单键 ☰     START
   十字键 / 左摇杆  移动光标
   L1 / R1      L / R（地图上切换我方机体；对白中 L1 打开回看）
-  L2 或 Y      Z 扳机
+  Y            Z 扳机
+  L2 / R2      地图上：光标移到上一个 / 下一个敌方机体（L1 / R1 是我方机体）
+  L2           对白：自动阅读 开 / 关
+  R2           对白：按住快进；R2 + 菜单键 跳过当前段落
   右摇杆       C 键（对白中上下调字号）
   视图键 ⧉     打开 / 关闭设置：语言、原版／HD 画面、规则修正、各界面切换
                设置里用十字键移动、A 选择、B 关闭
-  对白：R1 + A 按住快进，R1 + 菜单键 跳过当前段落
+               标题画面右下角也有设置入口，可直接点触
+  注意：战斗动画中 Y + 菜单键 是原版的「退出关卡」，会回到标题画面，未存档进度丢失。
   输入姓名时会弹出 Steam 屏幕键盘；也可以直接用默认名字。
   界面底部的操作提示会随你最后用的设备显示手柄按键或键盘按键。
 
@@ -54,10 +58,13 @@ as a non-Steam game also works, without artwork). It then starts from Game Mode;
 Steam Input changes are needed.
 
 Controls: A confirm, B/X back, Menu = START, D-pad/left stick move, L1/R1 = L/R
-(L1 opens the dialogue history), L2 or Y = Z, right stick = C buttons, View opens
-the settings (language, Original/HD, rules). Dialogue: hold R1 + A to fast-forward,
-R1 + Menu skips. Names open the Steam on-screen keyboard. Hints follow the last
-device you used.
+(on the map: your units; in dialogue L1 opens the history), L2/R2 on the map step
+through the enemy units, Y = Z, right stick = C buttons, View opens the settings
+(language, Original/HD, rules); so does the button at the bottom right of the
+title screen. Dialogue: L2 turns automatic reading on or off, hold R2 to fast-
+forward, R2 + Menu skips the segment. In a battle animation, Y + Menu is the
+original "quit the stage" and returns to the title screen. Names open the Steam
+on-screen keyboard. Hints follow the last device you used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
 HD: unpack the HD pack (the same download as for macOS) as

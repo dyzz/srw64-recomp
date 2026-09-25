@@ -62,6 +62,7 @@ NATIVE_HOOKS = {
     "resident_func_80095974": "srw64_original_background_draw",
     "resident_func_80096CD8": "srw64_original_scene_rect_draw",
     "load_000AB160_func_801CBB04": "srw64_original_move_select",
+    "load_000AB160_func_801C8B04": "srw64_original_map_idle",
     "load_000AB160_func_801E4760": "srw64_original_move_range_draw",
     "resident_func_8009761C": "srw64_original_scene_quad_draw",
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",

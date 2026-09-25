@@ -88,6 +88,10 @@ private:
     std::deque<Key> presses;
 };
 inline VirtualKeyboard& keyboard(){static VirtualKeyboard value;return value;}
+// Controller buttons held through the interface, in srw64_pad_state()'s mask (N64 bits,
+// stick bits 16-19, View / L2 / R2 from input_mode.hpp). The window thread ORs them into
+// the controller's every frame, so pages, hints and host features see a real pad.
+inline std::atomic<uint32_t>& pad(){static std::atomic<uint32_t> held{};return held;}
 
 // On-demand screenshot of the next present. The requester waits for the render
 // thread's GPU readback to finish and gets the file's metadata back.
