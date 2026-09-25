@@ -93,7 +93,7 @@ SRW64_DEBUG=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
 默认对白已接入[中日英跨平台文字](portable-text.md)，CoreText/CoreGraphics 不再进入
 游戏对白目标。`src/host/dialogue_scene.cpp` 负责正文、人名、阅读指示器、底栏和回看，
 `src/host/dialogue_layout_adapter.hpp` 让 Reader 和绘制共享同一份不可变排版。
-`src/host/macos/dialogue_plume.cpp` 使用[通用 Plume 合成器](plume-pixel-compositor.md)，
+`src/host/dialogue_plume.cpp` 使用[通用 Plume 合成器](plume-pixel-compositor.md)，
 保留匹配 workload 的对白快照和 GPU 完成前的资源引用。
 
 本地 CPU 验证入口为 `tests/dialogue_cpu/`，没有远端 CI；命令、依赖和字体配置见文字文档。

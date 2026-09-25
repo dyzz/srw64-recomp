@@ -1,12 +1,18 @@
-// Thin adapter for the current Metal host. Upload/pipeline/draw code is shared
-// with Vulkan and D3D12; only target inspection and completion remain here.
+// Thin present-hook adapter. Upload/pipeline/draw code is shared by Metal, Vulkan
+// and D3D12; only target inspection differs, and completion goes through the host.
 #include "dialogue_raster.hpp"
 #include "diagnostics.hpp"
 #include "presentation/pixel_compositor.hpp"
+#ifdef __APPLE__
 #include "plume_metal.h"
+#endif
 #include <algorithm>
 #include <fstream>
+#include <functional>
 #include <sstream>
+
+// graphics.cpp: runs once the GPU has finished the list the present hook records.
+void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback);
 
 namespace srw64::dialogue {
 namespace {
@@ -17,16 +23,17 @@ PixelCompositor::Image image;
 std::filesystem::path output;
 std::string cached_key;
 }
-void metal_init(plume::RenderDevice* device, const std::filesystem::path& directory) {
+void gpu_init(plume::RenderInterface* rhi, plume::RenderDevice* device, const std::filesystem::path& directory) {
     image.reset(); cached_key.clear(); output = directory;
     compositor = std::make_unique<PixelCompositor>(*device,
-        presentation::embedded_pixel_shaders(plume::RenderShaderFormat::METAL));
+        presentation::embedded_pixel_shaders(rhi->getCapabilities().shaderFormat));
 }
-void metal_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, uint64_t workload) {
+void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, uint64_t workload) {
     auto frame = presented_frame(workload);
     if (!frame || std::none_of(frame->boxes.begin(),frame->boxes.end(),[](const auto& b){return b.visible;})) return;
     if (!compositor) throw std::runtime_error("Dialogue compositor is not initialized");
     localization::Scope locale(frame->catalog);
+#ifdef __APPLE__
     const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
     if (fb->colorAttachments.size() != 1 || fb->colorAttachments[0].getTexture()->sampleCount() != 1)
         throw std::runtime_error("Dialogue requires one non-MSAA color target");
@@ -35,11 +42,18 @@ void metal_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* frameb
         throw std::runtime_error("Unvalidated native UI color target");
     auto* command = static_cast<plume::MetalCommandList*>(list);
     command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
+    const char* surface = "Plume (Metal surface)";
+#else
+    // The present hook always draws into RT64's swapchain framebuffer, which is
+    // B8G8R8A8 without MSAA (rt64_application.cpp); Plume has no format query.
+    const auto format = plume::RenderFormat::B8G8R8A8_UNORM;
+    const char* surface = "Plume (swapchain)";
+#endif
     // Preserve the existing workload/cache identity and CPU raster behavior.
     std::ostringstream key;
     key << localization::catalog().locale << localization::catalog().font << localization::catalog().revision
         << ',' << framebuffer->getWidth() << ',' << framebuffer->getHeight() << ',' << frame->font_size
-        << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping
+        << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping << frame->pad_hints
         << ',' << frame->reading_event << ',' << frame->advance.visible << frame->advance.waiting << frame->advance.paused << ',' << frame->advance.permille;
     for (const auto& box : frame->boxes)
         key << ':' << box.event << ',' << box.visible << box.active << ',' << box.page << ',' << box.revealed << ',' << box.x << ',' << box.y;
@@ -48,18 +62,17 @@ void metal_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* frameb
         auto next = compositor->upload(*list,raster.image);
         // Retain uploads independently of draw success until the command buffer
         // completes. A later cache replacement cannot free a recorded upload.
-        command->mtl->addCompletedHandler([next](MTL::CommandBuffer*) { (void)next; });
+        srw64_after_gpu(list, [next](bool) { (void)next; });
         image = std::move(next); cached_key = key.str();
         // The scene reports its portable CPU text backend.
-        raster.report["presentation"] = "Plume (Metal surface)";
+        raster.report["presentation"] = surface;
         raster.report["compositor"] = "Plume";
         if (srw64_full_diagnostics()) std::ofstream(output/"dialogue-raster.json") << raster.report.dump(2) << '\n';
     }
     const auto retained = compositor->draw(*list,*framebuffer,format,image);
-    command->mtl->addCompletedHandler([retained](MTL::CommandBuffer* completed) {
+    srw64_after_gpu(list, [retained](bool completed) {
         (void)retained;
-        if (completed->status() != MTL::CommandBufferStatusCompleted)
-            std::fputs("SRW64_DIALOGUE_GPU_FAILED\n",stderr);
+        if (!completed) std::fputs("SRW64_DIALOGUE_GPU_FAILED\n",stderr);
     });
     if (!srw64_full_diagnostics()) return;
     json state = {{"schema","srw64.native-dialogue-present.v1"},{"workload",workload},{"native_vi",frame->vi},
@@ -75,7 +88,7 @@ void metal_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* frameb
     std::ofstream(output/"dialogue-present.tmp") << state.dump(2) << '\n';
     std::filesystem::rename(output/"dialogue-present.tmp",output/"dialogue-present.json");
 }
-void metal_shutdown() {
+void gpu_shutdown() {
     // The host must wait for submitted work before destroying its RenderDevice.
     // Completion callbacks own any older images and their shared pipeline state.
     image.reset(); compositor.reset(); cached_key.clear();

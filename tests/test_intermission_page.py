@@ -22,7 +22,7 @@ class IntermissionSourceTests(unittest.TestCase):
 
     def test_labels_and_menu_text_exist(self):
         from srw64_native.profile import UI_KEYS
-        keys = {key for key in UI_KEYS if key.startswith("intermission_")} | {"funds_edit_hint"}
+        keys = {key for key in UI_KEYS if key.startswith("intermission_") and not key.endswith("_pad")} | {"funds_edit_hint"}
         self.assertEqual(len(keys), 5)
         page = (ROOT / "src/native/ui/frontend.cpp").read_text()
         for key in keys:
@@ -213,7 +213,7 @@ class UpgradePageSourceTests(unittest.TestCase):
 
     def test_labels_exist_in_every_language(self):
         from srw64_native.profile import UI_KEYS
-        keys = {key for key in UI_KEYS if key.startswith("upgrade_")}
+        keys = {key for key in UI_KEYS if key.startswith("upgrade_") and not key.endswith("_pad")}
         self.assertEqual(len(keys), 8)
         page = (ROOT / "src/native/ui/frontend.cpp").read_text()
         for key in keys:

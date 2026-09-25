@@ -42,7 +42,8 @@ class LinkSourceTests(unittest.TestCase):
 
     def test_page_labels_exist_in_every_language(self):
         from srw64_native.profile import UI_KEYS
-        keys = {key for key in UI_KEYS if key.startswith("link_")}
+        # Controller variants ("_pad") are chosen by label() and need no call of their own.
+        keys = {key for key in UI_KEYS if key.startswith("link_") and not key.endswith("_pad")}
         # Per series: name, lead pilot, machines, the pilots who come along.
         for field in ("series", "lead", "units", "crew"):
             self.assertLessEqual({f"link_{field}_{name}" for name in ("f91", "goshogun", "zambot")}, keys)

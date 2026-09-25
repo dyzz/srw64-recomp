@@ -6,6 +6,7 @@
 #include "audio.hpp"
 #include "diagnostics.hpp"
 #include "window_test_control.hpp"
+#include "input_mode.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
 #include "native_portrait.hpp"
@@ -37,13 +38,19 @@
 #include "ultramodern/ultramodern.hpp"
 #include "librecomp/game.hpp"
 #include "rt64_render_hooks.h"
+#ifdef __APPLE__
 #include "plume_metal.h"
+#endif
 #define STB_IMAGE_WRITE_STATIC
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include <SDL.h>
 #include <SDL_syswm.h>
+#ifdef __APPLE__
 #include <SDL_metal.h>
+#else
+#include <SDL_vulkan.h>
+#endif
 #include <array>
 #include <atomic>
 #include <cstring>
@@ -51,7 +58,18 @@
 
 namespace {
 SDL_Window* window;
+#ifdef __APPLE__
 SDL_MetalView view;
+#else
+// Completion callbacks for the list the draw hook recorded, run by the presented
+// hook after RT64 waits for that submission. Both run on the present thread.
+std::vector<std::function<void(bool)>> after_present;
+void run_after_present(bool completed) {
+    auto callbacks = std::move(after_present);
+    after_present.clear();
+    for (auto& callback : callbacks) callback(completed);
+}
+#endif
 std::array<uint8_t, 0x1000> dmem{}, imem{};
 std::array<uint8_t, 0x40> header{};
 uint32_t mi_interrupt{}, dpc_start{}, dpc_end{}, dpc_current{}, dpc_status{};
@@ -67,12 +85,13 @@ SDL_GameController* pad{};
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
 #ifdef SRW64_NATIVE_DIALOGUE
-    srw64::dialogue::metal_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
+    srw64::dialogue::gpu_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
     // Clear workload-keyed guest naming frames before the shared UI renders.
     const auto name_workload=RT64::GetRenderHookWorkloadId();
     const bool name_cover=srw64::names::frame_cover(name_workload);
-    auto* name_commands=static_cast<plume::MetalCommandList*>(list);
     if(name_cover) {
+#ifdef __APPLE__
+        auto* name_commands=static_cast<plume::MetalCommandList*>(list);
         name_commands->endActiveRenderEncoder();name_commands->endActiveBlitEncoder();
         auto* pass=MTL::RenderPassDescriptor::renderPassDescriptor();
         auto* color=pass->colorAttachments()->object(0);
@@ -80,11 +99,15 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         color->setLoadAction(MTL::LoadActionClear);color->setStoreAction(MTL::StoreActionStore);
         color->setClearColor(MTL::ClearColor(.028,.045,.07,1));
         name_commands->mtl->renderCommandEncoder(pass)->endEncoding();
+#else
+        list->setFramebuffer(framebuffer);
+        list->clearColor(0, RenderColor(.028f,.045f,.07f,1.f));
+#endif
     }
     const bool ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);
-    name_commands->mtl->addCompletedHandler([name_workload,name_cover,ui_drawn](MTL::CommandBuffer* command) {
+    srw64_after_gpu(list,[name_workload,name_cover,ui_drawn](bool completed) {
         if(ui_drawn)srw64::ui::presented();
-        if(command->status()==MTL::CommandBufferStatusCompleted)srw64::names::cover_presented(name_workload,name_cover);
+        if(completed)srw64::names::cover_presented(name_workload,name_cover);
     });
 #endif
     const uint64_t frame = ++presented_frames;
@@ -120,6 +143,12 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
             {"x",focus->x},{"y",focus->y}}):nlohmann::json(nullptr);
     }
 #endif
+#ifndef __APPLE__
+    // Plume copies textures to buffers only on D3D12 in this revision, and the
+    // Vulkan swapchain is not a copy source (docs/design/three-platform-port.md, X1).
+    (void)dialogue_trace;
+    if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "screenshots are not available on this graphics backend yet"}});
+#else
     const auto* metal_framebuffer = static_cast<const plume::MetalFramebuffer*>(framebuffer);
     if (metal_framebuffer->colorAttachments.size() != 1) std::abort();
     const auto& attachment = metal_framebuffer->colorAttachments[0];
@@ -194,6 +223,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                  << ",\"image_mode\":" << image_mode << ",\"GPU_completion\":\"completed\"}\n";
         fprintf(stderr, "SRW64_CAPTURE %s vi=%llu %ux%u\n", path.filename().c_str(), (unsigned long long)vi, width, height);
     });
+#endif
 }
 
 class SRW64Renderer final : public ultramodern::renderer::RendererContext {
@@ -209,10 +239,14 @@ public:
             srw64::backgrounds::metal_init(device);
             srw64::sprites::metal_init(device);
 #ifdef SRW64_NATIVE_DIALOGUE
-            srw64::dialogue::metal_init(device, capture_directory);
+            srw64::dialogue::gpu_init(rhi, device, capture_directory);
             srw64::ui::render_init(rhi,device);
 #endif
         }, capture_frame, [] {
+#ifndef __APPLE__
+            // Nothing is in flight after RT64's last present wait; settle the UI anyway.
+            run_after_present(false);
+#endif
             srw64::marker::shutdown();
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
@@ -220,12 +254,21 @@ public:
             srw64::sprites::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::ui::render_shutdown();
-            srw64::dialogue::metal_shutdown();
+            srw64::dialogue::gpu_shutdown();
 #endif
         });
+#ifndef __APPLE__
+        RT64::SetRenderHookPresented([](unsigned long long) { run_after_present(true); });
+#endif
         RT64::Application::Core core{};
+#if defined(__APPLE__)
         core.window.window = handle.window;
         core.window.view = handle.view;
+#elif defined(_WIN32)
+        core.window = handle.window;
+#else
+        core.window = handle;
+#endif
         core.checkInterrupts = [] {};
         core.HEADER = header.data();
         core.RDRAM = rdram;
@@ -251,7 +294,12 @@ public:
         RT64::ApplicationConfiguration configuration;
         configuration.useConfigurationFile = false;
         app = std::make_unique<RT64::Application>(core, configuration);
+#ifdef __APPLE__
         app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Metal;
+#else
+        // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
+        app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Automatic;
+#endif
         app->userConfig.resolution = std::getenv("SRW64_NATIVE_RESOLUTION") && std::string(std::getenv("SRW64_NATIVE_RESOLUTION")) == "1"
             ? RT64::UserConfiguration::Resolution::WindowIntegerScale : RT64::UserConfiguration::Resolution::Original;
         if (const char* scale = std::getenv("SRW64_RESOLUTION_SCALE")) {
@@ -281,7 +329,12 @@ public:
         fprintf(stderr, "SRW64_MSAA samples=%u\n", app->userConfig.msaaSampleCount());
         app->userConfig.developerMode = false;
         const auto result = app->setup(0);
-        chosen_api = ultramodern::renderer::GraphicsApi::Metal;
+        switch (app->chosenGraphicsAPI) {
+        case RT64::UserConfiguration::GraphicsAPI::D3D12: chosen_api = ultramodern::renderer::GraphicsApi::D3D12; break;
+        case RT64::UserConfiguration::GraphicsAPI::Vulkan: chosen_api = ultramodern::renderer::GraphicsApi::Vulkan; break;
+        default: chosen_api = ultramodern::renderer::GraphicsApi::Metal; break;
+        }
+        fprintf(stderr, "SRW64_GRAPHICS_API %d\n", int(app->chosenGraphicsAPI));
         setup_result = result == RT64::Application::SetupResult::Success
             ? ultramodern::renderer::SetupResult::Success : ultramodern::renderer::SetupResult::GraphicsDeviceNotFound;
         if (setup_result != ultramodern::renderer::SetupResult::Success) {
@@ -454,10 +507,22 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
         std::abort();
     }
     // UI and dialogue need display pixels regardless of the game's internal render scale.
+#ifdef __APPLE__
+    constexpr Uint32 surface = SDL_WINDOW_METAL;
+#else
+    // RT64 creates D3D12 swapchains from the HWND; the Vulkan flag is harmless there.
+    constexpr Uint32 surface = SDL_WINDOW_VULKAN;
+#endif
+    // Steam sets SteamDeck=1 for games on the Deck: fill its screen, Game Mode or not.
+    const bool deck = std::getenv("SteamDeck") && std::string(std::getenv("SteamDeck")) == "1";
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              960, 720, SDL_WINDOW_METAL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              960, 720, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
-    if (!window) std::abort();
+    if (!window) {
+        fprintf(stderr, "SRW64_WINDOW_FAILED %s\n", SDL_GetError());
+        std::abort();
+    }
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
@@ -465,10 +530,27 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
 #endif
+#if defined(__APPLE__)
     view = SDL_Metal_CreateView(window);
     if (!view) std::abort();
     static_cast<CA::MetalLayer*>(SDL_Metal_GetLayer(view))->setFramebufferOnly(false);
     return {info.info.cocoa.window, SDL_Metal_GetLayer(view)};
+#elif defined(_WIN32)
+    return {info.info.win.window, GetCurrentThreadId()};
+#else
+    return window;
+#endif
+}
+
+void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback) {
+#ifdef __APPLE__
+    static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([callback = std::move(callback)](MTL::CommandBuffer* command) {
+        callback(command->status() == MTL::CommandBufferStatusCompleted);
+    });
+#else
+    (void)list;
+    after_present.push_back(std::move(callback));
+#endif
 }
 
 void srw64_update_window(void*) {
@@ -605,7 +687,13 @@ void srw64_update_window(void*) {
         axis(SDL_CONTROLLER_AXIS_RIGHTX, -1, 0x0002); axis(SDL_CONTROLLER_AXIS_RIGHTX, 1, 0x0001);
         axis(SDL_CONTROLLER_AXIS_LEFTY, -1, 1U << 16); axis(SDL_CONTROLLER_AXIS_LEFTY, 1, 1U << 17);
         axis(SDL_CONTROLLER_AXIS_LEFTX, -1, 1U << 18); axis(SDL_CONTROLLER_AXIS_LEFTX, 1, 1U << 19);
+        // Host-only: View opens the settings window (Steam Deck: no keyboard needed).
+        button(SDL_CONTROLLER_BUTTON_BACK, srw64::input::pad_view);
     }
+    // Controller play hides the pointer; the mouse or touch screen brings it back.
+    static int cursor=-1;
+    const int wanted=srw64::input::pad_hints ? SDL_DISABLE : SDL_ENABLE;
+    if(cursor!=wanted)SDL_ShowCursor(cursor=wanted);
     pad_state.store(buttons, std::memory_order_relaxed);
     keyboard_state.store(state | buttons, std::memory_order_relaxed);
 }
@@ -615,7 +703,11 @@ nlohmann::json srw64_window_status() {
     if (!window) return nullptr;
     int width = 0, height = 0, pixel_width = 0, pixel_height = 0;
     SDL_GetWindowSize(window, &width, &height);
+#ifdef __APPLE__
     SDL_Metal_GetDrawableSize(window, &pixel_width, &pixel_height);
+#else
+    SDL_Vulkan_GetDrawableSize(window, &pixel_width, &pixel_height);
+#endif
     return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
             {"pixel_width", pixel_width}, {"pixel_height", pixel_height}, {"title", SDL_GetWindowTitle(window)}};
 }
@@ -646,6 +738,12 @@ void srw64_keyboard_input(uint16_t* buttons, float* x, float* y) {
 #ifdef SRW64_NATIVE_DIALOGUE
     state=srw64::settings::filter_input(state);
 #endif
+    // START held while the original boots opens its Controller Pak manager, whose
+    // osPfs calls the runtime lacks (the host aborts). A START that is down in the
+    // first two seconds is ignored until it has been released.
+    static bool boot_start = true;
+    if (boot_start && srw64_current_vi() >= 120 && !(state & 0x1000)) boot_start = false;
+    if (boot_start) state &= ~0x1000U;
     *buttons = static_cast<uint16_t>(state);
     *x = float(bool(state & (1U << 19))) - float(bool(state & (1U << 18)));
     *y = float(bool(state & (1U << 16))) - float(bool(state & (1U << 17)));
@@ -660,7 +758,9 @@ void srw64_destroy_window() {
     keyboard_state = 0;
     if (pad) { SDL_GameControllerClose(pad); pad = nullptr; }
     srw64_close_audio();
+#ifdef __APPLE__
     SDL_Metal_DestroyView(view);
+#endif
     SDL_DestroyWindow(window);
     SDL_Quit();
 }

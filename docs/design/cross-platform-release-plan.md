@@ -2,6 +2,8 @@
 
 基线：`22706a4294f7e0ddee40563e7c6e4972376811f9`（2026-09-19）。
 
+> 2026-09-24：下文 P2–P4 的顺序与门槛已由[三平台移植计划](three-platform-port.md)取代；本页的目标、边界与授权约束仍然有效。
+
 **本批是独立运行入口与可移植应用层，不是 Windows/Linux 游戏移植完成。**
 图形宿主仍使用 Metal；对白已切换为 FreeType/HarfBuzz/ICU；默认游戏页面已换成 SDL/RmlUi，桌面 ROM 选择器仍使用 AppKit；`src/host/CMakeLists.txt` 的
 非 Apple 平台拒绝条件有意保留。此前的三平台组件测试覆盖应用启动/存档逻辑（现在仅本地运行），

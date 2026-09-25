@@ -26,7 +26,7 @@
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
-| 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) |
+| 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) → [三平台移植计划](design/three-platform-port.md) |
 
 ## 使用与开发（guide/）
 
@@ -35,6 +35,7 @@
 | [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、姓名页与「选项」菜单、存档历史 |
 | [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
 | [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
+| [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
 | [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
@@ -127,6 +128,7 @@
 | [对白排版](design/dialogue-typesetting.md) | HarmonyOS 字体与许可、英文 0.85 倍字号、整条连排与原版翻页同步、名牌、行距自适应、翻页位置动态规划；翻页次数模拟数据 |
 | [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
+| [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |

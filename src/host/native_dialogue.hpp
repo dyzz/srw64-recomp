@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 
-namespace plume { class RenderDevice; class RenderCommandList; class RenderFramebuffer; }
+namespace plume { struct RenderInterface; struct RenderDevice; struct RenderCommandList; struct RenderFramebuffer; }
 namespace srw64::dialogue {
 // Game-thread expansion of a catalog label, including the current player names.
 std::string ui_text(const uint8_t* ram,uint16_t id);
@@ -66,6 +66,7 @@ struct Frame {
     AdvanceProgress advance;
     unsigned font_size=13, speed{};
     bool auto_read{}, history_open{}, fast{}, skipping{};
+    bool pad_hints{};                  // controls name the controller's buttons
     // Battle quotes: the translation replaces the drawn text, the original keeps
     // its own pacing, so there are no reading controls to show.
     bool display_only{};
@@ -100,7 +101,8 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload);
 // Reader and dialogue boxes as dialogue-state.json holds them, from any thread;
 // null when the native dialogue is not configured.
 nlohmann::json state();
-void metal_init(plume::RenderDevice*, const std::filesystem::path&);
-void metal_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);
-void metal_shutdown();
+// The present hook's dialogue compositor, on any Plume backend (dialogue_plume.cpp).
+void gpu_init(plume::RenderInterface*, plume::RenderDevice*, const std::filesystem::path&);
+void gpu_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);
+void gpu_shutdown();
 }

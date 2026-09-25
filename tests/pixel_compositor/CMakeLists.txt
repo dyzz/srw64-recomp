@@ -48,13 +48,14 @@ target_link_libraries(srw64-pixel-gpu-test PRIVATE srw64_pixel_compositor)
 target_compile_features(srw64-pixel-gpu-test PRIVATE cxx_std_20)
 # Diagnostic startup only; it does not replace rendering, fence or pixel checks.
 target_sources(srw64-pixel-gpu-test PRIVATE test_startup.cpp)
+# The game's dialogue adapter compiles against the same compositor on every platform.
+add_library(srw64-dialogue-plume-compile OBJECT "${ROOT}/src/host/dialogue_plume.cpp")
+target_link_libraries(srw64-dialogue-plume-compile PRIVATE srw64_pixel_compositor)
+target_include_directories(srw64-dialogue-plume-compile PRIVATE "${ROOT}/src/host" "${SRW64_RT64_HEADERS}/src/contrib")
 if(APPLE)
     target_include_directories(srw64-pixel-gpu-test PRIVATE "${SRW64_RT64_HEADERS}/src/contrib/plume/contrib/metal-cpp")
     target_compile_options(srw64-pixel-gpu-test PRIVATE -fblocks)
-    add_library(srw64-dialogue-plume-compile OBJECT "${ROOT}/src/host/macos/dialogue_plume.cpp")
-    target_link_libraries(srw64-dialogue-plume-compile PRIVATE srw64_pixel_compositor)
-    target_include_directories(srw64-dialogue-plume-compile PRIVATE "${ROOT}/src/host"
-        "${SRW64_RT64_HEADERS}/src/contrib" "${SRW64_RT64_HEADERS}/src/contrib/plume/contrib/metal-cpp")
+    target_include_directories(srw64-dialogue-plume-compile PRIVATE "${SRW64_RT64_HEADERS}/src/contrib/plume/contrib/metal-cpp")
     target_compile_options(srw64-dialogue-plume-compile PRIVATE -fblocks)
 elseif(WIN32)
     target_compile_definitions(srw64-pixel-gpu-test PRIVATE NOMINMAX)
