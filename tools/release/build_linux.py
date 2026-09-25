@@ -213,10 +213,20 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         found = sorted((ARCHIVES / name_).glob(f'*/{pattern}'))
         if found:
             shutil.copyfile(found[0], licenses / f'{name_}-{pattern}')
-    launcher = stage / 'srw64.sh'
-    shutil.copyfile(Path(__file__).resolve().parent / 'linux/srw64.sh', launcher)
-    launcher.chmod(0o755)
-    shutil.copyfile(Path(__file__).resolve().parent / 'linux/README.txt', stage / 'README.txt')
+    recipe = Path(__file__).resolve().parent / 'linux'
+    for script in ('srw64.sh', 'add-to-steam.sh'):
+        shutil.copyfile(recipe / script, stage / script)
+        (stage / script).chmod(0o755)
+    shutil.copyfile(recipe / 'README.txt', stage / 'README.txt')
+    # add-to-steam.sh: the Steam library entry, named in the game's language, with artwork
+    # made from the HD title images. Without those sources the game is added without art.
+    (stage / 'steam').mkdir()
+    shutil.copyfile(recipe / 'add_to_steam.py', stage / 'steam/add_to_steam.py')
+    scenes = json.loads((ROOT / 'content/art/stage1-hd.json').read_text(encoding='utf-8'))['scene_images']['path']
+    if (ROOT / scenes / 'title-logo.png').is_file():
+        run([WORK / 'venv/bin/python', recipe / 'steam_art.py', '--output', stage / 'steam'])
+    else:
+        print(f'No Steam artwork: {ROOT / scenes} is not here', flush=True)
     archive = WORK / f'{name}.tar.gz'
     with tarfile.open(archive, 'w:gz') as tar:
         tar.add(stage, arcname=name)

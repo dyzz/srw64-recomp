@@ -27,7 +27,7 @@ Apple Silicon 上容器通过 x64 模拟运行，第一次构建（依赖加 RT6
 | 输入检查 | 生成代码与 `cpu-bound/report.json` 的摘要一致、RT64 已有呈现完成钩子、RSPRecomp 音频源和字体存在 |
 | 依赖 `deps/prefix` | 用 macOS 那份锁（`config/recomp/macos-dependencies.json`）里的同一批源码包，编译 SDL3、sdl2-compat、FreeType、HarfBuzz、ICU 的共享库。源码包缓存与 macOS 配方共用 `build/macos-deps/sources` |
 | 宿主 `gfx-build` | `src/host` 以 `SRW64_ENABLE_RT64=ON` 构建 `srw64-gfx-host`，编译器 clang，链接器 lld；RT64 的文件对话框走 xdg-desktop-portal（`NFD_PORTAL=ON`），不链接 GTK |
-| 打包 `SRW64-<提交>-linux-x64.tar.gz` | 程序 `srw64`、`lib/`（上面五个库，RUNPATH 设为 `$ORIGIN`）、`fonts/`、`dialogue/`、`licenses/`、启动脚本 `srw64.sh`、`README.txt` |
+| 打包 `SRW64-<提交>-linux-x64.tar.gz` | 程序 `srw64`、`lib/`（上面五个库，RUNPATH 设为 `$ORIGIN`）、`fonts/`、`dialogue/`、`licenses/`、启动脚本 `srw64.sh`、`add-to-steam.sh` 与 `steam/`（见下）、`README.txt` |
 
 打包时有两项检查，失败即停：
 
@@ -46,7 +46,16 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 
 `srw64.sh` 先找 ROM，第一次启动时默认简体中文，然后执行 `srw64 --play`。找不到 ROM 时，用 `kdialog`（SteamOS 桌面自带）或 `zenity` 弹出说明，因为 Deck 的游戏模式里看不到终端输出。存档和设置在 `~/.local/share/srw64-recomp`，与 macOS 版的目录结构相同。
 
-在 Steam Deck 上：进入桌面模式 → Steam →“添加非 Steam 游戏”→ 选 `srw64.sh`。之后就能从游戏模式启动。手柄映射见 `graphics.cpp` 的控制器段，README 里有列表。
+在 Steam Deck 上：进入桌面模式，打开 Steam，双击 `add-to-steam.sh`。之后就能从游戏模式启动。手柄映射见 `graphics.cpp` 的控制器段，README 里有列表。
+
+`add-to-steam.sh` 调用 `steam/add_to_steam.py`，做法与 SteamOS 文件管理器右键的“添加到 Steam”相同：
+
+1. 写 `~/.local/share/applications/srw64-recomp.desktop`，名字随游戏语言（`presentation.json` 的 `locale`；没启动过时为简体中文）：超级机器人大战64 / Super Robot Wars 64 / スーパーロボット大戦64；
+2. 用 `steam://addnonsteamgame/<desktop 文件>` 交给正在运行的 Steam；
+3. 等 `userdata/<用户>/config/shortcuts.vdf`（二进制 KeyValues）里出现启动 `srw64.sh` 的快捷方式，读出它的 appid。新版 Steam 的 appid 是随机的，不能事先算；
+4. 把 `steam/` 里的封面复制到 `userdata/<用户>/config/grid/`：`<appid>p.png` 竖版 600×900、`<appid>.png` 横版 920×430、`<appid>_hero.png` 顶部横幅、`<appid>_logo.png`、`<appid>_icon.png`。
+
+已在库里时只刷新封面。封面由打包时的 `tools/release/linux/steam_art.py` 生成：HD 包的标题 logo（`content/art/stage1-hd.json` 的 `scene_images`）叠在标题火焰上，配 “SRW64 Recomp” 字样，各语言同一套；构建机没有这些素材时包里没有封面，脚本照样添加游戏。
 
 ## 验证记录
 
