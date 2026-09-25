@@ -102,7 +102,7 @@ SRW64_DEBUG=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
 
 ## 尚未完成的跨平台工作
 
-`graphics.cpp` 的 Metal surface/readback/present completion、原生 marker，以及桌面首次 ROM
-选择器仍有 macOS 实现；非 Apple 图形构建 gate 保留。文字组件与场景已不依赖 Apple API，
-不代表 Windows/Linux 整个游戏可玩。
+HD 图层、截图读回和姓名页遮挡在非 Metal 后端走 Plume，Linux/Steam Deck 版已能构建运行
+（[三平台移植](../design/three-platform-port.md)）；桌面首次 ROM 选择器仍只有 macOS 实现，
+Windows 尚未构建。
 真实中日文 OS 输入法候选窗、手柄导航、可再分发字体与三平台第一话／存档冷启动仍需独立验收。

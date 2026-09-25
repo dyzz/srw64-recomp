@@ -11,7 +11,8 @@ struct PortraitDraw {
 };
 // Reads srw64-portraits-hd.json from the compiled art directory, if there is one.
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& output);
-void metal_init(plume::RenderDevice* device);
+// Render-hook init, after gpu::init (native_gpu.hpp).
+void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const PortraitDraw& draw);

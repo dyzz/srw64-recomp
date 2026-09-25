@@ -81,7 +81,7 @@
 | [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收 |
 | [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
-| [人物头像 HD](native/native-portraits-hd.md) | 全部头像的 2×2 拼图生成、逐格配准与抠图，模式 7 绘制的整张 768×768 替换（宿主 Metal 绘制） |
+| [人物头像 HD](native/native-portraits-hd.md) | 全部头像的 2×2 拼图生成、逐格配准与抠图，模式 7 绘制的整张 768×768 替换（宿主经 Plume 绘制） |
 | [场间背景 HD](native/native-backgrounds-hd.md) | インターミッション 8 张背景的亮／暗 HD、模式 4 分块绘制的整张替换 |
 | [剧情世界地图 HD](native/native-worldmap-regions-hd.md) | 剧情世界地图的全部地球区域与宇宙：按第一话欧洲画风分窗口重绘、陆海分布自动检查、星空整张绘制 |
 | [标题画面与剧情文字图](native/native-title-and-story-images.md) | 标题 Logo 与火焰的整帧高清替换（去接缝）；标题菜单、章节标题卡、开场序章与结局页按阅读语言原生绘制，保留原版缩放旋转翻面；场景精灵绘制器、句柄表与标题卡状态机 |

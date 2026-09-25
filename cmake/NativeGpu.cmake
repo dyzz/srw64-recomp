@@ -41,6 +41,11 @@ function(srw64_add_native_gpu_shaders target rt64_root)
             COMMAND ${dxc} -spirv -fspv-target-env=vulkan1.0 -fvk-use-dx-layout ${extra} -I "${source}"
                     -E ${entry} -T ${profile} "${shader}" -Fo "${out}.spv"
             DEPENDS "${shader}" ${includes} VERBATIM)
+        # SPIR-V everywhere (Vulkan, and MoltenVK tests on a Mac), plus MSL or DXIL.
+        add_custom_command(OUTPUT "${out}.spirv.c" "${out}.spirv.h"
+            COMMAND file_to_c "${out}.spv" ${name}BlobSPIRV "${out}.spirv.c" "${out}.spirv.h"
+            DEPENDS "${out}.spv" file_to_c VERBATIM)
+        target_sources(${target} PRIVATE "${out}.spirv.c")
         if(APPLE)
             add_custom_command(OUTPUT "${out}.metal" COMMAND spirv_cross_msl "${out}.spv" "${out}.metal" DEPENDS "${out}.spv" spirv_cross_msl VERBATIM)
             if(SRW64_METAL_SOURCE_SHADERS)
@@ -54,19 +59,13 @@ function(srw64_add_native_gpu_shaders target rt64_root)
                 COMMAND file_to_c "${metal_input}" ${name}BlobMSL "${out}.metal.c" "${out}.metal.h"
                 DEPENDS "${metal_input}" file_to_c VERBATIM)
             target_sources(${target} PRIVATE "${out}.metal.c")
-        else()
-            add_custom_command(OUTPUT "${out}.spirv.c" "${out}.spirv.h"
-                COMMAND file_to_c "${out}.spv" ${name}BlobSPIRV "${out}.spirv.c" "${out}.spirv.h"
-                DEPENDS "${out}.spv" file_to_c VERBATIM)
-            target_sources(${target} PRIVATE "${out}.spirv.c")
-            if(WIN32)
-                add_custom_command(OUTPUT "${out}.dxil" COMMAND ${dxc} -I "${source}" -E ${entry} -T ${profile} "${shader}" -Fo "${out}.dxil"
-                    DEPENDS "${shader}" ${includes} VERBATIM)
-                add_custom_command(OUTPUT "${out}.dxil.c" "${out}.dxil.h"
-                    COMMAND file_to_c "${out}.dxil" ${name}BlobDXIL "${out}.dxil.c" "${out}.dxil.h"
-                    DEPENDS "${out}.dxil" file_to_c VERBATIM)
-                target_sources(${target} PRIVATE "${out}.dxil.c")
-            endif()
+        elseif(WIN32)
+            add_custom_command(OUTPUT "${out}.dxil" COMMAND ${dxc} -I "${source}" -E ${entry} -T ${profile} "${shader}" -Fo "${out}.dxil"
+                DEPENDS "${shader}" ${includes} VERBATIM)
+            add_custom_command(OUTPUT "${out}.dxil.c" "${out}.dxil.h"
+                COMMAND file_to_c "${out}.dxil" ${name}BlobDXIL "${out}.dxil.c" "${out}.dxil.h"
+                DEPENDS "${out}.dxil" file_to_c VERBATIM)
+            target_sources(${target} PRIVATE "${out}.dxil.c")
         endif()
     endforeach()
 endfunction()

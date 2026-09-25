@@ -61,16 +61,18 @@ namespace {
 SDL_Window* window;
 #ifdef __APPLE__
 SDL_MetalView view;
-#else
+// Metal unless SRW64_GRAPHICS_API=vulkan runs RT64 on MoltenVK (a test of the Vulkan path).
+bool metal_backend = true;
+#endif
 // Completion callbacks for the list the draw hook recorded, run by the presented
-// hook after RT64 waits for that submission. Both run on the present thread.
+// hook after RT64 waits for that submission (all backends but Metal). Both run on
+// the present thread.
 std::vector<std::function<void(bool)>> after_present;
 void run_after_present(bool completed) {
     auto callbacks = std::move(after_present);
     after_present.clear();
     for (auto& callback : callbacks) callback(completed);
 }
-#endif
 std::array<uint8_t, 0x1000> dmem{}, imem{};
 std::array<uint8_t, 0x40> header{};
 uint32_t mi_interrupt{}, dpc_start{}, dpc_end{}, dpc_current{}, dpc_status{};
@@ -92,6 +94,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const bool name_cover=srw64::names::frame_cover(name_workload);
     if(name_cover) {
 #ifdef __APPLE__
+        if(metal_backend) {
         auto* name_commands=static_cast<plume::MetalCommandList*>(list);
         name_commands->endActiveRenderEncoder();name_commands->endActiveBlitEncoder();
         auto* pass=MTL::RenderPassDescriptor::renderPassDescriptor();
@@ -100,10 +103,12 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         color->setLoadAction(MTL::LoadActionClear);color->setStoreAction(MTL::StoreActionStore);
         color->setClearColor(MTL::ClearColor(.028,.045,.07,1));
         name_commands->mtl->renderCommandEncoder(pass)->endEncoding();
-#else
-        list->setFramebuffer(framebuffer);
-        list->clearColor(0, RenderColor(.028f,.045f,.07f,1.f));
+        } else
 #endif
+        {
+            list->setFramebuffer(framebuffer);
+            list->clearColor(0, RenderColor(.028f,.045f,.07f,1.f));
+        }
     }
     const bool ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);
     srw64_after_gpu(list,[name_workload,name_cover,ui_drawn](bool completed) {
@@ -144,36 +149,48 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
             {"x",focus->x},{"y",focus->y}}):nlohmann::json(nullptr);
     }
 #endif
-#ifndef __APPLE__
-    // Plume copies textures to buffers only on D3D12 in this revision, and the
-    // Vulkan swapchain is not a copy source (docs/design/three-platform-port.md, X1).
-    (void)dialogue_trace;
-    if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "screenshots are not available on this graphics backend yet"}});
-#else
+    const uint32_t width = framebuffer->getWidth(), height = framebuffer->getHeight();
+    const uint32_t row_pixels = (width + 63) & ~63U;
+    auto buffer = std::shared_ptr<RenderBuffer>(capture_device->createBuffer(RenderBufferDesc::ReadbackBuffer((uint64_t)row_pixels * 4 * height)));
+    bool bgra = true;
+#ifdef __APPLE__
+    if (metal_backend) {
     const auto* metal_framebuffer = static_cast<const plume::MetalFramebuffer*>(framebuffer);
     if (metal_framebuffer->colorAttachments.size() != 1) std::abort();
     const auto& attachment = metal_framebuffer->colorAttachments[0];
-    const bool bgra = attachment.format == RenderFormat::B8G8R8A8_UNORM;
+    bgra = attachment.format == RenderFormat::B8G8R8A8_UNORM;
     if (!bgra && attachment.format != RenderFormat::R8G8B8A8_UNORM) {
         fprintf(stderr, "SRW64_CAPTURE_UNSUPPORTED_FORMAT %u\n", (unsigned)attachment.format);
         return;
     }
-    const uint32_t width = framebuffer->getWidth(), height = framebuffer->getHeight();
-    const uint32_t row_pixels = (width + 63) & ~63U;
-    auto buffer = std::shared_ptr<RenderBuffer>(capture_device->createBuffer(RenderBufferDesc::ReadbackBuffer((uint64_t)row_pixels * 4 * height)));
-    // This Plume revision implements only buffer-to-texture copies through
-    // copyTextureRegion. Use Metal's texture-to-buffer blit on the same command
-    // buffer, after ending the render encoder and before presentation.
+    // Metal: a texture-to-buffer blit on the same command buffer, after ending the
+    // render encoder and before presentation.
     auto* command_list = static_cast<plume::MetalCommandList*>(list);
     command_list->checkActiveBlitEncoder();
     auto* blit = command_list->activeBlitEncoder;
     blit->copyFromTexture(attachment.getTexture(), 0, 0, MTL::Origin(0, 0, 0), MTL::Size(width, height, 1),
                          static_cast<plume::MetalBuffer*>(buffer.get())->mtl, 0, row_pixels * 4, (uint64_t)row_pixels * 4 * height);
     command_list->endActiveBlitEncoder();
+    } else
+#endif
+    {
+        // Vulkan and D3D12: copy RT64's swapchain image (B8G8R8A8, rt64_application.cpp)
+        // into the buffer (prepare_rt64.py), then return it to COLOR_WRITE for RT64's
+        // present barrier.
+        auto* texture = RT64::GetRenderHookSwapChainTexture();
+        if (!texture) {
+            if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "no swapchain texture to read back"}});
+            return;
+        }
+        list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(texture, RenderTextureLayout::COPY_SOURCE));
+        list->copyTextureRegion(RenderTextureCopyLocation::PlacedFootprint(buffer.get(), RenderFormat::B8G8R8A8_UNORM, width, height, 1, row_pixels),
+                                RenderTextureCopyLocation::Subresource(texture));
+        list->barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(texture, RenderTextureLayout::COLOR_WRITE));
+    }
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, screenshot, dialogue_trace, debug_shot](MTL::CommandBuffer* command) {
-        if (command->status() != MTL::CommandBufferStatusCompleted) {
+    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, screenshot, dialogue_trace, debug_shot](bool completed) {
+        if (!completed) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
             if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
             return;
@@ -222,9 +239,8 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         metadata << "{\"schema\":\"srw64.native-gpu-frame.v1\",\"present\":" << frame
                  << ",\"" << clock_name << "\":" << vi << ",\"width\":" << width << ",\"height\":" << height
                  << ",\"image_mode\":" << image_mode << ",\"GPU_completion\":\"completed\"}\n";
-        fprintf(stderr, "SRW64_CAPTURE %s vi=%llu %ux%u\n", path.filename().c_str(), (unsigned long long)vi, width, height);
+        fprintf(stderr, "SRW64_CAPTURE %s vi=%llu %ux%u\n", path.filename().string().c_str(), (unsigned long long)vi, width, height);
     });
-#endif
 }
 
 class SRW64Renderer final : public ultramodern::renderer::RendererContext {
@@ -234,21 +250,22 @@ public:
         srw64::hdmap::configure(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
+#ifdef __APPLE__
+            metal_backend = rhi->getCapabilities().shaderFormat == plume::RenderShaderFormat::METAL;
+#endif
             srw64::gpu::init(rhi, device);
-            srw64::marker::metal_init(device);
+            srw64::marker::gpu_init();
             srw64::hdmap::gpu_init();
-            srw64::portraits::metal_init(device);
+            srw64::portraits::gpu_init();
             srw64::backgrounds::gpu_init();
-            srw64::sprites::metal_init(device);
+            srw64::sprites::gpu_init();
 #ifdef SRW64_NATIVE_DIALOGUE
             srw64::dialogue::gpu_init(rhi, device, capture_directory);
             srw64::ui::render_init(rhi,device);
 #endif
         }, capture_frame, [] {
-#ifndef __APPLE__
             // Nothing is in flight after RT64's last present wait; settle the UI anyway.
             run_after_present(false);
-#endif
             srw64::marker::shutdown();
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
@@ -260,9 +277,7 @@ public:
 #endif
             srw64::gpu::shutdown();
         });
-#ifndef __APPLE__
         RT64::SetRenderHookPresented([](unsigned long long) { run_after_present(true); });
-#endif
         RT64::Application::Core core{};
 #if defined(__APPLE__)
         core.window.window = handle.window;
@@ -297,12 +312,20 @@ public:
         RT64::ApplicationConfiguration configuration;
         configuration.useConfigurationFile = false;
         app = std::make_unique<RT64::Application>(core, configuration);
+        using GraphicsAPI = RT64::UserConfiguration::GraphicsAPI;
 #ifdef __APPLE__
-        app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Metal;
+        app->userConfig.graphicsAPI = GraphicsAPI::Metal;
 #else
         // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
-        app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Automatic;
+        app->userConfig.graphicsAPI = GraphicsAPI::Automatic;
 #endif
+        // For tests only: SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal.
+        if (const char* api = std::getenv("SRW64_GRAPHICS_API")) {
+            const std::string name = api;
+            if (name == "vulkan") app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
+            else if (name == "d3d12") app->userConfig.graphicsAPI = GraphicsAPI::D3D12;
+            else if (name == "metal") app->userConfig.graphicsAPI = GraphicsAPI::Metal;
+        }
         app->userConfig.resolution = std::getenv("SRW64_NATIVE_RESOLUTION") && std::string(std::getenv("SRW64_NATIVE_RESOLUTION")) == "1"
             ? RT64::UserConfiguration::Resolution::WindowIntegerScale : RT64::UserConfiguration::Resolution::Original;
         if (const char* scale = std::getenv("SRW64_RESOLUTION_SCALE")) {
@@ -547,13 +570,15 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 
 void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback) {
 #ifdef __APPLE__
-    static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([callback = std::move(callback)](MTL::CommandBuffer* command) {
-        callback(command->status() == MTL::CommandBufferStatusCompleted);
-    });
-#else
+    if (metal_backend) {
+        static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([callback = std::move(callback)](MTL::CommandBuffer* command) {
+            callback(command->status() == MTL::CommandBufferStatusCompleted);
+        });
+        return;
+    }
+#endif
     (void)list;
     after_present.push_back(std::move(callback));
-#endif
 }
 
 void srw64_update_window(void*) {

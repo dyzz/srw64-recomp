@@ -123,16 +123,13 @@ if(SRW64_ENABLE_RT64)
     target_compile_options(srw64-dialogue-test PRIVATE -UNDEBUG)
     foreach(SRW64_HOST_TARGET srw64-gfx-host srw64-frame-host)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
-    # HD layers on Plume (native_gpu.cpp, shaders in src/host/shaders) build everywhere.
-    target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp)
+    # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
+    target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
+        native_sprite.cpp native_portrait.cpp)
     srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
     if(APPLE)
-        target_sources(${SRW64_HOST_TARGET} PRIVATE native_marker.cpp native_portrait.cpp native_sprite.cpp)
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE "-framework Cocoa")
         target_compile_options(${SRW64_HOST_TARGET} PRIVATE -fblocks)
-    else()
-        # The HD layers still draw with raw Metal (docs/design/three-platform-port.md, X1).
-        target_sources(${SRW64_HOST_TARGET} PRIVATE native_layers_stub.cpp)
     endif()
     if(SRW64_HOST_TARGET STREQUAL "srw64-gfx-host")
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)

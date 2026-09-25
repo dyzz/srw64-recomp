@@ -3,7 +3,7 @@
 2026-09-20。实际游戏的正文、人名、分页提示、阅读进度、底栏和回看现在默认使用
 FreeType + HarfBuzz + ICU，像素交给 [Plume 合成器](plume-pixel-compositor.md)。
 对白不再链接 CoreText/CoreGraphics，也没有旧后端切换选项。支持范围为 `zh-Hans`、`ja`、`en`。
-菜单、姓名和设置继续使用 SDL/RmlUi；游戏窗口、截图和 marker 的 Metal 迁移是另一项工作。
+菜单、姓名和设置继续使用 SDL/RmlUi；截图与 HD 图层也已改走 Plume，见[三平台移植](../design/three-platform-port.md)。
 
 ## 实际路径
 

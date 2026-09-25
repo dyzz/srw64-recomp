@@ -29,9 +29,14 @@ SRW64 Recompiled, Steam Deck edition (experimental). English below.
   ~/.local/share/srw64-recomp（sessions/ 里保留每次游玩的存档）。
   从 Steam 菜单选「退出游戏」会正常保存退出。
 
-这一版的限制
-  - 只有原版画面：HD 图层（整张头像、背景、剧情文字图、3D 标记）还在移植。
-  - 同一程序也能在其他 x86-64 Linux 上运行（glibc 2.35 以上，需要 Vulkan 驱动）。
+HD 画面
+  HD 素材包与 macOS 版是同一个下载。把它解压成
+       ~/.local/share/srw64-recomp/hd
+  （里面应当直接有 hd.json 和 art/）。有 HD 包时游戏以 HD 开局，
+  设置窗口（视图键）里可以切回原版。包里自带 hd/ 文件夹的自用版无需下载。
+
+其他
+  同一程序也能在其他 x86-64 Linux 上运行（glibc 2.35 以上，需要 Vulkan 驱动）。
 
 ------------------------------------------------------------------------------
 English
@@ -51,5 +56,7 @@ R1 + Menu skips. Names open the Steam on-screen keyboard. Hints follow the last
 device you used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
-This build shows Original images only; the HD layers are still being ported.
+HD: unpack the HD pack (the same download as for macOS) as
+~/.local/share/srw64-recomp/hd (hd.json and art/ directly inside); the game then
+starts in HD, and the settings window switches back to Original.
 Runs on other x86-64 Linux too (glibc 2.35+, a Vulkan driver).

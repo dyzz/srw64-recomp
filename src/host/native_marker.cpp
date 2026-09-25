@@ -5,7 +5,7 @@
 #include "hle/rt64_rsp.h"
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
-#include "plume_metal.h"
+#include "native_gpu.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include "app/rom_import_codec.hpp"
@@ -33,17 +33,16 @@ namespace {
 using json = nlohmann::json;
 std::vector<uint8_t> reference, vertices, indices;
 std::filesystem::path output;
-MTL::Device *device{};
-MTL::Buffer *vertexBuffer{}, *indexBuffer{};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState *> markerPipelines;
-std::array<MTL::DepthStencilState *, 4> depthStates{};
+// src/host/shaders/Hd{Marker,Ring,Model,Trail,Plate}{VS,PS}.hlsl (NativeMarker.hlsli).
+std::unique_ptr<gpu::Program> markerProgram, ringProgram, modelProgram, trailProgram, plateProgram;
+std::unique_ptr<gpu::Buffer> vertexBuffer, indexBuffer;
+std::unique_ptr<plume::RenderDescriptorSet> markerMesh;
 std::atomic<uint64_t> classified{};
 std::atomic<uint64_t> original_models{};
 uint64_t rendered{}, suppressed{};
 // 5600's dashed ring: a 28 x 28 quad at y = 4 textured with 12 yellow dashes, drawn
 // by four TRI2 commands (both faces). Redrawn as smooth arcs with the same layout.
 constexpr std::array<uint32_t, 4> kRingCommands{0x1a08,0x1a10,0x1a18,0x1a20};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState *> ringPipelines;
 uint64_t ringRendered{}, ringSuppressed{};
 
 // Golden beacon (docs/native/native-ship-model.md): the marker bobs and grows in when it
@@ -76,7 +75,8 @@ struct Model {
     size_t referenceBytes = 0;
     std::vector<uint32_t> commands;  // sorted; the first carries the native draw
     uint32_t draw_command = 0;
-    MTL::Buffer *vertexBuffer{}, *indexBuffer{};
+    std::unique_ptr<gpu::Buffer> vertexBuffer, indexBuffer;
+    std::unique_ptr<plume::RenderDescriptorSet> mesh;
     std::atomic<uint64_t> classified{}, original{};
     uint64_t rendered{}, suppressed{};
     // Name plate (type-5 billboard, 200 x 30 units above the origin), redrawn per locale.
@@ -84,19 +84,17 @@ struct Model {
     uint32_t plateDraw = 0;
     std::array<std::vector<uint8_t>, 3> platePixels;  // RGBA8 per kPlateLocales entry
     int plateWidth = 0, plateHeight = 0;
-    std::array<MTL::Texture *, 3> plateTextures{};
+    std::array<std::unique_ptr<gpu::Texture>, 3> plateTextures;
+    std::array<std::unique_ptr<plume::RenderDescriptorSet>, 3> plateSets;
     std::atomic<uint64_t> plateClassified{};
     uint64_t plateRendered{}, plateSuppressed{};
 };
 std::vector<std::unique_ptr<Model>> models;
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState *> modelPipelines;
 
 // Plates follow the reading language (F7); the locale is fixed per workload when the
 // display list is classified, so both render targets of a frame agree.
 constexpr uint32_t kPlateIdBase = 0x504C0000;  // 'PL'; bits 4+ model, 1-3 locale, 0 suppressed
 constexpr std::array<const char *, 3> kPlateLocales{"ja", "zh-Hans", "en"};
-std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState *> platePipelines;
-MTL::SamplerState *plateSampler{};
 
 uint32_t plate_locale() {
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -114,7 +112,6 @@ uint32_t plate_locale() {
 // the display list is processed; the others are suppressed.
 constexpr uint32_t kTrailIdBase = 0x54520000;  // 'TR'; low bit set = suppressed quad
 constexpr size_t kTrailRing = 64;
-constexpr size_t kTrailBufferBytes = 4 << 20;
 struct TrailPoint { float x, y, z, c; };
 struct TrailDraw { uint32_t serial = 0; float halfWidth = 0; std::vector<TrailPoint> points; };
 struct Trail {
@@ -126,9 +123,6 @@ struct Trail {
     uint32_t serial = 0;
     std::atomic<uint64_t> classified{}, original{}, snapshots{}, points{};
     uint64_t rendered{}, suppressed{}, stale{};
-    MTL::Buffer *buffer{};
-    size_t cursor = 0;
-    std::map<std::tuple<MTL::PixelFormat, MTL::PixelFormat, NS::UInteger>, MTL::RenderPipelineState *> pipelines;
 } trail;
 
 std::vector<uint8_t> read(const std::filesystem::path& path) {
@@ -327,194 +321,6 @@ struct Uniforms {
     float viewportScale[4], viewportTranslate[4], resolution[4], screen[4];
 };
 
-// Shared by both mesh kinds; the vertex layouts differ only after the normal.
-constexpr const char *kVertexTransform = R"(
-        struct Uniforms {
-            float4x4 mvp, normalView;
-            float4 viewportScale, viewportTranslate, resolution, screen;
-        };
-        float4 to_clip(float3 position, constant Uniforms& u) {
-            float4 p = u.mvp * float4(position, 1);
-            float3 screen = p.xyz / float3(p.w, -p.w, p.w) * u.viewportScale.xyz + u.viewportTranslate.xyz;
-            float2 clip = (screen.xy - u.resolution.xy * .5f) / (u.resolution.xy * float2(.5f, -.5f));
-            clip = clip * u.screen.xy + u.screen.zw;
-            return float4(clip * p.w, screen.z * p.w, p.w);
-        }
-)";
-
-MTL::RenderPipelineState *build_pipeline(const std::string& body, MTL::Texture *color, MTL::Texture *depth, const char *what, bool blend = false) {
-    const std::string source = std::string("#include <metal_stdlib>\nusing namespace metal;\n") + kVertexTransform + body;
-    NS::Error *error{};
-    auto *library = device->newLibrary(NS::String::string(source.c_str(), NS::UTF8StringEncoding), nullptr, &error);
-    if (!library) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : std::string(what) + " shader failed");
-    auto *vs = library->newFunction(NS::String::string("vs", NS::UTF8StringEncoding));
-    auto *fs = library->newFunction(NS::String::string("fs", NS::UTF8StringEncoding));
-    auto *desc = MTL::RenderPipelineDescriptor::alloc()->init();
-    desc->setVertexFunction(vs); desc->setFragmentFunction(fs);
-    auto *attachment = desc->colorAttachments()->object(0);
-    attachment->setPixelFormat(color->pixelFormat());
-    if (blend) {
-        attachment->setBlendingEnabled(true);
-        attachment->setSourceRGBBlendFactor(MTL::BlendFactorSourceAlpha);
-        attachment->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-        attachment->setSourceAlphaBlendFactor(MTL::BlendFactorOne);
-        attachment->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
-    }
-    desc->setDepthAttachmentPixelFormat(depth->pixelFormat());
-    desc->setRasterSampleCount(color->sampleCount());
-    auto *next = device->newRenderPipelineState(desc, &error);
-    desc->release(); vs->release(); fs->release(); library->release();
-    if (!next) throw std::runtime_error(error ? error->localizedDescription()->utf8String() : std::string(what) + " pipeline failed");
-    return next;
-}
-
-MTL::RenderPipelineState *marker_pipeline(MTL::Texture *color, MTL::Texture *depth) {
-    // One per target format: with MSAA the native-size and scaled targets can differ.
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = markerPipelines.find(key); found != markerPipelines.end()) return found->second;
-    return markerPipelines[key] = build_pipeline(R"(
-        struct Vertex { packed_float3 position; packed_float3 normal; };
-        struct V { float4 p [[position]]; float3 normal; };
-        vertex V vs(uint i [[vertex_id]], const device Vertex *vertices [[buffer(0)]], constant Uniforms& u [[buffer(1)]]) {
-            return {to_clip(float3(vertices[i].position), u), (u.normalView * float4(float3(vertices[i].normal), 0)).xyz};
-        }
-        fragment float4 fs(V in [[stage_in]]) {
-            // Faceted gold marker (original eight faces with rounded edges): each flat
-            // facet reflects a bright sky or a warm ground by its orientation, and a
-            // horizon band sweeps across facets and edges as the game spins it.
-            float3 n = normalize(in.normal);
-            float3 view = float3(0,0,1);
-            float3 key = normalize(float3(-.55f,.8f,1.0f));
-            float3 fill = normalize(float3(.75f,.1f,.5f));
-            float3 r = reflect(-view, n);
-            float sky = smoothstep(-.35f, .85f, r.y);
-            float3 env = mix(float3(.55f,.38f,.08f), float3(1.0f,.96f,.80f), sky);
-            env += float3(1.0f,.97f,.85f) * .5f * exp(-pow((r.y - .12f) / .07f, 2.0f));
-            float diffuse = max(dot(n,key),0.0f);
-            float broad = pow(max(dot(n,normalize(key+view)),0.0f),16.0f);
-            float sharp = pow(max(dot(n,normalize(float3(-.35f,.65f,1.5f)+view)),0.0f),70.0f);
-            float rim = pow(1.0f-abs(dot(n,view)),3.0f);
-            float3 gold = float3(1.0f,.82f,.16f);
-            float3 c = gold * (.14f + .36f*diffuse + .10f*max(dot(n,fill),0.0f)) + gold * env * .62f;
-            c += float3(1.0f,.92f,.65f)*broad*.32f + float3(1.0f,.98f,.9f)*sharp*.7f;
-            c += float3(.35f,.24f,.06f)*rim;
-            return float4(saturate(c),1);
-        }
-    )", color, depth, "Native marker");
-}
-
-MTL::RenderPipelineState *ring_pipeline(MTL::Texture *color, MTL::Texture *depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = ringPipelines.find(key); found != ringPipelines.end()) return found->second;
-    return ringPipelines[key] = build_pipeline(R"(
-        struct Beacon { float time, age, scale, bob; };
-        struct V { float4 p [[position]]; float2 local; };
-        // The ring's plane (y = 4), a little wider than the original 14 so the ripple can clear
-        // the dashes; every effect stays within the original ring's footprint.
-        vertex V vs(uint vid [[vertex_id]], constant Uniforms& u [[buffer(1)]]) {
-            const float2 xz = float2(vid & 1 ? 17.0f : -17.0f, vid >> 1 ? 17.0f : -17.0f);
-            return {to_clip(float3(xz.x, 4, xz.y), u), xz};
-        }
-        float4 over(float4 dst, float3 rgb, float a) {  // straight-alpha "over"
-            const float out = a + dst.a * (1.0f - a);
-            return out > 0.0f ? float4((rgb * a + dst.rgb * dst.a * (1.0f - a)) / out, out) : float4(0);
-        }
-        float band(float d, float aa) { return 1.0f - smoothstep(-aa, aa, d); }
-        // Dashes keep the original texture's layout: centres at 20.2 + 30k degrees measured as
-        // atan2(-z, x), radius 0.87-0.955 of the half size, about 10.5 degrees long; they turn
-        // slowly. Beneath them a dark backdrop; a ripple leaves the centre every 2.4 s and fades
-        // just past the dashes, and a brighter one marks the arrival.
-        fragment float4 fs(V in [[stage_in]], constant Beacon& k [[buffer(0)]]) {
-            const float2 p = in.local / max(k.scale, .01f);
-            const float r = length(p);
-            const float aa = max(fwidth(r), 1e-3f);
-            float4 c = float4(0);
-            c = over(c, float3(.05f, .04f, 0), .22f * band(r - 8.5f, 2.0f));
-            const float cycle = fract(k.time / 2.4f);
-            c = over(c, float3(1.0f, .9f, .25f), .5f * pow(1.0f - cycle, 1.5f) * band(abs(r - (5.0f + 10.0f * cycle)) - .4f, aa));
-            if (k.age < .8f) {
-                const float burst = k.age / .8f;
-                c = over(c, float3(1.0f, .92f, .35f), .8f * (1.0f - burst) * band(abs(r - (4.0f + 12.0f * burst)) - .6f, aa));
-            }
-            const float period = 2.0f * M_PI_F / 12.0f;
-            float phase = atan2(-p.y, p.x) - (20.2f + 18.0f * k.time) * M_PI_F / 180.0f;
-            phase -= round(phase / period) * period;
-            const float centre = 12.8f, halfWidth = .6f, halfLength = 5.25f * M_PI_F / 180.0f * centre;
-            const float along = max(abs(phase * r) - (halfLength - halfWidth), 0.0f);
-            const float dist = length(float2(along, r - centre)) - halfWidth;  // rounded arc
-            const float daa = max(fwidth(dist), 1e-3f);
-            c = over(c, float3(.28f, .2f, 0), .45f * band(dist - .3f, daa));  // faint dark edge on bright land
-            c = over(c, float3(1.0f, .9f, .12f), band(dist, daa));
-            if (c.a <= 0.0f) discard_fragment();
-            return c;
-        }
-    )", color, depth, "Native ring", true);
-}
-
-MTL::RenderPipelineState *model_pipeline(MTL::Texture *color, MTL::Texture *depth) {
-    // RT64 alternates the native-size and the scaled target; keep one per format.
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = modelPipelines.find(key); found != modelPipelines.end()) return found->second;
-    return modelPipelines[key] = build_pipeline(R"(
-        struct Vertex { packed_float3 position; packed_float3 normal; uchar4 color; };
-        struct V { float4 p [[position]]; float3 normal; float4 color; };
-        vertex V vs(uint i [[vertex_id]], const device Vertex *vertices [[buffer(0)]], constant Uniforms& u [[buffer(1)]]) {
-            return {to_clip(float3(vertices[i].position), u), (u.normalView * float4(float3(vertices[i].normal), 0)).xyz,
-                    float4(vertices[i].color) / 255.0f};
-        }
-        fragment float4 fs(V in [[stage_in]]) {
-            // Colours are authored in display (sRGB) values, like the N64 frame buffer.
-            float3 base = in.color.rgb;
-            if (in.color.a < .5f) return float4(saturate(base * 1.3f + .08f), 1);  // engine glow
-            float3 n = normalize(in.normal);
-            float3 view = float3(0,0,1);
-            float3 key = normalize(float3(-.5f,.8f,.7f));
-            float3 fill = normalize(float3(.7f,-.1f,.5f));
-            float diffuse = max(dot(n,key),0.0f);
-            float spec = pow(max(dot(n,normalize(key+view)),0.0f),36.0f);
-            float rim = pow(1.0f-abs(dot(n,view)),3.0f);
-            float3 c = base * (.36f + .64f*diffuse + .15f*max(dot(n,fill),0.0f)) + spec*.2f + base*rim*.1f;
-            return float4(saturate(c),1);
-        }
-    )", color, depth, "Native model");
-}
-
-MTL::RenderPipelineState *trail_pipeline(MTL::Texture *color, MTL::Texture *depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = trail.pipelines.find(key); found != trail.pipelines.end()) return found->second;
-    return trail.pipelines[key] = build_pipeline(R"(
-        struct Params { float halfWidth, count, halo, depthPull; };
-        struct V { float4 p [[position]]; float across; float c; };
-        // Two vertices per trail step: a strip through the step centres on the map plane,
-        // as wide as the original squares plus a faint halo, extended half a square at both ends.
-        vertex V vs(uint vid [[vertex_id]], const device float4 *points [[buffer(0)]],
-                    constant Uniforms& u [[buffer(1)]], constant Params& k [[buffer(2)]]) {
-            const uint n = uint(k.count);
-            const uint i = min(vid / 2, n - 1);
-            const float side = (vid & 1) ? 1.0f : -1.0f;
-            const float3 c = points[i].xyz;
-            float2 d = points[min(i + 1, n - 1)].xz - points[i > 0 ? i - 1 : 0].xz;
-            d = length(d) > 1e-4f ? normalize(d) : float2(1, 0);
-            const float2 across = float2(-d.y, d.x) * k.halfWidth * k.halo * side;
-            float2 xz = c.xz + across;
-            if (i == 0) xz -= d * k.halfWidth;
-            if (i == n - 1) xz += d * k.halfWidth;
-            float4 p = to_clip(float3(xz.x, c.y, xz.y), u);
-            p.z -= k.depthPull * p.w;  // stay in front of the map plane it lies on
-            return {p, side * k.halo, points[i].w};
-        }
-        fragment float4 fs(V in [[stage_in]], constant Params& k [[buffer(0)]]) {
-            const float a = abs(in.across);  // 0 centre, 1 original edge, k.halo halo edge
-            const float aa = max(fwidth(in.across), 1e-3f);
-            const float core = 1.0f - smoothstep(1.0f - aa, 1.0f + aa, a);
-            const float halo = (1.0f - smoothstep(1.0f, k.halo, a)) * .3f;
-            float3 color = float3(in.c, in.c, 1.0f);  // the original prim colour (c, c, 255)
-            color = mix(color, float3(1), (1.0f - a) * (1.0f - a) * .22f * core);
-            return float4(color, max(core, halo));
-        }
-    )", color, depth, "Native trail", true);
-}
-
 // Transforms come from the immutable workload that carried the marked draw.
 Uniforms uniforms(const RT64::NativeMeshDraw& call, hlslpp::float4x4 *mvpOut = nullptr, uint32_t *worldIndexOut = nullptr,
                   const hlslpp::float4x4 *local = nullptr) {
@@ -539,33 +345,37 @@ Uniforms uniforms(const RT64::NativeMeshDraw& call, hlslpp::float4x4 *mvpOut = n
     return u;
 }
 
-// Draw into the scene's own colour/depth attachments, in the original draw's place.
-template <typename Encode>
-void encode_pass(plume::RenderCommandList *list, plume::RenderFramebuffer *framebuffer, const RT64::NativeMeshDraw& call,
-                 const char *label, MTL::RenderPipelineState *(*select)(MTL::Texture *, MTL::Texture *), Encode encode) {
-    const auto *fb = static_cast<const plume::MetalFramebuffer *>(framebuffer);
-    if (fb->colorAttachments.size() != 1 || !fb->depthAttachment.getTexture())
-        throw std::runtime_error("Native marker requires original scene color and depth attachments");
-    auto *color = fb->colorAttachments[0].getTexture();
-    auto *depth = fb->depthAttachment.getTexture();
-    auto *state = select(color, depth);
-    auto *command = static_cast<plume::MetalCommandList *>(list);
-    command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-    auto *pass = MTL::RenderPassDescriptor::renderPassDescriptor();
-    auto *attachment = pass->colorAttachments()->object(0);
-    attachment->setTexture(color); attachment->setLoadAction(MTL::LoadActionLoad); attachment->setStoreAction(MTL::StoreActionStore);
-    pass->depthAttachment()->setTexture(depth);
-    pass->depthAttachment()->setLoadAction(MTL::LoadActionLoad); pass->depthAttachment()->setStoreAction(MTL::StoreActionStore);
-    auto *encoder = command->mtl->renderCommandEncoder(pass);
-    encoder->setLabel(NS::String::string(label, NS::UTF8StringEncoding));
-    encoder->setRenderPipelineState(state);
-    encoder->setDepthStencilState(depthStates[(call.depthCompare ? 1 : 0) | (call.depthWrite ? 2 : 0)]);
-    encoder->setViewport(MTL::Viewport{call.viewport.x, call.viewport.y, call.viewport.width, call.viewport.height, call.viewport.minDepth, call.viewport.maxDepth});
-    const auto& s = call.scissor;
-    encoder->setScissorRect(MTL::ScissorRect{NS::UInteger(s.left), NS::UInteger(s.top), NS::UInteger(s.right-s.left), NS::UInteger(s.bottom-s.top)});
-    encoder->setFrontFacingWinding(MTL::WindingCounterClockwise); encoder->setCullMode(MTL::CullModeBack);
-    encode(encoder);
-    encoder->endEncoding();
+// Draw into the scene's own colour/depth attachments, in the original draw's place:
+// the transform (NativeMarker.hlsli) then `extra` as this draw's data.
+bool draw(plume::RenderCommandList *list, plume::RenderFramebuffer *framebuffer, const RT64::NativeMeshDraw& call,
+          const gpu::Program& program, const gpu::State& state, plume::RenderDescriptorSet *set, const Uniforms& u,
+          uint32_t vertices, const void *extra = nullptr, size_t extra_bytes = 0) {
+    std::vector<uint8_t> data(sizeof(Uniforms) + extra_bytes);
+    std::memcpy(data.data(), &u, sizeof(Uniforms));
+    if (extra_bytes) std::memcpy(data.data() + sizeof(Uniforms), extra, extra_bytes);
+    if (!program.begin(list, framebuffer, call, state, set, gpu::push_data(data.data(), data.size()))) return false;
+    list->drawInstanced(vertices, 1, 0, 0);
+    return true;
+}
+
+// Meshes as the original encoder had them: the game's depth test and write,
+// counter-clockwise front faces, back faces culled.
+gpu::State mesh_state(const RT64::NativeMeshDraw& call) {
+    gpu::State state;
+    state.depth_test = call.depthCompare;
+    state.depth_write = call.depthWrite;
+    state.cull = plume::RenderCullMode::BACK;
+    state.counter_clockwise = true;
+    state.topology = plume::RenderPrimitiveTopology::TRIANGLE_LIST;
+    return state;
+}
+
+// Blended overlays (ring, trail) test depth like the game but never write it.
+gpu::State overlay_state(const RT64::NativeMeshDraw& call) {
+    gpu::State state;
+    state.blend = gpu::Blend::straight;
+    state.depth_test = call.depthCompare;
+    return state;
 }
 
 void log_draw(const RT64::NativeMeshDraw& call, uint64_t count, uint32_t resource, size_t triangles,
@@ -589,38 +399,18 @@ bool render_model(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
     if (index >= models.size()) return false;
     Model& m = *models[index];
     if (call.id & 1) { ++m.suppressed; return true; }
-    if (!device || !call.workload) throw std::runtime_error("Native model missing immutable draw context");
+    if (!modelProgram || !m.mesh || !call.workload) throw std::runtime_error("Native model missing immutable draw context");
     hlslpp::float4x4 mvp; uint32_t worldIndex{};
     const Uniforms u = uniforms(call, &mvp, &worldIndex);
-    const std::string label = "SRW64 native model " + std::to_string(m.resource);
-    encode_pass(list, framebuffer, call, label.c_str(), model_pipeline, [&](MTL::RenderCommandEncoder *encoder) {
-        encoder->setVertexBuffer(m.vertexBuffer, 0, 0); encoder->setVertexBytes(&u, sizeof(u), 1);
-        encoder->drawIndexedPrimitives(MTL::PrimitiveTypeTriangle, m.indices.size()/4, MTL::IndexTypeUInt32, m.indexBuffer, 0);
-    });
+    if (!draw(list, framebuffer, call, *modelProgram, mesh_state(call), m.mesh.get(), u, uint32_t(m.indices.size() / 4))) return false;
     ++m.rendered;
     if (m.rendered == 1 || m.rendered % 60 == 0) log_draw(call, m.rendered, m.resource, m.indices.size()/12, u, mvp, worldIndex);
     return true;
 }
 
-MTL::RenderPipelineState *plate_pipeline(MTL::Texture *color, MTL::Texture *depth) {
-    const auto key = std::make_tuple(color->pixelFormat(), depth->pixelFormat(), color->sampleCount());
-    if (auto found = platePipelines.find(key); found != platePipelines.end()) return found->second;
-    return platePipelines[key] = build_pipeline(R"(
-        struct V { float4 p [[position]]; float2 uv; };
-        // The board the original plate covers: x -100..100, y 0..30 at z 0.
-        vertex V vs(uint vid [[vertex_id]], constant Uniforms& u [[buffer(1)]]) {
-            const float2 corner = float2(vid & 1, vid >> 1);
-            return {to_clip(float3(mix(-100.0f, 100.0f, corner.x), 30.0f * corner.y, 0), u), float2(corner.x, 1.0f - corner.y)};
-        }
-        fragment float4 fs(V in [[stage_in]], texture2d<float> plate [[texture(0)]], sampler s [[sampler(0)]]) {
-            return float4(plate.sample(s, in.uv).rgb, 1);
-        }
-    )", color, depth, "Native plate");
-}
-
 bool render_trail(plume::RenderCommandList *list, plume::RenderFramebuffer *framebuffer, const RT64::NativeMeshDraw& call) {
     if (call.id & 1) { ++trail.suppressed; return true; }
-    if (!device || !call.workload || !trail.buffer) throw std::runtime_error("Native trail missing draw context");
+    if (!trailProgram || !call.workload) throw std::runtime_error("Native trail missing draw context");
     const uint32_t serial = (call.id & 0xFFFF) >> 1;
     TrailDraw draw;
     {
@@ -630,24 +420,15 @@ bool render_trail(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
         draw = slot;
     }
     if (draw.points.empty()) return true;
-    const size_t limit = kTrailBufferBytes / 16 / sizeof(TrailPoint);
+    // One draw's data holds the transform, the parameters and the points (HdTrailVS).
+    const size_t limit = gpu::kMaxDrawData - sizeof(Uniforms) / 16 - 1;
     if (draw.points.size() > limit) draw.points.erase(draw.points.begin(), draw.points.end() - limit);  // keep the newest
-    const size_t bytes = draw.points.size() * sizeof(TrailPoint);
-    if (trail.cursor + bytes > kTrailBufferBytes) trail.cursor = 0;
-    const size_t offset = trail.cursor;
-    std::memcpy(static_cast<uint8_t *>(trail.buffer->contents()) + offset, draw.points.data(), bytes);
-    trail.cursor += (bytes + 255) & ~size_t(255);
     const Uniforms u = uniforms(call);
-    const struct { float halfWidth, count, halo, depthPull; } params{draw.halfWidth, float(draw.points.size()), 1.45f, 2e-4f};
-    encode_pass(list, framebuffer, call, "SRW64 native world-map trail", trail_pipeline, [&](MTL::RenderCommandEncoder *encoder) {
-        encoder->setCullMode(MTL::CullModeNone);
-        encoder->setDepthStencilState(depthStates[call.depthCompare ? 1 : 0]);  // blended: never write depth
-        encoder->setVertexBuffer(trail.buffer, offset, 0);
-        encoder->setVertexBytes(&u, sizeof(u), 1);
-        encoder->setVertexBytes(&params, sizeof(params), 2);
-        encoder->setFragmentBytes(&params, sizeof(params), 0);
-        encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(draw.points.size() * 2));
-    });
+    std::vector<float> extra(4 + draw.points.size() * 4);
+    extra[0] = draw.halfWidth; extra[1] = float(draw.points.size()); extra[2] = 1.45f; extra[3] = 2e-4f;  // halo, depth pull
+    std::memcpy(&extra[4], draw.points.data(), draw.points.size() * sizeof(TrailPoint));
+    if (!::srw64::marker::draw(list, framebuffer, call, *trailProgram, overlay_state(call), nullptr, u,
+                               uint32_t(draw.points.size() * 2), extra.data(), extra.size() * sizeof(float))) return false;
     ++trail.rendered;
     if (trail.rendered == 1 || trail.rendered % 60 == 0) {
         const auto& s = call.scissor;
@@ -665,17 +446,19 @@ bool render_plate(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
     if (index >= models.size()) return false;
     Model& m = *models[index];
     if (call.id & 1) { ++m.plateSuppressed; return true; }
-    if (!device || !call.workload) throw std::runtime_error("Native plate missing immutable draw context");
-    auto *texture = m.plateTextures[std::min<size_t>((call.id >> 1) & 7, kPlateLocales.size() - 1)];
+    if (!plateProgram || !call.workload) throw std::runtime_error("Native plate missing immutable draw context");
+    const size_t locale = std::min<size_t>((call.id >> 1) & 7, kPlateLocales.size() - 1);
+    auto& texture = m.plateTextures[locale];
     if (!texture) return false;
+    if (!m.plateSets[locale]) {
+        if (!texture->upload(list)) return false;
+        m.plateSets[locale] = plateProgram->bind({texture.get()});
+    }
     const Uniforms u = uniforms(call);
-    encode_pass(list, framebuffer, call, "SRW64 native name plate", plate_pipeline, [&](MTL::RenderCommandEncoder *encoder) {
-        encoder->setCullMode(MTL::CullModeNone);
-        encoder->setVertexBytes(&u, sizeof(u), 1);
-        encoder->setFragmentTexture(texture, 0);
-        encoder->setFragmentSamplerState(plateSampler, 0);
-        encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
-    });
+    gpu::State state;  // opaque board, the game's depth test and write
+    state.depth_test = call.depthCompare;
+    state.depth_write = call.depthWrite;
+    if (!draw(list, framebuffer, call, *plateProgram, state, m.plateSets[locale].get(), u, 4)) return false;
     ++m.plateRendered;
     return true;
 }
@@ -687,30 +470,21 @@ bool render(plume::RenderCommandList *list, plume::RenderFramebuffer *framebuffe
     if (call.id == 5601) { ++suppressed; return true; }
     if (call.id == 5603) { ++ringSuppressed; return true; }
     if (call.id == 5602) {
-        if (!device || !call.workload) throw std::runtime_error("Native ring missing immutable draw context");
+        if (!ringProgram || !call.workload) throw std::runtime_error("Native ring missing immutable draw context");
         const Uniforms u = uniforms(call);
         const BeaconState beacon = beacon_state();
-        encode_pass(list, framebuffer, call, "SRW64 native 5600 ring", ring_pipeline, [&](MTL::RenderCommandEncoder *encoder) {
-            encoder->setCullMode(MTL::CullModeNone);
-            encoder->setDepthStencilState(depthStates[call.depthCompare ? 1 : 0]);  // blended: never write depth
-            encoder->setVertexBytes(&u, sizeof(u), 1);
-            encoder->setFragmentBytes(&beacon, sizeof(beacon), 0);
-            encoder->drawPrimitives(MTL::PrimitiveTypeTriangleStrip, NS::UInteger(0), NS::UInteger(4));
-        });
+        if (!draw(list, framebuffer, call, *ringProgram, overlay_state(call), nullptr, u, 4, &beacon, sizeof(beacon))) return false;
         ++ringRendered;
         return true;
     }
     if (call.id != 5600) return false;
-    if (!device || !call.workload) throw std::runtime_error("Native marker missing immutable draw context");
+    if (!markerProgram || !markerMesh || !call.workload) throw std::runtime_error("Native marker missing immutable draw context");
     hlslpp::float4x4 mvp; uint32_t worldIndex{};
     const BeaconState beacon = beacon_state();
     const float g = beacon.scale;  // grow in, then float gently above the ring
     const hlslpp::float4x4 local(g, 0, 0, 0,  0, g, 0, 0,  0, 0, g, 0,  0, beacon.bob, 0, 1);
     const Uniforms u = uniforms(call, &mvp, &worldIndex, &local);
-    encode_pass(list, framebuffer, call, "SRW64 native 5600 marker", marker_pipeline, [&](MTL::RenderCommandEncoder *encoder) {
-        encoder->setVertexBuffer(vertexBuffer, 0, 0); encoder->setVertexBytes(&u, sizeof(u), 1);
-        encoder->drawIndexedPrimitives(MTL::PrimitiveTypeTriangle, indices.size()/4, MTL::IndexTypeUInt32, indexBuffer, 0);
-    });
+    if (!draw(list, framebuffer, call, *markerProgram, mesh_state(call), markerMesh.get(), u, uint32_t(indices.size() / 4))) return false;
     ++rendered;
     if (rendered == 1 || rendered % 60 == 0) log_draw(call, rendered, 5600, indices.size()/12, u, mvp, worldIndex);
     return true;
@@ -824,52 +598,34 @@ void configure(const std::filesystem::path& directory) {
     RT64::SetNativeMeshHooks(classify, render);
 }
 
-void metal_init(plume::RenderDevice *value) {
+void gpu_init() {
     if (!markerPack && models.empty() && !trail.enabled) return;
-    device = static_cast<plume::MetalDevice *>(value)->mtl;
     if (markerPack) {
-        vertexBuffer = device->newBuffer(vertices.data(),vertices.size(),MTL::ResourceStorageModeShared);
-        indexBuffer = device->newBuffer(indices.data(),indices.size(),MTL::ResourceStorageModeShared);
-        if (!vertexBuffer || !indexBuffer) throw std::runtime_error("Native marker GPU allocation failed");
+        markerProgram = std::make_unique<gpu::Program>("HdMarker", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer}});
+        ringProgram = std::make_unique<gpu::Program>("HdRing", std::vector<gpu::Slot>{});
+        vertexBuffer = std::make_unique<gpu::Buffer>(vertices);
+        indexBuffer = std::make_unique<gpu::Buffer>(indices);
+        markerMesh = markerProgram->bind({vertexBuffer.get(), indexBuffer.get()});
     }
     for (auto& m : models) {
         if (m->vertices.empty()) continue;  // plate-only entry
-        m->vertexBuffer = device->newBuffer(m->vertices.data(), m->vertices.size(), MTL::ResourceStorageModeShared);
-        m->indexBuffer = device->newBuffer(m->indices.data(), m->indices.size(), MTL::ResourceStorageModeShared);
-        if (!m->vertexBuffer || !m->indexBuffer) throw std::runtime_error("Native model GPU allocation failed");
+        if (!modelProgram)
+            modelProgram = std::make_unique<gpu::Program>("HdModel", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer}});
+        m->vertexBuffer = std::make_unique<gpu::Buffer>(m->vertices);
+        m->indexBuffer = std::make_unique<gpu::Buffer>(m->indices);
+        m->mesh = modelProgram->bind({m->vertexBuffer.get(), m->indexBuffer.get()});
     }
-    if (trail.enabled && !(trail.buffer = device->newBuffer(kTrailBufferBytes, MTL::ResourceStorageModeShared)))
-        throw std::runtime_error("Native trail GPU allocation failed");
+    if (trail.enabled) trailProgram = std::make_unique<gpu::Program>("HdTrail", std::vector<gpu::Slot>{});
     // Plate textures with mipmaps: the board shrinks to a few hundred pixels on screen.
-    MTL::CommandQueue *queue = nullptr;
-    MTL::CommandBuffer *uploads = nullptr;
-    MTL::BlitCommandEncoder *blit = nullptr;
+    // They upload on first draw, on RT64's workload command list.
     for (auto& m : models) {
         if (m->plateCommands.empty()) continue;
-        if (!queue) { queue = device->newCommandQueue(); uploads = queue->commandBuffer(); blit = uploads->blitCommandEncoder(); }
-        for (size_t l = 0; l < kPlateLocales.size(); ++l) {
-            auto *desc = MTL::TextureDescriptor::texture2DDescriptor(MTL::PixelFormatRGBA8Unorm, m->plateWidth, m->plateHeight, true);
-            desc->setUsage(MTL::TextureUsageShaderRead);
-            auto *texture = device->newTexture(desc);
-            if (!texture) throw std::runtime_error("Native plate GPU allocation failed");
-            texture->replaceRegion(MTL::Region(0, 0, m->plateWidth, m->plateHeight), 0, m->platePixels[l].data(), m->plateWidth * 4);
-            blit->generateMipmaps(texture);
-            m->plateTextures[l] = texture;
-        }
-    }
-    if (queue) {
-        blit->endEncoding(); uploads->commit(); uploads->waitUntilCompleted(); queue->release();
-        auto *sampler = MTL::SamplerDescriptor::alloc()->init();
-        sampler->setMinFilter(MTL::SamplerMinMagFilterLinear); sampler->setMagFilter(MTL::SamplerMinMagFilterLinear);
-        sampler->setMipFilter(MTL::SamplerMipFilterLinear);
-        sampler->setSAddressMode(MTL::SamplerAddressModeClampToEdge); sampler->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
-        plateSampler = device->newSamplerState(sampler); sampler->release();
-    }
-    for (size_t i=0;i<depthStates.size();++i) {
-        auto *desc = MTL::DepthStencilDescriptor::alloc()->init();
-        desc->setDepthCompareFunction((i&1) ? MTL::CompareFunctionLessEqual : MTL::CompareFunctionAlways);
-        desc->setDepthWriteEnabled(i&2);
-        depthStates[i] = device->newDepthStencilState(desc); desc->release();
+        if (!plateProgram)
+            plateProgram = std::make_unique<gpu::Program>("HdPlate", std::vector<gpu::Slot>{{gpu::Slot::texture},
+                {gpu::Slot::sampler, {.linear = true, .mipmaps = true}}});
+        for (size_t l = 0; l < kPlateLocales.size(); ++l)
+            m->plateTextures[l] = std::make_unique<gpu::Texture>(m->plateWidth, m->plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
+                gpu::rgba_mips(m->platePixels[l], m->plateWidth, m->plateHeight));
     }
 }
 
@@ -896,27 +652,12 @@ void shutdown() {
         std::ofstream(output / "native-models-summary.json") << summary.dump(2) << '\n';
     }
     draws.close();
-    for (auto& [key, state] : markerPipelines) state->release();
-    markerPipelines.clear();
-    for (auto& [key, state] : ringPipelines) state->release();
-    ringPipelines.clear();
-    for (auto& [key, state] : modelPipelines) state->release();
-    modelPipelines.clear();
-    for (auto& [key, state] : trail.pipelines) state->release();
-    trail.pipelines.clear();
-    for (auto& [key, state] : platePipelines) state->release();
-    platePipelines.clear();
-    if (plateSampler) plateSampler->release(); plateSampler=nullptr;
-    for (auto& m : models)
-        for (auto*& texture : m->plateTextures) { if (texture) texture->release(); texture=nullptr; }
-    if (trail.buffer) trail.buffer->release(); trail.buffer=nullptr;
-    if (vertexBuffer) vertexBuffer->release(); vertexBuffer=nullptr;
-    if (indexBuffer) indexBuffer->release(); indexBuffer=nullptr;
     for (auto& m : models) {
-        if (m->vertexBuffer) m->vertexBuffer->release(); m->vertexBuffer=nullptr;
-        if (m->indexBuffer) m->indexBuffer->release(); m->indexBuffer=nullptr;
+        for (auto& set : m->plateSets) set.reset();
+        for (auto& texture : m->plateTextures) texture.reset();
+        m->mesh.reset(); m->vertexBuffer.reset(); m->indexBuffer.reset();
     }
-    for(auto*& state:depthStates) { if(state)state->release();state=nullptr; }
-    device=nullptr;
+    markerMesh.reset(); vertexBuffer.reset(); indexBuffer.reset();
+    markerProgram.reset(); ringProgram.reset(); modelProgram.reset(); trailProgram.reset(); plateProgram.reset();
 }
 }

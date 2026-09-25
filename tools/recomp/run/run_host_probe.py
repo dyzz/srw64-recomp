@@ -195,9 +195,10 @@ def main() -> int:
     for item in generated["generated_files"]:
         if digest(generation.parent / item["path"]) != item["sha256"]:
             raise RuntimeError(f"generated source changed: {item['path']}")
-    if args.graphics and not args.reuse_build_from:
+    # A prebuilt --binary needs no prepared graphics sources (and may come from another OS).
+    if args.graphics and not args.reuse_build_from and not args.binary:
         subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_rt64.py")], check=True, stdout=subprocess.DEVNULL)
-    if args.graphics and not args.reuse_build_from:
+    if args.graphics and not args.reuse_build_from and not args.binary:
         subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_frontend.py"), "--fetch"], check=True, stdout=subprocess.DEVNULL)
     build = ROOT / ("build/recomp/gfx-build" if args.graphics else "build/recomp/host-build")
     target = "srw64-gfx-host" if args.graphics else "srw64-host"

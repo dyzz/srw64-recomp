@@ -145,7 +145,7 @@ def glibc_versions(path: Path) -> set[tuple[int, ...]]:
     return {tuple(map(int, v.split('.'))) for v in re.findall(r'GLIBC_(\d+(?:\.\d+)+)', output(['objdump', '-T', path]))}
 
 
-def package(binary: Path, prefix: Path) -> Path:
+def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     git = ['git', '-c', 'safe.directory=*', '-C', ROOT]
     revision = output([*git, 'rev-parse', '--short', 'HEAD']).strip()
     # Uncommitted program sources make the commit name misleading.
@@ -199,6 +199,13 @@ def package(binary: Path, prefix: Path) -> Path:
         target = stage / 'dialogue' / path.relative_to(source_text)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
+    if hd is not None:
+        # A prepared HD folder (tools/release/prepare_hd_bundle.py): the launcher starts in
+        # HD when it finds hd/ beside the program. For the builder's own use.
+        if not (hd / 'hd.json').is_file() or not (hd / 'art/rt64.json').is_file():
+            raise SystemExit(f'Not a prepared HD folder: {hd}')
+        shutil.copytree(hd, stage / 'hd', symlinks=False)
+        name += '-hd'
     licenses = stage / 'licenses'
     licenses.mkdir()
     for name_, pattern in (('sdl3', 'LICENSE.txt'), ('sdl2-compat', 'LICENSE.txt'), ('freetype', 'LICENSE.TXT'),
@@ -226,6 +233,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--jobs', type=int, default=os.cpu_count() or 4)
     parser.add_argument('--no-package', action='store_true', help='stop after building the program')
+    parser.add_argument('--hd', type=Path, help='bundle a prepared HD folder as hd/ (personal builds)')
     args = parser.parse_args()
     if sys.platform != 'linux' or platform.machine() != 'x86_64':
         parser.error('This recipe builds on x86-64 Linux (see tools/release/linux/build.sh)')
@@ -233,7 +241,7 @@ def main() -> None:
     prefix = build_dependencies(args.jobs)
     binary = build_host(prefix, args.jobs)
     if not args.no_package:
-        print(f'Package: {package(binary, prefix)}')
+        print(f'Package: {package(binary, prefix, args.hd.resolve() if args.hd else None)}')
 
 
 if __name__ == '__main__':
