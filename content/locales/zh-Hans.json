@@ -227,7 +227,7 @@
     "battle_first_player": "我方先手",
     "battle_first_enemy": "敌方先手",
     "battle_barrier": "护罩",
-    "battle_spirit_hint": "按各驾驶员实际消耗扣除 SP · 已生效的精神不可取消",
+    "battle_spirit_hint": "按各机师实际消耗扣除 SP · 已生效的精神不可取消",
     "intermission_episode": "第{n}话",
     "title_press_start": "请按 START 键",
     "title_start": "开始",
@@ -2378,7 +2378,7 @@
     {
       "key": "base:t00_00460",
       "source_sha256": "a3db4214e400476da8809beed0e4ddd7e7aef8f6f44c7151892bbb9007099b67",
-      "target": "没有可以联动的驾驶员<END>",
+      "target": "没有可以联动的机师<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5584,7 +5584,7 @@
     {
       "key": "base:t00_00923",
       "source_sha256": "d506568dff3c2b4496bec9d0aefc72277e1028f79a6221b49aa122e18e191676",
-      "target": "A：副驾驶员<END>",
+      "target": "A：副机师<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5801,7 +5801,7 @@
     {
       "key": "base:t00_00954",
       "source_sha256": "3473b72433cdb31734cae5287948acac2b4cf96ace2035bebf897b9c91085558",
-      "target": "显示驾驶员<END>",
+      "target": "显示机师<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26003,7 +26003,7 @@
     {
       "key": "base:t00_04076",
       "source_sha256": "8c468917b784a69eadda23d2ad7e25d169156057ffe6197a9628e910735e1575",
-      "target": "驾驶员<END>",
+      "target": "机师<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26171,7 +26171,7 @@
     {
       "key": "base:t00_04104",
       "source_sha256": "d0f6baad122864a4bc57dab67520b5973e00255928254753e79db80be5ed663c",
-      "target": "LRZ：下一位驾驶员<END>",
+      "target": "LRZ：下一位机师<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26353,7 +26353,7 @@
     {
       "key": "base:t00_04140",
       "source_sha256": "5d3ede6f1e7d27ea1950923c1b0c573942fd5582e1ed03df09fc8fb1036466fb",
-      "target": "要联动所有驾驶员吗？<END>",
+      "target": "要联动所有机师吗？<END>",
       "review_status": "draft",
       "origin": "terms"
     },
