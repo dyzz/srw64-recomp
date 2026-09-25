@@ -159,7 +159,8 @@ def build(output: Path) -> dict:
                 'palette': palette}
         (folder / 'meta.json').write_text(json.dumps(meta) + '\n')
         rows.append({'scene': scene, 'atlas': atlas_id, 'palette': palette, 'origin': [x0, y0], 'size': [x1 - x0, y1 - y0],
-                     'index_sha256': hashlib.sha256((folder / 'index.png').read_bytes()).hexdigest()})
+                     'sha256': {name: hashlib.sha256((folder / name).read_bytes()).hexdigest()
+                                for name in ('meta.json', 'index.png', 'base.png')}})
     record = {'schema': 'srw64.hd-frames.v1', 'atlases': [ATLAS, ARROWS], 'scale': SCALE, 'method': 'Scale2x twice on palette indices',
               'scenes': rows}
     (output / 'frames.json').write_text(json.dumps(record, indent=1) + '\n')
