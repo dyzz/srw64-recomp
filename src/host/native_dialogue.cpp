@@ -5,6 +5,7 @@
 #include "presentation_settings.hpp"
 #include "notices.hpp"
 #include "upgrade_refund.hpp"
+#include "input_mode.hpp"
 #include "game_adapter/dialogue_source.hpp"
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
@@ -497,6 +498,7 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     frame->reading_event=reader.event;frame->advance=reader.advance_progress();
     frame->speed=reader.speed;frame->auto_read=reader.auto_read;frame->fast=reader.fast;
     frame->history_open=reader.history_open;frame->skipping=reader.skipping;frame->display_only=display_only;
+    frame->pad_hints=input::pad_hints.load();
     frame->history=reader.history;frame->history_offset=reader.history_offset;
     drawings.publish(begin,end,frame);
 }

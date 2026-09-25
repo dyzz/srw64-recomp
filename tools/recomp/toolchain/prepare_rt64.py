@@ -23,14 +23,18 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
     original = subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout).decode()
     if old is not None and original.count(old) != 1:
         raise RuntimeError(f"patch context differs in {relative}")
-    expected = original.replace(old, new) if old is not None else original
-    previous = expected
-    for before, after in [*NATIVE_MODEL_PATCHES.get(relative, []), *additional]:
+    steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional]
+    expected = original
+    # A checkout patched by an earlier revision of these lists holds some of the
+    # patches, in order: accept any such subset, nothing else.
+    states = {original}
+    for before, after in steps:
         if expected.count(before) != 1:
             raise RuntimeError(f'additional graphics patch context differs in {relative}')
         expected = expected.replace(before, after)
+        states |= {state.replace(before, after) for state in states if state.count(before) == 1}
     path = checkout / relative
-    if path.read_text() not in (original, previous, expected):
+    if path.read_text() not in states:
         raise RuntimeError(f"unexpected local changes in {path}")
     if path.read_text() != expected:
         path.write_text(expected)
@@ -138,21 +142,41 @@ def main() -> int:
                patch(plume, "plume_metal.cpp", old_library, new_library, [(old_resize, new_resize)])]
     # Match a native text snapshot to the workload actually being presented.
     # The draw callback must never read live guest RDRAM or the latest CPU frame.
+    # After the present queue's own fence wait, report that the command list the
+    # draw hook recorded has finished on the GPU. Metal hosts use completion
+    # handlers instead; Vulkan and D3D12 have no per-list callback in Plume.
+    presented_declaration = ("    void SetRenderHooks(RenderHookInit *init, RenderHookDraw *draw, RenderHookDeinit *deinit);",
+                             "    void SetRenderHooks(RenderHookInit *init, RenderHookDraw *draw, RenderHookDeinit *deinit);\n"
+                             "    using RenderHookPresented = void(unsigned long long workloadId);\n"
+                             "    void SetRenderHookPresented(RenderHookPresented *presented);\n"
+                             "    RenderHookPresented *GetRenderHookPresented();")
+    presented_definition = ("    static RenderHookDeinit *deinit = nullptr;",
+                            "    static RenderHookDeinit *deinit = nullptr;\n"
+                            "    static RenderHookPresented *presentedHook = nullptr;\n"
+                            "    void SetRenderHookPresented(RenderHookPresented *presented) { presentedHook = presented; }\n"
+                            "    RenderHookPresented *GetRenderHookPresented() { return presentedHook; }")
+    presented_call = ("                    ext.presentGraphicsWorker->commandQueue->executeCommandLists(&commandList, 1, &waitSemaphore, 1, &signalSemaphore, 1, ext.presentGraphicsWorker->commandFence.get());\n"
+                      "                    ext.presentGraphicsWorker->wait();\n",
+                      "                    ext.presentGraphicsWorker->commandQueue->executeCommandLists(&commandList, 1, &waitSemaphore, 1, &signalSemaphore, 1, ext.presentGraphicsWorker->commandFence.get());\n"
+                      "                    ext.presentGraphicsWorker->wait();\n"
+                      "                    if (RenderHookPresented *presentedHook = GetRenderHookPresented()) {\n"
+                      "                        presentedHook(present.workloadId);\n"
+                      "                    }\n")
     records += [patch(checkout, "src/rhi/rt64_render_hooks.h",
                       "    RenderHookInit *GetRenderHookInit();",
                       "    void SetRenderHookWorkloadId(unsigned long long id);\n"
                       "    unsigned long long GetRenderHookWorkloadId();\n"
-                      "    RenderHookInit *GetRenderHookInit();"),
+                      "    RenderHookInit *GetRenderHookInit();", [presented_declaration]),
                 patch(checkout, "src/rhi/rt64_render_hooks.cpp",
                       "    static RenderHookInit *init = nullptr;",
                       "    static thread_local unsigned long long hookWorkloadId = 0;\n"
                       "    void SetRenderHookWorkloadId(unsigned long long id) { hookWorkloadId = id; }\n"
                       "    unsigned long long GetRenderHookWorkloadId() { return hookWorkloadId; }\n"
-                      "    static RenderHookInit *init = nullptr;"),
+                      "    static RenderHookInit *init = nullptr;", [presented_definition]),
                 patch(checkout, "src/hle/rt64_present_queue.cpp",
                       "                    drawHook(commandList, swapChainFramebuffer);",
                       "                    SetRenderHookWorkloadId(present.workloadId);\n"
-                      "                    drawHook(commandList, swapChainFramebuffer);")]
+                      "                    drawHook(commandList, swapChainFramebuffer);", [presented_call])]
     recorded = {r['path'] for r in records}
     for relative in NATIVE_MODEL_PATCHES:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:

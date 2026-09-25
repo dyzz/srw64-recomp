@@ -25,10 +25,11 @@ sRGB 转换。颜色混合使用 ONE / ONE_MINUS_SRC_ALPHA，不能再次乘源 
 
 ## 游戏接线
 
-`src/host/macos/dialogue_plume.cpp` 是当前 Metal 宿主的薄适配层：查找匹配 workload 的
-不可变对白帧、使用已有 CPU raster、管理缓存，并把资源引用挂到 command buffer 的
-completion handler。纹理上传和绘制本身不再使用 Metal 专属 pipeline。
-目标 attachment 查询和 completion 仍有 Metal 类型，属于后续窗口／呈现后端迁移。
+`src/host/dialogue_plume.cpp` 是宿主的薄适配层，Metal 与 Vulkan 共用：查找匹配 workload 的
+不可变对白帧、使用已有 CPU raster、管理缓存，并经 `srw64_after_gpu` 保留资源引用到 GPU 完成
+（Metal 用 command buffer 的 completion handler，其他后端用 RT64 呈现队列 fence 等待之后的
+`RenderHookPresented`）。着色器格式取自 `RenderInterface` 的能力。只有 Metal 上仍查询目标
+attachment 的格式；Vulkan 上目标固定是 RT64 的 B8G8R8A8 交换链（2026-09-25，[Linux 构建](../guide/linux-build.md)）。
 
 游戏直接编译 Plume 对白适配器；旧对白 Metal 合成器和后端选择开关已移除。
 CPU 场景使用 FreeType/HarfBuzz/ICU，保留原阅读器、分页、回看与语言快照。

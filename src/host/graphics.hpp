@@ -2,6 +2,9 @@
 #include "ultramodern/renderer_context.hpp"
 #include "json/json.hpp"
 #include <filesystem>
+#include <functional>
+
+namespace plume { struct RenderCommandList; }
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle);
@@ -15,6 +18,10 @@ void srw64_destroy_window();
 void srw64_set_capture_directory(const std::filesystem::path& path);
 void srw64_set_capture_clock(const char* name);
 uint64_t srw64_current_vi();
+// Present thread: run the callback once the GPU has finished the command list the
+// draw hook is recording. Metal uses the command buffer's completion handler;
+// other backends run it after RT64's fence wait on that submission.
+void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback);
 // Window thread: focus, size and title, for the debug interface's status.
 nlohmann::json srw64_window_status();
 // Window thread: resize ({width, height}), raise ({front: true}) and/or press the

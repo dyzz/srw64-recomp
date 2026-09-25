@@ -22,7 +22,7 @@ class DialogueBackendBoundaryTests(unittest.TestCase):
         self.assertIn("localization::Scope locale(frame.catalog)", source)
 
     def test_compositor_does_not_typeset(self):
-        source = (ROOT / "src/host/macos/dialogue_plume.cpp").read_text(encoding="utf-8")
+        source = (ROOT / "src/host/dialogue_plume.cpp").read_text(encoding="utf-8")
         for name in ("CoreText/", "CoreGraphics/", "CTTypesetter", "CGContext", "CFString"):
             self.assertNotIn(name, source)
         self.assertIn("rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight())", source)

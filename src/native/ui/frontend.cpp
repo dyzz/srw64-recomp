@@ -25,8 +25,10 @@
 #include "debug_protocol.hpp"
 #include "modal_input.hpp"
 #include "presentation/image_mode.hpp"
+#include "input_mode.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
+#include <array>
 #include <condition_variable>
 #include <deque>
 #include <fstream>
@@ -50,6 +52,8 @@ std::unique_ptr<NamePage> name_page;
 std::vector<Rml::byte> font, chinese_font, english_font, symbol_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
+// The last input was a controller: hints use the "_pad" labels (Steam Deck).
+bool pad_mode{};
 ModalInputRelease settings_release;
 link_page::Request link_request;
 std::array<bool,3> ticked{};
@@ -71,6 +75,11 @@ Rml::ElementDocument* intermission_doc{};
 std::string intermission_stamp;
 Rml::ElementDocument* mini_doc{};
 std::string mini_stamp;
+// Every page's rebuild stamp, cleared when the hints change device.
+std::array<std::string*,13> all_stamps() {
+    return {&settings_stamp,&link_stamp,&notice_stamp,&battle_stamp,&original_stamp,&title_stamp,&upgrade_stamp,
+            &parts_stamp,&ability_stamp,&swap_stamp,&save_stamp,&intermission_stamp,&mini_stamp};
+}
 std::string preedit;
 std::mutex notice_mutex;
 std::deque<json> notices_pending, notices_kept;
@@ -83,7 +92,11 @@ std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
-std::string label(const std::string& key){return escape(localization::catalog().ui(key));}
+std::string label(const std::string& key){
+    const auto& catalog=localization::catalog();
+    if(pad_mode){const auto pad=key+"_pad";if(auto text=catalog.ui(pad);text!=pad)return escape(text);}
+    return escape(catalog.ui(key));
+}
 // The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
 // added; empty when the rule is off or the machine's own cap already is the cap.
 std::string cap_legend(unsigned original,unsigned cap) {
@@ -102,6 +115,7 @@ p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;} p.credit
 .page {width: 88%; max-width: 1080dp; margin: 24dp auto; height: 90%; overflow-y: auto;}
 button {display: inline-block; background-color: #152436; color: #d6e2ef; border: 1dp #304859; border-radius: 6dp; padding: 10dp 14dp; margin: 4dp; cursor: pointer; tab-index: auto;}
 button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: #23506a; border-color: #9be4f7;}
+.pad button:focus {border-color: #ffd75e; background-color: #2c4a63;}
 button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; margin-right: 2%;}
 .rule {display: block; width: 92%; text-align: left; font-size: 15dp; padding: 7dp;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
@@ -308,8 +322,11 @@ void settings_sync() {
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+std::to_string(settings::native_battle_ui())+std::to_string(settings::native_intermission_ui())+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+    // A rebuilt window keeps the focused control, so a controller does not lose its place.
+    auto* focused=context->GetFocusElement();
+    const std::string focus_id=settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
     document_close(settings_doc);settings_stamp=stamp;
-    std::string body="<div class='page'><h1>"+label("settings_title")+"</h1><div class='row'><div class='column'>";
+    std::string body="<div class='page"+std::string(pad_mode?" pad":"")+"'><h1>"+label("settings_title")+"</h1><div class='row'><div class='column'>";
     for(auto group:{rules::Kind::correction,rules::Kind::difficulty}){
         body+="<h2>"+label(group==rules::Kind::correction?"rules_group_corrections":"rules_group_difficulty")+"</h2>";
         for(const auto& entry:rules::catalog)if(entry.kind==group)
@@ -334,6 +351,9 @@ void settings_sync() {
     // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
     body+=button("settings-close",label("link_back"))+"<p class='credit'>"+label("font_credit")+"</p></div></div></div>";
     settings_doc=document(body,true);settings_doc->PullToFront();settings_doc->Focus();
+    auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
+    if(!focus && pad_mode)focus=settings_doc->QuerySelector("button");
+    if(focus){focus->Focus();focus->ScrollIntoView(false);}
 }
 void link_sync() {
     const auto next=link_page::request();
@@ -1479,6 +1499,65 @@ bool held() {
     for(int i=0;i<count;++i)if(keys[i])return true;
     return debug::keyboard().held()!=0;
 }
+bool dispatch(SDL_Event& event);
+std::array<std::string*,13> all_stamps();
+// Hints follow the last input device. Switching rebuilds every page once, the way
+// a language change does, so no page shows the other device's keys.
+void set_pad_mode(bool on) {
+    if(pad_mode==on)return;
+    pad_mode=on;input::pad_hints=on;
+    for(auto* stamp:all_stamps())stamp->clear();
+}
+// Controller presses, with held directions repeating like a held key (400 ms, then
+// every 80 ms); `repeats` marks the repeated directions.
+uint32_t pad_presses(uint32_t now,uint32_t pressed,uint32_t& repeats) {
+    static constexpr uint32_t directions[]={0x0800|(1u<<16),0x0400|(1u<<17),0x0200|(1u<<18),0x0100|(1u<<19)};
+    static std::array<uint64_t,4> next{};
+    const uint64_t ms=SDL_GetTicks64();repeats=0;
+    for(size_t i=0;i<std::size(directions);++i) {
+        if(pressed&directions[i])next[i]=ms+400;
+        else if((now&directions[i]) && ms>=next[i]){repeats|=directions[i];next[i]=ms+80;}
+    }
+    return pressed|repeats;
+}
+void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
+    // windowID 0 marks a key the controller sent: it keeps the controller hints.
+    SDL_Event e{};e.type=SDL_KEYDOWN;e.key.state=SDL_PRESSED;e.key.repeat=repeat;
+    e.key.keysym.sym=key;e.key.keysym.scancode=SDL_GetScancodeFromKey(key);e.key.keysym.mod=mod;
+    dispatch(e);
+    e.type=SDL_KEYUP;e.key.state=SDL_RELEASED;e.key.repeat=0;dispatch(e);
+}
+// The other native pages read the keyboard through the game's own key map (Z = A,
+// X = B, Enter = START, Space = Z, arrows = pad and stick, Q/E = L/R, IJKL = C).
+// A controller drives them with the same keys, so a Steam Deck needs no keyboard.
+// Text entry (names, funds) takes A as Enter and B as Esc, and on the name page
+// up and down move between the fields.
+void pad_keys(uint32_t now,uint32_t pressed) {
+    const bool names_page=names::request().visible,text=names_page || !funds_editing.empty();
+    const std::pair<uint32_t,SDL_Keycode> keys[]={{0x8000,text?SDLK_RETURN:SDLK_z},{0x4000,text?SDLK_ESCAPE:SDLK_x},
+        {0x1000,SDLK_RETURN},{0x2000,SDLK_SPACE},{0x0020,SDLK_q},{0x0010,SDLK_e},{0x0008,SDLK_i},{0x0004,SDLK_k},
+        {0x0002,SDLK_j},{0x0001,SDLK_l},{0x0800|(1u<<16),names_page?SDLK_TAB:SDLK_UP},
+        {0x0400|(1u<<17),names_page?SDLK_TAB:SDLK_DOWN},{0x0200|(1u<<18),SDLK_LEFT},{0x0100|(1u<<19),SDLK_RIGHT}};
+    uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
+    for(const auto& [mask,key]:keys)if(presses&mask)
+        send_key(key,(repeats&mask) && !(pressed&mask),names_page && (mask&0x0800)?KMOD_SHIFT:KMOD_NONE);
+}
+// The settings window on a controller: directions walk its buttons in RmlUi's tab
+// order, A presses the focused one, B (or View again) closes it.
+void settings_pad(uint32_t now,uint32_t pressed) {
+    if(!settings_doc)return;
+    if(pressed&0x4000){choose("settings-close");return;}
+    auto* focus=context->GetFocusElement();
+    if(pressed&(0x8000|0x1000)){if(focus && focus->GetTagName()=="button")focus->Click();return;}
+    uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
+    const bool back=presses&(0x0800|0x0200|(1u<<16)|(1u<<18)),next=presses&(0x0400|0x0100|(1u<<17)|(1u<<19));
+    if(!back && !next)return;
+    if(!focus || focus->GetOwnerDocument()!=settings_doc || focus->GetTagName()!="button")
+        focus=settings_doc->QuerySelector("button");
+    else send_key(SDLK_TAB,false,back?KMOD_SHIFT:KMOD_NONE);
+    focus=context->GetFocusElement();
+    if(focus && focus->GetOwnerDocument()==settings_doc){focus->Focus();focus->ScrollIntoView(false);}
+}
 void sync() {
     physical_held=held();
     ui_density=pixel_ratio*std::min({1.f,float(pixels_w)/pixel_ratio/960.f,float(pixels_h)/pixel_ratio/720.f});
@@ -1490,12 +1569,21 @@ void sync() {
     for(auto& person:request.portraits)for(auto& path:person)path=image(path,dp_pixels(160));
     name_page->set_hd(presentation::image_mode.current()==1);
     // Catalog owns all labels. No duplicate translation table in the frontend.
-    name_page->sync(request,language->ui_labels(),language->locale);
+    auto labels=language->ui_labels();
+    if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
+    name_page->sync(request,labels,language->locale);
     {
         // Controller edges; a button already down when a page opens is not a press.
         static uint32_t pad_before=0;
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
-        if(pad_pressed)battle_buttons(pad_pressed);
+        if(pad_pressed)set_pad_mode(true);
+        // Page requests stay null until their page first reports.
+        const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
+        if(pad_pressed&input::pad_view)choose(settings_open?"settings-close":"settings-open");
+        else if(settings_open)settings_pad(pad_now,pad_pressed);
+        else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
+        else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))
+            pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();
@@ -1524,6 +1612,10 @@ bool dispatch(SDL_Event& event) {
         catch(const std::exception& error){notices::post("mini-stage-error",error.what());}
         return true;
     }
+    // The keyboard (window keys, not the controller bridge's) and the mouse or touch
+    // screen bring the keyboard hints back.
+    if((event.type==SDL_KEYDOWN && event.key.windowID) || event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL ||
+       (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pad_mode(false);
     if(input.event(event))return true;
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F7 && !input.has_composition() &&
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
