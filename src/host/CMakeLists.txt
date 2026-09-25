@@ -122,6 +122,8 @@ if(SRW64_ENABLE_RT64)
     target_link_libraries(srw64-dialogue-test PRIVATE srw64_dialogue_cpu)
     target_compile_options(srw64-dialogue-test PRIVATE -UNDEBUG)
     foreach(SRW64_HOST_TARGET srw64-gfx-host srw64-frame-host)
+    # HD art made from the player's ROM at run time: window frames (docs/native/native-ui-text.md).
+    target_sources(${SRW64_HOST_TARGET} PRIVATE rom_art.cpp)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp

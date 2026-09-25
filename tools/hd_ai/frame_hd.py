@@ -1,4 +1,10 @@
-"""HD window frames: every resource-1295 frame scene as an HD colour-index image.
+"""Reference for the run-time window frames: every frame scene as an HD colour-index image.
+
+The game draws its HD window frames itself from the player's ROM (src/host/rom_art.cpp,
+docs/native/native-ui-text.md §4): strokes redrawn along the original lines. This script
+keeps the same scene table and crops, with a plain Scale2x upscale, as the local reference
+tests/native_rom_art.cpp checks against. Its output is not shipped.
+
 
 The original windows (docs/native/native-ui-text.md §5) are type-6 grid scenes drawn in sprite mode 9
 by 800945D4: 16x16 cells of the line-segment atlas 1295, some mirrored. Their palettes cycle
