@@ -99,6 +99,7 @@ class Session:
     def __init__(self, run: Path, process: subprocess.Popen | None = None):
         self.run = Path(run)
         self.process = process
+        self.lease: int | None = None
         self.client = Client(self.run / "debug.sock")
 
     # -- lifecycle ---------------------------------------------------------------
@@ -107,8 +108,14 @@ class Session:
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
                mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                resolution_scale: int | None = None,
-               timeout: float = 900.0, env: dict | None = None, diagnostics: str = "full") -> "Session":
-        """Build if needed and start a session; returns once the host listens."""
+               timeout: float = 900.0, env: dict | None = None, diagnostics: str = "full",
+               detach: bool = False, dump_textures: bool = False) -> "Session":
+        """Build if needed and start a session; returns once the host listens.
+
+        The game quits when this process exits, however it ends (a finished or
+        failed check, a timeout, kill -9), so check scripts leave no windows behind.
+        detach keeps it running for later commands, as `srw64ctl.py launch` does.
+        """
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
         run = DEBUG_DIR / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         command = [sys.executable, str(ROOT / "tools/recomp/run/run_host_probe.py"), "--graphics", "--interactive",
@@ -125,11 +132,13 @@ class Session:
             command += ["--binary", str(Path(binary).resolve())]
         if resolution_scale:
             command += ["--resolution-scale", str(resolution_scale)]
+        if dump_textures:
+            command.append("--dump-textures")   # RT64 writes <run>/textures/<hash>.{tmem,tile.json,rice.json}
         if reuse_build:
             previous = cls.previous_run()
             if previous is not None:
                 command += ["--reuse-build-from", str(previous)]
-        environment = dict(os.environ, SRW64_DEBUG="1", SRW64_RULE_FIXES=rule_fixes(rules))
+        environment = dict(os.environ, **(env or {}), SRW64_DEBUG="1", SRW64_RULE_FIXES=rule_fixes(rules))
         environment.pop("SRW64_MINI_STAGE", None)
         environment["SRW64_MINI_STAGE_COMPILER"] = shlex.join([sys.executable, str(ROOT / "tools/recomp/script_lab/mini_stage.py")])
         environment.pop("SRW64_NATIVE_NAME_ENTRY", None)
@@ -139,10 +148,20 @@ class Session:
             image = run.parent / (run.name + ".mini-stage.json")
             image.write_text(json.dumps(compile_stage(json.loads(Path(mini_stage).read_text())), ensure_ascii=False) + "\n")
             environment["SRW64_MINI_STAGE"] = str(image)
+        environment.pop("SRW64_DEBUG_OWNER_FD", None)
+        owner = lease = None
+        if not detach:
+            # Only this process holds the write end and never writes, so the host
+            # side reads end-of-file exactly when this process is gone.
+            owner, lease = os.pipe()
+            environment["SRW64_DEBUG_OWNER_FD"] = str(owner)
         log = open(run.parent / (run.name + ".launch.log"), "w")
         process = subprocess.Popen(command, cwd=ROOT, env=environment, stdout=log, stderr=subprocess.STDOUT,
-                                   start_new_session=True)
+                                   start_new_session=True, pass_fds=() if owner is None else (owner,))
+        if owner is not None:
+            os.close(owner)
         session = cls(run, process)
+        session.lease = lease  # open until this process exits
         deadline = time.monotonic() + timeout
         while not (run / "debug.sock").exists():
             if process.poll() is not None:
