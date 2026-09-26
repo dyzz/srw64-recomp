@@ -188,7 +188,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .battle-defenses {border-top:1dp #ff6fa859; margin-top:6dp; padding-top:4dp; height:15dp; font-size:11dp; color:#57e389;} .right .battle-defenses {border-color:#3fd0ff59;}
 .battle-defense-note {font-size:9dp; white-space:normal; color:#a4b0d2; margin-top:2dp;}
 .battle-defense-conditions {height:12dp; overflow:hidden; white-space:nowrap;}
-.battle-effects {height:58dp; overflow-y:auto; font-size:10dp; line-height:1.3;}
+.battle-effects {height:44dp; overflow-y:auto; font-size:10dp; line-height:1.3;}
 .battle-effects b {color:#a4b0d2; font-weight:normal;}
 .battle-effect {margin:2dp 0; color:#d6ddf2;} .battle-effect strong {color:#57e389;} .battle-effect strong.off {color:#a4b0d2;}
 .battle-actions {text-align:center; display:flex; flex-direction:column; justify-content:center;}
@@ -453,7 +453,11 @@ std::string battle_banner(const json& c,bool left,bool first,const std::string& 
 std::string battle_unit(const json& c,bool left) {
     std::string body="<div class='bp-side battle-unit'>";
     if(const auto unit=c.value("unit_art",json::object());unit.contains("path")) {
-        const float scale=std::min(230.f/unit.at("width").get<float>(),220.f/unit.at("height").get<float>());
+        // Sized by the unit's size class (SS..LL from its record, 2026-09-26): an LL fills the
+        // space, smaller classes take a fixed share of it, so a fighter reads smaller than a battleship.
+        static constexpr float share[]={.30f,.52f,.70f,.84f,1.f};
+        const float part=share[std::clamp(c.value("size",4),0,4)];
+        const float scale=part*std::min(230.f/unit.at("width").get<float>(),220.f/unit.at("height").get<float>());
         body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(portrait_path(unit)))+"' style='width:"+std::to_string(unit.at("width").get<float>()*scale)+"dp;height:"+std::to_string(unit.at("height").get<float>()*scale)+"dp;'/>";
     }
     return body+"</div>";

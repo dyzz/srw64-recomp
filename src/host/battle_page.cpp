@@ -107,6 +107,7 @@ json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,
         {"weapon",a.weapon?int(read(copy,a.weapon+2,2)):-1},{"level",read(copy,a.pilot+5,1)},
         {"sp",read(copy,a.pilot+0x16,2)},{"max_sp",read(copy,a.pilot+0x18,2)},{"spirit_grid",spirit_grid(copy,a)},{"hp",read(copy,a.unit+4,2)},{"max_hp",read(copy,a.unit+6,2)},{"en",read(copy,a.unit+8,2)},{"max_en",read(copy,a.unit+10,2)},
         {"unit_art",art["units"].value(std::to_string(read(copy,a.unit+2,2)),json::object())},
+        {"size",[&]{const unsigned f=read(copy,a.unit+0x0C,1);return f&1?0:f&2?1:f&4?2:f&8?3:4;}()},  // SS..LL, as ability_page
         {"portrait",art["portraits"].value(std::to_string(read(copy,a.pilot+2,2)),json::object())},
         {"active_spirits",active_spirits(copy,flags)},{"pilot_effects",combat_preview::pilot_effects(copy,a)},
         {"morale",read(copy,a.pilot+0x20,2)},{"spirits",flags},{"abilities",read(copy,a.unit+0x28,4)},
