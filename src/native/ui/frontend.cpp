@@ -172,7 +172,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .battle-response span {display:inline-block; padding:3dp 11dp; background-color:#3fd0ff29; border:1dp #3fd0ff;} .battle-response b {color:#3fd0ff;}
 .bp-pilot {padding:7dp 9dp; background-color:#0c122ceb; border:2dp #ff6fa8;} .bp-pilot.right {border-color:#3fd0ff;}
 .bp-pilot-head {display:flex; gap:8dp;}
-.bp-pilot-head img {width:56dp; height:56dp; margin:0; border:2dp #ff6fa8;} .right .bp-pilot-head img {border-color:#3fd0ff;}
+.bp-pilot-head img {width:96dp; height:96dp; margin:0; border:2dp #ff6fa8;} .right .bp-pilot-head img {border-color:#3fd0ff;}
 .bp-pilot-info {flex:1; min-width:0;}
 .bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:15dp; font-weight:bold; height:21dp;}
 .bp-pilot-name .level {font-size:10dp; font-weight:normal; color:#a4b0d2;}
@@ -454,7 +454,7 @@ std::string battle_unit(const json& c,bool left) {
     std::string body="<div class='bp-side battle-unit'>";
     if(const auto unit=c.value("unit_art",json::object());unit.contains("path")) {
         const float scale=std::min(230.f/unit.at("width").get<float>(),220.f/unit.at("height").get<float>());
-        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(unit.at("path")))+"' style='width:"+std::to_string(unit.at("width").get<float>()*scale)+"dp;height:"+std::to_string(unit.at("height").get<float>()*scale)+"dp;'/>";
+        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(portrait_path(unit)))+"' style='width:"+std::to_string(unit.at("width").get<float>()*scale)+"dp;height:"+std::to_string(unit.at("height").get<float>()*scale)+"dp;'/>";
     }
     return body+"</div>";
 }
@@ -462,7 +462,7 @@ std::string battle_unit(const json& c,bool left) {
 std::string battle_pilot(const json& c,bool left) {
     const std::string side=left?"left":"right";
     std::string body="<div id='battle-pilot-"+side+"' class='bp-side bp-pilot "+side+"'><div class='bp-pilot-head'>";
-    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(56)))+"'/>";
+    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(96)))+"'/>";
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div><div class='battle-spirits'>";
@@ -762,7 +762,7 @@ void upgrade_sync() {
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
             const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(118.f/w,118.f/h);
-            art="<img src='"+escape(image(unit.at("art").at("path").get<std::string>()))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+            art="<img src='"+escape(image(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
         }
         body+=box(176,8,302,132,art,12.f,"upgrade-art","display:flex; align-items:center; justify-content:center;")+
             box(21,133,302,219,lines,11.5f,"upgrade-rows");

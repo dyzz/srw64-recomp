@@ -17,6 +17,36 @@ def load(name: str):
     return module
 
 
+class UnitPoseIndexTests(unittest.TestCase):
+    """compile_art copies the whole HD unit poses and unit_lookup finds them by triplet."""
+
+    def test_units_section_is_copied_and_indexed(self):
+        sys.path.insert(0, str(ROOT / "src"))
+        from srw64_native.assets import compile_art, unit_lookup
+        from srw64_native.catalog import sha
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "pack"
+            source.mkdir()
+            (source / "rt64.json").write_text(json.dumps({"configuration": {}, "textures": []}))
+            poses = root / "poses"
+            poses.mkdir()
+            Image.new("RGBA", (16, 16), (1, 2, 3, 255)).save(poses / "unit-2216-1615-1911.png")
+            index = {"schema": "srw64.unit-images.v1", "scale": 8, "recipe": "test",
+                     "images": [{"scene": 2216, "atlas": 1615, "palette": 1911, "units": [3], "file": "unit-2216-1615-1911.png",
+                                 "sha256": sha((poses / "unit-2216-1615-1911.png").read_bytes()), "width": 16, "height": 16}]}
+            (poses / "units.json").write_text(json.dumps(index))
+            manifest = {"schema": "srw64.art-pack.v1", "locale": "neutral", "textures": [],
+                        "source": {"path": "pack", "manifest_sha256": sha((source / "rt64.json").read_bytes())},
+                        "units": {"path": "poses", "manifest_sha256": sha((poses / "units.json").read_bytes())}}
+            result = compile_art(root, manifest, root / "art")
+            self.assertEqual(result["units"], 1)
+            lookup = unit_lookup(root / "art")
+            self.assertEqual(lookup(2216, 1615, 1911), str(root / "art" / "units/unit-2216-1615-1911.png"))
+            self.assertIsNone(lookup(1, 2, 3))
+            self.assertTrue((root / "art" / "units/unit-2216-1615-1911.png").exists())
+
+
 class CompressHdTests(unittest.TestCase):
     def art(self, root: Path) -> Path:
         art = root / "art"

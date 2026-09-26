@@ -17,8 +17,9 @@ from .catalog import sha
 from .original_images import decode_indexed, png_bytes
 
 
-def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None) -> dict:
-    """`hd_portrait(image, palette)` names the whole HD portrait for a pilot, if any."""
+def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None, hd_unit=None) -> dict:
+    """`hd_portrait(image, palette)` names the whole HD portrait for a pilot, if any;
+    `hd_unit(scene, atlas, palette)` the whole HD pose for a unit (8x, with alpha)."""
     spec = json.loads((root / 'config/data/original-jp-v1.json').read_text())['images']['actors']
     bindings = rom[spec['rom_offset']:spec['rom_offset'] + spec['count'] * spec['stride']]
     if sha(bindings) != spec['sha256']:
@@ -49,8 +50,10 @@ def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None
         atlas, _ = decode_atlas(resource(atlas_id), resource(palette_id))
         frames, clipped = render_scene(scene, atlas)
         frame = next((f for f, _ in scene.steps if f != 0xFF), 0)
-        units[str(uid)] = {**save(f'unit-{scene_id}-{atlas_id}-{palette_id}', frames[frame],
-                                  (scene_id, atlas_id, palette_id)), 'facing': 'left', 'frame': frame, 'clipped_parts': clipped}
+        entry = {**save(f'unit-{scene_id}-{atlas_id}-{palette_id}', frames[frame], (scene_id, atlas_id, palette_id)),
+                 'facing': 'left', 'frame': frame, 'clipped_parts': clipped}
+        hd = hd_unit(scene_id, atlas_id, palette_id) if hd_unit else None
+        units[str(uid)] = {**entry, 'hd': hd} if hd else entry
     portraits = {}
     for actor in range(spec['count']):
         image_id, palette_id = struct.unpack_from('>2H', bindings, actor * spec['stride'])

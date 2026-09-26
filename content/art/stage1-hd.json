@@ -1596,5 +1596,9 @@
   "backgrounds": {
     "path": "assets/hd-ai/backgrounds/whole-v2",
     "manifest_sha256": "607d6e931d4b36cd46b0beed3b1b00784f3775dd7301f24e66d62a2e90a16001"
+  },
+  "units": {
+    "path": "assets/hd-ai/unit-poses/whole-v1",
+    "manifest_sha256": "f0b813dc5110844f38ed917fb6b1e706f0a1796646cd22b282f291cd89f2ab9e"
   }
 }

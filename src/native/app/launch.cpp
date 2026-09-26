@@ -110,6 +110,20 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
             attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
         if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
             attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
+        // Whole HD unit poses by (scene, atlas, palette), as profile.py's unit_lookup.
+        if(const auto units_index=hd/"art"/"srw64-units-hd.json";fs::is_regular_file(units_index) && data.contains("battle_assets")) {
+            const auto poses=read_json(units_index);
+            if(poses.value("schema","")!="srw64.unit-images.v1")throw std::runtime_error("Unsupported HD unit poses");
+            std::map<std::string,std::string> by_triplet;
+            for(const auto& row:poses.at("images"))
+                by_triplet[std::to_string(row.at("scene").get<unsigned>())+":"+std::to_string(row.at("atlas").get<unsigned>())+":"+std::to_string(row.at("palette").get<unsigned>())]=row.at("file").get<std::string>();
+            for(auto& [id,art]:data["battle_assets"].at("units").items()) {
+                if(!art.contains("resources"))continue;
+                const auto& r=art.at("resources");
+                const auto key=std::to_string(r.at(0).get<unsigned>())+":"+std::to_string(r.at(1).get<unsigned>())+":"+std::to_string(r.at(2).get<unsigned>());
+                if(const auto found=by_triplet.find(key);found!=by_triplet.end())art["hd"]=(hd/"art"/found->second).string();
+            }
+        }
     }
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");

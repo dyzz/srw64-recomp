@@ -181,7 +181,8 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
             if(!scene)continue;
             const auto pixels=rom_import::battle_pose(resource(scene),rom_import::battle_atlas(resource(atlas),resource(palette)));
             auto entry=save_art("battle/unit-"+std::to_string(scene)+"-"+std::to_string(atlas)+"-"+std::to_string(palette)+".png",pixels);
-            entry["facing"]="left";battle["units"][std::to_string(id)]=entry;
+            // The launcher finds a bundled HD pose by this triplet (docs/design/unit-pose-hd.md).
+            entry["facing"]="left";entry["resources"]={scene,atlas,palette};battle["units"][std::to_string(id)]=entry;
         }
         for(unsigned id=0;id<361;++id) {
             const auto image=rom_import::be16(rom,0x84220+id*4),palette=rom_import::be16(rom,0x84222+id*4);

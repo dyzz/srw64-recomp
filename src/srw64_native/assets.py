@@ -49,6 +49,19 @@ def portrait_lookup(art_directory: Path, output: Path):
     return lookup
 
 
+def unit_lookup(art_directory: Path):
+    """(scene, atlas, palette) -> the whole HD unit pose the native pages show, or None."""
+    spec_path = art_directory / "srw64-units-hd.json"
+    if not spec_path.exists():
+        return lambda scene, atlas, palette: None
+    rows = {(row["scene"], row["atlas"], row["palette"]): row for row in json.loads(spec_path.read_text())["images"]}
+
+    def lookup(scene: int, atlas: int, palette: int):
+        row = rows.get((scene, atlas, palette))
+        return str(art_directory / row["file"]) if row else None
+    return lookup
+
+
 def whole_images(root: Path, spec: dict, index_name: str, schema: str, what: str):
     """A folder of whole images the host draws itself, checked against its index."""
     folder = inside(root, spec["path"])
@@ -108,6 +121,10 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if "portraits" in manifest:
         portrait_index, portrait_files = whole_images(root, manifest["portraits"], "portraits.json",
                                                       "srw64.portrait-images.v1", "Portrait")
+    # Whole unit poses the pages draw in place of battle_assets.units (docs/design/unit-pose-hd.md).
+    unit_index, unit_files = None, []
+    if "units" in manifest:
+        unit_index, unit_files = whole_images(root, manifest["units"], "units.json", "srw64.unit-images.v1", "Unit pose")
     background_index, background_files = None, []
     if "backgrounds" in manifest:
         background_index, background_files = whole_images(root, manifest["backgrounds"], "backgrounds.json",
@@ -133,6 +150,8 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         shutil.copyfile(path, output / name)
     if portrait_index is not None:
         copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json")
+    if unit_index is not None:
+        copy_whole_images(unit_index, unit_files, output, "units", "srw64-units-hd.json")
     if background_index is not None:
         copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json")
     if scene_index is not None:
@@ -145,5 +164,5 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}
