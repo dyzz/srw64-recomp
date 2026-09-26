@@ -14,8 +14,8 @@ from recomp.debug.session import Session
 
 
 def main():
-    s = Session.launch(language='zh-Hans', images='hd', rules='fixed', diagnostics='light',
-                       mini_stage='config/recomp/mini-stages/battle-ui-skills.json')
+    stage = sys.argv[1] if len(sys.argv) > 1 else 'config/recomp/mini-stages/battle-ui-skills.json'
+    s = Session.launch(language='zh-Hans', images='hd', rules='fixed', diagnostics='light', mini_stage=stage)
     print('RUN', s.run, flush=True)
     checks = []
 

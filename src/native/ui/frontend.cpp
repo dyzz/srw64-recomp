@@ -455,7 +455,7 @@ std::string battle_unit(const json& c,bool left) {
     if(const auto unit=c.value("unit_art",json::object());unit.contains("path")) {
         // Sized by the unit's size class (SS..LL from its record, 2026-09-26): an LL fills the
         // space, smaller classes take a fixed share of it, so a fighter reads smaller than a battleship.
-        static constexpr float share[]={.30f,.52f,.70f,.84f,1.f};
+        static constexpr float share[]={.30f,.52f,.70f,.84f,1.15f};  // LL breaks out of its box a little
         const float part=share[std::clamp(c.value("size",4),0,4)];
         const float scale=part*std::min(230.f/unit.at("width").get<float>(),220.f/unit.at("height").get<float>());
         body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(portrait_path(unit)))+"' style='width:"+std::to_string(unit.at("width").get<float>()*scale)+"dp;height:"+std::to_string(unit.at("height").get<float>()*scale)+"dp;'/>";
