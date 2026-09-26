@@ -38,16 +38,6 @@ struct Painter {
                 blend(px,py,r,g,b,alpha*cover);
             }
     }
-    void stroke(double ax,double ay,double bx,double by,double width) {
-        ax=ox+ax*scale;ay=oy+ay*scale;bx=ox+bx*scale;by=oy+by*scale;
-        const double radius=width*scale/2,dx=bx-ax,dy=by-ay,length=dx*dx+dy*dy;
-        for(int y=std::max(0,int(std::floor(std::min(ay,by)-radius-1)));y<std::min(int(image.height),int(std::ceil(std::max(ay,by)+radius+1)));++y)
-            for(int x=std::max(0,int(std::floor(std::min(ax,bx)-radius-1)));x<std::min(int(image.width),int(std::ceil(std::max(ax,bx)+radius+1)));++x) {
-                const double t=length?std::clamp(((x+.5-ax)*dx+(y+.5-ay)*dy)/length,0.0,1.0):0;
-                const double distance=std::hypot(x+.5-ax-t*dx,y+.5-ay-t*dy);
-                blend(x,y,.41,.83,1,std::clamp(radius+.5-distance,0.0,1.0));
-            }
-    }
     void panel(double x,double y,double w,double h) {
         fill(x,y,w,h,.015,.035,.065,.96);
         fill(x-.5,y-.5,w+1,1,.41,.75,1);fill(x-.5,y+h-.5,w+1,1,.41,.75,1);
@@ -84,24 +74,6 @@ struct Painter {
         const auto shaped=layout_text(value,size,1000000,size*1.4);
         text(shaped,x,y,width,size*1.4,shaped.pages.front().lines,value.size(),r,g,b,role);
     }
-    void speaker_marker(const Box& box) {
-        const double x=box.x-5,y=box.y-22,w=187,h=59;
-        for(int right:{0,1})for(int bottom:{0,1}) {
-            const double cx=x+right*w,cy=y+bottom*h,dx=right?-1:1,dy=bottom?-1:1;
-            stroke(cx+dx*13,cy,cx+dx*3,cy,1.3);
-            // a rounded corner, like the frame's own corners
-            constexpr double quarter_turn=1.5707963267948966;
-            for(int i=0;i<6;++i) {
-                const double a=i*quarter_turn/6,b=(i+1)*quarter_turn/6;
-                stroke(cx+dx*3*(1-std::sin(a)),cy+dy*3*(1-std::cos(a)),
-                       cx+dx*3*(1-std::sin(b)),cy+dy*3*(1-std::cos(b)),1.3);
-            }
-            stroke(cx,cy+dy*3,cx,cy+dy*11,1.3);
-        }
-        for(int i=0;i<6;++i)fill(box.x-4,box.y-13+i,i<3?i+1:6-i,1,.41,.83,1);
-        blocks.push_back({{"role","speaker_focus"},{"slot",box.slot},{"event",box.event},
-            {"bounds",{ox+x*scale,oy+y*scale,w*scale,h*scale}}});
-    }
     void progress(const Box& box,const AdvanceProgress& value) {
         const double x=box.x+116,y=box.y-15.5,w=61,h=2.5;  // right of the name
         fill(x-1,y-1,w+2,h+2,.025,.055,.085,.96);
@@ -136,10 +108,13 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
         if(!box.visible || box.layout.pages.empty())continue;
         const auto& page=box.layout.pages.at(box.page);
         // The name keeps its size; the text area below it takes any body size.
+        // The current speaker shows only by a slightly brighter name: the same blue, the
+        // other box's at four fifths (the user had the corner brackets and the
+        // triangle marker removed).
         const bool focused=&box==focus;
-        if(focused)paint.speaker_marker(box);
+        const double name=focused?1:.8;
         paint.label(box.speaker,box.x,box.y+name_top,name_size,body_width,
-            focused?105./255:.43,focused?191./255:.57,focused?1:.65,"speaker");
+            name*105/255,name*191/255,name,"speaker");
         const double grey=box.active?1:123./255;
         paint.text(box.layout,box.x,box.y+body_top,body_width,body_height,page.lines,box.revealed,grey,grey,grey,"body");
         // No page counter: a long translation simply continues on the next A,
