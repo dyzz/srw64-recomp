@@ -87,10 +87,13 @@ MMPX 放在模型前面才有意义；放在后面只是机械放大，但用在
 
 千问 8 次请求共约 1.6 元，记录在 `assets/hd-ai/unit-icons/test-1`、`test-2`。16×16 只有 256 个像素的信息，编辑模型要么照抄网格，要么重新发明造型；本地"超分 + 量化"反而最忠实。**用户随后决定：这类资源一律不用云端模型。** 本机（M4 Max，128 GB）跑 SDXL/Flux + 像素画 LoRA 做图生图是唯一能补出「新细节」的本地路线，但要装环境且逐张过审，没有开工。
 
-## 接入（未做）
+## 接入（2026-09-26 已做）
 
-- 图标由 `801C60A4` 建的子槽 0（优先级 0x91，模式 5）绘制，调色板参数 `1010 + 阵营`，是单独上传的 16×16 CI4 纹理。走 RT64 纹理哈希替换（[`rt64_hash.py`](../../tools/hd_ai/rt64_hash.py) 目前只有字库和地图两种 CI4 算法，要先对 16×16 CI4 + 16 色 TLUT 的哈希做一次 TMEM 转储核对），键按调色板区分，正好对应"每个阵营一份"：320 × 4 = 1,280 张 32×32。
-- 子槽 1 的阴影椭圆（资源 687）另算，可以顺手换一张平滑的椭圆。
-- 1013（灰）对应的阵营含义、"已行动"是否换调色板，仍未确认；1015 不属于这一组。
-- 采样：RT64 替换贴图若按线性采样，倍率 8 下 2:1 的图标会被抹糊，要让这类贴图走点采样。
-- 版权：PixelPerfectV4 是 WTFPL，输出是 ROM 派生图，与头像、立绘相同，只装用户目录 `hd/`，不进公开包（见 [HD 化规划](hd-pipeline-plan.md)）。
+走 RT64 纹理哈希替换，与世界地图、宇宙物件同一条路：
+
+- **键**：图标由 `801C60A4` 建的子槽 0（模式 5）绘制，是单独装载的 16×16 CI4 贴图，调色板参数 `1010 + 阵营`。RT64 v5 的 TMEM 哈希把用到的调色板项也算进去，所以同一图标的四个阵营是四个不同的键，正好对应四套渲染。哈希算法沿用 `worldmap_space.ci4_hash`（TMEM 里奇数行 4 字节对调、用到的色号各 8 字节、再加 宽 16／高 16／tlut 0x8000／line 1／siz 0／fmt 2），**已用真实转储核对**：`--dump-textures` 运行（`Session.launch(dump_textures=True)`，RT64 写 `<run>/textures/<hash>.{tmem,tile.json,rice.json}`）里地图上 3 台机体的 16×16 贴图（tile line 1、fmt 2、siz 0、masks 4）与算出的键一一对应。
+- **包**：`unit_icon_hd.py pack --output v2 --pack assets/hd-ai/worldmap-surfaces/pack-v5 --bind` 把 320 × 4 张 64×64 写成 `icon-<hash>.png`（透明像素的 RGB 填最近实色，线性采样不出暗边；像素相同的图标去重后 1256 张）并入 `rt64.json`，在 `content/art/stage1-hd.json` 里登记为 `kind: icon`；`compile_art` 接受这一类，并在编译出的 `rt64.json` 里保留 `kind`（RT64 忽略多余字段）。
+- **实机**：`check_unit_icon_hd.py` 在 HD 下进 move-jump 迷你关卡截图、F6 切原版再截一张，并断言转储里的 16×16 机体贴图哈希都在包里。默认倍率 4 下 64 像素 1:1 绘制，阵营色正确，边缘无暗边。
+- **公开包**：产物是 ROM 派生图，`build_release.py` 按 `kind` 把它们从公开 HD 包的 `rt64.json` 和文件里剔除（`ROM_DERIVED_TEXTURE_KINDS`），只留在本机全 HD 自用包和用户目录 `hd/`。
+- 未做：阴影椭圆（资源 687）没有换；1013（灰）对应的阵营含义、"已行动"是否换调色板仍未确认——灰版已经在包里，用到自然生效。
+- 版权：PixelPerfectV4 是 WTFPL，产物按 ROM 派生图处理（见 [HD 化规划](hd-pipeline-plan.md)）。

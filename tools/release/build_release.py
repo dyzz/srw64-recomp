@@ -35,6 +35,8 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
 ROM_DERIVED = ("art/frames",)
+# RT64 replacement textures redrawn from ROM pixels (compile_art keeps their kind): the map unit icons.
+ROM_DERIVED_TEXTURE_KINDS = ("icon",)
 # Scene images that are algorithmic upscales of ROM frames (tools/hd_ai/flat_scene_hd.py).
 ROM_DERIVED_SCENES = ("scene-images/banpresto-logo.png", "scene-images/game-over.png")
 
@@ -149,6 +151,19 @@ def main() -> int:
         if (pack_dir / "hd" / relative).exists():
             shutil.rmtree(pack_dir / "hd" / relative)
             left_out.append(relative)
+    rt64 = pack_dir / "hd/art/rt64.json"
+    if rt64.is_file():
+        database = json.loads(rt64.read_text())
+        kept = [row for row in database["textures"] if row.get("kind") not in ROM_DERIVED_TEXTURE_KINDS]
+        dropped = [row for row in database["textures"] if row.get("kind") in ROM_DERIVED_TEXTURE_KINDS]
+        for row in dropped:
+            (pack_dir / "hd/art" / row["path"]).unlink()
+        if dropped:
+            rt64.write_text(json.dumps({**database, "textures": kept}, indent=2) + "\n")
+            about = json.loads((pack_dir / "hd/hd.json").read_text())
+            about["art"]["count"] = len(kept)
+            (pack_dir / "hd/hd.json").write_text(json.dumps(about, indent=2) + "\n")
+            left_out.append(f"art: {len(dropped)} {'/'.join(ROM_DERIVED_TEXTURE_KINDS)} textures")
     scenes = pack_dir / "hd/art/srw64-scene-images.json"
     if scenes.is_file():
         index = json.loads(scenes.read_text())

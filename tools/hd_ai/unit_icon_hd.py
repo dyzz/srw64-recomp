@@ -216,6 +216,61 @@ def run(args: argparse.Namespace) -> None:
     print(f"{len(files)} icons in {time.monotonic() - started:.1f}s -> {out / 'hd'}")
 
 
+def pack(args: argparse.Namespace) -> None:
+    from srw64_rom.resources import ResourceTable
+    from srw64_native.catalog import sha
+    from tools.hd_ai.esrgan_pose import fill_transparent
+    from tools.hd_ai.rt64_hash import hasher
+    from tools.hd_ai.worldmap_space import ci4_hash
+
+    out, target = args.output, args.pack
+    resources = ResourceTable(args.rom.read_bytes())
+    palettes = {p: resources.extract(p)[0][8:40] for p in PALETTES}
+    xxh = hasher()
+    database = json.loads((target / "rt64.json").read_text())
+    entries = {e["hashes"]["rt64"]: e for e in database["textures"]}
+    added, keys = {}, []
+    for f in sorted((out / "hd").glob("*.idx.png"), key=lambda p: int(p.stem.split(".")[0])):
+        rid = int(f.stem.split(".")[0])
+        pixels = resources.extract(rid)[0][8:]
+        for p in PALETTES:
+            digest = ci4_hash(pixels, palettes[p], (16, 16), xxh)
+            if digest in entries and not entries[digest]["path"].startswith("icon-"):
+                raise ValueError(f"{digest} already names another texture")
+            image = Image.open(out / "hd" / f"{rid}-{p}.png").convert("RGBA")
+            filled = fill_transparent(image)
+            filled.putalpha(image.getchannel("A"))
+            name = f"icon-{digest}.png"
+            filled.save(target / name)
+            entries[digest] = {"hashes": {"rt64": digest}, "path": name}
+            added[digest] = sha((target / name).read_bytes())
+            keys.append({"icon": rid, "palette": p, "hash": digest})
+    database["textures"] = sorted(entries.values(), key=lambda e: e["hashes"]["rt64"])
+    (target / "rt64.json").write_text(json.dumps(database, indent=2) + "\n")
+    (out / "pack-keys.json").write_text(json.dumps({"schema": "srw64.unit-icon-keys.v1", "pack": str(target), "keys": keys}, indent=1))
+    print(f"{len(added)} icon textures -> {target}")
+    if args.dump:
+        seen = {p.name.split(".")[0] for p in args.dump.glob("*.rice.json")}
+        small = {}
+        for p in args.dump.glob("*.tile.json"):
+            tile = json.loads(p.read_text())
+            if (tile["width"], tile["height"]) == (16, 16):
+                small[p.name.split(".")[0]] = (tile["tile"]["line"], tile["tile"]["fmt"], tile["tile"]["siz"])
+        hit = [k for k in keys if k["hash"] in seen]
+        print(f"dump: {len(seen)} textures, {len(small)} of 16x16 {sorted(set(small.values()))}, {len(hit)} icon keys matched")
+        if small and not hit:
+            raise SystemExit("no icon hash matched the dumped 16x16 textures: check the TMEM layout assumptions")
+    if args.bind:
+        path = ROOT / "content/art/stage1-hd.json"
+        manifest = json.loads(path.read_text())
+        rows = [r for r in manifest["textures"] if r["kind"] != "icon"]
+        rows += [{"hash": h, "kind": "icon", "sha256": v} for h, v in sorted(added.items())]
+        manifest["textures"] = rows
+        manifest["source"] = {"path": str(target.resolve().relative_to(ROOT)), "manifest_sha256": sha((target / "rt64.json").read_bytes())}
+        path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+        print("bound", path.relative_to(ROOT), len(rows), "textures")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = parser.add_subparsers(dest="command", required=True)
@@ -233,6 +288,13 @@ def main() -> None:
     r.add_argument("--blur", type=float, default=0.0)
     r.add_argument("--only", type=int, nargs="*", help="icon resource ids")
     r.set_defaults(func=run)
+    k = sub.add_parser("pack", help="key the icons by RT64 hash and add them to an RT64 replacement pack")
+    k.add_argument("--rom", type=Path, default=ROOT / "rom.z64")
+    k.add_argument("--output", type=Path, required=True, help="a run output with hd/")
+    k.add_argument("--pack", type=Path, required=True, help="the RT64 pack directory (rt64.json)")
+    k.add_argument("--bind", action="store_true", help="list the textures as kind icon in content/art/stage1-hd.json")
+    k.add_argument("--dump", type=Path, help="an SRW64_TEXTURE_DUMP directory to check the hashes against")
+    k.set_defaults(func=pack)
     args = parser.parse_args()
     args.func(args)
 

@@ -102,14 +102,15 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
         if not re.fullmatch(r"[0-9a-f]{16}", digest) or digest in seen:
             raise ValueError("Invalid or conflicting art texture identity")
         seen.add(digest)
-        if row["kind"] not in ("worldmap", "frame", "space"):
+        if row["kind"] not in ("worldmap", "frame", "space", "icon"):
             raise ValueError("Unreviewed/language-dependent image category")
         entry = originals[digest]
         path = inside(source, entry["path"])
         if sha(path.read_bytes()) != row["sha256"]:
             raise ValueError(f"Art pixels changed: {digest}")
         name = f"{digest}{path.suffix}"
-        textures.append({**entry, "path": name})
+        # RT64 ignores `kind`; build_release.py prunes ROM-derived kinds from the public pack.
+        textures.append({**entry, "path": name, "kind": row["kind"]})
         files.append((path, name))
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
