@@ -62,10 +62,8 @@ def verify(directory: Path) -> dict:
         if state["history_open"]:
             # History covers the dialogue panels, but the bottom speed stays.
             continue
+        # The current speaker has no marker since 2026-09-26, only a slightly brighter name.
         counts["focus"] += 1
-        color = rgb(math.floor((focus["x"]-3)/2+.5), math.floor((focus["y"]-10)/2+.5))
-        if not close(color, (105, 212, 255)):
-            fail("speaker_marker", rgb=color, slot=focus["slot"])
         advance = state["advance"]
         if not advance["visible"] or focus["event"] != state["reading_event"]:
             continue
@@ -83,7 +81,7 @@ def verify(directory: Path) -> dict:
         progress_states.append({"present": row["present"], "vi": row["vi"], "event": focus["event"],
                                 "slot": focus["slot"], "page": focus["page"], **advance})
     return {"schema": "srw64.reading-indicators-check.v1", "frames": len(rows),
-            "scope": "4:3 completed GPU samples; speed steps, speaker triangle and progress fill; history occlusion excluded",
+            "scope": "4:3 completed GPU samples; speed steps and progress fill; history occlusion excluded",
             "checked": counts, "levels": sorted(levels), "slots": sorted(slots),
             "failures": failures, "progress_states": progress_states}
 
