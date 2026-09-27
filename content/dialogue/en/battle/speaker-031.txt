@@ -608,11 +608,12 @@
 
 @16553 Brad · ブラッド
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 8/8 句）
+# 审校：同 16495
 > 「くらえぇぇーっ!」
 “Take this!”
 ---
 > 「天・竜・魔・滅・陣!!」
-“Heaven-Dragon-Demon-Destruction-Formation!!”
+“Ten-Ryu-Ma-Metsu-Jin!!”
 
 @16554 Kurtz · カーツ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
