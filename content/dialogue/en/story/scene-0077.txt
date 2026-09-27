@@ -1138,11 +1138,11 @@ he might come back to us, but...”
 “A strong shock, huh...”
 
 @39384
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  タケルの衝撃波をくらわせる
 > *  そんなことは後回し
-* Hit him with Takeru’s Shockwave.
-* Leave that for later.
+* Have Takeru hit him with a shockwave
+* That can wait
 
 @39385 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号

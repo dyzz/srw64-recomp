@@ -889,10 +889,10 @@ For the same reason, there’s no guarantee she won’t help the enemy again.”
 {HeroNick}, what do you think?”
 
 @21290
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  俺は構わないと思うぜ
 > *  俺は反対だな
-* I don’t mind, I say we take her in
+* Fine by me
 * I’m against it
 
 @21291 Brad · ブラッド（按段落 3DD3）
@@ -979,10 +979,10 @@ but we can’t take her with us. I hope you can accept that.”
 “Sorry, everyone.”
 
 @21302
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  あたしは構わないと思うわ
 > *  あたしは……反対だわ
-* I don’t mind, I say we take her in
+* I don’t see a problem
 * I’m... against it
 
 @21303 Manami · マナミ（按段落 3DD4）

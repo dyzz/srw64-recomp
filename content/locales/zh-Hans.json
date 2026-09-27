@@ -1249,7 +1249,7 @@
     {
       "key": "base:t00_00287",
       "source_sha256": "abc824ddfc857a11ae2a01be4eaf072a2ed279160ef19230316ec24410a1dbcd",
-      "target": "惨烈！猛攻下的厄尔布鲁士<END>",
+      "target": "激烈！厄尔布鲁士的猛攻<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1277,7 +1277,7 @@
     {
       "key": "base:t00_00291",
       "source_sha256": "d2fb07f451e8949a76217c80351e1bae5080e523ec6e88c5107b1a921ecb5db1",
-      "target": "成群的杀人机器<END>",
+      "target": "蜂拥而至的杀人机器<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1291,7 +1291,7 @@
     {
       "key": "base:t00_00293",
       "source_sha256": "54d5760f30843ab4f48ee497f61154581f73d024993a14c2bf97833ebf0f3c7f",
-      "target": "少女看见的流星<END>",
+      "target": "少女所见的流星<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1340,7 +1340,7 @@
     {
       "key": "base:t00_00300",
       "source_sha256": "e9bfe570ff33bf2e3fb4cbef16cd4991dc9198df020089a3d4c09d8ab1eada78",
-      "target": "打破卑劣的陷阱！<END>",
+      "target": "粉碎卑劣的陷阱！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1473,7 +1473,7 @@
     {
       "key": "base:t00_00319",
       "source_sha256": "63d4f48ee5ea0cc1f5ceb1c173455f35828192ca89b1c835c89c26de439d08d2",
-      "target": "OZ分裂（前）<END>",
+      "target": "OZ分裂（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1501,7 +1501,7 @@
     {
       "key": "base:t00_00323",
       "source_sha256": "a410282a1d22d298efa9080acfa63903e45a969b13836f3fcf56dc8f2ede67b4",
-      "target": "马斯与玛古<END>",
+      "target": "玛尔斯与玛古<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1522,7 +1522,7 @@
     {
       "key": "base:t00_00326",
       "source_sha256": "388e98fc2e37972100b5c9c0792c979b3fb93ecfc342ca9785b192ae10f2be0a",
-      "target": "向混迷出击<END>",
+      "target": "出击，迎向乱局<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1543,7 +1543,7 @@
     {
       "key": "base:t00_00329",
       "source_sha256": "4bf7f81578cd955e1c36ddb62bfaa18458e6458a2d7db3ff1a721f54fbef6521",
-      "target": "人类的胜利，然后……（前）<END>",
+      "target": "人类的胜利，而后……（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1557,7 +1557,7 @@
     {
       "key": "base:t00_00331",
       "source_sha256": "bb64b317aaadfa278ea842a8c2f5f259ab639ddcb617589313fddadbe02d38f0",
-      "target": "月球攻击<END>",
+      "target": "进攻月球<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1592,7 +1592,7 @@
     {
       "key": "base:t00_00336",
       "source_sha256": "9cd310171cb72f865a34c3469e9c3e9af39b92c1f07d19687f5dbb71c2fa25b5",
-      "target": "心宿于那拳之中<END>",
+      "target": "心寄此拳<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1613,7 +1613,7 @@
     {
       "key": "base:t00_00339",
       "source_sha256": "491be582b8047e488d1bc576aadaffee2dc675e3af8ede21b502502bb653c9dd",
-      "target": "永远的芙（废案）<END>",
+      "target": "永远的凤（废案）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1669,21 +1669,21 @@
     {
       "key": "base:t00_00347",
       "source_sha256": "8fa5a4f909ab1092de9bd955760e26d7bb8772d410ba63bb7fee21d524388098",
-      "target": "战斗的意义为何<END>",
+      "target": "战斗的意义何在<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00348",
       "source_sha256": "966687114d4a341c2baddae191c4f52d599048ac97719a9a531fde1b0a39e132",
-      "target": "桑古王国，崩溃<END>",
+      "target": "桑古王国，覆灭<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00349",
       "source_sha256": "defb0a88a46afdac0704a58357999b2c6c4a27d9a019741eb0953cd2bd0609c4",
-      "target": "突入！摧毁移动要塞！（前）<END>",
+      "target": "突入！摧毁移动要塞！（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1718,7 +1718,7 @@
     {
       "key": "base:t00_00354",
       "source_sha256": "7b0b820096592b5892a27b106c95dec0e9bd68bda89544b9c9d0ed5eacc28fcc",
-      "target": "在纷争不止的世界里（前）<END>",
+      "target": "在纷争不止的世界里（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1760,7 +1760,7 @@
     {
       "key": "base:t00_00360",
       "source_sha256": "ded35dbc0b7c42638eda394c407ee65e946feac576ee2e640f74f8187442767e",
-      "target": "死斗！大屿山大决战（前）<END>",
+      "target": "死斗！大屿山大决战（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1774,7 +1774,7 @@
     {
       "key": "base:t00_00362",
       "source_sha256": "721a41dcab11447c4101a0c5ed67013d4cb467f0534bf96a96be376233a1aaaa",
-      "target": "决死突破作战（前）<END>",
+      "target": "决死突破作战（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1788,7 +1788,7 @@
     {
       "key": "base:t00_00364",
       "source_sha256": "6fe1badd2e67421e87eb839488a2d817014527c4550acf5dd25e174549972221",
-      "target": "即便如此也不放弃（前）<END>",
+      "target": "即便如此，也绝不放弃（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1809,7 +1809,7 @@
     {
       "key": "base:t00_00367",
       "source_sha256": "5704d4d2b7290d3781e0e4e6c470ca2bfa827f4b767bf8f97ef4bad96fb327f7",
-      "target": "决战宙域（前）<END>",
+      "target": "决战宙域（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1823,7 +1823,7 @@
     {
       "key": "base:t00_00369",
       "source_sha256": "36062b7a36a99437f0a1fde92a7f4f9e947705bd0004104a46ec4a80e7618765",
-      "target": "阿克西斯攻防战（前）<END>",
+      "target": "阿克西斯攻防战（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1858,28 +1858,28 @@
     {
       "key": "base:t00_00374",
       "source_sha256": "a58caccba8b0fe8023bbdbd14ce4e4e2bcaa5d04007b94860313388d7f8b15a9",
-      "target": "库斯科绝对防卫线（前）<END>",
+      "target": "库斯科绝对防卫线（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00375",
       "source_sha256": "7f870b7fdf74243df145a802550904259b52716c4c0fcb68a4c147c6b2c63c55",
-      "target": "库斯科绝对防卫线（后）<END>",
+      "target": "库斯科绝对防卫线（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00376",
       "source_sha256": "54b31f160f62a36949e633c8e4bc1e1982d2956f24c6c5b775d5e6a41faaf629",
-      "target": "绝望与悲伤之拳（前）<END>",
+      "target": "绝望与悲伤之拳（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00377",
       "source_sha256": "1f5c308cb928793a08e5858269424f95d5919f704c2494f5022ab10075df20c5",
-      "target": "决战！与皇帝兹尔对决！（前）<END>",
+      "target": "决战！对决祖鲁皇帝！（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1935,14 +1935,14 @@
     {
       "key": "base:t00_00385",
       "source_sha256": "8569aa78b8df0ba5c3447f09ecb7329c2ffe454d01a716363e96f230bd7bb9f8",
-      "target": "恐怖！恶魔阿克西斯启动！（前）<END>",
+      "target": "恐怖！恶魔阿克西斯启动！（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00386",
       "source_sha256": "035653a85be98d08438931f08f0ac6ad520a1b54fe9baba4c31cafe32a7dfdca",
-      "target": "绝叫的宇宙<END>",
+      "target": "嘶吼的宇宙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1970,42 +1970,42 @@
     {
       "key": "base:t00_00390",
       "source_sha256": "7d14ba55dce1be112866046ec80294e2ecd2e1daf3c3e45786aeba4b9aa9dd24",
-      "target": "F91发进<END>",
+      "target": "F91出击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00391",
       "source_sha256": "7d14ba55dce1be112866046ec80294e2ecd2e1daf3c3e45786aeba4b9aa9dd24",
-      "target": "F91发进<END>",
+      "target": "F91出击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00392",
       "source_sha256": "7f16a1ac58d3730107bba9e7e7be8ca459329e01eceeb79109824a99c4fa280f",
-      "target": "豪将军，发进！<END>",
+      "target": "豪将军，出击！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00393",
       "source_sha256": "7f16a1ac58d3730107bba9e7e7be8ca459329e01eceeb79109824a99c4fa280f",
-      "target": "豪将军，发进！<END>",
+      "target": "豪将军，出击！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00394",
       "source_sha256": "15d56febdab1daa2e82fb14d9a27170993bc7a4738668f5e9e0680c613dce232",
-      "target": "赞波3出现！<END>",
+      "target": "赞波3现身！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00395",
       "source_sha256": "15d56febdab1daa2e82fb14d9a27170993bc7a4738668f5e9e0680c613dce232",
-      "target": "赞波3出现！<END>",
+      "target": "赞波3现身！<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2054,14 +2054,14 @@
     {
       "key": "base:t00_00402",
       "source_sha256": "162870edb4fb16f3f8df8c3c007348bcd5da3a22d60ab5c5529fa15c6afae225",
-      "target": "新的同志<END>",
+      "target": "新的战友<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00403",
       "source_sha256": "162870edb4fb16f3f8df8c3c007348bcd5da3a22d60ab5c5529fa15c6afae225",
-      "target": "新的同志<END>",
+      "target": "新的战友<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2075,7 +2075,7 @@
     {
       "key": "base:t00_00405",
       "source_sha256": "2e23e239a2145792888dc33dd5c78a2767985ca6bedf79035ecab3ef463ec25d",
-      "target": "了结之时<END>",
+      "target": "了断之时<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2103,28 +2103,28 @@
     {
       "key": "base:t00_00409",
       "source_sha256": "734c4a49e4e6ac5ace9b651e104cf1a52806f4632f0255fb45e51fc93820b1fe",
-      "target": "OZ分裂（后）<END>",
+      "target": "OZ分裂（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00410",
       "source_sha256": "f685280dfadce40113cb0b245f25adf4a959075b7458f8860cf65a7f5a3ad662",
-      "target": "死斗！大屿山大决战（后）<END>",
+      "target": "死斗！大屿山大决战（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00411",
       "source_sha256": "18448d423bd1f5f22255429760ce82ba29172bd6f630fbc8d82a584cada84430",
-      "target": "决死突破作战（后）<END>",
+      "target": "决死突破作战（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00412",
       "source_sha256": "bd0c2254908fdb1dc0fa64f156fd6cd57df1f5c6bad019e288a319533b3f0b47",
-      "target": "即便如此也不放弃（后）<END>",
+      "target": "即便如此，也绝不放弃（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2138,42 +2138,42 @@
     {
       "key": "base:t00_00414",
       "source_sha256": "a20b81e6a9b3dc2eccea816f9e076ba5d8890b1ec8bc8606040cc1cf602eef03",
-      "target": "阿克西斯攻防战（后）<END>",
+      "target": "阿克西斯攻防战（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00415",
       "source_sha256": "804feebce174693f7e038bec719a5873c839d1580086e4c893f7ac97b27b0abc",
-      "target": "恐怖！恶魔阿克西斯启动！（后）<END>",
+      "target": "恐怖！恶魔阿克西斯启动！（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00416",
       "source_sha256": "879b57e2f7c004e1122a1846a3bea9be23204c3a918715855825cc7df962d764",
-      "target": "突入！摧毁移动要塞！（后）<END>",
+      "target": "突入！摧毁移动要塞！（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00417",
       "source_sha256": "a239301d1c7b925d6e3af4e070aa02fdd7fd63c9ea0ae82846bba2d68e4b2e2f",
-      "target": "在纷争不止的世界里（后）<END>",
+      "target": "在纷争不止的世界里（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00418",
       "source_sha256": "893db5aba7655f43a3272859bd624a4a8288b81b1d8752d139ef94b108d5f96f",
-      "target": "绝望与悲伤之拳（后）<END>",
+      "target": "绝望与悲伤之拳（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00419",
       "source_sha256": "8f34f92df5a6b5d0cdd0df5a4f31a849e59fba461ed87551f927b0b89992967a",
-      "target": "决战！与皇帝兹尔对决！（后）<END>",
+      "target": "决战！对决祖鲁皇帝！（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2187,21 +2187,21 @@
     {
       "key": "base:t00_00421",
       "source_sha256": "16765d7ca512a0035a399299532021c4ca3ba48608b1db567b5b64a92f3c33a2",
-      "target": "人类的胜利，然后……（后）<END>",
+      "target": "人类的胜利，而后……（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00422",
       "source_sha256": "000c98f41cdab083f0709389b944c5016c5c35202f20b71603493f68ab4616cf",
-      "target": "决战宙域（后）<END>",
+      "target": "决战宙域（下）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00423",
       "source_sha256": "208017dc69a7657c2fe85e9aaea6b1b437cab15a09303ec9e2e805d56b9479cd",
-      "target": "我与高达（前）<END>",
+      "target": "我与高达（上）<END>",
       "review_status": "draft",
       "origin": "terms"
     },

@@ -34,7 +34,7 @@ def cmd_dump(args) -> None:
     print(f"### scene {args.scene} {scene['title']} ({len(scene['lines'])} lines)")
     seen = set()
     for line in scene["lines"]:
-        if line.get("kind") != "dialogue" or line["key"] in seen:
+        if line.get("kind") not in ("dialogue", "choice") or line["key"] in seen:
             continue
         seen.add(line["key"])
         key = line["key"]
@@ -44,7 +44,8 @@ def cmd_dump(args) -> None:
         ja = "|".join(source_pages(record, "en"))
         e = "▸".join(localized(en[key]["tr"], "en")) if key in en else "(none)"
         z = "▸".join(localized(zh[key]["tr"], "zh-Hans")) if key in zh else "(none)"
-        print(f"{key.split('_')[1]} {line.get('speaker') or '-'}\n J {ja}\n E {e}\n Z {z}")
+        who = "[选项]" if line.get("kind") == "choice" else line.get("speaker") or "-"
+        print(f"{key.split('_')[1]} {who}\n J {ja}\n E {e}\n Z {z}")
 
 
 def cmd_apply(args) -> None:

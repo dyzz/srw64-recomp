@@ -480,11 +480,11 @@ I’ll leave one jeep behind. The Soldifar will be operated by us.”
 “That’s how it is. We don’t want to die either.”
 
 @18402
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  いきますよ
 > *  もう少し考えさせてください
-* I’ll go.
-* Let me think about it a little longer.
+* I’ll go
+* Let me think about it a little longer
 
 @18403 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号

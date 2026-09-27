@@ -16,7 +16,7 @@ the long war came to an end.
 > そして……
 > 希望……新しい未来。
 What it left behind
-was a weary world, a weary people,
+was a weary planet, a weary people,
 and...
 hope... a new future.
 
@@ -24,16 +24,16 @@ hope... a new future.
 > それを手にするために
 > 戦い続けた若者たちがいた。
 There were young people
-who fought on to win it.
+who never stopped fighting to seize it.
 ---
 > 混沌の中にあった未来は、
 > 彼らによって再び希望を与えられ、
 > 輝きを取り戻していくことだろう。
 > 少しずつ。しかし、着実に。
 The future, once lost in chaos,
-was given hope again by them,
-and will surely shine once more.
-Little by little. But surely.
+has been given new hope by them,
+and will surely regain its light.
+Little by little. But steadily.
 
 @intro:5573 ending 4
 > そしてきっと、人々は忘れない。
@@ -52,12 +52,12 @@ right there.
 
 @intro:5574 ending 5
 > きっと忘れない。
-They will not forget.
+Surely they will not forget
 ---
 > 人の想いの連なりがあるかぎり、
 > 未来の輝きが
 > 失われることはないことを。
-As long as people's hearts stay linked,
+that as long as people’s hearts stay linked,
 the light of the future
 will never be lost.
 
@@ -65,9 +65,9 @@ will never be lost.
 > 戦い疲れた戦士たちは、
 > やがてまた、
 > それぞれの道を歩みだす。
-The warriors, worn out by battle,
-will before long
-each set out on their own path.
+The warriors, weary from battle,
+will before long set out again,
+each on a road of their own.
 ---
 > だから……
 > いまはただ、戦士たちに休息を……

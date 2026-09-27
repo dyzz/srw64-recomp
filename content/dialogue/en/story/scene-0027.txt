@@ -546,10 +546,11 @@ I couldn’t do a thing... I...)
 What, it’s you. Don’t you have a machine to maintain?”
 
 @22134
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  レラと話をする
 > *  レラを艦から降ろそうとする
 > *  無視する
-* Talk with Lera
+* Talk to Lera
 * Try to get Lera off the ship
 * Ignore her
 

@@ -381,11 +381,11 @@ I’ll make you want to fight me.”
 “This time I shall defeat you, {HeroName}. Prepare yourself.”
 
 @19635
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  待って{PartnerName}!
 > *  残念だわ、{PartnerName}
 * Wait, {PartnerName}!
-* I’m sorry, {PartnerName}.
+* What a shame, {PartnerName}
 
 @19636 Manami · マナミ（按段落 3DD4）
 > 「待って{PartnerName}!

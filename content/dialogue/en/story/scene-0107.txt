@@ -2253,10 +2253,11 @@ I want to hear your opinion too.”
 “{HeroNick}, what do you think?”
 
 @33368
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  ロームフェラには従えない
 > *  あくまでもOZとして動く
-* We cannot obey Romefeller.
-* We act as OZ to the very end.
+* We can’t follow Romefeller
+* We act as OZ to the very end
 
 @33369 Ark · アーク（按段落 3DD1）
 > 「……ジャミトフやバスクは危険と思え

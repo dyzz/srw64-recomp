@@ -136,10 +136,11 @@ then we shall simply take appropriate action of our own...”
 “Haman...”
 
 @46238
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  ハマーンと協力するべきだ
 > *  ハマーンと協力すべきではない
-* We should cooperate with Haman.
-* We should not cooperate with Haman.
+* We should cooperate with Haman
+* We should not cooperate with Haman
 
 @46239 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号

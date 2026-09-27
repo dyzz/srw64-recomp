@@ -753,11 +753,11 @@ long ago. That’s the poem’s title.”
 “Oh, that’s nice, isn’t it? What do you think, {HeroNick}?”
 
 @24417
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  それでかまわない
 > *  気に入らない
-* “I’m fine with that.”
-* “I don’t like it.”
+* That’s fine with me
+* I don’t like it
 
 @24418 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
