@@ -685,12 +685,12 @@
 
 @16495 Brad · ブラッド
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 8/8 句）
-# 审校：与 16553 同句统一
+# 审校：招雷 天竜魔滅陣 按词条罗马音（Shorai Tenryu Mametsujin）
 > 「くらえぇぇーっ!」
 “Take this!”
 ---
 > 「天・竜・魔・滅・陣!!」
-“Heaven-Dragon-Demon-Destruction-Formation!!”
+“Ten-Ryu-Ma-Metsu-Jin!!”
 
 @16496 Brad · ブラッド
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈カーツ〉
