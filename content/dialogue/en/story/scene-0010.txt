@@ -968,10 +968,10 @@ Eiji, have you ever thought about what it's like to be the brother of a traitor?
 There's still time. Eiji, surrender to us.”
 
 @18489 Quattro · クワトロ
-# 审校：跨页多余的引号
+# 审校：“别自作主张”对象不清，改为斥责盖尔
 > 「勝手なことを! エイジ・アスカ、
 >  迷いは自分を殺すことになる!
-“You can't just decide that! Eiji Asuka, hesitation will get you killed!
+“Enough of your talk! Eiji Asuka, hesitation will get you killed!
 ---
 >  ここは戦場だぞ!」
 This is a battlefield!”
@@ -1299,17 +1299,19 @@ Get some rest, Eiji.
 “Um, is something...?”
 
 @18536 Bright · ブライト
+# 审校：“既然我们要加入”主语错，是对方加入我们
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「我々、地球解放戦線に
 >  加わる以上、客としての扱いは
-“As long as we're joining the Liberation Front of the Earth, don't expect
+“Now that you’ve joined us in the Liberation Front of the Earth, don’t expect
 ---
 >  期待するな。それから、自分の
 >  機体の整備は自分でやっておけ
-to be treated as a guest. Also, handle the maintenance of your own machine yourself.
+to be treated like a guest. And you’ll handle your own machine’s maintenance.
 ---
 >  人を使ってもいい。お前が責任を
 >  持ってやるんだ。わかったな?」
-You may use others. But you take responsibility for it. Understood?”
+You can use other people. But the responsibility is yours. Understood?”
 
 @18537 Ark · アーク（按段落 3DD1）
 > 「なっ……」

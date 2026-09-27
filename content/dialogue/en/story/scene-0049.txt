@@ -169,10 +169,10 @@ being made to do?”
 “You need something from me?”
 
 @33453 Hilde · ヒルデ
-# 审校：精读：去破折号
+# 审校：do nothing but criticize 别扭
 > 「批判だけなら誰にもできるわ。いまは
 >  OZと一緒に、新しい地球圏を
-“Anyone can do nothing but criticize. Now is the time to build a new Earth
+“Anyone can criticize. Now is the time to build a new Earth
 ---
 >  つくるべき時代よ。私たちはもう、
 >  戦いを恐れてはいない。みんな
@@ -312,9 +312,10 @@ ugly.”
 “Yeah. Now we finally get to crush those Muge bastards.”
 
 @33476 Bask · バスク
+# 审校：英文更自然；中文句子理顺
 > 「奴らも意外にあっさり作戦への
 >  参加を受け入れましたな」
-“They accepted participation in the operation surprisingly easily, didn't they?”
+“They agreed to join the operation surprisingly easily.”
 
 @33477 Jamitov · ジャミトフ
 > 「なにしろ{HeroMech}は、もともと
@@ -349,8 +350,9 @@ to keep using them.”
 “That may be so.”
 
 @33482 Bask · バスク
+# 审校：では 是告辞，不是 Until then
 > 「私はこれより月へ向かいます。では」
-“I'm heading to the moon now. Until then.”
+“I’ll head for the moon now. If you’ll excuse me.”
 
 @33483 Shapiro · シャピロ
 # 审校：原文「来たか」是夏比罗对敌人到来的确认，现有译文“they've come”把对象说成了第三方，应改为直接对敌方的“you've come”。
@@ -604,9 +606,10 @@ launch the Mobile Doll Team!”
 “No way... {PartnerNick}?!”
 
 @33524 Aisha · アイシャ（按段落 3DD4）
+# 审校：“本该已经背叛了”不通；英文理顺
 > 「{HeroName}さん……裏切ったはずが
 >  OZに入り、また裏切る……
-“{HeroName}... You were supposed to have betrayed us, then you joined OZ, and now you betray them again...
+“{HeroName}... You betrayed us once, then joined OZ, and now you betray them too...
 ---
 >  これはいったいどういうことなのです。
 >  破廉恥にもほどがありますわ
@@ -643,13 +646,14 @@ wrong! You've heard that Special Colonel Treize was imprisoned too, haven't you?
 There's trouble even inside OZ, isn't there?!”
 
 @33528 Aisha · アイシャ（按段落 3DD4）
+# 审校：艾莎发怒时不用缩写
 > 「どうして……どうして貴女は
 >  そうも簡単に……。わたくしは……
 “Why... Why can you throw everything away so easily...? I...
 ---
 >  わたくしには守らなければならないものが
 >  あるのです。貴女のように
-I have things I must protect. I can't just do whatever I please
+I have things I must protect. I cannot simply do as I please
 ---
 >  好き勝手にはできないのよ!」
 the way you do!”
@@ -659,13 +663,14 @@ the way you do!”
 “{PartnerNick}, you...”
 
 @33530 Aisha · アイシャ（按段落 3DD4）
+# 审校：艾莎不用缩写
 > 「もうやめましょう、{HeroName}さん。
 >  貴女とわたくしでは、生きる道が
-“Let's stop this, {HeroName}. It seems you and I were simply
+“Let us stop this, {HeroName}. It seems you and I were simply
 ---
 >  違ったということ。……残念ですけれ
 >  ど、しかたがありませんわ」
-meant to walk different paths. ...It's a shame, but there's nothing to be done.”
+meant to walk different paths. ...It is a pity, but there is nothing to be done.”
 
 @33531 Manami · マナミ（按段落 3DD4）
 > 「{PartnerNick}ッ!!」
@@ -713,13 +718,14 @@ too, haven't you?”
 that you truly must cherish!”
 
 @33537 Aisha · アイシャ（按段落 3DD4）
+# 审校：艾莎不用缩写
 > 「もうやめましょう、{HeroName}さん。
 >  貴女とわたくしでは、生きる道が
-“Let's stop this, {HeroName}. It seems you and I were simply
+“Let us stop this, {HeroName}. It seems you and I were simply
 ---
 >  違ったということ。……残念ですけれ
 >  ど、しかたがありませんわ」
-meant to walk different paths. ...It's a shame, but there's nothing to be done.”
+meant to walk different paths. ...It is a pity, but there is nothing to be done.”
 
 @33538 Manami · マナミ（按段落 3DD4）
 > 「{PartnerNick}ッ!!」
@@ -731,26 +737,28 @@ meant to walk different paths. ...It's a shame, but there's nothing to be done.�
 “If you mean to stand in my way... then even if it's you, I won't hold back.”
 
 @33540 Aisha · アイシャ（按段落 3DD4）
+# 审校：艾莎不用缩写
 > 「結構です。わたくしもそのつもりはあり
 >  ません。貴女にはもう何をいっても
-“Fine. I feel the same. It seems there's no point in saying anything more
+“Very well. Nor do I intend to. It seems there is no point in saying anything more
 ---
 >  ムダなようですからね」
 to you.”
 
 @33541 Manami · マナミ（按段落 3DD4）
+# 审校：习语单数
 > 「それはこっちのセリフだわ!」
-“Those are my lines!”
+“That’s my line!”
 
 @33542 Manami · マナミ（按段落 3DD4）
 > 「まさか……{PartnerNick}なの!?」
 “No way... {PartnerNick}?!”
 
 @33543 Aisha · アイシャ（按段落 3DD4）
-# 审校：Same line as L13; Aisha's noblewoman voice should be more formal and precise.
+# 审校：同 33524
 > 「{HeroName}さん……裏切ったはずが
 >  OZに入り、また裏切る……
-“{HeroName}... You were supposed to have betrayed us, then you joined OZ, and now you betray them again...
+“{HeroName}... You betrayed us once, then joined OZ, and now you betray them too...
 ---
 >  これはいったいどういうことなのです。
 >  破廉恥にもほどがありますわ
@@ -769,9 +777,10 @@ Have you no sense of shame at all?”
 “Hmph, so it's Scirocco's unit.”
 
 @33546 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“说是叛乱吗”不通；英文误读
 > 「{HeroMech}……反乱だと
 >  いうが……」
-“{HeroMech}... So you call this rebellion...”
+“{HeroMech}... They call this a rebellion, but...”
 
 @33547 Ark · アーク（按段落 3DD1）
 > 「あいつか……
@@ -841,9 +850,10 @@ that's just how it is. Give it a rest already.”
 the woman they've fallen for to the death?”
 
 @33556 Selain · セレイン（按段落 3DD2）
+# 审校：“也是你们的问题”被译反
 > 「私はいっこうにかまわん。だいたい、
 >  貴様らの問題でもあるはずだぞ」
-“I don't mind at all. Besides, you people have your own problems to deal with.”
+“I don’t mind at all. Besides, this ought to be your side’s problem too.”
 
 @33557 Rish · リッシュ（按段落 3DD2）
 # 审校：リッシュ的痞气口吻要求更多俚语，将 doing something so pointless 改为 pullin' some pointless crap 更贴合其 voice。
@@ -861,12 +871,13 @@ escalate even more. They're really pullin' some pointless crap.”
 “I doubt they'd want to hear that from you.”
 
 @33559 Rish · リッシュ（按段落 3DD2）
+# 审校：クール 是“冷静”不是“冷淡”
 > 「クールだねぇ。前はもう少し過激な
 >  反応があったような気がするんだがな
-“Cold as ever. Before, I feel like you had a bit more of a fiery reaction.
+“Playing it cool, huh. I feel like you used to react a bit more fiercely.
 ---
 >  なんかあったか」
-Did something happen?”
+Something happen?”
 
 @33560 Selain · セレイン（按段落 3DD2）
 > 「き、貴様の知ったことじゃない!
@@ -933,13 +944,13 @@ Any more than this is a waste of time.”
 “...”
 
 @33570 Rish · リッシュ（按段落 3DD2）
-# 审校：リッシュ的痞气口吻要求更随意的表达，将 Good grief 改为 Sheesh 更贴合其 voice。
+# 审校：去掉 can't be helped；中文顺口
 > 「やれやれ、ずいぶんと嫌われちまった
 >  みたいだな。しかたねぇ。つまんねぇことに
-“Sheesh, seems I've gone and gotten myself thoroughly hated. Can't be helped. This is gonna be
+“Sheesh, seems I’ve gone and gotten myself thoroughly hated. Oh well. This is gonna be
 ---
 >  なりそうだが、やるこたやらないとなぁ……」
-a pain, but I've gotta do what I've gotta do...”
+a pain, but I’ve gotta do what I’ve gotta do...”
 
 @33571 主角
 > 「{PartnerFull}!」
@@ -1045,8 +1056,9 @@ then I'll keep fighting, no matter where it takes me.
 I've just made up my mind, that's all.”
 
 @33584 对手
+# 审校：you are 重复别扭
 > 「強いな……君は」
-“You're strong... you are.”
+“You’re strong... truly.”
 
 @33585 主角
 > 「協力しないなら、せめて邪魔は
@@ -1185,9 +1197,10 @@ crush you and your lot right here!”
 “Shapiro, this is the end for you too!”
 
 @33610 Shapiro · シャピロ
+# 审校：笑声写法与场景 50 统一
 > 「クククククッ、愚かな。この
 >  宇宙の神になろうというこの俺に
-“Kukukukuku, how foolish. You think you can beat me, the one who will become
+“Heh heh heh heh, how foolish. You think you can beat me, the one who will become
 ---
 >  勝てるつもりでいるのか」
 the god of this universe?”
@@ -1358,9 +1371,9 @@ We're pulling out from the moon!!”
 “No...”
 
 @33639 Bright · ブライト
-# 审校：与 L2 保持一致，统一为“pulling out of the moon”。
+# 审校：去掉 can't be helped
 > 「やむをえん、月を脱出する」
-“It can't be helped. We're pulling out of the moon.”
+“No choice. We’re pulling out from the moon.”
 
 @33640 Lila · ライラ
 > 「くっ、ジェリド、油断するな!
@@ -1368,14 +1381,14 @@ We're pulling out from the moon!!”
 “Ngh, Jerid, don't let your guard down! This one really is no ordinary pilot!”
 
 @33641 Lila · ライラ
-# 审校：精读：去破折号
+# 审校：心理描写理顺
 > (そうか……私がいま
 >  あの子のことをただ者じゃないといった
-(I see... The very fact that I just called that boy no ordinary pilot.
+(I see... I just called that boy no ordinary pilot.
 ---
 >  このわかり方が無意識のうちに
 >  反感となってしまう。これが……
-That way of understanding turns into resentment without my realizing it. So this is...
+Understanding him that way turns into resentment before I even notice. So this is...
 ---
 >  オールドタイプということか……)
 what it means to be an Oldtype...)
@@ -1462,14 +1475,14 @@ take care that nothing like this happens again.”
 gone from the Earth Sphere now.”
 
 @33657 Roanne · ロアン
-# 审校：精读：去破折号
+# 审校：第三页只剩“似的”，理顺分页
 > 「ようやく……
 >  ようやく、ここまで来たんですね
-“At last... at last, we've made it this far, haven't we,
+“At last... at last, we’ve made it this far,
 ---
 >  僕たちは。火星にムゲ帝国軍が
 >  現れてから、もうずいぶんたったような
-all of us. It feels like so much time has passed since the Muge Empire's forces
+all of us. It feels like so much time has passed since the Muge Empire’s forces
 ---
 >  気がします」
 appeared on Mars.”
@@ -1538,9 +1551,10 @@ Anaheim Electronics.”
 “Anaheim, huh...”
 
 @33668 Quattro · クワトロ
+# 审校：では、確かに 是告辞
 > 「では、確かに。メラニー会長には
 >  よろしくお伝えください」
-“Then it's settled. Please give my regards to Chairman Melanie.”
+“Well then, I’ll be going. Please give my regards to Chairman Melanie.”
 
 @33669 October · オクトバー
 # 审校：全局：帝国軍 Imperial 大写统一
@@ -1611,9 +1625,10 @@ technical exchanges with Anaheim.”
 to meet you.”
 
 @33680 Amuro · アムロ
+# 审校：与另外两处同句统一
 > 「ははは、実物を見てがっかりしたん
 >  じゃないか」
-“Hahaha, I hope the real thing didn't disappoint you.”
+“Hahaha, I bet you were disappointed seeing the real thing.”
 
 @33681 Chan · チェーン
 > 「そんなことないです。
@@ -1844,16 +1859,17 @@ If they learn it was us, the {HeroMech}, who took the lunar base,
 they'll all come flocking.”
 
 @33718 Jun · ジュン
+# 审校：去掉 can't be helped 套话
 > 「敵対していたあたしたちを、トレーズが
 >  自分の直属部隊としてOZに
 “The general view is that Treize took us, his former enemies, into OZ as his own
 ---
 >  入れたっていうのが、一般的な
 >  認識だからね。しょうがないっていえば
-direct unit. If you say it can't be helped,
+direct unit. I suppose there’s no helping it,
 ---
 >  しょうがないんだけど」
-it can't be helped.”
+really.”
 
 @33719 Alan · アラン
 > 「しかし、これは我々にとっても都合
@@ -2194,15 +2210,16 @@ in the Shoal Zone.”
 we can get supplies too, right?”
 
 @33773 Quattro · クワトロ
+# 审校：指的是拉维安罗斯在哪
 > 「そうだ。だが、我々も現在はどこに
 >  いるかはわからん」
-“Yes. But we don't currently know where we are either.”
+“Yes. But we don’t know where it is right now either.”
 
 @33774 Jun · ジュン
-# 审校：原文是反问语气“いったじゃない”，初稿译成陈述句，改为反问更贴切。
+# 审校：指的是拉维安罗斯
 > 「いま暗礁宙域にいるって、いった
 >  じゃない」
-“Didn't you just say we're in the Shoal Zone right now?”
+“Didn’t you just say it’s in the Shoal Zone?”
 
 @33775 Kenji · ケンジ
 > 「暗礁宙域は広大だよ。

@@ -240,9 +240,10 @@ we're away, it won't fall that easily.”
 Normally she'd be insisting we attack the Asteroid no matter what.”
 
 @34300 Masato · 雅人
+# 审校：“不知道啊？”不通；英文 Beats me? 不带问号
 > 「さあ? さっき見た時は、なんだか
 >  調子悪そうだったけど……」
-“Beats me? When I saw her earlier, she looked kind of unwell...”
+“Beats me. When I saw her earlier, she looked kind of out of it...”
 
 @34301 Sally · サリィ
 > 「ではやっぱり……」
@@ -254,9 +255,10 @@ Normally she'd be insisting we attack the Asteroid no matter what.”
 “Indeed. From what I've heard, it seems the cause lies in that system.”
 
 @34303 Shinobu · 忍
+# 审校：英文不自然
 > 「おい、沙羅が倒れたってのは、
 >  いったいどういうことだ!?」
-“Hey, what the hell does it mean that Sara collapsed?!”
+“Hey, what the hell’s this about Sara collapsing?!”
 
 @34304 Sally · サリィ
 > 「ちょっと、私に怒られても困るわよ」
@@ -300,14 +302,14 @@ It's mental.”
 “So how is Sara doing? You said it was a problem with the system...”
 
 @34312 Hasan · ハサン
-# 审校：“you four's”语法不自然，改为“your four's”仍不理想，实际改为“the four of you”更通顺。
+# 审校：首页长定语；your four’s 不是英文
 > 「そうだ。ダンクーガのシステムでは、
 >  君たち4人の、闘争本能を
-“That's right. With the Dancouga's system, the combat energy derived from your four's
+“That’s right. With the Dancouga’s system, the combat energy drawn from the fighting instincts
 ---
 >  源とする戦闘エネルギーが重要に
 >  なってくるわけなんだが、それは多分に
-fighting instincts becomes crucial, and that is largely
+of the four of you becomes crucial, and that is largely
 ---
 >  精神的なものでね。システムを
 >  起動中の負荷は、かなり高いと
@@ -315,7 +317,7 @@ a mental thing. The strain while the system is active is
 ---
 >  推測される。それゆえに沙羅くんの
 >  場合は……」
-estimated to be quite high. Because of that, in Sara's case...”
+estimated to be quite high. Because of that, in Sara’s case...”
 
 @34313 Ryo · 亮
 > 「なるほど、同じように消耗している
@@ -411,8 +413,9 @@ those who died.”
 “Hmm... You're sure about this?”
 
 @34330 Sara · 沙羅
+# 审校：くどい 口语
 > 「くどいよ、艦長」
-“You're being persistent, Captain.”
+“Quit nagging, Captain.”
 
 @34331 Bright · ブライト
 > 「わかった。全員に伝達。
@@ -454,16 +457,17 @@ for love either. In other words, Shapiro, you have no need for anyone.
 That's what this means.”
 
 @34336 Shapiro · シャピロ
+# 审校：第二三页英文别扭
 > 「ククククッ、女よなぁ、ルーナ。
 >  感情の先に、強引に相手の
-“Heh heh heh. Women, honestly, Luna. You try to force out another's thoughts
+“Heh heh heh. Women, honestly, Luna. You try to force out another’s thoughts
 ---
 >  考えを引き出そうとする。だがいずれ
 >  神となるこの私に、それ以上の
-through emotion. But you will not be allowed to speak further to me, who is destined
+through emotion. But I am destined to become a god, and I will not
 ---
 >  口出しは許さん」
-to become a god.”
+tolerate another word from you.”
 
 @34337 Luna · ルーナ
 > 「…………」
@@ -545,12 +549,13 @@ I'm counting on you for the Moon.”
 “Waaaaaaaah!!”
 
 @34352 Duo · デュオ
+# 审校：迪奥口吻
 > 「ちぇっ、やっぱりそんなに甘くはないか。
 >  地上戦用の機体じゃ、この
-“Tch, guess it wouldn't be that easy after all. With a ground-combat unit,
+“Tch, guess it wouldn’t be that easy after all. With a ground-combat unit,
 ---
 >  程度が限界ってのが悲しいぜ……」
-this is the best we can do... It's sad.”
+this is about as far as it goes... Sad, really.”
 
 @34353 Wufei · 五飛
 > 「フン、そうでなければ、こんな施設など
@@ -685,13 +690,14 @@ OZ's MS will become even more powerful. Just do as you're told.”
 “Phew, looks like we managed to survive somehow.”
 
 @34375 Wufei · 五飛
+# 审校：五飞的讽刺口吻
 > 「ああ。ありがとう、おやさしい
 >  技師長どの。ナタク、俺たちは
 “Yes. Thank you, kind Chief Engineer. Nataku, we must
 ---
 >  強くならねばならん。ここには工場が
 >  ある。そこで強くしてもらえるかな
-become stronger. There's a factory here. I wonder if they'll make us stronger there.
+become stronger. There’s a factory here. Maybe they’ll do us the favor.
 ---
 >  ククククッ」
 Heh heh heh.”
@@ -758,9 +764,10 @@ Heh heh heh.”
 pretty worn out, honestly.”
 
 @34389 Ryoma · リョウ
+# 审校：Moon 大写统一
 > 「月へ行ったら、すでにアステロイドへ
 >  出発したあとだと、聞きましてね
-“When we got to the moon, we heard you'd already left for the Asteroid,
+“When we got to the Moon, we heard you’d already left for the Asteroid,
 ---
 >  そのまま追いかけて来たんですよ」
 so we came straight after you.”
@@ -846,9 +853,10 @@ He's still not quite at Musashi's level, though.”
 pretty worn out, honestly.”
 
 @34404 Ryoma · リョウ
+# 审校：Moon 大写统一
 > 「月へ行ったら、すでにアステロイドへ
 >  出発したあとだと、聞きましてね
-“When we got to the moon, we heard you'd already left for the Asteroid,
+“When we got to the Moon, we heard you’d already left for the Asteroid,
 ---
 >  そのまま追いかけて来たんですよ」
 so we came straight after you.”
@@ -933,9 +941,10 @@ He's still not quite at Musashi's level, though.”
 “This is Bright of the Argama.”
 
 @34420 Ryoma · リョウ
+# 审校：Moon 大写统一
 > 「おひさしぶりです、艦長。月へ
 >  行ったら、すでにアステロイドへ
-“It's been a while, Captain. When we got to the moon, they told us you'd
+“It’s been a while, Captain. When we got to the Moon, they told us you’d
 ---
 >  向かったといわれましてね。急いで
 >  追いかけて来ました」
@@ -947,14 +956,14 @@ already headed for the Asteroid. So we hurried after you.”
 “I see. I'm glad you came, Getter Team. But it looks like there's another machine with you...”
 
 @34422 Ryoma · リョウ
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：Moon 大写统一
 > 「ええ。OZの
 >  {PartnerFull}
 “Yes. This is Special Lieutenant {PartnerFull} of OZ.
 ---
 >  特尉です。月で偶然あいましてね
 >  {HeroMech}に合流するつもり
-We happened to run into each other on the moon, and when I heard he intended to join up with the {HeroMech},
+We happened to run into each other on the Moon, and when I heard he intended to join up with the {HeroMech},
 ---
 >  だったというので、同行しました」
 I brought him along.”
@@ -969,12 +978,13 @@ I brought him along.”
 “Huh... What did you say?!”
 
 @34425 Rish · リッシュ（按段落 3DD2）
+# 审校：里修的痞气口吻
 > 「おいおい、ちょっと待ってくれよ。
 >  本人ぬきで、勝手に話を
-“Hey now, hold on a moment. I'd appreciate it if you didn't
+“Hey now, hold on a sec. How about you don’t
 ---
 >  進めないでもらいたいな」
-go and decide things without the man himself here.”
+settle this without the man himself in the room?”
 
 @34426 Bright · ブライト
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -992,9 +1002,10 @@ go and decide things without the man himself here.”
 might have room for one more.”
 
 @34428 Selain · セレイン（按段落 3DD2）
+# 审校：塞莱因对敌冷淡不骂人
 > 「貴様、いったいどういうつもりだ。
 >  アポロ作戦ではロームフェラ派として
-“You bastard, just what are you playing at? In Operation Apollo you fought against us
+“You... just what are you playing at? In Operation Apollo you fought us
 ---
 >  我々と戦ったばかりだろう」
 as part of the Romefeller faction, did you not?”
@@ -1053,9 +1064,10 @@ surpasses the old Getter.”
 “Still, the timing was perfect.”
 
 @34437 Ryoma · リョウ
+# 审校：月を落とした 是攻下月球，不是 dropped
 > 「ああ。みんなが月を落としたと聞いた
 >  んでね、ベンケイの特訓を切りあげて
-“Yeah. When we heard you'd dropped the moon, we cut Benkei's special training short
+“Yeah. When we heard you’d taken the Moon, we cut Benkei’s special training short
 ---
 >  急いで宇宙へ出てきたんだ」
 and hurried out into space.”
@@ -1164,12 +1176,13 @@ In that case, I'm better off on your side. Besides...”
 If the woman you love is a warrior, well, it's better to be her ally than her enemy.”
 
 @34453 Selain · セレイン（按段落 3DD2）
+# 审校：you are 尾缀不像塞莱因
 > 「ふざけた男だな、貴様は。
 >  私は貴様のざれ言につきあうほど
-“You're a flippant man, you are. I don't have the time to
+“What a frivolous man you are. I don’t have time to
 ---
 >  ヒマではない」
-play along with your nonsense.”
+indulge your nonsense.”
 
 @34454 Alan · アラン
 > 「フッ、だがこういう男が
@@ -1211,9 +1224,10 @@ What do you think, {HeroName}?”
 “For now, let's keep him on probation and see how he does.”
 
 @34461 Alan · アラン
+# 审校：对象是里修，不是 you
 > 「そんなところだな。アステロイドでは、
 >  やらせてやってもいいかもしれんが」
-“That's about the size of it. At the Asteroid, though, we might just let you have your fun.”
+“That’s about the size of it. At the Asteroid, though, we might as well let him fight.”
 
 @34462 Quattro · クワトロ
 > 「{HeroName}、監視は君にまかせる」
@@ -1569,13 +1583,14 @@ The universe is calling for me.”
 “Die, Sara. You will now vanish completely from before me.”
 
 @34525 Sara · 沙羅
+# 审校：そいつがいいとこだ 是“顶多如此”
 > 「お得意の神をきどったセリフかい。
 >  シャピロ、あいにくだけどね
-“That's your favorite god-act line, is it. Shapiro, I hate to tell you,
+“That’s your favorite god-act line, is it. Shapiro, I hate to tell you,
 ---
 >  今のあんたは神というより、ただの
 >  道化さ。そいつがいいとこだ
-but right now you're less a god than just a clown. And that's the best part.
+but right now you’re less a god than a clown. That’s the best you’ll ever be.
 ---
 >  シャピロ、あんたとつきあって、あたしは
 >  ひとつだけ喜びを見つけたよ」
@@ -1676,9 +1691,10 @@ So long, Shapiro.”
 “...What became of Gildrome?”
 
 @34545 Bright · ブライト
+# 审校：吉尔德罗姆是人，用“他”
 > 「消えたよ。情報が本当なら、もう
 >  この宇宙にはいないだろう」
-“Gone. If the intel is right, it's no longer in this universe.”
+“Gone. If the intel is right, he’s no longer in this universe.”
 
 @34546 Shinobu · 忍
 > 「おい、冗談じゃねぇぞ!
@@ -1763,9 +1779,10 @@ They may not want to take any more losses.”
 there's nothing we can do about it.”
 
 @34558 Selain · セレイン（按段落 3DD2）
+# 审校：“然而。”单独成句不通
 > 「しかしな。少なくとも今の我々には
 >  為すすべがない。こんな議論は
-“However. At least for now, we have no means to act. Debating this further
+“Be that as it may. For now, at least, there’s nothing we can do. Arguing about it
 ---
 >  時間のムダだろう」
 is a waste of time.”
@@ -1823,9 +1840,10 @@ since that day three years ago has finally become reality.”
 “Yes... though the cost was steep...”
 
 @34566 Quattro · クワトロ
+# 审校：Moon 大写统一
 > 「……艦長、そろそろ月へもどろう。
 >  ロームフェラ派の動きも気になる」
-“...Captain, let's head back to the moon soon. The Romefeller faction's movements worry me too.”
+“...Captain, let’s head back to the Moon soon. The Romefeller faction’s movements worry me too.”
 
 @34567 Bright · ブライト
 > 「あ、ああ。そうだったな」
@@ -1898,14 +1916,14 @@ The fact that you're alive is the real surprise.”
 Talented people are in great demand. For now, just rest and recover.”
 
 @34580 Scirocco · シロッコ
-# 审校：精读：予想を裏切らない
+# 审校：さすがは 套话
 > 「ほう、帝国のアステロイド基地が
 >  壊滅したか。やってくれるな。さすがは
-“Oh? So the Empire's asteroid base has been destroyed. They've done it. Just what I'd expect from
+“Oh? So the Empire’s asteroid base has been destroyed. Impressive. That’s the
 ---
 >  {HeroMech}隊、予想を
 >  裏切らないな」
-the {HeroMech} team. They never disappoint.”
+{HeroMech} team for you. They never disappoint.”
 
 @34581 Jerid · ジェリド
 > 「そんなに落ち着いていてよろしいので?

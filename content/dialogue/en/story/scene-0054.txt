@@ -122,12 +122,14 @@ and I don't want to do this either.”
 “Tch.”
 
 @35625 Masato · 雅人
+# 审校：雅人是对旁人说忍，下一句西蒙娜接“他就那样”
 > 「まったく、忍も素直じゃないんだから」
-“Honestly, Shinobu, you just can't be honest with yourself.”
+“Honestly, Shinobu just can’t be honest with himself.”
 
 @35626 Simone · シモーヌ
+# 审校：口语节奏
 > 「あれはあれで、いいんじゃないの」
-“That's just how he is. Isn't it fine?”
+“That’s just how he is. It’s fine, isn’t it?”
 
 @35627 Sara · 沙羅
 > 「それで、どうなってるんだい?」
@@ -351,17 +353,18 @@ to contact you?”
 “You haven't changed one bit, have you? Still as sarcastic as ever.”
 
 @35666 Lady · レディ
+# 审校：第三页“attached MDs on our side／因为我方的情况”读不通
 > 「よけいなお世話だ、兜甲児。
 >  こちらもすでに手はうった
-“None of your concern, Koji Kabuto. I've already made my move.
+“None of your concern, Koji Kabuto. I’ve already made my move.
 ---
 >  トロワ・バートンとヒイロ・ユイを、
 >  そちらへ向かわせている
-I'm sending Trowa Barton and Heero Yuy your way.
+I’m sending Trowa Barton and Heero Yuy your way.
 ---
 >  こちら側の問題でMDをつけているが
 >  お前たちならば問題はあるまい」
-I've attached MDs on our side, but with you people that shouldn't be a problem.”
+For reasons on my end they have MDs with them, but that shouldn’t be a problem for you.”
 
 @35667 Shinobu · 忍
 > 「チッ、よりによって、
@@ -404,13 +407,14 @@ Either way, he can't stay there forever.”
 “Hold on. You're asking us to do it, but what are you going to do?”
 
 @35673 Lady · レディ
+# 审校：主语是那台高达，不是我们
 > 「私はまだ仕事が残っているのでな。
 >  ……準備を急いでくれ
 “I still have work left to do. ...Hurry and get ready.
 ---
 >  そろそろサイド1の
 >  宙域へ入るころだ」
-We'll be entering the Side 1 space region soon.”
+It should be entering the Side 1 space region any time now.”
 
 @35674 Lady · レディ
 > (さてと……残るはあの2人か。
@@ -470,12 +474,14 @@ It's a wonder we're still alive. I'm not complaining either.”
 “Yeah, yeah. Let's get going, then.”
 
 @35684 Wufei · 五飛
+# 审校：“还一笔账”不顺
 > 「ここの連中に、借りを返してからな」
-“After we repay these people for what they've done.”
+“Right after we settle the score with the people here.”
 
 @35685 Tubarov · ツバロフ
+# 审校：何をされたのか是敬语“您做了什么”，不是“被怎么了”
 > 「おやおや、何をされたのかと思えば」
-“Oh my, and here I wondered what had been done to you.”
+“Oh my. And here I wondered what you had been doing.”
 
 @35686 Tubarov · ツバロフ
 > 「捕虜が脱走した。
@@ -630,12 +636,13 @@ were worthy of death. Come, shoot, Tubarov. In order to affirm yourself.”
 “Miss Lady Une, you are too soft.”
 
 @35702 Lady · レディ
+# 审校：strictly and rightly 不像台词
 > 「かもしれん。しかしこの最後の刻を、
 >  私は人として、地球人として
 “Perhaps. But in this final hour, I believe I have lived as a human being, as an Earthling,
 ---
 >  厳しく、そして正しく生きたつもりだ」
-strictly and rightly.”
+with rigor and with integrity.”
 
 @35703 Duo · デュオ
 # 审校：「新しくしてくれてる」指升级/翻新机体，初稿“give them new ones”易误解为给了新机体；改为 upgrade them。
@@ -764,16 +771,17 @@ on a path we can believe in.”
 “Hmph, reinforcements? It makes no difference how many come. Let's go, Nataku!”
 
 @35723 Duo · デュオ
+# 审校：that's just his personality 生硬
 > 「お、おい、待てよ五飛! ちぇっ、
 >  もう少しくらいつきあってくれても
-“H-Hey, wait up, Wufei! Sheesh, you could've kept me company a little longer.
+“H-Hey, wait up, Wufei! Sheesh, you could’ve kept me company a little longer.
 ---
 >  いいじゃないかよ。ま、あいつの性格
 >  じゃ、しかたないか。じゃあな、ヒルデ
-Well, I guess that's just his personality. See you, Hilde,
+Well, that’s just how he is. See you, Hilde,
 ---
 >  俺もそろそろ、行かせてもらうとするわ」
-I'd better get going too.”
+I’d better get going too.”
 
 @35724 Hilde · ヒルデ
 > 「待って、デュオ!」
@@ -808,9 +816,10 @@ I might end up dead just like that. If you're okay with that... come with me.”
 “Yeah... so you did. Then let's go!”
 
 @35730 Shinobu · 忍
+# 审校：下のギャリソン是地面上的加里森，不是楼下
 > 「アラン、何かわかったのかよ。さっきの
 >  連絡、下のギャリソンからだろ」
-“Alan, did you find something out? That call just now was from Garrison downstairs, right?”
+“Alan, did you find something out? That call just now was from Garrison down on the surface, right?”
 
 @35731 Alan · アラン
 > 「ああ、面白いことがわかったよ」
@@ -865,9 +874,10 @@ Brigadier General Blex is involved.”
 “Probably to keep Romefeller's Jamitov in check.”
 
 @35740 Amuro · アムロ
+# 审校：on the surface now, worn out 读不顺
 > 「しかし、今の混乱し
 >  疲弊した地上で
-“But on the surface now, worn out and in chaos,
+“But with the surface the way it is now, worn out and in chaos,
 ---
 >  国を再興するなどということが、
 >  可能なのか?」
@@ -925,9 +935,10 @@ the possibility that Takeru is an alien.”
 “That's about the size of it.”
 
 @35749 Kenji · ケンジ
+# 审校：Something like that 不是感叹
 > 「そんなことが……。
 >  タケルはそのことを知っているんですか?」
-“Something like that... Does Takeru know about this?”
+“How could that be... Does Takeru know about this?”
 
 @35750 Alan · アラン
 > 「ここへもどる途中、
@@ -1230,8 +1241,9 @@ Kamille, come in the Re-GZ.”
 “...Things sure are hectic all of a sudden. What's about to happen?”
 
 @35806 Chibodee · チボデー
+# 审校：ちょっとな不是“稍等”
 > 「ちよっとな、戦闘だ」
-“Hold on a sec. It's a battle.”
+“Just a little something. There’s a battle.”
 
 @35807 Judau · ジュドー
 > 「戦闘? コロニーの中でか!?」
@@ -1292,13 +1304,14 @@ Kamille, come in the Re-GZ.”
 “Huh?”
 
 @35820 Amuro · アムロ
+# 审校：sense 改 knack
 > 「聞いた話では、君は初めて乗る
 >  MSを動かしてみせたらしいね。危うく
-“From what I hear, you managed to move a mobile suit on your first try. I'm told you nearly
+“From what I hear, you managed to move a mobile suit on your first try. I’m told you nearly
 ---
 >  逃げられるところだったと聞いている。
 >  君のそのセンスを、俺たちに
-got away from us. Won't you lend us that sense of
+got away from us. Won’t you lend us that knack of
 ---
 >  貸してくれないか」
 yours?”
@@ -1332,9 +1345,10 @@ yours?”
 back during the Muge days either...”
 
 @35826 Amuro · アムロ
+# 审校：第二句直译腔
 > 「あの頃とは違う。そんなことを
 >  いってられる状況ではないんだ」
-“This isn't like back then. This isn't a situation where you can say things like that.”
+“This isn’t like back then. We’re not in a situation where you can say that.”
 
 @35827 Judau · ジュドー
 > 「どういうことさ?」
@@ -1451,12 +1465,13 @@ And then the colonies might be done for too.”
 “So, have you reached a decision?”
 
 @35850 Judau · ジュドー
+# 审校：世話になる不是 counting on
 > 「ああ……まあね。あんたらと一緒に
 >  いくことにしたよ。俺たち全員、
-“Yeah... I guess. We've decided to go with you. All of us are
+“Yeah... I guess. We’ve decided to go with you. All of us are
 ---
 >  {HeroMech}に世話になる」
-counting on the {HeroMech}.”
+coming aboard the {HeroMech}.”
 
 @35851 Amuro · アムロ
 > 「そうか……よく決心してくれた」
@@ -1519,9 +1534,10 @@ I see... understood.”
 like I'd just hand it over!”
 
 @35863 Amuro · アムロ
+# 审校：去掉 It can't be helped
 > 「しかたがない。カミーユ、
 >  下からまわれ。押さえるぞ」
-“It can't be helped. Kamille, go around from below. We're pinning him down.”
+“No choice. Kamille, go around from below. We’ll pin him down.”
 
 @35864 Kamille · カミーユ
 > 「了解」
@@ -1614,12 +1630,13 @@ Probably that Gundam and a pursuit squad. Be careful!”
 “What are you doing?! Hurry, or else...”
 
 @35883 Amuro · アムロ
+# 审校：第二页口语化
 > 「君、聞こえるな。
 >  コロニーを守りたければ、君も戦え
-“You can hear it, can't you? If you want to protect the colony, then fight too.
+“You can hear it, can’t you? If you want to protect the colony, then fight too.
 ---
 >  守るべきものがあるなら、できるはずだ」
-If there's something you must protect, you should be able to do it.”
+If you’ve got something to protect, you can do it.”
 
 @35884 Judau · ジュドー
 > 「俺が!? ……わかったよ。
@@ -1701,8 +1718,9 @@ I'll have to kill you all.”
 “How awful...”
 
 @35899 Bright · ブライト
+# 审校：卡特尔只是宣言，还没动手；中英统一
 > 「くっ、なんということを……」
-“Ngh, what have you done...”
+“Ngh, what are you saying...”
 
 @35900 Koji · 甲児
 > 「カトル! いったい
@@ -1734,19 +1752,19 @@ This isn't like you at all!!”
 “Trowa and Heero?”
 
 @35906 Trowa · トロワ
-# 审校：原文「頼む」是托罗瓦请布莱特处理MD，译文“leave the MDs to us”把对象搞反了，应为“to me”。
+# 审校：MDの始末を頼む是请对方处理，英文译反
 > 「そうだ。すまないが、
 >  MDの始末を頼む」
-“That's right. Sorry, but leave the MDs to me.”
+“That’s right. Sorry, but I need you to handle the MDs.”
 
 @35907 Bright · ブライト
-# 审校：原文「お前たちにつけた部隊」是“派给你们的部队”，译文“assigned to us”方向反了。
+# 审校：weren't you part of the unit 不通
 > 「それはやっているが……レディ・アンが
 >  お前たちにつけた
-“We're already on it... but weren't you part of the unit
+“We’re already on it... but wasn’t that the unit
 ---
 >  部隊ではなかったのか?」
-Lady Une assigned to you?”
+Lady Une attached to you?”
 
 @35908 Trowa · トロワ
 > 「偽装だ。あの女は俺たちを、
@@ -1821,13 +1839,14 @@ Not until I erase everything with this Wing Zero.”
 “You mean the Winner family's resource satellite? You were never that weak.”
 
 @35918 Quatre · カトル
+# 审校：卡特尔是直接对大家说，不是托人转告
 > 「……みんなにもいっておくよ。
 >  もう僕の前に現れないで
-“...I'll tell everyone too. Don't appear before me again.
+“...This goes for all of you, too. Don’t show up in front of me again.
 ---
 >  じゃないと、みんなも
 >  倒さなくちゃならなくなる」
-Otherwise, I'll have to defeat all of you as well.”
+Otherwise, I’ll have to take you all down as well.”
 
 @35919 Shinobu · 忍
 > 「なんだと、てめぇ! わけのわかんねぇ
@@ -1876,9 +1895,10 @@ I fight believing in myself. Quatre... I'll kill you.”
 “Quatre, stop it!”
 
 @35926 Quatre · カトル
+# 审校：反问补 didn't I
 > 「近寄らないでって、
 >  いってるだろぉぉ!?」
-“I told you not to come near me?!”
+“I told you not to come near me, didn’t I?!”
 
 @35927 Trowa · トロワ
 > 「くっ……!!」
@@ -2211,13 +2231,13 @@ permission to launch!”
 “What did you say?”
 
 @35982 Takeru · タケル
-# 审校：精读：去破折号
+# 审校：两页拼成一句
 > 「信じてください。オレの
 >  地球を守りたいという気持ちに
-“Please believe me. My desire to protect the Earth.
+“Please believe me. My wish to protect the Earth
 ---
 >  嘘はありません!」
-There's no lie in it!”
+is no lie!”
 
 @35983 Bright · ブライト
 > 「……わかった」
@@ -2337,9 +2357,10 @@ The one controlling it is the commander's unit... so that's how it is...)
 “Grr, the operation's a failure! Curse you Earthlings!”
 
 @36008 Takeru · タケル
+# 审校：“炸弹的控制已经解除”直译
 > 「マーグ、爆弾のコントロールはこれで
 >  解除された。……ケガをしたのか!?」
-“Marg, the bomb's control has been released now. ...Are you injured?!”
+“Marg, the bomb’s out of their control now. ...Are you injured?!”
 
 @36009 Marg · マーグ
 > 「だ……大丈夫だ……」
@@ -2360,9 +2381,10 @@ The one controlling it is the commander's unit... so that's how it is...)
 “Marg?! Hang on, we'll recover you right away.”
 
 @36013 Takeru · タケル
+# 审校：同 36008；待避是退后不是避难
 > 「マーグ、爆弾のコントロールはこれで
 >  解除された。待避していてくれ」
-“Marg, the bomb's control has been released now. Stay back.”
+“Marg, the bomb’s out of their control now. Stay back.”
 
 @36014 Marg · マーグ
 > 「わ、わかった。そうさせてもらう」
@@ -2404,14 +2426,14 @@ The one controlling it is the commander's unit... so that's how it is...)
 Don't worry.”
 
 @36022 Marg · マーグ
-# 审校：原文是确认语气的「のだったな」，译文用疑问句更自然，且原译的“weren't you”语法与口吻都不对。
+# 审校：补冠词和问号
 > 「ああ……地球のことは調査ずみ
 >  だった。{HeroMech}は現在
-“Yes... We had already surveyed Earth. {HeroMech} is currently
+“Yes... We had already surveyed Earth. The {HeroMech} is currently
 ---
 >  地球を支配している勢力に
 >  反抗しているのだったな」
-resisting the forces that control the Earth, isn't it.”
+resisting the forces that control the Earth, isn’t it?”
 
 @36023 Takeru · タケル
 > 「そうだ」
@@ -2676,9 +2698,10 @@ Battle is unavoidable.”
 “The advance fleet... so that wasn't their main force?”
 
 @36064 Marg · マーグ
+# 审校：ええ 是肯定对方的推测
 > 「ええ。マーズを殺すために派遣された
 >  艦隊です。それがかなわぬとなれば
-“No. It was a fleet dispatched to kill Mars. If it fails,
+“Right. It was a fleet dispatched to kill Mars. If it fails,
 ---
 >  すぐに次の艦隊が派遣されてくる
 >  でしょう。銀河帝国は強大です
@@ -2754,18 +2777,19 @@ that's where it all ends.”
 “I've heard the story. It seems things are becoming serious once again.”
 
 @36073 Bright · ブライト
+# 审校：this much attack 不通
 > 「ええ。まさかこれほど
 >  異星人からの攻撃があるとは
-“Yes. I never imagined there would be this much attack from aliens.
+“Yes. I never imagined the aliens would come at us on this scale.
 ---
 >  思いもよりませんでした」
 It never even crossed my mind.”
 
 @36074 Ciela · シーラ
-# 审校：精读：去破折号
+# 审校：去掉 It can't be helped
 > 「しかたありませんね。ブライト艦長、
 >  我々の、この星を守り平和を
-“It can't be helped. Captain Bright, let us believe in our noble cause, to protect
+“There is nothing for it. Captain Bright, let us believe in our noble cause, to protect
 ---
 >  もたらすという大義を信じましょう。
 >  そうでなくては戦いぬくことはできません」
@@ -3116,9 +3140,10 @@ We need every bit of fighting strength we can get.”
 didn't have it all that bad...”
 
 @36129 Amuro · アムロ
+# 审校：同 35826
 > 「あの頃とは違う。そんなことを
 >  いってられる状況ではないんだ」
-“This isn't like back then. This isn't a situation where you can say things like that.”
+“This isn’t like back then. We’re not in a situation where you can say that.”
 
 @36130 Judau · ジュドー
 > 「どういうことさ?」
@@ -3243,12 +3268,13 @@ stay safe and sound.”
 “So, have you reached a conclusion?”
 
 @36154 Judau · ジュドー
+# 审校：同 35850
 > 「ああ……まあね。あんたらと一緒に
 >  いくことにしたよ。俺たち全員、
-“Yeah... you could say that. We've decided to go with you. All of us
+“Yeah... you could say that. We’ve decided to go with you. All of us
 ---
 >  {HeroMech}に世話になる」
-will be in your care on the {HeroMech}.”
+are coming aboard the {HeroMech}.”
 
 @36155 Amuro · アムロ
 > 「そうか……よく決心してくれた」

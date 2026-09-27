@@ -144,17 +144,18 @@ my utmost.”
 to carry out their dull deeds...)
 
 @24741 Bask · バスク
+# 审校：have had searched 别扭
 > 「奴らの動きをとらえたと、報告が
 >  あった。かねてより探させていた
-“We have a report that we have caught their movements. They are believed to be
+“We have a report that their movements have been detected. They are believed to be
 ---
 >  ドック艦ラビアンローズと合流すると
 >  考えられる。諸君らには
-rendezvousing with the dock ship La Vie en Rose, which we have long had searched for.
+rendezvousing with the dock ship La Vie en Rose, which we have long been searching for.
 ---
 >  ラビアンローズを発見し、破壊する
 >  任務が与えられる」
-You are all given the mission to find and destroy La Vie en Rose.”
+Your mission is to locate and destroy La Vie en Rose.”
 
 @24742 Gaia · ガイア
 > 「我々はすでにアポロ作戦に
@@ -175,10 +176,10 @@ We must crush them while we still can.”
 “Understood, Special Colonel Bask.”
 
 @24745 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：句式生硬
 > 「特佐、今の状況で彼らに対し
 >  そこまでやる理由が、わかりかねますが」
-“Special Colonel, I fail to understand the reason for going that far against them in the current situation.”
+“Special Colonel, in the current situation, I fail to see why we need to go that far against them.”
 
 @24746 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「ぐっ……」
@@ -278,14 +279,14 @@ proves to be an honorable one.”
 When the operation ends, I expect a good report. That is all.”
 
 @24760 Rish · リッシュ（按段落 3DD2）
-# 审校：Rish 的 voice 要求大量缩略语和痞气，原文「いったいどういうつもりだ」「つまんねぇことになりそうだぜ」改为更口语的 “what the hell's he thinking” 和 “gonna” 更贴合。
+# 审校：つまんねぇこと 不是 boring／无聊透顶
 > (ちっ、気にいらねぇ。
 >  まったく気にいらねぇぜ
-(Tch, I don't like it. I really don't like it.
+(Tch, I don’t like it. I really don’t like it.
 ---
 >  バスクめ……いったいどういうつもりだ。
 >  くそっ、つまんねぇことになりそうだぜ…)
-That Bask... what the hell's he thinking? Damn, this is gonna turn into something boring...)
+That Bask... what the hell’s he thinking? Damn, this is gonna be a real drag...)
 
 @24761 Gaia · ガイア
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -318,13 +319,13 @@ When the operation ends, I expect to hear a good report.”
 “Special Lieutenant Jerid and Special Lieutenant Mouar, reporting in.”
 
 @24766 Bask · バスク
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：memorial battle 直译
 > 「来たか。ジェリド特尉、貴官は
 >  ライラ特尉とカクリコン特尉の
-“So you've come. Special Lieutenant Jerid, you had requested a
+“So you’ve come. Special Lieutenant Jerid, you’d asked for a chance to avenge
 ---
 >  弔い合戦を希望していたな」
-memorial battle for Special Lieutenant Lila and Special Lieutenant Kacricon.”
+Special Lieutenant Lila and Special Lieutenant Kacricon.”
 
 @24767 Jerid · ジェリド
 > 「はい。奴らに怨念返しをしなければ
@@ -332,10 +333,10 @@ memorial battle for Special Lieutenant Lila and Special Lieutenant Kacricon.”
 “Yes. I won't rest until I've paid those bastards back in kind.”
 
 @24768 Bask · バスク
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：“赐予”过重；英文更顺
 > 「その気合いに期待し、貴官らに
 >  特別任務を与える。これは
-“I expect great things from that fighting spirit. I'm giving you a special mission. This is
+“Counting on that spirit, I’m giving you both a special mission. This is
 ---
 >  ガイア特尉も知らぬことだ」
 something even Special Lieutenant Gaia does not know.”
@@ -512,13 +513,14 @@ who made him that way...)
 “That's him... Strange. My hatred feels fainter than before...”
 
 @24798 Rish · リッシュ（按段落 3DD2）
+# 审校：“有缘啊？”问号错位；英文口语化
 > (バカが、そう都合よくいくかよ。
 >  ありゃ連中のトップエースどもだぜ
-(Don't be a fool. Like it'd go that conveniently. Those are their top aces.
+(Idiot. Like it’ll go that smoothly. Those are their top aces.
 ---
 >  フッ、俺たちゃつくづく縁があるって
 >  気がしてきたぜ? なぁ{HeroNick})
-Heh, I get the feeling we're bound by fate, don't you think? Right, {HeroNick}?)
+Heh, I’m starting to think we’re bound by fate, you and me. Right, {HeroNick}?)
 
 @24799 Selain · セレイン（按段落 3DD2）
 > 「……あいつか。しつこい奴だ。
@@ -603,17 +605,19 @@ understand what I'm saying?”
 that's all there is to it!”
 
 @24811 Rish · リッシュ（按段落 3DD2）
+# 审校：can't be helped 日语腔
 > 「ま、そりゃそうだ。しかたがねぇか」
-“Well, I suppose so. Can't be helped, huh.”
+“Well, fair enough. Guess that’s that.”
 
 @24812 Selain · セレイン（按段落 3DD2）
+# 审校：もの好き 不是 glutton for punishment
 > 「フン、貴様もあいかわらず、もの好き
 >  な奴だな。そんなふざけたことばかり
-“Hmph, you're as much a glutton for punishment as ever. It's because you keep spouting
+“Hmph, you’re as strange as ever. It’s because you keep spouting
 ---
 >  しているから、いつも負けて帰るハメに
 >  なる」
-that kind of nonsense that you always end up losing and going home.”
+that kind of nonsense that you always end up going home beaten.”
 
 @24813 Rish · リッシュ（按段落 3DD2）
 > 「あいにくと運だけはよくてな。お前にや
@@ -626,9 +630,9 @@ that kind of nonsense that you always end up losing and going home.”
 “Is that so? Then why not try again this time?!”
 
 @24815 Rish · リッシュ（按段落 3DD2）
-# 审校：リッシュ的痞气口吻应更口语化，guess there's no helping it 偏书面，改为 can't be helped 更自然。
+# 审校：can't be helped 日语腔
 > 「おっと、そうくるかよ。ま、しゃーねぇわな」
-“Whoa, so that's how it is. Well, can't be helped.”
+“Whoa, so that’s how it’s gonna be. Well, guess I’ve got no choice.”
 
 @24816 Selain · セレイン（按段落 3DD2）
 > 「貴様が何をいおうと、敵である
@@ -811,9 +815,10 @@ You bastards! Why do you always...!!”
 “Ngh... Jerid... Don't forget. I'll always be by your side...”
 
 @24853 Kamille · カミーユ
+# 审校：“对了”“I'm sure”不贴
 > 「なんで……あんなに保ったんだ……
 >  確か、マウアーって……」
-“Why... did he hold out that long...? I'm sure she was called Mouar...”
+“How... did he hold out that long...? That was... Mouar, wasn’t it...”
 
 @24854 Gaia · ガイア
 > 「うおぉっ!? この我らが……黒い
@@ -1064,9 +1069,9 @@ A new Gundam. You can't do that, can you?”
 “Hey, you wait right there! Amuro!”
 
 @24900 David · デビッド
-# 审校：原文是自言自语式的感叹，去掉多余的 huh 更贴合戴维的冲动口吻。
+# 审校：口语化
 > 「……なんかすげぇもん見ちまったな」
-“...We just saw something pretty crazy.”
+“...Well, that was something.”
 
 @24901 Boss · ボス
 > 「まったくだわさ」

@@ -186,12 +186,13 @@ about that.”
 look a great deal like him.”
 
 @27410 Dr. Yotsuya · 四谷博士
+# 审校：英文口语化；中文“我有事的只有酒”不通
 > 「ふん、いけすかん奴だな。いかにもわしが
 >  四谷だ。だがお前たちには用はない
-“Hmph, you're an unpleasant one. Fine, I'm Yotsuya. But I've no business with you.
+“Hmph, you’re an unpleasant one. Fine, I’m Yotsuya. But I’ve got no business with you.
 ---
 >  わしが用のあるのは酒だけだ」
-The only business I have is with liquor.”
+The only business I’ve got is with liquor.”
 
 @27411 Banjo · 万丈
 # 审校：万丈对博士自称“僕”，此处应译为“I”而非“we”，以符合其个人口吻。
@@ -376,26 +377,27 @@ If you're not an enemy, they'll accept just about anything, you see.”
 “Special Lieutenant {PartnerSurname}, how is the {HeroMech}?”
 
 @27436 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：精读：去破折号
+# 审校：去掉 As expected of
 > 「はっブライト艦長。OZとの雰囲
 >  気の違いにとまどっておりますが
-“Yes, Captain Bright. I'm still confused by how different the atmosphere is from OZ,
+“Yes, Captain Bright. I’m still adjusting to how different the atmosphere is from OZ,
 ---
 >  それ以外は特に問題はありません
 >  活力を感じます。さすがは
-but other than that there are no particular problems. I can feel the vitality. As expected of
+but other than that there are no problems at all. There’s real vitality here. Just what you’d expect
 ---
 >  ブライト艦長のおられる部隊だと
 >  感心しておりました」
-a unit where Captain Bright is present. I was impressed.”
+from a unit under Captain Bright. I’ve been impressed.”
 
 @27437 Bright · ブライト
+# 审校：“my power”“我的力量”直译
 > 「別に私の力ではないさ。しかし、その
 >  言葉づかいはここでは不要だ
-“It's not my power in particular. However, that way of speaking isn't necessary here.
+“That’s hardly my doing. But there’s no need for that kind of talk here.
 ---
 >  普通にしてくれれば、それでいい」
-If you just act normally, that's enough.”
+Just act normally, and that’s enough.”
 
 @27438 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「わかりました。そうさせていただきます」
@@ -655,8 +657,9 @@ It'll be a good reference.”
 “I see... Maybe that's why I could never beat you.”
 
 @27479 Brad · ブラッド（按段落 3DD3）
+# 审校：接上句 that’s why
 > 「なにがだ?」
-“Why what?”
+“Because of what?”
 
 @27480 Kurtz · カーツ（按段落 3DD3）
 > 「前にいったことがあったな。仲間
@@ -811,8 +814,9 @@ Lawrence well, after all.”
 sweet girl.”
 
 @27502 Koji · 甲児
+# 审校：“huge mistake”“差得太多”不像接话
 > 「ちょっとぉ? かなりの間違いだろ」
-“A bit? That's a huge mistake.”
+“A bit? That’s putting it mildly.”
 
 @27503 Manami · マナミ（按段落 3DD4）
 > 「でも半分くらいは演技よ。
@@ -886,10 +890,10 @@ in full force.”
 “Calm down, Mika. What happened?”
 
 @27516 Mika · ミカ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：同 26990
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
-“Probably a Gishin psychic! Your brother was taken, and Takeru
+“Probably a Gishin psychic! His brother was taken, and Takeru
 ---
 >  それを追ってガイヤーで……」
 chased after them in the Gaia...”
@@ -1351,8 +1355,9 @@ already decided, isn't it?”
 “Heh, Mycenae, of course.”
 
 @27595 Daisaku · 大作
+# 审校：同 27069
 > 「そうですよね、やっぱり」
-“That's right, isn't it. Of course.”
+“Yeah, that’s how it should be.”
 
 @27596 Amuro · アムロ
 # 审校：原文是向舰长汇报情况的语气，现有译文“You heard them”过于随意，不符合阿姆罗对布莱特舰长的敬语分寸。
@@ -1607,16 +1612,17 @@ I want to link up with them before that.”
 Everyone, hurry.”
 
 @27648 Marquis Janus · ヤヌス侯爵
+# 审校：同 27120
 > 「なに? 人間どもが
 >  攻めてきただと!? おのれ
 “What? The humans are attacking?! Curse them!
 ---
 >  わがミケーネ闇の帝国の復活、
 >  邪魔はさせぬぞ!
-You will not interfere with the revival of our Mycenae Empire of Darkness!
+They will not interfere with the revival of our Mycenae Empire of Darkness!
 ---
 >  返り討ちにしてくれるわ!!」
-We'll drive them back!!”
+We’ll crush them where they stand!!”
 
 @27649 Alan · アラン
 > 「あれはダイターン3! 万丈か!?」
@@ -1662,10 +1668,10 @@ By the way, who's that one over there?”
 “Hehe, you never change, do you? I'm glad we can be together again.”
 
 @27655 Lawrence · ローレンス
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：劳伦斯按口吻卡称“万丈先生／Mr. Banjo”
 > 「ところで万丈様、そちらのロボットは
 >  どちら様で?」
-“By the way, Banjo, who might that robot over there belong to?”
+“By the way, Mr. Banjo, whose robot might that one over there be?”
 
 @27656 Banjo · 万丈
 > 「南原博士の建造した
@@ -1745,9 +1751,10 @@ I'm Hyoma Aoi. Well, I'll be counting on you.”
 Let's wrap this up quick and treat ourselves to a little space vacation.”
 
 @27667 Marquis Janus · ヤヌス侯爵
+# 审校：同 27134
 > 「おのれ、ふざけおって。奴らを生かして
 >  帰すな!!」
-“Curse you, you mock us! Don't let a single one of them leave alive!!”
+“Curse you, insolent wretch! Don’t let a single one of them leave alive!!”
 
 @27668 Marquis Janus · ヤヌス侯爵
 > 「こ、こんな…………」
@@ -1798,8 +1805,9 @@ Let's wrap this up quick and treat ourselves to a little space vacation.”
 do as you please.”
 
 @27678 Banjo · 万丈
+# 审校：つけられた 是被跟踪，不是被偷袭
 > 「しまった、僕らがつけられたのか!?」
-“Damn, did they get the drop on us?!”
+“Damn, were we followed?!”
 
 @27679 Kamille · カミーユ
 > 「あいつ……ジェリドか!」
@@ -1970,12 +1978,13 @@ they won't make it in time. Rendezvous with them within ten minutes.”
 “Bright, we've just finished recovering all units. Let's depart at once.”
 
 @27709 Bright · ブライト
+# 审校：“shock of atmospheric escape”“冲击准备”生硬
 > 「よし、ブースターを点火しろ。
 >  各員、大気圏離脱の
 “All right, ignite the boosters. Everyone, brace for the
 ---
 >  衝撃にそなえろ!」
-shock of atmospheric escape!”
+jolt of leaving the atmosphere!”
 
 @27710 Bright · ブライト
 > 「くっ……しまった」
@@ -2235,13 +2244,14 @@ which was nearly complete.”
 whittle down OZ's forces. It's close to suicide.”
 
 @27755 Ryoma · リョウ
+# 审校：同 27376
 > 「落ち着いている場合か、ハヤト。
 >  そいつらが自殺するのはいいが
-“Is this the time to stay calm, Hayato? If they want to kill themselves, fine,
+“This is no time to be calm, Hayato. If they want to kill themselves, fine,
 ---
 >  地球圏がまきぞえになるのは
 >  ごめんだぜ」
-but I won't stand for the Earth Sphere getting dragged into it.”
+but I won’t stand for the Earth Sphere getting dragged into it.”
 
 @27756 Alan · アラン
 > 「その様子ではお前たちも聞いたよう

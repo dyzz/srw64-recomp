@@ -42,9 +42,10 @@ this Byston Well place... does it really exist?”
 “Everyone~, food's ready~”
 
 @20815 Roux · ルー
+# 审校：“When they show you”直译
 > 「羽根はえて空飛んでる
 >  “妖精”なんて見せられたらねぇ」
-“When they show you a ‘fairy’ with wings flying through the sky, you kind of have to.”
+“Well, once you’ve seen a winged ‘fairy’ flitting around, what can you say?”
 
 @20816 Show · ショウ
 # 审校：人名按词表统一
@@ -64,8 +65,9 @@ this Byston Well place... does it really exist?”
 “But are they really coming to a place like this?”
 
 @20819 Bright · ブライト
+# 审校：“a little too late”意思偏；中文接上句
 > 「そのはずだが……少し遅すぎるな」
-“They should be... but they're a little too late.”
+“They should be... but they’re running a bit late.”
 
 @20820 Amuro · アムロ
 > 「敵と接触した可能性も
@@ -89,9 +91,10 @@ this Byston Well place... does it really exist?”
 “But something about it seems off.”
 
 @20825 Bright · ブライト
+# 审校：確認させろ 是让人去确认
 > 「確認させろ。
 >  総員、戦闘配置につけ」
-“Let me confirm it. All hands, battle stations.”
+“Get me confirmation. All hands, battle stations.”
 
 @20826 Ginrei · 銀鈴
 > 「くっ、だめ、追いつかれる!?」
@@ -603,9 +606,10 @@ were meant to pin us down!”
 to be wiped out here.”
 
 @20913 Bright · ブライト
+# 审校：去掉 It can't be helped
 > 「……しかたがない。全機、戦域を
 >  急速離脱! 急げよ!」
-“...It can't be helped. All units, withdraw from the battle zone immediately! Hurry!”
+“...No choice. All units, withdraw from the battle zone at once! Move!”
 
 @20914 Beltorchika · ベルトーチカ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -643,13 +647,13 @@ There's no way we can hold out!”
 I will defeat you!”
 
 @20920 对手
-# 审校：合并：misc 与 scene 批次三方合并
+# 审校：“ally anytime?!”“当你的同伴哦”生硬
 > 「お前が“一緒に戦って”
 >  というんなら、俺はいつでも
-“If you're saying ‘fight alongside me,’ then I'll be your ally
+“If you’d just say ‘fight with me,’ I’d be on your side
 ---
 >  お前の味方になるぜ!?」
-anytime?!”
+in a heartbeat, you know?!”
 
 @20921 主角
 > 「黙れ!」
@@ -766,12 +770,13 @@ emergency repairs just won't cut it.”
 “What is it? Out with it.”
 
 @20941 Astonaige · アストナージ
+# 审校：“unable to navigate”不像技师口语
 > 「はぁ……いちおう修理はしましたが、
 >  このままではすぐに航行不能に
-“Yes... We've repaired it for now, but at this rate, I believe it'll soon be
+“Yes... We’ve patched it up for now, but at this rate, I expect she’ll be
 ---
 >  なると思われます」
-unable to navigate.”
+dead in the water before long.”
 
 @20942 Kamille · カミーユ
 > 「でも、修理のできるような施設とは

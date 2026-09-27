@@ -162,16 +162,17 @@ MS will become even more powerful. Just do as you are told.”
 “Phew. Looks like we somehow made it out alive.”
 
 @34651 Wufei · 五飛
+# 审校：反讽语气；英文笑声去日语拟声
 > 「ああ。ありがとう、おやさしい
 >  技師長どの。ナタク、俺たちは
 “Yes. Thank you, kind Chief Engineer. Nataku, we must
 ---
 >  強くならねばならん。ここには工場が
 >  ある。そこで強くしてもらえるかな
-become stronger. There is a factory here. I wonder if they can make us stronger there.
+become stronger. There’s a factory here. Maybe they’ll make us stronger there.
 ---
 >  ククククッ」
-Kukukukuku.”
+Heh heh heh heh.”
 
 @34652 ???
 > 「マーズ……マーズよ」
@@ -356,10 +357,10 @@ It looks like it's turning into a full-scale civil conflict.”
 “You've gotta be kidding. The Imperial forces are still holed up in the Asteroid, you know.”
 
 @34684 Show · ショウ
-# 审校：主谓一致
+# 审校：英文改成自然的疑问句
 > 「ロームフェラ派は、アステロイド基地
 >  の攻撃を行なわないつもりなのかな」
-“Does the Romefeller faction really intend not to attack the Asteroid Base?”
+“So the Romefeller faction isn’t planning to attack the Asteroid Base at all?”
 
 @34685 Quattro · クワトロ
 # 审校：Quattro 的 voice 是从容含蓄的军官，原译“not an impossible story”过于生硬，改为更自然、带一点冷峻的措辞。
@@ -409,10 +410,10 @@ If we go now, we can wipe them out. Are you telling me we should just let that c
 slip by right in front of us?!”
 
 @34691 Ryo · 亮
-# 审校：Ryo 的 voice 是冷静沉稳，原译“needing to do this”略显生硬，改为更自然的表达。
+# 审校：直译拗口
 > 「落ち着け、沙羅。そうしなきゃ
 >  ならんと思っているのは、みんな同じだ」
-“Calm down, Sara. We all feel the same about having to do this.”
+“Calm down, Sara. We all know it has to be done.”
 
 @34692 Amuro · アムロ
 > 「沙羅、君は少しシャピロのことを
@@ -501,9 +502,10 @@ she went off on her own.”
 “No way, not even she'd do that. But now that you mention it, I haven't seen her...”
 
 @34704 Masato · 雅人
+# 审校：“那副表情”不成句
 > 「あれ、マーベルどうしたのさ。
 >  そんな顔して」
-“Huh, what's wrong, Marvel? You've got a look on your face.”
+“Huh, what’s wrong, Marvel? What’s with that look?”
 
 @34705 Marvel · マーベル
 > 「忍、雅人、探したわよ」
@@ -577,17 +579,17 @@ It's mental.”
 “So how is Sara doing? You said it was a problem with the system...”
 
 @34720 Hasan · ハサン
-# 审校：“the four of you's” 语法生硬，改为 “your four” 更自然且不改变原意。
+# 审校：长定语拆开；英文“your four fighting instincts”歧义
 > 「葉月博士からいただいたデータを
 >  拝見した。ダンクーガのシステムでは
-“I looked over the data Dr. Hazuki gave me. In the Dancouga's system,
+“I looked over the data Dr. Hazuki gave me. In the Dancouga’s system,
 ---
 >  君たち4人の、闘争本能を
 >  源とする戦闘エネルギーが重要に
-the combat energy generated from your four fighting instincts becomes
+the combat energy drawn from the fighting instincts of the four of you
 ---
 >  なってくるわけなんだが……」
-crucial, but...”
+is crucial, but...”
 
 @34721 Ryo · 亮
 > 「なるほど、同じように消耗している
@@ -736,8 +738,9 @@ I'd like to leave at once, but...”
 “A couple days, huh... We'll wait until then.”
 
 @34744 Sara · 沙羅
+# 审校：沙罗是听到别人谈她才插话
 > 「あたしがどうしたんだって?」
-“What's the matter with me?”
+“What’s this about me?”
 
 @34745 Shinobu · 忍
 > 「沙羅、お前……」
@@ -802,9 +805,10 @@ done, we depart for the Asteroid. Get ready.”
 “It doesn't matter. What is it?”
 
 @34757 Emary · エマリー
+# 审校：结巴写法统一为 Th-the
 > 「ア……アーガマとオーラシップの修理、
 >  および各機体のオーバーホールは……
-“Th...the repairs to the Argama and the Aura Ship, along with the overhaul of each unit...
+“Th-the repairs to the Argama and the Aura Ship, along with the overhaul of each unit...
 ---
 >  あと5時間ほどで終了します」
 will be finished in about five more hours.”
@@ -1185,9 +1189,10 @@ you don't have to look that sour.”
 “...”
 
 @34828 Show · ショウ
+# 审校：去掉 Can't be helped
 > 「しかたがないな。まあ俺もひと通り
 >  話は聞いたんだ。反対はしないよ」
-“Can't be helped. Well, I've heard the whole story. I won't object.”
+“Nothing for it. Well, I’ve heard the whole story. I won’t object.”
 
 @34829 Rish · リッシュ（按段落 3DD2）
 > 「おっ、さすがに聖戦士どのは話が
@@ -1247,9 +1252,10 @@ release the safety! I remember! I remember!”
 I'd appreciate it if you'd avoid unnecessary trouble.”
 
 @34837 Rish · リッシュ（按段落 3DD2）
+# 审校：“Yes... no” 读不通
 > 「はぁ……いや、了解しました。加えて
 >  いただく以上は、それなりの働きは
-“Yes... no, understood. Since you're taking me in, I'll do my share of
+“Er... yes, understood. Since you’re taking me in, I’ll do my share of
 ---
 >  させていただきましょう」
 the work.”
@@ -1263,8 +1269,9 @@ the work.”
 “What did you say?”
 
 @34840 Bright · ブライト
+# 审校：与 34806 同一句台词统一
 > 「こちらアーガマ、ブライトだ」
-“This is the Argama. Bright here.”
+“This is the Argama, Bright speaking.”
 
 @34841 Ryoma · リョウ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1338,12 +1345,13 @@ might have room for one more.”
 as part of the Romefeller faction, didn't you?”
 
 @34850 Rish · リッシュ（按段落 3DD2）
+# 审校：“That's why, you see” 不像人话
 > 「だからよ、あの時の責任は果たした
 >  さ。これ以上、あんなつまんねぇとこに
-“That's why, you see, I've paid for what I did then. I can't stand being in
+“Like I said, I did my duty back then. I couldn’t stand another day
 ---
 >  いられるかよ」
-a boring place like that any longer.”
+in that dump.”
 
 @34851 Quattro · クワトロ
 > 「いいたいことはわかるが、我々がそれを
@@ -1562,13 +1570,14 @@ What do you say, {HeroName}?”
 “Wh-why me?! You can't be serious!”
 
 @34885 Quattro · クワトロ
+# 审校：“hobby of enjoying” 直译
 > 「別に私は、君を困らせて楽しむ
 >  趣味はもちあわせていないよ。君が
-“I don't have any hobby of enjoying making things hard for you. I simply thought
+“I take no pleasure in making things hard for you. I simply thought
 ---
 >  もっとも厳しい目で見れると思った
 >  だから、そうするのだ」
-you'd be the one to watch him with the strictest eyes, so that's what I'm doing.”
+you’d be the one to watch him with the strictest eyes, so that’s what I’m doing.”
 
 @34886 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -1746,14 +1755,14 @@ Earthling against Earthling. That is His Majesty the Emperor's will.”
 “Luna...”
 
 @34917 Luna · ルーナ
-# 审校：引号
+# 审校：“shouldn't be able to say it”别扭；中文更口语
 > 「『お前もか』。地球の有名な
 >  芝居に出てきたセリフだったかしら
-“‘You too?’ Was that a line from a famous Earth play?
+“‘You too?’ Wasn’t that a line from some famous Earth play?
 ---
 >  シャピロ、神をきどったあなたに、
 >  そのセリフはいえないはずよ」
-Shapiro, you who fancied yourself a god shouldn't be able to say it.”
+Shapiro, a man who played at being a god has no right to that line.”
 
 @34918 Shapiro · シャピロ
 > 「おのれ、き、貴様ら……」
@@ -1765,17 +1774,19 @@ Shapiro, you who fancied yourself a god shouldn't be able to say it.”
 “Shapiro, you were never man enough for me to love.”
 
 @34920 Shapiro · シャピロ
+# 审校：“you may regret it”语气太弱
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「……いいだろう。だが地球を滅ぼした
 >  あと、次に滅ぼされるのはゾルバドス
 “...Very well. But know this: after Earth is destroyed, the next to be destroyed is Zorbados.
 ---
 >  お前たちであることを知るがいい。
 >  この私に、神に向かって
-Know that it will be all of you. For defying me, a god,
+Know that it will be all of you. You defied me, a god,
 ---
 >  たてついたことを、宇宙のもくずと
 >  なってから後悔するがいい
-you may regret it once you've become cosmic dust.
+and you’ll regret it once you’re nothing but space dust.
 ---
 >  ハハハハハハハッ!」
 Hahahahahahaha!”
@@ -1806,10 +1817,10 @@ Hahahahahahaha!”
 “No mistake about it. That's Shapiro!!”
 
 @34927 Shapiro · シャピロ
-# 审校：シャピロ对敌人用「貴様ら」，译文用“You lot”过于平淡，改为“You scum”以符合其狂妄蔑视的口吻。
+# 审校：“就先从你们开始死吧”别扭
 > 「貴様ら、まず手始めに、貴様ら
 >  から死ぬがいい!!」
-“You scum, for starters, you can be the first to die!!”
+“You scum! I’ll start with you. Die!!”
 
 @34928 Shapiro · シャピロ
 > 「おのれ、おのれおのれぇぇーっ!!」
@@ -1877,13 +1888,14 @@ Hahahahahahaha!”
 “Give it up already, Shapiro. You've lost.”
 
 @34942 Shapiro · シャピロ
+# 审校：被动句改主动，去掉“应成为神之路”
 > 「クククク、おろかな。私は確かに
 >  あの時、この宇宙の意思に
-“Heh heh heh, foolish. Back then, I was truly shown by the will of this universe
+“Heh heh heh, foolish. Back then, the will of this universe showed me
 ---
 >  神となるべき道を示された。
 >  私は神となるべき男なのだ」
-the path to becoming a god. I am the man destined to become a god.”
+the path to godhood. I am the man destined to be a god.”
 
 @34943 Sara · 沙羅
 > 「それで地球を捨て、ゾルバドスに
@@ -1938,8 +1950,9 @@ Shapiro, in all my time with you, I found exactly one thing to be happy about.�
 “Killing you... that's it.”
 
 @34950 Shapiro · シャピロ
+# 审校：“I wonder” 日语腔
 > 「……できるのか、お前に」
-“...Can you do it, I wonder?”
+“...Can you, though?”
 
 @34951 Sara · 沙羅
 > 「……もう話すことは何も残っていない
@@ -2110,9 +2123,10 @@ They may not want to take any more losses.”
 nothing we can do about it.”
 
 @34980 Selain · セレイン（按段落 3DD2）
+# 审校：“但是啊。”开头生硬；英文 However. 孤零零
 > 「しかしな。少なくとも今の我々には
 >  為すすべがない。こんな議論は
-“However. At least for now, we have no means to act. This discussion is
+“Even so. Right now we have no way to act. This argument is
 ---
 >  時間のムダだろう」
 a waste of time.”

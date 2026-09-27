@@ -33,22 +33,24 @@
 Guys like Roanne.”
 
 @21351 Ark · アーク（按段落 3DD1）
+# 审校：去掉 it can't be helped
 > 「しかたないことかもしれない。
 >  帝国につくか、何もしないか、
-“Maybe it can't be helped. Side with the Empire, do nothing,
+“Maybe that’s just how it is. Side with the Empire, do nothing,
 ---
 >  帝国と戦うか。この3つしかないん
 >  だ。地球人のとるべき道は」
 or fight the Empire. Those are the only three choices Earthlings have.”
 
 @21352 Selain · セレイン（按段落 3DD2）
+# 审校：去掉 it can't be helped；“这也是没办法吧”接上句不顺
 > 「しかたないだろう。戦えない者、その
 >  気力のない者は帝国につくしか
-“It can't be helped. Those who can't fight, who don't have the will, have no way
+“That’s just how it is. Those who can’t fight, who don’t have the will, have no way
 ---
 >  生き延びるすべはない。今の地球
 >  の本当の姿がそれだ」
-to survive but to side with the Empire. That's the real face of Earth right now.”
+to survive but to side with the Empire. That’s the real face of Earth right now.”
 
 @21353 Brad · ブラッド（按段落 3DD3）
 > 「俺にはわからねぇよ。なんだって異星
@@ -111,16 +113,17 @@ is running a pacifist movement. Surprised they haven't been killed yet.”
 “What's this ‘Saints of Cusco’ thing?”
 
 @21362 Anna · アンナ
+# 审校：“心碎的人们”“called a holy woman by the downtrodden people”生硬
 > 「うちひしがれた人々から、聖女と
 >  呼ばれて支持者を増やしている
-“There's a woman who's been called a holy woman by the downtrodden people, and her supporters keep growing.
+“There’s a woman the downtrodden have taken to calling a holy woman, and her following keeps growing.
 ---
 >  女の人がいるの。南米のクスコから
 >  噂が広がったから
 The rumor spread from Cusco in South America, so
 ---
 >  そう呼ばれているらしいわ」
-that's what she's called, apparently.”
+that’s what she’s called, apparently.”
 
 @21363 Duo · デュオ
 > 「ま、無抵抗主義者って奴だな
@@ -436,8 +439,9 @@ For the future of this planet.”
 “We're launching too!”
 
 @21416 Wufei · 五飛
+# 审校：五飞独行，us 不对
 > 「弱いくせに、なぜついてくる」
-“You're weak. Why do you follow us?”
+“You’re weak. So why do you keep following me?”
 
 @21417 Sally · サリィ
 > 「やらなくてはいけない戦いだからよ」
@@ -566,8 +570,9 @@ We'll hit the enemy base too!”
 “Damn, it's no use. I'll have to abandon the unit...”
 
 @21443 Bask · バスク
+# 审校：“Coming at this late hour”不像口语
 > 「今ごろ来おって、ゼクスめ」
-“Coming at this late hour, that Zechs.”
+“Showing up now, of all times. Zechs.”
 
 @21444 Zechs · ゼクス
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -594,8 +599,9 @@ We'll hit the enemy base too!”
 “Ah... if that's how it is, understood.”
 
 @21449 Zechs · ゼクス
+# 审校：“too late, was I?”别扭
 > 「くっ……遅かったか」
-“Ngh... too late, was I?”
+“Ngh... I was too late.”
 
 @21450 Lila · ライラ
 > 「奴らの動きが早かったってことさ。
@@ -632,8 +638,9 @@ can do.”
 “The traitor Emma Sheen is here? You've got some nerve.”
 
 @21456 Bask · バスク
+# 审校：同 21443
 > 「今ごろ来おって、ゼクスめ」
-“Coming at this late hour, that Zechs.”
+“Showing up now, of all times. Zechs.”
 
 @21457 Zechs · ゼクス
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -660,8 +667,9 @@ can do.”
 “Ah... if that's how it is, understood.”
 
 @21462 Zechs · ゼクス
+# 审校：同 21449
 > 「くっ……遅かったか」
-“Ngh... too late, was I?”
+“Ngh... I was too late.”
 
 @21463 Lila · ライラ
 > 「奴らの動きが早かったってことさ。
@@ -1005,13 +1013,14 @@ That is simply how we fight.”
 “And you are?”
 
 @21527 Relena · リリーナ
+# 审校：お見知りおきください 译“记住我”“get along”都不对
 > 「リリーナ・ドーリアンと申します。
 >  ジュリア様のお考えに賛同し、
-“My name is Relena Darlian. I share Lady Julia's ideals,
+“My name is Relena Darlian. I share Lady Julia’s ideals,
 ---
 >  ともに活動させていただいている
 >  者です。お見知りおきくださいな」
-and I work alongside her. I hope we get along.”
+and I work alongside her. A pleasure to make your acquaintance.”
 
 @21528 Eiji · エイジ
 > 「そうか……姉さんを頼む」
@@ -1057,13 +1066,13 @@ For what purpose?”
 “Yes, most likely to appeal directly to Governor Gresco.”
 
 @21534 Le Cain · ル・カイン
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：引语没标出来，读不出是在转述
 > 「地球人と我々は共存
 >  しなければならん
-“Earthlings and we must coexist...
+“‘We must coexist with the Earthlings’...
 ---
 >  そんなたわごとを、いうためにか!?」
-is that the nonsense she comes to spout?!”
+that’s the nonsense she comes to spout?!”
 
 @21535 Giura · ギウラ
 > 「は、はぁ……そのようで……」

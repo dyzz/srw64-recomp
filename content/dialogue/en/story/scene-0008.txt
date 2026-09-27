@@ -231,9 +231,10 @@ We'll wipe them out in one go.”
 “Didn't you hear me? I said fight me.”
 
 @18163 主角
+# 审校：like old times 加了原文没有的意思
 > 「今戦ったばかりなのに組み手か?
 >  いいだろう、久々にやるか」
-“We just fought, and now you want a sparring match? Fine, let's go like old times.”
+“We just fought, and now you want a sparring match? Fine, it’s been a while.”
 
 @18164 对手
 > 「ク、クハハハハッ、ばかか、貴様は。

@@ -77,8 +77,9 @@ a time of sleep. Body and mind alike. Rest is necessary.
 You just have to wake up. Then you'll be the same as before.”
 
 @20311 Amuro · アムロ
+# 审校：同 20055
 > 「……自信がないな」
-“...I'm not confident.”
+“...I’m not so sure about that.”
 
 @20312 Beltorchika · ベルトーチカ
 > 「あなたは前にあの子たちと
@@ -102,13 +103,13 @@ You just have to wake up. Then you'll be the same as before.”
 “Oh my, if you're going to kiss in a place like that, we can't use the elevator.”
 
 @20316 Masato · 雅人
-# 审校：“手が早い”指对女性出手快，初稿“works fast”意思偏差，改为“moves fast”更贴切。
+# 审校：雅人中意的是贝尔托琪卡，him 错，且与场景18同句统一
 > 「あ～あ、結構気に入ってたのに、
 >  がっかりだよ
-“Ahh, and I liked him quite a bit too. What a letdown.
+“Aww, and I really liked her too. What a letdown.
 ---
 >  アムロ大尉も手が早いや」
-Captain Amuro sure moves fast.”
+Captain Amuro sure works fast.”
 
 @20317 Roux · ルー
 > 「なにいってんのよ。ほら、
@@ -266,13 +267,14 @@ and its name is Boss Borot!”
 If so, it was in the way of the unloading, so I had it taken outside.”
 
 @20342 Boss · ボス
+# 审校：お待ちになって 是突然客气的笑点
 > 「なんだって!? あ、ちょっと、いや、
 >  やめて、俺さまのボスボロットを
 “What?! H-hey, wait, no, stop, where are you taking my Boss Borot?
 ---
 >  どこへ持っていくのよ。
 >  ちょっと、お待ちになって」
-Hey, hold on a moment!”
+Hey, kindly wait a moment!”
 
 @20343 Koji · 甲児
 > 「…………」
@@ -318,9 +320,10 @@ He's not a bad guy, so go easy on him.”
 “Dr. Hazuki?! Why are you here?”
 
 @20352 Dr. Hazuki · 葉月博士
+# 审校：同 20112，与场景18统一
 > 「どうしてもこうしてもあるか。お前たちが
 >  ルオ商会と接触すると聞いて
-“Why indeed. When I heard you were making contact with the Luo Company,
+“Never mind why. When I heard you were making contact with the Luo Company,
 ---
 >  解放戦線で開発した新型を
 >  運び込んでもらったのだ
@@ -457,15 +460,15 @@ differ from the Aphrodite, so you'd best test it out as well.”
 I think it'll still take some time, though.”
 
 @20374 Lady · レディ
-# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 审校：この程度のこと 是小事，magnitude 反了
 # 检查提示：未用必用译名：トレーズ→Treize
 > (レジスタンスどもめ、
 >  ここで始末をつけてやるぞ
-(You Resistance vermin, I'll finish you off right here.
+(You Resistance vermin, I’ll finish you off right here.
 ---
 >  この程度のことでトレーズ様の
 >  お手を、わずらわせるわけにはいかん)
-I can't trouble His Excellency with something of this magnitude.)
+I can’t trouble His Excellency with something this trivial.)
 
 @20375 Wong · ウォン
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -487,14 +490,14 @@ under my management, but we are still in the process of gathering data.”
 If so, you'll only invite suspicion.”
 
 @20377 Wong · ウォン
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：同 20138
 > 「いやいや、そんなつもりはありませんよ。
 >  よろしい、そこまでおっしゃるのなら
-“No, no, that's not my intention at all. Very well, if you insist that much,
+“No, no, that’s not my intention at all. Very well, if you insist that much,
 ---
 >  しかたありませんな。
 >  私の実験部隊でアウドムラを
-it can't be helped. I'll have my experimental unit strike the Audhumla.
+so be it. I’ll have my experimental unit strike the Audhumla.
 ---
 >  叩くとしましょう。トレーズ特佐には
 >  よろしくお伝えいただきたい」
@@ -574,9 +577,10 @@ You can do it, right?”
 “What? Put it through.”
 
 @20390 Lady · レディ
+# 审校：“街道遭受损害”“proceeds as is”生硬
 > 「聞こえるか、アウドムラ。私は
 >  帝国軍スペシャルズのレディ・アンだ
-“Can you hear me, Audhumla? I am Lady Une of the Imperial Army's Specials.
+“Can you hear me, Audhumla? I am Lady Une of the Imperial Army’s Specials.
 ---
 >  我々は諸君らをせん滅すべく、
 >  部隊の配置を終えた
@@ -584,7 +588,7 @@ We have finished deploying our forces to annihilate you.
 ---
 >  しかし、このまま戦闘が行われれば
 >  街にもかなりの被害が出よう
-However, if the battle proceeds as is, the city will suffer considerable damage as well.
+However, if we fight it out as things stand, the city will suffer considerable damage as well.
 ---
 >  それは我々としても
 >  望むところではない」
@@ -641,9 +645,10 @@ turned into a sea of fire, you will quietly disarm.”
 “What is it?”
 
 @20401 Four · フォウ
+# 审校：“cannot move on orders”“没法服从”直译
 > 「私は好きにやらせていただきたいのです
 >  人の命令では動けませんので」
-“I wish to act as I please. I cannot move on someone else's orders.”
+“I’d like to do this my own way. I can’t fight on someone else’s orders.”
 
 @20402 Buran · ブラン
 > 「……いいだろう、やってみせろ」
@@ -706,16 +711,18 @@ There's an enemy out there with a feeling like this...? It's sickening.”
 “All pilots, launch in sequence!”
 
 @20414 Dr. Hazuki · 葉月博士
+# 审校：统一 Beast Fighters 大小写
 > 「艦長、獣戦機は
 >  調整が終了していない
-“Captain, the beast fighters haven't finished their adjustments yet.
+“Captain, the Beast Fighters haven’t finished their adjustments yet.
 ---
 >  すまないが少し待ってくれ」
 Sorry, but give us a little time.”
 
 @20415 Bright · ブライト
+# 审校：“Are the launches ready”不像口语
 > 「急いでください! 出撃、まだか!?」
-“Please hurry! Are the launches ready yet?!”
+“Please hurry! Still not ready to launch?!”
 
 @20416 Koji · 甲児
 > 「うっひょーっ、こいつはいいや! やっぱ
@@ -728,12 +735,14 @@ Sorry, but give us a little time.”
 “That's... the Eagle Fighter! It's Shinobu!”
 
 @20418 Sara · 沙羅
+# 审校：同 20175
 > 「忍!? 大丈夫なのかい!?」
-“Shinobu?! Is he all right?!”
+“Shinobu?! Are you all right?!”
 
 @20419 Shinobu · 忍
+# 审校：原文不是问句
 > 「沙羅か。すまねぇ、またせたな!」
-“Sara? Sorry, did I keep you waiting?!”
+“Sara? Sorry I kept you waiting!”
 
 @20420 Dr. Hazuki · 葉月博士
 > 「やめろ、藤原。
@@ -750,12 +759,14 @@ Sorry, but give us a little time.”
 “You remember?”
 
 @20423 Shinobu · 忍
+# 审校：同 20180
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「ああ。獣戦機隊に野性を
 >  しばる理性はいらねぇってな!
-“Yeah. The Cyber Beast Force doesn't need any reason holding back its wild instincts!
+“Yeah. The Cyber Beast Force doesn’t need any reason holding back its wild instincts!
 ---
 >  わかったら、腹くくって見物してな!」
-If you get it, then sit back and watch!”
+Got it? Then sit back and watch!”
 
 @20424 Ryo · 亮
 > 「フッ、あいかわらずの単細胞ぶりだな
@@ -782,13 +793,15 @@ If you get it, then sit back and watch!”
 The enemy's right in front of us! Doctor, can't we launch yet?!”
 
 @20428 Dr. Hazuki · 葉月博士
+# 审校：同 20185
 > 「あわてるな。いま終わったところだ」
-“Don't rush. It's finished just now.”
+“Don’t panic. It’s just finished.”
 
 @20429 Masato · 雅人
+# 审校：统一 Beast Fighters
 > 「それじゃ行きますか。
 >  艦長、獣戦機出撃します!」
-“Then let's go. Captain, the beast fighters are launching!”
+“Then let’s go. Captain, the Beast Fighters are launching!”
 
 @20430 Shinobu · 忍
 > 「へっ、やけにのんびりした
@@ -828,9 +841,10 @@ Aggressive Mode won't cut it. We're combining!”
 “Keyword: D-A-N-C-O-U-G-A...”
 
 @20437 Shinobu · 忍
+# 审校：口头禅与场景18统一
 > 「ダンクーガ! ロックオフ!
 >  やあぁぁぁぁぁってやるぜ!!」
-“Dancouga! Lock off! I'm gonna tear you apart!!”
+“Dancouga! Lock off! Yaaaahhh, let’s do this!!”
 
 @20438 Domon · ドモン
 > 「あれはノーベルガンダム……
@@ -895,9 +909,10 @@ I'm sorry, but right now there's no way to save her.”
 “B-but!”
 
 @20449 Amuro · アムロ
+# 审校：同 20236
 > 「目的を果たさずに死ぬつもりか、
 >  ドモン・カッシュ!?」
-“Do you intend to die without accomplishing your goal, Domon Kasshu?!”
+“You planning to die before you’ve done what you came for, Domon Kasshu?!”
 
 @20450 Domon · ドモン
 > 「クッ……すまん、アレンビー……」
@@ -933,9 +948,9 @@ I'm sorry, but right now there's no way to save her.”
 “Ngh... this feels awful... There's an enemy like this...?”
 
 @20457 Quattro · クワトロ
-# 审校：「強化人間」在Z高达语境下应译为 Enhanced Human，而非 Cyber-Newtype；Cyber-Newtype 是不同作品用语。
+# 审校：enhanced human 小写统一
 > 「ええい、強化人間だというのか!?」
-“Grr, so she's an Enhanced Human?!”
+“Tch, so she’s an enhanced human?!”
 
 @20458 Four · フォウ
 > 「な、なんだ? よるな!!」
@@ -985,9 +1000,10 @@ I hate men who cower, but I don't like the warmongering type either...”
 “That hurts, Beltorchika...”
 
 @20468 Banjo · 万丈
+# 审校：“忍你也来得好”不通；去掉 as expected
 > 「ご苦労さま。さすがだね、アムロ
 >  大尉。忍くんもよく来てくれた」
-“Good work. Just as expected, Captain Amuro. And Shinobu, thanks for coming too.”
+“Good work. That’s Captain Amuro for you. And Shinobu, thanks for coming too.”
 
 @20469 Shinobu · 忍
 > 「へっ、礼なんざいらねぇよ。
@@ -1002,9 +1018,10 @@ bastards again is enough for me.”
 “You haven't grown one bit, have you.”
 
 @20471 Shinobu · 忍
+# 审校：お前には言われたくない 的地道说法
 > 「なんだと、沙羅。
 >  お前には、いわれたくねぇよ」
-“What was that, Sara? I don't want to hear that from you.”
+“What was that, Sara? You’re one to talk.”
 
 @20472 Sara · 沙羅
 > 「なんだって、そりゃいったい
@@ -1038,10 +1055,10 @@ a battleship secured and waiting for us in Tibet.”
 “That's a relief.”
 
 @20478 Lady · レディ
-# 审校：同上，「強化人間」统一译为 Enhanced Human。
+# 审校：同 20294；enhanced human 小写
 > 「強化人間だの何だのと、
 >  あまりあてにはならんな」
-“Enhanced Humans and whatnot... I can't say I put much stock in them.”
+“Enhanced humans and whatnot... I can’t say I put much stock in them.”
 
 @20479 Wong · ウォン
 > 「それはひどいおっしゃりようですな。
@@ -1105,9 +1122,10 @@ Do you understand it?! That feeling like a snake writhing inside your head?!”
 depends entirely on your efforts.”
 
 @20487 Four · フォウ
+# 审校：句尾问号
 > 「くっ……わかった。
 >  アウドムラを追撃すればいいのだろう」
-“Ngh... fine. I just have to pursue the Audhumla, right.”
+“Ngh... fine. I just have to go after the Audhumla, right?”
 
 @20488 Wong · ウォン
 > 「そういうことです。

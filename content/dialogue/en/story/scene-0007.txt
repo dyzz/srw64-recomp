@@ -87,9 +87,10 @@ Among the staff, it's the preferred name, especially in the combat units.”
 “Tch, clueless is a bit much, don't you think?”
 
 @17986 Sayaka · さやか
+# 审校：can't help it 日语腔
 > 「本当のことだもの、
 >  しょうがないじゃない」
-“It's the truth, so you can't help it, can you?”
+“It’s the truth. Nothing you can do about it.”
 
 @17987 Koji · 甲児
 > 「なにぃ」
@@ -150,17 +151,18 @@ meteors onto Earth to carry out acts of destruction.”
 but even so, that's all the intel they can get?”
 
 @17994 Roux · ルー
+# 审校：it can't be helped
 > 「我々が把握しているのはコロニーの
 >  ごく一部だけですからね。帝国の
-“We only have a grasp on a tiny portion of the colonies. The Empire's
+“We only have a grasp on a tiny portion of the colonies. The Empire’s
 ---
 >  監視が厳しくてコロニー間の
 >  連絡もほとんどとれないし、
-surveillance is strict, and there's almost no contact between colonies.
+surveillance is strict, and there’s almost no contact between colonies.
 ---
 >  M作戦のグループは我々とまったく
 >  別のものですから、仕方ありませんよ」
-The Operation M group is completely separate from us, so it can't be helped.”
+The Operation M group is completely separate from us, so there’s not much we can do.”
 
 @17995 Garrison · ギャリソン
 > 「確かに、今後の活動を考えれば
@@ -270,9 +272,10 @@ and they appear to be entering the atmosphere almost simultaneously.”
 “Who knows. But Banjo, at this distance we won't make it in time for the landing.”
 
 @18012 Banjo · 万丈
+# 审校：can't be helped
 > 「ま、しかたないさ。
 >  できるだけ急ごう」
-“Well, can't be helped. Let's hurry as much as we can.”
+“Well, nothing for it. Let’s hurry as much as we can.”
 
 @18013 Banjo · 万丈
 > 「ここが落下地点だな。
@@ -337,9 +340,10 @@ Please be careful.”
 “An Imperial base, huh? Heh, now that's more like it.”
 
 @18023 Quatre · カトル
+# 审校：“我不会说要你们的命”直译
 > 「武器を捨てて投降しろ。
 >  命まで奪うとは言わない」
-“Throw down your weapons and surrender. I won't say I'll take your lives.”
+“Throw down your weapons and surrender. I’m not asking for your lives.”
 
 @18024 Specials · スペシャルズ
 > 「ふざけやがって! くらえ!」
@@ -355,10 +359,10 @@ Please be careful.”
 ...I told you, I said surrender...”
 
 @18026 Rasid · ラシード
-# 审校：拉希德对卡特尔的称呼应为“Master Quatre”，与 address 一致。
+# 审校：As expected of you
 > 「さすがですな、カトル様
 >  よぉしお前ら、ヘマすんじゃねぇぞ!」
-“As expected of you, Master Quatre! All right, you lot, don't screw this up!”
+“That’s Master Quatre for you! All right, you lot, don’t screw this up!”
 
 @18027 Banjo · 万丈
 > 「帝国基地を
@@ -384,13 +388,14 @@ Was that Gundam type the one that descended in Operation M?”
 “Damn, reinforcements?!”
 
 @18031 Banjo · 万丈
+# 审校：句尾“不过？/but?”不成句
 > 「僕はカラバの破嵐万丈だ。
 >  コロニーから降下したのは君か?
-“I'm Banjo Haran of Karaba. Was it you who descended from the colony?
+“I’m Banjo Haran of Karaba. Was it you who descended from the colony?
 ---
 >  帝国軍と交戦している以上、
 >  敵とは思いたくないが?」
-Since you're fighting the Imperial forces, I'd rather not think of you as an enemy, but?”
+Since you’re fighting the Imperial forces, I’d rather not take you for an enemy. Am I wrong?”
 
 @18032 Quatre · カトル
 > (カラバ……
@@ -430,9 +435,10 @@ Everyone, we'll attack the base too.”
 “You're going to cooperate with those guys?!”
 
 @18036 Banjo · 万丈
+# 审校：“基地之一”“有效利用”生硬
 > 「結果的には、さ。帝国軍の
 >  基地の1つをせん滅するチャンスだ
-“In the end, yes. This is our chance to wipe out one of the Imperial bases.
+“In effect, yes. This is our chance to wipe out one of the Imperial bases.
 ---
 >  有効に利用したい」
 I want to make good use of it.”
@@ -485,13 +491,14 @@ then all the better.”
 Let's retreat here, Master Quatre.”
 
 @18045 Quatre · カトル
+# 审校：To you of Karaba 不地道
 > 「……カラバの方、共に戦えてよかった
 >  僕たちはこれで、ひきあげます
-“...To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+“...People of Karaba, I’m glad we could fight alongside you. We’re pulling out now.
 ---
 >  次に会うときも、
 >  敵ではないことを祈ります」
-I pray that when we meet again, we won't be enemies.”
+I pray we won’t be enemies the next time we meet.”
 
 @18046 Quatre · カトル
 > 「くっ、しまった……これ以上は
@@ -499,13 +506,14 @@ I pray that when we meet again, we won't be enemies.”
 “Ngh, damn... I can't hold out any longer...”
 
 @18047 Quatre · カトル
+# 审校：同 18045
 > 「……カラバの方、共に戦えてよかった
 >  僕たちはこれで、ひきあげます
-“...To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+“...People of Karaba, I’m glad we could fight alongside you. We’re pulling out now.
 ---
 >  次に会うときも、
 >  敵ではないことを祈ります」
-I pray that when we meet again, we won't be enemies.”
+I pray we won’t be enemies the next time we meet.”
 
 @18048 Brad · ブラッド（按段落 3DD3）
 > 「おい、いっちまうぜ。
@@ -513,8 +521,9 @@ I pray that when we meet again, we won't be enemies.”
 “Hey, they're taking off. You sure about this?”
 
 @18049 Banjo · 万丈
+# 审校：For this time 别扭
 > 「今回は、これでいいさ」
-“For this time, it's fine.”
+“This time, that’s fine.”
 
 @18050 Manami · マナミ（按段落 3DD4）
 > 「そうね……そう祈りたいわ、アタシも」
@@ -535,14 +544,14 @@ I pray that when we meet again, we won't be enemies.”
 “Then if we don't crush those guys, we'll have no excuse to give the folks back at base.”
 
 @18054 Gaia · ガイア
-# 审校：精读：英文两页重复
+# 审校：rare treat / using that 不通
 > 「オルテガ、マッシュ、せっかくの
 >  特注装備だ。使い勝手を
-“Ortega, Mash, this custom gear is a rare treat.
+“Ortega, Mash, we didn’t get that custom gear for nothing.
 ---
 >  整備兵に知らせてやるためにも、
 >  チャンスがあればあれをやるぞ」
-So we can show the mechanics how it handles, if we get the chance, we're using that.”
+To show the mechanics how it handles, if we get the chance, we’re pulling that move.”
 
 @18055 Mash · マッシュ
 > 「了解だ、ガイア。ドライセンでどこまで
@@ -578,13 +587,14 @@ Our initial objective is complete. There's no need to linger.”
 “Understood, Master Quatre.”
 
 @18061 Quatre · カトル
+# 审校：同 18045
 > 「カラバの方、共に戦えてよかった。
 >  僕たちはこれで、ひきあげます
-“To you of Karaba, I'm glad we could fight together. We'll be withdrawing now.
+“People of Karaba, I’m glad we could fight alongside you. We’re pulling out now.
 ---
 >  次に会うときも、
 >  敵ではないことを祈ります」
-I pray that when we meet again, we won't be enemies.”
+I pray we won’t be enemies the next time we meet.”
 
 @18062 Brad · ブラッド（按段落 3DD3）
 > 「おい、いっちまうぜ。
@@ -628,12 +638,13 @@ Come on, bring it!”
 “What's with you all of a sudden? What on earth's going on?”
 
 @18068 Manami · マナミ（按段落 3DD4）
+# 审校：I can't forgive
 > 「帝国は確かに許せない
-“The Empire is unforgivable, sure.
+“The Empire is unforgivable, of course.
 ---
 >  でもそれ以上に、スペシャルズは
 >  もっと許せないわ!」
-But even more than them, I can't forgive the Specials!”
+But the Specials are far worse!”
 
 @18069 Simone · シモーヌ
 # 审校：原文「アタシもそう思うわ」是“我也这么想”，初稿“I feel the same way”可接受，但为更自然改为“I think so too”。
@@ -657,17 +668,18 @@ But even more than them, I can't forgive the Specials!”
 mopping up the Resistance.”
 
 @18073 Gaia · ガイア
+# 审校：同 18054
 > 「そういうことだな。我々は残った
 >  レジスタンスを叩くぞ
-“That's right. We'll hit the Resistance remnants.
+“That’s right. We’ll hit the Resistance remnants.
 ---
 >  オルテガ、マッシュ、せっかくの
 >  特注装備だ。使い勝手を
-Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics
+Ortega, Mash, we didn’t get that custom gear for nothing. To show the mechanics
 ---
 >  整備兵に知らせてやるためにも、
 >  チャンスがあればあれをやるぞ」
-how it handles, if we get the chance, we're using that.”
+how it handles, if we get the chance, we’re pulling that move.”
 
 @18074 Mash · マッシュ
 > 「了解だ、ガイア。ドライセンでどこまで
@@ -877,17 +889,18 @@ Now I'm the one who's turned into the bad guy.”
 “Huh... what...?”
 
 @18102 Duo · デュオ
+# 审校：同 19091
 > 「おっと、みちゃいけねぇ。お嬢さん、
 >  なんかわけありみたいだけど、すぐこっから
-“Whoa, I shouldn't be seeing this. Miss, you seem to have some kind of story, but it's best for you to get out of here right away.
+“Whoa, that’s not for your eyes. Miss, you seem to have some kind of story, but you’d best get out of here right away.
 ---
 >  立ち去るのが身のためだ。
 >  この時代に立派な身なりの
-Even if you're a fine-looking A-class citizen in this day and age,
+Even if you are a well-dressed A-class citizen in this day and age,
 ---
 >  A級市民とはいえ、お嬢さんを
 >  殺すのは忍びない」
-I can't bring myself to kill you.”
+I can’t bring myself to kill a girl like you.”
 
 @18103 Relena · リリーナ
 > 「ヒイロ!?」
@@ -907,21 +920,22 @@ I can't bring myself to kill you.”
 “What did you say?! Is it true, Alan?”
 
 @18107 Alan · アラン
+# 审校：第三页生硬
 > 「信用できる情報だ
 >  占領軍に新司令官として
-“It's reliable information. As the new commander of the occupation army,
+“It’s reliable information. As the new commander of the occupation army,
 ---
 >  グレスコの息子が
 >  赴任してくるらしい
-it seems Gresco's son is being sent to take up the post.
+it seems Gresco’s son is being sent to take up the post.
 ---
 >  我々としては可能ならば
 >  この男を始末したい
-As for us, if possible we'd like to do away with this man.
+If we can, we’d like to take this man out.
 ---
 >  そうすれば帝国軍の士気は
 >  著しく低下するはずだ」
-If we do, the Imperial Army's morale should drop dramatically.”
+If we do, the Imperial Army’s morale should drop dramatically.”
 
 @18108 Banjo · 万丈
 > 「確かに。しかし帝国も

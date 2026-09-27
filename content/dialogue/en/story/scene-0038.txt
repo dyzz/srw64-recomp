@@ -261,23 +261,23 @@ master himself has no hope of ever winning a battle.”
 “I-I didn't mean it like that...”
 
 @25516 Schwarz · シュバルツ
-# 审校：合并：misc 与 scene 批次三方合并
+# 审校：英文长句理顺
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ハハハハハッ。ムキになっても
 >  勝てぬものは勝てぬということだ
-“Hah hah hah hah. Getting worked up won't win the battles that can't be won.
+“Hah hah hah hah. Get as worked up as you like; what can’t be won can’t be won.
 ---
 >  腕も、心もまだまだ未熟よ。
 >  人よりわずかに抜きんでた
-Your skill and your heart are both still immature. If you're so
+Your skill and your heart are both still immature. A man drunk on
 ---
 >  おのが腕におぼれているようでは、
 >  マスターアジアに勝つことなど
-drunk on your own skill for being just slightly better than others',
+skill that barely outstrips other men’s has no hope of
 ---
 >  夢のまた夢。それに…デビルガンダムの
 >  幻影に脅えているようではな」
-beating Master Asia is nothing but a dream within a dream. And besides... not while you're cowering before the Dark Gundam's phantom.”
+beating Master Asia. It’s a dream within a dream. And besides... not while he’s cowering before the Dark Gundam’s phantom.”
 
 @25517 Rain · レイン
 # 审校：补全整条台词的外层引号
@@ -1107,10 +1107,10 @@ Maybe this is a good place to end it...)
 “...What is it?”
 
 @25627 Rish · リッシュ（按段落 3DD2）
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：「聞いてくれ」是听我说，不是问
 > 「こいつで最後にするぜ。だからよ、
 >  最後に一つ聞いてくれないか」
-“This'll be the last one. So, uh, let me ask you one thing before the end.”
+“This’ll be the last one. So, uh, hear me out on one thing before the end.”
 
 @25628 Selain · セレイン（按段落 3DD2）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1137,10 +1137,10 @@ and thanks to that, things have gotten pretty strange. And me, of all people.”
 “...And?”
 
 @25631 Rish · リッシュ（按段落 3DD2）
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：去掉 can't be helped；中文“迷上你的男人这件事”拗口
 > 「ま、俺はお前の敵だった。だから
 >  どんな結果でもそりゃあ仕方ねぇ
-“Well, I was your enemy. So whatever the result, that can't be helped.
+“Well, I was your enemy. So whatever comes of it, that’s just how it is.
 ---
 >  だけどな、俺がお前に
 >  惚れてた男だったってことだけは
@@ -1253,10 +1253,10 @@ and I gratefully took it off his hands.”
 and I gratefully took it off his hands.”
 
 @25646 Brad · ブラッド（按段落 3DD3）
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：“What'd you do with” 意思偏了
 > 「デュオ!? 久しぶりじゃねぇかよ!
 >  その機体はどうしたんだ?」
-“Duo?! Long time no see! What'd you do with that machine?”
+“Duo?! Long time no see! What’s with that machine?”
 
 @25647 Duo · デュオ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1712,29 +1712,29 @@ even I'll burn up.”
 “Hey, Duo, that's a new model, isn't it? Where on earth did you get it?”
 
 @25708 Duo · デュオ
-# 审校：补全整条台词的外层引号
+# 审校：同一句台词与 25640 等统一
 > 「ああ、どっかのバカな技術者が、
 >  俺のデスサイズを新調してくれたのさ
-“Yeah, some fool of an engineer went and rebuilt my Deathscythe.
+“Yeah, some idiot engineer went and rebuilt my Deathscythe for me,
 ---
 >  そいつを、ありがたくいただいてきた」
-So I gratefully took it off his hands.”
+and I gratefully took it off his hands.”
 
 @25709 Bright · ブライト
-# 审校：补全整条台词的外层引号
+# 审校：同一句台词与 25648 统一
 > 「よく来てくれた、デュオ。
 >  それで、後の4人は?」
-“Glad you made it, Duo. So, what about the other four?”
+“Good to have you, Duo. So, where are the other four?”
 
 @25710 Duo · デュオ
-# 审校：补全整条台词的外层引号
+# 审校：同一句台词与 25649 统一
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
-“Nah, sorry, but I don't know. Wufei and I were together
+“Sorry, but I don’t know. Wufei and I were together part of the way,
 ---
 >  一緒だったんだが、あいつは
 >  俺と違って1人が好きだからな」
-part of the way, but unlike me, he likes being on his own.”
+but unlike me, that guy likes being on his own.”
 
 @25711 Hilde · ヒルデ
 # 审校：补全整条台词的外层引号

@@ -21,8 +21,9 @@
 Helping check the systems won't hurt, right?”
 
 @17623 Selain · セレイン（本话主角）
+# 审校：塞莱因短句
 > 「わかった、いこう」
-“Understood. Let's go.”
+“Got it. Let’s go.”
 
 @17624 Selain · セレイン（本话主角）
 > 「帝国の試作機か……。よく
@@ -145,13 +146,14 @@ as I do right now.”
 “...Yeah.”
 
 @17638 Hamilton · ハミルトン
+# 审校：“So I bought it”歧义；“至少你一个人也要”
 > 「やられちまったか……くっ、
 >  俺はもうだめだな
-“So I bought it... ngh, I'm done for.
+“They got me... ngh, I’m done for.
 ---
 >  お前と一緒にやれて……
 >  よかったぜ……
-I'm glad... I got to fight alongside you...
+I’m glad... I got to fight alongside you...
 ---
 >  {HeroNick}、なんとかお前だけでも……」
 {HeroNick}, at least you have to make it out...”
@@ -231,10 +233,10 @@ guarantee your life.”
 You're going to keep me company in my final battle!”
 
 @17649 Rish · リッシュ（本话主角的对手）
-# 审校：名前を聞いておいてやる
+# 审校：“good resolve”“我看上你了”不像里修
 > 「女? 女だと……!?
 >  ふん、いい覚悟だ。気に入ったぜ
-“A woman? A woman...?! Hmph, good resolve. I like it.
+“A woman? A woman...?! Hmph, you’ve got guts. I like that.
 ---
 >  名前を聞いておいてやる」
 Tell me your name.”
@@ -352,36 +354,38 @@ your escape... can you move?”
 “Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
 
 @17665 Rish · リッシュ（本话主角的对手）
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“you’ve got me”“Can’t help it”
 > 「ちぃっ、まいったぜ。
 >  しかたがねぇ、ここは撤退するぞっ!」
-“Tch, you've got me. Can't help it... we're retreating!”
+“Tch, they got me good. No choice... we’re pulling out!”
 
 @17666 Rish · リッシュ（本话主角的对手）
+# 审校：同上
 > 「まいったぜ、こりゃ。
 >  まぁ生きてりゃ再戦もできるか
-“You've got me, all right. Well, as long as I'm alive, we can have a rematch.
+“Damn, they got me good. Well, long as I’m alive, there’s always a rematch.
 ---
 >  また会おうぜ」
-Let's meet again.”
+See you around.”
 
 @17667 Rish · リッシュ（本话主角的对手）
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：同上
 > 「ちぃっ、まいったぜ。
 >  レジスタンスの新型が出てきたのは
-“Tch, you've got me. The Resistance rolling out a new model was
+“Tch, they got me good. The Resistance rolling out a new model was
 ---
 >  予想外だったな。しかたがねぇ、
 >  ここは撤退するぞっ!」
-unexpected. Can't help it... we're retreating!”
+unexpected. No choice... we’re pulling out!”
 
 @17668 Rish · リッシュ（本话主角的对手）
+# 审校：同上
 > 「まいったぜ、こりゃ。
 >  ここは引いとくとするか
-“You've got me, all right. I'll pull back here.
+“Damn, they got me good. Guess I’ll pull back for now.
 ---
 >  また会おうぜ、{HeroName}」
-Let's meet again, {HeroName}.”
+See you around, {HeroName}.”
 
 @17669 Selain · セレイン（本话主角）
 > 「これで、終わりか……」
@@ -419,8 +423,9 @@ Let's meet again, {HeroName}.”
 since you've acquired the prototype. If we'd been a little faster, we might have saved the others, though...”
 
 @17676 Selain · セレイン（本话主角）
+# 审校：It can’t be helped
 > 「戦闘の結果です。しかたありません」
-“That's how the battle went. It can't be helped.”
+“That’s how the battle went. Nothing to be done.”
 
 @17677 Quattro · クワトロ
 > 「よい覚悟だが、

@@ -646,21 +646,23 @@ What are we supposed to do? Most of our comrades are down!”
 “Now then, it's about time we resumed the monkey hunt.”
 
 @18644 David · デビッド
+# 审校：toying us 缺 with
 > 「くそっ、やつめ
 “Damn it, that bastard
 ---
 >  俺たちを、なぶり殺しにして
 >  楽しんでやがる!」
-is enjoying toying us to death!”
+is having fun toying with us before he kills us!”
 
 @18645 Gosterro · ゴステロ
+# 审校：去掉 Can't be helped
 > 「なにぃ、増援だとぉ!?
 >  サルのくせに、なめたまねしやがって
-“What, reinforcements?! You monkeys, pulling such a cheeky stunt.
+“What, reinforcements?! You monkeys, pulling a cheeky stunt like this.
 ---
 >  しかたがねぇ、お前ら、
 >  全員迎撃しろ!」
-Can't be helped. All of you, intercept them!”
+Fine, then. All of you, intercept them!”
 
 @18646 Quattro · クワトロ
 > 「遅かったか。せめて、あの2機だけでも
@@ -995,9 +997,9 @@ You can continue this later.”
 “I just can't think of a reason to be friendly. Hurry it up.”
 
 @18704 Shiro · シロー
-# 审校：精读：士郎在等对方发现信号
+# 审校：“快点发现啊”缺宾语
 > 「気づいてくれよ……」
-“Come on, notice it...”
+“Come on, notice me...”
 
 @18705 Aboly · アポリー
 > 「ん? ……大尉、解放戦線の

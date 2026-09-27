@@ -251,13 +251,13 @@ with Banjo and the other Aura Ship.”
 I'm starving and can't move another inch.”
 
 @23994 Hayato · ハヤト
-# 审校：ハヤト称呼リョウ，词表要求译为Ryoma，初稿误用Ryo。
+# 审校：In exchange 直译
 > 「しょうがない奴だな。
 >  リョウ、食事にしよう
-“You're hopeless. Ryoma, let's eat.
+“You’re hopeless. Ryoma, let’s eat.
 ---
 >  そのかわり午後からまた特訓だ」
-In exchange, it's more special training this afternoon.”
+But that means more special training this afternoon.”
 
 @23995 Benkei · ベンケイ
 > 「わかったよ」
@@ -308,9 +308,10 @@ help out with the special training too.”
 “Back when you started, you couldn't even move Mazinger properly either, Koji.”
 
 @24002 Koji · 甲児
+# 审校：unnecessary stuff 直译
 > 「なんだよ、よけいなこというなよ、
 >  さやかさん」
-“What, don't bring up unnecessary stuff, Sayaka.”
+“What, don’t go bringing that up, Sayaka.”
 
 @24003 Ryoma · リョウ
 > 「ははははっ。じゃ甲児くん、
@@ -366,9 +367,10 @@ or Karaba anymore, are we?”
 need to show the world we exist from now on.”
 
 @24012 Roux · ルー
+# 审校：去掉 As expected of
 > 「さっすがアムロさん。
 >  そうなんですよ艦長」
-“As expected of you, Amuro. That's right, Captain.”
+“That’s Amuro for you. See, Captain?”
 
 @24013 Bright · ブライト
 > 「わかったよ。好きにしろ」
@@ -467,13 +469,15 @@ unit in some revolutionary movement.”
 “Well, it means the sun's f...”
 
 @24033 Masato · 雅人
+# 审校：まずい 不是 risky
 > 「うわあぁぁーっ! ストップ! ちょっと、
 >  いくらなんでもそりゃまずいよ、デビッド」
-“Whoaah! Stop! Hey, that's way too risky no matter how you slice it, David.”
+“Whoaah! Stop! Hey, that’s a bad idea any way you slice it, David.”
 
 @24034 David · デビッド
+# 审校：figured as much? 不成句
 > 「あ、やっぱり?」
-“Ah, figured as much?”
+“Ah, you think so?”
 
 @24035 Roux · ルー
 > 「もー、みんなちゃんと考えてよね」
@@ -610,8 +614,9 @@ It's a poem I heard long ago. That's its title.”
 “Let me see... how about {HeroMech}?”
 
 @24059 Lawrence · ローレンス
+# 审校：去掉 As expected of；管家不用缩写
 > 「さすがお嬢様、よい名前です」
-“As expected of you, my lady. A fine name.”
+“That is my lady for you. A fine name.”
 
 @24060 Shinobu · 忍
 # 审校：初稿“I guess”位置和语气略弱，改为“I don't really mind”更贴“別にいいけどよ”。
@@ -645,8 +650,9 @@ Now that that's settled, get moving on the preparations.”
 I don't like the idea of that man moving about freely.”
 
 @24064 Dermail · デルマイユ
+# 审校：去掉 As expected of
 > 「なるほど、さすがだなジャミトフ公」
-“I see. Just as expected of you, Duke Jamitov.”
+“I see. That’s Duke Jamitov for you.”
 
 @24065 Treize · トレーズ
 > 「失礼、何のお話ですかな」
@@ -730,9 +736,10 @@ so you'd better rest while you can or you'll regret it.”
 Hey, are you... scared of going up into space?”
 
 @24079 Lera · レラ
+# 审校：イヤじゃない 是反问“多难受”
 > 「そ、そんなんじゃないよ! たださ、
 >  敵の弾にあたって死ぬならともかく
-“I-it's not like that! It's just, dying from enemy fire is one thing,
+“I-it’s not like that! It’s just, dying from enemy fire is one thing,
 ---
 >  スーツに穴とかあってさ、空気が
 >  なくなって死んだりするのは……
@@ -740,7 +747,7 @@ but a hole in your suit and then you run out of air and die...
 ---
 >  イヤじゃない。寝てる間に
 >  艦の空気がなくなっちゃうとか……」
-I don't want that. Like the ship running out of air while you're asleep...”
+That’d be awful, right? Like the ship running out of air while you’re asleep...”
 
 @24080 Ark · アーク（按段落 3DD1）
 > 「昔ならともかく、今はそんな事故で
@@ -817,9 +824,10 @@ so you'd better rest while you can or you'll regret it.”
 Are you scared of going up into space?”
 
 @24093 Lera · レラ
+# 审校：同 24079
 > 「そ、そんなんじゃないよ! たださ、
 >  敵の弾にあたって死ぬならともかく
-“I-it's not like that! It's just, dying from enemy fire is one thing,
+“I-it’s not like that! It’s just, dying from enemy fire is one thing,
 ---
 >  スーツに穴とかあってさ、空気が
 >  なくなって死んだりするのは……
@@ -827,7 +835,7 @@ but a hole in your suit and then you run out of air and die...
 ---
 >  イヤじゃない。寝てる間に
 >  艦の空気がなくなっちゃうとか……」
-I don't want that. Like the ship running out of air while you're asleep...”
+That’d be awful, right? Like the ship running out of air while you’re asleep...”
 
 @24094 Selain · セレイン（按段落 3DD2）
 > 「今どきそんな事故で死ぬ奴など
@@ -840,10 +848,10 @@ I don't want that. Like the ship running out of air while you're asleep...”
 “A-and besides, they say your body just floats around...”
 
 @24096 Selain · セレイン（按段落 3DD2）
-# 审校：初稿“You call that pointless worry being scared”语法别扭且翻译腔，改为更通顺的表达。
+# 审校：口语
 > 「その無用な心配を、
 >  恐がっているというのだ」
-“That pointless worry is what being scared means.”
+“That pointless worrying is exactly what being scared is.”
 
 @24097 Lera · レラ
 > 「そんなこといったって……
@@ -952,9 +960,10 @@ The route is clear, no abnormalities at the target facility.”
 “I'll confirm... All good.”
 
 @24117 Bright · ブライト
+# 审校：Former 不该大写
 > 「よし、アーガマ発進だ。目標は、
 >  旧クラッシャー隊スペースポート」
-“All right, the Argama is launching. Target: the Former Crusher Team spaceport.”
+“All right, the Argama is launching. Target: the former Crusher Team spaceport.”
 
 @24118 Kamille · カミーユ
 > 「待ってください、艦長」
@@ -1025,10 +1034,10 @@ I'm heading to the Brigadier General's location.”
 “Brigadier General?!”
 
 @24132 Blex · ブレックス
-# 审校：“ジャミトフらしいやり方だ”译为“just like Jamitov's methods”更完整自然。
+# 审校：“做法”“methods”生硬
 > 「……クワトロ大尉か……OZにして
 >  やられた……ジャミトフらしいやり方だ」
-“...Captain Quattro, is it... OZ got the better of us... This is just like Jamitov's methods.”
+“...Captain Quattro, is it... OZ got the better of us... Just like Jamitov.”
 
 @24133 Quattro · クワトロ
 > 「准将、いまドクターを呼びます。
@@ -1072,12 +1081,13 @@ You... you take command, Char Aznable... ugh...”
 “Granted. ...Things are about to get busy. I suppose there's no time to wallow in sentiment.”
 
 @24140 Quattro · クワトロ
+# 审校：show them what we can do 偏离
 > 「そうだな。准将の志を
 >  無駄にしないためにも
-“Indeed. So that the Brigadier General's will is not wasted,
+“Indeed. So the Brigadier General’s will isn’t wasted,
 ---
 >  我々はやってみせなければならんよ」
-we must show them what we can do.”
+we have to pull this off.”
 
 @24141 Kenji · ケンジ
 > 「クラッシャー隊、
@@ -1257,22 +1267,22 @@ This ship's got three beautiful ladies on medical duty, you know.”
 “But why here, of all places...”
 
 @24172 Death Gaia · デスガイヤー
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：I, of all people 用错场合
 > 「シャピロめ、この施設から
 >  宇宙へ上がれるなどとよくもいった
 “That fool Shapiro, saying we could reach space from this facility.
 ---
 >  敵がいるではないか……いや、あれは
 >  奴らだ。この俺の認めたライバルだ!
-There are enemies here... no, it's them. The rivals I, of all people, acknowledged!
+There are enemies here... no, it’s them. The rivals I myself acknowledged!
 ---
 >  全軍戦闘用意!
 >  打ち上げ施設を
-All forces, battle stations! I don't care if we destroy the launch facility...
+All forces, battle stations! I don’t care if we destroy the launch facility...
 ---
 >  破壊してもかまわん、
 >  奴らを全力で叩きつぶせ!」
-crush them with everything we've got!”
+crush them with everything we’ve got!”
 
 @24173 Shot · ショット
 > 「くっ、単細胞め。
@@ -1371,10 +1381,10 @@ We will launch the Gran-Garan here.”
 “Understood. We're counting on you.”
 
 @24189 Ciela · シーラ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：与 24215 同句统一
 > (かりそめの客は、
 >  去らねばならぬが運命……
-(A fleeting guest must depart... such is fate...
+(A fleeting guest is fated to depart...
 ---
 >  それがおわかりか、ドレイク・ルフト……)
 Do you understand that, Drake Luft...?)
@@ -1390,13 +1400,15 @@ Do you understand that, Drake Luft...?)
 “What is it?”
 
 @24192 Elle · エレ
+# 审校：Prepare the Wil Wiph 把敌舰当自家；“灵气”与全篇“奥拉”不一致
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「悪意のオーラが迫っています。
 >  目の前の敵よりも大きな力です
 “An aura of malice is closing in. A power greater than the enemy before us.
 ---
 >  ウィル・ウィプスにそなえ、
 >  ゴラオンを出します」
-Prepare the Will-Wips; we will launch the Goraon.”
+To meet the Will-Wips, we will launch the Goraon.”
 
 @24193 Bright · ブライト
 > 「了解です。よろしく頼みます」
@@ -1458,14 +1470,14 @@ Prepare the Will-Wips; we will launch the Goraon.”
 “Heh heh heh heh, what fools they are.”
 
 @24206 Luna · ルーナ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：去掉 As expected of；“去撞上他们”不通
 > 「さすがはシャピロ様。
 >  あの地球人どもの行動をここまで
-“As expected of you, Lord Shapiro. To read those Earthlings' movements so thoroughly
+“That’s Lord Shapiro for you. To read those Earthlings’ movements so thoroughly
 ---
 >  読みきって、デスガイヤー将軍と
 >  ショットをぶつけておくとは
-and send General Death Gaia and Shot against them...
+and set General Death Gaia and Shot against them in advance...
 ---
 >  お見事ですわ」
 splendid work.”
@@ -1488,9 +1500,10 @@ I am the man who will become the god of this universe. Kukukukuku.”
 “Shapiro!”
 
 @24210 Bright · ブライト
+# 审校：原句语法断裂
 > 「まだ敵がくるというのは、
 >  シャピロのことだったのか……!?」
-“So the enemy still coming... it was Shapiro all along?!”
+“So the enemy still to come... that was Shapiro?!”
 
 @24211 Ginrei · 銀鈴
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1512,13 +1525,14 @@ I am the man who will become the god of this universe. Kukukukuku.”
 “Drake's Will-Wips...? Why here of all places...?”
 
 @24215 Ciela · シーラ
+# 审校：与 24189 同句统一
 > (かりそめの客は、
 >  去らねばならぬが運命……
 (A fleeting guest is fated to depart...
 ---
 >  それをおわかりか、
 >  ドレイク・ルフト……)
-do you understand that, Drake Luft...?)
+Do you understand that, Drake Luft...?)
 
 @24216 Alan · アラン
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
@@ -1584,14 +1598,14 @@ On the surface, we are beings who must be purged.”
 “Drake... Luft...?”
 
 @24228 Drake · ドレイク
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：eyes to see the world / matter of feeling 直译
 > 「シーラよ、ワシとて世界を見る目は
 >  あるつもりだ。が、個人の感情の
-“Ciela, I too believe I have eyes to see the world. But a personal matter of feeling...
+“Ciela, I like to think I too can see how the world stands. But my personal score...
 ---
 >  決着だけは、これはつけさせてもらう。
 >  そうであろう、シャピロよ」
-that alone, I will settle here and now. Isn't that right, Shapiro?”
+that alone, I will settle here and now. Isn’t that so, Shapiro?”
 
 @24229 Shapiro · シャピロ
 > 「な、なんだと?
@@ -1599,13 +1613,14 @@ that alone, I will settle here and now. Isn't that right, Shapiro?”
 “W-What did you say? Drake... have you lost your mind?!”
 
 @24230 Drake · ドレイク
+# 审校：let be 不达意
 > 「貴様だけは許しておくわけにはいかん
 >  シャピロ。どうせ消えゆく運命ならば
-“You alone I cannot let be, Shapiro. If we are fated to vanish anyway,
+“You alone I cannot let go, Shapiro. If we are fated to vanish anyway,
 ---
 >  貴様を倒せずして
 >  なんのオーラマシンか」
-then what kind of Aura Machine would I be if I couldn't defeat you?”
+then what kind of Aura Machine would I be if I couldn’t defeat you?”
 
 @24231 Bright · ブライト
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏

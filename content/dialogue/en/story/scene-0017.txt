@@ -199,12 +199,13 @@ I'll drag him back by the neck if I have to.”
 “You never change, do you? It's always that with you.”
 
 @19858 Masato · 雅人
+# 审校：“so it seems worth doing”没有主语
 > 「人生楽しく生きなきゃ
 >  ここは美人が多くて、
-“You've gotta enjoy life. There are lots of beauties here,
+“You’ve gotta enjoy life. Lots of beauties around here,
 ---
 >  やりがいがありそうだよ」
-so it seems worth doing.”
+so this looks like a job worth doing.”
 
 @19859 Beltorchika · ベルトーチカ
 # 审校：补全整条台词的外层引号
@@ -254,10 +255,10 @@ so it seems worth doing.”
 (Don't ask me.)
 
 @19868 Beltorchika · ベルトーチカ
-# 审校：补全整条台词的外层引号
+# 审校：“even if you're a Newtype”逻辑别扭
 > 「……あなたがアムロ・レイ? ふぅん、
 >  ニュータイプっていっても普通の人ね」
-“...You're Amuro Ray? Hmm, even if you're a Newtype, you're just an ordinary person.”
+“...You’re Amuro Ray? Hmm, Newtype or not, you’re just an ordinary guy.”
 
 @19869 Amuro · アムロ
 > 「すいませんね」
@@ -531,9 +532,10 @@ destroy mankind? Everyone, let's go!”
 “I was the pilot of the Gundam.”
 
 @19920 Beltorchika · ベルトーチカ
+# 审校：人名拼写 Rei→Ray
 > (アムロ……レイ……
 >  やっぱりこの人もパイロットだった
-(Amuro... Rei... so this man was a pilot too.
+(Amuro... Ray... so this man was a pilot too.
 ---
 >  戦う人だったんだわ……)
 He was a man who fought...)
@@ -621,9 +623,10 @@ our ambition will advance by leaps and bounds!”
 “Heh, I don't care how many come. I'll smash every last one of them!”
 
 @19934 Manami · マナミ（按段落 3DD4）
+# 审校：“What numbers”“好多的数量”不像人话
 > 「なんて数……でも、
 >  ここで負けるわけにはいかないわ!」
-“What numbers... but I can't afford to lose here!”
+“So many... but I can’t afford to lose here!”
 
 @19935 Lawrence · ローレンス
 > 「はい、お嬢様」
@@ -766,12 +769,13 @@ You're just trying to make me owe you!”
 “L-Leave me alone!”
 
 @19961 Selain · セレイン（按段落 3DD2）
+# 审校：“I don't mind if you refuse”太客气，不合口吻
 > 「そうしても構わないが、このまま
 >  死にでもされたら寝覚めが悪い
-“I don't mind if you refuse, but if you die like this, I won't sleep well.
+“Fine by me, but if you go and die on me, I won’t sleep well.
 ---
 >  いいから来い」
-Enough, come with me.”
+Enough. Come with me.”
 
 @19962 Lera · レラ
 > 「アタシは1人で大丈夫だ!
@@ -897,9 +901,10 @@ so almost nothing remains.”
 “You didn't have to say ‘rare.’”
 
 @19984 Banjo · 万丈
+# 审校：去 It can't be helped
 > 「しかたがないな。
 >  艦長、ホンコンへ行こう」
-“It can't be helped. Captain, let's head for Hong Kong.”
+“Nothing for it. Captain, let’s head for Hong Kong.”
 
 @19985 Bright · ブライト
 > 「ホンコン? ずいぶんと遠いな」
@@ -1022,17 +1027,18 @@ Can't you at least say thanks when someone saves your life?”
 “I never asked you to!”
 
 @20007 Ark · アーク（按段落 3DD1）
+# 审校：“Since it'd be awkward”“不太方便”说不清哪里不便
 > 「……勝手にしろ! とにかく、
 >  治るまではここにいろ
-“...Do whatever you want! Anyway, stay here until you're healed.
+“...Do whatever you want! Anyway, stay here until you’re healed.
 ---
 >  その後は好きにすればいいさ。
 >  ……不便だから名前くらいは
-After that, do as you please. ...Since it'd be awkward, at least tell me your name.
+After that, do as you please. ...It’s a pain not knowing what to call you, so at least tell me your name.
 ---
 >  教えてほしいな。
 >  俺は{HeroFull}だ」
-I'm {HeroFull}.”
+I’m {HeroFull}.”
 
 @20008 Lera · レラ
 > 「……レラだよ」
@@ -1110,13 +1116,14 @@ If you could move, I'd have thrown you out already.”
 “Then I don't have to thank you, do I.”
 
 @20022 Selain · セレイン（按段落 3DD2）
+# 审校：同 20007
 > 「ああ、好きにするがいい。
 >  しかし当分はここにいるんだ
-“Yeah, do as you like. But for now you're staying here.
+“Yeah, do as you like. But for now you’re staying here.
 ---
 >  不便だから名前くらいは
 >  聞いておこうか」
-Since it'd be awkward, I might as well ask your name.”
+It’s a pain not having something to call you, so I’ll at least ask your name.”
 
 @20023 Lera · レラ
 > 「……レラ」

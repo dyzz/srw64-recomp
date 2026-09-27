@@ -28,14 +28,14 @@
 “Kenji!”
 
 @31518 Murasame · 村雨
-# 审校：破折号；数字汉字
+# 审校：去掉“你听好。听好了”重复和 いいか 译成 All right 的直译腔
 > 「中条長官の指示で
 >  潜入していたんだ
-“I infiltrated on Chief Chujo's orders.
+“I infiltrated on Chief Chujo’s orders.
 ---
 >  手短かにいうからよく聞いてくれ。
 >  いいか、この要塞はまだ未完成だ
-I'll keep it short, so listen carefully. All right, this fortress is still incomplete.
+I’ll keep it short, so listen carefully. This fortress is still incomplete.
 ---
 >  こいつを完全に破壊するには、
 >  4か所あるエネルギー発生機を
@@ -70,12 +70,13 @@ In the worst case, we might get caught in the explosion.”
 “Which means...”
 
 @31522 Murasame · 村雨
+# 审校：いいか 译成 All right 不通
 > 「4か所のジェネレーターを、可能な
 >  限り同時に破壊することだ
 “We have to destroy all four generators at as close to the same time as possible.
 ---
 >  いいか、くれぐれも気をつけてくれ」
-All right, be extremely careful.”
+And listen, be extremely careful.”
 
 @31523 Bright · ブライト
 > 「わかった、ありがとう。
@@ -83,8 +84,9 @@ All right, be extremely careful.”
 “Understood, thank you. You all heard him!”
 
 @31524 Murasame · 村雨
+# 审校：英文口语化
 > 「幸運を祈る。じゃあな」
-“I wish you luck. See you.”
+“Good luck. See you around.”
 
 @31525 Emperor Burai · ブライ大帝
 > 「何と、奴らの進入を許したとな!
@@ -162,8 +164,9 @@ to its grave!”
 “Here, and...”
 
 @31537 Bright · ブライト
+# 审校：ここか 是列举收尾，不是疑问
 > 「ここか」
-“Here, huh.”
+“And here.”
 
 @31538 Amuro · アムロ
 > 「あそこへいけばいいのか……」
@@ -203,9 +206,10 @@ to its grave!”
 “GUOOOOOOOOOO!!”
 
 @31546 Bright · ブライト
+# 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“The runaway has begun. Within the next ten minutes,
+“It’s going critical. Within the next ten minutes,
 ---
 >  残りの2つも破壊するんだ」
 destroy the remaining two as well.”
@@ -219,9 +223,10 @@ destroy the remaining two as well.”
 “It's stopped. All right, we're pulling out.”
 
 @31549 Bright · ブライト
+# 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“The runaway has begun. Within the next ten minutes,
+“It’s going critical. Within the next ten minutes,
 ---
 >  残りの2つも破壊するんだ」
 destroy the remaining two as well.”
@@ -235,9 +240,10 @@ destroy the remaining two as well.”
 “It's stopped. All right, we're pulling out.”
 
 @31552 Bright · ブライト
+# 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“The runaway has begun. Within the next ten minutes,
+“It’s going critical. Within the next ten minutes,
 ---
 >  残りの2つも破壊するんだ」
 destroy the remaining two as well.”
@@ -251,9 +257,10 @@ destroy the remaining two as well.”
 “It's stopped. All right, we're pulling out.”
 
 @31555 Bright · ブライト
+# 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“The runaway has begun. Within the next ten minutes,
+“It’s going critical. Within the next ten minutes,
 ---
 >  残りの2つも破壊するんだ」
 destroy the remaining two as well.”
@@ -267,14 +274,16 @@ destroy the remaining two as well.”
 “It's stopped. All right, we're pulling out.”
 
 @31558 Bright · ブライト
+# 审校：runaway 当名词不自然
 > 「なに!? しまった、暴走が
 >  はじまったぞ。いかん、脱出するんだ!」
-“What?! Damn it, the runaway has started. This is bad, everyone pull out!”
+“What?! Damn it, it’s going critical. This is bad, everyone pull out!”
 
 @31559 Beltorchika · ベルトーチカ
+# 审校：英文条件句别扭；中文“不全机撤离”不像人话
 > 「あと10分以内に全機脱出
 >  しないと危険だわ」
-“If every unit doesn't escape within ten minutes, it'll be dangerous.”
+“All units have to get out within ten minutes, or we’re in trouble.”
 
 @31560 Bright · ブライト
 > 「くっ、全員、出口へ急げ!」
@@ -407,14 +416,15 @@ there's no way they'll be coming back.”
 “What's up? Did you get your hands on some Mazinger parts or something?”
 
 @31588 Astonaige · アストナージ
+# 审校：Parts, nothing / listen and be surprised 是直译
 # 检查提示：未用必用译名：量産型グレート→MP Great Mazinger
 > 「パーツどころか。いいか、聞いて
 >  驚くなよ。どうやらあの要塞には
-“Parts, nothing. All right, listen and be surprised. Apparently that fortress was
+“Better than parts. Listen, and try not to fall over. Apparently that fortress
 ---
 >  量産型グレートの生産工場が
 >  作られる予定だったらしい」
-supposed to have a production factory for the MP Great built inside it.”
+was going to house a production plant for the MP Great.”
 
 @31589 Tetsuya · 鉄也
 > 「何だと!?」
@@ -425,23 +435,23 @@ supposed to have a production factory for the MP Great built inside it.”
 “Really, that's true?!”
 
 @31591 Astonaige · アストナージ
-# 审校：原文「その時はよろしく頼むな」是请对方届时协助测试，初稿 count on me 弄错对象；改为 I'm counting on you。
+# 审校：wreckages 不成词；中文去“呢”，運びこんで 是搬上船
 # 检查提示：未用必用译名：量産型グレート→MP Great Mazinger
 > 「もしかしたら再生工場だったのかも
 >  しれんがな。それはともかく
-“It might have been a regeneration factory, for all I know. Anyway,
+“It might have been a rebuilding plant, for all I know. Anyway,
 ---
 >  量産型グレートの残がいやパーツを
 >  逃げ出す前にできるだけ運びこんで
-before we escaped I had as many MP Great wreckages and parts as possible loaded up,
+before we escaped I had as much MP Great wreckage and as many parts as I could loaded up,
 ---
 >  調べてみたんだ。そうしたら、どうやら
 >  1体だけ組み立てられそうなんだよ
-and took a look at them. And it seems we can assemble one of them.
+and took a look at them. And it seems we can put one together.
 ---
 >  組み上がったらテストするから、
 >  その時はよろしく頼むな」
-Once it's put together I'll run a test, so I'm counting on you then.”
+Once it’s assembled I’ll run a test, so I’m counting on you then.”
 
 @31592 Mondo · モンド
 > 「ふええ、あの状況でよくもまあ……」
@@ -525,7 +535,7 @@ That is truly a joyous thing. But our responsibility
 is not fulfilled by this alone...”
 
 @31604 Relena · リリーナ
-# 审校：标点
+# 审校：第三页起两种语言都是长定语直译，时态也错（未来由……开辟）
 > 「わたくしはクイーン・リリーナ……。
 >  新たなるロームフェラ財団の代表
 “I am Queen Relena... the representative of the new Romefeller Foundation.
@@ -536,15 +546,15 @@ is not fulfilled by this alone...”
 ---
 >  ……すなわち紛争のもととなる
 >  国家の垣根を取りのぞき
-...that is, the era has come when the barriers between nations, the source of conflict, are removed
+...meaning the age has come to tear down the borders between nations, the root of all conflict,
 ---
 >  ひとつとなる時代がきたのです。
 >  地球の未来は国と国とが
-and all become one. Earth's future will be opened
+and become one. Earth’s future will open
 ---
 >  ひとつに結びつくことによって
 >  開けるのです」
-by nations joining together as one.”
+when nation joins with nation as one.”
 
 @31605 Dermail · デルマイユ
 # 审校：大写
@@ -634,22 +644,23 @@ is trying to do exactly that.”
 “...”
 
 @31619 Quattro · クワトロ
+# 审校：两种语言首句都是直译长句
 > 「再び外宇宙からの敵がやってくる
 >  その時だからというわけか
-“So it's because the time has come when an enemy from outer space will attack once more.
+“Because this is the moment an enemy from beyond will come again, is that it?
 ---
 >  なるほどな……立派な覚悟だ」
 I see... A splendid resolve.”
 
 @31620 Treize · トレーズ
-# 审校：大写
+# 审校：absorb the people's hearts 直译
 > 「財団も考えたものだ。
 >  確かに彼女ならばロームフェラに
 “The Foundation has thought this through. Indeed, with her, Romefeller can
 ---
 >  人心を吸収することができる。
 >  だがそれが、ロームフェラにとって
-absorb the people's hearts. But it seems they haven't noticed
+win the people’s hearts. But it seems they haven’t noticed
 ---
 >  リスクが大きいことに、
 >  気づいていないようだね」
@@ -683,18 +694,20 @@ The OZ space force's position will worsen. Though,
 once the battleship Libra is completed, that may change again...”
 
 @31624 Treize · トレーズ
+# 审校：grasped the movements 直译
 > 「愚かしいことだ。{HeroMech}の
 >  諸君の足取りはつかめたかね?」
-“How foolish. Have you grasped the movements of the {HeroMech} group?”
+“How foolish. Have you tracked down the {HeroMech} group?”
 
 @31625 Lady · レディ
+# 审校：“发生了战斗并被目击到”是机翻语序
 > 「は、百鬼、ミケーネの連合軍との
 >  戦闘が行われ、目撃されたとの
-“Yes. We have received information that they were sighted in battle against the
+“Yes. We have received reports that they were sighted fighting the combined
 ---
 >  情報が入りました。ですが、そこに
 >  ゼロとエピオンは確認されなかったと…」
-combined forces of Hyakki and Mycenae. However, Zero and Epyon were not confirmed there...”
+Hyakki-Mycenae forces. However, Zero and Epyon were not confirmed among them...”
 
 @31626 Treize · トレーズ
 > 「ヒイロ・ユイ、そしてゼクス……。君たち

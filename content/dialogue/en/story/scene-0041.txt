@@ -223,13 +223,14 @@ Now then, I suppose I'll go take care of the other one.”
 “Mister, you wanna try taking on all of us?”
 
 @26373 Kyral · キラル
+# 审校：去掉生硬的Lest句式
 > 「ククククッ、ここまでか。今はこれで
 >  引きあげよう。だがお前たち
-“Heh heh heh, so this is as far as I go. I'll withdraw for now. But you lot,
+“Heh heh heh, so this is as far as I go. I’ll withdraw for now. But you lot,
 ---
 >  足もとに気をつけるのだな。
 >  この基地ごと消えてなくならぬように」
-watch your step. Lest this whole base vanish into nothing.”
+watch your step. You wouldn’t want to vanish along with this whole base.”
 
 @26374 Argo · アルゴ
 > 「なんだと?」
@@ -536,14 +537,14 @@ or we will open fire!”
 “OZ drop troops detected. Their target appears to be this base.”
 
 @26428 Bright · ブライト
-# 审校：精读：去破折号
+# 审校：去掉Can't be helped
 > 「もう来たのか!? やむを得ん、
 >  物資搬入は切りあげろ!
-“They're already here?! Can't be helped, cut the supply loading short!
+“They’re already here?! No help for it, cut the supply loading short!
 ---
 >  敵部隊と交戦しつつ、
 >  ここを離れる!」
-We'll engage the enemy force while we pull out of here!”
+We’ll engage the enemy force while we pull out of here!”
 
 @26429 Kenji · ケンジ
 > 「艦長、タケルはどうするんですか!?」
@@ -606,12 +607,13 @@ It was a strange bond we shared, boy. ...Farewell, Alindine.
 Forgive this foolish man.)
 
 @26440 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“试试看”语气不对，这是求死的挑战
 > 「ゆくぞ、少年! 君の恨みと
 >  憎しみはすべてこの私が背負う
 “Here I come, boy! I shall bear all of your resentment and hatred myself.
 ---
 >  みごと私を討ち果たしてみせろ!」
-Show me you can strike me down in fine style!”
+Now strike me down, and do it well!”
 
 @26441 Ark · アーク（按段落 3DD1）
 > 「あいつ……死ぬ気なのか?
@@ -641,9 +643,10 @@ This time I cannot afford to retreat!”
 “{PartnerName}... Fine, I'll finish this here and now!”
 
 @26446 Kurtz · カーツ（按段落 3DD3）
+# 审校：take fright/Don't mock me 生硬
 > 「チッ、奴め! この俺に
 >  恐れをなしたか!? ふざけおって!」
-“Tch, that bastard! Did he take fright at me?! Don't mock me!”
+“Tch, that coward! Is he afraid of me?! How dare he mock me!”
 
 @26447 Kyral · キラル
 # 审校：精读：去破折号
@@ -673,18 +676,18 @@ I shall show you as well. The darkness of this world!”
 “W-What? What do you mean, boy?!”
 
 @26451 Ark · アーク（按段落 3DD1）
-# 审校：精读：去破折号
+# 审校：首句直译不通，短句化
 > 「この時代の中では、
 >  いつああなってもおかしくはなかった
-“In this era, it wouldn't have been strange for that to happen to anyone.
+“In times like these, that could have happened to anyone.
 ---
 >  確かに不幸なことだ。許せないし
 >  認めたくはない。だけどね、そんなのは
-It's truly unfortunate. I can't forgive it, and I don't want to accept it. But you know, that sort of thing
+It’s a tragedy. I can’t forgive it, and I don’t want to accept it. But you know, that sort of thing
 ---
 >  世界中で起こった、そして
 >  今も起こり続けていることなんだ」
-has happened all over the world, and it's still happening right now.”
+has happened all over the world, and it’s still happening right now.”
 
 @26452 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「少年、君は……」
@@ -716,17 +719,18 @@ And if you live with pride, it doesn't matter when you die.”
 “...”
 
 @26455 Ark · アーク（按段落 3DD1）
+# 审校：“战给你看”“让它结束了”直译腔
 > 「でもね、そんなのは間違ってるんだ。
 >  そんなふうにしか考えられないのは
-“But you know, that's wrong. Being able to think only that way is
+“But you know, that’s wrong. Having no other way to think
 ---
 >  不幸なことだ。そんなことは
 >  もう終わらせなくちゃいけないんだ
-unfortunate. We have to put an end to that.
+is a tragedy in itself. We have to put an end to that.
 ---
 >  俺は、そのために戦ってみせると
 >  決めた」
-I've decided I'll fight to make that happen.”
+I’ve decided I’ll fight to make that happen.”
 
 @26456 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「時代の生んだ………不幸か……」
@@ -773,30 +777,32 @@ Heh... hell is sure to be a lively place.”
 “That guy... just what is he, anyway...?”
 
 @26463 Kyral · キラル
+# 审校：joyful battle 不自然
 > 「……見事だドモン。
 >  貴様のような男と再び
 “...Splendid, Domon. To think I could cross
 ---
 >  剣を交えることができようとは。
 >  クッ……楽しい戦いだったぞ」
-blades with a man like you once more. Heh... it was a joyful battle.”
+blades with a man like you once more. Heh... it was a fine fight.”
 
 @26464 Domon · ドモン
 > 「キラル!? お前は……」
 “Kyral?! You're...”
 
 @26465 Kyral · キラル
+# 审校：“向你道谢了”生硬
 > 「この私の光を失った目にも、
 >  お前を支える仲間たちの姿が
-“Even to these eyes of mine that have lost their light, the forms of the comrades who support you
+“Even these eyes of mine, robbed of their light, could clearly see the comrades
 ---
 >  はっきりと見えた。まさかこの目に
 >  もう1度
-were clearly visible. To think these eyes could once more
+standing behind you. To think these eyes would ever
 ---
 >  あのようなものが見えるとはな。
 >  礼をいうぞ。……さらばだ!」
-see something like that. I thank you. ...Farewell!”
+see such a thing again. You have my thanks. ...Farewell!”
 
 @26466 Domon · ドモン
 > 「キラル・メキレル……お前とは
@@ -833,12 +839,13 @@ see something like that. I thank you. ...Farewell!”
 “Help me, big brother! Where are you? Big brother?!”
 
 @26474 Gates · ゲーツ
+# 审校：重复“那家伙”
 > 「ロザミアの脳波が乱れている!?
 >  あいつか、原因は!
-“Rosamia's brainwaves are in disarray?! Is it him, the cause?!
+“Rosamia’s brainwaves are in disarray?! Is he the cause?!
 ---
 >  まどわされるな、ロザミア!」
-Don't let yourself be confused, Rosamia!”
+Don’t let him confuse you, Rosamia!”
 
 @26475 Kamille · カミーユ
 # 审校：精读：去破折号
@@ -1056,9 +1063,9 @@ I doubt we can get through without running into the enemy.”
 “...”
 
 @26518 Quattro · クワトロ
-# 审校：精读：去破折号
+# 审校：“果然还是很在意吗，关于”直译腔
 > 「やはり気になるか、将軍のことが?」
-“So you're still bothered about it, about the General?”
+“Still weighing on you? The General, I mean.”
 
 @26519 Alan · アラン
 # 审校：精读：去破折号
@@ -1091,9 +1098,10 @@ I doubt we can get through without running into the enemy.”
 “...Father and son both in the resistance, so why were you in different organizations?”
 
 @26525 Alan · アラン
+# 审校：原文是OZ没对父亲下手，译成了父亲没做到
 > 「方法論の違いだ。
 >  あの人は古いタイプの軍人だ
-“A difference in methods. He's an old-school soldier.
+“A difference in methods. He’s an old-school soldier.
 ---
 >  あの人のやり方では、
 >  たいしたことはできなかったはずだ
@@ -1101,11 +1109,11 @@ With his way of doing things, he could never have accomplished anything of note.
 ---
 >  OZのジャミトフが
 >  ブレックス准将を暗殺しても
-Even when OZ's Jamitov assassinated Brigadier General Blex,
+Even when OZ’s Jamitov assassinated Brigadier General Blex,
 ---
 >  あの人にはそこまではしなかった。
 >  それが証拠だろう」
-he never went that far. That's proof enough.”
+they never bothered to do the same to him. That’s proof enough.”
 
 @26526 Naoto · ナオト
 > 「タケル、お前……何者だよ!?
@@ -1279,8 +1287,9 @@ the survey of the Earth forces is already complete,
 and they are about to begin the assault.”
 
 @26553 Emperor Zuul · ズール皇帝
+# 审校：对象是甘达尔，不是瓦尔本人
 > 「そうか……見事やってみせろ」
-“I see... See that you do it splendidly.”
+“I see... See that it’s done well.”
 
 @26554 Marg · マーグ
 > (ズールめ……マーズが
@@ -1350,10 +1359,10 @@ You had me completely fooled.”
 “Give it up! The crime of rebelling against Emperor Zuul is grave.”
 
 @26564 Emperor Zuul · ズール皇帝
-# 审校：精读：去破折号、人名
+# 审校：よくも 是斥责，不是夸奖
 > 「マーグ、いままでよくも
 >  このワシをたばかってくれた
-“Marg, you've done well deceiving me all this time.
+“Marg, how dare you deceive me all this time.
 ---
 >  マーズとは血を分けた兄弟、
 >  さぞかし会いたいだろうな。いいだろう
@@ -1361,7 +1370,7 @@ You and Mars are brothers by blood, so you must be dying to see him. Very well.
 ---
 >  会わせてやろう。ただし……
 >  マーズを殺すために」
-I'll let you meet. However... only to kill Mars.”
+I’ll let you meet. However... only to kill Mars.”
 
 @26565 Marg · マーグ
 > 「なんだと!?」
@@ -1558,12 +1567,13 @@ you were so... Master... why? Why...)
 “Did you find out something?”
 
 @26597 Alan · アラン
+# 审校：there are quite complicated circumstances 生硬
 > 「ああ……ギャリソンに
 >  調べてもらったんだがね
 “Yes... I had Garrison look into it,
 ---
 >  なかなか複雑な事情があるようだ」
-and it seems there are quite complicated circumstances.”
+and it seems the circumstances are rather complicated.”
 
 @26598 Ark · アーク（按段落 3DD1）
 > 「複雑な事情?」
@@ -1609,12 +1619,13 @@ he apparently clashed with Bask often. Bask Om supposedly took his
 lover hostage and forced him to take part in the operation.”
 
 @26604 Ark · アーク（按段落 3DD1）
+# 审校：takes a subordinate's hostage 语义不清
 > 「人質!? 上官が部下に
 >  人質をとって脅迫するんですか?
-“A hostage?! A superior officer takes a subordinate's hostage and threatens him?
+“A hostage?! A superior officer taking hostages to threaten his own subordinate?
 ---
 >  そんなバカな」
-That can't be.”
+That can’t be.”
 
 @26605 Alan · アラン
 # 审校：精读：去破折号
@@ -1681,18 +1692,18 @@ just doesn't sit right, does it?”
 and the woman could be killed.”
 
 @26614 Ark · アーク（按段落 3DD1）
-# 审校：精读：去破折号
+# 审校：长定语拆顺
 > 「だけど……知ってしまった以上は
 >  放ってはおけないですよ
-“But... now that I know, I can't just leave it alone.
+“But... now that I know, I can’t just leave it alone.
 ---
 >  別にあいつやその女の人のためなんか
 >  じゃない。そういうことを平然と
-It's not like it's for his sake or that woman's. Letting someone who can do that kind of thing
+It’s not like it’s for his sake or that woman’s. Someone who can do that kind of thing
 ---
 >  できる奴がしていることを、黙って
 >  やらせておくって、罪悪感ありますよ」
-calmly get away with it, just staying silent about it, leaves me feeling guilty.”
+without batting an eye, and I just stand by and let him? That’d weigh on me.”
 
 @26615 Alan · アラン
 > 「なるほど。君は、まるで救出作戦

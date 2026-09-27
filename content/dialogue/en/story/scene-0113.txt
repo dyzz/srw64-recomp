@@ -52,8 +52,9 @@ to protect the Earth.”
 be destroyed like Planet Bial.”
 
 @50837 Kappei · 勝平
+# 审校：じっちゃん 统一 Gramps（见 50881）
 > 「いくら、じっちゃんの頼みでもなぁ……」
-“Even if it is Grandpa's request...”
+“Even if it is Gramps asking...”
 
 @50838 Keiko · 恵子
 > 「レーダーに反応があったわ!

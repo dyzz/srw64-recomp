@@ -340,20 +340,22 @@ The Shining Gundam may be at its limit too. Just swapping parts won't...”
 “Um, it's about that matter we discussed before...”
 
 @36282 Alan · アラン
+# 审校：What will you do 生硬
 > 「ああ……あの件か。そうだな、
 >  もしかしたら進んでいるかもしれん
 “Ah... that matter. Well, it may have progressed by now.
 ---
 >  どうする、確認だけしてくるか?」
-What will you do, shall we just go and confirm it?”
+What do you want to do, shall I just go and check?”
 
 @36283 Rain · レイン
+# 审校：“如果可能的话马上就会需要”主语不明；英文 I'll be needed 错
 > 「いえ、私も一緒に行かせてください
 >  可能ならすぐに必要になります
-“No, please let me come along too. If possible, I'll be needed right away,
+“No, please let me come along too. If it’s ready, we’ll need it right away,
 ---
 >  調整は私でなくては、できませんから」
-and no one but me can do the adjustments.”
+and no one but me can handle the adjustments.”
 
 @36284 Alan · アラン
 > 「わかった。艦長には
@@ -390,13 +392,15 @@ I'm heading out right away.”
 “I'm supposed to go with Alan.”
 
 @36291 Domon · ドモン
+# 审校：当面称对方“蕾茵／Rain”别扭，改为“你”
+# 检查提示：未用必用译名：レイン→Rain
 > 「なんでレインが、アランの奴と一緒に
 >  行かなくちゃならないんだ
-“Why does Rain have to go with that Alan?
+“Why do you have to go with that Alan guy?
 ---
 >  だいたいお前がいなくて、誰が
 >  シャイニングの調整をやってくれる」
-Besides, with you gone, who's going to do the Shining Gundam's adjustments?”
+Besides, with you gone, who’s going to do the Shining Gundam’s adjustments?”
 
 @36292 Rain · レイン
 > 「とにかく、だめなの」
@@ -504,7 +508,7 @@ who knows when we'll get another chance to relax like this.”
 “I know.”
 
 @36313 Ark · アーク（按段落 3DD1）
-# 审校：精读：页末标点
+# 审校：“你的命，我绝对不会让它白白牺牲”不搭；英文 your life, I will never let it be wasted 是日语语序
 > (ごめん……レラ。約束果たすには、
 >  まだまだ時間が必要みたいだ
 (Sorry... Lera. It looks like I still need a lot more time to keep my promise.
@@ -515,14 +519,14 @@ In fact, it might be even harder than before.
 ---
 >  どうなっていくのか、まるでわからないよ。
 >  だけどレラ……お前の命は
-I have no idea how things will turn out. But Lera... your life,
+I have no idea how things will turn out. But Lera... your life
 ---
 >  絶対に無駄にさせはしない。
 >  だから、見ていてくれ。地球は
-I will never let it be wasted. So keep watching. Earth...
+won’t have been for nothing, I swear. So watch me. Earth...
 ---
 >  絶対に守ってみせるから……)
-I swear I'll protect it...)
+I’ll protect it, no matter what...)
 
 @36314 Sayaka · さやか
 > 「どうしたの、何か
@@ -663,9 +667,10 @@ has descended to the surface.”
 “First, I would like you to try fighting them.”
 
 @36339 Alberto · アルベルト
+# 审校：いまさら光子力もゲッター線もあるまい 是“已经无所谓了”，两种语言都译成了“没有”
 > 「わからんな、孔明。いまさら
 >  光子力もゲッター線もあるまい
-“I don't understand, Komei. There's no Photon Power or Getter Rays at this point.
+“I don’t understand, Komei. Photon Power and Getter Rays hardly matter anymore.
 ---
 >  なぜ我々があのような連中と
 >  関わらねばならん」
@@ -883,13 +888,14 @@ But in truth, their fear of the Dark Gundam had never disappeared.”
 “Does that mean they're okay now?”
 
 @36375 Schwarz · シュバルツ
+# 审校：さすが 套话；“人们啊”
 > 「うむ。彼らは自力で克服した
 >  ようだな。それに、新たな技も身に
-“Indeed. It seems they've overcome it on their own. And on top of that, they're
+“Indeed. It seems they’ve overcome it on their own. And on top of that, they’re
 ---
 >  つけつつある。さすがにシャッフルの
 >  紋章を受け継ぐ者たちだな」
-acquiring new techniques. Truly, they are the ones who inherited the Shuffle Crest.”
+acquiring new techniques. That’s the heirs of the Shuffle Crest for you.”
 
 @36376 Janet · ジャネット
 > 「新しい技? すごいじゃない!」
@@ -942,12 +948,13 @@ Don't you think?”
 “I can beat them. As long as I have Super Mode, I'll surpass my Master.”
 
 @36385 Schwarz · シュバルツ
+# 审校：光秃秃的 Master 指代不清
 > 「ハハハハハッ、愚か者め! 貴様の
 >  スーパーモードなど、欠点だらけだ
 “Hahahahaha! You fool! Your Super Mode is full of flaws.
 ---
 >  そんなものではマスターには勝てぬ」
-With something like that, you can't beat Master.”
+With something like that, you cannot beat Master Asia.”
 
 @36386 Domon · ドモン
 > 「なんだと!? どういうことだ!」
@@ -1080,9 +1087,10 @@ and put your very soul into your technique! Now, here I come!”
 “Guhhhh...”
 
 @36408 Schwarz · シュバルツ
+# 审校：die with a quiet heart 直译；“静下心来死”不像话
 > 「もう観念したか、ドモン! ならば、
 >  心静かに死ね!」
-“Have you given up, Domon?! Then die with a quiet heart!”
+“Have you given up, Domon?! Then die in peace!”
 
 @36409 Domon · ドモン
 > (ほ、本気だ……シュバルツは本気で
@@ -1267,14 +1275,14 @@ I would not have taken you for an expert of the International Police Organizatio
 “Lord Alberto, are you certain about this?”
 
 @36443 Alberto · アルベルト
-# 审校：Alberto 的 voice 是傲慢反派，不用 it's/there's 缩写更符合其腔调。
+# 审校：Those lot 不合语法
 > 「我らがビッグファイアーのためとあらば、
 >  しかたあるまい
 “If it is for our Big Fire, there is no other way.
 ---
 >  だがイワン、気をつけろよ。
 >  あやつら、なかなかやりおる」
-But Ivan, be careful. Those lot are quite tough.”
+But Ivan, be careful. That lot are no pushovers.”
 
 @36444 Ivan · イワン
 > 「おまかせください、アルベルト様」
@@ -1344,9 +1352,10 @@ Come on out, Master Asia!!”
 Is that how you speak to your Master?!”
 
 @36456 Domon · ドモン
+# 审校：英文口语
 > 「黙れぇっ!! 俺はもう、
 >  あんたを師匠とは呼ばない!!」
-“Shut up!! I don't call you Master anymore!!”
+“Shut up!! I’m done calling you Master!!”
 
 @36457 Master · マスター
 # 审校：Master的voice要求无缩写、庄重，原文“おるというのに”语气正式，将“you know”改为“as well”更符合宗师口吻。
@@ -1367,9 +1376,10 @@ Is that how you speak to your Master?!”
 “Dark Gundam... Kyojiiiii!!”
 
 @36461 Schwarz · シュバルツ
+# 审校：Calm your heart 直译
 > 「待て、ドモン!
 >  心を落ち着けるのだ!」
-“Wait, Domon! Calm your heart!”
+“Wait, Domon! Steady your heart!”
 
 @36462 Domon · ドモン
 > 「シュバルツか!? うるさいッ、
@@ -1419,9 +1429,10 @@ That is the only way to win. But for you as you are now, it is impossible.”
 “Heh heh heh heh heh, hah hah hah hah hah!!”
 
 @36470 Domon · ドモン
+# 审校：I will never forgive you 日语腔
 > 「何がおかしい……何がおかしぃぃぃッ!
 >  貴様のおかげで母は死に
-“What's so funny... What's so funnyyyy?! Because of you my mother died,
+“What’s so funny... What’s so funnyyyy?! Because of you my mother died,
 ---
 >  コロニーは崩壊、俺は貴様を
 >  追ってきてこのザマだ
@@ -1429,10 +1440,10 @@ the colony was destroyed, and I chased after you and ended up like this.
 ---
 >  貴様に笑われるすじあいはない!
 >  俺は貴様を許せん!
-You have no right to laugh at me! I will never forgive you!
+You have no right to laugh at me! I’ll make you pay!
 ---
 >  貴様を叩きつぶしてやる!」
-I'll crush you!”
+I’ll crush you!”
 
 @36471 Master · マスター
 # 审校：Master的voice要求无缩写、庄重，原文“このワシに通用するとでも思っているのか”语气傲慢，将“really”改为“truly”更符合宗师口吻。
@@ -1512,9 +1523,10 @@ abandoned me...?”
 a little more calmly...”
 
 @36485 Domon · ドモン
+# 审校：training was insufficient 生硬
 > 「すまない……俺はなっちゃいない。
 >  修行が足りなかった……」
-“I'm sorry... I'm not ready. My training was insufficient...”
+“I’m sorry... I’m not ready. I haven’t trained enough...”
 
 @36486 Domon · ドモン
 > 「くっ!?」
@@ -1555,8 +1567,9 @@ That single instant of Meikyo Shisui...!”
 (Dad... Mom... I... I...)
 
 @36491 Master · マスター
+# 审校：与 36408 同一说法
 > 「さぁ、心静かに死ぬのだ」
-“Now, die with a calm heart.”
+“Now, die in peace.”
 
 @36492 Domon · ドモン
 > (死ぬ……? 俺が……? そうだ、
@@ -1597,14 +1610,14 @@ That single instant of Meikyo Shisui...!”
 “Ohh... he did it. That truly is... the true Super Mode...”
 
 @36500 Domon · ドモン
-# 审校：“未熟なばかりに”语气更接近“still so inexperienced”，补上“still”使自责语气更自然。
+# 审校：呼应 36485 的 not ready
 > 「シュバルツ!? ……すまないシュバルツ
 >  ……俺が未熟なばかりに……
-“Schwarz?! ...I'm sorry, Schwarz... It's only because I was still so inexperienced...
+“Schwarz?! ...I’m sorry, Schwarz... It’s all because I wasn’t ready...
 ---
 >  キョウジ……兄さん……もう、
 >  終わらせるよ……」
-Kyoji... brother... I'm ending this now...”
+Kyoji... brother... I’m ending this now...”
 
 @36501 Master · マスター
 > 「こやつ……いつのまにこれほどの力を……
@@ -1617,10 +1630,10 @@ Kyoji... brother... I'm ending this now...”
 “That's... the Dark Gundam?! Master Asia's there too.”
 
 @36503 Shinobu · 忍
-# 审校：“面倒おこしやがるぜ”带有不满语气，改为“he's gone and dragged us into a mess”更口语化。
+# 审校：英文太长太书面
 > 「まったく、修行してるだけのはずが、
 >  面倒おこしやがるぜ」
-“Honestly, we were supposed to just be training, and now he's gone and dragged us into a mess.”
+“Damn it, this was supposed to be training, and now he’s stirred up a mess.”
 
 @36504 Sara · 沙羅
 > 「忍、そんなこといってる状況じゃない
@@ -1741,9 +1754,10 @@ how much better it would have been!”
 “Master Asia... just what are you...”
 
 @36522 Master · マスター
+# 审校：I will never forgive you 日语腔
 > 「だからお前は、アホなのだぁっ!
 >  ドモン、貴様は許さんぞ!」
-“That's why you're a fool! Domon, I will never forgive you!”
+“That’s why you’re a fool! Domon, you’ll pay for this!”
 
 @36523 Domon · ドモン
 > 「くっ……なに!?
@@ -1827,8 +1841,9 @@ how much better it would have been!”
 “I'm Banjo. Banjo Haran. We'll talk later, just hurry!”
 
 @36541 Domon · ドモン
+# 审校：take you up on that 不合语境
 > 「わかった! そうさせてもらう!」
-“Understood! I'll take you up on that!”
+“Got it! I’ll do just that!”
 
 @36542 Domon · ドモン
 > 「これがゴッドガンダム……
@@ -1878,8 +1893,9 @@ I'll finish this!!”
 “It's the Shining Gundam's successor: the Burning Gundam.”
 
 @36551 Banjo · 万丈
+# 审校：Just as expected 套话
 > 「お見事、ドモン。さすがだね」
-“Well done, Domon. Just as expected.”
+“Well done, Domon. That’s the Domon I know.”
 
 @36552 Domon · ドモン
 > 「万丈か。ひさしぶりだな」
@@ -1944,12 +1960,13 @@ a unit of the same type as the Shining.”
 “Who are you?”
 
 @36562 Banjo · 万丈
+# 审校：以後お見知りおきを 的英文
 > 「おっと、失礼。僕の名は万丈、
 >  破嵐万丈だ
 “Whoops, pardon me. My name is Banjo. Banjo Haran.
 ---
 >  以後お見知りおきを」
-I hope we'll be getting to know each other.”
+A pleasure to make your acquaintance.”
 
 @36563 Domon · ドモン
 > 「さっきの男か」
@@ -2028,9 +2045,10 @@ Lord Domon in such a short time.”
 “Rain...”
 
 @36574 Garrison · ギャリソン
+# 审校：老管家口吻；soon 多余
 > 「さてと。ご一同、そろそろ
 >  アーガマの方へ向かいますかな」
-“Well then. Everyone, shall we head for the Argama soon?”
+“Well then. Everyone, shall we make for the Argama?”
 
 @36575 Banjo · 万丈
 > 「ああ、そうしてくれ」
@@ -2146,13 +2164,14 @@ Later, I'll introduce you to the people who joined after you left.”
 “Allow me to introduce him. This is Banjo Haran of Karaba.”
 
 @36593 Banjo · 万丈
+# 审校：the man who was just introduced / 承蒙介绍 都太硬
 > 「どうも、僕がただいまご紹介に
 >  あずかった、破嵐万丈です
-“Hello, I'm Banjo Haran, the man who was just introduced.
+“Hello. Banjo Haran, as you just heard.
 ---
 >  初めて会う人も多いと思う。
 >  以後、お見知りおきいただきたい」
-I imagine many of you are meeting me for the first time. I hope you'll remember me from now on.”
+I expect a lot of you are meeting me for the first time. A pleasure to know you all.”
 
 @36594 Hayato · ハヤト
 > 「フッ、あいかわらずだな」
@@ -2172,9 +2191,10 @@ I'm hoping to accompany the {HeroMech} from here on.
 Would that be all right?”
 
 @36596 Bright · ブライト
+# 审校：heard the rumors 直译
 > 「噂はかねがね。歓迎するよ、
 >  よろしく頼む」
-“I've heard the rumors for a long time. You're welcome here. Glad to have you.”
+“Your reputation precedes you. You’re welcome here. Glad to have you.”
 
 @36597 Banjo · 万丈
 > 「こちらこそ。

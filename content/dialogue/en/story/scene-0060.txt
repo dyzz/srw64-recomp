@@ -123,12 +123,13 @@ exercise no interference whatsoever. That is Treize Khushrenada's decision.”
 “Hmph. What use is a bit of blood on paper?”
 
 @38146 Alan · アラン
+# 审校：“我方的合作关系”应为双方；英文hereby established太硬
 > 「……では、これで我々の
 >  協力関係が成立したと
-“...Then may we consider our cooperative relationship
+“...Then may we consider our alliance
 ---
 >  考えて、よろしいですな?」
-hereby established?”
+officially in effect?”
 
 @38147 Haman · ハマーン
 > 「いや、もう1つほしいな」
@@ -229,9 +230,10 @@ let us hope the future holds good things for us both.”
 “And she's still only shown us a fraction of her forces.”
 
 @38162 Tetsuya · 鉄也
+# 审校：英文“what kind of nerves”直译；中文改口语
 > 「地球が危ないってのにな。
 >  まったく、どういう神経した女だよ」
-“And Earth's in danger, no less. Just what kind of nerves does that woman have?”
+“And with Earth in danger, no less. Seriously, what the hell is wrong with that woman?”
 
 @38163 Daisuke · 大介
 > 「…………」
@@ -506,10 +508,10 @@ Do you really think you can win with the Romefeller Foundation, OZ,
 and our Mobile Doll Corps as your enemies?”
 
 @38204 Haman · ハマーン
-# 审校：精读：去破折号
+# 审校：“My dear noble”不自然
 > 「勝てるつもりではなく、
 >  勝てるのだよ。貴族どの」
-“It's not that I think I can win. It's that I will win. My dear noble.”
+“I don’t think I can win. I will win, my noble lord.”
 
 @38205 Jerid · ジェリド
 > (この女……)
@@ -582,10 +584,10 @@ you will die here.”
 “What did you say?!”
 
 @38219 Bunny · バニー
-# 审校：巴妮是女性敬体，原文句尾的“です”应体现为礼貌语气，而非对上级的“sir”。
+# 审校：巴妮是在转述信号内容
 > 「グワダンの発光信号確認!
 >  援護頼む、です」
-“Confirmed signal light from the Gwadan! Requesting support, please.”
+“Confirmed signal light from the Gwadan! It says, ‘requesting support.’”
 
 @38220 Alan · アラン
 > 「早すぎるな」
@@ -598,14 +600,14 @@ you will die here.”
 “Yeah. But it seems she was counting on us from the start after all. What a shameless woman.”
 
 @38222 Bright · ブライト
-# 审校：全局：Dr. Hasan／Barge 拼写统一
+# 审校：落とさせるな 是别让格瓦丹被击沉，不是别让它跑了；英文去掉no helping it
 > 「約束だ、しかたあるまい。
 >  バルジ方面に一斉射!
-“It's a promise. There's no helping it. All guns, fire on the Barge area!
+“A promise is a promise. Nothing for it. All guns, fire on the Barge area!
 ---
 >  各機、出撃しろ!
 >  グワダンを落とさせるな!」
-All units, launch! Don't let the Gwadan get away!”
+All units, launch! Don’t let them sink the Gwadan!”
 
 @38223 Jamitov · ジャミトフ
 > 「む……戦闘が始まったか……
@@ -755,13 +757,14 @@ I'd appreciate your support in getting the Gwadan off the battle line.”
 “Tell me about it.”
 
 @38248 Bright · ブライト
+# 审校：英文意思反了：是别让格瓦丹和卡碧尼被击落
 > 「ハマーンめ。ビューティー、
 >  パイロット各員に通達しろ!
 “That Haman. Beauty, relay this to all pilots!
 ---
 >  グワダンとキュベレイを
 >  落とさせるなよ!!」
-Don't let the Gwadan and the Qubeley get away!!”
+Don’t let them take down the Gwadan or the Qubeley!!”
 
 @38249 Bask · バスク
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -968,13 +971,14 @@ or I'll have nothing to show Scirocco!”
 “Put her through.”
 
 @38287 Haman · ハマーン
+# 审校：去掉As expected of
 > 「{HeroMech}の諸君、
 >  ご苦労だった
-“People of the {HeroMech}, you've done well.
+“People of the {HeroMech}, well done.
 ---
 >  さすが{HeroMech}、
 >  約束をたがえることはなかったな
-As expected of the {HeroMech}, you did not break your promise.
+That’s the {HeroMech} for you. You kept your word.
 ---
 >  うれしい限りだ」
 Nothing could please me more.”

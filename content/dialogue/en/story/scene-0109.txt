@@ -16,9 +16,10 @@
 “Orders or not, sending just the two of us out here is something else.”
 
 @50792 Seabook · シーブック
+# 审校：It can’t be helped
 > 「しかたがないさ、セシリー。今はどこの
 >  組織だって、ひとりでも戦力を
-“It can't be helped, Cecily. Right now every group out there wants to secure
+“That’s just how it is, Cecily. Right now every group out there wants to secure
 ---
 >  確保しておきたいんだ。2人も
 >  出られるだけでも、たいしたもんだよ」

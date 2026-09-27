@@ -1,12 +1,13 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @20489 Lady · レディ
+# 审校：“Will the Audhumla take”不像在看航迹
 > 「アウドムラはタクラマカン砂漠を
 >  抜けるルートをとるか
-“Will the Audhumla take the route through the Taklamakan Desert?
+“The Audhumla’s taking the route through the Taklamakan Desert?
 ---
 >  ……目的が読めんな」
-...I can't read their objective.”
+...I can’t read their objective.”
 
 @20490 Zechs · ゼクス
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -91,8 +92,9 @@ so easily figured out.”
 “Exactly.”
 
 @20501 Quattro · クワトロ
+# 审校：“it's not as if there are no problems”生硬
 > 「しかし問題がないこともない」
-“However, it's not as if there are no problems.”
+“That said, it’s not without its problems.”
 
 @20502 Bright · ブライト
 > 「大尉、どういうことだ?」
@@ -151,9 +153,10 @@ And though unconfirmed, there are also reports that they truly
 Are we to make contact again?”
 
 @20509 Quattro · クワトロ
+# 审校：“with this much mystery”“这样谜团重重”直译
 > 「さすがに、こうも謎では危険すぎると
 >  判断されたようだな
-“It seems they've judged that with this much mystery, it's too dangerous.
+“Seems they’ve decided it’s too dangerous with this many unknowns.
 ---
 >  まずはチベットに向かうことを
 >  優先しろということだが……」
@@ -186,13 +189,14 @@ They say to prioritize heading for Tibet first, but...”
 “Some odd information came in. Garrison.”
 
 @20516 Garrison · ギャリソン
+# 审校：“appear to be appearing”
 > 「はい。私どもがつかんだ情報に
 >  よりますと、現在各地に
-“Yes. According to the information we've gathered, mysterious units
+“Yes. According to the information we’ve gathered, mysterious units
 ---
 >  所属不明の謎の部隊が
 >  出現しているようでございます
-of unknown affiliation appear to be appearing all over now.
+of unknown affiliation seem to be showing up all over now.
 ---
 >  少なくとも
 >  レジスタンス組織ではありません」
@@ -217,12 +221,13 @@ so that's likely not the case.”
 “Then... surely not the Hyakki Clan or Mycenae?”
 
 @20520 Banjo · 万丈
+# 审校：原句结构绕
 > 「いや、連中が帝国に
 >  反抗するために用意したにしては
-“No, for something those lot prepared to rebel against the Empire,
+“No, if that lot had prepared them to rebel against the Empire,
 ---
 >  それほど数が多いわけでもないようだ」
-there don't seem to be all that many of them either.”
+you’d expect a good deal more of them.”
 
 @20521 Koji · 甲児
 > 「なんだよ、さっぱりわからないじゃねぇか」
@@ -261,12 +266,13 @@ there's some kind of problem, isn't there?”
 The Specials' pursuit force doesn't seem to have given up either.”
 
 @20527 Ryo · 亮
+# 审校：亮语气冷静，奴 不必译成 bastard
 > 「そういえば沙羅、
 >  お前確か、シャピロを探していたな
-“Speaking of which, Sara, you were looking for Shapiro, weren't you?
+“Speaking of which, Sara, you were looking for Shapiro, weren’t you?
 ---
 >  見つかったのか、奴は?」
-Did you find him, that bastard?”
+Did you find him?”
 
 @20528 Simone · シモーヌ
 > 「なぁに、恋人? そのシャピロって」
@@ -388,8 +394,9 @@ Imperial military, there was no sign of him. That's all I know.”
 “Hmph.”
 
 @20553 Selain · セレイン（按段落 3DD2）
+# 审校：标点空格；原文不是疑问
 > 「ん?……敵か」
-“Hm?...Enemies.”
+“Hm? ...Enemies.”
 
 @20554 Bright · ブライト
 > 「どうした!?」
@@ -435,9 +442,10 @@ shouldn't be a problem.”
 “Ah, Banjo. It seems to be that unidentified craft we've been hearing about.”
 
 @20563 Bright · ブライト
+# 审校：“but?”不成句；数字用汉字
 > 「現在確認されている数は2機
 >  のみだ。接触してみるつもりでいるが?」
-“The number currently confirmed is only two. I intend to try making contact, but?”
+“The number currently confirmed is only two. I’m thinking of trying to make contact. Any objection?”
 
 @20564 Banjo · 万丈
 > 「ええ、そうしましょう。
@@ -605,12 +613,14 @@ won't you cooperate with us? I'd also like to hear your circumstances in detail.
 Groups like yours have been appearing all over the world.”
 
 @20592 Show · ショウ
+# 审校：ジャコバ・アオンかフェラリオ 是“或者”，现译把两者分成两句
+# 检查提示：未用必用译名：フェラリオ→Ferario
 > 「世界各地に?
 >  やはりジャコバ・アオンか
-“All over the world? So it really is Jacoba Aon.
+“All over the world? So it was Jacoba Aon,
 ---
 >  フェラリオがしかけたんだ……」
-Ferario must have set this up...”
+or the Ferario, who set this up...”
 
 @20593 Garalia · ガラリア
 > 「ショウ! 貴様、地上人に
@@ -655,9 +665,10 @@ just listen to what I have to say!”
 We'll also get information on the others.”
 
 @20598 Garalia · ガラリア
+# 审校：dog's death 是日语腔
 > 「……いいだろう。
 >  地上で死ぬのは犬死にだからな」
-“...Fine. Dying on the surface would be a dog's death anyway.”
+“...Fine. Dying up here on the surface would be for nothing anyway.”
 
 @20599 Bright · ブライト
 > 「……話は、ついたようだな」
@@ -668,8 +679,9 @@ We'll also get information on the others.”
 “All right, you two, come over here...”
 
 @20601 Quattro · クワトロ
+# 审校：“Were we careless”“大意了吗”生硬
 > 「敵だと!? うかつだったか」
-“Enemies?! Were we careless?”
+“Enemies?! Did we let our guard down?”
 
 @20602 Bern · バーン
 > 「ダンバイン!? ショウ・ザマか!!」
@@ -810,22 +822,24 @@ What?! A reaction on the aura radar?!”
 We want to confirm your affiliation.”
 
 @20627 Show · ショウ
+# 审校：空格；surface-dweller 与 20578 统一
 > 「違う? あの敵ではない?
 >  ……俺はショウ、ショウ・ザマだ
-“No? Not that enemy?...I'm Show. Show Zama.
+“No? Not that enemy? ...I’m Show. Show Zama.
 ---
 >  あんたたちと同じ地上人だ。
 >  攻撃はしないでくれ」
-I'm a surface dweller, same as you. Don't attack.”
+I’m a surface-dweller, same as you. Don’t attack.”
 
 @20628 Amuro · アムロ
+# 审校：surface-dweller 统一
 > 「地上人?
 >  地球人ということか?
-“Surface dweller? You mean an Earthling?
+“Surface-dweller? You mean an Earthling?
 ---
 >  攻撃はしない。
 >  状況を確認したいんだ」
-We won't attack. We just want to confirm the situation.”
+We won’t attack. We just want to confirm the situation.”
 
 @20629 Show · ショウ
 > 「俺はバイストンウェルから
@@ -897,16 +911,19 @@ won't you cooperate with us? I'd also like to hear your circumstances in detail.
 Groups like yours are appearing all over the world.”
 
 @20641 Show · ショウ
+# 审校：同 20592
+# 检查提示：未用必用译名：フェラリオ→Ferario
 > 「世界各地に?
 >  やはりジャコバ・アオンか
-“All over the world? So it is Jacoba Aon after all.
+“All over the world? So it was Jacoba Aon,
 ---
 >  フェラリオがしかけたんだ……」
-The Ferario must have set it up...”
+or the Ferario, who set this up...”
 
 @20642 Amuro · アムロ
+# 审校：どうかな 是在等答复
 > 「どうかな?」
-“What do you think?”
+“Well? What do you say?”
 
 @20643 Show · ショウ
 > 「わかりました。一緒にいかせてください」
@@ -931,8 +948,9 @@ The Ferario must have set it up...”
 “What?!”
 
 @20648 Quattro · クワトロ
+# 审校：同 20601
 > 「敵だと!? うかつだったか」
-“Enemies?! Were we careless?”
+“Enemies?! Did we let our guard down?”
 
 @20649 Bern · バーン
 > 「ダンバイン!? ショウ・ザマか!!」
@@ -944,8 +962,9 @@ The Ferario must have set it up...”
 “Bern Bunnings?! Wait!”
 
 @20651 Bern · バーン
+# 审校：与 20607 同句统一
 > 「問答は無用だ! 覚悟!」
-“No time for talk! Prepare yourself!”
+“No need for talk! Prepare yourself!”
 
 @20652 Show · ショウ
 # 审校：人名按词表统一
@@ -1214,18 +1233,20 @@ If you can't do it, you're only in the way. Turn back!”
 “Please wait, Four is...!”
 
 @20702 Amuro · アムロ
+# 审校：“ignores another person's goodwill”“无视别人善意”直译
 > 「人の善意を無視するやつは、
 >  一生苦しむぞ!」
-“Anyone who ignores another person's goodwill will suffer for the rest of their life!”
+“Throw someone’s goodwill back in their face, and you’ll regret it for the rest of your life!”
 
 @20703 Bright · ブライト
 > 「よし、全機撤退だ!」
 “All right, all units, retreat!”
 
 @20704 Four · フォウ
+# 审校：忘れなくてもすむ 是不用忘记，与 20692 一致
 > 「カミーユ……さよなら……。これでもう、
 >  忘れなくてもすむということ……」
-“Kamille... goodbye... This way, I won't have to remember anymore...”
+“Kamille... goodbye... This way, I won’t have to forget anymore...”
 
 @20705 Kamille · カミーユ
 > 「フォウ……これでよかったのか……
@@ -1306,13 +1327,14 @@ we're in the middle of a war, and that enemy has come to the surface as well.”
 how they'll act. Also, if I have comrades, I'd like to join up with them.”
 
 @20720 Quattro · クワトロ
+# 审校：“the one who controls”“立场也不太自由”直译
 > 「わかった。可能な限り情報を
 >  集めさせよう。しかし、いま地上を
-“Understood. I'll have information gathered as much as possible. However, the one who currently
+“Understood. I’ll have information gathered as much as possible. However, it’s the Empire
 ---
 >  制圧しているのは帝国だ。我々
 >  もあまり自由のきく立場ではない」
-controls the surface is the Empire. We're not in a position where we can act very freely either.”
+that holds the surface right now. We’re not exactly free to act as we please either.”
 
 @20721 Show · ショウ
 # 审校：修正语法：'a Earthling' 改为 'an Earthling'。
@@ -1388,13 +1410,14 @@ how they'll act. Also, if I have comrades, I'd like to join up with them.”
 “Understood.”
 
 @20730 Quattro · クワトロ
+# 审校：同 20720
 > 「しかし、いま地上を
 >  制圧しているのは帝国だ
-“However, the one who currently controls the surface is the Empire.
+“However, it’s the Empire that holds the surface right now.
 ---
 >  我々もあまり自由のきく
 >  立場ではない」
-We're not in a position where we can act very freely either.”
+We’re not exactly free to act as we please either.”
 
 @20731 Show · ショウ
 # 审校：修正语法：'a Earthling' 改为 'an Earthling'。
@@ -1455,8 +1478,9 @@ As proof of that, I fought against Bern and the others, didn't I?”
 “Good work, Captain Bright.”
 
 @20739 Bright · ブライト
+# 审校：“it was you”像在指认
 > 「ヘンケン中佐、あなたでしたか」
-“Lieutenant Colonel Henken, it was you.”
+“Lieutenant Colonel Henken, so it’s you.”
 
 @20740 Henken · ヘンケン
 > 「ずいぶんと戦果をあげているようだな。
@@ -1483,9 +1507,10 @@ The battleship Albion will be operated by you lot for the time being.”
 “I'm Fa Yuiry. Pleased to meet you.”
 
 @20744 Bright · ブライト
+# 审校：“You're fine here”意思不清
 > 「ブライト・ノアだ。ここはもういい。
 >  他のクルーに、あいさつしてこい」
-“I'm Bright Noa. You're fine here. Go introduce yourself to the other crew.”
+“I’m Bright Noa. That’s all for now. Go introduce yourself to the other crew.”
 
 @20745 Fa · ファ
 > 「はい。では失礼します」
@@ -1760,10 +1785,10 @@ take the initiative, we won't be able to keep even our allies in hand.”
 “That's right... is something the matter?”
 
 @20791 Henken · ヘンケン
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：“fine staff”“好参谋”不对，スタッフ 指人员
 > 「いや、いいスタッフだと聞いているので、
 >  ちょっと顔を見によっただけだ
-“No, I heard you were fine staff, so I just came by to see your face.
+“No, I heard you were a fine officer, so I just stopped by to say hello.
 ---
 >  がんばってくれ、特尉。
 >  期待している」
@@ -1789,10 +1814,10 @@ Keep at it, Special Lieutenant. I have high hopes for you.”
 “That's right... is something the matter?”
 
 @20796 Henken · ヘンケン
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：同 20791
 > 「いや、いいスタッフだと聞いているので、
 >  ちょっと顔を見によっただけだ
-“No, I heard you were fine staff, so I just came by to see your face.
+“No, I heard you were a fine officer, so I just stopped by to say hello.
 ---
 >  がんばってくれ、特尉。
 >  期待している」
@@ -1807,7 +1832,7 @@ Keep at it, Special Lieutenant. I have high hopes for you.”
 (What on earth was that about?)
 
 @20799 Bern · バーン
-# 审校：「騎士の出」指出身于骑士家世，现有译文“I'm supposed to be a knight”丢失了“出身”这层意思，改为 of knightly birth 更贴合骄傲骑士的口吻。
+# 审校：“of knightly birth”“本该是骑士出身”生硬
 > 「……敗北につぐ敗北……すべて、
 >  あの地上人があらわれてからだ
 “...Defeat after defeat... all of it began when that surface dweller appeared.
@@ -1817,7 +1842,7 @@ Keep at it, Special Lieutenant. I have high hopes for you.”
 Ngh... I... I want to win. I want to crush him.
 ---
 >  私は……騎士の出のはずだ!!」
-I... I'm supposed to be of knightly birth!!”
+I... I was born a knight!!”
 
 @20800 Drake · ドレイク
 > 「どうやら、かなりの数のオーラシップと

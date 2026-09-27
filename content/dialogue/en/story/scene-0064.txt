@@ -41,10 +41,10 @@ I came here hoping to learn that philosophy under you, Lady Relena.”
 I want you to learn about this country as soon as possible.”
 
 @28500 Dorothy · ドロシー
-# 审校：Dorothy 的 voice 为华丽正式口吻，I'd 应改为 I would 以保持其庄重语气。
+# 审校：英文语序别扭
 > 「まあ、リリーナ様が?
 >  光栄ですわ。もちろん、喜んで」
-“Oh my, you, Lady Relena? What an honor. Of course, I would be delighted.”
+“Oh my, you yourself, Lady Relena? What an honor. Of course, I would be delighted.”
 
 @28501 Dorothy · ドロシー
 > 「あら、リリーナ様。
@@ -78,13 +78,14 @@ Rumor has it they used to operate wonderful weapons like the Getter and the Mazi
 I am sure it must be a powerful force.”
 
 @28504 Relena · リリーナ
+# 审校：莉莉娜口吻不用缩写
 > 「今はそれを、平和のために
 >  役立てる研究をなさってます
 “Right now they are researching how to put it to use for peace.
 ---
 >  完成すれば、人々の暮らしが
 >  もっと豊かになります」
-Once it's complete, people's lives will become even richer.”
+Once it is complete, people’s lives will become even richer.”
 
 @28505 Dorothy · ドロシー
 # 审校：Dorothy 的 voice 为华丽正式口吻，I'm 和 don't 应改为 I am 和 do not 以保持其庄重语气。
@@ -97,9 +98,10 @@ Once it's complete, people's lives will become even richer.”
 Heh heh, forgive me, but they do not look like scientists.”
 
 @28506 Relena · リリーナ
+# 审校：莉莉娜口吻不用缩写
 > 「アムロ・レイさんとエイジ・アスカさんです
 >  博士たちのお迎えにこられたのですね
-“That's Amuro Ray and Eiji Asuka. They've come to pick up the doctors.
+“That is Amuro Ray and Eiji Asuka. They have come to pick up the doctors.
 ---
 >  ドロシー、よければ
 >  紹介してさしあげてよ?」
@@ -148,18 +150,20 @@ A wonderful war will soon be upon us...
 Heh heh, hurry up and come, war!)
 
 @28509 Noin · ノイン
+# 审校：Everyone of 不合语法
 > 「{HeroMech}の皆さん、
 >  新しい環境はいかがですか?」
-“Everyone of the {HeroMech}, how are you finding your new environment?”
+“Everyone from the {HeroMech}, how are you finding your new surroundings?”
 
 @28510 Bright · ブライト
+# 审校：舰长对外客气但不生硬
 > 「おかげで、極めて快適です。しかし、
 >  エネルギー研究所を我々の
-“Thanks to you, it's extremely comfortable. But building the energy research institute
+“Thanks to you, we are quite comfortable. But building the energy research institute
 ---
 >  隠れ場所の近くに建てて
 >  地下をつなげるとは、考えましたね」
-near our hiding place and connecting it underground, that was clever.”
+near our hideout and linking it underground... that was clever.”
 
 @28511 Amuro · アムロ
 > 「エネルギー研究というのは
@@ -182,8 +186,9 @@ After all, the official stance is that a nation of complete pacifism
 has no weapons.”
 
 @28513 Bright · ブライト
+# 审校：口语化
 > 「リリーナさんはまだこの事には?」
-“Does Miss Relena still not know about this?”
+“Miss Relena still doesn’t know about this?”
 
 @28514 Noin · ノイン
 # 审校：补全整条台词的外层引号
@@ -217,13 +222,14 @@ complete pacifism. We will protect it with all our strength.”
 “Thank you, {HeroMech}... Well then, that will be all.”
 
 @28517 Koji · 甲児
+# 审校：去掉直译腔，接后句露的反驳
 > 「研究所が完成して
 >  博士たちは研究ざんまい
-“The institute is complete and the doctors are absorbed in research.
+“The institute’s done and the doctors are buried in their research.
 ---
 >  敵が襲ってこなけりゃ戦闘もなし
 >  ……と。まったく平和だねえ」
-If the enemy doesn't attack, there's no fighting either... It's completely peaceful.”
+No enemy attacks, no fighting... Total peace, huh.”
 
 @28518 Roux · ルー
 > 「何いってんの! 地上では
@@ -243,12 +249,13 @@ You're so irresponsible!”
 “Well, that's true, but...”
 
 @28521 Ginrei · 銀鈴
+# 审校：“现在还好”接不上上句；Because 开头生硬
 > 「今はまだ、ね。
 >  のんびりしててもいいと思うわ
-“For now, at least. I think it's fine to take it easy.
+“For now, at least. I think it’s fine to take it easy.
 ---
 >  じきにそれどころじゃなくなるでしょうから」
-Because soon we won't have that luxury.”
+Soon enough we won’t have that luxury.”
 
 @28522 Daisaku · 大作
 > 「ここで戦闘がはじまるってことですか?
@@ -256,6 +263,7 @@ Because soon we won't have that luxury.”
 “You mean fighting will start here? How can you tell?”
 
 @28523 Ginrei · 銀鈴
+# 审校：“有了那么多余力”是直译
 > 「OZが月を奪還したのは
 >  知ってるでしょ?
 “You know OZ recaptured the moon, right?
@@ -266,7 +274,7 @@ The Muge Empire forces have retreated all the way to the Asteroid Belt.
 ---
 >  つまり、OZにそれだけ余裕が
 >  できたってことね」
-In other words, that's how much leeway OZ has now.”
+In other words, OZ has that much room to maneuver now.”
 
 @28524 Amuro · アムロ
 > 「ジャミトフ、デルマイユ……、彼らが
@@ -361,13 +369,14 @@ what remains is the complete subjugation of the surface. That part should be eas
 “Speaking of the surface... it's about the Sanc Kingdom.”
 
 @28538 Jamitov · ジャミトフ
+# 审校：“家伙们的痴人说梦”长定语；英文拖沓
 > 「完全平和主義とかの連中の
 >  ことか? 気にかけることなどあるまい
 “You mean those complete pacifism people? Nothing worth worrying about.
 ---
 >  しょせんは、小娘どもにたぶらかされた
 >  連中の世迷いごとにすぎん
-They're just the deluded ramblings of a bunch of fools led astray by some little girls.
+Just the ravings of a few fools taken in by some little girls.
 ---
 >  無視しておけ」
 Ignore them.”
@@ -496,9 +505,10 @@ the whereabouts of Getter and Mazinger...”
 “Gura, is it? What is it?”
 
 @28552 Dr. Gura · グラー博士
+# 审校：“请高兴吧”不像人话；Rejoice 生硬
 > 「ははっ、お喜びください。かねてより
 >  探索しておりました人間ども……
-“Yes, sir. Rejoice! The humans we have long been searching for...
+“Yes, sir. Good news! The humans we have long been searching for...
 ---
 >  早乙女と弓めの居所が、
 >  わかりましてございます」
@@ -540,9 +550,10 @@ the Sanc Kingdom!”
 “...Wait.”
 
 @28559 Emperor Burai · ブライ大帝
+# 审校：man of Mycenae 别扭；中文尾句不顺
 > 「どうしたミケーネの。この期に及んで、
 >  何を待つ必要があろうぞ」
-“What is it, man of Mycenae? At this stage, what need is there to wait?”
+“What is it, General of Mycenae? At this point, what is there to wait for?”
 
 @28560 Dark General · 暗黒大将軍
 > 「グラー博士よ、その情報、
@@ -640,9 +651,10 @@ Heh heh, with hardly any guards...”
 “Hey, are you really going to do this?”
 
 @28574 Elle · エル
+# 审校：“到现在还说什么”不顺；英文直译
 > 「あったり前じゃない。
 >  あんたいまさら何いってんのよ」
-“Of course we are. What are you saying at this point?”
+“Obviously. Why are you even asking now?”
 
 @28575 Beecha · ビーチャ
 > 「いやならやめろよ。
@@ -679,16 +691,17 @@ Heh heh, with hardly any guards...”
 “O-okay.”
 
 @28583 Dorothy · ドロシー
+# 审校：英文第二三页重复了“感兴趣”，按原文分页
 > 「リリーナ様、もしもこの国に
 >  攻めこむ者がいたらどうします?
 “Lady Relena, what would you do if someone were to attack this country?
 ---
 >  戦うことを否定するのですから、
 >  どのようにして対処するのか
-Since you reject fighting, I am curious how you would deal with it.
+Since you reject fighting, how would you deal with it?
 ---
 >  興味がありますわ」
-I am most interested.”
+I am most curious.”
 
 @28584 Relena · リリーナ
 > 「……それは……」
@@ -874,36 +887,38 @@ Hyakki Corps, Mycenae Corps, begin the attack!”
 “Wait a second, Judau is...”
 
 @28613 Judau · ジュドー
+# 审校：Put this like this 不像人话
 > 「こいつをこうしてっと……よおっし
 >  動いたあ! みんな、これに乗れ!」
-“Put this like this... all right, it moved! Everyone, get on!”
+“Just fiddle with this here... all right, it’s moving! Everyone, get on!”
 
 @28614 Astonaige · アストナージ
+# 审校：that one's comrades 生硬
 > 「こ、こら、貴様ら、何をする!
 >  貴様らもあいつの仲間か!?」
-“H-hey, you lot, what are you doing! Are you that one's comrades too?!”
+“H-hey, you lot, what are you doing! You in league with him too?!”
 
 @28615 Judau · ジュドー
-# 审校：ジュドー指ヤヌス侯爵，初稿用 her 错误，改为 him。
+# 审校：that one earlier 生硬
 > 「俺たちゃ別クチだって!
 >  そうそうおっさん、さっきの奴
-“We're not with him! Yeah, old man, that one earlier
+“We’re not with him! Oh yeah, old man, that guy from before
 ---
 >  あそこの赤いのと黒いのになんか
 >  仕掛けてったぜ、気をつけなよ!」
 planted something on the red one and the black one over there, so watch out!”
 
 @28616 Astonaige · アストナージ
+# 审校：won't you wait 直译
 > 「な、何!?
 >  こら、待て、待たないか!!」
-“W-what?! Hey, wait, won't you wait!!”
+“W-what?! Hey, wait! Get back here!!”
 
 @28617 Pagan · パーガン
-# 审校：说话人是管家帕根，对莉莉娜的称呼应为“my lady”，而非直呼其名。
-# 检查提示：未用必用译名：リリーナ→Relena
+# 审校：帕根对莉莉娜称呼统一 Lady Relena
 > 「リリーナ様、
 >  大変なことが起こりました」
-“My lady, something terrible has happened.”
+“Lady Relena, something terrible has happened.”
 
 @28618 Relena · リリーナ
 > 「パーガン、何ごとです?
@@ -980,13 +995,14 @@ Lady Relena, please hurry to somewhere safe...”
 “Y-yes! As you wish!”
 
 @28628 Dorothy · ドロシー
+# 审校：去掉 as expected of
 > 「ご立派ですわ、さすがはリリーナ様。
 >  そうでなくては
-“How admirable, just as expected of Lady Relena. It wouldn't do
+“How admirable. That is Lady Relena for you. It wouldn’t do
 ---
 >  私がっかりしてしまいますもの。でも、
 >  化け物は待ってくれませんことよ
-for you to be anything less. But the monsters won't wait, you know.
+for you to be anything less. But the monsters won’t wait, you know.
 ---
 >  このままでは、街が
 >  粉々になってしまいますわ
@@ -1006,9 +1022,10 @@ Show Dorothy what complete pacifism looks like.”
 “Enemy forces approaching! Captain, give the order to intercept!”
 
 @28631 Bright · ブライト
+# 审校：去掉 It can't be helped
 > 「……やむをえん。
 >  総員戦闘配置!」
-“...It can't be helped. All hands, battle stations!”
+“...No choice. All hands, battle stations!”
 
 @28632 Daisaku · 大作
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1017,9 +1034,10 @@ Show Dorothy what complete pacifism looks like.”
 “But Captain Bright, if you do that...”
 
 @28633 David · デビッド
+# 审校：Is this the time to say that 直译
 > 「いってる場合かよ! やつら
 >  無差別に攻撃してくるぞ!」
-“Is this the time to say that?! They're attacking indiscriminately!”
+“No time for that! They’re attacking anything that moves!”
 
 @28634 Amuro · アムロ
 > 「そのとおりだ。こうなってしまった以上
@@ -1055,13 +1073,13 @@ please launch.”
 “Astonaige? What's wrong?”
 
 @28640 Astonaige · アストナージ
-# 审校：“It was those intruders from earlier”缺谓语，改为“It was the work of those intruders from earlier.”
+# 审校：入侵者是一个人，与中文一致
 > 「ゲッターとマジンガーに、
 >  爆弾が仕掛けられてる
 “There are bombs planted on the Getter and the Mazinger.
 ---
 >  さっきの侵入者のしわざだ」
-It was the work of those intruders from earlier.”
+That intruder from earlier did it.”
 
 @28641 Koji · 甲児
 > 「なんだってえ!?」
@@ -1103,9 +1121,10 @@ It was the work of those intruders from earlier.”
 “Whoa! The monsters are out!”
 
 @28650 Astonaige · アストナージ
+# 审校：英文不顺
 > 「もう少しで爆弾を解除できるんだ
 >  ……もう少しだけ待ってくれ」
-“I can disarm the bombs in just a little longer... just hold on a bit more.”
+“The bombs are almost disarmed... just hold on a little longer.”
 
 @28651 Ryoma · リョウ
 > 「……百鬼の奴らめ!」
@@ -1142,9 +1161,10 @@ when it comes to this, one simply has no choice but to fight. And moreover, thes
 the warriors who once formed the backbone of the anti-Empire resistance. Wonderful.”
 
 @28656 Relena · リリーナ
+# 审校：“他们的存在”直译腔
 > 「……彼らの存在は
 >  自分の知らないことでした」
-“...Their existence was something I knew nothing about.”
+“...I knew nothing of their being here.”
 
 @28657 Dorothy · ドロシー
 > 「でも今となっては彼らの存在は
@@ -1305,9 +1325,10 @@ there must be. I believe there is... Until we find it...
 please, this country...”
 
 @28681 Dorothy · ドロシー
+# 审校：去掉 as expected of
 > (さすがリリーナ様、私の
 >  みこんだお方だけのことはあるわ
-(As expected of Lady Relena. She truly is the woman I had her figured for.
+(That is Lady Relena for you. I was right about her.
 ---
 >  いいえ、私の予想なんかより
 >  もっと素晴らしい方……
@@ -1436,12 +1457,13 @@ and annihilate the remaining enemy. Do not leave a single soldier alive!”
 “Yes, sir! Understood!”
 
 @28696 Dermail · デルマイユ
+# 审校：德尔麦尤不会说 bastards
 > 「すばらしい、全くすばらしいな、
 >  MD部隊の戦力は
 “Wonderful, absolutely wonderful, the fighting power of the MD units.
 ---
 >  奴らをいとも簡単にうちやぶるとは…」
-To think they would crush those bastards so easily...”
+To think they would crush them so easily...”
 
 @28697 Bask · バスク
 > 「お言葉ですがデルマイユ公爵、
@@ -1501,9 +1523,10 @@ warned us that we found out bombs had been planted.
 If not for that, by now...”
 
 @28703 Hayato · ハヤト
+# 审校：接上句“这会儿早就……”
 > 「ゲッターやマジンガーは
 >  なくなっていたってわけさ……」
-“So the Getter and the Mazinger were already gone...”
+“...the Getter and the Mazinger would’ve been gone.”
 
 @28704 Koji · 甲児
 > 「ま、オレたちからのお礼がわりってわけさ

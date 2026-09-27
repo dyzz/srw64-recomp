@@ -26,9 +26,10 @@
 “Ugh... Father?!”
 
 @19270 Alan · アラン
+# 审校：遅かったか是确认不是疑问，改口语
 > 「くそっ遅かったか。ドーリアン氏を
 >  はやく運び出せ!」
-“Damn, were we too late? Get Mr. Darlian out of here, quickly!”
+“Damn it, we’re too late. Get Mr. Darlian out of here, now!”
 
 @19271 Guerrilla · ゲリラ
 # 审校：游击队员对同伴的应答无需对上级的“sir”，去掉多余敬称。
@@ -134,9 +135,10 @@ words, addressed to you, were entrusted to me.”
 “...Please, tell me.”
 
 @19288 Alan · アラン
+# 审校：“I must be done for now”不像英语，改为临终口吻
 > 「……『リリーナ、私はもうだめだろう。
 >  お前にどうしても話しておかなければ
-“...‘Relena, I must be done for now. There is something I absolutely must tell you.
+“...‘Relena, I don’t think I’ll make it. There is something I absolutely must tell you.
 ---
 >  ならないことがある。私はあなたの
 >  本当の父ではない……
@@ -230,17 +232,18 @@ are gathering there.”
 “Impressive. What's going on there?”
 
 @19301 Garrison · ギャリソン
+# 审校：“grasped much of the actual situation regarding this”生硬
 > 「活発化してきた反帝国運動
 >  の対策会議であるとか。しかし
 “Apparently a strategy meeting to deal with the increasingly active anti-imperial movement. However,
 ---
 >  これに関しては、まだほとんど実態を
 >  つかめておりません
-we still haven't grasped much of the actual situation regarding this.
+we still know very little about what’s actually going on there.
 ---
 >  今後の調査待ちといったところで
 >  しょうな」
-I'd say we're waiting on further investigation.”
+I’d say we’re waiting on further investigation.”
 
 @19302 Banjo · 万丈
 > 「解放戦線の方ではなんと
@@ -667,9 +670,10 @@ it'll be a credit to me.”
 “W-w-what?! What's going on?!”
 
 @19380 Gosterro · ゴステロ
+# 审校：“What's going on is obvious”不像口语，改成抢白
 > 「どうしたもこうしたもねぇ。敵が
 >  きたんじゃねぇか。ひゃはははははっ」
-“What's going on is obvious. The enemy's here, ain't they? Hyahahahaha!”
+“What’s going on? The enemy’s here, that’s what! Hyahahahaha!”
 
 @19381 Borne · ボーン
 > 「ひへへへへへへっ」
@@ -699,9 +703,10 @@ it'll be a credit to me.”
 “Ngh...”
 
 @19387 Giura · ギウラ
+# 审校：原文只是“这种家伙”，trash 加重了
 > (なぜル・カイン閣下はこんな連中を
 >  親衛隊にしているのだ)
-(Why does His Excellency Le Cain keep trash like this in his personal guard?)
+(Why does His Excellency Le Cain keep people like these in his personal guard?)
 
 @19388 Bright · ブライト
 > 「いいか、目標ポイントはこのエリアだ。
@@ -803,21 +808,22 @@ Governor Gresco, too, finds meaning in persuading the resistance,
 don't you see?!”
 
 @19402 Treize · トレーズ
+# 审校：“escaping should come first here”“这里总之先脱身”生硬
 > 「おっしゃることは、私にもよくわかります
 >  しかし、ここはともかく脱出するのが
-“I understand what you're saying perfectly well. But regardless, escaping should come first
+“I understand what you’re saying perfectly well. But right now, getting you out
 ---
 >  先決でしょう。ガルダが待機して
 >  おります。それでお逃げください
-here. The Garuda is standing by. Please flee aboard it.
+comes first. The Garuda is standing by. Please escape aboard it.
 ---
 >  死んでしまっては何ごとも成せません
 >  ノベンタもと元帥がなくなられては、
-If you die, nothing can be accomplished. If you, Marshal Noventa, were to die,
+If you die, nothing gets accomplished. If we lost you, Marshal Noventa,
 ---
 >  これまでの努力が無駄に
 >  なりましょう」
-all your efforts up to now would be wasted.”
+everything you’ve worked for would be wasted.”
 
 @19403 Noventa · ノベンタ
 > 「しかし……」
@@ -909,12 +915,13 @@ Shikitai unit or whatever it's called?!”
 “D-don't you give me orders! You ain't the leader here!”
 
 @19419 Duo · デュオ
+# 审校：“先来的客人”“别的类似的家伙”是直译；两处英文统一
 > 「おっと、先客がいたようだな。ありゃ
 >  レジスタンスの連中か……ん?
-“Whoa, looks like we've got company already. That the resistance bunch... Hm?
+“Whoa, looks like we’ve got company already. Is that the resistance bunch... Hm?
 ---
 >  おいおい、ほかにも似たようなのがいるぜ」
-Hey hey, there's more of the same kind over there.”
+Hey hey, there are more like me over here.”
 
 @19420 Aboly · アポリー
 > 「大尉! あのときのガンダムタイプが
@@ -1000,13 +1007,13 @@ I'd say we're allies. Trowa, let's fight alongside them.”
 finish this up quick.”
 
 @19434 Duo · デュオ
-# 审校：与 L16 相同，补上问句感。
+# 审校：“先来的客人”“别的类似的家伙”是直译；两处英文统一
 > 「おっと、先客がいたようだな。ありゃ
 >  レジスタンスの連中か……ん?
-“Whoa, looks like we've got company already. Is that the resistance bunch... Hm?
+“Whoa, looks like we’ve got company already. Is that the resistance bunch... Hm?
 ---
 >  おいおい、ほかにも似たようなのがいるぜ」
-Hey hey, there's more of the same kind over there.”
+Hey hey, there are more like me over here.”
 
 @19435 Aboly · アポリー
 > 「大尉! あのときのガンダムタイプが
@@ -1182,20 +1189,21 @@ finish this up quick.”
 “What have you done?! All units, don't let the resistance escape!”
 
 @19468 Wufei · 五飛
+# 审校：“are you still not tired of”“neatly played”不像台词
 > 「貴様ら、まだ無意味な戦いに
 >  あきたらないのか!? 貴様らは……
-“You lot, are you still not tired of meaningless fighting?! You've been...
+“Haven’t you had enough of this pointless fighting?! You’ve all been...
 ---
 >  まんまと、はめられたのだ! 連中の
 >  通信を聞いてみろ。貴様らは
-neatly played! Listen to their communications. You've
+played for fools! Listen to their comms. You’ve just
 ---
 >  ようやく帝国の譲歩をとりつけた、
 >  地球の平和論者たちを
-wiped out the Earth's pacifists, who had finally
+wiped out Earth’s pacifists, the very people who’d finally
 ---
 >  一掃してしまったのだぞ!」
-secured the Empire's concessions!”
+wrung concessions out of the Empire!”
 
 @19469 Bright · ブライト
 > 「な……なんだと!?」
@@ -1214,9 +1222,10 @@ secured the Empire's concessions!”
 “What, what the hell does that mean?!”
 
 @19473 Wufei · 五飛
+# 审校：两处英文不一致，“dancing in their hands”别扭
 > 「踊らされたんだ。ル・カインと
 >  トレーズ・クシュリナーダの手の中で」
-“We were dancing in their hands. In the hands of Le Cain and Treize Khushrenada.”
+“We were made to dance. Right in the palms of Le Cain and Treize Khushrenada.”
 
 @19474 Heero · ヒイロ
 > 「俺は………」
@@ -1258,17 +1267,18 @@ that boy said.”
 “Ngh... those Specials... Everyone, retreat!”
 
 @19481 Heero · ヒイロ
+# 审校：与 19504 统一
 > 「俺の……俺のミスだ!」
-“This... this is my mistake!”
+“It’s my... it’s my mistake!”
 
 @19482 Bask · バスク
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：与 19505 统一
 > 「エマ特尉、帰投してすぐに追撃
 >  の準備にかかれ!
 “Special Lieutenant Emma, begin preparations for pursuit the moment you return!
 ---
 >  奴らを逃がしてはならん!」
-We must not let them escape!”
+Do not let them escape!”
 
 @19483 Emma · エマ
 > 「はっ!」
@@ -1314,20 +1324,21 @@ command of the pursuit force to you. Don't let them escape!”
 (He said... we were played... what does that mean?)
 
 @19491 Wufei · 五飛
+# 审校：“are you still not tired of”“neatly played”不像台词
 > 「貴様ら、まだ無意味な戦いに
 >  あきたらないのか!? 貴様らは……
-“You lot, are you still not tired of meaningless fighting?! You've been...
+“Haven’t you had enough of this pointless fighting?! You’ve all been...
 ---
 >  まんまと、はめられたのだ! 連中の
 >  通信を聞いてみろ。貴様らは
-neatly played! Listen to their communications. You've
+played for fools! Listen to their comms. You’ve just
 ---
 >  ようやく帝国の譲歩をとりつけた、
 >  地球の平和論者たちを
-wiped out the Earth's pacifists, who had finally
+wiped out Earth’s pacifists, the very people who’d finally
 ---
 >  一掃してしまったのだぞ!」
-secured the Empire's concessions!”
+wrung concessions out of the Empire!”
 
 @19492 Bright · ブライト
 > 「な……なんだと!?」
@@ -1346,10 +1357,10 @@ secured the Empire's concessions!”
 “What, what the hell does that mean?!”
 
 @19496 Wufei · 五飛
-# 审校：“We were dancing in their hands”表达不自然，改为“We were made to dance”，更贴近“踊らされたんだ”的被动含义。
+# 审校：两处英文不一致，“dancing in their hands”别扭
 > 「踊らされたんだ。ル・カインと
 >  トレーズ・クシュリナーダの手の中で」
-“We were made to dance. In the hands of Le Cain and Treize Khushrenada.”
+“We were made to dance. Right in the palms of Le Cain and Treize Khushrenada.”
 
 @19497 Heero · ヒイロ
 > 「俺は………」
@@ -1408,14 +1419,16 @@ Do not let them escape!”
 “Yes, sir!”
 
 @19507 Emma · エマ
+# 审校：与 19484 统一，“set up”改回“played”
 > (確か……はめられたって……
 >  どういうこと? まさか……)
-(I'm sure he said... we were set up... what did he mean? Could it be...)
+(He said... we were played... what does that mean? Don’t tell me...)
 
 @19508 Emma · エマ
+# 审校：与 19485 统一
 > (確か……はめられたって……
 >  どういうこと?)
-(I'm sure he said... we were set up... what did he mean?)
+(He said... we were played... what does that mean?)
 
 @19509 Bask · バスク
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1437,14 +1450,16 @@ command of the pursuit force to you. Don't let them escape!”
 “Make it quick.”
 
 @19512 Emma · エマ
+# 审校：与 19484 统一，“set up”改回“played”
 > (確か……はめられたって……
 >  どういうこと? まさか……)
-(I'm sure he said... we were set up... what did he mean? Could it be...)
+(He said... we were played... what does that mean? Don’t tell me...)
 
 @19513 Emma · エマ
+# 审校：与 19485 统一
 > (確か……はめられたって……
 >  どういうこと?)
-(I'm sure he said... we were set up... what did he mean?)
+(He said... we were played... what does that mean?)
 
 @19514 Zechs · ゼクス
 > 「このガンダム……あのときのパイロットか?
@@ -1461,12 +1476,13 @@ command of the pursuit force to you. Don't let them escape!”
 “...Zechs Merquise.”
 
 @19517 Zechs · ゼクス
+# 审校：去 no helping it；“也是没办法的事吗”接不上
 > 「よくよく貴様とは縁があるようだな。
 >  エアリーズで再会したくはなかったが…
-“It seems I'm bound to you by fate. I'd rather not have met again in an Aries...
+“It seems I’m bound to you by fate. I’d rather not have met you again in an Aries...
 ---
 >  やむを得んか」
-but I suppose there's no helping it.”
+but there’s nothing for it.”
 
 @19518 Eiji · エイジ
 > 「ゴステロ!
@@ -1573,12 +1589,13 @@ to bear the weight of failure.”
 “Damn it, so we got completely played, huh?!”
 
 @19538 Banjo · 万丈
+# 审校：去 It can't be helped；中文接上句
 > 「敵の方が一枚上だったようだ。
 >  ギャリソンでもつかめなかったんだ
-“It seems the enemy was one step ahead. Even Garrison couldn't figure it out.
+“It seems the enemy was one step ahead. Even Garrison couldn’t figure it out.
 ---
 >  しかたがないさ」
-It can't be helped.”
+Nothing for it.”
 
 @19539 Koji · 甲児
 > 「それでいいのかよ!?」
@@ -1631,9 +1648,10 @@ It can't be helped.”
 The fighting will go on for a long while yet.”
 
 @19549 Rasid · ラシード
+# 审校：去 it can't be helped
 > 「まぁ、カトル様がそういうんならしかた
 >  ないですな。わかりました、我々は
-“Well, if that's how you feel, Master Quatre, it can't be helped. Understood. We'll
+“Well, if that’s how you feel, Master Quatre, then that’s that. Understood. We’ll
 ---
 >  基地に戻ります。でも、なにかあった
 >  ら必ず呼んでくださいよ」

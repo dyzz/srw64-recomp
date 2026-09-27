@@ -5,10 +5,10 @@
 “I see... so the Imperial forces have withdrawn.”
 
 @25196 Bright · ブライト
-# 审校：“Earthnoids”不是自然英文，改为 Earthlings。
+# 审校：去掉直译腔
 > 「ああ。これで、残るは
 >  我々地球人同士の問題だ」
-“Yeah. That leaves only our own problems as Earthlings to deal with.”
+“Yeah. Now what’s left is a matter between us Earthlings.”
 
 @25197 Quattro · クワトロ
 > 「監視衛星の件は了解した。
@@ -400,8 +400,9 @@ Lady, come back to me... my beloved Lady Une.”
 “Don't move! We've got a hostage here!”
 
 @25264 Astonaige · アストナージ
+# 审校：问的是“你们是谁”
 > 「なんなんだよ、お前たちは!?」
-“What the hell are you all?!”
+“Who the hell are you people?!”
 
 @25265 Elle · エル
 > 「動かないでっていってるでしょ!
@@ -502,13 +503,13 @@ then you'd better be ready for what's coming.”
 “Oh, brother. What a bunch of stupid kids.”
 
 @25283 George · ジョルジュ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：去掉 I cannot forgive it 套话
 > 「まったく、婦女子を人質にとる
 >  など、どのような理由があっても
 “Honestly, taking women and children hostage... no matter the reason,
 ---
 >  許せませんね」
-I cannot forgive it.”
+that is inexcusable.”
 
 @25284 Alan · アラン
 > 「あまり手荒な真似はするなよ、
@@ -688,22 +689,24 @@ Like I'd just hand it back!”
 I'll teach them what it means to defy OZ.”
 
 @25319 Bask · バスク
+# 审校：第二三页语义不通，改顺
 > 「コロニーに潜伏する賊軍
 >  {HeroMech}に告ぐ
 “To the rebel army {HeroMech} hiding in this colony:
 ---
 >  いまから我々はコロニーを攻撃する
 >  武器を持って我々OZの
-As of now, we are bringing weapons to attack this colony. Those who resist
+As of now, we will attack this colony. All who take up arms
 ---
 >  統治に反抗する者どもは
 >  排除されねばならん」
-OZ's rule must be eliminated.”
+against OZ’s rule must be eliminated.”
 
 @25320 Bask · バスク
+# 审校：被动句改口语
 > 「コロニーは貴様らの
 >  巻き添えで攻撃されるのだ」
-“The colony will be attacked because of you.”
+“The colony gets caught in this because of you.”
 
 @25321 Yazan · ヤザン
 # 审校：「バスクめ」应体现亚赞对上司的不满与粗野，改为 “you bastard” 更符合其性格。
@@ -771,12 +774,13 @@ All hands, intercept the OZ forces! Don't let them near the colony!!”
 “What are you doing?! If you guys don't hurry...”
 
 @25334 Amuro · アムロ
+# 审校：聞こえるな 是“听得见我吧”
 > 「君、聞こえるな。
 >  コロニーを守りたければ、君も戦え
-“You can hear it, can't you? If you want to protect the colony, then fight too.
+“You there, you can hear me, right? If you want to protect the colony, then fight too.
 ---
 >  守るべきものがあるなら、できるはずだ」
-If there's something you must protect, you should be able to do it.”
+If there’s something you must protect, you should be able to do it.”
 
 @25335 Judau · ジュドー
 > 「俺が!? ……わかったよ。
@@ -815,9 +819,10 @@ I shall repay it in full right here.”
 “Gosterro?! It can't be!”
 
 @25341 Koji · 甲児
+# 审校：甲儿口吻，短句
 > 「ちっ、まーだ死んでなかったのかよ。
 >  節操のない奴だぜ」
-“Tch, so he still wasn't dead. What a shameless guy.”
+“Tch, he’s still not dead? Shameless bastard.”
 
 @25342 Gale · ゲイル
 > 「ゴステロだと!?」
@@ -1021,8 +1026,9 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 “Tch, we're retreating!”
 
 @25382 Gates · ゲーツ
+# 审校：damn it?! 读不通
 > 「くっ、しまった!?」
-“Ngh, damn it?!”
+“Ngh, what?! Damn it!”
 
 @25383 Gates · ゲーツ
 > 「くっ、しまった。ロザミア、撤退だ」
@@ -1287,13 +1293,15 @@ I still cannot find what I ought to do...”
 “Rosamy... why...”
 
 @25429 Fa · ファ
+# 审校：the enemy’s enhanced human 不自然
+# 检查提示：未用必用译名：ロザミィ→Rosamy
 > 「あなたのせいじゃないわ。
 >  ロザミィは敵の
-“It's not your fault. Rosamy was the enemy's
+“It’s not your fault. Rosamy was one of the enemy’s
 ---
 >  強化人間だったんだもの、
 >  仕方がないわよ」
-enhanced human, so there was nothing you could do.”
+enhanced humans. There was nothing you could do.”
 
 @25430 Kamille · カミーユ
 > 「強化人間だって、
@@ -1572,9 +1580,11 @@ If you resist any further, I'll kill you.”
 “...”
 
 @25475 Bask · バスク
+# 审校：军令口吻
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「ツバロフ技師長、まずは急いで数
 >  をそろえろとのデルマイユ公の命令だ」
-“Chief Engineer Tubarov, this is Lord Dermail's order: hurry and get the numbers ready first.”
+“Chief Engineer Tubarov, Lord Dermail’s orders: get the numbers up first, and quickly.”
 
 @25476 Tubarov · ツバロフ
 > 「どういうことですかな?」

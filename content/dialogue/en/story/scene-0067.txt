@@ -184,14 +184,14 @@ However, be careful. You must not become the victor while piloting this unit.”
 “...”
 
 @29154 Beltorchika · ベルトーチカ
-# 审校：“Our scale is larger”表达不自然，改为“Our side is larger in scale”更清晰。
+# 审校：「こちら」指近海舰队，不是我方；下一句克瓦特罗担心登陆
 > 「OZのMD部隊が続々と
 >  国境地帯に集まっています
-“OZ's MD units are gathering at the border one after another.
+“OZ’s MD units are gathering at the border one after another.
 ---
 >  なお、沖合いに空母艦隊が……
 >  規模はこちらの方が大きいですね」
-Also, there's a carrier fleet offshore... Our side is larger in scale, though.”
+Also, there’s a carrier fleet offshore... and that one’s the larger force.”
 
 @29155 Quattro · クワトロ
 > 「海岸に上陸されたら
@@ -217,10 +217,10 @@ Really, they make me sick.”
 “It's finally all-out war. Whether we can hold out on our own...”
 
 @29158 Show · ショウ
-# 审校：“talk about being sad”略显生硬，改为“be talking about sadness”更自然。
+# 审校：“说什么悲伤的时候”直译
 > 「だけどやるしかありませんよ。
 >  悲しいなんていってる場合じゃない」
-“But we've got no choice but to do it. This isn't the time to be talking about sadness.”
+“But we’ve got no choice. This is no time to be sad about it.”
 
 @29159 Chum · チャム
 > 「そーよ! 悪い奴は
@@ -254,10 +254,10 @@ At times like this, it's a real comfort.”
 “Buh!”
 
 @29165 David · デビッド
-# 审校：“beat them at their own game”与“返り討ち”意思略有偏差，改为“give them a taste of their own medicine”更贴切。
+# 审校：「返り討ち」是来犯者反被打；原句主语混乱
 > 「わはははは、そりゃいい! 返り討ちに
 >  してやろうぜ、タコメガネをよ!」
-“Wahahaha, that's rich! Let's give them a taste of their own medicine, that Octopus Glasses!”
+“Wahahaha, that’s rich! Let him come, and we’ll send him packing, Octopus Glasses and all!”
 
 @29166 ???
 > 「マーズ……マーズよ」
@@ -542,20 +542,20 @@ Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
 “Ask Zero.”
 
 @29207 Milliardo · ミリアルド
-# 审校：精读：分页贴原文
+# 审校：英文末两页语序倒装不自然
 > 「なに!?
 “What?!
 ---
 >  ……殺しに来た者は殺せか……
 >  そういうのだな、ゼロ……
-...Kill those who come to kill, is it... So that's what you're saying, Zero...
+...Kill those who come to kill, is it... So that’s what you’re saying, Zero...
 ---
 >  いいだろう、純粋な戦士として
 >  貴様との因縁の戦い、今ここで
-Fine. As a pure soldier, this fated battle with you, here and now,
+Fine. As a pure warrior, I’ll settle this fated battle with you,
 ---
 >  決着をつけてやる!」
-I'll settle it!”
+here and now!”
 
 @29208 Milliardo · ミリアルド
 > 「戦いは……
@@ -646,9 +646,10 @@ and fight. Cease combat immediately.
 Do not worry, I shall come along with you. I shall not let any harm come to you.”
 
 @29222 Bright · ブライト
+# 审校：去掉 It can't be helped
 > 「……やむをえん。
 >  サンクキングダムを出るぞ」
-“...It can't be helped. We're leaving the Sanc Kingdom.”
+“...No help for it. We’re leaving the Sanc Kingdom.”
 
 @29223 Quatre · カトル
 > 「リリーナさんは僕たちに
@@ -721,9 +722,10 @@ and fight. Cease combat immediately.
 Do not worry, I shall come along with you. I shall not let any harm come to you.”
 
 @29233 Bright · ブライト
+# 审校：去掉 It can't be helped
 > 「……やむをえん。
 >  サンクキングダムを出るぞ」
-“...It can't be helped. We're leaving the Sanc Kingdom.”
+“...No help for it. We’re leaving the Sanc Kingdom.”
 
 @29234 Quatre · カトル
 > 「リリーナさんは僕たちに
@@ -845,18 +847,20 @@ dispersion, terminating.”
 was for nothing?!”
 
 @29254 Ark · アーク（按段落 3DD1）
+# 审校：去掉 can't be helped
 > 「リリーナさんが自ら決めたことだから、
 >  しょうがない
-“Miss Relena decided this for herself, so it can't be helped.
+“Miss Relena decided this for herself, so there’s nothing for it.
 ---
 >  俺たちにはそれを止める
 >  権利などないんだ」
 We have no right to stop her.”
 
 @29255 Selain · セレイン（按段落 3DD2）
+# 审校：去掉 can't be helped
 > 「リリーナ代表自ら決めたことだ、
 >  しかたがない
-“Representative Relena decided this herself. It can't be helped.
+“Representative Relena decided this herself. There’s nothing for it.
 ---
 >  我々にはそれを止める
 >  権利などない」
@@ -872,13 +876,14 @@ We have no right to stop her.”
 We've got no right to stop her.”
 
 @29257 Manami · マナミ（按段落 3DD4）
+# 审校：去掉 can't be helped
 > 「リリーナさんが自ら決めたことだから、
 >  しかたないわ
-“Miss Relena decided this for herself, so it can't be helped.
+“Miss Relena decided this for herself, so there’s nothing we can do.
 ---
 >  あたしたちにはそれを止める
 >  権利なんかないもの」
-We don't have any right to stop her.”
+We don’t have any right to stop her.”
 
 @29258 David · デビッド
 > 「それにしたって、ひでえ話だぜ。

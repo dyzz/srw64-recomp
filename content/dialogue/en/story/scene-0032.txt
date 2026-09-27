@@ -34,21 +34,23 @@
 “Brigadier General, it's been a long time.”
 
 @23713 Blex · ブレックス
+# 审校：“Both we of... and Karaba”结构别扭
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「諸君、よく来てくれた。
 >  反帝国を掲げて戦った
-“Everyone, I'm glad you came. Both we of the Liberation Front of the Earth, who fought under the banner of anti-empire,
+“Everyone, I’m glad you came. We of the Liberation Front of the Earth, who fought under the anti-Empire banner,
 ---
 >  我々地球解放戦線も
 >  カラバも、もはやすでに
-and Karaba no longer function as organizations. But I believe the actions
+and Karaba too, no longer function as organizations. But I believe the actions
 ---
 >  組織として機能していない。が、
 >  諸君らが自らの意思で選んだ
-you chose of your own will are the right ones.
+you chose of your own free will are the right ones.
 ---
 >  行動は、正しいものだと信じている
 >  私も、イゴールもな」
-So does Igor.”
+And so does Igor.”
 
 @23714 Alan · アラン
 > 「それは我々も同じですよ。私も
@@ -247,6 +249,7 @@ to get by without using my ‘power.’”
 said he'd met you before.”
 
 @23746 Murasame · 村雨
+# 审校：“anything called death”不通
 > 「何年前になるかな、どこかの
 >  コロニーで、暗い目をした
 “How many years ago was it, I wonder. On some colony or other, I met a
@@ -257,7 +260,7 @@ kid with dark eyes. Just a kid, but he was a skilled saboteur.
 ---
 >  そいつは“死”というものを
 >  恐れていなかった」
-He wasn't afraid of anything called ‘death.’”
+He had no fear of this thing called ‘death.’”
 
 @23747 Ginrei · 銀鈴
 > 「それで?」
@@ -375,17 +378,18 @@ What do you think, {HeroNick}?”
 * I want to believe it can happen.
 
 @23762 Ark · アーク（按段落 3DD1）
+# 审校：“saying dreamy things”直译
 > 「ばかげてるよ。できるわけがない。
 >  あの人たちは夢みたいなことを
-“It's ridiculous. There's no way it can happen. Those people are just
+“It’s ridiculous. There’s no way it can happen. Those people are just
 ---
 >  いってるだけなんだ。戦場に出て
 >  敵と戦っているとき
-saying dreamy things. When you're out on the battlefield fighting the enemy,
+spouting fantasies. When you’re out on the battlefield fighting the enemy,
 ---
 >  そんなことを考えていたら
 >  こっちがやられてしまう」
-if you were thinking about that kind of thing, you'd be the one getting killed.”
+if you were thinking about that kind of thing, you’d be the one getting killed.”
 
 @23763 Ark · アーク（按段落 3DD1）
 > 「理想だとは思うけど……
@@ -455,17 +459,18 @@ That's what I want to think.”
 * Yeah, I think it's amazing too.
 
 @23770 Brad · ブラッド（按段落 3DD3）
+# 审校：甘い是天真不是 soft in the head；结尾直译
 > 「連中は考えが甘すぎるな。
 >  帝国だのOZだのは、他人を力で
-“Those guys are too soft in the head. The Empire and OZ are the kind of people
+“Those people are way too naive. The Empire and OZ are the kind
 ---
 >  支配しなきゃ気がすまねぇ連中だ
 >  そんな奴ら相手に、話しあいで
-who won't be satisfied unless they control others by force. Against guys like that,
+who won’t be satisfied unless they control others by force. Against people like that,
 ---
 >  解決しましょうなんてのが、
 >  どだい無理な話だぜ」
-saying ‘let's settle this through discussion’ is impossible from the start.”
+talk of ‘settling things through dialogue’ is a non-starter.”
 
 @23771 Brad · ブラッド（按段落 3DD3）
 > 「本当にできんのならいいけどよ
@@ -533,8 +538,9 @@ someday the day will come when we don't have to fight.”
 “Oh, so you've finally come.”
 
 @23779 Ryoma · リョウ
+# 审校：同上
 > 「博士!? ご無事でしたか」
-“Doctor?! You're safe?”
+“Doctor?! You’re all right!”
 
 @23780 Amuro · アムロ
 > 「リョウ、こちらは?」
@@ -546,9 +552,10 @@ someday the day will come when we don't have to fight.”
 “Dr. Saotome, the creator of the Getter. ...Doctor, we...”
 
 @23782 Dr. Saotome · 早乙女博士
+# 审校：“we did a terrible thing to”偏离原意
 > 「うむ、聞いておる。ムサシくんには
 >  気の毒なことをしてしまったようだな」
-“Yes, I've heard. It seems we did a terrible thing to young Musashi.”
+“Yes, I’ve heard. Poor young Musashi... I’m sorry it came to that.”
 
 @23783 Hayato · ハヤト
 > 「博士がいるならちょうどいい。
@@ -779,9 +786,10 @@ And then the Earth will be ours.”
 “The Dragon is powered up way beyond the Eagle.”
 
 @23815 Hayato · ハヤト
+# 审校：“look forward to how it is after combining”直译
 > 「このライガー号もだ。リョウ、
 >  こいつは合体後が楽しみだぞ」
-“So is this Liger. Ryoma, you can look forward to how it is after combining.”
+“So is this Liger. Ryoma, just wait till you see it combined.”
 
 @23816 Ryoma · リョウ
 > 「ああ。よし、もう1度いくぞ」
@@ -944,9 +952,10 @@ We'd better tell everyone to stay on guard.”
 “Heh, don't worry about it. Now, hurry.”
 
 @23843 Ivan · イワン
+# 审校：As expected of 日语腔
 > 「はははははっ。さすがはアルベルト様、
 >  こうも簡単に見つけてしまうとは」
-“Hahahahaha. As expected of Lord Alberto, to find them so easily.”
+“Hahahahaha. That’s Lord Alberto for you, finding them this easily.”
 
 @23844 Bright · ブライト
 > 「くっ、ドモンのいう通りだったな。
@@ -954,8 +963,9 @@ We'd better tell everyone to stay on guard.”
 “Ngh, Domon was right. Prepare to intercept. Don't let the enemy get close!”
 
 @23845 Q Boss · Qボス
+# 审校：Kukuku 与 23598 的写法统一
 > 「クククククククッ」
-“Kukukukukukuku.”
+“Heh heh heh heh heh heh heh.”
 
 @23846 Beltorchika · ベルトーチカ
 > 「艦長、こっちからも来ました!」
@@ -981,8 +991,9 @@ So the Ten Elite have made their move. This is bad... don't let the enemy in her
 “For Big Fire!!”
 
 @23850 Q Boss · Qボス
+# 审校：“what incredible...”悬空
 > 「な、なんという……」
-“Wh-what incredible...”
+“Wh-what the...”
 
 @23851 Hell Marshal · 地獄大元帥
 > 「情報通りじゃな、ブライ大帝。
@@ -1127,6 +1138,7 @@ Master Asia, let us meet again!”
 “Chief Chujo, just what is the BF Group...?”
 
 @23874 Chief Chujo · 中条長官
+# 审校：“its purpose in moving now”直译
 > 「秘密結社BF団。そのボスである
 >  ビッグファイアーの正体も
 “The secret society, the BF Group. Neither the true identity of its boss, Big Fire,
@@ -1137,7 +1149,7 @@ nor its actual nature is clear, but it once operated all over the world.
 ---
 >  いったい何が目的で
 >  動いているのか……」
-Just what is its purpose in moving now...”
+Just what are they after...”
 
 @23875 Amuro · アムロ
 > 「秘密結社……ですか」
@@ -1231,13 +1243,14 @@ fought well, but we couldn't quite finish off Drake...”
 “Yes, Ciela Lapana.”
 
 @23889 Ciela · シーラ
+# 审校：“what makes my words of warning worthwhile”绕
 > 「それでこそ、あなたに苦言を
 >  申したかいが、あったというものです
-“That's what makes my words of warning to you worthwhile.
+“Then my harsh words to you were not wasted.
 ---
 >  今のあなたならビルバインを
 >  託せましょう。これからも頼みます」
-Now I can entrust the Billbine to you. I'll be counting on you from now on.”
+Now I can entrust the Billbine to you. I’ll be counting on you from now on.”
 
 @23890 Show · ショウ
 > 「ビルバイン……?」
@@ -1322,13 +1335,14 @@ To stop Drake, please lend us its power from now on.”
 “No way... Gale?! Thank goodness... you're alive!!”
 
 @23903 Gale · ゲイル
+# 审校：地球人是 Earthling，surface-dweller 是拜斯顿威尔用语
 > 「お前たちにやられた後、
 >  重傷を負って死にかけていた私を
 “After you all defeated me, I was gravely wounded and near death,
 ---
 >  助けてくれた地球人がいたのだ。
 >  そして回復するまでの間
-but a surface-dweller saved me. And while I recovered,
+but an Earthling saved me. And while I recovered,
 ---
 >  私は帝国の軍人としてではなく、
 >  ひとりの人間として
@@ -1340,7 +1354,7 @@ And I realized something, Eiji.
 ---
 >  私は間違っていた。
 >  そうお前にわびたかった」
-I was wrong. That's what I wanted to apologize to you for.”
+I was wrong. That’s what I wanted to apologize to you for.”
 
 @23904 Anna · アンナ
 > 「エイジ……よかったわね」
@@ -1666,13 +1680,14 @@ it at least saves them some trouble for the time being.”
 I hear they even stormed into Gresco's place before.”
 
 @23951 Simone · シモーヌ
+# 审校：原句是问主角本人是否在意，英文译成了担心主角，意思错
 > 「そうねぇ。サンクキングダムか……
 >  これから大変そうだわね
-“I suppose so. The Sanc Kingdom, huh... it's going to be tough from here on.
+“I suppose so. The Sanc Kingdom, huh... it’s going to be tough from here on.
 ---
 >  {HeroNick}も
 >  気になるんじゃない?」
-Aren't you worried about {HeroNick} too?”
+You must be wondering about it too, {HeroNick}?”
 
 @23952
 > *  なんとかがんばってほしいとは思うけど

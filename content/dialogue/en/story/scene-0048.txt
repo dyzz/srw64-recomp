@@ -60,9 +60,10 @@ fight OZ. If they can do even a little damage to that troublesome
 force, so much the better.”
 
 @32660 Luna · ルーナ
+# 审校：As expected of 去日语腔
 > 「さすがはシャピロ様。そこまでお考え
 >  でしたとは」
-“As expected of you, Lord Shapiro. I never imagined you had thought that far ahead.”
+“That’s Lord Shapiro for you. To think you had planned that far ahead.”
 
 @32661 Shapiro · シャピロ
 > 「たとえ一時的に地上の拠点が
@@ -321,17 +322,18 @@ how humanity will be removed from the Earth and its environment
 restored.)
 
 @32692 Jamitov · ジャミトフ
+# 审校：“过度疲弊”“I feel the crisis”直译，跨页断裂
 > (だがそんな手段を講じている
 >  間に地球が疲弊しすぎる
-(But while we resort to such measures, the Earth will be exhausted beyond repair.
+(But I fear that while such measures run their course,
 ---
 >  危機感がある。帝国の侵略に
 >  より従来の秩序が崩壊した
-I feel the crisis. The Empire's invasion has shattered the old order.
+the Earth will be bled dry. The Empire’s invasion has shattered the old order.
 ---
 >  今となっては、戦争を続けることに
 >  よって地球経済に打撃を与え
-Now, by continuing the war, we strike a blow to the Earth's economy,
+Now, by continuing the war, we strike a blow to the Earth’s economy,
 ---
 >  ついでに地球上のエリート意識に
 >  こり固まった選民も排除する
@@ -343,7 +345,7 @@ The Foundation is nothing but a relic of the past. This is what the times demand
 ---
 >  ジオンの旗揚げも、帝国の侵略
 >  もなかった……)
-neither Zeon's uprising nor the Empire's invasion would have happened...)
+neither Zeon’s uprising nor the Empire’s invasion would have happened...)
 
 @32693 Lady · レディ
 # 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
@@ -513,13 +515,14 @@ to the humans.”
 If they can be used for that, then I shall make use of them.”
 
 @32719 Tod · トッド
+# 审校：“What a sad fate”生硬
 > 「やれやれ、何が悲しくて化け物ども
 >  と一緒にやらなきゃならないんだ
-“Good grief. What a sad fate, having to work alongside monsters.
+“Good grief. What did I do to deserve working alongside monsters?
 ---
 >  ドレイク王、本当に勝てるん
 >  でしょうな」
-King Drake, we really can win, can't we?”
+King Drake, we really can win this, can’t we?”
 
 @32720 Drake · ドレイク
 > 「お前も聖戦士ならば、そのような
@@ -567,13 +570,13 @@ I want you to prepare to respond.”
 “So we finally get to settle things not just with the Empire, but with those monsters too.”
 
 @32728 Shinobu · 忍
-# 审校：忍对特列斯直呼其名不加“Mr.”，符合其粗野不服管的性格。
+# 审校：“crossed a dangerous bridge”是日语成语直译
 > 「俺たちはカリフォルニアでヤバイ橋を
 >  渡ったばかりだぜ? 他の連中も
-“We just crossed a dangerous bridge in California, you know? The others are
+“We just stuck our necks out in California, you know? The others are
 ---
 >  動いてるんだろうな、トレーズさんよ」
-on the move too, aren't they, Treize?”
+on the move too, aren’t they, Treize?”
 
 @32729 Treize · トレーズ
 > 「むろんだが、これは君たちにやって
@@ -713,10 +716,10 @@ meet them with everything we've got.”
 “So Drake's Will-Wips is coming here as well?”
 
 @32748 Treize · トレーズ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：As expected 去日语腔
 > 「その通りです、シーラ女王。
 >  さすがにオーラシップは、そちらに
-“That's right, Queen Ciela. As expected, the Aura Ship is something we can only
+“That’s right, Queen Ciela. The Aura Ship, though, we’ll have to
 ---
 >  お願いするしかないようです」
 leave to you.”
@@ -985,9 +988,10 @@ sharper than they do on the ground.”
 “Svanheld seems to be breaking down a lot more lately.”
 
 @32796 Selain · セレイン（按段落 3DD2）
+# 审校：It can't be helped 去日语腔
 > 「しかたないな。もともと
 >  帝国の試作機だったやつだ
-“It can't be helped. It was originally an Imperial prototype.
+“Nothing for it. It was originally an Imperial prototype.
 ---
 >  OZに来たことでパーツを流用しやす
 >  くなったことだけが救いだな。もっとも
@@ -995,7 +999,7 @@ The one saving grace is that joining OZ made it easier to scrounge parts. Of cou
 ---
 >  そのままじゃ使えないから、アストナージ
 >  たちには苦労をかける」
-they don't work as-is, so we put Astonaige and the others through a lot.”
+they don’t work as-is, so we put Astonaige and the others through a lot.”
 
 @32797 Lera · レラ
 > 「アストナージはケーラが来てから
@@ -1039,9 +1043,10 @@ In real combat, I can't leave my back to you.”
 “That's not true. I'd say you're pretty good.”
 
 @32805 Lera · レラ
+# 审校：without hardly 双重否定
 > 「だけどさ、ろくに訓練もしないで
 >  乗りこなす奴だっているじゃないか」
-“But there are people who can handle one without hardly any training, aren't there?”
+“But there are people who can handle one with hardly any training, aren’t there?”
 
 @32806 Selain · セレイン（按段落 3DD2）
 > 「あれが特殊なだけだ。世の中の
@@ -1053,12 +1058,13 @@ In real combat, I can't leave my back to you.”
 we wouldn't need training schools, and we never would have lost to the Empire.”
 
 @32807 Lera · レラ
+# 审校：反意疑问 did you 应为 did it
 > 「じゃあ、アンタはどうなのさ。そんなに
 >  時間はかからなかったんでしょ?」
-“Then what about you? It didn't take you that long, did you?”
+“Then what about you? It didn’t take you that long, did it?”
 
 @32808 Selain · セレイン（按段落 3DD2）
-# 审校：精读：去破折号
+# 审校：under the dirt 改成惯用语
 > 「私にはそれしかなかったからだ。命をか
 >  けて実戦で学ばなければならなかった
 “Because I had nothing else. I had to learn in real combat, risking my life.
@@ -1069,14 +1075,14 @@ Even now, the scar of the hole in my gut aches. All my comrades died.
 ---
 >  お前が重火器の扱いまで覚えた
 >  のと同じことだ。お前がいたグループに
-It's the same as how you learned to handle heavy weapons. If the group you were with
+It’s the same as how you learned to handle heavy weapons. If the group you were with
 ---
 >  機動兵器があれば、今ごろお前
 >  も熟練パイロットか、あるいは
 had had mobile weapons, you might be a veteran pilot by now, or else
 ---
 >  土の下だったかもしれないぞ」
-you might be under the dirt.”
+six feet under.”
 
 @32809 Lera · レラ
 > 「なら、アタシだって実戦でなれれば
@@ -1227,9 +1233,10 @@ I can't wait to see it.”
 “Even if the Imperial forces aren't our opponents, this is going to be pretty rough.”
 
 @32832 Ryoma · リョウ
+# 审校：“What are you talking about?”不接上文
 > 「なーに、俺たちなら大丈夫さ。
 >  奴らもこれで最後だ」
-“What are you talking about? We'll be fine. This is the last time for them too.”
+“Come on, we’ll be fine. This is the end of the line for them.”
 
 @32833 Ark · アーク（按段落 3DD1）
 # 审校：精读：去破折号
@@ -1436,10 +1443,10 @@ Make it quick!”
 “Captain, shall I stay behind?”
 
 @32868 Bright · ブライト
-# 审校：精读：去破折号
+# 审校：“Yes, that works”不像舰长
 > 「そうだな……頼む。他の者は発進
 >  急げ!」
-“Yes, that works... I'll leave it to you. Everyone else, launch. Make it quick!”
+“Good idea... I’m counting on you. Everyone else, launch. Make it quick!”
 
 @32869 Brad · ブラッド（按段落 3DD3）
 # 审校：原文为「!?」，英文应使用“?!”而非“!?”。
@@ -1527,26 +1534,27 @@ Now I understand. I should have crushed you first after all.”
 It is fate that a passing guest must depart. If you cannot understand that, then...”
 
 @32883 Drake · ドレイク
+# 审校：“被肃清的存在”“beings that must be purged”直译
 > 「オーラマシンの力は世界をつなげ
 >  すぎた。我々は地上にあっては
-“The power of the Aura Machine connected the worlds too much. In the surface world, we are
+“The power of the Aura Machines connected the worlds too much. In the surface world, we are
 ---
 >  粛清されなければならぬ存在だ」
-beings that must be purged.”
+something that must be purged.”
 
 @32884 Elle · エレ
 > 「ドレイク王……?」
 “King Drake...?”
 
 @32885 Drake · ドレイク
-# 审校：精读：去破折号
+# 审校：英文把“自认有看世界的眼光”译反了
 > 「ワシとて世界をみる目はあるつもりだ
 >  が、個人の感情の決着だけは
-“I may not have much of an eye for the world, but when it comes to settling personal feelings,
+“I like to think I too have an eye for the world, but when it comes to settling personal feelings,
 ---
 >  これはつけさせてもらう。そのために、
 >  ここで貴様たちに負けてやるわけには
-this I will see through. And for that sake, I cannot afford to lose to you lot here.
+this I will see through. And for that, I cannot afford to lose to you lot here.
 ---
 >  いかぬな」
 No, I cannot.”
@@ -2149,16 +2157,16 @@ to Byston Well!! Leave no hatred behind on the surface...”
 “Drake is down!!”
 
 @33010 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：As expected 去日语腔
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“As expected, Garalia. ...Ciela Lapana!! Purify!!”
+“Well done, Garalia. ...Ciela Lapana!! Purify!!”
 
 @33011 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：As expected 去日语腔
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“As expected, Garalia. ...Ciela Lapana!! Purify!!”
+“Well done, Garalia. ...Ciela Lapana!! Purify!!”
 
 @33012 Ciela · シーラ
 # 审校：精读：第二页只有“!!”

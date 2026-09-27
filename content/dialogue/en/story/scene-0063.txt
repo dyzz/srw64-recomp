@@ -6,8 +6,9 @@
 “This way. Lady Relena is waiting for you.”
 
 @28211 Amuro · アムロ
+# 审校：さすがに 的口语表达
 > 「……さすがに緊張するな」
-“...I really am nervous.”
+“...I have to admit, I’m nervous.”
 
 @28212 Eiji · エイジ
 > 「アムロさんもですか?
@@ -55,13 +56,14 @@ I wonder... Right, Daisaku?”
 “I-Is that so?”
 
 @28217 Noin · ノイン
+# 审校：“与……无缘”是直译，改口语
 > 「皆、緊張などは無用のことです。
 >  リリーナ様は無意味な
-“There's no need for anyone to be nervous. Lady Relena has nothing
+“There’s no need for anyone to be nervous. Lady Relena has no use
 ---
 >  儀礼などとは無縁の方……
 >  お会いになればわかります」
-to do with meaningless formalities... You'll understand once you meet her.”
+for empty formalities... You’ll understand once you meet her.”
 
 @28218 Eiji · エイジ
 > 「はあ……。ところでノインさん、僕たちの
@@ -78,12 +80,13 @@ to do with meaningless formalities... You'll understand once you meet her.”
 I've received word that the move is already complete.”
 
 @28220 Amuro · アムロ
+# 审校：去掉生硬句式
 > 「そこらへんはブライトたちに
 >  まかせておけば大丈夫さ
-“That sort of thing is fine if we leave it to Bright and the others.
+“We can leave that side of things to Bright and the others.
 ---
 >  それより、着いたようだぞ」
-More importantly, it looks like we've arrived.”
+More to the point, looks like we’re here.”
 
 @28221 Ginrei · 銀鈴
 > 「ほら大作君、ネクタイ直して」
@@ -149,16 +152,17 @@ organization have come.”
 “...I'm honored.”
 
 @28229 Relena · リリーナ
+# 审校：stiff with your words 不像人话
 > 「ふふ、堅苦しい言葉づかいは
 >  しないで下さいな、アムロさん
-“Hehe, please don't be so stiff with your words, Amuro.
+“Hehe, please, there’s no need to be so formal, Amuro.
 ---
 >  ところで……、ガンダムパイロットの
 >  ヒイロ・ユイは……
 By the way... the Gundam pilot Heero Yuy...
 ---
 >  ご一緒ではないのですか?」
-isn't he with you?”
+isn’t he with you?”
 
 @28230 Amuro · アムロ
 > 「ヒイロ……ですか? 彼は少し前に、
@@ -244,9 +248,10 @@ I'm sure she'll be delighted.”
 “...”
 
 @28241 Pagan · パーガン
+# 审校：Everyone of the 语法别扭
 > 「{HeroMech}の皆様、
 >  不都合はございませんか?
-“Everyone of the {HeroMech}, is there any inconvenience?
+“Everyone aboard the {HeroMech}, are you finding everything in order?
 ---
 >  かようなへんぴなところに
 >  押しこめてしまって申しわけありません」
@@ -280,20 +285,22 @@ please tell me anytime. I'll arrange it immediately.”
 “I appreciate it. This is enough for now, but I'll ask when we need something.”
 
 @28245 Pagan · パーガン
+# 审校：Please take care 日语腔
 > 「はい、何なりと。それでは、
 >  これで通信を終わります
-“Yes, anything at all. Well then, I'll end the communication here.
+“Yes, anything at all. Well then, I’ll end the transmission here.
 ---
 >  くれぐれもよろしく……」
-Please take care...”
+Our very best to you all...”
 
 @28246 Koji · 甲児
+# 审校：甲儿口吻，去说明腔
 > 「腰の低いじいさんだなあ。
 >  あんまり下手に出られすぎても
-“He's a humble old man. When someone's too polite,
+“Man, that old guy’s humble. Getting bowed and scraped to like that
 ---
 >  かえって座りが悪いぜ」
-it actually makes you feel uncomfortable.”
+just makes me squirm.”
 
 @28247 Sayaka · さやか
 > 「こら。もう、あんたとボスだけは
@@ -304,26 +311,29 @@ it actually makes you feel uncomfortable.”
 You'd give yourselves away in one shot.”
 
 @28248 Boss · ボス
+# 审校：口语化
 > 「なんでそこで俺さまが
 >  出てきちゃうわけ?」
-“Why does it have to be me who shows up there?”
+“Why am I getting dragged into this?”
 
 @28249 Roux · ルー
+# 审校：口语化
 > 「……その凶暴な顔の
 >  どこが完全平和なのよ
-“...Where in that savage face of yours is total peace?
+“...What part of that thuggish mug of yours says ‘total peace’?
 ---
 >  いっちゃなんだけど」
-Not to be rude or anything.”
+No offense.”
 
 @28250 Boss · ボス
+# 审校：負けちゃいない 意为“不相上下”，原译反了
 > 「失礼しちゃうわね。
 >  だいたい顔のことなら
-“How rude. Anyway, when it comes to looks,
+“How rude. Anyway, if we’re talking faces,
 ---
 >  ベンケイだって俺さまに
 >  負けちゃいないぜ!」
-Benkei's no match for me either!”
+Benkei’s every bit as bad as me!”
 
 @28251 Sayaka · さやか
 > 「……不毛だわ……」
@@ -421,9 +431,10 @@ Sure, they sound like a dream, but... when I look at Julia and Relena,
 I feel something. How should I put it... the possibility of the future, I guess.”
 
 @28264 Lera · レラ
+# 审校：口语化
 > 「{HeroNick}、あたしはここであんたたちと
 >  別れるよ」
-“{HeroNick}, I'm parting ways with you all here.”
+“{HeroNick}, this is where I leave you.”
 
 @28265 Ark · アーク（按段落 3DD1）
 > 「いったい、どうしたってんだよ」
@@ -462,9 +473,10 @@ then I've got nothing left at all!”
 “Lera...”
 
 @28272 Lera · レラ
+# 审校：同 28264
 > 「{HeroNick}、あたしはここであんたたちと
 >  別れるよ」
-“{HeroNick}, I'm parting ways with you all here.”
+“{HeroNick}, this is where I leave you.”
 
 @28273 Selain · セレイン（按段落 3DD2）
 > 「いったい、どうしたんだ」
@@ -521,26 +533,27 @@ then I've got nothing left at all!”
 was quite a beauty, though.”
 
 @28283 Beltorchika · ベルトーチカ
-# 审校：贝尔托琪卡语气强势直率，加“such”更符合她带点责备的口吻。
+# 审校：boring jokes 不自然
 > 「つまんない冗談いわないで。
 >  真面目にやってちょうだい!」
-“Don't make such boring jokes. Take this seriously!”
+“Spare me the lame jokes. Be serious!”
 
 @28284 Roanne · ロアン
+# 审校：“暗处的存在／shadow presence”直译
 > 「まあまあ。実際の話、帝国軍に
 >  攻撃されるまでは、僕たちはあくまで
-“Now, now. The truth is, until the Imperial Army attacks us, we're strictly
+“Now, now. The truth is, until the Imperial Army attacks us, we’re meant
 ---
 >  陰の存在だから。ロームフェラの
 >  締めつけも厳しくなっているらしいが
-a shadow presence. Romefeller's pressure is apparently getting tighter too,
+to stay in the shadows. Romefeller’s pressure is apparently tightening too,
 ---
 >  これも現状は政治の上でのことだ
 >  待機していてくれ……というのが
-but for now that's all politics. Standing by and waiting... that was
+but for now that’s all politics. So stand by and wait... that was
 ---
 >  ノインさんの意向でした」
-what Noin wanted.”
+what Noin asked of us.”
 
 @28285 Bright · ブライト
 > 「そうか、わかった。
@@ -606,19 +619,20 @@ Dr. Saotome came by and said to let them help with the maintenance.”
 “My father?!”
 
 @28293 Astonaige · アストナージ
+# 审校：おそれおおい 是“不敢当”，不是 intimidating
 > 「年寄りを馬鹿にするな、
 >  最新のメカでもまかせておけ……
-“They said, don't underestimate us old folks, we can handle even the latest machines...
+“They said, don’t underestimate us old folks, we can handle even the latest machines...
 ---
 >  なんていわれまして。何とかご遠慮
 >  願いましたけどね、おそれおおくて……」
-and so on. I managed to politely decline, but, well, they're rather intimidating...”
+and so on. I managed to politely decline, but honestly, it’s too much of an honor...”
 
 @28294 Hayato · ハヤト
-# 审校：精读：去破折号
+# 审校：同 28293，接上句
 > 「博士たちには重要な研究がある
 >  そりゃ確かにおそれおおいぜ」
-“The doctors do have important research. That's certainly intimidating, all right.”
+“The doctors have important research to do. Yeah, that’d be too much of an honor, all right.”
 
 @28295 Benkei · ベンケイ
 > 「俺たちパイロットもメカニックに
@@ -626,18 +640,20 @@ and so on. I managed to politely decline, but, well, they're rather intimidating
 “What he means is, we pilots can't just leave everything to the mechanics, can we?”
 
 @28296 Amuro · アムロ
+# 审校：口语化
 > 「その通りだ。アストナージ、
 >  自分の機体は俺たちが
-“Exactly. Astonaige, we'll each take care of our own units.
+“Exactly. Astonaige, we’ll each take care of our own units.
 ---
 >  それぞれ受け持つから。
 >  指示してくれないか」
-Could you give us the instructions?”
+Just tell us what to do.”
 
 @28297 Astonaige · アストナージ
+# 审校：口语化
 > 「そうですか、助かります。じゃあ
 >  ここにパーツリストがありますから……」
-“Sure, that'd be a big help. Then, there's a parts list right here, so...”
+“Really? That’d be a big help. Okay, here’s the parts list, so...”
 
 @28298 Sayaka · さやか
 > 「他のみんなも呼んでくるわ。
@@ -680,7 +696,7 @@ that otherworldly vessel you engaged the other day... the Aura Ship.”
 “To think they're this close...”
 
 @28303 Noin · ノイン
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：措辞自然
 > 「ブライト艦長、奴らが敵なら、
 >  国境を越えさせないでほしい
 “Captain Bright, if they are our enemy, I ask that you not let them cross the border.
@@ -691,7 +707,7 @@ If fighting breaks out within our country now, intervention by
 ---
 >  介入はさけられない。
 >  何としてでも……」
-the Romefeller lot will be unavoidable. By any means necessary...”
+the Romefeller crowd will be unavoidable. Whatever it takes...”
 
 @28304 Bright · ブライト
 > 「わかりました。お知らせ下さって
@@ -725,9 +741,10 @@ As long as we people of the other world remain on the surface,
 the Aura Power will keep drawing us together.”
 
 @28308 Show · ショウ
+# 审校：can't be helped 日语腔
 > 「それはしかたがありません。そして
 >  ドレイクは、地上の争いにどこまでも
-“That can't be helped. And Drake will stop at nothing to
+“There’s no avoiding that. And Drake will stop at nothing to
 ---
 >  介入しようとしている。放置して
 >  おけば、もっとひどいことになります!」
@@ -762,12 +779,13 @@ For the final time, lend us your strength once more.”
 “Don't talk like we're strangers. Let's just head out like we always do.”
 
 @28312 Simone · シモーヌ
+# 审校：together in the 不自然
 > 「最後だなんて、おっしゃらないで。
 >  私たち、今はともに
-“Please don't say this is the last time. Right now, we are all together
+“Please don’t say this is the last time. Right now, we’re all one crew...
 ---
 >  {HeroMech}ですのよ」
-in the {HeroMech}.”
+the {HeroMech}.”
 
 @28313 Elle · エレ
 > 「……ありがとう……。感謝します、
@@ -955,9 +973,10 @@ an opportunity for me...”
 “This is the end, Black Knight!”
 
 @28348 Black Knight · 黒騎士
+# 审校：“这股不适感”不像人话
 > 「うっ!? なんだ、この不快感は!?
 >  うおぉぉぉっ!!」
-“Ugh?! What is this foul feeling?! Uwooooh!!”
+“Ugh?! What is this sick feeling?! Uwooooh!!”
 
 @28349 Show · ショウ
 > 「なに!?」
@@ -1009,8 +1028,9 @@ an opportunity for me...”
 “This Aura Power... Bern Bunnings!”
 
 @28359 Bern · バーン
+# 审校：I... impossible 不通
 > 「バ……バカなッ!? この私が……」
-“I... impossible?! That I, of all people...”
+“Im-Impossible?! Me, of all people...”
 
 @28360 Show · ショウ
 # 审校：人名按词表统一
@@ -1033,9 +1053,10 @@ an opportunity for me...”
 “This is the end, Black Knight!”
 
 @28364 Black Knight · 黒騎士
+# 审校：同 28348
 > 「うっ!? なんだ、この不快感は!?
 >  うおぉぉぉっ!!」
-“Ugh?! What is this foul feeling?! Uwooooh!!”
+“Ugh?! What is this sick feeling?! Uwooooh!!”
 
 @28365 Show · ショウ
 > 「なに!?」
@@ -1063,18 +1084,20 @@ an opportunity for me...”
 “Bern?! You... what did you gain from all that hatred?!”
 
 @28370 Bern · バーン
+# 审校：Fuh 不是英文笑声
 > 「フ、フハハハハッ! 力と狡猾さだ!
 >  さすれば、勝つ!!」
-“Fuh, fuhahahaha! Power and cunning! With those, I win!!”
+“Heh, hahahaha! Power and cunning! With those, I win!!”
 
 @28371 Black Knight · 黒騎士
 > 「お……おのれぇぇーっ!!」
 “D... damn youuu!!”
 
 @28372 ???
+# 审校：同 28370
 > 「フハハハハハッ! 今度こそ、この私
 >  のオーラパワーで貴様らを落とす!!」
-“Fuhahahahaha! This time, with my Aura Power, I'll bring you all down!!”
+“Hahahahaha! This time, with my Aura Power, I’ll bring you all down!!”
 
 @28373 Chum · チャム
 # 审校：人名按词表统一
@@ -1088,9 +1111,10 @@ an opportunity for me...”
 “Bern?! You... what did you gain from all that hatred?!”
 
 @28375 Bern · バーン
+# 审校：同 28370
 > 「フ、フハハハハッ! 力と狡猾さだ!
 >  さすれば、勝つ!!」
-“Fuh, fuhahahaha! Power and cunning! With those, I win!!”
+“Heh, hahahaha! Power and cunning! With those, I win!!”
 
 @28376 Tod · トッド
 > 「く……結局、最後までこれか……
@@ -1098,29 +1122,34 @@ an opportunity for me...”
 “Ngh... So in the end, it comes to this... So long, Show...”
 
 @28377 Show · ショウ
+# 审校：die on your own 语义不清
 > 「勝手に死なせるか! お前は
 >  生きて罪をつぐなえ!」
-“I won't let you die on your own! Live and atone for your sins!”
+“Don’t you dare die on me! Live and atone for what you’ve done!”
 
 @28378 Tod · トッド
+# 审校：let me go easy 不自然
 > 「楽にさせてくれよ……。ショウ……
 >  いい夢を、見させてもらったぜ……」
-“Just let me go easy... Show... you let me have a good dream...”
+“Let me rest... Show... it was a good dream while it lasted...”
 
 @28379 Show · ショウ
+# 审校：でたまるか 的语气
 > 「これが……これが、いい夢でたまるかよ!
 >  くっ……」
-“That's... that's no good dream at all! Ngh...”
+“Like hell... like hell this was a good dream! Ngh...”
 
 @28380 Tod · トッド
+# 审校：同 28378
 > 「ショウ……いい夢を、見させてもらった
 >  ぜ……」
-“Show... you let me have a good dream...”
+“Show... it was a good dream while it lasted...”
 
 @28381 Show · ショウ
+# 审校：同 28379
 > 「これが……これが、いい夢でたまるかよ!
 >  くっ……」
-“That's... that's no good dream at all! Ngh...”
+“Like hell... like hell this was a good dream! Ngh...”
 
 @28382 Chum · チャム
 > 「ショウ……。トッド、死んじゃったの?」
@@ -1131,9 +1160,10 @@ an opportunity for me...”
 “Yeah...”
 
 @28384 Tod · トッド
+# 审校：同 28378
 > 「く……こんなところで終わるのか……。
 >  いい夢を、見させてもらったぜ……」
-“Ngh... So this is where it ends... You let me have a good dream...”
+“Ngh... So this is where it ends... It was a good dream while it lasted...”
 
 @28385 Bern · バーン
 > 「なんだと!?
@@ -1219,16 +1249,16 @@ Let no hatred remain on the surface...”
 “Drake is down!!”
 
 @28400 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：Just as expected 日语腔
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+“That’s Garalia for you. ...Ciela Lapana!! The purification!!”
 
 @28401 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：同 28400
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+“That’s Garalia for you. ...Ciela Lapana!! The purification!!”
 
 @28402 Ciela · シーラ
 # 审校：补译：原稿空页
@@ -1314,8 +1344,9 @@ Let no hatred remain on the surface...”
 “Is this the end?!”
 
 @28416 Marvel · マーベル
+# 审校：与 28394 同句统一，玛贝尔说的是自己
 > 「やったの……?」
-“You did it...?”
+“Did I... do it?”
 
 @28417 Show · ショウ
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
@@ -1347,24 +1378,25 @@ Let no hatred remain on the surface...”
 “Shot is down!!”
 
 @28422 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：同 28400
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+“That’s Garalia for you. ...Ciela Lapana!! The purification!!”
 
 @28423 Show · ショウ
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：同 28400
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
-“Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
+“That’s Garalia for you. ...Ciela Lapana!! The purification!!”
 
 @28424 Ciela · シーラ
+# 审校：英文第二页凑字重复；中文统一“地上”
 > 「よし! ガラリア、よくやってくれました。
 >  皆の者、バイストンウェルへ
-“Good! Garalia, you did well. Everyone, we return to Byston Well!!
+“Good! Garalia, you did well. Everyone, to Byston Well
 ---
 >  帰還します!!
-We return now!!
+we return!!
 ---
 >  憎しみの心を地上に残さぬよう…」
 Let no hatred remain on the surface...”
@@ -1426,9 +1458,9 @@ Let no hatred remain on the surface...”
 “Drake! I'm putting an end to this!”
 
 @28437 Drake · ドレイク
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：is it! 不自然
 > 「シーラ・ラパーナか!」
-“Ciela Lapana, is it!”
+“Ciela Lapana!”
 
 @28438 Ciela · シーラ
 > 「グラン・ガラン、突撃せよ!」
@@ -1742,10 +1774,10 @@ What brings you here?”
 our research institute here in the Sanc Kingdom.”
 
 @28483 Sayaka · さやか
-# 审校：さやか对父亲说话，口吻应更符合女儿对父亲的亲昵与兴奋，原译“That's amazing!”偏平淡，改为“Isn't that wonderful!”更贴合她的语气。
+# 审校：Isn't that wonderful 不像感叹
 > 「お父様、本当!?
 >  すごいじゃない!」
-“Father, really?! Isn't that wonderful!”
+“Father, really?! That’s amazing!”
 
 @28484 Prof. Yumi · 弓教授
 > 「アムロくんたちのところへ
@@ -1768,16 +1800,17 @@ No matter how much you perfect a theory, if you can't run experiments,
 there's nothing you can do.”
 
 @28485 Ryoma · リョウ
+# 审校：统一 total pacifism；中文“……，”标点
 > 「博士、リリーナ代表といってました
 >  が……、完全平和主義の国で
-“Doctor, you mentioned Representative Relena... but for a nation of complete pacifism
+“Doctor, you mentioned Representative Relena... but for a nation of total pacifism
 ---
 >  ゲッター線や光子力エネルギーの
 >  研究を、よく認めましたね」
-to approve research on Getter Rays and photon energy, that's surprising.”
+to approve research on Getter Rays and photon energy, that’s surprising.”
 
 @28486 Dr. Saotome · 早乙女博士
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：Miss Noin 称呼；末句直译
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「むろん、最大の目的は
 >  それらの平和利用じゃ
@@ -1785,7 +1818,7 @@ to approve research on Getter Rays and photon energy, that's surprising.”
 ---
 >  ノインさんがうまく話してくれたよ。
 >  なあに、わしや弓教授
-Miss Noin spoke to them well on our behalf. After all, the research done by me, Professor Yumi,
+Noin put it to them nicely on our behalf. After all, the research done by me, Professor Yumi,
 ---
 >  それに兜博士の研究も、
 >  そもそもの目的は
@@ -1793,7 +1826,7 @@ and Dr. Kabuto was originally meant for
 ---
 >  平和利用だったんだからな。
 >  こんな世界にさえなっちまわなければ」
-peaceful purposes. If only the world hadn't turned out like this.”
+peaceful purposes. If only the world hadn’t turned out like this.”
 
 @28487 Hayato · ハヤト
 > 「ゲッターやマジンガーと、
@@ -1805,12 +1838,13 @@ peaceful purposes. If only the world hadn't turned out like this.”
 True, in a world like this, I never could have imagined it...”
 
 @28488 Benkei · ベンケイ
+# 审校：骨のある＝有骨气；统一 total pacifism；去“呢”
 > 「完全平和主義か……。
 >  案外、俺が考えていたよりも
-“Complete pacifism, huh... It might be more
+“Total pacifism, huh... It might have more backbone to it
 ---
 >  骨のある代物かも知れないな……」
-formidable than I thought...”
+than I gave it credit for...”
 
 @28489 Ryoma · リョウ
 > 「ああ。ムゲ帝国と戦っていた頃とは
@@ -1822,9 +1856,10 @@ formidable than I thought...”
 Being able to think about the future... it feels good.”
 
 @28490 Dr. Saotome · 早乙女博士
+# 审校：So, that's how it is 悬空
 > 「さあ、そんなわけで準備をせにゃならん
 >  書類や実験器具が
-“So, that's how it is. There are piles of documents and lab equipment I need to get ready.
+“Right, so that means there’s a mountain of documents and lab equipment to get ready.
 ---
 >  山ほどあるんじゃ。
 >  ほら、お前ら、手伝いにこんか!」

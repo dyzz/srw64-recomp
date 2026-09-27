@@ -294,17 +294,19 @@ have begun to stir. Father!”
 “You believe the Imperials are a race superior to Earthlings.”
 
 @21835 Le Cain · ル・カイン
+# 审校：去掉 cannot be helped 日语腔，中文口语化
 > 「事実ですから、いたしかたありません」
-“It is a fact, so it cannot be helped.”
+“It is simply a fact. There is nothing to be done about it.”
 
 @21836 Gresco · グレスコ
+# 审校：英文顺句，与 22104 同一句口号措辞统一
 > 「すぐれた者によるよりよき指導。
 >  それに従う無垢なる従順
-“Better guidance by the superior. And innocent obedience to follow it.
+“Better guidance from the superior, and innocent obedience from those who follow.
 ---
 >  それがお前の支配の原理だと
 >  いったことがあったな」
-That is the principle of your rule, you said once.”
+You once called that the principle of your rule.”
 
 @21837 Le Cain · ル・カイン
 > 「その通りです……
@@ -511,8 +513,9 @@ what appears to be the Gran-Garan. It seems to have landed in the mountains
 and camouflaged itself.”
 
 @21868 Bright · ブライト
+# 审校：飞船不说 sail
 > 「航行できないのか? 敵影は?」
-“Can't it sail? Any sign of the enemy?”
+“Can’t it move? Any sign of the enemy?”
 
 @21869 Beltorchika · ベルトーチカ
 > 「現在のところ、ないそうです」
@@ -856,10 +859,10 @@ But that ends here.”
 what you're doing?!”
 
 @21928 Aisha · アイシャ（按段落 3DD4）
-# 审校：アイシャ的贵族口吻要求正式表达，将 You're 改为 You are。
+# 审校：艾莎对玛奈美用“你”，英文 behavior 改 struggle
 > 「貴女こそ、もう無駄なことは
 >  おやめなさい」
-“You are the one who should stop this pointless behavior.”
+“You are the one who should stop this pointless struggle.”
 
 @21929 Fa · ファ
 > 「なんとか追いついたみたいね。
@@ -985,9 +988,10 @@ but it seems the battle is already over.”
 “Yeah. There don't seem to be any enemies left around here. What will you do?”
 
 @21952 Kamille · カミーユ
+# 审校：as is 是直译
 > 「准将からは、そのままこちらへ合流
 >  するように言われています」
-“The Brigadier General told us to rendezvous with you as is.”
+“The Brigadier General told us to join up with you directly.”
 
 @21953 Bright · ブライト
 > 「そうか、助かる」
@@ -1107,8 +1111,9 @@ chatting so happily with other men.”
 “Domon's hopeless. You've got to say that kind of thing straight out.”
 
 @21974 Domon · ドモン
+# 审校：勝手なことをいうな 口语化
 > 「勝手なことをいうな!!」
-“Don't say whatever you please!!”
+“Don’t go spouting nonsense!!”
 
 @21975 Ryo · 亮
 > 「バイストンウェルの女王様が
@@ -1195,13 +1200,14 @@ so I believe the work will be finished before long.”
 “What is it?”
 
 @21990 Elle · エレ
+# 审校：Thinking of ... as well 直译
 > 「いえ……、この世界にみちる
 >  悪意の力を感じます
 “No... I sense a power of malice filling this world.
 ---
 >  バイストンウェルのことを考えても、
 >  やはり放置できません」
-Thinking of Byston Well as well, we truly cannot leave it alone.”
+For Byston Well’s sake as well, we cannot simply leave it be.”
 
 @21991 Amuro · アムロ
 > 「悪意の力?」
@@ -1263,12 +1269,13 @@ carry out proper repairs somewhere. If only we had the time...”
 “So the Brigadier General intends to strengthen this unit as much as possible, after all.”
 
 @22001 Bright · ブライト
+# 审校：It must be that 生硬；中文补出“看来准将觉得”
 > 「戦力を分散させていても、しかたな
 >  いということなのだろう。先が見えない
-“It must be that scattering our forces serves no purpose. The situation is unclear,
+“I suppose there’s no sense in keeping our forces scattered. The road ahead is unclear,
 ---
 >  状況だが、よろしく頼む、少尉」
-but I'm counting on you, Ensign.”
+but I’m counting on you, Ensign.”
 
 @22002 Kou · コウ
 > 「了解であります。しかし、この部隊
@@ -1336,9 +1343,10 @@ equal to Earthlings. If you trace it back, both Earthlings and Gradosians
 are races that sprang from the same root.”
 
 @22013 Le Cain · ル・カイン
+# 审校：The moment you appear 直译
 > 「フッ、あらわれたとたん、
 >  奇異なことをいう」
-“Hmph. The moment you appear, you speak such bizarre things.”
+“Hmph. Barely here a moment, and already you speak such strange things.”
 
 @22014 Julia · ジュリア
 > 「いいえ、ウソではありません。
@@ -1405,20 +1413,21 @@ position within the Empire, are destined to learn this secret sooner or later.�
 “What are you saying, Father?!”
 
 @22022 Gresco · グレスコ
+# 审校：“鲜血曾被流淌”被动直译；英文 countless blood 不通
 > 「ル・カイン……お前は支配の
 >  原理を学ばなければならない
 “Le Cain... you must learn the principle of domination.
 ---
 >  支配とは自らを悪と
 >  認める所から始まるのだ
-Domination begins from acknowledging oneself as evil.
+Domination begins with acknowledging oneself as evil.
 ---
 >  支配力を維持するために、
 >  多くの星々の無数の血が
-You must know that to maintain the power to dominate, the countless blood of
+You must know that to keep that power, the blood of countless worlds
 ---
 >  流されたことを、知らなければならない」
-numberless stars has been spilled.”
+has been spilled.”
 
 @22023 Le Cain · ル・カイン
 > 「だからこそ、流された血を

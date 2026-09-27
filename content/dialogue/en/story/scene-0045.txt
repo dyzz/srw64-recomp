@@ -120,14 +120,14 @@ They're asking to join up with us.”
 “It's been a long time, Captain Bright, everyone.”
 
 @27781 Rain · レイン
-# 审校：精读：ゴッド 指机体
+# 审校：去掉冗长从句，改口语
 > 「サリィ? ゴッドの受け取りに
 >  行った時、別れたきりだったわね
-“Sally? We haven't seen each other since we parted ways when you went to pick up the Burning Gundam.
+“Sally? We haven’t seen you since you left to pick up the Burning Gundam.
 ---
 >  いったい何をやっていたの?
 >  ピースミリオンと一緒にいるなんて」
-What on earth have you been doing? Traveling with the Peacemillion, no less.”
+What on earth have you been up to? And with the Peacemillion, of all things.”
 
 @27782 Sally · サリィ
 > 「デュオからM作戦で降下した
@@ -285,12 +285,13 @@ will show him what that is.”
 “The future? You mean that Gundam from back then?”
 
 @27807 Heero · ヒイロ
+# 审校：去掉“If it's you”日语腔；中文同理
 > 「俺のゼロも奴のエピオンも、同じ
 >  システムを搭載している。お前なら
-“Both my ZERO and his Epyon carry the same system. If it's you,
+“Both my ZERO and his Epyon carry the same system. You of all people
 ---
 >  それが何かわかるはずだ」
-you should know what that means.”
+should know what that means.”
 
 @27808 Duo · デュオ
 > 「まさか……ゼロシステムか!?」
@@ -511,13 +512,14 @@ And you want me to handle those negotiations?”
 “That's right.”
 
 @27843 Haman · ハマーン
+# 审校：英文“is a joy”生硬；中文“求人的方式”改口语
 > 「いいだろう。シャアからそのような
 >  申し入れを受けるとは、うれしい
-“Very well. To receive such a request from Char is a joy,
+“Very well. It pleases me to hear such a request from Char.
 ---
 >  だが困ったものだな。お前は
 >  ものの頼み方を知らないようだ」
-and yet a nuisance. It seems you don't know how to ask a favor.”
+And yet it’s a nuisance. You don’t seem to know how to ask a favor.”
 
 @27844 Quattro · クワトロ
 > 「……頼む、ハマーン・カーン。
@@ -596,9 +598,10 @@ gone numb...”
 “Show... yes, that could be it.”
 
 @27858 Show · ショウ
+# 审校：长定语改短句
 > 「ああ、軍人やそのための訓練を
 >  つんできた鉄也たちとは、違うからな」
-“Yeah. We're different from Tetsuya and the others, who are soldiers and have been through that kind of training.”
+“Yeah. We’re not like Tetsuya and the others. They’re soldiers, trained for this.”
 
 @27859 Naoto · ナオト
 > 「だけど、今日を思いわずらうこと
@@ -609,13 +612,14 @@ gone numb...”
 think of tomorrow?”
 
 @27860 Quatre · カトル
+# 审校：“有今天的延续才有明天”不通；英文同步
 > 「でも……それは危険なことです。
 >  今日の続きに明日があるんです
-“But... that's a dangerous thing to do. Tomorrow exists as a continuation of today.
+“But... that’s a dangerous way to think. Tomorrow is a continuation of today.
 ---
 >  いま目の前にあることに真剣に
 >  対処しなくては、明日はこないかも
-If we don't deal seriously with what's right in front of us now, tomorrow might never
+If we don’t deal seriously with what’s right in front of us, tomorrow might never
 ---
 >  しれないんですよ」
 come.”
@@ -712,16 +716,18 @@ except the colonies.”
 “Impossible?!”
 
 @27872 Shinobu · 忍
+# 审校：英文语序不通
 > 「なんでだよ!? ロームフェラだって
 >  銀河帝国と戦おうって時に
-“Why?! Even Romefeller, when we're about to fight the Galactic Empire,
+“Why?! Even Romefeller’s about to fight the Galactic Empire,
 ---
 >  なんでそんなことしなきゃならねぇんだよ!」
-why do we have to do something like that?!”
+so why the hell would he pull something like this?!”
 
 @27873 Ryo · 亮
+# 审校：英文更自然
 > 「ああ……正気とは思えんな」
-“Yeah... I can't believe he's in his right mind.”
+“Yeah... He can’t be in his right mind.”
 
 @27874 Ryoma · リョウ
 > 「地球圏そのものの危機だという
@@ -823,12 +829,13 @@ different...?”
 stand by.”
 
 @27891 Koji · 甲児
+# 审校：英文去掉can't be helped；中文原意是确认OZ在行动
 > 「オレたちが陽動ってのは気にくわない
 >  が、ま、しょうがないか。でもよ
-“I don't like us being the diversion, but oh well, can't be helped. Still,
+“I don’t like us being the diversion, but oh well, nothing for it. Still,
 ---
 >  本当にOZは動いてるんだろうな」
-is OZ really making a move?”
+OZ really is moving, right?”
 
 @27892 Sara · 沙羅
 > 「確かにね。連中が動いてなかったら
@@ -1057,9 +1064,10 @@ thank goodness. Naida, you can't stay in a place like that. Come over to our sid
 “Why you!”
 
 @27934 Chizuru · ちずる
+# 审校：おじい様 用 Grandfather 更合千鹤口吻
 > 「この反応……おじい様がいっていた
 >  キャンベル星人!?」
-“This reading... the Campbellian Grandpa told me about?!”
+“This reading... the Campbellian Grandfather spoke of?!”
 
 @27935 Maria · マリア
 > 「でも他にもフリード星の生き残りが
@@ -1227,9 +1235,10 @@ and OZ Supreme Commander Jamitov has not been confirmed.”
 “You're saying Dermail and Jamitov are dead?!”
 
 @27960 Duo · デュオ
+# 审校：反问改陈述，迪奥口吻
 > 「あいつ……どうやらマジだな。地球が
 >  滅んでもかまわないってのかよ」
-“That guy... looks like he's serious. You're saying he doesn't care if Earth is destroyed?”
+“That guy... looks like he’s serious. He really doesn’t care if the Earth goes down with it?”
 
 @27961 Quattro · クワトロ
 > 「らしいな。ジャミトフもゼクスがそこまで
@@ -1339,10 +1348,10 @@ keep up with the rapidly shifting situation.”
 “Then you will accept, after all?”
 
 @27975 Treize · トレーズ
-# 审校：精读：去破折号
+# 审校：英文第一页从句太长
 > 「無論だよ、レディ。地球圏の、
 >  いや人類の未来を決する
-“Of course, Lady. The players for the great stage that will decide the future of the Earth Sphere, no, of humanity, are all assembled.
+“Of course, Lady. The players are assembled for the grand stage that will decide the Earth Sphere’s future... no, humanity’s.
 ---
 >  大舞台の役者はそろった。
 >  残された時間はあまり多くない
@@ -1498,12 +1507,13 @@ Though from the top brass's perspective, I imagine they just want
 test data for the new technology.”
 
 @27995 Chan · チェーン
+# 审校：原意是能早交付所以先送走了，不是“本来能”
 > 「ZZガンダムは問題ありませんね。
 >  もっと早く渡せたものですから
-“The ZZ Gundam is no problem. We could have handed it over sooner, so
+“The ZZ Gundam is no problem. It was ready to hand over earlier, so
 ---
 >  先行して出させています」
-it's already been sent out ahead.”
+it’s already been sent on ahead.”
 
 @27996 Henken · ヘンケン
 > 「それだけか。状況はかなり厳しいんだ
@@ -1520,12 +1530,13 @@ it's already been sent out ahead.”
 “I suppose so, but...”
 
 @27999 Chan · チェーン
+# 审校：同上
 > 「ZZガンダムは問題ありませんね。
 >  もっと早く渡せたものですから
-“The ZZ Gundam is no problem. We could have handed it over sooner, so
+“The ZZ Gundam is no problem. It was ready to hand over earlier, so
 ---
 >  先行して出させています」
-it's already been sent out ahead.”
+it’s already been sent on ahead.”
 
 @28000 Henken · ヘンケン
 > 「それだけか。状況はかなり厳しいんだ
@@ -1604,9 +1615,10 @@ ready for launch. I'll have the Nu loaded aboard.”
 “That's fine with you, isn't it, October?”
 
 @28014 October · オクトバー
+# 审校：去掉no helping it
 > 「しかたないですね。わかりました、データは
 >  整理して、スウィートウォーターに
-“I suppose there's no helping it. Fine, I'll organize the data and send it to Sweetwater.
+“I suppose I’ve no choice. Fine, I’ll organize the data and send it to Sweetwater.
 ---
 >  送っておきますよ。そのかわり、実戦
 >  データは逐次こちらへ送ってください」

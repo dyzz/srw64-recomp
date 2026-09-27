@@ -35,13 +35,15 @@ capable of operating on its own.”
 “So it could function like a fighter plane, then.”
 
 @17891 Lawrence · ローレンス
+# 审校：“先先代”不是中文说法
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「はい。先々代は、そのような機構
 >  に、大変興味をお持ちでしたので
-“Indeed. The master two generations back took great interest in such mechanisms.
+“Indeed. The old master, your grandfather, took great interest in such mechanisms.
 ---
 >  しかし、わたくしがお預かりしたのは
 >  スイームルグの設計図のみでしたので
-However, all that was entrusted to me were the Sweemurg's design documents,
+However, all that was entrusted to me were the Sweemurg’s design documents,
 ---
 >  それがどうなったかについては
 >  存じ上げません」
@@ -371,13 +373,14 @@ Our enemy is supposed to be the Muge Zorbados Empire?!”
 “Wait, {PartnerName}! I...”
 
 @17939 对手
+# 审校：对手全程称“您”，本条混用“你”
 > 「くっ、ア、アナタ、本気でわたくしを
 >  亡き者にしようというのね!?
 “Ngh... Y-You really mean to do me in?!
 ---
 >  もう許しませんわ! 覚えておきなさい
 >  わたくしは、必ずアナタを倒して
-I will not forgive you! Mark my words, I will most certainly defeat you
+I shall not let this pass! Mark my words, I will most certainly defeat you
 ---
 >  ご覧にいれますわ!」
 and show you!”
@@ -597,6 +600,7 @@ So, when will he arrive here?”
 “It will likely take a few days, I believe.”
 
 @17971 Banjo · 万丈
+# 审校：去掉 Can't be helped
 > 「しかたないな。ではもうしばらく
 >  ここにとどまるとしようか」
-“Can't be helped, then. Let's stay here a while longer.”
+“Nothing for it, then. Let’s stay here a while longer.”
