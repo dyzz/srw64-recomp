@@ -250,7 +250,7 @@ json state_snapshot() {
         {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision},
         {"active",reader.active},{"event",reader.event},{"page",reader.page},
         {"pages",reader.layout.pages.size()},{"revealed_utf16",reader.visible},
-        {"font_size",reader.font_size},{"speed",reader.speed},{"automatic",reader.auto_read},
+        {"font_size",reader.font_size},{"speed",reader.speed},{"automatic",reader.auto_read},{"fast",reader.fast},
         {"history_open",reader.history_open},{"history_entries",reader.history.size()},
         {"history_offset",reader.history_offset},{"skipping",reader.skipping},
         {"guest_segment",reader.guest},{"stops",reader.stops},{"page_start",reader.page_start()},
@@ -416,6 +416,17 @@ void service_locale(uint8_t* ram) {
     }
     state_report();
 }
+// The reader takes this frame's keys. The log gets each press and release of
+// fast-forward and each page the reader turns, with what was held.
+void read_keys() {
+    const bool was_fast=reader.fast,was_pending=reader.pending;
+    const uint64_t was_event=reader.event;const size_t was_page=reader.page;
+    reader.update(raw_buttons.load(),srw64_current_vi());
+    const json state={{"event",reader.event},{"page",reader.page},{"pending",reader.pending},{"fast",reader.fast},
+        {"automatic",reader.auto_read},{"skip",reader.skipping}};
+    if(was_fast!=reader.fast)record("fast",state);
+    if(reader.event && reader.event==was_event && (reader.page!=was_page || reader.pending!=was_pending))record("turn",state);
+}
 bool step(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
     service_locale(ram);refresh(ram,true);
@@ -425,7 +436,7 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         auto_toggle=false;state_report();return true;
     }
     if(!reader.active) {
-        auto_toggle=false;reader.update(raw_buttons.load(),srw64_current_vi());state_report();return false;
+        auto_toggle=false;read_keys();state_report();return false;
     }
     const auto old_font=reader.font_size,old_speed=reader.speed;
     const bool was_history=reader.history_open,was_skip=reader.skipping;
@@ -433,7 +444,7 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         reader.toggle_auto(srw64_current_vi());
         record("auto",{{"automatic",reader.auto_read},{"level",reader.speed}});
     }
-    reader.update(raw_buttons.load(),srw64_current_vi());
+    read_keys();
     if(reader.skipping && !was_skip) {
         if(reading_owner) {skip_owner=reading_owner;record("skip_start",{{"owner",skip_owner}});}
         else {reader.skipping=false;record("skip_unavailable");}
@@ -564,8 +575,10 @@ LocaleStatus locale_status(){std::lock_guard lock(mutex);return language_status;
 void request_reload(){if(enabled)reload_requested=true;}
 uint16_t input(uint16_t buttons) {
     // The controller's triggers are the reader's alone (docs/design/steam-deck-controls.md):
-    // R2 held reads as R + A, fast-forward, and with Menu as R + START, the segment skip;
-    // an L2 press toggles automatic reading. The game never sees either trigger.
+    // R2 held reads as R + A, fast-forward, the same chord as E + Z (Reader::update: a press
+    // turns one page, held it runs, let go reading is manual); with Menu as R + START, the
+    // segment skip, which R2 letting go does not stop. An L2 press toggles automatic
+    // reading. The game never sees either trigger.
     const uint32_t pad=srw64_pad_state();
     static bool l2_before=false;
     if((pad&srw64::input::pad_l2) && !l2_before)auto_toggle=true;
