@@ -112,6 +112,75 @@ int main() {
     fast_reader.update(0,804);
     assert(fast_reader.update(Reader::A,806));
     assert(fast_reader.history.back().text==u"第二句。");
+    // Fast-forward (R + A: E + Z, a controller's R2) turns one page when pressed and,
+    // held Reader::fast_hold_vis, one every fast_step_vis. From the update it lets go,
+    // reading is manual: automatic reading ends and nothing moves until the next A.
+    {
+        const auto many=typeset(std::u16string(900,u'甲'),13);
+        assert(many.pages.size()>12);
+        constexpr uint16_t chord=Reader::R|Reader::A;
+        Reader held;
+        held.begin(1,100,u"甲",many,0);
+        held.update(0,1);
+        // A short press of the chord turns one page, and so does Z again while E stays down.
+        held.update(chord,10);assert(held.fast && held.page==1);
+        for(uint64_t vi=12;vi<10+Reader::fast_hold_vis;vi+=2)held.update(chord,vi);
+        assert(held.page==1);
+        held.update(Reader::R,30);assert(!held.fast && held.page==1);
+        held.update(chord,40);held.update(chord,48);assert(held.page==2);
+        held.update(Reader::R,50);held.update(0,52);assert(held.page==2);
+        // Held on: the first page at once, then one every fast_step_vis after the delay.
+        held.toggle_auto(90);assert(held.auto_read);
+        held.update(chord,100);assert(held.page==3);
+        for(uint64_t vi=102;vi<=100+Reader::fast_hold_vis+2*Reader::fast_step_vis;vi+=2)held.update(chord,vi);
+        assert(held.page==6);
+        // Let go: manual from that update, the page waits for an A, then one A turns one page.
+        held.update(0,132);assert(!held.fast && !held.auto_read && held.page==6);
+        for(uint64_t vi=134;vi<2000;vi+=2) {
+            assert(!held.update(0,vi));
+            assert(held.page==6 && !held.pending && held.confirmation(vi)==Confirm::none);
+        }
+        held.update(Reader::A,2000);held.update(Reader::A,2030);held.update(0,2032);
+        assert(held.page==7);
+    }
+    {
+        // Let go after the record's last page was already confirmed: the original
+        // finishes that record, and the next one waits, automatic reading off.
+        Reader carry;
+        carry.begin(1,100,u"甲",typeset(u"第一句。",13),0);
+        carry.toggle_auto(1);
+        assert(carry.update(Reader::R|Reader::A,10) && carry.pending);
+        assert(carry.confirmation(11)==Confirm::end);
+        carry.update(0,12);assert(!carry.auto_read);
+        carry.begin(2,101,u"乙",typeset(u"第二句。",13),20);
+        for(uint64_t vi=22;vi<2000;vi+=2) {
+            assert(!carry.update(0,vi));
+            assert(carry.confirmation(vi)==Confirm::none);
+        }
+        assert(carry.event==2 && carry.page==0 && !carry.pending);
+        assert(carry.update(Reader::A,2000));
+    }
+    {
+        // The chord still held after a script boundary goes on at once: the boundary
+        // does not make it a new press with a new delay.
+        Reader across;
+        across.begin(1,100,u"甲",typeset(u"一。",13),0);
+        assert(across.update(Reader::R|Reader::A,10) && across.pending);
+        across.update(Reader::R|Reader::A,30);
+        across.boundary();
+        across.begin(2,101,u"乙",typeset(std::u16string(300,u'乙'),13),40);
+        across.update(Reader::R|Reader::A,40);across.update(Reader::R|Reader::A,46);
+        assert(across.page==2);
+    }
+    {
+        // R2 + Menu (R + A + START) skips the segment; letting go of R2 leaves the skip on.
+        Reader skip;
+        skip.begin(1,100,u"甲",typeset(std::u16string(300,u'甲'),13),0);
+        skip.update(Reader::R|Reader::A,10);assert(skip.page==1 && !skip.skipping);
+        skip.update(Reader::R|Reader::A|Reader::START,12);assert(skip.skipping && skip.pending);
+        skip.update(Reader::R|Reader::A,14);skip.update(0,16);
+        assert(skip.skipping && !skip.fast);
+    }
     // A host notice (an upgrade refund) goes before the fragment being read, keeps
     // every language, and does not take part in the speaker colours.
     Reader noted;
