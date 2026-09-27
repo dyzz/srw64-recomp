@@ -810,14 +810,14 @@ That’s where the enemy seems thinnest for now.”
 “And my sister and the others...?”
 
 @44421 Treize · トレーズ
-# 审校：“有好消息，真是件好事”生硬
+# 审校：聖女＝Saint
 > 「よい知らせがあるというのは、いいものだ
 >  サンクキングダムは敵にじゅうりんされて
 “It is a pleasure to bring good news. The Sanc Kingdom was overrun by the enemy,
 ---
 >  しまったが、聖女ジュリアや
 >  リリーナ・ピースクラフトらは、我々が
-but the Holy Woman Julia and Relena Peacecraft and the others are
+but the Saint Julia and Relena Peacecraft and the others are
 ---
 >  保護している」
 under our protection.”

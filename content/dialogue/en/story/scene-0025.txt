@@ -124,9 +124,10 @@ chased by a golden SPT... I was so...”
 “Yeah... Sorry for worrying you, Anna.”
 
 @21609 Daisaku · 大作
+# 审校：聖女＝Saint
 > 「“クスコの聖女”はやっぱり
 >  お姉さんだったんですか?」
-“So the ‘Holy Woman of Cusco’ really was your sister?”
+“So the ‘Saint of Cusco’ really was your sister?”
 
 @21610 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -218,12 +219,13 @@ When construction was abandoned, he was already thinking of using it...
 No way... Could he be...?)
 
 @21623 Le Cain · ル・カイン
+# 审校：聖女＝Saint
 > 「どういうことです、父上!
 >  なぜ“クスコの聖女”を
 “What is the meaning of this, Father?! Why did you take away
 ---
 >  連れ去ったのですか!?」
-the ‘Holy Woman of Cusco’?!”
+the ‘Saint of Cusco’?!”
 
 @21624 Gresco · グレスコ
 # 审校：全局：弯撇号／弯引号
@@ -231,12 +233,13 @@ the ‘Holy Woman of Cusco’?!”
 “I don’t know what you’re talking about.”
 
 @21625 Le Cain · ル・カイン
+# 审校：聖女＝Saint
 > 「父上、私は父上の手の者が
 >  聖女を連れ去ったと
 “Father, I have received reports that men under your command
 ---
 >  報告を受けているのですよ」
-took the Holy Woman away.”
+took the Saint away.”
 
 @21626 Gresco · グレスコ
 > 「私は聞いておらぬ」

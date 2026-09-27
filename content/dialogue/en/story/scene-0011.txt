@@ -1117,10 +1117,10 @@ You can continue this later.”
 You there, pilot. Are you with the Liberation Front?”
 
 @18713 Shiro · シロー
-# 审校：全局：弯撇号／弯引号
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「シロー・アマダ少尉であります。
 >  お手数をおかけして
-“Ensign Shiro Amada, sir. I’m sorry to have put you to
+“Second Lieutenant Shiro Amada, sir. I’m sorry to have put you to
 ---
 >  申しわけありません」
 so much trouble.”
@@ -1205,9 +1205,10 @@ If you’d rather stay here, that’s another matter...”
 “No, please, Captain.”
 
 @18726 Bright · ブライト
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「なるほど、情勢はかなり厳しいという
 >  ことか。アマダ少尉も同様のことを
-“I see, so the situation is quite grim. Ensign Amada said
+“I see, so the situation is quite grim. Second Lieutenant Amada said
 ---
 >  いっていたな」
 the same thing.”
@@ -1219,14 +1220,14 @@ the same thing.”
 “Yes. I’m sorry. In the end, none of the others made it this far.”
 
 @18728 Quattro · クワトロ
-# 审校：全局：弯撇号／弯引号
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「気にすることはない。君とデビッドくん
 >  を拾えただけでも、十分に
 “Don’t worry about it. Just picking up you and David
 ---
 >  意味はあった。それに、偶然とは
 >  いえ、アマダ少尉も救助できた」
-was meaningful enough. And even if it was by chance, we were able to rescue Ensign Amada too.”
+was meaningful enough. And even if it was by chance, we were able to rescue Second Lieutenant Amada too.”
 
 @18729 Roux · ルー
 > 「ありがとうございます」

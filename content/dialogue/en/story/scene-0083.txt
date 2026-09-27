@@ -579,13 +579,14 @@ how long will it take to activate the ‘Crest’?”
 “...I cannot say for certain, but it should not take very long.”
 
 @41011 Ryo · 亮
+# 审校：聖女＝Saint
 > 「“クスコの聖女”、か。
 >  ムゲ帝国の一兵士が聖女と
-“‘The Holy Woman of Cusco,’ huh. So that ruin is connected to how a mere soldier of the Muge Empire
+“‘The Saint of Cusco,’ huh. So that ruin is connected to how a mere soldier of the Muge Empire
 ---
 >  呼ばれるようになったのも、その遺跡
 >  が関係してたってわけか」
-came to be called a holy woman.”
+came to be called a Saint.”
 
 @41012 Koji · 甲児
 > 「そういえば前にアンナがいってたな。
@@ -597,10 +598,10 @@ came to be called a holy woman.”
 “Yes...”
 
 @41014 Ryo · 亮
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「しかし……どうやら聖女さんは
 >  自分でいっているほどには
-“But... it seems the holy woman isn’t as
+“But... it seems the Saint isn’t as
 ---
 >  乗り気じゃないようだ」
 enthusiastic about this as she claims.”
@@ -811,11 +812,11 @@ to seize the last hope left to humanity...”
 “Enough, just hurry up and get ready to launch! Honestly...”
 
 @41043 Bright · ブライト
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 # 检查提示：未用必用译名：アーマス・ゲイル→Ahmos Gale
 > 「アーマス・ゲイル、君には
 >  遺跡突入後、聖女を
-“Ahmos Gale, once we enter the ruins, you’ll have to carry the holy woman
+“Ahmos Gale, once we enter the ruins, you’ll have to carry the Saint
 ---
 >  “刻印”まで、運んでもらわねば
 >  ならん。すまないが待機していてくれ」
@@ -842,10 +843,10 @@ to the ‘Crest.’ Sorry, but stand by until then.”
 All pilots, hurry up and launch!”
 
 @41047 Bright · ブライト
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「エイジ、君には遺跡突入後、
 >  聖女を“刻印”まで
-“Eiji, once we enter the ruins, you’ll have to carry the holy woman
+“Eiji, once we enter the ruins, you’ll have to carry the Saint
 ---
 >  運んでもらわねばならん。すまないが
 >  待機していてくれ」

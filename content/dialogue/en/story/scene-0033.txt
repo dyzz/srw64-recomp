@@ -974,10 +974,10 @@ That’d be awful, right? Like the ship running out of air while you’re asleep
 “She left?”
 
 @24110 Amuro · アムロ
-# 审校：“was quite a shock”改为更自然的“came as quite a shock to her”，并补出对象。
+# 审校：聖女＝Saint
 > 「ああ。クスコの聖女と
 >  話をしていた後だったと思ったが……
-“Yeah. I believe it was after she talked with the Holy Woman of Cusco...
+“Yeah. I believe it was after she talked with the Saint of Cusco...
 ---
 >  彼女たちの考え方は
 >  ずいぶんショックだったようだな」

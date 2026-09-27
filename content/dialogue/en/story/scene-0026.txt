@@ -243,13 +243,14 @@ Queen Elle of Byston Well. Everyone, to your posts.”
 “...Le Cain.”
 
 @21829 Le Cain · ル・カイン
+# 审校：聖女＝Saint
 > 「父上、うかがいたいことがあります。
 >  なぜレイズナーとの接触を
 “Father, I have something I wish to ask. Why did you forbid contact with
 ---
 >  はばませたのです。それともうひとつ、
 >  父上が連れ去らせた聖女を
-the Layzner? And one more thing: what have you done with the holy woman you had
+the Layzner? And one more thing: what have you done with the Saint you had
 ---
 >  どうされたのです。このグラドスタワーの
 >  どこかへ連れ込んだことは
@@ -277,6 +278,7 @@ As commander of the occupation forces, you must still devote yourself fully to
 subjugating the Earth. Do you intend to cling to trifles and misjudge the finish?”
 
 @21831 Le Cain · ル・カイン
+# 审校：聖女＝Saint
 > 「ごまかされるおつもりですか、父上!
 >  奴らなど
 “Are you going to keep dodging the question, Father?! Those vermin
@@ -291,7 +293,7 @@ What I want now is to hear what you are thinking, Father.
 ---
 >  聖女の行方について、民衆は
 >  おろか兵士の一部までもが
-About where the holy woman has gone, not just the people but even some of the soldiers
+About where the Saint has gone, not just the people but even some of the soldiers
 ---
 >  騒ぎはじめております。父上!」
 have begun to stir. Father!”
@@ -825,10 +827,10 @@ I sense no ill will. You have my permission.”
 “Good. Prepare to dock.”
 
 @21913 Beltorchika · ベルトーチカ
-# 审校：全局：弯撇号／弯引号
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「補給部隊を護衛中のコウ・
 >  ウラキ少尉より緊急通信!!
-“An urgent transmission from Ensign Kou Uraki, escorting the resupply unit!!
+“An urgent transmission from Second Lieutenant Kou Uraki, escorting the resupply unit!!
 ---
 >  敵の攻撃を受けている
 >  とのことです!」
@@ -1341,9 +1343,10 @@ carry out proper repairs somewhere. If only we had the time...”
 “We’ll manage it somehow before long.”
 
 @21998 Bright · ブライト
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「ウラキ少尉といったか。君もこちらに
 >  加わるというのだな?」
-“Ensign Uraki, was it? So you will be joining us as well?”
+“Second Lieutenant Uraki, was it? So you will be joining us as well?”
 
 @21999 Kou · コウ
 > 「はい。ブレックス准将から、そのように
@@ -1356,13 +1359,13 @@ carry out proper repairs somewhere. If only we had the time...”
 “So the Brigadier General intends to strengthen this unit as much as possible, after all.”
 
 @22001 Bright · ブライト
-# 审校：It must be that 生硬；中文补出“看来准将觉得”
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「戦力を分散させていても、しかたな
 >  いということなのだろう。先が見えない
 “I suppose there’s no sense in keeping our forces scattered. The road ahead is unclear,
 ---
 >  状況だが、よろしく頼む、少尉」
-but I’m counting on you, Ensign.”
+but I’m counting on you, Second Lieutenant.”
 
 @22002 Kou · コウ
 # 审校：全局：弯撇号／弯引号

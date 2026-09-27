@@ -1767,9 +1767,10 @@ brought aboard the Albion.”
 “Ez8? That’s the ground-combat Gundam, isn’t it.”
 
 @20770 Shiro · シロー
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「はい。シロー・アマダ少尉であります。
 >  よろしくお願いします」
-“Yes, sir. Ensign Shiro Amada, reporting. Pleased to meet you.”
+“Yes, sir. Second Lieutenant Shiro Amada, reporting. Pleased to meet you.”
 
 @20771 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1778,8 +1779,9 @@ brought aboard the Albion.”
 “I’m Bright Noa. Glad to have you. This is Banjo Haran of Karaba.”
 
 @20772 Banjo · 万丈
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「よろしく、アマダ少尉」
-“Nice to meet you, Ensign Amada.”
+“Nice to meet you, Second Lieutenant Amada.”
 
 @20773 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

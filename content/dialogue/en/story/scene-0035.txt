@@ -1053,9 +1053,10 @@ you know.”
 the standard operating form, and it’s called the Dendrobium.”
 
 @24886 Amuro · アムロ
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「なんだかすごそうだね。ウラキ少尉が
 >  喜びそうだ」
-“Sounds impressive. Ensign Uraki would love that.”
+“Sounds impressive. Second Lieutenant Uraki would love that.”
 
 @24887 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号

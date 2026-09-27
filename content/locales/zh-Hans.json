@@ -228,6 +228,8 @@
     "battle_second": "后手",
     "battle_first_player": "我方先手",
     "battle_first_enemy": "敌方先手",
+    "battle_phase_enemy": "敌方进攻",
+    "battle_phase_player": "我方攻击",
     "battle_barrier": "护罩",
     "battle_spirit_hint": "按各机师实际消耗扣除 SP · 已生效的精神不可取消",
     "intermission_episode": "第{n}话",
@@ -8204,14 +8206,14 @@
     {
       "key": "base:t00_01504",
       "source_sha256": "94c420d49d68a0a7cddbd6034556529d53002a0f26f0dfd905bf1d34edc3fc73",
-      "target": "飞溅破坏者<END>",
+      "target": "散射破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01505",
       "source_sha256": "c8c8ff9f95bc3b0e36b3bb84323a67755dd611d976dc99f541117996b8ab27c2",
-      "target": "飞溅破坏者MAP<END>",
+      "target": "散射破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8393,7 +8395,7 @@
     {
       "key": "base:t00_01531",
       "source_sha256": "6d33288c0bfd33cd2a23c6c6788f46738fad7c0f1c7f64cd3a79808fcbc83160",
-      "target": "阿舍克鲁<END>",
+      "target": "天使光轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8428,7 +8430,7 @@
     {
       "key": "base:t00_01536",
       "source_sha256": "d0bb2fac2cd5108a76870383774467c02727fed2e36c97f3321e2c1ca6077cdd",
-      "target": "高贵凤凰<END>",
+      "target": "凤凰突击<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15540,7 +15542,7 @@
     {
       "key": "base:t00_02556",
       "source_sha256": "6d33288c0bfd33cd2a23c6c6788f46738fad7c0f1c7f64cd3a79808fcbc83160",
-      "target": "阿舍克鲁<END>",
+      "target": "天使光轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15554,7 +15556,7 @@
     {
       "key": "base:t00_02558",
       "source_sha256": "e22e2369a6a564fad2c94e395a8fed68999b86877d5748104c3814033b0fa0e1",
-      "target": "双重闪电剑<END>",
+      "target": "双闪电剑<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -15596,14 +15598,14 @@
     {
       "key": "base:t00_02564",
       "source_sha256": "94c420d49d68a0a7cddbd6034556529d53002a0f26f0dfd905bf1d34edc3fc73",
-      "target": "飞溅破坏者<END>",
+      "target": "散射破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02565",
       "source_sha256": "c8c8ff9f95bc3b0e36b3bb84323a67755dd611d976dc99f541117996b8ab27c2",
-      "target": "飞溅破坏者MAP<END>",
+      "target": "散射破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17465,14 +17467,14 @@
     {
       "key": "base:t00_02833",
       "source_sha256": "c4cab8ab7f8b29b57365a83f101c5090fc20b37f0d9f97f4ec331ea48fc0f684",
-      "target": "射飞溅破坏者<END>",
+      "target": "射散射破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02834",
       "source_sha256": "570003e32e610ef3a1cd323af713b697690df80c0e486c644fcd89d67dbca790",
-      "target": "射飞溅破坏者MAP<END>",
+      "target": "射散射破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17654,7 +17656,7 @@
     {
       "key": "base:t00_02860",
       "source_sha256": "dcc4495d06d034dbd78de1ecd6a064ae84ef5f61f5c73fc5f8936d47a264aced",
-      "target": "射阿舍克鲁<END>",
+      "target": "射天使光轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17689,7 +17691,7 @@
     {
       "key": "base:t00_02865",
       "source_sha256": "1a31b7a89fae275a780ac9889b8e86cacd6e743943644334f9fd62ed653e1fae",
-      "target": "格高贵凤凰P<END>",
+      "target": "格凤凰突击P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24801,7 +24803,7 @@
     {
       "key": "base:t00_03885",
       "source_sha256": "dcc4495d06d034dbd78de1ecd6a064ae84ef5f61f5c73fc5f8936d47a264aced",
-      "target": "射阿舍克鲁<END>",
+      "target": "射天使光轮<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24815,7 +24817,7 @@
     {
       "key": "base:t00_03887",
       "source_sha256": "83b1d474286a4c0059f8255a7eec4babd876d4b778e310ff17818ea14f8c920c",
-      "target": "格双重闪电剑P<END>",
+      "target": "格双闪电剑P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -24857,14 +24859,14 @@
     {
       "key": "base:t00_03893",
       "source_sha256": "c4cab8ab7f8b29b57365a83f101c5090fc20b37f0d9f97f4ec331ea48fc0f684",
-      "target": "射飞溅破坏者<END>",
+      "target": "射散射破坏者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_03894",
       "source_sha256": "570003e32e610ef3a1cd323af713b697690df80c0e486c644fcd89d67dbca790",
-      "target": "射飞溅破坏者MAP<END>",
+      "target": "射散射破坏者MAP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -29694,7 +29696,7 @@
     {
       "key": "base:t00_04861",
       "source_sha256": "273ed5a9c06ed13b02d6581e87fe3097e9ba81def4dc4656d56c76d19b0c26a8",
-      "target": "戈曼大尉<END>",
+      "target": "戈曼上尉<END>",
       "review_status": "draft",
       "origin": "terms"
     },

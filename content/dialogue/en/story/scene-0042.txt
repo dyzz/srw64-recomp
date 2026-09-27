@@ -1464,10 +1464,10 @@ who know about the Galactic Empire’s forces.”
 “Lieutenant Colonel, I heard the Sanc Kingdom ended up being dissolved...”
 
 @26854 Henken · ヘンケン
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「ああ……OZの連中だな。聖女や
 >  リリーナ王女も行方不明だ
-“Yeah... that was OZ’s doing. The Holy Maiden and Princess Relena are missing too.
+“Yeah... that was OZ’s doing. The Saint and Princess Relena are missing too.
 ---
 >  ま、万丈が動いているらしいから、
 >  大丈夫だとは思うがな」

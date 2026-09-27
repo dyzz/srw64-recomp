@@ -2998,14 +2998,14 @@ The {HeroMech} cannot afford to stop fighting yet, after all.”
 “I am counting on you, Special Colonel Lady Une.”
 
 @41507 Sara · 沙羅
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「ここにいたのかい。リリーナは
 >  気色悪いくらいに変わっちまった
 “So here you are. Relena’s changed so much it’s creepy.
 ---
 >  レディ・アンと聖女と一緒に、
 >  月へ向かうそうだよ
-Apparently she’s heading to the moon with Lady Une and the Holy Woman.
+Apparently she’s heading to the moon with Lady Une and the Saint.
 ---
 >  それから地上へ降りるってさ」
 And after that, she’s coming down to Earth.”
