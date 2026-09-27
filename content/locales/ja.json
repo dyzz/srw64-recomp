@@ -228,6 +228,8 @@
     "battle_second": "後攻",
     "battle_first_player": "味方先攻",
     "battle_first_enemy": "敵先攻",
+    "battle_phase_enemy": "敵の攻撃",
+    "battle_phase_player": "味方の攻撃",
     "battle_barrier": "バリア",
     "battle_spirit_hint": "SPは各パイロットの実消費分を減算 · 発動済みの精神は取り消せません",
     "intermission_episode": "第{n}話",

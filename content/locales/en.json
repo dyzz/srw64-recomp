@@ -228,6 +228,8 @@
     "battle_second": "Second",
     "battle_first_player": "Player first",
     "battle_first_enemy": "Enemy first",
+    "battle_phase_enemy": "Enemy attack",
+    "battle_phase_player": "Our attack",
     "battle_barrier": "Barrier",
     "battle_spirit_hint": "SP is deducted from each pilot · Active spirits cannot be cancelled",
     "intermission_episode": "Stage {n}",
