@@ -31,6 +31,7 @@ import argparse
 from collections import Counter
 import hashlib
 import json
+import re
 import math
 from pathlib import Path
 import shutil
@@ -55,6 +56,19 @@ APPROVED = 5604
 FILL = {5604: ('mediterranean', (320, 0, 576, 256))}
 SAME_TILES = {5603: 5602}                 # identical tiles on another mesh
 OCEAN = (0, 55, 90)                       # 801C3490 clear colour behind the transparent sea
+SEA_HUE = round(colorsys.rgb_to_hsv(*(c / 255 for c in OCEAN))[0] * 255)  # PIL 'HSV' hue of the ocean
+COAST_BAND = 10                           # HD px of land inside the coast recoloured from further inland
+SHARPEN = (3, 60, 1)                      # unsharp mask (radius, percent, threshold) on the composed land: the pictures are 4x, shown at 8x
+CLOSEUP = (120, 80)                       # source px a close-up window covers: about one screen at a 3D32 location
+CLOSEUP_INPUT_SCALE = 12                  # hard-pixel source shown to the model, 1440x960
+CLOSEUP_FEATHER = 12                      # source px over which a close-up hands over to the surface
+LOCATIONS = 0x801C5310                    # the 3D32/3D33 location table: 127 x (surface index, x, y)
+OVERLAY_ROM, OVERLAY_VRAM = 0xAAF30, 0x801C5670
+SURFACE_INDEX = {13: 5602, 17: 5603, 18: 5604, 19: 5605, 20: 5606}  # location table surface -> resource (14 = space 5599)
+# 5603 draws the same tiles as 5602 turned by four tiles: a location on surface 17 shows the
+# atlas 256 texels further east (wrapping), measured on seven frames (2026-09-27).
+SURFACE_WRAP = {17: 256}
+ATLAS_OF = {5602: 'earth', 5603: 'earth', 5604: 'europe', 5605: 'central-asia', 5606: 'coast'}
 SCALE = 8                                 # HD px per source texel; 512 px tiles
 WINDOW, OVERLAP = 256, 48                 # source px
 MODEL = 'qwen-image-3.0-pro'
@@ -509,6 +523,33 @@ def not_sea(image: Image.Image) -> Image.Image:
     return sea.point(lambda v: 0 if v else 255)
 
 
+def coast_tidy(image: Image.Image, alpha: Image.Image) -> Image.Image:
+    """Two coast fixes on the composed land picture, both seen in the game as a purple
+    line around Libya and Tunisia.
+
+    - Water the pictures painted inside the source's land mask (the shallow rim along
+      every coast) takes the ocean's hue: image_gen tints it violet. Only the hue changes,
+      so the rim keeps its lightness and reads as shallow water.
+    - The strip of land just inside that rim carries the rim's tint mixed into the sand
+      (pinkish, mauve). Its colour is taken from the land COAST_BAND px further inland,
+      keeping the strip's own lightness so the painted texture stays."""
+    r, g, b = image.split()
+    water = ImageMath.lambda_eval(lambda a: (a['b'] > a['r'] + 5) & (a['b'] > a['g'] + 10), r=r, g=g, b=b).convert('L').point(lambda v: 255 if v else 0)
+    land = alpha.point(lambda v: 255 if v else 0)
+    h, s, v = image.convert('HSV').split()
+    image = Image.merge('HSV', (Image.composite(Image.new('L', image.size, SEA_HUE), h, ImageChops.multiply(land, water)), s, v)).convert('RGB')
+    # Land further than about COAST_BAND px from the coast (a blur threshold stands in for erosion).
+    inner = ImageChops.multiply(land, water.point(lambda p: 255 - p)).filter(ImageFilter.GaussianBlur(COAST_BAND * .6)).point(lambda p: 255 if p >= 253 else 0)
+    strip = ImageChops.subtract(ImageChops.multiply(land, water.point(lambda p: 255 - p)), inner)
+    inland = land_blur(image, inner, COAST_BAND * 1.5)
+    lift = ImageChops.subtract(image.convert('L'), inland.convert('L'), 1, 128)
+    toned = Image.merge('RGB', [ImageChops.add(c, lift, 1, -128) for c in inland.split()])
+    # Only where there is inland colour to take: a small island has none, and the blur's
+    # near-zero weight there gives garbage (red and yellow fringes on Malta).
+    support = inner.filter(ImageFilter.GaussianBlur(COAST_BAND * 1.5)).point(lambda p: 255 if p >= 48 else 0)
+    return Image.composite(toned, image, ImageChops.multiply(strip, support).filter(ImageFilter.GaussianBlur(2)))
+
+
 def near(land: Image.Image) -> Image.Image:
     """255 where painted land fills a quarter or more of the KIT_COLOUR_RADIUS neighbourhood."""
     return land.filter(ImageFilter.GaussianBlur(KIT_COLOUR_RADIUS)).point(lambda v: min(255, v * 4))
@@ -566,6 +607,7 @@ def imagegen(args: argparse.Namespace) -> None:
             weight.paste(ImageMath.lambda_eval(lambda a: a['w'] + a['m'], w=weight.crop(area), m=mask), area[:2])
             fits[window['id']] = rounded(fit)
         land = Image.merge('RGB', [ImageMath.lambda_eval(lambda a: a['s'] / a['w'], s=sums[c], w=weight).convert('L') for c in range(3)])
+        land = coast_tidy(land.filter(ImageFilter.UnsharpMask(*SHARPEN)), alpha)
         land.putalpha(alpha)
         sea = Image.new('RGBA', (W, H), OCEAN + (0,))
         path = out / 'compose' / f'{name}.png'
@@ -576,6 +618,208 @@ def imagegen(args: argparse.Namespace) -> None:
         'purpose': f'world-map surfaces drawn with Codex image_gen from {kit.name}', 'surfaces': surfaces, 'samples': []},
         ensure_ascii=False, indent=2) + '\n')
     (out / 'compose' / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+
+
+def locations(table: ResourceTable) -> list[dict]:
+    """The 127 story locations in atlas coordinates, with how often the scripts go there.
+
+    Usage counts 3D32/3D33 words in the extracted stage events (the same 827 the docs
+    quote). The x/y are in the squashed atlas `assemble` builds, since every run and kit
+    is registered to it."""
+    rom = (ROOT / 'rom.z64').read_bytes()
+    base = LOCATIONS - (OVERLAY_VRAM - OVERLAY_ROM)
+    rows = [struct.unpack_from('>hhh', rom, base + 6 * i) for i in range(127)]
+    usage: dict[int, int] = {}
+    for line in (ROOT / 'assets/original-data/records/stage_events.jsonl').read_text().splitlines():
+        raw = json.loads(line)['raw_hex']
+        for m in re.finditer(r'3d3[23]([0-9a-f]{4})', raw):
+            if m.start() % 4 == 0 and int(m.group(1), 16) < 127:
+                usage[int(m.group(1), 16)] = usage.get(int(m.group(1), 16), 0) + 1
+    origins = {}
+    for index, rid in SURFACE_INDEX.items():
+        d = table.extract(rid)[0]
+        qs = [q for kind, _, off in parts(d) if kind == 0 for q in quads(d, off)]
+        origins[index] = (min(v[0] for q in qs for v in q['verts']), min(v[2] for q in qs for v in q['verts']))
+    out = []
+    for i, (surface, x, y) in enumerate(rows):
+        row = {'location': i, 'surface': surface, 'usage': usage.get(i, 0)}
+        if surface in SURFACE_INDEX:
+            x0, z0 = origins[surface]
+            width = round((max(v[0] for q in [q for kind, _, off in parts(table.extract(SURFACE_INDEX[surface])[0]) if kind == 0 for q in quads(table.extract(SURFACE_INDEX[surface])[0], off)] for v in q['verts']) - x0) / UNIT)
+            ax = ((x - x0) / UNIT + SURFACE_WRAP.get(surface, 0)) % width
+            row.update(resource=SURFACE_INDEX[surface], atlas=ATLAS_OF[SURFACE_INDEX[surface]], x=ax, y=(y - z0) / UNIT)
+        out.append(row)
+    return out
+
+
+def closeup_windows(locs: list[dict], count: int, always: list[int]) -> list[dict]:
+    """Greedy cover: a CLOSEUP window on the most used uncovered location, taking in the
+    locations near its centre, until `count` windows; `always` locations come first."""
+    todo = [l for l in locs if 'atlas' in l]
+    order = sorted(todo, key=lambda l: (l['location'] not in always, -l['usage']))
+    w, h = CLOSEUP
+    windows = []
+    while order and len(windows) < count:
+        head = order[0]
+        near = [l for l in order if l['atlas'] == head['atlas'] and abs(l['x'] - head['x']) <= w * .35 and abs(l['y'] - head['y']) <= h * .35]
+        windows.append({'atlas': head['atlas'], 'centre': [round(head['x']), round(head['y'])],
+                        'locations': [l['location'] for l in near], 'usage': sum(l['usage'] for l in near)})
+        order = [l for l in order if l not in near]
+    return windows
+
+
+CLOSEUP_PROMPT = ('Use case: detail enhancement of a game map texture. Image 1 is a small area of the painted world map this game '
+                  'uses now, cut straight out of the texture; in the game the camera sits so close that this crop fills the whole '
+                  'screen, and at that size it looks soft. Image 2 is the original 1999 map pixels of exactly the same area, '
+                  'hard-pixel upscaled: the ground truth for every coastline, island, lake and terrain zone.\n'
+                  'Repaint Image 1 at much higher detail density while keeping EXACTLY its framing, aspect ratio, composition, '
+                  'colours, lighting from the upper left and hand-painted strategy-map style, so that it still matches the '
+                  'surrounding map when cut back in. Every coastline and island must stay where Image 2 has it; keep each place\'s '
+                  'terrain type: green stays meadow and forest, yellow stays desert, brown stays rocky mountains, white stays snow, '
+                  'blue stays sea. Add many small, crisp features: individual tree crowns in irregular woods, small faceted rocky '
+                  'peaks with cast shadows, dune ripples, dry river beds and gullies in deserts, subtle field patterns in lowlands; '
+                  'each feature at most 1 to 2 percent of the canvas width. Sharp edges, no blur, no noise texture, no photo look.\n'
+                  'Absolutely no text, characters, windows, frames, borders, UI, cursors, markers, cities, labels or roads. Fill the '
+                  'whole canvas with the same crop. Output 1536x1024 (3:2).')
+
+
+def closeup_kit(args: argparse.Namespace) -> None:
+    """Kit for Codex image_gen: one 3:2 window per often-visited location, drawn from the
+    current composed surface (`--base` run) with the hard-pixel source alongside."""
+    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    base, out = args.base, args.output
+    out.mkdir(parents=True, exist_ok=bool(args.extend))
+    (out / 'outputs').mkdir(exist_ok=bool(args.extend))
+    locs = locations(table)
+    kept = []
+    if args.extend:
+        # Windows already in the kit stay (painted or not); their location lists are
+        # recomputed, and only locations none of them covers get new windows.
+        old = json.loads((out / 'manifest.json').read_text())['windows']
+        w, h = CLOSEUP
+        for win in old:
+            x0, y0 = win['box'][:2]
+            inside = [l for l in locs if 'atlas' in l and l['atlas'] == win['atlas'] and abs(l['x'] - (x0 + w / 2)) <= w * .35 and abs(l['y'] - (y0 + h / 2)) <= h * .35]
+            kept.append({**win, 'locations': [l['location'] for l in inside], 'usage': sum(l['usage'] for l in inside)})
+        covered = {l for win in kept for l in win['locations']}
+        windows = closeup_windows([l for l in locs if l['location'] not in covered], args.count, args.always)
+    else:
+        windows = closeup_windows(locs, args.count, args.always)
+    surfaces = json.loads((base / 'samples.json').read_text())['surfaces']
+    composed = {name: Image.open(base / 'compose' / f'{name}.png').convert('RGBA') for name in surfaces}
+    sources = {name: Image.open(base / surfaces[name]['source']).convert('RGBA') for name in surfaces}
+    w, h = CLOSEUP
+    rows = list(kept)
+    for n, win in enumerate(windows, len(kept) + 1):
+        name = win['atlas']
+        full = sources[name].size
+        x0 = max(0, min(full[0] - w, win['centre'][0] - w // 2)); y0 = max(0, min(full[1] - h, win['centre'][1] - h // 2))
+        box = (x0, y0, x0 + w, y0 + h)
+        wid = f'closeup-{n:02d}-{name}'
+        flat(composed[name]).crop(tuple(v * SCALE for v in box)).save(out / f'{wid}-input.png')
+        src = flat(sources[name]).crop(box)
+        src.resize((w * CLOSEUP_INPUT_SCALE, h * CLOSEUP_INPUT_SCALE), Image.Resampling.NEAREST).save(out / f'{wid}-source.png')
+        (out / f'{wid}-prompt.txt').write_text(CLOSEUP_PROMPT + '\n')
+        rows.append({'id': wid, 'atlas': name, 'resource': surfaces[name]['resource'], 'box': list(box), 'locations': win['locations'],
+                     'usage': win['usage'], 'input': f'{wid}-input.png', 'source': f'{wid}-source.png', 'prompt': f'{wid}-prompt.txt',
+                     'output': f'outputs/{wid}-out.png'})
+        print(wid, box, win['locations'], win['usage'])
+    total = sum(l['usage'] for l in locs if 'atlas' in l)
+    rows.sort(key=lambda r: r['id'])
+    manifest = {'schema': 'srw64.imagegen-closeup-kit.v1', 'base': str(base.resolve().relative_to(ROOT)), 'window_source_px': list(CLOSEUP),
+                'source_input_scale': CLOSEUP_INPUT_SCALE, 'earth_placements': total, 'covered_placements': sum(r['usage'] for r in rows),
+                'windows': rows}
+    (out / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    (out / 'locations.json').write_text(json.dumps(locs, ensure_ascii=False, indent=1) + '\n')
+    sheet = Image.new('RGB', (4 * 480 + 5 * 8, ((len(rows) + 3) // 4) * (320 + 28) + 8), (30, 30, 30))
+    draw = ImageDraw.Draw(sheet)
+    for i, r in enumerate(rows):
+        x, y = 8 + (i % 4) * 488, 8 + (i // 4) * 348
+        sheet.paste(Image.open(out / r['input']).resize((480, 320), Image.Resampling.LANCZOS), (x, y + 20))
+        draw.text((x, y + 4), f"{r['id']}  locations {r['locations']}  uses {r['usage']}", fill=(230, 230, 230))
+    sheet.save(out / 'index.jpg', quality=85)
+
+
+def closeup(args: argparse.Namespace) -> None:
+    """Merge painted close-up windows into a copy of the base run: each output is
+    registered to its source window, placed at SCALE and feathered into the surface;
+    the coast alpha stays the base's. `pack` reads the result like any run."""
+    kit, base, out = args.kit, args.base, args.output
+    manifest = json.loads((kit / 'manifest.json').read_text())
+    shutil.copytree(base / 'inputs', out / 'inputs')
+    (out / 'compose').mkdir()
+    spec = json.loads((base / 'samples.json').read_text())
+    report = json.loads((base / 'compose' / 'report.json').read_text())
+    surfaces = spec['surfaces']
+    images = {name: Image.open(base / 'compose' / f'{name}.png').convert('RGBA') for name in surfaces}
+    sources = {name: Image.open(base / surfaces[name]['source']).convert('RGBA') for name in surfaces}
+    merged = {}
+    for win in manifest['windows']:
+        if not (kit / win['output']).exists():
+            continue
+        name = win['atlas']
+        box = tuple(win['box'])
+        output = Image.open(kit / win['output'])
+        fit = register(output, flat(sources[name]).crop(box))
+        size = ((box[2] - box[0]) * SCALE, (box[3] - box[1]) * SCALE)
+        area = (box[0] * SCALE, box[1] * SCALE, box[0] * SCALE + size[0], box[1] * SCALE + size[1])
+        piece = place(output, fit, size)
+        # The painting may not reach the window's edge (image_gen shrinks the framing by a
+        # few percent); `place` pads what it does not cover with streaks of the edge row.
+        # The feather ramps from where the painting really ends, so the base shows there.
+        ramp = CLOSEUP_FEATHER * SCALE
+
+        def covered(axis: str, length: int) -> tuple[float, float]:
+            a, b = fit[axis]
+            two = length / SCALE * 2                      # window length in 2x source px
+            lo, hi = -b / a * SCALE / 2, (two - b) / a * SCALE / 2
+            return max(0.0, lo), min(float(length), hi)
+        (x_lo, x_hi), (y_lo, y_hi) = covered('x', size[0]), covered('y', size[1])
+        xs = [max(0.0, min(1.0, (i - x_lo + .5) / ramp, (x_hi - i - .5) / ramp)) for i in range(size[0])]
+        ys = [max(0.0, min(1.0, (i - y_lo + .5) / ramp, (y_hi - i - .5) / ramp)) for i in range(size[1])]
+        row = Image.new('F', (size[0], 1)); row.putdata(xs)
+        col = Image.new('F', (1, size[1])); col.putdata(ys)
+        weight = ImageMath.lambda_eval(lambda a: a['r'] * a['c'] * 255, r=row.resize(size, Image.Resampling.NEAREST),
+                                       c=col.resize(size, Image.Resampling.NEAREST)).convert('L')
+        current = images[name].crop(area)
+        blended = Image.composite(piece, current.convert('RGB'), weight)
+        blended.putalpha(current.getchannel('A'))
+        images[name].paste(blended, area[:2])
+        merged.setdefault(name, []).append({'id': win['id'], 'registration': fit, 'covered': [round(x_lo), round(y_lo), round(x_hi), round(y_hi)]})
+        print(win['id'], round(fit['x'][0], 4), round(fit['y'][0], 4), fit['windows'], 'covers', [round(x_lo), round(y_lo), round(x_hi), round(y_hi)], 'of', size)
+    for name, image in images.items():
+        if name in merged:
+            land = coast_tidy(image.convert('RGB'), image.getchannel('A'))
+            land.putalpha(image.getchannel('A'))
+            image = land
+        image.save(out / 'compose' / f'{name}.png')
+        report[name]['closeups'] = merged.get(name, [])
+    spec['purpose'] = f"{spec['purpose']} + close-up windows from {kit.name}"
+    (out / 'samples.json').write_text(json.dumps(spec, ensure_ascii=False, indent=2) + '\n')
+    (out / 'compose' / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+
+
+def tile_span(tiles: list[dict], t: dict, atlas: tuple[int, int]) -> tuple[int, int, int, int]:
+    """The atlas region a tile owns: from its corner to the next tile along each axis.
+
+    `assemble` places the mesh's quads by UNIT on both axes, but the rows are only 600
+    world units apart (62.85 texels) against 611 for the columns, so rows land 62-63
+    texels apart and each row overwrites the last texel of the one above. Cutting 64
+    texels from such an atlas repeats that texel at the top of the next tile, which the
+    game shows as a horizontal seam at every tile row. The tile therefore takes what is
+    visible of it and is stretched back to 64x64 by cut_tile."""
+    x, y = t['xy']
+    nx = min([u['xy'][0] for u in tiles if abs(u['xy'][1] - y) <= 2 and u['xy'][0] > x] + [x + 64, atlas[0]])
+    ny = min([u['xy'][1] for u in tiles if u['xy'][0] == x and u['xy'][1] > y] + [y + 64, atlas[1]])
+    return x, y, nx, ny
+
+
+def cut_tile(hd: Image.Image, tiles: list[dict], t: dict) -> Image.Image:
+    x, y, nx, ny = tile_span(tiles, t, (hd.width // SCALE, hd.height // SCALE))
+    tile = hd.crop((x * SCALE, y * SCALE, nx * SCALE, ny * SCALE))
+    if tile.size != (64 * SCALE, 64 * SCALE):
+        tile = tile.resize((64 * SCALE, 64 * SCALE), Image.Resampling.LANCZOS)
+    return tile
 
 
 def pack(args: argparse.Namespace) -> None:
@@ -614,7 +858,7 @@ def pack(args: argparse.Namespace) -> None:
                 x, y = t['xy']
                 if fill and (map_hash(pixels, palette, xxh) in approved or not (fill[0] <= x and x + 64 <= fill[2] and fill[1] <= y and y + 64 <= fill[3])):
                     continue
-                tile = hd.crop((x * SCALE, y * SCALE, (x + 64) * SCALE, (y + 64) * SCALE))
+                tile = cut_tile(hd, tiles, t)
                 if t['flip'][0]: tile = tile.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
                 if t['flip'][1]: tile = tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
                 claims.setdefault(map_hash(pixels, palette, xxh), []).append((tile.tobytes(), tile, rid, x, y))
@@ -656,11 +900,20 @@ def pack(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     commands = parser.add_subparsers(dest='command', required=True)
-    for name in ('prepare', 'restyle', 'run', 'compose', 'imagegen', 'pack'):
+    for name in ('prepare', 'restyle', 'run', 'compose', 'imagegen', 'closeup-kit', 'closeup', 'pack'):
         sub = commands.add_parser(name)
         sub.add_argument('--output', type=Path, required=True)
         if name == 'imagegen':
             sub.add_argument('--kit', type=Path, required=True, help='image_gen kit folder with manifest.json and outputs/')
+        if name == 'closeup-kit':
+            sub.add_argument('--base', type=Path, required=True, help='composed run the windows are cut from')
+            sub.add_argument('--count', type=int, default=12)
+            sub.add_argument('--always', type=lambda v: [int(x) for x in v.split(',') if x], default=[4, 0, 1],
+                             help='location numbers that get a window first (default: the first stage)')
+            sub.add_argument('--extend', action='store_true', help='keep the windows already in --output and add windows for uncovered locations')
+        if name == 'closeup':
+            sub.add_argument('--kit', type=Path, required=True)
+            sub.add_argument('--base', type=Path, required=True)
         if name == 'restyle':
             sub.add_argument('--from', type=Path, required=True, help='composed run folder whose surface is redrawn')
             sub.add_argument('--surface', required=True)
@@ -674,7 +927,8 @@ def main() -> None:
             sub.add_argument('--extra-run', type=Path, action='append', help='another run folder whose surfaces join the pack')
             sub.add_argument('--bind', action='store_true')
     args = parser.parse_args()
-    {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'imagegen': imagegen, 'pack': pack}[args.command](args)
+    {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'imagegen': imagegen,
+     'closeup-kit': closeup_kit, 'closeup': closeup, 'pack': pack}[args.command](args)
 
 
 if __name__ == '__main__':
