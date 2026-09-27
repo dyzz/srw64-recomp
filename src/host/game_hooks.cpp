@@ -8,6 +8,7 @@
 #include "state_probe.hpp"
 #include "rule_probe.hpp"
 #include "battle_ui_probe.hpp"
+#include "battle_animation_probe.hpp"
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
@@ -20,6 +21,19 @@ namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
 namespace parts_carry=srw64::parts_carry;
 extern "C" {
+void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
+    // X ends the presentation early; the settled result lives in the map
+    // overlay's participant table and is applied when the map is back.
+    srw64::battle_animation_probe::step(ram,ctx);
+    srw64_original_battle_animation_step(ram,ctx);
+}
+void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
+    // After an aborted battle, takes over the resume frame (state 24 sub-state
+    // 4) and runs the animation-off branch of the fork instead, so the map
+    // presents the result as it does with the animation switched off.
+    srw64::battle_animation_probe::map_step(ram,ctx);
+    srw64_original_map_dispatch(ram,ctx);
+}
 void load_000AB160_func_801C8AB4(uint8_t* ram,recomp_context* ctx) {
     if(!srw64_game_hooks.battle_spirit_return || !srw64_game_hooks.battle_spirit_return(ram,ctx))srw64_original_return_to_map(ram,ctx);
 }

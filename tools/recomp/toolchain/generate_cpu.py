@@ -16,6 +16,11 @@ from recomp.toolchain.analyze_layout import ROOT, analyze
 
 
 NATIVE_HOOKS = {
+    # Battle-animation main loop (overlay load_00121560). Wrapped read-only so a
+    # probe can record the 25-state machine at D_80250000 before any skip or
+    # abort feature depends on it.
+    "load_00121560_func_801C9710": "srw64_original_battle_animation_step",
+    "load_000AB160_func_801DFBD0": "srw64_original_map_dispatch",
     "load_000AB160_func_801C8AB4": "srw64_original_return_to_map",
     "load_000AB160_func_801D5064": "srw64_original_battle_confirm_step",
     "load_000AB160_func_801D5294": "srw64_original_battle_response_step",
