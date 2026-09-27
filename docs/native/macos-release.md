@@ -66,7 +66,7 @@ Mach-O 的最低系统版本、依赖路径和签名。整个过程仅本地运�
   背景 PSNR 不低于 46.9 dB。RT64 贴图和标题图仍是 PNG。
   它还给原生页面的头像按（图，调色板）建索引，剪影直接用头像的 `.alpha.png`；再校验并复制
   世界地图舰船与地标包（`build/recomp/native-models/assets`）和 5600 标记包
-  （`build/recomp/native-marker/assets`）。战术地图样板（`SRW64_HD_MAPS`）不在里面。
+  （`build/recomp/native-marker/assets`）。战术地图随美术清单进 `art/maps`，底图转 JPEG，约 350 MB。
   美术部分由约 315 MB 降到约 151 MB：头像 182 → 60 MB、背景 45 → 10 MB、剪影 7 MB 不再单独存放。
 - 启动器看到 `Contents/Resources/hd/art` 就设 `SRW64_ART_PACK`，以 HD 开局（`SRW64_IMAGE_MODE=hd`），
   给姓名页、战前确认、存档与联动页的头像接上 HD 图，两个模型包存在时再设

@@ -37,7 +37,7 @@
 
 - 美术来自 `content/art/stage1-hd.json` 引用的本机素材；舰船与标记包由提交里的脚本重建，不含 ROM 字节。
 - 包里的 AI 图不写入 AIGC 元数据，只在包内说明和发布说明里用文字声明。
-- 战术地图样板（`SRW64_HD_MAPS`）不在包里。
+- HD 战术地图（`art/maps`）含 ROM 派生的色号图，公开包里删掉，游戏画原版地图；自用全 HD 包保留。
 - HD 窗口边框和标题图里的 BANPRESTO 标志、GAME OVER 由游戏在运行时从玩家自己的 ROM 生成（99d5cb2、7b0d7f5），
   美术清单里没有它们。`build_release.py` 仍会删掉包里的 `art/frames` 和这两张图（`ROM_DERIVED*`），只作保险：
   以后有人把 ROM 派生图放回清单，也不会进公开包。

@@ -88,7 +88,28 @@ def copy_whole_images(index: dict, files: list, output: Path, folder: str, runti
     (output / runtime_name).write_text(json.dumps(runtime, indent=2) + "\n")
 
 
-def compile_art(root: Path, manifest: dict, output: Path) -> dict:
+def tactical_maps(root: Path, spec: dict) -> tuple[Path, dict, list]:
+    """The HD tactical map pack (docs/design/tactical-map-hd-kit.md), checked file by file."""
+    folder = inside(root, spec["path"])
+    index_bytes = (folder / "tactical-maps.json").read_bytes()
+    if sha(index_bytes) != spec["manifest_sha256"]:
+        raise ValueError("Tactical map manifest changed")
+    index = json.loads(index_bytes)
+    if index.get("schema") != "srw64.tactical-maps.v1":
+        raise ValueError("Unsupported tactical map pack")
+    files = []
+    for row in [*index["maps"], *index["colony_frames"]]:
+        for name, digest in row["files"].items():
+            path = inside(folder, f"{row['folder']}/{name}")
+            if sha(path.read_bytes()) != digest:
+                raise ValueError(f"Tactical map pixels changed: {row['folder']}/{name}")
+            files.append((path, f"{row['folder']}/{name}"))
+    return folder, index, files
+
+
+def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = False) -> dict:
+    """maps_in_place: point the runtime at the tactical map pack where it is instead of
+    copying its gigabyte (development profiles; bundles copy)."""
     if manifest.get("schema") != "srw64.art-pack.v1" or manifest.get("locale") != "neutral":
         raise ValueError("Image toggle accepts only a language-neutral art pack")
     source = inside(root, manifest["source"]["path"])
@@ -145,6 +166,9 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
             if sha(path.read_bytes()) != row["sha256"]:
                 raise ValueError(f"Scene image pixels changed: {row['file']}")
             scene_files.append((path, row))
+    maps_folder, maps_index, map_files = None, None, []
+    if "tactical_maps" in manifest:
+        maps_folder, maps_index, map_files = tactical_maps(root, manifest["tactical_maps"])
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
@@ -165,5 +189,19 @@ def compile_art(root: Path, manifest: dict, output: Path) -> dict:
     if "worldmap" in manifest:
         spec = manifest["worldmap"]
         (output / "srw64-worldmap-hd.json").write_text(json.dumps(spec, indent=2) + "\n")
+    if maps_index is not None:
+        # The host (native_map.cpp) loads every map folder under "root", relative to this file.
+        if maps_in_place:
+            root_name = str(maps_folder)
+        else:
+            root_name = "maps"
+            for path, name in map_files:
+                (output / root_name / name).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(path, output / root_name / name)
+            shutil.copyfile(maps_folder / "tactical-maps.json", output / root_name / "tactical-maps.json")
+        (output / "srw64-tactical-maps.json").write_text(json.dumps(
+            {"schema": "srw64.tactical-maps-runtime.v1", "root": root_name, "maps": len(maps_index["maps"]),
+             "colony_frames": len(maps_index["colony_frames"])}, indent=2) + "\n")
     return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
+            "tactical_maps": len(maps_index["maps"]) if maps_index else 0,
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}

@@ -34,7 +34,9 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 # toolchain and the ROM, not on the project's sources.
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
-ROM_DERIVED = ("art/frames",)
+# The HD tactical maps carry the 4x palette-index map and the palette-cycled cells rendered
+# from ROM pixels (docs/design/tactical-map-hd-kit.md), so they stay in the self-use pack only.
+ROM_DERIVED = ("art/frames", "art/maps")
 # RT64 replacement textures redrawn from ROM pixels (compile_art keeps their kind): the map unit icons.
 ROM_DERIVED_TEXTURE_KINDS = ("icon",)
 # Scene images that are algorithmic upscales of ROM frames (tools/hd_ai/flat_scene_hd.py).
@@ -151,6 +153,8 @@ def main() -> int:
         if (pack_dir / "hd" / relative).exists():
             shutil.rmtree(pack_dir / "hd" / relative)
             left_out.append(relative)
+    # Without its folder the maps' index only points at nothing; the game draws the originals.
+    (pack_dir / "hd/art/srw64-tactical-maps.json").unlink(missing_ok=True)
     rt64 = pack_dir / "hd/art/rt64.json"
     if rt64.is_file():
         database = json.loads(rt64.read_text())

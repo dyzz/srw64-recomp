@@ -1,0 +1,72 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "map-switch-view",
+  "note": "3D34 kind-0 transition viewer for the HD maps: opens on map 9 (scene 26's battlefield), waits two seconds, then switches to map 62 the way scene 26 does (kind 0, the banded transition). No units; the defeat check is suspended.",
+  "map": 9,
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            10,
+            10
+          ]
+        },
+        {
+          "op": "3D61",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            240
+          ]
+        },
+        {
+          "op": "3D34",
+          "args": [
+            62,
+            7,
+            20,
+            0
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            120
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -13,7 +13,9 @@ stores them as JPEG, which the game's loaders already read:
   show that PNG itself as the silhouette portrait.
 
 Quality 95 without chroma subsampling measured PSNR >= 46.9 dB on the
-backgrounds; the alpha stays exact. RT64 textures and the title frames stay PNG.
+backgrounds; the alpha stays exact. The HD tactical maps' painted bases become JPEG too
+(meta.json names the file); their palette-index maps stay PNG. RT64 textures and the
+title frames stay PNG.
 """
 from __future__ import annotations
 
@@ -71,8 +73,36 @@ def compress_portraits(art: Path) -> int:
     return len(index["images"])
 
 
+def compress_tactical_maps(art: Path) -> int:
+    """The HD tactical maps' painted bases are opaque: JPEG, with meta.json naming the file.
+    The palette-index maps stay PNG (exact), and so do the translucent colony frames."""
+    runtime_path = art / "srw64-tactical-maps.json"
+    if not runtime_path.is_file():
+        return 0
+    root = art / json.loads(runtime_path.read_text())["root"]
+    index_path = root / "tactical-maps.json"
+    index = json.loads(index_path.read_text())
+    for row in index["maps"]:
+        folder = root / row["folder"]
+        source = folder / "base.png"
+        with Image.open(source) as image:
+            if image.mode not in ("RGB", "RGBA") or (image.mode == "RGBA" and image.getchannel("A").getextrema() != (255, 255)):
+                raise ValueError(f"Tactical map base is not opaque: {row['folder']}")
+            jpeg(image, folder / "base.jpg")
+        source.unlink()
+        meta = json.loads((folder / "meta.json").read_text())
+        meta["base"] = "base.jpg"
+        (folder / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n")
+        files = {name: digest for name, digest in row["files"].items() if name != "base.png"}
+        files.update({"base.jpg": sha(folder / "base.jpg"), "meta.json": sha(folder / "meta.json")})
+        row["files"] = files
+    index_path.write_text(json.dumps(index, ensure_ascii=False, indent=1) + "\n")
+    return len(index["maps"])
+
+
 def compress(art: Path) -> dict:
-    return {"backgrounds": compress_backgrounds(art), "portraits": compress_portraits(art), "jpeg_quality": QUALITY}
+    return {"backgrounds": compress_backgrounds(art), "portraits": compress_portraits(art),
+            "tactical_maps": compress_tactical_maps(art), "jpeg_quality": QUALITY}
 
 
 def main() -> int:

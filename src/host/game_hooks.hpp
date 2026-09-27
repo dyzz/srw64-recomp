@@ -19,6 +19,8 @@ struct SRW64GameHooks {
     void (*damage_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800945D4 (tactical map and other mode 8/9 sprites) wrote [begin, end) for sprite slot/sub.
     void (*map_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
+    // 801E2D54: the terrain panel drew the cursor cell (docs/design/tactical-map-hd-kit.md §4).
+    void (*terrain_panel_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800964E4 (sprite mode 7: every character portrait) wrote [begin, end) for slot/sub.
     void (*portrait_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     // 80095974 (sprite modes 2 and 4: intermission backgrounds) wrote [begin, end) for slot/sub.

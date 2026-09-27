@@ -137,7 +137,7 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
     try:
         art_path = inside(root, profile["art_pack"])
         art_bytes = art_path.read_bytes()
-        art = compile_art(root, json.loads(art_bytes), output / "art")
+        art = compile_art(root, json.loads(art_bytes), output / "art", maps_in_place=True)
         hd_portrait = portrait_lookup(output / "art", output / "portraits")
         hd_unit = unit_lookup(output / "art")
         art_sha = sha(art_bytes)

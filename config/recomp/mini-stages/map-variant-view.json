@@ -1,0 +1,24 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "map-variant-view",
+  "note": "3D34 variant viewer for the HD maps: opens on map 109 (scene 103's battlefield), waits, then switches to its first variant 121 the way the story does (kind 1), and waits again. No units; the defeat check is suspended.",
+  "map": 109,
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [30, 16]},
+        {"op": "3D61", "args": [1]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D38", "args": [240]},
+        {"op": "3D34", "args": [121, 30, 16, 1]},
+        {"op": "3D38", "args": [600]}
+      ]
+    }
+  ]
+}

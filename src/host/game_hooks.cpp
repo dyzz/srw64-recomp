@@ -208,6 +208,13 @@ void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_move_range_draw(rdram, ctx);
     if (srw64_game_hooks.move_range_drawn) srw64_game_hooks.move_range_drawn(rdram, list);
 }
+void load_000AB160_func_801E2D54(uint8_t* rdram, recomp_context* ctx) {
+    const int32_t pointer = ctx->r4;
+    const uint32_t begin = MEM_W(0, pointer) & 0x1FFFFFFF;
+    srw64_original_terrain_panel_draw(rdram, ctx);
+    const uint32_t end = MEM_W(0, pointer) & 0x1FFFFFFF;
+    if (srw64_game_hooks.terrain_panel_drawn) srw64_game_hooks.terrain_panel_drawn(rdram, begin, end);
+}
 void resident_func_800945D4(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
