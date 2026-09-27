@@ -15,7 +15,7 @@ class StoryTextTests(unittest.TestCase):
     def test_name_runs_collapse_to_one_placeholder_and_controls_survive(self):
         text = '「よろしく、<G:0126><G:0126><G:0126>くん<BR> <G:0124><G:0124>さん<STOP>おわり」<END>'
         self.assertEqual(display_text(text), '「よろしく、【主角名字】くん<BR> 【主角昵称】さん<STOP>おわり」')
-        self.assertEqual(display_text('<G:012C><G:012C><END>'), '【主角机体名（8010F698，候选）】')
+        self.assertEqual(display_text('<G:012C><G:012C><END>'), '【部队名（8010F698）】')
         self.assertEqual(display_text('<G:0100>x<END>'), '<G:0100>x')
         self.assertEqual(display_text('<G:0126><G:0126><G:012A><G:012A>'), '【主角名字】【搭档名字】')
 

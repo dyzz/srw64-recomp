@@ -55,7 +55,7 @@ UTF-8 纯文本，一个文件放任意多条。示例：
 | `{HeroName}` | 主角名字 | `{PartnerName}` | 搭档名字 |
 | `{HeroSurname}` | 主角姓氏 | `{PartnerSurname}` | 搭档姓氏 |
 | `{HeroFull}` | 主角全名 | `{PartnerFull}` | 搭档全名 |
-| `{HeroMech}` | 主角机体名 | `{G:0104}` | 其他特殊字形（原样保留） |
+| `{HeroMech}` | 部队名（占位符名沿用旧叫法，见[部队名固定](../native/fixed-unit-name.md)） | `{G:0104}` | 其他特殊字形（原样保留） |
 
 一页里的占位符要和原文那一页用到的一样多、种类一样，顺序可以按译文语序调整。
 
