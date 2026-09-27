@@ -142,9 +142,8 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .set-body h2 {margin:16dp 0 4dp; padding-bottom:4dp; font-size:15dp; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
 .set-body p {margin:3dp 0 0; font-size:12dp; line-height:1.35; color:#a4b0d2;}
 .set-name {font-size:17dp; font-weight:bold; color:#e8eefc;}
-.set-row {display:flex; align-items:center; gap:18dp; padding:10dp 12dp; border-bottom:1dp #3fd0ff1f;}
-.set-row.stack {display:block;}
-.set-text {flex:1 1 0; min-width:0;}
+.set-row {padding:10dp 12dp; border-bottom:1dp #3fd0ff1f;}
+.set-line {display:flex; align-items:center; gap:18dp;} .set-line .set-name {flex:1 1 0; min-width:0;}
 .set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
 .set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
@@ -408,9 +407,11 @@ constexpr KeyRow key_rows[]={
 #ifndef SRW64_VERSION
 #define SRW64_VERSION "?"
 #endif
-// One setting: its name and note on the left, its choices on the right.
+// One setting: its name with its choices beside it, and its note on a line of its own.
+// RmlUi breaks lines only at spaces, so a Chinese or Japanese note needs the whole
+// width (test_settings_window.py checks that each fits the smallest window).
 std::string settings_row(const std::string& key,const std::string& choices) {
-    return "<div class='set-row nav'><div class='set-text'><div class='set-name'>"+label(key)+"</div><p>"+label(key+"_note")+"</p></div><div class='set-seg'>"+choices+"</div></div>";
+    return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(key+"_note")+"</p></div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
 std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false) {
@@ -481,7 +482,7 @@ void settings_sync() {
     } else if(page=="rules") {
         std::string presets;
         for(const auto& preset:rules::presets)presets+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
-        body+="<div class='set-row stack nav'><div class='set-name'>"+label("settings_presets")+"</div><p>"+label("rules_note")+"</p><div class='set-actions'>"+presets+"</div></div>";
+        body+="<div class='set-row nav'><div class='set-name'>"+label("settings_presets")+"</div><p>"+label("rules_note")+"</p><div class='set-actions'>"+presets+"</div></div>";
         for(auto group:{rules::Kind::correction,rules::Kind::difficulty}){
             body+="<h2>"+label(group==rules::Kind::correction?"rules_group_corrections":"rules_group_difficulty")+"</h2>";
             for(const auto& entry:rules::catalog)if(entry.kind==group)

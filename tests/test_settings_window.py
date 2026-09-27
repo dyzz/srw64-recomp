@@ -38,22 +38,39 @@ class SettingsWindowTests(unittest.TestCase):
                     self.assertTrue(labels[key].strip(), (locale, key))
 
     def test_labels_fit_at_the_smallest_window(self):
-        # The UI is laid out at no less than 960 x 720 dp; the panel is 88 % of that
-        # less 52 dp of padding. Five tabs share its width (15 dp bold, 20 dp padding),
-        # and a row's choices keep to 45 % of it (14 dp bold, 32 dp padding each).
-        panel = 960 * 0.88 - 52
+        # The UI is laid out at no less than 960 x 720 dp; the panel is 88 % of that less
+        # its padding and borders, a row loses the scroll bar and its own padding. RmlUi
+        # breaks lines only at spaces, so every run between spaces must fit its column:
+        # a Chinese or Japanese sentence is one run.
+        panel = 960 * 0.88 - 52 - 2
+        row = panel - 8 - 12 - 24
         tab = (panel - 4 * 6) / 5 - 20
+        runs = lambda text: text.split(" ")
+        choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
+                   "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
+                   "settings_title_ui": ("native", "original"), "settings_language": ()}
         for locale in LOCALES:
             labels = ui(locale)
             for page in SETTINGS_PAGES:
                 self.assertLessEqual(em(labels[f"settings_page_{page}"]) * 15, tab, (locale, page))
-            rows = [[labels[f"{key}_{mode}"] for mode in modes] for key, modes in (
-                ("settings_images", ("original", "hd")), ("settings_battle_ui", ("native", "original")),
-                ("settings_intermission_ui", ("native", "original")), ("settings_name_entry_ui", ("native", "original")),
-                ("settings_title_ui", ("native", "original")))]
-            rows.append(["日本語", "简体中文", "English"])
-            for choices in rows:
-                self.assertLessEqual(sum(em(text) * 14 + 32 for text in choices), panel * 0.45, (locale, choices))
+            for key, modes in choices.items():
+                buttons = [labels[f"{key}_{mode}"] for mode in modes] or ["日本語", "简体中文", "English"]
+                # The name (17 dp) and the choices (14 dp, 32 dp padding each) share a line.
+                width = em(labels[key]) * 17 + 18 + sum(em(text) * 14 + 32 for text in buttons)
+                self.assertLessEqual(width, row, (locale, key))
+                for run in runs(labels[f"{key}_note"]):
+                    self.assertLessEqual(em(run) * 12, row, (locale, key, run))
+            for run in runs(labels["rules_note"]):
+                self.assertLessEqual(em(run) * 12, row, (locale, "rules_note"))
+            for key in [k for k in labels if k.startswith("rule_")]:
+                for run in runs(labels[key]):   # beside the 38 dp switch
+                    self.assertLessEqual(em(run) * 15, row - 38 - 14, (locale, key, run))
+            for name in SETTINGS_KEY_ROWS:   # the keys take 46 % of the row
+                for run in runs(labels[f"settings_key_{name}"]):
+                    self.assertLessEqual(em(run) * 14, row * 0.54 - 16, (locale, name, run))
+                for key in (f"settings_bind_{name}", f"settings_bind_{name}_pad"):
+                    for run in runs(labels[key]):
+                        self.assertLessEqual(em(run) * 14, row * 0.46, (locale, key, run))
 
     def test_page_is_remembered_across_launches(self):
         settings = (ROOT / "src/native/ui/presentation_settings.cpp").read_text()
