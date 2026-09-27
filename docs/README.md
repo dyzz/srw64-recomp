@@ -63,6 +63,7 @@
 | [对白闪烁](native/native-dialogue-flicker.md) | 间歇性画面／底栏消失的原因与修复证据 |
 | [对话框 HD 边框](native/native-dialogue-runtime-hd.md) | 资源 1296 的 13 张边框切片按原版设计重画，RT64 哈希替换 |
 | [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
+| [部队名固定](native/fixed-unit-name.md) | 部队名不许改：命名选择自动答「それでかまわない」、3D5E 不开页面、默认名按语言显示；3D5E／部队名页（模式 6、状态 4、保留名校验）的静态分析 |
 | [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
 | [场间主菜单接管](native/native-intermission-menu.md) | 原版调度表、布局表、面板几何与 8 张背景的静态分析；保持原构图的 RmlUi 接管、实机验证（12 项）与未验证清单 |
 | [改造画面接管](native/native-upgrade-screens.md) | ユニット改造／武器改造 五个画面：原版列表、详情与状态机的静态分析，保持原构图的 RmlUi 接管，与 15 段规则钩子的配合，实机验证与未验证清单 |

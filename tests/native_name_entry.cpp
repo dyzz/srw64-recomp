@@ -3,6 +3,7 @@
 #include "game_adapter/name_codec.hpp"
 #include "game_hooks.hpp"
 #include "native_dialogue.hpp"
+#include "presentation_settings.hpp"
 #include "json/json.hpp"
 #include <cassert>
 #include <codecvt>
@@ -16,6 +17,8 @@ namespace srw64::dialogue {
 std::u16string utf16(const std::string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.from_bytes(s);}
 std::string utf8(const std::u16string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.to_bytes(s);}
 }
+// The settings window's choice; the pages under test are the native ones.
+bool srw64::settings::native_name_entry_ui() {return true;}
 int fade=-1;bool reject=false;unsigned validations{},transitions{},defaults_loaded{};
 std::vector<uint32_t> sounds;
 extern "C" void resident_func_8007E8A8(uint8_t*,recomp_context* ctx) {sounds.push_back(uint32_t(ctx->r4));ctx->r16=0xBAD;}

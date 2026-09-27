@@ -57,6 +57,7 @@
     "select_confirm": "继续：命名  →",
     "select_keyboard_hint": "←→ 切换   ·   Enter / Z 确定   ·   也可以点击卡片",
     "select_keyboard_hint_pad": "←→ 切换   ·   A 确定   ·   也可以点触卡片",
+    "unit_default_name": "三月风",
     "name_review_keyboard_hint": "Enter 开始故事   ·   Esc 修改姓名",
     "name_review_keyboard_hint_pad": "A 开始故事   ·   B 修改姓名",
     "settings_error": "语言切换或设置保存失败",

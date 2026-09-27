@@ -101,6 +101,12 @@ void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
     srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
 }
+void load_000A7EC0_func_801C517C(uint8_t* rdram,recomp_context* ctx) {
+    // 3D5E: switch to mode 6, the 部隊名 page. The caller (800A1050) completes the
+    // command either way, so skipping this leaves the script running on the world map.
+    if(srw64_game_hooks.unit_name_page && srw64_game_hooks.unit_name_page(rdram))return;
+    srw64_original_unit_name_command(rdram,ctx);
+}
 void load_001090A0_func_801C5004(uint8_t* rdram,recomp_context* ctx) {
     srw64_original_name_selection_init(rdram,ctx);
     if(srw64_game_hooks.name_begin)srw64_game_hooks.name_begin(rdram,3);
@@ -684,6 +690,7 @@ void load_0008F4B0_func_801D70FC(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_link_step(rdram, ctx);
 }
 void resident_func_8009FA94(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.choice_step && srw64_game_hooks.choice_step(rdram, uint32_t(ctx->r4))) return;
     if (srw64_game_hooks.choice) srw64_game_hooks.choice(rdram);
     srw64::state_probe::capture(rdram,"choice");
     srw64_original_dialogue_choice(rdram, ctx);

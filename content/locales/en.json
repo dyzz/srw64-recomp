@@ -57,6 +57,7 @@
     "select_confirm": "Next: Names  →",
     "select_keyboard_hint": "←→ Switch   ·   Enter / Z: Confirm   ·   or click a card",
     "select_keyboard_hint_pad": "←→ Switch   ·   A: Confirm   ·   or tap a card",
+    "unit_default_name": "March Wind",
     "name_review_keyboard_hint": "Enter: Start story   ·   Esc: Edit names",
     "name_review_keyboard_hint_pad": "A: Start story   ·   B: Edit names",
     "settings_error": "Could not switch language or save settings",

@@ -37,6 +37,7 @@
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
+#include "unit_name.hpp"
 #include "link_page.hpp"
 #include "battle_page.hpp"
 #include "intermission_page.hpp"
@@ -394,6 +395,7 @@ static int run_host(int argc, char** argv) {
     srw64::sprites::set_text(srw64::sprite_text::describe);
     srw64::ui_text::configure(output_dir);
     srw64::names::configure(output_dir);
+    srw64::unit_name::configure(output_dir);
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);
     srw64::intermission_page::configure(output_dir);
