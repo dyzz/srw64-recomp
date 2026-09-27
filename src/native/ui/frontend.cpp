@@ -131,7 +131,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
 
 .set-shade {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712b8;}
-.set-panel {display:flex; flex-direction:column; width:88%; max-width:1040dp; height:88%; max-height:820dp; box-sizing:border-box; padding:14dp 26dp 12dp; color:#e8eefc; background-color:#0c122cf2; border:1dp #3fd0ff; border-top:3dp #3fd0ff;}
+.set-panel {display:flex; flex-direction:column; width:88%; max-width:1040dp; height:88%; max-height:820dp; box-sizing:border-box; padding:14dp 26dp 12dp; color:#e8eefc; background-color:#0c122cf2; border:1dp #3fd0ff; border-top:3dp #3fd0ff; word-break:break-word;}
 .set-panel h1 {margin:0 0 8dp; font-size:24dp; letter-spacing:2dp;}
 .set-tabs {display:flex; gap:6dp; margin-bottom:10dp;}
 .set-tabs button {flex:1 1 0; min-width:0; margin:0; padding:0 10dp; height:34dp; line-height:32dp; box-sizing:border-box; text-align:center; white-space:nowrap; overflow:hidden; font-size:15dp; font-weight:bold; color:#a4b0d2; background-color:#0c122ceb; border:1dp #3fd0ff; border-radius:0;}

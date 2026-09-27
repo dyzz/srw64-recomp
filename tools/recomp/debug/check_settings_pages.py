@@ -124,6 +124,7 @@ for locale in ('zh-Hans', 'en', 'ja'):
         check(f'{locale}-{page}-shown', lambda: shown_page() == page and saved('settings_page') in (page, '' if page == 'general' else page),
               lambda: {'page': shown_page(), 'saved': saved('settings_page')})
         shot(f'settings-{locale}-{page}-960.png')
+        (s.run/f'settings-{locale}-{page}-tree.json').write_text(json.dumps(s.client.call('ui.tree'), ensure_ascii=False)+'\n')
 
 # Keys: Q/E turn the page and focus its first setting; arrows move, Enter presses.
 s.client.call('settings', locale='zh-Hans')
