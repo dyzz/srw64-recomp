@@ -1,22 +1,25 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @40243 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ギャリソンが情報を入手した。
 >  例の怪物騒動が起きている
-“Garrison got us the intel. We've pinpointed the area
+“Garrison got us the intel. We’ve pinpointed the area
 ---
 >  地域を特定できたよ」
 where those monster incidents are happening.”
 
 @40244 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「ありがてぇ。これであんまり飛びまわら
 >  なくてすみそうだな」
-“Much obliged. Now we won't have to fly around so much.”
+“Much obliged. Now we won’t have to fly around so much.”
 
 @40245 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
 > 「必要と思われるデータは輸送艇
 >  の方へ転送しておきました
-“I've already transferred the data you'll need to the transport ship.
+“I’ve already transferred the data you’ll need to the transport ship.
 ---
 >  ご確認ください」
 Please confirm it.”
@@ -27,33 +30,39 @@ Please confirm it.”
 “Sorry, Mr. Garrison.”
 
 @40247 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「あれ? でもガンドールの高速輸送
 >  艇って、誰が動かすんですか?」
-“Huh? But who's going to pilot the Gandor's high-speed transport?”
+“Huh? But who’s going to pilot the Gandor’s high-speed transport?”
 
 @40248 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「ほんまやな。どないするんや」
-“That's right. What are we gonna do?”
+“That’s right. What are we gonna do?”
 
 @40249 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「誰もいないのか? しょうがない、
 >  レイカ、ビューティー、一緒に
-“Is there no one? Guess there's no choice. Reika, Beauty, would you two
+“Is there no one? Guess there’s no choice. Reika, Beauty, would you two
 ---
 >  行ってくれないか」
 come along?”
 
 @40250 Reika · レイカ
+# 审校：去掉 It can't be helped 套话
 > 「しかたないわね。いいわよ」
-“Can't be helped. Fine.”
+“Oh, all right. Fine.”
 
 @40251 Beauty · ビューティ
+# 审校：英文更口语
 > 「あたしもオッケーよ、万丈」
-“I'm okay with that too, Banjo.”
+“Count me in too, Banjo.”
 
 @40252 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「頼む、2人とも」
-“I'm counting on you both.”
+“I’m counting on you both.”
 
 @40253 Alan · アラン
 > 「それで、結局行くのはコン・バトラー
@@ -61,35 +70,41 @@ come along?”
 “So in the end, only the Combattler team and {HeroNick} are going?”
 
 @40254 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「いいや、オレたちも行くぜ、アラン」
-“No, we're going too, Alan.”
+“No, we’re going too, Alan.”
 
 @40255 Boss · ボス
+# 审校：全局：弯撇号／弯引号
 > 「そうだわさ。当然、俺さまたちも
 >  行くわよ。なぁ、兜」
-“That's right. Naturally, we're going too. Right, Koji?”
+“That’s right. Naturally, we’re going too. Right, Koji?”
 
 @40256 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「さっすが、甲児。避難民が襲わ
 >  れてるなんて、放っておけないもんね」
-“That's our Koji. We can't just ignore refugees being attacked.”
+“That’s our Koji. We can’t just ignore refugees being attacked.”
 
 @40257 Boss · ボス
+# 审校：接玛丽亚只夸甲儿，点明是抱怨只夸兜
 > 「あらら? またまた兜だけなの?」
-“Huh? It's just Koji again?”
+“Huh? Koji gets all the credit again?”
 
 @40258 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「……甲児くん、
 >  まだ全然、準備してないんでしょ
-“...Koji, you haven't prepared anything at all yet, have you?
+“...Koji, you haven’t prepared anything at all yet, have you?
 ---
 >  さっさと、やってらっしゃいよ」
 Hurry up and get it done.”
 
 @40259 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「え? だってさやかさん、さっきは
 >  やってくれるって……」
-“Huh? But Sayaka, you said earlier you'd do it...”
+“Huh? But Sayaka, you said earlier you’d do it...”
 
 @40260 Sayaka · さやか
 > 「気がかわったの!
@@ -97,24 +112,29 @@ Hurry up and get it done.”
 “I changed my mind! Come on, get going already.”
 
 @40261 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「……なんだってんだよ……もう」
-“...What's her problem... geez.”
+“...What’s her problem... geez.”
 
 @40262 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「……ここの男ってこんなのばっかりねぇ」
-“...The men around here are all like this, aren't they.”
+“...The men around here are all like this, aren’t they.”
 
 @40263 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「俺はお前ひと筋だぜ、シモーヌ」
-“I've only got eyes for you, Simone.”
+“I’ve only got eyes for you, Simone.”
 
 @40264 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「ばかいってんじゃないの」
-“Don't be ridiculous.”
+“Don’t be ridiculous.”
 
 @40265 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「……君も行くのか、デューク」
-“...You're going too, Duke?”
+“...You’re going too, Duke?”
 
 @40266 Daisuke · 大介
 > 「ええ、話を聞いて思い当たることが
@@ -131,76 +151,87 @@ Hurry up and get it done.”
 “Human hunt?”
 
 @40269 Daisuke · 大介
+# 审校：去掉直译腔
 > 「おそらく間違いはないでしょう」
-“There's likely no mistake about it.”
+“I’m almost certain of it.”
 
 @40270 Naida · ナイーダ
+# 审校：全局：弯撇号／弯引号
 > 「つかまえた人たちの脳を円盤獣に
 >  使おうとしているんだわ……
-“They're planning to use the brains of the people they capture for the Disc Beasts...
+“They’re planning to use the brains of the people they capture for the Disc Beasts...
 ---
 >  あたしの弟のように……」
 Just like my little brother...”
 
 @40271 Daisuke · 大介
+# 审校：全局：弯撇号／弯引号
 > 「心配することはないよ、ナイーダ。
 >  もうそんなことはさせない。絶対に……」
-“Don't worry, Naida. I won't let that happen again. Never...”
+“Don’t worry, Naida. I won’t let that happen again. Never...”
 
 @40272 Naida · ナイーダ
 > 「デューク……」
 “Duke...”
 
 @40273 Chizuru · ちずる
+# 审校：全局：弯撇号／弯引号
 > 「ギャリソンさんの情報ではこのあたりに
 >  出没しているそうよ」
-“According to Garrison's intel, they've been appearing around here.”
+“According to Garrison’s intel, they’ve been appearing around here.”
 
 @40274 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「そうか……手分けして探した方が
 >  よさそうだな」
-“I see... It'd be best if we split up and searched.”
+“I see... It’d be best if we split up and searched.”
 
 @40275 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ふむ……危険性は増すが、
 >  散った方が確実そうだな」
-“Hmm... It's more dangerous, but splitting up does seem more reliable.”
+“Hmm... It’s more dangerous, but splitting up does seem more reliable.”
 
 @40276 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「そんじゃ、さっそく行くとするか。
 >  手分けして探そうぜ」
-“Then let's get going right away. We'll split up and search.”
+“Then let’s get going right away. We’ll split up and search.”
 
 @40277 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「それじゃ、手分けして探しましょう。
 >  その方が早いわ」
-“Then let's split up and search. That'll be faster.”
+“Then let’s split up and search. That’ll be faster.”
 
 @40278 Reika · レイカ
+# 审校：英文更自然
 > 「その方がいいわね。じゃ、私たちは
 >  ここで待機しているわ。なにかあったら
-“That would be better. Then we'll stand by here. If anything happens,
+“Good idea. We’ll stand by here, then. If anything comes up,
 ---
 >  連絡してちょうだい」
-contact us.”
+call us.”
 
 @40279 Warchimedes · ワルキメデス
 > 「ジャネラ様、まだ続けるおつもりですか」
 “Lady Janera, do you intend to continue?”
 
 @40280 Janera · ジャネラ
+# 审校：全局：弯撇号／弯引号
 > 「当然じゃ。私が手塩にかけて
 >  育ててきた“超獣”じゃ
-“Of course. These are the ‘Super Beasts’ I've raised with my own hands.
+“Of course. These are the ‘Super Beasts’ I’ve raised with my own hands.
 ---
 >  地球にいる間に獲物をとるという
 >  ことをちゃんと教えねばな」
-While we're on Earth, I must properly teach them to hunt their prey.”
+While we’re on Earth, I must properly teach them to hunt their prey.”
 
 @40281 Warchimedes · ワルキメデス
+# 审校：全局：弯撇号／弯引号
 > 「しかし、まだ地上の制圧が
 >  終わってはおりません」
-“However, we still haven't finished subduing the surface.”
+“However, we still haven’t finished subduing the surface.”
 
 @40282 Janera · ジャネラ
 > 「お黙り! どうせ地球人どもなど
@@ -212,57 +243,61 @@ While we're on Earth, I must properly teach them to hunt their prey.”
 “But battle is not a game...”
 
 @40284 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：长定语直译，理顺
 > 「遊びなどではないわ! このキバとガロの
 >  親たちは我が帝国の戦力として
-“It is no game! The parents of these Fang and Garo are fighting as our empire's strength,
+“It is no game! Fang and Garo’s parents serve as our empire’s might,
 ---
 >  他の星系で存分に暴れておる。
 >  この子たちも早く1人前に
-rampaging to their hearts' content in other star systems. I want these little ones to grow up
+running wild to their hearts’ content in other star systems. I want these little ones to grow up
 ---
 >  なってほしいのじゃ」
-and become full-fledged as well.”
+and come into their own soon, too.”
 
 @40285 Warchimedes · ワルキメデス
+# 审校：全局：弯撇号／弯引号
 > 「それはわかりますが、そろそろ本陣に
 >  合流しては……」
-“I understand that, but it's about time we rejoined the main force...”
+“I understand that, but it’s about time we rejoined the main force...”
 
 @40286 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：英文语气
 > 「ならぬ! 今日も訓練にでるのじゃ
 >  キバ、ガロ、ついてまいれ」
-“You will not! We go out for training again today. Fang, Garo, follow me.”
+“Out of the question! We go out for training again today. Fang, Garo, follow me.”
 
 @40287 Warchimedes · ワルキメデス
 > 「ジャネラ様にも困ったものだ……」
 “Lady Janera is quite a handful...”
 
 @40288 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「このあたりも悲惨な状況だな……
 >  ん? なんだ? ライオン……?」
-“This area's in a terrible state too... Hm? What's that? A lion...?”
+“This area’s in a terrible state too... Hm? What’s that? A lion...?”
 
 @40289 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「人を追いかけてやがるのか!?
 >  いったいなんだって……違う!
 “Is it chasing people?! What on earth... No!
 ---
 >  ただのライオンじゃねぇ。
 >  あれが噂の怪物って奴か!?
-It's no ordinary lion. Is that the monster I've heard about?!
+It’s no ordinary lion. Is that the monster I’ve heard about?!
 ---
 >  にしては小さいが……」
-Though it's small for that...”
+Though it’s small for that...”
 
 @40290 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「やっぱりどう見ても普通じゃねぇや。
 >  それに、避難民が襲われてるんだ
-“It sure doesn't look normal no matter how you slice it. And refugees are being attacked.
+“It sure doesn’t look normal no matter how you slice it. And refugees are being attacked.
 ---
 >  ほっとけないぜ。それっ!」
-I can't just stand by. Take this!”
+I can’t just stand by. Take this!”
 
 @40291 Hyoma · 豹馬
 > 「なに? 飛んだぁ!? くそっ!!
@@ -270,15 +305,16 @@ I can't just stand by. Take this!”
 “What? It flew?! Damn it!! Once more!”
 
 @40292 Janera · ジャネラ
-# 审校：原文“シシリス”是怪物名，初稿音译为 Sishiris，可接受；但“調教”译为 training 合适，无需修改。
+# 审校：全局：弯撇号／弯引号
 > 「シシリスの調教の邪魔をするのは
 >  何者じゃ!」
-“Who dares interfere with Sishiris's training?!”
+“Who dares interfere with Sishiris’s training?!”
 
 @40293 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、てめぇ異星人、
 >  銀河帝国軍だな!?」
-“Tch, you alien, you're with the Galactic Empire, aren't you?!”
+“Tch, you alien, you’re with the Galactic Empire, aren’t you?!”
 
 @40294 Janera · ジャネラ
 > 「いかにも。銀河帝国はキャンベルの
@@ -289,14 +325,16 @@ I can't just stand by. Take this!”
 of the Earth attack force.”
 
 @40295 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「キャンベル星人? 南原博士が
 >  いってた奴らか……」
-“Campbellian? You're the ones Doctor Nambara mentioned...”
+“Campbellian? You’re the ones Doctor Nambara mentioned...”
 
 @40296 Janera · ジャネラ
+# 审校：全局：弯撇号／弯引号
 > 「ほう? 我らのことを知っておるのか。
 >  お前は地球人じゃな?」
-“Oh? So you know of us. You're an Earthling, aren't you?”
+“Oh? So you know of us. You’re an Earthling, aren’t you?”
 
 @40297 Hyoma · 豹馬
 > 「あったり前だ! 地球人の
@@ -304,19 +342,20 @@ of the Earth attack force.”
 “Of course I am! Hyoma Aoi, Earthling!!”
 
 @40298 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：英文去掉 splendidly 直译
 > 「……葵豹馬か。フフフ、おもしろい。
 >  新しい獲物じゃ。キバよ、ガロよ
-“...Hyoma Aoi, is it. Heh heh heh, interesting. A new prey. Fang, Garo,
+“...Hyoma Aoi, is it. Heh heh heh, interesting. Fresh prey. Fang, Garo,
 ---
 >  あやつが次の獲物じゃ。
 >  みごと、狩ってみせい」
-that one is your next prey. Hunt him down splendidly.”
+that one is your next quarry. Show me a fine hunt.”
 
 @40299 Hyoma · 豹馬
+# 审校：英文口语
 > 「なに!? 巨大化しやがった!
 >  ……やべぇ」
-“What?! They've turned giant!... This is bad.”
+“What?! They got huge!... This is bad.”
 
 @40300 Hyoma · 豹馬
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -324,9 +363,9 @@ that one is your next prey. Hunt him down splendidly.”
 “Waaaaaaaaaah!!”
 
 @40301 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：全局：弯撇号／弯引号
 > 「フフフ、キバよガロよ、その調子じゃ」
-“Heh heh heh, Fang, Garo, that's the way.”
+“Heh heh heh, Fang, Garo, that’s the way.”
 
 @40302 Hyoma · 豹馬
 > 「うぅ……しまった……体が……」
@@ -362,37 +401,40 @@ that one is your next prey. Hunt him down splendidly.”
 “Do not interfere! Now, Fang, Garo! Hurry and deliver the final blow to your prey!”
 
 @40309 Chizuru · ちずる
+# 审校：“来瞄准我”生硬
 > 「くっ、豹馬がんばって!! 化け物
 >  こっちよ! 私をねらいなさい!」
-“Ngh, Hyoma, hang in there!! Monster, over here! Aim at me!”
+“Ngh, Hyoma, hang in there!! Monster, over here! Come after me!”
 
 @40310 Janera · ジャネラ
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：句子拗口，理顺
 > 「なにをしておる! 最初にねらった
 >  獲物は、最後のとどめをさすまで
-“What are you doing! The prey you target first must be chased until you deliver the final blow!
+“What are you doing?! Once you pick your prey, you chase it until you finish it off!
 ---
 >  追わねばならぬ!
 >  ええい、なにをしておるのじゃ!」
-Damn, what are you doing?!”
+Bah, what are you doing?!”
 
 @40311 Chizuru · ちずる
+# 审校：“当你的对手”直译
 > 「そうよ、こっちにいらっしゃい!
 >  私が相手をしてあげる!」
-“That's right, come over here! I'll be your opponent!”
+“That’s right, come over here! I’ll take you on!”
 
 @40312 Hyoma · 豹馬
 > 「う……だめだ、ちずる……逃げろ……」
 “Ugh... No, Chizuru... Run...”
 
 @40313 Chizuru · ちずる
+# 审校：全局：弯撇号／弯引号
 > 「だめよ、あなたを置いていけない!
 >  連絡したから、みんな、すぐ
-“No, I can't leave you behind! I've contacted them, so everyone will
+“No, I can’t leave you behind! I’ve contacted them, so everyone will
 ---
 >  来てくれるわ。それまでは
 >  私だけでも……!」
-be here soon. Until then, even if it's just me...!”
+be here soon. Until then, even if it’s just me...!”
 
 @40314 Chizuru · ちずる
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -400,13 +442,13 @@ be here soon. Until then, even if it's just me...!”
 “Aaaaaah?! Hyomaaaaaa!!”
 
 @40315 Janera · ジャネラ
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：英文更自然
 > 「ええい、愚か者! 遊んでおるから
 >  そうなるのじゃ! キバよ、
-“Damn, you fool! That's what happens when you play around! Fang,
+“Bah, you fool! That’s what happens when you play around! Fang,
 ---
 >  一度戻るがよい!」
-return for now!”
+fall back for now!”
 
 @40316 Janera · ジャネラ
 # 审校：精读：キバ 名字／词条／自称
@@ -418,13 +460,13 @@ return for now!”
 Go back and do it again!”
 
 @40317 Janera · ジャネラ
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：英文更自然
 > 「ええい、愚か者! 遊んでおるから
 >  そうなるのじゃ! ガロよ、
-“Damn, you fool! That's what happens when you play around! Garo,
+“Bah, you fool! That’s what happens when you play around! Garo,
 ---
 >  一度戻るがよい!」
-return for now!”
+fall back for now!”
 
 @40318 Janera · ジャネラ
 # 审校：精读：キバ 名字／词条／自称
@@ -436,16 +478,16 @@ return for now!”
 Go back and do it again!”
 
 @40319 Janera · ジャネラ
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：全局：弯撇号／弯引号
 > 「ええい、なんということじゃ。
 >  撤退する!」
-“Damn, this is unbelievable. We're retreating!”
+“Damn, this is unbelievable. We’re retreating!”
 
 @40320 Janera · ジャネラ
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：全局：弯撇号／弯引号
 > 「ええい、なんということじゃ。
 >  撤退する!」
-“Damn, this is unbelievable. We're retreating!”
+“Damn, this is unbelievable. We’re retreating!”
 
 @40321 Janera · ジャネラ
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -494,9 +536,10 @@ off!!”
 “Seems we made it in time.”
 
 @40328 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「ああ。ほんま、もうあかんと思たで。
 >  こら豹馬、どうなっとんのや!?」
-“Yeah. I really thought we were done for. Hey, Hyoma, what's going on with you?!”
+“Yeah. I really thought we were done for. Hey, Hyoma, what’s going on with you?!”
 
 @40329 Brad · ブラッド（按段落 3DD3）
 > 「どうやら間一髪ってとこだな。
@@ -514,9 +557,10 @@ off!!”
 “He seems to be badly hurt. We need to treat him quickly...”
 
 @40332 Reika · レイカ
+# 审校：こっち 指我们；“打击敌人”生硬
 > 「それは、こっちにまかせてちょうだい。
 >  あなたたちは敵を叩いて!」
-“Leave that to us. You all go strike the enemy!”
+“Leave that to us. You go take out the enemy!”
 
 @40333 Chizuru · ちずる
 > 「レイカ!?
@@ -528,8 +572,9 @@ off!!”
 “Leave it to me!”
 
 @40335 Duke · デューク
+# 审校：去掉 I won't forgive you 套话
 > 「銀河帝国め……許さないぞ!」
-“Galactic Empire... I won't forgive you!”
+“Galactic Empire... You’ll pay for this!”
 
 @40336 Janera · ジャネラ
 # 审校：精读：キバ 名字／词条／自称
@@ -542,8 +587,9 @@ off!!”
 “W-what the?!”
 
 @40338 Boss · ボス
+# 审校：英文生硬
 > 「くっついて、ひとつになっちゃっただわさ」
-“They stuck together and became one, they did.”
+“They glommed together into one big thing!”
 
 @40339 Janera · ジャネラ
 > 「フフフフフ、さぁビッグシリウス、
@@ -551,24 +597,27 @@ off!!”
 “Hehehehe, now then, Big Sirius, mow down all these Earthlings!”
 
 @40340 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「てやんでぇ! 相手はたった1匹じゃ
 >  ねぇか。みんな、とっとと片づけて
-“Don't give me that! There's only one of them. Everyone, hurry up and finish it off,
+“Don’t give me that! There’s only one of them. Everyone, hurry up and finish it off,
 ---
 >  あのでかぶつも、やっつけちまおうぜ!」
-and let's smash that big thing too!”
+and let’s smash that big thing too!”
 
 @40341 Maria · マリア
 > 「……!? 待って、甲児!」
 “...?! Wait, Koji!”
 
 @40342 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「マリアちゃん!? どうしたんだ?」
-“Maria?! What's wrong?”
+“Maria?! What’s wrong?”
 
 @40343 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「敵……くるわ!」
-“The enemy... they're coming!”
+“The enemy... they’re coming!”
 
 @40344 Koji · 甲児
 > 「なんだって!?」
@@ -585,59 +634,66 @@ and let's smash that big thing too!”
 “Warchimedes. Very well, show me what you can do.”
 
 @40347 Warchimedes · ワルキメデス
+# 审校：全局：弯撇号／弯引号
 > 「ははっ。全軍、地球人を
 >  攻撃だ!」
-“Yes, ma'am. All forces, attack the Earthlings!”
+“Yes, ma’am. All forces, attack the Earthlings!”
 
 @40348 Koji · 甲児
 > 「な……なんだぁ!?」
 “W-what the?!”
 
 @40349 Boss · ボス
+# 审校：英文生硬
 > 「くっついて、ひとつになっちゃっただわさ」
-“They stuck together and became one, they did.”
+“They glommed together into one big thing!”
 
 @40350 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「てやんでぇ! 相手はたった1匹じゃ
 >  ねぇか。みんな、とっとと片づけて
-“Don't give me that! There's only one of them. Everyone, hurry up and finish it off,
+“Don’t give me that! There’s only one of them. Everyone, hurry up and finish it off,
 ---
 >  あのでかぶつも、やっつけちまおうぜ!」
-and let's smash that big thing too!”
+and let’s smash that big thing too!”
 
 @40351 Maria · マリア
 > 「……!? 待って、甲児!」
 “...?! Wait, Koji!”
 
 @40352 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「マリアちゃん!? どうしたんだ?」
-“Maria?! What's wrong?”
+“Maria?! What’s wrong?”
 
 @40353 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「敵……くるわ!」
-“The enemy... they're coming!”
+“The enemy... they’re coming!”
 
 @40354 Koji · 甲児
 > 「なんだって!?」
 “What did you say?!”
 
 @40355 Warchimedes · ワルキメデス
+# 审校：断页在“来”字前，理顺；英文 too 多余
 > 「ジャネラ様にも困ったものだ。
 >  後始末はいつも私に回って
-“Lady Janera is a handful too. The cleanup always comes back
+“Lady Janera is such a handful. The cleanup always falls
 ---
 >  くるのだからな。全軍、地球人
 >  どもを生かして帰すな!」
-to me. All forces, don't let a single Earthling leave alive!”
+to me. All forces, don’t let a single Earthling leave alive!”
 
 @40356 Warchimedes · ワルキメデス
+# 审校：同上
 > 「ジャネラ様にも困ったものだ。
 >  後始末はいつも私に回って
-“Lady Janera is a handful too. The cleanup always comes back
+“Lady Janera is such a handful. The cleanup always falls
 ---
 >  くるのだからな。全軍、地球人
 >  どもを生かして帰すな!」
-to me. All forces, don't let a single Earthling leave alive!”
+to me. All forces, don’t let a single Earthling leave alive!”
 
 @40357 Kosuke · 小介
 > 「これは今の僕たちには、かなり
@@ -649,8 +705,9 @@ to me. All forces, don't let a single Earthling leave alive!”
 “E-everyone...”
 
 @40359 Beauty · ビューティ
+# 审校：全局：弯撇号／弯引号
 > 「こら、動かないの!」
-“Hey, don't move!”
+“Hey, don’t move!”
 
 @40360 Daisaku · 大作
 > 「豹馬しゃん、ここは俺たちに
@@ -658,42 +715,47 @@ to me. All forces, don't let a single Earthling leave alive!”
 “Hyoma, leave this to us!”
 
 @40361 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「よっしゃ、いっちょやったろやないか」
-“All right, let's give it a go!”
+“All right, let’s give it a go!”
 
 @40362 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：英文 surely 生硬
 > 「おのれ、シシリス・キバ、ガロの仇は
 >  必ずうってくれようぞ! 覚えておれ!」
-“Curse you! I will surely avenge Sishiris, Fang, and Garo! Mark my words!”
+“Curse you! I swear I’ll avenge Sishiris, Fang, and Garo! Mark my words!”
 
 @40363 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「くっ……みんな、大丈夫か!
 >  俺も戦うぜ!」
-“Ngh... Everyone, are you all right?! I'm fighting too!”
+“Ngh... Everyone, are you all right?! I’m fighting too!”
 
 @40364 Reika · レイカ
 > 「ちょっと、ホントに大丈夫なの!?」
 “Hey, are you really okay?!”
 
 @40365 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「こんな程度のケガで、寝てるわけには
 >  いかないんだ!!」
-“I can't just lie around with a wound this small!!”
+“I can’t just lie around with a wound this small!!”
 
 @40366 Chizuru · ちずる
+# 审校：全局：弯撇号／弯引号
 > 「豹馬!? お願いだから無茶しな
 >  いで!! あなたが倒れたら、私……」
-“Hyoma?! Please, don't push yourself!! If you collapse, I...”
+“Hyoma?! Please, don’t push yourself!! If you collapse, I...”
 
 @40367 Hyoma · 豹馬
+# 审校：英文 in a place like this 直译
 > 「ちずる……大丈夫だ、俺は
 >  こんなところで、くたばりはしない
-“Chizuru... I'm fine. I'm not going to die in a place like this.
+“Chizuru... I’m fine. I’m not gonna kick the bucket here.
 ---
 >  しばらくなら十分戦える。
 >  一気にケリをつけてやろうぜ」
-I can still fight for a while. Let's finish this all at once.”
+I can still fight for a while. Let’s finish this in one go.”
 
 @40368 Chizuru · ちずる
 > 「え……ええ、豹馬、わかったわ!」
@@ -708,22 +770,25 @@ I can still fight for a while. Let's finish this all at once.”
 “But Hyoma was in real danger back there.”
 
 @40371 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「まったくや。どうせ豹馬のこっちゃ、
 >  なんや無茶しよったんやろ
-“Honestly. Knowing Hyoma, he must've gone and done somethin' reckless.
+“Honestly. Knowing Hyoma, he must’ve gone and done somethin’ reckless.
 ---
 >  あいつは、いっつもそうや」
-That guy's always like that.”
+That guy’s always like that.”
 
 @40372 Daisuke · 大介
+# 审校：全局：弯撇号／弯引号
 > 「ははっ、みんな無事だったんだから、
 >  いいじゃないか」
-“Haha, everyone made it out safe, so isn't that good enough?”
+“Haha, everyone made it out safe, so isn’t that good enough?”
 
 @40373 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「でも本当、たいしたことなくて
 >  よかったわね、ちずる」
-“But really, I'm glad it turned out fine, Chizuru.”
+“But really, I’m glad it turned out fine, Chizuru.”
 
 @40374 Chizuru · ちずる
 > 「ええ……」
@@ -734,12 +799,14 @@ That guy's always like that.”
 “Is everyone aboard?”
 
 @40376 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「乗ってるよ」
-“We're aboard.”
+“We’re aboard.”
 
 @40377 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「じゃ、梁山泊へ向かうわよ」
-“Then we're heading for Ryozanpaku.”
+“Then we’re heading for Ryozanpaku.”
 
 @40378 Boss · ボス
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -748,9 +815,10 @@ That guy's always like that.”
 “Whoa?! Hey, wait for meee!!”
 
 @40379 Beauty · ビューティ
+# 审校：全局：弯撇号／弯引号
 > 「あら? やだ、ちょっと、
 >  ボスが乗ってなかったじゃないの!」
-“Oh? Goodness, wait, Boss wasn't aboard!”
+“Oh? Goodness, wait, Boss wasn’t aboard!”
 
 @40380 Boss · ボス
 > 「おいてきぼりなんて、ひどいわよ」
@@ -762,9 +830,10 @@ That guy's always like that.”
 “My bad, my bad. I just figured you were aboard.”
 
 @40382 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「もぅ、しっかりしてよ。今度こそ
 >  大丈夫ね? それじゃ、行くわよ」
-“Honestly, get it together. You're really aboard this time? Then let's go.”
+“Honestly, get it together. You’re really aboard this time? Then let’s go.”
 
 @40383 Hyoma · 豹馬
 > 「う……」
@@ -789,65 +858,74 @@ That guy's always like that.”
 “I see... Looks like I made you worry. Sorry about that.”
 
 @40388 Chizuru · ちずる
-# 审校：“Teacher Hasan”不符合英文习惯，词表中ハサン为Hasan，去掉Teacher。
+# 审校：全局：弯撇号／弯引号
 > 「いいのよ……本隊に合流したら、
 >  ハサン先生か、サリィさんに
-“It's all right... Once we rejoin the main force, you'll have to get
+“It’s all right... Once we rejoin the main force, you’ll have to get
 ---
 >  みてもらわなくちゃね」
 checked out by Hasan or Sally.”
 
 @40389 Hyoma · 豹馬
+# 审校：全局：弯撇号／弯引号
 > 「ああ……早いとこ治さないとな」
-“Yeah... I've gotta get patched up quick.”
+“Yeah... I’ve gotta get patched up quick.”
 
 @40390 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「おっと、そろそろ梁山泊だぜ」
-“Whoa, we're almost at Ryozanpaku.”
+“Whoa, we’re almost at Ryozanpaku.”
 
 @40391 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「お父さまたちが無事なのかどうか
 >  わかったかしら……」
-“I wonder if we'll find out whether Father and the others are safe...”
+“I wonder if we’ll find out whether Father and the others are safe...”
 
 @40392 Kosuke · 小介
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：英文 once 直译
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授でしたね。僕も1度
 >  お会いして、お話をうかがいたいです」
-“That would be Professor Yumi. I'd like to meet him once and hear what he has to say.”
+“That would be Professor Yumi. I’d love to meet him sometime and hear what he has to say.”
 
 @40393 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「合流できたら、紹介してあげるわよ」
-“Once we join up, I'll introduce you.”
+“Once we join up, I’ll introduce you.”
 
 @40394 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「大丈夫だよ、さやかさん。
 >  博士たちは、中条長官や
-“It'll be fine, Sayaka. Chief Chujo and
+“It’ll be fine, Sayaka. Chief Chujo and
 ---
 >  銀鈴さんの仲間の人たちが
 >  守ってくれてるさ」
-Ginrei's people are protecting the professors.”
+Ginrei’s people are protecting the professors.”
 
 @40395 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「四谷博士もいてもらえると、
 >  いいんですけどね」
-“It'd be nice if Dr. Yotsuya were there too.”
+“It’d be nice if Dr. Yotsuya were there too.”
 
 @40396 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「なんや小介、博士に用でも
 >  あるんか?」
-“What's this, Kosuke? You got business with the doctor?”
+“What’s this, Kosuke? You got business with the doctor?”
 
 @40397 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「ええ……実は、ちょっとコン・バトラーの
 >  強化をいくつか考えているんですよ」
-“Yes... Actually, I've been thinking about a few upgrades for the Combattler V.”
+“Yes... Actually, I’ve been thinking about a few upgrades for the Combattler V.”
 
 @40398 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「ほんまか? そりゃ楽しみやなぁ」
-“For real? Well, that's somethin' to look forward to.”
+“For real? Well, that’s somethin’ to look forward to.”
 
 @40399 Boss · ボス
 > 「小介、今度ボスボロットにも何か
@@ -860,20 +938,22 @@ Ginrei's people are protecting the professors.”
 “Huh? The Boss Borot? Hmm, let me think...”
 
 @40401 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「小介、はっきりいってやった方が
 >  いいぞ。無理だって」
-“Kosuke, you'd better just tell him straight. It's impossible.”
+“Kosuke, you’d better just tell him straight. It’s impossible.”
 
 @40402 Boss · ボス
-# 审校：精读：キバ 名字／词条／自称
+# 审校：去掉 I won't forgive you
 > 「なんでだよ、兜。俺さまのボスボロット
 >  をバカにすると許さないわよ」
-“Why, Kabuto? If you make fun of my Boss Borot, I won't forgive you!”
+“Why, Kabuto? Make fun of my Boss Borot and you’re gonna get it!”
 
 @40403 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「あ、ねぇねぇボス、あたし前から
 >  聞いてみたかったんだけど」
-“Oh, hey, Boss, there's something I've been wanting to ask you for a while.”
+“Oh, hey, Boss, there’s something I’ve been wanting to ask you for a while.”
 
 @40404 Boss · ボス
 > 「おう、なんでも聞いてちょうだい」
@@ -903,19 +983,22 @@ Ginrei's people are protecting the professors.”
 Being able to fight this well in a pile of junk is amazing. Right, Boss?”
 
 @40409 Boss · ボス
+# 审校：全局：弯撇号／弯引号
 > 「……さやかぁ、あんまり、ガラクタガラクタ
 >  いわないでくれよぉ」
-“...Sayaka, come on, don't keep calling it junk.”
+“...Sayaka, come on, don’t keep calling it junk.”
 
 @40410 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「なによ、ほめてあげてるのが
 >  気にくわないっていうの、ボス?」
-“What, Boss? Are you saying you don't like being complimented?”
+“What, Boss? Are you saying you don’t like being complimented?”
 
 @40411 Beauty · ビューティ
+# 审校：全局：弯撇号／弯引号
 > 「はーいはい、お取りこみ中ごめんなさい
 >  ガンドールが見えてきたわ
-“All right, all right, sorry to interrupt your little chat, but Gandor's coming into view.
+“All right, all right, sorry to interrupt your little chat, but Gandor’s coming into view.
 ---
 >  着艦するから、みんな席についててね」
-We're landing, so everyone take your seats.”
+We’re landing, so everyone take your seats.”

@@ -1,28 +1,30 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @42232 Glemy · グレミー
+# 审校：英文悬垂修饰改顺
 > (タイミングが早すぎたか……
 >  しかし、遅らせれば、ハマーンは
-(Was my timing too early...? But if I'd delayed, Haman would have
+(Did I move too soon...? But if I’d waited, Haman would have
 ---
 >  手をうっていただろう。
 >  ハマーンをやりそこねた以上
-made her move. Having failed to finish Haman off,
+made her move. Now that I’ve failed to finish Haman off,
 ---
 >  状況はそれほどよいとは
 >  いえんな……いや)
-the situation isn't exactly favorable... no.)
+things aren’t exactly in my favor... no.)
 
 @42233 Glemy · グレミー
+# 审校：“这手举起来过”直译，改成拳头已举起
 > (味方をあざむくには、味方と
 >  同じ顔をせねばならん
-(To deceive your allies, you must wear the same face as them.
+(To fool your allies, you have to wear the same face they do.
 ---
 >  ましてや、1度振りあげた手だ)
-All the more so for a hand I've already raised once.)
+All the more so with my fist already raised.)
 
 @42234 Glemy · グレミー
-# 审校：精读：そのままで聞け
+# 审校：全局：弯撇号／弯引号
 > 「そのままで聞け、ジオンの兵士たちよ
 >  もはや忍従の時は去った
 “Stay where you are and listen, soldiers of Zeon! The time of silent obedience is over.
@@ -41,7 +43,7 @@ The ones who will grasp true Zeon, and this Earth Sphere, in their hands
 ---
 >  ハマーンの首を我が
 >  面前に差しだす諸君らである
-are you, who will lay Haman's head before me!
+are you, who will lay Haman’s head before me!
 ---
 >  さすれば、地球圏の英雄として
 >  末代までたたえられよう!」
@@ -53,23 +55,25 @@ Do so, and you shall be praised as heroes of the Earth Sphere for all generation
 “Heh, clever words for a greenhorn.”
 
 @42236 Ple-Two · プルツー
+# 审校：去句尾“哦”，英文重复
 > 「気にいったよ、グレミー。
 >  こういうの、好きだ」
-“I like it, Glemy. This kind of thing, I love it.”
+“I like it, Glemy. I like this kind of thing.”
 
 @42237 Glemy · グレミー
-# 审校：精读：破折号
+# 审校：英文语序不通，中文“觉悟”腔
 > 「別にお前に喜んでもらうためではない
 >  昨日までハマーンに忠誠を誓って
-“It's not to please you. Those who swore loyalty to Haman until yesterday,
+“It’s not to please you. For people who were swearing loyalty to Haman just yesterday,
 ---
 >  いた者たちには、地球をくれてやる
 >  くらいのことは、覚悟しないとな」
-I'd best be prepared to give them even the Earth.”
+I’d better be ready to hand them the whole Earth.”
 
 @42238 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「準備はいいようだよ、マシュマー」
-“Looks like we're ready, Mashymre.”
+“Looks like we’re ready, Mashymre.”
 
 @42239 Mashymre · マシュマー
 > 「うむ……では行くとするか」
@@ -102,49 +106,56 @@ Follow me and crush him!”
 “Are you sure?”
 
 @42244 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「間違いないわよ」
-“There's no mistake.”
+“There’s no mistake.”
 
 @42245 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「どうしたんだ?」
-“What's going on?”
+“What’s going on?”
 
 @42246 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「サイド3からハマーンの艦隊が
 >  出たそうです」
-“Haman's fleet has left Side 3.”
+“Haman’s fleet has left Side 3.”
 
 @42247 Amuro · アムロ
+# 审校：英文生硬
 > 「いよいよか。数はわかるか?」
-“So it's time. Can you tell the numbers?”
+“So it’s time. Do we know their numbers?”
 
 @42248 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「いま月から来た映像を
 >  チェックしてもらってます」
-“We're having the footage just in from the Moon checked now.”
+“We’re having the footage just in from the Moon checked now.”
 
 @42249 Amuro · アムロ
 > 「ベルトーチカ?」
 “Beltorchika?”
 
 @42250 Beltorchika · ベルトーチカ
-# 审校：修正双重否定导致的语法错误，改为自然的英语表达。
+# 审校：全局：弯撇号／弯引号
 > 「はっきりとはわからないけど、
 >  サイド3には
-“I can't say for certain, but I don't think Side 3 has
+“I can’t say for certain, but I don’t think Side 3 has
 ---
 >  ほとんど艦艇を残していないと
 >  思うわ」
 left many ships behind.”
 
 @42251 Amuro · アムロ
+# 审校：英文生硬
 > 「そうか……確認を続けてくれ」
-“I see... keep confirming.”
+“I see... Keep checking.”
 
 @42252 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「結論が出たようじゃないの。
 >  サイド3に
-“Looks like we've got our answer. Not leaving any forces at
+“Looks like we’ve got our answer. Not leaving any forces at
 ---
 >  戦力を残さないってことは、
 >  ハマーンは本気だ。俺たちも
@@ -152,12 +163,12 @@ Side 3 means Haman is serious. We should help
 ---
 >  グレミーを叩くのを手伝うべきだ。
 >  そのうえでないと、後ろからやられる」
-crush Glemy too. Otherwise, we'll get hit from behind.”
+crush Glemy too. Otherwise, we’ll get hit from behind.”
 
 @42253 Alan · アラン
-# 审校：将句号改为逗号，使称呼与句子连接更自然。
+# 审校：去翻译腔，中文句读
 > 「うむ、その見方は正しいな。艦長」
-“Yes, that assessment is correct, Captain.”
+“Yes, that’s the right read, Captain.”
 
 @42254 Bright · ブライト
 > 「……よし、我々もアクシズへ向かう。
@@ -168,32 +179,37 @@ crush Glemy too. Otherwise, we'll get hit from behind.”
 And after that, Haman too, if possible.”
 
 @42255 Banjo · 万丈
+# 审校：去日语腔 no helping it
 > 「ちょっと厳しいが、
 >  しかたがないってところか」
-“It's a bit rough, but I guess there's no helping it.”
+“It’s a bit rough, but I guess we’ve got no choice.”
 
 @42256 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「ああ。だが苦しい戦いになる。
 >  みんな、覚悟しておいてくれ」
-“Yeah. But it'll be a hard fight. Everyone, be ready.”
+“Yeah. But it’ll be a hard fight. Everyone, be ready.”
 
 @42257 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。{HeroMech}は
 >  アクシズへ向けて出発する
-“That's how it is. The {HeroMech} departs for Axis.
+“That’s how it is. The {HeroMech} departs for Axis.
 ---
 >  補給と整備は終わらせておけよ!」
 Finish resupply and maintenance!”
 
 @42258 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「整備のほうはどうだ?
 >  調整は終わっているのか?」
-“How's the maintenance? Are the adjustments done?”
+“How’s the maintenance? Are the adjustments done?”
 
 @42259 Rain · レイン
+# 审校：全局：弯撇号／弯引号
 > 「大丈夫です。これ以上ないという
 >  くらい、キッチリ整備しておきましたよ」
-“All good. I've tuned it up so thoroughly you couldn't ask for better.”
+“All good. I’ve tuned it up so thoroughly you couldn’t ask for better.”
 
 @42260 Shirley · シャリー
 > 「そう。こういう状況じゃ、あたしたちに
@@ -205,20 +221,22 @@ Finish resupply and maintenance!”
 “That helps. Chan, how about you?”
 
 @42262 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「サイコミュの調整に手間どりました
 >  けど、もう終わりました
-“The Psycommu tuning took some time, but it's done now.
+“The Psycommu tuning took some time, but it’s done now.
 ---
 >  気をつけて、アムロ」
 Take care, Amuro.”
 
 @42263 Amuro · アムロ
+# 审校：あとがない 是没有退路
 > 「わかってるさ。だけどここで
 >  グレミーとハマーンを叩いておかなきゃ
-“I know. But if we don't crush Glemy and Haman here,
+“I know. But if we don’t crush Glemy and Haman here,
 ---
 >  俺たちにはもうあとがない」
-we won't have another chance.”
+we’ll have nowhere left to go.”
 
 @42264 Shinobu · 忍
 > 「ひゅ～っ、こいつはごきげんだぜ。
@@ -226,17 +244,19 @@ we won't have another chance.”
 “Whoa, this thing feels great. Might even run better than new, huh?”
 
 @42265 Astonaige · アストナージ
+# 审校：英文生硬
 > 「あったり前だ。誰の仕事だと
 >  思ってる。チェックは万全だ
-“Of course it does. Who do you think did the work? The checks are perfect.
+“Of course it does. Who do you think did the work? Everything’s been checked.
 ---
 >  すぐに出れるぞ」
 You can launch anytime.”
 
 @42266 Judau · ジュドー
+# 审校：去 As expected of
 > 「さっすがアストナージさん、
 >  いい仕事してるよ」
-“As expected of you, Astonaige. Great work.”
+“That’s Astonaige for you. Great work.”
 
 @42267 Astonaige · アストナージ
 > 「おせじはいいんだよ!
@@ -244,33 +264,38 @@ You can launch anytime.”
 “Save the flattery! Everyone, settle it this time!”
 
 @42268 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「戦闘宙域に入った。
 >  パイロット各員はスタンバっておけ!
-“We've entered the combat zone. All pilots, stand by!
+“We’ve entered the combat zone. All pilots, stand by!
 ---
 >  いつでも出られるようにしていろよ!」
 Be ready to launch at any time!”
 
 @42269 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「了解。行くぞ、ハヤト、ベンケイ」
-“Roger. Let's go, Hayato, Benkei.”
+“Roger. Let’s go, Hayato, Benkei.”
 
 @42270 Benkei · ベンケイ
 > 「おうっ!」
 “Yeah!”
 
 @42271 Glemy · グレミー
+# 审校：英文生硬
 > 「ハマーン、自らやられに出てくるとはな」
-“Haman, coming out to be finished off yourself, are you?”
+“Haman, coming out in person just to be shot down?”
 
 @42272 Ple-Two · プルツー
+# 审校：全局：弯撇号／弯引号
 > 「……来たぞ、用意はいいな?」
-“...They're here. Are you ready?”
+“...They’re here. Are you ready?”
 
 @42273 Ple Clone · プルクローン
+# 审校：全局：弯撇号／弯引号
 > 「はっ。グレミー様のために、命にかえて
 >  もハマーンの艦隊を叩いてみせます!」
-“Yes. For Lord Glemy, I'll strike down Haman's fleet even at the cost of my life!”
+“Yes. For Lord Glemy, I’ll strike down Haman’s fleet even at the cost of my life!”
 
 @42274 Ple-Two · プルツー
 > 「よし、行けッ!」
@@ -282,14 +307,17 @@ Be ready to launch at any time!”
 “What?! {HeroMech}, you intend to side with Haman?!”
 
 @42276 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「グレミー・トト!? ハマーンまで
 >  いるのか!? どうする……?」
-“Glemy Toto?! Haman's here too?! What do we do...?”
+“Glemy Toto?! Haman’s here too?! What do we do...?”
 
 @42277 Glemy · グレミー
+# 审校：冗談ではない 英文直译
+# 检查提示：未用必用译名：プルツー→Ple-Two
 > 「くっ……冗談ではない。
 >  プルツー、来い!」
-“Ngh... This is no joke. Ple-Two, come!”
+“Ngh... Don’t be ridiculous. Ple-Two, with me!”
 
 @42278 Ple-Two · プルツー
 > 「了解ッ」
@@ -302,8 +330,9 @@ Be ready to launch at any time!”
 “Glemy?! Lady Haman, leave this to us. You go after Glemy!”
 
 @42280 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「そうさせてもらう」
-“I'll do just that.”
+“I’ll do just that.”
 
 @42281 Judau · ジュドー
 > 「ハマーン、待て!」
@@ -318,13 +347,15 @@ Be ready to launch at any time!”
 I have no time to deal with you.”
 
 @42283 Kamille · カミーユ
+# 审校：原意是“那由我们自己决定”，中文接不上
 > 「それは、こっちで決めさせてもらう!」
-“Then we'll settle that ourselves!”
+“That’s for us to decide!”
 
 @42284 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「お前たちにはグレミーが
 >  どれほど危険か、わかっていない」
-“You don't understand just how dangerous Glemy is.”
+“You don’t understand just how dangerous Glemy is.”
 
 @42285 Judau · ジュドー
 > 「わかるよ」
@@ -335,13 +366,14 @@ I have no time to deal with you.”
 “You do?”
 
 @42287 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「結局は、あなたのやろうと
 >  していることだって同じだってね。
-“In the end, what you're trying to do is the same thing.
+“In the end, what you’re trying to do is the same thing.
 ---
 >  同じ結果になる。
 >  それが俺にはわかるんだ」
-It'll end the same way. That much I can see.”
+It’ll end the same way. That much I can see.”
 
 @42288 Haman · ハマーン
 > 「聞いたふうな口をきく」
@@ -352,12 +384,13 @@ It'll end the same way. That much I can see.”
 “Lady Haman, hurry!”
 
 @42290 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「時間をつぶすわけにはいかん。
 >  互いに生き残れば
-“I can't afford to waste time. If we both survive,
+“I can’t afford to waste time. If we both survive,
 ---
 >  少しは話につきあってもやろう」
-I'll hear a little more of what you have to say.”
+I’ll hear a little more of what you have to say.”
 
 @42291 Kamille · カミーユ
 > 「ハマーンッ!」
@@ -385,13 +418,15 @@ All right, we crush the rebels who follow Glemy right here and now!
 Mashymre Cello, moving out!”
 
 @42294 Rakan · ラカン
+# 审校：全局：弯撇号／弯引号
 > 「{HeroMech}め、よけいなことを!
 >  だが、そうそう好きにはさせん!」
-“{HeroMech}, you meddler! But I won't let you have your way so easily!”
+“{HeroMech}, you meddler! But I won’t let you have your way so easily!”
 
 @42295 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「マシュマー、死ぬなよ」
-“Mashymre, don't die.”
+“Mashymre, don’t die.”
 
 @42296 Mashymre · マシュマー
 > 「いらぬことだ。このマシュマー・セロ、
@@ -399,29 +434,33 @@ Mashymre Cello, moving out!”
 “None of your concern. I, Mashymre Cello, will fight on to the end for Lady Haman!”
 
 @42297 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「死ぬなよ、キャラ」
-“Don't die, Chara.”
+“Don’t die, Chara.”
 
 @42298 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「ジュドーかい?
 >  あたしを誰だと思ってるんだい
 “That you, Judau? Who do you think I am?
 ---
 >  こんなことでくたばりゃしないよ!」
-I'm not going to kick the bucket over something like this!”
+I’m not going to kick the bucket over something like this!”
 
 @42299 Rakan · ラカン
 > 「なぜだ!? なぜこんなことが……!?」
 “Why?! Why did this happen...?!”
 
 @42300 Arius · アリアス
+# 审校：全局：弯撇号／弯引号
 > 「こ、こんなばかなぁぁぁーっ!」
-“Th-this can't beeeee!”
+“Th-this can’t beeeee!”
 
 @42301 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「私はやられんぞ! このマシュマー・セロ
 >  己の肉が、骨から
-“I won't be beaten! I, Mashymre Cello, will fight until my flesh is
+“I won’t be beaten! I, Mashymre Cello, will fight until my flesh is
 ---
 >  そぎ取れるまで戦う!
 >  ハマーン様、バンザァァァーイッ!!」
@@ -432,14 +471,15 @@ torn from my bones! Lady Haman, banzaiiiii!!”
 “Wh-what? Who died?!”
 
 @42303 Chara · キャラ
-# 审校：原文结尾是「……!?」，初稿漏掉了省略号，补上。
+# 审校：全局：弯撇号／弯引号
 > 「ええいっ、あたしを誰だと思ってる
 >  んだい! あたしはキャラ・スーン……!?」
-“Gah, who do you think I am?! I'm Chara Soon...?!”
+“Gah, who do you think I am?! I’m Chara Soon...?!”
 
 @42304 Bright · ブライト
+# 审校：片づいたか 是疑问，英文成了陈述
 > 「片づいたか……」
-“It's taken care of...”
+“Is that the last of them...?”
 
 @42305 Reika · レイカ
 > 「敵の新手が来たわ!」
@@ -450,13 +490,14 @@ torn from my bones! Lady Haman, banzaiiiii!!”
 “Ngh...”
 
 @42307 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「なにをやっている、{HeroMech}!
 >  グレミーはアクシズ内部にいるはずだ
 “What are you doing, {HeroMech}?! Glemy should be inside Axis.
 ---
 >  ここは我々が引き受ける。
 >  お前たちはアクシズへ行け!」
-We'll hold them here. You go to Axis!”
+We’ll hold them here. You go to Axis!”
 
 @42308 Bright · ブライト
 > 「なんだと?」
@@ -471,9 +512,10 @@ We'll hold them here. You go to Axis!”
 we have a duty to serve as the rear guard!”
 
 @42310 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「そうさ。こんなところであんたたちに
 >  死なれちゃ、面白くないからね」
-“That's right. It wouldn't be any fun if you all died in a place like this.”
+“That’s right. It wouldn’t be any fun if you all died in a place like this.”
 
 @42311 Beltorchika · ベルトーチカ
 > 「!? 艦長、あの二人の機体、
@@ -481,9 +523,10 @@ we have a duty to serve as the rear guard!”
 “?! Captain, those two units are taking hits.”
 
 @42312 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「心配は無用だ! お前たちとの
 >  決着も、いずれ必ずつける!
-“No need to worry! I'll settle things with you all someday, without fail!
+“No need to worry! I’ll settle things with you all someday, without fail!
 ---
 >  行け!」
 Go!”
@@ -494,8 +537,9 @@ Go!”
 “...All right, all units, charge into Axis!”
 
 @42314 Bright · ブライト
+# 审校：同上
 > 「片づいたか……」
-“It's taken care of...”
+“Is that the last of them...?”
 
 @42315 Reika · レイカ
 > 「敵の新手が来たわ!」
@@ -516,9 +560,10 @@ Go!”
 “?! It looks like his unit is heavily damaged.”
 
 @42319 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「お前たちとの決着もついていないのだ
 >  私もあとから、はせ参じる
-“Our score with you isn't settled yet. I'll come after you shortly,
+“Our score with you isn’t settled yet. I’ll come after you shortly,
 ---
 >  ここは私にまかせて先へ行け!」
 so leave this to me and go on ahead!”
@@ -529,26 +574,29 @@ so leave this to me and go on ahead!”
 “...All right, all units, charge into Axis!”
 
 @42321 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「私はやられんぞ! このマシュマー・セロ
 >  己の肉が骨から
-“I won't be beaten! I, Mashymre Cello, will fight until my flesh is torn from my bones!
+“I won’t be beaten! I, Mashymre Cello, will fight until my flesh is torn from my bones!
 ---
 >  そぎ取れるまで戦う!
 >  ハマーン様、バンザァァァーイッ!!」
 Lady Haman, banzaiiiii!!”
 
 @42322 Bright · ブライト
+# 审校：同上
 > 「片づいたか……」
-“It's taken care of...”
+“Is that the last of them...?”
 
 @42323 Reika · レイカ
 > 「敵の新手が来たわ!」
 “Enemy reinforcements are here!”
 
 @42324 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「なにやってんだい! グレミーは
 >  アクシズ内部だよ。早く行きなよ!」
-“What're you doing?! Glemy's inside Axis. Hurry up and go!”
+“What’re you doing?! Glemy’s inside Axis. Hurry up and go!”
 
 @42325 Bright · ブライト
 > 「キャラ・スーン……?」
@@ -560,13 +608,14 @@ Lady Haman, banzaiiiii!!”
 “?! It looks like her unit is heavily damaged.”
 
 @42327 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「この機体じゃアクシズに
 >  入る前につかまっちまうさ
-“In this thing, I'd get caught before I even got into Axis.
+“In this thing, I’d get caught before I even got into Axis.
 ---
 >  行きな! あたしはこんなところじゃ
 >  死にゃしないよ!」
-Go! I'm not gonna die in a place like this!”
+Go! I’m not gonna die in a place like this!”
 
 @42328 Bright · ブライト
 > 「……よし、全機、
@@ -574,19 +623,22 @@ Go! I'm not gonna die in a place like this!”
 “...All right, all units, charge into Axis!”
 
 @42329 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「あたしを誰だと思ってるんだい!
 >  あたしは、キャラ・スーンだぞ!
-“Who do you think I am?! I'm Chara Soon!
+“Who do you think I am?! I’m Chara Soon!
 ---
 >  うおぉぉぉぉぉぉーっ!!」
 Uwooooooooh!!”
 
 @42330 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「……いったろうがさ、
 >  あたしはキャラ・スーン…………!?」
-“...Didn't I tell you? I'm Chara Soon...?!”
+“...Didn’t I tell you? I’m Chara Soon...?!”
 
 @42331 Bright · ブライト
+# 审校：同上
 > 「片づいたか……よし、
 >  全機、アクシズへ突入しろ!」
-“It's taken care of... All right, all units, charge into Axis!”
+“Is that the last of them...? All right, all units, charge into Axis!”

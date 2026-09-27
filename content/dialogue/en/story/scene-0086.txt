@@ -6,10 +6,10 @@
 “So, what did Haman have to say?”
 
 @41757 Alan · アラン
-# 审校：全局：Zuul 拼写
+# 审校：全局：弯撇号／弯引号
 > 「ハマーンの作戦がうまく運べば、
 >  敵の艦隊はいくつかに分断され
-“If Haman's plan goes well, the enemy fleet will be split into several groups,
+“If Haman’s plan goes well, the enemy fleet will be split into several groups,
 ---
 >  ズールがいると思われる艦隊の守り
 >  が手うすになる。そこを突くとのことだ」
@@ -20,15 +20,16 @@ and the fleet we believe Zuul is in will be left thinly guarded. We strike there
 “But will it really go that smoothly?”
 
 @41759 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「わからんな……信じるしかあるまい。
 >  で、我々の役割は?」
-“Hard to say... We have no choice but to trust her. So, what's our role?”
+“Hard to say... We have no choice but to trust her. So, what’s our role?”
 
 @41760 Alan · アラン
-# 审校：全局：Zuul 拼写
+# 审校：全局：弯撇号／弯引号
 > 「分断された敵艦隊を突破し、
 >  敵中央へ進軍する
-“Break through the divided enemy fleet and advance into the enemy's center.
+“Break through the divided enemy fleet and advance into the enemy’s center.
 ---
 >  ハマーンによれば、その時点までには
 >  ズールがいると思われる艦隊を
@@ -38,19 +39,20 @@ According to Haman, by that point we should be able to identify
 the fleet Zuul is believed to be in.”
 
 @41761 Amuro · アムロ
-# 审校：全局：Zuul 拼写
+# 审校：全局：弯撇号／弯引号
 > 「ずいぶん無茶な作戦だな。ズールが
 >  いる艦隊が特定できなければ
-“That's a pretty reckless plan. If we can't identify the fleet Zuul is in,
+“That’s a pretty reckless plan. If we can’t identify the fleet Zuul is in,
 ---
 >  我々も逆に敵に包囲される
 >  可能性があるぞ」
 we could end up surrounded by the enemy instead.”
 
 @41762 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「ああ、ハマーンもそれはわかっていた。
 >  長期戦をやりたくなければ
-“Yes, Haman knows that too. She said if we don't want a drawn-out war,
+“Yes, Haman knows that too. She said if we don’t want a drawn-out war,
 ---
 >  そのくらいの無茶はしなければ
 >  ならんともな」
@@ -61,9 +63,10 @@ we have to take that much of a risk.”
 “Hmm, that is a most reasonable point.”
 
 @41764 Ryoma · リョウ
+# 审校：yes or no 直译
 > 「だいたい、いまさらもう
 >  是も非もないでしょう。やるしかない」
-“Besides, there's no point arguing yes or no at this stage. We just have to do it.”
+“Besides, it’s too late to argue about it now. We just have to do it.”
 
 @41765 Daisuke · 大介
 # 审校：全局：Zuul 拼写
@@ -84,30 +87,33 @@ the fewer pointless sacrifices there will be.”
 “In six hours.”
 
 @41768 Shinobu · 忍
-# 审校：精读：措辞
+# 审校：全局：弯撇号／弯引号
 > 「なんだよ、もう余裕がないじゃねぇか」
-“What? That's barely any time at all!”
+“What? That’s barely any time at all!”
 
 @41769 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そうだな……交代で
 >  仮眠をとっておくことにしよう」
-“Right... Let's take turns getting some sleep.”
+“Right... Let’s take turns getting some sleep.”
 
 @41770 Haman · ハマーン
 > 「少佐、もう体のほうはよいのか?」
 “Major, are you fully recovered?”
 
 @41771 Gato · ガトー
+# 审校：全局：弯撇号／弯引号
 > 「は、おかげで万全です」
-“Yes, thanks to you, I'm in perfect shape.”
+“Yes, thanks to you, I’m in perfect shape.”
 
 @41772 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「そうか、それは良かった。月面が
 >  異星人からOZの手に戻ったとき
-“I see, that's good to hear. When the lunar surface was taken back from the aliens by OZ,
+“I see, that’s good to hear. When the lunar surface was taken back from the aliens by OZ,
 ---
 >  月にいたそうだな?」
-you were on the moon, weren't you?”
+you were on the moon, weren’t you?”
 
 @41773 Gato · ガトー
 > 「面目ない。地球圏の動向を
@@ -118,13 +124,14 @@ you were on the moon, weren't you?”
 a captive of the aliens...”
 
 @41774 Haman · ハマーン
+# 审校：去掉 It can't be helped / As expected of
 > 「いや、あの状況ではやむを得まい。
 >  よくも生きて戻れたものだと
-“No, under those circumstances it couldn't be helped. I was impressed
+“No, there was nothing else you could do in that situation. I was impressed
 ---
 >  感心していたのだ。さすがは
 >  “ソロモンの悪夢”と呼ばれた
-that you managed to return alive at all. As expected of the man called
+that you managed to return alive at all. Just what I’d expect from the man called
 ---
 >  アナベル・ガトー少佐だとな」
 the ‘Nightmare of Solomon,’ Major Anavel Gato.”
@@ -138,18 +145,20 @@ the ‘Nightmare of Solomon,’ Major Anavel Gato.”
 I am truly sorry.”
 
 @41776 Haman · ハマーン
+# 审校：英文更自然
 > 「いや、戦いはこれからだよ、少佐。こ
 >  ちらへこられよ。よいものをお見せしよう」
-“No, the battle is yet to come, Major. Come this way. I have something good to show you.”
+“No, the battle is yet to come, Major. Come this way. I have something fine to show you.”
 
 @41777 Gato · ガトー
+# 审校：感叹句式
 > 「おおっ、これは! すばらしい……
 >  なんとすばらしい機体だ
-“Oh, this is! Magnificent... What a magnificent machine.
+“Oh! This is... Magnificent... What a magnificent machine.
 ---
 >  まるでジオンの精神が、
 >  形となったかのようだ……」
-It's as if the spirit of Zeon itself has taken form...”
+It’s as if the spirit of Zeon itself has taken form...”
 
 @41778 Haman · ハマーン
 > 「モビルアーマー、ノイエジールだ。
@@ -165,8 +174,9 @@ Major. What do you say?”
 “This machine, for me? I accept without hesitation. Thank you, Lady Haman.”
 
 @41780 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「そういってもらえると、うれしい」
-“I'm glad to hear you say that.”
+“I’m glad to hear you say that.”
 
 @41781 Gato · ガトー
 > 「このアナベル・ガトー、この機体に
@@ -178,47 +188,52 @@ Major. What do you say?”
 “Lady Haman, you called for me?”
 
 @41783 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「グレミーか。面白いものを
 >  手にいれたが、使える者がいなくてな」
-“Glemy. I've acquired something interesting, but I have no one who can use it.”
+“Glemy. I’ve acquired something interesting, but I have no one who can use it.”
 
 @41784 Glemy · グレミー
 > 「面白いもの?」
 “Something interesting?”
 
 @41785 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「OZが使っていたものでな、
 >  サイコガンダムという
-“It's something OZ was using. It's called the Psyco Gundam,
+“It’s something OZ was using. It’s called the Psyco Gundam,
 ---
 >  ニュータイプ用のマシーンだ」
 a machine for Newtypes.”
 
 @41786 Glemy · グレミー
+# 审校：全局：弯撇号／弯引号
 > 「は……私のところにも
 >  使える者がおりませんが……」
-“Yes... I don't have anyone who can use it either...”
+“Yes... I don’t have anyone who can use it either...”
 
 @41787 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「お前が組織しているという
 >  ニュータイプ部隊ならば、どうだ?
-“What about this Newtype Corps you're organizing?
+“What about this Newtype Corps you’re organizing?
 ---
 >  プルだけではないのだろう?」
-It's not just Ple, is it?”
+It’s not just Ple, is it?”
 
 @41788 Glemy · グレミー
-# 审校：精读：措辞
+# 审校：全局：弯撇号／弯引号
 > 「……それはくちさがない連中の噂です」
-“...That's just idle gossip from loose-lipped fools.”
+“...That’s just idle gossip from loose-lipped fools.”
 
 @41789 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「隠さずともよい。
 >  私は知っているのだ、グレミー
-“You needn't hide it. I know, Glemy.
+“You needn’t hide it. I know, Glemy.
 ---
 >  別に責めているわけではない」
-I'm not blaming you.”
+I’m not blaming you.”
 
 @41790 Glemy · グレミー
 > 「はっ……」
@@ -230,27 +245,33 @@ I'm not blaming you.”
 “Glemy Toto... They say you carry the blood of the Zabi family...”
 
 @41792 Glemy · グレミー
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：プルツー→Ple-Two
 > 「いましばらくはやってみせねばならんか……
 >  プルツー、目覚めよプルツー」
-“I suppose I'll have to prove myself a while longer... Ple-Two, awaken, Ple-Two.”
+“I suppose I’ll have to prove myself a while longer... Ple-Two, awaken, Ple-Two.”
 
 @41793 Ple-Two · プルツー
+# 审校：Must I already be deployed 生硬
 > 「…………グレミーか。
 >  もう私が出ねばならないのか?」
-“...Glemy. Must I already be deployed?”
+“...Glemy. Am I needed already?”
 
 @41794 Glemy · グレミー
+# 审校：全局：弯撇号／弯引号
 > 「サイコガンダムというマシーンだ。できるな」
-“It's a machine called the Psyco Gundam. You can handle it, yes?”
+“It’s a machine called the Psyco Gundam. You can handle it, yes?”
 
 @41795 Ple-Two · プルツー
+# 审校：全局：弯撇号／弯引号
 > 「あたり前だ。体ならしにはちょうどいい」
-“Of course. It's just right for a little warm-up.”
+“Of course. It’s just right for a little warm-up.”
 
 @41796 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「時間だな……作戦を開始する。
 >  我が艦隊は目標宙域に対し
-“It's time... Begin the operation. Our fleet will enter the target area
+“It’s time... Begin the operation. Our fleet will enter the target area
 ---
 >  第3象限から侵入する
 >  コースをとる」
@@ -266,16 +287,17 @@ from the third quadrant.”
 “The enemy deployment is just as we expected, Amuro.”
 
 @41799 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「ああ、アクシズ軍はうまく
 >  やってくれているようだ
 “Yeah, the Axis Forces seem to be doing their part.
 ---
 >  だがまずはこいつを突破しなくては、
 >  敵の本陣と思われる艦隊に
-But first we have to break through these guys, or we can't attack
+But first we have to break through these guys, or we can’t attack
 ---
 >  攻撃をしかけられない」
-the fleet that seems to be the enemy's main force.”
+the fleet that seems to be the enemy’s main force.”
 
 @41800 Bright · ブライト
 > 「よし総員、戦闘配置につけ」
@@ -287,14 +309,16 @@ the fleet that seems to be the enemy's main force.”
 “Course is clear. All pilots, launch in sequence.”
 
 @41802 Amuro · アムロ
+# 审校：survivors 用词不当
 > 「ブライト、戦闘は終了した。
 >  残存する敵はない
-“Bright, the battle is over. No enemy survivors remain.
+“Bright, the battle is over. No enemies remain.
 ---
 >  これより全機帰投する」
 All units are returning to base now.”
 
 @41803 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「ご苦労、アムロ。
 >  ……被害報告はまだか?
 “Good work, Amuro. ...Do we have a damage report yet?
@@ -305,11 +329,12 @@ Hurry the units in for landing. Astonaige,
 ---
 >  収容次第整備を始めてくれ。
 >  またすぐに出ることになるかもしれん」
-start maintenance as soon as they're aboard. We may have to launch again soon.”
+start maintenance as soon as they’re aboard. We may have to launch again soon.”
 
 @41804 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「了解。できる限りはやりますよ」
-“Understood. I'll do as much as I can.”
+“Understood. I’ll do as much as I can.”
 
 @41805 Beltorchika · ベルトーチカ
 > 「艦長、アクシズのMSが
@@ -334,8 +359,9 @@ start maintenance as soon as they're aboard. We may have to launch again soon.�
 “This is Mashymre Cello of Axis. {HeroMech}, I request a response.”
 
 @41810 Beauty · ビューティ
+# 审校：全局：弯撇号／弯引号
 > 「あら、あの時の……」
-“Oh my, it's him from back then...”
+“Oh my, it’s him from back then...”
 
 @41811 Bright · ブライト
 > 「こちら{HeroMech}、
@@ -343,9 +369,10 @@ start maintenance as soon as they're aboard. We may have to launch again soon.�
 “This is {HeroMech}, Bright Noa speaking.”
 
 @41812 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「我々はハマーン様の命により、
 >  諸君らと同行するために
-“By Lady Haman's orders, we have come to accompany you.
+“By Lady Haman’s orders, we have come to accompany you.
 ---
 >  参上した。ハマーン様よりの
 >  ことづても預かっている
@@ -360,22 +387,24 @@ I request permission to land.”
 “...Accompany us? You intend to keep watch over us...?”
 
 @41814 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「そのような汚い真似はせん。
 >  ハマーン様の申し出を
 “I would never do anything so underhanded. Now that you have accepted
 ---
 >  受け入れた以上、
 >  諸君らは私の同志である
-Lady Haman's offer, you are my comrades.
+Lady Haman’s offer, you are my comrades.
 ---
 >  ともに戦うために参上し、
 >  何の不都合があろうか」
 We have come to fight alongside you. What could be the problem?”
 
 @41815 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「あ～もう! マシュマー、
 >  お前はごちゃごちゃうるさいんだよ!
-“Oh, come on! Mashymre, you're so damn long-winded!
+“Oh, come on! Mashymre, you’re so damn long-winded!
 ---
 >  いいから早く着艦させなよ
 >  {HeroMech}!
@@ -383,7 +412,7 @@ Just let us land already, {HeroMech}!
 ---
 >  こっちだって好きで
 >  やってんじゃないんだ!」
-It's not like we're doing this because we want to!”
+It’s not like we’re doing this because we want to!”
 
 @41816 Garrison · ギャリソン
 # 审校：管家口吻应更正式，避免缩写，且原文“わけにはまいりますまい”语气更庄重。
@@ -392,9 +421,10 @@ It's not like we're doing this because we want to!”
 “Captain, we must not waste time on debate here.”
 
 @41817 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「しかたがないか……わかった、
 >  着艦を許可する
-“I suppose there's no choice... Understood, landing is permitted.
+“I suppose there’s no choice... Understood, landing is permitted.
 ---
 >  ただし、こちらの部隊の収容が
 >  終了してからだ」
@@ -405,19 +435,22 @@ However, only after our own units have finished coming aboard.”
 “Understood.”
 
 @41819 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「むう、話には聞いていたが
 >  まさかこれほど年少者ばかりとは……」
-“Hmm, I'd heard the rumors, but I never imagined it would be this full of youngsters...”
+“Hmm, I’d heard the rumors, but I never imagined it would be this full of youngsters...”
 
 @41820 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「いいじゃないか。あたしは嫌いじゃないよ
 >  こういうのはさ」
-“It's fine, isn't it? I don't mind this sort of thing, you know.”
+“It’s fine, isn’t it? I don’t mind this sort of thing, you know.”
 
 @41821 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「ルー・ルカよ。案内するからついてきて
 >  ただし、武器は預からせてもらうわ」
-“I'm Roux Louka. I'll show you around, so follow me. But I'll have to take your weapons.”
+“I’m Roux Louka. I’ll show you around, so follow me. But I’ll have to take your weapons.”
 
 @41822 Mashymre · マシュマー
 > 「なに? それではまるで捕虜ではないか
@@ -428,16 +461,18 @@ However, only after our own units have finished coming aboard.”
 as comrades!”
 
 @41823 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「おやめよマシュマー。そんなことぐらい
 >  どうだっていいじゃないか
 “Let it go, Mashymre. What does a little thing like that matter?
 ---
 >  それよりあんた、ルーっていったね」
-More importantly, you said your name's Roux, right?”
+More importantly, you said your name’s Roux, right?”
 
 @41824 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「そうよ」
-“That's right.”
+“That’s right.”
 
 @41825 Chara · キャラ
 > 「グレミーの坊やが、よろしくってさ」
@@ -450,47 +485,52 @@ More importantly, you said your name's Roux, right?”
 “Huh? Why should I have to be nice to him?”
 
 @41827 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「知らないよ。あたしは伝えてくれって
 >  いわれただけだからね」
-“Don't ask me. I was just told to pass it along.”
+“Don’t ask me. I was just told to pass it along.”
 
 @41828 Masato · 雅人
+# 审校：全局：弯撇号／弯引号
 > 「ルー、何やってんの。
 >  急がないと怒られるぜ」
-“Roux, what are you doing? If we don't hurry, we'll get yelled at.”
+“Roux, what are you doing? If we don’t hurry, we’ll get yelled at.”
 
 @41829 Roux · ルー
 > 「わかってるわよ!」
 “I know!”
 
 @41830 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「艦長、マシュマー・セロと
 >  キャラ・スーンを連れてまいりました」
-“Captain, I've brought Mashymre Cello and Chara Soon.”
+“Captain, I’ve brought Mashymre Cello and Chara Soon.”
 
 @41831 Bright · ブライト
 > 「よし、入れ」
 “Good, send them in.”
 
 @41832 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「むう、話には聞いていたが
 >  まさかこれほど年少者ばかりとは……」
-“Hmm, I'd heard the rumors, but I never imagined it would be this full of youngsters...”
+“Hmm, I’d heard the rumors, but I never imagined it would be this full of youngsters...”
 
 @41833 Chara · キャラ
+# 审校：全局：弯撇号／弯引号
 > 「いいじゃないか。あたしは嫌いじゃないよ
 >  こういうのはさ」
-“It's fine, isn't it? I don't mind this sort of thing, you know.”
+“It’s fine, isn’t it? I don’t mind this sort of thing, you know.”
 
 @41834 Alan · アラン
-# 审校：「武器は預からせてもらいたい」是“请把武器交给我保管”，初稿“take your weapons”语气偏强硬，改为更符合请求语气的表达。
+# 审校：全局：弯撇号／弯引号
 > 「アラン・イゴールだ。
 >  案内するからついてきてくれ
-“I'm Alan Igor. I'll show you around, so follow me.
+“I’m Alan Igor. I’ll show you around, so follow me.
 ---
 >  ただし、武器は預からせて
 >  もらいたいが?」
-However, I'll need you to hand over your weapons, if you don't mind?”
+However, I’ll need you to hand over your weapons, if you don’t mind?”
 
 @41835 Mashymre · マシュマー
 # 审校：「それではまるで捕虜のようではないか」是“那样简直就像俘虏一样”，初稿“That makes us”时态和语气略生硬，改为更自然的表达。
@@ -503,18 +543,19 @@ However, I'll need you to hand over your weapons, if you don't mind?”
 We are here as comrades!”
 
 @41836 Chara · キャラ
-# 审校：「さっさとおしよ」是“快点吧”，初稿“Hurry it up”不够自然，改为“Just hurry up”。
+# 审校：与同场景另一分支统一
 > 「おやめよマシュマー。
 >  そんなことくらいどうだっていいじゃないか
-“Stop it, Mashymre. What does something like that even matter?
+“Let it go, Mashymre. What does something like that even matter?
 ---
 >  さっさとおしよ。
 >  この色男が困ってんじゃないか」
-Just hurry up. Can't you see this pretty boy's in trouble?”
+Just hurry up. Can’t you see this pretty boy’s in trouble?”
 
 @41837 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「アランだ」
-“It's Alan.”
+“It’s Alan.”
 
 @41838 Chara · キャラ
 > 「ほら、これでいいんだろ?
@@ -526,38 +567,42 @@ Just hurry up. Can't you see this pretty boy's in trouble?”
 “...This way.”
 
 @41840 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「マシュマー・セロとキャラ・スーンを
 >  連れてきた」
-“I've brought Mashymre Cello and Chara Soon.”
+“I’ve brought Mashymre Cello and Chara Soon.”
 
 @41841 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「さっそく話を聞かせてもらおうか、
 >  マシュマー・セロ」
-“Let's hear what you have to say right away, Mashymre Cello.”
+“Let’s hear what you have to say right away, Mashymre Cello.”
 
 @41842 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「なるほど、敵の親玉がいると
 >  思われる艦隊がふたつあるってわけか」
-“I see, so there are two fleets that might have the enemy's ringleader.”
+“I see, so there are two fleets that might have the enemy’s ringleader.”
 
 @41843 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。ハマーン様ご自身が
 >  一方へ向かわれた
-“That's right. Lady Haman herself headed for one of them.
+“That’s right. Lady Haman herself headed for one of them.
 ---
 >  {HeroMech}には
 >  残った方へ向かってもらいたい」
 I want the {HeroMech} to head for the other.”
 
 @41844 Judau · ジュドー
-# 审校：「信じられたもんじゃない」是“没法相信”，初稿“I can't believe”容易误解为“我无法相信”，改为更明确表达怀疑对方说法的意思。
+# 审校：全局：弯撇号／弯引号
 > 「本当にハマーンがやってるのかどうか
 >  信じられたもんじゃないぜ
-“I can't just take your word that Haman's really doing this.
+“I can’t just take your word that Haman’s really doing this.
 ---
 >  俺たちだけにやらせようってんじゃ
 >  ないだろうな?」
-You're not just trying to make us do all the work, are you?”
+You’re not just trying to make us do all the work, are you?”
 
 @41845 Mashymre · マシュマー
 > 「小僧、ハマーン様を
@@ -565,62 +610,67 @@ You're not just trying to make us do all the work, are you?”
 “Boy, are you trying to insult Lady Haman?!”
 
 @41846 Chara · キャラ
-# 审校：Chara's manic, cackling tone is slightly flattened; the revised line keeps her dismissive, impatient edge.
+# 审校：全局：弯撇号／弯引号
 > 「いいかげんにしな、マシュマー。
 >  話がちっとも進みゃしない」
-“Give it a rest, Mashymre. We're getting nowhere.”
+“Give it a rest, Mashymre. We’re getting nowhere.”
 
 @41847 Daisuke · 大介
 > 「ジュドーくんも、落ち着いてくれ」
 “Judau, you calm down too.”
 
 @41848 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「わかった、それは了承した。しかし
 >  君たちが一緒にくるというのは……」
-“Understood, I accept that. But the fact that you're coming along with us...”
+“Understood, I accept that. But the fact that you’re coming along with us...”
 
 @41849 Chara · キャラ
-# 审校：初稿基本正确，但“It's just kind Lady Haman's consideration”中“just”位置略生硬，改为更自然的表达。
+# 审校：英文更自然
 > 「気にしなさんな。
 >  お優しいハマーン様のお心づかいさ
-“Don't worry about it. It's kind Lady Haman's consideration.
+“Don’t worry about it. It’s just our kind Lady Haman looking out for you.
 ---
 >  あたしらだって異星人どもを
 >  やっちまうまでは
-We don't intend to fight you either,
+We don’t intend to fight you either,
 ---
 >  あんたらとやりあうつもりなんて
 >  ないんだからね」
-not until we've finished off those aliens.”
+not until we’ve finished off those aliens.”
 
 @41850 Amuro · アムロ
-# 审校：「時間があけば敵を分断したハマーンの作戦が無駄になる」中“無駄になる”的主语是“作戦”，初稿“will be for nothing”可以，但改为“will be wasted”更直接。
+# 审校：wasted 重复
 > 「ブライト、彼らのいう通りだ。
 >  それよりも今は急ごう
-“Bright, they're right. More importantly, let's hurry now.
+“Bright, they’re right. Right now, we need to hurry.
 ---
 >  時間があけば敵を分断した
 >  ハマーンの作戦が無駄になる」
-If we waste time, Haman's plan to split the enemy will be wasted.”
+If we drag our feet, Haman’s plan to split the enemy will be for nothing.”
 
 @41851 Mashymre · マシュマー
+# 审校：去掉 As expected of
 > 「ふむ、さすがに英雄と呼ばれた男は
 >  話がわかるようだな」
-“Hmm, as expected of a man called a hero. He understands.”
+“Hmm, a man they call a hero is quick to see reason, I see.”
 
 @41852 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「あれか……総員、
 >  第一戦闘配置!」
-“That's it, then... All hands, battle stations!”
+“That’s it, then... All hands, battle stations!”
 
 @41853 Mashymre · マシュマー
+# 审校：全局：弯撇号／弯引号
 > 「我らもいくぞ、キャラ!」
-“We're going too, Chara!”
+“We’re going too, Chara!”
 
 @41854 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「あんたら、頼むから俺たちの
 >  足をひっぱらないでくれよ」
-“Please, just don't get in our way.”
+“Please, just don’t get in our way.”
 
 @41855 Chara · キャラ
 > 「あっははははっ、いいねぇ、
@@ -628,9 +678,10 @@ If we waste time, Haman's plan to split the enemy will be wasted.”
 “Ahahahaha, nice, I like you, Judau.”
 
 @41856 Janera · ジャネラ
+# 审校：全局：弯撇号／弯引号
 > 「あれは……まさか地球人どもか!?
 >  おのれ、このようなところまで!!」
-“That's... could it be the Earthlings?! Curse them, all the way out here!!”
+“That’s... could it be the Earthlings?! Curse them, all the way out here!!”
 
 @41857 Wahl · ワール
 > 「陛下!」
@@ -643,39 +694,44 @@ If we waste time, Haman's plan to split the enemy will be wasted.”
 “Do not panic. There is no way I, of all people, could lose. I will crush them all.”
 
 @41859 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「ズールだ! 間違いない。
 >  ……ズール、今度こそ倒す!」
-“It's Zuul! No mistake. ...Zuul, this time I'll bring you down!”
+“It’s Zuul! No mistake. ...Zuul, this time I’ll bring you down!”
 
 @41860 Duke · デューク
+# 审校：全局：弯撇号／弯引号
 > 「ああ……フリード星の仇をうつんだ」
-“Yes... we'll avenge Planet Fleed.”
+“Yes... we’ll avenge Planet Fleed.”
 
 @41861 Daisuke · 大介
+# 审校：全局：弯撇号／弯引号
 > 「ああ……フリード星の仇をうつんだ」
-“Yes... we'll avenge Planet Fleed.”
+“Yes... we’ll avenge Planet Fleed.”
 
 @41862 Maria · マリア
 > 「ええ、兄さん!」
 “Yes, brother!”
 
 @41863 Bright · ブライト
+# 审校：本阵指敌方本营
 > 「どうやら我々のほうが
 >  本陣だったようだな
-“It seems we're the main force, then.
+“Looks like we drew the enemy’s main camp.
 ---
 >  ズールを倒せばいい、
 >  全力を出しつくせ!!」
-Just defeat Zuul. Give it everything you've got!!”
+Just take down Zuul. Give it everything you’ve got!!”
 
 @41864 Gorman · ゴーマン
 > 「ここから先へは進ません!」
 “You shall not pass beyond this point!”
 
 @41865 Dungele · ダンゲル
+# 审校：全局：弯撇号／弯引号
 > 「ウッハッハッハッハッ!!
 >  貴様らはここで倒してくれる!!」
-“Uhahahahaha!! I'll destroy you all right here!!”
+“Uhahahahaha!! I’ll destroy you all right here!!”
 
 @41866 Wufei · 五飛
 > 「…………」
@@ -692,24 +748,27 @@ Just defeat Zuul. Give it everything you've got!!”
 “What?! No, why would Wufei be with Zuul...”
 
 @41869 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「五飛、おい五飛、
 >  いったいどういうことだ!?
 “Wufei, hey Wufei, what the hell is going on?!
 ---
 >  まさか俺たちと戦おうってのかよ!?」
-You're not telling me you're going to fight us?!”
+You’re not telling me you’re going to fight us?!”
 
 @41870 Wufei · 五飛
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。それはお前たちが悪だからだ」
-“That's right. It's because you are evil.”
+“That’s right. It’s because you are evil.”
 
 @41871 Quatre · カトル
 > 「五飛……?」
 “Wufei...?”
 
 @41872 Sai Saici · サイ・サイシー
+# 审校：全局：弯撇号／弯引号
 > 「はぁ? お前どうしちまったんだ!?」
-“Huh? What's gotten into you?!”
+“Huh? What’s gotten into you?!”
 
 @41873 Wufei · 五飛
 > 「ズール皇帝こそが正義だ!
@@ -728,12 +787,14 @@ I will destroy!”
 and got himself brainwashed.”
 
 @41875 Ryo · 亮
+# 审校：全局：弯撇号／弯引号
 > 「ありうる話だな」
-“That's entirely possible.”
+“That’s entirely possible.”
 
 @41876 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「おいおい、冗談じゃないぜ」
-“Hey, hey, you've gotta be kidding me.”
+“Hey, hey, you’ve gotta be kidding me.”
 
 @41877 Quatre · カトル
 > 「五飛! やめてください、五飛!」
@@ -749,9 +810,10 @@ and got himself brainwashed.”
 That is my justice!”
 
 @41879 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「……五飛、自爆スイッチを押せ。
 >  それがお前のためだ」
-“...Wufei, press the self-destruct switch. It's for your own good.”
+“...Wufei, press the self-destruct switch. It’s for your own good.”
 
 @41880 Wufei · 五飛
 > 「フンッ、なぜ俺が
@@ -776,8 +838,9 @@ If you are truly in the right, then you should be able to defeat me!”
 “Your Majesty! Leave this to us!!”
 
 @41884 Wahl · ワール
+# 审校：全局：弯撇号／弯引号
 > 「うおぉぉっ!? くっ、こんな……」
-“Uwooooh?! Ngh, this can't be...”
+“Uwooooh?! Ngh, this can’t be...”
 
 @41885 Janera · ジャネラ
 > 「な、なんということじゃ!?
@@ -799,10 +862,10 @@ If you are truly in the right, then you should be able to defeat me!”
 “Y-you fiends... Uwooooooooh!!”
 
 @41889 Warchimedes · ワルキメデス
-# 审校：精读：脱出できんのか
+# 审校：全局：弯撇号／弯引号
 > 「おおぉぉっ!?
 >  だ、脱出できんのかぁっ!!」
-“Ooooh?! I-I can't get out?!”
+“Ooooh?! I-I can’t get out?!”
 
 @41890 Dungele · ダンゲル
 > 「なんだと!? うおぉぉぉぉっ!
@@ -815,13 +878,15 @@ If you are truly in the right, then you should be able to defeat me!”
 “Ugh... what is this?! Nataku, what in the world are we...”
 
 @41892 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「今度は逃さんぞ! ズール!」
-“You won't escape this time! Zuul!”
+“You won’t escape this time! Zuul!”
 
 @41893 Emperor Zuul · ズール皇帝
+# 审校：全局：弯撇号／弯引号
 > 「ワーッハハハハッ! 死にに来たか、
 >  マーズ!!」
-“Wahahahaha! So you've come to die, Mars!!”
+“Wahahahaha! So you’ve come to die, Mars!!”
 
 @41894 Emperor Zuul · ズール皇帝
 > 「ぬうぅっ! おのれ地球人どもめ!
@@ -829,22 +894,23 @@ If you are truly in the right, then you should be able to defeat me!”
 “Ngh! Curse you Earthlings! How dare you do this to me!!”
 
 @41895 Emperor Zuul · ズール皇帝
+# 审校：全局：弯撇号／弯引号
 > 「おのれ、恐れを知らぬ奴らめ!
 >  ワシの力を思い知るがいい!!」
-“You insolent fools who know no fear! I'll make you learn the true extent of my power!!”
+“You insolent fools who know no fear! I’ll make you learn the true extent of my power!!”
 
 @41896 Takeru · タケル
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「ズール! 貴様はもう終わりだ。
 >  銀河帝国軍もいずれは
-“Zuul! You're finished. The Galactic Empire's forces will fall before long as well.
+“Zuul! You’re finished. The Galactic Empire’s forces will fall before long as well.
 ---
 >  敗退する。ギシン星にも、もどれない
 >  貴様はそれでも
-You can't even return to Planet Gishin, and even so,
+You can’t even return to Planet Gishin, and even so,
 ---
 >  戦いをやめないというのか!?」
-you still won't stop fighting?!”
+you still won’t stop fighting?!”
 
 @41897 Emperor Zuul · ズール皇帝
 > 「かまわん。ワシは生き続け
@@ -867,18 +933,19 @@ Wahahahahaha!!”
 “Did it... work?”
 
 @41900 Emperor Zuul · ズール皇帝
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「ワーッハハハハッ!! ムダなことだ!
 >  しょせんムシケラにすぎぬお前たちに
-“Wahahahaha!! It's useless! You are nothing but insects,
+“Wahahahaha!! It’s useless! You are nothing but insects,
 ---
 >  このワシを倒すことなどできん!」
 you could never hope to defeat me!”
 
 @41901 Takeru · タケル
+# 审校：与另一分支统一
 > 「くっ……ダメなのか……!? オレたちでは
 >  本当にズールは倒せないのか!?」
-“Ngh... is it no use...?! Can we truly not defeat Zuul?!”
+“Ngh... is it no use...?! Can we really not defeat Zuul?!”
 
 @41902 Marg · マーグ
 # 审校：精读：破折号
@@ -899,18 +966,18 @@ Mars, fight for the vast and boundless universe.
 Stake your life on it. Only then will a miracle occur!)
 
 @41903 Takeru · タケル
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > 「マーグ……兄さん!? いや……
 >  それだけではない……まさか、父か!?
-“Marg... brother?! No... that's not all... could it be, Father?!
+“Marg... brother?! No... that’s not all... could it be, Father?!
 ---
 >  俺の……本当の父……? そうだ…
 >  ズールを倒さねば、平和はない
-My... real father...? That's right... unless Zuul is destroyed, there will be no peace.
+My... real father...? That’s right... unless Zuul is destroyed, there will be no peace.
 ---
 >  ガイヤーの反陽子爆弾ならば、
 >  いかにズールでも……」
-With Gaia's antiproton bomb, even Zuul should...”
+With Gaia’s antiproton bomb, even Zuul should...”
 
 @41904 Emperor Zuul · ズール皇帝
 > 「なんだ、何をするつもりだ、マーズ!」
@@ -926,13 +993,13 @@ With Gaia's antiproton bomb, even Zuul should...”
 the blast of an antiproton bomb?!”
 
 @41906 Emperor Zuul · ズール皇帝
-# 审校：祖尔皇帝为冷酷威严的暴君，voice 要求无缩写，将 can't 改为 cannot，it's 改为 it is。
+# 审校：直译
 > 「なに!? まさか貴様……
 >  やめろ、マーズ!
 “What?! You cannot mean... Stop it, Mars!
 ---
 >  そんなことをしても無駄だ!!」
-Even if you do this, it is useless!!”
+It will do you no good!!”
 
 @41907 Takeru · タケル
 > 「くっ……ズール!!
@@ -969,18 +1036,20 @@ borrowing that body! I will never be destroyed! Mars!!”
 “What was that? What happened?!”
 
 @41912 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「ズール皇帝の反応、
 >  消えました!!」
-“Emperor Zuul's signal has vanished!!”
+“Emperor Zuul’s signal has vanished!!”
 
 @41913 Bright · ブライト
 > 「やったのか!?」
 “Did he do it?!”
 
 @41914 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「なんだ……オレは、死んでいない?
 >  ……生きているのか!?」
-“What... I'm not dead? ...I'm alive?!”
+“What... I’m not dead? ...I’m alive?!”
 
 @41915 Kenji · ケンジ
 > 「タケル、いったいどうしたんだ!?」
@@ -1006,9 +1075,10 @@ No... you did well, Takeru.”
 “Commander...”
 
 @41919 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「よし! みんな、残った指揮官
 >  クラスを全力で叩け!
-“All right! Everyone, hit the remaining commander-class units with everything you've got!
+“All right! Everyone, hit the remaining commander-class units with everything you’ve got!
 ---
 >  それですべて終わる!」
 That will end it all!”
@@ -1053,18 +1123,21 @@ will spread across the universe, and there take new form to become a ruler!
 I will never be destroyed!”
 
 @41925 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「……ズール皇帝の反応、
 >  消えました!!」
-“...Emperor Zuul's signal has vanished!!”
+“...Emperor Zuul’s signal has vanished!!”
 
 @41926 Bright · ブライト
+# 审校：此分支无武自爆
 > 「やったか!?」
-“Did he do it?!”
+“Did we get him?!”
 
 @41927 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「よし! みんな、残った指揮官
 >  クラスを全力で叩け!
-“All right! Everyone, hit the remaining commander-class units with everything you've got!
+“All right! Everyone, hit the remaining commander-class units with everything you’ve got!
 ---
 >  それですべて終わる!」
 That will end it all!”
@@ -1075,9 +1148,9 @@ That will end it all!”
 “The remaining enemy forces have ceased combat.”
 
 @41929 Bright · ブライト
-# 审校：精读：措辞
+# 审校：全局：弯撇号／弯引号
 > 「終わったか……」
-“It's over, then...”
+“It’s over, then...”
 
 @41930 Beltorchika · ベルトーチカ
 > 「……艦長! 敵です!」
@@ -1101,9 +1174,10 @@ That will end it all!”
 “What?”
 
 @41935 Gishin Soldier · ギシン星兵
+# 审校：全局：弯撇号／弯引号
 > 「待ってくれ、俺たちは降伏する!
 >  攻撃はしないでくれ」
-“Wait, we surrender! Don't attack us!”
+“Wait, we surrender! Don’t attack us!”
 
 @41936 Gishin Soldier · ギシン星兵
 > 「俺たちはズール皇帝が怖くて、
@@ -1123,13 +1197,14 @@ We surrender! Please spare us!”
 “Yeah... All right, we accept your surrender. Disarm and wait.”
 
 @41939 Gishin Soldier · ギシン星兵
+# 审校：全局：弯撇号／弯引号
 > 「あ、ありがたい。これ以上
 >  無駄な戦いをしないために
-“Th-thank you. So that we don't fight any more pointless battles,
+“Th-thank you. So that we don’t fight any more pointless battles,
 ---
 >  俺たちで他の連中の説得も
 >  させてほしい」
-we'd like to help persuade the others too.”
+we’d like to help persuade the others too.”
 
 @41940 Banjo · 万丈
 > 「やれやれ、なんとか終わりにできそうだね」

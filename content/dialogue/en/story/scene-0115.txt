@@ -1,24 +1,24 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @50857 Cecily · セシリー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……それじゃあなたたちも
 >  レジスタンス部隊に
-“...So you're joining up with the resistance
+“...So you’re joining up with the resistance
 ---
 >  合流するんですか?」
 unit too?”
 
 @50858 Remy · レミー
-# 审校：全局：帝国軍 Imperial 大写统一
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ドクーガ→Docooga
 > 「ええ、聞きたいことがあるのよ。
 >  ……私たちはドクーガっていう組織を
-“Yes, there's something we want to ask. ...We're tracking an
+“Yes, there’s something we want to ask. ...We’re tracking an
 ---
 >  追っているんだけど、帝国軍と
 >  共同で何らかの行動を
-organization called Docooga, and we got word that they're carrying out
+organization called Docooga, and we got word that they’re carrying out
 ---
 >  起こすっていう情報があったのよ。
 >  レジスタンス部隊だったら
@@ -26,7 +26,7 @@ some kind of operation together with the Imperial army. We figured if
 ---
 >  何か知っていることが
 >  あるんじゃないかって……」
-anyone knew something, it'd be a resistance unit...”
+anyone knew something, it’d be a resistance unit...”
 
 @50859 Shingo · 真吾
 # 审校：补全整条台词的外层引号
@@ -38,71 +38,71 @@ anyone knew something, it'd be a resistance unit...”
 to give up on finding the unit.”
 
 @50860 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「僕たちはあらかじめ
 >  部隊に連絡して
-“We'd contacted the unit in advance,
+“We’d contacted the unit in advance,
 ---
 >  合流地点を決めていましたからね」
-so we'd already decided on a rendezvous point.”
+so we’d already decided on a rendezvous point.”
 
 @50861 Killy · キリー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「ま、でもそのおかげでこーんなかわいい
 >  お嬢さんに出会えたからね
 “Well, but thanks to that, I got to meet such a cute little lady.
 ---
 >  俺の運もまだまだ捨てたもんじゃない」
-My luck still isn't all bad.”
+My luck still isn’t all bad.”
 
 @50862 Remy · レミー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「キリー、いいかげんにしなさいよ。
 >  ……もうそろそろ合流地点よ」
-“Killy, that's enough out of you. ...We're almost at the rendezvous point.”
+“Killy, that’s enough out of you. ...We’re almost at the rendezvous point.”
 
 @50863 Shingo · 真吾
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「あれじゃないか?
 >  レジスタンス部隊ってのは……」
-“Isn't that them? The resistance unit, I mean...”
+“Isn’t that them? The resistance unit, I mean...”
 
 @50864 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……違うぞ! あれは敵だ!」
-“...No! That's the enemy!”
+“...No! That’s the enemy!”
 
 @50865 Killy · キリー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「どうもヤバイみたいよ。敵さん、
 >  俺たちのことに気づいたみたい!」
-“This looks bad. Looks like the enemy's noticed us!”
+“This looks bad. Looks like the enemy’s noticed us!”
 
 @50866 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「迎撃しましょう!
 >  セシリー、準備はいいかい」
-“Let's intercept them! Cecily, are you ready?”
+“Let’s intercept them! Cecily, are you ready?”
 
 @50867 Cecily · セシリー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ビギナ・ギナ→Vigna-Ghina
 > 「ビギナ・ギナで出るわ」
-“I'll sortie in the Vigna-Ghina.”
+“I’ll sortie in the Vigna-Ghina.”
 
 @50868 Shingo · 真吾
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「俺たちもいきましょうか!
 >  グッドサンダーチーム
-“Let's get going too! Good Thunder Team,
+“Let’s get going too! Good Thunder Team,
 ---
 >  出撃ってことで!」
 moving out!”
 
 @50869 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「敵部隊を全滅させましょう!」
-“Let's wipe out the enemy unit!”
+“Let’s wipe out the enemy unit!”
 
 @50870 Shingo · 真吾
 # 审校：补全整条台词的外层引号
@@ -120,39 +120,39 @@ moving out!”
 “Aaaah?! S-Seabook!”
 
 @50873 Killy · キリー
-# 审校：书名统一、引号
+# 审校：全局：弯撇号／弯引号
 > 「まだ『ブロンクスの狼』が
 >  書きあがってないのにね」
-“And ‘The Wolf of the Bronx’ still isn't finished yet.”
+“And ‘The Wolf of the Bronx’ still isn’t finished yet.”
 
 @50874 Shingo · 真吾
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「いっちょあがり!」
-“That's a wrap!”
+“That’s a wrap!”
 
 @50875 Cecily · セシリー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……なんとか終わったようね」
-“...Looks like it's finally over.”
+“...Looks like it’s finally over.”
 
 @50876 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「ああ。……でも戦いは、まだまだ続くさ」
-“Yeah. ...But the fight's still far from over.”
+“Yeah. ...But the fight’s still far from over.”
 
 @50877 Remy · レミー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「見て、真吾。
 >  あれ、レジスタンス部隊じゃないかしら」
-“Look, Shingo. Isn't that the resistance unit?”
+“Look, Shingo. Isn’t that the resistance unit?”
 
 @50878 Shingo · 真吾
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……あれがレジスタンス部隊かい?」
-“...So that's the resistance unit?”
+“...So that’s the resistance unit?”
 
 @50879 Seabook · シーブック
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……どうやらそうみたいです。
 >  合流しましょう」
-“...Seems that way. Let's join up with them.”
+“...Seems that way. Let’s join up with them.”

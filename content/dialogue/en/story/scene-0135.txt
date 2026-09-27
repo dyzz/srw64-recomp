@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @31513 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「突入するぞ!
 >  要塞を内部から破壊するんだ!」
-“We're going in! We'll destroy the fortress from the inside!”
+“We’re going in! We’ll destroy the fortress from the inside!”
 
 @31514 Murasame · 村雨
 # 审校：句末应为问号，原文为疑问句。
@@ -18,10 +19,10 @@
 “Captain Bright! An urgent transmission!”
 
 @31516 Bright · ブライト
-# 审校：空格
+# 审校：全局：弯撇号／弯引号
 > 「何だと!?
 >  ……君は! 村雨君か!」
-“What?! ...It's you! Murasame!”
+“What?! ...It’s you! Murasame!”
 
 @31517 Ginrei · 銀鈴
 > 「健二さん!」
@@ -53,9 +54,10 @@ all of them, no exceptions.”
 we can destroy this fortress!”
 
 @31520 Murasame · 村雨
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。だが、4つは連動して
 >  いるうえにまだ不安定で
-“That's right. But the four are linked, and they're still unstable.
+“That’s right. But the four are linked, and they’re still unstable.
 ---
 >  どれかを破壊してバランスをくずすと、
 >  残りが暴走する危険がある
@@ -94,13 +96,14 @@ And listen, be extremely careful.”
 “What, you let them get inside?! Curse them, always so clever...”
 
 @31526 Hell Marshal · 地獄大元帥
+# 审校：全局：弯撇号／弯引号
 > 「むうう、暗黒大将軍を
 >  もってしても……! おのれ人間ども
 “Grrr, even the Dark General...! Damn you humans!
 ---
 >  この上は生かして帰さぬ!
 >  我が同胞の無念
-This time I won't let you leave alive! I'll make you feel
+This time I won’t let you leave alive! I’ll make you feel
 ---
 >  思い知らせてくれようぞ!」
 the grief of my comrades!”
@@ -178,9 +181,10 @@ to its grave!”
 “You understand? Make every effort to destroy them at the same time!”
 
 @31540 Emperor Burai · ブライ大帝
+# 审校：全局：弯撇号／弯引号
 > 「やらせはせんぞ! 今度こそ引導を
 >  渡してやる」
-“I won't let you! This time I'll send you to your grave!”
+“I won’t let you! This time I’ll send you to your grave!”
 
 @31541 Marquis Janus · ヤヌス侯爵
 > 「このヤヌス侯爵は負けぬわ……」
@@ -219,8 +223,9 @@ destroy the remaining two as well.”
 “One left, hurry!”
 
 @31548 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「止まったぞ。よし、脱出する」
-“It's stopped. All right, we're pulling out.”
+“It’s stopped. All right, we’re pulling out.”
 
 @31549 Bright · ブライト
 # 审校：runaway 当名词不自然
@@ -236,8 +241,9 @@ destroy the remaining two as well.”
 “One left, hurry!”
 
 @31551 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「止まったぞ。よし、脱出する」
-“It's stopped. All right, we're pulling out.”
+“It’s stopped. All right, we’re pulling out.”
 
 @31552 Bright · ブライト
 # 审校：runaway 当名词不自然
@@ -253,8 +259,9 @@ destroy the remaining two as well.”
 “One left, hurry!”
 
 @31554 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「止まったぞ。よし、脱出する」
-“It's stopped. All right, we're pulling out.”
+“It’s stopped. All right, we’re pulling out.”
 
 @31555 Bright · ブライト
 # 审校：runaway 当名词不自然
@@ -270,8 +277,9 @@ destroy the remaining two as well.”
 “One left, hurry!”
 
 @31557 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「止まったぞ。よし、脱出する」
-“It's stopped. All right, we're pulling out.”
+“It’s stopped. All right, we’re pulling out.”
 
 @31558 Bright · ブライト
 # 审校：runaway 当名词不自然
@@ -340,17 +348,19 @@ destroy the remaining two as well.”
 “And them...?”
 
 @31573 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「移動要塞……消滅!
 >  すごい、完全にふきとんじゃってる……」
-“The mobile fortress... annihilated! Amazing, it's been completely blown away...”
+“The mobile fortress... annihilated! Amazing, it’s been completely blown away...”
 
 @31574 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「今度こそ連中も最後だな……。
 >  あの爆発では
-“This time they're finished for sure... After that explosion,
+“This time they’re finished for sure... After that explosion,
 ---
 >  もう復活してくることもあるまい」
-there's no way they'll be coming back.”
+there’s no way they’ll be coming back.”
 
 @31575 Ryoma · リョウ
 > 「ついに……やったか!」
@@ -367,8 +377,9 @@ there's no way they'll be coming back.”
 “Heh, thervesh you right!”
 
 @31578 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「おい、口から血が出てるぞ」
-“Hey, you're bleeding from the mouth.”
+“Hey, you’re bleeding from the mouth.”
 
 @31579 Koji · 甲児
 # 审校：甲儿对沙也加用「さやかさん」，按 address 应保留敬称，改为“Sayaka, the medicine...!”
@@ -376,8 +387,9 @@ there's no way they'll be coming back.”
 “Owww... Sayaka, the medicine...!”
 
 @31580 Daisaku · 大作
+# 审校：全局：弯撇号／弯引号
 > 「そうだ、村雨さんは!?」
-“That's right, what about Murasame?!”
+“That’s right, what about Murasame?!”
 
 @31581 Ginrei · 銀鈴
 # 审校：村雨是男性
@@ -406,14 +418,16 @@ there's no way they'll be coming back.”
 “Whath ith it?”
 
 @31586 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと甲児くん、動かないで!
 >  薬がつけられないじゃないの」
-“Koji, hold still for a moment! I can't put the medicine on otherwise.”
+“Koji, hold still for a moment! I can’t put the medicine on otherwise.”
 
 @31587 Tetsuya · 鉄也
+# 审校：全局：弯撇号／弯引号
 > 「どうしたんだ? マジンガーのパーツでも
 >  手に入ったのか?」
-“What's up? Did you get your hands on some Mazinger parts or something?”
+“What’s up? Did you get your hands on some Mazinger parts or something?”
 
 @31588 Astonaige · アストナージ
 # 审校：Parts, nothing / listen and be surprised 是直译
@@ -431,8 +445,9 @@ was going to house a production plant for the MP Great.”
 “What?!”
 
 @31590 Jun · ジュン
+# 审校：全局：弯撇号／弯引号
 > 「本当なの、それ!?」
-“Really, that's true?!”
+“Really, that’s true?!”
 
 @31591 Astonaige · アストナージ
 # 审校：wreckages 不成词；中文去“呢”，運びこんで 是搬上船
@@ -463,9 +478,10 @@ Once it’s assembled I’ll run a test, so I’m counting on you then.”
 “We could never manage that.”
 
 @31594 Kayra · ケーラ
+# 审校：全局：弯撇号／弯引号
 > 「メカニックの鏡だろ?
 >  ま、場数の違いさ」
-“He's the model mechanic, isn't he? Well, that's the difference experience makes.”
+“He’s the model mechanic, isn’t he? Well, that’s the difference experience makes.”
 
 @31595 Roux · ルー
 > 「マジンガーって、
@@ -478,36 +494,40 @@ Once it’s assembled I’ll run a test, so I’m counting on you then.”
 “Well, humans designed and built it, so if you put your mind to it, it can be done.”
 
 @31597 Kayra · ケーラ
+# 审校：全局：弯撇号／弯引号
 > 「考えてみたらその通りか。じゃあ、
 >  もしかしたらOZだって、グレートを
-“Come to think of it, you're right. Then maybe even OZ could
+“Come to think of it, you’re right. Then maybe even OZ could
 ---
 >  量産してしまう可能性が
 >  あるんじゃない?」
-mass-produce a Great, couldn't they?”
+mass-produce a Great, couldn’t they?”
 
 @31598 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「そんなことになったらおしまいだね。
 >  俺たちも
-“If that happened, it'd be all over. We wouldn't be able to keep up
+“If that happened, it’d be all over. We wouldn’t be able to keep up
 ---
 >  ゲリラ活動どころじゃなくなるだろうぜ」
 our guerrilla activities either.”
 
 @31599 Tetsuya · 鉄也
+# 审校：全局：弯撇号／弯引号
 > 「おい、冗談でもそんな話はやめてくれ」
-“Hey, don't even joke about that.”
+“Hey, don’t even joke about that.”
 
 @31600 Jun · ジュン
+# 审校：全局：弯撇号／弯引号
 > 「そうよ。私、
 >  何だか真剣に怖かったわ、今の」
-“That's right. Honestly, that really scared me just now.”
+“That’s right. Honestly, that really scared me just now.”
 
 @31601 Astonaige · アストナージ
-# 审校：「科学ってのは、決して万能じゃない」初稿 almighty 可接受，但 all-powerful 更自然口语化。
+# 审校：全局：弯撇号／弯引号
 > 「ははは、実際はそんなことは
 >  ないと思うよ。特にこの手のマシンは
-“Hahaha, in reality I don't think that'll happen. These kinds of machines especially are
+“Hahaha, in reality I don’t think that’ll happen. These kinds of machines especially are
 ---
 >  パイロットに合わせて特化した、
 >  ほとんど1点物だからね……
@@ -515,7 +535,7 @@ tailored to their pilot, practically one-of-a-kind...
 ---
 >  科学ってのは、
 >  決して万能じゃない」
-Science isn't all-powerful, you know.”
+Science isn’t all-powerful, you know.”
 
 @31602 Kayra · ケーラ
 > 「ふうん……。あんたがいうんなら、
@@ -572,8 +592,9 @@ unite as one and press on with the construction of the World Nation!”
 (...Heero, I too will do everything I can.)
 
 @31607 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「な……ばかな!」
-“Th-That's insane!”
+“Th-That’s insane!”
 
 @31608 Roux · ルー
 > 「ロームフェラはサンクキングダムを
@@ -589,17 +610,19 @@ And now Miss Relena is its representative...”
 “Captain Bright, what does this mean?!”
 
 @31610 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「わからん。あるいは強制されたのか?
 >  いや、たとえそうだとしても
-“I don't know. Could she have been forced into it? No, even if she were,
+“I don’t know. Could she have been forced into it? No, even if she were,
 ---
 >  彼女がそれに屈するはずがない」
 she would never yield to that.”
 
 @31611 Show · ショウ
+# 审校：全局：弯撇号／弯引号
 > 「地上の争いを終わらせるため……
 >  じゃないんですか?」
-“Isn't it to put an end to the fighting on Earth...?”
+“Isn’t it to put an end to the fighting on Earth...?”
 
 @31612 David · デビッド
 > 「だからといってよ!」
@@ -681,13 +704,14 @@ how great a risk that is for Romefeller.”
 or perhaps they will come from space.”
 
 @31623 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「…銀河帝国軍先遣艦隊は
 >  接近を続けています
-“...The Galactic Empire's advance fleet continues to approach.
+“...The Galactic Empire’s advance fleet continues to approach.
 ---
 >  OZ宇宙軍の形勢は
 >  不利になるでしょう。もっとも
-The OZ space force's position will worsen. Though,
+The OZ space force’s position will worsen. Though,
 ---
 >  戦艦リーブラが完成すれば、
 >  またわからなくなりますが……」
@@ -720,19 +744,21 @@ Hyakki-Mycenae forces. However, Zero and Epyon were not confirmed among them...�
 “Lady Haman, we will reach the Earth Sphere shortly. What are your orders?”
 
 @31628 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「そのまま進め。OZ宇宙軍は
 >  異星人のことで頭がいっぱいだ
 “Proceed as we are. The OZ space force has its hands full with the aliens.
 ---
 >  このグワダン1隻のことなど、
 >  気にかける余裕もあるまい」
-They'll have no spare attention to worry about a single Gwadan.”
+They’ll have no spare attention to worry about a single Gwadan.”
 
 @31629 Axis Soldier · アクシズ兵
 > 「はっ! 了解しました!」
 “Yes! Understood!”
 
 @31630 Haman · ハマーン
+# 审校：全局：弯撇号／弯引号
 > 「フフン、謎の艦隊は、
 >  新たな異星人だったとはな
 “Hmph, so the mysterious fleet was a new group of aliens.
@@ -743,7 +769,7 @@ We had assumed they were here to fight OZ, but
 ---
 >  これでまたわからなくなったか。
 >  まあいい、戦争というものは
-now it's unclear again. Well, no matter. War is
+now it’s unclear again. Well, no matter. War is
 ---
 >  あまりに単純だと面白みがない……」
-no fun when it's too simple...”
+no fun when it’s too simple...”

@@ -11,14 +11,14 @@
 “Hamilton. ...What do you want?”
 
 @17622 Hamilton · ハミルトン
-# 审校：「バチはあたらんぜ」是“不会遭报应/没坏处”，初稿“No harm in helping”可以，但语气略正式；改为更口语的“won't hurt, right?”。
+# 审校：全局：弯撇号／弯引号
 > 「例のやつを回収した。まだ修理
 >  しなくちゃならんが、いずれお前が
-“I recovered that thing. It still needs repairs, but sooner or later it's the unit you'll be piloting.
+“I recovered that thing. It still needs repairs, but sooner or later it’s the unit you’ll be piloting.
 ---
 >  乗る機体だ。システムのチェック
 >  くらい手伝っても、バチはあたらんぜ?」
-Helping check the systems won't hurt, right?”
+Helping check the systems won’t hurt, right?”
 
 @17623 Selain · セレイン（本话主角）
 # 审校：塞莱因短句
@@ -48,22 +48,25 @@ Well, thanks to that, we get to boost our own firepower.”
 “Huh? What is?”
 
 @17628 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「帝国の試作機といっても、
 >  既存の機種のマイナーチェンジだと
-“Even if it's an Imperial prototype, I assumed it was just a minor upgrade of an existing model.
+“Even if it’s an Imperial prototype, I assumed it was just a minor upgrade of an existing model.
 ---
 >  思っていた。しかしこれは
 >  完全な新型だ」
 But this is a completely new type.”
 
 @17629 Hamilton · ハミルトン
+# 审校：全局：弯撇号／弯引号
 > 「結構なことじゃないか」
-“Isn't that a good thing?”
+“Isn’t that a good thing?”
 
 @17630 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「バカな。これだけの機体となれば、
 >  帝国が黙って放っておくわけがない
-“Don't be a fool. With a unit like this, the Empire won't just sit back and let it go.
+“Don’t be a fool. With a unit like this, the Empire won’t just sit back and let it go.
 ---
 >  大きな抵抗組織では、独自に
 >  兵器を開発できる所もあると
@@ -78,13 +81,14 @@ To keep it secret, the Imperial military will send in a unit tasked with either
 recovering it or destroying it completely.”
 
 @17631 Hamilton · ハミルトン
+# 审校：全局：弯撇号／弯引号
 > 「……確かにそいつはまずい。
 >  お前のいうことは間違ったためしが
-“...Yeah, that is bad. You've never been wrong before.
+“...Yeah, that is bad. You’ve never been wrong before.
 ---
 >  ないからな。いつ頃ここを
 >  嗅ぎつけると思う?」
-When do you think they'll sniff out this place?”
+When do you think they’ll sniff out this place?”
 
 @17632 Selain · セレイン（本话主角）
 > 「今夜にも来るな。
@@ -95,23 +99,24 @@ When do you think they'll sniff out this place?”
 and probably the Specials.”
 
 @17633 Hamilton · ハミルトン
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「地球人のくせにムゲ野郎どもに
 >  くっついた、胸くそ悪い
-“Those Earthlings who've thrown in with the Muge bastards... disgusting
+“Those Earthlings who’ve thrown in with the Muge bastards... disgusting
 ---
 >  裏切り者どもか。奴らには
 >  うってつけの役回りだな
-traitors. It's the perfect role for them.
+traitors. It’s the perfect role for them.
 ---
 >  だが、事態は深刻か。いまからじゃ
 >  撤収もできん。くそっ、うかつだったぜ
-But this is serious. There's no time to pull out now. Damn, I was careless.
+But this is serious. There’s no time to pull out now. Damn, I was careless.
 ---
 >  ……勝てると思うか?」
 ...You think we can win?”
 
 @17634 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「……無理だろう。一昨日の
 >  戦闘で、まともに動く機体は
 “...Probably not. After the battle two days ago, we only have four units
@@ -122,24 +127,26 @@ still in working order. If we can, we should start preparing to withdraw.
 ---
 >  どっちにしろ、ここはもう放棄する
 >  しかない」
-Either way, we've got no choice but to abandon this place.”
+Either way, we’ve got no choice but to abandon this place.”
 
 @17635 Hamilton · ハミルトン
+# 审校：全局：弯撇号／弯引号
 > 「わかったよ。でも、こいつのシステムの
 >  再起動くらいは、やっておいてくれ
-“All right. But at least get this thing's systems rebooted.
+“All right. But at least get this thing’s systems rebooted.
 ---
 >  まったく、お前のいうことが
 >  間違いであってほしいと
-Honestly, I've never wanted so badly for you to be wrong
+Honestly, I’ve never wanted so badly for you to be wrong
 ---
 >  今ほど思ったことはないぜ」
 as I do right now.”
 
 @17636 Hamilton · ハミルトン
+# 审校：全局：弯撇号／弯引号
 > 「きやがったな。{HeroName}、
 >  運があったらまた会おう!」
-“They're here. {HeroName}, if we're lucky, we'll meet again!”
+“They’re here. {HeroName}, if we’re lucky, we’ll meet again!”
 
 @17637 Selain · セレイン（本话主角）
 > 「……ああ」
@@ -173,17 +180,20 @@ I’m glad... I got to fight alongside you...
 “The ignition should still be on... All right!!”
 
 @17642 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「さぁ来い、
 >  まだ私は死んでいないぞっ!
-“Come on, then! I'm not dead yet!
+“Come on, then! I’m not dead yet!
 ---
 >  1機でも多く道連れにしてやる!」
-I'll take as many of you down with me as I can!”
+I’ll take as many of you down with me as I can!”
 
 @17643 Rish · リッシュ（本话主角的对手）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「あーん? ありゃ“スヴァンヒルド”
 >  じゃねぇか
-“Huuuh? Isn't that the ‘Svanheld’?
+“Huuuh? Isn’t that the ‘Svanheld’?
 ---
 >  けっ、なんだよゲリラどもが、もう使って
 >  やがんのか
@@ -198,9 +208,10 @@ Hey, the report said it was heavily damaged, right?”
 “That is correct, Special Lieutenant.”
 
 @17645 Rish · リッシュ（本话主角的对手）
+# 审校：全局：弯撇号／弯引号
 > 「大破した機体がこんなに早く
 >  動かせるかよ、まったく
-“A heavily damaged unit can't be up and running this fast, seriously.
+“A heavily damaged unit can’t be up and running this fast, seriously.
 ---
 >  楽な任務のはずだったんだがな……」
 This was supposed to be an easy mission, too...”
@@ -211,26 +222,27 @@ This was supposed to be an easy mission, too...”
 “Reinforcements... Looks like this place is going to be my grave...”
 
 @17647 Rish · リッシュ（本话主角的对手）
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「おいそこの。俺はスペシャルズの
 >  {PartnerFull}だ
-“Hey, you there. I'm {PartnerFull} of the Specials.
+“Hey, you there. I’m {PartnerFull} of the Specials.
 ---
 >  降りるか、やるのか、選ばせてやる。
 >  もっともどちらにしても、命の保証は
-Surrender or fight... I'll let you choose. Though either way, I won't
+Surrender or fight... I’ll let you choose. Though either way, I won’t
 ---
 >  してやらんがな」
 guarantee your life.”
 
 @17648 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「笑わせるな! 貴様が
 >  誰であろうと関係ない
-“Don't make me laugh! I don't care who you are.
+“Don’t make me laugh! I don’t care who you are.
 ---
 >  私の最後の戦いに
 >  つきあってもらう!」
-You're going to keep me company in my final battle!”
+You’re going to keep me company in my final battle!”
 
 @17649 Rish · リッシュ（本话主角的对手）
 # 审校：“good resolve”“我看上你了”不像里修
@@ -242,8 +254,9 @@ You're going to keep me company in my final battle!”
 Tell me your name.”
 
 @17650 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「……{HeroFull}だ」
-“...It's {HeroFull}.”
+“...It’s {HeroFull}.”
 
 @17651 Quattro · クワトロ
 > 「どうやら遅かったようだな
@@ -257,22 +270,24 @@ But we should count ourselves lucky that the unit is still here...
 Lieutenant Aboly, how is it?”
 
 @17652 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「コックピットが違っても
 >  三日もあれば
 “Even if the cockpit is different, give me three days and I can make it
 ---
 >  自分の手足にすることが
 >  できます。 大丈夫です」
-feel like my own limbs. It'll be fine.”
+feel like my own limbs. It’ll be fine.”
 
 @17653 Roberto · ロベルト
+# 审校：全局：弯撇号／弯引号
 > 「自分たちはマニュアル通りの
 >  訓練などやっておりません
-“We haven't been through any by-the-book training.
+“We haven’t been through any by-the-book training.
 ---
 >  それで、1年戦争も
 >  くぐり抜けてきたのですから」
-That's how we survived the One Year War, after all.”
+That’s how we survived the One Year War, after all.”
 
 @17654 Quattro · クワトロ
 > 「ロベルト中尉、その過信は
@@ -284,34 +299,38 @@ That's how we survived the One Year War, after all.”
 “Yes, Captain Quattro.”
 
 @17656 Quattro · クワトロ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「そこのパイロット、聞こえるか?
 >  私は地球解放戦線機構の
-“Pilot over there, can you hear me? I'm Captain Quattro Bajeena of the
+“Pilot over there, can you hear me? I’m Captain Quattro Bajeena of the
 ---
 >  クワトロ・バジーナ大尉だ。
 >  これより援護するが、まだやれそうか?」
-Liberation Front of the Earth. We'll cover you from here... can you still fight?”
+Liberation Front of the Earth. We’ll cover you from here... can you still fight?”
 
 @17657 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「……大丈夫だ。
 >  感謝する、大尉」
-“...I'm fine. Thank you, Captain.”
+“...I’m fine. Thank you, Captain.”
 
 @17658 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：アポリー→Aboly
 > 「よし。いくぞ、
 >  アポリー中尉、ロベルト中尉」
-“Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
+“Good. Let’s go, Lieutenant Aboly, Lieutenant Roberto.”
 
 @17659 Rish · リッシュ（本话主角的对手）
+# 审校：全局：弯撇号／弯引号
 > 「ゲリラの増援か!?
 >  しかも見たことのない機体とくる
-“Guerrilla reinforcements?! And in units I've never seen before.
+“Guerrilla reinforcements?! And in units I’ve never seen before.
 ---
 >  ちっとばかり分が悪いが……
 >  ま、なるようになるさ」
-The odds are a bit against us, but... well, it'll work out somehow.”
+The odds are a bit against us, but... well, it’ll work out somehow.”
 
 @17660 Quattro · クワトロ
 > 「どうやら遅かったようだな。かなりの
@@ -322,15 +341,16 @@ The odds are a bit against us, but... well, it'll work out somehow.”
 Did that one unit drive them off?”
 
 @17661 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「大尉、あれは例の機体です」
-“Captain, that's the unit.”
+“Captain, that’s the unit.”
 
 @17662 Quattro · クワトロ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「そのようだ。そこのパイロット、
 >  聞こえるか? 私は
-“So it seems. Pilot over there, can you hear me? I'm
+“So it seems. Pilot over there, can you hear me? I’m
 ---
 >  地球解放戦線機構の
 >  クワトロ・バジーナ大尉だ
@@ -338,20 +358,23 @@ Captain Quattro Bajeena of the Liberation Front of the Earth.
 ---
 >  この付近には別件で出ている
 >  無人機がいる。脱出を
-There are unmanned units operating nearby on other business. We'll cover
+There are unmanned units operating nearby on other business. We’ll cover
 ---
 >  援護するが、動けるか」
 your escape... can you move?”
 
 @17663 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「……大丈夫だ。感謝する、
 >  大尉」
-“...I'm fine. Thank you, Captain.”
+“...I’m fine. Thank you, Captain.”
 
 @17664 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：アポリー→Aboly
 > 「よし。いくぞ、
 >  アポリー中尉、ロベルト中尉」
-“Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
+“Good. Let’s go, Lieutenant Aboly, Lieutenant Roberto.”
 
 @17665 Rish · リッシュ（本话主角的对手）
 # 审校：“you’ve got me”“Can’t help it”
@@ -392,35 +415,42 @@ See you around, {HeroName}.”
 “So this is the end...”
 
 @17670 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > (また、生き残ったのか、私は……)
-(I survived again, didn't I...)
+(I survived again, didn’t I...)
 
 @17671 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「どうした、動けないのか?」
-“What's wrong, can't move?”
+“What’s wrong, can’t move?”
 
 @17672 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「……いえ、大丈夫です」
-“...No, I'm fine.”
+“...No, I’m fine.”
 
 @17673 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「それが帝国の試作機
 >  “スヴァンヒルド”だな?」
-“So that's the Empire's prototype, ‘Svanheld’?”
+“So that’s the Empire’s prototype, ‘Svanheld’?”
 
 @17674 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「はい。{HeroFull}です
 >  助けていただいて、感謝します」
-“Yes. I'm {HeroFull}. Thank you for saving me.”
+“Yes. I’m {HeroFull}. Thank you for saving me.”
 
 @17675 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「構わんさ。どのみち試作機を
 >  入手した君たちと接触する
-“Don't mention it. We were scheduled to make contact with you anyway,
+“Don’t mention it. We were scheduled to make contact with you anyway,
 ---
 >  予定だったのだ。もう少し早ければ
 >  他のメンバーも救えたかもしれんが……」
-since you've acquired the prototype. If we'd been a little faster, we might have saved the others, though...”
+since you’ve acquired the prototype. If we’d been a little faster, we might have saved the others, though...”
 
 @17676 Selain · セレイン（本话主角）
 # 审校：It can’t be helped
@@ -428,37 +458,42 @@ since you've acquired the prototype. If we'd been a little faster, we might have
 “That’s how the battle went. Nothing to be done.”
 
 @17677 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「よい覚悟だが、
 >  それでは早死にをするな」
-“Good resolve, but that's how you die young.”
+“Good resolve, but that’s how you die young.”
 
 @17678 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「大尉、急がないと危ないですよ」
-“Captain, we'd better hurry or we're in trouble.”
+“Captain, we’d better hurry or we’re in trouble.”
 
 @17679 Quattro · クワトロ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「そうだな。我々はこれから仲間と
 >  合流する。君の機体の修理も
-“Right. We're going to rendezvous with our comrades now. We should be able to
+“Right. We’re going to rendezvous with our comrades now. We should be able to
 ---
 >  できるはずだが、どうする?」
 repair your unit too... what do you say?”
 
 @17680 Selain · セレイン（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「いきます。1人で生き残ってしまい
 >  ましたし、ここに残ってもムダですから」
-“I'll come. I'm the only one who survived, and staying here would be pointless.”
+“I’ll come. I’m the only one who survived, and staying here would be pointless.”
 
 @17681 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「よし、移動するぞ。
 >  敵はすぐに来るかもしれん」
-“Good, let's move out. The enemy may arrive at any moment.”
+“Good, let’s move out. The enemy may arrive at any moment.”
 
 @17682 Rish · リッシュ（本话主角的对手）
+# 审校：全局：弯撇号／弯引号
 > 「始末書1枚じゃ済まんか……
 >  それにしても、あのパイロット……
-“One written apology won't cover this... Still, that pilot...
+“One written apology won’t cover this... Still, that pilot...
 ---
 >  あれはいい女だったな……」
 she was a fine woman...”

@@ -1,28 +1,32 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @44762 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「はぁ……これからどうなっちゃうんだろ」
-“Sigh... What's going to happen to us now?”
+“Sigh... What’s going to happen to us now?”
 
 @44763 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、何だよ辛気くせえな。
 >  そんなもん、やってみなきゃ、わかりっこ
-“Tch, what's with the gloomy face? We won't know unless we
+“Tch, what’s with the gloomy face? We won’t know unless we
 ---
 >  ないじゃねえか!」
 try, will we?!”
 
 @44764 Simone · シモーヌ
+# 审校：英文 wonderful 不合语境
 > 「……あんたって本当に、バカね。
 >  でも、いまはそれが少しだけ
-“...You really are an idiot. But right now, that seems just a
+“...You really are an idiot. But right now, that’s actually a
 ---
 >  素敵に思えるわ」
-little bit wonderful.”
+little bit charming.”
 
 @44765 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「ホント、その気楽さをわけてほしいわよ」
-“Really, I wish you'd share some of that carefree attitude with me.”
+“Really, I wish you’d share some of that carefree attitude with me.”
 
 @44766 Koji · 甲児
 # 审校：精读：破折号
@@ -31,26 +35,28 @@ little bit wonderful.”
 “Sheesh. Make up your mind. Are you insulting me or praising me?”
 
 @44767 Sayaka · さやか
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「そうよ。甲児くんはバカなんじゃなくて
 >  あまり深く、物事を考えないだけ
-“That's right. Koji isn't an idiot, he just doesn't think things through
+“That’s right. Koji isn’t an idiot, he just doesn’t think things through
 ---
 >  なんだから」
 very deeply.”
 
 @44768 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「そりゃないぜ、さやかさん」
-“That's harsh, Sayaka.”
+“That’s harsh, Sayaka.”
 
 @44769 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「……今まで必死に戦ってきて、
 >  何とか退けてきたけど……。それが
-“...We've fought desperately all this time and somehow held them off... But that's
+“...We’ve fought desperately all this time and somehow held them off... But that’s
 ---
 >  敵全体のほんの一部だってのよ。
 >  悲観的な気分にもなっちゃうわ」
-only a tiny fraction of the enemy's whole force. It's enough to make you feel hopeless.”
+only a tiny fraction of the enemy’s whole force. It’s enough to make you feel hopeless.”
 
 @44770 Takeru · タケル
 # 审校：全局：Zuul 拼写
@@ -58,50 +64,55 @@ only a tiny fraction of the enemy's whole force. It's enough to make you feel ho
 “...Damn it, Zuul...”
 
 @44771 Masato · 雅人
+# 审校：全局：弯撇号／弯引号
 > 「ガンドールがあるおかげで、ずいぶんマシに
 >  なってはいるけど、向こうの数を
 “Thanks to Gandor, things are much better than they could be, but when you consider
 ---
 >  考えりゃ、たいした違いもないもんね」
-their numbers, it doesn't make much difference.”
+their numbers, it doesn’t make much difference.”
 
 @44772 Shinobu · 忍
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「だがよ、そんな簡単に地球が
 >  終わっちまうのかよ!? くそっ、なんか
-“But come on, is Earth really gonna end just like that?! Damn it, isn't there
+“But come on, is Earth really gonna end just like that?! Damn it, isn’t there
 ---
 >  ねぇのかよ、一発逆転とまではいわ
 >  ねぇが負けずにすむ方法くらいはよ!」
-something? I'm not asking for a miracle comeback, but at least a way to keep from losing?!”
+something? I’m not asking for a miracle comeback, but at least a way to keep from losing?!”
 
 @44773 Kamille · カミーユ
+# 审校：英文生硬
 > 「……いまの状況では、難しいな」
-“...In the current situation, that's difficult.”
+“...Not the way things stand now.”
 
 @44774 Roanne · ロアン
+# 审校：英文 Indeed/overturned 生硬
 > 「そうですね。奇跡でもおこらない限り
 >  そうそう容易には、この状況は
-“Indeed. Unless a miracle happens, this situation won't be
+“He’s right. Short of a miracle, there’s no turning this around
 ---
 >  くつがえりませんよ」
-overturned so easily.”
+so easily.”
 
 @44775 Shinobu · 忍
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「んだと、てめぇ、いったいどっちの味方
 >  だ!?」
-“What'd you say, you... whose side are you on anyway?!”
+“What’d you say, you... whose side are you on anyway?!”
 
 @44776 Sara · 沙羅
+# 审校：全局：弯撇号／弯引号
 > 「やめなよ、忍。みっともないったらありゃ
 >  しない」
-“Cut it out, Shinobu. You're just embarrassing yourself.”
+“Cut it out, Shinobu. You’re just embarrassing yourself.”
 
 @44777 Ryo · 亮
+# 审校：英文直译
 > 「奇跡か……だが、奇跡ならすでに
 >  おきているぜ」
-“A miracle, huh... But if it's a miracle, one has already happened.”
+“A miracle, huh... But we’ve already had one.”
 
 @44778 Roux · ルー
 > 「どういうこと?」
@@ -125,26 +136,28 @@ overturned so easily.”
 “What are you talking about, Hayato?”
 
 @44783 Daisuke · 大介
-# 审校：合并：冲突人工取舍
+# 审校：全局：弯撇号／弯引号
 > 「……マーグがいっていたという、ズールの
 >  3つの誤算というやつか」
-“...You mean what Marg said, Zuul's three miscalculations.”
+“...You mean what Marg said, Zuul’s three miscalculations.”
 
 @44784 Ryo · 亮
+# 审校：全局：弯撇号／弯引号
 > 「ああ。でなければ、俺たちはとうの昔に
 >  存在しなくなってたはずだ」
-“Yeah. If not for those, we would've ceased to exist long ago.”
+“Yeah. If not for those, we would’ve ceased to exist long ago.”
 
 @44785 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「なによ、それ」
-“What's that supposed to mean?”
+“What’s that supposed to mean?”
 
 @44786 Maria · マリア
 > 「兄さん、どういうことなの?」
 “Brother, what does that mean?”
 
 @44787 Daisuke · 大介
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > 「聞いた話では、赤ん坊のタケルが
 >  入っていたカプセルは、ずっとそのままの
 “From what I heard, the capsule baby Takeru was in was supposed to
@@ -155,7 +168,7 @@ stay buried as it was. It was crustal movement that brought it out.
 ---
 >  それが1つ。そして2つ目は、それを
 >  発見した地球人、……つまり
-That's one. The second is that the Earthlings who found it... in other words,
+That’s one. The second is that the Earthlings who found it... in other words,
 ---
 >  明神夫妻が、タケルに人を、
 >  地球を愛する心を教えたこと
@@ -163,7 +176,7 @@ the Myojin couple, taught Takeru to love people, to love the Earth.
 ---
 >  3つ目は、タケルの本当の父親が
 >  ズールに逆らってまで送りこんだ
-The third is that Takeru's real father sent in the Five God Robo even
+The third is that Takeru’s real father sent in the Five God Robo even
 ---
 >  五神ロボの存在。どれか1つが
 >  なかったとしても、ガイヤーにセットされた
@@ -178,17 +191,19 @@ antiproton bomb set in Gaia would have gone off.”
 “...That really is something like a miracle.”
 
 @44789 Shinobu · 忍
+# 审校：全局：弯撇号／弯引号
 > 「だから何だってんだよ。都合よく、
 >  また奇跡がおきてくれるとでも
-“So what?! You're saying another miracle's just gonna conveniently
+“So what?! You’re saying another miracle’s just gonna conveniently
 ---
 >  いうのか?」
 happen for us?”
 
 @44790 Ryo · 亮
+# 审校：全局：弯撇号／弯引号
 > 「いや。だが考えてもみろ、忍。いま
 >  俺たちが生き残っている状況と
-“No. But think about it, Shinobu. The fact that we're still alive right now
+“No. But think about it, Shinobu. The fact that we’re still alive right now
 ---
 >  いうやつも、無数の偶然がなければ
 >  成り立たんものだ。そういったことは
@@ -206,15 +221,16 @@ starts from something trivial.”
 “What are you getting at, Ryo?”
 
 @44792 Ark · アーク（按段落 3DD1）
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「……奇跡はおきるのではなく、
 >  おこすもの。そういうことか?」
-“...Miracles aren't something that happen, they're something you make happen. Is that it?”
+“...Miracles aren’t something that happen, they’re something you make happen. Is that it?”
 
 @44793 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「人の意思が介在しなければ、
 >  奇跡はおこらないということだ」
-“It means miracles don't happen unless human will is involved.”
+“It means miracles don’t happen unless human will is involved.”
 
 @44794 Brad · ブラッド（按段落 3DD3）
 > 「わかったぜ」
@@ -226,32 +242,34 @@ starts from something trivial.”
 “Really?”
 
 @44796 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「つまりだな、奇跡ってのは、おこそうと
 >  するから、奇跡になるってことだ
 “In other words, a miracle becomes a miracle because you try to make it happen.
 ---
 >  そういうこったろ、亮?」
-That's what you mean, right, Ryo?”
+That’s what you mean, right, Ryo?”
 
 @44797 Manami · マナミ（按段落 3DD4）
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「なるほどね。奇跡はおきるのではなく、
 >  おこすもの。そういうことね」
-“I see. Miracles aren't something that happen, they're something you make happen. That's it, then.”
+“I see. Miracles aren’t something that happen, they’re something you make happen. That’s it, then.”
 
 @44798 Lawrence · ローレンス
 > 「ふむ……確かに、そうかもしれませんな」
 “Hmm... Indeed, that may well be so.”
 
 @44799 Ryo · 亮
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ」
-“That's right.”
+“That’s right.”
 
 @44800 Roux · ルー
-# 审校：ルー的台词应更口语化，原文“考え方もあるんだ”是轻松语气，现有译文“way of thinking”略显生硬。
+# 审校：全局：弯撇号／弯引号
 > 「なるほどねぇ。そういう考え方も
 >  あるんだ」
-“I see. So there's a way of looking at it like that too.”
+“I see. So there’s a way of looking at it like that too.”
 
 @44801 Selain · セレイン（按段落 3DD2）
 > 「もっとも、私は奇跡など信じる
@@ -263,32 +281,35 @@ That's what you mean, right, Ryo?”
 “...Heero, what do you think?”
 
 @44803 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「……ゼロの予測では、俺たちが勝つ
 >  見こみはない」
-“...According to Zero's prediction, there's no chance we win.”
+“...According to Zero’s prediction, there’s no chance we win.”
 
 @44804 Ryoma · リョウ
 > 「おい!」
 “Hey!”
 
 @44805 Sara · 沙羅
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと、ヒイロ。いくらなんでも、もう
 >  ちょっといいかたってもんがあるでしょ
-“Come on, Heero. There's a limit to how blunt you can be, even for you.
+“Come on, Heero. There’s a limit to how blunt you can be, even for you.
 ---
 >  せっかくみんな、ちょっとは前向きな
 >  気分になってたってのにさ」
 Everyone had just started to feel a little hopeful, you know.”
 
 @44806 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「だが、それが事実だ」
-“But it's the truth.”
+“But it’s the truth.”
 
 @44807 Zechs · ゼクス
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「……エピオンの予測も同じだが……
 >  ヒイロ、なぜそれほど落ち着いて
-“...Epyon's prediction says the same. But, Heero, how can you stay so calm?
+“...Epyon’s prediction says the same. But, Heero, how can you stay so calm?
 ---
 >  いられるのだ? あのシステムが見せる
 >  ものは、強迫観念のように
@@ -302,40 +323,45 @@ Sadly, all I can do is try not to despair,
 and that takes everything I have.”
 
 @44808 Heero · ヒイロ
+# 审校：英文反问译成字面
 > 「ゼロの予測がどうであれ、奇跡が
 >  おきようとおきまいと、俺には戦うこと
 “Whatever Zero predicts, whether a miracle happens or not, all I can do
 ---
 >  しかできない。ならば、考えることに
 >  意味はない。お前たちは違うのか?」
-is fight. So there's no point in thinking about it. Are all of you different?”
+is fight. So there’s no point in thinking about it. Isn’t it the same for you?”
 
 @44809 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「はいはい、その通りです。まったく、
 >  お前はいつも正しいよ」
-“Yeah, yeah, that's right. Man, you're always right about everything.”
+“Yeah, yeah, that’s right. Man, you’re always right about everything.”
 
 @44810 Shinobu · 忍
+# 审校：全局：弯撇号／弯引号
 > 「結局、覚悟を決めるしかねぇって
 >  ことか」
-“In the end, all we can do is steel ourselves for what's coming.”
+“In the end, all we can do is steel ourselves for what’s coming.”
 
 @44811 Sayaka · さやか
-# 审校：さやか的台词应更少女、犹豫，原文“死ぬ覚悟なんて……したくないわよ”是抗拒语气，现有译文“steel myself to die”过于生硬，且与甲児下一句“死ぬ覚悟なんかじゃない”的呼应不够自然。
+# 审校：全局：弯撇号／弯引号
 > 「死ぬ覚悟なんて……したくないわよ」
-“I don't want to... prepare myself to die.”
+“I don’t want to... prepare myself to die.”
 
 @44812 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「いや、さやかさん、
 >  死ぬ覚悟なんかじゃない。どこまでも
-“No, Sayaka, it's not about being ready to die. It's about being ready to
+“No, Sayaka, it’s not about being ready to die. It’s about being ready to
 ---
 >  戦いぬく覚悟だよ」
 fight to the very end.”
 
 @44813 Reika · レイカ
+# 审校：英文生硬
 > 「みんな、食事だそうよ」
-“Everyone, I hear there's a meal for us.”
+“Everyone, they say it’s time to eat.”
 
 @44814 Ark · アーク（按段落 3DD1）
 > 「食事? どういうことです?」
@@ -351,14 +377,15 @@ fight to the very end.”
 “A meal? What the hell is that about?”
 
 @44817 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「食事? どういうことなの?」
-“A meal? What's this about?”
+“A meal? What’s this about?”
 
 @44818 Reika · レイカ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「せっかくだからみんなで食事でも
 >  しましょうって、トレーズ特佐が」
-“Special Colonel Treize said that since we're all here, we should have a meal together.”
+“Special Colonel Treize said that since we’re all here, we should have a meal together.”
 
 @44819 Masato · 雅人
 > 「みんなで食事、か。まるで最後の
@@ -366,50 +393,57 @@ fight to the very end.”
 “A meal together, huh. Sounds like a last supper.”
 
 @44820 Maria · マリア
+# 审校：全局：弯撇号／弯引号
 > 「なぁに、それ?」
-“What's that supposed to mean?”
+“What’s that supposed to mean?”
 
 @44821 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと、縁起の悪いこといわないで
 >  ちょーだい!」
-“Hey, don't go saying such unlucky things!”
+“Hey, don’t go saying such unlucky things!”
 
 @44822 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「このような時だ。たいしたものは用意
 >  できなかったが、量はある。君たちの
-“Given the circumstances, I couldn't prepare anything extravagant, but there's plenty of it. I hope it helps
+“Given the circumstances, I couldn’t prepare anything extravagant, but there’s plenty of it. I hope it helps
 ---
 >  力の回復に役立ててもらいたい」
 restore your strength.”
 
 @44823 Koji · 甲児
+# 审校：英文 I knew you understood 不通
 > 「おっ、なかなかすごいじゃないか。さっすが
 >  わかってるぜ」
-“Oh, this is pretty impressive. I knew you understood.”
+“Oh, this is pretty impressive. You sure know what we need!”
 
 @44824 Boss · ボス
 > 「もご、もごごごご、ごぐご」
 “Mmph, mmph mmph mmph, gulp gulp.”
 
 @44825 Jun · ジュン
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと、もう食べはじめてるよ」
-“Hey, he's already started eating!”
+“Hey, he’s already started eating!”
 
 @44826 Sayaka · さやか
 > 「ボス! みっともないマネやめなさい!」
 “Boss! Stop making a spectacle of yourself!”
 
 @44827 Quatre · カトル
+# 审校：中文意思不清
 > 「でも……いいんでしょうか。
 >  僕たちだけ、こんな……疲れているのは
-“But... is this really all right? Only us, getting something like this... Everyone else is
+“But... is this really all right? Just us, eating like this... Everyone else is
 ---
 >  みんな一緒のはずです」
-just as exhausted as we are.”
+just as worn out as we are.”
 
 @44828 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「あらあら、カトルくんは、えらいわねぇ」
-“Oh my, Quatre, aren't you the thoughtful one.”
+“Oh my, Quatre, aren’t you the thoughtful one.”
 
 @44829 Treize · トレーズ
 > 「安心したまえ。全将兵に、
@@ -425,56 +459,62 @@ the same as you.”
 “Is that acceptable? Using such precious supplies...”
 
 @44831 Treize · トレーズ
+# 审校：英文语法错
 > 「いま目の前にひかえている戦いのほう
 >  が、大切だということだ。多少の
-“It means the battle before us now is more important. A little
+“It means the battle before us now is more important. A few
 ---
 >  物資など、問題にはならないだろう」
-supplies are hardly a concern.”
+supplies hardly matter.”
 
 @44832 Roux · ルー
-# 审校：L1 的“him”指代错误，说话对象是 Julia，应改为 her。
+# 审校：特列斯是男的
 > 「だって。よかったわね、カトルくん」
-“You heard her. Isn't that nice, Quatre?”
+“You heard him. Isn’t that nice, Quatre?”
 
 @44833 Quatre · カトル
 > 「やめてくださいよ」
 “Please stop.”
 
 @44834 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「ま、そういうことなら遠慮なくいただく
 >  としようぜ」
-“Well, if that's how it is, let's dig in without holding back.”
+“Well, if that’s how it is, let’s dig in without holding back.”
 
 @44835 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「待ってました!」
-“I've been waiting for this!”
+“I’ve been waiting for this!”
 
 @44836 Bright · ブライト
 > 「ジュリアさん、何か?」
 “Julia, is something wrong?”
 
 @44837 Julia · ジュリア
+# 审校：全局：弯撇号／弯引号
 > 「やはり……皆さんでも、どうにもできない
 >  のですね」
-“So even all of you... can't do anything about it.”
+“So even all of you... can’t do anything about it.”
 
 @44838 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「作戦なんて何もない。ただひたすら、
 >  耐えるだけでしょう」
-“There's no strategy. All we can do is endure.”
+“There’s no strategy. All we can do is endure.”
 
 @44839 Julia · ジュリア
+# 审校：“去阻挡他”重复；英文残句
 > 「……皆さん、いきましょう、クスコです。
 >  私をクスコへ連れていってください
-“...Everyone, let's go. To Cusco. Please take me to Cusco.
+“...Everyone, let’s go. To Cusco. Please take me to Cusco.
 ---
 >  おごれる者の力をはばむのです。
 >  先人たちの偉大な知恵の力を
-We will stand against the power of the arrogant. By borrowing
+We will stand against the power of the arrogant, with the help of
 ---
 >  借りて」
-the power of our predecessors' great wisdom.”
+the great wisdom of those who came before us.”
 
 @44840 Eiji · エイジ
 > 「姉さん……?」
@@ -485,10 +525,10 @@ the power of our predecessors' great wisdom.”
 “Cusco? Is there something at Cusco?”
 
 @44842 Julia · ジュリア
-# 审校：全局：grados-en
+# 审校：英文 What is called 直译
 > 「“グラドスの刻印”と呼ばれる
 >  ものが、そこに眠っています」
-“What is called the ‘Grados Crest’ sleeps there.”
+“Something called the ‘Grados Crest’ lies dormant there.”
 
 @44843 Ryoma · リョウ
 # 审校：全局：grados-en
@@ -517,13 +557,14 @@ a single independent planetary civilization.”
 “The relationship between Grados and Earth...?”
 
 @44847 Julia · ジュリア
+# 审校：“作为生命物种是兄弟”直译
 > 「皆さんはまず、両者が生命種と
 >  して兄弟にあることを、知らなければ
-“First, you must know that the two are brothers as life species.
+“First, you must understand that our two races are siblings.
 ---
 >  なりません。グラドス人と地球人と
 >  は、同じ根から発生したのです」
-The Gradosians and the people of Earth were born from the same root.”
+Gradosians and the people of Earth sprang from the same root.”
 
 @44848 Gale · ゲイル
 > 「な……なんだと?」
@@ -568,50 +609,54 @@ proves it more than anything.”
 Admiral Gresco stop the fighting. ...The result is as you know.”
 
 @44854 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「そうか……そうだったのか……」
-“I see... so that's how it was...”
+“I see... so that’s how it was...”
 
 @44855 Amuro · アムロ
 > 「だが、いったいなぜ……?」
 “But why, exactly...?”
 
 @44856 Julia · ジュリア
+# 审校：长定语直译，理顺
 > 「はるかな昔、宇宙に進出した
 >  先住グラドス人はすでに種としての
-“Long, long ago, the ancestral Gradosians who had advanced into space were already
+“Long, long ago, the ancestral Gradosians, who had ventured into space, were already
 ---
 >  限界を、迎えつつありました。
 >  4万年前、彼らの宇宙船が
-approaching their limit as a species. Forty thousand years ago, their spacecraft
+nearing their limit as a species. Forty thousand years ago, one of their ships
 ---
 >  この地球を発見します。当時
 >  地球では、原人類ともいうべき
-discovered this Earth. At the time, on Earth, life that could be called
+discovered this Earth. At the time, life that could be called proto-human
 ---
 >  生命が誕生していました。
 >  調査の結果、それが種として
-proto-humans had been born. As a result of their investigation, judging that it was
+had just emerged here. After studying it, the ancestral Gradosians judged it
 ---
 >  自分たちと極めて近しいと
 >  判断した先住グラドス人たちは
-extremely close to themselves as a species, the ancestral Gradosians
+extremely close to their own species, and so, to preserve their dying race,
 ---
 >  滅びゆく種の存続のために、
 >  1つの試みをなしました」
-made one attempt for the survival of their dying species.”
+they made an attempt.”
 
 @44857 Julia · ジュリア
+# 审校：全局：弯撇号／弯引号
 > 「地球の原人類の生命核を、
 >  自らに移植することで、再び強い
-“By transplanting the life core of Earth's proto-humans into themselves, they sought
+“By transplanting the life core of Earth’s proto-humans into themselves, they sought
 ---
 >  生命力を得ようとしたのです」
 to gain a strong life force once more.”
 
 @44858 Dr. Hazuki · 葉月博士
+# 审校：英文生硬
 > 「しかし……しかし、それでは、もはや
 >  別の種となってしまう」
-“But... but then, they would already become a different species.”
+“But... but then, they’d no longer be the same species.”
 
 @44859 Julia · ジュリア
 > 「そうです。種の亡びを止める
@@ -626,33 +671,35 @@ the ancestral Gradosians wanted to create beings
 who would inherit their civilization.”
 
 @44860 Dr. Hazuki · 葉月博士
+# 审校：英文语序乱
 > 「そうか……それが今のグラドス人……
 >  つまり先住グラドス人とは違う
-“I see... so that means the present Gradosians... in other words, they are a brother species
+“I see... so that’s what today’s Gradosians are... distinct from the ancestral Gradosians,
 ---
 >  我々地球人類の兄弟種と
 >  いうわけか」
-to us Earth humans, different from the ancestral Gradosians.”
+a brother species to us humans of Earth.”
 
 @44861 Julia · ジュリア
+# 审校：多层“的”定语，理顺
 > 「そして、そのとき先住グラドス人
 >  たちは、地球にひとつの機構を
-“And at that time, the ancestral Gradosians installed a single mechanism
+“And at that time, the ancestral Gradosians installed a mechanism
 ---
 >  設置しました。彼らは銀河に
 >  すでに無数の星間文明が
-on Earth. Taking into account that countless interstellar civilizations already
+on Earth. Knowing that countless interstellar civilizations already
 ---
 >  存在していることを考慮し、
 >  自分たちの後継者となった種の
-existed in the galaxy, they sought to protect the Earth humans, brothers to the species
+existed in the galaxy, they wanted to protect humanity, brother to the race
 ---
 >  兄弟である地球人類を、
 >  やがてくる不幸な出会いから
-that had become their successors, from the unfortunate encounters
+that had become their heirs, from the unfortunate encounters
 ---
 >  守ろうとしたのです」
-that would eventually come.”
+that were bound to come.”
 
 @44862 Ark · アーク（按段落 3DD1）
 > 「不幸な……出会い?」
@@ -663,9 +710,10 @@ that would eventually come.”
 “Unfortunate encounters... what do you mean?”
 
 @44864 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「聖女さん、頼むぜ、もっと
 >  わかりやすくいってくれないか」
-“Hey, Saint lady, come on, can't you explain it a bit more simply?”
+“Hey, Saint lady, come on, can’t you explain it a bit more simply?”
 
 @44865 Koji · 甲児
 > 「そ、そうそう」
@@ -693,46 +741,47 @@ might be destroyed through contact with other interstellar species
 ...A safety mechanism to protect against such encounters.”
 
 @44868 Ark · アーク（按段落 3DD1）
-# 审校：全局：grados-en
+# 审校：全局：弯撇号／弯引号
 > 「そうか……それが“グラドスの
 >  刻印”なんだ」
-“I see... so that's the ‘Grados Crest.’”
+“I see... so that’s the ‘Grados Crest.’”
 
 @44869 Selain · セレイン（按段落 3DD2）
-# 审校：全局：grados-en
+# 审校：全局：弯撇号／弯引号
 > 「それが“グラドスの刻印”という
 >  やつか」
-“So that's what the ‘Grados Crest’ is.”
+“So that’s what the ‘Grados Crest’ is.”
 
 @44870 Brad · ブラッド（按段落 3DD3）
-# 审校：全局：grados-en
+# 审校：全局：弯撇号／弯引号
 > 「わかったぜ! それが“グラドスの
 >  刻印”ってやつなんだな!?」
-“I get it! So that's what the ‘Grados Crest’ is, huh?!”
+“I get it! So that’s what the ‘Grados Crest’ is, huh?!”
 
 @44871 Manami · マナミ（按段落 3DD4）
-# 审校：全局：grados-en
+# 审校：全局：弯撇号／弯引号
 > 「それが“グラドスの刻印”……
 >  そういうことなのね」
-“So that's the ‘Grados Crest’... that's what it means.”
+“So that’s the ‘Grados Crest’... that’s what it means.”
 
 @44872 Treize · トレーズ
-# 审校：全局：grados-en
+# 审校：英文 your story 直译
 > 「なるほど、お話はよくわかりました。
 >  その“グラドスの刻印”があれば
-“I see, I understand your story well. If we have that ‘Grados Crest,’
+“I see. I follow you perfectly. If we have that ‘Grados Crest,’
 ---
 >  我々は亡びずにすむ可能性が
 >  ある、と。いったい、どのような働きを
-there's a chance we won't be destroyed. I'd like to hear exactly how
+there’s a chance we won’t be destroyed. I’d like to hear exactly how
 ---
 >  するものか、お聞きしたい」
 it works.”
 
 @44873 Julia · ジュリア
+# 审校：“我认知中”生硬
 > 「空間を遮へいするもの、と認識
 >  しております」
-“I understand it to be something that shields space.”
+“As I understand it, it shields space itself.”
 
 @44874 Quattro · クワトロ
 > 「空間を……?」
@@ -747,33 +796,39 @@ it works.”
 will be able to come to this solar system.”
 
 @44876 Alan · アラン
+# 审校：原文是问句
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「すると、ムゲゾルバドス帝国もか」
-“Then that includes the Muge Zorbados Empire as well.”
+“Then the Muge Zorbados Empire too?”
 
 @44877 Julia · ジュリア
+# 审校：英文直译
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「……ゾルバドス星は、そもそもこの
 >  銀河系宇宙にはありません
-“...The planet Zorbados is not originally in this galactic universe.
+“...The planet Zorbados isn’t in this galaxy to begin with.
 ---
 >  異次元にあると聞いております。
 >  それがどのように影響するのか
-I hear it exists in another dimension. How that would be affected,
+I hear it exists in another dimension. How it would be affected,
 ---
 >  わたくしにはわかりませんが……」
 I do not know, but...”
 
 @44878 Dr. Hazuki · 葉月博士
+# 审校：英文 has enough meaning 直译
 > 「ともかく、銀河帝国とのつながりが
 >  断てるだけでも十分な意味がある
-“In any case, just being able to sever the connection with the Galactic Empire has enough meaning.
+“In any case, just severing our link to the Galactic Empire would mean a great deal.
 ---
 >  これはすごいことだ」
-This is an amazing thing.”
+This is remarkable.”
 
 @44879 Dr. Saotome · 早乙女博士
+# 审校：全局：弯撇号／弯引号
 > 「うむ……わしらには想像もつかん
 >  ことだ。機会があれば、ぜひ
-“Indeed... it's beyond anything we could imagine. If there's a chance, I'd certainly
+“Indeed... it’s beyond anything we could imagine. If there’s a chance, I’d certainly
 ---
 >  研究してみたいが……」
 like to study it, but...”
@@ -783,11 +838,13 @@ like to study it, but...”
 “This is amazing!”
 
 @44881 Boss · ボス
+# 审校：全局：弯撇号／弯引号
 > 「おう、なんだかすごいことになってきた
 >  だわさ」
-“Yeah, things are getting pretty incredible, that's for sure.”
+“Yeah, things are getting pretty incredible, that’s for sure.”
 
 @44882 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「みんな、ちょっと待ってくれないか。
 >  確かにそれがすごいものであるのはわかる
 “Everyone, could you hold on a moment? I get that this thing is amazing,
@@ -798,21 +855,21 @@ but all it does is cut off travel between here and there. Just because the Galac
 ---
 >  送ってこれないからといって、いま
 >  地球圏に来ている軍勢が
-can't send any more reinforcements doesn't mean the forces already here in the Earth Sphere
+can’t send any more reinforcements doesn’t mean the forces already here in the Earth Sphere
 ---
 >  消えてなくなるわけではない。そうだろ?
 >  そして僕たちは今まさに地球圏に
-are going to vanish. Right? And right now, we're about to be
+are going to vanish. Right? And right now, we’re about to be
 ---
 >  いる敵軍に、押しつぶされようと
 >  している」
 crushed by the enemy armies already in the Earth Sphere.”
 
 @44883 Julia · ジュリア
-# 审校：精读：破折号
+# 审校：全局：弯撇号／弯引号
 > 「その通りです。しかし、自らの国へ
 >  帰ることができなくなった兵士は
-“That's true. But soldiers who can no longer return to their own homeland,
+“That’s true. But soldiers who can no longer return to their own homeland,
 ---
 >  なんらよるべき大義なくして、
 >  戦う意思を持ち続けることが
@@ -822,41 +879,45 @@ can they really keep up the will to fight without any great cause
 to fall back on?”
 
 @44884 Quattro · クワトロ
-# 审校：全局：帝国軍 Imperial 大写统一
+# 审校：回答“能继续保有吗”
 > 「……無理だな。万丈、確かに
 >  帝国軍は残留するが、もしも
-“...Impossible. Banjo, it's true the Imperial forces will remain, but if
+“...No, they couldn’t. Banjo, it’s true the Imperial forces will remain, but if
 ---
 >  刻印が発動できれば勝機はある
 >  軍隊とはそういうものだ」
-the Crest can be activated, there's a chance of victory. That's what an army is.”
+the Crest can be activated, there’s a chance of victory. That’s what an army is.”
 
 @44885 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「そう……その通りだろうね。現状では
 >  これ以上望むべくもない」
-“Yes... that's right. As things stand, we can't hope for anything more.”
+“Yes... that’s right. As things stand, we can’t hope for anything more.”
 
 @44886 Daisuke · 大介
+# 审校：全局：弯撇号／弯引号
 > 「ええ。それに、ここに取り残されると
 >  すれば、彼らも地球を破壊して
-“Right. And if they're stranded here, they shouldn't be able to just destroy
+“Right. And if they’re stranded here, they shouldn’t be able to just destroy
 ---
 >  しまうわけにはいかなくなるはず。これは
 >  大きい」
-the Earth either. That's huge.”
+the Earth either. That’s huge.”
 
 @44887 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「……悪かった。僕も、信じよう。
 >  どのみち、他に選ぶべき道は
-“...Sorry. I'll believe in it too. Either way, it seems there's no other
+“...Sorry. I’ll believe in it too. Either way, it seems there’s no other
 ---
 >  存在しないようだ」
 path left for us to choose.”
 
 @44888 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「重要なのは、まだ俺たちにも望みが
 >  あるってことでしょう。きっと、これは
-“The important thing is that we still have hope. I'm sure this is
+“The important thing is that we still have hope. I’m sure this is
 ---
 >  奇跡の種なんだ。そうだろ、亮」
 the seed of a miracle. Right, Ryo?”
@@ -870,18 +931,20 @@ the seed of a miracle. Right, Ryo?”
 “The seed of a miracle? What are you talking about?”
 
 @44891 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「あたしたちが何とかできれば、これは
 >  奇跡と呼べるものになるってことです」
-“It means if we can pull this off, it'll be something you could call a miracle.”
+“It means if we can pull this off, it’ll be something you could call a miracle.”
 
 @44892 Simone · シモーヌ
+# 审校：英文 imperial Eiji 生硬
 > 「……帝国のエイジとジュリアさんに、
 >  地球人の血が流れてたっていうの
-“...To think that imperial Eiji and Julia had Earthling blood in them.
+“...To think that Eiji and Julia of the Empire had Earthling blood in them.
 ---
 >  奇跡だわ。でなければ、この希望は
 >  生まれなかった。……うまくいったあとの
-It's a miracle. Otherwise, this hope would never have been born. ...Though that's
+It’s a miracle. Otherwise, this hope would never have been born. ...Though that’s
 ---
 >  話だけどね」
 assuming everything goes well.”
@@ -909,27 +972,31 @@ happened, huh. Ryo, you make it sound like you knew all along.”
 “Hmph. So whether this becomes a miracle or not is up to us.”
 
 @44897 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「フッ、亮、お前のいった通りになって
 >  きやがったな」
-“Heh, Ryo, it's turning out just like you said.”
+“Heh, Ryo, it’s turning out just like you said.”
 
 @44898 Maria · マリア
+# 审校：英文不通
 > 「それって、あたしたちがうまくやれれば、
 >  奇跡はおきていたことになるってこと?」
-“Does that mean if we do well, it'll be that a miracle already happened?”
+“So if we pull this off, it’ll turn out a miracle happened after all?”
 
 @44899 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ああ、そうだよマリアちゃん。
 >  よぉし、こうなったら、俺たちで
-“Yeah, that's right, Maria. All right, if it's come to this, let's make
+“Yeah, that’s right, Maria. All right, if it’s come to this, let’s make
 ---
 >  奇跡をつくってやろうぜ!」
 a miracle ourselves!”
 
 @44900 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「4万年もの昔の出来事……
 >  ムゲ帝国の侵略……そしてエイジと
-“An event from 40,000 years ago... the Muge Empire's invasion... and Eiji and
+“An event from 40,000 years ago... the Muge Empire’s invasion... and Eiji and
 ---
 >  ジュリアさま。すべては、気の遠くなる
 >  ほど昔から重ねられた偶然……」
@@ -949,40 +1016,43 @@ our history from here on... this will surely be
 worthy of being called a miracle.”
 
 @44902 Manami · マナミ（按段落 3DD4）
+# 审校：英文语序
 > 「そして、それをするのは、あたしたち。
 >  そういうことね」
-“And the ones who'll do that are us. That's what it comes down to.”
+“And we’re the ones who’ll make it happen. That’s what it comes down to.”
 
 @44903 Maria · マリア
-# 审校：原译“it'll be that a miracle already happened”不自然，改为更口语化的“it'll be as if a miracle already happened”。
+# 审校：英文不通
 > 「それって、あたしたちがうまくやれれば、
 >  奇跡はおきていたことになるってこと?」
-“Does that mean if we do well, it'll be as if a miracle already happened?”
+“So if we pull this off, it’ll turn out a miracle happened after all?”
 
 @44904 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ああ、そうだよマリアちゃん。
 >  よぉし、こうなったら、俺たちで
-“Yeah, that's right, Maria. All right, if it's come to this, let's make
+“Yeah, that’s right, Maria. All right, if it’s come to this, let’s make
 ---
 >  奇跡をつくってやろうぜ!」
 a miracle ourselves!”
 
 @44905 Treize · トレーズ
-# 审校：“tiny sliver of hope”略显累赘，改为“faint hope”，更贴合特列斯的语气。
+# 审校：“与希望相连”直译
 > 「なるほど……ムゲ帝国に占領されて
 >  いたことが、このわずかな希望へと
-“I see... being occupied by the Muge Empire leads to this faint hope...
+“I see... so the Muge Empire’s occupation is what led to this faint hope...
 ---
 >  つながる……。もしもこれで地球が
 >  守られるのなら、確かに奇跡と
-If this lets us protect the Earth, then it's certainly fair to call it
+If this lets us protect the Earth, then it’s certainly fair to call it
 ---
 >  呼んでいいだろう」
 a miracle.”
 
 @44906 Benkei · ベンケイ
+# 审校：全局：弯撇号／弯引号
 > 「なんだかやる気が出てきたぜ!」
-“Somehow I'm getting fired up!”
+“Somehow I’m getting fired up!”
 
 @44907 Ryoma · リョウ
 # 审校：原译“the difference between night and day”虽可理解，但“makes all the difference in the world”更自然，且保留原文对比意味。
@@ -1011,29 +1081,31 @@ to Cusco at once?”
 “Oh, Cusco? So there are ruins tens of thousands of years old in Cusco.”
 
 @44911 Q Boss · Qボス
+# 审校：全局：弯撇号／弯引号
 > 「はい。もはや例のものに間違いありま
 >  せん」
-“Yes. There's no longer any doubt it's the thing in question.”
+“Yes. There’s no longer any doubt it’s the thing in question.”
 
 @44912 Komei · 孔明
-# 审校：孔明语气较正式，原译“let's”偏随意，改为“let us”。
+# 审校：全局：弯撇号／弯引号
 > 「それはよかった。では、あの異星人
 >  たちに、それを教えてさしあげましょう」
-“That's good to hear. Then let us inform those aliens of it.”
+“That’s good to hear. Then let us inform those aliens of it.”
 
 @44913 Alberto · アルベルト
+# 审校：全局：弯撇号／弯引号
 > 「……それで、どうするというのだ? 奴ら
 >  が勝てば、我々とて生き残る
-“...And then what? If they win, there's no guarantee we'll
+“...And then what? If they win, there’s no guarantee we’ll
 ---
 >  保証はないぞ」
 survive either.”
 
 @44914 Komei · 孔明
-# 审校：“cooperation”较正式，孔明此处语气带算计，改为“help”更自然。
+# 审校：全局：弯撇号／弯引号
 > 「状況を見て、もう少し協力して
 >  さしあげましょう」
-“We'll watch how things go and lend them a little more help.”
+“We’ll watch how things go and lend them a little more help.”
 
 @44915 Alberto · アルベルト
 > 「なんだと!? 貴様、いったいどういう
@@ -1041,10 +1113,10 @@ survive either.”
 “What?! Just what are you playing at?!”
 
 @44916 Komei · 孔明
-# 审校：原译“It's no use complaining to me”可接受，但“There's no point complaining to me”更口语自然。
+# 审校：英文生硬
 > 「すべては、ビッグファイアーのご意志に
 >  よるもの。私におっしゃられても
-“Everything is by Big Fire's will. There's no point complaining
+“All is according to the will of Big Fire. There’s no point complaining
 ---
 >  困りますな」
 to me.”
@@ -1058,9 +1130,10 @@ to me.”
 “Commander-in-Chief Wahl.”
 
 @44919 Wahl · ワール
+# 审校：全局：弯撇号／弯引号
 > 「ゴーマン大尉、状況はどうなって
 >  いる?」
-“Captain Gorman, what's the situation?”
+“Captain Gorman, what’s the situation?”
 
 @44920 Gorman · ゴーマン
 > 「たった今、陛下がお探しになって
@@ -1075,9 +1148,10 @@ in the place the Earthlings call Cusco.”
 “Are you certain?!”
 
 @44922 Gorman · ゴーマン
+# 审校：全局：弯撇号／弯引号
 > 「こちらでも分析いたしました。
 >  確かに、数万年前のものと
-“We've analyzed it here as well. There does indeed appear to be a structure
+“We’ve analyzed it here as well. There does indeed appear to be a structure
 ---
 >  思われる構造物が存在するよう
 >  です」
@@ -1092,27 +1166,30 @@ believed to be tens of thousands of years old.”
 Just what is this ruin, anyway?”
 
 @44924 Wahl · ワール
+# 审校：全局：弯撇号／弯引号
 > 「私も詳しくは知らん。4万年前
 >  に何者かが残したものとしか
-“I don't know the details either. I've only heard that someone left it behind
+“I don’t know the details either. I’ve only heard that someone left it behind
 ---
 >  聞いておらぬ」
 forty thousand years ago.”
 
 @44925 Janera · ジャネラ
+# 审校：英文不通
 > 「ホホホ、そのようなもの、破壊して
 >  しまえばそれまででしょう」
-“Hohoho, a thing like that is finished the moment you destroy it.”
+“Hohoho, then just destroy the thing and be done with it.”
 
 @44926 Emperor Zuul · ズール皇帝
+# 审校：全局：弯撇号／弯引号
 > 「そうか、見つけたか」
-“I see. So you've found it.”
+“I see. So you’ve found it.”
 
 @44927 Wahl · ワール
-# 审校：ワール对皇帝回话，原文「はっ」是军人对主君的应答，应译为“Yes, Your Majesty”而非“Yes, sir”。
+# 审校：全局：弯撇号／弯引号
 > 「はっ、地球人どもが集結している
 >  のと、同じ大陸です」
-“Yes, Your Majesty. It's on the same continent where the Earthlings are gathering.”
+“Yes, Your Majesty. It’s on the same continent where the Earthlings are gathering.”
 
 @44928 Emperor Zuul · ズール皇帝
 > 「ワールよ、地上部隊の全軍に
@@ -1127,23 +1204,27 @@ is to be given top priority.”
 “Everyone, listen up for a moment.”
 
 @44930 Juzo · 十三
+# 审校：全局：弯撇号／弯引号
 > 「なんや小介、今いそがしいんや。
 >  手短かに頼むで」
-“What is it, Kosuke? I'm busy right now. Make it quick.”
+“What is it, Kosuke? I’m busy right now. Make it quick.”
 
 @44931 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「前に話していたコン・バトラーVの
 >  強化についてなんですけど……」
-“It's about the Combattler V upgrades I mentioned before...”
+“It’s about the Combattler V upgrades I mentioned before...”
 
 @44932 Hyoma · 豹馬
+# 审校：英文中文都生硬
 > 「おっ! どこかパワーアップしたのか!?」
-“Oh! Did it get powered up somewhere?!”
+“Oh! Did you power it up?!”
 
 @44933 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「四谷博士に協力してもらって
 >  コン・バトラーVに新しく武器を
-“With Dr. Yotsuya's help, we fitted Combattler V with new
+“With Dr. Yotsuya’s help, we fitted Combattler V with new
 ---
 >  取りつけたんです」
 weapons.”
@@ -1154,12 +1235,13 @@ weapons.”
 “Kosuke, quit stalling and just tell us already.”
 
 @44935 Kosuke · 小介
+# 审校：全局：弯撇号／弯引号
 > 「グランダッシャーとツインランサー、それに
 >  Vレーザー、ビッグブラストディバイダーの
 “The Grand Dasher and the Twin Lancer, plus the V Laser and the Big Blast Divider.
 ---
 >  4つです」
-That's four in all.”
+That’s four in all.”
 
 @44936 Hyoma · 豹馬
 > 「そんなに増えるのか!? 名前を
@@ -1167,7 +1249,7 @@ That's four in all.”
 “That many?! Just hearing the names makes them sound strong!”
 
 @44937 Lady · レディ
-# 审校：レディ对特列斯应称“Your Excellency”，原文「トレーズさま」的敬称需保留。
+# 审校：英文生硬
 # 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズさま、クスコの調査に
 >  向かった部隊からの報告です
@@ -1179,11 +1261,11 @@ Just as the Holy Woman Julia said, we have confirmed that a ruin from
 ---
 >  あることを確認いたしました。
 >  遺跡は帝国の攻撃目標と
-ages past exists in that land. The ruin has not become a target of the
+ages past exists there. The ruin has not been targeted by the
 ---
 >  なっておらず、破壊をまぬがれている
 >  とのことです。ただ……」
-Empire's attacks, and has escaped destruction. However...”
+Empire and has so far escaped destruction. However...”
 
 @44938 Treize · トレーズ
 > 「……どうした、レディ?」
@@ -1203,41 +1285,47 @@ withdrew at once. They did not appear to be aliens, but...”
 “Then Earthlings? What could this mean?”
 
 @44941 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「申しわけありません。私にはわかりかね
 >  ます」
-“I'm sorry. I cannot say.”
+“I’m sorry. I cannot say.”
 
 @44942 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「なにか? ……わかりました。お伝えして
 >  おきます」
-“What is it? ...Understood. I'll pass it along.”
+“What is it? ...Understood. I’ll pass it along.”
 
 @44943 Bright · ブライト
 > 「……なにかあったのか?」
 “...Did something happen?”
 
 @44944 Lady · レディ
+# 审校：“这南美”生硬
 > 「たったいま、各地の銀河帝国
 >  軍が移動を開始したようです
 “Just now, the Galactic Empire forces everywhere appear to have begun moving.
 ---
 >  北米の動きから、目的地は
 >  やはり、この南米と思われます」
-Judging by the movements in North America, their destination is indeed this South America.”
+Judging by the movements in North America, their destination is South America, as expected.”
 
 @44945 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「ついに来るか……」
-“So they're finally coming...”
+“So they’re finally coming...”
 
 @44946 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「エイジたちをクスコへ向かわせよう。
 >  俺たちは、少しでも時間をかせぐ」
-“Let's send Eiji and the others to Cusco. We'll buy as much time as we can.”
+“Let’s send Eiji and the others to Cusco. We’ll buy as much time as we can.”
 
 @44947 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「……いや、残存する戦力のすべてを
 >  クスコへと移動させよう」
-“...No. Let's move all our remaining forces to Cusco.”
+“...No. Let’s move all our remaining forces to Cusco.”
 
 @44948 Bright · ブライト
 > 「どういうことです?」
@@ -1254,9 +1342,10 @@ Judging by the movements in North America, their destination is indeed this Sout
 the ‘Grados Crest’ no matter what.”
 
 @44950 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「たしかにね。よし、みんな、クスコへ
 >  向かおう」
-“True enough. All right, everyone, let's head for Cusco.”
+“True enough. All right, everyone, let’s head for Cusco.”
 
 @44951 Amuro · アムロ
 > 「遺跡周辺への布陣は、ほぼ
@@ -1264,12 +1353,13 @@ the ‘Grados Crest’ no matter what.”
 “Our deployment around the ruin is nearly complete. What about the enemy?”
 
 @44952 Garrison · ギャリソン
+# 审校：“这库斯科”生硬
 > 「どうやら銀河帝国軍は、
 >  間違いなくこのクスコに向かっている
-“It appears the Galactic Empire forces are indeed heading straight for this
+“It appears the Galactic Empire forces are indeed heading straight here
 ---
 >  ようでございますな」
-Cusco, sir.”
+to Cusco, sir.”
 
 @44953 Banjo · 万丈
 # 审校：全局：刻印＝Crest
@@ -1278,28 +1368,31 @@ Cusco, sir.”
 “So the enemy has noticed the Crest after all. Looks like coming here was the right call.”
 
 @44954 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「遺跡の周辺にいたというやつら……
 >  関係があると見るか……」
-“Those people who were around the ruin... Do you think they're connected...?”
+“Those people who were around the ruin... Do you think they’re connected...?”
 
 @44955 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「あるいは偶然か。いずれにせよ、
 >  僕たちは全力をあげて、ここを
-“Or perhaps it was coincidence. Either way, all we can do is give everything we've got
+“Or perhaps it was coincidence. Either way, all we can do is give everything we’ve got
 ---
 >  守るだけだ」
 to defend this place.”
 
 @44956 Bright · ブライト
+# 审校：“思考的时间”直译
 > 「もはや考えている時間は、ない
 >  ようだな。ジュリアさんはどうした?」
-“It seems there's no more time to think. What about Julia?”
+“Looks like we’re out of time to think it over. What about Julia?”
 
 @44957 Amuro · アムロ
-# 审校：全局：刻印＝Crest
+# 审校：全局：弯撇号／弯引号
 > 「エイジたちと一緒に、すでに刻印の
 >  ところへ入った。あとはまかせるしかない」
-“She's already gone into the Crest with Eiji and the others. All we can do now is leave it to them.”
+“She’s already gone into the Crest with Eiji and the others. All we can do now is leave it to them.”
 
 @44958 Bright · ブライト
 > 「……そうだな」
@@ -1311,12 +1404,13 @@ to defend this place.”
 “So this is the last line of defense on Earth.”
 
 @44960 Zechs · ゼクス
+# 审校：英文语序
 > 「ああ……この人類最後の希望を
 >  我々は絶対に……
-“Yes... This last hope of humanity, we absolutely must...
+“Yes... Humanity’s last hope. We must...
 ---
 >  死守しなければならん」
-hold it at all costs.”
+defend it at all costs.”
 
 @44961 Relena · リリーナ
 > 「お兄様」
@@ -1345,12 +1439,13 @@ My hands are stained too deeply with blood.”
 “Brother...”
 
 @44966 Zechs · ゼクス
+# 审校：英文更自然
 > 「リリーナ、宇宙へあがってくれないか。
 >  ここは地獄と化すかもしれん
-“Relena, won't you go up into space? This place may turn into a hell.
+“Relena, will you go up to space? This place may become a living hell.
 ---
 >  宇宙の方が、まだマシなはずだ」
-Space should still be the better option.”
+You’d be safer in space.”
 
 @44967 Relena · リリーナ
 > 「いいえ、お兄様。わたくしは、ここで
@@ -1358,12 +1453,14 @@ Space should still be the better option.”
 “No, brother. I will stay here and see it through. The end of this battle.”
 
 @44968 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「……強くなったな、リリーナ」
-“...You've grown strong, Relena.”
+“...You’ve grown strong, Relena.”
 
 @44969 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「ゼクス、そろそろ」
-“Zechs, it's about time.”
+“Zechs, it’s about time.”
 
 @44970 Zechs · ゼクス
 > 「聖女のところへ行け、リリーナ。
@@ -1371,9 +1468,10 @@ Space should still be the better option.”
 “Go to where the holy woman is, Relena. That should be the safest place.”
 
 @44971 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「アムロ、完全に包囲されたわ。敵
 >  は攻撃態勢に入っているようよ」
-“Amuro, we're completely surrounded. The enemy appears to be moving into attack formation.”
+“Amuro, we’re completely surrounded. The enemy appears to be moving into attack formation.”
 
 @44972 Amuro · アムロ
 # 审校：全局：刻印＝Crest
@@ -1385,9 +1483,9 @@ Space should still be the better option.”
 “It seems it will still take a while longer.”
 
 @44974 Bright · ブライト
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「やるしかないな。トレーズ特佐」
-“Then we've no choice but to fight. Special Colonel Treize.”
+“Then we’ve no choice but to fight. Special Colonel Treize.”
 
 @44975 Treize · トレーズ
 > 「わかっている」
@@ -1398,7 +1496,7 @@ Space should still be the better option.”
 “Opening the channel.”
 
 @44977 Treize · トレーズ
-# 审校：合并：misc 与 scene 批次三方合并
+# 审校：全局：弯撇号／弯引号
 > 「ここ、クスコに布陣するOZの
 >  兵士諸君。そのまま聞いてほしい
 “To all OZ soldiers deployed here at Cusco. Stay at your posts and listen.
@@ -1421,7 +1519,7 @@ defending it to the end will any possibility of a future
 ---
 >  残されるのだ。OZの兵士諸君、
 >  これは地球人類の存亡をかけた
-remain to us. Soldiers of OZ, this is a battle that decides the survival of Earth's humanity.
+remain to us. Soldiers of OZ, this is a battle that decides the survival of Earth’s humanity.
 ---
 >  戦いである。全力で戦うことを
 >  期待する。以上だ」
@@ -1464,14 +1562,14 @@ I would never have wanted to use something like the ‘Grados Crest.’”
 “Lady Julia...”
 
 @44984 Julia · ジュリア
-# 审校：全局：刻印＝Crest
+# 审校：倒装句不顺；英文套话
 > 「しかし、やむをえません。
 >  これ以上、人々に無益な血を
-“But it cannot be helped. So that no more meaningless blood is
+“But there is no other way. So that no more people need shed
 ---
 >  流させないために。地球人に
 >  絶望的な戦いを、させないために
-shed by the people. So that the people of Earth are not forced into a hopeless battle.
+blood in vain. So that the people of Earth are not forced into a hopeless battle.
 ---
 >  やはり私たち人類は、この大いなる
 >  宇宙の中では、まだ幼な子に
@@ -1500,8 +1598,9 @@ ancestral Gradosians who left this Crest behind.”
 “No response from the 2nd through 5th garrisons!”
 
 @44988 Garrison · ギャリソン
+# 审校：英文语序
 > 「やはり、ここまでくるようですな」
-“So they have come this far after all, it seems.”
+“It seems they’ll make it this far after all.”
 
 @44989 Bright · ブライト
 # 审校：全局：刻印＝Crest
@@ -1517,33 +1616,35 @@ reached the ‘Crest’?!”
 “Yes!”
 
 @44991 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「敵、確認! 続々と最終
 >  防衛ラインを突破してきます!」
-“Enemy confirmed! They're breaking through the final defense line one after another!”
+“Enemy confirmed! They’re breaking through the final defense line one after another!”
 
 @44992 Beauty · ビューティ
 > 「各機、発進願います!」
 “All units, please launch!”
 
 @44993 Bright · ブライト
-# 审校：精读：刻印＝Crest
+# 审校：全局：弯撇号／弯引号
 > 「全員聞け! 敵の目的は
 >  “刻印”と断定される
-“Everyone, listen! The enemy's objective is confirmed to be the ‘Crest.’
+“Everyone, listen! The enemy’s objective is confirmed to be the ‘Crest.’
 ---
 >  1機たりとも、遺跡に到達させる
 >  な!」
 Do not let a single unit reach the ruin!”
 
 @44994 Beltorchika · ベルトーチカ
+# 审校：“好多的数量”不通
 > 「……なんて数……」
-“...What numbers...”
+“...There are so many...”
 
 @44995 Bunny · バニー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：弯撇号／弯引号
 > 「ブライト艦長、大変です!
 >  遺跡内の守備隊から
-“Captain Bright, it's terrible! An emergency transmission from the garrison
+“Captain Bright, it’s terrible! An emergency transmission from the garrison
 ---
 >  緊急連絡!」
 inside the ruin!”
@@ -1553,7 +1654,7 @@ inside the ruin!”
 “What is it?!”
 
 @44997 Bunny · バニー
-# 审校：全局：刻印＝Crest
+# 审校：“进入路”“直接守备队”直译
 > 「封鎖してあった地下空洞側の
 >  進入路が、何者かによって
 “The sealed access route on the underground cavern side has been
@@ -1564,7 +1665,7 @@ attacked by someone! The unit sent to intercept has been wiped out!
 ---
 >  現在、“刻印”の
 >  直接守備隊が交戦中!」
-Right now, the direct guard unit at the ‘Crest’ is engaged!”
+Right now, the Crest’s own guard unit is engaged!”
 
 @44998 Bright · ブライト
 > 「なんだと!?」
@@ -1616,9 +1717,10 @@ and are heading here at full speed.”
 weather the current attack, I want you to come to us at once.”
 
 @45005 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「し、しかし、こちらも敵が
 >  波状攻撃をかけてきています」
-“B-But we're also under wave after wave of enemy attacks here.”
+“B-But we’re also under wave after wave of enemy attacks here.”
 
 @45006 Treize · トレーズ
 > 「現在、各防衛ラインの
@@ -1629,16 +1731,17 @@ weather the current attack, I want you to come to us at once.”
 Leave the surface to them.”
 
 @45007 Bright · ブライト
+# 审校：英文 Please 生硬
 > 「……わかりました。総員に告ぐ!
 >  緊急事態だ! 我々は今から
-“...Understood. All hands, listen up! This is an emergency! From now, we will
+“...Understood. All hands, listen up! This is an emergency! Starting now, we will
 ---
 >  5分以内に現在交戦中の
 >  敵を撃滅、遺跡内の守備に
-annihilate the enemies we're engaging within five minutes and move to
+annihilate the enemies we’re engaging within five minutes and move to
 ---
 >  まわる! 頼む、5分以内だ!」
-defend the ruin! Please, within five minutes!”
+defend the ruin! I’m counting on you. Five minutes!”
 
 @45008 Beltorchika · ベルトーチカ
 > 「みんな、あと4分よ!」
@@ -1649,36 +1752,38 @@ defend the ruin! Please, within five minutes!”
 “Three minutes left! Hurry!”
 
 @45010 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「くっ、あと2分だ! 守備隊が
 >  持ちこたえている間に、なんとしても
-“Ngh, two minutes left! While the garrison holds out, we've got to get
+“Ngh, two minutes left! While the garrison holds out, we’ve got to get
 ---
 >  内部の防衛にまわるぞ!」
 inside and join the defense no matter what!”
 
 @45011 Bunny · バニー
+# 审校：全局：弯撇号／弯引号
 > 「遺跡内守備隊より緊急
 >  連絡! もうこれ以上、敵を
 “Emergency transmission from the garrison inside the ruin! They say they
 ---
 >  抑えることができないとのことです!」
-can't hold the enemy back any longer!”
+can’t hold the enemy back any longer!”
 
 @45012 Bright · ブライト
-# 审校：精读：刻印＝Crest
+# 审校：全局：弯撇号／弯引号
 > 「急げ! “刻印”を死守できなけ
 >  れば、死を待つ他はないぞ!」
-“Hurry! If we can't hold the ‘Crest,’ nothing awaits us but death!”
+“Hurry! If we can’t hold the ‘Crest,’ nothing awaits us but death!”
 
 @45013 Bunny · バニー
-# 审校：全局：刻印＝Crest
+# 审校：全局：弯撇号／弯引号
 > 「トレーズ特佐より連絡! 遺跡
 >  内守備隊は壊滅した模様!
 “Message from Special Colonel Treize! The garrison inside the ruin appears to have been wiped out!
 ---
 >  もう“刻印”まで敵の侵攻を
 >  さまたげるものは、ありません!」
-There is nothing left to stop the enemy's advance to the ‘Crest’!”
+There is nothing left to stop the enemy’s advance to the ‘Crest’!”
 
 @45014 Bright · ブライト
 > 「くっ、いますぐにでも遺跡内へまわら
@@ -1692,17 +1797,20 @@ There is nothing left to stop the enemy's advance to the ‘Crest’!”
 “Captain! The interior of the ‘Crest’ is... the enemy has taken control of it...”
 
 @45016 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「バカな……間に合わなかったのか……」
-“Impossible... We didn't make it in time...”
+“Impossible... We didn’t make it in time...”
 
 @45017 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「止まったか……敵は!?」
-“It's stopped... What about the enemy?!”
+“It’s stopped... What about the enemy?!”
 
 @45018 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「再編した守備隊と交戦中!
 >  しばらくは維持できそうです」
-“They're engaging the regrouped garrison! We should be able to hold for a while.”
+“They’re engaging the regrouped garrison! We should be able to hold for a while.”
 
 @45019 Garrison · ギャリソン
 > 「あとは、彼らにまかせるほかは、
@@ -1710,22 +1818,24 @@ There is nothing left to stop the enemy's advance to the ‘Crest’!”
 “There is nothing left for us to do but leave it to them.”
 
 @45020 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「……よし、全機帰還しろ!
 >  我々は遺跡内部の守備に
-“...All right, all units return! We'll move to defend the interior of the
+“...All right, all units return! We’ll move to defend the interior of the
 ---
 >  まわる! 整備班、補給を
 >  最優先しろ! すぐに出させるぞ!」
-ruin! Maintenance crew, make resupply top priority! We're launching again immediately!”
+ruin! Maintenance crew, make resupply top priority! We’re launching again immediately!”
 
 @45021 Shinobu · 忍
 > 「くっそぉっ、奴らやってくれるぜ!」
 “Damn it, those bastards are really something!”
 
 @45022 Sara · 沙羅
+# 审校：英文生硬
 > 「忍! 文句いってるヒマがあったら、
 >  手を動かしな!」
-“Shinobu! If you've got time to complain, put your hands to work!”
+“Shinobu! If you’ve got time to complain, get your hands moving!”
 
 @45023 Amuro · アムロ
 > 「アストナージ、急いでくれ!
@@ -1736,17 +1846,20 @@ ruin! Maintenance crew, make resupply top priority! We're launching again immedi
 the Getter!”
 
 @45024 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「やってますよ!!」
-“I'm on it!!”
+“I’m on it!!”
 
 @45025 Koji · 甲児
 > 「チェーンさん、こっちこっち!」
 “Chan, over here, over here!”
 
 @45026 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「いま行くわ!」
-“I'm coming!”
+“I’m coming!”
 
 @45027 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「エイジ、今いくからな、待ってろよ……」
-“Eiji, I'm coming now, so just wait...”
+“Eiji, I’m coming now, so just wait...”

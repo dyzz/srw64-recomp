@@ -6,10 +6,10 @@
 “Commander Gandal, I can see the {HeroMech} lot!”
 
 @31632 Gandal · ガンダル
-# 审校：血祭り
+# 审校：全局：弯撇号／弯引号
 > 「うむ。今回こそは、何としても
 >  マーズの奴めを血祭りにあげるのだ
-“Mm. This time, no matter what, we'll make a bloody example of that Mars.
+“Mm. This time, no matter what, we’ll make a bloody example of that Mars.
 ---
 >  ロゼよ、わかっておろうな」
 Rose, you understand what that means.”
@@ -28,51 +28,58 @@ Rose, you understand what that means.”
 “Enemy forces, incoming!”
 
 @31636 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「弾幕を張れ! ……くそっ、
 >  リーブラ攻撃隊はまだか!」
-“Lay down a barrage! ...Damn it, where's the Libra Attack Team?!”
+“Lay down a barrage! ...Damn it, where’s the Libra Attack Team?!”
 
 @31637 Ginrei · 銀鈴
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：弯撇号／弯引号
 > 「ブライト艦長! あれは……!」
-“Captain Bright! That's...!”
+“Captain Bright! That’s...!”
 
 @31638 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「遅くなってすまない!
 >  間に合ったようだな!」
-“Sorry I'm late! Looks like I made it in time!”
+“Sorry I’m late! Looks like I made it in time!”
 
 @31639 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「遅くなった!
 >  どうやら、間に合ったようだな!」
-“I'm late! Seems I made it in time, though!”
+“I’m late! Seems I made it in time, though!”
 
 @31640 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「遅くなってすまん!
 >  間に合ったようだな!」
-“Sorry I'm late! Looks like I made it in time!”
+“Sorry I’m late! Looks like I made it in time!”
 
 @31641 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「遅くなってごめんなさい!
 >  間に合ったようですね!」
-“Sorry I'm late! It seems I made it in time!”
+“Sorry I’m late! It seems I made it in time!”
 
 @31642 Beauty · ビューティ
+# 审校：全局：弯撇号／弯引号
 > 「{HeroNick}!
 >  ヒイロやノインも……!
 “{HeroNick}! Heero and Noin too...!
 ---
 >  もう、ハラハラさせないでよね!」
-Honestly, don't go scaring me like that!”
+Honestly, don’t go scaring me like that!”
 
 @31643 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「来たか! よし、反撃開始だ!」
-“You're here! Good, begin the counterattack!”
+“You’re here! Good, begin the counterattack!”
 
 @31644 Rose · ロゼ
-# 审校：隊長统一
+# 审校：全局：弯撇号／弯引号
 > 「マーグ隊長、あれがマーズです」
-“Commander Marg, that's Mars.”
+“Commander Marg, that’s Mars.”
 
 @31645 Marg · マーグ
 > 「そうか。聞こえるか、裏切り者
@@ -91,9 +98,10 @@ I, Marg, will eliminate you!”
 My brother was never that kind of man!”
 
 @31647 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「兄だって!? ハハハハハッ、俺は
 >  ひとりだ。弟をもった覚えはない」
-“Brother?! Hahahahaha, I have no one. I don't recall ever having a little brother.”
+“Brother?! Hahahahaha, I have no one. I don’t recall ever having a little brother.”
 
 @31648 Takeru · タケル
 > 「マーグッ!!」
@@ -108,9 +116,10 @@ My brother was never that kind of man!”
 “Rose, where is Mars?”
 
 @31651 Rose · ロゼ
+# 审校：全局：弯撇号／弯引号
 > 「どうやらマーズは
 >  出撃していないようです」
-“It seems Mars hasn't launched.”
+“It seems Mars hasn’t launched.”
 
 @31652 Marg · マーグ
 > 「そうか……ならば、
@@ -118,13 +127,15 @@ My brother was never that kind of man!”
 “I see... Then all I have to do is annihilate them all.”
 
 @31653 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「あれは……まさかマーグ……兄さん!?」
-“That's... no, it can't be, Marg... brother?!”
+“That’s... no, it can’t be, Marg... brother?!”
 
 @31654 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「ほう……お前がマーズだな。
 >  裏切り者マーズ
-“Oh... so you're Mars. Traitor Mars,
+“Oh... so you’re Mars. Traitor Mars,
 ---
 >  ズール皇帝の命により、
 >  このマーグが貴様を抹殺する!」
@@ -136,10 +147,10 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 “What on earth happened to you, Marg?! My brother was never that kind of man!”
 
 @31656 Marg · マーグ
-# 审校：与L17保持一致，统一为“I am alone”。
+# 审校：全局：弯撇号／弯引号
 > 「兄だって!? ハハハハハッ、俺は
 >  ひとりだ。弟をもった覚えはない」
-“Brother?! Hahahahaha, I am alone. I don't recall ever having a little brother.”
+“Brother?! Hahahahaha, I am alone. I don’t recall ever having a little brother.”
 
 @31657 Takeru · タケル
 > 「マーグッ!!」
@@ -377,7 +388,7 @@ Please do not worry. Well then... I am off.”
 “It seems history is indeed flowing in a harsh direction for us humans.”
 
 @31695 Lady · レディ
-# 审校：Lady 对 Treize 的称呼应为 Your Excellency，而非 Lord Treize。
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様の予想
 >  された通りです。また
@@ -385,7 +396,7 @@ Please do not worry. Well then... I am off.”
 ---
 >  デルマイユ公・ジャミトフ閣下の
 >  ご両名がお亡くなりになったことを
-Duke Dermail and His Excellency Jamitov, the Foundation's supreme council
+Duke Dermail and His Excellency Jamitov, the Foundation’s supreme council
 ---
 >  受け、財団の最高幹部会は
 >  満場一致でトレーズ様への
@@ -428,7 +439,7 @@ of the Earth Sphere... no, of humanity. There is little time left.”
 “Yes, Your Excellency.”
 
 @31700 Treize · トレーズ
-# 审校：破折号
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「……諸君、この戦いは、
 >  ムゲゾルバドス帝国の時とは違う
@@ -436,7 +447,7 @@ of the Earth Sphere... no, of humanity. There is little time left.”
 ---
 >  この地球そのものの未来を、
 >  我々の、人類の存亡をかけた
-This will be a battle for the future of Earth itself, for our survival, for humanity's survival.
+This will be a battle for the future of Earth itself, for our survival, for humanity’s survival.
 ---
 >  戦いとなる。銀河帝国との
 >  戦いに敗れれば、我々
@@ -459,9 +470,10 @@ your will and your actions to me, Treize...”
 space is in complete chaos.”
 
 @31702 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「起こったことをあれこれいっても
 >  しょうがありません。今、重要なのは
-“There's no use complaining about what's happened. What matters now is
+“There’s no use complaining about what’s happened. What matters now is
 ---
 >  そのおかげでネェルアーガマを
 >  ラビアンローズまで
@@ -471,9 +483,10 @@ that thanks to it, we can get the Nahel Argama
 to La Vie en Rose.”
 
 @31703 Henken · ヘンケン
+# 审校：全局：弯撇号／弯引号
 > 「まあ俺が月までこれたのもそうだがな。
 >  他の補給はどうだ?」
-“Well, that's how I got to the moon too. What about the other supplies?”
+“Well, that’s how I got to the moon too. What about the other supplies?”
 
 @31704 Chan · チェーン
 > 「ZZガンダムとアシュクリーフは
@@ -486,9 +499,11 @@ to La Vie en Rose.”
 “The Ashcleef? Is that another MS Anaheim built?”
 
 @31706 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ゾルバドス帝国→Zorbados Empire
 > 「違いますよ。ゾルバドス帝国が
 >  いた頃、フレモントインダストリーが
-“No. It's a machine Fremont Industry was developing for
+“No. It’s a machine Fremont Industry was developing for
 ---
 >  帝国用として開発していた機
 >  体です。ほら、{HeroMech}に
@@ -515,9 +530,10 @@ Though the D.P.S. control system has some frightening aspects.”
 “How did that end up in our hands?”
 
 @31708 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「月面制圧時にOZが入手した
 >  そうです。ただ適応できるパイロットが
-“I hear OZ acquired it during the lunar suppression. But they couldn't find
+“I hear OZ acquired it during the lunar suppression. But they couldn’t find
 ---
 >  見つからなくて、未完成機として
 >  放置されていたところを、アナハイムが
@@ -525,7 +541,7 @@ a pilot who could handle it, so it was left as an incomplete unit, and Anaheim
 ---
 >  買い取ったらしいですよ。
 >  そうですよね、オクトバーさん」
-apparently bought it up. Isn't that right, October?”
+apparently bought it up. Isn’t that right, October?”
 
 @31709 October · オクトバー
 > 「ええ。我々は{HeroMech}の
@@ -566,18 +582,19 @@ test data for the new technology.”
 “October, how is the adjustment on the Nu Gundam coming along?”
 
 @31715 October · オクトバー
+# 审校：全局：弯撇号／弯引号
 > 「まだ時間がかかります。兵装も
 >  一部が取りつけられていません
-“It'll still take time. Some of the armaments haven't even been mounted yet.
+“It’ll still take time. Some of the armaments haven’t even been mounted yet.
 ---
 >  実戦に出すのは無理ですね」
-There's no way it can go into combat.”
+There’s no way it can go into combat.”
 
 @31716 Chan · チェーン
-# 审校：Chan 对 October 说话应保持礼貌，原文为敬体，译文过于随意。
+# 审校：全局：弯撇号／弯引号
 > 「そんな、いま渡せなかったら次は
 >  いつになるかわからないんですよ!?」
-“But if we can't hand it over now, who knows when the next chance will be?!”
+“But if we can’t hand it over now, who knows when the next chance will be?!”
 
 @31717 October · オクトバー
 # 审校：英文更自然
@@ -585,44 +602,49 @@ There's no way it can go into combat.”
 “What can’t be done can’t be done.”
 
 @31718 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「わかりました。調整は
 >  ネェルアーガマでやります
-“Understood. We'll do the adjustments aboard the Nahel Argama.
+“Understood. We’ll do the adjustments aboard the Nahel Argama.
 ---
 >  残りのデータ、まわしといてください」
 Please send over the rest of the data.”
 
 @31719 October · オクトバー
+# 审校：全局：弯撇号／弯引号
 > 「やめてください。未完成のまま
 >  持ち出すつもりですか」
-“Please don't. You intend to take it out unfinished?”
+“Please don’t. You intend to take it out unfinished?”
 
 @31720 Chan · チェーン
-# 审校：アムロ是大尉，应译为 Captain，不是 Lieutenant。
+# 审校：全局：弯撇号／弯引号
 > 「アムロ……大尉が待ってるんです!
 >  あとは私と彼で完成させるわ」
-“Amuro... the Captain is waiting! I'll finish it with him.”
+“Amuro... the Captain is waiting! I’ll finish it with him.”
 
 @31721 October · オクトバー
+# 审校：全局：弯撇号／弯引号
 > 「どうなっても知りませんよ」
-“Don't blame me for whatever happens.”
+“Don’t blame me for whatever happens.”
 
 @31722 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「大丈夫です! ヘンケン中佐、
 >  ネェルアーガマの発進準備
-“It'll be fine! Lieutenant Colonel Henken, please get the Nahel Argama
+“It’ll be fine! Lieutenant Colonel Henken, please get the Nahel Argama
 ---
 >  急いでもらってください。私はνを
 >  搬入させます」
-ready to launch, and hurry. I'll have the Nu loaded aboard.”
+ready to launch, and hurry. I’ll have the Nu loaded aboard.”
 
 @31723 Henken · ヘンケン
 > 「あ、ああ」
 “O-oh, right.”
 
 @31724 Chan · チェーン
+# 审校：全局：弯撇号／弯引号
 > 「いいですね、オクトバーさん」
-“That's fine with you, isn't it, October?”
+“That’s fine with you, isn’t it, October?”
 
 @31725 October · オクトバー
 # 审校：去掉no helping it
@@ -644,17 +666,19 @@ send it to La Vie en Rose. In exchange, send me the combat data as it comes in.�
 “...What was that about?”
 
 @31728 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ん? なんだ、
 >  見たことのない機体があるな
-“Hm? What's this, there's a machine I've never seen before.
+“Hm? What’s this, there’s a machine I’ve never seen before.
 ---
 >  私の機体に似ているようだが……?」
 It looks like mine, but...?”
 
 @31729 Rish · リッシュ（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「どれ…………おいおい、
 >  ありゃ“TYPE33”じゃねぇのか?」
-“Which one...? Hey, hey, isn't that a ‘TYPE33’?”
+“Which one...? Hey, hey, isn’t that a ‘TYPE33’?”
 
 @31730 Selain · セレイン（按段落 3DD2）
 > 「……TYPE33? おい言え、
@@ -676,6 +700,7 @@ a new model in the Valkyrie Series.”
 “A new Valkyrie...”
 
 @31733 Rish · リッシュ（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ああ、お前のが3機だけ作られた
 >  試作型の“TYPE27”
 “Yeah, yours is the ‘TYPE27,’ a prototype of which only three were built.
@@ -694,10 +719,10 @@ a redesign of the ‘TYPE28.’ But after the ‘TYPE29,’
 ---
 >  設計段階でOZのクーデターが
 >  起きちまったから
-OZ's coup happened while they were still at the design stage,
+OZ’s coup happened while they were still at the design stage,
 ---
 >  作られてないはずなんだが」
-so it shouldn't ever have been built.”
+so it shouldn’t ever have been built.”
 
 @31734 Alan · アラン
 # 审校：破折号
@@ -713,6 +738,7 @@ so to speak.”
 “Alan, what do you mean by that?”
 
 @31736 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「解放戦線もカラバも、組織と
 >  しての形は無くしてしまったが
 “Both the Liberation Front and Karaba have lost their form as organizations,
@@ -723,58 +749,64 @@ but their respective corps of engineers have only grown stronger by merging.
 ---
 >  万丈とロス・イゴールの
 >  尽力のおかげでな
-That's thanks to the efforts of Banjo and Ross Igor.
+That’s thanks to the efforts of Banjo and Ross Igor.
 ---
 >  ゴッドとライジングも
 >  そこから持ってきたのだよ」
-That's also where we got the God and the Rising from.”
+That’s also where we got the God and the Rising from.”
 
 @31737 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「それでは帝国の機体が存在する
 >  理由になっていない」
-“Then that doesn't explain why an Imperial machine exists.”
+“Then that doesn’t explain why an Imperial machine exists.”
 
 @31738 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「それは簡単だ。OZが月面を
 >  制圧したとき、OZに反対する
-“That's simple. When OZ seized the lunar surface, the Z&R engineers who opposed
+“That’s simple. When OZ seized the lunar surface, the Z&R engineers who opposed
 ---
 >  Z&Rの技術者が設計データ
 >  ごと我々のもとへやってきたのだ」
 OZ came to us, design data and all.”
 
 @31739 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「なるほどな。それで合点がいった。
 >  で、あれのパイロットはどこだ?」
-“I see. That clears it up. So, where's the pilot for that thing?”
+“I see. That clears it up. So, where’s the pilot for that thing?”
 
 @31740 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
 “The pilot is you, {HeroName}.”
 
 @31741 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「私はスヴァンヒルドを
 >  降りるつもりはない
 “I have no intention of leaving the Svanheld.
 ---
 >  あれには私の癖が記録されている。
 >  いまさら他の機体になど移れない」
-It has my habits recorded in it. I can't switch to another machine now.”
+It has my habits recorded in it. I can’t switch to another machine now.”
 
 @31742 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「だからこそ、あれには
 >  お前が乗ってくれないと困るんだよ」
-“That's exactly why we're in trouble if you don't pilot it.”
+“That’s exactly why we’re in trouble if you don’t pilot it.”
 
 @31743 Selain · セレイン（按段落 3DD2）
 > 「アストナージ?」
 “Astonaige?”
 
 @31744 Astonaige · アストナージ
-# 审校：原文是“アランが改良型だといっただろう”，说话人是 Astonaige，初稿误写成“I told you Alan called it...”，改为“Alan said it was an improved model, didn't he?”。
+# 审校：全局：弯撇号／弯引号
 > 「アランが改良型だといっただろう。
 >  あれは、お前の操縦データをもとに
-“Alan said it was an improved model, didn't he? It was developed by running
+“Alan said it was an improved model, didn’t he? It was developed by running
 ---
 >  シミュレーションして開発されたんだ。
 >  お前の癖は全部知っているし
@@ -789,61 +821,74 @@ and no one but you can handle it.”
 “When did you go and do that... Astonaige, you copied my data without telling me.”
 
 @31746 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
 “Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
 ---
 >  乗ってくれるだろうな?」
-so you'll pilot it, won't you?”
+so you’ll pilot it, won’t you?”
 
 @31747 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「いいだろう。使わせてもらうとしよう。
 >  しかしスヴァンヒルドはどうなるのだ?」
-“Fine. I'll put it to use. But what becomes of the Svanheld?”
+“Fine. I’ll put it to use. But what becomes of the Svanheld?”
 
 @31748 Rish · リッシュ（按段落 3DD2）
 > 「俺の機体の予備パーツだな」
 “Spare parts for my machine.”
 
 @31749 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「お前は黙ってろ! ……といいたい
 >  ところだが、それが常道か」
-“You keep quiet! ...Is what I'd like to say, but I suppose that's the usual arrangement.”
+“You keep quiet! ...Is what I’d like to say, but I suppose that’s the usual arrangement.”
 
 @31750 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「その辺はまかせる」
-“I'll leave that part to you.”
+“I’ll leave that part to you.”
 
 @31751 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ああ。で、あれの名前は?」
-“Yeah. So, what's that one called?”
+“Yeah. So, what’s that one called?”
 
 @31752 Alan · アラン
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ラーズグリーズ→Razgreez
 > 「“TYPE33改”
 >  ラーズグリーズだ」
-“It's the ‘TYPE33 Kai’ Razgreez.”
+“It’s the ‘TYPE33 Kai’ Razgreez.”
 
 @31753 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ん? なんだ、見たことのない
 >  機体があるな。ジャネット
-“Hm? What's this, there's a machine I've never seen before. Janet,
+“Hm? What’s this, there’s a machine I’ve never seen before. Janet,
 ---
 >  私の機体に似ているようだが、
 >  あれは何だ?」
 it looks like my machine, but what is that?”
 
 @31754 Janet · ジャネット
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld、ヴァルキュリア→Valkyrie
 > 「え? ああ、あれ?
 >  アランさんが持ってきたみたいよ
 “Huh? Oh, that? Looks like Alan brought it in.
 ---
 >  新型のヴァルキュリアだって。
 >  スヴァンヒルドの後継機ね」
-They say it's a new model Valkyrie. The Svanheld's successor.”
+They say it’s a new model Valkyrie. The Svanheld’s successor.”
 
 @31755 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「スヴァンヒルドの……」
-“The Svanheld's...”
+“The Svanheld’s...”
 
 @31756 Alan · アラン
 > 「その通り。あれは我々で製作した
@@ -859,13 +904,15 @@ the ‘TYPE33 Kai’ Razgreez.”
 “‘TYPE33 Kai’? Alan, what do you mean by that?”
 
 @31758 Alan · アラン
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「“TYPE33”というのは、
 >  もともと帝国がZ&R社で
 “‘TYPE33’ was originally a heavy machine the Empire had Z&R
 ---
 >  地球環境用に設計させていた
 >  重装機だ。君のスヴァンヒルドは
-design for Earth's environment. Your Svanheld is
+design for Earth’s environment. Your Svanheld is
 ---
 >  試作型の“TYPE27”だから
 >  その直系といっていい
@@ -884,11 +931,13 @@ came to us with the design data in hand.
 What we developed from that data is that ‘TYPE33 Kai.’”
 
 @31759 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「しかし、よくそんな余裕が
 >  あったものだな」
-“But I'm surprised you had that kind of leeway.”
+“But I’m surprised you had that kind of leeway.”
 
 @31760 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「解放戦線もカラバも、組織と
 >  しての形は無くしてしまったが
 “Both the Liberation Front and Karaba have lost their form as organizations,
@@ -899,45 +948,48 @@ but their respective corps of engineers have only grown stronger by merging.
 ---
 >  万丈とロス・イゴールの
 >  尽力のおかげでな
-Thanks to Banjo and Ross Igor's efforts.
+Thanks to Banjo and Ross Igor’s efforts.
 ---
 >  ゴッドとライジングも
 >  そこから持ってきたのだよ」
-That's also where we got the God and the Rising from.”
+That’s also where we got the God and the Rising from.”
 
 @31761 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「なるほどな。それで合点がいった。
 >  で、あれのパイロットはどこだ?」
-“I see. That clears it up. So, where's the pilot for that thing?”
+“I see. That clears it up. So, where’s the pilot for that thing?”
 
 @31762 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
 “The pilot is you, {HeroName}.”
 
 @31763 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「私はスヴァンヒルドを
 >  降りるつもりはない
 “I have no intention of leaving the Svanheld.
 ---
 >  あれには私の癖が記録されている。
 >  いまさら他の機体になど移れない」
-It has my habits recorded in it. I can't switch to another machine now.”
+It has my habits recorded in it. I can’t switch to another machine now.”
 
 @31764 Astonaige · アストナージ
-# 审校：Astonaige 对 Selain 用「お前」，译文却用 you 且语气偏弱，改为更直接、符合技师口吻的说法。
+# 审校：全局：弯撇号／弯引号
 > 「だからこそ、あれには
 >  お前が乗ってくれないと困るんだよ」
-“That's exactly why we need you to pilot it.”
+“That’s exactly why we need you to pilot it.”
 
 @31765 Selain · セレイン（按段落 3DD2）
 > 「アストナージ?」
 “Astonaige?”
 
 @31766 Astonaige · アストナージ
-# 审校：同 L44，修正说话人逻辑错误。
+# 审校：全局：弯撇号／弯引号
 > 「アランが改良型だといっただろう。
 >  あれは、お前の操縦データをもとに
-“Alan said it was an improved model, didn't he? It was developed by running
+“Alan said it was an improved model, didn’t he? It was developed by running
 ---
 >  シミュレーションして開発されたんだ
 >  お前の癖は全部知っているし
@@ -952,24 +1004,29 @@ and no one but you can handle it.”
 “When did you go and do that... Astonaige, you copied my data without telling me.”
 
 @31768 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
 “Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
 ---
 >  乗ってくれるだろうな?」
-so you'll pilot it, won't you?”
+so you’ll pilot it, won’t you?”
 
 @31769 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「いいだろう。使わせてもらうとしよう。
 >  しかしスヴァンヒルドはどうなるのだ?」
-“Fine. I'll put it to use. But what becomes of the Svanheld?”
+“Fine. I’ll put it to use. But what becomes of the Svanheld?”
 
 @31770 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「予備パーツにまわすさ。
 >  どうせ必要になる」
-“It'll go to spare parts. We'll need them anyway.”
+“It’ll go to spare parts. We’ll need them anyway.”
 
 @31771 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「そうか……おしい気もするが、
 >  それが常道か。わかった、まかせる」
-“I see... It feels like a waste, but I suppose that's the usual arrangement. All right, I'll leave it to you.”
+“I see... It feels like a waste, but I suppose that’s the usual arrangement. All right, I’ll leave it to you.”
