@@ -368,7 +368,7 @@ from my earliest days, to hold fast to the pride of the Empire!
 “...”
 
 @22110 Le Cain · ル・カイン
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「祈れ、祈ってくれ。祈るのだ!
 “Pray, pray for him. Pray!
 ---
@@ -377,7 +377,7 @@ Pray for my father!
 ---
 >  お前が聖女と呼ばれるのならば
 >  父のため……そしてこの私のために
-If you are called a saint, then for my father’s sake... and for mine,
+If you are called a Saint, then for my father’s sake... and for mine,
 ---
 >  祈ってくれ。すぐれた者に加護が
 >  あるように……己の父を手にかけた

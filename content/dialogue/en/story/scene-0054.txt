@@ -950,13 +950,14 @@ Brigadier General Blex is involved.”
 is reviving a nation even possible?”
 
 @35741 Sally · サリィ
+# 审校：聖女＝Saint
 > 「サンクキングダムはもともと小国ですし
 >  何よりもリリーナ王女と
 “The Sanc Kingdom was originally a small country, and more than anything, I think
 ---
 >  クスコの聖女の存在が、
 >  大きいのだと思いますよ」
-the presence of Princess Relena and the Cusco holy woman is what matters.”
+the presence of Princess Relena and the Cusco Saint is what matters.”
 
 @35742 Alan · アラン
 # 审校：全局：弯撇号／弯引号

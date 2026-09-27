@@ -2963,10 +2963,10 @@ we should be able to head there.”
 “Blex, is it? First the resistance, and now he lends a hand to children’s games.”
 
 @36683 Dermail · デルマイユ
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「だが、あそこにはクスコの聖女もいる。
 >  このままでいけば
-“But the Holy Maiden of Cusco is there as well. If things go on like this,
+“But the Saint of Cusco is there as well. If things go on like this,
 ---
 >  我々の邪魔になるぞ」
 they’ll get in our way.”

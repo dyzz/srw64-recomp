@@ -28,14 +28,14 @@ to quell the chaos on the ground and rescue the refugees.”
 “From the look of things, we can leave the surface in their hands without worry.”
 
 @41519 Banjo · 万丈
-# 审校：The Lady Une of today 直译
+# 审校：聖女＝Saint
 > 「ああ、僕もそう思う。
 >  今のレディ・アンならまかせられるさ
 “Yeah, I think so too. The way Lady Une is now, we can trust her with it.
 ---
 >  それに聖女やリリーナ嬢も
 >  一緒にいる」
-Besides, the Holy Woman and Lady Relena are with them.”
+Besides, the Saint and Lady Relena are with them.”
 
 @41520 Ciela · シーラ
 # 审校：长定语直译

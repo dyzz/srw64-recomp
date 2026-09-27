@@ -125,10 +125,10 @@ is running a pacifist movement. Surprised they haven’t been killed yet.”
 “What’s this ‘Holy Women’s Corps of Cusco’ thing?”
 
 @21362 Anna · アンナ
-# 审校：“心碎的人们”“called a holy woman by the downtrodden people”生硬
+# 审校：聖女＝Saint
 > 「うちひしがれた人々から、聖女と
 >  呼ばれて支持者を増やしている
-“There’s a woman the downtrodden have taken to calling a holy woman, and her following keeps growing.
+“There’s a woman the downtrodden have taken to calling a Saint, and her following keeps growing.
 ---
 >  女の人がいるの。南米のクスコから
 >  噂が広がったから
@@ -196,10 +196,10 @@ Hold on a sec... there, got it.”
 “What’s going on?”
 
 @21372 Bright · ブライト
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「例の“聖女”がな、実の姉
 >  かもしれんらしい。あのままでは戦力に
-“That ‘holy woman’ might be his real sister. As he is now, he’s no use to us in a fight,
+“That ‘Saint’ might be his real sister. As he is now, he’s no use to us in a fight,
 ---
 >  ならんから、確認に行くのを
 >  許可したんだ」
@@ -1145,9 +1145,10 @@ and meet Governor Gresco.”
 I too will fight on my own battlefield.)
 
 @21532 Le Cain · ル・カイン
+# 审校：聖女＝Saint
 > 「私も聞いている。
 >  “クスコの聖女”と
-“I have heard of her as well. The ‘Holy Woman of Cusco’
+“I have heard of her as well. The ‘Saint of Cusco’
 ---
 >  その信奉者たちのことはな。
 >  それがこの地へ来るというのか?
@@ -1175,10 +1176,10 @@ that’s the nonsense she comes to spout?!”
 “Y-yes... it would seem so...”
 
 @21536 Le Cain · ル・カイン
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：聖女＝Saint
 > 「ばか者!! 人心をたぶらかす、
 >  その聖女とやらを
-“Fools!! That so-called Holy Woman who bewitches the hearts of the people...
+“Fools!! That so-called Saint who bewitches the hearts of the people...
 ---
 >  なぜ今まで放っておいたのだ!
 >  すぐに捕らえてこい!」
@@ -1323,10 +1324,10 @@ Damn it, Aina... Please be safe...”
 “Thank you for saving me.”
 
 @21562 Quattro · クワトロ
-# 审校：全局：弯撇号／弯引号
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「いや……礼ならばアマダ少尉にいって
 >  くれ。彼の強い要望がなければ
-“No... If you want to thank someone, thank Ensign Amada. Without his strong insistence,
+“No... If you want to thank someone, thank Second Lieutenant Amada. Without his strong insistence,
 ---
 >  我々はそのまま通りすぎていた。それ
 >  に、問題もある。君はスペシャルズの
@@ -1429,9 +1430,10 @@ vanished. May I... stay here with you?”
 in exactly that way, after all.”
 
 @21577 Quattro · クワトロ
+# 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
 > 「そういうことだ。アマダ少尉、彼女
 >  を部屋へ案内してやってくれ」
-“That settles it. Ensign Amada, show her to a room.”
+“That settles it. Second Lieutenant Amada, show her to a room.”
 
 @21578 Shiro · シロー
 > 「はい、大尉!」

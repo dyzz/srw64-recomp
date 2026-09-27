@@ -133,10 +133,10 @@ we won’t hold out for long.”
 “You don’t seem too keen on this, do you?”
 
 @40775 Brad · ブラッド（按段落 3DD3）
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「なんだか調子が悪そうだな、
 >  聖女さまは。大丈夫、準備が
-“You look a bit under the weather, Holy Woman. Don’t worry, we’ll
+“You look a bit under the weather, Saint. Don’t worry, we’ll
 ---
 >  終わるまでくらい、俺たちが
 >  もたせてみせるって」
@@ -712,9 +712,10 @@ to see they’re treated well.”
 “Yes, of course.”
 
 @40857 Gale · ゲイル
+# 审校：聖女＝Saint
 > 「そうか……君は“聖女”だった
 >  のだな」
-“I see... So you were the ‘Holy Woman.’”
+“I see... So you were the ‘Saint.’”
 
 @40858 Julia · ジュリア
 > 「わたくしは人々が望んでいることを

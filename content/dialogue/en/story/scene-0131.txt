@@ -341,9 +341,10 @@ to see that they are treated well.”
 “Yes, of course.”
 
 @43458 Gale · ゲイル
+# 审校：聖女＝Saint
 > 「そうか……君は“聖女”だった
 >  のだな」
-“I see... so you were the ‘Holy Woman.’”
+“I see... so you were the ‘Saint.’”
 
 @43459 Julia · ジュリア
 > 「わたくしは人々が望んでいることを

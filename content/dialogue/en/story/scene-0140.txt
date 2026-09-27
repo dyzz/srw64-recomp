@@ -2631,14 +2631,13 @@ negotiate directly with Governor Gresco.”
 “Cusco’s Holy Women’s Corps, you mean.”
 
 @39185 Noin · ノイン
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「ええ。その聖女隊に、最近では
 >  聖女の他にもう1人指導者と
-“Yes. And lately, besides the Holy Woman, there’s said to be another figure
+“Yes. And lately, besides the Saint, there’s said to be another figure
 ---
 >  目される人物がいるのだそうです」
-regarded as a leader of the Holy Women’s Corps.”
+regarded as a leader of the Saints’ Corps.”
 
 @39186 Zechs · ゼクス
 > 「ほう?」

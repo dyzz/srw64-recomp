@@ -7302,6 +7302,33 @@
    "sections": [
     "story"
    ]
+  },
+  {
+   "ja": [
+    "ゴーマン大尉"
+   ],
+   "zh-Hans": {
+    "old": "戈曼大尉",
+    "new": "戈曼上尉"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゴーマン"
+   ],
+   "zh-Hans": {
+    "old": "戈曼大尉",
+    "new": "戈曼上尉"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
   }
  ]
 }

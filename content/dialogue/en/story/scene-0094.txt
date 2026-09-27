@@ -465,10 +465,10 @@ to see them treated fairly.”
 “Yes, of course.”
 
 @48692 Gale · ゲイル
-# 审校：意思是果然是圣女
+# 审校：聖女＝Saint
 > 「そうか……君は“聖女”だった
 >  のだな」
-“I see... You really are the ‘Holy Woman.’”
+“I see... You really are the ‘Saint.’”
 
 @48693 Julia · ジュリア
 > 「わたくしは、人々が望んでいることを

@@ -355,7 +355,7 @@ don’t neglect combat readiness! Anyone free, start loading supplies!”
 If you’ve got time to complain, get moving!”
 
 @26389 Milliardo · ミリアルド
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「OZがサンクキングダムを狙うのは
 >  当然か。もはや
 “It’s only natural OZ would target the Sanc Kingdom. It may already
@@ -366,7 +366,7 @@ be too late, but... please, Wing Zero, hurry!
 ---
 >  リリーナと聖女だけは、なんとしても
 >  救わねばならんのだ!!」
-Relena and the holy maiden must be saved, no matter what!!”
+Relena and the Saint must be saved, no matter what!!”
 
 @26390 ???
 > 「ふん……やけに騒がしいが……まぁいい。

@@ -184,14 +184,14 @@ forming here and there, and as long as rebuilding the Earth Sphere
 has to be led by the colonies, well...”
 
 @48901 Emma · エマ
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「そうね。結局コロニーが、いちばん
 >  まともに組織を残している
 “That’s right. In the end, the colonies are the ones with the most intact organizations
 ---
 >  わけですから。“クスコの聖女”や
 >  ピースクラフトでは
-left. The ‘Holy Woman of Cusco’ and the Peacecrafts may be
+left. The ‘Saint of Cusco’ and the Peacecrafts may be
 ---
 >  地上の人間の精神的な
 >  支えにはなれても、コロニーと
@@ -326,30 +326,28 @@ to a colony. This is partly to negotiate about that, too.”
 the colonies don’t trust us all that much either.”
 
 @48917 Emma · エマ
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「まだ若いのに、かなりやり手ですね、
 >  彼女。財団が資金提供して
 “She’s still young, but quite capable. The Foundation provides funding,
 ---
 >  聖女ジュリアを中心にしたクスコの
 >  聖女隊も、各地で
-and I hear the Cusco Holy Women’s Corps, with the Holy Woman Julia at its center,
+and I hear the Cusco Saints’ Corps, with the Saint Julia at its center,
 ---
 >  難民救済にあたってるって
 >  話ですしね」
 is also working to relieve refugees in various places.”
 
 @48918 Kayra · ケーラ
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「まだ若いのにさ、彼女もよくやってま
 >  すよ。財団が資金提供して
 “She’s still young, but she’s doing well too. The Foundation provides funding,
 ---
 >  聖女ジュリアを中心にしたクスコの
 >  聖女隊も、各地で
-and I hear the Cusco Holy Women’s Corps, with the Holy Woman Julia at its center,
+and I hear the Cusco Saints’ Corps, with the Saint Julia at its center,
 ---
 >  難民救済にあたってるって話、
 >  聞きましたか?」
@@ -361,10 +359,10 @@ has been working to relieve refugees in various places?”
 “Julia Asuka seems incredibly popular.”
 
 @48920 Beltorchika · ベルトーチカ
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「地上の人たちの精神的な柱ね。
 >  でも、財団も聖女も、まだコロニー
-“She’s the spiritual pillar for the people on Earth. But neither the Foundation nor the Holy Woman is at a point where they can handle practical talks between the colonies
+“She’s the spiritual pillar for the people on Earth. But neither the Foundation nor the Saint is at a point where they can handle practical talks between the colonies
 ---
 >  と、地球統一の実務レベルの
 >  話ができる状況ではないわよ
@@ -495,11 +493,10 @@ to dispatch an escort for Representative Relena.”
 There are so many refugees, too. I feel like now isn’t the time for that.”
 
 @48937 Amuro · アムロ
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「難民に関しては、聖女にまかせて
 >  いるんだろ。クスコの聖女隊って
-“The refugees are being left to the Holy Woman, aren’t they? I hear the Cusco Holy Women’s Corps
+“The refugees are being left to the Saint, aren’t they? I hear the Cusco Saints’ Corps
 ---
 >  かなりの人数になってるって話だよ」
 has grown to quite a large number.”
@@ -523,11 +520,10 @@ on Earth. There are so many refugees, too. I wonder if now just isn’t
 the time for that.”
 
 @48940 Amuro · アムロ
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「難民に関しては、聖女にまかせて
 >  いるんだろ。クスコの聖女隊って
-“The refugees are being left to the Holy Woman, aren’t they? I hear the Cusco Holy Women’s Corps
+“The refugees are being left to the Saint, aren’t they? I hear the Cusco Saints’ Corps
 ---
 >  かなりの人数になってるって話だよ」
 has grown to quite a large number.”
@@ -661,10 +657,10 @@ pushing reconstruction forward include some who were little better than bandits
 not long ago, you know?”
 
 @48957 Emma · エマ
-# 审校：中文意思反了；英文去掉 the presence of
+# 审校：聖女＝Saint
 > 「それも、“クスコの聖女”の存在が
 >  なければ、そうはならなかったでしょうね」
-“Even that wouldn’t have happened if not for the ‘Holy Woman of Cusco.’”
+“Even that wouldn’t have happened if not for the ‘Saint of Cusco.’”
 
 @48958 Kayra · ケーラ
 > 「さすがに時間がかかったみたいですね」

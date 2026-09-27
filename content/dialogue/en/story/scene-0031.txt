@@ -1827,10 +1827,10 @@ Romefeller to be wrong.”
 “...Only rumors. The Holy Women’s Corps of Cusco, was it?”
 
 @23692 Noin · ノイン
-# 审校：接上句，补成完整问句
+# 审校：聖女＝Saint
 > 「ではその者たちに、聖女の他に
 >  もうひとり、指導者と目されている
-“Then did you know that among them, besides the Holy Woman, there’s another
+“Then did you know that among them, besides the Saint, there’s another
 ---
 >  人物がいるのは?」
 figure regarded as a leader?”

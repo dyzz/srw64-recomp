@@ -264,9 +264,10 @@ to apologize to you for.”
 “Thanks, Anna. Gale... Julia is on Earth too.”
 
 @35093 Gale · ゲイル
+# 审校：聖女＝Saint
 > 「“クスコの聖女”だな。会って
 >  話をしたよ。私の復讐のために
-“The ‘Holy Woman of Cusco,’ you mean. I met her and we talked. She said she challenged
+“The ‘Saint of Cusco,’ you mean. I met her and we talked. She said she challenged
 ---
 >  お前たちに挑んだそうだな。そして
 >  ジュリアもまた、お前たちに敗れた……」
@@ -295,10 +296,10 @@ startled by how much Julia had changed, though.”
 “Gale... if you met my sister, why did you come here?”
 
 @35097 Gale · ゲイル
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「ジュリアは聖女だ。
 >  リリーナという少女とともに
-“Julia is a holy woman. Together with a girl named Relena,
+“Julia is a Saint. Together with a girl named Relena,
 ---
 >  疲れ果てた地球の人々のために
 >  活動している。だが、私は軍人だ

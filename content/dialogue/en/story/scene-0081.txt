@@ -1242,10 +1242,10 @@ that would eventually come.”
 “Unhappy encounters... What do you mean?”
 
 @40591 Brad · ブラッド（按段落 3DD3）
-# 审校：精读：去破折号
+# 审校：聖女＝Saint
 > 「聖女さん、頼むぜ、もっと
 >  わかりやすくいってくれないか」
-“Miss Saint, come on. Could you put it a little simpler for us?”
+“Saint Julia, come on. Could you put it a little simpler for us?”
 
 @40592 Koji · 甲児
 > 「そ、そうそう」
@@ -1416,10 +1416,10 @@ left to choose.”
 “Hmm... So then, where is this Crest you speak of?”
 
 @40613 Brad · ブラッド（按段落 3DD3）
-# 审校：称呼与前文 Miss Saint 统一
+# 审校：聖女＝Saint
 > 「よーし、なんとか希望が見えてきた
 >  じゃねぇか。で、聖女さん、そいつは
-“All right, looks like we’ve finally got a glimmer of hope. So, Miss Saint,
+“All right, looks like we’ve finally got a glimmer of hope. So, Saint Julia,
 ---
 >  いったいどこにあるんだ?」
 just where is this thing?”

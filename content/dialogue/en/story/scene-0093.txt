@@ -710,10 +710,10 @@ that were bound to come.”
 “Unfortunate encounters... what do you mean?”
 
 @44864 Brad · ブラッド（按段落 3DD3）
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「聖女さん、頼むぜ、もっと
 >  わかりやすくいってくれないか」
-“Hey, Saint lady, come on, can’t you explain it a bit more simply?”
+“Hey, Saint Julia, come on, can’t you explain it a bit more simply?”
 
 @44865 Koji · 甲児
 > 「そ、そうそう」
@@ -1249,7 +1249,7 @@ That’s four in all.”
 “That many?! Just hearing the names makes them sound strong!”
 
 @44937 Lady · レディ
-# 审校：英文生硬
+# 审校：聖女＝Saint
 # 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズさま、クスコの調査に
 >  向かった部隊からの報告です
@@ -1257,7 +1257,7 @@ That’s four in all.”
 ---
 >  聖女ジュリアのおっしゃられたとおり、
 >  あの地に、はるか昔の遺跡が
-Just as the Holy Woman Julia said, we have confirmed that a ruin from
+Just as the Saint Julia said, we have confirmed that a ruin from
 ---
 >  あることを確認いたしました。
 >  遺跡は帝国の攻撃目標と
@@ -1463,9 +1463,10 @@ You’d be safer in space.”
 “Zechs, it’s about time.”
 
 @44970 Zechs · ゼクス
+# 审校：聖女＝Saint
 > 「聖女のところへ行け、リリーナ。
 >  あそこがもっとも安全なはずだ」
-“Go to where the holy woman is, Relena. That should be the safest place.”
+“Go to where the Saint is, Relena. That should be the safest place.”
 
 @44971 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号

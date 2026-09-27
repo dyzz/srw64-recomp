@@ -2871,10 +2871,10 @@ but in reality it’s Lady Une’s OZ that’s doing the work.”
 “...What about my sister and the others?”
 
 @50124 Sally · サリィ
-# 审校：全局：弯撇号／弯引号
+# 审校：聖女＝Saint
 > 「“クスコの聖女”は復興に
 >  従事する人々の精神的な
-“The ‘Holy Woman of Cusco’ has become a spiritual
+“The ‘Saint of Cusco’ has become a spiritual
 ---
 >  支えになっているわ。
 >  リリーナさんもがんばってるわよ、ヒイロ」
@@ -2924,15 +2924,14 @@ they’re trying to move the Foundation’s headquarters to the moon or a colony
 “...What about my sister and the others?”
 
 @50132 Sally · サリィ
-# 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：聖女隊→Saints
+# 审校：聖女＝Saint
 > 「“クスコの聖女”は復興に
 >  従事する人々の精神的な
-“The ‘Holy Woman of Cusco’ has become a spiritual
+“The ‘Saint of Cusco’ has become a spiritual
 ---
 >  支えになっているわ。財団がクスコの
 >  聖女隊のバックアップをしてるのよ」
-support for the people engaged in reconstruction. The Foundation is backing the Holy Women’s Corps of Cusco.”
+support for the people engaged in reconstruction. The Foundation is backing the Saints’ Corps of Cusco.”
 
 @50133 Amuro · アムロ
 # 审校：英文冗长，中文“留下的不信任感”指向错

@@ -437,3 +437,10 @@ v1 批次的机械检查一度报出 94 条错误，大多是检查器按单页�
 ### 主角机体与武器（2026-09-27 考证）
 
 英文机体名一律用日文维基「外国語表記」的官方拼法（Earthgain、Virose、Svanheld、Sigroon、Razgreez、Soldifar、Ashcleef、Sweemurg、Elbulls），不用英文圈惯用的 Vairose／Svanhild／Razgriz／Simurgh／Elbrus；中文按片假名音译，不套神话通译。武機覇拳流招式中文沿用汉字、英文用罗马字。本次改动：シグルーン Sigrun→Sigroon；アッシャークルー 阿舍克鲁→天使光轮（胸口连射光轮，来源无定说）；スプラッシュブレイカー 飞溅破坏者→散射破坏者（Splash 是自动炮塔名）；ダブルライトニングソード 双重闪电剑→双闪电剑（双持）；ノーブルフェニックス 高贵凤凰→凤凰突击。考证页与来源见会话产出的「主角机体与武器考证」。
+
+## 军阶、称呼与写法（2026-09-28 用户决定）
+
+- **军阶按目标语言的体系写，不照搬日文汉字**。中文用中国军衔：大将→上将、大佐→上校、中佐→中校、少佐→少校、大尉→上尉、中尉／少尉 不变、准将 不变；英文统一用陆军体系：大尉 Captain、少佐 Major、中佐 Lieutenant Colonel、大佐 Colonel、准将 Brigadier General、中尉 Lieutenant、少尉 Second Lieutenant（原先的海军式 Ensign 已改）。舰长（艦長）在英文里也叫 Captain，与军衔同词属英文惯例，不另改。「暗黒大将軍」这类称号不是军衔，照旧；俗称「大将」（老大）按意思译。词条 ゴーマン大尉 改为“戈曼上尉”。OZ 特有的 特尉／特佐／特士 照旧（Special Lieutenant 等）。
+- **甲儿对沙也加按场合区分**：当面称呼（日常、战斗）直呼“沙也加”；对别人提到她时用“沙也加小姐”。英文一律 Sayaka。
+- **聖女** 英文统一 Saint（Saint Julia、the Saint、the ‘Saint of Cusco’，组织名 Saints’ Corps）。
+- **宇宙世纪年份** 用半角：中文 “A.C.195年”，英文 “A.C. 195”。
