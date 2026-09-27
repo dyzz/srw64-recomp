@@ -73,9 +73,9 @@
 
 @13794 Axis Soldier · アクシズ兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
-# 审校：口语；弯撇号
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Kh, I’m losing this?!”
+“Whoa?! Ngh, I’m losing this?!”
 
 @13795 Axis Soldier · アクシズ兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -102,9 +102,9 @@
 
 @13799 Axis Soldier · アクシズ兵
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くっ! 少しはできるな!」
-“Kh! You’ve got some skill!”
+“Ngh! You’ve got some skill!”
 
 @13800 Axis Soldier · アクシズ兵
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）

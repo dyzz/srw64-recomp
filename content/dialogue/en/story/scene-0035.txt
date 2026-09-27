@@ -715,8 +715,9 @@ I keep telling you that.”
 “Yeah.”
 
 @24833 Jerid · ジェリド
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @24834 Mouar · マウアー
 > 「ジェリド!? くっ……よくもジェリドを!」

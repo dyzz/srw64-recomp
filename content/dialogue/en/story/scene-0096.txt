@@ -74,8 +74,9 @@ Do you understand, Wahl?!”
 Don't hold it against me.”
 
 @45211 Gishin Soldier · ギシン星兵
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @45212 Vega Soldier · ベガ星兵
 > 「命令に従わなかったら……俺たちが

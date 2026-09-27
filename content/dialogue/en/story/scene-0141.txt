@@ -27,8 +27,9 @@ alien soldiers on your own whim.”
 “?! W-Wait, we're...”
 
 @41946 Gishin Soldier · ギシン星兵
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @41947 Anna · アンナ
 > 「ひどい……」

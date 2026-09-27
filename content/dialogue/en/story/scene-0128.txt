@@ -863,8 +863,9 @@ make a world where this never happens again.”
 “...Yeah... that's right, Kamille...”
 
 @28187 Kamille · カミーユ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「う……うわぁぁぁぁぁぁーーっ!!」
-“U... Uwaaaaaaaaah!!”
+“U... Waaaaaaaaaah!!”
 
 @28188 Master · マスター
 > 「フフフフ、奴らに手ひどく

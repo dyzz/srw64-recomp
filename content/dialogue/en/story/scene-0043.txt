@@ -974,8 +974,9 @@ who looked like him.”
 “Th-that can't be...”
 
 @27014 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!?」
-“Uwaaaaaah?!”
+“Waaaaaaah?!”
 
 @27015 Shinobu · 忍
 > 「くそっ! どっからの攻撃だ!?」

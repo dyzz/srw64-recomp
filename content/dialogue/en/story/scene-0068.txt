@@ -405,8 +405,9 @@ lies in Gaia, the robot whose fate is bound to your command.”
 the Emperor of the Galactic Empire, has ever lived. Disobey and I will kill you!”
 
 @29350 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「あぁぁ!? うわぁぁぁぁーっ!!」
-“Aaaah?! Uwaaaaaaah!!”
+“Aaaah?! Waaaaaaaah!!”
 
 @29351 Mika · ミカ
 > 「タケル、タケル?」
@@ -744,6 +745,7 @@ Tetsuya, Jun, you lead the way!”
 “Whoa, there's a whole bunch of Great Mazingers!”
 
 @29406 Dark General · 暗黒大将軍
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「お前らの仲間だった
 >  科学者が裏切ったのよ
 “A scientist who was your comrade betrayed you.
@@ -753,7 +755,7 @@ Tetsuya, Jun, you lead the way!”
 When I offered him a generous reward, he stole the blueprints
 ---
 >  盗んできてくれたわ。ウワッハハハハハ!」
-of Great Mazinger for me. Uwahahahahaha!”
+of Great Mazinger for me. Waahahahahaha!”
 
 @29407 Tetsuya · 鉄也
 > 「闇の世界へ帰れ!」

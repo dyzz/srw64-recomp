@@ -70,8 +70,9 @@
 
 @12661 Domon · ドモン
 # 触发：被击坠（通用，3/5）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああああっ!!」
-“Uwaaaaaah!!”
+“Waaaaaaah!!”
 
 @12662 Domon · ドモン
 # 触发：被击坠（通用，4/5）
@@ -100,10 +101,10 @@
 
 @12666 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/9）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああっ!! く、くそうっ!
 >  俺は負けんっ!!」
-“Uwaaaah!! D-damn it! I won’t lose!!”
+“Waaaaah!! D-damn it! I won’t lose!!”
 
 @12667 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/9）
@@ -112,13 +113,15 @@
 
 @12668 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/9）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! なんてパワーだ!?」
-“Uwaaah! What power?!”
+“Waaaah! What power?!”
 
 @12669 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/9）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁぁぁっ!!」
-“Guwaaaaah!!”
+“Gwaaaaah!!”
 
 @12670 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/9）
@@ -136,9 +139,9 @@
 
 @12672 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，9/9）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわっ! こ、こんなヤツに……」
-“Guwah! T-to be beaten by a guy like this...”
+“Gwah! T-to be beaten by a guy like this...”
 
 @12673 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，1/10）

@@ -97,8 +97,9 @@ be destroyed like Planet Bial.”
 “Kyaaaaaah!!”
 
 @50847 Uchuta · 宇宙太
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!」
-“Uwaaaaaah!”
+“Waaaaaaah!”
 
 @50848 Kappei · 勝平
 > 「へへーん、ざまぁみろ」

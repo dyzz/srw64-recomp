@@ -18,8 +18,9 @@
 
 @13168 George · ジョルジュ
 # 触发：攻击（通用，4/7）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うぁぁぁぁぁぁ!」
-“Uwaaaaaaah!”
+“Aaaaaaah!”
 
 @13169 George · ジョルジュ
 # 触发：攻击（通用，5/7）
@@ -58,8 +59,9 @@
 
 @13175 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁぁぁぁっ!」
-“Uwaaaaaaaaah!”
+“Waaaaaaaaaah!”
 
 @13176 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
@@ -74,8 +76,9 @@
 
 @13178 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ま、まさか!?」
-“I-impossible?!”
+“I-it can’t be?!”
 
 @13179 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -112,9 +115,9 @@
 
 @13185 George · ジョルジュ
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そうこなくては張り合いがありません」
-“It wouldn’t be much of a contest otherwise.”
+“Now that’s more like it.”
 
 @13186 George · ジョルジュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -124,15 +127,15 @@
 
 @13187 George · ジョルジュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
-# 审校：フッ 是轻笑不是哼
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「フッ、その程度ですか」
-“Heh, is that the best you can do?”
+“Hmph, is that all you’ve got?”
 
 @13188 George · ジョルジュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そんな攻撃は効きませんよ」
-“Such an attack won’t work on me.”
+“Attacks like that won’t work on me.”
 
 @13189 George · ジョルジュ
 # 触发：回避（通用，1/3）
@@ -141,9 +144,9 @@
 
 @13190 George · ジョルジュ
 # 触发：回避（通用，2/3）
-# 审校：乔治的日文句尾「ですか」是礼貌疑问，译文“What's the matter?”过于随意，改为正式口吻。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「どうしたのですか?」
-“What is the matter?”
+“What’s the matter?”
 
 @13191 George · ジョルジュ
 # 触发：回避（通用，3/3）
@@ -153,27 +156,27 @@
 
 @13192 George · ジョルジュ
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
-# 审校：原文「効かないといっているのです!」是正式强调，译文“won't”过于口语化，改为“will not”以符合骑士的正式语气。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「効かないといっているのです!」
-“I told you it will not work!”
+“I told you it doesn’t work!”
 
 @13193 George · ジョルジュ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
-# 审校：「私としたことが」是骑士自责的正式表达，译文“To think I'd slip up”不够优雅，改为更符合其身份的“How careless of me”。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「弾切れ!? 私としたことが」
-“Out of ammo?! How careless of me...”
+“Out of ammo?! I can’t believe it.”
 
 @13194 George · ジョルジュ
 # 触发：射程外，无法反击（通用，1/2）
-# 审校：原文「届かないようですね」是礼貌陈述，译文“can't”过于口语化，改为“cannot”以保持正式口吻。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ここからでは届かないようですね」
-“It seems I cannot reach from here.”
+“Seems I can’t reach from here.”
 
 @13195 George · ジョルジュ
 # 触发：射程外，无法反击（通用，2/2）
-# 审校：原文「卑怯なっ!」是骑士的愤怒斥责，译文“That's cowardly!”语气平淡，改为更强烈的“How cowardly!”。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「卑怯なっ!」
-“How cowardly!”
+“You coward!”
 
 @17331 George · ジョルジュ
 # 触发：攻击，乘坐〈ガンダムローズ〉
@@ -187,8 +190,9 @@
 
 @17333 George · ジョルジュ
 # 触发：使用〈シュバリエサーベル〉（低优先，可能被通用台词顶掉）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「この剣が受けられますか!?」
-“Can you parry this blade?!”
+“Can you take this sword?!”
 
 @17334 George · ジョルジュ
 # 触发：使用〈ローゼスビット〉
@@ -208,9 +212,11 @@
 
 @17337 George · ジョルジュ
 # 触发：使用〈ローゼスビット〉
+# 审校：同源同人同译：统一到精读过／多数的版本
+# 检查提示：未用必用译名：ローゼスビット→Rose Bits
 > 「いかがかな、
 >  変幻自在のローゼスビットは!?」
-“How do you like the ever-changing Rose Bits?!”
+“How do you like it, my ever-changing Rose Bits?!”
 
 @17338 George · ジョルジュ
 # 触发：使用〈ローゼススクリーマー〉
@@ -225,21 +231,24 @@
 
 @17340 George · ジョルジュ
 # 触发：使用〈ローゼスハリケーン〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このエネルギーの渦から逃がれることは
 >  不可能!」
-“There is no escape from this vortex of energy!”
+“There’s no escaping this vortex of energy!”
 
 @17341 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムローズ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ……しかし私は負けない!
 >  ゆくぞガンダムロォォォズ!」
-“Ngh... but I will not lose! Here I go, Gundam Rose!”
+“Ngh... but I won’t lose! Here I go, Gundam Rose!”
 
 @17342 George · ジョルジュ
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムローズS〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ……しかし私は負けない!
 >  ゆくぞガンダムロォォォズ!」
-“Ngh... but I will not lose! Here I go, Gundam Rose!”
+“Ngh... but I won’t lose! Here I go, Gundam Rose!”
 
 @17343 George · ジョルジュ
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ガンダムローズ〉

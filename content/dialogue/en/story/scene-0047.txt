@@ -1027,7 +1027,7 @@ securing freedom of movement for the Goraon.”
 # 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「シーラ女王、それに皆様方は
 >  ドレイクのウィル・ウィプスとも
-“Queen Ciela, I hear that you and the others even engaged Drake's Wil Wiphs
+“Queen Ciela, I hear that you and the others even engaged Drake's Will-Wips
 ---
 >  交戦なされたとお聞きしていますが」
 in battle.”
@@ -1210,7 +1210,7 @@ The man said to be the representative of OZ.”
 @32380 Ciela · シーラ
 > 「皆様方はドレイクのウィル・ウィプス
 >  とも交戦されたそうですね」
-“I hear you all even engaged Drake's Wil Wiphs in battle.”
+“I hear you all even engaged Drake's Will-Wips in battle.”
 
 @32381 Elle · エレ
 > 「はい。聖戦士たちや地上人の
@@ -2243,8 +2243,9 @@ I can't afford to end things in a place like this.”
 “Hahahahaha, what power! This means I'm going to win!!”
 
 @32555 Jeril · ジェリル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @32556 Show · ショウ
 > 「ジェリル……」

@@ -90,9 +90,10 @@
 
 @12607 Master · マスター
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/12）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわああっ!!
 >  き、貴様、これほどの力を……」
-“Guwaaah!! Y-you, to have such power...”
+“Gwaaah!! Y-you, to have such power...”
 
 @12608 Master · マスター
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/12）
@@ -118,8 +119,9 @@
 
 @12612 Master · マスター
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/12）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわっ! なんと!?」
-“Uwah! What?!”
+“Waah! What?!”
 
 @12613 Master · マスター
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/12）

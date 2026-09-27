@@ -60,8 +60,9 @@ in Gaia, the robot bound to your fate by your command.”
 Empire? None who have defied me have lived. Disobey, and you die!”
 
 @26343 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「あぁぁ!? うわぁぁぁぁーっ!!」
-“Aaaah?! Uwaaaaaaah!!”
+“Aaaah?! Waaaaaaaah!!”
 
 @26344 Mika · ミカ
 > 「タケル、タケル?」
@@ -396,8 +397,9 @@ His Majesty is most displeased with your rebellion.”
 “Even with you dead, our goal will be achieved. Die, Mars!”
 
 @26402 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! く、くそっ!」
-“Uwaaah! D-Damn it!”
+“Waaaah! D-Damn it!”
 
 @26403 Baren · バレン
 > 「そんなもので!」
@@ -408,9 +410,9 @@ His Majesty is most displeased with your rebellion.”
 “Aaaah... ugh...”
 
 @26405 Takeru · タケル
-# 审校：原文是“うわぁっ!?”，初稿把“!?”译成“?!”且语气偏疑问；改为更自然的惊叫“Uwaaah!”
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁっ!?」
-“Uwaaah!”
+“Waaaah!”
 
 @26406 Baren · バレン
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo

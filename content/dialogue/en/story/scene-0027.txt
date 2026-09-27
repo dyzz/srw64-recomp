@@ -1287,9 +1287,10 @@ I'll take them down myself!”
 “Why?! Why can't I beat them?! Daaamn you!!”
 
 @22253 Dark General · 暗黒大将軍
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわーははははぁッ!
 >  そろそろ限界が近づいてきたようだな
-“Uwahahahaha! It seems you're nearing your limit.
+“Waahahahaha! It seems you're nearing your limit.
 ---
 >  我がミケーネ闇の軍団が
 >  トドメをさしてくれるわ!!」

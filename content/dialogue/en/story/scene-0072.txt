@@ -51,9 +51,10 @@ would be here...”
 “Enough, shake them off! We flee into Barge!”
 
 @30671 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「だ、だめです! 追いつかれる……
 >  う、うわあああっ!」
-“I-it's no use! They're catching up... Uwaaah!”
+“I-it's no use! They're catching up... Waaaah!”
 
 @30672 Dermail · デルマイユ
 > 「ワシが!? このワシが……
@@ -285,8 +286,9 @@ in front of Domon.”
 “Ah, right......... Yeah, I know, brother is.........”
 
 @30707 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあああっ!」
-“Uwaaaaaah!”
+“Waaaaaaah!”
 
 @30708 Chibodee · チボデー
 > 「な、何だあ!?」

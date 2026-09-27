@@ -120,8 +120,9 @@ chasing after the resistance.”
 “Kyaaaaaah!!”
 
 @50903 Uchuta · 宇宙太
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!」
-“Uwaaaaaah!”
+“Waaaaaaah!”
 
 @50904 Seabook · シーブック
 > 「やったぞ! 全滅だ!」

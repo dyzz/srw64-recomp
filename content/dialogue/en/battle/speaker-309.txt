@@ -121,8 +121,9 @@
 
 @13762 Axis Soldier · アクシズ兵
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くぅっ! やってくれたな!!」
-“Kuh! You got me!!”
+“Ngh! You got me!!”
 
 @13763 Axis Soldier · アクシズ兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）

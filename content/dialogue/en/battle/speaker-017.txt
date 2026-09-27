@@ -8,8 +8,9 @@
 
 @12934 Markiroot · マーキロット
 # 触发：攻击（通用，2/7）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁはははは!」
-“Uwahahahaha!”
+“Waahahahaha!”
 
 @12935 Markiroot · マーキロット
 # 触发：攻击（通用，3/7）
@@ -103,10 +104,10 @@
 
 @12950 Markiroot · マーキロット
 # 触发：回避（通用，1/2）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁはははは、貴様の攻撃など
 >  あたらんわ!」
-“Uwahahahaha, your attacks won’t even touch me!”
+“Waahahahaha, your attacks won’t even touch me!”
 
 @12951 Markiroot · マーキロット
 # 触发：回避（通用，2/2）

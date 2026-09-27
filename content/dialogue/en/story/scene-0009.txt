@@ -354,8 +354,9 @@ the blow dealt to the Empire will be immeasurable.”
 “What?! Guerrillas, damn them! Intercept them!”
 
 @18247 Le Cain · ル・カイン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaaah!!”
+“Waaaaaaaaah!!”
 
 @18248 Roux · ルー
 > 「あっけなさすぎる……

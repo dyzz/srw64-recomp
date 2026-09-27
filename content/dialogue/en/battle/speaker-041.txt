@@ -109,14 +109,15 @@
 
 @6004 Seabook · シーブック
 # 触发：被击坠（通用，1/3）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああああっ!!」
-“Uwaaaaaah!”
+“Waaaaaaah!”
 
 @6005 Seabook · シーブック
 # 触发：被击坠（通用，2/3）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「う、うわっ!?」
-“U-uwah?!”
+“W-waah?!”
 
 @6006 Seabook · シーブック
 # 触发：被击坠（通用，3/3）
@@ -126,28 +127,28 @@
 
 @6007 Seabook · シーブック
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあああっ!! な、なんてパワーだっ!」
-“Uwaaaah! W-what power!”
+“Waaaaah! W-what power!”
 
 @6008 Seabook · シーブック
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあっ! し、しまった!
 >  動力部にダメージが!」
-“Uwah! D-damn it! The power unit’s hit!”
+“Waah! D-damn it! The power unit’s hit!”
 
 @6009 Seabook · シーブック
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわっ!! も、もつのか!?」
-“Uwah! C-can it hold?!”
+“Waah! C-can it hold?!”
 
 @6010 Seabook · シーブック
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわっ!! こ、このままじゃやられる!」
-“Uwah! A-at this rate I’m done for!”
+“Waah! A-at this rate I’m done for!”
 
 @6011 Seabook · シーブック
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）

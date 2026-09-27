@@ -271,8 +271,9 @@ there's nothing we can do anymore...”
 Uwaaaaaaaah, no, my head...”
 
 @43574 Ple-Two · プルツー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @43575 Glemy · グレミー
 > 「プルツー、どうしたプルツー!?」
@@ -336,7 +337,7 @@ Uwaaaaaaaah, no, my head...”
 @43589 Beltorchika · ベルトーチカ
 > 「ひどいものよ。例の
 >  キュベレイタイプのMSのせいね
-“It's a mess. It's because of those Quebeley-type mobile suits.
+“It's a mess. It's because of those Qubeley-type mobile suits.
 ---
 >  大打撃を受けているといっていいわ」
 You could say they've taken heavy damage.”

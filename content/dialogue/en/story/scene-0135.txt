@@ -310,8 +310,9 @@ destroy the remaining two as well.”
 “Kyaaah!”
 
 @31568 Judau · ジュドー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああっ!」
-“Uwaaaah!”
+“Waaaaah!”
 
 @31569 Bright · ブライト
 > 「くっ……!」

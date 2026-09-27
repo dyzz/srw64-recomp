@@ -1537,8 +1537,9 @@ is that your logic of domination?”
 “Withdraw!!”
 
 @22041 Le Cain · ル・カイン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ク……ゥゥ……………………」
-“Kuh... ugh...”
+“Ngh... ugh...”
 
 @22042 Karla · カルラ
 > 「ッ!? ル・カイン様おやめください!」

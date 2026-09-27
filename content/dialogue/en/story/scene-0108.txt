@@ -11,8 +11,9 @@
 “Outta the way! Make way for the God of Death!”
 
 @34626 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaaah!!”
+“Waaaaaaaaah!!”
 
 @34627 Wufei · 五飛
 > 「さすがに次々と出てくるな」

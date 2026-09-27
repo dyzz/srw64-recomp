@@ -1318,8 +1318,9 @@ torn from my bones! Lady Haman, banzai!!”
 “Th-this can't be... by the likes of you!!”
 
 @47784 Ple-Two · プルツー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @47785 Glemy · グレミー
 > 「プルツー、どうしたプルツー!」

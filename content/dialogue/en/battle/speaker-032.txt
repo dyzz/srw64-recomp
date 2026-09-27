@@ -120,10 +120,10 @@
 
 @11710 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
-# 审校：原文“こんなにパワーが違うなんて”是感叹，改为“To think”更符合艾莎的贵族口吻。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「あぅぅ!?
 >  こんなにパワーが違うなんて!」
-“Agh?! To think the power difference is this great!”
+“Ahh?! Such a difference in power!”
 
 @11711 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -181,9 +181,9 @@
 
 @11721 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
-# 审校：原文“ではなくて”带敬体，改为“would you not”更符合贵族口吻。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「もう、やめたほうがよいのではなくて?」
-“Oh my, would you not rather give up?”
+“Really, would it not be better to give up?”
 
 @11722 Aisha · アイシャ
 # 触发：回避（通用，1/5）
@@ -192,9 +192,9 @@
 
 @11723 Aisha · アイシャ
 # 触发：回避（通用，2/5）
-# 审校：原文“そのような”带正式感，改为“such as that”更符合贵族口吻。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そのような攻撃では、だめですわ」
-“An attack such as that simply will not do.”
+“An attack like that simply won’t do.”
 
 @11724 Aisha · アイシャ
 # 触发：回避（通用，3/5）
@@ -261,8 +261,9 @@
 
 @16666 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「これを受けてごらんなさい!」
-“Try taking this!”
+“Do try taking this!”
 
 @16667 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
@@ -283,15 +284,16 @@
 
 @16670 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
-# 审校：アイシャ的贵族口吻要求不用缩约形，you're 应改为 you are。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「なかなかよい動きのようですけれど、
 >  まだまだですわ!」
-“You move quite well, but you are still no match!”
+“You move quite well, but you are still far from ready!”
 
 @16671 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そこですわね!」
-“There you are!”
+“Right there!”
 
 @16672 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
@@ -320,9 +322,10 @@
 
 @16676 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「わ、わたくしはこんなところで
 >  倒れるわけにはまいりません!」
-“I-I cannot fall in a place like this!”
+“I-I cannot fall in a place such as this!”
 
 @16677 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉
@@ -350,8 +353,9 @@
 
 @16681 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「これでこそ、倒す価値もありますわ!」
-“This is what makes you worth defeating!”
+“This is what makes defeating you worthwhile!”
 
 @16682 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉
@@ -372,8 +376,9 @@
 
 @16685 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「威力が弱すぎたようですわね?」
-“The power was too weak, it seems?”
+“It seems your power was too weak?”
 
 @16686 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉

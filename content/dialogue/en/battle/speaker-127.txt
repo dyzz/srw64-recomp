@@ -39,8 +39,9 @@
 
 @9988 Gyugaki · 牛餓鬼
 # 触发：被击坠（通用，1/1）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁあああああぁぁぁぁっ!」
-“Uwaaaaaaaaah!”
+“Waaaaaaaaaah!”
 
 @9989 Gyugaki · 牛餓鬼
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -55,9 +56,9 @@
 
 @9991 Gyugaki · 牛餓鬼
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!? そ、そんな!?」
-“Uwaaah?! Th-that can’t be!”
+“Waaaah?! Th-that can’t be!”
 
 @9992 Gyugaki · 牛餓鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）

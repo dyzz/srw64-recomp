@@ -2102,8 +2102,9 @@ never happens again.”
 “...Yeah... That's right, Kamille...”
 
 @37625 Kamille · カミーユ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「う……うわぁぁぁぁぁぁーーっ!!」
-“U... Uwaaaaaaah!!”
+“U... Waaaaaaaah!!”
 
 @37626 Kenji · ケンジ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）

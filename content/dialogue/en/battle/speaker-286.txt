@@ -2,23 +2,27 @@
 
 @6572 Zechs · ゼクス
 # 触发：攻击（通用，1/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ギリギリだが、叩ける!」
-“Just barely, but I can hit it!”
+“It’s close, but I can hit it!”
 
 @6573 Zechs · ゼクス
 # 触发：攻击（通用，2/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「あと何機だ!?」
-“How many more are there?!”
+“How many more?!”
 
 @6574 Zechs · ゼクス
 # 触发：攻击（通用，3/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そこだっ!!」
-“There!!”
+“There!”
 
 @6575 Zechs · ゼクス
 # 触发：攻击（通用，4/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「とどめだっ!!」
-“This is the end!!”
+“The finishing blow!”
 
 @6576 Zechs · ゼクス
 # 触发：攻击（通用，5/12）
@@ -45,14 +49,15 @@
 
 @6580 Zechs · ゼクス
 # 触发：攻击（通用，9/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ふ……面白い!」
-“Heh... Interesting!”
+“Hmph... interesting!”
 
 @6581 Zechs · ゼクス
 # 触发：攻击（通用，10/12）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「相手にとって不足はない!」
-“You’ll do just fine as an opponent!”
+“You’re a more than worthy opponent!”
 
 @6582 Zechs · ゼクス
 # 触发：攻击（通用，11/12）
@@ -62,9 +67,9 @@
 
 @6583 Zechs · ゼクス
 # 触发：攻击（通用，12/12）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「私なりになんとかしよう」
-“I’ll manage somehow, in my own way.”
+“I’ll handle this my own way.”
 
 @6584 Zechs · ゼクス
 # 触发：被击坠（通用，1/3）
@@ -73,8 +78,9 @@
 
 @6585 Zechs · ゼクス
 # 触发：被击坠（通用，2/3）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ぐぅぅっ、ここまでかっ」
-“Guh... So this is it.”
+“Ngh... this is it, then.”
 
 @6586 Zechs · ゼクス
 # 触发：被击坠（通用，3/3）
@@ -83,8 +89,9 @@
 
 @6587 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ぬぅおあぁぁぁっ!」
-“Nwaaaah!”
+“Nghooaaah!”
 
 @6588 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
@@ -94,41 +101,45 @@
 
 @6589 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ、これ以上はもう無理だな」
-“Ngh, I can’t take any more of this.”
+“Tch, I can’t take any more of this.”
 
 @6590 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ、油断があったということか!?」
-“Ngh, so I was careless?!”
+“Tch, so I let my guard down?!”
 
 @6591 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うっ……こうも直撃をくらうとは!」
-“Ugh... To take a direct hit like that!”
+“Ugh... to take a direct hit like that!”
 
 @6592 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「死ぬな……このままでは……」
-“I mustn’t die... Not like this...”
+“I’ll die... at this rate...”
 
 @6593 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
-# 审校：杰克斯口吻端正；弯撇号
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「やるなっ!!」
-“You’re good!!”
+“Not bad!!”
 
 @6594 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ぐぅっっ……!」
-“Guh...!”
+“Ngh...!”
 
 @6595 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ……面白い!」
-“Ngh... Interesting!”
+“Tch... interesting!”
 
 @6596 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，4/7）
@@ -149,10 +160,10 @@
 
 @6599 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「よい攻撃だ! しかし私はまだ
 >  死なん!」
-“A fine attack! But I won’t die yet!”
+“A fine attack! But I’m not dead yet!”
 
 @6600 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -163,14 +174,15 @@
 
 @6601 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「その程度では沈まんよ!」
-“That won’t be enough to sink me!”
+“That won’t sink me!”
 
 @6602 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「私に戦いを挑むとは……」
-“You dare challenge me...”
+“To challenge me in battle...”
 
 @6603 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
@@ -180,9 +192,10 @@
 
 @6604 Zechs · ゼクス
 # 触发：回避（通用，1/7）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「私の命の見積もりが甘かった
 >  ようだな」
-“Seems I underestimated the value of my life.”
+“Seems you priced my life too cheaply.”
 
 @6605 Zechs · ゼクス
 # 触发：回避（通用，2/7）
@@ -337,21 +350,24 @@
 
 @14361 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このウイングゼロに決戦を挑むと
 >  いうのか」
-“You mean to challenge this Wing Zero to a decisive battle?”
+“You’d challenge this Wing Zero to a final battle?”
 
 @14362 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロ(バード)〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このウイングゼロに決戦を挑むと
 >  いうのか」
-“You mean to challenge this Wing Zero to a decisive battle?”
+“You’d challenge this Wing Zero to a final battle?”
 
 @14363 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロカスタム〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このウイングゼロに決戦を挑むと
 >  いうのか」
-“You mean to challenge this Wing Zero to a decisive battle?”
+“You’d challenge this Wing Zero to a final battle?”
 
 @14364 Zechs · ゼクス
 # 触发：回避，乘坐〈トールギス〉

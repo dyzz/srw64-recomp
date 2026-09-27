@@ -137,8 +137,9 @@
 
 @9296 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/8）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあああああっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @9297 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/8）

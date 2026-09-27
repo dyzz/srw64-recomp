@@ -60,8 +60,9 @@
 
 @10708 NT Soldier · NT兵士
 # 触发：未被任何选择表引用，原版不会显示
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁーっ!」
-“Uwaaaah!”
+“Waaaaah!”
 
 @10709 NT Soldier · NT兵士
 # 触发：未被任何选择表引用，原版不会显示

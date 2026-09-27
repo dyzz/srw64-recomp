@@ -835,8 +835,9 @@ destroy her.”
 “...A traitor... I'm a traitor... I...”
 
 @39346 Daisuke · 大介
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @39347 Maria · マリア
 > 「ねぇ、甲児! 兄さんは、いったい
@@ -1846,8 +1847,9 @@ into a man who fights at Zuul's whim...”
 “Marg?! Stooooop!!”
 
 @39512 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @39513 Rose · ロゼ
 > 「くっ……ばかな……」
@@ -1948,9 +1950,9 @@ a man who fights only as Zuul wills...”
 “Marg?! Stooooop!!”
 
 @39532 Marg · マーグ
-# 审校：原文“うわあぁぁぁぁぁーっ!?”是拖长音的惨叫，初稿“Waaaaaah?!”丢失了开头的“う”，改为“Uwaaaaaaah?!”更贴近原文。
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @39533 Rose · ロゼ
 > 「くっ……ばかな……」
@@ -2148,8 +2150,9 @@ a man who fights exactly as Zuul wills...”
 “Brother?! Ngh... Brotheeeeer!!”
 
 @39572 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁぁぁぁっ!!」
-“Uwaaaaaaaah!!”
+“Waaaaaaaaah!!”
 
 @39573 Rose · ロゼ
 # 审校：精读：隊長 统一

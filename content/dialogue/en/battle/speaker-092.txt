@@ -399,10 +399,10 @@
 
 @14281 Duo · デュオ
 # 触发：攻击，乘坐〈ヴァイエイト〉
-# 审校：原译“could I call myself”语法正确但语气略弱，改为“how could I call myself”更贴合反问语气。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「人形ごときに負けてて
 >  ガンダムのパイロットがつとまるかぁ!」
-“If I lost to a mere puppet, how could I call myself a Gundam pilot?!”
+“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
 
 @14282 Duo · デュオ
 # 触发：攻击，乘坐〈ビルゴ〉
@@ -460,9 +460,9 @@
 
 @14290 Duo · デュオ
 # 触发：攻击无效（护罩／装甲），乘坐〈ガンダムデスサイズ〉
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このデスサイズがそんなビームごときで!」
-“This Deathscythe won’t be stopped by a beam like that!”
+“This Deathscythe won’t fall to a beam like that!”
 
 @14291 Duo · デュオ
 # 触发：攻击无效（护罩／装甲），乘坐〈ガンダムデスサイズH〉

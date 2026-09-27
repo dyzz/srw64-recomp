@@ -971,8 +971,9 @@ could defeat me?!”
 “I-Impossible...”
 
 @25885 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁぁぁぁーッ!!」
-“Uwaaaaaaaah!!”
+“Waaaaaaaaah!!”
 
 @25886 Master · マスター
 > 「さあ、今とどめをさしてやるぞ!
@@ -1046,8 +1047,9 @@ You were saved by Shadow Gundam, and your anger had subsided, yet you're still f
 and end up like this. Now, I'll snap your neck!!”
 
 @25898 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaaah!!”
+“Waaaaaaaaaaah!!”
 
 @25899 Schwarz · シュバルツ
 # 审校：精读：术语统一

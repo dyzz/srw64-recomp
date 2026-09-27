@@ -345,8 +345,9 @@ I love you too, Domon!!”
 “Allenby... you...”
 
 @45428 Allenby · アレンビー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @45429 Rain · レイン
 > (……これは……以前の時とは違う?
@@ -425,8 +426,9 @@ I... I loved you, Domon!”
 “Huh?! Y-you're...”
 
 @45442 Allenby · アレンビー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @45443 Rain · レイン
 > (……これは……以前の時とは違う?
@@ -819,13 +821,14 @@ hold on, body!”
 “B-but brother...”
 
 @45504 Schwarz · シュバルツ
-# 检查提示：未用必用译名：デビルガンダム→Devil Gundam
+# 审校：跨页的 Devil Gundam 按词条改 Dark Gundam
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「早く! 私の体ごとコックピットを
 >  吹き飛ばすんだ! デビルガンダムを
-“Hurry! Blow the cockpit apart, my body and all! To stop the Devil
+“Hurry! Blow the cockpit apart, my body and all! To stop the Dark
 ---
 >  とめるには、キョウジをうつしかない!」
-Gundam, there's no way but to shoot Kyoji!”
+Gundam, there’s no way but to shoot Kyoji!”
 
 @45505 Domon · ドモン
 > 「そんな! いやだ、僕にはできない!」

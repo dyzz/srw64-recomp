@@ -232,11 +232,12 @@
 
 @14417 Emperor Zuul · ズール皇帝
 # 触发：对手驾驶员〈タケル〉
-# 审校：原文“フハハハハハハッ!”笑声拼写更接近 Fwahahaha，初稿 Fuhahaha 不够自然，改为 Fwahahahahaha。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「フハハハハハハッ!」
-“Fwahahahahaha!”
+“Fuhahahahahaha!”
 
 @14418 Emperor Zuul · ズール皇帝
 # 触发：对手驾驶员〈タケル〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ばかめぇ!」
-“You fool!”
+“Fools!”

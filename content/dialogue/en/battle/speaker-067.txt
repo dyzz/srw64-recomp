@@ -79,8 +79,9 @@
 
 @10688 Glemy · グレミー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! バカなっ!?」
-“Uwaaaah! Impossible?!”
+“Waaaaah! Impossible?!”
 
 @10689 Glemy · グレミー
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）

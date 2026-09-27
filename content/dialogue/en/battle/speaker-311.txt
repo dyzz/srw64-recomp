@@ -41,8 +41,9 @@
 
 @13863 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，8/11）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そこだっ!」
-“There!”
+“Right there!”
 
 @13864 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，9/11）
@@ -63,9 +64,9 @@
 
 @13867 Neo Zeon Soldier · ネオジオン兵
 # 触发：被击坠（通用，1/2）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわっ! や、やられたっ!」
-“Uwah! I-I’m hit!”
+“Waah! I-I’m hit!”
 
 @13868 Neo Zeon Soldier · ネオジオン兵
 # 触发：被击坠（通用，2/2）
@@ -114,9 +115,9 @@
 
 @13876 Neo Zeon Soldier · ネオジオン兵
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くっ! まだまだ勝負はこれからよ!」
-“Kuh! The real fight’s just getting started!”
+“Ngh! The real fight’s just getting started!”
 
 @13877 Neo Zeon Soldier · ネオジオン兵
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -126,9 +127,9 @@
 
 @13878 Neo Zeon Soldier · ネオジオン兵
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
-# 审校：やってくれたな
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くぅっ! やってくれたな!!」
-“Kuh! You’ll pay for that!!”
+“Ngh! You’ll pay for that!!”
 
 @13879 Neo Zeon Soldier · ネオジオン兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -219,10 +220,10 @@
 
 @13895 Neo Zeon Soldier · ネオジオン兵
 # 触发：射程外，无法反击（通用，1/2）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くっ! ここからでは
 >  反撃は無理か……」
-“Kuh! Can’t counter from here, huh...”
+“Ngh! Can’t counter from here, huh...”
 
 @13896 Neo Zeon Soldier · ネオジオン兵
 # 触发：射程外，无法反击（通用，2/2）

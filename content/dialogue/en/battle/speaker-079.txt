@@ -228,9 +228,9 @@
 
 @14671 Yazan · ヤザン
 # 触发：使用〈クモの巣〉（对话第 1/4 句）
-# 审校：更像下令
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ダンケル、ラムサス、クモの巣をやるぞ!」
-“Dunkel, Ramsus, we’re using the Spider Web!”
+“Dunkel, Ramsus, we’re doing the Spider Web!”
 
 @14672 Ramsus · ラムサス
 # 触发：使用〈クモの巣〉（对话第 2/4 句）

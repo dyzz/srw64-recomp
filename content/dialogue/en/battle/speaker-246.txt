@@ -7,16 +7,16 @@
 
 @11224 Chara · キャラ
 # 触发：攻击（通用，2/13）
-# 审校：原文“くぅ”是呻吟/兴奋的感叹，不是“it's the enemy”的强调；改为更贴近原意的自然表达。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くぅ 敵だ、敵だぁ、もう胸が
 >  張り裂けそう!」
-“Ngh, the enemy, the enemy! My chest is about to burst!”
+“Ooh, an enemy, an enemy! My chest is about to burst!”
 
 @11225 Chara · キャラ
 # 触发：攻击（通用，3/13）
-# 审校：“burning hot”改为“burning up”，更符合角色兴奋喊叫的语气。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「身体が、身体が熱いのよおっ!」
-“My body, my body is burning up!”
+“My body, my body’s on fire!”
 
 @11226 Chara · キャラ
 # 触发：攻击（通用，4/13）
@@ -32,16 +32,16 @@
 
 @11228 Chara · キャラ
 # 触发：攻击（通用，6/13）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ああっ体が熱いっ燃えるっ!」
-“Ahh, my body’s hot, it’s on fire!”
+“Ahh, my body’s hot, it’s burning!”
 
 @11229 Chara · キャラ
 # 触发：攻击（通用，7/13）
-# 审校：“It's the enemy”改为“The enemy”，更贴近原文“敵だ、敵だ”的重复呼喊。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くぅーっ! あははは! 敵だ、敵だ!
 >  もう胸が張り裂けそう! 快感!」
-“Ngh! Ahahaha! The enemy, the enemy! My chest is about to burst! Such ecstasy!”
+“Ooh! Ahahaha! An enemy, an enemy! My chest is about to burst! What a thrill!”
 
 @11230 Chara · キャラ
 # 触发：攻击（通用，8/13）
@@ -82,9 +82,9 @@
 
 @11236 Chara · キャラ
 # 触发：被击坠（通用，1/1）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「え! ウソ!? やられちゃったのかい!?」
-“Eh! No way?! I got taken down?!”
+“Huh! No way?! Did I just get taken out?!”
 
 @11237 Chara · キャラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -94,9 +94,9 @@
 
 @11238 Chara · キャラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「わわっ! な、何だいこいつは!?」
-“Whoa! Wh-what the heck is this?!”
+“Whoa! Wh-what is this thing?!”
 
 @11239 Chara · キャラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
@@ -122,14 +122,16 @@
 
 @11243 Chara · キャラ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ! やるじゃないか! おもしろく
 >  なってきたよ!」
-“Ngh! Not bad! This is getting interesting!”
+“Ngh! Not bad! This is getting fun!”
 
 @11244 Chara · キャラ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うっ! そうかい、やるっていうのかい!」
-“Ugh! So you wanna go, huh!”
+“Ugh! So you wanna fight, huh!”
 
 @11245 Chara · キャラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -150,9 +152,9 @@
 
 @11248 Chara · キャラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「なんだい、物足りないね!」
-“What’s this, not satisfying at all!”
+“What’s this, not enough for me!”
 
 @11249 Chara · キャラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -173,16 +175,16 @@
 
 @11252 Chara · キャラ
 # 触发：回避（通用，3/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「笑わせんじゃないよ!
 >  甘いんだよ、そんなの!!」
-“Don’t make me laugh! That’s way too soft!!”
+“Don’t make me laugh! That’s child’s play!!”
 
 @11253 Chara · キャラ
 # 触发：回避（通用，4/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「甘いね、そんなもの!」
-“Too soft, that’s nothing!”
+“Way too naive!”
 
 @11254 Chara · キャラ
 # 触发：回避（通用，5/5）
@@ -192,15 +194,15 @@
 
 @11255 Chara · キャラ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「あははは、効かないね!」
-“Ahahaha, that doesn’t work!”
+“Ahahaha, that won’t work on me!”
 
 @11256 Chara · キャラ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ムダなんだよ、そんなのは!」
-“That’s pointless!”
+“That’s useless!”
 
 @11257 Chara · キャラ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

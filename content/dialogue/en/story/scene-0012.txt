@@ -511,9 +511,9 @@ Come at me carrying the full weight of this Earth!”
 “I'll end this with the next one, Eiji!!”
 
 @18826 Eiji · エイジ
-# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ゲイル先輩!? うわあぁぁぁーっ!!」
-“Gale?! Uwaaaaaaah!!”
+“Gale?! Waaaaaaaah!!”
 
 @18827 Gale · ゲイル
 > 「くっ……見事だ。お前の覚悟、

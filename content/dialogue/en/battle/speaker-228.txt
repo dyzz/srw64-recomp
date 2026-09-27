@@ -39,9 +39,9 @@
 
 @8876 Dunkel · ダンケル
 # 触发：被击坠（通用，1/1）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「し、しまった!? うわあっ!!」
-“D-damn?! Uwaaah!!”
+“D-damn?! Waaaah!!”
 
 @8877 Dunkel · ダンケル
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）

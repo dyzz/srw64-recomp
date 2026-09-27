@@ -59,9 +59,9 @@
 
 @14059 Byston Well Soldier · バイストンウェル兵
 # 触发：被击坠（通用，1/2）
-# 审校：被击坠情境
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわっ! や、やられたっ!」
-“Uwah! Th-they got me!”
+“Waah! Th-they got me!”
 
 @14060 Byston Well Soldier · バイストンウェル兵
 # 触发：被击坠（通用，2/2）

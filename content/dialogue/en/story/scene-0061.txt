@@ -1135,8 +1135,9 @@ And he turned me into a man who fights only as Zuul wills...”
 “Marg?! Stop it!!”
 
 @38522 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @38523 Rose · ロゼ
 > 「くっ……ばかな……」
@@ -1430,8 +1431,9 @@ And I was made into a man who fights just as Zuul wills it...”
 “Brother?! Brotheeeeer!!”
 
 @38581 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @38582 Rose · ロゼ
 # 检查提示：未用必用译名：マーグ隊→Marg Squad
@@ -1837,8 +1839,9 @@ approaching. Shall we activate the MDs?”
 “Yes, sir.”
 
 @38643 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @38644 Dermail · デルマイユ
 > 「なんだ!?

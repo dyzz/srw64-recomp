@@ -74,8 +74,9 @@
 
 @11028 Beecha · ビーチャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわあっ! な、何なんだよ、こいつは!」
-“Guwaah! Wh-what the hell is this thing?!”
+“Gwaah! Wh-what the hell is this thing?!”
 
 @11029 Beecha · ビーチャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）

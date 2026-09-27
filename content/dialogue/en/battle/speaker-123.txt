@@ -28,8 +28,9 @@
 
 @9962 Musashi · ムサシ
 # 触发：被击坠（通用，2/3）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁぁぁーっっ!!」
-“Guwaaaaaaah!!”
+“Gwaaaaaaah!!”
 
 @9963 Musashi · ムサシ
 # 触发：被击坠（通用，3/3）
@@ -50,8 +51,9 @@
 
 @9966 Musashi · ムサシ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁーっ!」
-“Uwaaaaaaah!”
+“Waaaaaaaah!”
 
 @9967 Musashi · ムサシ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）

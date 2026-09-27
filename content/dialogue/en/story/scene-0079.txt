@@ -514,8 +514,9 @@ before the aliens ever get the chance!”
 “Then who in the world...”
 
 @40196 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @40197 Master · マスター
 > 「ドモン! この未熟者めぇ!!」

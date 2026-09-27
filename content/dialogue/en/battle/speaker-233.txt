@@ -54,10 +54,10 @@
 
 @11057 Iino · イーノ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああっ! や、やっぱりやめときゃ
 >  よかった……」
-“Uwaaah! I-I knew I should’ve stayed out of this...”
+“Waaaah! I-I knew I should’ve stayed out of this...”
 
 @11058 Iino · イーノ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）

@@ -19,8 +19,9 @@
 
 @10870 Chara · キャラ
 # 触发：攻击（通用，4/13）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「あははは、もっともっと躍れ!」
-“Ahahaha, dance more, dance more!”
+“Ahahaha, dance! Dance for me!”
 
 @10871 Chara · キャラ
 # 触发：攻击（通用，5/13）
@@ -183,8 +184,9 @@
 
 @10898 Chara · キャラ
 # 触发：回避（通用，5/5）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「どこ狙ってんのさ!」
-“What are you aiming at!”
+“What are you aiming at?!”
 
 @10899 Chara · キャラ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）

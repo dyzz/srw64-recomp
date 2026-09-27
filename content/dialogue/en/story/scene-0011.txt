@@ -459,8 +459,9 @@ could eventually become possible, don't they?”
 “Too late!”
 
 @18608 Guerrilla · ゲリラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @18609 Shiro · シロー
 > 「くっそぉぉーっ!!」
@@ -552,8 +553,9 @@ answer me!!”
 “Ngh, overheating?! Damn it, not now! Ainaaaaa!!”
 
 @18628 Shiro · シロー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @18629 Shiro · シロー
 > 「くそ……こんな時に故障だなんて……

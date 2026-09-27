@@ -187,9 +187,9 @@ moving out!”
 “Kyaaaaaah!!”
 
 @50966 Uchuta · 宇宙太
-# 审校：补上开头的左双引号和结尾的右双引号。
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!」
-“Uwaaaah!”
+“Waaaaah!”
 
 @50967 Killy · キリー
 # 审校：书名统一
