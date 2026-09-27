@@ -638,7 +638,12 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         if (rect != rects.front())
             for (uint32_t k = 0; k < 24; k += 4) put(ram, rect + k, 0);
     ++counts.numbers;
-    note("damage:" + figure, {{"kind", "damage"}, {"figure", figure}});
+    // Which tactical-map state and sub-state is showing the figure. Needed to
+    // replay the same display after a battle whose animation the player aborted.
+    note("damage:" + figure, {{"kind", "damage"}, {"figure", figure},
+        {"map_state", byte(ram, 0x172EB0)}, {"map_sub", byte(ram, 0x172EB2)},
+        {"step", int32_t(word(ram, 0x22722C))}, {"step_frame", int32_t(word(ram, 0x22731C))},
+        {"cell", int16_t(half(ram, 0x227BC6))}, {"side", byte(ram, 0x227B60)}});
 }
 }
 
