@@ -16,7 +16,7 @@ from .catalog import text_key
 STORY_SCHEMA = "srw64.story-scene.v1"
 NAME_SLOTS = {0x124: "主角昵称", 0x125: "主角全名", 0x126: "主角名字", 0x127: "主角姓氏",
               0x128: "搭档昵称", 0x129: "搭档全名", 0x12A: "搭档名字", 0x12B: "搭档姓氏",
-              0x12C: "主角机体名（8010F698，候选）"}
+              0x12C: "部队名（8010F698）"}
 NAME_TOKEN = re.compile(r"(<G:012[4-9A-Ca-c]>)(?:\1)*")
 # 801C69D0 stores the protagonist selection as the first scene index and derives the route marker from it.
 FIRST_STAGE_PROTAGONIST = {0: (27, 0x3DD3), 1: (28, 0x3DD4), 2: (25, 0x3DD1), 3: (26, 0x3DD2)}
