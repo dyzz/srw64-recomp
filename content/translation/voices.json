@@ -1,0 +1,2458 @@
+{
+ "schema": "srw64.voices.v1",
+ "note": "人物口吻设定，供风格审校（docs/design/dialogue-polish-plan.md）。ja 是从日文台词统计出的口吻依据（tools/translation/speaker_features.py），zh/en 是译法要求，address 是对特定人物的称呼。status: draft（Claude 起草）/check（需用户确认）/approved。译名不在这里定，以词条表为准。一人称中文一律“我”，只有注明“老夫”的例外。 中文口吻靠措辞和称呼体现，不要靠在句尾堆语气词。",
+ "updated": "2026-09-26",
+ "groups": {
+  "スペシャルズ": {
+   "role": "罗姆斐拉财团的地球人部队士兵",
+   "zh": "军人腔，简短，对长官用“是”“遵命”，对敌人骂“可恶”。",
+   "en": "Terse military register: “Yes, sir.” / “Damn it!”; no slang beyond that."
+  },
+  "ゲリラ": {
+   "role": "卡拉巴／各地反帝国游击队员",
+   "zh": "普通男性口语，对万丈等用“您”不必，称“万丈先生”可省。",
+   "en": "Plain working-class speech, informal but not crude."
+  },
+  "アクシズ兵": {
+   "role": "阿克西斯／新吉翁士兵",
+   "zh": "军人腔。",
+   "en": "Terse military register."
+  },
+  "ネオジオン兵": {
+   "role": "新吉翁士兵",
+   "zh": "军人腔。",
+   "en": "Terse military register."
+  },
+  "グラドス兵": {
+   "role": "格拉多斯军士兵",
+   "zh": "军人腔，冷硬。",
+   "en": "Terse, cold military register."
+  },
+  "ムゲ兵": {
+   "role": "穆格帝国士兵",
+   "zh": "军人腔。",
+   "en": "Terse military register."
+  },
+  "ベガ星兵": {
+   "role": "贝加星联合军士兵",
+   "zh": "军人腔，对长官恭敬。",
+   "en": "Terse, deferential to superiors."
+  },
+  "ギシン星兵": {
+   "role": "基辛星军士兵",
+   "zh": "军人腔。",
+   "en": "Terse military register."
+  },
+  "バイストンウェル兵": {
+   "role": "拜斯顿·威尔的士兵",
+   "zh": "带点古风的军人腔。",
+   "en": "Slightly archaic soldier’s speech."
+  },
+  "マグアナック兵": {
+   "role": "玛格纳克队队员",
+   "zh": "粗豪但对卡特尔忠心，称“卡特尔少爷”。",
+   "en": "Rough, loyal; call Quatre “Master Quatre”."
+  },
+  "NT兵士": {
+   "role": "强化人／NT 士兵",
+   "zh": "简短。",
+   "en": "Terse."
+  },
+  "ゾンビ兵": {
+   "role": "僵尸兵",
+   "zh": "断续、呻吟式。",
+   "en": "Broken, groaning fragments."
+  },
+  "プルクローン": {
+   "role": "普露克隆体",
+   "zh": "整齐划一、机械。",
+   "en": "Uniform, mechanical."
+  },
+  "AI": {
+   "role": "机体/系统语音",
+   "zh": "机械播报。",
+   "en": "Flat system voice."
+  },
+  "主角": {
+   "role": "本话主角（按路线换人）",
+   "zh": "按 アーク／セレイン／ブラッド／マナミ 各自的卡。",
+   "en": "Use the card of the route's protagonist."
+  },
+  "对手": {
+   "role": "本话主角的对手（按路线换人）",
+   "zh": "按 エルリッヒ／リッシュ／カーツ／アイシャ 各自的卡。",
+   "en": "Use the card of the route's rival."
+  },
+  "???": {
+   "role": "身份未揭示的说话人（按上下文是谁就用谁的卡）",
+   "zh": "按实际身份。",
+   "en": "Use the card of whoever it turns out to be."
+  }
+ },
+ "characters": {
+  "アーク": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "真实系男主角，殖民卫星出身的少年，寄居地上姑母家，卷入战火",
+   "persona": "平实、有点冲动但本性温和，对长辈有礼，对同龄人随便",
+   "ja": "俺／僕混用（对长辈用 僕），あんた・お前；だ／です 各半",
+   "zh": "普通少年口语；对万丈、布莱特等长辈说话客气但不卑，用“您”；对同龄人直呼其名。",
+   "en": "Plain, earnest teenager. Contractions; polite but not stiff with elders; no slang beyond “yeah/gonna”.",
+   "status": "check"
+  },
+  "セレイン": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "真实系女主角，联邦军人之女，游击队核心战士",
+   "persona": "意志坚强、冷静、说话直接，军人作风，不撒娇",
+   "ja": "私；お前・貴様（对敌）；だ／だな 为主，对长官用 です",
+   "zh": "干练的女军人口吻，不用“呢／呀”等软语气词；对敌人称“你”，不用“你这家伙”以外的脏话。",
+   "en": "Clipped, soldierly, confident; minimal exclamation words; addresses enemies coldly.",
+   "status": "check"
+  },
+  "ブラッド": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "超级系男主角，武机霸拳流传人，孤儿",
+   "persona": "热血直率的武者，重义气，说话粗放",
+   "ja": "俺；お前・貴様・てめぇ；ぜ／だぜ 很多，ねぇ／だろ 粗口",
+   "zh": "热血少年口吻，“来吧”“少废话”，可用“混蛋”；提到师父时恭敬。",
+   "en": "Hot-blooded martial artist: short punchy sentences, “Come on!”, “bastard” allowed; reverent about his master.",
+   "status": "check"
+  },
+  "マナミ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "超级系女主角，罗姆斐拉名门当主，暗中支援游击队的大小姐",
+   "persona": "性子急、正义感强、自尊高，贵族小姐腔但会激动失态",
+   "ja": "あたし；あなた；のよ／だわ／わよ／わね／かしら／でしょう，对万丈用 です・ます",
+   "zh": "大小姐腔：用“真是的”“岂有此理”“不可饶恕”；对劳伦斯直呼“劳伦斯”并使唤；对万丈客气用“您”。不粗俗，不用“老娘”“靠”之类。",
+   "en": "Refined young lady: full sentences, no gonna/wanna, “How dare they”, “Honestly!”; orders Lawrence by name; polite to Banjo. Can lose composure and shout.",
+   "address": {
+    "ローレンス": "劳伦斯 / Lawrence",
+    "万丈": "万丈先生 / Mr. Banjo"
+   },
+   "status": "draft"
+  },
+  "エルリッヒ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "阿克路线的对手，特殊部队军官",
+   "persona": "冷静有礼的职业军人，有原则，反感无差别攻击",
+   "ja": "私；君；だな／のだ，对上级 ます",
+   "zh": "沉稳的军官语气，对部下用“你”，对敌手用“你”不带辱骂。",
+   "en": "Composed officer; measured, formal, never crude.",
+   "status": "check"
+  },
+  "リッシュ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "塞莱因路线的对手",
+   "persona": "轻佻、痞气、自信的年轻军人",
+   "ja": "俺；お前；ぜ／だぜ，ねぇ／じゃねぇ 极多",
+   "zh": "痞气口吻，“哟”“得了吧”，可用“老子”一两次以内，不粗俗到脏话。",
+   "en": "Cocky, sneering, slangy (“Heh”, “Give it up”), contractions everywhere.",
+   "status": "check"
+  },
+  "カーツ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "布拉德的同门师兄弟、对手",
+   "persona": "傲慢、执着于强弱与流派正统",
+   "ja": "俺；貴様；だ／ぞ",
+   "zh": "冷傲武者，“贵样”译“你”，语气居高临下。",
+   "en": "Haughty martial rival: formal-cold, “You dare?”, no slang.",
+   "status": "check"
+  },
+  "アイシャ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "玛奈美的表姐妹、对手，里奇蒙德子爵家小姐，特殊部队",
+   "persona": "高傲、以家族名誉为重、对玛奈美又恨又在意",
+   "ja": "わたくし；あなた・貴方；ですわ／わね／わよ／ます，贵族敬体",
+   "zh": "高傲贵族小姐：“我”＋“您”少用，称玛奈美直呼名字；“真是的”“不可饶恕”；语气端正不粗俗。",
+   "en": "Proud noblewoman: formal, precise, “I shall”, “How dare you”; never contractions in anger.",
+   "address": {
+    "マナミ": "玛奈美 / Manami"
+   },
+   "status": "draft"
+  },
+  "ローレンス": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "哈米尔家老管家，玛奈美的监护人",
+   "persona": "恭敬周到的老管家，爱红茶，遇事沉着",
+   "ja": "わたくし；ですな／ますな／でございます／ますぞ",
+   "zh": "老管家腔：称“大小姐”，自称“我”，用“请”“恕我直言”“遵命”这类敬语措辞；对客人用“您”。不靠语气词，不加“呢”“吧”。",
+   "en": "Old butler: “my lady”, “Certainly.”, “I shall…”, no contractions, gentle understatement.",
+   "address": {
+    "マナミ": "大小姐 / my lady",
+    "万丈": "万丈先生 / Mr. Banjo"
+   },
+   "status": "draft"
+  },
+  "万丈": {
+   "work": "無敵鋼人ダイターン3",
+   "gender": "男",
+   "role": "破岚万丈，卡拉巴的创立者，泰坦3驾驶员",
+   "persona": "潇洒从容的富家侠客，幽默、有领导力",
+   "ja": "僕；君；だね／かな／だい，从容",
+   "zh": "从容潇洒：“嘛”“好了”“交给我”；对少年称名字，对女性称“小姐”；不用“您”。",
+   "en": "Suave, easygoing leader: light humor, “Well now,” “Leave it to me.” Contractions fine; never crude.",
+   "status": "draft"
+  },
+  "ギャリソン": {
+   "work": "無敵鋼人ダイターン3",
+   "gender": "男",
+   "role": "万丈的老管家兼参谋",
+   "persona": "一丝不苟、彬彬有礼、能干",
+   "ja": "私；ですな／ますな／ございます",
+   "zh": "老管家腔：称“万丈大人”，对他人用“您”；“遵命”“已准备妥当”“容我禀报”。不靠语气词，不加“呢”“吧”。",
+   "en": "Impeccable butler: “Master Banjo”, “Certainly, sir.”, no contractions.",
+   "address": {
+    "万丈": "万丈大人 / Master Banjo"
+   },
+   "status": "draft"
+  },
+  "ビューティ": {
+   "work": "無敵鋼人ダイターン3",
+   "gender": "女",
+   "role": "万丈的助手立花美丽",
+   "persona": "明快、爱调侃、成熟女性",
+   "ja": "私／あたし；かしら／わよ／わね",
+   "zh": "成熟女性口吻，轻快调侃。",
+   "en": "Playful, worldly woman; teasing tone.",
+   "status": "draft"
+  },
+  "レイカ": {
+   "work": "無敵鋼人ダイターン3",
+   "gender": "女",
+   "role": "万丈的助手三条丽香，前警官",
+   "persona": "干练、认真",
+   "ja": "私；ます／わよ／わね",
+   "zh": "干练女性，礼貌但不软。",
+   "en": "Brisk, professional woman.",
+   "status": "draft"
+  },
+  "ブライト": {
+   "work": "機動戦士ガンダム／Z／ZZ／逆襲のシャア",
+   "gender": "男",
+   "role": "布莱特·诺亚，舰长，全剧最大的说话人",
+   "persona": "严肃负责的舰长，会训斥少年，对部下严厉、对同僚客气",
+   "ja": "私／我々，对部下 俺 偶用；君／お前；だ／だな／くれ／ぞ，命令句多",
+   "zh": "舰长腔：对部下命令句“出击”“汇报”，称少年“阿姆罗”“卡缪”直呼；对上级用“您”；训斥时“你这家伙”。",
+   "en": "Captain’s voice: crisp orders, “Report.”, “Amuro, get out there.”; firm but fair; contractions in private, not on the bridge.",
+   "status": "draft"
+  },
+  "アムロ": {
+   "work": "機動戦士ガンダム／Z／逆襲のシャア",
+   "gender": "男",
+   "role": "阿姆罗·雷，王牌驾驶员，这里是成年后的阿姆罗",
+   "persona": "沉稳、内敛、偶尔尖锐，对夏亚有心结",
+   "ja": "俺；君；だ／だな，冷静",
+   "zh": "沉稳男性口吻，对少年温和称名字，对夏亚称“夏亚”。",
+   "en": "Calm, reflective ace; measured sentences; sharper with Char.",
+   "address": {
+    "クワトロ": "夏亚 / Char（知道身份后）",
+    "シャア": "夏亚 / Char"
+   },
+   "status": "draft"
+  },
+  "クワトロ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "克瓦特罗·巴吉纳（夏亚·阿兹纳布尔的化名）",
+   "persona": "从容、含蓄、带贵族气的军官",
+   "ja": "私／我々；君；だ／だな／のだ",
+   "zh": "成熟军官腔，自称“我”，对少年称名字，语气含蓄。",
+   "en": "Cool, urbane officer; understated irony; “Camille, …”.",
+   "status": "draft"
+  },
+  "シャア": {
+   "work": "機動戦士ガンダム／逆襲のシャア",
+   "gender": "男",
+   "role": "夏亚·阿兹纳布尔（以本名出现的部分）",
+   "persona": "冷静、傲然、理想主义反派",
+   "ja": "私；君；だ／のだ／である",
+   "zh": "冷静傲然，对阿姆罗称“阿姆罗”，可用“愚蠢”。",
+   "en": "Cold, grand, ideological; “Amuro, …”; formal cadence.",
+   "status": "draft"
+  },
+  "カミーユ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "卡缪·比丹，少年新人类",
+   "persona": "敏感、易怒、正义感强",
+   "ja": "俺／僕；お前・君；だ／です，对长辈敬体",
+   "zh": "少年口吻，对布莱特、克瓦特罗用“您”和敬语，激动时爆发“你这家伙”。",
+   "en": "Intense teenager; polite to elders, flares up (“What the hell?!”).",
+   "status": "draft"
+  },
+  "ファ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "花·玉城，卡缪的青梅竹马",
+   "persona": "温柔、操心",
+   "ja": "あたし／私；あなた；のよ／わよ",
+   "zh": "温柔少女，关心卡缪。",
+   "en": "Gentle, caring girl.",
+   "status": "draft"
+  },
+  "エマ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "艾玛·辛，女军官",
+   "persona": "端正、有原则的女军人",
+   "ja": "私；あなた；ます／です／なさい",
+   "zh": "端正女军官，对卡缪管教口吻。",
+   "en": "Principled woman officer; firm, proper.",
+   "status": "draft"
+  },
+  "フォウ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "芙·村雨，强化人",
+   "persona": "情绪不稳、脆弱、对卡缪有感情",
+   "ja": "あたし／わたし；あなた・お前；だ",
+   "zh": "情绪起伏大的少女，从温柔到失控。",
+   "en": "Volatile, fragile; swings from tender to frantic.",
+   "status": "draft"
+  },
+  "ロザミア": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "罗莎米亚·巴达姆，强化人",
+   "persona": "不稳定，认卡缪作哥哥",
+   "ja": "あたし；だ／のよ",
+   "zh": "孩子气、不稳定，称卡缪“哥哥”。",
+   "en": "Childlike, unstable; calls Camille “big brother”.",
+   "status": "draft"
+  },
+  "ジェリド": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "杰利德·梅萨，迪坦斯军官，卡缪的宿敌",
+   "persona": "急躁、好胜、口硬",
+   "ja": "俺；貴様；だ／ぞ／ぜ",
+   "zh": "好胜军官，“卡缪！”“可恶”，称对手“你这家伙”。",
+   "en": "Hot-headed rival officer: “Camille!”, “Damn you!”.",
+   "status": "draft"
+  },
+  "ヤザン": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "亚赞·盖博，迪坦斯王牌",
+   "persona": "粗野好战的猎人型",
+   "ja": "俺；お前／てめぇ；だ／だな，ねぇ",
+   "zh": "粗野好战，“哼”“有意思”。",
+   "en": "Savage, gleeful hunter: “Heh, this’ll be fun.”",
+   "status": "draft"
+  },
+  "バスク": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "巴斯克·欧姆，迪坦斯上校",
+   "persona": "暴戾、专横",
+   "ja": "私／貴様／貴公；だ／ぞ／ます（对贾米托夫）",
+   "zh": "专横上校，对部下呵斥，对上级用敬语。",
+   "en": "Brutal, domineering colonel; formal to Jamitov, barking to subordinates.",
+   "status": "draft"
+  },
+  "ジャミトフ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "贾米托夫·海曼，迪坦斯首领",
+   "persona": "老谋深算的政客",
+   "ja": "わし／我々；貴公；だ／のだ",
+   "zh": "老政客，自称“我”，称部下“你”，语气深沉。",
+   "en": "Old political schemer; grave, formal.",
+   "status": "draft"
+  },
+  "シロッコ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "帕普提马斯·西罗克",
+   "persona": "优雅、自负、玩弄人心",
+   "ja": "私；君；だ／だな／ます",
+   "zh": "优雅自负，“君”译“你”不带敌意。",
+   "en": "Elegant, condescending manipulator; silky formality.",
+   "status": "draft"
+  },
+  "ハマーン": {
+   "work": "機動戦士ΖガンダムZZ",
+   "gender": "女",
+   "role": "哈曼·卡恩，阿克西斯摄政",
+   "persona": "威严、冷傲、对夏亚有旧情",
+   "ja": "私／我々；お前・君；だ／だな／のだ",
+   "zh": "威严女王腔，自称“我”，称部下“你”，不用女性软语气词。",
+   "en": "Regal, imperious; commanding, no softness; formal cadence.",
+   "status": "draft"
+  },
+  "ジュドー": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "杰特·亚西塔，废品少年",
+   "persona": "开朗、直爽、护妹",
+   "ja": "俺；あんた／お前；だ／ぜ",
+   "zh": "直爽少年，“喂”“搞什么啊”，称布莱特“舰长”。",
+   "en": "Cheerful scrappy teen; “Hey!”, “What the—?”, calls Bright “Captain”.",
+   "status": "draft"
+  },
+  "ルー": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "露·露卡，少女驾驶员",
+   "persona": "爽利、有主见、爱吐槽",
+   "ja": "あたし；あんた；わよ／のよ／わね",
+   "zh": "爽利少女，“真是的”“你啊”。",
+   "en": "Sharp-tongued, capable girl; teasing.",
+   "status": "draft"
+  },
+  "エル": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "艾露·比安诺",
+   "persona": "活泼、直率",
+   "ja": "あたし；あんた；のよ",
+   "zh": "活泼少女。",
+   "en": "Bubbly, blunt girl.",
+   "status": "draft"
+  },
+  "ビーチャ": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "比查·奥雷格",
+   "persona": "吊儿郎当",
+   "ja": "俺；お前；だぞ／ぜ",
+   "zh": "痞气少年。",
+   "en": "Slacker teen, cocky.",
+   "status": "draft"
+  },
+  "モンド": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "蒙德·阿加克",
+   "persona": "跟班型",
+   "ja": "俺",
+   "zh": "少年口吻。",
+   "en": "Teen sidekick.",
+   "status": "draft"
+  },
+  "イーノ": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "伊诺·阿巴布",
+   "persona": "老实",
+   "ja": "僕",
+   "zh": "老实少年。",
+   "en": "Earnest kid.",
+   "status": "draft"
+  },
+  "プル": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "艾尔比·普露，强化人少女",
+   "persona": "天真、黏杰特",
+   "ja": "あたし；だ／のよ",
+   "zh": "天真孩子气，称杰特“杰特”并撒娇。",
+   "en": "Childlike, clingy to Judau.",
+   "status": "draft"
+  },
+  "プルツー": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "普露二号",
+   "persona": "冷淡、好战，后来软化",
+   "ja": "私；お前；だ",
+   "zh": "冷淡少女，直呼“你”。",
+   "en": "Cold, combative girl; flat sentences.",
+   "status": "draft"
+  },
+  "グレミー": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "格雷米·托特",
+   "persona": "彬彬有礼下的野心家",
+   "ja": "私；お前・君；だ／のだ",
+   "zh": "表面有礼的年轻军官。",
+   "en": "Polished, ambitious young officer.",
+   "status": "draft"
+  },
+  "マシュマー": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "玛修玛·塞洛，哈曼的骑士",
+   "persona": "浮夸、忠诚、戏剧化",
+   "ja": "私／我；である／のだ",
+   "zh": "浮夸骑士腔，“哈曼大人”。",
+   "en": "Theatrical knight: “Lady Haman!”, florid declarations.",
+   "status": "draft"
+  },
+  "キャラ": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "姬拉·森",
+   "persona": "疯癫、亢奋",
+   "ja": "あたし；あんた；かい／だい",
+   "zh": "疯癫亢奋的女驾驶员。",
+   "en": "Manic, cackling.",
+   "status": "draft"
+  },
+  "ヘンケン": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "亨肯·贝肯纳，舰长",
+   "persona": "直爽、豪迈、暗恋艾玛",
+   "ja": "俺／我々；君；だ／だな",
+   "zh": "豪迈舰长。",
+   "en": "Bluff, hearty captain.",
+   "status": "draft"
+  },
+  "ブレックス": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "布雷克斯·弗拉准将",
+   "persona": "温和持重的长者",
+   "ja": "私／我々；君；だ／たまえ",
+   "zh": "持重长者，对部下“你”。",
+   "en": "Gracious elder statesman.",
+   "status": "draft"
+  },
+  "アストナージ": {
+   "work": "機動戦士Ζガンダム／ZZ／逆襲のシャア",
+   "gender": "男",
+   "role": "阿斯托纳吉，整备班长",
+   "persona": "热心、爱唠叨的技师",
+   "ja": "俺；お前；だ／くれ／ですね",
+   "zh": "技师口吻，“机体”“调整”，对驾驶员随便。",
+   "en": "Hands-on mechanic; practical, chatty.",
+   "status": "draft"
+  },
+  "ベルトーチカ": {
+   "work": "機動戦士Ζガンダム／逆襲のシャア",
+   "gender": "女",
+   "role": "贝尔托琪卡·伊尔玛，阿姆罗的恋人",
+   "persona": "开朗、直率、带点强势",
+   "ja": "あたし／私；あなた；です／ます／のよ",
+   "zh": "开朗女性，对阿姆罗亲昵直率。",
+   "en": "Warm, forthright; affectionate with Amuro.",
+   "status": "draft"
+  },
+  "チェーン": {
+   "work": "機動戦士ガンダム 逆襲のシャア",
+   "gender": "女",
+   "role": "琴·阿基，技术军官",
+   "persona": "认真、温柔",
+   "ja": "私；あなた；です／ます",
+   "zh": "温柔认真的女技术官，敬体。",
+   "en": "Earnest, gentle engineer; polite.",
+   "status": "draft"
+  },
+  "ギュネイ": {
+   "work": "機動戦士ガンダム 逆襲のシャア",
+   "gender": "男",
+   "role": "吉尼·加斯，强化人",
+   "persona": "自负、嫉妒",
+   "ja": "俺；貴様",
+   "zh": "自负青年。",
+   "en": "Arrogant young ace.",
+   "status": "draft"
+  },
+  "クェス": {
+   "work": "機動戦士ガンダム 逆襲のシャア",
+   "gender": "女",
+   "role": "葵丝·帕拉雅，任性少女",
+   "persona": "任性、早熟",
+   "ja": "あたし",
+   "zh": "任性少女。",
+   "en": "Willful, precocious girl.",
+   "status": "draft"
+  },
+  "ガトー": {
+   "work": "機動戦士ガンダム0083",
+   "gender": "男",
+   "role": "阿纳贝尔·卡多，所罗门的噩梦",
+   "persona": "刚直、悲壮的军人",
+   "ja": "私／我々；貴様／君；だ／ましょう",
+   "zh": "刚直军人腔，“为了吉翁”，庄重。",
+   "en": "Stern, tragic soldier; solemn, formal.",
+   "status": "draft"
+  },
+  "コウ": {
+   "work": "機動戦士ガンダム0083",
+   "gender": "男",
+   "role": "浦木宏，联邦少尉",
+   "persona": "认真、有点毛躁的新人",
+   "ja": "俺；お前；ます／です／だ",
+   "zh": "认真的年轻少尉，对长官敬体。",
+   "en": "Earnest rookie ensign; polite to superiors.",
+   "status": "draft"
+  },
+  "シロー": {
+   "work": "機動戦士ガンダム 第08MS小隊",
+   "gender": "男",
+   "role": "志狼·亚玛达，小队长",
+   "persona": "热血直率的队长",
+   "ja": "俺；君；だ／ます",
+   "zh": "直率队长。",
+   "en": "Straightforward, hot-blooded squad leader.",
+   "status": "draft"
+  },
+  "アイナ": {
+   "work": "機動戦士ガンダム 第08MS小隊",
+   "gender": "女",
+   "role": "爱娜·萨哈林",
+   "persona": "温柔坚定",
+   "ja": "私；あなた；ます",
+   "zh": "温柔敬体。",
+   "en": "Gentle, resolute; polite.",
+   "status": "draft"
+  },
+  "シーブック": {
+   "work": "機動戦士ガンダムF91",
+   "gender": "男",
+   "role": "西布克·亚诺",
+   "persona": "普通少年，冷静",
+   "ja": "僕／俺；君；だ",
+   "zh": "普通少年口吻。",
+   "en": "Level-headed teenager.",
+   "status": "draft"
+  },
+  "セシリー": {
+   "work": "機動戦士ガンダムF91",
+   "gender": "女",
+   "role": "塞西莉·菲尔柴尔德",
+   "persona": "温柔中带坚定",
+   "ja": "私；あなた；かしら／のよ",
+   "zh": "温柔少女。",
+   "en": "Gentle, quietly firm girl.",
+   "status": "draft"
+  },
+  "ドモン": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "多蒙·卡修，武斗家",
+   "persona": "粗犷、热血、不善言辞，对雷茵别扭",
+   "ja": "俺；お前／あんた／貴様；だ／だな，短句",
+   "zh": "粗犷武斗家，短句，“可恶”“看招”，对师父称“师父”。",
+   "en": "Gruff fighter: short blunt lines, growls; “Master!”; “Take this!”",
+   "address": {
+    "マスター": "师父 / Master"
+   },
+   "status": "draft"
+  },
+  "レイン": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "女",
+   "role": "雷茵·米卡姆拉，多蒙的搭档",
+   "persona": "干练、温柔、会数落多蒙",
+   "ja": "私；あなた；のよ／わよ／かしら／なさい",
+   "zh": "干练温柔，数落多蒙时“真是的”“多蒙！”",
+   "en": "Capable, caring; scolds Domon (“Domon, honestly!”).",
+   "status": "draft"
+  },
+  "マスター": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "东方不败·马斯特·亚洲",
+   "persona": "狂傲豪迈的武学宗师",
+   "ja": "ワシ；貴様／お前；だ／ぞ／のだ",
+   "zh": "宗师腔：一人称统一“老夫”（原文 ワシ），称多蒙“多蒙”“蠢徒”，用“愚蠢”“看好了”，不用语气词。",
+   "en": "Grandmaster: booming, grand, archaic flourishes (“Foolish pupil!”), no contractions.",
+   "address": {
+    "ドモン": "多蒙 / Domon"
+   },
+   "status": "draft"
+  },
+  "チボデー": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "奇伯迪·克罗克特，美国拳手",
+   "persona": "爽朗豪放",
+   "ja": "俺；お前；ぜ／だぜ，ねぇ",
+   "zh": "豪放拳手，“哈”“来吧”。",
+   "en": "Loud, cheerful boxer; American slang OK.",
+   "status": "draft"
+  },
+  "ジョルジュ": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "乔治·德·桑德，法国骑士",
+   "persona": "优雅有礼",
+   "ja": "私；あなた；ですね／でしょう／ましょう",
+   "zh": "优雅骑士，敬体。",
+   "en": "Courtly, refined; polite formality.",
+   "status": "draft"
+  },
+  "サイ・サイシー": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "赛·塞西，少林少年",
+   "persona": "调皮、乐天",
+   "ja": "オイラ；お前；ぜ／かい",
+   "zh": "调皮少年：一人称统一“我”（不用“俺”），“嘿嘿”“老兄”。",
+   "en": "Mischievous kid; cheeky.",
+   "status": "draft"
+  },
+  "アルゴ": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "阿尔戈·格尔斯基，俄国宇宙海盗",
+   "persona": "沉默寡言",
+   "ja": "俺；貴様；だ",
+   "zh": "寡言，短句。",
+   "en": "Taciturn; few words.",
+   "status": "draft"
+  },
+  "アレンビー": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "女",
+   "role": "阿莲比·比亚兹利",
+   "persona": "活泼好胜",
+   "ja": "アタシ；あなた；のよ／かな",
+   "zh": "活泼少女。",
+   "en": "Energetic, competitive girl.",
+   "status": "draft"
+  },
+  "シュバルツ": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "修瓦鲁兹·布鲁达",
+   "persona": "神秘、严肃的忍者",
+   "ja": "私；お前；だ／のだ",
+   "zh": "神秘严肃，“多蒙·卡修”。",
+   "en": "Grave, mysterious; formal.",
+   "status": "draft"
+  },
+  "ウォン": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "王·云龙，新香港首相",
+   "persona": "阴柔算计",
+   "ja": "私；お前；かな／なさい",
+   "zh": "阴柔算计的政客。",
+   "en": "Silky, scheming politician.",
+   "status": "draft"
+  },
+  "キョウジ": {
+   "work": "機動武闘伝Gガンダム",
+   "gender": "男",
+   "role": "卡修恭司",
+   "persona": "温和",
+   "ja": "",
+   "zh": "温和。",
+   "en": "Gentle.",
+   "status": "draft"
+  },
+  "ヒイロ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "希罗·唯",
+   "persona": "冷淡、寡言、任务至上",
+   "ja": "俺；お前；だ，极短",
+   "zh": "极短冷淡：“任务完成”“我会杀了你”。",
+   "en": "Flat, clipped: “Mission accepted.”, “I’ll kill you.”",
+   "status": "draft"
+  },
+  "デュオ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "迪奥·麦斯威尔",
+   "persona": "开朗话痨，自称死神",
+   "ja": "俺；お前／あんた；ぜ／だぜ，ねぇ",
+   "zh": "开朗痞气，“哟”“得了吧”“死神”。",
+   "en": "Chatty, cocky: “Heh”, “the God of Death”, slangy.",
+   "status": "draft"
+  },
+  "トロワ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "特洛瓦·巴顿",
+   "persona": "沉默、冷静",
+   "ja": "俺；お前；だ",
+   "zh": "寡言冷静。",
+   "en": "Quiet, matter-of-fact.",
+   "status": "draft"
+  },
+  "カトル": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "卡特尔·拉巴巴·温拿",
+   "persona": "温和有礼的少爷",
+   "ja": "僕；君／あなた；です／ます／でしょうか",
+   "zh": "温和敬体，对谁都客气。",
+   "en": "Soft-spoken, polite to everyone.",
+   "status": "draft"
+  },
+  "五飛": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "张五飞",
+   "persona": "刚烈、重正义、瞧不起弱者",
+   "ja": "俺；貴様／お前；だ",
+   "zh": "刚烈，“弱者”“正义”，短句。",
+   "en": "Severe, righteous: “Weakling!”, “Justice!”",
+   "status": "draft"
+  },
+  "ゼクス": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "杰克斯·马其斯",
+   "persona": "冷静高贵的军人",
+   "ja": "私；君／貴様；だ／のだ／だな",
+   "zh": "高贵军人，对希罗称“希罗·唯”。",
+   "en": "Cool, aristocratic soldier.",
+   "status": "draft"
+  },
+  "ミリアルド": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "米利亚尔多·匹斯克拉福特（杰克斯的本名）",
+   "persona": "同杰克斯，更庄重",
+   "ja": "私；貴様／君；だ／のだ",
+   "zh": "同杰克斯，更庄重。",
+   "en": "As Zechs, more solemn.",
+   "status": "draft"
+  },
+  "ノイン": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "露克蕾琪亚·诺因",
+   "persona": "干练、忠于杰克斯",
+   "ja": "私；あなた；です／ます",
+   "zh": "干练女军官，敬体。",
+   "en": "Capable woman officer; polite.",
+   "status": "draft"
+  },
+  "トレーズ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "特列斯·克休里纳达",
+   "persona": "优雅、哲学化、贵族",
+   "ja": "私；君；だ／のだ／たまえ",
+   "zh": "优雅贵族，“君”译“你”，可用文雅措辞。",
+   "en": "Eloquent aristocrat; philosophical, gracious, formal.",
+   "status": "draft"
+  },
+  "レディ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "蕾蒂·安",
+   "persona": "严厉、忠于特列斯",
+   "ja": "私；あなた／貴様；です／だ",
+   "zh": "严厉女军官，称特列斯“特列斯阁下”。",
+   "en": "Stern officer; “Your Excellency” for Treize.",
+   "address": {
+    "トレーズ": "特列斯阁下 / Your Excellency"
+   },
+   "status": "draft"
+  },
+  "リリーナ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "莉莉娜·多利安",
+   "persona": "端庄、坚定、理想主义",
+   "ja": "わたくし；あなた；です／ます／でしょう",
+   "zh": "端庄敬体，“希罗”。",
+   "en": "Poised, principled; formal, no contractions.",
+   "status": "draft"
+  },
+  "ドロシー": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "多萝西·卡塔罗尼亚",
+   "persona": "刻薄、好战的贵族小姐",
+   "ja": "わたくし；あなた；ですわ／ますわ／のよ",
+   "zh": "刻薄贵族小姐。",
+   "en": "Sardonic noblewoman; ornate formality.",
+   "status": "draft"
+  },
+  "サリィ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "莎莉·珀",
+   "persona": "沉稳可靠",
+   "ja": "私；あなた；です／ます",
+   "zh": "沉稳女性。",
+   "en": "Steady, reliable woman.",
+   "status": "draft"
+  },
+  "ヒルデ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "女",
+   "role": "希露迪·修拜卡",
+   "persona": "直率",
+   "ja": "私／あたし；あなた；なさい",
+   "zh": "直率少女。",
+   "en": "Frank, spirited girl.",
+   "status": "draft"
+  },
+  "ツバロフ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "茨巴罗夫",
+   "persona": "偏执的技术官僚",
+   "ja": "私；貴様；ます／ですな",
+   "zh": "偏执技术官。",
+   "end": "",
+   "en": "Obsessive technocrat.",
+   "status": "draft"
+  },
+  "デルマイユ": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "迪鲁马尤公爵，罗姆斐拉财团首脑",
+   "persona": "傲慢的老贵族",
+   "ja": "我々／ワシ；君／貴公；だ／ぞ／である",
+   "zh": "傲慢老贵族，自称“老夫”。",
+   "en": "Haughty old duke; pompous formality.",
+   "status": "draft"
+  },
+  "ラシード": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "拉希德，玛格纳克队长",
+   "persona": "忠厚",
+   "ja": "我々；あなた；ます",
+   "zh": "忠厚，称“卡特尔少爷”。",
+   "en": "Loyal, gruff; “Master Quatre”.",
+   "address": {
+    "カトル": "卡特尔少爷 / Master Quatre"
+   },
+   "status": "draft"
+  },
+  "甲児": {
+   "work": "マジンガーZ",
+   "gender": "男",
+   "role": "兜甲儿",
+   "persona": "热血冲动、乐天、爱逞强",
+   "ja": "オレ；お前／あんた／てめぇ；ぜ／だぜ，ねぇ／だろ",
+   "zh": "热血少年，“可恶”“看招”，对爷爷“爷爷”。",
+   "en": "Hot-blooded, brash teen: “Damn it!”, “Take this!”; “Gramps” for grandfather.",
+   "status": "draft"
+  },
+  "さやか": {
+   "work": "マジンガーZ",
+   "gender": "女",
+   "role": "弓沙也加",
+   "persona": "要强、会拌嘴",
+   "ja": "あたし；あなた；のよ／わよ／なさい",
+   "zh": "要强少女，“真是的”，和甲儿拌嘴。",
+   "en": "Feisty; bickers with Koji.",
+   "status": "draft"
+  },
+  "ボス": {
+   "work": "マジンガーZ",
+   "gender": "男",
+   "role": "老大（ボス）",
+   "persona": "搞笑、粗鲁但仗义",
+   "ja": "俺；のよ／わよ（口癖）",
+   "zh": "搞笑粗人：一人称“我”，原文 俺様 时用“本大爷”；口癖“～的哟”译“～啦”。",
+   "en": "Comic tough guy; goofy bluster.",
+   "status": "draft"
+  },
+  "弓教授": {
+   "work": "マジンガーZ",
+   "gender": "男",
+   "role": "弓弦之助教授",
+   "persona": "温和的学者长辈",
+   "ja": "私；君；だ／たまえ",
+   "zh": "学者长辈，对少年“你”。",
+   "en": "Kindly professor; measured.",
+   "status": "draft"
+  },
+  "鉄也": {
+   "work": "グレートマジンガー",
+   "gender": "男",
+   "role": "剑铁也",
+   "persona": "冷峻、自负的战士",
+   "ja": "俺；お前；だ／ぜ",
+   "zh": "冷峻战士，短句。",
+   "en": "Cool, proud warrior; terse.",
+   "status": "draft"
+  },
+  "ジュン": {
+   "work": "グレートマジンガー",
+   "gender": "女",
+   "role": "炎顺",
+   "persona": "沉稳可靠",
+   "ja": "あたし；わよ／だね",
+   "zh": "沉稳女性。",
+   "en": "Steady, mature.",
+   "status": "draft"
+  },
+  "大介": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "男",
+   "role": "宇门大介／杜克·弗利德",
+   "persona": "温和、内敛、背负故乡",
+   "ja": "僕；君；だ／です",
+   "zh": "温和内敛，礼貌。",
+   "en": "Gentle, reserved; polite.",
+   "status": "draft"
+  },
+  "デューク": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "男",
+   "role": "杜克·弗利德（大介的真名）",
+   "persona": "同大介，战斗时果断",
+   "ja": "僕；君；だ／ぞ",
+   "zh": "同大介，战斗时果断。",
+   "en": "As Daisuke; decisive in battle.",
+   "status": "draft"
+  },
+  "マリア": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "女",
+   "role": "玛丽亚·格雷斯·弗利德",
+   "persona": "活泼倔强",
+   "ja": "あたし；のよ／だわ",
+   "zh": "活泼倔强少女。",
+   "en": "Spirited, stubborn girl.",
+   "status": "draft"
+  },
+  "ひかる": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "女",
+   "role": "牧场光",
+   "persona": "温柔",
+   "ja": "私；です／だわ",
+   "zh": "温柔敬体。",
+   "en": "Gentle, polite.",
+   "status": "draft"
+  },
+  "ガンダル": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "男",
+   "role": "甘达尔司令",
+   "persona": "贝加星军司令，暴躁",
+   "ja": "ワシ；だ／ぞ／のだ",
+   "zh": "自称“老夫”，暴躁反派。",
+   "en": "Blustering alien commander.",
+   "status": "draft"
+  },
+  "ブラッキー": {
+   "work": "UFOロボ グレンダイザー",
+   "gender": "男",
+   "role": "布拉基队长",
+   "persona": "阴狠",
+   "ja": "我；お前；だ／ぞ",
+   "zh": "阴狠军官。",
+   "en": "Sly, vicious officer.",
+   "status": "draft"
+  },
+  "ズール皇帝": {
+   "work": "UFOロボ グレンダイザー／六神合体ゴッドマーズ（此处按剧本）",
+   "gender": "男",
+   "role": "祖尔皇帝，基辛星统治者",
+   "persona": "冷酷威严的暴君",
+   "ja": "ワシ；お前／貴様；だ／のだ",
+   "zh": "帝王腔：一人称统一用“朕”（现有译文已多用），称部下“你”，措辞威严冷酷，不用语气词。",
+   "en": "Tyrant: grand, cold, no contractions.",
+   "status": "draft"
+  },
+  "リョウ": {
+   "work": "ゲッターロボ／G",
+   "gender": "男",
+   "role": "流龙马",
+   "persona": "热血、正直、有担当",
+   "ja": "俺；お前／君；だ／です（对早乙女博士）",
+   "zh": "热血正直，对博士用敬语。",
+   "en": "Straight-arrow hot-blooded leader; polite to Dr. Saotome.",
+   "status": "draft"
+  },
+  "ハヤト": {
+   "work": "ゲッターロボ／G",
+   "gender": "男",
+   "role": "神隼人",
+   "persona": "冷静、毒舌",
+   "ja": "俺；お前；だ",
+   "zh": "冷静毒舌。",
+   "en": "Cool, sardonic.",
+   "status": "draft"
+  },
+  "ベンケイ": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "车弁庆",
+   "persona": "憨厚豪爽",
+   "ja": "俺；だ／ぜ",
+   "zh": "憨厚豪爽。",
+   "en": "Big-hearted, boisterous.",
+   "status": "draft"
+  },
+  "ムサシ": {
+   "work": "ゲッターロボ",
+   "gender": "男",
+   "role": "巴武藏",
+   "persona": "憨直热血",
+   "ja": "だ／ぜ",
+   "zh": "憨直热血。",
+   "en": "Simple, fiery.",
+   "status": "draft"
+  },
+  "早乙女博士": {
+   "work": "ゲッターロボ",
+   "gender": "男",
+   "role": "早乙女博士",
+   "persona": "严肃的老科学家",
+   "ja": "わし；お前／君；だ／じゃ",
+   "zh": "老科学家，自称“我”，句尾“吧”，语气严肃。",
+   "en": "Stern old scientist.",
+   "status": "draft"
+  },
+  "ブライ大帝": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "百鬼帝国的布莱大帝",
+   "persona": "阴沉的帝王",
+   "ja": "我／わし；貴様；のだ／じゃ",
+   "zh": "自称“老夫”，帝王腔。",
+   "en": "Brooding emperor; archaic grandeur.",
+   "status": "draft"
+  },
+  "グラー博士": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "古拉博士",
+   "persona": "谄媚阴险的科学家",
+   "ja": "我／ワシ；貴様；ぞ／ございます（对大帝）",
+   "zh": "对大帝谄媚敬语，对敌人狠。",
+   "en": "Fawning to the emperor, venomous to enemies.",
+   "status": "draft"
+  },
+  "鉄甲鬼": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "铁甲鬼",
+   "persona": "武人",
+   "ja": "俺；貴様",
+   "zh": "武人腔。",
+   "en": "Warrior’s bluntness.",
+   "status": "draft"
+  },
+  "豹馬": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "葵豹马",
+   "persona": "热血冲动的队长",
+   "ja": "俺；お前／てめぇ；だ／ぜ",
+   "zh": "热血冲动，“可恶”。",
+   "en": "Hot-headed team leader.",
+   "status": "draft"
+  },
+  "ちずる": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "女",
+   "role": "南原千鹤",
+   "persona": "温柔坚强",
+   "ja": "私；あなた；ます／なさい",
+   "zh": "温柔坚强的少女。",
+   "en": "Gentle, strong-willed girl.",
+   "status": "draft"
+  },
+  "十三": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "浪花十三",
+   "persona": "冷静的神枪手",
+   "ja": "自分／かい",
+   "zh": "冷静。",
+   "en": "Cool marksman.",
+   "status": "draft"
+  },
+  "小介": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "北小介",
+   "persona": "天才少年",
+   "ja": "僕／ボク；です",
+   "zh": "聪明小孩，敬体。",
+   "en": "Precocious boy; polite.",
+   "status": "draft"
+  },
+  "四谷博士": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "四谷博士",
+   "persona": "老科学家",
+   "ja": "わし；お前／君；だ／じゃ",
+   "zh": "老科学家，自称“我”。",
+   "en": "Old scientist; avuncular.",
+   "status": "draft"
+  },
+  "ワルキメデス": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "瓦鲁基米迪斯",
+   "persona": "傲慢的将军",
+   "ja": "私；だ／のだ",
+   "zh": "傲慢将军。",
+   "en": "Arrogant general.",
+   "status": "draft"
+  },
+  "ダンゲル": {
+   "work": "超電磁ロボ コン・バトラーV",
+   "gender": "男",
+   "role": "丹格尔将军",
+   "persona": "粗暴武人",
+   "ja": "俺；貴様",
+   "zh": "粗暴武人。",
+   "en": "Brutish general.",
+   "status": "draft"
+  },
+  "勝平": {
+   "work": "無敵超人ザンボット3",
+   "gender": "男",
+   "role": "神胜平",
+   "persona": "顽皮热血的少年",
+   "ja": "俺；ぜ／かい",
+   "zh": "顽皮少年。",
+   "en": "Scrappy kid hero.",
+   "status": "draft"
+  },
+  "宇宙太": {
+   "work": "無敵超人ザンボット3",
+   "gender": "男",
+   "role": "神江宇宙太",
+   "persona": "冷静",
+   "ja": "俺；だぜ／かな",
+   "zh": "冷静少年。",
+   "en": "Cool-headed teen.",
+   "status": "draft"
+  },
+  "恵子": {
+   "work": "無敵超人ザンボット3",
+   "gender": "女",
+   "role": "神北惠子",
+   "persona": "温柔懂事",
+   "ja": "私；です／のよ",
+   "zh": "温柔少女。",
+   "en": "Gentle, sensible girl.",
+   "status": "draft"
+  },
+  "ショウ": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "座间祥",
+   "persona": "正直、成熟的圣战士",
+   "ja": "俺；貴様／お前；だ／ます",
+   "zh": "正直成熟，对女王用敬语。",
+   "en": "Earnest, mature; polite to royalty.",
+   "status": "draft"
+  },
+  "マーベル": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "玛贝尔·弗洛赞",
+   "persona": "沉着的美国女性",
+   "ja": "私；わね／かしら",
+   "zh": "沉着女性。",
+   "en": "Level-headed woman.",
+   "status": "draft"
+  },
+  "チャム": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "香姆·华",
+   "persona": "话多、爱吐槽的小妖精",
+   "ja": "あたし；わよ／のよ",
+   "zh": "叽叽喳喳的小妖精。",
+   "en": "Chatty, cheeky fairy.",
+   "status": "draft"
+  },
+  "シーラ": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "希拉·拉帕纳女王",
+   "persona": "高贵慈悲的女王",
+   "ja": "我々／私；あなた；ます／です",
+   "zh": "女王腔，庄重敬体。",
+   "en": "Queenly: gracious, solemn, formal.",
+   "status": "draft"
+  },
+  "エレ": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "艾蕾·汉姆",
+   "persona": "端庄坚定",
+   "ja": "我々／私；あなた；ます",
+   "zh": "端庄敬体。",
+   "en": "Dignified, resolute.",
+   "status": "draft"
+  },
+  "トッド": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "托德·基尼斯",
+   "persona": "粗野、执着于胜过祥",
+   "ja": "俺；貴様／お前；ぜ／だぜ",
+   "zh": "粗野对手，“座间祥！”",
+   "en": "Rough rival: “Show Zama!”",
+   "status": "draft"
+  },
+  "バーン": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "巴恩·巴宁斯，黑骑士",
+   "persona": "骄傲的骑士",
+   "ja": "私；貴様；だ",
+   "zh": "骄傲骑士。",
+   "en": "Proud knight; formal.",
+   "status": "draft"
+  },
+  "黒騎士": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "黑骑士（巴恩）",
+   "persona": "同巴恩，更冷",
+   "ja": "私；貴様",
+   "zh": "同巴恩。",
+   "en": "As Bern, colder.",
+   "status": "draft"
+  },
+  "ドレイク": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "德雷克·鲁夫特",
+   "persona": "野心家领主",
+   "ja": "わし；貴様／お前；だな／ぞ",
+   "zh": "自称“老夫”，领主腔。",
+   "en": "Ambitious lord; commanding.",
+   "status": "draft"
+  },
+  "ショット": {
+   "work": "聖戦士ダンバイン",
+   "gender": "男",
+   "role": "肖特·维彭",
+   "persona": "算计的技术者",
+   "ja": "俺／私；のだ",
+   "zh": "算计。",
+   "en": "Calculating engineer.",
+   "status": "draft"
+  },
+  "ガラリア": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "加拉莉亚·纽姆",
+   "persona": "好胜的女骑士",
+   "ja": "私；お前；だ",
+   "zh": "好胜女骑士，不用女性软语气。",
+   "en": "Fierce woman knight; no softness.",
+   "status": "draft"
+  },
+  "ジェリル": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "杰莉尔·库奇比",
+   "persona": "狂躁",
+   "ja": "アタシ；かい",
+   "zh": "狂躁女性。",
+   "en": "Manic, wild.",
+   "status": "draft"
+  },
+  "ミュージィ": {
+   "work": "聖戦士ダンバイン",
+   "gender": "女",
+   "role": "缪吉·波",
+   "persona": "冷艳",
+   "ja": "私",
+   "zh": "冷艳。",
+   "en": "Icy, elegant.",
+   "status": "draft"
+  },
+  "忍": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "藤原忍",
+   "persona": "粗野、狂放、不服管",
+   "ja": "俺；てめぇ／お前；ぜ／だぜ，ねぇ／じゃねぇ 极多",
+   "zh": "粗野狂放，“他妈的”不用，但“混蛋”“老子”可以。",
+   "en": "Wild, insubordinate: “Screw that!”, “bastard”; heavy slang.",
+   "status": "draft"
+  },
+  "沙羅": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "女",
+   "role": "结城沙罗",
+   "persona": "强势、泼辣",
+   "ja": "あたし；あんた；だね／かい／だい",
+   "zh": "泼辣女性，“你啊”。",
+   "en": "Tough, brassy woman.",
+   "status": "draft"
+  },
+  "雅人": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "式部雅人",
+   "persona": "轻浮、乐天",
+   "ja": "俺；かな／だね",
+   "zh": "轻浮乐天的少年。",
+   "en": "Flippant, easygoing.",
+   "status": "draft"
+  },
+  "亮": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "司马亮",
+   "persona": "冷静、沉稳",
+   "ja": "俺；お前；だ／だな",
+   "zh": "冷静沉稳。",
+   "en": "Calm, steady.",
+   "status": "draft"
+  },
+  "葉月博士": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "叶月博士",
+   "persona": "老学者",
+   "ja": "我々／私；君；だ／のだ",
+   "zh": "老学者。",
+   "en": "Elder scientist.",
+   "status": "draft"
+  },
+  "シャピロ": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "夏比罗·基兹，投靠穆格的叛徒",
+   "persona": "自负狂妄、蔑视人类",
+   "ja": "俺／私；貴様／お前；だ／のだ",
+   "zh": "狂妄自负，“愚蠢的人类”。",
+   "en": "Megalomaniac traitor: “fools”, grandiose.",
+   "status": "draft"
+  },
+  "ムゲ帝王": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "穆格·佐尔巴多斯帝王",
+   "persona": "冷酷帝王",
+   "ja": "私／我；お前／貴様；だ／のだ",
+   "zh": "冷酷帝王腔。",
+   "en": "Cold emperor; grand formality.",
+   "status": "draft"
+  },
+  "デスガイヤー": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "死亡盖亚将军",
+   "persona": "豪迈的武人型将军",
+   "ja": "俺；貴様；だ／ぞ",
+   "zh": "武人将军。",
+   "en": "Warrior general; blunt.",
+   "status": "draft"
+  },
+  "ギルドローム": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "基尔多罗姆将军",
+   "persona": "阴柔算计",
+   "ja": "我；貴様；かな",
+   "zh": "阴柔算计。",
+   "en": "Sly, effete general.",
+   "status": "draft"
+  },
+  "ヘルマット": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "赫尔马特将军",
+   "persona": "粗暴",
+   "ja": "俺；貴様",
+   "zh": "粗暴。",
+   "en": "Brutish.",
+   "status": "draft"
+  },
+  "アラン": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "阿兰·伊戈尔，兽战机队指挥官",
+   "persona": "沉着的指挥官",
+   "ja": "私／我々；君／お前；だ／だな",
+   "zh": "沉着指挥官，对队员“你”。",
+   "en": "Composed commander.",
+   "status": "draft"
+  },
+  "エイジ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "阿尔巴特罗·纳尔·艾吉·亚斯卡",
+   "persona": "温和、诚恳、背负两个故乡",
+   "ja": "俺／僕；君；だ／です",
+   "zh": "温和诚恳，礼貌。",
+   "en": "Gentle, sincere; polite.",
+   "status": "draft"
+  },
+  "アンナ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "女",
+   "role": "安娜·斯蒂芬妮",
+   "persona": "温柔坚强",
+   "ja": "私；あなた；ます／のよ",
+   "zh": "温柔少女。",
+   "en": "Gentle, steadfast girl.",
+   "status": "draft"
+  },
+  "デビッド": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "戴维·拉瑟福",
+   "persona": "冲动热血",
+   "ja": "俺；ぜ／だぜ",
+   "zh": "冲动热血。",
+   "en": "Impulsive hothead.",
+   "status": "draft"
+  },
+  "ロアン": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "罗安·迪米特里",
+   "persona": "冷静理性",
+   "ja": "僕；君；です／ます",
+   "zh": "冷静理性，敬体。",
+   "en": "Rational, polite.",
+   "status": "draft"
+  },
+  "シモーヌ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "女",
+   "role": "西蒙娜·勒弗兰，勒弗兰公爵家千金",
+   "persona": "爽快、不拘礼节",
+   "ja": "あたし／アタシ；あんた；のよ／わよ／だわ",
+   "zh": "爽快女性，“别叫我小姐”。",
+   "en": "Frank, unceremonious; “Drop the ‘Lady’.”",
+   "status": "draft"
+  },
+  "ジュリア": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "女",
+   "role": "尤莉亚·亚斯卡，艾吉的姐姐",
+   "persona": "温柔慈悲",
+   "ja": "私／わたくし；あなた；です／ます",
+   "zh": "温柔慈悲，敬体。",
+   "en": "Serene, compassionate; formal.",
+   "status": "draft"
+  },
+  "ル・カイン": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "鲁·凯恩",
+   "persona": "冷酷高傲的格拉多斯贵族",
+   "ja": "私；貴様／お前；だ／です",
+   "zh": "冷酷高傲。",
+   "en": "Cold, aristocratic tyrant.",
+   "status": "draft"
+  },
+  "ゲイル": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "盖尔",
+   "persona": "正直的军人",
+   "ja": "私；お前；だな",
+   "zh": "正直军人。",
+   "en": "Honorable soldier.",
+   "status": "draft"
+  },
+  "ゴステロ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "戈斯特罗",
+   "persona": "疯狂残暴",
+   "ja": "俺；貴様；ねぇ",
+   "zh": "疯狂残暴。",
+   "en": "Deranged, savage.",
+   "status": "draft"
+  },
+  "タケル": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "明神武",
+   "persona": "正直热血，重感情",
+   "ja": "俺；お前／君；だ／です（对长辈）",
+   "zh": "正直热血，对长辈敬语，称哥哥“玛古”。",
+   "en": "Earnest hero; polite to elders; “Marg” for his brother.",
+   "address": {
+    "マーグ": "玛古 / Marg"
+   },
+   "status": "draft"
+  },
+  "マーグ": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "玛古，武的哥哥",
+   "persona": "沉稳、温和、有牺牲精神",
+   "ja": "俺；お前；だ／だな",
+   "zh": "沉稳温和的兄长。",
+   "en": "Calm, gentle elder brother.",
+   "status": "draft"
+  },
+  "ロゼ": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "女",
+   "role": "罗塞",
+   "persona": "冷静的女战士",
+   "ja": "私；あなた；です／ます",
+   "zh": "冷静敬体。",
+   "en": "Cool, composed; polite.",
+   "status": "draft"
+  },
+  "ミカ": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "女",
+   "role": "美加",
+   "persona": "活泼",
+   "ja": "私；です／わよ",
+   "zh": "活泼少女。",
+   "en": "Lively girl.",
+   "status": "draft"
+  },
+  "ナオト": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "直人",
+   "persona": "直率",
+   "ja": "俺；だ",
+   "zh": "直率青年。",
+   "en": "Straightforward.",
+   "status": "draft"
+  },
+  "アキラ": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "辉",
+   "persona": "沉稳",
+   "ja": "俺",
+   "zh": "沉稳。",
+   "en": "Steady.",
+   "status": "draft"
+  },
+  "ケンジ": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "健治",
+   "persona": "认真",
+   "ja": "我々；お前；だ／です",
+   "zh": "认真。",
+   "en": "Serious.",
+   "status": "draft"
+  },
+  "中条長官": {
+   "work": "六神合体ゴッドマーズ",
+   "gender": "男",
+   "role": "中条长官",
+   "persona": "沉稳长官",
+   "ja": "私；君；だ／たまえ",
+   "zh": "长官腔。",
+   "en": "Commanding, composed.",
+   "status": "draft"
+  },
+  "ガイア": {
+   "work": "機動戦士ガンダム",
+   "gender": "男",
+   "role": "盖亚，黑色三连星",
+   "persona": "老兵",
+   "ja": "我々；ぞ",
+   "zh": "老兵。",
+   "en": "Veteran ace.",
+   "status": "draft"
+  },
+  "オルテガ": {
+   "work": "機動戦士ガンダム",
+   "gender": "男",
+   "role": "奥尔特加",
+   "persona": "粗豪",
+   "ja": "俺",
+   "zh": "粗豪。",
+   "en": "Rough.",
+   "status": "draft"
+  },
+  "マッシュ": {
+   "work": "機動戦士ガンダム",
+   "gender": "男",
+   "role": "马修",
+   "persona": "粗豪",
+   "ja": "俺",
+   "zh": "粗豪。",
+   "en": "Rough.",
+   "status": "draft"
+  },
+  "銀鈴": {
+   "work": "ジャイアント・ロボ",
+   "gender": "女",
+   "role": "银铃，国际警察机构专家",
+   "persona": "冷静、成熟、照顾大作",
+   "ja": "私；あなた／君；です／ます／のよ",
+   "zh": "成熟女性，对大作温和。",
+   "en": "Poised, mature; warm to Daisaku.",
+   "status": "draft"
+  },
+  "大作": {
+   "work": "ジャイアント・ロボ／超電磁ロボ コン・バトラーV（同名标签）",
+   "gender": "男",
+   "role": "两个人共用这个标签：草间大作（大铁人的少年主人，敬体）和西川大作（コン・バトラーV，九州腔 おいどん／ですたい／ばい）",
+   "persona": "草间大作认真有礼勇敢；西川大作憨厚乡土",
+   "ja": "草间：僕／です・ます；西川：おい／おいどん／ですたい／ばい",
+   "zh": "按原文分辨：草间大作用“我”＋敬体、称“铁人”；西川大作一人称“俺”，句尾可带“咧”“呗”体现方言，但不要过火。",
+   "en": "Kusama: polite, brave boy (“Giant Robo!”). Nishikawa: rustic, folksy (“Ah reckon”-level color only lightly, no heavy dialect spelling).",
+   "status": "draft"
+  },
+  "アルベルト": {
+   "work": "ジャイアント・ロボ",
+   "gender": "男",
+   "role": "冲击的阿尔贝特",
+   "persona": "狂傲的十傑集",
+   "ja": "我／ワシ；貴様；ぞ",
+   "zh": "狂傲，自称“我”。",
+   "en": "Arrogant, thunderous.",
+   "status": "draft"
+  },
+  "孔明": {
+   "work": "ジャイアント・ロボ",
+   "gender": "男",
+   "role": "诸葛孔明",
+   "persona": "从容儒雅",
+   "ja": "我々／私；ます／ましょう",
+   "zh": "儒雅从容，敬体。",
+   "en": "Urbane strategist; courteous.",
+   "status": "draft"
+  },
+  "ハワード": {
+   "work": "ジャイアント・ロボ",
+   "gender": "男",
+   "role": "戴斯·豪沃德博士",
+   "persona": "老学者",
+   "ja": "わし；お前；だ／じゃ／わい",
+   "zh": "老学者，自称“老夫”可。",
+   "en": "Old scientist.",
+   "status": "draft"
+  },
+  "村雨": {
+   "work": "ジャイアント・ロボ",
+   "gender": "男",
+   "role": "村雨健二",
+   "persona": "冷峻的杀手",
+   "ja": "俺；お前；だ",
+   "zh": "冷峻。",
+   "en": "Cold killer.",
+   "status": "draft"
+  },
+  "ゲーツ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "盖茨（剧本角色）",
+   "persona": "军人",
+   "ja": "私",
+   "zh": "军人腔。",
+   "en": "Military register.",
+   "status": "check"
+  },
+  "ジャネラ": {
+   "work": "戦国魔神ゴーショーグン",
+   "gender": "女",
+   "role": "杰涅拉女皇",
+   "persona": "阴森的老女皇",
+   "ja": "我／私；じゃ／のじゃ",
+   "zh": "老女皇，自称“老身”，句尾“呀”不用。",
+   "en": "Sinister old empress; archaic (“thou” not needed), grand.",
+   "status": "draft"
+  },
+  "レミー": {
+   "work": "戦国魔神ゴーショーグン",
+   "gender": "女",
+   "role": "雷米·岛田",
+   "persona": "成熟性感、爱开玩笑",
+   "ja": "私；のよ／かしら",
+   "zh": "成熟女性，轻佻调侃。",
+   "en": "Sultry, teasing.",
+   "status": "draft"
+  },
+  "キリー": {
+   "work": "戦国魔神ゴーショーグン",
+   "gender": "男",
+   "role": "基利·基亚格",
+   "persona": "玩世不恭",
+   "ja": "俺；だ／ぜ",
+   "zh": "玩世不恭。",
+   "en": "Wisecracking cynic.",
+   "status": "draft"
+  },
+  "真吾": {
+   "work": "戦国魔神ゴーショーグン",
+   "gender": "男",
+   "role": "北条真吾",
+   "persona": "热血直率",
+   "ja": "俺；お前；だ／ぜ",
+   "zh": "热血直率。",
+   "en": "Blunt, fiery.",
+   "status": "draft"
+  },
+  "ヤヌス侯爵": {
+   "work": "戦国魔神ゴーショーグン",
+   "gender": "男",
+   "role": "雅努斯侯爵",
+   "persona": "老贵族反派",
+   "ja": "我／私／わらわ；お前；ぞ／じゃ",
+   "zh": "老贵族反派：一人称按原文，わらわ 译“妾身”、我／私 译“我”，不用“老夫”。",
+   "en": "Old marquis; pompous.",
+   "status": "check"
+  },
+  "ジェイ＝レン": {
+   "work": "SRW64 原创／穆格系",
+   "gender": "男",
+   "role": "杰=伦",
+   "persona": "反派军官",
+   "ja": "我；お前；のだ",
+   "zh": "反派军官。",
+   "en": "Enemy officer.",
+   "status": "check"
+  },
+  "ヴァル＝ア": {
+   "work": "SRW64 原创／穆格系",
+   "gender": "男",
+   "role": "瓦尔=阿",
+   "persona": "反派",
+   "ja": "我；お前；だ",
+   "zh": "反派军官。",
+   "en": "Enemy officer.",
+   "status": "check"
+  },
+  "アヴィ＝ルー": {
+   "work": "SRW64 原创／穆格系",
+   "gender": "女",
+   "role": "阿维=露",
+   "persona": "泼辣的女反派",
+   "ja": "アタシ；アンタ；だ",
+   "zh": "泼辣女反派。",
+   "en": "Brash female officer.",
+   "status": "check"
+  },
+  "カーンズ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "卡恩兹",
+   "persona": "军官",
+   "ja": "我々；あなた；です",
+   "zh": "军官敬体。",
+   "en": "Officer; polite.",
+   "status": "check"
+  },
+  "グレスコ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "格雷斯科，占领军司令",
+   "persona": "傲慢司令",
+   "ja": "私；お前；だ／なのだ",
+   "zh": "傲慢司令。",
+   "en": "Arrogant governor.",
+   "status": "check"
+  },
+  "バレン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "巴伦",
+   "persona": "反派军官",
+   "ja": "私；お前；だ／ぞ",
+   "zh": "反派军官。",
+   "en": "Enemy officer.",
+   "status": "check"
+  },
+  "キリカ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "基里卡",
+   "persona": "女军官",
+   "ja": "私；あなた；のよ",
+   "zh": "女军官。",
+   "en": "Woman officer.",
+   "status": "check"
+  },
+  "エリカ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "艾莉卡",
+   "persona": "温柔",
+   "ja": "私；です",
+   "zh": "温柔敬体。",
+   "en": "Gentle, polite.",
+   "status": "check"
+  },
+  "ナイーダ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "奈伊达",
+   "persona": "女性",
+   "ja": "あたし；あなた；のよ／なさい",
+   "zh": "女性口吻。",
+   "en": "Woman; direct.",
+   "status": "check"
+  },
+  "ケーラ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "凯拉",
+   "persona": "女性",
+   "ja": "アタシ；君；です／ます",
+   "zh": "女性敬体。",
+   "en": "Woman; polite.",
+   "status": "check"
+  },
+  "エマリー": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "艾玛莉",
+   "persona": "女性",
+   "ja": "私；です／ます",
+   "zh": "女性敬体。",
+   "en": "Woman; polite.",
+   "status": "check"
+  },
+  "バニー": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "巴妮",
+   "persona": "女性，敬体",
+   "ja": "あたし／私；です／ます",
+   "zh": "女性敬体。",
+   "en": "Woman; polite.",
+   "status": "check"
+  },
+  "ルーナ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "露娜",
+   "persona": "女性",
+   "ja": "あたし；あなた；ましょう／です",
+   "zh": "女性敬体。",
+   "en": "Woman; polite.",
+   "status": "check"
+  },
+  "シャリー": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "夏莉",
+   "persona": "女性",
+   "ja": "私；のよ／わよ",
+   "zh": "女性口吻。",
+   "en": "Woman; casual.",
+   "status": "check"
+  },
+  "ワール": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "瓦尔",
+   "persona": "军官",
+   "ja": "我々／オレ；ます／だ",
+   "zh": "军官。",
+   "en": "Officer.",
+   "status": "check"
+  },
+  "イゴール": {
+   "work": "超獣機神ダンクーガ",
+   "gender": "男",
+   "role": "伊戈尔将军",
+   "persona": "老将",
+   "ja": "わし；貴様",
+   "zh": "老将。",
+   "en": "Old general.",
+   "status": "draft"
+  },
+  "ハサン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "哈桑",
+   "persona": "沉稳长者",
+   "ja": "私；君；だな／なさい",
+   "zh": "沉稳长者。",
+   "en": "Calm elder.",
+   "status": "check"
+  },
+  "ミューラー": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "缪拉",
+   "persona": "军人",
+   "ja": "あんた",
+   "zh": "军人。",
+   "en": "Soldier.",
+   "status": "check"
+  },
+  "アーサー": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "亚瑟",
+   "persona": "青年",
+   "ja": "僕；だ",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "パーガン": {
+   "work": "新機動戦記ガンダムW",
+   "gender": "男",
+   "role": "帕根，莉莉娜家的管家",
+   "persona": "老管家",
+   "ja": "私；ます／でございます",
+   "zh": "老管家敬体，措辞恭敬，不加语气词。",
+   "en": "Old butler; formal.",
+   "status": "draft"
+  },
+  "キグナン": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "基格南",
+   "persona": "军官",
+   "ja": "私；です",
+   "zh": "军官敬体。",
+   "en": "Officer; formal.",
+   "status": "draft"
+  },
+  "オクトバー": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "奥克托巴",
+   "persona": "军官",
+   "ja": "私；ます",
+   "zh": "军官敬体。",
+   "en": "Officer; formal.",
+   "status": "draft"
+  },
+  "ワイム": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "怀姆",
+   "persona": "反派",
+   "ja": "我",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "レズン": {
+   "work": "機動戦士ガンダム 逆襲のシャア",
+   "gender": "女",
+   "role": "蕾兹恩·施奈德",
+   "persona": "干练女军官",
+   "ja": "アタシ；かい",
+   "zh": "干练女军官。",
+   "en": "Brisk woman ace.",
+   "status": "draft"
+  },
+  "ライラ": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "莱拉·米拉·莱拉",
+   "persona": "老练女驾驶员",
+   "ja": "私；かい／だね",
+   "zh": "老练女驾驶员。",
+   "en": "Seasoned woman pilot.",
+   "status": "draft"
+  },
+  "カクリコン": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "卡克里肯",
+   "persona": "军人",
+   "ja": "俺",
+   "zh": "军人。",
+   "en": "Soldier.",
+   "status": "draft"
+  },
+  "アポリー": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "阿波利",
+   "persona": "可靠的部下",
+   "ja": "俺；お前；です／だ",
+   "zh": "可靠部下，对克瓦特罗敬体。",
+   "en": "Reliable subordinate; polite to Quattro.",
+   "status": "draft"
+  },
+  "ロベルト": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "罗贝尔特",
+   "persona": "部下",
+   "ja": "自分；です",
+   "zh": "部下敬体。",
+   "en": "Subordinate; polite.",
+   "status": "draft"
+  },
+  "ゴーマン": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "戈曼",
+   "persona": "军官",
+   "ja": "俺；貴様；ます",
+   "zh": "军官。",
+   "en": "Officer.",
+   "status": "draft"
+  },
+  "カルラ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "女",
+   "role": "卡露拉",
+   "persona": "女军官",
+   "ja": "私；お前；です",
+   "zh": "女军官。",
+   "en": "Woman officer.",
+   "status": "draft"
+  },
+  "ラカン": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "拉坎·达卡兰",
+   "persona": "老练的佣兵型军人",
+   "ja": "俺；貴様；だな",
+   "zh": "老练军人。",
+   "en": "Hardened veteran.",
+   "status": "draft"
+  },
+  "イリア": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "女",
+   "role": "伊莉亚·帕佐姆",
+   "persona": "女军官",
+   "ja": "私；貴様；です",
+   "zh": "女军官。",
+   "en": "Woman officer.",
+   "status": "draft"
+  },
+  "ブラン": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "男",
+   "role": "布兰·布鲁塔克",
+   "persona": "军人",
+   "ja": "貴様；だ",
+   "zh": "军人。",
+   "en": "Soldier.",
+   "status": "draft"
+  },
+  "ゲティ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "盖蒂",
+   "persona": "粗人",
+   "ja": "俺；貴様；ねぇ",
+   "zh": "粗人。",
+   "en": "Thug.",
+   "status": "draft"
+  },
+  "ボーン": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "波恩",
+   "persona": "粗人",
+   "ja": "俺",
+   "zh": "粗人。",
+   "en": "Thug.",
+   "status": "draft"
+  },
+  "マンジェロ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "曼杰罗",
+   "persona": "粗人",
+   "ja": "俺",
+   "zh": "粗人。",
+   "en": "Thug.",
+   "status": "draft"
+  },
+  "ダニー": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "丹尼",
+   "persona": "青年",
+   "ja": "俺",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "デューン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "杜恩",
+   "persona": "青年",
+   "ja": "俺；かい／ぜ",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "デル": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "德尔",
+   "persona": "反派",
+   "ja": "我",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "レッド": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "雷德",
+   "persona": "青年",
+   "ja": "",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "ビアン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "比安",
+   "persona": "反派",
+   "ja": "だ／ぞ",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "ワーカー": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "沃克",
+   "persona": "军人",
+   "ja": "私",
+   "zh": "军人。",
+   "en": "Soldier.",
+   "status": "check"
+  },
+  "シジーマ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "希吉玛",
+   "persona": "女反派",
+   "ja": "お前；わよ",
+   "zh": "女反派。",
+   "en": "Female enemy.",
+   "status": "check"
+  },
+  "アレン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "阿伦",
+   "persona": "青年",
+   "ja": "俺",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "アレックス": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "亚历克斯",
+   "persona": "青年",
+   "ja": "俺；貴様",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "ハミルトン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "汉密尔顿",
+   "persona": "青年",
+   "ja": "俺；お前；ぜ",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "フェイ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "菲",
+   "persona": "青年",
+   "ja": "俺；お前；だぜ",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "レイ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "雷",
+   "persona": "青年",
+   "ja": "",
+   "zh": "青年。",
+   "en": "Young man.",
+   "status": "check"
+  },
+  "マーキロット": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "马奇洛特",
+   "persona": "反派",
+   "ja": "俺；貴様",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "ラムサス": {
+   "work": "機動戦士ガンダムZZ",
+   "gender": "男",
+   "role": "拉姆萨斯",
+   "persona": "部下",
+   "ja": "です",
+   "zh": "部下敬体。",
+   "en": "Subordinate; polite.",
+   "status": "draft"
+  },
+  "アリアス": {
+   "work": "機動戦士ガンダム",
+   "gender": "男",
+   "role": "阿利亚斯",
+   "persona": "军官",
+   "ja": "です",
+   "zh": "军官敬体。",
+   "en": "Officer; polite.",
+   "status": "draft"
+  },
+  "ダンケル": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "丹克尔",
+   "persona": "反派",
+   "ja": "",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "ウッダー": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "伍达",
+   "persona": "反派",
+   "ja": "",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "キャス": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "凯丝",
+   "persona": "女性",
+   "ja": "わよ／わね",
+   "zh": "女性口吻。",
+   "en": "Woman; casual.",
+   "status": "check"
+  },
+  "Qボス": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "Q老板",
+   "persona": "反派头目",
+   "ja": "わたし；貴様；かな",
+   "zh": "反派头目。",
+   "en": "Enemy boss.",
+   "status": "check"
+  },
+  "牛剣鬼": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "牛剑鬼",
+   "persona": "老武人",
+   "ja": "わし；貴様",
+   "zh": "老武人，自称“老夫”。",
+   "en": "Old warrior.",
+   "status": "draft"
+  },
+  "牛餓鬼": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "牛饿鬼",
+   "persona": "粗暴",
+   "ja": "俺",
+   "zh": "粗暴。",
+   "en": "Brutish.",
+   "status": "draft"
+  },
+  "暴竜鬼": {
+   "work": "ゲッターロボG",
+   "gender": "男",
+   "role": "暴龙鬼",
+   "persona": "粗暴",
+   "ja": "俺；お前",
+   "zh": "粗暴。",
+   "en": "Brutish.",
+   "status": "draft"
+  },
+  "暗黒大将軍": {
+   "work": "グレートマジンガー",
+   "gender": "男",
+   "role": "暗黑大将军",
+   "persona": "威严的战神",
+   "ja": "おれ／我；貴様；のだ／ぞ",
+   "zh": "威严战神，“我”。",
+   "en": "Grim war god; grand, archaic.",
+   "status": "draft"
+  },
+  "地獄大元帥": {
+   "work": "グレートマジンガー",
+   "gender": "男",
+   "role": "地狱大元帅（地狱博士）",
+   "persona": "阴险老反派",
+   "ja": "ワシ；貴様；ぞ／のだ／のじゃ",
+   "zh": "自称“老夫”，阴险。",
+   "en": "Sinister old fiend; archaic.",
+   "status": "draft"
+  },
+  "パンパ": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "潘帕",
+   "persona": "反派",
+   "ja": "我々；ぞ",
+   "zh": "反派。",
+   "en": "Enemy.",
+   "status": "check"
+  },
+  "ギウラ": {
+   "work": "蒼き流星SPTレイズナー",
+   "gender": "男",
+   "role": "基乌拉",
+   "persona": "军官",
+   "ja": "私；貴様；です",
+   "zh": "军官。",
+   "en": "Officer.",
+   "status": "draft"
+  },
+  "イワン": {
+   "work": "SRW64 原创",
+   "gender": "男",
+   "role": "伊万",
+   "persona": "军官",
+   "ja": "私；お前；です／ですな",
+   "zh": "军官。",
+   "en": "Officer.",
+   "status": "check"
+  },
+  "マウアー": {
+   "work": "機動戦士Ζガンダム",
+   "gender": "女",
+   "role": "玛乌亚·法拉奥",
+   "persona": "忠于杰利德的女军官",
+   "ja": "私；あなた；ます",
+   "zh": "温柔的女军官，对杰利德关切。",
+   "en": "Devoted woman officer; gentle with Jerid.",
+   "status": "draft"
+  },
+  "レラ": {
+   "work": "SRW64 原创",
+   "gender": "女",
+   "role": "蕾拉，香港城出身的少女，独自与帝国和特殊部队周旋多年后加入队伍",
+   "persona": "倔强、口硬心软、男孩子气，被戳到痛处会炸",
+   "ja": "アタシ；アンタ／あんた；だ／だね／かな，だろ／かよ 粗口",
+   "zh": "假小子口吻：“我”“你们”，句尾“啦”“嘛”不用，用“怎样”“又怎么了”这种硬话；对万丈等不用敬语。",
+   "en": "Tomboyish, defensive: “So what?”, “What's it to you?”, contractions and mild slang, no politeness.",
+   "status": "check"
+  },
+  "キラル": {
+   "work": "待确认（キラル・メキレル）",
+   "gender": "男",
+   "role": "基拉尔·梅吉尔，敌方武将",
+   "persona": "武人型反派",
+   "ja": "私；貴様／お前；ぞ／だ",
+   "zh": "武人反派腔。",
+   "en": "Warrior villain; blunt.",
+   "status": "check"
+  }
+ }
+}
