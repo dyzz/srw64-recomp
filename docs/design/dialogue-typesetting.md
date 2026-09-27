@@ -29,9 +29,11 @@
 
 | 语言 | 字体 | 文件 |
 |---|---|---|
-| 中文 | HarmonyOS Sans SC Regular | `HarmonyOS_Sans_SC_Regular.ttf`，8.3 MB |
-| 英文 | HarmonyOS Sans Condensed Regular，缺字由 SC 补 | `HarmonyOS_Sans_Condensed_Regular.ttf`，136 KB |
+| 中文 | HarmonyOS Sans SC，Regular（400） | `HarmonyOS_Sans_SC.ttf`，20.6 MB |
+| 英文 | HarmonyOS Sans Condensed，Regular（400），缺字由 SC 补 | `HarmonyOS_Sans_Condensed.ttf`，0.3 MB |
 | 日文 | 暂用 HarmonyOS Sans SC | 同中文 |
+
+2026-09-24 起打包 HarmonyOS Sans 2.040（`9029cb9`）。两个文件都是可变字体（字重 40–900），正文用默认的 Regular 实例；标题菜单和章节标题卡用同一文件的 Bold 实例。换版后 30 个分页用例的换行、页界和行距都没变，只有字形细节变了：“——”连成一个字形，英文 Th 连字，中文弯引号宽度差 0.03 em。
 
 - **不再依赖系统字体。** 现在 macOS、Linux、Windows 各用不同的系统字体，字宽不同，同一句在三个平台上分页不一样。打包后三平台一致，校对看到的就是玩家看到的。
 - **覆盖情况。** SC 覆盖中文用到的 3,614 个字和日文用到的 1,981 个字（含全部假名）。
@@ -57,12 +59,12 @@
   - 不得单独分发字体；
   - 要保留版权声明和许可协议全文；
   - 协议可被撤销。
-- **来源：** 华为官网原版包。本地副本在 `assets/hd-ai/dialogue-polish/HarmonyOS-Sans.zip`，下载地址和 SHA-256 记在同目录的 `fonts/source.json`。不要用第三方镜像。
+- **来源：** 华为官网原版包（https://developer.huawei.com/consumer/cn/design/resource/ ）。本地副本在 `assets/fonts/HarmonyOS-Sans-2.040.zip`，文件哈希记在 `content/fonts/harmonyos-sans.json`。不要用第三方镜像。
 - **打包方式（与原生会话商定）：**
-  - 字体文件不进 git：仓库公开，协议又禁止单独分发。仓库里只放 `source.json` 这类元数据。
+  - 字体文件不进 git：仓库公开，协议又禁止单独分发。仓库里只放 `content/fonts/harmonyos-sans.json` 这类元数据（下载地址和文件哈希）。
   - 构建或首次准备时，先核对官方包的 SHA-256 再解出字体；assets 里没有官方包时给出明确提示和官方下载地址，不静默退回系统字体。
   - 开发运行从 assets 读取。
-  - 发行包带上字体、`LICENSE.txt` 全文和显著声明：设置页底部写「字体：HarmonyOS Sans」，README 或致谢里也写一句。
+  - 发行包带上字体、许可协议全文和显著声明（包里的 `HarmonyOS Sans/LICENSE-update.txt`，打包为 `LICENSE-HarmonyOS-Sans.txt`，与旧版协议文字相同）：设置页底部写「字体：HarmonyOS Sans」，README 或致谢里也写一句。
   - 协议可被撤销，所以字体选择保持可配置。
 
 对比图和测量脚本当时放在会话临时目录。比较过的候选有：Source Sans 3、Fira Sans Condensed、IBM Plex Sans（含 Condensed）、Noto Sans（含 SemiCondensed）、Atkinson Hyperlegible。页数和中文相同时，HarmonyOS Sans Condensed 的小写字母最大（x 高 5.7 像素，Arial Unicode 为 5.1）。
