@@ -12,8 +12,11 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import select
+import socket
 import subprocess
 import sys
+import threading
 import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # tools/, home of the recomp package
@@ -23,6 +26,34 @@ from recomp.toolchain.audit_rom_variant import load_variant
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def quit_with_owner(owner: int, output: Path, process: subprocess.Popen, report: dict) -> None:
+    """Quit the game once the process that launched this debug session exits.
+
+    tools/recomp/debug/session.py holds the only write end of the pipe and never
+    writes to it, so the read returns end-of-file exactly when that process is
+    gone, whether it finished, failed, timed out or was killed.
+    """
+    while os.read(owner, 1):
+        pass
+    if process.poll() is not None:
+        return
+    report["ended_with_owner"] = True
+    print("SRW64_DEBUG_OWNER_GONE: quitting the game", flush=True)
+    try:
+        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as connection:
+            connection.settimeout(5)
+            connection.connect(str(output / "debug.sock"))
+            connection.sendall(b'{"jsonrpc":"2.0","id":1,"method":"quit","params":{}}\n')
+            connection.recv(4096)
+        process.wait(timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        process.terminate()
+        try:
+            process.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            process.kill()
 
 
 def main() -> int:
@@ -148,6 +179,9 @@ def main() -> int:
         raise RuntimeError("VI limit must be in 1..216000")
     if args.interactive:
         args.vis = 0
+    # Set by debug sessions (tools/recomp/debug/session.py) that own the game.
+    owner = os.environ.pop("SRW64_DEBUG_OWNER_FD", None)
+    owner = int(owner) if owner is not None and args.interactive else None
     initial_save = None
     if args.save_sha256 and not args.save_from:
         parser.error("save-sha256 requires save-from")
@@ -346,12 +380,20 @@ def main() -> int:
         environment["SRW64_TEXTURE_DUMP"] = str(output / "textures")
     if args.font_pack:
         environment["SRW64_FONT_PACK"] = str(args.font_pack)
+    if owner is not None and select.select([owner], [], [], 0)[0]:
+        print("SRW64_DEBUG_OWNER_GONE: the session's owner exited during the build; not starting the game", flush=True)
+        return 1
     try:
-        with log_path.open("x") as log:
-            result = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
-                                    env=environment,
-                                    timeout=None if args.interactive else args.vis / 60 + (120 if args.graphics else 20))
-        report["exit_code"] = result.returncode
+        with log_path.open("x") as log, subprocess.Popen(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
+                                                         env=environment) as process:
+            if owner is not None:
+                threading.Thread(target=quit_with_owner, args=(owner, output, process, report), daemon=True).start()
+            try:
+                returncode = process.wait(timeout=None if args.interactive else args.vis / 60 + (120 if args.graphics else 20))
+            except BaseException:
+                process.kill()
+                raise
+        report["exit_code"] = returncode
         audio_device = output / "audio-device.json"
         if audio_device.exists():
             report["audio_device"] = json.loads(audio_device.read_text())
@@ -373,15 +415,15 @@ def main() -> int:
         counters = output / "native-counters.json"
         if counters.exists():
             report["counters"] = json.loads(counters.read_text())
-        report["status"] = "native-task-submissions-observed" if result.returncode == 0 else "native-run-failed"
-        if args.graphics and result.returncode == 0:
+        report["status"] = "native-task-submissions-observed" if returncode == 0 else "native-run-failed"
+        if args.graphics and returncode == 0:
             report["frames"] = [{"path": path.name, "sha256": digest(path),
                                  "metadata": json.loads(path.with_suffix(".json").read_text()) if path.with_suffix(".json").exists() else None}
                                 for path in sorted(output.glob("present-*.png"))]
             report["status"] = "native-graphics-frames-captured" if report["frames"] else "native-no-GPU-frame-captured"
             if not report["frames"] and diagnostics == "light":
                 report["status"] = "native-graphics-run-completed"
-        if result.returncode == 0 and report.get("counters", {}).get("vis", 0) < args.vis:
+        if returncode == 0 and report.get("counters", {}).get("vis", 0) < args.vis:
             report["status"] = "native-run-ended-by-control" if report.get("counters", {}).get("control_quit") else "native-run-ended-before-VI-limit"
     except subprocess.TimeoutExpired:
         report["status"] = "native-run-timeout"

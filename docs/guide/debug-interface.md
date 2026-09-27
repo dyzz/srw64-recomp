@@ -82,6 +82,8 @@
 
 `keys` 的每一项是一个组合键，可加 `:按住毫秒`；`wait:500` 只是停顿。`launch` 之外的命令默认接入最近一次启动的会话（`build/recomp/debug/current`），也可用 `--run` 指定。`--reuse-build` 在源码未变时跳过重新构建。
 
+会话寿命：脚本里 `Session.launch` 启动的游戏只活到启动它的进程结束——检查跑完、断言失败、超时被杀（含 `kill -9`）都会让 `run_host_probe.py` 发 `quit` 关掉游戏（无 socket 时 SIGTERM），报告记 `ended_with_owner`；构建期间脚本就没了则不再启动游戏。机制是一条只有启动进程持有写端的管道（`SRW64_DEBUG_OWNER_FD`）。`srw64ctl.py launch` 的会话要留给后续命令，不受此限，用完要 `quit`；MCP 启动的会话随 MCP 服务器退出。脚本结束后还想留着窗口给人看，传 `Session.launch(detach=True)`。
+
 ## MCP 工具
 
 `srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
