@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include "game_adapter/dialogue_source.hpp"
+#include "game_adapter/default_names.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "diagnostics.hpp"
@@ -149,5 +150,36 @@ int main() {
         bool refused=false;try{replace({});}catch(const std::runtime_error&){refused=true;}
         assert(refused);
     }
-    std::cout<<"native content: table identity, fallback, UI catalog, image requests and dialogue text passed\n";
+    {
+        // Default names (docs/native/default-names.md): a buffer still holding its default
+        // shows it in the reading language; anything else shows as stored.
+        using namespace srw64::names;
+        static_assert(person(0,false)==2 && person(2,false)==0 && person(3,true)==5 && person(1,true)==7);
+        const std::map<std::string,std::map<unsigned,std::string>> records{
+            {"ja",{{489,"ブラッド<END>"},{497,"ブラッド・スカイウィンド<END>"},{487,"アーク<END>"},{495,"アークライト・ブルー<END>"}}},
+            {"zh-Hans",{{489,"布拉德<END>"},{497,"布拉德·斯凯温德<END>"},{487,"阿克<END>"},{495,"阿克莱特·布鲁<END>"}}},
+            {"en",{{489,"Brad<END>"},{497,"Brad Skywind<END>"},{487,"Ark<END>"},{495,"Arklight-Blue<END>"}}}};
+        DefaultNames table;
+        const auto problems=add_people(table,{"ja","zh-Hans","en"},[&](const std::string& locale,unsigned id) {
+            const auto& rows=records.at(locale);auto found=rows.find(id);return found==rows.end()?std::string():found->second;});
+        // Six people have no records here, and Arklight's English full name has no space.
+        assert((problems==std::vector<std::string>{"en","ja"}));
+        assert(table.find(Field::Nick,2)->ja=="ブラッド" && !table.find(Field::Nick,3));
+        assert(table.display(Field::Name,"ブラッド","zh-Hans")=="布拉德" && table.display(Field::Name,"ブラッド","en")=="Brad");
+        assert(table.display(Field::Surname,"スカイウィンド","en")=="Skywind" && table.display(Field::Nick,"アーク","en")=="Ark");
+        assert(table.display(Field::Name,"ブラッド　","zh-Hans")=="布拉德");            // padding blanks
+        assert(table.display(Field::Name,"ブラッド","ja")=="ブラッド");
+        assert(table.display(Field::Nick,"スカイウィンド","zh-Hans")=="スカイウィンド"); // another field's default
+        assert(table.display(Field::Name,"ヒカリ","en")=="ヒカリ");                      // entered in an older build
+        assert(table.display(Field::Name,"アークライト","en")=="アークライト" && table.display(Field::Name,"アークライト","zh-Hans")=="阿克莱特");
+        assert(table.display_full("ブラッド・スカイウィンド","zh-Hans")=="布拉德·斯凯温德");
+        assert(table.display_full("ブラッド・スカイウィンド","en")=="Brad Skywind");
+        assert(table.display_full("ブラッド・ヒカリ","en")=="Brad ヒカリ");
+        assert(table.display_full("ヒカリ・ヒカリ","en")=="ヒカリ・ヒカリ" && table.display_full("ブラッド","en")=="ブラッド");
+        assert(table.display_full("ブラッド・スカイウィンド","ja")=="ブラッド・スカイウィンド");
+        table.add({Field::Unit,0,"マーチウィンド",{{"zh-Hans","三月风"},{"en","March Wind"}}});
+        assert(table.display(Field::Unit,"マーチウィンド","en")=="March Wind" && table.display(Field::Unit,"マーチウィンド","fr")=="マーチウィンド");
+        assert(table.default_text(*table.find(Field::Unit,0),"zh-Hans")=="三月风" && table.default_text(*table.find(Field::Unit,0),"ja")=="マーチウィンド");
+    }
+    std::cout<<"native content: table identity, fallback, UI catalog, image requests, dialogue text and default names passed\n";
 }

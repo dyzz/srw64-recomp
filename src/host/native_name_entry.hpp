@@ -1,4 +1,5 @@
 #pragma once
+#include "game_adapter/default_names.hpp"
 #include <array>
 #include <cstdint>
 #include <filesystem>
@@ -25,6 +26,9 @@ struct Request {
     std::array<Choice,4> choices;                      // Selection only; `route` is the highlighted one
     std::string error;
 };
+// Default names by reading language (docs/native/default-names.md). Filled while the
+// host starts, before the game runs; read-only afterwards on every thread.
+DefaultNames& default_names();
 void configure(const std::filesystem::path&);
 void initialize_rom(const uint8_t*,size_t);
 void overlay_loaded(uint32_t rom,uint32_t ram,uint32_t size);
