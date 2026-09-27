@@ -157,7 +157,7 @@ button.set-toggle,button.set-toggle.on {display:flex; align-items:center; gap:14
 .set-toggle .switch {display:block; flex-shrink:0; width:38dp; height:20dp; box-sizing:border-box; padding:2dp; border-radius:10dp; background-color:#2a3550;}
 .set-toggle .switch span {display:block; width:16dp; height:16dp; border-radius:8dp; background-color:#a4b0d2;}
 .set-toggle.on .switch {background-color:#3fd0ff;} .set-toggle.on .switch span {margin-left:18dp; background-color:#0b1230;}
-button.set-toggle:focus {color:#ffd75e; background-color:#ffd75e1f;}
+button.set-toggle:focus {background-color:#ffd75e24;} button.set-toggle:focus .set-name {color:#ffd75e;}
 .set-key {display:flex; align-items:center; gap:16dp; padding:6dp 12dp; font-size:14dp; border-bottom:1dp #3fd0ff14;}
 .set-key span {flex:1 1 0; min-width:0; color:#d6ddf2;} .set-key b {flex:0 0 46%; text-align:right; font-weight:normal; color:#ffd75e;}
 .set-about {padding:0 12dp;} .set-about div {margin-top:6dp; font-size:15dp; color:#d6ddf2;}
@@ -174,7 +174,7 @@ body.pointer .set-seg button:hover {background-color:#3fd0ff40;}
 body.pointer .set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
 body.pointer .set-actions button:focus {color:#e8eefc; border-color:#3fd0ff;}
 body.pointer .set-actions button:hover {background-color:#3fd0ff29;}
-body.pointer button.set-toggle:focus {color:#e8eefc; background-color:transparent;}
+body.pointer button.set-toggle:focus {background-color:transparent;} body.pointer button.set-toggle:focus .set-name {color:#e8eefc;}
 body.pointer button.set-toggle:hover {background-color:#3fd0ff1a;}
 body.pointer .set-foot button:focus {background-color:#3fd0ff; border-color:#3fd0ff;}
 body.pointer .set-foot button:hover {background-color:#8fe4ff;}
@@ -2143,6 +2143,8 @@ json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
         if(!found)throw debug::RpcError(debug::InvalidParams,"no visible control: "+text);
         for(auto* parent=found;parent;parent=parent->GetParentNode())if(parent->GetTagName()=="button" || parent->GetTagName()=="input"){found=parent;break;}
         if(found->HasAttribute("disabled"))throw debug::RpcError(debug::InvalidParams,"control is disabled: "+text);
+        // A control scrolled out of its page is scrolled into view first, as a player would.
+        found->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));context->Update();
         const auto a=found->GetAbsoluteOffset(),b=found->GetBox().GetSize();x=(a.x+b.x/2)/pixel_ratio;y=(a.y+b.y/2)/pixel_ratio;
     } else {x=p.at("x");y=p.at("y");}
     context->ProcessMouseMove(int(x*pixel_ratio),int(y*pixel_ratio),0);
