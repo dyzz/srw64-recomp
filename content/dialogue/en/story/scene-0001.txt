@@ -41,6 +41,8 @@ to those who aspire to resist the Empire. There is information no one else could
 that you can, precisely because you are a member of Romefeller.”
 
 @17413 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「それはうんざりするくらい何度も聞き
 >  ました。では聞き方を変えます
 “I have heard that so many times I am sick of it. Then let me ask differently.
@@ -50,23 +52,24 @@ that you can, precisely because you are a member of Romefeller.”
 How much longer must I silently watch
 ---
 >  黙って眺めていなくてはならないの!?
-the Empire's atrocities?!
+the Empire’s atrocities?!
 ---
 >  おじい様の残してくださった
 >  “スイームルグ”さえ完成すれば…
 If only ‘Sweemurg,’ which Grandfather left us, were complete...
 ---
 >  ローレンス、あなたまさか」
-Lawrence, you haven't...”
+Lawrence, you haven’t...”
 
 @17414 Lawrence · ローレンス
 > 「はい、なんでございましょう?」
 “Yes, what might it be?”
 
 @17415 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「あたしの身を案じて何か
 >  勝手なことをしているのでは
-“You haven't been doing something behind my back,
+“You haven’t been doing something behind my back,
 ---
 >  ないでしょうね?」
 out of worry for me, have you?”
@@ -114,9 +117,10 @@ we cannot make a move. Please bear with it a little longer.”
 If you are using this line, then perhaps...”
 
 @17424 ???
+# 审校：全局：弯撇号／弯引号
 > 「うん、そろそろ僕たちも
 >  動くことになった
-“Yeah, it's finally time for us to move as well.
+“Yeah, it’s finally time for us to move as well.
 ---
 >  {HeroName}さんはいるかい?」
 Is {HeroName} there?”
@@ -149,13 +153,15 @@ I know I’ve had you doing unpleasant work for a long time.”
 “Then...”
 
 @17429 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「うん、こっちのほうもようやく
 >  用意が整ってきた
 “Yeah, our preparations are finally in order too.
 ---
 >  スイームルグも調整まで
 >  終わったそうだ」
-I hear Sweemurg's adjustments are finished as well.”
+I hear Sweemurg’s adjustments are finished as well.”
 
 @17430 Manami · マナミ（本话主角）
 # 审校：のですね 是确认，不是问句
@@ -164,9 +170,10 @@ I hear Sweemurg's adjustments are finished as well.”
 “Really?! Then it is finally beginning.”
 
 @17431 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。そちらの準備が整い次第
 >  来てほしい。詳細はギャリソンに
-“That's right. Come as soon as your preparations are ready. I'll have Garrison
+“That’s right. Come as soon as your preparations are ready. I’ll have Garrison
 ---
 >  連絡させる。僕は今からもう1人
 >  にも連絡をしなくてはならないからね」
@@ -202,9 +209,10 @@ Come to think of it, I heard that she fought the Empire
 three years ago as well.”
 
 @17435 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「そういうこと。
 >  では、また後で」
-“That's right. See you later, then.”
+“That’s right. See you later, then.”
 
 @17436 Manami · マナミ（本话主角）
 # 审校：称呼统一 Mr. Banjo
@@ -212,9 +220,9 @@ three years ago as well.”
 “Mr. Banjo!”
 
 @17437 Banjo · 万丈
-# 审校：万丈称 さん
+# 审校：全局：弯撇号／弯引号
 > 「やあ、時間どおりだね
-“Hey, you're right on time.
+“Hey, you’re right on time.
 ---
 >  シモーヌさんが少し遅れている
 >  ようだから
@@ -272,13 +280,15 @@ We are just putting on the finishing touches, so if you would kindly wait a litt
 “...??”
 
 @17445 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「はははっ、
 >  ギャリソンの趣味みたいなものでね
-“Hahaha, it's more like Garrison's hobby.
+“Hahaha, it’s more like Garrison’s hobby.
 ---
 >  スイームルグにワックスがけを
 >  しているんだ」
-He's waxing the Sweemurg.”
+He’s waxing the Sweemurg.”
 
 @17446 Manami · マナミ（本话主角）
 # 审校：“What, this?!”不通
@@ -304,12 +314,13 @@ He's waxing the Sweemurg.”
 “It seems it is the Imperial army after all.”
 
 @17451 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「やつらはこんなところで一体なにを?
 “What on earth are they doing in a place like this?
 ---
 >  僕たちが見つかっていたとは
 >  思えないが……」
-I can't imagine they've found us...”
+I can’t imagine they’ve found us...”
 
 @17452 Lawrence · ローレンス
 > 「それが、どうも無差別に住民
@@ -317,26 +328,29 @@ I can't imagine they've found us...”
 “The thing is, it appears they are attacking the residents indiscriminately.”
 
 @17453 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「なんだって!? ……そうか、
 “What did you say?! ...I see.
 ---
 >  最近そんな話がいくつかあったな、
 >  ギャリソン」
-There have been a few reports like that lately, haven't there, Garrison?”
+There have been a few reports like that lately, haven’t there, Garrison?”
 
 @17454 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
 > 「少々お待ちください。
 >  ……確かに帝国軍のゲリラ狩りの
 “One moment, please. ...Indeed, it seems such tactics are sometimes employed
 ---
 >  一環として、そのような作戦が
 >  とられることがあるようですな」
-as part of the Imperial army's guerrilla hunts.”
+as part of the Imperial army’s guerrilla hunts.”
 
 @17455 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「なんということを!
 >  では、まるで無関係な
-“How could they! So you're saying they even attack
+“How could they! So you’re saying they even attack
 ---
 >  老人や子供まで攻撃して
 >  いるというの!?
@@ -365,17 +379,20 @@ Unforgivable... Absolutely unforgivable!”
 “Of course I do. Now hurry!”
 
 @17460 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「すごいわ……これが、おじい様の
 >  スイームルグなのね……」
-“Amazing... So this is Grandfather's Sweemurg...”
+“Amazing... So this is Grandfather’s Sweemurg...”
 
 @17461 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「やれやれ、さすがに行動力にとんだ
 >  お嬢様だ
 “Good grief, she really is a lady of action.
 ---
 >  ギャリソン、僕もでる。後は頼む」
-Garrison, I'm going out too. I'll leave the rest to you.”
+Garrison, I’m going out too. I’ll leave the rest to you.”
 
 @17462 Garrison · ギャリソン
 # 审校：いってらっしゃいませ 不是 Have a safe trip
@@ -416,31 +433,34 @@ The enemy is coming!”
 “...I know!”
 
 @17468 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「あれは……。
 >  ちょっと万丈
-“That's... Hey, Banjo.
+“That’s... Hey, Banjo.
 ---
 >  いったい、なんだってこんなところで
 >  戦闘になってるの!?」
-Just what on earth is going on, that you're fighting in a place like this?!”
+Just what on earth is going on, that you’re fighting in a place like this?!”
 
 @17469 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「遅れてきて、いきなりそれは
 >  ないんじゃない?
-“You show up late and that's the first thing you say?
+“You show up late and that’s the first thing you say?
 ---
 >  まあ説明は後だ。
 >  それよりドールを持ってきてある
-Well, explanations can wait. More importantly, I've brought the Doll.
+Well, explanations can wait. More importantly, I’ve brought the Doll.
 ---
 >  手伝ってもらえると
 >  うれしいんだけどね」
-I'd be glad if you could lend a hand.”
+I’d be glad if you could lend a hand.”
 
 @17470 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「ああ。それはいいんだけど……
 >  実はアタシも追われてるのよ」
-“Yeah. That's fine, but... actually, I'm being chased too.”
+“Yeah. That’s fine, but... actually, I’m being chased too.”
 
 @17471 Manami · マナミ（本话主角）
 > 「どういうことです、シモーヌ様?」
@@ -487,8 +507,9 @@ We will make contact shortly.”
 “My lady?!”
 
 @17477 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「そ……そんな」
-“Th... This can't be.”
+“Th... This can’t be.”
 
 @17478 Manami · マナミ（本话主角）
 > 「ふう……」
@@ -513,9 +534,10 @@ We will make contact shortly.”
 “Yes, I am fine.”
 
 @17483 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「久しぶりで少し疲れたけど、
 >  問題ないわ」
-“It's been a while, so I'm a little tired, but no problem.”
+“It’s been a while, so I’m a little tired, but no problem.”
 
 @17484 Banjo · 万丈
 > 「それはよかった。ギャリソン、
@@ -532,17 +554,19 @@ No point in dawdling and letting the enemy find us.”
 “Of course. Everything is already prepared.”
 
 @17486 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「それで、どうなっているんだい?」
-“So, what's the situation?”
+“So, what’s the situation?”
 
 @17487 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「奴らも本腰を入れ始めているわ。
 >  これまでみたいな暴動鎮圧のための
-“They're starting to get serious too. It seems they're organizing proper units to deal with
+“They’re starting to get serious too. It seems they’re organizing proper units to deal with
 ---
 >  治安部隊なんかじゃなくて
 >  組織的なレジスタンスに対応する
-an organized resistance, rather than the security forces they've used to put down riots
+an organized resistance, rather than the security forces they’ve used to put down riots
 ---
 >  ちゃんとした部隊を編成している
 >  みたいね。それから、ここしばらくの
@@ -550,7 +574,7 @@ until now. Also, because of their achievements in guerrilla hunting
 ---
 >  ゲリラ狩りで功績があったとかで
 >  スペシャルズの権限が拡大してるわ」
-lately, the Specials' authority has been expanded.”
+lately, the Specials’ authority has been expanded.”
 
 @17488 Lawrence · ローレンス
 > 「ふむ、スペシャルズといえば
@@ -576,9 +600,10 @@ just to secure their own interests,
 committing such cruel acts against their fellow Earthlings.”
 
 @17490 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「結局、帝国の支配下に
 >  あるうちは
-“In the end, as long as we're under the Empire's rule,
+“In the end, as long as we’re under the Empire’s rule,
 ---
 >  3種類の地球人しかいないのよ
 there are only three kinds of Earthlings.
@@ -599,15 +624,17 @@ What a rotten era this is, really.”
 “Simone...”
 
 @17492 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「“様”は、やめましょ。
 >  もともと性に合わないし
 “Drop the ‘Lady.’ It never suited me anyway.
 ---
 >  お互い、もうただの
 >  レジスタンスなんだから」
-We're all just resistance fighters now.”
+We’re all just resistance fighters now.”
 
 @17493 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「しかし帝国軍が、そう出て
 >  くるとなると
 “But if the Imperial Army is going to come at us like that,
@@ -618,7 +645,7 @@ things are going to get a lot tougher from here...
 ---
 >  まぁいい、ともかく先を急ごう。
 >  いま僕たちがするべきなのは
-Well, fine. Anyway, let's hurry on. What we need to do now is
+Well, fine. Anyway, let’s hurry on. What we need to do now is
 ---
 >  できるだけ早く十分な戦力を
 >  整えることだ」
@@ -638,15 +665,16 @@ build up enough fighting strength as fast as we can.”
 whose research Karaba supports.”
 
 @17496 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「カラバ……あなたたちが組織した
 >  反帝国グループね
 “Karaba... the anti-Imperial group you people organized.
 ---
 >  そんなこともしてるの」
-So you've been doing that too.”
+So you’ve been doing that too.”
 
 @17497 Garrison · ギャリソン
-# 审校：全局：旧連邦 = former Federation
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「科学者の方々、特に軍事
 >  関係や、それに転用できる
@@ -658,7 +686,7 @@ energy-related research that can be diverted to it,
 ---
 >  帝国に目をつけられやすい
 >  ですからな
-tend to catch the Empire's eye.
+tend to catch the Empire’s eye.
 ---
 >  ほかにも旧連邦の技術者など
 >  何人かの方がおりますが
@@ -680,27 +708,30 @@ Before the Muge Zorbados Empire occupied it, we helped them
 scatter to various places.”
 
 @17498 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「なるほどねぇ
 “I see.
 ---
 >  それでドールみたいな地球製SPT
 >  なんてのも、つくれたわけね」
-So that's how you were able to build Earth-made SPTs like the Doll.”
+So that’s how you were able to build Earth-made SPTs like the Doll.”
 
 @17499 Banjo · 万丈
 > 「そういうこと」
 “Exactly.”
 
 @17500 Manami · マナミ（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「それで、これからお会いする方は
 >  何を研究されているのです?」
-“So what is the person we're going to meet researching?”
+“So what is the person we’re going to meet researching?”
 
 @17501 Banjo · 万丈
 > 「光子力エネルギーさ」
 “Photon Power energy.”
 
 @17502 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > (エイジ……みんな……
 >  生きているのかしら……)
-(Eiji... everyone... I wonder if they're alive...)
+(Eiji... everyone... I wonder if they’re alive...)

@@ -43,9 +43,9 @@ You can stay there and mope forever.”
 “Hm?! What is this?!”
 
 @17352 Brad · ブラッド（本话主角）
-# 审校：Brad 说话粗放，That is 改为 That's 更符合其热血直率口吻。
+# 审校：全局：弯撇号／弯引号
 > 「戦闘の音だ!
-“That's the sound of battle!
+“That’s the sound of battle!
 ---
 >  近くの町をゲリラが拠点に
 >  しているとは聞いていたが……」
@@ -87,17 +87,17 @@ the full might of Mycenae!”
 This is a good chance to get a clear look at the enemy we ought to be fighting.”
 
 @17357 Brad · ブラッド（本话主角）
-# 审校：词条：ヴァイローズ=Virose
+# 审校：全局：弯撇号／弯引号
 > 「なに!?
 >  ばかなことを言うな!
-“What?! Don't talk nonsense!
+“What?! Don’t talk nonsense!
 ---
 >  アースゲインとヴァイローズを
 >  出すんだ! 師匠の言葉をもう
 Launch Earthgain and Virose! Have you already
 ---
 >  忘れたのか!?」
-forgotten Master's words?!”
+forgotten Master’s words?!”
 
 @17358 Kurtz · カーツ（本话主角的对手）
 > 「ばかは、貴様だ
@@ -112,14 +112,14 @@ It is only natural that guerrillas lose in battle.
 Even if we fight now, they will gain nothing from it.”
 
 @17359 Brad · ブラッド（本话主角）
-# 审校：Brad 说话粗放，I am 改为 I'm 更符合其热血直率口吻。
+# 审校：全局：弯撇号／弯引号
 > 「だが、このまま放っておいては
 >  町の人たちはどうなる!?
 “But if we leave them like this, what will happen to the townspeople?!
 ---
 >  俺はゆくぞ!
 >  アースゲイン!!」
-I'm going! Earthgain!!”
+I’m going! Earthgain!!”
 
 @17360 Kurtz · カーツ（本话主角的对手）
 # 审校：短絡的是冲动莽撞，不是短视
@@ -212,29 +212,29 @@ But they look like they will make fine comrades.”
 “What?! More of them?!”
 
 @17373 Banjo · 万丈
-# 审校：万丈潇洒从容，I am 改为 I'm，I will 改为 I'll 更符合其轻松口吻。
+# 审校：全局：弯撇号／弯引号
 > 「待て、僕は反帝国組織
 >  カラバの破嵐万丈だ
-“Wait, I'm Banjo Haran of the anti-Empire organization Karaba.
+“Wait, I’m Banjo Haran of the anti-Empire organization Karaba.
 ---
 >  君たちに加勢する」
-I'll lend you my strength.”
+I’ll lend you my strength.”
 
 @17374 Brad · ブラッド（本话主角）
 > 「なんだと!?」
 “What?!”
 
 @17375 Banjo · 万丈
-# 审校：万丈潇洒从容，I am 改为 I'm 更符合其轻松口吻。
+# 审校：全局：弯撇号／弯引号
 > 「敵ではない。僕も奴らを倒すために
 >  ここに来た」
-“I'm not your enemy. I came here to defeat them too.”
+“I’m not your enemy. I came here to defeat them too.”
 
 @17376 Brad · ブラッド（本话主角）
-# 审校：Brad 说话粗放，Let us 改为 Let's 更符合其热血直率口吻。
+# 审校：全局：弯撇号／弯引号
 > 「いいだろう。どうやら自信があるようだ
 >  腕前を見せてもらおう」
-“Fine. You seem confident. Let's see what you can do.”
+“Fine. You seem confident. Let’s see what you can do.”
 
 @17377 Banjo · 万丈
 # 审校：万丈可用缩写
@@ -261,10 +261,10 @@ If you do not fear the radiance of this sun, then come at me!”
 “Gwaaah, you wretched humans. Remember this!”
 
 @17380 Brad · ブラッド（本话主角）
-# 审校：布拉德是热血直率的武者，说话短促有力，用“Let's”比“Let us”更符合其口吻。
+# 审校：全局：弯撇号／弯引号
 > 「逃げたか……
 >  残りも一気にいくぜ!」
-“He ran... Let's finish off the rest in one go!”
+“He ran... Let’s finish off the rest in one go!”
 
 @17381 Dark General · 暗黒大将軍
 > 「ぐうぅぅぅ、おのれ人間どもめ。
@@ -272,10 +272,10 @@ If you do not fear the radiance of this sun, then come at me!”
 “Gwaaah, you wretched humans. Remember this!”
 
 @17382 Brad · ブラッド（本话主角）
-# 审校：布拉德口吻应更口语化，将“that is”改为“that's”以符合其热血直率、短促有力的说话风格。
+# 审校：全局：弯撇号／弯引号
 > 「ふん、口ほどにもない奴だ。
 >  どうやら片づいたようだな」
-“Hmph, he was all talk. Looks like that's taken care of.”
+“Hmph, he was all talk. Looks like that’s taken care of.”
 
 @17383 Dark General · 暗黒大将軍
 > 「おのれぇっ! 覚えておれ!!」
@@ -290,10 +290,10 @@ If you do not fear the radiance of this sun, then come at me!”
 And this is...”
 
 @17385 Garrison · ギャリソン
-# 审校：お見知りおきを
+# 审校：全局：弯撇号／弯引号
 > 「万丈様の執事、
 >  ギャリソン時田と申します
-“I am Master Banjo's butler, Garrison Tokita.
+“I am Master Banjo’s butler, Garrison Tokita.
 ---
 >  以後お見知りおきを」
 A pleasure to make your acquaintance.”
@@ -314,26 +314,27 @@ A pleasure to make your acquaintance.”
 Don’t expect any thanks, ‘Master Banjo’ or whatever.”
 
 @17388 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「構わないさ。それから僕の事は
 >  万丈でいい
-“I don't mind. And you can just call me Banjo.
+“I don’t mind. And you can just call me Banjo.
 ---
 >  失礼だが『武機覇拳流』
 >  というのはなんだい?」
 Forgive me, but what exactly is this ‘Buki Haken-ryu’?”
 
 @17389 Brad · ブラッド（本话主角）
-# 审校：词条：ヴァイローズ=Virose
+# 审校：全局：弯撇号／弯引号
 > 「俺たちの師匠
 >  ヴィロー・スンダが、つくりあげた
-“It's the martial art for robots
+“It’s the martial art for robots
 ---
 >  ロボットによる格闘術だ
 that our master, Viro Sunda, created.
 ---
 >  俺のアースゲインと
 >  {PartnerName}のヴァイローズは
-My Earthgain and {PartnerName}'s Virose
+My Earthgain and {PartnerName}’s Virose
 ---
 >  その専用機体だ」
 are the machines built for it.”
@@ -349,6 +350,7 @@ are the machines built for it.”
 will. We will see to that ourselves.”
 
 @17391 Kurtz · カーツ（本话主角的对手）
+# 审校：全局：弯撇号／弯引号
 > 「察するところお前は
 >  金持ちのようだな
 “From what I gather, you seem to be a wealthy man.
@@ -359,12 +361,13 @@ But these days, the wealthy are always what the Empire calls
 ---
 >  A級市民と
 >  決まっているはずだが?」
-A-class citizens, aren't they?”
+A-class citizens, aren’t they?”
 
 @17392 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ああ、君のいうことは
 >  理解できる
-“Ah, I understand what you're saying.
+“Ah, I understand what you’re saying.
 ---
 >  こっちにも色々と
 >  複雑な事情があってね
@@ -372,7 +375,7 @@ There are all sorts of complicated circumstances on my end too.
 ---
 >  僕は戦前からそうだった
 >  わけじゃないのさ
-I wasn't like this before the war, you see.
+I wasn’t like this before the war, you see.
 ---
 >  だから目をつけられても資産を
 >  押さえられるということもなかった
@@ -387,12 +390,13 @@ Thanks to that, I could support the anti-Imperial people,
 and build an organization for it.
 ---
 >  つまりC級市民ですらない」
-In other words, I'm not even a C-class citizen.”
+In other words, I’m not even a C-class citizen.”
 
 @17393 Brad · ブラッド（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「帝国側じゃないなら、アンタらの
 >  背景事情はどうでもいいことだ
-“If you're not with the Empire, then your background doesn't matter to us.
+“If you’re not with the Empire, then your background doesn’t matter to us.
 ---
 >  いいかげんアンタが俺たちに
 >  加勢した理由を
@@ -449,9 +453,10 @@ a just war, for the people. Right?”
 “Of course. For the world and for the people.”
 
 @17397 Brad · ブラッド（本话主角）
+# 审校：全局：弯撇号／弯引号
 > 「いいだろう、その話のったぜ。
 >  {PartnerName}、お前もくるんだろう?」
-“All right, I'm in. {PartnerName}, you're coming too, right?”
+“All right, I’m in. {PartnerName}, you’re coming too, right?”
 
 @17398 Kurtz · カーツ（本话主角的对手）
 # 审校：卡茨冷傲口吻，不用 Yeah
@@ -477,9 +482,10 @@ just tell me or Garrison.”
 “Call me {HeroNick}. So, what do we do now?”
 
 @17401 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「とりあえず、カラバで研究を
 >  支援している博士の1人に
-“For now, we're going to meet one of the doctors
+“For now, we’re going to meet one of the doctors
 ---
 >  会いにいく予定だ」
 whose research Karaba supports.”
@@ -490,7 +496,7 @@ whose research Karaba supports.”
 “Huh, so you guys do that kind of thing too.”
 
 @17403 Garrison · ギャリソン
-# 审校：全局：旧連邦 = former Federation
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「科学者の方々、特に軍事
 >  関係や、それに転用できる
@@ -502,7 +508,7 @@ or energy-related fields that can be diverted to such uses,
 ---
 >  帝国に目をつけられやすい
 >  ですからな
-tend to catch the Empire's eye.
+tend to catch the Empire’s eye.
 ---
 >  ほかにも旧連邦の技術者など
 >  何人かの方がおりますが
@@ -542,8 +548,9 @@ My assistant is out checking on the situation right now.”
 “Assistant? You have one of those too?”
 
 @17407 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ああ、あとで紹介するよ」
-“Yeah, I'll introduce you later.”
+“Yeah, I’ll introduce you later.”
 
 @17408 Kurtz · カーツ（本话主角的对手）
 > 「で、その博士というのは

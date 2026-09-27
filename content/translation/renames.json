@@ -7276,6 +7276,32 @@
     "units",
     "story"
    ]
+  },
+  {
+   "ja": [
+    "ギシン星"
+   ],
+   "zh-Hans": {
+    "old": "基辛星",
+    "new": "异震星"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "フリード星"
+   ],
+   "en": {
+    "old": "Fleed Star",
+    "new": "Planet Fleed"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ]
   }
  ]
 }

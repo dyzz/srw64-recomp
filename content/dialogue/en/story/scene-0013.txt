@@ -18,12 +18,13 @@
 They say six of them came down to Earth.”
 
 @18901 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「でもそれらしい騒ぎが
 >  確認できたのは5か所で
 “But we could only confirm trouble at five locations,
 ---
 >  もう1つは不明だって話よ」
-and the last one's still unknown.”
+and the last one’s still unknown.”
 
 @18902 David · デビッド
 > 「やっぱり全部あれみたいな
@@ -31,25 +32,29 @@ and the last one's still unknown.”
 “So they were all like that thing after all?”
 
 @18903 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「ちゃんとは確認できてない
 >  みたいだけどね
-“Doesn't look like anyone got a good look at them, though.
+“Doesn’t look like anyone got a good look at them, though.
 ---
 >  残り4か所は遭遇した部隊が
 >  全滅してるって聞いたわ」
 I heard the units that ran into the other four were wiped out.”
 
 @18904 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ガンダムタイプが5機、か。
 >  もう1つも気になるところだな」
-“Five Gundam-types, huh. I'd like to know about the last one too.”
+“Five Gundam-types, huh. I’d like to know about the last one too.”
 
 @18905 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「だけどよ、たいしたことはなかったな。
 >  あっさりやられちまったみたいだし」
-“Still, it wasn't much of a fight. Sounds like it went down easy.”
+“Still, it wasn’t much of a fight. Sounds like it went down easy.”
 
 @18906 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「あれは相手が悪かったな。
 >  その証拠に他の4か所では
 “It just had bad luck with its opponent. Proof of that is, at the other four sites,
@@ -60,20 +65,21 @@ the units it met and the bases it raided were all wiped out.
 ---
 >  どれも単独行動というのが
 >  解せないが」
-What I don't get is why it acted alone every time.”
+What I don’t get is why it acted alone every time.”
 
 @18907 Anna · アンナ
 > 「いったい、どんな人たちなのかしら」
 “I wonder what kind of people they are.”
 
 @18908 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「やられないかぎりは、
 >  いずれ会うこともあるさ
-“As long as we don't get killed, we'll run into them sooner or later.
+“As long as we don’t get killed, we’ll run into them sooner or later.
 ---
 >  それよりもアンナ、
 >  エイジの方は大丈夫なのか?」
-More importantly, Anna, how's Eiji holding up?”
+More importantly, Anna, how’s Eiji holding up?”
 
 @18909 Anna · アンナ
 > 「……とりあえず、落ち着いては
@@ -90,12 +96,13 @@ More importantly, Anna, how's Eiji holding up?”
 Well, I suppose a little of that’s only natural...”
 
 @18911 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「なに、あいつだって、だてに帝国に
 >  戦いを挑んでるわけじゃない
-“Come on, it's not like he's been fighting the Empire for nothing.
+“Come on, it’s not like he’s been fighting the Empire for nothing.
 ---
 >  大丈夫さ」
-He'll be fine.”
+He’ll be fine.”
 
 @18912 Heero · ヒイロ
 > 「A級市民の学校か……
@@ -111,9 +118,10 @@ Transfer procedures... clear. All payments... clear.
 Access to Imperial military base data is...”
 
 @18913 Teacher · 先生
+# 审校：全局：弯撇号／弯引号
 > 「今日からみなさんと一緒に
 >  学ぶことになった
-“Starting today, he'll be studying alongside all of you.
+“Starting today, he’ll be studying alongside all of you.
 ---
 >  ヒイロ・ユイくんです」
 This is Heero Yuy.”
@@ -123,9 +131,10 @@ This is Heero Yuy.”
 “Nice to meet you.”
 
 @18915 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > (あの子……あのときの……
 >  間違いないわ)
-(That boy... from back then... it's definitely him.)
+(That boy... from back then... it’s definitely him.)
 
 @18916 Karla · カルラ
 # 审校：卡尔拉对尤莉亚的称呼应为“你”，且“would”更符合女军官的正式口吻。
@@ -138,17 +147,18 @@ This is Heero Yuy.”
 “...”
 
 @18918 Karla · カルラ
+# 审校：全局：弯撇号／弯引号
 > 「お前にブラッディカイザルに乗る
 >  資格などない! ゲイル中尉の
 “You have no right to pilot the Bloodykaiser! This machine is the same type as
 ---
 >  愛機と同型のこの機体には、
 >  中尉の復讐をとげられる者が
-Lieutenant Gale's beloved unit, and it must be piloted by one who can
+Lieutenant Gale’s beloved unit, and it must be piloted by one who can
 ---
 >  乗らねばならない。お前にその資格
 >  があるのか!?
-carry out the Lieutenant's revenge. Do you have that right?!
+carry out the Lieutenant’s revenge. Do you have that right?!
 ---
 >  エイジと血のつながっているお前に!」
 You, who share blood with Eiji!”
@@ -158,13 +168,14 @@ You, who share blood with Eiji!”
 “...”
 
 @18920 Karla · カルラ
+# 审校：全局：弯撇号／弯引号
 > 「なんとかいったらどうだ。ふん、何もいえ
 >  まい。もともとこのブラッディカイザルは
-“Say something, why don't you. Hmph, I thought as much. This Bloodykaiser was
+“Say something, why don’t you. Hmph, I thought as much. This Bloodykaiser was
 ---
 >  中尉の信頼と愛を得ていた私
 >  が乗っていて当然なのだ。なのに
-always meant for me, the one who earned the Lieutenant's trust and love. And yet,
+always meant for me, the one who earned the Lieutenant’s trust and love. And yet,
 ---
 >  どうしてお前のような女が!」
 why someone like you?!”
@@ -182,9 +193,10 @@ why someone like you?!”
 what happens between a man and a woman.”
 
 @18923 Julia · ジュリア
+# 审校：全局：弯撇号／弯引号
 > 「嘘です。あの人とあなたの間に、
 >  上官と部下以外の関係が
-“That's a lie. There's no way anything beyond a superior-and-subordinate relationship
+“That’s a lie. There’s no way anything beyond a superior-and-subordinate relationship
 ---
 >  存在するはずがありません」
 could have existed between you and him.”
@@ -203,13 +215,15 @@ we lived together. How could you understand what went on between us?!”
 “No...”
 
 @18926 Karla · カルラ
+# 审校：全局：弯撇号／弯引号
 > 「くっ……なにがおかしい!」
-“Ngh... what's so funny?!”
+“Ngh... what’s so funny?!”
 
 @18927 Julia · ジュリア
+# 审校：全局：弯撇号／弯引号
 > 「わかっていないのは、あなたのほうです。
 >  あの人は私の胸で生きています
-“You're the one who doesn't understand. He lives on in my heart.
+“You’re the one who doesn’t understand. He lives on in my heart.
 ---
 >  私はあの人との愛を貫くために
 >  家族と決別し、弟のエイジとの
@@ -221,12 +235,13 @@ fight my own brother Eiji to the end. The man inside me understands all of that.
 ---
 >  理解しています。あなたのいっている
 >  嘘は彼への侮辱でしかありません」
-The lies you're telling are nothing but an insult to him.”
+The lies you’re telling are nothing but an insult to him.”
 
 @18928 Karla · カルラ
+# 审校：全局：弯撇号／弯引号
 > 「なんだと!? くっ……いいだろう、せいぜ
 >  いやってみせるがいい。エイジと
-“What?! Ngh... fine, then. Go ahead and try your best. Just don't let yourself
+“What?! Ngh... fine, then. Go ahead and try your best. Just don’t let yourself
 ---
 >  地球人どもに、やられてしまわなけれ
 >  ばいいがな」
@@ -255,17 +270,18 @@ to make it known that we have both the will and the strength
 to fight the Empire head-on. Captain.”
 
 @18931 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「こちらから敵の基地に
 >  奇襲をかけるのは初めてだが
 “This is our first surprise attack on an enemy base, but judging by the fact
 ---
 >  試作機のテストをやっていることから
 >  考えても、この基地にはたいした
-that they're running prototype tests there, this base can't have much in the way of
+that they’re running prototype tests there, this base can’t have much in the way of
 ---
 >  戦力はない。しかし、帝国軍の
 >  増援はくる。我々の目的が
-fighting strength. However, Imperial reinforcements will come. Don't forget that
+fighting strength. However, Imperial reinforcements will come. Don’t forget that
 ---
 >  敵基地のせん滅にあるのではない
 >  ことを、忘れるな」
@@ -282,22 +298,22 @@ destroying the enemy base is not our objective.”
 “Kamille, wait, Kamille!”
 
 @18934 Kamille · カミーユ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「いうなよ、
 >  カミーユだってのが俺だって
-“Don't say that. The name Kamille is who I am...
+“Don’t say that. The name Kamille is who I am...
 ---
 >  誰にでもわかってしまうだろ」
 anyone would figure it out.”
 
 @18935 Fa · ファ
-# 审校：“admit it”语气稍偏，改为“accept it”更贴合“本人不承认”的语境。
+# 审校：全局：弯撇号／弯引号
 > 「みんな知ってるわよ
 “Everyone already knows.
 ---
 >  本人だけが承知して
 >  ないんじゃない
-You're the only one who won't accept it.
+You’re the only one who won’t accept it.
 ---
 >  どこいくのよ」
 Where are you going?”
@@ -311,11 +327,11 @@ Where are you going?”
 “Jerid!”
 
 @18938 Jerid · ジェリド
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：スペシャルズ→Specials
 > 「カクリコン!
 >  スペシャルズらしくなって
-“Kacricon! You're looking like a proper Special now...
+“Kacricon! You’re looking like a proper Special now...
 ---
 >  よくきてくれた」
 glad you could make it.”
@@ -337,18 +353,19 @@ glad you could make it.”
 “Kamille, wait!”
 
 @18943 Jerid · ジェリド
-# 审校：原译“and yet... it's a guy?”略显生硬，改为更自然的转折。
+# 审校：全局：弯撇号／弯引号
 > 「女の名前なのに……なんだ男か」
-“A girl's name... but it's a guy?”
+“A girl’s name... but it’s a guy?”
 
 @18944 Kamille · カミーユ
 > 「!!」
 “!!”
 
 @18945 Fa · ファ
+# 审校：全局：弯撇号／弯引号
 > 「どうしたの、カミーユ?
 >  ……カミーユ、だめよ、そっちは!」
-“What's wrong, Kamille? ...Kamille, no, not that way!”
+“What’s wrong, Kamille? ...Kamille, no, not that way!”
 
 @18946 Jerid · ジェリド
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -357,32 +374,35 @@ glad you could make it.”
 “Hm? You know Special Lieutenant Kacricon?”
 
 @18947 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「なめるなっ!!」
-“Don't mock me!!”
+“Don’t mock me!!”
 
 @18948 Jerid · ジェリド
 > 「ぐっ!?」
 “Guh?!”
 
 @18949 Kacricon · カクリコン
+# 审校：全局：弯撇号／弯引号
 > 「なんだ貴様!?
 “What are you?!
 ---
 >  俺たちがスペシャルズと知って
 >  ちょっかいを出してきたのか!?
-You picked a fight with us knowing we're the Specials?!
+You picked a fight with us knowing we’re the Specials?!
 ---
 >  とり押さえろ!」
 Hold him down!”
 
 @18950 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「くっ、
 >  カミーユが男の名前で
-“Ngh, what's so wrong with Kamille being
+“Ngh, what’s so wrong with Kamille being
 ---
 >  なんで悪いんだ!
 >  俺は男だよ!!」
-a man's name?! I'm a guy!!”
+a man’s name?! I’m a guy!!”
 
 @18951 Kacricon · カクリコン
 > 「こいつ!」
@@ -393,22 +413,25 @@ a man's name?! I'm a guy!!”
 “Guh!”
 
 @18953 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「なんだ、こいつは」
-“What's with this guy?”
+“What’s with this guy?”
 
 @18954 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「く……言っていいことと、
 >  悪いことがある!
-“Ngh... there are things you can say and things you can't!
+“Ngh... there are things you can say and things you can’t!
 ---
 >  男に向かって、
 >  なんだはないだろう!」
-You don't call a man that!”
+You don’t call a man that!”
 
 @18955 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「そうか……そういうことか。
 >  なら男らしく扱ってやるよ。そらっ」
-“I see... so that's how it is. Then I'll treat you like a man. Take this.”
+“I see... so that’s how it is. Then I’ll treat you like a man. Take this.”
 
 @18956 Kamille · カミーユ
 > 「あぅっ」
@@ -427,39 +450,42 @@ You don't call a man that!”
 “Kamille?!”
 
 @18960 Kacricon · カクリコン
+# 审校：全局：弯撇号／弯引号
 > 「レジスタンスでないものが、
 >  なんでスペシャルズに
-“If you're not with the Resistance, why would you pick a fight
+“If you’re not with the Resistance, why would you pick a fight
 ---
 >  ケンカをふっかけるんだ!?
 >  ええ? おかしいじゃないか!」
-with the Specials?! Huh? Doesn't that strike you as strange?!”
+with the Specials?! Huh? Doesn’t that strike you as strange?!”
 
 @18961 Kamille · カミーユ
 > 「…………」
 “...”
 
 @18962 Kacricon · カクリコン
-# 审校：原译“You won't get anywhere staying quiet!”可接受，但改为更自然的命令语气。
+# 审校：全局：弯撇号／弯引号
 > 「黙ってちゃわからんだろうが!」
-“Staying quiet won't get you anywhere!”
+“Staying quiet won’t get you anywhere!”
 
 @18963 Kacricon · カクリコン
 > 「なんだ!?」
 “What the?!”
 
 @18964 Kacricon · カクリコン
+# 审校：全局：弯撇号／弯引号
 > 「まさか……
 >  敵の攻撃だってのか!?」
-“Don't tell me... that's an enemy attack?!”
+“Don’t tell me... that’s an enemy attack?!”
 
 @18965 Kamille · カミーユ
 > 「なにが……起こっているんだ……?」
 “What... is happening...?”
 
 @18966 Kacricon · カクリコン
+# 审校：全局：弯撇号／弯引号
 > 「こんなところに敵がくるのかよ」
-“The enemy's coming here, of all places?”
+“The enemy’s coming here, of all places?”
 
 @18967 Jerid · ジェリド
 > 「レジスタンスだってのか!?
@@ -467,34 +493,36 @@ with the Specials?! Huh? Doesn't that strike you as strange?!”
 “The Resistance?! What in the world are they after?!”
 
 @18968 Lila · ライラ
-# 审校：“respond to it”语气偏书面，改为更自然的“deal with it”。
+# 审校：全局：弯撇号／弯引号
 > 「ガンダムmkⅡが目的だと
 >  思いたいけどね
-“I'd like to think they're after the Gundam Mk-II.
+“I’d like to think they’re after the Gundam Mk-II.
 ---
 >  とにかく、対応するんだよ。
 >  来たよ」
 Anyway, deal with it. Here it comes.”
 
 @18969 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「あれか……黒いMS
 >  ……ガンダムだと!?」
-“That's it... a black MS... a Gundam?!”
+“That’s it... a black MS... a Gundam?!”
 
 @18970 Aboly · アポリー
 > 「どうしますか、大尉」
 “What should we do, Captain?”
 
 @18971 Quattro · クワトロ
-# 审校：“continue”未体现“跟上我”的指令含义，改为“follow me”。
+# 审校：全局：弯撇号／弯引号
 > 「戦闘データをとる
 >  ……全機、続け」
-“We'll gather combat data... All units, follow me.”
+“We’ll gather combat data... All units, follow me.”
 
 @18972 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「戻ってこない……なんだっていうんだ。
 >  ……開いている?」
-“It's not coming back... What's going on? ...It's open?”
+“It’s not coming back... What’s going on? ...It’s open?”
 
 @18973 Kamille · カミーユ
 > 「誰もいないのか……?」
@@ -506,35 +534,38 @@ Anyway, deal with it. Here it comes.”
 “Captain, there seems to be another unit in that hangar.”
 
 @18975 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「出てこないということは……
 >  動けないのか?
-“If it's not coming out... then it can't move?
+“If it’s not coming out... then it can’t move?
 ---
 >  よし、捕獲するぞ」
-All right, we're capturing it.”
+All right, we’re capturing it.”
 
 @18976 Kamille · カミーユ
 > (あのMS……)
 (That MS...)
 
 @18977 Emma · エマ
-# 审校：补逗号使呼喊更自然。
+# 审校：全局：弯撇号／弯引号
 > 「!? ちょっとあなた、何をするの!
 >  あぶないから、やめなさい!」
-“?! Hey, you! What are you doing?! It's dangerous, stop that!”
+“?! Hey, you! What are you doing?! It’s dangerous, stop that!”
 
 @18978 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「……火が入っている」
-“...It's powered up.”
+“...It’s powered up.”
 
 @18979 Emma · エマ
 > 「ちょっとあなた、待ちなさい!」
 “Hey you, wait!”
 
 @18980 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「危ないですよ!
 >  下がっていてください!」
-“It's dangerous! Stay back!”
+“It’s dangerous! Stay back!”
 
 @18981 Emma · エマ
 > 「きゃあっ!! なに、この子……
@@ -547,10 +578,10 @@ All right, we're capturing it.”
 “What are you doing?! Get him out of there, now!”
 
 @18983 Emma · エマ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「バスク特佐! あれに乗って
 >  いるのは、パイロットじゃありません!」
-“Special Colonel Bask! The one piloting that isn't a pilot!”
+“Special Colonel Bask! The one piloting that isn’t a pilot!”
 
 @18984 Bask · バスク
 > 「なんだと!?
@@ -572,14 +603,16 @@ Stop him!”
 “What, it moves?”
 
 @18987 Lila · ライラ
+# 审校：全局：弯撇号／弯引号
 > 「遅いぞ、援護しろ!
 >  おい、聞こえているのか!」
-“You're late! Cover me! Hey, are you listening?!”
+“You’re late! Cover me! Hey, are you listening?!”
 
 @18988 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「来たか、こっちを援護してくれ!
 >  おい、聞いているのか!?」
-“So you've come! Cover me here! Hey, are you listening?!”
+“So you’ve come! Cover me here! Hey, are you listening?!”
 
 @18989 Kacricon · カクリコン
 > 「早く援護してくれ!
@@ -591,19 +624,22 @@ Stop him!”
 “...”
 
 @18991 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > 「3号機に乗っているのは
 >  パイロットじゃないわ。押さえて!」
-“The one in Unit 3 isn't a pilot. Hold him down!”
+“The one in Unit 3 isn’t a pilot. Hold him down!”
 
 @18992 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「ほう……あの機体には手はだすな、
 >  敵ではないようだ」
-“Oh... Don't touch that unit. It doesn't seem to be an enemy.”
+“Oh... Don’t touch that unit. It doesn’t seem to be an enemy.”
 
 @18993 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「そうだ、僕は敵じゃない。
 >  あなたがたの、味方だ!」
-“That's right, I'm not your enemy. I'm on your side!”
+“That’s right, I’m not your enemy. I’m on your side!”
 
 @18994 Lila · ライラ
 > 「子供だと!?
@@ -621,8 +657,9 @@ Stop him!”
 “Impossible! Why would a non-pilot ride the Mk-II?!”
 
 @18997 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「証拠を見せてやる!」
-“I'll show you proof!”
+“I’ll show you proof!”
 
 @18998 Bask · バスク
 # 审校：示しがつかん是丢脸，不是树榜样
@@ -638,9 +675,10 @@ At this rate we’ll be a laughingstock to the regular army.
 Don’t let them escape!”
 
 @18999 Giura · ギウラ
+# 审校：全局：弯撇号／弯引号
 > 「苦戦しているようだな。
 >  我々が援護しよう」
-“You seem to be struggling. We'll lend you support.”
+“You seem to be struggling. We’ll lend you support.”
 
 @19000 Bask · バスク
 > 「く……正規軍か……。
@@ -689,14 +727,16 @@ Did you really kill Gale?”
 “S-Sis...”
 
 @19009 Julia · ジュリア
+# 审校：全局：弯撇号／弯引号
 > 「どうしたのです?
 >  答えなさい、エイジ」
-“What's wrong? Answer me, Eiji.”
+“What’s wrong? Answer me, Eiji.”
 
 @19010 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「……ほ、本当だよ。
 >  だけど姉さん……」
-“...Y-Yes, it's true. But Sis...”
+“...Y-Yes, it’s true. But Sis...”
 
 @19011 Julia · ジュリア
 # 审校：去掉 I can't forgive you
@@ -725,9 +765,10 @@ I cannot let you people go unpunished.”
 Eh?! Nothing beats killing, nothing at all!”
 
 @19015 Gosterro · ゴステロ
+# 审校：全局：弯撇号／弯引号
 > 「こぞうは、いないようだなぁ、
 >  ええ、ジュリア」
-“The brat doesn't seem to be here, eh, Julia?”
+“The brat doesn’t seem to be here, eh, Julia?”
 
 @19016 Julia · ジュリア
 # 审校：同 19011
@@ -739,9 +780,10 @@ Eh?! Nothing beats killing, nothing at all!”
 I cannot let you people go unpunished.”
 
 @19017 Gosterro · ゴステロ
+# 审校：全局：弯撇号／弯引号
 > 「ひゃーはははははぁ。
 >  皆殺しにしてやるぜぇっ!」
-“Hyahahahaha! I'll kill every last one of you!”
+“Hyahahahaha! I’ll kill every last one of you!”
 
 @19018 Gosterro · ゴステロ
 # 审校：wipe you from existence 生硬
@@ -758,12 +800,13 @@ I cannot let you people go unpunished.”
 “Ngh, Sis... I...”
 
 @19021 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「どうやらこの辺りが限界か……
 “Looks like this is our limit...
 ---
 >  目的は充分に達成した。
 >  全機撤退するぞ!」
-We've accomplished our objective well enough. All units, retreat!”
+We’ve accomplished our objective well enough. All units, retreat!”
 
 @19022 Emma · エマ
 > 「レジスタンスにあれほど強力な
@@ -780,12 +823,13 @@ And that boy, too...”
 “Damn youuu, you, you bastards... doing this to ME!!!”
 
 @19024 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「どうやらこの辺りが限界か……
 “Looks like this is our limit...
 ---
 >  目的は充分に達成した
 >  全機撤退するぞ!」
-We've accomplished our objective well enough. All units, retreat!”
+We’ve accomplished our objective well enough. All units, retreat!”
 
 @19025 Emma · エマ
 > 「レジスタンスにあれほど強力な
@@ -796,9 +840,9 @@ We've accomplished our objective well enough. All units, retreat!”
 And that boy, too...”
 
 @19026 Kamille · カミーユ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「お前はぁっ!」
-“You're...!”
+“You’re...!”
 
 @19027 Jerid · ジェリド
 > 「この声、カミーユとかって女みたいな
@@ -806,17 +850,19 @@ And that boy, too...”
 “That voice... Kamille, the one with the girly name... beaten by a kid like that!”
 
 @19028 Lila · ライラ
+# 审校：全局：弯撇号／弯引号
 > 「くっ、赤い彗星が相手だったと
 >  思いたい……
-“Ngh, I'd like to believe I was up against the Red Comet...
+“Ngh, I’d like to believe I was up against the Red Comet...
 ---
 >  でなければ、立場がない……」
-Otherwise I'd have no excuse...”
+Otherwise I’d have no excuse...”
 
 @19029 Lila · ライラ
+# 审校：全局：弯撇号／弯引号
 > 「く、なんだ!? まだ子供なのに、
 >  私の動きについてくる!?」
-“Ngh, what?! He's just a kid, yet he's keeping up with my moves?!”
+“Ngh, what?! He’s just a kid, yet he’s keeping up with my moves?!”
 
 @19030 Kamille · カミーユ
 > 「子供で悪いか!」
@@ -831,12 +877,13 @@ Otherwise I'd have no excuse...”
 “Ngh... Sis!”
 
 @19033 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「どうやらこの辺りが限界か……
 “Looks like this is our limit...
 ---
 >  目的は充分に達成した
 >  全機撤退するぞ!」
-We've accomplished our objective well enough. All units, retreat!”
+We’ve accomplished our objective well enough. All units, retreat!”
 
 @19034 Emma · エマ
 > 「レジスタンスにあれほど強力な
@@ -852,9 +899,10 @@ And that boy, too...”
 (Doing something like this... what have I... Is Fa all right...)
 
 @19036 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「どうした カミーユ・ビダンくん。
 >  こないのか?」
-“What's wrong, Kamille Bidan? Aren't you coming?”
+“What’s wrong, Kamille Bidan? Aren’t you coming?”
 
 @19037 Kamille · カミーユ
 # 审校：更何况/more than anything 冗余
@@ -884,9 +932,10 @@ and I hate the Specials even more.”
 “But...”
 
 @19042 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「言っただろ、
 >  あいつはそんなにヤワじゃないさ」
-“I told you, he's not that fragile.”
+“I told you, he’s not that fragile.”
 
 @19043 Anna · アンナ
 > 「だけど、実のお姉さんだったのよ!?
@@ -894,21 +943,22 @@ and I hate the Specials even more.”
 “But she was his real sister! Why... why...”
 
 @19044 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「彼は祖国を捨てて
 >  地球のために戦ってくれている
 “He abandoned his homeland to fight for Earth.
 ---
 >  それは、並大抵の覚悟では
 >  できないことだ
-That's not something anyone can do with ordinary resolve.
+That’s not something anyone can do with ordinary resolve.
 ---
 >  その彼に我々がしてやれる
 >  ことがあるならば
-If there's anything we can do for him,
+If there’s anything we can do for him,
 ---
 >  それは、彼の志を
 >  無駄にしないことだ」
-it's to make sure his resolve isn't wasted.”
+it’s to make sure his resolve isn’t wasted.”
 
 @19045 Anna · アンナ
 > 「でも、
@@ -937,18 +987,20 @@ The actions of Eiji, who knows the Empire better than any of us,
 bear that out.”
 
 @19047 Anna · アンナ
+# 审校：全局：弯撇号／弯引号
 > 「だけどそんなの……
 >  悲しすぎるわ……」
-“But that's just... too sad...”
+“But that’s just... too sad...”
 
 @19048 Quattro · クワトロ
 > 「ああ……そうだな……」
 “Yeah... I know...”
 
 @19049 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「ブライト中佐、
 >  ブレックス准将からです」
-“Lieutenant Colonel Bright, it's from Brigadier General Blex.”
+“Lieutenant Colonel Bright, it’s from Brigadier General Blex.”
 
 @19050 Bright · ブライト
 > 「まわしてくれ」
@@ -972,8 +1024,9 @@ Is this him, young Kamille?”
 “So fine young men have been gathering, have they.”
 
 @19054 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「いえ、そんな……」
-“No, it's nothing like that...”
+“No, it’s nothing like that...”
 
 @19055 Blex · ブレックス
 # 审校：对卡缪说，原文是主角和你两人
@@ -1007,13 +1060,13 @@ That’s no ordinary feat.”
 “Same for me, I think. It was just a series of coincidences.”
 
 @19060 Blex · ブレックス
-# 审校：初稿混入了全角斜线“／”，改为正常英文断句。
+# 审校：全局：弯撇号／弯引号
 > 「その偶然も、
 >  人の力があってのものだと
 “I want to believe that even those coincidences
 ---
 >  信じたいのだよ。私は」
-only happen because of people's strength.”
+only happen because of people’s strength.”
 
 @19061 Blex · ブレックス
 # 审校：原文句末为“が”，表示委婉转折，但英文以“but”结尾不自然；改为完整句，保留语气。
@@ -1026,21 +1079,23 @@ only happen because of people's strength.”
 “...What do you think, Captain?”
 
 @19063 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「ニュータイプはエスパーではありません
 “Newtypes are not espers.
 ---
 >  目に見えて違うところは
 >  ありませんが、資質は感じます」
-There's nothing visibly different about them, but I sense the quality.”
+There’s nothing visibly different about them, but I sense the quality.”
 
 @19064 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
 > 「そう思う。
 >  大切にしてやってくれ
 “I think so too. Take good care of them.
 ---
 >  3年前の戦争で、
 >  地球圏は中高年者の
-In the war three years ago, the Earth Sphere's social structure
+In the war three years ago, the Earth Sphere’s social structure
 ---
 >  極端に少ない社会構造に
 >  なってしまった
@@ -1051,13 +1106,14 @@ ended up with extremely few middle-aged and older people.
 The young people who survived must build the next era.”
 
 @19065 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「はい。しかしそれが、帝国の
 >  支配を受け入れた上での
 “Yes. But the Specials went toward rebuilding Earth
 ---
 >  地球再建に向かって
 >  しまったのがスペシャルズです
-on the premise of accepting the Empire's rule.
+on the premise of accepting the Empire’s rule.
 ---
 >  それは、認めたくはありません」
 That, I cannot accept.”
@@ -1067,21 +1123,23 @@ That, I cannot accept.”
 “Indeed...”
 
 @19067 Henken · ヘンケン
-# 审校：原文“ですな?”是带确认语气的陈述，英文用问号会显得像疑问句；改为句号更自然。
+# 审校：全局：弯撇号／弯引号
 > 「状況は好転しつつあると
 >  思いたいですな?」
-“I'd like to think the situation is improving.”
+“I’d like to think the situation is improving.”
 
 @19068 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
 > 「そうさせるのだよ。
 >  我々でな
-“Then let's make it so. With our own hands.
+“Then let’s make it so. With our own hands.
 ---
 >  ……君は知っているかね、
 >  赤い彗星のことを」
 ...Do you know about the Red Comet?”
 
 @19069 Henken · ヘンケン
+# 审校：全局：弯撇号／弯引号
 > 「自分はジオンとの
 >  ア・バオア・クー決戦のときは
 “During the decisive battle at A Baoa Qu against Zeon,
@@ -1092,7 +1150,7 @@ I was on a rear battleship, so I never saw him directly.
 ---
 >  しかし赤い彗星の力というものは
 >  感じましたし……いまも感じますね」
-But I felt the Red Comet's power... and I still feel it now.”
+But I felt the Red Comet’s power... and I still feel it now.”
 
 @19070 Blex · ブレックス
 > 「ほう、誰にだ?」
@@ -1103,13 +1161,14 @@ But I felt the Red Comet's power... and I still feel it now.”
 “From Captain Quattro Bajeena.”
 
 @19072 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
 > 「……彼はこの戦いの中で、
 >  ジオン・ダイクンの遺志を
 “...Perhaps, in this battle, he is trying to convey
 ---
 >  我々に伝えようとしているのかも
 >  しれん」
-Zeon Deikun's will to us.”
+Zeon Deikun’s will to us.”
 
 @19073 Henken · ヘンケン
 > 「すべては強圧的な異星人から
@@ -1117,13 +1176,15 @@ Zeon Deikun's will to us.”
 “All of that comes after we liberate Earth from the oppressive aliens.”
 
 @19074 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「そうだな。
 >  我々は地球圏を
 “Indeed. We must take the Earth Sphere
 ---
 >  再び人類の手に
 >  取り戻さねばならん
-back into humanity's hands once more.
+back into humanity’s hands once more.
 ---
 >  かつて地球連邦は腐敗し、
 >  宇宙の民をかえりみなかった
@@ -1151,12 +1212,13 @@ compared to the Muge Zorbados Empire.”
 real power over Earth again once the Empire is gone.”
 
 @19076 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
 > 「それはさせるわけにはいかんな
 “We cannot let them do that.
 ---
 >  それに、ロームフェラの動きも
 >  気になる
-Besides, Romefeller's movements worry me too.
+Besides, Romefeller’s movements worry me too.
 ---
 >  むしろ危険なのは
 >  スペシャルズを創設し
@@ -1175,9 +1237,10 @@ For now, all we can do is devote ourselves to breaking the deadlock.”
 “...”
 
 @19078 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「やはり、普通ではないわ。
 >  軍の施設へ入っていくなんて」
-“He really isn't normal. Going into a military facility like that.”
+“He really isn’t normal. Going into a military facility like that.”
 
 @19079 Relena · リリーナ
 > 「お待ちなさい」
@@ -1208,13 +1271,14 @@ Why were you collapsed on the beach wearing something like a pilot suit?
 Answer me, Heero.”
 
 @19082 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「リリーナ・ドーリアン……
 >  A級市民だったな
-“Relena Darlian... an A-class citizen, weren't you.
+“Relena Darlian... an A-class citizen, weren’t you.
 ---
 >  深入りしすぎた。
 >  お前を、殺す」
-You've pried too deep. I'll kill you.”
+You’ve pried too deep. I’ll kill you.”
 
 @19083 Relena · リリーナ
 > 「えっ!?」
@@ -1225,10 +1289,10 @@ You've pried too deep. I'll kill you.”
 “Ngh...”
 
 @19085 Duo · デュオ
-# 审校：Duo's slangy, casual speech should use contractions, and 'my lady' is too formal for his address to a stranger; 'miss' fits his tone.（人工改写）
+# 审校：全局：弯撇号／弯引号
 > 「こういう場合、どう見たって
 >  お前の方が悪者だろ
-“In a situation like this, no matter how you look at it, you're the bad guy.
+“In a situation like this, no matter how you look at it, you’re the bad guy.
 ---
 >  ケガはないかい、お嬢さん?」
 Are you hurt, miss?”
@@ -1239,6 +1303,7 @@ Are you hurt, miss?”
 “Are you all right, Heero? Stop it already. What grudge do you have against this person?”
 
 @19087 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「は……?
 “Huh...?
 ---
@@ -1247,16 +1312,17 @@ Hey, hey, hold on a second.
 ---
 >  俺の方が悪者になっちまってる
 >  じゃねぇか」
-Now I'm the one who's turned into the bad guy.”
+Now I’m the one who’s turned into the bad guy.”
 
 @19088 Heero · ヒイロ
 > 「……?」
 “...?”
 
 @19089 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > (あれは俺のガンダム……こいつが
 >  海中から引き上げたのか?)
-(That's my Gundam... did this guy pull it up from the sea?)
+(That’s my Gundam... did this guy pull it up from the sea?)
 
 @19090 Relena · リリーナ
 > 「え……何……?」

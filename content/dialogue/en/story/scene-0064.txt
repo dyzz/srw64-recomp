@@ -191,7 +191,7 @@ has no weapons.”
 “Miss Relena still doesn’t know about this?”
 
 @28514 Noin · ノイン
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……お気づきにはなって
 >  いないように思います。ですが
 “...I do not believe she has noticed. But
@@ -205,7 +205,7 @@ she is such a perceptive person... If anything should happen, I will take
 full responsibility. Please, everyone, I want you to devote yourselves
 ---
 >  専念していただきたい」
-to protecting this country's safety.”
+to protecting this country’s safety.”
 
 @28515 Bright · ブライト
 > 「承知しています。我々も次第に
@@ -232,12 +232,13 @@ complete pacifism. We will protect it with all our strength.”
 No enemy attacks, no fighting... Total peace, huh.”
 
 @28518 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「何いってんの! 地上では
 >  まだあちこちで戦闘が続いてんのよ
 “What are you saying?! Fighting is still going on all over the surface.
 ---
 >  無責任なんだから!」
-You're so irresponsible!”
+You’re so irresponsible!”
 
 @28519 Koji · 甲児
 > 「無責任つったってなあ。ここでオレが
@@ -245,8 +246,9 @@ You're so irresponsible!”
 “Irresponsible, you say. Even if I got all tense here, what would it change?”
 
 @28520 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「そりゃそうだけど……」
-“Well, that's true, but...”
+“Well, that’s true, but...”
 
 @28521 Ginrei · 銀鈴
 # 审校：“现在还好”接不上上句；Because 开头生硬
@@ -277,26 +279,29 @@ The Muge Empire forces have retreated all the way to the Asteroid Belt.
 In other words, OZ has that much room to maneuver now.”
 
 @28524 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「ジャミトフ、デルマイユ……、彼らが
 >  完全平和主義なんかを
-“Jamitov, Dermail... There's no way they'd ever acknowledge something like
+“Jamitov, Dermail... There’s no way they’d ever acknowledge something like
 ---
 >  認めるわけがない、か。確かに、
 >  あまり心安らかにはしていられないな…」
-complete pacifism, huh. Indeed, we can't afford to rest easy...”
+complete pacifism, huh. Indeed, we can’t afford to rest easy...”
 
 @28525 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「政治のことなんか、
 >  あたしたちにわかりっこないもんねえ
-“There's no way we could understand politics anyway.
+“There’s no way we could understand politics anyway.
 ---
 >  とくに甲児くんには……」
 Especially Koji...”
 
 @28526 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「わざわざオレを引き合いに出すなよな
 >  ほっといてくれ」
-“Don't go out of your way to bring me into it. Just leave me alone.”
+“Don’t go out of your way to bring me into it. Just leave me alone.”
 
 @28527 Dermail · デルマイユ
 > 「そちらの様子はどうだ、ツバロフ」
@@ -347,9 +352,10 @@ the Muge Empire is nothing to fear.”
 takes complete control of the Earth Sphere.”
 
 @28534 Jamitov · ジャミトフ
+# 审校：全局：弯撇号／弯引号
 > 「アステロイド・ベルトの
 >  帝国軍中枢をせん滅すれば
-“If we annihilate the Imperial forces' central command in the Asteroid Belt,
+“If we annihilate the Imperial forces’ central command in the Asteroid Belt,
 ---
 >  残りは地上の完全制圧か。
 >  こちらの方は、たやすいことだな」
@@ -364,9 +370,10 @@ what remains is the complete subjugation of the surface. That part should be eas
 “What is it?”
 
 @28537 Dermail · デルマイユ
+# 审校：全局：弯撇号／弯引号
 > 「地上といえば……
 >  サンクキングダムのことだが」
-“Speaking of the surface... it's about the Sanc Kingdom.”
+“Speaking of the surface... it’s about the Sanc Kingdom.”
 
 @28538 Jamitov · ジャミトフ
 # 审校：“家伙们的痴人说梦”长定语；英文拖沓
@@ -382,6 +389,7 @@ Just the ravings of a few fools taken in by some little girls.
 Ignore them.”
 
 @28539 Dermail · デルマイユ
+# 审校：全局：弯撇号／弯引号
 > 「いや、連中は地上の
 >  帝国軍勢力が弱まったのを
 “No. Those people, taking advantage of the Imperial forces on the surface weakening,
@@ -392,30 +400,33 @@ are steadily extending their influence through Europe and other nations.
 ---
 >  それだけならまだしも、問題は我が
 >  ロームフェラ財団の幹部の
-And that's not all. The problem is that even among the executives of our Romefeller Foundation,
+And that’s not all. The problem is that even among the executives of our Romefeller Foundation,
 ---
 >  中にまで、奴らに賛同する者が
 >  出はじめているということだ」
 some have begun to sympathize with them.”
 
 @28540 Jamitov · ジャミトフ
+# 审校：全局：弯撇号／弯引号
 > 「目ざわりか?
 >  ならつぶせばよかろう。虫ケラだ」
-“An eyesore? Then crush them. They're mere insects.”
+“An eyesore? Then crush them. They’re mere insects.”
 
 @28541 Dermail · デルマイユ
+# 审校：全局：弯撇号／弯引号
 > 「馬鹿をいえ。
 >  いくら邪魔だからといえ
-“Don't be a fool. No matter how much of a nuisance they are,
+“Don’t be a fool. No matter how much of a nuisance they are,
 ---
 >  理由もなく独立国に兵を
 >  出せるか。かえって威信に関わるわ」
 can we really send troops into an independent nation without cause? It would only damage our prestige.”
 
 @28542 Jamitov · ジャミトフ
+# 审校：全局：弯撇号／弯引号
 > 「直接手を下せとはいっておらん。
 >  地上には、シャピロめに
-“I'm not telling you to do it directly. On the surface, there should still be those monsters
+“I’m not telling you to do it directly. On the surface, there should still be those monsters
 ---
 >  置き去りにされた化け物どもが
 >  いようが。奴らをけしかけるのだ
@@ -438,9 +449,10 @@ Photon Power Energy that the former Liberation Front of the Earth
 scientists are researching.”
 
 @28544 Jamitov · ジャミトフ
+# 审校：全局：弯撇号／弯引号
 > 「解放戦線の残党どもも、
 >  地下に潜って所在がつかめん
-“The remnants of the Liberation Front have gone underground, and we can't locate them.
+“The remnants of the Liberation Front have gone underground, and we can’t locate them.
 ---
 >  どうやら一部が
 >  完全平和主義に賛同して
@@ -448,7 +460,7 @@ Apparently some of them sympathized with complete pacifism,
 ---
 >  そやつらもサンクキングダムに
 >  いるらしいではないか
-and they're in the Sanc Kingdom as well.
+and they’re in the Sanc Kingdom as well.
 ---
 >  案外、面白いものが
 >  出てくるかもしれんぞ……」
@@ -642,9 +654,10 @@ but I truly cannot understand the humans here... I see, so this is it.
 Heh heh, with hardly any guards...”
 
 @28572 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「へへっ、思った通り、ろくな警備も
 >  してねえ。おいみんな、行くぞ!」
-“Heh, just as I thought, hardly any guards. Hey everyone, let's go!”
+“Heh, just as I thought, hardly any guards. Hey everyone, let’s go!”
 
 @28573 Iino · イーノ
 > 「ねぇ、本当にやるつもりなの?」
@@ -657,9 +670,10 @@ Heh heh, with hardly any guards...”
 “Obviously. Why are you even asking now?”
 
 @28575 Beecha · ビーチャ
+# 审校：全局：弯撇号／弯引号
 > 「いやならやめろよ。
 >  そうすりゃ分け前も増える」
-“If you don't want to, then quit. That way our share gets bigger.”
+“If you don’t want to, then quit. That way our share gets bigger.”
 
 @28576 Mondo · モンド
 > 「そうそう」
@@ -670,21 +684,24 @@ Heh heh, with hardly any guards...”
 “Shh, quiet.”
 
 @28578 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「…………よし、いいぞ」
-“...All right, that's good.”
+“...All right, that’s good.”
 
 @28579 Iino · イーノ
 > 「ジュドー……」
 “Judau...”
 
 @28580 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「イーノ、早くしろ。うまくいかなきゃ、
 >  俺たち飢え死になんだぞ」
-“Iino, hurry up. If this doesn't work, we starve to death.”
+“Iino, hurry up. If this doesn’t work, we starve to death.”
 
 @28581 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「急がないと、見つかっちゃうよ」
-“We have to hurry, or we'll be found.”
+“We have to hurry, or we’ll be found.”
 
 @28582 Iino · イーノ
 > 「わ、わかったよ」
@@ -708,9 +725,10 @@ I am most curious.”
 “...That is...”
 
 @28585 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「今までの長い人類の
 >  歴史の中で完全平和を
-“Throughout humanity's long history, there have been many who
+“Throughout humanity’s long history, there have been many who
 ---
 >  目指した人々は何人も
 >  おりましたわ。それでもいまだにそれは
@@ -724,9 +742,10 @@ Why do you suppose that is?”
 “...”
 
 @28587 Marquis Janus · ヤヌス侯爵
+# 审校：全局：弯撇号／弯引号
 > 「むうう、まさしくここは
 >  きゃつらの研究施設に相違ない
-“Hmm, this is surely those people's research facility.
+“Hmm, this is surely those people’s research facility.
 ---
 >  このことをブライ大帝たちに
 >  報告せねば……。む、何じゃここは?
@@ -759,19 +778,23 @@ I thought complete peace was just a tall tale.”
 “W-what do we do?”
 
 @28592 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「決まってんだろ、いただいてくのさ。
 >  なあに、1台くらいどうってこと……ん?」
-“Isn't it obvious? We take it. Come on, one unit's no big deal... hm?”
+“Isn’t it obvious? We take it. Come on, one unit’s no big deal... hm?”
 
 @28593 Mondo · モンド
+# 审校：全局：弯撇号／弯引号
 > 「どうした?」
-“What's wrong?”
+“What’s wrong?”
 
 @28594 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「隠れろ! 誰かくる!」
-“Hide! Someone's coming!”
+“Hide! Someone’s coming!”
 
 @28595 Marquis Janus · ヤヌス侯爵
+# 审校：全局：弯撇号／弯引号
 > 「な、何と! これは……ゲッターロボ!
 >  そしてマジンガーZ! ふふ、ふはははは!
 “W-what! This is... Getter Robo! And Mazinger Z! Heh, hahahahaha!
@@ -782,21 +805,21 @@ How lucky can I be, meeting these things in a place like this!
 ---
 >  出会えるとはな! ことのついでじゃ、
 >  立ち去る前に
-While I'm at it, before I leave,
+While I’m at it, before I leave,
 ---
 >  この高性能爆弾を
 >  仕掛けてくれようぞ
-I do believe I'll plant this high-performance bomb on them.
+I do believe I’ll plant this high-performance bomb on them.
 ---
 >  きゃつら、これで起動と同時に
 >  こっぱみじんよ……」
-Once they start up, they'll be blown to bits...”
+Once they start up, they’ll be blown to bits...”
 
 @28596 Beecha · ビーチャ
-# 审校：说话人比查看到的是ヤヌス侯爵，角色为男性，原文未明确性别但此处应指侯爵，初稿用 she 错误，改为 he。
+# 审校：全局：弯撇号／弯引号
 > 「……様子がおかしいぜ、あいつ。
 >  ここの人間じゃねえ」
-“...Something's off about that one. He's not from here.”
+“...Something’s off about that one. He’s not from here.”
 
 @28597 Judau · ジュドー
 # 审校：同上，将 she 改为 he。
@@ -805,9 +828,10 @@ Once they start up, they'll be blown to bits...”
 “Yeah. Looks like he came to swipe an MS, same as us.”
 
 @28598 Mondo · モンド
+# 审校：全局：弯撇号／弯引号
 > 「どうするんだ? ここの人に
 >  知らせなくってもいいかな?」
-“What do we do? Shouldn't we tell the people here?”
+“What do we do? Shouldn’t we tell the people here?”
 
 @28599 Elle · エル
 > 「バカ、あんた自分たちの
@@ -819,8 +843,9 @@ Once they start up, they'll be blown to bits...”
 ...H-hey, Iino! Stop pushing! Kyaa!”
 
 @28600 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「バカ、声を出すな!」
-“Idiot, don't make a sound!”
+“Idiot, don’t make a sound!”
 
 @28601 Marquis Janus · ヤヌス侯爵
 > 「何やつ!」
@@ -833,9 +858,10 @@ Once they start up, they'll be blown to bits...”
 “H-hey, hello there. Did you come to swipe an MS too, miss?”
 
 @28603 Marquis Janus · ヤヌス侯爵
+# 审校：全局：弯撇号／弯引号
 > 「人間どもか! おのれ、見られたから
 >  には生かしておかん! 覚悟せい!」
-“Humans! Curse you, now that you've seen me, I won't let you live! Prepare yourselves!”
+“Humans! Curse you, now that you’ve seen me, I won’t let you live! Prepare yourselves!”
 
 @28604 Elle · エル
 > 「ちょ、ちょっと何なのよ!
@@ -843,9 +869,10 @@ Once they start up, they'll be blown to bits...”
 “W-what is with you?! Kyaa! Someone help me!!”
 
 @28605 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「どうした! ん!? な、何だ
 >  お前たちは!! おい、カミーユ!」
-“What's going on?! Hm?! W-who are you people!! Hey, Kamille!”
+“What’s going on?! Hm?! W-who are you people!! Hey, Kamille!”
 
 @28606 Kamille · カミーユ
 > 「どうした!?」
@@ -856,9 +883,10 @@ Once they start up, they'll be blown to bits...”
 “Sound the alarm! Intruders!”
 
 @28608 Marquis Janus · ヤヌス侯爵
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、まずい! かくなる上は、
 >  おのれら全員始末するまでよ
-“Tch, this is bad! If it comes to this, I'll dispose of every last one of you.
+“Tch, this is bad! If it comes to this, I’ll dispose of every last one of you.
 ---
 >  その上でゆっくりとエネルギーを
 >  手に入れればよい
@@ -878,9 +906,10 @@ Hyakki Corps, Mycenae Corps, begin the attack!”
 “Hahahahaha! Prepare yourselves!”
 
 @28611 Beecha · ビーチャ
+# 审校：全局：弯撇号／弯引号
 > 「何だかわかんねえけど、俺たちも
 >  逃げようぜ! おい、何してるんだよ!」
-“I don't know what's going on, but we should run too! Hey, what are you doing?!”
+“I don’t know what’s going on, but we should run too! Hey, what are you doing?!”
 
 @28612 Elle · エル
 > 「ちょっと待ってよ、ジュドーが……」
@@ -926,26 +955,28 @@ planted something on the red one and the black one over there, so watch out!”
 “Pagan, what is it? What on earth is all that commotion?”
 
 @28619 Pagan · パーガン
+# 审校：全局：弯撇号／弯引号
 > 「それが……、百鬼帝国とミケーネの
 >  軍勢が、突如襲って参りました
 “Well... the Hyakki Empire and the Mycenae forces have suddenly attacked.
 ---
 >  例のエネルギー研究施設を
 >  狙っておりますようで……」
-It seems they're after that energy research facility...”
+It seems they’re after that energy research facility...”
 
 @28620 Relena · リリーナ
 > 「何ですって……!?」
 “What did you say...?!”
 
 @28621 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「まあ、何ということでしょう!
 >  リリーナ様、早く何とか
 “Oh, what a dreadful thing! Lady Relena, you must do something quickly.
 ---
 >  いたしませんと。ああ、でもこの国は
 >  完全平和主義の国なのですね
-Ah, but this country is one of complete pacifism, isn't it?
+Ah, but this country is one of complete pacifism, isn’t it?
 ---
 >  リリーナ様、いったいどうすれば
 >  よろしいのかしら?」
@@ -961,13 +992,14 @@ Lady Relena, whatever are you going to do?”
 “Y-yes!”
 
 @28624 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「そうそう、それでこそリリーナ様。それで
 >  そのあとはどうなさるの? 降伏?
-“Yes, yes, that's just like you, Lady Relena. And then what will you do? Surrender?
+“Yes, yes, that’s just like you, Lady Relena. And then what will you do? Surrender?
 ---
 >  まさか、リリーナ様はそんなことは
 >  いたしませんよねえ。もし街が
-Surely you wouldn't do that, Lady Relena. If the town were
+Surely you wouldn’t do that, Lady Relena. If the town were
 ---
 >  突然化け物に襲われたとき、
 >  完全平和主義はいったい
@@ -975,7 +1007,7 @@ suddenly attacked by monsters, just how would complete pacifism
 ---
 >  どうやって立ち向かうのでしょう?
 >  私、とっても興味がございますわ」
-stand against them? I'm ever so curious.”
+stand against them? I’m ever so curious.”
 
 @28625 Pagan · パーガン
 > 「ドロシー様! このような時に……。
@@ -1040,16 +1072,18 @@ Show Dorothy what complete pacifism looks like.”
 “No time for that! They’re attacking anything that moves!”
 
 @28634 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そのとおりだ。こうなってしまった以上
 >  敵を引きつけて戦うのが
-“He's right. Now that it's come to this, drawing the enemy in and fighting is
+“He’s right. Now that it’s come to this, drawing the enemy in and fighting is
 ---
 >  俺たちにできる、せいいっぱいのことだ」
 the very best we can do.”
 
 @28635 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「ノインさん……よろしいですね」
-“Noin... you're all right with this?”
+“Noin... you’re all right with this?”
 
 @28636 Noin · ノイン
 # 审校：“Everyone of the {HeroMech}”不通顺，改为“Everyone aboard the {HeroMech}”。
@@ -1061,16 +1095,18 @@ the very best we can do.”
 please launch.”
 
 @28637 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「よし、出撃だ! みんな行くぞ!」
-“All right, launch! Everyone, let's go!”
+“All right, launch! Everyone, let’s go!”
 
 @28638 Astonaige · アストナージ
 > 「ちょ、ちょっと待ってくれ!」
 “W-wait a second!”
 
 @28639 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「アストナージ? どうしたんだ?」
-“Astonaige? What's wrong?”
+“Astonaige? What’s wrong?”
 
 @28640 Astonaige · アストナージ
 # 审校：入侵者是一个人，与中文一致
@@ -1090,9 +1126,10 @@ That intruder from earlier did it.”
 “Tch, what a mess!”
 
 @28643 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「今、大急ぎで撤去してる。
 >  すまないがもう少し待ってくれ!」
-“We're removing them as fast as we can right now. Sorry, but wait a little longer!”
+“We’re removing them as fast as we can right now. Sorry, but wait a little longer!”
 
 @28644 Benkei · ベンケイ
 > 「……頼む。急いでくれよ」
@@ -1112,9 +1149,10 @@ That intruder from earlier did it.”
 “In all the confusion, I scored myself an MS!”
 
 @28648 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「さっさと逃げようよ、ジュドー。
 >  ……きゃぁぁぁっ!」
-“Let's just get out of here, Judau. ...Kyaaa!”
+“Let’s just get out of here, Judau. ...Kyaaa!”
 
 @28649 Judau · ジュドー
 > 「うわっ! 化け物どもがでたぁ!」
@@ -1131,16 +1169,18 @@ That intruder from earlier did it.”
 “...Those Hyakki bastards!”
 
 @28652 Iino · イーノ
+# 审校：全局：弯撇号／弯引号
 > 「ねぇ、早く逃げようよ……」
-“Hey, let's hurry up and run...”
+“Hey, let’s hurry up and run...”
 
 @28653 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「逃げたくても、まわりじゅうに
 >  ウジャウジャいるしよ……
-“Even if we want to run, they're swarming everywhere...
+“Even if we want to run, they’re swarming everywhere...
 ---
 >  よっしゃ、いっちょ戦ってみるか!」
-All right, let's give fighting a try!”
+All right, let’s give fighting a try!”
 
 @28654 Elle · エル
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -1167,9 +1207,10 @@ the warriors who once formed the backbone of the anti-Empire resistance. Wonderf
 “...I knew nothing of their being here.”
 
 @28657 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「でも今となっては彼らの存在は
 >  心強いわ。……ねぇ、リリーナ様」
-“But now their presence is reassuring. ...Isn't that right, Lady Relena?”
+“But now their presence is reassuring. ...Isn’t that right, Lady Relena?”
 
 @28658 Relena · リリーナ
 > 「…………」
@@ -1186,14 +1227,16 @@ the warriors who once formed the backbone of the anti-Empire resistance. Wonderf
 “Everyone, sorry to keep you waiting! The real star has arrived!”
 
 @28661 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「ようやく爆弾の解除が
 >  終わったんだ。カリをかえしてやろうぜ!」
-“We've finally finished disarming the bombs. Let's pay them back for this!”
+“We’ve finally finished disarming the bombs. Let’s pay them back for this!”
 
 @28662 Kurtz · カーツ（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「やはり、奴らか。フン、これでこそ
 >  化け物どもに同行した意味が
-“So it's them after all. Hmph, this is exactly why it was worth
+“So it’s them after all. Hmph, this is exactly why it was worth
 ---
 >  あるというもの」
 coming along with those monsters.”
@@ -1204,8 +1247,9 @@ coming along with those monsters.”
 “{PartnerName}?! Impossible, why are you with the likes of them?!”
 
 @28664 Kurtz · カーツ（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「知れたこと。貴様と戦うためよ!」
-“Isn't it obvious? To fight you!”
+“Isn’t it obvious? To fight you!”
 
 @28665 Brad · ブラッド（按段落 3DD3）
 > 「くっ……もうやめろ{PartnerName}! こん
@@ -1213,14 +1257,16 @@ coming along with those monsters.”
 “Ngh... Stop this, {PartnerName}! What good does this do?!”
 
 @28666 Kurtz · カーツ（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「俺は貴様を倒せればそれで
 >  かまわん!! いくぞ{HeroName}!!」
-“As long as I can defeat you, I don't care about anything else!! Here I come, {HeroName}!!”
+“As long as I can defeat you, I don’t care about anything else!! Here I come, {HeroName}!!”
 
 @28667 Kurtz · カーツ（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「{HeroName}が出ていないという
 >  のか!? これでは話にならん!」
-“{HeroName} isn't even out here?! Then there's no point in this!”
+“{HeroName} isn’t even out here?! Then there’s no point in this!”
 
 @28668 Kurtz · カーツ（按段落 3DD3）
 # 审校：精读：拖长音
@@ -1263,9 +1309,10 @@ The blame is entirely mine. Whatever punishment you see fit,
 I am prepared to accept it.”
 
 @28674 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「いや、我々はノインさんの考えに
 >  賛同してここに来たのです
-“No, we came here because we agreed with Noin's way of thinking.
+“No, we came here because we agreed with Noin’s way of thinking.
 ---
 >  それが、結果的に敵を
 >  ここに呼びこむことになってしまった……
@@ -1343,6 +1390,7 @@ Lady Relena, things are only going to get more interesting from here. Hee hee he
 “Lady, what is the meaning of this?”
 
 @28683 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「閣下はずるうございます。閣下は
 >  世界の頂点に立たなければ
 “Your Excellency, you are being unfair. You are the one who must stand
@@ -1357,7 +1405,7 @@ I went up into space to assist Your Excellency.
 ---
 >  そして、閣下の未来を
 >  ご用意しました」
-And I have prepared Your Excellency's future.”
+And I have prepared Your Excellency’s future.”
 
 @28684 Treize · トレーズ
 > 「レディ、世界から戦いはなくならない
@@ -1390,21 +1438,23 @@ all people. A man who can build peace across the Earth Sphere from space.”
 “It is what Your Excellency wished for.”
 
 @28688 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「私の理想など、人間ひとりの
 >  妄想でしかない。歴史は
 “My ideals are nothing more than the delusion of one man. History is
 ---
 >  日々の積み重ねでつくられる。
 >  個人の未来などに意味はない」
-built by the accumulation of each day. An individual's future has no meaning.”
+built by the accumulation of each day. An individual’s future has no meaning.”
 
 @28689 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「閣下の未来は決まっております。
 >  宇宙にこそ
-“Your Excellency's future is already decided. It is in space
+“Your Excellency’s future is already decided. It is in space
 ---
 >  閣下の未来が存在します」
-that Your Excellency's future exists.”
+that Your Excellency’s future exists.”
 
 @28690 Treize · トレーズ
 > 「レディ、私はそれほど強くない」
@@ -1424,13 +1474,15 @@ that Your Excellency's future exists.”
 Lady, come back to me. Lady Une, whom I loved so dearly.”
 
 @28693 Bask · バスク
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「報告いたします!
 >  本日1540をもって
 “Reporting! As of 1540 today,
 ---
 >  本隊はアステロイド・ベルトにおいて
 >  敵ムゲゾルバドス帝国軍中枢を
-our main force destroyed the enemy Muge Zorbados Empire's central command in the Asteroid Belt,
+our main force destroyed the enemy Muge Zorbados Empire’s central command in the Asteroid Belt,
 ---
 >  撃破、司令官シャピロを
 >  死亡せしめました! なお
@@ -1529,39 +1581,45 @@ If not for that, by now...”
 “...the Getter and the Mazinger would’ve been gone.”
 
 @28704 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ま、オレたちからのお礼がわりってわけさ
 >  ……そんなことよりどうだい
 “Well, consider it our way of thanking you... Anyway, how about it,
 ---
 >  オレたちの仲間にならないかい?」
-won't you join us?”
+won’t you join us?”
 
 @28705 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「君の戦いぶりを見ていたが
 >  なかなかのものだった。……どうする?」
-“I've been watching how you fight, and you're quite something. ...So what will it be?”
+“I’ve been watching how you fight, and you’re quite something. ...So what will it be?”
 
 @28706 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「冗談じゃないね、そんな気はない……」
-“You've got to be kidding. I'm not interested...”
+“You’ve got to be kidding. I’m not interested...”
 
 @28707 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「だったらいま食べているメシ代はらえ!
 >  お礼がわりだっていったの、撤回だ」
-“Then pay for the food you're eating right now! I take back what I said about it being thanks.”
+“Then pay for the food you’re eating right now! I take back what I said about it being thanks.”
 
 @28708 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「……わかった、メシの分は働くよ。
 >  仲間になるよ」
-“...Fine, I'll work off the meal. I'll join you.”
+“...Fine, I’ll work off the meal. I’ll join you.”
 
 @28709 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「あのさ、これからも食べさせてもらえ
 >  るんだったら、あたしらも仲間になるよ
-“Hey, if you'll keep feeding us from now on, we'll join too.
+“Hey, if you’ll keep feeding us from now on, we’ll join too.
 ---
 >  ビーチャ、イーノ、モンド、いいよね!?」
-Beecha, Iino, Mondo, that's okay with you, right?!”
+Beecha, Iino, Mondo, that’s okay with you, right?!”
 
 @28710 Beecha · ビーチャ
 > 「いいぜ」
@@ -1585,9 +1643,10 @@ Beecha, Iino, Mondo, that's okay with you, right?!”
 “...O-okay, I get it...”
 
 @28715 Elle · エル
+# 审校：全局：弯撇号／弯引号
 > 「決まりだね! そうと決まったら
 >  ……おかわりくれない?」
-“Then it's settled! And now that that's decided... could I get seconds?”
+“Then it’s settled! And now that that’s decided... could I get seconds?”
 
 @28716 Amuro · アムロ
 # 检查提示：未用必用译名：ムゲ帝国→Muge Empire
@@ -1604,8 +1663,9 @@ Beecha, Iino, Mondo, that's okay with you, right?!”
 The Asteroid Base was destroyed, and Commander Shapiro was killed in action...”
 
 @28718 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「なんてこった……」
-“You've gotta be kidding me...”
+“You’ve gotta be kidding me...”
 
 @28719 Hayato · ハヤト
 # 审校：精读：省略号空格
@@ -1617,22 +1677,24 @@ The Asteroid Base was destroyed, and Commander Shapiro was killed in action...�
 this is what they mean by mixed feelings.”
 
 @28720 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「何年もの間……俺たちが必死に
 >  戦い続けてきた、あのムゲ帝国が
 “For all those years... that Muge Empire we kept fighting so desperately,
 ---
 >  こんなにあっけなく……。
 >  俺は……俺には信じられない……」
-just like that, so easily... I... I can't believe it...”
+just like that, so easily... I... I can’t believe it...”
 
 @28721 Anna · アンナ
 > 「エイジ……」
 “Eiji...”
 
 @28722 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「でも事実ね……。恐ろしい
 >  兵器だわ、新型MDってやつ……」
-“But it's a fact... What a terrifying weapon, that new MD thing...”
+“But it’s a fact... What a terrifying weapon, that new MD thing...”
 
 @28723 David · デビッド
 > 「やれやれ、結局俺たちは、おいしい
@@ -1640,13 +1702,14 @@ just like that, so easily... I... I can't believe it...”
 “Good grief. In the end, we had the best part snatched right out from under us.”
 
 @28724 Daisaku · 大作
+# 审校：全局：弯撇号／弯引号
 > 「でも、ようやくこれで地球圏が
 >  地球人の手に
 “But now the Earth Sphere has finally returned to
 ---
 >  もどったんじゃないですか。
 >  これっていいことなんでしょう?」
-the hands of Earth's people, hasn't it? That's a good thing, right?”
+the hands of Earth’s people, hasn’t it? That’s a good thing, right?”
 
 @28725 Amuro · アムロ
 > 「まあ、そうだな。これで俺たちは、
@@ -1662,9 +1725,10 @@ Whether we like it or not.”
 “Defending the Sanc Kingdom. Yes... at last this place will become a target.”
 
 @28727 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「そうだ、我々の仕事はこれからだ。
 >  エイジ、他のみんなも
-“That's right. Our work starts now. Eiji, and everyone else,
+“That’s right. Our work starts now. Eiji, and everyone else,
 ---
 >  これからが正念場だぞ!」
 the real test begins from here!”

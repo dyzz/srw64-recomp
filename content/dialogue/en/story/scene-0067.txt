@@ -1,28 +1,32 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @29124 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「カトル・ラバーバ・ウィナー。
 >  ひさしぶりだな」
-“Quatre Raberba Winner. It's been a while.”
+“Quatre Raberba Winner. It’s been a while.”
 
 @29125 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「ノインさん!? ノインさんじゃない
 >  ですか! よく、ここがわかりましたね……」
-“Noin?! Isn't that you, Noin? How did you find this place...”
+“Noin?! Isn’t that you, Noin? How did you find this place...”
 
 @29126 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「迎えに来た。
 >  私と一緒に来てくれないか」
-“I've come to get you. Won't you come with me?”
+“I’ve come to get you. Won’t you come with me?”
 
 @29127 Quatre · カトル
 > 「…………」
 “...”
 
 @29128 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「サンクキングダムのことは
 >  聞いているだろう。力をかしてほしい」
-“You've heard about the Sanc Kingdom, haven't you? I need your strength.”
+“You’ve heard about the Sanc Kingdom, haven’t you? I need your strength.”
 
 @29129 Quatre · カトル
 > 「ノインさん……。僕は戦いの中で、
@@ -46,35 +50,39 @@ The wishes of the powerless are about to be trampled
 by unreasonable force. Please.”
 
 @29131 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「……戦う力を持つ者は、力のない
 >  人たちのために戦わなければいけない…
 “...Those who possess the power to fight must fight for those without power...
 ---
 >  それが義務だというんですね。
 >  ……わかりました
-You're saying that's our duty. ...I understand.
+You’re saying that’s our duty. ...I understand.
 ---
 >  ノインさん、サンクキングダムへ
 >  行きましょう」
-Noin, let's go to the Sanc Kingdom.”
+Noin, let’s go to the Sanc Kingdom.”
 
 @29132 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「ありがとう……。感謝する」
-“Thank you... I'm grateful.”
+“Thank you... I’m grateful.”
 
 @29133 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「いえ。僕たちガンダムパイロットは、
 >  やはり戦うことで
 “No. We Gundam pilots can only go on living
 ---
 >  生きて行くしかないんです。
 >  ヒイロがいたら、きっとそういうでしょう」
-by fighting, after all. If Heero were here, I'm sure he'd say the same.”
+by fighting, after all. If Heero were here, I’m sure he’d say the same.”
 
 @29134 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ・ユイ……? 君と一緒では
 >  なかったのか? どこに行った?」
-“Heero Yuy...? Weren't you together? Where did he go?”
+“Heero Yuy...? Weren’t you together? Where did he go?”
 
 @29135 Quatre · カトル
 > 「ヒイロは……。ヒイロは選んだんです。
@@ -82,10 +90,10 @@ by fighting, after all. If Heero were here, I'm sure he'd say the same.”
 “Heero... Heero chose it. The battlefield with the highest probability of death.”
 
 @29136 Specials · スペシャルズ
-# 审校：「このままつぶせ」译为“Crush it as we are”不通顺，改为“Crush it now!”以符合战斗命令语气。
+# 审校：全局：弯撇号／弯引号
 > 「ひるむな! ガンダムとはいえ、
 >  相手は1機だ。このままつぶせ!」
-“Don't falter! It may be a Gundam, but it's only one unit. Crush it now!”
+“Don’t falter! It may be a Gundam, but it’s only one unit. Crush it now!”
 
 @29137 Heero · ヒイロ
 > 「右上腕部被弾……
@@ -123,10 +131,10 @@ Ngh... So this is as far as I go...”
 “Check the pilot!”
 
 @29144 Specials · スペシャルズ
-# 审校：“blown away”不够准确，改为“blown to bits”更贴合“ふっとんじまってる”的惨状。
+# 审校：全局：弯撇号／弯引号
 > 「だめだ、ふっとんじまってる。
 >  今ので死んだんじゃないのか?」
-“No good, he's been blown to bits. Didn't that just kill him?”
+“No good, he’s been blown to bits. Didn’t that just kill him?”
 
 @29145 Specials · スペシャルズ
 > 「相手はガンダムパイロットだ。
@@ -137,18 +145,20 @@ Ngh... So this is as far as I go...”
 Search the area!”
 
 @29146 Treize · トレーズ
-# 审校：“from the heart”略显生硬，改为“with all my heart”更自然。
+# 审校：全局：弯撇号／弯引号
 > 「よく来てくれた。心から歓迎する」
-“I'm glad you came. I welcome you with all my heart.”
+“I’m glad you came. I welcome you with all my heart.”
 
 @29147 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「トレーズなのか」
-“So it's you, Treize.”
+“So it’s you, Treize.”
 
 @29148 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「問いただすまでもない。私を撃つのか
 >  ヒイロ・ユイ? それもいいだろう
-“There's no need to ask. Will you shoot me, Heero Yuy? That would be fine too.
+“There’s no need to ask. Will you shoot me, Heero Yuy? That would be fine too.
 ---
 >  さぁ、撃ちたまえ」
 Come now, shoot.”
@@ -158,9 +168,10 @@ Come now, shoot.”
 “I have no interest in your life.”
 
 @29150 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ・ユイ。君には
 >  今後の生き方を示す
-“Heero Yuy. I've prepared a guidepost to show you how to live
+“Heero Yuy. I’ve prepared a guidepost to show you how to live
 ---
 >  道しるべを用意した。使ってくれ。
 >  名を、エピオンという」
@@ -194,27 +205,29 @@ However, be careful. You must not become the victor while piloting this unit.”
 Also, there’s a carrier fleet offshore... and that one’s the larger force.”
 
 @29155 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「海岸に上陸されたら
 >  市街地がすぐ目の前だ
 “If they land on the coast, the city will be right in front of us.
 ---
 >  まったく、機雷の1つも
 >  敷設できんとは……」
-Honestly, to think we couldn't even lay a single mine...”
+Honestly, to think we couldn’t even lay a single mine...”
 
 @29156 Hayato · ハヤト
-# 审校：“putting on big faces”不自然，改为“acting all high and mighty”更符合英语表达。
+# 审校：全局：弯撇号／弯引号
 > 「こっちから、討って出ねえことを
 >  知って、でかいツラしてやがる
-“They know we won't come out and fight, so they're acting all high and mighty.
+“They know we won’t come out and fight, so they’re acting all high and mighty.
 ---
 >  全く、ヘドが出る連中だぜ」
 Really, they make me sick.”
 
 @29157 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「とうとう全面戦争だ。
 >  我々だけで守りきれるかどうか……」
-“It's finally all-out war. Whether we can hold out on our own...”
+“It’s finally all-out war. Whether we can hold out on our own...”
 
 @29158 Show · ショウ
 # 审校：“说什么悲伤的时候”直译
@@ -223,27 +236,30 @@ Really, they make me sick.”
 “But we’ve got no choice. This is no time to be sad about it.”
 
 @29159 Chum · チャム
+# 审校：全局：弯撇号／弯引号
 > 「そーよ! 悪い奴は
 >  みんなやっつけちゃえ!」
-“That's right! Let's beat up all the bad guys!”
+“That’s right! Let’s beat up all the bad guys!”
 
 @29160 Kamille · カミーユ
-# 审校：人名按词表统一
+# 审校：全局：弯撇号／弯引号
 > 「ははは、チャムがそういうと
 >  元気が出るな
 “Hahaha, when you say that, Chum, it cheers me up.
 ---
 >  今みたいな時は、救われるよ」
-At times like this, it's a real comfort.”
+At times like this, it’s a real comfort.”
 
 @29161 Chum · チャム
+# 审校：全局：弯撇号／弯引号
 > 「そーお? あたしはいつも通りよ?」
-“Really? I'm just the same as always, you know?”
+“Really? I’m just the same as always, you know?”
 
 @29162 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「おっしゃ、オレももう腹をくくったぜ。
 >  いつでも来やがれってんだ、タコメガネ!」
-“All right, I've made up my mind too. Come at me anytime, Octopus Glasses!”
+“All right, I’ve made up my mind too. Come at me anytime, Octopus Glasses!”
 
 @29163 Sayaka · さやか
 > 「タコメガネって……バスクのこと?」
@@ -281,12 +297,13 @@ At times like this, it's a real comfort.”
 “Mars. You are Mars, sent to Earth for this very moment.”
 
 @29171 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「……マーズ……!?
 >  俺は明神タケルだ
-“...Mars...?! I'm Takeru Myojin.
+“...Mars...?! I’m Takeru Myojin.
 ---
 >  マーズなんて名前じゃない!」
-My name isn't Mars!”
+My name isn’t Mars!”
 
 @29172 ???
 > 「……違う、お前はマーズだ。
@@ -312,13 +329,15 @@ Perhaps I must take a little more time...”
 “What?! Is it an enemy?”
 
 @29176 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「わかりません、見たこともない
 >  機体です……。あ、でも、これって……」
-“I don't know. It's a unit I've never seen before... Ah, but wait, this is...”
+“I don’t know. It’s a unit I’ve never seen before... Ah, but wait, this is...”
 
 @29177 Judau · ジュドー
+# 审校：全局：弯撇号／弯引号
 > 「おいおい、これってガンダムじゃねえの?」
-“Hey hey, isn't this a Gundam?”
+“Hey hey, isn’t this a Gundam?”
 
 @29178 Kamille · カミーユ
 > 「未登録の機体……、
@@ -326,12 +345,13 @@ Perhaps I must take a little more time...”
 “An unregistered unit... a new type of Gundam?”
 
 @29179 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「あれもガンダムっていうのか?
 >  まあ、ドモンたちのこともあるしなあ……
-“You call that a Gundam too? Well, there's Domon and the others, so...
+“You call that a Gundam too? Well, there’s Domon and the others, so...
 ---
 >  よくわからねえな、こればっかりは」
-I just can't tell anymore, not with this stuff.”
+I just can’t tell anymore, not with this stuff.”
 
 @29180 Heero · ヒイロ
 > 「こちらガンダムエピオン、
@@ -346,29 +366,34 @@ Requesting permission to land.”
 “Heero! Did you say Heero?!”
 
 @29182 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「何てこった……。あいつかよ!」
-“What the hell... It's him!”
+“What the hell... It’s him!”
 
 @29183 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ・ユイ……。
 >  君がくるとは思わなかった
-“Heero Yuy... I never thought you'd come.
+“Heero Yuy... I never thought you’d come.
 ---
 >  君もサンクキングダムを
 >  守ろうというのか?」
 So you intend to protect the Sanc Kingdom as well?”
 
 @29184 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「俺はこの国の存亡になど興味は
 >  ない。敵と戦いに来ただけだ」
-“I have no interest in this country's fate. I only came to fight the enemy.”
+“I have no interest in this country’s fate. I only came to fight the enemy.”
 
 @29185 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「で、その敵はOZなんでしょ?
 >  だったら同じことじゃない」
-“And that enemy is OZ, right? Then it's the same thing.”
+“And that enemy is OZ, right? Then it’s the same thing.”
 
 @29186 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ、この国は今、
 >  僕たちを必要としているんだ
 “Heero, this country needs us right now.
@@ -378,12 +403,13 @@ So you intend to protect the Sanc Kingdom as well?”
 We have to protect the ideal of total peace.
 ---
 >  ……君が来てくれて、うれしいよ」
-...I'm glad you came.”
+...I’m glad you came.”
 
 @29187 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「関係ない。おれはただ、
 >  エピオンにしたがってやって来ただけだ」
-“It doesn't matter. I simply came here following Epyon.”
+“It doesn’t matter. I simply came here following Epyon.”
 
 @29188 David · デビッド
 > 「ちっ、無愛想に訳のわからねえ
@@ -391,15 +417,17 @@ We have to protect the ideal of total peace.
 “Tch, still as curt and cryptic as ever, I see.”
 
 @29189 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「まあいいじゃないか。
 >  心強いことに変わりはない」
-“Well, isn't that fine? It's still reassuring to have him.”
+“Well, isn’t that fine? It’s still reassuring to have him.”
 
 @29190 Heero · ヒイロ
 > 「……リリーナか」
 “...Relena.”
 
 @29191 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ……ヒイロ、教えて。
 >  わたくしの考えは夢?
 “Heero... Heero, tell me. Is my way of thinking a dream?
@@ -410,16 +438,17 @@ Or is it a mistake? No matter how many pretty words I line up,
 ---
 >  私には誰ひとり
 >  助けることなどできない。そうでしょう?」
-I can't save a single person. Isn't that right?”
+I can’t save a single person. Isn’t that right?”
 
 @29192 Heero · ヒイロ
 > 「…………」
 “...”
 
 @29193 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「わたくしはいつも助けられてばかり。
 >  武力の必要ない平和など
-“I'm always the one being saved. Is a peace that doesn't need military force
+“I’m always the one being saved. Is a peace that doesn’t need military force
 ---
 >  ありえないのでしょうか?
 >  完全平和など
@@ -430,13 +459,14 @@ simply impossible? Is total peace nothing but
 the idle talk of those who cannot fight?”
 
 @29194 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「お前のしていることがなんであろうと、
 >  OZは待ってはくれない
-“Whatever it is you're doing, OZ won't wait for you.
+“Whatever it is you’re doing, OZ won’t wait for you.
 ---
 >  俺は兵士だ。戦うことしかできない
 >  そして、いまは戦うことが必要だ
-I'm a soldier. All I can do is fight. And right now, fighting is what's needed.
+I’m a soldier. All I can do is fight. And right now, fighting is what’s needed.
 ---
 >  たとえ相手が、同じ地球人でも」
 Even if the enemy is a fellow Earthling.”
@@ -447,15 +477,16 @@ Even if the enemy is a fellow Earthling.”
 “I will... someday find it. What it is that drives everyone to fight.”
 
 @29196 Milliardo · ミリアルド
-# 审校：“間もなく大気圏だ”指即将进入大气层，原译“The atmosphere is coming up soon”不自然；改为更贴切的表达。
+# 审校：全局：弯撇号／弯引号
 > 「間もなく大気圏だ、
 >  このままサンクキングダムに突入する!
-“We're about to enter the atmosphere. We'll plunge into the Sanc Kingdom as is!
+“We’re about to enter the atmosphere. We’ll plunge into the Sanc Kingdom as is!
 ---
 >  急げ、急いでくれ、ゼロ!」
 Hurry, Zero, hurry!”
 
 @29197 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「サンクキングダムの政府代表、
 >  および国民に告ぐ
 “To the government representatives and citizens of the Sanc Kingdom:
@@ -470,7 +501,7 @@ your head of state, Relena Peacecraft.
 ---
 >  そうすれば貴国の安全は、
 >  我々OZ治安維持軍が
-If you do so, your nation's safety will be
+If you do so, your nation’s safety will be
 ---
 >  保証するものである。なお、これは
 >  最後通告であり
@@ -489,9 +520,10 @@ to maintain order in the Earth Sphere. I repeat: should you fail to respond, we 
 “...There is no reply.”
 
 @29199 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「当たり前だ。この期に及んで
 >  無条件降伏などされて
-“Of course there isn't. As if they'd surrender unconditionally
+“Of course there isn’t. As if they’d surrender unconditionally
 ---
 >  たまるものかよ。全軍に告ぐ!
 >  ただ今より
@@ -506,8 +538,9 @@ we begin the operation to subdue the Sanc Kingdom.
 Eliminate all hostiles! Begin the attack!”
 
 @29200 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「ここは危険だから早くお逃げなさい」
-“It's dangerous here, so please flee at once.”
+“It’s dangerous here, so please flee at once.”
 
 @29201 Noin · ノイン
 > 「私はここにおります。
@@ -515,13 +548,14 @@ Eliminate all hostiles! Begin the attack!”
 “I will stay here. ...I must protect Lady Relena.”
 
 @29202 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「逃げませんわ。この事態の
 >  なりゆきを見届けなくては
-“I won't run. I must see how this situation unfolds.
+“I won’t run. I must see how this situation unfolds.
 ---
 >  ここ……サンクキングダムにきた意味が
 >  ありませんもの」
-Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
+Otherwise, there’d be no point in my coming here... to the Sanc Kingdom.”
 
 @29203 Milliardo · ミリアルド
 > 「なぜ、お前がここに……」
@@ -533,9 +567,10 @@ Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
 “Zechs. ...Choosing that machine was a mistake on your part.”
 
 @29205 Milliardo · ミリアルド
+# 审校：全局：弯撇号／弯引号
 > 「ヒイロ、状況を確認する……
 >  貴様は敵か!?」
-“Heero, I'm checking the situation... Are you an enemy?!”
+“Heero, I’m checking the situation... Are you an enemy?!”
 
 @29206 Heero · ヒイロ
 > 「ゼロに聞け」
@@ -631,9 +666,10 @@ and fight. Cease combat immediately.
 “Lady Relena...”
 
 @29220 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「この身はロームフェラに
 >  お預けしましょう」
-“I shall place myself in Romefeller's custody.”
+“I shall place myself in Romefeller’s custody.”
 
 @29221 Dorothy · ドロシー
 # 审校：Dorothy's ornate, formal noblewoman voice requires no contractions and more formal phrasing.
@@ -707,9 +743,10 @@ and fight. Cease combat immediately.
 “Lady Relena...”
 
 @29231 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「この身はロームフェラに
 >  お預けしましょう」
-“I shall place myself in Romefeller's custody.”
+“I shall place myself in Romefeller’s custody.”
 
 @29232 Dorothy · ドロシー
 # 审校：Same as L9: Dorothy's ornate, formal noblewoman voice requires no contractions and more formal phrasing.
@@ -737,12 +774,14 @@ Do not worry, I shall come along with you. I shall not let any harm come to you.
 “Ngh... A retreat, is it...”
 
 @29236 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「ちょうどいい、決着をつける!」
-“Perfect timing. Let's settle this!”
+“Perfect timing. Let’s settle this!”
 
 @29237 Milliardo · ミリアルド
+# 审校：全局：弯撇号／弯引号
 > 「君が望むなら、うけてたとう!」
-“If that's what you wish, I'll take you on!”
+“If that’s what you wish, I’ll take you on!”
 
 @29238 Dorothy · ドロシー
 > 「さあリリーナ様、まいりましょう
@@ -768,9 +807,10 @@ I shall accompany you.”
 But... even I do not know what the Foundation intends to do with you.”
 
 @29241 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > (わからない……この先どうやって
 >  理想を実現したらいいのか……)
-(I don't know... how I should go about realizing my ideal from here...)
+(I don’t know... how I should go about realizing my ideal from here...)
 
 @29242 Dorothy · ドロシー
 # 审校：Dorothy's formal voice: no contractions.
@@ -798,9 +838,10 @@ Surely he will not do anything unkind... So please, rest easy.”
 “That is something to look forward to once we arrive. Heh heh heh...”
 
 @29245 Dorothy · ドロシー
+# 审校：全局：弯撇号／弯引号
 > 「おじいさま、リリーナ・ピースクラフト様
 >  をお連れいたしました」
-“Grandfather, I've brought Lady Relena Peacecraft.”
+“Grandfather, I’ve brought Lady Relena Peacecraft.”
 
 @29246 Dermail · デルマイユ
 > 「おおドロシー、ご苦労だった。
@@ -826,17 +867,19 @@ Surely he will not do anything unkind... So please, rest easy.”
 “Are the pursuers still after us?!”
 
 @29251 Ginrei · 銀鈴
+# 审校：全局：弯撇号／弯引号
 > 「いえ……。どうやらふりきったみたいです。
 >  ミノフスキー粒子
-“No... It seems we've shaken them off. Minovsky particle
+“No... It seems we’ve shaken them off. Minovsky particle
 ---
 >  散布、終了します」
 dispersion, terminating.”
 
 @29252 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「そうか、ひとまず安心だが……
 >  こういう結果になるとは……」
-“I see. That's a relief for now, but... to think it would end like this...”
+“I see. That’s a relief for now, but... to think it would end like this...”
 
 @29253 Koji · 甲児
 > 「くそっ、こんなことってありかよ!
@@ -867,13 +910,14 @@ We have no right to stop her.”
 We have no right to stop her.”
 
 @29256 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「リリーナ王女が自分で
 >  決めたってんだから、しょうがねぇさ
-“Princess Relena decided it herself, so there's nothin' we can do.
+“Princess Relena decided it herself, so there’s nothin’ we can do.
 ---
 >  俺たちにはそれを止める
 >  権利なんかねぇ」
-We've got no right to stop her.”
+We’ve got no right to stop her.”
 
 @29257 Manami · マナミ（按段落 3DD4）
 # 审校：去掉 can't be helped
@@ -886,23 +930,26 @@ We've got no right to stop her.”
 We don’t have any right to stop her.”
 
 @29258 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「それにしたって、ひでえ話だぜ。
 >  別に損得で戦ってるわけじゃねえが
-“Even so, this is a rough deal. It's not like we're fighting for profit,
+“Even so, this is a rough deal. It’s not like we’re fighting for profit,
 ---
 >  やりきれねえよなあ。あーあ、
 >  また宿なしの逃亡生活かい」
-but it's hard to swallow. Ahh, back to life as homeless fugitives, huh.”
+but it’s hard to swallow. Ahh, back to life as homeless fugitives, huh.”
 
 @29259 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと、そんないい方やめなさい!
 >  いちばんつらいのは、リリーナさんなのよ!」
-“Hey, don't put it like that! The one hurting most is Miss Relena!”
+“Hey, don’t put it like that! The one hurting most is Miss Relena!”
 
 @29260 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「……すまん。どうも、気持ちの
 >  持って行き所がないみたいだ」
-“...Sorry. I guess I just don't know where to put these feelings.”
+“...Sorry. I guess I just don’t know where to put these feelings.”
 
 @29261 Alan · アラン
 > 「……考えようによっては、
@@ -938,33 +985,34 @@ We still have things we must do elsewhere...
 For the sake of future complete peace.”
 
 @29264 Eiji · エイジ
-# 审校：原文“俺たちだって……”承接前句，补出并列关系更自然。
+# 审校：全局：弯撇号／弯引号
 > 「そうですね……。そう思いましょう。
 >  姉さんだって戦ってる
-“You're right... Let's believe that. My sister is fighting too,
+“You’re right... Let’s believe that. My sister is fighting too,
 ---
 >  俺たちだって……」
 and so are we...”
 
 @29265 Koji · 甲児
-# 审校：精读：去破折号
+# 审校：全局：弯撇号／弯引号
 > 「さすがアランさん、いいこというぜ。
 >  で、これからどうするんだ?」
-“That's Alan for you. Well said. So, what do we do now?”
+“That’s Alan for you. Well said. So, what do we do now?”
 
 @29266 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「さあな。考えてない」
-“Beats me. I haven't thought about it.”
+“Beats me. I haven’t thought about it.”
 
 @29267 Koji · 甲児
 > 「あらら……」
 “Oh, come on...”
 
 @29268 Amuro · アムロ
-# 审校：补译：原稿占位符丢失
+# 审校：全局：弯撇号／弯引号
 > 「ははは、まあいいさ。これから改めて、
 >  {HeroMech}の
-“Hahaha, well, that's fine. From here on, it's a fresh start for the {HeroMech}.
+“Hahaha, well, that’s fine. From here on, it’s a fresh start for the {HeroMech}.
 ---
 >  再出発というわけだ。
 >  みんな、元気を出そう」
@@ -975,9 +1023,10 @@ Come on, everyone, chin up.”
 “Ngh... Where is this...?”
 
 @29270 Milliardo · ミリアルド
+# 审校：全局：弯撇号／弯引号
 > 「気づいたか……。
 >  ここは{HeroMech}の戦艦だ」
-“You're awake... This is the {HeroMech}'s battleship.”
+“You’re awake... This is the {HeroMech}’s battleship.”
 
 @29271 Heero · ヒイロ
 > 「……なぜ、こんなところにいる!?」
@@ -1014,13 +1063,14 @@ completely unconscious.”
 “Where do you intend to go?”
 
 @29277 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「俺はゼロで行く、
 >  貴様はエピオンに乗れ……
-“I'll go in the ZERO. You take the Epyon...
+“I’ll go in the ZERO. You take the Epyon...
 ---
 >  エピオンはトレーズの作った機体だ。
 >  俺には奴の考えがわからん……」
-The Epyon is a machine Treize built. I can't understand what he was thinking...”
+The Epyon is a machine Treize built. I can’t understand what he was thinking...”
 
 @29278 Milliardo · ミリアルド
 > 「何だと? 貴様、
@@ -1047,8 +1097,9 @@ The Epyon is a machine Treize built. I can't understand what he was thinking...�
 “Noin... So it is Noin.”
 
 @29283 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「おひさしぶりです……」
-“It's been a long time...”
+“It’s been a long time...”
 
 @29284 Milliardo · ミリアルド
 # 审校：Milliardo 的 voice 是更庄重，将 'Yeah' 改为 'Yes' 以符合其庄重口吻。
@@ -1056,9 +1107,10 @@ The Epyon is a machine Treize built. I can't understand what he was thinking...�
 “Yes, that is right...”
 
 @29285 Noin · ノイン
+# 审校：全局：弯撇号／弯引号
 > 「申しわけありません、
 >  私がついていながら、リリーナ様を……」
-“I'm sorry. I was with her, and yet Lady Relena...”
+“I’m sorry. I was with her, and yet Lady Relena...”
 
 @29286 Milliardo · ミリアルド
 # 审校：精读：去破折号
@@ -1105,10 +1157,10 @@ I mean to find out what it was.”
 Report in detail.”
 
 @29292 Tubarov · ツバロフ
-# 审校：精读：去破折号
+# 审校：全局：弯撇号／弯引号
 > 「それが、皆目わからないのです。
 >  登録されている、いかなるタイプの
-“That's just it. We have no idea. It doesn't match any registered type of
+“That’s just it. We have no idea. It doesn’t match any registered type of
 ---
 >  艦とも合致しません。
 >  あるいはムゲ帝国の
@@ -1129,8 +1181,9 @@ but that possibility seems unlikely as well...”
 Maintain a state of alert just in case. Report anything that happens.”
 
 @29294 Tubarov · ツバロフ
+# 审校：全局：弯撇号／弯引号
 > 「は、かしこまりました。それでは……」
-“Yes, understood. Then, if you'll excuse me...”
+“Yes, understood. Then, if you’ll excuse me...”
 
 @29295 Jamitov · ジャミトフ
 # 审校：Jamitov 的 voice 是 grave, formal，将 'it's' 改为 'it is'，'doesn't' 改为 'does not' 以符合其庄重口吻。

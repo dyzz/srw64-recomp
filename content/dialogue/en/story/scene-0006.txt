@@ -1,13 +1,15 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @17887 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「そういえば ローレンス、
 >  前に言っていたスイームルグの
 “By the way, Lawrence, that design document you mentioned before,
 ---
 >  背面に取りつけるはずだった
 >  ものの設計図っていうのは
-the one for the thing that was supposed to attach to the Sweemurg's
+the one for the thing that was supposed to attach to the Sweemurg’s
 ---
 >  どうなったんだい?
 back, what ever happened to it?
@@ -17,9 +19,10 @@ back, what ever happened to it?
 Our engineers said it was a booster.”
 
 @17888 主角
+# 审校：全局：弯撇号／弯引号
 > 「あら、そういえばあたしも聞いたこと
 >  なかったわ。どうなの?」
-“Oh, now that you mention it, I'd never heard about that either. So what is it?”
+“Oh, now that you mention it, I’d never heard about that either. So what is it?”
 
 @17889 Lawrence · ローレンス
 > 「はい、確かわたくしの記憶では、
@@ -63,8 +66,9 @@ so I do not know what became of it.”
 he wants us to come.”
 
 @17894 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「わかった、すぐいこう」
-“Got it. Let's go right away.”
+“Got it. Let’s go right away.”
 
 @17895 Garrison · ギャリソン
 > 「南方の山中に設置した
@@ -75,9 +79,10 @@ he wants us to come.”
 installed in the mountains to the south.”
 
 @17896 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「これは……スペシャルズか?
 >  たいした数じゃないな」
-“Is this... the Specials? That's not much of a force.”
+“Is this... the Specials? That’s not much of a force.”
 
 @17897 主角
 > 「スペシャルズですって!?」
@@ -93,10 +98,10 @@ installed in the mountains to the south.”
 “Such as?”
 
 @17900 Garrison · ギャリソン
-# 审校：Garrison's address card specifies 'Mr. Banjo' for Banjo, but for Lawrence the Japanese uses 殿; as a fellow butler, 'Mr. Lawrence' is more appropriate than 'Lord Lawrence'.
+# 审校：全局：弯撇号／弯引号
 > 「はい、ローレンス殿の
 >  ご協力により
-“Yes. With Mr. Lawrence's cooperation,
+“Yes. With Mr. Lawrence’s cooperation,
 ---
 >  私の情報網でも、ロームフェラや
 >  スペシャルズの動きならば
@@ -114,16 +119,17 @@ Yet according to that, there are currently no regular Specials units
 operating in this region.”
 
 @17901 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「……正規部隊ではない
 >  スペシャルズか……
-“...Specials who aren't a regular unit, huh...
+“...Specials who aren’t a regular unit, huh...
 ---
 >  確かに気になるな
 That is certainly concerning.
 ---
 >  帝国は僕たちがここにいるのは
 >  すでにわかっているはずだから
-The Empire should already know that we're here,
+The Empire should already know that we’re here,
 ---
 >  この施設を攻撃するには
 >  少なすぎる戦力だ
@@ -131,15 +137,16 @@ so this is far too few forces to attack this facility.
 ---
 >  彼らの目的がわからないうちは、
 >  うかつに動けないか」
-Until we know their objective, we can't move carelessly.”
+Until we know their objective, we can’t move carelessly.”
 
 @17902 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「いいじゃねぇか、そんなの
 >  とっつかまえて聞けば
-“Who cares? Let's just grab one of them and ask.
+“Who cares? Let’s just grab one of them and ask.
 ---
 >  オレが、ちょっと行ってきてやるぜ」
-I'll go do it myself.”
+I’ll go do it myself.”
 
 @17903 Simone · シモーヌ
 > 「だめよ甲児。敵の出方を待つっ
@@ -152,14 +159,16 @@ I'll go do it myself.”
 “Banjo, the enemy has entered this area!”
 
 @17905 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「来たか……さて、どうなるかな。
 >  映像出せるかい?」
-“So they've come... Now then, how will this play out? Can you put up the visuals?”
+“So they’ve come... Now then, how will this play out? Can you put up the visuals?”
 
 @17906 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「なんでぇ、ほんとにこれっぽっちかよ。
 >  どっかにまだ隠れてんじゃないの?」
-“What the heck, is this really all of them? Aren't some still hiding somewhere?”
+“What the heck, is this really all of them? Aren’t some still hiding somewhere?”
 
 @17907 Simone · シモーヌ
 > 「可能性は低いわね」
@@ -170,8 +179,9 @@ I'll go do it myself.”
 (Hm... that is... could it be...)
 
 @17909 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「とりあえず、僕たちも出よう」
-“For now, let's head out too.”
+“For now, let’s head out too.”
 
 @17910 Lawrence · ローレンス
 > 「……やはり間違いない。
@@ -219,8 +229,9 @@ I'll go do it myself.”
 I searched for you for quite some time.”
 
 @17918 主角
+# 审校：全局：弯撇号／弯引号
 > 「誰!?」
-“Who's there?!”
+“Who’s there?!”
 
 @17919 ???
 > 「わたくしの声をお忘れになったの
@@ -238,15 +249,16 @@ I searched for you for quite some time.”
 “It seems you have remembered me.”
 
 @17922 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「じいさん、あれ誰だい?
 >  あんたも知ってるんだろ?」
-“Old man, who is that? You know her too, don't you?”
+“Old man, who is that? You know her too, don’t you?”
 
 @17923 Lawrence · ローレンス
-# 审校：词条：エルブルス=Elbulls
+# 审校：全局：弯撇号／弯引号
 > 「……{PartnerSurname}子爵家の、
 >  {PartnerName}お嬢様です
-“...This is the {PartnerSurname} viscountcy's Lady {PartnerName}.
+“...This is the {PartnerSurname} viscountcy’s Lady {PartnerName}.
 ---
 >  {HeroName}お嬢様の
 >  いとこにあたる方です
@@ -254,7 +266,7 @@ She is a cousin of Lady {HeroName}.
 ---
 >  なるほど、エルブルスの設計図は
 >  {PartnerSurname}家にあったと
-I see, so the blueprints for the Elbulls were in the {PartnerSurname} family's
+I see, so the blueprints for the Elbulls were in the {PartnerSurname} family’s
 ---
 >  いうわけですな」
 hands all along.”
@@ -269,9 +281,10 @@ hands all along.”
 So will that girl join us too, then?”
 
 @17925 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「いや、どうやらそんな雰囲気
 >  じゃないようだ
-“No, it doesn't seem that way.
+“No, it doesn’t seem that way.
 ---
 >  それに、あれはスペシャルズで
 >  建造されたものに違いない」
@@ -320,9 +333,10 @@ even the {PartnerSurname} family has come under suspicion!”
 put in a good word for you.”
 
 @17931 主角
+# 审校：全局：弯撇号／弯引号
 > 「待って{PartnerName}!
 >  あなたは間違っているわ
-“Wait, {PartnerName}! You're wrong.
+“Wait, {PartnerName}! You’re wrong.
 ---
 >  ロームフェラは……」
 Romefeller is...”
@@ -359,9 +373,10 @@ Our enemy is supposed to be the Muge Zorbados Empire?!”
 “There is nothing more to discuss!”
 
 @17937 对手
+# 审校：全局：弯撇号／弯引号
 > 「くっ、なんてこと、このわたくしが……
 >  撤退します!
-“Ngh, how could this happen... to me... I'm retreating!
+“Ngh, how could this happen... to me... I’m retreating!
 ---
 >  {HeroName}さん、わたくしは必ず
 >  アナタを倒してご覧にいれますわ!」
@@ -412,14 +427,14 @@ One day, I will most certainly defeat you.”
 here and now! It is for your own good!”
 
 @17944 Banjo · 万丈
-# 审校：马奈美是女性
+# 审校：全局：弯撇号／弯引号
 > 「{HeroNick}は僕たちの
 >  大切な仲間だ
 “{HeroNick} is a precious comrade of ours.
 ---
 >  悪いが、君に連れていかせる
 >  わけにはいかない」
-Sorry, but I can't let you take her away.”
+Sorry, but I can’t let you take her away.”
 
 @17945 对手
 > 「破嵐万丈……反帝国組織
@@ -450,17 +465,17 @@ family names or pride!”
 If you mean to stand in my way, I will show you no mercy!”
 
 @17948 Koji · 甲児
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「やいやいやい!
 >  お家だか財団だか知らないが
-“Hey, hey, hey! I don't care if it's your family or your Foundation,
+“Hey, hey, hey! I don’t care if it’s your family or your Foundation,
 ---
 >  勝手なことばっかり言うな!
 stop saying whatever you please!
 ---
 >  いくら顔がよくったって、
 >  こっちだって黙っちゃいないぜ!」
-No matter how pretty your face is, we're not gonna stay quiet either!”
+No matter how pretty your face is, we’re not gonna stay quiet either!”
 
 @17949 对手
 > 「お黙りなさいッ!
@@ -480,36 +495,41 @@ No matter how pretty your face is, we're not gonna stay quiet either!”
 “Man, women sure are scary.”
 
 @17953 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「あら、もっと怖い思いを
 >  させてあげてもいいのよ?」
-“Oh, I could give you an even scarier time if you'd like?”
+“Oh, I could give you an even scarier time if you’d like?”
 
 @17954 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「甲児くん、不謹慎よ」
-“Koji, that's insensitive.”
+“Koji, that’s insensitive.”
 
 @17955 主角
 > 「…………」
 “...”
 
 @17956 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「あ、わりぃ、そういうつもりじゃ……」
-“Ah, sorry, I didn't mean it like that...”
+“Ah, sorry, I didn’t mean it like that...”
 
 @17957 主角
+# 审校：全局：弯撇号／弯引号
 > 「いいのよ、別に。気をつかって
 >  いただく必要はないわ」
-“It's fine. You don't need to worry about me.”
+“It’s fine. You don’t need to worry about me.”
 
 @17958 Sayaka · さやか
-# 审校：艾莎是女性
+# 审校：全局：弯撇号／弯引号
 > 「でも……いとこなんでしょ、あの人?
 >  きっとわかってもらえるわよ」
-“But... she's your cousin, isn't she? I'm sure she'll understand.”
+“But... she’s your cousin, isn’t she? I’m sure she’ll understand.”
 
 @17959 主角
+# 审校：全局：弯撇号／弯引号
 > 「ええ……あたしもそう思いたいけれど……」
-“Yes... I'd like to think so too, but...”
+“Yes... I’d like to think so too, but...”
 
 @17960 Lawrence · ローレンス
 > 「お嬢様、
@@ -528,10 +548,10 @@ Please, do try to calm yourself a little.”
 “Simone, what do you think?”
 
 @17963 Simone · シモーヌ
-# 审校：艾莎是女性
+# 审校：全局：弯撇号／弯引号
 > 「{PartnerName}のこと? パーティーで
 >  何度かみかけたことがあるだけだから、
-“About {PartnerName}? I've only seen her a few times at parties, so I can't really say,
+“About {PartnerName}? I’ve only seen her a few times at parties, so I can’t really say,
 ---
 >  なんともいえないけど……何か
 >  価値観を一新させるような
@@ -539,28 +559,30 @@ but... unless something happens to completely change her values,
 ---
 >  出来事でもないかぎり、何度でも
 >  来るわね」
-she'll keep coming back, no matter how many times.”
+she’ll keep coming back, no matter how many times.”
 
 @17964 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「そうか。しかしいくら素敵なお嬢さん
 >  でも、スペシャルズの一員として
 “I see. But no matter how lovely a young lady she is, as long as she comes
 ---
 >  来る以上は、こちらも手段を
 >  選ぶわけにはいかないな」
-as a member of the Specials, we can't afford to hold back.”
+as a member of the Specials, we can’t afford to hold back.”
 
 @17965 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「それはそうなんだけどね。ただ{HeroNick}
 >  に相手をさせるのは、やめた方が
-“That's true, but... it might be better not to have {HeroNick} face her.
+“That’s true, but... it might be better not to have {HeroNick} face her.
 ---
 >  いいかもしれないわ。あの娘みたいな
 >  タイプって、後に引けなくなってくると
-With that type of girl, once she's backed into a corner,
+With that type of girl, once she’s backed into a corner,
 ---
 >  何をするかわからないもの」
-there's no telling what she'll do.”
+there’s no telling what she’ll do.”
 
 @17966 Garrison · ギャリソン
 > 「万丈様」
@@ -571,9 +593,11 @@ there's no telling what she'll do.”
 “What is it?”
 
 @17968 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「それが、
 >  地球解放戦線機構の
-“It's just that we've received a telegram from General Igor of the Liberation Front of the Earth.
+“It’s just that we’ve received a telegram from General Igor of the Liberation Front of the Earth.
 ---
 >  イゴール将軍よりの電文で
 >  親書を持ったスタッフを1人
@@ -583,9 +607,10 @@ A staff member carrying a personal letter has been sent
 our way, it seems.”
 
 @17969 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「イゴール将軍が? そうか、
 >  アランのことは知らないのだったな
-“General Igor? I see... so he doesn't know about Alan yet.
+“General Igor? I see... so he doesn’t know about Alan yet.
 ---
 >  しかし、この時期に僕たちに
 >  接触してくるとは……

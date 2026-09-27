@@ -5,17 +5,19 @@
 “Governor Gresco... is dead?”
 
 @22053 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ああ、なんかみんなで大騒ぎしてたぜ。
 >  一応敵軍の親玉だろ?
-“Yeah, everyone was making a huge fuss about it. He was the enemy army's big boss, right?
+“Yeah, everyone was making a huge fuss about it. He was the enemy army’s big boss, right?
 ---
 >  ざまぁみろって感じだよな」
 Serves him right, if you ask me.”
 
 @22054 Prof. Yumi · 弓教授
+# 审校：全局：弯撇号／弯引号
 > 「なんでも各地の中継局を通じて
 >  全地球圏規模で
-“Apparently it's being broadcast across the entire Earth Sphere
+“Apparently it’s being broadcast across the entire Earth Sphere
 ---
 >  放送が行われているそうだよ」
 through relay stations everywhere.”
@@ -34,29 +36,32 @@ through relay stations everywhere.”
 “Hmm... The question is how this will affect the situation...”
 
 @22058 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「お、始まっちまってるぜ」
-“Oh, it's already started.”
+“Oh, it’s already started.”
 
 @22059 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「あーやだやだ。
 >  こんな盛大な葬式みたことないぜ」
-“Ugh, give me a break. I've never seen such a grand funeral.”
+“Ugh, give me a break. I’ve never seen such a grand funeral.”
 
 @22060 Roux · ルー
-# 审校：ルー的爽利吐槽口吻中“would you”略显正式，改为“would ya”更贴合其爱吐槽的少女语气。
+# 审校：全局：弯撇号／弯引号
 > 「ちょっとぉ、もっとボリューム大きくして
 >  くれないと、聞こえないじゃない」
-“Hey, turn it up louder, would ya? I can't hear a thing.”
+“Hey, turn it up louder, would ya? I can’t hear a thing.”
 
 @22061 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「あ、はい、今あげます」
-“Oh, yes, I'll turn it up now.”
+“Oh, yes, I’ll turn it up now.”
 
 @22062 Le Cain · ル・カイン
-# 审校：“strive to build” 改为 “devote myself to building”，更贴合宣誓语气。
+# 审校：全局：弯撇号／弯引号
 > 「……全兵士諸君、私はここに、
 >  亡き父の遺志をつぎ
-“...To all soldiers, I hereby vow to carry on my late father's will
+“...To all soldiers, I hereby vow to carry on my late father’s will
 ---
 >  帝国と地球人のための
 >  理想国家の建設に
@@ -135,9 +140,10 @@ all things, is there not?”
 purified by fire. Treize Khushrenada.”
 
 @22073 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「はい。すべて閣下のご命令のまま、
 >  反乱分子のせん滅作戦
-“Yes. Everything is in accordance with Your Excellency's orders. The operation to annihilate the rebels
+“Yes. Everything is in accordance with Your Excellency’s orders. The operation to annihilate the rebels
 ---
 >  および主要都市、コロニーの
 >  再建計画が整っております」
@@ -162,23 +168,26 @@ For the birth of the new, the ideal, receive the baptism of fire!!”
 “Yeah, they intend to go all out.”
 
 @22077 Ryo · 亮
+# 审校：全局：弯撇号／弯引号
 > 「今となっては抵抗組織の中では
 >  俺たちがいちばん戦力がある
-“At this point, we're the strongest fighting force among the resistance groups.
+“At this point, we’re the strongest fighting force among the resistance groups.
 ---
 >  連中の最大の標的は
 >  俺たちだと考えて間違いないだろう」
-There's no doubt we're their biggest target.”
+There’s no doubt we’re their biggest target.”
 
 @22078 Hayato · ハヤト
+# 审校：全局：弯撇号／弯引号
 > 「どれだけの数が攻めてくるのか、
 >  見当もつかんな」
-“I can't even guess how many they'll send at us.”
+“I can’t even guess how many they’ll send at us.”
 
 @22079 Daisaku · 大作
+# 审校：全局：弯撇号／弯引号
 > 「それじゃあ……
 >  僕たちはどうなるんですか!?」
-“Then... what's going to happen to us?!”
+“Then... what’s going to happen to us?!”
 
 @22080 Quatre · カトル
 > 「……さすがに……
@@ -190,17 +199,19 @@ There's no doubt we're their biggest target.”
 “...”
 
 @22082 Shinobu · 忍
+# 审校：全局：弯撇号／弯引号
 > 「ちきしょう! 冗談じゃないぜ!
 >  そう簡単にやられてたまるかよ!!」
-“Damn it! You've gotta be kidding! Like hell I'll let them beat us that easily!!”
+“Damn it! You’ve gotta be kidding! Like hell I’ll let them beat us that easily!!”
 
 @22083 Anna · アンナ
 > 「……エイジ?」
 “...Eiji?”
 
 @22084 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「艦長たちに伝えてくるよ」
-“I'll go tell the captains.”
+“I’ll go tell the captains.”
 
 @22085 Shapiro · シャピロ
 > 「……お前はどう思う、ルーナ?」
@@ -242,9 +253,10 @@ under the dominion of the Muge Zorbados Empire?”
 “Hmm... Can you get in contact with the Asteroid Base, Luna?”
 
 @22092 Luna · ルーナ
+# 审校：全局：弯撇号／弯引号
 > 「ル・カインの手の者が
 >  通信施設を押さえておりますが
-“Le Cain's men have seized the communications facility, but
+“Le Cain’s men have seized the communications facility, but
 ---
 >  可能でありましょう」
 it may still be possible.”
@@ -301,13 +313,14 @@ I thought I should report first.”
 “That will be all! Dismissed!”
 
 @22102 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「……およそ理想というものを持たぬ
 >  愚か者どもめ……
 “...Fools, every one of them, with not a shred of idealism...
 ---
 >  アステロイド前線基地から
 >  将軍どもを呼んだか……」
-So they've summoned the generals from the Asteroid Frontline Base...”
+So they’ve summoned the generals from the Asteroid Frontline Base...”
 
 @22103 Julia · ジュリア
 > 「…………」
@@ -329,7 +342,7 @@ I will not let the nation I dreamed of end as a mere dream...”
 (Domination is power...)
 
 @22106 Le Cain · ル・カイン
-# 审校：“told me, again and again, to carry the pride” 改为 “kept telling me, from my earliest days, to hold fast to the pride”，更流畅。
+# 审校：全局：弯撇号／弯引号
 > 「……父上! あなたが悪い!
 >  幼き日より帝国の誇りを
 “...Father! This is your fault! You were the one who kept telling me,
@@ -339,7 +352,7 @@ I will not let the nation I dreamed of end as a mere dream...”
 from my earliest days, to hold fast to the pride of the Empire!
 ---
 >  ……あなたではありませんか……」
-...It was you, wasn't it...”
+...It was you, wasn’t it...”
 
 @22107 Julia · ジュリア
 > 「ル・カイン様……」
@@ -355,6 +368,7 @@ from my earliest days, to hold fast to the pride of the Empire!
 “...”
 
 @22110 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「祈れ、祈ってくれ。祈るのだ!
 “Pray, pray for him. Pray!
 ---
@@ -363,7 +377,7 @@ Pray for my father!
 ---
 >  お前が聖女と呼ばれるのならば
 >  父のため……そしてこの私のために
-If you are called a saint, then for my father's sake... and for mine,
+If you are called a saint, then for my father’s sake... and for mine,
 ---
 >  祈ってくれ。すぐれた者に加護が
 >  あるように……己の父を手にかけた
@@ -373,14 +387,17 @@ pray. That the superior may be blessed... For a pitiful man
 who laid hands on his own father... pray!”
 
 @22111 Roanne · ロアン
+# 审校：全局：弯撇号／弯引号
 > 「なんの用だい、こんなところに
 >  呼び出して。僕は忙しいんだよ」
-“What do you want, calling me out to a place like this? I'm busy.”
+“What do you want, calling me out to a place like this? I’m busy.”
 
 @22112 Arthur · アーサー
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ロアン→Roanne
 > 「ロアン、今まで敵に従うフリをして、
 >  ひとりでがんばってきて
-“Roanne, all this time you've pretended to obey the enemy and fought on all alone.
+“Roanne, all this time you’ve pretended to obey the enemy and fought on all alone.
 ---
 >  つらかっただろうな。でも僕にだけは
 >  本当のことをいってくれていいんだよ」
@@ -391,44 +408,47 @@ It must have been hard. But you can tell me the truth, if no one else.”
 “What are you talking about?”
 
 @22114 Arthur · アーサー
+# 审校：全局：弯撇号／弯引号
 > 「またまた。僕にはわかってるんだよ。
 >  みんなル・カインの信頼を得るための
-“Come on. I know. It's all an act to win Le Cain's
+“Come on. I know. It’s all an act to win Le Cain’s
 ---
 >  お芝居なんだろう?」
-trust, isn't it?”
+trust, isn’t it?”
 
 @22115 Roanne · ロアン
+# 审校：全局：弯撇号／弯引号
 > 「僕は帝国の方がすばらしいと
 >  思ったからそうしているだけだ
-“I'm doing this simply because I think the Empire is superior.
+“I’m doing this simply because I think the Empire is superior.
 ---
 >  用っていうのがそれだけなら、
 >  僕はもう行くよ」
-If that's all you wanted, I'm leaving.”
+If that’s all you wanted, I’m leaving.”
 
 @22116 Arthur · アーサー
 > 「待ってくれよ、ロアン!」
 “Wait, Roanne!”
 
 @22117 Roanne · ロアン
+# 审校：全局：弯撇号／弯引号
 > 「相手が僕だからよかったものの、
 >  誰かに聞かれたら銃殺刑ものだよ
-“It's lucky it was only me, but if anyone heard you, it'd be a firing squad.
+“It’s lucky it was only me, but if anyone heard you, it’d be a firing squad.
 ---
 >  もう僕の前に顔を見せないでくれ。
 >  いいね」
-Don't show your face in front of me again. Understood?”
+Don’t show your face in front of me again. Understood?”
 
 @22118 Arthur · アーサー
 > 「ロアン、ロアンッ!!」
 “Roanne, Roanne!!”
 
 @22119 Duo · デュオ
-# 审校：迪奥的台词应体现其话痨、俚语化的口吻，原文「おっぱじめた」语气更粗俗，现译过于平淡。
+# 审校：全局：弯撇号／弯引号
 > 「聞いたかよ、奴ら
 >  ついにおっぱじめたって話だぜ?」
-“Did you hear? They say they've finally gone and started it.”
+“Did you hear? They say they’ve finally gone and started it.”
 
 @22120 Kamille · カミーユ
 > 「くそッ帝国め!!」
@@ -449,9 +469,10 @@ Don't show your face in front of me again. Understood?”
 “Kamille.”
 
 @22124 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「整備……手伝ってきます。
 >  その方が気がまぎれますから」
-“I'm going to help with the maintenance... It'll take my mind off things.”
+“I’m going to help with the maintenance... It’ll take my mind off things.”
 
 @22125 Duo · デュオ
 # 审校：迪奥的俚语口吻中「男のヒステリー」用“a man”过于正式，改为“a guy”更贴合其语气。
@@ -459,19 +480,21 @@ Don't show your face in front of me again. Understood?”
 “Sheesh, a guy throwing a fit is just pathetic.”
 
 @22126 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういうふうにいうものじゃない。
 >  みんな、つらいんだよ」
-“That's not how you should talk. Everyone's suffering.”
+“That’s not how you should talk. Everyone’s suffering.”
 
 @22127 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういえば、
 >  {HeroNick}はどうしたんだ?」
-“By the way, where's {HeroNick}?”
+“By the way, where’s {HeroNick}?”
 
 @22128 Duo · デュオ
-# 审校：迪奥的台词应更口语化，原文「俺は見てないぜ」语气随意，现译过于完整正式。
+# 审校：全局：弯撇号／弯引号
 > 「俺は見てないぜ」
-“Haven't seen him.”
+“Haven’t seen him.”
 
 @22129 Domon · ドモン
 # 审校：If you mean him 生硬
@@ -480,14 +503,16 @@ Don't show your face in front of me again. Understood?”
 “...Him? I saw him wandering around looking gloomy.”
 
 @22130 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そうか……。ドモン、すまないな。君には
 >  その……別の目的があったというのに」
-“I see... Domon, I'm sorry. You had your own... separate purpose, after all.”
+“I see... Domon, I’m sorry. You had your own... separate purpose, after all.”
 
 @22131 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「まったくだ。だが、この程度のことで
 >  やられてしまうならば、
-“You're right about that. But if I could be beaten by something like this,
+“You’re right about that. But if I could be beaten by something like this,
 ---
 >  しょせんは俺もその程度でしか
 >  なかったということだ。それに……
@@ -495,28 +520,30 @@ then I was only ever that much to begin with. Besides...
 ---
 >  奴の手がかりがない以上は、やはり
 >  あんたたちに頼るしかないのも
-with no leads on him, it's also a fact that I have no choice but to rely on you all.
+with no leads on him, it’s also a fact that I have no choice but to rely on you all.
 ---
 >  また事実。気にしてもらう
 >  必要はない」
-You don't need to worry about it.”
+You don’t need to worry about it.”
 
 @22132 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > (帝国の……大部隊……
 >  これで、終わってしまうのか?
 (An Imperial... main force... Is this how it ends?
 ---
 >  俺は……なんにもできずに……
 >  俺は……)
-I couldn't do a thing... I...)
+I couldn’t do a thing... I...)
 
 @22133 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「あっ……
 “Oh...
 ---
 >  なんだ、あんたか。
 >  機体の整備はやんなくてもいいの?」
-What, it's you. Don't you have a machine to maintain?”
+What, it’s you. Don’t you have a machine to maintain?”
 
 @22134
 > *  レラと話をする
@@ -538,23 +565,25 @@ What, it's you. Don't you have a machine to maintain?”
 “Nothing. Just taking a break. ...This time we really might not make it, right?”
 
 @22137 Ark · アーク（按段落 3DD1）
-# 审校：原文「まだ降ろしてもらえるんだろ」是反问确认语气，现译缺少“can't you”的确认感。（人工改写）
+# 审校：全局：弯撇号／弯引号
 > 「……ああ。お前はいいのかよ、それで。
 >  まだ降ろしてもらえるんだろ」
-“...Yeah. Are you okay with that? You can still get off, can't you?”
+“...Yeah. Are you okay with that? You can still get off, can’t you?”
 
 @22138 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「なんだよ今さら。アタシはずっと、ずっと
 >  戦ってきたんだ。あんたよりも長い
-“What are you saying that for now? I've been fighting, fighting all along. Longer than
+“What are you saying that for now? I’ve been fighting, fighting all along. Longer than
 ---
 >  間ね。何度か捕まって、そのたびに
 >  逃げ出して。撃たれたことだってある」
-you have. I got caught a few times, and escaped every time. I've even been shot.”
+you have. I got caught a few times, and escaped every time. I’ve even been shot.”
 
 @22139 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「……すごいな……」
-“...That's amazing...”
+“...That’s amazing...”
 
 @22140 Lera · レラ
 > 「なにがさ」
@@ -566,18 +595,20 @@ you have. I got caught a few times, and escaped every time. I've even been shot.
 “That someone like you can go that far.”
 
 @22142 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「強くなれば……力があれば……戦って
 >  さえいれば……誇りをもって生きて
 “If you get strong... if you have power... if you just keep fighting... you can live with
 ---
 >  いける。……それで死ぬなら……きっと
 >  後悔しないですむから」
-pride. ...And if you die that way... you won't have any regrets.”
+pride. ...And if you die that way... you won’t have any regrets.”
 
 @22143 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「俺は……恐いよ。やっぱり、死にたく
 >  はない。だってそうだろう? 死んだら
-“I'm... scared. I really don't want to die. I mean, come on. If you die,
+“I’m... scared. I really don’t want to die. I mean, come on. If you die,
 ---
 >  何にも……何にもならないじゃないか」
 nothing... nothing comes of it at all.”
@@ -592,27 +623,30 @@ nothing... nothing comes of it at all.”
 “There was no other way... nothing else I could do... back then...”
 
 @22146 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「なら、なんで今までずっと戦って
 >  きたんだよ? とっととやめればよかった
-“Then why have you kept fighting all this time? You could've just quit
+“Then why have you kept fighting all this time? You could’ve just quit
 ---
 >  じゃないか。それとも、こないだの
 >  あいつのせい?」
 a long time ago. Or is it because of that guy the other day?”
 
 @22147 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「あぁ……最初はあいつが憎かった。
 >  ……違うな、たぶん、やめてもどうやって
-“Yeah... at first I hated him. ...No, that's not it. It's probably that even if I quit,
+“Yeah... at first I hated him. ...No, that’s not it. It’s probably that even if I quit,
 ---
 >  生きていけばいいのか、わからなかった
 >  せいだ」
-I didn't know how to go on living.”
+I didn’t know how to go on living.”
 
 @22148 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「それで今まで戦ってきて、今だって
 >  恐いって言ってるのに、逃げようとは
-“So you've fought all this way, and even now you say you're scared, but you're not
+“So you’ve fought all this way, and even now you say you’re scared, but you’re not
 ---
 >  思わないんだろ?」
 thinking of running, are you?”
@@ -631,13 +665,15 @@ thinking of running, are you?”
 is just pathetic!!”
 
 @22151 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「お前にそんなことをいわれたくない!」
-“I don't want to hear that from you!”
+“I don’t want to hear that from you!”
 
 @22152 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「考えるのは後にしなよ。もうそんな
 >  状況じゃないのは、あんただって
-“Do the thinking later. Even you must know we're not in a situation
+“Do the thinking later. Even you must know we’re not in a situation
 ---
 >  わかってるはずだろ!?」
 where you can do that anymore, right?!”
@@ -648,9 +684,10 @@ where you can do that anymore, right?!”
 “...Sheesh. Why do I have to get lectured by you, of all people?”
 
 @22154 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「なら、言われないようにしてみせなよ!
 >  ホントは……アタシだってあんたみたいな
-“Then show me you won't have to be! Honestly... if I had power like
+“Then show me you won’t have to be! Honestly... if I had power like
 ---
 >  力があれば……」
 yours, I...”
@@ -664,37 +701,42 @@ yours, I...”
 “...Hn! Enemy attack?! Too soon!!”
 
 @22157 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「お前……まだいたのか。今からでも
 >  遅くないんだろ、艦を降りろよ」
-“You... you're still here. It's not too late even now, get off the ship.”
+“You... you’re still here. It’s not too late even now, get off the ship.”
 
 @22158 Lera · レラ
 > 「なんでさ!?」
 “Why should I?!”
 
 @22159 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「今回は……ダメかもしれない。
 >  こんなところで死ぬのを待つことはない」
-“This time... we might not make it. There's no need to wait around to die in a place like this.”
+“This time... we might not make it. There’s no need to wait around to die in a place like this.”
 
 @22160 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「……自分が恐いからって、
 >  勝手なこというな!」
-“...Don't go saying whatever you want just because you're scared!”
+“...Don’t go saying whatever you want just because you’re scared!”
 
 @22161 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「な……なんだよ! 人が親切でいって
 >  やってんのに! パイロットでもないから
-“W-what's with you?! I'm saying this out of kindness! I'm telling you that since you're
+“W-what’s with you?! I’m saying this out of kindness! I’m telling you that since you’re
 ---
 >  ムダ死にすることはないって、
 >  いってるんだよ、俺は!」
-not even a pilot, there's no point dying for nothing!”
+not even a pilot, there’s no point dying for nothing!”
 
 @22162 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「アタシがパイロットじゃないのが
 >  そんなに悪いのかよ!
-“Is it really that bad that I'm not a pilot?!
+“Is it really that bad that I’m not a pilot?!
 ---
 >  大きなお世話だ! そんなことより
 >  自分の心配してなッ!」
@@ -709,9 +751,10 @@ Mind your own business! Worry about yourself instead!”
 “...Hn! Enemy attack?! Too soon!!”
 
 @22165 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「遅かったみたいだね。
 >  ほら、さっさと行きなよ!」
-“Looks like it's too late. Come on, get going!”
+“Looks like it’s too late. Come on, get going!”
 
 @22166 Ark · アーク（按段落 3DD1）
 > 「わかってる!」
@@ -738,48 +781,51 @@ trying to talk to you!”
 “...Hn! Enemy attack?! Too soon!!”
 
 @22171 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういえば、
 >  {HeroNick}はどうしたんだ?」
-“By the way, where's {HeroNick}?”
+“By the way, where’s {HeroNick}?”
 
 @22172 Duo · デュオ
-# 审校：セレイン路线中デュオ回答的是“{HeroNick}（女主角）在哪里”，初稿译成“I didn't see anything”偏离了问句，改为“I haven't seen her”。
+# 审校：全局：弯撇号／弯引号
 > 「俺は見てないぜ」
-“I haven't seen her.”
+“I haven’t seen her.”
 
 @22173 Domon · ドモン
-# 审校：原文主语是“あいつ”，指セレイン，初稿误用“You seemed to be talking”，改为“She seemed to be talking”。
+# 审校：全局：弯撇号／弯引号
 > 「さっきレインと話をしていたようだがな。
 >  あいつは、いいファイターだ
-“She seemed to be talking with Rain earlier. She's a good fighter.
+“She seemed to be talking with Rain earlier. She’s a good fighter.
 ---
 >  心配することもないだろう」
 I doubt you have anything to worry about.”
 
 @22174 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そうだな…………ドモン、君はいいのか?
 >  残ってくれるのはありがたいが
-“I suppose so... Domon, are you sure about this? I'm grateful you're staying,
+“I suppose so... Domon, are you sure about this? I’m grateful you’re staying,
 ---
 >  君には別の目的があったのだろう?」
-but you had a different goal of your own, didn't you?”
+but you had a different goal of your own, didn’t you?”
 
 @22175 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「いいわけないだろう。だが、
 >  この程度のことでやられてしまうならば
-“Of course I'm not. But if I were to be beaten by something like this,
+“Of course I’m not. But if I were to be beaten by something like this,
 ---
 >  しょせんは俺もその程度でしか
 >  なかったということだ。それに……
-then in the end that's all I ever amounted to. Besides...
+then in the end that’s all I ever amounted to. Besides...
 ---
 >  奴の手がかりがない以上は、やはり
 >  あんたたちに頼るしかないのも
-with no lead on him, it's also a fact that I have no choice but to rely on you all.
+with no lead on him, it’s also a fact that I have no choice but to rely on you all.
 ---
 >  また事実。気にしてもらう
 >  必要はない」
-You don't need to concern yourself with me.”
+You don’t need to concern yourself with me.”
 
 @22176 Selain · セレイン（按段落 3DD2）
 # 审校：心里话结尾补句号
@@ -792,12 +838,13 @@ You don't need to concern yourself with me.”
 I’ll do what I can.)
 
 @22177 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「あっ……
 “Ah...
 ---
 >  なんだ、あんたか。
 >  機体の整備はやんなくてもいいの?」
-Oh, it's you. Don't you have to go do maintenance on your machine?”
+Oh, it’s you. Don’t you have to go do maintenance on your machine?”
 
 @22178
 > *  レラと話をする
@@ -813,27 +860,29 @@ Oh, it's you. Don't you have to go do maintenance on your machine?”
 “What are you doing in a place like this?”
 
 @22180 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「別に……ただの休憩だよ。
 >  ……さすがに今度はヤバイんでしょ?」
-“Nothing... just taking a break. ...This one's really bad, isn't it?”
+“Nothing... just taking a break. ...This one’s really bad, isn’t it?”
 
 @22181 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。艦を降りたいのか?」
-“That's right. Do you want to leave the ship?”
+“That’s right. Do you want to leave the ship?”
 
 @22182 Lera · レラ
-# 审校：“バカにしないでよ”在此是“别小看我/别把我当傻瓜”，初稿“treat me like an idiot”语气略偏，改为“make fun of me”更自然。
+# 审校：全局：弯撇号／弯引号
 > 「バ……バカにしないでよ! アタシだって
 >  ずっとやつらと戦って来たんだ
-“D-don't make fun of me! I've been fighting them all along too.
+“D-don’t make fun of me! I’ve been fighting them all along too.
 ---
 >  死にかけたことだって
 >  一度や二度じゃない
-I've come close to dying more than once or twice.
+I’ve come close to dying more than once or twice.
 ---
 >  こんな程度のことで
 >  逃げ出したりするもんか!!」
-You think I'd run away over something like this?!”
+You think I’d run away over something like this?!”
 
 @22183 Selain · セレイン（按段落 3DD2）
 > 「そうか……
@@ -841,9 +890,10 @@ You think I'd run away over something like this?!”
 “I see... Why do you fight so hard?”
 
 @22184 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「その言葉、
 >  あんたにそっくり返してあげるよ
-“I'll throw that question right back at you.
+“I’ll throw that question right back at you.
 ---
 >  この時代に、それ以外にどれだけ
 >  ましな生き方があるっていうのさ」
@@ -856,12 +906,14 @@ In this day and age, what better way to live is there?”
 “Yeah... you’re right. You’re absolutely right. That was a foolish question.”
 
 @22186 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「……いいよ、別に。それよりも……」
-“...It's fine, really. More importantly...”
+“...It’s fine, really. More importantly...”
 
 @22187 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「敵? もう来たの!?」
-“The enemy? They're already here?!”
+“The enemy? They’re already here?!”
 
 @22188 Selain · セレイン（按段落 3DD2）
 > 「予想よりも早かったな。
@@ -876,31 +928,34 @@ You get to the gun turret too, quickly.”
 “I know!!”
 
 @22190 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「お前か……まだいたとは思わなかった」
-“It's you... I didn't think you were still here.”
+“It’s you... I didn’t think you were still here.”
 
 @22191 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「なんだよ、それ。いちゃ悪いっての!?」
-“What's that supposed to mean? Is it so bad for me to be here?!”
+“What’s that supposed to mean? Is it so bad for me to be here?!”
 
 @22192 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「いや。しかし今度の戦いが最後に
 >  なるかもしれん。一緒にここで
-“No. But this next battle may be our last. There's no need for you to die
+“No. But this next battle may be our last. There’s no need for you to die
 ---
 >  死ぬこともなかろう。艦を降りろ。
 >  今ならばまだ間に合うだろう」
-here with us. Get off the ship. There's still time.”
+here with us. Get off the ship. There’s still time.”
 
 @22193 Lera · レラ
-# 审校：用户确认：直引号→弯引号
+# 审校：全局：弯撇号／弯引号
 > 「じょ、冗談じゃないよ!
 >  今さらそんなこといわれて
-“Y-you've gotta be kidding! You tell me that now, and I'm just supposed to say
+“Y-you’ve gotta be kidding! You tell me that now, and I’m just supposed to say
 ---
 >  はいそうですかって降りられるもんか!
 >  アタシだって、ずっと、あんたたちと
-‘okay’ and get off?! I've been fighting them since long before I ever met
+‘okay’ and get off?! I’ve been fighting them since long before I ever met
 ---
 >  会う前からずっと奴らと戦って
 >  きたんだ。今さら……
@@ -908,27 +963,29 @@ any of you. And now...
 ---
 >  今さら、危険だからって
 >  逃げたりできるわけないじゃないか!!
-now you expect me to run just because it's dangerous?!
+now you expect me to run just because it’s dangerous?!
 ---
 >  アタシがパイロットじゃないからって
 >  そんなこというなんて、きたないよ!」
-Saying that just because I'm not a pilot... that's low!”
+Saying that just because I’m not a pilot... that’s low!”
 
 @22194 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「そうか、お前…………すまなかったな、
 >  そういうつもりではなかったんだが
-“I see... I'm sorry. That wasn't what I meant.
+“I see... I’m sorry. That wasn’t what I meant.
 ---
 >  覚悟があるならそれもよかろう」
-If you're resolved, then that's fine too.”
+If you’re resolved, then that’s fine too.”
 
 @22195 Lera · レラ
 > 「…………」
 “...”
 
 @22196 Lera · レラ
+# 审校：全局：弯撇号／弯引号
 > 「敵? もう来たの!?」
-“The enemy? They're already here?!”
+“The enemy? They’re already here?!”
 
 @22197 Selain · セレイン（按段落 3DD2）
 > 「予想よりも早かったな。
@@ -955,66 +1012,73 @@ You get to the gun turret too, quickly.”
 trying to talk to you!”
 
 @22201 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「もの好きな奴だ……
 >  さっさと降りてしまえばいいものを
 “What a strange one... She could just get off the ship.
 ---
 >  こんな戦いにつきあう必要は
 >  ないだろうに」
-There's no need for her to go along with a battle like this.”
+There’s no need for her to go along with a battle like this.”
 
 @22202 Selain · セレイン（按段落 3DD2）
 > 「敵か……予想よりも早かったな」
 “The enemy, huh... sooner than I expected.”
 
 @22203 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「ま、確かに、それが普通かもな。
 >  かなり厳しいってのは
-“Well, I guess that's normal. It's obvious enough that this is
+“Well, I guess that’s normal. It’s obvious enough that this is
 ---
 >  わかりきってることだもんなぁ」
 gonna be pretty rough.”
 
 @22204 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。しかしドモン、
 >  君はよかったのか?
-“That's right. But Domon, are you sure about this?
+“That’s right. But Domon, are you sure about this?
 ---
 >  いてくれるのはありがたいが、君にはその
 >  ……別の目的があったのだろう?」
-I'm grateful you're here, but you had that... different goal of your own, didn't you?”
+I’m grateful you’re here, but you had that... different goal of your own, didn’t you?”
 
 @22205 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「いいわけはないだろう。だが、
 >  この程度のことでやられてしまうならば
-“Of course I'm not. But if I were to be beaten by something like this,
+“Of course I’m not. But if I were to be beaten by something like this,
 ---
 >  しょせんは俺もその程度でしか
 >  なかったということだ」
-then in the end that's all I ever amounted to.”
+then in the end that’s all I ever amounted to.”
 
 @22206 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「俺もその意見には賛成だな。
 >  ここで終わる程度なら
 “I agree with that. If this is where it ends for us,
 ---
 >  地球圏の解放など
 >  できるはずもないだろう」
-there's no way we could ever liberate the Earth Sphere.”
+there’s no way we could ever liberate the Earth Sphere.”
 
 @22207 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「ちょっと極端すぎるような気も
 >  するけど、間違っちゃいないと思うぜ」
-“Might be a bit extreme, but I don't think you're wrong.”
+“Might be a bit extreme, but I don’t think you’re wrong.”
 
 @22208 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「ああ。それに……奴の手がかりが
 >  ない以上は、やはりあんたたちに
-“Yeah. Besides... with no lead on him, it's also a fact that I have no choice
+“Yeah. Besides... with no lead on him, it’s also a fact that I have no choice
 ---
 >  頼るしかないのもまた事実。
 >  気にしてもらう必要はない」
-but to rely on you all. You don't need to concern yourself with me.”
+but to rely on you all. You don’t need to concern yourself with me.”
 
 @22209 Brad · ブラッド（按段落 3DD3）
 # 审校：顺句
@@ -1028,20 +1092,22 @@ but to rely on you all. You don't need to concern yourself with me.”
 “...{HeroNick}, eavesdropping is no way for a fighter to behave.”
 
 @22211 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「なんだやっぱりそうだったのか」
-“So that's what it was after all.”
+“So that’s what it was after all.”
 
 @22212 Domon · ドモン
 > 「なに?」
 “What?”
 
 @22213 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「俺はそうじゃないかって
 >  思っただけだぜ?
-“I just thought that might be the case, that's all.
+“I just thought that might be the case, that’s all.
 ---
 >  あんまりレインさんに面倒かけるなよな」
-Don't go causing so much trouble for Rain.”
+Don’t go causing so much trouble for Rain.”
 
 @22214 Domon · ドモン
 # 审校：すじあいじゃない 不是 not one to talk
@@ -1053,83 +1119,93 @@ Don't go causing so much trouble for Rain.”
 It’s not your place to say anything.”
 
 @22215 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「いいかドモン、知らないようだから
 >  教えてやるが、レインさんは
-“Listen, Domon, seems you don't know, so I'll tell you. Rain's right up there with
+“Listen, Domon, seems you don’t know, so I’ll tell you. Rain’s right up there with
 ---
 >  アストナージさんと並んで、メカニックの
 >  要だし、医療でだって
-Astonaige as the backbone of our mechanics, and she's just as vital
+Astonaige as the backbone of our mechanics, and she’s just as vital
 ---
 >  大事な人なんだぞ」
 when it comes to medical care.”
 
 @22216 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「もうよせ、ふたりとも。いつ敵がくるかも
 >  わからないというのに……」
-“That's enough, both of you. We don't even know when the enemy will come...”
+“That’s enough, both of you. We don’t even know when the enemy will come...”
 
 @22217 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「もう来やがったってのか!?
 >  早すぎるぜ!!」
-“They're already here?! Way too soon!!”
+“They’re already here?! Way too soon!!”
 
 @22218 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「さぁて、いっちょ派手に
 >  あばれてやりますか」
-“Well then, let's go raise a little hell.”
+“Well then, let’s go raise a little hell.”
 
 @22219 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「ま、確かに、それが普通かもな。
 >  かなり厳しいってのは
-“Well, I guess that's normal. It's obvious enough that this is
+“Well, I guess that’s normal. It’s obvious enough that this is
 ---
 >  わかりきってることだもんなぁ」
 gonna be pretty rough.”
 
 @22220 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。しかしドモン、
 >  君はよかったのか?
-“That's right. But Domon, are you sure about this?
+“That’s right. But Domon, are you sure about this?
 ---
 >  いてくれるのはありがたいが、君にはその
 >  ……別の目的があったのだろう?」
-I'm grateful you're here, but you had that... different goal of your own, didn't you?”
+I’m grateful you’re here, but you had that... different goal of your own, didn’t you?”
 
 @22221 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「いいわけはないだろう。だが、
 >  この程度のことでやられてしまうならば
-“Of course I'm not. But if I were to be beaten by something like this,
+“Of course I’m not. But if I were to be beaten by something like this,
 ---
 >  しょせんは俺もその程度でしか
 >  なかったということだ。それに……
-then in the end that's all I ever amounted to. Besides...
+then in the end that’s all I ever amounted to. Besides...
 ---
 >  奴の手がかりがない以上は、やはり
 >  あんたたちに頼るしかないのも
-with no lead on him, it's also a fact that I have no choice
+with no lead on him, it’s also a fact that I have no choice
 ---
 >  また事実。気にしてもらう
 >  必要はない」
-but to rely on you all. You don't need to concern yourself with me.”
+but to rely on you all. You don’t need to concern yourself with me.”
 
 @22222 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「そういってもらえると助かる」
-“I'm glad to hear you say that.”
+“I’m glad to hear you say that.”
 
 @22223 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「負けられない……負けるわけには
 >  いかないのね、この戦いは」
-“We can't lose... we can't afford to lose this battle.”
+“We can’t lose... we can’t afford to lose this battle.”
 
 @22224 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「ああ……どこまで持ちこたえられるか
 >  わからないが
-“Yeah... I don't know how long we can hold out,
+“Yeah... I don’t know how long we can hold out,
 ---
 >  やれるところまでやるしかない。
 >  それでだめなら、俺たちは……」
-but we've got no choice but to fight as long as we can. And if that's not enough, then we...”
+but we’ve got no choice but to fight as long as we can. And if that’s not enough, then we...”
 
 @22225 Lawrence · ローレンス
 # 审校：Defeatism is forbidden 不像管家说话
@@ -1154,13 +1230,13 @@ who fought to the very end against the alien invasion during the One Year War,
 and then... was publicly executed?”
 
 @22228 Simone · シモーヌ
-# 审校：用户确认：直引号→弯引号
+# 审校：全局：弯撇号／弯引号
 > 「全身全霊をかけて望みさえすれば
 >  希望は常に我々とともにある
 “‘If you face it with all your heart and soul, hope is always with us,’
 ---
 >  だったかしらね」
-wasn't it?”
+wasn’t it?”
 
 @22229 Lawrence · ローレンス
 > 「さようです。彼の言葉通り、
@@ -1172,8 +1248,9 @@ wasn't it?”
 fighting like this. Hope is always there.”
 
 @22230 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「敵? もう来たの!?」
-“The enemy? They're already here?!”
+“The enemy? They’re already here?!”
 
 @22231 Duo · デュオ
 > 「ちょっと早すぎるぜ、まったく」
@@ -1189,24 +1266,25 @@ fighting like this. Hope is always there.”
 “All hands, battle stations! How many enemies?!”
 
 @22234 Beltorchika · ベルトーチカ
-# 审校：原文是“すごい数です。計測できません!”，现有译文把两句合并成一句，且“Too many to count”与“I can't get a reading”语义重复，改为更贴合原文的两层意思。
+# 审校：全局：弯撇号／弯引号
 > 「すごい数です。計測できません!」
-“There are so many I can't get a count!”
+“There are so many I can’t get a count!”
 
 @22235 Ginrei · 銀鈴
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：弯撇号／弯引号
 > 「ブライト艦長、あのことを皆さんに
 >  お伝えしなくてよかったのですか?」
-“Captain Bright, are you sure you shouldn't tell everyone about that?”
+“Captain Bright, are you sure you shouldn’t tell everyone about that?”
 
 @22236 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「かまわん。成功すれば
 >  それにこしたことはないが、
-“It's fine. If it succeeds, so much the better,
+“It’s fine. If it succeeds, so much the better,
 ---
 >  不確かな情報はあてにできんよ。
 >  パイロット各員、出撃を急げ!」
-but we can't rely on uncertain information. All pilots, launch immediately!”
+but we can’t rely on uncertain information. All pilots, launch immediately!”
 
 @22237 Quatre · カトル
 > 「デュオ、あれを!
@@ -1214,8 +1292,9 @@ but we can't rely on uncertain information. All pilots, launch immediately!”
 “Duo, look! Everyone came!”
 
 @22238 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「こんな状況じゃ、あんまり喜べないぜ」
-“In a situation like this, it's hard to be happy about it.”
+“In a situation like this, it’s hard to be happy about it.”
 
 @22239 Quatre · カトル
 > 「ヒイロ! トロワ! 五飛も!
@@ -1223,17 +1302,19 @@ but we can't rely on uncertain information. All pilots, launch immediately!”
 “Heero! Trowa! Wufei too! Everyone came!”
 
 @22240 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「気にするな。戦略的に考えて
 >  現状でもっとも
-“Don't mention it. Strategically speaking, this was simply the action with
+“Don’t mention it. Strategically speaking, this was simply the action with
 ---
 >  生存確率の高い行動を
 >  選んだだけのことだ」
 the highest survival probability under the circumstances.”
 
 @22241 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「ああ……そういうことだ」
-“Yeah... that's right.”
+“Yeah... that’s right.”
 
 @22242 Wufei · 五飛
 > 「正しい者は強くなくてはならない!
@@ -1248,9 +1329,10 @@ then try and overturn this situation!”
 “Honestly, every last one of them...”
 
 @22244 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「協力してくれるのならば助かる。
 >  ……敵も来たようだな」
-“We'd appreciate your cooperation. ...Looks like the enemy's here too.”
+“We’d appreciate your cooperation. ...Looks like the enemy’s here too.”
 
 @22245 Giura · ギウラ
 > 「バカな奴らめ。攻撃を開始せよ。
@@ -1264,9 +1346,10 @@ then try and overturn this situation!”
 “Y-Your Excellency!!”
 
 @22247 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「そうか、あの部隊か。残念だが
 >  これで終わりにしなければならん」
-“I see, so it's that unit. A shame, but this is where it has to end.”
+“I see, so it’s that unit. A shame, but this is where it has to end.”
 
 @22248 Noin · ノイン
 # 审校：精读：閣下 统一 His Excellency
@@ -1274,60 +1357,67 @@ then try and overturn this situation!”
 “But Zechs, His Excellency Treize...”
 
 @22249 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「この状況では
 >  そうもいってられんだろう、ノイン」
-“In this situation, that's not an option, Noin.”
+“In this situation, that’s not an option, Noin.”
 
 @22250 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「何をごちゃごちゃやってやがる。
 >  俺は先に行かせてもらうぜ
-“What are you all dawdling around for? I'm going on ahead.
+“What are you all dawdling around for? I’m going on ahead.
 ---
 >  奴らは俺が仕留めてやる!」
-I'll take them down myself!”
+I’ll take them down myself!”
 
 @22251 Zechs · ゼクス
 > 「クッ……これが私の甘さか……」
 “Ngh... so this is my weakness...”
 
 @22252 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「なぜだ!? なぜ俺は奴らに勝てない
 >  んだッッ!! クソォォォォーッ!」
-“Why?! Why can't I beat them?! Daaamn you!!”
+“Why?! Why can’t I beat them?! Daaamn you!!”
 
 @22253 Dark General · 暗黒大将軍
-# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
+# 审校：全局：弯撇号／弯引号
 > 「うわーははははぁッ!
 >  そろそろ限界が近づいてきたようだな
-“Waahahahaha! It seems you're nearing your limit.
+“Waahahahaha! It seems you’re nearing your limit.
 ---
 >  我がミケーネ闇の軍団が
 >  トドメをさしてくれるわ!!」
 My Mycenae dark army will finish you off!!”
 
 @22254 Dark General · 暗黒大将軍
+# 审校：全局：弯撇号／弯引号
 > 「おのれぇ……覚えておれ!!」
-“Curse you... I won't forget this!!”
+“Curse you... I won’t forget this!!”
 
 @22255 Ryoma · リョウ
 > 「ふう……どうにか持ちこたえたようだな」
 “Phew... looks like we managed to hold out.”
 
 @22256 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「いや、まだだ。気を抜くな!」
-“No, not yet. Don't let your guard down!”
+“No, not yet. Don’t let your guard down!”
 
 @22257 Anna · アンナ
+# 审校：全局：弯撇号／弯引号
 > 「気をつけてください。敵の
 >  第2波が接近しています!!
-“Be careful. The enemy's second wave is approaching!!
+“Be careful. The enemy’s second wave is approaching!!
 ---
 >  ダメ! 完全に包囲されているわ!」
-No! We're completely surrounded!”
+No! We’re completely surrounded!”
 
 @22258 Shinobu · 忍
+# 审校：全局：弯撇号／弯引号
 > 「くそったれ! なんてしつこい奴らだ」
-“Damn it! These guys just don't quit.”
+“Damn it! These guys just don’t quit.”
 
 @22259 Le Cain · ル・カイン
 > 「見ろ、ロアン。すべては予定通りに
@@ -1365,9 +1455,10 @@ Roanne Demitrich.”
 “Huh?”
 
 @22265 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「そこでは作戦の指揮はできんぞ。
 >  指揮官の席は……あそこだ」
-“You can't command the operation from there. The commander's seat is... over there.”
+“You can’t command the operation from there. The commander’s seat is... over there.”
 
 @22266 Roanne · ロアン
 > 「……閣下」
@@ -1388,10 +1479,10 @@ Roanne Demitrich.”
 (Roanne...)
 
 @22270 Grados Soldier · グラドス兵
-# 审校：「逃げる余裕を与える」初稿 room to escape 可接受，但 time to escape 更自然；其余保留。
+# 审校：全局：弯撇号／弯引号
 > 「司令、いつまで待つおつもりです。
 >  このままでは奴らに逃げる余裕を
-“Commander, how long do you intend to wait? At this rate, we'll give them time to escape.
+“Commander, how long do you intend to wait? At this rate, we’ll give them time to escape.
 ---
 >  与えることになります。司令、
 >  今すぐ総攻撃許可を!」
@@ -1415,10 +1506,11 @@ Commander, authorize the all-out attack now!”
 “Wha... what did you say?! You bastard, I knew it!!”
 
 @22275 Roanne · ロアン
-# 审校：第二页初稿 It's enough 与前句衔接略生硬，改为 Enough to wipe... 更紧凑自然。
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「諸君、動くな!
 >  この本部タワー内に
-“Everyone, don't move! A powerful bomb has been planted inside this headquarters tower.
+“Everyone, don’t move! A powerful bomb has been planted inside this headquarters tower.
 ---
 >  強力な爆弾がしかけてある。
 >  タワーごと諸君らを地上から
@@ -1452,9 +1544,10 @@ That is how history flows without stagnation.)
 “Your Excellency.”
 
 @22279 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「行くよレディ。
 >  私はここにいては殺されてしまうからね
-“Let's go, Lady. If I stay here, I'll be killed.
+“Let’s go, Lady. If I stay here, I’ll be killed.
 ---
 >  私にはまだやらなければならないことが、
 >  多く残されている」
@@ -1542,17 +1635,18 @@ He intends to join up with his guards and make a final stand!”
 stop His Excellency.”
 
 @22291 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「……長くそばにいれば情もうつるか。
 >  まぁいい。そのくらいは彼らが
-“...Spend long enough by someone's side and even sentiment rubs off on you. Well, fine. They'll
+“...Spend long enough by someone’s side and even sentiment rubs off on you. Well, fine. They’ll
 ---
 >  なんとかしてくれるだろう。タワー内は
 >  我々が武装解除したとはいえ、
-manage that much somehow. Even if we've disarmed the tower,
+manage that much somehow. Even if we’ve disarmed the tower,
 ---
 >  各地の攻撃部隊が戻ればひと
 >  たまりもない。そろそろ引き上げどきだ」
-once the attack units from the various regions return, we won't stand a chance. It's about time to withdraw.”
+once the attack units from the various regions return, we won’t stand a chance. It’s about time to withdraw.”
 
 @22292 Roanne · ロアン
 > 「そうですね……指揮官クラスの
@@ -1560,6 +1654,8 @@ once the attack units from the various regions return, we won't stand a chance. 
 “I see... What became of the commander-class men?”
 
 @22293 Alan · アラン
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「だめだ。百鬼やミケーネは、
 >  もともとここにはいない。その上、
 “No good. Hyakki and Mycenae were never here to begin with. On top of that,
@@ -1574,11 +1670,11 @@ They got away. Banjo and the others are after them,
 ---
 >  だめだろうな。
 >  それより急いでくれ。ドレイクの
-but it's probably hopeless. More importantly, hurry. I want to
+but it’s probably hopeless. More importantly, hurry. I want to
 ---
 >  ウィル・ウィプスがくる前に、
 >  ここを出たい」
-get out of here before Drake's Will-Wips arrives.”
+get out of here before Drake’s Will-Wips arrives.”
 
 @22294 Roanne · ロアン
 > 「ええ、わかっています」

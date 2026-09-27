@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @28025 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「降下位置がずれたか……カミーユは
 >  どうした!?」
-“Our landing point was off... Where's Kamille?!”
+“Our landing point was off... Where’s Kamille?!”
 
 @28026 Beltorchika · ベルトーチカ
 > 「反応ありません。ジャブローに先行
@@ -11,9 +12,9 @@
 “No response. He must have gone on ahead to Jaburo.”
 
 @28027 Bright · ブライト
-# 审校：原文“こちらも急ぐぞ”是“我们这边也得抓紧”，初稿“we hurry too”语气生硬，改为更自然的表达。
+# 审校：全局：弯撇号／弯引号
 > 「いかんな……よし、こちらも急ぐぞ」
-“That's not good... All right, we'd better hurry too.”
+“That’s not good... All right, we’d better hurry too.”
 
 @28028 Bright · ブライト
 > 「ジャブローか……何か問題は?」
@@ -32,22 +33,25 @@
 “...I got here too early...”
 
 @28032 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「しばらくこのまま待機するか……
 >  うっ、なんだ、これは……」
-“Guess I'll just wait here for a while... Ngh, what is this...?”
+“Guess I’ll just wait here for a while... Ngh, what is this...?”
 
 @28033 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「サイコガンダム!? フォウ……なのか!?
 >  いや……あそこにはいない……
-“The Psyco Gundam?! Is that Four...?! No... she's not there...
+“The Psyco Gundam?! Is that Four...?! No... she’s not there...
 ---
 >  基地の方か?」
 Is she at the base?”
 
 @28034 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「……フォウだ……間違いない。
 >  フォウがいるんだ」
-“...It's Four... No doubt about it. Four is here.”
+“...It’s Four... No doubt about it. Four is here.”
 
 @28035 Kamille · カミーユ
 > 「こっちか……」
@@ -80,16 +84,18 @@ Is she at the base?”
 “Four!!”
 
 @28042 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「カミーユッ!
 “Kamille!
 ---
 >  必ず会いに来てくれるって、
 >  思ってたよ」
-I knew you'd come to see me.”
+I knew you’d come to see me.”
 
 @28043 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「ここなら大丈夫だよ」
-“It's safe here.”
+“It’s safe here.”
 
 @28044 Kamille · カミーユ
 > 「フォウ……本当の名前は
@@ -115,18 +121,21 @@ I knew you'd come to see me.”
 “Four...”
 
 @28049 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「でも変だ。おフロに入るまで、カミーユ
 >  のこと忘れてたんだよ? なんでだろうね」
-“But it's strange. Until I took a bath, I'd forgotten all about you, Kamille. I wonder why.”
+“But it’s strange. Until I took a bath, I’d forgotten all about you, Kamille. I wonder why.”
 
 @28050 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「僕のこと、キライになったんだろう」
-“I guess you've come to hate me.”
+“I guess you’ve come to hate me.”
 
 @28051 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「あはははは。ずっと好きよ。でもあたしは
 >  変わってしまうの。サイコガンダムに
-“Ahahahaha. I've always loved you. But I change. When I get in the Psyco Gundam,
+“Ahahahaha. I’ve always loved you. But I change. When I get in the Psyco Gundam,
 ---
 >  乗ると。頭がカラッポになって、別の
 >  私が入り込んでくる。だから……」
@@ -138,23 +147,26 @@ my head goes empty, and another me slips inside. So...”
 “No. Four, you must never get in that machine again.”
 
 @28053 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「うん、カミーユがそうしろっていうんなら、
 >  もう乗らない
-“Okay. If you say so, Kamille, I won't ride it anymore.
+“Okay. If you say so, Kamille, I won’t ride it anymore.
 ---
 >  ……ねぇカミーユ……あなた、
 >  あたしの敵じゃないよね?」
-...Hey, Kamille... you're not my enemy, are you?”
+...Hey, Kamille... you’re not my enemy, are you?”
 
 @28054 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「当たり前じゃないか。フォウ、行こう
 >  もうすぐ僕の仲間がくるんだ」
-“Of course not. Four, let's go. My friends will be here soon.”
+“Of course not. Four, let’s go. My friends will be here soon.”
 
 @28055 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「……うん、カミーユと一緒なら、
 >  どこへでもいくよ」
-“...Okay. As long as I'm with you, Kamille, I'll go anywhere.”
+“...Okay. As long as I’m with you, Kamille, I’ll go anywhere.”
 
 @28056 Specials · スペシャルズ
 > 「……ですから、もうしばらくすれば
@@ -162,12 +174,13 @@ my head goes empty, and another me slips inside. So...”
 “...So, in a little while the cast can come off. However...”
 
 @28057 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「なに……カミーユ・ビダンだと!?
 >  どけっ!!
 “What... Kamille Bidan?! Out of my way!!
 ---
 >  カミーユ、貴様よくもぬけぬけと!!」
-Kamille, you bastard, you've got some nerve!!”
+Kamille, you bastard, you’ve got some nerve!!”
 
 @28058 Kamille · カミーユ
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -181,9 +194,10 @@ Kamille, you bastard, you've got some nerve!!”
 “Wait, Kamille! ...Ngh, damn it, my leg...”
 
 @28060 Wong · ウォン
+# 审校：全局：弯撇号／弯引号
 > 「これはこれは、{HeroMech}の
 >  皆さんがいらっしゃるとは
-“Well, well, if it isn't the {HeroMech} crowd.
+“Well, well, if it isn’t the {HeroMech} crowd.
 ---
 >  では盛大に歓迎して
 >  差し上げましょう」
@@ -200,31 +214,36 @@ Then let us welcome you in grand style.”
 “Kukukukuku, this is where you die!”
 
 @28063 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「敵も出てきたか……よし、ジャブロー
 >  基地の周辺から敵を
-“The enemy's shown up too... All right, wipe out the enemy around
+“The enemy’s shown up too... All right, wipe out the enemy around
 ---
 >  一掃するんだ。長引くと不利だ
 >  一気に制圧しろ!」
 Jaburo Base. A drawn-out fight works against us. Take them down at once!”
 
 @28064 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「大尉、カミーユはやはりいないようだ」
-“Captain, it seems Kamille really isn't here.”
+“Captain, it seems Kamille really isn’t here.”
 
 @28065 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「クワトロ大尉、
 >  Zが合流していません」
-“Captain Quattro, the Zeta hasn't joined up.”
+“Captain Quattro, the Zeta hasn’t joined up.”
 
 @28066 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「大尉、カミーユの姿が見えないわ!」
-“Captain, I don't see Kamille anywhere!”
+“Captain, I don’t see Kamille anywhere!”
 
 @28067 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、Zガンダムがいねぇぞ!
 >  カミーユの奴め!」
-“Tch, the Zeta Gundam's not here! That Kamille!”
+“Tch, the Zeta Gundam’s not here! That Kamille!”
 
 @28068 Quattro · クワトロ
 > 「カミーユ、一体何をしているのだ?」
@@ -236,9 +255,10 @@ Jaburo Base. A drawn-out fight works against us. Take them down at once!”
 “...The deep forest sure is something... Where are we going?”
 
 @28070 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「君の記憶を
 >  {HeroMech}で治す」
-“We're going to restore your memories with the {HeroMech}.”
+“We’re going to restore your memories with the {HeroMech}.”
 
 @28071 Four · フォウ
 > 「記憶? あたしの記憶?」
@@ -254,9 +274,10 @@ Jaburo Base. A drawn-out fight works against us. Take them down at once!”
 you wanted your memories back so badly.”
 
 @28073 ???
+# 审校：全局：弯撇号／弯引号
 > (記憶を取り戻したければ、
 >  敵を倒さなくてはね……)
-(If you want your memories back, you'll have to defeat the enemy...)
+(If you want your memories back, you’ll have to defeat the enemy...)
 
 @28074 Four · フォウ
 > 「う……」
@@ -283,25 +304,29 @@ you wanted your memories back so badly.”
 “Do you need your medicine?”
 
 @28080 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「大丈夫よ……」
-“I'm fine...”
+“I’m fine...”
 
 @28081 Four · フォウ
 > 「あくぅぅぅ……ううぅっ……」
 “Agh... uuuugh...”
 
 @28082 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ……フォウ!? 君は……」
-“Four... Four?! You're...”
+“Four... Four?! You’re...”
 
 @28083 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「……お前は……誰だ? ……敵だな?」
-“...You... who are you? ...You're the enemy, aren't you?”
+“...You... who are you? ...You’re the enemy, aren’t you?”
 
 @28084 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「待てよフォウ! 目を覚ますんだ。
 >  俺だ、カミーユだ。わからないのか!?」
-“Wait, Four! Snap out of it. It's me, Kamille. Don't you recognize me?!”
+“Wait, Four! Snap out of it. It’s me, Kamille. Don’t you recognize me?!”
 
 @28085 Four · フォウ
 # 审校：わかる 是“知道你是谁”，接下一句的档案口吻
@@ -324,27 +349,30 @@ you wanted your memories back so badly.”
 recognized as a core warrior of the {HeroMech}.”
 
 @28088 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ……カミーユなんだよ、
 >  俺、カミーユ・ビダンだ!」
-“Four... it's Kamille. I'm Kamille Bidan!”
+“Four... it’s Kamille. I’m Kamille Bidan!”
 
 @28089 Kamille · カミーユ
 > 「つっ……フォウ!?」
 “Ngh... Four?!”
 
 @28090 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「よせ! あれを呼んじゃいけない!
 >  フォウ!」
-“Stop! Don't call that thing! Four!”
+“Stop! Don’t call that thing! Four!”
 
 @28091 Four · フォウ
 > 「…………」
 “...”
 
 @28092 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「だめだフォウ! それは悪魔の
 >  マシーンだ。それに乗っちゃいけない!」
-“No, Four! That's a demon machine. You mustn't ride it!”
+“No, Four! That’s a demon machine. You mustn’t ride it!”
 
 @28093 Four · フォウ
 > 「いいかげんにしろ!」
@@ -355,9 +383,10 @@ recognized as a core warrior of the {HeroMech}.”
 “Four!”
 
 @28095 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「お前たちはあたしをいじめにきた。あたし
 >  の記憶を奪ったのは、お前たちだ!」
-“You came to torment me. You're the ones who stole my memories!”
+“You came to torment me. You’re the ones who stole my memories!”
 
 @28096 Amuro · アムロ
 > 「サイコガンダム!?」
@@ -369,28 +398,31 @@ recognized as a core warrior of the {HeroMech}.”
 “No way... Kamille is... over there!”
 
 @28098 Wong · ウォン
+# 审校：全局：弯撇号／弯引号
 > 「クックックッ、それでいいのです。
 >  さぁ、こっちへ戻りなさい、フォウ」
-“Kukuku, that's right. Now, come back this way, Four.”
+“Kukuku, that’s right. Now, come back this way, Four.”
 
 @28099 Four · フォウ
 > 「………………」
 “...”
 
 @28100 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「あれは……サイコガンダム!?
 >  乗っているのはフォウなのか?」
-“That's... the Psyco Gundam?! Is Four the one piloting it?”
+“That’s... the Psyco Gundam?! Is Four the one piloting it?”
 
 @28101 Amuro · アムロ
-# 审校：原文“全力で落とす”是阿姆罗对卡缪说的共同行动指令，译文“Take it down”缺少主语，改为“We'll take it down”更符合语境。
+# 审校：全局：弯撇号／弯引号
 > 「カミーユ、あれは危険だ。
 >  全力で落とす」
-“Kamille, that thing is dangerous. We'll take it down with everything we've got.”
+“Kamille, that thing is dangerous. We’ll take it down with everything we’ve got.”
 
 @28102 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「でも、あれはフォウなんですよ!」
-“But that's Four in there!”
+“But that’s Four in there!”
 
 @28103 Amuro · アムロ
 > 「サイコガンダム!?
@@ -398,63 +430,69 @@ recognized as a core warrior of the {HeroMech}.”
 “The Psyco Gundam?! The same one from Neo Hong Kong?”
 
 @28104 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「このプレッシャー……乗っているのは
 >  あの時の強化人間だな」
-“This pressure... It's that enhanced human from before piloting it.”
+“This pressure... It’s that enhanced human from before piloting it.”
 
 @28105 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「……なんだ……この感覚……
 >  知っているような気がする……」
-“...What is this feeling...? It's like I know it...”
+“...What is this feeling...? It’s like I know it...”
 
 @28106 Quattro · クワトロ
 > 「カミーユ! 早くZに乗れ!」
 “Kamille! Get in the Z, now!”
 
 @28107 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「僕にフォウと戦えっていうんですか!?」
-“You're telling me to fight Four?!”
+“You’re telling me to fight Four?!”
 
 @28108 Quattro · クワトロ
-# 审校：原文“そうしていても”指保持现状不行动，初稿“standing here”与语境略有偏差，改为“just standing there”更贴切。
+# 审校：全局：弯撇号／弯引号
 > 「そうは言っていない。
 >  だがそうしていても解決はせんぞ
-“I didn't say that. But just standing there won't solve anything either.
+“I didn’t say that. But just standing there won’t solve anything either.
 ---
 >  答えは、Zの中で見つけろ。
 >  君にはそれしかあるまい」
-Find the answer inside the Z. That's all you can do.”
+Find the answer inside the Z. That’s all you can do.”
 
 @28109 Kamille · カミーユ
 > 「くっ…………」
 “Ngh...”
 
 @28110 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ! 戦っちゃいけない!」
-“Four! Don't fight!”
+“Four! Don’t fight!”
 
 @28111 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「出てきたか、Z」
-“So you've come out, Z.”
+“So you’ve come out, Z.”
 
 @28112 Amuro · アムロ
 > 「カミーユ、離れていろ!」
 “Kamille, get clear!”
 
 @28113 Kamille · カミーユ
-# 审校：原文“攻撃はしないで”没有明确宾语“她”，译文添加了“her”，为忠实原文应去掉。
+# 审校：全局：弯撇号／弯引号
 > 「やめてくださいアムロ大尉!
 >  攻撃はしないで」
-“Stop, Captain Amuro! Don't attack!”
+“Stop, Captain Amuro! Don’t attack!”
 
 @28114 Amuro · アムロ
 > 「どうしろというんだ!?」
 “Then what am I supposed to do?!”
 
 @28115 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ! 俺だ、カミーユだ。
 >  戦いをやめてくれ、フォウ!」
-“Four! It's me, Kamille. Stop fighting, Four!”
+“Four! It’s me, Kamille. Stop fighting, Four!”
 
 @28116 Four · フォウ
 > 「ハエがちょこまかと……
@@ -462,9 +500,10 @@ Find the answer inside the Z. That's all you can do.”
 “A fly buzzing around... Ugh... my head...!”
 
 @28117 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ、そのマシーンに
 >  乗っていちゃいけないんだ!
-“Four, you can't stay in that machine!
+“Four, you can’t stay in that machine!
 ---
 >  返事をしてくれ、フォウ!」
 Answer me, Four!”
@@ -474,12 +513,13 @@ Answer me, Four!”
 “Ugh... Ka-Kamille... is that you?”
 
 @28119 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ、気づいたのか?
 >  よし、コクピットをあけろ
 “Four, you came to your senses? Good, open your cockpit.
 ---
 >  サイコガンダムにいてはいけない。はやく!」
-You can't stay in the Psyco Gundam. Hurry!”
+You can’t stay in the Psyco Gundam. Hurry!”
 
 @28120 Four · フォウ
 > 「あっ!?」
@@ -490,8 +530,9 @@ You can't stay in the Psyco Gundam. Hurry!”
 “Die, Kamille!!”
 
 @28122 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「ジェリドか!? させるものか!」
-“Jerid?! Like I'd let you!”
+“Jerid?! Like I’d let you!”
 
 @28123 Jerid · ジェリド
 > 「なに!? くそぉっ、奴は後ろにも
@@ -499,13 +540,15 @@ You can't stay in the Psyco Gundam. Hurry!”
 “What?! Damn it, does he have eyes in the back of his head?!”
 
 @28124 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ、いまのうちだ。はやく!
 >  そのマシーンを降りるんだ!」
-“Four, now's your chance. Hurry! Get out of that machine!”
+“Four, now’s your chance. Hurry! Get out of that machine!”
 
 @28125 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「カミーユ……で、でもあなたが……」
-“Kamille... b-but you'll...”
+“Kamille... b-but you’ll...”
 
 @28126 Kamille · カミーユ
 > 「ここはまかせてくれればいい。
@@ -538,9 +581,10 @@ You can't stay in the Psyco Gundam. Hurry!”
 “Ah... Four... Foooouuur!!”
 
 @28133 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「しくじったか!? くそっ!
 >  次ははずさんぞ、カミーユ!!」
-“Did I miss?! Damn it! I won't miss next time, Kamille!!”
+“Did I miss?! Damn it! I won’t miss next time, Kamille!!”
 
 @28134 Kamille · カミーユ
 > 「貴様ぁぁぁぁーっ!」
@@ -637,17 +681,19 @@ I’ll take it back with these fists of mine!”
 “Allenby!!”
 
 @28146 Allenby · アレンビー
+# 审校：全局：弯撇号／弯引号
 > 「ドモン!? ドモンなの?
 >  さぁ……戦おうよ!
-“Domon?! Is that you, Domon? Come on... let's fight!
+“Domon?! Is that you, Domon? Come on... let’s fight!
 ---
 >  戦ってよ! アタシとぉぉーっ!」
 Fight me! Fight meee!”
 
 @28147 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「待てアレンビー、思い出せ!
 >  俺たちはこんな形の戦いを
-“Wait, Allenby, remember! This isn't the kind of battle
+“Wait, Allenby, remember! This isn’t the kind of battle
 ---
 >  望んでいたわけではなかったはずだ!」
 we ever wanted!”
@@ -670,17 +716,19 @@ call back Allenby’s fist of the soul!”
 “Ugh... Domon... I...”
 
 @28151 Domon · ドモン
+# 审校：全局：弯撇号／弯引号
 > 「ようやく元にもどったな。大丈夫だ
 >  システムは破壊してやる
-“You're finally back to normal. It's all right, I'll destroy the system.
+“You’re finally back to normal. It’s all right, I’ll destroy the system.
 ---
 >  安心して休んでいろ」
 Just rest easy.”
 
 @28152 Allenby · アレンビー
+# 审校：全局：弯撇号／弯引号
 > 「うん……アタシ、とっても疲れちゃった
 >  ……少し、眠らせて……」
-“Yeah... I'm so tired... Let me sleep a little...”
+“Yeah... I’m so tired... Let me sleep a little...”
 
 @28153 Four · フォウ
 > 「いやあぁぁぁぁぁぁーっ!!」
@@ -695,40 +743,44 @@ Just rest easy.”
 “Ngh... Fouuuur!!”
 
 @28156 Allenby · アレンビー
+# 审校：全局：弯撇号／弯引号
 > 「ドモン! ドモンはどこ!?
 >  きゃあぁぁぁーっ!!」
-“Domon! Where's Domon?! Kyaaaaaah!!”
+“Domon! Where’s Domon?! Kyaaaaaah!!”
 
 @28157 Domon · ドモン
 > 「アレンビーッッ!」
 “Allenby!!”
 
 @28158 Wong · ウォン
+# 审校：全局：弯撇号／弯引号
 > 「ええい、こんなことになるとは……
 >  しかたがない脱出しますか」
-“Ugh, to think it would come to this... No help for it. We're pulling out.”
+“Ugh, to think it would come to this... No help for it. We’re pulling out.”
 
 @28159 Kamille · カミーユ
 > 「フォウ、フォウ!」
 “Four, Four!”
 
 @28160 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > (カミーユ……悲しまないで。
 >  これであたしは、いつでもあなたに
-(Kamille... don't be sad. Now I can see you anytime.
+(Kamille... don’t be sad. Now I can see you anytime.
 ---
 >  会えるわ。本当に……あなたの
 >  中へ入ることができるんだから……)
 Truly... because I can become one with you...)
 
 @28161 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ!? しっかりしろ、フォウ!
 >  目をあけろよ! ウソだろ
-“Four?! Stay with me, Four! Open your eyes! It can't be...
+“Four?! Stay with me, Four! Open your eyes! It can’t be...
 ---
 >  こんなの、ウソだろ!?
 >  フォォォォォーウッ!!」
-this can't be happening! Fouuuuur!!”
+this can’t be happening! Fouuuuur!!”
 
 @28162 Amuro · アムロ
 > 「人は……同じ過ちを繰り返す……
@@ -740,72 +792,81 @@ this can't be happening! Fouuuuur!!”
 “The same, huh...”
 
 @28164 Jerid · ジェリド
+# 审校：全局：弯撇号／弯引号
 > 「くそぉぉぉーっ!! すまん、ライラ、
 >  カクリコン、マウアー。俺は
 “Daaamn it!! Forgive me, Lila, Kacricon, Mouar. Someday,
 ---
 >  俺はいつか必ず奴に
 >  怨念返しをしてみせる! 必ずだ!」
-someday I swear I'll pay that bastard back in kind! I swear it!”
+someday I swear I’ll pay that bastard back in kind! I swear it!”
 
 @28165 Four · フォウ
 > 「カミーユ……カミーユゥッ!」
 “Kamille... Kamilleee!”
 
 @28166 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ! 無事でよかった……フォウ」
-“Four! Thank goodness you're safe... Four.”
+“Four! Thank goodness you’re safe... Four.”
 
 @28167 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「カミーユがいてくれたからだよ」
-“It's because you were there, Kamille.”
+“It’s because you were there, Kamille.”
 
 @28168 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「フォウ、君の記憶は
 >  きっと取り戻すよ」
-“Four, I'm sure we'll get your memories back.”
+“Four, I’m sure we’ll get your memories back.”
 
 @28169 Four · フォウ
+# 审校：全局：弯撇号／弯引号
 > 「ううん、もういいの。だって、
 >  これからはずっとカミーユと一緒だもの
-“No, it's all right now. Because from now on I'll always be with you, Kamille.
+“No, it’s all right now. Because from now on I’ll always be with you, Kamille.
 ---
 >  思い出だって、
 >  いくらでも作れるから……」
 We can make as many memories as we want...”
 
 @28170 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「ああ……そうだ、フォウ。そうだよ」
-“Yeah... that's right, Four. That's right.”
+“Yeah... that’s right, Four. That’s right.”
 
 @28171 Quattro · クワトロ
-# 审校：全局：Dr. Hasan／Barge 拼写统一
+# 审校：全局：弯撇号／弯引号
 > 「カミーユ、サイコガンダムは破壊した。
 >  大丈夫だとは思うが
-“Kamille, I destroyed the Psyco Gundam. I think you're fine now, but
+“Kamille, I destroyed the Psyco Gundam. I think you’re fine now, but
 ---
 >  薬物の問題もある。
 >  ハサン先生にみてもらえ」
-there's also the matter of the drugs. Have Dr. Hasan take a look at you.”
+there’s also the matter of the drugs. Have Dr. Hasan take a look at you.”
 
 @28172 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「ありがとうございます、大尉。
 >  さぁ、行こう、フォウ」
-“Thank you, Captain. Come on, let's go, Four.”
+“Thank you, Captain. Come on, let’s go, Four.”
 
 @28173 Four · フォウ
 > 「うん、カミーユ」
 “Yeah, Kamille.”
 
 @28174 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「俺たちと同じにはならなかったか……
 >  よけいな心配だったようだな」
-“So you didn't end up like us... Seems I worried for nothing.”
+“So you didn’t end up like us... Seems I worried for nothing.”
 
 @28175 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「ああ……そうでなくては、人の未来に
 >  期待など持てんよ……」
-“Yeah... if not, there'd be no hope for humanity's future...”
+“Yeah... if not, there’d be no hope for humanity’s future...”
 
 @28176 Fa · ファ
 > 「……カミーユ……」
@@ -831,9 +892,10 @@ there's also the matter of the drugs. Have Dr. Hasan take a look at you.”
 “But Fa’s not the pushy type. And Kamille’s a real jerk about it.”
 
 @28181 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「あんたもそうならないように
 >  気をつけなさいよ」
-“You be careful you don't end up the same way.”
+“You be careful you don’t end up the same way.”
 
 @28182 Koji · 甲児
 > 「大丈夫大丈夫」
@@ -844,9 +906,10 @@ there's also the matter of the drugs. Have Dr. Hasan take a look at you.”
 “Four...”
 
 @28184 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「カミーユ……かわいそうだが、
 >  君はまだ戦うことを
-“Kamille... I'm sorry, but you're still not in a position
+“Kamille... I’m sorry, but you’re still not in a position
 ---
 >  やめるわけにはいかない身だ。戦士は
 >  生きている限り戦わねばならんのだ」
@@ -862,8 +925,9 @@ to stop fighting. A warrior must fight as long as he lives.”
 make a world where this never happens again.”
 
 @28186 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「……ああ……そうだな、カミーユ……」
-“...Yeah... that's right, Kamille...”
+“...Yeah... that’s right, Kamille...”
 
 @28187 Kamille · カミーユ
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -905,19 +969,20 @@ More importantly, how are things on your end, Master?”
 It will make my goal all the easier to achieve.”
 
 @28193 Wong · ウォン
-# 审校：ウォン称呼东方不败为“東方先生”，按 address 应译为 Master Asia，而非 Master Touhou。
+# 审校：全局：弯撇号／弯引号
 > 「これは頼もしいですな。
 >  期待していますよ、東方先生」
-“How reassuring. I'm counting on you, Master Asia.”
+“How reassuring. I’m counting on you, Master Asia.”
 
 @28194 Dermail · デルマイユ
+# 审校：全局：弯撇号／弯引号
 > 「諸君、いよいよ我々が
 >  地球圏を正しく導いていく
 “Gentlemen, the time has finally come for us to guide the Earth Sphere
 ---
 >  時代が来た。支配すべき
 >  階級である我々は、OZの
-rightly. We, the class meant to rule, shall dispatch OZ's
+rightly. We, the class meant to rule, shall dispatch OZ’s
 ---
 >  強化された戦力を地上、
 >  そしてコロニーへ派遣することにより
@@ -936,9 +1001,10 @@ And so, gentlemen, shall we not welcome once more an age of good old
 tradition and dignity, and rule the world?”
 
 @28195 Jamitov · ジャミトフ
+# 审校：全局：弯撇号／弯引号
 > 「名演説だな、デルマイユ公。
 >  トレーズ、これからもOZを頼むぞ」
-“A fine speech, Duke Dermail. Treize, I'll be counting on OZ from here on as well.”
+“A fine speech, Duke Dermail. Treize, I’ll be counting on OZ from here on as well.”
 
 @28196 Treize · トレーズ
 > 「デルマイユ公、ジャミトフ閣下、
@@ -974,6 +1040,7 @@ I also wish to speak of how precious life is, and to express my mourning for sou
 intend to defy Romefeller?”
 
 @28200 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「私は、人間に必要なのは
 >  絶対的な勝利ではなく、
 “I believe what humanity needs is not absolute victory,
@@ -992,7 +1059,7 @@ warriors who surpass my ideals and keep watching the future.
 ---
 >  かつての帝国の支配の時代、
 >  そして今ロームフェラが
-In the age of the old Empire's rule, and even now in this age when Romefeller
+In the age of the old Empire’s rule, and even now in this age when Romefeller
 ---
 >  世界を支配しようという
 >  この時代においても
@@ -1030,13 +1097,14 @@ and the bearers of a new age are born from among the defeated.”
 “I wish to be one of the defeated.”
 
 @28204 Dermail · デルマイユ
+# 审校：全局：弯撇号／弯引号
 > 「……本気のようだな。反逆は
 >  本来ならは銃殺だが、
 “...You seem serious. Rebellion would normally mean execution by firing squad,
 ---
 >  血なまぐさいことは、したくない。
 >  これまでの功績もある
-but I don't wish for anything bloody. In light of your achievements thus far,
+but I don’t wish for anything bloody. In light of your achievements thus far,
 ---
 >  トレーズ、お前を幽閉する」
 Treize, I will have you confined.”
@@ -1057,15 +1125,16 @@ It seems anyone who came up under Special Colonel Treize is no pushover.”
 “That Treize, always adding to my work.”
 
 @28207 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「だからトレーズなどに
 >  まかせねばよかったのだ」
-“That's why we shouldn't have left it to the likes of Treize.”
+“That’s why we shouldn’t have left it to the likes of Treize.”
 
 @28208 Jamitov · ジャミトフ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「バスク、いまさらそれを言っても
 >  しかたあるまい。OZはこのわしが自ら
-“Bask, there's no use saying that now. I have decided to take personal
+“Bask, there’s no use saying that now. I have decided to take personal
 ---
 >  指揮を執ることにした。
 >  トレーズ派の反乱に
@@ -1076,10 +1145,11 @@ command of OZ. It would be troublesome if the Treize faction
 joined forces with anti-OZ elements, Special Colonel.”
 
 @28209 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「はっ、オペレーション・ノヴァを
 >  実行に移します
 “Yes, sir. We will put Operation Nova into action.
 ---
 >  トレーズ派もろとも反対勢力を
 >  一掃してご覧にいれましょう」
-We shall wipe out the Treize faction and all opposing forces together, you'll see.”
+We shall wipe out the Treize faction and all opposing forces together, you’ll see.”

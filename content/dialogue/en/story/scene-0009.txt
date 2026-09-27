@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @18192 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「新司令官のル・カインか。
 >  一体、どんな人物なんだ?」
-“So Le Cain's the new commander. Just what kind of man is he?”
+“So Le Cain’s the new commander. Just what kind of man is he?”
 
 @18193 Garrison · ギャリソン
 # 审校：管家口吻要求无缩写，将 I've 改为 I have。
@@ -19,9 +20,10 @@ according to Lord Alan, the people joining up with us
 know him quite well.”
 
 @18194 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「あんたもつかめないような情報を、
 >  なんだってそいつらが知ってるんだ
-“If even you couldn't dig up anything on him, how the hell do those guys know?
+“If even you couldn’t dig up anything on him, how the hell do those guys know?
 ---
 >  どういう連中なんだよ?」
 Who are these people, anyway?”
@@ -31,17 +33,19 @@ Who are these people, anyway?”
 “What kind of people are they?”
 
 @18196 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
 > 「なんでも3年前地球が侵略を
 >  受けた際にも
-“By all accounts, they're the ones who fought the Empire
+“By all accounts, they’re the ones who fought the Empire
 ---
 >  帝国と戦った方々だとか」
 when Earth was invaded three years ago.”
 
 @18197 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「だけど連邦軍ってわけじゃ
 >  ないんだろう」
-“But they're not with the Federation Forces, right?”
+“But they’re not with the Federation Forces, right?”
 
 @18198 Garrison · ギャリソン
 > 「左様で
@@ -56,30 +60,35 @@ I understand they are an Imperial who sided with Earth in those days,
 along with his comrades.”
 
 @18199 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「あのとき地球についた帝国人……
 >  聞いたことがある」
-“An Imperial who sided with Earth back then... I've heard of that.”
+“An Imperial who sided with Earth back then... I’ve heard of that.”
 
 @18200 Garrison · ギャリソン
 > 「軍の機密扱いでございましたな」
 “It was classified military information, you see.”
 
 @18201 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「3年もか。いまだに戦いつづけて
 >  いるんだ、期待できそうじゃないか」
-“Three whole years. They're still fighting after all this time. Sounds promising, doesn't it?”
+“Three whole years. They’re still fighting after all this time. Sounds promising, doesn’t it?”
 
 @18202 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「そう思うね」
-“I'd say so.”
+“I’d say so.”
 
 @18203 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「……まさか……」
-“...It can't be...”
+“...It can’t be...”
 
 @18204 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「どうしたの?」
-“What's wrong?”
+“What’s wrong?”
 
 @18205 Simone · シモーヌ
 > 「前に、火星の生き残りだって
@@ -107,17 +116,19 @@ Half Earthling, half Gradosian from Imperial territory.”
 “Half Earthling, half Imperial...”
 
 @18209 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「たぶん、その仲間っていうのも
 >  アタシの知り合いだと思う
 “I think these comrades of his are probably people I know, too.
 ---
 >  アタシたちはみんな、エイジが
 >  いなかったら、生きてはいなかった」
-None of us would be alive if it weren't for Eiji.”
+None of us would be alive if it weren’t for Eiji.”
 
 @18210 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「へえ、それは頼もしいな」
-“Heh, that's reassuring.”
+“Heh, that’s reassuring.”
 
 @18211 Le Cain · ル・カイン
 # 审校：同 19121
@@ -154,12 +165,13 @@ will end up sprawled bloody at my feet.)
 please command it without hesitation.”
 
 @18216 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「スペシャルズを代表し、
 >  閣下の就任を
 “On behalf of the Specials, I offer my congratulations
 ---
 >  お喜び申し上げます」
-on Your Excellency's appointment.”
+on Your Excellency’s appointment.”
 
 @18217 Le Cain · ル・カイン
 > 「フッ、こういう地球人もいるか。
@@ -199,21 +211,24 @@ They will surely come out.”
 “Hmm... This, however...”
 
 @18222 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「どうしたんだ?」
-“What's the matter?”
+“What’s the matter?”
 
 @18223 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
 > 「実は新司令官の
 >  就任パレードの情報を
 “The truth is, I have obtained information about
 ---
 >  入手したのですが……」
-the new commander's inauguration parade, but...”
+the new commander’s inauguration parade, but...”
 
 @18224 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「わかった。そこを襲撃するっていう
 >  わけだな?」
-“Got it. So we're going to raid it, right?”
+“Got it. So we’re going to raid it, right?”
 
 @18225 Manami · マナミ（按段落 3DD4）
 > 「ですが?」
@@ -248,9 +263,10 @@ thin that...”
 “I see, it does smell fishy. What do you think?”
 
 @18230 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「どうもこうもない。もしそれが本当なら
 >  そいつは俺たちが
-“There's nothing to think about. If it's real, then that means he knew we were
+“There’s nothing to think about. If it’s real, then that means he knew we were
 ---
 >  襲撃するつもりなのを知ってて
 >  ワザとそうしてるってことだろ?
@@ -261,14 +277,15 @@ planning to raid it and set it up on purpose, right?
 This is clearly a challenge to us Earthlings.”
 
 @18231 Koji · 甲児
-# 审校：用户确认：直引号→弯引号
+# 审校：全局：弯撇号／弯引号
 > 「やれるもんなら、やってみろってわけか。
 >  っきしょう、なんて奴だ」
-“So it's a ‘come at me if you can,’ huh. Damn, what a guy.”
+“So it’s a ‘come at me if you can,’ huh. Damn, what a guy.”
 
 @18232 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「それなら、やめておいたほうがいいわね」
-“Then we'd better not go through with it.”
+“Then we’d better not go through with it.”
 
 @18233 Koji · 甲児
 > 「なにいってんだい、さやかさん。そこまで
@@ -276,18 +293,21 @@ This is clearly a challenge to us Earthlings.”
 “What are you saying, Sayaka? Are you telling me to just sit back and watch after all that?”
 
 @18234 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。こいつは受けて立つべきだ」
-“That's right. This is a challenge we should accept.”
+“That’s right. This is a challenge we should accept.”
 
 @18235 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「明らかにワナだけど、
 >  露骨すぎるのも気になるわ」
-“It's obviously a trap, but the fact that it's so blatant bothers me too.”
+“It’s obviously a trap, but the fact that it’s so blatant bothers me too.”
 
 @18236 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「あからさまにワナと見せておいて
 >  襲撃を避けるつもりなのか
-“Are they showing us an obvious trap so we'll avoid the raid,
+“Are they showing us an obvious trap so we’ll avoid the raid,
 ---
 >  あるいは……」
 or else...”
@@ -298,18 +318,19 @@ or else...”
 “A challenge... indeed.”
 
 @18238 Manami · マナミ（按段落 3DD4）
-# 审校：用户确认：直引号→弯引号
+# 审校：全局：弯撇号／弯引号
 > 「そうね。やれるものならやってみろ、
 >  というわけね」
-“That's right. It's a ‘come at us if you can,’ isn't it.”
+“That’s right. It’s a ‘come at us if you can,’ isn’t it.”
 
 @18239 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「どうするんだ?
 “What are we going to do?
 ---
 >  だからって、はいそうですかと
 >  黙ってみてろっていうのかよ」
-Does that mean we're supposed to just sit back and take it?”
+Does that mean we’re supposed to just sit back and take it?”
 
 @18240 Banjo · 万丈
 # 审校：crushing his opening move 别扭
@@ -334,9 +355,10 @@ the blow dealt to the Empire will be immeasurable.”
 “Then...”
 
 @18242 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ル・カインの挑戦を受けよう。
 >  旧ニューヨーク方面へ向かうぞ」
-“We'll accept Le Cain's challenge. We're heading for the old New York area.”
+“We’ll accept Le Cain’s challenge. We’re heading for the old New York area.”
 
 @18243 Garrison · ギャリソン
 # 审校：ギャリソン对レイカ说话，不应称“my lord”，且原文无呼语，去掉该称呼。
@@ -386,8 +408,9 @@ the blow dealt to the Empire will be immeasurable.”
 We have been completely surrounded.”
 
 @18252 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、うじゃうじゃいるぜ!?」
-“Tch, there's a whole swarm of them!”
+“Tch, there’s a whole swarm of them!”
 
 @18253 Banjo · 万丈
 > 「ああ、どうやら
@@ -447,31 +470,34 @@ to establish true peace. Cast aside everything Earthly!
 Believe in me! Believe in the Empire!”
 
 @18257 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「黙れ! この地球に
 >  僕たちがいるかぎり
 “Silence! As long as we are on this Earth,
 ---
 >  かならず帝国の支配を
 >  打ち砕いてみせる!」
-we will surely crush the Empire's rule!”
+we will surely crush the Empire’s rule!”
 
 @18258 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「フフフ、なかなか楽しませて
 >  くれそうだな
-“Heh heh heh, you look like you'll be quite entertaining.
+“Heh heh heh, you look like you’ll be quite entertaining.
 ---
 >  ならばまず、ここでそれを
 >  見せてもらおうか」
 Then first, let me see it right here.”
 
 @18259 Eiji · エイジ
-# 审校：精读：是英二向卡拉巴道歉，中文方向反了
+# 审校：全局：弯撇号／弯引号
 > 「カラバの方、遅れてすまない」
-“Sorry we're late, Karaba.”
+“Sorry we’re late, Karaba.”
 
 @18260 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「いや、そう悪くないタイミングだ」
-“No, your timing isn't bad at all.”
+“No, your timing isn’t bad at all.”
 
 @18261 Banjo · 万丈
 > 「おっと、どうやらこっちの増援も
@@ -479,28 +505,31 @@ Then first, let me see it right here.”
 “Whoa, looks like our reinforcements have arrived too.”
 
 @18262 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「あれは……レイズナー!
 >  エイジ、やっぱりエイジなのね!?」
-“That's... the Layzner! Eiji, so it really is you?!”
+“That’s... the Layzner! Eiji, so it really is you?!”
 
 @18263 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「シモーヌ? まさかレジスタンスに
 >  君がいるとは……」
-“Simone? I never thought you'd be with the resistance...”
+“Simone? I never thought you’d be with the resistance...”
 
 @18264 David · デビッド
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「シモーヌだって!?
 >  エイジだけじゃねぇ、俺もいるぜ!」
-“Simone?! It's not just Eiji... I'm here too!”
+“Simone?! It’s not just Eiji... I’m here too!”
 
 @18265 Simone · シモーヌ
 > 「あらデビッド、よく生きてたわね」
 “Oh, David. So you managed to survive.”
 
 @18266 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「……ちぇっ、それだけかよ」
-“...Tch, is that all you've got to say?”
+“...Tch, is that all you’ve got to say?”
 
 @18267 Le Cain · ル・カイン
 > 「貴様……エイジ・アスカ
@@ -512,17 +541,19 @@ Then first, let me see it right here.”
 Hmph, I knew I would meet you again for certain.”
 
 @18268 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「おっと、あいつがル・カインか」
-“Whoa, so that's Le Cain.”
+“Whoa, so that’s Le Cain.”
 
 @18269 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「ああ。自信とうぬぼれの
 >  区別のつかない男だ
-“Yeah. He's a man who can't tell confidence from arrogance.
+“Yeah. He’s a man who can’t tell confidence from arrogance.
 ---
 >  俺は、貴様とグレスコ総督は
 >  必ず地球から
-I swear I'll drive you and Governor Gresco
+I swear I’ll drive you and Governor Gresco
 ---
 >  追い出してみせる!」
 off this Earth!”
@@ -546,9 +577,10 @@ with tainted blood.”
 “That voice... is that you, Gosterro?!”
 
 @18273 Gosterro · ゴステロ
+# 审校：全局：弯撇号／弯引号
 > 「エイジィィーッ、貴様が
 >  生きていてくれて、うれしいぜぇ
-“Eijiiiii! I'm so glad you're alive,
+“Eijiiiii! I’m so glad you’re alive,
 ---
 >  これで貴様をぶっ殺してやる
 >  楽しみができたからなぁ!!」
@@ -559,9 +591,11 @@ now I get the pleasure of killing you myself!!”
 “So you survived, Gosterro.”
 
 @18275 Gosterro · ゴステロ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：エイジィ→Eijiii
 > 「さぁてなぁ。この体のどこからどこまで
 >  が生きているのやら
-“Who knows. I can't tell which parts of this body are still alive.
+“Who knows. I can’t tell which parts of this body are still alive.
 ---
 >  甘ちゃんのクセにゲイルを殺し、
 >  自分の姉まで殺しておいて
@@ -576,10 +610,10 @@ and you still had the nerve to keep living, Eijiii.”
 “I...”
 
 @18277 Gosterro · ゴステロ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「まぁいい、
 >  貴様はここで死ぬんだぁ
-“Ah, whatever. You're going to die here.
+“Ah, whatever. You’re going to die here.
 ---
 >  ぐぅぅ、の、脳がいてぇ」
 Ghh, my... my brain hurts.”
@@ -590,17 +624,19 @@ Ghh, my... my brain hurts.”
 “How many of them are there?!”
 
 @18279 Garrison · ギャリソン
+# 审校：全局：弯撇号／弯引号
 > 「これはいけません。皆様方、
 >  ここは撤退いたしましょう」
-“This won't do. Everyone, we should retreat here.”
+“This won’t do. Everyone, we should retreat here.”
 
 @18280 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「くっ、確かにここは
 >  一旦ひくしかないようだね
 “Tch, it seems we really have no choice but to pull back for now.
 ---
 >  みんな、ひきあげるぞ!」
-Everyone, we're withdrawing!”
+Everyone, we’re withdrawing!”
 
 @18281 Eiji · エイジ
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -622,10 +658,10 @@ for nothing but their pride!”
 I like it! Hahahahahaha!!”
 
 @18283 Le Cain · ル・カイン
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「なに!? フッフフフフフ、
 >  なるほど口だけではないようだな
-“What?! Heh heh heh heh, I see, so you're not all talk after all.
+“What?! Heh heh heh heh, I see, so you’re not all talk after all.
 ---
 >  だがこの程度で帝国に
 >  逆らおうなど、片腹痛いわ」
@@ -643,12 +679,13 @@ But to defy the Empire with only this much... how laughable.”
 “This will not do. Everyone, let us withdraw from here.”
 
 @18286 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「くっ、確かにここは
 >  一旦ひくしかないようだね
 “Tch, it seems we really have no choice but to pull back for now.
 ---
 >  みんな、ひきあげるぞ!」
-Everyone, we're withdrawing!”
+Everyone, we’re withdrawing!”
 
 @18287 Eiji · エイジ
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -674,43 +711,52 @@ I like it! Hahahahahaha!!”
 “Le Cain, prepare yourself!”
 
 @18290 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「フッ、面白い。相手をしてやろう」
-“Hmph, interesting. I'll play with you.”
+“Hmph, interesting. I’ll play with you.”
 
 @18291 Gosterro · ゴステロ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：エイジィィ→Eijiiii
 > 「エイジィィ、貴様だけはこの俺の手
 >  でぶち殺してやる!」
-“Eijiii, you and you alone I'll kill with my own hands!”
+“Eijiii, you and you alone I’ll kill with my own hands!”
 
 @18292 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「ゴステロ! お前にやられるわけには
 >  いかない!」
-“Gosterro! I can't afford to be beaten by you!”
+“Gosterro! I can’t afford to be beaten by you!”
 
 @18293 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「よくきてくれたね。
 >  カラバの破嵐万丈だ」
-“Glad you could make it. I'm Banjo Haran of Karaba.”
+“Glad you could make it. I’m Banjo Haran of Karaba.”
 
 @18294 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「エイジ・アスカです。それから、
 >  デビッドとシモーヌとアンナ」
-“I'm Eiji Asuka. And this is David, Simone, and Anna.”
+“I’m Eiji Asuka. And this is David, Simone, and Anna.”
 
 @18295 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「デビッド・ラザフォードだ。
 >  よろしく頼むぜ」
-“I'm David Rutherford. Pleasure to meet you.”
+“I’m David Rutherford. Pleasure to meet you.”
 
 @18296 Anna · アンナ
-# 审校：精读：日式直译
+# 审校：全局：弯撇号／弯引号
 > 「お世話になります。
 >  アンナ・ステファニーです」
-“Thank you for having us. I'm Anna Stephanie.”
+“Thank you for having us. I’m Anna Stephanie.”
 
 @18297 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：シモーヌ・ルフラン→Simone Reflann
 > 「シモーヌ・ルフランよ。よろしく」
-“I'm Simone Reflann. Nice to meet you.”
+“I’m Simone Reflann. Nice to meet you.”
 
 @18298 Banjo · 万丈
 > 「シモーヌ…… ルフラン侯爵家の
@@ -722,13 +768,14 @@ I like it! Hahahahahaha!!”
 “What, you two know each other?”
 
 @18300 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「違うわよ。アタシはこっちに来る前は
 >  ロームフェラの情報を
 “Not exactly. Before I came here, I was feeding Romefeller intelligence
 ---
 >  カラバに流してたのよ。直接お会い
 >  するのは初めてだわ」
-to Karaba. This is the first time we've met in person.”
+to Karaba. This is the first time we’ve met in person.”
 
 @18301 Banjo · 万丈
 > 「君の情報には、ずいぶんと
@@ -751,29 +798,32 @@ Let me thank you properly.”
 “Simone, what in the world...?!”
 
 @18305 Simone · シモーヌ
-# 审校：原文「奪われた唇の、おかえしよ」指被夺走的吻，初稿“the kiss you stole”方向正确，但“payback for the kiss you stole”可保留；此处仅确认无改动，不返回。
+# 审校：全局：弯撇号／弯引号
 > 「奪われた唇の、おかえしよ。
 >  3年間ずーっと考えてたんだから」
-“That's payback for the kiss you stole. I've been thinking about it for three whole years.”
+“That’s payback for the kiss you stole. I’ve been thinking about it for three whole years.”
 
 @18306 Anna · アンナ
 > 「ウフフフフフ」
 “Hehehehehe.”
 
 @18307 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「よくきてくれたね。
 >  カラバの破嵐万丈だ」
-“Glad you could make it. I'm Banjo Haran of Karaba.”
+“Glad you could make it. I’m Banjo Haran of Karaba.”
 
 @18308 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「エイジ・アスカです。
 >  彼がデビッドで……」
-“I'm Eiji Asuka. He's David, and...”
+“I’m Eiji Asuka. He’s David, and...”
 
 @18309 Anna · アンナ
+# 审校：全局：弯撇号／弯引号
 > 「アンナ・ステファニーです。
 >  よろしくお願いします」
-“I'm Anna Stephanie. It's a pleasure to meet you.”
+“I’m Anna Stephanie. It’s a pleasure to meet you.”
 
 @18310 Banjo · 万丈
 # 审校：原文为“お嬢さん”而非“お嬢様”，对初次见面的年轻女性用“miss”更贴切，且符合万丈从容潇洒的口吻。
@@ -781,6 +831,7 @@ Let me thank you properly.”
 “The pleasure is mine, miss.”
 
 @18311 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「エイジ……顔さわらせて。
 >  エイジ、本当に生きてたのね
 “Eiji... let me touch your face. Eiji, you really are alive.
@@ -791,7 +842,7 @@ Let me thank you properly.”
 ---
 >  うぅっ……ごめんなさい
 >  ……やだ、みっともないわ」
-Ah... I'm sorry... no, I'm such a mess.”
+Ah... I’m sorry... no, I’m such a mess.”
 
 @18312 David · デビッド
 # 审校：精读：句意
@@ -808,9 +859,10 @@ Ah... I'm sorry... no, I'm such a mess.”
 “Word has already reached you, then.”
 
 @18315 Gresco · グレスコ
+# 审校：全局：弯撇号／弯引号
 > 「お前を呼び寄せた理由は、
 >  わかっておろうな」
-“You know why I summoned you, don't you.”
+“You know why I summoned you, don’t you.”
 
 @18316 Le Cain · ル・カイン
 > 「心得ております、父上」
@@ -822,13 +874,13 @@ Ah... I'm sorry... no, I'm such a mess.”
 “Pointless slaughter and destruction will only turn the people against us.”
 
 @18318 Le Cain · ル・カイン
-# 审校：精读：英文缺引号
+# 审校：全局：弯撇号／弯引号
 > 「……!? 父上もかわられましたな。
 >  やはり3年も地球におられると、
-“...?! So you've changed too, Father. I suppose after three years on Earth,
+“...?! So you’ve changed too, Father. I suppose after three years on Earth,
 ---
 >  地球病とやらにかかるのですかな」
-you've caught this so-called Earth disease.”
+you’ve caught this so-called Earth disease.”
 
 @18319 Gresco · グレスコ
 > 「地球病?」
@@ -849,22 +901,24 @@ needless leniency will only make the Earthlings look down on us.”
 “...You are still young. There is much you do not understand.”
 
 @18322 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「わかろうとも思いません。父上、
 >  いいかげんに目をさまされたらどうです」
-“I have no wish to understand. Father, why don't you wake up already?”
+“I have no wish to understand. Father, why don’t you wake up already?”
 
 @18323 Le Cain · ル・カイン
+# 审校：全局：弯撇号／弯引号
 > 「父上!?
 >  ……そうか、そういうことなのか
-“Father?! ...I see, so that's how it is.
+“Father?! ...I see, so that’s how it is.
 ---
 >  父上はご自分が地球の空気
 >  に感傷的になっていることを
-You know full well that you've grown sentimental from Earth's air.
+You know full well that you’ve grown sentimental from Earth’s air.
 ---
 >  ご存じなのだ。
 >  ですから私を招いたのですね
-That's why you called me here.
+That’s why you called me here.
 ---
 >  ……父上」
 ...Father.”
@@ -901,9 +955,10 @@ to His Excellency.”
 “Yes.”
 
 @18329 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「ドーリアン氏なのだが、
 >  地球人の自治権獲得や
-“It's about Mr. Darlian. He seems to be quite actively campaigning
+“It’s about Mr. Darlian. He seems to be quite actively campaigning
 ---
 >  コロニーの再建について、
 >  ずいぶんと精力的に

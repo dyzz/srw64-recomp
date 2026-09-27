@@ -5,11 +5,12 @@
 “It should be around here...”
 
 @50622 主角
+# 审校：全局：弯撇号／弯引号
 > 「あそこか……。MSがいる?
 “There it is... An MS?
 ---
 >  ……やってみるさ」
-...I'll give it a try.”
+...I’ll give it a try.”
 
 @50623 主角
 > 「情報では確かあの区画の建物
@@ -17,9 +18,10 @@
 “According to the intel, it should be the building in that block...”
 
 @50624 Specials · スペシャルズ
+# 审校：全局：弯撇号／弯引号
 > 「なんだ……? て、敵だ! 敵襲!!
 >  迎撃しろ!!」
-“What the...? I-It's the enemy! Enemy attack!! Intercept them!!”
+“What the...? I-It’s the enemy! Enemy attack!! Intercept them!!”
 
 @50625 主角
 > 「見つかったか……やっぱり、MSを倒さ
@@ -35,23 +37,25 @@
 “This is the place... Which room is it...?”
 
 @50628 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「女だ……薬で眠らされている?
 >  間違いない、この人だ。ひどいことを」
-“A woman... She's been put to sleep with drugs? No doubt about it, it's her. What a horrible thing to do.”
+“A woman... She’s been put to sleep with drugs? No doubt about it, it’s her. What a horrible thing to do.”
 
 @50629 Bask · バスク
-# 审校：补译：原稿占位符错页
+# 审校：全局：弯撇号／弯引号
 > 「なんだ、警備隊はどうしたか!
 >  あそこにおるのは{HeroMech}の
-“What's this? Where's the guard detail?! That over there is one of the {HeroMech}'s
+“What’s this? Where’s the guard detail?! That over there is one of the {HeroMech}’s
 ---
 >  奴ではないか!」
-people, isn't it?!”
+people, isn’t it?!”
 
 @50630 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > (あれは……ソルデファーだと!? バカな、
 >  なぜあの少年が……)
-(That's... the Soldifar?! Impossible, why is that boy here...)
+(That’s... the Soldifar?! Impossible, why is that boy here...)
 
 @50631 Specials · スペシャルズ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -60,19 +64,22 @@ people, isn't it?!”
 “Special Colonel Bask, the guard detail appears to have been wiped out!”
 
 @50632 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「ふざけおって! MS隊発進させろ!
 >  奴を逃すな!!」
-“Insolent fools! Launch the MS squad! Don't let him escape!!”
+“Insolent fools! Launch the MS squad! Don’t let him escape!!”
 
 @50633 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「しまった、敵の新手か! バスクの
 >  部隊か!? ……あいつもいる!?」
-“Damn, enemy reinforcements! Bask's troops?! ...He's here too?!”
+“Damn, enemy reinforcements! Bask’s troops?! ...He’s here too?!”
 
 @50634 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「もっと出せんのか!? 奴を完全に
 >  包囲させろ!」
-“Can't you send out more?! Surround him completely!”
+“Can’t you send out more?! Surround him completely!”
 
 @50635 Specials · スペシャルズ
 > 「現在、機体の整備中でありま
@@ -102,13 +109,14 @@ this is?!”
 “What? What do you mean, boy?”
 
 @50640 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「ここは、あんたの恋人が軟禁されて
 >  いる場所なんだぞ! あんたの女は
 “This is where your lover is being held captive! Your woman was
 ---
 >  薬で眠らされてた。それをやらせている
 >  のは、バスクだろ!? あんたは、そんな
-drugged into sleep. And the one behind it is Bask, isn't it?! Are you really
+drugged into sleep. And the one behind it is Bask, isn’t it?! Are you really
 ---
 >  場所を守るために、それをやった奴
 >  の命令を聞くのか!?」
@@ -141,9 +149,10 @@ then you and your woman will die here, just like him!”
 “Ngh... Alindine...”
 
 @50646 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「惑わされるんじゃない! わかるか、いま
 >  ここを確保しているのは、俺だ!
-“Don't let him fool you! Understand? I'm the one holding this place now!
+“Don’t let him fool you! Understand? I’m the one holding this place now!
 ---
 >  連中をここに近づけなければ、
 >  あんたの恋人は助けられる!」
@@ -191,12 +200,13 @@ prove it! Protect your own woman!”
 “...You’re right, boy. I was about to make the same mistake again.”
 
 @50654 Bask · バスク
+# 审校：全局：弯撇号／弯引号
 > 「なんだと貴様ぁ! ええい、かまわん!
 >  奴ごとやってしまえ!
-“What did you say, you bastard?! Gah, I don't care! Take him out along with everything else!
+“What did you say, you bastard?! Gah, I don’t care! Take him out along with everything else!
 ---
 >  生かしてかえすな! 女も殺せ!」
-Don't let him leave alive! Kill the woman too!”
+Don’t let him leave alive! Kill the woman too!”
 
 @50655 Ark · アーク（按段落 3DD1）
 > 「敵を近づけたらあんたの女が殺され
@@ -216,8 +226,9 @@ Don't let him leave alive! Kill the woman too!”
 “Ngh... damn...”
 
 @50659 主角
+# 审校：全局：弯撇号／弯引号
 > 「ふぅ……どうにか終わったか……」
-“Phew... Somehow it's over...”
+“Phew... Somehow it’s over...”
 
 @50660 对手
 > 「待たせたな」
@@ -228,21 +239,22 @@ Don't let him leave alive! Kill the woman too!”
 “...What happened to that man?”
 
 @50662 对手
+# 审校：全局：弯撇号／弯引号
 > 「別の町へ身を隠させた。バスクに
 >  見つかることはあるまい
-“I had him hide in another town. Bask won't find him there.
+“I had him hide in another town. Bask won’t find him there.
 ---
 >  大きな借りができたな、少年」
-You've done me a great favor, boy.”
+You’ve done me a great favor, boy.”
 
 @50663 主角
-# 审校：引号
+# 审校：全局：弯撇号／弯引号
 > 「{HeroFull}です。
 >  名乗るのが遅れて悪かったけど
-“It's {HeroFull}. Sorry I was slow to introduce myself,
+“It’s {HeroFull}. Sorry I was slow to introduce myself,
 ---
 >  その少年ってのはやめてもらいたいな」
-but I'd appreciate it if you'd stop calling me ‘boy’.”
+but I’d appreciate it if you’d stop calling me ‘boy’.”
 
 @50664 对手
 > 「すまん。しかし……まさか君がこのような
@@ -250,9 +262,10 @@ but I'd appreciate it if you'd stop calling me ‘boy’.”
 “My apologies. But... to think you would take such action.”
 
 @50665 主角
+# 审校：全局：弯撇号／弯引号
 > 「いいたいことはわかりますよ。前のあなた
 >  は信用できなかった。でも、恋人の
-“I understand what you're saying. I couldn't trust the man you were before. But if you're
+“I understand what you’re saying. I couldn’t trust the man you were before. But if you’re
 ---
 >  ために死んでみせようとするあなたなら、
 >  信用できそうな気がしただけです」
@@ -264,12 +277,13 @@ willing to die for your lover, then I felt I could trust you.”
 “I see... You were in that town... Forgive me, I...”
 
 @50667 主角
+# 审校：全局：弯撇号／弯引号
 > 「……恨みは忘れるといいました。それに
 >  あれがあなたのせいじゃなかったってことは
-“...I said I'd forget my grudge. And I think I understand now
+“...I said I’d forget my grudge. And I think I understand now
 ---
 >  いまは、よくわかっているつもりです」
-that it wasn't your fault.”
+that it wasn’t your fault.”
 
 @50668 对手
 > 「{HeroName}くん……」
@@ -280,27 +294,30 @@ that it wasn't your fault.”
 “So what will you do now?”
 
 @50670 对手
+# 审校：全局：弯撇号／弯引号
 > 「…………{HeroMech}に
 >  行くというのも、よいかもしれんな
-“...Perhaps it wouldn't be a bad idea to go to the {HeroMech}.
+“...Perhaps it wouldn’t be a bad idea to go to the {HeroMech}.
 ---
 >  君がよければ、だが。君も長い間、
 >  部隊を離れていてはまずいだろう」
-That is, if you don't mind. You can't stay away from your unit for long either.”
+That is, if you don’t mind. You can’t stay away from your unit for long either.”
 
 @50671 主角
+# 审校：全局：弯撇号／弯引号
 > 「いいんですか、それで。俺はそういうつも
 >  りで来たわけじゃ……」
-“Is that really all right? That's not why I came here...”
+“Is that really all right? That’s not why I came here...”
 
 @50672 对手
+# 审校：全局：弯撇号／弯引号
 > 「いまさら、他にどうしようがある?
 >  まさかこの状況で、戦うことをやめる
-“At this point, what other choice is there? Surely in this situation, you can't choose to stop
+“At this point, what other choice is there? Surely in this situation, you can’t choose to stop
 ---
 >  選択などできまい。ならば、道は1つ
 >  だと思えるがね。もっとも、
-fighting. If so, then there's only one path. Though I don't know
+fighting. If so, then there’s only one path. Though I don’t know
 ---
 >  {HeroMech}が私のような者を
 >  受け入れてくれるかどうかは
@@ -318,10 +335,12 @@ someone like me.”
 like that in our ranks.”
 
 @50674 对手
+# 审校：全局：弯撇号／弯引号
 > 「ならば、やはり共にいかせてもらおう。
 >  かまわないのだろう?」
-“Then I'll come along with you after all. You don't mind, do you?”
+“Then I’ll come along with you after all. You don’t mind, do you?”
 
 @50675 主角
+# 审校：全局：弯撇号／弯引号
 > 「わかりました、いいでしょう。急ぎますよ」
-“Understood, that's fine. Let's hurry.”
+“Understood, that’s fine. Let’s hurry.”

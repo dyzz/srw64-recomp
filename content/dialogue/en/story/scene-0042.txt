@@ -1,10 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @26639 Mika · ミカ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「艦長、ヘンケン中佐とつながりまし
 >  た」
-“Captain, I've got Lieutenant Colonel Henken on the line.”
+“Captain, I’ve got Lieutenant Colonel Henken on the line.”
 
 @26640 Bright · ブライト
 # 审校：补全整条台词的外层引号
@@ -12,14 +12,14 @@
 “Put him through.”
 
 @26641 Henken · ヘンケン
-# 审校：补全整条台词的外层引号
+# 审校：更口语
 > 「そうか、ジャブローは大変だったようだ
 >  な。物資の件は了承した
-“I see, so Jaburo was rough on you. The supplies are approved.
+“I see, so Jaburo was rough on you. As for the supplies, no problem.
 ---
 >  合流を急ごう。こちらからも渡すも
 >  のがあることだしな」
-We'll hurry to rendezvous. We've got things to hand over on our end too.”
+We’ll hurry to rendezvous. We’ve got something to hand over on our end too.”
 
 @26642 Amuro · アムロ
 # 审校：补全整条台词的外层引号
@@ -27,18 +27,18 @@ We'll hurry to rendezvous. We've got things to hand over on our end too.”
 “What is it?”
 
 @26643 Henken · ヘンケン
-# 审校：补全整条台词的外层引号
+# 审校：去掉重复“是”
 > 「補充のMSだ。上で開発した奴
 >  だが、先に降ろさせた。状況は
-“Replacement mobile suits. They were developed up top, but I had them sent down first. The situation is
+“Replacement mobile suits. They were developed up top, but I had them sent down ahead of time. Things are
 ---
 >  厳しいからな」
-harsh, after all.”
+rough, after all.”
 
 @26644 Quattro · クワトロ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「ほう、それは助かる」
-“Oh, that's a help.”
+“Oh, that’s a help.”
 
 @26645 Henken · ヘンケン
 # 审校：补全整条台词的外层引号
@@ -52,20 +52,20 @@ harsh, after all.”
 “Meaning?”
 
 @26647 Henken · ヘンケン
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「OZが確認した情報だそうだが、
 >  正体不明の艦隊が出現した
-“It's information OZ confirmed, apparently. An unidentified fleet has appeared.
+“It’s information OZ confirmed, apparently. An unidentified fleet has appeared.
 ---
 >  現在OZのほうでは、これの正体を
 >  突き止めようとしているらしい」
 Right now OZ seems to be trying to determine what it is.”
 
 @26648 Bright · ブライト
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「正体不明の艦隊だと!?
 >  まさか……」
-“An unidentified fleet?! Don't tell me...”
+“An unidentified fleet?! Don’t tell me...”
 
 @26649 Amuro · アムロ
 # 审校：补全整条台词的外层引号
@@ -74,20 +74,20 @@ Right now OZ seems to be trying to determine what it is.”
 “Muge Zorbados?”
 
 @26650 Henken · ヘンケン
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「わからん。いずれにせよ君たちには、また
 >  上がってもらうことになると思う」
-“I don't know. Either way, I expect you'll be sent up again.”
+“I don’t know. Either way, I expect you’ll be sent up again.”
 
 @26651 Bright · ブライト
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「覚悟はしておきましょう」
-“We'll be ready.”
+“We’ll be ready.”
 
 @26652 Henken · ヘンケン
-# 审校：补全整条台词的外层引号
+# 审校：英文更自然
 > 「では、後でな」
-“Then, later.”
+“Talk to you later, then.”
 
 @26653 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -95,9 +95,9 @@ Right now OZ seems to be trying to determine what it is.”
 “{PartnerNick}...”
 
 @26654 Koji · 甲児
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……あんまり気にするなよ」
-“...Don't beat yourself up over it.”
+“...Don’t beat yourself up over it.”
 
 @26655 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -105,13 +105,13 @@ Right now OZ seems to be trying to determine what it is.”
 “Koji...”
 
 @26656 Sayaka · さやか
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「彼だって、こうなる可能性は
 >  考えてたでしょう
 “He must have considered this possibility too.
 ---
 >  あなたが悪いんじゃないんだから」
-It's not your fault.”
+It’s not your fault.”
 
 @26657 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -119,17 +119,17 @@ It's not your fault.”
 “Sayaka...”
 
 @26658 Roux · ルー
-# 审校：补全整条台词的外层引号
+# 审校：英文更口语
 > 「そうそう。まったくドモンといい
 >  あんたといい、単純な奴に限って
-“That's right. Honestly, Domon and you alike, it's always the simple ones
+“That’s right. Honestly, you and Domon both, it’s always the simple types
 ---
 >  ショック受けると
 >  ズーンと沈んじゃうんだから
-who sink into a deep gloom when they get shocked.
+who sink like a stone the moment something hits them.
 ---
 >  もっとシャキッとしなさいよ」
-Snap out of it already.”
+Pull yourself together already.”
 
 @26659 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -137,17 +137,17 @@ Snap out of it already.”
 “Roux Louka too...”
 
 @26660 Koji · 甲児
-# 审校：补全整条台词的外层引号
+# 审校：英文病句；中文更顺
 > 「ははっ、ガラじゃないけどさ。
 >  {PartnerName}と仲間として
-“Haha, it's not like me, but... As {PartnerName}'s comrade,
+“Haha, it’s not really my style, but... Of the people who fought alongside {PartnerName},
 ---
 >  戦ったことがあるのは、お前の他には
 >  俺とさやかさんとルーくらいだからな
-the only ones who've fought alongside you are me, Sayaka, and Roux.
+besides you it’s just me, Sayaka, and Roux.
 ---
 >  万丈はどっか行っちまったままだし」
-Banjo's still off somewhere.”
+Banjo’s still off somewhere.”
 
 @26661 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -155,21 +155,21 @@ Banjo's still off somewhere.”
 “Sorry... all of you...”
 
 @26662 Koji · 甲児
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「いいって。それより、大丈夫かよ?」
-“It's fine. More importantly, are you okay?”
+“It’s fine. More importantly, are you okay?”
 
 @26663 Brad · ブラッド（按段落 3DD3）
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「ああ。戦闘になれば、
 >  そんなこと考えているヒマはないからな」
-“Yeah. Once we're in combat, there's no time to think about that.”
+“Yeah. Once we’re in combat, there’s no time to think about that.”
 
 @26664 Roux · ルー
-# 审校：词条：ヴァイローズ=Virose
+# 审校：更口语
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
-“Then it's fine. Oh, right, Astonaige said he wants to talk
+“Well, good. Oh, right, Astonaige said he wants to talk
 ---
 >  回収したヴァイローズの件で
 >  話があるっていってたわよ」
@@ -181,10 +181,10 @@ about the Virose we recovered.”
 “Astonaige, did you figure it out?”
 
 @26666 Astonaige · アストナージ
-# 审校：补全整条台词的外层引号
+# 审校：更口语
 > 「おう、来たな。
 >  お前のいった通りみたいだ」
-“Yeah, you're here. Looks like it's just as you said.”
+“Hey, there you are. Looks like it’s just as you said.”
 
 @26667 Brad · ブラッド（按段落 3DD3）
 # 审校：补全整条台词的外层引号
@@ -192,14 +192,14 @@ about the Virose we recovered.”
 “I see...”
 
 @26668 Astonaige · アストナージ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「スーパーアースゲインといったところかな。
 >  かなりパワーアップするようだ
-“I'd call it the Super Earthgain. It seems to get a considerable power-up.
+“I’d call it the Super Earthgain. It seems to get a considerable power-up.
 ---
 >  操縦関連のシステムはいじらなくて
 >  すむから、俺たちでもなんとかできるが、
-We won't have to touch the control systems, so even we can manage it, but
+We won’t have to touch the control systems, so even we can manage it, but
 ---
 >  どうする?」
 what do you say?”
@@ -220,15 +220,16 @@ what do you say?”
 “...Do it. ...Please.”
 
 @26672 Astonaige · アストナージ
-# 审校：补全整条台词的外层引号
+# 审校：更口语
 > 「よし、それじゃさっそくとりかかるとするか
 >  シャリー、ジャネット、来てくれないか」
-“All right, then let's get started right away. Shirley, Janet, could you come here?”
+“All right, then let’s get started right away. Shirley, Janet, give me a hand?”
 
 @26673 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > ({PartnerNick}……見ていろ。敵を
 >  滅するその日まで、俺は
-({PartnerNick}... Watch me. Until the day I destroy the enemy, I'll
+({PartnerNick}... Watch me. Until the day I destroy the enemy, I’ll
 ---
 >  戦いつづける。お前の魂とともに……
 >  このスーパーアースゲインで……)
@@ -241,13 +242,13 @@ keep fighting. Together with your soul... in this Super Earthgain...)
 “Zeon? You mean those Zeon remnants?”
 
 @26675 Jamitov · ジャミトフ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「アステロイド・ベルトから来たというが
 >  ……ハマーン・カーン
 “They say she came from the Asteroid Belt... Haman Karn.
 ---
 >  何を考えているかわからん女だ」
-A woman whose thoughts I can't read.”
+A woman whose thoughts I can’t read.”
 
 @26676 Dermail · デルマイユ
 # 审校：补全整条台词的外层引号
@@ -256,19 +257,19 @@ A woman whose thoughts I can't read.”
 “But she offered to cooperate with OZ, did she not?”
 
 @26677 Jamitov · ジャミトフ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「宇宙からの脅威が存在すれば、
 >  それに対応するのが自然な流れだ
-“If a threat from space exists, it's only natural to respond to it.
+“If a threat from space exists, it’s only natural to respond to it.
 ---
 >  が、背景のわからぬ者を
 >  受け入れるのには、覚悟がいるな」
 But accepting someone whose background is unknown takes resolve.”
 
 @26678 Dermail · デルマイユ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「わからんなジャミトフ。どういうことだ」
-“I don't follow, Jamitov. What do you mean?”
+“I don’t follow, Jamitov. What do you mean?”
 
 @26679 Jamitov · ジャミトフ
 # 审校：补全整条台词的外层引号
@@ -286,10 +287,10 @@ anyone who dreams of building a new system
 is liable to do anything. Just like we once were.”
 
 @26680 Dermail · デルマイユ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「なるほど……しかし利用しない手は
 >  あるまい」
-“I see... but we'd be fools not to make use of her.”
+“I see... but we’d be fools not to make use of her.”
 
 @26681 Jamitov · ジャミトフ
 # 审校：补全整条台词的外层引号
@@ -307,10 +308,10 @@ is liable to do anything. Just like we once were.”
 “What is it?”
 
 @26684 Specials · スペシャルズ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「哨戒任務中でありました
 >  巡洋艦アレキサンドリアが
-“We've received a report that the cruiser Alexandria,
+“We’ve received a report that the cruiser Alexandria,
 ---
 >  正体不明の艦隊から発した
 >  敵部隊から攻撃を受け
@@ -349,9 +350,9 @@ What of Special Colonel Jamaican?”
 “Sir, Special Colonel Jamaican was killed in action.”
 
 @26688 Jamitov · ジャミトフ
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「……それで、敵の動きは?」
-“...And the enemy's movements?”
+“...And the enemy’s movements?”
 
 @26689 Specials · スペシャルズ
 # 审校：补全整条台词的外层引号
@@ -364,22 +365,22 @@ What of Special Colonel Jamaican?”
 The other has been confirmed descending to Earth.”
 
 @26690 Jamitov · ジャミトフ
-# 审校：补全整条台词的外层引号
+# 审校：およがせる 是放着观察
 > 「この状態で地上へ降下するか
 >  ……妙だな
 “Descending to the surface in this situation... how strange.
 ---
 >  しばらく、およがせるのがよいか……」
-Perhaps we should let them flounder for a while...”
+Perhaps we should let them run loose for a while...”
 
 @26691 Blacky · ブラッキー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「全機降下完了したか。
 >  ふむ、これが地球か……
 “Have all units finished their descent? Hmm, so this is Earth...
 ---
 >  マーズの居場所はつかんでいるな?」
-You've located where Mars is, yes?”
+You’ve located where Mars is, yes?”
 
 @26692 Gishin Soldier · ギシン星兵
 # 审校：补全整条台词的外层引号
@@ -399,18 +400,18 @@ You've located where Mars is, yes?”
 “...”
 
 @26695 Blacky · ブラッキー
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「マーグ、お前の機体に取りつけ
 >  られた爆弾のことを忘れるな
-“Marg, don't forget about the bomb attached to your unit.
+“Marg, don’t forget about the bomb attached to your unit.
 ---
 >  おかしな行動をしたら
 >  その場で爆発させる
-If you do anything strange, I'll detonate it on the spot.
+If you do anything strange, I’ll detonate it on the spot.
 ---
 >  マーズを殺したら解除してやる
 >  わかったな」
-Kill Mars and I'll disarm it. Understood?”
+Kill Mars and I’ll disarm it. Understood?”
 
 @26696 Marg · マーグ
 # 审校：补全整条台词的外层引号
@@ -418,26 +419,26 @@ Kill Mars and I'll disarm it. Understood?”
 “...I understand.”
 
 @26697 Hikaru · ひかる
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「大介さん、見て。あれはどこの
 >  軍隊なのかしら。OZではないわね」
-“Daisuke, look. Whose army is that? It's not OZ.”
+“Daisuke, look. Whose army is that? It’s not OZ.”
 
 @26698 Daisuke · 大介
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「あ……あれは!? まさか……
 >  まさかそんな……」
-“Ah... that's?! No... it can't be...”
+“Ah... that’s?! No... it can’t be...”
 
 @26699 Hikaru · ひかる
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「大介さん、どうしたの?」
-“Daisuke, what's wrong?”
+“Daisuke, what’s wrong?”
 
 @26700 Daisuke · 大介
-# 审校：补全整条台词的外层引号
+# 审校：英文重复
 > 「……ついに、ついに来てしまったのか」
-“...They've finally come. They've finally come, haven't they.”
+“...So they’ve finally, finally come.”
 
 @26701 Hikaru · ひかる
 # 审校：补全整条台词的外层引号
@@ -454,7 +455,7 @@ Kill Mars and I'll disarm it. Understood?”
 I have no choice but to fight.”
 
 @26703 Hikaru · ひかる
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「え? どうしたっていうの?
 >  グレンダイザーのことは
@@ -466,26 +467,26 @@ back when the Muge Zorbados Empire was invading,
 ---
 >  でも、あのときも結局は
 >  戦わなかったじゃないの」
-but even then you didn't end up fighting, did you?”
+but even then you didn’t end up fighting, did you?”
 
 @26704 Daisuke · 大介
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「確かに、乗りたくはない。
 >  戦わずにすめばいいと思っていた
-“It's true, I don't want to pilot it. I thought it would be best if I never had to fight.
+“It’s true, I don’t want to pilot it. I thought it would be best if I never had to fight.
 ---
 >  しかし、今度ばかりは違うんだ。
 >  奴らが、銀河帝国がついに
-But this time is different. They've come. The Galactic Empire has finally
+But this time is different. They’ve come. The Galactic Empire has finally
 ---
 >  来てしまった。奴らは
 >  ムゲゾルバドスとは違う
-come. They're not like Muge Zorbados.
+come. They’re not like Muge Zorbados.
 ---
 >  支配などしない。
 >  戦った相手を滅ぼすだけだ」
-They don't conquer. They simply destroy whoever they fight.”
+They don’t conquer. They simply destroy whoever they fight.”
 
 @26705 Hikaru · ひかる
 # 审校：补全整条台词的外层引号
@@ -493,10 +494,10 @@ They don't conquer. They simply destroy whoever they fight.”
 “The Galactic... Empire?”
 
 @26706 Daisuke · 大介
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「僕の故郷、
 >  フリード星を滅ぼした奴らだ
-“They're the ones who destroyed my homeworld, Planet Fleed.
+“They’re the ones who destroyed my homeworld, Planet Fleed.
 ---
 >  僕はこの地球を、
 >  この第二の故郷を
@@ -512,45 +513,49 @@ this time I will protect it. Even if it costs me my life.”
 “Daisuke...”
 
 @26708 Daisuke · 大介
-# 审校：补全整条台词的外层引号
+# 审校：全局：弯撇号／弯引号
 > 「すまない、ひかるさん。
 >  おれは義父さんのところへ行く
-“I'm sorry, Hikaru. I'm going to see my adoptive father.
+“I’m sorry, Hikaru. I’m going to see my adoptive father.
 ---
 >  もう……戻ってはこれないかもしれない」
 I may... never be able to come back.”
 
 @26709 Hikaru · ひかる
-# 审校：サポートメカは単数か複数か曖昧だが、ここでは自然に「a support unit」とした。
+# 审校：全局：弯撇号／弯引号
 > 「……私も行きます。グレンダイザーの
 >  サポートメカも必要でしょう」
-“...I'm coming too. You'll need a support unit for Grendizer, won't you?”
+“...I’m coming too. You’ll need a support unit for Grendizer, won’t you?”
 
 @26710 Daisuke · 大介
 > 「だめだ。これは危険なことなんだ」
 “No. This is dangerous.”
 
 @26711 Hikaru · ひかる
+# 审校：全局：弯撇号／弯引号
 > 「とめてもだめよ。今までだって、
 >  ずっと地球のために戦ってきた
-“You can't stop me. All this time, there have been people fighting
+“You can’t stop me. All this time, there have been people fighting
 ---
 >  人たちがいるんだもの。今からでも
 >  遅くはないわ。私も戦います」
-for Earth. It's not too late to start now. I'll fight too.”
+for Earth. It’s not too late to start now. I’ll fight too.”
 
 @26712 Daisuke · 大介
+# 审校：全局：弯撇号／弯引号
 > 「……わかった。だが、
 >  無理はしないでくれ」
-“...All right. But don't push yourself too hard.”
+“...All right. But don’t push yourself too hard.”
 
 @26713 Hikaru · ひかる
+# 审校：全局：弯撇号／弯引号
 > 「ええ」
-“I won't.”
+“I won’t.”
 
 @26714 Beltorchika · ベルトーチカ
+# 审校：全局：弯撇号／弯引号
 > 「OZの部隊に発見されたようです」
-“It seems we've been spotted by an OZ unit.”
+“It seems we’ve been spotted by an OZ unit.”
 
 @26715 Bright · ブライト
 > 「やはりか。
@@ -561,11 +566,10 @@ for Earth. It's not too late to start now. I'll fight too.”
 All pilots, launch immediately!”
 
 @26716 Takeru · タケル
-# 审校：「待機」を自然な英語に調整。
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：弯撇号／弯引号
 > 「ブライト艦長! 俺が
 >  待機というのはどういうことですか!?」
-“Captain Bright! What do you mean, I'm on standby?!”
+“Captain Bright! What do you mean, I’m on standby?!”
 
 @26717 Kenji · ケンジ
 > 「タケル、俺と艦長たちで
@@ -573,19 +577,20 @@ All pilots, launch immediately!”
 “Takeru, this is something the captain and I discussed and decided.”
 
 @26718 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「隊長、どうしてですか!
 >  俺が信用できないからですか!?」
-“Commander, why?! Is it because you don't trust me?!”
+“Commander, why?! Is it because you don’t trust me?!”
 
 @26719 Kenji · ケンジ
-# 审校：「こらえてくれ」をより自然な「bear with it」に調整。
+# 审校：全局：弯撇号／弯引号
 > 「すまんなタケル。少なくとも
 >  事実関係がはっきりするまでは
 “Sorry, Takeru. At least until the facts are clear,
 ---
 >  ナオトやアキラたちが納得せんのだ。
 >  頼む、しばらくはこらえてくれ」
-Naoto and Akira won't accept it. Please, bear with it for a while.”
+Naoto and Akira won’t accept it. Please, bear with it for a while.”
 
 @26720 Takeru · タケル
 > 「くっ……!」
@@ -596,14 +601,15 @@ Naoto and Akira won't accept it. Please, bear with it for a while.”
 “Takeru!”
 
 @26722 Bunny · バニー
+# 审校：全局：弯撇号／弯引号
 > 「私が追いかけるわ。
 >  大丈夫、バニーにおまかせよ!」
-“I'll go after him. It's fine, leave it to Bunny!”
+“I’ll go after him. It’s fine, leave it to Bunny!”
 
 @26723 Chibodee · チボデー
-# 审校：チボデーの砕けた口調に合わせて自然な口語に調整。
+# 审校：全局：弯撇号／弯引号
 > 「ホントに大丈夫かよ」
-“You sure you'll be okay?”
+“You sure you’ll be okay?”
 
 @26724 Bright · ブライト
 > 「お前たちも早く配置につけ」
@@ -614,18 +620,19 @@ Naoto and Akira won't accept it. Please, bear with it for a while.”
 “Understood.”
 
 @26726 Hikaru · ひかる
+# 审校：全局：弯撇号／弯引号
 > 「大介さん、あれは
 >  {HeroMech}よ
-“Daisuke, that's the {HeroMech}.
+“Daisuke, that’s the {HeroMech}.
 ---
 >  OZと戦闘していたみたいだわ」
 Looks like it was fighting OZ.”
 
 @26727 Duke · デューク
-# 审校：「片づけられれば」を自然な英語に調整。
+# 审校：全局：弯撇号／弯引号
 > 「……グレンダイザーだけで片づけられれば
 >  と思ったが、やむをえんか……」
-“...I was hoping Grendizer alone could handle this, but I suppose there's no choice...”
+“...I was hoping Grendizer alone could handle this, but I suppose there’s no choice...”
 
 @26728 Beltorchika · ベルトーチカ
 > 「艦長、正体不明機を
@@ -633,9 +640,10 @@ Looks like it was fighting OZ.”
 “Captain, two unidentified units confirmed!”
 
 @26729 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「……あれか。そこの2機、応答せよ
 >  こちらは{HeroMech}の
-“...So that's them. You two there, respond. This is Bright Noa of the {HeroMech}.
+“...So that’s them. You two there, respond. This is Bright Noa of the {HeroMech}.
 ---
 >  ブライト・ノアだ。
 >  応答がない場合は撃墜する」
@@ -651,9 +659,10 @@ If you do not respond, you will be shot down.”
 Do not attack us.”
 
 @26731 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「どういうことだ。事情は
 >  聞かせてもらえるのだろうな?」
-“What do you mean? You'll tell us what's going on, I trust?”
+“What do you mean? You’ll tell us what’s going on, I trust?”
 
 @26732 Duke · デューク
 > 「我々は現在こちらへ向かっている
@@ -668,17 +677,19 @@ That is all.”
 “Galactic Empire? What in the world is that?”
 
 @26734 Duke · デューク
+# 审校：全局：弯撇号／弯引号
 > 「話をしているヒマはない。くる」
-“There's no time to talk. They're coming.”
+“There’s no time to talk. They’re coming.”
 
 @26735 Bright · ブライト
 > 「なんだと!?」
 “What?!”
 
 @26736 Blacky · ブラッキー
+# 审校：同句统一
 > 「ふん……むっ? あれは……
 >  あれは、まさかグレンダイザー!?
-“Hmph... Hm? That's... that's Grendizer, of all things?!
+“Hmph... Hm? That’s... could that be Grendizer?!
 ---
 >  するとデューク・フリードは
 >  地球へ来ていたのか
@@ -697,9 +708,10 @@ Hey, report this to Commander Gandal.”
 “Mars and Duke Fleed, is it? What a stroke of luck. Hahahahaha!”
 
 @26739 Duke · デューク
+# 审校：全局：弯撇号／弯引号
 > 「来たか……この地球を
 >  フリード星のようにはさせん!」
-“So they've come... I won't let this Earth end up like Planet Fleed!”
+“So they’ve come... I won’t let this Earth end up like Planet Fleed!”
 
 @26740 Bright · ブライト
 > 「くっ、あいつがいっていた敵か!?
@@ -711,45 +723,50 @@ Hey, report this to Commander Gandal.”
 (Mars, I want to see you. I want to meet and talk.)
 
 @26742 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > (その声は……オレに
 >  ゴッドマーズのことを教えてくれた男か)
-(That voice... it's the man who taught me about Godmars.)
+(That voice... it’s the man who taught me about Godmars.)
 
 @26743 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > (そうだ。お前にとって重要なことを
 >  伝えたい。出てきてくれ、マーズ)
-(That's right. I want to tell you something important. Come out, Mars.)
+(That’s right. I want to tell you something important. Come out, Mars.)
 
 @26744 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > (しかし今は戦闘中だ。
 >  俺ひとりで出られる機体はない)
-(But we're in the middle of battle. I have no unit I can take out alone.)
+(But we’re in the middle of battle. I have no unit I can take out alone.)
 
 @26745 Marg · マーグ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：盖亚用 it，与同剧情统一
 > (ガイヤーを呼べばいい。
 >  どこにいてもお前が呼べば応える)
-(Just call Gaia. Wherever you are, he will answer your call.)
+(Just call Gaia. Wherever you are, it will answer your call.)
 
 @26746 Takeru · タケル
 > (……わかった)
 (...All right.)
 
 @26747 Bunny · バニー
+# 审校：全局：弯撇号／弯引号
 > 「どうしたの?」
-“What's wrong?”
+“What’s wrong?”
 
 @26748 Takeru · タケル
 > 「……ごめんっ!」
 “...Sorry!”
 
 @26749 Bunny · バニー
+# 审校：全局：弯撇号／弯引号
 > 「あっ、ちょっと待ってよ!
 >  勝手に動いちゃいけないって
 “Ah, wait a second! You were told not to move on your own,
 ---
 >  いわれてたでしょ!!」
-weren't you?!”
+weren’t you?!”
 
 @26750 Takeru · タケル
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -757,10 +774,10 @@ weren't you?!”
 “Gaiaaaaaa!”
 
 @26751 Bright · ブライト
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
-“That's the one called Gaia?! Is Takeru piloting it?!”
+“That’s the one called Gaia?! Is Takeru piloting it?!”
 
 @26752 Chibodee · チボデー
 > 「おいおいバニー、
@@ -768,13 +785,15 @@ weren't you?!”
 “Hey, hey, Bunny, so much for ‘leave it to me.’”
 
 @26753 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「来たか。マーズ、いくぞ!」
-“You've come. Mars, here we go!”
+“You’ve come. Mars, here we go!”
 
 @26754 Takeru · タケル
+# 审校：同句统一
 > 「何をする!? くそっ、
 >  話があるというのは嘘だったのか!」
-“What are you doing?! Damn it, was what you said about having something to tell me a lie?!”
+“What are you doing?! Damn it, so all that about wanting to talk was a lie?!”
 
 @26755 Takeru · タケル
 # 审校：精读：しまった
@@ -782,18 +801,20 @@ weren't you?!”
 “Oh no!”
 
 @26756 Marg · マーグ
+# 审校：反问语气
 > 「そんな腕で銀河帝国が
 >  倒せるか!」
-“With skill like that, can you defeat the Galactic Empire?!”
+“You think you can beat the Galactic Empire with skill like that?!”
 
 @26757 Takeru · タケル
 > 「くそっ!」
 “Damn it!”
 
 @26758 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「俺の名はマーグ。
 >  マーズ、そんなことでは俺は倒せんぞ!」
-“My name is Marg. Mars, you won't defeat me like that!”
+“My name is Marg. Mars, you won’t defeat me like that!”
 
 @26759 Takeru · タケル
 > 「貴様は何者だ!?」
@@ -809,21 +830,24 @@ weren't you?!”
 “W-what?! I have... a brother...?”
 
 @26762 Marg · マーグ
+# 审校：“战斗，去战斗”生硬
 > 「いくぞマーズ。戦え、戦うんだ!」
-“Here I come, Mars. Fight, you must fight!”
+“Here I come, Mars. Fight me! Fight!”
 
 @26763 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「兄弟だったら、なぜ!?」
-“If we're brothers, then why?!”
+“If we’re brothers, then why?!”
 
 @26764 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「戦っている間だけ……
 >  俺は生きていられる
 “Only while I fight... can I stay alive.
 ---
 >  父の名はイデア、
 >  母の名はアイーダという」
-Our father's name was Idea, and our mother's name was Aida.”
+Our father’s name was Idea, and our mother’s name was Aida.”
 
 @26765 Takeru · タケル
 > 「つあぁぁぁっ!?」
@@ -834,48 +858,54 @@ Our father's name was Idea, and our mother's name was Aida.”
 “...”
 
 @26767 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > (なんだ……あの機体に爆弾!?
 >  そうだったのか……)
-(What... a bomb on that unit?! So that's how it was...)
+(What... a bomb on that unit?! So that’s how it was...)
 
 @26768 Marg · マーグ
 > 「さぁ……俺と戦えマーズ!」
 “Now... fight me, Mars!”
 
 @26769 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「みんな、頼む!
 >  隊長機を破壊してくれ!!」
-“Everyone, please! Destroy the commander's unit!!”
+“Everyone, please! Destroy the commander’s unit!!”
 
 @26770 Marg · マーグ
 > 「くっ……マーズ……」
 “Ngh... Mars...”
 
 @26771 Blacky · ブラッキー
+# 审校：全局：弯撇号／弯引号
 > 「ええい、作戦は失敗か!」
-“Gah, the operation's a failure!”
+“Gah, the operation’s a failure!”
 
 @26772 Takeru · タケル
+# 审校：英文直译不通
 > 「マーグ、爆弾のコントロールはこれで
 >  解除された。いったん待避してくれ」
-“Marg, the bomb's control has been released now. Pull back for the moment.”
+“Marg, they can’t set off the bomb anymore. Fall back for now.”
 
 @26773 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「わ、わかった。そうさせてもらう」
-“U-understood. I'll do that.”
+“U-understood. I’ll do that.”
 
 @26774 Takeru · タケル
 > 「マーグ!」
 “Marg!”
 
 @26775 Marg · マーグ
+# 审校：“创造出机会”生硬
 > 「……ああするしか、お前と話すチャンス
 >  をつくれなかった。許してくれ。父と
-“...That was the only way I could make a chance to talk with you. Forgive me. The memories I inherited from our father and
+“...It was the only way I could get a chance to talk with you. Forgive me. I want to pass on to you
 ---
 >  母から受け継いだ記憶をお前に
 >  伝えたい。マーズ、手を出してくれ」
-mother, I want to pass them on to you. Mars, give me your hand.”
+the memories I inherited from Father and Mother. Mars, give me your hand.”
 
 @26776 Takeru · タケル
 > 「……わかった
@@ -885,7 +915,7 @@ mother, I want to pass them on to you. Mars, give me your hand.”
 ...”
 
 @26777 Takeru · タケル
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > (うぅっ、これは……ギシン星……
 >  父と母……
 (Ugh, this is... the planet Gishin... Father and Mother...
@@ -896,20 +926,20 @@ The antiproton energy Father researched... and Gaia...
 ---
 >  破壊されるかオレが死ぬと
 >  反陽子爆弾が爆発する……)
-If it's destroyed, or if I die, the antiproton bomb will explode...)
+If it’s destroyed, or if I die, the antiproton bomb will explode...)
 
 @26778 Marg · マーグ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：“总有一天这一天”重复；英文缺句尾
 > (そうだ。ズールはいつか
 >  この日の来ることを考えて
-(That's right. Zuul thought this day might someday come,
+(That’s right. Zuul thought this day might someday come,
 ---
 >  ガイヤーを地球に送っていた。
 >  ガイヤーに搭載された爆弾の
-and sent Gaia to Earth. As the key to the bomb loaded in Gaia,
+and sent Gaia to Earth. And with it, as the key to the bomb aboard Gaia,
 ---
 >  キーとして、まだ赤子のお前とともに)
-together with you, still just a baby)
+went you, still just a baby.)
 
 @26779 Takeru · タケル
 > (それで俺は捨て子として
@@ -917,8 +947,9 @@ together with you, still just a baby)
 (And so I was raised on Earth as an abandoned child...)
 
 @26780 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「そうだったのか……兄さん」
-“So that's how it was... brother.”
+“So that’s how it was... brother.”
 
 @26781 Marg · マーグ
 > 「マーズ……うっ」
@@ -929,34 +960,37 @@ together with you, still just a baby)
 “Brother?!”
 
 @26783 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「気がついたかい、兄さん」
-“You're awake, brother.”
+“You’re awake, brother.”
 
 @26784 Marg · マーグ
 > 「……マーズ、ここはどこだ?」
 “...Mars, where is this?”
 
 @26785 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「俺たち{HeroMech}の
 >  艦の中だ。心配ないよ」
-“We're aboard our {HeroMech}. Don't worry.”
+“We’re aboard our {HeroMech}. Don’t worry.”
 
 @26786 Marg · マーグ
-# 审校：第2页结尾是疑问句，原文为「……な」，应使用问号而非句号。
+# 审校：英文被动句别扭
 > 「ああ……地球のことは調査ずみ
 >  だった。{HeroMech}は現在
-“I see... Earth had already been investigated. {HeroMech} is currently
+“I see... We’d already investigated Earth. The {HeroMech} is currently
 ---
 >  地球を支配している勢力に
 >  反抗しているのだったな」
-resisting the forces that rule Earth, isn't it?”
+resisting the forces that rule Earth, isn’t it?”
 
 @26787 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「そうだよ」
-“That's right.”
+“That’s right.”
 
 @26788 Marg · マーグ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > 「……マーズ、お前に渡さなくては
 >  ならないものがある
 “...Mars, there is something I must give you.
@@ -967,7 +1001,7 @@ The five robots other than Gaia, the Five God Robots, were sent in by Father in 
 ---
 >  送りこんだ、お前の守護神だ。
 >  ガイヤーが危険になると自動的に
-behind Zuul's back, as your guardian deities. When Gaia is in danger, they automatically
+behind Zuul’s back, as your guardian deities. When Gaia is in danger, they automatically
 ---
 >  ガイヤーを守る。反陽子爆弾を
 >  爆発させないように」
@@ -978,41 +1012,46 @@ protect Gaia. So that the antiproton bomb is never detonated.”
 “The Five God Robots...”
 
 @26790 Marg · マーグ
+# 审校：与同剧情统一
 > 「このペンダントをお前に。これがあれば
 >  五神ロボを自由に操れる。これを
 “Take this pendant. With it, you can control the Five God Robots freely. Use it,
 ---
 >  使って、父の願いであった宇宙の
 >  平和のために生きぬいてくれ」
-and live on for the sake of the peace of the universe, which was Father's wish.”
+and live on for the peace in space that Father wished for.”
 
 @26791 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「そうか、そんなことがあったとは……」
-“I see, so that's what happened...”
+“I see, so that’s what happened...”
 
 @26792 Mika · ミカ
+# 审校：全局：弯撇号／弯引号
 > 「ほら、ふたりともタケルに謝りなさいよ。
 >  宇宙人のスパイとか
-“Come on, you two, apologize to Takeru. Saying things like he's an alien spy,
+“Come on, you two, apologize to Takeru. Saying things like he’s an alien spy,
 ---
 >  ひどいこと言ったんだから」
 that was terrible.”
 
 @26793 Naoto · ナオト
+# 审校：全局：弯撇号／弯引号
 > 「すまない、タケル。
 >  俺はただ、その、不安だったんだ」
-“I'm sorry, Takeru. I was just, well, uneasy.”
+“I’m sorry, Takeru. I was just, well, uneasy.”
 
 @26794 Akira · アキラ
-# 审校：原文「勘弁してくれよ」是请求语气，初稿用句号，改为问号更自然。
+# 审校：勘弁してくれ 是请求原谅
 > 「悪かったよ、お前を疑って。
 >  勘弁してくれよ」
-“I was wrong to doubt you. Give me a break, will you?”
+“Sorry for doubting you. No hard feelings, okay?”
 
 @26795 Takeru · タケル
+# 审校：全局：弯撇号／弯引号
 > 「いいんだ、こうして
 >  誤解は解けたんだから」
-“It's fine, the misunderstanding's cleared up now.”
+“It’s fine, the misunderstanding’s cleared up now.”
 
 @26796 Uchuta · 宇宙太
 > 「仲直りできて、よかったな」
@@ -1027,8 +1066,9 @@ that was terrible.”
 “Woof!”
 
 @26799 Kappei · 勝平
+# 审校：全局：弯撇号／弯引号
 > 「おっ、千代錦もよろこんでいるぜ」
-“Oh, Chiyonishiki's happy too!”
+“Oh, Chiyonishiki’s happy too!”
 
 @26800 Takeru · タケル
 > 「ありがとう、みんな」
@@ -1044,35 +1084,38 @@ that was terrible.”
 We finally drove the Muge Zorbados Empire out, and now this...”
 
 @26802 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「すでに先遣艦隊が地球の
 >  軍隊と交戦を開始している
-“Their advance fleet has already engaged Earth's forces.
+“Their advance fleet has already engaged Earth’s forces.
 ---
 >  戦いは避けられないでしょう」
 A battle is unavoidable.”
 
 @26803 Amuro · アムロ
+# 审校：全局：弯撇号／弯引号
 > 「タケルを殺せばそれでよし……
 >  そうでなくても戦争で、か
-“Kill Takeru and that's that... and if not, then through war, huh.
+“Kill Takeru and that’s that... and if not, then through war, huh.
 ---
 >  なぜそれほどこの地球にこだわるんだ?」
 Why are they so fixated on this Earth?”
 
 @26804 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「地球だけではないのです。
 >  今も、多くの星々に対して
-“It's not just Earth. Even now, they're in the middle of waging war
+“It’s not just Earth. Even now, they’re in the middle of waging war
 ---
 >  戦争をしかけている最中です。
 >  それがズール皇帝のやり方です」
-against countless stars. That's Emperor Zuul's way.”
+against countless stars. That’s Emperor Zuul’s way.”
 
 @26805 Shinobu · 忍
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：全局：弯撇号／弯引号
 > 「ちっくしょう!! 冗談じゃないぜ!
 >  俺たちが必死にやってきたことは
-“Damn it!! This isn't funny! What was all the stuff we did,
+“Damn it!! This isn’t funny! What was all the stuff we did,
 ---
 >  なんだったんだよ!? ムゲ野郎が
 >  いなくなって、地球人同士の
@@ -1087,21 +1130,24 @@ Earthlings start fighting each other, now this too?! Does that mean
 everything we did was for nothing?! Damn it!”
 
 @26806 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「だが忍、それでも俺たちはやるしかない
 >  あきらめてしまったら
 “But Shinobu, even so, all we can do is fight. If we give up,
 ---
 >  そこで終わってしまうんだ」
-that's where it all ends.”
+that’s where it all ends.”
 
 @26807 Duke · デューク
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「そうだ。奴らに負ければ、
 >  地球は滅びる。ゾルバドスやOZとは
-“That's right. If we lose to them, Earth is doomed. They're a different
+“That’s right. If we lose to them, Earth is doomed. They’re a different
 ---
 >  わけが違う相手だ。地球を
 >  守りたければ戦う以外にすべはない」
-breed from Zorbados or OZ. If we want to protect Earth, there's no way but to fight.”
+breed from Zorbados or OZ. If we want to protect Earth, there’s no way but to fight.”
 
 @26808 Sara · 沙羅
 > 「誰だい、アンタは?」
@@ -1120,17 +1166,19 @@ attacked and destroyed by the Galactic Empire, he escaped to Earth
 in that robot, Grendizer, so I hear.”
 
 @26810 Marg · マーグ
+# 审校：全局：弯撇号／弯引号
 > 「フリード星……聞いたことがある。
 >  たしか王子がひとり、脱出していた
-“Planet Fleed... I've heard of it. A prince did escape, as I recall.
+“Planet Fleed... I’ve heard of it. A prince did escape, as I recall.
 ---
 >  それが君というわけか」
 So that was you.”
 
 @26811 Duke · デューク
+# 审校：全局：弯撇号／弯引号
 > 「誰だ、お前は?
 >  地球人ではないな」
-“Who are you? You're no Earthling.”
+“Who are you? You’re no Earthling.”
 
 @26812 Marg · マーグ
 > 「ギシン星のマーグ。だが、皇帝への
@@ -1138,13 +1186,14 @@ So that was you.”
 “Marg of Planet Gishin. Though I stand condemned of treason against the Emperor.”
 
 @26813 Duke · デューク
+# 审校：全局：弯撇号／弯引号
 > 「ギシン星……銀河帝国の発祥
 >  の地か。この男がいればこれ以上
 “Planet Gishin... the birthplace of the Galactic Empire. With this man here,
 ---
 >  僕が話す必要はないだろう。
 >  僕はもう行かせてもらう」
-there's no need for me to say more. I'll be going now.”
+there’s no need for me to say more. I’ll be going now.”
 
 @26814 Sara · 沙羅
 > 「お待ちよ。せめて顔ぐらい
@@ -1156,8 +1205,9 @@ there's no need for me to say more. I'll be going now.”
 “...”
 
 @26816 Daisuke · 大介
+# 审校：更口语
 > 「これで満足したか?」
-“Is this enough for you?”
+“Satisfied now?”
 
 @26817 Sara · 沙羅
 > 「ああ、まあね」
@@ -1173,9 +1223,10 @@ there's no need for me to say more. I'll be going now.”
 “Koji, you know this person?”
 
 @26820 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「ああ、前にあったことがある。
 >  おじいちゃんのつきそいで
-“Yeah, we've met before. When I went with Grandpa to that place
+“Yeah, we’ve met before. When I went with Grandpa to that place
 ---
 >  宇宙科学研究所ってとこに
 >  いったときにね
@@ -1183,23 +1234,24 @@ called the Space Science Laboratory,
 ---
 >  宇門博士の息子って
 >  紹介されたよ」
-they introduced him to me as Doctor Umon's son.”
+they introduced him to me as Doctor Umon’s son.”
 
 @26821 Daisuke · 大介
 > 「甲児くんか。なぜ君が……」
 “Koji. Why are you...”
 
 @26822 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「まぁ、いろいろあってね。しかしやっぱり
 >  オレの目に狂いはなかったようだな
-“Well, lots happened. But I guess my eyes weren't wrong after all,
+“Well, lots happened. But I guess my eyes weren’t wrong after all,
 ---
 >  大介さん。あんたは
 >  ただ者じゃないと思ってたんだ
 Daisuke. I always figured you were no ordinary guy.
 ---
 >  まさか異星人だったとはね」
-I never thought you'd actually be an alien, though.”
+I never thought you’d actually be an alien, though.”
 
 @26823 Daisuke · 大介
 > 「……僕もこの星を愛する、
@@ -1207,73 +1259,78 @@ I never thought you'd actually be an alien, though.”
 “...I like to think of myself as one Earthling who loves this planet, too.”
 
 @26824 Koji · 甲児
+# 审校：中文病句
 > 「地球人なら地球人らしく、オレ
 >  たちと一緒に戦えってんだ。あんたの
-“If you're an Earthling, then fight like one, alongside us. Knowing you,
+“If you’re an Earthling, then fight like one, alongside us. Knowing you,
 ---
 >  ことだ、どうせひとりでやるつもりだったん
 >  だろうが。あんたはカッコつけすぎなんだよ」
-you were planning to do it all alone anyway. You just play it too cool.”
+you were planning to do it all alone anyway. You always have to play the lone hero.”
 
 @26825 Daisuke · 大介
 > 「甲児くん……」
 “Koji...”
 
 @26826 Bright · ブライト
+# 审校：英文断句
 > 「話はわかった。
 >  ともに戦ってくれるというのなら
-“I understand the situation. If you're willing to fight with us,
+“I understand the situation. If you’re willing to fight with us,
 ---
 >  我々は君を歓迎するが?
 >  デューク・フリード」
-then we welcome you. Duke Fleed.”
+we’d be glad to have you, Duke Fleed.”
 
 @26827 Daisuke · 大介
+# 审校：去日语腔
 > 「……どうやらその方がいいようですね。
 >  わかりました。よろしく頼みます」
-“...It seems that would be for the best. Understood. I'll be in your care.”
+“...It seems that would be for the best. Understood. I look forward to working with you.”
 
 @26828 Ciela · シーラ
+# 审校：全局：弯撇号／弯引号
 > 「話はお聞きしました。なにやらまた
 >  大変なことになりつつあるようですね」
-“I've heard the story. It seems things are about to get serious again.”
+“I’ve heard the story. It seems things are about to get serious again.”
 
 @26829 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「ええ。まさかこれほど
 >  異星からの攻撃があるとは
-“Yes. I never imagined we'd come under attack from outer space
+“Yes. I never imagined we’d come under attack from outer space
 ---
 >  思いもよりませんでした」
 to this extent.”
 
 @26830 Ciela · シーラ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：去掉 It can't be helped
 > 「しかたありませんね。ブライト艦長、
 >  我々のこの星を守り平和を
-“It can't be helped. Captain Bright, let us believe in our noble cause:
+“There is no other way. Captain Bright, let us believe in our noble cause:
 ---
 >  もたらすという大義を信じましょう。
 >  そうでなくては戦いぬくことはできません」
-to protect this planet and bring about peace. Without that, we can't fight to the end.”
+to protect this planet and bring about peace. Without that, we can’t fight to the end.”
 
 @26831 Chum · チャム
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：全局：弯撇号／弯引号
 > 「でもシーラさま、あたしたちいつになったら
 >  バイストンウェルに帰れるのか
-“But Lady Ciela, we don't know when we'll ever be able to return
+“But Lady Ciela, we don’t know when we’ll ever be able to return
 ---
 >  わからないのよ」
 to Byston Well.”
 
 @26832 Ciela · シーラ
-# 审校：人名按词表统一
+# 审校：全局：弯撇号／弯引号
 > 「チャム、果たすべきことがある以上、
 >  我々はそれをやり遂げる
 “Chum, as long as there is something we must accomplish, we have a duty
 ---
 >  義務があるのです。我慢しなさい。
 >  そうですね、ショウ・ザマ」
-to see it through. Be patient. Isn't that right, Show Zama?”
+to see it through. Be patient. Isn’t that right, Show Zama?”
 
 @26833 Show · ショウ
 # 审校：人名按词表统一
@@ -1282,9 +1339,9 @@ to see it through. Be patient. Isn't that right, Show Zama?”
 “I think so. Chum, do you really hate being with us that much?”
 
 @26834 Chum · チャム
-# 审校：原译“you meanie, Show!”语气偏幼，香姆是爱吐槽的小妖精，改为更自然的“you're so mean, Show!”更贴合其口吻。
+# 审校：全局：弯撇号／弯引号
 > 「そうじゃないけど……ショウのいじわる!」
-“It's not that... you're so mean, Show!”
+“It’s not that... you’re so mean, Show!”
 
 @26835 Elle · エレ
 > 「そうですか……また
@@ -1327,9 +1384,10 @@ The aura of malice is swallowing this planet whole.
 But even so, we must not give up. Is that clear?”
 
 @26840 Ryoma · リョウ
+# 审校：全局：弯撇号／弯引号
 > 「わかってますよ。俺たちの命をかけても
 >  地球は守ってみせます」
-“I know that. Even if it costs us our lives, we'll protect the Earth.”
+“I know that. Even if it costs us our lives, we’ll protect the Earth.”
 
 @26841 Elle · エレ
 > 「命をかけてはなりません。
@@ -1344,9 +1402,10 @@ you are not allowed to die!”
 “Lady Elle...”
 
 @26843 Elle · エレ
+# 审校：全局：弯撇号／弯引号
 > 「……すみません、
 >  きつい言葉を申しあげました」
-“...I'm sorry. That was harsh of me.”
+“...I’m sorry. That was harsh of me.”
 
 @26844 Kamille · カミーユ
 > 「いえ……エレさんは覚悟のあり方に
@@ -1358,9 +1417,10 @@ you are not allowed to die!”
 “Thank you, Kamille Bidan.”
 
 @26846 Garalia · ガラリア
+# 审校：全局：弯撇号／弯引号
 > 「成すべき大義を果たした時にこそ
 >  我が国に帰ることができるというのか」
-“So you're saying we can only return to our homeland once we've fulfilled our noble cause?”
+“So you’re saying we can only return to our homeland once we’ve fulfilled our noble cause?”
 
 @26847 Show · ショウ
 > 「今はそう信じるだけだ」
@@ -1380,10 +1440,10 @@ you are not allowed to die!”
 “They descended to the surface?!”
 
 @26851 Quattro · クワトロ
-# 审校：将“そうだ”改为 apparently 并调整到第一页末尾，使跨页断句更自然，同时保持页数对应。
+# 审校：全局：弯撇号／弯引号
 > 「狙いはクラッシャー隊の明神タケル
 >  らしくてな。彼は地球人ではない
-“Their target seems to be Takeru Myojin of the Crusher Team. He's not an Earthling,
+“Their target seems to be Takeru Myojin of the Crusher Team. He’s not an Earthling,
 ---
 >  そうだ。いろいろと状況が複雑のよ
 >  うだな。現在この他に2名ほど
@@ -1391,7 +1451,7 @@ apparently. Things seem to be getting rather complicated. At present, there are 
 ---
 >  銀河帝国軍について知っている
 >  者がいる」
-who know about the Galactic Empire's forces.”
+who know about the Galactic Empire’s forces.”
 
 @26852 Henken · ヘンケン
 > 「そうか……敵の情報が入るのは
@@ -1404,55 +1464,62 @@ who know about the Galactic Empire's forces.”
 “Lieutenant Colonel, I heard the Sanc Kingdom ended up being dissolved...”
 
 @26854 Henken · ヘンケン
+# 审校：全局：弯撇号／弯引号
 > 「ああ……OZの連中だな。聖女や
 >  リリーナ王女も行方不明だ
-“Yeah... that was OZ's doing. The Holy Maiden and Princess Relena are missing too.
+“Yeah... that was OZ’s doing. The Holy Maiden and Princess Relena are missing too.
 ---
 >  ま、万丈が動いているらしいから、
 >  大丈夫だとは思うがな」
-Well, Banjo seems to be on the move, so I think they'll be fine.”
+Well, Banjo seems to be on the move, so I think they’ll be fine.”
 
 @26855 Kou · コウ
 > 「うわぁ、これがガンダムmkⅢかぁ!」
 “Whoa, so this is the Gundam Mk-III!”
 
 @26856 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「基本性能は高いみたいだけど、
 >  Gディフェンサーのようなオプションがない
-“Its base performance seems high, but it's a shame there's no option like the
+“Its base performance seems high, but it’s a shame there’s no option like the
 ---
 >  のが残念だな」
 G-Defenser.”
 
 @26857 Kou · コウ
+# 审校：英文更口语
 > 「そんなことないさ。単体でもスーパー
 >  ガンダムと同等以上って話だろ」
-“That's not true. They say even on its own it's equal to or better than the Super Gundam, right?”
+“Who cares? They say even on its own it’s a match for the Super Gundam, or better.”
 
 @26858 Fa · ファ
+# 审校：全局：弯撇号／弯引号
 > 「ねえカミーユ、あのパーツの山は
 >  なんなの?」
-“Hey Kamille, what's that pile of parts over there?”
+“Hey Kamille, what’s that pile of parts over there?”
 
 @26859 Kamille · カミーユ
 > 「いや……わからないな」
 “Uh... I have no idea.”
 
 @26860 Kou · コウ
+# 审校：全局：弯撇号／弯引号
 > 「さっきヘンケン中佐に聞いたよ。
 >  メタスのパワーアップパーツだってさ」
-“I asked Lieutenant Colonel Henken earlier. He said they're power-up parts for the Methuss.”
+“I asked Lieutenant Colonel Henken earlier. He said they’re power-up parts for the Methuss.”
 
 @26861 Fa · ファ
 > 「えっ、メタスの!?」
 “What, for the Methuss?!”
 
 @26862 Kamille · カミーユ
+# 审校：更顺
 > 「メタスか……確かに、あのままではかなり
 >  きついものな」
-“The Methuss, huh... True, as it is now, it's pretty rough.”
+“The Methuss, huh... True, it’s pretty outmatched as it is.”
 
 @26863 Astonaige · アストナージ
+# 审校：全局：弯撇号／弯引号
 > 「お前たち、ヒマならこの新型の
 >  整備手伝えよ!」
-“You lot, if you've got time to spare, help me maintain this new model!”
+“You lot, if you’ve got time to spare, help me maintain this new model!”

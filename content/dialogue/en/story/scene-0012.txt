@@ -1,15 +1,16 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @18748 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「コロニーのM作戦、
 >  本当だったんですか?」
-“The colonies' Operation M... was it real?”
+“The colonies’ Operation M... was it real?”
 
 @18749 Quattro · クワトロ
-# 审校：补译：原稿空页
+# 审校：全局：弯撇号／弯引号
 > 「そのようだ。
 >  宇宙にも我々のように
-“So it seems. It wouldn't be strange if there were people in space
+“So it seems. It wouldn’t be strange if there were people in space
 ---
 >  抵抗運動をする者たちがいても
 >  不思議ではない
@@ -23,22 +24,25 @@ But...”
 “Is something bothering you?”
 
 @18751 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「それを実施する組織については
 >  よくわかっていないのだ
-“We don't know much about the organization carrying it out.
+“We don’t know much about the organization carrying it out.
 ---
 >  いくつかのコロニーの過激派だと
 >  いうことだが、どうもな」
-They're said to be radicals from several colonies, but something doesn't sit right.”
+They’re said to be radicals from several colonies, but something doesn’t sit right.”
 
 @18752 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「味方につけるのは、むずかしいと?」
-“You mean it'd be hard to get them on our side?”
+“You mean it’d be hard to get them on our side?”
 
 @18753 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「わからん。が、准将のように
 >  楽観することはできんな」
-“I don't know. But I can't be as optimistic as the Brigadier General.”
+“I don’t know. But I can’t be as optimistic as the Brigadier General.”
 
 @18754 Ark · アーク（按段落 3DD1）
 > 「あの、なんです、
@@ -50,13 +54,14 @@ They're said to be radicals from several colonies, but something doesn't sit rig
 “Operation M... what is it?”
 
 @18756 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「俺たちも実態はつかんでいない。
 >  わかっているのは
-“We haven't grasped the full picture either. All we know is
+“We haven’t grasped the full picture either. All we know is
 ---
 >  流星に偽装した兵器を
 >  地球に落とそうとしているって
-that they're trying to drop weapons disguised as meteors
+that they’re trying to drop weapons disguised as meteors
 ---
 >  ことだけだ」
 onto the Earth.”
@@ -68,18 +73,20 @@ onto the Earth.”
 “Something that powerful is going to come falling down?”
 
 @18758 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「あまり効率的な方法とは
 >  思えませんが
-“It doesn't seem like a very efficient method, but
+“It doesn’t seem like a very efficient method, but
 ---
 >  どれだけの戦力だと
 >  いうのです?」
 just how much force are they sending?”
 
 @18759 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「それをこれから確認しようと
 >  いうのだ
-“That's exactly what we're about to find out.
+“That’s exactly what we’re about to find out.
 ---
 >  帝国軍もでてくる。
 >  整備を急げよ」
@@ -91,8 +98,9 @@ The Imperial forces will show up too. Hurry up with the maintenance.”
 “Confirmed movement of a mass expected to reach the atmosphere.”
 
 @18761 Grados Soldier · グラドス兵
+# 审校：全局：弯撇号／弯引号
 > 「1つではないな」
-“It's not just one.”
+“It’s not just one.”
 
 @18762 Grados Soldier · グラドス兵
 > 「ミノフスキー粒子濃度の
@@ -108,7 +116,7 @@ there are about six metal reactions.”
 “Do we have any units deployed that could intercept them?”
 
 @18764 Grados Soldier · グラドス兵
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：スペシャルズ→Specials
 > 「待ってください……
 >  あります
@@ -116,16 +124,17 @@ there are about six metal reactions.”
 ---
 >  スペシャルズの
 >  ゼクス特尉の部隊です」
-It's Special Lieutenant Zechs's unit.”
+It’s Special Lieutenant Zechs’s unit.”
 
 @18765 Grados Soldier · グラドス兵
+# 审校：全局：弯撇号／弯引号
 > 「スペシャルズか。まぁいい、
 >  一応ゼクスに知らせておけ
 “The Specials, huh. Fine, notify Zechs just in case.
 ---
 >  どうせ3年前の大戦時の
 >  衛星の破片かなにかだろうがな」
-It's probably just satellite debris from the war three years ago anyway.”
+It’s probably just satellite debris from the war three years ago anyway.”
 
 @18766 Specials · スペシャルズ
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -146,9 +155,10 @@ a meteor or satellite debris falling.”
 “Then...”
 
 @18769 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「うむ、コロニーのM作戦に
 >  間違いないな
-“Yes, it's definitely the colonies' Operation M.
+“Yes, it’s definitely the colonies’ Operation M.
 ---
 >  いくつ、とらえられるか」
 How many can we catch?”
@@ -159,20 +169,22 @@ How many can we catch?”
 “Only one, expected to fall on the Atlantic coast of North America.”
 
 @18771 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「ふむ……1つでも十分とするか
 “Hmm... one will have to be enough.
 ---
 >  帝国軍にとっては我々も
 >  しょせんは、よそ者だ
-To the Imperial forces, we're outsiders anyway.
+To the Imperial forces, we’re outsiders anyway.
 ---
 >  功をあせるものではないな」
 No need to rush for glory.”
 
 @18772 Specials · スペシャルズ
+# 审校：全局：弯撇号／弯引号
 > 「ずいぶん表向きな発言を
 >  なさいますな」
-“That's quite a diplomatic statement, sir.”
+“That’s quite a diplomatic statement, sir.”
 
 @18773 Zechs · ゼクス
 > 「私は、軍人なのだよ」
@@ -188,9 +200,10 @@ No need to rush for glory.”
 “Put him through. ...General, what is it?”
 
 @18776 Blex · ブレックス
+# 审校：全局：弯撇号／弯引号
 > 「たった今、例の作戦が
 >  発動したとの連絡がはいった
-“I've just received word that the operation has been launched.
+“I’ve just received word that the operation has been launched.
 ---
 >  大気圏に突入してくるのは
 >  6つのようだな」
@@ -209,12 +222,13 @@ It seems six objects will enter the atmosphere.”
 should be within our reach.”
 
 @18779 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「了解しました
 “Understood.
 ---
 >  では我々はM作戦の
 >  調査に向かいます」
-Then we'll head out to investigate Operation M.”
+Then we’ll head out to investigate Operation M.”
 
 @18780 Roux · ルー
 > 「先行しているレイズナーより連絡!
@@ -225,33 +239,38 @@ Then we'll head out to investigate Operation M.”
 deployed in the area!”
 
 @18781 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「目標の空域に
 >  スペシャルズがいるだと?
 “The Specials are already in the target airspace?
 ---
 >  はやいな、間に合わんかもしれん。
 >  すぐに出るぞ」
-They're fast. We might not make it. We're launching now.”
+They’re fast. We might not make it. We’re launching now.”
 
 @18782 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「あら? なにかしら、あれは。
 >  ……流星……?」
-“Oh? What's that? ...A meteor...?”
+“Oh? What’s that? ...A meteor...?”
 
 @18783 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「……ついに来た……
 >  これが地球なのか」
-“...So it's finally come... Is this the Earth?”
+“...So it’s finally come... Is this the Earth?”
 
 @18784 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「あれか。戦闘機なのか?」
-“That's it, then. Is it a fighter?”
+“That’s it, then. Is it a fighter?”
 
 @18785 Specials · スペシャルズ
 > 「威嚇しますか?」
 “Shall we fire a warning shot?”
 
 @18786 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「通用するとは思えん。
 >  撃墜しろ
 “I doubt that would work. Shoot it down.
@@ -262,7 +281,7 @@ I thought the purpose was to transport new weapons to the resistance,
 ---
 >  乗っているのはそれを操縦する
 >  戦闘パイロットだ」
-but what's aboard is a combat pilot meant to operate them.”
+but what’s aboard is a combat pilot meant to operate them.”
 
 @18787 Heero · ヒイロ
 > 「帝国にかぎつけられている
@@ -280,8 +299,9 @@ but what's aboard is a combat pilot meant to operate them.”
 “Abnormality in the left propulsion system... Not bad.”
 
 @18790 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「なんだと、あれで落とせんというのか!?」
-“What?! You mean that didn't bring it down?!”
+“What?! You mean that didn’t bring it down?!”
 
 @18791 Zechs · ゼクス
 > 「変形をした!?
@@ -302,37 +322,38 @@ but what's aboard is a combat pilot meant to operate them.”
 “Heh... Hahahahahaha!”
 
 @18795 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「バカな、なんという威力だ。
 >  機体の性能差がありすぎる
 “Impossible. What power. The gap in performance is too great...
 ---
 >  ……ならばっ!」
-...Then I'll do this!”
+...Then I’ll do this!”
 
 @18796 Heero · ヒイロ
 > 「なに!?」
 “What?!”
 
 @18797 Zechs · ゼクス
-# 审校：精读：特士 的称呼
+# 审校：全局：弯撇号／弯引号
 > 「これで動けまい。
 >  特士、脱出する。拾ってくれ」
-“That should stop it. Special Officer, I'm ejecting. Pick me up.”
+“That should stop it. Special Officer, I’m ejecting. Pick me up.”
 
 @18798 Aboly · アポリー
-# 审校：阿波利是可靠部下，对克瓦特罗用敬语，此处口语化“gonna”与角色口吻不符，改为“going to”。（人工改写）
+# 审校：全局：弯撇号／弯引号
 > 「間に合いませんよ、こりゃ」
-“We're not going to make it in time, not like this.”
+“We’re not going to make it in time, not like this.”
 
 @18799 Quattro · クワトロ
-# 审校：精读：できるな 是夸对方能干，不是“我能做到”
+# 审校：全局：弯撇号／弯引号
 > 「相手にとりついて関節をロック、
 >  そして自分は脱出するとは
 “Grabbing onto the enemy, locking its joints, then ejecting himself...
 ---
 >  思い切りのよいパイロットだ。
 >  できるな」
-That's one daring pilot. He's good.”
+That’s one daring pilot. He’s good.”
 
 @18800 Ark · アーク（按段落 3DD1）
 # 审校：精读：说的是希罗被击落
@@ -340,28 +361,32 @@ That's one daring pilot. He's good.”
 “He got shot down?”
 
 @18801 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「あの高度からの落下では、
 >  機体は無事でも
 “Falling from that altitude, even if the machine survives,
 ---
 >  パイロットは助かるまい」
-the pilot won't.”
+the pilot won’t.”
 
 @18802 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「こんなものか……」
-“Is this all you've got...?”
+“Is this all you’ve got...?”
 
 @18803 Specials · スペシャルズ
+# 审校：全局：弯撇号／弯引号
 > 「特尉、レジスタンスです」
-“Special Lieutenant, it's the resistance.”
+“Special Lieutenant, it’s the resistance.”
 
 @18804 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「我々の任務ではない。
 >  報告はまわしておけ
-“That's not our mission. Pass the report along.
+“That’s not our mission. Pass the report along.
 ---
 >  我々は引き上げる」
-We're pulling back.”
+We’re pulling back.”
 
 @18805 Specials · スペシャルズ
 > 「ゼクス特尉、
@@ -389,9 +414,10 @@ Launch every remaining unit. Assign one to me as well.”
 “What do we do?”
 
 @18808 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「こちらに来るか……
 >  当然だな」
-“They're coming this way... Of course they are.”
+“They’re coming this way... Of course they are.”
 
 @18809 Quattro · クワトロ
 # 审校：去掉 Can't be helped
@@ -405,9 +431,9 @@ Launch every remaining unit. Assign one to me as well.”
 “Good work, Special Lieutenant Zechs. You can leave the rest to us.”
 
 @18811 Zechs · ゼクス
-# 审校：原文“は”是简短应答，不是结巴；改为自然的 Yes。
+# 审校：全局：弯撇号／弯引号
 > 「は、では我々は撤収します」
-“Yes, then we'll withdraw.”
+“Yes, then we’ll withdraw.”
 
 @18812 Zechs · ゼクス
 > (アーマス・ゲイル……
@@ -415,13 +441,14 @@ Launch every remaining unit. Assign one to me as well.”
 (Ahmos Gale... He seems like a fine soldier.)
 
 @18813 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「スペシャルズのゼクスは
 >  撃墜されてしまったか
-“So the Specials' Zechs was shot down after all.
+“So the Specials’ Zechs was shot down after all.
 ---
 >  が、そのおかげでレジスタンスを
 >  捕捉できた
-But thanks to that, we've cornered the resistance.
+But thanks to that, we’ve cornered the resistance.
 ---
 >  感謝せねばならんな」
 I suppose I should be grateful.”
@@ -432,16 +459,18 @@ I suppose I should be grateful.”
 “All units, encircle the resistance!”
 
 @18815 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > (ジュリア……弟の血にぬれた手で
 >  君を抱くことは許されない
-(Julia... These hands stained with my brother's blood have no right to hold you.
+(Julia... These hands stained with my brother’s blood have no right to hold you.
 ---
 >  ……さようなら)
 ...Goodbye.)
 
 @18816 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「今度は逃がさんぞ、エイジ」
-“You won't escape this time, Eiji.”
+“You won’t escape this time, Eiji.”
 
 @18817 Eiji · エイジ
 # 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
@@ -449,13 +478,14 @@ I suppose I should be grateful.”
 “Gale!”
 
 @18818 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「エイジ。もう私はお前を
 >  連れ戻そうとは思わん
 “Eiji. I no longer intend to drag you back.
 ---
 >  敵となるならば撃破するのみ。
 >  だが一つだけ聞かせてくれ
-If you stand as my enemy, I'll simply destroy you. But let me ask you one thing.
+If you stand as my enemy, I’ll simply destroy you. But let me ask you one thing.
 ---
 >  なぜそうまでして地球のために
 >  戦おうというのだ」
@@ -482,13 +512,13 @@ I love it just as I love Grados.”
 “I see...”
 
 @18821 Eiji · エイジ
-# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
+# 审校：全局：弯撇号／弯引号
 > 「お願いです、ゲイル先輩
 “Please, Gale.
 ---
 >  帝国のやり方は
 >  間違っているんです」
-The Empire's way of doing things is wrong.”
+The Empire’s way of doing things is wrong.”
 
 @18822 Gale · ゲイル
 > 「エイジ……覚悟を決めろ!」
@@ -500,16 +530,18 @@ The Empire's way of doing things is wrong.”
 “Ngh, Gale!!”
 
 @18824 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「どうしたエイジ!
-“What's wrong, Eiji!
+“What’s wrong, Eiji!
 ---
 >  この地球の重みを背負って
 >  攻めてこい!」
 Come at me carrying the full weight of this Earth!”
 
 @18825 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「次で終わらせるぞ、エイジッ!!」
-“I'll end this with the next one, Eiji!!”
+“I’ll end this with the next one, Eiji!!”
 
 @18826 Eiji · エイジ
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -517,12 +549,13 @@ Come at me carrying the full weight of this Earth!”
 “Gale?! Waaaaaaaah!!”
 
 @18827 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「くっ……見事だ。お前の覚悟、
 >  確かに見せてもらった
-“Ngh... Magnificent. You've shown me your resolve, without a doubt.
+“Ngh... Magnificent. You’ve shown me your resolve, without a doubt.
 ---
 >  ……強くなったな、エイジ……」
-...You've grown strong, Eiji...”
+...You’ve grown strong, Eiji...”
 
 @18828 Eiji · エイジ
 # 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
@@ -555,8 +588,9 @@ Come at me carrying the full weight of this Earth!”
 “Lieutenant Gale?! You bastard, how dare you! You’ll pay for this!!”
 
 @18834 Gale · ゲイル
+# 审校：全局：弯撇号／弯引号
 > 「エイジ、これで終わりにするぞ」
-“Eiji, I'm ending this now.”
+“Eiji, I’m ending this now.”
 
 @18835 Eiji · エイジ
 # 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
@@ -583,39 +617,43 @@ Come at me carrying the full weight of this Earth!”
 “Lieutenant Gale?! You bastard, how dare you! You’ll pay for this!!”
 
 @18839 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「どうやら追いついたようだな
-“So I've caught up with you at last.
+“So I’ve caught up with you at last.
 ---
 >  少年、
 >  任務を果たさせてもらうぞ」
-Boy, I'll be carrying out my mission now.”
+Boy, I’ll be carrying out my mission now.”
 
 @18840 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「あの機体……あのときのっ!」
-“That machine... It's the one from back then!”
+“That machine... It’s the one from back then!”
 
 @18841 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「少年、なぜレジスタンスにつく。
 >  軍人でない者を殺したくはない
-“Boy, why side with the Resistance? I don't wish to kill civilians.
+“Boy, why side with the Resistance? I don’t wish to kill civilians.
 ---
 >  おとなしく、その機体を
 >  渡してほしい」
 Be a good lad and hand over that machine.”
 
 @18842 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「俺の町を焼いたのはあんたたちだ。
 >  俺がここにいるのは
-“You people are the ones who burned my town. The reason I'm here
+“You people are the ones who burned my town. The reason I’m here
 ---
 >  あんたたちのせいだろうが!」
 is because of you!”
 
 @18843 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「帝国の無人機にまかせるから
 >  ああなった
-“That happened because we left it to the Empire's drones.
+“That happened because we left it to the Empire’s drones.
 ---
 >  だからこそ我々スペシャルズが
 >  代行することによって
@@ -623,20 +661,22 @@ That is precisely why we Specials act in their stead...
 ---
 >  歯止めをかけているのだと、
 >  なぜわからない」
-to put a check on them. Why can't you understand that?”
+to put a check on them. Why can’t you understand that?”
 
 @18844 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「わかるものかよ、そんな詭弁!
 “How could I understand sophistry like that?!
 ---
 >  地球人のくせに
 >  異星人に取り入って」
-You're an Earthling, yet you cozy up to aliens.”
+You’re an Earthling, yet you cozy up to aliens.”
 
 @18845 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「ロームフェラが動かなければ
 >  戦争は続き
-“If Romefeller hadn't acted, the war would have continued,
+“If Romefeller hadn’t acted, the war would have continued,
 ---
 >  地球人の大半は
 >  虐殺されたかもしれんのだ」
@@ -648,13 +688,14 @@ and most of humanity might have been massacred.”
 “And how is the current state any different from that?!”
 
 @18847 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「いいか少年、
 >  戦争は3年前に終わっている
 “Listen, boy. The war ended three years ago.
 ---
 >  今は、帝国の支配下で
 >  あったとしても
-Even if we now live under the Empire's rule,
+Even if we now live under the Empire’s rule,
 ---
 >  よりよき形の平和を
 >  志向するべき時代だ
@@ -676,9 +717,10 @@ Do you understand that?!”
 “What...”
 
 @18849 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「なにをしている{HeroName}、
 >  それでは死ぬぞ!」
-“What are you doing, {HeroName}? At this rate you'll die!”
+“What are you doing, {HeroName}? At this rate you’ll die!”
 
 @18850 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：“没空再谈下去了吗”多个“吗”
@@ -694,37 +736,40 @@ Do you understand that?!”
 “Heh, bingo. There she is.”
 
 @18852 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「あれは……ヤツか」
-“That's... him.”
+“That’s... him.”
 
 @18853 Rish · リッシュ（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「よぅ{HeroName}、おとなしくそいつを
 >  返しちゃくれねぇか
 “Yo, {HeroName}. How about you be a good girl and give that back?
 ---
 >  お前みたいな、いい女を
 >  殺したくないんだ」
-I don't want to kill a fine woman like you.”
+I don’t want to kill a fine woman like you.”
 
 @18854 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「貴様、なれなれしいぞ!
-“You, don't get so familiar with me!
+“You, don’t get so familiar with me!
 ---
 >  私は貴様に、この前のカリを
 >  返す!」
-I'll pay you back for last time!”
+I’ll pay you back for last time!”
 
 @18855 Rish · リッシュ（按段落 3DD2）
-# 审校：精读：始末書の山と格闘 是“跟检讨书搏斗”，不是格斗训练
+# 审校：全局：弯撇号／弯引号
 > 「この前のカリったってお前、
 >  あんときゃこっちが撤退したんだぜ
 “Pay you back for last time? Back then, we were the ones who retreated.
 ---
 >  おかげで始末書の山と格闘だ
-Thanks to that, I've been wrestling with a mountain of incident reports.
+Thanks to that, I’ve been wrestling with a mountain of incident reports.
 ---
 >  俺のほうこそカリがあると思うがな」
-If anything, I'm the one who's owed.”
+If anything, I’m the one who’s owed.”
 
 @18856 Selain · セレイン（按段落 3DD2）
 > 「貴様のことなど知ったものか!
@@ -738,8 +783,9 @@ If anything, I'm the one who's owed.”
 “I’ve got my own mission too, you know. Nothing I can do about that.”
 
 @18858 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「貴様は、私が落とす!」
-“I'll be the one to shoot you down!”
+“I’ll be the one to shoot you down!”
 
 @18859 Rish · リッシュ（按段落 3DD2）
 > 「おい{HeroName}、
@@ -752,17 +798,17 @@ If anything, I'm the one who's owed.”
 “Ngh, I was too fixated on recovering the unit...”
 
 @18861 Rish · リッシュ（按段落 3DD2）
-# 审校：精读：ちゃん 的轻佻感
+# 审校：全局：弯撇号／弯引号
 > 「ちっ、やられちまったか……。
 >  まったく気の強ぇ女だ
-“Tch, so I'm the one who got shot down... What a headstrong woman.
+“Tch, so I’m the one who got shot down... What a headstrong woman.
 ---
 >  どうやらマジで惚れそうだぜ
 Looks like I might seriously fall for her.
 ---
 >  じゃあな、また会いに来るぜ、
 >  {HeroName}ちゃん」
-See you, {HeroName}, sweetheart. I'll be back to see you.”
+See you, {HeroName}, sweetheart. I’ll be back to see you.”
 
 @18862 Selain · セレイン（按段落 3DD2）
 > 「ふざけた奴だ……」
@@ -787,39 +833,43 @@ See you, {HeroName}, sweetheart. I'll be back to see you.”
 the unit just went into forced cooldown.”
 
 @18866 Quattro · クワトロ
-# 审校：精读：Operation M 统一
+# 审校：全局：弯撇号／弯引号
 > 「M作戦のパイロット……
 >  あれでは助からんな」
-“Operation M's pilot... He won't survive that.”
+“Operation M’s pilot... He won’t survive that.”
 
 @18867 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「そう思います。
 >  ひきあげましょう
-“I agree. Let's withdraw.
+“I agree. Let’s withdraw.
 ---
 >  我々では機体の回収は
 >  無理です」
-We can't recover the unit ourselves.”
+We can’t recover the unit ourselves.”
 
 @18868 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「そうだな。ぐずぐずしていると
 >  帝国の回収部隊もでてくる
-“Right. If we dawdle, the Empire's recovery team will show up too.
+“Right. If we dawdle, the Empire’s recovery team will show up too.
 ---
 >  エイジくん?」
 Eiji?”
 
 @18869 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「……大丈夫です。動きます」
-“...I'm fine. It's moving.”
+“...I’m fine. It’s moving.”
 
 @18870 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「……これは、戦争だ
 “...This is war.
 ---
 >  君の事情を
 >  知らぬわけでもないが……」
-It's not that I don't understand your situation, but...”
+It’s not that I don’t understand your situation, but...”
 
 @18871 Eiji · エイジ
 > 「わかっている……つもりです」
@@ -859,18 +909,20 @@ I knew it would end up like this.”
 “Did you hear, Zechs? Lieutenant Gale was killed in action.”
 
 @18877 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：アーマス・ゲイル→Ahmos Gale
 > 「アーマス・ゲイルが?
 “Ahmos Gale?
 ---
 >  帝国軍にしては
 >  よい士官だっただけに残念です」
-He was a good officer, by the Empire's standards. A shame.”
+He was a good officer, by the Empire’s standards. A shame.”
 
 @18878 Treize · トレーズ
-# 审校：精读：Operation M 统一；つぶした 是战果
+# 审校：全局：弯撇号／弯引号
 > 「そう思う。しかし、こちらもずいぶんと
 >  損害が出たな。君ほどの男が
-“I agree. Still, we've taken considerable losses ourselves. A man of your caliber
+“I agree. Still, we’ve taken considerable losses ourselves. A man of your caliber
 ---
 >  不始末をした。M作戦の1つを
 >  つぶしたことを差し引いても
@@ -878,7 +930,7 @@ made a blunder. Even after crediting the one Operation M unit we crushed,
 ---
 >  財団のうるさがたを黙らすのに
 >  ひと苦労だ」
-it will be a struggle to keep the Foundation's grumblers quiet.”
+it will be a struggle to keep the Foundation’s grumblers quiet.”
 
 @18879 Zechs · ゼクス
 # 审校：精读：Operation M 统一
@@ -893,6 +945,7 @@ I estimate it would become a considerable threat.
 What shall we do about recovering the unit?”
 
 @18880 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「帝国軍にまかせておきたまえ
 “Leave it to the Imperial Army.
 ---
@@ -902,20 +955,21 @@ You know this, but we stand before something far greater now.
 ---
 >  帝国を刺激するような真似は
 >  したくない」
-I don't want to do anything that would provoke the Empire.”
+I don’t want to do anything that would provoke the Empire.”
 
 @18881 Zechs · ゼクス
 > 「了解しております」
 “Understood.”
 
 @18882 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「ああそれと、
 >  君のいっていたモビルスーツ
 “Ah, and one more thing. That Mobile Suit you mentioned,
 ---
 >  トールギスの件だが
 >  修復作業を急がせている
-the Tallgeese. I've ordered the repairs rushed.
+the Tallgeese. I’ve ordered the repairs rushed.
 ---
 >  あれは、たいした機体だよ」
 That is a remarkable machine.”
@@ -925,10 +979,10 @@ That is a remarkable machine.”
 “Thank you.”
 
 @18884 Treize · トレーズ
-# 审校：精读：英文第二页只剩引号；バロン 是男爵
+# 审校：全局：弯撇号／弯引号
 > 「なに、“ライトニング・バロン”に
 >  ふさわしい機体を用意できて
-“Not at all. I'm glad we could prepare a machine
+“Not at all. I’m glad we could prepare a machine
 ---
 >  私もうれしい」
 worthy of the ‘Lightning Baron.’”
@@ -947,28 +1001,29 @@ worthy of the ‘Lightning Baron.’”
 and if possible, the unit itself.”
 
 @18887 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「無茶をいう
-“That's absurd.
+“That’s absurd.
 ---
 >  が、スペシャルズの施設へ
 >  攻撃をしかける、というのは
-But you're saying that attacking a Specials facility
+But you’re saying that attacking a Specials facility
 ---
 >  それなりに意味のある
 >  行動だということか」
 would be a meaningful action in its own right?”
 
 @18888 Bright · ブライト
-# 审校：原文“来てくれ”是邀请对方一起走，初稿只译作 Come，补上 with me 更准确。
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ
-“That's right.
+“That’s right.
 ---
 >  我々の活動を広く示す
 >  必要もある。来てくれ
 We also need to make our activities widely known. Come with me.
 ---
 >  作戦を検討しよう」
-Let's discuss the operation.”
+Let’s discuss the operation.”
 
 @18889 Ark · アーク（按段落 3DD1）
 # 审校：原文“なんのために、ここにいるんだろう”问的是目的，初稿 what am I even doing here 偏重行为，改为 what am I even here for 更贴切。
@@ -977,14 +1032,15 @@ Let's discuss the operation.”
 (I... what am I even here for...?)
 
 @18890 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「あんなところに人が……」
-“There's someone over there...”
+“There’s someone over there...”
 
 @18891 Relena · リリーナ
-# 审校：原文“パイロットスーツみたいだけど”主语是那身装束，初稿 Looks like a pilot suit 缺主语，补上 It 更自然。
+# 审校：全局：弯撇号／弯引号
 > 「パイロットスーツみたいだけど
 >  ……まだ子供!?」
-“It looks like a pilot suit... but he's still a kid?!”
+“It looks like a pilot suit... but he’s still a kid?!”
 
 @18892 Heero · ヒイロ
 > 「う……、お、お前!?」
@@ -1007,9 +1063,10 @@ Let's discuss the operation.”
 “?! A dud?!”
 
 @18897 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「いってしまった……。わたしは……
 >  わたしはリリーナ・ドーリアン
-“He's gone... I'm... I'm Relena Darlian.
+“He’s gone... I’m... I’m Relena Darlian.
 ---
 >  ……あなたは?」
 ...And you are?”

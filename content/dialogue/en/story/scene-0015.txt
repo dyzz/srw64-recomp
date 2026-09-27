@@ -1,8 +1,9 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @19264 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「……そろそろ時間だな」
-“...It's about time.”
+“...It’s about time.”
 
 @19265 Relena · リリーナ
 > 「え……何!?」
@@ -17,9 +18,10 @@
 “Father?! Father!!”
 
 @19268 Lady · レディ
+# 审校：全局：弯撇号／弯引号
 > 「ドーリアンの娘か!?
 >  その娘も逃がすな!」
-“Darlian's daughter?! Don't let her get away either!”
+“Darlian’s daughter?! Don’t let her get away either!”
 
 @19269 Relena · リリーナ
 > 「うっ……お父さま!?」
@@ -37,8 +39,9 @@
 “Yes!”
 
 @19272 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「ここは危険だ、急いで外へ」
-“It's dangerous here. Hurry, outside!”
+“It’s dangerous here. Hurry, outside!”
 
 @19273 Relena · リリーナ
 > 「あ、あなたがたは何なの!? やめて!
@@ -46,14 +49,16 @@
 “Wh-Who are you people?! Stop it! What are you going to do with my father?!”
 
 @19274 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「ここにいては君も殺される。とにかく
 >  来るんだ!」
-“If you stay here, you'll be killed too. Just come with me!”
+“If you stay here, you’ll be killed too. Just come with me!”
 
 @19275 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「やめて! お父さまを病院へ連れて
 >  いって! このままでは死んでしまうわ!」
-“No! Take my father to a hospital! He'll die if you leave him like this!”
+“No! Take my father to a hospital! He’ll die if you leave him like this!”
 
 @19276 Lady · レディ
 > 「くっ、なぜレジスタンスがここへ!?
@@ -65,22 +70,24 @@
 “Nn... Where am I...?”
 
 @19278 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「気がついたね。ここは安全だ。
 >  申しわけない。我々がもう少し
-“So you're awake. You're safe here. I'm sorry. If we had gotten the information a little
+“So you’re awake. You’re safe here. I’m sorry. If we had gotten the information a little
 ---
 >  はやく情報をつかんでいたら
 >  こんなことには、ならなかったんだが……」
 sooner, this never would have happened...”
 
 @19279 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「あなた…………人殺し! お父さまを
 >  病院にも連れていかずに!
-“You... You murderer! You wouldn't even take my father to a hospital!
+“You... You murderer! You wouldn’t even take my father to a hospital!
 ---
 >  すぐに病院へ行けば、お父さまは
 >  助かったかもしれないのに!」
-If he'd gotten to a hospital right away, he might have survived!”
+If he’d gotten to a hospital right away, he might have survived!”
 
 @19280 Alan · アラン
 > 「病院は敵の手がまわっていた。
@@ -109,13 +116,14 @@ the Specials... no, the Romefeller Foundation.”
 “The Romefeller Foundation...”
 
 @19284 Alan · アラン
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。連中はドーリアン氏の
 >  活動が邪魔になると
-“That's right. They must have decided Mr. Darlian's activities were in their way.
+“That’s right. They must have decided Mr. Darlian’s activities were in their way.
 ---
 >  判断したのだろう。奴らのやり方は
 >  昔からちっとも変わっていない」
-Their methods haven't changed one bit since long ago.”
+Their methods haven’t changed one bit since long ago.”
 
 @19285 Relena · リリーナ
 > 「そんな……お父さまは平和のために
@@ -166,9 +174,10 @@ But your father was assassinated, and I, having escaped, raised you as my own da
 “...And with that, Mr. Darlian passed away.”
 
 @19291 Relena · リリーナ
+# 审校：全局：弯撇号／弯引号
 > 「お父様が……本当のお父様では
 >  ない……? ウソ……そ、そんなのウソよ!」
-“Father... isn't my real father...? No... Th-That can't be true!”
+“Father... isn’t my real father...? No... Th-That can’t be true!”
 
 @19292 Bright · ブライト
 > 「ニューエドワーズ基地の情報は
@@ -176,22 +185,24 @@ But your father was assassinated, and I, having escaped, raised you as my own da
 “Is the intel on New Edwards Base reliable?”
 
 @19293 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「それに関する情報はほとんどつかめて
 >  いないのが現状のようだ
-“From what I gather, we've barely been able to obtain any information on that.
+“From what I gather, we’ve barely been able to obtain any information on that.
 ---
 >  帝国上層部とスペシャルズの
 >  幹部がレジスタンス対策のために
-If it's true that the imperial high command and Specials officers are gathering
+If it’s true that the imperial high command and Specials officers are gathering
 ---
 >  集まるというのが本当ならば、これは
 >  チャンスとみるべきだろうが……」
 to plan countermeasures against the resistance, we should see this as a chance, but...”
 
 @19294 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「カラバの方に問い合わせてみたら
 >  どうです?」
-“Why don't we try asking Karaba?”
+“Why don’t we try asking Karaba?”
 
 @19295 Quattro · クワトロ
 # 审校：精读：准将でなくとも 指“换了谁都”
@@ -200,13 +211,14 @@ to plan countermeasures against the resistance, we should see this as a chance, 
 “I already have. Brigadier General or not, this is a spot where anyone would want to push their luck.”
 
 @19296 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「よし、厳重な警戒が予想される
 >  が、とりあえずニューエドワーズを
-“All right. Heavy security is expected, but for now let's proceed with preparations
+“All right. Heavy security is expected, but for now let’s proceed with preparations
 ---
 >  襲撃する方向で準備を進めよ
 >  う。准将には船をまわして
-to raid New Edwards. I'll make arrangements so we can get a ship from
+to raid New Edwards. I’ll make arrangements so we can get a ship from
 ---
 >  もらえるよう手配しておく」
 the Brigadier General.”
@@ -228,8 +240,9 @@ the Brigadier General.”
 are gathering there.”
 
 @19300 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「すごいな。何があるんだ?」
-“Impressive. What's going on there?”
+“Impressive. What’s going on there?”
 
 @19301 Garrison · ギャリソン
 # 审校：“grasped much of the actual situation regarding this”生硬
@@ -269,9 +282,10 @@ I’d say we’re waiting on further investigation.”
 are all gathering at New Edwards Base.”
 
 @19306 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「少なくとも、私と君が出席するの
 >  は事実だ」
-“At the very least, it's a fact that you and I will be attending.”
+“At the very least, it’s a fact that you and I will be attending.”
 
 @19307 Lady · レディ
 # 审校：Lady 对 Treize 的敬语口吻下，将“you're”改为“you are”以保持正式。
@@ -285,13 +299,14 @@ are all gathering at New Edwards Base.”
 “His Excellency Le Cain is quite enthusiastic as well. For which I am grateful.”
 
 @19309 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「よ、また会ったな。輸送機
 >  ぶんどって、ニューエドワーズにむかう
 “Yo, we meet again. You were planning to hijack a transport and head to New Edwards,
 ---
 >  つもりだったんだろ? 俺のはもう積ん
 >  であるぜ。お前もさっさと積んじまえよ」
-right? Mine's already loaded. Hurry up and load yours too.”
+right? Mine’s already loaded. Hurry up and load yours too.”
 
 @19310 Heero · ヒイロ
 # 审校：Heero 的冷淡寡言口吻，将“how important this mission is”改为“the importance of this mission”更简洁直接。
@@ -300,9 +315,10 @@ right? Mine's already loaded. Hurry up and load yours too.”
 “...Do you understand the importance of this mission?”
 
 @19311 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「ああ。うまくいきゃ残る仕事は1つ
 >  だけだ。早めに宇宙に帰れる」
-“Yeah. If it goes well, we've only got one job left. We can head back to space early.”
+“Yeah. If it goes well, we’ve only got one job left. We can head back to space early.”
 
 @19312 Heero · ヒイロ
 # 审校：Heero 的极简口吻，将“Start the engines”改为“Fire up the engines”更符合其任务至上的直接语气。
@@ -315,9 +331,10 @@ right? Mine's already loaded. Hurry up and load yours too.”
 “He actually remembered my name...”
 
 @19314 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「僕はカトル・ラバーバ・ウィナー。
 >  君は?」
-“I'm Quatre Raberba Winner. And you?”
+“I’m Quatre Raberba Winner. And you?”
 
 @19315 Trowa · トロワ
 > 「名前などない。どうしても呼びたけれ
@@ -328,21 +345,25 @@ right? Mine's already loaded. Hurry up and load yours too.”
 if you like.”
 
 @19316 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「トロワ、君もいくんだろう、
 >  あの基地へ」
-“Trowa, you're going too, aren't you? To that base.”
+“Trowa, you’re going too, aren’t you? To that base.”
 
 @19317 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「お前には関係ない」
-“It's none of your concern.”
+“It’s none of your concern.”
 
 @19318 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「でも、助け合えばきっとうまくいく」
-“But if we help each other, I'm sure it'll work out.”
+“But if we help each other, I’m sure it’ll work out.”
 
 @19319 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「どうかな」
-“We'll see.”
+“We’ll see.”
 
 @19320 Wufei · 五飛
 > 「助かります」
@@ -365,9 +386,10 @@ if you like.”
 out here?”
 
 @19324 Guerrilla · ゲリラ
+# 审校：全局：弯撇号／弯引号
 > 「なにも聞くな。輸送機代も
 >  もらっている。お気をつけて」
-“Don't ask questions. I've already been paid for the transport. Take care.”
+“Don’t ask questions. I’ve already been paid for the transport. Take care.”
 
 @19325 Wufei · 五飛
 > 「すみません」
@@ -379,39 +401,44 @@ out here?”
 “Are we really going through with the attack on New Edwards?”
 
 @19327 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。アウドムラも手配でき
 >  たそうだからな」
-“That's right. I hear they've arranged the Audhumla for us too.”
+“That’s right. I hear they’ve arranged the Audhumla for us too.”
 
 @19328 Ark · アーク（按段落 3DD1）
 > 「アウドムラ?」
 “The Audhumla?”
 
 @19329 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「ガルダだ。超巨大輸送機。
 >  カミーユ、整備は終わったのか!?」
-“It's a Garuda. A colossal transport. Kamille, are the repairs done?!”
+“It’s a Garuda. A colossal transport. Kamille, are the repairs done?!”
 
 @19330 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「やってますよ!」
-“I'm working on it!”
+“I’m working on it!”
 
 @19331 Kamille · カミーユ
 > (いつの間にか戦争させられてさ……)
 (Before I knew it, they had me fighting a war...)
 
 @19332 Ark · アーク（按段落 3DD1）
+# 审校：全局：弯撇号／弯引号
 > 「でも、かなり厳しいって聞きましたけど」
-“But I heard it's going to be pretty tough.”
+“But I heard it’s going to be pretty tough.”
 
 @19333 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「そういうもんさ。楽な戦争なんかある
 >  わけないだろ
-“That's how it goes. There's no such thing as an easy war.
+“That’s how it goes. There’s no such thing as an easy war.
 ---
 >  それにカラバの支援だってあるっていう
 >  ぜ?」
-Besides, they say we'll have Karaba's support too, right?”
+Besides, they say we’ll have Karaba’s support too, right?”
 
 @19334 Ark · アーク（按段落 3DD1）
 > 「………………」
@@ -434,14 +461,16 @@ Besides, they say we'll have Karaba's support too, right?”
 both of them seem to have doubts.”
 
 @19338 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「わかりました。でもいつまでもそれじゃ、
 >  こっちが危ういですよ」
-“Understood. But if they stay like that forever, it'll put us in danger.”
+“Understood. But if they stay like that forever, it’ll put us in danger.”
 
 @19339 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「わかっている。いずれ戦う理由を自
 >  分で見いだしてくれると信じたいな」
-“I know. I want to believe that in time they'll find their own reason to fight.”
+“I know. I want to believe that in time they’ll find their own reason to fight.”
 
 @19340 Roux · ルー
 > 「なにやってるんです? こんなところで
@@ -449,13 +478,15 @@ both of them seem to have doubts.”
 “What are you two doing? Sneaking around in a place like this, just the two of you.”
 
 @19341 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「なんでもないの。作戦が決まったんだ
 >  お前も準備しておけよ」
-“It's nothing. The operation's been decided, so you get ready too.”
+“It’s nothing. The operation’s been decided, so you get ready too.”
 
 @19342 Roux · ルー
+# 审校：全局：弯撇号／弯引号
 > 「もー、バッチリですよ」
-“Geez, I'm totally ready.”
+“Geez, I’m totally ready.”
 
 @19343 Selain · セレイン（按段落 3DD2）
 > 「ニューエドワーズの襲撃、決まったと
@@ -463,22 +494,26 @@ both of them seem to have doubts.”
 “I heard the raid on New Edwards has been decided.”
 
 @19344 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。アウドムラも手配でき
 >  たそうだからな」
-“That's right. They say they've managed to arrange the Audhumla too.”
+“That’s right. They say they’ve managed to arrange the Audhumla too.”
 
 @19345 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「ガルダが? よく手に入ったものですね」
-“The Garuda? I'm surprised they got their hands on one.”
+“The Garuda? I’m surprised they got their hands on one.”
 
 @19346 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「本部だって遊んでるわけじゃないさ。
 >  カミーユ、整備は終わったのか!?」
-“It's not like Headquarters is sitting around doing nothing. Kamille, are the repairs done?!”
+“It’s not like Headquarters is sitting around doing nothing. Kamille, are the repairs done?!”
 
 @19347 Kamille · カミーユ
+# 审校：全局：弯撇号／弯引号
 > 「やってますよ!」
-“I'm doing them!”
+“I’m doing them!”
 
 @19348 Kamille · カミーユ
 > (いつの間にか戦争させられてさ……)
@@ -490,9 +525,10 @@ both of them seem to have doubts.”
 “But considering the gap in forces between us and them, this could be pretty tough...”
 
 @19350 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「やるしかないんだよ、どのみち。カラバの
 >  支援もあるっていうぜ?」
-“We've got no choice but to do it, either way. They say we'll have Karaba's support too, right?”
+“We’ve got no choice but to do it, either way. They say we’ll have Karaba’s support too, right?”
 
 @19351 Quattro · クワトロ
 > 「アポリー中尉、いいか?」
@@ -508,27 +544,31 @@ both of them seem to have doubts.”
 “Keep an eye on Kamille. Perhaps because he joined by circumstance, he seems to have doubts.”
 
 @19354 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「わかりました。でもいつまでもそれじゃ、
 >  こっちが危ういですよ」
-“Understood. But if he stays like that forever, it'll put us in danger.”
+“Understood. But if he stays like that forever, it’ll put us in danger.”
 
 @19355 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「わかっている。いずれ戦う理由を自
 >  分で見いだしてくれると信じたいな
-“I know. I want to believe that in time he'll find his own reason to fight.
+“I know. I want to believe that in time he’ll find his own reason to fight.
 ---
 >  君の方でも頼む、{HeroName}」
-I'm counting on you too, {HeroName}.”
+I’m counting on you too, {HeroName}.”
 
 @19356 Selain · セレイン（按段落 3DD2）
+# 审校：全局：弯撇号／弯引号
 > 「私ですか? 無理です。私は
 >  ああいうの苦手ですから」
-“Me? I can't. I'm no good with that sort of thing.”
+“Me? I can’t. I’m no good with that sort of thing.”
 
 @19357 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「みんな、聞いてくれ。僕たちはこれから
 >  ニューエドワーズ基地へむかう
-“Everyone, listen up. We're heading to New Edwards Base now.
+“Everyone, listen up. We’re heading to New Edwards Base now.
 ---
 >  すでに知っての通り、この基地には
 >  帝国とスペシャルズの上層部が
@@ -543,14 +583,16 @@ set to gather at this base, so a considerable number of guards have been deploye
 “You really mean to go to a place like that?”
 
 @19359 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「あったりまえだぜ。オレたちだっていつまで
 >  も、ちまちまやってるわけにはいかねぇんだ」
-“Of course we do. We can't keep piddling around forever either.”
+“Of course we do. We can’t keep piddling around forever either.”
 
 @19360 David · デビッド
+# 审校：全局：弯撇号／弯引号
 > 「そうだ、ここらで一発でかく
 >  いかないとな」
-“That's right. It's time we made one big move.”
+“That’s right. It’s time we made one big move.”
 
 @19361 Brad · ブラッド（按段落 3DD3）
 > 「フッ、腕がなるぜ」
@@ -561,9 +603,10 @@ set to gather at this base, so a considerable number of guards have been deploye
 “You guys, honestly... Well, fine.”
 
 @19363 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「そうね。かなり厳しいでしょうけど、
 >  ここでうまくやれれば、状況はかなり
-“That's right. It'll be pretty tough, but if we can pull this off, the situation should
+“That’s right. It’ll be pretty tough, but if we can pull this off, the situation should
 ---
 >  変わるはずだわ」
 change considerably.”
@@ -574,12 +617,13 @@ change considerably.”
 “Indeed it is.”
 
 @19365 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。すでにギャリソンたちに先行さ
 >  せて状況を確認させている
-“Right. I've already sent Garrison and the others ahead to confirm the situation.
+“Right. I’ve already sent Garrison and the others ahead to confirm the situation.
 ---
 >  みんな、気を引き締めていってくれ」
-Everyone, brace yourselves and let's go.”
+Everyone, brace yourselves and let’s go.”
 
 @19366 Walker · ワーカー
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -587,19 +631,20 @@ Everyone, brace yourselves and let's go.”
 “Special Lieutenant Zechs!”
 
 @19367 Zechs · ゼクス
-# 审校：精读：特士 统一 Special Officer
+# 审校：全局：弯撇号／弯引号
 > 「ワーカー特士、久しぶりだな」
-“Special Officer Walker. It's been a while.”
+“Special Officer Walker. It’s been a while.”
 
 @19368 Walker · ワーカー
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「ゼクス特尉も、お元気そうで。
 >  ライトニングバロンの噂は聞いています」
-“You look well too, Special Lieutenant Zechs. I've heard the rumors about the Lightning Baron.”
+“You look well too, Special Lieutenant Zechs. I’ve heard the rumors about the Lightning Baron.”
 
 @19369 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「噂の先行は好きではないのだがな」
-“I'm not fond of rumors getting ahead of me.”
+“I’m not fond of rumors getting ahead of me.”
 
 @19370 Walker · ワーカー
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -630,9 +675,10 @@ stationed here too. This is going to be a fairly harsh battlefield.”
 no fool would attack with this much security.”
 
 @19373 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「いや、バカはくる。今我々が相手
 >  にしているのは、そういう連中だ」
-“No, fools will come. The ones we're dealing with now are exactly that kind.”
+“No, fools will come. The ones we’re dealing with now are exactly that kind.”
 
 @19374 Walker · ワーカー
 > 「はい。この戦場で私のするべきことは
@@ -653,21 +699,24 @@ no fool would attack with this much security.”
 is my guiding principle now.”
 
 @19377 Zechs · ゼクス
+# 审校：全局：弯撇号／弯引号
 > 「……今は貴様の方が勇敢な
 >  兵士だな」
-“...Right now, you're the braver soldier.”
+“...Right now, you’re the braver soldier.”
 
 @19378 Giura · ギウラ
+# 审校：全局：弯撇号／弯引号
 > 「ふん、地球人どもめはりきりおって。
 >  まぁよい、とどこおりなく終われば
 “Hmph, these Earthlings are all worked up. Well, fine. If this ends without a hitch,
 ---
 >  この私の実績になるというもの」
-it'll be a credit to me.”
+it’ll be a credit to me.”
 
 @19379 Giura · ギウラ
+# 审校：全局：弯撇号／弯引号
 > 「な、な、なんだ!? どうしたのだ!?」
-“W-w-what?! What's going on?!”
+“W-w-what?! What’s going on?!”
 
 @19380 Gosterro · ゴステロ
 # 审校：“What's going on is obvious”不像口语，改成抢白
@@ -680,23 +729,25 @@ it'll be a credit to me.”
 “Hiheheheheheheh!”
 
 @19382 Giura · ギウラ
+# 审校：全局：弯撇号／弯引号
 > 「そ、そんなバカな……」
-“Th-that can't be...”
+“Th-that can’t be...”
 
 @19383 Mangelo · マンジェロ
 > 「ひぃやぁっ! オレの計算どおりだぁ!」
 “Hiiyaa! Just as I calculated!”
 
 @19384 Giura · ギウラ
-# 审校：军官口吻应更干脆，将“already”改为“at once”以贴合命令语气。
+# 审校：全局：弯撇号／弯引号
 > 「き、貴様ら、敵が来たなら早く
 >  出撃しないかっ!」
-“Y-you lot, if the enemy's here, get out there and sortie at once!”
+“Y-you lot, if the enemy’s here, get out there and sortie at once!”
 
 @19385 Getty · ゲティ
+# 审校：全局：弯撇号／弯引号
 > 「慌てるんじゃねぇ。まずは地球人
 >  どもにやらせりゃいいんだ。ふひひひひ」
-“Don't get your panties in a twist. Just let the Earthlings do the work first. Fuhihihihi.”
+“Don’t get your panties in a twist. Just let the Earthlings do the work first. Fuhihihihi.”
 
 @19386 Giura · ギウラ
 > 「く…………」
@@ -734,22 +785,25 @@ we risk being surrounded by enemy reinforcements. Move fast.”
 “Roger.”
 
 @19392 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ギャリソンたちの情報では、あのエリア
 >  にターゲットが集中しているはずだ」
-“According to Garrison's intel, the targets should be concentrated in that area.”
+“According to Garrison’s intel, the targets should be concentrated in that area.”
 
 @19393 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「3機以上侵入して、あそこを
 >  占拠するぞ。時間をかけすぎれば
-“We'll break in with three units or more and seize it. If we take too long,
+“We’ll break in with three units or more and seize it. If we take too long,
 ---
 >  他の基地からの増援に取り
 >  囲まれるハメになる。みんな、急ぐぞ」
-we'll end up surrounded by reinforcements from the other bases. Everyone, hurry.”
+we’ll end up surrounded by reinforcements from the other bases. Everyone, hurry.”
 
 @19394 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：弯撇号／弯引号
 > 「よし、いくぜぇっ!」
-“All right, let's go!”
+“All right, let’s go!”
 
 @19395 Manami · マナミ（按段落 3DD4）
 # 审校：大小姐对万丈用敬语，将“Got it.”改为更符合贵族小姐口吻的“Very well.”。
@@ -761,18 +815,20 @@ we'll end up surrounded by reinforcements from the other bases. Everyone, hurry.
 “W-what is the meaning of this?!”
 
 @19397 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「反帝国のレジスタンスの襲撃です
 >  会談は中断です」
-“It's an attack by the anti-Imperial resistance. The talks are suspended.”
+“It’s an attack by the anti-Imperial resistance. The talks are suspended.”
 
 @19398 Noventa · ノベンタ
+# 审校：全局：弯撇号／弯引号
 > 「バカな。ようやくグレスコ総督が地
 >  球人の権利を認め、このような
-“Impossible. Governor Gresco has finally recognized the rights of Earthlings, and we've even
+“Impossible. Governor Gresco has finally recognized the rights of Earthlings, and we’ve even
 ---
 >  会談の場も用意できたというのに
 >  ……不幸な偶然なのだ
-prepared a place for talks like this... It's just an unfortunate coincidence.
+prepared a place for talks like this... It’s just an unfortunate coincidence.
 ---
 >  私はこれを自治権獲得の
 >  平和への障害とは思わん」
@@ -784,10 +840,12 @@ I refuse to see this as an obstacle to peace and the acquisition of autonomy.”
 “I understand your feelings well. We must eliminate the resistance at once.”
 
 @19400 Noventa · ノベンタ
+# 审校：全局：弯撇号／弯引号
 > 「バカをいうな!」
-“Don't be a fool!”
+“Don’t be a fool!”
 
 @19401 Noventa · ノベンタ
+# 审校：全局：弯撇号／弯引号
 > 「自分たちのみの安泰を得ている
 >  ロームフェラ財団の幹部に
 “What could the executives of the Romefeller Foundation, who secure only their own comfort,
@@ -798,14 +856,14 @@ possibly understand? They are young people who seriously think about the future 
 ---
 >  若者たちだ。それを排除して、この
 >  地球に何が残る
-Eliminate them, and what's left on this Earth?
+Eliminate them, and what’s left on this Earth?
 ---
 >  グレスコ総督もレジスタンスたちの説
 >  得に意義を見いだして
 Governor Gresco, too, finds meaning in persuading the resistance,
 ---
 >  下さっているのだぞ!?」
-don't you see?!”
+don’t you see?!”
 
 @19402 Treize · トレーズ
 # 审校：“escaping should come first here”“这里总之先脱身”生硬
@@ -830,16 +888,18 @@ everything you’ve worked for would be wasted.”
 “But...”
 
 @19404 Treize · トレーズ
+# 审校：全局：弯撇号／弯引号
 > 「他の皆様もすでにそちらへ向かって
 >  いただくよう手配しております
-“I've already arranged for the others to head there as well.
+“I’ve already arranged for the others to head there as well.
 ---
 >  お急ぎください」
 Please hurry.”
 
 @19405 Noventa · ノベンタ
+# 审校：全局：弯撇号／弯引号
 > 「…………わかった、まかせる」
-“...Understood. I'll leave it to you.”
+“...Understood. I’ll leave it to you.”
 
 @19406 Zechs · ゼクス
 > 「ワーカー!!」
@@ -850,9 +910,10 @@ Please hurry.”
 “Walker!!”
 
 @19408 Walker · ワーカー
+# 审校：全局：弯撇号／弯引号
 > 「くっ……やはり、だめか。……戦闘デー
 >  タの記録、よろしく頼みます
-“Ngh... So it's no good after all. ...Please make sure the combat data is recorded.
+“Ngh... So it’s no good after all. ...Please make sure the combat data is recorded.
 ---
 >  後の兵士たちのために!」
 For the soldiers who come after!”
@@ -866,53 +927,56 @@ For the soldiers who come after!”
 “Forgive me, Walker...”
 
 @19411 Bask · バスク
-# 审校：精读：死鬼隊 读作 Shikitai
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：死鬼隊→Demon Death Platoon
 > 「バカが、突っ込みすぎおって。
 >  エマ特尉、ル・カイン直属の
-“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's personal
+“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain’s personal
 ---
 >  死鬼隊とやらはどうしたか!?」
-Shikitai unit or whatever it's called?!”
+Shikitai unit or whatever it’s called?!”
 
 @19412 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > 「ル・カイン司令の親衛隊が
 >  出ます!」
-“Commander Le Cain's personal guard is moving out!”
+“Commander Le Cain’s personal guard is moving out!”
 
 @19413 Bask · バスク
 > 「いまさらか」
 “About time.”
 
 @19414 Bask · バスク
-# 审校：精读：死鬼隊 读作 Shikitai
+# 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：死鬼隊→Demon Death Platoon
 > 「バカが、突っ込みすぎおって。
 >  エマ特尉、ル・カイン直属の
-“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's personal
+“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain’s personal
 ---
 >  死鬼隊とやらはどうしたか!?」
-Shikitai unit or whatever it's called?!”
+Shikitai unit or whatever it’s called?!”
 
 @19415 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > 「ル・カイン司令の親衛隊が
 >  出ます!」
-“Commander Le Cain's personal guard is moving out!”
+“Commander Le Cain’s personal guard is moving out!”
 
 @19416 Bask · バスク
 > 「いまさらか」
 “About time.”
 
 @19417 Gosterro · ゴステロ
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「ひぃははははぁっ! あのコゾウどもかぁ、
 >  ぶっ殺してやるぅ! いくぞお前らぁ!」
-“Hiihahahaha! Those little brats, huh? I'll slaughter ’em! Let's go, you lot!”
+“Hiihahahaha! Those little brats, huh? I’ll slaughter ’em! Let’s go, you lot!”
 
 @19418 Getty · ゲティ
+# 审校：全局：弯撇号／弯引号
 > 「お、俺に命令するんじゃねぇ!
 >  貴様がリーダーってわけじゃねぇんだ!」
-“D-don't you give me orders! You ain't the leader here!”
+“D-don’t you give me orders! You ain’t the leader here!”
 
 @19419 Duo · デュオ
 # 审校：“先来的客人”“别的类似的家伙”是直译；两处英文统一
@@ -924,9 +988,10 @@ Shikitai unit or whatever it's called?!”
 Hey hey, there are more like me over here.”
 
 @19420 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「大尉! あのときのガンダムタイプが
 >  います」
-“Captain! There's that Gundam type from back then.”
+“Captain! There’s that Gundam type from back then.”
 
 @19421 Quattro · クワトロ
 > 「そのようだ。どうやら無事だったようだ
@@ -942,23 +1007,25 @@ probably descended in Operation M as well...”
 “The Liberation Front of the Earth organization, huh...”
 
 @19423 Quatre · カトル
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「見てよトロワ! レジスタンスも
 >  他のガンダムも、きっとみんな目的は
-“Look, Trowa! The resistance and the other Gundams... I'm sure they all share
+“Look, Trowa! The resistance and the other Gundams... I’m sure they all share
 ---
 >  一緒だよ!」
 the same goal!”
 
 @19424 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「なんであろうと、邪魔になるなら
 >  排除するだけだ……」
-“Whatever it is, if it gets in my way, I'll just eliminate it...”
+“Whatever it is, if it gets in my way, I’ll just eliminate it...”
 
 @19425 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「あれは……。カラバのみなさん、また
 >  お会いしましたね」
-“That's... Everyone from Karaba, we meet again.”
+“That’s... Everyone from Karaba, we meet again.”
 
 @19426 Brad · ブラッド（按段落 3DD3）
 > 「あんときのコロニーの坊ちゃんか。1つ
@@ -971,37 +1038,42 @@ the same goal!”
 “The colony kid from back then, huh? One question. This time, are you enemy or ally?”
 
 @19428 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「あのときの子ね……敵なの、味方な
 >  の? 敵なら容赦はしないわよ」
-“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+“That kid from back then... Are you enemy or ally? If you’re an enemy, I won’t go easy on you.”
 
 @19429 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「あのときの子ね……敵なの、味方な
 >  の? 敵なら容赦はしないわよ」
-“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+“That kid from back then... Are you enemy or ally? If you’re an enemy, I won’t go easy on you.”
 
 @19430 Trowa · トロワ
 > 「…………」
 “...”
 
 @19431 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「今あなた方と戦う意味はありませ
 >  ん。目的は恐らく同じでしょうから
-“There's no point in fighting you now. Our goals are probably the same, so
+“There’s no point in fighting you now. Our goals are probably the same, so
 ---
 >  味方といっていいと思います。
 >  トロワ、彼らと一緒に戦おう」
-I'd say we're allies. Trowa, let's fight alongside them.”
+I’d say we’re allies. Trowa, let’s fight alongside them.”
 
 @19432 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「……俺には味方などいない。任務
 >  遂行の邪魔になれば、排除する」
-“...I have no allies. If you get in the way of my mission, I'll eliminate you.”
+“...I have no allies. If you get in the way of my mission, I’ll eliminate you.”
 
 @19433 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「なんだよ、辛気くさいガキだな。みんな
 >  こんな連中ほっといてさっさと
-“What's with this gloomy kid? Everyone, let's just leave these guys alone and
+“What’s with this gloomy kid? Everyone, let’s just leave these guys alone and
 ---
 >  片付けちまおうぜ」
 finish this up quick.”
@@ -1016,9 +1088,10 @@ finish this up quick.”
 Hey hey, there are more like me over here.”
 
 @19435 Aboly · アポリー
+# 审校：全局：弯撇号／弯引号
 > 「大尉! あのときのガンダムタイプが
 >  います」
-“Captain! There's that Gundam type from back then.”
+“Captain! There’s that Gundam type from back then.”
 
 @19436 Quattro · クワトロ
 > 「そのようだ。どうやら無事だったようだ
@@ -1034,23 +1107,25 @@ probably descended in Operation M as well...”
 “The Liberation Front of the Earth organization, huh...”
 
 @19438 Quatre · カトル
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：全局：弯撇号／弯引号
 > 「見てよトロワ! レジスタンスも
 >  他のガンダムも、きっとみんな目的は
-“Look, Trowa! The resistance and the other Gundams... I'm sure they all share
+“Look, Trowa! The resistance and the other Gundams... I’m sure they all share
 ---
 >  一緒だよ!」
 the same goal!”
 
 @19439 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「なんであろうと、邪魔になるなら
 >  排除するだけだ……」
-“Whatever it is, if it gets in my way, I'll just eliminate it...”
+“Whatever it is, if it gets in my way, I’ll just eliminate it...”
 
 @19440 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「あれは……。カラバのみなさん、また
 >  お会いしましたね」
-“That's... Everyone from Karaba, we meet again.”
+“That’s... Everyone from Karaba, we meet again.”
 
 @19441 Brad · ブラッド（按段落 3DD3）
 > 「あんときのコロニーの坊ちゃんか。1つ
@@ -1063,44 +1138,50 @@ the same goal!”
 “The colony kid from back then, huh? One question. This time, are you enemy or ally?”
 
 @19443 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「あのときの子ね……敵なの、味方な
 >  の? 敵なら容赦はしないわよ」
-“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+“That kid from back then... Are you enemy or ally? If you’re an enemy, I won’t go easy on you.”
 
 @19444 Manami · マナミ（按段落 3DD4）
+# 审校：全局：弯撇号／弯引号
 > 「あのときの子ね……敵なの、味方な
 >  の? 敵なら容赦はしないわよ」
-“That kid from back then... Are you enemy or ally? If you're an enemy, I won't go easy on you.”
+“That kid from back then... Are you enemy or ally? If you’re an enemy, I won’t go easy on you.”
 
 @19445 Trowa · トロワ
 > 「…………」
 “...”
 
 @19446 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「今あなた方と戦う意味はありませ
 >  ん。目的は恐らく同じでしょうから
-“There's no point in fighting you now. Our goals are probably the same, so
+“There’s no point in fighting you now. Our goals are probably the same, so
 ---
 >  味方といっていいと思います。
 >  トロワ、彼らと一緒に戦おう」
-I'd say we're allies. Trowa, let's fight alongside them.”
+I’d say we’re allies. Trowa, let’s fight alongside them.”
 
 @19447 Trowa · トロワ
+# 审校：全局：弯撇号／弯引号
 > 「……俺には味方などいない。任務
 >  遂行の邪魔になれば、排除する」
-“...I have no allies. If you get in the way of my mission, I'll eliminate you.”
+“...I have no allies. If you get in the way of my mission, I’ll eliminate you.”
 
 @19448 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「なんだよ、辛気くさいガキだな。みんな
 >  こんな連中ほっといてさっさと
-“What's with this gloomy kid? Everyone, let's just leave these guys alone and
+“What’s with this gloomy kid? Everyone, let’s just leave these guys alone and
 ---
 >  片付けちまおうぜ」
 finish this up quick.”
 
 @19449 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「あれは……スペシャルズのガルダか!」
-“That's... a Specials Garuda!”
+“That’s... a Specials Garuda!”
 
 @19450 Garrison · ギャリソン
 # 审校：ギャリソン对万丈的称呼应为 Master Banjo，且管家口吻不用缩写。
@@ -1108,8 +1189,9 @@ finish this up quick.”
 “Master Banjo, it is a Specials Garuda.”
 
 @19451 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「しまった、脱出する気か!?」
-“Damn, they're trying to escape?!”
+“Damn, they’re trying to escape?!”
 
 @19452 Heero · ヒイロ
 # 审校：希罗口吻应更短促冷硬，will 不缩写更符合其寡言风格。
@@ -1128,27 +1210,32 @@ finish this up quick.”
 “What?! He still means to fight in that unit?!”
 
 @19455 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「やっべぇ、ターゲットが逃げちまうぜ!」
-“Oh crap, the target's gonna get away!”
+“Oh crap, the target’s gonna get away!”
 
 @19456 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「スペシャルズと帝国の高官が
 >  脱出する……? 逃がしはしない……」
-“The Specials and the imperial brass are escaping...? I won't let them get away...”
+“The Specials and the imperial brass are escaping...? I won’t let them get away...”
 
 @19457 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「逃がしはしない……」
-“I won't let them get away...”
+“I won’t let them get away...”
 
 @19458 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「我々もあれを叩くぞ!
 >  逃がしてはこの作戦は失敗だ!」
-“We'll hit that too! If it escapes, this operation fails!”
+“We’ll hit that too! If it escapes, this operation fails!”
 
 @19459 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「みんな、僕たちもあれを叩く。
 >  逃げられてはこの作戦は失敗だ!」
-“Everyone, we'll hit that too. If it gets away, this operation fails!”
+“Everyone, we’ll hit that too. If it gets away, this operation fails!”
 
 @19460 Reika · レイカ
 # 审校：丽香是干练职业女性，原文为命令式，译文应更干脆有力。
@@ -1184,9 +1271,10 @@ finish this up quick.”
 “Ngh... young ones, what a rash thing you have done...”
 
 @19467 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > 「なんてことを! 全機、レジスタンスを
 >  逃がすな!」
-“What have you done?! All units, don't let the resistance escape!”
+“What have you done?! All units, don’t let the resistance escape!”
 
 @19468 Wufei · 五飛
 # 审校：“are you still not tired of”“neatly played”不像台词
@@ -1214,8 +1302,9 @@ wrung concessions out of the Empire!”
 “...What did you say...?”
 
 @19471 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「……そ、そんな……」
-“...Th-that can't be...”
+“...Th-that can’t be...”
 
 @19472 Duo · デュオ
 > 「なんだ、どういうことだよ!?」
@@ -1285,9 +1374,10 @@ Do not let them escape!”
 “Yes, sir!”
 
 @19484 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > (確か……はめられたって……
 >  どういうこと? まさか……)
-(He said... we were played... what does that mean? Don't tell me...)
+(He said... we were played... what does that mean? Don’t tell me...)
 
 @19485 Emma · エマ
 > (確か……はめられたって……
@@ -1295,28 +1385,29 @@ Do not let them escape!”
 (He said... we were played... what does that mean?)
 
 @19486 Bask · バスク
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「エマ特尉、汚名返上のチャンス
 >  をやる。追撃隊の指揮をまかせる
-“Special Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+“Special Lieutenant Emma, I’m giving you a chance to clear your name. I’m leaving
 ---
 >  奴らを逃がすな!」
-command of the pursuit force to you. Don't let them escape!”
+command of the pursuit force to you. Don’t let them escape!”
 
 @19487 Emma · エマ
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「はっ、バスク特尉。では追撃隊の
 >  編成にかかります」
-“Yes, Special Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+“Yes, Special Lieutenant Bask. I’ll begin organizing the pursuit force at once.”
 
 @19488 Bask · バスク
 > 「急げよ」
 “Make it quick.”
 
 @19489 Emma · エマ
+# 审校：全局：弯撇号／弯引号
 > (確か……はめられたって……
 >  どういうこと? まさか……)
-(He said... we were played... what does that mean? Don't tell me...)
+(He said... we were played... what does that mean? Don’t tell me...)
 
 @19490 Emma · エマ
 > (確か……はめられたって……
@@ -1349,8 +1440,9 @@ wrung concessions out of the Empire!”
 “...What did you say...?”
 
 @19494 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「……そ、そんな……」
-“...Th-that can't be...”
+“...Th-that can’t be...”
 
 @19495 Duo · デュオ
 > 「なんだ、どういうことだよ!?」
@@ -1402,8 +1494,9 @@ that boy said.”
 “Ngh... those Specials... Everyone, retreat!”
 
 @19504 Heero · ヒイロ
+# 审校：全局：弯撇号／弯引号
 > 「俺の……俺のミスだ!」
-“It's my... it's my mistake!”
+“It’s my... it’s my mistake!”
 
 @19505 Bask · バスク
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1431,19 +1524,19 @@ Do not let them escape!”
 (He said... we were played... what does that mean?)
 
 @19509 Bask · バスク
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「エマ特尉、汚名返上のチャンス
 >  をやる。追撃隊の指揮をまかせる
-“Special Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+“Special Lieutenant Emma, I’m giving you a chance to clear your name. I’m leaving
 ---
 >  奴らを逃がすな!」
-command of the pursuit force to you. Don't let them escape!”
+command of the pursuit force to you. Don’t let them escape!”
 
 @19510 Emma · エマ
-# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：全局：弯撇号／弯引号
 > 「はっ、バスク特尉。では追撃隊の
 >  編成にかかります」
-“Yes, Special Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+“Yes, Special Lieutenant Bask. I’ll begin organizing the pursuit force at once.”
 
 @19511 Bask · バスク
 > 「急げよ」
@@ -1485,9 +1578,10 @@ command of the pursuit force to you. Don't let them escape!”
 but there’s nothing for it.”
 
 @19518 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「ゴステロ!
 >  今度こそ終わりにしてやる!!」
-“Gosterro! This time I'm finishing you for good!!”
+“Gosterro! This time I’m finishing you for good!!”
 
 @19519 Gosterro · ゴステロ
 > 「小僧が!! 貴様にできるのか!」
@@ -1498,9 +1592,10 @@ but there’s nothing for it.”
 “Ngh... not yet...”
 
 @19521 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「スードリを逃したのか!?
 >  くっ、作戦は失敗か……」
-“You let Sudori get away?! Ngh, the operation's a failure...”
+“You let Sudori get away?! Ngh, the operation’s a failure...”
 
 @19522 Garrison · ギャリソン
 # 审校：管家对万丈的称呼应为“Master Banjo”，而非“Lord Banjo”。
@@ -1514,9 +1609,10 @@ but there’s nothing for it.”
 “Banjo, an Imperial force is approaching us too!”
 
 @19524 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「僕としたことが……。くっ、作戦は
 >  失敗か……」
-“To think I'd slip up like this... Ngh, the operation's a failure...”
+“To think I’d slip up like this... Ngh, the operation’s a failure...”
 
 @19525 Lady · レディ
 # 审校：蕾蒂对特列斯的称呼应为“Your Excellency”，而非“Lord Treize”。
@@ -1534,9 +1630,10 @@ but there’s nothing for it.”
 “How could this happen...”
 
 @19528 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「いまさら言ってもしかたがない。すぐに
 >  追撃隊も出てくるだろう」
-“There's no use saying it now. A pursuit force will be out soon enough.”
+“There’s no use saying it now. A pursuit force will be out soon enough.”
 
 @19529 Ark · アーク（按段落 3DD1）
 > 「あの2人はどうするんですか?」
@@ -1552,23 +1649,24 @@ but there’s nothing for it.”
 “Yeah... the other three seem to have gone off somewhere...”
 
 @19532 Quattro · クワトロ
-# 审校：准将 统一 Brigadier General
+# 审校：全局：弯撇号／弯引号
 > 「彼らは敵ではない。准将の希望
 >  通り我々に同行してもらうのが
-“They're not our enemies. It would be best if they came along with us, just as the Brigadier General hopes.
+“They’re not our enemies. It would be best if they came along with us, just as the Brigadier General hopes.
 ---
 >  いいだろう。彼らがそれを望めば、だが」
-That is, if that's what they want.”
+That is, if that’s what they want.”
 
 @19533 Eiji · エイジ
+# 审校：全局：弯撇号／弯引号
 > 「よかったら一緒にこないか?
 >  今の状態では君たちもつらいだろう」
-“If you'd like, why not come with us? Things must be rough for you as it is.”
+“If you’d like, why not come with us? Things must be rough for you as it is.”
 
 @19534 Anna · アンナ
-# 审校：Anna 的 voice 是温柔坚定，原文「いらっしゃいよ」带有邀请的敬语感，改为更柔和的“Do come along”以贴合口吻。
+# 审校：全局：弯撇号／弯引号
 > 「それがいいわ。一緒にいらっしゃいよ」
-“That's a good idea. Do come along with us.”
+“That’s a good idea. Do come along with us.”
 
 @19535 Selain · セレイン（按段落 3DD2）
 > 「お前たち、よければ一緒にこい。
@@ -1579,9 +1677,9 @@ That is, if that's what they want.”
 to bear the weight of failure.”
 
 @19536 Anna · アンナ
-# 审校：同 L2，Anna 的邀请语气应更柔和，与原文「いらっしゃいよ」的敬语感一致。
+# 审校：全局：弯撇号／弯引号
 > 「それがいいわ。一緒にいらっしゃいよ」
-“That's a good idea. Do come along with us.”
+“That’s a good idea. Do come along with us.”
 
 @19537 Koji · 甲児
 > 「ちくしょうめ、まんまとしてやられたって
@@ -1598,13 +1696,15 @@ to bear the weight of failure.”
 Nothing for it.”
 
 @19539 Koji · 甲児
+# 审校：全局：弯撇号／弯引号
 > 「それでいいのかよ!?」
-“And you're okay with that?!”
+“And you’re okay with that?!”
 
 @19540 Sayaka · さやか
+# 审校：全局：弯撇号／弯引号
 > 「落ち着きなさいよ甲児くん。
 >  今そんなこといってもしょうがないでしょ」
-“Calm down, Koji. There's no point saying that now.”
+“Calm down, Koji. There’s no point saying that now.”
 
 @19541 Koji · 甲児
 > 「わかってるよ。けどさ」
@@ -1620,9 +1720,10 @@ Nothing for it.”
 “Two of them stayed. The other three vanished somewhere right away, though.”
 
 @19544 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「君たちはどうするんだ? もしよければ
 >  一緒にいかないか?」
-“What about you two? If you'd like, why not come with us?”
+“What about you two? If you’d like, why not come with us?”
 
 @19545 Duo · デュオ
 > 「頼む……今は、同情が気持ち
@@ -1630,9 +1731,10 @@ Nothing for it.”
 “Please... right now, a little sympathy feels good...”
 
 @19546 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「僕も、同行させてください。今は、
 >  その方がいいと思います」
-“Please let me come along as well. I think that's for the best right now.”
+“Please let me come along as well. I think that’s for the best right now.”
 
 @19547 Rasid · ラシード
 > 「カトル様! 我々はそんなに
@@ -1640,9 +1742,11 @@ Nothing for it.”
 “Master Quatre! Are we truly so unreliable?”
 
 @19548 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
+# 检查提示：未用必用译名：ラシード→Rasid
 > 「違うよラシード。マグアナック隊にだっ
 >  てまだやることはたくさんあるはずでしょう
-“That's not it, Rasid. Surely the Maganac Corps still has plenty of work to do.
+“That’s not it, Rasid. Surely the Maganac Corps still has plenty of work to do.
 ---
 >  まだまだ戦いは続くのだから」
 The fighting will go on for a long while yet.”
@@ -1658,26 +1762,29 @@ The fighting will go on for a long while yet.”
 head back to base. But if anything happens, you must call on us.”
 
 @19550 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「もちろん。では、よろしくお願いします。
 >  僕はカトル、
-“Of course. Then I look forward to working with you. I'm Quatre,
+“Of course. Then I look forward to working with you. I’m Quatre,
 ---
 >  カトル・ラバーバ・ウィナーです」
 Quatre Raberba Winner.”
 
 @19551 Quatre · カトル
+# 审校：全局：弯撇号／弯引号
 > 「もちろん。では、よろしくお願いします。
 >  万丈さん。改めて名乗ります
 “Of course. Then I look forward to working with you, Banjo. Let me introduce myself properly.
 ---
 >  僕はカトル、カトル・ラバーバ・ウィナー
 >  です」
-I'm Quatre, Quatre Raberba Winner.”
+I’m Quatre, Quatre Raberba Winner.”
 
 @19552 Duo · デュオ
+# 审校：全局：弯撇号／弯引号
 > 「俺はデュオ、デュオ・マックスウェルだ。
 >  逃げも隠れもするが、ウソはいわねぇ
-“I'm Duo, Duo Maxwell. I may run and hide, but I never tell a lie.
+“I’m Duo, Duo Maxwell. I may run and hide, but I never tell a lie.
 ---
 >  デュオ・マックスウェルだ」
 Duo Maxwell.”
@@ -1687,9 +1794,10 @@ Duo Maxwell.”
 “Lieutenant Colonel Bright and the others have arrived?”
 
 @19554 Simone · シモーヌ
+# 审校：全局：弯撇号／弯引号
 > 「今、万丈たちと話してるわ。サング
 >  ラスの人も一緒よ」
-“He's talking with Banjo and the others right now. The man in sunglasses is with him too.”
+“He’s talking with Banjo and the others right now. The man in sunglasses is with him too.”
 
 @19555 David · デビッド
 > 「ブライトって、あのブライト・ノアだろう、
@@ -1709,28 +1817,31 @@ I never thought he was still alive.”
 What on earth is going on?”
 
 @19557 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「では我々に同行してもらえると?」
-“Then you'll come along with us?”
+“Then you’ll come along with us?”
 
 @19558 Garrison · ギャリソン
 > 「それはそれは、心強いかぎりですな」
 “My, my, that is most reassuring.”
 
 @19559 Bright · ブライト
+# 审校：全局：弯撇号／弯引号
 > 「いや、しばらく船には乗っていなかった
 >  のです。カンがにぶっている」
-“No, I haven't been aboard a ship for a while. My instincts have gotten dull.”
+“No, I haven’t been aboard a ship for a while. My instincts have gotten dull.”
 
 @19560 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「ブライトさんなら大丈夫。しかし解
 >  放戦線でも事態は深刻だと
-“With you around, Bright, we'll be fine. But even the Liberation Front
+“With you around, Bright, we’ll be fine. But even the Liberation Front
 ---
 >  考えているわけか……」
 considers the situation serious, then...”
 
 @19561 Quattro · クワトロ
-# 审校：准将 统一 Brigadier General
+# 审校：全局：弯撇号／弯引号
 > 「今回のことで士気がいちじるしく
 >  低下している。ブレックス准将や
 “Morale has dropped sharply because of this incident. Brigadier General Blex and
@@ -1745,20 +1856,22 @@ for all-out war with the aliens and care nothing for the sacrifices,
 ---
 >  戦争を引き起こそうとしていると
 >  いう意見も出てきている」
-that we're trying to drag everyone into war.”
+that we’re trying to drag everyone into war.”
 
 @19562 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「それはカラバも同様だ。今まともに
 >  動けるのは我々だけだろうね」
-“It's the same for Karaba. Right now, we're probably the only ones who can move properly.”
+“It’s the same for Karaba. Right now, we’re probably the only ones who can move properly.”
 
 @19563 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「そうだ。だから解放戦線も期待
 >  したいのさ。でなければ我々も
-“Exactly. That's why the Liberation Front wants to count on you too. Otherwise we
+“Exactly. That’s why the Liberation Front wants to count on you too. Otherwise we
 ---
 >  出張ってはこない」
-wouldn't have come out here ourselves.”
+wouldn’t have come out here ourselves.”
 
 @19564 Banjo · 万丈
 > 「なるほど。つまりこの部隊はカラバと
@@ -1769,18 +1882,21 @@ wouldn't have come out here ourselves.”
 and the Liberation Front.”
 
 @19565 Quattro · クワトロ
+# 审校：全局：弯撇号／弯引号
 > 「そういうことだ。よろしく頼む、
 >  万丈くん」
-“That's right. We're counting on you, Banjo.”
+“That’s right. We’re counting on you, Banjo.”
 
 @19566 Banjo · 万丈
+# 审校：全局：弯撇号／弯引号
 > 「こちらこそ。レイカ、みんなを集めてくれ
 >  解放戦線から加わった人たちを
-“Likewise. Reika, gather everyone. Let's introduce the people who joined us from the Liberation Front
+“Likewise. Reika, gather everyone. Let’s introduce the people who joined us from the Liberation Front
 ---
 >  みんなに紹介しよう」
 to the rest of the group.”
 
 @19567 Reika · レイカ
+# 审校：全局：弯撇号／弯引号
 > 「ええ。すぐ集まらせるわね」
-“Sure. I'll have them all assembled right away.”
+“Sure. I’ll have them all assembled right away.”
