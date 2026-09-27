@@ -16,13 +16,13 @@ namespace {
 std::atomic_bool applying{},awaiting_release{};
 ModalInputRelease release_gate;
 uint64_t applying_request{};
-std::string applying_locale,last_error;
+std::string applying_locale,last_error,page;
 std::filesystem::path destination,output;
 std::atomic_bool native_battle{true},native_intermission{true},native_name_entry{true},native_title{true};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     srw64::app::atomic_write(path,nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",native_battle?"native":"original"},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
-        {"title_ui",native_title?"native":"original"}}).dump(2)+"\n");
+        {"title_ui",native_title?"native":"original"},{"settings_page",page}}).dump(2)+"\n");
 }
 void apply(const std::string& locale) {
     if(applying || release_gate.pending() || destination.empty())return;
@@ -58,6 +58,12 @@ void set_native_title_ui(bool native) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+std::string settings_page(){return page;}
+void set_settings_page(const std::string& value) {
+    page=value;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
 bool owns_input(){return applying.load() || awaiting_release.load() || release_gate.pending();}
 uint32_t filter_input(uint32_t input){return release_gate.filter(input,applying,awaiting_release);}
 void release_input_when(bool all_keys_released){if(!applying && all_keys_released)awaiting_release=false;}
@@ -80,6 +86,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         std::ifstream file(destination);
         const auto saved=nlohmann::json::parse(file,nullptr,false);
         if(saved.is_object()){native_battle=saved.value("battle_ui","native")!="original";native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";native_title=saved.value("title_ui","native")!="original";}
+        if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
     }
 }
 

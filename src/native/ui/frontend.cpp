@@ -126,10 +126,58 @@ p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;} p.credit
 button {display: inline-block; background-color: #152436; color: #d6e2ef; border: 1dp #304859; border-radius: 6dp; padding: 10dp 14dp; margin: 4dp; cursor: pointer; tab-index: auto;}
 button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: #23506a; border-color: #9be4f7;}
 .pad button:focus {border-color: #ffd75e; background-color: #2c4a63;}
-button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; margin-right: 2%;}
-.rule {display: block; width: 92%; text-align: left; font-size: 15dp; padding: 7dp;}
+button:disabled {opacity: 0.45;} .row {display: flex;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
+
+.set-shade {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712b8;}
+.set-panel {display:flex; flex-direction:column; width:88%; max-width:1040dp; height:88%; max-height:820dp; box-sizing:border-box; padding:14dp 26dp 12dp; color:#e8eefc; decorator:slant(#0c122cf5 #3fd0ff 1dp 3dp 0dp 22dp 22dp 0dp);}
+.set-panel h1 {margin:0 0 8dp; font-size:24dp; letter-spacing:2dp;}
+.set-tabs {display:flex; gap:6dp; margin-bottom:10dp;}
+.set-tabs button {flex:1 1 0; min-width:0; margin:0; padding:0 10dp; height:34dp; line-height:34dp; text-align:center; white-space:nowrap; overflow:hidden; font-size:15dp; font-weight:bold; color:#a4b0d2; background-color:transparent; border:0; border-radius:0; decorator:slant(#0c122ceb #3fd0ff 1dp 0dp 10dp 0dp 0dp 10dp);}
+.set-tabs button.on {color:#0b1230; decorator:slant(#3fd0ff #3fd0ff 1dp 0dp 10dp 0dp 0dp 10dp);}
+.set-tabs button:focus {color:#ffd75e; decorator:slant(#0c122ceb #ffd75e 2dp 0dp 10dp 0dp 0dp 10dp);}
+.set-tabs button.on:focus {color:#0b1230; decorator:slant(#ffd75e #ffd75e 1dp 0dp 10dp 0dp 0dp 10dp);}
+.set-body {flex:1 1 0; min-height:0; overflow-y:auto; padding-right:8dp;}
+.set-body h2 {margin:16dp 0 4dp; padding-bottom:4dp; font-size:15dp; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
+.set-body p {margin:3dp 0 0; font-size:12dp; line-height:1.35; color:#a4b0d2;}
+.set-name {font-size:17dp; font-weight:bold; color:#e8eefc;}
+.set-row {display:flex; align-items:center; gap:18dp; padding:10dp 12dp; border-bottom:1dp #3fd0ff1f;}
+.set-row.stack {display:block;}
+.set-text {flex:1 1 0; min-width:0;}
+.set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
+.set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
+.set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
+.set-seg button:focus {color:#0b1230; background-color:#ffd75e;}
+.set-actions {display:flex; flex-wrap:wrap; gap:8dp; margin-top:8dp;}
+.set-actions button {margin:0; padding:7dp 14dp; font-size:14dp; color:#e8eefc; background-color:#0c122ceb; border:2dp #3fd0ff; border-radius:0;}
+.set-actions button:focus {color:#ffd75e; border-color:#ffd75e;}
+.set-toggle {display:flex; align-items:center; gap:14dp; width:100%; box-sizing:border-box; margin:0; padding:9dp 12dp; text-align:left; color:#e8eefc; background-color:transparent; border:0; border-bottom:1dp #3fd0ff1f; border-radius:0;}
+.set-toggle .set-name {flex:1 1 0; min-width:0; font-size:15dp; font-weight:normal;}
+.set-toggle .switch {display:block; flex-shrink:0; width:38dp; height:20dp; box-sizing:border-box; padding:2dp; border-radius:10dp; background-color:#2a3550;}
+.set-toggle .switch span {display:block; width:16dp; height:16dp; border-radius:8dp; background-color:#a4b0d2;}
+.set-toggle.on .switch {background-color:#3fd0ff;} .set-toggle.on .switch span {margin-left:18dp; background-color:#0b1230;}
+.set-toggle:focus {color:#ffd75e; background-color:#ffd75e1f;}
+.set-key {display:flex; align-items:center; gap:16dp; padding:6dp 12dp; font-size:14dp; border-bottom:1dp #3fd0ff14;}
+.set-key span {flex:1 1 0; min-width:0; color:#d6ddf2;} .set-key b {flex-shrink:0; max-width:55%; text-align:right; font-weight:normal; color:#ffd75e;}
+.set-about {padding:0 12dp;} .set-about div {margin-top:6dp; font-size:15dp; color:#d6ddf2;}
+.set-error {margin-top:8dp; font-size:13dp; color:#ff8d8d;}
+.set-foot {display:flex; align-items:center; gap:12dp; margin-top:8dp; padding-top:8dp; border-top:1dp #3fd0ff40;}
+.set-hint {flex:1 1 0; min-width:0; font-size:12dp; color:#a4b0d2;}
+.set-foot button {margin:0; padding:6dp 18dp; font-size:14dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff; border:2dp #3fd0ff; border-radius:0;}
+.set-foot button:focus {background-color:#ffd75e; border-color:#ffd75e;}
+body.pointer .set-tabs button:focus {color:#a4b0d2; decorator:slant(#0c122ceb #3fd0ff 1dp 0dp 10dp 0dp 0dp 10dp);}
+body.pointer .set-tabs button:hover {color:#e8eefc;}
+body.pointer .set-tabs button.on {color:#0b1230; decorator:slant(#3fd0ff #3fd0ff 1dp 0dp 10dp 0dp 0dp 10dp);}
+body.pointer .set-seg button:focus {color:#e8eefc; background-color:transparent;}
+body.pointer .set-seg button:hover {background-color:#3fd0ff40;}
+body.pointer .set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
+body.pointer .set-actions button:focus {color:#e8eefc; border-color:#3fd0ff;}
+body.pointer .set-actions button:hover {background-color:#3fd0ff29;}
+body.pointer .set-toggle:focus {color:#e8eefc; background-color:transparent;}
+body.pointer .set-toggle:hover {background-color:#3fd0ff1a;}
+body.pointer .set-foot button:focus {background-color:#3fd0ff; border-color:#3fd0ff;}
+body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 
 .bp-dim {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#070a1655;}
 .bp-tint {position:absolute; top:0; width:35%; height:100%;}
@@ -339,43 +387,171 @@ std::string image(const std::string& path,int width) {
 }
 int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 
+// The settings window (docs/native/settings-window.md): an overlay panel over the game
+// with one page per category. Pages in tab order; the id is what presentation.json
+// keeps as settings_page, so the window reopens where it was left.
+constexpr const char* settings_pages[]={"general","interface","rules","controls","about"};
+unsigned settings_page{};
+int settings_built=-1;  // the page the open window shows; -1 once it closes
+// The control to focus once the window is rebuilt: an id, "first" for the page's first
+// setting, or empty to keep the focus it had.
+std::string settings_focus;
+// The Controls page, by ui key: settings_keys_<section> heads a group, settings_key_<row>
+// names an action and settings_bind_<row> gives its keys, with a "_pad" version that
+// label() picks after controller input. profile.py lists the same rows.
+struct KeyRow {const char* section;const char* row;};
+constexpr KeyRow key_rows[]={
+    {"game","confirm"},{"game","start"},{"game","shoulders"},{"game","z"},{"game","c"},{"game","move"},
+    {"dialogue","next"},{"dialogue","fast"},{"dialogue","skip"},{"dialogue","auto"},{"dialogue","history"},{"dialogue","text_size"},
+    {"map","units"},{"map","enemies"},{"map","farthest"},{"map","animation"},
+    {"shortcuts","settings"},{"shortcuts","language"},{"shortcuts","images"},{"shortcuts","reload"},{"shortcuts","quit"}};
+#ifndef SRW64_VERSION
+#define SRW64_VERSION "?"
+#endif
+// One setting: its name and note on the left, its choices on the right.
+std::string settings_row(const std::string& key,const std::string& choices) {
+    return "<div class='set-row nav'><div class='set-text'><div class='set-name'>"+label(key)+"</div><p>"+label(key+"_note")+"</p></div><div class='set-seg'>"+choices+"</div></div>";
+}
+// A setting with one button per mode: ids prefix:mode, labels key_mode.
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false) {
+    std::string choices;
+    for(const std::string mode:modes)choices+=button(prefix+":"+mode,label(key+"_"+mode),mode==current,disabled);
+    return settings_row(key,choices);
+}
+// The button a row offers first: its selected one, else its first enabled one.
+Rml::Element* settings_choice_of(Rml::Element* row) {
+    if(row->GetTagName()=="button")return row->HasAttribute("disabled")?nullptr:row;
+    Rml::ElementList buttons;row->QuerySelectorAll(buttons,"button");
+    for(auto* b:buttons)if(b->IsClassSet("on") && !b->HasAttribute("disabled"))return b;
+    for(auto* b:buttons)if(!b->HasAttribute("disabled"))return b;
+    return nullptr;
+}
+// The rows keys and the controller move between: the tab bar, then every setting.
+Rml::ElementList settings_rows() {
+    Rml::ElementList rows;settings_doc->QuerySelectorAll(rows,".nav");
+    std::erase_if(rows,[](Rml::Element* row){return !settings_choice_of(row);});
+    return rows;
+}
+void settings_focus_row(Rml::Element* row,int direction) {
+    auto* choice=settings_choice_of(row);if(!choice)return;
+    choice->Focus();
+    // Moving up onto a group's first row brings its heading into view too.
+    if(auto* heading=row->GetPreviousSibling();direction<0 && heading && heading->GetTagName()=="h2")
+        heading->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+    row->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+}
+// The page's first setting, or the tab bar on a page with nothing to choose.
+void settings_focus_first() {
+    const auto rows=settings_rows();
+    if(!rows.empty())settings_focus_row(rows[rows.size()>1?1:0],0);
+}
 void settings_sync() {
-    if(!settings_open){document_close(settings_doc);settings_stamp.clear();return;}
+    if(!settings_open){document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(settings_built<0) {
+        // Opening: the page the window was last left on.
+        const auto saved=settings::settings_page();
+        settings_page=0;
+        for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
+    }
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+std::to_string(settings::native_battle_ui())+std::to_string(settings::native_intermission_ui())+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
-    // A rebuilt window keeps the focused control, so a controller does not lose its place.
+    // A rebuilt window keeps its focused control and scroll position, so a controller
+    // does not lose its place; another page starts at its top.
     auto* focused=context->GetFocusElement();
-    const std::string focus_id=settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
-    document_close(settings_doc);settings_stamp=stamp;
-    std::string body="<div class='page"+std::string(pad_mode?" pad":"")+"'><h1>"+label("settings_title")+"</h1><div class='row'><div class='column'>";
-    for(auto group:{rules::Kind::correction,rules::Kind::difficulty}){
-        body+="<h2>"+label(group==rules::Kind::correction?"rules_group_corrections":"rules_group_difficulty")+"</h2>";
-        for(const auto& entry:rules::catalog)if(entry.kind==group)
-            body+=button("rule:"+std::string(entry.id),label(rules::ui_key(entry.id)),rules::active_fixes()&entry.fix,false,"rule");
+    const std::string focus_id=!settings_focus.empty()?settings_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
+    auto* old_body=settings_doc?settings_doc->GetElementById("set-body"):nullptr;
+    const float scroll=old_body && settings_built==int(settings_page)?old_body->GetScrollTop():0;
+    document_close(settings_doc);settings_stamp=stamp;settings_focus.clear();
+    const std::string page=settings_pages[settings_page];
+    std::string body="<div class='set-shade'><div class='set-panel'><h1>"+label("settings_title")+"</h1><div class='set-tabs nav'>";
+    for(const std::string id:settings_pages)body+=button("settings-page:"+id,label("settings_page_"+id),id==page,false,"set-tab");
+    body+="</div><div id='set-body' class='set-body'>";
+    if(page=="general") {
+        std::string locales;
+        for(const auto& [locale,catalog]:localization::registered())locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
+        body+=settings_row("settings_language",locales);
+        body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
+    } else if(page=="interface") {
+        body+=settings_choice("settings_battle_ui","battle-ui",{"native","original"},settings::native_battle_ui()?"native":"original");
+        body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
+        body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
+        body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
+    } else if(page=="rules") {
+        std::string presets;
+        for(const auto& preset:rules::presets)presets+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
+        body+="<div class='set-row stack nav'><div class='set-name'>"+label("settings_presets")+"</div><p>"+label("rules_note")+"</p><div class='set-actions'>"+presets+"</div></div>";
+        for(auto group:{rules::Kind::correction,rules::Kind::difficulty}){
+            body+="<h2>"+label(group==rules::Kind::correction?"rules_group_corrections":"rules_group_difficulty")+"</h2>";
+            for(const auto& entry:rules::catalog)if(entry.kind==group)
+                body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
+        }
+    } else if(page=="controls") {
+        std::string section;
+        for(const auto& [group,row]:key_rows){
+            if(section!=group){section=group;body+="<h2>"+label("settings_keys_"+section)+"</h2>";}
+            body+="<div class='set-key'><span>"+label(std::string("settings_key_")+row)+"</span><b>"+label(std::string("settings_bind_")+row)+"</b></div>";
+        }
+    } else {
+        auto version=localization::catalog().ui("settings_about_version");
+        if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
+        // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
+        body+="<div class='set-about'><h2>SRW64</h2><div>"+escape(version)+"</div><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div></div>";
     }
-    body+="</div><div class='column'><h2>"+label("settings_language")+"</h2>";
-    for(const auto& [locale,catalog]:localization::registered())body+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
-    body+="<p>"+label("settings_language_note")+"</p><h2>"+label("settings_images")+"</h2>";
-    for(auto mode:{"original","hd"})body+=button(std::string("images:")+mode,label(std::string("settings_images_")+mode),presentation::image_mode.requested()==(std::string(mode)=="hd"),!presentation::image_mode.enabled());
-    body+="<p>"+label("settings_images_note")+"</p><h2>"+label("settings_battle_ui")+"</h2>";
-    for(auto mode:{"native","original"})body+=button(std::string("battle-ui:")+mode,label(std::string("settings_battle_ui_")+mode),settings::native_battle_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_battle_ui_note")+"</p><h2>"+label("settings_intermission_ui")+"</h2>";
-    for(auto mode:{"native","original"})body+=button(std::string("intermission-ui:")+mode,label(std::string("settings_intermission_ui_")+mode),settings::native_intermission_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_intermission_ui_note")+"</p><h2>"+label("settings_name_entry_ui")+"</h2>";
-    for(auto mode:{"native","original"})body+=button(std::string("name-entry-ui:")+mode,label(std::string("settings_name_entry_ui_")+mode),settings::native_name_entry_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_name_entry_ui_note")+"</p><h2>"+label("settings_title_ui")+"</h2>";
-    for(auto mode:{"native","original"})body+=button(std::string("title-ui:")+mode,label(std::string("settings_title_ui_")+mode),settings::native_title_ui()==(std::string(mode)=="native"));
-    body+="<p>"+label("settings_title_ui_note")+"</p><h2>"+label("rules_menu")+"</h2>";
-    for(const auto& preset:rules::presets)body+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
-    body+="<p>"+label("rules_note")+"</p>";
-    if(settings::failed())body+="<p>"+label("settings_error")+"</p>";
-    // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
-    body+=button("settings-close",label("link_back"))+"<p class='credit'>"+label("font_credit")+"</p></div></div></div>";
-    settings_doc=document(body,true);settings_doc->PullToFront();settings_doc->Focus();
-    auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
-    if(!focus && pad_mode)focus=settings_doc->QuerySelector("button");
-    if(focus){focus->Focus();focus->ScrollIntoView(false);}
+    body+="</div>";
+    if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
+    body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+    settings_doc=document(body,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+    settings_doc->UpdateDocument();
+    if(scroll>0)if(auto* page_body=settings_doc->GetElementById("set-body"))page_body->SetScrollTop(scroll);
+    settings_built=int(settings_page);
+    // Keys and the controller always have a focused control; the mouse needs none.
+    auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
+    if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
+    else if(focus_id=="first" || !pointer_mode)settings_focus_first();
+}
+// Turns the settings window to a page and remembers it for the next time it opens.
+void settings_show(unsigned page,const std::string& focus) {
+    if(page==settings_page)return;
+    settings_page=page;settings_focus=focus;settings::set_settings_page(settings_pages[page]);
+}
+// L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
+// stays on the tab bar if it was there, else moves to the new page's first setting.
+void settings_turn(int step) {
+    const unsigned count=std::size(settings_pages),page=(settings_page+count+step)%count;
+    auto* focus=context->GetFocusElement();
+    settings_show(page,focus && focus->IsClassSet("set-tab")?"settings-page:"+std::string(settings_pages[page]):"first");
+}
+// Keys and the controller on the settings window: up and down move between rows (the
+// tab bar, then each setting), left and right between a row's choices, and on the tab
+// bar left and right turn the page. A page with nothing to choose scrolls instead.
+void settings_move(int dy,int dx) {
+    if(!settings_doc)return;
+    const auto rows=settings_rows();
+    auto* focus=context->GetFocusElement();
+    int at=-1;
+    for(int i=0;i<int(rows.size()) && at<0;++i)for(auto* e=focus;e;e=e->GetParentNode())if(e==rows[i]){at=i;break;}
+    if(at<0){settings_focus_first();return;}
+    if(dx) {
+        if(at==0){settings_turn(dx);return;}
+        Rml::ElementList buttons;rows[at]->QuerySelectorAll(buttons,"button");
+        std::erase_if(buttons,[](Rml::Element* b){return b->HasAttribute("disabled");});
+        const auto current=std::find(buttons.begin(),buttons.end(),focus);
+        if(current==buttons.end())return;
+        const auto next=current-buttons.begin()+dx;
+        if(next>=0 && next<int(buttons.size())){buttons[next]->Focus();buttons[next]->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
+        return;
+    }
+    auto* page_body=settings_doc->GetElementById("set-body");
+    if(rows.size()==1) {
+        if(page_body)page_body->SetScrollTop(page_body->GetScrollTop()+dy*48*context->GetDensityIndependentPixelRatio());
+        return;
+    }
+    const int next=std::clamp(at+dy,0,int(rows.size())-1);
+    if(next==at)return;
+    if(next==0 && page_body)page_body->SetScrollTop(0);
+    settings_focus_row(rows[next],dy);
 }
 void link_sync() {
     const auto next=link_page::request();
@@ -1455,6 +1631,7 @@ void choose(const std::string& id) {
         return;
     }
     if(!settings_open)return;
+    if(id.starts_with("settings-page:")){for(unsigned i=0;i<std::size(settings_pages);++i)if(id.substr(14)==settings_pages[i])settings_show(i,id);return;}
     try {
         if(id.starts_with("rule:"))for(const auto& entry:rules::catalog)if(entry.id==id.substr(5))rules::set_fixes(rules::active_fixes()^entry.fix);
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
@@ -1605,21 +1782,22 @@ void pad_keys(uint32_t now,uint32_t pressed) {
     for(const auto& [mask,key]:keys)if(presses&mask)
         send_key(key,(repeats&mask) && !(pressed&mask),names_page && (mask&0x0800)?KMOD_SHIFT:KMOD_NONE);
 }
-// The settings window on a controller: directions walk its buttons in RmlUi's tab
-// order, A presses the focused one, B (or View again) closes it.
+// The focused settings control, pressed by A, START, Enter, Z or Space.
+void settings_press() {
+    auto* focus=context->GetFocusElement();
+    if(focus && settings_doc && focus->GetOwnerDocument()==settings_doc && focus->GetTagName()=="button")focus->Click();
+}
+// The settings window on a controller: L1/R1 turn the page, the directions move as in
+// settings_move, A presses the focused control, B (or View again) closes the window.
 void settings_pad(uint32_t now,uint32_t pressed) {
     if(!settings_doc)return;
     if(pressed&0x4000){choose("settings-close");return;}
-    auto* focus=context->GetFocusElement();
-    if(pressed&(0x8000|0x1000)){if(focus && focus->GetTagName()=="button")focus->Click();return;}
+    if(pressed&(0x8000|0x1000)){settings_press();return;}
+    if(pressed&(0x0020|0x0010)){settings_turn(pressed&0x0020?-1:1);return;}
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
-    const bool back=presses&(0x0800|0x0200|(1u<<16)|(1u<<18)),next=presses&(0x0400|0x0100|(1u<<17)|(1u<<19));
-    if(!back && !next)return;
-    if(!focus || focus->GetOwnerDocument()!=settings_doc || focus->GetTagName()!="button")
-        focus=settings_doc->QuerySelector("button");
-    else send_key(SDLK_TAB,false,back?KMOD_SHIFT:KMOD_NONE);
-    focus=context->GetFocusElement();
-    if(focus && focus->GetOwnerDocument()==settings_doc){focus->Focus();focus->ScrollIntoView(false);}
+    const int dy=presses&(0x0800|(1u<<16))?-1:presses&(0x0400|(1u<<17))?1:0;
+    const int dx=presses&(0x0200|(1u<<18))?-1:presses&(0x0100|(1u<<19))?1:0;
+    if(dy || dx)settings_move(dy,dy?0:dx);
 }
 void sync() {
     physical_held=held();
@@ -1714,7 +1892,17 @@ bool dispatch(SDL_Event& event) {
         }
         // Digits, backspace and the cursor keys belong to the edit box.
     } else if(settings_open){
-        if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_ESCAPE){choose("settings-close");return true;}
+        // The game's own key map, as on the other pages: Z/Enter = A, X/Esc = B,
+        // arrows and WASD = pad and stick, Q/E = L/R; the page keys and Ctrl+Tab turn too.
+        if(event.type==SDL_KEYDOWN){
+            const auto k=event.key.keysym.sym;const bool ctrl=event.key.keysym.mod&KMOD_CTRL,shift=event.key.keysym.mod&KMOD_SHIFT;
+            if(k==SDLK_ESCAPE || k==SDLK_x){if(!event.key.repeat)choose("settings-close");return true;}
+            if(k==SDLK_q || k==SDLK_PAGEUP || (k==SDLK_TAB && ctrl && shift)){if(!event.key.repeat)settings_turn(-1);return true;}
+            if(k==SDLK_e || k==SDLK_PAGEDOWN || (k==SDLK_TAB && ctrl)){if(!event.key.repeat)settings_turn(1);return true;}
+            const int dy=k==SDLK_UP || k==SDLK_w?-1:k==SDLK_DOWN || k==SDLK_s?1:0,dx=k==SDLK_LEFT || k==SDLK_a?-1:k==SDLK_RIGHT || k==SDLK_d?1:0;
+            if(dy || dx){settings_move(dy,dx);return true;}
+            if(k==SDLK_RETURN || k==SDLK_KP_ENTER || k==SDLK_z || k==SDLK_SPACE){if(!event.key.repeat)settings_press();return true;}
+        }
     } else if(battle_request.value("visible",false)){
         // The game's own key map, so the page reads like the rest of the game:
         // Z/Enter = A, X/Esc = B, arrows and WASD = pad and stick, Q/E = L/R, K = C-down.
@@ -1944,7 +2132,14 @@ json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
     if(p.contains("text") || p.contains("id")){
         const std::string text=p.value("id",p.value("text",std::string{}));Rml::Element* found=nullptr;
-        for(bool exact:{true,false}){for(int i=context->GetNumDocuments()-1;i>=0 && !found;--i)found=find(context->GetDocument(i),text,exact);if(found)break;}
+        const auto search=[&]{for(bool exact:{true,false}){for(int i=context->GetNumDocuments()-1;i>=0 && !found;--i)found=find(context->GetDocument(i),text,exact);if(found)break;}};
+        search();
+        // A settings control on another page: turn to that page first, as a player would.
+        if(!found && p.contains("id") && settings_open && settings_doc) {
+            const unsigned before=settings_page;
+            for(unsigned page=0;page<std::size(settings_pages) && !found;++page)if(page!=before){settings_show(page,"");sync();search();}
+            if(!found){settings_show(before,"");sync();}
+        }
         if(!found)throw debug::RpcError(debug::InvalidParams,"no visible control: "+text);
         for(auto* parent=found;parent;parent=parent->GetParentNode())if(parent->GetTagName()=="button" || parent->GetTagName()=="input"){found=parent;break;}
         if(found->HasAttribute("disabled"))throw debug::RpcError(debug::InvalidParams,"control is disabled: "+text);
