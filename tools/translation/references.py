@@ -117,6 +117,9 @@ class Characters:
         self.names = {**sections.get("pilot_full_names", {}), **sections.get("pilots", {})}
         roster_path = ROOT / "content/translation/zh-Hans/roster.json"
         self.roster = _load(roster_path)["characters"] if roster_path.exists() else {}
+        voices_path = ROOT / "content/translation/voices.json"
+        voices = _load(voices_path) if voices_path.exists() else {}
+        self.voices = {**voices.get("groups", {}), **voices.get("characters", {})}
         self.library: dict[str, dict] = {}
         library = srwz_root / "srwz-community-web/public/data/library/character.json"
         if library.exists():
@@ -153,4 +156,18 @@ class Characters:
         note = roster.get("note") or library.get("profile")
         if note:
             card["note"] = note
+        voice = self.voices.get(name) or {}
+        if voice:
+            lang = "en" if self.locale == "en" else "zh"
+            for key in ("role", "persona"):
+                if voice.get(key):
+                    card[key] = voice[key]
+            if voice.get("ja"):
+                card["ja_speech"] = voice["ja"]
+            if voice.get(lang):
+                card["voice"] = voice[lang]
+            if voice.get("address"):
+                # "劳伦斯 / Lawrence" holds both locales; hand the model the one it is writing
+                pick = (lambda v: v.split(" / ")[1] if " / " in v and lang == "en" else v.split(" / ")[0])
+                card["address"] = {who: pick(how) for who, how in voice["address"].items()}
         return card
