@@ -1,0 +1,14 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "map87-colony-view",
+  "note": "Colony animation viewer. Centers the cursor near the dynamic 64x48 colony at map pixels 336,256; no units and defeat check suspended.",
+  "map": 87,
+  "events": [{
+    "name": "opening", "type": 12, "header": [0, 0, 0, 0],
+    "commands": [
+      {"op": "3DD0"}, {"op": "3D32", "args": [4]}, {"op": "3D4D"},
+      {"op": "3D65", "args": [21, 16]}, {"op": "3D61", "args": [1]},
+      {"op": "3D3B", "args": [1]}
+    ]
+  }]
+}

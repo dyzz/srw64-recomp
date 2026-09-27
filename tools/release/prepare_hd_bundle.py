@@ -12,7 +12,8 @@ validating them. The app's launcher starts in HD when it finds this folder.
 The result is a public download: AI-generated art (Alibaba Cloud Qwen image models;
 the world map with OpenAI's image model via Codex image_gen) and no ROM data;
 build_release.py adds NOTICE.txt.
-The tactical-map sample (SRW64_HD_MAPS) is not included."""
+The HD tactical maps come with the art pack (art/maps); build_release.py leaves them out
+of the public pack as ROM-derived."""
 from __future__ import annotations
 
 import argparse
@@ -65,7 +66,7 @@ def prepare(output: Path, art_manifest: Path = ART, marker: Path = MARKER, model
     shutil.copytree(models, output / "native-models")
     report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Qwen image models; world map: OpenAI image model via Codex); no ROM data; see NOTICE.txt",
               "art_source_sha256": sha(art_manifest.read_bytes()),
-              "art": {key: art[key] for key in ("count", "portraits", "backgrounds", "scene_images")},
+              "art": {key: art[key] for key in ("count", "portraits", "backgrounds", "scene_images", "tactical_maps")},
               "page_portraits": len(pages), "compressed": compressed,
               "native_marker": marker_check["manifest_sha256"], "native_models": models_check["manifest_sha256"]}
     (output / "hd.json").write_text(json.dumps(report, indent=2) + "\n")

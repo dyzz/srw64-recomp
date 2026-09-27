@@ -368,14 +368,17 @@ static int run_host(int argc, char** argv) {
         auto word = [&](uint32_t a) { uint32_t v; std::memcpy(&v, ram + a, 4); return v; };
         // Mode 9 scenes the text describer knows (battle HUD banners and badges).
         srw64::sprites::rewrite_grid(ram, {begin, end, slot, sub, false});
-        if (byte(record + 3)) return;  // overview scaling (800943E0) keeps the original cells
+        const bool overview = byte(record + 3) != 0;  // 800943E0 scaling: the whole map on one screen
         float origin_x, origin_y;
         const uint32_t ox = word(base + 4), oy = word(base + 8);
         std::memcpy(&origin_x, &ox, 4); std::memcpy(&origin_y, &oy, 4);
         int32_t offset_x = int32_t(origin_x), offset_y = int32_t(origin_y);
         if (byte(record + 2) == 1) { offset_x += int32_t(word(0x0010F5D4)); offset_y += int32_t(word(0x0010F5D8)); }
         // Screen = map + offset, so the map pixel at screen (0,0) is -offset.
-        srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y});
+        srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y, overview});
+    };
+    srw64_game_hooks.terrain_panel_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
+        srw64::hdmap::rewrite_panel(ram, {begin, end});
     };
     srw64_game_hooks.portrait_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t, uint32_t) {
         // The sprite record only holds resource handles; the portrait is recognised from
