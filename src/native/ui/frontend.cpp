@@ -1,6 +1,7 @@
 #include "frontend.hpp"
 #include "app_menu.hpp"
 #include "ui_fonts.hpp"
+#include "slant_decorator.hpp"
 #include "name_page.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
@@ -50,6 +51,8 @@ SystemInterface_SDL system;
 TextInput input;
 Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
+std::unique_ptr<SlantInstancer> slant_instancer;
+std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file width of unit art, by path
 std::vector<Rml::byte> font, chinese_font, english_font, symbol_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
@@ -136,8 +139,13 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .bp-row {display:flex; justify-content:space-between; align-items:stretch;}
 .bp-mid {flex:1 1 0; min-height:0; align-items:center;}
 .bp-side {width:31%; box-sizing:border-box;} .bp-center {width:35.5%; box-sizing:border-box;}
-.bp-banner {height:124dp; overflow:hidden; padding:6dp 12dp; background-color:#0c122ceb; border:2dp #ff6fa8;}
-.bp-banner.right {border-color:#3fd0ff;}
+.bp-banner {height:124dp; overflow:hidden; padding:6dp 22dp 6dp 12dp; decorator:slant(#0c122ceb #ff6fa8 2dp 0dp 0dp 0dp 0dp 16dp);}
+.bp-banner.right {padding:6dp 12dp 6dp 22dp; decorator:slant(#0c122ceb #3fd0ff 2dp 0dp 16dp 0dp 0dp 0dp);}
+.bp-phase {display:flex; justify-content:center; align-items:flex-start; padding-top:2dp;}
+.bp-phase div {width:104dp; height:26dp; line-height:26dp; text-align:center; font-size:12dp; font-weight:bold; color:#a4b0d2; decorator:slant(#0c122ceb #3fd0ff 1dp 0dp 0dp 10dp 0dp 0dp);}
+.bp-phase div.enemy {decorator:slant(#0c122ceb #3fd0ff 1dp 0dp 10dp 0dp 0dp 0dp);}
+.bp-phase div.enemy.on {color:#0b1230; decorator:slant(#ff6fa8 #ff6fa8 1dp 0dp 10dp 0dp 0dp 0dp);}
+.bp-phase div.player.on {color:#0b1230; decorator:slant(#3fd0ff #3fd0ff 1dp 0dp 0dp 10dp 0dp 0dp);}
 .bp-title {display:flex; align-items:center; gap:8dp; height:24dp;}
 .bp-name {font-size:17dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
 .bp-tag {font-size:9dp; font-weight:bold; padding:1dp 5dp; white-space:nowrap; color:#ff6fa8; border:1dp #ff6fa8;}
@@ -155,15 +163,15 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .bp-banner.right,.bp-pilot.right {text-align:right;}
 .battle-unit {display:flex; align-items:center; justify-content:center;}
 .battle-unit img {margin:0; image-color:#fff;} .battle-unit img.face-right {transform:scaleX(-1);}
-.bp-clash {display:flex; align-items:flex-end; background-color:#0c122cf0; border-top:3dp #3fd0ff; padding:7dp 10dp 9dp;}
+.bp-clash {display:flex; align-items:flex-end; padding:9dp 22dp 9dp; decorator:slant(#0c122cf0 #3fd0ff 0dp 3dp 0dp 0dp 19dp 19dp);}
 .bp-clash-side {flex:1; min-width:0;} .bp-clash-side.left {text-align:right;}
 .bp-damage {font-size:46dp; line-height:48dp; font-weight:bold; color:#ffd75e;}
 .bp-caption {font-size:10dp; color:#a4b0d2;}
 .bp-arrow {width:62dp; text-align:center; padding-bottom:16dp; font-size:8dp; line-height:10dp; color:#ffd75e;}
 .bp-arrow div {font-size:13dp;}
-.bp-versus {display:flex; align-items:center; margin-top:5dp; padding:3dp 14dp; background-color:#0c122ceb; font-size:20dp;}
+.bp-versus {display:flex; align-items:center; margin-top:5dp; padding:3dp 20dp; decorator:slant(#0c122ceb #0c122ceb 0dp 0dp 10dp 0dp 0dp 10dp); font-size:20dp;}
 .bp-versus span {flex:1; color:#3fd0ff;} .bp-versus span.left {text-align:right; color:#ff6fa8;}
-.bp-versus b {width:100dp; margin:0 10dp; padding:2dp 0; text-align:center; font-size:11dp; color:#0b1230; background-color:#3fd0ff;}
+.bp-versus b {width:100dp; margin:0 10dp; padding:2dp 0; text-align:center; font-size:11dp; color:#0b1230; decorator:slant(#3fd0ff #3fd0ff 0dp 0dp 5dp 5dp 0dp 0dp);}
 .bp-detail {margin-top:5dp; padding:4dp 12dp; background-color:#0c122ce0; font-size:10dp; color:#d6ddf2;}
 .bp-detail div {display:flex; align-items:center; margin:2dp 0;}
 .bp-detail span {flex:1;} .bp-detail span.left {text-align:right;} .bp-detail span.good {color:#57e389;}
@@ -174,28 +182,28 @@ button:disabled {opacity: 0.45;} .row {display: flex;} .column {width: 48%; marg
 .bp-pilot-head {display:flex; gap:8dp;}
 .bp-pilot-head img {width:96dp; height:96dp; margin:0; border:2dp #ff6fa8;} .right .bp-pilot-head img {border-color:#3fd0ff;}
 .bp-pilot-info {flex:1; min-width:0;}
-.bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:15dp; font-weight:bold; height:21dp;}
-.bp-pilot-name .level {font-size:10dp; font-weight:normal; color:#a4b0d2;}
+.bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:17dp; font-weight:bold; height:24dp;}
+.bp-pilot-name .level {font-size:12dp; font-weight:normal; color:#a4b0d2;}
 .bp-stats {display:flex; gap:4dp; margin-top:3dp;}
-.bp-stat {flex:1; display:flex; justify-content:space-between; padding:2dp 6dp; font-size:11dp; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
+.bp-stat {flex:1; display:flex; justify-content:space-between; padding:3dp 7dp; font-size:13dp; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
-.battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:34dp; overflow-y:auto; font-size:10dp; gap:2dp;}
+.battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
-.battle-spirits span {display:inline-block; padding:1dp 4dp; height:13dp; color:#7e88a8; border:1dp #4a5578; background-color:#ffffff0a;}
+.battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#7e88a8; border:1dp #4a5578; background-color:#ffffff0a;}
 .battle-spirits span.active {color:#ffd75e; border-color:#ffd75e; background-color:#ffd75e2e; font-weight:bold;}
 .battle-spirits span.defensive {color:#57e389; border-color:#57e389; background-color:#57e3892e; font-weight:bold;}
 .battle-spirits .muted {border:0; color:#7e88a8;}
-.battle-defenses {border-top:1dp #ff6fa859; margin-top:6dp; padding-top:4dp; height:15dp; font-size:11dp; color:#57e389;} .right .battle-defenses {border-color:#3fd0ff59;}
-.battle-defense-note {font-size:9dp; white-space:normal; color:#a4b0d2; margin-top:2dp;}
-.battle-defense-conditions {height:12dp; overflow:hidden; white-space:nowrap;}
-.battle-effects {height:44dp; overflow-y:auto; font-size:10dp; line-height:1.3;}
+.battle-defenses {border-top:1dp #ff6fa859; margin-top:6dp; padding-top:4dp; height:18dp; font-size:13dp; color:#57e389;} .right .battle-defenses {border-color:#3fd0ff59;}
+.battle-defense-note {font-size:11dp; white-space:normal; color:#a4b0d2; margin-top:2dp;}
+.battle-defense-conditions {height:14dp; overflow:hidden; white-space:nowrap;}
+.battle-effects {height:44dp; overflow-y:auto; font-size:12dp; line-height:1.3;}
 .battle-effects b {color:#a4b0d2; font-weight:normal;}
 .battle-effect {margin:2dp 0; color:#d6ddf2;} .battle-effect strong {color:#57e389;} .battle-effect strong.off {color:#a4b0d2;}
 .battle-actions {text-align:center; display:flex; flex-direction:column; justify-content:center;}
 .battle-actions button {margin:3dp; padding:5dp 11dp; font-size:12dp; background-color:#0c122ceb; border:2dp #3fd0ff; border-radius:0; color:#e8eefc;}
 .battle-actions button:hover,.battle-actions button:focus {background-color:#3fd0ff40; border-color:#ffd75e;}
-.battle-actions #battle-confirm {display:block; width:220dp; margin:0 auto 5dp; padding:6dp 0; border:2dp #12a53c; background-color:#12a53c; color:#fff; font-size:19dp; font-weight:bold; letter-spacing:3dp;}
-.battle-actions #battle-confirm:hover,.battle-actions #battle-confirm:focus {background-color:#16bf46; border-color:#ffd75e;}
+.battle-actions #battle-confirm {display:block; width:220dp; margin:0 auto 5dp; padding:8dp 0; border:0; background-color:transparent; decorator:slant(#12a53c #12a53c 2dp 0dp 11dp 11dp 0dp 0dp); color:#fff; font-size:19dp; font-weight:bold; letter-spacing:3dp;}
+.battle-actions #battle-confirm:hover,.battle-actions #battle-confirm:focus {background-color:transparent; decorator:slant(#16bf46 #ffd75e 2dp 0dp 11dp 11dp 0dp 0dp);}
 .bp-segment {margin:2dp 0 4dp;} .bp-segment div {display:inline-block; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .battle-actions .bp-segment button {margin:0; border:0; padding:5dp 17dp; font-size:12dp; font-weight:bold; background-color:transparent;}
 .battle-actions .bp-segment button.on {background-color:#3fd0ff; color:#0b1230;}
@@ -450,15 +458,33 @@ std::string battle_banner(const json& c,bool left,bool first,const std::string& 
     else body+="—";
     return body+"</div></div>";
 }
+// Middle row: the unit art, cropped to its drawn pixels and sized to the column
+// and to the space left between the banner and pilot rows (at most 6x).
 std::string battle_unit(const json& c,bool left) {
     std::string body="<div class='bp-side battle-unit'>";
     if(const auto unit=c.value("unit_art",json::object());unit.contains("path")) {
+        // The whole HD pose (8x, docs/design/unit-pose-hd.md) in HD mode, else the ROM pose.
+        const auto path=portrait_path(unit);
+        auto found=art_bounds.find(path);
+        if(found==art_bounds.end()) {
+            const auto file=presentation::load_rgba(path);
+            int x0=file.width,y0=file.height,x1=0,y1=0;
+            // Bounds of the visible pixels; faint alpha (upscaler residue) does not count.
+            for(int y=0;y<file.height;++y)for(int x=0;x<file.width;++x)if(file.pixels[(size_t(y)*file.width+x)*4+3]>=16){x0=std::min(x0,x);y0=std::min(y0,y);x1=std::max(x1,x+1);y1=std::max(y1,y+1);}
+            if(x1<=x0 || y1<=y0){x0=0;y0=0;x1=file.width;y1=file.height;}
+            found=art_bounds.emplace(path,std::array<int,5>{x0,y0,x1-x0,y1-y0,file.width}).first;
+        }
+        const auto [x,y,w,h,file_w]=found->second;
+        const float logical_w=pixels_w/ui_density,logical_h=pixels_h/ui_density;
+        const float limit_w=logical_w*.31f-8,limit_h=std::clamp(logical_h-436,120.f,360.f);
+        // At most 6x the ROM pixels, whichever file is drawn. The file loads unresampled: `rect` is in its pixels.
+        const float rom_px=float(unit.value("width",96.f))/std::max(1.f,float(file_w));
         // Sized by the unit's size class (SS..LL from its record, 2026-09-26): an LL fills the
         // space, smaller classes take a fixed share of it, so a fighter reads smaller than a battleship.
         static constexpr float share[]={.30f,.52f,.70f,.84f,1.15f};  // LL breaks out of its box a little
         const float part=share[std::clamp(c.value("size",4),0,4)];
-        const float scale=part*std::min(230.f/unit.at("width").get<float>(),220.f/unit.at("height").get<float>());
-        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(portrait_path(unit)))+"' style='width:"+std::to_string(unit.at("width").get<float>()*scale)+"dp;height:"+std::to_string(unit.at("height").get<float>()*scale)+"dp;'/>";
+        const float scale=std::min({limit_w*part/w,limit_h*part/h,6.f*rom_px});
+        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(path))+"' rect='"+std::to_string(x)+" "+std::to_string(y)+" "+std::to_string(w)+" "+std::to_string(h)+"' style='width:"+std::to_string(w*scale)+"dp;height:"+std::to_string(h*scale)+"dp;'/>";
     }
     return body+"</div>";
 }
@@ -1290,7 +1316,7 @@ void battle_sync() {
         return;
     }
     document_close(original_doc);original_stamp.clear();
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
     if(battle_doc && battle_stamp==stamp)return;
     document_close(battle_doc);battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
@@ -1302,7 +1328,7 @@ void battle_sync() {
     const auto enemy_response=label(enemy.at("weapon").get<int>()<0?"battle_none":"battle_counter");
     const bool selecting_spirit=next.value("spirit_menu",false);
     std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page'><div class='bp-row'>";
-    body+=battle_banner(enemy,true,!player_attacks,enemy_response)+"<div class='bp-center'></div>"+battle_banner(player,false,player_attacks,player_response)+"</div>";
+    body+=battle_banner(enemy,true,!player_attacks,enemy_response)+"<div class='bp-center bp-phase'><div class='enemy"+std::string(player_attacks?"":" on")+"'>"+label("battle_phase_enemy")+"</div><div class='player"+std::string(player_attacks?" on":"")+"'>"+label("battle_phase_player")+"</div></div>"+battle_banner(player,false,player_attacks,player_response)+"</div>";
     body+="<div class='bp-row bp-mid'>"+battle_unit(enemy,true)+battle_clash(enemy,player,player_attacks,player_response,responding)+battle_unit(player,false)+"</div>";
     body+="<div class='bp-row'>"+battle_pilot(enemy,true)+"<div class='bp-center battle-actions'><div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
     if(responding) {
@@ -1485,6 +1511,7 @@ void initialize() {
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(renderer->get_rml_interface());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
+    slant_instancer=std::make_unique<SlantInstancer>();Rml::Factory::RegisterDecoratorInstancer("slant",slant_instancer.get());
     const auto bytes=[](const std::filesystem::path& file){std::ifstream input(file,std::ios::binary);return std::vector<Rml::byte>{std::istreambuf_iterator<char>(input),{}};};
     std::filesystem::path path;
     const char* font_dir=std::getenv("SRW64_FONT_DIR");
@@ -1911,7 +1938,7 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
