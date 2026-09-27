@@ -2,6 +2,7 @@ import {sectionVisible, lineId, storyHash, parseStoryHash, selectSpeaker, search
 const $ = id => document.getElementById(id);
 const cache = new Map(), phaseNames = {all:'整章',opening:'开场',deployment:'初期配置',map:'战场事件',ending:'结束'};
 let index, current, phase = 'all', revision = 0, searchRevision = 0, searchTimer, selectedLine = '';
+const translations = {}, PREFS = ['route','translation','show-portraits','show-structure','show-source','font-size'];
 const pad4 = n => String(n).padStart(4, '0');
 function element(tag, text, cls) {const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
 function catalogLink(key, text) {const a=element('a',text);a.href=`index.html#${encodeURIComponent(key)}`;return a;}
@@ -11,10 +12,10 @@ async function get(path) {
   return cache.get(path);
 }
 function savePreferences() {
-  try {localStorage.setItem('srw64.story.reader.v1',JSON.stringify(Object.fromEntries(['route','show-portraits','show-structure','show-source','font-size'].map(id=>[id,$(id).type==='checkbox'?$(id).checked:$(id).value]))));}catch{}
+  try {localStorage.setItem('srw64.story.reader.v1',JSON.stringify(Object.fromEntries(PREFS.map(id=>[id,$(id).type==='checkbox'?$(id).checked:$(id).value]))));}catch{}
 }
 function loadPreferences() {
-  try {const p=JSON.parse(localStorage.getItem('srw64.story.reader.v1')||'{}');for(const [id,v] of Object.entries(p)){const e=$(id);if(!['route','show-portraits','show-structure','show-source','font-size'].includes(id))continue;if(e.type==='checkbox'&&typeof v==='boolean')e.checked=v;else if([...e.options].some(o=>o.value===v))e.value=v;}}catch{}
+  try {const p=JSON.parse(localStorage.getItem('srw64.story.reader.v1')||'{}');for(const [id,v] of Object.entries(p)){const e=$(id);if(!PREFS.includes(id))continue;if(e.type==='checkbox'&&typeof v==='boolean')e.checked=v;else if([...e.options].some(o=>o.value===v))e.value=v;}}catch{}
 }
 function highlighted(text, query) {
   const f=document.createDocumentFragment(), q=query.trim().toLocaleLowerCase();
@@ -27,6 +28,22 @@ function renderText(display) {
   const box=element('div',undefined,'line-text');
   display.split('<STOP>').forEach((page,i)=>{if(i){const br=element('span','▸','page-break');br.title='原文翻页';box.append(br);}page.split('<BR>').forEach((part,j)=>{if(j)box.append(document.createElement('br'));box.append(highlighted(part,$('dialogue-search').value));});});
   return box;
+}
+const locales = () => ({'':[],'zh-Hans':['zh-Hans'],en:['en'],both:['zh-Hans','en']})[$('translation').value]||[];
+async function loadTranslations() {
+  const missing=[];
+  for(const locale of locales()){if(translations[locale])continue;try{translations[locale]=(await get(`translations/${locale}.json`)).entries;}catch{missing.push(locale);}}
+  if(missing.length)$('reader-status').textContent=`没有 ${missing.join('、')} 译文数据：先运行 tools/translation/export_review.py。`;
+}
+function renderTranslations(key) {
+  const f=document.createDocumentFragment();
+  for(const locale of locales()){
+    const row=translations[locale]?.[key],box=element('div',undefined,'line-translation'+(row?'':' missing'));box.lang=locale;
+    if(!row){box.textContent='（无译文）';f.append(box);continue;}
+    const [text,origin,note]=row,chip=element('span',origin,'tr-chip'+(origin==='未通过'?' tr-failed':''));if(note)chip.title=note;
+    box.append(chip,renderText(text));if(note&&origin!=='机翻')box.append(element('div',note,'tr-note'));f.append(box);
+  }
+  return f;
 }
 function renderLine(line,event) {
   if(line.kind==='dialogue') {
@@ -41,10 +58,10 @@ function renderLine(line,event) {
     if(speaker.status==='route-relative')who.append(element('small','候选：'+(speaker.candidates||[]).map(c=>c.label).join(' / ')));
     const locate=element('a','定位','line-anchor');locate.href=storyHash(current.scene,lineId(event.key,line.offset));locate.title=`定位文本 ${line.text_id}，可复制此链接`;who.append(locate);
     const meta=element('div',undefined,'line-meta');meta.append(catalogLink('base:t00_'+String(line.text_id).padStart(5,'0'),'文本 '+line.text_id),catalogLink(event.key,'事件 '+event.key.split(':').pop()),element('span','显示模式 '+line.mode));
-    body.append(who,renderText(line.display),meta);card.append(side,body);return card;
+    body.append(who,renderText(line.display),renderTranslations(line.text_key),meta);card.append(side,body);return card;
   }
   if(line.kind==='section')return element('div',line.label,'line section');
-  if(line.kind==='choice'){const card=element('div',undefined,'line choice');card.append(element('span','选择肢','chip'));for(const option of line.options)card.append(element('span',option.display,'option'));if(line.text_key){const meta=element('div',undefined,'line-meta');meta.append(catalogLink(line.text_key,'文本 '+line.text_id),catalogLink(event.key,'事件 '+event.key.split(':').pop()));card.append(meta);}return card;}
+  if(line.kind==='choice'){const card=element('div',undefined,'line choice');card.append(element('span','选择肢','chip'));for(const option of line.options)card.append(element('span',option.display,'option'));card.append(renderTranslations(line.text_key));if(line.text_key){const meta=element('div',undefined,'line-meta');meta.append(catalogLink(line.text_key,'文本 '+line.text_id),catalogLink(event.key,'事件 '+event.key.split(':').pop()));card.append(meta);}return card;}
   if(!$('show-structure').checked)return null;
   const labels={condition:'若 · ',statement:'',note:'', 'block-end':'条件块结束'};
   const d=element('div',(labels[line.kind]||'')+(line.text||''),'line '+line.kind);d.style.paddingLeft=`${16+line.depth*10}px`;return d;
@@ -53,7 +70,7 @@ function renderScene() {
   const doc=current,article=$('story');article.replaceChildren();
   document.body.classList.toggle('no-portraits',!$('show-portraits').checked);document.body.classList.toggle('no-source',!$('show-source').checked);document.body.classList.toggle('structure-hidden',!$('show-structure').checked);document.documentElement.style.setProperty('--reading-size',$('font-size').value+'px');
   const head=element('div',undefined,'scene-head'), titles=element('div'),count=element('div',undefined,'scene-count');
-  head.append(element('div',pad4(doc.scene).slice(1),'scene-number'));titles.append(element('h2',doc.title||'场景 '+doc.scene));
+  head.append(element('div',pad4(doc.scene).slice(1),'scene-number'));titles.append(element('h2',doc.title||'场景 '+doc.scene));for(const locale of locales()){const t=translations[locale]?.[doc.title_key];if(t)titles.append(element('div',t[0],'title-translation'));}
   const flow=element('div',undefined,'scene-flow');
   for(const [label,scenes] of [['来自',doc.previous_scenes],['流向',doc.next_scenes]])for(const s of scenes){const a=element('a',`${label}：${s.scene} ${s.title||''}`);a.href=storyHash(s.scene);flow.append(a);}
   if(doc.protagonist)flow.append(element('span','本话主角：'+doc.protagonist.label));
@@ -112,6 +129,7 @@ async function route() {
     current=doc;selectedLine=target.line;phase='all';$('reader-status').textContent='';
     if(selectedLine){const line=doc.events.flatMap(e=>e.lines.map(l=>({e,l}))).find(({e,l})=>lineId(e.key,l.offset)===selectedLine);
       if(line&&!sectionVisible(line.l.section,$('route').value)){$('route').value='';savePreferences();$('reader-status').textContent='已恢复全部路线段，以显示定位的对白。';}}
+    await loadTranslations();if(token!==revision)return;
     renderList();renderScene();$('error').hidden=true;
     try{localStorage.setItem('srw64.story.last',storyHash(doc.scene,selectedLine));}catch{}
     $('scene-list').querySelector('[aria-current=true]')?.scrollIntoView({block:'nearest'});
@@ -120,7 +138,7 @@ async function route() {
     if($('search-scope').value==='scene'&&$('dialogue-search').value.trim().length>=2)search();
   }catch(e){if(token===revision)fail(e);}
 }
-for(const id of ['route','show-portraits','show-structure','show-source','font-size'])$(id).onchange=()=>{savePreferences();if(current)renderScene();};
+for(const id of PREFS)$(id).onchange=async()=>{savePreferences();if(id==='translation')await loadTranslations();if(current)renderScene();};
 $('scene-search').oninput=()=>{if(index)renderList();};
 $('dialogue-search').oninput=()=>{clearTimeout(searchTimer);++searchRevision;searchTimer=setTimeout(search,180);};
 $('search-scope').onchange=search;
