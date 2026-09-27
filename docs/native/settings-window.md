@@ -99,7 +99,7 @@
 | 操作 `controls` | 只读键位表，四组：游戏按键、对白、地图与战斗、快捷键。跟随最后用的设备显示键盘或手柄键位（`settings_bind_<行>` 与其 `_pad` 版本） |
 | 关于 `about` | 版本号（取自根目录 `CMakeLists.txt` 的 `project(... VERSION)`，编译时经 `SRW64_VERSION` 传入）、HarmonyOS Sans 字体声明 |
 
-每个开关由 `settings_choice(键, id 前缀, 模式列表, 当前模式)` 生成一行：左边 `label(键)` 与 `label(键+"_note")`，右边一个模式一个按钮，id 为 `前缀:模式`（与 §6 相同，如 `battle-ui:native`、`images:hd`）。新增一个原版／新版开关只要在「界面」页加一行调用，再在刷新 stamp 里加上它的当前值。
+每个开关由 `settings_choice(键, id 前缀, 模式列表, 当前模式)` 生成一行：上面是 `label(键)` 和右侧一个模式一个按钮，下面整行是 `label(键+"_note")`，id 为 `前缀:模式`（与 §6 相同，如 `battle-ui:native`、`images:hd`）。新增一个原版／新版开关只要在「界面」页加一行调用，再在刷新 stamp 里加上它的当前值。
 
 **操作**
 
@@ -116,7 +116,9 @@
 
 **调试接口**：`ui.click` 按 id 点一个不在当前页的设置控件时，会先翻到它所在的页再点（与玩家的操作一致），所以 `settings-control.json` 的 `press` 和按 id 点击的旧脚本不用改；页签本身的 id 是 `settings-page:<页>`。`ui.key` 送 `q`／`e`／`pageup`，`pad` 方法送 L1／R1 都能换页。
 
-**检查**：`tests/test_settings_window.py`（页与键位行两份列表一致、三语词条齐全、按最小窗口估算页签和分段按钮不溢出、分页写回与 `--language` 保留、换页的键位）。实现当天只在 Mac 上编译检查过，**还没有实机截图**。
+**中日文断行**：RmlUi 只在 ASCII 空白处断行，没有空格的中文、日文句子是一整段，放不下就溢出（09-27 实机：日文「インターミッション画面」的说明压到了按钮下面）。所以说明文字单独占整行宽。`word-break: break-word` 能强行断开，但会让 RmlUi 的断行循环卡死（`ElementText.cpp:508` 断言刷屏，窗口线程不再响应），**不要用**。`tests/test_settings_window.py` 按最小窗口估算每段不含空格的文字（说明、规则名、键位表两列、页签、名称加按钮一行）都放得下，新加或改长词条时会报出来。
+
+**检查**：`tests/test_settings_window.py`（页与键位行两份列表一致、三语词条齐全、按最小窗口估算各列不溢出、分页写回与 `--language` 保留、换页的键位）。实机：`tools/recomp/debug/check_settings_pages.py`（标题画面上打开设置；中英日五页各截一张 960×720；Q/E、PageDown 与手柄 L1/R1 换页，行间、行内移动与确定；按 id 点别页的规则会先翻页；关闭后重开回到上次的页；手柄提示、B 关闭、视图键打开；1600×1000 大窗口截图），2026-09-27 全部通过，截图在该次运行目录。
 
 另修了一处：旧版刷新 stamp 漏了「主角选择与姓名输入」「标题菜单画面」两个开关，点了以后按钮的选中状态不会更新；现在 stamp 包含全部开关。
 
