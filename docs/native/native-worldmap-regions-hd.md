@@ -100,6 +100,45 @@
   - 海岸仍按原图遮罩切出。
 - 结果打进 `pack-v5`：四个地表的可见像素里与原图放大相同的为 0。右上角俄罗斯共用纹理的 5 块仍是原图。
 
+## 接缝、海岸紫边、锐化与近景（2026-09-27）
+
+实机看第一话和 5604 南部各地点（透视镜头把原图 1 像素放大到 1440p 窗口 19–30 像素），每一行图块的交界处都有一条横向接缝，利比亚、突尼斯海岸有一圈紫边，整体偏软。前两处都出在工具里：
+
+- **接缝**：`assemble` 按 `UNIT`（611/64）摆放所有四边形，但网格的行距只有 600 个世界单位（62.85 像素），列距才是 611。于是拼图里每一行比上一行低 62–63 像素而不是 64，下一行盖掉上一行最后一两行像素；`pack` 再按 64 像素切块，就把下一块的开头又切进了上一块的末尾，游戏里那 1 像素（HD 8 像素）显示两次，成了横线。纵向接缝没有，因为列距正好 64。现在 `pack` 用 `tile_span` 取每块在拼图里实际拥有的范围（到同列下一块为止，62–64 行），再拉回 512×512（`cut_tile`）。拼图本身没有改，image_gen 生成包和已合成的图都按它注册。离线核对 5604 的 52 对上下相邻块：交界处相邻行的平均差从 14.4 降到 3.4，与块内相邻行相同。
+- **紫边**：原图陆地遮罩外圈是一圈浅海，画里是海，合成时"保留画面原样"，而 image_gen 把这圈浅海涂成了紫色，并把紫色混进了紧贴海岸的一条沙地。`imagegen` 合成末尾加 `coast_tidy`：遮罩内被画成水（蓝大于红绿）的像素只把色相改成清屏海色的色相；海岸内侧 `COAST_BAND`（10 HD 像素）宽的一条陆地，颜色取自更内陆的陆地（`land_blur`），保留自己的明度，画的纹理不变；小岛没有内陆可取（`land_blur` 权重趋零会算出灰黄红的杂色，马耳他两端出过），只在内陆足够的地方换色。
+- **锐化**：画稿是 4 倍，拉到 8 倍再被镜头放大，看着软。合成的陆地图整体做一次 USM（`SHARPEN`，半径 3、60%），在 `coast_tidy` 之前。
+
+重新合成到 `imagegen-2`，在 `pack-v5` 上重打成 `pack-v6`：
+
+```sh
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces imagegen --kit assets/hd-ai/imagegen-kit \
+  --output assets/hd-ai/worldmap-surfaces/imagegen-2
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces pack --output assets/hd-ai/worldmap-surfaces/imagegen-2 \
+  --base-pack assets/hd-ai/worldmap-surfaces/pack-v5 --pack-output assets/hd-ai/worldmap-surfaces/pack-v6 --bind
+```
+
+### 近景窗口
+
+镜头对每个地表一样近：定位时屏幕中心约 3.2 屏幕像素（320 基准）对 1 原像素，一屏约 100×75 原像素。image_gen 的局部窗口是 384×256 原像素画成 1536×1024（4 倍），拉到 8 倍再放大 2.5–7 倍，近景发虚。改善只能按地点再出更小的窗口：
+
+- `closeup-kit`：从 ROM 地点表 `801C5310` 和已提取的场景事件（`assets/original-data/records/stage_events.jsonl` 里的 3D32/3D33 字，共 827 次，地球地表 458 次）算出每个地点的使用次数，按次数贪心覆盖：每个窗口 120×80 原像素（`CLOSEUP`），以最常用的未覆盖地点为中心，吸收中心附近的地点，`--always` 指定优先给窗口的地点（默认第一话的 4、0、1、2），`--count` 限定张数。每张给两幅图：`*-input.png` 是当前合成图（`--base` 运行目录）上这个窗口的 8 倍裁片（960×640），`*-source.png` 是原图硬像素放大 12 倍（1440×960）；提示词让模型保持构图、颜色和画风，只把细节密度提高，海岸线以图2为准。`manifest.json` 记窗口位置（`box`，拼图坐标）、覆盖的地点和次数；`index.jpg` 是缩略图。
+- `closeup`：把画好的 `outputs/*-out.png` 配准回各自的原图窗口，按 8 倍放到合成图上，边缘 12 原像素羽化交接，海岸 alpha 沿用底图，再做一次 `coast_tidy`，写成新的运行目录给 `pack` 用。
+
+```sh
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces closeup-kit --base assets/hd-ai/worldmap-surfaces/imagegen-2 \
+  --output assets/hd-ai/imagegen-closeup-kit --count 13 --always 4,0,1,2
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces closeup --kit assets/hd-ai/imagegen-closeup-kit \
+  --base assets/hd-ai/worldmap-surfaces/imagegen-2 --output assets/hd-ai/worldmap-surfaces/imagegen-3
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces pack --output assets/hd-ai/worldmap-surfaces/imagegen-3 \
+  --base-pack assets/hd-ai/worldmap-surfaces/pack-v6 --pack-output assets/hd-ai/worldmap-surfaces/pack-v7 --bind
+```
+
+2026-09-27 用户在 Codex 画完 13 张，`closeup` 合成到 `imagegen-3`，打成 `pack-v7` 并绑定。配准的缩放在 0.93–1.02 之间（image_gen 会把画幅收进去几个百分点），`place` 补边会在没画到的边上拉出条纹，所以羽化从画稿真正覆盖到的范围起算（报告里的 `covered`）。实机看第一话的阿尔卑斯（地点 0）、意大利（地点 2）：山峰、树丛一颗颗分明，与周围没画近景的地方衔接自然；阿特拉斯（地点 15，没有近景窗口）只靠锐化，也没有接缝了。
+
+开场镜头（地点 4）仍虚：5603 画的是与 5602 相同的图块，但地图横向转了 4 块（拼图按顶点位置看不出来，7 帧原版画面按 15–20 倍缩回去与地表原图做 NCC 校准，y 全对、x 差 256）。`locations()` 对下标 17 的 x 加 256 按 576 取模（`SURFACE_WRAP`）；`closeup-kit --extend` 保留已画的窗口、只为没盖到的地点新增，补出 closeup-14 到 19，其中 14 是开场镜头。六张当天画完，19 张一起合成到 `imagegen-3`、打成 `pack-v8` 并绑定；实机开场镜头、格陵兰、南美都已是近景。
+
+近景仍是 8 倍贴图（宿主 `graphics.cpp` 只接受 512 的替换块）。要到 16 倍得让审计接受 1024 块并让 `pack` 对近景块单独切 1024，待定。
+
 ## 花费
 
 - 地球地表：34 次，17.68 元。其中 3 个试验窗口 5 次、其余 20 个窗口 27 次（含 7 次自动重画）、补 5604 一次、青藏高原第四张一次。
