@@ -750,8 +750,9 @@ think about what that means, you bastard!”
 “You're saying they're enemies?! All right, launch!”
 
 @20616 Garalia · ガラリア
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @20617 Show · ショウ
 > 「くっ……ガラリア……」

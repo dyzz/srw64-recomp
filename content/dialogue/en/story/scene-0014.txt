@@ -366,8 +366,9 @@ You see that, David?! So much for the Liberation Front!”
 Curse your own lack of cunning.”
 
 @19151 Guerrilla · ゲリラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @19152 Le Cain · ル・カイン
 > 「地球人どもよ、聞け! 私に

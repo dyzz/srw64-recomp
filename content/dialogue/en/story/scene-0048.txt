@@ -2085,7 +2085,7 @@ I can't focus on the fight.”
 @32999 Drake · ドレイク
 > 「ウィル・ウィプスでグラン・ガランを
 >  受けろ!!」
-“Take the Gran-Garan with the Wil Wiphs!!”
+“Take the Gran-Garan with the Will-Wips!!”
 
 @33000 Drake · ドレイク
 > 「ショウ・ザマか!? まさか貴様に

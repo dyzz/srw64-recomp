@@ -896,8 +896,9 @@ With this, we can launch a surprise attack. Mouar.”
 “This is the end, {HeroMech}!”
 
 @46025 Jerid · ジェリド
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @46026 Mouar · マウアー
 > 「ジェリド!? くっ……よくもジェリドを!」

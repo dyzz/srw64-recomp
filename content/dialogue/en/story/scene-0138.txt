@@ -517,9 +517,10 @@ You monster! Prepare yourself!”
 “W-What is this?! In a place like this... Curse you!!”
 
 @46295 Gandal · ガンダル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁぁぁっ! バ、バカな!?
 >  ズール皇帝陛下ぁぁぁーっ!!」
-“Guwaaaaaah! I-Impossible! Emperor Zuul, Your Majesty!!”
+“Gwaaaaaah! I-Impossible! Emperor Zuul, Your Majesty!!”
 
 @46296 Warchimedes · ワルキメデス
 > 「おおぉぉっ!?

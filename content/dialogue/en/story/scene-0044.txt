@@ -1023,8 +1023,9 @@ anyone who fit the description.”
 “Th-that can't be...”
 
 @27540 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁっ!?」
-“Uwaaaah?!”
+“Waaaaah?!”
 
 @27541 Shinobu · 忍
 > 「くそっ! どっからの攻撃だ!?」

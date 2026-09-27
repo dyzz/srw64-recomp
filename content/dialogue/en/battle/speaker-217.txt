@@ -89,14 +89,16 @@
 
 @7653 Le Cain · ル・カイン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ハッハッハッ、気に入った!
 >  フハハハハハハッ!」
-“Hah hah hah, I like it! Fuhahahahahaha!”
+“Hah hah hah, now this I like! Fuhahahahaha!”
 
 @7654 Le Cain · ル・カイン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「こ、この程度で!」
-“Th-this much?!”
+“Th-this is nothing!”
 
 @7655 Le Cain · ル・カイン
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）

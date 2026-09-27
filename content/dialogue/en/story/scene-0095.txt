@@ -772,8 +772,9 @@ I'll finish you off myself!”
 “Then who in the world...”
 
 @45152 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @45153 Master · マスター
 # 审校：“immature fool”过于书面，改为“green fool”更符合宗师呵斥弟子的豪迈口吻。

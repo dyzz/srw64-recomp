@@ -2,9 +2,9 @@
 
 @6303 Trowa · トロワ
 # 触发：攻击（通用，1/13）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「密集などしているからだ」
-“That’s because you’re bunched up.”
+“That’s what you get for bunching up.”
 
 @6304 Trowa · トロワ
 # 触发：攻击（通用，2/13）
@@ -75,9 +75,9 @@
 
 @6316 Trowa · トロワ
 # 触发：被击坠（通用，1/4）
-# 审校：被击坠情境，これまで 是自己完了，原译错
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「これまでのようだな」
-“Seems this is the end.”
+“Looks like this is it.”
 
 @6317 Trowa · トロワ
 # 触发：被击坠（通用，2/4）
@@ -142,8 +142,9 @@
 
 @6328 Trowa · トロワ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「戦術を誤ったようだな」
-“Seems I misjudged the tactics.”
+“Seems you misjudged your tactics.”
 
 @6329 Trowa · トロワ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -202,10 +203,12 @@
 
 @6339 Trowa · トロワ
 # 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「残弾……0か」
-“Ammo... zero.”
+“Remaining rounds... zero.”
 
 @6340 Trowa · トロワ
 # 触发：射程外，无法反击（通用，1/1）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ここからでは距離がありすぎるな」
-“Too far from here.”
+“It’s too far from here.”

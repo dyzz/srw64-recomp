@@ -7192,6 +7192,90 @@
     "weapons",
     "story"
    ]
+  },
+  {
+   "ja": [
+    "レイン"
+   ],
+   "zh-Hans": {
+    "old": "蕾恩",
+    "new": "玲"
+   },
+   "gate": true,
+   "sections": [
+    "pilots",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ジャネラ"
+   ],
+   "zh-Hans": {
+    "old": "贾内拉",
+    "new": "加涅拉"
+   },
+   "gate": true,
+   "sections": [
+    "pilots",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ウィル・ウィプス"
+   ],
+   "en": {
+    "old": "Wil Wiphs",
+    "new": "Will-Wips"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ウィル・ウィプス"
+   ],
+   "en": {
+    "old": "Wil Wips",
+    "new": "Will-Wips"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ウィル・ウィプス"
+   ],
+   "en": {
+    "old": "Wil Wiph",
+    "new": "Will-Wips"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "キュベレイ"
+   ],
+   "en": {
+    "old": "Quebeley",
+    "new": "Qubeley"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "story"
+   ]
   }
  ]
 }

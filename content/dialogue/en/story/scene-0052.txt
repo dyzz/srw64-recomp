@@ -601,16 +601,18 @@ His Majesty is most displeased with your act of rebellion.”
 “Even if you die, our goal will be achieved. Die, Mars!”
 
 @35151 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! く、くそっ!」
-“Uwaaaah! D-Damn it!”
+“Waaaaah! D-Damn it!”
 
 @35152 Baren · バレン
 > 「フン、そんなもので!」
 “Hmph, is that all you've got?!”
 
 @35153 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「あぁぁっ……う……うわあぁぁぁぁーっ!!」
-“Aaaah... u... uwaaaaaaah!!”
+“Aaaah... u... waaaaaaaah!!”
 
 @35154 Baren · バレン
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo

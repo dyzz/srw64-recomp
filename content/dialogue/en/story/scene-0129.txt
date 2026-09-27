@@ -68,9 +68,10 @@ Activate the enhanced Berserker System!”
 “What's wrong, Allenby?!”
 
 @43036 Allenby · アレンビー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁーっ!! イヤッ!
 >  ドモン、助けてっ!!」
-“Uwaaaaaaah!! No! Domon, help me!!”
+“Waaaaaaaah!! No! Domon, help me!!”
 
 @43037 Domon · ドモン
 > 「待て、アレンビー!」
@@ -168,8 +169,9 @@ I love Domon too!!”
 “Allenby... you...”
 
 @43055 Allenby · アレンビー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @43056 Rain · レイン
 > (……これは……以前の時とは違う?
@@ -248,8 +250,9 @@ I... I loved Domon, you know!”
 “Huh?! Y-you're...”
 
 @43069 Allenby · アレンビー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @43070 Rain · レイン
 > (……これは……以前の時とは違う?

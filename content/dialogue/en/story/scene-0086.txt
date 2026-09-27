@@ -785,9 +785,10 @@ If you are truly in the right, then you should be able to defeat me!”
 “W-what is the meaning of this?! To fall in a place like this... Curse you!!”
 
 @41886 Gandal · ガンダル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁぁぁっ! バ、バカな!?
 >  ズール皇帝陛下ぁぁぁーっ!!」
-“Guwaaaaaah! I-impossible! Emperor Zuul, Your Majestyyyy!!”
+“Gwaaaaaah! I-impossible! Emperor Zuul, Your Majestyyyy!!”
 
 @41887 Blacky · ブラッキー
 > 「ぎゃあぁぁぁぁぁぁぁーっ!!」

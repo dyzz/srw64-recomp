@@ -319,8 +319,9 @@ that one is your next prey. Hunt him down splendidly.”
 “What?! They've turned giant!... This is bad.”
 
 @40300 Hyoma · 豹馬
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @40301 Janera · ジャネラ
 # 审校：精读：キバ 名字／词条／自称
@@ -366,13 +367,14 @@ that one is your next prey. Hunt him down splendidly.”
 “Ngh, Hyoma, hang in there!! Monster, over here! Aim at me!”
 
 @40310 Janera · ジャネラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「なにをしておる! 最初にねらった
 >  獲物は、最後のとどめをさすまで
 “What are you doing! The prey you target first must be chased until you deliver the final blow!
 ---
 >  追わねばならぬ!
 >  ええい、なにをしておるのじゃ!」
-Eei, what are you doing?!”
+Damn, what are you doing?!”
 
 @40311 Chizuru · ちずる
 > 「そうよ、こっちにいらっしゃい!
@@ -398,10 +400,10 @@ be here soon. Until then, even if it's just me...!”
 “Aaaaaah?! Hyomaaaaaa!!”
 
 @40315 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、愚か者! 遊んでおるから
 >  そうなるのじゃ! キバよ、
-“Eei, you fool! That's what happens when you play around! Fang,
+“Damn, you fool! That's what happens when you play around! Fang,
 ---
 >  一度戻るがよい!」
 return for now!”
@@ -416,9 +418,10 @@ return for now!”
 Go back and do it again!”
 
 @40317 Janera · ジャネラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、愚か者! 遊んでおるから
 >  そうなるのじゃ! ガロよ、
-“Eei, you fool! That's what happens when you play around! Garo,
+“Damn, you fool! That's what happens when you play around! Garo,
 ---
 >  一度戻るがよい!」
 return for now!”
@@ -433,37 +436,40 @@ return for now!”
 Go back and do it again!”
 
 @40319 Janera · ジャネラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、なんということじゃ。
 >  撤退する!」
-“Eei, this is unbelievable. We're retreating!”
+“Damn, this is unbelievable. We're retreating!”
 
 @40320 Janera · ジャネラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、なんということじゃ。
 >  撤退する!」
-“Eei, this is unbelievable. We're retreating!”
+“Damn, this is unbelievable. We're retreating!”
 
 @40321 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、キバ、ガロ、なにをしておる。
 >  そやつは、放っておいて早く豹馬を
-“Eei, Fang, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
+“Damn, Fang, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
 ---
 >  やるのじゃ!!」
 off!!”
 
 @40322 Janera · ジャネラ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、ガロ、なにをしておる。
 >  そやつは、放っておいて早く豹馬を
-“Eei, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
+“Damn, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
 ---
 >  やるのじゃ!!」
 off!!”
 
 @40323 Janera · ジャネラ
-# 审校：精读：キバ 名字／词条／自称
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ええい、キバ、なにをしておる。
 >  そやつは、放っておいて早く豹馬を
-“Eei, Fang, what are you doing? Leave that one alone and hurry and finish Hyoma
+“Damn, Fang, what are you doing? Leave that one alone and hurry and finish Hyoma
 ---
 >  やるのじゃ!!」
 off!!”

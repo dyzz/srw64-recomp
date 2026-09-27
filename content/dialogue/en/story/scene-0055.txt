@@ -1460,8 +1460,9 @@ full of openings like that could defeat me?!”
 “I-Impossible...”
 
 @36475 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁぁぁぁーッ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @36476 Master · マスター
 > 「さあ、今とどめをさしてやるぞ!
@@ -1535,8 +1536,9 @@ You were saved by Shadow Gundam, and your anger had settled, yet you are full of
 and end up like this. Now, I shall snap your neck!!”
 
 @36488 Domon · ドモン
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁぁぁーっ!!」
-“Uwaaaaaaaaaah!!”
+“Waaaaaaaaaaah!!”
 
 @36489 Schwarz · シュバルツ
 # 审校：精读：术语统一

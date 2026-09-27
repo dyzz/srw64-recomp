@@ -174,5 +174,6 @@
 
 @6679 Hilde · ヒルデ
 # 触发：射程外，无法反击（通用，1/1）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「あと、あと少しなのにっ」
-“Just a little... just a little more!”
+“Just a little... just a little farther!”

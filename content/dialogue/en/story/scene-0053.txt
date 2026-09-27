@@ -845,8 +845,9 @@ His Majesty is most displeased with your acts of rebellion.”
 Die, Mars!”
 
 @35416 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! く、くそっ!」
-“Uwaaah! D-Damn it!”
+“Waaaah! D-Damn it!”
 
 @35417 Baren · バレン
 # 审校：原文“そんなもので!”是轻蔑的短句，初稿加“?!”语气过重，改为更贴合轻蔑语气的反问。
@@ -854,8 +855,9 @@ Die, Mars!”
 “Hmph, is that all you've got?”
 
 @35418 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ!!」
-“Uwaaah!!”
+“Waaaah!!”
 
 @35419 Takeru · タケル
 > 「こ、こんなところで、俺は死ねない!!」
@@ -876,8 +878,9 @@ Die, Mars!”
 “Now die, Mars. If you die, the Earth is finished too.”
 
 @35423 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「あぁぁっ……う……うわあぁぁぁぁーっ!!」
-“Aaaah... ugh... uwaaaaaaah!!”
+“Aaaah... ugh... waaaaaaaah!!”
 
 @35424 Baren · バレン
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo

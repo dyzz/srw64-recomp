@@ -540,8 +540,9 @@ I'm counting on you for the Moon.”
 “Don't falter! It's only two enemies. Surround them and strike!”
 
 @34351 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @34352 Duo · デュオ
 > 「ちぇっ、やっぱりそんなに甘くはないか。
@@ -2207,8 +2208,9 @@ Gaia, the robot bound to your fate by your command.”
 and lived. Defy my orders and I'll kill you!”
 
 @34619 Takeru · タケル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「あぁぁ!? うわぁぁぁぁーっ!!」
-“Aaaah?! Uwaaaaaaah!!”
+“Aaaah?! Waaaaaaaah!!”
 
 @34620 Mika · ミカ
 > 「タケル、タケル?」

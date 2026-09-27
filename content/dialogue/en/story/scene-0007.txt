@@ -722,8 +722,9 @@ I'll have Garrison and the others come pick it up later.”
 My target was the spaceport, but I'll wipe out everything.”
 
 @18083 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁーっ!!」
-“Uwaaaaaaaaah!!”
+“Waaaaaaaaaah!!”
 
 @18084 Wufei · 五飛
 > 「俺の名は張五飛。

@@ -35,10 +35,10 @@
 
 @11966 Kosuke · 小介
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
-# 审校：“power's way too different”不像英语
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああっ! パ、パワーが
 >  違いすぎるっ!」
-“Uwaaah! Th-the power gap’s way too big!”
+“Waaaah! Th-the power gap’s way too big!”
 
 @11967 Kosuke · 小介
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -48,9 +48,10 @@
 
 @11968 Kosuke · 小介
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあっ! ちずるお姉ちゃん、
 >  豹馬さん、助けてくださいっ!」
-“Uwaah! Chizuru, Hyoma, please help me!”
+“Waaah! Chizuru, Hyoma, please help me!”
 
 @11969 Kosuke · 小介
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）

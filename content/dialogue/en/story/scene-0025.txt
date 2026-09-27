@@ -481,8 +481,9 @@ demon soldiers we went to the trouble of increasing. We're withdrawing.”
 I'll do it too! I can't just turn back like this!”
 
 @21670 Gyugaki · 牛餓鬼
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ、父さぁぁぁん!!」
-“Uwaaaaaaah, Faaatheeeer!!”
+“Waaaaaaaah, Faaatheeeer!!”
 
 @21671 Sara · 沙羅
 > 「シャピロ、あんたがいるのは

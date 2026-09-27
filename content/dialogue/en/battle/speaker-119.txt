@@ -89,15 +89,16 @@
 
 @10363 Blacky · ブラッキー
 # 触发：被击坠（通用，3/3）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわあぁぁぁぁぁぁーっ!」
-“Guwaaaaaaaaah!”
+“Gwaaaaaaaaah!”
 
 @10364 Blacky · ブラッキー
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁっ! おぼえておれ、この次は
 >  きっとバラバラにしてやる!」
-“Guwaaah! Just you wait, next time I’ll tear you to pieces!”
+“Gwaaah! Just you wait, next time I’ll tear you to pieces!”
 
 @10365 Blacky · ブラッキー
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -113,9 +114,10 @@
 
 @10367 Blacky · ブラッキー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ!? て、撤退準備を
 >  始めろ! 急げ!」
-“Uwaaah?! B-begin retreat preparations! Hurry!”
+“Waaaah?! B-begin retreat preparations! Hurry!”
 
 @10368 Blacky · ブラッキー
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）

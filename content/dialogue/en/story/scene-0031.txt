@@ -586,8 +586,9 @@ and be done with it!!”
 “Ahahaha!! You can't run from me!!”
 
 @23490 Jeril · ジェリル
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @23491 Show · ショウ
 > 「ジェリル……」

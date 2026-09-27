@@ -651,8 +651,9 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Marg?! Stoooop!!”
 
 @29511 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @29512 Rose · ロゼ
 > 「くっ……ばかな……」
@@ -752,8 +753,9 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Marg?! Stop it!!”
 
 @29531 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁーっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @29532 Rose · ロゼ
 > 「くっ……ばかな……」
@@ -941,8 +943,9 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Brother?! Brotheeeer!!”
 
 @29569 Marg · マーグ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああぁぁぁぁっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @29570 Rose · ロゼ
 # 审校：精读：隊長 统一
@@ -1410,8 +1413,9 @@ They're approaching. Shall we activate the MDs?”
 “Yes, sir.”
 
 @29640 Specials · スペシャルズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁっ!?」
-“Uwaaaaaaah?!”
+“Waaaaaaaah?!”
 
 @29641 Dermail · デルマイユ
 > 「なんだ!?

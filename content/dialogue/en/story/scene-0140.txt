@@ -1084,13 +1084,14 @@ accomplished.”
 “Well done, Janus! Now I'll crush them with my own army!”
 
 @38955 Emperor Burai · ブライ大帝
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「敵ながらなかなかやるようだが、それも
 >  ここまでだ。いまこそ我らが
 “They put up quite a fight for enemies, but this is as far as they go. Now we shall
 ---
 >  地球支配に名乗りを上げるの
 >  だ! ウワハハハハハハッ!!!」
-declare ourselves rulers of Earth! Uwahahahahahaha!!!”
+declare ourselves rulers of Earth! Waahahahahahaha!!!”
 
 @38956 Hell Marshal · 地獄大元帥
 > 「ヤヌスめ、やられてしまいおったか!
@@ -1101,13 +1102,14 @@ declare ourselves rulers of Earth! Uwahahahahahaha!!!”
 with my own army!”
 
 @38957 Emperor Burai · ブライ大帝
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「敵ながらなかなかやるようだが、それも
 >  ここまでだ。いまこそ我らが
 “They put up quite a fight for enemies, but this is as far as they go. Now we shall
 ---
 >  地球支配に名乗りを上げるの
 >  だ! ウワハハハハハハッ!!!」
-declare ourselves rulers of Earth! Uwahahahahahaha!!!”
+declare ourselves rulers of Earth! Waahahahahahaha!!!”
 
 @38958 Tetsuya · 鉄也
 > 「地獄大元帥! 貴様の

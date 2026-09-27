@@ -643,8 +643,9 @@ adjust the seat either.”
 “It seems to have a pretty complex system built in...”
 
 @43802 Ark · アーク（按段落 3DD1）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「……な……うわぁぁっ……!?」
-“...Wha... Uwaaah...?!”
+“...Wha... Waaaah...?!”
 
 @43803 Astonaige · アストナージ
 > 「どうだ、{HeroNick}?
@@ -1863,8 +1864,9 @@ destroy her.”
 “...A traitor... I'm a traitor... I...”
 
 @44009 Daisuke · 大介
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわあぁぁぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @44010 Maria · マリア
 > 「ねぇ、甲児! 兄さんは、いったい

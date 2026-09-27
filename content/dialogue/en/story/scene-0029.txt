@@ -742,8 +742,9 @@ together with the many warriors gathered here.”
 “Nguuuuuh!!”
 
 @22698 Sai Saici · サイ・サイシー
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁぁぁーっ!!」
-“Uwaaaaaaah!!”
+“Waaaaaaaah!!”
 
 @22699 Joker · ジョーカー
 > 「これでよい……戦士たちよ、あとは、

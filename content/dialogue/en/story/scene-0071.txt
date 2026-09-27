@@ -1498,9 +1498,10 @@ You will issue a declaration of defeat.”
 “Tch, he's barricaded himself in. Fine, blow up the whole room!”
 
 @30645 Tubarov · ツバロフ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「私のMDは無敵なのだ! ふはは、
 >  はーっはっはっは……、う、うわあああっ!」
-“My mobile dolls are invincible! Fuhaha, hahahahaha... uwaaaaaah!”
+“My mobile dolls are invincible! Fuhaha, hahahahaha... waaaaaaah!”
 
 @30646 Jamitov · ジャミトフ
 > 「何だと!?」

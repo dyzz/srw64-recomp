@@ -394,8 +394,9 @@ answer the voice of Muge Zorbados!”
 “Wh-what is this?!”
 
 @42837 Shinobu · 忍
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ!」
-“Uwaaah!”
+“Waaaah!”
 
 @42838 Sara · 沙羅
 > 「ちっ、はなから歓迎パレードは

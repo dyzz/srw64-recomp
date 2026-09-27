@@ -8,18 +8,21 @@
 
 @13095 Chibodee · チボデー
 # 触发：攻击（通用，2/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うぉぉぉぉぉっ!」
-“Woooooooh!”
+“Whooooa!!”
 
 @13096 Chibodee · チボデー
 # 触发：攻击（通用，3/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「おらおらおらぁっ!」
-“Ora ora ora!”
+“Orararara!”
 
 @13097 Chibodee · チボデー
 # 触发：攻击（通用，4/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うらうらうらうらぁっ!」
-“Ura ura ura ura!”
+“Uraurauraura!”
 
 @13098 Chibodee · チボデー
 # 触发：攻击（通用，5/12）
@@ -28,23 +31,27 @@
 
 @13099 Chibodee · チボデー
 # 触发：攻击（通用，6/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「うおぅりゃぁぁぁぁっ!」
-“Woooryaaaaah!”
+“Woooryaaaah!!”
 
 @13100 Chibodee · チボデー
 # 触发：攻击（通用，7/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ちぇぁぁぁぁぁ!!」
-“Cheaaaaah!!”
+“Cheaaaaa!!”
 
 @13101 Chibodee · チボデー
 # 触发：攻击（通用，8/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「でぇやぁぁぁ!!」
-“Deyaaaaah!!”
+“Deyaaaah!!”
 
 @13102 Chibodee · チボデー
 # 触发：攻击（通用，9/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「とりゃとりゃとりゃとりゃぁぁ!!」
-“Torya torya torya toryaaaah!!”
+“Toryatoryatorya!!”
 
 @13103 Chibodee · チボデー
 # 触发：攻击（通用，10/12）
@@ -54,29 +61,33 @@
 
 @13104 Chibodee · チボデー
 # 触发：攻击（通用，11/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「おおおぉぉぉぉぉ!」
-“Oooooooh!”
+“Oooooooh!!”
 
 @13105 Chibodee · チボデー
 # 触发：攻击（通用，12/12）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「覚悟しな! ウィナーは俺たちだぜ!」
-“Get ready! The winner is us!”
+“Get ready! The winners are gonna be us!”
 
 @13106 Chibodee · チボデー
 # 触发：被击坠（通用，1/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ負けちまったか……」
-“Tch, I lost, huh...”
+“Ngh, I lost, huh...”
 
 @13107 Chibodee · チボデー
 # 触发：被击坠（通用，2/4）
-# 审校：被击坠时没人说话，did you say 不通
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なんだとぉ!?」
-“W-what the?!”
+“W-what did you say?!”
 
 @13108 Chibodee · チボデー
 # 触发：被击坠（通用，3/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「オーマイガァッ!」
-“Oh my gaaah!”
+“Oh my Gooood!”
 
 @13109 Chibodee · チボデー
 # 触发：被击坠（通用，4/4）
@@ -94,8 +105,9 @@
 
 @13111 Chibodee · チボデー
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「ぐわぁぁ!?」
-“Guwaaah?!”
+“Gwaaah?!”
 
 @13112 Chibodee · チボデー
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -124,9 +136,9 @@
 
 @13117 Chibodee · チボデー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なにぃ、力負けしているだとぅ!?」
-“W-what, I’m losing on raw power?!”
+“W-what, I’m losing in a contest of strength?!”
 
 @13118 Chibodee · チボデー
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -161,21 +173,21 @@
 
 @13123 Chibodee · チボデー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「どうした、この程度かよ!?」
-“What’s wrong, is this all you’ve got?!”
+“What’s wrong, is that all you’ve got?!”
 
 @13124 Chibodee · チボデー
 # 触发：回避（通用，1/3）
-# 审校：回避情境：是对方打偏
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「はずれちまったようだなぁ」
-“Looks like you missed, huh.”
+“Looks like you missed.”
 
 @13125 Chibodee · チボデー
 # 触发：回避（通用，2/3）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ヘイッ、どうしたどうした?」
-“Hey, what’s wrong, what’s wrong?”
+“Hey, what’s the matter, what’s the matter?”
 
 @13126 Chibodee · チボデー
 # 触发：回避（通用，3/3）
@@ -202,9 +214,9 @@
 
 @13130 Chibodee · チボデー
 # 触发：射程外，无法反击（通用，1/1）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「くそっ、こっからじゃ届かねぇか」
-“Damn, I can’t reach from here, huh.”
+“Damn, I can’t reach from here.”
 
 @17314 Chibodee · チボデー
 # 触发：使用〈ギガンティックマグナム〉
@@ -236,10 +248,12 @@
 
 @17319 Chibodee · チボデー
 # 触发：使用〈豪熱マシンガンパンチ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ゴウネェェツ、マシンガンンパァァンチッ!」
-“Gounetsu, Machine Gun Punch!”
+“Burning heat, Machine Gun Paaanch!”
 
 @17320 Chibodee · チボデー
 # 触发：使用〈豪熱マシンガンパンチ〉
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「豪熱! マシンガン、パァァァンチィ!」
-“Gounetsu! Machine Gun, Punch!”
+“Burning heat! Machine Gun, Paaanch!”

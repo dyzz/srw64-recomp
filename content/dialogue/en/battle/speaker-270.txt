@@ -7,9 +7,9 @@
 
 @6839 Dorothy · ドロシー
 # 触发：攻击（通用，2/11）
-# 审校：原文「よ」带有贵族式宣告口吻，译文过于平淡。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「さぁここで作戦変更よ」
-“Now then, it is time to change the plan.”
+“Now then, time to change the plan.”
 
 @6840 Dorothy · ドロシー
 # 触发：攻击（通用，3/11）
@@ -42,9 +42,9 @@
 
 @6845 Dorothy · ドロシー
 # 触发：攻击（通用，8/11）
-# 审校：原文「ですわ」的贵族口吻未体现，需更正式。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「もうなにもかも遅いですわ」
-“It is all far too late now.”
+“It’s all too late now.”
 
 @6846 Dorothy · ドロシー
 # 触发：攻击（通用，9/11）
@@ -141,14 +141,15 @@
 
 @6862 Dorothy · ドロシー
 # 触发：回避（通用，4/4）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「このシステム、さすがですわミリアルド様」
-“This system is truly remarkable, Lord Milliardo.”
+“This system is truly superb, Lord Milliardo.”
 
 @6863 Dorothy · ドロシー
 # 触发：攻击无效（护罩／装甲）（通用，1/3）
-# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「そんな攻撃じゃ、だめ」
-“That kind of attack won’t do.”
+“An attack like that won’t do.”
 
 @6864 Dorothy · ドロシー
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
@@ -158,9 +159,9 @@
 
 @6865 Dorothy · ドロシー
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
-# 审校：原文「ですわ」的贵族口吻未体现，需加入正式感。
+# 审校：同源同人同译：统一到精读过／多数的版本
 > 「ふふふふ、このシステムは完璧ですわ」
-“Heh heh heh, this system is absolutely perfect.”
+“Hehehehe, this system is absolutely perfect.”
 
 @6866 Dorothy · ドロシー
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

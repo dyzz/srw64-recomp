@@ -1913,8 +1913,9 @@ will cause a global cooling of the entire Earth. ...We have to stop it.”
 “I don't care if the engines break! Push the output to the limit!”
 
 @41362 Quinze · カーンズ
+# 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「な、なんだと!? うわあぁぁぁぁーっ!!」
-“Wh-What did you say?! Uwaaaaaaah!!”
+“Wh-What did you say?! Waaaaaaaah!!”
 
 @41363 Milliardo · ミリアルド
 > 「ヒイロ・ユイか……」
