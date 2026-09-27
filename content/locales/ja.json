@@ -57,6 +57,7 @@
     "select_confirm": "名前入力へ  →",
     "select_keyboard_hint": "←→ 切り替え   ·   Enter / Z 決定   ·   カードをクリックでも選べます",
     "select_keyboard_hint_pad": "←→ 切り替え   ·   A 決定   ·   カードをタッチでも選べます",
+    "unit_default_name": "マーチウィンド",
     "name_review_keyboard_hint": "Enter 物語を始める   ·   Esc 名前を変更",
     "name_review_keyboard_hint_pad": "A 物語を始める   ·   B 名前を変更",
     "settings_error": "言語の切り替え・設定の保存に失敗しました",

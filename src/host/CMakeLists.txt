@@ -104,6 +104,9 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE move_jump.cpp)
     # L2 / R2 on the idle tactical map: the cursor steps through the enemy units (docs/native/enemy-cycle.md).
     target_sources(srw64-gfx-host PRIVATE enemy_cycle.cpp)
+    # The 部隊名 stays マーチウィンド: the naming choice answers itself, 3D5E does nothing
+    # (docs/native/fixed-unit-name.md).
+    target_sources(srw64-gfx-host PRIVATE unit_name.cpp)
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
     # The release version (the root CMakeLists.txt project) for the settings window's About page.
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")

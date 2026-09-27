@@ -26,7 +26,8 @@ EVENT_LOGS = {"dialogue": "dialogue-events.jsonl", "intro": "intro-events.jsonl"
               "rules": "rule-fixes-events.jsonl", "images": "image-mode-events.jsonl", "control": "control-events.jsonl",
               "script": "script-inject-events.jsonl", "mini_stage": "mini-stage-events.jsonl",
               "settings": "settings-window-events.jsonl", "refunds": "upgrade-refund-events.jsonl",
-              "link": "link-events.jsonl", "intermission": "intermission-events.jsonl", "parts": "parts-page-events.jsonl", "ability": "ability-page-events.jsonl", "swap": "swap-page-events.jsonl", "save": "save-page-events.jsonl"}
+              "link": "link-events.jsonl", "intermission": "intermission-events.jsonl", "parts": "parts-page-events.jsonl", "ability": "ability-page-events.jsonl", "swap": "swap-page-events.jsonl", "save": "save-page-events.jsonl",
+              "unit_name": "unit-name-events.jsonl"}
 
 
 class HostError(RuntimeError):

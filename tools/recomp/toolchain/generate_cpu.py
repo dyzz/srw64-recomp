@@ -32,6 +32,8 @@ NATIVE_HOOKS = {
     "resident_func_80093278": "srw64_original_tactical_serialize",
     "resident_func_800927A4": "srw64_original_intermission_restore",
     "resident_func_800936A0": "srw64_original_tactical_restore",
+    # 3D5E opens the 部隊名 page; the name stays the default (docs/native/fixed-unit-name.md).
+    "load_000A7EC0_func_801C517C": "srw64_original_unit_name_command",
     "load_001090A0_func_801C5004": "srw64_original_name_selection_init",
     "load_001090A0_func_801C50B8": "srw64_original_name_selection_step",
     "load_001090A0_func_801C5DAC": "srw64_original_name_review_init",

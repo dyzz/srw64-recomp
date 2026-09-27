@@ -1,0 +1,64 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "unit-name",
+  "note": "The 部隊名 stays マーチウィンド (docs/native/fixed-unit-name.md). The opening replays scene 33 (event 001AB86C) around the naming choice: シモーヌ asks, then 3D44 0,2,24045 「それでかまわない／気に入らない」. The game host answers it with the first option without showing it, so アーク's 「マーチウィンドか……いいんじゃないか」 (24046) follows and the second branch (24050, アムロ's question 24054, 3D5E, アーク's proposal 24055) is skipped. Then 3D5E runs on its own, as a fallback check: it must do nothing, and 忍's line 24060, which prints the 部隊名 (<G:012C>, 8010F698), shows right after on the world map. Route markers are left out: a directly entered mini stage has no route. The stage then switches to the battlefield and ends through 3D4A like flow.json.",
+  "map": 20,
+  "deployments_from": "base:stage_auxiliary:001e4268",
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D3F", "args": [24044], "note": "シモーヌ: へぇ、いいんじゃない? どう、<nickname>?"},
+        {"op": "3D44", "args": [0, 2, 24045], "note": "それでかまわない／気に入らない: answered 1 by the host"},
+        {"op": "3E10"},
+        {"op": "3D3E", "args": [24046], "note": "アーク: マーチウィンドか……いいんじゃないか。俺はそれでかまわないよ"},
+        {"op": "3E1D"},
+        {"op": "3E11"},
+        {"op": "3D3E", "args": [24050], "note": "must not show: アーク dislikes the name"},
+        {"op": "3D3F", "args": [24054], "note": "must not show: アムロ asks for another name"},
+        {"op": "3D5E"},
+        {"op": "3D3E", "args": [24055]},
+        {"op": "3E1D"},
+        {"op": "3D5E", "note": "fallback: does nothing, no mode switch, 8010F698 unchanged"},
+        {"op": "3D3F", "args": [24060], "note": "忍: <部隊名>……, printed right after on the world map"},
+        {"op": "3D47"},
+        {"op": "3D3E", "args": [24062], "note": "ブライト: ではそれで決定だ"},
+        {"op": "3D38", "args": [60]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D3B", "args": [0]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1-player-start",
+      "type": 0,
+      "header": [0, 1, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D4A"}
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [48]},
+        {"op": "3D4B", "args": [4]}
+      ]
+    }
+  ]
+}

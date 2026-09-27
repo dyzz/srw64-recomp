@@ -32,6 +32,11 @@ struct SRW64GameHooks {
     bool (*script_before)(uint8_t*, uint32_t){};
     void (*script_after)(uint8_t*, uint32_t){};
     void (*choice)(uint8_t*){};
+    // 3D44 (8009FA94) runs for the script VM context `vm`. True: the host answered the
+    // choice and the original handler does not run (the naming choice, unit_name.hpp).
+    bool (*choice_step)(uint8_t*, uint32_t vm){};
+    // 3D5E (world-map overlay 801C517C) would open the 部隊名 page. True: it does nothing.
+    bool (*unit_name_page)(uint8_t*){};
     void (*intro_step)(uint8_t*, recomp_context*){};
     void (*name_begin)(uint8_t*, unsigned){};
     bool (*name_step)(uint8_t*, recomp_context*, unsigned){};

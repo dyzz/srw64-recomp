@@ -21,6 +21,9 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
+# The 部隊名 each language shows while the stored name is the original マーチウィンド
+# (docs/native/fixed-unit-name.md; the name cannot be changed).
+UI_KEYS |= {"unit_default_name"}
 # The Link Battler series page in front of the リンク screen.
 UI_KEYS |= {"link_back", "link_confirm", "link_crew_f91", "link_crew_goshogun", "link_crew_label",
             "link_crew_zambot", "link_hint", "link_joined", "link_keyboard_hint", "link_lead_f91",
