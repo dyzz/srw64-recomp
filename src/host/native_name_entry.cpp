@@ -175,6 +175,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
     return true;
 }
 }
+DefaultNames& default_names() {static DefaultNames table;return table;}
 void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");
     if(!path || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
