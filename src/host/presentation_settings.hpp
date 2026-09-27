@@ -35,4 +35,9 @@ void set_native_name_entry_ui(bool native);
 // built; saved as title_ui.
 bool native_title_ui();
 void set_native_title_ui(bool native);
+// The settings window's page last shown ("general", "interface", "rules", "controls",
+// "about"; empty before the first), saved as settings_page so the window reopens there.
+// Window thread only.
+std::string settings_page();
+void set_settings_page(const std::string& page);
 }

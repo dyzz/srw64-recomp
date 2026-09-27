@@ -38,7 +38,7 @@ RecompFrontend 与 RmlUi；不会覆盖脏上游或错误版本。源码准备�
 
 共享 UI 与对白用同一套打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
 准备的目录（HarmonyOS Sans SC 与 Condensed，外加仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`），
-缺文件时明确报错。应用包在 `Contents/Resources/fonts/` 带上这些字体与许可，设置页底部注明字体来源。
+缺文件时明确报错。应用包在 `Contents/Resources/fonts/` 带上这些字体与许可，设置窗口的「关于」页注明字体来源。
 开发环境可用 `SRW64_UI_FONT` 指定单个字体；没有 `SRW64_FONT_DIR` 时（单元测试、旧探针）才查找本机
 Arial Unicode、微软雅黑或 Noto Sans CJK。见[中日英跨平台文字与游戏对白](portable-text.md)。
 
@@ -46,7 +46,8 @@ Arial Unicode、微软雅黑或 Noto Sans CJK。见[中日英跨平台文字与�
 
 `ui.tree` 返回 RmlUi 元素的 `id`、文字、可用、焦点和窗口点坐标。
 `ui.click` 的 `text` 支持可见文字或稳定 ID，如 `route1`、`field0`、`next`、
-`rule:esp-level`、`locale:en`、`images:hd`、`link:0`。
+`rule:esp-level`、`locale:en`、`images:hd`、`link:0`。设置窗口分页后，按 id 点另一页上的设置控件会先翻到那一页；
+页签本身是 `settings-page:general` 等（见[设置窗口](settings-window.md) §7）。
 点击经 RmlUi 命中测试，不直接调用游戏函数。`ui.key` 使用 SDL key 名称，
 `ui.type` 使用 `SDL_TEXTINPUT` / `SDL_TEXTEDITING_EXT`；不再依赖 macOS key_code。
 截图使用默认游戏窗口，设置不再是独立 OS 窗口。`menu` 返回设置标题和 `native_menu` 就绪状态；

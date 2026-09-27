@@ -105,6 +105,11 @@ if(SRW64_ENABLE_RT64)
     # L2 / R2 on the idle tactical map: the cursor steps through the enemy units (docs/native/enemy-cycle.md).
     target_sources(srw64-gfx-host PRIVATE enemy_cycle.cpp)
     target_sources(srw64-gfx-host PRIVATE native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp")
+    # The release version (the root CMakeLists.txt project) for the settings window's About page.
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")
+    file(STRINGS "${SRW64_ROOT}/CMakeLists.txt" SRW64_PROJECT_LINE REGEX "^project\\(.* VERSION ")
+    string(REGEX REPLACE ".* VERSION ([0-9.]+).*" "\\1" SRW64_VERSION "${SRW64_PROJECT_LINE}")
+    set_property(SOURCE "${SRW64_ROOT}/src/native/ui/frontend.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
     if(APPLE)
         target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
         set_source_files_properties(macos/app_menu.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
