@@ -22,6 +22,8 @@ build/esrgan-venv/bin/python tools/hd_ai/unit_icon_hd.py run --output assets/hd-
 
 **分辨率**：play profile 的 `resolution_scale` 是 4（上限 8），16 像素图标在屏幕上占 64×64 内部像素，所以 64 的母版在默认倍率下 1:1 绘制；倍率 8 时按 2:1 显示。源信息有限，128 的版本只多出斜边上的过渡，没有必要。
 
+**状态（2026-09-27）**：用户确认先按此处理带入游戏（HD／原版用 F6 或设置切换，图标随美术包一起开关），后续可能再调；调整只改 `--pre`、`--size`、`--post`、`--model` 重跑 `run` 与 `pack --bind`，不用动接入。
+
 ## 探索过程
 
 ### 第一轮：平滑 → 重新像素化 32（被否）
