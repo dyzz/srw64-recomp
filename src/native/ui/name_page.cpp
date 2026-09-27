@@ -33,7 +33,9 @@ std::string NamePage::label(const std::string& key) const {
     auto found=labels.find(key);return found==labels.end()?key:found->second;
 }
 void NamePage::sync(const names::Request& next,const std::map<std::string,std::string>& next_labels,const std::string& next_locale) {
-    if((next.person!=names::Selection && next.person!=names::Review) || next.route>=4)throw std::invalid_argument("Invalid name-page request");
+    // The frontend syncs every frame; with no page up the request is the default one.
+    if(next.visible && ((next.person!=names::Selection && next.person!=names::Review) || next.route>=4))
+        throw std::invalid_argument("Invalid name-page request");
     const bool rebuild=art_changed || !document || next.serial!=request.serial || next.person!=request.person || next.visible!=request.visible || next_locale!=locale;
     if(next.serial!=request.serial || next.revision!=request.revision)waiting=false;
     request=next;labels=next_labels;locale=next_locale;art_changed=false;
