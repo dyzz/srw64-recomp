@@ -7,7 +7,7 @@
 ## 一次构建
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.2.0
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.0
 ```
 
 - 输出目录默认是 `build/release/<版本>-<短提交号>`，已存在时拒绝覆盖。可以用 `--output` 指定，用 `--keep-source` 保留检出目录与编译产物。

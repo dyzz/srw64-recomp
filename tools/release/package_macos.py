@@ -102,7 +102,7 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
     run(["/usr/bin/codesign", "--verify", "--deep", "--strict", str(bundle)])
 
 
-def stage_bundle(binary: Path, output: Path, *, version: str = "0.2.0", minimum: str = "14.0",
+def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
                  dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None) -> Path:
@@ -218,7 +218,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--version", default="0.2.0")
+    parser.add_argument("--version", default="0.3.0")
     parser.add_argument("--minimum-macos", default="14.0")
     parser.add_argument("--sign-identity", default="-", help="'-' is local ad-hoc testing, not notarization")
     parser.add_argument("--license-file", type=Path, action="append", default=[])
