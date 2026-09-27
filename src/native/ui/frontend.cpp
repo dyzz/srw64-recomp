@@ -3,6 +3,7 @@
 #include "ui_fonts.hpp"
 #include "slant_decorator.hpp"
 #include "name_page.hpp"
+#include "text_input.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
@@ -1727,7 +1728,7 @@ void initialize() {
             }
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
-    name_page=std::make_unique<NamePage>(*context,input,NameActions{names::select,names::choose,names::submit,names::review,names::validate});
+    name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -1771,17 +1772,15 @@ void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
 // The other native pages read the keyboard through the game's own key map (Z = A,
 // X = B, Enter = START, Space = Z, arrows = pad and stick, Q/E = L/R, IJKL = C).
 // A controller drives them with the same keys, so a Steam Deck needs no keyboard.
-// Text entry (names, funds) takes A as Enter and B as Esc, and on the name page
-// up and down move between the fields.
+// Funds entry and the name page take A as Enter and B as Esc.
 void pad_keys(uint32_t now,uint32_t pressed) {
-    const bool names_page=names::request().visible,text=names_page || !funds_editing.empty();
+    const bool text=names::request().visible || !funds_editing.empty();
     const std::pair<uint32_t,SDL_Keycode> keys[]={{0x8000,text?SDLK_RETURN:SDLK_z},{0x4000,text?SDLK_ESCAPE:SDLK_x},
         {0x1000,SDLK_RETURN},{0x2000,SDLK_SPACE},{0x0020,SDLK_q},{0x0010,SDLK_e},{0x0008,SDLK_i},{0x0004,SDLK_k},
-        {0x0002,SDLK_j},{0x0001,SDLK_l},{0x0800|(1u<<16),names_page?SDLK_TAB:SDLK_UP},
-        {0x0400|(1u<<17),names_page?SDLK_TAB:SDLK_DOWN},{0x0200|(1u<<18),SDLK_LEFT},{0x0100|(1u<<19),SDLK_RIGHT}};
+        {0x0002,SDLK_j},{0x0001,SDLK_l},{0x0800|(1u<<16),SDLK_UP},
+        {0x0400|(1u<<17),SDLK_DOWN},{0x0200|(1u<<18),SDLK_LEFT},{0x0100|(1u<<19),SDLK_RIGHT}};
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
-    for(const auto& [mask,key]:keys)if(presses&mask)
-        send_key(key,(repeats&mask) && !(pressed&mask),names_page && (mask&0x0800)?KMOD_SHIFT:KMOD_NONE);
+    for(const auto& [mask,key]:keys)if(presses&mask)send_key(key,(repeats&mask) && !(pressed&mask));
 }
 // The focused settings control, pressed by A, START, Enter, Z or Space.
 void settings_press() {
@@ -1806,9 +1805,12 @@ void sync() {
     context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
     const auto language=localization::snapshot();localization::Scope scope(language);
     auto request=names::request();
-    // Name page (name_page.cpp): choice cards show 72 dp portraits, the editor 160 dp.
+    // Name page (name_page.cpp): choice cards show 72 dp portraits, and every name is a
+    // default, shown in the reading language (docs/native/default-names.md).
     for(auto& choice:request.choices)for(auto& person:choice.portraits)for(auto& path:person)path=image(path,dp_pixels(72));
-    for(auto& person:request.portraits)for(auto& path:person)path=image(path,dp_pixels(160));
+    const auto shown=[&](names::Field field,std::u16string& name){name=utf16(names::default_names().display(field,utf8(name),language->locale));};
+    for(auto& choice:request.choices)for(auto& person:choice.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);}
+    for(auto& person:request.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);shown(names::Field::Nick,person[2]);}
     name_page->set_hd(presentation::image_mode.current()==1);
     // Catalog owns all labels. No duplicate translation table in the frontend.
     auto labels=language->ui_labels();

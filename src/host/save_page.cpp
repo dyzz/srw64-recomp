@@ -169,7 +169,9 @@ json slot_json(const uint8_t* ram,unsigned n,uint32_t headers=slots) {
     std::u16string name;
     for(const auto code:codes){const auto glyph=names::decode_glyphs({code});name+=glyph.empty()?u"?":glyph;}
     const unsigned protagonist=read(ram,rec+0xE,1);
-    s["name"]=dialogue::utf8(name);s["protagonist"]=protagonist;
+    // The header keeps the protagonist's nickname; a default shows in the reading language.
+    s["name"]=names::default_names().display(names::Field::Nick,dialogue::utf8(name),localization::catalog().locale);
+    s["protagonist"]=protagonist;
     s["level"]=read(ram,rec+0xF,1);s["episode"]=read(ram,rec+0x10,1);s["title"]=text(ram,uint16_t(text_titles+read(ram,rec+0x11,1)));
     s["turns"]=read(ram,rec+0x12,2);s["funds"]=read(ram,rec+0x14,4);
     const auto face=std::to_string(portrait_face+protagonist);

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Drive a fresh, isolated SRW64_DEBUG=1 game through the SDL/RmlUi frontend.
 
-Uses real semantic actions and GPU screenshots. Synthetic composition exercises
-SDL_TEXTEDITING, not the desktop input method's candidate window. Never attach
-this to a player's session: it starts a new game and edits character names.
+Uses real semantic actions and GPU screenshots. Never attach this to a player's
+session: it starts a new game.
 """
 import argparse
 import json
@@ -11,6 +10,7 @@ from pathlib import Path
 import sys
 import time
 
+ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from recomp.debug.session import Client
 
@@ -51,10 +51,14 @@ def main():
         return {**capture, 'window_points': window_points, 'display_scale': scale}
 
     def field(id):
+        """The text an element shows: its own, or its text nodes'."""
+        def text(node):
+            return node['text'] if 'text' in node else ''.join(text(c) for c in node.get('children', []))
+
         def find(node):
             if isinstance(node, dict):
                 if node.get('id') == id:
-                    return node.get('text', '')
+                    return text(node)
                 for value in node.values():
                     result = find(value)
                     if result is not None:
@@ -67,10 +71,21 @@ def main():
             return None
         return find(client.call('ui.tree'))
 
-    def edit(text):
-        click('field0')
-        client.call('ui.key', key='a', modifiers=['cmd' if sys.platform == 'darwin' else 'control'])
-        client.call('ui.type', text=text)
+    # Manami's route: the review shows both default names in the reading language
+    # (docs/native/default-names.md), rebuilt at once by a language switch.
+    terms = {l: json.loads((ROOT / f'content/locales/terms/{l}.json').read_text())['sections']['default_names']
+             for l in ('zh-Hans', 'en')}
+    separator = {'ja': '・', 'zh-Hans': '·', 'en': ' '}
+
+    def expected(locale, full, nick):
+        if locale == 'ja':
+            return f'{full} / {nick}'
+        given, family = terms[locale][full].split(separator[locale])
+        return f'{given}{separator[locale]}{family} / {terms[locale][nick]}'
+
+    def review_names():
+        locale = client.call('status')['locale']
+        return locale, field('name0'), field('name1')
 
     # Intro is skipped through the game's existing control path.
     wait(lambda s: s['intro']['loaded'] and s['vi'] >= 600)
@@ -83,27 +98,18 @@ def main():
     wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 3)
     shots = [shot('shared-select')]
     click('route1'); click('next')
-    state = wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 0)
+    state = wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 2)
     serial = state['name_page']['serial']
-    edit('🙂'); click('next')
-    assert client.call('status')['name_page']['serial'] == serial
-    assert field('field0') == '🙂'
-    checks.append('unencodable name remains on the editor')
-    edit('マナミ')
-    client.call('ui.key', key='a', modifiers=['cmd' if sys.platform == 'darwin' else 'control'])
-    client.call('ui.type', text='ナナ', marked=True)
-    before = client.call('status')['locale']
-    client.call('ui.key', key='f7')
-    assert client.call('status')['locale'] == before
-    client.call('ui.key', key='return')
-    assert client.call('status')['name_page']['serial'] == serial
-    client.call('ui.type', text='ナナ')
-    assert field('field0') == 'ナナ'
-    checks.append('IME preedit owns Return and F7; commit preserves UTF-8')
-    client.call('ui.key', key='f7')
-    wait(lambda s: s['locale'] != before)
-    assert field('field0') == 'ナナ'
-    checks.append('locale rebuild preserves edited names')
+    seen = {}
+    for _ in range(3):
+        locale, protagonist, partner = review_names()
+        seen[locale] = [protagonist, partner]
+        assert protagonist == expected(locale, 'マナミ・ハミル', 'マナミ'), (locale, protagonist)
+        assert partner == expected(locale, 'アイシャ・リッジモンド', 'アイシャ'), (locale, partner)
+        client.call('ui.key', key='f7')
+        wait(lambda s: s['locale'] != locale)
+    assert len(seen) == 3 and client.call('status')['name_page']['serial'] == serial
+    checks.append('selection commits the defaults; the review shows them in each language: ' + json.dumps(seen, ensure_ascii=False))
     assert 'settings-open' not in json.dumps(client.call('ui.tree')), 'Options must not overlay the game'
     menu = client.call('menu')
     if sys.platform == 'darwin':
@@ -120,13 +126,12 @@ def main():
     client.call('keys', up='w')
     wait(lambda s: not s['ui']['input_owners']['settings'])
     checks.append('settings close waits for held analog-direction keys to release')
-    assert field('field0') == 'ナナ'
     client.call('ui.key', key=',', modifiers=['cmd' if sys.platform == 'darwin' else 'control'])
     wait(lambda s: s['ui']['input_owners']['settings'])
     client.call('ui.key', key='esc')
     wait(lambda s: not s['ui']['input_owners']['settings'])
-    assert field('field0') == 'ナナ'
-    checks.append('Ctrl/Cmd+comma opens settings and Escape returns to the edited name')
+    assert client.call('status')['name_page']['serial'] == serial
+    checks.append('Ctrl/Cmd+comma opens settings and Escape returns to the review')
     client.call('window', width=800, height=600)
     window_points = (800, 600)
     time.sleep(.3)
@@ -134,23 +139,23 @@ def main():
     client.call('window', width=1100, height=760)
     window_points = (1100, 760)
     time.sleep(.3)
-    click('next')
-    wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 1)
-    shots.append(shot('shared-partner'))
-    click('next')
-    wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 2)
     shots.append(shot('shared-review'))
+    client.call('ui.key', key='esc')
+    wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 3)
+    checks.append('Escape on the review returns to the selection')
+    client.call('ui.key', key='return')
+    wait(lambda s: s['name_page']['active'] and s['name_page']['person'] == 2)
     client.call('keys', down='return')
     wait(lambda s: not s['name_page']['visible'])
     assert client.call('status')['ui']['input_owners']['names']
     client.call('keys', up='return')
     wait(lambda s: not s['ui']['input_owners']['names'])
     checks.append('story confirmation retains modal ownership until Return is released')
-    checks.append('real game accepts player, partner and review; returns to game')
     events = [json.loads(line) for line in (run / 'name-entry-events.jsonl').read_text().splitlines()]
-    assert any(e['kind'] == 'committed' and e['person'] == 0 and e['values'][0] == 'ナナ' for e in events)
-    assert any(e['kind'] == 'started' for e in events)
-    checks.append('guest writeback log contains the edited name and story start')
+    kinds = [e['kind'] for e in events]
+    assert kinds.count('selected') == 2 and 'back' in kinds and kinds[-1] == 'started', kinds
+    assert not any(e['kind'] == 'defaults-rejected' for e in events)
+    checks.append('guest log: defaults committed on selection, back, then story start')
     state = wait(lambda s: s['intro']['step'].get('active', False))
     skips = state['intro']['skips']
     press('e+return')
@@ -160,7 +165,7 @@ def main():
     state = client.call('status')
     (run / 'shared-ui-verification.json').write_text(json.dumps({
         'schema': 'srw64.shared-ui-verification.v1', 'status': 'passed',
-        'scope': 'live macOS SDL/RmlUi game adapters and GPU readback; synthetic IME only',
+        'scope': 'live macOS SDL/RmlUi game adapters and GPU readback',
         'checks': checks, 'screenshots': shots, 'final': state,
     }, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({'passed': checks, 'run': str(run)}, ensure_ascii=False))

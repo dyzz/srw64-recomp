@@ -2,8 +2,6 @@
 #include "probe_surface.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
-#include <RmlUi/Core/Elements/ElementFormControlInput.h>
-#include "game_adapter/name_codec.hpp"
 #include "json/json.hpp"
 #include <fstream>
 #include <iostream>
@@ -16,31 +14,22 @@ namespace {
 json load(const fs::path& path){std::ifstream in(path);if(!in)throw std::runtime_error("Cannot open "+path.string());return json::parse(in);}
 std::vector<Rml::byte> bytes(const fs::path& path){std::ifstream in(path,std::ios::binary);if(!in)throw std::runtime_error("Cannot open font");return {std::istreambuf_iterator<char>(in),{}};}
 // Synthetic peer of the game adapter. It deliberately never loads a ROM or
-// changes SRAM. Name validation can use the real glyph map from local content.
+// changes SRAM. Choosing a route commits its names and opens the review.
 struct Fixture {
     srw64::names::Request request;
-    srw64::names::Codec codec;
-    unsigned submissions{},starts{};
+    unsigned starts{},backs{};
     Fixture(){
         request.serial=1;request.visible=request.active=true;request.person=srw64::names::Selection;
         for(unsigned i=0;i<4;++i)request.choices[i].names={{{u"アキラ",utf16("Test"+std::to_string(i+1))},{u"ユウ",u"Test"}}};
-        unsigned glyph=1;
-        for(char16_t c:u"アキラユウナテスト名前漢字")codec.add(glyph++,std::u16string(1,c));
-        for(char16_t c=0xFF01;c<=0xFF5E;++c)codec.add(glyph++,std::u16string(1,c));
     }
-    void open(unsigned person){request.person=person;++request.serial;request.active=true;request.pending=false;request.error.clear();
-        if(person<2)request.values=request.names[person];}
+    void open(unsigned person){request.person=person;++request.serial;request.active=true;request.pending=false;}
     NameActions actions(){return {
         [this](uint64_t serial,unsigned route){if(serial==request.serial && route<4)request.route=route;},
         [this](uint64_t serial,unsigned route){if(serial!=request.serial || route>=4)return;request.route=route;
             for(unsigned p=0;p<2;++p)request.names[p]={request.choices[route].names[p][0],request.choices[route].names[p][1],request.choices[route].names[p][0]};
-            request.portraits={request.choices[route].portraits[0],request.choices[route].portraits[1]};open(0);},
-        [this](uint64_t serial,const std::array<std::u16string,3>& values,bool cancel){
-            if(serial!=request.serial || request.person>1)return;
-            if(cancel){open(srw64::names::Selection);return;}
-            ++submissions;request.names[request.person]=values;open(request.person+1);},
-        [this](uint64_t serial,bool confirm){if(serial!=request.serial)return;if(confirm){++starts;request.visible=false;}else open(0);},
-        [this](const std::u16string& value,unsigned field){std::vector<uint16_t> encoded;return codec.encode(value,field,encoded);}
+            open(srw64::names::Review);},
+        [this](uint64_t serial,bool confirm){if(serial!=request.serial)return;
+            if(confirm){++starts;request.visible=false;}else{++backs;open(srw64::names::Selection);}}
     };}
 };
 }
@@ -62,7 +51,6 @@ int main(int argc,char** argv){try{
     std::vector<std::pair<std::string,std::vector<char>>> portraits;
     if(options.contains("--dialogue")){
         const auto data=load(options.at("--dialogue"));
-        fixture.codec={};for(auto& [code,value]:data.at("glyphs").items())fixture.codec.add(std::stoul(code),utf16(value.get<std::string>()));
         unsigned i=0;for(auto& [id,face]:data.at("name_entry_assets").at("portraits").items()){
             if(i==8)break;fs::path path=face.at("original").get<std::string>();if(path.is_relative())path=fs::path(options.at("--dialogue")).parent_path()/path;
             std::ifstream in(path,std::ios::binary);if(!in)throw std::runtime_error("Missing fixture portrait");
@@ -87,30 +75,27 @@ int main(int argc,char** argv){try{
     for(auto& [name,data]:portraits)renderer.queue_image_from_bytes_file(name,data);
     SystemInterface_SDL system;system.SetWindow(surface.window);Rml::SetSystemInterface(&system);Rml::SetRenderInterface(renderer.get_rml_interface());
     auto font=bytes(options.at("--font"));
-    TextInput input;
     if(!Rml::Initialise())throw std::runtime_error("RmlUi initialization failed");
     struct RmlCleanup{bool active=true;~RmlCleanup(){if(active)Rml::Shutdown();}} rml_cleanup;
     if(!Rml::LoadFontFace(font,"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))throw std::runtime_error("Cannot load font");
-    auto* context=Rml::CreateContext("name-probe",{1100,760},nullptr,&input);if(!context)throw std::runtime_error("Cannot create RmlUi context");
-    input.bind(*context);
+    auto* context=Rml::CreateContext("name-probe",{1100,760});if(!context)throw std::runtime_error("Cannot create RmlUi context");
     bool running=true;unsigned frame=0;size_t next_action=0;std::ofstream log(output/"events.jsonl");
     {
-    NamePage page(*context,input,fixture.actions());
-    auto sync=[&]{page.sync(fixture.request,catalogs.at(locale),locale);context->Update();input.update_rectangle();};sync();
-    auto snapshot=[&]{json values=json::array();for(auto& value:page.values())values.push_back(utf8(value));
+    NamePage page(*context,fixture.actions());
+    auto sync=[&]{page.sync(fixture.request,catalogs.at(locale),locale);context->Update();};sync();
+    auto snapshot=[&]{
         json state={{"schema","srw64.ui-probe-state.v1"},{"frame",frame},{"locale",locale},{"serial",fixture.request.serial},
-            {"person",fixture.request.person},{"route",fixture.request.route},{"visible",fixture.request.visible},{"values",values},
-            {"composition",input.has_composition()},{"pending",page.pending()},{"submissions",fixture.submissions},{"starts",fixture.starts}};
+            {"person",fixture.request.person},{"route",fixture.request.route},{"visible",fixture.request.visible},
+            {"pending",page.pending()},{"starts",fixture.starts},{"backs",fixture.backs}};
         if(auto* focused=context->GetFocusElement())state["focus"]=focused->GetId();
-        if(auto* view=page.view())state["error"]=view->GetElementById("error")->GetInnerRML();return state;};
+        return state;};
     auto event=[&](SDL_Event& e){
         if(e.type==SDL_QUIT){running=false;return;}
         if(e.type==SDL_KEYDOWN && e.key.keysym.sym==SDLK_F7 && !e.key.repeat){
             locale=locale=="ja"?"zh-Hans":locale=="zh-Hans"?"en":"ja";sync();return;}
-        if(!page.event(e))RmlSDL::InputEventHandler(context,e);
         // This modal page consumes all input. The real game adapter remains
         // responsible for its existing release-after-close gate.
-        if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);
+        if(!page.event(e))RmlSDL::InputEventHandler(context,e);
     };
     while(running){
         SDL_Event e;while(SDL_PollEvent(&e))event(e);
@@ -118,16 +103,7 @@ int main(int argc,char** argv){try{
         if(next_action<script.size() && frame>=script[next_action].value("frame",unsigned(next_action*3+3))){
             const auto action=script[next_action++];const auto op=action.at("op").get<std::string>();
             if(op=="click")page.action(action.at("id"));
-            else if(op=="focus"){
-                auto* field=page.view()->GetElementById(action.at("id").get<std::string>());if(!field)throw std::runtime_error("Unknown focus target");field->Focus();
-            }else if(op=="select_all"){
-                auto* field=dynamic_cast<Rml::ElementFormControlInput*>(context->GetFocusElement());if(!field)throw std::runtime_error("No focused input");field->Select();
-            }else if(op=="text" || op=="preedit"){
-                const std::string text=action.at("text");SDL_Event injected{};injected.type=op=="text"?SDL_TEXTINPUT:SDL_TEXTEDITING;
-                if(text.size()>=sizeof(injected.text.text))throw std::runtime_error("Script text exceeds SDL event capacity");
-                if(op=="text")SDL_strlcpy(injected.text.text,text.c_str(),sizeof(injected.text.text));
-                else{SDL_strlcpy(injected.edit.text,text.c_str(),sizeof(injected.edit.text));injected.edit.start=action.value("start",0);injected.edit.length=action.value("length",0);}event(injected);
-            }else if(op=="key"){
+            else if(op=="key"){
                 SDL_Event injected{};injected.type=action.value("up",false)?SDL_KEYUP:SDL_KEYDOWN;injected.key.keysym.sym=SDL_GetKeyFromName(action.at("key").get<std::string>().c_str());
                 if(!injected.key.keysym.sym)throw std::runtime_error("Unknown SDL key");event(injected);
             }else if(op=="language"){locale=action.at("locale");if(!catalogs.contains(locale))throw std::runtime_error("Unknown locale");}
@@ -146,7 +122,7 @@ int main(int argc,char** argv){try{
             frames.clear();if(!swapchain->resize())continue;rebuild();
         }
         unsigned index=0;if(!swapchain->acquireTexture(acquire.get(),&index)){SDL_Delay(10);continue;}
-        const auto width=swapchain->getWidth(),height=swapchain->getHeight();context->SetDimensions({int(width),int(height)});context->Update();input.update_rectangle();
+        const auto width=swapchain->getWidth(),height=swapchain->getHeight();context->SetDimensions({int(width),int(height)});context->Update();
         commands->begin();auto* texture=swapchain->getTexture(index);
         commands->barriers(RenderBarrierStage::GRAPHICS,RenderTextureBarrier(texture,RenderTextureLayout::COLOR_WRITE));commands->setFramebuffer(frames[index].get());
         commands->setViewports(RenderViewport(0,0,float(width),float(height)));commands->setScissors(RenderRect(0,0,width,height));commands->clearColor(0,RenderColor(.03,.05,.08,1));
@@ -161,7 +137,7 @@ int main(int argc,char** argv){try{
         SDL_Delay(8);
     }
     std::ofstream(output/"result.json")<<json({{"schema","srw64.ui-probe-result.v1"},{"status","passed"},{"state",snapshot()},
-        {"scope","Synthetic name-page peer; no game execution, SRAM, or OS-IME acceptance"}}).dump(2)<<'\n';
+        {"scope","Synthetic name-page peer; no game execution or SRAM"}}).dump(2)<<'\n';
     }
     Rml::RemoveContext("name-probe");Rml::Shutdown();rml_cleanup.active=false;renderer.reset();
     std::cout<<"Name-page probe completed: "<<output<<'\n';return 0;

@@ -9,7 +9,7 @@ from .assets import compile_art, inside, portrait_lookup, unit_lookup
 from .catalog import compile_locale, sha, source_catalog
 
 UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "controls", "history_title", "history_controls",
-           "name_title", "name_player", "name_partner", "name_given", "name_family", "name_nickname", "name_limit", "name_cancel", "name_default", "name_back", "name_next", "name_confirm", "name_hint", "name_empty", "name_long", "name_unsupported", "name_spaces", "name_invalid", "name_review_keyboard_hint", "name_review", "name_step_player", "name_step_partner", "name_step_review", "name_review_hint", "name_page_hint", "name_preview", "name_keyboard_hint", "name_start", "name_edit", "name_to_partner", "name_to_review",
+           "name_title", "name_cancel", "name_review", "name_step_player", "name_step_partner", "name_step_review", "name_review_hint", "name_start",
            "name_step_select", "select_title", "select_hint", "select_super", "select_real", "select_male",
            "select_female", "select_confirm", "select_keyboard_hint"}
 # The 选项 menu and settings window label one item per optional rule, so those keys follow the catalog.
@@ -81,7 +81,7 @@ UI_KEYS |= {
     "battle_response", "battle_response_hint", "battle_title", "battle_weapon",
 }
 # Controller versions of the key hints ("_pad"), shown after controller input (Steam Deck).
-PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "name_hint", "name_keyboard_hint", "select_keyboard_hint", "name_review_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint"}
+PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint"}
 UI_KEYS |= {key + "_pad" for key in PAD_HINT_KEYS}
 # Controller names in hints.
 UI_KEYS |= {"pad_rstick_down"}

@@ -27,7 +27,7 @@
 | 场间主菜单：九项（「（前）」场景后两项）、のりかえ 二级菜单 | SDL 鼠标与键盘 | `ui.click --text intermission:N`（或可见文字）确认第 N 项，`intermission-swap:0|1` 选驾驶员／妖精；`ui.key up`／`down`／`return`／`escape`；`status.intermission_page` 给出 `cursor`、`submenu`、`swap_refused`、回合数与资金 |
 | 改造画面：机体列表、五项改造、确认窗与消息 | SDL 鼠标与键盘 | `ui.click --text upgrade:N`（当前行确认、其他行移动）、`upgrade-confirm`／`upgrade-cancel`／`upgrade-dismiss`；`ui.key up`／`down`／`left`／`right`／`return`／`escape`；`status.upgrade_page` 给出 `screen`、`rows`、`window`、`funds`；資金直接修改：`ui.click --text upgrade-funds`（主菜单 `intermission-funds`）、`ui.type <数字>`、`ui.key return` |
 | 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | SDL 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
-| 姓名页：字段、按钮、Tab／Enter／Esc、输入法组字 | SDL 鼠标与键盘 | `ui.click`、`ui.type`（`marked`／`unmark` 模拟组字与提交）、`ui.key` |
+| 选角与确认页：卡片、按钮、←→／Enter／Esc | SDL 鼠标与键盘 | `ui.click`、`ui.key`；`status.name_page` 给出 `person`（3 选角、2 确认）与选角页的四条路线 |
 | 战前确认页：双方概率、应对、动画、开始／返回；按键同游戏（Z/Enter、X/Esc、方向键/WASD、Q、E、K）及手柄 | SDL/RmlUi | `ui.click --id battle-confirm`、`battle-weapon`、`battle-counter`、`battle-evade`、`battle-defend`、`battle-spirits`、`battle-animation`、`battle-back`；`status.battle_page` 是游戏线程发布的快照 |
 | 运行时加载关卡文件 | 标题菜单时把文件拖到窗口 | `mini_stage.load {"path": <镜像或关卡源文件>}`；直接进入，无需启动时指定关卡，见[迷你关卡](../script/mini-stage.md) |
 | 主菜单迷你关卡入口 | RmlUi 按钮／F8 | 带 mini stage 启动后 `ui.click --id mini-enter`，或 `keys f8`；等待 `status.mini_stage.ready`。自动完成默认人物初始化，普通新游戏不变 |
@@ -36,7 +36,7 @@
 | 场间 ユニット能力／パイロット能力 页面 | RmlUi 页面 | `ui.click --id ability:N`，或 `keys` 的方向键、Z／X、Q／E；`status.ability_page`，等待条件 `ability_page`，事件日志 `ability` |
 | 场间 のりかえ 页面：驾驶员／妖精列表、目标列表、确认 | RmlUi 页面 | `ui.click --id swap:N`／`swap-yes`／`swap-no`，或 `keys`；`status.swap_page`，等待条件 `swap_page`，事件日志 `swap` |
 | 场间 データセーブ 页面：介质选择、存档栏、覆盖确认、Pak 提示 | RmlUi 页面 | `ui.click --id save:N`／`save-yes`／`save-no`，或 `keys`；`status.save_page`，等待条件 `save_page`，事件日志 `save` |
-| 共享设置：规则、预设、语言、画面、战前确认界面、场间画面、主角选择与姓名输入、标题菜单画面（分五页，按 id 点击会先翻到所在页） | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定（`rules`／`images`／`locale`／`battle_ui`／`intermission_ui`／`name_entry_ui`／`title_ui`） |
+| 共享设置：规则、预设、语言、画面、战前确认界面、场间画面、主角选择、标题菜单画面（分五页，按 id 点击会先翻到所在页） | RmlUi 页面 | `ui.click`／`ui.tree`／默认 `screenshot`；或用 `settings` 直接设定（`rules`／`images`／`locale`／`battle_ui`／`intermission_ui`／`name_entry_ui`／`title_ui`） |
 | 游戏窗口：尺寸、前台、关闭按钮 | 窗口管理 | `window`（`width`/`height`、`front`、`close`） |
 | 正常退出 | Esc、关窗、⌘Q | `quit`，或 `keys escape`、`window close` |
 

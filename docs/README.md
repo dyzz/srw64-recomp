@@ -16,7 +16,7 @@
 
 | 目的 | 文档 |
 | --- | --- |
-| 启动试玩、按键、阅读操作、姓名页与「选项」菜单 | [原生试玩](guide/native-playtest.md) |
+| 启动试玩、按键、阅读操作、选角页与「选项」菜单 | [原生试玩](guide/native-playtest.md) |
 | 构建、源码责任、验证开关、证据与清理 | [原生开发指南](guide/native-development.md) |
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
@@ -32,7 +32,7 @@
 
 | 文档 | 内容 |
 | --- | --- |
-| [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、姓名页与「选项」菜单、存档历史 |
+| [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、选角页与「选项」菜单、存档历史 |
 | [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
 | [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
 | [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
@@ -62,9 +62,10 @@
 | [阅读指示器](native/native-reading-indicators.md) | 自动档位、下一句进度、当前说话框 |
 | [对白闪烁](native/native-dialogue-flicker.md) | 间歇性画面／底栏消失的原因与修复证据 |
 | [对话框 HD 边框](native/native-dialogue-runtime-hd.md) | 资源 1296 的 13 张边框切片按原版设计重画，RT64 哈希替换 |
-| [姓名输入](native/native-name-entry.md) | 窗口内现代姓名页、原校验、姓名写回、关闭后的按键释放 |
+| [主角选择与确认页](native/native-name-entry.md) | 窗口内选角页与双人确认页、原版姓名区、默认名写入、关闭后的按键释放 |
+| [默认姓名三语显示](native/default-names.md) | 不许改名；姓名区存原版字形，默认名按阅读语言显示；接入点、存档兼容与译名表 |
 | [部队名固定](native/fixed-unit-name.md) | 部队名不许改：命名选择自动答「それでかまわない」、3D5E 不开页面、默认名按语言显示；3D5E／部队名页（模式 6、状态 4、保留名校验）的静态分析 |
-| [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立主角与姓名页、组字桥接及脚本化验证 |
+| [共享姓名页原型](native/shared-name-page-probe.md) | 固定 RecompFrontend/RmlUi、独立的选角与确认页及脚本化验证 |
 | [场间主菜单接管](native/native-intermission-menu.md) | 原版调度表、布局表、面板几何与 8 张背景的静态分析；保持原构图的 RmlUi 接管、实机验证（12 项）与未验证清单 |
 | [改造画面接管](native/native-upgrade-screens.md) | ユニット改造／武器改造 五个画面：原版列表、详情与状态机的静态分析，保持原构图的 RmlUi 接管，与 15 段规则钩子的配合，实机验证与未验证清单 |
 | [強化パーツ 画面接管](native/native-parts-screens.md) | 机体列表、槽位与库存、持有者三个画面：原版列表、加成表与状态机的静态分析，保持原构图的 RmlUi 接管，装卸走原版函数，实机验证与未验证清单 |

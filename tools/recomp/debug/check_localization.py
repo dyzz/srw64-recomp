@@ -3,8 +3,9 @@
 
 intermission: loads the stage-one-clear save in Chinese, opens every native
 intermission screen, switches to English and back while it is open, and checks
-that names follow the language at once, that the player's own names stay the
-same in every language, that the weapon confirmation has no raw markers, and that
+that names follow the language at once, that the protagonist's and partner's
+default names follow it too (a name entered in an older build stays the same), that
+the weapon confirmation has no raw markers, and that
 F5 reads the dialogue text files again and reports a broken override.
 battle: enters the battle-ui mini stage, starts a battle with animation on and
 checks that the quote box is redrawn natively with a translated speaker.
@@ -155,7 +156,7 @@ def intermission():
         page('upgrade_page', 'list')
         seen = switching('upgrade_page', 'upgrade-list',
                          lambda p, l: [r['name'] for r in p['rows']] == [term('units', u, l) for u in units])
-        # スイームルグ's pilot is the protagonist: the entered name, whatever the language.
+        # スイームルグ's pilot is the protagonist: a default name follows the language.
         pilots['upgrade'] = {l: p['rows'][1].get('pilot') for l, p in seen.items()}
         keys('z', pause=1)
         page('upgrade_page', 'stats')
@@ -241,10 +242,14 @@ def intermission():
     for name, run in (('upgrade', upgrade), ('weapons', weapons), ('ability', ability), ('parts', parts), ('swap', swap), ('save', save),
                       ('reload', reload)):
         section(name, run)
-    # The player's own names come from the game's name banks: the same in every language.
+    # The protagonist's and partner's names come from the game's name banks: a default
+    # shows in each language (docs/native/default-names.md), an older entered name as stored.
+    defaults = {(TERMS['zh-Hans']['default_names'][ja], TERMS['en']['default_names'][ja]) for ja in TERMS['en']['default_names']}
     for where, by_locale in pilots.items():
-        names = list(by_locale.values())
-        record(f'entered-names-{where}', len(names) == 2 and names[0] and names[0] == names[1], by_locale)
+        zh, en = by_locale.get('zh-Hans'), by_locale.get('en')
+        zh, en = (zh, en) if isinstance(zh, list) else ([zh], [en])
+        passed = bool(zh) and len(zh) == len(en) and all(z and ((z, e) in defaults or z == e) for z, e in zip(zh, en))
+        record(f'default-names-{where}', passed, by_locale)
     shot('intermission-menu-zh-Hans')
 
 
