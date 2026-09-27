@@ -82,6 +82,7 @@ int main(int argc,char** argv){try{
     bool running=true;unsigned frame=0;size_t next_action=0;std::ofstream log(output/"events.jsonl");
     {
     NamePage page(*context,fixture.actions());
+    page.sync({},catalogs.at(locale),locale);   // the host syncs every frame, also with no page up
     auto sync=[&]{page.sync(fixture.request,catalogs.at(locale),locale);context->Update();};sync();
     auto snapshot=[&]{
         json state={{"schema","srw64.ui-probe-state.v1"},{"frame",frame},{"locale",locale},{"serial",fixture.request.serial},
