@@ -1,105 +1,148 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12116 Shot · ショット
+# 触发：攻击（通用，1/6）
 > 「撃てっ!」
 “Fire!”
 
 @12117 Shot · ショット
+# 触发：攻击（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるな!撃ち落とせ!」
-“Don't let them! Shoot them down!”
+“Don’t let them! Shoot them down!”
 
 @12118 Shot · ショット
+# 触发：攻击（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「好きにはさせん!」
-“I won't let you do as you please!”
+“I won’t let you do as you please!”
 
 @12119 Shot · ショット
+# 触发：攻击（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!」
-“I won't let you!”
+“I won’t let you!”
 
 @12120 Shot · ショット
+# 触发：攻击（通用，5/6）
 > 「落とせよ!」
 “Shoot them down!”
 
 @12121 Shot · ショット
+# 触发：攻击（通用，6/6）
 > 「スプリガンのパワー、思い知れ!」
 “Feel the power of the Spriggan!”
 
 @12122 Shot · ショット
+# 触发：被击坠（通用，1/2）
 > 「うおっ! な、なんだと……」
 “Whoa! W-what the...”
 
 @12123 Shot · ショット
+# 触发：被击坠（通用，2/2）
 > 「バカな!? ミュージィ……」
 “Impossible?! Musy...”
 
 @12124 Shot · ショット
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぬうっ! 機関部に損傷か!?」
 “Ngh! Damage to the engine section?!”
 
 @12125 Shot · ショット
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「ぐうっ! い、いかん、これ以上
 >  やられては……」
 “Guh! N-no good, if I take any more...”
 
 @12126 Shot · ショット
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「うおっ! ま、まさかこれ程とは……」
 “Whoa! T-to think it was this strong...”
 
 @12127 Shot · ショット
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くっ!! どこをやられたか!?」
 “Gah!! Where did it hit me?!”
 
 @12128 Shot · ショット
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! まだだ! まだ落ちるな!」
-“Tch! Not yet! Don't go down yet!”
+“Tch! Not yet! Don’t go down yet!”
 
 @12129 Shot · ショット
-# 审校：原文是对空炮火，指敌方防空炮火，不是呼叫己方AA Gun单位，改为“AA fire”更准确。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：舰长斥责部下；AA 写全
 # 检查提示：未用必用译名：対空砲→AA Gun
 > 「くっ! 対空砲火! 何を
 >  している!」
-“Guh! AA fire! What are you doing?!”
+“Guh! Anti-air fire! What are you doing?!”
 
 @12130 Shot · ショット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「私とて、オーラ力はある!!」
 “Even I have aura power!!”
 
 @12131 Shot · ショット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「その程度の攻撃など……」
 “An attack like that...”
 
 @12132 Shot · ショット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「スプリガンの装甲は、並みでは
 >  ないのだ!」
-“The Spriggan's armor is no ordinary armor!”
+“The Spriggan’s armor is no ordinary armor!”
 
 @12133 Shot · ショット
+# 触发：回避（通用，1/4）
 > 「よく見て回避しろ!」
 “Watch closely and evade!”
 
 @12134 Shot · ショット
+# 触发：回避（通用，2/4）
 > 「正面! 回避だ!」
 “In front! Evade!”
 
 @12135 Shot · ショット
+# 触发：回避（通用，3/4）
 > 「動けよ! 私の操るままに!」
 “Move! Just as I command!”
 
 @12136 Shot · ショット
-# 审校：原译句意不完整，补充“nothing”使句子完整自然。
+# 触发：回避（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「スプリガンの機動性ならば、
 >  この程度の攻撃は!」
-“With the Spriggan's mobility, an attack like this is nothing!”
+“With the Spriggan’s mobility, an attack like this is nothing!”
 
 @12137 Shot · ショット
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ! そんな攻撃など」
-“It won't work! An attack like that!”
+“It won’t work! An attack like that!”
 
 @12138 Shot · ショット
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：原文第二句是感叹
 > 「何っ!? 弾切れか!」
-“What?! Out of ammo?!”
+“What?! Out of ammo!”
 
 @12139 Shot · ショット
+# 触发：射程外，无法反击（通用，1/1）
 > 「ちいっ、このスプリガンの射程をも
 >  上回るとは……」
 “Tch, to outrange even this Spriggan...”
+
+@16835 Shot · ショット
+# 触发：使用〈オーラキャノン〉（低优先，可能被通用台词顶掉）
+# 审校：补引号
+> 「主砲、発射!!」
+“Main cannon, fire!!”
+
+@16836 Shot · ショット
+# 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
+# 审校：补引号
+> 「全砲門、一斉発射!!」
+“All guns, fire at once!!”

@@ -1,106 +1,167 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9127 Henken · ヘンケン
+# 触发：攻击（通用，1/2）
 # 审校：“落とせよ”是命令击落目标，初稿“Take it down!”语气偏泛，改为更明确的“Shoot it down!”
 > 「落とせよ」
 “Shoot it down!”
 
 @9128 Henken · ヘンケン
+# 触发：攻击（通用，2/2）
 > 「撃て!!」
 “Fire!!”
 
 @9129 Henken · ヘンケン
+# 触发：被击坠（通用，1/2）
 > 「くっ、ここまでか……総員退避!」
 “Ngh, this is it, then... All hands, abandon ship!”
 
 @9130 Henken · ヘンケン
+# 触发：被击坠（通用，2/2）
 > 「しまった! 直撃を受けたか!」
 “Damn! We took a direct hit!”
 
 @9131 Henken · ヘンケン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ、い、いかん! 動力部に
 >  直撃か!?」
 “Ngh, n-no! A direct hit to the power core?!”
 
 @9132 Henken · ヘンケン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ええぃ、まだだ! まだ落ちるなっ!!」
-“Gah, not yet! Don't you sink on me!!”
+“Gah, not yet! Don’t you sink on me!!”
 
 @9133 Henken · ヘンケン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! いかん、このままでは艦が
 >  もたん!」
-“Ngh! No good, the ship can't take much more!”
+“Ngh! No good, the ship can’t take much more!”
 
 @9134 Henken · ヘンケン
-# 审校：“これ以上やらせるなっ!”意为“别让他们再得手”，初稿“I won't let you hit us again!”把对象说成“you”，改为“Don't let them hit us again!”更准确
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬううぅっ! これ以上やらせるなっ!」
-“Nghhh! Don't let them hit us again!”
+“Nghhh! Don’t let them hit us again!”
 
 @9135 Henken · ヘンケン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「うっ……被害状況は!?」
 “Ugh... Damage report?!”
 
 @9136 Henken · ヘンケン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「くっ……対空砲火、しっかりしろ!!」
 “Ngh... AA Gun, get it together!!”
 
 @9137 Henken · ヘンケン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 > 「隔壁降ろせっ! 消火班
 >  出動!!」
 “Seal the bulkheads! Damage control, move out!!”
 
 @9138 Henken · ヘンケン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……弾幕、しっかりやらんか!」
-“Ugh... Barrage, don't slack off!”
+“Ugh... Barrage, don’t slack off!”
 
 @9139 Henken · ヘンケン
-# 审校：同L8，改为“Don't let them hit us again!!”避免对象错误
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……つぅっ……これ以上やらせる
 >  なっ!!」
-“Ugh... ngh... Don't let them hit us again!!”
+“Ugh... ngh... Don’t let them hit us again!!”
 
 @9140 Henken · ヘンケン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「この程度なら、どうということはない」
 “This much is nothing.”
 
 @9141 Henken · ヘンケン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「たいした被害は無しか……」
 “No serious damage, then...”
 
 @9142 Henken · ヘンケン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん……その程度で落ちるかっ!」
-“Hmph... You think that's enough to sink us?!”
+“Hmph... You think that’s enough to sink us?!”
 
 @9143 Henken · ヘンケン
+# 触发：回避（通用，1/4）
 > 「急速回頭! 避けろよ!!」
 “Hard about! Evade!!”
 
 @9144 Henken · ヘンケン
+# 触发：回避（通用，2/4）
 > 「来るぞ!! 面舵っ!!」
 “Here it comes!! Starboard!!”
 
 @9145 Henken · ヘンケン
+# 触发：回避（通用，3/4）
 > 「退避運動!!」
 “Evasive maneuvers!!”
 
 @9146 Henken · ヘンケン
+# 触发：回避（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるな!!」
-“Don't let it hit!!”
+“Don’t let it hit!!”
 
 @9147 Henken · ヘンケン
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「フッ……この程度のビームなら気にす
 >  ることないが……」
 “Hmph... A Beam like that is nothing to worry about...”
 
 @9148 Henken · ヘンケン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ!」
-“It won't work!”
+“It won’t work!”
 
 @9149 Henken · ヘンケン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なに!? 弾切れか!?」
 “What?! Out of ammo?!”
 
 @9150 Henken · ヘンケン
+# 触发：射程外，无法反击（通用，1/1）
 > 「ええぃ! 一方的にやられる
 >  だけか!?」
 “Gah! Are we just going to take it?!”
+
+@14693 Henken · ヘンケン
+# 触发：使用〈大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル! 撃て!!」
+“Missile! Fire!!”
+
+@14694 Henken · ヘンケン
+# 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座! しっかり狙え!!」
+“All turrets! Aim carefully!!”
+
+@14695 Henken · ヘンケン
+# 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
+> 「全砲門開け!
+>  集中砲火ぁ!!」
+“Open all gun ports! Concentrated fire!!”
+
+@14696 Henken · ヘンケン
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「主砲! 撃て!!」
+“Main cannon! Fire!!”
+
+@14697 Henken · ヘンケン
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「メガ粒子砲、よく狙えよ」
+“Mega Particle Cannon, aim well.”
+
+@14698 Henken · ヘンケン
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「ハイメガ粒子砲! 発射!!」
+“High Mega Particle Cannon! Fire!!”

@@ -16,9 +16,10 @@
 “Everyone, listen up. Just break through the enemy no matter what.”
 
 @43324 Rose · ロゼ
+# 审校：原文是“我不指望自己能活下来”，现译“I don't care about saving myself”语气偏随意，改为更贴合罗塞冷静自持口吻的表述。
 > 「私は自分が助かろうとは思わない
 >  だがマーグの復讐、これだけは……」
-“I don't care about saving myself. But avenging Marg... that alone...”
+“I don't expect to survive. But avenging Marg... that alone...”
 
 @43325 Takeru · タケル
 > 「あれは……ロゼか」
@@ -31,10 +32,10 @@
 “Mars... I'm going to kill you. I'll make you pay for Commander Marg!”
 
 @43327 Takeru · タケル
-# 审校：“those are my lines” 是复数，原文“俺のセリフだ”是单数，改为 that's my line。
+# 审校：破折号
 > 「なんだって!? ばかな、それは
 >  俺のセリフだ!」
-“What?! That's crazy, that's my line!”
+“What?! That's crazy. That's my line!”
 
 @43328 Rose · ロゼ
 > 「問答無用!!」
@@ -173,8 +174,9 @@ I believe that too. Zuul is the one who's wrong.”
 “Rose...?!”
 
 @43348 Rose · ロゼ
+# 审校：原文“よくもぬけぬけと”是罗塞对武的愤怒指责，现译“you shameless liar”添加了原文没有的“liar”，改为更贴切的“you have some nerve”以保持口吻冷峻。
 > 「マーズ、よくもぬけぬけと」
-“Mars, you shameless liar.”
+“Mars, you have some nerve.”
 
 @43349 Takeru · タケル
 > 「待て、ロゼ。戦うことはいつでもできる
@@ -239,6 +241,7 @@ do you?”
 “Well, well. Looks like we managed to break through somehow.”
 
 @43359 Garrison · ギャリソン
+# 审校：Garrison 的 voice 要求无缩写，将 we've 改为 we have。
 > 「そうですな。銀河帝国軍が
 >  我々の動きを察知して
 “Indeed, sir. The Galactic Empire forces have caught on to our movements and
@@ -249,7 +252,7 @@ have begun gathering in South America, but the OZ forces at Cusco appear to be
 ---
 >  もちこたえている様子。これで
 >  我々もどうにか間にあいましたな」
-holding out still. It seems we've made it in time after all.”
+holding out still. It seems we have made it in time after all.”
 
 @43360 Bright · ブライト
 > 「よし、クスコへ急ぐぞ」
@@ -336,6 +339,7 @@ I was raised on Earth.”
 “Is this her, the Galactic Empire soldier who surrendered to us?”
 
 @43375 Takeru · タケル
+# 审校：称呼统一
 > 「万丈さん……ええ、そうです」
 “Banjo... yes, that's right.”
 
@@ -497,9 +501,10 @@ couldn't you?”
 “You'd give an enemy like me that much freedom? Why...?”
 
 @43402 Banjo · 万丈
+# 审校：谚语
 > 「別に、坊主憎けりゃ袈裟まで
 >  憎いってわけでもないからね
-“It's not like I hate the robe along with the monk, you know.
+“I'm not one to hate the monk's robe just because I hate the monk, you know.
 ---
 >  ま、実際のところは僕たちもまったく
 >  余裕がないんでね。よけいなことに

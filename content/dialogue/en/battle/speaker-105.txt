@@ -1,81 +1,107 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6868 Mueller · ミューラー
+# 触发：攻击（通用，1/9）
 > 「みじめな過去の遺物どもめ」
 “You pitiful relics of the past.”
 
 @6869 Mueller · ミューラー
+# 触发：攻击（通用，2/9）
 > 「新たな時代の洗礼を受けろ!」
 “Receive the baptism of a new era!”
 
 @6870 Mueller · ミューラー
+# 触发：攻击（通用，3/9）
+# 审校：笑声不要音译
 > 「クックックックッ」
-“Kukukuku.”
+“Heh heh heh heh...”
 
 @6871 Mueller · ミューラー
+# 触发：攻击（通用，4/9）
 > 「アーッハッハッハッハッ」
 “Ahahahahaha!”
 
 @6872 Mueller · ミューラー
+# 触发：攻击（通用，5/9）
 > 「フッ」
 “Hmph.”
 
 @6873 Mueller · ミューラー
+# 触发：攻击（通用，6/9）
 > 「死ねぇ!」
 “Die!”
 
 @6874 Mueller · ミューラー
+# 触发：攻击（通用，7/9）
 > 「ヒャーッハハハハハッ!」
 “Hyahahahahaha!”
 
 @6875 Mueller · ミューラー
+# 触发：攻击（通用，8/9）
 > 「ヒャハハハハハッ、粛正、粛正っ!」
 “Hyahahahaha, purge, purge!”
 
 @6876 Mueller · ミューラー
+# 触发：攻击（通用，9/9）
 > 「ヒャーッハッハッハァ!」
 “Hyahahahaha!”
 
 @6877 Mueller · ミューラー
+# 触发：被击坠（通用，1/1）
 > 「うぎゃあぁぁーっ!」
 “Ugraaah!”
 
 @6878 Mueller · ミューラー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「うわあぁぁーっ!」
 “Uwaaah!”
 
 @6879 Mueller · ミューラー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こんなばかなことがぁっ!」
-“Th-this can't be happening!”
+“Th-this can’t be happening!”
 
 @6880 Mueller · ミューラー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/2）
 > 「なにっ!?」
 “What?!”
 
 @6881 Mueller · ミューラー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/2）
 > 「お、おのれぇ!」
 “Y-you bastard!”
 
 @6882 Mueller · ミューラー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：笑声不要音译
 > 「クククク、そんなものか」
-“Kukuku, is that all?”
+“Heh heh heh, is that all?”
 
 @6883 Mueller · ミューラー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「あーん? なにかしたのか?」
 “Huh? Did you do something?”
 
 @6884 Mueller · ミューラー
+# 触发：回避（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ヒャハハハハハッ! ムダなんだよぉ!」
-“Hyahahahahaha! It's useless!”
+“Hyahahahahaha! It’s useless!”
 
 @6885 Mueller · ミューラー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ヒャハハハハハッ! ムダなんだよぉ!」
-“Hyahahahahaha! It's useless!”
+“Hyahahahahaha! It’s useless!”
 
 @6886 Mueller · ミューラー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なに!? 弾切れだとぉ!?」
 “What?! Out of ammo?!”
 
 @6887 Mueller · ミューラー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「射程外!? なめたまねを!」
-“Out of range?! Don't mock me!”
+“Out of range?! Don’t mock me!”

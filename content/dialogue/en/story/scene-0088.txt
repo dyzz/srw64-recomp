@@ -22,9 +22,10 @@ the situation isn't exactly favorable... no.)
 All the more so for a hand I've already raised once.)
 
 @42234 Glemy · グレミー
+# 审校：精读：そのままで聞け
 > 「そのままで聞け、ジオンの兵士たちよ
 >  もはや忍従の時は去った
-“Hear me as you are, soldiers of Zeon! The time of silent obedience is over.
+“Stay where you are and listen, soldiers of Zeon! The time of silent obedience is over.
 ---
 >  諸悪の根源はアクシズを動かし、
 >  ぎまんあふれるジオンを
@@ -57,13 +58,14 @@ Do so, and you shall be praised as heroes of the Earth Sphere for all generation
 “I like it, Glemy. This kind of thing, I love it.”
 
 @42237 Glemy · グレミー
+# 审校：精读：破折号
 > 「別にお前に喜んでもらうためではない
 >  昨日までハマーンに忠誠を誓って
-“It's not to please you. Those who swore loyalty to Haman until yesterday—
+“It's not to please you. Those who swore loyalty to Haman until yesterday,
 ---
 >  いた者たちには、地球をくれてやる
 >  くらいのことは、覚悟しないとな」
-I'd better be ready to give them the Earth itself.”
+I'd best be prepared to give them even the Earth.”
 
 @42238 Chara · キャラ
 > 「準備はいいようだよ、マシュマー」

@@ -120,9 +120,10 @@ They're asking to join up with us.”
 “It's been a long time, Captain Bright, everyone.”
 
 @27781 Rain · レイン
+# 审校：精读：ゴッド 指机体
 > 「サリィ? ゴッドの受け取りに
 >  行った時、別れたきりだったわね
-“Sally? We haven't seen each other since we parted ways when you went to pick up the God.
+“Sally? We haven't seen each other since we parted ways when you went to pick up the Burning Gundam.
 ---
 >  いったい何をやっていたの?
 >  ピースミリオンと一緒にいるなんて」
@@ -190,9 +191,10 @@ the haul was quite something.”
 Noin of OZ. I'm here now simply as Noin.”
 
 @27793 Amuro · アムロ
+# 审校：精读：军衔语序
 > 「OZのノイン特尉か。いったい
 >  なぜ君が?」
-“Noin of OZ, Special Lieutenant. Just why are you here?”
+“Special Lieutenant Noin of OZ. Just why are you here?”
 
 @27794 Noin · ノイン
 > 「私にもいろいろと事情があるのです、
@@ -374,9 +376,10 @@ a sane person should use.”
 “Good grief, I forgot. You were never a sane person to begin with.”
 
 @27821 Shinobu · 忍
+# 审校：“puffed-up” 与原文“ぶっちょうヅラ”（板着脸）不符，改为 sour-faced 更贴合忍的粗野口吻。
 > 「へっ、このぶっちょうヅラ小僧も
 >  あいかわらずかよ」
-“Heh, this puffed-up little brat hasn't changed a bit either.”
+“Heh, this sour-faced little brat hasn't changed a bit either.”
 
 @27822 Heero · ヒイロ
 > 「笑えというのなら笑ってやってもいいが
@@ -393,13 +396,15 @@ a sane person should use.”
 “Your imagination.”
 
 @27825 Judau · ジュドー
+# 审校：Judau 对 Bright 的称呼按 address 应为 Captain，原文虽无呼语但此处是直接对 Bright 说话，补上 Captain 更符合其口吻。
 > 「って、おいそりゃどういうことだよ、
 >  ブライトさん」
-“Wait, hey, what do you mean by that, Bright?”
+“Wait, hey, what do you mean by that, Captain Bright?”
 
 @27826 Bright · ブライト
+# 审校：精读：引号
 > 「どうもこうもない。いった通りだ」
-“There's no 'what do you mean.' It's exactly as I said.”
+“There's no ‘what do you mean.’ It's exactly as I said.”
 
 @27827 Kamille · カミーユ
 > 「本気なんですか、OZや例のアクシズ
@@ -546,9 +551,10 @@ See? Can't you hear him?”
 “Tch, you don't pull any punches, do you.”
 
 @27850 Koji · 甲児
+# 审校：甲児的热血口吻中“pinch”过于日式，改为更自然的“crisis”
 > 「でもよ、今の状況ってのは、すげぇ
 >  ピンチなはずだよな」
-“But still, the situation we're in now has gotta be a huge pinch, right?”
+“But still, the situation we're in now has gotta be a huge crisis, right?”
 
 @27851 Naoto · ナオト
 > 「え? ああ、そうだな」
@@ -567,8 +573,9 @@ See? Can't you hear him?”
 fighting Zorbados.”
 
 @27854 Tetsuya · 鉄也
+# 审校：鉄也的冷峻口吻中“sloppy”不够准确，改为“soft”更符合“たるんでる”
 > 「フン、お前がたるんでるだけだろう」
-“Hmph, you've just gotten sloppy, that's all.”
+“Hmph, you've just gotten soft, that's all.”
 
 @27855 Roux · ルー
 > 「でも、いわれてみれば確かにそうだわ。
@@ -799,8 +806,9 @@ different...?”
 “...No problem.”
 
 @27888 Amuro · アムロ
+# 审校：Amuro 对后辈的叮嘱应更简洁冷静，原文「冷静にな」是命令语气，改为 stay calm 更贴合。
 > 「……ならいいが……冷静にな」
-“...If you say so... but calm down.”
+“...If you say so... but stay calm.”
 
 @27889 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -888,9 +896,9 @@ she won't pull anything like Zechs.”
 “Them again. All forces, annihilate the enemy!”
 
 @27905 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一 Commander
 > 「マーグ隊長、あれがマーズです」
-“Captain Marg, that's Mars.”
+“Commander Marg, that's Mars.”
 
 @27906 Marg · マーグ
 # 审校：「ズール皇帝の命により」应为 by order of Emperor Zuul，初稿误作 by Emperor Zuul's order。
@@ -1196,12 +1204,13 @@ has happened there.”
 “No way... Zechs, going that far?!”
 
 @27957 Amuro · アムロ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「バルジがおちたというのか……ジャミトフは
 >  どうした? ハマーンはジャミトフが
-“You're saying Balgy has fallen... what about Jamitov? Haman said Jamitov was
+“You're saying Barge has fallen... what about Jamitov? Haman said Jamitov was
 ---
 >  バルジにいるといっていたが」
-at Balgy.”
+at Barge.”
 
 @27958 Bunny · バニー
 > 「それが、ロームフェラ財団代表
@@ -1231,9 +1240,10 @@ and OZ Supreme Commander Jamitov has not been confirmed.”
 either. He left the fortress too thinly defended.”
 
 @27962 Garrison · ギャリソン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「落ち着いている場合では
 >  ございません。バルジがおち、ジャミトフが
-“This is no time to be calm. If Balgy has fallen and Jamitov is
+“This is no time to be calm. If Barge has fallen and Jamitov is
 ---
 >  死んだとなれば、OZ宇宙軍の
 >  受けたダメージは大きすぎますな」
@@ -1282,9 +1292,10 @@ to stop him.”
 “Take care, Relena.”
 
 @27970 Relena · リリーナ
+# 审校：Relena 的 voice 要求正式、不用缩略形式，且原文有「ジュリア様」的敬称，应保留 Lady Julia。
 > 「大丈夫です、ジュリア様。なんとか
 >  兄を説得してみます」
-“I'll be fine, Julia. I'll try to talk some sense into my brother somehow.”
+“I will be fine, Lady Julia. I will try to talk some sense into my brother somehow.”
 
 @27971 Treize · トレーズ
 > 「歴史はやはり我々人類に過
@@ -1292,9 +1303,11 @@ to stop him.”
 “History does seem to be flowing in a harsh direction for us humans.”
 
 @27972 ???
+# 审校：精读：トレーズ様
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様の予想
 >  された通りです。また
-“Yes, just as you predicted, Lord Treize. Also,
+“Yes, just as you predicted, Your Excellency. Also,
 ---
 >  デルマイユ公・ジャミトフ閣下の
 >  ご両名がお亡くなりになったことを
@@ -1302,7 +1315,7 @@ following the deaths of Lord Dermail and His Excellency Jamitov,
 ---
 >  受け、財団の最高幹部会は
 >  満場一致でトレーズ様への
-the Foundation's supreme council has unanimously resolved to request your
+the Foundation's supreme council has unanimously resolved to request Your Excellency's
 ---
 >  復帰要請を決議したとのこと
 >  です。OZそして財団の代表として」
@@ -1326,20 +1339,23 @@ keep up with the rapidly shifting situation.”
 “Then you will accept, after all?”
 
 @27975 Treize · トレーズ
+# 审校：精读：去破折号
 > 「無論だよ、レディ。地球圏の、
 >  いや人類の未来を決する
-“Of course, Lady. The players for the great stage that will decide the future of the Earth Sphere—no, of humanity—are all assembled.
+“Of course, Lady. The players for the great stage that will decide the future of the Earth Sphere, no, of humanity, are all assembled.
 ---
 >  大舞台の役者はそろった。
 >  残された時間はあまり多くない
-There isn't much time left.
+There is not much time left.
 ---
 >  第3幕を始めるとしよう」
 Let us begin the third act.”
 
 @27976 Lady · レディ
+# 审校：Lady 对 Treize 的称呼按 address 应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様」
-“Yes, Lord Treize.”
+“Yes, Your Excellency.”
 
 @27977 Marg · マーグ
 > 「ロゼ、あのマーズというのは何者
@@ -1544,8 +1560,9 @@ There's no way it can go into combat.”
 “Come on, if we can't hand it over now, who knows when the next chance will be?!”
 
 @28006 October · オクトバー
+# 审校：原文是军官的正式拒绝，译文过于口语化，改为更符合军官身份的正式表达。
 > 「無理なものは無理ですよ」
-“Impossible is impossible.”
+“What cannot be done cannot be done.”
 
 @28007 Chan · チェーン
 > 「わかりました。調整は
@@ -1612,26 +1629,29 @@ In exchange, send me the combat data as it comes in.”
 going strong as well.”
 
 @28018 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝为威严暴君，voice 要求无缩写，将“he's”改为“he is”。
 > 「うぅむ、マーズめ。あやつに関しては
 >  ワシの誤算であったわ」
-“Hmm, that Mars. Where he's concerned, I miscalculated.”
+“Hmm, that Mars. Where he is concerned, I miscalculated.”
 
 @28019 Wahl · ワール
+# 审校：精读：对皇帝
 > 「誤算、でございますか」
-“A miscalculation, Your Excellency?”
+“A miscalculation, Your Majesty?”
 
 @28020 Emperor Zuul · ズール皇帝
+# 审校：合并：冲突人工取舍
 > 「うむ。地球の火山活動の
 >  影響でマーズの眠っていたカプセルが
 “Indeed. That the capsule Mars slept in was discovered by Earthlings due to the effects of Earth's volcanic activity,
 ---
 >  地球人に発見されたこと、
 >  マーズを育てた地球人が地球を
-that the Earthlings who raised Mars taught him a heart that loves the Earth, and that there exist robots that protect Gaia—
+that the Earthlings who raised Mars taught him a heart that loves the Earth, and that there exist robots that protect Gaia.
 ---
 >  愛する心を教えたこと、そして
 >  ガイヤーを守るロボットの存在
-if even one of these had not come to pass, the Earth would by now
+If even one of these had not come to pass, the Earth would by now
 ---
 >  これらの1つでもなければ
 >  今ごろは地球など

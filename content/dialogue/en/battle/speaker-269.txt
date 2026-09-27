@@ -1,174 +1,260 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6481 Noin · ノイン
+# 触发：攻击（通用，1/14）
 > 「とまれぇ!」
 “Stop right there!”
 
 @6482 Noin · ノイン
+# 触发：攻击（通用，2/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「汚い戦いをするな!」
-“Don't fight dirty!”
+“Don’t fight dirty!”
 
 @6483 Noin · ノイン
+# 触发：攻击（通用，3/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃げられるわけがない!」
-“You can't escape!”
+“You can’t escape!”
 
 @6484 Noin · ノイン
+# 触发：攻击（通用，4/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせはしないっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @6485 Noin · ノイン
+# 触发：攻击（通用，5/14）
 > 「この命にかえてもっ!!」
 “Even if it costs me my life!”
 
 @6486 Noin · ノイン
+# 触发：攻击（通用，6/14）
 > 「落ちろっ!!」
 “Fall!”
 
 @6487 Noin · ノイン
+# 触发：攻击（通用，7/14）
 > 「そこっ!」
 “There!”
 
 @6488 Noin · ノイン
+# 触发：攻击（通用，8/14）
 > 「もらった!!」
 “Got you!”
 
 @6489 Noin · ノイン
+# 触发：攻击（通用，9/14）
 > 「これでとどめだっ!」
 “This is the finishing blow!”
 
 @6490 Noin · ノイン
+# 触发：攻击（通用，10/14）
 > 「うかつなっ!」
 “Careless!”
 
 @6491 Noin · ノイン
+# 触发：攻击（通用，11/14）
+# 审校：诺因不骂混蛋
 > 「貴様っ!」
-“You bastard!”
+“You...!”
 
 @6492 Noin · ノイン
+# 触发：攻击（通用，12/14）
 > 「ここまでだっ!」
 “This is as far as you go!”
 
 @6493 Noin · ノイン
+# 触发：攻击（通用，13/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ガードがなってないっ!」
-“Your guard's wide open!”
+“Your guard’s wide open!”
 
 @6494 Noin · ノイン
+# 触发：攻击（通用，14/14）
 > 「覚悟っ!」
 “Prepare yourself!”
 
 @6495 Noin · ノイン
+# 触发：被击坠（通用，1/2）
 > 「くうっ……ゼクス……」
 “Ngh... Zechs...”
 
 @6496 Noin · ノイン
+# 触发：被击坠（通用，2/2）
 > 「だ、だめか……」
 “N-no good, huh...”
 
 @6497 Noin · ノイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：なんの 是逞强，不是问什么
 > 「な、なんの! まだやられたわけではない!」
-“W-what?! I'm not down yet!”
+“N-no matter! I’m not down yet!”
 
 @6498 Noin · ノイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ……このままでは危険か……」
-“Tch... at this rate, I'm in danger...”
+“Tch... at this rate, I’m in danger...”
 
 @6499 Noin · ノイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「うあっ! な、なんてパワー……」
 “Ugh! W-what power...”
 
 @6500 Noin · ノイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くううっ! このまま黙って
 >  やられるわけには……」
-“Ngh! I can't just sit here and take it...”
+“Ngh! I can’t just sit here and take it...”
 
 @6501 Noin · ノイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「あぁぅっ、う、動けぇ!」
 “Ah, ugh... m-move!”
 
 @6502 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
 > 「まだだ! まだ私は戦える!」
 “Not yet! I can still fight!”
 
 @6503 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
+# 审校：さすがに 不是 as expected；感叹号照原文
 > 「うっ!! さ、さすがに……」
-“Ugh! A-as expected...”
+“Ugh!! Th-that one really...”
 
 @6504 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
 > 「しまった、当たった!?」
 “Damn, it hit?!”
 
 @6505 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
 > 「つっ! やる! しかし!!」
 “Tch! Not bad! But still!”
 
 @6506 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ!! や、やらせないっ!」
-“Agh! I-I won't let you!”
+“Agh! I-I won’t let you!”
 
 @6507 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
 > 「まだまだっ!! これしきのことでっ!!」
 “Not yet! Not over something like this!”
 
 @6508 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「やる! だがっここまでだ!」
 “Not bad! But this is the end!”
 
 @6509 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっどうした!?」
-“Damn, what's going on?!”
+“Damn, what’s going on?!”
 
 @6510 Noin · ノイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度でっ!!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @6511 Noin · ノイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効きはしないっ!」
-“It won't work on me!”
+“It won’t work on me!”
 
 @6512 Noin · ノイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たっただけだ、こんなもの!」
-“It just grazed me, that's all!”
+“It just grazed me, that’s all!”
 
 @6513 Noin · ノイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃で落ちるものか!」
-“You think that'll bring me down?!”
+“You think that’ll bring me down?!”
 
 @6514 Noin · ノイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「損傷軽微、いける!!」
 “Minor damage. I can keep going!”
 
 @6515 Noin · ノイン
+# 触发：回避（通用，1/6）
 > 「甘いなっ!!」
 “Too naive!”
 
 @6516 Noin · ノイン
+# 触发：回避（通用，2/6）
 > 「当たるものかっ!!」
 “Like you could hit me!”
 
 @6517 Noin · ノイン
+# 触发：回避（通用，3/6）
+# 审校：回避时的逞强
 > 「なんのっ!」
-“No problem!”
+“No sweat!”
 
 @6518 Noin · ノイン
+# 触发：回避（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ……まるで素人だな」
-“Hmph... you're a complete amateur.”
+“Hmph... you’re a complete amateur.”
 
 @6519 Noin · ノイン
+# 触发：回避（通用，5/6）
+# 审校：原文「見切った」是完成体，译文用过去式更贴切。
 > 「見切った!」
-“I saw right through it!”
+“I saw through it!”
 
 @6520 Noin · ノイン
+# 触发：回避（通用，6/6）
 > 「遅いっ!」
 “Too slow!”
 
 @6521 Noin · ノイン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームなど、効きはしないっ!!」
-“A beam like that won't work on me!”
+“A beam like that won’t work on me!”
 
 @6522 Noin · ノイン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なにっ!? 弾切れだと……」
 “What?! Out of ammo...”
 
 @6523 Noin · ノイン
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、この距離ではどうしようもない…」
-“Tch, at this range there's nothing I can do...”
+“Tch, at this range there’s nothing I can do...”
+
+@14323 Noin · ノイン
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14324 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ヴァイエイト〉
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”
+
+@14325 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ビルゴ〉
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”
+
+@14326 Noin · ノイン
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ビルゴⅡ〉
+> 「モビルドールに戦術的なプログラムが
+>  されている!?」
+“The Mobile Dolls have tactical programs?!”

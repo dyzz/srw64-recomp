@@ -1,130 +1,181 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12178 Drake · ドレイク
+# 触发：攻击（通用，1/6）
 > 「撃てっ! 撃ち落とせ!!」
 “Fire! Shoot them down!!”
 
 @12179 Drake · ドレイク
+# 触发：攻击（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しゃらくさいっ!」
-“Don't get cocky!”
+“Don’t get cocky!”
 
 @12180 Drake · ドレイク
+# 触发：攻击（通用，3/6）
 > 「叩き落とせ!!」
 “Shoot them down!!”
 
 @12181 Drake · ドレイク
+# 触发：攻击（通用，4/6）
 # 审校：「前方に火力を集中せよ」是命令向前方集中火力，初稿 to the front 不自然，改为 forward。
 > 「前方に火力を集中せよ!」
 “Concentrate fire forward!”
 
 @12182 Drake · ドレイク
+# 触发：攻击（通用，5/6）
 # 审校：「落として見せい」是命令对方把目标打下来，初稿 Let's see you bring it down 语气偏挑衅且对象不清，改为直接命令。
 > 「落として見せい!」
 “Bring it down!”
 
 @12183 Drake · ドレイク
+# 触发：攻击（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!」
-“I won't let you!”
+“I won’t let you!”
 
 @12184 Drake · ドレイク
+# 触发：被击坠（通用，1/2）
 > 「う、うおおおっ!?」
 “Wh-whoaah?!”
 
 @12185 Drake · ドレイク
+# 触发：被击坠（通用，2/2）
 > 「バカな……ウィル・ウィプスが
 >  落ちるだと……」
 “Impossible... The Will-Wips, falling...”
 
 @12186 Drake · ドレイク
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「むう! オーラコンバーターに
 >  直撃だと……」
 “Ngh! A direct hit on the Aura Converter...”
 
 @12187 Drake · ドレイク
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「ぬううっ! な、何だこの力は……」
 “Nghh! Wh-what is this power...”
 
 @12188 Drake · ドレイク
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「ぐっ! これ以上やられては、
 >  ウィル・ウィプスといえど……」
 “Guh! Any more of this, and even the Will-Wips...”
 
 @12189 Drake · ドレイク
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 检查提示：未用必用译名：対空砲→AA Gun
 > 「むっ!? 何をしておる!
 >  対空砲火!」
 “Hm?! What are you doing? AA fire!”
 
 @12190 Drake · ドレイク
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ちいっ! 小賢しいマネを……」
 “Tch! Clever little tricks...”
 
 @12191 Drake · ドレイク
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「くっ! ええい、ちょこまかと……」
 “Guh! Damn it, flitting about like that...”
 
 @12192 Drake · ドレイク
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ぬうっ! どうした! ウィル・ウィプスの
 >  動きが鈍いぞ!」
-“Ngh! What's wrong?! The Will-Wips is sluggish!”
+“Ngh! What’s wrong?! The Will-Wips is sluggish!”
 
 @12193 Drake · ドレイク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 > 「小賢しいな」
 “Clever little pest.”
 
 @12194 Drake · ドレイク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ……落ちはせんよ」
-“Heh... I won't go down.”
+“Heh... I won’t go down.”
 
 @12195 Drake · ドレイク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「ふん、なめられたものだな」
 “Hmph, they underestimate me.”
 
 @12196 Drake · ドレイク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「その程度の攻撃では、
 >  ウィル・ウィプスは落ちんよ」
-“An attack like that won't bring down the Will-Wips.”
+“An attack like that won’t bring down the Will-Wips.”
 
 @12197 Drake · ドレイク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ハハハハ、数で来なければこの
 >  ウィル・ウィプスは落ちはせん」
-“Hahahaha, unless they come in numbers, this Will-Wips won't fall.”
+“Hahahaha, unless they come in numbers, this Will-Wips won’t fall.”
 
 @12198 Drake · ドレイク
+# 触发：回避（通用，1/4）
 # 审校：「急速回避」是简短命令，初稿 Evasive action, now 稍啰嗦，改为更贴合原文的短命令。
 > 「急速回避!」
 “Evasive action!”
 
 @12199 Drake · ドレイク
+# 触发：回避（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるな!」
-“Don't let it hit!”
+“Don’t let it hit!”
 
 @12200 Drake · ドレイク
+# 触发：回避（通用，3/4）
 # 审校：初稿 Hurry the evasive maneuvers 多了一个 the，不自然，改为 Hurry evasive maneuvers。
 > 「回避運動急げ!」
 “Hurry evasive maneuvers!”
 
 @12201 Drake · ドレイク
+# 触发：回避（通用，4/4）
 # 审校：「かわして見せい」是命令对方回避，初稿 Let's see you dodge this 变成挑衅对方躲开自己的攻击，方向反了，改为命令对方躲开。
 > 「かわして見せい!」
 “Dodge it!”
 
 @12202 Drake · ドレイク
-# 审校：原文「オーラバリアがその程度で」是省略句，表示这种程度对 Aura Barrier 不算什么，初稿 won't fall to that 意思接近但语气略硬，改为更自然表达。
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：原句不完整，补成通顺的攻击无效台词
 > 「オーラバリアがその程度で」
-“The Aura Barrier can take that much.”
+“As if that could breach the Aura Barrier.”
 
 @12203 Drake · ドレイク
-# 审校：同上，保持与 L25 一致。
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：同上
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ふん、ウィル・ウィプスのオーラバリアが
 >  その程度で」
-“Hmph, the Will-Wips's Aura Barrier can take that much.”
+“Hmph, as if that could breach the Will-Wips’s Aura Barrier.”
 
 @12204 Drake · ドレイク
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだと!? どういう事か!」
 “Out of ammo?! What is the meaning of this?!”
 
 @12205 Drake · ドレイク
+# 触发：射程外，无法反击（通用，1/1）
 # 审校：「よくやる」在这里是带讽刺的“干得不错”，初稿 clever 偏正面，改为 Not bad 更贴合语气。
 > 「遠距離からの攻撃か……よくやる」
 “A long-range attack... Not bad.”
+
+@16837 Drake · ドレイク
+# 触发：使用〈ハイパーオーラキャノン〉（低优先，可能被通用台词顶掉）
+# 审校：补引号
+> 「主砲、一斉発射!」
+“Main cannon, fire at once!”
+
+@16838 Drake · ドレイク
+# 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
+# 审校：补引号
+> 「全砲門開け!一斉射撃!」
+“Open all gun ports! Fire at once!”

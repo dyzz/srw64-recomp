@@ -18,6 +18,7 @@ import sys
 import tempfile
 from pathlib import Path
 
+from srw64_native.battle_quotes import SITUATIONS
 from srw64_native.catalog import sha, source_catalog, text_headers
 from srw64_native.text_export import (CATEGORIES, EXPORT_SCHEMA, RANGES, TextExporter, name_slot_legend,
                                       scene_batches, summarize)
@@ -100,7 +101,8 @@ def main() -> int:
 
     sections_path = ROOT / "content/locales/terms/sections.json"
     sections = json.loads(sections_path.read_text())["sections"] if sections_path.exists() else []
-    exporter = TextExporter(sources, hashes, headers, categories, documents, load_locales(), sections)
+    exporter = TextExporter(sources, hashes, headers, categories, documents, load_locales(), sections,
+                            rom=rom.read_bytes())
     rows = exporter.records()
     ui_rows = exporter.native_ui_records()
     intro_rows = []
@@ -148,10 +150,20 @@ def main() -> int:
         (tmp / "battle").mkdir()
         (tmp / "battle/speaker-runs.json").write_text(json.dumps(
             {"schema": "srw64.text-export-battle.v1",
-             "rule": "表内顺序中同一说话人（文本头前三位）连续的一段为一段。约 14000 以前是各角色的通用情境块"
-                     "（攻击、被击坠、大伤、小伤、回避、光束防御、弹尽／射程外）；其后为武器专用台词与多人合体技对话，"
-                     "表头后缀 0024 为合体技起句。选择表尚未逆向。",
+             "rule": "表内顺序中同一说话人（文本头前三位）连续的一段为一段。14227 以前是各声部的通用情境块"
+                     "（攻击、被击坠、重伤、中伤、轻伤、回避、攻击无效、弹尽、射程外，各段起止见 triggers.json）；"
+                     "其后为条件台词（武器、对手、机体、副驾驶、合体技对话），表头后缀 0024 为合体技起句。"
+                     "每条记录的 context.triggers 给出触发条件，按声部整理的表在 triggers.json。",
              "runs": list(groups.values())}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        tables = exporter.battle_tables()
+        (tmp / "battle/triggers.json").write_text(json.dumps(
+            {"schema": "srw64.text-export-battle-triggers.v1",
+             "rule": "战斗 overlay 的台词选择表（src/srw64_native/battle_quotes.py 的模块说明）。voice 是声部号"
+                     "（D_800CA9C4[人物] = 声部），generic 是九个情境的通用台词段，special 是条件台词：code 为条件码，"
+                     "desc 为解读，ids 为一次触发依次显示的记录号（多人对话）。",
+             "situations": {str(k): v[0] for k, v in SITUATIONS.items()} if tables else {},
+             "voices": tables.voice_summary() if tables else []}, ensure_ascii=False, indent=1) + "\n",
+            encoding="utf-8")
         total = {"rom_sha256": rom_sha, "records": len(everything), "rom_records": len(rows),
                  "intro_records": len(intro_rows), "native_ui_records": len(ui_rows)}
         (tmp / "summary.md").write_text(summary_markdown(summary, total), encoding="utf-8")

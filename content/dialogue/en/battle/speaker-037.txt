@@ -1,62 +1,112 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10632 Emary · エマリー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 触发：攻击（通用，1/3）
+# 审校：中文补句号，英文补引号
 > 「見ててください、ブライト艦長」
-“Please watch me, Captain Bright.”
+“Watch me, Captain Bright.”
 
 @10633 Emary · エマリー
+# 触发：攻击（通用，2/3）
+# 审校：对敌人不能用“您”；英文补引号
 > 「やらせませんよ!」
-“I won't let you!”
+“I won’t let you!”
 
 @10634 Emary · エマリー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 触发：攻击（通用，3/3）
+# 审校：英文补引号
 > 「ブライト艦長、私、やります!」
-“Captain Bright, I'll do it!”
+“Captain Bright, I’ll do it!”
 
 @10635 Emary · エマリー
+# 触发：被击坠（通用，1/1）
+# 审校：英文补引号
 > 「ブライトォォォーッ!」
 “Briiiight!”
 
 @10636 Emary · エマリー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
+# 审校：英文补引号，更口语
 > 「あぁぁーっ!?
 >  ブライト艦長、守ってください!」
-“Aaaa?! Captain Bright, please protect me!”
+“Aaaah?! Captain Bright, protect me!”
 
 @10637 Emary · エマリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
+# 审校：英文补引号
 > 「きゃあぁぁぁぁぁぁーっ!」
-“Kyaaaaaaa!”
+“Kyaaaaaah!”
 
 @10638 Emary · エマリー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ど、どうしましょう!?」
-“Wh-what should we do?!”
+“Wh-what do we do?!”
 
 @10639 Emary · エマリー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 触发：中伤（剩余 HP 30–90%）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうぅっ! ブ、ブライト艦長……」
-“Agh! C-Captain Bright...”
+“Agh! C-captain Bright...”
 
 @10640 Emary · エマリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：英文补引号
 > 「あたったの!?」
 “We got hit?!”
 
 @10641 Emary · エマリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ひ、被害状況は!?」
-“Wh-what's the damage?!”
+“Wh-what’s the damage?!”
 
 @10642 Emary · エマリー
+# 触发：回避（通用，1/1）
+# 审校：英文补引号
 > 「はずれた!?」
 “It missed?!”
 
 @10643 Emary · エマリー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ど、どうしましょう!?」
-“Wh-what should we do?!”
+“Wh-what do we do?!”
 
 @10644 Emary · エマリー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ど、どうしましょう!?」
-“Wh-what should we do?!”
+“Wh-what do we do?!”
 
 @10645 Emary · エマリー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ、あんな所から攻撃してくるの!?」
-“Th-they're attacking from over there?!”
+“Th-they’re attacking from way over there?!”
+
+@16324 Emary · エマリー
+# 触发：使用〈ビーム砲〉（低优先，可能被通用台词顶掉）
+# 审校：原译“Front's got a thin barrage”不够自然，改为更通顺的说法。
+> 「前方、弾幕うすいぞ!
+>  ……なんてね」
+“The barrage up front is thin!... Just kidding.”
+
+@16325 Emary · エマリー
+# 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「対空砲火用意!
+>  ダミーだして!」
+“AA fire, ready! Launch decoys!”
+
+@16326 Emary · エマリー
+# 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「と、とりあえず対空砲火を!」
+“F-first, AA fire!”
+
+@16327 Emary · エマリー
+# 触发：使用〈ドッキングアーム〉（低优先，可能被通用台词顶掉）
+# 审校：Cut the Arm loose 生硬
+> 「アームを切り放して!」
+“Release the arm!”

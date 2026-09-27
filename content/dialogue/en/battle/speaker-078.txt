@@ -1,97 +1,155 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6099 Mash · マッシュ
+# 触发：攻击（通用，1/7）
 > 「行くぞっ!」
 “Here I come!”
 
 @6100 Mash · マッシュ
+# 触发：攻击（通用，2/7）
 > 「くらえっ!」
 “Take this!”
 
 @6101 Mash · マッシュ
+# 触发：攻击（通用，3/7）
 > 「もらった!」
 “Got you!”
 
 @6102 Mash · マッシュ
+# 触发：攻击（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!」
-“I won't let you!”
+“I won’t let you!”
 
 @6103 Mash · マッシュ
+# 触发：攻击（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなっ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @6104 Mash · マッシュ
+# 触发：攻击（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかよっ!」
-“Like hell I'll let you!”
+“Like hell I’ll let you!”
 
 @6105 Mash · マッシュ
+# 触发：攻击（通用，7/7）
 > 「これで終わりだ!」
 “This is the end!”
 
 @6106 Mash · マッシュ
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「な、何っ!? うおおおっ!」
-“Wha—what?! Whoaah!”
+“Wha... what?! Whoaah!”
 
 @6107 Mash · マッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぐわっ!
 >  い、いかん、動力部をやられたか!?」
 “Gwah! D-damn it, did they get my power unit?!”
 
 @6108 Mash · マッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「うおっ!? な、なんだこいつは!?」
 “Whoa?! W-what the hell is this thing?!”
 
 @6109 Mash · マッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「バカなっ!? これ程のパワーが!?」
 “Impossible! This much power?!”
 
 @6110 Mash · マッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「ちいっ! やるな!」
 “Tch! Not bad!”
 
 @6111 Mash · マッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：くっ是吃痛，不是哼
 > 「くっ! 楽しませてもらえそうだな!!」
-“Hmph! Looks like you'll be fun!!”
+“Ngh! Looks like this’ll be fun!!”
 
 @6112 Mash · マッシュ
-# 审校：“Don't get cocky forever” 直译且不自然，改为更口语化的表达。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このっ! いつまでもいい気になるなっ!」
-“Why you! Don't get cocky!”
+“Why you! Don’t get cocky!”
 
 @6113 Mash · マッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんな攻撃で、この俺がやられると
 >  思うなよ!」
-“Don't think an attack like that can take me down!”
+“Don’t think an attack like that can take me down!”
 
 @6114 Mash · マッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、効かんわっ!」
-“Hmph, that's nothing!”
+“Hmph, that’s nothing!”
 
 @6115 Mash · マッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様などにやられる俺ではないわ!」
-“I'm not the kind to be beaten by the likes of you!”
+“I’m not the kind to be beaten by the likes of you!”
 
 @6116 Mash · マッシュ
+# 触发：回避（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「黒い三連星の名は、ダテじゃ
 >  ねえってよ!」
-“The name of the Black Tri-Stars ain't just for show!”
+“The name of the Black Tri-Stars ain’t just for show!”
 
 @6117 Mash · マッシュ
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるかっ!」
-“You'll never hit me!”
+“You’ll never hit me!”
 
 @6118 Mash · マッシュ
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなっ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @6119 Mash · マッシュ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカめ、ムダなんだよ!」
-“Fool, it's useless!”
+“Fool, it’s useless!”
 
 @6120 Mash · マッシュ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ちっ、弾切れか」
 “Tch, out of ammo.”
 
 @6121 Mash · マッシュ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうう、この距離では反撃できん!」
-“Ngh, at this range I can't fight back!”
+“Ngh, at this range I can’t fight back!”
+
+@14251 Mash · マッシュ
+# 触发：使用〈ビームサーベル／銃剣付きビームサーベル〉（低优先，可能被通用台词顶掉）
+> 「もらった!」
+“Got you!”
+
+@14252 Gaia · ガイア
+# 触发：使用〈ジェットストリームアタック〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We’re launching the Jet Stream Attack!”
+
+@14253 Ortega · オルテガ
+# 触发：使用〈ジェットストリームアタック〉（对话第 2/3 句）
+> 「おう!」
+“Yeah!”
+
+@14254 Mash · マッシュ
+# 触发：使用〈ジェットストリームアタック〉（对话第 3/3 句）
+> 「了解だ、ガイア!」
+“Roger, Gaia!”

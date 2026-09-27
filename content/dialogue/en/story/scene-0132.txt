@@ -391,19 +391,20 @@ We cannot allow it.”
 “But... we've just finished a battle. Can we really fight properly?”
 
 @43597 Judau · ジュドー
+# 审校：破折号
 > 「そんなこといってる場合じゃない
 >  だろう!? ブライトさん、無茶でも
-“This isn't the time to say that! Bright, saying we'll do it even if it's reckless—
+“This isn't the time to say that! Bright, saying we'll do it even if it's reckless,
 ---
 >  やるんだってのは、あんたの口癖
 >  でしょうに!」
 that's your favorite line, isn't it?!”
 
 @43598 Garrison · ギャリソン
-# 审校：原文“1本とられましたな”指舰长被哈曼赢了一着，初稿 you've lost that round 方向正确但未点明对手，改为 she's taken that one from you 更贴合上下文。
+# 审校：捷度是男性
 > 「これはこれは。艦長、
 >  1本とられましたな」
-“Well, well. Captain, she's taken that one from you.”
+“Well, well. Captain, he's scored a point on you there.”
 
 @43599 Ark · アーク（按段落 3DD1）
 > 「行きましょう。ハマーンをここで
@@ -424,13 +425,14 @@ crushing Glemy only ends up benefiting Haman.”
 into Haman's throat. If we go now, we can take Haman's head.”
 
 @43601 Brad · ブラッド（按段落 3DD3）
+# 审校：破折号
 > 「行こうぜ、艦長。今さら
 >  考えたってしかたがねぇじゃねぇか
-“Let's go, Captain. There's no point thinking about it now.
+“Let's go, Captain. There's no point thinkin' about it now.
 ---
 >  ここまで来た以上は、
 >  最後までやるしかないぜ」
-We've come this far—we've got no choice but to see it through.”
+We've come this far, so we've got no choice but to see it through.”
 
 @43602 Manami · マナミ（按段落 3DD4）
 > 「みんな、行きましょう。これ以上

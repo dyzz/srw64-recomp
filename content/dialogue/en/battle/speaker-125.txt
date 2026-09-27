@@ -1,111 +1,154 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10130 Dr. Gura · グラー博士
+# 触发：攻击（通用，1/6）
+# 审校：け散らせ＝打散
 > 「奴らを、け散らせぇっ!」
-“Crush them all!”
+“Scatter them!”
 
 @10131 Dr. Gura · グラー博士
+# 触发：攻击（通用，2/6）
+# 审校：原文「なまいきな人間どもめ!」是古拉博士对敌人的咒骂，改为直接称呼更贴合其阴险语气。
 > 「くそ～! なまいきな人間どもめ!」
-“Damn! Those insolent humans!”
+“Damn! You insolent humans!”
 
 @10132 Dr. Gura · グラー博士
+# 触发：攻击（通用，3/6）
 > 「撃て、撃てぇ!」
 “Fire, fire!”
 
 @10133 Dr. Gura · グラー博士
+# 触发：攻击（通用，4/6）
 > 「一気に叩きつぶせ!」
 “Smash them in one blow!”
 
 @10134 Dr. Gura · グラー博士
+# 触发：攻击（通用，5/6）
 > 「やってしまえ!」
 “Finish them off!”
 
 @10135 Dr. Gura · グラー博士
+# 触发：攻击（通用，6/6）
 > 「破壊しろ!」
 “Destroy them!”
 
 @10136 Dr. Gura · グラー博士
+# 触发：被击坠（通用，1/2）
 > 「ほとんど成功していたのに……」
 “It was almost a success...”
 
 @10137 Dr. Gura · グラー博士
+# 触发：被击坠（通用，2/2）
 > 「うあ、ああああーっ!」
 “Uwaa, aaaaaah!”
 
 @10138 Dr. Gura · グラー博士
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおおぉぉーっ!? バ、バカな……」
-“Uwooooh?! I-Impossible...”
+“Uwooooh?! I-impossible...”
 
 @10139 Dr. Gura · グラー博士
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：原句过长
 > 「百鬼一族はこれしきのことで負け
 >  はせん!」
-“The Hyakki Clan won't lose over something like this!”
+“The Hyakki Clan will not fall to something like this!”
 
 @10140 Dr. Gura · グラー博士
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「おのれ、まだだ!」
 “Curse you, not yet!”
 
 @10141 Dr. Gura · グラー博士
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたっ! なにごとだ!?」
-“What's going on?! What happened?!”
+“What’s going on?! What happened?!”
 
 @10142 Dr. Gura · グラー博士
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「い、いかんっ! このままではまずいぞ!」
-“Th-This is bad! At this rate, we're in trouble!”
+“Th-this is bad! At this rate, we’re in trouble!”
 
 @10143 Dr. Gura · グラー博士
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：更像命令
 > 「万が一にもぬかりがあってはならんぞっ」
-“There must be no room for error, not even the slightest!”
+“There can be no slip-ups, not even one!”
 
 @10144 Dr. Gura · グラー博士
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何ごとだっ!」
-“What's going on?!”
+“What’s going on?!”
 
 @10145 Dr. Gura · グラー博士
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「油断はならんぞ!」
-“Don't let your guard down!”
+“Don’t let your guard down!”
 
 @10146 Dr. Gura · グラー博士
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぬぅ、このままでは不利だ!」
-“Ngh, at this rate we're at a disadvantage!”
+“Ngh, at this rate we’re at a disadvantage!”
 
 @10147 Dr. Gura · グラー博士
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「まったく、うるさい奴らだ」
 “Honestly, what a noisy bunch.”
 
 @10148 Dr. Gura · グラー博士
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あわてることはない!」
-“There's no need to panic!”
+“There’s no need to panic!”
 
 @10149 Dr. Gura · グラー博士
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：间に合わなかった 指没来得及应对
 > 「しまった、間にあわなかったか!」
-“Damn, we didn't make it in time!”
+“Damn, not in time?!”
 
 @10150 Dr. Gura · グラー博士
+# 触发：回避（通用，1/3）
+# 审校：去掉生硬的 the likes of
 > 「貴様らの攻撃など、あたるわけがない」
-“Your attacks could never hit me.”
+“Your pathetic attacks will never hit me.”
 
 @10151 Dr. Gura · グラー博士
+# 触发：回避（通用，2/3）
 > 「やったぞ!」
 “I did it!”
 
 @10152 Dr. Gura · グラー博士
+# 触发：回避（通用，3/3）
 > 「ワシの設計にくるいはない、わはははは!」
 “My designs are flawless, wahahaha!”
 
 @10153 Dr. Gura · グラー博士
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ワシの設計にくるいはない、わはははは」
 “My designs are flawless, wahahaha.”
 
 @10154 Dr. Gura · グラー博士
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽情境的惊愕
 > 「なんということだ!」
-“What is the meaning of this?!”
+“How can this be?!”
 
 @10155 Dr. Gura · グラー博士
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：やや 是惊讶，不是 oh my
 > 「やや、これは!」
-“Oh my, what's this?!”
+“Wha... what’s this?!”
 
 @10156 Dr. Gura · グラー博士
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：射程外无法反击，说的是自己
 > 「なすすべもなく、指をくわえて見て
 >  おるのか!」
-“Can you do nothing but stand by and watch?!”
+“Am I to just stand here and watch, helpless?!”

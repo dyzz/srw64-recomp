@@ -1,97 +1,191 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9957 Musashi · ムサシ
+# 触发：攻击（通用，1/4）
 > 「でやあぁぁっ!」
 “Deyaaaah!”
 
 @9958 Musashi · ムサシ
+# 触发：攻击（通用，2/4）
 > 「このっ!」
 “Why you!”
 
 @9959 Musashi · ムサシ
+# 触发：攻击（通用，3/4）
 > 「よぉしいまだ! いくぞぉーっ!」
 “All right, now! Here I gooo!”
 
 @9960 Musashi · ムサシ
+# 触发：攻击（通用，4/4）
 > 「それっ!」
 “Take that!”
 
 @9961 Musashi · ムサシ
+# 触发：被击坠（通用，1/3）
+# 审校：被击坠时向同伴道歉
 > 「うぉぉっ、すまねぇ!」
-“Whoa, sorry!”
+“Uwooh! Sorry, guys!”
 
 @9962 Musashi · ムサシ
+# 触发：被击坠（通用，2/3）
 > 「ぐわぁぁぁぁーっっ!!」
 “Guwaaaaaaah!!”
 
 @9963 Musashi · ムサシ
+# 触发：被击坠（通用，3/3）
 > 「ちくしょぉぉぉーっ!」
 “Damn iiiit!”
 
 @9964 Musashi · ムサシ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぉっ! どうにもならねぇのかよ!」
-“Damn! There's nothin' I can do?!”
+“Damn! There’s nothin’ I can do?!”
 
 @9965 Musashi · ムサシ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：去掉生硬的“终于越来越”
 > 「へへっ、いよいよやばくなってきたな……」
-“Heh, things are really gettin' bad...”
+“Heh, now it’s really gettin’ hairy...”
 
 @9966 Musashi · ムサシ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うわぁぁぁぁーっ!」
 “Uwaaaaaaah!”
 
 @9967 Musashi · ムサシ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「おぉぉ!? エンジントラブルか!」
 “Oh?! Engine trouble?!”
 
 @9968 Musashi · ムサシ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「うぅぅっ!」
 “Ugh!”
 
 @9969 Musashi · ムサシ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ううっ! こうなったらやぶれかぶれだ!」
-“Ugh! If it's come to this, I'll go all out!”
+“Ugh! If it’s come to this, I’ll go all out!”
 
 @9970 Musashi · ムサシ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「あぁっ、しまったぁ!」
 “Ah, I messed up!”
 
 @9971 Musashi · ムサシ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ん!?」
 “Hm?!”
 
 @9972 Musashi · ムサシ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「でぇぇい! くそっ! しくじったぁ!」
 “Deeei! Damn! I blew it!”
 
 @9973 Musashi · ムサシ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「おぉっと! かすっちまったか」
 “Whoa! Just grazed me, huh.”
 
 @9974 Musashi · ムサシ
+# 触发：回避（通用，1/3）
 > 「おっと!」
 “Whoa!”
 
 @9975 Musashi · ムサシ
+# 触发：回避（通用，2/3）
 > 「ふぅ、危なかったぁ」
 “Phew, that was close.”
 
 @9976 Musashi · ムサシ
+# 触发：回避（通用，3/3）
+# 审校：回避后的松口气，不是“得救”
 > 「助かったぁ」
-“I'm saved.”
+“Made it!”
 
 @9977 Musashi · ムサシ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「やったーっ!」
 “All right!”
 
 @9978 Musashi · ムサシ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「そんなもんが効くかぁ!」
 “Like that could work on me!”
 
 @9979 Musashi · ムサシ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：补全意思
 > 「しまった、エネルギーが!?」
-“Oh no, the energy?!”
+“Crap, I’m outta energy?!”
 
 @9980 Musashi · ムサシ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだ! 反撃できねぇ!」
-“No good! I can't counter!”
+“No good! I can’t counter!”
+
+@15260 Musashi · ムサシ
+# 触发：使用〈格闘／拳法〉（低优先，可能被通用台词顶掉）
+> 「つっこむぞぉっ!」
+“Charging in!”
+
+@15261 Musashi · ムサシ
+# 触发：使用〈ゲッターミサイル〉
+> 「ゲッターミサイル!」
+“Getter Missile!”
+
+@15262 Musashi · ムサシ
+# 触发：使用〈ゲッターミサイル〉
+> 「よし! ゲッターミサイル!」
+“All right! Getter Missile!”
+
+@15263 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ゲッタースリー→Getter-3
+> 「ゲッタースリーぶちかましーっ!」
+“Getter-3, smash ’em!!”
+
+@15264 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ゲッタースリー→Getter-3
+> 「よぉしいまだ! いくぞぉーっ!」
+“All right, now! Here we go!”
+---
+> 「ゲッタースリーぶちかましーっ!」
+“Getter-3, smash ’em!!”
+
+@15265 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+# 审校：それっ 与 9960 统一
+> 「それっ!」
+“Take that!”
+---
+> 「大雪山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15266 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+> 「このっ!」
+“Why you!”
+---
+> 「大雪山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15267 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+# 审校：原文间隔号是喊招拖长，应使用词表译名 Daisetsuzan Oroshi 并保留拖长音，而不是拆成 Dai-set-su-zan。
+> 「大・雪・山おろしぃぃぃーっ!」
+“Daisetsuzan Oroshiii!!”
+
+@15268 Musashi · ムサシ
+# 触发：使用〈大雪山おろし〉
+> 「ぬうぅぅっ!」
+“Nghhh!”
+---
+> 「大雪山おぉろぉしぃぃぃーっ!」
+“Daisetsuzaaan Oroshiii!!”

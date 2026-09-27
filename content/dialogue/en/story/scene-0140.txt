@@ -496,9 +496,10 @@ let you live. I do not need two hostages, after all.”
 “You dodged well enough, but your movements are slow. I shall not miss next time.”
 
 @38842 Lera · レラ
+# 审校：Lera 的粗口口吻应更直接，将“Damn you”改为“Damn it”更贴合她喊停对方的语气。
 > 「くそっ、やめろ!
 >  やめろ、この化け物!!」
-“Damn you, stop it! Stop it, you monster!!”
+“Damn it, stop! Stop it, you monster!!”
 
 @38843 Marquis Janus · ヤヌス侯爵
 > 「ええい、あばれるでない!」
@@ -689,9 +690,10 @@ that girl saved you!”
 “Ngh... were we too late?! Report the damage!”
 
 @38876 Marquis Janus · ヤヌス侯爵
+# 审校：对象是部下
 > 「ほほほっ、これがわらわの本体よ。
 >  さぁお前たち、やっておしまい!」
-“Hohoho, this is my true body. Now then, my dears, finish them off!”
+“Hohoho, this is my true body. Now then, all of you, finish them off!”
 
 @38877 Ark · アーク（按段落 3DD1）
 > 「ヤヌス……絶対に逃がすものか。
@@ -844,9 +846,10 @@ must be the enemy who infiltrated us.”
 “So you've shown your true form, you monster! Give it up!”
 
 @38906 Marquis Janus · ヤヌス侯爵
+# 审校：雅努斯侯爵是老贵族反派，it's 过于口语化，改为 it is 以贴合其腔调。
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it's too late now. My objective is already as good as
+“Hohoho, it is too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -915,9 +918,10 @@ found inside the base. We already know you're the enemy!!”
 “So you've shown your true form, you monster! Give it up!”
 
 @38920 Marquis Janus · ヤヌス侯爵
+# 审校：雅努斯侯爵是老贵族反派，it's 过于口语化，改为 it is 以贴合其腔调。
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it's too late now. My objective is already as good as
+“Hohoho, it is too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -945,8 +949,9 @@ accomplished.”
 “Damn it!! Earthgain, I'm launching! I'll take that thing down!”
 
 @38926 Bright · ブライト
+# 审校：布莱特对出击的布拉德说“頼む”，用 I'm counting on you 比 Please 更符合舰长口吻。
 > 「頼む!」
-“Please!”
+“I'm counting on you!”
 
 @38927 Manami · マナミ（按段落 3DD4）
 > 「とまりなさい!」
@@ -984,9 +989,10 @@ inside the base.”
 “So you've shown your true form, you monster! Give it up!”
 
 @38934 Marquis Janus · ヤヌス侯爵
+# 审校：老贵族反派应避免“it's”这类缩写，改为“it is”以保持其庄重口吻。
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it's too late now. My objective is already as good as
+“Hohoho, it is too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -1163,10 +1169,10 @@ declare ourselves rulers of Earth! Uwahahahahahaha!!!”
 see hell!”
 
 @38970 Emperor Burai · ブライ大帝
-# 审校：“stands”语气偏弱，改为 lives on 更贴合“健在”的威势。
+# 审校：目の黒いうち 意译
 > 「負けはせぬ! わしの目の黒いうちは
 >  百鬼一族は健在だ!」
-“I will not lose! As long as my eyes are black, the Hyakki Clan lives on!”
+“I will not lose! As long as I draw breath, the Hyakki Clan lives on!”
 
 @38971 Hayato · ハヤト
 > 「仕上げは俺がやってやるぜ!
@@ -1295,9 +1301,10 @@ A bio-reaction? ...It says it's impossible to determine?! Just who are you?!”
 “What?! You, just what the hell is that?!”
 
 @38996 Avie-Lu · アヴィ＝ルー
+# 审校：修正 understan' 的拼写，使其符合自然英文。
 > 「わかンなくていいのサ、アンタたちは。
 >  アタシが見たところじゃ、アンタたちは
-“You don't need to understan' that, you lot. From what I see, you've got
+“You don't need to understand that, you lot. From what I see, you've got
 ---
 >  この惑星圏の中デモ、突出した
 >  潜在能力がある。確かめなくちゃ
@@ -1339,13 +1346,14 @@ Return to the ship.”
 “That's impossible?!”
 
 @39004 Avie-Lu · アヴィ＝ルー
+# 审校：?!
 > 「ククク……まだまだだヨ。アンタたちの
 >  力はまだこんなものじゃナイ
 “Kukuku... not yet, not by a long shot. Your power's still nothin' like this.
 ---
 >  サァ見せておくれヨ。もっと、もっと。
 >  でなきゃみんな死んでしまうヨ!?」
-C'mon, show me more. More, more. Otherwise you'll all die!?”
+C'mon, show me more. More, more. Otherwise you'll all die?!”
 
 @39005 Bright · ブライト
 > 「バカな……そんなことが……」
@@ -1438,12 +1446,13 @@ Getter and all!”
 “What?! It can't be helped. Musashi, forget it, evade now!!”
 
 @39024 Musashi · ムサシ
+# 审校：“someone controls it” 语气偏生硬，改为更口语化的说法以贴合武藏憨直热血的语气。
 > 「バカをいうな。どうせ、奴にちゃんと
 >  ゲッターをぶち当てるためには誰かが
 “Don't be stupid. Anyway, to slam the Getter into that thing properly, it's more
 ---
 >  コントロールした方が確実なんだ」
-certain if someone controls it.”
+certain if someone's at the controls.”
 
 @39025 Ryoma · リョウ
 > 「なんだって!? やめろムサシ!!」
@@ -1885,12 +1894,13 @@ even if it took some pushing. If it hadn't been them, such a splendid conclusion
 could never have been achieved.”
 
 @39101 Lady · レディ
+# 审校：“Guerrillas” 是普通名词，句中不应大写。
 > 「はい。では地上の問題で残って
 >  いるのは、反OZを掲げる少数の
 “Yes. Then the only remaining problem on Earth is the handful of
 ---
 >  ゲリラたちだけとなったのですね」
-Guerrillas flying the banner of anti-OZ resistance.”
+guerrillas flying the banner of anti-OZ resistance.”
 
 @39102 Treize · トレーズ
 > 「そういうことになる。少なくとも人類
@@ -1983,6 +1993,7 @@ I'll leave matters in space to you. Do as you see fit.”
 “Show and the others have come back!”
 
 @39117 Amuro · アムロ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「なんだって!? しかしオーラマシンは
 >  搭乗者ごと、シーラ女王の力で
 “What?! But weren't the Aura Machines, riders and all,
@@ -2000,9 +2011,10 @@ erased from the surface by Queen Ciela's power?”
 “Understood. I'm on my way.”
 
 @39120 Quattro · クワトロ
+# 审校：空格
 > 「ほぉ……。ショウたちと……
 >  シーラ・ラパーナもか」
-“Oh...? Show and the others...and Ciela Lapana too.”
+“Oh...? Show and the others... and Ciela Lapana too.”
 
 @39121 Anna · アンナ
 > 「はい。……でも、いったいどうしたん
@@ -2031,19 +2043,21 @@ in the fact that only we have returned to this land like this.”
 “And that would mean?”
 
 @39126 Ciela · シーラ
+# 审校：破折号
 > 「地上界……いいえ、あなたがたのいう
 >  地球圏には、いまだ悪意が
-“In the surface world...no, in what you call the Earth Sphere, malice still
+“In the surface world... no, in what you call the Earth Sphere, malice still
 ---
 >  うずまいています。それを取り除き、
 >  地上界に平穏をとりもどすことが
-swirls. To remove it and restore peace to the surface world—
+swirls. To remove it and restore peace to the surface world.
 ---
 >  我らに課せられた新たな役割では
 >  ないかと思えるのです」
 I feel that may be the new role imposed upon us.”
 
 @39127 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「じゃあシーラさま、それが終わるまで
 >  あたしたちバイストンウェルに
 “Then, Lady Ciela, until that's over, we can't go back to
@@ -2068,6 +2082,7 @@ Byston Well either.”
 “No way...”
 
 @39130 Show · ショウ
+# 审校：人名按词表统一
 > 「チャムには悪いけど、俺もそう思いま
 >  す」
 “Sorry, Chum, but I feel the same way.”
@@ -2097,6 +2112,7 @@ together with you. I feel that is the best path.”
 “Nothing could please us more. You're welcome aboard.”
 
 @39135 Roux · ルー
+# 审校：人名按词表统一
 > 「チャムもそんなにイヤそうな顔しないで。
 >  もうしばらくあたしたちに力を
 “Don't look so unhappy, Chum. Lend us your strength a while longer.
@@ -2105,6 +2121,7 @@ together with you. I feel that is the best path.”
 Okay?”
 
 @39136 Amuro · アムロ
+# 审校：人名按词表统一
 > 「頼むよ、チャム」
 “Please, Chum.”
 
@@ -2114,13 +2131,16 @@ Okay?”
 “Fine, you win! How can I say no when you put it like that?”
 
 @39138 Anna · アンナ
+# 审校：人名按词表统一
 > 「ウフフフ、チャムったら」
 “Hehehe, oh, Chum.”
 
 @39139 Quattro · クワトロ
+# 审校：空格
+# 检查提示：未用必用译名：エレ・ハンム→Elle Hunm
 > 「ほぉ……。ショウたちと……エレ・ハンムも
 >  か」
-“Oh...? Show and the others...and Elle Hunm too.”
+“Oh...? Show and the others... and Elle Hunm too.”
 
 @39140 Anna · アンナ
 > 「はい。……でも、いったいどうしたんで
@@ -2150,9 +2170,10 @@ in the fact that only we have returned to this land like this.”
 “And that would mean?”
 
 @39145 Elle · エレ
+# 审校：破折号
 > 「地上界……いえ、皆さんのいう
 >  地球圏には、いまだ悪意の
-“In the surface world...no, in what you call the Earth Sphere, I can feel
+“In the surface world... no, in what you call the Earth Sphere, I can feel
 ---
 >  オーラが渦をまいているのを感じます。
 >  それを取り除き、地上界に
@@ -2160,7 +2181,7 @@ an aura of malice still swirling. To remove it and restore peace
 ---
 >  平穏を取りもどすことが、私たちの
 >  担うべき新たな役割と
-to the surface world—that must have become the new role
+to the surface world. That must have become the new role
 ---
 >  なったのでしょう」
 we are meant to bear.”
@@ -2174,6 +2195,7 @@ we are meant to bear.”
 Byston Well?!”
 
 @39147 Elle · エレ
+# 审校：人名按词表统一
 > 「そうですよ、チャム。バイストンウェルと
 >  地上とは表裏の関係です
 “That's right, Chum. Byston Well and the surface are two sides of the same coin.
@@ -2190,6 +2212,7 @@ Byston Well either.”
 “No way...”
 
 @39149 Show · ショウ
+# 审校：人名按词表统一
 > 「チャムには悪いけど、俺もそう思いま
 >  す」
 “Sorry, Chum, but I feel the same way.”
@@ -2218,6 +2241,7 @@ That seems to be the best path.”
 “Nothing could please us more. You're welcome aboard.”
 
 @39154 Roux · ルー
+# 审校：人名按词表统一
 > 「チャムもそんなにイヤそうな顔しないで。
 >  もうしばらくあたしたちに力を
 “Don't look so unhappy, Chum. Lend us your strength a little longer.
@@ -2226,6 +2250,7 @@ That seems to be the best path.”
 Okay?”
 
 @39155 Amuro · アムロ
+# 审校：人名按词表统一
 > 「頼むよ、チャム」
 “Please, Chum.”
 
@@ -2236,6 +2261,7 @@ Okay?”
 “Fine, you win! How can I say no when you put it like that?”
 
 @39157 Anna · アンナ
+# 审校：人名按词表统一
 > 「ウフフフ、チャムったら」
 “Hehehe, oh, Chum.”
 
@@ -2311,10 +2337,10 @@ grieve, can you?”
 “Should we go check on him?”
 
 @39171 Amuro · アムロ
-# 审校：{HeroNick} 性别不定，初稿用“him/he”可能误指，改为“them/they”。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いや、今はやめておいた方がいい。
 >  あとで俺とクワトロ特尉で
-“No, it's better to leave them alone for now. Later, Lieutenant Quattro and I will
+“No, it's better to leave them alone for now. Later, Special Lieutenant Quattro and I will
 ---
 >  話をしておくよ。大丈夫だ。
 >  彼はそれほど弱くはないさ」
@@ -2367,9 +2393,10 @@ plenty of times. That's how I've survived this long...”
 “Hear what?”
 
 @39181 Noin · ノイン
+# 审校：大写
 > 「帝国に対するクーデターも含め、
 >  財団のすべての行動を
-“About the people criticizing everything the foundation has done,
+“About the people criticizing everything the Foundation has done,
 ---
 >  批判している者たちのことです」
 including the coup against the Empire.”
@@ -2477,25 +2504,27 @@ despite having a pacifist father. ...Noin.”
 the Lightning Count, means to leave OZ?”
 
 @39198 Zechs · ゼクス
+# 审校：破折号；大写
 > 「このままいけば、私などいなくともOZは
 >  帝国軍に勝利することでしょう
 “At this rate, OZ will defeat the Imperial forces even without me.
 ---
 >  しかし、そのあとの地球圏で財団
 >  の目指そうとしているものには
-But what the foundation intends for the Earth Sphere afterward—
+But what the Foundation intends for the Earth Sphere afterward,
 ---
 >  賛同いたしかねます」
 I cannot bring myself to approve of it.”
 
 @39199 Treize · トレーズ
+# 审校：大写
 > 「ゼクス……{HeroMech}と同行
 >  させてもか? 彼らもまた、財団の
 “Zechs... May I let {HeroMech} go with you, then? They too cannot truly be
 ---
 >  方針に心から賛成しているわけ
 >  ではないだろう」
-in favor of the foundation's course.”
+in favor of the Foundation's course.”
 
 @39200 Zechs · ゼクス
 > 「トレーズ。{HeroMech}は帝国
@@ -2514,9 +2543,10 @@ sense of aesthetics into battle, and I have no right to stand at their side.
 This is me settling accounts with my own weakness.”
 
 @39201 Treize · トレーズ
+# 审校：破折号
 > 「決意は固いというわけか、
 >  ゼクス。いや
-“So your resolve is firm, Zechs. No—
+“So your resolve is firm, Zechs. No,
 ---
 >  我が友ミリアルド・ピースクラフト」
 my friend Milliardo Peacecraft.”
@@ -2527,13 +2557,14 @@ my friend Milliardo Peacecraft.”
 “I simply want to live in a way I can accept.”
 
 @39203 Treize · トレーズ
+# 审校：大写
 > 「律義な男だよ、君は。いいだろう、
 >  君の気のすむようにするといい。だが
 “You're an honest man. Very well, do as you see fit. But
 ---
 >  財団は君の行動を許さないかも
 >  しれない」
-the foundation may not permit your actions.”
+the Foundation may not permit your actions.”
 
 @39204 Zechs · ゼクス
 > 「承知している」

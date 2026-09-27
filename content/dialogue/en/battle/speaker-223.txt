@@ -1,82 +1,139 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10847 Beanne · ビアン
+# 触发：攻击（通用，1/5）
 # 审校：「つぶれろ」是命令对方被压碎，初稿“Crush them!”把对象变成了第三方。
 > 「つぶれろ!」
 “Get crushed!”
 
 @10848 Beanne · ビアン
+# 触发：攻击（通用，2/5）
 > 「こいつ!」
 “Why you!”
 
 @10849 Beanne · ビアン
+# 触发：攻击（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「文句はいわせん!」
-“I won't hear any complaints!”
+“I won’t hear any complaints!”
 
 @10850 Beanne · ビアン
+# 触发：攻击（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうも簡単にやらせるとはな!」
-“To think they'd let me do this so easily!”
+“To think they’d let me do this so easily!”
 
 @10851 Beanne · ビアン
+# 触发：攻击（通用，5/5）
 > 「これならどうだ!」
 “How about this!”
 
 @10852 Beanne · ビアン
+# 触发：被击坠（通用，1/1）
 > 「し、しまったぁぁぁーっ!」
 “D-damn it all!”
 
 @10853 Beanne · ビアン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、これではっ!」
-“Th-this is it?!”
+“Th-this can’t go on!”
 
 @10854 Beanne · ビアン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「わぁぁ! こ、このままでは!」
 “Waaah! A-at this rate!”
 
 @10855 Beanne · ビアン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なに!? ま、負けるだと!?」
-“What?! I-I'm losing?!”
+“What?! I-I’m losing?!”
 
 @10856 Beanne · ビアン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「な、なんだ!?」
 “Wh-what is this?!”
 
 @10857 Beanne · ビアン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「つ、強い……ならばっ!」
 “S-strong... then take this!”
 
 @10858 Beanne · ビアン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「くぅっ! やる! だがこれなら!」
 “Ngh! Not bad! But with this!”
 
 @10859 Beanne · ビアン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @10860 Beanne · ビアン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ならば!」
-“If it's only this much!”
+“If it’s only this much!”
 
 @10861 Beanne · ビアン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「相手にならん!」
-“You're no match for me!”
+“You’re no match for me!”
 
 @10862 Beanne · ビアン
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうも簡単によけられるとはな」
-“To think you'd dodge so easily.”
+“To think you’d dodge so easily.”
 
 @10863 Beanne · ビアン
+# 触发：回避（通用，2/2）
 > 「甘いんだよ」
 “Too naive.”
 
 @10864 Beanne · ビアン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「甘いんだよ」
 “Too naive.”
 
 @10865 Beanne · ビアン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「な、なんだ!? 弾切れ!?」
 “Wh-what?! Out of ammo?!”
 
 @10866 Beanne · ビアン
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ! おのれ、なんと卑怯な手を!」
 “Ngh! You bastard, what a cowardly trick!”
+
+@16357 Beanne · ビアン
+# 触发：使用〈フィンファンネル〉
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16358 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 1/4 句）
+# 审校：例のやつ更口语
+# 检查提示：未用必用译名：ビアン→Beanne、ワイム→Wyme
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, you know the drill!”
+
+@16359 Wyme · ワイム
+# 触发：使用〈ガザストーム〉（对话第 2/4 句）
+# 审校：军中应答
+> 「ハッ」
+“Sir!”
+
+@16360 Beanne · ビアン
+# 触发：使用〈ガザストーム〉（对话第 3/4 句）
+# 审校：三处统一
+> 「行けるぞ!」
+“Ready to go!”
+
+@16361 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 4/4 句）
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”

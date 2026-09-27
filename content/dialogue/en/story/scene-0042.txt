@@ -1,15 +1,18 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @26639 Mika · ミカ
+# 审校：补全整条台词的外层引号
 > 「艦長、ヘンケン中佐とつながりまし
 >  た」
 “Captain, I've got Lieutenant Colonel Henken on the line.”
 
 @26640 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「出してくれ」
 “Put him through.”
 
 @26641 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「そうか、ジャブローは大変だったようだ
 >  な。物資の件は了承した
 “I see, so Jaburo was rough on you. The supplies are approved.
@@ -19,10 +22,12 @@
 We'll hurry to rendezvous. We've got things to hand over on our end too.”
 
 @26642 Amuro · アムロ
+# 审校：补全整条台词的外层引号
 > 「なんです?」
 “What is it?”
 
 @26643 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「補充のMSだ。上で開発した奴
 >  だが、先に降ろさせた。状況は
 “Replacement mobile suits. They were developed up top, but I had them sent down first. The situation is
@@ -31,19 +36,23 @@ We'll hurry to rendezvous. We've got things to hand over on our end too.”
 harsh, after all.”
 
 @26644 Quattro · クワトロ
+# 审校：补全整条台词的外层引号
 > 「ほう、それは助かる」
 “Oh, that's a help.”
 
 @26645 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「それと一緒に、ありがたくない話も
 >  降りてきたがな」
 “Along with them came some unwelcome news, though.”
 
 @26646 Alan · アラン
+# 审校：补全整条台词的外层引号
 > 「というと?」
 “Meaning?”
 
 @26647 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「OZが確認した情報だそうだが、
 >  正体不明の艦隊が出現した
 “It's information OZ confirmed, apparently. An unidentified fleet has appeared.
@@ -53,40 +62,50 @@ harsh, after all.”
 Right now OZ seems to be trying to determine what it is.”
 
 @26648 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「正体不明の艦隊だと!?
 >  まさか……」
 “An unidentified fleet?! Don't tell me...”
 
 @26649 Amuro · アムロ
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「ムゲゾルバドスか?」
 “Muge Zorbados?”
 
 @26650 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「わからん。いずれにせよ君たちには、また
 >  上がってもらうことになると思う」
 “I don't know. Either way, I expect you'll be sent up again.”
 
 @26651 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「覚悟はしておきましょう」
 “We'll be ready.”
 
 @26652 Henken · ヘンケン
+# 审校：补全整条台词的外层引号
 > 「では、後でな」
 “Then, later.”
 
 @26653 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「{PartnerNick}……」
 “{PartnerNick}...”
 
 @26654 Koji · 甲児
+# 审校：补全整条台词的外层引号
 > 「……あんまり気にするなよ」
 “...Don't beat yourself up over it.”
 
 @26655 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「甲児……」
 “Koji...”
 
 @26656 Sayaka · さやか
+# 审校：补全整条台词的外层引号
 > 「彼だって、こうなる可能性は
 >  考えてたでしょう
 “He must have considered this possibility too.
@@ -95,10 +114,12 @@ Right now OZ seems to be trying to determine what it is.”
 It's not your fault.”
 
 @26657 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「さやか……」
 “Sayaka...”
 
 @26658 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「そうそう。まったくドモンといい
 >  あんたといい、単純な奴に限って
 “That's right. Honestly, Domon and you alike, it's always the simple ones
@@ -111,10 +132,12 @@ who sink into a deep gloom when they get shocked.
 Snap out of it already.”
 
 @26659 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「ルー・ルカもか……」
 “Roux Louka too...”
 
 @26660 Koji · 甲児
+# 审校：补全整条台词的外层引号
 > 「ははっ、ガラじゃないけどさ。
 >  {PartnerName}と仲間として
 “Haha, it's not like me, but... As {PartnerName}'s comrade,
@@ -127,19 +150,23 @@ the only ones who've fought alongside you are me, Sayaka, and Roux.
 Banjo's still off somewhere.”
 
 @26661 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「すまん……お前たち……」
 “Sorry... all of you...”
 
 @26662 Koji · 甲児
+# 审校：补全整条台词的外层引号
 > 「いいって。それより、大丈夫かよ?」
 “It's fine. More importantly, are you okay?”
 
 @26663 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「ああ。戦闘になれば、
 >  そんなこと考えているヒマはないからな」
 “Yeah. Once we're in combat, there's no time to think about that.”
 
 @26664 Roux · ルー
+# 审校：词条：ヴァイローズ=Virose
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
 “Then it's fine. Oh, right, Astonaige said he wants to talk
@@ -149,19 +176,23 @@ Banjo's still off somewhere.”
 about the Virose we recovered.”
 
 @26665 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「アストナージ、わかったのか?」
 “Astonaige, did you figure it out?”
 
 @26666 Astonaige · アストナージ
+# 审校：补全整条台词的外层引号
 > 「おう、来たな。
 >  お前のいった通りみたいだ」
 “Yeah, you're here. Looks like it's just as you said.”
 
 @26667 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「そうか……」
 “I see...”
 
 @26668 Astonaige · アストナージ
+# 审校：补全整条台词的外层引号
 > 「スーパーアースゲインといったところかな。
 >  かなりパワーアップするようだ
 “I'd call it the Super Earthgain. It seems to get a considerable power-up.
@@ -179,14 +210,17 @@ what do you say?”
 ({PartnerNick}... Master... Was this... was this the right thing to do...)
 
 @26670 Astonaige · アストナージ
+# 审校：补全整条台词的外层引号
 > 「おい、{HeroNick}」
 “Hey, {HeroNick}.”
 
 @26671 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「……やってくれ。……頼む」
 “...Do it. ...Please.”
 
 @26672 Astonaige · アストナージ
+# 审校：补全整条台词的外层引号
 > 「よし、それじゃさっそくとりかかるとするか
 >  シャリー、ジャネット、来てくれないか」
 “All right, then let's get started right away. Shirley, Janet, could you come here?”
@@ -201,11 +235,13 @@ what do you say?”
 keep fighting. Together with your soul... in this Super Earthgain...)
 
 @26674 Dermail · デルマイユ
+# 审校：补全整条台词的外层引号
 > 「ジオン? あのジオンの残党だと
 >  いうのか?」
 “Zeon? You mean those Zeon remnants?”
 
 @26675 Jamitov · ジャミトフ
+# 审校：补全整条台词的外层引号
 > 「アステロイド・ベルトから来たというが
 >  ……ハマーン・カーン
 “They say she came from the Asteroid Belt... Haman Karn.
@@ -214,11 +250,13 @@ keep fighting. Together with your soul... in this Super Earthgain...)
 A woman whose thoughts I can't read.”
 
 @26676 Dermail · デルマイユ
+# 审校：补全整条台词的外层引号
 > 「しかし、OZに対して協力を
 >  申し入れてきたのであろう?」
 “But she offered to cooperate with OZ, did she not?”
 
 @26677 Jamitov · ジャミトフ
+# 审校：补全整条台词的外层引号
 > 「宇宙からの脅威が存在すれば、
 >  それに対応するのが自然な流れだ
 “If a threat from space exists, it's only natural to respond to it.
@@ -228,11 +266,13 @@ A woman whose thoughts I can't read.”
 But accepting someone whose background is unknown takes resolve.”
 
 @26678 Dermail · デルマイユ
+# 审校：补全整条台词的外层引号
 > 「わからんなジャミトフ。どういうことだ」
 “I don't follow, Jamitov. What do you mean?”
 
 @26679 Jamitov · ジャミトフ
-# 审校：去掉误加的引号，本段不是对话开头，不需要加引号。
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「ゾルバドスによって従来
 >  存在した秩序が
 “Now that Zorbados has destroyed the order that once existed,
@@ -246,28 +286,28 @@ anyone who dreams of building a new system
 is liable to do anything. Just like we once were.”
 
 @26680 Dermail · デルマイユ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「なるほど……しかし利用しない手は
 >  あるまい」
 “I see... but we'd be fools not to make use of her.”
 
 @26681 Jamitov · ジャミトフ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「それは当然だがな」
 “Naturally.”
 
 @26682 Specials · スペシャルズ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「失礼いたします!」
 “Excuse me!”
 
 @26683 Jamitov · ジャミトフ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「どうしたか」
 “What is it?”
 
 @26684 Specials · スペシャルズ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「哨戒任務中でありました
 >  巡洋艦アレキサンドリアが
 “We've received a report that the cruiser Alexandria,
@@ -280,7 +320,8 @@ while on patrol, came under attack by enemy forces
 dispatched from an unidentified fleet and was heavily damaged.”
 
 @26685 Dermail · デルマイユ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「アレキサンドリアが攻撃を
 >  受けただと!?
 “The Alexandria was attacked?!
@@ -293,27 +334,27 @@ Surely not without even a declaration of war? Even the Muge Zorbados Empire
 issued a demand for surrender!”
 
 @26686 Jamitov · ジャミトフ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「新たな宇宙の脅威かもしれんな。
 >  アレキサンドリアか……
 “Perhaps a new threat from space. The Alexandria, of all ships...
 ---
 >  ジャマイカン特佐はどうした」
-What of Special Officer Jamaican?”
+What of Special Colonel Jamaican?”
 
 @26687 Specials · スペシャルズ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「はっ、ジャマイカン特佐は
 >  戦死なさいました」
-“Sir, Special Officer Jamaican was killed in action.”
+“Sir, Special Colonel Jamaican was killed in action.”
 
 @26688 Jamitov · ジャミトフ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「……それで、敵の動きは?」
 “...And the enemy's movements?”
 
 @26689 Specials · スペシャルズ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「2隊にわかれ、一方は艦隊に
 >  帰還したもようです
 “They appear to have split into two groups; one has returned to the fleet.
@@ -323,7 +364,7 @@ What of Special Officer Jamaican?”
 The other has been confirmed descending to Earth.”
 
 @26690 Jamitov · ジャミトフ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「この状態で地上へ降下するか
 >  ……妙だな
 “Descending to the surface in this situation... how strange.
@@ -332,7 +373,7 @@ The other has been confirmed descending to Earth.”
 Perhaps we should let them flounder for a while...”
 
 @26691 Blacky · ブラッキー
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「全機降下完了したか。
 >  ふむ、これが地球か……
 “Have all units finished their descent? Hmm, so this is Earth...
@@ -341,24 +382,24 @@ Perhaps we should let them flounder for a while...”
 You've located where Mars is, yes?”
 
 @26692 Gishin Soldier · ギシン星兵
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「おまかせください。我々の
 >  能力ならば、ぞうさもないことです」
 “Leave it to us. With our abilities, it will be no trouble at all.”
 
 @26693 Blacky · ブラッキー
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「よし、反逆者マーズを殺せば
 >  地球もおしまいだ。急ぐぞ」
 “Good. Once we kill the traitor Mars, Earth is finished too. Make haste.”
 
 @26694 Marg · マーグ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「…………」
 “...”
 
 @26695 Blacky · ブラッキー
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「マーグ、お前の機体に取りつけ
 >  られた爆弾のことを忘れるな
 “Marg, don't forget about the bomb attached to your unit.
@@ -372,39 +413,39 @@ If you do anything strange, I'll detonate it on the spot.
 Kill Mars and I'll disarm it. Understood?”
 
 @26696 Marg · マーグ
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「…………わかっている」
 “...I understand.”
 
 @26697 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「大介さん、見て。あれはどこの
 >  軍隊なのかしら。OZではないわね」
 “Daisuke, look. Whose army is that? It's not OZ.”
 
 @26698 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「あ……あれは!? まさか……
 >  まさかそんな……」
 “Ah... that's?! No... it can't be...”
 
 @26699 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「大介さん、どうしたの?」
 “Daisuke, what's wrong?”
 
 @26700 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「……ついに、ついに来てしまったのか」
 “...They've finally come. They've finally come, haven't they.”
 
 @26701 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「大介さん、いったいどうしたのよ?」
 “Daisuke, what on earth is going on?”
 
 @26702 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「ひかるさん、聞いてくれ。
 >  僕は、今度ばかりは
 “Hikaru, listen to me. This time, it seems
@@ -413,7 +454,8 @@ Kill Mars and I'll disarm it. Understood?”
 I have no choice but to fight.”
 
 @26703 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「え? どうしたっていうの?
 >  グレンダイザーのことは
 “What? What do you mean? I heard about Grendizer
@@ -427,7 +469,8 @@ back when the Muge Zorbados Empire was invading,
 but even then you didn't end up fighting, did you?”
 
 @26704 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「確かに、乗りたくはない。
 >  戦わずにすめばいいと思っていた
 “It's true, I don't want to pilot it. I thought it would be best if I never had to fight.
@@ -445,12 +488,12 @@ come. They're not like Muge Zorbados.
 They don't conquer. They simply destroy whoever they fight.”
 
 @26705 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「銀河……帝国?」
 “The Galactic... Empire?”
 
 @26706 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「僕の故郷、
 >  フリード星を滅ぼした奴らだ
 “They're the ones who destroyed my homeworld, Planet Fleed.
@@ -464,12 +507,12 @@ This Earth, this second home of mine,
 this time I will protect it. Even if it costs me my life.”
 
 @26707 Hikaru · ひかる
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「大介さん……」
 “Daisuke...”
 
 @26708 Daisuke · 大介
-# 审校：去掉误加的引号。
+# 审校：补全整条台词的外层引号
 > 「すまない、ひかるさん。
 >  おれは義父さんのところへ行く
 “I'm sorry, Hikaru. I'm going to see my adoptive father.
@@ -683,6 +726,7 @@ Hey, report this to Commander Gandal.”
 (But we're in the middle of battle. I have no unit I can take out alone.)
 
 @26745 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (ガイヤーを呼べばいい。
 >  どこにいてもお前が呼べば応える)
 (Just call Gaia. Wherever you are, he will answer your call.)
@@ -708,10 +752,12 @@ Hey, report this to Commander Gandal.”
 weren't you?!”
 
 @26750 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤァァァァァーッ!」
-“Gaiyaaaaaa!”
+“Gaiaaaaaa!”
 
 @26751 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
 “That's the one called Gaia?! Is Takeru piloting it?!”
@@ -731,8 +777,9 @@ weren't you?!”
 “What are you doing?! Damn it, was what you said about having something to tell me a lie?!”
 
 @26755 Takeru · タケル
+# 审校：精读：しまった
 > 「しまった!?」
-“Damn?!”
+“Oh no!”
 
 @26756 Marg · マーグ
 > 「そんな腕で銀河帝国が
@@ -838,6 +885,7 @@ mother, I want to pass them on to you. Mars, give me your hand.”
 ...”
 
 @26777 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (うぅっ、これは……ギシン星……
 >  父と母……
 (Ugh, this is... the planet Gishin... Father and Mother...
@@ -851,9 +899,10 @@ The antiproton energy Father researched... and Gaia...
 If it's destroyed, or if I die, the antiproton bomb will explode...)
 
 @26778 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (そうだ。ズールはいつか
 >  この日の来ることを考えて
-(That's right. Zuhl thought this day might someday come,
+(That's right. Zuul thought this day might someday come,
 ---
 >  ガイヤーを地球に送っていた。
 >  ガイヤーに搭載された爆弾の
@@ -907,7 +956,7 @@ resisting the forces that rule Earth, isn't it?”
 “That's right.”
 
 @26788 Marg · マーグ
-# 审校：词表要求ズール皇帝译为 Emperor Zuul，此处初稿误作 Zuhl，已改为 Zuul。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……マーズ、お前に渡さなくては
 >  ならないものがある
 “...Mars, there is something I must give you.
@@ -1020,21 +1069,22 @@ Why are they so fixated on this Earth?”
 against countless stars. That's Emperor Zuul's way.”
 
 @26805 Shinobu · 忍
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ちっくしょう!! 冗談じゃないぜ!
 >  俺たちが必死にやってきたことは
 “Damn it!! This isn't funny! What was all the stuff we did,
 ---
 >  なんだったんだよ!? ムゲ野郎が
 >  いなくなって、地球人同士の
-risking our lives, even for!? The Muge bastards are gone, and just when
+risking our lives, even for?! The Muge bastards are gone, and just when
 ---
 >  戦いが始まったと思ったら、また
 >  これかよ!? 俺たちがやったことは
-Earthlings start fighting each other, now this too!? Does that mean
+Earthlings start fighting each other, now this too?! Does that mean
 ---
 >  まるで無駄だったってことかよっ!!
 >  くそっ!」
-everything we did was for nothing!? Damn it!”
+everything we did was for nothing?! Damn it!”
 
 @26806 Ryoma · リョウ
 > 「だが忍、それでも俺たちはやるしかない
@@ -1118,8 +1168,9 @@ there's no need for me to say more. I'll be going now.”
 “...So it really was you, Daisuke.”
 
 @26819 Sayaka · さやか
+# 审校：沙羅是女性，さやか用“this guy”指代她不妥，改为“this person”。
 > 「甲児くん、この人と知りあいなの?」
-“Koji, you know this guy?”
+“Koji, you know this person?”
 
 @26820 Koji · 甲児
 > 「ああ、前にあったことがある。
@@ -1206,6 +1257,7 @@ to this extent.”
 to protect this planet and bring about peace. Without that, we can't fight to the end.”
 
 @26831 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「でもシーラさま、あたしたちいつになったら
 >  バイストンウェルに帰れるのか
 “But Lady Ciela, we don't know when we'll ever be able to return
@@ -1214,6 +1266,7 @@ to protect this planet and bring about peace. Without that, we can't fight to th
 to Byston Well.”
 
 @26832 Ciela · シーラ
+# 审校：人名按词表统一
 > 「チャム、果たすべきことがある以上、
 >  我々はそれをやり遂げる
 “Chum, as long as there is something we must accomplish, we have a duty
@@ -1223,13 +1276,15 @@ to Byston Well.”
 to see it through. Be patient. Isn't that right, Show Zama?”
 
 @26833 Show · ショウ
+# 审校：人名按词表统一
 > 「そう思います。チャム、俺たちと
 >  一緒にいるのがそんなに嫌なのか?」
 “I think so. Chum, do you really hate being with us that much?”
 
 @26834 Chum · チャム
+# 审校：原译“you meanie, Show!”语气偏幼，香姆是爱吐槽的小妖精，改为更自然的“you're so mean, Show!”更贴合其口吻。
 > 「そうじゃないけど……ショウのいじわる!」
-“It's not that... you meanie, Show!”
+“It's not that... you're so mean, Show!”
 
 @26835 Elle · エレ
 > 「そうですか……また
@@ -1240,8 +1295,9 @@ to see it through. Be patient. Isn't that right, Show Zama?”
 That explains it.”
 
 @26836 Bright · ブライト
+# 审校：布莱特对香姆的“なにか?”是询问对方想说什么，原译“What do you mean?”语气偏质问，改为“What is it?”更符合舰长口吻。
 > 「なにか?」
-“What do you mean?”
+“What is it?”
 
 @26837 Elle · エレ
 > 「悪意のオーラが増大しているのを
@@ -1257,6 +1313,7 @@ to swallow this planet whole. If left unchecked, only ruin awaits.”
 “Is it really that... bad?”
 
 @26839 Elle · エレ
+# 审校：エレ对众人说话，结尾“よいですか”是庄重的确认，原译“Understood?”偏随意，改为“Is that clear?”更符合其端庄坚定的口吻。
 > 「マーベル、ショウ、他のみなさんも、
 >  まだまだ戦いは続きます
 “Marvel, Show, everyone else too, the battle is still far from over.
@@ -1267,7 +1324,7 @@ The aura of malice is swallowing this planet whole.
 ---
 >  しかしそれでも、我々は
 >  あきらめてはならないのです。よいですか」
-But even so, we must not give up. Understood?”
+But even so, we must not give up. Is that clear?”
 
 @26840 Ryoma · リョウ
 > 「わかってますよ。俺たちの命をかけても

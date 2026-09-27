@@ -180,8 +180,9 @@ It's not like Char has that much fighting strength either.”
 “Somehow I'm starting to feel like we can win this.”
 
 @49698 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 是热血武者，原文「俺たち勝てるぜ!」是直接断言而非“gonna”的随意语气，改为更干脆有力的表达。
 > 「ああ。てゆうかよ、俺たち勝てるぜ!」
-“Yeah. I mean, come on, we're gonna win!”
+“Yeah. I mean, come on, we can win this!”
 
 @49699 Tetsuya · 鉄也
 > 「それを邪魔する敵が
@@ -274,9 +275,10 @@ We absolutely cannot let that happen.”
 “I'm on standby right now. What do you want?”
 
 @49717 Duo · デュオ
+# 审校：Duo 的原文「連絡つけてやろうと思ったのに」是“想帮你联系”而非“gonna put you through”，改为更准确且符合其话痨口吻的表达。
 > 「連れないねぇ。せっかくお嬢さんと
 >  話したかろうと思って、連絡つけて
-“Cold as ever. I went to all the trouble of thinking you'd want to talk to the young lady, so I was gonna put you
+“Cold as ever. I went to all the trouble of thinking you'd want to talk to the young lady, so I was going to put you
 ---
 >  やろうと思ったのに」
 through to her.”
@@ -323,9 +325,10 @@ falling, after all.”
 really end?”
 
 @49725 Heero · ヒイロ
+# 审校：全局：Zuul 拼写
 > 「そうだ。ムゲもズールも、もういない。
 >  ここでシャアを倒し、アクシズを止める
-“That's right. Muge and Zuhl are gone now. We defeat Char here and stop Axis.
+“That's right. Muge and Zuul are gone now. We defeat Char here and stop Axis.
 ---
 >  それで戦争は終わる。そして、お前
 >  が生き延びれば、平和は訪れる
@@ -340,9 +343,10 @@ This is the one and only thing I can do for you. I promised to protect you.
 There is no other way to protect you and this Earth Sphere.”
 
 @49726 Heero · ヒイロ
+# 审校：全局：Zuul 拼写
 > 「そうだ。ムゲもズールも、もういない。
 >  ここでシャアとゼクスを倒し……
-“That's right. Muge and Zuhl are gone now. We defeat Char and Zechs here...
+“That's right. Muge and Zuul are gone now. We defeat Char and Zechs here...
 ---
 >  アクシズを止める。それで戦争は
 >  終わる。そして、お前が
@@ -360,9 +364,10 @@ I can do for you. I promised to protect you. To protect you and this Earth Spher
 there is no other way.”
 
 @49727 Relena · リリーナ
+# 审校：Relena 的 voice 要求正式无缩写，将 You're 改为 You intend to。
 > 「だめ……だめよ! あなた死ぬつもり
 >  なんでしょう!?」
-“No... no! You're planning to die, aren't you?!”
+“No... no! You intend to die, don't you?!”
 
 @49728 Heero · ヒイロ
 > 「俺は、死なない」
@@ -394,8 +399,9 @@ there is no other way.”
 “Colonel!”
 
 @49735 Char · シャア
+# 审校：Char 的 voice 要求正式语体，将 can't 改为 cannot。
 > 「どうした? まだ落ち着かんのか?」
-“What is it? Still can't calm down?”
+“What is it? Still cannot calm down?”
 
 @49736 Quess · クェス
 > 「大佐、あたし、
@@ -433,21 +439,23 @@ I want to be useful to you, Colonel! I can be even more
 useful to you than Lalah ever was!”
 
 @49741 Char · シャア
+# 审校：Char 的 voice 要求正式语体，将 I'll 改为 I will。
 > 「……そうだな。わかった。ララァは忘れる」
-“...I see. Understood. I'll forget Lalah.”
+“...Indeed. Understood. I will forget Lalah.”
 
 @49742 Quess · クェス
 > 「本当ですか……?」
 “Really...?”
 
 @49743 Char · シャア
+# 审校：Char 的 voice 要求正式语体，将 won't 改为 will not，don't I 改为 do I not。
 > 「ああ。だから今は出撃の準備を
 >  ちゃんとしておけ
 “Yes. So for now, get properly ready for sortie.
 ---
 >  でなければクェスが生き残れない。
 >  それに、私を守ってもらわなくてはな?」
-Otherwise you won't survive, Quess. Besides, I need you to protect me, don't I?”
+Otherwise you will not survive, Quess. Besides, I need you to protect me, do I not?”
 
 @49744 Quess · クェス
 > 「はいっ!」
@@ -467,9 +475,10 @@ Otherwise you won't survive, Quess. Besides, I need you to protect me, don't I?�
 “Yes, we were going over the operation plans.”
 
 @49748 Char · シャア
+# 审校：Char 的 voice 要求正式语体，将 I'd 改为 I would。
 > 「……私がクェスに手を出すなどと、
 >  どうして考える?」
-“...Why would you think I'd make a move on Quess?”
+“...Why would you think I would make a move on Quess?”
 
 @49749 Gyunei · ギュネイ
 > 「はっ……いえ……自分は……」
@@ -488,9 +497,10 @@ building a new era. Get along with each other.”
 “Ah...”
 
 @49752 Char · シャア
+# 审校：Char 的 voice 要求正式语体，将 don't 改为 do not，They'll 改为 They will。
 > 「嘘はいっていないつもりだ。わかったら、
 >  行け。そろそろ連中ももどってくる」
-“I don't intend to lie to you. If you understand, then go. They'll be coming back soon.”
+“I do not intend to lie to you. If you understand, then go. They will be coming back soon.”
 
 @49753 Gyunei · ギュネイ
 > 「はっ!」
@@ -657,8 +667,9 @@ Don't let your guard down.”
 Return to Sweetwater.”
 
 @49782 Kignan · キグナン
+# 审校：精读：破折号
 > 「しかし、大佐」
-“But, Colonel—”
+“But, Colonel...”
 
 @49783 Char · シャア
 > 「これは命令だ、キグナン」
@@ -712,14 +723,14 @@ Return to Sweetwater.”
 “There was a nuke among the missiles?! Not bad, {HeroMech}.”
 
 @49794 Bright · ブライト
-# 机翻疑问：页数不符：原文 pages=2 但 ja 只有 1 页，已按 1 页输出
+# 审校：精读：整句在两页重复
 > 「阻止されたか……
 >  第二波発射と同時に
-“They stopped it... Launch the second wave and send out the combat units at the same time! The real third wave goes before they make contact!
+“They stopped it... Launch the second wave and send out the combat units at the same time!
 ---
 >  戦闘部隊出せ!
 >  接敵前に本命の第三波だ!」
-They stopped it... Launch the second wave and send out the combat units at the same time! The real third wave goes before they make contact!”
+The real third wave goes before they make contact!”
 
 @49795 Quess · クェス
 > 「来た!? やらせないよ!!」
@@ -852,9 +863,10 @@ we bring the Ra Cailum into contact with it!”
 “Amuro, why can't you understand that humanity is nothing more than fleas on the earth?!”
 
 @49819 Amuro · アムロ
+# 审校：精读：破折号
 > 「そうやって貴様は、永遠に
 >  他人を見下すことしかしないんだ
-“That's how you are—you'll spend forever doing nothing but looking down on others.
+“That's how you are, you'll spend forever doing nothing but looking down on others.
 ---
 >  俺は貴様ほど急ぎすぎもしなければ
 >  人類に絶望もしちゃいない!」
@@ -922,8 +934,9 @@ humanity will repeat the same thing forever.”
 “What?! Ngh... They still had this much fighting strength left?!”
 
 @49827 Beauty · ビューティ
+# 审校：Beauty 对舰长说话，语气应更直接、带点慌张，原文「どうするの!?」是“怎么办”而非“我们打算怎么办”。
 > 「艦長っ! どうするの!?」
-“Captain! What are we going to do?!”
+“Captain! What do we do?!”
 
 @49828 Bright · ブライト
 > 「やるしかないだろう!? アストナージ、
@@ -970,9 +983,10 @@ then I have to stop it no matter what.”
 “There are enemies out there, you know?! What about the Ra Cailum?!”
 
 @49835 Bright · ブライト
+# 审校：精读：破折号
 > 「誰でもいい、
 >  ラー・カイラムの護衛にまわらせろ!」
-“Anyone will do—have them escort the Ra Cailum!”
+“Anyone will do, have them escort the Ra Cailum!”
 
 @49836 Henken · ヘンケン
 > 「しかたがない。我々はここで待つ。
@@ -998,8 +1012,9 @@ then I have to stop it no matter what.”
 “Rocks from above! Watch out!”
 
 @49841 Beauty · ビューティ
+# 审校：「きゃあっ!」是女性尖叫，Kyaa 是罗马音，应改为自然英文。
 > 「きゃあっ!」
-“Kyaa!”
+“Eek!”
 
 @49842 Astonaige · アストナージ
 > 「艦長、このスピードじゃ
@@ -1091,9 +1106,10 @@ Please, let it be in time...”
 “Did it work...?”
 
 @49860 Char · シャア
+# 审校：精读：破折号
 > 「違うな。いま計算したが、
 >  アクシズの後ろ半分は
-“No. I just calculated it—the rear half of Axis
+“No. I just calculated it, the rear half of Axis
 ---
 >  間違いなく地球に落ちる。
 >  無駄なことをしたな。私の勝ちだ」
@@ -1142,10 +1158,10 @@ but it is still falling toward Earth even now.”
 “How could this happen...”
 
 @49869 Henken · ヘンケン
-# 审校：原文「地球の冬は終わらんぞ」意为“地球的冬天不会结束”，初稿译成“end Earth's winter”意思相反。
+# 审校：精读：地球の冬は終わらん
 > 「おい、なんとかならんのか!? あれだけ
 >  でも地球の冬は終わらんぞ!」
-“Hey, can't we do something?! Even that much will bring an end to Earth's winter!”
+“Hey, can't we do something?! Even that half alone will bring Earth a winter that never ends!”
 
 @49870 Garrison · ギャリソン
 > 「もう少し進入角度が
@@ -1183,9 +1199,10 @@ I'm sorry, but there's no longer time...”
 “Amuro?! Stop, it's impossible now!!”
 
 @49876 Bright · ブライト
+# 审校：精读：破折号
 > 「なに!? νガンダムが、
 >  アムロがどうした!?」
-“What?! The Nu Gundam—what's Amuro doing?!”
+“What?! The Nu Gundam, what's Amuro doing?!”
 
 @49877 Chan · チェーン
 # 审校：「アクシズに」表示阿姆罗前往/在阿克西斯，初稿 into Axis 方向感不对，改为 on Axis。
@@ -1308,9 +1325,10 @@ And yet humans, with this warmth, would even destroy the Earth.
 Understand that, Amuro.”
 
 @49897 Amuro · アムロ
+# 审校：精读：破折号
 > 「わかっているよ。
 >  だから、世界に希望を
-“I understand. That's why we have to show the world hope—
+“I understand. That's why we have to show the world hope,
 ---
 >  人の心の光を
 >  見せなくちゃならないんだろ?」
@@ -1329,9 +1347,10 @@ No, that's not it, that's not...)
 “What's the situation?!”
 
 @49900 Garrison · ギャリソン
+# 审校：管家口吻应更正式，将 It's 改为 It is，不用缩略。
 > 「完璧でございますな。
 >  アクシズの破片は双方とも
-“It's perfect. Both fragments of Axis have
+“It is perfect. Both fragments of Axis have
 ---
 >  地球落下のコースよりはずれました」
 deviated from their Earth-fall course.”
@@ -1358,9 +1377,10 @@ Clean up the remaining enemy forces!”
 “What's the situation?!”
 
 @49905 Garrison · ギャリソン
+# 审校：管家口吻应更正式，将 It's 改为 It is，不用缩略。
 > 「完璧でございますな。
 >  アクシズの破片は双方とも
-“It's perfect. Both fragments of Axis have
+“It is perfect. Both fragments of Axis have
 ---
 >  地球落下のコースよりはずれました」
 deviated from their Earth-fall course.”
@@ -1383,9 +1403,10 @@ deviated from their Earth-fall course.”
 Clean up the remaining enemy forces!”
 
 @49909 Char · シャア
+# 审校：精读：破折号
 > 「アクシズが阻止されただと!?
 >  ええいっ、このまま放置すれば
-“Axis was stopped?! Damn it—if it's left like this,
+“Axis was stopped?! Damn it, if it's left like this,
 ---
 >  いつまでも同じことを繰り返し、
 >  遅かれ早かれ地球を
@@ -1397,10 +1418,10 @@ crush the Earth! Before that, humanity must judge itself
 ---
 >  裁いて、自然に対して、地球に
 >  対して、しょく罪しなければならんのだ
-with its own hands, and atone to nature, to the Earth—
+with its own hands, and atone to nature, to the Earth.
 ---
 >  なんでこれがわからん!?」
-why can't you understand that?!”
+Why can't you understand that?!”
 
 @49910 Ark · アーク（按段落 3DD1）
 > 「あなたにだってあの放送は
@@ -1454,6 +1475,7 @@ is too much. What good comes of only multiplying sorrow and suffering?
 I cannot accept that.”
 
 @49916 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「わかるかよ、そんなもん! 本当に
 >  そうだってんなら、あんたはもっとマシな
 “How am I supposed to understand that?! If it were really true, you should have moved the world
@@ -1468,16 +1490,17 @@ could have done it, couldn't you?! To skip that and just drop an asteroid
 ---
 >  地球に落としてすませようなんて、
 >  そんな馬鹿な話があるかよ!」
-on the Earth—how can you talk such nonsense?!”
+on the Earth... how can you talk such nonsense?!”
 
 @49917 Manami · マナミ（按段落 3DD4）
+# 审校：精读：破折号
 > 「たとえそれが事実だったとしても、
 >  こんなやり方は間違っているわ!
 “Even if that were the truth, this way of doing things is wrong!
 ---
 >  あたしたちの前から姿を消して、
 >  こんなことの準備をしていたなんて
-Disappearing from before us and preparing all this—
+Disappearing from before us and preparing all this,
 ---
 >  あたしは絶対に許せない!」
 I will never forgive you!”
@@ -1496,8 +1519,9 @@ to beg anyone's forgiveness, nor do I expect to be forgiven.”
 “Captain Quattro!!”
 
 @49920 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉ッ!!」
-“Special Ensign Quattro!!”
+“Special Lieutenant Quattro!!”
 
 @49921 Char · シャア
 > 「私は、ネオジオンのシャア・アズナブルだ」
@@ -1570,8 +1594,9 @@ to beg anyone's forgiveness, nor do I expect to be forgiven.”
 “...Quess, is it.”
 
 @49938 Char · シャア
+# 审校：“Guuh”不是自然英文，改为“Ngh”以符合英文拟声习惯。
 > 「ぐうっ……」
-“Guuh...”
+“Ngh...”
 
 @49939 Amuro · アムロ
 > 「終わりだ、シャア!
@@ -1810,9 +1835,10 @@ protect people! The way you are now, you're the lowest!!”
 “Captain Quattro... why, why is this happening?!”
 
 @49981 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉……どうして、どうして
 >  なの!?」
-“Special Ensign Quattro... why, why is this happening?!”
+“Special Lieutenant Quattro... why, why is this happening?!”
 
 @49982 Char · シャア
 > 「{HeroNick}か……」
@@ -1845,8 +1871,9 @@ together, and at last...”
 “Captain... I'll stop you, just you watch!”
 
 @49988 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉……あたしは止めてみせるわ!」
-“Special Ensign... I'll stop you, just you watch!”
+“Special Lieutenant... I'll stop you, just you watch!”
 
 @49989 Bright · ブライト
 > 「なんだと!?」
@@ -1869,9 +1896,9 @@ bring you this broadcast.”
 “Captain!”
 
 @49993 Bright · ブライト
-# 审校：原文“レディ……アンか”中“アン”是“アンナ”的简称，初稿译成“Ann”与词表“Anna”不一致，改为“Anna”。
+# 审校：原文「レディ……アンか」是布莱特认出蕾蒂·安，不是把她叫成安娜，译文误译为人名。
 > 「レディ……アンか。何をするつもりだ?」
-“Lady... so it's Anna. What are you planning to do?”
+“Lady... so it's you. What are you planning to do?”
 
 @49994 Lady · レディ
 > 「あの忌まわしい1年戦争以来
@@ -1945,6 +1972,7 @@ right on through to the other side. The atmosphere will act as a cushion.”
 “So the Earth is saved, then...”
 
 @49999 Bright · ブライト
+# 审校：精读：破折号
 > 「アムロに、アムロに離脱しろと
 >  伝えろっ!!」
 “Tell Amuro, tell Amuro to break away!!”
@@ -2267,12 +2295,13 @@ and the rescue of Captain Amuro...
 succeeded. I repeat, the Captain is safe! We did it, everyone!”
 
 @50065 Banjo · 万丈
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「僕たちは決死の覚悟で、
 >  燃えるアクシズに突入
 “We plunged into the burning Axis, prepared to die,
 ---
 >  アムロ特佐の救出に……
-and the rescue of Lieutenant Colonel Amuro...
+and the rescue of Special Colonel Amuro...
 ---
 >  成功した。繰り返す、彼は
 >  無事だ! やったぞ、みんな!」
@@ -2324,9 +2353,10 @@ ready for us.”
 “Don't push yourself.”
 
 @50075 Amuro · アムロ
+# 审校：ハサン先生 应译为 Dr. Hasan，符合对医生的称呼习惯。
 > 「大丈夫だよ。ハサン先生にも
 >  見てもらったんだから」
-“I'm fine. Teacher Hasan took a look at me too.”
+“I'm fine. Dr. Hasan took a look at me too.”
 
 @50076 Banjo · 万丈
 > 「やあ、もうだいぶいいみたいだね」
@@ -2377,10 +2407,10 @@ ready for us.”
 “So, what about Axis?”
 
 @50087 Eiji · エイジ
-# 审校：原文“地球から離れました”指离开地球，初稿“left Earth's orbit”添加了轨道信息，改为更贴切的“left Earth behind”。
+# 审校：精读：主语是阿克西斯
 > 「大丈夫です。もう、地球から
 >  離れました」
-“It's all right. We've already left Earth behind.”
+“It's all right. It's already moved away from Earth.”
 
 @50088 Sai Saici · サイ・サイシー
 > 「そ、オイラたちのアクシズ落下阻止
@@ -2621,9 +2651,10 @@ but in reality it's Lady Une's OZ that's doing the work.”
 “...What about my sister and the others?”
 
 @50124 Sally · サリィ
+# 审校：精读：圣女单数
 > 「“クスコの聖女”は復興に
 >  従事する人々の精神的な
-“The ‘Holy Women of Cusco’ have become a spiritual
+“The ‘Holy Woman of Cusco’ has become a spiritual
 ---
 >  支えになっているわ。
 >  リリーナさんもがんばってるわよ、ヒイロ」
@@ -2635,17 +2666,18 @@ support for the people engaged in reconstruction. Relena's doing her best too, H
 “Of course. That's how she fights.”
 
 @50126 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうだが……リリーナ・ピースクラフトが、
 >  トレーズの後を引き継ぎ、財団の
 “That's right, but... Relena Peacecraft succeeded Treize and has returned as the
 ---
 >  代表に復帰したんだ。財団もず
 >  いぶんと変わってきた。いまは財団の
-representative of the foundation. The foundation has changed a great deal. Right now it seems
+representative of the Foundation. The Foundation has changed a great deal. Right now it seems
 ---
 >  本拠地を月かコロニーに移そうと
 >  しているようだ」
-they're trying to move the foundation's headquarters to the moon or a colony.”
+they're trying to move the Foundation's headquarters to the moon or a colony.”
 
 @50127 Heero · ヒイロ
 > 「リリーナが……」
@@ -2669,15 +2701,18 @@ they're trying to move the foundation's headquarters to the moon or a colony.”
 “...What about my sister and the others?”
 
 @50132 Sally · サリィ
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：聖女隊→Saints
 > 「“クスコの聖女”は復興に
 >  従事する人々の精神的な
-“The ‘Holy Women of Cusco’ have become a spiritual
+“The ‘Holy Woman of Cusco’ has become a spiritual
 ---
 >  支えになっているわ。財団がクスコの
 >  聖女隊のバックアップをしてるのよ」
-support for the people engaged in reconstruction. The foundation is backing the Saints of Cusco.”
+support for the people engaged in reconstruction. The Foundation is backing the Saints of Cusco.”
 
 @50133 Amuro · アムロ
+# 审校：全局：旧連邦 = former Federation
 > 「各コロニーも
 >  地球圏の復興という観点で
 “Each colony has also begun to move forward with the rebuilding of the Earth Sphere,
@@ -2688,7 +2723,7 @@ but there are still a lot of problems with this. We've become the
 ---
 >  調整役になってはいるが、とにかく
 >  旧連邦やロームフェラに対する
-coordinators, but in any case, distrust toward the Former Federation and Romefeller
+coordinators, but in any case, distrust toward the former Federation and Romefeller
 ---
 >  不信が根強く残っているのさ」
 remains deeply rooted.”
@@ -2716,13 +2751,13 @@ Once things calm down a bit more and an organization that can govern
 the entire Earth Sphere is established, we'll probably disband.”
 
 @50137 Domon · ドモン
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Why? There were plenty of people on the moon who
-# 草稿第 2 页：wanted to join the [protagonist mech name], weren't there?”
+# 审校：补译：原稿占位符错页
 > 「なぜだ? 月にも{HeroMech}に
 >  参加したいっていう連中が
+“Why? On the moon too, there were plenty of people saying they wanted to join the {HeroMech},
 ---
 >  大勢いたじゃないか」
+weren't there?”
 
 @50138 Rain · レイン
 > 「私たちはどこにも所属していない
@@ -2758,17 +2793,18 @@ isn't a military, after all.”
 It's kind of lonely.”
 
 @50141 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「リリーナ・ピースクラフトが、財団の
 >  代表に復帰しているよ。おかげで
-“Relena Peacecraft has returned as the foundation's representative. Thanks to that,
+“Relena Peacecraft has returned as the Foundation's representative. Thanks to that,
 ---
 >  いまの財団は以前とはまったく
 >  別物といっていい。なにしろ財団の
-the foundation now is practically a completely different thing from before. After all,
+the Foundation now is practically a completely different thing from before. After all,
 ---
 >  本拠地をコロニーに移すという
 >  話も出ているくらいだからね」
-there's even talk of moving the foundation's headquarters to a colony.”
+there's even talk of moving the Foundation's headquarters to a colony.”
 
 @50142 Banjo · 万丈
 > 「ほう、そりゃすごいね」
@@ -2779,9 +2815,10 @@ there's even talk of moving the foundation's headquarters to a colony.”
 “...”
 
 @50144 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地上も財団の主導で復興が
 >  始まっている。状況はだいぶ
-“Reconstruction on the ground has also begun under the foundation's leadership. The situation has calmed down
+“Reconstruction on the ground has also begun under the Foundation's leadership. The situation has calmed down
 ---
 >  落ち着いてきているよ」
 quite a bit.”
@@ -2796,13 +2833,15 @@ quite a bit.”
 “Yeah. That makes going off to the Muge universe ready to die worth it.”
 
 @50147 Rain · レイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「あ、そうそう。そういえばアムロ特佐は
 >  財団の幹部なんですよ」
-“Oh, right. Speaking of which, Lieutenant Colonel Amuro is an executive of the foundation.”
+“Oh, right. Speaking of which, Special Colonel Amuro is an executive of the Foundation.”
 
 @50148 Reika · レイカ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「財団幹部!?」
-“A foundation executive?!”
+“A Foundation executive?!”
 
 @50149 Koji · 甲児
 > 「なんだよ、それ。俺たちがムゲの宇宙
@@ -2833,9 +2872,10 @@ had done it.”
 “See? Just as I thought.”
 
 @50154 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「俺が得意だとでも? リリーナ・
 >  ピースクラフトが財団代表に
-“You think I am? When Relena Peacecraft returned as the foundation's representative,
+“You think I am? When Relena Peacecraft returned as the Foundation's representative,
 ---
 >  復帰したとき、OZからも幹部会
 >  に出席する人間が欲しいという
@@ -2846,9 +2886,10 @@ OZ wanted someone to attend the executive meetings too, so they came to me.
 There was no need for it to be me at all.”
 
 @50155 Kayra · ケーラ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どうせレディ・アン特佐にまかせっぱな
 >  しなんだから、いいじゃないですか
-“You leave everything to Lieutenant Colonel Lady Une anyway, so isn't it fine?
+“You leave everything to Special Colonel Lady Une anyway, so isn't it fine?
 ---
 >  幹部会議だって最初の1回
 >  しか出ていないし」
@@ -2860,14 +2901,14 @@ You've only attended the executive meeting once, the very first one.”
 “Until now there was the matter of OZ's reorganization, you know.”
 
 @50157 Amuro · アムロ
-# 审校：原文「おかげでね」是承接前文说明多亏了 Lady 的活动，初稿 thanks to her 放在句尾容易误解为感谢对象；改为“to make that happen”使逻辑更清楚。
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「一応財団の主導という形で、
 >  各地で復興が始まっているよ
-“With the foundation leading the way, reconstruction has begun in various places.
+“With the Foundation leading the way, reconstruction has begun in various places.
 ---
 >  町レベルでの自治組織もできつつ
 >  ある。財団もまだ問題は多いが
-Self-governing organizations at the town level are starting to form too. The foundation still has plenty of problems, but
+Self-governing organizations at the town level are starting to form too. The Foundation still has plenty of problems, but
 ---
 >  かなり以前とは違ってきているよ。
 >  レディがいろいろと動いてくれている
@@ -2909,13 +2950,15 @@ She's going by the Darlian name again now.”
 “...What about my sister?”
 
 @50164 Sally · サリィ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：聖女隊→Saints
 > 「ジュリアさんたちもすごいわよ。クスコの
 >  聖女隊はかなりの人数に
 “Miss Julia and the others are amazing too. The Saints in Cusco has grown to quite a number.
 ---
 >  なってるしね。財団とOZが全面
 >  支援しているの。とくに難民の
-The foundation and OZ are backing them fully. They're especially active in
+The Foundation and OZ are backing them fully. They're especially active in
 ---
 >  救済にあたっているわ。地上の人
 >  たちにとっては、精神的な支えよ」
@@ -3193,8 +3236,9 @@ along the way, apparently.”
 “...She's an enemy combat pilot.”
 
 @50212 Judau · ジュドー
+# 审校：杰特是开朗直爽的少年，“incredible”偏书面，改为“crazy”更口语。
 > 「あのすごいプレッシャーの女か」
-“That woman with the incredible pressure, huh.”
+“That woman with the crazy pressure, huh.”
 
 @50213 Kamille · カミーユ
 > 「ああ。記憶喪失っていってたけど、
@@ -3210,24 +3254,27 @@ along the way, apparently.”
 “What, Neo Zeon?!”
 
 @50216 Reika · レイカ
+# 审校：丽香是干练的前警官，“has appeared”过于正式，改为“'s here”更符合她急促的警报语气。
 > 「艦長、万丈、みんな、
 >  敵が現れたわ! あいつらよ!
-“Captain, Banjo, everyone, the enemy has appeared! It's them!
+“Captain, Banjo, everyone, the enemy's here! It's them!
 ---
 >  それも、3体も!!」
 And there are three of them!!”
 
 @50217 Shinobu · 忍
+# 审校：忍的台词短促粗野，“What did you say?!”太长，改为“What?!”更贴合他狂放的性格。
 > 「なんだとっ!?」
-“What did you say?!”
+“What?!”
 
 @50218 Daisuke · 大介
 > 「やはりか……」
 “So it's true after all...”
 
 @50219 Duo · デュオ
+# 审校：迪奥话痨又爱吐槽，“Oh man”改为“Sheesh”更贴合他无奈又轻佻的语气。
 > 「やれやれ、マジかよ」
-“Oh man, you've gotta be kidding me.”
+“Sheesh, you've gotta be kidding me.”
 
 @50220 Ryoma · リョウ
 > 「ああ、噂をすればってやつだな」
@@ -3242,9 +3289,10 @@ And there are three of them!!”
 this time it'll really be over!”
 
 @50222 Boss · ボス
+# 审校：老大是搞笑粗鲁的角色，“じゃねぇかよ”的粗俗感用“comin'”体现更贴切。
 > 「でもよぉ兜、あいつら何度倒しても
 >  また出てくるじゃねぇかよ」
-“But Koji, no matter how many times we beat those guys, they just keep coming back.”
+“But hey, Koji, no matter how many times we beat those guys, they just keep comin' back.”
 
 @50223 Domon · ドモン
 > 「かまわん! 何度でも

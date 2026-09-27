@@ -1,190 +1,298 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10545 Roux · ルー
+# 触发：攻击（通用，1/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私が相手になってやるわ!」
-“I'll take you on!”
+“I’ll take you on!”
 
 @10546 Roux · ルー
+# 触发：攻击（通用，2/12）
 > 「まかせなさい!」
 “Leave it to me!”
 
 @10547 Roux · ルー
+# 触发：攻击（通用，3/12）
 > 「いくわよ!」
 “Here I go!”
 
 @10548 Roux · ルー
+# 触发：攻击（通用，4/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なにさっ!」
-“What's your problem?!”
+“What’s your problem?!”
 
 @10549 Roux · ルー
+# 触发：攻击（通用，5/12）
 > 「さぁどこからでもかかってらっしゃい!」
 “Come on, bring it from anywhere!”
 
 @10550 Roux · ルー
+# 触发：攻击（通用，6/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「女をなめんじゃないの!」
-“Don't underestimate a woman!”
+“Don’t underestimate a woman!”
 
 @10551 Roux · ルー
+# 触发：攻击（通用，7/12）
 > 「なにぼーっとしてるの!」
 “What are you spacing out for?!”
 
 @10552 Roux · ルー
+# 触发：攻击（通用，8/12）
 > 「きた!」
 “Here it comes!”
 
 @10553 Roux · ルー
+# 触发：攻击（通用，9/12）
+# 审校：There, huh 不通
 > 「そこね!」
-“There, huh!”
+“There you are!”
 
 @10554 Roux · ルー
+# 触发：攻击（通用，10/12）
 > 「私がっ!」
 “I will!”
 
 @10555 Roux · ルー
+# 触发：攻击（通用，11/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落としてみせるわ!」
-“I'll shoot you down!”
+“I’ll shoot you down!”
 
 @10556 Roux · ルー
+# 触发：攻击（通用，12/12）
 > 「ルー・ルカ、いきます!」
 “Roux Louka, moving out!”
 
 @10557 Roux · ルー
+# 触发：被击坠（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまった! だめっ!」
-“D-Damn! No!”
+“D-damn! No!”
 
 @10558 Roux · ルー
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ご、ごめん……やられたっ!」
-“S-Sorry... I got hit!”
+“S-sorry... I got hit!”
 
 @10559 Roux · ルー
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「う、嘘!? やられちゃったの!?」
-“N-No way!? I got taken down!?”
+“N-no way?! I got taken down?!”
 
 @10560 Roux · ルー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、そ、そんな! 嘘でしょ!?」
-“Ngh, n-no! You're kidding!?”
+“Ngh, n-no! You’re kidding?!”
 
 @10561 Roux · ルー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あぁーっ! 直撃!?」
-“Aah! A direct hit!?”
+“Aah! A direct hit?!”
 
 @10562 Roux · ルー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「くっ、だ、だめっ!」
 “Ngh, n-no!”
 
 @10563 Roux · ルー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「うぅっ、こ、これ以上は……!」
 “Ngh, a-any more than this...!”
 
 @10564 Roux · ルー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんて攻撃……」
-“W-What an attack...”
+“W-what an attack...”
 
 @10565 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 > 「あぁーっ!」
 “Aah!”
 
 @10566 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このくらいでっ!」
-“Th-This much is nothing!”
+“Th-this much is nothing!”
 
 @10567 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「うっ! まだよ!」
 “Ngh! Not yet!”
 
 @10568 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、これ以上はやらせないわ!」
-“I-I won't let you do any more!”
+“I-I won’t let you do any more!”
 
 @10569 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あぅっ! あたった!?」
-“Ah! It hit!?”
+“Ah! It hit?!”
 
 @10570 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このっ、やってくれんじゃないのよ!」
-“Wh-Why you, you're pretty good!”
+“Wh-why you... not bad at all!”
 
 @10571 Roux · ルー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：What power?! 不成句
 > 「うっ! なんてパワーなの!?」
-“Ngh! What power!?”
+“Ngh! What kind of power is that?!”
 
 @10572 Roux · ルー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なにさ、そのくらいっ!」
-“What, that's all?!”
+“What, that’s all?!”
 
 @10573 Roux · ルー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「そんな攻撃で!」
 “With an attack like that!”
 
 @10574 Roux · ルー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないわよ!」
-“It won't work on me!”
+“It won’t work on me!”
 
 @10575 Roux · ルー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あ、あたっちゃったわけ!?」
-“I-I got hit!?”
+“I-I got hit?!”
 
 @10576 Roux · ルー
+# 触发：回避（通用，1/8）
+# 审校：回避情境，やれた 是躲开了不是干掉
 > 「やれた!? すごーい、こんな私を
 >  愛しちゃう」
-“Did I get it!? Amazing, I could fall in love with myself.”
+“I did it?! Wow, I could just love myself.”
 
 @10577 Roux · ルー
+# 触发：回避（通用，2/8）
 > 「よしっ!」
 “All right!”
 
 @10578 Roux · ルー
+# 触发：回避（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ならよけてみせるわ!」
-“At this level, I'll dodge it!”
+“At this level, I’ll dodge it!”
 
 @10579 Roux · ルー
+# 触发：回避（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせないっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @10580 Roux · ルー
+# 触发：回避（通用，5/8）
+# 审校：原译不通
 > 「さっすが、私!」
-“That's my girl—me!”
+“That’s me, all right!”
 
 @10581 Roux · ルー
+# 触发：回避（通用，6/8）
 > 「なにさ、そんな攻撃!」
 “What, an attack like that?!”
 
 @10582 Roux · ルー
+# 触发：回避（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄よ!」
-“It's useless!”
+“It’s useless!”
 
 @10583 Roux · ルー
+# 触发：回避（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたらないわ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @10584 Roux · ルー
+# 触发：攻击无效（护罩／装甲）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄だっていってるの!」
-“I said it's useless!”
+“I said it’s useless!”
 
 @10585 Roux · ルー
+# 触发：攻击无效（护罩／装甲）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効きはしないわ」
-“It won't work.”
+“It won’t work.”
 
 @10586 Roux · ルー
+# 触发：攻击无效（护罩／装甲）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なにさ、効かないわよ!」
-“What, it doesn't work!”
+“What, it doesn’t work!”
 
 @10587 Roux · ルー
+# 触发：攻击无效（护罩／装甲）（通用，4/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そんなことしてどうしようっていうの!?」
-“What are you trying to do with that!?”
+“What are you trying to do with that?!”
 
 @10588 Roux · ルー
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れ? なんてこと!」
-“Out of ammo? You've gotta be kidding!”
+“Out of ammo? You’ve gotta be kidding!”
 
 @10589 Roux · ルー
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「こんなときに弾切れ!?」
-“Out of ammo at a time like this!?”
+“Out of ammo at a time like this?!”
 
 @10590 Roux · ルー
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ、あんなに遠くから!?」
-“F-From that far away!?”
+“F-from that far away?!”
 
 @10591 Roux · ルー
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この距離じゃ反撃は無理ね……」
-“At this distance, I can't fight back...”
+“At this distance, I can’t fight back...”
+
+@16313 Roux · ルー
+# 触发：攻击，乘坐〈Gフォートレス〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ZZのパワーの違い、見せてあげるわ」
+“I’ll show you the difference in the ZZ’s power.”
+
+@16314 Roux · ルー
+# 触发：攻击，乘坐〈ZZガンダム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ZZのパワーの違い、見せてあげるわ」
+“I’ll show you the difference in the ZZ’s power.”
+
+@16315 Roux · ルー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「いきなさい、ファンネル!」
+“Go, Funnel!”
+
+@16316 Roux · ルー
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!」
+“Fin Funnels!”
+
+@16317 Roux · ルー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”

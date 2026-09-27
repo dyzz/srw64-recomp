@@ -1,106 +1,143 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7788 Borne · ボーン
+# 触发：攻击（通用，1/9）
 > 「しえぇぇぇっ!!」
 “Sheeeaaah!!”
 
 @7789 Borne · ボーン
+# 触发：攻击（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「地獄に送ってやるっ!!」
-“I'll send you to hell!!”
+“I’ll send you to hell!!”
 
 @7790 Borne · ボーン
+# 触发：攻击（通用，3/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「殺しあいは数字じゃねえぇ!」
-“Killing ain't about the numbers!”
+“Killing ain’t about the numbers!”
 
 @7791 Borne · ボーン
+# 触发：攻击（通用，4/9）
 > 「うへへへへへっ!」
 “Uh heh heh heh heh!”
 
 @7792 Borne · ボーン
+# 触发：攻击（通用，5/9）
 > 「うひひひひひひーっ!」
 “Uhee hee hee hee hee!”
 
 @7793 Borne · ボーン
+# 触发：攻击（通用，6/9）
 > 「げへへへへへへっ!」
 “Geh heh heh heh heh!”
 
 @7794 Borne · ボーン
+# 触发：攻击（通用，7/9）
+# 审校：いたぞ是发现目标
 > 「いた、いた、いたぞ～!!」
-“There, there, there he is!!”
+“Found ya, found ya, found ya!!”
 
 @7795 Borne · ボーン
+# 触发：攻击（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふざけるなっ!!」
-“Don't screw with me!!”
+“Don’t screw with me!!”
 
 @7796 Borne · ボーン
+# 触发：攻击（通用，9/9）
 > 「踊れ、踊れぇ!」
 “Dance, dance!”
 
 @7797 Borne · ボーン
+# 触发：被击坠（通用，1/2）
 > 「ぐっ……ぐわぁぁぁっ!!」
 “Guh... guwaaah!!”
 
 @7798 Borne · ボーン
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「おわぁぁぁぁぁーっ!?」
-“Owaaaaaah!?”
+“Owaaaaaah?!”
 
 @7799 Borne · ボーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺を殺そうとしやがって……
 >  ゆるせねえ!!」
-“You tried to kill me... I won't forgive you!!”
+“You tried to kill me... I won’t forgive you!!”
 
 @7800 Borne · ボーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「うわあっ!!」
 “Uwaah!!”
 
 @7801 Borne · ボーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うぅぅぅっ、ちきしょう!」
 “Uuugh, damn it!”
 
 @7802 Borne · ボーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、俺をぉぉぉぉ!」
-“M-meeeeee!”
+“H-how dare you... to me!”
 
 @7803 Borne · ボーン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「い、いかん!?」
-“Th-this is bad!?”
+“Th-this is bad?!”
 
 @7804 Borne · ボーン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「このやろぉっ!!」
 “You bastard!!”
 
 @7805 Borne · ボーン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「ちきしょぉぉっ!」
 “Damn iiiit!”
 
 @7806 Borne · ボーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ヘヘヘヘヘヘッ、ハハハハハハッ!!」
 “Heh heh heh heh, ha ha ha ha!!”
 
 @7807 Borne · ボーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッハッハ! どうしたぁっ!?」
-“Fuhah hah! What's wrong!?”
+“Fuhah hah! What’s wrong?!”
 
 @7808 Borne · ボーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「ケッ!」
 “Keh!”
 
 @7809 Borne · ボーン
+# 触发：回避（通用，1/1）
 > 「ひぃえへへへっ、のろまめぇ!」
 “Hee heh heh, you slowpoke!”
 
 @7810 Borne · ボーン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「もう終わりか? ひへへへへへ!」
 “Is that all? Hee heh heh heh heh!”
 
 @7811 Borne · ボーン
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「弾切れぇ!?」
-“Out of ammo!?”
+“Out of ammo?!”
 
 @7812 Borne · ボーン
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぉ、エネルギーが切れてやがる!」
-“Damn, the energy's run dry!”
+“Damn, the energy’s run dry!”
 
 @7813 Borne · ボーン
+# 触发：射程外，无法反击（通用，1/1）
 > 「遠くて攻撃できねぇ!」
 “Too far to attack!”

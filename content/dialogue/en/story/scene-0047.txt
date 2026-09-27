@@ -1,6 +1,7 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @32186 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「ムゲ帝王様、デスガイヤーただいま
 >  もどりました」
 “Emperor Muge, Death Gaia has returned.”
@@ -10,6 +11,7 @@
 “Hmm.”
 
 @32188 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「まさか、一度は征服した
 >  地球人どもが、ここまでやるとは
 “To think the Earthlings we once conquered would come this far...
@@ -23,6 +25,7 @@ Leaving the rule of Earth to the Gradosians was my blunder, Death Gaia's alone.
 I am prepared to accept any punishment.”
 
 @32189 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「そのことはもうよい。貴様が敗れた
 >  のであれば、やむをえまい。我らが
 “Enough of that. If you were defeated, it could not be helped. If General Death Gaia,
@@ -39,6 +42,7 @@ was defeated, then so be it.”
 “Yes, sir! I am most grateful!”
 
 @32191 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「なつかしいのぅ、あの頃。ともに戦った
 >  あの頃がな。ゲルド星系での
 “Those days were dear to me. The days we fought together. The battle against the
@@ -143,14 +147,14 @@ all the facilities.”
 “Sure. I'm Amuro Ray. Nice to meet you.”
 
 @32208 Kenji · ケンジ
-# 审校：军衔译法错误：原文为“大……特尉”，应译为 Special Ensign，而非 Major... I mean, Special Ensign。
+# 审校：精读：大……特尉 的口误
 > 「まさかOZに来て一年戦争の
 >  英雄とご一緒できるとは
 “To think I'd come to OZ and serve alongside the hero of the One Year War...
 ---
 >  感激です。よろしくお願いします、
 >  アムロ・レイ大……特尉」
-I'm thrilled. It's an honor, Special Ensign Amuro Ray.”
+I'm thrilled. It's an honor, Captain... I mean, Special Lieutenant Amuro Ray.”
 
 @32209 Amuro · アムロ
 > 「アムロでいい。来てくれ、他のクルーに
@@ -224,10 +228,10 @@ medics on board, you know.”
 “Whoa! S-Sayaka, when did you slip in here?!”
 
 @32222 Quattro · クワトロ
-# 审校：特佐应译为 Colonel，而非 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……それで特佐、私に話という
 >  のは?」
-“...So then, Colonel, what did you want to discuss with me?”
+“...So then, Special Colonel, what did you want to discuss with me?”
 
 @32223 Treize · トレーズ
 > 「クワトロ・バジーナはあのジオンの
@@ -511,14 +515,14 @@ I just didn't have any other way.”
 “Yeah, I'll join you.”
 
 @32267 Selain · セレイン（按段落 3DD2）
-# 审校：“or rather” 改为更自然的破折号插入语；末页补上省略号以对应原文“……”
+# 审校：精读：去破折号、与 31889 用语统一
 > (“戦う意味”の喪失、か。恐れ
 >  ているのは、私自身だというのにな
-(The loss of a reason to fight, huh. Even though the one I fear is myself.
+(The loss of a ‘meaning in fighting,’ huh. Even though the one I fear is myself.
 ---
 >  ロームフェラ、いやOZという組織
 >  ならば、帝国を本当に
-If it's Romefeller—no, an organization like OZ—they might truly be able to
+If it's Romefeller, no, an organization like OZ, they might truly be able to
 ---
 >  排除できるかもしれん。だが、その中
 >  で私の戦いは、私が戦う意味は
@@ -605,13 +609,13 @@ be dead before then.”
 “What is?”
 
 @32282 Lera · レラ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroNick}']，实际为 []）
-# 草稿第 1 页：“...You know, lately I've been thinking that maybe you and I are
-# 草稿第 2 页：kind of alike, 【主角昵称】.”
+# 审校：补译：原稿占位符错页
 > 「……なんかさ、{HeroNick}って、もしかした
 >  ら、アタシと似てるんじゃないかって、
+“...You know, {HeroNick}, lately I've been thinking that maybe you and I
 ---
 >  最近思うことがあるんだ」
+are kind of alike.”
 
 @32283 Selain · セレイン（按段落 3DD2）
 > 「……そうか」
@@ -653,12 +657,13 @@ honestly thought that would be fine.”
 “...”
 
 @32289 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「それがこの数年間の私のすべてだ。
 >  戦いつづけること、抗いつづけることが
-“That's been everything I am these past few years. To keep fighting, to keep resisting—
+“That's been everything I am these past few years. To keep fighting, to keep resisting.
 ---
 >  私の命の証、生きる意味だった」
-that was the proof I was alive, the meaning of my life.”
+That was the proof I was alive, the meaning of my life.”
 
 @32290 Lera · レラ
 > 「……ねぇ、どうしちゃったのさ!?
@@ -719,13 +724,14 @@ No... if something ends, it's my life that will...
 You still seem like you can start over.”
 
 @32298 Lera · レラ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ねぇ、しっかりしてよ{HeroNick}。まだ戦
 >  うべき敵はたくさん残ってるんだよ!?
-“Hey, pull yourself together, {HeroNick}. There are still plenty of enemies left to fight!?
+“Hey, pull yourself together, {HeroNick}. There are still plenty of enemies left to fight?!
 ---
 >  まだまだ終わったりなんかしない、まだ
 >  勝ったなんていえないんだよ!?
-It's not over yet, we can't say we've won yet!?
+It's not over yet, we can't say we've won yet?!
 ---
 >  いまのアンタは、まるで……」
 Right now you're just like...”
@@ -911,9 +917,10 @@ approaching.”
 “The base commander has requested that we confirm it.”
 
 @32331 Bright · ブライト
+# 审校：合并：misc 与 scene 批次三方合并
 > 「総員、第二戦闘配備!
 >  エマ中……特尉、シーラ女王と
-“All hands, second battle stations! Lieutenant Emma... I mean, Special Lieutenant, call Queen Ciela
+“All hands, second battle stations! Lieutenant Emma... I mean, Special Lieutenant Emma, call Queen Ciela
 ---
 >  ショウたちを呼んでくれ」
 and Show's group.”
@@ -941,6 +948,7 @@ and Show's group.”
 “They're requesting that we confirm it on our end.”
 
 @32337 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「総員、第二戦闘配備!
 >  銀鈴、シーラ女王とショウたちを
 “All hands, second battle stations! Ginrei, call Queen Ciela and Show's
@@ -988,6 +996,7 @@ as well.”
 “Queen Elle, I'm glad to see you're well.”
 
 @32345 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王こそ、よくご無事で。
 >  万丈という地上人のおかげで
 “Queen Ciela, I'm glad you're safe as well. Thanks to a surface dweller named Banjo,
@@ -1014,6 +1023,8 @@ securing freedom of movement for the Goraon.”
 “That Treize, he never told us a thing...”
 
 @32349 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「シーラ女王、それに皆様方は
 >  ドレイクのウィル・ウィプスとも
 “Queen Ciela, I hear that you and the others even engaged Drake's Wil Wiphs
@@ -1074,10 +1085,10 @@ approaching.”
 “The base commander has requested that we confirm it.”
 
 @32359 Bright · ブライト
-# 机翻疑问：原文“エマ中……特尉”为游戏文本截断，按军衔补全为 Lieutenant Emma
+# 审校：精读：中……特尉 口误
 > 「総員、第二戦闘配備!
 >  エマ中……特尉、エレ女王と
-“All hands, second battle stations! Lieutenant Emma, call Queen Elle and
+“All hands, second battle stations! Lieutenant... Special Lieutenant Emma, call Queen Elle and
 ---
 >  ショウたちを呼んでくれ」
 Show's group.”
@@ -1122,6 +1133,8 @@ group.”
 “So the approaching Aura Ship is not an enemy, then?”
 
 @32368 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：グラン・ガラン→Gran-Garan
 > 「ええ。あれはナの国のグラン・ガラン
 >  でしょう。シーラ・ラパーナ女王の
 “Yes. That must be the Gran-Garan of the kingdom of Na. It is Queen Ciela Lapana's
@@ -1146,13 +1159,15 @@ ship. I believe it is an ally.”
 as well.”
 
 @32372 Ciela · シーラ
+# 审校：希拉是女王，对另一位女王说话应更庄重，原文的です语气需体现。
 > 「エレ女王、お元気そうでなにより
 >  です」
-“Queen Elle, I'm glad to see you're well.”
+“Queen Elle, it is good to see you well.”
 
 @32373 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王こそ、よくご無事で」
-“Queen Ciela, I'm glad you're safe as well.”
+“Queen Ciela, I am glad you are safe as well.”
 
 @32374 Ciela · シーラ
 > 「万丈という地上人がよくしてくれ
@@ -1163,8 +1178,9 @@ as well.”
 still intact.”
 
 @32375 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「しかしシーラさま、どうしてここへ?」
-“But Lady Ciela, why are you here?”
+“But Lady Ciela, why have you come here?”
 
 @32376 Ciela · シーラ
 > 「ショウ・ザマも、元気そうですね」
@@ -1214,8 +1230,9 @@ we could not finish Drake off...”
 has joined. That is why I came all this way.”
 
 @32383 Bright · ブライト
+# 审校：布莱特对女王说话应更正式，不用缩写更符合舰长对贵宾的客气口吻。
 > 「ではご同行いただけると?」
-“Then you'll come with us?”
+“Then you will accompany us?”
 
 @32384 Ciela · シーラ
 > 「はい。他にも地上人の方が
@@ -1227,15 +1244,17 @@ has joined. That is why I came all this way.”
 “Surface dwellers?”
 
 @32386 Alan · アラン
+# 审校：阿兰是沉着的指挥官，对众人说话应更正式，不用缩写更符合其口吻。
 > 「そういうことだ。よろしく頼む、
 >  {HeroMech}の諸君」
-“That's how it is. I'll be counting on you, pilots of the {HeroMech}.”
+“That is how it is. I will be counting on you, pilots of the {HeroMech}.”
 
 @32387 Bright · ブライト
 > 「アランか」
 “Alan, is it.”
 
 @32388 Alan · アラン
+# 审校：阿兰是沉着的指挥官，对布莱特说话应更正式，不用缩写更符合其口吻。
 > 「カラバもいくらかはカリフォルニア・ベース
 >  攻略戦を支援しようと思ってね
 “Karaba has decided to lend some support to the California Base offensive as well.
@@ -1245,7 +1264,7 @@ has joined. That is why I came all this way.”
 Besides us, the Audhumla will be heading out in support. There are two others
 ---
 >  同行している」
-coming along here.”
+accompanying us here.”
 
 @32389 David · デビッド
 > 「ロアン! ロアンじゃないか!
@@ -1291,6 +1310,7 @@ I'd be glad if you'd use them.”
 “Yeah, it really has been a long time.”
 
 @32397 Arthur · アーサー
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「僕が案内するよ。シーラさまの船の
 >  格納庫に置いてあるんだ」
 “I'll show you the way. They're in the hangar of Lady Ciela's ship.”
@@ -1323,13 +1343,14 @@ your actions saved us.”
 “Thank you.”
 
 @32403 Shinobu · 忍
+# 审校：精读：あんたのことだ 是“就凭你”
 > 「それでアランさんよ、あとの1人っての
 >  は? あんたのことだ。まさかいまの
-“So then, Alan, who's the other one? Not you, that's for sure. Don't tell me you
+“So then, Alan, who's the other one? Knowing you, don't tell me you
 ---
 >  ちょびヒゲを数にいれてたってことは
 >  ないだろう」
-were counting that little mustache of yours.”
+were counting that little mustache guy just now.”
 
 @32404 ???
 > 「フフフフフ、ハーッハハハハハッ!」
@@ -1409,6 +1430,7 @@ Compared to that fight, my true identity is hardly a problem.”
 “Understood, Schwarz Bruder. We'll be counting on you.”
 
 @32419 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王、お預かりしていた
 >  ビルバインはいかがいたしましょう?」
 “Queen Ciela, what shall we do with the Billbine we've been keeping?”
@@ -1431,6 +1453,7 @@ Show Zama, I entrust the Billbine to you, a Holy Warrior.
 Please lend its power to stopping Drake.”
 
 @32422 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「はい、シーラ・ラパーナ」
 “Yes, Ciela Lapana.”
 
@@ -1441,6 +1464,7 @@ Please lend its power to stopping Drake.”
 “Show Zama... you have found your own reason to fight, haven't you?”
 
 @32424 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「はい、シーラ・ラパーナ」
 “Yes, Ciela Lapana.”
 
@@ -1548,13 +1572,14 @@ Hell Marshal, I have a plan. I ask permission to carry it out.”
 “Leave it to me.”
 
 @32441 Gildrome · ギルドローム
+# 审校：合并：misc 与 scene 批次三方合并
 > 「シャピロ、我ら帝国軍のみならず、
 >  バイストンウェル軍に百鬼や
-“Shapiro, gathering not only our Imperial forces but the Byston Well Forces, the Hundred Demons,
+“Shapiro, gathering not only our Imperial forces but the Byston Well Forces, the Hyakki Clan,
 ---
 >  ミケーネまでこの基地に集結させる
 >  とは、いったいどういうことだ。これでは
-and even Mycenae at this base — what exactly do you mean by this? At this rate,
+and even Mycenae at this base, what exactly do you mean by this? At this rate,
 ---
 >  地上のほとんどを地球人に
 >  奪われてしまうではないか」
@@ -1611,9 +1636,10 @@ scattering our forces would only make them targets to be destroyed one by one.�
 handing the Earthlings a target... Don't tell me?!”
 
 @32450 Shapiro · シャピロ
+# 审校：精读：去破折号
 > 「ようやく気がついたようだな。そうだ、
 >  俺は地球人どもをここへ
-“So you've finally caught on. That's right — I intend to drag the Earthlings
+“So you've finally caught on. That's right. I intend to drag the Earthlings
 ---
 >  引きずり出すつもりだ。奴らは必ず
 >  中核の戦力を投入してくる
@@ -1661,6 +1687,8 @@ to defy that?”
 “What a simple man...”
 
 @32457 Shapiro · シャピロ
+# 审校：デスガイヤー 按词表 Death Gaia
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「いかに知将をきどっても、しょせんは
 >  ギルドロームもヘルマットやデスガイヤーと
 “No matter how he poses as a brilliant strategist, Gildrome is ultimately no different
@@ -1828,15 +1856,18 @@ it's those people.”
 “Will-Wips... Drake Luft, is it.”
 
 @32489 Elle · エレ
+# 审校：精读：地上人、主语
 > 「大義に死する地上人がいます。
 >  死をも恐れぬ地上人が
-“There are Earthlings who would die for a noble cause. I shall strike down
+“There are surface dwellers who would die for a noble cause. The surface dwellers who fear not death
 ---
 >  討たせて頂きます、
 >  ドレイク・ルフト!」
-Earthlings who do not fear death, Drake Luft!”
+shall strike you down, Drake Luft!”
 
 @32490 Drake · ドレイク
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips、エレ・ハンム→Elle Hunm
 > 「エレ・ハンムにシーラ・ラパーナか。
 >  そう簡単にこのウィル・ウィプスが
 “Elle Hunm and Ciela Lapana, is it. It would be a problem if you thought this Will-Wips
@@ -2032,9 +2063,10 @@ our foothold on the surface... Don't tell me...”
 “So that's how it is... Fine.”
 
 @32525 Drake · ドレイク
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「帝国軍が撤退するだと?
 >  聞いておらんぞ、シャピロ
-“The imperial army is retreating? I wasn't told of this, Shapiro.
+“The Imperial army is retreating? I wasn't told of this, Shapiro.
 ---
 >  どういうことだ」
 What's the meaning of this?”
@@ -2168,9 +2200,10 @@ I can't afford to end things in a place like this.”
 “Gah, impossible?! For me to go down like this...”
 
 @32546 Fei · フェイ
+# 审校：原文没有“you know”对应的语气词，删去以贴合原意。
 > 「なんだと!? オレは、
 >  フェイ・チェンカなんだぜ……!!」
-“What?! I'm Fei Chenka, you know...!!”
+“What?! I'm Fei Chenka...!!”
 
 @32547 Jeril · ジェリル
 > 「こ……こんなことで!
@@ -2218,8 +2251,9 @@ I can't afford to end things in a place like this.”
 “Jeril...”
 
 @32557 Chum · チャム
+# 审校：原文是问ショウ会不会变成那样，不是问ショウ本人“你会不会”，改为第三人称。
 > 「ねぇ、ショウもあんなになっちゃうの!?」
-“Hey, will you end up like that too, Show?!”
+“Hey, will Show end up like that too?!”
 
 @32558 Show · ショウ
 > 「オーラ力が暴走すれば……俺だって
@@ -2232,14 +2266,16 @@ I can't afford to end things in a place like this.”
 “No, Show! Don't become like that!!”
 
 @32560 Show · ショウ
+# 审校：人名按词表统一
 > 「……大丈夫さ、チャム。俺は、
 >  制御してみせる」
 “...It's all right, Chum. I'll prove I can control it.”
 
 @32561 Bright · ブライト
+# 审校：精读：去破折号
 > 「どうやら間に合ったな。収容急げ
 >  この空域を離れるぞ」
-“Looks like we made it in time. Hurry the recovery—we're leaving this airspace.”
+“Looks like we made it in time. Hurry the recovery. We're leaving this airspace.”
 
 @32562 Elle · エレ
 > 「ドレイクを討てなかった……。
@@ -2320,16 +2356,18 @@ realize that!”
 “Drake! For the sake of both the surface and Byston Well, I'll take you down!”
 
 @32576 Drake · ドレイク
+# 审校：德雷克是野心家领主，语气应更居高临下，原文「さかしいな」是评价对方，补出 you are 更符合领主口吻。
 > 「さかしいな、ショウ・ザマ」
-“How impudent, Show Zama.”
+“How impudent you are, Show Zama.”
 
 @32577 Black Knight · 黒騎士
 > 「死ねぇっ、ショウ・ザマ!!」
 “Die, Show Zama!!”
 
 @32578 Show · ショウ
+# 审校：祥是正直成熟的圣战士，对德雷克说话应更正式有力，原文「させるかっ！」是怒吼，Like I'd let you 过于随意。
 > 「させるかっ!」
-“Like I'd let you!”
+“I won't let you!”
 
 @32579 Bright · ブライト
 > 「な、なんだと!?」
@@ -2384,9 +2422,10 @@ to try and crush us.”
 “And he used Drake's people too.”
 
 @32589 Tetsuya · 鉄也
+# 审校：精读：去破折号
 > 「考えようによっちゃ、それだけ俺たちが
 >  奴にとって脅威だってことだ。いや
-“Depending on how you look at it, that just means we're that much of a threat to him. No—
+“Depending on how you look at it, that just means we're that much of a threat to him. No,
 ---
 >  俺たちがいるOZが、か」
 that OZ is, since we're with them.”
@@ -2500,21 +2539,23 @@ bastards and Shapiro are still right there.”
 “It can't be helped. We've just got to crush the ones left behind.”
 
 @32604 Hayato · ハヤト
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Drake aside, don't you think the others might just go back into hiding like before?”
+# 审校：补译：原稿页数错误
 > 「ドレイクはともかく、他の連中はまた
 >  前みたいに表にでなくなるんじゃ
+“Drake aside, don't you think the rest of them will just go back
 ---
 >  ないですかね」
+to staying out of sight, like before?”
 
 @32605 Musashi · ムサシ
 > 「そうなってくると少しやっかいだな」
 “If that happens, it'll be a bit of a hassle.”
 
 @32606 Bright · ブライト
+# 审校：精读：去破折号
 > 「いや、このままならOZは地上を
 >  掌握する。そうなっては今回の
-“No—at this rate, OZ will take control of the surface. If that happens, the ones who
+“No, at this rate, OZ will take control of the surface. If that happens, the ones who
 ---
 >  ことでその存在を明らかにして
 >  しまった連中には、もはや勝ち目は
@@ -2616,10 +2657,10 @@ still above our heads. We can't relax yet.”
 “Yeah. After you were attacked by those unmanned machines, got in Soldifar, and fought.”
 
 @32623 Ark · アーク（按段落 3DD1）
-# 机翻疑问：军衔：クワトロ特尉按词表/规则应为 Lieutenant（特尉为特殊军衔，取 Lieutenant）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……結局、生き残ってしまった俺
 >  は、クワトロ特尉たちと一緒に
-“...In the end, since I survived, I decided to go along with Lieutenant Quattro
+“...In the end, since I survived, I decided to go along with Special Lieutenant Quattro
 ---
 >  いくことにしたんだ。あの町に残って
 >  いても、もう何もなかったし……」
@@ -2696,9 +2737,10 @@ Only the number's recorded... it's from the Moon.)
 “Colonel, I've been waiting to hear from you.”
 
 @32636 Quattro · クワトロ
+# 审校：精读：引号
 > 「キグナン、大佐はよせ。今の私は、
 >  OZのクワトロ・バジーナ特尉だ」
-“Kignan, drop the 'Colonel.' Right now I'm Lieutenant Quattro Bajeena of OZ.”
+“Kignan, drop the ‘Colonel.’ Right now I'm Special Lieutenant Quattro Bajeena of OZ.”
 
 @32637 Kignan · キグナン
 > 「私にとってはシャア・アズナブル大佐

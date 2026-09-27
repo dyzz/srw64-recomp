@@ -1,8 +1,9 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @38125 Bright · ブライト
+# 审校：精读：军衔
 > 「クワトロ特尉、いいのか?」
-“Quattro, are you sure about this?”
+“Special Lieutenant Quattro, are you sure about this?”
 
 @38126 Quattro · クワトロ
 > 「ああ」
@@ -138,13 +139,14 @@ hereby established?”
 “What?”
 
 @38149 Haman · ハマーン
+# 审校：合并：misc 与 scene 批次三方合并
 > 「我々はこのあと、OZの
 >  宇宙要塞バルジにおもむき
-“After this, we intend to proceed to the OZ space fortress Balji
+“After this, we intend to proceed to the OZ space fortress Barge
 ---
 >  ロームフェラ財団と、いや
 >  ロームフェラ派OZか
-and hold negotiations with the Romefeller Foundation—or rather, with Romefeller-faction OZ.
+and hold negotiations with the Romefeller Foundation, or rather, with Romefeller-faction OZ.
 ---
 >  交渉を持つつもりでいる。だが、
 >  いささか危険をともなうのでな。そこで
@@ -319,10 +321,10 @@ Jamitov and Dermail are the type who eliminate anyone who won't do
 what they say. Probably Haman too.”
 
 @38175 Amuro · アムロ
-# 审校：クワトロ的军衔是上尉（Captain），不是中校（Lieutenant Colonel），初稿译错。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ああ、それはクワトロ特尉も
 >  そう予想している」
-“Yeah, Captain Quattro figures the same thing.”
+“Yeah, Special Lieutenant Quattro figures the same thing.”
 
 @38176 Kamille · カミーユ
 > 「……あの人の目的、何なんです?」
@@ -338,10 +340,10 @@ what they say. Probably Haman too.”
 “Telling me not to worry about it is asking the impossible.”
 
 @38179 Amuro · アムロ
-# 审校：同上，クワトロ特尉应译为 Captain Quattro，而非 Lieutenant Colonel Quattro。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉は、俺たちの
 >  味方だよ」
-“Captain Quattro is on our side.”
+“Special Lieutenant Quattro is on our side.”
 
 @38180 Sara · 沙羅
 > 「そりゃね、信用はしちゃいるけどさ」
@@ -417,9 +419,10 @@ let us think only of defeating the aliens together.”
 “Jerid Messa, reporting in.”
 
 @38191 Jamitov · ジャミトフ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「来たか。特尉、君はこれまで
 >  どうやって生き延びてきた」
-“You've come. Lieutenant, how have you managed to survive this long?”
+“You've come. Special Lieutenant, how have you managed to survive this long?”
 
 @38192 Jerid · ジェリド
 > 「は、自分は、ただ敵を倒すまでは
@@ -427,9 +430,10 @@ let us think only of defeating the aliens together.”
 “Sir, I simply can't die until I've defeated the enemy...”
 
 @38193 Jamitov · ジャミトフ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ふむ……特尉、これをあずける。
 >  ハマーンとの会談には、同席しろ」
-“Hmm... Lieutenant, take this. You'll be sitting in on the talks with Haman.”
+“Hmm... Special Lieutenant, take this. You'll be sitting in on the talks with Haman.”
 
 @38194 Jerid · ジェリド
 # 审校：リスト型指腕部/手腕型装备，初稿误译为 list-type；原文句末是「……?」，应保留省略号加问号。
@@ -457,9 +461,10 @@ let us think only of defeating the aliens together.”
 If you wish to join my forces and take part in our operations, I won't refuse.”
 
 @38198 Haman · ハマーン
+# 审校：精读：去破折号
 > 「OZが我らアクシズに従う、の
 >  間違いではないのか?」
-“Shouldn't that be the other way around—that OZ will follow us at Axis?”
+“Shouldn't that be the other way around? That OZ will follow us at Axis?”
 
 @38199 Jamitov · ジャミトフ
 > 「何を根拠に
@@ -501,23 +506,24 @@ Do you really think you can win with the Romefeller Foundation, OZ,
 and our Mobile Doll Corps as your enemies?”
 
 @38204 Haman · ハマーン
-# 审校：“貴族どの”是哈曼对德尔迈尤的讽刺称呼，原译“My lord noble”不自然，改为“My dear noble”更符合讥讽语气。
+# 审校：精读：去破折号
 > 「勝てるつもりではなく、
 >  勝てるのだよ。貴族どの」
-“It's not that I think I can win—it's that I will win. My dear noble.”
+“It's not that I think I can win. It's that I will win. My dear noble.”
 
 @38205 Jerid · ジェリド
 > (この女……)
 (This woman...)
 
 @38206 Dermail · デルマイユ
+# 审校：精读：去破折号
 > 「アステロイドに逃げこんだ
 >  敗残兵ごときが
-“A beaten remnant that fled to an Asteroid—
+“A beaten remnant that fled to an asteroid.
 ---
 >  しょせんは伝統の重さを
 >  理解せぬ、下衆か」
-in the end, just a lowborn who can't grasp the weight of tradition.”
+In the end, just a lowborn who can't grasp the weight of tradition.”
 
 @38207 Jamitov · ジャミトフ
 > 「ハマーン・カーン、いま1度聞く。
@@ -566,33 +572,36 @@ you will die here.”
 “Wait, Haman!”
 
 @38217 Beltorchika · ベルトーチカ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「ブライト艦長! グワダンが
 >  バルジに砲撃を開始しました!」
-“Captain Bright! The Gwadan has begun firing on Balji!”
+“Captain Bright! The Gwadan has begun firing on Barge!”
 
 @38218 Bright · ブライト
 > 「何だと!?」
 “What did you say?!”
 
 @38219 Bunny · バニー
+# 审校：巴妮是女性敬体，原文句尾的“です”应体现为礼貌语气，而非对上级的“sir”。
 > 「グワダンの発光信号確認!
 >  援護頼む、です」
-“Confirmed signal light from the Gwadan! Requesting support, sir.”
+“Confirmed signal light from the Gwadan! Requesting support, please.”
 
 @38220 Alan · アラン
 > 「早すぎるな」
 “Too soon.”
 
 @38221 Banjo · 万丈
+# 审校：万丈语气从容带感叹，原文“破廉恥な女だ”是感叹而非陈述，改为感叹句更贴合其口吻。
 > 「ああ。だが、やはり最初からあてに
 >  されていたようだ。破廉恥な女だ」
-“Yeah. But it seems she was counting on us from the start after all. Shameless woman.”
+“Yeah. But it seems she was counting on us from the start after all. What a shameless woman.”
 
 @38222 Bright · ブライト
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「約束だ、しかたあるまい。
 >  バルジ方面に一斉射!
-“It's a promise. There's no helping it. All guns, fire on the Balji area!
+“It's a promise. There's no helping it. All guns, fire on the Barge area!
 ---
 >  各機、出撃しろ!
 >  グワダンを落とさせるな!」
@@ -624,9 +633,10 @@ All units, launch! Don't let the Gwadan get away!”
 “That's how it is. Sorry, Jamitov.”
 
 @38229 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「おお、シロッコ特佐!
 >  ジャミトフはどうした?」
-“Oh, Colonel Scirocco! What's become of Jamitov?”
+“Oh, Special Colonel Scirocco! What's become of Jamitov?”
 
 @38230 Scirocco · シロッコ
 > 「……残念ながら、
@@ -638,12 +648,13 @@ All units, launch! Don't let the Gwadan get away!”
 “Wha... What did you say?!”
 
 @38232 Scirocco · シロッコ
+# 审校：精读：去破折号
 > 「ハマーンにしてやられました。
 >  あの女、最初からそのつもりだったに
-“Haman got the better of him. That woman intended this from the very start—
+“Haman got the better of him. That woman intended this from the very start.
 ---
 >  相違ありません」
-of that there can be no doubt.”
+Of that there can be no doubt.”
 
 @38233 Dermail · デルマイユ
 > 「おおぉっ、なんということだ。
@@ -651,17 +662,18 @@ of that there can be no doubt.”
 “Ohhh, what a thing to happen. For Lord Jamitov to die...”
 
 @38234 Scirocco · シロッコ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「デルマイユ公、
 >  このままハマーンを逃してはなりません
 “Lord Dermail, we must not let Haman escape like this.
 ---
 >  本来ならばバスク特佐に
 >  指揮をとっていただくべきですが
-Normally Colonel Bask should take command, but
+Normally Special Colonel Bask should take command, but
 ---
 >  バルジは混乱しており、
 >  時間もありません」
-Balji is in chaos, and there's no time.”
+Barge is in chaos, and there's no time.”
 
 @38235 Dermail · デルマイユ
 > 「シロッコ……わ、わかった、まかせる」
@@ -688,9 +700,10 @@ Strike the Gwadan at once!!”
 That vixen!!”
 
 @38238 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「先ほどの通信は、
 >  シロッコ特佐のようです」
-“That transmission just now appears to have been from Colonel Scirocco.”
+“That transmission just now appears to have been from Special Colonel Scirocco.”
 
 @38239 Bask · バスク
 > 「シロッコめ……奴ごときが、何の
@@ -751,13 +764,14 @@ I'd appreciate your support in getting the Gwadan off the battle line.”
 Don't let the Gwadan and the Qubeley get away!!”
 
 @38249 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええい、何をやっておるか!
 >  おのれハマーン・カーン
 “Gah, what are you all doing?! Curse you, Haman Karn!
 ---
 >  おのれ{HeroMech}め!
 >  ゲーツ・キャパ特尉、やれるな!?」
-Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+Curse you, {HeroMech}! Special Lieutenant Gates Capa, can you do it?!”
 
 @38250 Gates · ゲーツ
 > 「はっ。問題ありません。
@@ -769,13 +783,14 @@ Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
 “All right, don't let them get out of here alive!”
 
 @38252 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええい、何をやっておるか!
 >  おのれハマーン・カーン
 “Gah, what are you all doing?! Curse you, Haman Karn!
 ---
 >  {HeroMech}め!
 >  ゲーツ・キャパ特尉、やれるな!?」
-Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+Curse you, {HeroMech}! Special Lieutenant Gates Capa, can you do it?!”
 
 @38253 Gates · ゲーツ
 > 「はっ。問題ありません。
@@ -800,13 +815,14 @@ Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
 “All right, don't let them get out of here alive!”
 
 @38258 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええい、何をやっておるか!
 >  おのれハマーン・カーン
 “Gah, what are you all doing?! Curse you, Haman Karn!
 ---
 >  おのれ{HeroMech}め!
 >  ゲーツ・キャパ特尉、やれるな!?」
-Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+Curse you, {HeroMech}! Special Lieutenant Gates Capa, can you do it?!”
 
 @38259 Gates · ゲーツ
 > 「はっ。問題ありません。
@@ -818,13 +834,14 @@ Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
 “All right, don't let them get out of here alive!”
 
 @38261 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええい、何をやっておるか!
 >  おのれハマーン・カーン
 “Gah, what are you all doing?! Curse you, Haman Karn!
 ---
 >  {HeroMech}め!
 >  ゲーツ・キャパ特尉、やれるな!?」
-Curse you, {HeroMech}! Special Ensign Gates Capa, can you do it?!”
+Curse you, {HeroMech}! Special Lieutenant Gates Capa, can you do it?!”
 
 @38262 Gates · ゲーツ
 > 「はっ。問題ありません。
@@ -931,9 +948,9 @@ or I'll have nothing to show Scirocco!”
 “You think I'll go down that easily?!”
 
 @38283 Jerid · ジェリド
-# 审校：原文是捷利特对哈曼的愤怒喊叫，初稿“A woman like you!!”语气偏平，改为破折号更符合被打断/爆发感。
+# 审校：精读：去破折号
 > 「貴様のような女がッ!!」
-“A woman like you—!”
+“A woman like you!!”
 
 @38284 Haman · ハマーン
 # 审校：原文“この私にプレッシャーを与えるだと”带有“竟敢对我施压”的傲慢语气，初稿“You're putting pressure on me”太平淡。
@@ -1033,8 +1050,9 @@ I expect we'll be requesting your participation in the operation.”
 “Splendid. I look forward to it.”
 
 @38299 Scirocco · シロッコ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ほう……バスク特佐が戦死されたか」
-“Oh... So Colonel Bask was killed in action.”
+“Oh... So Special Colonel Bask was killed in action.”
 
 @38300 Yazan · ヤザン
 > 「ドゴスギアは大破だ。
@@ -1054,22 +1072,24 @@ will have to reorganize as well.”
 “...”
 
 @38303 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「おお、シロッコ特佐。バスク特佐が
 >  戦死したというのは……」
-“Oh, Colonel Scirocco. This business of Colonel Bask's death...”
+“Oh, Special Colonel Scirocco. This business of Special Colonel Bask's death...”
 
 @38304 Scirocco · シロッコ
 > 「事実のようです」
 “It appears to be true.”
 
 @38305 Dermail · デルマイユ
+# 审校：精读：去破折号
 > 「な……なんと。ジャミトフ公に続いて
 >  バスク特佐までが……
-“W-what... After Lord Jamitov, now Colonel Bask too...
+“Wh-what... After Lord Jamitov, now Special Colonel Bask too...
 ---
 >  ど、どうするのだシロッコ!
 >  これでは異星人どころか
-Wh-what are we to do, Scirocco?! At this rate, forget the aliens—
+Wh-what are we to do, Scirocco?! At this rate, forget the aliens,
 ---
 >  トレーズやあの女にまで……」
 even Treize and that woman will...”
@@ -1199,13 +1219,15 @@ was something Scirocco wanted, then Scirocco is...”
 “I intend to follow you, so I won't die.”
 
 @38323 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝对部下的问话应更威严正式，改为“what is the status”以符合暴君口吻。
 > 「ワール、その後の経過はどうだ」
-“Wahl, what's the status?”
+“Wahl, what is the status?”
 
 @38324 Wahl · ワール
+# 审校：瓦尔对皇帝的敬称应保留，原文「はっ」译为“Yes, Your Majesty”更符合军官对皇帝的敬语。
 > 「はっ、先遣艦隊は
 >  意外に苦戦している模様です
-“Yes, sir. The advance fleet appears to be struggling more than expected.
+“Yes, Your Majesty. The advance fleet appears to be struggling more than expected.
 ---
 >  マーズもいまだ健在であります」
 Mars is still holding out as well.”
@@ -1241,6 +1263,7 @@ enhanced. It may be a bit much for the advance fleet...”
 “A miscalculation, Your Majesty?”
 
 @38329 Emperor Zuul · ズール皇帝
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うむ。地球の火山活動の
 >  影響でマーズの眠っていたカプセルが
 “Yes. The capsule Mars slept in was discovered by Earthlings
@@ -1307,5 +1330,6 @@ There was a woman from Planet Fleed, was there not? Deal with her
 and send her to Gandal.”
 
 @38336 Wahl · ワール
+# 审校：精读：对皇帝
 > 「はっ」
-“Yes, sir.”
+“Yes, Your Majesty.”

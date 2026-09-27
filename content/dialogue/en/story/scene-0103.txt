@@ -9,9 +9,10 @@
 is complete.”
 
 @48879 Emma · エマ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「アムロ特佐、サイド4宙域に
 >  潜伏していた、銀河帝国軍の
-“Colonel Amuro, the suppression of the Galactic Empire remnants hiding in the Side 4 area
+“Special Colonel Amuro, the suppression of the Galactic Empire remnants hiding in the Side 4 area
 ---
 >  残党の制圧は終了しました」
 is complete.”
@@ -74,9 +75,10 @@ is complete.”
 Get some rest.”
 
 @48888 Kayra · ケーラ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、サイド4宙域の
 >  銀河帝国軍残党の制圧は
-“Colonel, the suppression of the Galactic Empire remnants in the Side 4 area
+“Special Colonel, the suppression of the Galactic Empire remnants in the Side 4 area
 ---
 >  終了しました」
 is complete.”
@@ -108,12 +110,13 @@ is finished?”
 What do you think, Captain?”
 
 @48893 Kayra · ケーラ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それでも、あの連中が向こうへ
 >  行ってから、もう4ヶ月ですよ
 “Even so, it's already been four months since those guys went over there.
 ---
 >  特佐はどう思ってるんです?」
-What do you think, Colonel?”
+What do you think, Special Colonel?”
 
 @48894 Amuro · アムロ
 > 「……あれ以来、ムゲゾルバドス軍が
@@ -626,9 +629,10 @@ not long ago, you know?”
 “Is it still Julia Asuka's influence, then?”
 
 @48961 Beltorchika · ベルトーチカ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地上の人たちの精神的な柱に
 >  なってるものね。財団にも、もう
-“She's become a spiritual pillar for the people on Earth. It seems no one in the foundation
+“She's become a spiritual pillar for the people on Earth. It seems no one in the Foundation
 ---
 >  彼女を支援するのに反対する
 >  人はいなくなったみたいよ」
@@ -870,9 +874,10 @@ which has become the center of Earth's reconstruction.”
 We'll need Show and the others to come up from the surface too.”
 
 @49000 Kamille · カミーユ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉が隕石落としを……
 >  全員を呼びもどします
-“Special Ensign Quattro is dropping an asteroid... Recall everyone.
+“Special Lieutenant Quattro is dropping an asteroid... Recall everyone.
 ---
 >  ショウたちにも地上から、
 >  あがってもらわなくては」
@@ -883,14 +888,16 @@ We'll need Show and the others to come up from the surface too.”
 “Huh?”
 
 @49002 Kamille · カミーユ
+# 审校：精读：破折号
 > 「大尉の、シャアの隕石落としを
 >  とめなくちゃならないでしょ、僕らは!?」
-“We have to stop the Captain—stop Char from dropping that asteroid, don't we?!”
+“We have to stop the Captain, stop Char from dropping that asteroid, don't we?!”
 
 @49003 Kamille · カミーユ
+# 审校：精读：破折号
 > 「特尉の、シャアの隕石落としを
 >  とめなくちゃならないでしょ、僕らは!?」
-“We have to stop the Special Ensign—stop Char from dropping that asteroid, don't we?!”
+“We have to stop the Special Lieutenant, stop Char from dropping that asteroid, don't we?!”
 
 @49004 Amuro · アムロ
 > 「そ、そうだな。だがオーラシップしか
@@ -939,6 +946,7 @@ Knowing him, we may not get the first move, but I don't want to be late.”
 “Char...”
 
 @49012 Amuro · アムロ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「よく来てくれました、シーラさん。
 >  事情は聞いていると思いますが……」
 “Thank you for coming, Ciela. I believe you've heard the situation, but...”
@@ -980,12 +988,13 @@ plays a part too. He's been watching all along. Watching whether the ones who le
 would come back.”
 
 @49017 Ciela · シーラ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええ。また、始まったのですね。
 >  今度の相手は
 “Yes. So it's begun again. I hear our opponent this time is
 ---
 >  クワトロ特尉であると聞きましたが?」
-Special Ensign Quattro?”
+Special Lieutenant Quattro?”
 
 @49018 Amuro · アムロ
 > 「そうです」
@@ -1039,6 +1048,7 @@ that we have remained here on the surface all this time.”
 “And I said we should go home early.”
 
 @49025 Amuro · アムロ
+# 审校：人名按词表统一
 > 「すまないな、チャム。もうしばらく、
 >  君たちの力を貸してくれ」
 “Sorry, Chum. Lend us your strength a little longer.”
@@ -1048,6 +1058,7 @@ that we have remained here on the surface all this time.”
 “Well, when you put it that way, I can't say no.”
 
 @49027 Show · ショウ
+# 审校：人名按词表统一
 > 「チャム、調子にのるな!」
 “Chum, don't get carried away!”
 
@@ -1104,22 +1115,24 @@ But... I'm not sure how to put this, but I sense a different aura.”
 “But why now, of all times?”
 
 @49039 Amuro · アムロ
+# 审校：精读：破折号
 > 「{HeroMech}が戦力の
 >  半数以上を失っていることも
 “The fact that the {HeroMech} has lost over half its fighting strength
 ---
 >  関係あるだろうね。
 >  奴はずっと見ていたんだ
-probably has something to do with it. He's been watching all along—
+probably has something to do with it. He's been watching all along,
 ---
 >  俺たちが何をするのかを。そして
 >  いなくなった連中がもどってくるのかを」
 what we'd do. And whether the ones who left would come back.”
 
 @49040 Elle · エレ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「承知しています。今度の相手は
 >  クワトロ特尉なのですね」
-“I understand. Our opponent this time is Special Ensign Quattro, then.”
+“I understand. Our opponent this time is Special Lieutenant Quattro, then.”
 
 @49041 Amuro · アムロ
 > 「そうです」
@@ -1151,6 +1164,7 @@ But... I'm not sure how to put this, but I sense a different aura.”
 “But why now, of all times?”
 
 @49047 Amuro · アムロ
+# 审校：精读：破折号
 > 「{HeroMech}が戦力の
 >  半数以上を失っていることも
 “The fact that the {HeroMech} has lost over half its fighting strength
@@ -1161,7 +1175,7 @@ probably has something to do with it. And the fact that we can finally get
 ---
 >  始められそうだというのもね。奴は
 >  ずっと見ていたんだ。俺たちが
-serious about reorganizing OZ. He's been watching all along—what we'd
+serious about reorganizing OZ. He's been watching all along, what we'd
 ---
 >  何をするのかを。そして、いなくなった
 >  連中が、もどってくるのかを」
@@ -1193,6 +1207,7 @@ home for us.”
 “And I told you we should go home early.”
 
 @49052 Amuro · アムロ
+# 审校：人名按词表统一
 > 「すまないな、チャム。もうしばらく、
 >  君たちの力を貸してくれ」
 “Sorry, Chum. Lend us your strength a while longer.”
@@ -1202,6 +1217,7 @@ home for us.”
 “Well, when you put it that way, I can't say no.”
 
 @49054 Show · ショウ
+# 审校：人名按词表统一
 > 「チャム、調子にのるな!」
 “Chum, don't get carried away!”
 
@@ -1232,13 +1248,14 @@ But this has turned into quite a mess, Captain.”
 “Yeah. I'd like you to stay on as captain, Lieutenant Colonel.”
 
 @49060 Henken · ヘンケン
+# 审校：精读：军衔
 > 「遅れてすまんな。クルーが不慣れで、
 >  手間どった。しかし大変なことに
 “Sorry I'm late. The crew's inexperienced, so it took some doing. But this has turned
 ---
 >  なったな、特尉。いやすまん、特佐
 >  だったな」
-into quite a mess, Special Ensign. No, forgive me—Special Lieutenant Colonel.”
+into quite a mess, Special Lieutenant. No, forgive me, Special Colonel.”
 
 @49061 Amuro · アムロ
 > 「いいですよ、別に。しかしキャプテンには
@@ -1268,9 +1285,10 @@ Captain.”
 The {HeroNick} is still being loaded. Only Ginrei and Quatre are missing.”
 
 @49065 Amuro · アムロ
+# 审校：精读：破折号
 > 「カトルは間にあわなかったか。
 >  しかたない、予定通り出港しよう」
-“Quatre didn't make it in time. Nothing to be done—we depart as scheduled.”
+“Quatre didn't make it in time. Nothing to be done, we depart as scheduled.”
 
 @49066 Beltorchika · ベルトーチカ
 > 「コロニー代表者会議は?」
@@ -1295,12 +1313,13 @@ The {HeroNick} is still being loaded. Only Ginrei and Quatre are missing.”
 “Shoot! They beat us to the punch.”
 
 @49071 Hyoma · 豹馬
+# 审校：合并：misc 与 scene 批次三方合并
 > 「そんなこといったってしょうがないだろ。
 >  連中だってそれほどの戦力じゃない
-“No use complaining about that. They're not that big a force anyway—
+“No use complaining about that. They're not that big a force anyway,
 ---
 >  叩きつぶしちまえばいいんだ」
-we just smash 'em to bits.”
+we just smash ’em to bits.”
 
 @49072 Tetsuya · 鉄也
 > 「違うな。俺たちは
@@ -1329,9 +1348,10 @@ I just can't believe it. He saved me...
 He was a brilliant commander... We fought side by side, risking our lives like that...”
 
 @49075 Ark · アーク（按段落 3DD1）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「でも、本当にあの
 >  クワトロ特尉なんですか?
-“But is it really that Special Ensign Quattro?
+“But is it really that Special Lieutenant Quattro?
 ---
 >  なんだか信じられない気がします。
 >  俺を助けてくれて……
@@ -1372,9 +1392,10 @@ I just can't believe it. He saved me...
 He was a brilliant commander... We fought side by side, risking our lives like that...”
 
 @49079 Ark · アーク（按段落 3DD1）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「でも、本当にあの
 >  クワトロ特尉なんですか?
-“But is it really that Special Ensign Quattro?
+“But is it really that Special Lieutenant Quattro?
 ---
 >  なんだか信じられない気がします。
 >  俺を助けてくれて……
@@ -1393,6 +1414,7 @@ He was a brilliant commander... We fought side by side, risking our lives like t
 “What's so funny?!”
 
 @49082 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：精读：破折号
 > 「いや、かつての私も、もしかしたら
 >  部下たちに、そういわれていたのかも
 “No, I was just thinking that perhaps my men once said the same
@@ -1403,7 +1425,7 @@ about me. Every man has a place where he belongs.
 ---
 >  シャア・アズナブルはあの戦いの中で
 >  気づいたのだろう
-Char Aznable must have realized it during that battle—
+Char Aznable must have realized it during that battle,
 ---
 >  {HeroMech}が自分の
 >  いるべき場所ではない、と」
@@ -1432,9 +1454,10 @@ from the very start. But if you let your guard down, you'll be the one who dies.
 “Captain Quattro... I never thought we'd meet again like this.”
 
 @49086 Selain · セレイン（按段落 3DD2）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉……まさか再会が
 >  こういう形になろうとはね」
-“Special Ensign Quattro... I never thought we'd meet again like this.”
+“Special Lieutenant Quattro... I never thought we'd meet again like this.”
 
 @49087 George · ジョルジュ
 > 「人というのはわからないものです。
@@ -1463,8 +1486,9 @@ I simply cannot stand.”
 “Couldn't help yourself, my ass. I'd appreciate it if you didn't get so friendly with another man's woman.”
 
 @49091 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：破折号
 > 「つーっ、手加減なしかよ、おい」
-“Ow—no holding back, huh?”
+“Ow, no holding back, huh?”
 
 @49092 Selain · セレイン（按段落 3DD2）
 > 「誰が人の女だ。
@@ -1500,9 +1524,10 @@ Don't let your guard down.”
 “Captain Quattro... I never thought we'd meet again like this.”
 
 @49098 Selain · セレイン（按段落 3DD2）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉……まさか再会が
 >  こういう形になろうとはね」
-“Special Ensign Quattro... I never thought we'd meet again like this.”
+“Special Lieutenant Quattro... I never thought we'd meet again like this.”
 
 @49099 George · ジョルジュ
 > 「人というのはわからないものです。
@@ -1583,9 +1608,10 @@ but if he stands against us, I'll show no mercy. I'll crush him with everything 
 “Captain Quattro... How did it come to this...”
 
 @49110 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉……
 >  どうしてこんなことに……」
-“Special Ensign Quattro... How did it come to this...”
+“Special Lieutenant Quattro... How did it come to this...”
 
 @49111 Amuro · アムロ
 > 「あの頃のシャアは、俺たちには
@@ -1614,9 +1640,10 @@ you'll be the one who dies.”
 “But our opponent is that Captain Quattro, you know?”
 
 @49114 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「でも、相手は
 >  あのクワトロ特尉なのよ?」
-“But our opponent is that Special Ensign Quattro, you know?”
+“But our opponent is that Special Lieutenant Quattro, you know?”
 
 @49115 Aisha · アイシャ（按段落 3DD4）
 > 「クワトロでもシャアでも
@@ -1664,9 +1691,10 @@ The man he is now is a formidable enemy, no doubt about it. If you let your guar
 “Amuro... but our opponent is that Captain Quattro, you know?”
 
 @49122 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「アムロさん……でも、相手は
 >  あのクワトロ特尉なんですよ?」
-“Amuro... but our opponent is that Special Ensign Quattro, you know?”
+“Amuro... but our opponent is that Special Lieutenant Quattro, you know?”
 
 @49123 Amuro · アムロ
 > 「だからこそだ。君がそれでは、
@@ -1813,8 +1841,9 @@ Milliardo Peacecraft?!”
 “There's still backup?! ...Is that Char?! And... Anavel Gato?!”
 
 @49150 Kou · コウ
+# 审校：原文是感叹对方还活着，用“so you were alive”更贴合惊讶语气。
 > 「アナベル・ガトー……生きていたのか!」
-“Anavel Gato... you were alive!”
+“Anavel Gato... so you were alive!”
 
 @49151 Char · シャア
 > 「ギュネイ、作戦は成功だ。
@@ -1838,9 +1867,10 @@ Milliardo Peacecraft?!”
 “Colonel! You're going out yourself?!”
 
 @49156 Milliardo · ミリアルド
+# 审校：“look at”改为“see”更符合米利亚尔多庄重简练的口吻。
 > 「お前の撤退が遅いから、こうなる。
 >  もう少し大局をみるのだな」
-“Your retreat was too slow, so it's come to this. You need to look at the bigger picture.”
+“Your retreat was too slow, so it's come to this. You need to see the bigger picture.”
 
 @49157 Gyunei · ギュネイ
 > 「くっ……」
@@ -1938,9 +1968,10 @@ knowing that, the people on the surface
 still can't make the decision to go up into space. So I'll make the decision for them.”
 
 @49174 Amuro · アムロ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「地上じゃ餓死者だって
 >  出ているんだぞ!?
-“People on the surface are starving to death!?
+“People on the surface are starving to death?!
 ---
 >  まずは環境を整えなければ、
 >  できない相談だ!
@@ -2100,9 +2131,9 @@ absorbed into Neo Zeon under Supreme Commander Char.”
 “You! You're Amuro Ray!”
 
 @49205 Gato · ガトー
-# 审校：原文“ウラキ特尉か!”是认出对方时的称呼，初稿“is it!”多余且不自然，改为直接称呼。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ウラキ特尉か!」
-“Ensign Uraki!”
+“Special Lieutenant Uraki!”
 
 @49206 Kou · コウ
 > 「ガトォォォォーッ!!」
@@ -2241,9 +2272,10 @@ Retreat!”
 I'm retreating!”
 
 @49227 Gato · ガトー
+# 审校：「敵に回った」应译为“turned against us”而非“turned enemy”，更符合Gato的军人语气。
 > 「マシュマー・セロ……貴君が敵に
 >  回った事情は問わぬ
-“Mashymre Cello... I will not ask why you have turned enemy.
+“Mashymre Cello... I will not ask why you have turned against us.
 ---
 >  我々をはばむというのならば、
 >  ただ倒すのみ!」
@@ -2379,9 +2411,9 @@ build up their forces in such a short time? If they were remnants of Axis or Sci
 there's no way their movements could have gone unseen.”
 
 @49242 Henken · ヘンケン
-# 审校：原译“They went unseen, that is, to us”语序不自然，改为更口语化表达。
+# 审校：精读：破折号
 > 「見えなかったんだよ、我々にはな」
-“They went unseen—by us, that is.”
+“They went unseen, by us, that is.”
 
 @49243 Kayra · ケーラ
 > 「そうか……コロニーの住民たちが
@@ -2589,13 +2621,14 @@ toward the Sweetwater area?”
 “Is Char really that simple?”
 
 @49268 Domon · ドモン
+# 审校：多蒙口吻应更粗犷直白，将“can't quite believe it”改为“don't get it”更贴合其短句风格。
 > 「しかし……地球の寒冷化というが
 >  あの程度の石っころで本当に
 “But... is Earth really going to freeze over from a rock that size?
 ---
 >  そんなことになるのか?
 >  どうもよくわからないんだが……」
-I just can't quite believe it...”
+I just don't get it...”
 
 @49269 Rain · レイン
 > 「そうねぇ、確かにあの規模だと、
@@ -2694,13 +2727,14 @@ we'll still have a move we can make...”
 so it's all probing each other. Nothing was getting anywhere, so it was canceled.”
 
 @49285 Naoto · ナオト
+# 审校：直人口吻直率，将“filthy”改为“dirty”更自然口语化。
 > 「シャアの味方だって
 >  宣言しちまったら、俺たちが
 “If they came out and declared they're on Char's side, it'd be bad for them
 ---
 >  勝ったあと、まずいってか。
 >  きったねぇなぁ」
-once we win, huh. That's just filthy.”
+once we win, huh. That's just dirty.”
 
 @49286 Beltorchika · ベルトーチカ
 > 「あまりいい状況じゃないわね。
@@ -2732,13 +2766,14 @@ so it's all probing each other. Nothing was getting anywhere, so it was canceled
 Even with Relena coming all this way, that's how it is.”
 
 @49290 Naoto · ナオト
+# 审校：与L19保持一致，直人口吻直率，将“filthy”改为“dirty”。
 > 「シャアの味方だって
 >  宣言しちまったら、俺たちが
 “If they came out and declared they're on Char's side, it'd be bad for them
 ---
 >  勝ったあと、まずいってか。
 >  きったねぇなぁ」
-once we win, huh. That's just filthy.”
+once we win, huh. That's just dirty.”
 
 @49291 Beltorchika · ベルトーチカ
 > 「あまりいい状況じゃないわね。
@@ -2794,13 +2829,14 @@ what happens if we win, right. I hate that kind of thing.”
 “What happened to Representative Relena? Don't tell me she went back to Earth?”
 
 @49298 Noin · ノイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「まさか。月にいっていただいている。
 >  代表者会議は中止となったが
 “Of course not. She's gone to the Moon. The representatives' meeting was called off,
 ---
 >  まだ財団の本拠の移転先の
 >  交渉が残っているからな」
-but there's still the negotiation over where to move the foundation's headquarters.”
+but there's still the negotiation over where to move the Foundation's headquarters.”
 
 @49299 Beltorchika · ベルトーチカ
 > 「でも、あまりいい状況じゃないわよ。
@@ -2821,13 +2857,14 @@ Earth-sphere-wide war...”
 “Yeah... he got one over on us. Noin, how did the meeting go?”
 
 @49302 Noin · ノイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「中止でした。リリーナさまが交渉
 >  役となってはいても、やはりコロニー
 “It was called off. Even with Lady Relena acting as negotiator, the colonies'
 ---
 >  側の財団に対する不信は強い
 >  彼らは潜在的にネオジオンの
-distrust of the foundation is still strong. They're potentially on Neo Zeon's
+distrust of the Foundation is still strong. They're potentially on Neo Zeon's
 ---
 >  味方でしょう。むろん、そう公言し
 >  ているわけではありませんが。彼の
@@ -2928,13 +2965,15 @@ I won't be able to die in peace.”
 his next operation right away.”
 
 @49317 Judau · ジュドー
+# 审校：原文是疑问句，译文用了陈述句，改为疑问语气。
 > 「銀鈴さん、もどってたの?」
-“Ginrei, you were back?”
+“Ginrei, you're back?”
 
 @49318 Ginrei · 銀鈴
+# 审校：精读：破折号
 > 「ついさっきね。それとネオジオンのMS、
 >  やっぱりアナハイムが
-“Just a little while ago. And those Neo Zeon Mobile Suits—it looks like Anaheim's
+“Just a little while ago. And those Neo Zeon Mobile Suits, it looks like Anaheim's
 ---
 >  1枚かんでるみたいよ」
 got a hand in them after all.”
@@ -3019,9 +3058,10 @@ October, we're counting on you too.”
 “Astonaige, we're just about done over here.”
 
 @49332 Astonaige · アストナージ
+# 审校：精读：破折号
 > 「おう、ご苦労さん。ジュドーに
 >  カミーユか、どうした?」
-“Oh, thanks for the hard work. Judau and Kamille, huh—what's up?”
+“Oh, thanks for the hard work. Judau and Kamille, huh. What's up?”
 
 @49333 Judau · ジュドー
 > 「アストナージさん、あれってまさか……」

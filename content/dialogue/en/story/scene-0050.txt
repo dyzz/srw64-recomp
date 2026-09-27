@@ -57,12 +57,13 @@ Lord Shapiro?”
 to wish of a speck of stardust.”
 
 @33852 Luna · ルーナ
+# 审校：精读：与 33433 同句统一，去掉多出的 my lord
 > 「……でも、女の身の私には、はかなく
 >  消える星くずにも頼りたいことも……
-“...But as a woman, there are times when even I must rely on a fleeting star
+“...But as a woman, there are times when even I wish to rely on a fleeting speck of
 ---
 >  ございます」
-that vanishes away... my lord.”
+stardust...”
 
 @33853 Shapiro · シャピロ
 > 「何がいいたい、ルーナ」
@@ -123,9 +124,10 @@ OZ's domination of the Earth Sphere. Then I will destroy the entire plant...)
 “You are...”
 
 @33865 Trowa · トロワ
+# 审校：精读：特士
 > 「俺は、OZの特士トロワ・バートン。
 >  これ以上、抵抗するならば
-“I am Trowa Barton, special officer of OZ. If you resist any further,
+“I am Special Officer Trowa Barton of OZ. If you resist any further,
 ---
 >  貴様を殺す」
 I will kill you.”
@@ -167,6 +169,7 @@ what they're being made to do?”
 “You need something from me?”
 
 @33872 Hilde · ヒルデ
+# 审校：精读：去破折号
 > 「批判だけなら誰にもできるわ。いまは
 >  OZと一緒に、新しい地球圏を
 “Anyone can criticize. Now is the time to build a new Earth Sphere together
@@ -177,10 +180,10 @@ with OZ. We no longer fear battle. Everyone here volunteered
 ---
 >  自分で志願して参加しているわ
 >  行動こそ信念のあらわれという
-of their own will. Action is the proof of conviction—
+of their own will. Action is the proof of conviction.
 ---
 >  ことを、知っておきなさい」
-remember that.”
+Remember that.”
 
 @33873 Duo · デュオ
 > 「誰だい、あんたは」
@@ -272,17 +275,19 @@ combat strength left than expected. Losing your cool is dangerous.”
 “Masato, don't say stupid things.”
 
 @33890 Show · ショウ
+# 审校：精读：去破折号
 > 「だけど、沙羅の気持ちもわかるけど
 >  気負いすぎるのはよくないんじゃないか」
-“But I get how Sara feels—still, getting too worked up isn't good.”
+“But I get how Sara feels. Still, getting too worked up isn't good.”
 
 @33891 Shinobu · 忍
+# 审校：精读：大小写
 > 「俺は気負ってなんかいやしないぜ。
 >  こういうのはな、気合いが入ってると
 “I'm not worked up at all. This is what you call
 ---
 >  いうんだ」
-being full of Spirit.”
+being full of spirit.”
 
 @33892 Ryo · 亮
 > 「まわりが見えなくなって危険なのは、
@@ -290,9 +295,11 @@ being full of Spirit.”
 “Losing sight of your surroundings is dangerous either way.”
 
 @33893 Tetsuya · 鉄也
+# 审校：精读：大小写
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「だがOZのことやらで頭を悩ますよりは
 >  ムゲゾルバドス帝国軍を倒すことに
-“But it's true that it's better to Focus on defeating the Muge Zorbados Empire
+“But it's true that it's better to focus on defeating the Muge Zorbados Empire
 ---
 >  集中した方がいいってのは、
 >  確かだな」
@@ -363,6 +370,7 @@ there'll be no need to use them.”
 “They've come.”
 
 @33906 Helmut · ヘルマット
+# 审校：精读：どもめ 不译“人渣”
 > 「フッフッフッ、待ちかねたぞ
 >  地球人どもめ。今度こそ
 “Heh heh heh, I've been waiting, you Earthlings. This time
@@ -385,12 +393,13 @@ I'll make you taste the bitter gall of defeat! All right, we're launching!!”
 “You must not go out yet. Draw in more of the enemy.”
 
 @33910 Helmut · ヘルマット
+# 审校：精读：去破折号
 > 「なんだと!? それでは奴らが、この
 >  月面まで来てしまうではないか!
 “What?! Then they'll come all the way to this lunar surface!
 ---
 >  そんなことはせずとも、この俺が」
-You don't need to do that—I myself will—”
+There's no need for that. I myself will...”
 
 @33911 Shapiro · シャピロ
 > 「俺の作戦に従えんというのか?」
@@ -406,13 +415,15 @@ You don't need to do that—I myself will—”
 “Yes, that's right...”
 
 @33914 Luna · ルーナ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ヘルマット将軍→General Helmut
 > 「よろしいのですか? ヘルマット将軍に
 >  迎撃に出てもらい、その上で
 “Is that all right? Having General Helmut go out to intercept, and then
 ---
 >  月面で敵を叩く2段構えの
 >  作戦の方が……」
-striking the enemy on the lunar surface—a two-stage plan—would be better...”
+striking the enemy on the lunar surface, a two-stage plan, would be better...”
 
 @33915 Shapiro · シャピロ
 > 「黙れルーナ。口だしは無用だ。
@@ -428,9 +439,9 @@ this moon will become hell for them. Kukukukuku.”
 “...”
 
 @33917 Helmut · ヘルマット
-# 审校：「まだか」在此是催促“还没好吗”，初稿“not yet”不自然，改为更口语的催促。
+# 审校：原文“まだか!”是催促，现有译文“what's keeping you?!”语气过强，改为更直接的“not yet?!”。
 > 「シャピロ、まだか!」
-“Shapiro, what's keeping you?!”
+“Shapiro, not yet?!”
 
 @33918 Shapiro · シャピロ
 > 「いいだろう。ヘルマット将軍、
@@ -438,6 +449,8 @@ this moon will become hell for them. Kukukukuku.”
 “Very well. General Helmut, launch.”
 
 @33919 Helmut · ヘルマット
+# 审校：精读：どもめ
+# 检查提示：未用必用译名：ヘルマット将軍→General Helmut
 > 「さぁこい地球人ども!
 >  このヘルマット将軍が相手を
 “Come on, you Earthlings! General Helmut will be your
@@ -475,9 +488,10 @@ we'll drag him out ourselves. Like hell I'll let him sit back and watch!”
 “Dancouga has launched.”
 
 @33925 Bright · ブライト
+# 审校：精读：去破折号
 > 「あいつらめ、この戦闘が終わったら
 >  修正してやる! そのまま、やらせろ!
-“Those idiots—once this battle's over, I'm giving them a dressing-down! Let them go as they are!
+“Those idiots, once this battle's over, I'm giving them a dressing-down! Let them go as they are!
 ---
 >  他の者も発進急げ!」
 Everyone else, launch, hurry!”
@@ -487,16 +501,18 @@ Everyone else, launch, hurry!”
 “W-why are you here?!”
 
 @33927 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐からの命令で、
 >  この作戦中{HeroMech}に
-“By order of Lieutenant Colonel Bask, I'm to join the {HeroMech}
+“By order of Special Colonel Bask, I'm to join the {HeroMech}
 ---
 >  加わることとなった。よろしく頼む」
 for this operation. I'm counting on you.”
 
 @33928 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐が……?」
-“Lieutenant Colonel Bask...?”
+“Special Colonel Bask...?”
 
 @33929 Quattro · クワトロ
 > (くさいな……バスクめ。なんのつもりだ)
@@ -517,8 +533,9 @@ for this operation. I'm counting on you.”
 “What?!”
 
 @33933 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ的轻佻口吻在原文「よっ」中更接近“if it isn't”的搭讪语气，现译过于平淡。
 > 「よっ、{HeroName}ちゃん」
-“Well, well, {HeroName}.”
+“Well, well, if it isn't {HeroName}.”
 
 @33934 Selain · セレイン（按段落 3DD2）
 > 「な……なんで貴様がここにいる!」
@@ -533,18 +550,19 @@ for this operation. I'm counting on you.”
 but to obey.”
 
 @33936 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「上官? バスク特佐の指示だと
 >  いうのか?」
-“A superior? You mean Lieutenant Colonel Bask ordered this?”
+“A superior? You mean Special Colonel Bask ordered this?”
 
 @33937 Rish · リッシュ（按段落 3DD2）
-# 审校：初稿在 {HeroMech} 后缺少空格，导致占位符与后续单词粘连，补上空格。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そういうことです。この作戦の間
 >  {HeroMech}に加わるようにとね
 “That's right. I'm to join the {HeroMech} for this operation.
 ---
 >  ま、よろしく頼んます、特佐」
-Well, I'll be in your care, Lieutenant Colonel.”
+Well, I'll be in your care, Special Colonel.”
 
 @33938 Bright · ブライト
 > 「あ、ああ……」
@@ -608,9 +626,10 @@ first of all!”
 but are they really going to be any use?”
 
 @33949 Bask · バスク
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ノア特佐、まずは貴官ら
 >  {HeroMech}とやらの実力を
-“Lieutenant Colonel Noah, first let's see the ability of you and your {HeroMech}.
+“Special Colonel Noah, first let's see the ability of you and your {HeroMech}.
 ---
 >  見せてもらおう。前へでろ」
 Get to the front.”
@@ -666,9 +685,10 @@ the Imperial army. We've no choice but to do it.”
 “Ngh... That Yazan, he charged in too far. Launch the Mobile Doll Team!”
 
 @33958 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし特佐、まだテスト中であります
 >  が……」
-“But Lieutenant Colonel, they're still being tested...”
+“But Special Colonel, they're still being tested...”
 
 @33959 Bask · バスク
 > 「かまわん、出させい!」
@@ -680,9 +700,10 @@ the Imperial army. We've no choice but to do it.”
 “Ngh... That Yazan, he charged in too far. Launch the Mobile Doll Team!”
 
 @33961 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし特佐、まだテスト中であります
 >  が……」
-“But Lieutenant Colonel, they're still being tested...”
+“But Special Colonel, they're still being tested...”
 
 @33962 Bask · バスク
 > 「かまわん、出させい!」
@@ -705,6 +726,7 @@ launch the Mobile Doll Team!”
 “{PartnerName}?! Why are you...?”
 
 @33966 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐，voice 要求正式、愤怒时不用缩略，将 you'll 改为 you shall。
 > 「なにをやっているのです、
 >  {HeroName}さん。よけいなことなど
 “What are you doing, {HeroName}? Don't think about
@@ -714,7 +736,7 @@ launch the Mobile Doll Team!”
 unnecessary things and just hurry up and defeat the Imperial army!
 ---
 >  やられてしまいますわよ!」
-At this rate you'll be the one shot down!”
+At this rate you shall be the one shot down!”
 
 @33967 Manami · マナミ（按段落 3DD4）
 > 「え? えぇ、そうね」
@@ -733,9 +755,10 @@ It's a bad habit of yours.”
 “Sorry. ...Thank you, {PartnerName}.”
 
 @33970 Aisha · アイシャ（按段落 3DD4）
+# 审校：精读：まいりますわよ
 > 「お礼をいわれる筋合いなどありません
 >  さぁ、まいりますわよ」
-“There's no need for thanks from you. Here I come!”
+“There is no need for thanks from you. Come, let's go.”
 
 @33971 Manami · マナミ（按段落 3DD4）
 > 「ええ! {PartnerName}、気をつけて!」
@@ -755,13 +778,14 @@ It's a bad habit of yours.”
 “Th-This can't beeeee!!”
 
 @33975 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「戦況の推移は想定通りだな。
 >  わが隊は敵基地の占拠を
 “The course of the battle is as expected. Our unit's objective is the
 ---
 >  目標とする。ジェリド特尉、
 >  マウアー特尉、頼むぞ」
-capture of the enemy base. Lieutenant Jerid, Lieutenant Mouar, I'm counting on you.”
+capture of the enemy base. Special Lieutenant Jerid, Special Lieutenant Mouar, I'm counting on you.”
 
 @33976 Jerid · ジェリド
 > 「了解だ、シロッコさんよ。
@@ -889,9 +913,10 @@ the one who will become the god of this universe?”
 “Th-This can't be?! This shouldn't be possible...!!”
 
 @34000 Luna · ルーナ
+# 审校：撤退いたしましょう 是敬体，Luna 对 Shapiro 用敬语，withdraw 比 retreat 更贴合她礼貌的措辞
 > 「シャピロ様、ひとまずここは撤退
 >  いたしましょう! もうこれ以上は
-“Lord Shapiro, let us retreat for now! We can't hold out
+“Lord Shapiro, let us withdraw for now! We can't hold out
 ---
 >  持ちこたえられません!」
 any longer than this!”
@@ -917,8 +942,9 @@ any longer than this!”
 “Th-This can't be?! This shouldn't be possible...!!”
 
 @34005 Luna · ルーナ
+# 审校：原文是催促 Shapiro 脱出，译文漏掉了“早く”的紧迫感，补上 you must
 > 「シャピロ様、早く脱出を!!」
-“Lord Shapiro, escape now!!”
+“Lord Shapiro, you must escape now!!”
 
 @34006 Shapiro · シャピロ
 > 「おのれ、おのれダンクーガ!!
@@ -949,8 +975,9 @@ any longer than this!”
 “Th-This can't be?! This shouldn't be possible...!!”
 
 @34012 Luna · ルーナ
+# 审校：同上，补上“早く”的紧迫感
 > 「シャピロ様、早く脱出を!!」
-“Lord Shapiro, escape now!!”
+“Lord Shapiro, you must escape now!!”
 
 @34013 Shapiro · シャピロ
 > 「おのれ、おのれ沙羅! この俺によく
@@ -971,9 +998,10 @@ I'll never, ever let you get away...”
 “All right, the rest is easy. Mop up the remaining enemies!”
 
 @34016 Roux · ルー
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「帝国軍はアステロイド基地まで
 >  撤退したそうよ」
-“The imperial forces have apparently retreated all the way to the Asteroid Base.”
+“The Imperial forces have apparently retreated all the way to the Asteroid Base.”
 
 @34017 Koji · 甲児
 > 「ホントかよ!? じゃ、オレたちついに
@@ -990,27 +1018,30 @@ I'll never, ever let you get away...”
 “It's been so long... It really has been so long...”
 
 @34020 Amuro · アムロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「まだ気をぬかないでくれよ。帝国軍
 >  が完全に去ったわけではないし
-“Don't let your guard down yet. The imperial forces haven't completely left,
+“Don't let your guard down yet. The Imperial forces haven't completely left,
 ---
 >  俺たちの方にも問題は残っている
 >  んだ」
 and we've still got problems of our own.”
 
 @34021 Bright · ブライト
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「帝国軍は、月面基地から
 >  完全に撤退いたしました」
-“The imperial forces have completely withdrawn from the lunar base.”
+“The Imperial forces have completely withdrawn from the lunar base.”
 
 @34022 Bask · バスク
+# 审校：巴斯克对部下说话应更专横，将“I'd like you to”改为“I expect you to”以符合其暴戾口吻。
 > 「ご苦労だった。{HeroMech}は
 >  トレーズ派と目されておるわけだが
 “Good work. The {HeroMech} is regarded as belonging to the Treize faction,
 ---
 >  今後ともこのように協力的で
 >  あってほしいものだな。そのほうが
-so I'd like you to keep cooperating like this in the future as well. That way,
+so I expect you to keep cooperating like this in the future as well. That way,
 ---
 >  面倒が少なくすむ」
 there'll be less trouble.”
@@ -1024,9 +1055,10 @@ there'll be less trouble.”
 “Very well. Stand by until you receive further orders.”
 
 @34025 Aisha · アイシャ（按段落 3DD4）
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「どうやら帝国軍は、完全に
 >  撤退したようですわね。わたくしは
-“It seems the imperial forces have completely withdrawn. I shall
+“It seems the Imperial forces have completely withdrawn. I shall
 ---
 >  これで失礼させていただくわ」
 take my leave now.”
@@ -1060,9 +1092,10 @@ take my leave now.”
 “...I mean Romefeller's way of doing things.”
 
 @34032 Aisha · アイシャ（按段落 3DD4）
+# 审校：精读：総帥
 > 「トレーズ総帥は自らその地位を
 >  降りられました。にも関わらず、それに
-“General Treize stepped down from his position of his own accord. And yet, they cling
+“Supreme Commander Treize stepped down from his position of his own accord. And yet, they cling
 ---
 >  固執し、あまつさえ命令拒否を
 >  する。これはどう考えても尋常とは
@@ -1100,39 +1133,41 @@ then it is a good thing.”
 resists it?!”
 
 @34036 Aisha · アイシャ（按段落 3DD4）
-# 待译：机翻未采用（第 1 页的占位符应为 []，实际为 ['【搭档姓氏】']）
-# 草稿第 1 页：“What more... what more do you want me to say?! As a member of the 【搭档姓氏】 family,
-# 草稿第 2 页：which belongs to the Foundation, there is no way I could deny a decision of the
-# 草稿第 3 页：Foundation's supreme council, is there?!”
+# 审校：补译：原稿占位符错页
 > 「わたくしに……わたくしに、これ以上
 >  何をいえとおっしゃるの!? 財団の
+“What... what more would you have me say?! As one of the
 ---
 >  一員である{PartnerSurname}家の者と
 >  してここにいるわたくしに、財団の
+{PartnerSurname} family, which belongs to the Foundation, how could I possibly
 ---
 >  最高幹部会の決定を否定
 >  することなどできるわけがないでしょう!?」
+deny a decision of the Foundation's supreme council?!”
 
 @34037 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}、あなた……」
 “{PartnerName}, you...”
 
 @34038 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐，此处应保持正式敬体，将“I'll”改为“I shall”以符合其口吻。
 > 「……もう失礼させていただくわ」
-“...I'll take my leave now.”
+“...I shall take my leave now.”
 
 @34039 Manami · マナミ（按段落 3DD4）
 > 「待って{PartnerName}!」
 “Wait, {PartnerName}!”
 
 @34040 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族敬体口吻，将“I will”改为“I shall”以保持正式语气。
 > 「{HeroName}さん……ひとつだけ忠告
 >  しておきます。くれぐれも、不用意な
 “{HeroName}... let me give you just one warning. Please, whatever you do, do not
 ---
 >  行動だけはおこさないでちょうだい。
 >  でないと……わたくしはまた貴女の
-act rashly. Otherwise... I will end up becoming your enemy
+act rashly. Otherwise... I shall end up becoming your enemy
 ---
 >  敵になってしまう」
 once again.”
@@ -1298,9 +1333,10 @@ in danger too.”
 “Captain Bright, you don't mean... the moon?”
 
 @34075 Bright · ブライト
+# 审校：精读：月を脱出 是离开月球
 > 「ああ……我々は月を脱出する。
 >  他に方法はあるまい」
-“Yes... We'll escape to the moon. There's no other way.”
+“Yes... We'll escape from the moon. There's no other way.”
 
 @34076 Roux · ルー
 > 「それって……OZ……財団と、OZの
@@ -1308,13 +1344,14 @@ in danger too.”
 “Does that mean... we'll make enemies of OZ... the Foundation, and OZ's Romefeller faction?”
 
 @34077 Alan · アラン
+# 审校：精读：去破折号
 > 「それはわからん。が、ここで拘束されて
 >  みろ。帝国軍の追撃はおろか
-“That I don't know. But if we let ourselves be taken into custody here, forget about the Imperial army's pursuit—
+“That I don't know. But if we let ourselves be taken into custody here, forget about the Imperial army's pursuit.
 ---
 >  我々は2度とこれだけの部隊は
 >  編成できないだろう。そうなれば
-we'll never be able to assemble a force like this again. If that happens,
+We'll never be able to assemble a force like this again. If that happens,
 ---
 >  なりゆきを見守るしかできなくなる」
 we'll be left with no choice but to watch how things unfold.”
@@ -1563,16 +1600,18 @@ we'll be enemies again.”
 “Yeah. Once we get aboard...”
 
 @34116 Selain · セレイン（按段落 3DD2）
+# 审校：「ッ!?」是倒吸一口气的短促反应，用“Huh?!”偏疑问，改为“Ngh?!”更符合军人警觉口吻。
 > 「ッ!? そこの奴、動くな!」
-“Huh?! You there, don't move!”
+“Ngh?! You there, don't move!”
 
 @34117 Rish · リッシュ（按段落 3DD2）
 > 「待った! 撃たないでくれよ」
 “Hold on! Don't shoot!”
 
 @34118 Selain · セレイン（按段落 3DD2）
+# 审校：原文「バスクのスパイか」是质问语气，补上“are you?”使冷峻的军人质问感更完整。
 > 「貴様か……バスクのスパイか」
-“You... Bask's spy.”
+“You... Bask's spy, are you?”
 
 @34119 Simone · シモーヌ
 > 「警報を出したのもあんたなの?」
@@ -1669,6 +1708,7 @@ we're in a hurry.”
 “Hey, come on.”
 
 @34133 Selain · セレイン（按段落 3DD2）
+# 审校：精读：引号
 > 「ならばいってやる。
 >  我々の第1の目標は、シモーヌの
 “Then I'll tell you. Our first objective, as Simone
@@ -1679,7 +1719,7 @@ said, is the elimination of the Imperial forces. We can't afford to be detained.
 ---
 >  それが不当というわけでもないのだから
 >  な。そして、貴様がいったその先と
-it's not as if that's unjust. And that 'after' you mentioned is
+it's not as if that's unjust. And that ‘after’ you mentioned is
 ---
 >  いうのは未定だ。だが我々は少な
 >  くとも傍観者になるつもりはない
@@ -1818,7 +1858,7 @@ Either way, the security troops will come rushing in soon.”
 @34151 Rish · リッシュ（按段落 3DD2）
 > 「俺のシグルーンを置いていくのはイヤで
 >  ね。それに、バスクもシロッコも、それほど
-“I don't want to leave my Sigrun behind. Besides, Bask and Scirocco aren't
+“I don't want to leave my Sigroon behind. Besides, Bask and Scirocco aren't
 ---
 >  甘い相手じゃあないぜ。かなり
 >  厳しい追撃をくらうことになる」
@@ -1944,6 +1984,7 @@ Run. Survive...”
 “We're fine over here.”
 
 @34174 Mika · ミカ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王、そちらは大丈夫
 >  ですか?」
 “Queen Ciela, are you all right over there?”
@@ -2002,8 +2043,9 @@ There's no turning back anymore.”
 “I know. First we need to figure out some way to secure supplies.”
 
 @34186 Quattro · クワトロ
+# 审校：准将 统一 Brigadier General
 > 「准将とは連絡がとれんか……」
-“Can't get in touch with the Commodore, huh...”
+“Can't get in touch with the Brigadier General, huh...”
 
 @34187 Alan · アラン
 > 「……ロス・イゴールになら、万丈を
@@ -2037,17 +2079,19 @@ What makes you think General Igor knows anything?”
 “What the hell is that?”
 
 @34193 Amuro · アムロ
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“La Vie en Rose... the dock ship. But wasn't it heavily damaged in the One Year War?”
+# 审校：补译：原稿页数错误
 > 「ラビアンローズ……ドック艦だな。
 >  しかし1年戦争で大破したのでは
+“La Vie en Rose... the dock ship. But wasn't it wrecked
 ---
 >  なかったのか?」
+in the One Year War?”
 
 @34194 Bright · ブライト
+# 审校：准将 统一 Brigadier General
 > 「いや、あれはブレックス准将の
 >  偽装だ。ラビアンローズは
-“No, that was a cover set up by Commodore Blex. La Vie en Rose is
+“No, that was a cover set up by Brigadier General Blex. La Vie en Rose is
 ---
 >  暗礁宙域にいる」
 in the Shoal Zone.”
@@ -2235,9 +2279,10 @@ a crew member of La Vie en Rose.”
 “I see. Nice to meet you, Chan. I'm...”
 
 @34229 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「知ってます、アムロ・レイ特尉。
 >  私、ずっとお会いしたいと
-“I know about you, Lieutenant Amuro Ray. I've always wanted
+“I know about you, Special Lieutenant Amuro Ray. I've always wanted
 ---
 >  思っていたんですよ」
 to meet you.”
@@ -2257,9 +2302,10 @@ to meet you.”
 “At what?”
 
 @34233 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私の夢なんです。アムロ特尉の
 >  乗る、ガンダムをつくるのが」
-“It's my dream. To build the Gundam that Lieutenant Amuro pilots.”
+“It's my dream. To build the Gundam that Special Lieutenant Amuro pilots.”
 
 @34234 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
@@ -2291,8 +2337,9 @@ They're nothing but merchants of death.”
 is at least one of their reasons.”
 
 @34238 Beltorchika · ベルトーチカ
+# 审校：原文有呼语「ちょっとあなた」，译文缺少对 Amuro 的称呼，补上以符合贝尔托琪卡直率的口吻。
 > 「ちょっとあなた、何やってるのよ!」
-“Hey you, what do you think you're doing?!”
+“Hey, you! What do you think you're doing?!”
 
 @34239 Amuro · アムロ
 > 「ベルトーチカ」
@@ -2317,9 +2364,10 @@ is at least one of their reasons.”
 “I'm Amuro's lover.”
 
 @34244 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ふうん、そうなの。でも私は、
 >  アムロ特尉のために、一緒にMSを
-“Hmm, is that so. But I can build mobile suits together with Lieutenant Amuro.
+“Hmm, is that so. But I can build mobile suits together with Special Lieutenant Amuro.
 ---
 >  つくれるわ。新しいガンダムを。
 >  あなたには、それはできないでしょう?」
@@ -2330,9 +2378,10 @@ A new Gundam. You can't do that, can you?”
 “So what?”
 
 @34246 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私は、アムロ特尉のお役に
 >  たてるってことです」
-“It means I can be useful to Lieutenant Amuro.”
+“It means I can be useful to Special Lieutenant Amuro.”
 
 @34247 Beltorchika · ベルトーチカ
 > 「な……あ、ちょっとアムロ、どこいくのよ」
@@ -2354,17 +2403,19 @@ A new Gundam. You can't do that, can you?”
 “Hey, you wait right there! Amuro!”
 
 @34251 David · デビッド
+# 审校：「すげぇもん」是“不得了的东西”，原译“something else”意思偏差，改为更贴切的口语。
 > 「……なんかすげぇもん見ちまったな」
-“...Man, we just saw something else.”
+“...Man, we just saw something crazy.”
 
 @34252 Boss · ボス
 > 「まったくだわさ」
 “You said it.”
 
 @34253 Arthur · アーサー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ほんとほんと。でもアムロ特尉って
 >  意外に、はっきりしないんだね」
-“Totally. But Lieutenant Amuro sure is surprisingly wishy-washy.”
+“Totally. But Special Lieutenant Amuro sure is surprisingly wishy-washy.”
 
 @34254 Killy · キリー
 > 「どっちかに決めてもらえば、
@@ -2390,9 +2441,10 @@ A new Gundam. You can't do that, can you?”
 “Ah, no, I didn't mean you, Rain...”
 
 @34259 Schwarz · シュバルツ
+# 审校：笑声后应加感叹号以匹配原文「ハハハハハハッ」的爆发感，同时“修業が足りん”改为更符合 Schwarz 严肃口吻的“lack training”。
 > 「ハハハハハハッ、修業が足りんぞ
 >  ドモン!!」
-“Ha ha ha ha ha ha, you're still not trained enough, Domon!!”
+“Ha ha ha ha ha ha! You still lack training, Domon!!”
 
 @34260 Sai Saici · サイ・サイシー
 > 「わっ、覆面のあんちゃん、いきなり

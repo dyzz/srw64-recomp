@@ -125,13 +125,14 @@ considerable forces...”
 so that was her intention from the start.”
 
 @41529 Banjo · 万丈
+# 审校：精读：当て馬
 > 「油断できないな。あの女は僕たちと
 >  OZを、当て馬に使ったんだ
-“We can't let our guard down. That woman used us and OZ as decoys,
+“We can't let our guard down. That woman used us and OZ as her stalking horses,
 ---
 >  地球が亡びる可能性を前に
 >  しながら、ね。普通じゃできないことだ」
-even with the possible destruction of Earth on the line. That's not something just anyone could do.”
+with the possible destruction of Earth on the line. Not just anyone could do that.”
 
 @41530 Judau · ジュドー
 > 「で、結局ハマーンのもくろみ通りに
@@ -450,8 +451,9 @@ The enemy will be coming out too!”
 they fell for the decoy...”
 
 @41580 Blacky · ブラッキー
+# 审校：原文是「ズール皇帝陛下?」，应保留“陛下”敬称，且英文语序更自然。
 > 「ズール皇帝陛下?」
-“Emperor Zuul, Your Majesty?”
+“Your Majesty, Emperor Zuul?”
 
 @41581 Emperor Zuul · ズール皇帝
 > 「……ブラッキー、ダンケル、
@@ -580,9 +582,9 @@ but no matter. In the end, you cannot defeat me.
 Hahahahahahaha!!”
 
 @41603 Bright · ブライト
-# 审校：原文“奴におどらされた”是被动态，初稿“we were dancing”少了“被操纵”的意味，改为“we were made to dance in his palm”。
+# 审校：精读：措辞
 > 「くっ……奴におどらされたというのか……」
-“Ngh... So we were made to dance in his palm...”
+“Ngh... So he was pulling our strings all along...”
 
 @41604 Reika · レイカ
 > 「!? 艦長、新たに接近する
@@ -638,16 +640,17 @@ no decent people at all.”
 to avoid combat between Earthlings?!”
 
 @41611 Pampa · パンパ
+# 审校：精读：破折号
 > 「さすがですマシュマー様!
 >  敵にも情けをかけるその心意気
-“As expected of Lord Mashymre! That spirit of showing mercy even to the enemy—
+“As expected of Lord Mashymre! Showing mercy even to the enemy,
 ---
 >  それでこそ我がアクシズの、
 >  ハマーン様の名誉も
-that is what preserves the honor of our Axis, and of Lady Haman—
+that spirit is what keeps the honor of our Axis,
 ---
 >  保たれるというものです!」
-and keeps it intact!”
+and of Lady Haman, intact!”
 
 @41612 Mashymre · マシュマー
 > 「うむ、その通りだ。
@@ -670,12 +673,13 @@ there's no hope for them.”
 “What shall we do, Captain?”
 
 @41615 Bright · ブライト
+# 审校：「勧告」在此处是敌方发出的劝降通牒，用 demand 比 advice 更符合舰长对敌喊话的强硬口吻。
 > 「受け入れるわけにはいかんだろう!?
 >  聞こえるかマシュマー・セロ
 “We can hardly accept, can we?! Can you hear me, Mashymre Cello?
 ---
 >  勧告は聞けない!」
-We cannot accept your advice!”
+We cannot accept your demand!”
 
 @41616 Beauty · ビューティ
 > 「というわけよ。お・ば・か・さ・んっ」
@@ -741,8 +745,9 @@ a pilot of the {HeroMech}?”
 “S-Sorry, Captain!”
 
 @41627 Illia · イリア
+# 审校：原文是伊莉亚对格雷米的斥责，consider 过于书面，think about 更符合女军官当场呵斥的口吻。
 > 「グレミー、状況を考えろ!」
-“Glemy, consider the situation!”
+“Glemy, think about the situation!”
 
 @41628 Glemy · グレミー
 > 「わ、わかった」
@@ -852,8 +857,9 @@ You don't belong with Axis.”
 “L-Lady Haman! My deepest apologies!!”
 
 @41650 Beanne · ビアン
+# 审校：精读：拖长音
 > 「マ、マシュマー様ぁぁぁーっ!!」
-“L-Lord Mashymre!!”
+“L-Lord Mashymreee!!”
 
 @41651 Wyme · ワイム
 > 「な、なんだ!? こんな……」
@@ -935,13 +941,14 @@ You have no chance of winning.”
 “You can't know that unless you try!”
 
 @41667 Haman · ハマーン
+# 审校：精读：重复句
 > 「フッ……まぁいい。我がアクシズとしても
 >  銀河帝国軍を排除したいのは
-“Hmph... Very well. Axis also wishes to eliminate the Galactic Empire's forces.
+“Hmph... Very well. Axis wishes to eliminate the Galactic Empire's forces
 ---
 >  同じだ。先ほどのようにつまらぬ
 >  小ぜりあいになどなっては面白くない
-The same goes for us. Pointless skirmishes like the last one are of no interest.
+just as you do. Pointless skirmishes like the last one are of no interest to me.
 ---
 >  ここは協定を結ぼうではないか。
 >  お前たちにとっても
@@ -1006,8 +1013,9 @@ can never rule the Earth Sphere. Is that not so?”
 “...Understood. We accept your offer.”
 
 @41677 Judau · ジュドー
+# 审校：精读：破折号
 > 「ちょっ……」
-“Hey, wait—”
+“Hey, wai...”
 
 @41678 Amuro · アムロ
 > 「黙っていろ、ジュドー!」
@@ -1026,12 +1034,13 @@ the Galactic Empire's forces together.
 I will inform you of the operation later.”
 
 @41680 Daisaku · 大作
+# 审校：精读：破折号
 > 「どうして、どうしてなんですか!?
 >  いまさらあの人たちを
 “Why, why is this happening?! To accept those people now,
 ---
 >  受け入れるなんて」
-of all times—”
+of all times!”
 
 @41681 Judau · ジュドー
 > 「ああ、そうだぜブライトさんよ。
@@ -1067,16 +1076,17 @@ We have to deal with that first, or nothing else can move forward.”
 “...The boys certainly don't look convinced.”
 
 @41687 Ark · アーク（按段落 3DD1）
+# 审校：精读：破折号
 > 「俺だって、納得なんかしちゃいないさ
 >  どうせ戦うことになる相手と
-“I'm not convinced either. Fighting alongside people I know will be my enemies
+“I'm not convinced either. Fighting alongside people I know we'll end up
 ---
 >  知っていながら、一緒に戦うなんて
 >  ただ、しかたのないことだってのは
-sooner or later—but I do understand
+fighting sooner or later... It's just,
 ---
 >  理解している」
-that there's no other choice.”
+I understand there's no other choice.”
 
 @41688 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「しかたのないこと……か」
@@ -1125,18 +1135,20 @@ things are far better than they were.”
 “...Can we win? Against the Galactic Empire's forces? Against Haman?”
 
 @41696 Ark · アーク（按段落 3DD1）
+# 审校：精读：破折号
 > 「そう、信じたい。
 >  いや、信じるよ、俺は
-“Yes, I want to believe it. No—I will believe it.
+“Yes, I want to believe it. No, I will believe it.
 ---
 >  そうでなけりゃ、死んでいった人たちに
 >  申しわけがたたない」
 If I don't, I'd have no excuse to face those who died.”
 
 @41697 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：精读：破折号
 > 「ああ……私も、そう信じよう。
 >  死んでいった者たちではなく、君の
-“Yes... I will believe it too. Not in the dead, but in your will—
+“Yes... I will believe it too. Not in the dead, but in you,
 ---
 >  君たちの、意思の力というものを」
 in the power of your will, all of you.”
@@ -1159,9 +1171,10 @@ how many people can still say what they say? They are right.
 The ones who are wrong are us.”
 
 @41700 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：破折号
 > 「ひゅ～、あいかわらず厳しいねぇ
 >  {HeroNick}ちゃん
-“Whoo—still as strict as ever, {HeroNick}.
+“Whew, still as strict as ever, {HeroNick}.
 ---
 >  だがよ、それじゃ戦いには勝てないぜ」
 But you know, that won't win you a war.”
@@ -1214,9 +1227,10 @@ You look careless, but you seem to understand things well enough.”
 “Oh, did you fall for me all over again?!”
 
 @41707 Selain · セレイン（按段落 3DD2）
+# 审校：精读：惚れなおす
 > 「ふん、最初から何もなければ、
 >  なおしようもない。……」
-“Hmph. If there was nothing there to begin with, there'd be nothing to fix. ...”
+“Hmph. I never fell for you in the first place, so there's nothing to fall for again. ...”
 
 @41708 Show · ショウ
 > 「? どうしたんだ、{HeroNick}。
@@ -1403,17 +1417,18 @@ He just can't sort out his feelings yet.”
 Whether we win or lose.”
 
 @41737 Manami · マナミ（按段落 3DD4）
+# 审校：全局：Zuul 拼写
 > 「負けるなんて、考えちゃだめよ!
 >  あたしたちは勝つことだけを
 “Don't even think about losing! We have to think only about winning.
 ---
 >  考えなくてはいけないわ。ズールが
 >  地球圏に残留した以上
-Now that Zuhl has remained in the Earth Sphere,
+Now that Zuul has remained in the Earth Sphere,
 ---
 >  もう地球が破壊されてしまうような
 >  ことはないと思うけど、それでもズールや
-I don't think the Earth will be destroyed anymore, but even so, we can't allow Zuhl or
+I don't think the Earth will be destroyed anymore, but even so, we can't allow Zuul or
 ---
 >  ハマーンが地球圏を支配するのを
 >  許すわけにはいかないのよ。絶対に!」
@@ -1451,13 +1466,13 @@ one bit since long ago, have you?”
 Cousins after all.”
 
 @41743 Aisha · アイシャ（按段落 3DD4）
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
-# 草稿第 1 页：“How rude. Kindly do not lump me together
-# 草稿第 2 页：with 【主角名字】.”
+# 审校：补译：原稿占位符错页
 > 「失礼な。わたくしと
 >  {HeroName}さんを
+“How rude. Miss {HeroName} and I
 ---
 >  一緒にしないでいただきたいわ」
+are not to be lumped together, thank you.”
 
 @41744 Lawrence · ローレンス
 > 「失礼いたします。お嬢様方、

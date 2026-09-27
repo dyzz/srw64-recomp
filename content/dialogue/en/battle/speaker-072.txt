@@ -1,107 +1,159 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9206 Bask · バスク
+# 触发：攻击（通用，1/5）
 > 「撃てぃ! 撃ち落とせぇ!」
 “Fire! Shoot them down!”
 
 @9207 Bask · バスク
+# 触发：攻击（通用，2/5）
 > 「全砲門開け! 一斉掃射」
 “Open all gun ports! Full barrage!”
 
 @9208 Bask · バスク
+# 触发：攻击（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「生かして帰すなっ!」
-“Don't let them get away alive!”
+“Don’t let them get away alive!”
 
 @9209 Bask · バスク
+# 触发：攻击（通用，4/5）
 > 「蹴散らせぇ!」
 “Crush them!”
 
 @9210 Bask · バスク
+# 触发：攻击（通用，5/5）
 > 「撃てぃ!」
 “Fire!”
 
 @9211 Bask · バスク
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バッ、バカな……」
-“Th-This can't be...”
+“Th-this can’t be...”
 
 @9212 Bask · バスク
+# 触发：被击坠（通用，2/2）
 > 「ぬぅぅぅっ……おのれぇ、よくもよくも!」
 “Nghhh... You fiends, how dare you, how dare you!”
 
 @9213 Bask · バスク
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬあっ……出力が落ちているぞ!
 >  どうしたかっ!?」
-“Ngh... Output's dropping! What's going on?!”
+“Ngh... Output’s dropping! What’s going on?!”
 
 @9214 Bask · バスク
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「うぉ!? ……直撃なのか!?」
 “Whoa?! ...Was that a direct hit?!”
 
 @9215 Bask · バスク
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうぉっ……な、何だこの力は!?」
-“Ngh... Wh-What is this power?!”
+“Ngh... Wh-what is this power?!”
 
 @9216 Bask · バスク
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ぬうううっ! おのれっ!
 >  よくも、よくもっ!!」
 “Nghhh! You bastards! How dare you, how dare you!!”
 
 @9217 Bask · バスク
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「ええいっ! 何をしておる!
 >  撃ち落とせっ!!」
 “Enough! What are you doing?! Shoot them down!!”
 
 @9218 Bask · バスク
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ぐぅぅっ!? 対空防御!
 >  しっかりやらんかっ!」
 “Gah?! Anti-air defense! Get it together!”
 
 @9219 Bask · バスク
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうぉっ……やらせるわけにはいかん!」
-“Ngh... I can't let you get away with this!”
+“Ngh... I can’t let you get away with this!”
 
 @9220 Bask · バスク
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：おのれ不是 fiends
 > 「おのれ、よくもやりおったなっ!」
-“You fiends, you'll pay for that!”
+“Damn you, you’ll pay for that!”
 
 @9221 Bask · バスク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、効きはせんわ」
-“Hmph, that won't work on me.”
+“Hmph, that won’t work on me.”
 
 @9222 Bask · バスク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「ふん、悪あがきよ」
 “Hmph, pointless struggle.”
 
 @9223 Bask · バスク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：更像上校腔
 > 「ふん……蚊トンボが」
-“Hmph... like a gnat.”
+“Hmph... a mere gnat.”
 
 @9224 Bask · バスク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「この装甲は並ではないぞ」
 “This armor is no ordinary armor.”
 
 @9225 Bask · バスク
+# 触发：回避（通用，1/3）
 > 「急速回頭!」
 “Hard about!”
 
 @9226 Bask · バスク
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「回避運動急げ! あたるなっ!!」
-“Evasive maneuvers, hurry! Don't get hit!!”
+“Evasive maneuvers, hurry! Don’t get hit!!”
 
 @9227 Bask · バスク
+# 触发：回避（通用，3/3）
 > 「かわせっ!」
 “Dodge it!”
 
 @9228 Bask · バスク
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ふはははははっ、無駄だ無駄だ
 >  ふははは!!」
 “Fuhahahaha, useless, useless, fuhahaha!!”
 
 @9229 Bask · バスク
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだと……ええぃ
 >  何をやっておるか!!」
 “Out of ammo...? Damn it, what are you doing!!”
 
 @9230 Bask · バスク
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：おのれ不是 fiends
 > 「おのれぇっ、遠距離からの攻撃か」
-“You fiends, attacking from long range?”
+“Damn you, attacking from long range?”
+
+@14701 Bask · バスク
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「主砲、一斉発射っ!」
+“Main cannons, fire all at once!”
+
+@14702 Bask · バスク
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「メガ粒子砲 撃てぃ!」
+“Mega Particle Cannon, fire!”
+
+@14703 Bask · バスク
+# 触发：攻击无效（护罩／装甲），乘坐〈ドゴス・ギア〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：ドゴスギア→Dogosse Giar
+> 「ドゴスギアの装甲は並ではないわっ!」
+“The Dogosse Giar’s armor is no ordinary armor!”

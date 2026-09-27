@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @41066 Amuro · アムロ
+# 审校：全局：刻印＝Crest
 > 「“グラドスの刻印”の発動から
 >  3日か……
-“It's been three days since the ‘Mark of Grados’ was activated...
+“It's been three days since the ‘Grados Crest’ was activated...
 ---
 >  いったいどうなっているんだ……?」
 What on earth is going on...?”
@@ -18,9 +19,10 @@ What on earth is going on...?”
 Temporarily, at least. But we can't see what they're doing now.”
 
 @41068 Koji · 甲児
+# 审校：全局：刻印＝Crest
 > 「撤退してくれるなんてよ、
 >  “刻印”の発動は
-“Hey, if they're pulling out, that means the ‘Mark’ worked better than we expected.
+“Hey, if they're pulling out, that means the ‘Crest’ worked better than we expected.
 ---
 >  予想以上の効果をあげたんだ。
 >  いいじゃないか」
@@ -96,9 +98,10 @@ I hope I'm wrong, but...”
 “Treize is going into space... What does that mean?”
 
 @41079 Lawrence · ローレンス
+# 审校：Lawrence 对 Brad 说话，不应称呼“my lady”，删去该呼语。（人工改写）
 > 「……もしやとは思いますが、
 >  リーブラへ向かうのではありませんかな?」
-“...I may be mistaken, my lady, but might he not be heading for Libra?”
+“...I may be mistaken, but might he not be heading for Libra?”
 
 @41080 Amuro · アムロ
 > 「いくらなんでもそんなばかなことは……」
@@ -168,6 +171,7 @@ Empire's movements. Perhaps we should head into space as well...”
 the decisive battle will be in space, won't it?”
 
 @41089 Ark · アーク（按段落 3DD1）
+# 审校：精读：称呼
 > 「ああ、そう思うな。アムロさん、
 >  俺たちも宇宙へあがりましょう
 “Yeah, I think so. Amuro, let's head into space too.
@@ -322,9 +326,10 @@ until their pitiful lives are extinguished! Wahahahaha!!”
 “All right, prepare to dock.”
 
 @41107 Howard · ハワード
+# 审校：精读：刻印＝Crest
 > 「ようやく宇宙にもどってきたか。
 >  それにしても“刻印”といったか
-“So we've finally made it back to space. Still, that thing called the ‘Mark,’
+“So we've finally made it back to space. Still, that thing called the ‘Crest,’
 ---
 >  あれが宇宙に出てきた時には
 >  この世の終わりかと思ったわい」
@@ -509,13 +514,14 @@ he probably couldn't bring himself to attack Quatre.”
 “Yeah. It couldn't be helped.”
 
 @41142 Duo · デュオ
+# 审校：精读：去破折号
 > 「にしても、わざわざ
 >  ヘビーアームズを改修までして
 “Even so, going out of his way to refit the Heavyarms
 ---
 >  艦の防衛にまわすなんざ、
 >  ハワードのおっさんらしいぜ」
-and put it on ship defense—that's just like old man Howard.”
+and put it on ship defense. That's just like old man Howard.”
 
 @41143 Heero · ヒイロ
 > 「あいつが十分に戦えるなら
@@ -544,9 +550,10 @@ Apparently Relena Peacecraft is on Libra.”
 What happened to Heero?!”
 
 @41147 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「なんだ、誰が発進する? ヒイロか?
 >  デュオ、あいつはいったい何のつもりだ?」
-“What the—who's launching? Heero? Duo, what the hell is he thinking?”
+“What? Who's launching? Heero? Duo, what the hell is he thinking?”
 
 @41148 Brad · ブラッド（按段落 3DD3）
 > 「あん? なんだって今ごろ出てく奴が
@@ -620,9 +627,10 @@ and restart the experiment...”
 happens now, the Getter won't be usable.”
 
 @41157 Ryoma · リョウ
+# 审校：精读：去破折号
 > 「その時は、みんなにまかせるさ。俺は、
 >  いや俺たちは、なんとか真ゲッターを
-“If that happens, I'll leave it to everyone else. I—no, we—want to get Shin Getter
+“If that happens, I'll leave it to everyone else. I, no, we, want to get Shin Getter
 ---
 >  動かしたいんだ。真ゲッターのパワーが
 >  あれば、戦いをぐっと有利にできる」
@@ -678,9 +686,10 @@ Ngh?!”
 “Is this... Shin Getter and Getter G resonating with each other...?!”
 
 @41166 Hayato · ハヤト
+# 审校：精读：去破折号
 > 「いかん! 博士、こいつはヤバイ!
 >  制御が、制御がきかねぇ!」
-“This is bad! Doctor, this is dangerous! I can't—I can't control it!”
+“This is bad! Doctor, this is dangerous! I can't, I can't control it!”
 
 @41167 Dr. Saotome · 早乙女博士
 > 「何じゃと!? こっちにまわせ!
@@ -732,8 +741,9 @@ We have to stop it no matter what...!”
 That could have turned into a real disaster. Sorry...”
 
 @41176 Hayato · ハヤト
+# 审校：精读：去破折号
 > 「とんでもない、無事でよかった……」
-“Not at all—I'm just glad you're safe...”
+“Not at all. I'm just glad you're safe...”
 
 @41177 Dr. Saotome · 早乙女博士
 > 「そ、それよりゲッターは……、
@@ -749,12 +759,13 @@ Oh... ooh, this is...!!”
 “Getter G... our Getter got wrecked?!”
 
 @41179 Benkei · ベンケイ
+# 审校：Benkei 的憨厚豪爽口吻下，起動してる 译作 activating 偏书面，改为更口语的 starting up。
 > 「いや……リョウ、見ろ!
 >  真ゲッターが……
 “No... Ryoma, look! Shin Getter is...
 ---
 >  真ゲッターが起動してるぞ!」
-Shin Getter is activating!”
+Shin Getter is starting up!”
 
 @41180 Hayato · ハヤト
 > 「何だと!?」
@@ -1122,9 +1133,10 @@ I'm all for it too.”
 gather the others for me too. We're going to strike White Fang.”
 
 @41230 Manami · マナミ（按段落 3DD4）
+# 审校：原文是マナミ对ローレンス的疑问，不是“you said you saw”，改为直接询问更贴合口吻。
 > 「ローレンス、戦闘光が
 >  見えたんですって?」
-“Lawrence, you said you saw combat flashes?”
+“Lawrence, you saw combat flashes?”
 
 @41231 Lawrence · ローレンス
 > 「はい、間違いございません。
@@ -1249,13 +1261,14 @@ Heero?!”
 “That won't do. With you here, Noin and the others can't think straight.”
 
 @41248 Relena · リリーナ
+# 审校：Relena's voice requires no contractions; changed 'You're' and 'I'll' to full forms.
 > 「……あいかわらず強引なのですね。
 >  わかりました
-“...You're as forceful as ever. Very well.
+“...You are as forceful as ever. Very well.
 ---
 >  もう1度お兄様と話をして、
 >  それでだめならば、あきらめます」
-I'll talk to my brother one more time, and if that fails, I'll give up.”
+I will talk to my brother one more time, and if that fails, I will give up.”
 
 @41249 Heero · ヒイロ
 > 「ゼクスか……いいだろう。早くしろ」
@@ -1295,14 +1308,16 @@ unless they feel their own destruction in their bones,
 people will never understand the folly of war.”
 
 @41253 Heero · ヒイロ
+# 审校：精读：狂言回し
 > 「狂言回しにでもなったつもりか、
 >  ゼクス・マーキス」
-“Playing the puppet master now, Zechs Merquise?”
+“Playing the narrator of this farce now, Zechs Merquise?”
 
 @41254 Relena · リリーナ
+# 审校：Relena's voice requires no contractions; changed 'You're' to 'You are'.
 > 「間違っています。人々はもう
 >  十分に戦いの愚かさをわかって
-“You're wrong. People already understand the folly of war well enough.
+“You are wrong. People already understand the folly of war well enough.
 ---
 >  います。協調を尊ぶ心こそ、
 >  今の人類に必要なものです」
@@ -1341,8 +1356,9 @@ A heart that values harmony is what humanity needs now.”
 Relena, you stay here with me.”
 
 @41262 Relena · リリーナ
+# 审校：Relena's voice requires no contractions; changed 'You'll' to 'You will'.
 > 「あなたがわたくしを守ってくださるの?」
-“You'll protect me?”
+“You will protect me?”
 
 @41263 Heero · ヒイロ
 > 「……ああ。俺はゼクスと戦う。
@@ -1571,9 +1587,11 @@ for the Earth's sake, I will stake my own life.”
 “Lady, why such recklessness?”
 
 @41304 Lady · レディ
+# 审校：Lady 对 Treize 的称呼按 address 应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、戦いは
 >  戦ってこそ美しいものです」
-“Lord Treize, battle is beautiful only when one fights it.”
+“Your Excellency, battle is beautiful only when one fights it.”
 
 @41305 Treize · トレーズ
 > 「……わかった。全機に告ぐ。
@@ -1645,8 +1663,10 @@ That way we won't have trouble later.”
 and crush White Fang. Do not engage OZ!”
 
 @41316 Lady · レディ
+# 审校：蕾蒂对特列斯的称呼应为“Your Excellency”，原文“トレーズ様”需保留敬称。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、{HeroMech}です」
-“Lord Treize, it's {HeroMech}.”
+“Your Excellency, it's {HeroMech}.”
 
 @41317 Treize · トレーズ
 > 「わかっている。彼らに礼を
@@ -1720,9 +1740,10 @@ this time I'll defeat you for sure!”
 “Jerid?! Do you intend to side with White Fang?!”
 
 @41330 Lady · レディ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やめろジェリド特尉!
 >  リーブラを落とすのが先だ!」
-“Stop, Lieutenant Jerid! Bringing down Libra comes first!”
+“Stop, Special Lieutenant Jerid! Bringing down Libra comes first!”
 
 @41331 Jerid · ジェリド
 > 「カミーユを倒してからなら
@@ -1742,23 +1763,25 @@ this time I'll defeat you for sure!”
 “Ngh, Jerid!!”
 
 @41335 Jerid · ジェリド
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Kamille isn't here?! Damn him. Then I'll just have to
-# 草稿第 2 页：crush 【主角机体名】!”
+# 审校：补译：原稿占位符错页
 > 「カミーユがいないだと!? くそ、奴め。
 >  なら、{HeroMech}を
+“Kamille isn't here?! Damn him. Then I'll just have to crush the {HeroMech}
 ---
 >  叩きつぶすだけだ!」
+instead!”
 
 @41336 Lady · レディ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やめろジェリド特尉!
 >  リーブラを落とすのが先だ!」
-“Stop, Lieutenant Jerid! Bringing down Libra comes first!”
+“Stop, Special Lieutenant Jerid! Bringing down Libra comes first!”
 
 @41337 Jerid · ジェリド
+# 审校：「倒してから」在杰利德的口吻中应更直接、好战，改为“taken them down”更贴合其急躁好胜的性格。
 > 「奴らを倒してからなら
 >  そうさせてもらうぜ!」
-“I'll do that after I've defeated them!”
+“I'll do that after I've taken them down!”
 
 @41338 Bright · ブライト
 > 「トレーズ!?」
@@ -1911,8 +1934,9 @@ will cause a global cooling of the entire Earth. ...We have to stop it.”
 is still heading toward Earth. If nothing else interferes, it will fall.”
 
 @41366 Noin · ノイン
+# 审校：原文是「あなたはっ!」的未完成句，译文“you can't!”变成了完整断言，改为保留中断语气。
 > 「ゼクス……あなたはっ!」
-“Zechs... you can't!”
+“Zechs... you...!”
 
 @41367 Milliardo · ミリアルド
 > 「ノイン…………」
@@ -1924,9 +1948,10 @@ is still heading toward Earth. If nothing else interferes, it will fall.”
 “Why do we have to fight a battle like this?!”
 
 @41369 Dorothy · ドロシー
+# 审校：多萝西的贵族口吻要求正式表达，将“It's”改为“It is”。
 > 「あなたたちには、理解できないこと
 >  ですわ!」
-“It's something you people could never understand!”
+“It is something you people could never understand!”
 
 @41370 Kamille · カミーユ
 > 「貴様のような奴がいるから、
@@ -1954,8 +1979,9 @@ How can you say that?!”
 “Zechs!”
 
 @41375 Milliardo · ミリアルド
+# 审校：「そこをどけ」是命令但语气较直接，米利亚尔多对诺因的庄重口吻下“get out of my way”过于粗鲁，改为“move aside”。
 > 「ノイン、そこをどけ」
-“Noin, get out of my way.”
+“Noin, move aside.”
 
 @41376 Noin · ノイン
 > 「ゼクス、あなたと戦いたくはない。
@@ -1963,13 +1989,15 @@ How can you say that?!”
 “Zechs, I don't want to fight you. But...”
 
 @41377 Milliardo · ミリアルド
+# 审校：「退くんだ!」是命令诺因撤退，米利亚尔多庄重口吻下“stand down”偏军事化且与L14诺因回应“I won't stand down”重复，改为“fall back”更贴合。
 > 「ノイン、退くんだ!」
-“Noin, stand down!”
+“Noin, fall back!”
 
 @41378 Noin · ノイン
+# 审校：与L13的“fall back”保持一致，诺因回应米利亚尔多的命令。
 > 「退きません! たとえ……
 >  たとえあなたを倒すことになろうとも!」
-“I won't stand down! Even... even if it means defeating you!”
+“I won't fall back! Even... even if it means defeating you!”
 
 @41379 Milliardo · ミリアルド
 > 「ノイン…………くっ!」
@@ -2033,8 +2061,10 @@ I am, and you are, weak too!”
 “Lord Milliardo?! Ngh... this can't be...”
 
 @41389 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「終わった……トレーズ様……」
-“It's over... Lord Treize...”
+“It's over... Your Excellency...”
 
 @41390 Jerid · ジェリド
 > 「くっ、奴らをやらずに
@@ -2125,8 +2155,10 @@ died in vain. ...And!”
 with you. Not with me. ...I leave the rest to you.”
 
 @41404 Lady · レディ
+# 审校：Lady 对 Treize 的称呼按 address 应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様……」
-“Lord Treize...”
+“Your Excellency...”
 
 @41405 Amuro · アムロ
 > 「トレーズ……」
@@ -2613,18 +2645,20 @@ Captain Quattro seemed to be brooding all this time.
 If he disappeared from before us because he had something in mind...”
 
 @41486 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 won't 改为 will not。
 > 「……もどっておいでにはならない、
 >  と、そういうことですか」
-“...He won't be coming back, is that what you mean, sir?”
+“...He will not be coming back, is that what you mean, sir?”
 
 @41487 Amuro · アムロ
 > 「…………」
 “...”
 
 @41488 Lady · レディ
+# 审校：蕾蒂为严厉军官且原文为敬体，将 I've 改为 I have 以符合其正式口吻。
 > 「救助していただいて感謝します。
 >  残存したOZ兵士は
-“Thank you for rescuing me. I've sent the surviving OZ soldiers
+“Thank you for rescuing me. I have sent the surviving OZ soldiers
 ---
 >  月面へ向かわせました」
 to the lunar surface.”
@@ -2634,13 +2668,14 @@ to the lunar surface.”
 “The lunar surface?”
 
 @41490 Lady · レディ
+# 审校：蕾蒂为严厉军官且原文为敬体，将 We've 改为 We have 以符合其正式口吻。
 > 「ホワイトファングは月面に
 >  戦力を残しておりませんでした
 “White Fang left no forces on the lunar surface.
 ---
 >  ほぼ無傷で月面基地は
 >  奪還しています」
-We've retaken the lunar base almost intact.”
+We have retaken the lunar base almost intact.”
 
 @41491 Chief Chujo · 中条長官
 > 「そうですか……しかしOZももはや
@@ -2648,9 +2683,11 @@ We've retaken the lunar base almost intact.”
 “I see... but OZ can hardly be called a proper fighting force anymore.”
 
 @41492 Lady · レディ
+# 审校：精读：第三人称
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「その通りです。
 >  トレーズ様を失った今
-“That's right. Now that we've lost Lord Treize,
+“That is right. Now that we have lost His Excellency,
 ---
 >  士気を維持するのも
 >  難しいでしょう」
@@ -2671,9 +2708,10 @@ it will be difficult to even maintain morale.”
 “? A pistol... What are you asking me to do with this?”
 
 @41496 Lady · レディ
+# 审校：蕾蒂为严厉军官且原文为敬体，将 I'm 改为 I am 以符合其正式口吻。
 > 「見ての通り魂の抜け殻ですが、
 >  どうか父上の……
-“As you can see, I'm an empty shell of a soul, but please...
+“As you can see, I am an empty shell of a soul, but please...
 ---
 >  ドーリアン氏のご無念を
 >  お晴らしください」
@@ -2714,9 +2752,11 @@ Besides, there must be many things the organization called OZ
 still has to do from here on.”
 
 @41501 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「……確かにおっしゃる通りです。
 >  トレーズ様の死とともに私の戦いも
-“...You're quite right. With Lord Treize's death, my battle ended as well.
+“...You are quite right. With His Excellency's death, my battle ended as well.
 ---
 >  終わりました。しかし果たすべき
 >  責任はまだ残っているのですね」
@@ -2735,21 +2775,22 @@ then please devote yourself to peace in the Earth Sphere.
 My father would surely wish for that too.”
 
 @41503 Lady · レディ
+# 审校：蕾蒂为严厉军官且原文为敬体，将 I'll 和 can't 改为正式形式。
 > 「はい……私も月面基地へ
 >  向かうことにします
-“Yes... I'll head for the lunar base as well.
+“Yes... I will head for the lunar base as well.
 ---
 >  OZを立て直し、地上の
 >  難民たちを1人でも多く
-I'll rebuild OZ and work to save even one more refugee on Earth.
+I will rebuild OZ and work to save even one more refugee on Earth.
 ---
 >  救うことに努力いたしましょう。
 >  よろしければおふたりもご一緒ください
-If you'd like, please come with me.
+If you would like, please come with me.
 ---
 >  {HeroMech}はまだ
 >  戦いをやめるわけにはいかないでしょう」
-The {HeroMech} can't afford to stop fighting yet, after all.”
+The {HeroMech} cannot afford to stop fighting yet, after all.”
 
 @41504 Julia · ジュリア
 > 「……そうですね……
@@ -2762,8 +2803,9 @@ The {HeroMech} can't afford to stop fighting yet, after all.”
 “I think so too. Let us accompany you as well, Julia.”
 
 @41506 Chief Chujo · 中条長官
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「頼みますぞ、レディ・アン特佐」
-“I'm counting on you, Lieutenant Colonel Lady Une.”
+“I am counting on you, Special Colonel Lady Une.”
 
 @41507 Sara · 沙羅
 > 「ここにいたのかい。リリーナは
@@ -2791,13 +2833,14 @@ And after that, she's coming down to Earth.”
 Wouldn't that be better for you?”
 
 @41510 Noin · ノイン
+# 审校：诺因为干练女军官且原文为敬体，将 won't 改为 will not 以符合其正式口吻。
 > 「気づかいは無用だ、沙羅。私は
 >  ……ゼクスが生きていると信じる
 “No need to worry about me, Sara. I... believe Zechs is alive.
 ---
 >  だから落ちこみなどはしない……
 >  少なくともこの戦いが終わるまでは」
-So I won't be depressed... at least not until this battle is over.”
+So I will not be depressed... at least not until this battle is over.”
 
 @41511 Sara · 沙羅
 > 「あんたがそういうんなら、それもいいさ。

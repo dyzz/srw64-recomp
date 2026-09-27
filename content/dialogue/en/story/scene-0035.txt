@@ -76,9 +76,11 @@ I will begin immediately after the lunar base is subdued.”
 “Good. I leave it to you, Tubarov.”
 
 @24731 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、お元気そうでなにより
 >  です」
-“Lord Treize, I am glad to see you looking well.”
+“Your Excellency, I am glad to see you looking well.”
 
 @24732 Treize · トレーズ
 > 「レディ、君も元気そうでよかった。
@@ -99,9 +101,11 @@ I will begin immediately after the lunar base is subdued.”
 Lord Dermail apparently decided to proceed without going through me.”
 
 @24735 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「ジャミトフ閣下のお知恵でしょう。
 >  いかがいたしますか、トレーズ様?」
-“No doubt it was His Excellency Jamitov's idea. What shall we do, Lord Treize?”
+“No doubt it was His Excellency Jamitov's idea. What shall we do, Your Excellency?”
 
 @24736 Treize · トレーズ
 > 「放っておきたまえ。君まで不必要
@@ -122,9 +126,11 @@ By the way, Lady, how are they doing?”
 “I see... Thank you, Lady. I pray you can return to us soon.”
 
 @24739 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「もったいないお言葉、いたみいります。
 >  トレーズ様のため、精いっぱい
-“Those words are more than I deserve. For your sake, Lord Treize, I will do
+“Those words are more than I deserve. For your sake, Your Excellency, I will do
 ---
 >  努力いたします」
 my utmost.”
@@ -164,15 +170,15 @@ You are all given the mission to find and destroy La Vie en Rose.”
 We must crush them while we still can.”
 
 @24744 Gaia · ガイア
-# 审校：バスク的军衔是上校（Colonel），不是少将（Major General）；L31、L39 同样问题，但 L31 与 L22 相同需一并修改，L39 也改为 Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「了解だ、バスク特佐」
-“Understood, Colonel Bask.”
+“Understood, Special Colonel Bask.”
 
 @24745 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：同上，特佐应为 Colonel，不是 Major General。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、今の状況で彼らに対し
 >  そこまでやる理由が、わかりかねますが」
-“Colonel, I fail to understand the reason for going that far against them in the current situation.”
+“Special Colonel, I fail to understand the reason for going that far against them in the current situation.”
 
 @24746 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「ぐっ……」
@@ -188,17 +194,19 @@ We must crush them while we still can.”
 “...Yes, my apologies.”
 
 @24749 Gaia · ガイア
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{PartnerNick}特尉、頼むぞ。
 >  ブロック・ブレイカーの名が、
-“Captain {PartnerNick}, I am counting on you. I hope the name Block Breaker
+“Special Lieutenant {PartnerNick}, I am counting on you. I hope the name Block Breaker
 ---
 >  伊達ではないとよいのだが」
 is not just for show.”
 
 @24750 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ガイア特尉、それはどういう
 >  意味か?」
-“Captain Gaia, what do you mean by that?”
+“Special Lieutenant Gaia, what do you mean by that?”
 
 @24751 Bask · バスク
 > 「やめんか、バカ者が。
@@ -219,43 +227,46 @@ When the operation ends, I expect a good report. That is all.”
 What is going on? A man who does not understand Lord Treize's ideals...)
 
 @24753 Gaia · ガイア
-# 审校：バスク的军衔是上校（Colonel），不是少将（Major General）。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「了解だ、バスク特佐」
-“Understood, Colonel Bask.”
+“Understood, Special Colonel Bask.”
 
 @24754 Rish · リッシュ（按段落 3DD2）
-# 审校：特佐应为 Colonel，不是 Major General。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、帝国軍に対する最後
 >  の攻勢の最中に、そこまでやる
-“Colonel, in the midst of the final offensive against the Imperial forces, I do not
+“Special Colonel, in the midst of the final offensive against the Imperial forces, I don't
 ---
 >  必要性がわかりませんが?」
-understand the need to go that far?”
+see the need to go that far.”
 
 @24755 Rish · リッシュ（按段落 3DD2）
 > 「ぐっ……」
 “Guh...”
 
 @24756 Bask · バスク
+# 审校：Bask 对下属是咆哮式命令，原文「黙って命令に従っておればよいのだ」语气更强硬，改为 “Just shut up and follow orders” 更符合其暴戾口吻。
 > 「知ったふうな口をきくな! 貴様に
 >  何がわかるか! 貴様は黙って
-“Do not speak as if you know anything! What could you possibly understand?! You just
+“Don't talk like you know anything! What could you possibly understand?! Just
 ---
 >  命令に従っておればよいのだ!」
-follow orders in silence!”
+shut up and follow orders!”
 
 @24757 Gaia · ガイア
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{PartnerNick}特尉、期待してもよいの
 >  だろうな? “不死人”の名が
-“Captain {PartnerNick}, I trust we can expect something from you? I hope the name ‘Undying’
+“Special Lieutenant {PartnerNick}, I trust we can expect something from you? I hope the name ‘Undying’
 ---
 >  名誉なものとなればよいが」
 proves to be an honorable one.”
 
 @24758 Rish · リッシュ（按段落 3DD2）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……ガイア特尉はなにか含むところが
 >  あるようですな」
-“...Captain Gaia seems to be implying something.”
+“...Special Lieutenant Gaia seems to be implying something.”
 
 @24759 Bask · バスク
 > 「やめんか、バカ者が。
@@ -267,18 +278,19 @@ proves to be an honorable one.”
 When the operation ends, I expect a good report. That is all.”
 
 @24760 Rish · リッシュ（按段落 3DD2）
+# 审校：Rish 的 voice 要求大量缩略语和痞气，原文「いったいどういうつもりだ」「つまんねぇことになりそうだぜ」改为更口语的 “what the hell's he thinking” 和 “gonna” 更贴合。
 > (ちっ、気にいらねぇ。
 >  まったく気にいらねぇぜ
 (Tch, I don't like it. I really don't like it.
 ---
 >  バスクめ……いったいどういうつもりだ。
 >  くそっ、つまんねぇことになりそうだぜ…)
-That Bask... what the hell is he thinking? Damn, this is going to turn into something boring...)
+That Bask... what the hell's he thinking? Damn, this is gonna turn into something boring...)
 
 @24761 Gaia · ガイア
-# 审校：特佐应为 Colonel，不是 Major General。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「了解だ、特佐」
-“Understood, Colonel.”
+“Understood, Special Colonel.”
 
 @24762 Bask · バスク
 > 「うむ。私はアポロ作戦の
@@ -300,17 +312,19 @@ When the operation ends, I expect to hear a good report.”
 “Let us see what a veteran of many battles can do.”
 
 @24765 Jerid · ジェリド
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ジェリド特尉、マウアー特尉、
 >  入ります」
-“Captain Jerid and Captain Mouar, reporting in.”
+“Special Lieutenant Jerid and Special Lieutenant Mouar, reporting in.”
 
 @24766 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「来たか。ジェリド特尉、貴官は
 >  ライラ特尉とカクリコン特尉の
-“So you've come. Captain Jerid, you had requested a
+“So you've come. Special Lieutenant Jerid, you had requested a
 ---
 >  弔い合戦を希望していたな」
-memorial battle for Captain Lila and Captain Kacricon.”
+memorial battle for Special Lieutenant Lila and Special Lieutenant Kacricon.”
 
 @24767 Jerid · ジェリド
 > 「はい。奴らに怨念返しをしなければ
@@ -318,12 +332,13 @@ memorial battle for Captain Lila and Captain Kacricon.”
 “Yes. I won't rest until I've paid those bastards back in kind.”
 
 @24768 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「その気合いに期待し、貴官らに
 >  特別任務を与える。これは
 “I expect great things from that fighting spirit. I'm giving you a special mission. This is
 ---
 >  ガイア特尉も知らぬことだ」
-something even Captain Gaia does not know.”
+something even Special Lieutenant Gaia does not know.”
 
 @24769 Jerid · ジェリド
 > 「はっ、光栄であります」
@@ -579,9 +594,10 @@ was fate, you know?”
 understand what I'm saying?”
 
 @24810 Selain · セレイン（按段落 3DD2）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「馬鹿か貴様は。敵のいうことなど
 >  なぜ聞かねばならん! 敵ならば倒す
-“Are you a fool? Why should I listen to anything an enemy says?! If you're the enemy, I destroy you—
+“Are you a fool? Why should I listen to anything an enemy says?! If you're the enemy, I destroy you...
 ---
 >  それだけだ!」
 that's all there is to it!”
@@ -610,8 +626,9 @@ that kind of nonsense that you always end up losing and going home.”
 “Is that so? Then why not try again this time?!”
 
 @24815 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ的痞气口吻应更口语化，guess there's no helping it 偏书面，改为 can't be helped 更自然。
 > 「おっと、そうくるかよ。ま、しゃーねぇわな」
-“Whoa, so that's how it is. Well, guess there's no helping it.”
+“Whoa, so that's how it is. Well, can't be helped.”
 
 @24816 Selain · セレイン（按段落 3DD2）
 > 「貴様が何をいおうと、敵である
@@ -619,9 +636,10 @@ that kind of nonsense that you always end up losing and going home.”
 “Whatever you say, as long as you're the enemy, there's no path but to fight.”
 
 @24817 Rish · リッシュ（按段落 3DD2）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「だからよ、お前が本気でいってくれる
 >  んなら、俺はいつでもそっちにつくって
-“That's what I'm saying—if you'd just tell me you mean it, I'd join your side anytime,
+“That's what I'm saying... if you'd just tell me you mean it, I'd join your side anytime,
 ---
 >  いってるじゃねぇか」
 I keep telling you that.”
@@ -632,9 +650,10 @@ I keep telling you that.”
 “And why would I ever say such a thing?!”
 
 @24819 Rish · リッシュ（按段落 3DD2）
+# 审校：原文「何度もいうが」是“我说过很多次了”，tr 的 I'm telling you 少了“多次”的强调，改为 Like I keep saying 更贴合リッシュ反复强调的口吻。
 > 「そりゃお前……俺がいってほしいからだ
 >  何度もいうが俺ぁマジだぜ!?」
-“Well, because... I want you to say it. I'm telling you, I'm serious!”
+“Well, because... I want you to say it. Like I keep saying, I'm serious!”
 
 @24820 Selain · セレイン（按段落 3DD2）
 > 「そうか……なら、お前が死んだら
@@ -660,9 +679,10 @@ I keep telling you that.”
 “Looks like we made it in time.”
 
 @24825 Bright · ブライト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「よし、全機、ラビアンローズに敵を
 >  近づけるな!」
-“All right, all units—don't let the enemy near La Vie en Rose!”
+“All right, all units... don't let the enemy near La Vie en Rose!”
 
 @24826 Jerid · ジェリド
 > 「来たか……アーガマ! バスクめ、
@@ -896,8 +916,9 @@ so I did my very best...”
 struggle, let me tell you.”
 
 @24874 Amuro · アムロ
+# 审校：原文是阿姆罗认出对方时的迟疑语气，You are 太生硬，改为自然的 You're。
 > 「君は……」
-“You are...”
+“You're...”
 
 @24875 Chan · チェーン
 > 「チェーン・アギです。もと連邦の技
@@ -943,6 +964,7 @@ meet you.”
 “Speaking of which, you said Anaheim...”
 
 @24883 Chan · チェーン
+# 审校：精读：末页生硬
 > 「帝国やロームフェラに協力する
 >  裏で、こちらにも協力する
 “Behind the scenes, while cooperating with the Empire and Romefeller, they cooperate with us too.
@@ -953,19 +975,20 @@ It doesn't sit well with me, but thanks to that, we can develop new models
 ---
 >  開発することができます。拠点
 >  防衛用のGP03というのも
-as well. There's even one for base defense called the GP03.
+as well. There's even one for base defense called the GP03,
 ---
 >  あるんですよ」
-Yes, it exists.”
+you know.”
 
 @24884 Amuro · アムロ
 > 「GP03?」
 “GP03?”
 
 @24885 Chan · チェーン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ステイメンというガンダムを、オーキスとい
 >  う武器コンテナに収容した形が
-“A Gundam called the Stamen housed in a weapons container called the Orchis—that's
+“A Gundam called the Stamen housed in a weapons container called the Orchis... that's
 ---
 >  通常の運用形態で、
 >  デンドロビウムと呼ばれています」
@@ -1040,8 +1063,9 @@ A new Gundam. You can't do that, can you?”
 “Hey, you wait right there! Amuro!”
 
 @24900 David · デビッド
+# 审校：原文是自言自语式的感叹，去掉多余的 huh 更贴合戴维的冲动口吻。
 > 「……なんかすげぇもん見ちまったな」
-“...We just saw something pretty crazy, huh.”
+“...We just saw something pretty crazy.”
 
 @24901 Boss · ボス
 > 「まったくだわさ」
@@ -1086,28 +1110,30 @@ A new Gundam. You can't do that, can you?”
 “Whoa, masked guy, don't just pop out of nowhere.”
 
 @24910 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：バスク的军衔是大佐，应译为 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、帝国軍を追撃
 >  しないというのはどういうことですか」
-“Colonel Bask, what do you mean we're not pursuing the Imperial forces?”
+“Special Colonel Bask, what do you mean we're not pursuing the Imperial forces?”
 
 @24911 Bask · バスク
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「貴様がレジスタンスどもを
 >  叩いておれば、よかったのだ
 “If you had crushed those Resistance dogs, this wouldn't have happened.
 ---
 >  アステロイドまで撤退した
 >  帝国軍など、もはやいつでもつぶせる
-The Imperial forces have already retreated to the Asteroid—we can crush them anytime.
+The Imperial forces have already retreated to the Asteroid... we can crush them anytime.
 ---
 >  今は軍備を整える時だ。特に、
 >  あのような連中がいる以上はな」
 Now is the time to build up our forces. Especially with people like them around.”
 
 @24912 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、私にアステロイド基地
 >  攻略の許可を」
-“Colonel, give me permission to assault the Asteroid Base.”
+“Special Colonel, give me permission to assault the Asteroid Base.”
 
 @24913 Bask · バスク
 > 「うぬぼれるな! 貴様のかわりなど、
@@ -1122,19 +1148,19 @@ are for those who've shown results. Why don't you go cool your head on Earth,
 like Jerid did after he was wounded?”
 
 @24914 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：特佐应译为 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐! くっ……帝国の排
 >  除がOZの最大の目的だったはず
-“Colonel Bask! Ngh... Eliminating the Empire was supposed to be OZ's greatest goal.
+“Special Colonel Bask! Ngh... Eliminating the Empire was supposed to be OZ's greatest goal.
 ---
 >  しかし、これでは…………」
 But at this rate...”
 
 @24915 Rish · リッシュ（按段落 3DD2）
-# 审校：特佐应译为 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、帝国軍を追撃
 >  しないと聞きましたが」
-“Colonel Bask, I hear we're not pursuing the Imperial forces.”
+“Special Colonel Bask, I hear we're not pursuing the Imperial forces.”
 
 @24916 Bask · バスク
 > 「貴様が関与することではない。
@@ -1158,10 +1184,10 @@ results.”
 eliminating the Imperial forces wasn't OZ's only goal, though.)
 
 @24918 Bask · バスク
-# 审校：ジェリド特尉的军衔是特尉，对应 Captain，不是 Lieutenant。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「負傷したジェリド特尉は地球で
 >  療養するそうだな。貴様も
-“I hear the wounded Captain Jerid will be recuperating on Earth. You're welcome
+“I hear the wounded Special Lieutenant Jerid will be recuperating on Earth. You're welcome
 ---
 >  そうしてもかまわんぞ」
 to do the same.”

@@ -1,142 +1,190 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10981 Illia · イリア
+# 触发：攻击（通用，1/12）
 > 「沈めっ!」
 “Sink!”
 
 @10982 Illia · イリア
+# 触发：攻击（通用，2/12）
+# 审校：伊莉亚为女军官，正式口吻下 there's 改为 there is 更贴合。
 > 「私が負けるはずないのだ!!」
-“There's no way I could lose!!”
+“There is no way I could lose!!”
 
 @10983 Illia · イリア
+# 触发：攻击（通用，3/12）
 > 「もらった!!」
 “Got you!!”
 
 @10984 Illia · イリア
+# 触发：攻击（通用，4/12）
 > 「これで終わりだ!」
 “This is the end!”
 
 @10985 Illia · イリア
+# 触发：攻击（通用，5/12）
 > 「とどめっ!」
 “Finishing blow!”
 
 @10986 Illia · イリア
+# 触发：攻击（通用，6/12）
 > 「ここまでだっ!」
 “This is as far as you go!”
 
 @10987 Illia · イリア
+# 触发：攻击（通用，7/12）
 # 审校：原文“どこを狙って欲しい?”是问对方想被瞄准哪里，初稿“where would you like to be hit?”意思对但稍生硬，改为更口语的“where do you want me to hit you?”
 > 「さあ、どこを狙って欲しい?」
 “So, where do you want me to hit you?”
 
 @10988 Illia · イリア
+# 触发：攻击（通用，8/12）
 > 「死になっ!」
 “Die!”
 
 @10989 Illia · イリア
+# 触发：攻击（通用，9/12）
 > 「消えろっ!」
 “Vanish!”
 
 @10990 Illia · イリア
+# 触发：攻击（通用，10/12）
 > 「フフッいいエサだな」
 “Heh heh, what nice bait.”
 
 @10991 Illia · イリア
+# 触发：攻击（通用，11/12）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「何ぼやぼやしてるのさ!?」
-“What are you dawdling for!?”
+“What are you dawdling for?!”
 
 @10992 Illia · イリア
+# 触发：攻击（通用，12/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私は誰にも負けない!」
-“I won't lose to anyone!”
+“I won’t lose to anyone!”
 
 @10993 Illia · イリア
+# 触发：被击坠（通用，1/2）
+# 审校：被击坠情境
 > 「何っ!? やられた!?」
-“What!? I've been hit!?”
+“What?! They got me?!”
 
 @10994 Illia · イリア
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだと!? 直撃かっ!?」
-“What!? A direct hit!?”
+“What?! A direct hit?!”
 
 @10995 Illia · イリア
-# 审校：初稿“Y-you of all people!!”缺少逗号，改为“Y-you, of all people!!”更自然
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：貴様などに＝败给你这种人
 > 「くうううっ! き、貴様などにっ!!」
-“Kuhhh! Y-you, of all people!!”
+“Guhhh! B-by the likes of you!!”
 
 @10996 Illia · イリア
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あううっ! バ、バカな、押されて
 >  いるのか!?」
-“Augh! I-impossible, am I being pushed back!?”
+“Augh! I-impossible, am I being pushed back?!”
 
 @10997 Illia · イリア
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「な……なんてパワーだ、こいつっ!」
 “Wh... what power this one has!”
 
 @10998 Illia · イリア
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「ちいっ! やるじゃないか!」
 “Tch! Not bad!”
 
 @10999 Illia · イリア
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! そんなことで、この私は
 >  やられやしないよ!」
-“Ngh! That won't be enough to take me down!”
+“Ngh! That won’t be enough to take me down!”
 
 @11000 Illia · イリア
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うっ! 私に当てた!?
 >  上等じゃないか!」
-“Ugh! You hit me!? Fine by me!”
+“Ugh! You hit me?! Fine by me!”
 
 @11001 Illia · イリア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度か!」
-“Is that all you've got!”
+“Is that all you’ve got!”
 
 @11002 Illia · イリア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「ふん、情けない……そんなものか!」
 “Hmph, pathetic... is that all!”
 
 @11003 Illia · イリア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「相手にならんな」
 “No match for me.”
 
 @11004 Illia · イリア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんて戦い方だ! ばかにするな!」
-“What kind of fighting is that! Don't mock me!”
+“What kind of fighting is that! Don’t mock me!”
 
 @11005 Illia · イリア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだ? なめているのか!?」
-“What? Are you underestimating me!?”
+“What? Are you underestimating me?!”
 
 @11006 Illia · イリア
+# 触发：回避（通用，1/5）
 > 「どこを見てるんだよ!!」
 “What are you looking at!!”
 
 @11007 Illia · イリア
+# 触发：回避（通用，2/5）
 > 「どこを狙っている!」
 “What are you aiming at!”
 
 @11008 Illia · イリア
+# 触发：回避（通用，3/5）
 > 「遅いんだよっ!」
 “Too slow!”
 
 @11009 Illia · イリア
+# 触发：回避（通用，4/5）
 > 「甘いなっ!」
 “Too naive!”
 
 @11010 Illia · イリア
+# 触发：回避（通用，5/5）
 > 「あたるものかっ!」
 “Like that would hit!”
 
 @11011 Illia · イリア
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなのさ!」
-“It's useless!”
+“It’s useless!”
 
 @11012 Illia · イリア
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないんだよ!」
-“It doesn't work on me!”
+“It doesn’t work on me!”
 
 @11013 Illia · イリア
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ちっ、弾切れとは……」
 “Tch, out of ammo...”
 
 @11014 Illia · イリア
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! 届かんのか!」
-“Ngh! It won't reach!?”
+“Ngh! It won’t reach?!”

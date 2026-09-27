@@ -1,82 +1,145 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10777 Dale · デル
+# 触发：攻击（通用，1/4）
+# 审校：补引号
 > 「出世がまたはやまるな」
 “My promotion just got closer.”
 
 @10778 Dale · デル
+# 触发：攻击（通用，2/4）
+# 审校：补引号
 > 「我々の力、見せてやろう!」
-“Let's show them our power!”
+“Let’s show them our power!”
 
 @10779 Dale · デル
+# 触发：攻击（通用，3/4）
+# 审校：补引号
 > 「この分なら余裕だな」
-“At this rate, it's easy.”
+“At this rate, it’s easy.”
 
 @10780 Dale · デル
+# 触发：攻击（通用，4/4）
+# 审校：补引号
 > 「予定よりいけるな」
 “Going better than planned.”
 
 @10781 Dale · デル
+# 触发：被击坠（通用，1/1）
+# 审校：补引号，叹号按原文
 > 「うお!? うわぁぁぁーっ!!」
-“Whoa?! Uwaaaaa!”
+“Whoa?! Uwaaaaah!!”
 
 @10782 Dale · デル
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぉぉ!? こ、ここまで攻めてか!」
 “Whoa?! Th-they pushed us this far!”
 
 @10783 Dale · デル
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わ、我々が負ける!?」
-“W-we're losing?!”
+“W-we’re losing?!”
 
 @10784 Dale · デル
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なにぃ!?」
 “W-what?!”
 
 @10785 Dale · デル
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：补引号
 > 「ぐぅっ! パワー負けだと!?」
 “Guh! Outmatched in power?!”
 
 @10786 Dale · デル
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：补引号
 > 「ぐぅっ! だがこういう奴を倒してこそ
 >  出世もはやまるってもんだ!」
 “Guh! But beating guys like this is what speeds up a promotion!”
 
 @10787 Dale · デル
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：补引号
 > 「我々をなめてもらってはな!」
-“Don't you underestimate us!”
+“Don’t you underestimate us!”
 
 @10788 Dale · デル
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こいつ……手強いぞ!」
 “Th-this one... is tough!”
 
 @10789 Dale · デル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：补引号
 > 「ザコは捨てるか……?」
 “Should I ditch the small fry...?”
 
 @10790 Dale · デル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：补引号
 > 「こんな奴を倒しても出世はせんか」
-“Beating trash like this won't get me promoted.”
+“Beating trash like this won’t get me promoted.”
 
 @10791 Dale · デル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：补引号
 > 「それで攻撃してるつもりか!?」
 “You call that an attack?!”
 
 @10792 Dale · デル
+# 触发：回避（通用，1/2）
+# 审校：补引号
 > 「それではあたらないぜ!」
-“That won't hit!”
+“That won’t hit!”
 
 @10793 Dale · デル
+# 触发：回避（通用，2/2）
+# 审校：补引号
 > 「ははははっ」
 “Hahahaha.”
 
 @10794 Dale · デル
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：补引号
 > 「ははははっ」
 “Hahahaha.”
 
 @10795 Dale · デル
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：补引号
 > 「弾切れか!?」
 “Out of ammo?!”
 
 @10796 Dale · デル
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：补引号，ええい
 > 「届かないだと!? ええい!」
-“Can't reach?! Tch!”
+“Can’t reach?! Damn it!”
+
+@16343 Dale · デル
+# 触发：使用〈フィンファンネル〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「予定よりいけるな」
+“We’re ahead of schedule.”
+
+@16344 Danny · ダニー
+# 触发：使用〈3D〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D’s trinity attack!”
+
+@16345 Dale · デル
+# 触发：使用〈3D〉（对话第 2/3 句）
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16346 Deune · デューン
+# 触发：使用〈3D〉（对话第 3/3 句）
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”

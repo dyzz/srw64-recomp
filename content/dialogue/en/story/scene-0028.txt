@@ -240,6 +240,7 @@ generals will be coming from the Asteroid.”
 “...The commanders who invaded Earth three years ago.”
 
 @22330 Alan · アラン
+# 审校：ライフ 统一写作 LIFE
 > 「そうだ。だが彼らがいきなりやってきた
 >  としても、今の状況では軍を
 “That's right. But even if they arrive suddenly, in the current situation it will
@@ -253,7 +254,7 @@ take time to seize control of the military. I've spoken with Banjo as well, and
 in the meantime we intend to do all we can to help Brigadier General Blex of
 ---
 >  尽力するつもりだ」
-Lives and the others put together some kind of framework.”
+LIFE and the others put together some kind of framework.”
 
 @22331 Bright · ブライト
 > 「なるほど、では我々も
@@ -265,9 +266,10 @@ Lives and the others put together some kind of framework.”
 “No, I'd like you to hold off on that.”
 
 @22333 Shinobu · 忍
+# 审校：忍的口吻是粗野、不服管，原文「やらせようってんじゃねぇだろうな」是粗鲁的否定推测，译文过于书面，改为更口语化的“gonna”。
 > 「なんだよ、まさか
 >  ボロボロになるまで戦った俺たちに、
-“What? Don't tell me you're going to make us, who've fought to the point of
+“What? Don't tell me you're gonna make us, who've fought to the point of
 ---
 >  まだこのまま
 >  やらせようってんじゃねぇだろうな」
@@ -445,9 +447,10 @@ That's fine, isn't it, Bright?”
 “Hey, Amuro, I'm...”
 
 @22364 Quattro · クワトロ
+# 审校：大尉 统一 Captain
 > 「いや、私もアムロ大尉の意見に
 >  賛成だ。ル・カインを
-“No, I agree with Lieutenant Amuro as well. For intercepting
+“No, I agree with Captain Amuro as well. For intercepting
 ---
 >  迎え撃つのにも、あのあたりの方が
 >  面倒が少なくていい」
@@ -639,18 +642,19 @@ stuck with these guys who barely say a word?”
 “Then I guess we've got no choice but to fight...”
 
 @22402 Domon · ドモン
-# 审校：原文没有拖长音，初稿多出空格且气势不足，改为简洁的 Come out!
+# 审校：原文“でろぉぉぉっ”是拖长音的怒吼，译文“Come out!”语气太弱，改为带拖长感的“Get out here!”
 > 「当然だ。でろぉぉぉっ!」
-“Of course. Come out!”
+“Of course. Get out here!”
 
 @22403 Domon · ドモン
 > 「ガンダァァァ……」
 “Gundaaaaam...”
 
 @22404 ???
+# 审校：“flaunting”过于书面，与说话人粗犷的武者口吻不符，改为更口语的“showing off”
 > 「待てぃ! こんなところでやたらと
 >  ロボットを出すでない」
-“Hold it! Don't go flaunting your robots in a place like this!”
+“Hold it! Don't go showing off your robots in a place like this!”
 
 @22405 Duo · デュオ
 > 「な……なんだぁ!?」
@@ -879,8 +883,9 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Master!!”
 
 @22452 Master · マスター
+# 审校：Master 的 voice 要求不用缩略形式，can't 应改为 can you not。
 > 「まだザコが残っておる。やれるな、ドモン」
-“There are still small fry left. You can handle them, can't you, Domon?”
+“There are still small fry left. You can handle them, can you not, Domon?”
 
 @22453 Domon · ドモン
 > 「は、はい!」
@@ -941,9 +946,10 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Look! The East is burning red!!”
 
 @22466 Master · マスター
+# 审校：Master 的 voice 要求不用缩略形式，it's 应改为 it has。
 > 「フッ、久しぶりだな、ドモン。いや、
 >  ワシが認めたキング・オブ・ハートよ」
-“Heh, it's been a long time, Domon. No, my acknowledged King of Hearts.”
+“Heh, it has been a long time, Domon. No, my acknowledged King of Hearts.”
 
 @22467 Domon · ドモン
 > 「師匠……
@@ -951,8 +957,9 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Master... I have longed to see you!!”
 
 @22468 Master · マスター
+# 审校：Master 的 voice 要求不用缩略形式，What's 应改为 What is。
 > 「どうした、男子たるものがなんで泣く」
-“What's wrong? Why is a man crying?”
+“What is wrong? Why is a man crying?”
 
 @22469 Duo · デュオ
 > 「なんなんだよ、こいつら……。
@@ -960,9 +967,10 @@ He just destroyed a Mobile Suit with his bare hands!”
 “What's with these guys... I can't keep up anymore...”
 
 @22470 Master · マスター
+# 审校：Master 的 voice 要求不用缩略形式，that's 应改为 that is。
 > 「そうか……ワシがお前のもとから姿を
 >  消してから、そんなことがあったのか」
-“I see... So that's what happened after I vanished from your side.”
+“I see... So that is what happened after I vanished from your side.”
 
 @22471 Domon · ドモン
 > 「はい」
@@ -990,8 +998,9 @@ perhaps.”
 “You, Master?!”
 
 @22476 Trowa · トロワ
+# 审校：特洛瓦口吻应更冷静平淡，原文「ほう」带轻微兴趣，改为“Oh?”更贴合其寡言风格。
 > 「ほう、それは興味深い話だな」
-“Oh, that is an interesting story.”
+“Oh? That is an interesting story.”
 
 @22477 Duo · デュオ
 > (……おいおい)
@@ -1032,9 +1041,10 @@ the Dark Gundam's minions, the Death Army.”
 “What will you do?”
 
 @22485 Master · マスター
+# 审校：宗师口吻应更庄重，将“I'll”改为“I shall”以符合其无缩写的古雅风格。
 > 「ワシか? ワシは愛弟子の
 >  戦いぶりを見物させてもらうとしよう」
-“Me? I believe I'll sit back and watch my beloved pupil fight.”
+“Me? I believe I shall sit back and watch my beloved pupil fight.”
 
 @22486 Heero · ヒイロ
 > 「そうか」
@@ -1127,12 +1137,13 @@ Father...”
 “Le Cain, I'll end it here!”
 
 @22504 Master · マスター
+# 审校：宗师口吻应无缩写，将“hasn't”改为“has not”以符合其庄重风格。
 > 「うむ、見事な戦いぶりよ。
 >  この東方不敗
 “Hmm, a splendid fight. This Master Asia
 ---
 >  久しぶりにいいものを見せてもらったわ」
-hasn't seen such a fine display in a long while.”
+has not seen such a fine display in a long while.”
 
 @22505 Koji · 甲児
 > 「はぁ? おいデュオ、
@@ -1178,13 +1189,15 @@ my Master, Master Asia, the Undefeated of the East!”
 “So you're saying the Dark Gundam is controlling that thing?”
 
 @22513 Master · マスター
+# 审校：东方不败说话带古风且庄重，将“it's”改为“it is”以符合其不用缩写的口吻。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「うむ。デビルガンダムは確かにこの地の
 >  どこかに潜伏しておる。そして
 “Indeed. The Dark Gundam is surely lurking somewhere in this land. And
 ---
 >  デスアーミーどもを使ってなにやら
 >  たくらんでおるのだ。おかげでこの地に
-it's scheming something using the Death Army. Thanks to that, the people
+it is scheming something using the Death Army. Thanks to that, the people
 ---
 >  残った民衆は恐怖におびえ、
 >  夜も眠れぬありさまよ」
@@ -1258,13 +1271,14 @@ They may be unable to move because of those Death Army fellows.”
 “What is it?”
 
 @22525 Master · マスター
+# 审校：东方不败不用缩写，将“don't”改为“do not”以符合其古风口吻。
 > 「先の件でおわかりの通り、
 >  ここで機動兵器を使っては
 “As you saw earlier, using mobile weapons here makes us
 ---
 >  目立ちすぎる。状況もわからぬゆえ
 >  まずはワシとドモンで見てまいりましょう」
-far too conspicuous. Since we don't know the situation, let me and Domon go look first.”
+far too conspicuous. Since we do not know the situation, let me and Domon go look first.”
 
 @22526 Bright · ブライト
 > 「あなたが?」
@@ -1281,12 +1295,13 @@ far too conspicuous. Since we don't know the situation, let me and Domon go look
 “I'm not at your level, but I've had some training. Let me come along.”
 
 @22529 Shinobu · 忍
+# 审校：；独白不加引号
 > (おい亮、こんな連中に
 >  つきあってたら、命がいくつあっても
-“(Hey Ryo, if you keep company with these guys, you won't have
+(Hey Ryo, if you keep company with these guys, you won't have
 ---
 >  足りねぇぞ)
-enough lives to spare.)”
+enough lives to spare.)
 
 @22530 Ryo · 亮
 > 「これも修業のうちだ。
@@ -1323,8 +1338,9 @@ it's fine that you're tough, but wouldn't it be better to sit this one out?”
 “Yeah, yeah, that's what I get for asking.”
 
 @22537 Ginrei · 銀鈴
+# 审校：银铃是成熟女性，原文「行きますわ」带敬体，译文用“I'll”过于随意，改为更符合其口吻的“I shall”。
 > 「では私も行きますわ」
-“Then I'll come too.”
+“Then I shall come as well.”
 
 @22538 Daisaku · 大作
 > 「銀鈴さんが!?」
@@ -1473,8 +1489,9 @@ It can't be helped.”
 “Hah!!”
 
 @22568 Sai Saici · サイ・サイシー
+# 审校：Sai Saici 是调皮少年，对银铃用「お姉ちゃん」应译得更口语、更符合其口吻。
 > 「やるねえ、お姉ちゃん」
-“You're good, big sister.”
+“You're good, big sis.”
 
 @22569 Domon · ドモン
 > 「お前たち、その力はいったい……!?」
@@ -1485,8 +1502,9 @@ It can't be helped.”
 “It feels like power is overflowing from inside my body.”
 
 @22571 Sai Saici · サイ・サイシー
+# 审校：Sai Saici 对多蒙用「アニキ」，译文应体现这一称呼。
 > 「ドモンのアニキもほしいだろう」
-“You want it too, don't you, Domon?”
+“You want it too, don't you, big bro Domon?”
 
 @22572 George · ジョルジュ
 > 「あの方にいただいた、この力を!」

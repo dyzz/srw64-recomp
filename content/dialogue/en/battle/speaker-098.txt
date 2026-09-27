@@ -1,155 +1,210 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6402 Lady · レディ
+# 触发：攻击（通用，1/11）
 > 「ここまでだ、死ねぇ!」
 “This is the end. Die!”
 
 @6403 Lady · レディ
+# 触发：攻击（通用，2/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いい気になるな!!」
-“Don't get cocky!!”
+“Don’t get cocky!!”
 
 @6404 Lady · レディ
+# 触发：攻击（通用，3/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上先に行かせはしない!!」
-“I won't let you go any further!!”
+“I won’t let you go any further!!”
 
 @6405 Lady · レディ
+# 触发：攻击（通用，4/11）
+# 审校：不是对特列斯说话，用 His Excellency
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様のために!!」
-“For Lord Treize!!”
+“For His Excellency!!”
 
 @6406 Lady · レディ
+# 触发：攻击（通用，5/11）
 > 「愚か者が!」
 “Fool!”
 
 @6407 Lady · レディ
+# 触发：攻击（通用，6/11）
 > 「もらった!!」
 “Got you!!”
 
 @6408 Lady · レディ
+# 触发：攻击（通用，7/11）
 > 「死ねっ!」
 “Die!”
 
 @6409 Lady · レディ
+# 触发：攻击（通用，8/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「スキだらけだよ!」
-“You're wide open!”
+“You’re wide open!”
 
 @6410 Lady · レディ
+# 触发：攻击（通用，9/11）
+# 审校：同上
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「理想をかなえるため、トレーズ様の
 >  ために戦う!」
-“I fight to make our ideals real, for Lord Treize!”
+“I fight to make our ideals real, for His Excellency!”
 
 @6411 Lady · レディ
+# 触发：攻击（通用，10/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「死にに、きたか……なら望みどおりに
 >  してやるよ!」
-“Come to die, have you... Then I'll grant your wish!”
+“Come to die, have you... Then I’ll grant your wish!”
 
 @6412 Lady · レディ
+# 触发：攻击（通用，11/11）
 > 「これで終わりだ!!」
 “This is the end!!”
 
 @6413 Lady · レディ
+# 触发：被击坠（通用，1/2）
 > 「なにっ!?」
 “What?!”
 
 @6414 Lady · レディ
+# 触发：被击坠（通用，2/2）
 # 审校：原文是“しまった!?”，表示懊悔，不是疑问；初稿“Damn?!”带问号语气不对，改为“Damn!”。
 > 「しまった!?」
 “Damn!”
 
 @6415 Lady · レディ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「バカな……これ程のパワーがあるのか!?」
 “Impossible... Such power?!”
 
 @6416 Lady · レディ
-# 审校：原文“やられる!?”在此是危机感叹，不是疑问；去掉问号，改为“finished!”。
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……このままではやられる!?」
-“Ngh... At this rate I'll be finished!”
+“Ngh... At this rate I’ll be finished!”
 
 @6417 Lady · レディ
-# 审校：词表要求トレーズ为 Treize，且原文用“トレーズ閣下”，应保留敬称“His Excellency Treize”，初稿误为“Lord Treize”。
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ! や、やらせん……
 >  トレーズ閣下のためにも!」
-“Ugh! I-I won't let you... not for His Excellency Treize!”
+“Ugh! I-I won’t let you... not for His Excellency Treize!”
 
 @6418 Lady · レディ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだとっ!? お、おのれぇっ!」
-“W-What?! Y-You bastard!”
+“W-what?! C-curse you!”
 
 @6419 Lady · レディ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むっ! 私をここまでてこずらせるとは!」
-“Hmph! To think you'd give me this much trouble!”
+“Hmph! To think you’d give me this much trouble!”
 
 @6420 Lady · レディ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちぃっ! 意外とやるっ!」
-“Tch! You're better than I expected!”
+“Tch! You’re better than I expected!”
 
 @6421 Lady · レディ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! なめるなっ!」
-“Ngh! Don't underestimate me!”
+“Ngh! Don’t underestimate me!”
 
 @6422 Lady · レディ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! いい気になるなっ!!」
-“Tch! Don't get cocky!!”
+“Tch! Don’t get cocky!!”
 
 @6423 Lady · レディ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな」
-“That's useless.”
+“That’s useless.”
 
 @6424 Lady · レディ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「甘いな……その程度か!」
 “Too naive... Is that all?!”
 
 @6425 Lady · レディ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「なっていないな」
 “Pathetic.”
 
 @6426 Lady · レディ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「ふん、こけおどしか!」
 “Hmph, just a bluff!”
 
 @6427 Lady · レディ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しょせんその程度か」
-“So that's all you've got.”
+“So that’s all you’ve got.”
 
 @6428 Lady · レディ
-# 审校：原文“そんなものとはな”指对方的攻击不过如此，初稿“to think you'd try that on me”添加了原文没有的意思，改为更贴切的表达。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くだらん……そんなものとはな」
-“Ridiculous... to think that's all it was.”
+“Ridiculous... to think that’s all it was.”
 
 @6429 Lady · レディ
+# 触发：回避（通用，1/5）
 > 「狙いが甘いな」
 “Your aim is poor.”
 
 @6430 Lady · レディ
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはせん!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @6431 Lady · レディ
+# 触发：回避（通用，3/5）
 > 「遅いっ!」
 “Too slow!”
 
 @6432 Lady · レディ
+# 触发：回避（通用，4/5）
 > 「ふ、貴様の攻撃など、とうに
 >  見切った!」
 “Hmph. I saw through your attack long ago!”
 
 @6433 Lady · レディ
+# 触发：回避（通用，5/5）
 > 「そこかっ!」
 “There!”
 
 @6434 Lady · レディ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなんだよ……」
-“It's pointless...”
+“It’s pointless...”
 
 @6435 Lady · レディ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「愚かな……ムダだということに
 >  なぜ気づかん」
-“Foolish... Why can't you see it's useless?”
+“Foolish... Why can’t you see it’s useless?”
 
 @6436 Lady · レディ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れか!? しくじった……」
-“Out of ammo?! I've blundered...”
+“Out of ammo?! I’ve blundered...”
 
 @6437 Lady · レディ
+# 触发：射程外，无法反击（通用，1/1）
 > 「ち、遠距離からの攻撃か……
 >  卑怯な」
 “Tch, attacking from long range... How cowardly.”

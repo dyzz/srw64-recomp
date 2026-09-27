@@ -1,137 +1,375 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9749 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，1/8）
+# 审校：“有有有”不像人话
 > 「いるいる、獲物がいるぞ!」
-“There, there, there's prey!”
+“There they are, there’s our prey!”
 
 @9750 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，2/8）
 > 「勝利はこちらのもの」
 “Victory is ours.”
 
 @9751 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，3/8）
 > 「勝負はこっちのもの!」
 “The battle is ours!”
 
 @9752 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フハハハハ、たっぷり歓迎してあげるよ!」
-“Fuhahahaha, I'll give you a warm welcome!”
+“Fuhahahaha, I’ll give you a warm welcome!”
 
 @9753 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，5/8）
 > 「よく来たね、おまえたち!」
 “Welcome, all of you!”
 
 @9754 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハハ、これからが楽しみだわ!」
-“Hahahaha, the fun's just beginning!”
+“Hahahaha, the fun’s just beginning!”
 
 @9755 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，7/8）
 > 「生意気な奴め!
 >  これでもくらえ!」
 “Insolent fool! Take this!”
 
 @9756 Marquis Janus · ヤヌス侯爵
+# 触发：攻击（通用，8/8）
 > 「連続的に攻撃するのは
 >  勝利への道だ!」
 “Attacking relentlessly is the road to victory!”
 
 @9757 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠（通用，1/3）
 > 「くそう、あと一歩というところで……」
 “Curse it, just one step short...”
 
 @9758 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こんなバカな……!?」
-“Th-this can't be...?!”
+“Th-this can’t be...?!”
 
 @9759 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠（通用，3/3）
 > 「ぎゃあぁぁぁぁぁぁっ!!」
 “Gyaaaaaaah!”
 
 @9760 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「おのれ! おのれおのれぇっ!!」
 “Curse you! Curse you, curse you!”
 
 @9761 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ううう、覚えていろ!」
-“Ugh, you'll remember this!”
+“Ugh, you’ll remember this!”
 
 @9762 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「な、何ごとがおこったのじゃ!?」
 “W-what in the world happened?!”
 
 @9763 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……このままではすまさんぞ!!」
-“Ngh... you won't get away with this!”
+“Ngh... you won’t get away with this!”
 
 @9764 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「あくまで勝負する気だな」
 “So you mean to fight to the end.”
 
 @9765 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした?」
-“What's the matter?”
+“What’s the matter?”
 
 @9766 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「おとなしくしてればいい気になりおって
 >  見ていろ、叩きつぶしてやる!」
 “Just because I stay quiet, you get cocky. Watch me crush you!”
 
 @9767 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそう、敵もやるな」
-“Curse it, the enemy's good too.”
+“Curse it, the enemy’s good too.”
 
 @9768 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「束の間の夢を見てるがいい」
 “Enjoy your fleeting dream while you can.”
 
 @9769 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「フハハハハ、さぞかし悔しいだろうよ」
 “Fuhahahaha, you must be so frustrated.”
 
 @9770 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
+# 审校：原文无呼语，译文未添加称呼，符合要求。
 > 「ハハハハ、頼りにならない者たちよ」
-“Hahahaha, what unreliable lot you are.”
+“Hahahaha, what an unreliable lot you are.”
 
 @9771 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「まぬけな奴らだ!」
 “What fools!”
 
 @9772 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「ハハハッ、まだ抵抗するつもりか!?」
 “Hahaha, you still mean to resist?!”
 
 @9773 Marquis Janus · ヤヌス侯爵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今度はお前の落ちる番だな!」
-“Now it's your turn to fall!”
+“Now it’s your turn to fall!”
 
 @9774 Marquis Janus · ヤヌス侯爵
+# 触发：回避（通用，1/3）
 > 「フフフ、万事うまくいっている」
 “Hehehe, everything is going well.”
 
 @9775 Marquis Janus · ヤヌス侯爵
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうはさせぬぞ、フフフフフ」
-“I won't let you, hehehehe.”
+“I won’t let you, hehehehe.”
 
 @9776 Marquis Janus · ヤヌス侯爵
+# 触发：回避（通用，3/3）
 > 「これでいい、これでいいのだ!」
 “This is good, this is how it should be!”
 
 @9777 Marquis Janus · ヤヌス侯爵
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「これでいい、これでいいのだ!」
 “This is good, this is how it should be!”
 
 @9778 Marquis Janus · ヤヌス侯爵
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「どうだ? 観念したかね?」
 “Well? Have you given up?”
 
 @9779 Marquis Janus · ヤヌス侯爵
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：ええい译“可恶”；是自己舰无法反击
 > 「反撃できぬというのか!?
 >  ええぃ、なんというザマだ!」
-“You can't counterattack?! Ugh, what a sorry sight!”
+“We can’t counterattack?! Ugh, what a sorry state!”
 
 @9780 Marquis Janus · ヤヌス侯爵
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ど、どうしたのだ!?」
-“W-what's going on?!”
+“W-what’s going on?!”
 
 @9781 Marquis Janus · ヤヌス侯爵
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：ええい译“可恶”
 > 「ええい、届かぬではないかぁっ!!」
-“Ugh, it doesn't reach!”
+“Ugh, it can’t reach!!”
+
+@15047 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈ミケロス〉
+> 「とどめをさせ!」
+“Finish them off!”
+
+@15048 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈ミケロス〉
+# 审校：血祭りにあげる惯译“祭旗”，原文无叹号
+> 「フハハハ、こいつらを血祭りにあげろ」
+“Fuhahaha, make a bloody example of them.”
+
+@15049 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈ミケロス〉
+> 「ようし、今だ! ようく狙え!」
+“All right, now! Take good aim!”
+
+@15050 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈ミケロス〉
+> 「準備はいいか? 攻撃を開始
+>  するぞ!」
+“Ready? We begin the attack!”
+
+@15051 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈デモニカ〉
+> 「とどめをさせ!」
+“Finish them off!”
+
+@15052 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈デモニカ〉
+# 审校：血祭りにあげる惯译“祭旗”，原文无叹号
+> 「フハハハ、こいつらを血祭りにあげろ」
+“Fuhahaha, make a bloody example of them.”
+
+@15053 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈デモニカ〉
+> 「ようし、今だ! ようく狙え!」
+“All right, now! Take good aim!”
+
+@15054 Marquis Janus · ヤヌス侯爵
+# 触发：攻击，乘坐〈デモニカ〉
+> 「準備はいいか? 攻撃を開始
+>  するぞ!」
+“Ready? We begin the attack!”
+
+@15055 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射!」
+“Missile launch!”
+
+@15056 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15057 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「よし、発射!」
+“Good, fire!”
+
+@15058 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15059 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15060 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15061 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+> 「よし、発射!」
+“Good, fire!”
+
+@15062 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15063 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15064 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「撃って撃って撃ちまくれ!」
+“Fire, fire, keep firing!”
+
+@15065 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「よし、発射!」
+“Good, fire!”
+
+@15066 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「今だ! 撃てーっ!」
+“Now! Fire!”
+
+@15067 Marquis Janus · ヤヌス侯爵
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「ようし、命令通りに迎え撃て!」
+“All right, intercept them as ordered!”
+
+@15068 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈ミケロス〉
+# 审校：脱出是逃离舰体，不是撤退
+> 「脱出だ! 脱出しろ!」
+“Abandon ship! Get out now!”
+
+@15069 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈ミケロス〉
+# 审校：两处统一
+> 「退け! ひきあげろ!」
+“Retreat! Pull back!”
+
+@15070 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈ミケロス〉
+# 审校：ええい译“可恶”，两处统一
+> 「ええい、出直しじゃ!」
+“Gah, we’ll be back!”
+
+@15071 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈デモニカ〉
+# 审校：脱出是逃离舰体，不是撤退
+> 「脱出だ! 脱出しろ!」
+“Abandon ship! Get out now!”
+
+@15072 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈デモニカ〉
+# 审校：两处统一
+> 「退け! ひきあげろ!」
+“Retreat! Pull back!”
+
+@15073 Marquis Janus · ヤヌス侯爵
+# 触发：被击坠，乘坐〈デモニカ〉
+# 审校：ええい译“可恶”，两处统一
+> 「ええい、出直しじゃ!」
+“Gah, we’ll be back!”
+
+@15074 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うろたえるな!」
+“Don’t panic!”
+
+@15075 Marquis Janus · ヤヌス侯爵
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うろたえるな!」
+“Don’t panic!”
+
+@15076 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
+> 「1人残らず片づけて
+>  しまえ!」
+“Wipe them out, every last one!”
+
+@15077 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
+> 「何をしている!? グズグズするな!」
+“What are you doing?! Stop dawdling!”
+
+@15078 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
+# 审校：“lagging around”不够自然，改为更常见的“dawdling”，与 L41 等同类台词保持一致。
+> 「なにをもたもたしている」
+“What are you dawdling for?”
+
+@15079 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
+> 「1人残らず片づけて
+>  しまえ!」
+“Wipe them out, every last one!”
+
+@15080 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
+> 「何をしている!? グズグズするな!」
+“What are you doing?! Stop dawdling!”
+
+@15081 Marquis Janus · ヤヌス侯爵
+# 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
+# 审校：同上，统一“もたもた”的译法为“dawdling”。
+> 「なにをもたもたしている」
+“What are you dawdling for?”

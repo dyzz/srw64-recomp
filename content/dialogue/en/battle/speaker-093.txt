@@ -1,177 +1,233 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6261 Trowa · トロワ
+# 触发：攻击（通用，1/17）
+# 审校：更顺口
 > 「密集などしているからだ」
-“That's because you're bunched up.”
+“That’s what you get for bunching up.”
 
 @6262 Trowa · トロワ
+# 触发：攻击（通用，2/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんであろうと、邪魔ならば戦う」
-“Whatever it is, if it's in my way, I'll fight it.”
+“Whatever it is, if it’s in my way, I’ll fight it.”
 
 @6263 Trowa · トロワ
+# 触发：攻击（通用，3/17）
 > 「攻撃を開始する」
 “Commencing attack.”
 
 @6264 Trowa · トロワ
+# 触发：攻击（通用，4/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「……いただく」
-“...I'll take it.”
+“...I’ll take it.”
 
 @6265 Trowa · トロワ
+# 触发：攻击（通用，5/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔をするならば……遠慮はしない」
-“If you get in my way... I won't hold back.”
+“If you get in my way... I won’t hold back.”
 
 @6266 Trowa · トロワ
+# 触发：攻击（通用，6/17）
 > 「目標捕捉……破壊する」
 “Target acquired... destroying.”
 
 @6267 Trowa · トロワ
+# 触发：攻击（通用，7/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「始めるか……」
-“Let's begin...”
+“Let’s begin...”
 
 @6268 Trowa · トロワ
+# 触发：攻击（通用，8/17）
 > 「敵をせん滅する」
 “Annihilating the enemy.”
 
 @6269 Trowa · トロワ
+# 触发：攻击（通用，9/17）
 > 「…………」
 “...”
 
 @6270 Trowa · トロワ
+# 触发：攻击（通用，10/17）
 > 「…………」
 “...”
 
 @6271 Trowa · トロワ
+# 触发：攻击（通用，11/17）
 > 「…………」
 “...”
 
 @6272 Trowa · トロワ
+# 触发：攻击（通用，12/17）
 > 「…………」
 “...”
 
 @6273 Trowa · トロワ
+# 触发：攻击（通用，13/17）
 > 「…………」
 “...”
 
 @6274 Trowa · トロワ
+# 触发：攻击（通用，14/17）
 > 「すべてを消滅させる」
 “Eliminating everything.”
 
 @6275 Trowa · トロワ
+# 触发：攻击（通用，15/17）
 > 「戦術的に見て、お前の判断は
 >  正しい。だが……」
 “Tactically speaking, your judgment was correct. But...”
 
 @6276 Trowa · トロワ
+# 触发：攻击（通用，16/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こちらの戦力を把握する前に
 >  行動を起こすべきではなかったな」
-“You shouldn't have acted before assessing our forces.”
+“You shouldn’t have acted before assessing our forces.”
 
 @6277 Trowa · トロワ
+# 触发：攻击（通用，17/17）
 > 「はあぁぁぁーっ!」
 “Haaaaaah!”
 
 @6278 Trowa · トロワ
+# 触发：被击坠（通用，1/4）
+# 审校：被击坠时说自己完了，原译错
 > 「これまでのようだな」
-“This is as far as you go.”
+“Looks like this is it.”
 
 @6279 Trowa · トロワ
+# 触发：被击坠（通用，2/4）
 > 「ん……なんだ?……俺の……涙か?」
 “Hm... what? ...Are these... my tears?”
 
 @6280 Trowa · トロワ
+# 触发：被击坠（通用，3/4）
 > 「俺の戦いもこれで終わりか……」
 “So my fight ends here too...”
 
 @6281 Trowa · トロワ
+# 触发：被击坠（通用，4/4）
 > 「早かったな……俺の死も……」
 “That was quick... my death too...”
 
 @6282 Trowa · トロワ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「やるな……だが最後の詰めが甘い」
 “Not bad... but your finishing move was sloppy.”
 
 @6283 Trowa · トロワ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ……さすがにパワーはあるようだな」
-“Ngh! ...I see you've got some power after all.”
+“Ngh! ...I see you’ve got some power after all.”
 
 @6284 Trowa · トロワ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「きびしい戦いになる……」
 “This is going to be a tough fight...”
 
 @6285 Trowa · トロワ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「直撃をくらったか……これ以上は
 >  きついな」
 “Took a direct hit... any more of this will be rough.”
 
 @6286 Trowa · トロワ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「く……戦闘続行可能、
 >  任務を継続する」
 “Ngh... combat capability maintained. Continuing the mission.”
 
 @6287 Trowa · トロワ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「なるほど……的確な攻撃だ」
 “I see... a precise attack.”
 
 @6288 Trowa · トロワ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「脚部にトラブルか…まだ大丈夫だ」
-“Trouble in the legs... still, I'm fine.”
+“Trouble in the legs... still, I’m fine.”
 
 @6289 Trowa · トロワ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度の損傷なら
 >  任務継続に支障はない」
-“Damage of this level won't hinder the mission.”
+“Damage of this level won’t hinder the mission.”
 
 @6290 Trowa · トロワ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：轻伤时嘲讽对手，不是自己
 > 「戦術を誤ったようだな」
-“Seems I misjudged the tactics.”
+“Seems you misjudged your tactics.”
 
 @6291 Trowa · トロワ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「この機体にたいしては
 >  ムダな攻撃だったな」
 “That attack was useless against this unit.”
 
 @6292 Trowa · トロワ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「こちらの戦闘力を把握して
 >  おくべきだったな」
 “You should have assessed our combat strength first.”
 
 @6293 Trowa · トロワ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「その程度か……」
 “Is that all...”
 
 @6294 Trowa · トロワ
+# 触发：回避（通用，1/4）
 > 「戦術、戦闘レベル共に、
 >  ムダな攻撃だ……」
 “Both tactically and in combat level, that attack was wasted...”
 
 @6295 Trowa · トロワ
+# 触发：回避（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「単純な攻撃だ…パターンは読めた」
-“A simple attack... I've read your pattern.”
+“A simple attack... I’ve read your pattern.”
 
 @6296 Trowa · トロワ
+# 触发：回避（通用，3/4）
 > 「的確な攻撃だ……だが」
 “A precise attack... but still.”
 
 @6297 Trowa · トロワ
+# 触发：回避（通用，4/4）
 > 「なるほど、この程度か」
 “I see, is that all?”
 
 @6298 Trowa · トロワ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「どうやらムダだったようだな」
 “Seems that was pointless.”
 
 @6299 Trowa · トロワ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビーム兵器は効かない」
-“Beam weapons don't work.”
+“Beam weapons don’t work.”
 
 @6300 Trowa · トロワ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「全弾撃ち尽くしたか……」
 “Out of ammo, huh...”
 
 @6301 Trowa · トロワ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「残弾……0か」
 “Remaining rounds... zero.”
 
 @6302 Trowa · トロワ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは距離がありすぎるな」
-“It's too far from here.”
+“It’s too far from here.”

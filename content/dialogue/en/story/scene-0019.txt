@@ -18,8 +18,9 @@ What bothers me is that the enemy isn't making a move.”
 Romefeller's Wong. I doubt he'll just let us pass.”
 
 @20302 Bright · ブライト
+# 审校：舰长口吻应更正式，Yeah 过于随意。
 > 「そうだな……そう思う」
-“Yeah... I think so too.”
+“Indeed... I think so too.”
 
 @20303 Amuro · アムロ
 # 审校：原文是疑问句“行くのかい?”，初稿译成陈述句，改为疑问语气。
@@ -150,9 +151,9 @@ But if I find out you're no good, I'll throw you away. I don't have time to wast
 “You said your parents died in the last war, didn't you?”
 
 @20323 Beltorchika · ベルトーチカ
-# 审校：原文“同情されたいほう”是“想同情别人的那一方”，初稿“giving pity”方向对但表达生硬，改为更自然的“doing the pitying”。
+# 审校：精读：同情されたいほう 是“该被同情的是我”
 > 「ええ。同情されたいほう」
-“Yes. I'd rather be the one doing the pitying.”
+“Yes. I'm the one who ought to be pitied.”
 
 @20324 Amuro · アムロ
 > 「すまなかった……帝国は
@@ -329,13 +330,14 @@ I had the new model developed by the Liberation Front brought in.
 By the way, have you still not found Fujiwara?”
 
 @20353 Masato · 雅人
+# 审校：精读：名字写全
 > 「沙羅が探しにいったんだけど、
 >  戻ってから何か変なんですよ
 “Sara went to look for him, but ever since she came back, something's been off.
 ---
 >  沙羅の奴。たぶん忍には
 >  会ったんじゃないかって思うんだけど…」
-That Sara. I think she probably ran into Shin...”
+That Sara. I think she probably ran into Shinobu...”
 
 @20354 Dr. Hazuki · 葉月博士
 > 「そうか……」
@@ -364,12 +366,14 @@ That Sara. I think she probably ran into Shin...”
 “Amazing, I wonder who'll pilot it.”
 
 @20360 Dr. Hazuki · 葉月博士
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「兜甲児と弓さやかは、いないのか?
 >  弓教授に頼まれていたものを
 “Are Koji Kabuto and Sayaka Yumi not here? I've brought the things
 ---
 >  持ってきているんだが」
-Prof. Yumi asked me for.”
+Professor Yumi asked me for.”
 
 @20361 Koji · 甲児
 > 「ここにいるよ、博士」
@@ -380,6 +384,7 @@ Prof. Yumi asked me for.”
 “My father? What could it be?”
 
 @20363 Dr. Hazuki · 葉月博士
+# 审校：机体/人名按词表统一
 > 「うむ、ジェットスクランダーと
 >  ダイアナンAだ」
 “Yes, the Jet Scrander and the Diana A.”
@@ -406,9 +411,10 @@ With this equipped, Mazinger Z will be able to handle aerial combat as well.”
 testing it out!”
 
 @20367 Masato · 雅人
+# 审校：精读：名字写全
 > 「あの反応の仕方、
 >  忍とそっくりだよ」
-“That reaction of his is just like Shin's.”
+“That reaction of his is just like Shinobu's.”
 
 @20368 Ryo · 亮
 > 「フッ、おつむが単純だと、
@@ -416,10 +422,12 @@ testing it out!”
 “Heh, seems simple minds act alike too.”
 
 @20369 Sayaka · さやか
+# 审校：机体/人名按词表统一
 > 「博士、ダイアナンAのほうは?」
 “Doctor, what about the Diana A?”
 
 @20370 Dr. Hazuki · 葉月博士
+# 审校：机体/人名按词表统一
 > 「アフロダイAのパワーアップ版らしい。
 >  コクピットシステムと操縦方法が
 “It's apparently a powered-up version of the Aphrodite A. The cockpit system and controls
@@ -438,27 +446,32 @@ differ from the Aphrodite, so you'd best test it out as well.”
 “Hey Doctor, doesn't the Dancouga have anything like that?”
 
 @20373 Dr. Hazuki · 葉月博士
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「むろん考えてあるとも。
 >  弓教授からもデータをいただいている
-“Of course I've been thinking about it. I've received data from Prof. Yumi as well.
+“Of course I've been thinking about it. I've received data from Professor Yumi as well.
 ---
 >  まだしばらくは
 >  時間がかかると思うがな」
 I think it'll still take some time, though.”
 
 @20374 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > (レジスタンスどもめ、
 >  ここで始末をつけてやるぞ
 (You Resistance vermin, I'll finish you off right here.
 ---
 >  この程度のことでトレーズ様の
 >  お手を、わずらわせるわけにはいかん)
-I can't trouble Lord Treize with something of this magnitude.)
+I can't trouble His Excellency with something of this magnitude.)
 
 @20375 Wong · ウォン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかしレディ・アン特佐、確かに
 >  おっしゃるとおり研究所のいくつかは
-“However, Lieutenant Colonel Lady Une, it is true that several of the laboratories are
+“However, Special Colonel Lady Une, it is true that several of the laboratories are
 ---
 >  私の管理下にありますが、
 >  まだまだデータを集めているところでして」
@@ -474,6 +487,7 @@ under my management, but we are still in the process of gathering data.”
 If so, you'll only invite suspicion.”
 
 @20377 Wong · ウォン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いやいや、そんなつもりはありませんよ。
 >  よろしい、そこまでおっしゃるのなら
 “No, no, that's not my intention at all. Very well, if you insist that much,
@@ -484,7 +498,7 @@ it can't be helped. I'll have my experimental unit strike the Audhumla.
 ---
 >  叩くとしましょう。トレーズ特佐には
 >  よろしくお伝えいただきたい」
-Please give my regards to Lieutenant Colonel Treize.”
+Please give my regards to Special Colonel Treize.”
 
 @20378 Lady · レディ
 > 「結構だ。よい結果を
@@ -506,9 +520,10 @@ Please give my regards to Lieutenant Colonel Treize.”
 By the way, have you arranged for that thing?”
 
 @20381 Wong · ウォン
+# 审校：精读：先生 指东方不败，英文 Master
 > 「これは先生。
 >  聞いていらしたとはお人が悪い
-“Teacher, you heard me out? How cruel of you.
+“Ah, Master. How wicked of you to have been listening.
 ---
 >  もちろんですとも。そちらのほうは
 >  よろしく頼みましたよ」
@@ -616,9 +631,10 @@ turned into a sea of fire, you will quietly disarm.”
 “Ngh... for now, we've no choice but to buy time...”
 
 @20399 Four · フォウ
+# 审校：机体/人名按词表统一
 > 「ブラン・ブルターク特佐、
 >  お願いがあります」
-“Lieutenant Colonel Buran Blutarch, I have a request.”
+“Special Colonel Buran Blutarch, I have a request.”
 
 @20400 Buran · ブラン
 > 「なんだ?」
@@ -661,9 +677,10 @@ turned into a sea of fire, you will quietly disarm.”
 (But I doubt it'll go that easily...)
 
 @20409 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「……こんなところで無差別攻撃を
 >  するとは、それでも地球人か!」
-“...To launch an indiscriminate attack in a place like this—are you even Earthlings?!”
+“...To launch an indiscriminate attack in a place like this... are you even Earthlings?!”
 
 @20410 Four · フォウ
 > 「な、なんだ!?
@@ -750,9 +767,10 @@ If you get it, then sit back and watch!”
 “What'd you say, Ryo?! You bastard!”
 
 @20426 Masato · 雅人
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「まぁまぁ忍。いいじゃないか亮、
 >  それでこそ忍っていうもんだろ」
-“Now, now, Shinobu. Come on, Ryo, it's fine—that's just what makes Shinobu who he is.”
+“Now, now, Shinobu. Come on, Ryo, it's fine... that's just what makes Shinobu who he is.”
 
 @20427 Sara · 沙羅
 > 「あんたたち、
@@ -799,9 +817,10 @@ Aggressive Mode won't cut it. We're combining!”
 “Yeah, I've been waiting so long I was getting tired of it!”
 
 @20435 Ryo · 亮
+# 审校：精读：気合い 不是术语
 > 「フッ、久しぶりに気合いをいれて
 >  いくとするか」
-“Hmph, let's go at it with Spirit for the first time in a while.”
+“Hmph, time to put some spirit into it, for the first time in a while.”
 
 @20436 Shinobu · 忍
 > 「キーワード、
@@ -828,8 +847,9 @@ Aggressive Mode won't cut it. We're combining!”
 “Huh...? Domon? Is it really you, Domon?”
 
 @20441 Domon · ドモン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「アレンビー、なぜお前が」
-“Allenby, why are you—”
+“Allenby, why are you...”
 
 @20442 Allenby · アレンビー
 > 「しかたがなかったのよ。

@@ -9,9 +9,9 @@
 ...I can't read their objective.”
 
 @20490 Zechs · ゼクス
-# 审校：「どういうおつもりか」在此是质问语气，改为更自然的“what are you playing at?”。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐、どういうおつもりか」
-“Colonel Lady Une, what are you playing at?”
+“Special Colonel Lady Une, what is your intention?”
 
 @20491 Lady · レディ
 > 「なにがだ?」
@@ -41,10 +41,10 @@ striking the resistance is only natural. Even if a few citizens
 become casualties, what of it?”
 
 @20494 Zechs · ゼクス
-# 审校：「ウォンのようなやからの実験部隊」指“像Wong那类人的实验部队”，初稿“Wong's experimental unit”漏掉“のようなやから”的贬义，改为“an experimental unit like Wong's”。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ウォンのようなやからの実験部隊を
 >  動かしてまでか。特佐、
-“Even to the point of deploying an experimental unit like Wong's? Colonel,
+“Even to the point of deploying an experimental unit like Wong's? Special Colonel,
 ---
 >  追撃隊を帰還させるんだ。それは
 >  トレーズ閣下の望むところではない
@@ -59,9 +59,10 @@ You do not understand His Excellency's thinking.”
 “The one who does not understand is you, Zechs.”
 
 @20496 Noin · ノイン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いいえ、貴女です。
 >  レディ・アン特佐
-“No, it is you, Colonel Lady Une.
+“No, it is you, Special Colonel Lady Une.
 ---
 >  このような戦いは
 >  閣下は望んでおりません」
@@ -395,9 +396,10 @@ Imperial military, there was no sign of him. That's all I know.”
 “What's going on?!”
 
 @20555 Roberto · ロベルト
+# 审校：Roberto 是部下，对长官应用更正式的口吻，原文「例のやつじゃないですかね」带推测语气，改为更礼貌的“Could be”。
 > 「未確認機です。
 >  例のやつじゃないですかね」
-“Unidentified craft. Maybe it's that thing we've been hearing about.”
+“Unidentified craft. Could be that thing we've been hearing about.”
 
 @20556 Bright · ブライト
 > 「数は?」
@@ -473,6 +475,7 @@ of Byston Well. Something strange is happening on the surface!”
 “Show, I can't hold on much longer!”
 
 @20570 Show · ショウ
+# 审校：人名按词表统一
 > 「チャム、邪魔だ!」
 “Chum, you're in the way!”
 
@@ -673,10 +676,12 @@ We'll also get information on the others.”
 “Dunbine?! Show Zama!!”
 
 @20603 Show · ショウ
+# 审校：人名按词表统一
 > 「バーン・バニングス!?」
 “Bern Bunnings?!”
 
 @20604 Garalia · ガラリア
+# 审校：人名按词表统一
 > 「バーンだと!?」
 “Bern?!”
 
@@ -698,6 +703,7 @@ it's nothing to me. I'll shoot you all down together!”
 “No need for talk! Prepare yourself!”
 
 @20608 Show · ショウ
+# 审校：人名按词表统一
 > 「バーン、状況を考えろ!
 >  ここは地上なんだぞ、戦いをやめろ!」
 “Bern, think about the situation! This is the surface, stop fighting!”
@@ -756,6 +762,7 @@ think about what that means, you bastard!”
 “Show...”
 
 @20619 Show · ショウ
+# 审校：人名按词表统一
 > 「大丈夫だよ、チャム」
 “I'm fine, Chum.”
 
@@ -778,6 +785,7 @@ Sometimes I think that at least dying on the surface might be a kind of happines
 “Then I'm not an unfortunate woman.”
 
 @20623 Show · ショウ
+# 审校：人名按词表统一
 > 「ははっ、ごめん、チャム
 “Haha, sorry, Chum.
 ---
@@ -930,6 +938,7 @@ The Ferario must have set it up...”
 “Dunbine?! Show Zama?!”
 
 @20650 Show · ショウ
+# 审校：人名按词表统一
 > 「バーン・バニングス!? 待て!」
 “Bern Bunnings?! Wait!”
 
@@ -938,6 +947,7 @@ The Ferario must have set it up...”
 “No time for talk! Prepare yourself!”
 
 @20652 Show · ショウ
+# 审校：人名按词表统一
 > 「バーン、状況を考えろ!
 >  ここは地上なんだぞ、戦いをやめろ!」
 “Bern, think about the situation! This is the surface! Stop fighting!”
@@ -1143,18 +1153,20 @@ This isn't something that suits you.”
 “Enemy reinforcements?! Damn, those Specials!”
 
 @20690 Wooder · ウッダー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「来たか。よし一気に敵を叩くぞ!
 >  フォウ特尉、どうなっている!
-“So they've come. Good, we'll crush the enemy in one go! Lieutenant Four, what's your status!
+“So they've come. Good, we'll crush the enemy in one go! Special Lieutenant Four, what's your status!
 ---
 >  やれないのならば邪魔にしかならん。
 >  引き返せ!」
 If you can't do it, you're only in the way. Turn back!”
 
 @20691 Wooder · ウッダー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なんだと!?
 >  フォウ特尉、どういうつもりだ!!」
-“What?! Lieutenant Four, what do you think you're doing?!”
+“What?! Special Lieutenant Four, what do you think you're doing?!”
 
 @20692 Four · フォウ
 # 审校：原文“忘れなくてすむ”是“可以不用忘记”，初稿误译为“won't have to remember”。改为 won't have to forget。
@@ -1232,8 +1244,9 @@ If you can't do it, you're only in the way. Turn back!”
 “Show Zama! Prepare yourself!!”
 
 @20709 Show · ショウ
+# 审校：人名按词表统一
 > 「くっ……バーンめ!」
-“Ngh... Bern!”
+“Ngh... Bern, you bastard!”
 
 @20710 Bern · バーン
 > 「ガラリア、貴様もこれで終わりだ!」
@@ -1324,6 +1337,7 @@ I'll join the fight against the alien empire.”
 I hear you belonged to an organization hostile to young Show.”
 
 @20723 Garalia · ガラリア
+# 审校：人名按词表统一
 > 「……わからない。
 >  しばらくは世話になるつもりだ
 “...I don't know. For the time being, I intend to accept your hospitality.
@@ -1409,6 +1423,7 @@ I'll join the fight against the alien empire.”
 I hear you belonged to an organization hostile to young Show.”
 
 @20734 Garalia · ガラリア
+# 审校：人名按词表统一
 > 「……わからない。
 >  しばらくは世話になるつもりだ
 “...I don't know. For the time being, I intend to accept your hospitality.
@@ -1733,22 +1748,25 @@ take the initiative, we won't be able to keep even our allies in hand.”
 “I'm counting on you. I'll send the Audhumla over to Alan's side.”
 
 @20789 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：スペシャルズ→Specials
 > 「君が、もとスペシャルズの
 >  エマ・シーン特尉か」
-“So you're Emma Sheen, formerly a Specials First Lieutenant.”
+“So you're Emma Sheen, formerly a Special Lieutenant.”
 
 @20790 Emma · エマ
 > 「そうですけど……なにか?」
 “That's right... is something the matter?”
 
 @20791 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いや、いいスタッフだと聞いているので、
 >  ちょっと顔を見によっただけだ
 “No, I heard you were fine staff, so I just came by to see your face.
 ---
 >  がんばってくれ、特尉。
 >  期待している」
-Keep at it, Lieutenant. I have high hopes for you.”
+Keep at it, Special Lieutenant. I have high hopes for you.”
 
 @20792 Emma · エマ
 > 「……はい……」
@@ -1759,22 +1777,25 @@ Keep at it, Lieutenant. I have high hopes for you.”
 (What on earth was that about?)
 
 @20794 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：スペシャルズ→Specials
 > 「君が、もとスペシャルズの
 >  エマ・シーン特尉か」
-“So you're Emma Sheen, formerly a Specials First Lieutenant.”
+“So you're Emma Sheen, formerly a Special Lieutenant.”
 
 @20795 Emma · エマ
 > 「そうですけど……なにか?」
 “That's right... is something the matter?”
 
 @20796 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いや、いいスタッフだと聞いているので、
 >  ちょっと顔を見によっただけだ
 “No, I heard you were fine staff, so I just came by to see your face.
 ---
 >  がんばってくれ、特尉。
 >  期待している」
-Keep at it, Lieutenant. I have high hopes for you.”
+Keep at it, Special Lieutenant. I have high hopes for you.”
 
 @20797 Emma · エマ
 > 「……はい……」
@@ -1785,6 +1806,7 @@ Keep at it, Lieutenant. I have high hopes for you.”
 (What on earth was that about?)
 
 @20799 Bern · バーン
+# 审校：「騎士の出」指出身于骑士家世，现有译文“I'm supposed to be a knight”丢失了“出身”这层意思，改为 of knightly birth 更贴合骄傲骑士的口吻。
 > 「……敗北につぐ敗北……すべて、
 >  あの地上人があらわれてからだ
 “...Defeat after defeat... all of it began when that surface dweller appeared.
@@ -1794,7 +1816,7 @@ Keep at it, Lieutenant. I have high hopes for you.”
 Ngh... I... I want to win. I want to crush him.
 ---
 >  私は……騎士の出のはずだ!!」
-I... I'm supposed to be a knight!!”
+I... I'm supposed to be of knightly birth!!”
 
 @20800 Drake · ドレイク
 > 「どうやら、かなりの数のオーラシップと

@@ -76,7 +76,7 @@ class FullExportTests(unittest.TestCase):
         docs = [json.loads((DATA / s['file']).read_text()) for s in index['scenes']]
         locales = {'ja': {'entries': {}, 'ui': {'a.b': 'x'}}}
         cls.exporter = TextExporter(sources, hashes, headers, {n: jsonl(n) for n in ('actors', 'units', 'weapons')},
-                                    docs, locales)
+                                    docs, locales, rom=(ROOT / 'rom.z64').read_bytes())
         cls.rows = cls.exporter.records()
         cls.by_key = {r['key']: r for r in cls.rows}
         cls.sources = sources
@@ -105,3 +105,18 @@ class FullExportTests(unittest.TestCase):
         self.assertEqual(row['speaker_id'], 40)
         self.assertEqual(row['context']['speaker_id'], 40)
         self.assertTrue(self.by_key['base:t00_14248']['context'].get('combo_lead'))
+
+    def test_battle_triggers_follow_the_selection_tables(self):
+        battle = [r for r in self.rows if r['category'] in ('battle.quote', 'battle.special')]
+        self.assertEqual(len(battle), 11548)
+        self.assertEqual(sum(1 for r in battle if not r['context']['triggers']), 39)  # lines no table reaches
+        kou = self.by_key['base:t00_05813']['context']
+        self.assertEqual((kou['voice'], kou['voice_actors']), (30, [40]))  # コウ: actor 40 speaks through voice 30
+        self.assertEqual(kou['triggers'][0]['situation'], 0)
+        self.assertEqual(self.by_key['base:t00_05845']['context']['triggers'][0]['situation'], 8)  # 遠すぎるか
+        lawrence = self.by_key['base:t00_16588']['context']['triggers'][0]  # マナミ／ローレンス exchange, 2nd line
+        self.assertEqual((lawrence['kind'], lawrence['copilot'], lawrence['weapon'], lawrence['position']),
+                         ('table', 24, 160, 1))  # weapon 160 ライトニングソード (row code 1060 = 900 + 160)
+        self.assertEqual(lawrence['sequence'], [16587, 16588])
+        self.assertTrue(self.by_key['base:t00_15420']['context']['triggers'][0].get('unreachable'))  # デューク, past 0x1E0
+        self.assertEqual(self.by_key['base:t00_05799']['context']['triggers'][0]['captain'], 46)  # ブライト

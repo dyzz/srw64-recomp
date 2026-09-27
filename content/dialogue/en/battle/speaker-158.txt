@@ -1,137 +1,176 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7331 Ivan · イワン
+# 触发：攻击（通用，1/12）
 > 「貴様らがどんな小細工をしようと
 >  我々の敵ではない」
 “No matter what little tricks you pull, you are no match for us.”
 
 @7332 Ivan · イワン
+# 触发：攻击（通用，2/12）
+# 审校：客气语气里的威胁
 > 「さぁ死んでもらおうか」
-“Now, shall I have you die?”
+“Now, if you would kindly die.”
 
 @7333 Ivan · イワン
+# 触发：攻击（通用，3/12）
+# 审校：敬体口吻
 > 「そこまでにしていただきたいですな」
-“I would like you to stop there.”
+“I’ll have to ask you to stop right there.”
 
 @7334 Ivan · イワン
+# 触发：攻击（通用，4/12）
 > 「ふふふふっ、アーッハッハッハッ」
 “Fufufufu, ahahahaha!”
 
 @7335 Ivan · イワン
+# 触发：攻击（通用，5/12）
+# 审校：更像人话
 > 「ははははっ、今日こそBF団の
 >  勝利だ」
-“Hahahaha, today is the BF Group's victory.”
+“Hahahaha, today victory belongs to the BF Group.”
 
 @7336 Ivan · イワン
+# 触发：攻击（通用，6/12）
 > 「いくぞぉっ!」
 “Here I go!”
 
 @7337 Ivan · イワン
+# 触发：攻击（通用，7/12）
 > 「ほらほらお前もだよ!」
 “Come on, you too!”
 
 @7338 Ivan · イワン
+# 触发：攻击（通用，8/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さぁ急がせてもらうぞ」
-“Now, let's hurry this along.”
+“Now, let’s hurry this along.”
 
 @7339 Ivan · イワン
+# 触发：攻击（通用，9/12）
 > 「つぶせ、ウラエヌス!」
 “Crush them, Uranus!”
 
 @7340 Ivan · イワン
+# 触发：攻击（通用，10/12）
 > 「やれっ、ウラエヌス!」
 “Do it, Uranus!”
 
 @7341 Ivan · イワン
+# 触发：攻击（通用，11/12）
 > 「いけ、ウラエヌス!」
 “Go, Uranus!”
 
 @7342 Ivan · イワン
+# 触发：攻击（通用，12/12）
 > 「ウラエヌスゥ!」
 “Uranus!”
 
-@7343 Ivan · イワン
-> 「こちらイワン、これまでです」
-“This is Ivan. It's over for me.”
-
 @7344 Ivan · イワン
+# 触发：被击坠（通用，1/1）
 > 「ビッグファイアーのために! 後は
 >  頼みます!」
 “For Big Fire! I leave the rest to you!”
 
 @7345 Ivan · イワン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ああっ、私のウラエヌスが!?」
 “Aah, my Uranus?!”
 
 @7346 Ivan · イワン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「があぁぁぁぁっ!」
 “Gwaaaaaah!”
 
 @7347 Ivan · イワン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うぅっなぜだ!? なぜだっ!?」
 “Ugh, why?! Why?!”
 
 @7348 Ivan · イワン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「しまったぁっ!」
 “Damn it!”
 
 @7349 Ivan · イワン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめてくれたな、だがそこまでだ」
-“You've underestimated me, but this is as far as you go.”
+“You’ve underestimated me, but this is as far as you go.”
 
 @7350 Ivan · イワン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「ぐぅっ、なんというパワーだ」
 “Guh, what power.”
 
 @7351 Ivan · イワン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：よけいなこと的惯用说法
 > 「よけいなことをしてくれた」
-“You've done something unnecessary.”
+“That was uncalled for.”
 
 @7352 Ivan · イワン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、ウラエヌス!?」
-“What's wrong, Uranus?!”
+“What’s wrong, Uranus?!”
 
 @7353 Ivan · イワン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「うわぁっ!?」
 “Whoa?!”
 
 @7354 Ivan · イワン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「カカカカカカッ!」
 “Kah kah kah kah kah!”
 
 @7355 Ivan · イワン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「このウラエヌスをなめてもらっては」
 “You must not underestimate this Uranus.”
 
 @7356 Ivan · イワン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「うっ!?」
 “Ugh?!”
 
 @7357 Ivan · イワン
+# 触发：回避（通用，1/2）
 > 「かわせっ! ウラエヌスッ!」
 “Dodge it, Uranus!”
 
 @7358 Ivan · イワン
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ははははっ、あたりはせんよ」
-“Ha ha ha ha, you won't hit me.”
+“Ha ha ha ha, you won’t hit me.”
 
 @7359 Ivan · イワン
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そう簡単にこの特殊バリアは
 >  やぶられはせんよ」
-“This special barrier won't be broken so easily.”
+“This special barrier won’t be broken so easily.”
 
 @7360 Ivan · イワン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「まぁせいぜい頑張りたまえ」
 “Well, do try your best.”
 
 @7361 Ivan · イワン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだと!? 弾切れだというのか」
-“What?! You mean I'm out of ammo?”
+“What?! You mean I’m out of ammo?”
 
 @7362 Ivan · イワン
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、とどかないというのか!?」
-“Tch, it won't reach?!”
+“Tch, it won’t reach?!”
 
 @7363 Ivan · イワン
+# 触发：射程外，无法反击（通用，2/2）
 > 「や、やつらは!?」
 “Wh-where are they?!”

@@ -315,8 +315,9 @@ Everyone, stay on your guard.”
 “Just now... the wind of our universe... was disturbed.”
 
 @42824 Death Gaia · デスガイヤー
+# 审校：Death Gaia 对帝王应使用更正式的敬称，sire 改为 Your Majesty 以符合帝王身份。
 > 「と申されますと?」
-“Meaning what, sire?”
+“Meaning what, Your Majesty?”
 
 @42825 Emperor Muge · ムゲ帝王
 > 「現れおったな」
@@ -350,10 +351,12 @@ Fools who do not know their place.”
 is myself.”
 
 @42830 Death Gaia · デスガイヤー
+# 审校：精读：破折号
 > 「ではあれを、あの戦法を!?」
-“Then that—that tactic?!”
+“Then that... that tactic?!”
 
 @42831 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「うむ。貴様も獲物どもを、
 >  思う存分にかわいがってやれ
 “Yes. You too may toy with the prey to your heart's content.
@@ -381,6 +384,7 @@ answer the voice of Muge Zorbados!”
 “Ooooh!”
 
 @42835 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「ゆけ、デスガイヤー!
 >  “赤い宇宙”へ!!」
 “Go, Death Gaia! To the ‘Red Universe’!!”
@@ -438,18 +442,20 @@ about to start a party.”
 “What the hell's going on here?”
 
 @42847 Sara · 沙羅
+# 审校：精读：破折号
 > 「地獄を見るために戦ってきたんじゃ
 >  ないってのは、間違いないことさ」
-“One thing's for sure—we didn't fight all this way just to see hell.”
+“One thing's for sure, we didn't fight all this way just to see hell.”
 
 @42848 Ryoma · リョウ
 > 「どうなんだ、ギャリソン?」
 “What do you make of it, Garrison?”
 
 @42849 Garrison · ギャリソン
+# 审校：管家 voice 要求无缩写，I'm 改为 I am。
 > 「お手上げでございますな。
 >  まったくエネルギー反応がございません」
-“I'm at a loss, sir. There's no energy reaction whatsoever.”
+“I am at a loss, sir. There is no energy reaction whatsoever.”
 
 @42850 Duo · デュオ
 > 「なんてこったぁ」
@@ -469,9 +475,10 @@ just so they could lounge around in heaven by themselves.”
 “...What...?”
 
 @42853 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 I'm 改为 I am。
 > 「これは……エネルギー反応が
 >  多数感知されましたぞ」
-“This is... I'm detecting multiple energy reactions.”
+“This is... I am detecting multiple energy reactions.”
 
 @42854 Shinobu · 忍
 > 「ああ、どうやらおいでなすったようだな」
@@ -482,9 +489,10 @@ just so they could lounge around in heaven by themselves.”
 “It's him...”
 
 @42856 Sara · 沙羅
+# 审校：精读：破折号
 > 「あいもかわらず、好きにはなれない
 >  ご面相だね」
-“Same as ever—I'll never get used to that face.”
+“Same as ever, I'll never get used to that face.”
 
 @42857 Death Gaia · デスガイヤー
 > 「いよいよ来たな。地球人どもよ、
@@ -681,16 +689,19 @@ that is how the rules work.”
 “Go on, try and revive if you can!”
 
 @42893 Banjo · 万丈
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「見たかデスガイヤー。
 >  これでも復活できるかな!?」
 “You see that, Death Gaia? Can you revive even now?!”
 
 @42894 Ryoma · リョウ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、復活できるものなら
 >  やってみろ!」
 “Death Gaia, if you can revive, then try it!”
 
 @42895 Hayato · ハヤト
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、貴様もこいつで
 >  最後だぜ!」
 “Death Gaia, this is the end for you too!”
@@ -713,6 +724,7 @@ that is how the rules work.”
 “Whoaaaaa! I-Is this really okay?!”
 
 @42900 Heero · ヒイロ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「終わったなデスガイヤー。
 >  お前に未来はない」
 “It's over, Death Gaia. You have no future.”
@@ -764,6 +776,7 @@ then let's see you do it!”
 “Watch me, Koji! I'll show you how it's done!”
 
 @42910 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「くっ……デスガイヤー、これで最後だ!」
 “Ngh... Death Gaia, this is the end!”
 
@@ -793,6 +806,7 @@ then let's see you do it!”
 “Ngh... {HeroName}, th-the machine won't hold at this rate...”
 
 @42917 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だめよ{PartnerNick}! 逃げてはだめ!
 >  デスガイヤー……あたしは絶対に
 “No, {PartnerNick}! You mustn't run! Death Gaia... I will never
@@ -805,6 +819,7 @@ forgive you! Vanish right here!!”
 “M-My lady, at this rate...”
 
 @42919 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だめよローレンス! 逃げてはだめ!
 >  デスガイヤー……あたしは絶対に
 “No, Lawrence! You mustn't run! Death Gaia... I will never
@@ -825,6 +840,7 @@ forgive you! Vanish right here!!”
 while it's still split apart!”
 
 @42922 Bright · ブライト
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「……よし、ネェル・アーガマを
 >  デスガイヤーへぶつける!」
 “...All right, ram the Nahel Argama into Death Gaia!”
@@ -870,6 +886,7 @@ while it's still split apart!”
 This is the last one. We hit that castle with everything we've got!”
 
 @42931 Emperor Muge · ムゲ帝王
+# 审校：精读：破折号
 > 「愚か者たちが。この私の宇宙の
 >  聖域に踏みこみ
 “Fools. You have trespassed into my sacred sanctuary of space,
@@ -880,7 +897,7 @@ and I shall make you regret ever angering me. For you see...
 ---
 >  お前たちが絶対者と考え、
 >  そして時には理想の姿とする
-the one you take as the Absolute, and at times hold up as your ideal—
+the one you take as the Absolute, and at times hold up as your ideal,
 ---
 >  “神”こそが、この私だからだ」
 that ‘god’ is none other than me.”
@@ -1276,14 +1293,15 @@ Koji only just came to himself a moment ago.”
 it seems. What happened?”
 
 @43003 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式、无缩写，现有译文过于随意。
 > 「それは、わたくしの方が聞きたい
 >  くらいですわ」
-“That's what I'd like to know.”
+“That is what I should like to know.”
 
 @43004 Lawrence · ローレンス
-# 审校：原文“さようで”是管家对アイシャ的简短附和，初稿“Indeed, my lady”误加了“my lady”，且此处不是对マナミ说话，删去。
+# 审校：ローレンス的老管家口吻应更文雅，'Indeed.'过于直白。
 > 「さようで」
-“Indeed.”
+“Just so.”
 
 @43005 Manami · マナミ（按段落 3DD4）
 > 「では、少なくともまだ生きてはいる

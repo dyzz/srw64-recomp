@@ -1,14 +1,16 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @43408 Bright · ブライト
+# 审校：刻印＝Crest 统一
 > 「いいか、なんとしても“刻印”を
 >  確保するんだ!」
-“Listen up. We secure the ‘Seal’ no matter what!”
+“Listen up. We secure the ‘Crest’ no matter what!”
 
 @43409 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「ゲイル、わたくしを“刻印”の
 >  場所まで連れて行ってください」
-“Gale, take me to the location of the ‘Seal.’”
+“Gale, please take me to the location of the ‘Crest.’”
 
 @43410 Gale · ゲイル
 > 「ああ、ジュリア。どうやら敵も
@@ -19,9 +21,10 @@
 We need to hurry.”
 
 @43411 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「エイジ、わたくしを“刻印”の
 >  場所まで連れて行ってください」
-“Eiji, take me to the location of the ‘Seal.’”
+“Eiji, please take me to the location of the ‘Crest.’”
 
 @43412 Eiji · エイジ
 > 「わかってるよ、姉さん」
@@ -37,9 +40,10 @@ We need to hurry.”
 Probability of reaching the target point first: 46%!”
 
 @43414 Eiji · エイジ
+# 审校：刻印＝Crest 统一
 > 「敵より先に“刻印”に
 >  行かなければ……」
-“We have to get to the ‘Seal’ before the enemy...”
+“We have to get to the ‘Crest’ before the enemy...”
 
 @43415 Julia · ジュリア
 > 「エイジ、急いで」
@@ -86,9 +90,10 @@ Secure it no matter what!”
 “We made it, sis.”
 
 @43424 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「ありがとう、エイジ。みなさん、
 >  “刻印”を発動させます
-“Thank you, Eiji. Everyone, I am activating the ‘Seal.’
+“Thank you, Eiji. Everyone, I am activating the ‘Crest.’
 ---
 >  準備が整うまで、守っていて
 >  ください」
@@ -113,9 +118,10 @@ All forces, charge! Stop them no matter what!!”
 “Julia, looks like we made it just in time.”
 
 @43428 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「ありがとう、ゲイル。みなさん、
 >  “刻印”を発動させます
-“Thank you, Gale. Everyone, I am activating the ‘Seal.’
+“Thank you, Gale. Everyone, I am activating the ‘Crest.’
 ---
 >  準備が整うまで、守っていて
 >  ください」
@@ -140,36 +146,40 @@ All forces, charge! Stop them no matter what!!”
 “Hm... This energy reaction is...”
 
 @43432 Bright · ブライト
+# 审校：刻印＝Crest 统一
 > 「なんだ? “グラドスの刻印”
 >  が……発動するのか……?」
-“What? The ‘Seal of Grados’ is... activating...?”
+“What? The ‘Grados Crest’ is... activating...?”
 
 @43433 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「みなさん、
 >  よくもちこたえてくれました
 “Everyone, you held out well.
 ---
 >  これより“刻印”を発動させま
 >  す。遺跡内より退避してください」
-I am activating the ‘Seal’ now. Evacuate from within the ruins.”
+I am activating the ‘Crest’ now. Evacuate from within the ruins.”
 
 @43434 Dr. Hazuki · 葉月博士
 > 「むっ……このエネルギー反応は……」
 “Hm... This energy reaction is...”
 
 @43435 Bright · ブライト
+# 审校：刻印＝Crest 统一
 > 「なんだ? “グラドスの刻印”
 >  が……発動するのか……?」
-“What? The ‘Seal of Grados’ is... activating...?”
+“What? The ‘Grados Crest’ is... activating...?”
 
 @43436 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「みなさん、
 >  よくもちこたえてくれました
 “Everyone, you held out well.
 ---
 >  これより“刻印”を発動させま
 >  す。遺跡内より退避してください」
-I am activating the ‘Seal’ now. Evacuate from within the ruins.”
+I am activating the ‘Crest’ now. Evacuate from within the ruins.”
 
 @43437 Alberto · アルベルト
 > 「どういうことだ、孔明。
@@ -195,8 +205,9 @@ I am activating the ‘Seal’ now. Evacuate from within the ruins.”
 All of this is the will of our Big Fire.”
 
 @43441 Show · ショウ
+# 审校：刻印＝Crest 统一
 > 「これが“グラドスの刻印”……」
-“So this is the ‘Seal of Grados’...”
+“So this is the ‘Grados Crest’...”
 
 @43442 Marvel · マーベル
 > 「こんなものが4万年も眠っていた
@@ -282,9 +293,10 @@ in regrouping and rebuilding our position.”
 “Julia... is that the end of it?”
 
 @43453 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「ええ……“グラドスの刻印”は
 >  発動しました。あの柱が宇宙へと
-“Yes... the ‘Seal of Grados’ has been activated. Once that pillar
+“Yes... the ‘Grados Crest’ has been activated. Once that pillar
 ---
 >  出れば、空間をゆがめる機構が
 >  動き始めます」
@@ -333,9 +345,10 @@ for their treatment.”
 “I merely do what the people wish for.”
 
 @43460 Banjo · 万丈
+# 审校：刻印＝Crest 统一
 > 「みんな、気をぬくなよ。“刻印”
 >  の発動が成功したからといって
-“Everyone, don't let your guard down. Just because the ‘Seal’ activated successfully,
+“Everyone, don't let your guard down. Just because the ‘Crest’ activated successfully,
 ---
 >  単身遺跡まで突入した
 >  僕たちが圧倒的多数の敵に
@@ -350,9 +363,10 @@ are surrounded by an overwhelming number of enemies.”
 “Miss Julia, is that the end of it?”
 
 @43462 Julia · ジュリア
+# 审校：刻印＝Crest 统一
 > 「はい……“グラドスの刻印”は
 >  発動しました。あの柱が宇宙へと
-“Yes... the ‘Seal of Grados’ has been activated. Once that pillar
+“Yes... the ‘Grados Crest’ has been activated. Once that pillar
 ---
 >  出れば、空間をゆがめる機構が
 >  動き始めます」
@@ -430,14 +444,16 @@ What's the enemy doing? It looks like the fighting's stopped.”
 the majority have begun to withdraw.”
 
 @43473 Bright · ブライト
+# 审校：布莱特对尤莉亚的称呼应去掉 Miss，与 address 及原文无敬称一致。
 > 「ふむ……ジュリアさん、彼らは何が
 >  起こったか理解しているのだろうか?」
-“Hmm... Miss Julia, do they understand what has happened?”
+“Hmm... Julia, do they understand what has happened?”
 
 @43474 Julia · ジュリア
+# 审校：全局：grados-en
 > 「わかりません。銀河帝国と
 >  先住グラドス人は数万年の
-“I don't know. The Galactic Empire and the native Gradosians must have
+“I don't know. The Galactic Empire and the ancestral Gradosians must have
 ---
 >  昔に接触したことがあるはずです。
 >  あれが何か、知っていたとしても
@@ -451,13 +467,14 @@ what that is, but what actually happened is something
 they will have to confirm for themselves.”
 
 @43475 Bright · ブライト
+# 审校：刻印＝Crest 统一
 > 「なるほど……よし、銀河帝国軍に
 >  対して“グラドスの刻印”の
 “I see... All right, let us announce to the Galactic Empire's forces
 ---
 >  発動とその影響について、告知
 >  しよう。戦意をそげるかもしれん」
-the activation of the ‘Seal of Grados’ and its effects. It may weaken their will to fight.”
+the activation of the ‘Grados Crest’ and its effects. It may weaken their will to fight.”
 
 @43476 Banjo · 万丈
 > 「そういうことなら、ロゼにやってもらおう。
@@ -514,10 +531,10 @@ Also, please contact Treize.”
 “Understood.”
 
 @43486 Daisuke · 大介
-# 审校：修正语法：主语位置用 me 而非 I。
+# 审校：大介性格温和内敛，原文「僕とマリアでやりましょう」语气谦和，译文“handle it”偏生硬，改为更自然的“do it”。
 > 「そういうことなら、僕とマリアで
 >  やりましょう」
-“If that's the case, let Maria and me handle it.”
+“If that's the case, let Maria and me do it.”
 
 @43487 Alan · アラン
 > 「君が?」
@@ -597,13 +614,15 @@ they're overwhelming. We'll lose.”
 “What is it, Anna?”
 
 @43501 David · デビッド
+# 审校：デビッド是冲动热血的少年，原文「なんだぁ!?」带拖长音，译文“What the?!”语气不够完整，改为更符合其口吻的“What the hell?!”
 > 「なんだぁ!?」
-“What the?!”
+“What the hell?!”
 
 @43502 Amuro · アムロ
+# 审校：全局：刻印＝Crest
 > 「これは……
 >  これが刻印の影響なのか……?」
-“This is... Is this the effect of the Mark...?”
+“This is... Is this the effect of the Crest...?”
 
 @43503 Sara · 沙羅
 > 「……空が……なんて光景だい、
@@ -691,9 +710,11 @@ the Gandor wouldn't have escaped unharmed either.”
 “Dr. Saotome, take a look at this data.”
 
 @43520 Dr. Saotome · 早乙女博士
+# 审校：缩写
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「……これは! バカな、こんなことはあり
 >  えん! 弓教授、このデータは……」
-“...This is! Impossible, this can't be! Prof. Yumi, this data is...”
+“...This is! Impossible, this can't be! Professor Yumi, this data is...”
 
 @43521 Prof. Yumi · 弓教授
 > 「暴走直前に、モニターした時の
@@ -709,9 +730,10 @@ the Gandor wouldn't have escaped unharmed either.”
 “I don't know... these abnormal readings...”
 
 @43524 Dr. Yotsuya · 四谷博士
+# 审校：刻印＝Crest 统一
 > 「もしやとは思うが……
 >  “グラドスの刻印”の発動が
-“I may be wrong, but... perhaps the activation of the ‘Grados Mark’
+“I may be wrong, but... perhaps the activation of the ‘Grados Crest’
 ---
 >  影響しておるのではないかな」
 is having an effect.”

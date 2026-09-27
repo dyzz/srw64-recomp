@@ -22,9 +22,9 @@ where those monster incidents are happening.”
 Please confirm it.”
 
 @40246 Chizuru · ちずる
-# 审校：原文是“すみません、ギャリソンさん”，此处是致歉而非道谢，初稿误译为“Thank you”。
+# 审校：ちずる对年长管家的称呼应保留敬称，原文有“さん”，译文应体现礼貌。
 > 「すみません、ギャリソンさん」
-“Sorry, Garrison.”
+“Sorry, Mr. Garrison.”
 
 @40247 Kosuke · 小介
 > 「あれ? でもガンドールの高速輸送
@@ -212,10 +212,10 @@ While we're on Earth, I must properly teach them to hunt their prey.”
 “But battle is not a game...”
 
 @40284 Janera · ジャネラ
-# 审校：原文“我が帝国の戦力として他の星系で存分に暴れておる”是“作为帝国战力在其他星系尽情肆虐”，初稿把“作为帝国战力”和“肆虐”并列，结构略乱；调整语序使意思更清楚。
+# 审校：精读：キバ 名字／词条／自称
 > 「遊びなどではないわ! このキバとガロの
 >  親たちは我が帝国の戦力として
-“It is no game! The parents of these Fangs and Garo are fighting as our empire's strength,
+“It is no game! The parents of these Fang and Garo are fighting as our empire's strength,
 ---
 >  他の星系で存分に暴れておる。
 >  この子たちも早く1人前に
@@ -230,9 +230,10 @@ and become full-fledged as well.”
 “I understand that, but it's about time we rejoined the main force...”
 
 @40286 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「ならぬ! 今日も訓練にでるのじゃ
 >  キバ、ガロ、ついてまいれ」
-“You will not! We go out for training again today. Fangs, Garo, follow me.”
+“You will not! We go out for training again today. Fang, Garo, follow me.”
 
 @40287 Warchimedes · ワルキメデス
 > 「ジャネラ様にも困ったものだ……」
@@ -303,9 +304,10 @@ of the Earth attack force.”
 “Of course I am! Hyoma Aoi, Earthling!!”
 
 @40298 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「……葵豹馬か。フフフ、おもしろい。
 >  新しい獲物じゃ。キバよ、ガロよ
-“...Hyoma Aoi, is it. Heh heh heh, interesting. A new prey. Fangs, Garo,
+“...Hyoma Aoi, is it. Heh heh heh, interesting. A new prey. Fang, Garo,
 ---
 >  あやつが次の獲物じゃ。
 >  みごと、狩ってみせい」
@@ -321,17 +323,19 @@ that one is your next prey. Hunt him down splendidly.”
 “Uwaaaaaaaaah!!”
 
 @40301 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「フフフ、キバよガロよ、その調子じゃ」
-“Heh heh heh, Fangs, Garo, that's the way.”
+“Heh heh heh, Fang, Garo, that's the way.”
 
 @40302 Hyoma · 豹馬
 > 「うぅ……しまった……体が……」
 “Ugh... Damn it... My body...”
 
 @40303 Janera · ジャネラ
+# 审校：原文“とどめを、さしておやり”是女皇对部下下令，现有译文“finish off”语气偏弱，改为更贴合其阴森威严口吻的“deliver the final blow”。
 > 「さぁ、葵豹馬にとどめを、さして
 >  おやり!!」
-“Now, finish off Hyoma Aoi!!”
+“Now, deliver the final blow to Hyoma Aoi!!”
 
 @40304 Hyoma · 豹馬
 > 「く……みんな……」
@@ -346,13 +350,15 @@ that one is your next prey. Hunt him down splendidly.”
 “Ch... Chizuru...?”
 
 @40307 Chizuru · ちずる
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あぁ!? 豹馬、大丈夫!?」
-“Ah!? Hyoma, are you all right?!”
+“Ah?! Hyoma, are you all right?!”
 
 @40308 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「邪魔をするでない! さぁ、キバよ
 >  ガロよ! 早く獲物にとどめを!」
-“Do not interfere! Now, Fangs, Garo! Hurry and finish off your prey!”
+“Do not interfere! Now, Fang, Garo! Hurry and deliver the final blow to your prey!”
 
 @40309 Chizuru · ちずる
 > 「くっ、豹馬がんばって!! 化け物
@@ -387,21 +393,24 @@ Eei, what are you doing?!”
 be here soon. Until then, even if it's just me...!”
 
 @40314 Chizuru · ちずる
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あぁぁぁ!? 豹馬ぁぁぁーっ!!」
-“Aaaaaah!? Hyomaaaaaa!!”
+“Aaaaaah?! Hyomaaaaaa!!”
 
 @40315 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「ええい、愚か者! 遊んでおるから
 >  そうなるのじゃ! キバよ、
-“Eei, you fool! That's what happens when you play around! Fangs,
+“Eei, you fool! That's what happens when you play around! Fang,
 ---
 >  一度戻るがよい!」
 return for now!”
 
 @40316 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「なんと情けない。キバ、ガロ、このまま
 >  終わらせてはならんぞ!
-“How pathetic. Fangs, Garo, you must not let it end like this!
+“How pathetic. Fang, Garo, you must not let it end like this!
 ---
 >  戻ってもう一度やるのじゃ!」
 Go back and do it again!”
@@ -415,9 +424,10 @@ Go back and do it again!”
 return for now!”
 
 @40318 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「なんと情けない。キバ、ガロ、このまま
 >  終わらせてはならんぞ!
-“How pathetic. Fangs, Garo, you must not let it end like this!
+“How pathetic. Fang, Garo, you must not let it end like this!
 ---
 >  戻ってもう一度やるのじゃ!」
 Go back and do it again!”
@@ -433,9 +443,10 @@ Go back and do it again!”
 “Eei, this is unbelievable. We're retreating!”
 
 @40321 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「ええい、キバ、ガロ、なにをしておる。
 >  そやつは、放っておいて早く豹馬を
-“Eei, Fangs, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
+“Eei, Fang, Garo, what are you doing? Leave that one alone and hurry and finish Hyoma
 ---
 >  やるのじゃ!!」
 off!!”
@@ -449,17 +460,19 @@ off!!”
 off!!”
 
 @40323 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「ええい、キバ、なにをしておる。
 >  そやつは、放っておいて早く豹馬を
-“Eei, Fangs, what are you doing? Leave that one alone and hurry and finish Hyoma
+“Eei, Fang, what are you doing? Leave that one alone and hurry and finish Hyoma
 ---
 >  やるのじゃ!!」
 off!!”
 
 @40324 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「キバ、ガロ、なにをしておる。早く
 >  もう1度豹馬を狩りにいかぬか!」
-“Fangs, Garo, what are you doing? Hurry and go hunt Hyoma again!”
+“Fang, Garo, what are you doing? Hurry and go hunt Hyoma again!”
 
 @40325 Chizuru · ちずる
 > 「ああっ……みんな、よく……」
@@ -513,9 +526,10 @@ off!!”
 “Galactic Empire... I won't forgive you!”
 
 @40336 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「おのれ、こざかしい地球人どもめ。
 >  キバ、ガロ!」
-“Curse you, you impudent Earthlings. Fangs, Garo!”
+“Curse you, you impudent Earthlings. Fang, Garo!”
 
 @40337 Koji · 甲児
 > 「な……なんだぁ!?」
@@ -560,6 +574,7 @@ and let's smash that big thing too!”
 “Lady Janera, please leave this to me.”
 
 @40346 Janera · ジャネラ
+# 审校：精读：キバ 名字／词条／自称
 > 「ワルキメデスか。よし、やってみせよ」
 “Warchimedes. Very well, show me what you can do.”
 
@@ -641,10 +656,10 @@ to me. All forces, don't let a single Earthling leave alive!”
 “All right, let's give it a go!”
 
 @40362 Janera · ジャネラ
-# 机翻疑问：原文“シシリス・キバ”疑为“ビッグシリウス・キバ”之误，暂译作 Sirius。
+# 审校：精读：キバ 名字／词条／自称
 > 「おのれ、シシリス・キバ、ガロの仇は
 >  必ずうってくれようぞ! 覚えておれ!」
-“Curse you! I will surely avenge Sirius, Fangs, and Garo! Mark my words!”
+“Curse you! I will surely avenge Sishiris, Fang, and Garo! Mark my words!”
 
 @40363 Hyoma · 豹馬
 > 「くっ……みんな、大丈夫か!
@@ -721,9 +736,10 @@ That guy's always like that.”
 “Then we're heading for Ryozanpaku.”
 
 @40378 Boss · ボス
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ありゃりゃ!?
 >  おーい、待ってくれぇぇーっ!!」
-“Whoa!? Hey, wait for meee!!”
+“Whoa?! Hey, wait for meee!!”
 
 @40379 Beauty · ビューティ
 > 「あら? やだ、ちょっと、
@@ -789,9 +805,11 @@ checked out by Hasan or Sally.”
 “I wonder if we'll find out whether Father and the others are safe...”
 
 @40392 Kosuke · 小介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授でしたね。僕も1度
 >  お会いして、お話をうかがいたいです」
-“That would be Prof. Yumi. I'd like to meet him once and hear what he has to say.”
+“That would be Professor Yumi. I'd like to meet him once and hear what he has to say.”
 
 @40393 Sayaka · さやか
 > 「合流できたら、紹介してあげるわよ」
@@ -841,9 +859,10 @@ Ginrei's people are protecting the professors.”
 “Kosuke, you'd better just tell him straight. It's impossible.”
 
 @40402 Boss · ボス
+# 审校：精读：キバ 名字／词条／自称
 > 「なんでだよ、兜。俺さまのボスボロット
 >  をバカにすると許さないわよ」
-“Why, you Kabuto? If you make fun of my Boss Borot, I won't forgive you!”
+“Why, Kabuto? If you make fun of my Boss Borot, I won't forgive you!”
 
 @40403 Maria · マリア
 > 「あ、ねぇねぇボス、あたし前から

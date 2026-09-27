@@ -16,9 +16,10 @@
 “The lunar base, huh... There used to be a Muge Empire base here...”
 
 @43692 David · デビッド
+# 审校：精读：破折号
 > 「ああ。それをOZが叩き、ムゲを追い
 >  出し、いまは俺たちが月にいる
-“Yeah. OZ smashed it, drove the Muge out, and now we're the ones on the moon—
+“Yeah. OZ smashed it, drove the Muge out, and now we're the ones on the moon,
 ---
 >  別の異星人なんてのを相手に
 >  しながらな。なんだか目が回るぜ」
@@ -34,9 +35,10 @@ while we're up against some other aliens. Makes my head spin.”
 up against aliens and our fellow Earthlings alike. Unbelievable.”
 
 @43694 Jun · ジュン
+# 审校：精读：破折号
 > 「しかたないよ、鉄也。ここまできたら、
 >  もう、いくところまでいくしかないんだよ
-“It can't be helped, Tetsuya. We've come this far—we've just got to see it through
+“It can't be helped, Tetsuya. We've come this far, we've just got to see it through
 ---
 >  あたしたちにはね」
 to the end. That's all we can do.”
@@ -103,14 +105,16 @@ like a white rabbit's, you know.”
 “...Excuse me?”
 
 @43706 Tetsuya · 鉄也
+# 审校：说话人是铁也，内心独白指代的是チャム（女性），应译为 she 而非 this guy。
 > (こいつ……マジか? マジでいったのか?
 >  まさかな……)
-(Is this guy... serious? Did he really just say that? No way...)
+(Is she... serious? Did she really just say that? No way...)
 
 @43707 Jun · ジュン
+# 审校：ジュン对ショウ的称呼不应加 sir，原文无敬称，且她与ショウ平辈。
 > 「ショ……ショウ・ザマさん? いま、なんて
 >  おっしゃったのかしら……?」
-“S-Show... Show Zama, sir? What did you just say...?”
+“S-Show... Show Zama? What did you just say...?”
 
 @43708 Show · ショウ
 > 「ん? ニンジンを食べると目が
@@ -293,13 +297,14 @@ before those guys come back.”
 in such a short time.”
 
 @43746 October · オクトバー
+# 审校：精读：破折号
 > 「いちおう、できる範囲で進めては
 >  いましたから。しかし、いいんですか?
 “I had been pushing ahead as far as I could, after all. But are you sure?
 ---
 >  まだテスト中で、実戦は無理です
 >  よ、こいつは。フィンファンネルは、まだ
-This thing is still in testing—it can't go into combat. The Fin Funnels haven't even
+This thing is still in testing. It can't go into combat. The Fin Funnels haven't even
 ---
 >  調整すら、できていませんし……」
 been adjusted yet...”
@@ -318,9 +323,10 @@ on our end.”
 “Well, that's fine by me. But I really can't take responsibility for it.”
 
 @43749 Chan · チェーン
+# 审校：精读：破折号
 > 「時間、ないんです。大丈夫です。
 >  このガンダムは、私とアムロ特尉で
-“We don't have time. It's all right. This Gundam—Special Lieutenant Amuro and I
+“We don't have time. It's all right. This Gundam, Special Lieutenant Amuro and I
 ---
 >  完成させてみせます」
 will finish it ourselves.”
@@ -412,9 +418,10 @@ into combat.”
 “It's all right, October. Special Lieutenant Amuro and I will finish it ourselves.”
 
 @43763 October · オクトバー
+# 审校：精读：破折号
 > 「……しかたありませんね。経過のデータ
 >  だけは、できれば実戦データもですけど
-“...I suppose there's no helping it. At least send me the progress data—and combat data too, if possible.
+“...I suppose there's no helping it. At least send me the progress data, and combat data too, if possible.
 ---
 >  こちらにもまわしてください。量産化
 >  もやっているところですから」
@@ -468,20 +475,22 @@ that Muge had developed on Earth.”
 “But that one isn't from Anaheim, is it?”
 
 @43774 October · オクトバー
+# 审校：精读：末页只剩引号，重切
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「ええ。フレモント・インダストリーが
 >  開発したものです。ムゲゾルバドスの
-“Yes. It was developed by Fremont Industry. I hear it was found abandoned in the confusion of the Muge Zorbados forces'
+“Yes. It was developed by Fremont Industry. I hear it was found abandoned
 ---
 >  撤退間際のドサクサで放置
 >  されていたものが、発見されたと
-withdrawal. Its system is so peculiar that it probably can't be
+in the confusion of the Muge Zorbados forces' withdrawal.
 ---
 >  聞いています。なにしろシステムが
 >  特殊なので、たぶんそちらでないと
-operated by anyone but you.
+Its system is so peculiar that it probably can't be
 ---
 >  運用できないでしょう」
-”
+operated by anyone but your people.”
 
 @43775 Amuro · アムロ
 > 「わかりました。あずかります」
@@ -581,8 +590,9 @@ Of course. Is there a problem?”
 “Y-yes.”
 
 @43793 Amuro · アムロ
+# 审校：原文有「オクトバーさん」，应保留敬称，译为 Mr. October。
 > 「では、オクトバーさん」
-“Well then, October.”
+“Well then, Mr. October.”
 
 @43794 Astonaige · アストナージ
 > 「{HeroName}、ちょっと来てくれ」
@@ -728,9 +738,10 @@ Damn it, why... why do I have to see this again...)
 “...Y-yes. I-I'm fine.”
 
 @43820 Astonaige · アストナージ
+# 审校：原文「暴走でもしたのか」指驾驶员失控，译文用 it 指代机体，口吻与语境不符。
 > 「びっくりさせるなよ。俺はまた、
 >  暴走でもしたのかと思ったよ」
-“Don't scare me like that. I thought it had gone out of control again.”
+“Don't scare me like that. I thought you'd gone out of control again.”
 
 @43821 Ark · アーク（按段落 3DD1）
 > 「……どういうシステムなんです、これ」
@@ -838,9 +849,11 @@ were for, but they were for that system...”
 “What is it?”
 
 @43838 Astonaige · アストナージ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「アムロ特尉がアナハイムから
 >  νガンダムと一緒にスヴァンヒルドの
-“Lieutenant Amuro brought the Nu Gundam from Anaheim, along with a successor
+“Special Lieutenant Amuro brought the Nu Gundam from Anaheim, along with a successor
 ---
 >  後継機を持ってきたんだ」
 unit for the Svanheld.”
@@ -864,7 +877,8 @@ modified a bit. It's a Type 33 Kai, called the Razgreez, apparently.”
 “What do you mean?”
 
 @43842 Astonaige · アストナージ
-# 审校：补上不定冠词，使句子更自然。
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ヴァルキュリア→Valkyrie
 > 「ヴァルキュリアはもともと、Z&R社が
 >  ムゲ帝国のために開発していた
 “The Valkyrie was originally an Earth-environment mobile weapon that Z&R was
@@ -875,7 +889,7 @@ developing for the Muge Empire, right? After the Muge withdrew, Z&R got
 ---
 >  財団からの圧力で、MDの量産
 >  に駆り出されたそうでさ
-pressured by the foundation and was dragged into mass-producing MDs,
+pressured by the Foundation and was dragged into mass-producing MDs,
 ---
 >  開発途中で放置されてたんだと」
 so it was left abandoned mid-development.”
@@ -964,9 +978,10 @@ features, it knows all your quirks.”
 a face like a wet blanket.”
 
 @43858 Selain · セレイン（按段落 3DD2）
+# 审校：「用はない」对希罗应更冷硬，改为“no business with you”以贴合塞莱因军人式冷淡口吻。
 > 「いまはテスト中だ。貴様に用はない
 >  邪魔をするだけなら、よそへいけ」
-“I'm in the middle of a test. I have no use for you. If you're only here to get in the way, go somewhere else.”
+“I'm in the middle of a test. I have no business with you. If you're only here to get in the way, go somewhere else.”
 
 @43859 Rish · リッシュ（按段落 3DD2）
 > 「いやいや、邪魔なんてとんでもない。
@@ -990,17 +1005,19 @@ who was supposed to be its test pilot right about now, you know?”
 “Good for you. Is that all you wanted?”
 
 @43863 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：破折号
 > 「聞きたいのか? いいぜ、俺がいかに
 >  お前に惚れてるかってことについて
-“You want to hear it? Fine, then. How hopelessly in love with you I am—
+“You want to hear it? Fine, then. How hopelessly in love with you I am,
 ---
 >  ゆっくりと語りあおうや」
 let's talk it over nice and slow.”
 
 @43864 Selain · セレイン（按段落 3DD2）
+# 审校：原文「バ、バカか貴様は!?」有结巴，译文需体现“Y-you”的结巴感。
 > 「バ、バカか貴様は!?
 >  だいたい貴様はいつもそればかりだ
-“A-are you an idiot?! That's all you ever talk about, anyway.
+“Y-you idiot?! That's all you ever talk about, anyway.
 ---
 >  いいかげんにしたらどうだ」
 Give it a rest already.”
@@ -1031,8 +1048,9 @@ what a proper human being is supposed to be like.”
 humans would have died out long ago.”
 
 @43869 Rish · リッシュ（按段落 3DD2）
+# 审校：「普通?」在这里是痞气反问，Seriously 偏书面，改为更口语的 For real 以贴合 Rish 的轻佻口吻。
 > 「おいおい、そこまでいうかぁ、普通?」
-“Whoa, whoa, you'd really go that far? Seriously?”
+“Whoa, whoa, you'd really go that far? For real?”
 
 @43870 Selain · セレイン（按段落 3DD2）
 > 「貴様が邪魔ばかりするからだ。
@@ -1126,9 +1144,10 @@ added them to the fleet.”
 “Your Majesty, Gandal reporting.”
 
 @43884 Emperor Zuul · ズール皇帝
+# 审校：精读：破折号
 > 「ガンダル、わかっておろうな。たとえ
 >  艦隊司令といえども、ワシは
-“Gandal, you understand, don't you? Even a fleet commander—I have no
+“Gandal, you understand, don't you? Even a fleet commander, I have no
 ---
 >  役立たずを生かしておく気はない」
 intention of letting useless men live.”
@@ -1267,9 +1286,10 @@ in twenty minutes.”
 “That's not really a reason to be with Amuro, is it?”
 
 @43908 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なります。私は、アムロ特尉の
 >  パートナーですから」
-“It is. I'm Lieutenant Amuro's partner, after all.”
+“It is. I'm Special Lieutenant Amuro's partner, after all.”
 
 @43909 Beltorchika · ベルトーチカ
 > 「……誤解をまねくいいかたは、やめて
@@ -1300,20 +1320,22 @@ in twenty minutes.”
 “Naoto, don't go making irresponsible comments like that.”
 
 @43915 David · デビッド
+# 审校：精读：破折号
 > 「英雄色を好むっていうけどな。
 >  英雄でもありゃ逆に好まれちゃって
 “They say heroes love beauty, but I guess when you're a hero, you get loved
 ---
 >  大変ってところか。うらやましいことで」
-right back—and that's its own kind of trouble. Must be nice.”
+right back, and that's its own kind of trouble. Must be nice.”
 
 @43916 Simone · シモーヌ
 > 「あら、そう」
 “Oh, is that so.”
 
 @43917 David · デビッド
+# 审校：精读：破折号
 > 「うわっ、シ、シモーヌ」
-“Whoa—S-Simone!”
+“Whoa, S-Simone!”
 
 @43918 Simone · シモーヌ
 > 「ま、あんたじゃ逆立ちしたって、
@@ -1371,16 +1393,18 @@ An enemy grand fleet has appeared outside lunar orbit!”
 “What?! The Galactic Empire?!”
 
 @43929 Ginrei · 銀鈴
+# 审校：银铃对舰长用敬体，译文应更委婉，与她的成熟口吻一致。
 > 「間違いないようです」
-“There can be no mistake.”
+“There seems to be no mistake.”
 
 @43930 Quattro · クワトロ
 > 「敵の規模はどのくらいなのだ?」
 “What is the enemy's strength?”
 
 @43931 Ginrei · 銀鈴
+# 审校：银铃对克瓦特罗上尉用敬体，译文应保持委婉的敬语感。
 > 「計測できないそうです」
-“It can't be measured.”
+“It seems it cannot be measured.”
 
 @43932 Bright · ブライト
 > 「わかった、すぐに行く」
@@ -1413,21 +1437,23 @@ the Earth Sphere.”
 “You call it a grand fleet, but just how big is it?”
 
 @43938 Amuro · アムロ
+# 审校：精读：破折号
 > 「現在観測されたかぎりでも、
 >  地球圏のすべての戦力、つまり
 “Even by what we've observed so far, I'd say it's more than double
 ---
 >  俺たち、シロッコ、ハマーン、それぞれを
 >  すべて合わせたものより、倍以上は
-all the forces in the Earth Sphere combined—that is, us, Scirocco, and Haman,
+all the forces in the Earth Sphere combined, that is, us, Scirocco, and Haman,
 ---
 >  いると思われる」
 all put together.”
 
 @43939 Duo · デュオ
+# 审校：迪奥的话痨俚语口吻需要更口语化的表达。
 > 「なんだってぇ!? おいおい、冗談
 >  だろぉ? シャレになってないぜ」
-“Say what?! Hey, hey, you're kidding, right? This is no joke!”
+“Say what?! Hey, hey, you're kidding, right? This ain't no joke!”
 
 @43940 Daisuke · 大介
 > 「ついに……ついに来たか」
@@ -1451,9 +1477,10 @@ avenge the people of Planet Fleed.”
 “Koji...”
 
 @43944 Sayaka · さやか
+# 审校：精读：措辞
 > 「甲児くん、気楽すぎるわよ! どこ
 >  見たらそんな言葉が出てくるのよ!」
-“Koji, you're way too carefree! Where are you looking to come out with a line like that?!”
+“Koji, you're way too carefree! Where do you get off saying something like that?!”
 
 @43945 Ryo · 亮
 > 「…………」
@@ -1485,10 +1512,12 @@ a fearsome enemy.”
 “Show, how can you stay so calm?!”
 
 @43951 Show · ショウ
+# 审校：人名按词表统一
 > 「あわてたってしかたないだろ、チャム」
 “Panicking won't help, Chum.”
 
 @43952 Garalia · ガラリア
+# 审校：人名按词表统一
 > 「そういうことさ。お前も落ち着きなよ
 >  チャム」
 “Exactly. You settle down too, Chum.”
@@ -1528,13 +1557,15 @@ is, frankly, grim.”
 “That's quite the understatement.”
 
 @43958 Garrison · ギャリソン
+# 审校：管家的口吻应更正式，不用缩写。
 > 「正しくは、圧倒的不利、と
 >  いったところですかな」
-“Precisely speaking, I'd call it overwhelmingly disadvantageous, sir.”
+“Precisely speaking, I would call it overwhelmingly disadvantageous, sir.”
 
 @43959 Shinobu · 忍
+# 审校：忍的口吻应更粗野，将“out of”改为“outta”以贴合其狂放语气。
 > 「ちっ、わざわざいいかえるこたぁねぇだろう」
-“Tch, no need to go out of your way to rephrase it.”
+“Tch, no need to go outta your way to rephrase it.”
 
 @43960 Ryoma · リョウ
 > 「まったくだ」
@@ -1545,9 +1576,10 @@ is, frankly, grim.”
 “So, what do you intend to do?”
 
 @43962 Treize · トレーズ
+# 审校：全局：バルジ 词条 Barge
 > 「各コロニー、月、バルジ、リーブラ、
 >  そしてアクシズ。敵の動きから
-“The colonies, the Moon, Balgi, Libra, and Axis. From the enemy's movements,
+“The colonies, the Moon, Barge, Libra, and Axis. From the enemy's movements,
 ---
 >  それらを同時に攻撃するつもりで
 >  あることが推測できる。さらに敵は
@@ -1569,17 +1601,19 @@ that as much as you possibly can.”
 “But we've no choice but to do it.”
 
 @43965 Shinobu · 忍
+# 审校：忍的口吻应更粗野，将“isn't”改为“ain't”以贴合其狂放语气。
 > 「ったりめぇだろ。ムゲ野郎の時とは
 >  違う。今度は、負けちまったら
-“Damn right. This isn't like it was with the Muge lot. This time, if we lose,
+“Damn right. This ain't like it was with the Muge lot. This time, if we lose,
 ---
 >  それで最後だ」
 that's the end.”
 
 @43966 Treize · トレーズ
+# 审校：精读：破折号
 > 「その通り。あの時のように降伏して
 >  反抗の時を待つようなわけには
-“Exactly. We can't do as we did then—surrender and wait for a chance to resist.
+“Exactly. We can't do as we did then, surrender and wait for a chance to resist.
 ---
 >  いかない。これは文字どおり、
 >  人類の未来をかけた戦いだ
@@ -1671,6 +1705,7 @@ To blow away the traitor.”
 “...Me? Why am I a traitor?!”
 
 @43982 Naida · ナイーダ
+# 审校：精读：破折号
 > 「忘れたとは、いわせないわ。
 >  銀河帝国軍の攻撃を受けて
 “Don't you dare say you've forgotten. When the Galactic Empire attacked us,
@@ -1681,7 +1716,7 @@ when we were fleeing and crying for help,
 ---
 >  あなたはフリード星唯一の守り神
 >  グレンダイザーで逃げた裏切り者!」
-you fled in Grendizer, Fleed's only guardian deity—you traitor!”
+you fled in Grendizer, Fleed's only guardian deity. You traitor!”
 
 @43983 Ryoma · リョウ
 > 「まさか……本当なのか!?」
@@ -1705,25 +1740,27 @@ but to escape to Earth.”
 “B-but...”
 
 @43987 Naida · ナイーダ
+# 审校：精读：破折号
 > 「いいわけなんて、もうたくさん! あなたは
 >  自分だけ助かるために、あたしたちを
 “I've had enough of your excuses! To save only yourself, you abandoned us
 ---
 >  捨てて逃げた、裏切り者よ!」
-and ran—you traitor!”
+and ran. You traitor!”
 
 @43988 Daisuke · 大介
 > 「ナイーダ、それはあんまりだ!」
 “Naida, that's too cruel!”
 
 @43989 Naida · ナイーダ
+# 审校：精读：破折号
 > 「あの日までずっと、私はあなたが好き
 >  だった。愛していたのに。でも、もうだめ
 “Until that day, I always loved you. I adored you. But it's over now.
 ---
 >  裏切り者は絶対に許せないわ。
 >  あなたはそればかりか、絶望の中で
-I can never forgive a traitor. And not only that—even the one chance
+I can never forgive a traitor. And not only that, even the one chance
 ---
 >  与えられた、たった1つの生きる
 >  チャンスも、つぶしつつあるのよ!」
@@ -1734,9 +1771,11 @@ to live that was given to you in your despair, you're crushing it!”
 “A chance... to live...?”
 
 @43991 Naida · ナイーダ
+# 审校：精读：破折号
+# 检查提示：未用必用译名：フリード星人→Fleedian
 > 「あなたたちが、戦ってつぶしてきた
 >  円盤獣は、フリード星人なのよ!」
-“The disc beasts you've fought and destroyed—they're Fleed people!”
+“The disc beasts you've fought and destroyed are Fleed people!”
 
 @43992 Daisuke · 大介
 > 「な……んだって……!?」
@@ -1887,8 +1926,9 @@ It'll be coming our way soon enough, too.”
 “Ngh...”
 
 @44021 Mika · ミカ
+# 审校：「気がついた」在此处指娜伊达恢复意识，原译“she's awake”虽可通，但“come to”更贴合从昏迷中醒来的语境，且更口语自然。
 > 「タケル、気がついたわよ」
-“Takeru, she's awake.”
+“Takeru, she's come to.”
 
 @44022 Takeru · タケル
 > 「よかった」
@@ -1900,12 +1940,13 @@ It'll be coming our way soon enough, too.”
 “Where am I...? What happened to me...?”
 
 @44024 Ryoma · リョウ
+# 审校：「ののしった」意为辱骂、斥责，原译“denounced”过于正式，与流龙马直率热血的语气不符，改为“called him a traitor”更自然。
 > 「どうしたのはないだろう。君のおかげで
 >  デュークは大変なことになっているんだ
 “What happened is obvious. Thanks to you, Duke's in a terrible state.
 ---
 >  君が裏切り者とののしったせいでね」
-Because you denounced him as a traitor.”
+Because you called him a traitor.”
 
 @44025 Naida · ナイーダ
 > 「ええっ、あたしが!?」
@@ -2058,8 +2099,9 @@ consciousness might turn back toward us, but...”
 “A strong shock, huh...”
 
 @44052 Daisuke · 大介
+# 审校：精读：指自己
 > 「裏切り……裏切り者だ……」
-“Betrayal... She's a traitor...”
+“Betrayal... I'm a traitor...”
 
 @44053 Ark · アーク（按段落 3DD1）
 > 「……タケル、衝撃波をくらわせて
@@ -2217,8 +2259,9 @@ consciousness might turn back toward us, but...”
 “A strong shock, huh...”
 
 @44078 Daisuke · 大介
+# 审校：精读：指自己
 > 「裏切り……裏切り者だ……」
-“Betrayal... She's a traitor...”
+“Betrayal... I'm a traitor...”
 
 @44079 Selain · セレイン（按段落 3DD2）
 > 「タケル、衝撃波だ」
@@ -2353,8 +2396,9 @@ off somewhere. And the enemy's already right in front of us!”
 “What?! Don't tell me Naida... Hurry, everyone!”
 
 @44100 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 是热血粗放的武者，原译“like this”偏书面，改为更口语的“leave him be”。
 > 「ほっとくわけにはいかねぇだろうよ」
-“We can't just leave him like this.”
+“We can't just leave him be.”
 
 @44101 Koji · 甲児
 > 「だけどよ……先生、なんか
@@ -2379,8 +2423,9 @@ his mind might turn back toward us, but...”
 “A strong shock, huh...”
 
 @44104 Daisuke · 大介
+# 审校：精读：指自己
 > 「裏切り……裏切り者だ……」
-“Betrayal... She's a traitor...”
+“Betrayal... I'm a traitor...”
 
 @44105 Brad · ブラッド（按段落 3DD3）
 > 「……タケル、お前の衝撃波を
@@ -2420,9 +2465,10 @@ his mind might turn back toward us, but...”
 “Ugh... wh... what are you doing...?”
 
 @44114 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 是热血武者，口吻应更粗放有力，将“hear me out”改为“listen up, and listen good”更符合其语气。
 > 「ようやく気がつきやがったか。
 >  いいか、よく聞け。ナイーダって女は
-“Finally snapped out of it, huh. Listen, hear me out. That woman Naida was
+“Finally snapped out of it, huh. Listen up, and listen good. That woman Naida was
 ---
 >  ズールに操られていたんだ。
 >  あんたは裏切り者なんかじゃない
@@ -2440,13 +2486,14 @@ Got it?!”
 abandoned his homeland...”
 
 @44116 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 的粗放口吻应体现，将“joking around”改为“screwing around”更符合其热血粗鲁的性格。
 > 「はぁ? デューク・フリード、
 >  ふざけんのも、いいかげんにしろ!
-“Huh? Duke Fleed, quit joking around already!
+“Huh? Duke Fleed, quit screwing around already!
 ---
 >  だからもう戦えないとでもぬかすのか!?
 >  てめぇ、地球を守ってみせるって
-So you're saying you can't fight anymore?! Was your talk about protecting
+So you're saying you can't fight anymore?! Was all that talk about protecting
 ---
 >  いったのは嘘かよ!」
 the Earth a lie?!”
@@ -2776,16 +2823,17 @@ You mustn't do this, Naida.”
 “Oh, Duke, you'll... forgive me, after I said such terrible things to you?”
 
 @44169 Duke · デューク
+# 审校：精读：破折号
 > 「もちろんだ。悪いのはズールと
 >  銀河帝国だ。君じゃない
 “Of course. The one at fault is Zuul and the Galactic Empire. Not you.
 ---
 >  さぁ、スペイザーに乗り移るんだ。
 >  僕たちと一緒に、銀河帝国と
-Now, transfer to the Spazer. Together with us, fight the Galactic Empire—
+Now, transfer to the Spazer. Together with us,
 ---
 >  戦ってくれ」
-fight alongside me.”
+fight the Galactic Empire.”
 
 @44170 Naida · ナイーダ
 > 「デューク……わかったわ。あたしも、
@@ -2975,9 +3023,10 @@ I don't want to kill you either.”
 even your own allies would kill me. Why?!”
 
 @44201 Takeru · タケル
+# 审校：精读：破折号
 > 「俺は、俺たちはそんな戦い方は
 >  しない。マーグはいったよ。悪いのは
-“I—we don't fight that way. Marg told me. The one at fault is
+“I, no, we don't fight that way. Marg told me. The one at fault is
 ---
 >  ズールだと。銀河帝国のすべてが
 >  ズールと同じわけではないと
@@ -2997,8 +3046,9 @@ I believe that too. The one who's wrong is Zuul.”
 “Rose...?! Do you... understand...?”
 
 @44204 Rose · ロゼ
+# 审校：“how dare you say that so brazenly”过于冗长，改为更自然且符合冷静女战士口吻的短句。
 > 「マーズ、よくもぬけぬけと」
-“Mars, how dare you say that so brazenly.”
+“Mars, you have some nerve saying that.”
 
 @44205 Takeru · タケル
 > 「待て、ロゼ。戦うことはいつでもできる
@@ -3186,9 +3236,10 @@ The Special Colonel's judgment is correct.”
 “But...”
 
 @44232 Roux · ルー
+# 审校：合并：misc 与 scene 批次三方合并
 > 「でもじゃない! いい、あたしたちが負け
 >  たら、ぜんぶ終わっちゃうんだよ!?
-“Don't 'but' me! Listen, if we lose, everything is over!?
+“Don't ‘but’ me! Listen, if we lose, everything is over, you hear?!
 ---
 >  みんな、あんたと同じ気持ちなの!
 >  だけど、こんな状況の中では
@@ -3206,30 +3257,34 @@ out loud!”
 “That's... that's just wrong...”
 
 @44234 Banjo · 万丈
+# 审校：精读：末页只剩句点，重切
 > 「そうだ、おかしい。間違っている。
 >  そんなことは絶対に認めてはいけない
-“That's right, it's wrong. It's a mistake. That is something we must never accept
+“That's right, it's wrong. It's a mistake. That is something
 ---
 >  ことだ」
-.”
+we must never accept.”
 
 @44235 Daisaku · 大作
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「万丈さん……?」
-“Mr. Banjo...?”
+“Banjo...?”
 
 @44236 Banjo · 万丈
+# 审校：精读：末页只剩句点，重切
 > 「だから、我々はそんな状況を
 >  変えるために、戦うんだ。この命を
 “That's why we fight, to change a situation like this. Even if it costs us
 ---
 >  犠牲にしてもね。だが、残念ながら
 >  命はひとつしかない。無駄には
-our lives. But unfortunately, we only have one life. We can't waste it
+our lives. But unfortunately, we only have one life.
 ---
 >  使えない」
-.”
+We can't waste it.”
 
 @44237 Treize · トレーズ
+# 审校：精读：末页只剩句点，重切
 > 「その通りだ。草間大作くん、まだ
 >  幼い君たちにその覚悟を持てと
 “Exactly. Daisaku Kusama, it would indeed be difficult to ask you young ones
@@ -3240,10 +3295,10 @@ to have that resolve. But I want you to remember this. As long as we keep
 ---
 >  続ける限り、人々の死を
 >  無意味なものとせずにすむと
-fighting, the deaths of the people will not have been in vain
+fighting, the deaths of the people
 ---
 >  いうことを」
-.”
+will not have been in vain.”
 
 @44238 Daisaku · 大作
 > 「…………」
@@ -3268,9 +3323,10 @@ rendezvous with us here.”
 “So it's fine for us to go down, but what's happening up above?”
 
 @44242 Amuro · アムロ
+# 审校：全局：バルジ 词条 Barge
 > 「まだ戦闘が継続している。月も
 >  バルジも、リーブラも、グワダンも
-“The fighting is still ongoing. The Moon, the Barge, Libra, and the Gwadan
+“The fighting is still ongoing. The Moon, Barge, Libra, and the Gwadan
 ---
 >  落ちてはいない。よくもっているよ」
 haven't fallen. They're holding out well.”
@@ -3426,8 +3482,9 @@ I was raised on Earth, by Earthling parents.”
 “So this is her, the Galactic Empire soldier?”
 
 @44271 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「万丈さん……ええ、そうです」
-“Mr. Banjo... yes, that's right.”
+“Banjo... yes, that's right.”
 
 @44272 Banjo · 万丈
 > 「悪いが、僕たちはのんびりしていられな
@@ -3456,9 +3513,10 @@ just why you've come to us?”
 “Please. I want to understand better. The way Earthlings think.”
 
 @44277 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……万丈さん、彼女がコントロール
 >  を受けていないのは俺が保証します
-“...Mr. Banjo, I'll vouch that she isn't under anyone's control.
+“...Banjo, I'll vouch that she isn't under anyone's control.
 ---
 >  それにロゼがいれば、敵の情報も
 >  手に入ります」
@@ -3567,8 +3625,9 @@ then it's meaningless, isn't it?”
 “Exactly. There's no need to do something that foolish.”
 
 @44293 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「万丈さん……」
-“Mr. Banjo...”
+“Banjo...”
 
 @44294 Banjo · 万丈
 > 「時間がないんだよ、諸君。さて、

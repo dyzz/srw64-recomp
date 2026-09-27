@@ -106,8 +106,9 @@ I knew you'd come to see me.”
 (Four, if you want your memories back, you must defeat the enemy.)
 
 @28047 Four · フォウ
+# 审校：はい＝递东西
 > 「……はい、コーラ。おいしいよ」
-“...Yes, it's cola. It's good.”
+“...Here, have a cola. It's good.”
 
 @28048 Kamille · カミーユ
 > 「フォウ……」
@@ -169,10 +170,10 @@ my head goes empty, and another me slips inside. So...”
 Kamille, you bastard, you've got some nerve!!”
 
 @28058 Kamille · カミーユ
-# 审校：“Kgh”改为自然拟声“Ngh”。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「くっ、ジェリド特尉か!?
 >  フォウ、急いで」
-“Ngh, Lieutenant Jerid?! Four, hurry!”
+“Ngh, Special Lieutenant Jerid?! Four, hurry!”
 
 @28059 Jerid · ジェリド
 > 「待てカミーユ!
@@ -311,9 +312,10 @@ you wanted your memories back so badly.”
 “You recognize me...?”
 
 @28087 Four · フォウ
+# 审校：原文“レジスタンスの戦闘パイロット”中“レジスタンス”是修饰语，译文“a combat pilot of the Resistance”稍显生硬，改为更自然的“a Resistance combat pilot”。
 > 「カミーユ・ビダンは
 >  レジスタンスの戦闘パイロットだ
-“Kamille Bidan is a combat pilot of the Resistance,
+“Kamille Bidan is a Resistance combat pilot,
 ---
 >  {HeroMech}の中核の
 >  戦士として認知されている」
@@ -379,10 +381,10 @@ recognized as a core warrior of the {HeroMech}.”
 “That's... the Psyco Gundam?! Is Four the one piloting it?”
 
 @28101 Amuro · アムロ
-# 审校：“落とす”指击落敌机，初稿“Shoot it down”可接受但“Take it down”更自然且贴合战斗语境。
+# 审校：原文“全力で落とす”是阿姆罗对卡缪说的共同行动指令，译文“Take it down”缺少主语，改为“We'll take it down”更符合语境。
 > 「カミーユ、あれは危険だ。
 >  全力で落とす」
-“Kamille, that thing is dangerous. Take it down with everything we've got.”
+“Kamille, that thing is dangerous. We'll take it down with everything we've got.”
 
 @28102 Kamille · カミーユ
 > 「でも、あれはフォウなんですよ!」
@@ -438,9 +440,10 @@ Find the answer inside the Z. That's all you can do.”
 “Kamille, get clear!”
 
 @28113 Kamille · カミーユ
+# 审校：原文“攻撃はしないで”没有明确宾语“她”，译文添加了“her”，为忠实原文应去掉。
 > 「やめてくださいアムロ大尉!
 >  攻撃はしないで」
-“Stop, Captain Amuro! Don't attack her!”
+“Stop, Captain Amuro! Don't attack!”
 
 @28114 Amuro · アムロ
 > 「どうしろというんだ!?」
@@ -576,9 +579,10 @@ The system forcing her to fight should be at Jaburo.
 If we wipe out the enemy, it can be shut down.”
 
 @28139 Domon · ドモン
+# 审校：破折号
 > 「承知した! アレンビー、
 >  奪われたお前の魂は
-“Understood! Allenby, the soul they stole from you—
+“Understood! Allenby, the soul they stole from you,
 ---
 >  この俺の拳で取り戻してやる!」
 I'll take it back with these fists of mine!”
@@ -618,9 +622,10 @@ The system forcing her to fight should be at Jaburo.
 If we wipe out the enemy, it can be shut down.”
 
 @28144 Domon · ドモン
+# 审校：破折号
 > 「承知した! アレンビー、
 >  奪われたお前の魂は
-“Understood! Allenby, the soul they stole from you—
+“Understood! Allenby, the soul they stole from you,
 ---
 >  この俺の拳で取り戻してやる!」
 I'll take it back with these fists of mine!”
@@ -650,9 +655,10 @@ we ever wanted!”
 “Uuuuuu... D-Domon...?”
 
 @28149 Domon · ドモン
+# 审校：願わくば
 > 「アレンビー!? シャッフルの証しよ、
 >  願わくばアレンビーの
-“Allenby?! Proof of the Shuffle Alliance, if you will,
+“Allenby?! Crest of the Shuffle Alliance, I beg you,
 ---
 >  魂の拳を、呼び戻してくれ!」
 call back Allenby's fist of the soul!”
@@ -771,13 +777,14 @@ We can make as many memories as we want...”
 “Yeah... that's right, Four. That's right.”
 
 @28171 Quattro · クワトロ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「カミーユ、サイコガンダムは破壊した。
 >  大丈夫だとは思うが
 “Kamille, I destroyed the Psyco Gundam. I think you're fine now, but
 ---
 >  薬物の問題もある。
 >  ハサン先生にみてもらえ」
-there's also the matter of the drugs. Have Teacher Hasan take a look at you.”
+there's also the matter of the drugs. Have Dr. Hasan take a look at you.”
 
 @28172 Kamille · カミーユ
 > 「ありがとうございます、大尉。
@@ -874,12 +881,13 @@ make a world where this never happens again.”
 “And what of that Foundation of yours?”
 
 @28191 Wong · ウォン
+# 审校：先生＝东方先生
 > 「クククク、しょせん伝統に
 >  しがみついているような連中ですよ
 “Heh heh heh, they're just a bunch clinging to tradition.
 ---
 >  それよりも先生の方はどうですか」
-More importantly, how are things on your end, Teacher?”
+More importantly, how are things on your end, Master?”
 
 @28192 Master · マスター
 > 「うむ、奴らが再びあらわれたのは
@@ -891,9 +899,10 @@ More importantly, how are things on your end, Teacher?”
 This will make it all the easier to achieve my goal.”
 
 @28193 Wong · ウォン
+# 审校：ウォン称呼东方不败为“東方先生”，按 address 应译为 Master Asia，而非 Master Touhou。
 > 「これは頼もしいですな。
 >  期待していますよ、東方先生」
-“How reassuring. I'm counting on you, Master Touhou.”
+“How reassuring. I'm counting on you, Master Asia.”
 
 @28194 Dermail · デルマイユ
 > 「諸君、いよいよ我々が
@@ -1009,8 +1018,9 @@ and the bearers of a new age are born precisely from among the defeated.”
 “Treize, what are you trying to say?”
 
 @28203 Treize · トレーズ
+# 审校：与 33297 一致
 > 「私は、敗者になりたい」
-“I wish to be a loser.”
+“I wish to be one of the defeated.”
 
 @28204 Dermail · デルマイユ
 > 「……本気のようだな。反逆は
@@ -1025,13 +1035,14 @@ but I don't wish for anything bloody. In light of your achievements thus far,
 Treize, I will have you confined.”
 
 @28205 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうですか、武装解除には
 >  応じませんでしたか
 “I see, so they refused to disarm.
 ---
 >  やはりトレーズ特佐の息のかかった
 >  者たちは、一筋縄ではいきませんな」
-As expected, the men in Colonel Treize's camp are no pushovers.”
+As expected, the men in Special Colonel Treize's camp are no pushovers.”
 
 @28206 Dermail · デルマイユ
 > 「トレーズめ、
@@ -1044,6 +1055,7 @@ As expected, the men in Colonel Treize's camp are no pushovers.”
 “That's why we shouldn't have left it to the likes of Treize.”
 
 @28208 Jamitov · ジャミトフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク、いまさらそれを言っても
 >  しかたあるまい。OZはこのわしが自ら
 “Bask, there's no use saying that now. I have decided to take personal
@@ -1054,7 +1066,7 @@ command of OZ. It would be troublesome if the Treize faction
 ---
 >  反OZの者どもが
 >  結びつくとやっかいだな、特佐」
-joined forces with anti-OZ elements, Colonel.”
+joined forces with anti-OZ elements, Special Colonel.”
 
 @28209 Bask · バスク
 > 「はっ、オペレーション・ノヴァを

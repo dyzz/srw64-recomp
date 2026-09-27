@@ -1,120 +1,159 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9561 Gildrome · ギルドローム
+# 触发：攻击（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かまわん! つっこめ!」
-“I don't care! Charge in!”
+“I don’t care! Charge in!”
 
 @9562 Gildrome · ギルドローム
+# 触发：攻击（通用，2/8）
 > 「ケダモノどもを叩きつぶせぇ!」
 “Crush those beasts!”
 
 @9563 Gildrome · ギルドローム
+# 触发：攻击（通用，3/8）
+# 审校：蹴散らす是击溃驱散
 > 「蹴散らしてしまえ!」
-“Wipe them out!”
+“Scatter them!”
 
 @9564 Gildrome · ギルドローム
+# 触发：攻击（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今まさに地球の命運が決まった
 >  のだ!」
-“Earth's fate is decided this very moment!”
+“Earth’s fate is decided this very moment!”
 
 @9565 Gildrome · ギルドローム
+# 触发：攻击（通用，5/8）
 > 「すべてはゾルバドス星の繁栄のため!」
 “All for the prosperity of Planet Zorbados!”
 
 @9566 Gildrome · ギルドローム
+# 触发：攻击（通用，6/8）
 > 「死ぬがいい!」
 “Just die!”
 
 @9567 Gildrome · ギルドローム
+# 触发：攻击（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪夢をみせてやろう!」
-“I'll give you a nightmare!”
+“I’ll give you a nightmare!”
 
 @9568 Gildrome · ギルドローム
+# 触发：攻击（通用，8/8）
 > 「愚か者め!」
 “Fools!”
 
 @9569 Gildrome · ギルドローム
+# 触发：被击坠（通用，1/2）
 > 「な、なんだとぉぉ! ぐうわぁぁぁぁぁ!」
 “W-what?! Guwaaaaaaah!”
 
 @9570 Gildrome · ギルドローム
+# 触发：被击坠（通用，2/2）
 > 「帝王様、どうかお許しを……」
 “Your Majesty, please forgive me...”
 
 @9571 Gildrome · ギルドローム
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：またしても
 > 「ぐうぅっ、またしてもぉ……」
-“Guh, again...”
+“Guh, not again...”
 
 @9572 Gildrome · ギルドローム
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぬぬ、こうなったら一刻の猶予も
 >  ならん!」
-“Ngh, at this rate there's not a moment to lose!”
+“Ngh, at this rate there’s not a moment to lose!”
 
 @9573 Gildrome · ギルドローム
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「バ、バカな、なぜこんなことに……」
 “I-impossible, why did this happen...”
 
 @9574 Gildrome · ギルドローム
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「な、なんだと!?」
 “W-what?!”
 
 @9575 Gildrome · ギルドローム
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……おのれ! 許さんぞ!」
-“Ngh... why you! I won't forgive this!”
+“Ngh... why you! I won’t forgive this!”
 
 @9576 Gildrome · ギルドローム
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ、なかなかやる。だが!」
-“Guh, you're good. But!”
+“Guh, you’re good. But!”
 
 @9577 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：原文只有一页，tr 多出一个空页，需按 ja 页数修正。
 > 「くっ、未開の星のマシーンとしては
 >  なかなかやるな」
-“Guh, not bad for a machine from an uncivilized planet.”],”
+“Guh, not bad for a machine from an uncivilized planet.”
 
 @9578 Gildrome · ギルドローム
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：ええい→可恶；意思是被这种程度打中
 > 「ええーい、この程度のことで!」
-“Gah, is this all you've got!”
+“Damn it, from a hit like that!”
 
 @9579 Gildrome · ギルドローム
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「愚かな。そんなものは効かぬわ!」
-“Foolish. That won't work on me!”
+“Foolish. That won’t work on me!”
 
 @9580 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「ヒャッハッハ、たいしたものよのぉ」
-“Hyahahaha, impressive indeed.”],”
+“Hyahahaha, impressive indeed.”
 
 @9581 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「フッフッフッフッ、愚か者め」
-“Heh heh heh heh, you fool.”],”
+“Heh heh heh heh, you fool.”
 
 @9582 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：回避（通用，1/2）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「フッフッ、ムダなあがきを」
-“Heh heh, what a pointless struggle.”],”
+“Heh heh, what a pointless struggle.”
 
 @9583 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：回避（通用，2/2）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「あたらぬなぁ」
-“You missed.”],”
+“You missed.”
 
 @9584 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効果が現れたか」
-“So it's taken effect.”],”
+“So it’s taken effect.”
 
 @9585 Gildrome · ギルドローム
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ククククッ、効かぬ、効かぬわ!」
-“Kukukuku, it doesn't work, it doesn't work at all!”
+“Kukukuku, it doesn’t work, it doesn’t work at all!”
 
 @9586 Gildrome · ギルドローム
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：感叹按原文；口语
 > 「な、なんだとぉ!
 >  エネルギーがないというのか!?」
-“W-what?! You mean there's no energy?!”
+“Wh-what?! You’re telling me we’re out of energy?!”
 
 @9587 Gildrome · ギルドローム
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「ぬぅ、こざかしい真似を」
-“Ngh, such a clever trick.”],”
+“Ngh, such a clever trick.”

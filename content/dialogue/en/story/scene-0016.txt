@@ -33,22 +33,23 @@
 “What?! All hands, man your stations! Pilots, get to the deck, on the double!”
 
 @19575 Roux · ルー
+# 审校：原文为「投降するといっています」，用现在进行时更贴合正在通信的语境。
 > 「ちょっと待ってください艦長。
 >  敵輸送艇から通信
 “Wait a moment, Captain. The enemy transport is hailing us.
 ---
 >  投降するといっています」
-They're saying they surrender.”
+They say they're surrendering.”
 
 @19576 Bright · ブライト
 > 「投降!? 誰がだ?」
 “Surrender?! Who is?”
 
 @19577 Roux · ルー
-# 审校：エマ・シーン特尉：特尉不是少尉，按军衔体系应译为 Lieutenant（中尉），并保留 Specials 的称呼。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「スペシャルズの、エマ・シーン特尉
 >  だそうです」
-“A Specials officer, apparently. Lieutenant Emma Sheen.”
+“A Specials officer, apparently. Special Lieutenant Emma Sheen.”
 
 @19578 Bright · ブライト
 > 「エマ・シーン……? 1人なのか?」
@@ -69,9 +70,9 @@ They're saying they surrender.”
 “I'm Emma Sheen. I appreciate your taking me in.”
 
 @19582 Kamille · カミーユ
-# 审校：同上，特尉应译为 Lieutenant，保持与 L10 一致。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > (エマ・シーン特尉か……)
-(Lieutenant Emma Sheen, huh...)
+(Special Lieutenant Emma Sheen, huh...)
 
 @19583 Quattro · クワトロ
 > 「私は君の心変わりを信じることが
@@ -88,9 +89,10 @@ chosen personnel with ideals different from ours, after all.”
 “Is that sarcasm? But I understand what you're saying.”
 
 @19585 Quattro · クワトロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「何があったのかね、スペシャルズで。
 >  いや、君の心の中で、か」
-“What happened to you in the Specials? No — what happened in your heart?”
+“What happened to you in the Specials? No... what happened in your heart?”
 
 @19586 Emma · エマ
 > 「別に何も。私は自分の信じる
@@ -101,19 +103,19 @@ chosen personnel with ideals different from ours, after all.”
 Nothing has changed.”
 
 @19587 Quattro · クワトロ
-# 审校：クワトロ称呼エマ为特尉，应译为 Lieutenant，而不是 Ensign。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉、しばらくは監視つきになるが」
-“Lieutenant, you'll be under watch for a while.”
+“Special Lieutenant, you'll be under watch for a while.”
 
 @19588 Emma · エマ
 > 「当然でしょうね」
 “Naturally.”
 
 @19589 Quattro · クワトロ
-# 审校：エマ特尉应译为 Lieutenant Emma，保持军衔一致。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「カミーユ、エマ特尉を部屋へ
 >  案内してやってくれ」
-“Kamille, show Lieutenant Emma to her room.”
+“Kamille, show Special Lieutenant Emma to her room.”
 
 @19590 Kamille · カミーユ
 > 「はい。こちらです、エマさん」
@@ -149,14 +151,14 @@ what the Specials have been doing.”
 Can you honestly say you've never dragged anyone into it?”
 
 @19596 Quattro · クワトロ
-# 审校：エマ特尉应译为 Lieutenant Emma，保持军衔一致。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やめないか2人とも。エマ特尉、
 >  悪いがしばらくは自由にはできん
-“That's enough, both of you. Lieutenant Emma, I'm sorry, but you won't have your freedom for a while.
+“That's enough, both of you. Special Lieutenant Emma, I'm sorry, but you won't have your freedom for a while.
 ---
 >  カミーユ、エマ特尉を部屋に
 >  案内してやってくれ」
-Kamille, show Lieutenant Emma to her room.”
+Kamille, show Special Lieutenant Emma to her room.”
 
 @19597 Kamille · カミーユ
 > 「は、はい。こちらです」
@@ -219,9 +221,10 @@ Emma, please stay in this room.”
 “I know!”
 
 @19609 Jerid · ジェリド
+# 审校：“We've got them now!” 语气过于自信，原文“ついているぜ”更接近“走运了”，改为更贴合杰利德口吻的“We're in luck!”。
 > 「奴らに間違いない。俺たちは
 >  ついているぜ!」
-“It's definitely them. We've got them now!”
+“It's definitely them. We're in luck!”
 
 @19610 Lila · ライラ
 > 「じきに連中を追っている部隊も
@@ -259,6 +262,7 @@ Emma, please stay in this room.”
 “...{HeroName}, you'll fight me. Right here.”
 
 @19618 Koji · 甲児
+# 审校：词条：ヴァイローズ=Virose
 > 「おい{HeroName}、ありゃ
 >  ヴァイローズじゃねぇのか!?」
 “Hey, {HeroName}, isn't that Virose?!”
@@ -269,9 +273,10 @@ Emma, please stay in this room.”
 “{PartnerName}?! That can't be. What the hell are you trying to do?!”
 
 @19620 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：手段を選ばん
 > 「いったはずだ、{HeroName}。
 >  俺は手段を選ばんとな」
-“I told you, {HeroName}. I won't choose my means.”
+“I told you, {HeroName}. I'll use any means necessary.”
 
 @19621 Koji · 甲児
 > 「どうすんだよ!?」
@@ -294,6 +299,7 @@ I'll take you down with my own hands.”
 “Hmph. Can you really do it?”
 
 @19624 Koji · 甲児
+# 审校：词条：ヴァイローズ=Virose
 > 「おい{HeroName}、ありゃ
 >  ヴァイローズじゃねぇのか!?」
 “Hey, {HeroName}, isn't that Virose?!”
@@ -304,9 +310,10 @@ I'll take you down with my own hands.”
 “{PartnerName}?! That can't be. What the hell are you trying to do?!”
 
 @19626 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：手段を選ばん
 > 「いったはずだ、{HeroName}。
 >  俺は手段を選ばんとな
-“I told you, {HeroName}. I won't choose my means.
+“I told you, {HeroName}. I'll use any means necessary.
 ---
 >  貴様の方から俺と戦いたくなる
 >  ようにしてやる」
@@ -343,9 +350,10 @@ I'll make you want to fight me.”
 “{PartnerName}...”
 
 @19634 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐，口吻应更正式，将“I will”改为“I shall”以符合其voice。
 > 「今度こそ、アナタを倒してみせますわ
 >  {HeroName}さん。覚悟なさい」
-“This time I will defeat you, {HeroName}. Prepare yourself.”
+“This time I shall defeat you, {HeroName}. Prepare yourself.”
 
 @19635
 > *  待って{PartnerName}!
@@ -368,8 +376,9 @@ I'll make you want to fight me.”
 “{PartnerName}! I...”
 
 @19639 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式，将“There's”改为“There is”以符合其不用缩写的习惯。
 > 「問答は無用です!」
-“There's no point in talking!”
+“There is no point in talking!”
 
 @19640 Manami · マナミ（按段落 3DD4）
 > 「残念だわ、{PartnerName}。
@@ -381,14 +390,16 @@ I'll make you want to fight me.”
 I can't just let myself be beaten either.”
 
 @19641 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式，将“Fine”改为“Very well”，并将“there'd”改为“there would”以符合其不用缩写的习惯。
 > 「結構ですわ。そうでなければ
 >  張り合いがありませんもの」
-“Fine. Otherwise there'd be no contest at all.”
+“Very well. Otherwise there would be no contest at all.”
 
 @19642 Emma · エマ
+# 审校：精读：1級特尉
 > 「私は、スペシャルズのエマ・シーン1級
 >  特尉だ。聞きたいことがある
-“I'm Emma Sheen, First Lieutenant of the Specials. There's something I want to ask.
+“I'm Emma Sheen, Special Lieutenant First Class of the Specials. There's something I want to ask.
 ---
 >  ニューエドワーズ基地でお前たちが
 >  言っていた“はめられた”とは、
@@ -456,21 +467,21 @@ and secure the rights of Earthlings. There's no way I can believe
 they'd need to do something like that.”
 
 @19647 Quattro · クワトロ
-# 审校：原文最后一句“わたくしの軍隊なのだ”是承接前句说明“私兵”，不是“我的军队”；初稿译成“My private army”会误认为说话人自己的军队。改为“A private army.”更准确。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「違うな。誰のための権利を獲得
 >  しつつあるのか、よく考えてみればいい
 “You're wrong. Think carefully about whose rights they're securing.
 ---
 >  スペシャルズそのもの、いや、ロームフェラ
 >  財団のためだとわかるはずだ
-You should see it's for the Specials themselves—no, for the Romefeller Foundation.
+You should see it's for the Specials themselves... no, for the Romefeller Foundation.
 ---
 >  スペシャルズは地球圏全体のため
 >  の軍隊などではない。私兵だよ
 The Specials are no army for the entire Earth Sphere. They're a private force.
 ---
 >  わたくしの軍隊なのだ」
-A private army.”
+Someone's personal army.”
 
 @19648 Emma · エマ
 > 「……そんな…………」
@@ -520,9 +531,10 @@ A private army.”
 “So you too, huh. I was just thinking it looks like someone I know.”
 
 @19659 Ryoma · リョウ
+# 审校：原文“あれで間違いないのか”指确认对方身份，tr 的 it 指代不明，改为 him 更贴合语境。
 > 「追いついたぞ、ドモン・カッシュ。
 >  あれで間違いないのか?」
-“We caught up, Domon Kasshu. Is that really it?”
+“We caught up, Domon Kasshu. Is that really him?”
 
 @19660 Domon · ドモン
 > 「ああ、間違いない。
@@ -582,9 +594,10 @@ First we smash this thing, that comes first.”
 “You know it?”
 
 @19671 Quatre · カトル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ええ。僕に、いえおそらく僕たち
 >  5人に破壊指示がきていました
-“Yes. I—no, most likely all five of us—received orders to destroy it.
+“Yes. I... no, most likely all five of us... received orders to destroy it.
 ---
 >  あれが……
 >  6つめの流星の、正体です」
@@ -710,10 +723,10 @@ if you don't mind?”
 “I have no intention of attacking.”
 
 @19697 Banjo · 万丈
-# 审校：原文“特尉”按军衔规则应译为 First Lieutenant，初稿误译为 Ensign。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「スペシャルズの……
 >  エマ・シーン特尉だったかな?」
-“A Specials... First Lieutenant Emma Sheen, was it?”
+“A Specials... Special Lieutenant Emma Sheen, was it?”
 
 @19698 Emma · エマ
 > 「ええ」
@@ -730,9 +743,9 @@ if you don't mind?”
 “Captain, it seems it was just as you said.”
 
 @19701 Quattro · クワトロ
-# 审校：同上，原文“特尉”应译为 First Lieutenant，初稿误译为 Ensign。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ほう……エマ・シーン特尉か」
-“Oh... First Lieutenant Emma Sheen, is it?”
+“Oh... Special Lieutenant Emma Sheen, is it?”
 
 @19702 Emma · エマ
 > 「どういうことです?」
@@ -781,10 +794,10 @@ and I don't think anything about me has changed.”
 “...Understood. Banjo, I'll leave the decision to you.”
 
 @19711 Banjo · 万丈
-# 审校：エマ军衔为中尉，特尉应译为 Lieutenant，不是 Ensign。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それはどうも。なら、よろしくお願いした
 >  いな、エマ特尉」
-“Much obliged. Then, I'd like to ask for your help, Lieutenant Emma.”
+“Much obliged. Then, I'd like to ask for your help, Special Lieutenant Emma.”
 
 @19712 Emma · エマ
 > 「ありがとう」
@@ -959,30 +972,35 @@ I'd heard you were interned by the Empire...”
 I managed to escape... but I never thought you'd be here, Bright.”
 
 @19747 Bright · ブライト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「よく来てくれた。紹介しよう、
 >  地球解放戦線機構の
-“Good to have you. Let me introduce you—Captain Quattro of the
+“Good to have you. Let me introduce you... Captain Quattro of the
 ---
 >  クワトロ大尉だ」
 Liberation Front of the Earth.”
 
 @19748 Bright · ブライト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「よく来てくれた。紹介しよう、
 >  カラバの破嵐万丈くんと、
-“Good to have you. Let me introduce you—Banjo Haran of Karaba,
+“Good to have you. Let me introduce you... Banjo Haran of Karaba,
 ---
 >  地球解放戦線機構の
 >  クワトロ大尉だ」
 and Captain Quattro of the Liberation Front of the Earth.”
 
 @19749 Banjo · 万丈
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「噂は聞いていますよ、
 >  アムロ・レイ大尉
 “I've heard the rumors, Captain Amuro Ray.
 ---
 >  輸送機のような機動性のない
 >  ものをMSにぶつけるとは、さすがですね」
-Ramming a transport with no mobility into an MS—impressive as expected.”
+Ramming a transport with no mobility into an MS... impressive as expected.”
 
 @19750 Amuro · アムロ
 > 「アムロでいいよ。たまたまうまくいった
@@ -995,9 +1013,9 @@ Ramming a transport with no mobility into an MS—impressive as expected.”
 “An honor to meet the hero of the One Year War. Pleased to meet you.”
 
 @19752 Amuro · アムロ
-# 审校：アムロ称クワトロ为“大佐”，但クワトロ下一句纠正自己是“大尉”，这里应译为 Captain 而非 Colonel，以配合后续纠正。
+# 审校：クワトロ的军衔是大尉，Amuro 故意用错军衔，译文应保留“Lieutenant”以体现这层讽刺。（人工改写）
 > 「……よろしく、大佐」
-“...Pleased to meet you, Captain.”
+“...Pleased to meet you, Colonel.”
 
 @19753 Quattro · クワトロ
 > 「私は大尉だよ」
@@ -1152,7 +1170,7 @@ he's already started on new research.”
 “The Doctor told us to come and join up with you.”
 
 @19779 Quattro · クワトロ
-# 审校：原文第2页开头有“これほどのものとは。では”，初稿漏掉了引号内第2页开头的引号，且第1页结尾逗号后第2页应另起引号。
+# 审校：跨页多余的引号
 > 「なるほど、カラバでは戦闘ロボットを
 >  いくつか研究していると聞いていたが
 “I see. I'd heard Karaba was researching several combat robots,
@@ -1172,8 +1190,9 @@ but I never imagined anything like this. So that Gundam type is Karaba's too?”
 “Oh, we're... not with them. We were just, um, chasing the Dark Gundam...”
 
 @19782 Domon · ドモン
+# 审校：多蒙语气粗犷直接，原译“don't say unnecessary things”略显生硬，改为更口语化的说法。
 > 「レイン、余計なことは言うな」
-“Rain, don't say unnecessary things.”
+“Rain, don't say anything unnecessary.”
 
 @19783 Rain · レイン
 > 「だって、お世話になるからには、
@@ -1181,11 +1200,13 @@ but I never imagined anything like this. So that Gundam type is Karaba's too?”
 “But if we're going to impose on them, we have to explain properly.”
 
 @19784 Domon · ドモン
+# 审校：多蒙的短句风格应更口语化，原译过于书面。
 > 「俺はそんな気はない」
-“I have no intention of doing that.”
+“I've got no intention of that.”
 
 @19785 Rain · レイン
-# 审校：原文第1页结尾是问号，初稿第1页结尾也是问号，但第2页开头应另起引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「じゃあどうするというの?
 “Then what will you do?
 ---
@@ -1203,7 +1224,7 @@ Keep wandering around searching for the Dark Gundam? While running from the Impe
 “Ah, sorry, I'm not following this conversation...”
 
 @19788 Hayato · ハヤト
-# 审校：原文第2页开头“出会っただけでね”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「俺たちもあのバケモノの知らせを
 >  聞いて、調査していたところで
 “We just happened to run into them while investigating that monster after hearing reports,
@@ -1226,7 +1247,7 @@ that's all. Truth is, we don't know much about their situation either.”
 “...Who the hell are you?!”
 
 @19792 Duo · デュオ
-# 审校：原文第2页开头“降りてきただけの話さ”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「おいおい、そんなににらまないでくれよ。
 >  ただあんたらよりちょっとばかり先に
 “Hey, hey, don't glare at me like that. We just came down
@@ -1254,7 +1275,7 @@ a little ahead of you, that's all.”
 “What do you mean?”
 
 @19797 Duo · デュオ
-# 审校：原文第2页开头“たぶん似たようなものだろう”，初稿第2页开头漏了引号；第3、4、5页开头也漏了引号。
+# 审校：跨页多余的引号
 > 「俺たち5人……とはいっても
 >  他の連中の事情は知らないが
 “The five of us... though I don't know the others' circumstances,
@@ -1275,7 +1296,8 @@ at that time. Almost at the same moment as us, something else
 came down to Earth too.”
 
 @19798 Quatre · カトル
-# 审校：原文第2页开头“そのデビルガンダムを捕獲、あるいは破壊せよという指示を受けました”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうです。それがデビルガンダム……。
 >  そして僕たちはもうひとつ……
 “That's right. That was the Dark Gundam... And we received another order...
@@ -1285,7 +1307,8 @@ came down to Earth too.”
 to capture or destroy that Dark Gundam.”
 
 @19799 Duo · デュオ
-# 审校：原文第2页开头“詳細は知らない”，初稿第2页开头漏了引号；第3页开头也漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「コロニー間は帝国軍によって
 >  相互の連絡を断たれているから
 “The Imperial Army has cut off communications between the colonies,
@@ -1303,7 +1326,8 @@ fled to Earth with the Dark Gundam. His name is Kyoji Kasshu.”
 “Kasshu?! Then...”
 
 @19801 Rain · レイン
-# 审校：原文第2页开头“するなんて信じられない”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモンの……お兄さんなんです。でも
 >  私はキョウジさんがそんなことを
 “He's Domon's... older brother. But I can't believe Kyoji would do
@@ -1313,7 +1337,8 @@ fled to Earth with the Dark Gundam. His name is Kyoji Kasshu.”
 something like that... Besides, the Dark Gundam was originally...”
 
 @19802 Domon · ドモン
-# 审校：原文第2页开头“デビルガンダムは俺がこの手で倒す”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「言うなレイン。お前たちにも
 >  言っておく。キョウジは
 “Don't say it, Rain. I'll tell you all this too. Kyoji...
@@ -1327,7 +1352,8 @@ the Dark Gundam... I'll destroy them with my own hands! I won't let anyone inter
 “Domon...”
 
 @19804 Bright · ブライト
-# 审校：原文第2页开头“そんなに危険なのか?”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なるほどな……事情は大体わかった
 >  そのデビルガンダムというのは、
 “I see... I've got the general picture now. This Dark Gundam,
@@ -1341,7 +1367,7 @@ is it really that dangerous?”
 “From what we've heard, it's been destroying everything indiscriminately.”
 
 @19806 Duo · デュオ
-# 审校：原文第2页开头“唯一の救いは”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「自己進化、自己再生、
 >  自己増殖。本物のバケモノだぜ
 “Self-evolution, self-regeneration, self-replication. It's a real monster.
@@ -1351,7 +1377,8 @@ is it really that dangerous?”
 The only saving grace is that it's not exactly a picnic for the Empire either.”
 
 @19807 Bright · ブライト
-# 审校：原文第2页开头“デビルガンダムに関する情報もつかみやすくなる”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「わかった。ドモンくんと言ったな。
 >  我々と同行すれば
 “Understood. Domon, was it? If you come with us,
@@ -1366,14 +1393,14 @@ it'll be easier to get information about the Dark Gundam. How about it?”
 “...You're telling me to fight the Empire alongside you?”
 
 @19809 Quattro · クワトロ
-# 审校：原文第2页开头“はちあわせする。ならば我々と同行したほうが君にとっても”，初稿第2页开头漏了引号；第3页开头也漏了引号。
+# 审校：跨页多余的引号
 > 「そう悪い話でもあるまい。どのみち
 >  地上にいれば嫌でも帝国軍と
 “It's not such a bad deal. Either way, as long as you're on the surface, you'll run into the Imperial Army whether you like it or not.
 ---
 >  はちあわせする。ならば我々と
 >  同行したほうが君にとっても、
-In that case, wouldn't it be better for you and your companions
+In that case, wouldn't it be better for you and your companion
 ---
 >  君の連れにとっても
 >  よいのではないかな」
@@ -1385,7 +1412,7 @@ to come along with us?”
 “...Fine. But for me, fighting the Imperial Army comes second.”
 
 @19811 Quattro · クワトロ
-# 审校：原文第2页开头“ないようだからな”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「構わんさ。どのみち我々にとっても
 >  放っておけるようなものでは
 “I don't mind. Either way, it seems we can't afford
@@ -1399,7 +1426,7 @@ to ignore it ourselves.”
 “I get the picture. So this Dark Gundam is pretty dangerous.”
 
 @19813 Duo · デュオ
-# 审校：原文第2页开头“唯一の救いは”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「自己進化、自己再生、
 >  自己増殖。本物のバケモノだぜ
 “Self-evolution, self-regeneration, self-replication. It's a real monster.
@@ -1409,7 +1436,8 @@ to ignore it ourselves.”
 The only saving grace is that it's not exactly a picnic for the Empire either.”
 
 @19814 Banjo · 万丈
-# 审校：原文第2页开头“僕たちの情報網でデビルガンダムのことも探しやすくなるが?”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン・カッシュ。レイン嬢の
 >  言う通り僕たちに同行すれば
 “Domon Kasshu. As Miss Rain says, if you come with us,
@@ -1447,7 +1475,7 @@ our information network will make it easier to track down the Dark Gundam too, y
 “I didn't end up like this by choice. You of all people should understand that.”
 
 @19821 Quattro · クワトロ
-# 审校：原文第2页开头“道を示せるアムロ・レイであってほしいそれが私に言える最大の言葉だ”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「しかし同情がほしいわけでもないの
 >  だろう? ならば、若者たちに
 “But you don't want pity either, do you? Then I want you to be the Amuro Ray who can show these young people the way.
@@ -1470,7 +1498,7 @@ That's the most I can say to you.”
 “...”
 
 @19825 Quattro · クワトロ
-# 审校：原文第2页开头“利することになる”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「……自分のカラに閉じこもっている
 >  ことは、異星人の帝国に
 “...Shutting yourself away in your own shell only benefits
@@ -1479,7 +1507,7 @@ That's the most I can say to you.”
 the alien Empire.”
 
 @19826 Amuro · アムロ
-# 审校：原文第2页开头“できない相談だ!”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「いままで軟禁されていた俺に何を
 >  しろと!? 宇宙にでも行けなければ
 “What do you expect me to do when I've been under house arrest all this time?! If I can't even go to space,
@@ -1488,7 +1516,7 @@ the alien Empire.”
 it's impossible!”
 
 @19827 Quattro · クワトロ
-# 审校：原文第2页开头“何も成せないのだということは”，初稿第2页开头漏了引号。
+# 审校：跨页多余的引号
 > 「果たしてそうかな? 気力を
 >  無くしてしまった者は
 “Is that really so? Remember this: those who lose their spirit

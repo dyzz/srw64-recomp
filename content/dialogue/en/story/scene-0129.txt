@@ -46,13 +46,14 @@
 “Impossible. All we can do now is put them to rest.”
 
 @43033 Wong · ウォン
+# 审校：Wong 是阴柔算计的政客，"This is convenient" 过于直白，改为 "How convenient" 更贴合其腔调。
 > 「あれは……アレンビー・ビアズリー。
 >  ククククッ、私のところへ
 “That's... Allenby Beardsley. Kukukuku, so you've come back
 ---
 >  もどってきてくれたというわけですか。
 >  これは好都合
-to me. This is convenient.
+to me. How convenient.
 ---
 >  強化型バーサーカーシステムを
 >  作動させろ!」
@@ -104,13 +105,15 @@ Activate the enhanced Berserker System!”
 “Ah... uwaaaaaah!!”
 
 @43045 Wong · ウォン
+# 审校：Wong 对阿莲比下命令时用 "retreat" 过于军事化，改为 "fall back" 更符合其政客口吻。
+# 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > 「しまった、ノーベルガンダムとDG細胞
 >  の融合を急がせすぎたか
 “Damn, did I rush the fusion of the Noble Gundam and the DG Cells too much?
 ---
 >  しかたがない、アレンビー、
 >  撤退しなさい!」
-It can't be helped. Allenby, retreat!”
+It can't be helped. Allenby, fall back!”
 
 @43046 Domon · ドモン
 > 「クッ……アレンビーッ!!」
@@ -317,8 +320,9 @@ my desire to save someone like you won't lose to anyone! So!”
 “Ngh, was I careless...?!”
 
 @43083 Domon · ドモン
+# 审校：?!
 > 「バカな!? この俺が……!?」
-“Impossible!? Me...?!”
+“Impossible?! Me...?!”
 
 @43084 Wong · ウォン
 > 「ええい、こうなったら、しかたがない」
@@ -366,9 +370,10 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 “...Target confirmed.”
 
 @43093 Duo · デュオ
+# 审校：Duo 的 voice 中自称 the God of Death，将 Grim Reaper 改为其惯用自称。
 > 「悪魔さんよ、死神が迎えに
 >  来たぜぇ!」
-“Hey there, Mister Devil, the Grim Reaper's come to pick you up!”
+“Hey there, Mister Devil, the God of Death's come to pick you up!”
 
 @43094 Quatre · カトル
 > 「今はこんなことをしている場合じゃ
@@ -480,22 +485,24 @@ bring the Dark Gundam back to full revival!”
 who on earth is the one inside the Dark Gundam...?”
 
 @43112 Schwarz · シュバルツ
+# 审校：破折号
 > 「いいか、私はキョウジであって
 >  キョウジではない。いわば、影
-“Listen well. I am Kyoji, and yet not Kyoji. I am, so to speak, a shadow—
+“Listen well. I am Kyoji, and yet not Kyoji. I am, so to speak, a shadow.
 ---
 >  二つに分かれてしまった心と体。
 >  いわば鏡に映ったキョウジの影なのだ
-a heart and body split in two. I am the shadow of Kyoji reflected in a mirror.
+A heart and body split in two. I am the shadow of Kyoji reflected in a mirror.
 ---
 >  本物のキョウジは確かに
 >  あの中にいる」
 The real Kyoji is indeed inside that thing.”
 
 @43113 Domon · ドモン
+# 审校：多蒙是粗犷武斗家，原文「わからないよ」语气更冲，改为更口语化的“I don't get it”并加强语气。
 > 「わからないよ!
 >  いったい、どういうことなんだよ!
-“I don't understand! What on earth does this mean?!
+“I don't get it! What the hell is going on?!
 ---
 >  どうして、兄さんが2人もいるんだ!?」
 Why are there two of you, brother?!”
@@ -515,9 +522,11 @@ created with the power of the DG Cells. All of it was to destroy the Dark Gundam
 “No! It was my brother who used that thing to try and conquer the Earth Sphere...”
 
 @43116 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+“That's wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -528,9 +537,11 @@ created for the purpose of restoring the Earth.”
 “Restoring the Earth...?”
 
 @43118 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あの3大理論、自己再生・
 >  自己進化・自己増殖は
-“Those three great theories—self-recovery, self-evolution, self-replication—were
+“Those three great theories, self-recovery, self-evolution and self-replication, were
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
@@ -605,8 +616,9 @@ and tried to have me protect you.”
 believed me honestly... Domon, I too... I suffered too... ngh...”
 
 @43125 Domon · ドモン
+# 审校：破折号
 > 「シュバルツ、いや兄さん!?」
-“Schwarz—no, brother?!”
+“Schwarz... no, brother?!”
 
 @43126 Schwarz · シュバルツ
 > 「私の命もまたキョウジとともにある。
@@ -654,9 +666,11 @@ hold on, this body of mine!”
 “Brother!”
 
 @43136 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、早くうて、
 >  私ごとデビルガンダムを!」
-“Domon, fire now—Dark Gundam and all, me included!”
+“Domon, fire now! The Dark Gundam and all, me included!”
 
 @43137 Domon · ドモン
 > 「し、しかし兄さん……」
@@ -675,6 +689,7 @@ there's no other way but to shoot Kyoji!”
 “No! I can't, I can't do it!”
 
 @43140 Schwarz · シュバルツ
+# 审校：破折号
 > 「甘ったれるな! その拳の紋章は
 >  偽物か! お前もその紋章を
 “Don't be soft! Is the crest on that fist a fake?! If you bear that crest,
@@ -685,29 +700,32 @@ then you must not be swayed by sentiment and lose sight of your purpose!
 ---
 >  こんな、こんな悲劇は、終わらせる
 >  のだ!」
-This—this tragedy—we end it here!”
+This... this tragedy ends here!”
 
 @43141 Domon · ドモン
 > 「兄さん……」
 “Brother...”
 
 @43142 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「さぁ、やるんだ! デビルガンダムの呪い
 >  から、私たちを解き放ってくれ!
 “Now, do it! Free us from the Dark Gundam's curse!
 ---
 >  頼むドモン、デビルガンダムに
 >  最後の一撃を!!」
-Please, Domon—deal the Dark Gundam its final blow!!”
+Please, Domon, deal the Dark Gundam its final blow!!”
 
 @43143 Domon · ドモン
 > 「くっ……わかったよ、兄さん……」
 “Ngh... All right, brother...”
 
 @43144 Master · マスター
+# 审校：破折号
 > 「よせドモォォンッ! それなくして地球
 >  の、地球の未来はぁぁぁぁぁ!!」
-“Stop it, Domooooon! Without that, Earth's—Earth's future will beeee!!”
+“Stop it, Domooooon! Without that, Earth's... Earth's future will beeee!!”
 
 @43145 Domon · ドモン
 > 「……兄さん……」
@@ -727,9 +745,10 @@ Please, Domon—deal the Dark Gundam its final blow!!”
 “Ngh... Brooooothaaaaaa!!”
 
 @43149 Wong · ウォン
+# 审校：破折号
 > 「ばかな……こんな、こんなはずでは……
 >  こんなはずでは、なかったのにぃ……」
-“Impossible... This—this wasn't supposed to happen... It wasn't supposed to happen...”
+“Impossible... This... this wasn't supposed to happen... It wasn't supposed to happen...”
 
 @43150 Master · マスター
 > 「ああ……ワシの……ワシのデビルガンダム
@@ -769,9 +788,10 @@ your own!!”
 “Then why do you need the Dark Gundam?!”
 
 @43156 Master · マスター
+# 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then I shall teach you through the word 'battle'!”
+“Heh heh heh, you want to know? Then let a match between us be my answer!”
 
 @43157 Domon · ドモン
 > 「キョウジ……兄さん……」
@@ -790,9 +810,10 @@ your own!!”
 “What's wrong, Schwarz?”
 
 @43161 Rain · レイン
+# 审校：破折号
 > 「……ドモン! その人は、その人は
 >  あなたのお兄さんなのよ!」
-“...Domon! That man—that man is your brother!”
+“...Domon! That man... that man is your brother!”
 
 @43162 Schwarz · シュバルツ
 > 「レイン……」
@@ -813,8 +834,9 @@ your own!!”
 split in two. In other words... the shadow of Kyoji reflected in a mirror.”
 
 @43165 Domon · ドモン
+# 审校：破折号
 > 「俺は、俺にはわからないよ!」
-“I—I don't understand!”
+“I... I don't understand!”
 
 @43166 Schwarz · シュバルツ
 > 「私はDG細胞の力を借り、
@@ -832,9 +854,11 @@ All of it was to eradicate the Dark Gundam.”
 “No! It was my brother who used that thing and plotted to conquer the Earth Sphere...”
 
 @43168 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+“That's wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -845,25 +869,27 @@ created for the purpose of restoring the Earth.”
 “Restoring the Earth...?”
 
 @43170 Schwarz · シュバルツ
+# 审校：破折号；与 43118 一致
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あの3大理論、自己再生・
 >  自己進化・自己増殖は
-“Those three great theories—self-recovery, self-evolution, self-multiplication—were
+“Those three great theories, self-recovery, self-evolution and self-replication, were
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth's natural restoration. But! There were those who took notice of
+all meant for the Earth's natural regeneration. But! There were those who noticed
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
-its astounding power. I boarded the Ultimate Gundam and fled to Earth. However, because
+its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-of the attack I took during my escape, the program went haywire, and it became that
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @43171 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -888,13 +914,15 @@ the sixth Gundam of Operation Meteor.”
 desperately chased after my brother...”
 
 @43174 Schwarz · シュバルツ
+# 审校：全局：帝国軍 Imperial 大写统一
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
 “You're honest at heart, so I was sure you'd be put in a Gundam and come chasing after
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、帝国軍もいた。お前が
-Kyoji. That's what I thought. But the enemy was powerful, and the imperial forces were there too. It was
+Kyoji. That's what I thought. But the enemy was powerful, and the Imperial forces were there too. It was
 ---
 >  無茶をするのは目に見えていた。
 >  そこでデビルガンダムに取り込まれた
@@ -922,8 +950,9 @@ protect you.”
 believed me so easily... Domon, I too... I suffered as well... ngh...”
 
 @43177 Domon · ドモン
+# 审校：破折号
 > 「シュバルツ、いや兄さん!?」
-“Schwarz—no, brother?!”
+“Schwarz... no, brother?!”
 
 @43178 Schwarz · シュバルツ
 > 「私の命もまたキョウジとともにある。
@@ -1014,9 +1043,10 @@ your own!!”
 “Then why do you need the Dark Gundam?!”
 
 @43194 Master · マスター
+# 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then I'll teach you with the word 'duel'!”
+“Heh heh heh, you want to know? Then let a match between us be my answer!”
 
 @43195 Master · マスター
 > 「ドモンよ、貴様らは地球の
@@ -1131,9 +1161,10 @@ King of Hearts...”
 “Master Asia, you're finished.”
 
 @43209 Master · マスター
+# 审校：Master 的 voice 要求无缩写，将 really 改为 truly 以贴合其古风口吻。
 > 「フ、ククククッ、まったくこの……
 >  ばか弟子が……だが……見事よな」
-“Hmph, heh heh heh, you really are... a foolish disciple... but... magnificent.”
+“Hmph, heh heh heh, you truly are... a foolish disciple... but... magnificent.”
 
 @43210 Domon · ドモン
 > 「……師匠……?」
@@ -1168,9 +1199,11 @@ King of Hearts...”
 should have become a god ruling the universe...”
 
 @43216 Domon · ドモン
+# 审校：大写
+# 检查提示：未用必用译名：ウォン・ユンファ→Wong Yun-Fat
 > 「ウォン・ユンファ、財団の幹部が
 >  何を企んだか知らぬが、すべて
-“Wong Yun-Fat, I don't know what the foundation's executives were plotting, but it all
+“Wong Yun-Fat, I do not know what the Foundation's executives were plotting, but it all
 ---
 >  終わったようだな」
 seems to be over now.”
@@ -1317,9 +1350,10 @@ Answer me, Allenby!!”
 “Allenbyyyyy!!”
 
 @43245 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，且此处为质问语气，将 “What on earth is” 改为更简洁有力的 “What is” 以贴合其豪迈口吻。
 > 「ウォン! これは、いったい
 >  どういうことだ!?」
-“Wong! What on earth is the meaning of this?!”
+“Wong! What is the meaning of this?!”
 
 @43246 Wong · ウォン
 > 「東方先生、私のアレンビーが
@@ -1330,9 +1364,10 @@ Answer me, Allenby!!”
 That is what this is about.”
 
 @43247 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 “let's” 改为 “let us”。
 > 「ぬぅぅ……いいだろう。だが、お前の
 >  浅知恵がどこまで通用するかな」
-“Ngh... very well. But let's see how far your shallow scheming gets you.”
+“Ngh... very well. But let us see how far your shallow scheming gets you.”
 
 @43248 Domon · ドモン
 > 「…………」
@@ -1363,9 +1398,10 @@ to start over...”
 “M-Master...”
 
 @43253 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 “You'll” 改为 “You will”。
 > 「ワシをまた師匠と呼んで
 >  くれるのか……ワシは……
-“You'll still call me Master... Was I...
+“You will still call me Master... Was I...
 ---
 >  ワシは間違っておったのか……?
 >  なぁ、ドモンよ」
@@ -1424,32 +1460,36 @@ a Gundam Fighter, none of this, none of this would have happened...”
 “Good... then...”
 
 @43262 Domon · ドモン
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @43263 Master · マスター
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @43264 Domon · ドモン
-# 机翻疑问：新译名：全新系裂=Full-New Series Break
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full-New Series Break!”
+“Zenshin Keiretsu!”
 
 @43265 Master · マスター
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full-New Series Break!”
+“Zenshin Keiretsu!”
 
 @43266 Domon · ドモン
-# 机翻疑问：新译名：天破侠乱=Heaven-Splitting Heroic Chaos
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @43267 Master · マスター
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @43268 Domon · ドモン
 > 「見よ! 東方は赤く燃えている!」
@@ -1539,30 +1579,36 @@ a Gundam Fighter, none of this, none of this would have happened...”
 “Good... then...”
 
 @43283 Domon · ドモン
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @43284 Master · マスター
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @43285 Domon · ドモン
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full-New Series Break!”
+“Zenshin Keiretsu!”
 
 @43286 Master · マスター
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full-New Series Break!”
+“Zenshin Keiretsu!”
 
 @43287 Domon · ドモン
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @43288 Master · マスター
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @43289 Domon · ドモン
 > 「見よ! 東方は赤く燃えている!」
@@ -1627,12 +1673,13 @@ it was a battle with heavy losses.”
 “I suppose so... With those two gone, surely they won't be coming back now.”
 
 @43302 Chibodee · チボデー
+# 审校：奇伯迪是豪爽的美国拳手，对夏莉说“頼む”用“if you please”过于文雅，改为更随性的“take it away”。
 > 「それじゃあ、そろそろ出発するか。
 >  早いトコ仲間と合流しようぜ
 “Then let's get moving soon. Let's regroup with our friends as quick as we can.
 ---
 >  シャリー、頼む」
-Shirley, if you please.”
+Shirley, take it away.”
 
 @43303 Shirley · シャリー
 # 审校：梁山泊是专有地名，按音译改为 Ryozanpaku，不应误译为 Neo Hong Kong。

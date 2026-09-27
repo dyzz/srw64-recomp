@@ -25,14 +25,16 @@ little bit wonderful.”
 “Really, I wish you'd share some of that carefree attitude with me.”
 
 @44766 Koji · 甲児
+# 审校：精读：破折号
 > 「ちぇっ。けなすか、ほめるか、どっちかに
 >  してくれよ」
-“Sheesh. Make up your mind—are you insulting me or praising me?”
+“Sheesh. Make up your mind. Are you insulting me or praising me?”
 
 @44767 Sayaka · さやか
+# 审校：精读：破折号
 > 「そうよ。甲児くんはバカなんじゃなくて
 >  あまり深く、物事を考えないだけ
-“That's right. Koji isn't an idiot—he just doesn't think things through
+“That's right. Koji isn't an idiot, he just doesn't think things through
 ---
 >  なんだから」
 very deeply.”
@@ -51,8 +53,9 @@ very deeply.”
 only a tiny fraction of the enemy's whole force. It's enough to make you feel hopeless.”
 
 @44770 Takeru · タケル
+# 审校：全局：Zuul 拼写
 > 「……くそっ、ズールめ……」
-“...Damn it, Zuhl...”
+“...Damn it, Zuul...”
 
 @44771 Masato · 雅人
 > 「ガンドールがあるおかげで、ずいぶんマシに
@@ -63,13 +66,14 @@ only a tiny fraction of the enemy's whole force. It's enough to make you feel ho
 their numbers, it doesn't make much difference.”
 
 @44772 Shinobu · 忍
+# 审校：精读：破折号
 > 「だがよ、そんな簡単に地球が
 >  終わっちまうのかよ!? くそっ、なんか
 “But come on, is Earth really gonna end just like that?! Damn it, isn't there
 ---
 >  ねぇのかよ、一発逆転とまではいわ
 >  ねぇが負けずにすむ方法くらいはよ!」
-something—I'm not asking for a miracle comeback, but at least a way to keep from losing?!”
+something? I'm not asking for a miracle comeback, but at least a way to keep from losing?!”
 
 @44773 Kamille · カミーユ
 > 「……いまの状況では、難しいな」
@@ -84,9 +88,10 @@ something—I'm not asking for a miracle comeback, but at least a way to keep fr
 overturned so easily.”
 
 @44775 Shinobu · 忍
+# 审校：精读：破折号
 > 「んだと、てめぇ、いったいどっちの味方
 >  だ!?」
-“What'd you say, you—whose side are you on anyway?!”
+“What'd you say, you... whose side are you on anyway?!”
 
 @44776 Sara · 沙羅
 > 「やめなよ、忍。みっともないったらありゃ
@@ -120,9 +125,10 @@ overturned so easily.”
 “What are you talking about, Hayato?”
 
 @44783 Daisuke · 大介
+# 审校：合并：冲突人工取舍
 > 「……マーグがいっていたという、ズールの
 >  3つの誤算というやつか」
-“...You mean what Marg said—Zuhl's three miscalculations.”
+“...You mean what Marg said, Zuul's three miscalculations.”
 
 @44784 Ryo · 亮
 > 「ああ。でなければ、俺たちはとうの昔に
@@ -138,6 +144,7 @@ overturned so easily.”
 “Brother, what does that mean?”
 
 @44787 Daisuke · 大介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「聞いた話では、赤ん坊のタケルが
 >  入っていたカプセルは、ずっとそのままの
 “From what I heard, the capsule baby Takeru was in was supposed to
@@ -160,7 +167,7 @@ The third is that Takeru's real father sent in the Five God Robo even
 ---
 >  五神ロボの存在。どれか1つが
 >  なかったとしても、ガイヤーにセットされた
-in defiance of Zuhl. If even one of those had been missing, the
+in defiance of Zuul. If even one of those had been missing, the
 ---
 >  反陽子爆弾が作動していた
 >  はずだ」
@@ -199,9 +206,10 @@ starts from something trivial.”
 “What are you getting at, Ryo?”
 
 @44792 Ark · アーク（按段落 3DD1）
+# 审校：精读：破折号
 > 「……奇跡はおきるのではなく、
 >  おこすもの。そういうことか?」
-“...Miracles aren't something that happen—they're something you make happen. Is that it?”
+“...Miracles aren't something that happen, they're something you make happen. Is that it?”
 
 @44793 Selain · セレイン（按段落 3DD2）
 > 「人の意思が介在しなければ、
@@ -213,8 +221,9 @@ starts from something trivial.”
 “I get it now.”
 
 @44795 Koji · 甲児
+# 审校：甲児对セレイン的回应应更口语化，原文“ホントかよ”是少年口吻，现有译文“You do?”过于正式且与上下文衔接不自然。
 > 「ホントかよ」
-“You do?”
+“Really?”
 
 @44796 Brad · ブラッド（按段落 3DD3）
 > 「つまりだな、奇跡ってのは、おこそうと
@@ -225,9 +234,10 @@ starts from something trivial.”
 That's what you mean, right, Ryo?”
 
 @44797 Manami · マナミ（按段落 3DD4）
+# 审校：精读：破折号
 > 「なるほどね。奇跡はおきるのではなく、
 >  おこすもの。そういうことね」
-“I see. Miracles aren't something that happen—they're something you make happen. That's it, then.”
+“I see. Miracles aren't something that happen, they're something you make happen. That's it, then.”
 
 @44798 Lawrence · ローレンス
 > 「ふむ……確かに、そうかもしれませんな」
@@ -238,9 +248,10 @@ That's what you mean, right, Ryo?”
 “That's right.”
 
 @44800 Roux · ルー
+# 审校：ルー的台词应更口语化，原文“考え方もあるんだ”是轻松语气，现有译文“way of thinking”略显生硬。
 > 「なるほどねぇ。そういう考え方も
 >  あるんだ」
-“I see. So there's a way of thinking like that too.”
+“I see. So there's a way of looking at it like that too.”
 
 @44801 Selain · セレイン（按段落 3DD2）
 > 「もっとも、私は奇跡など信じる
@@ -274,6 +285,7 @@ Everyone had just started to feel a little hopeful, you know.”
 “But it's the truth.”
 
 @44807 Zechs · ゼクス
+# 审校：精读：破折号
 > 「……エピオンの予測も同じだが……
 >  ヒイロ、なぜそれほど落ち着いて
 “...Epyon's prediction says the same. But, Heero, how can you stay so calm?
@@ -284,7 +296,7 @@ What that system shows you binds the pilot like an obsession.
 ---
 >  搭乗者をしばる。残念だが私は
 >  絶望するまいとしているだけで
-Sadly, all I can do is try not to despair—
+Sadly, all I can do is try not to despair,
 ---
 >  精一杯だ」
 and that takes everything I have.”
@@ -309,8 +321,9 @@ is fight. So there's no point in thinking about it. Are all of you different?”
 “In the end, all we can do is steel ourselves for what's coming.”
 
 @44811 Sayaka · さやか
+# 审校：さやか的台词应更少女、犹豫，原文“死ぬ覚悟なんて……したくないわよ”是抗拒语气，现有译文“steel myself to die”过于生硬，且与甲児下一句“死ぬ覚悟なんかじゃない”的呼应不够自然。
 > 「死ぬ覚悟なんて……したくないわよ」
-“I don't want to... steel myself to die.”
+“I don't want to... prepare myself to die.”
 
 @44812 Koji · 甲児
 > 「いや、さやかさん、
@@ -342,9 +355,10 @@ fight to the very end.”
 “A meal? What's this about?”
 
 @44818 Reika · レイカ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「せっかくだからみんなで食事でも
 >  しましょうって、トレーズ特佐が」
-“Colonel Treize said that since we're all here, we should have a meal together.”
+“Special Colonel Treize said that since we're all here, we should have a meal together.”
 
 @44819 Masato · 雅人
 > 「みんなで食事、か。まるで最後の
@@ -471,13 +485,15 @@ the power of our predecessors' great wisdom.”
 “Cusco? Is there something at Cusco?”
 
 @44842 Julia · ジュリア
+# 审校：全局：grados-en
 > 「“グラドスの刻印”と呼ばれる
 >  ものが、そこに眠っています」
-“What is called the ‘Crest of Grados’ sleeps there.”
+“What is called the ‘Grados Crest’ sleeps there.”
 
 @44843 Ryoma · リョウ
+# 审校：全局：grados-en
 > 「“グラドスの刻印”!?」
-“The ‘Crest of Grados’?!”
+“The ‘Grados Crest’?!”
 
 @44844 Bright · ブライト
 > 「それはいったい……」
@@ -677,29 +693,34 @@ might be destroyed through contact with other interstellar species
 ...A safety mechanism to protect against such encounters.”
 
 @44868 Ark · アーク（按段落 3DD1）
+# 审校：全局：grados-en
 > 「そうか……それが“グラドスの
 >  刻印”なんだ」
-“I see... so that's the ‘Crest of Grados.’”
+“I see... so that's the ‘Grados Crest.’”
 
 @44869 Selain · セレイン（按段落 3DD2）
+# 审校：全局：grados-en
 > 「それが“グラドスの刻印”という
 >  やつか」
-“So that's what the ‘Crest of Grados’ is.”
+“So that's what the ‘Grados Crest’ is.”
 
 @44870 Brad · ブラッド（按段落 3DD3）
+# 审校：全局：grados-en
 > 「わかったぜ! それが“グラドスの
 >  刻印”ってやつなんだな!?」
-“I get it! So that's what the ‘Crest of Grados’ is, huh?!”
+“I get it! So that's what the ‘Grados Crest’ is, huh?!”
 
 @44871 Manami · マナミ（按段落 3DD4）
+# 审校：全局：grados-en
 > 「それが“グラドスの刻印”……
 >  そういうことなのね」
-“So that's the ‘Crest of Grados’... that's what it means.”
+“So that's the ‘Grados Crest’... that's what it means.”
 
 @44872 Treize · トレーズ
+# 审校：全局：grados-en
 > 「なるほど、お話はよくわかりました。
 >  その“グラドスの刻印”があれば
-“I see, I understand your story well. If we have that ‘Crest of Grados,’
+“I see, I understand your story well. If we have that ‘Grados Crest,’
 ---
 >  我々は亡びずにすむ可能性が
 >  ある、と。いったい、どのような働きを
@@ -788,9 +809,10 @@ are going to vanish. Right? And right now, we're about to be
 crushed by the enemy armies already in the Earth Sphere.”
 
 @44883 Julia · ジュリア
+# 审校：精读：破折号
 > 「その通りです。しかし、自らの国へ
 >  帰ることができなくなった兵士は
-“That's true. But soldiers who can no longer return to their own homeland—
+“That's true. But soldiers who can no longer return to their own homeland,
 ---
 >  なんらよるべき大義なくして、
 >  戦う意思を持ち続けることが
@@ -800,9 +822,10 @@ can they really keep up the will to fight without any great cause
 to fall back on?”
 
 @44884 Quattro · クワトロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「……無理だな。万丈、確かに
 >  帝国軍は残留するが、もしも
-“...Impossible. Banjo, it's true the imperial forces will remain, but if
+“...Impossible. Banjo, it's true the Imperial forces will remain, but if
 ---
 >  刻印が発動できれば勝機はある
 >  軍隊とはそういうものだ」
@@ -913,16 +936,17 @@ a miracle ourselves!”
 Julia. Everything is a coincidence piled up since a time so distant it makes your head spin...”
 
 @44901 George · ジョルジュ
+# 审校：精读：末页只剩引号，重切
 > 「ええ、マドモアゼル。
 >  もしも、我々人類がこれからも
-“Yes, mademoiselle. If we humans can keep spinning out our history
+“Yes, mademoiselle. If we humans can keep spinning out
 ---
 >  歴史をつむぐことができたとしたら……
 >  これは奇跡と呼ぶにふさわしいものと
-from here on... this will surely be worthy of being called a miracle.
+our history from here on... this will surely be
 ---
 >  なるでしょう」
-”
+worthy of being called a miracle.”
 
 @44902 Manami · マナミ（按段落 3DD4）
 > 「そして、それをするのは、あたしたち。
@@ -975,8 +999,10 @@ a miracle.”
 to Cusco at once?”
 
 @44909 Lady · レディ
+# 审校：レディ对特列斯的称呼应为“Your Excellency”，而非“Lord Treize”。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様」
-“Yes, Lord Treize.”
+“Yes, Your Excellency.”
 
 @44910 Komei · 孔明
 # 审校：原文“遺跡が存在すると”是传闻语气，原译“a ruin ... exists”过于肯定，改为“there are ruins ... in Cusco”更自然。
@@ -1083,9 +1109,10 @@ forty thousand years ago.”
 “I see. So you've found it.”
 
 @44927 Wahl · ワール
+# 审校：ワール对皇帝回话，原文「はっ」是军人对主君的应答，应译为“Yes, Your Majesty”而非“Yes, sir”。
 > 「はっ、地球人どもが集結している
 >  のと、同じ大陸です」
-“Yes, sir. It's on the same continent where the Earthlings are gathering.”
+“Yes, Your Majesty. It's on the same continent where the Earthlings are gathering.”
 
 @44928 Emperor Zuul · ズール皇帝
 > 「ワールよ、地上部隊の全軍に
@@ -1140,9 +1167,11 @@ That's four in all.”
 “That many?! Just hearing the names makes them sound strong!”
 
 @44937 Lady · レディ
+# 审校：レディ对特列斯应称“Your Excellency”，原文「トレーズさま」的敬称需保留。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズさま、クスコの調査に
 >  向かった部隊からの報告です
-“Lord Treize, this is the report from the unit sent to investigate Cusco.
+“Your Excellency, this is the report from the unit sent to investigate Cusco.
 ---
 >  聖女ジュリアのおっしゃられたとおり、
 >  あの地に、はるか昔の遺跡が
@@ -1215,13 +1244,14 @@ Judging by the movements in North America, their destination is indeed this Sout
 “What do you mean?”
 
 @44949 Treize · トレーズ
+# 审校：全局：刻印＝Crest
 > 「遺跡を探っていた何者か、という
 >  のが気になる。我々は何としても
 “This someone who was searching the ruin concerns me. We cannot afford to lose
 ---
 >  “グラドスの刻印”を失うわけ
 >  にはいかないのだ」
-the ‘Mark of Grados’ no matter what.”
+the ‘Grados Crest’ no matter what.”
 
 @44950 Banjo · 万丈
 > 「たしかにね。よし、みんな、クスコへ
@@ -1242,9 +1272,10 @@ the ‘Mark of Grados’ no matter what.”
 Cusco, sir.”
 
 @44953 Banjo · 万丈
+# 审校：全局：刻印＝Crest
 > 「敵さん、やはり刻印に気づいてるね
 >  こっちに来て正解だったようだ」
-“So the enemy has noticed the Mark after all. Looks like coming here was the right call.”
+“So the enemy has noticed the Crest after all. Looks like coming here was the right call.”
 
 @44954 Bright · ブライト
 > 「遺跡の周辺にいたというやつら……
@@ -1265,9 +1296,10 @@ to defend this place.”
 “It seems there's no more time to think. What about Julia?”
 
 @44957 Amuro · アムロ
+# 审校：全局：刻印＝Crest
 > 「エイジたちと一緒に、すでに刻印の
 >  ところへ入った。あとはまかせるしかない」
-“She's already gone into the Mark with Eiji and the others. All we can do now is leave it to them.”
+“She's already gone into the Crest with Eiji and the others. All we can do now is leave it to them.”
 
 @44958 Bright · ブライト
 > 「……そうだな」
@@ -1344,16 +1376,18 @@ Space should still be the better option.”
 “Amuro, we're completely surrounded. The enemy appears to be moving into attack formation.”
 
 @44972 Amuro · アムロ
+# 审校：全局：刻印＝Crest
 > 「“刻印”のほうは?」
-“What about the ‘Mark’?”
+“What about the ‘Crest’?”
 
 @44973 Bunny · バニー
 > 「まだしばらく間がかかるそうです」
 “It seems it will still take a while longer.”
 
 @44974 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やるしかないな。トレーズ特佐」
-“Then we've no choice but to fight. Colonel Treize.”
+“Then we've no choice but to fight. Special Colonel Treize.”
 
 @44975 Treize · トレーズ
 > 「わかっている」
@@ -1364,9 +1398,10 @@ Space should still be the better option.”
 “Opening the channel.”
 
 @44977 Treize · トレーズ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ここ、クスコに布陣するOZの
 >  兵士諸君。そのまま聞いてほしい
-“To all OZ soldiers deployed here at Cusco. Hear me out as you are.
+“To all OZ soldiers deployed here at Cusco. Stay at your posts and listen.
 ---
 >  いよいよ戦いが開始される。
 >  圧倒的な戦力差で攻めてきた
@@ -1378,7 +1413,7 @@ Galactic Empire forces, who have attacked with overwhelming superiority,
 ---
 >  この遺跡に、はるか昔から眠る
 >  “グラドスの刻印”である。これを
-the last trump card left to us is the ‘Mark of Grados,’ which has slept in this ruin since ages past. Only by
+the last trump card left to us is the ‘Grados Crest,’ which has slept in this ruin since ages past. Only by
 ---
 >  守りぬくことができて、はじめて
 >  我々に未来へいたる可能性が
@@ -1412,6 +1447,7 @@ I expect you to fight with everything you have. That is all.”
 “Julia... is something the matter?”
 
 @44982 Julia · ジュリア
+# 审校：全局：刻印＝Crest
 > 「……わたくしは今でも、人と人とが
 >  最善を尽くして理解しあうことが
 “...Even now, I believe that people doing their utmost to understand
@@ -1421,13 +1457,14 @@ I expect you to fight with everything you have. That is all.”
 one another is the most important thing of all. If I could have helped it,
 ---
 >  など、使いたくはありませんでした」
-I would never have wanted to use something like the ‘Mark of Grados.’”
+I would never have wanted to use something like the ‘Grados Crest.’”
 
 @44983 Relena · リリーナ
 > 「ジュリア様……」
 “Lady Julia...”
 
 @44984 Julia · ジュリア
+# 审校：全局：刻印＝Crest
 > 「しかし、やむをえません。
 >  これ以上、人々に無益な血を
 “But it cannot be helped. So that no more meaningless blood is
@@ -1445,7 +1482,7 @@ After all, we humans are still nothing more than infants
 within this vast universe. We must rely upon the wisdom of the
 ---
 >  私たちはすがらなければなりません」
-ancient Gradosians who left this Mark behind.”
+ancestral Gradosians who left this Crest behind.”
 
 @44985 Beltorchika · ベルトーチカ
 > 「南方、第1防衛ライン、
@@ -1467,12 +1504,13 @@ ancient Gradosians who left this Mark behind.”
 “So they have come this far after all, it seems.”
 
 @44989 Bright · ブライト
+# 审校：全局：刻印＝Crest
 > 「ああ。パイロット各員、
 >  発進準備! トレーズ特佐は
-“Yeah. All pilots, prepare to launch! Has Colonel Treize
+“Yes. All pilots, prepare to launch! Has Special Colonel Treize
 ---
 >  “刻印”へついたのか!?」
-reached the ‘Mark’?!”
+reached the ‘Crest’?!”
 
 @44990 Bunny · バニー
 > 「はい!」
@@ -1488,9 +1526,10 @@ reached the ‘Mark’?!”
 “All units, please launch!”
 
 @44993 Bright · ブライト
+# 审校：精读：刻印＝Crest
 > 「全員聞け! 敵の目的は
 >  “刻印”と断定される
-“Everyone, listen! The enemy's objective is confirmed to be the ‘Mark.’
+“Everyone, listen! The enemy's objective is confirmed to be the ‘Crest.’
 ---
 >  1機たりとも、遺跡に到達させる
 >  な!」
@@ -1514,6 +1553,7 @@ inside the ruin!”
 “What is it?!”
 
 @44997 Bunny · バニー
+# 审校：全局：刻印＝Crest
 > 「封鎖してあった地下空洞側の
 >  進入路が、何者かによって
 “The sealed access route on the underground cavern side has been
@@ -1524,7 +1564,7 @@ attacked by someone! The unit sent to intercept has been wiped out!
 ---
 >  現在、“刻印”の
 >  直接守備隊が交戦中!」
-Right now, the direct guard unit at the ‘Mark’ is engaged!”
+Right now, the direct guard unit at the ‘Crest’ is engaged!”
 
 @44998 Bright · ブライト
 > 「なんだと!?」
@@ -1561,9 +1601,10 @@ for another five minutes, so they want reinforcements sent before then!”
 and are heading here at full speed.”
 
 @45003 Bunny · バニー
+# 审校：精读：刻印＝Crest
 > 「“刻印”のトレーズ特佐より
 >  通信入ります」
-“Incoming transmission from Colonel Treize at the ‘Mark.’”
+“Incoming transmission from Special Colonel Treize at the ‘Crest.’”
 
 @45004 Treize · トレーズ
 > 「{HeroMech}の諸君、こちらの
@@ -1624,18 +1665,20 @@ inside and join the defense no matter what!”
 can't hold the enemy back any longer!”
 
 @45012 Bright · ブライト
+# 审校：精读：刻印＝Crest
 > 「急げ! “刻印”を死守できなけ
 >  れば、死を待つ他はないぞ!」
-“Hurry! If we can't hold the ‘Mark,’ nothing awaits us but death!”
+“Hurry! If we can't hold the ‘Crest,’ nothing awaits us but death!”
 
 @45013 Bunny · バニー
+# 审校：全局：刻印＝Crest
 > 「トレーズ特佐より連絡! 遺跡
 >  内守備隊は壊滅した模様!
-“Message from Colonel Treize! The garrison inside the ruin appears to have been wiped out!
+“Message from Special Colonel Treize! The garrison inside the ruin appears to have been wiped out!
 ---
 >  もう“刻印”まで敵の侵攻を
 >  さまたげるものは、ありません!」
-There is nothing left to stop the enemy's advance to the ‘Mark’!”
+There is nothing left to stop the enemy's advance to the ‘Crest’!”
 
 @45014 Bright · ブライト
 > 「くっ、いますぐにでも遺跡内へまわら
@@ -1643,9 +1686,10 @@ There is nothing left to stop the enemy's advance to the ‘Mark’!”
 “Ngh, we have to get inside the ruin right now... Finish off the enemy, quickly!!”
 
 @45015 Bunny · バニー
+# 审校：全局：刻印＝Crest
 > 「艦長! “刻印”内部が……
 >  敵に制圧されました……」
-“Captain! The interior of the ‘Mark’ is... the enemy has taken control of it...”
+“Captain! The interior of the ‘Crest’ is... the enemy has taken control of it...”
 
 @45016 Bright · ブライト
 > 「バカな……間に合わなかったのか……」

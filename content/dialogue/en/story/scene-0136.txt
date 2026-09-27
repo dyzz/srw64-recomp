@@ -6,9 +6,10 @@
 “Commander Gandal, I can see the {HeroMech} lot!”
 
 @31632 Gandal · ガンダル
+# 审校：血祭り
 > 「うむ。今回こそは、何としても
 >  マーズの奴めを血祭りにあげるのだ
-“Mm. This time, no matter what, I'll make a blood offering of that Mars.
+“Mm. This time, no matter what, we'll make a bloody example of that Mars.
 ---
 >  ロゼよ、わかっておろうな」
 Rose, you understand what that means.”
@@ -69,9 +70,9 @@ Honestly, don't go scaring me like that!”
 “You're here! Good, begin the counterattack!”
 
 @31644 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：隊長统一
 > 「マーグ隊長、あれがマーズです」
-“Captain Marg, that's Mars.”
+“Commander Marg, that's Mars.”
 
 @31645 Marg · マーグ
 > 「そうか。聞こえるか、裏切り者
@@ -162,9 +163,10 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 “Marg!”
 
 @31662 Marg · マーグ
+# 审校：「貴様のような奴」在反派口吻中应更轻蔑，改为“A wretch like you”以贴合玛古被洗脑后冷酷的语气。
 > 「貴様のような奴はズール皇帝の
 >  名のもとに処分してくれる!」
-“A man like you will be disposed of in the name of Emperor Zuul!”
+“A wretch like you will be disposed of in the name of Emperor Zuul!”
 
 @31663 Takeru · タケル
 > 「マーグ、やめろぉぉーっ!」
@@ -180,9 +182,10 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 “Die, Mars! For Emperor Zuul!”
 
 @31666 Gandal · ガンダル
+# 审校：甘达尔作为外星司令，口吻应更正式，将“That's”改为“That is”以符合其威严语气。
 > 「あれは……マーズか!
 >  ズール皇帝陛下にその命
-“That's... Mars?! I'll offer up your life
+“That is... Mars?! I will offer up your life
 ---
 >  ささげてみせる!」
 to His Majesty Emperor Zuul!”
@@ -213,9 +216,10 @@ to His Majesty Emperor Zuul!”
 “He is trying to confuse you, Commander. Why do you let it bother you?”
 
 @31672 Marg · マーグ
+# 审校：玛古被洗脑后语气应更正式，将“don't”和“can't”改为“do not”和“cannot”以贴合其被操控后的冷静口吻。
 > 「わからない……なぜかあいつの
 >  ことが気になる。マーズのことが
-“I don't understand... For some reason, I can't stop thinking about him. About Mars.
+“I do not understand... For some reason, I cannot stop thinking about him. About Mars.
 ---
 >  俺とそっくりの顔。しかも俺のことを
 >  兄と呼ぶ……」
@@ -227,10 +231,9 @@ A face just like mine. And he calls me brother...”
 (This is bad... The brainwashing is weakening...?)
 
 @31674 Rose · ロゼ
-# 审校：同上，ロゼ对マーグ的称呼应为“Captain”而非“Commander”。
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：隊長统一
 > 「マーグ隊長、私の目をみてください」
-“Captain Marg, look into my eyes.”
+“Commander Marg, look into my eyes.”
 
 @31675 Marg · マーグ
 > 「目……?」
@@ -373,9 +376,11 @@ Please do not worry. Well then... I am off.”
 “It seems history is indeed flowing in a harsh direction for us humans.”
 
 @31695 Lady · レディ
+# 审校：Lady 对 Treize 的称呼应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様の予想
 >  された通りです。また
-“Yes, just as you predicted, Lord Treize. Also, in light of the deaths of
+“Yes, just as you predicted, Your Excellency. Also, in light of the deaths of
 ---
 >  デルマイユ公・ジャミトフ閣下の
 >  ご両名がお亡くなりになったことを
@@ -383,7 +388,7 @@ Duke Dermail and His Excellency Jamitov, the Foundation's supreme council
 ---
 >  受け、財団の最高幹部会は
 >  満場一致でトレーズ様への
-has unanimously resolved to request your return, Lord Treize.
+has unanimously resolved to request your return, Your Excellency.
 ---
 >  復帰要請を決議したとのこと
 >  です。OZそして財団の代表として」
@@ -406,26 +411,31 @@ the rapidly shifting situation.”
 “Then you will accept after all?”
 
 @31698 Treize · トレーズ
+# 审校：破折号
 > 「無論だよ、レディ。地球圏の、
 >  いや人類の未来を決する
 “Of course, Lady. The players for the great stage that will decide the future
 ---
 >  大舞台の役者はそろった。
 >  残された時間はあまり多くない」
-of the Earth Sphere—no, of humanity—are assembled. There is little time left.”
+of the Earth Sphere, no, of humanity, are assembled. There is little time left.”
 
 @31699 Lady · レディ
+# 审校：Lady 对 Treize 的称呼应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様」
-“Yes, Lord Treize.”
+“Yes, Your Excellency.”
 
 @31700 Treize · トレーズ
+# 审校：破折号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「……諸君、この戦いは、
 >  ムゲゾルバドス帝国の時とは違う
 “...Everyone, this battle is different from the one against the Muge Zorbados Empire.
 ---
 >  この地球そのものの未来を、
 >  我々の、人類の存亡をかけた
-This will be a battle for the future of Earth itself, for our—for humanity's—survival.
+This will be a battle for the future of Earth itself, for our survival, for humanity's survival.
 ---
 >  戦いとなる。銀河帝国との
 >  戦いに敗れれば、我々
@@ -549,9 +559,10 @@ test data for the new technology.”
 “Is that all? The situation is pretty grim.”
 
 @31714 Chan · チェーン
+# 审校：Chan 对 October 说话应保持礼貌，原文为敬体，译文过于随意。
 > 「オクトバーさん、νガンダムの調整は
 >  どうなっているんです?」
-“October, how's the adjustment on the Nu Gundam coming along?”
+“October, how is the adjustment on the Nu Gundam coming along?”
 
 @31715 October · オクトバー
 > 「まだ時間がかかります。兵装も
@@ -562,9 +573,10 @@ test data for the new technology.”
 There's no way it can go into combat.”
 
 @31716 Chan · チェーン
+# 审校：Chan 对 October 说话应保持礼貌，原文为敬体，译文过于随意。
 > 「そんな、いま渡せなかったら次は
 >  いつになるかわからないんですよ!?」
-“Come on, if we can't hand it over now, who knows when the next chance will be?!”
+“But if we can't hand it over now, who knows when the next chance will be?!”
 
 @31717 October · オクトバー
 > 「無理なものは無理ですよ」
@@ -646,9 +658,11 @@ It looks like mine, but...?”
 “...TYPE33? Out with it, what is that?”
 
 @31731 Rish · リッシュ（按段落 3DD2）
+# 审校：破折号
+# 检查提示：未用必用译名：ヴァルキュリア・シリーズ→Valkyrie Series
 > 「まだ帝国がいた頃に、
 >  月のZ&R社で開発していた
-“Back when the Empire was still around, the lunar Z&R company was developing it—
+“Back when the Empire was still around, the lunar Z&R company was developing it,
 ---
 >  ヴァルキュリア・シリーズの新型だ」
 a new model in the Valkyrie Series.”
@@ -682,9 +696,10 @@ OZ's coup happened while they were still at the design stage,
 so it shouldn't ever have been built.”
 
 @31734 Alan · アラン
+# 审校：破折号
 > 「その通り。あれは我々で製作した
 >  いわば“TYPE33改”とでも
-“Exactly. That one is what we built ourselves—you could call it a ‘TYPE33 Kai,’
+“Exactly. That one is what we built ourselves. You could call it a ‘TYPE33 Kai’,
 ---
 >  いうべきものだ」
 so to speak.”
@@ -905,9 +920,10 @@ That's also where we got the God and the Rising from.”
 It has my habits recorded in it. I can't switch to another machine now.”
 
 @31764 Astonaige · アストナージ
+# 审校：Astonaige 对 Selain 用「お前」，译文却用 you 且语气偏弱，改为更直接、符合技师口吻的说法。
 > 「だからこそ、あれには
 >  お前が乗ってくれないと困るんだよ」
-“That's exactly why we're in trouble if you don't pilot it.”
+“That's exactly why we need you to pilot it.”
 
 @31765 Selain · セレイン（按段落 3DD2）
 > 「アストナージ?」

@@ -241,13 +241,14 @@ There are many comrades there. It seems they haven't let their guard down agains
 “La Vie en Rose is a dock ship.”
 
 @24597 Quattro · クワトロ
+# 审校：精读：准将 指布雷克斯
 > 「そうだ。1年戦争の終戦
 >  直前、すでに抵抗運動のことを
-“That's right. Just before the end of the One Year War, a commodore who was already
+“That's right. Just before the end of the One Year War, the Brigadier General, who was already
 ---
 >  考えておられた准将が、
 >  クルーを説得し、暗礁宙域へ
-thinking about the resistance movement persuaded the crew and sent it
+thinking about the resistance movement, persuaded the crew and sent it
 ---
 >  向かわせたそうだ。だが、
 >  その後の情報がないのだ」
@@ -284,8 +285,9 @@ toward the shoal zone. But there's been no word since.”
 “Ugh... now of all times. Put me through to Astonaige.”
 
 @24605 Bunny · バニー
+# 审校：精读：でました 是接通
 > 「でました」
-“It's out.”
+“He's on the line.”
 
 @24606 Astonaige · アストナージ
 > 「艦長、敵ですか!? まだ終わって
@@ -340,9 +342,9 @@ toward the shoal zone. But there's been no word since.”
 “Rebel scum. Coming all the way out here. Rosamia, you can handle it, yes?”
 
 @24617 Rosamia · ロザミア
-# 审校：特佐对应 Colonel，初稿误作 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はい特佐。おまかせください」
-“Yes, Colonel. Leave it to me.”
+“Yes, Special Colonel. Leave it to me.”
 
 @24618 Kamille · カミーユ
 > 「この感覚……フォウ? ……いや、
@@ -392,10 +394,10 @@ don't matter!”
 “{PartnerNick}!!”
 
 @24626 Aisha · アイシャ（按段落 3DD4）
-# 审校：特佐对应 Colonel，初稿误作 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「部隊に加えていただいて感謝して
 >  おります、特佐」
-“I thank you for adding me to the unit, Colonel.”
+“I thank you for adding me to the unit, Special Colonel.”
 
 @24627 Bask · バスク
 > 「{PartnerSurname}、貴様の希望通り
@@ -435,9 +437,9 @@ useless people around.”
 “Rebel scum. Coming all the way out here. Rosamia, you can handle it, yes?”
 
 @24633 Rosamia · ロザミア
-# 审校：原文“特佐”是上校，词表规则中“大佐”为Colonel，初稿误译为Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はい特佐。おまかせください」
-“Yes, Colonel. Leave it to me.”
+“Yes, Special Colonel. Leave it to me.”
 
 @24634 Kamille · カミーユ
 > 「この感覚……フォウ? ……いや、
@@ -487,10 +489,10 @@ don't matter at all!”
 “{PartnerNick}!!”
 
 @24642 Aisha · アイシャ（按段落 3DD4）
-# 审校：原文“特佐”是上校，初稿误译为Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「部隊に加えていただいて感謝して
 >  おります、特佐」
-“I thank you for adding me to the unit, Colonel.”
+“I thank you for adding me to the unit, Special Colonel.”
 
 @24643 Bask · バスク
 > 「{PartnerSurname}、貴様の希望通り
@@ -530,9 +532,10 @@ useless people around.”
 “{PartnerNick}, stop it! I don't want to fight you!”
 
 @24649 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族口吻，第二页的“won't have to”过于口语化，改为“shall not have to”以符合其高傲正式的语气。
 > 「なら、今ここで私に討たれなさい!
 >  そうすれば、これ以上戦わずに
-“Then let me strike you down here and now! That way, you won't have to
+“Then let me strike you down here and now! That way, you shall not have to
 ---
 >  すみますわ!」
 fight anymore!”
@@ -567,9 +570,10 @@ fight anymore!”
 “Ngh, Jerid... don't let your guard down... this one really is no ordinary pilot...”
 
 @24656 Lila · ライラ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > (そうか……私がいま
 >  あの子のことをただ者じゃないといった
-(I see... the very fact that I just called that child no ordinary pilot—
+(I see... the very fact that I just called that child no ordinary pilot...
 ---
 >  このわかり方が無意識のうちに
 >  反感となってしまう。これが……
@@ -588,9 +592,10 @@ what it means to be an Oldtype...)
 “Ngh, I've been hit?! ...Ameliaaa!”
 
 @24659 Kamille · カミーユ
+# 审校：原文“ただ強いだけだ”指代前文ライラ（女性），译文用“He's”性别错误，改为“She's”。
 > 「プレッシャーは感じない。
 >  ただ強いだけだ」
-“I don't feel any pressure. He's just strong.”
+“I don't feel any pressure. She's just strong.”
 
 @24660 Yazan · ヤザン
 > 「小僧が知ったふうな口をきくな!」
@@ -698,9 +703,10 @@ You shouldn't say such careless things.”
 “H-hey, Domon, cut it out...”
 
 @24678 Bright · ブライト
+# 审校：布莱特是舰长，对多蒙等人下命令时语气应更干脆严厉，原文“いいかげんにしろ”是命令口吻，现有译文“stop saying unnecessary things too”过于啰嗦，改为更直接的命令。
 > 「お前ら、いいかげんにしろ! シュバルツ
 >  も、よけいなことをいうんじゃない!」
-“You lot, that's enough! Schwarz, stop saying unnecessary things too!”
+“You lot, that's enough! Schwarz, stop saying unnecessary things!”
 
 @24679 Astonaige · アストナージ
 > 「ケーラ!」
@@ -759,9 +765,10 @@ It seems things are quite tough with just Astonaige and the others.”
 “Got it. I'll go let the others know.”
 
 @24690 Bright · ブライト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「……なんだ、何かいいたいことがあるのか
 >  いっておくが俺は別に……」
-“...What, is there something you want to say? I'll say this now, I'm not—”
+“...What, is there something you want to say? I'll say this now, I'm not...”
 
 @24691 Amuro · アムロ
 > 「そういう態度が誤解をまねくんだよ
@@ -834,14 +841,14 @@ The other colonies will surely follow suit as well.”
 to the Earth Sphere...”
 
 @24699 Koji · 甲児
-# 审校：“美辞麗句”改为更口语的 fine talk，并调整问句语气以符合甲児的粗鲁热血口吻。
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちっ、けったくそわりぃな。よくこんだけ
 >  美辞麗句を口にできるもんだぜ
 “Tch, this is damn irritating. How can she spout all that fine talk?
 ---
 >  だいたいコロニーの連中も、なんだって
 >  こうもあっさり信用しちまうんだよ」
-And the colony folks too—why do they trust her so easily?”
+And the colony folks too... why do they trust her so easily?”
 
 @24700 Alan · アラン
 # 审校：“かつては連邦に、その後は帝国に”改为更自然的 First…then…，并调整“normally just”为“easily”。
@@ -924,10 +931,10 @@ Right, Daisaku?”
 “Something on your mind?”
 
 @24709 Alan · アラン
-# 审校：与 L2 的“美辞麗句”译法保持一致，改为 fine talk。
+# 审校：用户确认：直引号→弯引号
 > 「うむ……。兜、お前……よく
 >  “美辞麗句”などという言葉を
-“Yeah... Kabuto, you... you actually knew a word like 'fine talk.'
+“Yeah... Kabuto, you... you actually knew a word like ‘fine talk.’
 ---
 >  知っていたな。驚いたぞ」
 I was surprised.”
@@ -941,9 +948,10 @@ I was surprised.”
 “Leave me alone!”
 
 @24712 Masato · 雅人
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ねえ、今のレディ・アン代表って、
 >  あのレディ・アン特佐なのかな?
-“Hey, is that Representative Lady Une just now the same Colonel Lady Une?
+“Hey, is that Representative Lady Une just now the same Special Colonel Lady Une?
 ---
 >  なんだか、ずいぶん違うみたいだったけど」
 She seemed awfully different, though.”

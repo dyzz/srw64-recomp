@@ -1,87 +1,126 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11939 Chizuru · ちずる
+# 触发：攻击（通用，1/4）
 > 「行くわよ!」
 “Here I go!”
 
 @11940 Chizuru · ちずる
+# 触发：攻击（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるもんですか!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @11941 Chizuru · ちずる
+# 触发：攻击（通用，3/4）
 > 「あたしだって!」
 “I can do this too!”
 
 @11942 Chizuru · ちずる
+# 触发：攻击（通用，4/4）
 > 「これならどうっ!?」
 “How about this?!”
 
 @11943 Chizuru · ちずる
+# 触发：被击坠（通用，1/1）
 > 「きゃあああっ! 豹馬ッ!!」
 “Kyaaah! Hyoma!!”
 
 @11944 Chizuru · ちずる
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：原文是 !?，改成问句
 > 「あううっ! な、なんてパワーなのっ!?」
-“Augh! Wh-what incredible power!”
+“Augh! Wh-what kind of power is that?!”
 
 @11945 Chizuru · ちずる
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きゃあっ! ダメ、このままじゃ
 >  やられちゃうっ!」
-“Kyaah! No, at this rate I'll be shot down!”
+“Kyaah! No, at this rate I’ll be shot down!”
 
 @11946 Chizuru · ちずる
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「あああっ! ち、直撃なの!?」
 “Aaah! A-a direct hit?!”
 
 @11947 Chizuru · ちずる
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ! まだよ、こんな事で
 >  負けるもんですか!」
-“Augh! Not yet, I won't lose over something like this!”
+“Augh! Not yet, I won’t lose over something like this!”
 
 @11948 Chizuru · ちずる
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「くうっ! よくもやったわねえっ!」
 “Ngh! How dare you do that!”
 
 @11949 Chizuru · ちずる
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「うっ! まだよ! まだやれるわ!」
 “Ugh! Not yet! I can still fight!”
 
 @11950 Chizuru · ちずる
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「こんな攻撃なんて!」
 “An attack like this is nothing!”
 
 @11951 Chizuru · ちずる
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「甘く見ないでよ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @11952 Chizuru · ちずる
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「効くもんですか!」
 “Like that would work on me!”
 
 @11953 Chizuru · ちずる
+# 触发：回避（通用，1/4）
 > 「当たるものですか!」
 “Like that would hit me!”
 
 @11954 Chizuru · ちずる
+# 触发：回避（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かわしてみせる!」
-“I'll dodge it, just watch!”
+“I’ll dodge it, just watch!”
 
 @11955 Chizuru · ちずる
+# 触发：回避（通用，3/4）
 > 「そう簡単にっ!」
 “Not that easily!”
 
 @11956 Chizuru · ちずる
+# 触发：回避（通用，4/4）
 > 「来た! そこねっ!」
 “There! Right there!”
 
 @11957 Chizuru · ちずる
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効きはしないわっ!」
-“It won't do a thing!”
+“It won’t do a thing!”
 
 @11958 Chizuru · ちずる
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「えっ!? 弾切れ!?」
 “Huh?! Out of ammo?!”
 
 @11959 Chizuru · ちずる
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな、届かないなんて……」
-“No, it won't reach...”
+“No, it won’t reach...”
+
+@16791 Chizuru · ちずる
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「機雷発射!」
+“Launching mines!”
+
+@16792 Chizuru · ちずる
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「爆雷投下!」
+“Dropping depth charges!”

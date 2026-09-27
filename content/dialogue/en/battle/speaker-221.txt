@@ -1,111 +1,178 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10797 Pampa · パンパ
+# 触发：攻击（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハマーン様の名誉のために!」
-“For Lady Haman's honor!”
+“For Lady Haman’s honor!”
 
 @10798 Pampa · パンパ
+# 触发：攻击（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「我々はガザの嵐隊だ!」
-“We are Gaza's Storm Squad!”
+“We are Gaza’s Storm Squad!”
 
 @10799 Pampa · パンパ
+# 触发：攻击（通用，3/8）
 > 「マシュマー様……いきます!」
 “Lord Mashymre... here I go!”
 
 @10800 Pampa · パンパ
+# 触发：攻击（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さぁ、勝負しろ!」
-“Come on, let's settle this!”
+“Come on, let’s settle this!”
 
 @10801 Pampa · パンパ
+# 触发：攻击（通用，5/8）
 > 「いくぞ!」
 “Here I go!”
 
 @10802 Pampa · パンパ
+# 触发：攻击（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「仲間の仇をとらせてもらう!」
-“I'll avenge my comrades!”
+“I’ll avenge my comrades!”
 
 @10803 Pampa · パンパ
+# 触发：攻击（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「でてこないならば!」
-“If you won't come out!”
+“If you won’t come out!”
 
 @10804 Pampa · パンパ
+# 触发：攻击（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いぶりだしてやる!」
-“I'll smoke you out!”
+“I’ll smoke you out!”
 
 @10805 Pampa · パンパ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハ、ハマーン様ぁぁぁーっ!」
-“L-Lady Haman!”
+“L-lady Haman!”
 
 @10806 Pampa · パンパ
+# 触发：被击坠（通用，2/2）
 > 「マシュマー様ぁぁーっ!」
 “Lord Mashymre!”
 
 @10807 Pampa · パンパ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「くっ! 私は決して許さない!」
 “Ngh! I will never forgive you!”
 
 @10808 Pampa · パンパ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「うぅぅっ! お、おのれぇーっ!」
 “Ugh! Y-you bastard!”
 
 @10809 Pampa · パンパ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「おぉ!? こ、これほどのものとはっ!」
 “Oh?! Th-this much power?!”
 
 @10810 Pampa · パンパ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「ぐぅぅ……正攻法はもうやめだ!」
 “Guh... no more playing fair!”
 
 @10811 Pampa · パンパ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「あぁぁ!? つ、強い!?」
 “Agh?! S-so strong?!”
 
 @10812 Pampa · パンパ
-# 审校：「相手にとって不足なし」是“作为对手无可挑剔/值得一战”的意思，初稿译成了相反的意思。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……相手にとって不足なし!」
-“Ngh... you're a worthy opponent!”
+“Ngh... you’re a worthy opponent!”
 
 @10813 Pampa · パンパ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なかなかやるなっ!」
-“You're pretty good!”
+“You’re pretty good!”
 
 @10814 Pampa · パンパ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「で、できる相手だ……だがっ!」
-“Y-you're capable... but still!”
+“Y-you’re capable... but still!”
 
 @10815 Pampa · パンパ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では相手にならんぞ!」
-“That's not nearly enough to face me!”
+“That’s not nearly enough to face me!”
 
 @10816 Pampa · パンパ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「さぁ、もっと攻めてこい!」
 “Come on, attack me more!”
 
 @10817 Pampa · パンパ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「このような者を相手にせねば
 >  ならんとは……」
 “To think I must face the likes of you...”
 
 @10818 Pampa · パンパ
+# 触发：回避（通用，1/3）
 > 「まだまだ未熟だな!」
 “Still so inexperienced!”
 
 @10819 Pampa · パンパ
+# 触发：回避（通用，2/3）
 > 「甘いぞ!」
 “Too naive!”
 
 @10820 Pampa · パンパ
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃ではあたらんぞ」
-“An attack like that won't hit me.”
+“An attack like that won’t hit me.”
 
 @10821 Pampa · パンパ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「甘いぞ!」
 “Too naive!”
 
 @10822 Pampa · パンパ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「な、なに!? 弾切れというのか……」
 “W-what?! Out of ammo...?”
 
 @10823 Pampa · パンパ
+# 触发：射程外，无法反击（通用，1/1）
 > 「お、おのれ……なんと卑怯な!」
 “Y-you... how cowardly!”
+
+@16347 Pampa · パンパ
+# 触发：使用〈ガザストーム〉
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16348 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 1/4 句）
+# 审校：例のやつ更口语
+# 检查提示：未用必用译名：ビアン→Beanne、ワイム→Wyme
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, you know the drill!”
+
+@16349 Wyme · ワイム
+# 触发：使用〈ガザストーム〉（对话第 2/4 句）
+# 审校：军中应答
+> 「ハッ」
+“Sir!”
+
+@16350 Beanne · ビアン
+# 触发：使用〈ガザストーム〉（对话第 3/4 句）
+# 审校：三处统一
+> 「行けるぞ!」
+“Ready to go!”
+
+@16351 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 4/4 句）
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”

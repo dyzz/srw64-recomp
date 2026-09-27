@@ -54,23 +54,26 @@ it was right before the Galactic Empire's big offensive.”
 I really thought it was the end...”
 
 @46976 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「“刻印”のおかげで、
 >  どうにか生き延びた」
-“Thanks to the ‘Mark,’ we somehow survived.”
+“Thanks to the ‘Crest,’ we somehow survived.”
 
 @46977 Takeru · タケル
+# 审校：全局：Zuul 拼写
 > 「それで、オレたちはズールを倒した。
 >  この月にも
-“And then we beat Zuhl. I hear there are plenty of Imperial soldiers
+“And then we beat Zuul. I hear there are plenty of Imperial soldiers
 ---
 >  投降した帝国の兵士たちが
 >  多いって聞いたよ」
 who surrendered here on the moon, too.”
 
 @46978 Sayaka · さやか
+# 审校：精读：军衔
 > 「そして今度は、アクシズ軍……。
 >  トレーズ特佐も、クワトロ特尉も
-“And now it's the Axis Forces... Both Lieutenant Colonel Treize and Lieutenant Quattro
+“And now it's the Axis Forces... Both Special Colonel Treize and Special Lieutenant Quattro
 ---
 >  いなくなってしまって……」
 are gone...”
@@ -294,9 +297,10 @@ stretch your feathers... your wings, I suppose. Wufei, you look bored.
 If you like, how about working with me?”
 
 @47014 Dr. Hazuki · 葉月博士
+# 审校：葉月博士称呼对方为“先生”，此处是同行间的尊称，译作 Teacher 不符合老学者口吻，应为 Doctor。
 > 「失礼、先生。
 >  我々も見てもらえませんかな」
-“Excuse me, Teacher. Would you take a look at us as well?”
+“Excuse me, Doctor. Would you take a look at us as well?”
 
 @47015 Hasan · ハサン
 > 「かまいませんとも。
@@ -323,23 +327,26 @@ If you like, how about working with me?”
 Dr. Yotsuya, you really ought to go easy on the drink.”
 
 @47019 Dr. Yotsuya · 四谷博士
+# 审校：四谷博士称呼哈桑为“先生”，同为老学者间的尊称，Teacher 应改为 Doctor。
 > 「バカなこといっちゃいかんよ、先生。
 >  これは、命の水じゃよ。これなくして
-“Don't talk nonsense, Teacher. This is the water of life. It's no exaggeration to say that without it,
+“Don't talk nonsense, Doctor. This is the water of life. It's no exaggeration to say that without it,
 ---
 >  この過酷な戦いを生き延びる
 >  ことは、できんといっても過言ではない」
 I couldn't have survived this brutal war.”
 
 @47020 Dr. Saotome · 早乙女博士
+# 审校：精读：ものはいいよう
 > 「ははははっ、ものはいいようですな、
 >  四谷博士」
-“Hahaha, you seem to have quite the fine stuff there, Dr. Yotsuya.”
+“Hahaha, that's one way of putting it, Dr. Yotsuya.”
 
 @47021 Prof. Yumi · 弓教授
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし……やはりクワトロ特尉の件は
 >  こたえているようですね
-“Still... the matter with Lieutenant Quattro really seems to have hit them hard.
+“Still... the matter with Special Lieutenant Quattro really seems to have hit them hard.
 ---
 >  くわえてこの状況だ。彼らが
 >  つぶれてしまわないか、心配ですよ」
@@ -692,8 +699,9 @@ I'm not blaming you.”
 “Mm, you may go.”
 
 @47080 Glemy · グレミー
+# 审校：原文「はっ」仅为简短应答，无 ma'am 称呼，按规则不应自行添加。
 > 「はっ」
-“Yes, ma'am.”
+“Yes.”
 
 @47081 Haman · ハマーン
 > 「グレミー・トト……
@@ -776,6 +784,7 @@ But still... no, never mind.”
 “What?! They're already here?! They could've waited a little longer!”
 
 @47096 Ark · アーク（按段落 3DD1）
+# 审校：人名按词表统一
 > 「そういうことは俺たちじゃなくて、
 >  ハマーンにいってくれよ、チャム」
 “That's something you should tell Haman, not us, Chum.”
@@ -798,6 +807,7 @@ But still... no, never mind.”
 we have to be ready to intercept them.”
 
 @47100 Show · ショウ
+# 审校：人名按词表统一
 > 「わかってる。チャム、いくぞ」
 “I know. Chum, let's go.”
 
@@ -807,10 +817,12 @@ we have to be ready to intercept them.”
 “Quit your bellyaching and hurry up! We'll give them a flashy welcome!”
 
 @47102 Show · ショウ
+# 审校：人名按词表统一
 > 「わかってる。チャム、いくぞ」
 “I know. Chum, let's go.”
 
 @47103 Manami · マナミ（按段落 3DD4）
+# 审校：人名按词表统一
 > 「それは、いってもしかたないでしょ、
 >  チャム。急ぎましょう
 “There's no point in saying that, Chum. Let's hurry.
@@ -820,6 +832,7 @@ we have to be ready to intercept them.”
 We have to be ready before the enemy arrives.”
 
 @47104 Show · ショウ
+# 审校：人名按词表统一
 > 「わかってる。チャム、いくぞ」
 “I know. Chum, let's go.”
 
@@ -871,6 +884,7 @@ advise you to surrender unconditionally.”
 “A surrender demand?! What are you playing at now?!”
 
 @47111 Mashymre · マシュマー
+# 审校：精读：破折号
 > 「地球圏はもはや
 >  我らアクシズが制圧するのも
 “It is only a matter of time before we of Axis
@@ -881,7 +895,7 @@ subdue the Earth Sphere. Thereafter, the Earth Sphere
 ---
 >  我らが再興するジオン、
 >  いや、新しきジオンによって統治され
-shall be governed by the Zeon we shall revive—no, by a new Zeon—
+shall be governed by the Zeon we shall revive, no, by a new Zeon,
 ---
 >  長い戦乱の時代に終止符が
 >  うたれることとなる。宇宙に数多の
@@ -934,14 +948,14 @@ We cannot accept your demand. We will keep resisting.”
 “How lamentable that you cannot understand Lady Haman's consideration.”
 
 @47117 Gato · ガトー
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“In the end, it simply means our values differ. So this place shall be the
-# 草稿第 2 页：final battlefield of the 【主角机体名】's glorious war record, and still you will not stop fighting.”
+# 审校：补译：原稿占位符错页
 > 「しょせん、価値観が違うという
 >  ことだ。ここが、{HeroMech}の
+“In the end, our values simply differ. Even if this becomes the {HeroMech}'s
 ---
 >  輝かしい戦績の、最後の地と
 >  なっても戦いを止めぬというのだな」
+last stand, the end of its glorious record, you won't stop fighting, will you.”
 
 @47118 Kou · コウ
 > 「ガトー! 俺たちと一緒に
@@ -952,9 +966,10 @@ We cannot accept your demand. We will keep resisting.”
 and now you say this?!”
 
 @47119 Gato · ガトー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いったはずだ、ウラキ特尉。
 >  ジオンの再興をはばむものは
-“I told you, Lieutenant Uraki. Anyone who stands in the way of Zeon's revival
+“I told you, Special Lieutenant Uraki. Anyone who stands in the way of Zeon's revival
 ---
 >  必ず私に葬り去られると」
 will be buried by my hand.”
@@ -970,26 +985,27 @@ will be buried by my hand.”
 “That's right. If you think you can defeat us, then go ahead and try!”
 
 @47122 Gato · ガトー
+# 审校：ガトー对マシュマー用「殿」称呼，译文应保留敬称，Lord Mashymre 符合其军人身份与正式口吻。
 > 「フッ、よい覚悟だ。ならば、遠慮は
 >  せん。マシュマー殿、よろしいな」
-“Heh, fine resolve. Then I shall hold nothing back. Lord Mashymre, if you would.”
+“Heh, fine resolve. Then I shall not hold back. Lord Mashymre, if you would.”
 
 @47123 Mashymre · マシュマー
 > 「やむをえん」
 “It cannot be helped.”
 
 @47124 Gato · ガトー
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Indeed. All units, begin the attack. The objective is the annihilation
-# 草稿第 2 页：of the 【主角机体名】! Nothing more! Crush all who would
-# 草稿第 3 页：stand in the way of our homeland Zeon's revival!”
+# 审校：补译：原稿占位符错页
 > 「うむ。全機、攻撃を開始せよ。
 >  目標は{HeroMech}の
+“Indeed. All units, commence the attack. The objective is the {HeroMech}'s
 ---
 >  せん滅! ただそれあるのみ!
 >  我らが祖国、ジオンの再興を
+annihilation! Nothing else! Crush all who would stand in the way
 ---
 >  阻む者どもを、叩きつぶすのだ!」
+of the revival of our homeland, Zeon!”
 
 @47125 Chara · キャラ
 > 「あっはははは!
@@ -1058,8 +1074,9 @@ I'll finish you off right here, {HeroMech}!”
 “Ngh... you unpleasant thing!!”
 
 @47139 Ple · プル
+# 审校：原文「あたり前だよ、不愉快なのは」是普露回应普露二号「不愉快な奴が!!」的反驳，指对方才是不愉快的人，而非承认自己；译文割裂了对话逻辑。
 > 「あたり前だよ、不愉快なのは」
-“Of course I'm unpleasant.”
+“Of course it's unpleasant.”
 
 @47140 Ple-Two · プルツー
 > 「な、なんだと!? なんだ、何をいう!?」
@@ -1181,8 +1198,9 @@ If you look into your own heart, you won't have to suffer either...”
 “As expected, it seems they have no intention of letting us live, no matter what.”
 
 @47162 Duo · デュオ
+# 审校：精读：降伏すんのは別として
 > 「降伏すんのは別として、だろ」
-“Surrendering's one thing, but that's not happening.”
+“Unless we surrender, that is.”
 
 @47163 Roux · ルー
 > 「なによ、あんたしたいわけ?」
@@ -1218,8 +1236,9 @@ we've just got to endure it here...”
 “...”
 
 @47169 Amuro · アムロ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どうしたんだ、エマ特尉」
-“What's wrong, Lieutenant Emma?”
+“What's wrong, Special Lieutenant Emma?”
 
 @47170 Emma · エマ
 > 「いえ……向こうがその気なら、
@@ -1261,8 +1280,9 @@ but we'd better at least stay on our guard.”
 “...So they slipped through. You say they've gone on the defensive on the lunar surface.”
 
 @47177 Mashymre · マシュマー
+# 审校：Mashymre is addressing Haman, not Bright, so the reply should not say “ma'am”.
 > 「はっ……」
-“Yes, ma'am...”
+“Yes...”
 
 @47178 Gato · ガトー
 > 「……ハマーン殿、
@@ -1274,13 +1294,14 @@ but we'd better at least stay on our guard.”
 I can drive those people out of their lunar base. Strike them there, and...”
 
 @47179 Haman · ハマーン
+# 审校：哈曼的威严口吻应更正式，将“let's not”改为“let us not”并调整后续句式以符合其庄重语气。
 > 「コロニーを使うつもりか? ふむ……
 >  いや、それはやめておこう
-“You intend to use a colony? Hmm... no, let's not.
+“You intend to use a colony? Hmm... no, let us not.
 ---
 >  あまり月の連中の
 >  反感を買っては、あとが面倒だ」
-If we provoke the people of the moon too much, it'll be a nuisance later.”
+If we provoke the people of the moon too much, it will be a nuisance later.”
 
 @47180 Mashymre · マシュマー
 > 「では……」
@@ -1612,8 +1633,10 @@ I can have Mashymre and the others strike them there...)
 “Yes, ma'am!”
 
 @47230 Glemy · グレミー
+# 审校：哈曼是阿克西斯摄政，格雷米当面称呼ハマーン様，用“my lady”比“Lady Haman”更符合贵族敬称口吻。
+# 检查提示：未用必用译名：ハマーン→Haman
 > 「お呼びですか、ハマーン様」
-“You called for me, Lady Haman?”
+“You called for me, my lady?”
 
 @47231 Haman · ハマーン
 > 「来たか、グレミー・トト」
@@ -1637,9 +1660,10 @@ even a concern, but we can't leave the remnants of Romefeller alone.
 Crush all who resist. Subjugate the surface completely.”
 
 @47234 Glemy · グレミー
+# 审校：精读：部隊
 > 「……わかりました。では私は、
 >  部隊の編成にかかります」
-“...Understood. Then I'll get to organizing the fleet.”
+“...Understood. Then I'll get to organizing the units.”
 
 @47235 Glemy · グレミー
 > (わからんな、ハマーン……
@@ -1689,9 +1713,10 @@ Perhaps I should act before that happens.)
 “Have you reached a conclusion?”
 
 @47242 Glemy · グレミー
+# 审校：Glemy 是彬彬有礼的年轻军官，用 Yeah 过于随意，改为 Yes 更符合其口吻。
 > 「ああ……艦隊は編成するが、
 >  地上へは降りん」
-“Yeah... I'll organize the fleet, but I won't go down to the surface.”
+“Yes... I'll organize the fleet, but I won't go down to the surface.”
 
 @47243 Ple-Two · プルツー
 > 「やるのか?」

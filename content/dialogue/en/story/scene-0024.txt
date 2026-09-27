@@ -166,9 +166,10 @@ Hold on a sec... there, got it.”
 “Captain, the Layzner is out on the catapult deck.”
 
 @21370 Bright · ブライト
+# 审校：布莱特作为舰长，对部下说话应更简洁有力，去掉多余的定冠词。
 > 「エイジ・アスカだろう?
 >  私が許可した。行かせてやれ」
-“Eiji Asuka, right? I gave the permission. Let him go.”
+“Eiji Asuka, right? I gave permission. Let him go.”
 
 @21371 Amuro · アムロ
 > 「どうしたんだ?」
@@ -231,9 +232,11 @@ so I gave him permission to go confirm it.”
 “What's your problem, no need to get that mad.”
 
 @21384 Shiro · シロー
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：アイナ・サハリン→Aina Sakhalin
 > (ん……? 中に写真が入ってたのか
 >  男と一緒の写真!?
-(Hm...? There was a photo inside? A photo of her with a man!?
+(Hm...? There was a photo inside? A photo of her with a man?!
 ---
 >  アイナ・サハリン……恋人がいたのか。
 >  ……いたって……おかしくないよな)
@@ -244,9 +247,10 @@ Aina Sakhalin... so she had a lover. ...Well... that's not... strange, I guess.)
 “Rasid, everyone, I'm glad you're all safe.”
 
 @21386 Rasid · ラシード
+# 审校：Rasid 的 address 规定称呼 Quatre 为 “Master Quatre”，原文“カトル様”应译为 Master Quatre 而非 Lord Quatre。
 > 「カトル様こそ、よくご無事で。皆さ
 >  んもどうぞ休んでください。戦艦の
-“It's you we're glad to see safe, Lord Quatre. Everyone, please rest.
+“It's you we're glad to see safe, Master Quatre. Everyone, please rest.
 ---
 >  補修もきっちりやっておきます。ついで
 >  に機体の整備もしておきましょう」
@@ -422,9 +426,10 @@ For the future of this planet.”
 “Rasid, don't push yourselves too hard.”
 
 @21414 Rasid · ラシード
+# 审校：address 规定拉希德称卡特尔为 Master Quatre，原文「カトル様」的敬称应保留。
 > 「カトル様も。それでは私は迎撃の
 >  指揮をとります。ご武運を」
-“Nor you, Lord Quatre. I'll take command of the interception. Good luck to you.”
+“Nor you, Master Quatre. I'll take command of the interception. Good luck to you.”
 
 @21415 Bright · ブライト
 > 「我々も出航するぞ!」
@@ -510,18 +515,20 @@ don't you?”
 “That's... a Gundam?! This is bad!”
 
 @21434 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ばかどもが。敵はたった1機ではない
 >  か! ノイン特尉、何をやっているか」
-“Fools. There's only one enemy! Special Ensign Noin, what are you doing?”
+“Fools. There's only one enemy! Special Lieutenant Noin, what are you doing?”
 
 @21435 Noin · ノイン
 > 「ま、待て!」
 “W-Wait!”
 
 @21436 Wufei · 五飛
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「女、聞こえるか。子供だと
 >  思って、油断したお前が
-“Woman, can you hear me? You let your guard down because you thought I was a child—
+“Woman, can you hear me? You let your guard down because you thought I was a child...
 ---
 >  つまらぬ兵士だということだ。
 >  弱い者と女を、俺は殺さない」
@@ -563,9 +570,10 @@ We'll hit the enemy base too!”
 “Coming at this late hour, that Zechs.”
 
 @21444 Zechs · ゼクス
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、戦況は不利です。
 >  お引きください」
-“Colonel Bask, the situation is unfavorable. Please withdraw.”
+“Special Colonel Bask, the situation is unfavorable. Please withdraw.”
 
 @21445 Bask · バスク
 > 「貴様が引き受けるというのか。
@@ -607,14 +615,16 @@ can do.”
 “Kamille, this time I'll finish you for sure!”
 
 @21453 Kamille · カミーユ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「この感じ……
 >  ジェリド・メサ特尉か!」
-“This feeling... It's Special Ensign Jerid Messa!”
+“This feeling... It's Special Lieutenant Jerid Messa!”
 
 @21454 Emma · エマ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれはライラ特尉!? ジェリドに
 >  カクリコンも来たの!?」
-“That's Special Ensign Lila?! Jerid and Kacricon are here too?!”
+“That's Special Lieutenant Lila?! Jerid and Kacricon are here too?!”
 
 @21455 Lila · ライラ
 > 「裏切り者のエマ・シーンがいるのか?
@@ -626,9 +636,10 @@ can do.”
 “Coming at this late hour, that Zechs.”
 
 @21457 Zechs · ゼクス
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、戦況は不利です。
 >  お引きください」
-“Colonel Bask, the situation is unfavorable. Please withdraw.”
+“Special Colonel Bask, the situation is unfavorable. Please withdraw.”
 
 @21458 Bask · バスク
 > 「貴様が引き受けるというのか。
@@ -670,14 +681,16 @@ can do.”
 “Kamille, this time I'll finish you off!”
 
 @21466 Kamille · カミーユ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「この感じ……
 >  ジェリド・メサ特尉か!」
-“This feeling... It's Special Ensign Jerid Messa!”
+“This feeling... It's Special Lieutenant Jerid Messa!”
 
 @21467 Emma · エマ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれはライラ特尉!? ジェリドに
 >  カクリコンも来たの!?」
-“That's Special Ensign Lila?! Jerid and Kacricon are here too?!”
+“That's Special Lieutenant Lila?! Jerid and Kacricon are here too?!”
 
 @21468 Lila · ライラ
 > 「裏切り者のエマ・シーンがいるのか?
@@ -697,9 +710,10 @@ can do.”
 What should we do?”
 
 @21471 Aina · アイナ
+# 审校：精读：レジスタンスの迎撃 是迎击抵抗组织
 > 「このまま去るわけにはいかないでしょう。
 >  レジスタンスの迎撃に加わります」
-“We can't just leave like this. I'll join the resistance in intercepting them.”
+“We can't just leave like this. I'll join in intercepting the resistance.”
 
 @21472 Specials · スペシャルズ
 > 「よろしいのですか? ミノフスキークラフト
@@ -791,12 +805,13 @@ you're with the Specials, and even if... you have a lover.”
 “All right, let's get out of here in a hurry.”
 
 @21491 Beltorchika · ベルトーチカ
+# 审校：精读：第二页只剩引号
 > 「待って下さい、艦長!
 >  敵部隊が接近中……百鬼と
-“Wait, Captain! An enemy force is approaching... I believe it's the Hyakki!
+“Wait, Captain! An enemy force is approaching... I believe
 ---
 >  思われます!」
-”
+it's the Hyakki!”
 
 @21492 Ryoma · リョウ
 > 「お前はあの時の……百鬼一族の
@@ -1015,9 +1030,10 @@ and meet Governor Gresco.”
 “Yes, Relena.”
 
 @21531 Relena · リリーナ
+# 审校：Relena's voice requires no contractions; changed "I'm" to "I am".
 > (ヒイロ……あなたは今もきっと
 >  戦っているのでしょう
-(Heero... I'm sure you are still fighting even now.
+(Heero... I am sure you are still fighting even now.
 ---
 >  わたくしも、自分の戦場で
 >  戦ってみせます)
@@ -1041,9 +1057,10 @@ For what purpose?”
 “Yes, most likely to appeal directly to Governor Gresco.”
 
 @21534 Le Cain · ル・カイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地球人と我々は共存
 >  しなければならん
-“Earthlings and we must coexist—
+“Earthlings and we must coexist...
 ---
 >  そんなたわごとを、いうためにか!?」
 is that the nonsense she comes to spout?!”
@@ -1053,9 +1070,10 @@ is that the nonsense she comes to spout?!”
 “Y-yes... it would seem so...”
 
 @21536 Le Cain · ル・カイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ばか者!! 人心をたぶらかす、
 >  その聖女とやらを
-“Fools!! That so-called Holy Woman who bewitches the hearts of the people—
+“Fools!! That so-called Holy Woman who bewitches the hearts of the people...
 ---
 >  なぜ今まで放っておいたのだ!
 >  すぐに捕らえてこい!」

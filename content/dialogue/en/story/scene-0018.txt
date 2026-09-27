@@ -101,13 +101,13 @@ You just have to wake up. Then you'll be the same as before.”
 “Oh my, if they're kissing in a place like that, we can't use the elevator.”
 
 @20060 Masato · 雅人
-# 审校：“手が早い”在这里是“对女性出手快”的意思，初稿“doesn't waste time”不够贴切，改为更自然的“moves fast”。
+# 审校：雅人语气轻浮，“手が早い”在此处指对女性出手快，用“works fast”更贴合其调侃口吻。
 > 「あ～あ、結構気に入ってたのに、
 >  がっかりだよ
 “Aww, and I really liked her too. What a letdown.
 ---
 >  アムロ大尉も手が早いや」
-Captain Amuro sure moves fast.”
+Captain Amuro sure works fast.”
 
 @20061 Roux · ルー
 > 「なにいってんのよ。ほら、
@@ -115,9 +115,9 @@ Captain Amuro sure moves fast.”
 “What are you saying? Come on, don't stare forever. Let's go.”
 
 @20062 Amuro · アムロ
-# 审校：原文“同情ならいい”是“如果是同情那就算了/我不要”的意思，初稿“I don't want your pity”语气稍偏，改为更贴近原意的表达。
+# 审校：阿姆罗对贝尔托琪卡说“同情ならいい”，意为“如果是同情的话，那就不必了”，原译“I don't want it”语气稍弱，改为“I don't need it”更贴合其拒绝同情的坚定。
 > 「…………ベルトーチカ、同情ならいい」
-“...Beltorchika, if it's pity, I don't want it.”
+“...Beltorchika, if it's pity, I don't need it.”
 
 @20063 Beltorchika · ベルトーチカ
 > 「あたしは、
@@ -381,13 +381,14 @@ I had the new model developed by the Liberation Front brought in.
 By the way, have you still not found Fujiwara?”
 
 @20113 Masato · 雅人
+# 审校：精读：名字写全
 > 「沙羅が探しに行ったんだけど、
 >  戻ってから何か変なんですよ
 “Sara went to look for him, but ever since she came back, something's been off.
 ---
 >  沙羅の奴。たぶん忍には
 >  会ったんじゃないかって思うんだけど…」
-That Sara... I think she probably ran into Shin...”
+That Sara... I think she probably ran into Shinobu...”
 
 @20114 Dr. Hazuki · 葉月博士
 > 「そうか……」
@@ -503,18 +504,21 @@ I'm sorry... no, I'm such a mess.”
 “Ahh, man, it's totally different for me. I just got smacked out of nowhere.”
 
 @20135 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > (レジスタンスどもめ、
 >  ここで始末をつけてやるぞ
 (These resistance dogs... I'll finish them off right here.
 ---
 >  この程度のことでトレーズ様の
 >  お手を、わずらわせるわけにはいかん)
-I can't trouble Lord Treize with something this trivial.)
+I can't trouble His Excellency with something this trivial.)
 
 @20136 Wong · ウォン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかしレディ・アン特佐、確かに
 >  おっしゃるとおり研究所のいくつかは
-“However, Lieutenant Colonel Lady Une, it's true that some of the laboratories are
+“However, Special Colonel Lady Une, it's true that some of the laboratories are
 ---
 >  私の管理下にありますが、
 >  まだまだデータを集めているところでして」
@@ -530,6 +534,7 @@ under my management, but we're still in the process of gathering data.”
 Then I'll have no choice but to probe for what you're hiding.”
 
 @20138 Wong · ウォン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いやいや、そんなつもりはありませんよ。
 >  よろしい、そこまでおっしゃるのなら
 “No, no, that's not my intention at all. Very well, if you insist that much,
@@ -540,7 +545,7 @@ it can't be helped. I'll have my experimental unit strike
 ---
 >  叩くとしましょう。トレーズ特佐には
 >  よろしくお伝えいただきたい」
-the Audhumla. Please give my regards to Lieutenant Colonel Treize.”
+the Audhumla. Please give my regards to Special Colonel Treize.”
 
 @20139 Lady · レディ
 > 「結構だ。よい結果を期待しよう
@@ -562,9 +567,10 @@ the Audhumla. Please give my regards to Lieutenant Colonel Treize.”
 By the way, have you arranged for that thing?”
 
 @20142 Wong · ウォン
+# 审校：精读：先生 指东方不败，英文 Master
 > 「これは先生。
 >  聞いていらしたとはお人が悪い
-“Teacher. How wicked of you to have been listening.
+“Ah, Master. How wicked of you to have been listening.
 ---
 >  もちろんですとも。
 >  そちらのほうはよろしく頼みましたよ」
@@ -686,17 +692,19 @@ I want to know about the past. That's what I was searching for.”
 “All pilots, launch in sequence!”
 
 @20166 Dr. Hazuki · 葉月博士
+# 审校：叶月博士对舰长说话应保持敬语，原文「すまないが」应译为更礼貌的“I'm sorry, but please wait”。
 > 「艦長、獣戦機は
 >  調整が終了していない
 “Captain, the Beast Fighter's adjustments aren't finished yet.
 ---
 >  すまないが少し待ってくれ」
-Sorry, but wait a little longer.”
+I'm sorry, but please wait a little longer.”
 
 @20167 Bright · ブライト
+# 审校：布莱特对叶月博士用「ください」表示客气，译文“Hurry, please!”语序不自然，改为“Please hurry!”更符合舰长口吻。
 > 「急いでください!
 >  カミーユはどうした!?」
-“Hurry, please! Where's Kamille?!”
+“Please hurry! Where's Kamille?!”
 
 @20168 Amuro · アムロ
 > 「カミーユが戻らないだと!? ええい!」
@@ -822,9 +830,10 @@ Aggressive Mode won't cut it. We're combining!”
 “I've been waiting so long I couldn't stand it anymore!”
 
 @20192 Ryo · 亮
+# 审校：精读：気合い 不是术语
 > 「フッ、久しぶりに気合いをいれて
 >  いくとするか」
-“Hmph, let's go at it with Spirit for the first time in a while.”
+“Hmph, time to put some spirit into it, for the first time in a while.”
 
 @20193 Shinobu · 忍
 > 「キーワード、
@@ -908,9 +917,10 @@ They said if I defeat the Resistance, the lab would give me my memories back.”
 “Ngh...”
 
 @20210 Kamille · カミーユ
+# 审校：ライフ 不是 La Vie en Rose
 > 「フォウ、ライフに来るんだ。君の
 >  記憶を取り戻す方法をさがそう」
-“Four, come to La Vie en Rose. We'll find a way to get your memories back.”
+“Four, come to LIFE. We'll find a way to get your memories back.”
 
 @20211 Four · フォウ
 > 「そんなことできるものか!」
@@ -1000,8 +1010,9 @@ Just do as I say!”
 “Huh...? Domon? Is it really you, Domon?!”
 
 @20228 Domon · ドモン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「アレンビー、なぜお前が」
-“Allenby, why are you—”
+“Allenby, why are you...”
 
 @20229 Allenby · アレンビー
 > 「しかたがなかったのよ。
@@ -1147,8 +1158,9 @@ I hate men who cower, but I don't like the aggressive type either...”
 (Her...? Does he know?)
 
 @20257 Kamille · カミーユ
+# 审校：「勝手をいわないでください」在此语境下是卡缪对阿姆罗的顶撞，原译“Don't be so selfish”语气偏指责对方自私，改为更贴合少年顶撞口吻的“Don't tell me what to do”。
 > 「勝手をいわないでください」
-“Don't be so selfish.”
+“Don't tell me what to do.”
 
 @20258 Amuro · アムロ
 > 「カミーユ!」
@@ -1184,9 +1196,10 @@ I hate men who cower, but I don't like the aggressive type either...”
 “It should be done.”
 
 @20266 Bright · ブライト
+# 审校：用户确认：直引号→弯引号
 > 「はずじゃこまるんだよ。
 >  ちゃんと確認しろ」
-“'Should be' isn't good enough. Go confirm it properly.”
+“‘Should be’ isn't good enough. Go confirm it properly.”
 
 @20267 Aboly · アポリー
 > 「積み終わってます。大丈夫です」

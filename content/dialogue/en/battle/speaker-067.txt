@@ -1,117 +1,191 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10674 Glemy · グレミー
+# 触发：攻击（通用，1/10）
+# 审校：当たれ是祈使
 > 「はははははっ、当たれ、当たれ!」
-“Hahahahaha, hit, hit!”
+“Hahahahaha, hit them, hit them!”
 
 @10675 Glemy · グレミー
+# 触发：攻击（通用，2/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がすか!」
-“You won't escape!”
+“You won’t escape!”
 
 @10676 Glemy · グレミー
+# 触发：攻击（通用，3/10）
 > 「死ね!」
 “Die!”
 
 @10677 Glemy · グレミー
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔をするな!」
-“Don't get in my way!”
+“Don’t get in my way!”
 
 @10678 Glemy · グレミー
+# 触发：攻击（通用，5/10）
 > 「そこか!」
 “There you are!”
 
 @10679 Glemy · グレミー
+# 触发：攻击（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「トドメをさしてくれる!」
-“I'll finish you off!”
+“I’ll finish you off!”
 
 @10680 Glemy · グレミー
+# 触发：攻击（通用，7/10）
 > 「いくぞ!」
 “Here I come!”
 
 @10681 Glemy · グレミー
+# 触发：攻击（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これで終わりにしてくれる!」
-“I'll end this now!”
+“I’ll end this now!”
 
 @10682 Glemy · グレミー
+# 触发：攻击（通用，9/10）
 > 「落ちろ!」
 “Fall!”
 
 @10683 Glemy · グレミー
+# 触发：攻击（通用，10/10）
 > 「私の前から去れ!」
 “Get out of my sight!”
 
 @10684 Glemy · グレミー
+# 触发：被击坠（通用，1/1）
 > 「な、なんだと!? この私が……!?」
 “W-what?! Me, of all people...?!”
 
 @10685 Glemy · グレミー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：更顺口
 > 「こ、この私がやられるというのか!?」
-“Y-you mean I'm being beaten?!”
+“I-I’m the one being beaten?!”
 
 @10686 Glemy · グレミー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなところで終わるわけには、いかん!」
-“I can't let it end here!”
+“I can’t let it end here!”
 
 @10687 Glemy · グレミー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「わ、私には大儀があるのだ!」
 “I-I have a great cause!”
 
 @10688 Glemy · グレミー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「うわぁぁっ! バカなっ!?」
 “Uwaaaah! Impossible?!”
 
 @10689 Glemy · グレミー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：原译“make you pay for this grudge”把“この無念”的遗憾/怨恨对象表达得不够准确，改为更贴合原意的“see this grudge avenged”。
 > 「くっこの無念は晴らさせてもらう!」
 “Ngh, I will see this grudge avenged!”
 
 @10690 Glemy · グレミー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「くっ、なんと品性のないパイロットだ」
 “Ngh, what a vulgar pilot.”
 
 @10691 Glemy · グレミー
-# 审校：原译“At this rate?!”未完整表达“これではっ”的震惊与否定语气，改为更自然的“This can't be!”。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なに!? これではっ!」
-“W-what?! This can't be!”
+“W-what?! This can’t be!”
 
 @10692 Glemy · グレミー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：原译用问号，但原文是“このままではっ”表示焦虑未完，改为省略号更贴切。
 > 「くっ! このままではっ!」
 “Ngh! At this rate...!”
 
 @10693 Glemy · グレミー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃はきかんよ!」
-“That kind of attack won't work on me!”
+“That kind of attack won’t work on me!”
 
 @10694 Glemy · グレミー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「くっ!」
 “Ngh!”
 
 @10695 Glemy · グレミー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「はははははっ」
 “Hahahahaha.”
 
 @10696 Glemy · グレミー
+# 触发：回避（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうそうあたるものではない!」
-“It's not that easy to hit me!”
+“It’s not that easy to hit me!”
 
 @10697 Glemy · グレミー
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「所詮はこんなものか」
-“So that's all you've got.”
+“So that’s all you’ve got.”
 
 @10698 Glemy · グレミー
-# 审校：原文“な?”是轻微反问语气，英文问号显得像疑问，改为陈述句更自然。
+# 触发：回避（通用，3/3）
+# 审校：意思是自己躲开
 > 「この程度はよけてみせねばな?」
-“I must show you how to dodge something like this.”
+“I ought to dodge this much at least, no?”
 
 @10699 Glemy · グレミー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「所詮はこんなものか」
-“So that's all you've got.”
+“So that’s all you’ve got.”
 
 @10700 Glemy · グレミー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだと!? バカなっ!」
 “Out of ammo?! Impossible!”
 
 @10701 Glemy · グレミー
+# 触发：射程外，无法反击（通用，1/1）
 > 「なんだと!? あんな距離から……」
 “What?! From that distance...”
+
+@16329 Glemy · グレミー
+# 触发：使用〈ビームサーベル／銃剣付きビームサーベル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「フッ、ライフルなど使わなくても!」
+“Hmph, I don’t even need a rifle for you!”
+
+@16330 Glemy · グレミー
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈バウ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このバウをなめてもらってはな!」
+“Don’t you underestimate this Bawoo!”
+
+@16331 Glemy · グレミー
+# 触发：对手驾驶员为女性
+# 审校：“はしたない”用“unseemly”更贴合贵族式语气。
+> 「おやめなさい、はしたない」
+“Stop that. How unseemly.”
+
+@16332 Glemy · グレミー
+# 触发：回避，条件 1000
+> 「ははははっ、それはダミーなのだよ!」
+“Hahahaha, that was a decoy!”
+
+@16333 Glemy · グレミー
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「しょせんお前など、その程度でしか
+>  あるまい!」
+“In the end, that’s all you’re worth!”
+
+@16334 Glemy · グレミー
+# 触发：回避，条件 1000
+> 「お前の相手などダミーでじゅうぶんだ」
+“A decoy is more than enough for the likes of you.”

@@ -1,175 +1,262 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10348 Blacky · ブラッキー
+# 触发：攻击（通用，1/13）
 > 「このブラッキー様が地獄へ
 >  送りこんでやるぞ、ありがたく思え」
 “I, the great Blacky, will send you to hell. Be grateful.”
 
 @10349 Blacky · ブラッキー
+# 触发：攻击（通用，2/13）
 > 「よし、ゆけ!」
 “All right, go!”
 
 @10350 Blacky · ブラッキー
+# 触发：攻击（通用，3/13）
+# 审校：攻击时喊的，不是已完成
 > 「木っ端みじんだ!」
-“Smashed to bits!”
+“I’ll smash you to bits!”
 
 @10351 Blacky · ブラッキー
+# 触发：攻击（通用，4/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「地獄の底へ葬り去るのだ!」
-“I'll bury you at the bottom of hell!”
+“I’ll bury you at the bottom of hell!”
 
 @10352 Blacky · ブラッキー
+# 触发：攻击（通用，5/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフフフフフ、地獄のダンスを
 >  踊らせてやるぞ」
-“Heh heh heh heh heh, I'll make you dance the dance of hell.”
+“Heh heh heh heh heh, I’ll make you dance the dance of hell.”
 
 @10353 Blacky · ブラッキー
+# 触发：攻击（通用，6/13）
 > 「徹底的に壊せ、そして燃やすのだ」
 “Destroy them completely, then burn them.”
 
 @10354 Blacky · ブラッキー
+# 触发：攻击（通用，7/13）
 > 「爆破してしまえ!」
 “Blow them up!”
 
 @10355 Blacky · ブラッキー
+# 触发：攻击（通用，8/13）
 > 「総攻撃開始ーっ!」
 “All-out attack, begin!”
 
 @10356 Blacky · ブラッキー
+# 触发：攻击（通用，9/13）
 > 「せめて、せめて、せめまくれー!」
 “Attack, attack, keep attacking!”
 
 @10357 Blacky · ブラッキー
+# 触发：攻击（通用，10/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「地球最後の日を見るがいい!」
-“Witness Earth's final day!”
+“Witness Earth’s final day!”
 
 @10358 Blacky · ブラッキー
+# 触发：攻击（通用，11/13）
+# 审校：年貢の納め時 是惯用语“该清算了”，不能直译交年贡
 > 「貴様たちもとうとう年貢の
 >  収め時がきたようだなぁ」
-“Seems it's finally time for you lot to pay your dues.”
+“Looks like your time’s finally up.”
 
 @10359 Blacky · ブラッキー
+# 触发：攻击（通用，12/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「とどめをさしてやるぞ!!」
-“I'll finish you off!!”
+“I’ll finish you off for good!!”
 
 @10360 Blacky · ブラッキー
+# 触发：攻击（通用，13/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「殺してやる!」
-“I'll kill you!”
+“I’ll kill you!”
 
 @10361 Blacky · ブラッキー
+# 触发：被击坠（通用，1/3）
 > 「ぎゃあぁぁぁぁぁぁーっ!」
 “Gyaaaaaaaaah!”
 
 @10362 Blacky · ブラッキー
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあぁっ、この恨みは必ず、必ず、今度
 >  こそ!」
-“Gwaah, I'll make you pay for this, I swear, next time for sure!”
+“Gwaah, I’ll make you pay for this, I swear it, next time for sure!”
 
 @10363 Blacky · ブラッキー
+# 触发：被击坠（通用，3/3）
 > 「ぐわあぁぁぁぁぁぁーっ!」
 “Guwaaaaaaaaah!”
 
 @10364 Blacky · ブラッキー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐわぁぁっ! おぼえておれ、この次は
 >  きっとバラバラにしてやる!」
-“Guwaaah! Just you wait, next time I'll tear you apart!”
+“Guwaaah! Just you wait, next time I’ll tear you to pieces!”
 
 @10365 Blacky · ブラッキー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「おおぉぉぉーっ、おのれぃ!」
 “Oooooooh, you bastard!”
 
 @10366 Blacky · ブラッキー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おぉぉっ!? おのれ、この借りは必ず
 >  返してやるぞ!」
-“Ohh?! Curse you, I'll repay this debt for sure!”
+“Ohh?! Curse you, I’ll repay this debt for sure!”
 
 @10367 Blacky · ブラッキー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「うわぁぁっ!? て、撤退準備を
 >  始めろ! 急げ!」
 “Uwaaah?! B-begin retreat preparations! Hurry!”
 
 @10368 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：So I've been hit 不像口语
 > 「くそうっ! やられたか!!」
-“Damn it! So I've been hit!!”
+“Damn it! They got me!!”
 
 @10369 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「なに!? ええい、まだ直らぬか!」
 “What?! Gah, still not fixed?!”
 
 @10370 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだと!? くっ、うろたえるな!」
-“What?! Ngh, don't panic!”
+“What?! Ngh, don’t panic!”
 
 @10371 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 > 「まっ、まさか!? こんなパワーがあるのか!
 >  ?」
 “I-impossible! It has this much power?!”
 
 @10372 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
 > 「ハハハハッ、ムダだムダだ!」
 “Hahahaha, useless, useless!”
 
 @10373 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「ワハハハハハッ、なにをやっている!」
 “Wahahahahaha, what are you doing!”
 
 @10374 Blacky · ブラッキー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 > 「ぐっ、おのれよくもやってくれおったな!」
 “Ngh, you bastard, how dare you do this to me!”
 
 @10375 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「誘いに乗ってきよったな、フフ」
 “So you took the bait, heh heh.”
 
 @10376 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゆるさん!」
-“I won't forgive you!”
+“I won’t forgive you!”
 
 @10377 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この期に及んで強がりなど
 >  通用せんぞ」
-“Bluffing won't work at this point.”
+“Bluffing won’t work at this point.”
 
 @10378 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「しまった!」
 “Damn!”
 
 @10379 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「こやつ!」
 “Why you!”
 
 @10380 Blacky · ブラッキー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハ、身の程知らずめ」
-“Hahaha, you don't know your place.”
+“Hahaha, you don’t know your place.”
 
 @10381 Blacky · ブラッキー
+# 触发：回避（通用，1/3）
 > 「勝てる、勝てるぞ」
 “We can win, we can win!”
 
 @10382 Blacky · ブラッキー
+# 触发：回避（通用，2/3）
 > 「うまくいったぞ!」
 “It worked!”
 
 @10383 Blacky · ブラッキー
+# 触发：回避（通用，3/3）
 > 「俺の勝ちだな!」
 “Guess I win!”
 
 @10384 Blacky · ブラッキー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「よくやった!」
 “Nice work!”
 
 @10385 Blacky · ブラッキー
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、何ごとだ! エネルギー切れだと!?」
-“W-what's going on?! Out of energy?!”
+“W-what’s going on?! Out of energy?!”
 
 @10386 Blacky · ブラッキー
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「いったいどうなってんだ、くそう」
 “What the hell is happening, damn it!”
 
 @10387 Blacky · ブラッキー
+# 触发：射程外，无法反击（通用，1/2）
 > 「ええーい、何をモタモタしている
 >  ここまで追いつめながら」
 “Gah, what are you dawdling for when we had them cornered?!”
 
 @10388 Blacky · ブラッキー
+# 触发：射程外，无法反击（通用，2/2）
 > 「ええい、もう少しのところを」
 “Gah, we were so close!”
+
+@15800 Blacky · ブラッキー
+# 触发：对手驾驶员〈デューク〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「デューク・フリード、地獄の旅にグレ
+>  ンダイザーを棺おけがわりにつけてやるぜ」
+“Duke Fleed, I’ll send you to hell with Grendizer as your coffin!”
+
+@15801 Blacky · ブラッキー
+# 触发：对手驾驶员〈デューク〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「今度こそなんとしても
+>  デューク・フリードを倒さねばならぬ!」
+“This time I’ll bring down Duke Fleed no matter what!”
+
+@15802 Blacky · ブラッキー
+# 触发：对手驾驶员〈デューク〉
+> 「デューク・フリードはこの俺が倒すのだ!」
+“Duke Fleed is mine to defeat!”
+
+@15803 Blacky · ブラッキー
+# 触发：对手驾驶员〈デューク〉
+> 「グレンダイザーめ、覚悟!」
+“Grendizer, prepare yourself!”
+
+@15804 Blacky · ブラッキー
+# 触发：对手驾驶员〈デューク〉
+> 「デューク・フリード、
+>  今日こそ決着をつけてやる!」
+“Duke Fleed, today we settle this!”

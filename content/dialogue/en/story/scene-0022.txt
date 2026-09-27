@@ -184,10 +184,10 @@ In melee combat, nothing can touch it. Don't compare it to some Gundam knockoff.
 “H-hey, you two, what are you saying? Have you forgotten what's going on right now?!”
 
 @21009 Domon · ドモン
-# 审校：原文“男の勝負に口出しは無用だ”强调女性不应插嘴男人的胜负，初稿“There's no need for a woman to butt in”语气较弱，改为更符合多蒙强硬性格的说法。
+# 审校：精读：原文没有“女人”
 > 「黙っていろ、レイン!
 >  男の勝負に口出しは無用だ!」
-“Be quiet, Rain! A woman has no business butting in on a man's duel!”
+“Be quiet, Rain! No butting in on a man's duel!”
 
 @21010 Brad · ブラッド（按段落 3DD3）
 > 「その通りだ。いくぞドモン・カッシュ」
@@ -223,9 +223,10 @@ In melee combat, nothing can touch it. Don't compare it to some Gundam knockoff.
 “Let them be, Bright. Think of it as a little recreation.”
 
 @21017 Bright · ブライト
+# 审校：合并：冲突人工取舍
 > 「今は待機中だぞ。……まったく、
 >  俺には、ああいう連中が
-“We're on standby right now. ...Honestly, I just can't understand what goes on in the heads of men like that.
+“We're on standby right now. ...Honestly, I just can't understand
 ---
 >  なにを考えているのか、
 >  理解できんよ」
@@ -302,8 +303,9 @@ I just wish he'd realize that himself... But thank you, Anna.”
 “Captain Bright, something's coming!”
 
 @21032 Bright · ブライト
+# 审校：用户确认：直引号→弯引号
 > 「何かじゃわからん。何だ、いったい?」
-“'Something' tells me nothing. What is it, exactly?”
+“‘Something’ tells me nothing. What is it, exactly?”
 
 @21033 Ginrei · 銀鈴
 > 「くっ、だめ、追いつかれる!?」
@@ -374,8 +376,9 @@ Go! Giant Robo!”
 “Rrraaagh!”
 
 @21046 Daisaku · 大作
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ロ、ロボォォォッ!?」
-“R-Robooo!?”
+“R-Robooo?!”
 
 @21047 Daisaku · 大作
 > 「移動します。銀鈴さん、教授、
@@ -451,6 +454,7 @@ but we managed to get all the data on Super Alloy Z and Photon Power
 out safely.”
 
 @21059 Garrison · ギャリソン
+# 审校：精读：对方是弓教授
 > 「それはようございましたな」
 “That is most fortunate, sir.”
 
@@ -735,9 +739,10 @@ forgive you bastards!”
 From now on, I won't allow any more of that reckless behavior!”
 
 @21112 Brad · ブラッド（按段落 3DD3）
+# 审校：ブラッド对舰长说话应保持粗放但不过分无礼，“you know”改为“hey”更符合其热血直率的口吻。
 > 「ちっ、わかったよ。
 >  だがよ、艦長さん……」
-“Tch, fine. But you know, Captain...”
+“Tch, fine. But hey, Captain...”
 
 @21113 Domon · ドモン
 > 「やめとけ、{HeroNick}。
@@ -748,9 +753,9 @@ From now on, I won't allow any more of that reckless behavior!”
 who doesn't understand the heart of the fist.”
 
 @21114 Bright · ブライト
-# 审校：「貴様」在此是愤怒的骂语，改为 you bastard 更符合语气。
+# 审校：布莱特作为舰长对部下严厉但不应使用“bastard”这种过于粗俗的词，改为“you”更符合其军人身份。（人工改写）
 > 「なんだと、貴様!」
-“What did you say, you bastard?!”
+“What did you say?!”
 
 @21115 Rain · レイン
 # 审校：「私がよくいって聞かせますから」改为更自然的 I'll talk some sense into him；「やられちゃってもいいの」改为反问 do you want us to be wiped out，更贴近原意。
@@ -847,9 +852,10 @@ All right, you bastards!”
 “What, it's just Boss. What is it, anyway?”
 
 @21132 Boss · ボス
+# 审校：用户确认：直引号→弯引号
 > 「ボスじゃないのぉなんてひでえや、さやか。
 >  それがよ、兜のやつが美人の娘を
-“'Just Boss,' she says. That's harsh, Sayaka. Get this, Koji brought a beautiful girl
+“‘Just Boss,’ she says. That's harsh, Sayaka. Get this, Koji brought a beautiful girl
 ---
 >  連れてきたんだよ」
 with him!”

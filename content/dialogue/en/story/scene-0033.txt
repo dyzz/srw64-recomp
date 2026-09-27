@@ -32,9 +32,10 @@ you could say their scale is quite small.”
 “So the surface is gradually falling under OZ's control...”
 
 @23972 Blex · ブレックス
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「次に宇宙だ。こちらはまだ、
 >  帝国軍が多く残っている
-“Now, space. There, the imperial forces still remain in great numbers.
+“Now, space. There, the Imperial forces still remain in great numbers.
 ---
 >  中心は月面基地、
 >  それからアステロイド基地だな」
@@ -50,13 +51,14 @@ The main centers are the lunar base and the Asteroid Base.”
 doesn't that mean OZ has taken control of space too?”
 
 @23974 Blex · ブレックス
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「そうだ。つまり、
 >  もはやOZが帝国軍を
 “Indeed. Which means it's certain that OZ will
 ---
 >  排除するのは確実ということだ。
 >  その後、連中はその矛先を、
-eliminate the imperial forces. After that, they'll turn their blades
+eliminate the Imperial forces. After that, they'll turn their blades
 ---
 >  同じ地球人に対して
 >  向けてくるだろう」
@@ -68,9 +70,10 @@ against their fellow Earthlings.”
 “What? So that means we end up fighting OZ after all.”
 
 @23976 Bright · ブライト
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「ああ、今のところはそう想定している
 >  帝国軍を排除したOZは
-“Yeah, that's our assumption for now. Once OZ has eliminated the imperial forces,
+“Yes, that's our assumption for now. Once OZ has eliminated the Imperial forces,
 ---
 >  まず宇宙において軍備の増強に
 >  取りかかるのは間違いない」
@@ -153,13 +156,14 @@ the Earth Sphere, even if only a little.”
 how are we supposed to get to space?”
 
 @23984 Quattro · クワトロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「すでに手配はしてある。
 >  帝国軍部隊が駐留していたが
 “Arrangements have already been made. There's an old launch base
 ---
 >  先のOZとの戦闘で
 >  今は使われていない
-that was once used by imperial forces, but it's been abandoned
+that was once used by Imperial forces, but it's been abandoned
 ---
 >  古い発射基地が存在する。
 >  これを利用させてもらう」
@@ -192,6 +196,7 @@ They're scheduled to come and help us.”
 “All right, departure is at dawn two days from now. Everyone, get your preparations in order.”
 
 @23989 Koji · 甲児
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「ちょっと待ってくれよ。オレたちが
 >  宇宙に行くのはいいとしても
 “Hold on a second. It's fine that we're going to space, but
@@ -205,9 +210,10 @@ what about the Brigadier General, Chief Chujo, and the doctors
 who are staying here? And even though they're withdrawing,
 ---
 >  それにドレイクだっているじゃないか」
-the imperial forces and Drake are still out there too.”
+the Imperial forces and Drake are still out there too.”
 
 @23990 Blex · ブレックス
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「我々は地上に残り、少しでも
 >  君たちのバックアップができるよう
 “We'll remain on the surface and do what we can to support you all
@@ -218,7 +224,7 @@ in various ways. There's also the matter of the Sanc Kingdom.
 ---
 >  残存する帝国軍とドレイクに
 >  ついては、万丈くんともう一隻の
-As for the remaining imperial forces and Drake, we intend to handle them
+As for the remaining Imperial forces and Drake, we intend to handle them
 ---
 >  オーラシップで対応するつもりでいる」
 with Banjo and the other Aura Ship.”
@@ -230,9 +236,10 @@ with Banjo and the other Aura Ship.”
 “Hey, Ryoma, what's going on? I haven't seen much of you lately.”
 
 @23992 Ryoma · リョウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「新ゲッターの訓練ですよ。
 >  それより紹介します、車弁慶です」
-“Training with the new Getter. Anyway, let me introduce you—this is Benkei Kuruma.”
+“Training with the new Getter. Anyway, let me introduce you... this is Benkei Kuruma.”
 
 @23993 Benkei · ベンケイ
 > 「よろしく頼んます。
@@ -311,10 +318,11 @@ help out with the special training too.”
 “Hahahaha. Then Koji, come by later.”
 
 @24004 Roux · ルー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「ブライト艦長、
 >  あたし考えたんですけど、
-“Captain Bright, I've been thinking—
+“Captain Bright, I've been thinking...
 ---
 >  もうあたしたちって
 >  地球解放戦線とかカラバとか
@@ -380,9 +388,10 @@ need to show the world we exist from now on.”
 “What is it?”
 
 @24017 Koji · 甲児
+# 审校：用户确认：直引号→弯引号
 > 「“兜甲児と仲間たち”っての
 >  イカスだろ」
-“'Koji Kabuto and Friends'—cool, huh?”
+“‘Koji Kabuto and Friends’... cool, huh?”
 
 @24018 Simone · シモーヌ
 > 「…………」
@@ -393,9 +402,10 @@ need to show the world we exist from now on.”
 “What?”
 
 @24020 Sayaka · さやか
+# 审校：用户确认：直引号→弯引号
 > 「まったく、ほんとにしょうがないわね。
 >  だいたいイカスはないんじゃない?」
-“Honestly, you're really hopeless. And 'cool'? I don't think so.”
+“Honestly, you're really hopeless. And ‘cool’? I don't think so.”
 
 @24021 Tetsuya · 鉄也
 > 「みんな、バカはほっとこうぜ」
@@ -429,9 +439,10 @@ I guess that's no good either, huh?”
 “Of course it's no good.”
 
 @24028 David · デビッド
+# 审校：用户确认：直引号→弯引号
 > 「なら“ソーラー・ファング”はどうだ?
 >  こいつならバッチリだぜ」
-“Then how about 'Solar Fang'? That one's perfect.”
+“Then how about ‘Solar Fang’? That one's perfect.”
 
 @24029 Fa · ファ
 > 「へぇ、いい感じじゃない」
@@ -486,9 +497,10 @@ We've got to get ready to head into space, you know.”
 “Hey Amuro, don't you have a good name?”
 
 @24039 Amuro · アムロ
+# 审校：用户确认：直引号→弯引号
 > 「そうだな……
 >  “マーチウィンド”というのはどうかな」
-“Let me think... How about 'March Wind'?”
+“Let me think... How about ‘March Wind’?”
 
 @24040 Beltorchika · ベルトーチカ
 > 「マーチウィンド……三月の風?」
@@ -649,20 +661,22 @@ I don't like the idea of that man moving about freely.”
 pacifying the Earth.”
 
 @24067 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「トレーズ、レディ・アン特佐の
 >  交渉はうまくいっているようだな
-“Treize, the negotiations with Lieutenant Colonel Lady Une seem to be going well.
+“Treize, the negotiations with Special Colonel Lady Une seem to be going well.
 ---
 >  コロニーを手なずけた手腕はさすがだ」
 Your skill at bringing the colonies to heel is impressive as ever.”
 
 @24068 Treize · トレーズ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「……恐れ入ります。
 >  バスク特佐に帝国軍を
-“...You flatter me. It's likely thanks to Lieutenant Colonel Bask
+“...You flatter me. It's likely thanks to Special Colonel Bask
 ---
 >  おさえていただいたおかげでしょう」
-holding the imperial forces in check.”
+holding the Imperial forces in check.”
 
 @24069 Treize · トレーズ
 > (ジャミトフ……何をしようというのか……)
@@ -986,9 +1000,9 @@ I'll go take a look at the situation.”
 “Strange... I don't see any guards.”
 
 @24127 Quattro · クワトロ
-# 审校：“まさかなっ”是“不会吧/难道说”的惊呼，原译“don't tell me?!”语气不自然，改为破折号表达中断。
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちっ、まさかなっ!」
-“Tch, don't tell me—!”
+“Tch, don't tell me...!”
 
 @24128 Quattro · クワトロ
 > 「何者だ!?」
@@ -1243,6 +1257,7 @@ This ship's got three beautiful ladies on medical duty, you know.”
 “But why here, of all places...”
 
 @24172 Death Gaia · デスガイヤー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「シャピロめ、この施設から
 >  宇宙へ上がれるなどとよくもいった
 “That fool Shapiro, saying we could reach space from this facility.
@@ -1253,7 +1268,7 @@ There are enemies here... no, it's them. The rivals I, of all people, acknowledg
 ---
 >  全軍戦闘用意!
 >  打ち上げ施設を
-All forces, battle stations! I don't care if we destroy the launch facility—
+All forces, battle stations! I don't care if we destroy the launch facility...
 ---
 >  破壊してもかまわん、
 >  奴らを全力で叩きつぶせ!」
@@ -1310,10 +1325,12 @@ we can earn favor with the Empire and with Drake.”
 “The battle is beginning. Go, Show.”
 
 @24181 Show · ショウ
+# 审校：人名按词表统一
 > 「はい。チャム、いくぞ!」
 “Yes. Chum, let's go!”
 
 @24182 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま……なぜショウとふたりっきりで
 >  お話ししなかったの?」
 “Lady Ciela... why didn't you speak with Show alone?”
@@ -1327,11 +1344,12 @@ we can earn favor with the Empire and with Drake.”
 It is best... not to grow attached.”
 
 @24184 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま……」
 “Lady Ciela...”
 
 @24185 Ciela · シーラ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人名按词表统一
 > 「お前もおいき、チャム。ショウを頼みま
 >  すよ。誰かブライト艦長へ連絡を」
 “You go too, Chum. Look after Show. Someone contact Captain Bright.”
@@ -1353,9 +1371,10 @@ We will launch the Gran-Garan here.”
 “Understood. We're counting on you.”
 
 @24189 Ciela · シーラ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > (かりそめの客は、
 >  去らねばならぬが運命……
-(A fleeting guest must depart—such is fate...
+(A fleeting guest must depart... such is fate...
 ---
 >  それがおわかりか、ドレイク・ルフト……)
 Do you understand that, Drake Luft...?)
@@ -1402,8 +1421,9 @@ Prepare the Will-Wips; we will launch the Goraon.”
 “Listen, don't let the enemy get anywhere near the facility!”
 
 @24198 Allen · アレン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ、バカな!? こんなことで俺が……」
-“Ngh, impossible!? For me to go down like this...”
+“Ngh, impossible?! For me to go down like this...”
 
 @24199 Fei · フェイ
 > 「お前らなんかにやられるかよ!
@@ -1411,9 +1431,10 @@ Prepare the Will-Wips; we will launch the Goraon.”
 “Like hell I'd be beaten by the likes of you! I'm Fei Chenka...”
 
 @24200 Death Gaia · デスガイヤー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ばかな!? 銀河の果てで
 >  この俺が負けるなど、ありえないこと!」
-“Impossible!? For me to lose at the edge of the galaxy—that can't be!”
+“Impossible?! For me to lose at the edge of the galaxy... that can't be!”
 
 @24201 Shot · ショット
 > 「こ、こんな所で俺は……ミュージィ……」
@@ -1437,13 +1458,14 @@ Prepare the Will-Wips; we will launch the Goraon.”
 “Heh heh heh heh, what fools they are.”
 
 @24206 Luna · ルーナ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「さすがはシャピロ様。
 >  あの地球人どもの行動をここまで
 “As expected of you, Lord Shapiro. To read those Earthlings' movements so thoroughly
 ---
 >  読みきって、デスガイヤー将軍と
 >  ショットをぶつけておくとは
-and send General Death Gaia and Shot against them—
+and send General Death Gaia and Shot against them...
 ---
 >  お見事ですわ」
 splendid work.”
@@ -1499,6 +1521,8 @@ I am the man who will become the god of this universe. Kukukukuku.”
 do you understand that, Drake Luft...?)
 
 @24216 Alan · アラン
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「シーラ女王、ウィル・ウィプスには
 >  追いついたようですな」
 “Queen Ciela, it seems we've caught up with the Will-Wips.”
@@ -1525,9 +1549,10 @@ do you understand that, Drake Luft...?)
 “The Goraon has come?!”
 
 @24222 Elle · エレ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「大義に死する地上人がいます。
 >  死をも恐れぬ地上人が
-“There are Earthlings who would die for a righteous cause. Earthlings who fear not death—
+“There are Earthlings who would die for a righteous cause. Earthlings who fear not death...
 ---
 >  この戦い、我らが勝ちます!」
 in this battle, we shall win!”
@@ -1559,9 +1584,10 @@ On the surface, we are beings who must be purged.”
 “Drake... Luft...?”
 
 @24228 Drake · ドレイク
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「シーラよ、ワシとて世界を見る目は
 >  あるつもりだ。が、個人の感情の
-“Ciela, I too believe I have eyes to see the world. But a personal matter of feeling—
+“Ciela, I too believe I have eyes to see the world. But a personal matter of feeling...
 ---
 >  決着だけは、これはつけさせてもらう。
 >  そうであろう、シャピロよ」
@@ -1582,6 +1608,7 @@ that alone, I will settle here and now. Isn't that right, Shapiro?”
 then what kind of Aura Machine would I be if I couldn't defeat you?”
 
 @24231 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「敵は仲間割れを始めたか……
 >  シーラ女王、どうするのですか?」
 “The enemy has started infighting... Queen Ciela, what will you do?”
@@ -1613,11 +1640,14 @@ Are you really fine with the Earth being torn apart like this? Tod!”
 “Uwoooooooh!!”
 
 @24236 Chum · チャム
+# 审校：人名按词表统一
+# 检查提示：未用必用译名：ガラバ→Gallaba
 > 「あ、あのガラバのオーラ力……
 >  バーン・バニングス!」
 “Th-That Gallaba's aura power... Bern Bunnings!”
 
 @24237 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!?」
 “Bern?!”
 
@@ -1627,9 +1657,10 @@ Are you really fine with the Earth being torn apart like this? Tod!”
 “Today, today I'll settle this once and for all!”
 
 @24239 Show · ショウ
+# 审校：「怨念」在此处指巴恩的执念/怨恨，译作 grudge 语气偏轻且与 L6 的“that grudge of yours”重复，改为 hatred 更贴合 Show 对巴恩的强烈质问。
 > 「貴様はその怨念で
 >  何を手に入れた!」
-“What did you gain from all that grudge?!”
+“What did you gain from all that hatred?!”
 
 @24240 Bern · バーン
 > 「力と狡猾さだ! さすれば、勝つ!」
@@ -1641,14 +1672,16 @@ Are you really fine with the Earth being torn apart like this? Tod!”
 “Stand back! I'll take on your aura power myself!”
 
 @24242 Bern · バーン
+# 审校：「女ひとりごときに」带有轻蔑语气，加 mere 更符合巴恩骄傲骑士的口吻。
 > 「くっ、女ひとりごときに、
 >  俺は屈するわけにはいかん」
-“Ngh, I can't afford to yield to a single woman.”
+“Ngh, I can't afford to yield to a mere woman.”
 
 @24243 Show · ショウ
+# 审校：与 L2 统一，将 grudge 改为 hatred，保持同一概念前后一致。
 > 「俺は人は殺さない……
 >  その怨念を、殺す!」
-“I won't kill people... but that grudge of yours, I'll kill it!”
+“I won't kill people... but that hatred of yours, I'll kill it!”
 
 @24244 Bern · バーン
 > 「な……なに!?」
@@ -1686,11 +1719,13 @@ Are you really fine with the Earth being torn apart like this? Tod!”
 “The Will-Wips... is falling... The aura power...!”
 
 @24251 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「いまだっ! シーラ・ラパーナ……
 >  浄化を!」
 “Now! Ciela Lapana... purify it!”
 
 @24252 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「いまだっ! シーラ・ラパーナ……
 >  浄化を!」
 “Now! Ciela Lapana... purify it!”
@@ -1801,7 +1836,7 @@ To remove it must be the task laid upon us.”
 “So we can't go home until that's finished?”
 
 @24275 Ciela · シーラ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人名按词表统一
 > 「そうですよ、チャム。
 >  ですからブライト艦長
 “That's right, Chum. So, Captain Bright,
@@ -1835,7 +1870,7 @@ To remove it must be the task laid upon us.”
 “So, Lady Elle, we can't go home until that's finished?”
 
 @24280 Elle · エレ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人名按词表统一
 > 「そうですよ、チャム。
 >  ですからブライト艦長
 “That's right, Chum. So, Captain Bright,
@@ -1997,5 +2032,7 @@ They say Jamitov had Blex assassinated, but what he has unleashed upon the world
 he will come to understand in time. What a foolish thing to do.”
 
 @24310 Lady · レディ
+# 审校：レディ对特列斯的称呼按 address 应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様」
-“Yes, Lord Treize.”
+“Yes, Your Excellency.”

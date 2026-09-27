@@ -1,125 +1,173 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8591 Mouar · マウアー
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせはしないっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @8592 Mouar · マウアー
+# 触发：攻击（通用，2/9）
 > 「そこっ!!」
 “There!!”
 
 @8593 Mouar · マウアー
+# 触发：攻击（通用，3/9）
 > 「落ちろっ!」
 “Fall!”
 
 @8594 Mouar · マウアー
+# 触发：攻击（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当てる!」
-“I'll hit you!”
+“I’ll hit you!”
 
 @8595 Mouar · マウアー
+# 触发：攻击（通用，5/9）
 > 「もらった!」
 “Got you!”
 
 @8596 Mouar · マウアー
+# 触发：攻击（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上好きにはさせない!」
-“I won't let you do as you please anymore!”
+“I won’t let you do as you please anymore!”
 
 @8597 Mouar · マウアー
+# 触发：攻击（通用，7/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私が相手だ!」
-“I'm your opponent!”
+“I’m your opponent!”
 
 @8598 Mouar · マウアー
+# 触发：攻击（通用，8/9）
 > 「沈めっ!」
 “Sink!”
 
 @8599 Mouar · マウアー
+# 触发：攻击（通用，9/9）
 > 「これで決めるっ!」
 “This will finish it!”
 
 @8600 Mouar · マウアー
+# 触发：被击坠（通用，1/2）
 > 「そんな……」
 “No...”
 
 @8601 Mouar · マウアー
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ジェ、ジェリド……」
-“J-Jerid...”
+“J-jerid...”
 
 @8602 Mouar · マウアー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま……まだだ!! まだ落ちはしない!!」
-“N-not yet!! I'm not going down yet!!”
+“N-not yet!! I’m not going down yet!!”
 
 @8603 Mouar · マウアー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「くっ!! このままでは……」
 “Ngh!! At this rate...”
 
 @8604 Mouar · マウアー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：Damn?! 不自然
 > 「しまった!? これ以上のダメージは…」
-“Damn!? Any more damage and...”
+“Oh no! Any more damage and...”
 
 @8605 Mouar · マウアー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「あうっ!! な、なんてパワー……」
 “Agh!! W-what power...”
 
 @8606 Mouar · マウアー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：この程度で是这点伤不算什么
 > 「つっ! この程度で!」
-“Tch! This much?!”
+“Tch! This won’t stop me!”
 
 @8607 Mouar · マウアー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「まだっ! まだいける!」
 “Not yet! I can still fight!”
 
 @8608 Mouar · マウアー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：更口语
 > 「くっ! 当たったところで!」
-“Ngh! Even if it hit!”
+“Ngh! So what if it hit!”
 
 @8609 Mouar · マウアー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるっ! だがまだやられてはいない!」
-“Not bad! But I'm not down yet!”
+“Not bad! But I’m not down yet!”
 
 @8610 Mouar · マウアー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：甘いな不是 too bad
 > 「甘いな、この程度のダメージなど!」
-“Too bad, damage like this is nothing!”
+“Too soft. Damage like this is nothing!”
 
 @8611 Mouar · マウアー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：こんなもので指攻击而非东西
 > 「くっ、こんなもので!」
-“Ngh, as if this would!”
+“Ngh, as if that could hurt me!”
 
 @8612 Mouar · マウアー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：更自然
 > 「ダメージ軽微、まだいける!」
-“Damage minimal, I can still go!”
+“Damage is minimal. I can keep going!”
 
 @8613 Mouar · マウアー
+# 触发：回避（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはしない!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8614 Mouar · マウアー
+# 触发：回避（通用，2/6）
 > 「甘いな」
 “Too soft.”
 
 @8615 Mouar · マウアー
+# 触发：回避（通用，3/6）
 > 「そこか!」
 “There!”
 
 @8616 Mouar · マウアー
+# 触发：回避（通用，4/6）
+# 审校：かわしてみせる不是教人躲
 > 「かわしてみせる!」
-“I'll show you how to dodge!”
+“Watch me dodge this!”
 
 @8617 Mouar · マウアー
+# 触发：回避（通用，5/6）
 > 「このっ!」
 “Why you!”
 
 @8618 Mouar · マウアー
+# 触发：回避（通用，6/6）
 > 「この程度っ!」
 “Is that all?!”
 
 @8619 Mouar · マウアー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなビームが通用するものか!」
-“A beam like that won't work on me!”
+“A beam like that won’t work on me!”
 
 @8620 Mouar · マウアー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「何っ!? 弾切れか!?」
 “What?! Out of ammo?!”
 
 @8621 Mouar · マウアー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、この距離では反撃できない…」
-“Ngh, at this range I can't fight back...”
+“Ngh, at this range I can’t fight back...”

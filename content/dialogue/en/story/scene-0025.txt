@@ -95,10 +95,10 @@ Interesting. Show me what you can do.”
 “Yes, leave it to me.”
 
 @21606 Le Cain · ル・カイン
-# 审校：“百鬼のグラー”指グラー博士，词表必用为 Dr. Gura，且后文 L68 也使用 Dr. Gura，应保持一致。
+# 审校：百鬼 统一 Hyakki
 > 「百鬼のグラーを呼べ。
 >  何をたくらんでいるのか知らんが
-“Summon Gura of the Hundred Demons. I don't know what they're plotting,
+“Summon Gura of the Hyakki Clan. I don't know what they're plotting,
 ---
 >  奴らにも役に立ってもらわねばな」
 but they'll have to make themselves useful too.”
@@ -416,13 +416,14 @@ Fujiwara... and Sara.”
 demon soldiers we went to the trouble of increasing. We're withdrawing. Hm? Gyugaki, what are you doing?”
 
 @21660 Gyugaki · 牛餓鬼
+# 审校：百鬼 统一 Hyakki
 > 「グラー博士、
 >  俺の父さんの牛剣鬼は
 “Dr. Gura, my father Gyukenki is
 ---
 >  百鬼の英雄といわれてるんだ。
 >  俺だって」
-called a hero of the Hundred Demons. I too...”
+called a hero of the Hyakki Clan. I too...”
 
 @21661 Dr. Gura · グラー博士
 > 「よさんか。初陣のお前ひとりで
@@ -465,13 +466,15 @@ Dr. Gura, please forgive my selfishness.”
 demon soldiers we went to the trouble of increasing. We're withdrawing.”
 
 @21668 Ryoma · リョウ
+# 审校：百鬼 统一 Hyakki
 > 「チッ、百鬼は逃げやがったか」
-“Tch, the Hundred Demons ran away.”
+“Tch, the Hyakki Clan ran away.”
 
 @21669 Gyugaki · 牛餓鬼
+# 审校：百鬼 统一 Hyakki
 > 「くそぉっ、俺の父さんの牛剣鬼は
 >  百鬼の英雄といわれてるんだ
-“Damn it, my father Gyukenki is called a hero of the Hundred Demons.
+“Damn it, my father Gyukenki is called a hero of the Hyakki Clan.
 ---
 >  俺だってやってやる! このまま
 >  おめおめと、引き返せるものか!」
@@ -581,6 +584,7 @@ Accept this cup of farewell.”
 Then I've no business with the likes of these.”
 
 @21688 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「あれは……ヴァイローズ!?
 >  {PartnerNick}か!!
 “That's... Virose?! {PartnerNick}!!
@@ -774,13 +778,13 @@ After all, this battle was merely a side matter, and there is the future to cons
 This is Great Mazinger, Tetsuya Tsurugi. Banjo told me to come help.”
 
 @21724 Ginrei · 銀鈴
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：第二页只剩引号
 > 「ブライト艦長、グレートマジンガーの
 >  剣鉄也という方から、通信が
-“Captain Bright, we're receiving a communication from a man named Tetsuya Tsurugi of Great Mazinger.
+“Captain Bright, we're receiving a communication from a man named Tetsuya Tsurugi
 ---
 >  入っています」
-”
+of Great Mazinger.”
 
 @21725 Bright · ブライト
 > 「グレートマジンガー? 博士?」
@@ -985,6 +989,7 @@ but it seems it withdrew when it saw us. Take a look.”
 “Marvel! Thank goodness you're safe!!”
 
 @21763 Marvel · マーベル
+# 审校：人名按词表统一
 > 「チャム!? ショウ!?
 >  よく……無事で……」
 “Chum?! Show?! Thank goodness... you're safe...”
@@ -1019,6 +1024,7 @@ but it seems it withdrew when it saw us. Take a look.”
 But... what are you doing here?”
 
 @21770 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ショウ、エレ様とシーラ様も地上に
 >  出ているの。今はまだ
 “Show, Lady Elle and Lady Ciela are up on the surface too. We're still
@@ -1038,7 +1044,7 @@ all right for now, but if we keep getting attacked like this, we'll be done for.
 “Yes. We came out to look for help, but everyone else was shot down...”
 
 @21773 Show · ショウ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人名按词表统一
 > 「わかった、ブライト艦長たちに
 >  相談してみるよ。マーベルは
 “All right, I'll talk to Captain Bright and the others. Marvel, you should

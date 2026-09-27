@@ -1,209 +1,339 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11078 Judau · ジュドー
+# 触发：攻击（通用，1/16）
 > 「そこだあっ!!」
 “There!!”
 
 @11079 Judau · ジュドー
+# 触发：攻击（通用，2/16）
 # 审校：“This one finishes it!!”语法略生硬，改为更自然的“This one ends it!!”
 > 「こいつで終わりだっ!!」
 “This one ends it!!”
 
 @11080 Judau · ジュドー
+# 触发：攻击（通用，3/16）
 > 「どけえっ!」
 “Out of my way!”
 
 @11081 Judau · ジュドー
+# 触发：攻击（通用，4/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しつこいんだよっ!」
-“You're persistent!”
+“You’re persistent!”
 
 @11082 Judau · ジュドー
+# 触发：攻击（通用，5/16）
 > 「くらえっ!」
 “Take this!”
 
 @11083 Judau · ジュドー
+# 触发：攻击（通用，6/16）
+# 审校：やるかよ 是不让你得逞，不是挑衅
 > 「やるかよっ!」
-“You wanna go?!”
+“Like hell I’d let you!”
 
 @11084 Judau · ジュドー
+# 触发：攻击（通用，7/16）
 > 「消えろっ!」
 “Disappear!”
 
 @11085 Judau · ジュドー
+# 触发：攻击（通用，8/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そう簡単に、やらせるかよっ!」
-“You think I'll let you do that?!”
+“You think I’ll let you do that?!”
 
 @11086 Judau · ジュドー
+# 触发：攻击（通用，9/16）
 > 「あまいんだよっ!」
 “Too naive!”
 
 @11087 Judau · ジュドー
+# 触发：攻击（通用，10/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させるっ!!」
-“I'll hit you dead-on!!”
+“I’ll hit you dead-on!!”
 
 @11088 Judau · ジュドー
+# 触发：攻击（通用，11/16）
 > 「このおっ!」
 “Why you!”
 
 @11089 Judau · ジュドー
+# 触发：攻击（通用，12/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @11090 Judau · ジュドー
+# 触发：攻击（通用，13/16）
 # 审校：“でやあーっ!”是战斗呐喊，初稿“Take thaaat!”译成了具体台词，改为保留气势的拟声呐喊“Deyaaah!!”
 > 「でやあーっ!」
 “Deyaaah!!”
 
 @11091 Judau · ジュドー
+# 触发：攻击（通用，14/16）
 # 审校：“んなくそぉーっ!”是粗口，初稿“Damn youuu!”已合适，不修改。
 > 「んなくそぉーっ!」
 “Damn youuu!!”
 
 @11092 Judau · ジュドー
+# 触发：攻击（通用，15/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなぁーっ!!」
-“Don't underestimate me!!”
+“Don’t underestimate me!!”
 
 @11093 Judau · ジュドー
+# 触发：攻击（通用，16/16）
 > 「おかえしだぜっ!」
 “Payback time!”
 
 @11094 Judau · ジュドー
+# 触发：被击坠（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!やられたっ!!」
-“Whoa! I'm hit!!”
+“Whoa! I’m hit!!”
 
 @11095 Judau · ジュドー
+# 触发：被击坠（通用，2/3）
 > 「うわっちゃあ!やられちまったぜ!!」
 “Whoa! They got me!!”
 
 @11096 Judau · ジュドー
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまった!!」
-“D-Damn it!!”
+“D-damn it!!”
 
 @11097 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わああっ! ダメージがでかすぎるぜ!!」
-“Waaah! That's way too much damage!!”
+“Waaah! That’s way too much damage!!”
 
 @11098 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわあっ!! こ、このままじゃ……」
-“Waaah!! A-At this rate...”
+“Waaah!! A-at this rate...”
 
 @11099 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
 > 「くそっ! なんてパワーだ!?」
 “Damn! What kind of power is that?!”
 
 @11100 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわああっ! まずい、パワーが段ちだ!」
-“Waaah! This is bad, his power's on another level!”
+“Waaah! This is bad, his power’s on another level!”
 
 @11101 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
 > 「くっ!!ヤバイな……」
 “Ngh!! This is bad...”
 
 @11102 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
 > 「くっ!ダメージがでかすぎるか!?」
 “Ngh! Is the damage too much?!”
 
 @11103 Judau · ジュドー
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
 > 「ちいっ!!ちょいとヤバイぜ!」
 “Tch!! This is kinda bad!”
 
 @11104 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだまだあっ!! いいようにさせるか!!」
-“Not yet!! Like I'd let you have your way!!”
+“Not yet!! Like I’d let you have your way!!”
 
 @11105 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! す、好き勝手やってくれ
 >  ちゃって!!」
-“Ugh! D-Doing whatever you want!!”
+“Ugh! Y-you’re having a field day, aren’t you!!”
 
 @11106 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落ちるかよっ!!」
-“Like I'd go down!!”
+“Like I’d go down!!”
 
 @11107 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! な、何の、これからこれから!」
-“Guh! W-What, we're just getting started!”
+“Guh! W-what, we’re just getting started!”
 
 @11108 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだやられるかよっ!」
-“N-No way I'm going down yet!”
+“N-no way I’m going down yet!”
 
 @11109 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
 > 「くっ!やるじゃないの!」
 “Ngh! Not bad!”
 
 @11110 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「まだまだぁっ!!」
 “Not done yet!!”
 
 @11111 Judau · ジュドー
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
 > 「くっ!!まだいけるぜ!!」
 “Ngh!! I can still go!!”
 
 @11112 Judau · ジュドー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもん、効くかよ!!」
-“That little thing? Like it'd work!!”
+“That little thing? Like it’d work!!”
 
 @11113 Judau · ジュドー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「そんな攻撃でっ!」
 “An attack like that!”
 
 @11114 Judau · ジュドー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「当たった!? けど、このくらいでっ!」
 “It hit?! But this much!”
 
 @11115 Judau · ジュドー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「なんのっ!!」
 “No problem!!”
 
 @11116 Judau · ジュドー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「その程度かよ!」
 “Is that all you got!”
 
 @11117 Judau · ジュドー
+# 触发：回避（通用，1/9）
 > 「おおっと!!」
 “Whoa there!!”
 
 @11118 Judau · ジュドー
+# 触发：回避（通用，2/9）
 > 「何やってんだよ、ヘタクソ!」
 “What are you doing, you amateur!”
 
 @11119 Judau · ジュドー
+# 触发：回避（通用，3/9）
+# 审校：补句号；英文更像拟声
 > 「ひょいっと」
-“Easy does it.”
+“Hup!”
 
 @11120 Judau · ジュドー
+# 触发：回避（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらないね!」
-“You can't hit me!”
+“You can’t hit me!”
 
 @11121 Judau · ジュドー
+# 触发：回避（通用，5/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたってたまるかよっ!!」
-“Like I'd ever get hit!!”
+“Like I’d ever get hit!!”
 
 @11122 Judau · ジュドー
+# 触发：回避（通用，6/9）
+# 审校：补句号；英文更口语
 > 「あぶねぇ、あぶねぇ」
-“That was close, that was close.”
+“Whew, close one, close one.”
 
 @11123 Judau · ジュドー
+# 触发：回避（通用，7/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ねらいがあまいぜ!」
-“Your aim's way off!”
+“Your aim’s way off!”
 
 @11124 Judau · ジュドー
+# 触发：回避（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないってよ!」
-“I told you it doesn't work!”
+“I told you it doesn’t work!”
 
 @11125 Judau · ジュドー
+# 触发：回避（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっていってんじゃん!」
-“I said it's useless!”
+“I said it’s useless!”
 
 @11126 Judau · ジュドー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもん、効くかい!!」
-“That little thing? Like it'd work!!”
+“That little thing? Like it’d work!!”
 
 @11127 Judau · ジュドー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ!反撃できねえ!!」
-“Tch! I can't counter!!”
+“Tch! I can’t counter!!”
 
 @11128 Judau · ジュドー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だめだ!とどかねえっ!」
-“No good! It won't reach!”
+“No good! It won’t reach!”
+
+@16387 Judau · ジュドー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「そこだっ! ファンネル!!」
+“Right there! Funnel!!”
+
+@16388 Judau · ジュドー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「ファンネル!!」
+“Funnel!!”
+
+@16389 Judau · ジュドー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「いけっ!ファンネル!!」
+“Go! Funnel!!”
+
+@16390 Judau · ジュドー
+# 触发：使用〈フィンファンネル〉
+> 「いけっ!フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@16391 Judau · ジュドー
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@16392 Judau · ジュドー
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル、行けぇぇっ!!」
+“Fin Funnels, gooo!!”
+
+@16393 Judau · ジュドー
+# 触发：使用〈ヴェスバー〉（低优先，可能被通用台词顶掉）
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@16394 Judau · ジュドー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「いっけーっ!!ハイメガキャノン!!」
+“Gooo!! High Mega Cannon!!”
+
+@16395 Judau · ジュドー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「一気にいくぜっ! ハイメガキャノン!」
+“I’ll finish this in one shot! High Mega Cannon!”
+
+@16396 Judau · ジュドー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+# 审校：原文末尾只有一个感叹号
+> 「行けえぇっ! ハイメガキャノン砲っ!」
+“Gooo! High Mega Cannon!”

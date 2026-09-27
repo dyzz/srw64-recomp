@@ -1,95 +1,153 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10824 Wyme · ワイム
+# 触发：攻击（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「間合いが甘いんだよ!」
-“Your spacing's too sloppy!”
+“Your spacing’s too sloppy!”
 
 @10825 Wyme · ワイム
+# 触发：攻击（通用，2/6）
 > 「おぉぉぉーっ!」
 “Ooooh!”
 
 @10826 Wyme · ワイム
+# 触发：攻击（通用，3/6）
 > 「さぁ正々堂々と勝負だ!」
 “Come, a fair and square duel!”
 
 @10827 Wyme · ワイム
+# 触发：攻击（通用，4/6）
 > 「我らと尋常に勝負せよ!」
 “Face us in honest combat!”
 
 @10828 Wyme · ワイム
+# 触发：攻击（通用，5/6）
 > 「いく!」
 “Here I go!”
 
 @10829 Wyme · ワイム
+# 触发：攻击（通用，6/6）
 > 「これならばっ!」
 “This should do it!”
 
 @10830 Wyme · ワイム
+# 触发：被击坠（通用，1/1）
 > 「うわぁぁぁぁーっ!」
 “Uwaaaaaaah!”
 
 @10831 Wyme · ワイム
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「く、くそぅ、よくも!」
 “D-damn you, how dare you!”
 
 @10832 Wyme · ワイム
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おぉぉ!? こ、こんなことがっ!」
-“Oh?! Th-this can't be!”
+“Oh?! Th-this can’t be!”
 
 @10833 Wyme · ワイム
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：重伤情境
 > 「ぐぅぅっ! やられる!?」
-“Guh! I'm being hit?!”
+“Guh! Am I going down?!”
 
 @10834 Wyme · ワイム
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くっ……なんということだ!」
 “Ngh... how can this be!”
 
 @10835 Wyme · ワイム
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! さすがにやるな!」
-“Ngh! You're good, I'll admit!”
+“Ngh! You’re good, I’ll admit!”
 
 @10836 Wyme · ワイム
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「うぅ! 戦いがいのある相手だ!」
 “Ugh! A foe worth fighting!”
 
 @10837 Wyme · ワイム
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「かすっただけだ!」
 “It just grazed me!”
 
 @10838 Wyme · ワイム
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものでっ!」
-“That's nothing!”
+“That’s nothing!”
 
 @10839 Wyme · ワイム
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「まだまだ!」
 “Not yet, not yet!”
 
 @10840 Wyme · ワイム
+# 触发：回避（通用，1/3）
 > 「甘い甘い!」
 “Too naive, too naive!”
 
 @10841 Wyme · ワイム
+# 触发：回避（通用，2/3）
+# 审校：回避情境
 > 「なにを!」
-“What was that?!”
+“Nice try!”
 
 @10842 Wyme · ワイム
+# 触发：回避（通用，3/3）
 > 「見切った!」
 “I saw right through it!”
 
 @10843 Wyme · ワイム
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「甘い甘い!」
 “Too naive, too naive!”
 
 @10844 Wyme · ワイム
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れ!? これでは戦えんでは
 >  ないか!」
 “Out of ammo?! How am I supposed to fight like this!”
 
 @10845 Wyme · ワイム
+# 触发：射程外，无法反击（通用，1/2）
 > 「な、なんと卑怯なやつらだ!」
 “W-what cowardly foes!”
 
 @10846 Wyme · ワイム
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ……そんなところから撃つなど
 >  卑怯者のすることだぞ!」
 “Ngh... shooting from a place like that is the act of a coward!”
+
+@16352 Wyme · ワイム
+# 触发：使用〈フィンファンネル〉
+> 「ガザの嵐を味わうがいい!」
+“Taste the Gaza storm!”
+
+@16353 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 1/4 句）
+# 审校：例のやつ更口语
+# 检查提示：未用必用译名：ビアン→Beanne、ワイム→Wyme
+> 「ワイム、ビアン、例のやついくぞ!」
+“Wyme, Beanne, you know the drill!”
+
+@16354 Wyme · ワイム
+# 触发：使用〈ガザストーム〉（对话第 2/4 句）
+# 审校：军中应答
+> 「ハッ」
+“Sir!”
+
+@16355 Beanne · ビアン
+# 触发：使用〈ガザストーム〉（对话第 3/4 句）
+# 审校：三处统一
+> 「行けるぞ!」
+“Ready to go!”
+
+@16356 Pampa · パンパ
+# 触发：使用〈ガザストーム〉（对话第 4/4 句）
+> 「ようし、ガザストームフォーメーション!」
+“All right, Gaza Storm Formation!”

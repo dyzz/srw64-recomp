@@ -1,188 +1,379 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10055 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，1/13）
 > 「俺は貴様らと勝負するために
 >  こうしてやって来たんだ!」
 “I came here to settle things with you lot!”
 
 @10056 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，2/13）
 > 「俺は、正々堂々と戦う!」
 “I fight fair and square!”
 
 @10057 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，3/13）
 > 「とうっ!」
 “Toh!”
 
 @10058 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，4/13）
 > 「俺は百鬼一族の鉄甲鬼だ!」
 “I am Tekkoki of the Hyakki Clan!”
 
 @10059 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，5/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「決着をつけてやるっ!」
-“I'll finish this!”
+“I’ll finish this!”
 
 @10060 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，6/13）
 > 「では、いくぞぉっ!」
 “Then here I come!”
 
 @10061 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，7/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺はこの時を待ち望んでいたんだ!」
-“I've been waiting for this moment!”
+“I’ve been waiting for this moment!”
 
 @10062 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，8/13）
+# 审校：そらぁ 是出招喊声
 > 「そらぁっ!」
-“There!”
+“Take that!”
 
 @10063 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，9/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺の作ったこのメカ鉄甲鬼で
 >  貴様を倒す!」
-“I'll destroy you with this Mecha Tekkoki I built!”
+“I’ll destroy you with this Mecha Tekkoki I built!”
 
 @10064 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，10/13）
 > 「さっさと消えうせろーッ!」
 “Hurry up and disappear!”
 
 @10065 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，11/13）
 > 「受けてみろ!」
 “Try and take this!”
 
 @10066 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，12/13）
 > 「このおぉぉぉ!」
 “Why youuu!”
 
 @10067 Tekkoki · 鉄甲鬼
+# 触发：攻击（通用，13/13）
 > 「うおおぉぉぉ!!」
 “Uwooooh!!”
 
 @10068 Tekkoki · 鉄甲鬼
+# 触发：被击坠（通用，1/3）
 > 「く……ま、負けたのか……」
 “Guh... I-I lost...?”
 
 @10069 Tekkoki · 鉄甲鬼
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このメカ鉄甲鬼がやられる
 >  はずが……!!」
-“Th-this Mecha Tekkoki can't be beaten...!!”
+“Th-this Mecha Tekkoki can’t be beaten...!!”
 
 @10070 Tekkoki · 鉄甲鬼
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ば、ばかな……こんなことが……」
-“I-impossible... This can't be...”
+“I-impossible... This can’t be...”
 
 @10071 Tekkoki · 鉄甲鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「よ、よくも俺の名誉に
 >  傷をつけてくれたなっ!」
 “H-how dare you tarnish my honor!”
 
 @10072 Tekkoki · 鉄甲鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐ……貴様を倒して俺は、
 >  堂々と帰ってやるっ!」
-“Guh... I'll defeat you and return in triumph!”
+“Guh... I’ll defeat you and return in triumph!”
 
 @10073 Tekkoki · 鉄甲鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バ、バカな!? こんなことが……」
-“I-impossible?! This can't be...”
+“I-impossible?! This can’t be...”
 
 @10074 Tekkoki · 鉄甲鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「こ、こいつ……強い!?」
 “Th-this one... is strong?!”
 
 @10075 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 > 「フッ、このメカ鉄甲鬼が負けると
 >  でも思っているのか!」
 “Hmph, you think this Mecha Tekkoki would lose?!”
 
 @10076 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、これしきの傷でへばる
 >  俺ではないぞ!」
-“Guh, a wound like this won't slow me down!”
+“Guh, a wound like this won’t slow me down!”
 
 @10077 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：相手にとって不足はない＝对手够格
 > 「フッ、相手にとって不足はない!」
-“Hmph, you're no unworthy opponent!”
+“Hmph, you’re a worthy opponent!”
 
 @10078 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 > 「なに!? やるな!」
 “What?! Not bad!”
 
 @10079 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：原句残缺
 > 「うっ……この程度でっ!」
-“Ugh... this much won't...!”
+“Ugh... not from this!”
 
 @10080 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「な、なんだとっ!」
 “W-what did you say?!”
 
 @10081 Tekkoki · 鉄甲鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このままではすまさんっ!」
-“I-I won't let this stand!”
+“I-I won’t let this stand!”
 
 @10082 Tekkoki · 鉄甲鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺の邪魔をするな!」
-“Don't get in my way!”
+“Don’t get in my way!”
 
 @10083 Tekkoki · 鉄甲鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「ふんっ!」
 “Hmph!”
 
 @10084 Tekkoki · 鉄甲鬼
-# 审校：原文“武器”是单数，初稿误为复数 weapons。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
+# 审校：それだけ 指数量
 > 「貴様の武器はそれだけか!!」
-“Is that the only weapon you have?!”
+“Is that all the weapons you’ve got?!”
 
 @10085 Tekkoki · 鉄甲鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では通用せん!」
-“That won't work on me!”
+“That won’t work on me!”
 
 @10086 Tekkoki · 鉄甲鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @10087 Tekkoki · 鉄甲鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このメカ鉄甲鬼を甘く見ては
 >  困るな!」
-“You'd best not underestimate this Mecha Tekkoki!”
+“You’d best not underestimate this Mecha Tekkoki!”
 
 @10088 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あわてるなっ!」
-“Don't panic!”
+“Don’t panic!”
 
 @10089 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，2/6）
 > 「はぁっ!」
 “Hah!”
 
 @10090 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるものかっ!」
-“You'll never hit me!”
+“You’ll never hit me!”
 
 @10091 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，4/6）
 # 审校：原文“バカめっ”是单数对象，初稿用复数 Fools 不准确。
 > 「バカめっ!」
 “You fool!”
 
 @10092 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It's useless!”
+“It’s useless!”
 
 @10093 Tekkoki · 鉄甲鬼
+# 触发：回避（通用，6/6）
 > 「フンッ、それだけか!?」
 “Hmph, is that all?!”
 
 @10094 Tekkoki · 鉄甲鬼
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It's useless!”
+“It’s useless!”
 
 @10095 Tekkoki · 鉄甲鬼
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「フンッ、それだけか!?」
 “Hmph, is that all?!”
 
 @10096 Tekkoki · 鉄甲鬼
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エネルギー切れ!? バッ、バカな!」
-“Out of energy?! Th-That's impossible!”
+“Out of energy?! Th-that’s impossible!”
 
 @10097 Tekkoki · 鉄甲鬼
+# 触发：射程外，无法反击（通用，1/2）
 > 「うっ……届かないか……」
 “Ugh... out of range, huh...”
 
 @10098 Tekkoki · 鉄甲鬼
+# 触发：射程外，无法反击（通用，2/2）
 # 审校：原文是两句，初稿合并为一句，改为两句更贴合原文语气。
 > 「おのれ、卑劣な真似を!」
 “You coward! Playing dirty!”
+
+@15273 Tekkoki · 鉄甲鬼
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「ミサイル発射!」
+“Missile, fire!”
+
+@15274 Tekkoki · 鉄甲鬼
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「受けろ! ミサイル!!」
+“Take this! Missile!!”
+
+@15275 Tekkoki · 鉄甲鬼
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「そこだ!!」
+“Right there!!”
+
+@15276 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター1〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15277 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター2〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15278 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター3〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15279 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッタードラゴン〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15280 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッターポセイドン〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15281 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッターライガー〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15282 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター1〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15283 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター2〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15284 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター3〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「行くぞっ!! ゲッターロボ!」
+“Here I come!! Getter Robo!”
+
+@15285 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター1〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15286 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター2〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15287 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッター3〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15288 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッタードラゴン〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15289 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッターポセイドン〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15290 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈ゲッターライガー〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15291 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター1〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15292 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター2〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”
+
+@15293 Tekkoki · 鉄甲鬼
+# 触发：对手机体〈真・ゲッター3〉
+# 审校：原文以「开头，应使用弯引号“。
+> 「ゲッターロボ! 勝負しろっ!!」
+“Getter Robo! Fight me!!”

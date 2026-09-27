@@ -18,7 +18,8 @@
 “And here.”
 
 @21795 Bright · ブライト
-# 审校：“the first one”在口语中可接受，但此处为舰长说明情报，改为更简洁的“the first”更自然；同时保持两页对应。
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：グラン・ガラン→Gran-Garan
 > 「マーベルの話では、最初の方が
 >  シーラ女王のグラン・ガラン
 “According to Marvel, the first is Queen Ciela's Gran-Garan,
@@ -69,6 +70,7 @@ much difference to us.”
 important people to Byston Well.”
 
 @21803 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうよぉ、シーラ様とエレ様の
 >  どちらかなんていわれても
 “That's right, you can't just ask us to pick between
@@ -127,6 +129,7 @@ since the situation's about the same either way, we need some basis for deciding
 you could say it's the more aggressive one.”
 
 @21813 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ様の方は
 >  空とぶお城って感じだものね」
 “Lady Ciela's is more like a flying castle, after all.”
@@ -137,12 +140,15 @@ you could say it's the more aggressive one.”
 “I see... {HeroNick}, what do you think?”
 
 @21815
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > *  シーラの方へ向かう
 > *  エレの方へ向かう
 * Head for Ciela
 * Head for Elle
 
 @21816 Ark · アーク（按段落 3DD1）
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：グラン・ガラン→Gran-Garan
 > 「……どちらかといえばシーラさんの
 >  グラン・ガランですね」
 “...If I had to choose, I'd say Lady Ciela's Gran-Garan.”
@@ -161,6 +167,7 @@ you could say it's the more aggressive one.”
 a warship that looks like a castle kinda interests me.”
 
 @21819 Manami · マナミ（按段落 3DD4）
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうねぇ……私は、
 >  シーラ様の方かしら」
 “Let me think... I suppose I'd say Lady Ciela's.”
@@ -170,6 +177,7 @@ a warship that looks like a castle kinda interests me.”
 “Hmm... Anyone else?”
 
 @21821 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「……ないようならそれでいくか。
 >  では我々はこれからバイストンウェルの
 “...If not, we'll go with that. Then we'll head out to join up with
@@ -445,13 +453,14 @@ there's a good chance that battleship is under attack, isn't there?”
 “Still, it's rare to see you up on the bridge.”
 
 @21861 Shinobu · 忍
+# 审校：忍的粗野口吻应体现在缩略和俚语上，将“keeping”改为“keepin'”。
 > 「シャピロと会ってから、沙羅のやつが
 >  イライラしっぱなしでね。顔あわせる
 “Ever since she met Shapiro, Sara's been on edge the whole time. She snaps at me
 ---
 >  たびにつっかかってきやがるから、あんまり
 >  近くによらないようにしてんですよ」
-every time we see each other, so I've been keeping my distance.”
+every time we see each other, so I've been keepin' my distance.”
 
 @21862 Amuro · アムロ
 > 「シャピロ・キーツか……。帝国との
@@ -550,6 +559,7 @@ what appears to be the Goraon. It looks like it's been hit.”
 “Whaaat?!”
 
 @21877 Marvel · マーベル
+# 审校：人名按词表统一
 > 「チャム、落ち着きなさい」
 “Chum, calm down.”
 
@@ -587,6 +597,7 @@ once we're close, go on ahead and check the situation.”
 “Were they hit?”
 
 @21884 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そのようね。
 >  シーラ様は大丈夫かしら」
 “Seems so. I wonder if Lady Ciela is all right.”
@@ -602,6 +613,7 @@ once we're close, go on ahead and check the situation.”
 “Show...? Show Zama? Is it really you?!”
 
 @21887 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ・ラパーナ? ご無事ですか?」
 “Ciela Lapana? Are you safe?”
 
@@ -611,6 +623,7 @@ once we're close, go on ahead and check the situation.”
 “We took quite a beating. I can't exactly say we're safe.”
 
 @21889 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ様、私たちは地上の
 >  反政府勢力に協力しています
 “Lady Ciela, we're aiding the anti-government forces on the surface.
@@ -777,9 +790,10 @@ He reports they're under enemy attack!”
 Can you see anything?!”
 
 @21917 Ginrei · 銀鈴
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「……ッ! 来ました、補給部隊の
 >  ミデアと護衛機です!」
-“...! Here they come — the resupply Medeas and their escorts!”
+“...! Here they come... the resupply Medeas and their escorts!”
 
 @21918 Kou · コウ
 > 「くっ、追いつかれた!? こちら補給
@@ -800,6 +814,8 @@ Please, hurry!”
 “Go, Show Zama. The Gran-Garan will be fine.”
 
 @21921 Show · ショウ
+# 审校：原文为「シーラ・ラパーナ」，按 address 应译为 Queen Ciela，而非 Sheela Lapana。（人工改写）
+# 检查提示：未用必用译名：シーラ・ラパーナ→Ciela Lapana
 > 「わかりました。
 >  シーラ・ラパーナ、ご無事で」
 “Understood. Stay safe, Ciela Lapana.”
@@ -840,9 +856,10 @@ But that ends here.”
 what you're doing?!”
 
 @21928 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式表达，将 You're 改为 You are。
 > 「貴女こそ、もう無駄なことは
 >  おやめなさい」
-“You're the one who should stop this pointless behavior.”
+“You are the one who should stop this pointless behavior.”
 
 @21929 Fa · ファ
 > 「なんとか追いついたみたいね。
@@ -899,9 +916,10 @@ Albion, please respond.”
 “Curse you, curse youuu!!”
 
 @21940 Kou · コウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「くっ……だめか。申しわけありません
 >  中佐、自分は退避します!」
-“Ngh... no good. My apologies, Lieutenant Colonel — I'm pulling back!”
+“Ngh... no good. My apologies, Lieutenant Colonel... I'm pulling back!”
 
 @21941 Bright · ブライト
 > 「……終わったか」
@@ -1129,11 +1147,13 @@ we look forward to working with you.”
 “There is much on the surface we do not understand. We ask the same of you.”
 
 @21981 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ね、シーラ様はちゃんと
 >  わかってくれるんだからっ」
 “See, Lady Ciela understands properly!”
 
 @21982 Show · ショウ
+# 审校：人名按词表统一
 > 「チャム、口をはさむな」
 “Chum, don't butt in.”
 
@@ -1351,13 +1371,14 @@ is that he feared this secret would reach your ears.
 It was because he feared the shock you would suffer upon learning the secret.”
 
 @22017 Le Cain · ル・カイン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「無礼だぞジュリア!! いわせておけば
 >  調子にのりおって!!
 “You are insolent, Julia!! Give you an inch and you take a mile!!
 ---
 >  父上、まだジュリアにいいたい放題
 >  いわせておくおつもりですか!?」
-Father, do you still intend to let Julia say whatever she pleases!?”
+Father, do you still intend to let Julia say whatever she pleases?!”
 
 @22018 Gresco · グレスコ
 > 「……ル・カイン、ジュリアの言葉は
@@ -1365,8 +1386,9 @@ Father, do you still intend to let Julia say whatever she pleases!?”
 “...Le Cain, everything Julia says is the truth. There is no lie.”
 
 @22019 Le Cain · ル・カイン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「父上!?」
-“Father!?”
+“Father?!”
 
 @22020 Gresco · グレスコ
 > 「グラドスの権力の中枢にあり、
@@ -1378,8 +1400,9 @@ Father, do you still intend to let Julia say whatever she pleases!?”
 position within the Empire, are destined to learn this secret sooner or later.”
 
 @22021 Le Cain · ル・カイン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「何をいっておられるのです、父上!」
-“What are you saying, Father!?”
+“What are you saying, Father?!”
 
 @22022 Gresco · グレスコ
 > 「ル・カイン……お前は支配の
@@ -1466,13 +1489,15 @@ only the superior should rule!”
 “No! It is the superior who should rule!”
 
 @22032 Gresco · グレスコ
+# 审校：原文「まだわからんのか」是格雷斯科对儿子的斥责，译文用“Still don't understand”缺少主语且语气偏弱，改为“Do you still not understand”更符合傲慢司令的口吻。
 > 「まだわからんのか、ル・カイン!!」
-“Still don't understand, Le Cain?!”
+“Do you still not understand, Le Cain?!”
 
 @22033 Le Cain · ル・カイン
+# 审校：原文「父上こそおわかりになっていない」中「こそ」强调“正是父亲您”，译文“It is you who don't understand”已表达此意，但“don't”在贵族正式口吻中略显随意，改为“do not”更符合鲁·凯恩的贵族腔调。
 > 「父上こそおわかりになっていない!
 >  父上は支配の高みから
-“It is you who don't understand, Father! You are trying to
+“It is you who do not understand, Father! You are trying to
 ---
 >  お逃げになろうとしている!!」
 flee from the heights of domination!!”
@@ -1561,5 +1586,6 @@ the truth of my... death... keep it secret, keep it secret...”
 kill Julia toooo...”
 
 @22051 Le Cain · ル・カイン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「父上!? ……父上ぇぇーっ!!」
-“Father!? ...Faaatheeeer!!”
+“Father?! ...Faaatheeeer!!”

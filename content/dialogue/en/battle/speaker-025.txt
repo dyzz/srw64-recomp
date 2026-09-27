@@ -1,255 +1,426 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11259 Ark · アーク
+# 触发：攻击（通用，1/16）
 > 「このぉっ!」
 “Why you!”
 
 @11260 Ark · アーク
+# 触发：攻击（通用，2/16）
 > 「あたれ!」
 “Hit!”
 
 @11261 Ark · アーク
+# 触发：攻击（通用，3/16）
 > 「いけるっ」
 “I can do this!”
 
 @11262 Ark · アーク
+# 触发：攻击（通用，4/16）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「やれるのか!?」
-“Can I pull it off!?”
+“Can I pull it off?!”
 
 @11263 Ark · アーク
+# 触发：攻击（通用，5/16）
 > 「いけるはずだ……」
 “I should be able to do this...”
 
 @11264 Ark · アーク
+# 触发：攻击（通用，6/16）
 > 「俺だってぇ!」
 “I can too!”
 
 @11265 Ark · アーク
+# 触发：攻击（通用，7/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみせる」
-“I'll show you.”
+“I’ll show you.”
 
 @11266 Ark · アーク
+# 触发：攻击（通用，8/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみるさ」
-“I'll give it a try.”
+“I’ll give it a try.”
 
 @11267 Ark · アーク
+# 触发：攻击（通用，9/16）
+# 审校：攻击时的发现语，不用疑问
 > 「そこか!」
-“There!”
+“There you are!”
 
 @11268 Ark · アーク
+# 触发：攻击（通用，10/16）
 > 「そこぉっ!」
 “Right there!”
 
 @11269 Ark · アーク
+# 触发：攻击（通用，11/16）
 > 「頼む、あたってくれ!」
 “Come on, hit!”
 
 @11270 Ark · アーク
+# 触发：攻击（通用，12/16）
+# 审校：目をつぶす是打瞎对方传感器，不是闭眼
 > 「目をつぶせばっ!」
-“If I just close my eyes!”
+“If I take out its eyes!”
 
 @11271 Ark · アーク
+# 触发：攻击（通用，13/16）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってやる……
 >  俺だって死にたくないんだ!」
-“I'll do it... I don't wanna die either!”
+“I’ll do it... I don’t wanna die either!”
 
 @11272 Ark · アーク
+# 触发：攻击（通用，14/16）
 > 「やられる前にっ!」
 “Before I get hit!”
 
 @11273 Ark · アーク
+# 触发：攻击（通用，15/16）
 > 「このままいければ……」
 “If I can keep this up...”
 
 @11274 Ark · アーク
+# 触发：攻击（通用，16/16）
 > 「あたれよ!!」
 “Hit!!”
 
 @11275 Ark · アーク
+# 触发：被击坠（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、俺は、こんなところで……!?」
-“I-I'm going to die here...!?”
+“I-I’m going to die here...?!”
 
 @11276 Ark · アーク
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ぐぅぅっ、ここまでか!?」
-“Ngh, is this as far as I go!?”
+“Ngh, is this as far as I go?!”
 
 @11277 Ark · アーク
+# 触发：被击坠（通用，3/3）
 > 「うわぁぁぁぁぁぁっ!」
 “Uwaaaaaaaah!”
 
 @11278 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
+# 审校：重伤情境，やられる是要被击坠
 > 「うわぁっ!! や、やられる!?」
-“Whoa!! I-I'm getting hit!?”
+“Whoa!! I-I’m going down?!”
 
 @11279 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あぁぁ!? し、死ぬのか?」
-“Ahhh!? A-am I going to die?”
+“Ahhh?! A-am I going to die?”
 
 @11280 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……き、機体がもたない!?」
-“Ugh... th-the unit can't take it!?”
+“Ugh... th-the unit can’t take it?!”
 
 @11281 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、俺は、死にたくないっ!」
-“I-I don't wanna die!”
+“I-I don’t wanna die!”
 
 @11282 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うぅぅ!! そ、そんな!?」
-“Ugh!! N-no way!?”
+“Ugh!! N-no way?!”
 
 @11283 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、なんて強い……だけどさ!!」
-“Ngh, you're strong... but still!!”
+“Ngh, you’re strong... but still!!”
 
 @11284 Ark · アーク
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!? ま、まだだ!
 >  まだもたせてみせる!」
-“Whoa!? N-not yet! I'll make it last!”
+“Whoa?! N-not yet! I’ll make it last!”
 
 @11285 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
 > 「うっ……こ、こんなことでっ!」
 “Ugh... n-not like this!”
 
 @11286 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 > 「ぐぅっ、まだ……まだだ……」
 “Ngh, not yet... not yet...”
 
 @11287 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
+# 审校：更口语
 > 「くっ、出力があがらない!?」
-“Ngh, the output won't rise!?”
+“Ngh, output’s not climbing?!”
 
 @11288 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あ、あてられた!?」
-“I-I got hit!?”
+“I-I got hit?!”
 
 @11289 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うっ……脚部損傷!? くそっ!」
-“Ugh... leg damage!? Damn!”
+“Ugh... leg damage?! Damn!”
 
 @11290 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このままじゃだめだ……」
-“I-I can't go on like this...”
+“I-I can’t go on like this...”
 
 @11291 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちぃっ! なめるなぁっ!!」
-“Tch! Don't underestimate me!!”
+“Tch! Don’t underestimate me!!”
 
 @11292 Ark · アーク
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ……やられてたまるかよッ!!」
-“Damn... I won't let you take me down!!”
+“Damn... I won’t let you take me down!!”
 
 @11293 Ark · アーク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この装甲ならそんな攻撃はっ」
-“With this armor, that kind of attack won't—”
+“With this armor, that kind of attack won’t...”
 
 @11294 Ark · アーク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ、かすめたのか!?」
-“Ngh, did it graze me!?”
+“Ngh, did it graze me?!”
 
 @11295 Ark · アーク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：语序更自然
 > 「各部異常は……なし、か」
-“No abnormalities in any section... I see.”
+“Systems check... all clear, huh.”
 
 @11296 Ark · アーク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「損傷なし……まだいけるぞ」
 “No damage... I can still go.”
 
 @11297 Ark · アーク
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐ……このぉっ、邪魔なんだよ!」
-“Ngh... why you, you're in the way!”
+“Ngh... why you, you’re in the way!”
 
 @11298 Ark · アーク
+# 触发：回避（通用，1/12）
 > 「ふぅ……かわせたか」
 “Phew... I dodged it, huh.”
 
 @11299 Ark · アーク
+# 触发：回避（通用，2/12）
 > 「そんな攻撃で!」
 “With an attack like that!”
 
 @11300 Ark · アーク
+# 触发：回避（通用，3/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるわけにはいかないんだ!」
-“I can't afford to get hit!”
+“I can’t afford to get hit!”
 
 @11301 Ark · アーク
+# 触发：回避（通用，4/12）
 > 「これなら!」
 “This should do it!”
 
 @11302 Ark · アーク
+# 触发：回避（通用，5/12）
 > 「ちぃっ!」
 “Tch!”
 
 @11303 Ark · アーク
+# 触发：回避（通用，6/12）
 > 「そうそうあたるかよ!」
 “You think you can hit me?!”
 
 @11304 Ark · アーク
+# 触发：回避（通用，7/12）
 > 「かわせた……のか……」
 “I dodged it... right...?”
 
 @11305 Ark · アーク
+# 触发：回避（通用，8/12）
 > 「まだっ!」
 “Not yet!”
 
 @11306 Ark · アーク
+# 触发：回避（通用，9/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度の攻撃でさ!」
-“That kind of attack won't do it!”
+“That kind of attack won’t do it!”
 
 @11307 Ark · アーク
+# 触发：回避（通用，10/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「読めるぞ、敵の攻撃が!!」
-“I can read the enemy's attacks!!”
+“I can read the enemy’s attacks!!”
 
 @11308 Ark · アーク
+# 触发：回避（通用，11/12）
 > 「俺だってこのくらいはさ!」
 “Even I can handle this much!”
 
 @11309 Ark · アーク
+# 触发：回避（通用，12/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「よけてみせる!」
-“I'll dodge it!”
+“I’ll dodge it!”
 
 @11310 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，1/7）
 > 「ビームはムダだ!!」
 “Beams are useless!!”
 
 @11311 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，2/7）
 > 「そんな攻撃が効くかよ!」
 “You think that attack will work?!”
 
 @11312 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつには効かない!」
-“That won't work on this one!”
+“That won’t work on this one!”
 
 @11313 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，4/7）
+# 审校：阿克单人机，不用 we
 > 「だ、大丈夫……なのか?」
-“A-are we... okay?”
+“I-I’m... okay?”
 
 @11314 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，5/7）
 > 「ムダなことを」
 “What a waste of effort.”
 
 @11315 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，6/7）
 > 「よし、いけるぞ」
 “All right, we can do this.”
 
 @11316 Ark · アーク
+# 触发：攻击无效（护罩／装甲）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなビームなんかでさ!」
-“A beam like that won't stop me!”
+“A beam like that won’t stop me!”
 
 @11317 Ark · アーク
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、た、弾がない!?」
-“Damn, I-I'm out of ammo?!”
+“Damn, I-I’m out of ammo?!”
 
 @11318 Ark · アーク
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「た、弾切れなのか!?」
-“A-ammo's gone?!”
+“A-ammo’s gone?!”
 
 @11319 Ark · アーク
+# 触发：射程外，无法反击（通用，1/3）
 > 「くっ、あんな位置じゃ……」
 “Tch, from that position...”
 
 @11320 Ark · アーク
+# 触发：射程外，无法反击（通用，2/3）
 > 「と、遠すぎるか……?」
 “T-too far, huh...?”
 
 @11321 Ark · アーク
+# 触发：射程外，无法反击（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、反撃できないってのかよ!」
-“Tch, so I can't fight back?!”
+“Tch, so I can’t fight back?!”
+
+@16414 Ark · アーク
+# 触发：对手驾驶员〈エルリッヒ〉
+> 「{PartnerNick}ッ!」
+“{PartnerNick}!”
+
+@16415 Ark · アーク
+# 触发：对手驾驶员〈エルリッヒ〉
+> 「頼む、あたってくれ!」
+“Please, hit!”
+
+@16416 Ark · アーク
+# 触发：对手驾驶员〈エルリッヒ〉
+> 「あんたはぁぁぁーっ!」
+“Youuu!”
+
+@16417 Ark · アーク
+# 触发：对手驾驶员〈エルリッヒ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「やってやる……
+>  俺だって死にたくないんだ!」
+“I’ll do it... I don’t wanna die either!”
+
+@16418 Ark · アーク
+# 触发：对手驾驶员〈エルリッヒ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「あんたが相手でもッ!!」
+“Even if it’s you!!”
+
+@16419 Ark · アーク
+# 触发：使用〈オービタルミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイルでいけるか!?」
+“Can I get them with missiles?!”
+
+@16420 Ark · アーク
+# 触发：使用〈オービタルミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ミサイルでしのぐ!」
+“I’ll hold them off with missiles!”
+
+@16421 Ark · アーク
+# 触发：使用〈スプラッシュブレイカー〉
+> 「散れ!」
+“Scatter!”
+
+@16422 Ark · アーク
+# 触发：使用〈スプラッシュブレイカー〉
+> 「飛び散れっ!」
+“Break apart!”
+
+@16423 Ark · アーク
+# 触发：使用〈スプラッシュブレイカー〉
+> 「散れ!」
+“Scatter!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”
+
+@16424 Ark · アーク
+# 触发：使用〈スプラッシュブレイカー〉
+> 「いっけぇぇぇーっっ!」
+“Gooo!!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”
+
+@16425 Ark · アーク
+# 触发：使用〈スプラッシュブレイカー〉
+> 「いけるか!?」
+“Can I do it?!”
+---
+> 「スプラッシュブレイカー!」
+“Splash Breaker!”

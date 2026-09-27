@@ -1,150 +1,207 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12449 Bern · バーン
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「勝負だ!」
-“Let's settle this!”
+“Let’s settle this!”
 
 @12450 Bern · バーン
+# 触发：攻击（通用，2/10）
 > 「死ね!」
 “Die!”
 
 @12451 Bern · バーン
+# 触发：攻击（通用，3/10）
 > 「そこか!」
 “There!”
 
 @12452 Bern · バーン
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!」
-“I won't let you!”
+“I won’t let you!”
 
 @12453 Bern · バーン
+# 触发：攻击（通用，5/10）
 > 「これでとどめだ!」
 “This is the finishing blow!”
 
 @12454 Bern · バーン
+# 触发：攻击（通用，6/10）
 > 「ゆくぞ!」
 “Here I come!”
 
 @12455 Bern · バーン
+# 触发：攻击（通用，7/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだ!」
-“How's this?!”
+“How’s this?!”
 
 @12456 Bern · バーン
+# 触发：攻击（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるな!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @12457 Bern · バーン
+# 触发：攻击（通用，9/10）
 > 「終わりだな!」
 “This is the end!”
 
 @12458 Bern · バーン
+# 触发：攻击（通用，10/10）
 > 「フフフフフ」
 “Heheheheh.”
 
 @12459 Bern · バーン
+# 触发：被击坠（通用，1/4）
+# 审校：被击坠惊呼，不是“你说什么”
 > 「な、なんだと!?」
-“W-what did you say?!”
+“Wh-what?!”
 
 @12460 Bern · バーン
+# 触发：被击坠（通用，2/4）
+# 审校：同上
 > 「なっ……なんだと!?」
-“Wha... what did you say?!”
+“Wha... what?!”
 
 @12461 Bern · バーン
+# 触发：被击坠（通用，3/4）
 > 「ばかな、このわたしが……」
 “Impossible, me of all people...”
 
 @12462 Bern · バーン
+# 触发：被击坠（通用，4/4）
+# 审校：被击坠，不是“被击中”
 > 「やられたというのか……」
-“I've been beaten, you say...”
+“So I’ve been beaten...”
 
 @12463 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
 > 「な、なぜだ!?」
 “W-why?!”
 
 @12464 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 > 「なっ……なぜだ!」
 “Wha... why?!”
 
 @12465 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
 > 「うっ! なんというパワーだ!」
 “Ugh! What power!”
 
 @12466 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……こんなことでやられるわけには
 >  いかぬ!」
-“Ugh... I can't be beaten by this!”
+“Ugh... I can’t be beaten by this!”
 
 @12467 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
+# 审校：巴恩语气正式，おのれ 不该是 bastard
 > 「ぐぅ……お、おのれ!」
-“Guh... y-you bastard!”
+“Guh... c-curse you!”
 
 @12468 Bern · バーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
+# 审校：同上
 > 「ぐぅ……おっ、おのれ!」
-“Guh... y-you bastard!”
+“Guh... c-curse you!”
 
 @12469 Bern · バーン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おされている……この私が!?」
-“I'm being pushed back... me?!”
+“I’m being pushed back... me?!”
 
 @12470 Bern · バーン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだやられはせんよ!」
-“Not yet! I won't be beaten yet!”
+“Not yet! I won’t be beaten yet!”
 
 @12471 Bern · バーン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「ぐぅ……きさまぁ!!」
 “Guh... you scum!!”
 
 @12472 Bern · バーン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：“意外地……”不成句
 > 「うっ 意外と……」
-“Ugh, unexpectedly...”
+“Ugh, better than I expected...”
 
 @12473 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
 > 「なに!? あたった……」
 “What?! It hit...”
 
 @12474 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……この程度でいい気になるな」
-“Ugh... don't get cocky over this.”
+“Ugh... don’t get cocky over this.”
 
 @12475 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
 > 「ちっ……やるな」
 “Tch... not bad.”
 
 @12476 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな」
-“That's nothing.”
+“That’s nothing.”
 
 @12477 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
 > 「その程度か」
 “Is that all?”
 
 @12478 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふっ……なめるな」
-“Hmph... don't underestimate me.”
+“Hmph... don’t underestimate me.”
 
 @12479 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハハッ、効かぬ!」
-“Hahahah, it's nothing!”
+“Hahahah, it’s nothing!”
 
 @12480 Bern · バーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
 > 「あまいな!」
 “Too naive!”
 
 @12481 Bern · バーン
+# 触发：回避（通用，1/2）
 > 「見切った!」
 “I saw through it!”
 
 @12482 Bern · バーン
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたらん!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @12483 Bern · バーン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものが通用するか!」
-“You think that'll work?!”
+“You think that’ll work?!”
 
 @12484 Bern · バーン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった!? 反撃できん!」
-“Damn!? I can't counterattack!”
+“Damn?! I can’t counterattack!”
 
 @12485 Bern · バーン
+# 触发：射程外，无法反击（通用，1/1）
 > 「なに!? 射程外からだと!?」
 “What?! From out of range?!”

@@ -43,8 +43,9 @@ and that'd be the end of it.”
 “Is that so?”
 
 @18131 Roux · ルー
+# 审校：引号
 > 「そうなのかって、あなたねぇ」
-“'Is that so,' he says. Come on.”
+“‘Is that so,’ he says. Come on.”
 
 @18132 主角
 > 「ああ、わかったわかった。
@@ -284,6 +285,7 @@ I won't stand being named alongside the likes of you!”
 “{PartnerName}, you baaastard!”
 
 @18169 对手
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうだ、来い!
 “That's right, come on!
 ---
@@ -293,7 +295,7 @@ I'll send you off to the next world right here and now!
 ---
 >  “武機覇拳流”の
 >  正当なる伝承者が
-That I am the true successor of the ‘Buki Haken-ryu’—
+That I am the true successor of the ‘Buki Haken-ryu’...
 ---
 >  この俺であるということを、
 >  貴様の体に叩きこんでやる!!」
@@ -325,9 +327,10 @@ Come, {HeroName}!! Fight me!!”
 “What?! Have you gone that spineless?!”
 
 @18174 主角
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「今の俺は、師匠の遺言を受け
 >  正義を、この地球を守るために
-“Right now I fight to carry out Master's dying wish—to protect justice, and this Earth.
+“Right now I fight to carry out Master's dying wish... to protect justice, and this Earth.
 ---
 >  戦っている。まだ先は長く、
 >  敵は強大だ
@@ -397,21 +400,23 @@ Without fail. The next time we meet, I'll hold nothing back!”
 “{HeroName}, how sad...”
 
 @18186 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 it's 改为 it has。
 > 「やはり、こうなってしまいましたか。
 >  最初から気になってはおりました
-“So it's come to this after all. I had been worried from the start.
+“So it has come to this after all. I had been worried from the start.
 ---
 >  あの若者のまなざしは険しく、
 >  そして心は、激しすぎたのですな」
 That young man's gaze was harsh, and his heart far too fierce.”
 
 @18187 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 won't 和 That's 改为完整形式。
 > 「自分を常に、ギリギリのところへと
 >  追いやっていなければ気がすまぬ
-“He won't be satisfied unless he's always driving himself to the very edge.
+“He will not be satisfied unless he is always driving himself to the very edge.
 ---
 >  そういう若者なのでしょう
-That's the kind of young man he is.
+That is the kind of young man he is.
 ---
 >  あの激しさが、いずれは彼自身を
 >  焼きつくしてしまうやもしれませんが」

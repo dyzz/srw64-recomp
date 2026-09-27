@@ -193,14 +193,16 @@ will throw their blood-soaked bodies at my feet.)
 command it of me.”
 
 @19126 Treize · トレーズ
+# 审校：Treize 的贵族口吻应更正式，将 Your Excellency 移到句末更符合英文敬语习惯。
 > 「スペシャルズを代表し、閣下の
 >  就任をお喜び申し上げます」
-“On behalf of the Specials, I offer my congratulations on Your Excellency's appointment.”
+“On behalf of the Specials, I offer my congratulations on your appointment, Your Excellency.”
 
 @19127 Le Cain · ル・カイン
+# 审校：Le Cain 是冷酷高傲的贵族，用 shall 比 I'll 更符合其正式、居高临下的口吻。
 > 「フッ、こういう地球人もいるか。
 >  よかろう、存分に働いてもらうぞ」
-“Heh, so there are Earthlings like this too. Very well, I'll have you work to your fullest.”
+“Heh, so there are Earthlings like this too. Very well, I shall have you work to your fullest.”
 
 @19128 David · デビッド
 > 「中止するまでは
@@ -528,8 +530,9 @@ I don't even know how much of this body is still alive.
 I'll be giving you plenty of thanks.”
 
 @19173 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、ご無事で?」
-“Colonel, are you unharmed?”
+“Special Colonel, are you unharmed?”
 
 @19174 Treize · トレーズ
 > 「こちらは問題ない」
@@ -598,27 +601,30 @@ If we get the chance, we're doing that.”
 “These guys pull some seriously bold stunts. How do they even manage it?”
 
 @19186 Treize · トレーズ
+# 审校：精读：閣下 统一 His Excellency
 > 「{PartnerSurname}特尉、
 >  ガイア特尉
 “Special Lieutenant {PartnerSurname}, Special Lieutenant Gaia,
 ---
 >  ル・カイン閣下の部隊に協力し
 >  敵を撃滅してくれたまえ」
-cooperate with Lord Le Cain's forces and annihilate the enemy.”
+cooperate with His Excellency Le Cain's forces and annihilate the enemy.”
 
 @19187 Rish · リッシュ（按段落 3DD2）
 > 「ま、やれるだけやってみましょう」
 “Well, I'll do what I can.”
 
 @19188 Gaia · ガイア
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「了解であります、特佐。オルテガ、
 >  マッシュ、敵の退路をふさぐぞ」
-“Understood, Colonel. Ortega, Mash, we're blocking their escape route.”
+“Understood, Special Colonel. Ortega, Mash, we're cutting off their escape route.”
 
 @19189 Ortega · オルテガ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「おう。ガイア、整備兵に無理を
 >  いってつけさせたこの装備、さっそく
-“Yeah. Gaia, this equipment we strong-armed the mechanics into fitting, the chance
+“Yeah. Gaia, this gear we strong-armed the mechanics into fitting... the chance
 ---
 >  試す機会がめぐってきたな」
 to try it out has come around already.”
@@ -641,13 +647,13 @@ I'd like to pull that off at least once.”
 “...It's him.”
 
 @19193 Rish · リッシュ（按段落 3DD2）
-# 审校：原文「なぁ{HeroName}ちゃん」带有亲昵调侃语气，初稿用 little {HeroName} 可接受，但为更自然改为直接称呼并保留轻浮感。
+# 审校：精读：ちゃん 的轻佻感，与 18861 一致
 > 「おっと、{HeroName}もいるのか
 “Whoa, {HeroName}'s here too.
 ---
 >  なぁ{HeroName}ちゃん、
 >  ものは相談なんだが……」
-Hey there, {HeroName}, I've got a proposition for you...”
+Hey there, {HeroName}, sweetheart, I've got a proposition for you...”
 
 @19194 Selain · セレイン（按段落 3DD2）
 > 「黙れ!」
@@ -894,6 +900,7 @@ they'd secured to us.”
 “Captain, what was that liaison craft just now?”
 
 @19232 Bright · ブライト
+# 审校：精读：数字格式与 19235 一致
 > 「ああ、ブレックス准将の使いだ。
 >  今回の件で、我々は敵に
 “Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we've
@@ -904,7 +911,7 @@ exposed our existence to the enemy. From now on, we'll be targeted quite heavily
 ---
 >  部隊強化の足しにと、10000
 >  ほど、資金を送ってくれたのだ」
-He sent us about 10000 to help strengthen our forces.”
+He sent us about 10,000 to help strengthen our forces.”
 
 @19233 Quattro · クワトロ
 > 「ほう、それは助かるな」
@@ -1097,9 +1104,10 @@ for your next bath time.”
 “Then who's going to dismantle Deathscythe?”
 
 @19263 Duo · デュオ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「解体!? ……
 >  あーっ、あいつやりやがった!
-“Dismantle?! ...Ah—that bastard did it!
+“Dismantle?! ...Ah... that bastard did it!
 ---
 >  足りないパーツを俺のから
 >  とっていきやがったのかよ!

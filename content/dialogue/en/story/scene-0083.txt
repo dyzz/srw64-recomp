@@ -5,10 +5,10 @@
 “...Maybe Earth is done for.”
 
 @40925 ???
-# 审校：原文是“ムゲかズール”，应译为 Muge or Zul，初稿误作 Muge and Zul。
+# 审校：精读：ムゲかズール 误译
 > 「ならばムゲかズールが選ばれるだけのこと
 >  どうせ最初から候補に入っては
-“Then Muge or Zul will simply be the ones chosen. They were never
+“Then Muge or Zuul will simply be the ones chosen. They were never
 ---
 >  いなかった奴らではないか」
 in the running from the start, were they?”
@@ -19,17 +19,19 @@ in the running from the start, were they?”
 “True, but they're the most fun of all.”
 
 @40927 ???
+# 审校：精读：去破折号；标点
+# 检查提示：未用必用译名：アヴィ＝ルー→Avie-Lu、ジェイ＝レン→J-Ren
 > 「……いよいよ終局が近づいてきたよう
 >  ですね。アヴィ＝ルー、ジェイ＝レン
 “...It seems the final act is drawing near. Avie-Lu, J-Ren,
 ---
 >  それぞれの役目を果たしなさい。
 >  それが我ら大銀河の意思たる
-fulfill your respective roles. That is the will of our great galaxy—
+fulfill your respective roles. That is what we, the will of the great galaxy,
 ---
 >  “アル＝イー＝クイス”が、
 >  なさねばならぬこと」
-what ‘Al-E-Quis’ must do.”
+Al-E-Quis, must do.”
 
 @40928 Avie-Lu · アヴィ＝ルー
 > 「わかってるヨ……ヴァル＝ア。もう1度
@@ -107,9 +109,10 @@ was the ‘Crest’ itself. That's what this means.”
 to keep us from touching it.”
 
 @40940 Koji · 甲児
+# 审校：全局：grados-en
 > 「おい、冗談じゃねぇぞ! “グラドス
 >  の刻印”をおさえられちゃ
-“Hey, don't give me that! If they've got the ‘Crest of Grados’ under their control,
+“Hey, don't give me that! If they've got the ‘Grados Crest’ under their control,
 ---
 >  オレたちには勝ち目がないんだろ!?」
 we don't stand a chance, do we?!”
@@ -141,9 +144,10 @@ to the ruins where the ‘Crest’ is!”
 “...Exactly. We must not give up.”
 
 @40945 Shinobu · 忍
+# 审校：精读：去破折号
 > 「ああ、そうだな。よーし、そうと決まった
 >  ら、行こうぜ、クスコに!」
-“Yeah, that's right. All right, if that's decided, let's go—to Cusco!”
+“Yeah, that's right. All right, if that's decided, let's go. To Cusco!”
 
 @40946 Quatre · カトル
 > 「そう……ですよね、まだ間にあわないと
@@ -210,13 +214,14 @@ the breach to the ruins.”
 “But that would mean...”
 
 @40955 Treize · トレーズ
+# 审校：精读：去破折号
 > 「我がOZの兵士諸君は、
 >  この戦いのもつ意味を正しく
 “My OZ soldiers understand the true meaning of this battle.
 ---
 >  理解している。全力をつくして
 >  戦ってくれるだろう。君は、君たちは
-They will fight with everything they have. You—all of you—
+They will fight with everything they have. You, all of you,
 ---
 >  遺跡へ到達することだけを考えて
 >  もらいたい」
@@ -236,6 +241,7 @@ need only think about reaching the ruins.”
 “Show...”
 
 @40959 Show · ショウ
+# 审校：人名按词表统一
 > 「大丈夫さ、チャム。トレーズだって
 >  馬鹿じゃない」
 “It's all right, Chum. Treize isn't a fool either.”
@@ -312,10 +318,10 @@ You only think things like that because you're sitting around doing nothing. I'm
 “Still, just waiting around really is hard.”
 
 @40973 Jun · ジュン
-# 审校：原文“マーベルじゃなくても”意为“即使不是玛贝尔（也会这样想）”，初稿“Even if it isn't you, Marvel”把对象弄反了。
+# 审校：精读：引号
 > 「そうだね……マーベルじゃなくても、
 >  もしも……って考えちゃうもんね」
-“Yeah... Even if you're not Marvel, you can't help thinking 'what if'...”
+“Yeah... Even if you're not Marvel, you can't help thinking ‘what if’...”
 
 @40974 Ark · アーク（按段落 3DD1）
 > 「ネガティブな思考じゃ、そういう
@@ -350,13 +356,15 @@ thinking isn't good, is it?”
 “{HeroNick}... I'm kind of scared. You're not like yourself.”
 
 @40980 Ark · アーク（按段落 3DD1）
+# 审校：人名按词表统一
 > 「そうかい? 気のせいだよ、チャム」
 “Is that so? You're imagining things, Chum.”
 
 @40981 Selain · セレイン（按段落 3DD2）
+# 审校：精读：引号
 > 「目の前の戦いに勝つことだけを
 >  考えていればいい。もしもは、ないんだ」
-“Just think about winning the battle in front of you. There is no 'what if.'”
+“Just think about winning the battle in front of you. There is no ‘what if.’”
 
 @40982 Ryoma · リョウ
 > 「それはそうだな。俺たちはここまで戦い
@@ -417,9 +425,10 @@ how could we ever win a battle?!”
 “So what is this horo bug, Domon?”
 
 @40993 Domon · ドモン
+# 审校：精读：去破折号；数字
 > 「ホーロー虫というやつはな、体長が
 >  2センチほどしかないくせに、自分の
-“The horo bug is a brave little insect—only about two centimeters long, yet it charges
+“The horo bug is a brave little insect, only about two centimeters long, yet it charges
 ---
 >  数倍もある虫をエサとして向かって
 >  いく勇敢な虫だ。弱いくせに
@@ -477,13 +486,14 @@ gave you courage, I can't say I approve of deceiving people.”
 “...”
 
 @41003 Manami · マナミ（按段落 3DD4）
+# 审校：精读：去破折号
 > 「だめよ、そんなことじゃ。あたしたちは
 >  今、この地球を背負っているのよ
 “That won't do at all. Right now, we're carrying this whole Earth on our shoulders.
 ---
 >  信じましょう。ここまで戦い続けて
 >  きた、あたしたちの力を」
-Let's believe—in the strength that's kept us fighting all this way.”
+Let's believe in the strength that's kept us fighting all this way.”
 
 @41004 Ryoma · リョウ
 > 「それはそうだな。俺たちはここまで戦い
@@ -500,22 +510,24 @@ Let's believe—in the strength that's kept us fighting all this way.”
 “Yeah... I think so too.”
 
 @41007 Lawrence · ローレンス
+# 审校：ローレンス对ハヤト说话，不是对マナミ，不应称呼“my lady”。
 > 「そうでございますとも。想いは力となり
 >  信じることもまた、力となるのです」
-“Indeed, my lady. Feelings become strength, and believing is also a source of strength.”
+“Indeed. Feelings become strength, and believing is also a source of strength.”
 
 @41008 Kamille · カミーユ
 > 「まだか……トレーズの合図は……」
 “Not yet...? Treize's signal...”
 
 @41009 Koji · 甲児
+# 审校：全局：刻印＝Crest
 > 「ああ、早いトコ終わらせたいもんだぜ。
 >  ジュリアさん、遺跡まで行ったら
 “Yeah, I want to get this over with fast. Miss Julia, once we reach the ruins,
 ---
 >  “刻印”を発動させるまでに、
 >  どれくらい時間が、かかるんだい?」
-how long will it take to activate the ‘Mark’?”
+how long will it take to activate the ‘Crest’?”
 
 @41010 Julia · ジュリア
 > 「……確実なことはいえませんが、
@@ -554,6 +566,7 @@ enthusiastic about this as she claims.”
 “Is that... really so? I had a feeling that might be the case too.”
 
 @41016 Julia · ジュリア
+# 审校：全局：刻印＝Crest
 > 「そうですね……わたくしは今でも、
 >  人と人とが最善をつくして
 “Yes... Even now, I believe that people doing their utmost to
@@ -564,21 +577,23 @@ understand one another is the most important thing of all. If I could have helpe
 ---
 >  “グラドスの刻印”などは
 >  使いたくありませんでした」
-I would never have wanted to use the ‘Mark of Grados.’”
+I would never have wanted to use the ‘Grados Crest.’”
 
 @41017 Eiji · エイジ
 > 「ジュリア姉さん……」
 “Julia...”
 
 @41018 Anna · アンナ
+# 审校：全局：刻印＝Crest
 > 「それで、今まで
 >  “グラドスの刻印”のことを
-“So that is why you kept the ‘Mark of Grados’
+“So that is why you kept the ‘Grados Crest’
 ---
 >  秘密になさっていたのですね?」
 a secret all this time?”
 
 @41019 Julia · ジュリア
+# 审校：全局：刻印＝Crest
 > 「ええ。けれどやむをえません。これ以上
 >  無益な血を流させないために
 “Yes. But it cannot be helped. To keep any more pointless blood from being spilled,
@@ -593,10 +608,10 @@ still nothing but infants in this vast universe.
 ---
 >  この刻印を残した先住グラドス
 >  人たちの知恵に、私たちは
-We must rely on the wisdom of the ancient Gradosians,
+We must rely on the wisdom of the ancestral Gradosians,
 ---
 >  すがらねばなりません」
-who left this Mark behind.”
+who left this Crest behind.”
 
 @41020 Bunny · バニー
 > 「艦長、衛星軌道上のグワダン
@@ -708,6 +723,7 @@ break through to the Cusco ruins!”
 “Yes... Eiji. Be careful...”
 
 @41039 Anna · アンナ
+# 审校：全局：刻印＝Crest
 > 「AC195年10月1日……OZは
 >  圧倒的な銀河帝国軍に
 “October 1, A.C. 195... OZ began its do-or-die assault on Cusco,
@@ -722,7 +738,7 @@ We too are about to charge into Cusco with no prospect of victory,
 ---
 >  クスコの遺跡に眠る“グラドスの
 >  刻印”を奪還するために
-to reclaim the ‘Mark of Grados’ sleeping in the Cusco ruins,
+to reclaim the ‘Grados Crest’ sleeping in the Cusco ruins,
 ---
 >  人類に残された最後の希望を
 >  手にするために……」
@@ -743,13 +759,15 @@ to seize the last hope left to humanity...”
 “Enough, just hurry up and get ready to launch! Honestly...”
 
 @41043 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：アーマス・ゲイル→Ahmos Gale
 > 「アーマス・ゲイル、君には
 >  遺跡突入後、聖女を
 “Ahmos Gale, once we enter the ruins, you'll have to carry the holy woman
 ---
 >  “刻印”まで、運んでもらわねば
 >  ならん。すまないが待機していてくれ」
-to the ‘Mark.’ Sorry, but stand by until then.”
+to the ‘Crest.’ Sorry, but stand by until then.”
 
 @41044 Gale · ゲイル
 > 「了解した、艦長。
@@ -769,13 +787,14 @@ to the ‘Mark.’ Sorry, but stand by until then.”
 All pilots, hurry up and launch!”
 
 @41047 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「エイジ、君には遺跡突入後、
 >  聖女を“刻印”まで
 “Eiji, once we enter the ruins, you'll have to carry the holy woman
 ---
 >  運んでもらわねばならん。すまないが
 >  待機していてくれ」
-to the ‘Mark.’ Sorry, but stand by until then.”
+to the ‘Crest.’ Sorry, but stand by until then.”
 
 @41048 Eiji · エイジ
 > 「了解です、艦長。
@@ -795,9 +814,10 @@ to the ‘Mark.’ Sorry, but stand by until then.”
 All pilots, hurry up and launch!”
 
 @41051 Quattro · クワトロ
+# 审校：全局：刻印＝Crest
 > 「すでに我々の目的は敵に察知
 >  されている。敵が“刻印”を
-“The enemy has already caught on to our objective. We must reach the ‘Mark’
+“The enemy has already caught on to our objective. We must reach the ‘Crest’
 ---
 >  破壊してしまう前にたどり着かねば
 >  ならん。あまり時間はかけられん
@@ -859,9 +879,10 @@ no matter what!”
 “No, are we already at the limit?!”
 
 @41061 Beltorchika · ベルトーチカ
+# 审校：全局：刻印＝Crest
 > 「艦長! “刻印”が……
 >  破壊されました!!」
-“Captain! The ‘Mark’ has been... destroyed!!”
+“Captain! The ‘Crest’ has been... destroyed!!”
 
 @41062 Bright · ブライト
 > 「なんだと!?
@@ -869,9 +890,10 @@ no matter what!”
 “What?! Ngh... The operation's a failure...”
 
 @41063 Beltorchika · ベルトーチカ
+# 审校：全局：刻印＝Crest
 > 「艦長! “刻印”が……
 >  破壊されました!!」
-“Captain! The ‘Mark’ has been... destroyed!!”
+“Captain! The ‘Crest’ has been... destroyed!!”
 
 @41064 Bright · ブライト
 > 「なんだと!?

@@ -1,109 +1,155 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9151 Aboly · アポリー
+# 触发：攻击（通用，1/7）
 > 「照準セット」
 “Target set.”
 
 @9152 Aboly · アポリー
+# 触发：攻击（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔はさせない!」
-“I won't let you interfere!”
+“I won’t let you interfere!”
 
 @9153 Aboly · アポリー
+# 触发：攻击（通用，3/7）
 > 「アレを沈めりゃ……」
 “If I sink that thing...”
 
 @9154 Aboly · アポリー
+# 触发：攻击（通用，4/7）
 > 「落ちろよ!」
 “Go down!”
 
 @9155 Aboly · アポリー
+# 触发：攻击（通用，5/7）
+# 审校：“给我打中”与下一句重复且不像祈求
 > 「当たってくれ!」
-“Please hit!”
+“Come on, hit!”
 
 @9156 Aboly · アポリー
+# 触发：攻击（通用，6/7）
 > 「当たれよ!」
 “Hit it!”
 
 @9157 Aboly · アポリー
+# 触发：攻击（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここは俺がおさえる!」
-“I'll hold them here!”
+“I’ll hold them here!”
 
 @9158 Aboly · アポリー
+# 触发：被击坠（通用，1/1）
 > 「うわぁぁぁぁーっ!」
 “Uwaaaaaaah!”
 
 @9159 Aboly · アポリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上は持たないっ!」
-“I can't take any more!”
+“I can’t take any more!”
 
 @9160 Aboly · アポリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：更自然
 > 「パ、パワーがあがらないのか!?」
-“P-power won't rise?!”
+“P-power’s not coming up?!”
 
 @9161 Aboly · アポリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「こ、こんなことで……」
 “N-not like this...”
 
 @9162 Aboly · アポリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……終わりはしない!」
-“Ngh... I'm not finished!”
+“Ngh... I’m not finished!”
 
 @9163 Aboly · アポリー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「くっ、直撃をくらっちまったか!」
 “Ngh, took a direct hit!”
 
 @9164 Aboly · アポリー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：更短促
 > 「まだいけるっ!」
-“I can still go!”
+“I can still fight!”
 
 @9165 Aboly · アポリー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「この程度ならまだ持たせる!」
 “I can take this much!”
 
 @9166 Aboly · アポリー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「くっ、当たっちまったか!」
 “Ngh, that one got me!”
 
 @9167 Aboly · アポリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 > 「ん!?」
 “Hn?!”
 
 @9168 Aboly · アポリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「かすったのか!?」
 “Just a graze?!”
 
 @9169 Aboly · アポリー
+# 触发：回避（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはしないって!」
-“It won't hit!”
+“It won’t hit!”
 
 @9170 Aboly · アポリー
+# 触发：回避（通用，2/5）
 > 「甘いんだよ」
 “Too naive.”
 
 @9171 Aboly · アポリー
+# 触发：回避（通用，3/5）
 > 「この程度なら俺だって」
 “Even I can handle this much.”
 
 @9172 Aboly · アポリー
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かわしてみせる!」
-“I'll dodge it!”
+“I’ll dodge it!”
 
 @9173 Aboly · アポリー
+# 触发：回避（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなよ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @9174 Aboly · アポリー
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：原译生硬
 > 「ビームなら無効化できる!」
-“I can nullify a Beam!”
+“Beams? I can nullify those!”
 
 @9175 Aboly · アポリー
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃は効かないぜ」
-“That kind of attack won't work.”
+“That kind of attack won’t work.”
 
 @9176 Aboly · アポリー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだって!?」
 “Out of ammo?!”
 
 @9177 Aboly · アポリー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからじゃ届かないか……」
-“Can't reach from here...”
+“Can’t reach from here...”
+
+@14699 Aboly · アポリー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”

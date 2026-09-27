@@ -1,56 +1,68 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @25480 Ark · アーク（按段落 3DD1）
+# 审校：补全整条台词的外层引号
 > 「それで、どうするつもりなんです?」
 “So, what do you intend to do?”
 
 @25481 Selain · セレイン（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「それで、どうするおつもりで?」
 “So, what do you intend to do?”
 
 @25482 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「で、結局どうするか決まったのかよ」
-“So, did you finally decide what we're doing?”
+“So, did you finally decide what we're doing or not?”
 
 @25483 Manami · マナミ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「今後の行動については、
 >  決まったのですか?」
 “Have you decided on our future course of action?”
 
 @25484 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「ああ……地球へ降りようかと
 >  考えている」
 “Yeah... I'm thinking we head down to Earth.”
 
 @25485 Ryoma · リョウ
+# 审校：补全整条台词的外层引号
 > 「地球へ? しかし、地上へ降りて
 >  どうするっていうんです」
 “To Earth? But what are we supposed to do once we're on the ground?”
 
 @25486 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「それなんだが……ジャブローへの
 >  降下作戦を検討している」
 “That's the thing... I'm considering a descent operation on Jaburo.”
 
 @25487 Ark · アーク（按段落 3DD1）
+# 审校：补全整条台词的外层引号
 > 「ジャブロー?」
 “Jaburo?”
 
 @25488 Selain · セレイン（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「ジャブロー? ずいぶんと
 >  思い切ったことを考えますね」
 “Jaburo? That's quite a bold idea.”
 
 @25489 Brad · ブラッド（按段落 3DD3）
+# 审校：补全整条台词的外层引号
 > 「あそこか。だがOZが占拠してんだろ?
 >  ちょっと大胆すぎやしないか」
 “That place, huh? But OZ has it occupied, right? Isn't that a bit too bold?”
 
 @25490 Manami · マナミ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「ジャブローですって? どうしてですか?」
 “Jaburo? Why there?”
 
 @25491 Bright · ブライト
+# 审校：合并：misc 与 scene 批次三方合并
 > 「理由はいくつかある。まず
 >  ジャブローはOZが制圧して以来
 “There are several reasons. First, since OZ took control of Jaburo,
@@ -61,7 +73,7 @@ only a relatively small number of troops have been stationed there.
 ---
 >  次に、帝国軍が司令部を
 >  設営していたときの物資が
-Second, the supplies from when the imperial army set up its
+Second, the supplies from when the Imperial Army set up its
 ---
 >  ほぼそのまま残されていること。
 >  そして、我々の存在を
@@ -71,10 +83,12 @@ headquarters there have been left almost entirely intact. And third,
 we need to let people know that we exist.”
 
 @25492 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「どういうことです?」
 “What do you mean?”
 
 @25493 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「帝国がいなくなってから、OZは
 >  敵対者や暴動に対しての
 “Since the Empire withdrew, OZ has begun making a show of force
@@ -95,29 +109,35 @@ skeptical of OZ's rule are starting to appear
 as well.”
 
 @25494 Koji · 甲児
+# 审校：补全整条台词的外层引号
 > 「ちぇっ、いまさら遅せぇんだってーの」
-“Tch, that's way too late already.”
+“Tch, it's way too late for that now.”
 
 @25495 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「だが我々が戦ってみせることで、
 >  反OZ感情を高めることができる」
 “But by showing them that we fight, we can raise anti-OZ sentiment.”
 
 @25496 Eiji · エイジ
+# 审校：补全整条台词的外层引号
 > 「反帝国のときと
 >  同じことをやるわけですね」
 “So we do the same thing we did against the Empire.”
 
 @25497 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「そうだ」
 “That's right.”
 
 @25498 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「だけど艦長、
 >  よくそんな詳しく知ってますね」
 “But Captain, how do you know all this in such detail?”
 
 @25499 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「ああ、地上の万丈くんたちからの
 >  情報だ。それと……
 “Yeah, it's intel from Banjo and the others on the ground. And...
@@ -127,25 +147,31 @@ as well.”
 there's also information that concerns Domon and the rest of you.”
 
 @25500 Domon · ドモン
+# 审校：补全整条台词的外层引号
 > 「俺たちに?」
 “Us?”
 
 @25501 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「例のデスアーミータイプのMSが
 >  ジャブロー付近で目撃されたらしい」
 “Those Death Army-type MS were apparently sighted near Jaburo.”
 
 @25502 Domon · ドモン
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なんだって!? デビルガンダムが
 >  ジャブローにいるというのか」
 “What?! You're saying the Dark Gundam is at Jaburo?”
 
 @25503 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「慌てるなドモン。
 >  落ち着いて話を聞くのだ」
 “Don't panic, Domon. Calm down and listen.”
 
 @25504 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「ああ、いや、そういうわけでは
 >  ないらしいんだがな
 “Ah, no, it doesn't seem to be that, exactly, but
@@ -159,6 +185,8 @@ the Death Army report is unconfirmed, so
 just keep in mind that it's a possibility.”
 
 @25505 Domon · ドモン
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それだけで十分だ。そういうことなら
 >  話しは別だ。艦長、地球へ
 “That's enough for me. If that's the case, it's a different story. Captain, hurry
@@ -168,37 +196,45 @@ just keep in mind that it's a possibility.”
 to Earth! Master Asia, and the Dark Gundam!
 ---
 >  今度こそこの俺が倒してやる!」
-This time I'm definitely going to beat them!”
+This time I'm definitely going to take them down!”
 
 @25506 Chibodee · チボデー
+# 审校：补全整条台词的外层引号
 > 「おいドモーン。
 >  俺たちもいるのを忘れんじゃねぇぜ」
 “Hey, Domon. Don't forget we're here too.”
 
 @25507 George · ジョルジュ
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうです。我々とてデビルガンダムには
 >  因縁がありますからね」
 “Indeed. We have our own score to settle with the Dark Gundam.”
 
 @25508 Sai Saici · サイ・サイシー
+# 审校：补全整条台词的外层引号
 > 「そういうことさ、アニキ。
 >  あいつは俺たちで倒すんだ」
 “That's right, bro. We're the ones who'll take that thing down.”
 
 @25509 Argo · アルゴ
+# 审校：补全整条台词的外层引号
 > 「うむ」
 “Mm.”
 
 @25510 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「フフフフフ、ハーッハハハハハハ。
 >  果たして本当にできるかな?」
 “Heh heh heh heh, hah hah hah hah hah hah. And can you really do it, I wonder?”
 
 @25511 Domon · ドモン
+# 审校：补全整条台词的外层引号
 > 「どういうことだ、シュバルツ!?」
 “What do you mean, Schwarz?!”
 
 @25512 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「それは己の胸に聞いてみるのだな。
 >  武闘家たるもの
 “Ask that of your own heart. A martial artist who cannot first
@@ -208,20 +244,25 @@ This time I'm definitely going to beat them!”
 master himself has no hope of ever winning a battle.”
 
 @25513 Rain · レイン
+# 审校：补全整条台词的外层引号
 > 「待ってシュバルツ。
 >  さっきのはどういう意味なの?」
 “Wait, Schwarz. What did you mean by that just now?”
 
 @25514 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「フフフ、気になるか、ドモンのことが」
 “Heh heh, worried, are you? About Domon?”
 
 @25515 Rain · レイン
+# 审校：补全整条台词的外层引号
 > 「べ、別に私は
 >  そういう意味で言ったんじゃ……」
 “I-I didn't mean it like that...”
 
 @25516 Schwarz · シュバルツ
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ハハハハハッ。ムキになっても
 >  勝てぬものは勝てぬということだ
 “Hah hah hah hah. Getting worked up won't win the battles that can't be won.
@@ -232,17 +273,19 @@ Your skill and your heart are both still immature. If you're so
 ---
 >  おのが腕におぼれているようでは、
 >  マスターアジアに勝つことなど
-enamored with your own arm for being just slightly better than others',
+drunk on your own skill for being just slightly better than others',
 ---
 >  夢のまた夢。それに…デビルガンダムの
 >  幻影に脅えているようではな」
 beating Master Asia is nothing but a dream within a dream. And besides... not while you're cowering before the Dark Gundam's phantom.”
 
 @25517 Rain · レイン
+# 审校：补全整条台词的外层引号
 > 「脅えている? あの人たちが?」
 “Cowering? Them?”
 
 @25518 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「その通り。口では
 >  いくら否定しようとも
 “Exactly. No matter how much they deny it with their mouths,
@@ -252,6 +295,7 @@ beating Master Asia is nothing but a dream within a dream. And besides... not wh
 they can't fool these eyes of mine. Unless they overcome it, there's no way forward.”
 
 @25519 Rain · レイン
+# 审校：补全整条台词的外层引号
 > 「……でも……あなたはドモンたちにそれを
 >  気づかせ、克服させようとしている…
 “...But... you're trying to make Domon and the others realize that and overcome it...
@@ -265,6 +309,7 @@ Schwarz, just who are you? Sometimes I get the feeling
 you know Domon even better than I do.”
 
 @25520 Schwarz · シュバルツ
+# 审校：补全整条台词的外层引号
 > 「私の正体などどうでもいい。
 >  レイン、地上へ降りたらさりげなく
 “My true identity doesn't matter. Rain, once you're on the ground, casually
@@ -274,10 +319,12 @@ you know Domon even better than I do.”
 nudge Domon toward training. Understood?”
 
 @25521 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「ガンダムがあらわれただと!?」
 “A Gundam has appeared?!”
 
 @25522 Specials · スペシャルズ
+# 审校：补全整条台词的外层引号
 > 「はい。迎撃に向かった部隊は
 >  全滅、またこのガンダムは
 “Yes. The unit sent to intercept it was wiped out, and this Gundam is
@@ -287,6 +334,7 @@ nudge Domon toward training. Understood?”
 destroying colonies as it makes its way here.”
 
 @25523 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「コロニーを? 妙だな……
 >  あの連中ならば
 “Destroying colonies? Strange... those people
@@ -296,23 +344,28 @@ destroying colonies as it makes its way here.”
 wouldn't do such a thing. ...What of the Mercurius and the Vayeate?”
 
 @25524 Specials · スペシャルズ
+# 审校：补全整条台词的外层引号
 > 「テスト待ちと聞いています」
 “I hear they're still awaiting testing.”
 
 @25525 Lady · レディ
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「よし、トロワ特士を呼べ。
 >  それとツバロフにメリクリウスと
-“Good, call Specials Trowa. And tell Tubarov that we'll be conducting
+“Good, call Special Officer Trowa. And tell Tubarov that we'll be conducting
 ---
 >  ヴァイエイトのテストは
 >  こちらでやると伝えておけ」
 the Mercurius and Vayeate tests here.”
 
 @25526 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「ガンダムが出たそうだな」
 “So a Gundam has appeared.”
 
 @25527 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「そうだ。しかしこのガンダムは
 >  コロニーを破壊しているらしい
 “Yes. But this Gundam is apparently destroying colonies.
@@ -321,77 +374,93 @@ the Mercurius and Vayeate tests here.”
 I want you to sortie, doubling as a test of the new models.”
 
 @25528 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「了解だ。だが、新型に耐えうる
 >  パイロットが俺の他にいるかな」
 “Understood. But is there any pilot besides me who can handle the new models?”
 
 @25529 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「先日捕らえた
 >  ガンダムパイロットを使え」
 “Use the Gundam pilot we captured the other day.”
 
 @25530 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「ほう? なかなか大胆な策だ」
 “Oh? That's quite a bold plan.”
 
 @25531 Lady · レディ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「フフ、誉め言葉と思っておこう。
 >  それと、特士」
-“Heh, I'll take that as a compliment. And one more thing, Specials.”
+“Heh, I'll take that as a compliment. And one more thing, Special Officer.”
 
 @25532 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「なんだ?」
 “What is it?”
 
 @25533 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「接触してから後の行動は、
 >  お前にまかせる。好きにするがいい」
 “Once you make contact, I leave your actions to you. Do as you please.”
 
 @25534 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「……ああ……了解した、特佐」
-“...Yeah... understood, Lieutenant Colonel.”
+“...Yeah... understood, Special Colonel.”
 
 @25535 Lady · レディ
+# 审校：精读：两个“他们”指代不清、数字
 > (さてと……残るは2人か。
 >  うまく脱出して彼らと
-(Now then... only two remain. I hope they escape safely and
+(Now then... that leaves two. I hope those two escape safely and
 ---
 >  合流してくれればいいのだがな。
 >  私は、お前たちに
-join up with them. I will believe that you
+join up with the others. I will believe that you
 ---
 >  時代を動かす力があると、
 >  信じよう……)
 have the power to move the era...)
 
 @25536 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「これでよし……」
 “There, that's done...”
 
 @25537 Tubarov · ツバロフ
+# 审校：补全整条台词的外层引号
 > 「何をなさっているのですかな、
 >  レディ・アン特佐」
-“What are you doing, Lieutenant Colonel Lady Une?”
+“What are you doing, Special Colonel Lady Une?”
 
 @25538 Lady · レディ
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「ツバロフか……」
 “Tubarov...”
 
 @25539 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「おい、ドアが開いたみたいだぜ?」
 “Hey, looks like the door opened.”
 
 @25540 Wufei · 五飛
+# 审校：补全整条台词的外层引号
 > 「そうか、ならば行くか」
 “Is that so. Then let's go.”
 
 @25541 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「おいちょっと待てよ。
 >  罠だったらどうするんだよ」
 “Hey, hold on a second. What if it's a trap?”
 
 @25542 Wufei · 五飛
+# 审校：补全整条台词的外层引号
 > 「殺すならとっくにやっている。
 >  こんな回りくどい真似はしない
 “If they meant to kill us, they'd have done it long ago. They wouldn't pull such a roundabout trick.
@@ -400,6 +469,7 @@ have the power to move the era...)
 If you won't go, then stay here alone.”
 
 @25543 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「冷たいやつだな、
 >  誰が行かないって言ったんだよ
 “Cold bastard, aren't you. Who said I wasn't going?
@@ -413,10 +483,12 @@ It's a wonder we're even alive.
 I've got no complaints either. So let's get moving.”
 
 @25544 Wufei · 五飛
+# 审校：补全整条台词的外层引号
 > 「借りを返してからな」
 “After I repay what I owe.”
 
 @25545 Tubarov · ツバロフ
+# 审校：补全整条台词的外层引号
 > 「捕虜を逃がすとは……
 >  これは明白な反逆行為ですな
 “Letting prisoners escape... that is a clear act of treason.
@@ -425,18 +497,22 @@ I've got no complaints either. So let's get moving.”
 Do you have anything to say for yourself?”
 
 @25546 Lady · レディ
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「いや……ないな、ツバロフ技師長」
-“No... I don't, Chief Engineer Tubarov.”
+“No... I have none, Chief Engineer Tubarov.”
 
 @25547 Tubarov · ツバロフ
+# 审校：补全整条台词的外层引号
 > 「ではレディ・アン嬢、OZへの
 >  反逆罪であなたを処刑します」
 “Then, Lady Une, I hereby execute you for treason against OZ.”
 
 @25548 Lady · レディ
+# 审校：补全整条台词的外层引号
 > 「好きにしろ。
 >  トレーズ様は人を愛された
-“Do as you like. Lord Treize loved people.
+“Do as you like. His Excellency Treize loved people.
 ---
 >  そして、人の死も愛された。
 >  死は人の感情に強烈に訴える
@@ -455,37 +531,43 @@ Heightened emotion leads people to choose extremes.
 That is precisely how things ought to be, and it is from within that that the future is born.”
 
 @25549 Tubarov · ツバロフ
+# 审校：补全整条台词的外层引号
 > 「私には理解できないことですな」
 “That is something I cannot comprehend.”
 
 @25550 Lady · レディ
-# 审校：补出“我们的过错”的主语，使英文更自然。
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「だから敵となるのだ。お前と私は。
 >  OZでの過ちは死に値する
-“That is why we are enemies. You and I. Our mistakes within OZ were worth death
+“That is why we are enemies. You and I. My mistake within OZ is a past
 ---
 >  過去であった。さぁ、撃てツバロフ。
 >  己を肯定するために」
-in the past. Now, shoot, Tubarov. To affirm yourself.”
+that deserves death. Now, shoot, Tubarov. To affirm yourself.”
 
 @25551 Tubarov · ツバロフ
+# 审校：补全整条台词的外层引号
 > 「レディ・アン嬢、あなたは甘すぎる」
 “Lady Une, you are too soft.”
 
 @25552 Lady · レディ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「兵士としてはな。
 >  しかし、この最後の刻を
 “As a soldier, yes. But in this final moment,
 ---
 >  私は人として厳しく生きたつもりだ」
-I believe I have lived strictly as a human being.”
+I believe I have lived uncompromisingly as a human being.”
 
 @25553 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「聞いたわよ。あたしたちと来て
 >  くれるんだって?」
 “I heard. You're coming with us, right?”
 
 @25554 Judau · ジュドー
+# 审校：补全整条台词的外层引号
 > 「ああ……コロニーに毒ガスなんて
 >  冗談じゃないし、食わせてもらった
 “Yeah... poison gas on a colony is no joke, and I'll work off
@@ -495,6 +577,7 @@ I believe I have lived strictly as a human being.”
 the meals you fed me. What are you fighting a war for, anyway?”
 
 @25555 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「あたしは反帝国のレジスタンスに
 >  自分から参加したわ。当時は
 “I joined the anti-Empire resistance of my own will. Back then,
@@ -508,31 +591,38 @@ because I believed it was the right thing. Even now that the Muge Empire is gone
 I believe there is no justice in OZ.”
 
 @25556 Judau · ジュドー
+# 审校：补全整条台词的外层引号
 > 「ご立派なことで」
 “How noble of you.”
 
 @25557 Show · ショウ
+# 审校：补全整条台词的外层引号
 > 「沙羅はまだ、だめなのか?」
 “Is Sara still not ready?”
 
 @25558 Chum · チャム
+# 审校：补全整条台词的外层引号
 > 「もう出発よ」
 “We're leaving now.”
 
 @25559 Shinobu · 忍
+# 审校：补全整条台词的外层引号
 > 「わかってる。だがよ」
 “I know. But still.”
 
 @25560 Ryo · 亮
+# 审校：补全整条台词的外层引号
 > 「沙羅はおいていくしかないな。
 >  ダンクーガが使えないのは痛いが……」
 “We've got no choice but to leave Sara behind. It hurts not being able to use Dancouga, but...”
 
 @25561 Marvel · マーベル
+# 审校：补全整条台词的外层引号
 > 「沙羅?」
 “Sara?”
 
 @25562 Sara · 沙羅
+# 审校：补全整条台词的外层引号
 > 「冗談じゃないよ。
 >  なに勝手なこと言ってんのさ
 “Don't be ridiculous. Who said you could decide that on your own?
@@ -542,15 +632,19 @@ I believe there is no justice in OZ.”
 Don't go making decisions like that without me.”
 
 @25563 Masato · 雅人
+# 审校：补全整条台词的外层引号
 > 「沙羅、無理しちゃだめだよ」
 “Sara, you shouldn't push yourself.”
 
 @25564 Sara · 沙羅
+# 审校：补全整条台词的外层引号
 > 「だまんな! あたしも行くよ、
 >  行かせてもらうよ」
 “Shut up! I'm going too, and you're going to let me!”
 
 @25565 Shinobu · 忍
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「沙羅……お前……。
 >  わかった、獣戦機隊が3人じゃ
 “Sara... you... All right, the Cyber Beast Force just doesn't
@@ -559,6 +653,7 @@ Don't go making decisions like that without me.”
 look right with only three of us.”
 
 @25566 Sara · 沙羅
+# 审校：补全整条台词的外层引号
 > 「フン、礼は言わないよ、忍。
 >  あんたがいなかったときも
 “Hmph, I won't thank you, Shinobu. When you weren't here,
@@ -567,29 +662,35 @@ look right with only three of us.”
 you were saying the same thing anyway.”
 
 @25567 Ginrei · 銀鈴
+# 审校：补全整条台词的外层引号
 > 「艦長、準備完了です」
 “Captain, preparations are complete.”
 
 @25568 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「よし、これより{HeroMech}は
 >  地球へ向かう」
 “All right, the {HeroMech} will now head for Earth.”
 
 @25569 Rish · リッシュ（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「{PartnerSurname}一級特尉、
 >  入ります」
-“Ensign First Class {PartnerSurname}, reporting in.”
+“Special Lieutenant First Class {PartnerSurname}, reporting in.”
 
 @25570 Bask · バスク
+# 审校：补全整条台词的外层引号
 > 「来たか。どのような用件か、
 >  わかっておろうな」
 “So you've come. You know what this is about, don't you?”
 
 @25571 Rish · リッシュ（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「は……いえ、自分にはわかりかねます」
 “Yes... no, I'm afraid I don't.”
 
 @25572 Bask · バスク
+# 审校：补全整条台词的外层引号
 > 「フン、貴様の指揮能力に対す
 >  る評価は、このところいちじるしく
 “Hmph. The assessment of your command ability has declined markedly
@@ -602,34 +703,40 @@ as of late. We in OZ are not in a position with much room to spare either.
 I cannot tolerate any further failures.”
 
 @25573 Rish · リッシュ（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「はっ、それはよくわかっております」
 “Yes, sir. I understand that quite well.”
 
 @25574 Bask · バスク
+# 审校：补全整条台词的外层引号
 > 「汚名返上のチャンスをやる。
 >  {HeroMech}の連中がどうやら
 “I'll give you a chance to clear your name. The {HeroMech} group appears
 ---
 >  地球へ降りるようだ。ヤザン特尉
 >  とともに、これを阻止しろ
-to be descending to Earth. Join Lieutenant Yazan and stop them.
+to be descending to Earth. Join Special Lieutenant Yazan and stop them.
 ---
 >  ここでやってみせねば、最後だと思え」
 If you cannot prove yourself here, consider this your last chance.”
 
 @25575 Rish · リッシュ（按段落 3DD2）
+# 审校：补全整条台词的外层引号
 > 「は……了解であります」
 “Yes... understood, sir.”
 
 @25576 Bask · バスク
+# 审校：补全整条台词的外层引号
 > 「来たか」
 “So you've come.”
 
 @25577 Aisha · アイシャ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「何かご用でしょうか?」
-“Is there something you need?”
+“Is there something you require?”
 
 @25578 Bask · バスク
+# 审校：补全整条台词的外层引号
 > 「{HeroMech}が地球へ降下
 >  するという情報をつかんだ。これを
 “We've obtained information that the {HeroMech} is descending to Earth. Join
@@ -638,38 +745,46 @@ If you cannot prove yourself here, consider this your last chance.”
 Yazan's unit and stop them.”
 
 @25579 Aisha · アイシャ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「はい……わかりました」
-“Yes... understood.”
+“Yes... I understand.”
 
 @25580 Bask · バスク
-# 待译：机翻未采用（页数应为 4，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：You have been accepted under special treatment with the rank of Ensign First Class／in OZ, on the pretext of striking down the 【主角姓氏】 girl who betrayed the Foundation.／If you fail to accomplish your objective, you will have no standing with the Foundation.／Do try to prove yourself.
+# 审校：补译：原稿页数错误
 > 「貴公は、財団を裏切った
 >  {HeroSurname}の小娘を叩くという
+“You were taken in on the pretext of striking down the {HeroSurname} girl who betrayed the Foundation,
 ---
 >  名目で、特例としてOZの
 >  1級特尉待遇で迎えておる
+as a special case, with the standing of a Special Lieutenant First Class of OZ.
 ---
 >  目的を果たせなければ、財団への
 >  立場がなかろう
+Fail to achieve that end, and you will have no standing left with the Foundation.
 ---
 >  せいぜいやってみせるのだな」
+Do your utmost, then.”
 
 @25581 Aisha · アイシャ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「…………」
 “...”
 
 @25582 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「あれか……恐らくカトルか誰かだろう。
 >  合流するぞ、ヒイロ」
 “That's... probably Quatre, or someone. Let's rendezvous, Heero.”
 
 @25583 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「どうかな……奴はコロニーを
 >  破壊している」
 “I wonder... He's been destroying colonies.”
 
 @25584 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「間違いない、あれはカトルだ。
 >  カトル、こちらトロワだ
 “There's no mistake, that's Quatre. Quatre, this is Trowa.
@@ -678,15 +793,18 @@ Yazan's unit and stop them.”
 Can you hear me, Quatre?”
 
 @25585 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「聞こえているよ。
 >  それ以上近寄らないでよ、トロワ」
 “I can hear you. Don't come any closer, Trowa.”
 
 @25586 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「カトル? ……どういうことだ?」
 “Quatre? ...What do you mean?”
 
 @25587 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「僕はこの狂った地球圏の
 >  すべてを破壊する
 “I will destroy everything in this mad Earth Sphere.
@@ -700,11 +818,13 @@ Eliminating everyone who desires conflict is what I must do.
 There are people like that in the colonies too, aren't there? So I'll destroy the colonies as well.”
 
 @25588 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「どうしたんだカトル?
 >  お前らしくないじゃないか」
 “What's happened to you, Quatre? This isn't like you.”
 
 @25589 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「狂ってるんだよ、地球圏は。
 >  やさしい人の涙を誰もわからないんだ
 “The Earth Sphere is mad. No one understands the tears of kind people.
@@ -718,11 +838,13 @@ I will never forget. I won't let anyone forget.
 Not until I erase everything with this Wing Zero.”
 
 @25590 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「ウィナー家の資源衛星のことか?
 >  お前はそれほど弱くはなかったはずだ」
 “You mean the Winner family's resource satellite? You were never that weak.”
 
 @25591 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「あの人たちにも伝えてほしい。
 >  もう僕の前に現れないで
 “Tell them too. Don't appear before me again.
@@ -731,10 +853,12 @@ Not until I erase everything with this Wing Zero.”
 Otherwise, I'll end up killing everyone.”
 
 @25592 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「カトル……」
 “Quatre...”
 
 @25593 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「言いたいことは、それだけか。
 >  すべてが狂っているのなら
 “Is that all you wanted to say? If everything is mad,
@@ -744,22 +868,27 @@ Otherwise, I'll end up killing everyone.”
 then I'll believe in myself and fight. Quatre... I'll kill you.”
 
 @25594 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「ヒイロォォォォーッ!!」
 “HEEROOOOOO!”
 
 @25595 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「ぐぅぅぅぅっ!」
 “Guhhhhh!”
 
 @25596 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「やめろカトル!!」
 “Stop it, Quatre!!”
 
 @25597 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「近寄らないでっていってるだろぉぉ!?」
 “I told you not to come any closer!”
 
 @25598 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「……ヒイロ、コロニーは
 >  OZと手を組んだんだ
 “...Heero, the colonies have joined hands with OZ.
@@ -776,11 +905,13 @@ the Earth Sphere has gone mad. So I will destroy everything.
 Destroy it and set it right. Isn't that so? Heero.”
 
 @25599 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「……言いたいことはそれだけか……
 >  うっ……」
 “...Is that all you wanted to say... ugh...”
 
 @25600 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「死ぬよ、ヒイロ。
 >  でも僕は仲間を殺したくない
 “You're going to die, Heero. But I don't want to kill my comrades.
@@ -790,23 +921,28 @@ Destroy it and set it right. Isn't that so? Heero.”
 Run, Heero. Hey, are you listening, Heero?”
 
 @25601 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「カトル……俺は逃げない。
 >  俺の後ろにはコロニーがある」
 “Quatre... I won't run. The colonies are behind me.”
 
 @25602 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「そう……さようなら、ヒイロ」
 “I see... Goodbye, Heero.”
 
 @25603 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「……カトル……」
 “...Quatre...”
 
 @25604 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「……トロワ?」
 “...Trowa?”
 
 @25605 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「カトル、俺はお前が過ちを犯して
 >  いると思う。コロニーのためと信じて
 “Quatre, I think you're making a mistake. For those of us who believed in the colonies
@@ -823,10 +959,12 @@ But this is reality. We have no choice but to accept it. And what remains
 is only a problem within our own hearts...”
 
 @25606 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「…………」
 “............”
 
 @25607 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「真剣に未来を信じて戦って
 >  きたがゆえに、自分一人でも
 “Because we believed in the future so earnestly and fought for it, we end up thinking
@@ -843,10 +981,12 @@ just you. But that feeling drives those with the strongest convictions, the gent
 the hardest of all...”
 
 @25608 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「くっ……」
 “Ngh...”
 
 @25609 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「カトル、俺たちの心の問題は、
 >  俺たち自身が戦い
 “Quatre, the problem in our hearts is something we must fight through ourselves
@@ -863,10 +1003,12 @@ There are those who fight without holding a gun. We are not yet
 soldiers who have become unnecessary.”
 
 @25610 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「トロワ……」
 “Trowa...”
 
 @25611 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「だからカトル、
 >  まだ目を閉ざさないでくれ
 “So Quatre, don't close your eyes yet.
@@ -876,35 +1018,43 @@ soldiers who have become unnecessary.”
 Accept the flow of the times. Won't you go back to being the gentle Quatre...?”
 
 @25612 Trowa · トロワ
+# 审校：补全整条台词的外层引号
 > 「ぐ……だめか……」
 “Guh... It's no use...”
 
 @25613 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「トロワッ!」
 “Trowa!”
 
 @25614 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「ヒイロ!?」
 “Heero?!”
 
 @25615 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「離してヒイロ!
 >  トロワが死んでしまう!!」
 “Let go of me, Heero! Trowa is going to die!!”
 
 @25616 Heero · ヒイロ
+# 审校：补全整条台词的外层引号
 > 「ああ……お前が殺した」
 “Yeah... You killed him.”
 
 @25617 Quatre · カトル
+# 审校：补全整条台词的外层引号
 > 「トロワ……トロワァァァァーッ!!」
 “Trowa... TROWAAAAAA!!”
 
 @25618 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「敵です!」
 “Enemy!”
 
 @25619 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「いいか、目標はジャブローだ。この
 >  エリアへ入れば地球へ降下できる」
 “Listen, our target is Jaburo. Once we enter this area, we can descend to Earth.”
@@ -1020,26 +1170,27 @@ that I was a man who was in love with you.”
 If you're going to do it, then show me what you can do on your own!”
 
 @25635 Aisha · アイシャ（按段落 3DD4）
+# 审校：精读：OZがだめになる
 > (……なんて野蛮な男。
 >  バスクといいこの男といい
 (...What a barbaric man. Bask and now this one too.
 ---
 >  これではOZが
 >  だめになってしまうのではなくて?
-At this rate, isn't it OZ that's falling apart?
+At this rate, won't OZ itself fall apart?
 ---
 >  トレーズ閣下の目指されたものは、
 >  こんなものではなかったはずなのに……)
 What His Excellency Treize aimed for shouldn't have been anything like this...)
 
 @25636 Aisha · アイシャ（按段落 3DD4）
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：アイシャ是贵族口吻，应使用正式表达，将 I'm 改为 I am、It's 改为 It is，并补上 as well 以贴合“も”的语感。
 > 「{HeroName}さん……
 >  わたくしも疲れましたわ
-“{HeroName}... I'm tired too.
+“{HeroName}... I am tired as well.
 ---
 >  そろそろ、決着をつけましょう」
-It's about time we settled this.”
+It is about time we settled this.”
 
 @25637 Manami · マナミ（按段落 3DD4）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1087,10 +1238,10 @@ and I gratefully took it off his hands.”
 “That's Duo?! You came!”
 
 @25644 Lawrence · ローレンス
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：ローレンス是老管家，voice 要求无缩写，将 isn't 改为 is not。
 > 「その機体は登録されておりませんな
 >  新型ですか、デュオさま」
-“That machine isn't in our registry. Is it a new model, Master Duo?”
+“That machine is not in our registry. Is it a new model, Master Duo?”
 
 @25645 Duo · デュオ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1372,32 +1523,32 @@ Man, what a pathetic way to go...”
 What are you doing?!”
 
 @25681 主角
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：精读：のよ!?
 > 「お願い、もうやめて。
 >  あたしたちが戦ったって
 “Please, stop this already. Even if we fight,
 ---
 >  何の意味もないのよ!?」
-it won't mean a thing!?”
+it won't mean a thing, don't you see?!”
 
 @25682 对手
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：精读：去掉破折号
 > 「意味……いいえ、
 >  意味ならありますわ
 “Meaning... no, there is a meaning.
 ---
 >  あなたを倒さなければ、わたくしは、
 >  いえ{PartnerSurname}の家は
-If I don't defeat you, I—no, the {PartnerSurname} family—
+If I do not defeat you, I... no, the {PartnerSurname} family...
 ---
 >  ロームフェラでの立場をなくすわ」
 will lose its standing within Romefeller.”
 
 @25683 主角
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：精读：わかって 是请求
 > 「わかって{PartnerName}、もう
 >  そんなことを言っているときではないのよ
-“I know, {PartnerName}, this isn't the time to be saying things like that.
+“Understand, {PartnerName}, this isn't the time to be saying such things.
 ---
 >  ロームフェラの、
 >  OZのやり方は間違ってるわ!
@@ -1408,18 +1559,18 @@ Romefeller's way, OZ's way, is wrong!
 You know that as well as I do!”
 
 @25684 对手
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：对手为贵族小姐，voice 要求正式、不用缩写，将“can't”改为“cannot”、“I'm”改为“I am”以符合其正式口吻。
 > 「……それでも、それでも、わたくしには……
 >  他の道は選べない
-“...Even so, even so, I... I can't choose any other path.
+“...Even so, even so, I... I cannot choose any other path.
 ---
 >  選ぶわけにはいかないのです!」
-I'm not allowed to choose one!”
+I am not allowed to choose one!”
 
 @25685 主角
-# 审校：原文首尾为「」，应使用弯引号“”包裹整段。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「{PartnerName}!?」
-“{PartnerName}!?”
+“{PartnerName}?!”
 
 @25686 对手
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1452,15 +1603,18 @@ no one would ever be happy about it... you idiot.
 ...{PartnerName}...”
 
 @25690 Aisha · アイシャ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「ああ……これでもう……
 >  終わりですのね……」
 “Ah... so this is... the end, then...”
 
 @25691 Manami · マナミ（按段落 3DD4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「{PartnerName}!?」
-“{PartnerName}!?”
+“{PartnerName}?!”
 
 @25692 Lawrence · ローレンス
+# 审校：补全整条台词的外层引号
 > 「大丈夫です、お嬢様。
 >  {PartnerName}様は
 “It's all right, my lady. It seems {PartnerName}
@@ -1469,15 +1623,18 @@ no one would ever be happy about it... you idiot.
 escaped safely.”
 
 @25693 Manami · マナミ（按段落 3DD4）
+# 审校：补全整条台词的外层引号
 > 「……よかった……{PartnerName}。
 >  ありがとう、ローレンス」
 “...Thank goodness... {PartnerName}. Thank you, Lawrence.”
 
 @25694 Lawrence · ローレンス
+# 审校：补全整条台词的外层引号
 > 「とんでもございません」
 “Not at all.”
 
 @25695 Hilde · ヒルデ
+# 审校：补全整条台词的外层引号
 > 「デュオ……私も、
 >  私もあなたの信じているものを
 “Duo... I wanted to see it too,
@@ -1486,49 +1643,56 @@ escaped safely.”
 the thing you believe in...”
 
 @25696 Duo · デュオ
-# 审校：“てめぇら”语气更接近“you bastards”，比“you idiots”更符合杜欧愤怒的喊叫。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ヒルデッ!? ばっかやろぉぉぉーっ!
 >  てめぇら一人も生かしちゃおかねぇ!」
-“Hilde?! You bastards! I won't let a single one of you live!”
+“Hilde?! You idiooot! I won't let a single one of you live!”
 
 @25697 Hilde · ヒルデ
+# 审校：补全整条台词的外层引号
 > 「きゃあぁぁぁぁぁーっ!!」
 “Kyaaaaaaah!!”
 
 @25698 Duo · デュオ
-# 审校：同上，将“you idiots”改为“you bastards”，保持杜欧愤怒语气一致。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ヒルデッ!? くっ、ばっかやろぉぉーっ!」
-“Hilde?! Ngh, you bastards!”
+“Hilde?! Ngh, you idiooot!”
 
 @25699 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「敵は片付いたか……
 >  よし、地球に降下するぞ!」
 “The enemy's been dealt with... All right, we're descending to Earth!”
 
 @25700 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「よし、全機降下開始したな。
 >  気を抜くなよ。目標はジャブローだ」
 “Good, all units have begun their descent. Stay sharp. Our target is Jaburo.”
 
 @25701 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「艦長! 未確認MSが1機、
 >  艦尾にとりつきました!!」
 “Captain! One unidentified MS has attached itself to the stern!!”
 
 @25702 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「なんだと!? 敵か!?」
 “What?! Is it an enemy?!”
 
 @25703 Bunny · バニー
+# 审校：补全整条台词的外层引号
 > 「そのMSより通信入ります」
 “We're receiving a transmission from that MS.”
 
 @25704 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「スクリーンに出せ」
 “Put it on screen.”
 
 @25705 Duo · デュオ
-# 审校：“燃えつきちまう”指在大气层降落时被烧毁，改为“burn up”更准确。
+# 审校：补全整条台词的外层引号
 > 「よっ、ひさしぶり。いきなりで悪いが、
 >  はやいとこ入れてくれよ。このままじゃ
 “Yo, long time no see. Sorry to drop in like this, but let me in quick. At this rate,
@@ -1537,15 +1701,18 @@ the thing you believe in...”
 even I'll burn up.”
 
 @25706 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「デュオ・マックスウェルか!?」
 “Duo Maxwell?!”
 
 @25707 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「ちょっとデュオ、あれ新型でしょ?
 >  いったいどこで手に入れたのよ」
 “Hey, Duo, that's a new model, isn't it? Where on earth did you get it?”
 
 @25708 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「ああ、どっかのバカな技術者が、
 >  俺のデスサイズを新調してくれたのさ
 “Yeah, some fool of an engineer went and rebuilt my Deathscythe.
@@ -1554,11 +1721,13 @@ even I'll burn up.”
 So I gratefully took it off his hands.”
 
 @25709 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「よく来てくれた、デュオ。
 >  それで、後の4人は?」
 “Glad you made it, Duo. So, what about the other four?”
 
 @25710 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
 “Nah, sorry, but I don't know. Wufei and I were together
@@ -1568,6 +1737,7 @@ So I gratefully took it off his hands.”
 part of the way, but unlike me, he likes being on his own.”
 
 @25711 Hilde · ヒルデ
+# 审校：补全整条台词的外层引号
 > 「デュオ、私も自分の思ったことを
 >  精一杯やってみる
 “Duo, I want to give it my all too, doing what I believe in.
@@ -1576,10 +1746,12 @@ part of the way, but unlike me, he likes being on his own.”
 Let me come along with you.”
 
 @25712 Duo · デュオ
+# 审校：补全整条台词的外层引号
 > 「まったく……馬鹿だな、お前も」
 “Honestly... you're an idiot too.”
 
 @25713 Kamille · カミーユ
+# 审校：补全整条台词的外层引号
 > 「くっ……みんなは敵の攻撃で降下
 >  地点を変えられてしまったのか……?」
 “Ngh... Did everyone get forced off their landing point by the enemy's attack...?”

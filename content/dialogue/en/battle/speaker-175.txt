@@ -1,116 +1,173 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9533 Death Gaia · デスガイヤー
+# 触发：攻击（通用，1/8）
 > 「ええいめんどうだ!」
 “Enough, this is a pain!”
 
 @9534 Death Gaia · デスガイヤー
+# 触发：攻击（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いっきにケリをつけてやる!」
-“I'll finish this all at once!”
+“I’ll finish this all at once!”
 
 @9535 Death Gaia · デスガイヤー
+# 触发：攻击（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さぁ止めをさしてやる!」
-“Now, I'll put you out of your misery!”
+“Now, I’ll put you out of your misery!”
 
 @9536 Death Gaia · デスガイヤー
+# 触发：攻击（通用，4/8）
 > 「死ね!」
 “Die!”
 
 @9537 Death Gaia · デスガイヤー
+# 触发：攻击（通用，5/8）
+# 审校：迪斯盖亚的口头禅，是自己在燃烧
 > 「燃える、燃えるぞ!」
-“It burns, it burns!”
+“I’m burning, I’m burning up!”
 
 @9538 Death Gaia · デスガイヤー
+# 触发：攻击（通用，6/8）
 > 「くるならきてみろ!」
 “Come on then, try it!”
 
 @9539 Death Gaia · デスガイヤー
+# 触发：攻击（通用，7/8）
 > 「このデスガイヤーが相手だ!」
 “You face Death Gaia himself!”
 
 @9540 Death Gaia · デスガイヤー
+# 触发：攻击（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「叩きつぶしてやろう!」
-“I'll smash you flat!”
+“I’ll smash you flat!”
 
 @9541 Death Gaia · デスガイヤー
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、この俺が負けるなどと……」
-“Th-That I, of all people, would lose...”
+“Th-that I, of all people, would lose...”
 
 @9542 Death Gaia · デスガイヤー
+# 触发：被击坠（通用，2/2）
+# 审校：sirrrrr 怪
+# 检查提示：未用必用译名：ムゲ帝王→Emperor Muge
 > 「ムゲ帝王さまぁぁぁぁーっ!」
-“Emperor Muge, sirrrrr!”
+“Emperor Muuuuge!”
 
 @9543 Death Gaia · デスガイヤー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ぐっ!? 銀河の果てでこの俺が
 >  負けるなど、有り得ないこと!」
-“Guh?! That I would lose at the edge of the galaxy—impossible!”
+“Guh?! That I would lose at the edge of the galaxy... impossible!”
 
 @9544 Death Gaia · デスガイヤー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぉ!? 俺の戦法に間違いは
 >  なかったはずだ!」
-“Whoa?! My tactics couldn't have been wrong!”
+“Whoa?! My tactics couldn’t have been wrong!”
 
 @9545 Death Gaia · デスガイヤー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「うぉぉぉぉぉ!?」
 “Whoaaaaaah?!”
 
 @9546 Death Gaia · デスガイヤー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こんなことがっ!!」
-“Th-This can't be!!”
+“Th-this can’t be!!”
 
 @9547 Death Gaia · デスガイヤー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ば、ばかなぁぁっ!」
-“I-Impossible!”
+“I-impossible!”
 
 @9548 Death Gaia · デスガイヤー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「バカなっ!?」
 “Impossible?!”
 
 @9549 Death Gaia · デスガイヤー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：デスガイヤー→Death Gaia
 > 「このデスガイヤー、これしきのことで
 >  やられはせん!」
-“I, Death Gaia, won't be beaten by something like this!”
+“I, Death Gaia, won’t be beaten by something like this!”
 
 @9550 Death Gaia · デスガイヤー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度でやられる俺ではないわ!」
-“I'm not one to be taken down by this much!”
+“I’m not one to be taken down by this much!”
 
 @9551 Death Gaia · デスガイヤー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「おおっ!?」
 “Oh?!”
 
 @9552 Death Gaia · デスガイヤー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かぬわ!」
-“It doesn't hurt!”
+“It doesn’t hurt!”
 
 @9553 Death Gaia · デスガイヤー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「ばかめ!」
 “Fool!”
 
 @9554 Death Gaia · デスガイヤー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：貴様らごとき
 > 「貴様らごときが!」
-“You lot, of all people!”
+“The likes of you!”
 
 @9555 Death Gaia · デスガイヤー
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんな!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @9556 Death Gaia · デスガイヤー
+# 触发：回避（通用，2/2）
 > 「ハハハハハッ!」
 “Hahahahaha!”
 
 @9557 Death Gaia · デスガイヤー
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんな!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @9558 Death Gaia · デスガイヤー
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ハハハハハッ!」
 “Hahahahaha!”
 
 @9559 Death Gaia · デスガイヤー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ぬうぅ弾切れとはな!」
 “Ngh, out of ammo?!”
 
 @9560 Death Gaia · デスガイヤー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ばかなっ届かんだとぉっ!?」
-“Impossible, it can't reach?!”
+“Impossible, it can’t reach?!”
+
+@14812 Death Gaia · デスガイヤー
+# 触发：对手机体〈ダンクーガ〉
+> 「死ねぃダンクーガ!」
+“Die, Dancouga!”
+
+@14813 Death Gaia · デスガイヤー
+# 触发：对手机体〈ダンクーガ〉
+> 「死ねぃダンクーガ!」
+“Die, Dancouga!”

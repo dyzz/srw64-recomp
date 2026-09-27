@@ -1,141 +1,191 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13371 Specials · スペシャルズ
+# 触发：攻击（通用，1/10）
+# 审校：冲对方喊；弯撇号
 > 「邪魔なんだよ!」
-“You're in my way!”
+“You’re in my way!”
 
 @13372 Specials · スペシャルズ
+# 触发：攻击（通用，2/10）
 > 「うおおおおっ!!」
 “Whoaaaa!!”
 
 @13373 Specials · スペシャルズ
+# 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
 “This is the finisher!!”
 
 @13374 Specials · スペシャルズ
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつで決めてやる!」
-“I'll finish you with this!”
+“I’ll finish you with this!”
 
 @13375 Specials · スペシャルズ
+# 触发：攻击（通用，5/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!!」
-“Like I'd let you!!”
+“Like I’d let you!!”
 
 @13376 Specials · スペシャルズ
+# 触发：攻击（通用，6/10）
+# 审校：落ちろ统一
 > 「落ちろっ!!」
-“Fall!!”
+“Go down!!”
 
 @13377 Specials · スペシャルズ
+# 触发：攻击（通用，7/10）
 > 「このっ!!」
 “Why you!!”
 
 @13378 Specials · スペシャルズ
+# 触发：攻击（通用，8/10）
 > 「行くぞっ!!」
 “Here I come!!”
 
 @13379 Specials · スペシャルズ
+# 触发：攻击（通用，9/10）
 > 「そこだっ!」
 “There!”
 
 @13380 Specials · スペシャルズ
+# 触发：攻击（通用，10/10）
 > 「もらった!」
 “Got you!”
 
 @13381 Specials · スペシャルズ
+# 触发：被击坠（通用，1/2）
 > 「な、何だと!?」
 “W-what?!”
 
 @13382 Specials · スペシャルズ
+# 触发：被击坠（通用，2/2）
 > 「しまった! 直撃か!?」
 “Damn! A direct hit?!”
 
 @13383 Specials · スペシャルズ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、い、いかん、やられる!?」
-“Guh, th-this is bad, I'm going down?!”
+“Guh, th-this is bad, I’m going down?!”
 
 @13384 Specials · スペシャルズ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：口语；弯撇号
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Ngh, I'm at a disadvantage?!”
+“Whoa?! Ngh, I’m losing this?!”
 
 @13385 Specials · スペシャルズ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「ぬうううっ! つ、強いっ!」
 “Nghhh! S-strong!”
 
 @13386 Specials · スペシャルズ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「やるっ! さすがは!」
 “Not bad! As expected!”
 
 @13387 Specials · スペシャルズ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
 “Guh!! The power difference is too much!!”
 
 @13388 Specials · スペシャルズ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! まだまだっ!」
-“Tch! I'm not done yet!”
+“Tch! I’m not done yet!”
 
 @13389 Specials · スペシャルズ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：少しはできる；弯撇号
 > 「くっ! 少しはできるな!」
-“Ngh! You've got some skill!”
+“Ngh! You’ve got some skill!”
 
 @13390 Specials · スペシャルズ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! そう簡単にやられはせん!!」
-“Ngh! I won't go down that easily!!”
+“Ngh! I won’t go down that easily!!”
 
 @13391 Specials · スペシャルズ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：やってくれたな；弯撇号
 > 「うっ! やってくれたな!!」
-“Ugh! You'll pay for that!!”
+“Ugh! You’ll pay for that!!”
 
 @13392 Specials · スペシャルズ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「まだだっ! まだこれからよ!!」
 “Not yet! This is just the beginning!!”
 
 @13393 Specials · スペシャルズ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「パワー不足だな!」
 “Not enough power!”
 
 @13394 Specials · スペシャルズ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「その程度か!」
 “Is that all!”
 
 @13395 Specials · スペシャルズ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃など効くものかよ!」
-“An attack like that won't work on me!”
+“An attack like that won’t work on me!”
 
 @13396 Specials · スペシャルズ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「ふん、かすっただけよ!」
 “Hmph, that just grazed me!”
 
 @13397 Specials · スペシャルズ
+# 触发：回避（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるものかよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @13398 Specials · スペシャルズ
+# 触发：回避（通用，2/3）
 > 「狙いが甘い!」
 “Your aim is sloppy!”
 
 @13399 Specials · スペシャルズ
+# 触发：回避（通用，3/3）
+# 审校：バカめ是对眼前一人
 > 「バカめ。どこを狙っている!」
-“Fools. What are you aiming at!”
+“Fool. What are you aiming at?!”
 
 @13400 Specials · スペシャルズ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ムダな攻撃をする……」
 “What a pointless attack...”
 
 @13401 Specials · スペシャルズ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ、そんなビームではな!」
-“Heh, a Beam like that won't do it!”
+“Heh, a Beam like that won’t do it!”
 
 @13402 Specials · スペシャルズ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、弾切れとはな……」
 “Tch, out of ammo...”
 
 @13403 Specials · スペシャルズ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「弾切れか……しかたあるまい」
 “Out of ammo... nothing to be done.”
 
 @13404 Specials · スペシャルズ
+# 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
 “Tch, a long-range attack...”
 
 @13405 Specials · スペシャルズ
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「む……ここからでは反撃できん」
-“Hm... I can't counter from here.”
+“Hm... I can’t counter from here.”

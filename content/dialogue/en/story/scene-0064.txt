@@ -9,9 +9,10 @@
 It is an honor to meet you, Lady Relena.”
 
 @28497 Relena · リリーナ
+# 审校：Relena 的 voice 要求正式、不用缩略形式，原文为敬体，译文应去掉 You're 和 I've 的缩略。
 > 「ロームフェラ財団から来た方ね
 >  お話はうかがっているわ
-“You're the one from the Romefeller Foundation. I've heard about you.
+“You are the one from the Romefeller Foundation. I have heard about you.
 ---
 >  よろしく、ドロシー」
 Welcome, Dorothy.”
@@ -40,9 +41,10 @@ I came here hoping to learn that philosophy under you, Lady Relena.”
 I want you to learn about this country as soon as possible.”
 
 @28500 Dorothy · ドロシー
+# 审校：Dorothy 的 voice 为华丽正式口吻，I'd 应改为 I would 以保持其庄重语气。
 > 「まあ、リリーナ様が?
 >  光栄ですわ。もちろん、喜んで」
-“Oh my, you, Lady Relena? What an honor. Of course, I'd be delighted.”
+“Oh my, you, Lady Relena? What an honor. Of course, I would be delighted.”
 
 @28501 Dorothy · ドロシー
 > 「あら、リリーナ様。
@@ -63,16 +65,17 @@ Now they are conducting research and development on a new energy source
 here in the Sanc Kingdom. They must have come to report on it.”
 
 @28503 Dorothy · ドロシー
+# 审校：Dorothy 的 voice 为华丽正式口吻，I'm 应改为 I am 以保持其庄重语气。
 > 「まあ、新しいエネルギー?
 >  とても興味がありますわ
-“Oh my, a new energy source? I'm very interested.
+“Oh my, a new energy source? I am very interested.
 ---
 >  噂では、ゲッターとかマジンガーとか……
 >  すばらしい兵器を動かしていたとか
 Rumor has it they used to operate wonderful weapons like the Getter and the Mazinger...
 ---
 >  きっと強力な力なのでしょうねえ」
-I'm sure it must be a powerful force.”
+I am sure it must be a powerful force.”
 
 @28504 Relena · リリーナ
 > 「今はそれを、平和のために
@@ -84,13 +87,14 @@ I'm sure it must be a powerful force.”
 Once it's complete, people's lives will become even richer.”
 
 @28505 Dorothy · ドロシー
+# 审校：Dorothy 的 voice 为华丽正式口吻，I'm 和 don't 应改为 I am 和 do not 以保持其庄重语气。
 > 「ええ、そうでしょうとも。あら、
 >  お連れの方はボディーガードかしら?
-“Yes, I'm sure of it. Oh, are those companions of yours bodyguards?
+“Yes, I am sure of it. Oh, are those companions of yours bodyguards?
 ---
 >  ふふふ、失礼ですけど、
 >  科学者には見えませんわね」
-Heh heh, forgive me, but they don't look like scientists.”
+Heh heh, forgive me, but they do not look like scientists.”
 
 @28506 Relena · リリーナ
 > 「アムロ・レイさんとエイジ・アスカさんです
@@ -102,13 +106,14 @@ Heh heh, forgive me, but they don't look like scientists.”
 Dorothy, if you like, shall I introduce you?”
 
 @28507 Dorothy · ドロシー
+# 审校：Dorothy 的 voice 为华丽正式口吻，it's 应改为 it is 以保持其庄重语气。
 > 「まあ、私を?
 >  フフフ、とても光栄ですけど
-“Oh my, me? Heh heh, it's a great honor, but
+“Oh my, me? Heh heh, it is a great honor, but
 ---
 >  今日はご遠慮させていただきますわ
 >  私などとお近づきになって
-I'll refrain today. If someone like me got close to them,
+I will refrain today. If someone like me got close to them,
 ---
 >  大事なお仕事の邪魔になっては
 >  大変ですもの
@@ -181,10 +186,10 @@ has no weapons.”
 “Does Miss Relena still not know about this?”
 
 @28514 Noin · ノイン
-# 审校：原文“そう明な方”应为“聡明な方”，初稿已按 perceptive 处理，无需修改。
+# 审校：补全整条台词的外层引号
 > 「……お気づきにはなって
 >  いないように思います。ですが
-“...I don't believe she has noticed. But
+“...I do not believe she has noticed. But
 ---
 >  あのようにそう明な方ですから……。
 >  万一の時には、私がいっさいの
@@ -290,13 +295,14 @@ Especially Koji...”
 “How are things on your end, Tubarov?”
 
 @28528 Tubarov · ツバロフ
+# 审校：茨巴罗夫对公爵说话应使用更正式、恭敬的语气，原文「ございません」体现敬语，现有译文过于平淡。
 > 「は、MDプラントは計画通り
 >  動いております。ムゲ帝国めの
 “Yes, the MD plant is operating as planned. There are no signs of
 ---
 >  反抗の気配もございません。
 >  宇宙は全て、順調です」
-resistance from the Muge Empire. Everything in space is going smoothly.”
+resistance from the Muge Empire. Everything in space is proceeding smoothly.”
 
 @28529 Dermail · デルマイユ
 > 「そうか。引き続き計画を進めよ。
@@ -316,8 +322,9 @@ the Asteroid Belt can proceed as scheduled, yes?”
 the Muge Empire is nothing to fear.”
 
 @28531 Dermail · デルマイユ
+# 审校：迪鲁马尤公爵对下属说话应更正式，原文「では通信を終わる」是上级对下级的口吻，现有译文过于随意。
 > 「よろしい。では通信を終わる」
-“Good. Then I'll end the transmission.”
+“Good. Then I shall end the transmission.”
 
 @28532 Jamitov · ジャミトフ
 > 「順調のようだな」
@@ -528,7 +535,7 @@ the Sanc Kingdom!”
 “How convenient. Prepare for an all-out attack at once!”
 
 @28558 Dark General · 暗黒大将軍
-# 审校：“...Wait.” 可接受，无需修改。
+# 审校：补全整条台词的外层引号
 > 「……待て」
 “...Wait.”
 
@@ -807,10 +814,10 @@ Once they start up, they'll be blown to bits...”
 “Who goes there?!”
 
 @28602 Judau · ジュドー
-# 审校：ジュドー对ヤヌス侯爵说话，侯爵为男性，初稿用 lady 错误，改为 mister。
+# 审校：精读：お姉さん
 > 「やっ、やあ、どーも。
 >  お姉さんもMSかっぱらいに来たの?」
-“H-hey, hello there. Did you come to swipe an MS too, mister?”
+“H-hey, hello there. Did you come to swipe an MS too, miss?”
 
 @28603 Marquis Janus · ヤヌス侯爵
 > 「人間どもか! おのれ、見られたから
@@ -892,9 +899,11 @@ planted something on the red one and the black one over there, so watch out!”
 “W-what?! Hey, wait, won't you wait!!”
 
 @28617 Pagan · パーガン
+# 审校：说话人是管家帕根，对莉莉娜的称呼应为“my lady”，而非直呼其名。
+# 检查提示：未用必用译名：リリーナ→Relena
 > 「リリーナ様、
 >  大変なことが起こりました」
-“Lady Relena, something terrible has happened.”
+“My lady, something terrible has happened.”
 
 @28618 Relena · リリーナ
 > 「パーガン、何ごとです?
@@ -1115,8 +1124,9 @@ It was the work of those intruders from earlier.”
 All right, let's give fighting a try!”
 
 @28654 Elle · エル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ジュドー、やっちゃって!」
-“Judau, go get 'em!”
+“Judau, go get ’em!”
 
 @28655 Dorothy · ドロシー
 > 「さすがですわリリーナ様、
@@ -1193,9 +1203,10 @@ coming along with those monsters.”
 “{HeroName} isn't even out here?! Then there's no point in this!”
 
 @28668 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：拖长音
 > 「ぐぅっ!?
 >  ばかなばかなばかなぁぁぁぁーっ!!」
-“Gah?! Impossible, impossible, impossible!!”
+“Gah?! Impossible, impossible, impossibleeeee!!”
 
 @28669 Brad · ブラッド（按段落 3DD3）
 > 「{PartnerName}……お前はいつまで……」
@@ -1446,9 +1457,11 @@ by no means small either. If the Imperial forces were to return
 in large numbers, then perhaps things would not go as they did this time...”
 
 @28698 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「バスク特佐、MDはまさにそのために
 >  あるのだ。最も合理的な兵士
-“Major Bask, that is precisely what the MDs are for. They are the most rational soldiers,
+“Special Colonel Bask, that is precisely what the MDs are for. They are the most rational soldiers,
 ---
 >  失ってもまた生産できる兵士なの
 >  だからな。もうしばらく時間があれば
@@ -1572,9 +1585,10 @@ The Asteroid Base was destroyed, and Commander Shapiro was killed in action...�
 “You've gotta be kidding me...”
 
 @28719 Hayato · ハヤト
+# 审校：精读：省略号空格
 > 「喜んでいいもの……なんだろうな。
 >  やれやれ
-“I wonder if we should really be happy...about this. Good grief,
+“I wonder if we should really be happy... about this. Good grief,
 ---
 >  複雑な気分とはこのことだ」
 this is what they mean by mixed feelings.”

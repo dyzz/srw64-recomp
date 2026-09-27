@@ -150,9 +150,10 @@ meet again like that... But my master is...)
 “You lot over there, why don't you come here and talk?”
 
 @22597 Roux · ルー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ワッ! あ、いえ、あたしたちはこれで
 >  失礼しますーっ」
-“Wah! Oh, no, we'll be going now—!”
+“Wah! Oh, no, we'll be going now...!”
 
 @22598 Roux · ルー
 # 审校：原文“もーしっかりバレてたんじゃないの!”是露的内心吐槽，初稿“(Geez, we got totally caught!)”已可，但“もー”的拖长语气未体现，改为“(Geez, we totally got caught!)”并保留原意。
@@ -442,9 +443,10 @@ was arranged by your Master!”
 “What are you saying, Rain? There's no way my Master would do something like that.”
 
 @22656 Master · マスター
+# 审校：Master 的 voice 要求无缩写、古雅腔调，原文「まぁだ気づかんのか」的拖长音与古风否定在译文中未体现，改为“Have you still not realized”并去掉缩写。
 > 「このバカ者が! このワシの正体に
 >  まぁだ気づかんのか!!」
-“You fool! Can you still not realize who I truly am?!”
+“You fool! Have you still not realized who I truly am?!”
 
 @22657 Domon · ドモン
 > 「師匠……? ……そ、そんな、ウソだ。
@@ -455,9 +457,11 @@ was arranged by your Master!”
 Dark Gundam?!”
 
 @22658 Master · マスター
+# 审校：Master 的 voice 要求无缩写、古雅腔调，原文多处「〜なかろう」「〜か、ドモン?」的庄重语气在译文中用了缩写，改为无缩写形式。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「驚くのも無理はなかろう。
 >  信じられぬのも無理はなかろう
-“It's no wonder you're shocked. It's no wonder you can't believe it.
+“It is no wonder you are shocked. It is no wonder you cannot believe it.
 ---
 >  だが、これは事実だ
 But this is the truth.
@@ -529,9 +533,10 @@ Become strong.”
 “Th-that's wrong! My Master is not a man who would do this!!”
 
 @22666 Master · マスター
+# 审校：Master Asia 的宗师口吻应更豪迈，原文「このバカ弟子がぁぁーっ!」的怒吼和拖长音在译文中体现不足。
 > 「このバカ弟子がぁぁーっ!
 >  まぁだわからんのかぁ!!」
-“You stupid apprentice of mine! Do you still not understand?!”
+“You fool of a pupil! Do you still not understand?!”
 
 @22667 Bright · ブライト
 > 「何がどうなっているんだ……」
@@ -566,13 +571,15 @@ station as a martial artist, this kind of destruction is unforgivable.”
 “You're... the Shuffle Alliance?! Please wait!!”
 
 @22673 Joker · ジョーカー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモンよ、マスターアジアは
 >  シャッフル同盟の使命を忘れ
 “Domon, Master Asia forgot the mission of the Shuffle Alliance
 ---
 >  デビルガンダムにその身をゆだねた
 >  反逆者。そのために我が同盟も
-and gave himself over to the Dark Gundam—a traitor. Because of that, I am
+and gave himself over to the Dark Gundam... a traitor. Because of that, I am
 ---
 >  私が最後の1人となってしまった
 >  のです。マスターアジアは抹殺せねば
@@ -580,7 +587,7 @@ the last remaining member of our Alliance. Master Asia must be eliminated.
 ---
 >  なりません。それが歴史上のありと
 >  あらゆる戦いを監視し続け
-That is what we Shuffle warriors must do—we who have watched over
+That is what we Shuffle warriors must do... we who have watched over
 ---
 >  人類の破滅を防いできた、我ら
 >  シャッフルの戦士のなさねばならぬこと」
@@ -603,13 +610,13 @@ Eliminate me, is it?!”
 I will have you pay with your life!”
 
 @22676 Master · マスター
-# 机翻疑问：新译名：東方不敗=Toho Fuhai
+# 审校：精读：東方不敗 英文统一；頭をはった
 > 「それが貴様らの頭をはった、
 >  もとキング・オブ・ハート
-“So that is what you lot, led by the former King of Hearts,
+“So that is what you lot, whose head was the former King of Hearts,
 ---
 >  東方不敗にいうことか!」
-Toho Fuhai, have to say!”
+the Undefeated of the East, have to say!”
 
 @22677 Domon · ドモン
 > 「そ、そんな……師匠が敵だった
@@ -635,9 +642,10 @@ Toho Fuhai, have to say!”
 and then I'll take my time making you my ally.”
 
 @22681 George · ジョルジュ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「フフフ。歴戦の勇士のほまれ高い
 >  彼らなら、相手にとって
-“Heh heh. If it's them—warriors famed through countless battles—they'll make
+“Heh heh. If it's them... warriors famed through countless battles... they'll make
 ---
 >  不足はありません」
 more than worthy opponents.”
@@ -885,8 +893,9 @@ Hahahahahaha!”
 “W...wait!!”
 
 @22726 Master · マスター
+# 审校：Master Asia 的台词应无缩写，且语气更庄重。
 > 「ドモンよ、ワシはあきらめんぞ」
-“Domon, I will not give up.”
+“Domon, I shall not give up.”
 
 @22727 Schwarz · シュバルツ
 > 「どうやら逃げたようだな。では私も
@@ -927,8 +936,9 @@ Hahahahahaha!”
 “W...wait!!”
 
 @22734 Master · マスター
+# 审校：同上，保持宗师口吻，不用缩写。
 > 「ドモンよ、ワシはあきらめんぞ」
-“Domon, I will not give up.”
+“Domon, I shall not give up.”
 
 @22735 Schwarz · シュバルツ
 > 「どうやら逃げたようだな。では私も
@@ -969,8 +979,9 @@ Hahahahahaha!”
 “W...wait!!”
 
 @22742 Master · マスター
+# 审校：同上，保持宗师口吻，不用缩写。
 > 「ドモンよ、ワシはあきらめんぞ」
-“Domon, I will not give up.”
+“Domon, I shall not give up.”
 
 @22743 Schwarz · シュバルツ
 > 「どうやら逃げたようだな。では私も
@@ -1149,9 +1160,10 @@ we were fighting the Empire to begin with anyway.”
 “Yeah, you're welcome. What about you, Chibodee Crocket?”
 
 @22776 Bunny · バニー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「チボデー、あたしたちも一緒にいこうよ
 >  あたしたちみんな、この人たちに
-“Chibodee, let's go with them too. All of us—
+“Chibodee, let's go with them too. All of us...
 ---
 >  助けられたんだもん」
 we were saved by these people, after all.”
@@ -1200,9 +1212,10 @@ a shock to him. Best to leave him alone for a while.”
 “What is it, Sara?”
 
 @22784 Shinobu · 忍
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「さぁな。あいつが、あんなツラしてるときは
 >  あんま近寄らないほうがいいってのは
-“Who knows. But one thing's for sure—when she's got a face like that, it's best not to get too close.
+“Who knows. But one thing's for sure... when she's got a face like that, it's best not to get too close.
 ---
 >  間違いないぜ。それよかお前いつまで
 >  そんな、かったりぃ呼び方してんだよ」
@@ -1268,12 +1281,14 @@ Well, no need for you to worry about her.”
 are different types, but Sara's a woman who can look after herself.”
 
 @22794 Selain · セレイン（按段落 3DD2）
+# 审校：用户确认：直引号→弯引号
 > 「意外はよけいだ」
-“'Surprisingly' is uncalled for.”
+“‘Surprisingly’ is uncalled for.”
 
 @22795 Manami · マナミ（按段落 3DD4）
+# 审校：原译把“沙羅”当作呼语，但原文是自言自语式的陈述，应改为自然陈述句。
 > 「……沙羅、どうしたのかしら」
-“...Sara, what's the matter, I wonder.”
+“...I wonder what's the matter with Sara.”
 
 @22796 Shinobu · 忍
 > 「どうもしやしねぇよ。
@@ -1324,9 +1339,10 @@ Even if there's a problem, she can handle it herself.”
 “You mean Shot Weapon?”
 
 @22804 Sara · 沙羅
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうじゃないよ。ショウが前にいってた、
 >  地上の軍関係者ってやつ」
-“Not him. The one Show mentioned before—that military man from the surface.”
+“Not him. The one Show mentioned before... that military man from the surface.”
 
 @22805 Marvel · マーベル
 > 「なんのこと?」
@@ -1396,13 +1412,14 @@ bothered me, so that much I remember clearly. Why do you have his photo, Sara?�
 here? Shapiro... just what are you trying to do?)
 
 @22816 Shot · ショット
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「遅くなりました、ドレイクさま。地上
 >  に出たときには、いまだスプリガンは
 “Forgive my lateness, Lord Drake. By the time I reached the surface, the Spriggan was still
 ---
 >  完成しておらず、また帝国軍とも
 >  交戦がありましたもので……」
-incomplete, and we also had a skirmish with the imperial forces...”
+incomplete, and we also had a skirmish with the Imperial forces...”
 
 @22817 Drake · ドレイク
 > 「今頃のこのこ出てきた言い訳が
@@ -1421,18 +1438,20 @@ Your strength is needed as well.”
 “Understood.”
 
 @22819 Shapiro · シャピロ
+# 审校：原文「あてにしたかいもある」是“值得指望”之意，现有译文“that is exactly why we placed our hopes in you”语气稍弱，改为更贴合夏比罗自负口吻的“it was worth placing our hopes in you”。
 > 「それでこそショット殿をあてにしたかいも
 >  あるというものですな」
-“And that is exactly why we placed our hopes in you, Lord Shot.”
+“And that is exactly why it was worth placing our hopes in you, Lord Shot.”
 
 @22820 Shot · ショット
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「シャピロ殿か。さすがに帝国軍との
 >  交渉はお見事でしたな。しかし
-“Lord Shapiro. Your negotiations with the imperial army were truly splendid. However,
+“Lord Shapiro. Your negotiations with the Imperial army were truly splendid. However,
 ---
 >  ル・カイン閣下がなくなられては
 >  少々動きづらいのではないですかな?」
-with Lord Le Cain gone, are things not a little harder to move forward?”
+with His Excellency Le Cain gone, are things not a little harder to move forward?”
 
 @22821 Shapiro · シャピロ
 > 「それは問題ありません。逆にあの男
@@ -1485,13 +1504,14 @@ of a martial artist through harsh training...?)
 “But...”
 
 @22829 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：布拉德口吻用缩约
 > 「俺にはあいつが、どれほどのショックを
 >  受けたか、よくわかる。だが、それは
-“I know all too well how much of a shock this was to him. But that is
+“I know all too well how much of a shock this was to him. But that's
 ---
 >  あいつ自身が自分で乗り越え
 >  なければならない問題だ。俺たちに
-a problem he has to overcome on his own. There is nothing
+a problem he's gotta overcome on his own. There's nothing
 ---
 >  してやれることは、今は何もないんだ」
 we can do for him right now.”

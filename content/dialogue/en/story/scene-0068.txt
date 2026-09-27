@@ -38,9 +38,10 @@ After that, nothing... They were wiped out.”
 “Wiped out... Tubarov, did you not assign them an escort?”
 
 @29302 Tubarov · ツバロフ
+# 审校：Tubarov 对 Jamitov 用敬体，原文无呼语，去掉自行添加的 sir。
 > 「とんでもない。第二次偵察の
 >  際には、MD輸送艦からなる
-“Certainly not, sir. For the second reconnaissance, I had three companies of MD transport ships accompany them.
+“Certainly not. For the second reconnaissance, I had three companies of MD transport ships accompany them.
 ---
 >  3個中隊を同行させて
 >  おりました。正直、敵がこんなに……」
@@ -82,6 +83,7 @@ Tubarov, step up MD production.
 Throw the colony laborers into it until they drop.”
 
 @29307 Tubarov · ツバロフ
+# 审校：原文无呼语，去掉句末自行添加的 sir。
 > 「は、了解いたしました。なお、
 >  偵察隊の最後の通信では
 “Yes, understood. Also, in the reconnaissance unit's final transmission,
@@ -91,7 +93,7 @@ Throw the colony laborers into it until they drop.”
 the enemy identified themselves as the Galactic Empire's
 ---
 >  名のったよしにございます」
-advance fleet, sir.”
+advance fleet.”
 
 @29308 Dermail · デルマイユ
 > 「銀河帝国軍……
@@ -216,9 +218,10 @@ Even Jamitov surely never factored that in.”
 “...Yeah...”
 
 @29326 Dermail · デルマイユ
+# 审校：迪鲁马尤公爵口吻应更傲慢古雅，how about it 过于随意。
 > 「リリーナ嬢、いかがです。
 >  ご決心はつきましたかな?」
-“Miss Relena, how about it? Have you made up your mind?”
+“Miss Relena, how say you? Have you made up your mind?”
 
 @29327 Relena · リリーナ
 > 「デルマイユ公、何度聞かれても
@@ -230,13 +233,14 @@ Even Jamitov surely never factored that in.”
 I have no intention of becoming the Foundation's representative.”
 
 @29328 Dermail · デルマイユ
+# 审校：公爵语气应更庄重，it's fine 和 right now 偏口语。
 > 「強情なお方だ。
 >  なるほど、かつての支持者に
-“What a stubborn young lady. I see, it's fine that you keep faith with
+“What a stubborn young lady. Indeed, it is admirable that you keep faith with
 ---
 >  義理立てなさるのは結構だ。
 >  ですが、いま地球は
-your former supporters. But right now, the Earth faces
+your former supporters. But at present, the Earth faces
 ---
 >  かつてなかった危機に
 >  直面しているのですぞ」
@@ -252,9 +256,10 @@ a crisis unlike any before.”
 If you would stop fighting, everything would be resolved.”
 
 @29330 Dermail · デルマイユ
+# 审校：Unfortunately 与公爵的庄重口吻略不符，改为 Regrettably 更合贵族腔调。
 > 「残念ながら、それは昨日までの
 >  話ですな。外部にはふせてあるが
-“Unfortunately, that was true only until yesterday. We've kept it from the public, but
+“Regrettably, that was true only until yesterday. We have kept it from the public, but
 ---
 >  実は外宇宙から新たなる
 >  侵略者が現れたのです」
@@ -282,6 +287,7 @@ If you doubt me, you're welcome to confirm it in the observation room.”
 “...I can't believe it... How awful...”
 
 @29334 Dermail · デルマイユ
+# 审校：精读：拼写
 > 「リリーナ嬢、地球は
 >  ひとつにならなければならない
 “Miss Relena, the Earth must be united.
@@ -375,6 +381,7 @@ than even the Muge Zorbados Empire. Mars, destroy the Earth.”
 destroy the Earth? That's insane!”
 
 @29347 Emperor Zuul · ズール皇帝
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「お前はギシン星人だ。
 >  地球破壊のカギは
 “You are a Gishin. The key to destroying the Earth
@@ -560,6 +567,7 @@ They threw in all their remaining forces and started building something huge.”
 “Something huge?! What is it?!”
 
 @29377 Jun · ジュン
+# 审校：精读：去破折号
 > 「移動要塞よ。とてつもなく
 >  大きい……。その移動要塞は
 “A mobile fortress. An enormous one... Once that mobile fortress is
@@ -570,7 +578,7 @@ completed, they say it'll be able to move freely through the deep sea, undergrou
 ---
 >  あらゆる場所を自在に
 >  移動できるものになるというわ」
-through magma, and even into space — anywhere at all.”
+through magma, and even into space. Anywhere at all.”
 
 @29378 Benkei · ベンケイ
 > 「何だって!? おいおい、

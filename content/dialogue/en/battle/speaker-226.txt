@@ -1,88 +1,158 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10756 Deune · デューン
+# 触发：攻击（通用，1/6）
+# 审校：补引号
 > 「敵を倒せば、言いよる女も
 >  増えるってもんだぜ」
 “Take down the enemy, and the ladies come flocking.”
 
 @10757 Deune · デューン
+# 触发：攻击（通用，2/6）
+# 审校：补引号
 > 「そらっ!」
 “There!”
 
 @10758 Deune · デューン
+# 触发：攻击（通用，3/6）
+# 审校：补引号
 > 「逃がしはせんぞ!」
-“I won't let you get away!”
+“I won’t let you get away!”
 
 @10759 Deune · デューン
+# 触发：攻击（通用，4/6）
+# 审校：落ちろ统一为坠落
 > 「落ちろ!」
-“Fall!”
+“Go down!”
 
 @10760 Deune · デューン
+# 触发：攻击（通用，5/6）
+# 审校：补引号
 > 「俺たちにかかれば!」
 “With us on the job!”
 
 @10761 Deune · デューン
+# 触发：攻击（通用，6/6）
+# 审校：补引号
 > 「このスピードならば!」
 “At this speed!”
 
 @10762 Deune · デューン
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ば、ばかなぁぁぁーっ!!」
-“I-impossiblllle!”
+“I-impossiblllle!!”
 
 @10763 Deune · デューン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわぁっ! こ、こんなことが……!」
-“Whoa! Th-this can't be...!”
+“Whoa! Th-this can’t be...!”
 
 @10764 Deune · デューン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そ、そんなばかなことがっ!?」
-“Th-that's impossible!”
+“Th-that’s impossible?!”
 
 @10765 Deune · デューン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もたないというのか!?」
-“W-we can't hold out?!”
+“W-we can’t hold out?!”
 
 @10766 Deune · デューン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：ええい译可恶
 > 「ぐぅっ! ええい、まぐれだ!」
-“Guh! Tch, just a fluke!”
+“Guh! Damn it, just a fluke!”
 
 @10767 Deune · デューン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：补引号
 > 「なにっ直撃だと!? だがっ!」
 “What, a direct hit?! But still!”
 
 @10768 Deune · デューン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：更自然
 > 「くっ! なかなかやるっ!」
-“Ngh! You're pretty good!”
+“Ngh! You’re pretty good!”
 
 @10769 Deune · デューン
-# 审校：“I'll praise you”过于直译，改为更自然的“give you credit”。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：补引号
 > 「よくあてたとほめてやろう」
-“I'll give you credit for landing that.”
+“I’ll give you credit for landing that.”
 
 @10770 Deune · デューン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：补引号
 > 「あたった!? この俺がか!」
 “It hit?! Me?!”
 
 @10771 Deune · デューン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：补引号
 > 「くっあてられたのか!?」
 “Ngh, I got hit?!”
 
 @10772 Deune · デューン
+# 触发：回避（通用，1/2）
+# 审校：补主语
 > 「フン、こいつにくらべれば遅すぎるぜ」
-“Hmph, compared to this one you're way too slow.”
+“Hmph, compared to this one you’re way too slow.”
 
 @10773 Deune · デューン
+# 触发：回避（通用，2/2）
+# 审校：补引号
 > 「このスピードからかわせる!」
 “I can dodge at this speed!”
 
 @10774 Deune · デューン
-# 审校：与L38保持一致。
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：补引号
 > 「よくあてたとほめてやろう」
-“I'll give you credit for landing that.”
+“I’ll give you credit for landing that.”
 
 @10775 Deune · デューン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：补引号
 > 「弾切れだとぉ!?」
 “Out of ammo?!”
 
 @10776 Deune · デューン
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：补引号
 > 「届かないだと!?」
-“Can't reach?!”
+“Can’t reach?!”
+
+@16338 Deune · デューン
+# 触发：攻击，乘坐〈ジャムル・フィン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ジャムルフィンのスピードはダテじゃ
+>  ないぜ!」
+“The Jamru Fin’s speed is no joke!”
+
+@16339 Danny · ダニー
+# 触发：使用〈3D〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D’s trinity attack!”
+
+@16340 Dale · デル
+# 触发：使用〈3D〉（对话第 2/3 句）
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16341 Deune · デューン
+# 触发：使用〈3D〉（对话第 3/3 句）
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”
+
+@16342 Deune · デューン
+# 触发：射程外，无法反击，乘坐〈ジャムル・フィン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このジャムルフィンでも届かないだと!?」
+“Even this Jamru Fin can’t reach?!”

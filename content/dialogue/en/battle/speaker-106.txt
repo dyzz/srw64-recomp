@@ -1,73 +1,94 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6906 Walker · ワーカー
+# 触发：攻击（通用，1/5）
 > 「いくぞ!」
 “Here I go!”
 
 @6907 Walker · ワーカー
+# 触发：攻击（通用，2/5）
 > 「ただちに攻撃にでる!」
 “Commencing attack immediately!”
 
 @6908 Walker · ワーカー
+# 触发：攻击（通用，3/5）
+# 审校：かまわん更干脆
 > 「動きが速いが……かまわん!」
-“It's fast... but I don't care!”
+“It’s fast... no matter!”
 
 @6909 Walker · ワーカー
+# 触发：攻击（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここでミスをおかすわけには!」
-“I can't afford to make a mistake here!”
+“I can’t afford to make a mistake here!”
 
 @6910 Walker · ワーカー
+# 触发：攻击（通用，5/5）
 > 「こい!」
 “Come on!”
 
 @6911 Walker · ワーカー
+# 触发：被击坠（通用，1/2）
 > 「うおおぉぉぉっ!?」
 “Uwooooh?!”
 
 @6912 Walker · ワーカー
+# 触发：被击坠（通用，2/2）
 > 「くっ……だがデータは取ることが
 >  できたか……」
 “Ngh... but at least we got the data...”
 
 @6913 Walker · ワーカー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「ぐ、この武器の力も見て
 >  おきたかった……」
 “Guh, I wanted to see what this weapon could do too...”
 
 @6914 Walker · ワーカー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「おおぉぉぉぉぉーっ!」
 “Oooooooh!”
 
 @6915 Walker · ワーカー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/2）
 > 「ぐぅ、記録班! データは取って
 >  いるか!?」
 “Guh, Recording Team! Are you getting the data?!”
 
 @6916 Walker · ワーカー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/2）
 > 「さ、さすがに……」
 “Th-this is just too much...”
 
 @6917 Walker · ワーカー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「本当にこの程度なら楽だが……」
-“If it's really only this much, it's easy, but...”
+“If it’s really only this much, it’s easy, but...”
 
 @6918 Walker · ワーカー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おかしい、こんなものではないはずだ……」
-“Strange, it shouldn't be like this...”
+“Strange, it shouldn’t be like this...”
 
 @6919 Walker · ワーカー
+# 触发：回避（通用，1/1）
 > 「か、かわせたのか!?」
 “D-did I dodge it?!”
 
 @6920 Walker · ワーカー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「か、かわせたのか!?」
 “D-did I dodge it?!”
 
 @6921 Walker · ワーカー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「くっ、こんなときに弾切れとは!」
 “Ngh, out of ammo at a time like this?!”
 
 @6922 Walker · ワーカー
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ、この射程距離……
 >  他の武器は……!?」
 “Ngh, this range... what about my other weapons...?!”

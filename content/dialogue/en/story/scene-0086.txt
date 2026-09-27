@@ -6,13 +6,14 @@
 “So, what did Haman have to say?”
 
 @41757 Alan · アラン
+# 审校：全局：Zuul 拼写
 > 「ハマーンの作戦がうまく運べば、
 >  敵の艦隊はいくつかに分断され
 “If Haman's plan goes well, the enemy fleet will be split into several groups,
 ---
 >  ズールがいると思われる艦隊の守り
 >  が手うすになる。そこを突くとのことだ」
-and the fleet we believe Zuhl is in will be left thinly guarded. We strike there, she says.”
+and the fleet we believe Zuul is in will be left thinly guarded. We strike there, she says.”
 
 @41758 Daisuke · 大介
 > 「しかし、そううまくいくのだろうか?」
@@ -24,6 +25,7 @@ and the fleet we believe Zuhl is in will be left thinly guarded. We strike there
 “Hard to say... We have no choice but to trust her. So, what's our role?”
 
 @41760 Alan · アラン
+# 审校：全局：Zuul 拼写
 > 「分断された敵艦隊を突破し、
 >  敵中央へ進軍する
 “Break through the divided enemy fleet and advance into the enemy's center.
@@ -33,12 +35,13 @@ and the fleet we believe Zuhl is in will be left thinly guarded. We strike there
 According to Haman, by that point we should be able to identify
 ---
 >  特定できるだろうとのことだ」
-the fleet Zuhl is believed to be in.”
+the fleet Zuul is believed to be in.”
 
 @41761 Amuro · アムロ
+# 审校：全局：Zuul 拼写
 > 「ずいぶん無茶な作戦だな。ズールが
 >  いる艦隊が特定できなければ
-“That's a pretty reckless plan. If we can't identify the fleet Zuhl is in,
+“That's a pretty reckless plan. If we can't identify the fleet Zuul is in,
 ---
 >  我々も逆に敵に包囲される
 >  可能性があるぞ」
@@ -63,9 +66,10 @@ we have to take that much of a risk.”
 “Besides, there's no point arguing yes or no at this stage. We just have to do it.”
 
 @41765 Daisuke · 大介
+# 审校：全局：Zuul 拼写
 > 「うむ、僕もそう思う。それに
 >  一刻も早くズールを倒さなくては
-“Indeed, I feel the same. And the sooner we defeat Zuhl,
+“Indeed, I feel the same. And the sooner we defeat Zuul,
 ---
 >  無駄な犠牲が増えるばかりだ」
 the fewer pointless sacrifices there will be.”
@@ -80,8 +84,9 @@ the fewer pointless sacrifices there will be.”
 “In six hours.”
 
 @41768 Shinobu · 忍
+# 审校：精读：措辞
 > 「なんだよ、もう余裕がないじゃねぇか」
-“What? There's no time to spare at all.”
+“What? That's barely any time at all!”
 
 @41769 Amuro · アムロ
 > 「そうだな……交代で
@@ -203,8 +208,9 @@ a machine for Newtypes.”
 It's not just Ple, is it?”
 
 @41788 Glemy · グレミー
+# 审校：精读：措辞
 > 「……それはくちさがない連中の噂です」
-“...That's just the rumor of loose-lipped gossips.”
+“...That's just idle gossip from loose-lipped fools.”
 
 @41789 Haman · ハマーン
 > 「隠さずともよい。
@@ -380,9 +386,10 @@ Just let us land already, {HeroMech}!
 It's not like we're doing this because we want to!”
 
 @41816 Garrison · ギャリソン
+# 审校：管家口吻应更正式，避免缩写，且原文“わけにはまいりますまい”语气更庄重。
 > 「艦長、ここで問答をして時間を
 >  無駄にするわけにはまいりますまい」
-“Captain, this is no time to waste on a debate.”
+“Captain, we must not waste time on debate here.”
 
 @41817 Bright · ブライト
 > 「しかたがないか……わかった、
@@ -437,10 +444,10 @@ More importantly, you said your name's Roux, right?”
 “Young Master Glemy says hello.”
 
 @41826 Roux · ルー
-# 审校：「よろしくしてやんなきゃならない」不是“say hello”，而是“由我来关照/接待他”的意思，改为更贴切的表达。
+# 审校：精读：よろしくしてやる
 > 「はぁ? なんであたしが
 >  よろしくしてやんなきゃならないのよ」
-“Huh? Why do I have to be the one to welcome him?”
+“Huh? Why should I have to be nice to him?”
 
 @41827 Chara · キャラ
 > 「知らないよ。あたしは伝えてくれって
@@ -558,9 +565,10 @@ You're not just trying to make us do all the work, are you?”
 “Boy, are you trying to insult Lady Haman?!”
 
 @41846 Chara · キャラ
+# 审校：Chara's manic, cackling tone is slightly flattened; the revised line keeps her dismissive, impatient edge.
 > 「いいかげんにしな、マシュマー。
 >  話がちっとも進みゃしない」
-“Give it a rest, Mashymre. We're not getting anywhere.”
+“Give it a rest, Mashymre. We're getting nowhere.”
 
 @41847 Daisuke · 大介
 > 「ジュドーくんも、落ち着いてくれ」
@@ -629,9 +637,10 @@ If we waste time, Haman's plan to split the enemy will be wasted.”
 “Your Majesty!”
 
 @41858 Emperor Zuul · ズール皇帝
+# 审校：Emperor Zuul's voice requires no contractions and a grand, cold tone; the existing translation uses contractions, so they are removed.
 > 「うろたえるでない。このワシが負けるなど
 >  ありえんのだ。返り討ちにしてくれるわ」
-“Don't panic. There's no way I, of all people, could lose. I'll crush them all.”
+“Do not panic. There is no way I, of all people, could lose. I will crush them all.”
 
 @41859 Takeru · タケル
 > 「ズールだ! 間違いない。
@@ -731,12 +740,13 @@ and got himself brainwashed.”
 “Wufei! Stop this, Wufei!”
 
 @41878 Wufei · 五飛
+# 审校：精读：破折号
 > 「黙れ! 俺の敵は貴様らだ。
 >  貴様らを倒す
-“Silence! You are my enemies. Destroying you—
+“Silence! You are my enemies. I will destroy you.
 ---
 >  それが俺の正義だ!」
-that is my justice!”
+That is my justice!”
 
 @41879 Heero · ヒイロ
 > 「……五飛、自爆スイッチを押せ。
@@ -788,9 +798,10 @@ If you are truly in the right, then you should be able to defeat me!”
 “Y-you fiends... Uwooooooooh!!”
 
 @41889 Warchimedes · ワルキメデス
+# 审校：精读：脱出できんのか
 > 「おおぉぉっ!?
 >  だ、脱出できんのかぁっ!!」
-“Ooooh?! C-can I not escape?!”
+“Ooooh?! I-I can't get out?!”
 
 @41890 Dungele · ダンゲル
 > 「なんだと!? うおぉぉぉぉっ!
@@ -822,13 +833,14 @@ If you are truly in the right, then you should be able to defeat me!”
 “You insolent fools who know no fear! I'll make you learn the true extent of my power!!”
 
 @41896 Takeru · タケル
+# 审校：精读：破折号
 > 「ズール! 貴様はもう終わりだ。
 >  銀河帝国軍もいずれは
 “Zuul! You're finished. The Galactic Empire's forces will fall before long as well.
 ---
 >  敗退する。ギシン星にも、もどれない
 >  貴様はそれでも
-You can't even return to Planet Gishin—and even so,
+You can't even return to Planet Gishin, and even so,
 ---
 >  戦いをやめないというのか!?」
 you still won't stop fighting?!”
@@ -854,9 +866,10 @@ Wahahahahaha!!”
 “Did it... work?”
 
 @41900 Emperor Zuul · ズール皇帝
+# 审校：精读：破折号
 > 「ワーッハハハハッ!! ムダなことだ!
 >  しょせんムシケラにすぎぬお前たちに
-“Wahahahaha!! It's useless! You are nothing but insects—
+“Wahahahaha!! It's useless! You are nothing but insects,
 ---
 >  このワシを倒すことなどできん!」
 you could never hope to defeat me!”
@@ -867,13 +880,14 @@ you could never hope to defeat me!”
 “Ngh... is it no use...?! Can we truly not defeat Zuul?!”
 
 @41902 Marg · マーグ
+# 审校：精读：破折号
 > (マーズ……マーズよ。お前はいま、
 >  ズールを倒し、生き抜くことだけを
 (Mars... Mars, my boy. Right now, you think only of defeating Zuul and surviving.
 ---
 >  考えている。だが、生きるということは
 >  死を知るということ、命をかける
-But to live is to know death—it is to stake your life.
+But to live is to know death. It is to stake your life.
 ---
 >  ということなのだ。マーズ、
 >  広大無辺の宇宙のために戦え
@@ -884,6 +898,7 @@ Mars, fight for the vast and boundless universe.
 Stake your life on it. Only then will a miracle occur!)
 
 @41903 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「マーグ……兄さん!? いや……
 >  それだけではない……まさか、父か!?
 “Marg... brother?! No... that's not all... could it be, Father?!
@@ -901,20 +916,22 @@ With Gaia's antiproton bomb, even Zuul should...”
 “What is it? What do you intend to do, Mars?!”
 
 @41905 Takeru · タケル
+# 审校：精读：破折号
 > 「ズール、いかにお前でも、
 >  反陽子爆弾の爆発をくらって
-“Zuul, even for you—can you survive
+“Zuul, even for you, can you survive
 ---
 >  それでも生き延びられるか!?」
 the blast of an antiproton bomb?!”
 
 @41906 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝为冷酷威严的暴君，voice 要求无缩写，将 can't 改为 cannot，it's 改为 it is。
 > 「なに!? まさか貴様……
 >  やめろ、マーズ!
-“What?! You can't mean... Stop it, Mars!
+“What?! You cannot mean... Stop it, Mars!
 ---
 >  そんなことをしても無駄だ!!」
-Even if you do this, it's useless!!”
+Even if you do this, it is useless!!”
 
 @41907 Takeru · タケル
 > 「くっ……ズール!!
@@ -1004,13 +1021,14 @@ That will end it all!”
 “Did we do it...?”
 
 @41922 Emperor Zuul · ズール皇帝
+# 审校：精读：破折号
 > 「ワーッハハハハッ!! ムダなことだ!
 >  しょせんムシケラにすぎぬお前たちに
-“Wahahahaha!! It's useless! You're nothing but insects—
+“Wahahahaha!! It is useless! You are nothing but insects,
 ---
 >  このワシを倒すことなどできん!
 >  まだそれがわからぬようだな!」
-you can't possibly defeat me! You still don't understand that, do you!”
+you cannot possibly defeat me! You still do not understand that, do you!”
 
 @41923 Takeru · タケル
 > 「くっ……ダメなのか……!? オレたちでは
@@ -1056,8 +1074,9 @@ That will end it all!”
 “The remaining enemy forces have ceased combat.”
 
 @41929 Bright · ブライト
+# 审校：精读：措辞
 > 「終わったか……」
-“Is it over...”
+“It's over, then...”
 
 @41930 Beltorchika · ベルトーチカ
 > 「……艦長! 敵です!」
@@ -1068,8 +1087,9 @@ That will end it all!”
 “How persistent. They still intend to fight?!”
 
 @41932 Bright · ブライト
+# 审校：精读：甘かった
 > 「くっ、甘かったか……迎撃用意!」
-“Ngh, we were too soft... Prepare to intercept!”
+“Ngh, we let our guard down too soon... Prepare to intercept!”
 
 @41933 Bunny · バニー
 > 「艦長、通信入ります!」

@@ -6,9 +6,10 @@
 “So Le Cain's the new commander. Just what kind of man is he?”
 
 @18193 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 I've 改为 I have。
 > 「さて。個人情報は
 >  入ってきておりませんが……
-“Well now. I've received no personal information on him, but...
+“Well now. I have received no personal information on him, but...
 ---
 >  アラン様のお話ですと、我々に
 >  合流していただく方々が
@@ -128,8 +129,9 @@ None of us would be alive if it weren't for Eiji.”
 shall throw their blood-soaked bodies down at my feet.)
 
 @18212 Giura · ギウラ
+# 审校：精读：迎接上级到任的 ご苦労様です
 > 「ご苦労様です、ル・カイン閣下」
-“Thank you for your hard work, Your Excellency Le Cain.”
+“Welcome, Your Excellency Le Cain.”
 
 @18213 Le Cain · ル・カイン
 > 「そいつらか、
@@ -257,9 +259,10 @@ planning to raid it and set it up on purpose, right?
 This is clearly a challenge to us Earthlings.”
 
 @18231 Koji · 甲児
+# 审校：用户确认：直引号→弯引号
 > 「やれるもんなら、やってみろってわけか。
 >  っきしょう、なんて奴だ」
-“So it's a 'come at me if you can,' huh. Damn, what a guy.”
+“So it's a ‘come at me if you can,’ huh. Damn, what a guy.”
 
 @18232 Sayaka · さやか
 > 「それなら、やめておいたほうがいいわね」
@@ -288,13 +291,15 @@ This is clearly a challenge to us Earthlings.”
 or else...”
 
 @18237 Lawrence · ローレンス
+# 审校：ローレンス对シモーヌ说话，不应称“my lady”，且原文无呼语，去掉该称呼。
 > 「挑戦……でございますな」
-“A challenge... indeed, my lady.”
+“A challenge... indeed.”
 
 @18238 Manami · マナミ（按段落 3DD4）
+# 审校：用户确认：直引号→弯引号
 > 「そうね。やれるものならやってみろ、
 >  というわけね」
-“That's right. It's a 'come at us if you can,' isn't it.”
+“That's right. It's a ‘come at us if you can,’ isn't it.”
 
 @18239 Koji · 甲児
 > 「どうするんだ?
@@ -331,8 +336,9 @@ the blow dealt to the Empire will be immeasurable.”
 “We'll accept Le Cain's challenge. We're heading for the old New York area.”
 
 @18243 Garrison · ギャリソン
+# 审校：ギャリソン对レイカ说话，不应称“my lord”，且原文无呼语，去掉该称呼。
 > 「そろそろ時間でございますな」
-“It's about time, my lord.”
+“It is about time.”
 
 @18244 Banjo · 万丈
 > 「来たぞ。みんな、準備はいいな」
@@ -367,13 +373,13 @@ the blow dealt to the Empire will be immeasurable.”
 “That was far too easy. He really was bait.”
 
 @18251 Garrison · ギャリソン
-# 审校：ギャリソン是万丈的管家，称呼万丈应为“my lord”，原译误为“my lady”。
+# 审校：ギャリソン对ビューティ说话，不应称“my lord”，且原文无呼语，去掉该称呼。
 > 「そのようですな
-“So it seems, my lord.
+“So it seems.
 ---
 >  すっかり囲まれてしまって
 >  おりますぞ」
-We've been completely surrounded.”
+We have been completely surrounded.”
 
 @18252 Koji · 甲児
 > 「ちっ、うじゃうじゃいるぜ!?」
@@ -398,6 +404,7 @@ For mere Earthlings, you put on quite a clever act.
 But you will learn that foolishness firsthand.”
 
 @18255 Le Cain · ル・カイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地球人どもよ、聞け!
 >  私に立ち向かうことが、
 “Hear me, Earthlings! I will now show you
@@ -412,11 +419,11 @@ Do not defy us. The happiness of you Earthlings
 ---
 >  我々に支配されることにあるのだ。
 >  支配するものと、されるもの、
-lies in being ruled by us. The ruler and the ruled—
+lies in being ruled by us. The ruler and the ruled...
 ---
 >  およそ宇宙にはその原理しかない。
 >  よりよき支配、無垢なる従順
-in all the universe, there is no principle but that. Better rule, pure obedience—
+in all the universe, there is no principle but that. Better rule, pure obedience...
 ---
 >  これこそが理想なる世を
 >  現出するただ一つの真理だ」
@@ -453,8 +460,9 @@ we will surely crush the Empire's rule!”
 Then first, let me see it right here.”
 
 @18259 Eiji · エイジ
+# 审校：精读：是英二向卡拉巴道歉，中文方向反了
 > 「カラバの方、遅れてすまない」
-“Sorry I'm late, Karaba.”
+“Sorry we're late, Karaba.”
 
 @18260 Banjo · 万丈
 > 「いや、そう悪くないタイミングだ」
@@ -476,9 +484,10 @@ Then first, let me see it right here.”
 “Simone? I never thought you'd be with the resistance...”
 
 @18264 David · デビッド
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「シモーヌだって!?
 >  エイジだけじゃねぇ、俺もいるぜ!」
-“Simone?! It's not just Eiji—I'm here too!”
+“Simone?! It's not just Eiji... I'm here too!”
 
 @18265 Simone · シモーヌ
 > 「あらデビッド、よく生きてたわね」
@@ -562,12 +571,13 @@ and you still had the nerve to keep living, Eijiii.”
 “I...”
 
 @18277 Gosterro · ゴステロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「まぁいい、
 >  貴様はここで死ぬんだぁ
 “Ah, whatever. You're going to die here.
 ---
 >  ぐぅぅ、の、脳がいてぇ」
-Ghh, my—my brain hurts.”
+Ghh, my... my brain hurts.”
 
 @18278 Reika · レイカ
 # 审校：「なんて数なの!?」指敌人数量多，初稿直译成“这个数字是什么”不通顺，改为自然表达。
@@ -588,9 +598,10 @@ Ghh, my—my brain hurts.”
 Everyone, we're withdrawing!”
 
 @18281 Eiji · エイジ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ル・カイン、誇りのためだけに
 >  戦うこともできるのが
-“Le Cain, remember this well—Earthlings can also fight
+“Le Cain, remember this well... Earthlings can also fight
 ---
 >  地球人だということを、
 >  よく覚えておけ!」
@@ -606,13 +617,14 @@ for nothing but their pride!”
 I like it! Hahahahahaha!!”
 
 @18283 Le Cain · ル・カイン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「なに!? フッフフフフフ、
 >  なるほど口だけではないようだな
 “What?! Heh heh heh heh, I see, so you're not all talk after all.
 ---
 >  だがこの程度で帝国に
 >  逆らおうなど、片腹痛いわ」
-But to defy the Empire with only this much—how laughable.”
+But to defy the Empire with only this much... how laughable.”
 
 @18284 Reika · レイカ
 # 审校：同 L17，修正直译导致的生硬表达。
@@ -620,9 +632,10 @@ But to defy the Empire with only this much—how laughable.”
 “How many of them are there?!”
 
 @18285 Garrison · ギャリソン
+# 审校：管家口吻应更正式，将“won't do”改为“will not do”，并调整句式以符合无缩写、彬彬有礼的要求。
 > 「これはいけません。皆様方、
 >  ここは撤退いたしましょう」
-“This won't do. Everyone, we should retreat here.”
+“This will not do. Everyone, let us withdraw from here.”
 
 @18286 Banjo · 万丈
 > 「くっ、確かにここは
@@ -633,9 +646,10 @@ But to defy the Empire with only this much—how laughable.”
 Everyone, we're withdrawing!”
 
 @18287 Eiji · エイジ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ル・カイン、誇りのためだけに
 >  戦うこともできるのが
-“Le Cain, remember this well—Earthlings can also fight
+“Le Cain, remember this well... Earthlings can also fight
 ---
 >  地球人だということを、
 >  よく覚えておけ!」
@@ -684,9 +698,10 @@ I like it! Hahahahahaha!!”
 “I'm David Rutherford. Pleasure to meet you.”
 
 @18296 Anna · アンナ
+# 审校：精读：日式直译
 > 「お世話になります。
 >  アンナ・ステファニーです」
-“I'll be in your care. I'm Anna Stephanie.”
+“Thank you for having us. I'm Anna Stephanie.”
 
 @18297 Simone · シモーヌ
 > 「シモーヌ・ルフランよ。よろしく」
@@ -756,8 +771,9 @@ Let me thank you properly.”
 “I'm Anna Stephanie. It's a pleasure to meet you.”
 
 @18310 Banjo · 万丈
+# 审校：原文为“お嬢さん”而非“お嬢様”，对初次见面的年轻女性用“miss”更贴切，且符合万丈从容潇洒的口吻。
 > 「こちらこそ、お嬢さん」
-“The pleasure is mine, my lady.”
+“The pleasure is mine, miss.”
 
 @18311 Simone · シモーヌ
 > 「エイジ……顔さわらせて。
@@ -773,9 +789,10 @@ Let me thank you properly.”
 Ah... I'm sorry... no, I'm such a mess.”
 
 @18312 David · デビッド
+# 审校：精读：句意
 > 「あーあ、全然ちがうでやんの
 >  俺なんかいきなり、バシーッだもんな」
-“Aw, man, I'm totally different from him. I get a smackdown right off the bat.”
+“Aw, man, talk about different treatment. Me, I get a smack right off the bat.”
 
 @18313 Gresco · グレスコ
 > 「だいぶ派手に、やったそうだな?」
@@ -800,7 +817,7 @@ Ah... I'm sorry... no, I'm such a mess.”
 “Pointless slaughter and destruction will only turn the people against us.”
 
 @18318 Le Cain · ル・カイン
-# 审校：原文开头「……!?」在引号内，初稿漏掉引号，补上。
+# 审校：精读：英文缺引号
 > 「……!? 父上もかわられましたな。
 >  やはり3年も地球におられると、
 “...?! So you've changed too, Father. I suppose after three years on Earth,
@@ -852,9 +869,10 @@ That's why you called me here.
 “You called for me?”
 
 @18325 Treize · トレーズ
+# 审校：閣下 统一 His Excellency
 > 「レディ、ル・カイン閣下が
 >  就任されたことで
-“Lady, now that Lord Le Cain has taken office,
+“Lady, now that His Excellency Le Cain has taken office,
 ---
 >  我々はこれまで以上に
 >  動きやすくなる」

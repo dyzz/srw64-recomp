@@ -1,126 +1,167 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7606 Gale · ゲイル
+# 触发：攻击（通用，1/8）
 > 「そこをどけっ!!」
 “Out of my way!”
 
 @7607 Gale · ゲイル
+# 触发：攻击（通用，2/8）
 > 「容赦はしない!!」
 “No mercy!”
 
 @7608 Gale · ゲイル
+# 触发：攻击（通用，3/8）
 > 「覚悟を決めろ!!」
 “Prepare yourself!”
 
 @7609 Gale · ゲイル
+# 触发：攻击（通用，4/8）
 > 「さらばだっ!!」
 “Farewell!”
 
 @7610 Gale · ゲイル
+# 触发：攻击（通用，5/8）
 > 「許せっ!!」
 “Forgive me!”
 
 @7611 Gale · ゲイル
+# 触发：攻击（通用，6/8）
 > 「あまいなっ!」
 “Too naive!”
 
 @7612 Gale · ゲイル
+# 触发：攻击（通用，7/8）
 > 「運が悪かったな!」
 “Bad luck for you!”
 
 @7613 Gale · ゲイル
+# 触发：攻击（通用，8/8）
 > 「あまいぞっ! そこだっ!!」
 “Too naive! There!”
 
 @7614 Gale · ゲイル
+# 触发：被击坠（通用，1/3）
 > 「くっ……見事だ」
 “Ngh... Well done.”
 
 @7615 Gale · ゲイル
+# 触发：被击坠（通用，2/3）
 > 「うわぁぁぁぁぁっ!!」
 “Uwaaaaaaah!”
 
 @7616 Gale · ゲイル
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! な……なんだと!?」
-“Guh! W-What?!”
+“Guh! W-what?!”
 
 @7617 Gale · ゲイル
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ、私としたことが……!」
-“Guh, to think I'd slip up...!”
+“Guh, to think I’d slip up...!”
 
 @7618 Gale · ゲイル
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「おうわぁぁぁぁっ!!」
 “Owwaaaaaah!”
 
 @7619 Gale · ゲイル
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおぉぉ!? う、うかつだったか!?」
-“Uwooooh?! W-Was I careless?!”
+“Uwooooh?! W-was I careless?!”
 
 @7620 Gale · ゲイル
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「おおぉぉぉぉっ!」
 “Oooooooh!”
 
 @7621 Gale · ゲイル
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「おおっ!?」
 “Oh?!”
 
 @7622 Gale · ゲイル
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「くっ!!」
 “Ngh!”
 
 @7623 Gale · ゲイル
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「やるな!」
 “Not bad!”
 
 @7624 Gale · ゲイル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やはりその程度か!?」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @7625 Gale · ゲイル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「大したダメージではない!」
-“That's hardly any damage!”
+“That’s hardly any damage!”
 
 @7626 Gale · ゲイル
+# 触发：回避（通用，1/7）
 > 「あまいな!」
 “Too naive!”
 
 @7627 Gale · ゲイル
+# 触发：回避（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな腕でやられるような私でない」
-“I'm not the kind to be beaten by skill like that.”
+“I’m not the kind to be beaten by skill like that.”
 
 @7628 Gale · ゲイル
+# 触发：回避（通用，3/7）
 > 「遅すぎる!」
 “Too slow!”
 
 @7629 Gale · ゲイル
+# 触发：回避（通用，4/7）
 > 「本気を出せ!」
 “Show me your real strength!”
 
 @7630 Gale · ゲイル
+# 触发：回避（通用，5/7）
 > 「その程度で!」
 “With just that!”
 
 @7631 Gale · ゲイル
+# 触发：回避（通用，6/7）
 > 「遅い!」
 “Slow!”
 
 @7632 Gale · ゲイル
+# 触发：回避（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃で相手を倒せると
 >  思うな!」
-“Don't think an attack like that can beat your enemy!”
+“Don’t think an attack like that can beat your enemy!”
 
 @7633 Gale · ゲイル
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効きはせん!」
-“It won't work!”
+“It won’t work!”
 
 @7634 Gale · ゲイル
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ビームなど無駄だ!」
 “Beams are useless!”
 
 @7635 Gale · ゲイル
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, can’t fire?!”
 
 @7636 Gale · ゲイル
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれ、卑怯な!」
-“Curse you, that's cowardly!”
+“Curse you, that’s cowardly!”

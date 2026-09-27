@@ -1,168 +1,359 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12823 Chibodee · チボデー
+# 触发：攻击（通用，1/12）
 > 「いくぜぇっ!」
 “Here I go!”
 
 @12824 Chibodee · チボデー
+# 触发：攻击（通用，2/12）
 > 「うぉぉぉぉぉっ!」
 “Whooooa!!”
 
 @12825 Chibodee · チボデー
+# 触发：攻击（通用，3/12）
 > 「おらおらおらぁっ!」
 “Orararara!”
 
 @12826 Chibodee · チボデー
+# 触发：攻击（通用，4/12）
 > 「うらうらうらうらぁっ!」
 “Uraurauraura!”
 
 @12827 Chibodee · チボデー
+# 触发：攻击（通用，5/12）
 > 「くらいな!」
 “Take this!”
 
 @12828 Chibodee · チボデー
+# 触发：攻击（通用，6/12）
 > 「うおぅりゃぁぁぁぁっ!」
 “Woooryaaaah!!”
 
 @12829 Chibodee · チボデー
+# 触发：攻击（通用，7/12）
 > 「ちぇぁぁぁぁぁ!!」
 “Cheaaaaa!!”
 
 @12830 Chibodee · チボデー
+# 触发：攻击（通用，8/12）
 > 「でぇやぁぁぁ!!」
 “Deyaaaah!!”
 
 @12831 Chibodee · チボデー
+# 触发：攻击（通用，9/12）
 > 「とりゃとりゃとりゃとりゃぁぁ!!」
 “Toryatoryatorya!!”
 
 @12832 Chibodee · チボデー
+# 触发：攻击（通用，10/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「一発で決めてやるぜ」
-“I'll finish this in one shot.”
+“I’ll finish this in one shot.”
 
 @12833 Chibodee · チボデー
+# 触发：攻击（通用，11/12）
 > 「おおおぉぉぉぉぉ!」
 “Oooooooh!!”
 
 @12834 Chibodee · チボデー
-# 审校：「ウィナーは俺たちだぜ」意为“赢家是我们”，原译“The winner is us”语法不自然。
+# 触发：攻击（通用，12/12）
+# 审校：覚悟しな 口语；ウィナーは俺たち
 > 「覚悟しな! ウィナーは俺たちだぜ!」
-“Get ready! We're the winners!”
+“Get ready! The winners are gonna be us!”
 
 @12835 Chibodee · チボデー
+# 触发：被击坠（通用，1/4）
 > 「くっ負けちまったか……」
 “Ngh, I lost, huh...”
 
 @12836 Chibodee · チボデー
+# 触发：被击坠（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだとぉ!?」
-“W-What did you say?!”
+“W-what did you say?!”
 
 @12837 Chibodee · チボデー
+# 触发：被击坠（通用，3/4）
+# 审校：中文不夹英文句
 > 「オーマイガァッ!」
-“Oh my gaaah!”
+“Oh my Gooood!”
 
 @12838 Chibodee · チボデー
+# 触发：被击坠（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「シャリー、バニィ、キャス、ジャネット
 >  ……すまねぇ」
-“Shirley, Bunny, Cath, Janet... I'm sorry.”
+“Shirley, Bunny, Cath, Janet... I’m sorry.”
 
 @12839 Chibodee · チボデー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ!? 俺は夢……俺は希望!
 >  負けるわけにはっ!」
-“Guh?! I am a dream... I am hope! I can't afford to lose!”
+“Guh?! I am a dream... I am hope! I can’t afford to lose!”
 
 @12840 Chibodee · チボデー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 > 「ぐわぁぁ!?」
 “Guwaaah?!”
 
 @12841 Chibodee · チボデー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「うおぉぉっ!? くっそぅ!!」
 “Whoa?! Damn it!!”
 
 @12842 Chibodee · チボデー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「ノォゥッ、ノォゥッ!」
 “Nooo, nooo!”
 
 @12843 Chibodee · チボデー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐ、あぁぁぁぁぁ!!」
 “Guh, aaaaaah!!”
 
 @12844 Chibodee · チボデー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「くっ、やるじゃねぇか」
 “Ngh, not bad.”
 
 @12845 Chibodee · チボデー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「なにっ!?」
 “What?!”
 
 @12846 Chibodee · チボデー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なにぃ、力負けしているだとぅ!?」
-“W-What, I'm losing in a contest of strength?!”
+“W-what, I’m losing in a contest of strength?!”
 
 @12847 Chibodee · チボデー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「く……俺は誓ったんだ!
 >  必ず勝つってなぁ!」
-“Ngh... I made a vow! That I'd definitely win!”
+“Ngh... I made a vow! That I’d definitely win!”
 
 @12848 Chibodee · チボデー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へっ、そうこなくっちゃなぁ」
-“Heh, now that's more like it.”
+“Heh, now that’s more like it.”
 
 @12849 Chibodee · チボデー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度で俺を倒そうってのか!」
-“You think that's enough to beat me?!”
+“You think that’s enough to beat me?!”
 
 @12850 Chibodee · チボデー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度で俺をやろうってのか!」
-“You think that's enough to take me down?!”
+“You think that’s enough to take me down?!”
 
 @12851 Chibodee · チボデー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：笑わせるぜ 惯用译法
 > 「笑わせるぜ!」
-“You're a joke!”
+“Don’t make me laugh!”
 
 @12852 Chibodee · チボデー
-# 审校：修正误译：原文“この程度かよ”是“就这点程度吗”，初稿“is that all you got”缺少“got”的时态且不够自然，改为“you've got”更符合英语口语。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、この程度かよ!?」
-“What's wrong, is that all you've got?!”
+“What’s wrong, is that all you’ve got?!”
 
 @12853 Chibodee · チボデー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「やめとけよ、ベイビィ!」
 “Give it up, baby!”
 
 @12854 Chibodee · チボデー
+# 触发：回避（通用，1/5）
+# 审校：回避情境：打偏的是对方
 > 「はずれちまったようだなぁ」
-“Looks like I missed.”
+“Looks like you missed.”
 
 @12855 Chibodee · チボデー
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ヘイッ、どうしたどうした?」
-“Hey, what's the matter, what's the matter?”
+“Hey, what’s the matter, what’s the matter?”
 
 @12856 Chibodee · チボデー
+# 触发：回避（通用，3/5）
 > 「へっ、すげぇすげぇ」
 “Heh, impressive, impressive.”
 
 @12857 Chibodee · チボデー
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたらねぇようだなぁ!」
-“You can't hit me!”
+“You can’t hit me!”
 
 @12858 Chibodee · チボデー
+# 触发：回避（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おいおい、遊んでんじゃねぇんだぜ!?」
-“Hey hey, this ain't a game!”
+“Hey hey, this ain’t a game!”
 
 @12859 Chibodee · チボデー
-# 审校：修正语法：初稿“That don't do a thing!”不符合标准英语，改为“That doesn't do a thing!”。
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かねぇんだよ!」
-“That doesn't do a thing!”
+“That doesn’t do a thing!”
 
 @12860 Chibodee · チボデー
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだぜ、ベイビィ」
-“It's useless, baby.”
+“It’s useless, baby.”
 
 @12861 Chibodee · チボデー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エネルギー切れ!?
 >  俺もヤキがまわったぜ」
-“Out of energy?! Guess I'm getting rusty.”
+“Out of energy?! Guess I’m getting rusty.”
 
 @12862 Chibodee · チボデー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ、こっからじゃ届かねぇか」
-“Damn, I can't reach from here.”
+“Damn, I can’t reach from here.”
+
+@17198 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いくぜぇっ!」
+“Let’s go!”
+
+@17199 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+> 「おおおぉぉぉぉぉ!」
+“Oooohhhhh!”
+
+@17200 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「一発で決めてやるぜ」
+“I’ll finish it in one shot!”
+
+@17201 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+# 审校：与 12834 统一
+> 「覚悟しな! ウィナーは俺たちだぜ!」
+“Get ready! The winners are gonna be us!”
+
+@17202 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いくぜぇっ!」
+“Let’s go!”
+
+@17203 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+> 「くらいな!」
+“Take this!”
+
+@17204 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+# 审校：シューッ＝Shoot，与 17209 一致
+> 「シューッ!」
+“Shoot!”
+
+@17205 Chibodee · チボデー
+# 触发：使用〈ギガンティックマグナム〉
+> 「ギガンテックマグナムゥ、シュート!」
+“Gigantic Magnum, shoot!”
+
+@17206 Chibodee · チボデー
+# 触发：使用〈サイクロンパンチ〉（低优先，可能被通用台词顶掉）
+> 「うぉぉぉっ」
+“Whoaah!”
+---
+> 「サイクロンパンチィィィ!」
+“Cyclone Punch!”
+
+@17207 Chibodee · チボデー
+# 触发：使用〈サイクロンパンチ〉（低优先，可能被通用台词顶掉）
+> 「サイクロンパンチィィィ!」
+“Cyclone Punch!”
+
+@17208 Chibodee · チボデー
+# 触发：使用〈バーニングパンチ〉
+> 「バーニングパンチ!」
+“Burning Punch!”
+
+@17209 Chibodee · チボデー
+# 触发：使用〈バーニングパンチ〉
+> 「バーニングパンチ! シュゥトォォ!」
+“Burning Punch! Shoot!”
+
+@17210 Chibodee · チボデー
+# 触发：剧情标志 45 = 0，使用〈豪熱マシンガンパンチ〉
+# 审校：ゴウネェェツ应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「ゴウネェェツ、マシンガンンパァァンチッ!」
+“Burning heat, Machine Gun Paaanch!”
+
+@17211 Chibodee · チボデー
+# 触发：剧情标志 45 = 0，使用〈豪熱マシンガンパンチ〉
+# 审校：豪熱应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「豪熱! マシンガン、パァァァンチィ!」
+“Burning heat! Machine Gun, Paaanch!”
+
+@17212 Chibodee · チボデー
+# 触发：剧情标志 45 = 3，使用〈豪熱マシンガンパンチ〉
+# 审校：ゴウネェェツ应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「ゴウネェェツ、マシンガンンパァァンチッ!」
+“Burning heat, Machine Gun Paaanch!”
+
+@17213 Chibodee · チボデー
+# 触发：剧情标志 45 = 3，使用〈豪熱マシンガンパンチ〉
+# 审校：豪熱应译为 Burning heat，而非保留罗马音 Gou netsu。
+> 「豪熱! マシンガン、パァァァンチィ!」
+“Burning heat! Machine Gun, Paaanch!”
+
+@17214 Domon · ドモン
+# 触发：使用〈シャッフル同盟拳〉（对话第 1/7 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いくぞ、お前たちぃ!!」
+“Let’s go, you guys!!”
+
+@17215 Chibodee · チボデー
+# 触发：使用〈シャッフル同盟拳〉（对话第 2/7 句）
+# 审校：おおっ 是应声“好！”，五套统一
+> 「おおっ!」
+“Yeah!”
+
+@17216 Chibodee · チボデー
+# 触发：使用〈シャッフル同盟拳〉（对话第 3/7 句）
+> 「この魂の炎!」
+“This flame of our souls!”
+
+@17217 George · ジョルジュ
+# 触发：使用〈シャッフル同盟拳〉（对话第 4/7 句）
+# 审校：四句连读：灵魂之炎／若燃至极限／就没有什么／是打不倒的
+> 「極限まで高めれば!」
+“If we raise it to its limit!”
+
+@17218 Sai Saici · サイ・サイシー
+# 触发：使用〈シャッフル同盟拳〉（对话第 5/7 句）
+# 审校：连读，见上
+> 「倒せないものなど!」
+“There is nothing!”
+
+@17219 Argo · アルゴ
+# 触发：使用〈シャッフル同盟拳〉（对话第 6/7 句）
+# 审校：连读，见上
+> 「なにもない!」
+“We cannot defeat!”
+
+@17220 Domon · ドモン
+# 触发：使用〈シャッフル同盟拳〉（对话第 7/7 句）
+# 审校：爆熱 照词条 Erupting，五套统一
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Erupting! Shuffle Alliance Fist!!”

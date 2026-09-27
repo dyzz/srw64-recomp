@@ -25,8 +25,10 @@ The war ended in victory for the Earth Federation, superior in national strength
 A.C. 191, September...
 
 @intro:5512 
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 人類は、かつて想像したことすらなかった、恐るべき脅威にさらされた。外宇宙からの侵略者、ムゲゾルバドス帝国の出現である。人々はジオン独立戦争で疲弊し、その勝利者である地球連邦は腐敗し、戦後の復興も遅々として進まぬ中で、いまだ勝利の美酒に酔いしれていた。
-Humanity was exposed to a terrifying threat it had never even imagined: the appearance of invaders from outer space, the Muge Zorbados Empire. The people were exhausted by the Zeon War of Independence, the Earth Federation that had won it was corrupt, and postwar recovery crawled along—yet they still reveled in the sweet wine of victory.
+Humanity was exposed to a terrifying threat it had never even imagined: the appearance of invaders from outer space, the Muge Zorbados Empire. The people were exhausted by the Zeon War of Independence, the Earth Federation that had won it was corrupt, and postwar recovery crawled along... yet they still reveled in the sweet wine of victory.
 
 @intro:5513 
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zolbados Empire
@@ -68,10 +70,11 @@ After the war, the boy went to live with an aunt and uncle on the ground. Even a
 At least, until the town where he lived was turned into a battlefield by the Imperial Army's guerrilla hunts. Until the moment his aunt and uncle, and the girl he had feelings for, vanished in an instant within the flash of an explosion, within that terrible destruction...
 
 @intro:5521 
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > １人の少女がいる。
 > 地球連邦軍の軍人であった父の死をきっかけに、反帝国運動に身を投じ、過酷な３年間を生きてきた少女だ。
 There is a girl.
-A girl who, after the death of her father—a soldier of the Earth Federation Forces—threw herself into the anti-Imperial movement and survived three harsh years.
+A girl who, after the death of her father... a soldier of the Earth Federation Forces... threw herself into the anti-Imperial movement and survived three harsh years.
 
 @intro:5522 
 > その年齢に似合わぬ強い意思の力と、高い戦闘能力によって、彼女はいつしか、その地域の中核のゲリラ戦士として、認知されていった。
@@ -93,7 +96,8 @@ That day, the boy takes his first step toward a fate of fierce battle.
 The supreme combat art said to have been systematized by pushing melee combat with giant humanoid robot weapons to its limits: “Buki Haken-ryu.” The old man who took in the orphaned boy was its founder.
 
 @intro:5526 
-# 审校：『弱き人々のために戦え』按规则应使用弯引号 ‘ ’，但此处是引语，改为双引号 “ ” 更自然。
+# 审校：词条：ヴァイローズ=Virose
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > ムゲゾルバドス帝国の侵略時には、いまだ未熟と戦いに出ることを禁じられていたこの２人。だが、彼らの父であり、師であった老人は、病が原因で帰らぬ人となる。２人の弟子に『弱き人々のために戦え』という言葉と、“武機覇拳流”専用ロボ、アースゲインとヴァイローズを残して。
 At the time of the Muge Zorbados Empire's invasion, these two were still deemed unripe and forbidden to go into battle. But the old man who was their father and their Master died of illness. He left his two disciples the words “Fight for the weak,” and the Buki Haken-ryu's dedicated robots, Earthgain and Virose.
 
@@ -126,8 +130,9 @@ To ring the bell of fate that would beckon her into battle...
 Comrades vanishing one after another. A battle with no end in sight. In days spent racing across battlefields where life and death intermingle, she loses sight of what it means to live.
 
 @intro:5533 
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > ただ一代で築きあげた己の技を継ぐ者を探していたこの老人に出会ったのが、果たして少年にとって幸運であったのか不運であったのか。ともあれ、少年は厳しい修行の中で、やはり孤児であった兄弟弟子とともに、この超絶の技を体得していったのだ。
-Whether it was fortune or misfortune for the boy to meet this old man, who sought one to inherit the art he had built up in a single lifetime. In any case, amid harsh training, together with his fellow disciple—also an orphan—the boy mastered this supreme art.
+Whether it was fortune or misfortune for the boy to meet this old man, who sought one to inherit the art he had built up in a single lifetime. In any case, amid harsh training, together with his fellow disciple... also an orphan... the boy mastered this supreme art.
 
 @intro:5534 
 > しかし、彼女がそのような不名誉に甘んじていたのはひとえに、財団と帝国の情報を、反帝国ゲリラへと提供するためであった。

@@ -1,175 +1,277 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9084 Quattro · クワトロ
+# 触发：攻击（通用，1/15）
 > 「いけるかっ!?」
 “Can I make it?!”
 
 @9085 Quattro · クワトロ
+# 触发：攻击（通用，2/15）
 > 「あたれよ!」
 “Hit!”
 
 @9086 Quattro · クワトロ
+# 触发：攻击（通用，3/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @9087 Quattro · クワトロ
+# 触发：攻击（通用，4/15）
 > 「おそいっ!!」
 “Too slow!!”
 
 @9088 Quattro · クワトロ
+# 触发：攻击（通用，5/15）
 > 「そこだっ!!」
 “There!!”
 
 @9089 Quattro · クワトロ
+# 触发：攻击（通用，6/15）
+# 审校：There, huh 不通
 > 「そこかっ!!」
-“There, huh!!”
+“There you are!!”
 
 @9090 Quattro · クワトロ
+# 触发：攻击（通用，7/15）
 > 「沈めっ!!」
 “Sink!!”
 
 @9091 Quattro · クワトロ
+# 触发：攻击（通用，8/15）
 > 「遅いな」
 “Too slow.”
 
 @9092 Quattro · クワトロ
+# 触发：攻击（通用，9/15）
 > 「そこだ」
 “There.”
 
 @9093 Quattro · クワトロ
+# 触发：攻击（通用，10/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせはせんよ」
-“I won't let you.”
+“I won’t let you.”
 
 @9094 Quattro · クワトロ
+# 触发：攻击（通用，11/15）
 > 「甘いな!」
 “Too naive!”
 
 @9095 Quattro · クワトロ
+# 触发：攻击（通用，12/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔をするな!」
-“Don't get in my way!”
+“Don’t get in my way!”
 
 @9096 Quattro · クワトロ
+# 触发：攻击（通用，13/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させるっ!!」
-“I'll land a direct hit!!”
+“I’ll land a direct hit!!”
 
 @9097 Quattro · クワトロ
+# 触发：攻击（通用，14/15）
+# 审校：更顺口
 > 「これ以上はやらせん!」
-“I won't let you do any more!”
+“I won’t let you go any further!”
 
 @9098 Quattro · クワトロ
+# 触发：攻击（通用，15/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみるさ!」
-“I'll give it a try!”
+“I’ll give it a try!”
 
 @9099 Quattro · クワトロ
+# 触发：被击坠（通用，1/3）
 > 「ちいっ!」
 “Tch!”
 
 @9100 Quattro · クワトロ
+# 触发：被击坠（通用，2/3）
+# 审校：Kuh 不是英文拟声
 > 「くうっ! やる!!」
-“Kuh! You're good!!”
+“Ngh! You’re good!!”
 
 @9101 Quattro · クワトロ
+# 触发：被击坠（通用，3/3）
 > 「し、しまった!!」
 “D-damn it!!”
 
 @9102 Quattro · クワトロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「直撃!?」
 “A direct hit?!”
 
 @9103 Quattro · クワトロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだ終わらんよ!」
-“Not yet! It's not over yet!”
+“Not yet! It’s not over yet!”
 
 @9104 Quattro · クワトロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：Kuh 不是英文拟声
 > 「くっ!! ダメージを受けすぎたか!?」
-“Kuh!! Did I take too much damage?!”
+“Ngh!! Did I take too much damage?!”
 
 @9105 Quattro · クワトロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：Eei 不是英文；原句生硬
 > 「ええい! あたり所が悪いと
 >  こんなものか!?」
-“Eei! Is this all I can do when I'm hit in a bad spot?!”
+“Damn! One bad hit and it comes to this?!”
 
 @9106 Quattro · クワトロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「ッ!? まだだ!!」
 “Hn?! Not yet!!”
 
 @9107 Quattro · クワトロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!! やるな!!」
-“Ugh!! You're good!!”
+“Ugh!! You’re good!!”
 
 @9108 Quattro · クワトロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 > 「ちっ!! まだだっ!!」
 “Tch!! Not yet!!”
 
 @9109 Quattro · クワトロ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：Kuh；this much?! 不成句
 > 「く、この程度で!」
-“Kuh, this much?!”
+“Ngh, not from this much!”
 
 @9110 Quattro · クワトロ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：Kuh 不是英文拟声
 > 「くっ、まだこんなものでは!」
-“Kuh, this is nothing yet!”
+“Ngh, this is nothing yet!”
 
 @9111 Quattro · クワトロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では落ちんよ!!」
-“That won't bring me down!!”
+“That won’t bring me down!!”
 
 @9112 Quattro · クワトロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ」
-“It doesn't work.”
+“It doesn’t work.”
 
 @9113 Quattro · クワトロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「ムダなことを……」
 “What a waste of effort...”
 
 @9114 Quattro · クワトロ
+# 触发：回避（通用，1/5）
 > 「あまいなっ!」
 “Too naive!”
 
 @9115 Quattro · クワトロ
+# 触发：回避（通用，2/5）
 > 「ちいっ!」
 “Tch!”
 
 @9116 Quattro · クワトロ
+# 触发：回避（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうそうあたるものではない!」
-“You won't hit me that easily!”
+“You won’t hit me that easily!”
 
 @9117 Quattro · クワトロ
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたりはせんよ!」
-“It won't hit!”
+“It won’t hit!”
 
 @9118 Quattro · クワトロ
+# 触发：回避（通用，5/5）
 > 「遅いな」
 “Too slow.”
 
 @9119 Quattro · クワトロ
+# 触发：攻击无效（护罩／装甲）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ!」
-“It doesn't work!”
+“It doesn’t work!”
 
 @9120 Quattro · クワトロ
+# 触发：攻击无效（护罩／装甲）（通用，2/5）
+# 审校：攻击无效情境，照说明
 > 「ビームなどで!」
-“A beam, of all things!”
+“A mere beam!”
 
 @9121 Quattro · クワトロ
+# 触发：攻击无效（护罩／装甲）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ならばっ!」
-“If it's only this much!”
+“If it’s only this much!”
 
 @9122 Quattro · クワトロ
+# 触发：攻击无效（护罩／装甲）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームなど効かん!」
-“Beams won't work on me!”
+“Beams won’t work on me!”
 
 @9123 Quattro · クワトロ
+# 触发：攻击无效（护罩／装甲）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ、効かんよ」
-“Hmph, it doesn't work.”
+“Hmph, it doesn’t work.”
 
 @9124 Quattro · クワトロ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：Eei 不是英文；弹尽情境
 > 「ええい! こんなことで!」
-“Eei! To let this happen!”
+“Damn it! Of all things!”
 
 @9125 Quattro · クワトロ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境；Kuh
 > 「くっ、だめか!?」
-“Kuh, no good?!”
+“Ngh, I can’t return fire?!”
 
 @9126 Quattro · クワトロ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：补句号；Kuh
 > 「くっ! 射程距離外からの
 >  攻撃とはな」
-“Kuh! An attack from out of range, huh.”
+“Ngh! An attack from beyond my range.”
+
+@14687 Quattro · クワトロ
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：Funnel 改为复数。
+> 「いけっ!ファンネル!!」
+“Go! Funnels!!”
+
+@14688 Quattro · クワトロ
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：Funnel 改为复数。
+> 「ファンネル!!」
+“Funnels!!”
+
+@14689 Quattro · クワトロ
+# 触发：使用〈フィンファンネル〉
+> 「いけっ!! フィンファンネル!!」
+“Go!! Fin Funnels!!”
+
+@14690 Quattro · クワトロ
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14691 Quattro · クワトロ
+# 触发：使用〈ヴェスバー〉（低优先，可能被通用台词顶掉）
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14692 Quattro · クワトロ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Fire! High Mega Cannon!!”

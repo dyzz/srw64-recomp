@@ -1,127 +1,334 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7881 Shingo · 真吾
+# 触发：攻击（通用，1/6）
 > 「行くぞ!」
 “Here I go!”
 
 @7882 Shingo · 真吾
+# 触发：攻击（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだ!」
-“How's this!”
+“How’s this!”
 
 @7883 Shingo · 真吾
+# 触发：攻击（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さあて、こいつでとどめだ!」
-“All right, this one's the finisher!”
+“All right, this one’s the finisher!”
 
 @7884 Shingo · 真吾
+# 触发：攻击（通用，4/6）
 > 「邪魔だ!」
 “Out of my way!”
 
 @7885 Shingo · 真吾
+# 触发：攻击（通用，5/6）
 > 「そろそろ本気で行くぞ!」
 “Time to get serious!”
 
 @7886 Shingo · 真吾
+# 触发：攻击（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゴーショーグンの力、見せてやるぜ!」
-“I'll show you GoShogun's power!”
+“I’ll show you GoShogun’s power!”
 
 @7887 Shingo · 真吾
+# 触发：被击坠（通用，1/7）
 # 审校：「何だと!?」是被击中时的惊呼，不是回应对方话语，改为更自然的“What?!”
 > 「何だと!?」
 “What?!”
 
 @7888 Shingo · 真吾
+# 触发：被击坠（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ!! やられたっ!」
-“Damn it! I've been hit!”
+“Damn it! I’ve been hit!”
 
 @7889 Shingo · 真吾
+# 触发：被击坠（通用，3/7）
 > 「しまった!!」
 “Damn!”
 
+@7890 Remy · レミー
+# 触发：被击坠（通用，4/7）
+# 审校：レミー的娇嗔口吻，被击坠是整机
+> 「やあん! 真吾、しっかりしてよ、
+>  やられちゃったじゃない!」
+“Aw, come on! Shingo, get it together, we got shot down!”
+
+@7891 Remy · レミー
+# 触发：被击坠（通用，5/7）
+> 「やん! ダメっ!!」
+“Eek! No!”
+
+@7892 Killy · キリー
+# 触发：被击坠（通用，6/7）
+> 「ちっ! やられちまったぜ!」
+“Tch! I got taken down!”
+
+@7893 Killy · キリー
+# 触发：被击坠（通用，7/7）
+> 「あーあ、ダメか」
+“Aw man, no good, huh.”
+
 @7894 Shingo · 真吾
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
+# 审校：ちっ→啧，口语化
 > 「ちいっ! 調子に乗りすぎたかな?」
-“Tch! Guess I got too carried away?”
+“Tch! Got a little carried away, huh?”
 
 @7895 Shingo · 真吾
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ!! このままじゃまずいな……」
-“Tch! At this rate we're in trouble...”
+“Tch! At this rate we’re in trouble...”
 
 @7896 Shingo · 真吾
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
 > 「うわっ!! これはちょっとヤバイかな……」
 “Whoa! This might be a bit bad...”
 
+@7897 Remy · レミー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
+# 审校：更像人话
+> 「きゃあっ! このまま花も咲かずに
+>  散ってたまるもんですか!!」
+“Kyaa! I’m not about to wither before I’ve even bloomed!!”
+
+@7898 Killy · キリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うわっ!! 真吾!!
+>  ヤバイぜこいつは!」
+“Whoa! Shingo! This one’s bad!”
+
+@7899 Killy · キリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
+# 审校：分が悪い＝形势不利
+> 「ちっ!! こいつは分が悪いぜ!」
+“Tch!! The odds are against us here!”
+
 @7900 Shingo · 真吾
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
 > 「まだまだ、この程度なら!」
 “I can still take this much!”
 
 @7901 Shingo · 真吾
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 > 「ちっ、油断したか?」
 “Tch, I let my guard down?”
 
 @7902 Shingo · 真吾
-# 审校：原文「このっ!!」是愤怒的省略句，译文“Why you!”缺少破折号，改为“Why you—!”更自然。
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
+# 审校：やったな＝你居然打中了
 > 「やったな!! このっ!!」
-“You did it! Why you—!”
+“You got me!! Why you...!!”
 
 @7903 Shingo · 真吾
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!! や、やるじゃないの!」
-“Ugh! N-Not bad!”
+“Ugh! N-not bad!”
+
+@7904 Remy · レミー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+> 「あいたっ! レディに向かってよくも
+>  やってくれたわね!」
+“Ouch! How dare you strike a lady!”
+
+@7905 Remy · レミー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
+# 审校：やったわね 是被打后的恼怒
+> 「きゃっ! やったわねっ!」
+“Kya! You’re gonna regret that!”
+
+@7906 Killy · キリー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
+> 「うわっ!! くそっ、真吾しっかり
+>  やってくれ!」
+“Whoa! Damn it, Shingo, get it together!”
+
+@7907 Killy · キリー
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「つっ! 受けた分は利子つけて
+>  返させてもらうぜ!」
+“Ugh! I’ll make you pay back what I took, with interest!”
 
 @7908 Shingo · 真吾
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
 > 「何だ、そんなもの!」
 “What, is that all!”
 
 @7909 Shingo · 真吾
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないな!」
-“That doesn't hurt!”
+“That doesn’t hurt!”
 
 @7910 Shingo · 真吾
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、効いてないぜ!」
-“Hmph, that didn't even scratch me!”
+“Hmph, that didn’t even scratch me!”
 
 @7911 Shingo · 真吾
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度か!」
-“Is this all you've got!”
+“Is this all you’ve got!”
+
+@7912 Remy · レミー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
+> 「まだまだ修行が足りないわよ」
+“You still need more training.”
+
+@7913 Remy · レミー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/8）
+> 「だめねえ、この程度?」
+“Pathetic, is this all?”
+
+@7914 Killy · キリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「効かねえぜ!」
+“That doesn’t hurt!”
+
+@7915 Killy · キリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
+> 「やれやれ、この程度か?」
+“Good grief, is this all?”
 
 @7916 Shingo · 真吾
+# 触发：回避（通用，1/8）
+# 审校：口语化
 > 「おおっと、あぶない、あぶない」
-“Whoa there, that was close, close.”
+“Whoa, close one, close one.”
 
 @7917 Shingo · 真吾
+# 触发：回避（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるものか!」
-“As if that'd hit!”
+“As if that’d hit!”
 
 @7918 Shingo · 真吾
+# 触发：回避（通用，3/8）
 > 「ふ、どこをねらってる!」
 “Hmph, what are you aiming at!”
 
 @7919 Shingo · 真吾
+# 触发：回避（通用，4/8）
 > 「おっと!!」
 “Whoa!”
 
 @7920 Shingo · 真吾
+# 触发：回避（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!”
+“It’s useless!”
+
+@7921 Remy · レミー
+# 触发：回避（通用，6/8）
+> 「あらら、残念でした」
+“Oh dear, too bad.”
+
+@7922 Killy · キリー
+# 触发：回避（通用，7/8）
+> 「おおはずれ～」
+“Way off~”
+
+@7923 Killy · キリー
+# 触发：回避（通用，8/8）
+# 审校：ねらいがあまい＝瞄得不准
+> 「チッチッ、ねらいがあまいぜ」
+“Tsk tsk, your aim’s sloppy.”
 
 @7924 Shingo · 真吾
+# 触发：攻击无效（护罩／装甲）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、そんな攻撃が通用するか!」
-“Hmph, you think an attack like that'll work?!”
+“Hmph, you think an attack like that’ll work?!”
 
 @7925 Shingo · 真吾
+# 触发：攻击无效（护罩／装甲）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームは効かないっていってる!!」
-“I told you, beams don't work!!”
+“I told you, beams don’t work!!”
+
+@7926 Remy · レミー
+# 触发：攻击无效（护罩／装甲）（通用，3/4）
+> 「ちょっと!あたったらどうする気!?」
+“Hey! What if you hit me?!”
+
+@7927 Remy · レミー
+# 触发：攻击无效（护罩／装甲）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ビームは効かないっていってるじゃない!」
+“I told you beams don’t work!”
 
 @7928 Shingo · 真吾
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「弾切れ!? しまった!」
 “Out of ammo?! Damn it!”
 
 @7929 Shingo · 真吾
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境
 > 「くっ! だめか!?」
-“Ngh! No good?!”
+“Ngh! I can’t shoot back?!”
 
 @7930 Shingo · 真吾
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、ちょ～っと遠すぎるみたいね」
-“Tch, that's just a bit too far.”
+“Tch, that’s just a bit too far.”
 
 @7931 Shingo · 真吾
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far, huh!”
+
+@14546 Shingo · 真吾
+# 触发：使用〈コスモビーム〉（低优先，可能被通用台词顶掉）
+> 「コスモビーム!!」
+“Cosmo Beam!!”
+
+@14547 Shingo · 真吾
+# 触发：使用〈レッドインパルサー〉（低优先，可能被通用台词顶掉）
+> 「レッドインパルサー!!」
+“Red Impulser!!”
+
+@14548 Shingo · 真吾
+# 触发：使用〈ホルスタービーム〉（低优先，可能被通用台词顶掉）
+> 「ホルスタービーム!!」
+“Holster Beam!!”
+
+@14549 Shingo · 真吾
+# 触发：使用〈ゴーサーベル〉（低优先，可能被通用台词顶掉）
+> 「ゴーサーベル!!」
+“Go Saber!!”
+
+@14550 Shingo · 真吾
+# 触发：使用〈ゴースティック〉（低优先，可能被通用台词顶掉）
+> 「ゴースティック!!」
+“Go Stick!!”
+
+@14551 Shingo · 真吾
+# 触发：使用〈スペースバズーカ〉（低优先，可能被通用台词顶掉）
+> 「スペースバズーカ!!」
+“Space Bazooka!!”
+
+@14552 Shingo · 真吾
+# 触发：使用〈ゴーフラッシャー〉
+# 机翻疑问：新译名：ゴーフラッシャー=Go Flasher
+> 「ゴーフラッシャーッ!!」
+“Go Flasher!!”
+
+@14553 Shingo · 真吾
+# 触发：使用〈ゴーフラッシャー〉
+> 「これで決める!」
+“This finishes it!
+---
+> 「ゴーフラッシャーッ!!」
+Go Flasher!!”

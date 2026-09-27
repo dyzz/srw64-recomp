@@ -228,7 +228,7 @@ Really, they make me sick.”
 “That's right! Let's beat up all the bad guys!”
 
 @29160 Kamille · カミーユ
-# 审校：“it saves me”直译感强，改为“it's a real comfort”更自然。
+# 审校：人名按词表统一
 > 「ははは、チャムがそういうと
 >  元気が出るな
 “Hahaha, when you say that, Chum, it cheers me up.
@@ -542,6 +542,7 @@ Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
 “Ask Zero.”
 
 @29207 Milliardo · ミリアルド
+# 审校：精读：分页贴原文
 > 「なに!?
 “What?!
 ---
@@ -551,10 +552,10 @@ Otherwise, there'd be no point in my coming here... to the Sanc Kingdom.”
 ---
 >  いいだろう、純粋な戦士として
 >  貴様との因縁の戦い、今ここで
-Fine. As a pure soldier, I'll settle this fated battle with you, here and now!
+Fine. As a pure soldier, this fated battle with you, here and now,
 ---
 >  決着をつけてやる!」
-Let's finish it!”
+I'll settle it!”
 
 @29208 Milliardo · ミリアルド
 > 「戦いは……
@@ -562,8 +563,9 @@ Let's finish it!”
 “The battle... What happened to the Sanc Kingdom?!”
 
 @29209 Noin · ノイン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ゼクス特佐……!」
-“Colonel Zechs...!”
+“Special Colonel Zechs...!”
 
 @29210 Relena · リリーナ
 > 「……どうしたの?」
@@ -634,13 +636,14 @@ and fight. Cease combat immediately.
 “I shall place myself in Romefeller's custody.”
 
 @29221 Dorothy · ドロシー
+# 审校：Dorothy's ornate, formal noblewoman voice requires no contractions and more formal phrasing.
 > 「すごーい! なんてすごいの、リリーナさま
 >  ますますファンになっちゃったわ
-“Amazing! How amazing, Lady Relena, I've become an even bigger fan of yours!
+“Amazing! How amazing, Lady Relena, I have become an even bigger fan of yours!
 ---
 >  大丈夫、わたくしが一緒に
 >  まいります。悪いようにはいたしませんわ」
-Don't worry, I'll come along with you. I won't let any harm come to you.”
+Do not worry, I shall come along with you. I shall not let any harm come to you.”
 
 @29222 Bright · ブライト
 > 「……やむをえん。
@@ -708,13 +711,14 @@ and fight. Cease combat immediately.
 “I shall place myself in Romefeller's custody.”
 
 @29232 Dorothy · ドロシー
+# 审校：Same as L9: Dorothy's ornate, formal noblewoman voice requires no contractions and more formal phrasing.
 > 「すごーい! なんてすごいの、リリーナさま
 >  ますますファンになっちゃったわ
-“Amazing! How amazing, Lady Relena, I've become an even bigger fan of yours!
+“Amazing! How amazing, Lady Relena, I have become an even bigger fan of yours!
 ---
 >  大丈夫、わたくしが一緒に
 >  まいります。悪いようにはいたしませんわ」
-Don't worry, I'll come along with you. I won't let any harm come to you.”
+Do not worry, I shall come along with you. I shall not let any harm come to you.”
 
 @29233 Bright · ブライト
 > 「……やむをえん。
@@ -752,13 +756,14 @@ I shall accompany you.”
 (Forgive me, everyone... This is the only path I can choose...)
 
 @29240 Dorothy · ドロシー
+# 审校：Dorothy's formal voice: no contractions.
 > 「リリーナ様がロームフェラにつくまでの
 >  身の安全は、私が保証します
-“I will guarantee your safety until you reach Romefeller, Lady Relena.
+“I shall guarantee your safety until you reach Romefeller, Lady Relena.
 ---
 >  でも…財団がリリーナ様の身柄を
 >  どうするのかは、私にもわかりませんけど」
-But... even I don't know what the Foundation intends to do with you.”
+But... even I do not know what the Foundation intends to do with you.”
 
 @29241 Relena · リリーナ
 > (わからない……この先どうやって
@@ -766,9 +771,10 @@ But... even I don't know what the Foundation intends to do with you.”
 (I don't know... how I should go about realizing my ideal from here...)
 
 @29242 Dorothy · ドロシー
+# 审校：Dorothy's formal voice: no contractions.
 > 「リリーナ様、そんなお顔なさらないで。
 >  内緒だけど、私、おじいさまの
-“Lady Relena, please don't make such a face. Just between us, I have a vague idea
+“Lady Relena, please do not make such a face. Just between us, I have a vague idea
 ---
 >  考えてらっしゃる事を
 >  うすうす知ってるの
@@ -776,7 +782,7 @@ of what Grandfather is thinking.
 ---
 >  きっと悪いようにはなさらないわ……。
 >  だから安心してくださいな」
-Surely he won't do anything unkind... So please, rest easy.”
+Surely he will not do anything unkind... So please, rest easy.”
 
 @29243 Relena · リリーナ
 > 「おじいさま……?
@@ -784,9 +790,10 @@ Surely he won't do anything unkind... So please, rest easy.”
 “Grandfather...? What are you talking about?”
 
 @29244 Dorothy · ドロシー
+# 审校：Dorothy 的贵族口吻要求 ornate formality，原文虽无敬语但译文用缩略形式“That's”过于随意，改为“That is”。
 > 「それは着いてからのお楽しみ。
 >  ふふふふ……」
-“That's something to look forward to once we arrive. Heh heh heh...”
+“That is something to look forward to once we arrive. Heh heh heh...”
 
 @29245 Dorothy · ドロシー
 > 「おじいさま、リリーナ・ピースクラフト様
@@ -935,10 +942,10 @@ For the sake of future complete peace.”
 and so are we...”
 
 @29265 Koji · 甲児
-# 审校：“always saying good stuff”语气太轻浮，改为更符合甲児热血直率语气的说法。
+# 审校：精读：去破折号
 > 「さすがアランさん、いいこというぜ。
 >  で、これからどうするんだ?」
-“That's Alan for you—he says good things. So, what do we do now?”
+“That's Alan for you. Well said. So, what do we do now?”
 
 @29266 Alan · アラン
 > 「さあな。考えてない」
@@ -949,14 +956,14 @@ and so are we...”
 “Oh, come on...”
 
 @29268 Amuro · アムロ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Hahaha, well, it's fine. This marks a fresh start for the
-# 草稿第 2 页：【主角机体名】. Come on, everyone, cheer up.”
+# 审校：补译：原稿占位符丢失
 > 「ははは、まあいいさ。これから改めて、
 >  {HeroMech}の
+“Hahaha, well, that's fine. From here on, it's a fresh start for the {HeroMech}.
 ---
 >  再出発というわけだ。
 >  みんな、元気を出そう」
+Come on, everyone, chin up.”
 
 @29269 Heero · ヒイロ
 > 「ぐっ……。ここは……?」
@@ -988,9 +995,10 @@ completely unconscious.”
 “A system that controls even your mind...”
 
 @29274 Milliardo · ミリアルド
+# 审校：Milliardo 的 voice 是更庄重，将 'we've' 改为 'we have' 以符合其庄重口吻。
 > 「ゼロシステムもそうだ……お互い、
 >  機械にほんろうされたようだな」
-“The same goes for the ZERO System... Seems we've both been toyed with by machines.”
+“The same goes for the ZERO System... It seems we have both been toyed with by machines.”
 
 @29275 Heero · ヒイロ
 > 「…………」
@@ -1029,17 +1037,18 @@ The Epyon is a machine Treize built. I can't understand what he was thinking...�
 “Zechs!”
 
 @29282 Milliardo · ミリアルド
-# 审校：“Noin, is it.”不自然，改为更口语的确认语气。
+# 审校：Milliardo 的 voice 是更庄重，将 'So it's Noin' 改为 'So it is Noin' 以符合其庄重口吻。
 > 「ノイン……ノインか」
-“Noin... So it's Noin.”
+“Noin... So it is Noin.”
 
 @29283 Noin · ノイン
 > 「おひさしぶりです……」
 “It's been a long time...”
 
 @29284 Milliardo · ミリアルド
+# 审校：Milliardo 的 voice 是更庄重，将 'Yeah' 改为 'Yes' 以符合其庄重口吻。
 > 「ああ、そうだな……」
-“Yeah, that's right...”
+“Yes, that is right...”
 
 @29285 Noin · ノイン
 > 「申しわけありません、
@@ -1047,9 +1056,10 @@ The Epyon is a machine Treize built. I can't understand what he was thinking...�
 “I'm sorry. I was with her, and yet Lady Relena...”
 
 @29286 Milliardo · ミリアルド
+# 审校：精读：去破折号
 > 「いや、あれが自分で決意したことだ
 >  誰にも止められまい
-“No. That was a decision she made herself. No one could stop her—
+“No. That was a decision she made herself. No one could stop her,
 ---
 >  たとえ私ですらもな……」
 not even me...”
@@ -1059,13 +1069,14 @@ not even me...”
 “Where are you going?!”
 
 @29288 Milliardo · ミリアルド
+# 审校：Milliardo 的 voice 是更庄重，将 'I'll' 改为 'I will' 以符合其庄重口吻。
 > 「私もまた、これから成すべきことが
 >  見い出せずにいる……
 “I, too, have yet to find what I should do from here...
 ---
 >  私はエピオンと行く。
 >  たった今、戦いの中で何かが
-I'll go with the Epyon. Just now, in battle, I felt as though I caught a glimpse of something.
+I will go with the Epyon. Just now, in battle, I felt as though I caught a glimpse of something.
 ---
 >  見えたような気がした。
 >  それを確かめる」
@@ -1089,9 +1100,10 @@ I mean to find out what it was.”
 Report in detail.”
 
 @29292 Tubarov · ツバロフ
+# 审校：精读：去破折号
 > 「それが、皆目わからないのです。
 >  登録されている、いかなるタイプの
-“That's just it—we have no idea. It doesn't match any registered type of
+“That's just it. We have no idea. It doesn't match any registered type of
 ---
 >  艦とも合致しません。
 >  あるいはムゲ帝国の
@@ -1102,9 +1114,10 @@ ship. I thought it might be remnants of the Muge Empire,
 but that possibility seems unlikely as well...”
 
 @29293 Jamitov · ジャミトフ
+# 审校：Jamitov 的 voice 是 grave, formal，将 'that's enough' 改为 'that is enough'，'Don't' 改为 'Do not' 以符合其庄重口吻。
 > 「ふん、もうよい。偵察隊を出して
 >  詳しく調べさせろ。監視を怠るな
-“Hmph, that's enough. Send out a reconnaissance team to investigate thoroughly. Don't neglect your surveillance.
+“Hmph, that is enough. Send out a reconnaissance team to investigate thoroughly. Do not neglect your surveillance.
 ---
 >  万が一のために警戒態勢を
 >  とっておけ。何かあったら報告しろ」
@@ -1115,13 +1128,14 @@ Maintain a state of alert just in case. Report anything that happens.”
 “Yes, understood. Then, if you'll excuse me...”
 
 @29295 Jamitov · ジャミトフ
+# 审校：Jamitov 的 voice 是 grave, formal，将 'it's' 改为 'it is'，'doesn't' 改为 'does not' 以符合其庄重口吻。
 > 「正体不明の艦隊が
 >  出現しただと……。いままで単に
 “An unidentified fleet has appeared... If it was merely
 ---
 >  未確認だっただけならば良し、
 >  そうでないとしたら……外宇宙からの
-unconfirmed until now, fine. If not... then it's an intruder from outer space.
+unconfirmed until now, fine. If not... then it is an intruder from outer space.
 ---
 >  侵入者ということになる。
 >  だとするとやはり
@@ -1129,7 +1143,7 @@ Which would mean the Muge Empire after all...? Honestly, just when the surface i
 ---
 >  ムゲ帝国か……? まったく、ようやく
 >  地上が片づきつつあるという時に
-being cleaned up, I hope this doesn't turn into
+being cleaned up, I hope this does not turn into
 ---
 >  面倒なことにならねばよいがな……」
 a nuisance...”

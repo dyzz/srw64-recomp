@@ -35,6 +35,7 @@ than even the Muge Zorbados Empire. Mars, destroy the Earth.”
 the Earth? That's...!”
 
 @26340 Emperor Zuul · ズール皇帝
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「お前はギシン星人だ。
 >  地球破壊のカギは
 “You are a Gishin. The key to destroying the Earth lies
@@ -71,6 +72,7 @@ Empire? None who have defied me have lived. Disobey, and you die!”
 “...Mika... I...”
 
 @26346 Mika · ミカ
+# 审校：精读：ハサン先生 是医生
 > 「大丈夫、タケル?
 >  すごくうなされてたわよ
 “Are you all right, Takeru? You were groaning so much in your sleep.
@@ -81,7 +83,7 @@ I could hear it all the way outside the door, it gave me a fright.
 ---
 >  ハサン先生かレインさんに
 >  来てもらおうか?」
-Should I go get Teacher Hasan or Rain?”
+Should I go get Dr. Hasan or Rain?”
 
 @26347 Takeru · タケル
 > 「いや……ちょっと嫌な夢を見ただけだ
@@ -98,6 +100,8 @@ Should I go get Teacher Hasan or Rain?”
 “You're here. Well? This is the new Sweemurg.”
 
 @26350 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「あたしの……新しいスイームルグ……。
 >  すごいわ。{PartnerNick}のエルブルスが
 “My... my new Sweemurg... Amazing. So {PartnerNick}'s Elbulls
@@ -361,13 +365,14 @@ Relena and the holy maiden must be saved, no matter what!!”
 “Where are you? Where are you hiding?”
 
 @26397 Baren · バレン
+# 审校：精读：お前の父上であるズール皇帝 被误读为“我是你父亲”
 > 「よく来たな、マーズ。よく聞け。
 >  私はお前の父上である
-“So you came, Mars. Listen well. I am your father,
+“So you came, Mars. Listen well. I have come to convey the words
 ---
 >  ズール皇帝のお言葉を
 >  伝えに来た
-and I've come to relay Emperor Zuul's words.
+of your father, Emperor Zuul.
 ---
 >  陛下はお前の反逆行為に、
 >  たいそうお怒りだ」
@@ -408,11 +413,12 @@ His Majesty is most displeased with your rebellion.”
 “Uwaaah!”
 
 @26406 Baren · バレン
-# 审校：“ガイヤーか”在此是确认来袭者，初稿“Gaiya?!”疑问过重；改为“it's Gaiya!”更符合战斗中的反应
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なに!? しまった、ガイヤーか!」
 “What?! Damn it, it's Gaia!”
 
 @26407 ???
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (マーズ、恐れることはない。
 >  ガイヤーはお前を守るために来たのだ)
 (Mars, there is nothing to fear. Gaia has come to protect you.)
@@ -422,6 +428,7 @@ His Majesty is most displeased with your rebellion.”
 “W-What is this thing... moving on its own...”
 
 @26409 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだここは? 俺はいったい……
 >  ガイヤーだと? これがズールのいっていた
 “Where is this? What am I... Gaia? So this is what Zuul meant.
@@ -431,6 +438,7 @@ His Majesty is most displeased with your rebellion.”
 ...Damn it, if this thing will obey my commands, then destroy him!”
 
 @26410 Baren · バレン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ、ならばガイヤーごと
 >  葬り去ってやる!」
 “Ngh, then I'll destroy you along with Gaia!”
@@ -442,6 +450,7 @@ His Majesty is most displeased with your rebellion.”
 “W-What is this thing? There's nothing like this in the data!”
 
 @26412 ???
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (マーズ……ガイヤーが危機に
 >  おちいったとき、五神ロボはあらわれる
 (Mars... when Gaia is in danger, the five god robots appear.
@@ -501,8 +510,9 @@ or we will open fire!”
 “Please wait, Captain Bright!”
 
 @26423 Mika · ミカ
+# 审校：精读：去破折号
 > 「あの声、タケルだわ!」
-“That voice—it's Takeru!”
+“That voice, it's Takeru!”
 
 @26424 Kenji · ケンジ
 > 「タケルだと? タケル、なんだって
@@ -524,9 +534,10 @@ or we will open fire!”
 “OZ drop troops detected. Their target appears to be this base.”
 
 @26428 Bright · ブライト
+# 审校：精读：去破折号
 > 「もう来たのか!? やむを得ん、
 >  物資搬入は切りあげろ!
-“They're already here?! Can't be helped—cut the supply loading short!
+“They're already here?! Can't be helped, cut the supply loading short!
 ---
 >  敵部隊と交戦しつつ、
 >  ここを離れる!」
@@ -546,8 +557,9 @@ We'll engage the enemy force while we pull out of here!”
 “Understood!”
 
 @26432 Gates · ゲーツ
+# 审校：盖茨是军人，对部下罗莎米亚用「どうだ?」是询问状态/战况，译成“how are you?”太软，改为军事口吻的“report.”
 > 「ロザミア、どうだ?」
-“Rosamia, how are you?”
+“Rosamia, report.”
 
 @26433 Rosamia · ロザミア
 > 「大丈夫よ、お兄ちゃん」
@@ -632,31 +644,34 @@ This time I cannot afford to retreat!”
 “Tch, that bastard! Did he take fright at me?! Don't mock me!”
 
 @26447 Kyral · キラル
+# 审校：精读：去破折号
 > 「キラル・メキレル、
 >  マンダラガンダム参上
 “Kyral Mekirel, Mandala Gundam, arriving!
 ---
 >  貴様らにも見せてやろう。
 >  この世の闇をな」
-I shall show you as well—the darkness of this world!”
+I shall show you as well. The darkness of this world!”
 
 @26448 Domon · ドモン
 > 「あいつ……さっきの奴か!」
 “That guy... it's the one from before!”
 
 @26449 Ark · アーク（按段落 3DD1）
+# 审校：精读：页末标点
 > 「どういうつもりか知らないが、
 >  俺はもうあんたを憎いとは思わないよ
-“I don't know what you're thinking, but I don't hate you anymore.
+“I don't know what you're thinking, but I don't hate you anymore,
 ---
 >  {PartnerFull}」
-{PartnerFull}”
+{PartnerFull}.”
 
 @26450 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「な……に? どういうことだ少年!?」
 “W-What? What do you mean, boy?!”
 
 @26451 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「この時代の中では、
 >  いつああなってもおかしくはなかった
 “In this era, it wouldn't have been strange for that to happen to anyone.
@@ -667,7 +682,7 @@ It's truly unfortunate. I can't forgive it, and I don't want to accept it. But y
 ---
 >  世界中で起こった、そして
 >  今も起こり続けていることなんだ」
-has happened all over the world—and it's still happening right now.”
+has happened all over the world, and it's still happening right now.”
 
 @26452 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「少年、君は……」
@@ -824,9 +839,11 @@ see something like that. I thank you. ...Farewell!”
 Don't let yourself be confused, Rosamia!”
 
 @26475 Kamille · カミーユ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ロザミィ→Rosamy
 > 「ロザミィ! もう1度あのときの
 >  ロザミィに戻ってくれ!」
-“Rosamy! Come back to me—back to the Rosamy you were then!”
+“Rosamy! Come back to me, back to the Rosamy you were then!”
 
 @26476 Rosamia · ロザミア
 > 「お兄ちゃん!?」
@@ -870,9 +887,11 @@ Don't let yourself be confused, Rosamia!”
 “Help me, big brother! Where are you? Big brother?!”
 
 @26486 Kamille · カミーユ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ロザミィ→Rosamy
 > 「ロザミィ! もう1度、もう1度
 >  あのときのロザミィに戻ってくれ!」
-“Rosamy! Come back—come back to the Rosamy you were then, one more time!”
+“Rosamy! Come back, come back to the Rosamy you were then, one more time!”
 
 @26487 Rosamia · ロザミア
 > 「お兄ちゃん!?」
@@ -930,9 +949,10 @@ Don't let yourself be confused, Rosamia!”
 “Ngh... if only Rosamia hadn't been defeated...!”
 
 @26500 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：去破折号
 > 「ばかな……ばかなばかなばかなぁ!!
 >  この俺が、奴よりも
-“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to him—
+“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to him?!
 ---
 >  劣っているというのかぁぁぁーっ!
 >  認めん! 認められるものかぁっ!!」
@@ -1034,13 +1054,15 @@ I doubt we can get through without running into the enemy.”
 “...”
 
 @26518 Quattro · クワトロ
+# 审校：精读：去破折号
 > 「やはり気になるか、将軍のことが?」
-“So you're still bothered about it—about the General?”
+“So you're still bothered about it, about the General?”
 
 @26519 Alan · アラン
+# 审校：精读：去破折号
 > 「……知っていて黙っていたとは、
 >  大尉も人が悪い」
-“...Keeping quiet when you knew—that's cruel of you, Captain.”
+“...Keeping quiet when you knew, that's cruel of you, Captain.”
 
 @26520 Shinobu · 忍
 > 「あん? なんだよ、どういうことだ?」
@@ -1051,8 +1073,9 @@ I doubt we can get through without running into the enemy.”
 “His full name is Alan Igor.”
 
 @26522 Masato · 雅人
+# 审校：精读：去破折号
 > 「イゴールって、まさか……」
-“Igor—you don't mean...”
+“Igor... you don't mean...”
 
 @26523 Alan · アラン
 > 「別に隠していたわけではないぞ。
@@ -1060,9 +1083,10 @@ I doubt we can get through without running into the enemy.”
 “I wasn't hiding it, you know. There simply was no need to bring it up.”
 
 @26524 Shinobu · 忍
+# 审校：精读：去破折号
 > 「……親子でレジスタンスやりながら、
 >  なんで別の組織だったんだよ」
-“...Father and son both in the resistance—so why were you in different organizations?”
+“...Father and son both in the resistance, so why were you in different organizations?”
 
 @26525 Alan · アラン
 > 「方法論の違いだ。
@@ -1129,8 +1153,9 @@ and get this ship destroyed.”
 “Enough!”
 
 @26535 Takeru · タケル
+# 审校：精读：隊長 与 26425 统一
 > 「隊長、俺は……」
-“Captain, I...”
+“Commander, I...”
 
 @26536 Kenji · ケンジ
 > 「お前自身にもわからんのだな、
@@ -1197,16 +1222,18 @@ We've already studied them thoroughly. Still, we must respond.
 I'll have the units stationed at the colonies assemble.”
 
 @26546 Wahl · ワール
-# 审校：ズール皇帝への敬称を「Your Majesty」から「Your Excellency」に修正（词表/设定上皇帝への呼称として統一）。
+# 审校：精读：对皇帝的称呼
 > 「皇帝、各戦線の
 >  定時報告であります」
-“Your Excellency, the scheduled reports from each front.”
+“Your Majesty, the scheduled reports from each front.”
 
 @26547 Emperor Zuul · ズール皇帝
 > 「うむ」
 “Mm.”
 
 @26548 Wahl · ワール
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ゾルバドス軍→Zorbados Army
 > 「宇宙時間1100現在
 >  イエロー戦線は85%制圧
 “As of 1100 space time, the Yellow Front is 85% suppressed.
@@ -1217,11 +1244,11 @@ Total victory appears imminent. The Violet Front is
 ---
 >  55%制圧、もっか一気に
 >  進攻中。オレンジ戦線は
-55% suppressed and advancing at full speed. The Orange Front—
+55% suppressed and advancing at full speed. On the Orange Front,
 ---
 >  たったいま、ゾルバドス軍が壊滅し
 >  完全勝利を得ました」
-just now, the Zorbados Army was annihilated and complete victory achieved.”
+the Zorbados Army was just now annihilated and complete victory achieved.”
 
 @26549 Emperor Zuul · ズール皇帝
 > 「おお、ご苦労であった」
@@ -1271,13 +1298,14 @@ he's sent out an army to subjugate Earth...)
 “Bird... bird, where? Bird? Bird, come here.”
 
 @26557 Wahl · ワール
+# 审校：精读：去破折号
 > 「お前か。スパイがいるらしいとは
 >  聞いたが、こいつでは頭が弱すぎて
 “So it's you. I'd heard there was a spy, but this one's too feeble-minded to
 ---
 >  話にならん。おい、貴様、
 >  さっさと失せろ!」
-be worth talking to. Hey, you—get lost, now!”
+be worth talking to. Hey, you, get lost, now!”
 
 @26558 Marg · マーグ
 > (マーズ、お前に会いたい。オレは
@@ -1320,13 +1348,14 @@ You had me completely fooled.”
 “Give it up! The crime of rebelling against Emperor Zuul is grave.”
 
 @26564 Emperor Zuul · ズール皇帝
+# 审校：精读：去破折号、人名
 > 「マーグ、いままでよくも
 >  このワシをたばかってくれた
 “Marg, you've done well deceiving me all this time.
 ---
 >  マーズとは血を分けた兄弟、
 >  さぞかし会いたいだろうな。いいだろう
-You and Mars are brothers by blood—you must be dying to see him. Very well.
+You and Mars are brothers by blood, so you must be dying to see him. Very well.
 ---
 >  会わせてやろう。ただし……
 >  マーズを殺すために」
@@ -1443,17 +1472,19 @@ And Banjo's gone off somewhere and hasn't come back.”
 “Yeah. Once we're in battle, there's no time to be thinking about that.”
 
 @26584 Roux · ルー
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
-“Then that's fine. Oh, right—Astonaige said he wants to talk to you
+“Then that's fine. Oh, right, Astonaige said he wants to talk to you
 ---
 >  回収したヴァイローズの件で
 >  話があるっていってたわよ」
 about the Virose we recovered.”
 
 @26585 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 对 Astonaige 是平辈间的粗放口吻，原文「何の用だ」是直接问“什么事”，现有译文“what do you want”语气偏生硬质问，改为更自然的“what do you need”贴合其直率但非敌意的语气。
 > 「アストナージ、何の用だ?」
-“Astonaige, what do you want?”
+“Astonaige, what do you need?”
 
 @26586 Astonaige · アストナージ
 > 「おう、来たな。
@@ -1466,6 +1497,7 @@ about the Virose we recovered.”
 “Th-this is... Astonaige, what on earth is this...”
 
 @26588 Astonaige · アストナージ
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
 “I found this data while examining the Virose. It seems that your
@@ -1475,14 +1507,16 @@ about the Virose we recovered.”
 Earthgain and the Virose were originally one and the same.”
 
 @26589 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「俺のアースゲインと、{PartnerNick}の
 >  ヴァイローズが……」
 “My Earthgain and {PartnerNick}'s Virose...”
 
 @26590 Astonaige · アストナージ
+# 审校：精读：去破折号
 > 「スーパー・アースゲインといったところかな
 >  かなりパワーアップするようだ
-“I'd call it the Super Earthgain—it looks like it'll get a considerable power boost.
+“I'd call it the Super Earthgain. It looks like it'll get a considerable power boost.
 ---
 >  操縦関連のシステムはいじらなくて
 >  すむから、俺たちでもなんとかできるが、
@@ -1581,6 +1615,7 @@ lover hostage and forced him to take part in the operation.”
 That can't be.”
 
 @26605 Alan · アラン
+# 审校：精读：去破折号
 > 「バスクならやるな。普通なら
 >  命令拒否などには別の対応を
 “With Bask, it's possible. Normally, an army as an organization would handle
@@ -1591,7 +1626,7 @@ a refusal of orders differently. OZ is less an army and more
 ---
 >  私兵に近いのだろう。少なくとも
 >  バスクやジャミトフにとってはな」
-a private force—at least as far as Bask and Jamitov are concerned.”
+a private force. At least as far as Bask and Jamitov are concerned.”
 
 @26606 Ark · アーク（按段落 3DD1）
 > 「そうか……それであいつは戦死して
@@ -1644,6 +1679,7 @@ just doesn't sit right, does it?”
 and the woman could be killed.”
 
 @26614 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「だけど……知ってしまった以上は
 >  放ってはおけないですよ
 “But... now that I know, I can't just leave it alone.
@@ -1654,7 +1690,7 @@ It's not like it's for his sake or that woman's. Letting someone who can do that
 ---
 >  できる奴がしていることを、黙って
 >  やらせておくって、罪悪感ありますよ」
-calmly get away with it—just staying silent about it—leaves me feeling guilty.”
+calmly get away with it, just staying silent about it, leaves me feeling guilty.”
 
 @26615 Alan · アラン
 > 「なるほど。君は、まるで救出作戦
@@ -1737,9 +1773,10 @@ and I can't have you climbing into the cockpit on your own!”
 “Come on, it's fine, isn't it?”
 
 @26630 Allenby · アレンビー
+# 审校：精读：去破折号
 > 「そおよ、固いこといいっこなし!
 >  そういえばねぇドモン
-“That's right, no being so stiff! Oh, that reminds me, Domon—
+“That's right, no being so stiff! Oh, that reminds me, Domon,
 ---
 >  ネオホンコンの屋台でさ、
 >  ひと口食べるたびに

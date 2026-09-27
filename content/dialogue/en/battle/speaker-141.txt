@@ -1,158 +1,242 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7140 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，1/15）
+# 审校：帝王腔，不用缩写
 > 「生かしては帰さぬ!」
-“I won't let you leave alive!”
+“You will not leave here alive!”
 
 @7141 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，2/15）
 > 「フハハハハハハッ!」
 “Fuhahahahahaha!”
 
 @7142 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，3/15）
 > 「ばかめぇ!」
 “Fools!”
 
 @7143 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，4/15）
 > 「ハーッハッハッハッハッ!」
 “Hahahahahahaha!”
 
 @7144 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，5/15）
 > 「死ねぃ!」
 “Die!”
 
 @7145 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，6/15）
 > 「フハッ、ハハハハハッ!」
 “Fuhah, hahahahaha!”
 
 @7146 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，7/15）
+# 审校：不用缩写
 > 「あきらめの悪い奴めっ!」
-“You just don't know when to quit!”
+“You do not know when to quit!”
 
 @7147 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，8/15）
 > 「しぶとい奴め!」
 “Persistent wretch!”
 
 @7148 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，9/15）
+# 审校：更像帝王
 > 「ワシの力を思い知るがいい!」
-“You'd best learn what my power truly is!”
+“Know the full extent of my power!”
 
 @7149 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，10/15）
 > 「おそれを知らぬ奴め!」
 “You know no fear, fool!”
 
 @7150 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，11/15）
 > 「死んで自分の愚かさをしれ!」
 “Die, and learn your own foolishness!”
 
 @7151 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，12/15）
 > 「宇宙に生きる命はワシあっての
 >  命だ!」
 “Every life in space exists only by my grace!”
 
 @7152 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，13/15）
 > 「自分の無力を思い知れ!」
 “Know your own helplessness!”
 
 @7153 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，14/15）
 > 「死ぬがいい、ムシケラども!」
 “Die, you insects!”
 
 @7154 Emperor Zuul · ズール皇帝
+# 触发：攻击（通用，15/15）
 > 「ワシは宇宙の帝王だ!!」
 “I am the Emperor of the universe!!”
 
 @7155 Emperor Zuul · ズール皇帝
+# 触发：被击坠（通用，1/2）
+# 审校：不用缩写
 > 「なんだと!? こんなばかなぁぁぁぁ」
-“What?! This can't beeeee!”
+“This cannot beeeee!”
 
 @7156 Emperor Zuul · ズール皇帝
+# 触发：被击坠（通用，2/2）
+# 审校：なんだと 不是“你说什么”
 > 「な、なんだとぉぉぉぉ!?」
-“W-what did you saaaay?!”
+“Wh-whaaaat?!”
 
 @7157 Emperor Zuul · ズール皇帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ぐぅぅ、ワシは死なんぞ!」
 “Guh, I will not die!”
 
 @7158 Emperor Zuul · ズール皇帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「うおぉぉぉぉぁぁ!?」
 “Uwooooooah?!”
 
 @7159 Emperor Zuul · ズール皇帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：不用缩写
 > 「うおぉぉ!? 許さんぞこの
 >  ムシケラどもがぁっ!」
-“Uwooo?! I won't forgive this, you insects!”
+“Uwooo?! I will not forgive this, you insects!”
 
 @7160 Emperor Zuul · ズール皇帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ぬうぅぅ許さん、許さんぞ!!」
 “Ngh, unforgivable, unforgivable!!”
 
 @7161 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 > 「ぬぅおぅぁぁっ!」
 “Nghwaaah!”
 
 @7162 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「なに!?」
 “What?!”
 
 @7163 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「ぐぅっ、よくもこのワシに
 >  逆らいおったな!」
 “Guh, how dare you defy me!”
 
 @7164 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 > 「おおぉっ!?」
 “Oooh?!”
 
 @7165 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：こしゃくな＝放肆
 > 「ぬぅっこしゃくな!」
-“Ngh, how infuriating!”
+“Ngh, insolent worm!”
 
 @7166 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「ムシケラがぁ!」
 “You insect!”
 
 @7167 Emperor Zuul · ズール皇帝
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：与 7140 统一
 > 「おのれ! 生かしては帰さん!」
-“Curse you! I won't let you leave alive!”
+“Curse you! You will not leave here alive!”
 
 @7168 Emperor Zuul · ズール皇帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「フハハハハ、効かぬわ!」
 “Fuhahahaha, it has no effect!”
 
 @7169 Emperor Zuul · ズール皇帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「愚か者めがぁ!」
 “You fool!”
 
 @7170 Emperor Zuul · ズール皇帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「お前の力はそんなものか」
 “Is that all the power you have?”
 
 @7171 Emperor Zuul · ズール皇帝
+# 触发：回避（通用，1/2）
+# 审校：不用缩写
 > 「そんなものでワシが倒せるとでも
 >  思うのか!?」
-“You think that's enough to defeat me?!”
+“You think that can defeat me?!”
 
 @7172 Emperor Zuul · ズール皇帝
+# 触发：回避（通用，2/2）
 > 「フッハッハッハッ」
 “Fuhahahaha!”
 
 @7173 Emperor Zuul · ズール皇帝
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
 > 「ハハハハ、ムシケラが」
 “Hahahaha, you insect.”
 
 @7174 Emperor Zuul · ズール皇帝
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：不用缩写
 > 「フハハハハッ、このワシにはきかんぞ」
-“Fuhahahaha, it won't work on me.”
+“Fuhahahaha, that does nothing to me.”
 
 @7175 Emperor Zuul · ズール皇帝
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
 > 「ハーッハッハッハッハッ!!」
 “Hahahahahahaha!!”
 
 @7176 Emperor Zuul · ズール皇帝
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：帝王腔
 > 「ばかな!? このワシがっ!」
-“Impossible?! Me?!”
+“Impossible?! Not I!”
 
 @7177 Emperor Zuul · ズール皇帝
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：不用缩写
 > 「なんと、届かぬというのか!?
 >  おのれぃ!」
-“What, it can't reach?! Curse you!”
+“What, it cannot reach?! Curse you!”
+
+@14413 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+> 「マーズ! 裏切り者は死ね!」
+“Mars! Traitors must die!”
+
+@14414 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+> 「ワシに逆らった者は死ぬのだ、
+>  マーズ!」
+“Those who defy me die, Mars!”
+
+@14415 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+# 审校：不用缩写
+> 「あきらめの悪い奴めっ!」
+“You do not know when to quit!”
+
+@14416 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+# 审校：与 7140 统一
+> 「生かしては帰さぬ!」
+“You will not leave here alive!”
+
+@14417 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+# 审校：原文“フハハハハハハッ!”笑声拼写更接近 Fwahahaha，初稿 Fuhahaha 不够自然，改为 Fwahahahahaha。
+> 「フハハハハハハッ!」
+“Fwahahahahaha!”
+
+@14418 Emperor Zuul · ズール皇帝
+# 触发：对手驾驶员〈タケル〉
+> 「ばかめぇ!」
+“You fool!”

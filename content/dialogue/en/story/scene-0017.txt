@@ -1,47 +1,57 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @19829 Roux · ルー
+# 审校：补全整条台词的外层引号
 > 「艦長、イゴール将軍から
 >  通信が入っています」
 “Captain, we're receiving a communication from General Igor.”
 
 @19830 Beauty · ビューティ
+# 审校：ライフ 统一写作 LIFE；补引号
 > 「艦長、
 >  ライフのイゴール将軍から通信よ」
-“Captain, there's a communication from General Igor on the line.”
+“Captain, there's a communication from General Igor of LIFE.”
 
 @19831 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「イゴール将軍から? まわしてくれ」
 “From General Igor? Put him through.”
 
 @19832 Igor · イゴール
+# 审校：补全整条台词的外层引号
 > 「おお、ブライト中佐。
 >  そちらもなかなか、大変なようだな」
 “Ah, Lieutenant Colonel Bright. Things seem quite difficult on your end as well.”
 
 @19833 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「はい。連中の策略に、
 >  はまってしまいました」
 “Yes. We fell right into their scheme.”
 
 @19834 Igor · イゴール
+# 审校：补全整条台词的外层引号
 > 「その件の影響については我々の
 >  方で多少押さえてはいるがな」
 “We've managed to contain some of the fallout from that incident on our side, at least.”
 
 @19835 Igor · イゴール
+# 审校：补全整条台词的外层引号
 > 「おお、中佐。万丈くんもいるのか」
 “Ah, Lieutenant Colonel. So Banjo is there too.”
 
 @19836 Banjo · 万丈
+# 审校：补全整条台词的外层引号
 > 「ごぶさたしております、将軍」
 “It's been a while, General.”
 
 @19837 Igor · イゴール
+# 审校：补全整条台词的外层引号
 > 「カラバも苦労しているようだな」
 “Karaba seems to be having a hard time of it as well.”
 
 @19838 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「それで、どのようなご用件です?」
 “So, what is it you need?”
 
@@ -63,6 +73,7 @@ the occupation army's suppression unit is attacking the city.
 So I want you to head there and rescue the citizens.”
 
 @19840 Quattro · クワトロ
+# 审校：补全整条台词的外层引号
 > 「しかし、我々も補給をしませんと」
 “But we need to resupply as well.”
 
@@ -93,15 +104,18 @@ we'll head for Kansas City.”
 Understood. We'll head for Kansas City.”
 
 @19844 Igor · イゴール
+# 审校：补全整条台词的外层引号
 > 「頼んだぞ」
 “I'm counting on you.”
 
 @19845 Kamille · カミーユ
+# 审校：补全整条台词的外层引号
 > 「アムロさん、もうすぐ補給部隊と
 >  合流だそうですよ」
 “Amuro, it looks like we'll be linking up with the supply unit soon.”
 
 @19846 Amuro · アムロ
+# 审校：补全整条台词的外层引号
 > 「……わかっている。あとで行く」
 “...I know. I'll go later.”
 
@@ -123,16 +137,21 @@ Letting some kid pilot the Gundam...”
 Sara Yuki, Ryo Shiba, and Masato Shikibu, reporting for duty.”
 
 @19849 Bright · ブライト
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「ご苦労。まさか獣戦機隊が
 >  無事だったとはな。よく来てくれた」
 “Good work. I never thought the Cyber Beast Force was still intact. I'm glad you came.”
 
 @19850 Sara · 沙羅
+# 审校：补全整条台词的外层引号
 > 「イゴール将軍の指示で、一旦
 >  解散して身を隠してましたから」
 “On General Igor's orders, we disbanded and went into hiding for a while.”
 
 @19851 Bright · ブライト
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「そうか……獣戦機隊は4名では
 >  なかったか? 1人たりないようだが」
 “I see... Wasn't the Cyber Beast Force four people? Looks like you're one short.”
@@ -156,21 +175,26 @@ Sara's been so lonely it's a real handful.”
 I'll drag him back by the neck if I have to.”
 
 @19854 Ryo · 亮
+# 审校：补全整条台词的外层引号
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「まったくあのバカはな。獣戦機隊も
 >  4機そろわなけりゃ、さまにならん」
 “That idiot, honestly. The Cyber Beast Force can't be complete without all four machines.”
 
 @19855 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「……そうか。それで、
 >  補給物資の方はどうなっている?」
 “...I see. So, how are the supplies coming along?”
 
 @19856 Masato · 雅人
+# 审校：补全整条台词的外层引号
 > 「それなら、カラバのベルトーチカっていう
 >  美人さんがやってくれてますよ」
 “That's being handled by a real beauty from Karaba named Beltorchika.”
 
 @19857 Sara · 沙羅
+# 审校：补全整条台词的外层引号
 > 「あんた、相変わらずそればっかりだね」
 “You never change, do you? It's always that with you.”
 
@@ -183,33 +207,40 @@ I'll drag him back by the neck if I have to.”
 so it seems worth doing.”
 
 @19859 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「艦長、搬入した物資のチェック
 >  終了しました」
-“Captain, I've finished checking the supplies we loaded.”
+“Captain, I've finished checking the supplies we brought in.”
 
 @19860 Bright · ブライト
+# 审校：补全整条台词的外层引号
 > 「ああ、ご苦労さま。少し休んでくれ
 >  アムロも来たな、紹介しよう」
 “Ah, good work. Take a little rest. Amuro, you're here too. Let me introduce you.”
 
 @19861 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「カラバのベルトーチカ・イルマです」
 “I'm Beltorchika Irma, from Karaba.”
 
 @19862 Amuro · アムロ
+# 审校：补全整条台词的外层引号
 > 「よろしく。アムロ・レイです」
 “Nice to meet you. I'm Amuro Ray.”
 
 @19863 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「アムロ……あなたが。あら?
 >  この香り……ヘレンヘレンでしょ」
 “Amuro... so you're the one. Oh? This scent... it's Helen Helen, isn't it?”
 
 @19864 Amuro · アムロ
+# 审校：补全整条台词的外层引号
 > 「え?」
 “Huh?”
 
 @19865 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「あたしの好きなセッケン」
 “My favorite soap.”
 
@@ -223,6 +254,7 @@ so it seems worth doing.”
 (Don't ask me.)
 
 @19868 Beltorchika · ベルトーチカ
+# 审校：补全整条台词的外层引号
 > 「……あなたがアムロ・レイ? ふぅん、
 >  ニュータイプっていっても普通の人ね」
 “...You're Amuro Ray? Hmm, even if you're a Newtype, you're just an ordinary person.”
@@ -232,17 +264,18 @@ so it seems worth doing.”
 “Sorry about that.”
 
 @19870 Beltorchika · ベルトーチカ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「あたしね、アムロ・レイってもっと
 >  好戦的なタイプと思っていたの
 “You know, I thought Amuro Ray would be a much more warlike type.
 ---
 >  安心したわ。あたし、ライフとか
 >  カラバが帝国と同じように
-I'm relieved. I was afraid that Life, or Karaba, might be just like the Empire—
+I'm relieved. I was afraid that LIFE, or Karaba, might be just like the Empire...
 ---
 >  ううん、スペシャルズみたいに、
 >  大義名分を隠れみのに平気で
-no, like the Specials—hiding behind some noble cause while calmly
+no, like the Specials... hiding behind some noble cause while calmly
 ---
 >  同じ地球人を殺すような
 >  集団だったらどうしようって
@@ -274,8 +307,9 @@ I was scared.”
 “Who's that man?”
 
 @19876 Amuro · アムロ
+# 审校：精读：大尉 统一 Captain
 > 「解放戦線の、クワトロ大尉だよ」
-“That's Lieutenant Quattro, from the Liberation Front.”
+“That's Captain Quattro, from the Liberation Front.”
 
 @19877 Beltorchika · ベルトーチカ
 > 「……恐い感じの人ね。あの人には、
@@ -283,9 +317,10 @@ I was scared.”
 “...He seems scary. I don't sense any peaceful intelligence in him.”
 
 @19878 Amuro · アムロ
+# 审校：精读：大尉 统一 Captain
 > 「クワトロ大尉はそんな人じゃない。
 >  本質的にはやさしい人だ」
-“Lieutenant Quattro isn't like that. Deep down, he's a gentle person.”
+“Captain Quattro isn't like that. Deep down, he's a gentle person.”
 
 @19879 Beltorchika · ベルトーチカ
 > 「……あたし、何か悪いこといいました?」
@@ -360,18 +395,20 @@ is a prototype, after all, so it's got plenty of problems with its software too.
 “It's about time. All hands, stand by at first battle stations!”
 
 @19893 Quattro · クワトロ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「カミーユ、エマ特尉の保護観察
 >  をとく。戦闘に参加させろ」
-“Kamille, I'm lifting Ensign Emma's probation. Let her join the battle.”
+“Kamille, I'm lifting Special Lieutenant Emma's probation. Let her join the battle.”
 
 @19894 Kamille · カミーユ
 > 「はい!」
 “Yes, sir!”
 
 @19895 Quattro · クワトロ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「万丈くん、エマ特尉の
 >  保護観察をとくが、いいか」
-“Banjo, I'm lifting Ensign Emma's probation. Is that all right?”
+“Banjo, I'm lifting Special Lieutenant Emma's probation. Is that all right?”
 
 @19896 Banjo · 万丈
 > 「いいでしょう。彼女なら大丈夫」
@@ -634,13 +671,14 @@ I am Tekkoki of the Hyakki Clan. Now, face me fair and square!”
 “What?! Ngh, that Gura, he was still hiding this much fighting strength.”
 
 @19943 Ryoma · リョウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちっ、まだこんなに来るのか。おい、
 >  鉄甲鬼とかいったな。帝国の
 “Tch, there are still this many coming? Hey, you, Tekkoki or whatever. Bringing the Empire's
 ---
 >  無人機まで連れてきて、どこが
 >  正々堂々だというんだ!」
-unmanned machines along — where's the fair and square in that?!”
+unmanned machines along... where's the fair and square in that?!”
 
 @19944 Tekkoki · 鉄甲鬼
 > 「クソッ、こんな戦いは俺のプライドが
@@ -854,8 +892,9 @@ so almost nothing remains.”
 “Oh ho, a rare bit of sound reasoning from you.”
 
 @19983 Koji · 甲児
+# 审校：用户确认：直引号→弯引号
 > 「めずらしいは余計だい」
-“You didn't have to say 'rare.'”
+“You didn't have to say ‘rare.’”
 
 @19984 Banjo · 万丈
 > 「しかたがないな。
@@ -877,9 +916,10 @@ so almost nothing remains.”
 “I suppose we've no choice. All right, the Audhumla will head for Hong Kong.”
 
 @19988 Masato · 雅人
+# 审校：原文是对万丈说沙罗擅自行动不妥，现有译文误将说话对象当成沙罗本人。
 > 「ちょっと沙羅
 >  今勝手に出ちゃまずいんじゃない?」
-“Hey, Sara, isn't it bad for you to just go off on your own right now?”
+“Hey, isn't it bad for Sara to just go off on her own right now?”
 
 @19989 Sara · 沙羅
 > 「すぐに戻ってくるよ。ちょっと
@@ -907,8 +947,9 @@ so almost nothing remains.”
 “Whoa there. You're heading out in the shuttle, right? I brought you the key card.”
 
 @19994 Sara · 沙羅
+# 审校：沙罗口吻强势泼辣，原文「気がきくじゃないか」带调侃意味，现有译文过于平淡。
 > 「サンキュ。気がきくじゃないか」
-“Thanks. You're pretty thoughtful.”
+“Thanks. Aren't you thoughtful.”
 
 @19995 Duo · デュオ
 > 「へへっ、お礼はいらないぜ」
@@ -1163,30 +1204,34 @@ I found myself thinking... just what were we fighting for all this time?”
 “...Damn it...”
 
 @20039 Ark · アーク（按段落 3DD1）
+# 审校：原文「こんなところで」指地点，译文“in a place like this”过于生硬，改为更自然的口语表达。
 > 「デュオ……? こんなところで何を?」
-“Duo...? What are you doing in a place like this?”
+“Duo...? What are you doing here?”
 
 @20040 Selain · セレイン（按段落 3DD2）
+# 审校：同上，将“in a place like this”改为更简洁自然的“here”，符合军人直接的口吻。
 > 「ん? デュオ・マックスウェル、
 >  こんなところで何をしている?」
-“Hm? Duo Maxwell, what are you doing in a place like this?”
+“Hm? Duo Maxwell, what are you doing here?”
 
 @20041 Brad · ブラッド（按段落 3DD3）
+# 审校：原文「何やってんだよ」是随意的口语，译文“What are you up to?”语气偏弱，改为更直接的“What are you doing here?”。
 > 「お? デュオじゃないか。何やってんだよ」
-“Oh? If it isn't Duo. What are you up to?”
+“Oh? If it isn't Duo. What are you doing here?”
 
 @20042 Manami · マナミ（按段落 3DD4）
 > 「あらデュオ。こんなところでどうしたの?」
 “Oh, Duo. What brings you here?”
 
 @20043 Duo · デュオ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「あんたか……いや、地球で見る月は
 >  キレイだなと思ってさ
 “It's you... No, I was just thinking the moon looks beautiful from Earth.
 ---
 >  コロニーじゃ月がはっきり見えすぎて、
 >  まるで墓場みたいだった
-From the colonies you could see the moon too clearly — it was like a graveyard.
+From the colonies you could see the moon too clearly... it was like a graveyard.
 ---
 >  帝国の基地もあったしな。俺は
 >  いつまでこの月を見ていられるのかなぁ
@@ -1194,4 +1239,4 @@ And there was an Imperial base there too. I wonder how much longer I'll get to l
 ---
 >  ……あいつは月なんか見やしないだろう
 >  けどな……」
-...Though I doubt she ever looks at the moon at all...”
+...Though I doubt that guy ever looks at the moon at all...”

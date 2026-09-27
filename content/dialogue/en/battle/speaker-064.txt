@@ -1,127 +1,169 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8504 Kacricon · カクリコン
+# 触发：攻击（通用，1/10）
 # 审校：“落ちろっ!!”是击坠敌人的攻击台词，Fall 过于生硬，改为更自然的战斗喊话。
 > 「落ちろっ!!」
 “Go down!”
 
 @8505 Kacricon · カクリコン
+# 触发：攻击（通用，2/10）
 > 「遅いんだよ!」
 “Too slow!”
 
 @8506 Kacricon · カクリコン
+# 触发：攻击（通用，3/10）
 > 「もらった!」
 “Got you!”
 
 @8507 Kacricon · カクリコン
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつでとどめだ!!」
-“This'll finish you!”
+“This’ll finish you!”
 
 @8508 Kacricon · カクリコン
+# 触发：攻击（通用，5/10）
 > 「いけぇっ!」
 “Go!”
 
 @8509 Kacricon · カクリコン
+# 触发：攻击（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「目障りなんだよ!!」
-“You're in my way!”
+“You’re in my way!”
 
 @8510 Kacricon · カクリコン
+# 触发：攻击（通用，7/10）
 > 「沈めっ!!」
 “Sink!”
 
 @8511 Kacricon · カクリコン
+# 触发：攻击（通用，8/10）
 > 「死ねよ!!」
 “Die!”
 
 @8512 Kacricon · カクリコン
+# 触发：攻击（通用，9/10）
 > 「くらえっ!!」
 “Take this!”
 
 @8513 Kacricon · カクリコン
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落としてやるぜ!」
-“I'll shoot you down!”
+“I’ll shoot you down!”
 
 @8514 Kacricon · カクリコン
+# 触发：被击坠（通用，1/2）
 > 「ちいっ!! しくじった!」
 “Tch! I messed up!”
 
 @8515 Kacricon · カクリコン
+# 触发：被击坠（通用，2/2）
 > 「なにっ!?」
 “What?!”
 
 @8516 Kacricon · カクリコン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ぐぅっ! なんてパワーだ!?」
 “Guh! What power!”
 
 @8517 Kacricon · カクリコン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ダメージを受けすぎた!」
-“Ngh! I've taken too much damage!”
+“Ngh! I’ve taken too much damage!”
 
 @8518 Kacricon · カクリコン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うおっ!? い、いかん!!」
 “Whoa?! Th-this is bad!”
 
 @8519 Kacricon · カクリコン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：“こいつ、動けっ!!”是对机体的喝令，damn you 会误指对手，改为 damn it 更自然。
 > 「くそっ! こいつ、動けっ!!」
 “Damn! Move, damn it!”
 
 @8520 Kacricon · カクリコン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、油断できんな」
-“Tch, I can't let my guard down.”
+“Tch, I can’t let my guard down.”
 
 @8521 Kacricon · カクリコン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なかなかやる!!」
-“Y-you're pretty good!”
+“Y-you’re pretty good!”
 
 @8522 Kacricon · カクリコン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：なんの＝不算什么
 > 「なんの、まだまだっ!」
-“No way, not yet!”
+“Ha, I’m just getting started!”
 
 @8523 Kacricon · カクリコン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「つっ! まともに当たっちまったか……」
 “Tch! Took a direct hit...”
 
 @8524 Kacricon · カクリコン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「ぐおっ! 当たっただと!?」
 “Gah! It hit?!”
 
 @8525 Kacricon · カクリコン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ふん、そんなもの!」
 “Hmph, is that all?”
 
 @8526 Kacricon · カクリコン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「この程度のダメージなど!」
 “Damage like this is nothing!”
 
 @8527 Kacricon · カクリコン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな、そんな攻撃は!」
-“That kind of attack won't work!”
+“That kind of attack won’t work!”
 
 @8528 Kacricon · カクリコン
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるかよっ!!」
-“Like that'll hit!”
+“Like that’ll hit!”
 
 @8529 Kacricon · カクリコン
+# 触发：回避（通用，2/4）
+# 审校：甘い统一
 > 「甘いぜっ!!」
-“Too soft!”
+“Too naive!!”
 
 @8530 Kacricon · カクリコン
+# 触发：回避（通用，3/4）
 > 「なんのっ!」
 “No problem!”
 
 @8531 Kacricon · カクリコン
+# 触发：回避（通用，4/4）
 > 「そこか!」
 “There!”
 
 @8532 Kacricon · カクリコン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かねえっつってんだよ!!」
-“I told you it won't work!”
+“I told you it won’t work!”
 
 @8533 Kacricon · カクリコン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ちっ、弾切れか……」
 “Tch, out of ammo...”
 
 @8534 Kacricon · カクリコン
+# 触发：射程外，无法反击（通用，1/1）
 > 「くそっ! この距離では……」
 “Damn! At this range...”

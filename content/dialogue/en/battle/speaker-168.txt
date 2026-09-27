@@ -1,203 +1,294 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9392 Sara · 沙羅
+# 触发：攻击（通用，1/13）
 > 「そこかぁっ!」
 “There you are!”
 
 @9393 Sara · 沙羅
+# 触发：攻击（通用，2/13）
 > 「くらいなっ!!」
 “Take this!!”
 
 @9394 Sara · 沙羅
+# 触发：攻击（通用，3/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめんじゃないわよっ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @9395 Sara · 沙羅
+# 触发：攻击（通用，4/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ざけんじゃないよ!!」
-“Don't mess with me!!”
+“Don’t mess with me!!”
 
 @9396 Sara · 沙羅
+# 触发：攻击（通用，5/13）
 > 「くらいなよ!!」
 “Eat this!!”
 
 @9397 Sara · 沙羅
+# 触发：攻击（通用，6/13）
 > 「くらいなっ!!」
 “Take this!!”
 
 @9398 Sara · 沙羅
+# 触发：攻击（通用，7/13）
 > 「このぉ!」
 “Why you!”
 
 @9399 Sara · 沙羅
+# 触发：攻击（通用，8/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうっ!?」
-“How's this?!”
+“How’s this?!”
 
 @9400 Sara · 沙羅
+# 触发：攻击（通用，9/13）
 > 「いくよっ!!」
 “Here I go!!”
 
 @9401 Sara · 沙羅
+# 触发：攻击（通用，10/13）
 > 「もらった!」
 “Got you!”
 
 @9402 Sara · 沙羅
+# 触发：攻击（通用，11/13）
 > 「これならどうだい!」
 “How about this!”
 
 @9403 Sara · 沙羅
+# 触发：攻击（通用，12/13）
 > 「そこっ!」
 “There!”
 
 @9404 Sara · 沙羅
+# 触发：攻击（通用，13/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きっちりとカタをつけてやる!」
-“I'll finish this for good!”
+“I’ll finish this for good!”
 
 @9405 Sara · 沙羅
+# 触发：被击坠（通用，1/4）
 > 「きゃあああっ!」
 “Kyaaaa!!”
 
 @9406 Sara · 沙羅
+# 触发：被击坠（通用，2/4）
+# 审校：被击坠情境
 > 「くっ! やられたっ!」
-“Ngh! I'm hit!”
+“Ngh! They got me!”
 
 @9407 Sara · 沙羅
+# 触发：被击坠（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまった!」
-“D-Damn!”
+“D-damn!”
 
 @9408 Sara · 沙羅
+# 触发：被击坠（通用，4/4）
+# 审校：原文单个感叹号
 > 「ああっ!? 忍っ、雅人っ、
 >  亮ーっ!」
-“Ah?! Shinobu, Masato, Ryo!!”
+“Ah?! Shinobu, Masato, Ryo!”
 
 @9409 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! も、もたない!?」
-“Ngh! I-I can't hold out?!”
+“Ngh! I-I can’t hold out?!”
 
 @9410 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
+# 审校：补全省略
 > 「くっ! ダメージが!」
-“Ngh! The damage!”
+“Ngh! The damage’s too much!”
 
 @9411 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
+# 审校：英文不用波浪号
 > 「き、効いたぁ～」
-“Th-That hurt~”
+“Th-that one huuurt...”
 
 @9412 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
+# 审校：原文是 !?
 > 「うっ! な、なんてパワーだい!?」
-“Ugh! Wh-What power!”
+“Ugh! Wh-what kind of power is that?!”
 
 @9413 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「や、やる! さすがは……」
-“N-Not bad! As expected of...”
+“N-not bad! As expected of...”
 
 @9414 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
 > 「ちっくしょうっ!」
 “Damn it!”
 
 @9415 Sara · 沙羅
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
 > 「ああっ!」
 “Ah!”
 
 @9416 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 > 「くっ! やるじゃないの!」
 “Ngh! Not bad at all!”
 
 @9417 Sara · 沙羅
-# 审校：原译“So you wanna play rough!”偏离原文“やってくれんじゃないのさ”，改为更贴近反击语气的表达。
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：やってくれんじゃないのさ不是“付出代价”
 > 「きゃっ! やってくれんじゃないのさ!」
-“Kyah! You're gonna pay for that!”
+“Kyah! Well, aren’t you something!”
 
 @9418 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「くっ!! やったねっ!!」
 “Ngh!! You got me!!”
 
 @9419 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだまだ! この程度じゃ
 >  やられないよ!!」
-“Not yet! That's not enough to take me down!!”
+“Not yet! That’s not enough to take me down!!”
 
 @9420 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもので、やられるものか!」
-“You think that's gonna finish me?!”
+“You think that’s gonna finish me?!”
 
 @9421 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「うっ!! 何さ、こんな攻撃!!」
 “Ugh!! What kind of attack is that?!”
 
 @9422 Sara · 沙羅
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なにすんのさ!」
-“What do you think you're doing?!”
+“What do you think you’re doing?!”
 
 @9423 Sara · 沙羅
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 > 「この程度のダメージ!!」
 “This little damage?!”
 
 @9424 Sara · 沙羅
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：与 9417 区分
 > 「きゃっ! やったわねえっ!」
-“Kyah! You'll pay for that!”
+“Kyah! Why, you!”
 
 @9425 Sara · 沙羅
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないね!」
-“That doesn't hurt me!”
+“That doesn’t hurt me!”
 
 @9426 Sara · 沙羅
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものなのかい!?」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @9427 Sara · 沙羅
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ～あ、なっちゃいないね」
-“Oh, please. You're hopeless.”
+“Oh, please. You’re hopeless.”
 
 @9428 Sara · 沙羅
+# 触发：回避（通用，1/6）
+# 审校：回避情境
 > 「へたくそっ!」
-“You're terrible!”
+“Terrible aim!”
 
 @9429 Sara · 沙羅
-# 审校：“あたんないよ”是“当たんないよ”的口语缩略，意为“打不中”，原译“You missed”把主语弄成对方，改为“You can't hit me”更准确。
+# 触发：回避（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたんないよ!!」
-“You can't hit me!!”
+“You can’t hit me!!”
 
 @9430 Sara · 沙羅
-# 审校：与 L13 相同，原文“あたらないよ”意为“打不中我”，原译“You missed”不准确。
+# 触发：回避（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたらないよ!!」
-“You can't hit me!!”
+“You can’t hit me!!”
 
 @9431 Sara · 沙羅
+# 触发：回避（通用，4/6）
 > 「どこ狙ってるのさ!」
 “What are you aiming at?!”
 
 @9432 Sara · 沙羅
+# 触发：回避（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたしに当てようなんて、
 >  10年早いんだよ!」
-“You're ten years too early to hit me!”
+“You’re ten years too early to hit me!”
 
 @9433 Sara · 沙羅
+# 触发：回避（通用，6/6）
+# 审校：回避情境，Gotcha 像打中对方
 > 「やったね!」
-“Gotcha!”
+“Nailed it!”
 
 @9434 Sara · 沙羅
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっていってんじゃん!」
-“I told you it's useless!”
+“I told you it’s useless!”
 
 @9435 Sara · 沙羅
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダよ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @9436 Sara · 沙羅
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄な攻撃なんだよ!」
-“Your attack's pointless!”
+“Your attack’s pointless!”
 
 @9437 Sara · 沙羅
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：Damn?! 不自然
 > 「しまった!? 残弾がない!!」
-“Damn!? I'm out of ammo!!”
+“What?! I’m out of ammo!!”
 
 @9438 Sara · 沙羅
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だめ、反撃不可能!」
-“No good, I can't counter!”
+“No good, I can’t counter!”
 
 @9439 Sara · 沙羅
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうなってんの!?」
-“What's going on?!”
+“What’s going on?!”
 
 @9440 Sara · 沙羅
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だめ、反撃不可能!」
-“No good, I can't counter!”
+“No good, I can’t counter!”
+
+@14809 Sara · 沙羅
+# 触发：使用〈5連ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+# 审校：更像人话
+> 「ミサイルの投げキッス、受けて
+>  もらおうじゃん」
+“Blowing you a kiss, missile-style. Catch!”
+
+@14810 Sara · 沙羅
+# 触发：使用〈5連ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+# 审校：原译 Come on 语气偏催促，改为 Here 更自然，符合送礼物的口吻。
+> 「さぁミサイルのプレゼントだよ」
+“Here, a present of missiles for you!”

@@ -1,161 +1,218 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13897 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，1/10）
 > 「もらったな!」
 “Got you now!”
 
 @13898 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，2/10）
 > 「沈めっ!」
 “Sink!”
 
 @13899 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，3/10）
+# 审校：落ちろ统一
 > 「落ちろっ!!」
-“Fall!”
+“Go down!!”
 
 @13900 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @13901 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，5/10）
+# 审校：“结果你”偏方言
 > 「こいつでとどめだ!!」
-“This is the finishing blow!”
+“This is the finishing blow!!”
 
 @13902 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「甘く見るなっ!!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @13903 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，7/10）
 > 「死ねっ!」
 “Die!”
 
 @13904 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，8/10）
 > 「くらえっ!」
 “Eat this!”
 
 @13905 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，9/10）
 > 「行くぞっ!」
 “Here I come!”
 
 @13906 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだ!!」
-“How's this?!”
+“How’s this?!”
 
 @13907 Neo Zeon Soldier · ネオジオン兵
+# 触发：被击坠（通用，1/2）
 > 「な……バカなっ!?」
 “Wha... impossible?!”
 
 @13908 Neo Zeon Soldier · ネオジオン兵
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられただと!?」
-“I've been hit?!”
+“I’ve been hit?!”
 
 @13909 Neo Zeon Soldier · ネオジオン兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「ぐうっ! バカなっ、
 >  これ程のパワーが!?」
 “Guuh! Impossible, this much power?!”
 
 @13910 Neo Zeon Soldier · ネオジオン兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 > 「な、なんだと!? この力……
 >  化け物か!?」
 “Wh-what?! This strength... is it a monster?!”
 
 @13911 Neo Zeon Soldier · ネオジオン兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「うおおっ!? こ、こいつは……」
 “Whoaah?! Th-this is...”
 
 @13912 Neo Zeon Soldier · ネオジオン兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何っ!? お、押されている!?」
-“What?! I-I'm being pushed back?!”
+“What?! I-I’m being pushed back?!”
 
 @13913 Neo Zeon Soldier · ネオジオン兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「こ、こいつら、ただもんじゃない!!」
 “Th-these guys are no ordinary foes!”
 
 @13914 Neo Zeon Soldier · ネオジオン兵
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ、このままですむと思うなっ!」
-“Tch, don't think this is over!”
+“Tch, don’t think this is over!”
 
 @13915 Neo Zeon Soldier · ネオジオン兵
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! この、黙ってやられるものか!」
-“Gwaah! Damn you, I won't go down quietly!”
+“Gwaah! Damn you, I won’t go down quietly!”
 
 @13916 Neo Zeon Soldier · ネオジオン兵
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 > 「くっ! やるな!」
 “Kuh! Not bad!”
 
 @13917 Neo Zeon Soldier · ネオジオン兵
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：なんの
 > 「うおっ! なんの、まだまだっ!」
-“Whoa! Nothing to it, I'm still going!”
+“Whoa! That’s nothing, I’m not done yet!”
 
 @13918 Neo Zeon Soldier · ネオジオン兵
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つうっ! こ、この程度でっ!」
-“Tch! Th-this much won't...!”
+“Ugh! Th-this is nothing!”
 
 @13919 Neo Zeon Soldier · ネオジオン兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 > 「ふん、その程度か!」
 “Hmph, is that all?!”
 
 @13920 Neo Zeon Soldier · ネオジオン兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな!」
-“That didn't hurt!”
+“That didn’t hurt!”
 
 @13921 Neo Zeon Soldier · ネオジオン兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「フ……うわさほどではないな!」
 “Heh... not as tough as the rumors say!”
 
 @13922 Neo Zeon Soldier · ネオジオン兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなものとはな……失望したぜ!」
-“So this is all you've got... I'm disappointed!”
+“So this is all you’ve got... I’m disappointed!”
 
 @13923 Neo Zeon Soldier · ネオジオン兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「しょせんその程度よ!」
 “Just as weak as expected!”
 
 @13924 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，1/6）
 > 「そこだ!」
 “There!”
 
 @13925 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはせん!」
-“It won't hit!”
+“It won’t hit!”
 
 @13926 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，3/6）
 > 「貴様らの攻撃パターンなど、
 >  お見通しよ!」
 “I see right through your attack patterns!”
 
 @13927 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，4/6）
+# 审校：回避情境的甘い
 > 「甘いな!」
-“Too soft!”
+“Too easy!”
 
 @13928 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かわしてみせる!」
-“I'll dodge it!”
+“I’ll dodge it!”
 
 @13929 Neo Zeon Soldier · ネオジオン兵
+# 触发：回避（通用，6/6）
 > 「来た……そこかっ!」
 “Here it comes... there!”
 
 @13930 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度のビームが効くか!」
-“A Beam like that won't work!”
+“A Beam like that won’t work!”
 
 @13931 Neo Zeon Soldier · ネオジオン兵
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ムダな攻撃を……」
 “What a pointless attack...”
 
 @13932 Neo Zeon Soldier · ネオジオン兵
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、弾切れか……」
 “Tch, out of ammo...”
 
 @13933 Neo Zeon Soldier · ネオジオン兵
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「くそっ! 弾切れだと!」
 “Damn! Out of ammo?!”
 
 @13934 Neo Zeon Soldier · ネオジオン兵
+# 触发：射程外，无法反击（通用，1/2）
 > 「射程距離外からだと!?
 >  意外とセコい手を使うやつだ」
 “Attacking from out of range?! He plays dirty.”
 
 @13935 Neo Zeon Soldier · ネオジオン兵
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ! 届かん!」
-“Damn! I can't reach him!”
+“Damn! I can’t reach him!”

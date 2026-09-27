@@ -1,68 +1,97 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6941 Howard · ハワード
+# 触发：攻击（通用，1/2）
 # 审校：原文「どうするか」是疑问语气，句末应加问号。
 > 「さて、どうするか」
 “Well then, what to do?”
 
 @6942 Howard · ハワード
+# 触发：攻击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「仕方あるまい」
-“It can't be helped.”
+“It can’t be helped.”
 
 @6943 Howard · ハワード
+# 触发：被击坠（通用，1/1）
 > 「くっ、総員退避だ!」
 “Ngh, all hands, evacuate!”
 
 @6944 Howard · ハワード
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エンジンが壊れたって構わん!」
-“I don't care if the engine's broken!”
+“I don’t care if the engine’s broken!”
 
 @6945 Howard · ハワード
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「左舷2番エンジンが
 >  爆発じゃと!?」
 “Port engine number two exploded?!”
 
 @6946 Howard · ハワード
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「第1、第3エンジンまでも
 >  大破か!?」
 “Engines one and three wrecked too?!”
 
 @6947 Howard · ハワード
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「被害報告など後でいい!
 >  燃料タンク周辺の消火いそげ!」
 “Damage reports can wait! Hurry, put out the fire around the fuel tanks!”
 
 @6948 Howard · ハワード
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：更自然
 > 「くっ、この船の質量では
 >  機敏には動けん」
-“Ngh, with this ship's mass, we can't move nimbly.”
+“Ngh, a ship this heavy can’t maneuver quickly.”
 
 @6949 Howard · ハワード
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：更像舰长口令
 > 「し、姿勢制御いそげ!」
-“H-hurry, attitude control!”
+“H-hurry, stabilize our attitude!”
 
 @6950 Howard · ハワード
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 > 「なに!?」
 “What?!”
 
 @6951 Howard · ハワード
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「各部損害を報告しろ」
 “Report damage to all sections.”
 
 @6952 Howard · ハワード
+# 触发：回避（通用，1/1）
+# 审校：回避情境：是己方脱离射线
 > 「射線をはずしたか……」
-“Missed the firing line, did we...”
+“Slipped out of their line of fire, did we...”
 
 @6953 Howard · ハワード
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：与 6952 同句
 > 「射線をはずしたか……」
-“Missed the firing line, did we...”
+“Slipped out of their line of fire, did we...”
 
 @6954 Howard · ハワード
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：ヤキがまわった 的意思
 > 「なんとエネルギー切れとは、
 >  ワシもヤキがまわったわい」
-“To think we're out of energy. I've gotten old.”
+“Out of energy, of all things. I must be getting senile.”
 
 @6955 Howard · ハワード
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この船では、あの距離の敵には
 >  攻撃できんな……」
-“With this ship, we can't attack an enemy at that range...”
+“With this ship, we can’t attack an enemy at that range...”
+
+@14399 Howard · ハワード
+# 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「威嚇射撃をするぞ」
+“We’ll fire warning shots.”

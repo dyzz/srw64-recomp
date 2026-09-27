@@ -1,97 +1,317 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11895 Hyoma · 豹馬
+# 触发：攻击（通用，1/5）
 > 「くたばれっ!!!」
 “Die!!!”
 
 @11896 Hyoma · 豹馬
+# 触发：攻击（通用，2/5）
 > 「いけーっ!!」
 “Go!!”
 
 @11897 Hyoma · 豹馬
+# 触发：攻击（通用，3/5）
 > 「くらえっ!!」
 “Take this!!”
 
 @11898 Hyoma · 豹馬
+# 触发：攻击（通用，4/5）
 > 「これでもくらえっ!!」
 “Take this too!!”
 
 @11899 Hyoma · 豹馬
+# 触发：攻击（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いちかばちかだっ!!」
-“It's all or nothing!!”
+“It’s all or nothing!!”
 
 @11900 Hyoma · 豹馬
+# 触发：被击坠（通用，1/3）
+# 审校：被击坠情境，语气收紧
 > 「くそっ!! だめか!」
-“Damn!! No good?!”
+“Damn!! Is this it?!”
 
 @11901 Hyoma · 豹馬
+# 触发：被击坠（通用，2/3）
+# 审校：拖音拼写更自然
 > 「ちっくしょおおおっ! おぼえてやがれ!!」
-“Damn iiiit! You'll pay for this!!”
+“Daaamn it! You’ll pay for this!!”
 
 @11902 Hyoma · 豹馬
+# 触发：被击坠（通用，3/3）
 > 「ちっ! ドジったぜ!」
 “Tch! I screwed up!”
 
 @11903 Hyoma · 豹馬
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ちいっ!! ちょいとヤバイぜ!」
 “Tch!! This is getting bad!”
 
 @11904 Hyoma · 豹馬
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! このままじゃヤバイぜ!!」
-“Ngh! At this rate I'm in trouble!!”
+“Ngh! At this rate I’m in trouble!!”
 
 @11905 Hyoma · 豹馬
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう! このままじゃ
 >  やられちまうぜっ!」
-“Damn! At this rate I'm gonna get taken out!”
+“Damn! At this rate I’m gonna get taken out!”
 
 @11906 Hyoma · 豹馬
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あいたっ! けど、この程度なら
 >  まだまだいけるぜ!」
-“Ow! But this much won't stop me!”
+“Ow! But this much won’t stop me!”
 
 @11907 Hyoma · 豹馬
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「うあっ! やりやがったなっ!」
 “Ugh! You got me!”
 
 @11908 Hyoma · 豹馬
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「くっ! やるじゃねえかっ!!」
 “Ngh! Not bad!!”
 
 @11909 Hyoma · 豹馬
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 # 审校：原译“You did it!”会被误解为称赞对方，原文是“やったなっ”表示被击中的恼怒，改为“You got me!”更准确。
 > 「うわっ! やったなっ!」
 “Whoa! You got me!”
 
 @11910 Hyoma · 豹馬
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へへん! 効いてないぜ!」
-“Heh! That didn't hurt!”
+“Heh! That didn’t hurt!”
 
 @11911 Hyoma · 豹馬
+# 触发：回避（通用，1/3）
 > 「あぶねぇ、あぶねぇ」
 “That was close, that was close.”
 
 @11912 Hyoma · 豹馬
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるかっ!」
-“As if that'd hit!”
+“As if that’d hit!”
 
 @11913 Hyoma · 豹馬
+# 触发：回避（通用，3/3）
 > 「あらよっと!」
 “Whoops!”
 
 @11914 Hyoma · 豹馬
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：beam 小写
 > 「この程度のビームなんざへでも
 >  ねえぜ!!」
-“A Beam like that's nothing to me!!”
+“A beam like that’s nothing to me!!”
 
 @11915 Hyoma · 豹馬
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ヘン、効かねえぜ!」
-“Hmph, that won't work!”
+“Hmph, that won’t work!”
 
 @11916 Hyoma · 豹馬
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ!反撃できねえ!」
-“Tch! I can't fight back!”
+“Tch! I can’t fight back!”
 
 @11917 Hyoma · 豹馬
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ!とどかねえ!」
-“Damn! It won't reach!”
+“Damn! It won’t reach!”
+
+@16754 Hyoma · 豹馬
+# 触发：使用〈スカイリッパー〉
+> 「スカイリッパー!!」
+“Sky Ripper!!”
+
+@16755 Hyoma · 豹馬
+# 触发：使用〈ドスブレッシャー〉
+> 「ドスブレッシャー!!」
+“Dos Blesser!!”
+
+@16756 Hyoma · 豹馬
+# 触发：使用〈マグネレーザー〉
+> 「マグネレーザー!!」
+“Magne Laser!!”
+
+@16757 Hyoma · 豹馬
+# 触发：使用〈超電磁スピン〉（对话第 1/2 句）
+# 审校：原文是合体技起句，喊的是招式名「超電磁タツマキ」，不是“spin”的拟声；改为保留招式名音译并去掉多余拉长。
+> 「超電磁タ・ツ・マ・キーーーーッ!!」
+“Super Electromagnetic Tatsu-maki!!”
+
+@16758 Hyoma · 豹馬
+# 触发：使用〈超電磁スピン〉（对话第 2/2 句）
+> 「超電磁スピーーーーーン!!」
+“Super Electromagnetic Spiiiiin!!”
+
+@16759 Hyoma · 豹馬
+# 触发：使用〈超電磁ヨーヨー〉
+> 「超電磁ヨーヨー!!」
+“Super Electromagnetic Yo-Yo!!”
+
+@16760 Hyoma · 豹馬
+# 触发：使用〈ロックファイター〉
+> 「ロックファイター!!」
+“Rock Fighter!!”
+
+@16761 Hyoma · 豹馬
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+> 「バトルリターン!!」
+“Battle Return!!”
+
+@16762 Hyoma · 豹馬
+# 触发：使用〈バトルガレッガー〉
+> 「バトルガレッガー!!」
+“Battle Garegga!!”
+
+@16763 Hyoma · 豹馬
+# 触发：使用〈超電磁クレーン〉
+> 「超電磁クレーン!!」
+“Super Electromagnetic Crane!!”
+
+@16764 Hyoma · 豹馬
+# 触发：使用〈マグネクロー〉（低优先，可能被通用台词顶掉）
+> 「マグネクロー!!」
+“Magne Claw!!”
+
+@16765 Hyoma · 豹馬
+# 触发：使用〈スプリングクラッシャー〉
+> 「スプリングクラッシャー!!」
+“Spring Crusher!!”
+
+@16766 Hyoma · 豹馬
+# 触发：使用〈アトミックバーナー〉
+> 「アトミックバーナー!!」
+“Atomic Burner!!”
+
+@16767 Hyoma · 豹馬
+# 触发：使用〈ツインランサー〉
+> 「ツインランサー!!」
+“Twin Lancer!!”
+
+@16768 Hyoma · 豹馬
+# 触发：使用〈Vレーザー〉
+> 「Vレーザー!!」
+“V Laser!!”
+
+@16769 Hyoma · 豹馬
+# 触发：使用〈バトルチェーンソー〉
+> 「バトルチェーンソー!!」
+“Battle Chainsaw!!”
+
+@16770 Hyoma · 豹馬
+# 触发：使用〈ビッグブラスト〉
+> 「ビッグブラスト!!」
+“Big Blast!!”
+
+@16771 Hyoma · 豹馬
+# 触发：使用〈ビッグブラスト〉
+> 「大作、ビッグブラストだ!!」
+“Daisaku, Big Blast!!”
+
+@16772 Hyoma · 豹馬
+# 触发：使用〈ビッグブラスト・ディバイダー〉
+> 「ビッグブラスト・ディバイダー!!」
+“Big Blast Divider!!”
+
+@16773 Hyoma · 豹馬
+# 触发：使用〈超電磁スパーク〉
+> 「超電磁スパーク!!」
+“Super Electromagnetic Spark!!”
+
+@16774 Hyoma · 豹馬
+# 触发：使用〈グランダッシャー〉
+> 「グランダッシャー!!」
+“Grand Dasher!!”
+
+@16775 Daisaku · 大作
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「わああっ! ひょ、豹馬、
+>  これ以上は危険たい!」
+“Waaah! H-hyoma, any more of this is dangerous!”
+
+@16776 Kosuke · 小介
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「だ、ダメだ! このままじゃもちませんよ!」
+“N-no good! We can’t hold out like this!”
+
+@16777 Chizuru · ちずる
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ああっ!? ひょ、豹馬! これじゃ
+>  もたないわ!」
+“Ah?! H-hyoma! We can’t take much more of this!”
+
+@16778 Juzo · 十三
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ぐああっ! 豹馬、どないしたんや!?」
+“Gwaaah! Hyoma, what’s going on?!”
+
+@16779 Daisaku · 大作
+# 触发：中伤（剩余 HP 30–90%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うああっ! 豹馬!
+>  どげんしたとね!?」
+“Uwaaah! Hyoma! What’s wrong?!”
+
+@16780 Kosuke · 小介
+# 触发：中伤（剩余 HP 30–90%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「だ、大丈夫です豹馬さん! 僕
+>  の計算では、まだやられたりしません!」
+“I-it’s okay, Hyoma! By my calculations, we won’t go down yet!”
+
+@16781 Chizuru · ちずる
+# 触发：中伤（剩余 HP 30–90%），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「あうっ! 豹馬、しっかりして!
+>  押されてるわよ!」
+“Agh! Hyoma, get it together! We’re being pushed back!”
+
+@16782 Juzo · 十三
+# 触发：中伤（剩余 HP 30–90%），乘坐〈コン・バトラーV〉
+> 「うわっ! 豹馬、しっかりせんかい!」
+“Whoa! Hyoma, pull yourself together!”
+
+@16783 Daisaku · 大作
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ばってん、たいしたことなか! さすがは
+>  コン・バトラーたい」
+“But it’s nothing serious! That’s the Combattler for you.”
+
+@16784 Juzo · 十三
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈コン・バトラーV〉
+# 审校：原译“Take a look!”和“invincible!”语气过于随意，且“やで”的方言感不应保留。
+> 「見てみい! コン・バトラーは
+>  無敵やで!」
+“Look! The Combattler is invincible!”
+
+@16785 Chizuru · ちずる
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「大丈夫よ、豹馬! 大した
+>  ダメージは受けてないわ!」
+“It’s all right, Hyoma! We haven’t taken much damage!”
+
+@16786 Kosuke · 小介
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈コン・バトラーV〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「さっすがコン・バトラー! すごいや!」
+“That’s the Combattler for you! Amazing!”

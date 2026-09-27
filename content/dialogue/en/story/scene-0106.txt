@@ -1,8 +1,9 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @50226 Bright · ブライト
+# 审校：舰长口吻应更简洁正式，用“status”而非“looking”更符合布莱特在舰桥上的命令式语气。
 > 「敵の様子はどうだ?」
-“How's the enemy looking?”
+“What's the enemy's status?”
 
 @50227 Beltorchika · ベルトーチカ
 > 「変化ありません」
@@ -34,13 +35,14 @@
 plotting something nasty...”
 
 @50233 Shinobu · 忍
+# 审校：忍的粗野口吻中“しかけてこねぇ”应体现“不来打我们”的对抗感，改为“come at us”更贴合其狂放语气。
 > 「んなこたぁ、どうだっていいぜ。奴らが
 >  敵だってのは間違いねぇんだ
 “Who cares about that. There's no doubt they're the enemy.
 ---
 >  しかけてこねぇってんなら、
 >  こっちからやってやるぜ!」
-If they won't attack, then we'll go at them!”
+If they won't come at us, then we'll go at them!”
 
 @50234 Koji · 甲児
 > 「そういうこと。オレたちは先に出るぜ!」
@@ -174,9 +176,10 @@ What exactly are you after?!”
 “If you absolutely refuse to listen, then I suppose there is no other way...”
 
 @50257 J-Ren · ジェイ＝レン
+# 审校：原文是“我们本应从一开始就这么做”，现译“We should have done this from the start”语气像抱怨，改为更贴合反派军官陈述事实的口吻。
 > 「いらぬ手間をかけたな。
 >  最初からそうしておけば良かったのだ」
-“You've put us to unnecessary trouble. We should have done this from the start.”
+“You've put us to unnecessary trouble. It would have been better to do this from the start.”
 
 @50258 Show · ショウ
 > 「……なにをするつもりだ!?」
@@ -226,17 +229,19 @@ your solar system resides.”
 “So what, you're saying we're outside the galaxy?!”
 
 @50268 Quatre · カトル
+# 审校：精读：刻印＝Crest
 > 「そんな、いったいどうして……?
 >  “刻印”が
-“That can't be, how could that be...? The ‘Seal’ should have
+“That can't be, how could that be...? The ‘Crest’ should have
 ---
 >  封鎖しているはずなのに……」
 been blocking it...”
 
 @50269 Val-A · ヴァル＝ア
+# 审校：精读：先住グラドス人
 > 「我らにすれば造作もないこと。
 >  先住グラドス人の
-“To us it is a trifling matter. Whatever the native Grados
+“To us it is a trifling matter. Whatever the ancestral Gradosians
 ---
 >  知り得たことなど、
 >  我らもすべて知っている」
@@ -333,6 +338,8 @@ the will of the Great Galaxy.”
 “A replacement...?”
 
 @50284 J-Ren · ジェイ＝レン
+# 审校：全局：Zuul 拼写
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「我らはこの戦いの最初から、
 >  すべてを見ていた
 “We have watched everything since the very beginning of this war.
@@ -343,7 +350,7 @@ That you Earth races, thought doomed to extinction, would actually defeat Muge Z
 ---
 >  ズールを倒すとは、
 >  予定外の事態であったが……」
-Zuhl was an unforeseen development, but...”
+Zuul was an unforeseen development, but...”
 
 @50285 Val-A · ヴァル＝ア
 > 「敵対者に対するその闘志。
@@ -413,9 +420,10 @@ As those who will inherit this galaxy. As those who will unite and protect all o
 us ‘Al-E-Quis’.”
 
 @50292 Ark · アーク（按段落 3DD1）
+# 审校：Ark 是平实少年口吻，“Wait a moment”偏正式，改为更口语的“Wait a minute”。
 > 「ちょっと待ってくれ。
 >  いきなりそんなことをいわれたって
-“Wait a moment. You can't just spring something like that on us
+“Wait a minute. You can't just spring something like that on us
 ---
 >  理解できるわけないだろう!?」
 and expect us to understand it?!”
@@ -447,9 +455,10 @@ The battles were prepared for that purpose.”
 “W-what did you say?!”
 
 @50297 Selain · セレイン（按段落 3DD2）
+# 审校：“the meaning of it”割裂了句意，改为“what it means”更自然且符合原意。
 > 「いきなり出てきて、よくいう。そのことの
 >  意味を、そしてそれが真実か
-“You appear out of nowhere and say such things. How could we possibly judge the meaning of it,
+“You appear out of nowhere and say such things. How could we possibly judge what it means,
 ---
 >  どうかを、どうして我々が判断
 >  できるわけがある? 無駄なことだ」
@@ -566,15 +575,18 @@ was prepared for that purpose.”
 “Huh...?”
 
 @50315 Sara · 沙羅
+# 审校：全局：Zuul 拼写
 > 「じゃあ……じゃあ、
 >  ムゲやズールもそうだってのかい!?
-“Then... then that goes for Muge and Zuhl too?!
+“Then... then that goes for Muge and Zuul too?!
 ---
 >  奴らが地球に攻めてきたのも、
 >  そのためだって!?」
 They invaded Earth for that as well?!”
 
 @50316 J-Ren · ジェイ＝レン
+# 审校：全局：Zuul 拼写
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「そうだ。我らは銀河全域に、
 >  “高次の存在”を目指す
 “Indeed. We projected across the entire galaxy a will that aims toward a ‘higher being.’
@@ -585,7 +597,7 @@ Those who received it most strongly and made that being
 ---
 >  明らかにしたのは、銀河帝国の
 >  ズールと、異次元からこの銀河に
-manifest were Zuhl of the Galactic Empire, and Muge Zorbados, who appeared in this galaxy
+manifest were Zuul of the Galactic Empire, and Muge Zorbados, who appeared in this galaxy
 ---
 >  あらわれたムゲゾルバドスだった。
 >  我らはそのどちらかが
@@ -668,13 +680,15 @@ For that, wars broke out on countless stars,
 and countless stars were destroyed?!”
 
 @50328 Val-A · ヴァル＝ア
+# 审校：全局：Zuul 拼写
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「我らの銀河そのものの行く末に
 >  関わること。やむをえぬことだ
 “It concerns the fate of our galaxy itself. It could not be helped.
 ---
 >  ムゲゾルバドスやズールは倒れたが、
 >  お前たちが現れた
-Muge Zorbados and Zuhl have fallen, but you appeared.
+Muge Zorbados and Zuul have fallen, but you appeared.
 ---
 >  十分に価値はあった」
 It was more than worth it.”
@@ -685,6 +699,7 @@ It was more than worth it.”
 “Worth it?! You've got to be kidding!”
 
 @50330 Ryoma · リョウ
+# 审校：全局：Zuul 拼写
 > 「そうだ。そんなことをして、
 >  いくつもの世界をメチャメチャにして
 “That's right. Wrecking countless worlds like that, and on top of it all,
@@ -695,11 +710,11 @@ a galaxy that survives on such a foundation? What meaning could that possibly ha
 ---
 >  お前たちは、ムゲかズールが
 >  残ると思っていたといった。ムゲや
-You said you thought Muge or Zuhl would survive. What becomes of a civilization
+You said you thought Muge or Zuul would survive. What becomes of a civilization
 ---
 >  ズールの支配する、そんな文明だけ
 >  残って、どうなるというんだ!?」
-ruled by Muge or Zuhl, with only that left?!”
+ruled by Muge or Zuul, with only that left?!”
 
 @50331 Kamille · カミーユ
 > 「そんなもののために、
@@ -961,13 +976,14 @@ and expect us to accept it? Let alone forgive you, who sowed the seeds of
 that conflict in the first place?!”
 
 @50356 J-Ren · ジェイ＝レン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「愚かな。大銀河の意思を
 >  体現する存在なくしては
 “Fools. Without a being to embody the will of the Great Galaxy,
 ---
 >  やがては銀河そのものが滅びの日を
 >  迎えることになるのだぞ!? それを
-the galaxy itself will eventually meet its day of destruction!? And yet
+the galaxy itself will eventually meet its day of destruction?! And yet
 ---
 >  たかが星一つの世界にこだわり、
 >  破滅の運命を
@@ -1019,10 +1035,10 @@ We will eliminate you, and after that, once more,
 we will put the question to the other Earth species.”
 
 @50361 Avie-Lu · アヴィ＝ルー
-# 审校：原文为“ムゲかズール”，是“Muge or Zuhl”，初稿误作“Muge and Zul”，且“Zul”拼写与词表“Zuhl”不一致。
+# 审校：全局：Zuul 拼写
 > 「そうだネ。それでだめなら、
 >  ムゲかズールを再生させよう」
-“That's right. And if that fails, we'll just revive Muge or Zuhl.”
+“That's right. And if that fails, we'll just revive Muge or Zuul.”
 
 @50362 Ark · アーク（按段落 3DD1）
 > 「な……んだって!?」
@@ -1033,9 +1049,10 @@ we will put the question to the other Earth species.”
 “Impossible! You can't do that!”
 
 @50364 Avie-Lu · アヴィ＝ルー
+# 审校：全局：Zul→Zuul
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zul had their existence completely erased,
+“We can. Neither Muge nor Zuul had their existence completely erased,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1126,13 +1143,15 @@ won't let you keep pulling our strings forever!”
 “What did you say?!”
 
 @50377 Bright · ブライト
+# 审校：Bright 的舰长口吻应更果断，原文「そんなことができるものか」语气更强，现译偏弱。
 > 「ばかな! そんなことができるものか」
-“Impossible! You can't do that!”
+“Impossible! There's no way you can do that!”
 
 @50378 Avie-Lu · アヴィ＝ルー
+# 审校：全局：Zul→Zuul
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zul had their existence completely erased,
+“We can. Neither Muge nor Zuul had their existence completely erased,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1223,13 +1242,15 @@ won't let you keep pulling our strings forever!”
 “What?!”
 
 @50391 Alan · アラン
+# 审校：Alan 作为沉着指挥官，原文「できるはずがない」语气更强，现译偏弱。
 > 「ばかな! そんなことができるはずがない!」
-“Impossible! You can't do that!”
+“Impossible! There's no way you can do that!”
 
 @50392 Avie-Lu · アヴィ＝ルー
+# 审校：全局：Zul→Zuul
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zul had their existence completely erased,
+“We can. Neither Muge nor Zuul had their existence completely erased,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1329,9 +1350,10 @@ forever, you've got another thing coming!”
 “Impossible! You can't do that!”
 
 @50407 Avie-Lu · アヴィ＝ルー
+# 审校：全局：Zul→Zuul
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zul had their existence completely erased,
+“We can. Neither Muge nor Zuul had their existence completely erased,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1477,6 +1499,7 @@ forever, you've got another thing coming!”
 “You must not give up! Fight as long as you have life!”
 
 @50431 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王……全機、態勢を
 >  たてなおせ! 何度でもやるんだ!」
 “Queen Ciela... All units, regroup! We'll do this as many times as it takes!”
@@ -1594,12 +1617,13 @@ this galaxy will...”
 make a voyage across the galaxy...”
 
 @50453 Dr. Saotome · 早乙女博士
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「……仮にできたとしても、我々には
 >  “刻印”の障壁を突破する
 “...And even if it could, we could never break through the barrier of the
 ---
 >  ことは、できんだろうな……」
-‘Mark,’ I suspect...”
+‘Crest,’ I suspect...”
 
 @50454 Duo · デュオ
 > 「あ～あ、結局、俺たちもここまでっ
@@ -1719,8 +1743,9 @@ To meet you Earth-born...”
 (He smiled...? Why? Why...?)
 
 @50478 Val-A · ヴァル＝ア
+# 审校：精读：星＝星球
 > 「星に縛られし幼子たちよ…………
-“Children bound to the stars...
+“Children bound to your planet...
 ---
 >  戻るがいい、あるべきところへ
 Return to where you belong.
@@ -1737,13 +1762,14 @@ And then...”
 “It's the same as when we came! This is...”
 
 @50481 Val-A · ヴァル＝ア
+# 审校：精读：星＝星球
 > (そして…………“大銀河の意思”
 >  は、ただ見守り、待ち続けるだろう
 (And then... the will of the Great Galaxy will simply watch over you, and keep waiting.
 ---
 >  いつかお前たちが星の呪縛より
 >  解き放たれ、この我らの銀河の
-For the day you are freed from the stars' bondage, and become
+For the day you are freed from your planet's bondage, and become
 ---
 >  護り手となるその日を……遙かな
 >  未来にて待つ、その時を……)
@@ -1833,9 +1859,10 @@ It's all a bit too big in scale for me. Even just the Earth Sphere
 has plenty of wars and trouble as it is.”
 
 @50499 Masato · 雅人
+# 审校：全局：Zul→Zuul
 > 「でもさ、ムゲやズールは連中の介入
 >  がなかったら、どうなってたんだろう?」
-“But hey, if those guys hadn't interfered, what would've happened with Muge and Zul?”
+“But hey, if those guys hadn't interfered, what would've happened with Muge and Zuul?”
 
 @50500 Hayato · ハヤト
 > 「さてな。俺にはたいした違いはなかった
@@ -1913,17 +1940,19 @@ Neither was OZ, nor Haman, nor Char's Neo Zeon incident.”
 “Same goes for Drake. Byston Well has its own troubles too.”
 
 @50512 Marvel · マーベル
+# 审校：人名按词表统一
 > 「そうね、チャム」
 “That's true, Chum.”
 
 @50513 Ark · アーク（按段落 3DD1）
+# 审校：精读：破折号
 > 「これからなんとかするさ。
 >  いや、しなくちゃいけないんだ
 “We'll find a way from here. No, we have to.
 ---
 >  そうじゃなければ……この戦いで
 >  死んでいった人たちは
-Otherwise... all the people who died in this war—
+Otherwise... all the people who died in this war,
 ---
 >  いったい何のために死んだのか、
 >  わからなくなる」
@@ -2054,9 +2083,10 @@ But still, I reckon we really did do good.”
 “Yeah. The Earth Sphere will change. With our burning hearts.”
 
 @50529 Roux · ルー
+# 审校：露的吐槽口吻应更直接，原文“自分でいってて”指“自己说出口”，改为“about yourself”更贴切。
 > 「……あんた、自分でいってて
 >  恥ずかしくないの?」
-“...Don't you feel embarrassed saying that yourself?”
+“...Don't you feel embarrassed saying that about yourself?”
 
 @50530 Brad · ブラッド（按段落 3DD3）
 > 「当たり前だ。
@@ -2069,9 +2099,10 @@ But still, I reckon we really did do good.”
 “I forgot. You've been like that from the very start.”
 
 @50532 Daisaku · 大作
+# 审校：精读：破折号
 > 「でも、僕も大丈夫だと思います。
 >  父さんのいってたことの答え
-“But I think it'll be all right too. The answer to what my father said—
+“But I think it'll be all right too. The answer to what my father said,
 ---
 >  僕にはまだわかりません。
 >  だけど、みんなが平和を望むなら
@@ -2112,14 +2143,16 @@ After all, we accomplished even what we thought was absolutely impossible.”
 “The war to drive out Muge... turned into quite a long detour.”
 
 @50537 Shinobu · 忍
+# 审校：忍的狂放语气中“from now on”偏正式，改为“from here on out”更符合其粗野口吻。
 > 「終わっちまえば、なんでもいいさ。
 >  あとはのんびりさせてもらうさ」
-“Once it's over, who cares. I'm just gonna take it easy from now on.”
+“Once it's over, who cares. I'm just gonna take it easy from here on out.”
 
 @50538 Alan · アラン
+# 审校：阿兰作为沉着指挥官，对忍说话应更直接点明“你不擅长”，原文“苦手とする”译为“not good at”比“not good at”更自然。
 > 「これからの戦いは
 >  お前が苦手とするものとなるからな」
-“The battles ahead will be the kind you're not good at, after all.”
+“The battles ahead are the kind you're no good at, after all.”
 
 @50539 Sara · 沙羅
 > 「まだやることは山ほど残ってるさ。
@@ -2131,13 +2164,14 @@ After all, we accomplished even what we thought was absolutely impossible.”
 “I suppose so...”
 
 @50541 Manami · マナミ（按段落 3DD4）
+# 审校：精读：破折号
 > 「いまは、そう、ただ信じましょう。
 >  仲間たちを、地球圏の人々を
 “For now, yes, let's just believe. In our comrades, in the people of the Earth Sphere,
 ---
 >  そして、あたしたちの未来がよきものと
 >  なることを。信じること、その想いは
-and that our future will be a good one. Because believing—that feeling—
+and that our future will be a good one. Because believing, that feeling,
 ---
 >  この地球圏を再建していくための
 >  大切な力となるはずだから……」
@@ -2156,11 +2190,13 @@ should become an important strength for rebuilding this Earth Sphere...”
 “Then let's go home. To Earth.”
 
 @50545 Ryoma · リョウ
+# 审校：精读：破折号
 > 「ああ、帰ろう。
 >  俺たちが守った、俺たちの星へ」
-“Yeah, let's go home. To our planet—the one we protected.”
+“Yeah, let's go home. To our planet, the one we protected.”
 
 @50546 Bright · ブライト
+# 审校：精读：破折号
 > 「そうだな。よし、進路を月に向けろ
 >  地球に帰還するぞ」
-“That's right. All right, set course for the Moon—we're returning to Earth.”
+“That's right. All right, set course for the Moon, we're returning to Earth.”

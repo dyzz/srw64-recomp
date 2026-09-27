@@ -119,9 +119,10 @@ Don't worry, I'm a man who can't die. I'll come back to life soon enough anyway.
 ...You were the only one who understood how hard it is to be a man who can't die. Thank you...”
 
 @50565 Ginrei · 銀鈴
+# 审校：破折号
 > 「健二さん、やめて!!
 >  私が、私が飛べば……」
-“Kenji, stop!! If I—if I fly out there...”
+“Kenji, stop!! If I... if I fly out there...”
 
 @50566 Murasame · 村雨
 > 「ファルメール、君は力を使っちゃ
@@ -331,13 +332,14 @@ Shirley, hurry! We don't have time!!”
 give you a hand with something?”
 
 @50600 Astonaige · アストナージ
+# 审校：栄養剤
 > 「ばかいってないで、パイロットは
 >  ハサン先生のとこで栄養剤でも
-“Don't be stupid. Pilots, go get Teacher Hasan to give you some
+“Don't be stupid. Pilots, go get Dr. Hasan to give you a
 ---
 >  うってもらって、少しでも休めよ。
 >  こっちは俺たちでなんとかするから!」
-vitamins and rest up as much as you can. We'll manage things here!”
+nutrient shot and rest up as much as you can. We'll manage things here!”
 
 @50601 Beltorchika · ベルトーチカ
 > 「……どういうこと?」
@@ -394,13 +396,14 @@ He wants to have it both ways.”
 “Amuro...”
 
 @50610 Amuro · アムロ
+# 审校：破折号；Bel
 > 「大丈夫さ。俺は、俺たちは
 >  奴に勝って、アクシズもとめてみせる
-“It'll be all right. I—we—will beat him and stop Axis.
+“It'll be all right. I... no, we will beat him and stop Axis.
 ---
 >  そのうえで生きて帰るさ。でないと、
 >  ベルにもチェーンにも、悪いものな?」
-And then we'll come back alive. Otherwise, I'd be doing wrong by both Belt and Chan, wouldn't I?”
+And then we'll come back alive. Otherwise, I'd be doing wrong by both Bel and Chan, wouldn't I?”
 
 @50611 Quess · クェス
 > 「あ……うぅぅ……」
@@ -425,8 +428,9 @@ I... I'll fall apart!!”
 (She took in the will of dying people too directly...)
 
 @50615 Quess · クェス
+# 审校：?!
 > 「みんな……みんな苦しんだんだよ!?」
-“Everyone... everyone suffered so much!?”
+“Everyone... everyone suffered so much?!”
 
 @50616 Char · シャア
 > 「わかっている。すぐにもう1度

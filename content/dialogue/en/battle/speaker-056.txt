@@ -1,143 +1,222 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8556 Four · フォウ
+# 触发：攻击（通用，1/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせないっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @8557 Four · フォウ
+# 触发：攻击（通用，2/11）
 > 「そこっ!」
 “There!”
 
 @8558 Four · フォウ
+# 触发：攻击（通用，3/11）
+# 审校：当てる是打中目标
 > 「当てる!」
-“I'll hit you!”
+“I’ll land this!”
 
 @8559 Four · フォウ
+# 触发：攻击（通用，4/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上好きにはやらせないっ!」
-“I won't let you do as you please anymore!”
+“I won’t let you do as you please anymore!”
 
 @8560 Four · フォウ
+# 触发：攻击（通用，5/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみる!!」
-“I'll try it!!”
+“I’ll try it!!”
 
 @8561 Four · フォウ
+# 触发：攻击（通用，6/11）
 > 「これならっ!」
 “This should do it!”
 
 @8562 Four · フォウ
+# 触发：攻击（通用，7/11）
 > 「落ちろっ!」
 “Fall!”
 
 @8563 Four · フォウ
+# 触发：攻击（通用，8/11）
 > 「そう簡単にっ!」
 “Not so easily!”
 
 @8564 Four · フォウ
+# 触发：攻击（通用，9/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔をしないでっ!!」
-“Don't get in my way!!”
+“Don’t get in my way!!”
 
 @8565 Four · フォウ
+# 触发：攻击（通用，10/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この一撃で決めるっ!」
-“I'll finish this with one strike!”
+“I’ll finish this with one strike!”
 
 @8566 Four · フォウ
+# 触发：攻击（通用，11/11）
 > 「行けっ!」
 “Go!”
 
 @8567 Four · フォウ
+# 触发：被击坠（通用，1/2）
 > 「くうっ!! しまった!!」
 “Ngh!! Damn it!!”
 
 @8568 Four · フォウ
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「カ、カミーユッ!!」
-“K-Kamille!!”
+“K-kamille!!”
 
 @8569 Four · フォウ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くうっ! な、なんてパワー……」
 “Ngh! W-what power...”
 
 @8570 Four · フォウ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだっ!! まだ落ちないよっ!!」
-“N-not yet!! I'm not going down yet!!”
+“N-not yet!! I’m not going down yet!!”
 
 @8571 Four · フォウ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「あうっ! つ、強い……」
 “Agh! S-so strong...”
 
 @8572 Four · フォウ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：更顺口
 > 「ううっ! まだ……まだ負けちゃいない!」
-“Ngh! Not... not yet, I haven't lost!”
+“Ngh! I haven’t... haven’t lost yet!”
 
 @8573 Four · フォウ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ!
 >  この程度のダメージなら、まだ!」
-“Tch! If it's only this much damage, I'm fine!”
+“Tch! If it’s only this much damage, I’m fine!”
 
 @8574 Four · フォウ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだっ! まだやられたわけじゃないっ!」
-“Not yet! I'm not beaten yet!”
+“Not yet! I’m not beaten yet!”
 
 @8575 Four · フォウ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「うっ! やる……でもっ!」
 “Ugh! Not bad... but still!”
 
 @8576 Four · フォウ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：原文是反问语气，译文缺少“怎么可能”的力度，补上 ever 更贴合不服输的口吻。
 > 「あうっ!
 >  こ、こんな事でやられるもんかっ!」
-“Agh! L-like this could take me down!”
+“Agh! L-like this could ever take me down!”
 
 @8577 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：轻伤情境
 > 「この程度でっ!」
-“This much?!”
+“Just that?!”
 
 @8578 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たった!? けど、それだけっ!」
-“It hit?! But that's all it did!”
+“It hit?! But that’s all it did!”
 
 @8579 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「こんなダメージっ!」
 “Damage like this?!”
 
 @8580 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「大丈夫、かすっただけ!」
-“I'm fine, it just grazed me!”
+“I’m fine, it just grazed me!”
 
 @8581 Four · フォウ
+# 触发：回避（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらないよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8582 Four · フォウ
+# 触发：回避（通用，2/6）
 > 「見える!」
 “I can see it!”
 
 @8583 Four · フォウ
+# 触发：回避（通用，3/6）
 > 「甘いね!」
 “Too easy!”
 
 @8584 Four · フォウ
+# 触发：回避（通用，4/6）
 > 「来る……そこっ!」
 “Here it comes... there!”
 
 @8585 Four · フォウ
+# 触发：回避（通用，5/6）
+# 审校：回避情境
 > 「こんなものっ!」
-“As if that's enough!”
+“Is that it?!”
 
 @8586 Four · フォウ
+# 触发：回避（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「避けてみせるっ!」
-“I'll dodge it, just watch!”
+“I’ll dodge it, just watch!”
 
 @8587 Four · フォウ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないよっ!」
-“It won't work!”
+“It won’t work!”
 
 @8588 Four · フォウ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：攻击无效情境
 > 「この程度のビームでっ!」
-“A Beam like this?!”
+“A beam like that won’t do it!”
 
 @8589 Four · フォウ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな……弾切れなの?」
-“No... I'm out of ammo?”
+“No... I’m out of ammo?”
 
 @8590 Four · フォウ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ……届かない」
-“Ah... it won't reach.”
+“Ah... it won’t reach.”
+
+@14632 Four · フォウ
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：Funnel 复数发射，改为复数
+> 「ファンネルッ!!」
+“Funnels!!”
+
+@14633 Four · フォウ
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：同上
+> 「いけっ、ファンネル!!」
+“Go, Funnels!!”
+
+@14634 Four · フォウ
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14635 Four · フォウ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「行くよ……ハイメガキャノン!!」
+“Here it comes... High Mega Cannon!!”

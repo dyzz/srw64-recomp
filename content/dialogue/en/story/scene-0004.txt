@@ -59,9 +59,10 @@ I knew something huge was going down, but...
 So? What happened next?”
 
 @17687 Banjo · 万丈
+# 审校：合并：misc 与 scene 批次三方合并
 > 「帝国軍は地球圏を占領した
 >  占領軍の司令官だった
-“The Imperial Army's commander of the occupation forces,
+“The Imperial Army occupied the Earth Sphere. Its occupation commander,
 ---
 >  グラドス人のグレスコが、地球圏
 >  総督になり地球は帝国によって
@@ -299,6 +300,8 @@ They sounded quite frantic, so I'm afraid I couldn't confirm
 the details of the situation.”
 
 @17710 Banjo · 万丈
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「なんだって!? ……
 >  よし、急いで向かおう!
 “What?! ...All right, let's hurry!
@@ -309,7 +312,7 @@ Garrison, sorry, but could you try to get in touch
 ---
 >  なんとか連絡をつけておいて
 >  くれないか」
-with Prof. Yumi somehow?”
+with Professor Yumi somehow?”
 
 @17711 Garrison · ギャリソン
 > 「承知いたしました」
@@ -336,7 +339,7 @@ with Prof. Yumi somehow?”
 I can't die in a place like this without avenging Grandpa!!”
 
 @17716 Hell Marshal · 地獄大元帥
-# 审校：原文「兜十蔵めが」指祖父兜十蔵，不是兜甲児；初稿误译为 Koji Kabuto's grandfather，改为 Juzo Kabuto。
+# 审校：地狱大元帅是阴险老反派，用“wretch”比“brat”更符合其古旧恶毒口吻。
 > 「フハハハハッ、観念せい!
 “Hahahaha, give it up!
 ---
@@ -346,7 +349,7 @@ To think Juzo Kabuto built a robot like this.
 ---
 >  乗っているのが貴様のような
 >  奴では
-But with a brat like you piloting it,
+But with a wretch like you piloting it,
 ---
 >  我が軍団の前には
 >  ひとたまりもないわ!」
@@ -376,8 +379,9 @@ Go!”
 “D-Damn it...”
 
 @17720 Brad · ブラッド（按段落 3DD3）
+# 审校：原文“うようよいやがるぜ”是布拉德对敌人数量多的粗放吐槽，现译“he sure likes to run his mouth”偏离原意且不够粗放。
 > 「へっ、うようよいやがるぜ」
-“Heh, he sure likes to run his mouth.”
+“Heh, they're crawlin' all over the place.”
 
 @17721 Manami · マナミ（按段落 3DD4）
 > 「そこまでよ!
@@ -385,9 +389,10 @@ Go!”
 “That's enough! I won't let you go any further!!”
 
 @17722 Hell Marshal · 地獄大元帥
+# 审校：地狱大元帅用“is it?”显得现代，改为“are they?”更符合其古旧反派口吻。
 > 「なに!? むぅ、
 >  反帝国ゲリラどもか」
-“What?! Hmph, anti-Imperial guerrillas, is it?”
+“What?! Hmph, anti-Imperial guerrillas, are they?”
 
 @17723 Banjo · 万丈
 > 「あれは……まさかマジンガーZか?
@@ -395,9 +400,10 @@ Go!”
 “That's... could that be Mazinger Z? Who's piloting it?!”
 
 @17724 Koji · 甲児
+# 审校：甲児对敌人怒吼，原文“てめぇら”应体现粗口，加“bastards”更符合其热血粗放口吻。
 > 「なんだ、てめぇらは!
 >  また敵が増えやがったのか!?」
-“Who the hell are you guys?! More enemies?!”
+“Who the hell are you bastards?! More enemies?!”
 
 @17725 Banjo · 万丈
 > 「僕はカラバの破嵐万丈だ。
@@ -531,9 +537,10 @@ I won't forget this!”
 “What a short temper. I'm complimenting you, so why get angry?”
 
 @17744 Koji · 甲児
+# 审校：甲児的热血少年口吻应更随意，用“don't wanna”替代“don't want to”更贴合其语气。
 > 「……なんだか、お前には
 >  いわれたくない気がするぜ」
-“...Somehow, I feel like I don't want to hear that from you.”
+“...Somehow, I don't wanna hear that from you.”
 
 @17745 Banjo · 万丈
 > 「甲児くん、すぐに移動したいが、
@@ -559,9 +566,10 @@ I won't forget this!”
 “It sure is. Good thing it's not in the enemy's hands.”
 
 @17750 Koji · 甲児
+# 审校：甲児的粗放口吻应更随意，用“nothin'”替代“anything”更贴合其语气。
 > 「よせやい、
 >  おだてたって何にもでないぜ」
-“Cut it out, flattery won't get you anything.”
+“Cut it out, flattery won't get you nothin'.”
 
 @17751 Banjo · 万丈
 > 「甲児くん、すぐに移動したいが、
@@ -579,9 +587,10 @@ I won't forget this!”
 “All right, everyone, let's pull out.”
 
 @17754 Koji · 甲児
+# 审校：甲児对祖父的称呼应为“Gramps”，与 voice 要求一致。
 > 「で、おじいちゃんに呼ばれていってみたら
 >  もう奴らに攻撃された後だったんだ」
-“So anyway, Grandpa called me over, and by the time I got there they'd already attacked.”
+“So anyway, Gramps called me over, and by the time I got there they'd already attacked.”
 
 @17755 Banjo · 万丈
 > 「そうか……すまない。こちらがもっと
@@ -599,21 +608,21 @@ I won't forget this!”
 “I'm glad to hear you say that. Go on.”
 
 @17758 Koji · 甲児
-# 审校：“乗れ”是“坐上去/驾驶”，初稿“pilot”可接受但“get in”更贴切；祖父的话是直接引语，应用单引号括起，且末页引号需与整体引号配合。
+# 审校：跨页引号改弯引号
 > 「ああ。くずれた地下施設に
 >  入ったら、おじいちゃんがいた
-“Yeah. When I went into the collapsed underground facility, Grandpa was there.
+“Yeah. When I went into the collapsed underground facility, Gramps was there.
 ---
 >  あのロボット、マジンガーZもそこに
 >  あったんだ。おじいちゃんはオレに、
-That robot, Mazinger Z, was there too. Grandpa told me
+That robot, Mazinger Z, was there too. Gramps told me
 ---
 >  マジンガーZに乗れといった
 to get in Mazinger Z.
 ---
 >  甲児、お前はあのマジンガーZさえ
 >  あれば、神にも悪魔にもなれる
-He said, 'Koji, with that Mazinger Z, you can become a god or a devil.
+He said, ‘Koji, with that Mazinger Z, you can become a god or a devil.
 ---
 >  帝国は地球を悪魔の世界に
 >  しようとしている
@@ -621,7 +630,7 @@ The Empire is trying to turn Earth into a world of devils.
 ---
 >  お前は黙ってそれを見ているのか
 >  ってね」
-Are you just going to stand by and watch?'”
+Are you just going to stand by and watch?’”
 
 @17759 Banjo · 万丈
 > 「それで、マジンガーZに
@@ -633,10 +642,11 @@ Are you just going to stand by and watch?'”
 Still, what a loss. The doctor was a capable man.”
 
 @17760 Garrison · ギャリソン
-# 审校：“操縦訓練”指驾驶训练，初稿“Mazinger Z's pilot training”稍别扭，改为“Mazinger Z pilot training”。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「万丈様、
 >  弓教授との連絡がつきました
-“Master Banjo, we've made contact with Prof. Yumi.
+“Master Banjo, we've made contact with Professor Yumi.
 ---
 >  マジンガーZの操縦訓練の
 >  ために、ロボット1体と
@@ -651,13 +661,17 @@ here for Mazinger Z pilot training.”
 “That's good to hear.”
 
 @17762 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「誰だ、その弓教授ってのは」
-“Who's this Prof. Yumi?”
+“Who's this Professor Yumi guy?”
 
 @17763 Manami · マナミ（按段落 3DD4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「その弓教授という方は
 >  何をされている方なのですか?」
-“And what does this Prof. Yumi do?”
+“And what does this Professor Yumi do?”
 
 @17764 Banjo · 万丈
 > 「以前に兜博士の助手をされて
@@ -709,25 +723,26 @@ Call me Beauty. My, aren't you a wild-looking bunch.”
 “I'm Reika Sanjo. Nice to meet you.”
 
 @17771 Brad · ブラッド（按段落 3DD3）
-# 审校：“よ、よろしく、頼む”是结巴的客套，初稿“I hope we get along”不够贴切，改为更符合语境的“I'm in your care.”
+# 审校：合并：冲突人工取舍
 > 「あ……その……
 >  {HeroFull}だ
 “Ah... um... I'm {HeroFull}.
 ---
 >  よ、よろしく、頼む」
-N-nice to meet you. I'm in your care.”
+N-nice to meet you all.”
 
 @17772 Kurtz · カーツ（按段落 3DD3）
 > 「……{PartnerSurname}だ」
 “...{PartnerSurname}.”
 
 @17773 Koji · 甲児
+# 审校：合并：冲突人工取舍
 > 「オレ、兜甲児ってんだ
 “I'm Koji Kabuto.
 ---
 >  こんな美人とご一緒できるなんて
 >  光栄だなぁ」
-Getting to share company with beauties like you, what an honor.”
+Getting to hang around with beauties like you... what an honor.”
 
 @17774 Beauty · ビューティ
 > 「うふふ、ありがと」

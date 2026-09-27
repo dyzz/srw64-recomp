@@ -1,13 +1,14 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @28855 Dorothy · ドロシー
+# 审校：Dorothy 的贵族口吻应更华丽，将 “Do you think” 改为 “Do you suppose” 以贴合其 ornate formality。
 > 「いかがでしたリリーナ様、
 >  話しあいはうまくいきまして?
 “How did it go, Lady Relena? Did the talks go well?
 ---
 >  財団は完全平和主義を
 >  理解して下さったかしら?」
-Do you think the Foundation has come to understand complete pacifism?”
+Do you suppose the Foundation has come to understand complete pacifism?”
 
 @28856 Relena · リリーナ
 > 「たった一度の話しあいで全てが
@@ -19,6 +20,7 @@ Do you think the Foundation has come to understand complete pacifism?”
 What matters is to keep preaching the ideal without giving up.”
 
 @28857 Dorothy · ドロシー
+# 审校：Dorothy 的贵族口吻应更正式，将 “won't we” 改为 “shall we not” 以贴合其 ornate formality。
 > 「すばらしいお考えですわ。
 >  でも、明日にも戦争が
 “What a wonderful way of thinking. But war may
@@ -28,7 +30,7 @@ What matters is to keep preaching the ideal without giving up.”
 break out as soon as tomorrow, you know? And when it does, we shall still have to fight
 ---
 >  守らなくてはなりませんわね」
-to protect this country, won't we?”
+to protect this country, shall we not?”
 
 @28858 Relena · リリーナ
 > 「いいえ、完全平和主義の
@@ -48,6 +50,7 @@ any conflict whatsoever.”
 “...”
 
 @28861 Dorothy · ドロシー
+# 审校：Dorothy 的贵族口吻应更正式，将 “too” 改为 “as well” 以贴合其 ornate formality。
 > (ふふふ、がんばって、リリーナ様。
 >  理想を守って、死をも恐れず
 (Hehehe, do your best, Lady Relena. People who defend their ideals and fight without fear of death...
@@ -61,7 +64,7 @@ there is nothing more beautiful in this world.
 Around you, there are so many such people.
 ---
 >  だから私もここにいるのよ、リリーナ様)
-That is why I am here too, Lady Relena.)
+That is why I am here as well, Lady Relena.)
 
 @28862 Bright · ブライト
 > 「OZ同士が戦闘を?
@@ -210,8 +213,9 @@ we gave it a complete overhaul.”
 “Hmph! Compared to my Mazinger Z, that thing is just a piece of junk scrap!”
 
 @28881 Boss · ボス
+# 审校：精读：结巴
 > 「な、なんだって!」
-“Wha—what did you say?!”
+“Wha-what did you say?!”
 
 @28882 Koji · 甲児
 > 「おっ、ひさしぶりにやろうってのか!
@@ -235,8 +239,9 @@ If you run out of energy mid-battle and can't move, that really
 wouldn't be cool, would it?”
 
 @28884 Koji · 甲児
+# 审校：精读：结巴
 > 「わ、わかったよ……それでいいよ」
-“O—okay... that's fine.”
+“O-okay... that's fine.”
 
 @28885 Bask · バスク
 > 「右翼、展開して囲いこめ!
@@ -248,9 +253,10 @@ wouldn't be cool, would it?”
 and attack! Wipe out every last rebel!”
 
 @28886 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐殿、反乱軍は南に
 >  逃走を続けています。このままでは
-“Colonel, the rebel army continues to flee south. At this rate,
+“Special Colonel, the rebel army continues to flee south. At this rate,
 ---
 >  サンクキングダムの国境に
 >  接してしまいますが……」
@@ -269,9 +275,10 @@ they will reach the border of the Sanc Kingdom, but...”
 halt the attack for now!”
 
 @28888 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐殿!? それでは敵に
 >  退路を与えてしまいますが……」
-“Colonel?! But that will give the enemy a way to retreat...”
+“Special Colonel?! But that will give the enemy a way to retreat...”
 
 @28889 Bask · バスク
 > 「その通りだ、逃がしてやるのよ。
@@ -294,8 +301,9 @@ inside a nation of complete pacifism. Fuhahahaha!”
 it's only a matter of time before it spreads here...”
 
 @28891 Hayato · ハヤト
+# 审校：Hayato's casual, sardonic tone doesn't fit the formal 'Mr. Pagan'; address should match his blunt style.
 > 「動かなくていいのかい、パーガンさんよ」
-“Are you sure you don't want to move, Mr. Pagan?”
+“Are you sure you don't want to move, Pagan?”
 
 @28892 Pagan · パーガン
 > 「……今しばらくお待ち下さい。
@@ -345,9 +353,10 @@ pursued by the Romefeller faction and have been driven inside the border, so...�
 will determine how we move too.”
 
 @28898 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐殿、サンクキングダムから
 >  通信が入っております!」
-“Colonel, we have a communication coming in from the Sanc Kingdom!”
+“Special Colonel, we have a communication coming in from the Sanc Kingdom!”
 
 @28899 Bask · バスク
 > 「ほおっておけ」
@@ -384,9 +393,10 @@ I advise the commander of the OZ combat unit to immediately
 cease all military action within the non-combat zone.”
 
 @28903 Bask · バスク
+# 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「これはリリーナ王女、小官は
 >  OZ反乱軍鎮圧部隊司令
-“Why, Princess Relena. I am Colonel Bask Om, commander of the
+“Why, Princess Relena. I am Special Colonel Bask Om, commander of the
 ---
 >  バスク・オム特佐であります。
 >  遺憾ながら、その勧告は
@@ -409,22 +419,26 @@ This Sanc Kingdom is a nation of complete pacifism.
 We will not permit any conflict to be brought inside.”
 
 @28905 Bask · バスク
-# 待译：机翻未采用（页数应为 5，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“The rebel army moved here while attacking my unit. As an officer, I cannot simply leave them be. Or will you suppress the rebels yourselves and hand them over to us? Using that 【主角机体名】 your complete-pacifist nation is so proud of.”
+# 审校：补译：原稿页数错误
 > 「反乱軍が、我が隊を攻撃
 >  しながらここに移動してきたのです
+“The rebels moved in here while attacking my unit.
 ---
 >  小官としては、このまま放置する
 >  わけにはいきませんな
+As an officer, I cannot simply leave them be.
 ---
 >  それともあなた方が
 >  反乱軍を鎮圧し、我々に
+Or perhaps you will suppress the rebels yourselves and
 ---
 >  お引き渡し下さいますかな?
 >  完全平和主義国家
+hand them over to us? Using that pride of your nation of total pacifism,
 ---
 >  ご自慢の、
 >  あの{HeroMech}を使って」
+the {HeroMech}, of course.”
 
 @28906 Relena · リリーナ
 > 「……あなた方が、意図的に彼らを
@@ -481,9 +495,10 @@ Cease combat immediately and withdraw from this nation!”
 “Noin, what are we going to do?!”
 
 @28914 Noin · ノイン
+# 审校：精读：去破折号
 > 「傷ついた者を
 >  見殺しにできないという
-“I understand Lady Relena's feelings—that she cannot
+“I understand Lady Relena's feelings, that she cannot
 ---
 >  リリーナ様のお気持ちはよくわかる。
 >  しかし……」
@@ -566,9 +581,10 @@ Rather than surrender at this point, I'd just as soon...”
 “Wait, we're getting a communication. This is... from the {HeroMech}?!”
 
 @28926 Specials · スペシャルズ
+# 审校：精读：结巴
 > 「あ、あれか! 接近してくる……
 >  間違いない
-“Th—that one! It's approaching... no mistake.
+“Th-that one! It's approaching... no mistake.
 ---
 >  あれは{HeroMech}だ!」
 That's the {HeroMech}!”
@@ -677,9 +693,10 @@ The ones I least wanted to see came after all!”
 Everyone, we'll talk later. Listen, don't do anything foolish!”
 
 @28942 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、
 >  帝国残党軍です!
-“Colonel Bask, it's the imperial remnant forces!
+“Special Colonel Bask, it's the imperial remnant forces!
 ---
 >  まっすぐ当該地域に
 >  向かっております!」
@@ -702,9 +719,10 @@ and attack the Hyakki-Mycenae Army! ...However, anything in the way
 may be eliminated, whatever it is!”
 
 @28944 Relena · リリーナ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、退去を
 >  申し入れたはずです
-“Colonel Bask, we already requested that you withdraw.
+“Special Colonel Bask, we already requested that you withdraw.
 ---
 >  なぜMDを前進させるのですか!」
 Why are you advancing the MDs?!”
@@ -723,18 +741,21 @@ Naturally, for the sake of the Sanc Kingdom, which lacks the forces to defend it
 we must fight. You ought to be grateful.”
 
 @28946 Relena · リリーナ
+# 审校：Relena's formal, no-contraction voice requires "do not" instead of "don't".
 > 「要請した覚えはありません。
 >  さがりなさい!」
-“I don't recall making any such request. Stand down!”
+“I do not recall making any such request. Stand down!”
 
 @28947 Bask · バスク
+# 审校：Bask's formal, mocking tone to Relena is better served by "shall" than the contraction "I'll".
 > 「抗議はあとでうけたまわろう。失礼」
-“I'll hear your protest later. Excuse me.”
+“I shall hear your protest later. Excuse me.”
 
 @28948 Relena · リリーナ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐! 恥知らずな真似
 >  はおよしなさい! バスク特佐!」
-“Colonel Bask! Stop this shameless behavior! Colonel Bask!”
+“Special Colonel Bask! Stop this shameless behavior! Special Colonel Bask!”
 
 @28949 Bask · バスク
 > 「切れ」
@@ -783,8 +804,9 @@ launch immediately!”
 “We'll handle these guys.”
 
 @28958 Koji · 甲児
+# 审校：精读：去破折号
 > 「おまたせ、マジンガーZがやってきたぜ!」
-“Sorry to keep you waiting—Mazinger Z is here!”
+“Sorry to keep you waiting. Mazinger Z is here!”
 
 @28959 Sayaka · さやか
 > 「マジンガーZにそっくりね、あのロボット。
@@ -876,8 +898,9 @@ we could never figure out from the blueprints... So that's what it was!”
 “Then there's a chance we can make it our ally.”
 
 @28975 Prof. Yumi · 弓教授
+# 审校：弓教授对甲児的称呼应体现长辈口吻，用“my boy”更贴合温和学者对晚辈的语气。
 > 「うむ、やってみたまえ。甲児くん」
-“Yes, give it a try, Koji.”
+“Yes, give it a try, my boy.”
 
 @28976 Koji · 甲児
 > 「ミネルバXはマジンガーZの恋人みたい
@@ -1232,6 +1255,7 @@ I must not choose it!”
 “Ah... Father... Mother... I am sorry...”
 
 @29028 Manami · マナミ（按段落 3DD4）
+# 审校：精读：省略号
 > 「{PartnerName}……あなた……ばかよ。
 >  こんな風に死んだって
 “{PartnerName}... you... you fool. Even if you die like this,
@@ -1241,7 +1265,7 @@ I must not choose it!”
 no one would be glad of it... you fool.
 ---
 >  ……{PartnerName}……」
-... {PartnerName}...”
+...{PartnerName}...”
 
 @29029 Aisha · アイシャ（按段落 3DD4）
 > 「ああ……これでもう……
@@ -1667,6 +1691,7 @@ Should I go looking for them, for Lady Relena's sake as well...?)
 “Th-This is... Astonaige, just what is this...?”
 
 @29086 Astonaige · アストナージ
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
 “I found this data while examining the Virose. It seems that your
@@ -1676,6 +1701,7 @@ Should I go looking for them, for Lady Relena's sake as well...?)
 Earthgain and the Virose were originally one and the same.”
 
 @29087 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「俺のアースゲインと、{PartnerNick}の
 >  ヴァイローズが……」
 “My Earthgain and {PartnerNick}'s Virose...”
@@ -1705,6 +1731,7 @@ what do you say?”
 “{PartnerNick}! You...”
 
 @29092 Astonaige · アストナージ
+# 审校：词条：ヴァイローズ=Virose
 > 「アースゲインとヴァイローズを1つに
 >  してくれっていいだしたのは{PartnerNick}さ」
 “It was {PartnerNick} who said to combine the Earthgain and the Virose into one.”
@@ -1714,6 +1741,7 @@ what do you say?”
 “...”
 
 @29094 Kurtz · カーツ（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「ま、いろいろあったがお前たちと戦った
 >  ことで、俺も自分の弱さってもんが
 “Well, a lot happened, but fighting alongside you taught me a thing or two about
@@ -1776,6 +1804,7 @@ It's not your fault.”
 “Yeah... Once we're in battle, there's no time to think about that.”
 
 @29106 Roux · ルー
+# 审校：词条：ヴァイローズ=Virose
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
 “That's fine, then. Oh, right, Astonaige said he wants to talk to you
@@ -1799,6 +1828,7 @@ about the Virose they recovered.”
 “Th-This is... Astonaige, just what is this...?”
 
 @29110 Astonaige · アストナージ
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
 “I found this data while examining the Virose. It seems that your
@@ -1808,6 +1838,7 @@ about the Virose they recovered.”
 Earthgain and the Virose were originally one and the same.”
 
 @29111 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「俺のアースゲインと、{PartnerNick}の
 >  ヴァイローズが……」
 “My Earthgain and {PartnerNick}'s Virose...”

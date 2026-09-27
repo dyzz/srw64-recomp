@@ -17,8 +17,9 @@
 Come on, David, let's go.”
 
 @47933 David · デビッド
+# 审校：精读：破折号
 > 「ちょっ、なんだよシモーヌ」
-“Hey, what the— Simone!”
+“Hey, what's the deal, Simone?”
 
 @47934 Simone · シモーヌ
 > 「いいから、くるのよ」
@@ -148,8 +149,9 @@ One minute until energy critical.”
 “You can come back too, as Eiji's tag-along.”
 
 @47960 Bright · ブライト
+# 审校：Bright 的舰长口吻应更简洁有力，去掉多余的“Then”。
 > 「ではみんな、あとを頼むぞ」
-“Then everyone, I leave the rest to you.”
+“Everyone, I leave the rest to you.”
 
 @47961 Koji · 甲児
 > 「そんじゃちょっくら行ってくるぜ。
@@ -157,8 +159,9 @@ One minute until energy critical.”
 “Well then, I'm off for a bit. Get the party ready and wait for us.”
 
 @47962 Amuro · アムロ
+# 审校：原文“そうさせてもらうよ”是接受对方安排，译文“we'll do just that”语气过重，改为更自然的接受表达。
 > 「ああ、そうさせてもらうよ」
-“Yeah, we'll do just that.”
+“Yeah, we'll do that.”
 
 @47963 Sai Saici · サイ・サイシー
 > 「帰ってきたら、オイラが
@@ -208,9 +211,10 @@ there's a chance we can come pick you up from here.”
 “Everyone, do your best!”
 
 @47971 Shinobu · 忍
+# 审校：准将 统一 Brigadier General
 > 「やるぜ、俺たちは。イゴール将軍、
 >  ブレックス准将、みんな見ていてくれ」
-“We're gonna do this. General Igor, Commodore Blex, everyone, watch over us.”
+“We're gonna do this. General Igor, Brigadier General Blex, everyone, watch over us.”
 
 @47972 Ryo · 亮
 > 「これも、運命だな」
@@ -355,6 +359,7 @@ is none other than myself.”
 “Then that, that tactic?!”
 
 @48000 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「うむ。貴様も獲物どもを、
 >  思う存分にかわいがってやれ
 “Yes. You too, toy with the prey to your heart's content.
@@ -382,6 +387,7 @@ answer the voice of this Muge Zorbados!”
 “Ooooh!”
 
 @48004 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「ゆけ、デスガイヤー!
 >  “赤い宇宙”へ!!」
 “Go, Death Gaia! To the ‘Red Universe’!!”
@@ -432,8 +438,9 @@ about to start a party.”
 “Seems there's no one around.”
 
 @48014 Garrison · ギャリソン
+# 审校：原文没有呼语，管家对万丈以外的人不应自行添加 sir。
 > 「さようですな」
-“Indeed, sir.”
+“Indeed.”
 
 @48015 Koji · 甲児
 > 「なんだよ、どうなってんだ?」
@@ -449,9 +456,10 @@ about to start a party.”
 “What do you make of it, Garrison?”
 
 @48018 Garrison · ギャリソン
+# 审校：原文没有呼语，不应自行添加 sir；同时去掉缩写以符合管家无缩写口吻。
 > 「お手上げでございますな。
 >  まったくエネルギー反応がございません」
-“I'm at a loss, sir. There's no energy reaction at all.”
+“I am at a loss. There is no energy reaction at all.”
 
 @48019 Duo · デュオ
 > 「なんてこったぁ」
@@ -471,9 +479,10 @@ just so they could relax in heaven by themselves.”
 “...What...?”
 
 @48022 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 I'm 改为 I am。
 > 「これは……エネルギー反応が
 >  多数感知されましたぞ」
-“This is... I'm detecting multiple energy reactions.”
+“This is... I am detecting multiple energy reactions.”
 
 @48023 Shinobu · 忍
 > 「ああ、どうやらおいでなすったようだな」
@@ -591,13 +600,14 @@ into eternal suffering! Here I come!!”
 “What did you say?!”
 
 @48044 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 he'll 改为 he will。
 > 「お待ちください。このままでは
 >  あの敵には勝てません
 “Please wait. As things stand, we cannot defeat that enemy.
 ---
 >  まともに戦ってもこちらのパワーを
 >  吸い取られるだけでしょう」
-Even if we fight him head-on, he'll only drain our power.”
+Even if we fight him head-on, he will only drain our power.”
 
 @48045 Reika · レイカ
 > 「なんですって!?」
@@ -680,16 +690,19 @@ that is how the system works.”
 “Go on, revive if you can!”
 
 @48061 Banjo · 万丈
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「見たかデスガイヤー。
 >  これでも復活できるかな!?」
 “You see that, Death Gaia? Can you revive now?!”
 
 @48062 Ryoma · リョウ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、復活できるものなら
 >  やってみろ!」
 “Death Gaia, if you can revive, then try it!”
 
 @48063 Hayato · ハヤト
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、貴様もこいつで
 >  最後だぜ!」
 “Death Gaia, this is the end for you too!”
@@ -712,6 +725,7 @@ that is how the system works.”
 “Whoaaaaa! I-Is this really okay?!”
 
 @48068 Heero · ヒイロ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「終わったなデスガイヤー。
 >  お前に未来はない」
 “It's over, Death Gaia. You have no future.”
@@ -764,6 +778,7 @@ then let's see you do it!”
 “Watch me, Koji! I'll show you how it's done!”
 
 @48078 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「くっ……デスガイヤー、これで最後だ!」
 “Ngh... Death Gaia, this is the end!”
 
@@ -793,6 +808,7 @@ then let's see you do it!”
 “Ngh... {HeroName}, th-the machine won't hold much longer...”
 
 @48085 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だめよ{PartnerNick}! 逃げてはだめ!
 >  デスガイヤー……あたしは絶対に
 “No, {PartnerNick}! You mustn't run! Death Gaia... I will never
@@ -805,6 +821,7 @@ forgive you! Vanish right here!!”
 “M-My lady, at this rate...”
 
 @48087 主角
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だめよローレンス! 逃げてはだめ!
 >  デスガイヤー……あたしは絶対に
 “No, Lawrence! You mustn't run! Death Gaia... I will never
@@ -825,6 +842,7 @@ forgive you! Vanish right here!!”
 while it's still split apart!”
 
 @48090 Bright · ブライト
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「……よし、ネェル・アーガマを
 >  デスガイヤーへぶつける!」
 “...All right, ram the Nahel Argama into Death Gaia!”
@@ -870,6 +888,7 @@ while it's still split apart!”
 This is the last one. We hit that castle with everything we've got!”
 
 @48099 Emperor Muge · ムゲ帝王
+# 审校：精读：破折号
 > 「愚か者たちが。この私の宇宙の
 >  聖域に踏みこみ
 “Fools. You have trespassed into my sacred sanctuary of the universe,
@@ -880,7 +899,7 @@ and I shall make you regret ever angering me. For you see...
 ---
 >  お前たちが絶対者と考え、
 >  そして時には理想の姿とする
-the one you consider absolute, and at times hold up as your ideal—
+the one you consider absolute, and at times hold up as your ideal,
 ---
 >  “神”こそが、この私だからだ」
 that ‘god’ is none other than me.”
@@ -940,9 +959,10 @@ I'll borrow their strength. The strength of all those who died in that war!”
 “Yeah... I'll pray too... Shapiro, lend me your strength as well!!”
 
 @48109 Emperor Muge · ムゲ帝王
+# 审校：精读：破折号
 > 「ぬぅ、この力……この力はなんだ!?
 >  この私の、この私の宇宙を
-“Ngh, this power... what is this power?! It's pushing back my—my universe,
+“Ngh, this power... what is this power?! It's pushing back my, my universe,
 ---
 >  私の力を押しもどすだと!?」
 my power?!”
@@ -1026,9 +1046,10 @@ So I can't have you ending things just yet.”
 “Ngh... so it's no good after all?!”
 
 @48125 Avie-Lu · アヴィ＝ルー
+# 审校：精读：破折号
 > 「……いけないネ……ムゲの宇宙は
 >  もうダメみたいだ。アンタたち
-“...This is bad. Muge's universe seems done for. You lot—
+“...This is bad. Muge's universe seems done for. You lot,
 ---
 >  こんなところで空間の裂けめに
 >  飲みこまれて死ぬんじゃないヨ
@@ -1267,8 +1288,9 @@ Even Koji only just came to a little while ago.”
 “Lawrence... everyone... I passed out, didn't I...”
 
 @48170 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐口吻，原文“まったく、だらしのないことですわね”带有轻蔑感叹，译文应更贴近其高傲语气。
 > 「まったく、だらしのないことですわね」
-“My, how disgraceful.”
+“Honestly, how disgraceful.”
 
 @48171 Manami · マナミ（按段落 3DD4）
 > 「ごめん、{PartnerNick}。でも……
@@ -1279,14 +1301,15 @@ Even Koji only just came to a little while ago.”
 it seems. What happened?”
 
 @48172 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ为贵族敬体，原文“わたくしの方が聞きたいくらいですわ”应使用更正式、无缩写的表达。
 > 「それは、わたくしの方が聞きたいくらい
 >  ですわ」
-“That's what I'd like to know.”
+“That is what I should like to ask.”
 
 @48173 Lawrence · ローレンス
-# 审校：“さようで”是管家对大小姐的简短附和，初稿加“my lady”多余且与上下文重复，应只译“Indeed.”。
+# 审校：ローレンス是老管家，原文“さようで”是恭敬的附和，译文应更符合其古雅、正式的口吻。
 > 「さようで」
-“Indeed.”
+“Just so.”
 
 @48174 Manami · マナミ（按段落 3DD4）
 > 「では、少なくともまだ生きてはいる
@@ -1343,9 +1366,10 @@ our comrades might come for us. For now, all we can do is wait.”
 We can't have enough supplies to last that long.”
 
 @48182 Simone · シモーヌ
+# 审校：シモーヌ性格爽快不拘礼节，原文“あんたなんで”语气直接，译文应更口语化、自然。
 > 「ヒイロ、あんたなんでそんな
 >  悲観的な見方しかできないのよ」
-“Heero, why can you only ever see things so pessimistically?”
+“Heero, why must you always see things so pessimistically?”
 
 @48183 Heero · ヒイロ
 > 「現実的なだけだ」

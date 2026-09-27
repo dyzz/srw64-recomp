@@ -15,16 +15,18 @@
 Since then, the aliens have withdrawn from the surface.”
 
 @45030 Wong · ウォン
+# 审校：合并：misc 与 scene 批次三方合并
 > 「それはもう。あれはクスコにあった、
 >  “グラドスの刻印”と呼ばれるものが
-“That I have. It was the thing called the ‘Mark of Grados’ in Cusco—
+“That I have. It was the thing called the ‘Grados Crest’ in Cusco.
 ---
 >  発動したのですよ」
-it activated.”
+It activated.”
 
 @45031 Master · マスター
+# 审校：全局：刻印＝Crest
 > 「“グラドスの刻印”とな?」
-“The ‘Mark of Grados,’ you say?”
+“The ‘Grados Crest,’ you say?”
 
 @45032 Wong · ウォン
 > 「どうやら、運は我々に味方して
@@ -279,9 +281,10 @@ to resume the experiment...”
 happens now, the Getter won't be usable.”
 
 @45067 Ryoma · リョウ
+# 审校：精读：破折号
 > 「その時は、みんなにまかせるさ。俺は、
 >  いや俺たちは、なんとか真ゲッターを
-“In that case, we leave it to everyone else. I—no, we—want to get the Shin Getter
+“In that case, we leave it to everyone else. I, no, we want to get the Shin Getter
 ---
 >  動かしたいんだ。真ゲッターのパワーが
 >  あれば、戦いをぐっと有利にできる」
@@ -751,8 +754,9 @@ I'll finish you off myself!”
 “What?!”
 
 @45148 Master · マスター
+# 审校：原文“ウォンめ”带有轻蔑语气，译文缺少这种口吻，补上“it was”使语气更完整。
 > 「……まさかウォンめ……」
-“...Don't tell me Wong...”
+“...Don't tell me it was Wong...”
 
 @45149 Domon · ドモン
 > 「東方不敗!
@@ -772,8 +776,9 @@ I'll finish you off myself!”
 “Uwaaaaaaah?!”
 
 @45153 Master · マスター
+# 审校：“immature fool”过于书面，改为“green fool”更符合宗师呵斥弟子的豪迈口吻。
 > 「ドモン! この未熟者めぇ!!」
-“Domon! You immature fool!!”
+“Domon! You green fool!!”
 
 @45154 Domon · ドモン
 > 「と、東方不敗……」
@@ -802,13 +807,14 @@ I'll finish you off myself!”
 “Master Asia, why did you save me back there?”
 
 @45160 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 didn't、Don't、we'll，改为完整形式。
 > 「助けたわけではない。あわてるな、こんな
 >  ところでやりあえば、ガレキの下敷きだ
-“I didn't save you. Don't be hasty. If we fight here, we'll be crushed under the rubble.
+“I did not save you. Do not be hasty. If we fight here, we will be crushed under the rubble.
 ---
 >  そんなこともわからんのか。
 >  一時休戦だ、いいな」
-Can't you even understand that? A temporary truce, agreed?”
+Can you not even understand that? A temporary truce, agreed?”
 
 @45161 Domon · ドモン
 > 「……どうするつもりだ」
@@ -832,9 +838,10 @@ the one being attacked? You're one of them, aren't you?”
 “Ugh... Damn, it's blocked?!”
 
 @45165 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 won't，改为 will not。
 > 「……このままでは長くは、もたんな。
 >  覚えておるか、ドモン。以前にも
-“...At this rate, we won't last long. Do you remember, Domon? There was
+“...At this rate, we will not last long. Do you remember, Domon? There was
 ---
 >  こんなことがあった。そしてあの時も、
 >  この流派東方不敗の
@@ -861,19 +868,21 @@ by this man...)
 “Master...”
 
 @45169 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 haven't、what's，改为完整形式。
 > 「ついにあの技だけはお前に伝えられな
 >  かった。お前はあの頃から、まったく
-“In the end, that technique alone I could never pass on to you. You haven't changed
+“In the end, that technique alone I could never pass on to you. You have not changed
 ---
 >  変わっておらん。目先のことにとらわ
 >  れ、いちばん大切なことを見失う」
-one bit since those days. You fixate on what's in front of you and lose sight of what matters most.”
+one bit since those days. You fixate on what is in front of you and lose sight of what matters most.”
 
 @45170 Domon · ドモン
 > 「どういうことだ……?」
 “What do you mean...?”
 
 @45171 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 wasn't，改为 was not。
 > 「よく見ておけ、ドモン。ネオホンコン、
 >  一年戦争後の地球でもっとも
 “Look well, Domon. Neo Hong Kong, the most prosperous city on Earth
@@ -887,16 +896,17 @@ after the One Year War, is now like this. Across the whole world, no, upon the E
 ruin is closing in, that much is certain. But what invited it?
 ---
 >  異星人か? いや、そうではない」
-The aliens? No, it wasn't them.”
+The aliens? No, it was not them.”
 
 @45172 Domon · ドモン
 > 「…………」
 “...”
 
 @45173 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 Don't，改为 Do you not。
 > 「……人間とは、つくづく度しがたい
 >  存在だと思わぬか。だからこそ
-“...Don't you think humans are, through and through, beyond saving? That is exactly why,
+“...Do you not think humans are, through and through, beyond saving? That is exactly why,
 ---
 >  だからこそワシは……」
 exactly why I...”
@@ -906,9 +916,10 @@ exactly why I...”
 “Damn, there are still more?!”
 
 @45175 Master · マスター
+# 审校：Master 的 voice 要求无缩写，译文用了 we're，改为 we are。
 > 「ドモン、こやつらを片づけるぞ!
 >  ガンダムを出せ」
-“Domon, we're finishing these ones off! Bring out your Gundam!”
+“Domon, we are finishing these ones off! Bring out your Gundam!”
 
 @45176 Domon · ドモン
 # 审校：原文“出ろぉぉぉっ!”是拖长音的喊叫，初稿“Come out!”没有体现气势，改为“Come oooout!”
@@ -924,15 +935,15 @@ exactly why I...”
 “Domon, let's go!”
 
 @45179 Domon · ドモン
-# 审校：原文“この俺が!?”强调“我竟然”，初稿“Don't tell me, me of all people?!”逗号使语气断裂，改为破折号更自然
+# 审校：精读：破折号
 > 「なに!? まさか、この俺が!?」
-“What?! Don't tell me—me of all people?!”
+“What?! Don't tell me... me, of all people?!”
 
 @45180 Master · マスター
-# 审校：原文“あぁぁぁっ”拖长音，初稿“bee”只两个e，气势不足，改为“beeeee”
+# 审校：精读：破折号
 > 「な、なんだと!?
 >  こんなバカなあぁぁぁっ!!」
-“Wha—what?! This can't beeeee!!”
+“Wha... what?! This cannot beeeee!!”
 
 @45181 Domon · ドモン
 > 「……終わったか……」
@@ -943,9 +954,10 @@ exactly why I...”
 “No, one of them is still left!”
 
 @45183 Master · マスター
+# 审校：精读：破折号
 > 「ドモン! 石破天驚拳、
 >  今こそ、うってみせい!」
-“Domon! The Sekiha Tenkyoken—now is the time to unleash it!”
+“Domon! The Sekiha Tenkyoken, now is the time to unleash it!”
 
 @45184 Domon · ドモン
 > 「うおおぉぉぉぉぉぉーっ!!」
@@ -956,9 +968,10 @@ exactly why I...”
 “I-I did it...”
 
 @45186 Master · マスター
+# 审校：精读：破折号
 > 「ドモンよ。流派東方不敗が
 >  最終奥義、石破天驚拳
-“Domon. The final secret of the School of the Undefeated of the East, the Sekiha Tenkyoken—
+“Domon. The final secret of the School of the Undefeated of the East, the Sekiha Tenkyoken,
 ---
 >  確かに伝授したぞ」
 I have indeed passed it on to you.”

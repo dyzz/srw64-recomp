@@ -1,223 +1,321 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9337 Masato · 雅人
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるもんかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @9338 Masato · 雅人
+# 触发：攻击（通用，2/10）
 > 「これでもくらえっ!」
 “Take this!”
 
 @9339 Masato · 雅人
+# 触发：攻击（通用，3/10）
+# 审校：おちろ惯用译法
 > 「おちろっ!」
-“Fall!”
+“Go down!”
 
 @9340 Masato · 雅人
+# 触发：攻击（通用，4/10）
+# 审校：原文双感叹号
 > 「そこだっ!!」
-“There!”
+“There!!”
 
 @9341 Masato · 雅人
+# 触发：攻击（通用，5/10）
+# 审校：拖音用破折号；双感叹号
 > 「いっくぞぉぉぉぉっ!!」
-“Here I gooo!”
+“Here I gooo!!”
 
 @9342 Masato · 雅人
+# 触发：攻击（通用，6/10）
 > 「これでもくらえっ!!」
 “Take this!!”
 
 @9343 Masato · 雅人
+# 触发：攻击（通用，7/10）
 > 「いっけぇぇぇぇっ!!」
 “Gooo!!”
 
 @9344 Masato · 雅人
+# 触发：攻击（通用，8/10）
+# 审校：もらう惯用译法
 > 「もらうよっ!!」
-“I'll take that!”
+“Gotcha!!”
 
 @9345 Masato · 雅人
+# 触发：攻击（通用，9/10）
+# 审校：原文双感叹号
 > 「そらっ!!」
-“Take that!”
+“Take that!!”
 
 @9346 Masato · 雅人
+# 触发：攻击（通用，10/10）
+# 审校：原文双感叹号
 > 「やられろよっ!!」
-“Just go down!”
+“Just go down already!!”
 
 @9347 Masato · 雅人
+# 触发：被击坠（通用，1/5）
 > 「くっ! しまったっ!!」
 “Ngh! Damn it!!”
 
 @9348 Masato · 雅人
+# 触发：被击坠（通用，2/5）
 > 「しまった!!」
 “Damn it!!”
 
 @9349 Masato · 雅人
+# 触发：被击坠（通用，3/5）
+# 审校：被击坠情境
 > 「うわあっ!! やられたっ!!」
-“Uwaa!! I'm hit!!”
+“Uwaa!! They got me!!”
 
 @9350 Masato · 雅人
+# 触发：被击坠（通用，4/5）
+# 审校：被击坠情境
 > 「くそうっ! やられたっ!!」
-“Damn! I'm hit!!”
+“Damn! They got me!!”
 
 @9351 Masato · 雅人
+# 触发：被击坠（通用，5/5）
 > 「わああああっ!!」
 “Waaaaa!!”
 
 @9352 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!! こ、このままじゃやられる!」
-“Uwaa!! I-I can't take much more!”
+“Uwaa!! I-I can’t take much more!”
 
 @9353 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わっ!! ヤ、ヤバイ……」
-“Whoa!! Th-This is bad...”
+“Whoa!! Th-this is bad...”
 
 @9354 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ! こ、これじゃやられちまう!」
-“Whoa! I-I'm gonna get wrecked!”
+“Whoa! I-I’m gonna get wrecked!”
 
 @9355 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、だめだ! これじゃもたないよ!」
-“N-No! I can't hold out like this!”
+“N-no! I can’t hold out like this!”
 
 @9356 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このままじゃやられる!!」
-“I-I'm gonna get shot down!!”
+“I-I’m gonna get shot down!!”
 
 @9357 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ! だ、だめだぁっ!!」
-“Whoa! N-No good!!”
+“Whoa! N-no good!!”
 
 @9358 Masato · 雅人
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「く、くそっ!! だめだ、これじゃ!!」
-“D-Damn!! I can't take this!!”
+“D-damn!! I can’t take this!!”
 
 @9359 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わあっ!! やられたっ!」
-“Waa!! I'm hit!”
+“Waa!! I’m hit!”
 
 @9360 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!! ま、まだだいじょうぶ!」
-“Ugh!! I-I'm still okay!”
+“Ugh!! I-I’m still okay!”
 
 @9361 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，3/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! まだまだ!」
-“Ngh! I'm not done yet!”
+“Ngh! I’m not done yet!”
 
 @9362 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだまだっ!!」
-“N-Not even close!!”
+“N-not even close!!”
 
 @9363 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，5/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだこんなもんじゃ やられないっ!!」
-“Th-This isn't enough to take me down!!”
+“Th-this isn’t enough to take me down!!”
 
 @9364 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そ、そう簡単にやられるもんか!!」
-“I-I won't go down that easy!!”
+“I-I won’t go down that easy!!”
 
 @9365 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，7/9）
 > 「うわっ!! いってぇ～」
 “Whoa!! That huuurts!”
 
 @9366 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わっ!! やったな、このっ!!」
-“Whoa!! You'll pay for that!!”
+“Whoa!! You’ll pay for that!!”
 
 @9367 Masato · 雅人
+# 触发：中伤（剩余 HP 30–90%）（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!! い、意外と!」
-“Whoa!! Th-That's stronger than I thought!”
+“Whoa!! Th-that’s stronger than I thought!”
 
 @9368 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いてっ! やったなっ!!」
-“Ow! You'll pay for that!!”
+“Ow! You’ll pay for that!!”
 
 @9369 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だいじょうぶ効いてないっ!」
-“It's fine, that didn't hurt!”
+“It’s fine, that didn’t hurt!”
 
 @9370 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられるかよっ!」
-“Like I'd go down!”
+“Like I’d go down!”
 
 @9371 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものっ!!」
-“That's nothing!!”
+“That’s nothing!!”
 
 @9372 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/7）
 > 「へへ、大したことないじゃん」
 “Heh, that was nothing”
 
 @9373 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/7）
 > 「こんな攻撃でっ!!」
 “An attack like that?!”
 
 @9374 Masato · 雅人
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、こんなもんかな」
-“Well, that's about it”
+“Well, that’s about it”
 
 @9375 Masato · 雅人
+# 触发：回避（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるかよっ!!」
-“Like you'd hit me!!”
+“Like you’d hit me!!”
 
 @9376 Masato · 雅人
+# 触发：回避（通用，2/8）
 > 「ふう、たすかった」
 “Phew, that was close”
 
 @9377 Masato · 雅人
+# 触发：回避（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ、あぶなかった……」
-“Th-That was close...”
+“Th-that was close...”
 
 @9378 Masato · 雅人
+# 触发：回避（通用，4/8）
 > 「残念でした!」
 “Too bad!”
 
 @9379 Masato · 雅人
+# 触发：回避（通用，5/8）
 > 「当たらないね!」
 “You missed!”
 
 @9380 Masato · 雅人
+# 触发：回避（通用，6/8）
 > 「おおっと!」
 “Whoa there!”
 
 @9381 Masato · 雅人
+# 触发：回避（通用，7/8）
 > 「へへ、軽い軽い」
 “Heh, too easy”
 
 @9382 Masato · 雅人
+# 触发：回避（通用，8/8）
 > 「よっと!!」
 “Hup!!”
 
 @9383 Masato · 雅人
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：攻击无效情境，beam 小写
 > 「ビームなんて!!」
-“A Beam like that?!”
+“A beam? Please!!”
 
 @9384 Masato · 雅人
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだって言ってんのに」
-“I told you it's useless”
+“I told you it’s useless”
 
 @9385 Masato · 雅人
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだよ!」
-“It's useless!”
+“It’s useless!”
 
 @9386 Masato · 雅人
+# 触发：弹药／EN 不足，无法反击（通用，1/3）
 > 「ありゃ、弾切れかよ!?」
 “Huh, out of ammo?!”
 
 @9387 Masato · 雅人
+# 触发：弹药／EN 不足，无法反击（通用，2/3）
+# 审校：手が出せない
 > 「ダメだ、手が出せない!」
-“I can't do anything!”
+“No good, I can’t do a thing!”
 
 @9388 Masato · 雅人
+# 触发：弹药／EN 不足，无法反击（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、反撃できない!」
-“Damn, I can't fight back!”
+“Damn, I can’t fight back!”
 
 @9389 Masato · 雅人
+# 触发：射程外，无法反击（通用，1/3）
 > 「ウソだろ!? あんなとこから
 >  攻撃できるのかよ!?」
 “No way?! They can attack from there?!”
 
 @9390 Masato · 雅人
+# 触发：射程外，无法反击（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、だめだ、届かないよ!」
-“N-No good, I can't reach!”
+“N-no good, I can’t reach!”
 
 @9391 Masato · 雅人
+# 触发：射程外，无法反击（通用，3/3）
 > 「何だよ、そんなとこからなんて
 >  卑怯だぞ!!」
 “What the hell, attacking from way back there is dirty!!”
+
+@14808 Masato · 雅人
+# 触发：使用〈105mmライフル砲〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「俺のキャノン砲は半端じゃないぜ!」
+“My cannon’s no joke!”

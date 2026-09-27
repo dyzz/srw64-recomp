@@ -1,162 +1,272 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8733 Jerid · ジェリド
+# 触发：攻击（通用，1/15）
+# 审校：补引号
 > 「落ちろってんだよ!!」
-“I said fall!”
+“I said fall!!”
 
 @8734 Jerid · ジェリド
+# 触发：攻击（通用，2/15）
+# 审校：补引号
 > 「観念するんだな!!」
-“Give it up!”
+“Give it up!!”
 
 @8735 Jerid · ジェリド
+# 触发：攻击（通用，3/15）
+# 审校：补引号
 > 「沈めえっ!!」
-“Sink!”
+“Sink!!”
 
 @8736 Jerid · ジェリド
+# 触发：攻击（通用，4/15）
+# 审校：补引号
 > 「このっ!!」
-“Why you!”
+“Why you!!”
 
 @8737 Jerid · ジェリド
+# 触发：攻击（通用，5/15）
+# 审校：更像喊话
 > 「こいつでとどめだっ!!」
-“This one's the finisher!”
+“This’ll finish you!!”
 
 @8738 Jerid · ジェリド
+# 触发：攻击（通用，6/15）
+# 审校：拖长音
 > 「きっさまぁぁっ!!」
-“You bastaaaard!”
+“You bastaaaard!!”
 
 @8739 Jerid · ジェリド
+# 触发：攻击（通用，7/15）
+# 审校：补引号
 > 「もらった!!」
-“Got you!”
+“Got you!!”
 
 @8740 Jerid · ジェリド
+# 触发：攻击（通用，8/15）
+# 审校：补引号
 > 「くらえっ!!」
-“Take this!”
+“Take this!!”
 
 @8741 Jerid · ジェリド
+# 触发：攻击（通用，9/15）
+# 审校：补引号
 > 「そこかあっ!!」
-“There you are!”
+“There you are!!”
 
 @8742 Jerid · ジェリド
+# 触发：攻击（通用，10/15）
+# 审校：短促；补引号
 > 「当ててみせる!!」
-“I'll hit you, just watch!”
+“I’ll hit you, just watch!!”
 
 @8743 Jerid · ジェリド
+# 触发：攻击（通用，11/15）
+# 审校：补引号
 > 「じゃまだ!!」
-“Out of my way!”
+“Out of my way!!”
 
 @8744 Jerid · ジェリド
+# 触发：攻击（通用，12/15）
+# 审校：补引号
 > 「落ちろっ!!」
-“Fall!”
+“Fall!!”
 
 @8745 Jerid · ジェリド
+# 触发：攻击（通用，13/15）
+# 审校：补引号
 > 「今、楽にしてやるぜ!!」
-“I'll put you out of your misery!”
+“I’ll put you out of your misery!!”
 
 @8746 Jerid · ジェリド
+# 触发：攻击（通用，14/15）
+# 审校：补引号
 > 「そんなに落とされたいか!?」
 “You want to be shot down that badly?!”
 
 @8747 Jerid · ジェリド
+# 触发：攻击（通用，15/15）
+# 审校：补引号
 > 「どこからでも来い! 近づくやつは、
 >  みんな灰にしてやる!」
-“Come at me from anywhere! Anyone who gets close, I'll turn to ash!”
+“Come at me from anywhere! Anyone who gets close, I’ll turn to ash!”
 
 @8748 Jerid · ジェリド
+# 触发：被击坠（通用，1/3）
+# 审校：补引号
 > 「くっそおぉぉぉっ!!」
-“Daaamn it!”
+“Daaamn it!!”
 
 @8749 Jerid · ジェリド
+# 触发：被击坠（通用，2/3）
+# 审校：ええい→Damn it
 > 「ええい、これまでか!!」
-“Argh, so this is it!”
+“Damn it, is this the end?!”
 
 @8750 Jerid · ジェリド
+# 触发：被击坠（通用，3/3）
+# 审校：补引号
 > 「くそっ! なぜだ! なぜ勝てないっ!?」
-“Damn! Why?! Why can't I win?!”
+“Damn! Why?! Why can’t I win?!”
 
 @8751 Jerid · ジェリド
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：补引号
 > 「バカな……この俺が押されている!?」
-“Impossible... I'm being pushed back?!”
+“Impossible... I’m being pushed back?!”
 
 @8752 Jerid · ジェリド
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：补引号
 > 「ぐうっ! こ、こいつっ!」
 “Gah! Th-this guy!”
 
 @8753 Jerid · ジェリド
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：补引号
 > 「なんだと!?」
 “What?!”
 
 @8754 Jerid · ジェリド
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：补引号
 > 「ぐあっ! なんてパワーだ!!」
-“Gah! What power!”
+“Gah! What power!!”
 
 @8755 Jerid · ジェリド
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：补引号
 > 「ちいっ! いい気になるなっ!!」
-“Tch! Don't get cocky!”
+“Tch! Don’t get cocky!!”
 
 @8756 Jerid · ジェリド
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：补引号
 > 「まだまだっ!!」
-“Not yet, not yet!”
+“Not yet, not yet!!”
 
 @8757 Jerid · ジェリド
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：貴様なんぞに
 > 「うっ! 貴様なんぞにっ!!」
-“Ugh! You of all people!”
+“Ugh! By the likes of you!!”
 
 @8758 Jerid · ジェリド
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：补引号
 > 「ちいっ! なめた真似してくれるぜっ!」
-“Tch! You've got some nerve!”
+“Tch! You’ve got some nerve!”
 
 @8759 Jerid · ジェリド
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：补引号
 > 「ぬうっ!! まだだ、まだ戦える!!」
-“Ngh! Not yet, I can still fight!”
+“Ngh! Not yet, I can still fight!!”
 
 @8760 Jerid · ジェリド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：更顺口；补引号
 > 「こんなもんで落ちるかよっ!!」
-“You think this'll take me down?!”
+“You think this’ll take me down?!!”
 
 @8761 Jerid · ジェリド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：补引号
 > 「かすっただけだ!!」
-“It just grazed me!”
+“It just grazed me!!”
 
 @8762 Jerid · ジェリド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：补引号
 > 「この程度!!」
-“That's nothing!”
+“That’s nothing!!”
 
 @8763 Jerid · ジェリド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：补引号
 > 「そんなものか!! 笑わせるぜ!!」
-“Is that all?! You're kidding me!”
+“Is that all?! You’re kidding me!!”
 
 @8764 Jerid · ジェリド
+# 触发：回避（通用，1/5）
+# 审校：补引号
 > 「あまいんだよっ!!」
-“Too naive!”
+“Too naive!!”
 
 @8765 Jerid · ジェリド
+# 触发：回避（通用，2/5）
+# 审校：补引号
 > 「なめるなっ!!」
-“Don't underestimate me!”
+“Don’t underestimate me!!”
 
 @8766 Jerid · ジェリド
+# 触发：回避（通用，3/5）
+# 审校：なんの＝不算什么
 > 「なんのっ!!」
-“No problem!”
+“Ha, no problem!!”
 
 @8767 Jerid · ジェリド
+# 触发：回避（通用，4/5）
+# 审校：补引号
 > 「させるかっ!!」
-“Like I'd let you!”
+“Like I’d let you!!”
 
 @8768 Jerid · ジェリド
+# 触发：回避（通用，5/5）
+# 审校：反问语气；补引号
 > 「ハハハッ! あたるかッ!」
-“Ha ha ha! You think you'll hit me?!”
+“Ha ha ha! You think you’ll hit me?!”
 
 @8769 Jerid · ジェリド
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：补引号
 > 「効かねえなっ!」
-“That doesn't hurt!”
+“That doesn’t hurt!”
 
 @8770 Jerid · ジェリド
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「しまった、弾切れか!?」
 “Damn, out of ammo?!”
 
 @8771 Jerid · ジェリド
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、撃ちつくした! スペア!!」
-“Damn, I'm all out! Spare!!”
+“Damn, I’m all out! Spare!!”
 
 @8772 Jerid · ジェリド
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ! 反撃できん!!」
-“Damn! I can't fight back!!”
+“Damn! I can’t fight back!!”
+
+@14650 Jerid · ジェリド
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14651 Jerid · ジェリド
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈バウンド・ドック〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：バウンド・ドッグ→Baund Doc
+> 「そんな事で、このバウンド・ドッグは
+>  落ちないぜ!」
+“That won’t be enough to bring down this Baund Doc!”
+
+@14652 Jerid · ジェリド
+# 触发：回避，条件 1000
+# 审校：かかった是上钩
+> 「かかった!?」
+“Took the bait?!”
+
+@14653 Jerid · ジェリド
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いいぞ、こいつはなかなか使える!」
+“All right, this thing’s pretty useful!”
+
+@14654 Jerid · ジェリド
+# 触发：回避，条件 1000
+# 审校：统一诱饵
+> 「よし、ダミーにいったな」
+“Good, it went for the decoy.”

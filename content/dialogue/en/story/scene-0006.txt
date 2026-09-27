@@ -91,9 +91,10 @@ installed in the mountains to the south.”
 “Such as?”
 
 @17900 Garrison · ギャリソン
+# 审校：Garrison's address card specifies 'Mr. Banjo' for Banjo, but for Lawrence the Japanese uses 殿; as a fellow butler, 'Mr. Lawrence' is more appropriate than 'Lord Lawrence'.
 > 「はい、ローレンス殿の
 >  ご協力により
-“Yes. With Lord Lawrence's cooperation,
+“Yes. With Mr. Lawrence's cooperation,
 ---
 >  私の情報網でも、ロームフェラや
 >  スペシャルズの動きならば
@@ -185,6 +186,8 @@ I'll go do it myself.”
 “Do you see that fighter plane?”
 
 @17913 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「あれはエルブルス。スイームルグとともに
 >  設計された機体です」
 “That is the Elbulls. It was designed together with the Sweemurg.”
@@ -194,6 +197,7 @@ I'll go do it myself.”
 “Really, Lawrence?!”
 
 @17915 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
 > 「わたくしの目に狂いはございません。
 >  あれは間違いなくエルブルスです」
 “My eyes do not deceive me. That is without a doubt the Elbulls.”
@@ -204,12 +208,13 @@ I'll go do it myself.”
 “No... Who on earth could have taken what Grandfather left behind...?”
 
 @17917 ???
+# 审校：口吻偏平淡，改为更符合贵族千金语气的表达。
 > 「やはりここにいらしたのね、
 >  {HeroName}さん
 “So you really were here after all, {HeroName}.
 ---
 >  ずいぶんと探しましたわよ」
-I searched for you quite a long time.”
+I searched for you for quite some time.”
 
 @17918 主角
 > 「誰!?」
@@ -226,8 +231,9 @@ I searched for you quite a long time.”
 “Three years...? No way... Is that you, {PartnerName}?!”
 
 @17921 对手
+# 审校：原文为敬语表达，译文改为完成时更贴合贵族口吻。
 > 「思い出していただけたようですわね」
-“It seems you remember me.”
+“It seems you have remembered me.”
 
 @17922 Koji · 甲児
 > 「じいさん、あれ誰だい?
@@ -235,21 +241,21 @@ I searched for you quite a long time.”
 “Old man, who is that? You know her too, don't you?”
 
 @17923 Lawrence · ローレンス
-# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerSurname}', '{PartnerName}']，实际为 []）
-# 草稿第 1 页：“...That is Lady [搭档名字] of the [搭档姓氏] Viscount family.
-# 草稿第 2 页：She is your cousin, my lady [主角名字].
-# 草稿第 3 页：I see, so the Elbrus's design documents were in the [搭档姓氏] family's
-# 草稿第 4 页：possession.”
+# 审校：词条：エルブルス=Elbulls
 > 「……{PartnerSurname}子爵家の、
 >  {PartnerName}お嬢様です
+“...This is the {PartnerSurname} viscountcy's Lady {PartnerName}.
 ---
 >  {HeroName}お嬢様の
 >  いとこにあたる方です
+She is a cousin of Lady {HeroName}.
 ---
 >  なるほど、エルブルスの設計図は
 >  {PartnerSurname}家にあったと
+I see, so the blueprints for the Elbulls were in the {PartnerSurname} family's
 ---
 >  いうわけですな」
+hands all along.”
 
 @17924 Simone · シモーヌ
 > 「ああ、そういえば{HeroSurname}家と、
@@ -403,13 +409,14 @@ One day, I will most certainly defeat you.”
 here and now! It is for your own good!”
 
 @17944 Banjo · 万丈
+# 审校：马奈美是女性
 > 「{HeroNick}は僕たちの
 >  大切な仲間だ
 “{HeroNick} is a precious comrade of ours.
 ---
 >  悪いが、君に連れていかせる
 >  わけにはいかない」
-Sorry, but I can't let you take them away.”
+Sorry, but I can't let you take her away.”
 
 @17945 对手
 > 「破嵐万丈……反帝国組織
@@ -429,18 +436,21 @@ If you think you can stop me, then just try!”
 family names or pride!”
 
 @17947 对手
+# 审校：对手是贵族口吻，you're 太随意，改为更正式的 you are。
+# 检查提示：未用必用译名：シモーヌ・ルフラン→Simone Reflann、ルフラン→Reflann
 > 「ルフラン公爵家のシモーヌ・ルフラン
 >  ……貴女まで一緒だったのですね
-“Simone Reflann of the Ducal House of Reflann... So you're with them too.
+“Simone Reflann of the Ducal House of Reflann... So you are with them as well.
 ---
 >  わたくしの邪魔をするというのなら、
 >  容赦いたしません!」
 If you mean to stand in my way, I will show you no mercy!”
 
 @17948 Koji · 甲児
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「やいやいやい!
 >  お家だか財団だか知らないが
-“Hey, hey, hey! I don't care if it's your family or your foundation,
+“Hey, hey, hey! I don't care if it's your family or your Foundation,
 ---
 >  勝手なことばっかり言うな!
 stop saying whatever you please!
@@ -489,10 +499,10 @@ No matter how pretty your face is, we're not gonna stay quiet either!”
 “It's fine. You don't need to worry about me.”
 
 @17958 Sayaka · さやか
-# 审校：原文“あの人”指代前文提到的表亲，结合语境应为男性，初稿用 she/her 误判性别。
+# 审校：艾莎是女性
 > 「でも……いとこなんでしょ、あの人?
 >  きっとわかってもらえるわよ」
-“But... he's your cousin, isn't he? I'm sure he'll understand.”
+“But... she's your cousin, isn't she? I'm sure she'll understand.”
 
 @17959 主角
 > 「ええ……あたしもそう思いたいけれど……」
@@ -515,18 +525,18 @@ Please, do try to calm yourself a little.”
 “Simone, what do you think?”
 
 @17963 Simone · シモーヌ
-# 审校：{PartnerName} 性别由玩家路线决定，初稿固定为 she/her 不妥，改为中性 they。
+# 审校：艾莎是女性
 > 「{PartnerName}のこと? パーティーで
 >  何度かみかけたことがあるだけだから、
-“About {PartnerName}? I've only seen them a few times at parties, so I can't really say,
+“About {PartnerName}? I've only seen her a few times at parties, so I can't really say,
 ---
 >  なんともいえないけど……何か
 >  価値観を一新させるような
-but... unless something happens to completely change their values,
+but... unless something happens to completely change her values,
 ---
 >  出来事でもないかぎり、何度でも
 >  来るわね」
-they'll keep coming back, no matter how many times.”
+she'll keep coming back, no matter how many times.”
 
 @17964 Banjo · 万丈
 > 「そうか。しかしいくら素敵なお嬢さん

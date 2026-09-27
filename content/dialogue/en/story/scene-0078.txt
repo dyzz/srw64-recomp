@@ -17,6 +17,7 @@ Foolishly, they're even further divided among themselves.
 So, what shall we do now?”
 
 @39718 Wahl · ワール
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤーの反陽子爆弾で地球
 >  を破壊できない以上は、地球を
 “Since we cannot destroy the Earth with Gaia's antiproton bomb, there is
@@ -41,13 +42,14 @@ Earthling could possibly know of it. His Majesty the Emperor is being
 quite cautious as well.”
 
 @39720 Wahl · ワール
+# 审校：“mere Earth” 前加不定冠词 a，使军官口吻更自然。
 > 「念のためだ。陛下の御前でたかが
 >  地球ごときを相手に万が一にも
 “Just to be safe. In His Majesty's presence, we cannot be permitted to lose
 ---
 >  負けることは許されぬ。すでに地上
 >  では協力を申し入れてきた奴らに
-even once against mere Earth. I already have those who offered us their cooperation on the surface
+even once against a mere Earth. I already have those who offered us their cooperation on the surface
 ---
 >  探させている」
 searching for it.”
@@ -155,12 +157,13 @@ join up with the others.”
 “Why not? What the hell are you people doing?!”
 
 @39738 Dr. Hazuki · 葉月博士
+# 审校：精读：去破折号
 > 「藤原、お前と問答している
 >  時間はない。艦長、頼む
-“Fujiwara, I don't have time to argue with you. Captain, I'm asking you—
+“Fujiwara, I don't have time to argue with you. Captain, I'm asking you.
 ---
 >  ことは急を要するのだ」
-this matter is urgent.”
+This matter is urgent.”
 
 @39739 Alan · アラン
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -563,6 +566,7 @@ can wait until after.”
 “Understood. You'd best not underestimate the Imperial Guard.”
 
 @39814 Gorman · ゴーマン
+# 审校：精读：词条
 > 「ワルキメデスのバカめが。もうやられて
 >  しまったのか」
 “That fool Warchimedes. Done in already?”
@@ -597,6 +601,7 @@ and yet instead of peaceful use, it will be used to attack the Earth...)
 “Y-yes, I'm fine.”
 
 @39820 Gorman · ゴーマン
+# 审校：精读：词条
 > 「ワルキメデスのバカめが。もうやられて
 >  しまったのか。キリカ、やれるのだろうな」
 “That fool Warchimedes. Done in already? Kirika, you can handle this, yes?”
@@ -776,8 +781,9 @@ work something out for you. Don't worry.”
 “Someone has infiltrated the base!”
 
 @39856 Igor · イゴール
+# 审校：“You scum” 语气过重，老将的怒斥用 “Damn you” 更贴合原句“おのれ”的力度。
 > 「何だと!? おのれ、やらせはせんぞ!」
-“What?! You scum, I won't let you get away with this!”
+“What?! Damn you, I won't let you get away with this!”
 
 @39857 Dr. Hazuki · 葉月博士
 > 「将軍!?」
@@ -807,9 +813,11 @@ This is... not that, but... this won't do. I must destroy this.”
 “Uwoooooooh!!”
 
 @39862 Alberto · アルベルト
+# 审校：“Former Federation” 改为 “old Federation” 更符合反派轻蔑口吻。
+# 检查提示：未用必用译名：旧連邦→Former Federation
 > 「なに!? フン、旧連邦の
 >  生き残りか。くだらんな」
-“What?! Hmph, a survivor of the Former Federation. How pointless.”
+“What?! Hmph, a survivor of the old Federation. How pointless.”
 
 @39863 Igor · イゴール
 > 「貴様らに竜はやらせはせん!」
@@ -936,9 +944,10 @@ Your will shall be carried on by the young, and they will keep fighting...”
 “And the General?!”
 
 @39886 Alan · アラン
+# 审校：アラン对父亲的称呼“親父”应译为更口语化的“old man”，且原文“本望だろう”语气更笃定，现译“He got what he wanted”略显轻浮，改为更庄重的表达。
 > 「……俺たちの親父は、親父らしい
 >  立派な最期だった。本望だろう」
-“...Our father met an end worthy of him. He got what he wanted.”
+“...Our old man went out the way he would've wanted. A fitting end for him.”
 
 @39887 Shinobu · 忍
 > 「なっ……」
@@ -1074,6 +1083,7 @@ Gandor Cannon, firing standby.”
 “Hm?! This is bad, has the base been attacked?!”
 
 @39916 Alberto · アルベルト
+# 审校：跨页多余的引号
 > 「ハハハハッ、たわいもない。
 >  たいした抵抗もできんとは。……むう
 “Hahahaha, how pathetic. You couldn't even put up a decent fight. ...Hm,
@@ -1087,9 +1097,10 @@ this is... not that, but... this won't do. I must destroy this.”
 “Uwoooooooh!!”
 
 @39918 Alberto · アルベルト
+# 审校：全局：旧連邦 = former Federation
 > 「なに!? フン、旧連邦の
 >  生き残りか。くだらんな」
-“What?! Hmph, a survivor of the Former Federation. How pointless.”
+“What?! Hmph, a survivor of the former Federation. How pointless.”
 
 @39919 Igor · イゴール
 > 「貴様らに竜はやらせはせん!」
@@ -1143,13 +1154,14 @@ this is... not that, but... this won't do. I must destroy this.”
 a wise move. Farewell!”
 
 @39930 Schwarz · シュバルツ
+# 审校：精读：括号页
 > (行ってくれたか。
 >  ……この体も、もはや限界だ
-(He actually left. ...This body of mine is at its limit too.)
+(So he's gone. ...This body of mine is at its limit too.
 ---
 >  あの男と戦わずに済んだのは幸い
 >  だったな……)
-(I'm glad I didn't have to fight that man...)
+It's fortunate I didn't have to fight that man...)
 
 @39931 Alan · アラン
 > 「シュバルツ・ブルーダー!? なぜ
@@ -1165,14 +1177,14 @@ a wise move. Farewell!”
 “...General Igor.”
 
 @39934 Igor · イゴール
-# 审校：原文三页为同一句，初稿每页都加了引号；改为只在第一页开头和第三页结尾保留引号。
+# 审校：Igor is an old general; “this father of yours” is too stiff and not how an old soldier would phrase it, so changed to “this old man” to match his voice.
 > 「アランか……わずかな間に、よくそこまで
 >  成長したな……もはや、この父を
 “Alan... in such a short time, you've grown so much... you've already
 ---
 >  乗り越えてしまった……。
 >  結局……お前の戦いもまた
-surpassed this father of yours... In the end... your way of fighting was also
+surpassed this old man... In the end... your way of fighting was also
 ---
 >  正しかったということか……」
 the right one, it seems...”
@@ -1264,14 +1276,15 @@ Your will shall be carried on by the young, and they will keep fighting...”
 “What did you say?!”
 
 @39952 Dr. Hazuki · 葉月博士
-# 审校：原文三页为同一句，初稿每页都加了引号；改为只在第一页开头和第三页结尾保留引号。
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：獣戦機基地→Cyber Beast Force Base
 > 「みんな、よく守ってくれた。これが
 >  イゴール将軍が命をかけ……
 “Everyone, you defended it well. This is what General Igor staked his life on...
 ---
 >  そして、君たちが守ってくれた、
 >  獣戦機基地の新しい姿……
-and what you all protected—the new form of the Cyber Beast Force Base...
+and what you all protected. The new form of the Cyber Beast Force Base...
 ---
 >  ガンドールだ」
 Gandor.”
@@ -1292,9 +1305,10 @@ Gandor.”
 “We'll hear the details later. Everyone, return to the ship.”
 
 @39956 Vega Soldier · ベガ星兵
+# 审校：原文「奴ら引きあげるぞ」是士兵在说敌人撤退，译文误作“We're pulling back”，应改为“They're pulling back”。
 > 「奴ら引きあげるぞ。よし、一気に
 >  あの要塞を攻撃だ!」
-“We're pulling back. All right, hit that fortress all at once!”
+“They're pulling back. All right, hit that fortress all at once!”
 
 @39957 Beltorchika · ベルトーチカ
 > 「艦長!!」
@@ -1470,13 +1484,14 @@ she's a gentle girl who wishes for peace.”
 “Hmm...”
 
 @39987 Banjo · 万丈
+# 审校：精读：去破折号
 > 「いいじゃないか。
 >  ようこそ{HeroMech}へ
 “Why not? Welcome aboard the {HeroMech},
 ---
 >  お嬢さん。僕は万丈、
 >  破嵐万丈だ」
-young lady. I'm Banjo—Banjo Haran.”
+young lady. I'm Banjo. Banjo Haran.”
 
 @39988 Maria · マリア
 > 「じゃあ、いいのね!? やったぁ!」
@@ -1570,13 +1585,15 @@ We must stop it.”
 stop its functions. Apparently it regenerated itself.”
 
 @40004 George · ジョルジュ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ちょっと待ってください。なぜ、あなたは
 >  それを知っているのです。これまでも
-“Wait a moment. How do you know that? It's been the same all along—
+“Wait a moment. How do you know that? It's been the same all along.
 ---
 >  そうでしたが、デビルガンダムが出る時
 >  には、いつもあなたがいる
-whenever the Dark Gundam appears, you're always there.
+Whenever the Dark Gundam appears, you're always there.
 ---
 >  偶然では通りませんよ」
 That's too much to be a coincidence.”
@@ -1637,10 +1654,10 @@ If you'll tell us everything someday, then that's fine.”
 could such a thing really be possible...?)
 
 @40013 Killy · キリー
-# 审校：原文“兄弟”泛指兄弟姐妹，用 siblings 更准确。
+# 审校：精读：引号
 > 「……キリー・ギャグレー作、
 >  『ブロンクスの狼』、第1章
-“...'The Wolf of the Bronx' by Killy Gagley, Chapter 1.
+“...‘The Wolf of the Bronx’ by Killy Gagley, Chapter 1.
 ---
 >  ……俺には何もなかった。親も
 >  兄弟も友だちも何もなかった
@@ -1651,14 +1668,14 @@ could such a thing really be possible...?)
 ...Hmm... ...Argh, no good! I'll rewrite it!”
 
 @40014 Shingo · 真吾
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“What, you haven't made any progress at all? I'm pretty sure you were saying
-# 草稿第 2 页：the same thing before you joined up with the 【主角机体名】.”
+# 审校：补译：原稿占位符错页
 > 「なんだ、全然進んでいないじゃないか
 >  確か、{HeroMech}に
+“What, no progress at all? I'm fairly sure that before you joined the {HeroMech}
 ---
 >  合流する前にも同じようなことを
 >  いっていたぞ」
+you were saying the very same thing.”
 
 @40015 Remy · レミー
 > 「ホントにもう……外に出て少し
@@ -1677,13 +1694,14 @@ rewrite this, rewrite that. And we're the ones who have to listen to it,
 so spare a thought for us.”
 
 @40016 Killy · キリー
+# 审校：Killy 的玩世不恭口吻下，“nice ladies”重复且平淡，改为“lovely ladies”和“quality time”更贴合他轻佻的语气。
 > 「……そうか、気分転換もいいな。
 >  ここにはナイスなレディがたくさんいるしな
-“...You know, a change of pace might be nice. There are plenty of nice ladies here.
+“...You know, a change of pace might be nice. There are plenty of lovely ladies here.
 ---
 >  彼女らと素敵な時間を過ごす
 >  のも悪くない」
-Spending some lovely time with them wouldn't be bad either.”
+Spending some quality time with them wouldn't be bad either.”
 
 @40017 Shingo · 真吾
 > 「おっ、それなら俺もつきあうぜ」
@@ -1924,20 +1942,23 @@ things won't be easy after that either.”
 “No, it's nothing. So then, what are we going to do now?”
 
 @40053 Kamille · カミーユ
+# 审校：精读：梁山泊 统一
 > 「梁山泊はどうなんです?」
-“What about Liangshan Po?”
+“What about Ryozanpaku?”
 
 @40054 Banjo · 万丈
+# 审校：精读：梁山泊 统一
 > 「いや、ギャリソンがつかんだ情報
 >  では、どうやら梁山泊も
-“No, according to the information Garrison got, it seems Liangshan Po
+“No, according to the information Garrison got, it seems Ryozanpaku
 ---
 >  攻撃されたらしい」
 was attacked as well.”
 
 @40055 Ginrei · 銀鈴
+# 审校：精读：梁山泊 统一
 > 「梁山泊まで!? では……」
-“Liangshan Po too?! Then...”
+“Ryozanpaku too?! Then...”
 
 @40056 Banjo · 万丈
 > 「中条長官たちは無事、脱出
@@ -1957,6 +1978,7 @@ with the doctors and Chief Otsuka as well.”
 What worries me is the BF Group's movements.”
 
 @40058 Reika · レイカ
+# 审校：精读：梁山泊 统一
 > 「なぜ異星人たちと一緒だったかは
 >  この際おいておきましょう
 “Let's set aside for now why they were with the aliens.
@@ -1966,7 +1988,7 @@ What worries me is the BF Group's movements.”
 What bothers me is that they seem to be searching for something. It's possible that's why
 ---
 >  攻撃された可能性があるわ」
-Liangshan Po was attacked too.”
+Ryozanpaku was attacked too.”
 
 @40059 Boss · ボス
 > 「何かったって、想像もつかないだわさ」
@@ -1994,9 +2016,10 @@ to rendezvous with the doctors who escaped?”
 the enemy will attack us.”
 
 @40063 Ginrei · 銀鈴
+# 审校：精读：梁山泊 统一
 > 「……梁山泊へ行ってみてください。
 >  もしかしたら何か、符丁が
-“...Please try going to Liangshan Po. There may be some kind of sign
+“...Please try going to Ryozanpaku. There may be some kind of sign
 ---
 >  残されているかもしれません」
 left behind.”
@@ -2038,14 +2061,14 @@ And Hyoma and his group want to do something about the monster attacking the ref
 “I don't think either is big enough for all of us to move on... but it does bother me.”
 
 @40070 Banjo · 万丈
-# 审校：将“そっち”明确译为“the other matter”，避免指代不清。
+# 审校：精读：梁山泊 统一
 > 「いま、この近辺には帝国軍は
 >  展開していないようだ。本隊は
 “Right now, the Imperial forces don't seem to be deployed in this area. The main force
 ---
 >  このまま梁山泊へ向かい、
 >  そっちには分隊を向かわせるのが
-should head for Liangshan Po as is, and we should send a detachment to deal with the other matter,
+should head for Ryozanpaku as is, and we should send a detachment to deal with the other matter,
 ---
 >  いいんじゃないか? 全部まわっている
 >  余裕もない」
@@ -2090,10 +2113,10 @@ don't you think? We don't have the leeway to cover everything.”
 * Go with Hyoma and the others
 
 @40078 Ark · アーク（按段落 3DD1）
-# 审校：“少し休まないと”语气更自然，改为“I need to get some rest”。
+# 审校：精读：梁山泊 统一
 > 「そうだな……このまま残って梁山泊
 >  に向かうよ。少し休まないと」
-“Yeah... I'll stay here and head for Liangshan Po. I need to get some rest.”
+“Yeah... I'll stay here and head for Ryozanpaku. I need to get some rest.”
 
 @40079 Kamille · カミーユ
 # 审校：原文“体がもたない”指身体吃不消，改为更贴切的表达。

@@ -231,8 +231,10 @@ class TextExporter:
     """Joins the lossless catalog with the extracted story, actor and weapon records."""
 
     def __init__(self, sources: dict, hashes: dict, headers: dict, categories: dict,
-                 story_documents: list[dict], locales: dict[str, dict], term_sections: list[dict] | None = None):
+                 story_documents: list[dict], locales: dict[str, dict], term_sections: list[dict] | None = None,
+                 rom: bytes | None = None):
         self.sources, self.hashes, self.headers = sources, hashes, headers
+        self.rom = rom
         self.actors = {int(r["key"].rsplit(":", 1)[1]): r for r in categories.get("actors", [])}
         self.weapons = {int(r["key"].rsplit(":", 1)[1]): r for r in categories.get("weapons", [])}
         self.units = {int(r["key"].rsplit(":", 1)[1]): r for r in categories.get("units", [])}
@@ -276,13 +278,25 @@ class TextExporter:
                     })
         return found
 
+    def battle_tables(self):
+        """The decoded selection tables (srw64_native.battle_quotes), or None without the ROM."""
+        if self.rom is None:
+            return None
+        if not hasattr(self, "_battle_tables"):
+            from .battle_quotes import BattleQuoteTables
+            names = lambda first, last: {i - first: self.sources[text_key(0, i)].replace("<END>", "")
+                                         for i in range(first, last + 1) if text_key(0, i) in self.sources}
+            self._battle_tables = BattleQuoteTables(self.rom, names(527, 889), names(1370, 2698), names(4382, 4742))
+        return self._battle_tables
+
     def battle_runs(self) -> dict[str, dict]:
         """Battle quotes stay in table order; consecutive lines of one speaker form a run.
 
-        The selection table (which situation or weapon picks which line) is not reversed yet.
-        Up to about id 14000 each character has one block ordered attack → defeated → heavy /
-        light damage → evade → beam block → out of ammo / range; later ids are weapon lines and
-        combination-attack exchanges, where header suffix 0024 marks the leading line."""
+        With the ROM, every quote also carries ``triggers``: the situations, weapons, opponents
+        and exchanges that make the game pick it, decoded from the overlay's selection tables
+        (see battle_quotes.py). Header suffix 0024 marks a combination-attack lead line."""
+        tables = self.battle_tables()
+        triggers = tables.triggers() if tables else {}
         result, run, previous, position = {}, 0, None, 0
         for text_id in range(BATTLE_FIRST_ID - 14, STORY_FIRST_ID):
             key = text_key(0, text_id)
@@ -293,6 +307,13 @@ class TextExporter:
             result[key] = {"speaker_id": speaker, "speaker": self.actor_name(speaker) if speaker is not None else None,
                            "speaker_run": run, "position": position,
                            **({"combo_lead": True} if fields["header"].endswith("0024") else {})}
+            if tables:
+                found = triggers.get(text_id, [])
+                result[key]["triggers"] = [t.as_dict() for t in found]
+                voices = sorted({t.fields["voice"] for t in found if "voice" in t.fields})
+                if voices:
+                    result[key]["voice"] = voices[0]
+                    result[key]["voice_actors"] = tables.actors_of_voice.get(voices[0], [])
             position += 1
         return result
 

@@ -1,137 +1,178 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11735 Val-A · ヴァル＝ア
+# 触发：攻击（通用，1/9）
 > 「さぁ、来るがよい」
 “Come, then. Come at me.”
 
 @11736 Val-A · ヴァル＝ア
+# 触发：攻击（通用，2/9）
+# 审校：原文“良いのか”带反问，改为“certain”更符合反派军官的正式口吻。
 > 「良いのか、それで」
-“Are you sure about that?”
+“Are you certain about that?”
 
 @11737 Val-A · ヴァル＝ア
+# 触发：攻击（通用，3/9）
 > 「…………」
 “...”
 
 @11738 Val-A · ヴァル＝ア
+# 触发：攻击（通用，4/9）
+# 审校：原文“一端”带古风，补上“but”更符合反派军官的正式口吻。
 > 「我が力の一端をみせよう」
-“I shall show you a fragment of my power.”
+“I shall show you but a fragment of my power.”
 
 @11739 Val-A · ヴァル＝ア
+# 触发：攻击（通用，5/9）
 > 「受けてみよ」
 “Try to withstand this.”
 
 @11740 Val-A · ヴァル＝ア
+# 触发：攻击（通用，6/9）
 > 「不自由なこの偽りの肉体でも、
 >  このくらいのことはできる」
 “Even in this imperfect, false body, I can manage at least this much.”
 
 @11741 Val-A · ヴァル＝ア
+# 触发：攻击（通用，7/9）
 > 「受け入れよ。お前たちの運命を」
 “Accept it. Accept your fate.”
 
 @11742 Val-A · ヴァル＝ア
+# 触发：攻击（通用，8/9）
 > 「お前たちの力がどれほどのものか、
 >  我に見せてみよ」
 “Show me just how great your power truly is.”
 
 @11743 Val-A · ヴァル＝ア
+# 触发：攻击（通用，9/9）
 > 「宿命を受け入れよ。
 >  大銀河の意思を受け入れよ」
 “Accept your destiny. Accept the will of the great galaxy.”
 
 @11744 Val-A · ヴァル＝ア
+# 触发：被击坠（通用，1/3）
 > 「なに……?」
 “What...?”
 
 @11745 Val-A · ヴァル＝ア
+# 触发：被击坠（通用，2/3）
 > 「この力……」
 “This power...”
 
 @11746 Val-A · ヴァル＝ア
+# 触发：被击坠（通用，3/3）
 > 「これは……」
 “This is...”
 
 @11747 Val-A · ヴァル＝ア
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ……なんというパワーだ……」
 “Ngh... what power this is...”
 
 @11748 Val-A · ヴァル＝ア
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「これが……この者たちの本当の
 >  力か……?」
 “Is this... their true power...?”
 
 @11749 Val-A · ヴァル＝ア
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「この身ではこれが限度か……」
 “In this body, this is my limit, it seems...”
 
 @11750 Val-A · ヴァル＝ア
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「……なるほど、これが……」
 “...I see. So this is...”
 
 @11751 Val-A · ヴァル＝ア
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうだ……それでいい」
-“Yes... that's right.”
+“Yes... that’s right.”
 
 @11752 Val-A · ヴァル＝ア
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「なかなかのものだが……まだ足りぬな」
 “Impressive, but... still not enough.”
 
 @11753 Val-A · ヴァル＝ア
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 > 「なるほど……」
 “I see...”
 
 @11754 Val-A · ヴァル＝ア
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「ほう……もう一度やってみよ」
 “Oh? Try that once more.”
 
 @11755 Val-A · ヴァル＝ア
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：去“哦”
 > 「それでは我らは倒せぬぞ?」
-“At this rate, you cannot defeat us, you know?”
+“Like that, you cannot defeat us.”
 
 @11756 Val-A · ヴァル＝ア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「この程度なのか?」
 “Is this all you have?”
 
 @11757 Val-A · ヴァル＝ア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「…………」
 “...”
 
 @11758 Val-A · ヴァル＝ア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「……力をみせよ」
 “...Show me your power.”
 
 @11759 Val-A · ヴァル＝ア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お前たちがこの程度のはずがあるまい」
-“There's no way this is all you're capable of.”
+“There’s no way this is all you’re capable of.”
 
 @11760 Val-A · ヴァル＝ア
+# 触发：回避（通用，1/3）
 > 「…………」
 “...”
 
 @11761 Val-A · ヴァル＝ア
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ではな……」
-“This level won't do...”
+“This level won’t do...”
 
 @11762 Val-A · ヴァル＝ア
+# 触发：回避（通用，3/3）
 > 「本気でやっているのか?」
 “Are you even fighting seriously?”
 
 @11763 Val-A · ヴァル＝ア
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ばかめ」
 “Fool.”
 
 @11764 Val-A · ヴァル＝ア
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽情境说的是自己
 > 「エネルギーが……ないのか」
-“Your energy... is gone?”
+“The energy... is gone?”
 
 @11765 Val-A · ヴァル＝ア
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境说的是自己
 > 「使い果たしたか……」
-“Used it all up, have you...”
+“Used it all up, have I...”
 
 @11766 Val-A · ヴァル＝ア
+# 触发：射程外，无法反击（通用，1/2）
 > 「ほう……」
 “Oh?”
 
 @11767 Val-A · ヴァル＝ア
+# 触发：射程外，无法反击（通用，2/2）
 > 「……この身では届かぬか……」
 “...In this body, I cannot reach them, it seems...”

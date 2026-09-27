@@ -1,246 +1,367 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11444 Rish · リッシュ
+# 触发：攻击（通用，1/17）
 > 「そこかよ!?」
 “There you are?!”
 
 @11445 Rish · リッシュ
+# 触发：攻击（通用，2/17）
 > 「あたっちまいな!」
 “Take this!”
 
 @11446 Rish · リッシュ
+# 触发：攻击（通用，3/17）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「悪いな」
-“Sorry 'bout that.”
+“Sorry ’bout that.”
 
 @11447 Rish · リッシュ
+# 触发：攻击（通用，4/17）
 > 「落ちちまえってんだよ」
 “I said go down already!”
 
 @11448 Rish · リッシュ
+# 触发：攻击（通用，5/17）
 > 「運がなかったな、あんた」
 “Tough luck, pal.”
 
 @11449 Rish · リッシュ
+# 触发：攻击（通用，6/17）
+# 审校：賢しさ 是小聪明
 > 「その賢しさが命とりだよ」
-“That smug look's gonna cost you your life.”
+“That cleverness of yours is gonna get you killed.”
 
 @11450 Rish · リッシュ
+# 触发：攻击（通用，7/17）
 > 「そらよ」
 “Here goes.”
 
 @11451 Rish · リッシュ
+# 触发：攻击（通用，8/17）
 > 「ほらよっ」
 “Take that!”
 
 @11452 Rish · リッシュ
+# 触发：攻击（通用，9/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたどうした!?」
-“What's wrong, what's wrong?!”
+“What’s wrong, what’s wrong?!”
 
 @11453 Rish · リッシュ
+# 触发：攻击（通用，10/17）
 > 「落ちなよ」
 “Go down.”
 
 @11454 Rish · リッシュ
+# 触发：攻击（通用，11/17）
 > 「こいつがかわせるかよ?」
 “Think you can dodge this?”
 
 @11455 Rish · リッシュ
+# 触发：攻击（通用，12/17）
 > 「やってみせな」
 “Show me what you got.”
 
 @11456 Rish · リッシュ
+# 触发：攻击（通用，13/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「止めといくかい」
-“I'll finish you off.”
+“I’ll finish you off.”
 
 @11457 Rish · リッシュ
+# 触发：攻击（通用，14/17）
 > 「ここでやっとかねぇとな」
 “Time to settle this here.”
 
 @11458 Rish · リッシュ
+# 触发：攻击（通用，15/17）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なかなか素早いが、ね」
-“Quick, aren't you. But still.”
+“Quick, aren’t you. But still.”
 
 @11459 Rish · リッシュ
+# 触发：攻击（通用，16/17）
 > 「甘いな、甘すぎるぜ」
 “Naive. Way too naive.”
 
 @11460 Rish · リッシュ
+# 触发：攻击（通用，17/17）
 > 「ハハハハハッ! いくぜ!」
 “Hahahahaha! Here I come!”
 
 @11461 Rish · リッシュ
+# 触发：被击坠（通用，1/4）
 > 「ちっ……まずったな、こいつぁ」
 “Tch... I screwed up this time.”
 
 @11462 Rish · リッシュ
+# 触发：被击坠（通用，2/4）
 > 「ちぃっ、やっちまったか!?」
 “Tch, did I mess up?!”
 
 @11463 Rish · リッシュ
+# 触发：被击坠（通用，3/4）
+# 审校：更自然
 > 「ぐっ! マジか、くそっ!!」
-“Guh! You serious, damn it!!”
+“Guh! Seriously? Damn it!!”
 
 @11464 Rish · リッシュ
+# 触发：被击坠（通用，4/4）
 > 「へっ、俺もここで終わりかよ」
 “Heh, so this is the end for me too, huh.”
 
 @11465 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/8）
 > 「くっ……マジでやばいな?」
 “Ngh... this is real bad, huh?”
 
 @11466 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やべぇ! 限界じゃねぇか!?」
-“Damn! I'm at my limit?!”
+“Damn! I’m at my limit?!”
 
 @11467 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「けっ……そろそろ俺も終わりかよ」
-“Keh... guess I'm done for soon too.”
+“Keh... guess I’m done for soon too.”
 
 @11468 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/8）
 > 「こいつぁ持たねぇかもな……」
 “I might not last much longer...”
 
 @11469 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/8）
 > 「な、なんて腕をしてやがる!?」
 “W-what kind of skill is that?!”
 
 @11470 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/8）
 > 「ちいっ! こいつぁマズイぜ……」
 “Tch! This is bad...”
 
 @11471 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/8）
+# 审校：是自己被打中要害
 > 「なんだと!?
 >  マズイ所にあたっちまったみてぇだな……」
-“What?! Looks like I hit a bad spot...”
+“What?! Looks like it hit somewhere bad...”
 
 @11472 Rish · リッシュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，8/8）
 > 「ぐ!? ヤ、ヤベェなこいつぁ」
 “Guh?! Th-this is bad.”
 
 @11473 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、この程度でやられてたまるかよ」
-“Tch, like I'd go down from just this.”
+“Tch, like I’d go down from just this.”
 
 @11474 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「ふん、直撃をくらったか」
 “Hmph, took a direct hit, huh.”
 
 @11475 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「直撃!? しくったぜ……」
 “Direct hit?! I messed up...”
 
 @11476 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐ、やってくれるじゃねぇか」
-“Guh, you're pretty good.”
+“Guh, you’re pretty good.”
 
 @11477 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつぁ手強いぜぇ……」
-“This one's tough...”
+“This one’s tough...”
 
 @11478 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
+# 审校：原译多了 You're saying
 > 「この俺が押されてるってのか!?」
-“You're saying I'm being pushed back?!”
+“I’m the one getting pushed back?!”
 
 @11479 Rish · リッシュ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 > 「ほう……やるじゃねぇか」
 “Oh... not bad.”
 
 @11480 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度じゃ抜けねぇぜ」
-“That won't get through me.”
+“That won’t get through me.”
 
 @11481 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだよ、俺がでるほどのもんでもねぇな」
-“What, this isn't even worth my time.”
+“What, this isn’t even worth my time.”
 
 @11482 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「なんだ、そりゃ!?」
 “What the hell is that?!”
 
 @11483 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハッ
 >  威力が足りなかったようだな」
-“Hahaha, seems it wasn't powerful enough.”
+“Hahaha, seems it wasn’t powerful enough.”
 
 @11484 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おいおい、マジかよ。
 >  そんなんで俺とやろうってのか!?」
-“Hey now, seriously? You're gonna fight me with that?!”
+“Hey now, seriously? You’re gonna fight me with that?!”
 
 @11485 Rish · リッシュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺に挑む勇気だけは
 >  認めてやるがね」
-“I'll give you credit for the guts to challenge me, at least.”
+“I’ll give you credit for the guts to challenge me, at least.”
 
 @11486 Rish · リッシュ
+# 触发：回避（通用，1/8）
 > 「おっと、危ねぇ」
 “Whoa, that was close.”
 
 @11487 Rish · リッシュ
+# 触发：回避（通用，2/8）
 > 「やべぇとこだったぜ」
 “That was a close one.”
 
 @11488 Rish · リッシュ
+# 触发：回避（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そら、どうだ?」
-“There, how's that?”
+“There, how’s that?”
 
 @11489 Rish · リッシュ
+# 触发：回避（通用，4/8）
 > 「余裕だな」
 “Easy as pie.”
 
 @11490 Rish · リッシュ
+# 触发：回避（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたってやるわけにはいかないんでな」
-“Can't afford to get hit, you see.”
+“Can’t afford to get hit, you see.”
 
 @11491 Rish · リッシュ
+# 触发：回避（通用，6/8）
 > 「クククッ、あたんなかったようだな?」
 “Heheheh, looks like it missed?”
 
 @11492 Rish · リッシュ
+# 触发：回避（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ、俺の運も捨てたもんじゃねぇな」
-“Hmph, my luck ain't half bad either.”
+“Hmph, my luck ain’t half bad either.”
 
 @11493 Rish · リッシュ
+# 触发：回避（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「はん、それじゃあたらんわな」
-“Hah, that won't hit me.”
+“Hah, that won’t hit me.”
 
 @11494 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなもんはきかねぇのよ」
-“That kinda thing don't work on me.”
+“That kinda thing don’t work on me.”
 
 @11495 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，2/6）
 > 「残念だったな」
 “Too bad for you.”
 
 @11496 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだってんだよ」
-“I told you it's useless.”
+“I told you it’s useless.”
 
 @11497 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，4/6）
 > 「やーれやれだぜ」
 “Man, give me a break.”
 
 @11498 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが相手にならねぇ
 >  出直してきな」
-“Sorry, but you're no match. Come back later.”
+“Sorry, but you’re no match. Come back later.”
 
 @11499 Rish · リッシュ
+# 触发：攻击无效（护罩／装甲）（通用，6/6）
 > 「おいおい、やめとけよ」
 “Hey now, give it up.”
 
 @11500 Rish · リッシュ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「お? 弾切れとはな……」
 “Oh? Out of ammo, huh...”
 
 @11501 Rish · リッシュ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「まいったな、弾切れかよ……」
 “Damn, out of ammo already...”
 
 @11502 Rish · リッシュ
+# 触发：射程外，无法反击（通用，1/2）
 > 「おっと、届かねぇのかよ!?」
 “Whoa, out of range?!”
 
 @11503 Rish · リッシュ
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ……これじゃやれねぇか」
-“Tch... can't do it like this, huh.”
+“Tch... can’t do it like this, huh.”
+
+@16436 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+> 「わるいな、{HeroNick}ちゃん」
+“Sorry about this, {HeroNick}.”
+
+@16437 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「本当はあんまりやりたかないんだがよ」
+“I really don’t wanna do this, y’know.”
+
+@16438 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「しかたねぇな」
+“Guess I’ve got no choice.”
+
+@16439 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「直撃しちまったら勘弁しろよ」
+“If it’s a direct hit, don’t blame me.”
+
+@16440 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「俺は乗り気じゃないんだが」
+“I’m not exactly eager for this.”
+
+@16441 Rish · リッシュ
+# 触发：对手驾驶员〈セレイン〉
+# 审校：原文是叮嘱语气“しっかりよけろよ”，句末用问号更自然。
+> 「しっかりよけろよ」
+“Dodge properly, got it?”

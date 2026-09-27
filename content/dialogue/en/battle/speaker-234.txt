@@ -1,166 +1,276 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10592 Elle · エル
+# 触发：攻击（通用，1/10）
+# 审校：英文缺引号；You little 改为常用喊话
 > 「こんのぉーっ!」
-“You little—!”
+“Why you...!”
 
 @10593 Elle · エル
+# 触发：攻击（通用，2/10）
+# 审校：英文缺引号，补齐
 > 「いくわっ!」
 “Here I go!”
 
 @10594 Elle · エル
+# 触发：攻击（通用，3/10）
+# 审校：英文缺引号，补齐
 > 「あたしだって!」
 “I can do it too!”
 
 @10595 Elle · エル
+# 触发：攻击（通用，4/10）
+# 审校：英文缺引号，补齐
 > 「もらったぁっ!」
 “Got you!”
 
 @10596 Elle · エル
+# 触发：攻击（通用，5/10）
+# 审校：英文缺引号；do as you please 生硬
 > 「好きにはさせない!」
-“I won't let you do as you please!”
+“I won’t let you have your way!”
 
 @10597 Elle · エル
+# 触发：攻击（通用，6/10）
+# 审校：英文缺引号；中文更口语
 > 「あんたたちの好きにはさせないって、
 >  言ってるだろ!」
-“I said I won't let you do as you please!”
+“I said I’m not letting you guys have your way!”
 
 @10598 Elle · エル
+# 触发：攻击（通用，7/10）
+# 审校：英文缺引号，补齐
 > 「やってみる!」
-“I'll give it a try!”
+“I’ll give it a try!”
 
 @10599 Elle · エル
+# 触发：攻击（通用，8/10）
+# 审校：英文缺引号；去掉“呢”
 > 「ルーにはまけるもんかっ!」
-“I won't lose to Roux!”
+“I’m not gonna lose to Roux!”
 
 @10600 Elle · エル
+# 触发：攻击（通用，9/10）
+# 审校：英文缺引号，补齐
 > 「まかせてよ!」
 “Leave it to me!”
 
 @10601 Elle · エル
+# 触发：攻击（通用，10/10）
+# 审校：英文缺引号，补齐
 > 「落ちなよ!」
 “Go down!”
 
 @10602 Elle · エル
+# 触发：被击坠（通用，1/2）
+# 审校：英文缺引号；被击坠情境
 > 「やだ! やられちゃった!?」
-“No! Did I get hit?!”
+“No way! I got shot down?!”
 
 @10603 Elle · エル
+# 触发：被击坠（通用，2/2）
+# 审校：英文缺引号，补齐
 > 「きゃあぁぁぁーっ!」
 “Kyaaaaa!”
 
 @10604 Elle · エル
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：英文缺引号，补齐
 > 「あうっ! このままじゃやられる!?」
-“Agh! At this rate I'll be done for!”
+“Agh! At this rate I’ll be done for!”
 
 @10605 Elle · エル
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：英文缺引号，补齐
 > 「あぁぁーっ!」
 “Aaaaa!”
 
 @10606 Elle · エル
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：英文缺引号，补齐
 > 「あぁぁーっ、
 >  ジュドー、ビーチャ、助けてぇ!」
 “Aaaaa, Judau, Beecha, help me!”
 
 @10607 Elle · エル
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：英文缺引号；原英文句子不通
 > 「うわっ! 何よこれ、
 >  パワーが違いすぎる!?」
-“Whoa! What is this, the power's way too different!”
+“Whoa! What is this? The power gap’s way too big?!”
 
 @10608 Elle · エル
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：英文缺引号，补齐
 > 「あぅっ! こ、こいつ、強い!?」
-“Agh! Th-this one's strong!”
+“Agh! Th-this one’s strong?!”
 
 @10609 Elle · エル
-# 审校：原文没有引号，初稿多加了引号，已改为普通台词。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
+# 审校：英文缺引号，补齐
 > 「ちょ、ちょっと!?」
 “W-wait a second?!”
 
 @10610 Elle · エル
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
+# 审校：英文缺引号；中文更自然
 > 「くっ、性能が違うとこれか!」
 “Ugh, so this is what a performance gap does!”
 
 @10611 Elle · エル
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
+# 审校：英文缺引号，补齐
 > 「きゃーっ!」
 “Kyaa!”
 
 @10612 Elle · エル
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
+# 审校：英文缺引号；やってくれんじゃないの 是被打后的“你还真干了”
 > 「や、やってくれんじゃないの!」
-“Y-you're pretty good!”
+“Y-you really did it, huh!”
 
 @10613 Elle · エル
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
+# 审校：英文缺引号，补齐
 > 「いったぁ……なにすんのさ!」
-“Ow... what're you doing!”
+“Ow... what’re you doing!”
 
 @10614 Elle · エル
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
+# 审校：英文缺引号；去掉“呢”
 > 「この! まだやられちゃいないよ!」
-“Why you! I'm not down yet!”
+“Why you! I’m not down yet!”
 
 @10615 Elle · エル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：英文缺引号，补齐
 > 「や、やだ!」
 “N-no!”
 
 @10616 Elle · エル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：英文缺引号，补齐
 > 「いってーっ!」
 “Owww!”
 
 @10617 Elle · エル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：英文缺引号，补齐
 > 「うぅっ、やったなぁ!」
 “Ugh, you did it now!”
 
 @10618 Elle · エル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：英文缺引号，补齐
 > 「なーにさ、こんな攻撃」
-“What's this, an attack like that?”
+“What’s this, an attack like that?”
 
 @10619 Elle · エル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：英文缺引号，补齐
 > 「ぜんぜん効かないよ!」
-“It doesn't work at all!”
+“It doesn’t work at all!”
 
 @10620 Elle · エル
+# 触发：回避（通用，1/5）
+# 审校：英文缺引号；回避时是自夸，补“我”
 > 「んーっ、なんという腕の冴え!」
-“Mm, what skill!”
+“Mm, look at these skills of mine!”
 
 @10621 Elle · エル
+# 触发：回避（通用，2/5）
+# 审校：英文缺引号，补齐
 > 「やったぁ!」
 “I did it!”
 
 @10622 Elle · エル
+# 触发：回避（通用，3/5）
+# 审校：英文缺引号，补齐
 > 「ほらほら、こっちこっちぃ!」
 “Hey hey, over here, over here!”
 
 @10623 Elle · エル
+# 触发：回避（通用，4/5）
+# 审校：英文缺引号，补齐
 > 「どこ狙ってるのさ!」
-“What're you aiming at!”
+“What’re you aiming at!”
 
 @10624 Elle · エル
+# 触发：回避（通用，5/5）
+# 审校：英文缺引号，补齐
 > 「ちょっと! 当たったらどうする
 >  つもり!?」
 “Hey! What if you hit me?!”
 
 @10625 Elle · エル
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：英文缺引号；去掉“哦”
 > 「へへーん、ビームなんて効かないよ!」
-“Heh, beams don't work on me!”
+“Heh, beams don’t work on me!”
 
 @10626 Elle · エル
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：英文缺引号，补齐
 > 「なにさビームなんて!」
-“What's a beam supposed to do!”
+“What’s a beam supposed to do!”
 
 @10627 Elle · エル
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
+# 审校：英文缺引号；原文是反问，补“huh?”
 > 「フフン、たいしたことないじゃん?」
-“Hmph, that's nothing!”
+“Hmph, that’s nothing special, huh?”
 
 @10628 Elle · エル
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：英文缺引号，补齐
 > 「弾切れ!? なんでさ!?」
 “Out of ammo?! Why?!”
 
 @10629 Elle · エル
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：英文缺引号，补齐
 > 「ちょ、ちょっと待ってよ!」
 “H-hey, wait up!”
 
 @10630 Elle · エル
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：英文缺引号；射程外情境点明“远”
 > 「あんなところから攻撃してくんの!?」
-“You're attacking from way over there?!”
+“You’re attacking from way over there?!”
 
 @10631 Elle · エル
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：英文缺引号，补齐
 > 「なによ、届かないじゃない!」
-“What, it doesn't even reach!”
+“What, it doesn’t even reach!”
+
+@16318 Elle · エル
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+> 「ビームライフル、発射!」
+“Beam Rifle, fire!”
+
+@16319 Elle · エル
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「いっけー! ファンネルッ!!」
+“Gooo! Funnel!!”
+
+@16320 Elle · エル
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「ファンネル!」
+“Funnel!”
+
+@16321 Elle · エル
+# 触发：使用〈フィンファンネル〉
+> 「いくよっ! フィンファンネル!」
+“Here I go! Fin Funnels!”
+
+@16322 Elle · エル
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!」
+“Fin Funnels!”
+
+@16323 Elle · エル
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... fire! High Mega Cannon!!”

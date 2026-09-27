@@ -83,9 +83,10 @@ take a look at you.”
 “So, what's the Romefeller faction up to?”
 
 @34277 Quattro · クワトロ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「バルジから出てはいないようだ。
 >  我々を相手にするよりも、まず
-“They don't seem to have left Balji. Rather than deal with us, it seems
+“They don't seem to have left Barge. Rather than deal with us, it seems
 ---
 >  戦力の拡充に力を入れるつもり
 >  らしいな」
@@ -122,9 +123,10 @@ No matter how many of those things they build, they're nothing to be scared of.�
 “Schwarz, do you know something?”
 
 @34283 Schwarz · シュバルツ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「うむ。バルジにいる間に少々
 >  調べさせてもらった」
-“Indeed. I did a little investigating while I was in Balji.”
+“Indeed. I did a little investigating while I was in Barge.”
 
 @34284 Alan · アラン
 > 「フッ、あいかわらず抜け目がないな」
@@ -265,21 +267,23 @@ Normally she'd be insisting we attack the Asteroid no matter what.”
 “What's going on?”
 
 @34306 Hasan · ハサン
+# 审校：精读：去破折号
 > 「ダンクーガのシステムによる負荷が
 >  問題だな。肉体的なものではなく
-“The strain from the Dancouga's system is the problem. It's not physical—
+“The strain from the Dancouga's system is the problem. It's not physical.
 ---
 >  精神的なものだということだな」
-it's mental.”
+It's mental.”
 
 @34307 Shinobu · 忍
 > 「誰だ、あんた」
 “Who are you?”
 
 @34308 Sally · サリィ
+# 审校：“先生”在此处是医生/博士的尊称，应译为 Dr. 而非 Teacher。
 > 「ハサン先生よ。もと連邦軍の
 >  軍医で、私の先生でもあるの」
-“This is Teacher Hasan. He was a medical officer in the Federation Forces, and he's my teacher too.”
+“This is Dr. Hasan. He was a medical officer in the Federation Forces, and he's my teacher too.”
 
 @34309 Hasan · ハサン
 > 「これから君たちに同行させてもらう
@@ -327,12 +331,13 @@ a greater burden than the rest of us.”
 “Well, yes.”
 
 @34315 Shinobu · 忍
+# 审校：精读：去破折号
 > 「んなこたぁ、どうだっていい。沙羅の
 >  奴がどうなってんのか聞いてんだよ
-“I don't give a damn about that. I'm asking what's happening to Sara—
+“I don't give a damn about that. I'm asking what's happening to Sara.
 ---
 >  ヤバイのか、それとも大丈夫なのか!」
-is it bad, or is she okay?!”
+Is it bad, or is she okay?!”
 
 @34316 Cath · キャス
 > 「大きな声を出さないで。沙羅が
@@ -363,9 +368,10 @@ is it bad, or is she okay?!”
 “Masato, how's Sara doing?”
 
 @34322 Masato · 雅人
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「ハサン先生は、2、3日も休ませ
 >  りゃいいって、いってましたけどね」
-“Teacher Hasan said she just needs to rest for two or three days.”
+“Dr. Hasan said she just needs to rest for two or three days.”
 
 @34323 Amuro · アムロ
 > 「2、3日か……それまでは待つか」
@@ -464,9 +470,10 @@ to become a god.”
 “...”
 
 @34338 Shapiro · シャピロ
+# 审校：精读：去破折号
 > 「フフフフフフッ、地球人どもなど、
 >  この私が滅ぼしてやるのだ
-“Heh heh heh heh, I shall destroy the Earthlings myself—
+“Heh heh heh heh, I shall destroy the Earthlings myself.
 ---
 >  ハーッハハハハハハッ」
 Ha ha ha ha ha ha!”
@@ -647,12 +654,13 @@ Very well. I don't kill the weak or women.”
 “W-wait a second, this thing is...”
 
 @34370 Tubarov · ツバロフ
+# 审校：精读：特士、去破折号
 > 「よくやった特士。パイロットを
 >  とらえるだけでよい。ガンダムは壊さず
-“Well done, Special. Just capture the pilots. Don't destroy the Gundams—
+“Well done, Special Officer. Just capture the pilots. Don't destroy the Gundams.
 ---
 >  中へ運べ」
-bring them inside.”
+Bring them inside.”
 
 @34371 Hilde · ヒルデ
 > 「し、しかしツバロフ技師長」
@@ -693,9 +701,10 @@ Heh heh heh.”
 “Captain! Something's approaching at high speed!”
 
 @34377 Bright · ブライト
+# 审校：用户确认：直引号→弯引号
 > 「何かじゃわからん! スクリーンに
 >  出せ!」
-“'Something' isn't good enough! Put it on the screen!”
+“‘Something’ isn't good enough! Put it on the screen!”
 
 @34378 Beltorchika · ベルトーチカ
 > 「はい」
@@ -765,9 +774,10 @@ so we came straight after you.”
 “Yeah, your timing couldn't be better.”
 
 @34392 Koji · 甲児
+# 审校：精读：去破折号
 > 「よう、ゲッターは形が変わってるみたい
 >  だけど、前のと同じくらい強いのか?」
-“Hey, the Getter looks different now—is it as strong as the old one?”
+“Hey, the Getter looks different now. Is it as strong as the old one?”
 
 @34393 Ryoma · リョウ
 > 「とんでもない。ゲッターロボGは、もっと
@@ -787,12 +797,13 @@ Dr. Saotome, it's equipped with something called a Getter Ray amplifier.”
 “Ryoma, who's he...?”
 
 @34396 Ryoma · リョウ
+# 审校：精读：去破折号
 > 「おっと、忘れてた。紹介しよう。
 >  ゲッターチームの新しいメンバー
 “Oh, right, I forgot. Let me introduce him. He's the Getter Team's new
 ---
 >  車弁慶だ」
-member—Benkei Kuruma.”
+member, Benkei Kuruma.”
 
 @34397 Benkei · ベンケイ
 > 「よろしくたのんます」
@@ -851,9 +862,10 @@ so we came straight after you.”
 “Yeah, your timing couldn't be better.”
 
 @34407 Koji · 甲児
+# 审校：精读：去破折号
 > 「よう、ゲッターは形が変わってるみたい
 >  だけど、前のと同じくらい強いのか?」
-“Hey, the Getter looks different now—is it as strong as the old one?”
+“Hey, the Getter looks different now. Is it as strong as the old one?”
 
 @34408 Ryoma · リョウ
 > 「とんでもない。ゲッターロボGは、もっと
@@ -873,12 +885,13 @@ Dr. Saotome, it's equipped with something called a Getter Ray amplifier.”
 “Ryoma, who's he...?”
 
 @34411 Ryoma · リョウ
+# 审校：精读：去破折号
 > 「おっと、忘れてた。紹介しよう。
 >  ゲッターチームの新しいメンバー
 “Oh, right, I forgot. Let me introduce him. He's the Getter Team's new
 ---
 >  車弁慶だ」
-member—Benkei Kuruma.”
+member, Benkei Kuruma.”
 
 @34412 Benkei · ベンケイ
 > 「よろしくたのんます」
@@ -933,9 +946,10 @@ already headed for the Asteroid. So we hurried after you.”
 “I see. I'm glad you came, Getter Team. But it looks like there's another machine with you...”
 
 @34422 Ryoma · リョウ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええ。OZの
 >  {PartnerFull}
-“Yes. This is Lieutenant {PartnerFull} of OZ.
+“Yes. This is Special Lieutenant {PartnerFull} of OZ.
 ---
 >  特尉です。月で偶然あいましてね
 >  {HeroMech}に合流するつもり
@@ -962,18 +976,19 @@ I brought him along.”
 go and decide things without the man himself here.”
 
 @34426 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉……説明は、してもらえる
 >  だろうな」
-“Lieutenant... I trust you can explain yourself.”
+“Special Lieutenant... I trust you can explain yourself.”
 
 @34427 Rish · リッシュ（按段落 3DD2）
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“It means I've slipped away too, Lieutenant Colonel Bright. So I was hoping you'd
-# 草稿第 2 页：let me join the 【主角机体名】.”
+# 审校：补译：原稿占位符错页
 > 「俺もぬけてきたってことですよ、ブライト
 >  特佐。それで{HeroMech}に
+“It means I got out too, Special Colonel Bright. So I was thinking the {HeroMech}
 ---
 >  加えてもらえないかと思ってね」
+might have room for one more.”
 
 @34428 Selain · セレイン（按段落 3DD2）
 > 「貴様、いったいどういうつもりだ。
@@ -1020,9 +1035,10 @@ since we left for space, and frankly I'm exhausted.”
 “So this is the new Getter. It looks pretty impressive.”
 
 @34435 Hayato · ハヤト
+# 审校：精读：去破折号
 > 「すごそうじゃなくて、すごいんだよ。
 >  このゲッターロボGはな
-“It's not that it looks impressive—it is impressive. This Getter Robo G
+“It's not that it looks impressive. It is impressive. This Getter Robo G
 ---
 >  ゲッター線増幅装置を搭載
 >  して、旧ゲッターをはるかにしのぐ
@@ -1044,14 +1060,16 @@ surpasses the old Getter.”
 and hurried out into space.”
 
 @34438 Hayato · ハヤト
+# 审校：精读：去破折号
 > 「そのかいあって、大事な一戦には
 >  なんとか間に合ったってわけだ」
-“And it paid off—we just barely made it in time for the big fight.”
+“And it paid off. We just barely made it in time for the big fight.”
 
 @34439 Tetsuya · 鉄也
+# 审校：精读：去破折号
 > 「おいおい、訓練を切りあげちまって、
 >  使いものになるのかよ」
-“Hey now, you cut his training short—is he even going to be useful?”
+“Hey now, you cut his training short. Is he even going to be useful?”
 
 @34440 Hayato · ハヤト
 > 「まぁ、ムサシには及ばないが、それなりに
@@ -1059,8 +1077,9 @@ and hurried out into space.”
 “Well, he's not quite at Musashi's level, but he'll do.”
 
 @34441 Benkei · ベンケイ
+# 审校：Benkei 是憨厚豪爽的汉子，'harsh, man' 过于街头痞气，改为更直白的 'mean' 更贴合其口吻。
 > 「なんだよ、そりゃひでぇじゃねぇかよ」
-“What the hell, that's just harsh, man.”
+“What the hell, that's just mean.”
 
 @34442 Koji · 甲児
 > 「ハハハハッ。なんにせよゲッターがもどりゃ
@@ -1071,9 +1090,10 @@ and hurried out into space.”
 go wipe out those Muge bastards.”
 
 @34443 Rish · リッシュ（按段落 3DD2）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{PartnerSurname}特尉、入ります。
 >  よっ、{HeroName}ちゃん
-“Lieutenant {PartnerSurname}, coming in. Yo, {HeroName}.
+“Special Lieutenant {PartnerSurname}, coming in. Yo, {HeroName}.
 ---
 >  まぁまぁ、そんな怖い顔しなさんな」
 Now now, don't make such a scary face.”
@@ -1381,9 +1401,10 @@ Earthling against Earthling. That is His Majesty the Emperor's will.”
 “Luna...”
 
 @34495 Luna · ルーナ
+# 审校：精读：引号
 > 「『お前もか』。地球の有名な
 >  芝居に出てきたセリフだったかしら
-“'Et tu?' Was that the line from some famous Earth play?
+“‘Et tu?’ Was that the line from some famous Earth play?
 ---
 >  シャピロ、神をきどったあなたに、
 >  そのセリフはいえないはずよ」
@@ -1399,9 +1420,11 @@ Shapiro, you who fancied yourself a god could never say those words.”
 “Shapiro, you were never man enough for me to love.”
 
 @34498 Shapiro · シャピロ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「……いいだろう。だが地球を滅ぼした
 >  あと、次に滅ぼされるのはゾルバドス
-“...Very well. But once Earth is destroyed, know that the next to be destroyed will be Zorbados—
+“...Very well. But once Earth is destroyed, know that the next to be destroyed will be Zorbados,
 ---
 >  お前たちであることを知るがいい。
 >  この私に、神に向かって
@@ -1439,9 +1462,10 @@ Hahahahahahaha!”
 “No mistake. That's Shapiro!!”
 
 @34505 Shapiro · シャピロ
+# 审校：精读：去破折号
 > 「貴様ら、まず手始めに、貴様ら
 >  から死ぬがいい!!」
-“You lot—for starters, you can be the first to die!!”
+“You lot, for starters, you can be the first to die!!”
 
 @34506 Shapiro · シャピロ
 > 「おのれ、おのれおのれぇぇーっ!!」
@@ -1586,13 +1610,14 @@ Shapiro, being with you, I found exactly one thing to be happy about.”
 “Tch, that's bad!”
 
 @34533 Shapiro · シャピロ
+# 审校：精读：去破折号
 > 「おのれぇぇーっ、こんなところでこの私は
 >  滅びはせん!! よいか宇宙よ!
 “Curse youuu, I will not perish in a place like this!! Hear me, universe!
 ---
 >  いまこそ、いまこそ、この神の足もとに
 >  その永遠の魂をゆだねるがいい!
-Now, now is the time—entrust your eternal soul at this god's feet!
+Now, now is the time. Entrust your eternal soul at this god's feet!
 ---
 >  ふは、ふはははははっ!!」
 Fuh, fuhahahahaha!!”
@@ -1697,10 +1722,12 @@ the planet Zorbados.”
 “Damn it! How can that be?!”
 
 @34553 Jun · ジュン
+# 审校：精读：去破折号
 > 「もう、落ち着きなよ、忍も甲児も」
-“Come on, calm down, both of you—Shinobu and Koji.”
+“Come on, calm down, both of you, Shinobu and Koji.”
 
 @34554 Koji · 甲児
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だってよ、奴らまだギルドロームも
 >  デスガイヤーも残ってんだぜ!?
 “But Gildrome and Death Gaia are still out there! I don't know where their home base is,
@@ -1870,13 +1897,14 @@ The fact that you're alive is the real surprise.”
 Talented people are in great demand. For now, just rest and recover.”
 
 @34580 Scirocco · シロッコ
+# 审校：精读：予想を裏切らない
 > 「ほう、帝国のアステロイド基地が
 >  壊滅したか。やってくれるな。さすがは
 “Oh? So the Empire's asteroid base has been destroyed. They've done it. Just what I'd expect from
 ---
 >  {HeroMech}隊、予想を
 >  裏切らないな」
-the {HeroMech} team—never fails to defy expectations.”
+the {HeroMech} team. They never disappoint.”
 
 @34581 Jerid · ジェリド
 > 「そんなに落ち着いていてよろしいので?
@@ -1887,17 +1915,19 @@ the {HeroMech} team—never fails to defy expectations.”
 with those people at its center.”
 
 @34582 Scirocco · シロッコ
+# 审校：精读：军衔
 > 「それは、バスク特佐にでも考えて
 >  いただくさ。今の時点ではな」
-“That's something for Major General Bask to think about. For the time being, at least.”
+“That's something for Special Colonel Bask to think about. For the time being, at least.”
 
 @34583 Mouar · マウアー
+# 审校：精读：军衔、去破折号
 > 「……特佐、無礼を承知で
 >  お聞きします。シロッコ特佐は
-“...Major General, forgive my rudeness, but may I ask—
+“...Special Colonel, forgive my rudeness, but may I ask,
 ---
 >  何が目的で?」
-what is your aim, Major General Scirocco?”
+what is your aim, Special Colonel Scirocco?”
 
 @34584 Scirocco · シロッコ
 > 「私か? 私の使命は、地球の
@@ -1938,17 +1968,18 @@ a little different.”
 “What do you mean by that?”
 
 @34590 Scirocco · シロッコ
+# 审校：精读：去破折号
 > 「私は、私がいなければ時代は
 >  変わらないと感じているにすぎん
 “I merely feel that the era won't change unless I'm the one to change it.
 ---
 >  ジャミトフ閣下は、地球の重力
 >  に魂をひかれている人々を
-His Excellency Jamitov intends to use the Romefeller Foundation itself—
+His Excellency Jamitov intends to use the Romefeller Foundation itself,
 ---
 >  根絶やしにするために、その人々
 >  自身、つまりロームフェラ財団を
-those very people whose souls are held down by Earth's gravity—to
+those very people whose souls are held down by Earth's gravity, to
 ---
 >  利用するつもりなのだ。帝国の
 >  侵略で壊滅的打撃を受けた
@@ -1974,6 +2005,7 @@ Earth will return to nature's hands.”
 for preserving Earth.”
 
 @34592 Scirocco · シロッコ
+# 审校：精读：去破折号
 > 「表面的には、だ。
 >  今の問題はこのあとの地球圏の
 “On the surface, yes. The real question is who will hold
@@ -1999,7 +2031,7 @@ military rule. A world of endless conflict. Neither is good.
 To govern the Earth Sphere in the coming age, a new genius is
 ---
 >  必要だと思わないか?」
-needed—don't you think?”
+needed, don't you think?”
 
 @34593 Jerid · ジェリド
 > 「その天才が、ご自分だとおっしゃる
@@ -2007,6 +2039,7 @@ needed—don't you think?”
 “And you're saying that genius is you?”
 
 @34594 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私はそんなにごう慢な人間では
 >  ないよ。私は天才が至る道を
 “I'm not such an arrogant man. I think of myself as one who
@@ -2017,15 +2050,15 @@ lights the path a genius walks. The ruler of the Earth Sphere
 ---
 >  支配者は、ジェリド特尉、
 >  君かもしれんが、マウアー特尉
-after reunification might be you, Lieutenant Jerid, or
+after reunification might be you, Special Lieutenant Jerid, or
 ---
 >  君かもしれない。私の見立てでは、
 >  戦後の地球を支配するのは
-you, Lieutenant Mouar. In my estimation, it's a woman who will rule
+you, Special Lieutenant Mouar. In my estimation, it is a woman who will rule
 ---
 >  女だと思っている。が、
 >  私はそれを見届けたら
-the postwar Earth. But once I've seen that through,
+the postwar Earth. But once I have seen that through,
 ---
 >  恒星旅行にでもでるさ」
 I'll set off on a voyage among the stars.”
@@ -2044,9 +2077,10 @@ I'll set off on a voyage among the stars.”
 “Jerid... I can't tell what Scirocco is thinking. He's a dangerous man.”
 
 @34598 Jerid · ジェリド
+# 审校：精读：去破折号
 > 「わかってる。だが、いずれOZをこの手に
 >  するためには、シロッコだって利用して
-“I know. But to make OZ mine someday, I'll use Scirocco too—
+“I know. But to make OZ mine someday, I'll use Scirocco too,
 ---
 >  踏み台にしてみせる」
 and make him my stepping stone.”
@@ -2106,9 +2140,10 @@ has caught up with her.”
 “Sara... I hope she'll be all right...”
 
 @34610 Hasan · ハサン
+# 审校：精读：去破折号
 > 「ここは我々にまかせて、君たちも
 >  少し休みなさい。なに、沙羅くんは
-“Leave this to us. You should all get some rest too. Don't worry—Sara will be
+“Leave this to us. You should all get some rest too. Don't worry, Sara will be
 ---
 >  心配いらんよ」
 fine.”
@@ -2148,13 +2183,14 @@ Mars, destroy Earth.”
 I was born and raised on? Never!”
 
 @34616 Emperor Zuul · ズール皇帝
+# 审校：合并：冲突人工取舍
 > 「お前はギシン星人だ。地球を
 >  破壊するカギは、お前の命令で
 “You are a Gishin. The key to destroying Earth lies in
 ---
 >  運命をともにするロボット、ガイヤーに
 >  ある」
-Gaia—the robot bound to your fate by your command.”
+Gaia, the robot bound to your fate by your command.”
 
 @34617 Takeru · タケル
 > 「やめろぉっ! 消え失せろ! 俺は
@@ -2183,13 +2219,14 @@ and lived. Defy my orders and I'll kill you!”
 “...Mika? I was...”
 
 @34622 Mika · ミカ
+# 审校：精读：去破折号、ハサン先生
 > 「大丈夫、タケル?
 >  すごくうなされてたわよ。ドアの外まで
 “Are you all right, Takeru? You were groaning so much in your sleep. I could hear it
 ---
 >  聞こえてくるんだもん、びっくりしちゃっ
 >  た。ハサン先生に来てもらおうか?」
-all the way out in the hall—it gave me a real scare. Should I go get Teacher Hasan?”
+all the way out in the hall. It gave me a real scare. Should I go get Dr. Hasan?”
 
 @34623 Takeru · タケル
 > 「いや……ちょっと疲れただけだよ。

@@ -1,214 +1,304 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @5904 Shiro · シロー
+# 触发：攻击（通用，1/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「守ったら負ける!」
-“If I just defend, I'll lose!”
+“If I just defend, I’ll lose!”
 
 @5905 Shiro · シロー
+# 触发：攻击（通用，2/21）
 > 「くそっ、落ちろ!」
 “Damn it, go down!”
 
 @5906 Shiro · シロー
+# 触发：攻击（通用，3/21）
 > 「うわあぁぁぁぁぁぁーっ!」
 “Uwaaaaaaaaah!”
 
 @5907 Shiro · シロー
+# 触发：攻击（通用，4/21）
 > 「落ち着け、落ち着けよシロー……」
 “Calm down, calm down, Shiro...”
 
 @5908 Shiro · シロー
+# 触发：攻击（通用，5/21）
 > 「みてろよ!」
 “Just watch me!”
 
 @5909 Shiro · シロー
+# 触发：攻击（通用，6/21）
 > 「俺にだってできるんだ!」
 “Even I can do it!”
 
 @5910 Shiro · シロー
+# 触发：攻击（通用，7/21）
 > 「かかった!」
 “Got you!”
 
 @5911 Shiro · シロー
-# 审校：「あの時の二の舞」指重蹈上次覆辙，原译 twice 不够准确，改为 as last time。
+# 触发：攻击（通用，8/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あの時の二の舞はゴメンだ!」
-“I'm not making the same mistake as last time!”
+“I’m not making the same mistake as last time!”
 
 @5912 Shiro · シロー
+# 触发：攻击（通用，9/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「動くなよ!」
-“Don't move!”
+“Don’t move!”
 
 @5913 Shiro · シロー
+# 触发：攻击（通用，10/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いちかばちかだ!」
-“It's all or nothing!”
+“It’s all or nothing!”
 
 @5914 Shiro · シロー
+# 触发：攻击（通用，11/21）
 # 审校：原文「くらえぇぇっ」有拖长音，原译 Take this 没体现气势，改为 Take thiiis。
 > 「くらえぇぇっ!」
 “Take thiiis!”
 
 @5915 Shiro · シロー
+# 触发：攻击（通用，12/21）
 > 「いけるか!?」
 “Can I pull it off?!”
 
 @5916 Shiro · シロー
+# 触发：攻击（通用，13/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ジンクスなんて吹き飛ばしてやる」
-“I'll blow away any jinx!”
+“I’ll blow away any jinx!”
 
 @5917 Shiro · シロー
+# 触发：攻击（通用，14/21）
 > 「いくぞっ!」
 “Here I go!”
 
 @5918 Shiro · シロー
+# 触发：攻击（通用，15/21）
 > 「でやぁぁぁぁっ!」
 “Hyaaaaaah!”
 
 @5919 Shiro · シロー
+# 触发：攻击（通用，16/21）
 > 「援護がほしいところだな」
 “I could use some backup here.”
 
 @5920 Shiro · シロー
+# 触发：攻击（通用，17/21）
 > 「落ちろぉぉぉぉーっ!」
 “Go doooown!”
 
 @5921 Shiro · シロー
+# 触发：攻击（通用，18/21）
 # 审校：「集中攻撃かける」是命令集中攻击，原译 Focus your fire 可接受，但 Concentrate fire 更贴近军事口令。
 > 「集中攻撃かける!」
 “Concentrate fire!”
 
 @5922 Shiro · シロー
+# 触发：攻击（通用，19/21）
 > 「とらえた!」
 “Got him!”
 
 @5923 Shiro · シロー
+# 触发：攻击（通用，20/21）
 > 「くっそぉぉーっ! 落ちろぉっ!」
 “Damn iiiit! Go down!”
 
 @5924 Shiro · シロー
+# 触发：攻击（通用，21/21）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「出てくるか……」
-“So you're coming out...”
+“So you’re coming out...”
 
 @5925 Shiro · シロー
+# 触发：被击坠（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ア、アイナーッッ!」
-“Ei-Einer!!”
+“A-aina!!”
 
 @5926 Shiro · シロー
+# 触发：被击坠（通用，2/3）
 > 「うわぁぁぁぁぁっっ!」
 “Uwaaaaaaah!”
 
 @5927 Shiro · シロー
+# 触发：被击坠（通用，3/3）
 > 「く……負けた……」
 “Ngh... I lost...”
 
 @5928 Shiro · シロー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「うわぁぁぁぁぁっ!」
 “Uwaaaaaaah!”
 
 @5929 Shiro · シロー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もたないのか!?」
-“I-I can't hold out?!”
+“I-I can’t hold out?!”
 
 @5930 Shiro · シロー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：补引号；原译生硬
 > 「これ以上は、無理か!?」
-“Any more than this is impossible?!”
+“I can’t take any more of this?!”
 
 @5931 Shiro · シロー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「くっ、もう噴射機が限界か!」
 “Ngh, the thrusters are at their limit!”
 
 @5932 Shiro · シロー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：补引号；まだ 漏译
 > 「まだっ、希望はある!」
-“There's still hope!”
+“Not yet! There’s still hope!”
 
 @5933 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/9）
 > 「うっ、なんだこいつは!?」
 “Ugh, what is this thing?!”
 
 @5934 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、変だ、なにかおかしいぞ!?」
-“Ngh, something's wrong, something's off?!”
+“Ngh, something’s wrong, something’s off?!”
 
 @5935 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/9）
 > 「くっ」
 “Ngh!”
 
 @5936 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/9）
 > 「あたったのかっ!」
 “Did it hit?!”
 
 @5937 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/9）
 > 「まだだ!」
 “Not yet!”
 
 @5938 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/9）
 > 「まだまだぁっっ!」
 “Not by a long shot!”
 
 @5939 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/9）
 > 「くっ、まずいぞ……」
 “Ngh, this is bad...”
 
 @5940 Shiro · シロー
-# 审校：原文「動きが重い」指机体动作沉重，原译 she's sluggish 用 she 指代机体不自然，改为 it's sluggish。
+# 触发：中伤（剩余 HP 30–90%）（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くうっ、動きが重いっ!」
-“Ngh, it's sluggish!”
+“Ngh, it’s sluggish!”
 
 @5941 Shiro · シロー
+# 触发：中伤（剩余 HP 30–90%）（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、左手がやられただけだ!」
-“Ngh, it's only my left arm that's hit!”
+“Ngh, it’s only my left arm that’s hit!”
 
 @5942 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「あっ……あたったのか!?」
 “Ah... did it hit?!”
 
 @5943 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 # 审校：原文「この程度ですんでくれた」是庆幸损伤轻微，原译 So this is all it did 可接受，但改为更自然的庆幸语气。
 > 「この程度ですんでくれた?」
 “So it only did this much?”
 
 @5944 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「くっ、命中した!?」
 “Ngh, it hit?!”
 
 @5945 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「損傷は軽微だ!」
 “Damage is minimal!”
 
 @5946 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「うぅっ」
 “Ugh!”
 
 @5947 Shiro · シロー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
 > 「くぅっ、上等だ!」
 “Ngh, bring it on!”
 
 @5948 Shiro · シロー
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺の腕もまぁまぁだろ!」
-“My skills aren't half bad, huh!”
+“My skills aren’t half bad, huh!”
 
 @5949 Shiro · シロー
+# 触发：回避（通用，2/4）
 > 「やった、成功した!」
 “Yes, it worked!”
 
 @5950 Shiro · シロー
+# 触发：回避（通用，3/4）
 > 「みろっ! やったぞ!」
 “See that! I did it!”
 
 @5951 Shiro · シロー
+# 触发：回避（通用，4/4）
 > 「やったか!」
 “Did I get him?!”
 
 @5952 Shiro · シロー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないんだよ、それは!」
-“That doesn't work on me!”
+“That doesn’t work on me!”
 
 @5953 Shiro · シロー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「た、弾切れ!?」
-“O-Out of ammo?!”
+“O-out of ammo?!”
 
 @5954 Shiro · シロー
+# 触发：射程外，无法反击（通用，1/2）
 > 「やつはどこだ!?」
 “Where is he?!”
 
 @5955 Shiro · シロー
+# 触发：射程外，无法反击（通用，2/2）
 > 「く、どこへいったぁ!?」
 “Ngh, where did he go?!”
+
+@14232 Shiro · シロー
+# 触发：使用〈100mmマシンガン〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「銃身が焼きつくまで撃ちつづけて
+>  やる!」
+“I’ll keep firing till the barrel burns out!”
+
+@14233 Shiro · シロー
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+> 「ビームのエネルギーはもつのか!?」
+“Will the beam energy hold out?!”
+
+@14234 Shiro · シロー
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「あたれぇっ!」
+“Hit ’em!”
+
+@14235 Shiro · シロー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”

@@ -1,99 +1,161 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8869 Dunkel · ダンケル
+# 触发：攻击（通用，1/7）
 > 「もらったっ!」
 “Got you!”
 
 @8870 Dunkel · ダンケル
+# 触发：攻击（通用，2/7）
 > 「くらえっ!」
 “Take this!”
 
 @8871 Dunkel · ダンケル
+# 触发：攻击（通用，3/7）
 > 「行くぞっ!」
 “Here I come!”
 
 @8872 Dunkel · ダンケル
+# 触发：攻击（通用，4/7）
 > 「このっ!」
 “Why you!”
 
 @8873 Dunkel · ダンケル
+# 触发：攻击（通用，5/7）
 > 「ここまでだっ!」
 “This is the end!”
 
 @8874 Dunkel · ダンケル
+# 触发：攻击（通用，6/7）
+# 审校：与中文统一
 > 「落ちろってんだよ!」
-“I said fall!”
+“I said go down!”
 
 @8875 Dunkel · ダンケル
+# 触发：攻击（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @8876 Dunkel · ダンケル
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「し、しまった!? うわあっ!!」
-“D-damn!? Uwaaah!!”
+“D-damn?! Uwaaah!!”
 
 @8877 Dunkel · ダンケル
-# 检查提示：未用必用译名：ヤザン隊→Yazan Team
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うあぁっ! ヤ、ヤザン隊長!
 >  これ以上は!」
-“Uwaaah! C-Commander Yazan! Any more than this is!”
+“Uwaaah! C-commander Yazan! I can’t take any more!”
 
 @8878 Dunkel · ダンケル
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「ぐああっ! な、なんてパワーだっ!」
 “Guaaah! W-what power!”
 
 @8879 Dunkel · ダンケル
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「い、いかん、やられるっ!」
-“N-no good, I'm done for!”
+“N-no good, I’m done for!”
 
 @8880 Dunkel · ダンケル
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「ちいっ! やるなっ!」
 “Tch! Not bad!”
 
 @8881 Dunkel · ダンケル
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このっ! まだやられるかっ!」
-“Why you! You're still up!?”
+“Why you! Like I’d go down yet!”
 
 @8882 Dunkel · ダンケル
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! やってくれるっ!」
-“Ngh! You're good!”
+“Ngh! You’re good!”
 
 @8883 Dunkel · ダンケル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度でっ!」
-“This much won't!”
+“This much won’t stop me!”
 
 @8884 Dunkel · ダンケル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「効くかよっ!」
 “As if that works!”
 
 @8885 Dunkel · ダンケル
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「パワー不足だな!」
 “Not enough power!”
 
 @8886 Dunkel · ダンケル
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @8887 Dunkel · ダンケル
+# 触发：回避（通用，2/4）
 > 「遅いぜ!」
 “Too slow!”
 
 @8888 Dunkel · ダンケル
+# 触发：回避（通用，3/4）
 > 「甘いなっ!」
 “Too naive!”
 
 @8889 Dunkel · ダンケル
+# 触发：回避（通用，4/4）
+# 审校：原译“What are you aiming at!”语气生硬，改为更自然的质问。
 > 「どこを狙ってる!」
-“What are you aiming at!”
+“Where are you aiming?!”
 
 @8890 Dunkel · ダンケル
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かねえんだよっ!」
-“It doesn't even hurt!”
+“It doesn’t work on me!”
 
 @8891 Dunkel · ダンケル
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「くそっ! 弾切れか!」
 “Damn! Out of ammo!”
 
 @8892 Dunkel · ダンケル
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「何っ!? あんな距離から!?」
-“What!? From that range!?”
+“What?! From that range?!”
+
+@14662 Dunkel · ダンケル
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+> 「くらえっ!」
+“Take this!”
+
+@14663 Yazan · ヤザン
+# 触发：使用〈クモの巣〉（对话第 1/4 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ダンケル、ラムサス、クモの巣をやるぞ!」
+“Dunkel, Ramsus, we’re doing the Spider Web!”
+
+@14664 Ramsus · ラムサス
+# 触发：使用〈クモの巣〉（对话第 2/4 句）
+> 「ハッ!」
+“Yes, sir!”
+
+@14665 Dunkel · ダンケル
+# 触发：使用〈クモの巣〉（对话第 3/4 句）
+> 「了解です、隊長!」
+“Understood, Commander!”
+
+@14666 Yazan · ヤザン
+# 触发：使用〈クモの巣〉（对话第 4/4 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ハハハッ! しとめるぞっ!」
+“Hahaha! We’ll finish them off!”

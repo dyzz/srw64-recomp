@@ -1,109 +1,166 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6122 Gaia · ガイア
+# 触发：攻击（通用，1/8）
 > 「くらえっ!」
 “Take this!”
 
 @6123 Gaia · ガイア
+# 触发：攻击（通用，2/8）
 > 「もらった!」
 “Got you!”
 
 @6124 Gaia · ガイア
+# 触发：攻击（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「黒い三連星の恐ろしさ、教えて
 >  やるわ!」
-“I'll teach you the terror of the Black Tri-Stars!”
+“I’ll teach you the terror of the Black Tri-Stars!”
 
 @6125 Gaia · ガイア
+# 触发：攻击（通用，4/8）
 > 「ふん、死ねっ!」
 “Hmph, die!”
 
 @6126 Gaia · ガイア
+# 触发：攻击（通用，5/8）
 # 审校：“Fall!” 语气偏弱，改为更符合战斗情境的 “Go down!”。
 > 「落ちろよ!」
 “Go down!”
 
 @6127 Gaia · ガイア
+# 触发：攻击（通用，6/8）
 > 「これで終わりだ!」
 “This is the end!”
 
 @6128 Gaia · ガイア
+# 触发：攻击（通用，7/8）
 > 「このっ!」
 “Why you!”
 
 @6129 Gaia · ガイア
+# 触发：攻击（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんわっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @6130 Gaia · ガイア
+# 触发：被击坠（通用，1/2）
 > 「何だと!? バカな!?」
 “What?! Impossible!”
 
 @6131 Gaia · ガイア
+# 触发：被击坠（通用，2/2）
 > 「マッシュ……オルテガ……すまん……」
 “Mash... Ortega... forgive me...”
 
 @6132 Gaia · ガイア
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぬううっ! このパイロット、
 >  ただものではないわっ!」
 “Ngh! This pilot is no ordinary foe!”
 
 @6133 Gaia · ガイア
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうううっ!
 >  バカな、押されているだと!?」
-“Guuh! Impossible, I'm being pushed back?!”
+“Guuh! Impossible, I’m being pushed back?!”
 
 @6134 Gaia · ガイア
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何だ!?
 >  直撃を受けているだと!?」
-“What?! I'm taking direct hits?!”
+“What?! I’m taking direct hits?!”
 
 @6135 Gaia · ガイア
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるっ!
 >  だがこの程度ではやられんよ!」
-“Not bad! But this won't be enough to beat me!”
+“Not bad! But this won’t be enough to beat me!”
 
 @6136 Gaia · ガイア
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! こいつ、意外とやるぞ!」
-“Ngh! This one's better than I expected!”
+“Ngh! This one’s better than I expected!”
 
 @6137 Gaia · ガイア
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「ちいっ! この俺に当てるとは!」
 “Tch! To land a hit on me!”
 
 @6138 Gaia · ガイア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「フン、そんなものか!?」
 “Hmph, is that all?!”
 
 @6139 Gaia · ガイア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんなぁ!」
-“That's nothing!”
+“That’s nothing!”
 
 @6140 Gaia · ガイア
-# 审校：“you noisy fly” 稍显生硬，加 little 更自然且保留轻蔑语气。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：ああ是烦躁
 > 「ああ、うるさいハエめ!」
-“Yeah, yeah, you noisy little fly!”
+“Argh, you noisy little fly!”
 
 @6141 Gaia · ガイア
+# 触发：回避（通用，1/3）
 > 「甘いわっ!」
 “Too naive!”
 
 @6142 Gaia · ガイア
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるかよ!」
-“As if you'd hit me!”
+“As if you’d hit me!”
 
 @6143 Gaia · ガイア
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「はっ! うわさほどではないわ!」
-“Ha! You're not as good as the rumors say!”
+“Ha! You’re not as good as the rumors say!”
 
 @6144 Gaia · ガイア
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「はあん、ムダな事を!」
 “Hah, what a waste of effort!”
 
 @6145 Gaia · ガイア
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なんだと!? 弾切れか!?」
 “What?! Out of ammo?!”
 
 @6146 Gaia · ガイア
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ、この距離から攻撃できるのか
 >  あやつ!」
 “Tch, that thing can attack from this range?!”
+
+@14255 Gaia · ガイア
+# 触发：使用〈ジェットストリームアタック〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We’re launching the Jet Stream Attack!”
+
+@14256 Ortega · オルテガ
+# 触发：使用〈ジェットストリームアタック〉（对话第 2/3 句）
+> 「おう!」
+“Yeah!”
+
+@14257 Mash · マッシュ
+# 触发：使用〈ジェットストリームアタック〉（对话第 3/3 句）
+> 「了解だ、ガイア!」
+“Roger, Gaia!”
+
+@14258 Gaia · ガイア
+# 触发：回避，乘坐〈ドライセン〉
+# 审校：原译已准确自然，无需修改。
+> 「ドライセンとてこういう芸当はできる!」
+“Even a Dreissen can pull off a trick like this!”

@@ -4010,7 +4010,7 @@
    ],
    "zh-Hans": {
     "old": "飞溅破碎",
-    "new": "飞溅破坏者"
+    "new": "散射破坏者"
    },
    "gate": false,
    "sections": [
@@ -4023,7 +4023,7 @@
    ],
    "zh-Hans": {
     "old": "飞溅破碎MAP",
-    "new": "飞溅破坏者MAP"
+    "new": "散射破坏者MAP"
    },
    "gate": false,
    "sections": [
@@ -6884,6 +6884,314 @@
     "status_labels"
    ],
    "note": "2026-09-25 用户定：驾驶员一律改成机师（副驾驶员→副机师），台词里不论日文原词。"
+  },
+  {
+   "ja": [
+    "スプラッシュブレイカー"
+   ],
+   "zh-Hans": {
+    "old": "飞溅破坏者",
+    "new": "散射破坏者"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "アッシャークルー"
+   ],
+   "zh-Hans": {
+    "old": "阿舍克鲁",
+    "new": "天使光轮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルライトニングソード"
+   ],
+   "zh-Hans": {
+    "old": "双重闪电剑",
+    "new": "双闪电剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "シグルーン"
+   ],
+   "en": {
+    "old": "Sigrun",
+    "new": "Sigroon"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ノーブルフェニックス"
+   ],
+   "zh-Hans": {
+    "old": "高贵凤凰",
+    "new": "凤凰突击"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "スペシャルボロットパンチ"
+   ],
+   "zh-Hans": {
+    "old": "特别波罗特拳",
+    "new": "特制波罗特拳"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ムーンアタック"
+   ],
+   "zh-Hans": {
+    "old": "月光攻击",
+    "new": "月光斩"
+   },
+   "gate": true,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "サンアタック"
+   ],
+   "zh-Hans": {
+    "old": "太阳攻击",
+    "new": "日轮攻击"
+   },
+   "gate": true,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルマジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "双重·魔神剑",
+    "new": "双重魔神宝剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルマジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "双重魔神剑",
+    "new": "双重魔神宝剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ライジングアロー"
+   ],
+   "zh-Hans": {
+    "old": "升腾之箭",
+    "new": "旭日箭"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "グラビトンハンマー"
+   ],
+   "zh-Hans": {
+    "old": "重力锤",
+    "new": "重力流星锤"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスビット"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰比特",
+    "new": "玫瑰浮游炮"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスビット"
+   ],
+   "en": {
+    "old": "Roses Bit",
+    "new": "Rose Bits"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼススクリーマー"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰尖啸",
+    "new": "玫瑰呼啸"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼススクリーマー"
+   ],
+   "en": {
+    "old": "Roses Screamer",
+    "new": "Rose Screamer"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスハリケーン"
+   ],
+   "zh-Hans": {
+    "old": "玫瑰旋风",
+    "new": "玫瑰飓风"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ローゼスハリケーン"
+   ],
+   "en": {
+    "old": "Roses Hurricane",
+    "new": "Rose Hurricane"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "真・流星胡蝶剣"
+   ],
+   "zh-Hans": {
+    "old": "真·流星胡蝶剑",
+    "new": "真·流星蝴蝶剑"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュ"
+   ],
+   "zh-Hans": {
+    "old": "神斩",
+    "new": "神之斩"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドスラッシュ"
+   ],
+   "en": {
+    "old": "God Slash",
+    "new": "Burning Slash"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドフィンガー"
+   ],
+   "en": {
+    "old": "God Finger",
+    "new": "Burning Finger"
+   },
+   "gate": false,
+   "sections": [
+    "weapons",
+    "story"
+   ]
   }
  ]
 }

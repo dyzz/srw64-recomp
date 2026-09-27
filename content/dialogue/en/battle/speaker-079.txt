@@ -1,164 +1,274 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8944 Yazan · ヤザン
+# 触发：攻击（通用，1/13）
 > 「落ちなっ!」
 “Fall!”
 
 @8945 Yazan · ヤザン
+# 触发：攻击（通用，2/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いただきだな!!」
-“This one's mine!!”
+“This one’s mine!!”
 
 @8946 Yazan · ヤザン
+# 触发：攻击（通用，3/13）
 > 「落ちろっつってんだよ!!」
 “I said fall, damn it!!”
 
 @8947 Yazan · ヤザン
+# 触发：攻击（通用，4/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちょろちょろと……目障りなんだよ!!」
-“Flitting around... You're in my way!!”
+“Flitting around... You’re in my way!!”
 
 @8948 Yazan · ヤザン
+# 触发：攻击（通用，5/13）
 > 「ネズミが……死になっ!!」
 “You rat... Die!!”
 
 @8949 Yazan · ヤザン
+# 触发：攻击（通用，6/13）
 > 「ほらよっ!!」
 “Take this!!”
 
 @8950 Yazan · ヤザン
+# 触发：攻击（通用，7/13）
 > 「終わりだな!!」
 “This is the end!!”
 
 @8951 Yazan · ヤザン
+# 触发：攻击（通用，8/13）
 > 「この俺に向かってくるとは、
 >  いい度胸だ……だがなっ!!」
 “Coming at me takes guts... but too bad!!”
 
 @8952 Yazan · ヤザン
+# 触发：攻击（通用，9/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、身の程知らずがっ!!」
-“Hmph, you don't know your place!!”
+“Hmph, you don’t know your place!!”
 
 @8953 Yazan · ヤザン
+# 触发：攻击（通用，10/13）
 > 「観念しなっ!!」
 “Give it up!!”
 
 @8954 Yazan · ヤザン
+# 触发：攻击（通用，11/13）
 > 「ははははっ! 落ちろっ!!」
 “Hahahaha! Fall!!”
 
 @8955 Yazan · ヤザン
+# 触发：攻击（通用，12/13）
 > 「もらったあっ!!」
 “Got you!!”
 
 @8956 Yazan · ヤザン
+# 触发：攻击（通用，13/13）
 > 「これまでだっ!!」
 “This is the end!!”
 
 @8957 Yazan · ヤザン
+# 触发：被击坠（通用，1/3）
+# 审校：被击坠时不是问对方说了什么
 > 「なんだと!?」
-“What did you say?!”
+“What?!”
 
 @8958 Yazan · ヤザン
+# 触发：被击坠（通用，2/3）
 > 「バカなっ!? この俺が落ちるだと……」
 “Impossible?! Me, shot down...?”
 
 @8959 Yazan · ヤザン
+# 触发：被击坠（通用，3/3）
 > 「なんなんだ! こいつは!?」
 “What the hell is this thing?!”
 
 @8960 Yazan · ヤザン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「なにいっ!? パワーダウンか!?」
 “What?! Power down?!”
 
 @8961 Yazan · ヤザン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こいつ……なめるなっ!!」
-“Y-you... Don't underestimate me!!”
+“Y-you... Don’t underestimate me!!”
 
 @8962 Yazan · ヤザン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「ぐおっ!? バカな……」
 “Gah?! Impossible...”
 
 @8963 Yazan · ヤザン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「でえい、ダメージを受けすぎたか!?」
 “Damn, did I take too much damage?!”
 
 @8964 Yazan · ヤザン
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「なんだと!? 直撃をくらったのか!?」
 “What?! I took a direct hit?!”
 
 @8965 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
 > 「ちっ、少しは歯ごたえがありそうだな」
 “Tch, this one might put up a fight.”
 
 @8966 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
+# 审校：楽しませる是让我尽兴，符合猎人口吻
 > 「くっ! 楽しませてくれるじゃねえか!」
-“Ngh! You're gonna be fun!”
+“Ngh! Now you’re making this fun!”
 
 @8967 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 > 「ち、当たっちまったか!」
 “Tch, I got hit!”
 
 @8968 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つう……やってくれるぜ!」
-“Ugh... You're good!”
+“Ugh... You’re good!”
 
 @8969 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
+# 审校：なんの是这算什么
 > 「ちいっ! なんの、まだまだぁっ!」
-“Tch! No way, I'm not done yet!”
+“Tch! That’s nothing, I’m just getting started!”
 
 @8970 Yazan · ヤザン
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 > 「ふん、やるな!」
 “Hmph, not bad!”
 
 @8971 Yazan · ヤザン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、その程度か!」
-“What's wrong, is that all?!”
+“What’s wrong, is that all?!”
 
 @8972 Yazan · ヤザン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：笑わせやがる是嘲讽，英文 killing me 有歧义
 > 「ははははっ!! 笑わせやがる!!」
-“Hahahaha!! You're killing me!!”
+“Hahahaha!! Don’t make me laugh!!”
 
 @8973 Yazan · ヤザン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：“take me down” 改为 “bring me down”，更符合雅赞对自身被击坠的表述。
 > 「そんな攻撃で、俺を落とせると
 >  思っているのか!?」
 “You think an attack like that can bring me down?!”
 
 @8974 Yazan · ヤザン
+# 触发：回避（通用，1/6）
 > 「当たらんな!」
 “You missed!”
 
 @8975 Yazan · ヤザン
+# 触发：回避（通用，2/6）
 > 「甘いんだよ!!」
 “Too soft!!”
 
 @8976 Yazan · ヤザン
+# 触发：回避（通用，3/6）
+# 审校：間合い是距离感，不是 timing
 > 「まだ子供の間合いだな!!」
-“Your timing's still a kid's!!”
+“That’s a kid’s sense of range!!”
 
 @8977 Yazan · ヤザン
+# 触发：回避（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「見え見えなんだよ!」
-“It's plain as day!”
+“It’s plain as day!”
 
 @8978 Yazan · ヤザン
+# 触发：回避（通用，5/6）
 > 「フン! へたくそが!!」
 “Hmph! Amateur!!”
 
 @8979 Yazan · ヤザン
-# 审校：原文是被动语态“あたったら”，初稿“taking a hit”不够贴切，改为更忠实表达。
+# 触发：回避（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハッ、こんな攻撃にあたったら
 >  減俸ものだな」
-“Ha, if I got hit by an attack like that, it'd cost me my pay.”
+“Ha, if I got hit by an attack like that, it’d cost me my pay.”
 
 @8980 Yazan · ヤザン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：“Beams don't work on me!” 语气较平，改为更口语且贴合雅赞的挑衅口吻。
 > 「バカが! ビームが効くかよ!」
 “Idiot! Like a beam would work on me!”
 
 @8981 Yazan · ヤザン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れか!!」
 “Out of ammo?!”
 
 @8982 Yazan · ヤザン
+# 触发：射程外，无法反击（通用，1/1）
 # 审校：原文“射程距離外からか”指对方从射程外攻击，初稿“From out of range”缺少主语，补足为更清晰。
 > 「ちっ! 射程距離外からか……」
 “Tch! Attacking from out of range, huh...”
+
+@14669 Yazan · ヤザン
+# 触发：使用〈ビームサーベル／銃剣付きビームサーベル〉（低优先，可能被通用台词顶掉）
+# 审校：对象是你
+> 「外から串刺しにしてやる!!」
+“I’ll skewer you from the outside!!”
+
+@14670 Yazan · ヤザン
+# 触发：使用〈海ヘビ〉（低优先，可能被通用台词顶掉）
+# 审校：来放海蛇不顺口
+> 「海ヘビをやるぞ!」
+“Time for the Sea Snake!”
+
+@14671 Yazan · ヤザン
+# 触发：使用〈クモの巣〉（对话第 1/4 句）
+# 审校：更像下令
+> 「ダンケル、ラムサス、クモの巣をやるぞ!」
+“Dunkel, Ramsus, we’re using the Spider Web!”
+
+@14672 Ramsus · ラムサス
+# 触发：使用〈クモの巣〉（对话第 2/4 句）
+> 「ハッ!」
+“Yes, sir!”
+
+@14673 Dunkel · ダンケル
+# 触发：使用〈クモの巣〉（对话第 3/4 句）
+> 「了解です、隊長!」
+“Understood, Commander!”
+
+@14674 Yazan · ヤザン
+# 触发：使用〈クモの巣〉（对话第 4/4 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ハハハッ! しとめるぞっ!」
+“Hahaha! We’ll finish them off!”
+
+@14675 Yazan · ヤザン
+# 触发：回避，乘坐〈ハンブラビ〉
+# 审校：初稿 Hambrabi's got 口语化可接受，但为更贴近原文语感改为 has the edge in speed
+> 「スピードはハンブラビの方が
+>  上のようだな!!」
+“Seems the Hambrabi has the edge in speed!!”
+
+@14676 Yazan · ヤザン
+# 触发：回避，条件 1000
+> 「ハハハハッ、ダミーにかかってくれたよう
+>  だな!」
+“Hahahaha, looks like you fell for the decoy!”
+
+@14677 Yazan · ヤザン
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「そいつはダミーなんだよ!」
+“That one’s a decoy!”
+
+@14678 Yazan · ヤザン
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ダミーの一つや二つ、くれてやる!」
+“I’ll give you a decoy or two for free!”

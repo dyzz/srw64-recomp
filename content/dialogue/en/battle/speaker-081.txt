@@ -1,147 +1,198 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11129 Rakan · ラカン
+# 触发：攻击（通用，1/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様らに絶望という言葉を
 >  思い知らせてやろう!」
-“I'll teach you lot the meaning of despair!”
+“I’ll teach you lot the meaning of despair!”
 
 @11130 Rakan · ラカン
+# 触发：攻击（通用，2/12）
 > 「もらった!」
 “Got you!”
 
 @11131 Rakan · ラカン
+# 触发：攻击（通用，3/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ガードが、がら空きだぞっ!」
-“Your guard's wide open!”
+“Your guard’s wide open!”
 
 @11132 Rakan · ラカン
+# 触发：攻击（通用，4/12）
 > 「ぬおおおおおっ!!」
 “Nwooooh!!”
 
 @11133 Rakan · ラカン
+# 触发：攻击（通用，5/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなあっ!!」
-“Don't underestimate me!!”
+“Don’t underestimate me!!”
 
 @11134 Rakan · ラカン
+# 触发：攻击（通用，6/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「よけられるか!!」
-“Like I'd let you dodge!!”
+“Like I’d let you dodge!!”
 
 @11135 Rakan · ラカン
+# 触发：攻击（通用，7/12）
 > 「生意気ぃっ!!」
 “Insolent brat!!”
 
 @11136 Rakan · ラカン
+# 触发：攻击（通用，8/12）
 > 「くらえぇっ!!」
 “Take this!!”
 
 @11137 Rakan · ラカン
+# 触发：攻击（通用，9/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ひと思いに楽にしてやる。
 >  心配するな」
-“I'll put you out of your misery. Don't worry.”
+“I’ll put you out of your misery. Don’t worry.”
 
 @11138 Rakan · ラカン
+# 触发：攻击（通用，10/12）
 > 「ここまでだな!」
 “This is the end for you!”
 
 @11139 Rakan · ラカン
+# 触发：攻击（通用，11/12）
 > 「邪魔だ、どけえっ!」
 “Out of my way, move it!”
 
 @11140 Rakan · ラカン
+# 触发：攻击（通用，12/12）
 > 「観念するんだな!」
 “Give it up!”
 
 @11141 Rakan · ラカン
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「バカなっ!? この俺が……」
-“Impossible!? Me, of all people...”
+“Impossible?! Me, of all people...”
 
 @11142 Rakan · ラカン
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬぅっ、貴様、忘れんぞっ!」
-“Ngh, you, I won't forget this!”
+“Ngh, you, I won’t forget this!”
 
 @11143 Rakan · ラカン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「むうっ!! この機体が……
 >  パワー負けするのか!?」
 “Mmph!! This machine... is outmatched in power?!”
 
 @11144 Rakan · ラカン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何いっ!? こ、こやつ、ただ者では
 >  ないなっ!!」
-“What?! Th-This one's no ordinary foe!!”
+“What?! Th-this one’s no ordinary foe!!”
 
 @11145 Rakan · ラカン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「ぬううっ! ち、直撃だというのか!?」
 “Nghhh! A-A direct hit?!”
 
 @11146 Rakan · ラカン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「バカなっ!? これほどとは……」
-“Impossible!? To think it was this much...”
+“Impossible?! To think it was this much...”
 
 @11147 Rakan · ラカン
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「まだまだぁっ!」
 “Not done yet!!”
 
 @11148 Rakan · ラカン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅっ! この、図に乗るなぁっ!!」
-“Guh! You, don't get cocky!!”
+“Guh! You, don’t get cocky!!”
 
 @11149 Rakan · ラカン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ぐっ! ふふ、やるなっ!」
 “Guh! Heh, not bad!”
 
 @11150 Rakan · ラカン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! このラカン・ダカラン、
 >  この程度でやられはせん!!」
-“Tch! I, Rakan Dahkaran, won't fall to the likes of this!!”
+“Tch! I, Rakan Dahkaran, won’t fall to the likes of this!!”
 
 @11151 Rakan · ラカン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだと!?」
-“W-What did you say?!”
+“W-what?!”
 
 @11152 Rakan · ラカン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、そんなものか!」
-“What's wrong, is that all you've got!”
+“What’s wrong, is that all you’ve got!”
 
 @11153 Rakan · ラカン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「並みのモビルスーツとは違うんだよっ!」
-“I'm not like your average Mobile Suit!”
+“I’m not like your average Mobile Suit!”
 
 @11154 Rakan · ラカン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「パワー不足だな!」
 “Not enough power!”
 
 @11155 Rakan · ラカン
+# 触发：回避（通用，1/5）
 > 「甘いわっ!」
 “Too naive!”
 
 @11156 Rakan · ラカン
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらん!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @11157 Rakan · ラカン
+# 触发：回避（通用，3/5）
 > 「遅いっ!」
 “Too slow!”
 
 @11158 Rakan · ラカン
+# 触发：回避（通用，4/5）
 > 「見え見えなんだよ!」
 “I can see right through you!”
 
 @11159 Rakan · ラカン
+# 触发：回避（通用，5/5）
 > 「そこかっ!」
 “There you are!”
 
 @11160 Rakan · ラカン
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ふ、ムダな攻撃だ」
 “Hmph, a pointless attack.”
 
 @11161 Rakan · ラカン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんわっ!!」
-“That won't even scratch me!!”
+“That won’t even scratch me!!”
 
 @11162 Rakan · ラカン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れか!? うかつな……」
 “Out of ammo?! How careless...”
 
 @11163 Rakan · ラカン
+# 触发：射程外，无法反击（通用，1/1）
 > 「ちっ、あんな距離から攻撃してくる
 >  とは……」
 “Tch, attacking from that range...”

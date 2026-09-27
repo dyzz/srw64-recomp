@@ -1,122 +1,193 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10320 Gorman · ゴーマン
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「地獄の底に送りこんでやるぞ!」
-“I'll send you to the depths of hell!”
+“I’ll send you to the depths of hell!”
 
 @10321 Gorman · ゴーマン
+# 触发：攻击（通用，2/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様はこの俺が倒すんだ」
-“I'm the one who's going to take you down.”
+“I’m the one who’s going to take you down.”
 
 @10322 Gorman · ゴーマン
+# 触发：攻击（通用，3/10）
 > 「攻撃開始だ!」
 “Commence the attack!”
 
 @10323 Gorman · ゴーマン
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺に狙われたら最後
 >  絶対に逃げられんぞ!」
-“Once I've got you in my sights, you'll never escape!”
+“Once I’ve got you in my sights, you’ll never escape!”
 
 @10324 Gorman · ゴーマン
+# 触发：攻击（通用，5/10）
 > 「どけ!」
 “Out of my way!”
 
 @10325 Gorman · ゴーマン
+# 触发：攻击（通用，6/10）
 > 「ぐずぐずせずに早く攻撃しろ!」
 “Stop dawdling and attack already!”
 
 @10326 Gorman · ゴーマン
+# 触发：攻击（通用，7/10）
 > 「俺はゴーマン大尉だ!」
 “I am Captain Gorman!”
 
 @10327 Gorman · ゴーマン
+# 触发：攻击（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「真っ逆さまに地獄の底に
 >  落ちるのだ!」
-“You'll fall headlong into the depths of hell!”
+“You’ll fall headlong into the depths of hell!”
 
 @10328 Gorman · ゴーマン
+# 触发：攻击（通用，9/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いくら逃げ回っても同じことだ!」
-“No matter how you run, it's all the same!”
+“No matter how you run, it’s all the same!”
 
 @10329 Gorman · ゴーマン
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「死ににやってきたか!」
-“So you've come to die!”
+“So you’ve come to die!”
 
 @10330 Gorman · ゴーマン
+# 触发：被击坠（通用，1/1）
 # 审校：拟声词“うおぉぉぉーっ”统一为更自然的英文拟声，并保持与原文相同的拖长音。
 > 「お、おのれぇぇっ! うおぉぉぉーっ!?」
 “Y-you bastard! Uwooooooh?!”
 
 @10331 Gorman · ゴーマン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ……バカな!? この俺がここまで
 >  やられるのか!?」
 “Ngh... Impossible! Me, beaten this badly?!”
 
 @10332 Gorman · ゴーマン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだと!? 冗談ではない!」
-“What?! You can't be serious!”
+“What?! You can’t be serious!”
 
 @10333 Gorman · ゴーマン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカな! こんなことはありえん!」
-“Impossible! This can't be happening!”
+“Impossible! This can’t be happening!”
 
 @10334 Gorman · ゴーマン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、許さん! 必ず息の根を
 >  止めてくれる!」
-“Guh, I won't forgive this! I'll finish you off for sure!”
+“Guh, I won’t forgive this! I’ll finish you off for sure!”
 
 @10335 Gorman · ゴーマン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「お、おのれぇぇぇぇぇっ!」
 “Y-you bastaaaaard!”
 
 @10336 Gorman · ゴーマン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「くっ……なんのこれしき!」
 “Ngh... This is nothing!”
 
 @10337 Gorman · ゴーマン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このゴーマンにここまでやるとは!
 >  覚えておくぞ!」
-“To push me, Gorman, this far! I'll remember this!”
+“To push me, Gorman, this far! I’ll remember this!”
 
 @10338 Gorman · ゴーマン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「フフフッ、まだまだだ!」
 “Heh heh, not over yet!”
 
 @10339 Gorman · ゴーマン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「命を捨てにわざわざ自分から
 >  出向いてきたか」
-“So you've gone out of your way to throw your life away.”
+“So you’ve gone out of your way to throw your life away.”
 
 @10340 Gorman · ゴーマン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「俺に歯向かうつもりか?」
 “You intend to defy me?”
 
 @10341 Gorman · ゴーマン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「自分から死ににやってきたか!」
-“So you've come to die on your own!”
+“So you’ve come to die on your own!”
 
 @10342 Gorman · ゴーマン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「フフフ、この超合金の盾には
 >  どんな兵器も通用せんのだ!」
 “Heh heh, no weapon can pierce this super-alloy shield!”
 
 @10343 Gorman · ゴーマン
+# 触发：回避（通用，1/2）
 > 「予想していた通りの力だな」
 “Just as much power as I expected.”
 
 @10344 Gorman · ゴーマン
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフフッ、この俺には通用せんぞ!」
-“Heh heh, that won't work on me!”
+“Heh heh, that won’t work on me!”
 
 @10345 Gorman · ゴーマン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「フフフフフ、気がつくのが
 >  一足遅かったようだな」
 “Heh heh heh heh, seems you noticed a moment too late.”
 
 @10346 Gorman · ゴーマン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ぐずぐずせずに早く補給するんだ!」
 “Stop dawdling and resupply now!”
 
 @10347 Gorman · ゴーマン
+# 触发：射程外，无法反击（通用，1/1）
 > 「くそっ、どこにいる!?」
 “Damn it, where are you?!”
+
+@15795 Gorman · ゴーマン
+# 触发：使用〈ハンマー〉（低优先，可能被通用台词顶掉）
+> 「このまま押しつぶされたいのか!」
+“Do you want to be crushed just like this?!”
+
+@15796 Gorman · ゴーマン
+# 触发：对手驾驶员〈デューク〉
+# 审校：对敌人喊 いくぞ 是“我来了”，不是“上吧”
+> 「いくぞ、グレンダイザー!!」
+“Here I come, Grendizer!!”
+
+@15797 Gorman · ゴーマン
+# 触发：对手驾驶员〈デューク〉
+# 审校：同 15796
+> 「いくぞ、デューク・フリード!!」
+“Here I come, Duke Fleed!!”
+
+@15798 Gorman · ゴーマン
+# 触发：对手驾驶员〈デューク〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「デューク・フリード!
+>  貴様はこの俺が倒す!」
+“Duke Fleed! I’m the one who’ll take you down!”
+
+@15799 Gorman · ゴーマン
+# 触发：对手驾驶员〈デューク〉
+> 「デューク・フリード!
+>  貴様の命は今日かぎりだ!」
+“Duke Fleed! Your life ends today!”

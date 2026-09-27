@@ -10,8 +10,10 @@ rewritten, and their keys are left out of the generated files. The new tree is c
 with dialogue_text.load before anything is replaced.
 
 Layout: story/scene-NNNN.txt (lines in script order, each key in the first scene that
-uses it), battle/speaker-NNN.txt (per-character situation blocks, ids below 14227),
-battle/moves-NNNNN.txt (weapon lines and combination attacks, by hundred), battle/special.txt
+uses it), battle/speaker-NNN.txt (everything the game can say through one voice, NNN = the
+actor that owns the voice: the generic block situation by situation, then the conditional
+lines in table order, every entry with a "# 触发：" comment from context.triggers),
+battle/other.txt (lines no selection table reaches), battle/special.txt (flagship captains)
 and intro.txt.
 
     PYTHONPATH=src .venv/bin/python -B tools/translation/write_dialogue.py \\
@@ -36,7 +38,6 @@ from srw64_native.dialogue_text import format_entry, load  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "content/dialogue"
 MARKER = "# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。"
-GENERIC_BATTLE_END = 14227  # speaker-ordered situation blocks end with the generic soldiers at 14226
 
 
 def failed_drafts(tags: list[str]) -> dict[str, dict]:
@@ -72,9 +73,34 @@ def file_for(record: dict, owner: dict[str, int]) -> str:
         return f"story/scene-{owner[record['key']]:04d}.txt"
     if record["category"] == "battle.special":
         return "battle/special.txt"
-    if record["id"] < GENERIC_BATTLE_END:
-        return f"battle/speaker-{record['context']['speaker_id']:03d}.txt"
-    return f"battle/moves-{record['id'] // 100 * 100:05d}.txt"
+    owners = record["context"].get("voice_actors") or []
+    if not owners:
+        return "battle/other.txt"
+    return f"battle/speaker-{owners[0]:03d}.txt"
+
+
+def battle_order(record: dict) -> tuple:
+    """Generic block first (situation order), then the conditional lines in table order,
+    exchanges kept together; the numbers keep the sort stable and deterministic."""
+    triggers = record["context"].get("triggers") or []
+    generic = [t for t in triggers if t["kind"] == "generic"]
+    if generic:
+        return (0, generic[0]["situation"], record["id"])
+    if triggers:
+        t = triggers[0]
+        return (1, t.get("sequence", [record["id"]])[0], t.get("position", 0), record["id"])
+    return (2, record["id"])
+
+
+def trigger_comments(record: dict) -> list[str]:
+    seen, out = set(), []
+    for t in record["context"].get("triggers") or []:
+        if t["desc"] not in seen:
+            seen.add(t["desc"])
+            out.append(f"# 触发：{t['desc']}")
+    if not out and record["category"] == "battle.quote":
+        out.append("# 触发：未被任何选择表引用，原版不会显示")
+    return out
 
 
 def speaker_of(record: dict) -> str | None:
@@ -107,7 +133,9 @@ def main() -> int:
             order.setdefault(line["key"], len(order))
     wanted = [r for r in records.values() if r["category"] in
               ("story.dialogue", "story.choice", "story.intro", "battle.quote", "battle.special")]
-    wanted.sort(key=lambda r: (file_for(r, owner), order.get(r["key"], r.get("id", 0)), r["key"]))
+    wanted.sort(key=lambda r: (file_for(r, owner),
+                               battle_order(r) if r["category"].startswith("battle") else (order.get(r["key"], r.get("id", 0)),),
+                               r["key"]))
     good = {locale: effective(tags) for locale, tags in runs.items()}
     bad = {locale: failed_drafts(tags) for locale, tags in runs.items()}
     hand, hand_files = set(), {}
@@ -130,7 +158,8 @@ def main() -> int:
                 label = speaker_of(record) or ""
                 base = Characters.base_name(label) or ""
                 note = f"{names[base]} · {label}" if base in names else label
-                comments, target = [], None
+                comments = trigger_comments(record) if record["category"].startswith("battle") else []
+                target = None
                 if key in shared:
                     item = good[locale][key]
                     target = final_target(record, item, locale)

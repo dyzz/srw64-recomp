@@ -125,9 +125,11 @@ on the Moon?”
 “...Heh, heheheh. Very well. Shapiro, I'll be expecting great things.”
 
 @32668 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「バスク特佐、ツバロフ技師長、
 >  地上よりの通信です」
-“Colonel Bask, Chief Engineer Tubarov, we have a communication from Earth.”
+“Special Colonel Bask, Chief Engineer Tubarov, we have a communication from Earth.”
 
 @32669 Bask · バスク
 > 「こちらへまわせ」
@@ -143,14 +145,16 @@ on the Moon?”
 “Duke Dermail, Your Excellency Jamitov, what is it?”
 
 @32672 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、宇宙の戦況は
 >  どうだ?」
-“Colonel Bask, how goes the war in space?”
+“Special Colonel Bask, how goes the war in space?”
 
 @32673 Bask · バスク
+# 审校：精读：帝国軍 大写统一
 > 「順調です。帝国軍が
 >  月に集結しておるために
-“Smoothly. Since the imperial forces are massing on the Moon,
+“Smoothly. Since the Imperial forces are massing on the Moon,
 ---
 >  戦力の損失は無視できる
 >  程度ですな。各コロニーは我々が
@@ -160,13 +164,15 @@ our losses are negligible. We have every colony under
 our control.”
 
 @32674 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「おお、さすがだな特佐」
-“Oh, impressive as always, Colonel.”
+“Oh, impressive as always, Special Colonel.”
 
 @32675 Jamitov · ジャミトフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「コロニーへの接触は
 >  レディ・アン特佐の担当だったな
-“Contact with the colonies was Colonel Lady Une's responsibility, wasn't it?
+“Contact with the colonies was Special Colonel Lady Une's responsibility, wasn't it?
 ---
 >  そちらはどうか」
 How is that going?”
@@ -180,9 +186,10 @@ How is that going?”
 for Treize's lapdog.”
 
 @32677 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、トレーズは君の上官
 >  でありOZの総帥だ。その口の
-“Colonel Bask, Treize is your superior officer and the Supreme Commander of OZ. Can't you do something
+“Special Colonel Bask, Treize is your superior officer and the Supreme Commander of OZ. Can't you do something
 ---
 >  聞き方はなんとかならんのか」
 about that tone of yours?”
@@ -233,9 +240,10 @@ immediately.”
 opposed to this plan.”
 
 @32684 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それは私がなんとかする。レディ・アン
 >  特佐の交渉次第ではコロニーに
-“I will handle that. Depending on how Colonel Lady Une's negotiations go, we can prepare plants in the colonies
+“I will handle that. Depending on how Special Colonel Lady Une's negotiations go, we can prepare plants in the colonies
 ---
 >  プラントも用意できるし人員も
 >  使えるようになる」
@@ -251,9 +259,10 @@ and make use of their personnel as well.”
 but construction of the giant battleship Libra would be in sight as well.”
 
 @32686 Bask · バスク
+# 审校：精读：帝国軍 大写统一
 > 「あとは月の帝国軍だけです。
 >  戦力さえそろえば、異星人どもを
-“After that, only the imperial forces on the Moon remain. Once our forces are in place, driving the aliens
+“After that, only the Imperial forces on the Moon remain. Once our forces are in place, driving the aliens
 ---
 >  地球から追い払うのもそう
 >  時間はかからぬでしょう」
@@ -337,9 +346,11 @@ The Foundation is nothing but a relic of the past. This is what the times demand
 neither Zeon's uprising nor the Empire's invasion would have happened...)
 
 @32693 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、お元気そうでなにより
 >  です」
-“Lord Treize, I am glad to see you looking well.”
+“Your Excellency, I am glad to see you looking well.”
 
 @32694 Treize · トレーズ
 > 「レディ、君も元気そうでよかった。
@@ -367,9 +378,11 @@ they apparently decided to proceed without me. Duke Dermail has contacted me
 several times.”
 
 @32697 Lady · レディ
+# 审校：原文为「トレーズ様」，按 address 应译为“Your Excellency”而非“Lord Treize”。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「ジャミトフ閣下のお知恵でしょう。
 >  いかがいたしますか、トレーズ様?」
-“No doubt by His Excellency Jamitov's design. What shall we do, Lord Treize?”
+“No doubt by His Excellency Jamitov's design. What shall we do, Your Excellency?”
 
 @32698 Treize · トレーズ
 > 「放っておきたまえ。君まで不必要
@@ -394,9 +407,11 @@ the {HeroMech} will be asked to go up into space. The Earth will feel
 lonely too. Lady, I pray you can return quickly.”
 
 @32701 Lady · レディ
+# 审校：原文为「トレーズ様」，按 address 应译为“Your Excellency”而非“Lord Treize”。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「ありがとうございます。トレーズ様のため
 >  精いっぱい努力いたします」
-“Thank you. I will do my utmost for your sake, Lord Treize.”
+“Thank you. I will do my utmost for your sake, Your Excellency.”
 
 @32702 Hell Marshal · 地獄大元帥
 > 「おお、ヤヌスか。連絡を待っておった
@@ -484,6 +499,7 @@ to the humans.”
 “There is no reason for me to lend aid to the likes of them.”
 
 @32717 Black Knight · 黒騎士
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「しかしシーラとエレは放置できません」
 “However, we cannot leave Ciela and Elle as they are.”
 
@@ -515,10 +531,10 @@ King Drake, we really can win, can't we?”
 share of the work. If we do not win, you will have no place either.”
 
 @32721 Ginrei · 銀鈴
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「ブライト艦長、トレーズ特佐から
 >  通信です」
-“Captain Bright, a communication from Colonel Treize.”
+“Captain Bright, a communication from Special Colonel Treize.”
 
 @32722 Bright · ブライト
 > 「来たか。
@@ -551,12 +567,13 @@ I want you to prepare to respond.”
 “So we finally get to settle things not just with the Empire, but with those monsters too.”
 
 @32728 Shinobu · 忍
+# 审校：忍对特列斯直呼其名不加“Mr.”，符合其粗野不服管的性格。
 > 「俺たちはカリフォルニアでヤバイ橋を
 >  渡ったばかりだぜ? 他の連中も
 “We just crossed a dangerous bridge in California, you know? The others are
 ---
 >  動いてるんだろうな、トレーズさんよ」
-on the move too, aren't they, Mr. Treize?”
+on the move too, aren't they, Treize?”
 
 @32729 Treize · トレーズ
 > 「むろんだが、これは君たちにやって
@@ -577,9 +594,10 @@ on the move too, aren't they, Mr. Treize?”
 you can pull that on us.”
 
 @32732 Treize · トレーズ
+# 审校：精读：重复的“the Australian continent”
 > 「それは誤解だよ。いいかね、
 >  敵はオーストラリア大陸へ
-“That is a misunderstanding. Listen, the enemy is heading for the Australian continent—
+“That is a misunderstanding. Listen, the enemy is heading for
 ---
 >  向かっているのだ」
 the Australian continent.”
@@ -684,9 +702,10 @@ crush the monsters coming at us here.”
 meet them with everything we've got.”
 
 @32746 Musashi · ムサシ
+# 审校：精读：去破折号
 > 「百鬼やミケーネごとき、返り討ちに
 >  してやろうぜ」
-“The Hyakki and Mycenae are nothing—let's beat them back.”
+“The Hyakki and Mycenae are nothing. Let's beat them back.”
 
 @32747 Ciela · シーラ
 > 「ドレイクのウィル・ウィプスも、
@@ -694,6 +713,7 @@ meet them with everything we've got.”
 “So Drake's Will-Wips is coming here as well?”
 
 @32748 Treize · トレーズ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「その通りです、シーラ女王。
 >  さすがにオーラシップは、そちらに
 “That's right, Queen Ciela. As expected, the Aura Ship is something we can only
@@ -823,9 +843,10 @@ ends, then everything else doesn't seem like that big a problem.
 So for now, I choose to believe this is the right path.”
 
 @32770 Lera · レラ
+# 审校：精读：去破折号
 > 「どんな形でも、平和は平和。
 >  戦争よりはまし。アタシも信じるよ
-“Whatever form it takes, peace is peace. It's better than war. I believe it too—
+“Whatever form it takes, peace is peace. It's better than war. I believe it too,
 ---
 >  みんなならきっとできるって」
 that everyone can definitely pull it off.”
@@ -994,9 +1015,10 @@ they don't work as-is, so we put Astonaige and the others through a lot.”
 “I suppose that's how it goes.”
 
 @32801 Lera · レラ
+# 审校：精读：去破折号
 > 「あ、そうだ、こないだのシミュレーションの
 >  結果、どうだった?」
-“Oh, right—how did the simulation the other day turn out?”
+“Oh, right, how did the simulation the other day turn out?”
 
 @32802 Selain · セレイン（按段落 3DD2）
 > 「お前の模擬戦闘のか? かなり
@@ -1036,6 +1058,7 @@ we wouldn't need training schools, and we never would have lost to the Empire.�
 “Then what about you? It didn't take you that long, did you?”
 
 @32808 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「私にはそれしかなかったからだ。命をか
 >  けて実戦で学ばなければならなかった
 “Because I had nothing else. I had to learn in real combat, risking my life.
@@ -1050,7 +1073,7 @@ It's the same as how you learned to handle heavy weapons. If the group you were 
 ---
 >  機動兵器があれば、今ごろお前
 >  も熟練パイロットか、あるいは
-had had mobile weapons, you might be a veteran pilot by now—or else
+had had mobile weapons, you might be a veteran pilot by now, or else
 ---
 >  土の下だったかもしれないぞ」
 you might be under the dirt.”
@@ -1095,10 +1118,10 @@ As things stand, there's no point in going that far.”
 pulling your weight for the {HeroMech}.”
 
 @32815 Lera · レラ
-# 审校：原文第1页以「……まぁいいや。そういえばさ、今度の戦いであの連中を倒せば」结尾，没有引号；初稿错误地加了开引号。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「……まぁいいや。そういえばさ、
 >  今度の戦いであの連中を倒せば
-“...Whatever. Oh, right—if we beat those guys in the next battle,
+“...Whatever. Oh, right, if we beat those guys in the next battle,
 ---
 >  次は宇宙だってね」
 it's off to space next, isn't it?”
@@ -1137,7 +1160,7 @@ too, aren't we?”
 “Probably.”
 
 @32821 Lera · レラ
-# 审校：原文第1页以「……宇宙か……アタシさ、宇宙って行ったことないんだ」结尾，没有引号；初稿错误地加了开引号。
+# 审校：补全整条台词的外层引号
 > 「……宇宙か……アタシさ、宇宙って
 >  行ったことないんだ
 “...Space, huh... I've never been to space, you know.
@@ -1209,14 +1232,16 @@ I can't wait to see it.”
 “What are you talking about? We'll be fine. This is the last time for them too.”
 
 @32833 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「それから宇宙へ出てムゲを叩く、か
 >  それでこの戦争も終わる」
-“Then we head into space and strike at Muge—and with that, this war ends too.”
+“Then we head into space and strike at Muge, and with that, this war ends too.”
 
 @32834 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「そうあってほしいものだな。そうすれば
 >  あとは宇宙へあがり、ムゲを叩けば
-“I certainly hope so. If we do that, then all that's left is to go up into space and strike at Muge—
+“I certainly hope so. If we do that, then all that's left is to go up into space and strike at Muge,
 ---
 >  すべて終わりだ」
 and it's all over.”
@@ -1247,13 +1272,14 @@ strike the Imperial forces in space.”
 “Enemy approaching! It appears to be that allied force.”
 
 @32839 Bright · ブライト
+# 审校：精读：去破折号
 > 「来たか。全員聞け。敵は
 >  この一戦に残る戦力を
 “So they've come. Everyone, listen. The enemy has concentrated the forces remaining to them
 ---
 >  集中させている。我々にとっては
 >  危険であると同時に、地上の
-into this one battle. For us, that's dangerous—and at the same time, it's our chance
+into this one battle. For us, that's dangerous, and at the same time, it's our chance
 ---
 >  争乱を一気に終結させる
 >  チャンスでもある。なんとしても
@@ -1277,10 +1303,12 @@ no matter what. That's all. All hands, to your posts!”
 “Yes. Let's go, Marvel!”
 
 @32843 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさまもお気をつけて!」
 “Lady Ciela, please take care as well!”
 
 @32844 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま、なぜショウとふたりっきりで
 >  お話しなかったの?」
 “Lady Ciela, why didn't you speak with Show alone?”
@@ -1294,10 +1322,12 @@ no matter what. That's all. All hands, to your posts!”
 It's best not to grow attached.”
 
 @32846 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま……」
 “Lady Ciela...”
 
 @32847 Ciela · シーラ
+# 审校：人名按词表统一
 > 「お前もお行き、チャム。
 >  ショウを頼みますよ」
 “You go too, Chum. Look after Show for me.”
@@ -1341,34 +1371,37 @@ I had the feeling there was someone I didn't recognize.”
 “Hey, you're a pilot, aren't you!”
 
 @32856 Ark · アーク（按段落 3DD1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「本当に敵が潜入してるんなら、
 >  人手が足りないだろ!?」
-“If the enemy really has snuck aboard, we don't have enough hands, do we!?”
+“If the enemy really has snuck aboard, we don't have enough hands, do we?!”
 
 @32857 Bright · ブライト
+# 审校：精读：去破折号
 > 「わかった、{HeroNick}はそのまま艦内の
 >  捜索をしろ! 他の者は発進
-“Understood. {HeroNick}, you keep searching the ship! Everyone else, launch—
+“Understood. {HeroNick}, you keep searching the ship! Everyone else, launch.
 ---
 >  急げよ!」
-make it quick!”
+Make it quick!”
 
 @32858 Selain · セレイン（按段落 3DD2）
 > 「艦長、私は出撃を見合わせる」
 “Captain, I'll hold off on launching.”
 
 @32859 Lera · レラ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ちょっと、アンタ何いってんのさ!」
-“Hey, what are you saying!?”
+“Hey, what are you saying?!”
 
 @32860 Bright · ブライト
-# 审校：原文第1页以「……よし、許可する。{HeroNick}は艦内を頼む。他の者は発進」结尾，没有引号；初稿错误地加了开引号。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「……よし、許可する。{HeroNick}は
 >  艦内を頼む。他の者は発進
-“...All right, permission granted. {HeroNick}, I leave the ship to you. Everyone else, launch—
+“...All right, permission granted. {HeroNick}, I leave the ship to you. Everyone else, launch.
 ---
 >  急げよ!」
-make it quick!”
+Make it quick!”
 
 @32861 Selain · セレイン（按段落 3DD2）
 > 「了解」
@@ -1389,21 +1422,24 @@ make it quick!”
 “It's fine, let him do it. {HeroNick}, you search the ship. Don't let the enemy do any more damage.”
 
 @32865 Ark · アーク（按段落 3DD1）
+# 审校：アーク对舰长用“はい”回应，但此处是回应贝尔托琪卡，不应加“sir”。
 > 「はい!」
-“Yes, sir!”
+“Yes!”
 
 @32866 Bright · ブライト
+# 审校：精读：去破折号
 > 「他の者は発進急げよ!」
-“Everyone else, launch—make it quick!”
+“Everyone else, launch. Make it quick!”
 
 @32867 Selain · セレイン（按段落 3DD2）
 > 「艦長、私が残ろうか」
 “Captain, shall I stay behind?”
 
 @32868 Bright · ブライト
+# 审校：精读：去破折号
 > 「そうだな……頼む。他の者は発進
 >  急げ!」
-“Yes, that works... I'll leave it to you. Everyone else, launch—make it quick!”
+“Yes, that works... I'll leave it to you. Everyone else, launch. Make it quick!”
 
 @32869 Brad · ブラッド（按段落 3DD3）
 # 审校：原文为「!?」，英文应使用“?!”而非“!?”。
@@ -1422,9 +1458,10 @@ make it quick!”
 “We've gotta find the enemy, right? I'm not letting them get away with any more!”
 
 @32872 Bright · ブライト
+# 审校：精读：去破折号
 > 「……わかった、お前は艦内の捜索
 >  だ。他の者は発進急げよ!」
-“...Understood. You search the ship. Everyone else, launch—make it quick!”
+“...Understood. You search the ship. Everyone else, launch. Make it quick!”
 
 @32873 Manami · マナミ（按段落 3DD4）
 > 「艦長、あたしも残るわ!」
@@ -1440,8 +1477,9 @@ make it quick!”
 “Yes!”
 
 @32876 Bright · ブライト
+# 审校：精读：去破折号
 > 「他の者は発進急げよ!」
-“Everyone else, launch—make it quick!”
+“Everyone else, launch. Make it quick!”
 
 @32877 Ciela · シーラ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1454,6 +1492,7 @@ make it quick!”
 Here, we'll send out the Gran-Garan and the Goraon to the front.”
 
 @32878 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王……わかりました。
 >  頼みます」
 “Queen Ciela... understood. I'll leave it to you.”
@@ -1467,22 +1506,25 @@ Here, we'll send out the Gran-Garan and the Goraon to the front.”
 “Prepare yourself!”
 
 @32881 Drake · ドレイク
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：エレ・ハンム→Elle Hunm
 > 「シーラ・ラパーナとエレ・ハンムか。そうか
 >  なぜ地上界まで追ってきたのか
-“Ciela Lapana and Elle Hunm, is it? So that's why you chased us all the way to the surface world—
+“Ciela Lapana and Elle Hunm, is it? So that's why you chased us all the way to the surface world.
 ---
 >  わかったぞ。やはり真っ先につぶして
 >  おくべきだったな」
-now I understand. I should have crushed you first after all.”
+Now I understand. I should have crushed you first after all.”
 
 @32882 Ciela · シーラ
+# 审校：精读：去破折号
 > 「ドレイク・ルフト。
 >  お気づきか、あなたのなしたこと
-“Drake Luft. Have you realized? What you have done—
+“Drake Luft. Have you realized? What you have done.
 ---
 >  かりそめの客は去らねばならぬが
 >  運命。それがわからぬというのなら……」
-it is fate that a passing guest must depart. If you cannot understand that, then...”
+It is fate that a passing guest must depart. If you cannot understand that, then...”
 
 @32883 Drake · ドレイク
 > 「オーラマシンの力は世界をつなげ
@@ -1497,16 +1539,17 @@ beings that must be purged.”
 “King Drake...?”
 
 @32885 Drake · ドレイク
+# 审校：精读：去破折号
 > 「ワシとて世界をみる目はあるつもりだ
 >  が、個人の感情の決着だけは
 “I may not have much of an eye for the world, but when it comes to settling personal feelings,
 ---
 >  これはつけさせてもらう。そのために、
 >  ここで貴様たちに負けてやるわけには
-this I will see through. And for that sake, I cannot afford to lose to you lot here—
+this I will see through. And for that sake, I cannot afford to lose to you lot here.
 ---
 >  いかぬな」
-no, I cannot.”
+No, I cannot.”
 
 @32886 Show · ショウ
 > 「やらせはしないッ!」
@@ -1522,8 +1565,9 @@ no, I cannot.”
 “Show, huh...”
 
 @32889 Dark General · 暗黒大将軍
+# 审校：暗黒大将軍的台词“この程度ではすまんぞ”意为“这点程度可不会就这么算了”，译文“This level won't be enough to finish me”意思偏差，改为更贴合原意的表达。
 > 「ふはははっ! この程度ではすまんぞ!」
-“Fuhahaha! This level won't be enough to finish me!”
+“Fuhahaha! This won't be enough to finish me!”
 
 @32890 Dr. Gura · グラー博士
 > 「それっ、一気に叩きつぶせ!
@@ -1770,6 +1814,7 @@ I can't focus on the fight.”
 “Uwooooooooh!!”
 
 @32941 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ショウがハイパーになる! 助けて
 >  マーベルッ! エレさま! シーラさまぁ!」
 “Show's going Hyper! Help, Marvel! Lady Elle! Lady Ciela!”
@@ -1795,6 +1840,7 @@ I can't focus on the fight.”
 “Show! Show! Are you okay?!”
 
 @32947 Show · ショウ
+# 审校：人名按词表统一
 > 「す……すまないチャム。
 >  もう大丈夫だ。助かったよ」
 “S-Sorry, Chum. I'm all right now. You saved me.”
@@ -1860,6 +1906,7 @@ I can't focus on the fight.”
 “Ngh... So I end here... You let me have a good dream...”
 
 @32961 Black Knight · 黒騎士
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ショウ! マーベル、シーラともども
 >  地獄へ送ってやる!」
 “Show! I'll send you to hell along with Marvel and Ciela!”
@@ -1922,6 +1969,7 @@ I can't focus on the fight.”
 “Black Knight, you baaastard!!”
 
 @32975 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This aura... Bern Bunnings!”
 
@@ -1930,6 +1978,7 @@ I can't focus on the fight.”
 “I-Impossible?! That I, of all people...”
 
 @32977 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様、その怨念で
 >  何を手に入れた!!」
 “Bern?! What did you gain from all that hatred?!”
@@ -1966,10 +2015,12 @@ I can't focus on the fight.”
 “Show!! This time I'll finish you with my Aura Power!!”
 
 @32985 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This aura... Bern Bunnings!”
 
 @32986 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様……その怨念
 >  で何を手に入れた!!」
 “Bern?! You... What did you gain from all that hatred?!”
@@ -1989,10 +2040,12 @@ I can't focus on the fight.”
 “Fuhahahahaha! This time, with my Aura Power, I'll bring you all down!!”
 
 @32990 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This aura... Bern Bunnings!”
 
 @32991 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様……その怨念
 >  で何を手に入れた!!」
 “Bern?! You... What did you gain from all that hatred?!”
@@ -2021,6 +2074,7 @@ I can't focus on the fight.”
 “Drake! I'm putting an end to this!”
 
 @32997 Drake · ドレイク
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラか!」
 “Ciela!”
 
@@ -2039,18 +2093,20 @@ I can't focus on the fight.”
 “Show Zama?! To think I'd be struck down by you...”
 
 @33001 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ドレイク、これで終わりだ!
 >  ……シーラ・ラパーナ! 浄化を!!」
 “Drake, this is the end! ...Ciela Lapana! Purify!!”
 
 @33002 Ciela · シーラ
+# 审校：精读：第二页以“!!”开头
 > 「よし! ショウ、よくやってくれました。
 >  皆の者、バイストンウェルへ
-“Good! Show, you did well. Everyone, we return to Byston Well
+“Good! Show, you did well. Everyone, we return
 ---
 >  帰還します!! 憎しみの心を
 >  地上に残さぬよう……」
-!! Leave no hatred behind on the surface...”
+to Byston Well!! Leave no hatred behind on the surface...”
 
 @33003 Drake · ドレイク
 > 「マーベル・フローズンか!? まさか
@@ -2062,23 +2118,26 @@ I can't focus on the fight.”
 “Did I do it...?”
 
 @33005 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! Purify!!”
 
 @33006 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! Purify!!”
 
 @33007 Ciela · シーラ
+# 审校：精读：第二页以“!!”开头
 > 「よし! マーベル、よくやってくれました。
 >  皆の者、バイストンウェルへ
-“Good! Marvel, you did well. Everyone, we return to Byston Well
+“Good! Marvel, you did well. Everyone, we return
 ---
 >  帰還します!!
 >  憎しみの心を地上に残さぬよう…」
-!! Leave no hatred behind on the surface...”
+to Byston Well!! Leave no hatred behind on the surface...”
 
 @33008 Drake · ドレイク
 > 「ガラリアか!? まさか貴様に討たれ
@@ -2090,23 +2149,25 @@ I can't focus on the fight.”
 “Drake is down!!”
 
 @33010 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “As expected, Garalia. ...Ciela Lapana!! Purify!!”
 
 @33011 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “As expected, Garalia. ...Ciela Lapana!! Purify!!”
 
 @33012 Ciela · シーラ
-# 审校：初稿中出现了全角斜线“／”，应删除，改为与原文页末一致的“!!”。
+# 审校：精读：第二页只有“!!”
 > 「よし! ガラリア、よくやってくれました。
 >  皆の者、バイストンウェルへ
-“Good! Garalia, you did well. Everyone, we return to Byston Well
+“Good! Garalia, you did well. Everyone, we return
 ---
 >  帰還します!!
-!!
+to Byston Well!!
 ---
 >  憎しみの心を地上に残さぬよう…」
 Leave no hatred behind on the surface...”
@@ -2117,11 +2178,15 @@ Leave no hatred behind on the surface...”
 “What?! To think I'd be struck down in a place like this...”
 
 @33014 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ウィル・ウィプスが落ちた……
 >  シーラ・ラパーナ!! 浄化を!!」
 “The Will-Wips has fallen... Ciela Lapana!! Purify!!”
 
 @33015 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ウィル・ウィプスが落ちた……
 >  シーラ・ラパーナ!! 浄化を!!」
 “The Will-Wips has fallen... Ciela Lapana!! Purify!!”
@@ -2169,12 +2234,13 @@ Leave no hatred behind on the surface...”
 This works in our favor.”
 
 @33024 Dark General · 暗黒大将軍
+# 审校：精读：第二页只有“!!”
 > 「なるほどグラー博士、確かに
 >  その通りだ。よし、一気に奴らを
-“I see, Dr. Gura. Indeed, you're right. Good, crush them all at once
+“I see, Dr. Gura. Indeed, you're right. Good, crush them
 ---
 >  叩きつぶせ!!」
-!!”
+all at once!!”
 
 @33025 Dr. Gura · グラー博士
 > 「それ、行け! ゲッター線の秘密を

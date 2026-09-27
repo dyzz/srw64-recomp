@@ -1,10 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @50803 Killy · キリー
-# 审校：“brothers”在原文为“兄弟”，此处泛指兄弟姐妹，改为“siblings”更准确。
+# 审校：书名统一
 > 「……キリー・ギャグレー作、
 >  『ブロンクスの狼』、第1章
-“...Chapter 1 of ‘The Wolf of Bronx’, by Killy Gagley.
+“...Chapter 1 of ‘The Wolf of the Bronx’, by Killy Gagley.
 ---
 >  ……俺には何もなかった。親も
 >  兄弟も友だちも何もなかった
@@ -94,9 +94,10 @@ to future generations is something incredibly important for mankind.”
 “GoShogun, go!”
 
 @50819 Killy · キリー
+# 审校：书名统一
 > 「まだ『ブロンクスの狼』が
 >  書きあがってないのにね」
-“And I still haven't finished ‘The Wolf of Bronx’.”
+“And I still haven't finished ‘The Wolf of the Bronx’.”
 
 @50820 Shingo · 真吾
 > 「いっちょあがり!」
@@ -108,9 +109,10 @@ to future generations is something incredibly important for mankind.”
 “...It's over. This is what it means to be the Good Thunder Team!”
 
 @50822 Killy · キリー
+# 审校：书名统一
 > 「ああ。これでまた『ブロンクスの狼』
 >  の続きが書けるってもんだ」
-“Yeah. Now I can get back to writing more of ‘The Wolf of Bronx’.”
+“Yeah. Now I can get back to writing more of ‘The Wolf of the Bronx’.”
 
 @50823 Shingo · 真吾
 > 「何いってるんだ。まだ第1章すら

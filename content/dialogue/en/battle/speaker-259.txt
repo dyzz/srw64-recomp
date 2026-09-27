@@ -1,139 +1,247 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13131 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，1/11）
 > 「はぁぁぁぁ!」
 “Haaaaaah!”
 
 @13132 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，2/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その首もらったぁ!」
-“That head's mine!”
+“That head’s mine!”
 
 @13133 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，3/11）
 > 「覚悟ぉ!」
 “Get ready!”
 
 @13134 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，4/11）
 > 「お前の負けだ!」
 “You lose!”
 
 @13135 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，5/11）
 > 「いけぇぇいっ!」
 “Gooo!”
 
 @13136 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，6/11）
 > 「もらったぁ!」
 “Gotcha!”
 
 @13137 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，7/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「容赦しないぜ!」
-“I won't go easy on you!”
+“I won’t go easy on you!”
 
 @13138 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，8/11）
 > 「くらえぃ!」
 “Take this!”
 
 @13139 Sai Saici · サイ・サイシー
-# 审校：原译“I'll finish yaaa!”拖长音位置不自然，改为更自然的战斗喊声。
+# 触发：攻击（通用，9/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「とぉどめぇぇ!」
-“I'll finish you!”
+“I’ll finish you!”
 
 @13140 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，10/11）
 > 「トリャァァァァ!」
 “Hraaaah!”
 
 @13141 Sai Saici · サイ・サイシー
+# 触发：攻击（通用，11/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうなりゃ奥の手だ!」
-“Guess I'll pull out my trump card!”
+“Guess I’ll pull out my trump card!”
 
 @13142 Sai Saici · サイ・サイシー
+# 触发：被击坠（通用，1/4）
 > 「オイラの……負けだ」
 “I... I lost.”
 
 @13143 Sai Saici · サイ・サイシー
+# 触发：被击坠（通用，2/4）
 > 「くっそぉぉぉぉぉぉ!」
 “Daaamn iiiit!”
 
 @13144 Sai Saici · サイ・サイシー
+# 触发：被击坠（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ド、ドモンのアニキ……」
-“B-Brother Domon...”
+“B-brother Domon...”
 
 @13145 Sai Saici · サイ・サイシー
+# 触发：被击坠（通用，4/4）
 > 「父さん……父さぁぁぁん……」
 “Dad... Daaad...”
 
 @13146 Sai Saici · サイ・サイシー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「負けられないんだぁぁ!」
-“I can't lose!”
+“I can’t lose!”
 
 @13147 Sai Saici · サイ・サイシー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅ、死んでも負けるわけにはぁ!」
-“Ngh, I can't lose even if it kills me!”
+“Ngh, I can’t lose even if it kills me!”
 
 @13148 Sai Saici · サイ・サイシー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うわぁぁぁぁ!」
 “Uwaaaaaah!”
 
 @13149 Sai Saici · サイ・サイシー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「うおおぉぉぉぉぉぉーっ!」
 “Uoooooooh!”
 
 @13150 Sai Saici · サイ・サイシー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「こんなものでぇ負けられるかぁぁぁ!」
 “You think this is enough to beat me?!”
 
 @13151 Sai Saici · サイ・サイシー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「まだだっ!」
 “Not yet!”
 
 @13152 Sai Saici · サイ・サイシー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：やったな 是被打后的恼怒
 > 「や、やったな!」
-“Y-you got me!”
+“Y-you’ll pay for that!”
 
 @13153 Sai Saici · サイ・サイシー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなに強い奴がいたとは、
 >  うれしいねぇ」
-“I'm glad there's someone this strong!”
+“I’m glad there’s someone this strong!”
 
 @13154 Sai Saici · サイ・サイシー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなんでオイラを倒そうっての!?」
-“You think that's gonna beat me?!”
+“You think that’s gonna beat me?!”
 
 @13155 Sai Saici · サイ・サイシー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へへっ効いてないぜ」
-“Heh, that didn't even hurt.”
+“Heh, that didn’t even hurt.”
 
 @13156 Sai Saici · サイ・サイシー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：あまい 是天真不是容易
 > 「あまいあまい」
-“Too easy, too easy.”
+“Too soft, way too soft.”
 
 @13157 Sai Saici · サイ・サイシー
+# 触发：回避（通用，1/4）
 > 「かわした!」
 “Dodged it!”
 
 @13158 Sai Saici · サイ・サイシー
+# 触发：回避（通用，2/4）
 > 「そんなもの!」
 “As if!”
 
 @13159 Sai Saici · サイ・サイシー
+# 触发：回避（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ははははははっ、オイラはここさ!」
-“Hahahahaha, I'm over here!”
+“Hahahahaha, I’m over here!”
 
 @13160 Sai Saici · サイ・サイシー
+# 触发：回避（通用，4/4）
 > 「ヘヘンッ、オイラの姿が見えるかい!?」
 “Heh, can you even see me?!”
 
 @13161 Sai Saici · サイ・サイシー
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうだ! びびって口もきけねぇだろ!」
-“How's that?! You're too scared to speak!”
+“How’s that?! You’re too scared to speak!”
 
 @13162 Sai Saici · サイ・サイシー
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へへっ効くわけないだろっ!」
-“Heh, of course that wouldn't work!”
+“Heh, of course that wouldn’t work!”
 
 @13163 Sai Saici · サイ・サイシー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「オイラとしたことが……」
-“To think I'd slip up like that...”
+“To think I’d slip up like that...”
 
 @13164 Sai Saici · サイ・サイシー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう、卑怯だぞ!」
-“Damn it, that's dirty!”
+“Damn it, that’s dirty!”
+
+@17321 Sai Saici · サイ・サイシー
+# 触发：使用〈無影脚〉（低优先，可能被通用台词顶掉）
+> 「無影脚ぅぅぅ!」
+“Shadowless Kick!”
+
+@17322 Sai Saici · サイ・サイシー
+# 触发：使用〈フェイロンフラッグ〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「こうなったら決めてやる!
+>  まわれ、フェイロンフラッグ!」
+“Then I’ll finish this! Spin, Feilong Flag!”
+
+@17323 Sai Saici · サイ・サイシー
+# 触发：使用〈フェイロンフラッグ〉（低优先，可能被通用台词顶掉）
+> 「フェイロンフラッグ!」
+“Feilong Flag!”
+
+@17324 Sai Saici · サイ・サイシー
+# 触发：使用〈ドラゴンファイヤー〉（低优先，可能被通用台词顶掉）
+> 「はしれ! パオペイ!」
+“Fly, Paopei!”
+
+@17325 Sai Saici · サイ・サイシー
+# 触发：使用〈ドラゴンファイヤー〉（低优先，可能被通用台词顶掉）
+> 「ドラゴンファイヤー!」
+“Dragon Fire!”
+
+@17326 Sai Saici · サイ・サイシー
+# 触发：使用〈宝華教典・十絶陣〉（低优先，可能被通用台词顶掉）
+# 机翻疑问：新译名：宝華教典=Hokake Scripture；十絶陣=Tenzetsujin
+> 「宝華教典…十絶陣!!
+>  たああっ!!」
+“Hokake Scripture... Tenzetsujin!! Take that!!”
+
+@17327 Sai Saici · サイ・サイシー
+# 触发：使用〈真・流星胡蝶剣〉（对话第 1/2 句）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「天に竹林、地に少林寺、
+>  目にもの見せるは最終秘伝!」
+“Bamboo grove in the heavens, Shaolin on the earth... witness the final secret!”
+
+@17328 Sai Saici · サイ・サイシー
+# 触发：使用〈真・流星胡蝶剣〉（对话第 2/2 句）
+> 「真・流星胡蝶剣!」
+“Shin Ryusei Kochoken!”
+
+@17329 Sai Saici · サイ・サイシー
+# 触发：使用〈真・流星胡蝶剣〉（对话第 1/2 句）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「天に竹林、地に少林寺、
+>  目にもの見せよ最終奥義ぃ!」
+“Bamboo grove in the heavens, Shaolin on the earth... behold the ultimate secret!”
+
+@17330 Sai Saici · サイ・サイシー
+# 触发：使用〈真・流星胡蝶剣〉（对话第 2/2 句）
+> 「いっくぞぉ! 真・流星胡蝶剣」
+“Here I go! Shin Ryusei Kochoken”

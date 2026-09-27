@@ -1,135 +1,222 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10099 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「手段は選ばぬ!」
-“I'll use any means necessary!”
+“I’ll use any means necessary!”
 
 @10100 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，2/7）
 > 「そこをどけぇっ!」
 “Out of my way!”
 
 @10101 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，3/7）
 > 「だまれぇい!」
 “Silence!”
 
 @10102 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，4/7）
 > 「我々、百鬼一族が世界を
 >  征服する時が来たのだ!」
 “The time has come for us, the Hyakki Clan, to conquer the world!”
 
 @10103 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，5/7）
 > 「全世界をワシのものにするのだぁ!」
 “The entire world shall be mine!”
 
 @10104 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「一気に片づけてやる!」
-“I'll finish them all at once!”
+“I’ll finish them all at once!”
 
 @10105 Emperor Burai · ブライ大帝
+# 触发：攻击（通用，7/7）
 > 「何としてもこやつらを倒し、ゲッター
 >  線増幅装置を奪いとるのだ!」
 “We must defeat them at any cost and seize the Getter Ray Amplifier!”
 
 @10106 Emperor Burai · ブライ大帝
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれぇ、この恨みは死ぬまで
 >  忘れんぞっ!」
-“Curse you! I'll never forget this grudge as long as I live!”
+“Curse you! I’ll never forget this grudge as long as I live!”
 
 @10107 Emperor Burai · ブライ大帝
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これで勝ったと思うなよ!」
-“Don't think you've won!”
+“Don’t think you’ve won!”
 
 @10108 Emperor Burai · ブライ大帝
-# 审校：初稿漏译“このままでは”的强调语气，补上 so 更自然。
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様もこのままでは、すまんぞぉ!」
-“You won't get off so easily!”
+“You won’t get off so easily!”
 
 @10109 Emperor Burai · ブライ大帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あきらめるな!」
-“Don't give up!”
+“Don’t give up!”
 
 @10110 Emperor Burai · ブライ大帝
-# 审校：“なんたることだ”是震惊“怎么会这样”，初稿“What is the meaning of this”偏质问，改为更贴切的震惊表达。
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんたることだ!」
-“Wh-What is this?!”
+“Wh-what is this?!”
 
 @10111 Emperor Burai · ブライ大帝
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「我ら百鬼一族を侮りおって……
 >  あとで後悔するなよ」
-“You dare mock the Hyakki Clan... you'll regret this later.”
+“You dare mock the Hyakki Clan... you’ll regret this later.”
 
 @10112 Emperor Burai · ブライ大帝
-# 审校：原文“相手”是单数，初稿用复数 they're tougher 与单数不一致，改为单数表达。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ、思ったより手ごわい相手だ」
-“Ngh, they're a tougher opponent than I expected.”
+“Ngh, they’re a tougher opponent than I expected.”
 
 @10113 Emperor Burai · ブライ大帝
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
+# 审校：手を抜く＝偷懒放水，不是留情
 > 「ええい、手をぬいてはならんっ!」
-“Enough, do not hold back!”
+“Bah! Do not let up!”
 
 @10114 Emperor Burai · ブライ大帝
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 > 「何をもたもたしておる!」
 “What are you dawdling for?!”
 
 @10115 Emperor Burai · ブライ大帝
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 > 「なんたるヘマを!」
 “What a blunder!”
 
 @10116 Emperor Burai · ブライ大帝
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「んっ、何ごとだっ!」
-“Hm? What's going on?!”
+“Hm? What’s going on?!”
 
 @10117 Emperor Burai · ブライ大帝
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 > 「フッフフフ……敵ながらなかなかやるのう」
 “Heh heh heh... quite impressive, for an enemy.”
 
 @10118 Emperor Burai · ブライ大帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「見ておったかぁ!」
 “Did you see that?!”
 
 @10119 Emperor Burai · ブライ大帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：布莱大帝的帝王口吻应带古雅庄重感，won't 改为 shall not 更贴合其 archaic grandeur。
 > 「ハハハッ、どんな攻撃を受けようとも
 >  びくともせんわ!」
-“Hahaha! No matter what attack I take, I won't flinch!”
+“Hahaha! No matter what attack I take, I shall not flinch!”
 
 @10120 Emperor Burai · ブライ大帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「ワーッハハハッ!
 >  もはや勝ったも同じだ!」
 “Wahahaha! Victory is already as good as mine!”
 
 @10121 Emperor Burai · ブライ大帝
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：歯ごたえがない＝不过瘾
 > 「これでは、歯ごたえがなさすぎるわ」
-“This is far too easy.”
+“This is hardly any sport at all.”
 
 @10122 Emperor Burai · ブライ大帝
+# 触发：回避（通用，1/3）
+# 审校：与 L0 一致，won't 改为 shall not 以保持布莱大帝的古雅帝王口吻。
 > 「お前ごときに指1本ふれさせるかぁ」
-“I won't let the likes of you lay a single finger on me.”
+“I shall not let the likes of you lay a single finger on me.”
 
 @10123 Emperor Burai · ブライ大帝
+# 触发：回避（通用，2/3）
 > 「でかしたぞ!」
 “Well done!”
 
 @10124 Emperor Burai · ブライ大帝
+# 触发：回避（通用，3/3）
+# 审校：原文「まだわからんのか!」是帝王对下级的质问，改为更符合其居高临下语气的表达。
 > 「まだわからんのか!」
-“Still don't understand?!”
+“Do you still not understand?!”
 
 @10125 Emperor Burai · ブライ大帝
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：与 L5 一致，保持布莱大帝质问下级的语气。
 > 「まだわからんのかぁ!」
-“Still don't understand?!”
+“Do you still not understand?!”
 
 @10126 Emperor Burai · ブライ大帝
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽时骂的是自己这边的失误
 > 「ええい、なんというまぬけだ!」
-“Ugh, what a fool!”
+“Bah! What a blunder!”
 
 @10127 Emperor Burai · ブライ大帝
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたのだ!?」
-“What's the matter?!”
+“What’s the matter?!”
 
 @10128 Emperor Burai · ブライ大帝
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：なんだと 不是“你说什么”
 > 「なんだと!?」
-“What did you say?!”
+“What?!”
 
 @10129 Emperor Burai · ブライ大帝
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：「ばかなっ!」在此是布莱大帝对部下的斥责，Fool 比 Impossible 更符合帝王对下级的语气。
 > 「ばかなっ! 今こそ絶好のチャンス
 >  ではないか!」
-“Impossible! Now is the perfect chance!”
+“Fool! Is this not the perfect chance?!”
+
+@15294 Emperor Burai · ブライ大帝
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15295 Emperor Burai · ブライ大帝
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15296 Emperor Burai · ブライ大帝
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「砲門を開け! 撃沈するのだ!」
+“Open the gun ports! Sink them!”
+
+@15297 Emperor Burai · ブライ大帝
+# 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”
+
+@15298 Emperor Burai · ブライ大帝
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”
+
+@15299 Emperor Burai · ブライ大帝
+# 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
+# 审校：原文以「开头，应使用弯引号“。
+> 「ええいっ、撃って撃って
+>  撃ちまくれぇーっ!」
+“Gah, fire, fire, keep firing!”

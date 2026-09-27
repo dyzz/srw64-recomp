@@ -131,12 +131,13 @@ request the Axis Forces' cooperation in the war against the Galactic Empire.”
 Side 3, the promised land of Zeon.”
 
 @31315 Shinobu · 忍
+# 审校：忍的粗野口吻应更强烈，加入“the hell”以贴合其狂放语气。
 > 「何だとお!?
 >  てめえ、調子に乗って
 “What?! You've got some nerve,
 ---
 >  虫のいいこといってんじゃねえぞ!」
-spouting off whatever suits you!”
+spouting off whatever the hell suits you!”
 
 @31316 Alan · アラン
 > 「馬鹿者! よさないか、藤原!」
@@ -148,13 +149,14 @@ spouting off whatever suits you!”
 “...I cannot answer immediately. But I will negotiate as much as I can.”
 
 @31318 Haman · ハマーン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「当然だな、我々の戦力を
 >  味方につけるのに
 “Naturally. To gain our forces as allies,
 ---
 >  そのくらいは安いものだ。もう1つ、
 >  我々はこのあとバルジにおもむき
-that much is cheap. One more thing: we intend to head to Balji next
+that much is cheap. One more thing: we intend to head to Barge next
 ---
 >  ロームフェラ財団と交渉を
 >  持つつもりでいる」
@@ -293,9 +295,10 @@ Isn't it still too dangerous?”
 We just have to believe they're not that foolish...”
 
 @31336 Noin · ノイン
+# 审校：精读：去破折号
 > 「まったく、異星人を前にして
 >  人類同士が信頼できないとは
-“Truly, that humanity can't trust one another in the face of aliens—
+“Truly, that humanity can't trust one another in the face of aliens,
 ---
 >  悲劇というしかないな。
 >  しかし、アクシズが
@@ -358,9 +361,10 @@ Well, I think that's overthinking it, though.”
 “Jerid Messa, reporting in.”
 
 @31346 Jamitov · ジャミトフ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「来たか。特尉、君はこれまで
 >  どうやって生き延びてきた」
-“So you've come. Special Ensign, how have you managed to survive until now?”
+“So you've come. Special Lieutenant, how have you managed to survive until now?”
 
 @31347 Jerid · ジェリド
 > 「は、自分は、ただ
@@ -368,9 +372,10 @@ Well, I think that's overthinking it, though.”
 “Sir, I... I simply can't die until I've defeated the enemy...”
 
 @31348 Jamitov · ジャミトフ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ふむ……特尉、これをあずける。
 >  ハマーンとの会談には、同席しろ」
-“Hmm... Special Ensign, I'm entrusting you with this. Attend the talks with Haman.”
+“Hmm... Special Lieutenant, I'm entrusting you with this. Attend the talks with Haman.”
 
 @31349 Jerid · ジェリド
 # 审校：リスト型应为wrist-mounted（腕装型），不是list-type；句末原文是「……?」，保留省略号加问号。
@@ -442,23 +447,24 @@ Do you really think you can win with the Romefeller Foundation and
 OZ's Mobile Doll Corps as your enemies?”
 
 @31359 Haman · ハマーン
-# 审校：“My lord noble”语序不自然，改为“Nobleman”，更符合哈曼对贵族派头人物的讽刺称呼。
+# 审校：精读：去破折号；统一
 > 「勝てるつもりではなく、
 >  勝てるのだよ。貴族どの」
-“It's not that I think we can win—we will win. Nobleman.”
+“It's not that I think we can win. We will win. My dear noble.”
 
 @31360 Jerid · ジェリド
 > (この女……)
 (This woman...)
 
 @31361 Dermail · デルマイユ
+# 审校：精读：去破折号
 > 「アステロイドに逃げこんだ
 >  敗残兵ごときが
-“A mere defeated soldier who fled to an asteroid—
+“A mere defeated soldier who fled to an asteroid.
 ---
 >  しょせんは伝統の重さを
 >  理解せぬ、下衆か」
-in the end, are you just lowborn rabble who can't understand the weight of tradition?”
+In the end, are you just lowborn rabble who can't understand the weight of tradition?”
 
 @31362 Jamitov · ジャミトフ
 > 「ハマーン・カーン、いま1度聞く。
@@ -507,11 +513,10 @@ you will die here.”
 “Wait, Haman!!”
 
 @31372 Beltorchika · ベルトーチカ
-# 审校：“バルジ”在《机动战士Z高达》中通常指宇宙要塞“巴尔吉”，初稿译作 Balji，改为通行译名 Balge。
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：barge-4
 > 「ブライト艦長! グワダンが
 >  バルジに砲撃を開始しました!」
-“Captain Bright! The Gwadan has begun bombarding Balge!”
+“Captain Bright! The Gwadan has begun bombarding Barge!”
 
 @31373 Bright · ブライト
 > 「何だと!?」
@@ -532,10 +537,10 @@ you will die here.”
 “Yeah. But it seems she was counting on us from the start. What a shameless woman.”
 
 @31377 Bright · ブライト
-# 审校：同上，将 Balji 改为 Balge。
+# 审校：全局：barge-4
 > 「約束だ、しかたあるまい。
 >  バルジ方面に一斉射!
-“A promise is a promise. Nothing to be done. All ships, open fire on the Balge sector!
+“A promise is a promise. Nothing to be done. All ships, open fire on the Barge sector!
 ---
 >  各機、出撃しろ!
 >  グワダンを落とさせるな!」
@@ -567,9 +572,10 @@ All units, launch! Don't let the Gwadan get away!”
 “That's how it is. Sorry, Jamitov.”
 
 @31384 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「おお、シロッコ特佐!
 >  ジャミトフはどうした?」
-“Oh, Colonel Scirocco! What has become of Jamitov?”
+“Oh, Special Colonel Scirocco! What has become of Jamitov?”
 
 @31385 Scirocco · シロッコ
 > 「……残念ながら、
@@ -594,23 +600,24 @@ I have no doubt.”
 “Ohh, what a thing to happen. For Lord Jamitov to die...”
 
 @31389 Scirocco · シロッコ
-# 审校：同上，将 Balji 改为 Balge。
+# 审校：全局：barge-4
 > 「デルマイユ公、
 >  このままハマーンを逃してはなりません
 “Lord Dermail, we must not let Haman escape now.
 ---
 >  本来ならばバスク特佐に
 >  指揮をとっていただくべきですが
-Normally, Colonel Bask should take command, but
+Normally, Special Colonel Bask should take command, but
 ---
 >  バルジは混乱しており、
 >  時間もありません」
-Balge is in chaos, and there is no time.”
+Barge is in chaos, and there is no time.”
 
 @31390 Dermail · デルマイユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「シロッコ……わ、わかった、
 >  今後の指揮は特佐にまかせる」
-“Scirocco... u-understood. I leave the command from here on to you, Colonel.”
+“Scirocco... u-understood. I leave the command from here on to you, Special Colonel.”
 
 @31391 Scirocco · シロッコ
 > 「聞こえるか、全OZ艦隊。
@@ -670,13 +677,14 @@ I would appreciate your support in getting the Gwadan off the front line.”
 Do not let the Gwadan and the Qubeley get away!!”
 
 @31400 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええい、何をやっておるか!
 >  おのれハマーン・カーン
 “Gah, what are you all doing?! Curse you, Haman Karn,
 ---
 >  {HeroMech}め!
 >  ゲーツ・キャパ特尉、やれるな!?」
-and you, {HeroMech}! Captain Gates Capa, you can handle this, yes?!”
+and you, {HeroMech}! Special Lieutenant Gates Capa, you can handle this, yes?!”
 
 @31401 Gates · ゲーツ
 > 「はっ。問題ありません。
@@ -702,14 +710,14 @@ and you, {HeroMech}! Captain Gates Capa, you can handle this, yes?!”
 “Yes, sir, they will arrive shortly.”
 
 @31406 Bask · バスク
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Hurry them up! At the very least, if we don't finish off
-# 草稿第 2 页：the 【主角机体名】, I'll have no face to show Scirocco!”
+# 审校：补译：原稿占位符错页
 > 「急がせい! せめて
 >  {HeroMech}だけでも
+“Hurry them along! If we don't at least finish off the {HeroMech},
 ---
 >  やっておかねば、シロッコに対して
 >  示しがつかん!」
+I'll have no face to show Scirocco!”
 
 @31407 Specials · スペシャルズ
 > 「増援、来ました!」
@@ -956,9 +964,10 @@ Well then, shall we get going?”
 “I can't let that happen!”
 
 @31456 Bask · バスク
+# 审校：ジャミトフ閣下应译为“His Excellency Jamitov”，与巴斯克对贾米托夫的敬语层级相符。
 > 「女狐め……
 >  ジャミトフ閣下をよくも……」
-“You vixen... How dare you do that to Lord Jamitov...”
+“You vixen... How dare you do that to His Excellency Jamitov...”
 
 @31457 Haman · ハマーン
 > 「フン、しょせん時の流れを
@@ -974,10 +983,10 @@ Well then, shall we get going?”
 “I won't let you!”
 
 @31460 Scirocco · シロッコ
-# 审校：“バスク特佐”应译为 Colonel Bask，原译 Vice Admiral 军衔错误；同时调整了 {HeroMech} 与“トレーズ派の飼い犬”的语序，使表达更自然。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「諸君、我らが指導者、
 >  ジャミトフ閣下は平和の大使を
-“Gentlemen, our leader, Lord Jamitov, has fallen to the cowardly
+“Gentlemen, our leader, His Excellency Jamitov, has fallen to the cowardly
 ---
 >  装った卑劣なるアクシズの凶弾に
 >  倒れた。また、それにつけこんだ
@@ -989,7 +998,7 @@ advantage of that, {HeroMech}, the Treize faction's lapdogs,
 ---
 >  バスク特佐までもがその尊い命を
 >  散らされた。諸君、これが敵の
-even took the precious life of Colonel Bask. Gentlemen, this is how
+even took the precious life of Special Colonel Bask. Gentlemen, this is how
 ---
 >  やり方だ。我々は崇高なる
 >  怒りを持って、憎むべき敵を
@@ -1000,9 +1009,10 @@ the enemy operates. We must, with righteous fury, crush the enemy we
 hate. The Galactic Empire, and Treize.”
 
 @31461 Scirocco · シロッコ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「そして{HeroMech}……。諸君
 >  我々にはこのバルジとリーブラ
-“And {HeroMech}... Gentlemen, we have this Balji and Libra,
+“And {HeroMech}... Gentlemen, we have this Barge and Libra,
 ---
 >  そして月面基地がある。
 >  この偉大な武力の前には
@@ -1020,10 +1030,10 @@ no enemy is worth fearing...”
 play-acting like this can't be helped.”
 
 @31463 Mouar · マウアー
-# 审校：“シロッコ特佐”应译为 Colonel Scirocco，原译 Vice Admiral 军衔错误。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……無礼を承知でお聞きします。
 >  シロッコ特佐は何が目的で?」
-“...Forgive my rudeness, but may I ask? What is Colonel Scirocco's objective?”
+“...Forgive my rudeness, but may I ask? What is Special Colonel Scirocco's objective?”
 
 @31464 Scirocco · シロッコ
 > 「私か? 私の使命は、地球の
@@ -1064,6 +1074,7 @@ a little different, though.”
 “What do you mean by that?”
 
 @31470 Scirocco · シロッコ
+# 审校：精读：去破折号
 # 检查提示：未用必用译名：ロームフェラ財団→Romefeller Foundation
 > 「私は、私がいなければ時代は
 >  変わらないと感じているにすぎん
@@ -1071,11 +1082,11 @@ a little different, though.”
 ---
 >  ジャミトフ閣下は、地球の重力
 >  に魂をひかれている人々を
-Lord Jamitov intends to use those very people—that is, the Romefeller
+His Excellency Jamitov intends to use those very people, that is, the Romefeller
 ---
 >  根絶やしにするために、その人々
 >  自身、つまりロームフェラ財団を
-Foundation—to exterminate those whose souls are bound by Earth's
+Foundation, to exterminate those whose souls are bound by Earth's
 ---
 >  利用するつもりなのだ。帝国の
 >  侵略で壊滅的打撃を受けた
@@ -1134,6 +1145,7 @@ Earth Sphere in the coming era, a new genius is needed, don't you think?”
 “And you're saying that genius is you?”
 
 @31474 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私はそんなにごう慢な人間では
 >  ないよ。私は天才が至る道を
 “I am not such an arrogant man. I believe I am one who illuminates
@@ -1144,11 +1156,11 @@ the path a genius takes. The ruler of the Earth Sphere after
 ---
 >  支配者は、ジェリド特尉、
 >  君かもしれんが、マウアー特尉
-reunification might be you, Lieutenant Jerid, or it might be you,
+reunification might be you, Special Lieutenant Jerid, or it might be you,
 ---
 >  君かもしれない。私の見立てでは、
 >  戦後の地球を支配するのは
-Lieutenant Mouar. In my estimation, the one who will rule the postwar
+Special Lieutenant Mouar. In my estimation, the one who will rule the postwar
 ---
 >  女だと思っている。が、
 >  私はそれを見届けたら
@@ -1195,9 +1207,10 @@ To allow a man like that to rise... Well, no matter. Now
 the third act truly begins.”
 
 @31481 Lady · レディ
+# 审校：蕾蒂对特列斯的称呼应为“Your Excellency”，原文两处“トレーズ様”均需按address译出。
 > 「トレーズ様、ご準備を。
 >  すでに財団幹部はじめ地上の
-“Lord Treize, please prepare. The Foundation executives and the
+“Your Excellency, please prepare. The Foundation executives and the
 ---
 >  ロームフェラ中枢は、部下によって
 >  抑えてあります。あとはトレーズ様
@@ -1205,13 +1218,14 @@ Romefeller leadership on Earth have already been secured by our subordinates. Al
 ---
 >  ご自身が、OZ総帥への復帰を
 >  宣言するのみ。それによって
-is for you, Lord Treize, to declare your return as OZ's supreme commander. With that,
+is for you, Your Excellency, to declare your return as OZ's supreme commander. With that,
 ---
 >  名実ともにトレーズ派OZが
 >  正統OZとなりましょう」
 the Treize faction OZ will become the rightful OZ in both name and reality.”
 
 @31482 Treize · トレーズ
+# 审校：精读：去破折号
 > 「クイーン・リリーナ……。あなたには
 >  いったん舞台をおりていただく
 “Queen Relena... You must step down from the stage for now.
@@ -1222,7 +1236,7 @@ What is to come is too heavy a burden for you. It must be me.
 ---
 >  ならないのだ。私でなくては、な。
 >  あなたの出番はまだ先だ
-It has to be me. Your turn comes later—
+It has to be me. Your turn comes later,
 ---
 >  この地球にまだ
 >  未来が残されているとわかったあとに
@@ -1233,8 +1247,10 @@ after it is known that a future still remains for this Earth,
 as the hope of the people of the Earth Sphere...”
 
 @31483 Lady · レディ
+# 审校：蕾蒂对特列斯的称呼应为“Your Excellency”，原文“トレーズ様”需按address译出。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、お早く」
-“Lord Treize, please hurry.”
+“Your Excellency, please hurry.”
 
 @31484 Treize · トレーズ
 > 「わかった。行こう、レディ。
@@ -1259,6 +1275,7 @@ our promise to you.”
 “And that would be?”
 
 @31487 Haman · ハマーン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 # 检查提示：未用必用译名：銀河帝国→Galactic Empire
 > 「知れたこと、連合して
 >  銀河帝国軍の先遣艦隊を
@@ -1270,7 +1287,7 @@ Empire's advance fleet. There will be no rear threat now. Bask is dead in battle
 ---
 >  バルジ内でシロッコに暗殺された。
 >  ふふふ、この件についてはあろうことか
-was assassinated by Scirocco inside Balji. Heh heh, though it seems that in this matter,
+was assassinated by Scirocco inside Barge. Heh heh, though it seems that in this matter,
 ---
 >  私が当て馬にされたようだがな」
 I was made the scapegoat.”
@@ -1338,13 +1355,13 @@ from the Red Comet.”
 “What is it, Duo?”
 
 @31498 Duo · デュオ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“I was late in introducing her, but there's someone who says
-# 草稿第 2 页：she wants to join the 【主角机体名】...”
+# 审校：补译：原稿占位符错页
 > 「紹介が遅れたんだが、
 >  {HeroMech}に参加したいって
+“I'm late with the introduction, but someone here wants to join the {HeroMech},
 ---
 >  いってるやつが1人いてな……」
+or so they keep saying...”
 
 @31499 Bright · ブライト
 > 「彼女か?」
@@ -1379,9 +1396,10 @@ and she ended up coming with me.”
 “Rose, who is this Mars? Why does he call me brother?”
 
 @31505 Rose · ロゼ
+# 审校：Rose 对队长用敬语，原文「気になさる」是敬语，译文 concern yourself 偏平实，改为更贴合敬语口吻的 let such a thing trouble you。
 > 「隊長をまどわせようとしているのです。
 >  なぜそのようなことを気になさるのですか」
-“He is trying to confuse you, Commander. Why do you concern yourself with such a thing?”
+“He is trying to confuse you, Commander. Why do you let such a thing trouble you?”
 
 @31506 Marg · マーグ
 > 「わからない……なぜかあいつの

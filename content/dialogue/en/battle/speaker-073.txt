@@ -1,184 +1,297 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8690 Scirocco · シロッコ
+# 触发：攻击（通用，1/14）
+# 审校：补引号
 > 「身の程知らずが……落ちろっ!」
-“You don't know your place... Fall!”
+“You don’t know your place... Fall!”
 
 @8691 Scirocco · シロッコ
+# 触发：攻击（通用，2/14）
+# 审校：补引号
 > 「もらった!!」
-“Got you!”
+“Got you!!”
 
 @8692 Scirocco · シロッコ
+# 触发：攻击（通用，3/14）
+# 审校：补引号
 > 「とどめをさしてやる!」
-“I'll finish you off!”
+“I’ll finish you off!”
 
 @8693 Scirocco · シロッコ
+# 触发：攻击（通用，4/14）
+# 审校：补引号
 > 「死ねっ!!」
-“Die!”
+“Die!!”
 
 @8694 Scirocco · シロッコ
+# 触发：攻击（通用，5/14）
+# 审校：ぬかったな
 > 「ぬかったな!!」
-“You let your guard down!”
+“Careless of you!!”
 
 @8695 Scirocco · シロッコ
+# 触发：攻击（通用，6/14）
+# 审校：补引号
 > 「死ににきたか!」
-“So you've come to die!”
+“So you’ve come to die!”
 
 @8696 Scirocco · シロッコ
-# 审校：“カトンボ”是蜻蜓，初稿译作 gnat 不准确，改为 dragonfly。
+# 触发：攻击（通用，7/14）
+# 审校：カトンボ是蔑称
 > 「落ちろ……カトンボ」
-“Fall... you dragonfly.”
+“Fall... you gnat.”
 
 @8697 Scirocco · シロッコ
+# 触发：攻击（通用，8/14）
+# 审校：补引号
 > 「逃げられはせん!」
-“You won't escape!”
+“You won’t escape!”
 
 @8698 Scirocco · シロッコ
+# 触发：攻击（通用，9/14）
+# 审校：补引号
 > 「沈めっ!!」
-“Sink!”
+“Sink!!”
 
 @8699 Scirocco · シロッコ
+# 触发：攻击（通用，10/14）
+# 审校：补引号
 > 「不愉快だな、この感覚は!」
 “This feeling... how unpleasant!”
 
 @8700 Scirocco · シロッコ
+# 触发：攻击（通用，11/14）
+# 审校：补引号
 > 「そこかっ!!」
-“There you are!”
+“There you are!!”
 
 @8701 Scirocco · シロッコ
+# 触发：攻击（通用，12/14）
+# 审校：补引号
 > 「フフフッ、ハハハハッ! 落ちろっ!!」
-“Heh heh heh, ha ha ha ha! Fall!”
+“Heh heh heh, ha ha ha ha! Fall!!”
 
 @8702 Scirocco · シロッコ
+# 触发：攻击（通用，13/14）
+# 审校：补引号
 > 「これで終わりだな!!」
-“This is the end for you!”
+“This is the end for you!!”
 
 @8703 Scirocco · シロッコ
+# 触发：攻击（通用，14/14）
+# 审校：更顺口
 > 「そう動くか。わからん話ではないが、
 >  そうはさせん!」
-“So that's your move. I understand it, but I won't let you!”
+“So that’s your move. Understandable, but I won’t allow it!”
 
 @8704 Scirocco · シロッコ
+# 触发：被击坠（通用，1/2）
+# 审校：补引号
 > 「なんだと!? バカな!?」
 “What?! Impossible!”
 
 @8705 Scirocco · シロッコ
+# 触发：被击坠（通用，2/2）
+# 审校：更顺口
 > 「この私が敗れる!?
 >  負けるというのか!?」
-“I, defeated?! You're saying I'll lose?!”
+“I, defeated?! I am to lose?!”
 
 @8706 Scirocco · シロッコ
-# 审校：“俗物”在 Scirocco 口中带有轻蔑，vulgar fool 比 commoner 更符合其语气。
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：补引号
 > 「ぬうっ! 俗物が……あくまで私に
 >  逆らうつもりか!」
 “Ngh! You vulgar fool... you still mean to defy me?!”
 
 @8707 Scirocco · シロッコ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：补引号
 > 「何っ!? この力……なんだ!?」
 “What?! This power... what is it?!”
 
 @8708 Scirocco · シロッコ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：むうっ不是 Hmph
 > 「むうっ! まだだ! まだ落ちはせん!!」
-“Hmph! Not yet! I won't fall yet!”
+“Ngh! Not yet! I won’t fall yet!!”
 
 @8709 Scirocco · シロッコ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：补引号
 > 「バカな!? 押されているだと!?」
-“Impossible! I'm being pushed back?!”
+“Impossible! I’m being pushed back?!”
 
 @8710 Scirocco · シロッコ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：补引号
 > 「うおぉっ!? なんというプレッシャーだ!」
 “Whoa! What pressure!”
 
 @8711 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：补引号
 > 「ちっ! 少しはできるようだが……」
-“Tch! You've got some skill, it seems...”
+“Tch! You’ve got some skill, it seems...”
 
 @8712 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：なんの＝不算什么
 > 「なんの!この程度では私は倒せん!」
-“Nonsense! That won't be enough to defeat me!”
+“Ha! That won’t be enough to defeat me!”
 
 @8713 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：补引号
 > 「小賢しい……いい気になるな!!」
-“Clever little... don't get cocky!”
+“Clever little... don’t get cocky!!”
 
 @8714 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：补引号
 > 「くっ! やるな……だが、そんなものでは!」
-“Ngh! Not bad... but that won't do it!”
+“Ngh! Not bad... but that won’t do it!”
 
 @8715 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：むぅっ不是 Hmph
 > 「むぅっ!
 >  私に油断があったというのか……」
-“Hmph! So I was careless, was I...”
+“Ngh! Was I careless, then...”
 
 @8716 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
+# 审校：补引号
 > 「あてた!? あれでか」
 “You hit me?! With that?”
 
 @8717 Scirocco · シロッコ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：补引号
 > 「うっ、このプレッシャー……なんだ?」
 “Ugh, this pressure... what is it?”
 
 @8718 Scirocco · シロッコ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：反问语气；补引号
 > 「その程度の攻撃が通用するか!」
 “You think an attack like that will work?!”
 
 @8719 Scirocco · シロッコ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：补引号
 > 「ふん……そんなものか」
 “Hmph... is that all?”
 
 @8720 Scirocco · シロッコ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：补引号
 > 「そんな腕で私に向かってくるとは……
 >  なめられたものだ」
 “Coming at me with skill like that... you must take me lightly.”
 
 @8721 Scirocco · シロッコ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：补引号
 > 「効きはせんよ!!」
-“It won't work!”
+“It won’t work!!”
 
 @8722 Scirocco · シロッコ
-# 审校：与 L17 统一“俗物”的译法。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：补引号
 > 「ふん、俗物が……おのれの分を
 >  わきまえるのだな」
 “Hmph, you vulgar fool... know your place.”
 
 @8723 Scirocco · シロッコ
+# 触发：回避（通用，1/6）
+# 审校：补引号
 > 「甘いな!」
 “Too naive!”
 
 @8724 Scirocco · シロッコ
+# 触发：回避（通用，2/6）
+# 审校：补引号
 > 「当たりはせんよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8725 Scirocco · シロッコ
+# 触发：回避（通用，3/6）
+# 审校：补引号
 > 「ふ……見えるぞ、貴様の攻撃が」
 “Heh... I can see it, your attack.”
 
 @8726 Scirocco · シロッコ
+# 触发：回避（通用，4/6）
+# 审校：更顺口
 > 「当たらんな!」
-“You won't hit!”
+“You can’t hit me!”
 
 @8727 Scirocco · シロッコ
+# 触发：回避（通用，5/6）
+# 审校：补引号
 > 「見えた!!」
-“I saw it!”
+“I saw it!!”
 
 @8728 Scirocco · シロッコ
+# 触发：回避（通用，6/6）
+# 审校：补引号
 > 「ふん……その程度の腕で、よくも
 >  今まで生き延びてこられたものだ」
 “Hmph... with skill like that, how have you survived this long?”
 
 @8729 Scirocco · シロッコ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：补引号
 > 「ふ、ムダな事を」
 “Heh, what a waste of effort.”
 
 @8730 Scirocco · シロッコ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：补引号
 > 「これでは人に品性を求めることなど
 >  絶望的だな」
 “Expecting decency from people is hopeless, it seems.”
 
 @8731 Scirocco · シロッコ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：补引号
 > 「くっ! 弾切れか……」
 “Tch! Out of ammo...”
 
 @8732 Scirocco · シロッコ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：补引号
 > 「ここからでは反撃できんか……まあいい」
-“I can't counter from here... no matter.”
+“I can’t counter from here... no matter.”
+
+@14645 Scirocco · シロッコ
+# 触发：攻击，乘坐〈R・ジャジャ〉
+> 「このジ・オの力、身をもって
+>  知るがいい!!」
+“Learn the power of The-O firsthand!!”
+
+@14646 Scirocco · シロッコ
+# 触发：攻击，乘坐〈R・ジャジャ〉
+> 「そんなマシンで、このジ・オと対等に
+>  戦えると思っているのか!」
+“You think a machine like that can fight The-O on equal terms?!”
+
+@14647 Scirocco · シロッコ
+# 触发：回避，条件 1000
+> 「ハハハハッ、そんな攻撃ではダミーに
+>  あてる程度しかできんよ!」
+“Hahahaha! An attack like that can only hit a decoy!”
+
+@14648 Scirocco · シロッコ
+# 触发：回避，条件 1000
+> 「貴様ごときを相手にしている
+>  ヒマはない!」
+“I have no time to waste on the likes of you!”
+
+@14649 Scirocco · シロッコ
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ムダだ!」
+“It’s useless!”

@@ -1,165 +1,351 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9231 Banjo · 万丈
+# 触发：攻击（通用，1/6）
 > 「そこだっ!!」
 “Right there!!”
 
 @9232 Banjo · 万丈
+# 触发：攻击（通用，2/6）
 > 「行くぞっ!!」
 “Here I go!!”
 
 @9233 Banjo · 万丈
+# 触发：攻击（通用，3/6）
 > 「そらよっ!」
 “Take this!”
 
 @9234 Banjo · 万丈
+# 触发：攻击（通用，4/6）
+# 审校：从容口吻
 > 「さて、ではいきますか!」
-“Well then, shall we begin!”
+“Well now, shall we?”
 
 @9235 Banjo · 万丈
+# 触发：攻击（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これで、どうだっ!!」
-“How's this?!”
+“How’s this?!”
 
 @9236 Banjo · 万丈
+# 触发：攻击（通用，6/6）
 > 「もらったっ!」
 “Got you!”
 
 @9237 Banjo · 万丈
+# 触发：被击坠（通用，1/3）
+# 审校：なんだって不是“你说什么”
 > 「なんだってぇ!?」
-“What did you say?!”
+“What?!”
 
 @9238 Banjo · 万丈
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんとおーっ!?」
-“Wh-What the?!”
+“Wh-what the?!”
 
 @9239 Banjo · 万丈
+# 触发：被击坠（通用，3/3）
+# 审校：被击坠情境
 > 「くっ! やられたっ!」
-“Ngh! I've been hit!”
+“Ngh! They got me!”
 
 @9240 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
 > 「しまった! ダメージを受けすぎたか!?」
 “Damn! Did I take too much damage?!”
 
 @9241 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 > 「くっ、こうダメージをうけては……」
 “Ngh, with this much damage...”
 
 @9242 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! い、いくらダイターンでも、
 >  このままでは……」
-“Guh! E-Even the Daitarn can't take much more of this...”
+“Guh! E-even the Daitarn can’t take much more of this...”
 
 @9243 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
 > 「うっ! うわっ!!」
 “Ugh! Whoa!!”
 
 @9244 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
 > 「ぐっ!! まずい! このままでは!!」
 “Guh!! This is bad! At this rate!!”
 
 @9245 Banjo · 万丈
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
 > 「くっ! このままじゃ……」
 “Ngh! At this rate...”
 
 @9246 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度で、ダイターンは落ちんよ!」
-“That's not enough to bring down the Daitarn!”
+“That’s not enough to bring down the Daitarn!”
 
 @9247 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「まだまだっ!」
 “Not even close!”
 
 @9248 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：やってくれちゃって不是“付出代价”
 > 「うっ!! やってくれちゃって!」
-“Ugh!! You'll pay for that!”
+“Ugh!! Now you’ve gone and done it!”
 
 @9249 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 > 「うっ! 今のはちょっと効いたかな」
 “Ugh! That one actually stung a bit.”
 
 @9250 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
 > 「あいたた……ちょっと油断したかな?」
 “Ouch... Guess I let my guard down?”
 
 @9251 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「へえ、やるじゃないの」
 “Oh, not bad at all.”
 
 @9252 Banjo · 万丈
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんの、まだまだっ!」
-“Nonsense, I'm just getting started!”
+“Nonsense, I’m just getting started!”
 
 @9253 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：軽い軽い
 > 「ふん、軽い軽い」
-“Hmph, that's nothing, nothing.”
+“Hmph, barely felt it.”
 
 @9254 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度かい?」
-“Is that all you've got?”
+“Is that all you’ve got?”
 
 @9255 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃では、ダイターンを
 >  倒す事などできんよ!」
-“An attack like that can't bring down the Daitarn!”
+“An attack like that can’t bring down the Daitarn!”
 
 @9256 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
+# 审校：效かん＝没用
 > 「効かんよ! その程度ではな!」
-“It doesn't hurt! Not one bit!”
+“That won’t work! Not at that level!”
 
 @9257 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このダイターンをなめてもらっては困るな」
-“I won't have you underestimating the Daitarn.”
+“I won’t have you underestimating the Daitarn.”
 
 @9258 Banjo · 万丈
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
 > 「なんのっ!!」
 “As if!!”
 
 @9259 Banjo · 万丈
+# 触发：回避（通用，1/6）
 > 「ほらほら、どこ狙ってんの」
 “Come on, what are you even aiming at?”
 
 @9260 Banjo · 万丈
+# 触发：回避（通用，2/6）
+# 审校：回避情境，不是“不痛不痒”
 > 「よっと! 軽い軽い」
-“Whoop! That's nothing, nothing.”
+“Whoop! Easy, easy.”
 
 @9261 Banjo · 万丈
+# 触发：回避（通用，3/6）
 > 「ほらほら、こっちだこっち」
 “Over here, over here, this way.”
 
 @9262 Banjo · 万丈
+# 触发：回避（通用，4/6）
 > 「おっと!」
 “Whoa there!”
 
 @9263 Banjo · 万丈
+# 触发：回避（通用，5/6）
+# 审校：回避情境，なんと是惊叹
 > 「なんとっ!!」
-“What?!”
+“Whoa!!”
 
 @9264 Banjo · 万丈
+# 触发：回避（通用，6/6）
 > 「あまいなっ!」
 “Too naive!”
 
 @9265 Banjo · 万丈
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そういうムダなことは、やめたほうがいいと
 >  思うな」
-“I'd say you ought to give up these pointless efforts.”
+“I’d say you ought to give up these pointless efforts.”
 
 @9266 Banjo · 万丈
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
 > 「ムダなことを……」
 “What a waste of effort...”
 
 @9267 Banjo · 万丈
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームは効かないっていってる!!」
-“I told you beams don't work!!”
+“I told you beams don’t work!!”
 
 @9268 Banjo · 万丈
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「何と、弾切れか!?
 >  僕とした事が……」
 “What, out of ammo?! And I call myself...”
 
 @9269 Banjo · 万丈
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、この距離では届きそうもないな」
-“Tch, at this range I don't think I can reach.”
+“Tch, at this range I don’t think I can reach.”
 
 @9270 Banjo · 万丈
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ、だめか!?」
 “Ngh, no good?!”
+
+@14704 Banjo · 万丈
+# 触发：使用〈ダイターンザンバー〉（低优先，可能被通用台词顶掉）
+> 「ダイターンザンバー!!」
+“Daitarn Zamber!!”
+
+@14705 Banjo · 万丈
+# 触发：使用〈ダイターンハンマー〉
+> 「ダイターンハンマー!!」
+“Daitarn Hammer!!”
+
+@14706 Banjo · 万丈
+# 触发：使用〈ダイターンウェッブ〉
+> 「ダイターンウェッブ!!」
+“Daitarn Web!!”
+
+@14707 Banjo · 万丈
+# 触发：使用〈ビッグウェッブ〉（低优先，可能被通用台词顶掉）
+> 「ビッグウェッブ!!」
+“Big Web!!”
+
+@14708 Banjo · 万丈
+# 触发：使用〈ダイターンミサイル〉（低优先，可能被通用台词顶掉）
+> 「ダイターンミサイル!!」
+“Daitarn Missile!!”
+
+@14709 Banjo · 万丈
+# 触发：使用〈ダイターンキャノン〉（低优先，可能被通用台词顶掉）
+> 「ダイターンキャノン!!」
+“Daitarn Cannon!!”
+
+@14710 Banjo · 万丈
+# 触发：使用〈サンレーザー〉（低优先，可能被通用台词顶掉）
+> 「サンレーザー!!」
+“Sun Laser!!”
+
+@14711 Banjo · 万丈
+# 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）
+> 「ダイターンファン!!」
+“Daitarn Fan!!”
+
+@14712 Banjo · 万丈
+# 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）
+# 机翻疑问：新译名：ダイターンジャベリン=Daitarn Javelin
+> 「ダイターンジャベリン、のびろっ!!」
+“Daitarn Javelin, extend!!”
+
+@14713 Banjo · 万丈
+# 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）
+> 「ダイターンファン、出ろっ!!」
+“Daitarn Fan, come out!!”
+
+@14714 Banjo · 万丈
+# 触发：使用〈サンアタック〉（对话第 1/2 句）
+# 审校：与合体技台词统一，去掉 sure-kill
+> 「日輪の力を借りて、今、
+>  必殺の! サン・アタァァァァック!!」
+“By the power of the sun, now, the finishing blow! Sun Attaaack!!”
+
+@14715 Banjo · 万丈
+# 触发：使用〈サンアタック〉（对话第 2/2 句）
+# 审校：原文「クラァァァッシュ」拖长音在 Crash 上，初稿拼写为 Claaash 不够准确，改为 Craaash。
+> 「ダイタァァァン・クラァァァッシュ!!」
+“Daitaaaan Craaash!!”
+
+@14716 Banjo · 万丈
+# 触发：使用〈爆弾〉（低优先，可能被通用台词顶掉）
+# 审校：与 16792 统一
+> 「爆雷投下!」
+“Dropping depth charges!”
+
+@14717 Banjo · 万丈
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 1/10 句）
+# 审校：与 16715 统一
+> 「用意はいいかい、君たち?」
+“Are you ready, kids?”
+
+@14718 Kappei · 勝平
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 2/10 句）
+> 「おう!」
+“Yeah!”
+
+@14719 Kappei · 勝平
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 3/10 句）
+# 审校：与 16717 统一
+> 「いつでも大丈夫だぜ!」
+“Ready whenever you are!”
+
+@14720 Banjo · 万丈
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 4/10 句）
+# 审校：与 16718 统一
+> 「よし! ではいくぞ!」
+“Good! Then here we go!
+---
+> 「日輪の力を借りて、今、必殺の!」
+By the power of the sun, now, the finishing blow!”
+
+@14721 Kappei · 勝平
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 5/10 句）
+# 审校：机体名按当前写法“赞博特”，与 16719 统一
+> 「ザンボットォォォッ!!」
+“Zambooot!!”
+
+@14722 Banjo · 万丈
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 6/10 句）
+> 「サン!」
+“Sun!”
+
+@14723 Kappei · 勝平
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 7/10 句）
+> 「ムーン!」
+“Moon!”
+
+@14724 Banjo · 万丈
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 8/10 句）
+> 「アタァァァァァーック!!」
+“Attaaack!!”
+
+@14725 Banjo · 万丈
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 9/10 句）
+> 「コンビネーション!!」
+“Combination!!”
+
+@14726 Kappei · 勝平
+# 触发：使用〈スペースコンビネーションアタック〉（对话第 10/10 句）
+> 「クラァァァッシュ!!」
+“Craaash!!”

@@ -1,102 +1,158 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6074 Ortega · オルテガ
+# 触发：攻击（通用，1/7）
 > 「このっ!!」
 “Why you!!”
 
 @6075 Ortega · オルテガ
+# 触发：攻击（通用，2/7）
 > 「うおおおおっ!!」
 “Uwoooooooh!!”
 
 @6076 Ortega · オルテガ
+# 触发：攻击（通用，3/7）
 > 「もらった!!」
 “Got you!!”
 
 @6077 Ortega · オルテガ
+# 触发：攻击（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @6078 Ortega · オルテガ
+# 触发：攻击（通用，5/7）
 > 「こいつっ!!」
 “You bastard!!”
 
 @6079 Ortega · オルテガ
+# 触发：攻击（通用，6/7）
 > 「くらえっ!!」
 “Take this!!”
 
 @6080 Ortega · オルテガ
+# 触发：攻击（通用，7/7）
 > 「落ちろってんだよ!!」
 “I said fall!!”
 
 @6081 Ortega · オルテガ
+# 触发：被击坠（通用，1/1）
 > 「何!? バカな……」
 “What?! Impossible...”
 
 @6082 Ortega · オルテガ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいいっ!! こいつ、やるっ!!」
-“Tch!! This guy's good!!”
+“Tch!! This guy’s good!!”
 
 @6083 Ortega · オルテガ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むうっ! ダ、ダメージを受けすぎた……」
-“Mmph! I-I've taken too much damage...”
+“Mmph! I-I’ve taken too much damage...”
 
 @6084 Ortega · オルテガ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカなっ!? 押されているのか!?」
-“Impossible?! I'm being pushed back?!”
+“Impossible?! I’m being pushed back?!”
 
 @6085 Ortega · オルテガ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! 黒い三連星の力、
 >  この程度ではない!」
-“Not yet! The Black Tri-Stars' power is not this weak!”
+“Not yet! The Black Tri-Stars’ power is not this weak!”
 
 @6086 Ortega · オルテガ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ぬっ! このくらいでやられるものかよ!」
 “Ngh! You think this is enough to beat me?!”
 
 @6087 Ortega · オルテガ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おうっ! 少しはやるようだな……だが!」
-“Oh! You're not bad... but!”
+“Oh! You’re not bad... but!”
 
 @6088 Ortega · オルテガ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「おのれ、よくもっ!!」
 “You bastard, how dare you!!”
 
 @6089 Ortega · オルテガ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ふん、ちょこざいな」
 “Hmph, impudent.”
 
 @6090 Ortega · オルテガ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「この程度の攻撃で落ちるかよ!」
 “You think an attack like that will bring me down?!”
 
 @6091 Ortega · オルテガ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「その程度か!」
 “Is that all?!”
 
 @6092 Ortega · オルテガ
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなっ!!」
-“Don't underestimate me!!”
+“Don’t underestimate me!!”
 
 @6093 Ortega · オルテガ
+# 触发：回避（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるかよ!」
-“Like you'll hit me!”
+“Like you’ll hit me!”
 
 @6094 Ortega · オルテガ
+# 触发：回避（通用，3/4）
 > 「そこか!」
 “There you are!”
 
 @6095 Ortega · オルテガ
+# 触发：回避（通用，4/4）
 > 「ふん!」
 “Hmph!”
 
 @6096 Ortega · オルテガ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなんだよ!」
-“It's useless!”
+“It’s pointless!”
 
 @6097 Ortega · オルテガ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ちっ、しまった、弾切れか」
 “Tch, damn, out of ammo.”
 
 @6098 Ortega · オルテガ
+# 触发：射程外，无法反击（通用，1/1）
 > 「ちっ、臆病者が……」
 “Tch, coward...”
+
+@14247 Ortega · オルテガ
+# 触发：使用〈ビームサーベル／銃剣付きビームサーベル〉（低优先，可能被通用台词顶掉）
+> 「もらった!!」
+“Got you!!”
+
+@14248 Gaia · ガイア
+# 触发：使用〈ジェットストリームアタック〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「オルテガ! マッシュ!
+>  ジェットストリーム・アタックをかけるぞ!」
+“Ortega! Mash! We’re launching the Jet Stream Attack!”
+
+@14249 Ortega · オルテガ
+# 触发：使用〈ジェットストリームアタック〉（对话第 2/3 句）
+> 「おう!」
+“Yeah!”
+
+@14250 Mash · マッシュ
+# 触发：使用〈ジェットストリームアタック〉（对话第 3/3 句）
+> 「了解だ、ガイア!」
+“Roger, Gaia!”

@@ -42,9 +42,10 @@ I'm the captain of the battleship Peacemillion. The name's Howard.”
 Why have you made contact with us?”
 
 @30853 Howard · ハワード
+# 审校：ハワード是老学者，对布莱特舰长用“お前さん方”应译为更符合老人身份的“young man”而非“sonny”。
 > 「わしらはどこにも所属などしとりゃせん
 >  お前さん方に会いに来たのは
-“We don't belong to anyone, sonny. The reason we came to see you folks is
+“We don't belong to anyone, young man. The reason we came to see you folks is
 ---
 >  届け物があるからじゃ」
 we've got a delivery for you.”
@@ -405,10 +406,12 @@ On top of that, what do you hope to accomplish by Earthlings fighting each other
 “That's right. His goal is to thrust the path of destruction before humanity.”
 
 @30906 Show · ショウ
+# 审校：原译“before humanity”有歧义，改为“for humanity”更贴合“人类に”的指向，且保持祥的严肃口吻。
 > 「人類に、滅びの道を……?」
-“The path of destruction... before humanity?”
+“The path of destruction... for humanity?”
 
 @30907 Heero · ヒイロ
+# 审校：精读：去破折号
 > 「ああ。奴は人類を愚かなものと
 >  考えている。その人類に、自らの
 “Yeah. He considers humanity foolish. By showing humanity
@@ -419,7 +422,7 @@ the future of its own destruction, he intends to awaken it
 ---
 >  しているのだ。奴の敵は異星人
 >  ではない、地球人そのものだ」
-to a new future. His enemy is not aliens—it is Earthlings themselves.”
+to a new future. His enemy is not aliens. It is Earthlings themselves.”
 
 @30908 Marvel · マーベル
 > 「なんてこと……」
@@ -597,17 +600,19 @@ Dorothy is so happy she's trembling with excitement.”
 “...They're strong, as expected.”
 
 @30936 Quinze · カーンズ
+# 审校：Quinze 对司令用敬语，原译“intend to do”偏生硬，改为更自然的军官敬语问法。
 > 「司令、なにをなさるおつもりです!?」
-“Commander, what do you intend to do?!”
+“Commander, what are you planning to do?!”
 
 @30937 Milliardo · ミリアルド
 > 「MDだけでは、彼らはとめられん」
 “The MDs alone cannot stop them.”
 
 @30938 Quinze · カーンズ
+# 审校：“Lightning Count”是称号，应加定冠词 the，更符合英语习惯。
 > 「司令! まだライトニング・カウントで
 >  いるおつもりなのですか!?」
-“Commander! Do you still intend to remain Lightning Count?!”
+“Commander! Do you still intend to remain the Lightning Count?!”
 
 @30939 Milliardo · ミリアルド
 > 「………………」
@@ -633,9 +638,10 @@ Dorothy is so happy she's trembling with excitement.”
 “Libra, is it? We can bring it down now. All units, regroup. We're attacking Libra.”
 
 @30944 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去破折号
 > 「戦艦リーブラだったな。
 >  面白れぇ、いくぜぇっ!」
-“So that battleship's Libra. Interesting, let's go!”
+“So that battleship's Libra. Now this is gettin' good. Let's go!”
 
 @30945 Manami · マナミ（按段落 3DD4）
 > 「巨大戦艦リーブラ……おとすには、
@@ -662,9 +668,10 @@ we could've finished off Libra!”
 “Captain?! Why?! One more hit and we could've finished off Libra!”
 
 @30949 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 的粗口语气“なぜだっ”未体现，加入“the hell”以符合其热血粗放口吻。
 > 「艦長!? なぜだっ! あと一撃で
 >  リーブラに、とどめがさせるんだぜ!」
-“Captain?! Why?! One more hit and we could've finished off Libra!”
+“Captain?! Why the hell?! One more hit and we could've finished off Libra!”
 
 @30950 Manami · マナミ（按段落 3DD4）
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -699,9 +706,10 @@ I'm sorry, but return at once!”
 “What did you say?! ...And we were one step away!”
 
 @30954 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 的“何だとぉ!?”带粗口拖长音，原译平淡，改为“What the hell?!”以符合其口吻。
 > 「何だとぉ!? くそっ、
 >  あと一歩なんだぜ!」
-“What?! Damn it, we were one step away!”
+“What the hell?! Damn it, we were one step away!”
 
 @30955 Manami · マナミ（按段落 3DD4）
 > 「何ですって!?
@@ -709,12 +717,13 @@ I'm sorry, but return at once!”
 “What?! ...And we were one step away!”
 
 @30956 Noin · ノイン
+# 审校：Noin 的“ここは……”是未说完的委婉表达，原译“here we...”割裂句意，补全为“here we must...”更自然。
 > 「やむをえない。
 >  アーガマがおちれば我々は終わりだ
 “It can't be helped. If the Argama falls, we're finished.
 ---
 >  残念だが、ここは……」
-It's a shame, but here we...”
+It's a shame, but here we must...”
 
 @30957 Heero · ヒイロ
 > 「そう判断すべきだ。ゼクス…命びろい
@@ -764,10 +773,10 @@ But why...?”
 “Yes, but...”
 
 @30966 Dorothy · ドロシー
-# 审校：ドロシー是对ミリアルド说话，不是对女性贵族，删去误加的“my lady”。
+# 审校：多萝西是刻薄贵族口吻，原文「おありになって」的敬语讽刺感在译文中用 truly 和 as well 体现得更充分。
 > 「{HeroMech}との交戦のあとで
 >  異星人とも
-“After fighting the {HeroMech}, do you really have it in you to fight aliens too?
+“After fighting the {HeroMech}, do you truly have it in you to fight aliens as well?
 ---
 >  戦う余裕がおありになって?
 >  今は戦力を回復すべき時ですわ」
@@ -782,8 +791,9 @@ Now is the time to recover our strength.”
 They'll be in the combat zone any moment now!”
 
 @30968 Reika · レイカ
+# 审校：原文是「攻撃隊は……」未完句，译文用 is... 更贴合原句的未完成语气。
 > 「艦長、リーブラの攻撃隊は……」
-“Captain, the Libra attack team...”
+“Captain, the Libra attack team is...”
 
 @30969 Bright · ブライト
 > 「攻撃隊には、

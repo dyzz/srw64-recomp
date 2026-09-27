@@ -1,121 +1,194 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8475 Buran · ブラン
+# 触发：攻击（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダテじゃないんだよ!!」
-“I'm not just for show!”
+“I’m not just for show!”
 
 @8476 Buran · ブラン
+# 触发：攻击（通用，2/8）
 > 「照準内!」
 “In my sights!”
 
 @8477 Buran · ブラン
+# 触发：攻击（通用，3/8）
 > 「もらった!!」
 “Got you!”
 
 @8478 Buran · ブラン
+# 触发：攻击（通用，4/8）
 > 「そこかっ!」
 “There you are!”
 
 @8479 Buran · ブラン
+# 触发：攻击（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当てる!!」
-“I'll hit you!”
+“I’ll hit you!”
 
 @8480 Buran · ブラン
+# 触发：攻击（通用，6/8）
 > 「いけっ!」
 “Go!”
 
 @8481 Buran · ブラン
+# 触发：攻击（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いただく!」
-“I'll take that!”
+“I’ll take that!”
 
 @8482 Buran · ブラン
+# 触发：攻击（通用，8/8）
 > 「スキだらけだな……甘いっ!」
 “Wide open... too soft!”
 
 @8483 Buran · ブラン
+# 触发：被击坠（通用，1/2）
 > 「な……バカなっ!?」
 “Wha... impossible?!”
 
 @8484 Buran · ブラン
+# 触发：被击坠（通用，2/2）
 > 「なんだと!? 直撃か!?」
 “What?! A direct hit?!”
 
 @8485 Buran · ブラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ!! こいつ……やる!!」
-“Guh! This guy... he's good!”
+“Guh! This guy... he’s good!”
 
 @8486 Buran · ブラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬおっ!! まだだ!! まだやらせん!!」
-“Ngh! Not yet! I won't let you!”
+“Ngh! Not yet! I won’t let you!”
 
 @8487 Buran · ブラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! 貴様などにやられるわけには
 >  いかんのだ!!」
-“Tch! I can't afford to be beaten by the likes of you!”
+“Tch! I can’t afford to be beaten by the likes of you!”
 
 @8488 Buran · ブラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：原文未指明性别，且说话对象可能是机体或对手，改为中性 it，避免误判为男性。
 > 「何っ! これほどのパワーがあるのか!?」
 “What?! It has this much power?!”
 
 @8489 Buran · ブラン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!! いい腕をしている!」
-“Ngh! You've got skill!”
+“Ngh! You’ve got skill!”
 
 @8490 Buran · ブラン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! そうそう好きにはやらせんよ!!」
-“Tch! I won't let you have it your way!”
+“Tch! I won’t let you have it your way!”
 
 @8491 Buran · ブラン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ! こいつ、ただものではないな!」
-“Whoa! This one's no ordinary foe!”
+“Whoa! This one’s no ordinary foe!”
 
 @8492 Buran · ブラン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! 貴様らの好きにはさせん!」
-“Ngh! I won't let you lot do as you please!”
+“Ngh! I won’t let you lot do as you please!”
 
 @8493 Buran · ブラン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：こちらとて补全语义
 > 「やるっ! だが、こちらとて!」
-“Nice! But so am I!”
+“Not bad! But I’ve got tricks of my own!”
 
 @8494 Buran · ブラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな!!」
-“It's useless!”
+“It’s useless!”
 
 @8495 Buran · ブラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか……」
-“Is that all you've got...”
+“Is that all you’ve got...”
 
 @8496 Buran · ブラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：戦いをなめている是不当回事，不是嘲弄
 > 「その程度の腕で戦場にでるとは
 >  ……貴様、戦いをなめているな!」
-“Going into battle with skill like that... you're mocking war!”
+“Going into battle with skill like that... You don’t take combat seriously, do you!”
 
 @8497 Buran · ブラン
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるかよ!」
-“Like that'll hit!”
+“Like that’ll hit!”
 
 @8498 Buran · ブラン
+# 触发：回避（通用，2/4）
 > 「甘いな!!」
 “Too soft!”
 
 @8499 Buran · ブラン
+# 触发：回避（通用，3/4）
 > 「まだまだだな!」
 “Not good enough!”
 
 @8500 Buran · ブラン
+# 触发：回避（通用，4/4）
 > 「やはりな……攻撃パターンが
 >  単純なんだよ!」
 “Just as I thought... your attack patterns are too simple!”
 
 @8501 Buran · ブラン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ビームだと? ムダな事を」
 “Beams? What a waste.”
 
 @8502 Buran · ブラン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なに!? 弾切れか!?」
 “What?! Out of ammo?!”
 
 @8503 Buran · ブラン
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、この距離では反撃できんな…」
-“Tch, I can't counter from this distance...”
+“Tch, I can’t counter from this distance...”
+
+@14627 Buran · ブラン
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14628 Buran · ブラン
+# 触发：被击坠，乘坐〈アッシマー〉
+> 「アッシマーがぁーっ!?」
+“The Asshimar?!”
+
+@14629 Buran · ブラン
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈アッシマー〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「アッシマーの装甲を甘くみるな!」
+“Don’t underestimate the Asshimar’s armor!”
+
+@14630 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダム〉
+> 「このサイコガンダムに、そんな攻撃が
+>  通用するか!」
+“You think that attack can hurt the Psyco Gundam?!”
+
+@14631 Four · フォウ
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダムmkⅡ〉
+> 「このサイコガンダムに、そんな攻撃が
+>  通用するか!」
+“You think that attack can hurt the Psyco Gundam?!”

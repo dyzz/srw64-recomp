@@ -1,130 +1,179 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6680 Hilde · ヒルデ
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせないわ」
-“I won't let you.”
+“I won’t let you.”
 
 @6681 Hilde · ヒルデ
+# 触发：攻击（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたしがやらせないわっ!」
-“I won't let you do it!”
+“I won’t let you do it!”
 
 @6682 Hilde · ヒルデ
+# 触发：攻击（通用，3/9）
+# 审校：原文无性别；乖乖就范更像抓人
 > 「さぁおとなしくしなさい」
-“Now, be a good boy and give up.”
+“Now, settle down and surrender.”
 
 @6683 Hilde · ヒルデ
+# 触发：攻击（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がすものか」
-“Like I'd let you get away.”
+“Like I’d let you get away.”
 
 @6684 Hilde · ヒルデ
+# 触发：攻击（通用，5/9）
 > 「まてっ!」
 “Wait!”
 
 @6685 Hilde · ヒルデ
+# 触发：攻击（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「抵抗すれば容赦しない!」
-“Resist and I won't show mercy!”
+“Resist and I won’t show mercy!”
 
 @6686 Hilde · ヒルデ
+# 触发：攻击（通用，7/9）
 > 「地球圏の平和のために!」
 “For the peace of the Earth Sphere!”
 
 @6687 Hilde · ヒルデ
+# 触发：攻击（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたしはあたしのやり方で戦うわ」
-“I'll fight my own way.”
+“I’ll fight my own way.”
 
 @6688 Hilde · ヒルデ
+# 触发：攻击（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみせる!」
-“I'll show you!”
+“I’ll show you!”
 
 @6689 Hilde · ヒルデ
+# 触发：被击坠（通用，1/2）
 > 「きゃあぁぁぁぁぁぁっっっ!」
 “Kyaaaaaaaah!”
 
 @6690 Hilde · ヒルデ
+# 触发：被击坠（通用，2/2）
 > 「デュオ! きゃぁぁーっ!」
 “Duo! Kyaaaaah!”
 
 @6691 Hilde · ヒルデ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あぁ!? あたし、死ぬ……!?」
-“Ah?! I'm... going to die...?!”
+“Ah?! I’m... going to die...?!”
 
 @6692 Hilde · ヒルデ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ死ぬ覚悟ならできているわっ!」
-“Ngh, I'm ready to die if I have to!”
+“Ngh, I’m ready to die if I have to!”
 
 @6693 Hilde · ヒルデ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あぅっ! 絶対にやられるもんかっ!」
-“Agh! Like I'd ever let you get me!”
+“Agh! Like I’d ever let you get me!”
 
 @6694 Hilde · ヒルデ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「あぁぁぁぁぁっ!?」
 “Aaaaaaah?!”
 
 @6695 Hilde · ヒルデ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなところでやられるわけには
 >  いかないわっ!」
-“I can't afford to go down in a place like this!”
+“I can’t afford to go down in a place like this!”
 
 @6696 Hilde · ヒルデ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぅっ! まけるもんかっ!」
-“Ugh! Like I'd lose!”
+“Ugh! Like I’d lose!”
 
 @6697 Hilde · ヒルデ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 > 「うっ!」
 “Ugh!”
 
 @6698 Hilde · ヒルデ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ絶対にやらせない!」
-“Ngh, I absolutely won't let you!”
+“Ngh, I absolutely won’t let you!”
 
 @6699 Hilde · ヒルデ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「あぁーっ!?」
 “Aaaah?!”
 
 @6700 Hilde · ヒルデ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられるもんかっ」
-“Like I'd let you get me!”
+“Like I’d let you get me!”
 
 @6701 Hilde · ヒルデ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度なら!」
-“If that's all you've got!”
+“If that’s all you’ve got!”
 
 @6702 Hilde · ヒルデ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「うっでも!」
 “Ugh, but still!”
 
 @6703 Hilde · ヒルデ
+# 触发：回避（通用，1/5）
 > 「やった!」
 “I did it!”
 
 @6704 Hilde · ヒルデ
+# 触发：回避（通用，2/5）
 > 「かわせた!?」
 “I dodged it?!”
 
 @6705 Hilde · ヒルデ
+# 触发：回避（通用，3/5）
 > 「……ふうっ」
 “...Phew.”
 
 @6706 Hilde · ヒルデ
+# 触发：回避（通用，4/5）
 > 「んっ!」
 “Nn!”
 
 @6707 Hilde · ヒルデ
+# 触发：回避（通用，5/5）
 > 「な、なんとか……」
 “I-I managed somehow...”
 
 @6708 Hilde · ヒルデ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんな攻撃でやられるもんか!」
 “Like that attack would take me down!”
 
 @6709 Hilde · ヒルデ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「効くもんか!」
 “Like that would hurt!”
 
 @6710 Hilde · ヒルデ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「た、弾切れ!? そんなっ」
-“O-Out of ammo?! No way!”
+“O-out of ammo?! No way!”
 
 @6711 Hilde · ヒルデ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：射程外情境，差一点够到
 > 「あと、あと少しなのにっ」
-“Just a little... just a little more!”
+“Just a little... just a little farther!”

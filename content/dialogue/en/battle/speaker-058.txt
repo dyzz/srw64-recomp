@@ -1,183 +1,264 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10938 Mashymre · マシュマー
+# 触发：攻击（通用，1/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私は胸のバラにかけてお前を倒す!」
-“I swear on the rose on my chest, I'll defeat you!”
+“I swear on the rose on my chest, I’ll defeat you!”
 
 @10939 Mashymre · マシュマー
+# 触发：攻击（通用，2/13）
 > 「ハマーン様ご覧ください!」
 “Lady Haman, behold!”
 
 @10940 Mashymre · マシュマー
+# 触发：攻击（通用，3/13）
 > 「とどめ!!」
 “Finishing blow!!”
 
 @10941 Mashymre · マシュマー
+# 触发：攻击（通用，4/13）
 > 「でやあぁぁっ!!」
 “Take thaaaat!!”
 
 @10942 Mashymre · マシュマー
+# 触发：攻击（通用，5/13）
 > 「もらったあ!!」
 “Got you!!”
 
 @10943 Mashymre · マシュマー
+# 触发：攻击（通用，6/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「勝負だ!」
-“Let's settle this!”
+“Let’s settle this!”
 
 @10944 Mashymre · マシュマー
+# 触发：攻击（通用，7/13）
+# 审校：更像人话
 > 「いざ、尋常に勝負っ!!」
-“Come, a fair and square duel!!”
+“Now, let us duel fair and square!!”
 
 @10945 Mashymre · マシュマー
+# 触发：攻击（通用，8/13）
 > 「落ちろおぉぉっ!!」
 “Fall, damn you!!”
 
 @10946 Mashymre · マシュマー
+# 触发：攻击（通用，9/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私が相手だっ!!」
-“I'll be your opponent!!”
+“I’ll be your opponent!!”
 
 @10947 Mashymre · マシュマー
+# 触发：攻击（通用，10/13）
 > 「うおおおおっ!!」
 “Uwooooh!!”
 
 @10948 Mashymre · マシュマー
+# 触发：攻击（通用，11/13）
 > 「マシュマー・セロ、参る!!」
 “Mashymre Cello, engaging!!”
 
 @10949 Mashymre · マシュマー
+# 触发：攻击（通用，12/13）
 > 「行くぞっ!!」
 “Here I come!!”
 
 @10950 Mashymre · マシュマー
+# 触发：攻击（通用，13/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだっ!!」
-“How's this!!”
+“How’s this!!”
 
 @10951 Mashymre · マシュマー
+# 触发：被击坠（通用，1/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「な、なに!?」
-“W-what!?”
+“W-what?!”
 
 @10952 Mashymre · マシュマー
+# 触发：被击坠（通用，2/3）
+# 审校：ええい→可恶
 > 「しまった!? ええーい、出直しだ!」
-“Damn!? Fine, I'll try again!”
+“Damn it?! Very well, I shall regroup!”
 
 @10953 Mashymre · マシュマー
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハ、ハマーン様っ!」
-“L-Lady Haman!”
+“L-lady Haman!”
 
 @10954 Mashymre · マシュマー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：ええい→可恶
 > 「ええい! パワーが上がらんではないか!」
-“Gah! The power won't rise!”
+“Damn it! The power won’t come up!”
 
 @10955 Mashymre · マシュマー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「な、なんとっ!? これ程の威力が
 >  あるのか!?」
-“W-what!? It has this much power!?”
+“W-what?! It has this much power?!”
 
 @10956 Mashymre · マシュマー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「な、なんというパワーだっ!?」
-“W-what power is this!?”
+“W-what power is this?!”
 
 @10957 Mashymre · マシュマー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：原文“この胸のバラにかけても”是发誓语气，初稿译成“Not even for the rose on my chest”意思反了，改为“I swear it on this rose on my chest!”
 > 「ぬううっ! 私は負けるわけには
 >  いかんのだ!この胸のバラにかけても!」
 “Ngh! I cannot afford to lose! I swear it on this rose on my chest!”
 
 @10958 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! なかなかやるな!」
-“Ngh! You're quite good!”
+“Ngh! You’re quite good!”
 
 @10959 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
 > 「ちいっ! 見事だ!!」
 “Tch! Impressive!!”
 
 @10960 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 > 「むっ! 少しはできるようだな!」
 “Hm! So you can fight a little!”
 
 @10961 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! なるほど、油断は禁物
 >  と言う事だな」
-“Ugh! I see, so one must never let their guard down.”
+“Ugh! I see, so one must never let one’s guard down.”
 
 @10962 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ほう、やるな! 見直したぞ!」
-“Oh, not bad! You've earned my respect!”
+“Oh, not bad! You’ve earned my respect!”
 
 @10963 Mashymre · マシュマー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
+# 审校：更顺口
 > 「くっ! 貴様、私を怒らせたい
 >  らしいな!!」
-“Ngh! You, you're trying to anger me!!”
+“Ngh! You seem intent on angering me!!”
 
 @10964 Mashymre · マシュマー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：玛修玛的骑士口吻偏正式，you're 改为 you are 更贴合其戏剧化宣言。
 > 「その程度の腕で私に勝負を
 >  挑むとは……10年早いわ!!」
-“Challenging me with skill like that... you're ten years too early!!”
+“Challenging me with skill like that... you are ten years too early!!”
 
 @10965 Mashymre · マシュマー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「ちいっ! かすっただけだっ!!」
 “Tch! It only grazed me!!”
 
 @10966 Mashymre · マシュマー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「ふははは、効きはせんよ!!」
 “Fuhahaha, it has no effect!!”
 
 @10967 Mashymre · マシュマー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「ふ…この私にかなうと思っているのか?」
 “Heh... you think you can match me?”
 
 @10968 Mashymre · マシュマー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「無礼な!」
 “Insolent!”
 
 @10969 Mashymre · マシュマー
-# 审校：原文“私に勝てるもりでいるのか!?”中“もり”应为“つもり”，初稿意思正确但可更自然，改为“Do you think you can beat me!?”
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「私に勝てるもりでいるのか!?」
-“Do you think you can beat me!?”
+“Do you intend to defeat me?!”
 
 @10970 Mashymre · マシュマー
+# 触发：回避（通用，1/7）
 > 「なんのっ!」
 “As if!”
 
 @10971 Mashymre · マシュマー
+# 触发：回避（通用，2/7）
 > 「甘いな!」
 “Too naive!”
 
 @10972 Mashymre · マシュマー
+# 触发：回避（通用，3/7）
 > 「当たるかっ!」
 “Like that would hit!”
 
 @10973 Mashymre · マシュマー
-# 审校：初稿“You were never my match to begin with!”稍显别扭，改为更自然的“You were never any match for me!”
+# 触发：回避（通用，4/7）
+# 审校：“所詮”意为“终究”，补上 In the end 使骑士的宣告更完整。
 > 「所詮は私の敵ではないな!」
-“You were never any match for me!”
+“In the end, you are no match for me!”
 
 @10974 Mashymre · マシュマー
+# 触发：回避（通用，5/7）
 > 「ははははっ! 何をやっている!」
 “Hahahaha! What are you doing!”
 
 @10975 Mashymre · マシュマー
+# 触发：回避（通用，6/7）
 > 「それで狙っているつもりか!」
 “You call that aiming!”
 
 @10976 Mashymre · マシュマー
+# 触发：回避（通用，7/7）
 > 「見切ったわ!!」
 “I saw right through it!!”
 
 @10977 Mashymre · マシュマー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「そんな攻撃が、この私に
 >  通用するか!!」
 “You think an attack like that works on me!!”
 
 @10978 Mashymre · マシュマー
-# 审校：“ぬかった”是“大意了”，初稿“I let my guard down”可接受但“I was careless”更贴切
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんと!? 弾切れか……ぬかった」
-“What!? Out of ammo... I was careless.”
+“What?! Out of ammo... I was careless.”
 
 @10979 Mashymre · マシュマー
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：ええい→可恶
 > 「ええい、正々堂々と勝負しろ!」
-“Gah, fight me fair and square!”
+“Damn it, fight me fair and square!”
 
 @10980 Mashymre · マシュマー
+# 触发：射程外，无法反击（通用，2/2）
 > 「ぬぅ、なんと卑怯な」
 “Ngh, how cowardly.”
+
+@16372 Mashymre · マシュマー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「行けっ! ファンネルよ!」
+“Go! Funnel!”
+
+@16373 Mashymre · マシュマー
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「蹴散らせっ! ファンネルッ!!」
+“Scatter them! Funnel!!”
+
+@16374 Mashymre · マシュマー
+# 触发：使用〈フィンファンネル〉
+> 「蹴散らせっ! ファンネルッ!!」
+“Scatter them! Funnel!!”
+
+@16375 Mashymre · マシュマー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”

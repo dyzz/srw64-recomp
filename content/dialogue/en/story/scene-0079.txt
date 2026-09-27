@@ -416,17 +416,19 @@ Just do as I say...”
 And what is this body...?”
 
 @40180 Schwarz · シュバルツ
+# 审校：精读：もっとも 误译
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……聞かせてあげよう、レイン。
 >  あれは、デビルガンダムが完成して
 “...Let me tell you, Rain. It was shortly after the Dark Gundam was completed.
 ---
 >  まもなくのことだった。もっとも
 >  最初は、あれをデビルガンダムとは
-Most of all, at first, we didn't call it the Dark Gundam,
+Though at first, we didn't call it the Dark Gundam,
 ---
 >  呼んでいなかったがな。すべては、
 >  カーンズが地球へ落とす6体目の
-but... It all began when Quinze chose it as the sixth
+of course. It all began when Quinze chose it as the sixth
 ---
 >  ガンダムに、あれを選んだ時に
 >  始まったのだ……」
@@ -438,8 +440,9 @@ Gundam to drop to Earth...”
 “...Where are you, Dark Gundam? Come out already.”
 
 @40182 ???
+# 审校：拟声笑声改为更自然的英文，避免保留日文罗马字。
 > 「ククククククッ、やはり来たか」
-“Kukukukukuku, so you came after all.”
+“Heh heh heh heh heh... So you came after all.”
 
 @40183 Domon · ドモン
 > 「誰だ!?」
@@ -456,9 +459,10 @@ Gundam to drop to Earth...”
 “Th-that can't be?! You were definitely, back then...”
 
 @40186 Master · マスター
+# 审校：宗师口吻要求不用缩写，将 It's 改为 It has。
 > 「ひさしいな、ドモン。何をほうけておる。
 >  声をかけられるまで、ワシの存在に
-“It's been a long time, Domon. What are you gaping at? To not notice my presence
+“It has been a long time, Domon. What are you gaping at? To not notice my presence
 ---
 >  気づかぬとは、未熟千万。
 >  そんなことで異星人どもに勝てると
@@ -472,9 +476,10 @@ beat those aliens like that?”
 “Master Asia!”
 
 @40188 Master · マスター
+# 审校：宗师口吻要求不用缩写，将 I'll 改为 I shall。
 > 「そんな未熟者は、異星人に
 >  倒される前に、このワシが
-“An immature fool like you, I'll strike down myself
+“An immature fool like you, I shall strike down myself
 ---
 >  倒してくれるわ!」
 before the aliens ever get the chance!”
@@ -533,9 +538,10 @@ before the aliens ever get the chance!”
 “Whaaat?!”
 
 @40202 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “Seems it's” 改为 “It seems it has”
 > 「地下通路か……ガレキにうめられた
 >  ようだな」
-“An underground passage... Seems it's been buried in rubble.”
+“An underground passage... It seems it has been buried in rubble.”
 
 @40203 Domon · ドモン
 > 「東方不敗、さっきは、なぜ俺を
@@ -543,21 +549,23 @@ before the aliens ever get the chance!”
 “Master Asia, why did you save me back there?”
 
 @40204 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “I didn't”、“Don't”、“we'll”、“Can't” 改为完整形式
 > 「助けたわけではない。あわてるな、こんな
 >  ところでやりあえば、ガレキの下敷きだ
-“I didn't save you. Don't be hasty. If we fight in a place like this, we'll be crushed under the rubble.
+“I did not save you. Do not be hasty. If we fight in a place like this, we will be crushed under the rubble.
 ---
 >  そんなこともわからんのか。
 >  一時休戦だ、いいな」
-Can't you even understand that? A temporary truce, agreed?”
+Can you not even understand that? A temporary truce, agreed?”
 
 @40205 Domon · ドモン
 > 「……どうするつもりだ」
 “...What do you intend to do?”
 
 @40206 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “We find” 改为 “We will find”
 > 「外に出られる場所を探すのだ」
-“We find a way out.”
+“We will find a way out.”
 
 @40207 Domon · ドモン
 > 「なぁ、師匠……
@@ -573,9 +581,10 @@ being attacked? You're one of them, aren't you?”
 “Ugh... Damn, it's blocked?!”
 
 @40209 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “won't” 改为 “will not”
 > 「……このままでは長くは、もたんな。
 >  覚えておるか、ドモン。以前にも
-“...At this rate, we won't last long. Do you remember, Domon? There was
+“...At this rate, we will not last long. Do you remember, Domon? There was
 ---
 >  こういうことがあった。そしてあの時も、
 >  この流派東方不敗の
@@ -594,27 +603,30 @@ final secret technique of the School of the Undefeated of the East. Its name: Se
 by this man...)
 
 @40211 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “Seems we've” 改为 “It seems we have”
 > 「どうやら命びろいしたようだな」
-“Seems we've narrowly escaped death.”
+“It seems we have narrowly escaped death.”
 
 @40212 Domon · ドモン
 > 「師匠……」
 “Master...”
 
 @40213 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “haven't” 改为 “have not”
 > 「ついにあの技だけはお前に伝えられな
 >  かった。お前はあの頃から、まったく
-“In the end, that technique alone I could never pass on to you. Since back then, you haven't
+“In the end, that technique alone I could never pass on to you. Since back then, you have not
 ---
 >  変わっておらん。目先のことにとらわ
 >  れ、いちばん大切なことを見失う」
-changed at all. You fixate on what's in front of you and lose sight of what matters most.”
+changed at all. You fixate on what is in front of you and lose sight of what matters most.”
 
 @40214 Domon · ドモン
 > 「どういうことだ……?」
 “What do you mean...?”
 
 @40215 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “wasn't” 改为 “was not”
 > 「よく見ておけ、ドモン。ネオホンコン、
 >  一年戦争後の地球でもっとも
 “Look well, Domon. Neo Hong Kong, the most prosperous city on Earth after
@@ -628,16 +640,17 @@ the One Year War, has come to this. Across the whole world, no, the Earth itself
 ruin is closing in without fail. But what invited it?
 ---
 >  異星人か? いや、そうではない」
-The aliens? No, it wasn't them.”
+The aliens? No, it was not them.”
 
 @40216 Domon · ドモン
 > 「…………」
 “...”
 
 @40217 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “Don't” 改为 “Do you not”
 > 「……人間とは、つくづく度しがたい
 >  存在だと思わぬか。だからこそ
-“...Don't you think humans are, through and through, beyond saving? That is exactly why,
+“...Do you not think humans are, through and through, beyond saving? That is exactly why,
 ---
 >  だからこそワシは……」
 exactly why I...”
@@ -647,9 +660,10 @@ exactly why I...”
 “Damn, there are still more?!”
 
 @40219 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “let's” 改为 “let us”
 > 「ドモン、こやつらを片づけるぞ!
 >  ガンダムを出せ」
-“Domon, let's finish these ones off! Bring out your Gundam.”
+“Domon, let us finish these ones off! Bring out your Gundam.”
 
 @40220 Domon · ドモン
 # 审校：原文“出ろぉぉぉっ!”是拖长音的呼喊，初稿“Come out! ”没有体现拖长音且结尾有空格，改为“Come oooout!”
@@ -661,8 +675,9 @@ exactly why I...”
 “Gundaaaaaam!!”
 
 @40222 Master · マスター
+# 审校：Master 的 voice 要求不用缩写，将 “let's” 改为 “let us”
 > 「ドモン、ゆくぞ!」
-“Domon, let's go!”
+“Domon, let us go!”
 
 @40223 Domon · ドモン
 > 「……終わったか……」
@@ -673,9 +688,10 @@ exactly why I...”
 “No, one of them is still left!”
 
 @40225 Master · マスター
+# 审校：精读：去破折号
 > 「ドモン! 石破天驚拳、
 >  今こそ、うってみせい!」
-“Domon! The Sekiha Tenkyoken — now is the time to unleash it!”
+“Domon! The Sekiha Tenkyoken. Now is the time to unleash it!”
 
 @40226 Domon · ドモン
 > 「うおおぉぉぉぉぉぉーっ!!」
@@ -686,9 +702,10 @@ exactly why I...”
 “I-I did it...”
 
 @40228 Master · マスター
+# 审校：精读：去破折号
 > 「ドモンよ。流派東方不敗が
 >  最終奥義、石破天驚拳
-“Domon. The final secret technique of the School of the Undefeated of the East, the Sekiha Tenkyoken —
+“Domon. The final secret technique of the School of the Undefeated of the East, the Sekiha Tenkyoken.
 ---
 >  確かに伝授したぞ」
 I have indeed passed it on to you.”
@@ -728,10 +745,10 @@ come.”
 “What?! You mean me, of all people?!”
 
 @40235 Master · マスター
-# 审校：原文“こんなバカなあぁぁぁっ!!”有拖长音，初稿“This can't be!!”未体现，改为“This can't beeeee!!”
+# 审校：Master 不用缩略，can't 改为 cannot 以符合其古风口吻。
 > 「な、なんだと!?
 >  こんなバカなあぁぁぁっ!!」
-“W-What?! This can't beeeee!!”
+“W-What?! This cannot beeeee!!”
 
 @40236 Ark · アーク（按段落 3DD1）
 > 「ゴッドガンダム……ドモンか。

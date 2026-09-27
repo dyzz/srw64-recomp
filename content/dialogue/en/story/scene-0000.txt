@@ -5,6 +5,7 @@
 “Master...”
 
 @17348 Kurtz · カーツ（本话主角的对手）
+# 审校：Kurtz 口吻冷硬，ought to 过于正式，改为 should 更贴合其简洁语气。
 > 「いつまで、そうしているつもりだ、
 >  {HeroName}
 “How long do you intend to stay like that, {HeroName}?
@@ -14,7 +15,7 @@ Master is gone.
 ---
 >  そして俺たちには、するべきことが
 >  あるはずだ」
-And there is something we ought to be doing.”
+And there is something we should be doing.”
 
 @17349 Brad · ブラッド（本话主角）
 > 「{PartnerName}……しかし……」
@@ -42,19 +43,23 @@ You can stay there and mope forever.”
 “Hm?! What is this?!”
 
 @17352 Brad · ブラッド（本话主角）
+# 审校：Brad 说话粗放，That is 改为 That's 更符合其热血直率口吻。
 > 「戦闘の音だ!
-“That is the sound of battle!
+“That's the sound of battle!
 ---
 >  近くの町をゲリラが拠点に
 >  しているとは聞いていたが……」
 I had heard the guerrillas were using a nearby town as their base, but...”
 
 @17353 Kurtz · カーツ（本话主角的对手）
+# 审校：Kurtz 对 Brad 用「貴様」且语气冷硬，Let us 过于正式，改为 Let's 更自然。
 > 「状況を確認するぞ、
 >  {HeroName}」
-“Let us confirm the situation, {HeroName}.”
+“Let's confirm the situation, {HeroName}.”
 
 @17354 Dark General · 暗黒大将軍
+# 审校：Dark General 的威严战神口吻应更显霸气，末句改为更符合其语气的表达。
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「ウワハハハハッ。
 >  よーし、やれぇっ!
 “MWAHAHAHA! Good, let them have it!
@@ -64,12 +69,13 @@ I had heard the guerrillas were using a nearby town as their base, but...”
 Show the Muge Zorbados Empire the full power of Mycenae!
 ---
 >  存分に見せてやるのだ!」
-Give them everything we have!”
+Show them all we have!”
 
 @17355 Brad · ブラッド（本话主角）
+# 审校：Brad 说话粗放，cannot 改为 can't 更符合其热血直率口吻。
 > 「いかん、
 >  あの戦力差では勝てないぞ!」
-“This is bad, they cannot win with that difference in strength!”
+“This is bad, they can't win with that difference in strength!”
 
 @17356 Kurtz · カーツ（本话主角的对手）
 > 「そうだな……
@@ -81,9 +87,10 @@ Give them everything we have!”
 This is a good chance to get a clear look at the enemy we ought to be fighting.”
 
 @17357 Brad · ブラッド（本话主角）
+# 审校：词条：ヴァイローズ=Virose
 > 「なに!?
 >  ばかなことを言うな!
-“What?! Do not talk nonsense!
+“What?! Don't talk nonsense!
 ---
 >  アースゲインとヴァイローズを
 >  出すんだ! 師匠の言葉をもう
@@ -105,13 +112,14 @@ It is only natural that guerrillas lose in battle.
 Even if we fight now, they will gain nothing from it.”
 
 @17359 Brad · ブラッド（本话主角）
+# 审校：Brad 说话粗放，I am 改为 I'm 更符合其热血直率口吻。
 > 「だが、このまま放っておいては
 >  町の人たちはどうなる!?
 “But if we leave them like this, what will happen to the townspeople?!
 ---
 >  俺はゆくぞ!
 >  アースゲイン!!」
-I am going! Earthgain!!”
+I'm going! Earthgain!!”
 
 @17360 Kurtz · カーツ（本话主角的对手）
 > 「ふん、いつまでたっても
@@ -132,12 +140,13 @@ Fine. This may be just right for a little warm-up.”
 “Who are you? Do not interfere!”
 
 @17363 Brad · ブラッド（本话主角）
+# 审校：破折号
 > 「黙れッ!
 “Silence!
 ---
 >  なんの抵抗もできぬ町の人々まで
 >  をも巻き添えにするとは
-To drag in the townspeople, who cannot even resist,
+To drag in the townspeople, who cannot even resist...
 ---
 >  なんと見下げ果てた奴らだ
 what despicable cowards you are.
@@ -200,26 +209,29 @@ But they look like they will make fine comrades.”
 “What?! More of them?!”
 
 @17373 Banjo · 万丈
+# 审校：万丈潇洒从容，I am 改为 I'm，I will 改为 I'll 更符合其轻松口吻。
 > 「待て、僕は反帝国組織
 >  カラバの破嵐万丈だ
-“Wait, I am Banjo Haran of the anti-Empire organization Karaba.
+“Wait, I'm Banjo Haran of the anti-Empire organization Karaba.
 ---
 >  君たちに加勢する」
-I will lend you my strength.”
+I'll lend you my strength.”
 
 @17374 Brad · ブラッド（本话主角）
 > 「なんだと!?」
 “What?!”
 
 @17375 Banjo · 万丈
+# 审校：万丈潇洒从容，I am 改为 I'm 更符合其轻松口吻。
 > 「敵ではない。僕も奴らを倒すために
 >  ここに来た」
-“I am not your enemy. I came here to defeat them too.”
+“I'm not your enemy. I came here to defeat them too.”
 
 @17376 Brad · ブラッド（本话主角）
+# 审校：Brad 说话粗放，Let us 改为 Let's 更符合其热血直率口吻。
 > 「いいだろう。どうやら自信があるようだ
 >  腕前を見せてもらおう」
-“Fine. You seem confident. Let us see what you can do.”
+“Fine. You seem confident. Let's see what you can do.”
 
 @17377 Banjo · 万丈
 > 「それはもう、たっぷりとね」
@@ -243,9 +255,10 @@ If you do not fear the radiance of this sun, then come at me!”
 “Gwaaah, you wretched humans. Remember this!”
 
 @17380 Brad · ブラッド（本话主角）
+# 审校：布拉德是热血直率的武者，说话短促有力，用“Let's”比“Let us”更符合其口吻。
 > 「逃げたか……
 >  残りも一気にいくぜ!」
-“He ran... Let us finish off the rest in one go!”
+“He ran... Let's finish off the rest in one go!”
 
 @17381 Dark General · 暗黒大将軍
 > 「ぐうぅぅぅ、おのれ人間どもめ。
@@ -253,9 +266,10 @@ If you do not fear the radiance of this sun, then come at me!”
 “Gwaaah, you wretched humans. Remember this!”
 
 @17382 Brad · ブラッド（本话主角）
+# 审校：布拉德口吻应更口语化，将“that is”改为“that's”以符合其热血直率、短促有力的说话风格。
 > 「ふん、口ほどにもない奴だ。
 >  どうやら片づいたようだな」
-“Hmph, he was all talk. Looks like that is taken care of.”
+“Hmph, he was all talk. Looks like that's taken care of.”
 
 @17383 Dark General · 暗黒大将軍
 > 「おのれぇっ! 覚えておれ!!」
@@ -270,12 +284,13 @@ If you do not fear the radiance of this sun, then come at me!”
 And this is...”
 
 @17385 Garrison · ギャリソン
+# 审校：お見知りおきを
 > 「万丈様の執事、
 >  ギャリソン時田と申します
-“I am Banjo's butler, Garrison Tokita.
+“I am Master Banjo's butler, Garrison Tokita.
 ---
 >  以後お見知りおきを」
-I hope we get along.”
+A pleasure to make your acquaintance.”
 
 @17386 Kurtz · カーツ（本话主角的对手）
 > 「『武機覇拳流』
@@ -283,13 +298,14 @@ I hope we get along.”
 “‘Buki Haken-ryu’, {PartnerFull}.”
 
 @17387 Brad · ブラッド（本话主角）
+# 审校：礼はいわない＝不道谢
 > 「『武機覇拳流』
 >  {HeroFull}
 “‘Buki Haken-ryu’, {HeroFull}.
 ---
 >  礼はいわないぜ、
 >  万丈様とやら」
-I won't bow to you, Lord Banjo or whatever you are.”
+Don't expect any thanks, ‘Lord Banjo’ or whatever you are.”
 
 @17388 Banjo · 万丈
 > 「構わないさ。それから僕の事は
@@ -301,12 +317,13 @@ I won't bow to you, Lord Banjo or whatever you are.”
 Forgive me, but what exactly is this ‘Buki Haken-ryu’?”
 
 @17389 Brad · ブラッド（本话主角）
+# 审校：词条：ヴァイローズ=Virose
 > 「俺たちの師匠
 >  ヴィロー・スンダが、つくりあげた
-“The robot martial art that our master, Viro Sunda, created...
+“It's the martial art for robots
 ---
 >  ロボットによる格闘術だ
-is a fighting art for robots.
+that our master, Viro Sunda, created.
 ---
 >  俺のアースゲインと
 >  {PartnerName}のヴァイローズは
@@ -463,6 +480,8 @@ whose research Karaba supports.”
 “Huh, so you guys do that kind of thing too.”
 
 @17403 Garrison · ギャリソン
+# 审校：全局：旧連邦 = former Federation
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「科学者の方々、特に軍事
 >  関係や、それに転用できる
 “Scientists, especially those researching military matters
@@ -477,7 +496,7 @@ tend to catch the Empire's eye.
 ---
 >  ほかにも旧連邦の技術者など
 >  何人かの方がおりますが
-There are also several others, such as Former Federation engineers,
+There are also several others, such as former Federation engineers,
 ---
 >  大半の方はもともと
 >  日本地区に研究施設を
