@@ -1868,10 +1868,10 @@ it’s another dimension. The ones heading into Muge’s universe will probably 
 the high-powered machines. Just for your reference.”
 
 @42585
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  ムゲの宇宙へ行く
 > *  地球圏に残留する
-* Go to Muge’s universe
+* Go to the Muge universe
 * Remain in the Earth Sphere
 
 @42586 Ark · アーク（按段落 3DD1）
@@ -2847,10 +2847,11 @@ there’s no point in talking it over.”
 “I think red would be better.”
 
 @42738
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  プル用の黒のまま残す
 > *  プルツー用に赤くする
 * Keep it black for Ple
-* Make it red for Ple-Two
+* Paint it red for Ple-Two
 
 @42739 Ple · プル
 > 「わーい、やったぁっ!

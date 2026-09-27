@@ -1,143 +1,165 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @intro:5506 
+# 审校：开场序章精翻（2026-09-27）
 > 人類が、増えすぎた人口を宇宙に移民させるようになって、すでに２世紀近く。地球のまわりには巨大なスペースコロニーが数百機浮かび、人々はこの人工の大地を、第二の故郷とした。総人口の８割が宇宙に暮らすようになった、この時代……。
-Nearly two centuries have passed since humanity began emigrating into space to ease its overpopulation. Hundreds of colossal space colonies now float around the Earth, and people have come to regard this artificial land as their second home. In this era, when eight-tenths of the total population lives in space...
+Nearly two centuries have passed since humanity began moving its surplus population into space. Hundreds of giant space colonies float around the Earth, and people have made these man-made lands their second home. It is an age in which eight in every ten people live in space...
 
 @intro:5507 
+# 审校：开场序章精翻（2026-09-27）
 > しかし、地上に残った政府高官や一部の特権階級の者たちは、そのような時代となってもなお、宇宙を地上から統制できると信じていた。その地上のエリートたちと、宇宙移住者の意識格差は対立の図式をうみ、連邦政府はコロニーに対する抑圧を高めていった。
-Yet even in such an age, the government officials and privileged few who remained on the ground still believed they could rule space from the Earth below. The gulf in awareness between these terrestrial elites and the space emigrants bred a structure of conflict, and the Federation government tightened its oppression of the colonies.
+Yet the high officials and the privileged few who remained on Earth still believed, even in such an age, that space could be ruled from the ground. The gulf in outlook between these Earthbound elites and the space emigrants set the two sides against each other, and the Federation government grew ever more oppressive toward the colonies.
 
 @intro:5508 
+# 审校：开场序章精翻（2026-09-27）
 > Ａ．Ｃ．１９１年、１月……
-A.C. 191, January...
+January, A.C. 191...
 
 @intro:5509 
+# 审校：开场序章精翻（2026-09-27）
 > 地球からもっとも遠いコロニー群サイド３は、ジオン公国を名乗り、地球連邦政府に対して独立戦争を挑んだ。半年以上におよんだこの戦いは、人類の総人口の半数を死に至らしめるという、史上類を見ない凄惨なものとなった。
-Side 3, the cluster of colonies farthest from the Earth, declared itself the Principality of Zeon and rose in a war of independence against the Earth Federation government. Lasting over half a year, this war became a catastrophe unmatched in history, claiming the lives of half of humanity's total population.
+Side 3, the cluster of colonies farthest from Earth, declared itself the Principality of Zeon and waged a war of independence against the Earth Federation government. The war raged for more than half a year and claimed the lives of half the human race, a carnage without parallel in history.
 
 @intro:5510 
+# 审校：开场序章精翻（2026-09-27）
 > 戦争は国力に勝る地球連邦の勝利に終わり、ジオンの独裁者ザビ家一党は倒れる。だがしかし……これは人類の苦難の、ほんの前奏曲でしかなかった。
-The war ended in victory for the Earth Federation, superior in national strength, and the Zabi family, Zeon's dictators, fell. But even so... this was merely a prelude to humanity's suffering.
+The war ended in victory for the Earth Federation, with its greater national might, and the Zabi family, Zeon’s dictators, fell. And yet... this was merely the prelude to humanity’s suffering.
 
 @intro:5511 
+# 审校：开场序章精翻（2026-09-27）
 > Ａ．Ｃ．１９１年、９月……
-A.C. 191, September...
+September, A.C. 191...
 
 @intro:5512 
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
-# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
+# 审校：开场序章精翻（2026-09-27）
 > 人類は、かつて想像したことすらなかった、恐るべき脅威にさらされた。外宇宙からの侵略者、ムゲゾルバドス帝国の出現である。人々はジオン独立戦争で疲弊し、その勝利者である地球連邦は腐敗し、戦後の復興も遅々として進まぬ中で、いまだ勝利の美酒に酔いしれていた。
-Humanity was exposed to a terrifying threat it had never even imagined: the appearance of invaders from outer space, the Muge Zorbados Empire. The people were exhausted by the Zeon War of Independence, the Earth Federation that had won it was corrupt, and postwar recovery crawled along... yet they still reveled in the sweet wine of victory.
+Humanity came face to face with a terror it had never even imagined: invaders from outer space, the Muge Zorbados Empire. The people had been worn down by the Zeon War of Independence, and the Earth Federation, the war’s victor, had grown corrupt. Even as postwar recovery crawled along, it was still drunk on the wine of victory.
 
 @intro:5513 
-# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zolbados Empire
+# 审校：开场序章精翻（2026-09-27）
 > 圧倒的な戦力で地球圏へ侵攻したムゲゾルバドス帝国軍の前に、連邦宇宙軍はなんら効果的な反撃もできぬまま、敗退。衛星軌道上からの攻撃によって、地上の都市の７０％が業火に焼かれるに至り、地球連邦政府はついに全面降伏を宣言した。
-Before the Muge Zorbados Imperial forces that invaded the Earth Sphere with overwhelming military might, the Federation Space Force could mount no effective counterattack and was routed. With attacks from satellite orbit setting 70% of the Earth's cities ablaze, the Earth Federation government finally declared total surrender.
+The forces of the Muge Zorbados Empire swept into the Earth Sphere with overwhelming might, and the Federation Space Force was routed without mounting a single effective counterattack. Bombardment from orbit engulfed 70% of the cities on the surface in flames, and at last the Earth Federation government declared total surrender.
 
 @intro:5514 
+# 审校：开场序章精翻（2026-09-27）
 > こうして地球圏は、異星人の帝国の占領下におかれることとなったのである。
 > 時にＡ．Ｃ．１９１年、１２月のことであった。
-And so the Earth Sphere came to be placed under the occupation of an alien empire.
-It was in December of A.C. 191.
+And so the Earth Sphere fell under the occupation of an alien empire.
+It was December, A.C. 191.
 
 @intro:5515 
+# 审校：开场序章精翻（2026-09-27）
 > のちに一年戦争と呼ばれたこの戦いの後に待っていたものは、帝国による苛烈な弾圧と、血の粛清。そして、恐怖による支配だった。帝国の支配体制の確立は、地球に潜んでいた非人類種族の出現をも促し、人々は自らの行く末に恐怖した。
-What awaited after this war, later called the One Year War, was the Empire's ruthless oppression, a bloody purge. And rule by fear. The establishment of the Empire's regime also hastened the appearance of non-human races lurking on Earth, and people dreaded what lay ahead for them.
+What followed this war, later called the One Year War, was the Empire’s brutal oppression and bloody purges. And rule by fear. As the Empire’s rule took hold, it also drew out non-human races that had lain hidden on Earth, and people were horrified at what their future held.
 
 @intro:5516 
+# 审校：开场序章精翻（2026-09-27）
 > それから３年が過ぎ、世界各地で再び、帝国の支配に対する抵抗運動が活発化する兆しが見え始める。
 > Ａ．Ｃ．１９５年……地球の未来は、まだ混沌の闇の中にあった。
-Three years passed, and signs of renewed resistance against the Empire's rule began to stir across the world.
-A.C. 195... The future of the Earth was still lost in the darkness of chaos.
+Three years passed, and all across the world, resistance against the Empire’s rule began to show signs of stirring once more.
+A.C. 195... The future of the Earth still lay in the darkness of chaos.
 
 @intro:5517 
+# 审校：开场序章精翻（2026-09-27）
 > Ａ．Ｃ．１９５年。地球……
 A.C. 195. Earth...
 
 @intro:5518 
+# 审校：开场序章精翻（2026-09-27）
 > １人の少年がいる。
 > ジオン独立戦争で両親を失った、コロニー生まれの少年だ。
 There is a boy.
-A colony-born boy who lost his parents in the Zeon War of Independence.
+Born in the colonies, he lost his parents in the Zeon War of Independence.
 
 @intro:5519 
+# 审校：开场序章精翻（2026-09-27）
 > 少年は戦後、地上のおば夫婦のもとへと身を寄せていた。ムゲゾルバドス帝国の強圧な支配体制の只中にあっても、彼の３年間は、あるいは平穏であったといえたかもしれない。
-After the war, the boy went to live with an aunt and uncle on the ground. Even amid the iron-fisted rule of the Muge Zorbados Empire, his three years might perhaps have been called peaceful.
+After the war, the boy went to live with his aunt and uncle on Earth. Even under the Muge Zorbados Empire’s iron-fisted rule, his three years there might, perhaps, have been called peaceful.
 
 @intro:5520 
+# 审校：开场序章精翻（2026-09-27）
 > 少なくとも、彼の住んでいた町が帝国軍のゲリラ狩りによって、戦場と化すまでは。彼のおば夫婦、そして彼が好意を寄せていた少女の命が、爆発の閃光の中に、恐ろしい破壊の中に、一瞬にして消え去ってしまう、その時までは……
-At least, until the town where he lived was turned into a battlefield by the Imperial Army's guerrilla hunts. Until the moment his aunt and uncle, and the girl he had feelings for, vanished in an instant within the flash of an explosion, within that terrible destruction...
+At least, until the Imperial Army’s guerrilla hunts turned the town where he lived into a battlefield. Until the moment his aunt and uncle, and the girl he had come to care for, were gone in an instant, in the flash of an explosion, amid terrible destruction...
 
 @intro:5521 
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：开场序章精翻（2026-09-27）
 > １人の少女がいる。
 > 地球連邦軍の軍人であった父の死をきっかけに、反帝国運動に身を投じ、過酷な３年間を生きてきた少女だ。
 There is a girl.
-A girl who, after the death of her father... a soldier of the Earth Federation Forces... threw herself into the anti-Imperial movement and survived three harsh years.
+After the death of her father, a soldier of the Earth Federation Forces, she threw herself into the anti-Imperial movement and has survived three harsh years.
 
 @intro:5522 
+# 审校：开场序章精翻（2026-09-27）
 > その年齢に似合わぬ強い意思の力と、高い戦闘能力によって、彼女はいつしか、その地域の中核のゲリラ戦士として、認知されていった。
-Through a strength of will beyond her years and high combat ability, she came to be recognized before long as a core guerrilla fighter of her region.
+With a strength of will beyond her years and formidable fighting skill, she came in time to be known as one of the core guerrilla fighters in her region.
 
 @intro:5523 
+# 审校：开场序章精翻（2026-09-27）
 > そして、その日……
 > 彼女のこれからの運命を決定づける出来事が、待ち受けていた……
 And then, that day...
-An event that would decide her fate from then on lay in wait...
+An event that would decide her fate lay in wait for her...
 
 @intro:5524 
+# 审校：开场序章精翻（2026-09-27）
 > その日、少年は、苛烈な戦いの運命へと、足を踏み出す。
-That day, the boy takes his first step toward a fate of fierce battle.
+That day, the boy takes his first step toward a destiny of fierce battle.
 
 @intro:5525 
-# 审校：『武機覇拳流』按规则应使用弯引号 ‘ ’，但此处是专名，按英文惯例改为双引号 “ ” 更自然，且与词表大小写一致。
+# 审校：开场序章精翻（2026-09-27）
 > 巨大人型ロボット兵器による格闘戦をつきつめて体系化されたという、超絶の戦闘術“武機覇拳流”。孤児であった少年を拾った老人は、その開祖であった。
-The supreme combat art said to have been systematized by pushing melee combat with giant humanoid robot weapons to its limits: “Buki Haken-ryu.” The old man who took in the orphaned boy was its founder.
+“Buki Haken-ryu”: a peerless martial art, said to have been born from taking hand-to-hand combat between giant humanoid robot weapons to its limits and shaping it into a system. The old man who took in the orphaned boy was its founder.
 
 @intro:5526 
-# 审校：词条：ヴァイローズ=Virose
-# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
+# 审校：开场序章精翻（2026-09-27）
 > ムゲゾルバドス帝国の侵略時には、いまだ未熟と戦いに出ることを禁じられていたこの２人。だが、彼らの父であり、師であった老人は、病が原因で帰らぬ人となる。２人の弟子に『弱き人々のために戦え』という言葉と、“武機覇拳流”専用ロボ、アースゲインとヴァイローズを残して。
-At the time of the Muge Zorbados Empire's invasion, these two were still deemed unripe and forbidden to go into battle. But the old man who was their father and their Master died of illness. He left his two disciples the words “Fight for the weak,” and the Buki Haken-ryu's dedicated robots, Earthgain and Virose.
+When the Muge Zorbados Empire invaded, the two were still judged too green and forbidden to fight. But the old man who had been their father and their master fell ill and never recovered. To his two disciples he left the words ‘Fight for the weak,’ and the robots built for “Buki Haken-ryu”: Earthgain and Virose.
 
 @intro:5527 
+# 审校：开场序章精翻（2026-09-27）
 > 今、闘士たちの運命の歯車が回り始める。
 > 行く手に待つものは、はたして……
-Now, the gears of the warriors' fate begin to turn.
-What awaits them on the road ahead, one wonders...
+Now the gears of fate begin to turn for these fighters.
+And what awaits them on the road ahead...
 
 @intro:5528 
+# 审校：开场序章精翻（2026-09-27）
 > 少女は、許せなかった。ずっと、そう思い続けていた。
-The girl could not forgive. She had kept thinking so, all along.
+There was something the girl could not forgive. She had always felt that way.
 
 @intro:5529 
+# 审校：开场序章精翻（2026-09-27）
 > 欧州を中心にした特権階級を母体とする、ロームフェラ財団。ムゲゾルバドス帝国の支配体制の中にあっても、帝国に取り入ることでその権益を維持し続けている者たちだ。彼女もまた、財団を構成する名家の現当主である。
-The Romefeller Foundation, whose core is the privileged class centered on Europe. Even under the Muge Zorbados Empire's regime, they are the ones who have kept their privileges by ingratiating themselves with the Empire. She, too, is the current head of a distinguished family that makes up the Foundation.
+The Romefeller Foundation, rooted in the privileged classes centered on Europe. Even under the Muge Zorbados Empire’s rule, its members have kept their privileges by currying favor with the Empire. She, too, is the current head of one of the noble houses that make up the Foundation.
 
 @intro:5530 
+# 审校：开场序章精翻（2026-09-27）
 > だが、たとえそのような目的があったとしても、帝国の非道な行ないをただ見ているしかできぬ自分に、彼女はいらだちを抑えきれずにいた。帝国と、彼女が属する財団こそが、彼女が許せないものだったのだから。
-But even if she had such a purpose, she could not hold back her frustration at being able to do nothing but watch the Empire's atrocities. For the Empire, and the Foundation to which she belonged, were precisely what she could not forgive.
+Yet even with that purpose, she could not quell her frustration at being able to do nothing but watch the Empire’s atrocities. For the Empire, and the Foundation she belonged to, were the very things she could not forgive.
 
 @intro:5531 
+# 审校：开场序章精翻（2026-09-27）
 > しかし、その日……彼女がひたすら待ちわびていた、ひとつの報せが届く。
 > 彼女を戦いの中へといざなう、運命の鐘を鳴らすために……
-However, that day... a single piece of news she had been waiting for with all her heart arrived.
-To ring the bell of fate that would beckon her into battle...
+But that day... word finally came, the news she had been longing for.
+To ring the bell of fate that would call her into battle...
 
 @intro:5532 
+# 审校：开场序章精翻（2026-09-27）
 > 次々と消えていく仲間たち。いつ終わるともしれぬ戦い。生と死の入り交じった戦場を駆け続ける日々の中で、彼女は生きる意味を見失っていく。
-Comrades vanishing one after another. A battle with no end in sight. In days spent racing across battlefields where life and death intermingle, she loses sight of what it means to live.
+Comrades lost, one after another. A fight with no end in sight. Through days spent racing across battlefields where life and death intertwine, she is losing sight of what she lives for.
 
 @intro:5533 
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：开场序章精翻（2026-09-27）
 > ただ一代で築きあげた己の技を継ぐ者を探していたこの老人に出会ったのが、果たして少年にとって幸運であったのか不運であったのか。ともあれ、少年は厳しい修行の中で、やはり孤児であった兄弟弟子とともに、この超絶の技を体得していったのだ。
-Whether it was fortune or misfortune for the boy to meet this old man, who sought one to inherit the art he had built up in a single lifetime. In any case, amid harsh training, together with his fellow disciple... also an orphan... the boy mastered this supreme art.
+The old man had built his art in a single lifetime and was searching for someone to carry it on. Was meeting him fortune or misfortune for the boy? Whatever the answer, through harsh training, the boy mastered this peerless art alongside a fellow disciple, an orphan like himself.
 
 @intro:5534 
+# 审校：开场序章精翻（2026-09-27）
 > しかし、彼女がそのような不名誉に甘んじていたのはひとえに、財団と帝国の情報を、反帝国ゲリラへと提供するためであった。
-But the only reason she stooped to such dishonor was to provide the Foundation's and the Empire's intelligence to the anti-Imperial guerrillas.
+But she bore that disgrace for one reason alone: to pass the Foundation’s and the Empire’s secrets to the anti-Imperial guerrillas.
 
 @intro:5535 
+# 审校：开场序章精翻（2026-09-27）
 > そしていま……運命の扉が開く……
 And now... the door of fate opens...

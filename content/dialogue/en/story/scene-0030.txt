@@ -1883,11 +1883,11 @@ I want to check over the units later. Would you give me a hand?”
 “What do you want, coward? Got some business with me?”
 
 @23103
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  この前は悪かったな
 > *  別に、用なんてない
-* Sorry about the other day.
-* No, I don’t have any business with you.
+* Sorry about the other day
+* Nothing. I don’t need anything from you
 
 @23104 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -2174,10 +2174,11 @@ It’s as if... I’m seeing my old self in a mirror.)
 “Nothing. It’s none of your business anyway.”
 
 @23147
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  そうか……邪魔をしたな
 > *  それはそうだが……
-* “I see... I was interrupting, then.”
-* “That may be so, but...”
+* I see... Sorry to bother you
+* That may be so, but...
 
 @23148 Selain · セレイン（按段落 3DD2）
 # 审校：“I was interrupting, then”生硬

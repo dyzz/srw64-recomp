@@ -1757,11 +1757,11 @@ a private force. At least as far as Bask and Jamitov are concerned.”
 “...I do know where she’s being held, but... what do you intend to do?”
 
 @26608
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  別に、どうもしやしませんよ
 > *  わかりません……わかりませんけど……
-* “It’s not like I’m going to do anything.”
-* “I don’t know... I don’t know, but...”
+* I’m not going to do anything
+* I don’t know... I don’t know, but...
 
 @26609 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号

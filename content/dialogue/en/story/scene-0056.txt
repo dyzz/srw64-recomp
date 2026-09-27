@@ -3310,10 +3310,10 @@ However, if you need it, I can look into it right away.”
 “{HeroNick}, what do you intend to do?”
 
 @37166
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  別に、どうもしやしませんよ
 > *  わかりません。わかりませんけど……
-* Nothing in particular.
+* I’m not going to do anything
 * I don’t know. I don’t know, but...
 
 @37167 Ark · アーク（按段落 3DD1）

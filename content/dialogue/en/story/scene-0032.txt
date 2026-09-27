@@ -405,13 +405,13 @@ it doesn’t feel realistic to me.”
 What do you think, {HeroNick}?”
 
 @23761
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  ばかげてるよ
 > *  理想だとは思うけど
 > *  きっとできると信じたい
-* It’s ridiculous.
-* I think it’s an ideal, but...
-* I want to believe it can happen.
+* It’s ridiculous
+* It’s a nice ideal, but...
+* I want to believe it can happen
 
 @23762 Ark · アーク（按段落 3DD1）
 # 审校：“saying dreamy things”直译
@@ -448,13 +448,13 @@ There’s no way the Empire or Romefeller would accept that kind of thinking.”
 Even if it’s impossible right away, it’s something that could come true someday. That’s what I want to believe.”
 
 @23765
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  無理だな。しょせんは夢物語だ
 > *  本当に実現できるのならいいがな
 > *  私は……信じてみてもいいと思う
-* It’s impossible. In the end, it’s just a pipe dream.
-* It’d be nice if it really could come true.
-* I... think it’s worth believing in.
+* It’s impossible. In the end, it’s just a pipe dream
+* It’d be nice if it really could come true
+* I... think it’s worth believing in
 
 @23766 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -492,13 +492,13 @@ that sort of thing is absurd. But... someday an age like that will come.
 That’s what I want to think.”
 
 @23769
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  連中は考えが甘すぎるな
 > *  本当にできんのならいいけどよ
 > *  ああ、俺もすげぇと思うぜ
-* Those guys are too soft in the head.
+* Those guys are too soft in the head
 * It’d be nice if it really could happen, but...
-* Yeah, I think it’s amazing too.
+* Yeah, I think it’s amazing too
 
 @23770 Brad · ブラッド（按段落 3DD3）
 # 审校：甘い是天真不是 soft in the head；结尾直译
@@ -535,13 +535,13 @@ There’s no way we can get by without fighting the Empire and OZ.”
 but if it could happen, that’d be great... I really mean that.”
 
 @23773
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  残念だけど、実現できるとは……
 > *  確かにすばらしいことだとは思うけど
 > *  あたしもアンナと同じよ
 * I’m sorry, but I don’t think it can happen...
 * I do think it’s a wonderful thing, but...
-* I’m with Anna on this.
+* I’m with Anna on this
 
 @23774 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -1824,10 +1824,11 @@ I hear they even stormed into Gresco’s place before.”
 You must be wondering about it too, {HeroNick}?”
 
 @23952
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  なんとかがんばってほしいとは思うけど
 > *  何か、できることでもあればいいんだけど
-* I hope they manage to pull it off somehow.
-* If only there were something we could do to help.
+* I hope they can pull through somehow, but...
+* If only there were something we could do to help
 
 @23953 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1844,10 +1845,11 @@ plenty of our own troubles ahead.”
 “...If only there were something we could do to help.”
 
 @23955
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  気にはなるが……
 > *  なにかしてやれることがあればいいんだが
 * It does worry me, but...
-* If only there were something we could do for them.
+* If only there were something we could do for them
 
 @23956 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1862,11 +1864,11 @@ plenty of our own troubles ahead.”
 “That’s right... if only there were something we could do for them.”
 
 @23958
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  気にはなるけどよ……
 > *  行って何か手伝ってやりたいよな
 * It does worry me, but...
-* I’d sure like to go lend them a hand.
+* I’d sure like to go lend them a hand
 
 @23959 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号

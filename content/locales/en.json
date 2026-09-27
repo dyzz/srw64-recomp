@@ -1249,7 +1249,7 @@
     {
       "key": "base:t00_00287",
       "source_sha256": "abc824ddfc857a11ae2a01be4eaf072a2ed279160ef19230316ec24410a1dbcd",
-      "target": "Fierce! The Assault on Elbulls<END>",
+      "target": "Fierce! Onslaught of the Elbulls<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1291,7 +1291,7 @@
     {
       "key": "base:t00_00293",
       "source_sha256": "54d5760f30843ab4f48ee497f61154581f73d024993a14c2bf97833ebf0f3c7f",
-      "target": "The Shooting Star a Girl Saw<END>",
+      "target": "The Shooting Star the Girl Saw<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1403,7 +1403,7 @@
     {
       "key": "base:t00_00309",
       "source_sha256": "9f81764d7a39fba05a9d0b8e972da2ddb1d905b92696b912fae169bd2367b02b",
-      "target": "Reunion, My Master<END>",
+      "target": "Reunion with My Master<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1592,7 +1592,7 @@
     {
       "key": "base:t00_00336",
       "source_sha256": "9cd310171cb72f865a34c3469e9c3e9af39b92c1f07d19687f5dbb71c2fa25b5",
-      "target": "With Heart in That Fist<END>",
+      "target": "A Heart Within the Fist<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1669,14 +1669,14 @@
     {
       "key": "base:t00_00347",
       "source_sha256": "8fa5a4f909ab1092de9bd955760e26d7bb8772d410ba63bb7fee21d524388098",
-      "target": "What Battle Means<END>",
+      "target": "What We Fight For<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00348",
       "source_sha256": "966687114d4a341c2baddae191c4f52d599048ac97719a9a531fde1b0a39e132",
-      "target": "Sanc Kingdom, Fallen<END>",
+      "target": "The Sanc Kingdom Falls<END>",
       "review_status": "draft",
       "origin": "terms"
     },

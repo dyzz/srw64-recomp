@@ -2,10 +2,11 @@
 # The staff roll after the ending and the copyright page at boot. Drawn as native text in game instead of the
 # original images; the staff roll follows the reading language, the copyright page keeps its original wording.
 # '>' lines are what Japanese shows, and the reference. Names are romanized given name first.
-# The credits give no readings. These are best guesses and need checking against another source:
-#   赤羽仁 Jin, 冬木稔一 Toshikazu, 赤石龍彌 Tatsuya, 達啓 Kei, 遠藤啓枝 Hiroe, 岩脇哲英 Tetsuhide,
-#   本間寧 Yasushi, 大塚晃慶 Akiyoshi, 横澤啓予 Keiyo, 河野さち子 Kono, 藤井大誠 Taisei, 川田真也 Kawata,
-#   堅木暁 Kataki Akira. じっぱひとからげ and えちおぴあん太郎 are pen names.
+# The credits give no readings. Checked 2026-09-27: 赤羽仁 Jin Akabane (English Wikipedia),
+#   野村教裕 Michihiro Nomura (English Wikipedia, VGMdb), 河野さち子 こうの (Japanese Wikipedia), 濱田智之
+#   Tomoyuki Hamada (VGMdb). Still best guesses, no source found: 冬木稔一 Toshikazu, 赤石龍彌 Tatsuya,
+#   達啓 Kei, 遠藤啓枝 Hiroe, 岩脇哲英 Tetsuhide, 本間寧 Yasushi, 大塚晃慶 Akiyoshi, 横澤啓予 Keiyo,
+#   藤井大誠 Taisei, 川田真也 Kawata, 堅木暁 Kataki Akira. じっぱひとからげ and えちおぴあん太郎 are pen names.
 # To change them, copy this file to the user folder, see docs/guide/dialogue-text.md.
 
 @intro:5544 staff 1
@@ -97,7 +98,7 @@ Tomoyuki Hamada
 > 野村　教裕
 > （ティーズミュージック）
 Music
-Norihiro Nomura
+Michihiro Nomura
 (T's Music)
 
 @intro:5556 staff 13
@@ -131,7 +132,7 @@ Shinya Terashima　　Taisei Fujii
 @intro:5560 staff 17
 > 演出原画
 > 金田　浩之
-Effects Illustrations
+Battle Animation Key Art
 Hiroyuki Kaneda
 
 @intro:5561 staff 18
@@ -153,13 +154,13 @@ Super Robot Wars Link Battler Team
 @intro:5562 staff 19
 > 協力
 > スーパーロボット大戦委員会
-In Cooperation With
+Cooperation
 Super Robot Wars Committee
 
 @intro:5563 staff 20
 > 企画・販売
 > （株）バンプレスト
-Planning & Sales
+Planning & Publishing
 Banpresto Co., Ltd.
 
 @intro:620 copyright page

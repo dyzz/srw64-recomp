@@ -2787,10 +2787,11 @@ is pointless no matter how much you talk it over.”
 “I think red would be better.”
 
 @48593
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  プル用の黒のまま残す
 > *  プルツー用に赤くする
-* Leave it black for Ple
-* Make it red for Ple-Two
+* Keep it black for Ple
+* Paint it red for Ple-Two
 
 @48594 Ple · プル
 > 「わーい、やったぁっ!

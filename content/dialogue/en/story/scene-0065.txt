@@ -637,13 +637,13 @@ and believing in what, are you fighting?!”
 was fate, you know?”
 
 @28805
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  貴様の戯れ言はもうたくさんだ!
 > *  フン、もの好きな奴だな
 > *  敵である以上は戦う以外はなかろう
-* “I’ve had enough of your nonsense!”
-* “Hmph, you’re a glutton for punishment.”
-* “As long as you’re the enemy, there’s no choice but to fight.”
+* Enough of your nonsense!
+* Hmph. You have strange taste
+* As long as you’re the enemy, there’s nothing to do but fight
 
 @28806 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号

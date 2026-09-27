@@ -1554,11 +1554,11 @@ It’s from a poem I heard long ago. That’s the title of the poem.”
 “Oh, that’s nice, isn’t it? What do you think, {HeroNick}?”
 
 @32003
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  それでかまわない
 > *  気に入らない
-* That works for me.
-* I don’t like it.
+* That’s fine with me
+* I don’t like it
 
 @32004 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -2103,12 +2103,12 @@ as fellow members of OZ, I want us to face the Imperial forces together.”
 is what they call fate. Don’t you think so?”
 
 @32088
-# 审校：选择肢弯撇号
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  ざれ言につきあっているヒマはない
 > *  誰が思うものか
 > *  黙れ!
-* I don’t have time to play along with your nonsense.
-* As if I’d ever think that.
+* I don’t have time to play along with your nonsense
+* As if I’d ever think that
 * Shut up!
 
 @32089 Selain · セレイン（按段落 3DD2）

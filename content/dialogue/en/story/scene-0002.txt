@@ -505,12 +505,13 @@ Can’t count on Intelligence either. So that’s their target...”
 “Pilot out there, can you still fight?”
 
 @17582
+# 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
 > *  は、はい……
 > *  ほっといてくれ!
 > *  …………
-* “Y-yes...”
-* “Leave me alone!”
-* “...”
+* Y-yes...
+* Leave me alone!
+* ...
 
 @17583 Ark · アーク（按段落 3DD1）
 > 「は、はい……」
