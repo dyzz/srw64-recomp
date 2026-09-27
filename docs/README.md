@@ -115,6 +115,7 @@
 | [原始数据目录](data/original-data-catalog.md) | 文本／资源／机体／驾驶员／场景地图提取、整合档案、特殊能力与技能持有者、引用链 |
 | [原版图片与武器标记](data/original-images.md) | 人物头像、机体地图图标、战场底图及武器属性标记 |
 | [战斗图像](data/battle-graphics.md) | 机体战斗图、动画零件、特效、cut-in 的资源分布、绑定表、场景格式与整理导出 |
+| [战斗台词选择表](data/battle-quotes.md) | 哪句台词在什么时候说：声部号、通用台词段九个情境、条件台词表与原版读不到的台词；导出里的 `# 触发：` 注释由此而来 |
 | [战斗动画与自定义机体](data/battle-animation.md) | 战斗动画脚本的处理逻辑，加入自定义机体与武器的可行性 |
 | [3D 资源分析](data/3d-model-replacement-analysis.md) | 原始 3D 资源与模型替换可行性 |
 | [战术地图清单](data/tactical-maps.md) | 158 张战术地图逐张的尺寸、图集、初始场景与动态效果（水面等调色板循环、殖民地、3D34 换图） |
@@ -139,6 +140,9 @@
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
 | [HD 化规划](design/hd-pipeline-plan.md) | HD 各类的现状、四条接入路径（宿主整张绘制／RT64 哈希替换／原生模型／原生文字）、战术地图整张接管的实现与待做、制作工具 |
 | [战术地图 HD 生成包](design/tactical-map-hd-kit.md) | 131 张战术地图的清单与动态元素、image_gen 生成包与变体包、殖民地 8 帧、地形面板伪 tile 与总览缩放、接入美术清单与自用包 |
+| [台词润色规划](design/dialogue-polish-plan.md) | 按人物口吻做风格审校：人物设定卡、风格审校与跨页整条重读、试点与全量结果、精读与抽检进度 |
+| [机体立绘 HD](design/unit-pose-hd.md) | 原生页面机体大图的规模、千问试做与本地 ESRGAN 定案、接入与按尺寸等级缩放 |
+| [机体标识 HD](design/unit-icon-hd.md) | 地图单位图标保留像素感的重画：MMPX→PixelPerfectV4→硬量化→MMPX 的 64² 色号图、RT64 哈希接入 |
 | [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md) | 美术高清化实验 |
 
 ## 验证层次
