@@ -7,11 +7,13 @@
 “...So you're joining up with the resistance too?”
 
 @50940 Kappei · 勝平
+# 审校：补全整条台词的外层引号
 > 「そうなんだよね。俺は乗り気じゃ
 >  ないんだけど、じっちゃんのいいつけでね」
 “Yeah, that's right. I'm not exactly thrilled about it, but Gramps gave the order.”
 
 @50941 Keiko · 恵子
+# 审校：补全整条台词的外层引号
 > 「地球を救うために、
 >  レジスタンス部隊と協力して
 “We were told to work with the resistance
@@ -113,9 +115,10 @@ My luck hasn't run out yet.”
 “Let's intercept them! Cecily, are you ready?”
 
 @50953 Cecily · セシリー
-# 审校：补上开头的左双引号和结尾的右双引号。
+# 审校：与 50867 一致
+# 检查提示：未用必用译名：ビギナ・ギナ→Vigna-Ghina
 > 「ビギナ・ギナで出るわ」
-“I'll take out the Vigna-Ghina.”
+“I'll sortie in the Vigna-Ghina.”
 
 @50954 Shingo · 真吾
 # 审校：补上开头的左双引号和结尾的右双引号。
@@ -168,9 +171,9 @@ moving out!”
 “W-why?!”
 
 @50963 Cecily · セシリー
-# 审校：补上开头的左双引号和结尾的右双引号。
+# 审校：?!
 > 「あぁぁ!? シ、シーブック!」
-“Aaaah!? S-Seabook!”
+“Aaaah?! S-Seabook!”
 
 @50964 Kappei · 勝平
 # 审校：补上开头的左双引号和结尾的右双引号。
@@ -189,10 +192,10 @@ moving out!”
 “Uwaaaah!”
 
 @50967 Killy · キリー
-# 审校：补上开头的左双引号和结尾的右双引号。
+# 审校：书名统一
 > 「まだ『ブロンクスの狼』が
 >  書きあがってないのにね」
-“And I haven't even finished writing ‘The Wolf of Bronx’ yet.”
+“And I haven't even finished writing ‘The Wolf of the Bronx’ yet.”
 
 @50968 Kappei · 勝平
 # 审校：补上开头的左双引号和结尾的右双引号。
@@ -210,10 +213,10 @@ moving out!”
 “Yeah. ...But the fight's still far from over.”
 
 @50971 Remy · レミー
-# 审校：补上开头的左双引号和结尾的右双引号。
+# 审校：原文是疑问推测语气，用 a resistance unit 更贴合“是不是一支抵抗部队”的口吻。
 > 「見て、真吾。
 >  あれ、レジスタンス部隊じゃないかしら」
-“Look, Shingo. Isn't that the resistance unit?”
+“Look, Shingo. Isn't that a resistance unit?”
 
 @50972 Shingo · 真吾
 # 审校：补上开头的左双引号和结尾的右双引号。

@@ -1,6 +1,7 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @30663 Specials · スペシャルズ
+# 审校：全局：バルジ 词条 Barge
 > 「ゲリラ兵を警戒して、う回します。
 >  宇宙要塞バルジには
 “We'll detour to avoid the guerrillas. We'll be arriving at the space fortress Barge
@@ -10,6 +11,7 @@
 a little later than scheduled...”
 
 @30664 Dermail · デルマイユ
+# 审校：全局：バルジ 词条 Barge
 > 「まったく、この歳で前線指揮官
 >  になろうとはな。反乱軍どもめ……
 “Good grief, to become a front-line commander at my age. Those rebels...
@@ -43,6 +45,7 @@ would be here...”
 “B-but their numbers...”
 
 @30670 Dermail · デルマイユ
+# 审校：全局：バルジ 词条 Barge
 > 「ええい、振り切れ!
 >  バルジに逃げこむのだ!」
 “Enough, shake them off! We flee into Barge!”
@@ -63,6 +66,7 @@ would be here...”
 “Is it true that Duke Dermail was attacked after he went into space?!”
 
 @30674 Pagan · パーガン
+# 审校：全局：バルジ 词条 Barge
 > 「は、はい。バルジ要塞に
 >  向かう途中
 “Y-yes. On the way to Barge Fortress,
@@ -248,9 +252,10 @@ is correct... Heh heh, it seems you've brought me an interesting role.
 I thank you.”
 
 @30702 Sai Saici · サイ・サイシー
+# 审校：原文没有“兄ちゃん”对应的“my man”式亲昵称呼，且Sai对Takeru的称呼应保持简洁，去掉多余添加。
 > 「よう、タケルの兄ちゃん、
 >  また見舞いかい?」
-“Yo, Takeru, my man, visiting again?”
+“Yo, Takeru, visiting again?”
 
 @30703 Takeru · タケル
 > 「ああ。すまない、休憩時間が
@@ -344,13 +349,14 @@ in front of Domon.”
 “Wah ha ha ha ha ha!!”
 
 @30722 Takeru · タケル
-# 审校：初稿“Y-you're!”不完整且不通顺，改为“Y-you're—!”以表现被打断的惊呼。
+# 审校：精读：去破折号
 > 「お、お前はッ!」
-“Y-you're—!”
+“Y-you're...!”
 
 @30723 Emperor Zuul · ズール皇帝
+# 审校：Emperor Zuul's voice requires no contractions, so "you've" should be "you have".
 > 「よく来たな、マーズ」
-“So you've come, Mars.”
+“So you have come, Mars.”
 
 @30724 Takeru · タケル
 > 「マーグをどうした!?」
@@ -441,13 +447,14 @@ never do as you wish!”
 “Zuul?! Impossible...?”
 
 @30741 Emperor Zuul · ズール皇帝
+# 审校：Emperor Zuul's voice requires no contractions, so "You've" should be "You have".
 > 「マーズよ、お前はワシと対等に
 >  戦えたと思っておろうが、あれはワシの
 “Mars, you think you fought me as an equal, but that was merely my
 ---
 >  影にすぎん。無駄なことをしたな。
 >  ワハハハハハハハッ」
-shadow. You've done something pointless. Wah ha ha ha ha ha ha ha!”
+shadow. You have done something pointless. Wah ha ha ha ha ha ha ha!”
 
 @30742 Takeru · タケル
 > 「くっ……兄さぁぁぁぁぁぁーんっっ!!」
@@ -526,8 +533,9 @@ and pull back from our position.”
 “Why?! Aren't you in the same position as we are?!”
 
 @30753 Koji · 甲児
+# 审校：原文「このやろうっ!」是怒吼，译文缺少逗号导致语气不够强烈，补上逗号更贴合热血少年的口吻。
 > 「一緒にすんな! このやろうっ!」
-“Don't lump us in with you! You bastard!”
+“Don't lump us in with you, you bastard!”
 
 @30754 Quinze · カーンズ
 > 「ならば……我々に敵対するものと
@@ -568,8 +576,9 @@ and pull back from our position.”
 “Wh... what is it?”
 
 @30763 Vega Soldier · ベガ星兵
+# 审校：原文「撤退だぁっ!」拖长音，译文“Retreat!”未体现拖长，改为“Retreeeat!”以贴合士兵喊叫的语气。
 > 「撤退だぁっ!」
-“Retreat!”
+“Retreeeat!”
 
 @30764 Bright · ブライト
 > 「どうやら敵ではないようだな……」
@@ -734,9 +743,10 @@ to fight among themselves.”
 “Char... So it really was true...”
 
 @30790 Roux · ルー
+# 审校：大尉 统一 Captain
 > 「ハマーンとクワトロ大尉って、
 >  知り合いだったの?」
-“Haman and Lieutenant Quattro knew each other?”
+“Haman and Captain Quattro knew each other?”
 
 @30791 Simone · シモーヌ
 > 「何だか、めいっぱいワケありって
@@ -767,6 +777,7 @@ Could it be... they were lovers...”
 “What is it?”
 
 @30796 Ginrei · 銀鈴
+# 审校：全局：バルジ 词条 Barge
 > 「たった今報告が入りました。
 >  宇宙要塞バルジが……
 “A report just came in. The space fortress Barge...
@@ -775,18 +786,20 @@ Could it be... they were lovers...”
 was attacked and annihilated.”
 
 @30797 Banjo · 万丈
+# 审校：全局：バルジ 词条 Barge
 > 「バルジ要塞が落ちたって!?
 >  本当か!?」
 “Barge Fortress has fallen?! Are you serious?!”
 
 @30798 Garrison · ギャリソン
+# 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「はい。たった今、ホワイトファングの
 >  総攻撃を受けて大破したとの
 “Yes. We have just received word that it was heavily damaged in a full-scale assault by White Fang.
 ---
 >  連絡がございました。
 >  ジャミトフ司令、バスク特佐
-Commander Jamitov and Colonel Bask
+Commander Jamitov and Special Colonel Bask
 ---
 >  ともに戦死したと……」
 are both reported killed in action...”
@@ -801,6 +814,7 @@ are both reported killed in action...”
 “Yes. There is no mistake.”
 
 @30801 Bright · ブライト
+# 审校：全局：バルジ 词条 Barge
 > 「何てことだ。
 >  銀河帝国軍ならともかく
 “This is unbelievable. If it were the Galactic Empire's forces, maybe,
@@ -890,6 +904,7 @@ except the colonies.”
 “Zechs! ...Why...?!”
 
 @30813 Quattro · クワトロ
+# 审校：全局：バルジ 词条 Barge
 > 「そうか、バルジを陥落させたのは、
 >  奴のガンダムだったか!
 “I see. So it was his Gundam that brought down Barge!
@@ -981,9 +996,11 @@ Then I... I'll kill you.”
 ...That's my friend for you.”
 
 @30827 Lady · レディ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、ご準備を。
 >  すでに財団幹部はじめ
-“Lord Treize, please prepare yourself. The foundation's executives and
+“Your Excellency, please prepare yourself. The Foundation's executives and
 ---
 >  ロームフェラの中枢は、
 >  部下によって抑えています」
@@ -1007,8 +1024,10 @@ comes later. Once it's clear that a future still remains for this Earth,
 you will be the hope of everyone in the Earth Sphere...”
 
 @30829 Lady · レディ
+# 审校：Lady 对特列斯的称呼应为 Your Excellency，与 address 一致。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、お早く」
-“Lord Treize, please hurry.”
+“Your Excellency, please hurry.”
 
 @30830 Treize · トレーズ
 > 「わかった。行こう、レディ。
@@ -1086,9 +1105,10 @@ as much damage on them as possible.”
 bestowed upon you, Commander, is the elimination of the traitor Mars.”
 
 @30843 Marg · マーグ
+# 审校：原文是“混入地球势力”，tr 的 hiding himself 语气偏主动躲藏，改为 has gone to ground 更贴合“混入其中”的意思且口吻自然。
 > 「裏切り者マーズの抹殺……
 >  マーズという奴は地球の勢力に
-“Eliminate the traitor Mars... So this Mars fellow is hiding himself
+“Eliminate the traitor Mars... So this Mars fellow has gone to ground
 ---
 >  まぎれこんでいるのだな?」
 among the Earth's forces?”

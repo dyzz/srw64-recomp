@@ -286,8 +286,9 @@ Send out interceptors at once! Call back the group that went to town!”
 “Don't tell me the townspeople were already remodeled by them...”
 
 @21189 Koji · 甲児
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「エリカ、いったいどうして君が!?」
-“Erika, why in the world are you—?!”
+“Erika, why in the world are you...?!”
 
 @21190 Erika · エリカ
 > 「動かないで、お願い」
@@ -538,9 +539,10 @@ And you can care about people. Isn't that right?”
 “...”
 
 @21237 Koji · 甲児
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「それは、心があるってことだ。
 >  心があれば、それは人間なんだと
-“That means you have a heart. And if you have a heart, then you're human—
+“That means you have a heart. And if you have a heart, then you're human...
 ---
 >  オレは思ってるよ」
 that's what I believe.”
@@ -611,9 +613,10 @@ rain of bullets.”
 “You will?”
 
 @21251 Sara · 沙羅
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「たしかに、それならなんとか行けるかも
 >  しれないね」
-“She's right—that might actually get us through.”
+“She's right... that might actually get us through.”
 
 @21252 Koji · 甲児
 > 「わかった、エリカ、頼む。そうと決まれ
@@ -641,9 +644,10 @@ rain of bullets.”
 “Erika! Are you okay?! Over here!”
 
 @21258 Hayato · ハヤト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「くっ、だめだ、連中は何が何でも
 >  俺たちを殺す気だぞ!」
-“Ngh, it's no use—they're dead set on killing us no matter what!”
+“Ngh, it's no use... they're dead set on killing us no matter what!”
 
 @21259 Ryoma · リョウ
 > 「くっ……だがここまでくれば……
@@ -817,24 +821,26 @@ For the same reason, there's no telling whether she won't help the enemy again.�
 * I'm against it
 
 @21291 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去掉自加的 I say
 > 「俺は構わないと思うぜ。向こうを
 >  裏切ってまで俺たちを助けて
-“I don't mind, I say we take her in. She betrayed them to help us,
+“I don't mind. She betrayed them to help us,
 ---
 >  くれたんだろ? それに人手不足
 >  だってのは、あんたらがいってることだぜ」
 right? Besides, you're the ones saying we're short-handed.”
 
 @21292 Banjo · 万丈
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：大尉 统一 Captain
 > 「ふむ……どうする、ブライト艦長?
 >  クワトロ大尉?」
-“Hmm... What do you say, Captain Bright? Lieutenant Quattro?”
+“Hmm... What do you say, Captain Bright? Captain Quattro?”
 
 @21293 Bright · ブライト
+# 审校：精读：大尉 统一 Captain
 > 「しかたあるまい、同行を認めよう。
 >  それでいいか、大尉?」
-“We've no choice. I'll allow her to come along. Is that fine, Lieutenant?”
+“We've no choice. I'll allow her to come along. Is that fine, Captain?”
 
 @21294 Quattro · クワトロ
 > 「これでは、同行させないといったら
@@ -899,33 +905,36 @@ but we can't take her with us. I hope you can accept that.”
 * I'm... against it
 
 @21303 Manami · マナミ（按段落 3DD4）
+# 审校：精读：去掉自加的 I say
 > 「あたしは構わないと思うわ。
 >  現に彼女は、あたしたちを助けて
-“I don't mind, I say we take her in. She did help us, after all,
+“I don't mind. She did help us, after all,
 ---
 >  くれたわけだし、なんといっても許せない
 >  のは、そんなことをさせた連中だもの」
 and what I really can't forgive is the bunch who made her do it.”
 
 @21304 Lawrence · ローレンス
+# 审校：Lawrence is addressing Banjo, not Manami, so “my lady” is a wrong addressee and must be removed.
 > 「それに人手不足でもあることですし
 >  わたくしもここはひとつ甲児さまがたの
 “Besides, we are short-handed, so I believe it would be best
 ---
 >  いうようになさるのが、よろしいかと
 >  存じます」
-for you to do as Koji and the others say, my lady.”
+for you to do as Koji and the others say.”
 
 @21305 Banjo · 万丈
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：大尉 统一 Captain
 > 「ふむ……どうする、ブライト艦長?
 >  クワトロ大尉?」
-“Hmm... What do you say, Captain Bright? Lieutenant Quattro?”
+“Hmm... What do you say, Captain Bright? Captain Quattro?”
 
 @21306 Bright · ブライト
+# 审校：精读：大尉 统一 Captain
 > 「しかたあるまい、同行を認めよう。
 >  それでいいか、大尉?」
-“We've no choice. I'll allow her to come along. Is that fine, Lieutenant?”
+“We've no choice. I'll allow her to come along. Is that fine, Captain?”
 
 @21307 Quattro · クワトロ
 > 「これでは、同行させないといったら

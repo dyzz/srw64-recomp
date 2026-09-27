@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @17972 Roux · ルー
+# 审校：ライフ 统一写作 LIFE
 > 「カラバの破嵐万丈さんですね
 >  ライフのルー・ルカです」
-“You're Banjo Haran of Karaba, right? I'm Roux Louka of L.I.F.E.”
+“You're Banjo Haran of Karaba, right? I'm Roux Louka of LIFE.”
 
 @17973 Banjo · 万丈
 > 「ご苦労様。それでイゴール将軍の
@@ -19,21 +20,23 @@
 “Thank you. ......”
 
 @17976 Koji · 甲児
+# 审校：ライフ 统一写作 LIFE
 > 「……なぁ、ライフってなんだ?」
-“...Hey, what's L.I.F.E.?”
+“...Hey, what's LIFE?”
 
 @17977 Brad · ブラッド（按段落 3DD3）
 > 「知らん。俺に聞くなよ」
 “Beats me. Don't ask me.”
 
 @17978 Garrison · ギャリソン
+# 审校：合并：冲突人工取舍
 > 「地球解放戦線機構、
 >  つまり、
-“The Liberation Front of the Earth, that is,
+“L.I.F.E. is short for the Liberation Front of the Earth...
 ---
 >  Liberation Front of
 >  the Earthの略称ですな
-the abbreviation for Liberation Front of the Earth.
+that is, the Liberation Front of the Earth.
 ---
 >  スタッフの中でも特に
 >  実働部隊で好まれる
@@ -65,13 +68,14 @@ name, especially in the combat units.”
 “...Honestly.”
 
 @17984 Simone · シモーヌ
+# 审校：精读：解释缩写要说清 LIFE 是什么
 > 「あなたって、ほんと無知ね。
 >  地球解放戦線機構……
-“You really are clueless. The Liberation Front of the Earth...
+“You really are clueless. L.I.F.E. is short for the Liberation Front of the Earth...
 ---
 >  つまり、Liberation Front
 >  of the Earthの略称よ
-that is, the abbreviation for Liberation Front of the Earth.
+that is, the Liberation Front of the Earth.
 ---
 >  スタッフの中でも特に実働部隊
 >  で好まれる呼び方だわ」
@@ -192,16 +196,17 @@ so I'm sure they'll be on our side.”
 In the end, you're going to investigate, aren't you?”
 
 @17999 Banjo · 万丈
-# 待译：机翻未采用（页数应为 3，实际给了 2（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Yeah, that's the plan. Garrison, send General Igor a message saying we accept.
-# 草稿第 2 页：Also, have the nearby regions strengthen their space surveillance.”
+# 审校：精读：英文缺译；中文第三页是凭空多出的重复内容
 > 「ああ、そのつもりだ。ギャリソン、
 >  イゴール将軍に了解したと
+“Yes, that's the plan. Garrison, send General Igor
 ---
 >  電文を送ってくれ。それから、
 >  近隣地域に対宙監視を
+a message saying we agree. And have the nearby regions
 ---
 >  強化してもらってくれ」
+step up their space surveillance.”
 
 @18000 Garrison · ギャリソン
 > 「かしこまりました」
@@ -227,8 +232,9 @@ and they appear to be entering the atmosphere almost simultaneously.”
 “Six of them? All right, find out where the closest one is going to land.”
 
 @18004 Garrison · ギャリソン
+# 审校：管家口吻应无缩写，用“I shall”更符合其一丝不苟的语体。
 > 「モニターに出します」
-“I'll put it on the monitor.”
+“I shall put it on the monitor.”
 
 @18005 Brad · ブラッド（按段落 3DD3）
 > 「例の奴が落ちてくるのか?」
@@ -349,9 +355,10 @@ Please be careful.”
 ...I told you, I said surrender...”
 
 @18026 Rasid · ラシード
+# 审校：拉希德对卡特尔的称呼应为“Master Quatre”，与 address 一致。
 > 「さすがですな、カトル様
 >  よぉしお前ら、ヘマすんじゃねぇぞ!」
-“As expected of you, Lord Quatre! All right, you lot, don't screw this up!”
+“As expected of you, Master Quatre! All right, you lot, don't screw this up!”
 
 @18027 Banjo · 万丈
 > 「帝国基地を
@@ -363,12 +370,14 @@ Please be careful.”
 Was that Gundam type the one that descended in Operation M?”
 
 @18028 Koji · 甲児
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「どうするんだよ、万丈さん」
-“What do we do, Mr. Banjo?”
+“What do we do, Banjo?”
 
 @18029 Rasid · ラシード
+# 审校：拉希德对卡特尔的称呼应为“Master Quatre”，与 address 一致。
 > 「カトル様っ!」
-“Lord Quatre!”
+“Master Quatre!”
 
 @18030 Quatre · カトル
 > 「しまった、新手か!?」
@@ -439,17 +448,20 @@ I want to make good use of it.”
 “If they're not our enemy as things stand, then that's all there is to do.”
 
 @18039 Lawrence · ローレンス
+# 审校：Lawrence is speaking to Brad, not to Manami, so “my lady” is a wrong addressee.
 > 「そうでございますな」
-“Indeed, my lady.”
+“Indeed.”
 
 @18040 Roux · ルー
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「了解よ、万丈さん。
 >  その判断には賛成するわ」
-“Understood, Mr. Banjo. I agree with that call.”
+“Understood, Banjo. I agree with that call.”
 
 @18041 Rasid · ラシード
+# 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「いいんですかい、カトル様」
-“Is that all right, Lord Quatre?”
+“Is that all right, Master Quatre?”
 
 @18042 Quatre · カトル
 > 「かまわないよ。こちらにしてもムダな
@@ -464,12 +476,13 @@ then all the better.”
 “Ngh, damn...”
 
 @18044 Rasid · ラシード
+# 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「カトル様!? どうやらこれ以上は
 >  無理そうですな
-“Lord Quatre?! It seems we can't hold out any longer.
+“Master Quatre?! It seems we can't hold out any longer.
 ---
 >  ここは撤退しましょう、カトル様」
-Let's retreat here, Lord Quatre.”
+Let's retreat here, Master Quatre.”
 
 @18045 Quatre · カトル
 > 「……カラバの方、共に戦えてよかった
@@ -522,14 +535,14 @@ I pray that when we meet again, we won't be enemies.”
 “Then if we don't crush those guys, we'll have no excuse to give the folks back at base.”
 
 @18054 Gaia · ガイア
-# 机翻疑问：页数不符：原文2页，但两页内容相同，按原文逐页对应输出
+# 审校：精读：英文两页重复
 > 「オルテガ、マッシュ、せっかくの
 >  特注装備だ。使い勝手を
-“Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how it handles, if we get the chance, we're using that.
+“Ortega, Mash, this custom gear is a rare treat.
 ---
 >  整備兵に知らせてやるためにも、
 >  チャンスがあればあれをやるぞ」
-Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how it handles, if we get the chance, we're using that.”
+So we can show the mechanics how it handles, if we get the chance, we're using that.”
 
 @18055 Mash · マッシュ
 > 「了解だ、ガイア。ドライセンでどこまで
@@ -545,9 +558,10 @@ Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how
 “All right, here we go!”
 
 @18058 Rasid · ラシード
+# 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「カトル様、どうやら新手のようですな
 >  どうしますか?」
-“Lord Quatre, it seems fresh enemy units have arrived. What shall we do?”
+“Master Quatre, it seems fresh enemy units have arrived. What shall we do?”
 
 @18059 Quatre · カトル
 > 「さすがに対応が早いね。ラシード、
@@ -559,8 +573,9 @@ Ortega, Mash, this custom gear is a rare treat. So we can show the mechanics how
 Our initial objective is complete. There's no need to linger.”
 
 @18060 Rasid · ラシード
+# 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「了解です、カトル様」
-“Understood, Lord Quatre.”
+“Understood, Master Quatre.”
 
 @18061 Quatre · カトル
 > 「カラバの方、共に戦えてよかった。
@@ -1019,9 +1034,11 @@ something like that yet...
 But I'll admit there's that much to be gained from it.”
 
 @18122 Garrison · ギャリソン
+# 审校：管家口吻应避免缩写，将“it would be a bit tough”改为更正式的表达，并将“There's”改为“There is”。
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「確かに、いまの戦力では
 >  少々きつうございますな
-“Indeed, with our current forces it would be a bit tough.
+“Indeed, with our current forces it would be a bit difficult.
 ---
 >  しかし北米大陸でも
 >  反帝国運動は
@@ -1032,7 +1049,7 @@ growing momentum on the North American continent as well.
 ---
 >  現地のカラバと、
 >  地球解放戦線機構からも
-There's a strong chance we can get cooperation from the local Karaba
+There is a strong chance we can obtain cooperation from the local Karaba
 ---
 >  協力が得られる可能性は
 >  大いにありますな」

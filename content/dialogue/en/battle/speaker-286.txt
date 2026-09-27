@@ -1,186 +1,359 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6572 Zechs · ゼクス
+# 触发：攻击（通用，1/12）
 > 「ギリギリだが、叩ける!」
 “Just barely, but I can hit it!”
 
 @6573 Zechs · ゼクス
+# 触发：攻击（通用，2/12）
 > 「あと何機だ!?」
 “How many more are there?!”
 
 @6574 Zechs · ゼクス
+# 触发：攻击（通用，3/12）
 > 「そこだっ!!」
 “There!!”
 
 @6575 Zechs · ゼクス
+# 触发：攻击（通用，4/12）
 > 「とどめだっ!!」
 “This is the end!!”
 
 @6576 Zechs · ゼクス
+# 触发：攻击（通用，5/12）
+# 审校：直撃させる是自己要打中
 > 「直撃させる!」
-“Direct hit!”
+“I’ll land a direct hit!”
 
 @6577 Zechs · ゼクス
+# 触发：攻击（通用，6/12）
 > 「落ちるがいい!」
 “Fall!”
 
 @6578 Zechs · ゼクス
+# 触发：攻击（通用，7/12）
+# 审校：叹号数跟原文；甘い
 > 「あまいぞ、そこだっ!」
-“Too soft—there!”
+“Too easy... there!”
 
 @6579 Zechs · ゼクス
+# 触发：攻击（通用，8/12）
 > 「お前は戦いに何を
 >  見い出すのだ!?」
 “What do you hope to find in battle?!”
 
 @6580 Zechs · ゼクス
+# 触发：攻击（通用，9/12）
 > 「ふ……面白い!」
 “Heh... Interesting!”
 
 @6581 Zechs · ゼクス
+# 触发：攻击（通用，10/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「相手にとって不足はない!」
-“You'll do just fine as an opponent!”
+“You’ll do just fine as an opponent!”
 
 @6582 Zechs · ゼクス
+# 触发：攻击（通用，11/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「雑念は捨てている!」
-“I've cast aside all distractions!”
+“I’ve cast aside all distractions!”
 
 @6583 Zechs · ゼクス
+# 触发：攻击（通用，12/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私なりになんとかしよう」
-“I'll manage somehow, in my own way.”
+“I’ll manage somehow, in my own way.”
 
 @6584 Zechs · ゼクス
+# 触发：被击坠（通用，1/3）
 > 「私の運命もここまでか……?」
 “Is this where my fate ends...?”
 
 @6585 Zechs · ゼクス
+# 触发：被击坠（通用，2/3）
 > 「ぐぅぅっ、ここまでかっ」
 “Guh... So this is it.”
 
 @6586 Zechs · ゼクス
+# 触发：被击坠（通用，3/3）
 > 「これまでか……」
 “This is the end...”
 
 @6587 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
 > 「ぬぅおあぁぁぁっ!」
 “Nwaaaah!”
 
 @6588 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このままでは、こちらも戦えんか!?」
-“At this rate, I can't fight either?!”
+“At this rate, I can’t fight either?!”
 
 @6589 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、これ以上はもう無理だな」
-“Ngh, I can't take any more of this.”
+“Ngh, I can’t take any more of this.”
 
 @6590 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
 > 「くっ、油断があったということか!?」
 “Ngh, so I was careless?!”
 
 @6591 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
 > 「うっ……こうも直撃をくらうとは!」
 “Ugh... To take a direct hit like that!”
 
 @6592 Zechs · ゼクス
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「死ぬな……このままでは……」
-“I mustn't die... Not like this...”
+“I mustn’t die... Not like this...”
 
 @6593 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：杰克斯口吻端正；弯撇号
 > 「やるなっ!!」
-“You're good!!”
+“You’re good!!”
 
 @6594 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「ぐぅっっ……!」
 “Guh...!”
 
 @6595 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「くっ……面白い!」
 “Ngh... Interesting!”
 
 @6596 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうこなくてはな!」
-“Now that's more like it!”
+“Now that’s more like it!”
 
 @6597 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられはせんよ!」
-“I won't be beaten!”
+“I won’t be beaten!”
 
 @6598 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「なにっ!?」
 “What?!”
 
 @6599 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「よい攻撃だ! しかし私はまだ
 >  死なん!」
-“A fine attack! But I won't die yet!”
+“A fine attack! But I won’t die yet!”
 
 @6600 Zechs · ゼクス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフ、私に挑んでくる相手を、
 >  無下にはできんな」
-“Heh, I can't dismiss anyone who challenges me.”
+“Heh, I can’t dismiss anyone who challenges me.”
 
 @6601 Zechs · ゼクス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では沈まんよ!」
-“That won't be enough to sink me!”
+“That won’t be enough to sink me!”
 
 @6602 Zechs · ゼクス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「私に戦いを挑むとは……」
 “You dare challenge me...”
 
 @6603 Zechs · ゼクス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「この戦いは私の勝ちだな。
 >  なんの恐怖も感じない」
 “This battle is mine. I feel no fear at all.”
 
 @6604 Zechs · ゼクス
+# 触发：回避（通用，1/7）
 > 「私の命の見積もりが甘かった
 >  ようだな」
 “Seems I underestimated the value of my life.”
 
 @6605 Zechs · ゼクス
+# 触发：回避（通用，2/7）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「レーダー反応ロスト!? いや下か!」
-“Radar contact lost?! No—below!”
+“Radar contact lost?! No... below!”
 
 @6606 Zechs · ゼクス
+# 触发：回避（通用，3/7）
 > 「無能な……」
 “Incompetent...”
 
 @6607 Zechs · ゼクス
+# 触发：回避（通用，4/7）
+# 审校：回避情境的甘い
 > 「あまい!」
-“Too soft!”
+“Too easy!”
 
 @6608 Zechs · ゼクス
+# 触发：回避（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様には無理だ!!」
-“You're no match for me!!”
+“You’re no match for me!!”
 
 @6609 Zechs · ゼクス
+# 触发：回避（通用，6/7）
 > 「ついているな、私は」
 “Luck is on my side.”
 
 @6610 Zechs · ゼクス
+# 触发：回避（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あっけない。これでよいのか?」
-“Too easy. Is this all you've got?”
+“Too easy. Is this all you’ve got?”
 
 @6611 Zechs · ゼクス
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせはせんっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @6612 Zechs · ゼクス
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：拖音用“——”；弯撇号
 > 「させるかぁぁぁっ!!」
-“Like I'd let you!!”
+“Like I’d let you!!”
 
 @6613 Zechs · ゼクス
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「くっ……このような時に弾切れか…?」
 “Ngh... Out of ammo at a time like this...?”
 
 @6614 Zechs · ゼクス
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「エネルギーが切れたか……?」
 “Energy depleted...?”
 
 @6615 Zechs · ゼクス
+# 触发：射程外，无法反击（通用，1/2）
 > 「レーダー反応、ロスト!?」
 “Radar contact lost?!”
 
 @6616 Zechs · ゼクス
+# 触发：射程外，无法反击（通用，2/2）
 > 「ロストしただと!? ばかな!」
 “Lost?! Impossible!”
+
+@14346 Zechs · ゼクス
+# 触发：使用〈ビームサーベル／銃剣付きビームサーベル〉（低优先，可能被通用台词顶掉）
+> 「接近戦に持ち込めば
+>  なんとかなるな」
+“If I force it into close combat, I can manage.”
+
+@14347 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギス〉
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14348 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギスⅡ〉
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14349 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギスⅢ〉
+> 「このトールギスならば!」
+“With this Tallgeese!”
+
+@14350 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギス〉
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14351 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギスⅡ〉
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14352 Zechs · ゼクス
+# 触发：攻击，乘坐〈トールギスⅢ〉
+> 「このトールギスならできるのだ!」
+“This Tallgeese can do it!”
+
+@14353 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you’re saying, Zero?”
+
+@14354 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロ(バード)〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you’re saying, Zero?”
+
+@14355 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロカスタム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「殺しに来た者は殺せ、
+>  そういうのだな、ゼロ?」
+“Kill those who come to kill, is that what you’re saying, Zero?”
+
+@14356 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロ〉
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14357 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロ(バード)〉
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14358 Zechs · ゼクス
+# 触发：攻击，乘坐〈ウイングゼロカスタム〉
+> 「ウイングゼロ……私に勝利を
+>  見せてくれ!」
+“Wing Zero... show me victory!”
+
+@14359 Zechs · ゼクス
+# 触发：攻击，乘坐〈ガンダムエピオン〉
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14360 Zechs · ゼクス
+# 触发：攻击，乘坐〈ガンダムエピオン(MA)〉
+> 「いくぞエピオン!」
+“Here I go, Epyon!”
+
+@14361 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロ〉
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14362 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロ(バード)〉
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14363 Zechs · ゼクス
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ウイングゼロカスタム〉
+> 「このウイングゼロに決戦を挑むと
+>  いうのか」
+“You mean to challenge this Wing Zero to a decisive battle?”
+
+@14364 Zechs · ゼクス
+# 触发：回避，乘坐〈トールギス〉
+> 「ぐぅぅぅっ、殺人的な加速だ!」
+“Ghh... this acceleration is murderous!”

@@ -1,191 +1,346 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8327 Bright · ブライト
+# 触发：攻击（通用，1/9）
 > 「前方の敵に集中砲火だ!」
 “Focus all fire on the enemy ahead!”
 
 @8328 Bright · ブライト
+# 触发：攻击（通用，2/9）
 > 「てーーっ!!」
 “Fiiire!!”
 
 @8329 Bright · ブライト
+# 触发：攻击（通用，3/9）
 > 「撃てーっ!!」
 “Fire!!”
 
 @8330 Bright · ブライト
+# 触发：攻击（通用，4/9）
 > 「前方の敵を排除しろっ!」
 “Eliminate the enemy ahead!”
 
 @8331 Bright · ブライト
+# 触发：攻击（通用，5/9）
 > 「何としてでも落とせーっ!」
 “Shoot them down no matter what!”
 
 @8332 Bright · ブライト
+# 触发：攻击（通用，6/9）
 > 「弾幕を張れっ!!」
 “Lay down a barrage!!”
 
 @8333 Bright · ブライト
+# 触发：攻击（通用，7/9）
 > 「撃てーーーっ!!」
 “Fiiire!!”
 
 @8334 Bright · ブライト
+# 触发：攻击（通用，8/9）
 > 「てーーーっ!!」
 “Fiiire!!”
 
 @8335 Bright · ブライト
+# 触发：攻击（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @8336 Bright · ブライト
+# 触发：被击坠（通用，1/3）
 > 「しまった!!」
 “Damn!!”
 
 @8337 Bright · ブライト
+# 触发：被击坠（通用，2/3）
 > 「くっ!! 総員退避!!」
 “Ngh!! All hands, evacuate!!”
 
 @8338 Bright · ブライト
+# 触发：被击坠（通用，3/3）
 > 「直撃だと!?」
 “A direct hit?!”
 
 @8339 Bright · ブライト
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ま、まだだっ!! 持ちこたえろ!」
 “N-not yet!! Hold together!”
 
 @8340 Bright · ブライト
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むうっ! このままではもたんぞ!」
-“Mmph! At this rate we won't hold!”
+“Mmph! At this rate we won’t hold!”
 
 @8341 Bright · ブライト
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「直撃!?」
 “A direct hit?!”
 
 @8342 Bright · ブライト
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! まだだ! まだおちるな!」
-“Ngh! Not yet! Don't go down yet!”
+“Ngh! Not yet! Don’t go down yet!”
 
 @8343 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，1/11）
+# 审校：是在训斥炮手
 > 「対空砲火、なにしてんの!!」
-“AA Gun, what are you doing!!”
+“AA gunners, what are you doing!!”
 
 @8344 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，2/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! どうした、対空防御!!」
-“Guh! What's wrong, anti-air defense!!”
+“Guh! What’s wrong, anti-air defense!!”
 
 @8345 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，3/11）
 > 「うっ! 被害状況を調べろ!」
 “Ugh! Check the damage!”
 
 @8346 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，4/11）
 > 「被弾状況知らせ!」
 “Report hit status!”
 
 @8347 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，5/11）
+# 审校：舰桥口令，原译生硬
 > 「隔壁! 消火剤防御!」
-“Bulkheads! Fire suppressant defense!”
+“Seal the bulkheads! Fire suppressant!”
 
 @8348 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，6/11）
 > 「何やってんの!?」
 “What are you doing?!”
 
 @8349 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，7/11）
 > 「くっ! 消火作業、急げ!!」
 “Ngh! Hurry the firefighting!!”
 
 @8350 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，8/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ひるむな!」
-“Ngh! Don't falter!”
+“Ngh! Don’t falter!”
 
 @8351 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，9/11）
 > 「砲撃手! なにをやっている!」
 “Gunner! What are you doing!”
 
 @8352 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，10/11）
 > 「弾幕うすいぞ!! 何やってんの!!」
 “The barrage is too thin!! What are you doing!!”
 
 @8353 Bright · ブライト
+# 触发：中伤（剩余 HP 30–90%）（通用，11/11）
 > 「左舷弾幕うすいぞ!!
 >  何やってんの!!」
 “The barrage on the port side is too thin!! What are you doing!!”
 
 @8354 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：补句号
 > 「この程度で落ちはしない」
-“We won't go down from this much”
+“We won’t go down from this much.”
 
 @8355 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「ふむ、大した被害はないな?」
 “Hmm, no significant damage?”
 
 @8356 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「各部、損傷チェック!」
 “All sections, check for damage!”
 
 @8357 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「くっ! まだまだ!!」
 “Ngh! Not yet, not yet!!”
 
 @8358 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「くっ! まだ、こんなもので!」
 “Ngh! Not from something like this!”
 
 @8359 Bright · ブライト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：补句号
 > 「機銃座、弾幕を張れ!
 >  まったく手が遅いんだから」
-“Gun turrets, lay down a barrage! You're all so slow”
+“Gun turrets, lay down a barrage! You’re all too slow.”
 
 @8360 Bright · ブライト
+# 触发：回避（通用，1/7）
 > 「回避運動、急げ!!」
 “Evasive maneuvers, hurry!!”
 
 @8361 Bright · ブライト
+# 触发：回避（通用，2/7）
 > 「急速降下!」
 “Rapid descent!”
 
 @8362 Bright · ブライト
+# 触发：回避（通用，3/7）
+# 审校：面舵 是右满舵，英文译反了
 > 「面舵! かわせ!」
-“Hard to port! Evade!”
+“Hard to starboard! Evade!”
 
 @8363 Bright · ブライト
+# 触发：回避（通用，4/7）
 > 「よし、かわした!」
 “Good, we dodged it!”
 
 @8364 Bright · ブライト
+# 触发：回避（通用，5/7）
 > 「あぶないっ!」
 “That was close!”
 
 @8365 Bright · ブライト
+# 触发：回避（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @8366 Bright · ブライト
+# 触发：回避（通用，7/7）
 > 「ムダなことを!」
 “What a waste of effort!”
 
 @8367 Bright · ブライト
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：补句号，更顺
 > 「この程度のビームならダメージはないな」
-“A Beam like that won't do any damage”
+“A beam like that won’t do any damage.”
 
 @8368 Bright · ブライト
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだ!」
-“It's useless!”
+“It’s useless!”
 
 @8369 Bright · ブライト
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
 > 「ムダなことを!」
 “What a waste of effort!”
 
 @8370 Bright · ブライト
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽情境
 > 「反撃は……だめか!」
-“Counterattack is... no good!”
+“We can’t... return fire!”
 
 @8371 Bright · ブライト
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, we can’t return fire?!”
 
 @8372 Bright · ブライト
+# 触发：射程外，无法反击（通用，1/2）
 > 「くっ! この距離では遠すぎるか!」
 “Ngh! Too far at this range?!”
 
 @8373 Bright · ブライト
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far?!”
+
+@14601 Bright · ブライト
+# 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14602 Bright · ブライト
+# 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14603 Bright · ブライト
+# 触发：使用〈対空レーザー砲／対空機関砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14604 Bright · ブライト
+# 触发：使用〈対空レーザー砲／対空機関砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14605 Bright · ブライト
+# 触发：使用〈対空機関砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、しっかり狙え!!」
+“All turrets, aim carefully!!”
+
+@14606 Bright · ブライト
+# 触发：使用〈対空機関砲〉（低优先，可能被通用台词顶掉）
+> 「各砲座、各個に敵を
+>  撃破しろ!」
+“All turrets, destroy the enemy one by one!”
+
+@14607 Bright · ブライト
+# 触发：使用〈連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14608 Bright · ブライト
+# 触发：使用〈連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14609 Bright · ブライト
+# 触发：使用〈連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14610 Bright · ブライト
+# 触发：使用〈大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14611 Bright · ブライト
+# 触发：使用〈大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14612 Bright · ブライト
+# 触发：使用〈大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14613 Bright · ブライト
+# 触发：使用〈ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル水平発射!!」
+“Missiles, horizontal launch!!”
+
+@14614 Bright · ブライト
+# 触发：使用〈ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射! てーっ!!」
+“Missile launch! Fire!!”
+
+@14615 Bright · ブライト
+# 触发：使用〈ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射!!」
+“Missile launch!!”
+
+@14616 Bright · ブライト
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「ハイメガ粒子砲、発射!!」
+“High Mega Particle Cannon, fire!!”
+
+@14617 Bright · ブライト
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「メガ粒子砲、撃てーっ!!」
+“Mega Particle Cannon, fire!!”
+
+@14618 Bright · ブライト
+# 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
+> 「主砲、一斉発射!!」
+“Main cannons, fire all together!!”

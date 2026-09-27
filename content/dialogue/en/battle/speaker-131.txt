@@ -1,80 +1,46 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
-@7892 Killy · キリー
-> 「ちっ! やられちまったぜ!」
-“Tch! I got taken down!”
-
-@7893 Killy · キリー
-> 「あーあ、ダメか」
-“Aw man, no good, huh.”
-
-@7898 Killy · キリー
-> 「うわっ!! 真吾!!
->  ヤバイぜこいつは!」
-“Whoa! Shingo! This one's bad!”
-
-@7899 Killy · キリー
-> 「ちっ!! こいつは分が悪いぜ!」
-“Tch! This is a losing fight!”
-
-@7906 Killy · キリー
-> 「うわっ!! くそっ、真吾しっかり
->  やってくれ!」
-“Whoa! Damn it, Shingo, get it together!”
-
-@7907 Killy · キリー
-> 「つっ! 受けた分は利子つけて
->  返させてもらうぜ!」
-“Ugh! I'll make you pay back what I took, with interest!”
-
-@7914 Killy · キリー
-> 「効かねえぜ!」
-“That doesn't hurt!”
-
-@7915 Killy · キリー
-> 「やれやれ、この程度か?」
-“Good grief, is this all?”
-
-@7922 Killy · キリー
-> 「おおはずれ～」
-“Way off~”
-
-@7923 Killy · キリー
-> 「チッチッ、ねらいがあまいぜ」
-“Tsk tsk, your aim's too soft.”
-
 @7932 Killy · キリー
+# 触发：攻击（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7933 Killy · キリー
+# 触发：被击坠（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7934 Killy · キリー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7935 Killy · キリー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7936 Killy · キリー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7937 Killy · キリー
+# 触发：回避（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7938 Killy · キリー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7939 Killy · キリー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ばかめ!」
 “Fool!”
 
 @7940 Killy · キリー
+# 触发：射程外，无法反击（通用，1/1）
 > 「ばかめ!」
 “Fool!”

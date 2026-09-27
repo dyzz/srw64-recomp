@@ -1,128 +1,173 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9470 Alan · アラン
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだっ!!」
-“How's this!!”
+“How’s this!!”
 
 @9471 Alan · アラン
+# 触发：攻击（通用，2/9）
 > 「勝負は見えたな!」
 “The outcome is clear!”
 
 @9472 Alan · アラン
+# 触发：攻击（通用，3/9）
 > 「計算通りだ!」
 “Just as calculated!”
 
 @9473 Alan · アラン
+# 触发：攻击（通用，4/9）
 # 审校：原文“そこかっ!”是发现目标/攻击时机时的短促喊声，原译“There you are!”偏“找到你了”，改为更战斗化的“There!”。
 > 「そこかっ!」
 “There!”
 
 @9474 Alan · アラン
+# 触发：攻击（通用，5/9）
 > 「いくぞっ!」
 “Here I come!”
 
 @9475 Alan · アラン
+# 触发：攻击（通用，6/9）
 > 「動きがあまい!」
 “Your movements are sloppy!”
 
 @9476 Alan · アラン
+# 触发：攻击（通用，7/9）
 > 「機械に頼りすぎだ!」
 “You rely on machines too much!”
 
 @9477 Alan · アラン
+# 触发：攻击（通用，8/9）
 > 「あまいぞ!」
 “Too naive!”
 
 @9478 Alan · アラン
+# 触发：攻击（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今を逃せばチャンスはない!」
-“Miss this moment and there's no chance!”
+“Miss this moment and there’s no chance!”
 
 @9479 Alan · アラン
+# 触发：被击坠（通用，1/2）
+# 审校：Damn?! 不自然
 > 「しまったっ!?」
-“Damn!?”
+“Damn it...!”
 
 @9480 Alan · アラン
+# 触发：被击坠（通用，2/2）
 # 审校：原文“これまでかっ!”是“到此为止了吗”，原译“This is the end, huh!”语气偏陈述，改为更贴合战斗中的疑问感叹。
 > 「これまでかっ!」
 “Is this the end?!”
 
 @9481 Alan · アラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ、予想以上か……」
 “Ngh, more than I expected...”
 
 @9482 Alan · アラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「しまった! ダメージを受けすぎたか!?」
 “Damn! Took too much damage, huh?!”
 
 @9483 Alan · アラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このままでは……やられる!」
-“At this rate... I'll be destroyed!”
+“At this rate... I’ll be destroyed!”
 
 @9484 Alan · アラン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅっ、もうもたんか……」
-“Guh, I can't hold out anymore...”
+“Guh, I can’t hold out anymore...”
 
 @9485 Alan · アラン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 # 审校：原译“Th-this is!”不完整且不通顺，补成“Th-this is...!”以对应原文的惊愕中断感。
 > 「こ、これはっ!」
 “Th-this is...!”
 
 @9486 Alan · アラン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「くっこのパワーはデータ以上か!?」
 “Ngh, this power exceeds the data?!”
 
 @9487 Alan · アラン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：更自然
 > 「まだだ、まだいけるはずだっ!」
-“Not yet, I should still be able to go!”
+“Not yet, I can still keep going!”
 
 @9488 Alan · アラン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「まだこんなものではっ!」
 “This is nothing yet!”
 
 @9489 Alan · アラン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：この程度で（やられるか）
 > 「この程度で!」
-“This little?!”
+“Not from something like this!”
 
 @9490 Alan · アラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：补全省略
 > 「この程度ならばな」
-“If it's only this much.”
+“If that’s all it is, fine.”
 
 @9491 Alan · アラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「たいした攻撃ではないな」
 “Not much of an attack.”
 
 @9492 Alan · アラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃など効きはしない!」
-“An attack like that won't work on me!”
+“An attack like that won’t work on me!”
 
 @9493 Alan · アラン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「うるさいハエどもめ」
 “Noisy flies, the lot of you.”
 
 @9494 Alan · アラン
+# 触发：回避（通用，1/4）
 > 「機械に頼りすぎるからこうなる!」
 “This is what happens when you rely on machines too much!”
 
 @9495 Alan · アラン
+# 触发：回避（通用，2/4）
 > 「ねらいが甘いようだな!」
 “Your aim seems sloppy!”
 
 @9496 Alan · アラン
+# 触发：回避（通用，3/4）
+# 审校：补全省略
 > 「そんな腕では!」
-“With skill like that!”
+“Not with skill like that!”
 
 @9497 Alan · アラン
+# 触发：回避（通用，4/4）
+# 审校：原文「かわせる!」是“我能躲开”而非命令对方“躲开”，原译意思相反。
 > 「かわせる!」
-“Dodge this!”
+“I can dodge it!”
 
 @9498 Alan · アラン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄だ!」
-“It's useless!”
+“It’s useless!”
 
 @9499 Alan · アラン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境，说明是弹药
 > 「くっ、予想以上に早かったな……」
-“Ngh, faster than I expected...”
+“Ngh, ran out faster than I expected...”
 
 @9500 Alan · アラン
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは当たらんか!?」
-“Can't hit from here, huh?!”
+“Can’t hit from here, huh?!”

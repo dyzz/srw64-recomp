@@ -154,9 +154,10 @@ Why don't you two follow my example?”
 “Thanks, you saved us!”
 
 @18567 Roux · ルー
+# 审校：精读：例の場所 是约定地点
 > 「そんなことはいいから、
 >  例の場所へ急いで!」
-“Never mind that, hurry to the usual place!”
+“Never mind that, hurry to the rendezvous point!”
 
 @18568 David · デビッド
 > 「ああっ。アンナ、走れ!」
@@ -444,8 +445,9 @@ could eventually become possible, don't they?”
 “All right, concentrated attack from front point delta!”
 
 @18605 Shiro · シロー
+# 审校：原文是自言自语确认攻击无效，改为更口语的队长口吻。
 > 「……だめか!?」
-“...No good?!”
+“...It's no good?!”
 
 @18606 Guerrilla · ゲリラ
 > 「小隊長、こいつはヤバイ!
@@ -512,8 +514,9 @@ answer me!!”
 “You remembered me. I'm glad you're safe. I never thought we'd meet again.”
 
 @18619 Aina · アイナ
+# 审校：精读：私も 呼应“再见到你”
 > 「私も……あっ!」
-“Me neither... ah!”
+“Me too... ah!”
 
 @18620 Shiro · シロー
 > 「どうしたアイナ!?」
@@ -663,12 +666,13 @@ Can't be helped. All of you, intercept them!”
 “We're too late, then. At least we must save those two. All units, follow me!”
 
 @18647 Roux · ルー
+# 审校：合并：misc 与 scene 批次三方合并
 > 「きゃーっ、やったぁ!
 >  あれ、解放戦線よ
-“Kyaa, we did it! That's the Liberation Front—
+“Kyaa, yes! That's the Liberation Front...
 ---
 >  迎えに来てくれたんだわ!」
-they came to rescue us!”
+they've come for us!”
 
 @18648 Anna · アンナ
 > 「デビッド見て!
@@ -709,9 +713,10 @@ It's me, David!”
 “David?! Is it really you?”
 
 @18654 David · デビッド
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「やっぱりエイジだ!
 >  俺だけじゃない、アンナもいるぜ!」
-“It really is you, Eiji! And it's not just me—Anna's here too!”
+“It really is you, Eiji! And it's not just me... Anna's here too!”
 
 @18655 Eiji · エイジ
 > 「アンナまで?」
@@ -763,13 +768,14 @@ You bastards, I'm going to make you pay for my comrades!”
 “What?! Gale, you bastard, what did you come here for?!”
 
 @18663 Gale · ゲイル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ゴステロ中尉、現状には
 >  ふさわしくない言葉だな
 “Lieutenant Gosterro, those are hardly fitting words for the situation.
 ---
 >  レジスタンス追撃にこれほど
 >  時間がかかった理由は
-The reason it took so long to pursue the Resistance—
+The reason it took so long to pursue the Resistance...
 ---
 >  後で追及させてもらうとしよう」
 I'll have you answer for that later.”
@@ -791,8 +797,9 @@ I'll have you answer for that later.”
 “I see. His bad habit's acting up again, has it...”
 
 @18667 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale，不用 Senior/sir
 > 「ゲイル先輩か……」
-“Senior Gale, huh...”
+“Gale, huh...”
 
 @18668 Gale · ゲイル
 > 「エイジ……
@@ -830,9 +837,10 @@ Unlike Gale, I don't settle things by talking!”
 “Eiji... I won't hold back.”
 
 @18675 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「ゲイル先輩、俺もここで
 >  やられるわけにはいかないんです!」
-“Senior Gale, I can't afford to be beaten here either!”
+“Gale, I can't afford to lose here either!”
 
 @18676 Gale · ゲイル
 > 「ならば、その覚悟を
@@ -845,13 +853,14 @@ Unlike Gale, I don't settle things by talking!”
 “What?! Gale, you bastard, what did you come here for?!”
 
 @18678 Gale · ゲイル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ゴステロ中尉、現状には
 >  ふさわしくない言葉だな
 “Lieutenant Gosterro, those are hardly fitting words for the situation.
 ---
 >  レジスタンス追撃にこれほど
 >  時間がかかった理由は
-The reason it took so long to pursue the Resistance—
+The reason it took so long to pursue the Resistance...
 ---
 >  後で追及させてもらうとしよう」
 I'll have you answer for that later.”
@@ -873,8 +882,9 @@ I'll have you answer for that later.”
 “I see. His bad habit's acting up again, has it...”
 
 @18682 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「ゲイル先輩か……」
-“Senior Gale, huh...”
+“Gale, huh...”
 
 @18683 Gale · ゲイル
 > 「エイジ……
@@ -983,8 +993,9 @@ You can continue this later.”
 “I just can't think of a reason to be friendly. Hurry it up.”
 
 @18704 Shiro · シロー
+# 审校：精读：士郎在等对方发现信号
 > 「気づいてくれよ……」
-“Please notice me...”
+“Come on, notice it...”
 
 @18705 Aboly · アポリー
 > 「ん? ……大尉、解放戦線の

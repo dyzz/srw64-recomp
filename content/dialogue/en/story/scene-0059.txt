@@ -360,10 +360,10 @@ so I did my very best...”
 “It's been so long, Captain Bright! To think I'd get to see you again, I...”
 
 @37789 Quattro · クワトロ
-# 检查提示：未用必用译名：エマリー艦→Emary's ship
+# 审校：克瓦特罗对代理舰长用“悪いが”，译文“Sorry”过于随意，改为更符合其从容军官口吻的“My apologies”
 > 「エマリー艦長代理。悪いが、
 >  そういうことはあとにしてもらいたい」
-“Acting Captain Emary. Sorry, but I'd like you to save that for later.”
+“Acting Captain Emary. My apologies, but I'd like you to save that for later.”
 
 @37790 Emary · エマリー
 > 「あっ、す、すみません。
@@ -487,9 +487,10 @@ Nahel Argama right away.”
 “These'll fix that up plenty.”
 
 @37811 Shirley · シャリー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「アストナージさん、クワトロ特尉が
 >  作業にかかってくれって、いってたわよ」
-“Astonaige, Lieutenant Quattro said to get started on the work.”
+“Astonaige, Special Lieutenant Quattro said to get started on the work.”
 
 @37812 Astonaige · アストナージ
 > 「よし、お前たち、ヒマなら手伝えよ」
@@ -639,41 +640,44 @@ It seems they've started development on that Gundam.”
 “That one? The one I did the basic design for?”
 
 @37840 Chan · チェーン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ええ。だいぶ前にデータは送っていたん
 >  ですが、ずっとゴタついてましたからね
 “Yes. We sent the data a while ago, but things have been in an uproar for so long.
 ---
 >  今回のネェル・アーガマの件も、
 >  トレーズ特佐が財団の方の
-As for the Nahel Argama this time, I hear Lieutenant Colonel Treize worked
+As for the Nahel Argama this time, I hear Special Colonel Treize worked
 ---
 >  ルートから手をまわしたそうなんですが、
 >  それでこちらの方も
-through the foundation's channels, and thanks to that, it looks like
+through the Foundation's channels, and thanks to that, it looks like
 ---
 >  やってもらえるみたいなんです」
 they'll do this for us too.”
 
 @37841 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうか……ありがたいな。
 >  しかし、トレーズ特佐が
-“I see... That's a relief. But if Lieutenant Colonel Treize can
+“I see... That's a relief. But if Special Colonel Treize can
 ---
 >  手をまわせるということは、
 >  財団にもまだ特佐を支持する
-pull strings like that, it means there are still people in the foundation
+pull strings like that, it means there are still people in the Foundation
 ---
 >  連中がいるということか」
 who support him.”
 
 @37842 Chan · チェーン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「銀河帝国軍が来ましたからね。
 >  財団の人たちのトレーズ特佐への
-“The Galactic Empire's army has come, after all. The people at the foundation seem to have
+“The Galactic Empire's army has come, after all. The people at the Foundation seem to have
 ---
 >  信頼感って、けっこう強い
 >  みたいです。OZをつくった人ですから」
-a fair amount of trust in Lieutenant Colonel Treize. He is the man who built OZ.”
+a fair amount of trust in Special Colonel Treize. He is the man who built OZ.”
 
 @37843 Amuro · アムロ
 > 「やはり、ジャミトフとデルマイユさえ
@@ -690,13 +694,14 @@ a fair amount of trust in Lieutenant Colonel Treize. He is the man who built OZ.
 “But right now that's difficult.”
 
 @37846 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうですけど、
 >  やっぱり直接見てみないと
 “I know, but still, I want to see it in person.
 ---
 >  私とアムロ特尉のガンダムですから。
 >  ちゃんとしておきたいんです」
-It's our Gundam, yours and mine, Captain Amuro. I want to make sure it's done right.”
+It's our Gundam, yours and mine, Special Lieutenant Amuro. I want to make sure it's done right.”
 
 @37847 Beltorchika · ベルトーチカ
 > 「なら、ここに残りなさいよ。
@@ -725,9 +730,10 @@ Captain Bright and the others are calling for you.”
 “Oh, yeah.”
 
 @37851 Chan · チェーン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私もアムロ特尉も、遊んでいたわけ
 >  じゃないわ。失礼なこといわないで
-“Neither I nor Captain Amuro were playing around. Don't be rude.
+“Neither Special Lieutenant Amuro nor I were playing around. Don't be rude.
 ---
 >  それにあなただって、新しいガンダムが
 >  あった方がいいって、思うでしょう?」
@@ -863,18 +869,20 @@ slipping in among the Anaheim staff was reckless.”
 please keep an eye on Major Gato's movements as well.”
 
 @37877 Quattro · クワトロ
+# 审校：精读：器用
 > 「わかっている。が、
 >  あの男はそう器用なたちではない」
-“I know. But that man isn't the sort to be so deft.”
+“I know. But that man isn't the crafty sort.”
 
 @37878 Quattro · クワトロ
 > 「…………」
 “...”
 
 @37879 Banjo · 万丈
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どうしたんだい、クワトロ特尉。
 >  うかない顔をしているが」
-“What's wrong, Captain Quattro? You look glum.”
+“What's wrong, Special Lieutenant Quattro? You look glum.”
 
 @37880 Quattro · クワトロ
 > 「ああ……問題が増えた」
@@ -1047,26 +1055,28 @@ the lot backing Treize have gotten their wind back.
 At this rate, isn't this bad for us?”
 
 @37907 Jamitov · ジャミトフ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地上など、あとでどうにでもなろう。
 >  OZは私にまかせ
 “The surface can be dealt with later, however it turns out. Leave OZ to me.
 ---
 >  貴公は財団の幹部会を
 >  統制するよう努めればよかろう」
-You need only strive to keep the foundation's executive council in line.”
+You need only strive to keep the Foundation's executive council in line.”
 
 @37908 Dermail · デルマイユ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「しかし、OZを1つにまとめられぬまま、
 >  あの異星人どもに勝てるのか?
 “But can we beat those aliens with OZ still split apart?
 ---
 >  いやそれよりも、
 >  異星人と戦っている間に
-No, more than that — while we're fighting the aliens,
+No, more than that. While we're fighting the aliens,
 ---
 >  トレーズが財団に対して
 >  武力行使せんともかぎらん」
-there's no telling whether Treize might use force against the foundation.”
+there's no telling whether Treize might use force against the Foundation.”
 
 @37909 Jamitov · ジャミトフ
 > 「計画通りにやっておれば、
@@ -1418,13 +1428,14 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 “What will you do?”
 
 @37974 Scirocco · シロッコ
+# 审校：精读：去破折号
 > 「こういう機会を逃すわけにはいかんな
 >  とくにあのドック艦
-“I can't let an opportunity like this slip by. Especially that dock ship—
+“I can't let an opportunity like this slip by. Especially that dock ship.
 ---
 >  残しておくとやっかいかもしれん。
 >  ヤザン特尉、やれるか」
-it could be trouble if we leave it. Lieutenant Yazan, can you do it?”
+It could be trouble if we leave it. Special Lieutenant Yazan, can you do it?”
 
 @37975 Yazan · ヤザン
 > 「いいのか、シロッコ」
@@ -1436,9 +1447,10 @@ it could be trouble if we leave it. Lieutenant Yazan, can you do it?”
 “Having come this far, you wouldn't listen even if I told you to withdraw, would you?”
 
 @37977 Yazan · ヤザン
+# 审校：精读：去破折号
 > 「フハハハッ、了解だ。
 >  ダンケル、ラムサス
-“Fuhahahaha, understood. Dunkel, Ramsus—
+“Fuhahahaha, understood. Dunkel, Ramsus,
 ---
 >  チャンスがあればクモの巣をやるぞ」
 if we get the chance, we're taking down the Spider Web.”
@@ -1456,9 +1468,10 @@ if we get the chance, we're taking down the Spider Web.”
 “Captain, that's the Romefeller faction.”
 
 @37981 Bright · ブライト
+# 审校：精读：去破折号
 > 「パプティマス・シロッコか。
 >  くそっ、なんて時にくるんだ
-“Paptimus Scirocco. Damn it, why now of all times—
+“Paptimus Scirocco. Damn it, why now of all times...
 ---
 >  迎撃しろ! 敵を近づけるな!」
 Intercept them! Don't let the enemy get close!”
@@ -1577,10 +1590,10 @@ You can't win by going against something like that.”
 “Hmph, that's not like you.”
 
 @38005 Scirocco · シロッコ
-# 审校：“バルジ”不是词表内专名，初稿 Balgi 拼写不统一且无依据，改为通行音译 Balge，并在 flag 标注新译名。
+# 审校：全局：barge-4
 > 「最終的に勝てば、それでよいのだ。
 >  バルジへもどるぞ」
-“As long as we win in the end, that's enough. We're returning to Balge.”
+“As long as we win in the end, that's enough. We're returning to Barge.”
 
 @38006 Yazan · ヤザン
 > 「くそぉ……」
@@ -1607,10 +1620,10 @@ You can't win by going against something like that.”
 “Hmph... is that so?”
 
 @38009 Scirocco · シロッコ
-# 审校：“バルジ”应为“Balge”（Side 6 的殖民卫星），初稿误作 Balgi。
+# 审校：全局：barge-4
 > 「そうだ。最終的に勝てば、
 >  それでいい。バルジへもどるぞ」
-“That's right. As long as we win in the end, that's enough. We're returning to Balge.”
+“That's right. As long as we win in the end, that's enough. We're returning to Barge.”
 
 @38010 Mouar · マウアー
 > 「勝手に撤退の指示を
@@ -1635,10 +1648,10 @@ of the times. You can't win by going against something like that.”
 “...”
 
 @38013 Scirocco · シロッコ
-# 审校：同上，“バルジ”统一为 Balge。
+# 审校：全局：barge-4
 > 「最終的に勝てば、それでよいのだ。
 >  バルジへもどるぞ」
-“As long as we win in the end, that's enough. We're returning to Balge.”
+“As long as we win in the end, that's enough. We're returning to Barge.”
 
 @38014 Scirocco · シロッコ
 > 「時の運はまだ動かんということか……」
@@ -1665,10 +1678,10 @@ You can't win by going against something like that.”
 “Hmph, that's not like you?”
 
 @38018 Scirocco · シロッコ
-# 审校：同上，“バルジ”统一为 Balge。
+# 审校：全局：barge-4
 > 「最終的に勝てば、それでよいのだ。
 >  出直すとしよう。バルジへもどるぞ」
-“As long as we win in the end, that's enough. Let's start over. We're returning to Balge.”
+“As long as we win in the end, that's enough. Let's start over. We're returning to Barge.”
 
 @38019 Bright · ブライト
 > 「アクシズの……ハマーン・カーンか……」
@@ -1720,10 +1733,10 @@ OZ against the Galactic Empire.”
 “Well now, that's quite an interesting proposition.”
 
 @38029 Koji · 甲児
-# 审校：“特尉”是奥古对克瓦特罗的军衔称呼，按规则军衔用 Captain，不用 Lieutenant。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれがクワトロ特尉のいってた、
 >  アクシズってやつの女ボスか」
-“So that's the woman boss of Axis that Captain Quattro was talking about.”
+“So that's the woman boss of Axis that Special Lieutenant Quattro was talking about.”
 
 @38030 Masato · 雅人
 > 「ちょっときつそうだけど、
@@ -1848,10 +1861,10 @@ I'm disappointed.”
 “...”
 
 @38050 Daisaku · 大作
-# 审校：同上，“クワトロ特尉”应译为 Captain Quattro。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉は、やっぱり
 >  シャア・アズナブルって
-“So Captain Quattro really is a man named
+“So Special Lieutenant Quattro really is a man named
 ---
 >  いう人なんですか?」
 Char Aznable?”
@@ -1965,12 +1978,13 @@ Defeat Mars.”
 “Axis, is it...? They say they're Zeon remnants, but...”
 
 @38069 Dermail · デルマイユ
+# 审校：Dermail's haughty old duke tone: 'would be useful' is too plain; 'would be of use' matches his pompous formality.
 > 「無視できんな、ジャミトフ。
 >  帝国軍と戦うにしても
 “We can't ignore them, Jamitov. Even in fighting the Imperial forces,
 ---
 >  その戦力は使いでがあろう」
-their strength would be useful.”
+their strength would be of use.”
 
 @38070 Jamitov · ジャミトフ
 > 「だが、背景のわからぬものを
@@ -2013,8 +2027,9 @@ then we must deal with them.”
 “Scirocco!”
 
 @38077 Scirocco · シロッコ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「これはバスク特佐。何か?」
-“Colonel Bask. Is something the matter?”
+“Special Colonel Bask. Is something the matter?”
 
 @38078 Bask · バスク
 > 「貴公、私が地上へ降りている
@@ -2026,10 +2041,11 @@ then we must deal with them.”
 it seems. But from now on that won't do. Keep it in mind.”
 
 @38079 Scirocco · シロッコ
-# 审校：原文“その指示”指ジャミトフ閣下とバスク特佐两人的指示，初稿译成 your orders 对象不明，改为 their orders。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ドゴスギア→Dogosse Giar
 > 「むろん、承知しております。
 >  ジャミトフ閣下とバスク特佐が
-“Of course, I am well aware. Now that His Excellency Jamitov and Colonel Bask
+“Of course, I am well aware. Now that His Excellency Jamitov and Special Colonel Bask
 ---
 >  もどられた上は、その指示に
 >  従うつもりでおります
@@ -2048,10 +2064,10 @@ I will return the Dogosse Giar as well.”
 You can just shut yourself up in this fortress.”
 
 @38081 Scirocco · シロッコ
-# 审校：“gives off a strong pressure”表达不自然，改为 exerts strong pressure。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、トレーズ派のなかで、強い
 >  プレッシャーを感じる部隊があります」
-“Colonel, among the Treize faction, there is a unit that exerts strong pressure.”
+“Special Colonel, among the Treize faction, there is a unit that exerts strong pressure.”
 
 @38082 Bask · バスク
 > 「{HeroMech}のことか」
@@ -2071,9 +2087,9 @@ You can just shut yourself up in this fortress.”
 is more capable than yourself. Don't mock me!”
 
 @38085 Treize · トレーズ
-# 审校：“it's hardly”缩写与前后文正式语气略不一致，改为 it is hardly。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なるほど、アクシズか…。クワトロ特尉
-“I see, Axis... Lieutenant Quattro.
+“I see, Axis... Special Lieutenant Quattro.
 ---
 >  いや、シャア・アズナブル。君の
 No, Char Aznable. I'd like to hear
@@ -2093,9 +2109,10 @@ your opinion. This time it is hardly an unrelated matter.”
 a still-divided OZ will not be able to handle it.”
 
 @38087 Treize · トレーズ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「手を結ぶほうがいいというわけか。
 >  …特尉、君の本心はどうなのだ?」
-“You mean it would be better to join hands. ...Lieutenant, what is your true intention?”
+“You mean it would be better to join hands. ...Special Lieutenant, what is your true intention?”
 
 @38088 Quattro · クワトロ
 > 「……しょせんはザビ家の体制を
@@ -2106,8 +2123,9 @@ a still-divided OZ will not be able to handle it.”
 I don't believe they have any conviction.”
 
 @38089 Treize · トレーズ
+# 审校：Treize 的贵族口吻应更正式，you're 改为 you are 以贴合其优雅腔调。
 > 「ほう……なかなか手厳しいね」
-“Oh... quite harsh, aren't you?”
+“Oh... you are quite harsh, aren't you?”
 
 @38090 Amuro · アムロ
 > 「しかし、重要なのは俺たち
@@ -2122,8 +2140,9 @@ weather the aliens' attacks. If we lose like this,
 then conviction and everything else mean nothing.”
 
 @38091 Quattro · クワトロ
+# 审校：Quattro 的从容含蓄口吻应更正式，I'm 改为 I am 以贴合其贵族气军官腔调。
 > 「私は別に、反対などしておらんよ」
-“I'm not particularly opposed, you know.”
+“I am not particularly opposed, you know.”
 
 @38092 Treize · トレーズ
 > 「わかった。やはりアクシズ軍の協力を
@@ -2327,9 +2346,10 @@ means it's something like that, right?”
 So I decided to just do my best, the way I believe.”
 
 @38122 Duo · デュオ
+# 审校：原文「それで来たのが」指希露迪来到特列斯派OZ，译文用 brought you 方向反了，改为 ended up with 更贴合原意。
 > 「それで来たのがトレーズ派の
 >  OZってのも、笑えないけどな」
-“And the fact that brought you to Treize's OZ isn't exactly funny either.”
+“And the fact that you ended up with Treize's OZ isn't exactly funny either.”
 
 @38123 Hilde · ヒルデ
 > 「デュオが{HeroMech}に

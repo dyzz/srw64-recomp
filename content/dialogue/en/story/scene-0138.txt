@@ -47,9 +47,10 @@ If you still have the will to fight, I could tell you...”
 We've got an enemy fleet chasing us!”
 
 @46227 Haman · ハマーン
+# 审校：引号
 > 「野獣とはよくいったものだな、
 >  藤原忍
-“'Wild beast' is well said, Shinobu Fujiwara.
+“‘Wild beast’ is well said, Shinobu Fujiwara.
 ---
 >  人に物を頼むときには、
 >  それ相応の態度というものがあろう」
@@ -78,7 +79,7 @@ When one asks a favor of another, there is a proper attitude to go with it.”
 “Heh, hahahahaha, very well, Char. I'll transmit it now.”
 
 @46233 Haman · ハマーン
-# 审校：专名统一：Zuhl 应为 Zuul。
+# 审校：破折号
 > 「さて、{HeroMech}の諸君。
 >  そちらがまだ戦う意思のあることは
 “Now then, crew of the {HeroMech}. I've confirmed that you still have the will
@@ -93,7 +94,7 @@ It's the same for us. If you wish,
 ---
 >  望むのならば、ズールを倒すために
 >  共闘してやってもよいが、どうだ?」
-I could join forces with you to defeat Zuul—what say you?”
+I could join forces with you to defeat Zuul. What say you?”
 
 @46234 Judau · ジュドー
 > 「いまさら、何いってんだよ!」
@@ -245,9 +246,10 @@ More than anything, now is not the time for debate.”
 “Indeed.”
 
 @46249 Haman · ハマーン
+# 审校：破折号
 > 「では、共に戦うということで
 >  よいのだな?」
-“Then we shall fight together—is that acceptable?”
+“Then we shall fight together. Is that acceptable?”
 
 @46250 Quattro · クワトロ
 > 「そうだ、ハマーン」
@@ -329,21 +331,23 @@ your answer?”
 Why did you refuse Haman's offer?!”
 
 @46263 Treize · トレーズ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私も、基本的に{HeroName}と
 >  同意見だからだよ
 “Because I fundamentally agree with {HeroName}.
 ---
 >  アムロ・レイ特尉」
-Lieutenant Amuro Ray.”
+Special Lieutenant Amuro Ray.”
 
 @46264 Amuro · アムロ
 > 「だが、俺たちが負けてしまえば……」
 “But if we lose...”
 
 @46265 Sara · 沙羅
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉、もう通信は
 >  切れちまってるんだ
-“Lieutenant, the transmission's already cut off.
+“Special Lieutenant, the transmission's already cut off.
 ---
 >  いまさら、そんなこと
 >  いってるときじゃないでしょうに」
@@ -438,13 +442,14 @@ Godmaaaaaaars!!”
 “Zuul... This time, this time I'll defeat you!”
 
 @46282 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝威严冷酷，应避免使用缩写，将“There's”改为“There is”。
 > 「ワハハハハハッ、
 >  ワシは宇宙の帝王だ!
 “Wahahahahaha! I am the Emperor of the universe!
 ---
 >  貴様らごときムシケラに敗れるなど、
 >  ありえぬわ!」
-There's no way I could be beaten by mere insects like you!”
+There is no way I could be beaten by mere insects like you!”
 
 @46283 Bright · ブライト
 > 「どうやら、アクシズ軍も来たようだな」
@@ -622,6 +627,7 @@ Mars, fight for the peace of the vast, boundless universe.
 Defeat Emperor Zuul. Risk your life, and then a miracle will happen!)
 
 @46312 Takeru · タケル
+# 审校：词条 Gaia
 > 「……兄さん……いや、それだけではない。
 >  この暖かさ……まさか、父か!?
 “...Brother... No, that's not all. This warmth... Could it be, Father?!
@@ -652,12 +658,13 @@ With Gaia's antiproton bomb, even Zuul should...”
 the blast of an antiproton bomb?!”
 
 @46316 Emperor Zuul · ズール皇帝
+# 审校：Zuul should avoid contractions per his voice; changed “Don't” to “Do not” and “it's” to “it is”.
 > 「なに!? まさか貴様……
 >  やめろ、マーズ!
-“What?! Don't tell me you... Stop, Mars!
+“What?! Do not tell me you... Stop, Mars!
 ---
 >  そんなことをしても無駄だ!!」
-Even if you do that, it's useless!!”
+Even if you do that, it is useless!!”
 
 @46317 Takeru · タケル
 > 「ズール! オレと一緒に死ねぇ!」
@@ -728,22 +735,24 @@ together with Zuul, and yet...”
 That will end it all!”
 
 @46328 Emperor Zuul · ズール皇帝
+# 审校：Zuul should avoid contractions; changed “it's” to “it is” and “don't” to “do not”.
 > 「ワーッハハハハハハッ! 何度やろうと
 >  貴様たちが
 “Wahahahahahaha! No matter how many times you try,
 ---
 >  ワシを倒すことなど不可能!!
 >  まだそれがわからぬようだな!」
-it's impossible for you lot to defeat me!! You still don't seem to understand!”
+it is impossible for you lot to defeat me!! You still do not seem to understand!”
 
 @46329 Emperor Zuul · ズール皇帝
+# 审校：Zuul should avoid contractions; changed “it's” to “it is” and “don't” to “do not”.
 > 「ワーッハハハハハハッ! 何度やろうと
 >  貴様たちが
 “Wahahahahahaha! No matter how many times you try,
 ---
 >  ワシを倒すことなど不可能!!
 >  まだそれがわからぬようだな!」
-it's impossible for you lot to defeat me!! You still don't seem to understand!”
+it is impossible for you lot to defeat me!! You still do not seem to understand!”
 
 @46330 Emperor Zuul · ズール皇帝
 > 「ハハハハハッ!!
@@ -1030,9 +1039,10 @@ I'm afraid I must decline, Haman Karn.”
 “I see... Then follow Zuul, and die here as well.”
 
 @46372 Gato · ガトー
+# 审校：Gato 的军人语气应更克制，将“I cannot fight here”改为“I cannot afford to fight here”更贴合其悲壮、正式的军人腔调。
 > 「アクシズ軍が敵となるだと? くっ、
 >  私はここで戦うわけにはいかん……」
-“The Axis Forces are to be our enemy? Damn, I cannot fight here...”
+“The Axis Forces are to be our enemy? Damn, I cannot afford to fight here...”
 
 @46373 Kou · コウ
 > 「ガトー!? くそっ、
@@ -1044,8 +1054,9 @@ I'm afraid I must decline, Haman Karn.”
 “Char!”
 
 @46375 Quattro · クワトロ
+# 审校：Quattro 的从容含蓄口吻下，“I can't let you do this”过于直白，改为“I cannot allow this”更符合其贵族气军官的克制表达。
 > 「ハマーン……やらせるわけにはいかん!」
-“Haman... I can't let you do this!”
+“Haman... I cannot allow this!”
 
 @46376 Haman · ハマーン
 # 审校：原文“相手”指对方/敌人，初稿用 she 指代不准确，改为 they。
@@ -1067,8 +1078,9 @@ I'll withdraw for now. All forces, retreat.”
 I'll withdraw for now.”
 
 @46378 Koji · 甲児
+# 审校：Koji 的热血少年口吻应更口语化，将“are you just going to”改为“are we just gonna”更贴合其冲动、随性的语气。
 > 「おい、逃がしちまっていいのかよ!?」
-“Hey, are you just going to let her get away?!”
+“Hey, are we just gonna let her get away?!”
 
 @46379 Bright · ブライト
 > 「深追いはやめろ。
@@ -1190,9 +1202,10 @@ Just as Avie-Lu said, this may indeed prove interesting...”
 “It's the same kind as that one from back then. The same as when Musashi died.”
 
 @46401 Koji · 甲児
+# 审校：Koji 的热血少年口吻已体现，但“てめぇら”的粗鲁称呼在译文中未充分体现，改为“you bastards”更贴合其冲动、粗鲁的语气。
 > 「ちっきしょう! てめぇら
 >  いったいなんなんだよ!?」
-“Damn it! Just what the hell are you?!”
+“Damn it! Just what the hell are you bastards?!”
 
 @46402 J-Ren · ジェイ＝レン
 > 「我らは“アル＝イー＝クイス”。
@@ -1333,9 +1346,10 @@ has been saved. No further words are needed. Thank you.”
 “It's real, Mika. We defeated Zuul.”
 
 @46425 Roux · ルー
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「“刻印”を発動させる前は、
 >  こんなこと想像すらできなかったわよね」
-“Before we activated the ‘Mark,’ we couldn't even have imagined this, could we?”
+“Before we activated the ‘Crest,’ we couldn't even have imagined this, could we?”
 
 @46426 Simone · シモーヌ
 > 「ホント。あのときは、
@@ -1543,13 +1557,14 @@ It may simply be that they too know the legend.”
 “Hmm...”
 
 @46457 Banjo · 万丈
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ま、どちらにしても、
 >  いまは考えても答えはでないさ
 “Well, either way, we won't find an answer by thinking about it now.
 ---
 >  それで特佐、
 >  これからどうするおつもりで?」
-So, Lieutenant Colonel, what do you intend to do from here?”
+So, Special Colonel, what do you intend to do from here?”
 
 @46458 Treize · トレーズ
 > 「……ラビアンローズに向かうとしよう。
@@ -1632,9 +1647,10 @@ Well then, good night...”
 “Thank goodness... thank goodness you're safe... I was so, so worried...”
 
 @46472 Judau · ジュドー
+# 审校：Judau 对 Bright 的称呼应为 Captain，原文「ブライトさん」的敬称需保留。
 > 「ブライトさん、こんなところで女性を
 >  泣かすなんて、よくないんじゃないの?」
-“Bright, making a woman cry in a place like this isn't very nice, is it?”
+“Captain Bright, making a woman cry in a place like this isn't very nice, is it?”
 
 @46473 Bright · ブライト
 > 「な、何をいってるんだジュドー」
@@ -1677,9 +1693,10 @@ For now, praise everyone for what they've accomplished.
 Is that all right, Captain?”
 
 @46479 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「と、特佐、誤解をまねくような
 >  言い方は……」
-“L-Lieutenant Colonel, that way of putting it invites misunderstanding...”
+“L-Special Colonel, that way of putting it invites misunderstanding...”
 
 @46480 Emary · エマリー
 > 「報告します。補給作業は
@@ -1775,8 +1792,9 @@ checks on all units are scheduled to be finished.”
 “Y-yes, sir!! Sorry!”
 
 @46499 Elle · エル
+# 审校：原文是拖长音的俏皮道歉，译文用结巴的“u-us”不符合艾露活泼口吻，改为拖长音。
 > 「しっつれいしましたー」
-“Excuse u-us!”
+“Excu-use us!”
 
 @46500 Roux · ルー
 > 「さぁて、お掃除お掃除」
@@ -1796,8 +1814,9 @@ checks on all units are scheduled to be finished.”
 That's all it is.”
 
 @46503 Bright · ブライト
+# 审校：破折号
 > 「万丈、しかしだな、私は別に……」
-“Banjo, but that's not what I—”
+“Banjo, but that's not what I...”
 
 @46504 Banjo · 万丈
 > 「気にしない気にしない。噂話くらい
@@ -1828,9 +1847,10 @@ Well then, if you'll excuse me.”
 “Ah... i-it's nothing.”
 
 @46509 Cath · キャス
+# 审校：?!
 > 「ちょっと、ひどい顔色してるわよ!?
 >  なんでもないってこと、ないでしょう!?」
-“Hey, you look awful!? Don't tell me it's nothing!?”
+“Hey, you look awful?! Don't tell me it's nothing?!”
 
 @46510 Chizuru · ちずる
 > 「ほ、本当に大丈夫だから……」
@@ -1877,9 +1897,10 @@ I'll let the others know.”
 “Wait! ...Please, don't tell anyone!”
 
 @46518 Cath · キャス
+# 审校：?!
 > 「なにいってるのよ。下手をしたら
 >  死んでしまうかもしれないわよ!?」
-“What are you saying? You could die if this goes badly!?”
+“What are you saying? You could die if this goes badly?!”
 
 @46519 Kosuke · 小介
 > 「そうですよ、ちずるさん!」
@@ -1895,9 +1916,10 @@ I'll let the others know.”
 “Kosuke... Daisaku too... you were listening.”
 
 @46522 Daisaku · 大作
+# 审校：口吻更贴合有礼少年，且与原文「様子がおかしかった」更自然对应。
 > 「ごめんなさい。でも、ちずるさんの
 >  様子がおかしかったから……」
-“I'm sorry. But you looked like something was wrong, so...”
+“I'm sorry. But you seemed like something was wrong, so...”
 
 @46523 Kosuke · 小介
 > 「すぐ艦長や豹馬さんたちに
@@ -1923,9 +1945,10 @@ I'll let the others know.”
 If I'm the only one who has to endure it, that's enough...”
 
 @46527 Gato · ガトー
+# 审校：破折号
 > (異星人の脅威が消え去り……
 >  アクシズ軍が、ハマーン殿が
-(The alien threat is gone... and the Axis Forces—Lady Haman—have risen to restore Zeon.
+(The alien threat is gone... and the Axis Forces, Lady Haman, have risen to restore Zeon.
 ---
 >  ジオン再興のために立たれた。
 >  {HeroMech}がそれを阻止する
@@ -1976,8 +1999,9 @@ For the restoration of Zeon.”
 “What did you say?!”
 
 @46535 Kou · コウ
+# 审校：原文「あいつ」是“那家伙”，bastard 语气过重，不符合浦木宏的性格。
 > 「あいつ……アナベル・ガトーか!?」
-“That bastard... is that Anavel Gato?!”
+“That guy... is that Anavel Gato?!”
 
 @46536 Rain · レイン
 > 「アストナージさん、コウ、
@@ -1998,18 +2022,20 @@ The GP02 is trying to get outside!!”
 “Captain! The GP02 and GP03 have launched!”
 
 @46539 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ガトーと、コウか!? コウ!
 >  コウ・ウラキ特尉!
-“Gato, and Kou?! Kou! Special Ensign Kou Uraki!
+“Gato, and Kou?! Kou! Special Lieutenant Kou Uraki!
 ---
 >  いったいどうなっている!?
 >  返事をしろ!」
 What in the world is going on?! Answer me!”
 
 @46540 Quattro · クワトロ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > (アナベル・ガトー……アクシズに
 >  いくつもりか。ウラキ特尉では
-(Anavel Gato... so he means to go to Axis. Special Ensign Uraki
+(Anavel Gato... so he means to go to Axis. Special Lieutenant Uraki
 ---
 >  “ソロモンの悪夢”は
 >  止められまい
@@ -2025,9 +2051,10 @@ We're going to have a troublesome man as an enemy...)
 “Gato!! I can't let you get away!!”
 
 @46542 Gato · ガトー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「フッ。ウラキ特尉、残念だが
 >  その腕では、私は止められん!」
-“Hmph. Special Ensign Uraki, regrettably, with skill like yours, you cannot stop me!”
+“Hmph. Special Lieutenant Uraki, regrettably, with skill like yours, you cannot stop me!”
 
 @46543 Kou · コウ
 > 「くそおぉぉぉーっ!! ガトー!
@@ -2052,9 +2079,10 @@ The only one who can bring light to the Earth Sphere is my homeland, Zeon!”
 “What? Ngh... damn it!”
 
 @46546 Gato · ガトー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉、覚えておけ!
 >  ジオンの再興をはばむ者は
-“Special Ensign, remember this! Anyone who stands in the way of Zeon's restoration
+“Special Lieutenant, remember this! Anyone who stands in the way of Zeon's restoration
 ---
 >  いつか必ず私に
 >  葬り去られるということを!!」

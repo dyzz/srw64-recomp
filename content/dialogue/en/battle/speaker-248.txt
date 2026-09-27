@@ -1,91 +1,121 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12750 Allenby · アレンビー
+# 触发：攻击（通用，1/6）
 > 「うおおおおおおっ!!」
 “Uwooooooooh!!”
 
 @12751 Allenby · アレンビー
+# 触发：攻击（通用，2/6）
 > 「でやぁぁぁぁぁぁっ!!」
 “Deyaaaaaaah!!”
 
 @12752 Allenby · アレンビー
+# 触发：攻击（通用，3/6）
 > 「私と……私と戦おうよっ!!!」
 “Fight me... fight me!!!”
 
 @12753 Allenby · アレンビー
+# 触发：攻击（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さあ! ファイトしよう!!」
-“Come on! Let's fight!!”
+“Come on! Let’s fight!!”
 
 @12754 Allenby · アレンビー
+# 触发：攻击（通用，5/6）
+# 审校：with me 不通
 > 「ファイトしようよ……私と!!!」
-“Let's fight... with me!!!”
+“Let’s fight... you and me!!!”
 
 @12755 Allenby · アレンビー
+# 触发：攻击（通用，6/6）
 > 「うおおおおおおっ!!」
 “Uwooooooooh!!”
 
 @12756 Allenby · アレンビー
+# 触发：被击坠（通用，1/2）
 > 「ぎゃああああっ!!」
 “Gyaaaaaah!!”
 
 @12757 Allenby · アレンビー
+# 触发：被击坠（通用，2/2）
 > 「うぎゃああああっ!!」
 “Ugyyaaaaaah!!”
 
 @12758 Allenby · アレンビー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「ぎゃあああっ!!……はぁ、はぁ、はぁ」
 “Gyaaaah!! ...Hah, hah, hah.”
 
 @12759 Allenby · アレンビー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「あ、あぎゃぁぁぁっ!!」
 “A-agyaaaah!!”
 
 @12760 Allenby · アレンビー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!
 >  負けないよ絶対……ぜぇったいっ!!」
-“Ngh! I won't lose, absolutely... absolutely!!”
+“Ngh! I won’t lose, absolutely... absolutely!!”
 
 @12761 Allenby · アレンビー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：更像人话
 > 「そうだよ……もっとファイトしようよ!!」
-“That's right... let's fight more!!”
+“That’s it... let’s keep fighting!!”
 
 @12762 Allenby · アレンビー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「うぎゃっ!!」
 “Ugyah!!”
 
 @12763 Allenby · アレンビー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ッ!?
 >  そんなの……そんなの攻撃じゃないよ!」
-“Hn?! That's... that's not even an attack!”
+“Hn?! That’s... that’s not even an attack!”
 
 @12764 Allenby · アレンビー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「もっと! もっと! 本気だしてよ!!」
 “More! More! Give it your all!!”
 
 @12765 Allenby · アレンビー
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせないよっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @12766 Allenby · アレンビー
+# 触发：回避（通用，2/2）
 > 「みえる! みえるよっ!!」
 “I can see it! I can see it!!”
 
 @12767 Allenby · アレンビー
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「効くもんかぁーっ!!」
 “Like that would hurt!!”
 
 @12768 Allenby · アレンビー
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ビームなんて効くもんかぁーっ!!」
 “A Beam like that would never hurt!!”
 
 @12769 Allenby · アレンビー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境
 > 「ちぇっ! だめか!?」
-“Tch! No good?!”
+“Tch! Can’t fire?!”
 
 @12770 Allenby · アレンビー
+# 触发：射程外，无法反击（通用，1/2）
 > 「くうぅぅぅっ!!」
 “Nghhh!!”
 
 @12771 Allenby · アレンビー
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「届かないじゃないかぁっ!!」
-“It won't reach!!”
+“It won’t reach!!”

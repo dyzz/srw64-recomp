@@ -1,107 +1,164 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10732 Danny · ダニー
-# 审校：原译“We can handle this easy”语法不自然，改为更口语化的表达。
+# 触发：攻击（通用，1/7）
+# 审校：补引号
 > 「俺たちにかかればわけないことだ」
-“With us on it, it's no problem.”
+“With us on it, it’s no problem.”
 
 @10733 Danny · ダニー
+# 触发：攻击（通用，2/7）
+# 审校：补引号
 > 「腕慣らしをしておくか」
-“Let's warm up a bit.”
+“Let’s warm up a bit.”
 
 @10734 Danny · ダニー
-# 审校：“Sink!”缺少宾语，攻击台词应补上“it”。
+# 触发：攻击（通用，3/7）
+# 审校：补引号
 > 「沈め!」
-“Sink it!”
+“Sink!”
 
 @10735 Danny · ダニー
+# 触发：攻击（通用，4/7）
+# 审校：补引号
 > 「いくぞ!」
 “Here we go!”
 
 @10736 Danny · ダニー
+# 触发：攻击（通用，5/7）
+# 审校：补引号
 > 「1機だろうと2機だろうと!」
-“One or two, doesn't matter!”
+“One or two, doesn’t matter!”
 
 @10737 Danny · ダニー
+# 触发：攻击（通用，6/7）
+# 审校：补引号
 > 「ハハハハハッ!」
 “Hahahahaha!”
 
 @10738 Danny · ダニー
+# 触发：攻击（通用，7/7）
+# 审校：补引号
 > 「ナイスタイミングだ!」
 “Nice timing!”
 
 @10739 Danny · ダニー
-# 审校：“We're getting hit”未能体现“被击坠”的严重程度，改为更贴切的表达。
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なにぃ!? 俺達がやられるっ!?」
-“W-what?! We're the ones getting taken out?!”
+“W-what?! We’re the ones getting taken out?!”
 
 @10740 Danny · ダニー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：补引号，原文!?
 > 「うおぉぉぉぉーっ!?」
-“Whoaaaaa!”
+“Whoaaaaa?!”
 
 @10741 Danny · ダニー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ば、ばかなぁ!?」
-“I-impossible!”
+“I-impossible?!”
 
 @10742 Danny · ダニー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだとっ!?」
-“W-what did you say?!”
+“W-what?!”
 
 @10743 Danny · ダニー
-# 审校：“is it a monster”指代不清，改为“some kind of monster”更自然。
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このパワー……化け物か!?」
 “Th-this power... is it some kind of monster?!”
 
 @10744 Danny · ダニー
-# 审校：“my Booster's hit”可理解为“被击中”，改为完成时更准确。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：补引号
 > 「くっ、ブースターをやられた!?」
-“Ngh, my Booster's been hit?!”
+“Ngh, my booster’s been hit?!”
 
 @10745 Danny · ダニー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：补引号
 > 「うっ! さすが噂だけのことはある!」
 “Ugh! So the rumors were true!”
 
 @10746 Danny · ダニー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：补引号
 > 「なにっ!?」
 “What?!”
 
 @10747 Danny · ダニー
-# 审校：“I like it”指代模糊，改为“this”更贴合语境。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：补引号
 > 「くくく、うれしいねぇ」
-“Hehehe, I like this.”
+“Heh heh heh, I like this.”
 
 @10748 Danny · ダニー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：补引号
 > 「ふん! 腕ならしにもならんぞ!」
-“Hmph! This isn't even a warm-up!”
+“Hmph! This isn’t even a warm-up!”
 
 @10749 Danny · ダニー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：补引号
 > 「このマシンにそんな攻撃は
 >  通用しない!」
-“That kind of attack won't work on this machine!”
+“That kind of attack won’t work on this machine!”
 
 @10750 Danny · ダニー
+# 触发：回避（通用，1/3）
+# 审校：补引号，Kukuku 不像英配
 > 「クククククッ」
-“Kukukukuku.”
+“Heh heh heh heh.”
 
 @10751 Danny · ダニー
-# 审校：原译“You can't keep up with us!”语气偏陈述，改为“You'll never”更符合挑衅口吻。
+# 触发：回避（通用，2/3）
+# 审校：ついてこれまい是断言不是疑问
 > 「俺たちの動きについてこれまい!」
-“You'll never keep up with us!”
+“You’ll never keep up with us!”
 
 @10752 Danny · ダニー
+# 触发：回避（通用，3/3）
+# 审校：补引号
 > 「遅いな……ハハハハッ!」
 “Too slow... hahahaha!”
 
 @10753 Danny · ダニー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：补引号，Kukuku 不像英配
 > 「クククククッ」
-“Kukukukuku.”
+“Heh heh heh heh.”
 
 @10754 Danny · ダニー
-# 审校：“nothing I can do”略显翻译腔，改为更口语的“nothing for it”。
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：补引号
 > 「弾が尽きたか……仕方がない」
 “Out of ammo... nothing for it.”
 
 @10755 Danny · ダニー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：射程外情境，惊讶而非疑问
 > 「奴らはこんな距離から
 >  攻撃可能なのか!?」
 “They can attack from this range?!”
+
+@16335 Danny · ダニー
+# 触发：使用〈3D〉（对话第 1/3 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「スリーDの三位一体攻撃からは
+>  何者も逃れることはできないんだよ!」
+“No one can escape the Three D’s trinity attack!”
+
+@16336 Dale · デル
+# 触发：使用〈3D〉（对话第 2/3 句）
+> 「覚悟しな!」
+“Prepare yourself!”
+
+@16337 Deune · デューン
+# 触发：使用〈3D〉（对话第 3/3 句）
+> 「死神の声が聞こえてきたかい!?」
+“Did you hear the voice of the Grim Reaper?!”

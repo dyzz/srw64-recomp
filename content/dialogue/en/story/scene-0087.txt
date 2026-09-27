@@ -120,6 +120,7 @@ control, Neo Zeon cannot call itself by that name.”
 “What is it?”
 
 @42121 Haman · ハマーン
+# 审校：全局：旧連邦 = former Federation
 > 「お前に地上の制圧をまかせる。
 >  連中など、もはや烏合の衆に
 “I leave the suppression of the surface to you. Those people are nothing
@@ -130,7 +131,7 @@ more than a rabble now, but we cannot leave the remnants of Romefeller alone. I 
 ---
 >  協力していた旧連邦の高官の
 >  一部が、OZの粛清を逃れて
-some of the Former Federation officials who cooperated with the Muge Empire
+some of the former Federation officials who cooperated with the Muge Empire
 ---
 >  生きのびているとも聞く。
 >  これらは完全に抹殺せねばならん」
@@ -146,17 +147,18 @@ escaped OZ's purge and survived. They must be completely wiped out.”
 are gathering popular support. What shall we do about them?”
 
 @42123 Haman · ハマーン
+# 审校：精读：教祖
 > 「平和論者に何ができる?
 >  現状ではロームフェラの
 “What can pacifists do? As things stand, without Romefeller's
 ---
 >  バックアップがなければ、せいぜいが
 >  教祖にしかなれんよ
-backing, they can be nothing more than figureheads at best.
+backing, they can be nothing more than cult leaders at best.
 ---
 >  それもロームフェラに利用される
 >  形でな」
-And even that only as tools for Romefeller.”
+And even that only as Romefeller's tools.”
 
 @42124 Glemy · グレミー
 > 「わかりました。では私は、
@@ -168,17 +170,17 @@ And even that only as tools for Romefeller.”
 “And then there's the {HeroMech}...”
 
 @42126 Glemy · グレミー
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“...Haman is troubled by the civil unrest on Side 3 and by the movements of
-# 草稿第 2 页：the 【主角机体名】. Otherwise she would never have
-# 草稿第 3 页：left the surface suppression to me.”
+# 审校：补译：原稿占位符错页
 > 「……ハマーンはサイド3の内乱やら、
 >  {HeroMech}の動向に
+“...Haman is troubled by the civil war on Side 3 and by the {HeroMech}'s movements.
 ---
 >  悩まされている。でなければあえて私に
 >  地上制圧などを
+Otherwise she would never have entrusted the surface campaign
 ---
 >  まかせなかったものをな」
+to me of all people.”
 
 @42127 Rakan · ラカン
 > 「ふん、だからどうだというのだ」
@@ -233,16 +235,18 @@ How about it, Rakan? Won't you lend me your aid? Arius has already sided with me
 Let me show you something good. Come with me.”
 
 @42135 Ple-Two · プルツー
+# 审校：Ple-Two 的冷淡口吻下，原文「グレミーか」是确认来者，译成“Glemy.”过于生硬，改为更自然的确认语气。
 > 「グレミーか」
-“Glemy.”
+“So it's Glemy.”
 
 @42136 Glemy · グレミー
 > 「どうだプルツー、順調か?」
 “How goes it, Ple-Two? On schedule?”
 
 @42137 Ple-Two · プルツー
+# 审校：精读：指克隆体
 > 「ああ。まもなく目覚める」
-“Yes. It will awaken soon.”
+“Yes. They will awaken soon.”
 
 @42138 Rakan · ラカン
 > 「こ、これは……まさかこれがすべて……」
@@ -301,9 +305,10 @@ Even in the worst case, humanity on Earth won't be wiped out.”
 “What are you talking about? That's obvious, isn't it?”
 
 @42147 Banjo · 万丈
+# 审校：精读：人名
 > 「とにかく、地球の方はレディに
 >  まかせておくしかない。こっちはこっちで…」
-“In any case, we've no choice but to leave Earth to Lady. We'll handle things on our end...”
+“In any case, we've no choice but to leave Earth to Lady Une. We'll handle things on our end...”
 
 @42148 Banjo · 万丈
 > 「万丈だ」
@@ -500,13 +505,14 @@ Our priority here is to crush these people!”
 “A puppet...?”
 
 @42186 Judau · ジュドー
+# 审校：精读：破折号
 > 「そうだろ? お前は、
 >  長い眠りの間に
-“That's right, isn't it? During that long sleep, you were made into a puppet that follows others' thoughts—
+“That's right, isn't it? During that long sleep, you were made into a puppet that follows others' thoughts.
 ---
 >  他人の考えに従うようにつくられた
 >  人形だって、なぜ気づかないの!?」
-why don't you realize that?!”
+Why don't you realize that?!”
 
 @42187 Ple-Two · プルツー
 > 「ウソだ……ウソだ! ウソだぁーっ!!」
@@ -557,8 +563,9 @@ If you follow her, you can't go wrong!”
 “Ple-Two! Why can't you see that you're the one who's wrong?!”
 
 @42197 Ple-Two · プルツー
+# 审校：普露二号对姬拉说话，原文「不愉快な奴め」是骂对方，译文“little brat”带有年龄感且对象不符，改为更贴合冷淡好战口吻的“wretch”。
 > 「くっ……不愉快な奴めッ!!」
-“Ngh... You irritating little brat!!”
+“Ngh... You irritating wretch!!”
 
 @42198 Kou · コウ
 > 「お前たちに、好きにやらせてたまるか!」
@@ -619,12 +626,13 @@ How long will they be satisfied repeating the same thing...”
 “Incorrigible...?”
 
 @42207 Alan · アラン
+# 审校：精读：措辞
 > 「言い聞かせてもわからせようがない、
 >  救いようがない、という意味だ
 “It means there's no getting through to them no matter how you explain, no hope of saving them.
 ---
 >  ……情けない話だな」
-...It's a pitiful story.”
+...A sorry state of affairs.”
 
 @42208 Kamille · カミーユ
 > 「それが地球人の性だというのは、
@@ -654,9 +662,10 @@ It's the same in Byston Well.”
 Without people banding together, the world wouldn't stand, though.”
 
 @42211 Duo · デュオ
+# 审校：精读：破折号
 > 「世界を支配しようとか、
 >  自分が世界を導こうとかさ
-“Trying to rule the world, or thinking you'll lead it yourself—
+“Trying to rule the world, or thinking you'll lead it yourself...
 ---
 >  いいたいことはわかるけど、
 >  ごう慢なんだよな

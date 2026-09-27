@@ -169,9 +169,10 @@ with ours. It'll mean less confusion.”
 “...Meaning we'd hold OZ ranks, then.”
 
 @30992 Treize · トレーズ
+# 审校：全局：旧連邦 = former Federation
 > 「いちおう説明しておこう。
 >  旧連邦の階級を持つ者は
-“Let me explain, just in case. Those holding Former Federation ranks
+“Let me explain, just in case. Those holding former Federation ranks
 ---
 >  その1階級上のOZの階級が
 >  適用される。ブライト中佐ならば
@@ -183,7 +184,7 @@ you'll be treated as a Colonel, and your OZ rank will be Special Colonel 2nd Cla
 ---
 >  それ以外の者は、他の志願兵
 >  と同様、特士となる。辞令は
-Everyone else will become Specials, same as the other volunteers. The papers
+Everyone else will become Special Officers, same as the other volunteers. The papers
 ---
 >  のちほど届くだろう」
 should arrive later.”
@@ -323,9 +324,10 @@ Their resolve is likely firmer now than ever before.”
 “I see, understood. Forgive my rudeness, Special Lieutenant Quattro Bajeena.”
 
 @31011 Alan · アラン
+# 审校：精读：去破折号
 > 「ジオンの再興を目的とする連中
 >  が、なぜ今? 指導者はだれだ?」
-“Those who aim to restore Zeon—why now? And who leads them?”
+“Those who aim to restore Zeon. Why now? And who leads them?”
 
 @31012 Quattro · クワトロ
 > 「指導者は、ハマーン・カーン……。
@@ -344,9 +346,10 @@ even I don't know. There's no way I could...”
 I don't recall permitting you to act on your own!”
 
 @31014 Scirocco · シロッコ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「これはバスク特佐。新編成の
 >  部隊なので、能力査定を
-“Colonel Bask, this is a newly formed unit, so I am conducting
+“Special Colonel Bask, this is a newly formed unit, so I am conducting
 ---
 >  行っております。作戦までには
 >  もどりますので、どうかご心配なく」
@@ -362,9 +365,10 @@ a capability assessment. I'll be back before the operation, so please don't worr
 I'll shoot you in the back. Keep that in mind!”
 
 @31016 Scirocco · シロッコ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「了解しました。特佐殿から
 >  そういうお言葉を聞けるとは
-“Understood. To hear such words from you, Colonel,
+“Understood. To hear such words from you, Special Colonel,
 ---
 >  うれしい限りですな。
 >  軍人の鏡の言葉として
@@ -374,13 +378,14 @@ is a pleasure. I shall take them as the words of a model soldier.
 Now, if you'll excuse me.”
 
 @31017 Bask · バスク
+# 审校：精读：去破折号
 > 「ふざけおって……!
 >  あのような木星帰りの新参者を
-“Insolent bastard...! That upstart fresh from Jupiter—
+“Insolent bastard...! That upstart fresh from Jupiter.
 ---
 >  ジャミトフ閣下は何を考えて
 >  好きにさせているのか……」
-what is His Excellency Jamitov thinking, letting him do as he pleases...”
+What is His Excellency Jamitov thinking, letting him do as he pleases...”
 
 @31018 Bask · バスク
 > 「……パプティマス・シロッコという男、
@@ -494,6 +499,7 @@ I offer up this life. Please accept this written oath.”
 (Mars, come out. I want to talk with you.)
 
 @31037 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (その声は……俺にガイヤーと
 >  ゴッドマーズのことを教えてくれた男か)
 (That voice... you're the man who told me about Gaia and Godmars.)
@@ -504,9 +510,10 @@ I offer up this life. Please accept this written oath.”
 (That's right. I have something important to tell you. Come out, Mars.)
 
 @31039 Takeru · タケル
+# 审校：精读：去破折号
 > (だまれ! 俺はタケル、明神タケルだ
 >  マーズなんかじゃない)
-(Shut up! I'm Takeru—Takeru Myojin! I'm not Mars!)
+(Shut up! I'm Takeru, Takeru Myojin! I'm not Mars!)
 
 @31040 Marg · マーグ
 > (お前はマーズだ。話を聞けばわかる)
@@ -620,13 +627,13 @@ so I did my very best...”
 “An alarm?! Enemies?!”
 
 @31063 Beltorchika · ベルトーチカ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：去破折号
 > 「ブライト艦長、至急ブリッジへ!
 >  機体多数接近
-“Captain Bright, get to the bridge at once! Multiple units approaching—
+“Captain Bright, get to the bridge at once! Multiple units approaching.
 ---
 >  銀河帝国軍です!」
-it's the Galactic Empire!”
+It's the Galactic Empire!”
 
 @31064 Judau · ジュドー
 > 「あああっ、ちくしょう! いいところで!」
@@ -701,6 +708,7 @@ Hey, report to Commander Gandal.”
 (But we're in the middle of a battle. There's no unit I can take out alone.)
 
 @31076 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (ガイヤーを呼べばいい。
 >  どこにいてもお前が呼べば応える)
 (Just call Gaia. Wherever you are, it will answer if you call.)
@@ -726,10 +734,12 @@ Hey, report to Commander Gandal.”
 weren't you?!”
 
 @31081 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤァァァァァーッ!」
-“Gaiyaaaaaa!”
+“Gaiaaaaaa!”
 
 @31082 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
 “That's the one called Gaia?! Is Takeru piloting it?!”
@@ -841,13 +851,14 @@ My father's name was Idea, and my mother's name was Aida.”
 “That's... the {HeroMech}? Don't tell me you knew about this...?”
 
 @31106 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いや、そうでもない。プレッシャーを
 >  感じなかったといえば、嘘になるが……
 “No, not exactly. I'd be lying if I said I felt no pressure, but...
 ---
 >  まあいい、ちょうどよい機会だ。
 >  ヤザン特尉を呼びもどせ」
-Well, fine. This is a good opportunity. Recall Lieutenant Yazan.”
+Well, fine. This is a good opportunity. Recall Special Lieutenant Yazan.”
 
 @31107 Specials · スペシャルズ
 > 「はっ!」
@@ -863,8 +874,9 @@ Well, fine. This is a good opportunity. Recall Lieutenant Yazan.”
 “{HeroMech}... let me see what you can do.”
 
 @31110 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「来たな……ヤザン特尉」
-“So you've come... Lieutenant Yazan.”
+“So you've come... Special Lieutenant Yazan.”
 
 @31111 Yazan · ヤザン
 > 「{HeroMech}!
@@ -914,8 +926,9 @@ Well, fine. This is a good opportunity. Recall Lieutenant Yazan.”
 “I'm no child!”
 
 @31122 Yazan · ヤザン
+# 审校：ヤザン的粗野口吻中“damn you”语气过重，改为更贴合战斗情境的“damn it”。
 > 「おちろって!」
-“Fall, damn you!”
+“Fall, damn it!”
 
 @31123 Kamille · カミーユ
 > 「お前なんかに……お前なんかにぃ!」
@@ -973,9 +986,10 @@ resisting the forces that rule Earth, isn't that right?”
 “...Am I really Mars? A person from the same planet as you?”
 
 @31134 Marg · マーグ
+# 审校：精读：去破折号
 > 「そうだ。お前は地球人ではない。
 >  そしてお前の本当の名は、マーズだ
-“That's right. You are not an Earthling. And your true name is Mars—
+“That's right. You are not an Earthling. And your true name is Mars,
 ---
 >  俺の弟よ……」
 my younger brother...”
@@ -1025,6 +1039,7 @@ This will be faster than talking.”
 “...All right.”
 
 @31143 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (うぅっ、これは……。ギシン星……
 >  父と母……。父が研究した
 (Ngh, this is... The planet Gishin... Father and Mother... The antiproton energy
@@ -1038,9 +1053,10 @@ Father researched... and Gaia...
 If it's destroyed or I die, the antiproton bomb will explode...)
 
 @31144 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (そうだ。ズールはいつかこの日のくる
 >  ことを考えて、ガイヤーを地球に
-(That's right. Zoole anticipated this day would come and sent Gaia to Earth.
+(That's right. Zuul anticipated this day would come and sent Gaia to Earth.
 ---
 >  送りこんでいたのだ。ガイヤーに
 >  搭載された爆弾のキーとなる
@@ -1060,13 +1076,14 @@ the entire Earth Sphere will be blown away without a trace.)
 (So that's why I was raised on Earth as an abandoned child...)
 
 @31146 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > (父はズールに反抗して、
 >  処刑された
-(Father defied Zoole and was executed.
+(Father defied Zuul and was executed.
 ---
 >  母はズールにお前を返してくれるよう
 >  嘆願しつづけ、数年前に……)
-Mother kept pleading with Zoole to return you, and several years ago...)
+Mother kept pleading with Zuul to return you, and several years ago...)
 
 @31147 Takeru · タケル
 > (俺の……本当の両親……)
@@ -1097,13 +1114,14 @@ I've been waiting for the day I could meet you.”
 “Marg... brother.”
 
 @31153 Marg · マーグ
+# 审校：合并：冲突人工取舍
 > 「……マーズ、お前に渡さなくては
 >  ならないものがある。ガイヤー以外の
-“...Mars, there is something I must give you. The five robots other than Gaia—
+“...Mars, there is something I must give you. The five robots other than Gaia,
 ---
 >  5体のロボット、五神ロボは、
 >  父がズールに秘密で送りこんだ
-the Five God Robots—were sent by Father in secret, without Zoole knowing.
+the Five God Robots, were sent by Father in secret, without Zuul knowing.
 ---
 >  お前の守護神だ。ガイヤーが
 >  危険になると、自動的に
@@ -1206,9 +1224,10 @@ was destroyed by the Galactic Empire.”
 “Of Planet Fleed... I see...”
 
 @31170 Daisuke · 大介
+# 审校：全局：Zuul 拼写
 > 「マーグ、僕と君の2人は、
 >  皇帝ズールの恐ろしさを
-“Marg, you and I both know firsthand how terrifying Emperor Zoole is.
+“Marg, you and I both know firsthand how terrifying Emperor Zuul is.
 ---
 >  身をもって知っている。この地球を
 >  奴の手に渡せばどうなるか……
@@ -1223,18 +1242,20 @@ Marg, we are needed by Earth.”
 “Daisuke...”
 
 @31172 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > 「フリード星のデューク……。ありがとう。
 >  私も戦おう。弟の
 “Duke of Planet Fleed... Thank you. I'll fight too. To protect my brother's
 ---
 >  第二の故郷を守るため……。
 >  いや、皇帝ズールを倒すために」
-second home... No, to defeat Emperor Zoole.”
+second home... No, to defeat Emperor Zuul.”
 
 @31173 Dermail · デルマイユ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「何ということだ。財団の幹部の
 >  ことごとくがこのわしに従わず
-“What is the meaning of this? Every last one of the foundation's executives refuses to obey me
+“What is the meaning of this? Every last one of the Foundation's executives refuses to obey me
 ---
 >  反乱軍どもとの和平を
 >  口にしておる。奴ら、本気で
@@ -1355,9 +1376,10 @@ I am Haman Karn, commander of the Axis Forces.”
 “So that's the Axis's woman boss?”
 
 @31188 Masato · 雅人
+# 审校：雅人轻浮乐天，原文「いい女じゃん」语气更随意，改为更口语化的表达。
 > 「いい女じゃん?
 >  女王様って感じ!」
-“What a looker, huh? She's got that queen vibe!”
+“She's a looker, huh? Got that queen vibe!”
 
 @31189 Sara · 沙羅
 > 「ほんっとに見境いがないね、あんたは!
@@ -1392,6 +1414,7 @@ I would like to think we can fight together. It is not a bad offer, is it?”
 lending us your strength... that would be even better.”
 
 @31193 Haman · ハマーン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ふふふ、さあな。我々の真意を
 >  どうくむかは諸君ら次第だ
 “Heh heh, who can say. How you interpret our true intent is up to you.
@@ -1402,7 +1425,7 @@ But as for us, we must consider not only the Galactic Empire
 ---
 >  考える必要もある。分裂した
 >  OZのロームフェラ派とトレーズ派
-but also the postwar situation. The splintered OZ's Romefeller faction and Treize faction—
+but also the postwar situation. The splintered OZ's Romefeller faction and Treize faction...
 ---
 >  はたしてどちらと手を組むのがよいかな」
 I wonder which would be better to join hands with.”
@@ -1461,9 +1484,10 @@ for humans to fight among themselves.”
 “Char... So it really was true...”
 
 @31203 Roux · ルー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ハマーンとクワトロ特尉って、
 >  知り合いだったの?」
-“Haman and Lieutenant Quattro knew each other?”
+“Haman and Special Lieutenant Quattro knew each other?”
 
 @31204 Simone · シモーヌ
 > 「何だか、めいっぱいワケありって
@@ -1543,6 +1567,7 @@ it is ultimately nothing more than a fixation on what was lost.”
 I want to remain their ally. Even if we can expect to become enemies afterward.”
 
 @31215 Treize · トレーズ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そのとおりだ。デューク・フリード君の
 >  言葉を重く受け止めるとしよう
 “Exactly. Let us take Duke Fleed's words to heart.
@@ -1553,7 +1578,7 @@ From now on, we will cooperate with the Axis Forces in confronting
 ---
 >  対峙していくことにする。
 >  クワトロ特尉もそれでいいかね?」
-the Galactic Empire. Lieutenant Quattro, are you fine with that as well?”
+the Galactic Empire. Special Lieutenant Quattro, are you fine with that as well?”
 
 @31216 Quattro · クワトロ
 > 「結構だ。現実の前に私情を
@@ -1574,12 +1599,13 @@ the Galactic Empire. Lieutenant Quattro, are you fine with that as well?”
 “Whew, the move is finally done.”
 
 @31220 Rain · レイン
+# 审校：精读：去破折号
 > 「ご苦労様。ネェル・アーガマって
 >  最新鋭艦だけあって
-“Thanks for your hard work. The Nahel Argama really is a state-of-the-art ship —
+“Thanks for your hard work. The Nahel Argama really is a state-of-the-art ship.
 ---
 >  ハンガーもきれいね」
-even the hangar is beautiful.”
+Even the hangar is beautiful.”
 
 @31221 Astonaige · アストナージ
 > 「ああ、アーガマは相当
@@ -1647,8 +1673,9 @@ I hear Kamille helped develop this machine?”
 we got the GP03 as well. But it was quite a struggle, let me tell you.”
 
 @31232 Amuro · アムロ
+# 审校：Amuro 认出对方时语气应更自然口语化，原文“君は……”是省略句，用“You're...”更符合语境。
 > 「君は……」
-“You are...”
+“You're...”
 
 @31233 Chan · チェーン
 > 「チェーン・アギです。もと連邦の
@@ -1703,12 +1730,13 @@ wanted to meet you.”
 in exchange for combat data.”
 
 @31242 Amuro · アムロ
+# 审校：精读：去破折号
 > 「解放戦線にか? 帝国軍や
 >  ロームフェラに協力する裏でか
-“With the Liberation Front? While also cooperating with the Imperial forces and Romefeller behind the scenes —
+“With the Liberation Front? While also cooperating with the Imperial forces and Romefeller behind the scenes?
 ---
 >  まるっきり死の商人だな」
-they're nothing but merchants of death.”
+They're nothing but merchants of death.”
 
 @31243 Chan · チェーン
 > 「あまり気分のいいものじゃないですけど
@@ -1745,13 +1773,14 @@ is at least one of their reasons.”
 “I'm Amuro's lover.”
 
 @31250 Chan · チェーン
+# 审校：精读：去破折号
 > 「ふうん、そうなの。でも私は、
 >  アムロ大尉のために、一緒にMSを
-“Hmm, is that so. But I can build mobile suits together with Captain Amuro —
+“Hmm, is that so. But I can build mobile suits together with Captain Amuro.
 ---
 >  つくれるわ。新しいガンダムを。
 >  あなたには、それはできないでしょう?」
-a new Gundam. You can't do that, can you?”
+A new Gundam. You can't do that, can you?”
 
 @31251 Beltorchika · ベルトーチカ
 > 「それが、どうしたのよ」
@@ -1820,10 +1849,10 @@ a new Gundam. You can't do that, can you?”
 “Ah, no, I didn't mean you, Rain...”
 
 @31265 Sai Saici · サイ・サイシー
-# 审校：原文“見舞いかい”是“来探望吗”，初稿漏译“来”的意味，补上“here to visit”。
+# 审校：原文是“タケルの兄ちゃん”，指“武的哥哥”，不是叫武本人。
 > 「よう、タケルの兄ちゃん、
 >  また見舞いかい?」
-“Yo, Takeru, here to visit again?”
+“Yo, Takeru's brother, here to visit again?”
 
 @31266 Takeru · タケル
 > 「ああ。すまない、休憩時間が
@@ -1872,9 +1901,10 @@ say that kind of thing in front of Domon.”
 “U-ugh...”
 
 @31275 Sai Saici · サイ・サイシー
+# 审校：原文有“兄ちゃん”的呼语，译文漏译，应补上以符合赛·塞西对武的称呼。（人工改写）
 > 「タケルの兄ちゃん!
 >  大丈夫かい!?」
-“Takeru! Are you all right?!”
+“Takeru's brother! Are you all right?!”
 
 @31276 George · ジョルジュ
 > 「何があったのです!?」
@@ -1904,9 +1934,10 @@ say that kind of thing in front of Domon.”
 “Damn it, brother! Where did you go, brother! Brotheeer!”
 
 @31282 Jamitov · ジャミトフ
+# 审校：原文称呼为“デルマイユ侯”，应译出爵位“Duke”以符合贾米托夫对迪鲁马尤的正式称呼。
 > 「デルマイユ侯、なぜ地球を離れた?
 >  このような時に………」
-“Lord Dermail, why did you leave Earth? At a time like this...”
+“Duke Dermail, why did you leave Earth? At a time like this...”
 
 @31283 Dermail · デルマイユ
 > 「それはすでに説明したではないか。
@@ -1942,22 +1973,24 @@ the result of us suppressing the rebellions, as you claim.”
 but instead she took you over.”
 
 @31287 Dermail · デルマイユ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「何をいうか! 財団幹部の
 >  連中をうまくたぶらかしたとはいえ
-“What are you saying?! Even if she did bewitch the foundation's executives,
+“What are you saying?! Even if she did bewitch the Foundation's executives,
 ---
 >  しょせん一時のことだ。軍事力を
 >  握っているのは、あくまでわしらだ」
 it's only temporary. We are the ones who hold the military power.”
 
 @31288 Jamitov · ジャミトフ
+# 审校：精读：去破折号
 > 「まあよい、確かにそのとおりだ
 >  小娘ひとりのこと、戦いに勝てば
-“Very well. Indeed, it's as you say — she's just one girl. If we win the battle,
+“Very well. Indeed, it's as you say. She's just one girl. If we win the battle,
 ---
 >  あとはどうにでもなろう。それよりバスクよ
 >  アクシズからの艦艇が
-the rest will sort itself out. More importantly, Bask — it seems ships from Axis
+the rest will sort itself out. More importantly, Bask, it seems ships from Axis
 ---
 >  トレーズ派がいるラビアンローズと
 >  接触したらしいな」
@@ -1986,9 +2019,10 @@ I'd like to bring them to our side if possible, but...”
 as that Scirocco.”
 
 @31292 Jamitov · ジャミトフ
+# 审校：精读：去破折号
 > 「ふふ、そういうな。信用などせんでいい
 >  使いこなせばな。それができんようなら
-“Heh, don't be like that. There's no need to trust them — just keep them under control. And if you can't do that,
+“Heh, don't be like that. There's no need to trust them. Just keep them under control. And if you can't do that,
 ---
 >  つぶせばいいのだ。小娘も、アクシズも
 >  ………シロッコもな」

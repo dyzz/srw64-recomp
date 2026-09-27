@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @46549 Scirocco · シロッコ
+# 审校：全局：バルジ 词条 Barge
 > 「トレーズめ……まさかアクシズ軍とやる
 >  前に、バルジを失うことになるとは
-“That Treize... To think we'd lose Balgi before even facing the Axis Forces.
+“That Treize... To think we'd lose Barge before even facing the Axis Forces.
 ---
 >  あのような行動、理解に苦しむな
 >  が……やはり{HeroMech}……
@@ -91,13 +92,15 @@ If you want to avenge Mouar, then wait.”
 “Captain, I hear the units from the surface have joined us.”
 
 @46560 Bright · ブライト
+# 审校：ブライト作为舰长在舰桥上下达命令时语气应更干脆，原文“ああ”译为“Yeah”过于随意，改为“Yes”更符合其严肃负责的舰长口吻。
 > 「ああ。レディ・アンが上げたらしい」
-“Yeah. Seems Lady Une brought them up.”
+“Yes. Seems Lady Une brought them up.”
 
 @46561 Amuro · アムロ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐の判断は正しいな。
 >  少しばかりの戦力を
-“The Lieutenant Colonel's judgment is correct. Leaving behind
+“The Special Colonel's judgment is correct. Leaving behind
 ---
 >  残しても、意味はない」
 a handful of forces would be meaningless.”
@@ -136,9 +139,10 @@ Even if we withdraw, Haman won't necessarily strike Libra.”
 can we win?”
 
 @46567 Banjo · 万丈
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「らしくないね、クワトロ特尉。
 >  その場合はシロッコとハマーンも
-“That's not like you, Captain Quattro. In that case, Scirocco and Haman
+“That's not like you, Special Lieutenant Quattro. In that case, Scirocco and Haman
 ---
 >  それぞれやりあうことになる。さらに、
 >  ギャリソンの情報では、もうアクシズは
@@ -373,17 +377,19 @@ Imagine not even knowing that.”
 “...What?!”
 
 @46609 Shinobu · 忍
+# 审校：忍的口吻是粗野俚语，'spouting' 应改为更口语的 'spoutin'' 以贴合其狂放语气。
 > 「亮……てめぇ、
 >  なに真顔でふかしてやがんだよ!」
-“Ryo... you bastard, what're you spouting off with a straight face for?!”
+“Ryo... you bastard, what're you spoutin' off with a straight face for?!”
 
 @46610 Sayaka · さやか
 > 「あ～あ、遊ばれちゃって……」
 “Aww, you got played...”
 
 @46611 Daisaku · 大作
+# 审校：大作对银铃用敬语，原文有呼语「銀鈴さん」，译文应保留称呼以体现礼貌。
 > 「銀鈴さんは知ってるんですか?」
-“Do you know, Ginrei?”
+“Do you know about it, Ginrei?”
 
 @46612 Ginrei · 銀鈴
 # 检查提示：未用必用译名：メールシュトローム→Operation Maelstrom
@@ -404,9 +410,10 @@ That's the kind of operation it is.”
 “I see. As expected of you, Ginrei. You really know your stuff.”
 
 @46614 Koji · 甲児
+# 审校：精读：引号；作战名音译
 > 「……でもよ、そんなら何で
 >  『渦巻き作戦』って
-“...But then why not just call it ‘Operation Whirlpool'?
+“...But then why not just call it ‘Operation Whirlpool’?
 ---
 >  いわねえんだよ。
 >  その方が一発でわかるじゃねえか」
@@ -427,9 +434,10 @@ That'd make it obvious in one shot.”
 “Lady Haman, Major Anavel Gato has returned.”
 
 @46618 Haman · ハマーン
+# 审校：精读：引号
 > 「ほう、“ソロモンの悪夢”が
 >  もどったか。会おう。通せ」
-“Oh? So the ‘Nightmare of Solomon' is back. I'll see him. Send him in.”
+“Oh? So the ‘Nightmare of Solomon’ is back. I'll see him. Send him in.”
 
 @46619 Mashymre · マシュマー
 > 「はっ!」
@@ -656,8 +664,9 @@ for the Libra sector.”
 “No... that won't be the case.”
 
 @46650 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「クワトロ特尉、なぜそう思う?」
-“Lieutenant Quattro, why do you think so?”
+“Special Lieutenant Quattro, why do you think so?”
 
 @46651 Quattro · クワトロ
 > 「……説明しにくい」
@@ -681,13 +690,14 @@ for the Libra sector.”
 It seems Haman herself has come out directly, too.”
 
 @46655 Kamille · カミーユ
+# 审校：精读：破折号
 > 「ええ……そう思います。
 >  シロッコも僕らも
-“Yes... I think so. I sense a kind of confidence from both Scirocco and us—
+“Yes... I think so. I sense a kind of confidence,
 ---
 >  両方相手にできるっていう、
 >  自信みたいなものを感じますね」
-that they can take us both on.”
+that she can take on both Scirocco and us.”
 
 @46656 Judau · ジュドー
 > 「わかるよ。あの女は、そういう女だ。
@@ -744,8 +754,9 @@ Do not break formation!”
 launch ours as well!”
 
 @46665 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「状況は!?」
-“What's the situation!?”
+“What's the situation?!”
 
 @46666 Beltorchika · ベルトーチカ
 > 「MDに戦術的な
@@ -778,9 +789,10 @@ and then Domon and the others.”
 “Libra's Mobile Dolls have broken through the defense line! They're closing in!”
 
 @46670 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだと!? マジンガーチームと
 >  SPT部隊はどうした!」
-“What?! What happened to the Mazinger Team and the SPT unit!?”
+“What?! What happened to the Mazinger Team and the SPT unit?!”
 
 @46671 Reika · レイカ
 > 「動きが見えなくなっているわ。
@@ -792,8 +804,9 @@ and then Domon and the others.”
 “More enemy MS, coming in... Huh?”
 
 @46673 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「今度はなんだ!?」
-“Now what!?”
+“Now what?!”
 
 @46674 Beltorchika · ベルトーチカ
 > 「敵の2機が……
@@ -808,9 +821,10 @@ that's not it! That white MS, it's a Qubeley. Haman's unit!
 The other one is... Scirocco's The-O!”
 
 @46675 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「何だと! スクリーンに出せ!
 >  どれだ!?」
-“What?! Put it on the screen! Which one!?”
+“What?! Put it on the screen! Which one?!”
 
 @46676 Reika · レイカ
 > 「だめ、離れていきます。
@@ -835,9 +849,10 @@ The other one is... Scirocco's The-O!”
 “It looked like a Hyaku-Shiki Kai...”
 
 @46681 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「バカな。クワトロ特尉、どういう
 >  つもりなんだ? アムロとカミーユは!?」
-“Impossible. Special Lieutenant Quattro, what does he think he's doing? Where are Amuro and Kamille!?”
+“Impossible. Special Lieutenant Quattro, what does he think he's doing? Where are Amuro and Kamille?!”
 
 @46682 Bunny · バニー
 > 「敵MSと交戦中……
@@ -858,13 +873,15 @@ The other one is... Scirocco's The-O!”
 Can I do this in this machine...? Fine, whatever happens!”
 
 @46685 Scirocco · シロッコ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：ジ・O→The-O
 > 「む……シャアか!? 死にに来たか、
 >  シャア! そんなモビルスーツで
 “Hm... Char?! Have you come to die, Char? Do you really think
 ---
 >  このジ・Oと対等に戦えるとでも、
 >  思っているのか!」
-you can fight this The-O on equal terms in a Mobile Suit like that!?”
+you can fight this The-O on equal terms in a Mobile Suit like that?!”
 
 @46686 Haman · ハマーン
 > 「シャア! こんなところで朽ち果てる、
@@ -988,8 +1005,9 @@ Order all ships and combat units to retreat temporarily!”
 “Damn it... So he used the MDs as decoys, that Scirocco!”
 
 @46709 Garrison · ギャリソン
+# 审校：管家口吻应无缩写，将“We've”改为“We have”。
 > 「まんまとしてやられましたな、艦長」
-“We've been completely outplayed, Captain.”
+“We have been completely outplayed, Captain.”
 
 @46710 Beltorchika · ベルトーチカ
 > 「アクシズ軍も、かなりの被害を
@@ -1011,9 +1029,10 @@ falling back a little... There's no sign of pursuit from the front either.”
 “Even if Mobile Dolls are unmanned, I can't believe they'd fire in that situation.”
 
 @46713 Garrison · ギャリソン
+# 审校：管家口吻应无缩写，将“can't”改为“cannot”。
 > 「あれだけの威力のもの、
 >  連射はできますまい
-“A weapon with that much power can't fire in rapid succession.
+“A weapon with that much power cannot fire in rapid succession.
 ---
 >  問題は第2射の準備が
 >  整うまでの時間ですな」
@@ -1038,9 +1057,10 @@ The question is how much time we have until the second shot is ready.”
 “What should we do...”
 
 @46718 Bright · ブライト
+# 审校：精读：称呼
 > 「クワトロ特尉とカミーユが
 >  もどらないだと!?」
-“Quattro and Kamille haven't come back?!”
+“Special Lieutenant Quattro and Kamille haven't come back?!”
 
 @46719 Shinobu · 忍
 > 「ハマーンとシロッコも出てたな。まさか
@@ -1071,9 +1091,11 @@ The question is how much time we have until the second shot is ready.”
 “Toward Libra?!”
 
 @46725 Judau · ジュドー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ジ・O→The-O
 > 「それなら俺も見たぜ。キュベレイと
 >  ジ・Oも一緒だった。特尉の
-“Then I saw it too. The Qubeley and The-O were with them. The Lieutenant's
+“Then I saw it too. The Qubeley and The-O were with them. The Special Lieutenant's
 ---
 >  百式は、被弾してたぜ。
 >  こっちもMDに囲まれて
@@ -1084,10 +1106,11 @@ Hyaku-Shiki had taken hits. We were surrounded by MDs ourselves and
 couldn't move, so there was nothing we could do.”
 
 @46726 Judau · ジュドー
-# 审校：同上，补出克瓦特罗的名字，避免“The Lieutenant's”生硬
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ジ・O→The-O
 > 「それなら俺も見たぜ。キュベレイと
 >  ジ・Oも一緒だった。特尉の
-“Then I saw it too. The Qubeley and The-O were with them. Lieutenant Quattro's
+“Then I saw it too. The Qubeley and The-O were with them. Special Lieutenant Quattro's
 ---
 >  百式改は、被弾してたぜ。
 >  こっちもMDに囲まれて
@@ -1098,9 +1121,10 @@ Hyaku-Shiki Kai had taken hits. We were surrounded by MDs ourselves and
 couldn't move, so there was nothing we could do.”
 
 @46727 Daisaku · 大作
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「僕、クワトロ特尉がカミーユさんに、
 >  もどれっていってるの、聞きました」
-“I heard Lieutenant Quattro telling Kamille to fall back.”
+“I heard Special Lieutenant Quattro telling Kamille to fall back.”
 
 @46728 Amuro · アムロ
 > 「まさか……シャアの奴、リーブラの
@@ -1158,9 +1182,10 @@ Their MS units are launching.”
 They've changed their plan too.”
 
 @46737 Koji · 甲児
+# 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「オレたちもやろうぜ、艦長。
 >  カミーユはともかく、クワトロ特尉が
-“Let's do this too, Captain. Never mind Kamille, but if Lieutenant Quattro
+“Let's do this too, Captain. Never mind Kamille, but if Special Lieutenant Quattro
 ---
 >  リーブラを止めにいったってんなら、
 >  オレたちは信じるしかないだろ!?」
@@ -1458,8 +1483,9 @@ We're escaping!”
 “Come at me from anywhere! Anyone who gets close, I'll turn to ash!!”
 
 @46777 Kamille · カミーユ
+# 审校：原文是确认对方身份，不是问“那是不是一台梅萨”，去掉多余的“is that a”
 > 「ジェリド……メサか!?」
-“Jerid... is that a Messa?!”
+“Jerid... Messa?!”
 
 @46778 Glemy · グレミー
 > 「ハマーン様、ご無事ですか!?」
@@ -1563,9 +1589,10 @@ I'm Elpeo Ple! Nice to meet you!”
 “Judau! Are you going to play with me?!”
 
 @46800 Judau · ジュドー
+# 审校：原文指普露，译文误作“you”，与说话对象哈曼不符。
 > 「プルみたいな子が、
 >  こんなことしちゃいけない!」
-“A girl like you shouldn't be doing this!”
+“A girl like Ple shouldn't be doing this!”
 
 @46801 Ple · プル
 > 「えっ?」
@@ -1618,9 +1645,10 @@ who would understand you.”
 “Judau! Are you going to play with me?!”
 
 @46811 Judau · ジュドー
+# 审校：原文指普露，译文误作“you”，与说话对象格雷米不符。
 > 「プルみたいな子が、
 >  こんなことしちゃいけない!」
-“A girl like you shouldn't be doing this!”
+“A girl like Ple shouldn't be doing this!”
 
 @46812 Ple · プル
 > 「えっ?」
@@ -1664,17 +1692,20 @@ So, Ple, you can't side with Axis.”
 “...Okay! I get it, Judau! I'll go with you!!”
 
 @46819 Ple · プル
+# 审校：精读：句末标点
 > (……ごめんね、グレミー)
-(...I'm sorry, Glemy)
+(...I'm sorry, Glemy.)
 
 @46820 Haman · ハマーン
+# 审校：精读：指格雷米
 > 「くっ、好きにやらせすぎたか。
 >  やむを得ん」
-“Ngh, I let her have too much free rein. It can't be helped.”
+“Ngh, I gave him too much free rein. It can't be helped.”
 
 @46821 Haman · ハマーン
+# 审校：精读：指格雷米
 > 「くっ、好きにやらせすぎたか……」
-“Ngh, I let her have too much free rein...”
+“Ngh, I gave him too much free rein...”
 
 @46822 Jerid · ジェリド
 > 「カミーユ! 今度こそ貴様を
@@ -1728,9 +1759,10 @@ but I will not forgive such insolence!”
 it's a humiliation!!”
 
 @46831 Gato · ガトー
+# 审校：精读：破折号
 > 「戦いはすべて怨恨に根差している
 >  当然のこと。しかし、そんなことでは
-“All battle is rooted in resentment—that is only natural. But that alone
+“All battle is rooted in resentment, that is only natural. But that alone
 ---
 >  私は倒せん! 私は義によって
 >  立っているのだからな!」
@@ -1762,9 +1794,10 @@ will not bring me down! For I stand upon righteousness!”
 “Damn youuu!! Mouar, forgive me...”
 
 @46838 Yazan · ヤザン
+# 审校：精读：破折号
 > 「なにぃ!? バカな、この俺が
 >  落ちるだとぉっ!?」
-“What?! Impossible—me, shot down?!”
+“What?! Impossible, me, shot down?!”
 
 @46839 Scirocco · シロッコ
 > 「私だけ……死ぬわけにはいかん……。
@@ -1859,18 +1892,20 @@ Kamille Bidan...”
 “What's going on...? Put it through.”
 
 @46857 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{HeroMech}の
 >  ブライト・ノア特佐でありますか」
-“Is this Colonel Bright Noa of the {HeroMech}?”
+“Is this Special Colonel Bright Noa of the {HeroMech}?”
 
 @46858 Bright · ブライト
 > 「そうだ」
 “That's right.”
 
 @46859 Specials · スペシャルズ
+# 审校：精读：破折号、称呼
 > 「自分は、いえ、自分たちは、
 >  投降を希望するものであります
-“I—no, we—wish to surrender.
+“I, no, we wish to surrender.
 ---
 >  現在我々はリーブラ機関部に
 >  おいて、守備隊と交戦中です
@@ -1885,7 +1920,7 @@ We will break through the garrison shortly and destroy the engine section.
 With this, we wish to atone for our betrayal of
 ---
 >  おわびしたいと……」
-the late Excellency Treize...”
+His late Excellency, Treize...”
 
 @46860 Reika · レイカ
 > 「勝手なことを! だったらなぜ今まで
@@ -1910,8 +1945,9 @@ regardless of friend or foe.”
 “...Understood. You have my word.”
 
 @46864 Specials · スペシャルズ
+# 审校：Specials 是军人，原文「では」是结束通信的用语，译文应体现军事通信的正式结束语。
 > 「ありがとうございます。では」
-“Thank you. Then.”
+“Thank you. Over and out.”
 
 @46865 Reika · レイカ
 > 「リーブラから多数の脱出艇が
@@ -1979,8 +2015,9 @@ And the Axis Forces are still going strong...”
 “What is it? Has everyone returned?”
 
 @46879 Bunny · バニー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それが……クワトロ特尉が……」
-“Well... Lieutenant Quattro...”
+“Well... Special Lieutenant Quattro...”
 
 @46880 Bright · ブライト
 > 「どういうことなんだ!?」
@@ -2045,9 +2082,10 @@ didn't you three sense anything?!”
 “That's right, there's no way he'd die. Not that man.”
 
 @46891 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「本当に誰も、
 >  特尉を見ていないのか!?」
-“Did truly no one see the Lieutenant?!”
+“Did no one truly see the Special Lieutenant?!”
 
 @46892 Amuro · アムロ
 > 「もう何度も確認したよ、ブライト。
@@ -2163,9 +2201,10 @@ and head for the Moon.”
 “Yeah... that's all we can do.”
 
 @46909 Dr. Hazuki · 葉月博士
+# 审校：叶月博士是老学者，译文应更书面、稳重，将“It's not enough”改为更符合其口吻的“Though we cannot call it sufficient”。
 > 「うむ……そのほうがよかろう。
 >  十分とはいえないものの
-“Mm... that would be best. It's not enough, but
+“Mm... that would be best. Though we cannot call it sufficient,
 ---
 >  まだ戦力は残っている。
 >  君たちが休んでいる間
@@ -2302,9 +2341,10 @@ everyone's unease here. Her heart is unstable.)
 “Yay! Ple-Ple-Ple-Ple-Ple!”
 
 @46934 Judau · ジュドー
+# 审校：杰特对芙用敬语“すみません”，译文“Sorry about that”语气过轻，改为更客气的“Seems I put you to some trouble”。
 > 「すみませんね、気ぃつかわせちまった
 >  みたいで」
-“Sorry about that. Seems I made you worry.”
+“Sorry about that. Seems I put you to some trouble.”
 
 @46935 Kamille · カミーユ
 > 「あの子は、君に共感している。

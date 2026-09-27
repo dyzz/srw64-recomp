@@ -1,136 +1,168 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9616 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，1/12）
+# 审校：えじき是饵食
 > 「我が悪霊のえじきとなれ」
-“Become an offering to my evil spirits.”],”
+“Become prey to my evil spirits.”
 
 @9617 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，2/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この私を怒らせてしまったことを
 >  後悔させてやろう」
-“I'll make you regret angering me.”],”
+“I’ll make you regret angering me.”
 
 @9618 Emperor Muge · ムゲ帝王
+# 触发：攻击（通用，3/12）
 > 「我が宇宙に眠る悲しき魂どもよ
 >  このムゲゾルバドスの声に応えよ!」
 “Sorrowful souls sleeping in my cosmos, answer the voice of Muge Zorbados!”
 
 @9619 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，4/12）
+# 审校：同 9616
 > 「我が悪霊のえじきとなるがいい」
-“You shall become an offering to my evil spirits.”],”
+“You shall be prey to my evil spirits.”
 
 @9620 Emperor Muge · ムゲ帝王
+# 触发：攻击（通用，5/12）
 > 「愚か者どもが!」
 “Fools!”
 
 @9621 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，6/12）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「はははははっ」
-“Hahahahaha.”],”
+“Hahahahaha.”
 
 @9622 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，7/12）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「この私に挑んだことを
 >  後悔するがいい」
-“Regret ever challenging me.”],”
+“Regret ever challenging me.”
 
 @9623 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，8/12）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「この私の宇宙において
 >  私は絶対者なのだ」
-“In my cosmos, I am absolute.”],”
+“In my cosmos, I am absolute.”
 
 @9624 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，9/12）
+# 审校：修正了译文末尾多余的 ] 字符。
 > 「お前たちに勝ち目はない」
-“You have no chance of winning.”],”
+“You have no chance of winning.”
 
 @9625 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，10/12）
+# 审校：更顺
 > 「お前たちも悪霊の中へ
 >  くわえてやろう」
-“I'll add you to the evil spirits as well.”],”
+“I’ll add you to my evil spirits as well.”
 
 @9626 Emperor Muge · ムゲ帝王
+# 触发：攻击（通用，11/12）
+# 审校：myself 生硬
 > 「この宇宙は私そのもの。
 >  それを思い知れ!」
-“This cosmos is myself. Know it well!”
+“This cosmos is me. Know that well!”
 
 @9627 Emperor Muge · ムゲ帝王
+# 触发：攻击（通用，12/12）
 > 「肉体よ、滅びるがいい……」
 “Flesh, perish...”
 
 @9628 Emperor Muge · ムゲ帝王
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わ、私の宇宙でこんなことが……!?」
-“I-in my own cosmos, this can't be...?!”
+“I-in my own cosmos, this can’t be...?!”
 
 @9629 Emperor Muge · ムゲ帝王
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：语气词与口语
 > 「おぉぉっ!? やつらを見くびり
 >  すぎたか……」
-“Ohh?! Did I underestimate them too much...”
+“Ohh?! Have I underestimated them...”
 
 @9630 Emperor Muge · ムゲ帝王
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……こんなことが……」
-“Ngh... this can't be...”
+“Ngh... this can’t be...”
 
 @9631 Emperor Muge · ムゲ帝王
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「な……なぜだ!?」
 “W-why?!”
 
 @9632 Emperor Muge · ムゲ帝王
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ぬぅ、我が宇宙に眠る魂たちよ、
 >  我が声に応えよ!」
 “Ngh, souls sleeping in my cosmos, answer my voice!”
 
 @9633 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この私を本気で怒らせてしまったな」
-“You've truly angered me now.”],”
+“You’ve truly angered me now.”
 
 @9634 Emperor Muge · ムゲ帝王
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「この程度で私を倒そうというのか?」
 “You think you can defeat me with this much?”
 
 @9635 Emperor Muge · ムゲ帝王
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「その勢いも、ここまでのこと……」
 “That momentum of yours ends here...”
 
 @9636 Emperor Muge · ムゲ帝王
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「愚かな。無駄な抵抗をしようと
 >  いうのか」
 “Foolish. You mean to resist in vain?”
 
 @9637 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれをわきまえぬ愚か者どもめ」
-“Fools who don't know their place.”],”
+“Fools who don’t know their place.”
 
 @9638 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄なことだ」
-“It's pointless.”],”
+“It’s pointless.”
 
 @9639 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：回避（通用，1/2）
+# 审校：原文为帝王对愚者的呵斥，译文缺少帝王威严，改为更符合冷酷帝王口吻的称呼。
 > 「愚か者めが」
-“You fool.”],”
+“You fool.”
 
 @9640 Emperor Muge · ムゲ帝王
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：回避（通用，2/2）
+# 审校：帝王口吻应更正式，将 didn't you 改为 did you not 以符合其庄重语气。
 > 「当たらぬではないか」
-“You missed, didn't you.”],”
+“You missed, did you not?”
 
 @9641 Emperor Muge · ムゲ帝王
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「愚かな。まだ無駄な抵抗をしよう
 >  というのか?」
 “Fool. You still mean to put up this pointless resistance?”
 
 @9642 Emperor Muge · ムゲ帝王
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ここまで敵を追いこみながら……」
 “And to have driven the enemy this far...”
 
 @9643 Emperor Muge · ムゲ帝王
+# 触发：射程外，无法反击（通用，1/1）
 > 「どうなっておるのだ!?」
 “What is going on?!”

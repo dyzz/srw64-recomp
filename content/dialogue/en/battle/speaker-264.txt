@@ -1,39 +1,51 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9017 Fa · ファ
+# 触发：攻击（通用，1/1）
 > 「落ちてっ!!」
 “Go down!!”
 
 @9018 Fa · ファ
+# 触发：被击坠（通用，1/1）
 > 「きゃあああっ!!」
 “Kyaaaaah!!”
 
 @9019 Fa · ファ
-# 审校：与 L23 保持一致，改为 “any longer”。
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメ、もうもたないっ!?」
-“No, I can't hold out any longer?!”
+“No, I can’t hold out any longer?!”
 
 @9020 Fa · ファ
-# 审校：与 L28 保持一致，改为更忠实原文。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま……まだよ、まだいけるっ!!」
-“I-I'm not done yet, I can still go!!”
+“I-I’m not done yet, I can still go!!”
 
 @9021 Fa · ファ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「大丈夫、かすっただけ!」
-“I'm okay, it just grazed me!”
+“I’m okay, it just grazed me!”
 
 @9022 Fa · ファ
+# 触发：回避（通用，1/1）
 > 「かわせた!」
 “I dodged it!”
 
 @9023 Fa · ファ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダよ、そんなビームなんて!」
-“It's useless, a beam like that!”
+“It’s useless, a beam like that!”
 
 @9024 Fa · ファ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「あ……弾切れ!?」
 “Ah... out of ammo?!”
 
 @9025 Fa · ファ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメ、届かない!!」
-“No, it won't reach!!”
+“No, it won’t reach!!”

@@ -1,146 +1,199 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13601 Guerrilla · ゲリラ
+# 触发：攻击（通用，1/9）
 > 「でやあああっ!!」
 “Take thiiiis!!”
 
 @13602 Guerrilla · ゲリラ
+# 触发：攻击（通用，2/9）
 > 「こ、このおっ!」
 “W-why you!”
 
 @13603 Guerrilla · ゲリラ
+# 触发：攻击（通用，3/9）
+# 审校：やってやる是“干掉你”，“干给你看”不像喊话
 > 「やってやる、やってやるぞ!」
-“I'll do it, I'll do it for sure!”
+“I’ll get you, I’ll get you for sure!”
 
 @13604 Guerrilla · ゲリラ
+# 触发：攻击（通用，4/9）
+# 审校：当たれ是祈使，单个 Hit 不成句
 > 「当たれっ!」
-“Hit!”
+“Hit ’em!”
 
 @13605 Guerrilla · ゲリラ
+# 触发：攻击（通用，5/9）
 > 「うおおおおっ!」
 “Uwooooh!”
 
 @13606 Guerrilla · ゲリラ
+# 触发：攻击（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「行くぜっ!」
-“Let's go!”
+“Let’s go!”
 
 @13607 Guerrilla · ゲリラ
+# 触发：攻击（通用，7/9）
 > 「落ちろってんだよ!!」
 “I said go down!!”
 
 @13608 Guerrilla · ゲリラ
+# 触发：攻击（通用，8/9）
+# 审校：游击队不粗口
 > 「こいつっ!」
-“You bastard!”
+“Why you!”
 
 @13609 Guerrilla · ゲリラ
+# 触发：攻击（通用，9/9）
+# 审校：やってやる
 > 「やってやる!!」
-“I'll do it!!”
+“I’ll get you!!”
 
 @13610 Guerrilla · ゲリラ
+# 触发：被击坠（通用，1/2）
 > 「う、うわあああっ!!」
 “U-uwaaaah!!”
 
 @13611 Guerrilla · ゲリラ
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ!! や、やられたっ!!」
-“Gah!! I-I've been hit!!”
+“Gah!! I-I’ve been hit!!”
 
 @13612 Guerrilla · ゲリラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわあっ! や、やられちまうっ!!」
-“Uwaah! I-I'm going down!!”
+“Uwaah! I-I’m going down!!”
 
 @13613 Guerrilla · ゲリラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! こ、これじゃもたない!?」
-“Gah! I-I can't hold out?!”
+“Gah! I-I can’t hold out?!”
 
 @13614 Guerrilla · ゲリラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「つ、強い、強すぎる!?」
 “S-strong, too strong?!”
 
 @13615 Guerrilla · ゲリラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだこいつのパワーは!?」
-“W-what is with this guy's power?!”
+“W-what is with this guy’s power?!”
 
 @13616 Guerrilla · ゲリラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「がああっ! パ、パワーが違いすぎる……」
 “Gaaah! Th-the power difference is too much...”
 
 @13617 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? や、やってくれる!」
-“Whoa?! Y-you're good!”
+“Whoa?! Y-you’re good!”
 
 @13618 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんの、まだまだっ!!」
-“N-no way, not yet!!”
+“Th-that’s nothing, I’m not done yet!!”
 
 @13619 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! さすがにやるじゃないか!」
-“Tch! You're pretty good after all!”
+“Tch! You’re pretty good after all!”
 
 @13620 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 > 「ちっ! この程度ならまだ戦える!」
 “Tch! I can still fight with this much!”
 
 @13621 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
+# 审校：やったな是咬牙，不是夸对方
 > 「このっ! やったな!」
-“Why you! You did that!”
+“Why you! You’ll pay for that!”
 
 @13622 Guerrilla · ゲリラ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
+# 审校：口语；弯撇号
 > 「クソっ!! こんなもんでやられるか!!」
-“Damn!! Like this'll take me down!!”
+“Damn!! Like this’ll take me down!!”
 
 @13623 Guerrilla · ゲリラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないな、そんな攻撃!」
-“That kind of attack won't work!”
+“That kind of attack won’t work!”
 
 @13624 Guerrilla · ゲリラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「そんなものか!」
 “Is that all?!”
 
 @13625 Guerrilla · ゲリラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「たかがかすり傷だっ!!」
 “Just a scratch!!”
 
 @13626 Guerrilla · ゲリラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「当たっただけだ!」
 “It only grazed me!”
 
 @13627 Guerrilla · ゲリラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「こんなダメージなど!」
 “Damage like this is nothing!”
 
 @13628 Guerrilla · ゲリラ
+# 触发：回避（通用，1/6）
 > 「あ、危なかった……」
 “Th-that was close...”
 
 @13629 Guerrilla · ゲリラ
+# 触发：回避（通用，2/6）
 > 「かわせた!」
 “Dodged it!”
 
 @13630 Guerrilla · ゲリラ
+# 触发：回避（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たってたまるか!」
-“Like I'd let that hit me!”
+“Like I’d let that hit me!”
 
 @13631 Guerrilla · ゲリラ
+# 触发：回避（通用，4/6）
 > 「外れた!」
 “Missed!”
 
 @13632 Guerrilla · ゲリラ
+# 触发：回避（通用，5/6）
 > 「な、なんとか……」
 “I-I managed somehow...”
 
 @13633 Guerrilla · ゲリラ
+# 触发：回避（通用，6/6）
 > 「そこか!」
 “There?!”
 
 @13634 Guerrilla · ゲリラ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このっ! 効かないんだよっ!!」
-“Why you! It won't work!!”
+“Why you! It won’t work!!”
 
 @13635 Guerrilla · ゲリラ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「え!? しまった、弾切れか!?」
 “Huh?! Damn, out of ammo?!”
 
 @13636 Guerrilla · ゲリラ
+# 触发：射程外，无法反击（通用，1/1）
 > 「な、なんだ!?
 >  あんな距離から攻撃できるのか!?」
 “W-what?! You can attack from that range?!”

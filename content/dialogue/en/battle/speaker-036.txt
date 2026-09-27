@@ -1,226 +1,356 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7950 Amuro · アムロ
+# 触发：攻击（通用，1/14）
 > 「おちろっ!」
 “Fall!”
 
 @7951 Amuro · アムロ
+# 触发：攻击（通用，2/14）
 > 「あたれっ!」
 “Hit!”
 
 @7952 Amuro · アムロ
+# 触发：攻击（通用，3/14）
 > 「そこだっ!!」
 “There!!”
 
 @7953 Amuro · アムロ
+# 触发：攻击（通用，4/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させるっ!!」
-“I'll land a direct hit!!”
+“I’ll land a direct hit!!”
 
 @7954 Amuro · アムロ
+# 触发：攻击（通用，5/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃げ回っても無駄だっ!」
-“Running won't help you!”
+“Running won’t help you!”
 
 @7955 Amuro · アムロ
+# 触发：攻击（通用，6/14）
 > 「この一撃で!」
 “With this one shot!”
 
 @7956 Amuro · アムロ
+# 触发：攻击（通用，7/14）
 > 「邪魔だっ!」
 “Out of my way!”
 
 @7957 Amuro · アムロ
+# 触发：攻击（通用，8/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あててみせるっ!」
-“I'll hit you, just watch!”
+“I’ll hit you, just watch!”
 
 @7958 Amuro · アムロ
+# 触发：攻击（通用，9/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落としてみせるっ!」
-“I'll shoot you down, just watch!”
+“I’ll shoot you down, just watch!”
 
 @7959 Amuro · アムロ
+# 触发：攻击（通用，10/14）
 > 「そこだっ!!」
 “There!!”
 
 @7960 Amuro · アムロ
+# 触发：攻击（通用，11/14）
 > 「いけるかっ!?」
 “Can I do it?!”
 
 @7961 Amuro · アムロ
+# 触发：攻击（通用，12/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @7962 Amuro · アムロ
+# 触发：攻击（通用，13/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ!」
-“Like hell I'll let you!”
+“Like hell I’ll let you!”
 
 @7963 Amuro · アムロ
+# 触发：攻击（通用，14/14）
 > 「このおっ!」
 “Why you!”
 
 @7964 Amuro · アムロ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまった!!」
-“D-Damn it!!”
+“D-damn it!!”
 
 @7965 Amuro · アムロ
+# 触发：被击坠（通用，2/2）
 > 「うわぁぁぁぁっ!!」
 “Uwaaaaaaah!!”
 
 @7966 Amuro · アムロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もつのか!?」
-“C-Can it hold?!”
+“C-can it hold?!”
 
 @7967 Amuro · アムロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 > 「くっ! ダメージが大きすぎる!?」
 “Ngh! The damage is too much?!”
 
 @7968 Amuro · アムロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだ、このままじゃもたないっ!!」
-“No good, I can't take much more like this!!”
+“No good, I can’t take much more like this!!”
 
 @7969 Amuro · アムロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
 > 「しまった! ダメージを受けすぎたか!」
 “Damn! Did I take too much damage?!”
 
 @7970 Amuro · アムロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このままではやられる!?」
-“A-At this rate I'll be shot down?!”
+“A-at this rate I’ll be shot down?!”
 
 @7971 Amuro · アムロ
-# 审校：「やられる!?」在此处是被击坠/被打倒的惊呼，初稿“I'm hit?!”偏离原意。改为“I'm going down?!”
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられる!?」
-“I'm going down?!”
+“I’m going down?!”
 
 @7972 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/10）
+# 审校：This much! 不成句
 > 「このくらい!」
-“This much!”
+“This much is nothing!”
 
 @7973 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/10）
 > 「ッ!! まだだ!!」
 “Hn!! Not yet!!”
 
 @7974 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/10）
 > 「くっ! まだまだ!」
 “Ngh! Not yet, not by a long shot!”
 
 @7975 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/10）
 > 「くっ! まだだ! まだいける!!」
 “Ngh! Not yet! I can still go!!”
 
 @7976 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/10）
 > 「くっ! だが、この程度なら
 >  まだいける!」
 “Ngh! But I can still take this much!”
 
 @7977 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだまだ!」
-“N-Not yet, not by a long shot!”
+“N-not yet, not by a long shot!”
 
 @7978 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やる! だが、まだこんなもので!
-“Not bad! But that's not nearly enough!”
+“Not bad! But that’s not nearly enough!”
 
 @7979 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 > 「やったな!」
 “You got me!”
 
 @7980 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，9/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだやられたわけじゃない!」
-“Not yet! I'm not down yet!”
+“Not yet! I’m not down yet!”
 
 @7981 Amuro · アムロ
+# 触发：中伤（剩余 HP 30–90%）（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! 機体の調整が完全じゃ
 >  ないのか!?」
-“Tch! Isn't the unit fully tuned?!”
+“Tch! Isn’t the unit fully tuned?!”
 
 @7982 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「ちっ!」
 “Tch!”
 
 @7983 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「この程度なら!!」
 “This much is nothing!!”
 
 @7984 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「この程度のダメージなら!」
 “Damage like this is nothing!”
 
 @7985 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなことでっ!!」
-“You think this'll stop me!!”
+“You think this’ll stop me!!”
 
 @7986 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「かすっただけだ!」
 “It just grazed me!”
 
 @7987 Amuro · アムロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：何の 是不屑，原译不成句
 > 「何の、この程度っ!」
-“What, this much?!”
+“Ha! This much is nothing!”
 
 @7988 Amuro · アムロ
+# 触发：回避（通用，1/10）
 > 「みえる!!」
 “I can see it!!”
 
 @7989 Amuro · アムロ
+# 触发：回避（通用，2/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @7990 Amuro · アムロ
+# 触发：回避（通用，3/10）
 > 「あまいっ!!」
 “Too easy!!”
 
 @7991 Amuro · アムロ
+# 触发：回避（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるかっ!」
-“Like you'd hit me!”
+“Like you’d hit me!”
 
 @7992 Amuro · アムロ
+# 触发：回避（通用，5/10）
 > 「そこっ!」
 “There!”
 
 @7993 Amuro · アムロ
+# 触发：回避（通用，6/10）
 > 「見える!!」
 “I can see it!!”
 
 @7994 Amuro · アムロ
+# 触发：回避（通用，7/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるものかっ!」
-“As if you'd hit me!”
+“As if you’d hit me!”
 
 @7995 Amuro · アムロ
+# 触发：回避（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵の動きが……見える!」
-“I can see... the enemy's movements!”
+“I can see... the enemy’s movements!”
 
 @7996 Amuro · アムロ
+# 触发：回避（通用，9/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It's useless!”
+“It’s useless!”
 
 @7997 Amuro · アムロ
+# 触发：回避（通用，10/10）
 > 「そこか!」
 “There you are!”
 
 @7998 Amuro · アムロ
+# 触发：攻击无效（护罩／装甲）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @7999 Amuro · アムロ
+# 触发：攻击无效（护罩／装甲）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ」
-“I won't let you!”
+“I won’t let you!”
 
 @8000 Amuro · アムロ
+# 触发：攻击无效（护罩／装甲）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられはしない!」
-“I won't be shot down!”
+“I won’t be shot down!”
 
 @8001 Amuro · アムロ
-# 审校：「だめか」在此是“不行了吗”，不是“no good”的直译问题，改为更自然的“it's no good”
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, it's no good?!”
+“Ngh, I can’t return fire?!”
 
 @8002 Amuro · アムロ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、弾切れか!」
-“Damn, I'm out of ammo!”
+“Damn, I’m out of ammo!”
 
 @8003 Amuro · アムロ
+# 触发：射程外，无法反击（通用，1/2）
 # 审校：「遠すぎるか」指距离太远，补上 away 更自然
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far away?!”
 
 @8004 Amuro · アムロ
+# 触发：射程外，无法反击（通用，2/2）
 > 「あんな距離から攻撃できるのか!?」
 “They can attack from that range?!”
+
+@14554 Amuro · アムロ
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「いけっ! ファンネル!!」
+“Go! Funnel!!”
+
+@14555 Amuro · アムロ
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「ファンネル!!」
+“Funnel!!”
+
+@14556 Amuro · アムロ
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネル!!」
+“Fin Funnels!!”
+
+@14557 Amuro · アムロ
+# 触发：使用〈フィンファンネル〉
+> 「いけっ! フィンファンネル!!」
+“Go! Fin Funnels!!”
+
+@14558 Amuro · アムロ
+# 触发：使用〈ヴェスバー〉（低优先，可能被通用台词顶掉）
+> 「ヴェスバー!!」
+“VSBR!!”
+
+@14559 Amuro · アムロ
+# 触发：攻击，乘坐〈νガンダム〉
+# 审校：名台词，照惯用译法
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam isn’t just for show!”
+
+@14560 Amuro · アムロ
+# 触发：攻击，乘坐〈量産型νガンダムF〉
+# 审校：同 14559
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam isn’t just for show!”
+
+@14561 Amuro · アムロ
+# 触发：攻击，乘坐〈量産型νガンダムI〉
+# 审校：同 14559
+> 「νガンダムは伊達じゃないっ!」
+“The Nu Gundam isn’t just for show!”
+
+@14562 Amuro · アムロ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”

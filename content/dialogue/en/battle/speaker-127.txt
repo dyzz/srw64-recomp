@@ -1,87 +1,118 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9981 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，1/7）
 > 「なまいきな奴らめっ! それっ!」
 “Insolent fools! Take that!”
 
 @9982 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，2/7）
 > 「俺の父さんの牛剣鬼は
 >  空の英雄といわれているんだっ!」
 “My father, Gyukenki, is called the hero of the skies!”
 
 @9983 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺は牛剣鬼の息子だ!」
-“I am Gyukenki's son!”
+“I am Gyukenki’s son!”
 
 @9984 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，4/7）
 > 「それっ!!」
 “Take that!!”
 
 @9985 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，5/7）
 > 「くらえ!」
 “Take this!”
 
 @9986 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，6/7）
 > 「いくぞ!」
 “Here I come!”
 
 @9987 Gyugaki · 牛餓鬼
+# 触发：攻击（通用，7/7）
 > 「俺だってぇ!」
 “I can do it too!”
 
 @9988 Gyugaki · 牛餓鬼
+# 触发：被击坠（通用，1/1）
 > 「うわああぁあああああぁぁぁぁっ!」
 “Uwaaaaaaaaah!”
 
 @9989 Gyugaki · 牛餓鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ううわっ!?」
 “Uwhoa?!”
 
 @9990 Gyugaki · 牛餓鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ……おめおめと引き返せないっ!」
-“Ngh... I can't just slink back home!”
+“Ngh... I can’t just slink back home!”
 
 @9991 Gyugaki · 牛餓鬼
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわあぁぁっ!? そ、そんな!?」
-“Uwaaah?! Th-That can't be!”
+“Uwaaah?! Th-that can’t be!”
 
 @9992 Gyugaki · 牛餓鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「く、くそーっ、なまいきな奴らめっ!」
-“D-Damn it, insolent fools!”
+“D-damn it, insolent fools!”
 
 @9993 Gyugaki · 牛餓鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、大丈夫だ! 俺は
 >  牛剣鬼の息子だ!」
-“I-I'm fine! I am Gyukenki's son!”
+“I-I’m fine! I am Gyukenki’s son!”
 
 @9994 Gyugaki · 牛餓鬼
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだだ! こんなことでぇっ!」
-“N-Not yet! Not over something like this!”
+“N-not yet! Not over something like this!”
 
 @9995 Gyugaki · 牛餓鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：原句残缺
 > 「これしきの攻撃で!!」
-“An attack like that won't!!”
+“An attack like that won’t do it!!”
 
 @9996 Gyugaki · 牛餓鬼
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この牛餓鬼には、効かないぞ!」
-“It won't work on me, Gyugaki!”
+“It won’t work on me, Gyugaki!”
 
 @9997 Gyugaki · 牛餓鬼
+# 触发：回避（通用，1/2）
 > 「見たか!」
 “You see that!”
 
 @9998 Gyugaki · 牛餓鬼
+# 触发：回避（通用，2/2）
 > 「俺だってこのくらいはっ!」
 “Even I can do at least this much!”
 
 @9999 Gyugaki · 牛餓鬼
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「バカめ!」
 “Fools!”
 
 @10000 Gyugaki · 牛餓鬼
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、攻撃できないのか!?」
-“I-I can't attack?!”
+“I-I can’t attack?!”
 
 @10001 Gyugaki · 牛餓鬼
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「届かない!? くそっ、卑怯者め!!」
-“It won't reach?! Damn you, cowards!!”
+“It won’t reach?! Damn you, cowards!!”

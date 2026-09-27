@@ -1,275 +1,695 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11567 Kurtz · カーツ
-# 审校：“disappear” 语气偏弱，改为更符合 Kurtz 冷硬傲慢口吻的 “Vanish!”
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「目障りだ、消えろ!」
-“You're in my way. Vanish!”
+“You’re in my way. Vanish!”
 
 @11568 Kurtz · カーツ
+# 触发：攻击（通用，2/9）
 > 「野郎っ!」
 “You bastard!”
 
 @11569 Kurtz · カーツ
+# 触发：攻击（通用，3/9）
 # 审校：“Take my strike!” 略显生硬，改为更自然的战斗台词
 > 「俺の一撃を受けろっ!」
 “Take this blow of mine!”
 
 @11570 Kurtz · カーツ
-# 审校：“みやがれ” 应为挑衅语气，“Watch me!” 意思偏差
+# 触发：攻击（通用，4/9）
+# 审校：みやがれ 是“看好了”
 > 「みやがれ!」
-“Come on!”
+“Take a good look!”
 
 @11571 Kurtz · カーツ
-# 审校：“くらいやがれ” 是“吃我这招”，改为更贴切的 “Eat this!”
+# 触发：攻击（通用，5/9）
+# 审校：“Eat this!”过于俚俗，不符合カーツ傲慢冷硬的语气。
 > 「くらいやがれ!」
-“Eat this!”
+“Take this!”
 
 @11572 Kurtz · カーツ
+# 触发：攻击（通用，6/9）
 > 「はぁぁぁーっ!」
 “Haaaaaah!”
 
 @11573 Kurtz · カーツ
+# 触发：攻击（通用，7/9）
 > 「俺の目の前から消え失せろ!」
 “Get out of my sight!”
 
 @11574 Kurtz · カーツ
+# 触发：攻击（通用，8/9）
 > 「邪魔だ!」
 “Out of my way!”
 
 @11575 Kurtz · カーツ
+# 触发：攻击（通用，9/9）
 # 审校：“block this” 不够自然，改为更口语化的 “take this”
 > 「貴様にこれが受けきれるか!」
 “Think you can take this?!”
 
 @11576 Kurtz · カーツ
+# 触发：被击坠（通用，1/4）
 > 「おおぉぉあぁぉぉーっ!」
 “Oooohaaaaaah!”
 
 @11577 Kurtz · カーツ
+# 触发：被击坠（通用，2/4）
 # 审校：“認めん” 是“我不承认”，不是“我不会接受”的被动表达，改为更准确
 > 「おぉぉぉぉぉぉーっ!?
 >  認めん! 俺は認めんぞぉっ!」
 “Oooooooh?! I refuse to accept it! I will never accept it!”
 
 @11578 Kurtz · カーツ
+# 触发：被击坠（通用，3/4）
 > 「くっそぉぉぉぉーっ!」
 “Damn yoooooou!”
 
 @11579 Kurtz · カーツ
-# 审校：原文是反问自己修行不足，改为更自然的反问
+# 触发：被击坠（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!
 >  俺の修行が足りんというのかぁっ!?」
-“Ngh! Are you saying my training isn't enough?!”
+“Ngh! Are you saying my training isn’t enough?!”
 
 @11580 Kurtz · カーツ
-# 审校：“bastaard” 拼写错误，改为 “bastard”
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/9）
+# 审校：“bastard”过于粗俗，カーツ的傲慢语气更适合“wretch”。
 > 「き、貴っ様ぁぁーっ!」
-“Y-you bastard!”
+“Y-you wretch!”
 
 @11581 Kurtz · カーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/9）
+# 审校：がはっ 是吐血声
 > 「がはぁっ!」
-“Gahah!”
+“Gah!”
 
 @11582 Kurtz · カーツ
-# 审校：“there is no retreat for me” 翻译腔，改为更自然表达
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/9）
+# 审校：原译多加了人名
 > 「げ、限界だというのか!? だが、この
 >  俺に後退の二文字はないっ!」
-“Gah, are you saying I've reached my limit?! But the word retreat doesn't exist for me!”
+“Th-the limit?! But the word retreat does not exist for me!”
 
 @11583 Kurtz · カーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだ終わってたまるか!」
-“Not yet! It's not over yet!”
+“Not yet! It’s not over yet!”
 
 @11584 Kurtz · カーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/9）
 > 「うおぉぉぉぉっ!?」
 “Whoooaah?!”
 
 @11585 Kurtz · カーツ
-# 审校：“ざけんじゃねぇ” 是“别耍我”，改为更贴切口语
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅ……
 >  ざけんじゃねぇ、俺は負けんぞ!!」
-“Guh... don't screw with me. I won't lose!!”
+“Guh... don’t mock me. I won’t lose!!”
 
 @11586 Kurtz · カーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/9）
 > 「くっ……
 >  こ、この俺をここまで追い詰める!?」
 “Ngh... y-you pushed me this far?!”
 
 @11587 Kurtz · カーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおぉぉーっ!?
 >  退かぬ! 俺は退かぬぞ!」
-“Whoooaah?! I won't back down! I will not back down!”
+“Whoooaah?! I won’t back down! I will not back down!”
 
 @11588 Kurtz · カーツ
-# 审校：“never!” 单独结尾略突兀，改为更完整
+# 触发：重伤（剩余 HP 不足 30%）（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「や、やらせはしねぇ……絶対に!」
-“I-I won't let you... not ever!”
+“I-I won’t let you... not ever!”
 
 @11589 Kurtz · カーツ
-# 审校：“you” 结尾不够有力，改为 “you bastard” 更符合角色语气
+# 触发：中伤（剩余 HP 30–90%）（通用，1/9）
+# 审校：标点
 > 「ぐ、ふざけろよぉテメェ!」
-“Guh, don't mess with me, you bastard!”
+“Guh, you dare mock me, you bastard!”
 
 @11590 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるっ、だがそれだけではっ!」
-“Not bad, but that's not enough!”
+“Not bad, but that’s not enough!”
 
 @11591 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうだ! もっと攻めてこいっ!」
-“That's it! Come at me harder!”
+“That’s it! Come at me harder!”
 
 @11592 Kurtz · カーツ
-# 审校：“I'll pay this back” 不够自然，改为更完整表达
+# 触发：中伤（剩余 HP 30–90%）（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「野郎っ! このカリは返すぜぇ!」
-“You bastard! I'll pay you back for this!”
+“You bastard! I’ll pay you back for this!”
 
 @11593 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/9）
 > 「おぉ!? くそぉ!」
 “Oh?! Damn!”
 
 @11594 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/9）
 > 「なに!? この俺がくらっただと!?」
 “What?! I took a hit?!”
 
 @11595 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「く、なるほど……
 >  この俺が相手をする価値はあるな」
-“Ngh, I see... you're worth my time after all.”
+“Ngh, I see... you’re worth my time after all.”
 
 @11596 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，8/9）
 # 审校：“もろにくらった” 是“正面吃下”，改为 “direct hit” 更准确
 > 「バカな!?
 >  この俺がもろにくらっただと!?」
 “Impossible?! I took a direct hit?!”
 
 @11597 Kurtz · カーツ
-# 审校：“your move” 可接受，但原文“動き”指动作，改为复数更自然
+# 触发：中伤（剩余 HP 30–90%）（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なに!?
 >  ぐ……動きが読めなかったのか!?」
-“What?! Guh... I couldn't read your movements?!”
+“What?! Guh... I couldn’t read your movements?!”
 
 @11598 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ククク、効かん、効かんぞ!」
-“Heh heh heh, it doesn't hurt, not at all!”
+“Heh heh heh, it doesn’t hurt, not at all!”
 
 @11599 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなことでは俺は倒せん!」
-“That won't be enough to bring me down!”
+“That won’t be enough to bring me down!”
 
 @11600 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/10）
 # 审校：“you of all people” 不够贴切，改为 “the likes of you” 更符合轻蔑语气
 > 「くっ、貴様ごときがっ!
 >  邪魔をするなぁ!!」
 “Ngh, the likes of you! Stay out of my way!!”
 
 @11601 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/10）
 > 「それがどうしたっ!」
 “So what?!”
 
 @11602 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/10）
 > 「ハハハハハハハッ!」
 “Hahahahahahaha!”
 
 @11603 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/10）
 > 「どうやら死にたいらしいな!」
 “So you want to die, it seems!”
 
 @11604 Kurtz · カーツ
-# 审校：“weakling” 可接受，但“ザコ”更贴切为 “small fry”
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/10）
+# 审校：“small fry”偏口语，カーツ的傲慢冷硬语气更适合“worm”。
 > 「フン、貴様のようなザコにどうにか
 >  できるとでも、思ったか」
-“Hmph, did you really think a small fry like you could do anything?”
+“Hmph, did you really think a worm like you could do anything?”
 
 @11605 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弱い、弱すぎる!
 >  貴様では相手にならん!」
-“Weak, far too weak! You're no match for me!”
+“Weak, far too weak! You’re no match for me!”
 
 @11606 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，9/10）
 > 「フッ、笑わせてくれる」
 “Heh, you crack me up.”
 
 @11607 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それほど死にたいのなら、望み通りに
 >  してやる!」
-“If you want to die that badly, I'll grant your wish!”
+“If you want to die that badly, I’ll grant your wish!”
 
 @11608 Kurtz · カーツ
-# 审校：“You missed!” 是“你打偏了”，原文“当たらん”是“打不中”，改为更准确
+# 触发：回避（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらん!」
-“You can't hit me!”
+“You can’t hit me!”
 
 @11609 Kurtz · カーツ
+# 触发：回避（通用，2/8）
 > 「遅い!」
 “Too slow!”
 
 @11610 Kurtz · カーツ
+# 触发：回避（通用，3/8）
 > 「ハハハッ、どこを狙っている!?」
 “Hahaha, what are you aiming at?!”
 
 @11611 Kurtz · カーツ
+# 触发：回避（通用，4/8）
 > 「甘すぎる!」
 “Too naive!”
 
 @11612 Kurtz · カーツ
+# 触发：回避（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様の技など通じん!」
-“Your tricks won't work on me!”
+“Your tricks won’t work on me!”
 
 @11613 Kurtz · カーツ
+# 触发：回避（通用，6/8）
 > 「笑止っ!」
 “Ridiculous!”
 
 @11614 Kurtz · カーツ
+# 触发：回避（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クズが。貴様ごときは俺に触れる
 >  ことすらできん!」
-“Trash. The likes of you can't even touch me!”
+“Trash. The likes of you can’t even touch me!”
 
 @11615 Kurtz · カーツ
+# 触发：回避（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様の技、見切ったぞ」
-“I've seen through your move.”
+“I’ve seen through your move.”
 
 @11616 Kurtz · カーツ
-# 审校：“grasp” 稍正式，改为更口语化
+# 触发：攻击无效（护罩／装甲）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クククッ、どうやらムダだということが
 >  理解できないようだな」
-“Heh heh heh, it seems you can't understand that it's pointless.”
+“Heh heh heh, it seems you can’t understand that it’s pointless.”
 
 @11617 Kurtz · カーツ
+# 触发：攻击无效（护罩／装甲）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるだけムダだな」
-“It's all pointless.”
+“It’s all pointless.”
 
 @11618 Kurtz · カーツ
+# 触发：攻击无效（护罩／装甲）（通用，3/5）
 > 「貴様の技など俺には効かぬ!」
 “Your tricks have no effect on me!”
 
 @11619 Kurtz · カーツ
-# 审校：“you” 结尾不够有力，改为 “you bastard” 更符合角色语气
+# 触发：攻击无效（护罩／装甲）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しつこいぞ、貴様」
-“You're persistent, you bastard.”
+“You’re persistent, you wretch.”
 
 @11620 Kurtz · カーツ
+# 触发：攻击无效（护罩／装甲）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんの真似だ?」
-“What's the meaning of this?”
+“What’s the meaning of this?”
 
 @11621 Kurtz · カーツ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 # 审校：“I let my guard down” 可接受，但“ぬかった”更贴切为 “I slipped up”
 > 「おのれぇ……ぬかったか!」
 “Curse you... I slipped up!”
 
 @11622 Kurtz · カーツ
-# 审校：原文是反问，改为更自然反问
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：去掉多余的 Are you saying
 > 「くっ……ばかな!
 >  反撃できんというのかぁ!!」
-“Ngh... impossible! Are you saying I can't counterattack?!”
+“Ngh... impossible! I can’t counterattack?!”
 
 @11623 Kurtz · カーツ
+# 触发：射程外，无法反击（通用，1/3）
 > 「卑怯者め!」
 “Coward!”
 
 @11624 Kurtz · カーツ
+# 触发：射程外，无法反击（通用，2/3）
 > 「くっ、そんなに俺が恐いのか!?」
 “Ngh, are you that afraid of me?!”
 
 @11625 Kurtz · カーツ
+# 触发：射程外，无法反击（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フン、俺に近寄れんのか!?」
-“Hmph, you can't even get close to me?!”
+“Hmph, you can’t even get close to me?!”
+
+@16513 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+> 「くらいやがれ!」
+“Take this!”
+
+@16514 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+> 「はぁぁぁーっ!」
+“Haaaaah!”
+
+@16515 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+> 「{HeroName}!
+>  貴様にこれが受けきれるか!」
+“{HeroName}! Can you withstand this?!”
+
+@16516 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「貴様をここで倒してみせる!」
+“I’ll bring you down right here!”
+
+@16517 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+> 「{HeroName}!
+>  俺の技をくらってみろ!!」
+“{HeroName}! Taste my technique!!”
+
+@16518 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+> 「フン、動きが甘いぞ、{HeroName}!」
+“Hmph, your moves are sloppy, {HeroName}!”
+
+@16519 Kurtz · カーツ
+# 触发：对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「貴様の動きなど、読むまでもない!」
+“I don’t even need to read your movements!”
+
+@16520 Kurtz · カーツ
+# 触发：使用〈羅刹刃〉（低优先，可能被通用台词顶掉）
+> 「羅刹刃!」
+“Rasetsujin!”
+
+@16521 Kurtz · カーツ
+# 触发：使用〈羅刹刃〉（低优先，可能被通用台词顶掉）
+> 「敵を切り裂け!」
+“Slash the enemy apart!”
+---
+> 「羅刹刃!」
+“Rasetsujin!”
+
+@16522 Kurtz · カーツ
+# 触发：使用〈魔槍連脚／爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「我が連撃は全てを貫く!」
+“My barrage pierces through everything!”
+---
+> 「魔槍連脚!」
+“Maso Renkyaku!”
+
+@16523 Kurtz · カーツ
+# 触发：使用〈魔槍連脚／爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「魔槍連脚!!」
+“Maso Renkyaku!!”
+
+@16524 Kurtz · カーツ
+# 触发：使用〈魔槍連脚／爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「止めれるものなら止めてみよ!」
+“Stop it if you can!”
+---
+> 「魔槍連脚!」
+“Maso Renkyaku!”
+
+@16525 Kurtz · カーツ
+# 触发：使用〈爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「おぉぉぉーっ!」
+“Ooooh!”
+---
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16526 Kurtz · カーツ
+# 触发：使用〈爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「くらいやがれっ!」
+“Take this!”
+---
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16527 Kurtz · カーツ
+# 触发：使用〈爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「一撃必殺、爆斧無双断!」
+“One strike, certain kill: Bakufu Musodan!”
+
+@16528 Kurtz · カーツ
+# 触发：使用〈爆斧無双断〉（低优先，可能被通用台词顶掉）
+> 「爆斧無双断!」
+“Bakufu Musodan!”
+
+@16529 Kurtz · カーツ
+# 触发：使用〈閃剣斬〉（低优先，可能被通用台词顶掉）
+> 「いっくぞぉ! 受けろ、死の刃!」
+“Here I go! Take it, blade of death!”
+---
+> 「閃・剣・斬!!」
+“Sen! Ken! Zan!!”
+
+@16530 Kurtz · カーツ
+# 触发：使用〈閃剣斬〉（低优先，可能被通用台词顶掉）
+> 「受けろ! 閃剣斬!」
+“Take it! Senkenzan!”
+
+@16531 Kurtz · カーツ
+# 触发：使用〈閃剣斬〉（低优先，可能被通用台词顶掉）
+> 「貴様に見切れるか!」
+“Can you see through this?!”
+---
+> 「閃剣斬!」
+“Senkenzan!”
+
+@16532 Kurtz · カーツ
+# 触发：使用〈閃剣斬〉（低优先，可能被通用台词顶掉）
+> 「閃剣斬!!!」
+“Senkenzan!!!”
+
+@16533 Kurtz · カーツ
+# 触发：使用〈神槍裂脚〉（低优先，可能被通用台词顶掉）
+> 「神槍裂脚!」
+“Shinso Rekkyaku!”
+
+@16534 Kurtz · カーツ
+# 触发：使用〈神槍裂脚〉（低优先，可能被通用台词顶掉）
+> 「敵を滅せよ!」
+“Destroy the enemy!”
+---
+> 「神槍裂脚!」
+“Shinso Rekkyaku!”
+
+@16535 Kurtz · カーツ
+# 触发：使用〈神槍裂脚〉（低优先，可能被通用台词顶掉）
+> 「我が連撃をもちて突き破れ!」
+“Pierce through with my barrage!”
+---
+> 「必殺! 神槍裂脚!」
+“Certain kill! Shinso Rekkyaku!”
+
+@16536 Kurtz · カーツ
+# 触发：使用〈神槍裂脚〉（低优先，可能被通用台词顶掉）
+> 「俺の敵となったことを後悔しろ!」
+“Regret ever making an enemy of me!”
+---
+> 「必ぃぃーっ殺! 神槍裂脚!」
+“Certain kiiiill! Shinso Rekkyaku!”
+
+@16537 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 1/3 句）
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16538 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 2/3 句）
+> 「我が一撃はすべてを滅する!」
+“then my single strike shall destroy everything!”
+
+@16539 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 3/3 句）
+# 审校：“Carve in the terror” 语序不自然，改为更符合英文战斗呐喊的“Carve the terror into them!”
+# 检查提示：未用必用译名：天王捷破斬→Ten'o Shohazan
+> 「恐怖を刻めぇぇぇーっ!」
+“Carve the terror into them!”
+---
+> 「天王捷破斬ッ!」
+“Ten'o Shohazan!”
+
+@16540 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 1/3 句）
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16541 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 2/3 句）
+> 「我が一撃はすべてを滅する!」
+“then my single strike shall destroy everything!”
+
+@16542 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 3/3 句）
+# 审校：更像喊话
+# 检查提示：未用必用译名：天王捷破斬→Ten'o Shohazan
+> 「鬼神となりて討ち果たす!
+>  天王捷破斬ッ!」
+“I become a war god and strike them down! Ten'o Shohazan!”
+
+@16543 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 1/3 句）
+> 「己が全身全霊をもちて
+>  眼前の敵を葬らんと欲すれば」
+“If one would bury the foe before them with all their body and soul,”
+
+@16544 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 2/3 句）
+> 「我が一撃はすべてを滅する!
+>  受けてみろ! 必殺奥義ぃぃぃ!」
+“then my single strike shall destroy everything! Take this! Ultimate secret technique!”
+
+@16545 Kurtz · カーツ
+# 触发：使用〈天王捷破斬〉（对话第 3/3 句）
+# 审校：原文是招式名“天王捷破斬”的逐字喊法，词表必用译名为 Tenno Shohazan，不应拆成 Ten! No! Sho! Ha! Zan!
+> 「天・王・捷・破・斬!」
+“Ten'o Shohazan!”
+
+@16546 Brad · ブラッド
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 1/8 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「{PartnerNick}、あれをやるぞ!」
+“{PartnerNick}, let’s do that one!”
+
+@16547 Kurtz · カーツ
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 2/8 句）
+# 审校：与 16489 统一
+> 「あれか。いいだろう」
+“That one, huh. Very well.”
+
+@16548 Kurtz · カーツ
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 3/8 句）
+> 「いくぞッ!」
+“Here I go!”
+---
+> 「うなれ!
+>  この身に満ちる猛き闘気よ!」
+“Roar, fierce fighting spirit that fills me!”
+
+@16549 Brad · ブラッド
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 4/8 句）
+# 审校：八部の鬼神指佛教八部众，原译“eight-fold demon gods”不准确；改为“gods of the eight legions”，并补出“very lives”以贴合“一命を賭して”的决绝语气。
+> 「天よ竜よ、八部の鬼神よ!
+>  我ら一命を賭して成就せんッ!」
+“Heaven and dragons, gods of the eight legions! We stake our very lives to see this through!”
+
+@16550 Kurtz · カーツ
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 5/8 句）
+# 审校：“reduce all to nothing”偏直译，改为更自然的“That all may be annihilated”，保持Kurtz冷硬语气。
+> 「招雷せよ!
+>  すべてを滅却せんがため!」
+“Summon the lightning! That all may be annihilated!”
+
+@16551 Brad · ブラッド
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 6/8 句）
+> 「冥府の鬼に語って聞かせよ!」
+“Tell it to the demons of the underworld!”
+
+@16552 Kurtz · カーツ
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 7/8 句）
+> 「これが我らの必殺奥義ぃぃーっ!」
+“This is our ultimate secret art!”
+
+@16553 Brad · ブラッド
+# 触发：使用〈招雷 天竜魔滅陣〉（对话第 8/8 句）
+> 「くらえぇぇーっ!」
+“Take this!”
+---
+> 「天・竜・魔・滅・陣!!」
+“Heaven-Dragon-Demon-Destruction-Formation!!”
+
+@16554 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うぉっ!?
+>  くっ、腕をあげたな、貴様!」
+“Whoa?! Hmph, you’ve improved, you bastard!”
+
+@16555 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「バカな!?
+>  この俺がもろにくらっただと!?」
+“Impossible?! I took a direct hit?!”
+
+@16556 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「なに!?
+>  ぐ……動きが読めなかったのか!?」
+“What?! Ngh... I couldn’t read your moves?!”
+
+@16557 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「く……面白い、相手をしてやろう!」
+“Hmph... interesting. I’ll take you on!”
+
+@16558 Kurtz · カーツ
+# 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「そうだ{HeroName}!
+>  もっと攻めてこいっ!」
+“That’s right, {HeroName}! Come at me harder!”
+
+@16559 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「{HeroName}……この俺相手では
+>  本気になれんとでもいうかぁっ!!」
+“{HeroName}... are you saying you can’t get serious against me?!”
+
+@16560 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈ブラッド〉
+> 「くっ……本気を出せ!」
+“Hmph... get serious!”
+
+@16561 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈ブラッド〉
+# 审校：くっ 不译“咳”
+> 「くっ……貴様、なめやがって!」
+“Ngh... you dare mock me!”
+
+@16562 Kurtz · カーツ
+# 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈ブラッド〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「貴っ様ぁぁーっ! ふざるなぁっ!!」
+“You bastard! Don’t screw with me!!”
+
+@16563 Kurtz · カーツ
+# 触发：分身回避，乘坐〈ヴァイローズ〉
+> 「見たか、我が瞬幻足を!」
+“Did you see my Phantom Step?!”
+
+@16564 Kurtz · カーツ
+# 触发：分身回避，乘坐〈ヴァイローズ〉
+> 「ぬぅぅぅっ! 瞬幻足!」
+“Nghhh! Phantom Step!”
+
+@16565 Kurtz · カーツ
+# 触发：分身回避，乘坐〈ヴァイローズ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「貴様ごときに、見切れはせんぞ!」
+“A wretch like you won’t see through it!”
+
+@16566 Kurtz · カーツ
+# 触发：分身回避，乘坐〈ヴァイローズ〉
+> 「くっ、俺に瞬幻足を
+>  使わせるとはな」
+“Hmph, to make me use Phantom Step...”

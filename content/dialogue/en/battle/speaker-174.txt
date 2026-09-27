@@ -1,131 +1,180 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9501 Shapiro · シャピロ
+# 触发：攻击（通用，1/12）
 > 「死ぬがいい」
 “Die.”
 
 @9502 Shapiro · シャピロ
+# 触发：攻击（通用，2/12）
 > 「これで貴様も終わりだ」
 “This is the end for you too.”
 
 @9503 Shapiro · シャピロ
+# 触发：攻击（通用，3/12）
 > 「あの世で後悔するんだな」
 “Regret it in the next world.”
 
 @9504 Shapiro · シャピロ
+# 触发：攻击（通用，4/12）
 > 「フフフ……死ね」
 “Heh heh heh... die.”
 
 @9505 Shapiro · シャピロ
+# 触发：攻击（通用，5/12）
 > 「ここまでだな」
 “This is as far as you go.”
 
 @9506 Shapiro · シャピロ
+# 触发：攻击（通用，6/12）
 > 「茶番はここまでだ」
 “The farce ends here.”
 
 @9507 Shapiro · シャピロ
+# 触发：攻击（通用，7/12）
 > 「私にかなうと思っているのか」
 “You think you can match me?”
 
 @9508 Shapiro · シャピロ
+# 触发：攻击（通用，8/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「身の程知らずが……」
-“You don't know your place...”
+“You don’t know your place...”
 
 @9509 Shapiro · シャピロ
+# 触发：攻击（通用，9/12）
 > 「今は相手をしているヒマはない!」
 “I have no time to deal with you now!”
 
 @9510 Shapiro · シャピロ
+# 触发：攻击（通用，10/12）
 > 「別れの杯を受けてくれ」
 “Accept this parting cup.”
 
 @9511 Shapiro · シャピロ
+# 触发：攻击（通用，11/12）
 > 「俺の野望をくずせはせん!」
 “You will never crush my ambition!”
 
 @9512 Shapiro · シャピロ
+# 触发：攻击（通用，12/12）
 > 「俺は全宇宙の神となるのだ!!」
 “I shall become the god of the entire universe!!”
 
 @9513 Shapiro · シャピロ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バ、バカな……こんな……」
-“I-Impossible... this can't...”
+“I-impossible... this can’t...”
 
 @9514 Shapiro · シャピロ
+# 触发：被击坠（通用，2/2）
 > 「うおぉぉぉぉぉぉ!?」
 “Uwaaaaaaaah?!”
 
 @9515 Shapiro · シャピロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? な、何だと!? この
 >  私が……」
-“Ugh?! W-What?! Me, of all people...”
+“Ugh?! W-what?! Me, of all people...”
 
 @9516 Shapiro · シャピロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカな……こんな、こんな事が……」
-“Impossible... this, this can't be...”
+“Impossible... this, this can’t be...”
 
 @9517 Shapiro · シャピロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なぜだ!? なぜこれほどに……」
-“W-Why?! Why so much...”
+“W-why?! Why so much...”
 
 @9518 Shapiro · シャピロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! いつまでもいい気になるな!」
-“Ngh! Don't get so full of yourself!”
+“Ngh! Don’t get so full of yourself!”
 
 @9519 Shapiro · シャピロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ! 貴様……殺してやるっ!!」
-“Guh! You... I'll kill you!!”
+“Guh! You... I’ll kill you!!”
 
 @9520 Shapiro · シャピロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! やりおったな……」
-“Ngh! You've done it...”
+“Ngh! You’ve done it...”
 
 @9521 Shapiro · シャピロ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「よくぞ私を悩ませたと、ほめるべきか」
 “Should I praise you for troubling me so?”
 
 @9522 Shapiro · シャピロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「貴様の腕はその程度か」
 “Is that all your skill amounts to?”
 
 @9523 Shapiro · シャピロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「この私に逆らうとは……愚かな……」
 “To defy me... how foolish...”
 
 @9524 Shapiro · シャピロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「クズ共が……」
 “You scum...”
 
 @9525 Shapiro · シャピロ
+# 触发：回避（通用，1/4）
 > 「愚かな……」
 “Foolish...”
 
 @9526 Shapiro · シャピロ
+# 触发：回避（通用，2/4）
 > 「それで狙っているつもりか」
 “You call that aiming?”
 
 @9527 Shapiro · シャピロ
+# 触发：回避（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんな」
-“You won't hit me.”
+“You won’t hit me.”
 
 @9528 Shapiro · シャピロ
+# 触发：回避（通用，4/4）
 > 「バカめ……」
 “Fool...”
 
 @9529 Shapiro · シャピロ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「貴様の攻撃など、私には
 >  通用せんのだ」
 “Your attacks are useless against me.”
 
 @9530 Shapiro · シャピロ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだと!? ぬうう……」
 “Out of ammo?! Nghhh...”
 
 @9531 Shapiro · シャピロ
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは届かんか……」
-“Can't reach from here, huh...”
+“Can’t reach from here, huh...”
 
 @9532 Shapiro · シャピロ
+# 触发：射程外，无法反击（通用，2/2）
 > 「こしゃくな真似をする……」
 “Such impudent tricks...”
+
+@14811 Shapiro · シャピロ
+# 触发：对手驾驶员〈沙羅〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「沙羅、たとえお前でも容赦は
+>  せん!」
+“Sara, even if it’s you, I won’t hold back!”

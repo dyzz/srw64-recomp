@@ -64,13 +64,14 @@ Their main strongholds are the lunar base and the Asteroid Base.”
 doesn't that mean OZ has mostly taken over space too?”
 
 @24319 Blex · ブレックス
+# 审校：精读：措辞
 > 「そうだ。つまり、
 >  もはやOZが帝国軍を
 “Correct. In other words, it's certain that OZ will eliminate
 ---
 >  排除するのは確実ということだ。
 >  その後、連中はそのほこ先を
-the Imperial forces. After that, they'll turn the tips of their spears
+the Imperial forces. After that, they'll turn their spears
 ---
 >  同じ地球人に対して
 >  向けてくるだろう」
@@ -122,9 +123,10 @@ If necessary, we may also have to fight the remnants of Hyakki and Mycenae.”
 He set off ahead of us. He told me to give you all his regards.”
 
 @24325 Ryo · 亮
+# 审校：精读：人を食った
 > 「ふん、奴らしいな。
 >  いつもながら人を食った男だ」
-“Hmph, that's just like him. Always the man who plays by his own rules.”
+“Hmph, that's just like him. Cheeky as ever, that man.”
 
 @24326 Blex · ブレックス
 > 「諸君らは、誰の指揮下に
@@ -199,6 +201,7 @@ Even if his scheme for dominating the surface has failed,
 as long as we remain here, he will never stop fighting.”
 
 @24335 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王……」
 “Queen Ciela...”
 
@@ -224,6 +227,7 @@ So that means you'll keep coming with us from now on, right?
 After all, the more allies the better.”
 
 @24338 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうそう、シーラ様、エレ様、
 >  そうしましょ!」
 “That's right, Lady Ciela, Lady Elle, let's do that!”
@@ -248,6 +252,7 @@ would you lend us your strength?”
 “Exactly. This is my fight too.”
 
 @24342 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王、エレ女王。
 >  こちらこそお願いする
 “Queen Ciela, Queen Elle. The pleasure is ours.
@@ -287,10 +292,12 @@ I won't accept this. That's no different from tucking our tails and running!”
 You've been spooked by cowardice.”
 
 @24347 Luna · ルーナ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー殿、言葉がすぎましょう」
 “Lord Death Gaia, that's going too far.”
 
 @24348 Shapiro · シャピロ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ルーナ、お前は黙っていろ。
 “Luna, you be quiet.
 ---
@@ -299,7 +306,7 @@ You've been spooked by cowardice.”
 General Death Gaia, let me tell you something useful.
 ---
 >  奴らは今、梁山泊にいる」
-They are currently at Liangshan Marsh.”
+They are currently at Ryozanpaku.”
 
 @24349 Death Gaia · デスガイヤー
 > 「何だと? 貴様、
@@ -351,9 +358,10 @@ for the lunar mission coming along?”
 “Hey, Ryoma, what's up? I haven't seen much of you lately.”
 
 @24356 Ryoma · リョウ
+# 审校：精读：去破折号
 > 「新ゲッターの訓練ですよ。
 >  それより紹介します、車弁慶です」
-“Training with the new Getter. Anyway, let me introduce you—this is Benkei Kuruma.”
+“Training with the new Getter. Anyway, let me introduce someone. This is Benkei Kuruma.”
 
 @24357 Benkei · ベンケイ
 > 「よろしく頼んます。
@@ -480,14 +488,15 @@ depart right away.”
 “Thank you, Chief.”
 
 @24376 Roux · ルー
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「ブライト艦長、
 >  あたし考えたんですけど
-“Captain Bright, I've been thinking—
+“Captain Bright, I've been thinking.
 ---
 >  もうあたしたちって
 >  地球解放戦線とかカラバとか
-we're not really connected to the Liberation Front of the Earth or Karaba
+We're not really connected to the Liberation Front of the Earth or Karaba
 ---
 >  関係なくなっちゃった
 >  わけじゃないですか」
@@ -551,9 +560,10 @@ we need to show the whole world that we exist.”
 “What is it?”
 
 @24389 Koji · 甲児
+# 审校：精读：引号与破折号
 > 「“兜甲児と仲間たち”っての
 >  イカスだろ」
-“'Koji Kabuto and Friends'—pretty cool, huh?”
+“‘Koji Kabuto and Friends.’ Pretty cool, huh?”
 
 @24390 Simone · シモーヌ
 > 「…………」
@@ -564,9 +574,10 @@ we need to show the whole world that we exist.”
 “What is it?”
 
 @24392 Sayaka · さやか
+# 审校：精读：引号
 > 「まったく、ほんとにしょうがないわね。
 >  だいたいイカスはないんじゃない?」
-“Honestly, you're hopeless. And 'cool'? I don't think so.”
+“Honestly, you're hopeless. And ‘cool’? I don't think so.”
 
 @24393 Tetsuya · 鉄也
 > 「みんな、バカはほっとこうぜ」
@@ -600,22 +611,24 @@ I guess that's no good either, huh?”
 “Of course it's no good.”
 
 @24400 David · デビッド
+# 审校：精读：引号
 > 「なら“ソーラー・ファング”はどうだ?
 >  こいつならバッチリだぜ」
-“Then how about 'Solar Fang'? That one's perfect.”
+“Then how about ‘Solar Fang’? That one's perfect.”
 
 @24401 Fa · ファ
 > 「へぇ、いい感じじゃない」
 “Oh, that sounds kind of nice.”
 
 @24402 David · デビッド
+# 审校：精读：大小写
 > 「だろ? こいつはな、
 >  ある革命運動の
 “Right? I borrowed it from a famous
 ---
 >  有名なゲリラ部隊の名前を
 >  借りてきたものでな」
-Guerrilla unit in some revolutionary movement.”
+guerrilla unit in some revolutionary movement.”
 
 @24403 Boss · ボス
 > 「ふんふん、それで、
@@ -653,9 +666,10 @@ Guerrilla unit in some revolutionary movement.”
 “Hey Amuro, don't you have a good name?”
 
 @24411 Amuro · アムロ
+# 审校：精读：引号
 > 「そうだな……
 >  “マーチウィンド”というのはどうかな」
-“Let me think... How about 'March Wind'?”
+“Let me think... How about ‘March Wind’?”
 
 @24412 Beltorchika · ベルトーチカ
 > 「マーチウィンド……三月の風?」
@@ -666,16 +680,17 @@ Guerrilla unit in some revolutionary movement.”
 “It doesn't sound bad, I suppose...”
 
 @24414 Amuro · アムロ
+# 审校：精读：引号与破折号
 > 「意味もちゃんとあるさ。
 >  『三月の風、四月の雨
-“It has a proper meaning too. 'March winds, April rains,
+“It has a proper meaning too. ‘March winds, April rains,
 ---
 >  五月の花を咲かせるために』。
 >  むかし聞いたことのある詩でね
-to make the May flowers bloom.' It's from a poem I heard
+to make the May flowers bloom.’ It's from a poem I heard
 ---
 >  その詩のタイトルなんだよ」
-long ago—that's the title of the poem.”
+long ago. That's the title of the poem.”
 
 @24415 Jun · ジュン
 > 「マーチウィンド……
@@ -800,9 +815,10 @@ If that's what you want, I won't stop you.”
 “Colonel, I've been waiting to reach you.”
 
 @24439 Quattro · クワトロ
+# 审校：精读：引号
 > 「キグナン、大佐はよせ。今の私は、
 >  クワトロ・バジーナ大尉だ」
-“Kignan, drop the 'Colonel.' Right now I'm Captain Quattro Bajeena.”
+“Kignan, drop the ‘Colonel.’ Right now I'm Captain Quattro Bajeena.”
 
 @24440 Kignan · キグナン
 > 「私にとっては
@@ -853,6 +869,8 @@ If that's what you want, I won't stop you.”
 “...Yeah, something like that.”
 
 @24451 Simone · シモーヌ
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：聖女隊→Saints
 > 「クスコの聖女隊は、欧州で
 >  平和活動をしてるって聞いたわ
 “I heard Cusco's Saints is doing peace work in Europe.
@@ -863,7 +881,7 @@ They say Europe is relatively calm right now...
 ---
 >  そうそう、欧州っていえば、
 >  サンクキングダムの話、聞いた?」
-Oh, that reminds me — speaking of Europe, have you heard about the Sanc Kingdom?”
+Oh, that reminds me. Speaking of Europe, have you heard about the Sanc Kingdom?”
 
 @24452 Eiji · エイジ
 > 「確か完全平和主義を
@@ -1000,13 +1018,13 @@ We've come under orders from Chief Otsuka.”
 “Roger!”
 
 @24470 Death Gaia · デスガイヤー
-# 审校：“この俺の認めたライバルたちだ” 是“我认可的对手们”，初稿“I, myself, acknowledged”不自然；末句改为更符合将军语气的宣告式表达。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「……シャピロもたまには役にたつ。
 “...Even Shapiro is useful once in a while.
 ---
 >  見つけたぞ、間違いない。
 >  この俺の認めたライバルたちだ
-I've found them. No mistake — these are the rivals I acknowledged.
+I've found them. No mistake. These are the rivals I acknowledged.
 ---
 >  このデスガイヤー将軍が
 >  叩きつぶしてくれる!」
@@ -1025,9 +1043,10 @@ I, General Death Gaia, will crush them all!”
 “Drake... Luft...?”
 
 @24474 Drake · ドレイク
+# 审校：合并：misc 与 scene 批次三方合并
 > 「シーラよ、エレよ、ワシとて
 >  世界を見る目はあるつもりだ
-“Ciela, Elle — I too have eyes to see the world.
+“Ciela, Elle, I too have eyes to see the world.
 ---
 >  が、個人の感情の決着だけは、
 >  これはつけさせてもらう」
@@ -1155,9 +1174,10 @@ I'll make you realize that!”
 “So Drake got away, did he.”
 
 @24496 Chum · チャム
+# 审校：精读：去破折号
 > 「もーっ、あとちょっとだったのに!
 >  負けそうになったら逃げ出すなんて
-“Geez, we were so close! Running away when he's about to lose —
+“Geez, we were so close! Running away when he's about to lose,
 ---
 >  ひきょうなんだから!」
 how cowardly!”
@@ -1167,9 +1187,10 @@ how cowardly!”
 “...What a shame.”
 
 @24498 Elle · エレ
+# 审校：精读：去破折号
 > 「いいえ、戦いはままならぬもの。
 >  あなた方が無事だったことを
-“No — battle rarely goes as one wishes. Let us instead rejoice
+“No. Battle rarely goes as one wishes. Let us instead rejoice
 ---
 >  喜びましょう」
 that all of you came through safely.”
@@ -1225,9 +1246,10 @@ We can only wait for the next time we meet...”
 “Got it. I'm Amuro Ray. Nice to meet you.”
 
 @24509 Kenji · ケンジ
+# 审校：精读：去破折号
 > 「一年戦争の英雄と
 >  ご一緒できるとは、感激です
-“To think I'd get to serve alongside the hero of the One Year War — I'm honored.
+“To think I'd get to serve alongside the hero of the One Year War. I'm honored.
 ---
 >  よろしくお願いします、
 >  アムロ・レイ大尉」
@@ -1239,6 +1261,7 @@ I look forward to working with you, Captain Amuro Ray.”
 “Just Amuro is fine. Come on, let me introduce you to the rest of the crew.”
 
 @24511 Noin · ノイン
+# 审校：精读：梁山泊 统一词条
 > 「改めて名のる。私は
 >  サンクキングダムの
 “Let me introduce myself properly. I am Lucrezia Noin of the Sanc Kingdom.
@@ -1307,9 +1330,10 @@ but in today's world, it's far too straight an arrow.
 We need you.”
 
 @24518 Amuro · アムロ
+# 审校：精读：去破折号
 > 「完全平和を守るためには、
 >  やはり戦わなくてはならない、と
-“To protect absolute peace, we still have to fight — I know
+“To protect absolute peace, we still have to fight. I know
 ---
 >  確かに矛盾しているが、
 >  今の俺たちの立場も
@@ -1348,17 +1372,18 @@ Miss Noin, understood. We'll cooperate as well.”
 “...What's gotten into you all?”
 
 @24524 Shinobu · 忍
+# 审校：忍的口吻应更粗野，将“something”改为“somethin'”，“know full well”改为“know damn well”以贴合其狂放语气。
 > 「冗談じゃねぇぜ!
 >  あんたら正気かよ。いいか、連邦の
 “You've gotta be kidding! Are you all serious? Listen, even back in the Federation's
 ---
 >  時代でだって、完全平和なんざ
 >  とうてい実現できやしなかったんだ
-day, absolute peace was never something we could achieve.
+day, absolute peace was never somethin' we could achieve.
 ---
 >  なんでサンクキングダムがなくなったのか、
 >  知らないわけじゃねぇだろう」
-You know full well why the Sanc Kingdom fell, don't you?”
+You know damn well why the Sanc Kingdom fell, don't you?”
 
 @24525 Amuro · アムロ
 > 「………………」
@@ -1381,9 +1406,10 @@ absolute peace is just a fairy tale. It's not something to
 think about in a situation like this.”
 
 @24527 Daisaku · 大作
+# 审校：精读：去破折号
 > 「そんな、そんなことはありません。
 >  今だって、“クスコの聖女”や
-“That's — that's not true. Even now, there are plenty of people who support
+“That's... that's not true. Even now, there are plenty of people who support
 ---
 >  リリーナさんに賛同する人たちが
 >  たくさんいるから、サンクキングダムが
@@ -1427,8 +1453,9 @@ We'll fight. Unless we fight, peace will never come.”
 “But...”
 
 @24532 Tetsuya · 鉄也
+# 审校：原文“でももくそもねぇ”语气更冲，改为“Don't give me that ‘but’!”更贴合铁也冷峻粗暴的口吻。
 > 「でももくそもねぇ!」
-“Don't ‘but’ me!”
+“Don't give me that ‘but’!”
 
 @24533 Shinobu · 忍
 > 「どうしてもっていうんなら、俺たちは
@@ -1533,12 +1560,13 @@ plus Domon and the others, and besides them...”
 The time will come soon when we fight together again.”
 
 @24548 Boss · ボス
+# 审校：“Faith”大写且语义不符，改为小写“friendship”更贴合老大粗鲁但仗义的口吻。
 > 「そうそう。たとえ道は違っても、
 >  俺たち同志は
 “That's right. Even if our paths differ, we comrades
 ---
 >  熱ーい友情で結ばれてるんだわさ」
-are bound by red-hot Faith.”
+are bound by red-hot friendship.”
 
 @24549 Koji · 甲児
 > 「ボスよ。今日ほどお前がいてくれて

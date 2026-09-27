@@ -6,19 +6,20 @@
 “...So the threat of the Galactic Empire's forces has passed.”
 
 @45875 Jerid · ジェリド
-# 审校：特佐应为 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{HeroMech}とハマーンが
 >  動いたんだ。どうするんだ、特佐
-“{HeroMech} and Haman have made their move. What are you going to do, Colonel?
+“{HeroMech} and Haman have made their move. What are you going to do, Special Colonel?
 ---
 >  このまま奴らに
 >  好きにさせておくのか!?」
 Are you just going to let them do as they please?!”
 
 @45876 Scirocco · シロッコ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「あわてるな、ジェリド。流れは見えた。
 >  あとは簡単だ。こちらにはバルジと
-“Don't panic, Jerid. I can see how things will flow. The rest is simple. We have Balgy and
+“Don't panic, Jerid. I can see how things will flow. The rest is simple. We have Barge and
 ---
 >  リーブラ、そしてビルゴⅡがある。
 >  アクシズ軍とも対等以上に
@@ -37,9 +38,10 @@ on equal terms or better. Treize's OZ is no concern at all. We will win.”
 they're strong.”
 
 @45878 Scirocco · シロッコ
+# 审校：全局：grados-en
 > 「“刻印”とやらの発動は
 >  よかったが、連中にもそろそろ
-“It was good that the so-called ‘Engraving’ activated, but it's about time
+“It was good that the so-called ‘Crest’ activated, but it's about time
 ---
 >  ご退場願おう。あとは我々の
 >  出番だ。ジオンの独立戦争から
@@ -54,9 +56,10 @@ since Zeon's war of independence, the population has plummeted, and the Earth Sp
 much simpler. The new Earth Sphere will be guided all the better.”
 
 @45879 Treize · トレーズ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > (宇宙要塞バルジと、
 >  巨大戦艦リーブラ……
-(The space fortress Balgy, and the giant battleship Libra...
+(The space fortress Barge, and the giant battleship Libra...
 ---
 >  パプティマス・シロッコか。木星
 >  帰りの男……あまりにも危険すぎる
@@ -75,14 +78,15 @@ than Haman. The greatest crisis facing the Earth Sphere has
 been overcome. Now I must at least pave the way to remove that man...)
 
 @45880 Bright · ブライト
-# 审校：特佐应为 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「トレーズ特佐、どうかしましたか?」
-“Colonel Treize, is something the matter?”
+“Special Colonel Treize, is something the matter?”
 
 @45881 Treize · トレーズ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「いや……
 >  バルジとリーブラの様子はどうだね」
-“No... How are things with Balgy and Libra?”
+“No... How are things with Barge and Libra?”
 
 @45882 Bright · ブライト
 > 「やはり、動きが活発になっていますね
@@ -124,13 +128,14 @@ to move as well, I suppose.”
 “The Moon's? But what will you do about the Axis?”
 
 @45888 Treize · トレーズ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「むろん、その問題も残されている。
 >  しかし、余力を残して
 “Of course, that problem remains as well. But they are not an opponent
 ---
 >  勝てる相手ではないよ。バルジと
 >  リーブラは、銀河帝国軍の
-we can beat while holding back. We must not forget that Balgy and Libra
+we can beat while holding back. We must not forget that Barge and Libra
 ---
 >  攻勢をしのぎきったことを、
 >  忘れてはならない
@@ -186,9 +191,10 @@ but the surface now could be easily subdued by either Haman or Scirocco.
 It's tough, but we've no choice but to do it ourselves.”
 
 @45895 Treize · トレーズ
+# 审校：原文「諸君」是特列斯对在场众人的正式称呼，译文“everyone”过于随意，不符合其贵族口吻。
 > 「では、準備をはじめてくれたまえ、
 >  諸君」
-“Then begin your preparations, everyone.”
+“Then begin your preparations, gentlemen.”
 
 @45896 Treize · トレーズ
 > 「君か……」
@@ -298,9 +304,10 @@ It's tough, but we've no choice but to do it ourselves.”
 “So the Peacemillion was your ship, huh.”
 
 @45921 Koji · 甲児
+# 审校：甲児对初次见面的长者用“じいさん”略显随便，但原文如此；译文“old man”口吻偏粗鲁，改为“old-timer”更贴合其热血少年的语气。
 > 「なんだデュオ、お前も
 >  このじいさんと知り合いなのか?」
-“What, Duo, you know this old man too?”
+“What, Duo, you know this old-timer too?”
 
 @45922 Duo · デュオ
 > 「ああ、最初に地球に降りたときに
@@ -549,8 +556,9 @@ thrust right in front of his face.”
 He's the type who blames himself for everything even when you leave him alone.”
 
 @45965 Bright · ブライト
+# 审校：布莱特作为舰长，对部下的询问应更符合军事指挥口吻，用“what's the situation?”比“how are things?”更贴切。
 > 「アムロ、どうだ?」
-“Amuro, how are things?”
+“Amuro, what's the situation?”
 
 @45966 Amuro · アムロ
 > 「用意はできたようだな。月からの
@@ -576,9 +584,10 @@ He's the type who blames himself for everything even when you leave him alone.�
 “...It's all right, Kosuke. Don't worry.”
 
 @45971 Mouar · マウアー
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、OZの艦隊が
 >  接近中とのことです
-“Colonel, an OZ fleet is approaching.
+“Special Colonel, an OZ fleet is approaching.
 ---
 >  中核となっているのは、
 >  {HeroMech}
@@ -771,9 +780,10 @@ And once this battle is over...)
 “Alright, I'll send you straight to hell right here, {HeroMech}!”
 
 @46003 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐、他の部隊も
 >  展開を終えたようです」
-“Colonel, it seems the other units have finished deploying as well.”
+“Special Colonel, it seems the other units have finished deploying as well.”
 
 @46004 Treize · トレーズ
 > 「わかった。後の地球圏のために、
@@ -873,8 +883,9 @@ With this, we can launch a surprise attack. Mouar.”
 “Yeah.”
 
 @46022 Beltorchika · ベルトーチカ
+# 审校：贝尔托琪卡对舰长的报告应使用进行时“is launching”，与原文“奇襲攻撃です”的即时性一致。
 > 「艦長! 敵の奇襲攻撃です!」
-“Captain! The enemy's launching a surprise attack!”
+“Captain! The enemy is launching a surprise attack!”
 
 @46023 Bright · ブライト
 > 「なんだと!?」
@@ -1047,8 +1058,9 @@ You cannot beat me.”
 “Captain, the Tallgeese II has launched.”
 
 @46057 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「トレーズ特佐が? 聞いていないぞ」
-“Colonel Treize? I wasn't informed of this.”
+“Special Colonel Treize? I wasn't informed of this.”
 
 @46058 Treize · トレーズ
 > 「聞こえるか、諸君。忘れないで
@@ -1076,8 +1088,9 @@ But even so, my fight was already over. I leave the rest to you...
 Change this chaotic tide. With your own hands.”
 
 @46059 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐? いったい何を……」
-“Colonel? What on earth are you...”
+“Special Colonel? What on earth are you...”
 
 @46060 Scirocco · シロッコ
 > 「なんだ……なんのつもりだ……?」
@@ -1100,13 +1113,14 @@ Change this chaotic tide. With your own hands.”
 “What was that just now...?”
 
 @46065 Specials · スペシャルズ
+# 审校：全局：バルジ 词条 Barge
 > 「シロッコ特佐、大変です!
 >  敵MSが防衛網をくぐりぬけ
-“Colonel Scirocco, this is terrible! An enemy MS slipped through the defense net
+“Special Colonel Scirocco, this is terrible! An enemy MS slipped through the defense net
 ---
 >  バルジに特攻。
 >  バルジは大破いたしました!
-and made a suicide attack on the Barge. The Barge has been heavily damaged!
+and made a suicide attack on Barge. The Barge has been heavily damaged!
 ---
 >  至急、ご指示を願います!」
 We request immediate instructions!”
@@ -1137,7 +1151,7 @@ We're retreating!”
 “Isn't that the direction the Tallgeese II went?!”
 
 @46071 Reika · レイカ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：バルジ 词条 Barge
 > 「ブライト艦長、
 >  要塞バルジが大破しているわ!」
 “Captain Bright, the fortress Barge has been heavily damaged!”
@@ -1148,22 +1162,24 @@ We're retreating!”
 “What?! You don't mean... Ngh, I can't confirm the situation. Wipe out the enemy!”
 
 @46073 Zechs · ゼクス
+# 审校：全局：バルジ 词条 Barge
 > 「バルジを落としたか。
 >  みごとだ、トレーズ……」
-“So he took down the Barge. Well done, Treize...”
+“So he took down Barge. Well done, Treize...”
 
 @46074 Scirocco · シロッコ
 > 「なんだ、いまのは……」
 “What was that just now...?”
 
 @46075 Specials · スペシャルズ
+# 审校：全局：バルジ 词条 Barge
 > 「シロッコ特佐、大変です!
 >  敵MSが防衛網をくぐりぬけ
-“Colonel Scirocco, this is terrible! An enemy MS slipped through the defense net
+“Special Colonel Scirocco, this is terrible! An enemy MS slipped through the defense net
 ---
 >  バルジに特攻。
 >  バルジは大破いたしました!
-and made a suicide attack on the Barge. The Barge has been heavily damaged!
+and made a suicide attack on Barge. The Barge has been heavily damaged!
 ---
 >  至急、ご指示を願います!」
 We request immediate instructions!”
@@ -1194,7 +1210,7 @@ We're retreating!”
 “Isn't that the direction the Tallgeese II went?!”
 
 @46081 Reika · レイカ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：バルジ 词条 Barge
 > 「ブライト艦長、
 >  要塞バルジが大破しているわ!」
 “Captain Bright, the fortress Barge has been heavily damaged!”
@@ -1204,9 +1220,10 @@ We're retreating!”
 “What?! You don't mean...”
 
 @46083 Zechs · ゼクス
+# 审校：全局：バルジ 词条 Barge
 > 「バルジを落としたか。
 >  みごとだ、トレーズ……」
-“So he took down the Barge. Well done, Treize...”
+“So he took down Barge. Well done, Treize...”
 
 @46084 Kamille · カミーユ
 # 审校：原文“お前はぁぁっ!!”是拖长音的怒吼，初稿只译成“You!!”丢失了拖长音，改为“Youuu!!”以保留气势。
@@ -1288,23 +1305,26 @@ Don't you find it unsightly?”
 “Captain, what's the situation?”
 
 @46100 Bright · ブライト
+# 审校：全局：バルジ 词条 Barge
 > 「バルジは大破だ。シロッコの軍は、
 >  リーブラへ撤退している」
 “The Barge is heavily damaged. Scirocco's forces are retreating to Libra.”
 
 @46101 Amuro · アムロ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「トールギスⅡは確認されたのか?
 >  特佐は?」
-“Was the Tallgeese II confirmed? And the Colonel?”
+“Was the Tallgeese II confirmed? And the Special Colonel?”
 
 @46102 Mika · ミカ
+# 审校：全局：バルジ 词条 Barge
 > 「……敵の通信を
 >  傍受したかぎりでは
 “...From what we could intercept of the enemy communications,
 ---
 >  どうやらトールギスⅡは
 >  バルジに特攻したものと……」
-it seems the Tallgeese II made a suicide attack on the Barge...”
+it seems the Tallgeese II made a suicide attack on Barge...”
 
 @46103 Bright · ブライト
 > 「なんということだ……」
@@ -1319,10 +1339,10 @@ it seems the Tallgeese II made a suicide attack on the Barge...”
 go and do something like that?!”
 
 @46105 Ryoma · リョウ
-# 审校：原文“そうしていれば……”是“如果那样做的话（就不会死）”的惋惜，初稿“If he'd done that...”未体现反事实遗憾，改为“If he hadn't...”更准确。
+# 审校：全局：バルジ 词条 Barge
 > 「ああ……確かにバルジを破壊できた
 >  ことは、俺たちにとって大きい
-“Yeah... It's true that destroying the Barge was huge for us.
+“Yeah... It's true that destroying Barge was huge for us.
 ---
 >  しかし何も、俺たちに黙って、しかも
 >  1人でやることは、なかったはずだ
@@ -1332,13 +1352,14 @@ But there was no need to do it without telling us, and alone on top of that.
 If he hadn't...”
 
 @46106 Zechs · ゼクス
+# 审校：全局：バルジ 词条 Barge
 > 「部隊を動かせば、シロッコほどの
 >  男が気づかないわけがない
 “If we had moved our forces, a man like Scirocco would surely have noticed.
 ---
 >  気づけば、当然、
 >  バルジ砲が使用される
-And if he noticed, the Barge's cannon would naturally have been used.
+And if he noticed, Barge's cannon would naturally have been used.
 ---
 >  あの行動はシロッコの虚をつくために
 >  必要だったのだ」
@@ -1375,9 +1396,10 @@ such an action?”
 within this battle.”
 
 @46112 Alan · アラン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どういうことだ?
 >  なぜ特佐が死ぬ必要があった!?
-“What do you mean? Why did the Colonel have to die?!
+“What do you mean? Why did the Special Colonel have to die?!
 ---
 >  それでは、自殺ではないか!」
 That's just suicide!”
@@ -1418,17 +1440,19 @@ the organization called OZ that he himself built. He has entrusted
 the future of the Earth Sphere, and the future of OZ, to us.”
 
 @46116 Koji · 甲児
+# 审校：甲児的台词是“もうちょっと、わかるようにいってくれよ”，对象是忍，但实际是对ゼクス的说明表示不满，译文“Say it in a way we can understand”已符合口吻，但“we”未体现“もうちょっと”的“再稍微”语气，改为“so the rest of us can understand”更贴合热血少年对说明不耐烦的口吻。
 > 「もうちょっと、わかるようにいってくれよ」
-“Say it in a way we can understand.”
+“Say it so the rest of us can understand.”
 
 @46117 Zechs · ゼクス
+# 审校：全局：Zuul 拼写
 > 「彼は君たちの要請を受けて
 >  OZにもどった時から
 “He must have been thinking of it since the day he returned to OZ
 ---
 >  それを考えていたはずだ。
 >  ズールを倒し、銀河帝国軍の
-at your request. Now that Zuhl is defeated and the threat of the
+at your request. Now that Zuul is defeated and the threat of the
 ---
 >  脅威がなくなった今が、
 >  その時だと思ったのだろう」
@@ -1492,9 +1516,10 @@ If a new organization is needed, we can all build it together!
 Why did Treize have to die?!”
 
 @46125 Koji · 甲児
+# 审校：甲児是热血冲动少年，原文“なに考えてんだか、さっぱりわかんねぇや”语气粗鲁，译文“I've got no idea what he was thinking”过于平淡，加入“the hell”更贴合其口吻。
 > 「まったくだぜ。なに考えてんだか、
 >  さっぱりわかんねぇや」
-“Exactly. I've got no idea what he was thinking.”
+“Exactly. I've got no idea what the hell he was thinking.”
 
 @46126 Zechs · ゼクス
 > 「わからずともかまわん。どのみち
@@ -1511,8 +1536,9 @@ left for us. We move toward the future... That's all.”
 “Ugh... Where is this? What did you do to me?!”
 
 @46128 Cath · キャス
+# 审校：凯丝是女性，原文“危ないじゃない”是抱怨语气，译文“That was dangerous”过于客观，改为“You nearly hurt me”更符合女性口语抱怨。
 > 「ひゃっ、なによいきなり。危ないじゃない」
-“Eek, what's with you all of a sudden? That was dangerous.”
+“Eek, what's with you all of a sudden? You nearly hurt me.”
 
 @46129 Sally · サリィ
 > 「落ち着きなさい、五飛」
@@ -1544,9 +1570,10 @@ You were rescued by {HeroMech}.”
 “Wufei, are you all right?!”
 
 @46135 Duo · デュオ
+# 审校：迪奥的台词“なんだよ、じゅうぶん元気そうじゃないか”是对阿姆罗说的，但实际是在评论五飞，译文“You look plenty healthy to me”误将对象指向阿姆罗，改为“He looks plenty healthy to me”以正确指代五飞。
 > 「なんだよ、
 >  じゅうぶん元気そうじゃないか」
-“What's the matter? You look plenty healthy to me.”
+“What's the matter? He looks plenty healthy to me.”
 
 @46136 Wufei · 五飛
 > 「貴様たちか……」
@@ -1610,8 +1637,9 @@ whether you people are in the right.”
 “Leave him be. He has his own way of doing things.”
 
 @46146 Amuro · アムロ
+# 审校：原文是アムロ对サリィ说话，但内容在问ヒイロ的情况，译文“what's wrong”语气偏轻，改为更符合阿姆罗沉稳询问的“what's going on”。
 > 「ヒイロ、どうしたんだ?」
-“Heero, what's wrong?”
+“Heero, what's going on?”
 
 @46147 Heero · ヒイロ
 > 「こいつの様子も、見てやってくれ」
@@ -1622,8 +1650,9 @@ whether you people are in the right.”
 “...Trowa?! What's wrong?!”
 
 @46149 Trowa · トロワ
+# 审校：精读：人名
 > 「カ……トルか。元気……そうだな」
-“Ka...tore. You look... well.”
+“Qua... tre. You look... well.”
 
 @46150 Quatre · カトル
 > 「トロワ……?
@@ -1791,14 +1820,14 @@ What were you even doing?”
 we're at the critical moment...”
 
 @46181 Mashymre · マシュマー
-# 审校：将“バルジ”的译名从 Balji 改为 Balge（官方/通行译名）。
+# 审校：全局：barge-4
 > 「申し上げます、ハマーン様。
 >  OZとシロッコの戦闘にて
 “Reporting, Lady Haman. In the battle between OZ and Scirocco,
 ---
 >  要塞バルジが大破。シロッコは
 >  戦線より一時撤退して
-the fortress Balge was heavily damaged. Scirocco has temporarily withdrawn from the front
+the fortress Barge was heavily damaged. Scirocco has temporarily withdrawn from the front
 ---
 >  リーブラに拠点を移したものと
 >  思われます。この戦闘で
@@ -1860,26 +1889,29 @@ Axis will soon enter the Earth Sphere. We must clear the way.”
 “Yes, ma'am!”
 
 @46188 Haman · ハマーン
+# 审校：；独白不加引号
 > (さて、どうする、シャア……)
-“(Now then, what will you do, Char...?)”
+(Now then, what will you do, Char...?)
 
 @46189 Lady · レディ
 > 「いま、なんといったのですか?」
 “What did you just say?”
 
 @46190 Specials · スペシャルズ
-# 审校：同步将“バルジ”改为 Balge。
+# 审校：全局：barge-4
 > 「は……トレーズ閣下が……
 >  戦死なされました。自らのお命と
-“Y-Yes... Lord Treize has... been killed in action. In exchange for his own life,
+“Y-Yes... His Excellency Treize has... been killed in action. In exchange for his own life,
 ---
 >  引き換えに、シロッコのバルジを
 >  破壊されたと……報告が……」
-he destroyed Scirocco's Balge... That is the report...”
+he destroyed Scirocco's Barge... That is the report...”
 
 @46191 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様が……そうですか……」
-“Lord Treize... I see...”
+“Your Excellency... I see...”
 
 @46192 Lady · レディ
 # 审校：去掉页末多余的空格，保持括号内原文格式。
@@ -1891,9 +1923,10 @@ he destroyed Scirocco's Balge... That is the report...”
 I knew... I knew it, and yet...)
 
 @46193 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐……、
 >  我々は……我々はどうすれば……」
-“Colonel Lady Une... What... what should we do...”
+“Special Colonel Lady Une... What... what should we do...”
 
 @46194 Lady · レディ
 > 「……戦況はどうなっているのです」
@@ -1926,10 +1959,11 @@ and send the rest of the troops to space. Now, immediately.”
 “Understood. I'll make the arrangements at once...”
 
 @46200 Lady · レディ
-# 审校：去掉页末多余的空格，保持括号内原文格式。
+# 审校：精读：称呼
+# 检查提示：未用必用译名：トレーズ→Treize
 > (トレーズ様、あなたの残して下さった
 >  道をいくしか、私は知りません
-(Lord Treize, the only path I know is the one you left behind for me.
+(Your Excellency, the only path I know is the one you left behind for me.
 ---
 >  ですから、私も信じましょう。彼らを
 >  彼らに託された、トレーズ様の
@@ -1937,7 +1971,7 @@ So I too will believe. In the feelings you entrusted to them,
 ---
 >  想いを。そして……私たちが
 >  手にすることになる、未来を……)
-Treize. And in... the future we are about to grasp...)
+Your Excellency. And in... the future we are about to grasp...)
 
 @46201 Astonaige · アストナージ
 > 「ん? ……おい、GP02を
@@ -2002,19 +2036,20 @@ The GP02 is trying to get outside!!”
 “Captain! The GP02 and GP03 have launched!”
 
 @46212 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ガトーと、コウか!? コウ!
 >  コウ・ウラキ特尉!
-“Gato, and Kou?! Kou! Lieutenant Kou Uraki!
+“Gato, and Kou?! Kou! Special Lieutenant Kou Uraki!
 ---
 >  いったいどうなっている!?
 >  返事をしろ!」
 What on earth is going on?! Answer me!”
 
 @46213 Quattro · クワトロ
-# 审校：去掉页末多余的空格，保持括号内原文格式。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > (アナベル・ガトー……アクシズに
 >  いくつもりか。ウラキ特尉では
-(Anavel Gato... does he mean to go to Axis? Lieutenant Uraki
+(Anavel Gato... does he mean to go to Axis? Special Lieutenant Uraki
 ---
 >  “ソロモンの悪夢”は
 >  止められまい
@@ -2030,9 +2065,10 @@ We're going to have a troublesome man as an enemy...)
 “Gato!! I can't let you get away!!”
 
 @46215 Gato · ガトー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「フッ。ウラキ特尉、残念だが
 >  その腕では、私は止められん!」
-“Hmph. Lieutenant Uraki, regrettably, with that skill of yours, you cannot stop me!”
+“Hmph. Special Lieutenant Uraki, regrettably, with that skill of yours, you cannot stop me!”
 
 @46216 Kou · コウ
 > 「くそおぉぉぉーっ!!
@@ -2040,6 +2076,7 @@ We're going to have a troublesome man as an enemy...)
 “Damn youuuu!! Gato! Why?!”
 
 @46217 Gato · ガトー
+# 审校：精读：破折号
 > 「たとえ{HeroMech}が常勝の
 >  強者といえども、OZはこの
 “Even if the {HeroMech} is an ever-victorious champion, OZ is not
@@ -2050,7 +2087,7 @@ the one to bring light to the Earth Sphere. Nor are Treize Khushrenada's
 ---
 >  理想とて然り! 地球圏に
 >  光をもたらすことができるのは
-ideals! The only one who can bring light to the Earth Sphere—
+ideals! The only one who can bring light to the Earth Sphere,
 ---
 >  それは我が祖国、ジオンのみだ!」
 that is my homeland, Zeon alone!”
@@ -2060,9 +2097,10 @@ that is my homeland, Zeon alone!”
 “What? Ngh... damn it!”
 
 @46219 Gato · ガトー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉、覚えておけ!
 >  ジオンの再興をはばむ者は
-“Lieutenant, remember this well! Those who hinder the revival of Zeon
+“Special Lieutenant, remember this well! Those who hinder the revival of Zeon
 ---
 >  いつか必ず私に
 >  葬り去られるということを!!」

@@ -10,9 +10,10 @@
 “Yes. It appears to be all but certain.”
 
 @38339 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「結果論だが……これでトレーズ
 >  特佐のほうもやりやすくなるはずだ」
-“It's hindsight, but... this should make things easier for Colonel Treize as well.”
+“It's hindsight, but... this should make things easier for Special Colonel Treize as well.”
 
 @38340 Banjo · 万丈
 > 「ひょうたんからコマなのか、ハマーンの
@@ -23,9 +24,10 @@
 I still have my doubts.”
 
 @38341 Amuro · アムロ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どちらでもいいさ。トレーズ特佐から、
 >  次の作戦行動への指示がきた
-“Either way, it doesn't matter. Colonel Treize has sent orders for our next operation.
+“Either way, it doesn't matter. Special Colonel Treize has sent orders for our next operation.
 ---
 >  敵の先遣艦隊のいる宙域は
 >  特定できているんだろう?」
@@ -49,10 +51,10 @@ You've pinpointed the sector where the enemy's advance fleet is, right?”
 and it's been driving me crazy. This time, we're the ones who'll do the hitting.”
 
 @38345 Koji · 甲児
-# 审校：“Spirit” 是词表参考项，但这里甲児说的是“気合”的普通含义，不是技能名，应小写为 spirit，避免误认为专有名词。
+# 审校：精读：去破折号
 > 「気合いは十分だからな。
 >  見てろよ異星人どもめ
-“We've got spirit to spare. Just watch, you aliens—
+“We've got spirit to spare. Just watch, you aliens,
 ---
 >  徹底的にぶっ叩いてやる!」
 we'll pound you into the ground!”
@@ -187,9 +189,10 @@ that won't be the end of it. Harder battles are probably waiting for us.”
 (True enough...)
 
 @38366 Banjo · 万丈
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「とりあえず、ハマーンに連絡をとろう
 >  じゃないの。いいかな、クワトロ特尉?」
-“For now, let's get in touch with Haman. That all right with you, Lieutenant Quattro?”
+“For now, let's get in touch with Haman. That all right with you, Special Lieutenant Quattro?”
 
 @38367 Quattro · クワトロ
 > 「……私はかまわんよ」
@@ -269,8 +272,9 @@ Bask, I couldn't stand it.”
 “Oh, Koji!”
 
 @38382 Sai Saici · サイ・サイシー
+# 审校：Sai Saici 的 ja_speech 是一人称「オイラ」，译文应体现其少年口吻，用 “I'm” 而非 “I ain't”。
 > 「オイラ、あーいうのは苦手だなぁ」
-“I ain't good with that kinda woman.”
+“I'm not good with that kinda woman.”
 
 @38383 Argo · アルゴ
 > 「……俺はそうでもない」
@@ -327,6 +331,7 @@ discussing such things.”
 “Lady Elle?”
 
 @38394 Elle · エレ
+# 审校：人名按词表统一
 > 「チャム?……いいえ、なんでもありませんよ」
 “Chum? ...No, it's nothing.”
 
@@ -353,10 +358,12 @@ discussing such things.”
 (A strong will... and yet...)
 
 @38400 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま、どうしたの?」
 “Lady Ciela, what's wrong?”
 
 @38401 Ciela · シーラ
+# 审校：人名按词表统一
 > 「チャム、ショウ・ザマはどうしていますか?」
 “Chum, where is Show Zama?”
 
@@ -470,9 +477,10 @@ the Galactic Empire, they send just one ship, the Gwadan.”
 “But there's no question that we can't afford to lose to aliens, right?”
 
 @38420 Judau · ジュドー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そりゃ、当たり前のことだろ。
 >  クワトロ特尉はなんていってんです?」
-“Well, that goes without saying. What does Lieutenant Quattro say?”
+“Well, that goes without saying. What does Special Lieutenant Quattro say?”
 
 @38421 Kamille · カミーユ
 > 「知らないよ。
@@ -510,8 +518,9 @@ Didn't you hear what Captain Bright said?”
 “Hey, wait just a moment!”
 
 @38427 Judau · ジュドー
+# 审校：精读：结巴用连字符
 > 「なっ、なにすんだよ!」
-“Wha—what are you doing?!”
+“Wha-what are you doing?!”
 
 @38428 Emma · エマ
 > 「あなたね、
@@ -566,26 +575,29 @@ then focus a little more on the battle in front of you.”
 “How does it look?”
 
 @38436 Garrison · ギャリソン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「トレーズ特佐は、財団幹部の
 >  方々と接触を
-“It appears Colonel Treize has made contact with
+“It appears Special Colonel Treize has made contact with
 ---
 >  持たれているようですな」
-the foundation's executives.”
+the Foundation's executives.”
 
 @38437 Banjo · 万丈
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「さすがに早いね。ジャミトフを失って
 >  混乱している財団幹部のことだ
-“That was fast, as expected. With Jamitov gone, the foundation executives are in disarray.
+“That was fast, as expected. With Jamitov gone, the Foundation executives are in disarray.
 ---
 >  たぶん、トレーズ特佐の側に
 >  傾くだろうね」
-They'll probably lean toward Colonel Treize's side.”
+They'll probably lean toward Special Colonel Treize's side.”
 
 @38438 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ああ。財団の連中は、OZが
 >  崩壊してはどうにもならないことを
-“Yeah. The foundation people know that if OZ collapses,
+“Yeah. The Foundation people know that if OZ collapses,
 ---
 >  知っている。そういう連中が
 >  多くなっても、不思議じゃない」
@@ -601,9 +613,10 @@ there's no way forward. It's no wonder more of them are leaning that way.”
 Which means the Romefeller faction will cease to be the Romefeller faction.”
 
 @38440 Garrison · ギャリソン
+# 审校：精读：去破折号
 > 「さようですな。それからもう1つ、
 >  こちらはあまり
-“It would seem so. And there's one more thing—this one is not
+“It would seem so. And there's one more thing. This one is not
 ---
 >  よろしい情報ではございませんが……」
 particularly good news, I'm afraid...”
@@ -617,6 +630,7 @@ particularly good news, I'm afraid...”
 I can avoid hearing it.”
 
 @38442 Garrison · ギャリソン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はい。ロームフェラ派が大きな
 >  痛手をこうむったので、こちらの
 “Yes. Since the Romefeller faction suffered a heavy blow, several of our
@@ -627,7 +641,7 @@ units moved to seize Libra. However, Libra was already
 ---
 >  すでにシロッコ特佐が掌握し、
 >  手が出せなかったようで」
-under Colonel Scirocco's control, and it seems they couldn't touch it.”
+under Special Colonel Scirocco's control, and it seems they couldn't touch it.”
 
 @38443 Amuro · アムロ
 > 「パプティマス・シロッコ……あの男か……」
@@ -644,9 +658,10 @@ under Colonel Scirocco's control, and it seems they couldn't touch it.”
 “Slipping in amid the chaos. That's just like him.”
 
 @38446 Amuro · アムロ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「バルジにリーブラが
 >  向こうに抑えられたままか……」
-“So Libra is still pinned down on their side at Balji...”
+“So Libra is still pinned down on their side at Barge...”
 
 @38447 Bright · ブライト
 > 「やっかいなことになりそうだな、まったく」
@@ -684,6 +699,7 @@ His Majesty the Emperor granted me. I intend to begin the attack before long.”
 the conquest of Earth cannot be achieved by the advance fleet.”
 
 @38451 Gandal · ガンダル
+# 审校：精读：去破折号
 > 「なんと!?
 >  待たれよワール総司令官殿
 “What?! Wait, Commander-in-Chief Wahl.
@@ -697,7 +713,7 @@ As a result of their internal war, the Earthlings' forces
 have been considerably weakened. I, Gandal,
 ---
 >  これより一気にせん滅せんと……」
-shall now wipe them out in one stroke—”
+shall now wipe them out in one stroke...”
 
 @38452 Wahl · ワール
 > 「黙れ、ガンダル。
@@ -716,8 +732,9 @@ failure will not be tolerated. The advance fleet is to maintain
 the status quo and await our arrival.”
 
 @38453 Gandal · ガンダル
+# 审校：精读：结巴用连字符
 > 「くっ……しょ、承知いたしました」
-“Ngh... U—understood.”
+“Ngh... U-understood.”
 
 @38454 Gandal · ガンダル
 > 「ズール皇帝陛下が……
@@ -740,9 +757,10 @@ Enough! Blacky, Dungele, is there no plan to defeat them
 before His Majesty arrives?!”
 
 @38455 Dungele · ダンゲル
+# 审校：精读：结巴用连字符
 > 「司令、そ、それは
 >  ワール総司令官の命に
-“Commander, th—that would mean disobeying
+“Commander, th-that would mean disobeying
 ---
 >  そむくことに……。聞けば我ら
 >  キャンベルのジャネラ様もこられるとか
@@ -765,14 +783,17 @@ Disobeying orders would be...”
 “What is it, Captain Blacky?”
 
 @38459 Blacky · ブラッキー
+# 审校：精读：结巴用连字符
 > 「は、申し上げます。地球人の
 >  艦隊が、接近中です」
-“Y—yes, sir. An Earthling fleet is approaching.”
+“Y-yes, sir. An Earthling fleet is approaching.”
 
 @38460 Gandal · ガンダル
+# 审校：精读：结巴用连字符
+# 检查提示：未用必用译名：ダンゲル→Dungele
 > 「な、なんだと!?
 >  おのれ地球人どもめ
-“Wh—what?! Those damn Earthlings,
+“Wh-what?! Those damn Earthlings,
 ---
 >  調子に乗りおって。ブラッキー、
 >  ダンゲル、愚かな地球人どもを
@@ -786,8 +807,9 @@ foolish Earthlings. If they're the ones attacking us,
 even Lord Wahl can't complain.”
 
 @38461 Blacky · ブラッキー
+# 审校：精读：结巴
 > 「……ガ、ガンダル司令様」
-“...C—Commander Gandal, sir.”
+“...C-Commander Gandal, sir.”
 
 @38462 Gandal · ガンダル
 > 「なんだ、ブラッキー。早く行け」
@@ -860,9 +882,10 @@ On the honor of the advance fleet's commander, I will crush them all!”
 “...I'll leave it to you.”
 
 @38475 Haman · ハマーン
+# 审校：精读：去破折号
 > 「私もキュベレイで出よう。そちらの
 >  部隊と同行したいがよいか?」
-“I'll go out in the Qubeley as well. I'd like to accompany your unit—is that acceptable?”
+“I'll go out in the Qubeley as well. I'd like to accompany your unit. Is that acceptable?”
 
 @38476 Ryoma · リョウ
 > 「何だって?」
@@ -1083,9 +1106,10 @@ what in the world has happened to me...?!”
 “Brother... You've finally remembered.”
 
 @38517 Marg · マーグ
+# 审校：L2 与 L22 是同一句日文，译文应保持一致；L22 已用 “stole”，L2 也改为 “stole” 以统一。
 > 「……ああ……そうか、俺は
 >  ズール皇帝に過去を奪われたのだ
-“...Yeah... I see. Emperor Zuul stole my past from me.
+“...Ah... I see. Emperor Zuul stole my past from me.
 ---
 >  そして俺は、ズールの意のままに
 >  戦う男にされてしまった……」
@@ -1097,10 +1121,10 @@ And he turned me into a man who fights only as Zuul wills...”
 “Marg, it's all right now. I'll never let you go!”
 
 @38519 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一 Commander
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Captain Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, prepare yourself!”
 
 @38520 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -1184,13 +1208,14 @@ what in the world has happened to me...?!”
 “Brother... You've finally remembered.”
 
 @38537 Marg · マーグ
+# 审校：L22 与 L2 是同一句日文，译文应保持一致；L2 已用 “stole”，L22 也改为 “stole” 以统一。
 > 「……ああ……そうか、俺は
 >  ズール皇帝に過去を奪われたのだ
-“...Ah... I see. Emperor Zuul took my past from me.
+“...Ah... I see. Emperor Zuul stole my past from me.
 ---
 >  そして俺は、ズールの意のままに
 >  戦う男にされてしまった……」
-And he turned me into a man who fights only as Zuul wills it...”
+And he turned me into a man who fights only as Zuul wills...”
 
 @38538 Takeru · タケル
 > 「マーグ、もう大丈夫だ。
@@ -1198,10 +1223,10 @@ And he turned me into a man who fights only as Zuul wills it...”
 “Marg, it's all right now. I'll never let you go!”
 
 @38539 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一 Commander
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Captain Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, prepare yourself!”
 
 @38540 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -1560,9 +1585,10 @@ thank goodness. Naida, you can't stay in a place like this. Come over to our sid
 This time it really is the end!”
 
 @38608 Duke · デューク
+# 审校：原文为怒吼，will never 比 will not 更贴合杜克战斗时的果断语气。
 > 「ガンダル! 貴様は絶対に
 >  許さんぞ!」
-“Gandal! I will never forgive you!”
+“Gandal! I'll never forgive you!”
 
 @38609 Marg · マーグ
 > 「死ね、マーズ!!」
@@ -1679,9 +1705,10 @@ I cannot allow this! I must descend to the surface!”
 “But...”
 
 @38627 Dermail · デルマイユ
+# 审校：精读：引号
 > 「しかしではない! だいたい、貴公が
 >  リーブラなどで小競り合いを
-“Don't 'but' me! Besides, while you were off skirmishing at Libra,
+“Don't ‘but’ me! Besides, while you were off skirmishing at Libra,
 ---
 >  やっている間に、連中は
 >  帝国軍に勝ってしまったのだぞ!?」
@@ -1716,7 +1743,7 @@ you said it was possible! Or are you saying that even you
 can't manage it after all?!”
 
 @38630 Scirocco · シロッコ
-# 审校：原文第1页开头有「，应保留开引号；初稿漏掉开引号。
+# 审校：补全整条台词的外层引号
 > 「……そこまでおっしゃるのなら、
 >  いいでしょう。シャトルと
 “...If you insist that much, very well. I will prepare a shuttle and
@@ -1827,9 +1854,11 @@ approaching. Shall we activate the MDs?”
 “I-impossible...”
 
 @38647 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ツバロフ→Tubarov、トレーズ→Treize
 > 「トレーズさま、報告が入りました。
 >  先ほど、財団代表代行の
-“Lord Treize, we have a report. Just now, the shuttle carrying
+“Your Excellency, we have a report. Just now, the shuttle carrying
 ---
 >  デルマイユ公爵が乗ったシャトルが、
 >  我が方のパトロール隊に
@@ -1883,17 +1912,19 @@ As an accident, it's a little too strange.”
 “I see... Paptimus Scirocco. ...He's reckless.”
 
 @38653 Lady · レディ
+# 审校：精读：对阁下说话；要請
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「これを受けて、財団の幹部会は
 >  緊急会議を開き
 “In response, the Foundation's executive council held an emergency meeting
 ---
 >  満場一致でトレーズさまの
 >  財団代表への就任
-and voted unanimously to request Lord Treize's appointment as Foundation representative
+and voted unanimously to request Your Excellency's appointment as Foundation representative
 ---
 >  およびOZ総帥への復帰を
 >  要請することが可決されました
-and his return as OZ's commander-in-chief.
+and your return as OZ's commander-in-chief.
 ---
 >  この件に関し、財団本部まで
 >  おいでいただきたいと
@@ -1977,14 +2008,16 @@ are those bastards gonna show up?!”
 “So where are we headed right now?”
 
 @38666 Shiro · シロー
+# 审校：精读：抑えられたまま 误译
 > 「暗礁宙域だと聞いた。
 >  まだどこも、抑えられたままだからな」
-“I heard it's the Shoal Zone. It's still being held down everywhere, after all.”
+“I heard it's the Shoal Zone. Everywhere else is still held by someone, after all.”
 
 @38667 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, how are Marg and my brother?! Are they all right?!”
+“Rain, how is Marg, my brother?! Is he all right?!”
 
 @38668 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -2084,9 +2117,10 @@ Leave it at that for today.”
 “Yes... Doctor, please take care of my brother.”
 
 @38687 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, how are Marg and my brother?! Are they all right?!”
+“Rain, how is Marg, my brother?! Is he all right?!”
 
 @38688 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -2125,9 +2159,10 @@ to a proper facility soon. It's dangerous to keep bringing him along like this.�
 “It's all right, brother. For now, just focus on healing your wounds.”
 
 @38695 Marg · マーグ
+# 审校：“銀河帝国のすべてが”指帝国所有人，译文“all of the Galactic Empire”指整个帝国，改为“everyone in the Galactic Empire”更准确。
 > 「ああ……マーズ、悪いのはズールだ。
 >  銀河帝国のすべてがズールと
-“Yeah... Mars, Zuul is the one to blame. Not all of the Galactic Empire is
+“Yeah... Mars, Zuul is the one to blame. Not everyone in the Galactic Empire is
 ---
 >  同じわけじゃない。
 >  ズールを倒すんだ、マーズ
@@ -2287,8 +2322,9 @@ and I swear I'll protect the Earth.”
 “But to think there were other survivors from Planet Fleed besides us.”
 
 @38723 Daisuke · 大介
+# 审校：原文「よく無事でいてくれた」是对奈伊达平安归来的欣慰，现有译文“I'm glad you're safe”语气偏淡，改为更贴合杜克温和内敛口吻的“made it back safely”。
 > 「ああ、ナイーダ、よく無事でいてくれた」
-“Yeah, Naida, I'm glad you're safe.”
+“Yeah, Naida, I'm glad you made it back safely.”
 
 @38724 Banjo · 万丈
 > 「失礼、お嬢さん。
@@ -2392,9 +2428,10 @@ enter the Shoal Zone first?”
 “So it seems.”
 
 @38738 Show · ショウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「トレーズが財団代表になって、
 >  OZの総帥に
-“You heard that Treize became the foundation's representative and
+“You heard that Treize became the Foundation's representative and
 ---
 >  もどったって話は聞いたろ?
 >  その直後の混乱を狙って
@@ -2418,9 +2455,10 @@ right after, while everyone was in chaos. For now, we're holding the moon.”
 “I don't get it. Why Scirocco would pull back so easily.”
 
 @38742 Simone · シモーヌ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうね……いまや財団からすれば、
 >  こっちが官軍、むこうが賊軍でしょ
-“True... from the foundation's point of view now, we're the loyalists and they're the rebels.
+“True... from the Foundation's point of view now, we're the loyalists and they're the rebels.
 ---
 >  月を抑えていたほうが有利なはず
 >  なのに……」
@@ -2443,9 +2481,10 @@ I don't know how many fleets are coming, but the fewer places
 we have to defend, the better.”
 
 @38745 Show · ショウ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「バルジとリーブラを確保しておく
 >  ことに、専念するということか……」
-“So he means to focus on securing Balji and Libra...”
+“So he means to focus on securing Barge and Libra...”
 
 @38746 Duo · デュオ
 > 「なるほどねぇ。

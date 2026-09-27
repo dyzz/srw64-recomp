@@ -1,113 +1,161 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @5956 Aina · アイナ
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「撃ちます……」
-“I'm firing...”
+“I’m firing...”
 
 @5957 Aina · アイナ
+# 触发：攻击（通用，2/9）
 > 「離れなさい、死にたいのですか!?」
 “Get away! Do you want to die?!”
 
 @5958 Aina · アイナ
+# 触发：攻击（通用，3/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「仕方がないのです!」
-“There's no other way!”
+“There’s no other way!”
 
 @5959 Aina · アイナ
+# 触发：攻击（通用，4/9）
 > 「なんて無謀な」
 “How reckless...”
 
 @5960 Aina · アイナ
+# 触发：攻击（通用，5/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させます!」
-“I'll hit you dead-on!”
+“I’ll hit you dead-on!”
 
 @5961 Aina · アイナ
+# 触发：攻击（通用，6/9）
 > 「いきます!」
 “Here I go!”
 
 @5962 Aina · アイナ
+# 触发：攻击（通用，7/9）
 > 「離れなさい!」
 “Get away!”
 
 @5963 Aina · アイナ
+# 触发：攻击（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「撃ちます!」
-“I'm firing!”
+“I’m firing!”
 
 @5964 Aina · アイナ
+# 触发：攻击（通用，9/9）
+# 审校：出てこなければ 是不出来就好了，不是威胁
 > 「出てこなければ!」
-“Come out, or else!”
+“You shouldn’t have come out!”
 
 @5965 Aina · アイナ
+# 触发：被击坠（通用，1/2）
 > 「シローッッ!」
 “Shiro!”
 
 @5966 Aina · アイナ
+# 触发：被击坠（通用，2/2）
 > 「きゃあぁぁぁぁっっ!」
 “Kyaaaaaah!”
 
 @5967 Aina · アイナ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もうもたない……」
-“I-I can't hold out...”
+“I-I can’t hold out...”
 
 @5968 Aina · アイナ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もう限界です!」
-“I-I'm at my limit!”
+“I-I’m at my limit!”
 
 @5969 Aina · アイナ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! かなりやられてしまったわね……」
-“Ngh! I've taken quite a beating...”
+“Ngh! I’ve taken quite a beating...”
 
 @5970 Aina · アイナ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ここで……死ぬの!?」
 “Am I... going to die here?!”
 
 @5971 Aina · アイナ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「うっ、過重が大きすぎるの!?」
 “Ugh, the G-force is too much?!”
 
 @5972 Aina · アイナ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「機体の安定が……っ!」
-“The unit's stability...!”
+“The unit’s stability...!”
 
 @5973 Aina · アイナ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あぁっ、だめだわっ!」
-“Ah, no, this can't be!”
+“Ah, no, this can’t be!”
 
 @5974 Aina · アイナ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「あぁぁぁーっ!」
 “Aaaaaah!”
 
 @5975 Aina · アイナ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ、まだこの程度では」
-“Ngh, this much won't...”
+“Ngh, this much won’t...”
 
 @5976 Aina · アイナ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「はっ」
 “Hah!”
 
 @5977 Aina · アイナ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「くっ」
 “Ngh!”
 
 @5978 Aina · アイナ
+# 触发：回避（通用，1/3）
 > 「ふぅ、なんとかかわせたようですね」
 “Phew, looks like I managed to dodge.”
 
 @5979 Aina · アイナ
+# 触发：回避（通用，2/3）
 > 「あぶないところでした」
 “That was close.”
 
 @5980 Aina · アイナ
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるわけにはいかないのです!」
-“I can't afford to get hit!”
+“I can’t afford to get hit!”
 
 @5981 Aina · アイナ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「思ったより振動は小さいわ……」
-“The shaking's less than I thought...”
+“The shaking’s less than I thought...”
 
 @5982 Aina · アイナ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もう撃ちつくしてしまった!?」
-“I-I'm all out of ammo?!”
+“I-I’m all out of ammo?!”
 
 @5983 Aina · アイナ
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ、この距離ではだめ!」
 “Ngh, this distance is no good!”
+
+@14236 Aina · アイナ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”

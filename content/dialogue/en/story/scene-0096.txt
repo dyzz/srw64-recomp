@@ -9,9 +9,10 @@
 “What is it, Wahl?”
 
 @45202 Wahl · ワール
+# 审校：对皇帝的应答应使用“Your Majesty”而非“sir”，以符合敬语层级。
 > 「はっ、地球人の軍勢がこちらへ
 >  向かっております」
-“Yes, sir. The Earthling forces are advancing on us.”
+“Yes, Your Majesty. The Earthling forces are advancing on us.”
 
 @45203 Emperor Zuul · ズール皇帝
 > 「その程度のことか。迎撃の
@@ -123,13 +124,14 @@ Of course we're nervous.”
 “Well, I suppose it's different for everyone...”
 
 @45222 Koji · 甲児
+# 审校：全局：刻印＝Crest
 > 「なんだよ、辛気くせえな!
 >  一発気合い入れて
 “What's with the long faces?! Let's fire ourselves up and
 ---
 >  バーッとやっちまおうぜ! なぁに、
 >  俺たちは“刻印”の
-go all out! Come on, we pulled it off back when the ‘Mark’
+go all out! Come on, we pulled it off back when the ‘Crest’
 ---
 >  発動んときだって、やれたんだ。
 >  今度だって大丈夫さ!」
@@ -222,9 +224,10 @@ went up into space to fight the Galactic Empire's army.”
 “You don't know?”
 
 @45237 Lady · レディ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そう申し上げるほかは、ないでしょう。
 >  貴女と“刻印”のおかげで
-“There's nothing else I can say. Thanks to you and the ‘Mark,’
+“There's nothing else I can say. Thanks to you and the ‘Crest,’
 ---
 >  私たちは最悪の事態だけは、
 >  まぬがれることが出来ました。ですが
@@ -239,18 +242,21 @@ a fact that we remain in a critical situation. We have no choice
 but to entrust our hopes to them. No matter how it turns out...”
 
 @45238 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > (そして……それがトレーズ様の
 >  ご意志でもあるのだから……)
-(And... because that is also what Lord Treize wishes...)
+(And... because that is also what His Excellency wishes...)
 
 @45239 Amuro · アムロ
 > 「ハマーンから連絡があっただって?」
 “You say Haman sent word?”
 
 @45240 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ああ、トレーズ特佐が話をされた。
 >  これから、その件について
-“Yeah, Colonel Treize told me. He says he has something
+“Yeah, Special Colonel Treize told me. He says he has something
 ---
 >  話があるそうだ」
 to discuss about that matter.”
@@ -285,9 +291,10 @@ to hear something extremely interesting.”
 “Interesting talk? What on earth is it?”
 
 @45246 Treize · トレーズ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「“刻印”の発動により、
 >  こちらに取り残された艦隊の中に
-“With the activation of the ‘Mark,’ among the fleet left stranded on this side,
+“With the activation of the ‘Crest,’ among the fleet left stranded on this side,
 ---
 >  銀河帝国のズール皇帝が
 >  いるというのだ」
@@ -438,8 +445,9 @@ Emperor Zuul's cruelty is feared even by his own officers.
 It's not that he cannot be persuaded. Most likely, he has no such intention at all.”
 
 @45267 Ryoma · リョウ
+# 审校：リョウは熱血だが下品な罵倒はしないため、"bastard" は口吻に合わない。
 > 「なんて奴だ」
-“What a bastard.”
+“What a monster.”
 
 @45268 Ryo · 亮
 > 「……問題は、その粛清とやらが、
@@ -493,13 +501,14 @@ In a sense, there's a part of them that resembles us not long ago.”
 “...So we've got no choice but to fight. Fight, and win, that's all.”
 
 @45275 Alan · アラン
+# 审校：アランの冷静な指揮官口調に合わせ、"like men possessed" を落ち着いた表現に変更。
 > 「その通りだ、藤原。どれだけの
 >  兵士が粛清されるのかはわからんが
 “Exactly, Fujiwara. We don't know how many soldiers will be purged,
 ---
 >  残った兵士たちは、
 >  死に物狂いで戦うだろう」
-but the ones who remain will fight like men possessed.”
+but the ones who remain will fight desperately.”
 
 @45276 Ryoma · リョウ
 > 「決して楽ではないということだな」
@@ -574,8 +583,9 @@ We plan to attack the group we believe is the enemy's main force,
 but it appears the Axis Forces are also heading toward one of them.”
 
 @45286 Judau · ジュドー
+# 审校：ジュドーの少年らしい口調に合わせ、"sneaky" より直接的で自然な表現に。
 > 「ちぇっ、きったねぇの」
-“Tch, how sneaky.”
+“Tch, that's dirty.”
 
 @45287 Ryoma · リョウ
 > 「だが、連中もしかけるというのなら、
@@ -703,12 +713,14 @@ think they can beat me?! They'd best die and curse their own foolishness!!”
 “...It's Zuul! He's there!”
 
 @45307 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤァァァァァーッ!!」
-“Gaiyaaaaaaaaah!!”
+“Gaiaaaaaaaaah!!”
 
 @45308 Takeru · タケル
+# 审校：精读：六神合体口号
 > 「六神がったぁぁぁーいッ!!」
-“Godmars, launch!!”
+“Six gods, uniiiite!!”
 
 @45309 Beltorchika · ベルトーチカ
 > 「ゴッドマーズ、出撃しました!」
@@ -840,9 +852,10 @@ you could defeat me with something like that?! Behold my true power!”
 “We did it!!”
 
 @45331 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，won't 改为 will not。
 > 「ふむ……これはいけませんな、艦長。
 >  敵はまだ
-“Hmm... this won't do, Captain. It seems the enemy still
+“Hmm... this will not do, Captain. It seems the enemy still
 ---
 >  戦闘を継続するつもりのようですぞ」
 intends to continue the fight.”
@@ -866,18 +879,20 @@ intends to continue the fight.”
 “Zuul! I'm going to take you down!!”
 
 @45336 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝威严无缩写，You'd best 改为 You will。
 > 「裏切り者マーズ。ワシに
 >  逆らったことを後悔するがいい!」
-“Traitor Mars. You'd best regret defying me!”
+“Traitor Mars. You will regret defying me!”
 
 @45337 Rose · ロゼ
 > 「ズール皇帝! 覚悟!!」
 “Emperor Zuul! Prepare yourself!!”
 
 @45338 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝口吻更冷峻正式，really 改为 truly。
 > 「ロゼか。お前ごときが相手に
 >  なるとでも思うのか!? 死ねい!」
-“Rose, is it? Do you really think the likes of you can face me?! Die!”
+“Rose, is it? Do you truly think the likes of you can face me?! Die!”
 
 @45339 Bright · ブライト
 > 「…………終わったか……これで……」
@@ -936,9 +951,10 @@ intends to continue the fight.”
 “Zuul?!”
 
 @45351 Beltorchika · ベルトーチカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そんな!?
 >  いま確かに倒したはずなのに……」
-“No!? We definitely defeated him just now...”
+“No?! We definitely defeated him just now...”
 
 @45352 Emperor Zuul · ズール皇帝
 > 「まだ気づかぬのか、愚か者め!
@@ -961,9 +977,10 @@ nothing more than my shadow!”
 “Ngh... You've gotta be kidding me.”
 
 @45356 Garrison · ギャリソン
+# 审校：Garrison 的管家口吻要求不用缩写，且原文无呼语，去掉多余的 sir。（人工改写）
 > 「……実体はないようです。どうやら、
 >  映像のようなものらしいですな」
-“...There seems to be no substance to him. It appears he's something like a projection, sir.”
+“...There seems to be no substance to him. It appears he is something like a projection.”
 
 @45357 Emperor Zuul · ズール皇帝
 > 「貴様らごときが、このワシを

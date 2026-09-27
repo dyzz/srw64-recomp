@@ -1,162 +1,216 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7696 Gosterro · ゴステロ
+# 触发：攻击（通用，1/15）
 > 「くらえっ! 地球のサルめっ!!」
 “Take this! You Earth monkeys!!”
 
 @7697 Gosterro · ゴステロ
+# 触发：攻击（通用，2/15）
 > 「くたばれぃっ!!」
 “Die!!”
 
 @7698 Gosterro · ゴステロ
-# 审校：「じわじわと生殺しにしてやる」是慢慢折磨致死，初稿“keep you alive just to savor your suffering”意思偏差且啰嗦。
+# 触发：攻击（通用，3/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「じわじわと生殺しにしてやる!」
-“I'll kill you slowly, bit by bit!”
+“I’ll kill you slowly, bit by bit!”
 
 @7699 Gosterro · ゴステロ
+# 触发：攻击（通用，4/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「たっぷり楽しませてもらおうか」
-“I'm going to enjoy this plenty.”
+“I’m going to enjoy this plenty.”
 
 @7700 Gosterro · ゴステロ
+# 触发：攻击（通用，5/15）
 > 「へははははははっ!」
 “Hehahahahahaha!”
 
 @7701 Gosterro · ゴステロ
+# 触发：攻击（通用，6/15）
 > 「くらえっっ!!!」
 “Take thiiiis!!!”
 
 @7702 Gosterro · ゴステロ
+# 触发：攻击（通用，7/15）
 > 「バカめっ!」
 “You idiot!”
 
 @7703 Gosterro · ゴステロ
+# 触发：攻击（通用，8/15）
 > 「死ねっ!!」
 “Die!!”
 
 @7704 Gosterro · ゴステロ
-# 审校：「いたぶる楽しみ」指折磨对方的乐趣，初稿“spoil my fun”丢失了“いたぶる”的含义。
+# 触发：攻击（通用，9/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「簡単に死ぬなよ! いたぶる
 >  楽しみが無くなるからなっ!」
-“Don't die too easily! I'd lose the fun of tormenting you!”
+“Don’t die too easily! I’d lose the fun of tormenting you!”
 
 @7705 Gosterro · ゴステロ
+# 触发：攻击（通用，10/15）
 > 「へーっはっはっはっ!!」
 “Heh-hehahahaha!!”
 
 @7706 Gosterro · ゴステロ
+# 触发：攻击（通用，11/15）
 > 「お楽しみも終わりだ!!」
 “The fun ends here!!”
 
 @7707 Gosterro · ゴステロ
+# 触发：攻击（通用，12/15）
 > 「勝利はじっくりと味わうものだ……」
 “Victory is something to savor slowly...”
 
 @7708 Gosterro · ゴステロ
+# 触发：攻击（通用，13/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がさん!」
-“You won't escape!”
+“You won’t escape!”
 
 @7709 Gosterro · ゴステロ
+# 触发：攻击（通用，14/15）
 # 审校：「たまらないなぁ」表示难以抗拒的快感，初稿“There's nothing like killing people”语气不够贴切。
 > 「たまらないなぁ人殺しというのはぁ!」
 “Killing people is just irresistible!”
 
 @7710 Gosterro · ゴステロ
+# 触发：攻击（通用，15/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がすかぁっ!!」
-“You won't get away!!”
+“You won’t get away!!”
 
 @7711 Gosterro · ゴステロ
+# 触发：被击坠（通用，1/4）
 > 「うおおおおおおおっ!!」
 “Uwooooooooh!!”
 
 @7712 Gosterro · ゴステロ
+# 触发：被击坠（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺はこんな所でくたばらんぞぉ!!」
-“I'm not dying in a place like this!!”
+“I’m not dying in a place like this!!”
 
 @7713 Gosterro · ゴステロ
+# 触发：被击坠（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「覚えておけ! 俺は必ず戻ってきて
 >  お前の体を八つ裂きにしてやる!!」
-“Remember this! I'll be back, and I'll tear your body to pieces!!”
+“Remember this! I’ll be back, and I’ll tear your body to pieces!!”
 
 @7714 Gosterro · ゴステロ
+# 触发：被击坠（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぉぉ、殺してやるぅぅ!」
-“Damn youuu, I'll kill youuu!”
+“Damn youuu, I’ll kill youuu!”
 
 @7715 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「うおぉぉぉぉぉぉーっ!!」
 “Uwooooooooh!!”
 
 @7716 Gosterro · ゴステロ
-# 审校：「影も形もないようにしてやる」意为消灭得无影无踪，初稿“blast you into nothing”不够准确。
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぅっ! 影も形もないように
 >  してやる!!」
-“Damn it! I'll wipe you out without a trace!!”
+“Damn it! I’ll wipe you out without a trace!!”
 
 @7717 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「ぬがあぁぁぁっ!!」
 “Nguaaah!!”
 
 @7718 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ぐわあああーっ!!」
 “Guwaaaah!!”
 
 @7719 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっそぉ! いてぇじゃねえかよぉっ!」
-“Damn it! That freakin' hurt!”
+“Damn it! That freakin’ hurt!”
 
 @7720 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「うおおっ……ああっ!!」
 “Uooo... aah!!”
 
 @7721 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「や、や、野郎っ!!」
 “Y-you bastard!!”
 
 @7722 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「おおっ!」
 “Ooh!”
 
 @7723 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「貴様ぁ!!」
 “You!!”
 
 @7724 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「チッ!」
 “Tch!”
 
 @7725 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様に俺は殺せん!」
-“You can't kill me!”
+“You can’t kill me!”
 
 @7726 Gosterro · ゴステロ
+# 触发：回避（通用，1/5）
 > 「ひへへへへへへっ! アマちゃんめ!」
 “Heheheheheh! You amateur!”
 
 @7727 Gosterro · ゴステロ
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様はムダなことをしたのだと、
 >  思い知るがいい!」
-“You'd best learn you've done all this for nothing!”
+“You’d best learn you’ve done all this for nothing!”
 
 @7728 Gosterro · ゴステロ
+# 触发：回避（通用，3/5）
 > 「バカがぁ!」
 “You fool!”
 
 @7729 Gosterro · ゴステロ
+# 触发：回避（通用，4/5）
 > 「まともに俺の相手ができると
 >  思っているのか!?」
 “You think you can take me head-on?!”
 
 @7730 Gosterro · ゴステロ
+# 触发：回避（通用，5/5）
 > 「もっとよく狙いなぁ!」
 “Aim better next time!”
 
 @7731 Gosterro · ゴステロ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「バカがぁ!」
 “You fool!”
 
 @7732 Gosterro · ゴステロ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ちいっっ! 弾切れかぁ!?」
 “Tch! Out of ammo?!”
 
 @7733 Gosterro · ゴステロ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：射程外情境，对方没说话
 > 「なんだとぅ!?」
-“What did you say?!”
+“What the hell?!”
+
+@14532 Gosterro · ゴステロ
+# 触发：使用〈レーザーバズソー〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ずたずたに切り刻んでやる!」
+“I’ll cut you to ribbons!”

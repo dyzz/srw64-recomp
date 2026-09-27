@@ -68,9 +68,10 @@ Captain Quattro has apparently worked out the details for what comes next.”
 “I can't say. I suspect she's likely an enhanced human, but...”
 
 @25208 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ああ、俺たちと、いやカミーユと
 >  接触する理由がわからないな
-“Yeah, I don't understand why she'd want contact with us—no, with Kamille.
+“Yeah, I don't understand why she'd want contact with us... no, with Kamille.
 ---
 >  戦場でのシンパシーというなら
 >  理解はできるが」
@@ -96,9 +97,10 @@ If it's some kind of battlefield sympathy, I can understand that much.”
 “I can't say. I suspect she's likely an enhanced human, but...”
 
 @25213 Amuro · アムロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ああ、俺たちと、いやカミーユと
 >  接触する理由がわからないな
-“Yeah, I don't understand why she'd want contact with us—no, with Kamille.
+“Yeah, I don't understand why she'd want contact with us... no, with Kamille.
 ---
 >  戦場でのシンパシーというなら
 >  理解はできるが」
@@ -127,8 +129,9 @@ If it's some kind of battlefield sympathy, I can understand that much.”
 “...You're right.”
 
 @25219 Sally · サリィ
+# 审校：原文称呼为“ハサン先生”，应译为“Dr. Hasan”而非“Teacher Hasan”，以符合英语对医生/学者的敬称习惯。
 > 「ハサン先生、お久しぶりです」
-“Teacher Hasan, it's been a long time.”
+“Dr. Hasan, it's been a long time.”
 
 @25220 Hasan · ハサン
 > 「おお、サリィくんか。
@@ -171,9 +174,10 @@ for the details, but...”
 “I can't deny the possibility.”
 
 @25227 Kamille · カミーユ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「……強化人間なんてつくって、
 >  どうしようって言うんです」
-“...Creating enhanced humans—what do they think they're doing?”
+“...Creating enhanced humans... what do they think they're doing?”
 
 @25228 Hasan · ハサン
 > 「私をせめられても困る。
@@ -188,9 +192,9 @@ I'd be lying if I said I wasn't interested. If it weren't for times like these,
 it never would have come to this, but...”
 
 @25229 Sally · サリィ
-# 审校：同上，将“Teacher Hasan”改为“Mr. Hasan”。
+# 审校：哈桑是医生，Sally 称呼他应用 Doctor 而非 Mr.
 > 「ハサン先生、ちょっと」
-“Mr. Hasan, a moment.”
+“Doctor Hasan, a moment.”
 
 @25230 Kamille · カミーユ
 > 「戦争のためなら、
@@ -362,9 +366,10 @@ built by the accumulation of each day. An individual's future means nothing.”
 that your future exists.”
 
 @25259 Treize · トレーズ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「レディ、私はそれほど強くない。
 >  ゼクスが、そしてあの反逆の翼持つ
-“Lady, I am not that strong. Zechs, and those with the wings of rebellion—
+“Lady, I am not that strong. Zechs, and those with the wings of rebellion...
 ---
 >  彼らが、命をかけて未来への道を
 >  見出そうとしている」
@@ -375,13 +380,14 @@ they are risking their lives to find the path to the future.”
 “Your Excellency...”
 
 @25261 Treize · トレーズ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「急ぐ必要はない。
 >  時代は繰り返されるのだ
 “There is no need to rush. The ages will repeat themselves.
 ---
 >  レディ、戻ってきておくれ、
 >  私の大好きだったレディ・アン」
-Lady, come back to me—my beloved Lady Une.”
+Lady, come back to me... my beloved Lady Une.”
 
 @25262 Astonaige · アストナージ
 > 「おい、そこの奴。ちょっとこのクレーンを
@@ -420,9 +426,10 @@ Lady, come back to me—my beloved Lady Une.”
 “Hey Beecha, hurry it up.”
 
 @25270 Beecha · ビーチャ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「わかってるよ! えー、アーガマの皆さん
 >  大変お忙しいところを失礼します
-“I know! Ahem—everyone aboard the Argama, sorry to trouble you when you're so busy.
+“I know! Ahem... everyone aboard the Argama, sorry to trouble you when you're so busy.
 ---
 >  実はわたくしたちはぁ……」
 The truth is, we are...”
@@ -495,9 +502,10 @@ then you'd better be ready for what's coming.”
 “Oh, brother. What a bunch of stupid kids.”
 
 @25283 George · ジョルジュ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「まったく、婦女子を人質にとる
 >  など、どのような理由があっても
-“Honestly, taking women and children hostage—no matter the reason,
+“Honestly, taking women and children hostage... no matter the reason,
 ---
 >  許せませんね」
 I cannot forgive it.”
@@ -508,8 +516,9 @@ I cannot forgive it.”
 “Don't be too rough with them, you lot.”
 
 @25285 Sai Saici · サイ・サイシー
+# 审校：原文「アランのあんちゃん」是赛·塞西对阿兰的昵称，译文应体现这种亲近称呼。
 > 「わかってるって、アランのあんちゃん」
-“I know, I know, Alan.”
+“I know, I know, big bro Alan.”
 
 @25286 Beecha · ビーチャ
 > 「なななな、なんだよ、この銃が見えない
@@ -539,9 +548,10 @@ I cannot forgive it.”
 “F-fine! Just who the hell are you people?!”
 
 @25292 Schwarz · シュバルツ
+# 审校：修瓦鲁兹是神秘严肃的忍者，原文「修業が足りなかったようだな」语气更正式，译文应更庄重。
 > 「フフフフ、ハハハハッ。修業が
 >  足りなかったようだな、少年たち」
-“Heh heh heh, ha ha ha ha. Seems you boys haven't trained enough.”
+“Heh heh heh, ha ha ha ha. It seems your training was insufficient, boys.”
 
 @25293 Mondo · モンド
 > 「ひっ、また出た!
@@ -558,9 +568,10 @@ I cannot forgive it.”
 “Yes, I'm fine. ...Oh, that kid?!”
 
 @25296 Astonaige · アストナージ
+# 审校：原文「あいつを止めろ」的对象是ジュドー，译文“what's he doing”指代不清，应改为直接命令。
 > 「ばか、何やってんだ。
 >  あいつを止めろ!!」
-“Idiot, what's he doing? Stop him!!”
+“Idiot, what are you doing? Stop him!!”
 
 @25297 Judau · ジュドー
 > 「へへっ、もう遅いぜ。っと、こいつでいい
@@ -572,9 +583,10 @@ I cannot forgive it.”
 “Whoa there. Tch, what's wrong with this thing?”
 
 @25299 Bright · ブライト
+# 审校：布莱特对部下说话时用「お前」，译文“what is going on”过于客观，应改为直接质问“you”。
 > 「Zが盗まれただと!?
 >  一体なにをやってるんだ!
-“The Z has been stolen?! What on earth is going on?!
+“The Z has been stolen?! What on earth are you doing?!
 ---
 >  アムロ、カミーユ、頼む。
 >  取り押さえてくれ」
@@ -626,9 +638,10 @@ Like I'd just hand it back!”
 “Roger.”
 
 @25309 Judau · ジュドー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「うわっ、なんだよ、離せって……
 >  な、なんだ……?」
-“Whoa, what the—let go of me... Wh-what the...?”
+“Whoa, what the... let go of me... Wh-what the...?”
 
 @25310 Amuro · アムロ
 > 「これは……」
@@ -665,13 +678,14 @@ Like I'd just hand it back!”
 “What did you say?!”
 
 @25318 Bask · バスク
+# 审校：“bare their fangs at” 过于文雅，不符合巴斯克暴戾专横的口吻，改为更直接的 “defy”。
 > 「ここが奴らが根城にしている
 >  コロニーか
 “So this is the colony those bastards are using as their base.
 ---
 >  我々OZに刃向かうと
 >  どういうことになるか、教えてやる」
-I'll teach them what it means to bare their fangs at OZ.”
+I'll teach them what it means to defy OZ.”
 
 @25319 Bask · バスク
 > 「コロニーに潜伏する賊軍
@@ -692,9 +706,10 @@ OZ's rule must be eliminated.”
 “The colony will be attacked because of you.”
 
 @25321 Yazan · ヤザン
+# 审校：「バスクめ」应体现亚赞对上司的不满与粗野，改为 “you bastard” 更符合其性格。
 > (ちっ、バスクめ。
 >  つまらん仕事をやらせおって)
-(Tch, damn you, Bask. Making me do such a boring job.)
+(Tch, Bask, you bastard. Making me do such a boring job.)
 
 @25322 Quattro · クワトロ
 > 「バスクめ……」
@@ -782,9 +797,10 @@ If there's something you must protect, you should be able to do it.”
 and even gave you a chance to fight again. Don't forget that debt.”
 
 @25338 Gosterro · ゴステロ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バ、バスク特佐ぁぁ、
 >  わたくしめをお助けいただいたご恩は
-“M-Major Bask, the debt I owe you for saving my life,
+“M-Special Colonel Bask, the debt I owe you for saving my life,
 ---
 >  ここでたっぷりと
 >  返させていただきますぅぅ」
@@ -883,12 +899,13 @@ From here on, we will provide you support.”
 “I came to save my big brother.”
 
 @25358 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれか……くっ、なんだこれは。
 >  ロザミア特尉
-“That's it... ngh, what is this? Special Ensign Rosamia.
+“That's it... ngh, what is this? Special Lieutenant Rosamia.
 ---
 >  聞こえるか、ロザミア特尉」
-Can you hear me, Special Ensign Rosamia?”
+Can you hear me, Special Lieutenant Rosamia?”
 
 @25359 Rosamia · ロザミア
 > 「うぅぅ……頭が痛い……あうぅ」
@@ -947,9 +964,10 @@ Can you hear me, Special Ensign Rosamia?”
 “Big brother, where are you? Where are you?”
 
 @25372 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれか……ロザミア特尉、
 >  聞こえるか、ロザミア特尉」
-“That's it... Special Ensign Rosamia, can you hear me, Special Ensign Rosamia?”
+“That's it... Special Lieutenant Rosamia, can you hear me, Special Lieutenant Rosamia?”
 
 @25373 Rosamia · ロザミア
 > 「……うぅ……な、なに、これは……?
@@ -957,14 +975,16 @@ Can you hear me, Special Ensign Rosamia?”
 “...Ugh... w-what is this...? No! Help me, big brother!!”
 
 @25374 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「刷り込みが強力すぎたか。
 >  ロザミア特尉!」
-“Was the imprinting too strong? Special Ensign Rosamia!”
+“Was the imprinting too strong? Special Lieutenant Rosamia!”
 
 @25375 Rosamia · ロザミア
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……わ、私は……き、聞こえております
 >  ゲーツ特尉。う……頭が……」
-“...I-I... I can hear you, Special Ensign Gates. Ugh... my head...”
+“...I-I... I can hear you, Special Lieutenant Gates. Ugh... my head...”
 
 @25376 Gates · ゲーツ
 > 「これでは戦闘は無理か……
@@ -1071,12 +1091,13 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 “I came to save my big brother.”
 
 @25398 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれか……くっ、なんだこれは。
 >  ロザミア特尉
-“That's it... Ngh, what is this? Special Ensign Rosamia,
+“That's it... Ngh, what is this? Special Lieutenant Rosamia,
 ---
 >  聞こえるか、ロザミア特尉」
-can you hear me, Special Ensign Rosamia?”
+can you hear me, Special Lieutenant Rosamia?”
 
 @25399 Rosamia · ロザミア
 > 「うぅぅ……頭が痛い……あうぅ」
@@ -1135,9 +1156,10 @@ can you hear me, Special Ensign Rosamia?”
 “Big brother, where are you? Where are you?”
 
 @25412 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれか……ロザミア特尉、
 >  聞こえるか、ロザミア特尉」
-“That's it... Special Ensign Rosamia, can you hear me, Special Ensign Rosamia?”
+“That's it... Special Lieutenant Rosamia, can you hear me, Special Lieutenant Rosamia?”
 
 @25413 Rosamia · ロザミア
 > 「……うぅ……な、なに、これは……?
@@ -1145,14 +1167,16 @@ can you hear me, Special Ensign Rosamia?”
 “...Ugh... w-what is this...? No! Help me, big brother!!”
 
 @25414 Gates · ゲーツ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「刷り込みが強力すぎたか。
 >  ロザミア特尉!」
-“Was the imprinting too strong? Special Ensign Rosamia!”
+“Was the imprinting too strong? Special Lieutenant Rosamia!”
 
 @25415 Rosamia · ロザミア
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……わ、私は……き、聞こえております
 >  ゲーツ特尉。う……頭が……」
-“...I-I... y-yes, I hear you, Special Ensign Gates. Ngh... my head...”
+“...I-I... y-yes, I hear you, Special Lieutenant Gates. Ngh... my head...”
 
 @25416 Gates · ゲーツ
 > 「これでは戦闘は無理か……
@@ -1327,9 +1351,10 @@ attack the colonies.”
 we won't be able to do anything...”
 
 @25438 Alan · アラン
+# 审校：精读：兜たち
 > 「うむ。どのみち兜たちの言うように
 >  ここにとどまるわけにもいかんな」
-“Indeed. Either way, as the Kabutos say, we can't stay here forever.”
+“Indeed. Either way, as Kabuto and the others say, we can't stay here forever.”
 
 @25439 Judau · ジュドー
 > 「放せよ!」
@@ -1345,9 +1370,10 @@ we won't be able to do anything...”
 “Sit still. Captain, I've brought the kids.”
 
 @25442 Bright · ブライト
+# 审校：布莱特对少年说话应更直接、带舰长口吻，原文“わかっているな?”是确认语气，改为“You do know... don't you?”更贴合。
 > 「すまない。ジュドーと言ったな。自分
 >  たちが何をしたのかは、わかっているな?」
-“Sorry about that. Judau, was it? You know what you've done, don't you?”
+“Sorry about that. Judau, was it? You do know what you've done, don't you?”
 
 @25443 Judau · ジュドー
 > 「ああ、わかってるさ。
@@ -1421,9 +1447,10 @@ If even Sweetwater has people like this,
 it's no wonder the other colonies accept OZ.”
 
 @25453 Amuro · アムロ
+# 审校：阿姆罗对杰特说话应更沉稳自然，原文“いますぐに決めろとは言わない”是“我不是叫你马上决定”，改为“I'm not telling you to decide right now”更贴合。
 > 「ジュドー、いますぐに決めろとは
 >  言わない。考えてみてくれないか
-“Judau, I won't tell you to decide right now. Just think about it.
+“Judau, I'm not telling you to decide right now. Just think about it.
 ---
 >  我々は少しでも多くの力を
 >  必要としているんだ」
@@ -1531,9 +1558,10 @@ Perhaps I must spend a little more time...”
 “You are...”
 
 @25473 Trowa · トロワ
+# 审校：精读：特士 统一 Special Officer
 > 「残念だったな。
 >  俺は、OZの特士トロワ・バートン
-“Too bad for you. I'm Trowa Barton, an OZ special officer.
+“Too bad for you. I'm Special Officer Trowa Barton of OZ.
 ---
 >  これ以上抵抗するならば
 >  貴様を殺す」
@@ -1567,14 +1595,14 @@ In any case, you need only do as you are told.”
 “Understood. Then I shall go to the factory.”
 
 @25479 Lady · レディ
-# 审校：将“たとえトレーズ様でも”的译文“Not even you, Lord Treize”改为“Not even Lord Treize”，因为说话人是在陈述而非直接对特列斯说话，避免误用第二人称。
+# 审校：精读：独白里的トレーズ様
 > 「歴史の流れは誰にも
 >  止められぬらしい
 “It seems no one can stop the flow of history.
 ---
 >  たとえトレーズ様でも……。だが私は
 >  トレーズ様の理想へ
-Not even Lord Treize... But I need only carry history toward Lord Treize's ideal.
+Not even His Excellency Treize... But I need only carry history toward His Excellency's ideal.
 ---
 >  歴史を運べばよいのだ。私は
 >  そのために命を捨てることができる
@@ -1582,7 +1610,7 @@ For that, I can throw away my life.
 ---
 >  戦って勝ち取ることができる。
 >  トレーズ様の未来……
-I can fight and win it. Lord Treize's future...
+I can fight and win it. His Excellency's future...
 ---
 >  そして私の未来を」
 And my own future.”

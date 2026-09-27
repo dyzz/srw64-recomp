@@ -1,144 +1,232 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @10903 Mondo · モンド
+# 触发：攻击（通用，1/11）
 > 「お、俺だってなあっ!!」
 “I-I can do it too!!”
 
 @10904 Mondo · モンド
+# 触发：攻击（通用，2/11）
+# 审校：少年口吻，bastard 太重
 > 「にゃろおぉぉぉぉっ!!」
-“You baaastaaaard!!”
+“Why youuuu!!”
 
 @10905 Mondo · モンド
+# 触发：攻击（通用，3/11）
 > 「俺だって、ジュドーくらいにはっ!」
 “I can be just as good as Judau!”
 
 @10906 Mondo · モンド
+# 触发：攻击（通用，4/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってやるぞぉっ!」
-“I'm gonna do it!”
+“I’m gonna do it!”
 
 @10907 Mondo · モンド
+# 触发：攻击（通用，5/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がさないよっ!!」
-“I won't let you get away!!”
+“I won’t let you get away!!”
 
 @10908 Mondo · モンド
+# 触发：攻击（通用，6/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「もらうよっ!」
-“I'll take that!”
+“I’ll take that!”
 
 @10909 Mondo · モンド
+# 触发：攻击（通用，7/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっての!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @10910 Mondo · モンド
+# 触发：攻击（通用，8/11）
 > 「よ～く狙って……そこだぁっ!」
 “Aim real careful... there!”
 
 @10911 Mondo · モンド
+# 触发：攻击（通用，9/11）
 > 「当たれぇぇっ!」
 “Hit iiiit!”
 
 @10912 Mondo · モンド
+# 触发：攻击（通用，10/11）
+# 审校：攻击时连喊，原译“你这”不像喊话
 > 「このっ! このっ! このっ!!」
-“Why you! Why you! Why you!!”
+“Take this! And this! And this!!”
 
 @10913 Mondo · モンド
+# 触发：攻击（通用，11/11）
 > 「うわあああっ!」
 “Uwaaaah!”
 
 @10914 Mondo · モンド
+# 触发：被击坠（通用，1/1）
+# 审校：被击坠情境
 > 「だ、ダメだぁ、やられたぁ!」
-“I-I can't, I got hit!”
+“I-it’s no good, they got me!”
 
 @10915 Mondo · モンド
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ひゃーっ、もう限界だよ!」
-“Yikes, I'm at my limit!”
+“Yikes, I’m at my limit!”
 
 @10916 Mondo · モンド
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：重伤情境：やられる 是要被干掉
 > 「わあああっ! やられるっ!?」
-“Waaah! I'm gonna get hit!?”
+“Waaah! I’m done for?!”
 
 @10917 Mondo · モンド
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、ダメだっ! これ以上もたないよ!」
-“N-no good! I can't take any more!”
+“N-no good! I can’t take any more!”
 
 @10918 Mondo · モンド
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわわわっ! 落ちる、落ちるぅ～!」
-“Whoa whoa whoa! I'm falling, I'm falling!”
+“Whoa whoa whoa! I’m falling, I’m falling!”
 
 @10919 Mondo · モンド
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんにゃろっ! まだまだっ!!」
-“You jerk! I'm not done yet!!”
+“You jerk! I’m not done yet!!”
 
 @10920 Mondo · モンド
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：Hmph 不合语境
 > 「くっ! このおっ! やらせるもんかっ!」
-“Hmph! Why you! I won't let you do this!”
+“Ngh! Why you! I won’t let you!”
 
 @10921 Mondo · モンド
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つ、強いっ! け、けどなあ、俺だって
 >  意地があるんだよっ!」
-“S-strong! B-but still, I've got my pride too!”
+“S-strong! B-but still, I’ve got my pride too!”
 
 @10922 Mondo · モンド
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どわっ! よ、よくもやったなぁっ!」
-“Whoa! Y-you'll pay for that!”
+“Whoa! Y-you’ll pay for that!”
 
 @10923 Mondo · モンド
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ! ま、まだだっ! まだ落ちる
 >  もんかっ!」
-“Uwah! N-not yet! I won't go down yet!”
+“Uwah! N-not yet! I won’t go down yet!”
 
 @10924 Mondo · モンド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「か、かすっただけぇ!」
 “I-it just grazed me!”
 
 @10925 Mondo · モンド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「当たったけど……こんなもんか」
 “It hit, but... is that all?”
 
 @10926 Mondo · モンド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：更地道
 > 「うわっ!? ……?
 >  なあんだ、みかけ倒しね」
-“Uwah!? ...Oh, what, all show and no go.”
+“Whoa?! ...Huh? What, all bark and no bite.”
 
 @10927 Mondo · モンド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：原英文不通
 > 「いてっ! やったな、このっ!」
-“Ow! You did that, you!”
+“Ow! You’ll pay for that, you jerk!”
 
 @10928 Mondo · モンド
+# 触发：回避（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられるかっ!」
-“Like I'd get hit!”
+“Like I’d get hit!”
 
 @10929 Mondo · モンド
+# 触发：回避（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わわっ! こ、こっち来るっ!」
-“Whoa! I-it's coming this way!”
+“Whoa! I-it’s coming this way!”
 
 @10930 Mondo · モンド
+# 触发：回避（通用，3/7）
 > 「あ、危なかったぁ」
 “Th-that was close.”
 
 @10931 Mondo · モンド
+# 触发：回避（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わあっ! お、俺を狙ってる!?」
-“Waaah! H-he's aiming at me!?”
+“Waaah! H-he’s aiming at me?!”
 
 @10932 Mondo · モンド
+# 触发：回避（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるわけにゃいかないんだよっ!」
-“No way I'm gonna get hit!”
+“No way I’m gonna get hit!”
 
 @10933 Mondo · モンド
+# 触发：回避（通用，6/7）
 > 「ふ～、危ない危ない」
 “Phew, that was close, that was close.”
 
 @10934 Mondo · モンド
+# 触发：回避（通用，7/7）
 > 「あっかんべ～だ」
 “Nyah nyah, missed me!”
 
 @10935 Mondo · モンド
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：去掉“呢”；英文更自然
 > 「そ、そんなビームなんて恐くないぞっ!」
-“I-I'm not scared of some Beam like that!”
+“I-I’m not scared of your beams!”
 
 @10936 Mondo · モンド
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「え!? 何? 弾切れなのか?」
-“Huh!? What? Out of ammo?”
+“Huh?! What? Out of ammo?”
 
 @10937 Mondo · モンド
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだぁ、遠すぎて攻撃できない!」
-“No good, it's too far to attack!”
+“No good, it’s too far to attack!”
+
+@16367 Mondo · モンド
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「撃つぞぉっ!」
+“I’m firing!”
+
+@16368 Mondo · モンド
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「頼むぜ、ファンネルっ!」
+“I’m counting on you, Funnel!”
+
+@16369 Mondo · モンド
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：うまくいってくれ 是祈求
+> 「うまくいってくれよ……ファンネルっ!」
+“Please work... Funnel!”
+
+@16370 Mondo · モンド
+# 触发：使用〈フィンファンネル〉
+> 「いけるか? フィンファンネル!」
+“Can you do it? Fin Funnels!”
+
+@16371 Mondo · モンド
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「これならどうだっ! ハイメガキャノン!!」
+“How about this?! High Mega Cannon!!”

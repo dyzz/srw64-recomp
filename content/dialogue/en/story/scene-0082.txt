@@ -5,10 +5,10 @@
 “...Earth might be done for already.”
 
 @40756 ???
-# 审校：原文是「ムゲかズール」，初稿把「か」误译成 and，应为 or。
+# 审校：精读：ムゲかズール 误译
 > 「ならばムゲかズールが選ばれるだけのこと
 >  どうせ最初から候補に入っては
-“Then Muge or Zorbad will simply be the ones chosen. They were never
+“Then Muge or Zuul will simply be the ones chosen. They were never
 ---
 >  いなかった奴らではないか」
 in the running from the start, were they?”
@@ -37,6 +37,7 @@ Al-E-Quis, must do.”
 “I know... Val-A. There's no room left to start over again.”
 
 @40760 Anna · アンナ
+# 审校：全局：grados-en
 > 「AC195年9月30日。ここは
 >  南米大陸、クスコ。私たち
 “September 30, A.C. 195. This is Cusco, on the South American continent. We,
@@ -47,7 +48,7 @@ the {HeroMech}, stood facing the Galactic Empire's forces to protect
 ---
 >  守るため、銀河帝国軍と
 >  対峙していたのでした……」
-Earth's last hope, the ‘Crest of Grados’...”
+Earth's last hope, the ‘Grados Crest’...”
 
 @40761 Treize · トレーズ
 > 「順調のようだね」
@@ -141,6 +142,7 @@ hold them off until the preparations are done.”
 “Could it be... that you're not enthusiastic about this operation, Ms. Julia?”
 
 @40778 Julia · ジュリア
+# 审校：全局：grados-en
 > 「そうですね……わたくしは今でも、
 >  人と人とが最善をつくして
 “I suppose so... Even now, I believe that people doing their utmost and
@@ -151,21 +153,23 @@ understanding one another is the most important thing of all. If I could help it
 ---
 >  “グラドスの刻印”などは
 >  使いたくありませんでした」
-I never wanted to use the ‘Crest of Grados.’”
+I never wanted to use the ‘Grados Crest.’”
 
 @40779 Eiji · エイジ
 > 「ジュリア姉さん……」
 “Julia...”
 
 @40780 Anna · アンナ
+# 审校：全局：grados-en
 > 「それで、今まで
 >  “グラドスの刻印”のことを
-“So that's why you kept the ‘Crest of Grados’ a secret
+“So that's why you kept the ‘Grados Crest’ a secret
 ---
 >  秘密になさっていたのですね?」
 all this time?”
 
 @40781 Julia · ジュリア
+# 审校：全局：grados-en
 > 「ええ。けれどやむをえません。これ以上
 >  無益な血を流させないために
 “Yes. But it can't be helped. So that no more pointless blood is spilled,
@@ -180,7 +184,7 @@ still nothing but infants in this vast universe.
 ---
 >  この刻印を残した先住グラドス
 >  人たちの知恵に、私たちは
-We must rely on the wisdom of the ancient Gradosians,
+We must rely on the wisdom of the ancestral Gradosians,
 ---
 >  すがらねばなりません」
 who left this crest behind.”
@@ -360,9 +364,10 @@ Now then, people of the {HeroMech}, I pray for your operation's success.”
 “...She talks big, when she's still only sent out a single Gwadan.”
 
 @40809 Amuro · アムロ
+# 审校：大尉 统一 Captain
 > 「クワトロ大尉、今は作戦に
 >  集中するんだ。ここで勝てなければ
-“Lieutenant Quattro, focus on the operation for now. If we don't win here,
+“Captain Quattro, focus on the operation for now. If we don't win here,
 ---
 >  アクシズがどうでも関係なくなる」
 it won't matter what Axis does.”
@@ -393,9 +398,10 @@ face our final showdown.”
 “They're coming, they're coming! They're breaking through the defense line one after another!”
 
 @40813 Quatre · カトル
+# 审校：卡特尔是温和有礼的少爷，原文“ええ”是礼貌的回应，译文“Yeah”过于口语化，应体现其礼貌的口吻。
 > 「ええ。かなりの数がここに集結して
 >  きていますね」
-“Yeah. A considerable number of them are converging here.”
+“Yes. A considerable number of them are converging here.”
 
 @40814 Shinobu · 忍
 > 「ちっ、どうやら連中の目的もこいつ
@@ -442,13 +448,15 @@ until the Crest activates!”
 make destroying the ruins your top priority. All forces, begin the attack!”
 
 @40821 Janera · ジャネラ
+# 审校：全局：grados-en
+# 检查提示：未用必用译名：ダンゲル→Dungele
 > 「ええい、ガンダルめ。何を手間どって
 >  おるのじゃ。ワルキメデス、ダンゲル
-“Gah, that Gandal. What's taking him so long? Warchimedes, Dungele,
+“Gah, that Gandal. What is taking him so long? Warchimedes, Dungele,
 ---
 >  我らも突入するぞ! なんとしても、
 >  あれを破壊するのじゃ」
-we're going in too! We will destroy it no matter what!”
+we are going in too! We will destroy it no matter what!”
 
 @40822 Warchimedes · ワルキメデス
 > 「おまかせください、ジャネラ様」
@@ -494,18 +502,20 @@ we're going in too! We will destroy it no matter what!”
 “Hm... This energy reaction is...”
 
 @40832 Bright · ブライト
+# 审校：全局：grados-en
 > 「なんだ? “グラドスの刻印”
 >  が……発動するのか……?」
-“What? The ‘Engraving of Grados’ is... activating...?”
+“What? The ‘Grados Crest’ is... activating...?”
 
 @40833 Julia · ジュリア
+# 审校：全局：grados-en
 > 「みなさん、
 >  よく、もちこたえてくれました
 “Everyone, you have held out well.
 ---
 >  これより“刻印”を発動させ
 >  ます」
-We will now activate the ‘Engraving.’”
+We will now activate the ‘Crest.’”
 
 @40834 Alberto · アルベルト
 > 「どういうことだ、孔明。
@@ -538,8 +548,9 @@ something like that might have been stopped.”
 All of this is the will of our Big Fire.”
 
 @40838 Show · ショウ
+# 审校：全局：grados-en
 > 「これが“グラドスの刻印”……」
-“So this is the ‘Engraving of Grados’...”
+“So this is the ‘Grados Crest’...”
 
 @40839 Marvel · マーベル
 > 「こんなものが4万年も眠っていた
@@ -581,15 +592,17 @@ I do not know. But that is most likely the correct way to think of it.”
 “Commander! What in the world is that...”
 
 @40846 Janera · ジャネラ
+# 审校：全局：grados-en
 > 「黙れ、ワルキメデス!」
 “Silence, Warchimedes!”
 
 @40847 Warchimedes · ワルキメデス
+# 审校：原文是畏缩的「はっ……」，译成“Yes, sir...”过于干脆，且对象是女皇，应体现被喝止后的畏缩语气。
 > 「はっ……」
-“Yes, sir...”
+“Y-yes...”
 
 @40848 Wahl · ワール
-# 审校：原文页末是“か……”，初稿用“...”可接受，但为保持省略号统一，改为“...”。
+# 审校：补全整条台词的外层引号
 > 「……何にせよ、陛下があれほど
 >  気にかけられ、また地球人どもが
 “...In any case, given how much His Majesty concerned himself with it, and how desperately the Earthlings
@@ -600,7 +613,7 @@ fought over it, it must be some device of great importance.
 ---
 >  ええい、状況を確認せねば
 >  ならんか……」
-Ugh, I suppose we must confirm the situation...”
+Ugh, I must confirm the situation...”
 
 @40849 Janera · ジャネラ
 > 「どうするおつもりか?」
@@ -616,9 +629,10 @@ Ugh, I suppose we must confirm the situation...”
 “Julia... Is that the end of it?”
 
 @40852 Julia · ジュリア
+# 审校：全局：grados-en
 > 「ええ……“グラドスの刻印”は
 >  発動しました。あの柱が宇宙へと
-“Yes... The ‘Engraving of Grados’ has activated. Once that pillar
+“Yes... The ‘Grados Crest’ has activated. Once that pillar
 ---
 >  出れば、空間をゆがめる機構が
 >  動き始めます」
@@ -667,9 +681,10 @@ for their treatment.”
 “I merely do what the people desire.”
 
 @40859 Banjo · 万丈
+# 审校：全局：grados-en
 > 「みんな、気をぬくなよ。“刻印”
 >  の発動が成功したからといって
-“Everyone, don't let your guard down. Just because the ‘Engraving’ activated successfully,
+“Everyone, don't let your guard down. Just because the ‘Crest’ activated successfully,
 ---
 >  僕たちが圧倒的多数の敵に
 >  囲まれていることは変わらないんだ」
@@ -681,9 +696,10 @@ it doesn't change the fact that we're surrounded by an overwhelming enemy force.
 “Miss Julia, is that the end of it?”
 
 @40861 Julia · ジュリア
+# 审校：全局：grados-en
 > 「はい……“グラドスの刻印”は
 >  発動しました。あの柱が宇宙へと
-“Yes... The ‘Engraving of Grados’ has activated. Once that pillar
+“Yes... The ‘Grados Crest’ has activated. Once that pillar
 ---
 >  出れば、空間をゆがめる機構が
 >  動き始めます」
@@ -766,9 +782,10 @@ begun withdrawing.”
 “Hmm... Miss Julia, do they understand what has happened?”
 
 @40873 Julia · ジュリア
+# 审校：全局：grados-en
 > 「わかりません。銀河帝国と
 >  先住グラドス人は数万年の
-“I don't know. The Galactic Empire and the native Gradosians must have had contact
+“I don't know. The Galactic Empire and the ancestral Gradosians must have had contact
 ---
 >  昔に接触したことがあるはずです。
 >  あれが何か、知っていたとしても
@@ -782,9 +799,10 @@ but what actually happened is something they will have to
 confirm for themselves.”
 
 @40874 Bright · ブライト
+# 审校：全局：grados-en
 > 「なるほど……よし、銀河帝国軍に
 >  対して“グラドスの刻印”の
-“I see... All right, let us inform the Galactic Empire forces of the activation of the ‘Engraving of Grados’
+“I see... All right, let us inform the Galactic Empire forces of the activation of the ‘Grados Crest’
 ---
 >  発動とその影響について、告知
 >  しよう。戦意をそげるかもしれん」
@@ -808,9 +826,10 @@ and its effects. It may sap their will to fight.”
 “Rose...”
 
 @40879 Rose · ロゼ
+# 审校：全局：Zuul 拼写
 > 「悪いのはズールだ、そういったのはマーズ
 >  あなたよ。私が呼びかけることで
-“Zuhl is the one to blame. You were the one who said that, Mars. If there are people who'll stop fighting
+“Zuul is the one to blame. You were the one who said that, Mars. If there are people who'll stop fighting
 ---
 >  戦いをやめてくれる人がいるのなら、
 >  私はそれでいい」
@@ -881,18 +900,20 @@ And get in touch with Treize.”
 “Banjo, what happens if it doesn't go well?”
 
 @40892 Reika · レイカ
+# 审校：原文“私たちは、負けるのよ”是レイカ对万丈的断言，译文“We lose.”语气偏弱，改为“We'll lose.”更贴合她干练泼辣的口吻。
 > 「決まってるでしょ。残った
 >  銀河帝国軍の数だけでも
-“Isn't it obvious? Even just the remaining Galactic Empire forces
+“Isn't it obvious? Even just the number of remaining Galactic Empire forces
 ---
 >  圧倒的だわ。私たちは、
 >  負けるのよ」
-are overwhelming. We lose.”
+is overwhelming. We'll lose.”
 
 @40893 Amuro · アムロ
+# 审校：阿姆罗的台词应更沉稳自然，“things going well would be for the best”略显生硬，改为更口语化的“it'd be best if things went well”。
 > 「まぁ、そうと決まったわけでもないが……
 >  しかし、うまくいくにこしたことはない」
-“Well, it's not as if that's decided yet... but things going well would be for the best.”
+“Well, it's not as if that's decided yet... but it'd be best if things went well.”
 
 @40894 Banjo · 万丈
 > 「ああ……どうなることかな……」
@@ -907,14 +928,15 @@ are overwhelming. We lose.”
 “What is it, Anna?”
 
 @40897 David · デビッド
-# 审校：“What the?!” 不自然，改为更口语的 “What the—?!”
+# 审校：精读：去破折号
 > 「なんだぁ!?」
-“What the—?!”
+“What the?!”
 
 @40898 Amuro · アムロ
+# 审校：全局：grados-en
 > 「これは……
 >  これが刻印の影響なのか……?」
-“Is this... is this the effect of the Engraving...?”
+“Is this... is this the effect of the Crest...?”
 
 @40899 Sara · 沙羅
 > 「……空が……なんて光景だい、
@@ -931,9 +953,9 @@ are overwhelming. We lose.”
 “A warping... universe, huh...”
 
 @40902 Bright · ブライト
-# 审校：同上，统一为自然的英语表达
+# 审校：精读：去破折号
 > 「なんだ!?」
-“What the—?!”
+“What the?!”
 
 @40903 Chief Chujo · 中条長官
 > 「艦長、
@@ -1003,10 +1025,11 @@ the Gandor wouldn't have escaped unharmed either.”
 “Dr. Saotome, take a look at this data.”
 
 @40916 Dr. Saotome · 早乙女博士
-# 审校：“This is!” 不完整且不自然，改为 “This is—!”；同时让后半句更口语化
+# 审校：合并：misc 与 scene 批次三方合并
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「……これは! バカな、こんなことはあり
 >  えん! 弓教授、このデータは……」
-“...This is—! Impossible, this can't be! Prof. Yumi, this data is...”
+“...This is...! Impossible, this can't be! Professor Yumi, this data is...”
 
 @40917 Prof. Yumi · 弓教授
 > 「暴走直前に、モニターした時の
@@ -1022,9 +1045,10 @@ the Gandor wouldn't have escaped unharmed either.”
 “I don't know... These abnormal readings...”
 
 @40920 Dr. Yotsuya · 四谷博士
+# 审校：全局：grados-en
 > 「もしやとは思うが……
 >  “グラドスの刻印”の発動が
-“I may be wrong, but... perhaps the activation of the ‘Crest of Grados’
+“I may be wrong, but... perhaps the activation of the ‘Grados Crest’
 ---
 >  影響しておるのではないかな」
 is having an effect.”

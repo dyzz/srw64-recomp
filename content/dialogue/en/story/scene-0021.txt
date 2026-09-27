@@ -47,6 +47,8 @@ this Byston Well place... does it really exist?”
 “When they show you a ‘fairy’ with wings flying through the sky, you kind of have to.”
 
 @20816 Show · ショウ
+# 审校：人名按词表统一
+# 检查提示：未用必用译名：ミ・フェラリオ→Mi Ferario
 > 「妖精じゃなくてミ・フェラリオさ。
 >  チャム、何やってるんだ?」
 “She's not a fairy, she's a Mi Ferario. Chum, what are you doing?”
@@ -110,9 +112,11 @@ the professor and that case.”
 “G-Ginrei, at least you should escape first.”
 
 @20829 Ginrei · 銀鈴
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「いけません、弓教授! もうすぐ
 >  合流予定地点ですから!」
-“I can't do that, Prof. Yumi! We're almost at the rendezvous point!”
+“I can't do that, Professor Yumi! We're almost at the rendezvous point!”
 
 @20830 Q Boss · Qボス
 > 「ほう? まだ逃げようというのですか。
@@ -191,9 +195,11 @@ I'm Ginrei, formerly of the International Police Organization. Pleased to meet y
 “Ginrei, and who is this?”
 
 @20845 Ginrei · 銀鈴
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「はい、カラバの弓教授です。教授
 >  の研究施設が帝国軍に
-“Yes, this is Prof. Yumi of Karaba. When the Imperial Army raided
+“Yes, this is Professor Yumi of Karaba. When the Imperial Army raided
 ---
 >  急襲されたとき、偶然お助けしま
 >  した。それで一緒に逃げてきたんです」
@@ -379,18 +385,20 @@ the enemy is approaching.”
 “Fine, let him go! Everyone else, hurry up and launch!”
 
 @20875 Hell Marshal · 地獄大元帥
+# 审校：地狱大元帅的 voice 要求 archaic 腔调，将 isn't it 改为 is it not 以贴合老派反派口吻。
 > 「くくくく、見つけたぞ。
 >  どうだ、ワシのいったとおりであろうが
-“Kukuku, found you. See? Just as I said, isn't it?
+“Kukuku, found you. See? Just as I said, is it not?
 ---
 >  さぁゆけ、お前たち。
 >  ここで奴らを倒すのじゃ!」
 Now go, all of you. Destroy them here!”
 
 @20876 Gosterro · ゴステロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「くそぉ、ル・カイン閣下の命令
 >  だからって、えばりちらしやがってよぉ……」
-“Damn it... Just 'cause it's Lord Le Cain's orders, he thinks he can boss us around...”
+“Damn it... Just ’cause it's His Excellency Le Cain's orders, he thinks he can boss us around...”
 
 @20877 Gosterro · ゴステロ
 > 「あれは……エイジィ、エイジィ!
@@ -478,13 +486,14 @@ you're safe, Professor.”
 It seems we share a bond that runs deep.”
 
 @20893 Yazan · ヤザン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「なにぶつくさ、いってやがる。
 >  ふん、足止めなどといわず、連中を
-“What're you muttering about? Hmph, forget holding them back—if we just
+“What're you muttering about? Hmph, forget holding them back... if we just
 ---
 >  撃破しちまえばそれで終わりってもん
 >  だ。それでもいいんだろうなぁ?」
-wipe 'em out, that's the end of it. You're fine with that too, right?”
+wipe ’em out, that's the end of it. You're fine with that too, right?”
 
 @20894 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「できるものなら、それもよかろう」
@@ -512,9 +521,10 @@ wipe 'em out, that's the end of it. You're fine with that too, right?”
 “I'll tell you someday.”
 
 @20900 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「あの少年もいるのか? だがなぜだ、
 >  なぜ彼はここまで戦ってこれる!?」
-“Is that boy here too? But why—why can he keep fighting this far?!”
+“Is that boy here too? But why... why can he keep fighting this far?!”
 
 @20901 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「ふむ……あの少年は出ていない
@@ -527,13 +537,14 @@ wipe 'em out, that's the end of it. You're fine with that too, right?”
 “It's those guys again, huh. This is gonna be a bit of a pain...”
 
 @20903 Yazan · ヤザン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「なにぶつくさ、いってやがる。
 >  ふん、足止めなどといわず、連中を
-“What're you muttering about? Hmph, forget holding them back—if we just
+“What're you muttering about? Hmph, forget holding them back... if we just
 ---
 >  撃破しちまえばそれで終わりってもん
 >  だ。それでもいいんだろうなぁ?」
-wipe 'em out, that's the end of it. You're fine with that too, right?”
+wipe ’em out, that's the end of it. You're fine with that too, right?”
 
 @20904 Rish · リッシュ（按段落 3DD2）
 > 「ああ、好きにやっちゃってくれ。
@@ -632,12 +643,13 @@ There's no way we can hold out!”
 I will defeat you!”
 
 @20920 对手
+# 审校：合并：misc 与 scene 批次三方合并
 > 「お前が“一緒に戦って”
 >  というんなら、俺はいつでも
-“If you're saying ‘fight alongside me,' then I'll be your ally
+“If you're saying ‘fight alongside me,’ then I'll be your ally
 ---
 >  お前の味方になるぜ!?」
-anytime!?”
+anytime?!”
 
 @20921 主角
 > 「黙れ!」
@@ -666,9 +678,10 @@ anytime!?”
 “Is it that bad?”
 
 @20927 Quattro · クワトロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「我々もカラバも、45の拠点の
 >  ほとんどが、つぶされた
-“Both our forces and Karaba's—nearly all 45 bases have been crushed.
+“Both our forces and Karaba's... nearly all 45 bases have been crushed.
 ---
 >  他の組織についても、
 >  ほぼ壊滅したと考えて間違いない
@@ -687,12 +700,13 @@ It seems we underestimated the Empire.”
 “No way! Then what are we supposed to do now?!”
 
 @20930 Shinobu · 忍
+# 审校：忍的口吻应为粗野俚语，将 nothing 改为 nothin'、want to 改为 wanna、Isn't 改为 Ain't 以贴合其 voice。
 > 「どうしようもねぇってことさ。帝国に
 >  降伏するのがイヤなら俺たちだけでも
-“It means there's nothing we can do. If you don't want to surrender to the Empire, then we'll just have to fight on our own,
+“It means there's nothin' we can do. If you don't wanna surrender to the Empire, then we'll just have to fight on our own,
 ---
 >  戦うしかねぇ。そうだろう大尉」
-even if it's only us. Isn't that right, Captain?”
+even if it's only us. Ain't that right, Captain?”
 
 @20931 Quattro · クワトロ
 > 「そうだ。帝国の掃討作戦を
@@ -739,9 +753,10 @@ but panicking won't solve anything. Right? Domon?”
 “Never mind that. More importantly, Astonaige, how's the Albion?”
 
 @20939 Astonaige · アストナージ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「それなんですがね、エンジンの損傷が
 >  激しくて、とてもじゃありませんが
-“About that, sir—the engine damage is so severe that, frankly,
+“About that... the engine damage is so severe that, frankly,
 ---
 >  応急修理じゃ間にあわんのですよ」
 emergency repairs just won't cut it.”
@@ -857,6 +872,7 @@ who came to Byston Well much later than we did.”
 “That's right. Combat has been confirmed in some areas.”
 
 @20959 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ショウ! きっとマーベルやシーラ様
 >  たちよ!」
 “Show! It must be Marvel and Lady Ciela and the others!”
@@ -884,6 +900,7 @@ who came to Byston Well much later than we did.”
 “Show, we've gotta go save Marvel and the others!!”
 
 @20965 Show · ショウ
+# 审校：人名按词表统一
 > 「だめだよチャム。俺だって行きたいけど
 >  どこにいるかもわからないんじゃ
 “We can't, Chum. I want to go too, but if we don't even know where they are,

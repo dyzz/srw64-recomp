@@ -1,9 +1,11 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @40412 Bright · ブライト
+# 审校：“Devil Gundam” 是专名，应保留定冠词 the，与后文 L2 的用法一致。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうか……ついにデビルガンダムとの
 >  決着がついたか」
-“I see... so the matter with Dark Gundam is finally settled.”
+“I see... so the matter with the Dark Gundam is finally settled.”
 
 @40413 Duo · デュオ
 > 「ああ、あそこまでやっときゃ、もう
@@ -11,13 +13,15 @@
 “Yeah. After all that, it won't be coming back.”
 
 @40414 George · ジョルジュ
+# 审校：“Devil Gundam” 是专名，应保留定冠词 the，与 L0 的用法一致。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうですね。これまではロームフェラを
 >  隠れみのにした、ウォンと
 “Indeed. Until now, Wong and
 ---
 >  東方不敗とがデビルガンダムを
 >  隠し、復活させていました
-Master Asia used Romefeller as a shield, hiding Dark Gundam and bringing it back.
+Master Asia used Romefeller as a shield, hiding the Dark Gundam and bringing it back.
 ---
 >  もう、その2人もいません」
 Now those two are gone as well.”
@@ -31,9 +35,11 @@ Now those two are gone as well.”
 “Physically, there's no problem.”
 
 @40417 Quatre · カトル
+# 审校：“Devil Gundam” 是专名，应保留定冠词 the，与 L0、L2 的用法一致。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ええ、あの人の心の問題です。あの
 >  人はこれまでデビルガンダムを倒すと
-“Yes, it's a matter of his heart. Until now, defeating Dark Gundam
+“Yes, it's a matter of his heart. Until now, defeating the Dark Gundam
 ---
 >  いうことを最大の目的としてきまし
 >  た。それがなくなったのですから」
@@ -94,9 +100,10 @@ it seems Chief Chujo and the others escaped safely.”
 “So that means we'll chase after them and head west too.”
 
 @40428 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ってことは、俺たちも連中を
 >  追っかけて西へ移動か」
-“So we're gonna chase after 'em and head west too, huh.”
+“So we're gonna chase after ’em and head west too, huh.”
 
 @40429 Manami · マナミ（按段落 3DD4）
 > 「では、あたしたちも西へ向かいつつ、
@@ -142,13 +149,13 @@ but they took care of it safely.”
 “Yes. But it's all right now.”
 
 @40437 Koji · 甲児
-# 审校：原文“超獣”是带引号的专名，初稿用了直引号，改为弯引号‘Beastmen’。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「ああ。奴らが人間狩りをやらせてた
 >  “超獣”っていう化け物は
-“Yeah. Those monsters called ‘Beastmen’ that they had hunting humans—
+“Yeah. Those monsters called ‘Super Beasts’ that they had hunting humans,
 ---
 >  オレたちがやっつけちまったからな」
-we took care of 'em ourselves.”
+we took care of ’em ourselves.”
 
 @40438 Banjo · 万丈
 > 「みんな、ご苦労さん。そういえば、
@@ -156,9 +163,10 @@ we took care of 'em ourselves.”
 “Good work, everyone. By the way, I heard Hyoma got hurt?”
 
 @40439 Sayaka · さやか
+# 审校：精读：ハサン先生
 > 「ええ、今、ちずると一緒に
 >  ハサン先生のところへ行っています」
-“Yes, he's at Master Hasan's place right now with Chizuru.”
+“Yes, he's at Dr. Hasan's place right now with Chizuru.”
 
 @40440 Banjo · 万丈
 > 「ひどいのか?」
@@ -170,8 +178,9 @@ we took care of 'em ourselves.”
 “It's not that bad, so I think he'll be fine, Banjo.”
 
 @40442 Garrison · ギャリソン
+# 审校：管家口吻应更正式，不用缩写。
 > 「それは、ようございましたな」
-“That's good to hear.”
+“That is good to hear.”
 
 @40443 Daisuke · 大介
 > 「それで、こちらの方は?」
@@ -191,9 +200,11 @@ it seems Chief Chujo and the others escaped safely.”
 “...Um, and my father...?”
 
 @40446 Alan · アラン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授? 確か、一緒にいる
 >  らしいと聞いたよ。安心したまえ」
-“Prof. Yumi? I heard he's with them, I believe. Rest easy.”
+“Professor Yumi? I heard he's with them, I believe. Rest easy.”
 
 @40447 Koji · 甲児
 > 「よかったじゃないか、さやかさん」
@@ -478,9 +489,10 @@ If we think about what's ahead, the more materials we have, the better.”
 “...I see. So that's been taken care of too.”
 
 @40495 Koji · 甲児
+# 审校：精读：超獣 统一；去破折号
 > 「ああ。奴らが人間狩りをやらせてた
 >  “超獣”っていう化け物は
-“Yeah. Those monsters they called ‘Beasts’ that they used for hunting humans—
+“Yeah. Those monsters they called ‘Super Beasts’ that they used for hunting humans,
 ---
 >  オレたちがやっつけちまったからな。
 >  もう大丈夫だろう」
@@ -527,9 +539,11 @@ Chief Chujo and the others did escape safely after all.”
 “...Um, and my father...?”
 
 @40504 Alan · アラン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授? 確か、一緒にいる
 >  らしいと聞いたよ。安心したまえ」
-“Prof. Yumi? I heard he's apparently with them. Rest easy.”
+“Professor Yumi? I heard he's apparently with them. Rest easy.”
 
 @40505 Koji · 甲児
 > 「よかったじゃないか、さやかさん」
@@ -712,9 +726,10 @@ in two hours.”
 “It can't be helped.”
 
 @40534 Chief Chujo · 中条長官
+# 审校：精读：去破折号
 > 「むっ、敵に発見されてしまったか!?
 >  しかたがない、みなさんは離れてください
-“Hm, have we been spotted by the enemy?! It can't be helped—everyone, stand back.
+“Hm, have we been spotted by the enemy?! It can't be helped. Everyone, stand back.
 ---
 >  ここは私が……」
 I'll handle this...”
@@ -834,13 +849,13 @@ Big Bang Punch. That's why they say he can only use it once.”
 “But how strong is it, really?”
 
 @40553 Ginrei · 銀鈴
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“It's only a rumor, but they say it's powerful enough to blow away the entire
-# 草稿第 2 页：【主角机体名】 fleet in one shot.”
+# 审校：补译：原稿占位符错页
 > 「あくまでも噂だけど{HeroMech}
 >  の艦隊を、まるごと吹き飛ばせる
+“It's only a rumor, but they say it's powerful enough to blow away the {HeroMech}'s
 ---
 >  くらいの威力はあるそうよ」
+entire fleet in one go.”
 
 @40554 Marvel · マーベル
 > 「……冗談でしょう?」
@@ -900,9 +915,10 @@ before the situation can deteriorate any further. But even he admits
 it's hard to say they have a real chance of winning.”
 
 @40562 Banjo · 万丈
+# 审校：精读：去破折号
 > 「そう、なにしろ地上の敵さえ掃討
 >  できる可能性は低い。しかも
-“Right—after all, there's little chance of even sweeping away the enemies on
+“Right. After all, there's little chance of even sweeping away the enemies on
 ---
 >  奴らの本陣は宇宙だからね……」
 the ground. And on top of that, their main force is in space...”
@@ -1001,13 +1017,14 @@ The Gradosians and the people of Earth were born from the same root.”
 “W-what did you say?”
 
 @40578 Alan · アラン
+# 审校：精读：去破折号
 > 「ばかな! あのグレスコやル・カインが、
 >  我々地球人と同じだったと!?
 “Impossible! Gresco and Le Cain are the same as us Earthlings?!
 ---
 >  エイジ、君は、君はそれを知っていた
 >  のか!?」
-Eiji, did you—did you know this?!”
+Eiji, did you, did you know this?!”
 
 @40579 Eiji · エイジ
 > 「ええ……知っていました。
@@ -1101,6 +1118,7 @@ inherit their civilization.”
 different from the ancestral Gradosians.”
 
 @40588 Julia · ジュリア
+# 审校：精读：空尾页；去破折号
 > 「そして、そのとき先住グラドス人
 >  たちは、地球にひとつの機構を
 “And at that time, the ancestral Gradosians installed a certain mechanism on Earth.
@@ -1111,11 +1129,11 @@ Taking into account that countless interstellar civilizations already existed
 ---
 >  存在していることを考慮し、
 >  自分たちの後継者となった種の
-in the galaxy, they sought to protect Earth humanity—the brother of the species
+in the galaxy, they sought to protect Earth humanity, the brother of the species
 ---
 >  兄弟である地球人類を、
 >  やがてくる不幸な出会いから
-that had become their successors—from the unhappy encounters
+that had become their successors, from the unhappy encounters
 ---
 >  守ろうとしたのです」
 that would eventually come.”
@@ -1129,9 +1147,10 @@ that would eventually come.”
 “Unhappy encounters... What do you mean?”
 
 @40591 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去破折号
 > 「聖女さん、頼むぜ、もっと
 >  わかりやすくいってくれないか」
-“Hey, Saint lady, could you say it in a way that's easier to follow?”
+“Miss Saint, come on. Could you put it a little simpler for us?”
 
 @40592 Koji · 甲児
 > 「そ、そうそう」
@@ -1264,9 +1283,10 @@ will vanish into thin air. Isn't that right?”
 maintain their morale without any great cause to rely on?”
 
 @40609 Quattro · クワトロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「……無理だな。万丈、確かに
 >  帝国軍は残留するが、もしも
-“...Impossible. Banjo, it's true the imperial forces will remain, but if
+“...Impossible. Banjo, it's true the Imperial forces will remain, but if
 ---
 >  刻印が発動できれば勝機はある
 >  軍隊とはそういうものだ」
@@ -1474,6 +1494,7 @@ concentrate in that region.”
 “Eek, don't scare me like that, Lady Elle.”
 
 @40638 Marvel · マーベル
+# 审校：人名按词表统一
 > 「大丈夫よ、チャム。私たちは
 >  勝つわ」
 “It's all right, Chum. We're going to win.”
@@ -1487,6 +1508,7 @@ concentrate in that region.”
 “What should I do?”
 
 @40641 Roux · ルー
+# 审校：人名按词表统一
 > 「チャムはいつも通りしてればいいのよ。
 >  ほら、ごはんの支度の時間でしょ」
 “Just do what you always do, Chum. Come on, isn't it time to get the meals ready?”
@@ -1525,10 +1547,12 @@ must fulfill it.”
 as well.”
 
 @40647 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ様ぁ、あたしたち勝てるの?」
 “Lady Ciela, can we win?”
 
 @40648 Ciela · シーラ
+# 审校：人名按词表统一
 > 「チャム、あなたもここまで聖戦士と
 >  ともに戦ってきたのでしょう。もっと
 “Chum, you've fought alongside the Holy Warriors all this way, haven't you? Hold your
@@ -1541,6 +1565,7 @@ awareness higher. What matters in the end is a heart with strong
 resolve.”
 
 @40649 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ・ラパーナ……」
 “Ciela Lapana...”
 
@@ -1589,9 +1614,10 @@ the resolve to throw your life away, but the resolve to do what must be done,
 no matter what happens. Never forget that.”
 
 @40656 Koji · 甲児
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「しかし、シーラさんもすごいよな。よく
 >  あれだけのことがいえるもんだぜ」
-“But you're amazing too, Ciela. To be able to say all that so easily.”
+“But Ciela's amazing too. To be able to say all that so easily.”
 
 @40657 Simone · シモーヌ
 > 「ノーブレス・オブリージってやつね。
@@ -1666,9 +1692,10 @@ to the nobles who once staked their lives on them.”
 “Don't be silly, basically all of us are.”
 
 @40668 Marvel · マーベル
+# 审校：原文“王”指希拉女王，译文“kings”与女王身份不符，改为“rulers”更贴切。
 > 「でも、あの方みたいな王は
 >  バイストンウェルでも、そうはいないわ」
-“But even in Byston Well, there aren't many kings like her.”
+“But even in Byston Well, there aren't many rulers like her.”
 
 @40669 Ryo · 亮
 > 「まぁ、だからこそドレイクに対抗する
@@ -1753,14 +1780,16 @@ They're not meant to be used recklessly like you do. That's just
 wasting them. Do you understand?!”
 
 @40683 Hyoma · 豹馬
+# 审校：原文「わかってますよーだ」带拖长音和敷衍语气，译文“I get it”未体现，改为“I get it already”并补上“the”使语气更贴合。
 > 「はいはい、わかってますよーだ。
 >  カミナリが落ちる前に退散しましょ」
-“Yeah, yeah, I get it. Let's clear out before lightning strikes.”
+“Yeah, yeah, I get it already. Let's clear out before the lightning strikes.”
 
 @40684 Dr. Yotsuya · 四谷博士
+# 审校：原文「ちょっと待たんか!」是老人语气，译文“Wait a moment”偏平淡，改为“Hold on a moment”更贴合老科学家的口吻。
 > 「こら、豹馬! どこへ行く!?
 >  ちょっと待たんか!」
-“Hey, Hyoma! Where are you going?! Wait a moment!”
+“Hey, Hyoma! Where are you going?! Hold on a moment!”
 
 @40685 Emperor Zuul · ズール皇帝
 > 「ワール、例の件はどうだ」
@@ -1829,9 +1858,9 @@ challenge us to one final decisive battle?”
 absent. Overlay the displays.”
 
 @40695 Wahl · ワール
-# 审校：原文“これは!”是发现异常时的惊呼，初稿“This is!”不完整且不像英语惊呼，改为“This is—!”
+# 审校：精读：去破折号
 > 「はい陛下…………これは!」
-“Yes, Your Majesty... This is—!”
+“Yes, Your Majesty... This is...!”
 
 @40696 Emperor Zuul · ズール皇帝
 > 「どうだ、ワール」
@@ -1847,17 +1876,18 @@ absent. Overlay the displays.”
 I suspect it may be coincidence...”
 
 @40698 Emperor Zuul · ズール皇帝
+# 审校：精读：去破折号
 > 「黙れ! ジャネラよ、
 >  その大陸へ戦力を集中させい
 “Silence! Janera, concentrate your forces on that continent.
 ---
 >  ワール、お前もガンダルとともに地上
 >  へ降りるのだ。4万年の昔のこと
-Wahl, you too shall descend to the surface with the Gandal. That thing dates back 40,000 years—
+Wahl, you too shall descend to the surface with the Gandal. That thing dates back 40,000 years.
 ---
 >  あれが使われた場合、どれほどの
 >  影響があるのかわからぬ。そこにあれば
-if it is used, there is no telling what effect it might have. If it is there,
+If it is used, there is no telling what effect it might have. If it is there,
 ---
 >  破壊せよ。そうでなくとも、ここで
 >  地球人どもをせん滅すればよい」
@@ -1952,10 +1982,12 @@ what needs to be done.”
 “No lie about it, Mi Ferario...”
 
 @40715 Chum · チャム
+# 审校：人名按词表统一
 > 「チャム・ファウよ!」
 “It's Chum Huau!”
 
 @40716 Tod · トッド
+# 审校：人名按词表统一
 > 「チャム。いいんだろう、ショウ」
 “Chum. It's fine, isn't it, Show?”
 
@@ -1979,9 +2011,10 @@ what needs to be done.”
 “Is this all right, Tod?”
 
 @40721 Tod · トッド
+# 审校：精读：去破折号
 > 「ああ、まずはとにかく、あの異星人
 >  どもを倒す」
-“Yeah. First things first—we take down those aliens.”
+“Yeah. First things first. We take down those aliens.”
 
 @40722 Chum · チャム
 > 「ミ・フェラリオがいるの!?」
@@ -2015,6 +2048,7 @@ I'm counting on you...”
 “Show... don't be discouraged...”
 
 @40728 Show · ショウ
+# 审校：人名按词表统一
 > 「ああ……大丈夫だよ、チャム。
 >  大丈夫だ……」
 “Yeah... I'm fine, Chum. I'm fine...”
@@ -2067,6 +2101,7 @@ At this rate, even my mom's in danger.”
 “Much obliged.”
 
 @40737 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうか……シーラ女王はどうですか?」
 “I see... What about Queen Ciela?”
 
@@ -2122,19 +2157,22 @@ You're still all right with that?”
 “Don't go dragging us down, Tod.”
 
 @40745 Tod · トッド
+# 审校：トッド的粗野口吻下“せいぜい努力させてもらうぜ”应带点挑衅意味，现译过于平淡客气。
 > 「ああ、せいぜい努力させてもらうぜ」
-“Yeah, I'll do my best, at least.”
+“Yeah, I'll do my damnedest.”
 
 @40746 Chum · チャム
+# 审校：チャム话多爱吐槽，原译“I won't forgive you”语气过重且不像她的口吻。
 > 「トッド、しっかり活躍しないと
 >  承知しないんだから!」
-“Tod, if you don't put on a good show, I won't forgive you!”
+“Tod, you'd better put on a good show, or I won't let you hear the end of it!”
 
 @40747 Tod · トッド
 > 「フェラリオに、いわれるまでもない」
 “I don't need a Ferario telling me that.”
 
 @40748 Chum · チャム
+# 审校：人名按词表统一
 > 「チャム・ファウよ!」
 “It's Chum Huau!”
 
@@ -2152,6 +2190,7 @@ You're still all right with that?”
 hung on to life. But by the time I came to, the Wryneck was gone.”
 
 @40751 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさまのお力ね。
 >  私たちのマシンも、本当はすべて
 “That's Queen Ciela's power. Our machines, too, were really all

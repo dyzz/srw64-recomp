@@ -142,8 +142,9 @@ that the Earth Sphere... is in their hands...”
 “Pagan, what is it?!”
 
 @36713 Pagan · パーガン
+# 审校：帕根是管家，对莉莉娜回话应保持正式敬语口吻，改为更符合老管家语气的表达。
 > 「残念ですが、手遅れでございました」
-“I regret to say, we were too late.”
+“I regret to say, it was too late.”
 
 @36714 Relena · リリーナ
 > 「そんな……なんということを……」
@@ -194,9 +195,10 @@ should have been more careful.”
 “So the Romefeller faction has launched an all-out offensive...”
 
 @36722 Pagan · パーガン
+# 审校：帕根是老管家，口吻应更正式，can't 改为 cannot。
 > 「異星人の艦隊がきていることを
 >  考えれば、やむをえぬことでしょう
-“Considering an alien fleet has come, it can't be helped.
+“Considering an alien fleet has come, it cannot be helped.
 ---
 >  各地でトレーズ派との交戦が
 >  激化しております」
@@ -279,13 +281,14 @@ Even if the enemy is another Earthling.”
 “...”
 
 @36736 Heero · ヒイロ
+# 审校：精读：去破折号
 > 「あの男の言葉は関係ない。
 >  いずれにせよ俺たちは戦いの中でしか
 “That man's words don't matter. Either way, we're only allowed to live
 ---
 >  生きることを許されない。
 >  戦いの中で生き残ること、それが
-through battle. Surviving in battle—that is
+through battle. Surviving in battle, that is
 ---
 >  俺たちの、生きるということなのだろう」
 what living means for us, I suppose.”
@@ -333,9 +336,10 @@ In a situation like this, why won't they obey the Foundation?”
 that they won't stop this foolish fighting.”
 
 @36744 Dermail · デルマイユ
+# 审校：迪鲁马尤是老贵族，口吻应更正式，can't 改为 cannot。
 > 「……やむをえんか。許せよ、トレーズ。
 >  地球のためだ。それで、どうする
-“...Then it can't be helped. Forgive me, Treize. It's for Earth. So, what will you do?
+“...Then it cannot be helped. Forgive me, Treize. It's for Earth. So, what will you do?
 ---
 >  レディ・アンのおかげで、
 >  すでにトレーズ派の連中が
@@ -374,9 +378,9 @@ begun to move. It won't go as it did with Blex.”
 to face the aliens. Surely you understand that much.”
 
 @36750 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：特佐是特殊军衔，按英文军衔习惯译为 Colonel，避免生造 Special Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし特佐……」
-“But, Colonel...”
+“But, Special Colonel...”
 
 @36751 Bask · バスク
 > 「黙れ! 貴様は黙って
@@ -474,17 +478,19 @@ depending on your actions, an accident could befall her.”
 to face the aliens. Surely you understand that much.”
 
 @36767 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし特佐……」
-“But Lieutenant Colonel...”
+“But Special Colonel...”
 
 @36768 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「黙れ! 貴様は黙って
 >  命令にしたがっておればよいのだ!
 “Silence! You need only shut up and follow orders!
 ---
 >  {PartnerSurname}特尉、
 >  月での行動の件で、貴様を
-Ensign {PartnerSurname}, I could have you brought before an
+Special Lieutenant {PartnerSurname}, I could have you brought before an
 ---
 >  査問会にかけてもよいのだぞ」
 inquiry board over your actions on the moon, you know.”
@@ -562,9 +568,10 @@ depending on your actions, an accident could befall her.”
 “The order to eliminate Treize has been issued. You will take part in the operation as well.”
 
 @36783 Aisha · アイシャ（按段落 3DD4）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なんですって!? バスク特佐、
 >  それはいったいどういうことなのですか!?」
-“What?! Lieutenant Colonel Bask, what on earth does this mean?!”
+“What?! Special Colonel Bask, what on earth does this mean?!”
 
 @36784 Bask · バスク
 # 审校：保持原文分页，未改动内容。
@@ -581,21 +588,21 @@ For that, it is inconvenient to have Treize alive.”
 “That can't be...”
 
 @36786 Bask · バスク
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroSurname}']，实际为 []）
-# 草稿第 1 页：“You were accepted into OZ with the special rank of First Lieutenant,
-# 草稿第 2 页：on the pretext of striking down the 【主角姓氏】 girl who betrayed the Foundation.
-# 草稿第 3 页：Having failed to accomplish your objective, you must show that you're useful,
-# 草稿第 4 页：or you'll have no standing with the Foundation, will you?”
+# 审校：补译：原稿占位符丢失
 > 「貴公は、財団を裏切った
 >  {HeroSurname}の小娘を叩くという
+“You were taken in on the pretext of striking down the {HeroSurname} girl who betrayed the Foundation,
 ---
 >  名目で、特例としてOZの
 >  1級特尉待遇で迎えておる
+as a special case, with the standing of a Special Lieutenant First Class of OZ.
 ---
 >  目的を果たせていない以上、
 >  役にたつというところをみせねば
+Having yet to achieve that end, unless you show yourself useful,
 ---
 >  財団への立場がないのではないかな」
+you will have no standing left with the Foundation, will you?”
 
 @36787 Aisha · アイシャ（按段落 3DD4）
 > 「…………」
@@ -764,17 +771,19 @@ Then that machine must be Grendizer...”
 “So that's how it was...”
 
 @36817 Daisuke · 大介
+# 审校：精读：去破折号、分页衔接
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「最初は僕も、戦うつもりはなかった
 >  だからムゲゾルバドス帝国が
 “At first, I had no intention of fighting. So even when the Muge Zorbados Empire
 ---
 >  地球に侵攻してきた時も、
 >  戦いはしなかったのだ。だが、奴らが
-invaded Earth, I did not fight. But then they came—
+invaded Earth, I did not fight. But then they came.
 ---
 >  銀河帝国が来てしまった。
 >  フリード星を滅ぼした、奴らが
-the Galactic Empire. The ones who destroyed Planet Fleed.
+The Galactic Empire. The ones who destroyed Planet Fleed.
 ---
 >  ギシン星人がいるなら、わかって
 >  いるはずだ。奴らは支配などしない
@@ -848,12 +857,13 @@ There's no point in fussing over it now.”
 “There's more?!”
 
 @36830 Garrison · ギャリソン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「OZに、トレーズ特佐抹殺の
 >  指令が
 “I have confirmed that OZ has issued
 ---
 >  出たことを確認いたしました」
-an order to eliminate Colonel Treize.”
+an order to eliminate Special Colonel Treize.”
 
 @36831 Alan · アラン
 > 「奴らのことだ、トレーズがいなければ、
@@ -887,17 +897,19 @@ as a threat aimed at that Sanc Kingdom of theirs.”
 “They just finished a little while ago. We haven't run tests yet, though...”
 
 @36836 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「テストは飛びながらでいい。
 >  すぐにでも出発しよう
 “We can test her in flight. Let's depart at once.
 ---
 >  いま特佐を死なせるわけにはいかん」
-We can't let the Colonel die now.”
+We can't let the Special Colonel die now.”
 
 @36837 Bask · バスク
+# 审校：巴斯克是暴戾专横的上校，对部下用命令口吻，“片づけぃ”应译得更强硬，且“finish this”指代不明，改为“finish them off”更符合其语气。
 > 「ええい、何を手間どっておるか!
 >  さっさと片づけぃ!」
-“Gah, what's taking so long?! Hurry up and finish this!”
+“Gah, what is taking so long?! Hurry up and finish them off!”
 
 @36838 Alan · アラン
 > 「どうやら、間一髪といったところだな」
@@ -914,9 +926,10 @@ We can't let the Colonel die now.”
 “All right, all pilots, launch immediately!”
 
 @36841 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いいか、トレーズ特佐がいるのは、
 >  この屋敷だ」
-“Listen up. Colonel Treize is in this mansion.”
+“Listen up. Special Colonel Treize is in this mansion.”
 
 @36842 Bright · ブライト
 > 「ロームフェラ派を
@@ -929,18 +942,20 @@ We can't let the Colonel die now.”
 “That's the {HeroMech}! Everyone, the {HeroMech} is here!!”
 
 @36844 Specials · スペシャルズ
+# 审校：精读：トレーズさま
 > 「ああ、これで安心して戦える!
 >  みなさん、トレーズさまを頼みます!」
-“Ah, now we can fight with peace of mind! Everyone, please protect Lord Treize!”
+“Ah, now we can fight with peace of mind! Everyone, please protect His Excellency Treize!”
 
 @36845 Bask · バスク
+# 审校：精读：去破折号
 > 「なに!? {HeroMech}か!
 >  おのれ
-“What?! The {HeroMech}?! Curse them—
+“What?! The {HeroMech}?! Curse them.
 ---
 >  奴らをトレーズのところへ
 >  行かせるな!!」
-don't let them reach Treize!!”
+Don't let them reach Treize!!”
 
 @36846 Heero · ヒイロ
 > 「ん……? 連中か……」
@@ -956,6 +971,7 @@ don't let them reach Treize!!”
 “Heero?! Is that you, Heero?!”
 
 @36849 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なんだと!? あのエアリーズに
 >  ヒイロが乗っているというのか?
 “What?! You're saying Heero is piloting that Aries?
@@ -966,7 +982,7 @@ Heero, can you hear me? This is Bright. We came here
 ---
 >  ここに来たのだ。トレーズ派と
 >  一緒ということは、君もそうなのか」
-to meet Colonel Treize. If you're with the Treize faction, does that mean you're with them too?”
+to meet Special Colonel Treize. If you're with the Treize faction, does that mean you're with them too?”
 
 @36850 Heero · ヒイロ
 > 「トレーズなど、どうでもいい。俺は
@@ -1020,18 +1036,20 @@ why do you think OZ could ever be united?!”
 “What did you say?”
 
 @36859 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いまや君たちが
 >  トレーズ特佐の側にたち……
-“Now you stand at Colonel Treize's side...
+“Now you stand at Special Colonel Treize's side...
 ---
 >  私はこのような役目を
 >  せねばならんとは」
 and I must play a role like this.”
 
 @36860 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「なら退いてくれ。いや、俺たちと
 >  来てくれたっていい。前にもそういった」
-“Then stand down. No—you could even come with us. I told you that before.”
+“Then stand down. No, you could even come with us. I told you that before.”
 
 @36861 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……心引かれる申し出だな。
@@ -1072,9 +1090,10 @@ for my own foolishness. This time, I cannot retreat.”
 “Him again...”
 
 @36868 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：原文「奇妙な縁だったな」是过去式，译文用“was”即可，但“this was”略显生硬，改为“this has been”更符合英语习惯。
 > 「……奇妙な縁だったな、少年。
 >  あの日以来、幾度まみえたことか」
-“...What a strange bond this was, boy. How many times have we faced each other since that day?”
+“...What a strange bond this has been, boy. How many times have we faced each other since that day?”
 
 @36869 Ark · アーク（按段落 3DD1）
 > 「なんであんたが、
@@ -1102,13 +1121,14 @@ standing at your side, I wonder.”
 If that's what you think, then even now...”
 
 @36872 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「いや……もう遅い。
 >  これで終わりにするぞ、少年
-“No... it's too late. This ends here, boy.
+“No... it is too late. This ends here, boy.
 ---
 >  いまの私がするべきことは、
 >  トレーズ特佐を排除し
-What I must do now is eliminate Colonel Treize,
+What I must do now is eliminate Special Colonel Treize,
 ---
 >  OZを1つにして異星人に
 >  対峙することだ。覚悟を決めろ!」
@@ -1124,9 +1144,10 @@ unite OZ, and stand against the aliens. Prepare yourself!”
 “It's been since the operation on the moon, {HeroMech}.”
 
 @36875 Ark · アーク（按段落 3DD1）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あいつ……{PartnerSurname}特尉か。
 >  なんであんたが
-“That guy... Lieutenant {PartnerSurname}, huh. Why are you with
+“That guy... Special Lieutenant {PartnerSurname}, huh. Why are you with
 ---
 >  トレーズをやろうって部隊にいる!?
 >  あの時だって、あんたはロームフェラの
@@ -1171,13 +1192,14 @@ Fate is a cruel thing.”
 “What do you mean, {PartnerFull}?!”
 
 @36882 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：原文「つきあってもらう」是“让你陪我”的意思，译文“You'll accompany me”已正确，但“You'll”过于口语化，改为“You will”以符合エルリッヒ的正式口吻。
 > 「覚悟を決めねばならんということだ。
 >  これで終わりにするぞ、少年
 “It means I must prepare myself. This ends here, boy.
 ---
 >  私の最後の戦いに、
 >  つきあってもらう!」
-You'll accompany me in my final battle!”
+You will accompany me in my final battle!”
 
 @36883 Ark · アーク（按段落 3DD1）
 > 「{PartnerFull}!?」
@@ -1227,13 +1249,14 @@ I... must fight, for Alindine's sake.”
 “What... are you saying?”
 
 @36892 对手
+# 审校：原文「私が君を落とすぞ」语气正式，译文“I'll shoot you down”过于口语化，改为“I will shoot you down”以符合エルリッヒ的正式口吻。
 > 「私の愚かさの代償は、
 >  私の命であがなうのが正しい道だ
 “The right path is to atone for my foolishness with my own life.
 ---
 >  やれ、少年! でなければ……
 >  私が君を落とすぞ!」
-Do it, boy! Otherwise... I'll shoot you down!”
+Do it, boy! Otherwise... I will shoot you down!”
 
 @36893 主角
 > 「{PartnerFull}……」
@@ -1252,9 +1275,10 @@ Do it, boy! Otherwise... I'll shoot you down!”
 “...”
 
 @36897 对手
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ぐぅっ……バカな!? 少年、
 >  なぜコックピットを狙わない……」
-“Gah... Impossible!? Boy, why didn't you aim for the cockpit...”
+“Gah... Impossible?! Boy, why didn't you aim for the cockpit...”
 
 @36898 主角
 > 「できるわけないだろッ!? なにがあったか
@@ -1274,9 +1298,10 @@ without even managing that!! Spouting off logic and
 trying to die to make it easy on yourself... that's just running away!”
 
 @36899 对手
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「少年……私は……くっ、いかん!?
 >  機体がもたんのか……」
-“Boy... I... ngh, no!? My machine can't hold out...”
+“Boy... I... ngh, no?! My machine can't hold out...”
 
 @36900 Bask · バスク
 > 「なんだと!? なんとぶざまな。
@@ -1304,13 +1329,14 @@ Forgive me, Alindine...”
 “{HeroName}...”
 
 @36905 主角
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{PartnerNick}、どういうこと!?
 >  彼らはトレーズ特佐を
 “{PartnerNick}, what is the meaning of this?! They're trying to
 ---
 >  殺そうとしているのよ。
 >  なぜあなたがその部隊にいるの!?」
-kill Lieutenant Colonel Treize. Why are you with that unit?!”
+kill Special Colonel Treize. Why are you with that unit?!”
 
 @36906 对手
 > 「それが……財団の決定だからですわ
@@ -1470,10 +1496,10 @@ no one will be happy about it... You idiot.”
 “Ngh... So this is... the end...”
 
 @36930 Gaia · ガイア
-# 审校：バスク的军衔是大佐（Colonel），不是 Major。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、
 >  遅くなって申しわけありません」
-“Colonel Bask, I apologize for the delay.”
+“Special Colonel Bask, I apologize for the delay.”
 
 @36931 Bask · バスク
 > 「来たか。よし、貴官らは
@@ -1489,18 +1515,21 @@ wave after wave of attacks on the ones guarding the mansion!”
 “Yes, sir! Let's go, Ortega, Mash!”
 
 @36933 Gaia · ガイア
+# 审校：ガイア是老兵，原文「この我らが……黒い三連星が、敗れるというのか」语气更正式，译文应体现其军人腔调。
 > 「うおぉっ!? この我らが……黒い
 >  三連星が、敗れるというのか!?」
-“Whoa?! We... the Black Tri-Stars... can't be beaten, can we?!”
+“Whoa?! We... the Black Tri-Stars... are we to be defeated?!”
 
 @36934 Ortega · オルテガ
+# 审校：オルテガ是粗豪老兵，原文「俺たちがやられるなどと」语气更粗犷，译文应更贴近其口吻。
 > 「バ、バカな!
 >  俺たちがやられるなどと……」
-“I-Impossible! Us, defeated...”
+“I-Impossible! That we could be beaten...”
 
 @36935 Mash · マッシュ
+# 审校：マッシュ是粗豪老兵，原文「俺の悪運もここまでか」语气更粗犷，译文应更贴近其口吻。
 > 「クッ、俺の悪運もここまでか……」
-“Ngh, so my luck has run out at last...”
+“Ngh, so my luck's run out at last...”
 
 @36936 Heero · ヒイロ
 > 「くっ……これまでか……」
@@ -1554,10 +1583,10 @@ Didn't you really come just to join up with us?”
 “Tch, he sure says it straight.”
 
 @36947 Bright · ブライト
-# 审校：トレーズ的军衔是特佐，对应 Lieutenant Colonel，不是 Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「まぁいい。トレーズ特佐に
 >  会うとしよう」
-“Well, fine. Let's go meet Lieutenant Colonel Treize.”
+“Well, fine. Let's go meet Special Colonel Treize.”
 
 @36948 Treize · トレーズ
 > 「よく来たね、{HeroMech}の
@@ -1583,10 +1612,10 @@ this Earth Sphere's peace. Otherwise, inviting you to OZ would have been
 a miscalculation on my part.”
 
 @36951 Bright · ブライト
-# 审校：トレーズ的军衔是特佐，对应 Lieutenant Colonel，不是 Colonel。
+# 审校：精读：去破折号
 > 「特佐、あなたはいったい
 >  何を考えているのです
-“Lieutenant Colonel, just what are you thinking?
+“Special Colonel, just what are you thinking?
 ---
 >  我々をOZに引きこんでおきながら、
 >  いきなり総帥を降りてしまうとは
@@ -1594,20 +1623,21 @@ You drew us into OZ, then suddenly stepped down as Supreme Commander.
 ---
 >  その結果、OZがどうなったのか、
 >  地球圏がどうなっているのか
-What happened to OZ as a result, what's become of the Earth Sphere—
+What happened to OZ as a result, what's become of the Earth Sphere.
 ---
 >  知らないとはいわせませんよ。
 >  銀河帝国のこともある」
-don't tell me you don't know. There's the Galactic Empire as well.”
+Don't tell me you don't know. There's the Galactic Empire as well.”
 
 @36952 Treize · トレーズ
+# 审校：精读：去破折号
 > 「私は、銀河帝国などという、
 >  別の異星人の襲来まで
 “I am not a man of such rich imagination that I could anticipate
 ---
 >  想定できるほど、
 >  想像力の豊かな人間ではないよ」
-the arrival of other aliens—something like a Galactic Empire.”
+the arrival of other aliens, something like a Galactic Empire.”
 
 @36953 Quattro · クワトロ
 > 「そんなことをいっているのではない。
@@ -1655,14 +1685,14 @@ for your sake. Your battle is not over yet.”
 “I see...”
 
 @36960 Bright · ブライト
-# 审校：トレーズ的军衔是特佐，对应 Lieutenant Colonel，不是 Colonel。
+# 审校：精读：去破折号
 > 「特佐、さきほどの言葉があなたの
 >  本心だと、それを我々に信じろと
-“Lieutenant Colonel, are you telling us to believe that what you said just now
+“Special Colonel, are you telling us to believe that what you said just now
 ---
 >  いうのですか。銀河帝国の
 >  脅威にさらされた地球圏には
-is your true feeling? The Earth Sphere, exposed to the threat of the Galactic Empire—
+is your true feeling? The Earth Sphere, exposed to the threat of the Galactic Empire,
 ---
 >  あなたが必要なんです」
 it needs you.”
@@ -1673,6 +1703,7 @@ it needs you.”
 “Alone, I can do nothing. Even without me, little would change.”
 
 @36962 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「あなたはひきょうですよ、
 >  トレーズ・クシュリナーダ
 “You're a coward, Treize Khushrenada.
@@ -1695,16 +1726,16 @@ decided on your own to stand by and watch, and refuse to do anything.
 ---
 >  地球圏がこんな混乱した
 >  状態になっているってのに
-Even with the Earth Sphere in such chaos as this—
+Even with the Earth Sphere in such chaos as this,
 ---
 >  そんなバカな話はない」
 there's no excuse for such nonsense.”
 
 @36963 Selain · セレイン（按段落 3DD2）
-# 审校：トレーズ的军衔是特佐，对应 Lieutenant Colonel，不是 Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あなたはひきょうだ、特佐。
 >  自分の都合ばかりならべたて
-“You're a coward, Lieutenant Colonel. You do nothing but list your own convenience,
+“You're a coward, Special Colonel. You do nothing but list your own convenience,
 ---
 >  必要とされる時には何もしない。
 >  自分の行動で、兵士を
@@ -1726,6 +1757,7 @@ It seems you've forgotten the words you once said to us.
 We've been taken in by a con man.”
 
 @36964 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去破折号
 > 「みんな、帰ろうぜ。
 >  こんな奴といつまでも話してたって
 “Everyone, let's go home. Talking with a guy like this forever
@@ -1736,7 +1768,7 @@ is a waste of time. I thought he was a better man than this,
 ---
 >  こんな性根の腐った奴だったとはな
 >  俺たちは、こいつに
-but to think he was this rotten to the core—we've been
+but to think he was this rotten to the core. We've been
 ---
 >  だまされてたってわけだ。こんな奴
 >  ひっぱりだしたって、確かに
@@ -1772,14 +1804,14 @@ says something like that!”
 “Then what is it you would have me do?”
 
 @36967 Amuro · アムロ
-# 审校：修正原文结构：原文是“今の財団とOZ中心の地球の軍事力”，指“以现在的财团和OZ为中心的地球军事力量”，初稿把“centered on OZ”只挂在OZ上，语义偏差。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「今の財団とOZ中心の
 >  地球の軍事力を
 “The only one who can unite the military power of the Foundation and OZ, which now centers the Earth,
 ---
 >  まとめられるのは、特佐だけだ。
 >  あなたは財団の幹部で
-is you, Colonel. You are a Foundation executive,
+is you, Special Colonel. You are a Foundation executive,
 ---
 >  そしてOZはあなたがつくったのだから。
 >  それをやってもらいたい」
@@ -1804,12 +1836,13 @@ and OZ is something you created. We want you to do it.”
 “They just don't give up. Let's intercept them.”
 
 @36972 Heero · ヒイロ
+# 审校：精读：去破折号
 > 「{HeroMech}、頼みがある。
 >  なんでもいい
-“{HeroMech}, I have a request. Anything will do—
+“{HeroMech}, I have a request. Anything will do.
 ---
 >  俺にも1機、MSを貸してくれ」
-lend me a mobile suit too.”
+Lend me a mobile suit too.”
 
 @36973 Bright · ブライト
 > 「ああ、むろんかまわんが……」
@@ -1884,19 +1917,20 @@ I bear you no grudge, but I've come to take your life. You will die.”
 “Oh? To think someone could sense my presence. You're no ordinary man.”
 
 @36987 Sai Saici · サイ・サイシー
-# 审校：原文“最高の武闘家集団”指“武斗家集团”，初稿“martial arts team”不够准确，改为“martial artists”。
+# 审校：精读：去破折号
 > 「そうさ。オイラたちは
 >  シャッフルの名を受け継いだ
-“That's right. We've inherited the name of the Shuffle Alliance—
+“That's right. We've inherited the name of the Shuffle Alliance,
 ---
 >  地球圏で最高の
 >  武闘家集団だぜ」
 the greatest martial artists in the Earth Sphere.”
 
 @36988 Domon · ドモン
+# 审校：精读：去破折号
 > 「ああ、俺たちのいるところへくるとは、
 >  なめられたものだ」
-“Yeah. Coming to where we are—you must think little of us.”
+“Yeah. Coming to where we are, you must think little of us.”
 
 @36989 Chibodee · チボデー
 > 「さぁ、いつでもきな」
@@ -1946,8 +1980,9 @@ the greatest martial artists in the Earth Sphere.”
 “Yeah, and to move like that while blind... he's good.”
 
 @37000 Treize · トレーズ
+# 审校：特列斯是优雅贵族，译文过于直白，改为更符合其口吻的正式表达。
 > 「助かった。礼をいおう」
-“You saved me. I'll thank you.”
+“You saved me. You have my thanks.”
 
 @37001 Domon · ドモン
 > 「お前に死なれては、困るからな」
@@ -1966,8 +2001,9 @@ the greatest martial artists in the Earth Sphere.”
 “Well then, we'd better get going too.”
 
 @37005 Argo · アルゴ
+# 审校：阿尔戈沉默寡言，原文仅一个应声词，译成“Indeed.”过于正式冗长。
 > 「うむ」
-“Indeed.”
+“Mm.”
 
 @37006 Alex · アレックス
 > 「ミューラー、見ろよ。
@@ -2004,9 +2040,10 @@ Now, fight me! This time I'll bring you down!”
 “Tch, so he's not here! Did he take fright at me?! Don't mock me!”
 
 @37012 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：去破折号
 > 「ばかな……ばかなばかなばかなぁ!!
 >  この俺が、奴よりも
-“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to him—
+“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to him,
 ---
 >  劣っているというのかぁぁぁーっ!
 >  認めん! 認められるものかぁっ!!」
@@ -2017,9 +2054,10 @@ inferior to him?! I won't accept it! I never will!!”
 “{PartnerNick}?!”
 
 @37014 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：去破折号
 > 「ばかな……ばかなばかなばかなぁ!!
 >  この俺が、貴様よりも
-“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to you—
+“Impossible... impossible, impossible, impossible!! That I, of all people, am inferior to you,
 ---
 >  劣っているなどと! 認めん!
 >  俺は認めんぞ!
@@ -2132,6 +2170,7 @@ That much, as you all know, is true.”
 “We understand that.”
 
 @37028 Treize · トレーズ
+# 审校：精读：去破折号
 > 「そう、だからこそ私は、
 >  その精神に賛同し
 “Yes, and it was precisely for that reason that I endorsed that spirit
@@ -2142,7 +2181,7 @@ and built up the Specials. But before me appeared
 ---
 >  戦士たちが現れた。君たちの
 >  ことだ。君たちは私の中の何かを
-the warriors I had always envisioned. That is, all of you. You changed something within me—
+the warriors I had always envisioned. That is, all of you. You changed something within me,
 ---
 >  定められた運命すらも、
 >  変えてしまった」
@@ -2204,13 +2243,14 @@ people die, don't they? So many suffer, so many grieve...
 And you're saying that's natural, that it's necessary?!”
 
 @37034 Treize · トレーズ
+# 审校：精读：去破折号
 > 「だからこそ、人は生きることに
 >  懸命になれる。死があるからこそ
 “That is precisely why people can strive so desperately to live. It is because death exists that
 ---
 >  生が輝かしいものとなるのだ。
 >  戦うことを忘れ着飾った銃では
-life shines so brilliantly. A gaudily decorated gun that has forgotten how to fight—
+life shines so brilliantly. A gaudily decorated gun that has forgotten how to fight,
 ---
 >  たとえ敵の胸板を打ち抜いたと
 >  しても、それはただのゲームにすぎない
@@ -2327,9 +2367,10 @@ We shall attack Kilimanjaro.”
 “Kilimanjaro?!”
 
 @37044 Banjo · 万丈
+# 审校：精读：去破折号
 > 「これはこれは。さすがはもとOZの総帥
 >  いきなりいうことがでかいね
-“Well, well. As expected of the former supreme commander of OZ—he says something grand right off the bat.
+“Well, well. As expected of the former supreme commander of OZ. He says something grand right off the bat.
 ---
 >  僕の記憶が間違いじゃなければ、
 >  あそこは地上のOZの拠点のはずだ」
@@ -2369,12 +2410,13 @@ Is he at Kilimanjaro?”
 “An attack on Kilimanjaro. That would be fine as well.”
 
 @37050 Koji · 甲児
+# 审校：精读：去破折号
 > 「へぇ、オレたちとくるってのか?
 >  お前らの嫌いな、OZのトレーズが
 “Huh, so you're coming with us? This is an operation commanded by
 ---
 >  指揮する作戦だぜ?」
-Treize of OZ—the very man you hate, you know?”
+Treize of OZ, the very man you hate, you know?”
 
 @37051 Heero · ヒイロ
 > 「あの時とは状況が違っている」
@@ -2427,40 +2469,45 @@ Treize of OZ—the very man you hate, you know?”
 discovered Lady {PartnerName}.”
 
 @37061 Manami · マナミ（按段落 3DD4）
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“What?! Then what about 【搭档昵称】?!／Is 【搭档昵称】 safe?!”
+# 审校：补译：原稿页数错误
 > 「なんですって!?
 >  それで、{PartnerNick}は!?
+“What?! And {PartnerNick}?!
 ---
 >  無事だったの!?」
+Is she all right?!”
 
 @37062 Lawrence · ローレンス
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“【搭档昵称】 is badly wounded, but Doctor Hasan says／there is no danger to 【搭档昵称】's life. 【搭档昵称】 is currently receiving intensive care.”
+# 审校：补译：原稿页数错误
 > 「重傷ですが、
 >  ハサン先生がおっしゃるには
+“Badly hurt, but according to Doctor Hasan
 ---
 >  命に別状はないそうです。現在
 >  集中治療をお受けになっています」
+her life is not in danger. She is in intensive care now.”
 
 @37063 Manami · マナミ（按段落 3DD4）
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“I see... 【搭档昵称】... thank goodness. But...／【搭档昵称】 surely hates me now.”
+# 审校：补译：原稿页数错误
 > 「そう……{PartnerNick}……よかった。
 >  でも……
+“I see... {PartnerNick}... thank goodness. But...
 ---
 >  あたしを恨んでいるでしょうね、きっと」
+she must hate me now. I'm sure of it.”
 
 @37064 Lawrence · ローレンス
-# 待译：机翻未采用（页数应为 3，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Lady 【搭档名字】 was still conscious when 【搭档名字】 was brought in.／And so, I was entrusted with a message for you, Lady 【主角名字】.”
+# 审校：补译：原稿页数/占位符错误
 > 「{PartnerName}お嬢様は、
 >  運びこまれた時
+“Lady {PartnerName} was still conscious
 ---
 >  まだ意識がございました。それで、
 >  {HeroName}お嬢様への
+when she was brought in. And so, for Lady {HeroName},
 ---
 >  ご伝言をお預かりしております」
+she entrusted me with a message.”
 
 @37065 Manami · マナミ（按段落 3DD4）
 # 审校：原文“{PartnerNick}が? ……聞かせて”是“{PartnerNick}（的消息）吗？……说给我听”，初稿误译为“From {PartnerNick}?”，改为“{PartnerNick}? ... Tell me.”
@@ -2482,11 +2529,13 @@ discovered Lady {PartnerName}.”
 “That is wonderful news, my lady.”
 
 @37069 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
 > 「うん……ありがとう、ローレンス。
 >  あ、では、エルブルスはどうなっているの?」
 “Yes... thank you, Lawrence. Oh, then what has become of the Elbulls?”
 
 @37070 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
 > 「すでに大破したエルブルスも、
 >  運びこんでいるとのことです
 “The Elbulls, which was heavily damaged, has also been brought in, I am told.
@@ -2533,6 +2582,7 @@ had been brought in. I thought I should at least
 let you know.”
 
 @37077 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
 > 「エルブルスが!?」
 “The Elbulls?!”
 
@@ -2546,6 +2596,7 @@ let you know.”
 “What is it, {HeroName}? You caught wind of it already?”
 
 @37080 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
 > 「どうしてエルブルスが……?」
 “Why is the Elbulls here...?”
 
@@ -2574,21 +2625,23 @@ Apparently they found it while transporting supplies.”
 “Lawrence! Is that true? Is {PartnerNick} really safe?!”
 
 @37085 Lawrence · ローレンス
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Yes. However... the wounds were quite severe, so we had Karaba take 【搭档昵称】 along with them.／We cannot provide sufficient treatment here.”
+# 审校：补译：原稿页数错误
 > 「はい。ただ……かなりの重傷でしたので
 >  カラバの方にそのまま
+“Yes. However... her wounds were quite severe, so we had Karaba take her
 ---
 >  お連れしていただきました。ここでは
 >  十分な治療もできませんので」
+with them as she was. We cannot give her proper treatment here.”
 
 @37086 Manami · マナミ（按段落 3DD4）
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“I see... 【搭档昵称】... thank goodness. But...／【搭档昵称】 surely hates me now.”
+# 审校：补译：原稿页数错误
 > 「そう……{PartnerNick}……よかったわ。
 >  でも……
+“I see... {PartnerNick}... thank goodness. But...
 ---
 >  きっと、あたしを恨んでいるのでしょうね」
+I'm sure she must hate me now.”
 
 @37087 Lawrence · ローレンス
 > 「お嬢様あてに、
@@ -2600,6 +2653,7 @@ Apparently they found it while transporting supplies.”
 “A message? Let me hear it.”
 
 @37089 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
 > 「『貴女のしたことは、許せません。
 >  ですが、それが正しかったことは
 “‘What you did is unforgivable. But I will acknowledge that it was right.
@@ -2642,6 +2696,8 @@ wanted to confirm.”
 “What is it?”
 
 @37095 Astonaige · アストナージ
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「エルブルスの件でね。
 >  ほら、前にスイームルグとエルブルスが
 “It's about the Elbulls. You remember how I told you before that the Sweemurg and
@@ -2668,6 +2724,8 @@ own, so preparing that mechanism now would be impossible. But it seems
 they can be joined together.”
 
 @37097 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「スイームルグとエルブルスを!?」
 “The Sweemurg and the Elbulls?!”
 
@@ -2685,6 +2743,8 @@ two generators, we should be able to use the surplus output to mount new
 weapons too. Of course, its base performance will improve as well.”
 
 @37099 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「{PartnerName}のエルブルスで、あたしの
 >  スイームルグが生まれ変わるのね……
 “With {PartnerName}'s Elbulls, my Sweemurg will be reborn...
@@ -2762,8 +2822,9 @@ so it's over there. All right, I've found you, you devils. Just you watch...”
 “You devils, prepare yourselves!”
 
 @37111 Daisuke · 大介
+# 审校：原文“そのペンダントは!”是话说到一半的省略，译文“that pendant is!”语法不完整且不自然，改为省略号更符合语境。
 > 「くっ……!? 待て、そのペンダントは!」
-“Ngh...?! Wait, that pendant is!”
+“Ngh...?! Wait, that pendant...!”
 
 @37112 Maria · マリア
 > 「やぁっ!!」
@@ -2897,9 +2958,10 @@ From now on, we stay together.”
 “That's right.”
 
 @37139 Koji · 甲児
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「オレからも頼むよ、クワトロ特尉。
 >  せっかく会えたのにまた別れるんて
-“I'm asking too, Lieutenant Quattro. They finally found each other, and now they'd have to split up again?
+“I'm asking too, Special Lieutenant Quattro. They finally found each other, and now they'd have to split up again?
 ---
 >  かわいそうじゃないか」
 That's just cruel.”
@@ -2968,9 +3030,10 @@ field of expertise. Please rely on me as much as you like.”
 “So, what did you find?”
 
 @37150 Garrison · ギャリソン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それが、{PartnerSurname}という士官は、
 >  ロームフェラ派の作戦に
-“It seems the officer named {PartnerSurname} was marked by Major Bask
+“It seems the officer named {PartnerSurname} was marked by Special Colonel Bask
 ---
 >  批判的であるとして、
 >  バスク特佐に
@@ -3008,9 +3071,10 @@ was placed under house arrest on Bask Om's orders.”
 “A hostage?! What are we supposed to do about that?”
 
 @37156 Garrison · ギャリソン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それによって、{PartnerSurname}特尉は
 >  作戦への参加を
-“It appears Lieutenant {PartnerSurname} was being forced
+“It appears Special Lieutenant {PartnerSurname} was being forced
 ---
 >  強制されていたようです」
 to take part in the operation because of it.”
@@ -3072,9 +3136,10 @@ and die in battle. For his lover's sake...”
 “...Do you know where that person is being held...?”
 
 @37164 Garrison · ギャリソン
+# 审校：管家口吻要求无缩写，将 It's 和 don't 改为 It is 和 do not。
 > 「地上であるのは確かですが、
 >  場所まではまだ存じません
-“It's certain she's on Earth, but I don't know the exact location yet.
+“It is certain she is on Earth, but I do not know the exact location yet.
 ---
 >  しかし、必要であれば、
 >  すぐにでもお調べいたしますが」
@@ -3175,9 +3240,10 @@ a second thought just get away with it... it makes me feel guilty.”
 still on Earth into the operation?”
 
 @37179 Garrison · ギャリソン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうですな……トレーズ特佐も
 >  動いておられるので
-“Let me see... Colonel Treize is already making his move, so
+“Let me see... Special Colonel Treize is already making his move, so
 ---
 >  早ければ3日というところでしょう」
 at the earliest, about three days, I'd say.”
@@ -3301,6 +3367,7 @@ Banjo was worried about you too.”
 “Yeah... Once we're in combat, there's no time to think about that stuff.”
 
 @37201 Roux · ルー
+# 审校：词条：ヴァイローズ=Virose
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
 “Then it's fine. Oh, that's right, Astonaige said he wants to talk to you
@@ -3310,6 +3377,7 @@ Banjo was worried about you too.”
 about the Virose we recovered.”
 
 @37202 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズの?」
 “About the Virose?”
 
@@ -3328,6 +3396,7 @@ about the Virose we recovered.”
 “Th-this is... Astonaige, what in the world is this...?”
 
 @37206 Astonaige · アストナージ
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
 “I was examining the Virose, and this data turned up. It seems your
@@ -3337,6 +3406,7 @@ about the Virose we recovered.”
 Earthgain and the Virose were originally one and the same.”
 
 @37207 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「俺のアースゲインと、{PartnerNick}の
 >  ヴァイローズが……」
 “My Earthgain and {PartnerNick}'s Virose...”
@@ -3384,14 +3454,16 @@ you were so... Master... Why? Why...)
 “Wh-what, what's going on?!”
 
 @37215 Mika · ミカ
+# 审校：原文「タケルが!」是报告塔克尔出事了，不是直接对他喊话，改为“It's Takeru!”更准确。
 > 「艦長、大変です! タケルが!」
-“Captain, it's terrible! Takeru!”
+“Captain, it's terrible! It's Takeru!”
 
 @37216 Amuro · アムロ
 > 「落ち着くんだ、ミカ。何があった?」
 “Calm down, Mika. What happened?”
 
 @37217 Mika · ミカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
 “Probably a psychic from Planet Gishin! Your brother was taken, and Takeru
@@ -3400,6 +3472,7 @@ you were so... Master... Why? Why...)
 went after him in the Gaia...”
 
 @37218 Beltorchika · ベルトーチカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「アムロ、ガイヤーが飛んでいくわ」
 “Amuro, the Gaia's taking off.”
 
@@ -3409,6 +3482,7 @@ went after him in the Gaia...”
 “That Takeru. Bright, have someone go after him.”
 
 @37220 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そうだな。よし、ゲッターチームと
 >  藤原忍にガイヤーを追わせる
 “Right. All right, have the Getter Team and Shinobu Fujiwara chase the Gaia.
@@ -3448,8 +3522,9 @@ Special Lieutenant, have the rest of them search the ship for enemies.”
 “Perhaps because you were sent to Earth as a child, you seem not to know proper courtesy toward your Emperor.”
 
 @37228 Takeru · タケル
+# 审校：Takeru 对皇帝怒吼，加“the likes of”更贴合原文「お前に」的轻蔑语气。
 > 「お前に礼儀など無用だ!」
-“I have no need for courtesy toward you!”
+“I have no need for courtesy toward the likes of you!”
 
 @37229 Emperor Zuul · ズール皇帝
 > 「マーズ、我が銀河帝国に戻れ。
@@ -3567,9 +3642,11 @@ shadow. What a waste of effort. Wahahahahahahaha!”
 “Well then... Act Three begins.”
 
 @37250 ???
+# 审校：精读：トレーズ様
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様。結局ご自身も
 >  舞台にあがられることになったのですね」
-“Yes, Lord Treize. In the end, it seems you too have taken the stage.”
+“Yes, Your Excellency. In the end, it seems you too have taken the stage.”
 
 @37251 Treize · トレーズ
 > 「やれるだけのことは、やってみるつもりだ。
@@ -3580,5 +3657,7 @@ shadow. What a waste of effort. Wahahahahahahaha!”
 until the end, I cannot say.”
 
 @37252 ???
+# 审校：精读：トレーズ様
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様…………」
-“Lord Treize...”
+“Your Excellency...”

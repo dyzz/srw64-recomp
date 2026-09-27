@@ -1,131 +1,325 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9892 Hayato · ハヤト
+# 触发：攻击（通用，1/3）
 > 「くらいな!!」
 “Take this!!”
 
 @9893 Hayato · ハヤト
+# 触发：攻击（通用，2/3）
 > 「俺に任せろ!」
 “Leave it to me!”
 
 @9894 Hayato · ハヤト
+# 触发：攻击（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いくぜっ!」
-“Let's go!”
+“Let’s go!”
 
 @9895 Hayato · ハヤト
+# 触发：被击坠（通用，1/3）
+# 审校：ヤキがまわった＝手生了、不中用了，不是变老
 > 「ちっ!! オレもヤキが
 >  まわったもんだぜ!!」
-“Tch!! I'm getting old, huh!!”
+“Tch!! Guess I’ve lost my edge!!”
 
 @9896 Hayato · ハヤト
+# 触发：被击坠（通用，2/3）
 > 「くっ!! ここまでか!!」
 “Ngh!! This is it for me!!”
 
 @9897 Hayato · ハヤト
+# 触发：被击坠（通用，3/3）
 > 「なんだと!?」
 “What did you say?!”
 
 @9898 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
 > 「ちっ!! しまった!」
 “Tch!! Damn it!”
 
 @9899 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 > 「しまった! このままでは……」
 “Damn! At this rate...”
 
 @9900 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くうっ!! 意外とやるな!」
-“Ngh!! He's better than I expected!”
+“Ngh!! He’s better than I expected!”
 
 @9901 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
+# 审校：口语化
 > 「ちいっ!! ちょいとヤバイぜ!」
-“Tch!! This is a bit bad!”
+“Tch!! This is gettin’ dicey!”
 
 @9902 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
 > 「くっ!! ヤバイな……」
 “Ngh!! This is bad...”
 
 @9903 Hayato · ハヤト
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
+# 审校：更像喊话
 > 「くっ!! ダメージがでかすぎるか!?」
-“Ngh!! Is the damage too much?!”
+“Ngh!! Took too much damage?!”
 
 @9904 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!! まだまだ!」
-“Ugh!! I'm not done yet!”
+“Ugh!! I’m not done yet!”
 
 @9905 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 > 「この程度で、やられるか!」
 “Like this would take me down!”
 
 @9906 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ!! なかなかやるな!」
-“Tch!! He's pretty good!”
+“Tch!! He’s pretty good!”
 
 @9907 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むっ!! だが、まだやられちゃいないぜ!」
-“Mm!! But I'm not down yet!”
+“Mm!! But I’m not down yet!”
 
 @9908 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+# 审校：なんの＝不算什么
 > 「なんのっ! まだだ!」
-“As if! Not yet!”
+“That’s nothing! Not yet!”
 
 @9909 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
 > 「ちっ! やるな!!」
 “Tch! Not bad!!”
 
 @9910 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「くっ!! だが、この程度なら
 >  まだいける!!」
 “Ngh!! But I can still take this much!!”
 
 @9911 Hayato · ハヤト
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
 > 「ちっ! あたっちまったか!」
 “Tch! I got hit!”
 
 @9912 Hayato · ハヤト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：轻伤情境：说对方攻击太弱，不是太慢
 > 「あまいぜ!」
-“Too slow!”
+“Too soft!”
 
 @9913 Hayato · ハヤト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：なっちゃいない＝还不成气候
 > 「なっちゃいないぜ!」
-“That's nothing!”
+“You’ve got a lot to learn!”
 
 @9914 Hayato · ハヤト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「フ、その程度か?」
 “Hmph, is that all?”
 
 @9915 Hayato · ハヤト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「ちっ! かすったか!」
 “Tch! Just a graze!”
 
 @9916 Hayato · ハヤト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：补全成完整喊话
 > 「この程度のダメージ!」
-“Damage like this!”
+“That’s hardly any damage!”
 
 @9917 Hayato · ハヤト
+# 触发：回避（通用，1/2）
 > 「あまいぜ!」
 “Too slow!”
 
 @9918 Hayato · ハヤト
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゲッターのスピードを甘くみるなよ!!」
-“Don't underestimate Getter's speed!!”
+“Don’t underestimate Getter’s speed!!”
 
 @9919 Hayato · ハヤト
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：感叹号数量照原文
 > 「ムダだっ!」
-“It's useless!!”
+“It’s useless!”
 
 @9920 Hayato · ハヤト
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ 効かんな!」
-“Hmph, it doesn't work!”
+“Hmph, it doesn’t work!”
 
 @9921 Hayato · ハヤト
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, I can’t shoot back?!”
 
 @9922 Hayato · ハヤト
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：射程外情境，去掉直译 distance
 > 「くっ! 距離が遠すぎるのか!」
-“Ngh! Is the distance too far?!”
+“Ngh! Is it out of range?!”
 
 @9923 Hayato · ハヤト
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far?!”
+
+@15221 Hayato · ハヤト
+# 触发：使用〈ゲッターアーム〉
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ゲッターアーム!!」
+“Getter Arm!!”
+
+@15222 Hayato · ハヤト
+# 触发：使用〈ゲッターアーム〉
+> 「ゲッターアーム!!」
+“Getter Arm!!”
+
+@15223 Hayato · ハヤト
+# 触发：使用〈ゲッタードリル〉
+> 「ゲッタードリル!!」
+“Getter Drill!!”
+
+@15224 Hayato · ハヤト
+# 触发：使用〈ゲッタードリル〉
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ゲッタードリル!!」
+“Getter Drill!!”
+
+@15225 Hayato · ハヤト
+# 触发：使用〈ドリルストーム〉
+> 「ドリルストーム!!」
+“Drill Storm!!”
+
+@15226 Hayato · ハヤト
+# 触发：使用〈ドリルストーム〉
+> 「くらいな!!」
+“Take this!!”
+---
+> 「ドリルストーム!!」
+“Drill Storm!!”
+
+@15227 Hayato · ハヤト
+# 触发：使用〈ドリルパンチ〉
+> 「ドリルパンチ!!」
+“Drill Punch!!”
+
+@15228 Hayato · ハヤト
+# 触发：使用〈ドリルパンチ〉
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ドリルパンチ!!」
+“Drill Punch!!”
+
+@15229 Hayato · ハヤト
+# 触发：使用〈ゲッターミサイル〉
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15230 Hayato · ハヤト
+# 触发：使用〈ゲッターミサイル〉
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15231 Hayato · ハヤト
+# 触发：使用〈ドリルアーム〉
+> 「ドリルアーム!!」
+“Drill Arm!!”
+
+@15232 Hayato · ハヤト
+# 触发：使用〈ドリルアーム〉
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「ドリルアーム!!」
+“Drill Arm!!”
+
+@15233 Hayato · ハヤト
+# 触发：使用〈ライガーミサイル〉
+> 「ライガーミサイルっ!!」
+“Liger Missile!!”
+
+@15234 Hayato · ハヤト
+# 触发：使用〈ライガーミサイル〉
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「ライガーミサイルっ!!」
+“Liger Missile!!”
+
+@15235 Hayato · ハヤト
+# 触发：使用〈チェーンアタック〉
+> 「チェーンアタック!!」
+“Chain Attack!!”
+
+@15236 Hayato · ハヤト
+# 触发：使用〈チェーンアタック〉
+> 「いくぜっ!」
+“Here we go!”
+---
+> 「チェーンアタック!!」
+“Chain Attack!!”
+
+@15237 Hayato · ハヤト
+# 触发：使用〈ミラージュドリル〉
+> 「ミラージュドリル!!」
+“Mirage Drill!!”
+
+@15238 Hayato · ハヤト
+# 触发：使用〈ミラージュドリル〉
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ミラージュドリル!!」
+“Mirage Drill!!”
+
+@15239 Hayato · ハヤト
+# 触发：使用〈ドリルテンペスト〉
+> 「ドリルテンペスト!!」
+“Drill Tempest!!”
+
+@15240 Hayato · ハヤト
+# 触发：使用〈ドリルテンペスト〉
+> 「俺に任せろ!」
+“Leave it to me!”
+---
+> 「ドリルテンペスト!!」
+“Drill Tempest!!”
+
+@15241 Hayato · ハヤト
+# 触发：分身回避，乘坐〈ゲッター2〉
+> 「ゲッタービジョン!!」
+“Getter Vision!!”
+
+@15242 Hayato · ハヤト
+# 触发：分身回避，乘坐〈ゲッターライガー〉
+> 「マッハスペシャル!!」
+“Mach Special!!”
+
+@15243 Hayato · ハヤト
+# 触发：分身回避，乘坐〈真・ゲッター2〉
+> 「真・マッハスペシャル!!」
+“True Mach Special!!”

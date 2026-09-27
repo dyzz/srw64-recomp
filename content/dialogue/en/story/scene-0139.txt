@@ -92,13 +92,14 @@ wouldn't I? I forgot about her too.”
 “...”
 
 @48207 Amuro · アムロ
+# 审校：全局：刻印＝Crest
 > 「デュオ、そういうことはあとにしてくれ。
 >  それで、連中はいったいどうやって
 “Duo, save that for later. So how on earth did they manage to reach the
 ---
 >  “刻印”で閉鎖されている
 >  はずの太陽系へ到達できたんだ?」
-solar system, which should be sealed off by the ‘Mark’?”
+solar system, which should be sealed off by the ‘Crest’?”
 
 @48208 Garrison · ギャリソン
 > 「それに関しましては、
@@ -145,9 +146,10 @@ crawling out now, of all times.”
 “I absolutely refuse to let things turn out like that again. We'll crush them completely!”
 
 @48213 Sara · 沙羅
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バカだね、あんたたち。アムロ特尉は、
 >  根っこから解決しないと、キリがない
-“You guys are such idiots. Lieutenant Amuro's worried that unless we solve this
+“You guys are such idiots. Special Lieutenant Amuro's worried that unless we solve this
 ---
 >  かもしれないって、気にしてんのさ」
 at the root, there might be no end to it.”
@@ -182,6 +184,7 @@ like the Commander, Alan.”
 isn't it? We can't afford to sit around.”
 
 @48217 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうだな。チャム、悪いが
 >  シーラ女王を呼んできてくれ
 “Right. Chum, sorry, but go call Queen Ciela.
@@ -191,6 +194,7 @@ isn't it? We can't afford to sit around.”
 It looks like we'll need to depart right away.”
 
 @48218 Bright · ブライト
+# 审校：人名按词表统一
 > 「そうだな。チャム、悪いが
 >  エレ女王を呼んできてくれ
 “Right. Chum, sorry, but go call Queen Elle.
@@ -454,6 +458,7 @@ your minds? Kukukukuku.”
 “Ugh... What happened?! Is everyone all right?!”
 
 @48259 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王、大丈夫ですか!?
 >  どうやら我々は
 “Queen Ciela, are you okay?! It seems we've
@@ -603,9 +608,10 @@ For you fools, the time of rest will never come! Wahahahaha!”
 “Yeah... this is a bit of a problem.”
 
 @48285 Shinobu · 忍
+# 审校：补上“ちょっと”的对应，使语气与原文的“ちょっとどころじゃねぇ”一致。
 > 「万丈、てめぇなに言ってやがる!?
 >  ちょっとどころじゃねぇだろうが!!」
-“Banjo, what the hell are you saying?! This is way more than a bit of a problem!!”
+“Banjo, what the hell are you saying?! This is way more than just a bit of a problem!!”
 
 @48286 Ryo · 亮
 > 「騒いでみたところで、どうにもならん」
@@ -816,9 +822,10 @@ If we examine the enemy ship's wreckage, we may learn something.”
 and handle the recovery?”
 
 @48316 Banjo · 万丈
+# 审校：万丈的从容口吻中“after all”位置更自然，且原文“ってことだからね”的轻松语气应保留。
 > 「もちろんだ、艦長。今ここにいるのが
 >  手のあいている人間ってことだからね」
-“Of course, Captain. Everyone here right now counts as free hands, after all.”
+“Of course, Captain. After all, everyone here right now counts as free hands.”
 
 @48317 Duo · デュオ
 > 「それってもしかして、俺たちのことかぁ?」
@@ -838,9 +845,10 @@ and handle the recovery?”
 “Good, get started right away.”
 
 @48321 Shinobu · 忍
+# 审校：ハサン先生＝医生
 > 「沙羅が倒れた?
 >  どういうことだよ、先生」
-“Sara collapsed? What do you mean, Teacher?”
+“Sara collapsed? What do you mean, Doctor?”
 
 @48322 Hasan · ハサン
 > 「どうもこうも、また例のやつだな」
@@ -986,8 +994,9 @@ to whom, in various senses, that does not apply.”
 “Yeah. Grados aside, the top brass of Muge are exactly that.”
 
 @48345 Ark · アーク（按段落 3DD1）
+# 审校：原文是问结果，tr 的“how did it go”偏寒暄，改为更贴合询问分析结果的“what's the situation”。
 > 「それで葉月博士、どうなんです?」
-“So, Dr. Hazuki, how did it go?”
+“So, Dr. Hazuki, what's the situation?”
 
 @48346 Selain · セレイン（按段落 3DD2）
 > 「博士、そろそろ結果を
@@ -1033,13 +1042,14 @@ hyperspace and make our way to the Muge universe.”
 “Is there some problem...?”
 
 @48354 Dr. Hazuki · 葉月博士
+# 审校：破折号
 > 「超空間を通ってムゲの宇宙へ
 >  到達するには莫大なエネルギーが
 “Reaching the Muge universe through hyperspace requires an enormous amount of energy.
 ---
 >  必要とされる。知っての通り竜の
 >  命、このガンドールのエネルギーは
-As you know, the life of the dragon—the Gandor's energy—is
+As you know, the life of the dragon, the Gandor's energy, is
 ---
 >  もう残り少ない」
 already running low.”
@@ -1124,13 +1134,15 @@ we could secure a means of return.”
 “Yeah... Of course, if there's another way, that would be best... but is there one?”
 
 @48367 Dr. Hazuki · 葉月博士
+# 审校：缩写
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「数ヶ月後ならば、だな。それだけ
 >  時間があれば、我々はガンドールを
 “If we wait a few months, yes. With that much time, we can remodel the Gandor
 ---
 >  その用途にあわせて改造できる。
 >  弓教授と早乙女博士に
-to suit that purpose. With the cooperation of Prof. Yumi and Dr. Saotome,
+to suit that purpose. With the cooperation of Professor Yumi and Dr. Saotome,
 ---
 >  協力してもらい、ゲッター線と
 >  光子力を利用するシステムを
@@ -1408,6 +1420,7 @@ the Earth Sphere's safety can be secured...”
 “Hey, Amuro. You're going along with such a reckless operation too?!”
 
 @48408 Amuro · アムロ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「ブライト、状況はアランの
 >  いった通りだよ
 “Bright, the situation is just as Alan said.
@@ -1476,7 +1489,7 @@ it might be the last time we can do it, right?”
 “Yeah. And it's not certain yet that we absolutely can't return.”
 
 @48416 Manami · マナミ（按段落 3DD4）
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：破折号
 > 「ブライト艦長、いまさらそれは
 >  聞けませんわ。これまでも何度も
 “Captain Bright, it's too late to bring that up now. We've faced such crises
@@ -1487,7 +1500,7 @@ many times before. But this time is different from all those times.
 ---
 >  負けないため、ではなく、
 >  勝つために向かうのです」
-We're not going so we won't lose — we're going so we'll win.”
+We're not going so we won't lose. We're going so we'll win.”
 
 @48417 Lawrence · ローレンス
 # 审校：原译“it's not yet decided”偏口语，与老管家极其恭敬的措辞不符，改为“it is not yet decided”。
@@ -1570,14 +1583,14 @@ its reorganization won't go smoothly. At that rate, if the aliens or the Axis Fo
 remnants cause trouble, no one will be able to stop them.”
 
 @48429 Dr. Saotome · 早乙女博士
-# 审校：原译准确，无需修改。
+# 审校：破折号
 > 「うむ。それに、財団のこともあるだろ
 >  う。君たちのいない間に、財団の
 “Indeed. And there is the Foundation to consider as well. If, while you are gone, the Foundation's
 ---
 >  連中がまたよからぬことを企めば、
 >  残るOZではレディ・アン特佐が
-people plot something wicked again, the remaining OZ — even with Lieutenant Colonel Lady Une —
+people plot something wicked again, the remaining OZ, even with Special Colonel Lady Une,
 ---
 >  いたとしても、抑えられないかもしれんぞ」
 might not be able to hold them back.”
@@ -1596,16 +1609,17 @@ we must reorganize OZ and show that it exists as an organization capable of prot
 the Earth Sphere. For that, the {HeroMech} is essential.”
 
 @48431 Banjo · 万丈
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なるほどね。となると……
 >  アムロ特尉、残ってもらえないか」
-“I see. In that case... Captain Amuro, could you stay behind?”
+“I see. In that case... Special Lieutenant Amuro, could you stay behind?”
 
 @48432 Amuro · アムロ
 > 「俺がか?」
 “Me?”
 
 @48433 Banjo · 万丈
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「誰かが残って、{HeroMech}を
 >  率いてOZの再編と
 “Someone has to stay behind and lead the {HeroMech} to reorganize OZ and
@@ -1623,7 +1637,7 @@ since he's taking the Nahel Argama, we've got no choice but to have him go.
 We need to prepare for the worst-case scenario too. You're the most
 ---
 >  適任だ」
-suitable for it, Captain.”
+suitable for it, Special Lieutenant.”
 
 @48434 Amuro · アムロ
 > 「しかたないな。わかったよ、俺は残ろう
@@ -1695,9 +1709,10 @@ since we have, I'll just go as far as I can.”
 then I'll be the one to crush them.”
 
 @48444 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あたしはムゲの宇宙へ
 >  行かせてもらいます、特尉
-“I'll be going to the Muge universe, Captain.
+“I'll be going to the Muge universe, Special Lieutenant.
 ---
 >  あいつらは絶対に許せない。あたし
 >  たちの手で倒してみせます」
@@ -1732,17 +1747,19 @@ remnants. They will still need people like me here too.”
 I'll leave the job of crushing those Muge bastards to Shinobu and the others.”
 
 @48448 Manami · マナミ（按段落 3DD4）
+# 审校：マナミ对アムロ的称呼应为“Mr. Amuro”，且原文没有“你”字，译文不应出现“you”。
 > 「そういうことならばあたしも
 >  残らせてもらいますわ
 “If that's how it is, then I shall stay as well.
 ---
 >  アムロさんだけに押しつけるわけにも
 >  いきませんしね?」
-I can't very well leave it all to you alone, Mr. Amuro, now can I?”
+I can't very well leave it all to Mr. Amuro alone, now can I?”
 
 @48449 Lawrence · ローレンス
+# 审校：ローレンス是对ブラッド说话，不是对マナミ，不应称呼“my lady”。
 > 「さようでございますな」
-“Indeed, my lady.”
+“Indeed.”
 
 @48450 Amuro · アムロ
 > 「そうか……残念だな」
@@ -1872,28 +1889,31 @@ and Eiji, David, and Simone, was it?”
 You're right, it probably works out better if he stays behind.”
 
 @48473 Chum · チャム
+# 审校：破折号
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ゴーショーグンもザンボットも
-“There are still more, Marvel. Seabook and Cecily, and GoShogun and Zambot too—
+“There are still more, Marvel. Seabook and Cecily, and GoShogun and Zambot too.
 ---
 >  いくって言ってたもの」
-they all said they're going.”
+They all said they're going.”
 
 @48474 Chum · チャム
+# 审校：破折号；语序
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ゴーショーグンもいくって
-“There are still more, Marvel. Seabook and Cecily, and GoShogun too—
+“There are still more, Marvel. Seabook and Cecily, and GoShogun too.
 ---
 >  言ってたもの」
-they all said they're going.”
+They all said they're going.”
 
 @48475 Chum · チャム
+# 审校：破折号；语序
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ザンボットもいくって
-“There are still more, Marvel. Seabook and Cecily, and Zambot too—
+“There are still more, Marvel. Seabook and Cecily, and Zambot too.
 ---
 >  言ってたもの」
-they all said they're going.”
+They all said they're going.”
 
 @48476 Chum · チャム
 > 「まだいるわよ、マーベル。シーブックと
@@ -1921,14 +1941,17 @@ they all said they're going.”
 “You really have to remember these things properly.”
 
 @48481 Marvel · マーベル
+# 审校：人名按词表统一
 > 「わかってるわよ、チャム」
 “I know, Chum.”
 
 @48482 Death Gaia · デスガイヤー
+# 审校：Death Gaia 对帝王的称呼应保留敬称，原文有「様」，译文需体现 Your Majesty。
 > 「ムゲ帝王様」
-“Emperor Muge.”
+“Your Majesty, Emperor Muge.”
 
 @48483 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤーか。どうした」
 “Death Gaia. What is it?”
 
@@ -1942,6 +1965,7 @@ they all said they're going.”
 I may be wrong, but could he have been defeated by the Earthlings...?”
 
 @48485 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「かもしれぬ。ギルドロームのたっての
 >  希望があったので行かせたが、
 “Perhaps. I sent him because Gildrome insisted on it,
@@ -1964,6 +1988,7 @@ Death Gaia, I shall have you handle it.”
 and, by some chance, push all the way here...”
 
 @48487 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「フフフ、それも面白いではないか
 >  デスガイヤー。もしそのような強敵が
 “Heh heh, wouldn't that be interesting too, Death Gaia? If such a powerful enemy
@@ -1980,6 +2005,7 @@ And then we shall rebuild the Empire of Power once more.
 Now rise, Death Gaia.”
 
 @48488 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「はっ! ありがたきお言葉、
 >  身に余る光栄。このデスガイヤー
 “Yes, sir! Such gracious words are more than I deserve. I, Death Gaia,
@@ -1993,6 +2019,7 @@ shall recall the days of my youth and fight to my heart's content.”
 “Good.”
 
 @48490 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「くるならこい、地球人ども!
 >  貴様らはこのデスガイヤーが倒す!
 “Come if you dare, Earthlings! I, Death Gaia, will strike you down!
@@ -2053,8 +2080,9 @@ You're right, it probably works out better if he stays behind.”
 Come on, David, let's go.”
 
 @48498 David · デビッド
+# 审校：破折号
 > 「ちょっ、なんだよシモーヌ」
-“Hey, what the—what is it, Simone?”
+“Hey, what the... what is it, Simone?”
 
 @48499 Simone · シモーヌ
 > 「いいから、くるのよ」
@@ -2410,9 +2438,11 @@ We're going to be plenty busy ourselves.”
 Dr. Hazuki, please take care of the Gandor's modifications.”
 
 @48566 Dr. Hazuki · 葉月博士
+# 审校：缩写
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「わかっている。もう弓教授たちとも
 >  プランは練ってある
-“I know. I've already worked out the plan with Prof. Yumi and the others.
+“I know. I've already worked out the plan with Professor Yumi and the others.
 ---
 >  一刻も早く彼らを迎えに
 >  行ってやらなくてはな」
@@ -2616,10 +2646,12 @@ I'll apologize properly to Ple later.”
 “I'm so happy. Thank you, {HeroName}.”
 
 @48607 Death Gaia · デスガイヤー
+# 审校：原文是呼唤帝王，没有“sir”对应的敬称，按称呼分寸去掉多余的 sir。
 > 「ムゲ帝王様」
-“Emperor Muge, sir.”
+“Emperor Muge.”
 
 @48608 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤーか。どうした」
 “Death Gaia. What is it?”
 
@@ -2633,6 +2665,7 @@ I'll apologize properly to Ple later.”
 I may be wrong, but could he have been defeated by the Earthlings...?”
 
 @48610 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「かもしれぬ。ギルドロームのたっての
 >  希望があったので行かせたが、
 “Perhaps. I sent him because Gildrome insisted so strongly, but
@@ -2655,7 +2688,7 @@ Death Gaia, I shall have you handle it.”
 and, by some chance, push all the way here...”
 
 @48612 Emperor Muge · ムゲ帝王
-# 审校：“力の帝国”按词表/世界观应译为 Empire of Power，而非 Empire of Might；调整语序使英文更自然。
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「フフフ、それも面白いではないか
 >  デスガイヤー。もしそのような強敵が
 “Heh heh heh, would that not be interesting too, Death Gaia? If such a mighty foe
@@ -2672,24 +2705,25 @@ to our hearts' content. And then we shall rebuild the Empire of Power anew.
 Now rise, Death Gaia.”
 
 @48613 Death Gaia · デスガイヤー
-# 审校：“身に余る光栄”译为 beyond my deserts 不自然，改为 more than I deserve。
+# 审校：合并：misc 与 scene 批次三方合并
 > 「はっ! ありがたきお言葉、
 >  身に余る光栄。このデスガイヤー
-“Yes, sir! Such gracious words, an honor more than I deserve. I, Death Gaia,
+“Yes, sir! Such gracious words are more than I deserve. I, Death Gaia,
 ---
 >  若き日を思いだし、
 >  思う存分に戦う覚悟」
-recalling the days of my youth, am resolved to fight to my heart's content.”
+shall recall the days of my youth and fight to my heart's content.”
 
 @48614 Emperor Muge · ムゲ帝王
 > 「うむ」
 “Mm.”
 
 @48615 Death Gaia · デスガイヤー
+# 审校：合并：misc 与 scene 批次三方合并
 > 「くるならこい、地球人ども!
 >  貴様らはこのデスガイヤーが倒す!
 “Come if you dare, Earthlings! I, Death Gaia, will strike you down!
 ---
 >  必ず、叩きつぶす! 燃える、燃え
 >  るぞ! 血が、戦いの血が騒ぐッ!」
-I will crush you all, without fail! It burns, it burns! My blood, my warrior's blood, races!”
+I will crush you all, without fail! It burns, it burns! My blood, the blood of battle, is stirring!”

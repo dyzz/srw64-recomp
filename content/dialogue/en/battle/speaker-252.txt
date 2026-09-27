@@ -1,119 +1,160 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9026 Rosamia · ロザミア
+# 触发：攻击（通用，1/10）
 > 「沈めっ!」
 “Sink!”
 
 @9027 Rosamia · ロザミア
+# 触发：攻击（通用，2/10）
 > 「邪魔をするかっ!」
 “You dare get in my way?!”
 
 @9028 Rosamia · ロザミア
+# 触发：攻击（通用，3/10）
 > 「貴様ぁっ!」
 “You bastard!”
 
 @9029 Rosamia · ロザミア
+# 触发：攻击（通用，4/10）
+# 审校：原英文生硬
 > 「死んでもらうよ!」
-“I'll have you die!”
+“You’re gonna die!”
 
 @9030 Rosamia · ロザミア
+# 触发：攻击（通用，5/10）
 > 「捕まえたよ」
 “Got you.”
 
 @9031 Rosamia · ロザミア
+# 触发：攻击（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がさないよ」
-“I won't let you escape.”
+“I won’t let you escape.”
 
 @9032 Rosamia · ロザミア
+# 触发：攻击（通用，7/10）
 > 「死ねいっ!!」
 “Die!!”
 
 @9033 Rosamia · ロザミア
+# 触发：攻击（通用，8/10）
+# 审校：感叹号按原文
 > 「やらせるかいっ!」
-“Like I'd let you!!”
+“Like I’d let you!”
 
 @9034 Rosamia · ロザミア
+# 触发：攻击（通用，9/10）
 > 「速い? しかし、私にかなうかな」
 “Fast? But can you match me?”
 
 @9035 Rosamia · ロザミア
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフ、もう逃がさないよ」
-“Heh heh, I won't let you escape now.”
+“Heh heh, I won’t let you escape now.”
 
 @9036 Rosamia · ロザミア
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あ、ああ……うあああっ!!」
-“A-Ahh... uwaaaah!!”
+“A-ahh... uwaaaah!!”
 
 @9037 Rosamia · ロザミア
+# 触发：被击坠（通用，2/2）
 > 「くっ! しくじった!!」
 “Ngh! I messed up!!”
 
 @9038 Rosamia · ロザミア
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「あああっ! 空が……空が落ちる……」
 “Aaaah! The sky... the sky is falling...”
 
 @9039 Rosamia · ロザミア
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何っ!? な、何だ、この力は!?」
-“What?! W-What is this power?!”
+“What?! W-what is this power?!”
 
 @9040 Rosamia · ロザミア
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「あうぅっ!
 >  何だ、直撃だというのか!?」
 “Agh! What, a direct hit?!”
 
 @9041 Rosamia · ロザミア
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くうっ! やるじゃないかっ!」
 “Ngh! Not bad!”
 
 @9042 Rosamia · ロザミア
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! このっ、生意気なんだよっ!」
-“Ugh! Why you, you're getting cocky!”
+“Ugh! Why you, you’re getting cocky!”
 
 @9043 Rosamia · ロザミア
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! やってくれる!」
-“Tch! You've got some nerve!”
+“Tch! You’ve got some nerve!”
 
 @9044 Rosamia · ロザミア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ふん、その程度かい」
 “Hmph, is that all?”
 
 @9045 Rosamia · ロザミア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないねっ!」
-“It doesn't work!”
+“It doesn’t work!”
 
 @9046 Rosamia · ロザミア
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「そんな攻撃でやられるものか!」
 “Like an attack like that could take me down!”
 
 @9047 Rosamia · ロザミア
+# 触发：回避（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはしないっ!」
-“It won't hit!”
+“It won’t hit!”
 
 @9048 Rosamia · ロザミア
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「機動性はこっちが上だって
 >  いったろう?」
-“Didn't I tell you I'm more maneuverable?”
+“Didn’t I tell you I’m more maneuverable?”
 
 @9049 Rosamia · ロザミア
+# 触发：回避（通用，3/5）
 > 「甘いんだよっ!」
 “Too soft!”
 
 @9050 Rosamia · ロザミア
+# 触发：回避（通用，4/5）
 > 「遅いっ!」
 “Too slow!”
 
 @9051 Rosamia · ロザミア
+# 触发：回避（通用，5/5）
 > 「ん? 何かの作戦なのか?」
 “Hm? Is this some kind of plan?”
 
 @9052 Rosamia · ロザミア
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなのさ!」
-“It's pointless!”
+“It’s pointless!”
 
 @9053 Rosamia · ロザミア
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れか!? ぬかった!」
 “Out of ammo?! I slipped up!”
 
 @9054 Rosamia · ロザミア
+# 触发：射程外，无法反击（通用，1/1）
 > 「ふん、遠くからこそこそと……ネズミめ!」
 “Hmph, sneaking around from far away... you rat!”

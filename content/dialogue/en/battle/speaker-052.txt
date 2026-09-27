@@ -1,248 +1,361 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @5846 Gato · ガトー
+# 触发：攻击（通用，1/19）
 > 「これでとどめだっ!」
 “This is the finishing blow!”
 
 @5847 Gato · ガトー
+# 触发：攻击（通用，2/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私のじゃまをするなっ!!」
-“Don't get in my way!!”
+“Don’t get in my way!!”
 
 @5848 Gato · ガトー
-# 审校：“私は義によって立っているからな!!”是卡托说明自己不败的理由，补上“For”使因果关系更清晰。
+# 触发：攻击（通用，3/19）
+# 审校：Gato 的台词庄严悲壮，“stand on righteousness”改为“stand upon righteousness”更符合其正式、庄重的军人语气。
 > 「私は負けん!!
 >  私は義によって立っているからな!!」
-“I will not lose!! For I stand on righteousness!!”
+“I will not lose!! For I stand upon righteousness!!”
 
 @5849 Gato · ガトー
+# 触发：攻击（通用，4/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当ててみせる!!」
-“I'll make it hit!!”
+“I’ll make it hit!!”
 
 @5850 Gato · ガトー
+# 触发：攻击（通用，5/19）
 > 「あまいなっ!!」
 “Too naive!!”
 
 @5851 Gato · ガトー
+# 触发：攻击（通用，6/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなっ!!」
-“Don't underestimate me!!”
+“Don’t underestimate me!!”
 
 @5852 Gato · ガトー
+# 触发：攻击（通用，7/19）
 > 「おそいっ!!」
 “Too slow!!”
 
 @5853 Gato · ガトー
+# 触发：攻击（通用，8/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @5854 Gato · ガトー
+# 触发：攻击（通用，9/19）
 > 「じゃまだっ!!」
 “Out of my way!!”
 
 @5855 Gato · ガトー
+# 触发：攻击（通用，10/19）
 > 「もらったっ!!」
 “Got you!!”
 
 @5856 Gato · ガトー
+# 触发：攻击（通用，11/19）
 > 「そこだっ!!」
 “There!!”
 
 @5857 Gato · ガトー
+# 触发：攻击（通用，12/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「手間取るわけにはいかぬ!」
-“I can't afford to waste time!”
+“I can’t afford to waste time!”
 
 @5858 Gato · ガトー
+# 触发：攻击（通用，13/19）
 > 「落ちろっ!!」
 “Fall!!”
 
 @5859 Gato · ガトー
+# 触发：攻击（通用，14/19）
+# 审校：しずめ 是让对方沉下去
 > 「しずめぇーっ!!」
-“Take 'em down!!”
+“Go down!!”
 
 @5860 Gato · ガトー
+# 触发：攻击（通用，15/19）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「後退せんのか。よい覚悟だ!」
-“You won't retreat? Good resolve!”
+“You won’t retreat? Commendable resolve!”
 
 @5861 Gato · ガトー
+# 触发：攻击（通用，16/19）
 > 「このっ!!」
 “Why you!!”
 
 @5862 Gato · ガトー
+# 触发：攻击（通用，17/19）
+# 审校：“Don't get in my way”语气偏弱，改为更直接的怒吼“Out of my way”。
 > 「邪魔をするなーっ!!」
-“Don't get in my way!!”
+“Out of my way!!”
 
 @5863 Gato · ガトー
+# 触发：攻击（通用，18/19）
+# 审校：“Move it!!”语气不够强硬，改为更符合军人怒吼的“Get out of my way!!”。
 > 「どけいっ!!」
-“Move it!!”
+“Get out of my way!!”
 
 @5864 Gato · ガトー
+# 触发：攻击（通用，19/19）
+# 审校：与其他人的同句统一
 > 「直撃させるっ!!」
-“Direct hit!!”
+“I’ll land a direct hit!!”
 
 @5865 Gato · ガトー
+# 触发：被击坠（通用，1/5）
+# 审校：“I slipped up”偏口语，改为更符合军人自省的“I was careless”。
 > 「くっ! ぬかった!!」
-“Ngh! I slipped up!!”
+“Ngh! I was careless!!”
 
 @5866 Gato · ガトー
+# 触发：被击坠（通用，2/5）
+# 审校：“Is this as far as I go”语气偏弱，改为更悲壮的“Is this the end for me?!”
 > 「くっ!! ここまでか!!」
-“Ngh!! Is this as far as I go!!”
+“Ngh!! Is this the end for me?!”
 
 @5867 Gato · ガトー
-# 审校：“なんだと!?”在此处是震惊的感叹，不是真的询问对方说了什么，译为“What?!”更符合战斗情境。
+# 触发：被击坠（通用，3/5）
+# 审校：原文“なんだと!?”是震惊的反问，改为更完整的“What did you say?!”更贴合语气。
 > 「なんだと!?」
-“What?!”
+“What did you say?!”
 
 @5868 Gato · ガトー
+# 触发：被击坠（通用，4/5）
 > 「ぐうぅぅっ!!」
 “Guuuh!!”
 
 @5869 Gato · ガトー
+# 触发：被击坠（通用，5/5）
+# 审校：南無三 按人物：悲壮军人
 > 「南無三!」
-“Alas!”
+“Lord have mercy!”
 
 @5870 Gato · ガトー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ!!
 >  このままでは機体がもたん!」
-“Tch!! At this rate the unit won't hold!”
+“Tch!! At this rate the unit won’t hold!”
 
 @5871 Gato · ガトー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 > 「な、なんと……バカなっ!」
 “W-what... impossible!”
 
 @5872 Gato · ガトー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：Uooh 不是英文拟声
 > 「うおっ! バカな、
 >  この私がおされているだと!?」
-“Uooh! Impossible, I'm being pushed back?!”
+“Whoa! Impossible, I’m being pushed back?!”
 
 @5873 Gato · ガトー
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「むうっ!! ダメージを受けすぎたか!?」
 “Mmph!! Have I taken too much damage?!”
 
 @5874 Gato · ガトー
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!! しかし、まだやられはせん!」
-“Ngh!! But I'm not done yet!”
+“Ngh!! But I’m not finished yet!”
 
 @5875 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/8）
 > 「むうっ! や、やるな!」
 “Mmph! N-not bad!”
 
 @5876 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもので、落ちはしない!」
-“I won't fall from something like this!”
+“I won’t be brought down by something like this!”
 
 @5877 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/8）
 > 「ぐ!
 >  この私に手傷を負わせるとは……」
 “Guh! To wound me like this...”
 
 @5878 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! 少しはやるようだな……」
-“Ugh! You're a little better than I thought...”
+“Ugh! You’re a little better than I thought...”
 
 @5879 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ!! まだまだあっ!!」
-“Ngh!! I'm not done yet!!”
+“Ngh!! I’m not done yet!!”
 
 @5880 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，6/8）
 > 「うおっ!! これしきのことで!!」
 “Ugh!! As if this would stop me!!”
 
 @5881 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「くっ!!
 >  だが、この程度ならば!!」
 “Ngh!! But at this level, I can still fight!!”
 
 @5882 Gato · ガトー
+# 触发：中伤（剩余 HP 30–90%）（通用，8/8）
 > 「くっ、情けない! これほどの
 >  損傷を受けるとは!」
 “Ngh, how pathetic! To take this much damage!”
 
 @5883 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @5884 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「たかがかすりキズだ!」
-“It's just a scratch!”
+“It’s just a scratch!”
 
 @5885 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効きはせん!!」
-“It won't work on me!!”
+“It won’t work on me!!”
 
 @5886 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 # 审校：「蟷螂の斧」是成语，直译成 mantis's axe 不自然，改为英文对应表达。
 > 「貴様の攻撃など、しょせん
 >  蟷螂の斧!」
 “Your attacks are nothing but a mantis trying to stop a cart!”
 
 @5887 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ!! まだだ! まだやられはせん!」
-“Ngh!! Not yet! I'm not going down yet!”
+“Ngh!! Not yet! I’m not going down yet!”
 
 @5888 Gato · ガトー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだまだだな!!」
-“You're still no match for me!!”
+“You’re still no match for me!!”
 
 @5889 Gato · ガトー
+# 触发：回避（通用，1/8）
 > 「ふっ、笑止!」
 “Hmph, ridiculous!”
 
 @5890 Gato · ガトー
+# 触发：回避（通用，2/8）
 > 「そこかっ!」
 “There!”
 
 @5891 Gato · ガトー
+# 触发：回避（通用，3/8）
 > 「見切った!!」
 “I saw right through it!!”
 
 @5892 Gato · ガトー
-# 审校：原译把反问对象弄反，改为符合原文“你以为我看不穿这种程度的攻击吗”的语气。
+# 触发：回避（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度の攻撃、
 >  見切れぬ私と思ってかっ!」
-“Did you think I couldn't see through an attack like that?!”
+“Did you think I couldn’t see through an attack like that?!”
 
 @5893 Gato · ガトー
+# 触发：回避（通用，5/8）
 > 「あまいなっ!」
 “Too naive!”
 
 @5894 Gato · ガトー
-# 审校：「間合いがあまい」指时机/距离判断不严，spacing 太直译，改为更自然的战斗用语。
+# 触发：回避（通用，6/8）
+# 审校：間合い 是距离不是时机
 > 「間合いがあまいっ!」
-“Your timing is too slow!”
+“Your spacing is sloppy!”
 
 @5895 Gato · ガトー
+# 触发：回避（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたりはせんよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @5896 Gato · ガトー
+# 触发：回避（通用，8/8）
 > 「未熟!」
 “Amateur!”
 
 @5897 Gato · ガトー
+# 触发：攻击无效（护罩／装甲）（通用，1/4）
 > 「効かぬわっ!」
 “It has no effect!”
 
 @5898 Gato · ガトー
+# 触发：攻击无效（护罩／装甲）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ!その程度ではな!」
-“It won't work! Not at that level!”
+“It won’t work! Not at that level!”
 
 @5899 Gato · ガトー
+# 触发：攻击无效（护罩／装甲）（通用，3/4）
 > 「フン、その程度の攻撃!!」
 “Hmph, an attack like that!!”
 
 @5900 Gato · ガトー
+# 触发：攻击无效（护罩／装甲）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームなど効かん!」
-“Beams won't work on me!”
+“Beams won’t work on me!”
 
 @5901 Gato · ガトー
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何っ!? 弾切れだというのか!?」
-“What?! You mean I'm out of ammo?!”
+“What?! You mean I’m out of ammo?!”
 
 @5902 Gato · ガトー
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：补引号；弹尽情境
 > 「くっ! だめか!?」
-“Ngh! Is it no good?!”
+“Ngh! I can’t return fire?!”
 
 @5903 Gato · ガトー
+# 触发：射程外，无法反击（通用，1/1）
 # 审校：原文是说自己被射程外攻击，原译 from out of range 可接受但稍生硬，改为更自然表达。
 > 「くっ!
 >  射程距離外からの攻撃とはな」
 “Ngh! Attacking from outside my range, are you?”
+
+@14228 Gato · ガトー
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  ハイメガキャノン発射!」
+“Energy charge... High Mega Cannon, fire!”
+
+@14229 Gato · ガトー
+# 触发：回避，条件 1000
+# 审校：ダミー 是诱饵，与 16325 统一
+> 「ダミーごときにかかるとは……未熟!」
+“Falling for a mere decoy... Amateur!”
+
+@14230 Gato · ガトー
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ときには、このような手も使わせて
+>  もらう!」
+“Sometimes, I’ll use a trick like this too!”
+
+@14231 Gato · ガトー
+# 触发：回避，条件 1000
+# 审校：同 14229
+> 「甘いな! それではダミーをつぶす
+>  程度しかできん!」
+“Too naive! That’s only good enough to smash a decoy!”

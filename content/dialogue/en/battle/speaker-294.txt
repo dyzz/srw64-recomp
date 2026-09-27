@@ -1,153 +1,212 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @14089 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔なんだよ!」
-“You're in my way!”
+“You’re in my way!”
 
 @14090 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，2/10）
 > 「うおおおおっ!!」
 “Uwooooh!!”
 
 @14091 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
 “This is the end for you!!”
 
 @14092 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつで決めてやる!」
-“I'll finish you with this!”
+“I’ll finish you with this!”
 
 @14093 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，5/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!!」
-“Like I'd let you!!”
+“Like I’d let you!!”
 
 @14094 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，6/10）
 > 「落ちろっ!!」
 “Go down!!”
 
 @14095 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，7/10）
 > 「このっ!!」
 “Why you!!”
 
 @14096 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，8/10）
 > 「行くぞっ!!」
 “Here I come!!”
 
 @14097 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，9/10）
 > 「そこだっ!」
 “Right there!”
 
 @14098 Gishin Soldier · ギシン星兵
+# 触发：攻击（通用，10/10）
 > 「もらった!」
 “Got you!”
 
 @14099 Gishin Soldier · ギシン星兵
+# 触发：被击坠（通用，1/2）
+# 审校：被击坠情境，何だと 不是问对方说了什么
 > 「な、何だと!?」
-“W-what did you say?!”
+“W-what?!”
 
 @14100 Gishin Soldier · ギシン星兵
+# 触发：被击坠（通用，2/2）
 > 「しまった! 直撃か!?」
 “Damn! A direct hit?!”
 
 @14101 Gishin Soldier · ギシン星兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、い、いかん、やられる!?」
-“Guh, th-this is bad, I'm done for?!”
+“Guh, th-this is bad, I’m done for?!”
 
 @14102 Gishin Soldier · ギシン星兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I'm at a disadvantage!”
+“Whoa?! Tch, I’m at a disadvantage!”
 
 @14103 Gishin Soldier · ギシン星兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうううっ! つ、強いっ!」
-“Nghhh! H-he's strong!”
+“Nghhh! H-he’s strong!”
 
 @14104 Gishin Soldier · ギシン星兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“Not bad! Just as expected!”
+“Not bad! Just as expected of you!”
 
 @14105 Gishin Soldier · ギシン星兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guuh!! His power's on another level!!”
+“Guuh!! His power’s on another level!!”
 
 @14106 Gishin Soldier · ギシン星兵
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! まだまだっ!」
-“Tch! I'm not done yet!”
+“Tch! I’m not done yet!”
 
 @14107 Gishin Soldier · ギシン星兵
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! 少しはできるな!」
-“Tch! You've got some skill!”
+“Tch! You’ve got some skill!”
 
 @14108 Gishin Soldier · ギシン星兵
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! そう簡単にやられはせん!!」
-“Ngh! I won't go down that easily!!”
+“Ngh! I won’t go down that easily!!”
 
 @14109 Gishin Soldier · ギシン星兵
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! やってくれたな!!」
-“Ugh! You'll pay for that!!”
+“Ugh! You’ll pay for that!!”
 
 @14110 Gishin Soldier · ギシン星兵
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「まだだっ! まだこれからよ!!」
 “Not yet! This is just the beginning!!”
 
 @14111 Gishin Soldier · ギシン星兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「非力なんだよ!」
-“You're just weak!”
+“You’re just weak!”
 
 @14112 Gishin Soldier · ギシン星兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「パワー不足だな!」
 “Not enough power!”
 
 @14113 Gishin Soldier · ギシン星兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度か!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @14114 Gishin Soldier · ギシン星兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃など効くものかよ!」
-“An attack like that won't do a thing!”
+“An attack like that won’t do a thing!”
 
 @14115 Gishin Soldier · ギシン星兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「ふん、かすっただけよ!」
 “Hmph, that just grazed me!”
 
 @14116 Gishin Soldier · ギシン星兵
+# 触发：回避（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるものかよ!」
-“You'll never hit me!”
+“You’ll never hit me!”
 
 @14117 Gishin Soldier · ギシン星兵
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「踏み込みが足りん!」
-“You're not committing enough!”
+“You’re not committing enough!”
 
 @14118 Gishin Soldier · ギシン星兵
+# 触发：回避（通用，3/5）
 > 「間合いが遠いわっ!」
 “Too far away!”
 
 @14119 Gishin Soldier · ギシン星兵
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「狙いが甘い!」
-“Your aim's too sloppy!”
+“Your aim’s too sloppy!”
 
 @14120 Gishin Soldier · ギシン星兵
+# 触发：回避（通用，5/5）
 > 「バカめ。どこを狙っている!」
 “Fool. What are you aiming at!”
 
 @14121 Gishin Soldier · ギシン星兵
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ムダな攻撃をする……」
 “What a pointless attack...”
 
 @14122 Gishin Soldier · ギシン星兵
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：beam 小写
 > 「ふ、そんなビームではな!」
-“Hah, a Beam like that won't work!”
+“Hah, a beam like that won’t work!”
 
 @14123 Gishin Soldier · ギシン星兵
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、弾切れとはな……」
 “Tch, out of ammo, huh...”
 
 @14124 Gishin Soldier · ギシン星兵
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「弾切れか……しかたあるまい」
 “Out of ammo... nothing I can do about it.”
 
 @14125 Gishin Soldier · ギシン星兵
+# 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
 “Tch, attacking from long range, huh...”
 
 @14126 Gishin Soldier · ギシン星兵
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「む……ここからでは反撃できん」
-“Mm... I can't counter from here.”
+“Mm... I can’t counter from here.”

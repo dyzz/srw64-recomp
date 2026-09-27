@@ -56,9 +56,10 @@ we can't hope for any more fighting strength. We've no choice but to do this as 
 and Quatre's back, right?!”
 
 @49347 Manami · マナミ（按段落 3DD4）
+# 审校：玛奈美对阿姆罗用“アムロさん”，译文应保留“Mr. Amuro”以符合她的大小姐敬语习惯。
 > 「行きましょう、アムロさん。
 >  今のあたしたちだけでは
-“Let's go, Amuro. With just us as we are now,
+“Let's go, Mr. Amuro. With just us as we are now,
 ---
 >  とめられるかどうかわからない。だけど、
 >  今行かなくてはどうにもならなくなるわ」
@@ -297,12 +298,13 @@ That was your intention, was it not?”
 “Yes, sir...”
 
 @49367 Char · シャア
+# 审校：精读：句末标点
 > (アムロ……私はあこぎなことをやっている
 >  ……感じているのならば
 (Amuro... I am doing something merciless... If you sense it,
 ---
 >  私をとめてみせろ)
-then try and stop me)
+then try and stop me.)
 
 @49368 Kamille · カミーユ
 > 「しかし、レディ・アン……博物館
@@ -406,9 +408,10 @@ there was nothing like that on Axis!! And that thing is...”
 “Yeah... there's no mistake! It's the Dark Gundam!!”
 
 @49389 Juzo · 十三
+# 审校：十三的关西腔反问「やろ!?」应译出反问语气，补上 can it。
 > 「ちょいまちいや。なんぼ何でも、
 >  あんなでかいわけあらへんやろ!?」
-“Hold on there. No matter how you slice it, it can't be that huge!”
+“Hold on there. No matter how you slice it, it can't be that huge, can it?!”
 
 @49390 Kosuke · 小介
 > 「いえ、僕が独自に分析した
@@ -546,9 +549,10 @@ there's no telling what's waiting for us.”
 we're out of time.”
 
 @49412 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「アクシズはもう動いてるんだぜ!?
 >  そんな問答している時間は
-“Axis is already on the move!? We don't have time for
+“Axis is already on the move?! We don't have time for
 ---
 >  ねぇだろうが!
 >  どうせやるしかねぇんなら
@@ -799,9 +803,10 @@ can't be saved. Or is that another one of Zero's predictions?”
 “I see... how pathetic. I made a big fool of myself and then just collapsed, huh.”
 
 @49452 Ryo · 亮
+# 审校：用户确认：直引号→弯引号
 > 「まったくだ……と言いたいが、違うな。
 >  どうやらムゲの宇宙での無理が
-“I'd like to say 'exactly'... but no, that's not it. It seems the strain from
+“I'd like to say ‘exactly’... but no, that's not it. It seems the strain from
 ---
 >  たたったようだ」
 the Muge universe finally caught up with you.”
@@ -823,7 +828,7 @@ Even I collapsed. It's no wonder
 all of you were down.”
 
 @49455 Shinobu · 忍
-# 审校：原译准确，无需修改。
+# 审校：补全整条台词的外层引号
 > 「……ダンクーガのシステムか……ムゲの
 >  宇宙は、きつかったからな」
 “...The Dancouga system, huh... The Muge universe was rough.”
@@ -838,7 +843,7 @@ all of you were down.”
 we were partly running on sheer willpower.”
 
 @49457 Shinobu · 忍
-# 审校：原译准确，无需修改。
+# 审校：补全整条台词的外层引号
 > 「……沙羅と雅人はどうした?」
 “...What about Sara and Masato?”
 
@@ -1004,8 +1009,9 @@ things again. And on top of that, now we're about to lose our own lives.”
 “The enemy?!”
 
 @49489 Reika · レイカ
+# 审校：丽香对舰长说话应保持专业、克制，原译过于随意。
 > 「そんなことわからないわよ」
-“How should I know?”
+“I can't tell that from here.”
 
 @49490 Beauty · ビューティ
 > 「……艦長」
@@ -1408,8 +1414,9 @@ Could it be the fleet of the {HeroMech}?”
 “Yes, Captain. We just got the call.”
 
 @49561 Henken · ヘンケン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ああ特佐。いまコールがあった」
-“Yes, Lieutenant Colonel. We just got the call.”
+“Yes, Special Colonel. We just got the call.”
 
 @49562 Amuro · アムロ
 > 「みんなは、
@@ -1469,13 +1476,15 @@ but is that Axis?! What on earth is going on?!”
 Char Aznable, the man I once fought, and who is still my enemy now.”
 
 @49571 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「シャア? クワトロ特尉が!?」
-“Char? Lieutenant Quattro?!”
+“Char? Special Lieutenant Quattro?!”
 
 @49572 Banjo · 万丈
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どういうことなんだ!?
 >  なぜクワトロ特尉が……」
-“What does this mean?! Why would Lieutenant Quattro...”
+“What does this mean?! Why would Special Lieutenant Quattro...”
 
 @49573 Amuro · アムロ
 > 「もう、クワトロ・バジーナはいないというこ
@@ -1922,9 +1931,10 @@ Men, no one dies until we've seen Master Quatre!”
 “Rasid... everyone...”
 
 @49647 Kyral · キラル
+# 审校：精读：破折号
 > 「我らが母なる星の危機、
 >  主義も主張もあるものか!
-“Our mother star is in peril—what need have we for ideology or claims!
+“Our mother star is in peril, what need have we for ideology or claims!
 ---
 >  我ら一同この地球を守るため、
 >  命という名の盾とならん

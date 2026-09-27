@@ -1,253 +1,399 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12592 Master · マスター
+# 触发：攻击（通用，1/11）
 # 审校：「でやあぁぁぁっ」是战斗呐喊，原译“Doryaaaaaah”可接受，改为更贴近发音。
 > 「でやあぁぁぁっ!!」
 “Deyaaaaaah!!”
 
 @12593 Master · マスター
-# 审校：「身の程知らず」是“不知分寸”，原译“insolent fool”可接受，改为更贴切。
+# 触发：攻击（通用，2/11）
+# 审校：口吻卡：英文不用缩写
 > 「この身の程知らずがぁ!!」
-“You don't know your place!!”
+“You do not know your place!!”
 
 @12594 Master · マスター
+# 触发：攻击（通用，3/11）
 > 「はあぁぁぁぁぁ……はあっ!!」
 “Haaaaaah... hah!!”
 
 @12595 Master · マスター
+# 触发：攻击（通用，4/11）
 # 审校：原译正确，无需修改。
 > 「とおぉぉぉっ!!」
 “Tooooh!!”
 
 @12596 Master · マスター
+# 触发：攻击（通用，5/11）
 # 审校：「バカ者め」是“蠢货”，原译“idiot”可接受，改为更贴切。
 > 「このバカ者めっ!!」
 “You fool!!”
 
 @12597 Master · マスター
+# 触发：攻击（通用，6/11）
 > 「ゆくぞっ!!」
 “Here I come!!”
 
 @12598 Master · マスター
+# 触发：攻击（通用，7/11）
 > 「さあ、おとなしく最後を迎えるが
 >  よい!」
 “Now, accept your end quietly!”
 
 @12599 Master · マスター
+# 触发：攻击（通用，8/11）
+# 审校：不用缩写
 > 「つけあがるなぁっ!!」
-“Don't get cocky!!”
+“Do not get ahead of yourself!!”
 
 @12600 Master · マスター
+# 触发：攻击（通用，9/11）
+# 审校：宗师腔，一人称老夫
 > 「とどめを刺してくれるわ!!」
-“I'll finish you off!!”
+“I shall finish you off!!”
 
 @12601 Master · マスター
+# 触发：攻击（通用，10/11）
 > 「しねいっ!!」
 “Die!!”
 
 @12602 Master · マスター
+# 触发：攻击（通用，11/11）
 # 审校：「でやぁっ」是战斗呐喊，原译“Doryah”可接受，改为更贴近发音。
 > 「でやぁっ!!」
 “Deyah!!”
 
 @12603 Master · マスター
+# 触发：被击坠（通用，1/3）
 > 「うおおおおおおっ!!」
 “Uwooooooooh!!”
 
 @12604 Master · マスター
-# 审校：原译“what, this can't be”略生硬，改为更自然。
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、何だとこんなバカな……!?」
-“W-what?! This can't be...?!”
+“W-what?! This can’t be...?!”
 
 @12605 Master · マスター
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そんな!? この東方不敗が
 >  手も足もだせんなどと……」
-“No!? That I, Master Asia, could be rendered helpless...”
+“No?! That I, Master Asia, could be rendered helpless...”
 
 @12606 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/12）
+# 审校：なんの＝这算什么；不用缩写
 > 「ぬおおっ! な、なんの!この東方不
 >  敗がそう易々とやられるものかっ!」
-“Ngh! W-what! I, Master Asia, won't be beaten so easily!”
+“Ngh! Th-this is nothing! I, Master Asia, will not be beaten so easily!”
 
 @12607 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/12）
 > 「ぐわああっ!!
 >  き、貴様、これほどの力を……」
 “Guwaaah!! Y-you, to have such power...”
 
 @12608 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/12）
 > 「があああっ!! お、おのれ、よくもっ!!」
 “Gaaah!! D-damn you, how dare you!!”
 
 @12609 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/12）
 > 「うおおっ! こ、こんな事で
 >  このわしが参ると思ってかっ!!」
 “Uwoh! Y-you think this would make me yield!!”
 
 @12610 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだと!? そんなばかな!!」
-“What?! That's impossible!!”
+“What?! That’s impossible!!”
 
 @12611 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/12）
 > 「おのれぇぇぇっ!!」
 “Damn youuuu!!”
 
 @12612 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/12）
 > 「うわっ! なんと!?」
 “Uwah! What?!”
 
 @12613 Master · マスター
-# 审校：「こしゃくな真似を」是“竟敢耍这种小聪明”，原译“You impudent little!!”不完整，改为更自然。
+# 触发：重伤（剩余 HP 不足 30%）（通用，8/12）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「こしゃくな真似を!!」
-“You impudent little—!”
+“You impudent little...!”
 
 @12614 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，9/12）
 > 「貴様っ!!」
 “You!!”
 
 @12615 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，10/12）
 # 审校：原译正确，无需修改。
 > 「なにっ!?」
 “What?!”
 
 @12616 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，11/12）
 > 「どおわぁっ!!」
 “Dohwaaah!!”
 
 @12617 Master · マスター
+# 触发：重伤（剩余 HP 不足 30%）（通用，12/12）
+# 审校：不用缩写
 > 「こんなばかなことがあってたまるかぁぁぁ!」
-“This can't possibly be happening!”
+“This cannot be happening!”
 
 @12618 Master · マスター
-# 审校：原译“You, I held back”不通顺，改为更自然。
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：一人称老夫；英文不用缩写
 > 「何っ!? 貴様、手加減して
 >  おればいい気になりおって!!」
-“What?! You— I held back and you got full of yourself!!”
+“What?! I hold back, and you grow full of yourself!!”
 
 @12619 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「むうっ!
 >  わしとした事が油断したわ!」
 “Mmph! To think I let my guard down!”
 
 @12620 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「こざかしい……!」
 “Insolent...!”
 
 @12621 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 > 「くっ!!」
 “Ngh!!”
 
 @12622 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
 > 「なんと……!?」
 “What...?!”
 
 @12623 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
+# 审校：不用缩写
 > 「つけあがるなぁっ!!」
-“Don't get cocky!!”
+“Do not get ahead of yourself!!”
 
 @12624 Master · マスター
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 > 「ぐ……ゴホッゴホッ、こ、こんな時に……」
 “Guh... cough cough, o-of all times...”
 
 @12625 Master · マスター
-# 审校：原译“After all”可接受，改为更自然。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しょせん貴様はその程度よ!」
-“In the end, you're only that much!”
+“In the end, you’re only that much!”
 
 @12626 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
 > 「非力よのう」
 “How feeble.”
 
 @12627 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! 腰がはいっとらんぞ!」
-“What's wrong! You're not putting your back into it!”
+“What’s wrong! You’re not putting your back into it!”
 
 @12628 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
 > 「笑止っ!」
 “Ridiculous!”
 
 @12629 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
 > 「ちっ! うるさいやつめっ!」
 “Tch! Noisy pest!”
 
 @12630 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/8）
 > 「貴様の力はその程度のものかぁ!」
 “Is your power only that much?!”
 
 @12631 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/8）
 > 「そんな腕でわしを倒せるとでも思って
 >  おるのか!?」
 “You think you can defeat me with such skill?!”
 
 @12632 Master · マスター
+# 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
 > 「ふっふっふっ……
 >  このザコどもが……ほざきよるわ……!」
 “Heh heh heh... you small fry... running your mouth...!”
 
 @12633 Master · マスター
+# 触发：回避（通用，1/11）
 > 「ほーれ、ほれ! もっとよく狙わんか!」
 “Come on, come on! Aim better!”
 
 @12634 Master · マスター
+# 触发：回避（通用，2/11）
 > 「ふ、貴様の攻撃など、とうに
 >  見切っておるわ!」
 “Hmph. I saw through your attack long ago!”
 
 @12635 Master · マスター
-# 审校：原文「わしを狙ったのではなかったのか!?」是反问“不是要瞄准我吗”，初稿“Weren't you aiming for me?!”已可，但为更贴近反问语气改为“Were you not aiming for me?!”。
+# 触发：回避（通用，3/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! わしを狙ったのでは
 >  なかったのか!?」
-“What's wrong?! Were you not aiming for me?!”
+“What’s wrong?! Were you not aiming for me?!”
 
 @12636 Master · マスター
+# 触发：回避（通用，4/11）
 > 「たわけがっ!!」
 “You fool!!”
 
 @12637 Master · マスター
+# 触发：回避（通用，5/11）
 # 审校：原文「次々とかかってこんかっ!!」是催促对方接二连三攻过来，初稿“Keep them coming”稍弱，改为更贴近原意。
 > 「さあ! 次々とかかってこんかっ!!」
 “Come! Keep coming at me, one after another!!”
 
 @12638 Master · マスター
+# 触发：回避（通用，6/11）
+# 审校：一人称老夫；英文不用缩写
 > 「何処を見ておる?
 >  わしはここだ、ここにおる!」
-“Where are you looking? I'm here, right here!”
+“Where are you looking? I am here, right here!”
 
 @12639 Master · マスター
+# 触发：回避（通用，7/11）
+# 审校：Grandmaster 口吻应更威严，用“You fool”而非“You idiot”更符合其武学宗师腔调。
 > 「バカ者がぁ!!」
-“You idiot!!”
+“You fool!!”
 
 @12640 Master · マスター
+# 触发：回避（通用，8/11）
+# 审校：回避的あまい
 > 「あまいぞっ!!」
-“Too soft!!”
+“Naive!!”
 
 @12641 Master · マスター
+# 触发：回避（通用，9/11）
 > 「おそい! おそすぎるっ!!」
 “Too slow! Far too slow!!”
 
 @12642 Master · マスター
+# 触发：回避（通用，10/11）
+# 审校：Grandmaster 要求无缩写，改为“You are”以符合其古雅口吻。
 > 「なっちゃいない!
 >  本当になっちゃいないぞ!」
-“You're hopeless! Truly hopeless!”
+“You are hopeless! Truly hopeless!”
 
 @12643 Master · マスター
+# 触发：回避（通用，11/11）
+# 审校：Grandmaster 要求无缩写，改为“That is”和“you are”以符合其古雅口吻。
 > 「だからお前はアホなのだぁ!」
-“That's why you're such a fool!”
+“That is why you are such a fool!”
 
 @12644 Master · マスター
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：Grandmaster 要求无缩写，改为“will not”以符合其古雅口吻。
 > 「貴様の攻撃などこのわしには
 >  効きはせぬわ!」
-“Your attacks won't work on me!”
+“Your attacks will not work on me!”
 
 @12645 Master · マスター
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「貴様の力もどうやらこれが
 >  限界のようだな……」
 “It seems this is the limit of your power...”
 
 @12646 Master · マスター
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：“I let my guard down”过于现代口语，改为“I was careless”更符合 Grandmaster 的威严古雅口吻。
 > 「ぬぅ、ぬかったわ!」
-“Ngh, I let my guard down!”
+“Ngh, I was careless!”
 
 @12647 Master · マスター
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：Grandmaster 口吻应更古雅，用“cowardly wretch”替代“coward”以增强其宗师腔调。
 > 「射程外からとは……
 >  卑怯なヤツめ!」
-“Attacking from out of range... you coward!”
+“Attacking from out of range... you cowardly wretch!”
+
+@17068 Master · マスター
+# 触发：使用〈超級覇王電影弾〉
+# 审校：招式名对齐词条表（官方英文名／中文词条）
+> 「超級・覇王・電影弾!!」
+“Chokyu Hao Den’eidan!!”
+
+@17069 Master · マスター
+# 触发：使用〈ダークネスフィンガー〉
+> 「ダークネスフィンガァァァァァッ!!」
+“Darkness Fingaaaaaa!!”
+
+@17070 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 1/2 句）
+> 「秘技!」
+“Secret technique!”
+
+@17071 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 2/2 句）
+# 审校：招式名对齐词条表（官方英文名／中文词条）
+> 「十二王方牌大車りぃぃん!!」
+“Juni Ohohai Daishariiiin!!”
+
+@17072 Master · マスター
+# 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）
+# 审校：帰山笑紅塵：笑红尘＝笑看红尘，不是 Laughing Crimson
+> 「帰山……笑紅じぃぃん!!」
+“Return to the Mountain... Laughing at the Red Duuust!!”
+
+@17073 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 1/2 句）
+> 「流派! 東方不敗!!」
+“School of the Undefeated of the East!!”
+
+@17074 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 2/2 句）
+# 审校：招式名对齐词条表（官方英文名／中文词条）
+> 「十二王方牌! 大車輪!!」
+“Juni Ohohai! Daisharin!!”
+
+@17075 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 1/2 句）
+> 「流派! 東方不敗!!」
+“School of the Undefeated of the East!!”
+
+@17076 Master · マスター
+# 触发：使用〈十二王方牌大車輪〉（对话第 2/2 句）
+# 审校：招式名对齐词条表（官方英文名／中文词条）
+> 「十二王方牌!!
+>  大車輪ぃぃぃぃん!!」
+“Juni Ohohai!! Daishariiiiin!!”
+
+@17077 Master · マスター
+# 触发：使用〈流派東方不敗石破天驚拳〉（对话第 1/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「東方不敗が最終奥義ぃっ!」
+“The Undefeated of the East’s ultimate secret!”
+
+@17078 Master · マスター
+# 触发：使用〈流派東方不敗石破天驚拳〉（对话第 2/2 句）
+# 审校：招式名对齐词条表（官方英文名／中文词条）
+> 「石破! 天驚けぇぇぇぇぇぇんっ!」
+“Sekiha! Tenkyokeeeeeen!”
+
+@17079 Master · マスター
+# 触发：使用〈酔舞・再現江湖デッドリーウェーブ〉（对话第 1/2 句）
+> 「酔舞・再現江湖
+>  デッドリーウェェイブ!!」
+“Drunken Dance: Deadly Wave Reborn!!”
+
+@17080 Master · マスター
+# 触发：使用〈酔舞・再現江湖デッドリーウェーブ〉（对话第 2/2 句）
+> 「……爆発!!」
+“...Explosion!!”

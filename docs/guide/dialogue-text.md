@@ -6,7 +6,7 @@
 
 | 位置 | 用途 |
 | --- | --- |
-| `content/dialogue/<locale>/`（仓库）；应用包内 `Contents/Resources/dialogue/<locale>/` | 程序附带的译文。按剧情场景、战斗台词区段分文件，更新程序时整套替换 |
+| `content/dialogue/<locale>/`（仓库）；应用包内 `Contents/Resources/dialogue/<locale>/` | 程序附带的译文。剧情按场景分文件；战斗台词按人物分文件（`battle/speaker-NNN.txt`），每条上方的 `# 触发：` 注释说明这句在什么情境、用哪件武器、对哪个对手时出现（见 [战斗台词选择表](../data/battle-quotes.md)）；更新程序时整套替换 |
 | 用户目录下的 `dialogue/<locale>/`（macOS 应用：`~/Library/Application Support/SRW64Recomp/dialogue/<locale>/`；开发试玩 `scripts/Play SRW64 Native.command`：`build/recomp/profile-play/dialogue/<locale>/`；调试会话：各自运行目录下的 `dialogue/`） | 玩家自己的修改。**逐条覆盖**附带译文，文件名和目录结构随意；更新程序不会动这里 |
 
 `<locale>` 是 `zh-Hans`、`en` 或 `ja`（`ja` 目录用来改日文原文的显示，可选）。程序读取某语言的所有 `*.txt`：先读附带的，再读用户目录的；同一条台词以用户目录为准。

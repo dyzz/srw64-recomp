@@ -96,9 +96,9 @@ to space specifications too.”
 “It's Emary.”
 
 @24940 Emary · エマリー
-# 审校：说话人是エマリー，她发现舰长正在换衣服，原译“I-I'm changing”误把说话人当成了换衣服的人，改为“you're changing”。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あっ、お、お着替え中!?」
-“Ah, y-you're changing!?”
+“Ah, y-you're changing?!”
 
 @24941 Bright · ブライト
 > 「かまわん、なんだ?」
@@ -144,8 +144,9 @@ will be finished in about five more hours.”
 “...I am grateful, you know.”
 
 @24950 Emary · エマリー
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「それだけですか!?」
-“Is that all!?”
+“Is that all?!”
 
 @24951 Bright · ブライト
 > 「え?」
@@ -191,40 +192,46 @@ to be on the Argama...”
 “Emary, Emary!”
 
 @24960 Lady · レディ
+# 审校：Lady 对 Treize 的称呼按 address 应为 Your Excellency，而非 Lord Treize。
+# 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「どういうことだ、ツバロフ技師長。
 >  このようなことはトレーズ様の
 “What is the meaning of this, Chief Engineer Tubarov? This is not
 ---
 >  ご指示ではないぞ」
-an order from Lord Treize.”
+an order from His Excellency Treize.”
 
 @24961 Tubarov · ツバロフ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「月面都市と企業についてですか
 >  な? トレーズなど関係ないのです
 “You mean regarding the lunar cities and the corporations? Treize has nothing to do with it.
 ---
 >  これは財団からの直接の指示
 >  なのですから」
-This is a direct order from the foundation.”
+This is a direct order from the Foundation.”
 
 @24962 Lady · レディ
 > 「ツバロフ、貴様……」
 “Tubarov, you bastard...”
 
 @24963 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「これはこれは、バスク特佐」
-“Well, well, Colonel Bask.”
+“Well, well, Special Colonel Bask.”
 
 @24964 Bask · バスク
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐、OZはいつから
 >  トレーズの私兵になったのだ」
-“Colonel Lady Une, since when has OZ become Treize's private army?”
+“Special Colonel Lady Une, since when has OZ become Treize's private army?”
 
 @24965 Lady · レディ
 > 「なんだと?」
 “What did you say?”
 
 @24966 Bask · バスク
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「OZはロームフェラ財団の一部門
 >  にすぎん。幹部会の決定には
 “OZ is nothing more than one division of the Romefeller Foundation. Even
@@ -234,7 +241,7 @@ This is a direct order from the foundation.”
 Treize must obey the decisions of the executive council. Or do you mean to
 ---
 >  反抗の意思でもあるのか?」
-defy the foundation?”
+defy the Foundation?”
 
 @24967 Lady · レディ
 > 「くっ……バスク……」
@@ -249,26 +256,29 @@ defy the foundation?”
 what it is you ought to be loyal to.”
 
 @24969 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「まぁまぁ、もうよいでしょう。
 >  ところでバスク特佐、モビルドールの
-“Now, now, that's enough of that. By the way, Colonel Bask, regarding the
+“Now, now, that's enough of that. By the way, Special Colonel Bask, regarding the
 ---
 >  生産についてなのですが……」
 production of the Mobile Dolls...”
 
 @24970 Lady · レディ
+# 审校：Lady 对 Treize 的称呼按 address 应为 Your Excellency，而非 Lord Treize。
 > 「私はレディ・アン……OZの……?
 >  それとも……トレーズ様の?」
-“I am Lady Une... of OZ...? Or... of Lord Treize?”
+“I am Lady Une... of OZ...? Or... of His Excellency Treize?”
 
 @24971 Quattro · クワトロ
 > 「そうか、OZは月も制圧したか」
 “I see. So OZ has conquered the moon as well.”
 
 @24972 Amuro · アムロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「ああ。帝国軍はアステロイド前線
 >  基地まで撤退した。これで
-“Yeah. The imperial forces have retreated as far as the Asteroid Frontline Base. With this,
+“Yeah. The Imperial forces have retreated as far as the Asteroid Frontline Base. With this,
 ---
 >  地球圏はOZの支配するところと
 >  なる」
@@ -310,9 +320,10 @@ But after taking the moon, OZ hasn't moved. No, in fact weapons production
 seems to have picked up, but...”
 
 @24979 Quattro · クワトロ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「なるほど、帝国軍を追撃する
 >  よりも地球圏を完全に
-“I see. Rather than pursue the imperial forces, they prioritize the complete
+“I see. Rather than pursue the Imperial forces, they prioritize the complete
 ---
 >  制圧することを優先させるか。
 >  連中らしいやり方だ」
@@ -332,13 +343,14 @@ alone? You've got to be kidding!”
 “Even so, it's not like we can just up and go all the way to the Asteroid, right?”
 
 @24982 Sara · 沙羅
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんでさ? あたしたちはもともと帝国
 >  軍を叩くために戦ってきたんだ
-“Why not? We've been fighting to crush the imperial forces from the start.
+“Why not? We've been fighting to crush the Imperial forces from the start.
 ---
 >  いま行けば奴らをつぶせる。そのチャン
 >  スを、みすみす見逃すってのかい!?」
-If we go now, we can destroy them. Are you telling me we just let that chance slip by!?”
+If we go now, we can destroy them. Are you telling me we just let that chance slip by?!”
 
 @24983 Ryo · 亮
 > 「落ち着け、沙羅。甲児のいう
@@ -435,6 +447,7 @@ What do you think of Shapiro?”
 not someone who could be left alone.”
 
 @24997 Bright · ブライト
+# 审校：全局：帝国軍 Imperial 大写统一
 # 检查提示：未用必用译名：アステロイド前線基地→Asteroid Frontline Base
 > 「ふむ……わかった。確かにうかつに動く
 >  のはまずいが、帝国軍とシャピロに
@@ -442,7 +455,7 @@ not someone who could be left alone.”
 ---
 >  時間を与えるのは避けたい。
 >  我々はアステロイド前線基地へ
-giving the imperial forces and Shapiro time. We will head for the Asteroid Frontline
+giving the Imperial forces and Shapiro time. We will head for the Asteroid Frontline
 ---
 >  向かう」
 Base.”
@@ -593,10 +606,10 @@ so I've decided to come along for a while.”
 “Whoa, everyone run!”
 
 @25028 Specials · スペシャルズ
-# 审校：特佐对应 Colonel，不是 Lieutenant Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐、シャトルの
 >  出発準備が整いました」
-“Colonel Lady Une, the shuttle is ready for departure.”
+“Special Colonel Lady Une, the shuttle is ready for departure.”
 
 @25029 Lady · レディ
 > 「コロニー代表会議まではまだ少し
@@ -721,8 +734,9 @@ or former anti-Empire guerrillas. Fine, then. I don't kill the weak or
 women.”
 
 @25048 Duo · デュオ
+# 审校：Duo 是对五飞的话作回应，原文「そういうわけだ」指五飞刚才说的不杀弱者与女人，her 应为 him。
 > 「そういうわけだ、ヒルデ。投降するぜ」
-“You heard her, Hilde. We surrender.”
+“You heard him, Hilde. We surrender.”
 
 @25049 Hilde · ヒルデ
 > 「ではMSから降りなさい。そのガンダムは
@@ -734,9 +748,10 @@ women.”
 “W-wait a second, this thing is...”
 
 @25051 Tubarov · ツバロフ
+# 审校：合并：misc 与 scene 批次三方合并
 > 「よくやった特士。パイロットを
 >  捕らえるだけでよい。ガンダムは壊さず
-“Well done, Special. Just capture the pilots. Don't destroy the Gundams—
+“Well done, Special Officer. Just capture the pilots. Don't destroy the Gundams...
 ---
 >  中へ運べ」
 haul them inside.”
@@ -793,13 +808,14 @@ miscalculation, Shapiro. You underestimated them too much. If we had retreated s
 joined up with this base's reinforcements from the homeland...”
 
 @25059 Luna · ルーナ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「……いいでしょう、シャピロ。あなたには
 >  参謀は不要ね。あなたには愛も
 “...Very well, Shapiro. You have no need for a staff officer. Just as you have no need
 ---
 >  必要ないように。シャピロ、あなたには
 >  誰も必要ない、そういうことね」
-for love. Shapiro, you need no one at all—that's what this means.”
+for love. Shapiro, you need no one at all... that's what this means.”
 
 @25060 Shapiro · シャピロ
 # 检查提示：未用必用译名：ルーナ→Luna
@@ -917,13 +933,15 @@ Shapiro, you who fancied yourself a god shouldn't be able to say it.”
 “Shapiro, you were a man not worth my love.”
 
 @25080 Shapiro · シャピロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ゾルバドス→Zorbados
 > 「……いいだろう。だが地球を滅ぼした
 >  あと、次に滅ぼされるのはゾルバドス
 “...Very well. But know this: after Earth is destroyed, the next to be destroyed will be
 ---
 >  お前たちであることを知るがいい。
 >  この私に、神に向かって
-Zorbados—all of you. For defying me, a god,
+Zorbados... all of you. For defying me, a god,
 ---
 >  たてついたことを、宇宙のもくずと
 >  なってから後悔するがいい
@@ -1096,8 +1114,9 @@ Shapiro, being with you, I found just one thing to be happy about.”
 “Kyaaaaaah!!”
 
 @25113 Shapiro · シャピロ
+# 审校：精读：多余空格
 > 「おおぉぉーっ!?」
-“Ooooh?! ”
+“Ooooh?!”
 
 @25114 Shapiro · シャピロ
 > 「おのれぇぇーっ、こんなところでこの私は
@@ -1160,9 +1179,10 @@ So long, Shapiro.”
 “What became of Gildrome?”
 
 @25125 Bright · ブライト
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「消えた。以前から帝国軍は
 >  異次元より侵入したと
-“It vanished. They've said all along that the imperial forces invaded from another dimension, but
+“It vanished. They've said all along that the Imperial forces invaded from another dimension, but
 ---
 >  いわれていたが……」
 that's...”
@@ -1201,10 +1221,10 @@ Right, Ryo?!”
 “Calm down, both of you, Shinobu and Koji.”
 
 @25132 Koji · 甲児
-# 审校：将 haven't they 改为 don't they，更符合口语且与原文「残ってんだぜ」语气一致
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「だってよ、奴らまだギルドロームも
 >  デスガイヤーも残ってんだぜ!?
-“But they've still got Gildrome and Death Gaia left, don't they?!
+“But come on, they've still got Gildrome and Death Gaia left, don't they?!
 ---
 >  どこにあるのか知らねぇが、奴らの
 >  本拠地だって無傷だ
@@ -1372,8 +1392,9 @@ just to gather combat data. They'll do anything
 that benefits them.”
 
 @25154 Kignan · キグナン
+# 审校：原文无“sir”，删除多余称呼以符合原文。
 > 「私には大佐だからこそと思えますが」
-“To me, it seems it's precisely because you are a colonel, sir.”
+“To me, it seems it's precisely because you are a colonel.”
 
 @25155 Quattro · クワトロ
 > 「キグナン、大佐はよせ。今の私は
@@ -1552,13 +1573,15 @@ you're the younger one, Kamille...”
 “I'm so happy I could meet you here, big brother.”
 
 @25189 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「もどったか、デスガイヤー」
 “You've returned, Death Gaia.”
 
 @25190 Death Gaia · デスガイヤー
+# 审校：对帝王的称呼应使用“Your Excellency”而非“sir”，以符合其身份与敬语层级。（人工改写）
 > 「はっ。帝王様、アステロイド前線
 >  基地、消滅いたしました」
-“Yes, sir. Emperor, the Asteroid Frontline Base has been destroyed.”
+“Yes, Your Majesty. The Asteroid Frontline Base has been destroyed.”
 
 @25191 Emperor Muge · ムゲ帝王
 > 「うむ……我々は奴らをみくびりすぎた
@@ -1570,9 +1593,10 @@ you're the younger one, Kamille...”
 “Yes, sir.”
 
 @25193 Emperor Muge · ムゲ帝王
+# 审校：帝王对将军说话应保持庄重正式，将 You've 改为 You have 以符合其威严口吻。
 > 「まぁよい。ご苦労だった、デスガイヤー
 >  とりあえずは、ゆっくりと休むがよい」
-“Well, no matter. You've done well, Death Gaia. For now, rest easy.”
+“Well, no matter. You have done well, Death Gaia. For now, rest easy.”
 
 @25194 Death Gaia · デスガイヤー
 > 「はっ、ありがたきお言葉。

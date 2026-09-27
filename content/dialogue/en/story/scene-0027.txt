@@ -43,9 +43,10 @@ through relay stations everywhere.”
 “Ugh, give me a break. I've never seen such a grand funeral.”
 
 @22060 Roux · ルー
+# 审校：ルー的爽利吐槽口吻中“would you”略显正式，改为“would ya”更贴合其爱吐槽的少女语气。
 > 「ちょっとぉ、もっとボリューム大きくして
 >  くれないと、聞こえないじゃない」
-“Hey, turn it up louder, would you? I can't hear a thing.”
+“Hey, turn it up louder, would ya? I can't hear a thing.”
 
 @22061 Quatre · カトル
 > 「あ、はい、今あげます」
@@ -224,9 +225,10 @@ under the dominion of the Muge Zorbados Empire?”
 “Of course not.”
 
 @22089 Shapiro · シャピロ
+# 审校：精读：閣下 统一 His Excellency
 > 「グレスコ閣下が病気で
 >  お亡くなりになったとのことだが?」
-“I heard Lord Gresco passed away from illness?”
+“I heard His Excellency Gresco passed away from illness?”
 
 @22090 Luna · ルーナ
 > 「不審なこと、このうえありません」
@@ -267,9 +269,10 @@ Summon Dr. Gura of the Hyakki Clan, Luna. Treat him with respect.”
 “Sir... the truth is...”
 
 @22097 Le Cain · ル・カイン
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「通信施設が帝国の
 >  兵士によって襲撃されただと?」
-“The communications facility was attacked by imperial soldiers?”
+“The communications facility was attacked by Imperial soldiers?”
 
 @22098 Roanne · ロアン
 > 「はっ、すでに鎮圧しております。
@@ -318,8 +321,9 @@ So they've summoned the generals from the Asteroid Frontline Base...”
 I will not let my dream of building such a nation end as a dream...”
 
 @22105 Gresco · グレスコ
+# 审校：精读：与 22024 同一句
 > (支配とは力だ……)
-(Dominion is power...)
+(Domination is power...)
 
 @22106 Le Cain · ル・カイン
 # 审校：“told me, again and again, to carry the pride” 改为 “kept telling me, from my earliest days, to hold fast to the pride”，更流畅。
@@ -418,9 +422,10 @@ Don't show your face in front of me again. Understood?”
 “Roanne, Roanne!!”
 
 @22119 Duo · デュオ
+# 审校：迪奥的台词应体现其话痨、俚语化的口吻，原文「おっぱじめた」语气更粗俗，现译过于平淡。
 > 「聞いたかよ、奴ら
 >  ついにおっぱじめたって話だぜ?」
-“Did you hear? They've finally made their move.”
+“Did you hear? They say they've finally gone and started it.”
 
 @22120 Kamille · カミーユ
 > 「くそッ帝国め!!」
@@ -446,8 +451,9 @@ Don't show your face in front of me again. Understood?”
 “I'm going to help with the maintenance... It'll take my mind off things.”
 
 @22125 Duo · デュオ
+# 审校：迪奥的俚语口吻中「男のヒステリー」用“a man”过于正式，改为“a guy”更贴合其语气。
 > 「チェッ、男のヒステリーはみっともないぜ」
-“Sheesh, a man throwing a fit is just pathetic.”
+“Sheesh, a guy throwing a fit is just pathetic.”
 
 @22126 Amuro · アムロ
 > 「そういうふうにいうものじゃない。
@@ -460,8 +466,9 @@ Don't show your face in front of me again. Understood?”
 “By the way, where's {HeroNick}?”
 
 @22128 Duo · デュオ
+# 审校：迪奥的台词应更口语化，原文「俺は見てないぜ」语气随意，现译过于完整正式。
 > 「俺は見てないぜ」
-“I haven't seen him.”
+“Haven't seen him.”
 
 @22129 Domon · ドモン
 > 「……奴なら暗い顔して
@@ -516,9 +523,10 @@ What, it's you. Don't you have a machine to maintain?”
 * Ignore her
 
 @22135 Ark · アーク（按段落 3DD1）
+# 审校：原文「お前こそ」有反问对方的意思，现译漏掉了这层语气。（人工改写）
 > 「……お前こそ、
 >  こんなところで何やってんだよ」
-“...What are you doing in a place like this?”
+“...What about you? What are you doing in a place like this?”
 
 @22136 Lera · レラ
 > 「別に。ただの休憩。…………さすがに
@@ -526,9 +534,10 @@ What, it's you. Don't you have a machine to maintain?”
 “Nothing. Just taking a break. ...This time we really might not make it, right?”
 
 @22137 Ark · アーク（按段落 3DD1）
+# 审校：原文「まだ降ろしてもらえるんだろ」是反问确认语气，现译缺少“can't you”的确认感。（人工改写）
 > 「……ああ。お前はいいのかよ、それで。
 >  まだ降ろしてもらえるんだろ」
-“...Yeah. Are you okay with that? You can still get off.”
+“...Yeah. Are you okay with that? You can still get off, can't you?”
 
 @22138 Lera · レラ
 > 「なんだよ今さら。アタシはずっと、ずっと
@@ -878,13 +887,14 @@ You get to the gun turret too, quickly.”
 here with us. Get off the ship. There's still time.”
 
 @22193 Lera · レラ
+# 审校：用户确认：直引号→弯引号
 > 「じょ、冗談じゃないよ!
 >  今さらそんなこといわれて
 “Y-you've gotta be kidding! You tell me that now, and I'm just supposed to say
 ---
 >  はいそうですかって降りられるもんか!
 >  アタシだって、ずっと、あんたたちと
-'okay' and get off?! I've been fighting them since long before I ever met
+‘okay’ and get off?! I've been fighting them since long before I ever met
 ---
 >  会う前からずっと奴らと戦って
 >  きたんだ。今さら……
@@ -1135,9 +1145,10 @@ who fought to the very end against the alien invasion during the One Year War,
 and then... was publicly executed?”
 
 @22228 Simone · シモーヌ
+# 审校：用户确认：直引号→弯引号
 > 「全身全霊をかけて望みさえすれば
 >  希望は常に我々とともにある
-“'If you face it with all your heart and soul, hope is always with us,'
+“‘If you face it with all your heart and soul, hope is always with us,’
 ---
 >  だったかしらね」
 wasn't it?”
@@ -1169,8 +1180,9 @@ fighting like this. Hope is always there.”
 “All hands, battle stations! How many enemies?!”
 
 @22234 Beltorchika · ベルトーチカ
+# 审校：原文是“すごい数です。計測できません!”，现有译文把两句合并成一句，且“Too many to count”与“I can't get a reading”语义重复，改为更贴合原文的两层意思。
 > 「すごい数です。計測できません!」
-“Too many to count. I can't get a reading!”
+“There are so many I can't get a count!”
 
 @22235 Ginrei · 銀鈴
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1237,8 +1249,10 @@ then try and overturn this situation!”
 “Fools. Begin the attack. Make this place their graveyard!!”
 
 @22246 Giura · ギウラ
+# 审校：閣下 统一 His Excellency
+# 检查提示：未用必用译名：ル・カイン→Le Cain
 > 「ル、ル・カイン閣下アァァァーッ!!」
-“L-Lord Le Cain!!”
+“Y-Your Excellency!!”
 
 @22247 Zechs · ゼクス
 > 「そうか、あの部隊か。残念だが
@@ -1246,8 +1260,9 @@ then try and overturn this situation!”
 “I see, so it's that unit. A shame, but this is where it has to end.”
 
 @22248 Noin · ノイン
+# 审校：精读：閣下 统一 His Excellency
 > 「しかしゼクス、トレーズ閣下は……」
-“But Zechs, Colonel Treize said...”
+“But Zechs, His Excellency Treize...”
 
 @22249 Zechs · ゼクス
 > 「この状況では
@@ -1420,8 +1435,10 @@ Liberation Front of the Earth. I trust you understand.”
 That is how history flows without stagnation.)
 
 @22278 Lady · レディ
+# 审校：蕾蒂对特列斯的称呼按 address 应为 “Your Excellency”，而非 “Lord Treize”。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様」
-“Lord Treize.”
+“Your Excellency.”
 
 @22279 Treize · トレーズ
 > 「行くよレディ。

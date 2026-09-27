@@ -244,8 +244,9 @@ We're already on our way there.”
 “That's right.”
 
 @30428 Shinobu · 忍
+# 审校：忍的口吻粗野，heck 太温和，改为 hell 更符合其狂放语气。
 > 「なんだよ、そりゃ」
-“What the heck is that?”
+“What the hell is that?”
 
 @30429 Amuro · アムロ
 > 「ラビアンローズ……ドック艦だな。
@@ -343,6 +344,7 @@ had a unit developed, and it's aboard La Vie en Rose.”
 (Mars, come out. I want to talk to you.)
 
 @30447 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (その声は……俺にガイヤーと
 >  ゴッドマーズのことを教えてくれた男か)
 (That voice... you're the man who told me about Gaia and Godmars.)
@@ -611,6 +613,7 @@ Who are you?!”
 It's like love for one's own flesh and blood...”
 
 @30487 Blacky · ブラッキー
+# 审校：Blacky 是阴狠的军官，对玛古下命令时“わかったな”应译成更冷酷的“Got it?”，而不是礼貌的“Understand?”。
 > 「マーグ、お前の機体に取りつけ
 >  られた爆弾のことを忘れるな
 “Marg, don't forget about the bomb attached to your machine.
@@ -621,7 +624,7 @@ If you try anything funny, I'll blow it up on the spot.
 ---
 >  マーズを殺したら解除してやる
 >  わかったな」
-Kill Mars and I'll disarm it. Understand?”
+Kill Mars and I'll disarm it. Got it?”
 
 @30488 Marg · マーグ
 > 「…………わかっている」
@@ -672,6 +675,7 @@ Hey, report this to Commander Gandal.”
 (But we're in the middle of a battle. I have no machine I can take out on my own.)
 
 @30497 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (ガイヤーを呼べばいい。
 >  どこにいてもお前が呼べば応える)
 (Just call Gaia. Wherever you are, it will answer if you call.)
@@ -697,10 +701,12 @@ Hey, report this to Commander Gandal.”
 go off on your own!!”
 
 @30502 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤァァァァァーッ!」
-“Gaiyaaaaaa!”
+“Gaiaaaaaa!”
 
 @30503 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
 “Is that the one called Gaia?! Is Takeru piloting it?!”
@@ -928,6 +934,7 @@ This will be faster than talking.”
 “...All right.”
 
 @30549 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (うぅっ、これは……。ギシン星……
 >  父と母……。父が研究した
 (Ugh, this is... Planet Gishin... Father and Mother... The antiproton
@@ -941,9 +948,10 @@ energy Father researched... and Gaia...
 If it's destroyed or I die, the antiproton bomb will explode...)
 
 @30550 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (そうだ。ズールはいつかこの日のくる
 >  ことを考えて、ガイヤーを地球に
-(That's right. Zuhl anticipated that this day would come and sent Gaia to Earth.
+(That's right. Zuul anticipated that this day would come and sent Gaia to Earth.
 ---
 >  送りこんでいたのだ。ガイヤーに
 >  搭載された爆弾のキーとなる
@@ -963,13 +971,14 @@ the entire Earth Sphere will be blown away without a trace.)
 (So that's why I was raised on Earth as an abandoned child...)
 
 @30552 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > (父はズールに反抗して、
 >  処刑された
-(Father defied Zuhl and was executed.
+(Father defied Zuul and was executed.
 ---
 >  母はズールにお前を返してくれるよう
 >  嘆願しつづけ、数年前に……)
-Mother kept pleading with Zuhl to give you back, and a few years ago...)
+Mother kept pleading with Zuul to give you back, and a few years ago...)
 
 @30553 Takeru · タケル
 > (俺の……本当の両親……)
@@ -1000,6 +1009,7 @@ I've been waiting for the day I could meet you.”
 “Marg... brother.”
 
 @30559 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……マーズ、お前に渡さなくては
 >  ならないものがある。ガイヤー以外の
 “...Mars, there's something I have to give you. Besides Gaia,
@@ -1010,7 +1020,7 @@ the five other robots, the Five God Robots, were sent here by Father in secret,
 ---
 >  お前の守護神だ。ガイヤーが
 >  危険になると、自動的に
-without Zuhl knowing. They are your guardian deities. If Gaia is in danger, they will automatically
+without Zuul knowing. They are your guardian deities. If Gaia is in danger, they will automatically
 ---
 >  ガイヤーを守る。反陽子爆弾を
 >  爆発させないように」
@@ -1110,13 +1120,14 @@ was destroyed by the Galactic Empire.”
 “Of Planet Fleed... I see...”
 
 @30576 Daisuke · 大介
+# 审校：全局：Zuul 拼写
 > 「マーグ、僕と君の2人は、
 >  皇帝ズールの恐ろしさを
 “Marg, you and I both know firsthand how terrifying
 ---
 >  身をもって知っている。この地球を
 >  奴の手に渡せばどうなるか……
-Emperor Zuhl is. If this Earth falls into his hands, who knows what will happen...
+Emperor Zuul is. If this Earth falls into his hands, who knows what will happen...
 ---
 >  マーグ、僕たちは地球に
 >  必要とされているんだ」
@@ -1127,13 +1138,14 @@ Marg, we are needed by the Earth.”
 “Daisuke...”
 
 @30578 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > 「フリード星のデューク……。ありがとう。
 >  私も戦おう。弟の
 “Duke of Planet Fleed... Thank you. I'll fight too. To protect my brother's
 ---
 >  第二の故郷を守るため……。
 >  いや、皇帝ズールを倒すために」
-second homeland... no, to defeat Emperor Zuhl.”
+second homeland... no, to defeat Emperor Zuul.”
 
 @30579 Beltorchika · ベルトーチカ
 > 「ラビアンローズ確認」
@@ -1328,16 +1340,18 @@ in exchange for combat data.”
 They're nothing but merchants of death.”
 
 @30615 Chan · チェーン
+# 审校：精读：Earthnoids
 > 「あまり気分のいいものじゃないですけど
 >  地球人のためというのも理由の
-“It doesn't sit well with me either, but I'd like to believe that helping Earthnoids
+“It doesn't sit well with me either, but I'd like to believe that helping Earth's people
 ---
 >  1つではあると思いたいですね」
 is at least one of their reasons.”
 
 @30616 Beltorchika · ベルトーチカ
+# 审校：原文「ちょっとあなた」是带怒气的呼语，译文缺少对“你”的强调，补上逗号与感叹以贴合贝尔托琪卡直率强势的口吻。
 > 「ちょっとあなた、何やってるのよ!」
-“Hey you, what do you think you're doing?!”
+“Hey, you! What do you think you're doing?!”
 
 @30617 Amuro · アムロ
 > 「ベルトーチカ」
@@ -1435,12 +1449,13 @@ A new Gundam. You can't do that, can you?”
 “Ah, no, I didn't mean you, Rain...”
 
 @30637 Tubarov · ツバロフ
+# 审校：Tubarov 是偏执技术官僚，对敌人用「貴様ら」应译出敌意，但“Who the hell are you”过于粗俗，改为更符合其身份的“Who are you people”。
 > 「き、貴様ら何をする!
 >  このわしに銃を向けるとは……!
 “W-what do you think you're doing?! Pointing guns at me...!
 ---
 >  貴様ら何者だ!」
-Who the hell are you?!”
+Who are you people?!”
 
 @30638 Quinze · カーンズ
 > 「少し前にはトレーズ派と
@@ -1492,8 +1507,9 @@ You will issue a declaration of defeat.”
 “What did you say?!”
 
 @30647 Bask · バスク
+# 审校：原文「馬鹿者が」是单数，指代 Tsubarov 一人，译文用了复数“fools”，改为单数“fool”。
 > 「何をしておったのだ、馬鹿者が!!」
-“What have you been doing, you fools!!”
+“What have you been doing, you fool!!”
 
 @30648 Specials · スペシャルズ
 > 「は、ははっ!」

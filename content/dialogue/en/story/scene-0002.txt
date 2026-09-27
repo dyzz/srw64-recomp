@@ -103,8 +103,9 @@ If we leave it alone, the residents will be wiped out too.”
 “Uwaaaaaaah!!”
 
 @17520 Guerrilla · ゲリラ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「しまった!? くっ……」
-“Damn it!? Ngh...”
+“Damn it?! Ngh...”
 
 @17521 Guerrilla · ゲリラ
 > 「坊や、おい坊や、生きてるか!?
@@ -117,6 +118,7 @@ If we leave it alone, the residents will be wiped out too.”
 “Ugh... ah... E-everyone...?”
 
 @17523 Guerrilla · ゲリラ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「残念だが……瓦礫の下だろう
 “I'm sorry, but... they're under the rubble.
 ---
@@ -125,11 +127,12 @@ If we leave it alone, the residents will be wiped out too.”
 Damn those Imperials, attacking without a thought for anyone.
 ---
 >  おい坊や、何をしてる!?」
-Hey kid, what are you doing!?”
+Hey kid, what are you doing?!”
 
 @17524 Ark · アーク（按段落 3DD1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……おばさん、おばさん! おじさん!?」
-“...Auntie, Auntie! Uncle!?”
+“...Auntie, Auntie! Uncle?!”
 
 @17525 Guerrilla · ゲリラ
 > 「バカなことはやめて早く逃げろ!
@@ -201,8 +204,9 @@ Please, at least you have to get away!”
 “Uwah!!”
 
 @17536 Ark · アーク（按段落 3DD1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ひっ!?」
-“Hii!?”
+“Hii?!”
 
 @17537 Ark · アーク（按段落 3DD1）
 > 「う……ううっ……」
@@ -225,12 +229,13 @@ Please, at least you have to get away!”
 “...Damn it... why...”
 
 @17542 Ark · アーク（按段落 3DD1）
+# 审校：省略号
 > 「くっ…………!?
-“Ngh......!?
+“Ngh...?!
 ---
 >  うわっ、な……なんだ!?
 >  中にもいるのか!?」
-Uwah, w-what?! Is there someone inside too!?”
+Uwah, w-what?! Is there someone inside too?!”
 
 @17543 Ark · アーク（按段落 3DD1）
 > 「違う……こいつ……

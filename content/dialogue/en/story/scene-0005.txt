@@ -111,8 +111,9 @@ It's something we could never do.”
 “But of course.”
 
 @17806 Beauty · ビューティ
+# 审校：合并：冲突人工取舍
 > 「うふ、よろしくね
-“Ufu, nice to meet you.
+“Hehe, thanks.
 ---
 >  じゃあ、私はお茶菓子の
 >  用意をしようかしら」
@@ -158,13 +159,14 @@ I will not suffer any further humiliation.”
 “Oh? Speak.”
 
 @17812 Dr. Gura · グラー博士
+# 审校：用户确认：直引号→弯引号
 > 「はっ、帝国に反抗する
 >  人間どもの組織“カラバ”の
 “Yes. They appear to be preparing to attack the base of
 ---
 >  基地を襲撃する様子で
 >  ございます」
-'Karaba,' the organization of humans resisting the Empire.”
+‘Karaba,’ the organization of humans resisting the Empire.”
 
 @17813 Emperor Burai · ブライ大帝
 > 「なに、カラバをか。ふむ……
@@ -175,16 +177,18 @@ I will not suffer any further humiliation.”
 And what of that energy source?”
 
 @17814 Dr. Gura · グラー博士
+# 审校：用户确认：直引号→弯引号
 > 「はっ、やはり人間どもが
 >  研究していた“ゲッター線”が
-“Yes. As expected, the 'Getter Rays' the humans were researching
+“Yes. As expected, the ‘Getter Rays’ the humans were researching
 ---
 >  最適であると思われます」
 appear to be the most suitable.”
 
 @17815 Emperor Burai · ブライ大帝
+# 审校：用户确认：直引号→弯引号
 > 「光子力とやらは、どうなった?」
-“And what became of this 'Photon Power'?”
+“And what became of this ‘Photon Power’?”
 
 @17816 Dr. Gura · グラー博士
 > 「有用ではありますが
@@ -216,13 +220,14 @@ According to reports from the oni soldiers we've infiltrated into the Imperial A
 there's a high possibility they're being protected by Karaba.”
 
 @17819 Emperor Burai · ブライ大帝
+# 审校：Emperor Burai's archaic grandeur calls for "do not" instead of the contraction "don't".
 > 「ふむ、人間どもめ、
 >  なかなかやるのう
 “Hmm, those humans, they're quite resourceful.
 ---
 >  だが、それを手に入れねば、我らの
 >  もくろみは達成できぬのであろう」
-But if we don't obtain it, our scheme can never be achieved.”
+But if we do not obtain it, our scheme can never be achieved.”
 
 @17820 Dr. Gura · グラー博士
 > 「はい。すでに帝国軍の中にも、
@@ -242,13 +247,14 @@ replenished once a month, so we cannot increase their numbers further. If we
 push too hard and fail even once, we will be destroyed by the Empire.”
 
 @17821 Emperor Burai · ブライ大帝
+# 审校：Emperor Burai's archaic grandeur calls for "there is" instead of the contraction "there's".
 > 「わかっておる。我ら百鬼一族を
 >  あなどりおって、帝国め
 “I know. To think the Empire would underestimate us, the Hyakki Clan.
 ---
 >  グラー博士、その装置に
 >  関するものが、ミケーネが向かう
-Dr. Gura, there's still a chance that the device we seek lies in the
+Dr. Gura, there is still a chance that the device we seek lies in the
 ---
 >  人間の基地にある可能性も
 >  捨てきれぬ
@@ -312,13 +318,14 @@ Let me tell you something, when it comes to piloting that type of robot,
 I'm way better at it than you.”
 
 @17828 Koji · 甲児
+# 审校：合并：misc 与 scene 批次三方合并
 > 「そんなもんすぐに慣れてみせるさ。
 >  オレはすでに1回、戦ってるんだぜ?
 “I'll get used to it in no time. I've already fought once, haven't I?
 ---
 >  君に教わる必要なんて
 >  ぜ～んぜんないね」
-I don't need you teaching me, not one bi~it.”
+I don't need you teaching me, not one bit.”
 
 @17829 Sayaka · さやか
 > 「甲児くんが慣れるまで待ってる
@@ -338,12 +345,13 @@ have a proper name, you know. It's Sayaka.”
 “Tch.”
 
 @17831 Koji · 甲児
+# 审校：人工修正：爪の垢を煎じて飲む 是“向人家学学”的惯用语，初稿照字面译成喝指甲垢，改为 learn a thing or two from those ladies（用户 2026-09-26 指出）
 > (かわいくないなぁ
 (She's not cute at all.
 ---
 >  あのお姉さんたちの爪の垢でも
 >  せんじて飲ませてやりたいぜ)
-I'd like to make her drink some of those older girls' nail scrapings.)
+She could stand to learn a thing or two from those ladies.)
 
 @17832 Sayaka · さやか
 > 「なに? 何か言った?」
@@ -436,8 +444,9 @@ Let's intercept them.”
 Clearing away the tea can wait, hurry!”
 
 @17847 Lawrence · ローレンス
+# 审校：Lawrence's old butler voice requires no contractions and a more formal, gentle understatement; "right away" is too curt.（人工改写）
 > 「はい、ただいま まいります」
-“Yes, right away.”
+“Yes, at once.”
 
 @17848 Banjo · 万丈
 > 「レイカ、外の2人にも
@@ -460,6 +469,7 @@ We're meeting the enemy head-on.”
 You should get inside.”
 
 @17851 Sayaka · さやか
+# 审校：机体/人名按词表统一
 > 「いやよ。アフロダイAだって十分
 >  役にたつんだから!」
 “No way. Aphrodite A can be plenty useful too!”
@@ -581,9 +591,10 @@ Just remember this: it was not I who requested you.”
 “Damn it, and I couldn't even investigate the Karaba facility!”
 
 @17871 Koji · 甲児
+# 审校：合并：misc 与 scene 批次三方合并
 > 「へへーん、どうだ見たか さやかさん。
 >  ざっとこんなもんだぜ」
-“Heh heh, how's that? See that, Sayaka? That's about all there is to it.”
+“Heh heh, how's that? See that, Sayaka? That's how it's done.”
 
 @17872 Sayaka · さやか
 # 审校：原文是肯定句“あたしの教え方が、よかったのね”，初稿的反问“wasn't it”语气不对，改为陈述句
@@ -617,17 +628,18 @@ Just remember this: it was not I who requested you.”
 “What is it?”
 
 @17879 Garrison · ギャリソン
-# 审校：“地球解放戦線機構”中的“機構”是组织名的一部分，但英文中“Earth Liberation Front”已足够，去掉“mechanism”避免生硬直译
+# 审校：管家口吻要求无缩写，将 we've 和 they've 改为 we have 和 they have。
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「それが、
 >  地球解放戦線機構の
-“Well, we've received a telegram from
+“Well, we have received a telegram from
 ---
 >  イゴール将軍よりの電文で
 General Igor of the Liberation Front of the Earth,
 ---
 >  親書を持ったスタッフを1人
 >  こちらに向かわせたとの事です」
-saying they've sent one staff member our way carrying a personal letter.”
+saying they have sent one staff member our way carrying a personal letter.”
 
 @17880 Banjo · 万丈
 > 「イゴール将軍が? そうか、

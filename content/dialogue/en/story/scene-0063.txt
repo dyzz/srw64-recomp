@@ -335,13 +335,14 @@ Benkei's no match for me either!”
 “Why didn't you go with Amuro and the others, Kamille?”
 
 @28253 Kamille · カミーユ
+# 审校：精读：引号
 > 「顔にでちゃうかもしれないでしょ。
 >  ……完全平和ってやつが
 “Because it might show on my face. ...I still don't know
 ---
 >  どれだけ信用できるか、
 >  俺にはまだわからないんです」
-how much this 'total peace' can really be trusted.”
+how much this ‘total peace’ can really be trusted.”
 
 @28254 Fa · ファ
 > 「カミーユったら! まだいってるの?」
@@ -382,6 +383,7 @@ Even knowing that, I chose to come here. Isn't it the same for you, Kamille?”
 so why are you worried about them?”
 
 @28259 Show · ショウ
+# 审校：人名按词表统一
 > 「それとこれとは別だよ。
 >  チャムだって心配してるだろ?」
 “That's a different matter. You're worried too, aren't you, Chum?”
@@ -405,13 +407,14 @@ so why are you worried about them?”
 That doesn't change. They do it their way, and we do it ours.”
 
 @28263 Simone · シモーヌ
+# 审校：精读：引号与破折号
 > 「私は、この選択でよかったと思う。
 >  完全平和主義って言葉の
-“I think this choice was the right one. The words 'total pacifism'—
+“I think this choice was the right one. The words ‘total pacifism.’
 ---
 >  響き、確かに夢みたいだけど……
 >  ジュリアさんやリリーナさんを見てると
-sure, they sound like a dream, but... when I look at Julia and Relena,
+Sure, they sound like a dream, but... when I look at Julia and Relena,
 ---
 >  感じるもの。なんていうか……
 >  未来の、可能性を、さ」
@@ -504,9 +507,10 @@ then I've got nothing left at all!”
 “I'm back. How's everyone doing?”
 
 @28281 Bright · ブライト
+# 审校：布莱特是舰长，对部下说话应更简洁有力，去掉过于随意的“Hey”。
 > 「やあ、ご苦労だった。こちらは
 >  異常なしだ。そっちはどうだったんだ?」
-“Hey, good work. No problems here. How did it go on your end?”
+“Good work. No problems here. How did it go on your end?”
 
 @28282 Amuro · アムロ
 > 「まあ、当たりさわりのないことを、ね。
@@ -517,9 +521,10 @@ then I've got nothing left at all!”
 was quite a beauty, though.”
 
 @28283 Beltorchika · ベルトーチカ
+# 审校：贝尔托琪卡语气强势直率，加“such”更符合她带点责备的口吻。
 > 「つまんない冗談いわないで。
 >  真面目にやってちょうだい!」
-“Don't make boring jokes. Take this seriously!”
+“Don't make such boring jokes. Take this seriously!”
 
 @28284 Roanne · ロアン
 > 「まあまあ。実際の話、帝国軍に
@@ -556,9 +561,10 @@ servicing each unit right now. Go check on them later.”
 “Got it. Astonaige can't handle it all alone... I'll head over right away.”
 
 @28287 Ginrei · 銀鈴
+# 审校：精读：去破折号
 > 「ご苦労様。大変そうね、
 >  何か手伝うことある?」
-“Thanks for your hard work. You look swamped—is there anything I can help with?”
+“Thanks for your hard work. You look swamped. Is there anything I can help with?”
 
 @28288 Astonaige · アストナージ
 > 「やあ、こりゃどうも。実際、
@@ -581,9 +587,11 @@ really hurts.”
 so don't push yourself too hard.”
 
 @28290 Astonaige · アストナージ
+# 审校：合并：冲突人工取舍
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「わかってます。あ、そうそう、さっきなんか
 >  弓教授と
-“I know. Oh, that's right—earlier Prof. Yumi and
+“I know. Oh, that's right. Earlier Professor Yumi and
 ---
 >  早乙女博士がきましてね、
 >  整備を手伝わせろって」
@@ -607,9 +615,10 @@ Dr. Saotome came by and said to let them help with the maintenance.”
 and so on. I managed to politely decline, but, well, they're rather intimidating...”
 
 @28294 Hayato · ハヤト
+# 审校：精读：去破折号
 > 「博士たちには重要な研究がある
 >  そりゃ確かにおそれおおいぜ」
-“The doctors do have important research—that's certainly intimidating, all right.”
+“The doctors do have important research. That's certainly intimidating, all right.”
 
 @28295 Benkei · ベンケイ
 > 「俺たちパイロットもメカニックに
@@ -698,6 +707,7 @@ we will strike them head-on.”
 “Thank you. Then... I'll end this transmission. Please, stay safe...”
 
 @28306 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「エレ様、シーラ様……」
 “Lady Elle, Lady Ciela...”
 
@@ -746,9 +756,10 @@ For the final time, lend us your strength once more.”
 “You don't even need to ask. Let's go.”
 
 @28311 Koji · 甲児
+# 审校：精读：去破折号
 > 「他人行儀ないいかたなんてしない
 >  でさ、いつもみたいに行ってこようぜ」
-“Don't talk like we're strangers—let's just head out like we always do.”
+“Don't talk like we're strangers. Let's just head out like we always do.”
 
 @28312 Simone · シモーヌ
 > 「最後だなんて、おっしゃらないで。
@@ -776,6 +787,7 @@ in the {HeroMech}.”
 {HeroMech}, launching!”
 
 @28316 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま……なぜショウとふたりっきりで
 >  お話ししなかったの?」
 “Lady Ciela... why didn't you speak with Show alone?”
@@ -789,6 +801,7 @@ in the {HeroMech}.”
 It is best... not to let feelings grow.”
 
 @28318 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさま……」
 “Lady Ciela...”
 
@@ -814,6 +827,7 @@ It seems they're resolved to settle this once and for all.”
 “King Drake, we must intercept them!”
 
 @28322 Drake · ドレイク
+# 审校：精读：去破折号
 > 「女王どもめ、それほど地上に
 >  戦いを持ちこむことを嫌うか
 “Those queens... do they hate bringing war to the surface that much?
@@ -824,7 +838,7 @@ Hahaha, very well. As you wish, I'll wipe you from this surface.
 ---
 >  オーラマシンを出せい、
 >  迎え撃つのだ!!」
-Send out the Aura Machines—meet them head-on!!”
+Send out the Aura Machines. Meet them head-on!!”
 
 @28323 Drake · ドレイク
 > 「きたな……女王どもめ」
@@ -840,8 +854,9 @@ Send out the Aura Machines—meet them head-on!!”
 “Shot Weapon?!”
 
 @28326 Shot · ショット
+# 审校：ショット对ドレイク的称呼应为 Lord Drake，与 address 一致。
 > 「おそくなりました、ドレイクさま」
-“I apologize for the delay, King Drake.”
+“I apologize for the delay, Lord Drake.”
 
 @28327 Shot · ショット
 > 「何!? ウィル・ウィプスが落ちたと
@@ -882,6 +897,7 @@ an opportunity for me...”
 “Uwooooooooh!!”
 
 @28335 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ショウがハイパーになる! 助けて
 >  マーベルッ! エレさま! シーラさまぁ!」
 “Show's going Hyper! Help, Marvel! Lady Elle! Lady Ciela!”
@@ -907,6 +923,7 @@ an opportunity for me...”
 “Show! Show! Are you all right?!”
 
 @28341 Show · ショウ
+# 审校：人名按词表统一
 > 「す……すまないチャム。
 >  もう大丈夫だ。助かったよ」
 “S... sorry, Chum. I'm all right now. You saved me.”
@@ -929,8 +946,9 @@ an opportunity for me...”
 “Ha... hahahaha! Watch, Mama. I'll shoot these guys down for you.”
 
 @28346 Black Knight · 黒騎士
+# 审校：ショウ・ザマ应译为 Show Zama，而非仅 Show。
 > 「お……おのれ! おのれショウ・ザマッ!!」
-“D... damn you! Damn you, Show!!”
+“D... damn you! Damn you, Show Zama!!”
 
 @28347 Show · ショウ
 > 「これで終わりだ、黒騎士!」
@@ -946,10 +964,10 @@ an opportunity for me...”
 “What?!”
 
 @28350 Black Knight · 黒騎士
-# 审校：补出未说完的动作，使英文更自然，避免以介词结尾的断裂感。
+# 审校：精读：去破折号
 > 「ショウ!! 今度こそこの私の
 >  オーラパワーで!!」
-“Show!! This time, with my Aura Power, I will—!!”
+“Show!! This time, with my Aura Power, I will...!!”
 
 @28351 Elle · エレ
 # 审校：“evil aura”改为“wicked aura”，更贴合奇幻语境。
@@ -986,6 +1004,7 @@ an opportunity for me...”
 “Black Knight, you baaastard!!”
 
 @28358 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This Aura Power... Bern Bunnings!”
 
@@ -994,6 +1013,7 @@ an opportunity for me...”
 “I... impossible?! That I, of all people...”
 
 @28360 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様、その怨念で
 >  何を手に入れた!!」
 “Bern?! What did you gain from all that hatred?!”
@@ -1026,16 +1046,18 @@ an opportunity for me...”
 “He went Hyper?!”
 
 @28367 ???
-# 审校：与 L1 相同，补出未说完的动作。
+# 审校：精读：去破折号
 > 「ショウ!! 今度こそこの私の
 >  オーラパワーで!!」
-“Show!! This time, with my Aura Power, I will—!!”
+“Show!! This time, with my Aura Power, I will...!!”
 
 @28368 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This Aura Power... Bern Bunnings!”
 
 @28369 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様……その怨念
 >  で何を手に入れた!!」
 “Bern?! You... what did you gain from all that hatred?!”
@@ -1055,10 +1077,12 @@ an opportunity for me...”
 “Fuhahahahaha! This time, with my Aura Power, I'll bring you all down!!”
 
 @28373 Chum · チャム
+# 审校：人名按词表统一
 > 「このオーラ力……バーン・バニングス!」
 “This Aura Power... Bern Bunnings!”
 
 @28374 Show · ショウ
+# 审校：人名按词表统一
 > 「バーンだと!? 貴様……その怨念
 >  で何を手に入れた!!」
 “Bern?! You... what did you gain from all that hatred?!”
@@ -1141,6 +1165,7 @@ an opportunity for me...”
 “Show Zama?! To think I'd be struck down by you...”
 
 @28391 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ドレイク、これで終わりだ!
 >  ……シーラ・ラパーナ! 浄化を!!」
 “Drake, this is the end! ...Ciela Lapana! The purification!!”
@@ -1164,11 +1189,13 @@ Let no hatred remain on the surface...”
 “Did I... do it?”
 
 @28395 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! The purification!!”
 
 @28396 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! The purification!!”
@@ -1192,26 +1219,28 @@ Let no hatred remain on the surface...”
 “Drake is down!!”
 
 @28400 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
 
 @28401 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
 
 @28402 Ciela · シーラ
-# 待译：机翻未采用（空译文）
-# 草稿第 1 页：“Good! Garalia, you did well. Everyone, we return to Byston Well!!
-# 草稿第 2 页：
-# 草稿第 3 页：Let no hatred remain on the surface...”
+# 审校：补译：原稿空页
 > 「よし! ガラリア、よくやってくれました。
 >  皆の者、バイストンウェルへ
+“Good! Garalia, well done. Everyone, to Byston Well
 ---
 >  帰還します!!
+we return!!
 ---
 >  憎しみの心を地上に残さぬよう…」
+Let no hatred be left behind on the surface...”
 
 @28403 Drake · ドレイク
 > 「なんだと!? まさかこんなところで
@@ -1219,11 +1248,15 @@ Let no hatred remain on the surface...”
 “What?! To think I'd be struck down in a place like this...”
 
 @28404 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ウィル・ウィプスが落ちた……
 >  シーラ・ラパーナ!! 浄化を!!」
 “The Will-Wips has fallen... Ciela Lapana!! The purification!!”
 
 @28405 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ウィル・ウィプスが落ちた……
 >  シーラ・ラパーナ!! 浄化を!!」
 “The Will-Wips has fallen... Ciela Lapana!! The purification!!”
@@ -1237,8 +1270,9 @@ Let no hatred remain on the surface...”
 Let no hatred remain on the surface...”
 
 @28407 Bright · ブライト
+# 审校：精读：结巴
 > 「な、なんだ!?」
-“W- what is that?!”
+“Wh-what is that?!”
 
 @28408 Beltorchika · ベルトーチカ
 > 「光が……」
@@ -1261,6 +1295,7 @@ Let no hatred remain on the surface...”
 “You did it... Show?!”
 
 @28413 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah... Ciela Lapana! The purification!!”
@@ -1283,11 +1318,13 @@ Let no hatred remain on the surface...”
 “You did it...?”
 
 @28417 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! The purification!!”
 
 @28418 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ああ、マーベル。……シーラ・ラパーナ!
 >  浄化を!!」
 “Yeah, Marvel. ...Ciela Lapana! The purification!!”
@@ -1310,11 +1347,13 @@ Let no hatred remain on the surface...”
 “Shot is down!!”
 
 @28422 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
 
 @28423 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「さすがだ、ガラリア。
 >  ……シーラ・ラパーナ!! 浄化を!!」
 “Just as expected, Garalia. ...Ciela Lapana!! The purification!!”
@@ -1331,14 +1370,17 @@ We return now!!
 Let no hatred remain on the surface...”
 
 @28425 Shot · ショット
+# 审校：精读：结巴
 > 「こ、こんなところで!?」
-“I- in a place like this?!”
+“I-in a place like this?!”
 
 @28426 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ・ラパーナ!! 浄化を!!」
 “Ciela Lapana!! The purification!!”
 
 @28427 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ・ラパーナ!! 浄化を!!」
 “Ciela Lapana!! The purification!!”
 
@@ -1351,9 +1393,9 @@ Let no hatred remain on the surface...”
 Let no hatred remain on the surface...”
 
 @28429 Bright · ブライト
-# 审校：“W- what”断词不自然，改为“Wh- what”。
+# 审校：精读：结巴
 > 「な、なんだ!?」
-“Wh- what is that?!”
+“Wh-what is that?!”
 
 @28430 Beltorchika · ベルトーチカ
 > 「光が……」
@@ -1384,6 +1426,7 @@ Let no hatred remain on the surface...”
 “Drake! I'm putting an end to this!”
 
 @28437 Drake · ドレイク
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ・ラパーナか!」
 “Ciela Lapana, is it!”
 
@@ -1429,8 +1472,9 @@ Or will they return where they belong and begin to coexist once more...”
 They're no longer on the surface...”
 
 @28445 David · デビッド
+# 审校：精读：芭蕉句
 > 「つわものたちの、夢の跡……か」
-“The traces of warriors' dreams... huh.”
+“What remains of warriors' dreams... huh.”
 
 @28446 Bright · ブライト
 > 「……」
@@ -1446,6 +1490,7 @@ They're no longer on the surface...”
 It's Show and the others!”
 
 @28448 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「なんだって!?
 >  彼らは、シーラ女王の力で
 “What?! Weren't they supposed to have vanished from
@@ -1472,6 +1517,7 @@ And removing it must be the task laid upon us.”
 “So we can't go home until that's over?”
 
 @28452 Ciela · シーラ
+# 审校：人名按词表统一
 > 「そうですよ、チャム」
 “That's right, Chum.”
 
@@ -1521,15 +1567,17 @@ And removing it must be the task laid upon us.”
 “Then, Lady Elle, we can't go home until that's over?”
 
 @28459 Elle · エレ
+# 审校：人名按词表统一
 > 「そうですよ、チャム」
 “That's right, Chum.”
 
 @28460 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「……シーラ様は帰ることができたのに」
 “...But Lady Ciela was able to go home.”
 
 @28461 Elle · エレ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「バイストン・ウェルのほうは
 >  シーラ様にまかせましょう
 “Let us leave Byston Well in Lady Ciela's hands.
@@ -1652,18 +1700,21 @@ our base on the moon and wipe them out in one stroke. Devote all your efforts to
 “Yes, sir! Understood!”
 
 @28476 Dermail · デルマイユ
+# 审校：精读：袋のねずみ
 > 「ふん、裏切り者のシャピロめが……。
 >  ふくろのねずみとは、このことだ」
-“Hmph, that traitor Shapiro... A rat in a bag, that's what he is.”
+“Hmph, that traitor Shapiro... Like a rat in a trap, that's what he is.”
 
 @28477 Prof. Yumi · 弓教授
 > 「君たち、ご苦労だったね」
 “You've all done well.”
 
 @28478 Roux · ルー
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授!
 >  それに早乙女博士も
-“Prof. Yumi! And Dr. Saotome too.
+“Professor Yumi! And Dr. Saotome too.
 ---
 >  どうしたんですか?」
 What brings you here?”
@@ -1691,9 +1742,10 @@ What brings you here?”
 our research institute here in the Sanc Kingdom.”
 
 @28483 Sayaka · さやか
+# 审校：さやか对父亲说话，口吻应更符合女儿对父亲的亲昵与兴奋，原译“That's amazing!”偏平淡，改为“Isn't that wonderful!”更贴合她的语气。
 > 「お父様、本当!?
 >  すごいじゃない!」
-“Father, really?! That's amazing!”
+“Father, really?! Isn't that wonderful!”
 
 @28484 Prof. Yumi · 弓教授
 > 「アムロくんたちのところへ
@@ -1725,13 +1777,15 @@ there's nothing you can do.”
 to approve research on Getter Rays and photon energy, that's surprising.”
 
 @28486 Dr. Saotome · 早乙女博士
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「むろん、最大の目的は
 >  それらの平和利用じゃ
 “Of course, the main purpose is their peaceful use.
 ---
 >  ノインさんがうまく話してくれたよ。
 >  なあに、わしや弓教授
-Miss Noin spoke to them well on our behalf. After all, the research done by me, Prof. Yumi,
+Miss Noin spoke to them well on our behalf. After all, the research done by me, Professor Yumi,
 ---
 >  それに兜博士の研究も、
 >  そもそもの目的は
@@ -1782,9 +1836,10 @@ Come on, you lot, get over here and help!”
 “What?! So that's what you came here to tell us!”
 
 @28492 Simone · シモーヌ
+# 审校：シモーヌ对博士说话，原文“何からなさいます?”是敬语，译文“What should I start with?”未体现对长辈的敬语层级，改为“What shall I start with?”更贴合。
 > 「ふふふ、いいじゃないの。博士、
 >  手伝いますわ。何からなさいます?」
-“Hehehe, isn't that nice? Doctor, I'll help. What should I start with?”
+“Hehehe, isn't that nice? Doctor, I'll help. What shall I start with?”
 
 @28493 Prof. Yumi · 弓教授
 > 「ああ、女性の諸君はかまわないよ

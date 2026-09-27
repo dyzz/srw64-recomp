@@ -1,106 +1,145 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8918 Wooder · ウッダー
+# 触发：攻击（通用，1/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落とさせてもらう!!」
-“I'll shoot you down!!”
+“I’ll shoot you down!!”
 
 @8919 Wooder · ウッダー
+# 触发：攻击（通用，2/9）
 > 「沈め!!」
 “Sink!!”
 
 @8920 Wooder · ウッダー
+# 触发：攻击（通用，3/9）
 > 「もらった!」
 “Got you!”
 
 @8921 Wooder · ウッダー
+# 触发：攻击（通用，4/9）
 > 「そこっ!」
 “There!”
 
 @8922 Wooder · ウッダー
+# 触发：攻击（通用，5/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @8923 Wooder · ウッダー
+# 触发：攻击（通用，6/9）
+# 审校：与中文统一
 > 「落ちろっ!!」
-“Fall!!”
+“Go down!!”
 
 @8924 Wooder · ウッダー
+# 触发：攻击（通用，7/9）
 > 「このっ!」
 “Why you!”
 
 @8925 Wooder · ウッダー
+# 触发：攻击（通用，8/9）
 > 「ならばっ!」
 “Then take this!”
 
 @8926 Wooder · ウッダー
+# 触发：攻击（通用，9/9）
 > 「いけっ!」
 “Go!”
 
 @8927 Wooder · ウッダー
+# 触发：被击坠（通用，1/1）
 > 「うおっ! し、しまった!」
 “Whoa! D-damn it!”
 
 @8928 Wooder · ウッダー
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぐあっ! つ、強い……」
 “Gah! S-strong...”
 
 @8929 Wooder · ウッダー
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうううっ! このまま黙ってやられる
 >  ものか!」
-“Nghhh! I won't just take this lying down!”
+“Nghhh! I won’t just take this lying down!”
 
 @8930 Wooder · ウッダー
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ! まだだ、まだ落ちるなっ!」
-“Whoa! Not yet, I won't go down!”
+“Whoa! Not yet, I won’t go down!”
 
 @8931 Wooder · ウッダー
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そう簡単にやられはせんよ!!」
-“I won't be beaten that easily!!”
+“I won’t be beaten that easily!!”
 
 @8932 Wooder · ウッダー
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「やるっ! さすがはっ!」
 “Not bad! As expected!”
 
 @8933 Wooder · ウッダー
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだ落ちはせん!」
-“Not yet! I'm not going down!”
+“Not yet! I’m not going down!”
 
 @8934 Wooder · ウッダー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「こんなダメージなどっ!」
 “This damage is nothing!”
 
 @8935 Wooder · ウッダー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな!」
-“That's nothing!”
+“That’s nothing!”
 
 @8936 Wooder · ウッダー
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「ふん、その程度か」
 “Hmph, is that all?”
 
 @8937 Wooder · ウッダー
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8938 Wooder · ウッダー
+# 触发：回避（通用，2/4）
+# 审校：なんの是不当回事
 > 「なんの!」
-“No problem!”
+“That’s nothing!”
 
 @8939 Wooder · ウッダー
+# 触发：回避（通用，3/4）
 > 「そこか!」
 “There!”
 
 @8940 Wooder · ウッダー
+# 触发：回避（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @8941 Wooder · ウッダー
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：beam 不大写
 > 「その程度のビームなど、効きはせん!」
-“A Beam like that won't hurt me!”
+“A beam like that won’t hurt me!”
 
 @8942 Wooder · ウッダー
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「何っ!? 弾切れか!」
 “What?! Out of ammo?!”
 
 @8943 Wooder · ウッダー
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むう、この距離では手が出せん……」
-“Hmph, I can't reach at this range...”
+“Hmph, I can’t reach at this range...”

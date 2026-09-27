@@ -6,17 +6,17 @@
 “The colonies' Operation M... was it real?”
 
 @18749 Quattro · クワトロ
-# 待译：机翻未采用（空译文）
-# 草稿第 1 页：“It seems so. It's not surprising that there are those in space who resist, just like us.
-# 草稿第 2 页：But still...”
-# 草稿第 3 页：
+# 审校：补译：原稿空页
 > 「そのようだ。
 >  宇宙にも我々のように
+“So it seems. It wouldn't be strange if there were people in space
 ---
 >  抵抗運動をする者たちがいても
 >  不思議ではない
+carrying on a resistance like ours.
 ---
 >  しかし……」
+But...”
 
 @18750 Bright · ブライト
 > 「何か気になることでも?」
@@ -62,9 +62,10 @@ that they're trying to drop weapons disguised as meteors
 onto the Earth.”
 
 @18757 Ark · アーク（按段落 3DD1）
+# 审校：精读：すごいもの 是威力不是体积
 > 「そんなにすごいものが
 >  落ちてくるんですか?」
-“Something that huge is going to fall?”
+“Something that powerful is going to come falling down?”
 
 @18758 Selain · セレイン（按段落 3DD2）
 > 「あまり効率的な方法とは
@@ -107,13 +108,15 @@ there are about six metal reactions.”
 “Do we have any units deployed that could intercept them?”
 
 @18764 Grados Soldier · グラドス兵
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：スペシャルズ→Specials
 > 「待ってください……
 >  あります
 “Wait... yes, we do.
 ---
 >  スペシャルズの
 >  ゼクス特尉の部隊です」
-It's Specials Lieutenant Zechs's unit.”
+It's Special Lieutenant Zechs's unit.”
 
 @18765 Grados Soldier · グラドス兵
 > 「スペシャルズか。まぁいい、
@@ -125,9 +128,10 @@ It's Specials Lieutenant Zechs's unit.”
 It's probably just satellite debris from the war three years ago anyway.”
 
 @18766 Specials · スペシャルズ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ゼクス特尉、監視衛星は
 >  隕石か衛星の破片の落下と
-“Lieutenant Zechs, the surveillance satellite reports it as
+“Special Lieutenant Zechs, the surveillance satellite reports it as
 ---
 >  報告しています」
 a meteor or satellite debris falling.”
@@ -310,26 +314,30 @@ but what's aboard is a combat pilot meant to operate them.”
 “What?!”
 
 @18797 Zechs · ゼクス
+# 审校：精读：特士 的称呼
 > 「これで動けまい。
 >  特士、脱出する。拾ってくれ」
-“That should stop it. Special, I'm ejecting. Pick me up.”
+“That should stop it. Special Officer, I'm ejecting. Pick me up.”
 
 @18798 Aboly · アポリー
+# 审校：阿波利是可靠部下，对克瓦特罗用敬语，此处口语化“gonna”与角色口吻不符，改为“going to”。（人工改写）
 > 「間に合いませんよ、こりゃ」
-“We're not gonna make it in time, not like this.”
+“We're not going to make it in time, not like this.”
 
 @18799 Quattro · クワトロ
+# 审校：精读：できるな 是夸对方能干，不是“我能做到”
 > 「相手にとりついて関節をロック、
 >  そして自分は脱出するとは
-“Grabbing onto the enemy, locking its joints, and ejecting himself in the process...
+“Grabbing onto the enemy, locking its joints, then ejecting himself...
 ---
 >  思い切りのよいパイロットだ。
 >  できるな」
-That's one daring pilot. I could do it.”
+That's one daring pilot. He's good.”
 
 @18800 Ark · アーク（按段落 3DD1）
+# 审校：精读：说的是希罗被击落
 > 「やられてしまった?」
-“We've been beaten?”
+“He got shot down?”
 
 @18801 Selain · セレイン（按段落 3DD2）
 > 「あの高度からの落下では、
@@ -435,8 +443,9 @@ I suppose I should be grateful.”
 “You won't escape this time, Eiji.”
 
 @18817 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「ゲイル先輩!」
-“Gale, sir!”
+“Gale!”
 
 @18818 Gale · ゲイル
 > 「エイジ。もう私はお前を
@@ -472,8 +481,9 @@ I love it just as I love Grados.”
 “I see...”
 
 @18821 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「お願いです、ゲイル先輩
-“Please, Gale, sir.
+“Please, Gale.
 ---
 >  帝国のやり方は
 >  間違っているんです」
@@ -484,8 +494,9 @@ The Empire's way of doing things is wrong.”
 “Eiji... Steel yourself!”
 
 @18823 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「くっ、ゲイル先輩!!」
-“Ngh, Gale, sir!!”
+“Ngh, Gale!!”
 
 @18824 Gale · ゲイル
 > 「どうしたエイジ!
@@ -500,8 +511,9 @@ Come at me carrying the full weight of this Earth!”
 “I'll end this with the next one, Eiji!!”
 
 @18826 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「ゲイル先輩!? うわあぁぁぁーっ!!」
-“Gale, sir?! Uwaaaaaaah!!”
+“Gale?! Uwaaaaaaah!!”
 
 @18827 Gale · ゲイル
 > 「くっ……見事だ。お前の覚悟、
@@ -512,25 +524,28 @@ Come at me carrying the full weight of this Earth!”
 ...You've grown strong, Eiji...”
 
 @18828 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「先輩……」
-“Gale, sir...”
+“Gale...”
 
 @18829 Gale · ゲイル
 > 「さらばだ、エイジ……生きのびろよ」
 “Farewell, Eiji... Live on.”
 
 @18830 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「ゲイル先輩ッ!?」
-“Gale, sir?!”
+“Gale?!”
 
 @18831 Gale · ゲイル
 > 「…………あぁ……ジュリア……」
 “...Ah... Julia...”
 
 @18832 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「くっ……先輩……。さようなら……
 >  ゲイル先輩……」
-“Ngh... Gale, sir... Goodbye... Gale, sir...”
+“Ngh... Gale... Goodbye... Gale...”
 
 @18833 Karla · カルラ
 > 「ゲイル中尉ッ!?
@@ -542,8 +557,9 @@ Come at me carrying the full weight of this Earth!”
 “Eiji, I'm ending this now.”
 
 @18835 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「くっ、ゲイル先輩……」
-“Ngh, Gale, sir...”
+“Ngh, Gale...”
 
 @18836 Gale · ゲイル
 > 「くっ……ここまでか
@@ -551,11 +567,12 @@ Come at me carrying the full weight of this Earth!”
 “Ngh... This is as far as I go... Julia...”
 
 @18837 Eiji · エイジ
+# 审校：Eiji 对 Gale 的称呼应为“Gale”，不应加“sir”。
 > 「ゲイル先輩ッ!? う……
-“Gale, sir?! Ugh...
+“Gale?! Ugh...
 ---
 >  ……さようなら……ゲイル先輩……」
-...Goodbye... Gale, sir...”
+...Goodbye... Gale...”
 
 @18838 Karla · カルラ
 > 「ゲイル中尉ッ!?
@@ -592,13 +609,14 @@ Be a good lad and hand over that machine.”
 is because of you!”
 
 @18843 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「帝国の無人機にまかせるから
 >  ああなった
 “That happened because we left it to the Empire's drones.
 ---
 >  だからこそ我々スペシャルズが
 >  代行することによって
-That is precisely why we Specials act in their stead—
+That is precisely why we Specials act in their stead...
 ---
 >  歯止めをかけているのだと、
 >  なぜわからない」
@@ -667,8 +685,9 @@ Do you understand that?!”
 ...It can't be helped.”
 
 @18851 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：时态
 > 「へっ、ビンゴだ。いやがったぜ」
-“Heh, bingo. There she was.”
+“Heh, bingo. There she is.”
 
 @18852 Selain · セレイン（按段落 3DD2）
 > 「あれは……ヤツか」
@@ -692,15 +711,16 @@ I don't want to kill a fine woman like you.”
 I'll pay you back for last time!”
 
 @18855 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：始末書の山と格闘 是“跟检讨书搏斗”，不是格斗训练
 > 「この前のカリったってお前、
 >  あんときゃこっちが撤退したんだぜ
-“Pay me back for last time? You're the one who—back then we were the ones retreating.
+“Pay you back for last time? Back then, we were the ones who retreated.
 ---
 >  おかげで始末書の山と格闘だ
-Thanks to that I got buried in reprimands and a pile of Melee training.
+Thanks to that, I've been wrestling with a mountain of incident reports.
 ---
 >  俺のほうこそカリがあると思うがな」
-If anything, I'm the one with a grudge.”
+If anything, I'm the one who's owed.”
 
 @18856 Selain · セレイン（按段落 3DD2）
 > 「貴様のことなど知ったものか!
@@ -727,24 +747,26 @@ If anything, I'm the one with a grudge.”
 “Ngh, I was too fixated on recovering the unit...”
 
 @18861 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：ちゃん 的轻佻感
 > 「ちっ、やられちまったか……。
 >  まったく気の強ぇ女だ
-“Tch, so I got shot down... What a headstrong woman.
+“Tch, so I'm the one who got shot down... What a headstrong woman.
 ---
 >  どうやらマジで惚れそうだぜ
 Looks like I might seriously fall for her.
 ---
 >  じゃあな、また会いに来るぜ、
 >  {HeroName}ちゃん」
-See you, I'll come to see you again, {HeroName}.”
+See you, {HeroName}, sweetheart. I'll be back to see you.”
 
 @18862 Selain · セレイン（按段落 3DD2）
 > 「ふざけた奴だ……」
 “What a ridiculous man...”
 
 @18863 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「ゲイル先輩………」
-“Gale, sir...”
+“Gale...”
 
 @18864 David · デビッド
 > 「エイジ、おいエイジ!
@@ -760,9 +782,10 @@ See you, I'll come to see you again, {HeroName}.”
 the unit just went into forced cooldown.”
 
 @18866 Quattro · クワトロ
+# 审校：精读：Operation M 统一
 > 「M作戦のパイロット……
 >  あれでは助からんな」
-“The M Operation's pilot... He won't survive that.”
+“Operation M's pilot... He won't survive that.”
 
 @18867 Aboly · アポリー
 > 「そう思います。
@@ -839,22 +862,24 @@ I knew it would end up like this.”
 He was a good officer, by the Empire's standards. A shame.”
 
 @18878 Treize · トレーズ
+# 审校：精读：Operation M 统一；つぶした 是战果
 > 「そう思う。しかし、こちらもずいぶんと
 >  損害が出たな。君ほどの男が
 “I agree. Still, we've taken considerable losses ourselves. A man of your caliber
 ---
 >  不始末をした。M作戦の1つを
 >  つぶしたことを差し引いても
-made a blunder. Even setting aside the loss of one M Operation unit,
+made a blunder. Even after crediting the one Operation M unit we crushed,
 ---
 >  財団のうるさがたを黙らすのに
 >  ひと苦労だ」
-it'll be a struggle to keep the Foundation's complainers quiet.”
+it will be a struggle to keep the Foundation's grumblers quiet.”
 
 @18879 Zechs · ゼクス
+# 审校：精读：Operation M 统一
 > 「はい。しかし、やはりM作戦が
 >  レジスタンスと結びつくと
-“Yes. However, if the M Operation were to link up with the Resistance,
+“Yes. However, if Operation M were to link up with the Resistance,
 ---
 >  かなりの脅威になると推測されます
 I estimate it would become a considerable threat.
@@ -895,12 +920,13 @@ That is a remarkable machine.”
 “Thank you.”
 
 @18884 Treize · トレーズ
+# 审校：精读：英文第二页只剩引号；バロン 是男爵
 > 「なに、“ライトニング・バロン”に
 >  ふさわしい機体を用意できて
-“Not at all. I'm glad we could prepare a machine worthy of the ‘Lightning Baron.’
+“Not at all. I'm glad we could prepare a machine
 ---
 >  私もうれしい」
-”
+worthy of the ‘Lightning Baron.’”
 
 @18885 Quattro · クワトロ
 > 「それで、今度はなんだというのだ?」

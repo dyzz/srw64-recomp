@@ -31,8 +31,9 @@
 “Damn, were we too late? Get Mr. Darlian out of here, quickly!”
 
 @19271 Guerrilla · ゲリラ
+# 审校：游击队员对同伴的应答无需对上级的“sir”，去掉多余敬称。
 > 「はい!」
-“Yes, sir!”
+“Yes!”
 
 @19272 Alan · アラン
 > 「ここは危険だ、急いで外へ」
@@ -94,12 +95,13 @@ already beyond saving.”
 “Just who are you people?! Why did my father have to be killed?!”
 
 @19282 Alan · アラン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「我々はカラバだ、反帝国組織
 >  の。ドーリアン氏を狙ったのは
 “We are Karaba, an anti-imperial organization. The ones who targeted Mr. Darlian were
 ---
 >  スペシャルズ、いやロームフェラ財団だ」
-the Specials — no, the Romefeller Foundation.”
+the Specials... no, the Romefeller Foundation.”
 
 @19283 Relena · リリーナ
 > 「ロームフェラ財団……」
@@ -190,9 +192,10 @@ to plan countermeasures against the resistance, we should see this as a chance, 
 “Why don't we try asking Karaba?”
 
 @19295 Quattro · クワトロ
+# 审校：精读：准将でなくとも 指“换了谁都”
 > 「やらせている。准将でなくとも、ここは
 >  無理をしたいところだな」
-“I already have. Even without the Brigadier General, this is a place where we want to push our luck.”
+“I already have. Brigadier General or not, this is a spot where anyone would want to push their luck.”
 
 @19296 Bright · ブライト
 > 「よし、厳重な警戒が予想される
@@ -253,9 +256,10 @@ I'd say we're waiting on further investigation.”
 “Hmm... what to do...”
 
 @19305 Lady · レディ
+# 审校：“cleverly increased”过于直白，改为“discreetly amplified”更符合 Lady 作为严厉军官的措辞。
 > 「帝国とスペシャルズの上層部
 >  すべてがニューエドワーズ基地に
-“I have cleverly increased the amount of information suggesting that the imperial and Specials high commands
+“I have discreetly amplified the information suggesting that the imperial and Specials high commands
 ---
 >  集まるという情報量を、巧妙に
 >  増加させておきました」
@@ -267,13 +271,15 @@ are all gathering at New Edwards Base.”
 “At the very least, it's a fact that you and I will be attending.”
 
 @19307 Lady · レディ
+# 审校：Lady 对 Treize 的敬语口吻下，将“you're”改为“you are”以保持正式。
 > 「ご自身も、おとりのうちですか」
-“So you're part of the bait yourself.”
+“So you are part of the bait yourself.”
 
 @19308 Treize · トレーズ
+# 审校：Treize 的贵族式优雅口吻，将“Thankfully, that is.”改为“For which I am grateful.”更贴合其哲学化表达。
 > 「ル・カイン閣下も大変乗り気で
 >  おられる。ありがたいことに、ね」
-“His Excellency Le Cain is quite enthusiastic as well. Thankfully, that is.”
+“His Excellency Le Cain is quite enthusiastic as well. For which I am grateful.”
 
 @19309 Duo · デュオ
 > 「よ、また会ったな。輸送機
@@ -285,9 +291,10 @@ are all gathering at New Edwards Base.”
 right? Mine's already loaded. Hurry up and load yours too.”
 
 @19310 Heero · ヒイロ
+# 审校：Heero 的冷淡寡言口吻，将“how important this mission is”改为“the importance of this mission”更简洁直接。
 > 「……今度の任務の重要性を
 >  理解しているのか」
-“...Do you understand how important this mission is?”
+“...Do you understand the importance of this mission?”
 
 @19311 Duo · デュオ
 > 「ああ。うまくいきゃ残る仕事は1つ
@@ -295,9 +302,10 @@ right? Mine's already loaded. Hurry up and load yours too.”
 “Yeah. If it goes well, we've only got one job left. We can head back to space early.”
 
 @19312 Heero · ヒイロ
+# 审校：Heero 的极简口吻，将“Start the engines”改为“Fire up the engines”更符合其任务至上的直接语气。
 > 「……いいだろう、デュオ・マックスウェル。
 >  エンジンに火をいれてくれ」
-“...Fine, Duo Maxwell. Start the engines.”
+“...Fine, Duo Maxwell. Fire up the engines.”
 
 @19313 Duo · デュオ
 > 「あいつ、俺の名前おぼえやがった……」
@@ -558,9 +566,9 @@ set to gather at this base, so a considerable number of guards have been deploye
 change considerably.”
 
 @19364 Lawrence · ローレンス
-# 审校：ローレンス回应マナミ的话，应表示“确实如此”，初稿“Indeed it will”时态和指代不够贴切，改为“Indeed it is, my lady.”更自然。
+# 审校：Lawrence is addressing Simone, not his own mistress Manami, so “my lady” is the wrong form of address here.
 > 「その通りでございますな」
-“Indeed it is, my lady.”
+“Indeed it is.”
 
 @19365 Banjo · 万丈
 > 「そうだ。すでにギャリソンたちに先行さ
@@ -571,26 +579,30 @@ change considerably.”
 Everyone, brace yourselves and let's go.”
 
 @19366 Walker · ワーカー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ゼクス特尉!」
-“Special Officer Zechs!”
+“Special Lieutenant Zechs!”
 
 @19367 Zechs · ゼクス
+# 审校：精读：特士 统一 Special Officer
 > 「ワーカー特士、久しぶりだな」
-“Specialist Walker. It's been a while.”
+“Special Officer Walker. It's been a while.”
 
 @19368 Walker · ワーカー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ゼクス特尉も、お元気そうで。
 >  ライトニングバロンの噂は聞いています」
-“You look well too, Special Officer Zechs. I've heard the rumors about the Lightning Baron.”
+“You look well too, Special Lieutenant Zechs. I've heard the rumors about the Lightning Baron.”
 
 @19369 Zechs · ゼクス
 > 「噂の先行は好きではないのだがな」
 “I'm not fond of rumors getting ahead of me.”
 
 @19370 Walker · ワーカー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「しかし特尉のご活躍は、異星
 >  人に対する我々の立場を
-“But I believe your achievements, Special Officer, have improved
+“But I believe your achievements, Special Lieutenant, have improved
 ---
 >  良好にしてくれていると思えます」
 our standing with the aliens.”
@@ -605,9 +617,10 @@ our standing with the aliens.”
 stationed here too. This is going to be a fairly harsh battlefield.”
 
 @19372 Walker · ワーカー
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やはり特尉も、そう思われますか。
 >  帝国側の指揮官などは、
-“So you think so too, Special Officer. I hear the Imperial commanders say
+“So you think so too, Special Lieutenant. I hear the Imperial commanders say
 ---
 >  この警備で攻めてくるバカはいないと
 >  いっているそうですが」
@@ -628,9 +641,10 @@ no fool would attack with this much security.”
 “?! ...Do you intend to die, Walker?”
 
 @19376 Walker · ワーカー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「特尉が教えてくださった『後の
 >  兵士たちのために戦え』というのが
-“What you taught me, Special Officer — ‘fight for the soldiers who come after’ —
+“What you taught me, Special Lieutenant... ‘fight for the soldiers who come after’...
 ---
 >  今の私の行動理念です」
 is my guiding principle now.”
@@ -670,9 +684,10 @@ it'll be a credit to me.”
 “Hiiyaa! Just as I calculated!”
 
 @19384 Giura · ギウラ
+# 审校：军官口吻应更干脆，将“already”改为“at once”以贴合命令语气。
 > 「き、貴様ら、敵が来たなら早く
 >  出撃しないかっ!」
-“Y-you lot, if the enemy's here, get out there and sortie already!”
+“Y-you lot, if the enemy's here, get out there and sortie at once!”
 
 @19385 Getty · ゲティ
 > 「慌てるんじゃねぇ。まずは地球人
@@ -732,8 +747,9 @@ we'll end up surrounded by reinforcements from the other bases. Everyone, hurry.
 “All right, let's go!”
 
 @19395 Manami · マナミ（按段落 3DD4）
+# 审校：大小姐对万丈用敬语，将“Got it.”改为更符合贵族小姐口吻的“Very well.”。
 > 「わかったわ」
-“Got it.”
+“Very well.”
 
 @19396 Noventa · ノベンタ
 > 「ど、どうしたことだ、これは!?」
@@ -844,12 +860,14 @@ For the soldiers who come after!”
 “Forgive me, Walker...”
 
 @19411 Bask · バスク
+# 审校：精读：死鬼隊 读作 Shikitai
+# 检查提示：未用必用译名：死鬼隊→Demon Death Platoon
 > 「バカが、突っ込みすぎおって。
 >  エマ特尉、ル・カイン直属の
-“Fool, he charged in too far. Lieutenant Emma, what happened to Le Cain's direct
+“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's personal
 ---
 >  死鬼隊とやらはどうしたか!?」
-Demon Death Platoon unit or whatever it's called?!”
+Shikitai unit or whatever it's called?!”
 
 @19412 Emma · エマ
 > 「ル・カイン司令の親衛隊が
@@ -861,13 +879,14 @@ Demon Death Platoon unit or whatever it's called?!”
 “About time.”
 
 @19414 Bask · バスク
-# 审校：同上，エマ特尉应体现“特尉”而非普通 Lieutenant。
+# 审校：精读：死鬼隊 读作 Shikitai
+# 检查提示：未用必用译名：死鬼隊→Demon Death Platoon
 > 「バカが、突っ込みすぎおって。
 >  エマ特尉、ル・カイン直属の
-“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's direct
+“Fool, he charged in too far. Special Lieutenant Emma, what happened to Le Cain's personal
 ---
 >  死鬼隊とやらはどうしたか!?」
-Demon Death Platoon unit or whatever it's called?!”
+Shikitai unit or whatever it's called?!”
 
 @19415 Emma · エマ
 > 「ル・カイン司令の親衛隊が
@@ -879,9 +898,10 @@ Demon Death Platoon unit or whatever it's called?!”
 “About time.”
 
 @19417 Gosterro · ゴステロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ひぃははははぁっ! あのコゾウどもかぁ、
 >  ぶっ殺してやるぅ! いくぞお前らぁ!」
-“Hiihahahaha! Those little brats, huh? I'll slaughter 'em! Let's go, you lot!”
+“Hiihahahaha! Those little brats, huh? I'll slaughter ’em! Let's go, you lot!”
 
 @19418 Getty · ゲティ
 > 「お、俺に命令するんじゃねぇ!
@@ -915,9 +935,10 @@ probably descended in Operation M as well...”
 “The Liberation Front of the Earth organization, huh...”
 
 @19423 Quatre · カトル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「見てよトロワ! レジスタンスも
 >  他のガンダムも、きっとみんな目的は
-“Look, Trowa! The resistance and the other Gundams — I'm sure they all share
+“Look, Trowa! The resistance and the other Gundams... I'm sure they all share
 ---
 >  一緒だよ!」
 the same goal!”
@@ -1006,9 +1027,10 @@ probably descended in Operation M as well...”
 “The Liberation Front of the Earth organization, huh...”
 
 @19438 Quatre · カトル
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「見てよトロワ! レジスタンスも
 >  他のガンダムも、きっとみんな目的は
-“Look, Trowa! The resistance and the other Gundams — I'm sure they all share
+“Look, Trowa! The resistance and the other Gundams... I'm sure they all share
 ---
 >  一緒だよ!」
 the same goal!”
@@ -1074,17 +1096,19 @@ finish this up quick.”
 “That's... a Specials Garuda!”
 
 @19450 Garrison · ギャリソン
+# 审校：ギャリソン对万丈的称呼应为 Master Banjo，且管家口吻不用缩写。
 > 「万丈さま、スペシャルズのガルダです」
-“Lord Banjo, it's a Specials Garuda.”
+“Master Banjo, it is a Specials Garuda.”
 
 @19451 Banjo · 万丈
 > 「しまった、脱出する気か!?」
 “Damn, they're trying to escape?!”
 
 @19452 Heero · ヒイロ
+# 审校：希罗口吻应更短促冷硬，will 不缩写更符合其寡言风格。
 > 「くっ……機体のダメージが大きすぎる
 >  だが……任務は継続する……」
-“Ngh... The damage to my unit is too great... but I'll continue the mission...”
+“Ngh... The damage to my unit is too great... but I will continue the mission...”
 
 @19453 Bright · ブライト
 > 「あいつ……あんな機体で
@@ -1120,9 +1144,10 @@ finish this up quick.”
 “Everyone, we'll hit that too. If it gets away, this operation fails!”
 
 @19460 Reika · レイカ
+# 审校：丽香是干练职业女性，原文为命令式，译文应更干脆有力。
 > 「みんな、あれを逃がしちゃためよ!
 >  逃がしたら作戦は失敗だわ!」
-“Everyone, don't let that escape! If it gets away, the operation fails!”
+“Everyone, we must not let that escape! If it gets away, the operation fails!”
 
 @19461 Noventa · ノベンタ
 > 「なに……!?」
@@ -1133,8 +1158,9 @@ finish this up quick.”
 “Target acquired. Destroying...”
 
 @19463 Noventa · ノベンタ
+# 审校：诺本塔为年长者，对年轻人说话应更庄重，不用缩写。
 > 「早まるな……若者よ……」
-“Don't be hasty... young man...”
+“Do not be hasty... young man...”
 
 @19464 Heero · ヒイロ
 > 「任務……完了……」
@@ -1145,9 +1171,10 @@ finish this up quick.”
 “He did it! That guy actually pulled it off!”
 
 @19466 Noventa · ノベンタ
+# 审校：诺本塔口吻应更庄重，不用缩写。
 > 「くっ……若者たちよ、なんという
 >  早まったことを……」
-“Ngh... young ones, what a rash thing you've done...”
+“Ngh... young ones, what a rash thing you have done...”
 
 @19467 Emma · エマ
 > 「なんてことを! 全機、レジスタンスを
@@ -1211,18 +1238,19 @@ secured the Empire's concessions!”
 “Impossible... Damn it, all units retreat! Hurry!”
 
 @19478 Garrison · ギャリソン
-# 审校：将“I've confirmed it”改为更符合老管家语气的“I have confirmed it”，并保持两页断句自然。
+# 审校：ギャリソン对万丈的称呼应为“Master Banjo”，而非“Lord Banjo”。
 > 「万丈さま、確認いたしました。
 >  どうやらあの少年のいうとおりの
-“Lord Banjo, I have confirmed it. It appears to be exactly as
+“Master Banjo, I have confirmed it. It appears to be exactly as
 ---
 >  ようでございます」
 that boy said.”
 
 @19479 Reika · レイカ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「万丈、それに帝国軍の部隊が
 >  接近しているわよ!」
-“Banjo, an imperial force is approaching too!”
+“Banjo, an Imperial force is approaching too!”
 
 @19480 Banjo · 万丈
 > 「く……スペシャルズめ……。みんな、
@@ -1234,9 +1262,10 @@ that boy said.”
 “This... this is my mistake!”
 
 @19482 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「エマ特尉、帰投してすぐに追撃
 >  の準備にかかれ!
-“Lieutenant Emma, begin preparations for pursuit the moment you return!
+“Special Lieutenant Emma, begin preparations for pursuit the moment you return!
 ---
 >  奴らを逃がしてはならん!」
 We must not let them escape!”
@@ -1256,17 +1285,19 @@ We must not let them escape!”
 (He said... we were played... what does that mean?)
 
 @19486 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「エマ特尉、汚名返上のチャンス
 >  をやる。追撃隊の指揮をまかせる
-“Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+“Special Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
 ---
 >  奴らを逃がすな!」
 command of the pursuit force to you. Don't let them escape!”
 
 @19487 Emma · エマ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はっ、バスク特尉。では追撃隊の
 >  編成にかかります」
-“Yes, Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+“Yes, Special Lieutenant Bask. I'll begin organizing the pursuit force at once.”
 
 @19488 Bask · バスク
 > 「急げよ」
@@ -1340,18 +1371,19 @@ secured the Empire's concessions!”
 “Impossible... Damn it, all units retreat! Hurry!”
 
 @19501 Garrison · ギャリソン
-# 审校：同L5，将“I've confirmed it”改为更符合老管家语气的“I have confirmed it”。
+# 审校：ギャリソン对万丈的称呼应为“Master Banjo”，而非“Lord Banjo”。
 > 「万丈さま、確認いたしました。
 >  どうやらあの少年のいうとおりの
-“Lord Banjo, I have confirmed it. It appears to be exactly as
+“Master Banjo, I have confirmed it. It appears to be exactly as
 ---
 >  ようでございます」
 that boy said.”
 
 @19502 Reika · レイカ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「万丈、それに帝国軍の部隊が
 >  接近しているわよ!」
-“Banjo, an imperial force is approaching too!”
+“Banjo, an Imperial force is approaching too!”
 
 @19503 Banjo · 万丈
 > 「く……スペシャルズめ……。みんな、
@@ -1363,12 +1395,13 @@ that boy said.”
 “It's my... it's my mistake!”
 
 @19505 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「エマ特尉、帰投してすぐに追撃
 >  の準備にかかれ!
-“Lieutenant Emma, begin preparations for pursuit the moment you return!
+“Special Lieutenant Emma, begin preparations for pursuit the moment you return!
 ---
 >  奴らを逃がしてはならん!」
-We must not let them escape!”
+Do not let them escape!”
 
 @19506 Emma · エマ
 > 「はっ!」
@@ -1385,18 +1418,19 @@ We must not let them escape!”
 (I'm sure he said... we were set up... what did he mean?)
 
 @19509 Bask · バスク
-# 审校：同L13，按原文页末断句调整。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「エマ特尉、汚名返上のチャンス
 >  をやる。追撃隊の指揮をまかせる
-“Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
+“Special Lieutenant Emma, I'm giving you a chance to clear your name. I'm leaving
 ---
 >  奴らを逃がすな!」
 command of the pursuit force to you. Don't let them escape!”
 
 @19510 Emma · エマ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はっ、バスク特尉。では追撃隊の
 >  編成にかかります」
-“Yes, Lieutenant Bask. I'll begin organizing the pursuit force at once.”
+“Yes, Special Lieutenant Bask. I'll begin organizing the pursuit force at once.”
 
 @19511 Bask · バスク
 > 「急げよ」
@@ -1453,13 +1487,15 @@ but I suppose there's no helping it.”
 “You let Sudori get away?! Ngh, the operation's a failure...”
 
 @19522 Garrison · ギャリソン
+# 审校：管家对万丈的称呼应为“Master Banjo”，而非“Lord Banjo”。
 > 「万丈様、作戦は失敗でございます!」
-“Lord Banjo, the operation has failed!”
+“Master Banjo, the operation has failed!”
 
 @19523 Reika · レイカ
+# 审校：全局：帝国軍 Imperial 大写统一
 > 「万丈、帝国軍の部隊も
 >  こっちに接近中よ!」
-“Banjo, an imperial force is approaching us too!”
+“Banjo, an Imperial force is approaching us too!”
 
 @19524 Banjo · 万丈
 > 「僕としたことが……。くっ、作戦は
@@ -1467,8 +1503,10 @@ but I suppose there's no helping it.”
 “To think I'd slip up like this... Ngh, the operation's a failure...”
 
 @19525 Lady · レディ
+# 审校：蕾蒂对特列斯的称呼应为“Your Excellency”，而非“Lord Treize”。
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「処理は完璧です、トレーズ様」
-“The arrangements are complete, Lord Treize.”
+“The arrangements are complete, Your Excellency.”
 
 @19526 Treize · トレーズ
 > 「そのようだね。これで人々は迷うこと
@@ -1498,9 +1536,10 @@ but I suppose there's no helping it.”
 “Yeah... the other three seem to have gone off somewhere...”
 
 @19532 Quattro · クワトロ
+# 审校：准将 统一 Brigadier General
 > 「彼らは敵ではない。准将の希望
 >  通り我々に同行してもらうのが
-“They're not our enemies. It would be best if they came along with us, just as the Commodore hopes.
+“They're not our enemies. It would be best if they came along with us, just as the Brigadier General hopes.
 ---
 >  いいだろう。彼らがそれを望めば、だが」
 That is, if that's what they want.”
@@ -1511,8 +1550,9 @@ That is, if that's what they want.”
 “If you'd like, why not come with us? Things must be rough for you as it is.”
 
 @19534 Anna · アンナ
+# 审校：Anna 的 voice 是温柔坚定，原文「いらっしゃいよ」带有邀请的敬语感，改为更柔和的“Do come along”以贴合口吻。
 > 「それがいいわ。一緒にいらっしゃいよ」
-“That's a good idea. Come along with us.”
+“That's a good idea. Do come along with us.”
 
 @19535 Selain · セレイン（按段落 3DD2）
 > 「お前たち、よければ一緒にこい。
@@ -1523,8 +1563,9 @@ That is, if that's what they want.”
 to bear the weight of failure.”
 
 @19536 Anna · アンナ
+# 审校：同 L2，Anna 的邀请语气应更柔和，与原文「いらっしゃいよ」的敬语感一致。
 > 「それがいいわ。一緒にいらっしゃいよ」
-“That's a good idea. Come along with us.”
+“That's a good idea. Do come along with us.”
 
 @19537 Koji · 甲児
 > 「ちくしょうめ、まんまとしてやられたって
@@ -1641,9 +1682,10 @@ Duo Maxwell.”
 I never thought he was still alive.”
 
 @19556 Roux · ルー
+# 审校：ライフ 统一写作 LIFE
 > 「ブライト中佐もクワトロ大尉も、
 >  ライフの中核よ
-“Lieutenant Colonel Bright and Captain Quattro are the core of Liffe.
+“Lieutenant Colonel Bright and Captain Quattro are the core of LIFE.
 ---
 >  一体どうしたっていうんだか」
 What on earth is going on?”
@@ -1670,9 +1712,10 @@ What on earth is going on?”
 considers the situation serious, then...”
 
 @19561 Quattro · クワトロ
+# 审校：准将 统一 Brigadier General
 > 「今回のことで士気がいちじるしく
 >  低下している。ブレックス准将や
-“Morale has dropped sharply because of this incident. Commodore Blex and
+“Morale has dropped sharply because of this incident. Brigadier General Blex and
 ---
 >  イゴール将軍はそれを憂慮している
 >  のだ。一部では我々が

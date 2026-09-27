@@ -79,9 +79,10 @@ Romefeller's influence. That's what they want to avoid.”
 “It's hard to stomach.”
 
 @27392 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうだな……あ、特尉、お茶でもどう
 >  かな」
-“It is... Ah, Lieutenant, how about some tea?”
+“It is... Ah, Special Lieutenant, how about some tea?”
 
 @27393 Emma · エマ
 > 「だめです。忙しいですから」
@@ -193,9 +194,10 @@ look a great deal like him.”
 The only business I have is with liquor.”
 
 @27411 Banjo · 万丈
+# 审校：万丈对博士自称“僕”，此处应译为“I”而非“we”，以符合其个人口吻。
 > 「ところがこちらはそういうわけには
 >  いかないんですよ。南原博士は
-“Unfortunately, we can't leave it at that. You know of
+“Unfortunately, I can't leave it at that. You know of
 ---
 >  ご存知ですね」
 Dr. Nanbara, I trust.”
@@ -219,9 +221,10 @@ with his outstanding foresight hasn't moved since then either.”
 “I see... so Nanbara is dead.”
 
 @27415 Banjo · 万丈
+# 审校：原文“頼るように”是南原对万丈个人的嘱托，应保持第一人称单数“I”，而非“we”。
 > 「南原博士は自分にもしものこと
 >  があれば、四谷博士を頼るように
-“Dr. Nanbara left word that if anything should happen to him, we should rely on
+“Dr. Nanbara left word that if anything should happen to him, I should rely on
 ---
 >  と言い残された。探しましたよ、
 >  あなたを。このような廃虚にお隠れに
@@ -277,13 +280,14 @@ destroying the Earth itself.”
 “...What did you say?”
 
 @27421 Banjo · 万丈
+# 审校：精读：去破折号
 > 「この地球を愛するというのなら、
 >  人間のためではなくてもいい
-“If you say you love this Earth, then it doesn't have to be for humanity's sake—
+“If you say you love this Earth, then it doesn't have to be for humanity's sake.
 ---
 >  この母なる大地のために力を
 >  貸してください。博士」
-please lend your strength to this mother Earth. Doctor.”
+Please lend your strength to this mother Earth. Doctor.”
 
 @27422 Dr. Yotsuya · 四谷博士
 > 「……万丈といったかな。
@@ -305,9 +309,10 @@ They say you've been fighting ever since the days of Zorbados.”
 “...Understood. So then, what should I do?”
 
 @27425 Banjo · 万丈
+# 审校：精读：去破折号
 > 「南原博士の残した戦闘ロボ、
 >  コン・バトラーVを動かしてください」
-“Please get the combat robot Dr. Nanbara left behind—Combattler V—running.”
+“Please get the combat robot Dr. Nanbara left behind, Combattler V, running.”
 
 @27426 Dr. Yotsuya · 四谷博士
 > 「コン・バトラーV……できるかはわからんが
@@ -360,16 +365,18 @@ If you're not an enemy, they'll accept just about anything, you see.”
 “Yeah... I suppose so. And maybe that's also the reason for this atmosphere.”
 
 @27434 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：；独白不加引号
 > (それと強さの理由も、か)
-“(And the reason for their strength, too, maybe.)”
+(And the reason for their strength, too, maybe.)
 
 @27435 Bright · ブライト
+# 审校：精读：军衔语序
 > 「{PartnerSurname}特尉、
 >  どうかな{HeroMech}は」
-“{PartnerSurname} Special Lieutenant, how is the {HeroMech}?”
+“Special Lieutenant {PartnerSurname}, how is the {HeroMech}?”
 
 @27436 Ehrlich · エルリッヒ（按段落 3DD1）
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：去破折号
 > 「はっブライト艦長。OZとの雰囲
 >  気の違いにとまどっておりますが
 “Yes, Captain Bright. I'm still confused by how different the atmosphere is from OZ,
@@ -380,7 +387,7 @@ but other than that there are no particular problems. I can feel the vitality. A
 ---
 >  ブライト艦長のおられる部隊だと
 >  感心しておりました」
-a unit where Captain Bright is present—I was impressed.”
+a unit where Captain Bright is present. I was impressed.”
 
 @27437 Bright · ブライト
 > 「別に私の力ではないさ。しかし、その
@@ -404,9 +411,10 @@ If you just act normally, that's enough.”
 “I can't step away right now.”
 
 @27441 Bright · ブライト
+# 审校：“come to me” 略显生硬，改为更自然的舰长口吻。
 > 「わかった。手が空いたら
 >  私のところまで来てくれ」
-“Understood. When you're free, come to me.”
+“Understood. When you're free, come see me.”
 
 @27442 Duo · デュオ
 > 「よーし、こっちは終わったぜ。
@@ -414,9 +422,11 @@ If you just act normally, that's enough.”
 “All right, this side's done. Sai Saici, hurry up and finish it.”
 
 @27443 Sai Saici · サイ・サイシー
+# 审校：“Get out of there” 语气偏重，改为更符合少年调皮口吻的“Move it”。
+# 检查提示：未用必用译名：マダラ→Streaky
 > 「ほいよ。おっと、マダラのあんちゃん、
 >  邪魔邪魔。そっからどいてくれよ」
-“Sure thing. Whoa, Streaky, you're in the way, in the way. Get out of there.”
+“Sure thing. Whoa, Streaky, you're in the way, in the way. Move it.”
 
 @27444 Rish · リッシュ（按段落 3DD2）
 > 「っと、すまねぇな。しかし
@@ -453,13 +463,14 @@ you'll have to get used to it. Here, those kids are treated as
 full-fledged warriors too.”
 
 @27449 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：去破折号
 > 「ハッハ、そいつは戦った俺がいちばんよ
 >  くわかってるさ。ありゃ子供じゃなくて
-“Haha, I know that best of all, having fought them. Those aren't kids—
+“Haha, I know that best of all, having fought them. Those aren't kids.
 ---
 >  化け物みたいなもんだ。おっ
 >  {HeroNick}、今から調整かい
-they're more like monsters. Hey, {HeroNick}, you doing adjustments now?
+They're more like monsters. Hey, {HeroNick}, you doing adjustments now?
 ---
 >  手伝ってやるよ」
 I'll give you a hand.”
@@ -531,9 +542,10 @@ I'd be troubled if our main force lost her edge.”
 so you've got nothing to do, right?”
 
 @27461 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：姉さん
 > 「いってくれるねぇ。姉さん、そういうのは
 >  思っていても口にはしないもんだ
-“You don't hold back, do you? Sis, that's the kind of thing you keep to yourself even if you think it.
+“You don't hold back, do you? Miss, that's the kind of thing you keep to yourself even if you think it.
 ---
 >  OZなら相手によっちゃ大変なこと
 >  になるぜ」
@@ -555,10 +567,10 @@ In OZ, depending on who you say it to, that could land you in serious trouble.�
 “I see. So, are you going to help me or not?”
 
 @27465 Rish · リッシュ（按段落 3DD2）
-# 审校：原文没有“my lady”，只有“姉さん”，删去多余的敬称，保留“sis”。
+# 审校：精读：姉さん
 > 「お手伝いいたしましょう。で、何を
 >  すればいいんだい、姉さん」
-“At your service. So, what should I do, sis?”
+“At your service. So, what should I do, miss?”
 
 @27466 Kurtz · カーツ（按段落 3DD3）
 > 「{HeroNick}」
@@ -592,10 +604,10 @@ here has changed a lot. And it seems to have grown quite a bit, too.”
 anything about the others.”
 
 @27471 Brad · ブラッド（按段落 3DD3）
-# 审校：原文“それじゃあ戦いには勝てない”是条件关系，初稿“That way, you'll never win a battle”已可，但为更自然改为“You'll never win a battle that way”，并保持页数一致。
+# 审校：Brad 是热血武者，用 fight 比 battle 更贴合他的粗放口吻。
 > 「それは直せよ、{PartnerNick}。それじゃあ
 >  戦いには勝てない」
-“Then fix that, {PartnerNick}. You'll never win a battle that way.”
+“Then fix that, {PartnerNick}. You'll never win a fight that way.”
 
 @27472 Kurtz · カーツ（按段落 3DD3）
 > 「なに? どういう意味だ」
@@ -625,16 +637,17 @@ enemies are on every side. The more you grasp their movements, the more the odds
 “I see... I'll try that out next time.”
 
 @27477 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去破折号
 > 「それがいい。“武機覇拳流”
 >  はまだまだ強くなれる。そうだ、お前も
-“Good. Buki Haken-ryu can still grow much stronger. In fact, you should
+“Good. Buki Haken-ryu can still get a lot stronger. In fact, you should
 ---
 >  1度ドモンたちとやってみるといい。
 >  あの連中の戦い方は、面白い
-spar with Domon and the others once. Their way of fighting is interesting—
+spar with Domon and the others once. Their way of fighting is interesting.
 ---
 >  参考になるぜ」
-it'll make a good reference.”
+It'll be a good reference.”
 
 @27478 Kurtz · カーツ（按段落 3DD3）
 > 「そうか……俺が貴様に勝てなかった
@@ -675,13 +688,14 @@ No wonder I couldn't win.”
 I've grown curious about the people here, too.”
 
 @27483 Brad · ブラッド（按段落 3DD3）
+# 审校：词条：ヴァイローズ=Virose
 > 「1つだけ忠告しておく。ヴァイローズ
 >  でドモンたちと訓練するのはいい
 “One word of warning. Training with Domon and the others in Virose is fine,
 ---
 >  が、生身はやめておけ。奴らは
 >  素手でMSを壊せる」
-but don't do it bare-handed. Those guys can destroy an MS with their bare fists.”
+but don't do it bare-handed. Those guys can destroy an MS with their bare hands.”
 
 @27484 Kurtz · カーツ（按段落 3DD3）
 > 「フッ、冗談はよせ。貴様らしくも
@@ -733,16 +747,17 @@ those guys are on another level.”
 “What's wrong?”
 
 @27493 Koji · 甲児
+# 审校：精读：去破折号
 > 「それが、もー大変なんだよ。
 >  わがままっていうかなんていうかさ
-“It's just—it's a huge pain. She's so selfish, or whatever you'd call it.
+“It's just... it's a huge pain. She's so selfish, or whatever you'd call it.
 ---
 >  やれ、こんな食事は食えないだとか、
 >  ガサツだ、無教養だ、短絡バカだ
-She goes on about how she can't eat this kind of food, how I'm crude, uneducated, a brainless idiot—
+She goes on about how she can't eat this kind of food, how I'm crude, uneducated, a brainless idiot.
 ---
 >  とか、言いたい放題」
-she says whatever she wants.”
+She says whatever she wants.”
 
 @27494 Manami · マナミ（按段落 3DD4）
 > 「最後のは、いつもいわれてるでしょ」
@@ -862,14 +877,16 @@ in full force.”
 “W-what, what's going on?!”
 
 @27514 Mika · ミカ
+# 审校：ミカ对舰长报告时语气应更急促，且原文“タケルが!”是“是武！”而非“武！”
 > 「艦長、大変です! タケルが!」
-“Captain, it's terrible! Takeru!”
+“Captain, it's terrible! It's Takeru!”
 
 @27515 Amuro · アムロ
 > 「落ち着くんだ、ミカ。何があった?」
 “Calm down, Mika. What happened?”
 
 @27516 Mika · ミカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
 “Probably a Gishin psychic! Your brother was taken, and Takeru
@@ -878,6 +895,7 @@ in full force.”
 chased after them in the Gaia...”
 
 @27517 Beltorchika · ベルトーチカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「アムロ、ガイヤーが飛んでいくわ」
 “Amuro, the Gaia's taking off.”
 
@@ -887,6 +905,7 @@ chased after them in the Gaia...”
 “That Takeru. Bright, send someone after him.”
 
 @27519 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そうだな。よし、ゲッターチームと
 >  藤原忍にガイヤーを追わせる
 “Right. All right, have the Getter Team and Shinobu Fujiwara chase the Gaia.
@@ -908,9 +927,9 @@ Captain, have the rest search the ship for enemies.”
 “Fuhahahahaha!”
 
 @27523 Takeru · タケル
-# 审校：原译“Y-you're!”不完整且不通顺，改为“Y-you're—!”以保留被打断的语气。
+# 审校：精读：去破折号
 > 「お、お前はッ!」
-“Y-you're—!”
+“Y-you're...!”
 
 @27524 Emperor Zuul · ズール皇帝
 > 「よく来たな、マーズ」
@@ -1335,13 +1354,15 @@ already decided, isn't it?”
 “That's right, isn't it. Of course.”
 
 @27596 Amuro · アムロ
+# 审校：原文是向舰长汇报情况的语气，现有译文“You heard them”过于随意，不符合阿姆罗对布莱特舰长的敬语分寸。
 > 「ということだ、ブライト」
-“You heard them, Bright.”
+“That's the situation, Bright.”
 
 @27597 Bright · ブライト
+# 审校：布莱特作为舰长对少年队员说话，用“Yeah”过于随便，改为“Yes”更符合其严肃负责的口吻。
 > 「そうだな、それが妥当だろう。
 >  よし、では我々はこれからミケーネの
-“Yeah, that seems reasonable. All right then, we'll head for the old Imperial
+“Yes, that seems reasonable. All right then, we'll head for the old Imperial
 ---
 >  占拠している旧帝国軍基地
 >  へ向かう」
@@ -1564,8 +1585,9 @@ I want to link up with them before that.”
 “All right! Let's Combine!!”
 
 @27644 Hyoma · 豹馬
+# 审校：精读：拖长音、标点
 > 「コォォォォォンバトラァァァー・ブイッ!」
-“Combattler V!”
+“Coooombattleeeer Veee!”
 
 @27645 Banjo · 万丈
 > 「よし、いくぞ君たち!」
@@ -1639,9 +1661,10 @@ By the way, who's that one over there?”
 “Hehe, you never change, do you? I'm glad we can be together again.”
 
 @27655 Lawrence · ローレンス
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ところで万丈様、そちらのロボットは
 >  どちら様で?」
-“By the way, Master Banjo, who might that robot over there belong to?”
+“By the way, Banjo, who might that robot over there belong to?”
 
 @27656 Banjo · 万丈
 > 「南原博士の建造した
@@ -2018,9 +2041,10 @@ and all of you. Please.”
 willing to fight. It'll be a hard battle, but glad to have you with us.”
 
 @27720 Maria · マリア
+# 审校：精读：去破折号
 > 「ありがとう、甲児。あたしがんばるわ。
 >  あっ、そういえば甲児、あの時の傷
-“Thank you, Koji. I'll do my best. Oh, that reminds me, Koji, that wound from back then—
+“Thank you, Koji. I'll do my best. Oh, that reminds me, Koji, that wound from back then,
 ---
 >  大丈夫だった?」
 are you all right?”
@@ -2127,8 +2151,9 @@ Sweetwater, you've had a gloomy look on your face.”
 “I see... so Axis is a space fortress built by Zeon remnants, you said?”
 
 @27742 Quattro · クワトロ
+# 审校：Quattro 的 voice 是从容含蓄的军官，用“Yes”比“Yeah”更符合其贵族气。
 > 「ああ。それがOZと接触したらしい」
-“Yeah. And it seems they've made contact with OZ.”
+“Yes. And it seems they've made contact with OZ.”
 
 @27743 Banjo · 万丈
 > 「しかしそれは当たり前じゃないか?

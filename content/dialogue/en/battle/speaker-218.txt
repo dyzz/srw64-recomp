@@ -1,116 +1,197 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7734 Gosterro · ゴステロ
+# 触发：攻击（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「脳がはちきれそうだぜっ!」
-“My brain's about to burst!”
+“My brain’s about to burst!”
 
 @7735 Gosterro · ゴステロ
+# 触发：攻击（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「派手に殺してやるぜっ!!」
-“I'll kill you good and flashy!!”
+“I’ll kill you good and flashy!!”
 
 @7736 Gosterro · ゴステロ
+# 触发：攻击（通用，3/8）
 > 「ひゃっはっはははっ!」
 “Hyahahahaha!”
 
 @7737 Gosterro · ゴステロ
+# 触发：攻击（通用，4/8）
 > 「死ねぇい!」
 “Die!”
 
 @7738 Gosterro · ゴステロ
+# 触发：攻击（通用，5/8）
 > 「ひぃゃーははははははっ!」
 “Hyeahahahahaha!”
 
 @7739 Gosterro · ゴステロ
+# 触发：攻击（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がすかぁっ!」
-“You're not getting away!”
+“You’re not getting away!”
 
 @7740 Gosterro · ゴステロ
+# 触发：攻击（通用，7/8）
 > 「ちょろちょろ動くんじゃねぇ!」
 “Stop zipping around!”
 
 @7741 Gosterro · ゴステロ
+# 触发：攻击（通用，8/8）
 > 「せっかくだから派手に殺してやるぜ!」
 “Might as well kill you good and flashy!”
 
 @7742 Gosterro · ゴステロ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺は不死身だぁ～!!」
-“I'm immortal!!”
+“I’m immortal!!”
 
 @7743 Gosterro · ゴステロ
+# 触发：被击坠（通用，2/2）
+# 审校：原文!?
 > 「ぬぉぉぉぉ、ばかなぁぁぁっ!?」
-“Nooo, impossible!!”
+“Nooo, impossible?!”
 
 @7744 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ひぃひひっ、ムザムザ殺されて
 >  たまるかってんだ!!」
-“Heheheh, like hell I'll let you kill me just like that!!”
+“Heheheh, like hell I’ll let you kill me just like that!!”
 
 @7745 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「うぎゃぁぁぁぁっ、脳がぁぁっ!」
 “Ugraaah, my brain!!”
 
 @7746 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「ひっひっひひひひひひっ!」
 “Hihhihihihihihi!”
 
 @7747 Gosterro · ゴステロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「脳がいてぇぇぇぇーっ!」
 “My brain hurrrts!”
 
 @7748 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「のうっ、脳が痛い!」
 “M-my brain hurts!”
 
 @7749 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬおぉぉっ、脳がはちきれそうだぜぇ!」
-“Nwooo, my brain's about to burst!”
+“Nwooo, my brain’s about to burst!”
 
 @7750 Gosterro · ゴステロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぅ、ぶち殺してやる!」
-“Damn it, I'll blow you away!”
+“Damn it, I’ll blow you away!”
 
 @7751 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ふひゃははははっ!」
 “Fuhyahahahaha!”
 
 @7752 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなんだよぉっ!」
-“It's pointless!”
+“It’s pointless!”
 
 @7753 Gosterro · ゴステロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：原文是反问
 > 「ひへへへへっ、効かねぇなぁ?」
-“Heheheheh, that didn't even hurt!”
+“Heheheheh, didn’t feel a thing, huh?”
 
 @7754 Gosterro · ゴステロ
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「出力が違うんだ出力がぁっ!」
-“Our output's on another level!”
+“Our output’s on another level!”
 
 @7755 Gosterro · ゴステロ
+# 触发：回避（通用，2/4）
 > 「あいかわらずアマちゃんだなぁ!」
 “Still just an amateur, huh!”
 
 @7756 Gosterro · ゴステロ
+# 触发：回避（通用，3/4）
 > 「バカがぁ!」
 “You fool!”
 
 @7757 Gosterro · ゴステロ
+# 触发：回避（通用，4/4）
 > 「まともに俺の相手ができると
 >  思っているのかぁ!?」
 “You think you can take me head-on?!”
 
 @7758 Gosterro · ゴステロ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなんだよぉっ!」
-“It's pointless!”
+“It’s pointless!”
 
 @7759 Gosterro · ゴステロ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：原文是反问
 > 「ひへへへへっ、効かねぇなぁ?」
-“Heheheheh, that didn't even hurt!”
+“Heheheheh, didn’t feel a thing, huh?”
 
 @7760 Gosterro · ゴステロ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エネルギー切れだと!?
 >  ふざけるなぁっ!」
-“Out of energy?! Don't give me that!”
+“Out of energy?! Don’t give me that!”
 
 @7761 Gosterro · ゴステロ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「届かねぇじゃねぇかよぉ!」
-“It won't even reach!”
+“It won’t even reach!”
+
+@14533 Gosterro · ゴステロ
+# 触发：使用〈レーザーバズソー〉（低优先，可能被通用台词顶掉）
+# 审校：初稿“while you hear”翻译腔，改为更自然的祈使表达。
+> 「首の骨が砕ける音を聞きながら
+>  死んでいけぇ!」
+“Die listening to the sound of your neck bones shattering!”
+
+@14534 Gosterro · ゴステロ
+# 触发：使用〈レーザーバズソー〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「骨という骨をきしませてやる!」
+“I’ll make every bone in your body creak!”
+
+@14535 Gosterro · ゴステロ
+# 触发：使用〈レーザーバズソー〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「切り刻んでやるっ!」
+“I’ll cut you to pieces!”
+
+@14536 Gosterro · ゴステロ
+# 触发：使用〈レーザーバズソー〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「レーザードパズソーで切り刻んでやる!」
+“I’ll carve you up with the Laser Circular Saw!”
+
+@14537 Gosterro · ゴステロ
+# 触发：对手驾驶员为女性
+# 审校：“ははははっ”后应有停顿，改为感叹号更符合狂笑语气。
+> 「ははははっ、今度は女か!
+>  気に入ったぜ!」
+“Hahahaha! A woman this time! I like it!”
+
+@14538 Gosterro · ゴステロ
+# 触发：对手驾驶员〈エイジ〉
+# 审校：“エイジィ、エイジィィィッ”是呼喊名字并拖长，初稿连写不自然，改为分开呼喊。
+> 「エイジィ、エイジィィィッ!」
+“Eijiii! Eijiiiii!”

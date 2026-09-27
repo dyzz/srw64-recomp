@@ -22,9 +22,10 @@ all that good. ...Still...)
 All the more so for a hand I've already raised once.)
 
 @47579 Glemy · グレミー
+# 审校：精读：そのままで聞け；语句
 > 「全艦隊のジオン将兵たちよ、その
 >  ままで聞け! もはや忍従の時は
-“All ships, soldiers of Zeon, hear me as you are! The time of silent
+“All ships, soldiers of Zeon, stay at your posts and listen! The time of silent
 ---
 >  去った。諸悪の根源はアクシズを
 >  動かし、ぎまんあふれるジオンを
@@ -404,9 +405,10 @@ we could beat them.”
 “I see. That makes sense.”
 
 @47637 Chibodee · チボデー
+# 审校：奇伯迪口吻应更口语化，将 thinking 改为 thinkin' 以贴合其爽朗豪放的美国拳手腔调。
 > 「だいたいな、楽して勝とうなんて
 >  考えんのは危険だぜ、ベイビィ」
-“Besides, thinking you can win the easy way is dangerous, baby.”
+“Besides, thinkin' you can win the easy way is dangerous, baby.”
 
 @47638 Amuro · アムロ
 > 「整備のほうはどうだ?
@@ -447,9 +449,10 @@ Be careful, Amuro.”
 will never end.”
 
 @47644 Shinobu · 忍
+# 审校：忍的粗野口吻应更重，将 feels/Isn't/running 改为 feelin'/Ain't/runnin' 以贴合其狂放不羁的说话习惯。
 > 「ヒューッ、こいつはごきげんだぜ。
 >  新品より調子いいんじゃないのか?」
-“Whew, this baby feels great. Isn't it running better than new?”
+“Whew, this baby's feelin' great. Ain't it runnin' better than new?”
 
 @47645 Astonaige · アストナージ
 > 「バカいってんなよ。少なくともチェックは
@@ -525,6 +528,7 @@ even when things have come to this!”
 “What'd you say, you bastard?!”
 
 @47657 Glemy · グレミー
+# 审校：精读：破折号
 > 「しょせん、貴様らが戦っているのは、
 >  自分のためにすぎん!
 “In the end, all you fight for is yourselves!
@@ -535,7 +539,7 @@ But I'm different. I chose this harsh path myself, and I have no regrets.
 ---
 >  貴様たちには、内からわきあがる
 >  衝動はあるまい! そんなクズは
-You lot have no impulse welling up from within! Trash like that—
+You lot have no impulse welling up from within! Trash like that,
 ---
 >  私の前から去れ!」
 get out of my sight!”
@@ -705,9 +709,10 @@ We will crush your ambition!”
 “Ngh... it's you! You're the one who's been trying to get into my head!”
 
 @47681 Ple · プル
+# 审校：精读：破折号
 > 「ジュドーたちは敵じゃない。ジュドーたち
 >  といると、気持ちがいいんだってこと
-“Judau and the others aren't enemies. Being with them feels good—
+“Judau and the others aren't enemies. Being with them feels good,
 ---
 >  なんで気づかないの!?」
 why can't you realize that?!”
@@ -866,9 +871,10 @@ you must defeat! You just have to defeat them, Ple-Two!”
 “Haman's unit...”
 
 @47714 Mashymre · マシュマー
+# 审校：玛修玛对哈曼的敬语层级不足，don't 改为 do not 以符合其戏剧化骑士口吻。
 > 「ハマーン様、グレミーの部隊は
 >  いないようです」
-“Lady Haman, Glemy's forces don't appear to be here.”
+“Lady Haman, Glemy's forces do not appear to be here.”
 
 @47715 Haman · ハマーン
 > 「ほう……どうやら、遅かったようだな」
@@ -1717,17 +1723,17 @@ thought they could rule the Earth Sphere themselves.”
 “And what happened to them? Don't tell me you just left them be.”
 
 @47849 Alan · アラン
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Lady Une told them, if that's what they want, then be prepared to make an enemy
-# 草稿第 2 页：of the 【主角机体名】. Every one of them went pale and
-# 草稿第 3 页：promised to cooperate, so I hear.”
+# 审校：补译：原稿占位符错页
 > 「レディ・アンがな、そうしたいなら、
 >  {HeroMech}を敵に回す
+“Lady Une told them: if that's what you want, then be prepared to make an enemy of the {HeroMech}.
 ---
 >  覚悟をしなさい、といってやったそうだ
 >  全員真っ青な顔で、協力を
+So I hear every one of them went pale and
 ---
 >  約束してくれたということだ」
+promised their cooperation.”
 
 @47850 Ryoma · リョウ
 > 「はははっ、そいつはいいや」
@@ -1770,9 +1776,10 @@ Foundation itself from the ground up, we're in for a hard time too.”
 “That's about the size of it.”
 
 @47857 Koji · 甲児
+# 审校：精读：破折号
 > 「なぁ、さっきフォン・ブラウン市の話を
 >  聞いたんだけどさ、なんか異星人が
-“Hey, I heard about Von Braun City earlier—apparently it's crawling with
+“Hey, I heard about Von Braun City earlier, apparently it's crawling with
 ---
 >  うじゃうじゃしてんだって?」
 aliens?”
@@ -1911,9 +1918,10 @@ higher than Earth's, and they should be used to outer space.”
 Captain, nobody can relax.”
 
 @47877 David · デビッド
+# 审校：“in a place like this” 过于生硬，改为更口语化的说法以符合 David 冲动随意的口吻。
 > 「なんだ、{HeroNick}、まだこんな所に
 >  いたのかよ」
-“What's this, {HeroNick}, you're still in a place like this?”
+“What's this, {HeroNick}, you're still hanging around here?”
 
 @47878 Ark · アーク（按段落 3DD1）
 > 「ああ……ちょっとね。星を見てた」
@@ -2016,12 +2024,14 @@ It's strange, isn't it? At first, I was just fighting desperately... But,
 I think that's fine too. Lera, if you were here...)
 
 @47892 Simone · シモーヌ
+# 审校：同上，Simone 口吻爽快不拘礼节，改为更自然的口语。
 > 「あら{HeroNick}、まだこんな所にいたの?」
-“Oh my, {HeroNick}, you're still in a place like this?”
+“Oh my, {HeroNick}, you're still hanging around here?”
 
 @47893 Selain · セレイン（按段落 3DD2）
+# 审校：原文“戻ってきたのか”是确认语气，去掉多余停顿，更符合 Selain 军人式简洁口吻。
 > 「なんだお前たち、戻ってきたのか」
-“What, you guys, you came back?”
+“What, you guys came back?”
 
 @47894 Simone · シモーヌ
 > 「エイジが艦長たちと話し込んでる
@@ -2057,9 +2067,10 @@ I think that's fine too. Lera, if you were here...)
 “{HeroNick}...”
 
 @47902 Anna · アンナ
+# 审校：精读：セレイン是女性
 > 「……{HeroNick}は考えごとをしてたのよ。
 >  邪魔しちゃ悪いわ。{HeroNick}も
-“...{HeroNick} was lost in thought. We shouldn't disturb them. {HeroNick},
+“...{HeroNick} was lost in thought. We shouldn't disturb her. {HeroNick},
 ---
 >  休まないとだめよ」
 you need to rest too.”
@@ -2137,12 +2148,13 @@ there are still things to do... But... if even that comes to an end...
 what am I supposed to do? Lera...)
 
 @47912 Cecily · セシリー
+# 审校：精读：末页只剩引号，重切
 > 「こんなふうにゆったりと過ごせる日が
 >  くるなんて、ここ数年考えたことが
-“I never thought I'd see days where we could relax like this, not in all these years.
+“I never thought I'd see days where we could relax like this,
 ---
 >  なかったわ」
-”
+not in all these years.”
 
 @47913 Seabook · シーブック
 > 「ああ。
@@ -2196,12 +2208,13 @@ Right now, we're having Garrison analyze it, but...”
 “...So it's them after all, is it?”
 
 @47923 Dr. Hazuki · 葉月博士
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「間違いないでしょう。
 >  やはり連中は“刻印”の
 “There's no doubt about it. As expected, they don't seem to be affected
 ---
 >  影響を受けないようですな」
-by the ‘Mark,’ do they?”
+by the ‘Crest,’ do they?”
 
 @47924 Prof. Yumi · 弓教授
 > 「たった数日か……命がけで

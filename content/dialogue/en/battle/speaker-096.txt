@@ -1,131 +1,250 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6617 Milliardo · ミリアルド
+# 触发：攻击（通用，1/12）
 > 「次で決まりだぁっ!」
 “The next one settles it!”
 
 @6618 Milliardo · ミリアルド
+# 触发：攻击（通用，2/12）
 > 「…………」
 “...”
 
 @6619 Milliardo · ミリアルド
+# 触发：攻击（通用，3/12）
 > 「これまでだ!」
 “This is the end!”
 
 @6620 Milliardo · ミリアルド
+# 触发：攻击（通用，4/12）
 > 「必要ないのだ……貴様たちは!」
 “You are unnecessary... all of you!”
 
 @6621 Milliardo · ミリアルド
+# 触发：攻击（通用，5/12）
 > 「教えてやろう。要は戦い方次第
 >  なのだと」
 “Let me teach you. It all comes down to how you fight.”
 
 @6622 Milliardo · ミリアルド
+# 触发：攻击（通用，6/12）
+# 审校：頭を叩く是打掉领头，不是头部
 > 「まずは頭を叩いておきたいのだよ!」
-“First, I'd like to strike at the head!”
+“First, I want to take out the head!”
 
 @6623 Milliardo · ミリアルド
+# 触发：攻击（通用，7/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フォーメーションなど取らせはしない!」
-“I won't let you form up!”
+“I won’t let you form up!”
 
 @6624 Milliardo · ミリアルド
+# 触发：攻击（通用，8/12）
 > 「お遊びにつきあっているヒマはない!」
 “I have no time to play games with you!”
 
 @6625 Milliardo · ミリアルド
+# 触发：攻击（通用，9/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが、死んでもらおう!」
-“Sorry, but you're going to die!”
+“Sorry, but you’re going to die!”
 
 @6626 Milliardo · ミリアルド
+# 触发：攻击（通用，10/12）
 > 「とどめだっ!!」
 “This is the end!!”
 
 @6627 Milliardo · ミリアルド
+# 触发：攻击（通用，11/12）
+# 审校：直撃させる是要让它命中
 > 「直撃させる!」
-“Direct hit!”
+“I’ll land a direct hit!”
 
 @6628 Milliardo · ミリアルド
+# 触发：攻击（通用，12/12）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「決着をつける!」
-“Let's finish this!”
+“Let’s finish this!”
 
 @6629 Milliardo · ミリアルド
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅっ! 私はどこまでも
 >  生き抜いてみせる!」
-“Guh! I'll survive no matter what!”
+“Guh! I’ll survive no matter what!”
 
 @6630 Milliardo · ミリアルド
+# 触发：被击坠（通用，2/2）
+# 审校：被击坠时不是问对方说了什么
 > 「な……なんだとッ!?」
-“Wha... What did you say?!”
+“Wha... What?!”
 
 @6631 Milliardo · ミリアルド
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぬぅおあぁぁぁっ!」
 “Nwaaaah!”
 
 @6632 Milliardo · ミリアルド
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「おおぉぉぉぉっ!」
 “Ooooh!”
 
 @6633 Milliardo · ミリアルド
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「うっ……こうも直撃をくらうとは!」
 “Ugh... To take a direct hit like that!”
 
 @6634 Milliardo · ミリアルド
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「くっ、問題は敵よりも
 >  私自身だな……」
 “Ngh, the problem is me more than the enemy...”
 
 @6635 Milliardo · ミリアルド
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられはせんよ!」
-“I won't be beaten!”
+“I won’t be beaten!”
 
 @6636 Milliardo · ミリアルド
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さすがにやるっ!!」
-“You're good, I'll give you that!!”
+“You’re good, I’ll give you that!!”
 
 @6637 Milliardo · ミリアルド
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「ぐぅっっ……!」
 “Guh...!”
 
 @6638 Milliardo · ミリアルド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：原译意思偏
 > 「その程度で戦おうというのか、
 >  貴様は!?」
-“Is that all it takes for you to fight?!”
+“You intend to fight with just that?!”
 
 @6639 Milliardo · ミリアルド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：原文有「ええぃっ」的怒吼，译文缺少对应的语气词，补上以符合战斗中的强烈语气。
 > 「ええぃっ邪魔だ!」
-“Tch, out of my way!”
+“Tch! Out of my way!”
 
 @6640 Milliardo · ミリアルド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：死なない程度は十分是对自己说，原译错
 > 「死なない程度には十分だな」
-“Enough to keep you from dying, at least.”
+“Not enough to kill me, at least.”
 
 @6641 Milliardo · ミリアルド
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様には無理だな」
-“You're no match for me.”
+“You’re no match for me.”
 
 @6642 Milliardo · ミリアルド
+# 触发：回避（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度か」
-“Is this all you've got?”
+“Is this all you’ve got?”
 
 @6643 Milliardo · ミリアルド
+# 触发：回避（通用，3/4）
 > 「かわす!」
 “Dodge!”
 
 @6644 Milliardo · ミリアルド
+# 触发：回避（通用，4/4）
 > 「貴様などを相手にしているヒマは
 >  ない!」
 “I have no time to waste on the likes of you!”
 
 @6645 Milliardo · ミリアルド
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「貴様などを相手にしているヒマは
 >  ない!」
 “I have no time to waste on the likes of you!”
 
 @6646 Milliardo · ミリアルド
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れか!? だがこの程度で!」
-“Out of ammo?! But this won't stop me!”
+“Out of ammo?! But this won’t stop me!”
 
 @6647 Milliardo · ミリアルド
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むっ……ここからでは届かんか!?」
-“Hmph... can't reach from here?!”
+“Hmph... can’t reach from here?!”
+
+@14365 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ガンダムエピオン〉
+> 「いくぞエピオン!」
+“Here we go, Epyon!”
+
+@14366 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ガンダムエピオン(MA)〉
+> 「いくぞエピオン!」
+“Here we go, Epyon!”
+
+@14367 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ウイングゼロ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let’s see how far this Wing Zero can go!”
+
+@14368 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ウイングゼロ(バード)〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let’s see how far this Wing Zero can go!”
+
+@14369 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ウイングゼロカスタム〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このウイングゼロで、どれだけ
+>  やれるのか!?」
+“Let’s see how far this Wing Zero can go!”
+
+@14370 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ヴァイエイト〉
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14371 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ビルゴ〉
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14372 Milliardo · ミリアルド
+# 触发：攻击，乘坐〈ビルゴⅡ〉
+> 「所詮命のない人形……
+>  私の敵ではない」
+“Just a lifeless puppet... no match for me.”
+
+@14373 Milliardo · ミリアルド
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈アルビオン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ぐっ、私はコロニーの革命の意志
+>  を背負っているのだっ!」
+“Ngh, I carry the will of the colonies’ revolution!”
+
+@14374 Milliardo · ミリアルド
+# 触发：回避，条件 1000
+> 「ダミーにかかったな」
+“You fell for the decoy.”
+
+@14375 Milliardo · ミリアルド
+# 触发：回避，条件 1000
+> 「ダミーも使い方しだいなのだ!」
+“Decoys are all in how you use them!”
+
+@14376 Milliardo · ミリアルド
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「しょせんはこの程度か」
+“So this is all you’ve got.”

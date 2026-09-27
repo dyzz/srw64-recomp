@@ -1,123 +1,164 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7667 Le Cain · ル・カイン
+# 触发：攻击（通用，1/9）
 > 「愚か者めっ!!」
 “You fool!!”
 
 @7668 Le Cain · ル・カイン
+# 触发：攻击（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様はここで死ぬのだ!!」
-“You're going to die right here!!”
+“You’re going to die right here!!”
 
 @7669 Le Cain · ル・カイン
+# 触发：攻击（通用，3/9）
 > 「貴様!!」
 “You!!”
 
 @7670 Le Cain · ル・カイン
-# 审校：同上，重复出现的同一句战斗台词需保持一致。
+# 触发：攻击（通用，4/9）
+# 审校：問答無用 是不容分说
 > 「問答無用!」
-“No quarter!”
+“Enough talk!”
 
 @7671 Le Cain · ル・カイン
+# 触发：攻击（通用，5/9）
 > 「ハッハッハッハ!!」
 “Hah hah hah hah!!”
 
 @7672 Le Cain · ル・カイン
+# 触发：攻击（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「生きてここを去れると
 >  思っているのか?」
-“You think you'll leave here alive?”
+“You think you’ll leave here alive?”
 
 @7673 Le Cain · ル・カイン
+# 触发：攻击（通用，7/9）
 > 「覚悟っ!!」
 “Prepare yourself!!”
 
 @7674 Le Cain · ル・カイン
+# 触发：攻击（通用，8/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「勝負!!」
-“Let's settle this!!”
+“Let’s settle this!!”
 
 @7675 Le Cain · ル・カイン
+# 触发：攻击（通用，9/9）
 > 「恨むなら、己を恨め!」
 “If you must hate, hate yourself!”
 
 @7676 Le Cain · ル・カイン
+# 触发：被击坠（通用，1/2）
 > 「私が貴様らごときに……!?」
 “Me, beaten by the likes of you...?!”
 
 @7677 Le Cain · ル・カイン
+# 触发：被击坠（通用，2/2）
 > 「おのれぇぇぇぇぇっ!」
 “Curse youuuuuu!”
 
 @7678 Le Cain · ル・カイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ゆるせん……断じて許せん!!」
 “Unforgivable... absolutely unforgivable!!”
 
 @7679 Le Cain · ル・カイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私に恥をかかせてくれた礼は、
 >  タップリとさせてもらうぞ!」
-“You'll pay in full for humiliating me!”
+“You’ll pay in full for humiliating me!”
 
 @7680 Le Cain · ル・カイン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「ぐぅぅぅぅぅっ!」
 “Guhhhhh!”
 
 @7681 Le Cain · ル・カイン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「くっ! 私に立ち向かう気か!」
 “Ngh! You dare stand against me?!”
 
 @7682 Le Cain · ル・カイン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：原文「おのれっ」是贵族式咒骂，bastard 过于粗俗，改为更符合其高傲口吻的 cur。
 > 「お、おのれっ!!」
-“Y-you bastard!!”
+“Y-you cur!!”
 
 @7683 Le Cain · ル・カイン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：“中意”不像口语
 > 「ハッハッハッ、気に入った!
 >  フハハハハハハッ!」
-“Hah hah hah, I like it! Fuhahahahahaha!”
+“Hah hah hah, now this I like! Fuhahahahaha!”
 
 @7684 Le Cain · ル・カイン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：中伤时的逞强
 > 「こ、この程度で!」
-“Th-this much?!”
+“Th-this is nothing!”
 
 @7685 Le Cain · ル・カイン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「ぬぅぅっ!」
 “Nghh!”
 
 @7686 Le Cain · ル・カイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「この程度か!」
 “Is that all?!”
 
 @7687 Le Cain · ル・カイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かぬわ、愚か者め!」
-“It's useless, you fool!”
+“It’s useless, you fool!”
 
 @7688 Le Cain · ル・カイン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふん、それでは相手にならん!」
-“Hmph, you're no match for me!”
+“Hmph, you’re no match for me!”
 
 @7689 Le Cain · ル・カイン
+# 触发：回避（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフッ、なかなか楽しませてくれるな」
-“Heh heh, you're quite entertaining.”
+“Heh heh, you’re quite entertaining.”
 
 @7690 Le Cain · ル・カイン
+# 触发：回避（通用，2/3）
 > 「愚かな」
 “Foolish.”
 
 @7691 Le Cain · ル・カイン
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな腕で私を倒そうというのか!?
 >  笑わせるな!」
-“You think you can beat me with that skill?! Don't make me laugh!”
+“You think you can beat me with that skill?! Don’t make me laugh!”
 
 @7692 Le Cain · ル・カイン
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「私にダメージを与える事など
 >  貴様らにはできん!」
 “None of you could ever so much as scratch me!”
 
 @7693 Le Cain · ル・カイン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃など効かぬわっ!」
-“An attack like that won't work on me!”
+“An attack like that won’t work on me!”
 
 @7694 Le Cain · ル・カイン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「くっ、この私が!?」
 “Ngh, me of all people?!”
 
 @7695 Le Cain · ル・カイン
+# 触发：射程外，无法反击（通用，1/1）
 > 「おのれ卑怯な!」
 “Curse you, you coward!”

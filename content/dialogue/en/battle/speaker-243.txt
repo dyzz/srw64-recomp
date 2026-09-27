@@ -1,103 +1,148 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12052 Warchimedes · ワルキメデス
+# 触发：攻击（通用，1/9）
 > 「ゆくぞ、ダークロン!」
 “Here I go, Darkron!”
 
 @12053 Warchimedes · ワルキメデス
+# 触发：攻击（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「頼むぞダークロン!」
-“I'm counting on you, Darkron!”
+“I’m counting on you, Darkron!”
 
 @12054 Warchimedes · ワルキメデス
+# 触发：攻击（通用，3/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「のるかそるかだ!」
-“It's all or nothing!”
+“It’s all or nothing!”
 
 @12055 Warchimedes · ワルキメデス
+# 触发：攻击（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃しはせん!」
-“I won't let you escape!”
+“I won’t let you escape!”
 
 @12056 Warchimedes · ワルキメデス
+# 触发：攻击（通用，5/9）
 > 「それっ!」
 “Take this!”
 
 @12057 Warchimedes · ワルキメデス
+# 触发：攻击（通用，6/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうだ!」
-“How's that!”
+“How’s that!”
 
 @12058 Warchimedes · ワルキメデス
+# 触发：攻击（通用，7/9）
 > 「ダークロン、最大出力
 >  120%!」
 “Darkron, maximum output 120%!”
 
 @12059 Warchimedes · ワルキメデス
+# 触发：攻击（通用，8/9）
 > 「これまでよ。死ねぃ!」
 “This is the end. Die!”
 
 @12060 Warchimedes · ワルキメデス
+# 触发：攻击（通用，9/9）
 > 「これでもくらうがいい!」
 “Try taking this!”
 
 @12061 Warchimedes · ワルキメデス
+# 触发：被击坠（通用，1/3）
 > 「うおぉぉぉぉぉーっ!?」
 “Whoaoooooooh?!”
 
 @12062 Warchimedes · ワルキメデス
+# 触发：被击坠（通用，2/3）
 > 「だ、脱出だ!」
 “E-eject! Eject!”
 
 @12063 Warchimedes · ワルキメデス
+# 触发：被击坠（通用，3/3）
 > 「ジャネラ様、申しわけございません!!」
 “Lady Janera, I beg your forgiveness!!”
 
 @12064 Warchimedes · ワルキメデス
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? お、俺はまだ
 >  死にたくない!」
-“Whoa?! I-I don't wanna die yet!”
+“Whoa?! I-I don’t wanna die yet!”
 
 @12065 Warchimedes · ワルキメデス
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ……ばかな、こんなばかな!」
-“Ngh... Impossible, this can't be!”
+“Ngh... Impossible, this can’t be!”
 
 @12066 Warchimedes · ワルキメデス
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「お……おのれ、このままでは……」
 “Y-you fiend, at this rate...”
 
 @12067 Warchimedes · ワルキメデス
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「な、なんだ!?」
 “W-what the?!”
 
 @12068 Warchimedes · ワルキメデス
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「くっ……なんということだ!」
 “Ngh... How can this be!”
 
 @12069 Warchimedes · ワルキメデス
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「ええいっ! これしきのことで!」
 “Gah! This is nothing!”
 
 @12070 Warchimedes · ワルキメデス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「フフフ、無駄な攻撃だ!」
 “Hehehe, a futile attack!”
 
 @12071 Warchimedes · ワルキメデス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このダークロンには効きはせん!」
-“It won't work on this Darkron!”
+“It won’t work on this Darkron!”
 
 @12072 Warchimedes · ワルキメデス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハッ、痛くもかゆくもないわ!」
-“Hahaha, that doesn't hurt one bit!”
+“Hahaha, that doesn’t hurt one bit!”
 
 @12073 Warchimedes · ワルキメデス
+# 触发：回避（通用，1/1）
 > 「ハハハッ、何度でもやるがよい!」
 “Hahaha, try it as many times as you like!”
 
 @12074 Warchimedes · ワルキメデス
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「フン、無駄なことだ!」
 “Hmph, pointless!”
 
 @12075 Warchimedes · ワルキメデス
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「な、なんと弾切れか!?」
 “W-what, out of ammo?!”
 
 @12076 Warchimedes · ワルキメデス
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ええいっ、届かぬではないか!」
-“Gah, it won't even reach!”
+“Gah, it won’t even reach!”
+
+@16797 Warchimedes · ワルキメデス
+# 触发：使用〈ダークロンドリル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ダークロンドリルでとどめをさしてやる!」
+“I’ll finish you with the Darkron Drill!”
+
+@16798 Warchimedes · ワルキメデス
+# 触发：使用〈爪ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ツメミサイル!」
+“Claw Missile!”

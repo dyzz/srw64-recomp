@@ -1,106 +1,140 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7814 Mangelo · マンジェロ
+# 触发：攻击（通用，1/7）
 > 「くたばれっ!!」
 “Die!!”
 
 @7815 Mangelo · マンジェロ
+# 触发：攻击（通用，2/7）
 > 「ふははははっ」
 “Fuhahahaha.”
 
 @7816 Mangelo · マンジェロ
+# 触发：攻击（通用，3/7）
 > 「ひぃやぁぁぁっ!」
 “Hiiyaaaah!”
 
 @7817 Mangelo · マンジェロ
+# 触发：攻击（通用，4/7）
 > 「ひょうっ!」
 “Hyoh!”
 
 @7818 Mangelo · マンジェロ
+# 触发：攻击（通用，5/7）
+# 审校：攻击时的告别
 > 「あばよっ!!」
-“See ya!!”
+“So long!!”
 
 @7819 Mangelo · マンジェロ
+# 触发：攻击（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぶっ殺してやるっ!!」
-“I'll kill you dead!!”
+“I’ll kill you dead!!”
 
 @7820 Mangelo · マンジェロ
+# 触发：攻击（通用，7/7）
 > 「イィィヤァァァァッ!! 死ねぇっ!!」
 “Iiiyaaaaaah!! Die!!”
 
 @7821 Mangelo · マンジェロ
+# 触发：被击坠（通用，1/1）
 > 「やめろおぉぉぉぉっ!!」
 “Stop iiiiiit!!”
 
 @7822 Mangelo · マンジェロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「うわあっ!!」
 “Uwaah!!”
 
 @7823 Mangelo · マンジェロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「うわぁぁぁぁっ!!」
 “Uwaaaaaah!!”
 
 @7824 Mangelo · マンジェロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あ……!? お、俺様の美しい顔が
 >  ……よくも!!」
-“Ah...!? M-my beautiful face... how dare you!!”
+“Ah...?! M-my beautiful face... how dare you!!”
 
 @7825 Mangelo · マンジェロ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおぉぉっ、殺してやる!
 >  殺してやる!」
-“Uooooh, I'll kill you! I'll kill you!”
+“Uooooh, I’ll kill you! I’ll kill you!”
 
 @7826 Mangelo · マンジェロ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なにっ!?」
-“What!?”
+“What?!”
 
 @7827 Mangelo · マンジェロ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「えーい、くそぉーっ!!」
 “Grr, daaaamn!!”
 
 @7828 Mangelo · マンジェロ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「くそーっ!!」
 “Damn iiit!!”
 
 @7829 Mangelo · マンジェロ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、俺にここまでして生き残った
 >  奴はいねぇ!」
-“N-no one's ever survived this long against me!”
+“N-no one’s ever survived this long against me!”
 
 @7830 Mangelo · マンジェロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ヒヤァーッ!!」
 “Hyaaah!!”
 
 @7831 Mangelo · マンジェロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「ウハハハハハハハハハ!!」
 “Uhahahahahahahaha!!”
 
 @7832 Mangelo · マンジェロ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「フヘッヘッヘ!!」
 “Fuheh heh heh!!”
 
 @7833 Mangelo · マンジェロ
+# 触发：回避（通用，1/2）
 > 「ひょぉぉぉぉっ!!」
 “Hyoooooh!!”
 
 @7834 Mangelo · マンジェロ
+# 触发：回避（通用，2/2）
 > 「計算どおりだぜぇ!」
 “Just as calculated!”
 
 @7835 Mangelo · マンジェロ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ヒッヒッヒッヒッヒ!!」
 “Hih hih hih hih hih!!”
 
 @7836 Mangelo · マンジェロ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れとは計算違いだったか!?」
-“Out of ammo? That wasn't in my calculations!?”
+“Out of ammo? That wasn’t in my calculations?!”
 
 @7837 Mangelo · マンジェロ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エネルギー切れとは計算違い
 >  だったか!?」
-“Out of energy? That wasn't in my calculations!?”
+“Out of energy? That wasn’t in my calculations?!”
 
 @7838 Mangelo · マンジェロ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「射程範囲を計算して
 >  攻撃してくるとは、俺よりできるな!」
-“Attacking from outside my range... you're better than me!”
+“Attacking from outside my range... you’re better than me!”

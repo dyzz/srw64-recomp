@@ -1,117 +1,180 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7364 Alberto · アルベルト
+# 触发：攻击（通用，1/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がさん!」
-“You won't escape!”
+“You won’t escape!”
 
 @7365 Alberto · アルベルト
+# 触发：攻击（通用，2/15）
 > 「チュアァァッ!」
 “Chuaaah!”
 
 @7366 Alberto · アルベルト
+# 触发：攻击（通用，3/15）
 > 「ヌゥアァァァァァァ!」
 “Nuaaaaaaah!”
 
 @7367 Alberto · アルベルト
+# 触发：攻击（通用，4/15）
+# 审校：とどめ的喊话
 > 「とどめだっ!」
-“This is the finish!”
+“This ends it!”
 
 @7368 Alberto · アルベルト
+# 触发：攻击（通用，5/15）
 > 「死ね」
 “Die.”
 
 @7369 Alberto · アルベルト
+# 触发：攻击（通用，6/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「十傑集をなめるなぁぁぁぁぁっ!」
-“Don't underestimate the Ten Great Warriors!”
+“Don’t underestimate the Ten Great Warriors!”
 
 @7370 Alberto · アルベルト
+# 触发：攻击（通用，7/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハハッどうだぁっ」
-“Ha ha ha ha, how's that?!”
+“Ha ha ha ha, how’s that?!”
 
 @7371 Alberto · アルベルト
+# 触发：攻击（通用，8/15）
 > 「つおぅりゃぁぁぁっ!」
 “Tsooorryaaah!”
 
 @7372 Alberto · アルベルト
+# 触发：攻击（通用，9/15）
 > 「思い知れっ!」
 “Learn your place!”
 
 @7373 Alberto · アルベルト
+# 触发：攻击（通用，10/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さぁて決めてやるっ!」
-“Now then, I'll finish you off!”
+“Now then, I’ll finish you off!”
 
 @7374 Alberto · アルベルト
+# 触发：攻击（通用，11/15）
 > 「フッフッフッフッフッ」
 “Heh heh heh heh heh.”
 
 @7375 Alberto · アルベルト
+# 触发：攻击（通用，12/15）
 > 「でぃやぁぁぁぁっ!」
 “Diiyaaaaaah!”
 
 @7376 Alberto · アルベルト
+# 触发：攻击（通用，13/15）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「てこずらせおって」
-“You're making me work for it.”
+“You’re making me work for it.”
 
 @7377 Alberto · アルベルト
+# 触发：攻击（通用，14/15）
+# 审校：問答無用
 > 「問答無用!」
-“No questions asked!”
+“No more talk!”
 
 @7378 Alberto · アルベルト
+# 触发：攻击（通用，15/15）
 > 「どけぇぃ!」
 “Out of my way!”
 
 @7379 Alberto · アルベルト
+# 触发：被击坠（通用，1/1）
 > 「おおぉぉぅあぁぁぁっ」
 “Ooooh aaaah!”
 
 @7380 Alberto · アルベルト
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「き、貴様ぁぁっ!」
 “Y-you bastard!”
 
 @7381 Alberto · アルベルト
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「おおぉぉぅあぁぁぁっ」
 “Ooooh aaaah!”
 
 @7382 Alberto · アルベルト
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「な、なにぃっ!?」
 “Wh-what?!”
 
 @7383 Alberto · アルベルト
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「こしゃくなっ」
 “Insolent fool.”
 
 @7384 Alberto · アルベルト
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「ぬぅぅっ」
 “Ngh.”
 
 @7385 Alberto · アルベルト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「フッフッ味な真似をっ」
 “Heh heh, clever trick.”
 
 @7386 Alberto · アルベルト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「ふんっ」
 “Hmph.”
 
 @7387 Alberto · アルベルト
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「このザコがぁっ!」
 “You worthless grunt!”
 
 @7388 Alberto · アルベルト
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、よそ見はいかんぞ」
-“What's wrong? Don't look away.”
+“What’s wrong? Don’t look away.”
 
 @7389 Alberto · アルベルト
+# 触发：回避（通用，2/2）
 > 「そこかぁっ!」
 “There you are!”
 
 @7390 Alberto · アルベルト
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ふんっ」
 “Hmph.”
 
 @7391 Alberto · アルベルト
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「ふんっ」
 “Hmph.”
 
 @7392 Alberto · アルベルト
+# 触发：射程外，无法反击（通用，1/1）
+> 「ふんっ」
+“Hmph.”
+
+@14474 Alberto · アルベルト
+# 触发：使用〈フィンファンネル〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ダミーだっ!」
+“It’s a decoy!”
+
+@14475 Ko Enshaku · コエンシャク
+# 触发：回避，条件 1300（对话第 1/2 句）
+> 「……………」
+“...”
+
+@14476 Alberto · アルベルト
+# 触发：回避，条件 1300（对话第 2/2 句）
+> 「貴様、余計な事をっ」
+“You... you meddlesome fool!”
+
+@14477 Ko Enshaku · コエンシャク
+# 触发：回避，条件 1300（对话第 1/2 句）
+> 「……………」
+“...”
+
+@14478 Alberto · アルベルト
+# 触发：回避，条件 1300（对话第 2/2 句）
 > 「ふんっ」
 “Hmph.”

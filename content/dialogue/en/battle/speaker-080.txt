@@ -1,113 +1,155 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8662 Lila · ライラ
+# 触发：攻击（通用，1/10）
 > 「落ちなよ!」
 “Fall!”
 
 @8663 Lila · ライラ
+# 触发：攻击（通用，2/10）
 > 「もらった!」
 “Got you!”
 
 @8664 Lila · ライラ
+# 触发：攻击（通用，3/10）
 > 「そこっ!」
 “There!”
 
 @8665 Lila · ライラ
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるわけにはいかないんだよ!!」
-“I can't let you do that!!”
+“I can’t let you do that!!”
 
 @8666 Lila · ライラ
+# 触发：攻击（通用，5/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフ……落とさせてもらうよ」
-“Heh... I'll shoot you down.”
+“Heh... I’ll shoot you down.”
 
 @8667 Lila · ライラ
+# 触发：攻击（通用，6/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そっちがうかつなのさ!」
-“You're the careless one!”
+“You’re the careless one!”
 
 @8668 Lila · ライラ
+# 触发：攻击（通用，7/10）
 > 「これでっ!!」
 “Take this!!”
 
 @8669 Lila · ライラ
+# 触发：攻击（通用，8/10）
 > 「こいつっ!」
 “Why you!”
 
 @8670 Lila · ライラ
+# 触发：攻击（通用，9/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔なんだよっ!」
-“You're in my way!”
+“You’re in my way!”
 
 @8671 Lila · ライラ
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これならっ!」
-“This'll do it!”
+“This’ll do it!”
 
 @8672 Lila · ライラ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こいつ……ただ者じゃない……」
-“Th-This one... is no ordinary pilot...”
+“Th-this one... is no ordinary pilot...”
 
 @8673 Lila · ライラ
+# 触发：被击坠（通用，2/2）
+# 审校：Damn it?! 不自然
 > 「しまった!?」
-“Damn it?!”
+“Damn it!”
 
 @8674 Lila · ライラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカな……この私が押されている!?」
-“Impossible... I'm being pushed back?!”
+“Impossible... I’m being pushed back?!”
 
 @8675 Lila · ライラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ! ダ、ダメージを受けすぎたか…」
-“Whoa! D-Did I take too much damage...”
+“Whoa! D-did I take too much damage...”
 
 @8676 Lila · ライラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「何っ!? なんだ、この力は……」
 “What?! What is this power...”
 
 @8677 Lila · ライラ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「つうっ! なんの!!」
 “Ngh! Like that matters!!”
 
 @8678 Lila · ライラ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! まだまだっ! まだやられないっ!」
-“Ngh! Not yet! I'm not going down yet!”
+“Ngh! Not yet! I’m not going down yet!”
 
 @8679 Lila · ライラ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! 少しはやるようだね!」
-“Tch! You're not half bad!”
+“Tch! You’re not half bad!”
 
 @8680 Lila · ライラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないね!」
-“That won't work on me!”
+“That won’t work on me!”
 
 @8681 Lila · ライラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「そんな攻撃で!」
 “With an attack like that!”
 
 @8682 Lila · ライラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「ふん、かわいいもんだね」
 “Hmph, how cute.”
 
 @8683 Lila · ライラ
+# 触发：回避（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらないね!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8684 Lila · ライラ
+# 触发：回避（通用，2/4）
 > 「甘いっ!」
 “Too soft!”
 
 @8685 Lila · ライラ
+# 触发：回避（通用，3/4）
 > 「当たるものかい!」
 “As if that would hit!”
 
 @8686 Lila · ライラ
+# 触发：回避（通用，4/4）
 > 「間合いが甘いね!」
 “Your spacing is sloppy!”
 
 @8687 Lila · ライラ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなビームで落ちるものか!」
-“A beam like that won't shoot me down!”
+“A beam like that won’t shoot me down!”
 
 @8688 Lila · ライラ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「しまった、弾切れか!」
 “Damn, out of ammo!”
 
 @8689 Lila · ライラ
+# 触发：射程外，无法反击（通用，1/1）
 > 「ちっ…射程外から、そういう事かい」
 “Tch... attacking from out of range, is that it.”

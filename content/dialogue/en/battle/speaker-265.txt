@@ -1,146 +1,212 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8833 Emma · エマ
+# 触发：攻击（通用，1/11）
+# 审校：艾玛不骂 damn you，口吻端正
 > 「落ちなさいっ!!」
-“Fall, damn you!!”
+“Go down!!”
 
 @8834 Emma · エマ
+# 触发：攻击（通用，2/11）
 > 「そこっ!!」
 “There!!”
 
 @8835 Emma · エマ
+# 触发：攻击（通用，3/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせないっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @8836 Emma · エマ
+# 触发：攻击（通用，4/11）
+# 审校：攻击情境是说对方大意，不是自责
 > 「うかつなっ!!」
 “Careless!!”
 
 @8837 Emma · エマ
+# 触发：攻击（通用，5/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当ててみせる!!」
-“I'll hit you, just watch!!”
+“I’ll make it hit, just watch!!”
 
 @8838 Emma · エマ
+# 触发：攻击（通用，6/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「前にでるからっ!」
-“I'm moving up!”
+“I’m moving forward!”
 
 @8839 Emma · エマ
+# 触发：攻击（通用，7/11）
 > 「当たれっ!」
 “Hit!”
 
 @8840 Emma · エマ
+# 触发：攻击（通用，8/11）
 > 「このっ!」
 “Why you!”
 
 @8841 Emma · エマ
+# 触发：攻击（通用，9/11）
 > 「これならっ!!」
 “This should do it!!”
 
 @8842 Emma · エマ
+# 触发：攻击（通用，10/11）
+# 审校：攻击情境，どかないと 是叫对方让开
 > 「どかないと!!」
-“I have to dodge!!”
+“Out of my way!!”
 
 @8843 Emma · エマ
+# 触发：攻击（通用，11/11）
 > 「沈めっ!」
 “Sink!”
 
 @8844 Emma · エマ
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、やられた!!」
-“Ngh, I've been hit!!”
+“Ngh, I’ve been hit!!”
 
 @8845 Emma · エマ
+# 触发：被击坠（通用，2/2）
+# 审校：しまった 不是骂人
 > 「しまった!?」
-“Damn!?”
+“Oh no?!”
 
 @8846 Emma · エマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：更像人话
 > 「な、なんてパワーなの!?」
-“W-what power!?”
+“Wh-what kind of power is this?!”
 
 @8847 Emma · エマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだやられるわけには……」
-“I-I can't afford to go down yet...”
+“I-I can’t afford to go down yet...”
 
 @8848 Emma · エマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「くうっ!! こ、このままでは……」
 “Ngh!! A-at this rate...”
 
 @8849 Emma · エマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、負けるものですか!!」
-“I-I won't lose!!”
+“I-I won’t lose!!”
 
 @8850 Emma · エマ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「つっ!! まだよっ!!」
 “Ngh!! Not yet!!”
 
 @8851 Emma · エマ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるっ!! けどっ!!」
-“You're good!! But still!!”
+“You’re good!! But still!!”
 
 @8852 Emma · エマ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだっ! やらせはしないっ!!」
-“Not yet! I won't let you!!”
+“Not yet! I won’t let you!!”
 
 @8853 Emma · エマ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメージ!? でも、まだっ!!」
-“Damage!? But I'm still in this!!”
+“Damage?! But I’m still in this!!”
 
 @8854 Emma · エマ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：さすがに 不是 as expected
 > 「あうっ! さ、さすがに……」
-“Agh! A-as expected...”
+“Agh! Th-that one really...”
 
 @8855 Emma · エマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「当たっただけ!」
 “It just grazed me!”
 
 @8856 Emma · エマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度で落ちはしないっ!」
-“This won't bring me down!”
+“This won’t bring me down!”
 
 @8857 Emma · エマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「かすった!?」
-“A graze!?”
+“A graze?!”
 
 @8858 Emma · エマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「こんな攻撃でっ!」
 “An attack like that!”
 
 @8859 Emma · エマ
+# 触发：回避（通用，1/6）
 > 「当たるものですか!」
 “As if that would hit me!”
 
 @8860 Emma · エマ
+# 触发：回避（通用，2/6）
 > 「かわせた!」
 “I dodged it!”
 
 @8861 Emma · エマ
+# 触发：回避（通用，3/6）
 > 「おそいっ!」
 “Too slow!”
 
 @8862 Emma · エマ
+# 触发：回避（通用，4/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「正面? 違う、左ねっ!!」
-“Front? No, it's the left!!”
+“Front? No, it’s the left!!”
 
 @8863 Emma · エマ
+# 触发：回避（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるわけにはっ!」
-“I can't let that hit!”
+“I can’t let that hit!”
 
 @8864 Emma · エマ
+# 触发：回避（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このくらい、よけてみせるっ!!」
-“This much, I'll dodge it!!”
+“This much, I’ll dodge it!!”
 
 @8865 Emma · エマ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：beam 小写
 > 「ムダよ! そんなビームが効く
 >  ものですか!」
-“It's useless! As if a Beam like that would work!”
+“It’s useless! As if a beam like that would work!”
 
 @8866 Emma · エマ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：感叹号照原文；beam 小写
 > 「そんなビームなどでっ!」
-“A Beam like that won't!”
+“Not with a beam like that!”
 
 @8867 Emma · エマ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「しまった、弾切れ!? うかつな……」
-“Damn, out of ammo!? How careless...”
+“Damn, out of ammo?! How careless...”
 
 @8868 Emma · エマ
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ、この距離では……」
 “Ngh, at this range...”
+
+@14661 Emma · エマ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+# 审校：开炮喊“去吧”，英文更顺
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Charging energy... fire! High Mega Cannon!!”

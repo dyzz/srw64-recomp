@@ -1,652 +1,660 @@
-# 场景 0001「出撃!スイームルグ」 · en
-# 第一话开场与战斗中的对白。原文行（>）只作对照；改动请复制到用户目录，见 docs/guide/dialogue-text.md。
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
-@17410 ローレンス
+@17410 Lawrence · ローレンス
 > 「お嬢様、お茶が入りました。
 >  本日はロシアンティーでございますぞ
-“My lady, your tea is ready. Today's selection is Russian tea.
+“My lady, your tea is ready. Today it is Russian tea.
 ---
 >  どちらにお持ちいたしますか?」
-Where shall I serve it?”
+Where shall I bring it for you?”
 
-@17411 マナミ（本话主角）
+@17411 Manami · マナミ（本话主角）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……ローレンス、
 >  お茶などどうでもいいわ
-“...Lawrence, forget about the tea.
+“...Lawrence, I don't care about the tea.
 ---
 >  あたしはいったい、
 >  いつまで待てばよいのです!
-How much longer am I supposed to wait?!
+How much longer must I wait?!
 ---
 >  こうしている間にも、あの者たちは
 >  非道な行いを続け
-While we sit here, those people go on committing atrocities,
+Even now, while we sit here, those people keep committing their atrocities,
 ---
 >  苦しみ、恨み言を口にしながら
 >  死んでいく者たちがいるのよ!?」
-and their victims keep dying in pain and bitterness!”
+and there are those who suffer and die cursing their fate?!”
 
-@17412 ローレンス
+@17412 Lawrence · ローレンス
 > 「お嬢様、私どもの活動とて
 >  反帝国を志す方々にとっては
-“My lady, our work is also vital to those who oppose the Empire.
+“My lady, even our own activities are of great importance
 ---
 >  とても重要なものなのですぞ。
 >  他の方では手に入らぬ情報も
-There is information no one else can obtain.
+to those who aspire to resist the Empire. Information that no one else could obtain
 ---
 >  お嬢様がロームフェラの一員である
 >  からこそ手に入れられるのです」
-We have access to it precisely because you belong to Romefeller.”
+can be obtained only because you are a member of Romefeller.”
 
-@17413 マナミ（本话主角）
+@17413 Manami · マナミ（本话主角）
 > 「それはうんざりするくらい何度も聞き
 >  ました。では聞き方を変えます
-“I've heard that more times than I care to count. Let me put it another way.
+“I have heard that so many times I am sick of it. Then let me ask differently.
 ---
 >  あたしはいったい、いつまで帝国の
 >  非道な行いを
-How much longer must I watch the Empire's atrocities
+How much longer must I silently watch
 ---
 >  黙って眺めていなくてはならないの!?
-and do nothing?!
+the Empire's atrocities?!
 ---
 >  おじい様の残してくださった
 >  “スイームルグ”さえ完成すれば…
-If only the Sweemurg Grandfather left me were finished...
+If only ‘Sweemurg,’ which Grandfather left us, were complete...
 ---
 >  ローレンス、あなたまさか」
 Lawrence, you haven't...”
 
-@17414 ローレンス
+@17414 Lawrence · ローレンス
 > 「はい、なんでございましょう?」
-“Yes? What is it, my lady?”
+“Yes, what might it be?”
 
-@17415 マナミ（本话主角）
+@17415 Manami · マナミ（本话主角）
 > 「あたしの身を案じて何か
 >  勝手なことをしているのでは
-“You haven't taken matters into your own hands out of concern for my safety,
+“You haven't been doing something behind my back,
 ---
 >  ないでしょうね?」
-have you?”
+out of worry for me, have you?”
 
-@17416 ローレンス
+@17416 Lawrence · ローレンス
 > 「めっそうもございません。しかし、あの方
 >  からのご連絡がないかぎり
-“Certainly not. But until we receive word from him,
+“Certainly not. However, unless we receive word from that person,
 ---
 >  私どもが動くわけにはまいりません。
 >  どうか、いましばらくのご辛抱を」
-we cannot act. Please be patient just a little longer.”
+we cannot make a move. Please bear with it a little longer.”
 
-@17417 マナミ（本话主角）
+@17417 Manami · マナミ（本话主角）
 > 「……ふぅ、もういいわ。
 >  ……ローレンス」
-“...Oh, very well. ...Lawrence.”
+“...Sigh, never mind. ...Lawrence.”
 
-@17418 ローレンス
+@17418 Lawrence · ローレンス
 > 「はい」
-“Yes?”
+“Yes.”
 
-@17419 マナミ（本话主角）
+@17419 Manami · マナミ（本话主角）
 > 「お茶は、こっちでいただくわ」
-“I'll have my tea here.”
+“I will have my tea here.”
 
-@17420 ローレンス
+@17420 Lawrence · ローレンス
 > 「はいお嬢様」
-“Of course, my lady.”
+“Yes, my lady.”
 
-@17421 ローレンス
+@17421 Lawrence · ローレンス
 > 「はい……」
-“Hello...?”
+“Yes...”
 
 @17422 ???
 > 「やあ。元気そうだね、ローレンス」
-“Hello, Lawrence. You're looking well.”
+“Hey there. You look well, Lawrence.”
 
-@17423 ローレンス
+@17423 Lawrence · ローレンス
 > 「これはこれは、お久しゅうございます
-“My, it has been a long time.
+“Well, well, it has been a long time.
 ---
 >  この回線をお使いということは
 >  もしや……」
-If you're using this channel, could it mean...?”
+If you are using this line, then perhaps...”
 
 @17424 ???
 > 「うん、そろそろ僕たちも
 >  動くことになった
-“Yes. It's about time we made our move.
+“Yeah, it's finally time for us to move as well.
 ---
 >  {HeroName}さんはいるかい?」
 Is {HeroName} there?”
 
-@17425 ローレンス
+@17425 Lawrence · ローレンス
 > 「しばしお待ちを」
 “One moment, please.”
 
-@17426 マナミ（本话主角）
+@17426 Manami · マナミ（本话主角）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「お待たせいたしました、
 >  {HeroName}です
-“Thank you for waiting. This is {HeroName}.
+“Sorry to keep you waiting. This is {HeroName}.
 ---
 >  万丈様、あたしずっとご連絡を
 >  待ってましたのよ?」
-Mr. Banjo, I've been waiting so long to hear from you!”
+Banjo, I have been waiting for your word all this time, you know?”
 
-@17427 万丈
+@17427 Banjo · 万丈
 > 「すまなかった
-“I'm sorry.
+“Sorry about that.
 ---
 >  長い間いやな仕事を
 >  してもらって悪かったね」
-You've had to put up with that unpleasant work for far too long.”
+I'm sorry I had you doing such unpleasant work for so long.”
 
-@17428 マナミ（本话主角）
+@17428 Manami · マナミ（本话主角）
 > 「では……」
-“Then...?”
+“Then...”
 
-@17429 万丈
+@17429 Banjo · 万丈
 > 「うん、こっちのほうもようやく
 >  用意が整ってきた
-“Yes. Things are finally coming together on our end.
+“Yeah, our preparations are finally in order too.
 ---
 >  スイームルグも調整まで
 >  終わったそうだ」
-I'm told the Sweemurg's final adjustments are complete, too.”
+I hear Sweemurg's adjustments are finished as well.”
 
-@17430 マナミ（本话主角）
+@17430 Manami · マナミ（本话主角）
 > 「本当ですか!?
 >  では、いよいよ始めるのですね」
-“Really?! Then we're finally getting started!”
+“Truly?! Then we are finally starting.”
 
-@17431 万丈
+@17431 Banjo · 万丈
 > 「そうだ。そちらの準備が整い次第
 >  来てほしい。詳細はギャリソンに
-“That's right. Come over as soon as you're ready. I'll have Garrison send you the details.
+“That's right. Come as soon as your preparations are ready. I'll have Garrison
 ---
 >  連絡させる。僕は今からもう1人
 >  にも連絡をしなくてはならないからね」
-There's someone else I need to contact now.”
+contact you with the details. I have to get in touch with one more person now.”
 
-@17432 マナミ（本话主角）
+@17432 Manami · マナミ（本话主角）
 > 「どなたですの?」
 “Who might that be?”
 
-@17433 万丈
+@17433 Banjo · 万丈
 > 「君と同じで帝国の動きを
 >  探ってもらっていた人でね
-“She's been monitoring the Empire's movements, just as you have.
+“Someone who, like you, has been gathering information on the Empire's movements.
 ---
 >  やはりロームフェラ財団の、
 >  ルフラン公爵家のご令嬢だ」
-She's also from Romefeller: the daughter of Duke Reflann.”
+She is also of the Romefeller Foundation, the daughter of the Duke Reflann.”
 
-@17434 マナミ（本话主角）
+@17434 Manami · マナミ（本话主角）
 > 「ルフラン公爵家……
 >  シモーヌ様ですね?
-“Duke Reflann's family... You mean Lady Simone?
+“The Duke Reflann's house... Lady Simone, you mean?
 ---
 >  そういえば、あの方は3年前にも
 >  帝国と戦ったことがあったと
-Come to think of it, I heard she fought the Empire three years ago
+Come to think of it, I heard that she fought the Empire
 ---
 >  聞いていますわ」
-as well.”
+three years ago as well.”
 
-@17435 万丈
+@17435 Banjo · 万丈
 > 「そういうこと。
 >  では、また後で」
-“That's right. See you soon.”
+“That's right. See you later, then.”
 
-@17436 マナミ（本话主角）
+@17436 Manami · マナミ（本话主角）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「万丈様!」
-“Mr. Banjo!”
+“Banjo!”
 
-@17437 万丈
+@17437 Banjo · 万丈
+# 审校：万丈称 さん
 > 「やあ、時間どおりだね
-“Hello! Right on time.
+“Hey, you're right on time.
 ---
 >  シモーヌさんが少し遅れている
 >  ようだから
-Simone seems to be running a little late,
+It seems Simone is running a little late,
 ---
 >  機体をみておくといい。
 >  こっちだ」
-so why not take a look at your machine? This way.”
+so you may as well take a look at the unit. This way.”
 
-@17438 マナミ（本话主角）
+@17438 Manami · マナミ（本话主角）
 > 「あっ……!」
 “Ah...!”
 
-@17439 万丈
+@17439 Banjo · 万丈
 > 「どうかな?」
 “What do you think?”
 
-@17440 マナミ（本话主角）
+@17440 Manami · マナミ（本话主角）
 > 「これが……あたしのスイームルグ!?」
 “This is... my Sweemurg?!”
 
-@17441 ローレンス
+@17441 Lawrence · ローレンス
 > 「ふむ、さすがでございますな」
-“Hmm. Truly impressive.”
+“Hmm, most impressive indeed.”
 
-@17442 万丈
+@17442 Banjo · 万丈
 > 「いやいや、設計データが完全だった
 >  からこそさ。でなければ、ここまでのものを
-“Well, we had complete design data to work from. Otherwise, building something like this
+“No, no, it's only because the design data was complete. Otherwise, building something
 ---
 >  いちからつくるのは無理だよ。ただ、
 >  背面部にブースターのようなものを
-from scratch would have been impossible. There was a joint on the back for attaching
+like this from scratch would be impossible. However, there was a joint on the rear
 ---
 >  取りつけるジョイントがあったんだけど、
 >  その部分は設計を変更して
-what looked like a booster, but we modified that part of the design
+for attaching something like a booster, but I changed the design
 ---
 >  取り外してある」
-and removed it.”
+and removed that part.”
 
-@17443 ギャリソン
+@17443 Garrison · ギャリソン
+# 审校：ギャリソン的管家敬语“お待ちください”应更正式，改为 if you would kindly wait。
 > 「おや? これはこれは
 >  皆様方おそろいで
-“Oh! Everyone is here already.
+“Oh? Well, well, everyone is here together.
 ---
 >  ただいま仕上げをしておりますゆえ、
 >  今しばらくお待ちください」
-I'm just putting on the finishing touches. Please bear with me a moment longer.”
+We are just putting on the finishing touches, so if you would kindly wait a little longer.”
 
-@17444 マナミ（本话主角）
+@17444 Manami · マナミ（本话主角）
 > 「……??」
 “...??”
 
-@17445 万丈
+@17445 Banjo · 万丈
 > 「はははっ、
 >  ギャリソンの趣味みたいなものでね
-“Ha ha! It's something of a hobby for Garrison.
+“Hahaha, it's more like Garrison's hobby.
 ---
 >  スイームルグにワックスがけを
 >  しているんだ」
 He's waxing the Sweemurg.”
 
-@17446 マナミ（本话主角）
+@17446 Manami · マナミ（本话主角）
 > 「なに、これは!?」
-“What was that?!”
+“What, this?!”
 
-@17447 ギャリソン
+@17447 Garrison · ギャリソン
 > 「どうやら帝国軍がこの近くに
 >  きているようですな」
-“It seems Imperial troops have appeared nearby.”
+“It appears the Imperial army is approaching this area.”
 
-@17448 マナミ（本话主角）
+@17448 Manami · マナミ（本话主角）
 > 「なんですって!?」
-“What?!”
+“What did you say?!”
 
-@17449 ローレンス
+@17449 Lawrence · ローレンス
 > 「ふむ、わたくしが様子をみて
 >  まいりましょう」
-“Hmm. I'll go and have a look.”
+“Hmm, I shall go and see what is happening.”
 
-@17450 ローレンス
+@17450 Lawrence · ローレンス
 > 「やはり帝国軍のようでございます」
-“They are indeed Imperial troops.”
+“It seems it is the Imperial army after all.”
 
-@17451 万丈
+@17451 Banjo · 万丈
 > 「やつらはこんなところで一体なにを?
-“What are they doing out here?
+“What on earth are they doing in a place like this?
 ---
 >  僕たちが見つかっていたとは
 >  思えないが……」
-I don't think they've discovered us...”
+I can't imagine they've found us...”
 
-@17452 ローレンス
+@17452 Lawrence · ローレンス
 > 「それが、どうも無差別に住民
 >  たちを攻撃している様子で」
-“They appear to be attacking the local residents indiscriminately.”
+“The thing is, it appears they are attacking the residents indiscriminately.”
 
-@17453 万丈
+@17453 Banjo · 万丈
 > 「なんだって!? ……そうか、
-“What?! ...Right.
+“What did you say?! ...I see.
 ---
 >  最近そんな話がいくつかあったな、
 >  ギャリソン」
-We've heard a few reports like that lately, haven't we, Garrison?”
+There have been a few reports like that lately, haven't there, Garrison?”
 
-@17454 ギャリソン
+@17454 Garrison · ギャリソン
 > 「少々お待ちください。
 >  ……確かに帝国軍のゲリラ狩りの
-“One moment, please. ...Yes, it seems the Imperial forces sometimes
+“One moment, please. ...Indeed, it seems such tactics are sometimes employed
 ---
 >  一環として、そのような作戦が
 >  とられることがあるようですな」
-conduct such operations as part of their guerrilla hunts.”
+as part of the Imperial army's guerrilla hunts.”
 
-@17455 マナミ（本话主角）
+@17455 Manami · マナミ（本话主角）
 > 「なんということを!
 >  では、まるで無関係な
-“How could they?! You mean they're attacking innocent people,
+“How could they! So you're saying they even attack
 ---
 >  老人や子供まで攻撃して
 >  いるというの!?
-even the elderly and children?!
+old people and children who have nothing to do with any of this?!
 ---
 >  許せない……
 >  絶対に許せないわ!」
-Unforgivable... I'll never forgive them!”
+Unforgivable... Absolutely unforgivable!”
 
-@17456 ローレンス
+@17456 Lawrence · ローレンス
 > 「お嬢様!?」
 “My lady?!”
 
-@17457 マナミ（本话主角）
+@17457 Manami · マナミ（本话主角）
 > 「なにをしているの、ローレンス!
 >  スイームルグを出すのよ!!」
-“What are you waiting for, Lawrence?! Launch the Sweemurg!”
+“What are you doing, Lawrence?! Launch the Sweemurg!!”
 
-@17458 ローレンス
+@17458 Lawrence · ローレンス
 > 「お嬢様! いきなり実戦を
 >  なさるおつもりですか!?」
-“My lady! You intend to take it straight into combat?!”
+“My lady! Do you intend to go into actual combat just like that?!”
 
-@17459 マナミ（本话主角）
+@17459 Manami · マナミ（本话主角）
 > 「あたり前でしょ。さぁ早く!」
-“Of course! Hurry!”
+“Of course I do. Now hurry!”
 
-@17460 マナミ（本话主角）
+@17460 Manami · マナミ（本话主角）
 > 「すごいわ……これが、おじい様の
 >  スイームルグなのね……」
-“Incredible... So this is Grandfather's Sweemurg...”
+“Amazing... So this is Grandfather's Sweemurg...”
 
-@17461 万丈
+@17461 Banjo · 万丈
 > 「やれやれ、さすがに行動力にとんだ
 >  お嬢様だ
-“Good grief. She certainly doesn't hesitate to act.
+“Good grief, she really is a lady of action.
 ---
 >  ギャリソン、僕もでる。後は頼む」
-Garrison, I'm heading out too. I'll leave the rest to you.”
+Garrison, I'm going out too. I'll leave the rest to you.”
 
-@17462 ギャリソン
+@17462 Garrison · ギャリソン
 > 「いってらっしゃいませ」
-“Take care, sir.”
+“Have a safe trip.”
 
-@17463 万丈
+@17463 Banjo · 万丈
 > 「ダイターン、カムヒアッ!」
 “Daitarn, come here!”
 
-@17464 万丈
+@17464 Banjo · 万丈
 > 「世のため人のため、ムゲゾルバドス
 >  帝国の野望を打ち砕く
-“For the world and its people, I shall crush the ambitions of the Muge Zorbados Empire!
+“For the world and for the people, Daitarn 3 crushes the ambitions of the Muge Zorbados Empire.
 ---
 >  ダイターン3。この日輪の輝きを、
 >  恐れぬのならば、かかってこい!」
-I am Daitarn 3! If you do not fear the radiance of the sun, then come at me!”
+If you do not fear the radiance of this sun, then come at me!”
 
-@17465 マナミ（本话主角）
+@17465 Manami · マナミ（本话主角）
 > 「あら!? よい前口上だわ。あたしも
 >  何か考えた方がいいのかしら
-“Oh! What a wonderful introduction. Perhaps I should think of one too.
+“Oh?! That was a fine speech. I wonder if I should think of something too.
 ---
 >  どう思う、ローレンス?」
 What do you think, Lawrence?”
 
-@17466 ローレンス
+@17466 Lawrence · ローレンス
 > 「お嬢様、そのようなことは
 >  後でお考えなさいませ!
-“My lady, please leave that for later!
+“My lady, please think about such things later!
 ---
 >  敵が参りますぞ!」
-The enemy is approaching!”
+The enemy is coming!”
 
-@17467 マナミ（本话主角）
+@17467 Manami · マナミ（本话主角）
 > 「……わかってるわよ!」
 “...I know!”
 
-@17468 シモーヌ
+@17468 Simone · シモーヌ
 > 「あれは……。
 >  ちょっと万丈
-“Is that...? Hey, Banjo!
+“That's... Hey, Banjo.
 ---
 >  いったい、なんだってこんなところで
 >  戦闘になってるの!?」
-How did you end up fighting out here?!”
+Just what on earth is going on, that you're fighting in a place like this?!”
 
-@17469 万丈
+@17469 Banjo · 万丈
 > 「遅れてきて、いきなりそれは
 >  ないんじゃない?
-“You're late, and that's the first thing you say?
+“You show up late and that's the first thing you say?
 ---
 >  まあ説明は後だ。
 >  それよりドールを持ってきてある
-I'll explain later. I've brought the Doll along,
+Well, explanations can wait. More importantly, I've brought the Doll.
 ---
 >  手伝ってもらえると
 >  うれしいんだけどね」
-and I'd appreciate a little help.”
+I'd be glad if you could lend a hand.”
 
-@17470 シモーヌ
+@17470 Simone · シモーヌ
 > 「ああ。それはいいんだけど……
 >  実はアタシも追われてるのよ」
-“Sure, that's fine... But I'm being chased myself.”
+“Yeah. That's fine, but... actually, I'm being chased too.”
 
-@17471 マナミ（本话主角）
+@17471 Manami · マナミ（本话主角）
 > 「どういうことです、シモーヌ様?」
-“What happened, Lady Simone?”
+“What do you mean, Lady Simone?”
 
-@17472 シモーヌ
+@17472 Simone · シモーヌ
 > 「あら、見慣れない機体があると
 >  思ったら、貴女のだったのね
-“Oh, I was wondering whose unfamiliar machine that was. So it's yours.
+“Oh, I thought there was an unfamiliar machine here, so it was yours.
 ---
 >  実は連絡員がつかまって、
 >  アタシが情報を流していたことが
-Our courier was captured, and they found out I was passing along information.
+Actually, our contact got caught, and it came out that I'd been leaking information.
 ---
 >  バレちゃったのよ。ちょうどここへ来る
 >  予定だったから、タイミングはそれほど
-I was already planning to come here, so the timing wasn't too bad.
+I was planning to come here anyway, so the timing wasn't all that
 ---
 >  悪くなかったけど、それで追手が
 >  かかってるってわけ」
-But now I've got pursuers on my tail.”
+bad, but that's why they're after me.”
 
-@17473 ギャリソン
+@17473 Garrison · ギャリソン
 > 「確認いたしました。
 >  帝国軍部隊が接近中
-“Confirmed. Imperial forces are approaching.
+“Confirmed. An Imperial army unit is approaching.
 ---
 >  もう少しで接触します」
-Contact is imminent.”
+We will make contact shortly.”
 
-@17474 万丈
+@17474 Banjo · 万丈
 > 「やれやれ、高貴なお嬢様方の
 >  エスコートは、楽にはいかないな」
-“Good grief. Escorting noble ladies is never easy.”
+“Good grief, escorting noble ladies is never easy.”
 
-@17475 マナミ（本话主角）
+@17475 Manami · マナミ（本话主角）
 > 「来たわね!
 >  どんどんかかってらっしゃい!!」
-“Here they come! Come and get me!”
+“Here they come! Bring it on, all of you!!”
 
-@17476 ローレンス
+@17476 Lawrence · ローレンス
 > 「お嬢様ッ!?」
 “My lady?!”
 
-@17477 マナミ（本话主角）
+@17477 Manami · マナミ（本话主角）
 > 「そ……そんな」
-“N-no... This can't be...”
+“Th... This can't be.”
 
-@17478 マナミ（本话主角）
+@17478 Manami · マナミ（本话主角）
 > 「ふう……」
-“Whew...”
+“Phew...”
 
-@17479 ローレンス
+@17479 Lawrence · ローレンス
 > 「どうやら終わったようですな」
-“It seems to be over.”
+“It appears it is over.”
 
-@17480 マナミ（本话主角）
+@17480 Manami · マナミ（本话主角）
 > 「そうね」
 “Yes.”
 
-@17481 万丈
+@17481 Banjo · 万丈
 > 「ご苦労様。ケガはないかい、
 >  お嬢さんたち」
-“Well done. Are either of you hurt?”
+“Good work. Are you ladies hurt?”
 
-@17482 マナミ（本话主角）
+@17482 Manami · マナミ（本话主角）
+# 审校：Manami 是大小姐，对万丈的关心应保持更正式、得体的语气，改为“I am fine”更符合身份。
 > 「ええ、大丈夫ですわ」
-“No, I'm fine.”
+“Yes, I am fine.”
 
-@17483 シモーヌ
+@17483 Simone · シモーヌ
 > 「久しぶりで少し疲れたけど、
 >  問題ないわ」
-“It's been a while, so I'm a little tired, but I'm all right.”
+“It's been a while, so I'm a little tired, but no problem.”
 
-@17484 万丈
+@17484 Banjo · 万丈
 > 「それはよかった。ギャリソン、
 >  移動の準備をしてくれ
 “Glad to hear it. Garrison, get us ready to move.
 ---
 >  のんびりして敵に見つかって
 >  やることもないだろう」
-There's no point sitting around waiting for the enemy to find us.”
+No point in dawdling and letting the enemy find us.”
 
-@17485 ギャリソン
+@17485 Garrison · ギャリソン
 > 「もちろん、すでに準備は
 >  できております」
 “Of course. Everything is already prepared.”
 
-@17486 万丈
+@17486 Banjo · 万丈
 > 「それで、どうなっているんだい?」
 “So, what's the situation?”
 
-@17487 シモーヌ
+@17487 Simone · シモーヌ
 > 「奴らも本腰を入れ始めているわ。
 >  これまでみたいな暴動鎮圧のための
-“They're starting to get serious. Instead of the security forces they used to send
+“They're starting to get serious too. It seems they're organizing proper units to deal with
 ---
 >  治安部隊なんかじゃなくて
 >  組織的なレジスタンスに対応する
-to put down riots, they're apparently forming proper units
+an organized resistance, rather than the security forces they've used to put down riots
 ---
 >  ちゃんとした部隊を編成している
 >  みたいね。それから、ここしばらくの
-to deal with organized resistance. And the Specials have had their authority expanded
+until now. Also, because of their achievements in guerrilla hunting
 ---
 >  ゲリラ狩りで功績があったとかで
 >  スペシャルズの権限が拡大してるわ」
-after their recent successes hunting guerrillas.”
+lately, the Specials' authority has been expanded.”
 
-@17488 ローレンス
+@17488 Lawrence · ローレンス
 > 「ふむ、スペシャルズといえば
 >  ロームフェラ財団が
-“Hmm. The Specials are an Earthling force believed to have been
+“Hmm, speaking of the Specials, they are the Earthling unit
 ---
 >  組織したと目される
 >  地球人の部隊ですな」
-organized by the Romefeller Foundation, correct?”
+believed to have been organized by the Romefeller Foundation.”
 
-@17489 マナミ（本话主角）
+@17489 Manami · マナミ（本话主角）
+# 审校：原译缺少谓语，句子不完整；补上 committing 使句子通顺。
 > 「許せない。
 >  ロームフェラもスペシャルズも
-“Unforgivable. Both Romefeller and the Specials
+“Unforgivable. Romefeller and the Specials alike,
 ---
 >  自分たちの権益を
 >  確保するために
-are doing all this to protect their own interests,
+just to secure their own interests,
 ---
 >  同じ地球人に、こうも非道な
 >  行為をするなんて」
-committing such atrocities against their fellow Earthlings.”
+committing such cruel acts against their fellow Earthlings.”
 
-@17490 シモーヌ
+@17490 Simone · シモーヌ
 > 「結局、帝国の支配下に
 >  あるうちは
-“As long as the Empire rules us,
+“In the end, as long as we're under the Empire's rule,
 ---
 >  3種類の地球人しかいないのよ
 there are only three kinds of Earthlings.
 ---
 >  生きるために帝国の言うとおりに
 >  おとなしく生活するか
-Those who obey the Empire and keep their heads down to survive,
+You live quietly and do as the Empire says to survive,
 ---
 >  帝国に協力するか、
 >  帝国に反抗するか
-those who help it, and those who fight it.
+you cooperate with the Empire, or you resist the Empire.
 ---
 >  いやな時代だわ、ホントに」
-What a miserable time to be alive.”
+What a rotten era this is, really.”
 
-@17491 マナミ（本话主角）
+@17491 Manami · マナミ（本话主角）
 > 「シモーヌ様……」
-“Lady Simone...”
+“Simone...”
 
-@17492 シモーヌ
+@17492 Simone · シモーヌ
 > 「“様”は、やめましょ。
 >  もともと性に合わないし
-“Let's drop the ‘Lady.’ It never suited me anyway.
+“Drop the ‘Lady.’ It never suited me anyway.
 ---
 >  お互い、もうただの
 >  レジスタンスなんだから」
-We're both just members of the resistance now.”
+We're all just resistance fighters now.”
 
-@17493 万丈
+@17493 Banjo · 万丈
 > 「しかし帝国軍が、そう出て
 >  くるとなると
-“But if that's how the Imperial forces are responding,
+“But if the Imperial Army is going to come at us like that,
 ---
 >  この先、かなり厳しくなって
 >  くるな……
-things are going to get much harder...
+things are going to get a lot tougher from here...
 ---
 >  まぁいい、ともかく先を急ごう。
 >  いま僕たちがするべきなのは
-Well, we'd better get moving. Right now, our priority
+Well, fine. Anyway, let's hurry on. What we need to do now is
 ---
 >  できるだけ早く十分な戦力を
 >  整えることだ」
-is to gather enough fighting strength as quickly as possible.”
+build up enough fighting strength as fast as we can.”
 
-@17494 マナミ（本话主角）
+@17494 Manami · マナミ（本话主角）
 > 「それで、どちらへ向かうのですか?」
-“Where are we going, then?”
+“So, where are we headed?”
 
-@17495 万丈
+@17495 Banjo · 万丈
 > 「とりあえずカラバで、研究を
 >  支援している博士の1人に
-“First, we'll visit one of the scientists whose research
+“For now, we're going to Karaba to meet one of the doctors
 ---
 >  会いに行く予定だ」
-Karaba is supporting.”
+who's been supporting our research.”
 
-@17496 シモーヌ
+@17496 Simone · シモーヌ
 > 「カラバ……あなたたちが組織した
 >  反帝国グループね
-“Karaba... That's the anti-Imperial group you organized, right?
+“Karaba... the anti-Imperial group you people organized.
 ---
 >  そんなこともしてるの」
-So you support research, too?”
+So you've been doing that too.”
 
-@17497 ギャリソン
+@17497 Garrison · ギャリソン
+# 审校：全局：旧連邦 = former Federation
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「科学者の方々、特に軍事
 >  関係や、それに転用できる
-“Scientists, particularly those working on military technology
+“Scientists, especially those doing military research or
 ---
 >  エネルギー関連の研究を
 >  されている方々は
-or energy research that could have military applications,
+energy-related research that can be diverted to it,
 ---
 >  帝国に目をつけられやすい
 >  ですからな
-are likely to attract the Empire's attention.
+tend to catch the Empire's eye.
 ---
 >  ほかにも旧連邦の技術者など
 >  何人かの方がおりますが
-There are also a few engineers from the former Western Federation,
+There are also several others, such as former Federation engineers,
 ---
 >  大半の方はもともと
 >  日本地区に研究施設を
-but most of these scientists originally had their research facilities
+but most of them originally had research facilities
 ---
 >  持たれていたのですよ
 in the Japan region.
@@ -657,30 +665,30 @@ Before the Muge Zorbados Empire occupied it, we helped them
 ---
 >  各地に散っていただいたので
 >  ございます」
-relocate to various places.”
+scatter to various places.”
 
-@17498 シモーヌ
+@17498 Simone · シモーヌ
 > 「なるほどねぇ
 “I see.
 ---
 >  それでドールみたいな地球製SPT
 >  なんてのも、つくれたわけね」
-So that's how you were able to build an Earth-made SPT like the Doll.”
+So that's how you were able to build Earth-made SPTs like the Doll.”
 
-@17499 万丈
+@17499 Banjo · 万丈
 > 「そういうこと」
 “Exactly.”
 
-@17500 マナミ（本话主角）
+@17500 Manami · マナミ（本话主角）
 > 「それで、これからお会いする方は
 >  何を研究されているのです?」
-“What does the scientist we're going to meet study?”
+“So what is the person we're going to meet researching?”
 
-@17501 万丈
+@17501 Banjo · 万丈
 > 「光子力エネルギーさ」
-“Photon energy.”
+“Photon Power energy.”
 
-@17502 シモーヌ
+@17502 Simone · シモーヌ
 > (エイジ……みんな……
 >  生きているのかしら……)
-(Eiji... Everyone... Are you still alive...?)
+(Eiji... everyone... I wonder if they're alive...)

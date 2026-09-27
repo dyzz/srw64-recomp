@@ -1,88 +1,143 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11918 Juzo · 十三
+# 触发：攻击（通用，1/5）
 > 「いくでーっ!」
 “Here I go!”
 
 @11919 Juzo · 十三
+# 触发：攻击（通用，2/5）
 > 「もろたっ!」
 “Gotcha!”
 
 @11920 Juzo · 十三
+# 触发：攻击（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかいなっ!」
-“Like I'd let ya!”
+“Like I’d let ya!”
 
 @11921 Juzo · 十三
+# 触发：攻击（通用，4/5）
+# 审校：去掉方言“咋”，英文更自然
 > 「こいつでどやっ!」
-“Take this and how's that!”
+“Try this one on for size!”
 
 @11922 Juzo · 十三
+# 触发：攻击（通用，5/5）
+# 审校：やったろやないけ是攻击前的“干了”，不是“干得漂亮”
 > 「やったろやないけ!」
-“Told ya I'd do it!”
+“Let’s do this!”
 
 @11923 Juzo · 十三
+# 触发：被击坠（通用，1/1）
 > 「しもたっ! やられてもた!」
 “Dang it! They got me!”
 
 @11924 Juzo · 十三
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あかん! こいつはまずいで!」
-“No good! This ain't lookin' good!”
+“No good! This ain’t lookin’ good!”
 
 @11925 Juzo · 十三
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「うわああっ! な、なんなんや、こいつ!」
 “Whoaah! Wh-what the heck is this thing?!”
 
 @11926 Juzo · 十三
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わああっ! あ、あかん、このままやと
 >  もたん!」
-“Waaah! N-no good, I can't take this much longer!”
+“Waaah! N-no good, I can’t take this much longer!”
 
 @11927 Juzo · 十三
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：やってくれる是“你这下够狠”，不是“付出代价”
 > 「うっ! やってくれるやないけ!」
-“Ugh! You're gonna pay for that!”
+“Ugh! You really did a number on me!”
 
 @11928 Juzo · 十三
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! そう簡単にやられるかいな!」
-“Ngh! Like I'd go down that easy!”
+“Ngh! Like I’d go down that easy!”
 
 @11929 Juzo · 十三
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんのっ! まだやられてへんで!」
-“No way! I ain't beaten yet!”
+“No way! I ain’t beaten yet!”
 
 @11930 Juzo · 十三
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「なあんや、そんなもんかいな」
 “What, is that all ya got?”
 
 @11931 Juzo · 十三
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あかんあかん、話にならんぐらい
 >  弱いで!」
-“No good, no good, you're so weak it ain't even funny!”
+“No good, no good, you’re so weak it ain’t even funny!”
 
 @11932 Juzo · 十三
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「ちゃっちい攻撃やなあ」
 “What a puny attack.”
 
 @11933 Juzo · 十三
+# 触发：回避（通用，1/3）
 > 「ほれほれ、こっちや、こっち!」
 “Come on, over here, over here!”
 
 @11934 Juzo · 十三
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どこねらっとるんや!」
-“What're ya even aimin' at?!”
+“What’re ya even aimin’ at?!”
 
 @11935 Juzo · 十三
+# 触发：回避（通用，3/3）
+# 审校：“臭水平”不自然
 > 「へたくそが!」
-“You're terrible at this!”
+“Lousy shot!”
 
 @11936 Juzo · 十三
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなもん効くかい!」
-“That ain't gonna do a thing!”
+“That ain’t gonna do a thing!”
 
 @11937 Juzo · 十三
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんやて!? 弾切れ? しもた、
 >  もっと節約しとくんやった」
-“What?! Out of ammo? Dang it, should've conserved more.”
+“What?! Out of ammo? Dang it, should’ve conserved more.”
 
 @11938 Juzo · 十三
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんや!? とどかへんのか!?」
-“What?! It won't reach?!”
+“What?! It won’t reach?!”
+
+@16787 Juzo · 十三
+# 触发：使用〈ロックファイター〉
+> 「ロックファィター!」
+“Rock Fighter!”
+
+@16788 Juzo · 十三
+# 触发：使用〈エレクトロダート〉（低优先，可能被通用台词顶掉）
+> 「エレクトロダート!」
+“Electro Dart!”
+
+@16789 Juzo · 十三
+# 触发：使用〈マグネクロー〉（低优先，可能被通用台词顶掉）
+> 「マグネクロー!」
+“Magne Claw!”
+
+@16790 Juzo · 十三
+# 触发：使用〈アトミックバーナー〉
+> 「アトミックバーナー!」
+“Atomic Burner!”

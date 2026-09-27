@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @36216 Mika · ミカ
+# 审校：原文「そうです」是转述他人报告，译文缺少这层转述语气。
 > 「艦長、発進準備、
 >  終了したそうです」
-“Captain, launch preparations are complete.”
+“Captain, they say launch preparations are complete.”
 
 @36217 Bright · ブライト
 > 「オーラシップの方はどうだ?」
@@ -142,9 +143,10 @@ we'd have slammed into the ground and gone boom.”
 “Quite right.”
 
 @36246 Brad · ブラッド（按段落 3DD3）
+# 审校：原文「てめぇ、よくも」语气强烈，译文过于平淡，未体现 Brad 的粗放口吻。
 > 「てめぇ、よくもそんなに
 >  落ち着いていられるな!?」
-“How can you stay so calm?!”
+“How the hell can you stay so calm?!”
 
 @36247 Tetsuya · 鉄也
 > 「俺たちがあせったところで、
@@ -502,6 +504,7 @@ who knows when we'll get another chance to relax like this.”
 “I know.”
 
 @36313 Ark · アーク（按段落 3DD1）
+# 审校：精读：页末标点
 > (ごめん……レラ。約束果たすには、
 >  まだまだ時間が必要みたいだ
 (Sorry... Lera. It looks like I still need a lot more time to keep my promise.
@@ -512,7 +515,7 @@ In fact, it might be even harder than before.
 ---
 >  どうなっていくのか、まるでわからないよ。
 >  だけどレラ……お前の命は
-I have no idea how things will turn out. But Lera... your life
+I have no idea how things will turn out. But Lera... your life,
 ---
 >  絶対に無駄にさせはしない。
 >  だから、見ていてくれ。地球は
@@ -527,9 +530,10 @@ I swear I'll protect it...)
 “What's wrong? Did you find something unusual?”
 
 @36315 Selain · セレイン（按段落 3DD2）
+# 审校：“Am I alone?” 是自言自语，但这里是在回答沙也加并问她，应改为“You're alone?”以符合对话语境。
 > 「いや……景色をながめていただけだ。
 >  1人か、甲児たちはどうした?」
-“No... I was just looking at the scenery. Am I alone? Where's Koji and the others?”
+“No... I was just looking at the scenery. You're alone? Where's Koji and the others?”
 
 @36316 Sayaka · さやか
 > 「ボスやショウと一緒に、
@@ -641,12 +645,13 @@ It looks like thinking about the future was pointless after all.
 “What did you say?”
 
 @36336 Komei · 孔明
+# 审校：精读：第二页只剩引号
 > 「{HeroMech}が
 >  地上へ降りてきたと
-“I've received word from our agent that the {HeroMech} has descended to the surface.
+“I've received word from our agent that the {HeroMech}
 ---
 >  エージェントから連絡がありましてね」
-”
+has descended to the surface.”
 
 @36337 Alberto · アルベルト
 > 「それで、わしにどうしろというのだ」
@@ -694,8 +699,9 @@ What do we stand to gain by meddling with them?”
 “...”
 
 @36344 Master · マスター
+# 审校：Master Asia 对 Wong 说话时语气应更威严、带宗师腔调，what do you want 过于随意。
 > 「ウォン、何の用だ」
-“Wong, what do you want?”
+“Wong, what is it?”
 
 @36345 Wong · ウォン
 > 「先生のご執心の、
@@ -737,13 +743,14 @@ Even I have my own sources of information.”
 I absolutely need him.”
 
 @36351 Wong · ウォン
+# 审校：精读：大写
 > 「いいでしょう、そちらは先生に
 >  おかませしますよ。私は財団に
-“Fine, I'll leave that side to you, Teacher. As for me, I have my position
+“Fine, I'll leave that side to you, Master. As for me, I have my position
 ---
 >  対しての立場があるので、あまり
 >  表立って動くわけにはいきませんから」
-with the foundation, so I can't afford to act too openly.”
+with the Foundation, so I can't afford to act too openly.”
 
 @36352 Master · マスター
 > 「フン、この悪党めが」
@@ -758,9 +765,10 @@ with the foundation, so I can't afford to act too openly.”
 is located...”
 
 @36354 Wong · ウォン
+# 审校：精读：大写
 > 「{HeroMech}を叩ければ、
 >  それでよし。財団に対して
-“If we can strike down the {HeroMech}, all the better. It'll make the foundation
+“If we can strike down the {HeroMech}, all the better. It'll make the Foundation
 ---
 >  ムリもきくようになる。叩けなければ、
 >  それはそれでOZを動かせばいい
@@ -928,9 +936,10 @@ you haven't mastered that blade yet.”
 Don't you think?”
 
 @36384 Domon · ドモン
+# 审校：Domon 对 Master Asia 的称呼按 address 应为 “Master”，此处原文为“師匠”，需保留称呼。
 > 「勝てるさ。スーパーモードさえあれば、
 >  俺は師匠を超えてみせる」
-“I can beat them. As long as I have Super Mode, I'll surpass Master.”
+“I can beat them. As long as I have Super Mode, I'll surpass my Master.”
 
 @36385 Schwarz · シュバルツ
 > 「ハハハハハッ、愚か者め! 貴様の
@@ -945,9 +954,10 @@ With something like that, you can't beat Master.”
 “What?! What do you mean?!”
 
 @36387 Schwarz · シュバルツ
+# 审校：精读：引号
 > 「お前のそれは“怒り”の
 >  スーパーモード。だが“怒り”とは
-“Yours is a Super Mode of 'anger.' But 'anger'
+“Yours is a Super Mode of ‘anger.’ But ‘anger’
 ---
 >  心を曇らせ、見えるはずのものすらも
 >  見えなくする
@@ -1157,13 +1167,16 @@ It's the only way to beat Master Asia. Don't forget it.”
 “Who are you?!”
 
 @36422 Alberto · アルベルト
+# 审校：精读：BF団 统一 BF Group
+# 检查提示：未用必用译名：衝撃のアルベルト→Shockwave Alberto
 > 「BF団十傑集、
 >  衝撃のアルベルト」
-“Shockwave Alberto, one of the Big Fire Group's Ten Elite.”
+“Shockwave Alberto, of the BF Group's Ten Elite.”
 
 @36423 Domon · ドモン
+# 审校：精读：BF団 统一
 > 「BF団!? なんだそれは!」
-“Big Fire Group?! What's that?!”
+“The BF Group?! What's that?!”
 
 @36424 Alberto · アルベルト
 > 「貴様が知る必要はない。
@@ -1197,13 +1210,14 @@ It's the only way to beat Master Asia. Don't forget it.”
 “Indeed! Bad luck for you. Now, die!!”
 
 @36431 Alberto · アルベルト
+# 审校：Alberto 的 voice 是傲慢反派，不用 wouldn't 缩写更符合其腔调。
 > 「ぬぅぅぅぅっ、十傑集たるこのわしと
 >  対等に戦えるだと!?
 “Nghhhhh, to think you could fight me, one of the Ten Elite, as an equal?!
 ---
 >  国際警察機構の
 >  エキスパートとも思えんが……」
-I wouldn't have taken you for an expert of the International Police Organization, though...”
+I would not have taken you for an expert of the International Police Organization, though...”
 
 @36432 Chibodee · チボデー
 > 「ドモン! 何やってんだ!?」
@@ -1248,13 +1262,15 @@ I wouldn't have taken you for an expert of the International Police Organization
 “What the hell is that?!”
 
 @36442 Ivan · イワン
+# 审校：Ivan 是军官，对上级用更正式的 certain 比 sure 更符合敬语层级。
 > 「アルベルト様、よろしいのですか」
-“Lord Alberto, are you sure about this?”
+“Lord Alberto, are you certain about this?”
 
 @36443 Alberto · アルベルト
+# 审校：Alberto 的 voice 是傲慢反派，不用 it's/there's 缩写更符合其腔调。
 > 「我らがビッグファイアーのためとあらば、
 >  しかたあるまい
-“If it's for our Big Fire, there's no other way.
+“If it is for our Big Fire, there is no other way.
 ---
 >  だがイワン、気をつけろよ。
 >  あやつら、なかなかやりおる」
@@ -1310,12 +1326,13 @@ But Ivan, be careful. Those lot are quite tough.”
 Fine, I'll settle this right now!”
 
 @36454 Domon · ドモン
+# 审校：精读：東方不敗 统一 Master Asia
 > 「デスアーミーごとき、
 >  何体いようと敵ではない!
 “A mere Death Army is no match for me, no matter how many there are!
 ---
 >  さぁ、出てこい東方不敗!!」
-Come on out, Undefeated of the East!!”
+Come on out, Master Asia!!”
 
 @36455 Master · マスター
 > 「ばかもの!! おのれごときに、
@@ -1332,9 +1349,10 @@ Is that how you speak to your Master?!”
 “Shut up!! I don't call you Master anymore!!”
 
 @36457 Master · マスター
+# 审校：Master的voice要求无缩写、庄重，原文“おるというのに”语气正式，将“you know”改为“as well”更符合宗师口吻。
 > 「くくくっ、未熟よのう、ドモン。
 >  お前の兄上もおるというのに」
-“Heh heh heh, how immature, Domon. And your brother is here too, you know.”
+“Heh heh heh, how immature, Domon. And your brother is here as well.”
 
 @36458 Domon · ドモン
 > 「なにッ!?」
@@ -1363,14 +1381,16 @@ Is that how you speak to your Master?!”
 “Ngh, Domon!”
 
 @36464 Domon · ドモン
+# 审校：精读：東方不敗 统一
 > 「東方不敗! 今日こそケリを
 >  つけてやる!!」
-“Undefeated of the East! Today I'm settling this!!”
+“Master Asia! Today I'm settling this!!”
 
 @36465 Schwarz · シュバルツ
+# 审校：精读：术语统一、去破折号
 > 「……聞いてはもらえんようだな。
 >  明鏡止水……
-“...It seems you won't listen. Serenity of mind...
+“...It seems you will not listen. Meikyo Shisui...
 ---
 >  曇りのない鏡のごとく、
 >  静かにたたえた水のごとき心
@@ -1378,11 +1398,12 @@ Like a flawless mirror, like still, clear water.
 ---
 >  それが勝つための唯一の方法だ。
 >  だが、今のお前には無理だろうがな」
-That is the only way to win. But for you as you are now, it's impossible.”
+That is the only way to win. But for you as you are now, it is impossible.”
 
 @36466 Domon · ドモン
+# 审校：精读：東方不敗 统一
 > 「くらえぇぇっ、東方不敗ぃぃ!!」
-“Take this, Undefeated of the Eaaaast!!”
+“Take this, Master Asiaaa!!”
 
 @36467 Master · マスター
 > 「フン、この程度の技で何をする
@@ -1414,9 +1435,10 @@ You have no right to laugh at me! I will never forgive you!
 I'll crush you!”
 
 @36471 Master · マスター
+# 审校：Master的voice要求无缩写、庄重，原文“このワシに通用するとでも思っているのか”语气傲慢，将“really”改为“truly”更符合宗师口吻。
 > 「フン、貴様のスーパーモードなど、この
 >  ワシに通用するとでも思っているのか」
-“Hmph, do you really think your Super Mode will work on me?”
+“Hmph, do you truly think your Super Mode will work on me?”
 
 @36472 Domon · ドモン
 > 「黙れ!! いくぞぉっ!
@@ -1424,9 +1446,10 @@ I'll crush you!”
 “Silence!! Here I come! Shiiiiining Fingerrrr!!”
 
 @36473 Master · マスター
+# 审校：Master的voice要求无缩写、庄重，原文“このワシが倒せるとでも思うたか”语气傲慢，将“really”改为“truly”更符合宗师口吻。
 > 「このバカ弟子がぁっ!!
 >  そんなスキだらけの技で
-“You foolish pupil!! Did you really think a technique
+“You foolish pupil!! Did you truly think a technique
 ---
 >  このワシが倒せるとでも
 >  思うたかぁっ!!」
@@ -1497,29 +1520,32 @@ a little more calmly...”
 “Ngh?!”
 
 @36487 Master · マスター
+# 审校：Master Asia 的 voice 要求无缩写、庄重古风，将 you're 改为 you are，I'll 改为 I shall。
+# 检查提示：未用必用译名：ガンダムシュピーゲル→Shadow Gundam
 > 「なっちゃいない!
 >  本当になっちゃいないぞドモン!
-“Not ready! You're really not ready, Domon!
+“Not ready! You are truly not ready, Domon!
 ---
 >  ガンダムシュピーゲルに救われ、怒りも
 >  おさまったというのに、スキだらけで
-You were saved by Shadow Gundam, and your anger had settled, yet you're full of openings
+You were saved by Shadow Gundam, and your anger had settled, yet you are full of openings
 ---
 >  このザマだ。さぁ、首をへし折って
 >  くれるわ!!」
-and end up like this. Now, I'll snap your neck!!”
+and end up like this. Now, I shall snap your neck!!”
 
 @36488 Domon · ドモン
 > 「うわあぁぁぁぁぁぁぁーっ!!」
 “Uwaaaaaaaaaah!!”
 
 @36489 Schwarz · シュバルツ
+# 审校：精读：术语统一
 > 「ドモンよ……思い出せ。
 >  あのときの一瞬を…………
 “Domon... remember. That single instant...
 ---
 >  明鏡止水の一瞬を…………!」
-That single instant of serenity of mind...!”
+That single instant of Meikyo Shisui...!”
 
 @36490 Domon · ドモン
 > (父さん……母さん……
@@ -1553,9 +1579,10 @@ That single instant of serenity of mind...!”
 “Master Asia...!”
 
 @36497 Master · マスター
+# 审校：Master Asia 的 voice 要求无缩写，将 you've 改为 you have，don't 改为 do not。
 > 「……フン、少しは利口になったか。
 >  だが、つけあがるな、ドモン!」
-“...Hmph, so you've gotten a little smarter. But don't get cocky, Domon!”
+“...Hmph, so you have gotten a little smarter. But do not get cocky, Domon!”
 
 @36498 Master · マスター
 > 「ぐっ! なにぃッ!?」
@@ -1604,10 +1631,10 @@ Kyoji... brother... I'm ending this now...”
 “True, we should count ourselves lucky just to have made it in time.”
 
 @36506 Master · マスター
-# 审校：原文“こんなばかなことがあってたまるかぁぁぁーっ!!”是强烈咆哮，初稿只译出一半气势，改为重复句以还原吼叫感。
+# 审校：Master Asia 的 voice 要求无缩写，将 can't 改为 cannot。
 > 「こんな……こんなばかなことがあって
 >  たまるかぁぁぁーっ!!」
-“This... this can't be happening! This can't be happening!!”
+“This... this cannot be happening! This cannot be happening!!”
 
 @36507 Kyoji · キョウジ
 # 审校：原文是咆哮而非疑问，句末应为“!!”而不是“?!”。
@@ -1615,13 +1642,15 @@ Kyoji... brother... I'm ending this now...”
 “Uwooooooooh!!”
 
 @36508 Master · マスター
+# 审校：Master Asia 的 voice 要求无缩写、庄重古风，将 won't 改为 shall not。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……、ワシの、
 >  ワシのデビルガンダムが……
 “Ahh... my, my Dark Gundam...
 ---
 >  おのれ! 貴様ら全員
 >  生かしては帰さぬぞ!!」
-Curse you! I won't let a single one of you leave here alive!!”
+Curse you! I shall not let a single one of you leave here alive!!”
 
 @36509 Kyoji · キョウジ
 # 审校：同L12，咆哮应使用“!!”而非“?!”。
@@ -1669,12 +1698,13 @@ I've finally defeated the Dark Gundam.”
 “What...? It can't be!!”
 
 @36518 Master · マスター
+# 审校：Master 的 voice 要求无缩写，原文“この馬鹿弟子がぁ”的怒吼语气需保留，译文已符合，无需修改。
 > 「まさか、無事にここから
 >  逃げられるとでも思っていたか
 “Did you really think you could escape from here unharmed?
 ---
 >  この馬鹿弟子がぁ!」
-You foolish disciple!”
+You foolish pupil!”
 
 @36519 Domon · ドモン
 > 「東方不敗! なぜだ、
@@ -1826,9 +1856,10 @@ I'll finish this!!”
 “What?!”
 
 @36547 Domon · ドモン
+# 审校：多蒙的粗犷口吻应使用更直白的短句，将“I've got no time”改为“I have no time”更贴合其简洁有力的语气。
 > 「そのまま寝ていろ東方不敗!
 >  貴様と遊んでいるヒマはない!」
-“Stay down, Master Asia! I've got no time to play with you!”
+“Stay down, Master Asia! I have no time to play with you!”
 
 @36548 Master · マスター
 > 「ド……ドモン……」
@@ -1940,13 +1971,14 @@ I hope we'll be getting to know each other.”
 Karaba together with Alan.”
 
 @36567 Banjo · 万丈
+# 审校：精读：去破折号
 > 「ご名答。それにしても、さすがだね、
 >  ドモン。初めての機体を
 “Correct. Even so, impressive as always, Domon. Getting that much out of
 ---
 >  あれだけ使いこなせるとは、わざわざ
 >  持ってきたかいもあったというものだ」
-a machine you've never piloted before—bringing it all this way was worth it.”
+a machine you've never piloted before. Bringing it all this way was worth it.”
 
 @36568 Domon · ドモン
 > 「そうか。礼をいう、万丈。
@@ -1970,9 +2002,10 @@ with Alan, saying the Shining had reached its limit,
 so we went out of our way to bring it here.”
 
 @36570 Garrison · ギャリソン
+# 审校：管家的正式口吻应避免缩写，将“if it hadn't been”改为“had it not been”更符合其一丝不苟的说话风格。
 > 「さよう、それにレイン様でなければ、
 >  あれだけの短時間では
-“Indeed. And if it hadn't been Lady Rain, no one could have tuned it to match
+“Indeed. And had it not been Lady Rain, no one could have tuned it to match
 ---
 >  ドモンさまにあわせた調整は
 >  できなかったでしょうな」
@@ -2052,9 +2085,10 @@ muster to stand against OZ in an emergency. But we can't afford to talk like
 that anymore, can we?”
 
 @36584 Quattro · クワトロ
+# 审校：精读：去破折号
 > 「ああ。補給物資も
 >  持ってきてもらえたようで、助かる」
-“Yeah. It looks like you brought us supplies as well—that helps.”
+“Yeah. It looks like you brought us supplies as well. That helps.”
 
 @36585 Banjo · 万丈
 > 「他にも用意しているところだ。
@@ -2066,22 +2100,24 @@ that anymore, can we?”
 get it all here right away.”
 
 @36586 Garrison · ギャリソン
+# 审校：管家口吻应无缩略，原文「ますまい」为郑重表达，现译使用了缩略形式。
 > 「まぁ、それほど長い時間は
 >  かかりますまい」
-“Well, it shouldn't take all that long.”
+“Well, it should not take very long.”
 
 @36587 Amuro · アムロ
 > 「それはありがたいな」
 “That's a relief.”
 
 @36588 Banjo · 万丈
+# 审校：精读：去破折号
 > 「まぁそんなわけでね、
 >  またこちらに加わらせてもらうよ
 “So anyway, I'll be joining you all again.
 ---
 >  おっと、今はOZの
 >  {HeroMech}だったかな」
-Oops—right now it's OZ's {HeroMech}, isn't it?”
+Oops, right now it's OZ's {HeroMech}, isn't it?”
 
 @36589 Bright · ブライト
 > 「まぁ、御存知の通り、OZも
@@ -2121,16 +2157,17 @@ I imagine many of you are meeting me for the first time. I hope you'll remember 
 “Heh, same as ever.”
 
 @36595 Banjo · 万丈
+# 审校：精读：去破折号
 > 「まぁ、そういわないでくれ。
 >  最初くらいはきちんと挨拶を
 “Now, don't say that. At least at first, I'd like to greet everyone properly.
 ---
 >  しておきたいからね。これから
 >  {HeroMech}に同行したいと
-I'm hoping to accompany the {HeroMech} from here on—
+I'm hoping to accompany the {HeroMech} from here on.
 ---
 >  思っているんだが、かまわないかな?」
-would that be all right?”
+Would that be all right?”
 
 @36596 Bright · ブライト
 > 「噂はかねがね。歓迎するよ、
@@ -2155,12 +2192,13 @@ would that be all right?”
 Nice to meet you.”
 
 @36600 Garrison · ギャリソン
+# 审校：管家自我介绍应体现正式敬语口吻，原文「なにとぞよしなに」是郑重寒暄，现译过于随意。
 > 「わたくしは万丈様の執事、
 >  ギャリソン時田と申します
-“I am Lord Banjo's butler, Garrison Tokita.
+“I am Master Banjo's butler, Garrison Tokita.
 ---
 >  なにとぞよしなに」
-I hope we get along well.”
+I am at your service.”
 
 @36601 Shinobu · 忍
 > 「は? 執事ぃ!? 今の世の中、
@@ -2242,12 +2280,13 @@ She told me to give you all her regards.”
 “We made contact with her while the Doll was being developed. You didn't know?”
 
 @36612 Arthur · アーサー
+# 审校：精读：去破折号
 > 「エイジやシモーヌたちは、
 >  みんな知ってたんだな!?
 “Eiji and Simone and everyone knew?!
 ---
 >  僕に黙ってるなんて、ひどいや」
-Keeping it from me—that's just mean.”
+Keeping it from me, that's just mean.”
 
 @36613 Simone · シモーヌ
 > 「バカね。あんたが知らなかったなんて、
@@ -2381,8 +2420,9 @@ Honestly, you people are hopeless.”
 “Me? Don't make me laugh.”
 
 @36636 Shinobu · 忍
+# 审校：忍的粗野口吻应更重，原文“ケンカ売ってんのか”是挑衅语气，改为更粗俗的“lookin' for a fight”以贴合其狂放性格。
 > 「んだと、コラ! ケンカ売ってんのか!?」
-“Say what, punk?! You pickin' a fight?!”
+“Say what, punk?! You lookin' for a fight?!”
 
 @36637 Sara · 沙羅
 > 「忍、いいかげんにしな!
@@ -2493,9 +2533,10 @@ would be cut in half.”
 “They said they were attacked by some strange bunch.”
 
 @36657 Ginrei · 銀鈴
+# 审校：精读：去破折号
 > 「そうじゃなくて、
 >  その連中が名のったっていうのは」
-“That's not it. What I mean is, the name those guys gave—”
+“That's not it. What I mean is, the name those guys gave...”
 
 @36658 Shirley · シャリー
 # 审校：BF団是专有名词，应保留缩写 BF 并译为 BF Group，而不是按词表 Big Fire 展开；Big Fire 是首领名。
@@ -2605,22 +2646,25 @@ the only one he could save was Daisaku.”
 “So, Alan, what's the situation?”
 
 @36675 Alan · アラン
-# 待译：机翻未采用（页数应为 5，实际给了 2（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“As for Karaba, it's just as Banjo said earlier. Compared to a while back, their organization has recovered considerably, but not enough to put together a guerrilla unit.
-# 草稿第 2 页：So we'll have them back up the 【主角机体名】 instead. It seems Brigadier General Blex is indeed involved in the revival of the Sanc Kingdom.”
+# 审校：补译：原稿页数错误
 > 「カラバについては、さきほど万丈が
 >  いった通りだ。一時期に比べれば
+“As for Karaba, it's as Banjo said just now. Compared to a while ago,
 ---
 >  ずいぶんと組織力も
 >  回復しているが、遊撃隊が
+their organization has recovered a great deal, but not enough
 ---
 >  編成できるほどではない。その分、
 >  {HeroMech}のバックアップに
+to form a raiding unit. Instead, we'll have them back up the {HeroMech}.
 ---
 >  まわらせる。ブレックス准将は、
 >  やはりサンクキングダムの
+Brigadier General Blex, it seems, really is involved in the Sanc Kingdom's
 ---
 >  再興に関わっているようだ」
+restoration.”
 
 @36676 Quattro · クワトロ
 > 「サンクキングダムか……。

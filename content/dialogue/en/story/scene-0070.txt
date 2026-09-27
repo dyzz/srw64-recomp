@@ -323,12 +323,13 @@ since I was a kid like this.”
 some important research. There's nothing we can do about it.”
 
 @30151 Daisaku · 大作
+# 审校：大作是礼貌的少年，原文「心配させんように」是「心配させないように」的方言变体，译文“doesn't have to worry”漏掉了“我们”这一层，补上“about us”更贴合原意且保持礼貌口吻。
 > 「まあ、大丈夫じゃろ。
 >  わしらの方こそ、博士に
 “Well, he'll be fine. If anything, we're the ones who need to pull ourselves together
 ---
 >  心配させんようにしっかりせんとな」
-so the Doctor doesn't have to worry.”
+so the Doctor doesn't have to worry about us.”
 
 @30152 Chizuru · ちずる
 > 「あなたのことよ、豹馬」
@@ -373,9 +374,10 @@ Emperor Zuul...”
 “Daisuke, look. Whose army is that? It's not OZ.”
 
 @30158 Daisuke · 大介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あ……あれは!? まさか……
 >  まさかそんな……」
-“Ah... that's!? It can't be... it can't be...”
+“Ah... that's?! It can't be... it can't be...”
 
 @30159 Hikaru · ひかる
 > 「大介さん、どうしたの?」
@@ -514,10 +516,10 @@ Listen, don't put a scratch on that spacecraft!”
 we need to eliminate any risk of interference. Your objective is the complete destruction of the enemy force!”
 
 @30178 Gaia · ガイア
-# 审校：原文「うおぉっ!?」是喊声，初稿“Uwooo!?”可接受，但为更自然改为“Uwooo!?”并保留原意；实际主要问题是“Uwooo”拼写，改为“Uwooo!?”。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うおぉっ!? この我らが……黒い
 >  三連星が、敗れるというのか!?」
-“Uwooo!? We... the Black Tri-Stars, defeated?!”
+“Uwooo?! We... the Black Tri-Stars, defeated?!”
 
 @30179 Ortega · オルテガ
 > 「バ、バカな!
@@ -529,9 +531,10 @@ we need to eliminate any risk of interference. Your objective is the complete de
 “Ngh, so my luck has finally run out...”
 
 @30181 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あれは、ダンクーガか!
 >  ……新しいガンダム!?」
-“That's Dancouga! ...A new Gundam!?”
+“That's Dancouga! ...A new Gundam?!”
 
 @30182 Shinobu · 忍
 > 「へっ、やっぱり俺たちがいなきゃ
@@ -557,9 +560,10 @@ Captain, we'll cover you!”
 “The Burning Gundam is the Shining Gundam's successor.”
 
 @30186 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「レイン……
 >  君もガンダムに乗っているのか!?」
-“Rain... you're piloting a Gundam too!?”
+“Rain... you're piloting a Gundam too?!”
 
 @30187 Rain · レイン
 > 「ええ、これはライジングガンダム……
@@ -582,9 +586,10 @@ Captain, we'll cover you!”
 “We'll kill Mars and destroy the Earth! We'll show Lady Janera!”
 
 @30191 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだ、奴らは!?
 >  例の異星人か」
-“What are those things!? Those aliens?”
+“What are those things?! Those aliens?”
 
 @30192 Beltorchika · ベルトーチカ
 > 「……さらに接近する機体が
@@ -592,13 +597,15 @@ Captain, we'll cover you!”
 “...More units are closing in!”
 
 @30193 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだと!?」
-“What!?”
+“What?!”
 
 @30194 Bright · ブライト
+# 审校：占位符 {HeroMech} 前不应有定冠词 the，原文为“こちらは{HeroMech}のブライト・ノアだ”。
 > 「……あれか。そこの2機、応答せよ
 >  こちらは{HeroMech}の
-“...So that's them. You two units there, respond. This is Bright Noa of {HeroMech}.
+“...So that's them. You two units there, respond. This is Bright Noa of the {HeroMech}.
 ---
 >  ブライト・ノアだ。
 >  応答がない場合は撃墜する」
@@ -671,13 +678,13 @@ powered-up Machine Gun Punch.”
 “Indeed.”
 
 @30206 George · ジョルジュ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“A pleasure to work with you, ladies and gentlemen
-# 草稿第 2 页：of 【主角机体名】.”
+# 审校：补译：原稿占位符错页
 > 「よろしくお願いしますよ、
 >  {HeroMech}の
+“A pleasure to be working with you, {HeroMech}
 ---
 >  紳士淑女の方々」
+ladies and gentlemen.”
 
 @30207 Chibodee · チボデー
 > 「どうやら間に合ったようだなぁ。
@@ -700,13 +707,13 @@ powered-up Machine Gun Punch.”
 “You'll fight with us too?”
 
 @30211 George · ジョルジュ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“A pleasure to work with you, ladies and gentlemen
-# 草稿第 2 页：of 【主角机体名】.”
+# 审校：补译：原稿占位符错页
 > 「よろしくお願いしますよ、
 >  {HeroMech}の
+“A pleasure to be working with you, {HeroMech}
 ---
 >  紳士淑女の方々」
+ladies and gentlemen.”
 
 @30212 Bright · ブライト
 > 「ようし、今のうちだ! 発進準備
@@ -764,12 +771,13 @@ Daisuke. I knew you were no ordinary guy.”
 “...I like to think of myself as one Earthling who loves this planet.”
 
 @30221 Koji · 甲児
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「地球人のつもり……って、
 >  いったい何をいっているんだい!?
 “Think of yourself as an Earthling...? What on earth are you saying,
 ---
 >  大介さん!」
-Daisuke!?”
+Daisuke?!”
 
 @30222 Bright · ブライト
 > 「説明はしてもらえるのだろう?」
@@ -793,17 +801,19 @@ My true name is Duke Fleed. I am the prince of Planet Fleed.”
 “Duke Fleed...”
 
 @30225 Daisuke · 大介
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「最初は僕も、戦うつもりはなかった
 >  だからムゲゾルバドス帝国が
 “At first, I had no intention of fighting either. So even when the Muge Zorbados Empire
 ---
 >  地球に侵攻してきた時も、
 >  戦いはしなかったのだ。だが、奴らが
-invaded Earth, I did not fight. But then they came—the Galactic Empire.
+invaded Earth, I did not fight. But then they came. The Galactic Empire.
 ---
 >  銀河帝国が来てしまった。
 >  フリード星を滅ぼした、奴らが!
-The ones who destroyed Planet Fleed—they came!
+The ones who destroyed Planet Fleed. They came!
 ---
 >  奴らはムゲ帝国とちがって支配
 >  などしない。滅ぼすだけだ。僕は
@@ -1492,9 +1502,10 @@ it seems my luck, which was on the wane, has come back.”
 “...”
 
 @30344 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ口吻应更痞气、俚语化，原文「頼むぜ」的轻佻感未体现。
 > 「ま、そういうわけだ。
 >  これからよろしく頼むぜ」
-“Well, that's how it is. I'll be counting on you from now on.”
+“Well, that's how it is. I'll be countin' on ya from now on.”
 
 @30345 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -1540,17 +1551,19 @@ I'll leave his supervision to you.”
 We want skilled pilots too. I'm counting on you.”
 
 @30353 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ的轻佻语气不足，原文「そりゃ、どうも」带痞气，应加“Heh”。
 > 「そりゃ、どうも」
-“Well, thanks.”
+“Heh, thanks.”
 
 @30354 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ口吻应更俚语化，原文「ただ者じゃねぇ」「よくよく見てみりゃ」的痞气未体现。
 > 「あのクワトロ大尉ってのは、
 >  ただ者じゃねぇな
-“That Captain Quattro is no ordinary man.
+“That Captain Quattro ain't no ordinary man.
 ---
 >  だいたいこの部隊ってのは、
 >  よくよく見てみりゃすげぇのばかりだ」
-And this whole unit, when you look closely, is full of incredible people.”
+And this whole unit, when ya look close, is full of incredible people.”
 
 @30355 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -1567,9 +1580,10 @@ And this whole unit, when you look closely, is full of incredible people.”
 “...Don't get so familiar with me! And be quiet for a while.”
 
 @30358 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ口吻应更俚语化，原文「ずーっと一緒だからな」的痞气未体现。
 > 「こわいねぇ。ま、いいさ。
 >  何しろこれからずーっと一緒だからな」
-“Scary. Well, fine. After all, we'll be together for a long, long time from now on.”
+“Scary. Well, fine. After all, we're gonna be together for a long, long time from now on.”
 
 @30359 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -1640,30 +1654,29 @@ but I still haven't reached a conclusion.”
 “Me?! What do you mean?! Something this important...”
 
 @30372 Amuro · アムロ
-# 待译：机翻未采用（另一种语言未通过检查）
-# 草稿第 1 页：“...You have, I suppose you could call it a flash of insight... something that
-# 草稿第 2 页：sways great destinies. I can sense it in you. Remember. Back during
-# 草稿第 3 页：Operation Daybreak, we were forced to make a similar choice.
-# 草稿第 4 页：From then until now, the situation has
-# 草稿第 5 页：certainly changed, but I don't think that decision was wrong.
-# 草稿第 6 页：Even then, what decided it must have been your choice.”
 > 「……君には、ひらめきというか……
 >  大きな運命を
+“...You have, I suppose you could call it a flash of insight... something that
 ---
 >  左右する何かがあるように、俺には
 >  思える。思い出してくれ。いつか
+sways great destinies. I can sense it in you. Remember. Back during
 ---
 >  オペレーション・デイブレイクの時にも、
 >  俺たちは同様の選択を
+Operation Daybreak, we were forced to make a similar choice.
 ---
 >  迫られたことがあった。
 >  その時から現在まで、状況は
+From then until now, the situation has
 ---
 >  確かに変化したが、あの時の
 >  決断は間違っていなかったと思う
+certainly changed, but I don't think that decision was wrong.
 ---
 >  その時も、決め手になったのは
 >  君の決断だったはずだ」
+Even then, what decided it must have been your choice.”
 
 @30373 Ark · アーク（按段落 3DD1）
 > 「だからといって……」
@@ -1718,14 +1731,14 @@ Just make a clean decision.”
 “...We'd better accept Treize's offer.”
 
 @30383 Brad · ブラッド（按段落 3DD3）
-# 审校：「トレーズについて戦う」是“与特列斯战斗/对抗特列斯”，不是并肩作战；改为 against Treize。
+# 审校：原文「トレーズについて戦う」意为与特列斯并肩作战，tr 误译为 against，且与 L9/L10 的立场矛盾。
 > 「……トレーズについて戦うことにするぜ」
-“...I've decided to fight against Treize.”
+“...I've decided to fight with Treize.”
 
 @30384 Manami · マナミ（按段落 3DD4）
-# 审校：同上，together with 会误解为与特列斯并肩作战，改为 against Treize。
+# 审校：原文「トレーズと一緒に戦いましょう」意为与特列斯一起战斗，tr 误译为 against，且与 L9/L10 的立场矛盾。
 > 「……トレーズと一緒に戦いましょう」
-“...Let's fight against Treize.”
+“...Let's fight with Treize.”
 
 @30385 Bright · ブライト
 # 审校：原文是确认大家是否同意，初稿语气像反问且不够自然；改为更贴合的确认问句。

@@ -5,9 +5,10 @@
 “So, what did Treize say?”
 
 @31773 Beltorchika · ベルトーチカ
+# 审校：全局：旧連邦 = former Federation
 > 「オーストラリア大陸の、旧連邦
 >  トリントン基地へ向かい、連絡が
-“He says to head for the Former Federation's Torrington Base on the Australian continent, and wait there
+“He says to head for the former Federation's Torrington Base on the Australian continent, and wait there
 ---
 >  あるまで待機してほしいとのことです」
 until we receive further contact.”
@@ -208,8 +209,9 @@ we might be enemies.”
 “I see... so those children have gone...”
 
 @31808 Lawrence · ローレンス
+# 审校：ローレンス对ブラッド说话，原文无呼语，不应加“my lady”。
 > 「はい、そのようにうかがっております」
-“Yes, that is what I have been told, my lady.”
+“Yes, that is what I have been told.”
 
 @31809 Manami · マナミ（按段落 3DD4）
 > 「今度もどってくる時には……敵かも
@@ -341,9 +343,10 @@ that much leeway to spare.”
 Earth, after all.”
 
 @31833 Quattro · クワトロ
+# 审校：“got through to” 偏口语，与克瓦特罗从容含蓄的军官口吻略有出入，改为更简洁正式的 “reached”。
 > 「艦長、ブレックス准将と連絡が
 >  ついた」
-“Captain, I've got through to Brigadier General Blex.”
+“Captain, I've reached Brigadier General Blex.”
 
 @31834 Bright · ブライト
 > 「わかった、すぐに行く」
@@ -451,24 +454,24 @@ sight of where you should be headed. That's all I can tell you now.”
 “Blunder? What do you mean by blunder, General Gildrome?”
 
 @31848 Gildrome · ギルドローム
-# 审校：补上不定冠词，使句子更自然。
+# 审校：精读：去破折号
 > 「この地球の状況に決まっておろう
 >  1度制圧した星の者どもの
 “The situation on Earth, of course! For the people of a planet we once subdued
 ---
 >  反抗にあうなど、不始末以外
 >  のいいようはあるまい」
-to rise in revolt—there is no other word for it but a blunder.”
+to rise in revolt, there is no other word for it but a blunder.”
 
 @31849 Luna · ルーナ
-# 审校：补上不定冠词，使句子更自然。
+# 审校：精读：去破折号
 > 「それは地球総督グレスコと、
 >  占領軍司令ル・カインの
 “Wouldn't that be the responsibility of Earth Governor Gresco and Occupation
 ---
 >  責任でありましょう? 不始末
 >  などとんでもない。それをいうならば
-Forces Commander Le Cain? A blunder, of all things—absurd. If we're speaking of
+Forces Commander Le Cain? A blunder, of all things? Absurd. If we're speaking of
 ---
 >  ギルドローム将軍、ジャブローでのこと
 >  はどう説明するおつもり?」
@@ -488,9 +491,10 @@ the petty hopes of those foolish Earthlings who believe they can win. The
 operation is already prepared.”
 
 @31851 Gildrome · ギルドローム
+# 审校：精读：去破折号
 > 「おのれシャピロ、貴様このギルドローム
 >  に指図するつもりか!?」
-“Why you, Shapiro—do you mean to give orders to me, Gildrome?!”
+“Why you, Shapiro, do you mean to give orders to me, Gildrome?!”
 
 @31852 Emperor Muge · ムゲ帝王
 > 「やめい、ギルドローム」
@@ -555,8 +559,9 @@ so uncertain, how laughable.”
 “What?! Wait, Luna! Leave Helmut be!”
 
 @31864 Luna · ルーナ
+# 审校：精读：去破折号
 > 「し、しかしシャピロ様」
-“B-But Lord Shapiro—”
+“B-But Lord Shapiro...”
 
 @31865 Shapiro · シャピロ
 > 「黙れルーナ!」
@@ -593,6 +598,7 @@ pay, without fail...)
 “But they call themselves OZ, and they're those Specials, you know?!”
 
 @31872 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 # 检查提示：未用必用译名：解放戦線→Liberation Front
 > 「じゃあ他にどうしようがあったんだ!?
 >  俺たちはムゲの支配に対抗して
@@ -612,7 +618,7 @@ Front and Karaba joined OZ. And even then, still fighting Muge, still
 ---
 >  戦い続けて、俺たちはどこへ
 >  向かうんだ!?」
-fighting OZ—where are we headed?!”
+fighting OZ, where are we headed?!”
 
 @31873 Lera · レラ
 > 「わかんないよ、そんなことッ! だけど、
@@ -620,9 +626,10 @@ fighting OZ—where are we headed?!”
 “I don't know about that kind of thing! But, but I...”
 
 @31874 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「いいたいことは、わかるよ。だけどさ、
 >  スペシャルズだろうがOZだろうが
-“I get what you want to say. But listen—whether it's the Specials or OZ, if
+“I get what you want to say. But listen, whether it's the Specials or OZ, if
 ---
 >  異星人を追いだすことができるん
 >  なら、それはいいことだって思えないか?
@@ -687,13 +694,14 @@ for saying something strange.”
 “That's not what I'm talking about!”
 
 @31885 Selain · セレイン（按段落 3DD2）
+# 审校：精读：ロームフェラ～OZ
 > 「ならば何が問題だ? あの
 >  スペシャルズの仲間になることか?
 “Then what is the problem? Becoming comrades with those Specials?
 ---
 >  いや、違うな……ロームフェラ～OZと
 >  いう組織に飲みこまれることか」
-No, that's not it... It's being swallowed up by the organization called Romefeller—OZ.”
+No, that's not it... It's being swallowed up by the organization called Romefeller and OZ.”
 
 @31886 Lera · レラ
 > 「な……なんでアタシが、そんなこと気に
@@ -730,17 +738,18 @@ countless reasons of our own to fight.”
 “...”
 
 @31889 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号、引号
 > 「が、今度は違う。OZは大きな
 >  組織だ。その中での戦いは
 “But this time it's different. OZ is a vast organization. Fighting within it
 ---
 >  自分の戦いではありえない。だから、
 >  怖くなる。戦うこと、ただそれだけが
-cannot be your own battle. That's why you're afraid. Because fighting—just
+cannot be your own battle. That's why you're afraid. Because fighting, just
 ---
 >  自らが選びとることのできた唯一の
 >  道であるがゆえに。それだけが
-that alone—is the only path you were able to choose for yourself. Because
+that alone, is the only path you were able to choose for yourself. Because
 ---
 >  自分自身の存在意義
 >  そのものであるがゆえに。お前は
@@ -748,7 +757,7 @@ that alone is your very reason for existing. Unconsciously, you feared
 ---
 >  無意識のうちに恐れたんだ。
 >  その“戦う意味”の喪失を」
-losing that 'meaning in fighting.'”
+losing that ‘meaning in fighting.’”
 
 @31890 Lera · レラ
 > 「戦う……意味……」
@@ -759,13 +768,14 @@ losing that 'meaning in fighting.'”
 “...Yeah.”
 
 @31892 Lera · レラ
+# 审校：精读：去破折号
 > 「そう……かもしれない。今の今まで
 >  そんなこと考えなかったけど……
 “Maybe... you're right. I never thought about it until just now, but...
 ---
 >  聞いてるうちに、ああそうだ、
 >  アタシはそう思ってたんだって
-as I listened, I realized—yes, that's exactly how I felt.
+as I listened, I realized, yeah, that's exactly how I felt.
 ---
 >  そんな気がしてきた……」
 That's the feeling I'm getting...”
@@ -775,9 +785,10 @@ That's the feeling I'm getting...”
 “...I see.”
 
 @31894 Lera · レラ
+# 审校：“変だよ”在此处是 Lera 对对方反常行为的直接评价，用“weird”比“strange”更符合其男孩子气、不客气的口吻。
 > 「でも……なんでそんなことがわかるの?
 >  それに、アンタも変だよ。いつになく
-“But... how can you tell something like that? And you're acting strange too. You're
+“But... how can you tell something like that? And you're acting weird too. You're
 ---
 >  よくしゃべってるしさ。アンタが
 >  そんな話し方するの、初めて見た」
@@ -803,8 +814,9 @@ people I used to know well, long ago.”
 “...Dead. No... I suppose I should say they're gone. Three years ago.”
 
 @31898 Lera · レラ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ッ!? ごめん……変なこと聞いた」
-“!? Sorry... I asked something I shouldn't have.”
+“?! Sorry... I shouldn't have asked that.”
 
 @31899 Selain · セレイン（按段落 3DD2）
 > 「いいさ。気にするな」
@@ -892,10 +904,10 @@ because we joined OZ, though...”
 “That's harsh.”
 
 @31917 Selain · セレイン（按段落 3DD2）
-# 审校：“地球人は、帝国を排除しつつある”是补充说明OZ的构成或行动主体，初稿把OZ和地球人并列成两个主语，语义变成两者都在排除帝国；改为同位补充，更贴合原文结构。
+# 审校：精读：去破折号
 > 「無駄に死ぬことはないといいたかった
 >  だけです。状況は変わって、OZは
-“I only meant that there's no need to die for nothing. The situation has changed—OZ,
+“I only meant that there's no need to die for nothing. The situation has changed. OZ,
 ---
 >  地球人は、帝国を排除しつつ
 >  ある。もう力のない者が無理をする
@@ -909,13 +921,14 @@ those without power to push themselves too hard.”
 “That may be true, but...”
 
 @31919 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「この方が良かったのだろうと思います
 >  よ、あの娘にとっては。戦場にしか
-“I think this was better for that girl. Finding meaning in life only on the battlefield—
+“I think this was better for that girl. Finding meaning in life only on the battlefield.
 ---
 >  生を見いだせないのは、不幸
 >  でしょう」
-that's a misfortune, isn't it.”
+That's a misfortune, isn't it.”
 
 @31920 Amuro · アムロ
 > 「{HeroNick}……」
@@ -974,9 +987,10 @@ Someone like Bask would never let us run around freely.”
 “Did something happen?”
 
 @31930 Roux · ルー
+# 审校：精读：去破折号
 > 「いま食堂のモニターで見たんですけど
 >  OZはすでに宇宙にも部隊を
-“I just saw it on the monitor in the mess hall—OZ has already deployed troops into
+“I just saw it on the monitor in the mess hall. OZ has already deployed troops into
 ---
 >  展開してるんだそうです。コロニー
 >  駐留の帝国軍とも、交戦を
@@ -1034,9 +1048,10 @@ and several colonies have sided with OZ.”
 I'd rather not waste any more time.”
 
 @31940 Treize · トレーズ
+# 审校：精读：去破折号
 > 「わかっているよ、大尉。私とて、
 >  わざわざ自ら招いた君たちを
-“I understand, Captain. I have no intention of letting you—whom I went out of my way to invite—sit idle, either.
+“I understand, Captain. I have no intention of letting you sit idle, not after I went out of my way to invite you.
 ---
 >  遊ばせておく気はない。この期間に
 >  それなりの心の整理はつけてもらえた
@@ -1108,9 +1123,10 @@ If it did, there'd have been no point in bringing you in at all.”
 “Well, well. Seems we're held in pretty high regard.”
 
 @31950 Treize · トレーズ
+# 审校：全局：旧連邦 = former Federation
 > 「いちおう説明しておこう。
 >  旧連邦の階級を持つ者は
-“Let me explain for now. Those who hold Former Federation ranks
+“Let me explain for now. Those who hold former Federation ranks
 ---
 >  その1階級上のOZの階級が
 >  適用される。ブライト中佐ならば
@@ -1122,7 +1138,7 @@ you'll be treated as a Colonel, and your OZ rank will be Special Colonel, Second
 ---
 >  それ以外の者は、他の志願兵
 >  と同様、特士となる。辞令は
-Everyone else will be Special Enlisted, the same as any other volunteer. Your commissions
+Everyone else will be Special Officers, the same as any other volunteer. Your commissions
 ---
 >  のちほど届くだろう」
 should arrive later.”
@@ -1137,9 +1153,10 @@ should arrive later.”
 Not to join some army!!”
 
 @31952 Rain · レイン
+# 审校：原文「ちょっ」的结巴感未体现，补上 H-Hey。
 > 「ちょっ、ドモン、そんなに大きな声で
 >  どならないでよ」
-“Hey, Domon, don't yell so loud.”
+“H-Hey, Domon, don't yell so loud.”
 
 @31953 Domon · ドモン
 > 「お前は黙っていろ、レイン!」
@@ -1184,12 +1201,14 @@ possible.”
 “What did you say?!”
 
 @31960 Rain · レイン
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、トレーズさんは、必要なら
 >  デビルガンダムを追ってもいいって
-“Domon, Treize says it's all right to go after the Dark Gundam if we need to—
+“Domon, Treize says it's all right to go after the Dark Gundam if we need to.
 ---
 >  おっしゃってるのよ」
-that's what he's telling us.”
+That's what he's telling us.”
 
 @31961 Domon · ドモン
 > 「……ふん、ならばいいだろう」
@@ -1270,18 +1289,20 @@ if you don't mind.”
 “What is it?”
 
 @31974 Koji · 甲児
+# 审校：精读：引号、去破折号
 > 「“兜甲児と仲間たち”っての
 >  イカスだろ」
-“'Koji Kabuto and Friends'—pretty cool, huh?”
+“‘Koji Kabuto and Friends.’ Pretty cool, huh?”
 
 @31975 Sayaka · さやか
 > 「……優美さのかけらもない名前ね」
 “...Not a shred of elegance in that name.”
 
 @31976 Jun · ジュン
+# 审校：精读：引号
 > 「いまどき“イカス”はないでしょ、
 >  甲児」
-“Nobody says 'cool' these days, Koji.”
+“Nobody says ‘cool’ these days, Koji.”
 
 @31977 Koji · 甲児
 > 「な……」
@@ -1333,13 +1354,13 @@ I guess that's no good either, huh?”
 “That sounds nice. What does it mean?”
 
 @31988 David · デビッド
-# 审校：原文“太陽のキ……”是“太陽の牙”被打断，初稿译成“the sun's key”误解了“牙（fang）”，改为“the sun's ki...”保留被打断感。
+# 审校：精读：太陽のキ（牙）
 > 「こいつはな、ある革命運動の、
 >  有名なゲリラ部隊の名前を
 “See, I borrowed this from the name of a famous guerrilla unit in some revolutionary
 ---
 >  借りてきたもので、太陽のキ……」
-movement, and the sun's ki...”
+movement, and the sun's fa...”
 
 @31989 Masato · 雅人
 > 「ストップッ! ちょっと、いくらなんでも
@@ -1382,10 +1403,10 @@ set that aside for now.”
 “Hmm... Amuro, do you have any good names?”
 
 @31997 Amuro · アムロ
-# 审校：原文用“マーチウィンド”带引号，初稿用单引号不符合规则2中『』才用单引号；改为双引号。
+# 审校：精读：引号嵌套
 > 「そうだな……
 >  “マーチウィンド”というのはどうかな」
-“Let me think... How about “March Wind”?”
+“Let me think... How about ‘March Wind’?”
 
 @31998 Beltorchika · ベルトーチカ
 > 「マーチウィンド……三月の風?」
@@ -1526,9 +1547,10 @@ If that's what you want, I won't stop you.”
 complaining to me later.”
 
 @32024 Kayra · ケーラ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ケーラ・スゥ1級特尉、
 >  着任いたしました」
-“Kayra Su, Special Ensign First Class, reporting for duty.”
+“Kayra Su, Special Lieutenant First Class, reporting for duty.”
 
 @32025 Bright · ブライト
 > 「ご苦労。聞いていると思うが、
@@ -1570,9 +1592,10 @@ after joining OZ.”
 “I'm not so sure. Within OZ, we're hardly in a good position.”
 
 @32033 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ま、いいさ。よろしく頼む、ケーラ
 >  特尉。誰かに部屋まで
-“Well, it's fine. I'll be counting on you, Ensign Kayra. Have someone
+“Well, it's fine. I'll be counting on you, Special Lieutenant Kayra. Have someone
 ---
 >  案内させてくれ、アムロ。それと、
 >  出港の準備だ」
@@ -1738,73 +1761,83 @@ Do that, and the path opens up.”
 “Mycenae and Hyakki, is it? Good timing. Help me destroy them!”
 
 @32062 Dr. Gura · グラー博士
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“We came here intending exactly that. But please do not forget our little agreement.”
+# 审校：补译：原稿页数错误
 > 「もとより我らもそのつもりでまいった
 >  次第。しかし、例の約束は
+“That was our intention from the start. But the agreement we made,
 ---
 >  お忘れなく願いますぞ」
+do not forget it, if you please.”
 
 @32063 Helmut · ヘルマット
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“I know! Once we've crushed them, you can have the Getter Rays and the Photon Power, all of it!”
+# 审校：补译：原稿页数错误
 > 「わかっておる! 奴らさえ倒せれば、
 >  ゲッター線でも光子力でも
+“I know! Once they are destroyed, Getter Rays, Photon Power, whatever you like,
 ---
 >  貴様らにくれてやるわ!」
+it is all yours!”
 
 @32064 Dark General · 暗黒大将軍
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“That's a relief to hear. Those humans will pay back what they owe us from Jaburo!”
+# 审校：补译：原稿页数错误
 > 「それを聞いて安心したわ。
 >  人間どもめ、ジャブローでの借りを
+“That is a relief to hear. Wretched humans, we shall repay
 ---
 >  返してくれる!」
+our debt from Jaburo!”
 
 @32065 Dark General · 暗黒大将軍
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Hmph. If the Muge Zolbados Empire lets humans push it around like this, it's finished.”
+# 审校：补译：原稿页数错误
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「ふん、ムゲゾルバドス帝国も
 >  人間どもに、こうも好きにされては
+“Hmph. If the Muge Zorbados Empire lets humans push it around like this,
 ---
 >  もはや終わりだな」
+it is finished.”
 
 @32066 Dr. Gura · グラー博士
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“And that is exactly why we can rule the Earth. But to do that, we must destroy them.”
+# 审校：补译：原稿页数错误
 > 「それでこそ我らが地球を支配
 >  できるというもの。だがそれにはきゃつらを
+“And that is precisely why we can rule the Earth. But for that,
 ---
 >  倒さねばならん」
+we must destroy them.”
 
 @32067 Dark General · 暗黒大将軍
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“I know that. Here we repay our debt from Jaburo and make our victory certain!”
+# 审校：补译：原稿页数错误
 > 「わかっておるわ。ここでジャブローの
 >  借りを返し、我らの勝利を
+“I know. Here we repay our debt from Jaburo and make our victory
 ---
 >  確実なものとしてくれる!」
+certain!”
 
 @32068 Musy · ミュージィ
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Tch, I won't let the likes of them steal the credit! I'll handle them myself!”
+# 审校：补译：原稿页数错误
 > 「クッ、あのような者どもに手柄を
 >  横取りされるものか!
+“Tch, as if I'd let the likes of them steal the credit!
 ---
 >  奴らは私がやる!」
+They're mine!”
 
 @32069 Kurtz · カーツ（按段落 3DD3）
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“So it's them after all. Hmph. This is exactly why it was worth tagging along with these monsters.”
+# 审校：补译：原稿页数错误
 > 「やはり、奴らか。フン、これでこそ
 >  化け物どもに同行した意味が
+“So it's them after all. Hmph. This alone makes tagging along with those monsters
 ---
 >  あるというもの」
+worth the trouble.”
 
 @32070 Brad · ブラッド（按段落 3DD3）
+# 审校：精读：去破折号
 > 「{PartnerName}!? ばかな、なぜお前が
 >  そんな連中と一緒に!?」
-“{PartnerName}?! No way—why are you with scum like them?!”
+“{PartnerName}?! No way, why are you with scum like them?!”
 
 @32071 Kurtz · カーツ（按段落 3DD3）
 > 「知れたこと。貴様と戦うためよ!」
@@ -1816,18 +1849,21 @@ Do that, and the path opens up.”
 “Tch... stop this, {PartnerName}! What's the point of doing this?!”
 
 @32073 Kurtz · カーツ（按段落 3DD3）
+# 审校：Kurtz 的傲慢冷硬口吻应更正式，将 "don't care about anything else" 改为 "care for nothing else"。
 > 「俺は貴様を倒せればそれで
 >  かまわん!! いくぞ{HeroName}!!」
-“As long as I can defeat you, I don't care about anything else!! Here I come, {HeroName}!!”
+“As long as I can defeat you, I care for nothing else!! Here I come, {HeroName}!!”
 
 @32074 Kurtz · カーツ（按段落 3DD3）
+# 审校：Kurtz 的正式冷硬口吻，将 "there's no point in this" 改为更简洁的 "this is pointless"。
 > 「{HeroName}が出ていないという
 >  のか!? これでは話にならん!」
-“{HeroName} isn't out here?! Then there's no point in this!”
+“{HeroName} isn't out here?! Then this is pointless!”
 
 @32075 Dr. Gura · グラー博士
+# 审校：古拉博士对 Kurtz 的质问应更带斥责感，将 "You, where are you going" 改为 "You there, where are you going"。
 > 「む、貴様どこへいく!?」
-“Hm? You, where are you going?!”
+“Hm? You there, where are you going?!”
 
 @32076 Kurtz · カーツ（按段落 3DD3）
 > 「悪いが、奴が出ていないならば、こん
@@ -1851,12 +1887,13 @@ The rest of you can do as you please.”
 “That's...”
 
 @32080 Lila · ライラ
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Well, I'll be—it's those guys. I'd heard they joined OZ, but I never thought we'd run into them right away.”
+# 审校：补译：原稿页数错误
 > 「驚いたね、あの連中じゃないか。
 >  OZに入ったとは聞いていたけど
+“Well, I'll be. It's that lot. I'd heard they joined OZ,
 ---
 >  まさかいきなり出会うとはね」
+but I never expected to run into them straight away.”
 
 @32081 Jerid · ジェリド
 > 「なんだと!? 奴らがOZ!?
@@ -1869,12 +1906,13 @@ The rest of you can do as you please.”
 “Don't, Jerid. As long as they're with OZ, we can't afford to fight them...”
 
 @32083 Jerid · ジェリド
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“I know! Inside an organization, sometimes you have to swallow even this kind of humiliation.”
+# 审校：补译：原稿页数错误
 > 「わかってる! 組織の中にあっては、
 >  ときにはこんな屈辱も
+“I know! Inside an organization, sometimes even this kind of humiliation
 ---
 >  我慢しなくちゃならないことだってある」
+has to be swallowed.”
 
 @32084 Kacricon · カクリコン
 > 「そういうことだ。今はまず帝国軍を
@@ -1882,25 +1920,27 @@ The rest of you can do as you please.”
 “That's right. For now, we have to hit the Imperial forces first.”
 
 @32085 Lila · ライラ
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Can you hear me, 【主角机体名】? We may have our differences, but for now, as fellow OZ, I'd like us to face the Imperial forces together.”
+# 审校：补译：原稿页数错误
 > 「聞こえるか{HeroMech}。
 >  互いにわだかまりはあるだろうが、今は
+“Can you hear me, {HeroMech}? We may have our grudges, but for now,
 ---
 >  同じOZとして、ともに帝国軍に
 >  あたりたい」
+as fellow members of OZ, I want us to face the Imperial forces together.”
 
 @32086 Bright · ブライト
 > 「了解した。よろしく頼む」
 “Understood. I'm counting on you.”
 
 @32087 Rish · リッシュ（按段落 3DD2）
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Hey there, 【主角名字】. I'm glad I get to do this with you. This must be fate. Don't you think so?”
+# 审校：补译：原稿页数错误
 > 「よう、{HeroName}。お前と一緒に
 >  やれるとは、うれしいぜ。こいつは
+“Hey, {HeroName}. Glad I get to do this with you. This here
 ---
 >  運命ってやつだ。そうは思わないか」
+is what they call fate. Don't you think so?”
 
 @32088
 > *  ざれ言につきあっているヒマはない
@@ -1997,9 +2037,10 @@ do something so disgraceful?”
 “{PartnerName}...”
 
 @32104 Aisha · アイシャ（按段落 3DD4）
+# 审校：精读：トレーズ様
 > 「トレーズ様にも困ったものですわ。この
 >  ような者たちをOZに引きいれなくとも
-“Lord Treize is a handful too. Even without taking people like these into OZ,
+“His Excellency Treize is a handful too. Even without taking people like these into OZ,
 ---
 >  わたくしたちが十分に働いてみせます
 >  ものを」
@@ -2015,9 +2056,10 @@ we would have served him well enough.”
 “Yes, you're right. Then, shall we go?”
 
 @32107 Kurtz · カーツ（按段落 3DD3）
+# 审校：精读：拖长音
 > 「ぐぅっ!?
 >  ばかなばかなばかなぁぁぁぁーっ!!」
-“Gah?! Impossible, impossible, impossible!!”
+“Gah?! Impossible, impossible, impossibleeeee!!”
 
 @32108 Brad · ブラッド（按段落 3DD3）
 > 「{PartnerName}……お前はいつまで……」
@@ -2029,8 +2071,9 @@ we would have served him well enough.”
 “{HeroName}! Just how far do you intend to make a fool of me?!”
 
 @32110 Shinobu · 忍
+# 审校：精读：语法
 > 「いっくぜぇ、覚悟しやがれ!」
-“Let's go, you better brace yourself!”
+“Here we go, brace yourself!”
 
 @32111 Helmut · ヘルマット
 > 「破滅に導いてやるぞ、ダンクーガ!」
@@ -2085,9 +2128,9 @@ with my own hands.”
 “Well then, let's meet again. {HeroName}, I love you.”
 
 @32122 主角
-# 审校：「なんて奴だ」在此处是贬义感叹，初稿“What a guy”偏褒义，改为“What a bastard”更贴合语气。
+# 审校：精读：セレイン 口吻
 > 「なんて奴だ、まったく」
-“What a bastard, honestly.”
+“What a piece of work, honestly.”
 
 @32123 主角
 > 「待って{PartnerNick}、あたし……」
@@ -2133,10 +2176,11 @@ is OZ.”
 “That much is true. But I don't see why you came to me instead of Treize.”
 
 @32130 Scirocco · シロッコ
-# 审校：补上「多少は」的“to some extent”，并在第二页补出“to”使“pledge loyalty to”结构完整。
+# 审校：精读：称呼
+# 检查提示：未用必用译名：ジャミトフ→Jamitov
 > 「私も多少は状況を確認させて
 >  いただきました。OZ総帥の
-“I took it upon myself to confirm the situation to some extent. I judged that it is to Your Excellency Jamitov
+“I took it upon myself to confirm the situation to some extent. I judged that it is to you, Your Excellency,
 ---
 >  トレーズ・クシュリナーダよりも、ローム
 >  フェラ財団のジャミトフ閣下にこそ
@@ -2153,12 +2197,13 @@ that I should pledge my loyalty.”
 “Too transparent. Those aren't words for a man who has turned his back on the world.”
 
 @32132 Scirocco · シロッコ
+# 审校：精读：去破折号
 > 「しかし私の力を有用と思われた
 >  からこそ、お会いしていただけたものと
-“But I take it that you agreed to meet me precisely because you found my abilities useful—
+“But I take it that you agreed to meet me precisely because you found my abilities useful.
 ---
 >  理解しております」
-that is how I understand it.”
+That is how I understand it.”
 
 @32133 Jamitov · ジャミトフ
 > 「ふむ……それで?」
@@ -2200,22 +2245,24 @@ Please accept this written oath.”
 “Paptimus Scirocco, back from Jupiter... he may prove dangerous.”
 
 @32140 Dermail · デルマイユ
+# 审校：精读：去破折号
 > 「だが血判の誓約書があるでは
 >  ないか。伝統と格式を重んじた
-“But there is a blood-sealed oath, is there not? An act that honors tradition and formality—
+“But there is a blood-sealed oath, is there not? An act that honors tradition and formality.
 ---
 >  行ない、あれは偽りではあるまい。
 >  あの男はいずれ役にたつぞ」
-that cannot be a lie. That man will prove useful in time.”
+That cannot be a lie. That man will prove useful in time.”
 
 @32141 Jamitov · ジャミトフ
 > 「ふむ……」
 “Hmm...”
 
 @32142 Dermail · デルマイユ
+# 审校：精读：去破折号
 > 「おお、そういえばバスク特佐の
 >  報告では、コロニー駐留の
-“Oh, that reminds me—according to Colonel Bask's report, the situation against the Imperial forces
+“Oh, that reminds me, according to Special Colonel Bask's report, the situation against the Imperial forces
 ---
 >  帝国軍部隊との戦況は
 >  優勢とのことだ。これで地上さえ
@@ -2230,10 +2277,10 @@ our reach will extend even to the moon.”
 “And how goes the absorption of the liberated colonies?”
 
 @32144 Dermail · デルマイユ
-# 审校：「そちらも」指“那方面/那边”，初稿“that well too”丢失了“そちら”的指代，补上“that side”。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「うむ、そちらもレディ・アン特佐が
 >  うまくやってくれておる」
-“Yes, Colonel Lady Une is handling that side well too.”
+“Yes, Special Colonel Lady Une is handling that side well too.”
 
 @32145 Jamitov · ジャミトフ
 # 审校：「掃討するまでは」用完成时更自然，改为“have been swept away”。
@@ -2267,9 +2314,10 @@ thinking about the postwar era.”
 “Legacy? What is it?”
 
 @32150 Henken · ヘンケン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「巡洋艦アーガマだ。安心しろ、
 >  トレーズ特佐の許可はとってある
-“The cruiser Argama. Rest easy, I've gotten Colonel Treize's permission.
+“The cruiser Argama. Rest easy, I've gotten Special Colonel Treize's permission.
 ---
 >  ま、OZの基地へ持ってくるという
 >  のは、妙な気分だがな」
@@ -2292,9 +2340,10 @@ Well, bringing it to an OZ base does feel strange, though.”
 flight booster from Dr. Hazuki.”
 
 @32154 Shinobu · 忍
+# 审校：精读：去破折号
 > 「ホントかよ!? ありがてぇ、あいつが
 >  天駆ける姿を早く見てぇもんだぜ」
-“For real?! Man, I'm grateful—I can't wait to see that thing soaring through the sky!”
+“For real?! Man, I'm grateful. I can't wait to see that thing soaring through the sky!”
 
 @32155 Masato · 雅人
 > 「これでようやく、ダンクーガも
@@ -2376,8 +2425,9 @@ We're going to get busy.”
 “Right. After a shower, I think I'll go help with the maintenance.”
 
 @32170 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「エマ特尉」
-“Lieutenant Emma.”
+“Special Lieutenant Emma.”
 
 @32171 Emma · エマ
 > 「……はい、なんでしょう?」
@@ -2392,13 +2442,14 @@ We're going to get busy.”
 tough for you in all sorts of ways...”
 
 @32173 Emma · エマ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「原隊復帰ではありませんし、
 >  私の中では一貫した行動です
 “I'm not returning to my old unit, and in my own mind my actions have been consistent.
 ---
 >  トレーズ特佐もそのあたりの事情は
 >  考慮してくださっていますし
-Colonel Treize has taken those circumstances into consideration as well,
+Special Colonel Treize has taken those circumstances into consideration as well,
 ---
 >  問題はありません」
 so there's no problem.”
@@ -2412,8 +2463,9 @@ so there's no problem.”
 “Um... was there something else?”
 
 @32176 Henken · ヘンケン
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ああ、その、なんだ……特尉」
-“Ah, that, well... Lieutenant.”
+“Ah, that, well... Special Lieutenant.”
 
 @32177 Emma · エマ
 > 「はい?」
@@ -2452,9 +2504,10 @@ so there's no problem.”
 attack this California Base.”
 
 @32185 Shapiro · シャピロ
+# 审校：精读：去破折号
 > 「フッ、いまの奴らならば当然そうくる
 >  だろう。ククククッ、俺には見えるぞ
-“Heh, with things as they are now, of course they'd come. Kukukuku, I can see it—
+“Heh, with things as they are now, of course they'd come. Kukukuku, I can see it.
 ---
 >  俺の足もとにひざまづく奴らの姿が」
 I can see them kneeling at my feet.”

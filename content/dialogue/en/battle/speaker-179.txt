@@ -1,105 +1,376 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12280 Elle · エレ
+# 触发：攻击（通用，1/2）
 > 「悪意に満ちたオーラ力よ、さがれ!」
 “O Aura Power full of malice, begone!”
 
 @12281 Elle · エレ
+# 触发：攻击（通用，2/2）
+# 审校：三处同句统一
 > 「これ以上やらせてはなりません!」
-“I cannot let you do any more!”
+“I won’t let you go any further!”
 
 @12282 Elle · エレ
+# 触发：被击坠（通用，1/1）
 > 「そんな……ゴラオンが……」
 “No... the Goraon...”
 
 @12283 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「きゃあああっ!!」
 “Aaaah!”
 
 @12284 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、大丈夫です。まだもちます」
-“I-I'm fine. We can still hold.”
+“I-I’m fine. We can still hold.”
 
 @12285 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あああっ!? ま、まだ落ちては
 >  なりません!」
-“Aaaah!? W-we mustn't fall yet!”
+“Aaaah?! W-we mustn’t fall yet!”
 
 @12286 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あうっ! どこをやられたのです!?」
-“Agh! Where were we hit!?”
+“Agh! Where were we hit?!”
 
 @12287 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「くうっ! このままでは、いくらゴラオンと
 >  いえど……」
 “Ngh! At this rate, even the Goraon...”
 
 @12288 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! 破損箇所は!?」
-“Ugh! Where's the damage!?”
+“Ugh! Where’s the damage?!”
 
 @12289 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「あうっ! 対空防御!」
 “Agh! Anti-air defense!”
 
 @12290 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：同 12281
 > 「くっ! これ以上やらせては
 >  なりません!」
-“Ngh! I cannot let you do any more!”
+“Ngh! I won’t let you go any further!”
 
 @12291 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：AA guns 生硬，与 16934 统一
+# 检查提示：未用必用译名：対空砲→AA Gun
 > 「うっ! 対空砲火、どうしたか!?」
-“Ugh! What of the AA guns!?”
+“Ugh! What happened to the anti-air fire?!”
 
 @12292 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 > 「大した被害はありませんね」
 “No significant damage.”
 
 @12293 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「まだです! まだいけます!」
 “Not yet! We can still go!”
 
 @12294 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、被害情況は!?」
-“Ngh, what's the damage report!?”
+“Ngh, what’s the damage report?!”
 
 @12295 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度で落ちるゴラオンでは
 >  ありません」
-“The Goraon won't fall from this much.”
+“The Goraon won’t fall from this much.”
 
 @12296 Elle · エレ
+# 触发：回避（通用，1/4）
 > 「回避運動急げ!」
 “Evasive maneuvers, hurry!”
 
 @12297 Elle · エレ
+# 触发：回避（通用，2/4）
 > 「右です! 急いで!!」
 “To the right! Quickly!”
 
 @12298 Elle · エレ
+# 触发：回避（通用，3/4）
 > 「来ます! 回避を!」
 “Here it comes! Evade!”
 
 @12299 Elle · エレ
+# 触发：回避（通用，4/4）
+# 审校：与 16942 统一
 > 「ゴラオン、急速回頭!」
-“Goraon, hard turn!”
+“Goraon, hard about!”
 
 @12300 Elle · エレ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「大丈夫です。我々のよき
 >  オーラ力を信じるのです」
-“It's all right. Believe in our good Aura Power.”
+“It’s all right. Believe in our good Aura Power.”
 
 @12301 Elle · エレ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゴラオンのオーラバリアならば、
 >  この程度の攻撃は!」
-“With the Goraon's Aura Barrier, an attack like this!”
+“With the Goraon’s Aura Barrier, an attack like this is nothing!”
 
 @12302 Elle · エレ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れ? 弾薬が底を
 >  ついたのですか?」
 “Out of ammo? Have we run out of ammunition?”
 
 @12303 Elle · エレ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こちらの射程外から攻撃を
 >  仕掛けてきたようですね……」
-“It seems they're attacking from outside our range...”
+“It seems they’re attacking from outside our range...”
+
+@16910 Elle · エレ
+# 触发：使用〈フレイボム〉
+# 审校：与 12280 统一（奥拉力／Aura Power）
+> 「悪意に満ちたオーラ力よ、さがれ!」
+“O Aura Power full of malice, begone!”
+
+@16911 Elle · エレ
+# 触发：使用〈フレイボム〉
+# 审校：三处同句统一
+> 「これ以上やらせてはなりません!」
+“I won’t let you go any further!”
+
+@16912 Elle · エレ
+# 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
+> 「前方の敵に攻撃を集中せよ!」
+“Focus your attack on the enemy ahead!”
+
+@16913 Elle · エレ
+# 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
+> 「各砲座、撃て!」
+“All gun turrets, fire!”
+
+@16914 Elle · エレ
+# 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
+> 「全砲門、一斉射撃!」
+“All guns, full volley!”
+
+@16915 Elle · エレ
+# 触发：使用〈ハイパーオーラキャノン〉
+> 「落ちなさいっ!」
+“Fall!”
+
+@16916 Elle · エレ
+# 触发：使用〈ハイパーオーラキャノン〉
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16917 Elle · エレ
+# 触发：使用〈ハイパーオーラキャノン〉
+> 「撃てっ!」
+“Fire!”
+
+@16918 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 1/2 句）
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16919 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 2/2 句）
+> 「いっけぇぇーっ!」
+“Gooo!”
+
+@16920 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 1/2 句）
+> 「エレさま、来る!」
+“Lady Elle, incoming!”
+
+@16921 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 2/2 句）
+> 「主砲、発射!」
+“Main cannon, fire!”
+
+@16922 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈オーラバルカン〉（对话第 1/2 句）
+> 「各砲座、撃て!」
+“All gun turrets, fire!”
+
+@16923 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈オーラバルカン〉（对话第 2/2 句）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「やっちゃえーっ!」
+“Let ’em have it!”
+
+@16924 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈フレイボム〉（对话第 1/2 句）
+> 「落ちなさいっ!」
+“Fall!”
+
+@16925 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈フレイボム〉（对话第 2/2 句）
+> 「落ちちゃえーっ!」
+“Just fall already!”
+
+@16926 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈フレイボム〉（对话第 1/2 句）
+# 审校：三处同句统一
+> 「これ以上やらせてはなりません!」
+“I won’t let you go any further!”
+
+@16927 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈フレイボム〉（对话第 2/2 句）
+# 审校：接艾蕾上一句
+> 「やらせちゃだめっ!」
+“Don’t let ’em!”
+
+@16928 Chum · チャム
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 1/2 句）
+> 「エレさま、来る!」
+“Lady Elle, here it comes!”
+
+@16929 Elle · エレ
+# 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 2/2 句）
+# 审校：“Focus your attack”单数不自然，且原文“攻撃を集中”指集中攻击，改为复数更符合战斗指令。
+> 「前方の敵に攻撃を集中せよ!」
+“Concentrate your attacks on the enemy ahead!”
+
+@16930 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%），副驾驶〈チャム〉（对话第 1/2 句）
+> 「きゃあぁぁーっ!!」
+“Kyaaaaah!!”
+
+@16931 Chum · チャム
+# 触发：重伤（剩余 HP 不足 30%），副驾驶〈チャム〉（对话第 2/2 句）
+> 「エレさまっ!?」
+“Lady Elle?!”
+
+@16932 Chum · チャム
+# 触发：重伤（剩余 HP 不足 30%），副驾驶〈チャム〉（对话第 1/2 句）
+> 「きゃあぁぁーっ!」
+“Kyaaaaah!”
+
+@16933 Elle · エレ
+# 触发：重伤（剩余 HP 不足 30%），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「だ、大丈夫です、まだもちます!」
+“I-I’m all right. We can still hold on!”
+
+@16934 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：与 12291 统一
+# 检查提示：未用必用译名：対空砲→AA Gun
+> 「うっ!? 対空砲火、どうしたか!」
+“Ngh?! What happened to the anti-air fire?!”
+
+@16935 Chum · チャム
+# 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 2/2 句）
+> 「はやくぅーっ!」
+“Hurry uuup!”
+
+@16936 Chum · チャム
+# 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 1/2 句）
+> 「エレさまぁぁーっ!!」
+“Lady Elleeee!!”
+
+@16937 Elle · エレ
+# 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：チャム→Chum
+> 「大丈夫です。チャム、
+>  落ち着きなさい!」
+“It’s all right. Chum, calm down!”
+
+@16938 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上），副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「たいした被害ではありませんね」
+“The damage isn’t serious.”
+
+@16939 Chum · チャム
+# 触发：轻伤（剩余 HP 90% 以上），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ぜーんぜん大丈夫よ!」
+“We’re totally fine!”
+
+@16940 Elle · エレ
+# 触发：轻伤（剩余 HP 90% 以上），副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：与查姆下一句连读
+> 「このゴラオンはこの程度の
+>  攻撃では!」
+“The Goraon, from an attack like this...”
+
+@16941 Chum · チャム
+# 触发：轻伤（剩余 HP 90% 以上），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：接艾蕾上一句
+> 「落ちないんだから!」
+“...isn’t going down!”
+
+@16942 Elle · エレ
+# 触发：回避，副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：hard to port 多译；与 12299 统一
+> 「ゴラオン、急速回頭!」
+“Goraon, hard about!”
+
+@16943 Chum · チャム
+# 触发：回避，副驾驶〈チャム〉（对话第 2/2 句）
+> 「やったぁーっ!」
+“We did it!”
+
+@16944 Elle · エレ
+# 触发：回避，副驾驶〈チャム〉（对话第 1/2 句）
+> 「右です! 急いで!!」
+“To the right! Hurry!!”
+
+@16945 Chum · チャム
+# 触发：回避，副驾驶〈チャム〉（对话第 2/2 句）
+> 「はやくぅーっ!」
+“Hurry uuup!”
+
+@16946 Elle · エレ
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ゴラオンのオーラバリアなら
+>  この程度は!」
+“With Goraon’s Aura Barrier, this much is nothing!”
+
+@16947 Chum · チャム
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 2/2 句）
+> 「すごーい!」
+“Amazing!”
+
+@16948 Chum · チャム
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 1/2 句）
+> 「エレさまぁっ!」
+“Lady Elle!”
+
+@16949 Elle · エレ
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：“strong Aura Power”把“よき”译成“strong”不够准确，原文是“我们良好的奥拉力”，改为“good”更贴切。
+> 「我々のよきオーラ力を信じましょう」
+“Let us trust in our good Aura Power.”
+
+@16950 Elle · エレ
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 1/2 句）
+# 审校：“At this level, there's no problem”略显翻译腔，改为更口语化的“This much is no problem.”
+> 「この程度なら問題ありません」
+“This much is no problem.”
+
+@16951 Chum · チャム
+# 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 2/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「大丈夫なんだからっ!」
+“We’re just fine!”

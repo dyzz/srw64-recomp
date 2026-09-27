@@ -1,120 +1,160 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9441 Ryo · 亮
+# 触发：攻击（通用，1/8）
 > 「ふっ……」
 “Hmph...”
 
 @9442 Ryo · 亮
+# 触发：攻击（通用，2/8）
 > 「くらえっ!!」
 “Take this!!”
 
 @9443 Ryo · 亮
+# 触发：攻击（通用，3/8）
 > 「おそいっ!!」
 “Too slow!!”
 
 @9444 Ryo · 亮
+# 触发：攻击（通用，4/8）
 > 「そこだっ!!」
 “Right there!!”
 
 @9445 Ryo · 亮
+# 触发：攻击（通用，5/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんっ!!」
-“I won't let you!!”
+“I won’t let you!!”
 
 @9446 Ryo · 亮
+# 触发：攻击（通用，6/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつでどうだ!」
-“How's this?!”
+“How’s this?!”
 
 @9447 Ryo · 亮
+# 触发：攻击（通用，7/8）
 # 审校：“どけどけぃ”是粗鲁的“让开让开”，原译“Out of my way!”可以，但“Outta my way!”更贴合亮的粗放语气。
 > 「どけどけぃ!」
 “Outta my way!”
 
 @9448 Ryo · 亮
+# 触发：攻击（通用，8/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵をなめていると、命を落とすぜ」
-“Underestimate the enemy and you'll lose your life.”
+“Underestimate the enemy and you’ll lose your life.”
 
 @9449 Ryo · 亮
+# 触发：被击坠（通用，1/3）
 > 「くっ!! ここまでか!!」
 “Ngh!! This is it for me!!”
 
 @9450 Ryo · 亮
+# 触发：被击坠（通用，2/3）
 > 「ちっ! ドジったぜ!」
 “Tch! I screwed up!”
 
 @9451 Ryo · 亮
+# 触发：被击坠（通用，3/3）
 > 「ちいっ!」
 “Tch!”
 
 @9452 Ryo · 亮
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ!! ヤバイな……」
 “Ngh!! This is bad...”
 
 @9453 Ryo · 亮
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「くっ!! ダメージを受けすぎたか!?」
 “Ngh!! Took too much damage, huh?!”
 
 @9454 Ryo · 亮
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! てごわい!」
-“Tch! You're tough!”
+“Tch! You’re tough!”
 
 @9455 Ryo · 亮
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：原译“What is this thing, a monster?!”稍显翻译腔，改为更自然的疑问句。
 > 「ばけもんかこいつ!?」
 “Is this thing a monster?!”
 
 @9456 Ryo · 亮
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「うぬっ! やる!!」
 “Grr! Not bad!!”
 
 @9457 Ryo · 亮
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! やるな! だが、まだ!!」
-“Ngh! You're good! But I'm not done!!”
+“Ngh! You’re good! But I’m not done!!”
 
 @9458 Ryo · 亮
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんのっ! まだだ!」
-“So what?! I'm not finished!”
+“So what?! I’m not finished!”
 
 @9459 Ryo · 亮
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：Damn?! 不自然
 > 「しまった!?」
-“Damn!?”
+“Damn it!”
 
 @9460 Ryo · 亮
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「くっ、オレとしたことが」
 “Ngh, I slipped up.”
 
 @9461 Ryo · 亮
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ちっ! かすったか!」
 “Tch! Just a graze!”
 
 @9462 Ryo · 亮
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「あまいなっ!」
 “Too naive!”
 
 @9463 Ryo · 亮
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「まだまだ!」
 “Not yet!”
 
 @9464 Ryo · 亮
+# 触发：回避（通用，1/2）
+# 审校：去掉“呢”，回避情境
 > 「まだまだだな」
-“Still not enough.”
+“You’ve got a ways to go.”
 
 @9465 Ryo · 亮
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「間合いがあまいっ!」
-“Your spacing's sloppy!”
+“Your spacing’s sloppy!”
 
 @9466 Ryo · 亮
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @9467 Ryo · 亮
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：攻击无效情境
 > 「フッ 効かんよ!」
-“Hmph. Doesn't hurt!”
+“Hmph. That won’t work!”
 
 @9468 Ryo · 亮
-# 审校：原译“Ngh, no good huh?!”缺少逗号，补上使语气更自然。
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, no good, huh?!”
+“Ngh, can’t fire?!”
 
 @9469 Ryo · 亮
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far, huh?!”

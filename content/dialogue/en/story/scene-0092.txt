@@ -195,6 +195,7 @@ somewhere and assess the situation.”
 “Did you hear what happened?”
 
 @44335 Daisuke · 大介
+# 审校：精读：末页重复
 > 「だいたいはね。僕がバカだったんだ。
 >  ナイーダがマーグと同じように、奴らに
 “More or less. I was a fool. I never realized Naida was being used by them,
@@ -205,10 +206,10 @@ just like Marg... And because of that...
 ---
 >  僕はみすみすナイーダを死なせて
 >  しまったんだ。数少ないフリード星の
-I let Naida die right before my eyes. One of the few remaining people of Planet Fleed...
+I let Naida die right before my eyes. One of the few remaining
 ---
 >  仲間を……」
-...of Planet Fleed...”
+people of Planet Fleed...”
 
 @44336 Koji · 甲児
 > 「大介さん……」
@@ -268,29 +269,31 @@ destroy the Earth...)
 “How is it, Garrison? Have you grasped the enemy's movements?”
 
 @44346 Garrison · ギャリソン
-# 待译：机翻未采用（页数应为 6，实际给了 5（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“On this North American continent, nearly every base, large and small, has been attacked and destroyed.
-# 草稿第 2 页：Old New York, which once functioned as the center of Muge Zolbados's rule over Earth, has also been destroyed. Enemy units are
-# 草稿第 3 页：scattered across the continent, engaging the isolated OZ forces and the local residents.
-# 草稿第 4 页：The largest force is in Old New York and
-# 草稿第 5 页：appears to have halted its advance for the moment.”
+# 审校：补译：原稿页数错误
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > 「この北米大陸では、大小ほとん
 >  どの基地が攻撃を受け、壊滅
+“On this North American continent, nearly every base, large and small, has been attacked
 ---
 >  しております。かつてムゲゾルバドスの
 >  地球支配の中心として
+and destroyed. Old New York, which once functioned as the center of
 ---
 >  機能していた、旧ニューヨークも、
 >  壊滅しております。敵部隊は
+Muge Zorbados's rule over Earth, has also fallen. The enemy forces
 ---
 >  大陸じゅうに散らばり、孤立した
 >  OZ部隊や各地の住民たちと
+are scattered across the continent, fighting isolated OZ units and the local
 ---
 >  交戦中です。もっとも大きな
 >  部隊は旧ニューヨークにおり
+populations. The largest force is in Old New York and
 ---
 >  いったん進軍を停止しているよう
 >  ですな」
+appears to have halted its advance for now.”
 
 @44347 Domon · ドモン
 > 「フン、ならば、そこへ攻めこむか」
@@ -383,9 +386,10 @@ That alone will make most people dislike you.”
 “Are they nearby?”
 
 @44365 Garrison · ギャリソン
+# 审校：管家应避免缩写，与voice中no contractions一致。
 > 「さようで。敵に遭遇しなければ、
 >  一日という距離でしょう」
-“Indeed. If we don't run into the enemy, about a day's distance.”
+“Indeed. If we do not run into the enemy, about a day's distance.”
 
 @44366 Shiro · シロー
 > 「艦長たちには?」
@@ -419,12 +423,13 @@ Everyone is delighted. We're counting on you.”
 doesn't feel bad at all.”
 
 @44371 Roux · ルー
+# 审校：精读：末页只剩引号，重切
 > 「あんた、またバカなことやって、せっかく
 >  あがった士気を下げるようなマネは
-“Don't go doing something stupid again and drag down the morale we finally raised.
+“Don't go doing something stupid again and drag down
 ---
 >  しないでよ」
-”
+the morale we finally raised.”
 
 @44372 Koji · 甲児
 > 「何だよ、オレがいつバカなことしたってん
@@ -521,9 +526,10 @@ You can see that from space.”
 “Yes, sir! Thank you!”
 
 @44384 Bright · ブライト
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特尉、さっきの件だが……いいのか?
 >  あんなことをいって」
-“Special Ensign, about what you said earlier... are you sure? Saying something like that.”
+“Special Lieutenant, about what you said earlier... are you sure? Saying something like that.”
 
 @44385 Kenji · ケンジ
 > 「何のお話ですか?」
@@ -577,9 +583,10 @@ lied to ourselves. That we could win, that there was hope. Believing that
 is how we've fought until now.”
 
 @44393 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「それで戦えるってんなら、それでいいさ。
 >  少なくとも、負けるつもりで
-“If that's what lets them fight, then fine. At least we're not
+“If that's what lets ’em fight, then fine. At least we're not
 ---
 >  やってねぇってのは、間違ってないしな」
 going into this planning to lose, and that's not wrong.”
@@ -603,9 +610,10 @@ there's no other way. We're the same ourselves.”
 “If we can't fight otherwise, huh. The ones with the real problems are us.”
 
 @44396 George · ジョルジュ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ええ。絶望していては、人は戦えま
 >  せん。クワトロ特尉の言葉や
-“Yes. People cannot fight while in despair. If Special Ensign Quattro's words and
+“Yes. People cannot fight while in despair. If Special Lieutenant Quattro's words and
 ---
 >  我々の存在が、彼らにとって
 >  希望となるのなら、それも我々の
@@ -763,9 +771,11 @@ under our protection.”
 “Yeah, thanks, Anna.”
 
 @44424 Treize · トレーズ
+# 审校：合并：冲突人工取舍
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「それと、もとレジスタンスの博士方、
 >  弓教授や早乙女博士らもね」
-“And also the doctors from the old resistance—Prof. Yumi, Dr. Saotome, and the rest.”
+“And also the doctors from the old resistance, Professor Yumi, Dr. Saotome, and the rest.”
 
 @44425 Sayaka · さやか
 > 「お父さまも!? やっぱり無事だった
@@ -904,9 +914,11 @@ If it falls, we have nothing left.”
 “What?”
 
 @44447 Shinobu · 忍
+# 审校：精读：破折号
+# 检查提示：未用必用译名：獣戦機基地→Cyber Beast Force Base
 > 「亮、雅人、沙羅、
 >  獣戦機基地だ!」
-“Ryo, Masato, Sara—we're going to the Cyber Beast Force Base!”
+“Ryo, Masato, Sara, we're going to the Cyber Beast Force Base!”
 
 @44448 Masato · 雅人
 > 「そうくると思ってたよ。ま、しかたないか」
@@ -991,9 +1003,10 @@ planning to go, were you? Alan... Alan Igor.”
 “Hey, what's going on?”
 
 @44463 Sara · 沙羅
+# 审校：精读：バカだね 是骂忍
 > 「バカだね。カラバの黒騎士は、
 >  ロス・イゴールの息子だったってことさ
-“Silly me. It just means the Black Knight of Karaba was Ross Igor's son.
+“You dope. It just means the Black Knight of Karaba was Ross Igor's son.
 ---
 >  そうなんだろ?」
 That's right, isn't it?”
@@ -1013,13 +1026,15 @@ That's right, isn't it?”
 “Alan...”
 
 @44467 Alan · アラン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 检查提示：未用必用译名：旧獣戦機基地→Former Cyber Beast Force Base
 > 「状況はよくわかっているつもりだ。
 >  私は何も、ロス・イゴールが父だから
 “I'd like to think I understand the situation well. It's not that I'm saying anything because Ross Igor is my father.
 ---
 >  いっているのではない。特佐の話を
 >  聞いて思い出したが、彼らはまだ
-Hearing what the Lieutenant Colonel said reminded me, but they've been doing something at the Former Cyber Beast Force Base
+Hearing what the Special Colonel said reminded me, but they've been doing something at the Former Cyber Beast Force Base
 ---
 >  ムゲがいたころから、旧獣戦機
 >  基地で何かをやっていたのだ
@@ -1088,6 +1103,8 @@ Beauty, call everyone back.”
 “Yeah, you can bet on it. Bright, we'll get ready too.”
 
 @44480 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：グラン・ガラン→Gran-Garan
 > 「頼む。バニー、グラン・ガランの
 >  シーラ女王へ連絡を頼む」
 “Please. Bunny, contact Queen Ciela of Gran-Garan.”
@@ -1116,9 +1133,10 @@ Beauty, call everyone back.”
 “So they've come.”
 
 @44486 Duo · デュオ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちぇっ、なんて数だよ、まったく。
 >  見ただけで嫌になるぜ、こりゃ」
-“Tch, what a ridiculous number. Just looking at 'em ticks me off.”
+“Tch, what a ridiculous number. Just looking at ’em ticks me off.”
 
 @44487 Heero · ヒイロ
 > 「あれは敵部隊の一部だ。まだ
@@ -1148,8 +1166,9 @@ Beauty, call everyone back.”
 “Hmph, so what if they've gathered numbers?”
 
 @44493 Domon · ドモン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ああ、まとめて叩きつぶしてやる!」
-“Yeah, we'll crush 'em all at once!”
+“Yeah, we'll crush ’em all at once!”
 
 @44494 Beauty · ビューティ
 > 「各機、発進準備OKよ!」
@@ -1203,16 +1222,18 @@ Wah ha ha ha!”
 “Big bro?! Damn it, always sticking your nose in...”
 
 @44503 Warchimedes · ワルキメデス
+# 审校：合并：冲突人工取舍
+# 检查提示：未用必用译名：ダンゲル→Dungele
 > 「ふん、ダンゲルがおらぬではないか。
 >  あの愚か者め、地球人ごときに
 “Hmph, so Dungele isn't here. That fool, beaten again by mere Earthlings.
 ---
 >  またもやられおって。地球人どもよ、
 >  今度はこのワルキメデスが相手を
-Earthlings, this time Warchimedes will be your opponent!
+Earthlings, this time Warchimedes
 ---
 >  してやろう!」
-”
+will be your opponent!”
 
 @44504 Kirika · キリカ
 > (兄さん……やっと、兄さんの夢だった
@@ -1429,10 +1450,12 @@ what needs to be done.”
 “No lie, Mi Ferario...”
 
 @44544 Chum · チャム
+# 审校：人名按词表统一
 > 「チャム・ファウよ!」
 “It's Chum Huau!”
 
 @44545 Tod · トッド
+# 审校：人名按词表统一
 > 「チャム。いいんだろう、ショウ」
 “Chum. You don't mind, do you, Show?”
 
@@ -1571,6 +1594,7 @@ I'll leave the rest to you...”
 “Show... don't be discouraged...”
 
 @44574 Show · ショウ
+# 审校：人名按词表统一
 > 「ああ……大丈夫だよ、チャム。
 >  大丈夫だ……」
 “Yeah... I'm fine, Chum. I'm fine...”
@@ -1640,10 +1664,10 @@ I'll leave the rest to you...”
 “Dr. Hazuki? You're safe.”
 
 @44590 Dr. Hazuki · 葉月博士
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：破折号
 > 「ひさしぶりだね、ブライト艦長。この
 >  移動要塞ガンドールの建造に
-“It's been a while, Captain Bright. I apologize—construction of this mobile fortress, the Gandor,
+“It's been a while, Captain Bright. I apologize, construction of this mobile fortress, the Gandor,
 ---
 >  てまどってしまって、申し訳なかった」
 took longer than expected.”
@@ -1742,13 +1766,14 @@ He must have been satisfied.”
 “Alan...”
 
 @44604 Alan · アラン
+# 审校：精读：破折号
 > 「気にするな。かつての地球連邦
 >  軍の最後の将軍ロス・イゴールは
 “Don't worry about it. Ross Igor, the last general of the old Earth Federation, is
 ---
 >  死んだ。だがその遺志は、あの
 >  ガンドールに、そして我々の中に
-dead. But his will lives on—in that Gandor, and in
+dead. But his will lives on, in that Gandor, and in
 ---
 >  生きている」
 all of us.”
@@ -1759,13 +1784,14 @@ all of us.”
 “So the Gandor is... General Igor's legacy.”
 
 @44606 Dr. Hazuki · 葉月博士
+# 审校：精读：破折号
 > 「うむ。……だが、まだ不完全なのだ。
 >  現状では竜の命、ガンドールの
-“Indeed. ...But it's still incomplete. As things stand, the dragon's life—the Gandor's
+“Indeed. ...But it's still incomplete. As things stand, the dragon's life, the Gandor's
 ---
 >  エネルギーは、180日と3日しか
 >  もたない」
-energy—will only last 180 days and 3 more.”
+energy, will only last 180 days and 3 more.”
 
 @44607 Garrison · ギャリソン
 > 「約半年でございますな」
@@ -1936,12 +1962,13 @@ wrecking the city out of nowhere, and my mom nearly
 got caught in it too.”
 
 @44633 Ryoma · リョウ
+# 审校：精读：破折号
 > 「……ショウはどうなんだ? この男を
 >  信用するのか? 俺たちを、特に
 “...What about you, Show? You trust this guy? He's the man who
 ---
 >  ショウを殺そうとしてた男だぜ」
-tried to kill us—especially you.”
+tried to kill us, especially you.”
 
 @44634 Show · ショウ
 > 「……俺は、トッドを信じるよ」
@@ -1960,6 +1987,7 @@ tried to kill us—especially you.”
 “Much obliged.”
 
 @44638 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そうか……シーラ女王はどうですか?」
 “I see... What about Queen Ciela?”
 
@@ -1985,6 +2013,8 @@ Holy Warrior in Tod Guines now. I believe we may trust him.”
 “I see... What about Queen Elle?”
 
 @44641 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：トッド・ギネス→Tod Guines
 > 「トッド・ギネスのオーラ力に、
 >  悪意は感じません。この者は
 “I sense no malice in Tod Guines's aura power. I acknowledge
@@ -2035,6 +2065,7 @@ Though this will be a harsh fight indeed.”
 hung on to life. But when I came to, the Wryneck was gone.”
 
 @44648 Marvel · マーベル
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラさまのお力ね。
 >  私たちのマシンも、本当はすべて
 “That's Queen Ciela's power. Our machines were all supposed to
@@ -2078,9 +2109,10 @@ want, you can pilot it, Show.”
 “We managed to pull through somehow, but I don't think we can hold this place any longer.”
 
 @44653 Quattro · クワトロ
+# 审校：精读：破折号
 > 「先ほど調べさせたが、戦力は
 >  半分以下になっている。かなり
-“I had it checked earlier—our forces are down to less than half. I'd
+“I had it checked earlier, our forces are down to less than half. I'd
 ---
 >  やられたといわねばならんな」
 have to say we've taken quite a beating.”
@@ -2103,17 +2135,19 @@ it's probably only a fraction of the forces that landed on Earth...”
 we've got no choice but to abandon it.”
 
 @44656 Bright · ブライト
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「やむをえん。我々も南米に向かい
 >  できるだけ早く、トレーズ特佐の
 “It can't be helped. We'll head for South America as well and rendezvous with
 ---
 >  部隊と合流しよう」
-Colonel Treize's forces as soon as we can.”
+Special Colonel Treize's forces as soon as we can.”
 
 @44657 Alan · アラン
+# 审校：精读：破折号
 > 「途中で見てきたが、各地に
 >  残留した部隊は、もうほとんどが
-“I saw on the way here—you could say most of the units left behind in
+“I saw on the way here, you could say most of the units left behind in
 ---
 >  壊滅しているといっていい。いよいよ、
 >  あとがなくなったな」
@@ -2128,9 +2162,10 @@ the various regions have already been wiped out. We're truly running out of opti
 what's the situation with our allies?”
 
 @44659 Beltorchika · ベルトーチカ
+# 审校：精读：破折号
 > 「他の部隊は、かなりひどい状態ね
 >  負傷者の収容をしているところよ
-“The other units are in pretty bad shape—they're busy taking in the wounded.
+“The other units are in pretty bad shape, they're busy taking in the wounded.
 ---
 >  ガンドールがいてくれて、助かるわ」
 It's a relief we have the Gandor.”
@@ -2267,15 +2302,17 @@ it's been powered up.”
 ...Hmm... ...Gah, no good! I'll rewrite it!”
 
 @44683 Shingo · 真吾
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“What, you haven't made any progress at all? I'm pretty sure you were saying／the same thing before we linked up with the 【主角机体名】.”
+# 审校：补译：原稿页数错误
 > 「なんだ、全然進んでいないじゃないか
 >  確か、{HeroMech}に
+“What, no progress at all? I'm fairly sure that before you joined the {HeroMech}
 ---
 >  合流する前にも同じようなことを
 >  いっていたぞ」
+you were saying the very same thing.”
 
 @44684 Remy · レミー
+# 审校：用户确认：直引号→弯引号
 > 「ホントにもう……外に出て少し
 >  気分転換でもしてきたら
 “Honestly... Why don't you go outside and clear your head a little?
@@ -2286,7 +2323,7 @@ Every time a battle ends you say you're going to write the next part, and in the
 ---
 >  書き直しだ、書き直しだって
 >  いってるんだもの。それを聞かされている
-it's always 'rewrite, rewrite.' And we're the ones who have to hear it.
+it's always ‘rewrite, rewrite.’ And we're the ones who have to hear it.
 ---
 >  こっちの身にもなってよ」
 Think about how that feels for us.”
@@ -2453,21 +2490,22 @@ I thought that perhaps I might be able to see you.”
 “...”
 
 @44709 Relena · リリーナ
+# 审校：Relena 的 voice 要求 formal、无缩写，原文为「救うこともできない」「そうでしょう」「何もできない」，应去掉 can't、isn't、there's 等缩写。
 > 「ヒイロ……わたくしは……わたくしは
 >  なんと無力なのでしょう。どんなに
 “Heero... I... I am so powerless. No matter how many pretty words I
 ---
 >  きれいごとを並べても、わたくしには
 >  誰1人救うこともできない
-line up, I can't save a single person.
+line up, I cannot save a single person.
 ---
 >  そうでしょう? 地球がこのような
 >  状況になっているというのに
-Isn't that right? Even with the Earth in this state,
+Is that not right? Even with the Earth in this state,
 ---
 >  わたくしには何もできない……いつも、
 >  助けられてばかり。完全平和など
-there's nothing I can do... I'm always the one being saved. Is complete peace
+there is nothing I can do... I am always the one being saved. Is complete peace
 ---
 >  やはり戦うことのできない者のたわごと
 >  なのでしょうか」
@@ -2522,9 +2560,10 @@ you should be able to see what you must do.”
 “Lady Julia...”
 
 @44718 Julia · ジュリア
+# 审校：Julia 的 voice 要求 formal、无缩写，原文为「責めてはいけません」，应去掉 mustn't。
 > 「リリーナ……自分を責めてはいけませ
 >  ん。仮に人類が全てわかりあったと
-“Relena... you mustn't blame yourself. Even if all of humanity understood one another,
+“Relena... you must not blame yourself. Even if all of humanity understood one another,
 ---
 >  しても、この宇宙はあまりにも
 >  広い……どうにもできないことも
@@ -2556,27 +2595,29 @@ fight to protect the Earth. ...Perhaps that is exactly why I waver too.”
 “Lady Julia...?”
 
 @44722 Julia · ジュリア
+# 审校：Julia 的 voice 要求 formal、无缩写，原文为「時間がありません」，应去掉 there's。
 > 「しかし……もう時間がありません。
 >  私もまた、決断をしなければならない
-“But... there's no more time. It seems I too must make
+“But... there is no more time. It seems I too must make
 ---
 >  ようです」
 a decision.”
 
 @44723 Ryoma · リョウ
+# 审校：口吻与原文的关切语气不符，You're safe 过于平淡，改为更符合热血的关切表达。
 > 「早乙女博士! ご無事でした
 >  か!」
-“Dr. Saotome! You're safe!”
+“Dr. Saotome! Are you all right?!”
 
 @44724 Dr. Saotome · 早乙女博士
-# 审校：原文“よく生きておったな”是长辈对晚辈的感叹，初稿“you've survived well”略显生硬，改为更自然的“you've made it through well”。
+# 审校：博士对龙马等人说话，原文用お前たち，译文 you lot 过于随意，改为 you all 更符合老科学家的口吻。
 > 「おお、お前たち、よく生きておったな。
 >  お前たちこそ、無事でなによりだ
 “Oh, you lot, you've survived well. More than anything, I'm glad you're safe.
 ---
 >  厳しい戦いだが……
 >  ゲッターの調子はどうだね?」
-It's a harsh battle, but... how's the Getter doing?”
+It's a harsh battle, but... how is the Getter doing?”
 
 @44725 Hayato · ハヤト
 > 「万事良好……といいたいところです
@@ -2643,8 +2684,9 @@ will rise, I can't even imagine.”
 “What?! Are you serious?!”
 
 @44734 Hayato · ハヤト
+# 审校：隼人冷静毒舌，amazing 过于平淡，incredible 更符合其惊讶中带赞许的口吻。
 > 「そいつはすげえ!」
-“That's amazing!”
+“That's incredible!”
 
 @44735 Dr. Saotome · 早乙女博士
 > 「喜ぶのは早いぞ。ゲッター線は
@@ -2717,6 +2759,7 @@ destroy the Earth...”
 “...”
 
 @44746 Alberto · アルベルト
+# 审校：精读：破折号
 > 「なぁイワン、少し変だとは思わぬか。
 >  なぜ我々のボス、ビッグファイアーは
 “Hey, Ivan, don't you find it a little strange? Why would our boss, Big Fire,
@@ -2727,13 +2770,14 @@ cooperate with aliens? If the Earth is gone, there's no BF Group and no
 ---
 >  世界征服もない。これは我々に
 >  とって、あまりにも無意味、いや
-world conquest either. To us, this is far too pointless—no,
+world conquest either. To us, this is far too pointless. No,
 ---
 >  それどころか、危険なことなのでは
 >  ないのか」
 worse than that, isn't it dangerous?”
 
 @44747 Ivan · イワン
+# 审校：精读：破折号
 > 「アルベルト様! 十傑集ともあろう
 >  お方が、なんということを! そのような
 “Lord Alberto! To think a man of the Ten Great Generals would say such a thing! Thoughts
@@ -2744,7 +2788,7 @@ like that amount to rebellion against the Boss... N-no, forgive me.
 ---
 >  私ごときが、ですぎた口を聞きました
 >  お許しください」
-For someone like me to speak out of turn—please forgive me.”
+For someone like me to speak out of turn, please forgive me.”
 
 @44748 Alberto · アルベルト
 > 「…………」
@@ -2775,17 +2819,18 @@ that continent before long.”
 “Wahl, how goes that matter?”
 
 @44753 Wahl · ワール
+# 审校：Wahl 对皇帝用敬语，但“the Earthlings don't even know it exists”中的 don't 过于随意，改为 do not 以符合军官对皇帝的正式口吻。
 > 「はっ、いまだ発見には、いたっておりま
 >  せん。しかし陛下、地球制圧は
 “Yes, we have still not reached a discovery. But Your Majesty, the subjugation of Earth is
 ---
 >  目前です。それほどお気になさること
 >  も、ないのではありませんか? おそらく
-at hand. Isn't it something you need not concern yourself with so much? In all likelihood,
+at hand. Is it something you need not concern yourself with so much? In all likelihood,
 ---
 >  地球人どもは、存在すら知らぬ
 >  のでしょう」
-the Earthlings don't even know it exists.”
+the Earthlings do not even know it exists.”
 
 @44754 Emperor Zuul · ズール皇帝
 > 「ワールよ、油断は禁物だ。マーズの
@@ -2816,14 +2861,16 @@ Pray tell me. What weighs so heavily on your mind? What is it
 that you are searching for?”
 
 @44757 Emperor Zuul · ズール皇帝
+# 审校：祖尔皇帝 voice 要求无缩写，don't 改为 do not。
 > 「わからん」
-“I don't know.”
+“I do not know.”
 
 @44758 Wahl · ワール
 > 「陛下?」
 “Your Majesty?”
 
 @44759 Emperor Zuul · ズール皇帝
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「何万年か前に、地球に設置
 >  されたはずの何かがあるのだ。ガイヤーの
 “Tens of thousands of years ago, something was supposedly placed on Earth. If we had
@@ -2834,11 +2881,11 @@ used Gaia's antiproton bomb to blow up the whole Earth, there would have been no
 ---
 >  必要もなかった。だがそうはいかなく
 >  なった以上それを破壊しておかねば
-to worry about it. But now that that's no longer possible, if we don't destroy it,
+to worry about it. But now that that is no longer possible, if we do not destroy it,
 ---
 >  どのようなことになるのかわからん。
 >  放置はできん」
-there's no telling what might happen. We cannot leave it be.”
+there is no telling what might happen. We cannot leave it be.”
 
 @44760 Wahl · ワール
 > 「現在、地球人の協力者と
@@ -2849,10 +2896,11 @@ there's no telling what might happen. We cannot leave it be.”
 We shall surely find it and present it to you.”
 
 @44761 Janera · ジャネラ
+# 审校：精读：破折号
 > 「地球人の協力者とな?
 >  ホホホッ、なんと愚かな。自分たちが
 “Earthling collaborators, you say? Ho ho ho, how foolish. To lend a hand in their own
 ---
 >  滅ぼされるのに手を貸すなど、
 >  聞いたこともないわ」
-destruction—I've never heard the like.”
+destruction, I've never heard the like.”

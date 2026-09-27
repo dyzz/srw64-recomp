@@ -79,10 +79,10 @@ influence. They must want to avoid that.”
 “It's hard to take.”
 
 @26875 Henken · ヘンケン
-# 审校：特尉指爱玛中尉，应译为 Lieutenant，而非 Ensign。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうだな……あ、特尉、お茶でもどう
 >  かな」
-“I suppose so... Ah, Lieutenant, how about some tea?”
+“I suppose so... Ah, Special Lieutenant, how about some tea?”
 
 @26876 Emma · エマ
 > 「だめです。忙しいですから」
@@ -246,13 +246,14 @@ hiding away in a ruin like this.”
 from OZ. Are you saying you don't care if humanity is wiped out?!”
 
 @26901 Dr. Yotsuya · 四谷博士
+# 审校：精读：去破折号
 > 「ふん、わしは地球を愛しこそすれ人
 >  間などどうなってもかまうものではない
 “Hmph. I may love the Earth, but I couldn't care less what happens to humans.
 ---
 >  いや、地球のことを考えれば
 >  人間など第一に滅びてしまうべき
-No—if you think of the Earth, humans are the creatures that ought to be wiped out
+No, if you think of the Earth, humans are the creatures that ought to be wiped out
 ---
 >  生き物だろう」
 first.”
@@ -305,9 +306,10 @@ They say you've been fighting since the days of Zorbados.”
 “...Understood. So then, what should I do?”
 
 @26908 Banjo · 万丈
+# 审校：精读：去破折号
 > 「南原博士の残した戦闘ロボ、
 >  コン・バトラーVを動かしてください」
-“Please get the combat robot Dr. Nanbara left behind—Combattler V—up and running.”
+“Please get the combat robot Dr. Nanbara left behind, Combattler V, up and running.”
 
 @26909 Dr. Yotsuya · 四谷博士
 > 「コン・バトラーV……できるかはわからんが
@@ -338,9 +340,10 @@ They say you've been fighting since the days of Zorbados.”
 “Something wrong?”
 
 @26915 Lera · レラ
+# 审校：精读：去破折号
 > 「えっ? ううん、別に。あ、そうだ、
 >  こないだのシミュレーションの結果
-“Huh? No, nothing. Oh, that's right—how did the simulation the other day
+“Huh? No, nothing. Oh, that's right, how did the simulation the other day
 ---
 >  どうだった?」
 turn out?”
@@ -425,8 +428,9 @@ is meaningless. If you want to fight, then get used to it quickly.”
 “That's how it is.”
 
 @26927 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ的轻佻痞气口吻应更随意，用“Heh”替代“My”更符合其voice。
 > 「かーわいい嬢ちゃんだねぇ」
-“My, what a cute little lady.”
+“Heh, what a cute little lady.”
 
 @26928 Selain · セレイン（按段落 3DD2）
 > 「あいつの前でいってみたらどうだ?
@@ -471,17 +475,19 @@ There's no reason I have to stay with you.”
 But where we are is... a blood-soaked battlefield, {HeroName}. No matter how far we go.”
 
 @26934 Shirley · シャリー
+# 审校：精读：去破折号
 > 「ちょっと、あなた、ヒマなら手伝って
 >  くれない? {HeroNick}にふられて
-“Hey, you—if you've got time on your hands, won't you help me? {HeroNick} turned you down,
+“Hey, you, if you've got time on your hands, won't you help me? {HeroNick} turned you down,
 ---
 >  やることないんでしょ」
 so you've got nothing to do, right?”
 
 @26935 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：姉さん 不是 Sister
 > 「いってくれるねぇ。姉さん、そういうのは
 >  思っていても口にはしないもんだ
-“You don't hold back, do you? Sister, that's the kind of thing you keep to yourself even if you think it.
+“You don't hold back, do you? Miss, that's the kind of thing you keep to yourself even if you think it.
 ---
 >  OZなら相手によっちゃ大変なこと
 >  になるぜ」
@@ -503,9 +509,10 @@ In OZ, depending on who you said it to, it could turn into a real mess.”
 “I see. So, are you going to help me or not?”
 
 @26939 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：姉さん
 > 「お手伝いいたしましょう。で、何を
 >  すればいいんだい、姉さん」
-“I shall be glad to assist you. So, what should I do, sister?”
+“I'd be glad to help. So, what should I do, miss?”
 
 @26940 Lera · レラ
 > 「何やってんのさ?」
@@ -556,22 +563,24 @@ always been going at it without anything clear.”
 “I'm asking you what it is you said you found!”
 
 @26949 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「別にあらたまっていうほどのこと
 >  じゃないけどな。平和とか幸せとか
 “It's not really anything worth making a big deal of. It's not about peace or happiness or
 ---
 >  そういうんじゃなくって、理不尽な
 >  不幸をなくしたいっていうことなんだ
-anything like that—it's that I want to get rid of unreasonable misfortune.
+anything like that. It's that I want to get rid of unreasonable misfortune.
 ---
 >  戦うことでそういう未来を見られる
 >  なら、それはいいことなんじゃないかってさ」
 If fighting lets me see that kind of future, then that's a good thing, isn't it?”
 
 @26950 Lera · レラ
+# 审校：精读：去破折号
 > 「理不尽な不幸って、たとえば納
 >  得できない理由で死ぬってこと?」
-“Unreasonable misfortune—like dying for a reason you can't accept?”
+“Unreasonable misfortune, like dying for a reason you can't accept?”
 
 @26951 Ark · アーク（按段落 3DD1）
 > 「それもそうだけど……戦うことしか
@@ -604,9 +613,10 @@ It only turned out this way because that's the only way it could go. That's all 
 What's so wrong with that?!”
 
 @26955 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「いけないなんていってない。じゃあ聞く
 >  けど、もしお前がカンザスにいたとき
-“I'm not saying it's wrong. Then let me ask you—if you'd been in Kansas and
+“I'm not saying it's wrong. Then let me ask you, if you'd been in Kansas and
 ---
 >  戦えなくなったら、どうしたんだよ」
 couldn't fight anymore, what would you have done?”
@@ -639,9 +649,10 @@ And that really is a misfortune. If someone like you died, who would be happy ab
 “There's no other way, so it can't be helped!”
 
 @26961 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号
 > 「だからさ、俺は、それをなくしたい。
 >  他にもやりようがあるように、いや
-“So that's why I want to get rid of it. So there are other ways—no,
+“So that's why I want to get rid of it. So there are other ways... no,
 ---
 >  そもそもそんなことは考えなくたって
 >  いいようにしたいんだ」
@@ -710,9 +721,10 @@ It's not like I want us all to go die together.”
 “I think I understand, actually.”
 
 @26973 Ark · アーク（按段落 3DD1）
+# 审校：精读：去破折号、納得して生きる
 > 「俺は、あいつの中で固まってしまった
 >  “納得して生きるには
-“I want to change that thing that's hardened inside her—that ‘to live with your head held high,
+“I want to change that thing that's hardened inside her, that ‘to live with your head held high,
 ---
 >  戦うしかない”っていうのを変えて
 >  やりたい。もっと別の生き方だって
@@ -823,6 +835,7 @@ let me give you a quick rundown anyway.”
 “Calm down, Mika. What happened?”
 
 @26990 Mika · ミカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
 “It's probably a Gishin psychic! They took your brother, and Takeru
@@ -831,6 +844,7 @@ let me give you a quick rundown anyway.”
 went after them in the Gaia...”
 
 @26991 Beltorchika · ベルトーチカ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「アムロ、ガイヤーが飛んでいくわ」
 “Amuro, the Gaia's taking off.”
 
@@ -840,6 +854,7 @@ went after them in the Gaia...”
 “That Takeru. Bright, send someone after him.”
 
 @26993 Bright · ブライト
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「そうだな。よし、ゲッターチームと
 >  藤原忍にガイヤーを追わせる
 “Right. All right, have the Getter Team and Shinobu Fujiwara chase the Gaia.
@@ -861,9 +876,9 @@ Captain, take the rest and search the ship for enemies.”
 “Fuhahahahaha!”
 
 @26997 Takeru · タケル
-# 审校：初稿“Y-you're!”不完整且不通顺；原文“お、お前はッ!”是震惊中断的喊叫，应补成“Y-you're—!”以体现话未说完。
+# 审校：精读：去破折号
 > 「お、お前はッ!」
-“Y-you're—!”
+“Y-you're...!”
 
 @26998 Emperor Zuul · ズール皇帝
 > 「よく来たな、マーズ」
@@ -1255,9 +1270,10 @@ there seems to be one that's different.”
 “This concerns you too. There are Mycenae remnants there.”
 
 @27064 Koji · 甲児
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ミケーネだって!? 奴ら、散りぢりに
 >  なったんじゃなかったのか」
-“Mycenae!? I thought those guys were scattered to the winds!”
+“Mycenae?! I thought those guys were scattered to the winds!”
 
 @27065 Tetsuya · 鉄也
 > 「どうやらそうじゃなかったようだ。
@@ -1312,22 +1328,23 @@ have occupied.”
 “Huh? Was there a kid like that...? No, something's off about her. Hey, wait!”
 
 @27074 Maria · マリア
-# 审校：「見つかった」是被动“被发现了”，不是“你发现我了”。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「見つかった!? えい!」
-“You found me!? Hah!”
+“I've been found?! Hah!”
 
 @27075 Koji · 甲児
 > 「くっ!」
 “Guh!”
 
 @27076 Erika · エリカ
-# 审校：称呼后逗号更自然，且原文有停顿感。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「どうしたの!? 甲児さん!」
-“What's wrong, Koji!?”
+“What's wrong, Koji?!”
 
 @27077 Daisuke · 大介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「甲児くん!?」
-“Koji!?”
+“Koji?!”
 
 @27078 Koji · 甲児
 # 审校：「かわいい顔しちゃいるが」是“虽然长着可爱的脸”，原译漏了“脸”的让步语气。
@@ -1341,17 +1358,18 @@ have occupied.”
 “You devils, prepare yourseeeelves!”
 
 @27080 Daisuke · 大介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ……!? 待て、そのペンダントは!」
-“Ngh...!? Wait, that pendant!”
+“Ngh...?! Wait, that pendant!”
 
 @27081 Maria · マリア
 > 「やぁっ!!」
 “Hah!!”
 
 @27082 Daisuke · 大介
-# 审校：「君はいったい……!?」原译“in the world”略显翻译腔，简化为更自然的追问。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「君は誰だ!? 君はいったい……!?」
-“Who are you!? Just who are you...!?”
+“Who are you?! Just who are you...?!”
 
 @27083 Maria · マリア
 > 「フリード王の娘、
@@ -1362,8 +1380,9 @@ have occupied.”
 I've come to take back Grendizer!”
 
 @27084 Daisuke · 大介
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「フリード王の娘……マリア!?」
-“The daughter of King Fleed... Maria!?”
+“The daughter of King Fleed... Maria?!”
 
 @27085 Maria · マリア
 # 审校：战斗喊声应保留拖长气势，与原文「たあっ」更贴近。
@@ -1375,12 +1394,14 @@ I've come to take back Grendizer!”
 “Guh...!!”
 
 @27087 Koji · 甲児
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「大介さん!?」
-“Daisuke!?”
+“Daisuke?!”
 
 @27088 Maria · マリア
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「う、腕で止めるなんて!?」
-“Y-you stopped it with your arm!?”
+“Y-you stopped it with your arm?!”
 
 @27089 Daisuke · 大介
 > 「マリア……これを……」
@@ -1395,17 +1416,19 @@ I've come to take back Grendizer!”
 “Yes. I am Duke Fleed.”
 
 @27092 Maria · マリア
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「お兄ちゃん……!? 本当にあたしの
 >  お兄ちゃんなのね?」
-“Big brother...!? So you really are my big brother?”
+“Big brother...?! So you really are my big brother?”
 
 @27093 Daisuke · 大介
 > 「ああ」
 “Yeah.”
 
 @27094 Maria · マリア
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「お兄ちゃん、生きてたのね!?」
-“Big brother, you were alive!?”
+“Big brother, you were alive?!”
 
 @27095 Daisuke · 大介
 > 「マリア、お前こそよく……」
@@ -1463,8 +1486,9 @@ we'll always be together.”
 and I want to link up with them before that.”
 
 @27105 Garrison · ギャリソン
+# 审校：管家对万丈的称呼应为“Master Banjo”，而非“Lord Banjo”。
 > 「万丈さま、こちらは問題ありません」
-“Lord Banjo, everything is fine on this end.”
+“Master Banjo, everything is fine on this end.”
 
 @27106 Banjo · 万丈
 > 「よし、では出発するとしようか」
@@ -1510,12 +1534,14 @@ and I want to link up with them before that.”
 “All right! Let's Combine!!”
 
 @27116 Hyoma · 豹馬
+# 审校：精读：拖长音
 > 「コォォォォォンバトラァァァー・ブイッ!」
-“Combattler V!”
+“Coooombattleeeer Veee!”
 
 @27117 Banjo · 万丈
+# 审校：万丈语气从容，不应使用粗鲁的“you lot”，改为更符合其口吻的“everyone”。
 > 「よし、いくぞ君たち!」
-“All right, let's go, you lot!”
+“All right, let's go, everyone!”
 
 @27118 Hyoma · 豹馬
 > 「まっかせとけ!」
@@ -1628,13 +1654,15 @@ I'm Hyoma Aoi. Well, I'll be counting on you.”
 Let's wrap this up quick and treat ourselves to a little space voyage.”
 
 @27134 Marquis Janus · ヤヌス侯爵
+# 审校：雅努斯侯爵是老贵族反派，译文应更符合其威严、命令式的口吻，将“Don't”改为“Do not”以增强庄重感。
 > 「おのれ、ふざけおって。奴らを生かして
 >  帰すな!!」
-“Curse you, you're mocking us. Don't let them get away alive!!”
+“Curse you, you mock us. Do not let them get away alive!!”
 
 @27135 Marquis Janus · ヤヌス侯爵
+# 审校：老贵族口吻应避免缩写，将“can't”改为“cannot”以符合其庄重语气。
 > 「こ、こんな…………」
-“Th-this can't be...”
+“Th-this cannot be...”
 
 @27136 Bright · ブライト
 > 「よし、準備を急ごう」
@@ -1689,12 +1717,13 @@ as you please?”
 “That voice... Jerid!”
 
 @27147 Jerid · ジェリド
+# 审校：精读：第二页只剩引号
 > 「カミーユ、ここを貴様らの墓場に
 >  してやる。宇宙にあがれぬまま
-“Kamille, I'll make this your grave. Die here, never reaching space!
+“Kamille, I'll make this your grave. Die here,
 ---
 >  死んでいけ!」
-”
+never reaching space!”
 
 @27148 Kamille · カミーユ
 > 「ばかな、今がどういうときか
@@ -1969,8 +1998,9 @@ head back first and secure our escape route.”
 “All right, ignite the Booster. Get the work crew back aboard, quickly!”
 
 @27201 Bright · ブライト
+# 审校：舰长对祈祷语气应更克制，去掉“please”以符合其军人身份。
 > 「くっ……間に合ってくれよ……」
-“Ngh... Make it in time, please...”
+“Ngh... Make it in time...”
 
 @27202 Bunny · バニー
 > 「えぇっ!? なんですって!?」
@@ -2402,10 +2432,10 @@ she ever opened up to was {HeroNick}.”
 have a talk with him. He'll be fine. He's not that weak.”
 
 @27284 Kamille · カミーユ
-# 审校：原文“大丈夫ですよ”是安慰对方“会没事的”，初稿译成“He'll be fine”指代错误。
+# 审校：原文「そうですね」是卡缪对长辈的敬体，译文用“Yeah”过于随意，改为“Yes”以符合其敬语口吻。
 > 「そうですね……そう思います。
 >  大丈夫ですよ」
-“Yeah... I think so too. It'll be all right.”
+“Yes... I think so too. It'll be all right.”
 
 @27285 Amuro · アムロ
 > 「ああ……そうさ」
@@ -2425,8 +2455,9 @@ have a talk with him. He'll be fine. He's not that weak.”
 “I could do that, but I owe you a debt.”
 
 @27289 Ark · アーク（按段落 3DD1）
+# 审校：原文「なんです?」是阿库对埃尔里希的敬体问句，译文“What do you want?”语气过于生硬，改为“What is it?”更贴合其礼貌但冷淡的态度。
 > 「……なんです?」
-“...What do you want?”
+“...What is it?”
 
 @27290 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：第二页“今だけにしておきたまえ”意为“仅限于现在”，初稿“and no longer”语气生硬且不够准确。
@@ -2512,9 +2543,10 @@ like me...”
 I killed Lera!”
 
 @27302 Rish · リッシュ（按段落 3DD2）
+# 审校：原文「じゃねぇか」是里什的痞气口吻，译文“isn't”过于标准，改为“ain't”以符合其轻佻、俚语化的说话方式。
 > 「おい、落ち着けよ。お前らしくない
 >  じゃねぇか」
-“Hey, calm down. This isn't like you.”
+“Hey, calm down. This ain't like you.”
 
 @27303 Selain · セレイン（按段落 3DD2）
 > 「黙れ! お前たちに何がわかる!?」
@@ -2653,17 +2685,17 @@ just a little while ago?”
 “Which is exactly why there are things I understand.”
 
 @27327 Anna · アンナ
-# 待译：机翻未采用（第 1 页的占位符应为 []，实际为 ['【主角昵称】']）
-# 草稿第 1 页：“But I think she'll be all right too. After all, if it were the 【主角昵称】
-# 草稿第 2 页：from when we first met, she never would have thought about that girl
-# 草稿第 3 页：that way. It's okay. That's what I believe.”
+# 审校：补译：原稿占位符错页
 > 「でも、私も大丈夫だと思う。
 >  だって、私たちが最初にあった頃の
+“But I think she'll be all right too. After all, the
 ---
 >  {HeroNick}なら、きっとあの子のことを
 >  そんなふうに考えなかったもの
+{HeroNick} from when we first met would never have thought of that girl that way.
 ---
 >  大丈夫。私はそう信じるわ」
+It'll be fine. That's what I believe.”
 
 @27328 Selain · セレイン（按段落 3DD2）
 > 「あいつには、私とは違う道を選ばせ
@@ -2830,9 +2862,10 @@ together with my brother and all of you. Please.”
 someone willing to fight. It's going to be a hard battle, but I'm counting on you.”
 
 @27352 Maria · マリア
+# 审校：精读：去破折号
 > 「ありがとう、甲児。あたしがんばるわ。
 >  あっ、そういえば甲児、あの時の傷
-“Thank you, Koji. I'll do my best. Oh, that reminds me, Koji—that wound from back then,
+“Thank you, Koji. I'll do my best. Oh, that reminds me, Koji, that wound from back then,
 ---
 >  大丈夫だった?」
 is it all right?”

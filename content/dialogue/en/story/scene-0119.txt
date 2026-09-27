@@ -21,7 +21,8 @@
 to save the Earth.”
 
 @50914 Remy · レミー
-# 审校：两处“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
+# 审校：全局：帝国軍 Imperial 大写统一
+# 检查提示：未用必用译名：ドクーガ→Docooga
 > 「私たちもレジスタンス部隊に
 >  聞きたいことがあるのよ
 “We've got questions for the resistance forces too.
@@ -32,7 +33,7 @@ to save the Earth.”
 ---
 >  共同で何らかの行動を
 >  起こすっていう情報があったのよ
-they're working with the imperial army on some kind of operation.
+they're working with the Imperial army on some kind of operation.
 ---
 >  レジスタンス部隊だったら
 >  何か知っていることが
@@ -60,9 +61,10 @@ and we were just about to give up on finding the unit.”
 and set a rendezvous point.”
 
 @50917 Kappei · 勝平
+# 审校：与 50886 一致
 > 「旅は道連れ、世は情けってね。
 >  ま、仲良く行きましょうや」
-“Travel's better with company, and kindness makes the world go round. Let's all get along, huh?”
+“Travelers need companions, and the world runs on kindness. Well, let's all get along.”
 
 @50918 Uchuta · 宇宙太
 # 审校：“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
@@ -137,9 +139,10 @@ and set a rendezvous point.”
 “Heh heh, serves you right.”
 
 @50934 Remy · レミー
+# 审校：与 50821 一致
 > 「……終わったわね。グッドサンダーチーム
 >  ここにありって感じ!」
-“...It's over. Feels like the Good Thunder Team was really here!”
+“...It's over. This is what it means to be the Good Thunder Team!”
 
 @50935 Keiko · 恵子
 > 「見て、勝平。

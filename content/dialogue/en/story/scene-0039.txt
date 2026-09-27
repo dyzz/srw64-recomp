@@ -11,13 +11,13 @@
 “Yeah, that's right. I'll leave the maintenance on each unit to you.”
 
 @25716 Astonaige · アストナージ
-# 审校：原文第二页是“やっておきますよ”，初稿只译了“”且把引号单独成页，需补全该页译文并保持两页对应。
+# 审校：精读：第二页原是重复句
 > 「機体そのものが限界に近いやつも
 >  ありますがね。できるかぎりは
-“Some of the machines themselves are near their limits, though. I'll do as much as I can.
+“Some of the machines themselves are near their limits, though. I'll do as much
 ---
 >  やっておきますよ」
-I'll get to work on them.”
+as I can for them.”
 
 @25717 Amuro · アムロ
 > 「それで、どうするんだ、ブライト?」
@@ -242,9 +242,10 @@ If I get stronger, then the Boss Borot gets stronger too. That's how it works.�
 “Schwarz Bruder, you again. I don't recall ever asking you to come.”
 
 @25755 Schwarz · シュバルツ
+# 审校：精读：腕
 > 「それほど自信があるのか。
 >  お前の腕がどれほどのものか
-“Is that how confident you are? Just how good your arm is,
+“Is that how confident you are? Just how good your skill is,
 ---
 >  この刀に聞いてみるがよい」
 let this blade be the judge.”
@@ -603,13 +604,14 @@ All that's left is the death before me... Rain...?)
 “Schwarz... what in the world is this...”
 
 @25818 Schwarz · シュバルツ
+# 审校：精读：去破折号
 > 「明鏡止水の心よ。いいか、
 >  わだかまりや、やましさのない澄んだ心
-“It is the heart of Meikyo Shisui. Listen: a clear heart, free of lingering doubts and guilt—
+“It is the heart of Meikyo Shisui. Listen: a clear heart, free of lingering doubts and guilt.
 ---
 >  それが明鏡止水。それが人に、
 >  己を超えた力を持たせることができる」
-that is Meikyo Shisui. It can grant a person power beyond themselves.”
+That is Meikyo Shisui. It can grant a person power beyond themselves.”
 
 @25819 Domon · ドモン
 > 「それが俺のスーパーモード……だが、
@@ -895,9 +897,10 @@ Is that how you speak to your Master?!”
 “Master Asia! Today I'm settling this once and for all!!”
 
 @25875 Schwarz · シュバルツ
+# 审校：精读：术语统一、页末标点
 > 「……聞いてはもらえんようだな。
 >  明鏡止水……
-“...It seems you won't listen. Serenity of mind...
+“...It seems you will not listen. Meikyo Shisui...
 ---
 >  曇りのない鏡のごとく、
 >  静かにたたえた水のごとき心
@@ -905,7 +908,7 @@ A heart like an unclouded mirror, like still, clear water.
 ---
 >  それが勝つための唯一の方法だ。
 >  だが、今のお前には無理だろうがな」
-That is the only way to win. But for you as you are now, it's impossible.”
+That is the only way to win. But for you as you are now, it is impossible.”
 
 @25876 Domon · ドモン
 > 「くらえぇぇっ、東方不敗ぃぃ!!」
@@ -941,9 +944,10 @@ You have no right to laugh at me! I will never forgive you!
 I'll crush you!”
 
 @25881 Master · マスター
+# 审校：精读：去破折号
 > 「フフフフ、スーパーモードか。
 >  己から勝機を逃すとは
-“Hehehehe, Super Mode, is it? Throwing away your own chance to win—
+“Hehehehe, Super Mode, is it? Throwing away your own chance to win...
 ---
 >  まさしく馬鹿弟子よなぁ!」
 you truly are a fool of a pupil!”
@@ -1010,18 +1014,19 @@ could defeat me?!”
 weren't you...?”
 
 @25894 Schwarz · シュバルツ
-# 待译：机翻未采用（空译文）
-# 草稿第 1 页：“I thought that even you, with no one to rely on, would fight with a little more composure...”
-# 草稿第 2 页：
+# 审校：补译：原稿空页
 > 「いかにお前とて、頼る者がいなければ
 >  少しは冷静に戦うだろうと
+“I thought that even you would fight with a little more composure
 ---
 >  思ったのだ……」
+if you had no one to lean on...”
 
 @25895 Domon · ドモン
+# 审校：Domon 的短句口吻下，“was not” 过于正式，改为更自然的 “wasn't”。
 > 「すまない……俺はなっちゃいない。
 >  修行が足りなかった……」
-“I'm sorry... I'm not ready. My training was not enough...”
+“I'm sorry... I'm not ready. My training wasn't enough...”
 
 @25896 Domon · ドモン
 > 「くっ!?」
@@ -1045,12 +1050,13 @@ and end up like this. Now, I'll snap your neck!!”
 “Uwaaaaaaaaaah!!”
 
 @25899 Schwarz · シュバルツ
+# 审校：精读：术语统一
 > 「ドモンよ……思い出せ。
 >  あのときの一瞬を…………
 “Domon... Remember. That single instant...
 ---
 >  明鏡止水の一瞬を…………!」
-That single instant of serenity of mind...!”
+That single instant of Meikyo Shisui...!”
 
 @25900 Domon · ドモン
 > (父さん……母さん……
@@ -1344,9 +1350,10 @@ before, so they could build a machine of the same type as the Shining.
 And then they built an improved version for us too.”
 
 @25954 Domon · ドモン
+# 审校：精读：去破折号
 > 「そうか……。すまん、シャイニングガンダム
 >  お前とともに戦った日々を
-“I see... Forgive me, Shining Gundam. The days I fought alongside you—
+“I see... Forgive me, Shining Gundam. The days I fought alongside you,
 ---
 >  俺は決して忘れはしない。
 >  ありがとう……」
@@ -1371,9 +1378,10 @@ I will never forget them. Thank you...”
 “Yes.”
 
 @25959 Koji · 甲児
+# 审校：精读：去破折号
 > 「大丈夫だよ、レインさん。
 >  あの覆面男なら殺しても
-“It's all right, Rain. That masked man—even if you kill him,
+“It's all right, Rain. That masked man, even if you kill him,
 ---
 >  死にはしないって。そのうちまた、
 >  甘いぞドモン! とかいって出てくるさ」
@@ -1508,9 +1516,10 @@ That's where I met Eiji for the first time...”
 “What is it?”
 
 @25982 Lera · レラ
+# 审校：精读：去破折号、句子衔接
 > 「全部終わって、世界は
 >  平和だっていえるようになったらさ
-“Once it's all over, and we can finally say the world is at peace—
+“Once it's all over, and we can finally say the world is at peace,
 ---
 >  アンタどうするつもりなの?」
 what are you planning to do?”
@@ -1542,6 +1551,7 @@ I'd never thought about it either, so I couldn't answer.
 And then I wondered what you'd say.”
 
 @25987 Selain · セレイン（按段落 3DD2）
+# 审校：精读：单数指代、句子衔接
 > 「そうか……昔はな、そんなことは
 >  考える必要すらないと思ってたのさ
 “I see... Long ago, I thought there was no need to even think about that.
@@ -1552,14 +1562,14 @@ I'd just run out of strength somewhere and die, that's all. Whether we could win
 ---
 >  わからないのに、そんなことばかりいってる
 >  奴もいた。私はそいつが嫌いだった
-there were guys who went on about nothing but that. I hated that one.
+there was a guy who went on about nothing but that, without even knowing. I hated him.
 ---
 >  現実を見れないバカ者だと思って
 >  いたからな。実際、そいつは帝国の
 I thought he was a fool who couldn't face reality. And sure enough, he died
 ---
 >  ゲリラ狩りであっさり死んだ。ただ……」
-easily in the Empire's guerrilla hunt. But...”
+just like that in one of the Empire's guerrilla hunts. But...”
 
 @25988 Lera · レラ
 > 「ただ?」
@@ -1705,12 +1715,13 @@ not to push herself too hard?”
 “We made contact with her while the Doll was being developed. You didn't know?”
 
 @26008 Arthur · アーサー
+# 审校：精读：去破折号
 > 「エイジやシモーヌたちは、
 >  みんな知ってたんだな!?
 “Eiji and Simone and everyone knew?!
 ---
 >  僕に黙ってるなんて、ひどいや」
-Keeping it from me—that's mean.”
+Keeping it from me, that's mean.”
 
 @26009 Simone · シモーヌ
 > 「バカね。あんたが知らなかったなんて、
@@ -1750,9 +1761,10 @@ It can't be helped. I didn't want to use that card, but...”
 “You called?”
 
 @26015 Wong · ウォン
+# 审校：精读：死神どの
 > 「2つほど仕事を頼みたいのです。
 >  やってくれますか、死神どの」
-“I'd like to ask you to do two jobs. Will you take them, Master Death?”
+“I'd like to ask you to do two jobs. Will you take them, Lord Death?”
 
 @26016 ???
 > 「なんなりと申すがよい。

@@ -76,8 +76,9 @@ comrade, no matter where he's from.”
 “So some other bunch has shown up, huh.”
 
 @35617 Simone · シモーヌ
+# 审校：说话人是西蒙娜，但原文是“沙羅、もういいの?”，应是对沙罗说话，译文却写成了“Sara, are you sure you're okay?”，把说话对象搞混了；改为对沙罗的询问。
 > 「沙羅、もういいの?」
-“Sara, are you sure you're okay?”
+“Sara, are you sure you're all right?”
 
 @35618 Sara · 沙羅
 > 「ああ、心配かけたね。
@@ -192,9 +193,10 @@ who knows what Shinobu will come up with.”
 “What is it? You're making a racket.”
 
 @35639 Bunny · バニー
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「それが、レディ・アン特佐から
 >  通信が入ってるんです」
-“We're getting a transmission from Lieutenant Colonel Lady Une.”
+“We're getting a transmission from Special Colonel Lady Une.”
 
 @35640 Bright · ブライト
 > 「レディ・アンだと!?」
@@ -372,22 +374,25 @@ I've attached MDs on our side, but with you people that shouldn't be a problem.�
 “Understood. If it's destroying colonies, we can't just ignore it.”
 
 @35669 Lady · レディ
+# 审校：精读：トレーズさま
 > 「頼む。それと……トレーズさまの
 >  幽閉されている場所だが……」
-“I'm counting on you. And... about where Treize is being held...”
+“I'm counting on you. And... about where His Excellency Treize is being held...”
 
 @35670 Ryoma · リョウ
 > 「知っているのか!?」
 “You know where?!”
 
 @35671 Lady · レディ
+# 审校：精读：トレーズさま、大写
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「欧州の、財団が管理する
 >  屋敷とわかった
-“It's a mansion in Europe managed by the foundation.
+“It's a mansion in Europe managed by the Foundation.
 ---
 >  データは転送しておいた。
 >  ……トレーズさまを頼む
-I've already sent you the data. ...Take care of Treize.
+I've already sent you the data. ...Take care of His Excellency.
 ---
 >  どのみち、いつまでも
 >  そこにいるわけにもいくまい」
@@ -417,9 +422,10 @@ We'll be entering the Side 1 space region soon.”
 and manage to link up with them...)
 
 @35675 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「何をなさっているのですかな、
 >  レディ・アン特佐」
-“What might you be doing, Lieutenant Colonel Lady Une?”
+“What might you be doing, Special Colonel Lady Une?”
 
 @35676 Lady · レディ
 > 「……ツバロフか」
@@ -563,9 +569,11 @@ It is absurd. If you wish to taste the bitter gall of that defeat again,
 that is another matter.”
 
 @35697 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ツバロフ→Tubarov、トレーズ→Treize
 > 「いや、勝つためだ、ツバロフ。
 >  ……トレーズ様は人を愛された
-“No, it is in order to win, Tubarov. ...Lord Treize loved people.
+“No, it is in order to win, Tubarov. ...His Excellency loved people.
 ---
 >  そして、人の死も愛された。
 >  死は人の感情に強烈に訴える
@@ -679,6 +687,7 @@ we got back to the fight.”
 “Ngh... you think I'd just let you go?!”
 
 @35712 Duo · デュオ
+# 审校：精读：原文笔误 ソルルバドス
 > 「なぁヒルデ、お前だってもうわかっている
 >  はずだ。確かにムゲソルルバドス軍は
 “Hey, Hilde, you must already understand by now. Sure, we drove off the Muge Zorbados army.
@@ -744,9 +753,10 @@ on a path we can believe in.”
 “Duo...”
 
 @35721 Specials · スペシャルズ
+# 审校：精读：特士
 > 「シュバイカー特士、何をやっている!
 >  早く攻撃しないか!」
-“Specialist Schbeiker, what are you doing?! Attack at once!”
+“Special Officer Schbeiker, what are you doing?! Attack at once!”
 
 @35722 Wufei · 五飛
 > 「フン、新手か。いくら来てもムダな
@@ -825,8 +835,9 @@ have gathered in Northern Europe and revived the Sanc Kingdom.”
 “What the hell? Do those people have any idea what's going on right now?”
 
 @35735 Sara · 沙羅
+# 审校：沙罗口吻应更泼辣，原文“うっさいね。黙って聞きな”语气强硬，译文“You're too loud”偏弱，改为更直接的“Shut it”。
 > 「うっさいね。黙って聞きな」
-“You're too loud. Just shut up and listen.”
+“Shut it. Just shut up and listen.”
 
 @35736 Tetsuya · 鉄也
 > 「まったくだ。それで?」
@@ -1015,9 +1026,10 @@ considered the possibility well enough.”
 “Anna... what on earth are you people...”
 
 @35769 Elle · エル
+# 审校：原文“おじさん”是对年长男性的称呼，译为“old man”过于粗鲁，改为“mister”更贴合艾露活泼直率但不失分寸的口吻。
 > 「悪いけど、おじさんも
 >  人質になってもらうよ」
-“Sorry, old man, but you're gonna be a hostage too.”
+“Sorry, mister, but you're gonna be a hostage too.”
 
 @35770 Judau · ジュドー
 > 「おいビーチャ、早くしろ」
@@ -1297,9 +1309,10 @@ yours?”
 “Being praised isn't bad, but that kind of thing isn't my style.”
 
 @35822 Roux · ルー
+# 审校：原文是“不是那种问题吧”，现有译文“not the issue”语气偏正式，改为更口语的“not the point”以贴合露的吐槽口吻。
 > 「ちょっと、そういう問題じゃ
 >  ないでしょ!?」
-“Hey, that's not the issue here!”
+“Hey, that's not the point!”
 
 @35823 Beecha · ビーチャ
 > 「俺たちには関係ないじゃんかよ」
@@ -1336,8 +1349,9 @@ back during the Muge days either...”
 destroy the Earth itself without a second thought.”
 
 @35829 Elle · エル
+# 审校：原文结巴“そ……そんな”，现有译文“Th... That”的省略号不符合英文结巴习惯，改为连字符“Th-That”。
 > 「そ……そんなの冗談でしょ!?」
-“Th... That's a joke, right?!”
+“Th-That's a joke, right?!”
 
 @35830 Kamille · カミーユ
 > 「冗談でいえることか!」
@@ -1514,9 +1528,10 @@ like I'd just hand it over!”
 “Roger.”
 
 @35865 Judau · ジュドー
+# 审校：精读：去破折号
 > 「うわっ、なんだよ、離せって……
 >  な、なんだ……?」
-“Whoa, what the—let go... wh-what the...?”
+“Whoa, what the... let go... wh-what the...?”
 
 @35866 Amuro · アムロ
 > 「これは……」
@@ -1557,9 +1572,10 @@ Probably that Gundam and a pursuit squad. Be careful!”
 “What?! Damn, they're already here.”
 
 @35874 Judau · ジュドー
+# 审校：精读：去破折号
 > 「なんだよ、おい、どういうことだ?
 >  あいつらなんなんだよ!?」
-“What the—hey, what's going on? Who the hell are they?!”
+“What the... hey, what's going on? Who the hell are they?!”
 
 @35875 Kamille · カミーユ
 > 「あのガンダムが
@@ -1718,17 +1734,19 @@ This isn't like you at all!!”
 “Trowa and Heero?”
 
 @35906 Trowa · トロワ
+# 审校：原文「頼む」是托罗瓦请布莱特处理MD，译文“leave the MDs to us”把对象搞反了，应为“to me”。
 > 「そうだ。すまないが、
 >  MDの始末を頼む」
-“That's right. Sorry, but leave the MDs to us.”
+“That's right. Sorry, but leave the MDs to me.”
 
 @35907 Bright · ブライト
+# 审校：原文「お前たちにつけた部隊」是“派给你们的部队”，译文“assigned to us”方向反了。
 > 「それはやっているが……レディ・アンが
 >  お前たちにつけた
 “We're already on it... but weren't you part of the unit
 ---
 >  部隊ではなかったのか?」
-Lady Une assigned to us?”
+Lady Une assigned to you?”
 
 @35908 Trowa · トロワ
 > 「偽装だ。あの女は俺たちを、
@@ -1740,9 +1758,10 @@ Lady Une assigned to us?”
 By now, Duo and Wufei should have escaped too.”
 
 @35909 Beltorchika · ベルトーチカ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐が!?
 >  でも、そんなことをしたら……」
-“Colonel Lady Une did?! But if she does that...”
+“Special Colonel Lady Une did?! But if she does that...”
 
 @35910 Bunny · バニー
 > 「あの人がつかまるわね」
@@ -1765,13 +1784,14 @@ Don't come any closer, Trowa.”
 “Quatre... what is the meaning of this?”
 
 @35914 Quatre · カトル
+# 审校：精读：去破折号
 > 「僕はこの狂った宇宙のすべてを
 >  破壊する。OZも、異星人も
-“I will destroy everything in this mad universe. OZ, the aliens—
+“I will destroy everything in this mad universe. OZ, the aliens.
 ---
 >  戦いを望むすべてのものを破壊する
 >  のが、僕のやるべきことなんだ
-destroying everything that desires battle is what I must do.
+Destroying everything that desires battle is what I must do.
 ---
 >  コロニーだって武装するよね。
 >  だから僕は、コロニーも破壊するんだ」
@@ -1818,13 +1838,14 @@ Otherwise, I'll have to defeat all of you as well.”
 If you think you can do it, then just try!!”
 
 @35920 Sara · 沙羅
+# 审校：精读：去破折号
 > 「ああ、上等じゃないさ。
 >  自分1人が悲劇の
 “Oh, fine by me. Acting like you're the tragic
 ---
 >  主人公になったようなこといって、
 >  それでコロニーを破壊するなんて
-hero all by yourself, and then destroying colonies over it—
+hero all by yourself, and then destroying colonies over it.
 ---
 >  許しちゃおけないね」
 I won't let that slide.”
@@ -2126,6 +2147,7 @@ for the bomb planted in your machine is right here.”
 (Mars, come out. I want to talk to you.)
 
 @35969 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (その声は……オレにガイヤーと
 >  ゴッドマーズのことを教えてくれた男か)
 (That voice... you're the man who told me about Gaia and Godmars.)
@@ -2141,6 +2163,7 @@ for the bomb planted in your machine is right here.”
 (But... we're in the middle of battle. I don't have a machine I can take out alone.)
 
 @35972 Marg · マーグ
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (ガイヤーを呼べばいい。
 >  お前がどこにいても、呼べば応える)
 (Just call Gaia. Wherever you are, it will answer your call.)
@@ -2188,12 +2211,13 @@ permission to launch!”
 “What did you say?”
 
 @35982 Takeru · タケル
+# 审校：精读：去破折号
 > 「信じてください。オレの
 >  地球を守りたいという気持ちに
-“Please believe me. My desire to protect the Earth—
+“Please believe me. My desire to protect the Earth.
 ---
 >  嘘はありません!」
-there's no lie in it!”
+There's no lie in it!”
 
 @35983 Bright · ブライト
 > 「……わかった」
@@ -2204,8 +2228,9 @@ there's no lie in it!”
 “Thank you!”
 
 @35985 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ガイヤァァァァァァーッ!!」
-“Gaiyaaaaaaa!!”
+“Gaiaaaaaaa!!”
 
 @35986 Marg · マーグ
 > 「来たか……」
@@ -2379,13 +2404,14 @@ The one controlling it is the commander's unit... so that's how it is...)
 Don't worry.”
 
 @36022 Marg · マーグ
+# 审校：原文是确认语气的「のだったな」，译文用疑问句更自然，且原译的“weren't you”语法与口吻都不对。
 > 「ああ……地球のことは調査ずみ
 >  だった。{HeroMech}は現在
 “Yes... We had already surveyed Earth. {HeroMech} is currently
 ---
 >  地球を支配している勢力に
 >  反抗しているのだったな」
-resisting the forces that control the Earth, weren't you.”
+resisting the forces that control the Earth, isn't it.”
 
 @36023 Takeru · タケル
 > 「そうだ」
@@ -2402,13 +2428,13 @@ resisting the forces that control the Earth, weren't you.”
 “...Am I really Mars, a person from the same planet as you?”
 
 @36026 Marg · マーグ
-# 审校：L1 第二页原文“俺の弟よ……”是上一句的延续，应小写开头，与第一页逗号衔接。
+# 审校：精读：页首大写
 > 「そうだ。お前は地球人ではない。
 >  そしてお前の本当の名は、マーズだ
 “Yes. You are not an Earthling. And your true name is Mars.
 ---
 >  俺の弟よ……」
-my younger brother...”
+My little brother...”
 
 @36027 Takeru · タケル
 > 「俺の……兄……?
@@ -2473,6 +2499,7 @@ This will be faster than talking.”
 “...All right.”
 
 @36039 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (うぅっ、これは……。ギシン星……
 >  父と母……。父が研究した
 (Ugh, this is... The planet Gishin... Father and Mother... The antiproton energy
@@ -2486,7 +2513,7 @@ Father researched... and Gaia...
 If it is destroyed or I die, the antiproton bomb will explode...)
 
 @36040 Marg · マーグ
-# 审校：L15 初稿把“ズール”译成 Zuhl，与词表 Emperor Zuul 及 L36 的 Zuhl 不一致，统一为 Zuul；同时将“who is the key”改为“who are the key”，因为先行词是 you。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (そうだ。ズールはいつかこの日のくる
 >  ことを考えて、ガイヤーを地球に
 (That's right. Zuul anticipated that this day would come and sent Gaia to Earth.
@@ -2547,7 +2574,7 @@ I've been waiting for the day I could meet you.”
 “Marg... Brother.”
 
 @36049 Marg · マーグ
-# 审校：L24 初稿把“ズール”译成 Zuhl，与词表 Emperor Zuul 及 L36 的 Zuhl 不一致，统一为 Zuul。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「……マーズ、お前に渡さなくては
 >  ならないものがある。ガイヤー以外の
 “...Mars, there is something I must give you. Besides Gaia,
@@ -2673,23 +2700,24 @@ surpass the combined forces of the entire Earth.”
 Why are they so fixated on this Earth?”
 
 @36066 Marg · マーグ
-# 检查提示：未用必用译名：ズール皇帝→Emperor Zuul
+# 审校：全局：Zuul 拼写
 > 「地球だけではないのです。いまも、
 >  多くの星々に対して戦争を
 “It's not just Earth. Even now, they are in the midst of waging war
 ---
 >  しかけている最中です。
 >  それがズール皇帝のやり方なんです」
-against many stars. That is Emperor Zuhl's way.”
+against many stars. That is Emperor Zuul's way.”
 
 @36067 Shinobu · 忍
+# 审校：忍的粗野口吻应更重，“ムゲ野郎”是复数蔑称，改为“Muge bastards”更贴切。
 > 「ちっくしょう!! 冗談じゃないぜ!
 >  俺たちが必死にやってきたことは
-“Damn it!! You've gotta be kidding me! What was all the stuff we did,
+“Damn it!! You've gotta be kidding me! What the hell was all that stuff we did,
 ---
 >  なんだったんだよ!? ムゲ野郎が
 >  いなくなって、地球人同士の
-risking our lives, for?! We thought the Muge bastard was gone and
+risking our lives, for?! We thought the Muge bastards were gone and
 ---
 >  戦いが始まったと思ったら、また
 >  これかよ!? 俺たちがやったことは
@@ -2734,16 +2762,17 @@ that's where it all ends.”
 It never even crossed my mind.”
 
 @36074 Ciela · シーラ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：精读：去破折号
 > 「しかたありませんね。ブライト艦長、
 >  我々の、この星を守り平和を
-“It can't be helped. Captain Bright, let us believe in our noble cause—to protect
+“It can't be helped. Captain Bright, let us believe in our noble cause, to protect
 ---
 >  もたらすという大義を信じましょう。
 >  そうでなくては戦いぬくことはできません」
 this star and bring about peace. Without that, we cannot fight to the end.”
 
 @36075 Chum · チャム
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「でもシーラさま、あたしたちいつになったら
 >  バイストンウェルに帰れるのか
 “But Lady Ciela, when will we ever be able to return to Byston Well?
@@ -2752,6 +2781,7 @@ this star and bring about peace. Without that, we cannot fight to the end.”
 We just don't know.”
 
 @36076 Ciela · シーラ
+# 审校：人名按词表统一
 > 「チャム、果たすべきことがある以上、
 >  我々はそれをやり遂げる義務が
 “Chum, as long as there is something we must accomplish, we have a duty
@@ -2761,6 +2791,7 @@ We just don't know.”
 to see it through. Be patient. Isn't that right, Show Zama?”
 
 @36077 Show · ショウ
+# 审校：人名按词表统一
 > 「そう思います。チャム、俺たちと
 >  一緒にいるのがそんなに嫌なのか?」
 “I think so. Chum, do you really hate being with us that much?”
@@ -2857,8 +2888,9 @@ I doubt they'd go down that easily, but...”
 “Well then, what should we do?”
 
 @36092 Ryoma · リョウ
+# 审校：原文没有呼语，不应添加“sir”。
 > 「どうするって、何がです?」
-“What should we do about what, sir?”
+“What do you mean, what should we do?”
 
 @36093 Hayato · ハヤト
 > 「ここを出てからどうするか、ということさ」
@@ -2951,12 +2983,13 @@ the only chance is now, while their advance fleet is here.
 Even if we drive them off, the enemy's main force will come.”
 
 @36103 Kamille · カミーユ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「だったら、やっぱり地上に
 >  降りたほうがいいな
 “Then we really should head down to the surface.
 ---
 >  キーになるのは、トレーズ特佐でしょう」
-The key will be Lieutenant Colonel Treize, I'd say.”
+The key will be Special Colonel Treize, I'd say.”
 
 @36104 Bright · ブライト
 > 「そうだな……よし、地上に降りよう。
@@ -3166,8 +3199,9 @@ isn't funny at all.”
 “Huh? I-I think... maybe we shouldn't do it...”
 
 @36146 Elle · エル
+# 审校：原文是在问朱铎的意见，现有译文“And you, Judau?”在上下文中容易被理解为对朱铎说“你也是”，应改为“What about you, Judau?”以贴合艾露追问的口吻。
 > 「ジュドーは?」
-“And you, Judau?”
+“What about you, Judau?”
 
 @36147 Judau · ジュドー
 > 「俺も……面倒なことはゴメンだ」
@@ -3192,8 +3226,9 @@ stay safe and sound.”
 “Th-this is bad. Judau, I guess we should help them after all.”
 
 @36150 Beecha · ビーチャ
+# 审校：原文是比查对伊诺说“别变来变去”，现有译文“stop flip-flopping”语气过于轻佻，改为更直接的“stop changing your mind”更符合比查的口气。
 > 「イーノ、いうことをころころ変えるな!」
-“Iino, stop flip-flopping!”
+“Iino, stop changing your mind!”
 
 @36151 Elle · エル
 > 「ジュドー」
@@ -3225,9 +3260,10 @@ will be in your care on the {HeroMech}.”
 “In exchange, make sure we get proper meals, got it?”
 
 @36157 Milliardo · ミリアルド
+# 审校：原文“回収”指回收/打捞，现有译文“salvage”在语境中偏“打捞”，改为“recover”更中性且贴合米利亚尔多庄重的语气。
 > 「ハワード、今度はいったい
 >  何を回収したのだ?」
-“Howard, what in the world did you salvage this time?”
+“Howard, what in the world did you recover this time?”
 
 @36158 Howard · ハワード
 > 「なかなか面白いものだ。
@@ -3424,19 +3460,21 @@ This is no mere OZ infighting. Are you saying you don't care
 if humanity is wiped out?!”
 
 @36185 Dr. Yotsuya · 四谷博士
+# 审校：精读：去破折号
 > 「その通りだな。わしは地球を
 >  愛しこそすれ、人間など
 “That's right. I may love the Earth, but I couldn't care less
 ---
 >  どうなってもかまうものではない。
 >  いや、地球のことを考えれば
-what happens to humans. No—if you consider the Earth,
+what happens to humans. No, if you consider the Earth,
 ---
 >  人間など第1に滅びてしまうべき
 >  生き物だろう」
 humans are the creatures that ought to perish first.”
 
 @36186 Banjo · 万丈
+# 审校：精读：去破折号
 > 「なんだって? いったいなぜそこまで……
 >  いや、あなたがどう思おうとかまわない
 “What?! Why would you go that far... No, I don't care what you think.
@@ -3451,7 +3489,7 @@ won't just kill humans. They're the kind of lot who wouldn't blink at
 ---
 >  おかしくない連中だ。
 >  征服が、領土の拡大が
-destroying this Earth itself. Conquest, expanding their territory—
+destroying this Earth itself. Conquest, expanding their territory,
 ---
 >  目的ではないのです」
 that isn't their goal.”

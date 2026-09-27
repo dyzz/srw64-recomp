@@ -1,139 +1,366 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12899 George · ジョルジュ
+# 触发：攻击（通用，1/7）
 > 「いくぞ!」
 “Here I go!”
 
 @12900 George · ジョルジュ
+# 触发：攻击（通用，2/7）
 > 「いざ!」
 “Now!”
 
 @12901 George · ジョルジュ
+# 触发：攻击（通用，3/7）
 > 「いきますよ!」
 “Here I come!”
 
 @12902 George · ジョルジュ
+# 触发：攻击（通用，4/7）
 > 「うぁぁぁぁぁぁ!」
 “Aaaaaaah!”
 
 @12903 George · ジョルジュ
+# 触发：攻击（通用，5/7）
 > 「とどめだぁ!」
 “This is the finishing blow!”
 
 @12904 George · ジョルジュ
+# 触发：攻击（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これはどうです!?」
-“How's this?!”
+“How’s this?!”
 
 @12905 George · ジョルジュ
+# 触发：攻击（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今私の目に映るのは、お前のみ!」
-“Right now, you're the only one in my sight!”
+“Right now, you’re the only one in my sight!”
 
 @12906 George · ジョルジュ
+# 触发：被击坠（通用，1/3）
 > 「む、無念……」
 “H-how regrettable...”
 
 @12907 George · ジョルジュ
+# 触发：被击坠（通用，2/3）
 > 「あなたの勝ちだ……」
 “You win...”
 
 @12908 George · ジョルジュ
+# 触发：被击坠（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：マリアルイゼ→Maria Louise
 > 「マ、マリアルイゼ様……」
-“L-Lady Maria Louise...”
+“L-lady Maria Louise...”
 
 @12909 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「うわぁぁぁぁぁぁぁぁっ!」
 “Aaaaaaaaaah!”
 
 @12910 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こんなはずは……」
-“Th-this can't be...”
+“Th-this can’t be...”
 
 @12911 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「ぐぅぅ、騎士は敵に背を向けぬ!」
 “Ngh, a knight never turns his back on the enemy!”
 
 @12912 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：まさか 在重伤情境
 > 「ま、まさか!?」
-“I-impossible?!”
+“I-it can’t be?!”
 
 @12913 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! 戦いはまだ終わって
 >  いないぞぉ!」
-“What's wrong! The battle isn't over yet!”
+“What’s wrong! The battle isn’t over yet!”
 
 @12914 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
 > 「その罪、万死に値します!」
 “That crime deserves a thousand deaths!”
 
 @12915 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
 > 「うっ!?」
 “Ugh?!”
 
 @12916 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 > 「なにっ!?」
 “What?!”
 
 @12917 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 > 「ぬぅっ!」
 “Ngh!”
 
 @12918 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 > 「フッ、さすがですね」
 “Hmph, as expected.”
 
 @12919 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
+# 审校：そうこなくては張り合いがない＝就该这样才带劲
 > 「そうこなくては張り合いがありません」
-“It wouldn't be worth it otherwise.”
+“Now that’s more like it.”
 
 @12920 George · ジョルジュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「そのくらい」
 “Is that all?”
 
 @12921 George · ジョルジュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ、その程度ですか」
-“Hmph, is that all you've got?”
+“Hmph, is that all you’ve got?”
 
 @12922 George · ジョルジュ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃は効きませんよ」
-“Attacks like that won't work on me.”
+“Attacks like that won’t work on me.”
 
 @12923 George · ジョルジュ
+# 触发：回避（通用，1/5）
 > 「フッ!」
 “Hmph!”
 
 @12924 George · ジョルジュ
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたのですか?」
-“What's the matter?”
+“What’s the matter?”
 
 @12925 George · ジョルジュ
+# 触发：回避（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私はここですよ!」
-“I'm right here!”
+“I’m right here!”
 
 @12926 George · ジョルジュ
+# 触发：回避（通用，4/5）
 > 「このような攻撃など!」
 “An attack like that is nothing!”
 
 @12927 George · ジョルジュ
+# 触发：回避（通用，5/5）
 > 「どうやらムダだったようですね」
 “Seems that was useless.”
 
 @12928 George · ジョルジュ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないといっているのです!」
-“I told you it doesn't work!”
+“I told you it doesn’t work!”
 
 @12929 George · ジョルジュ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：beam 小写
 > 「ビーム攻撃などと、ムダなことを!」
-“A Beam attack? How pointless!”
+“A beam attack? How pointless!”
 
 @12930 George · ジョルジュ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れ!? 私としたことが」
-“Out of ammo?! I can't believe it.”
+“Out of ammo?! I can’t believe it.”
 
 @12931 George · ジョルジュ
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは届かないようですね」
-“Seems I can't reach from here.”
+“Seems I can’t reach from here.”
 
 @12932 George · ジョルジュ
+# 触发：射程外，无法反击（通用，2/2）
 # 审校：“That's dirty!” 语气偏弱且不像战斗中的斥责，改为更自然的“You coward!”
 > 「卑怯なっ!」
 “You coward!”
+
+@17243 George · ジョルジュ
+# 触发：攻击，乘坐〈ガンダムローズ〉
+> 「ローズ!」
+“Rose!”
+
+@17244 George · ジョルジュ
+# 触发：攻击，乘坐〈ガンダムローズS〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いくぞ、ガンダムローズ!」
+“Let’s go, Gundam Rose!”
+
+@17245 George · ジョルジュ
+# 触发：使用〈シュバリエサーベル〉（低优先，可能被通用台词顶掉）
+> 「この剣が受けられますか!?」
+“Can you take this sword?!”
+
+@17246 George · ジョルジュ
+# 触发：使用〈ローゼスビット〉
+> 「ローゼスビット!」
+“Rose Bits!”
+
+@17247 George · ジョルジュ
+# 触发：使用〈ローゼスビット〉
+> 「ゆけ! ローゼスビットォッ!」
+“Go! Rose Bits!”
+
+@17248 George · ジョルジュ
+# 触发：使用〈ローゼスビット〉
+> 「受けよ我が洗礼!」
+“Receive my baptism!”
+---
+> 「ローゼスビット!」
+“Rose Bits!”
+
+@17249 George · ジョルジュ
+# 触发：使用〈ローゼスビット〉
+> 「いかがかな、
+>  変幻自在のローゼスビットは!?」
+“How do you like it, my ever-changing Rose Bits?!”
+
+@17250 George · ジョルジュ
+# 触发：使用〈ローゼススクリーマー〉
+> 「受けよ我が洗礼!」
+“Receive my baptism!”
+---
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17251 George · ジョルジュ
+# 触发：使用〈ローゼススクリーマー〉
+> 「ゆくぞ!」
+“Here I go!”
+---
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17252 George · ジョルジュ
+# 触发：使用〈ローゼススクリーマー〉
+> 「ローゼススクリーマー!」
+“Rose Screamer!”
+
+@17253 George · ジョルジュ
+# 触发：剧情标志 45 = 3，使用〈ローゼスハリケーン〉
+> 「ゆけっ、ローゼスハリケーン!」
+“Go, Rose Hurricane!”
+
+@17254 George · ジョルジュ
+# 触发：剧情标志 45 = 3，使用〈ローゼスハリケーン〉
+> 「とどめ! ローゼスハリケーン!!」
+“Finishing blow! Rose Hurricane!!”
+
+@17255 George · ジョルジュ
+# 触发：剧情标志 45 = 3，使用〈ローゼスハリケーン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このエネルギーの渦から逃がれることは
+>  不可能!」
+“There’s no escaping this vortex of energy!”
+
+@17256 George · ジョルジュ
+# 触发：剧情标志 45 = 0，使用〈ローゼスハリケーン〉
+> 「ゆけっ、ローゼスハリケーン!」
+“Go, Rose Hurricane!”
+
+@17257 George · ジョルジュ
+# 触发：剧情标志 45 = 0，使用〈ローゼスハリケーン〉
+> 「とどめ! ローゼスハリケーン!!」
+“Finishing blow! Rose Hurricane!!”
+
+@17258 George · ジョルジュ
+# 触发：剧情标志 45 = 0，使用〈ローゼスハリケーン〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「このエネルギーの渦から逃がれることは
+>  不可能!」
+“There’s no escaping this vortex of energy!”
+
+@17259 Domon · ドモン
+# 触发：使用〈シャッフル同盟拳〉（对话第 1/7 句）
+# 审校：五套洗牌同盟拳台词统一
+> 「いくぞ、お前たちぃ!!」
+“Let’s go, you guys!!”
+
+@17260 Chibodee · チボデー
+# 触发：使用〈シャッフル同盟拳〉（对话第 2/7 句）
+# 审校：おおっ 是应声“好！”，五套统一
+> 「おおっ!」
+“Yeah!”
+
+@17261 Chibodee · チボデー
+# 触发：使用〈シャッフル同盟拳〉（对话第 3/7 句）
+# 审校：五套统一为 our souls
+> 「この魂の炎!」
+“This flame of our souls!”
+
+@17262 George · ジョルジュ
+# 触发：使用〈シャッフル同盟拳〉（对话第 4/7 句）
+# 审校：四句连读：灵魂之炎／若燃至极限／就没有什么／是打不倒的
+> 「極限まで高めれば!」
+“If we raise it to its limit!”
+
+@17263 Sai Saici · サイ・サイシー
+# 触发：使用〈シャッフル同盟拳〉（对话第 5/7 句）
+# 审校：连读，见上
+> 「倒せないものなど!」
+“There is nothing!”
+
+@17264 Argo · アルゴ
+# 触发：使用〈シャッフル同盟拳〉（对话第 6/7 句）
+# 审校：连读，见上
+> 「なにもない!」
+“We cannot defeat!”
+
+@17265 Domon · ドモン
+# 触发：使用〈シャッフル同盟拳〉（对话第 7/7 句）
+# 审校：爆熱 照词条 Erupting，五套统一
+> 「爆熱ッ! シャッフル同盟拳!!」
+“Erupting! Shuffle Alliance Fist!!”
+
+@17266 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムローズ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I won’t lose! Here I go, Gundam Rose!”
+
+@17267 George · ジョルジュ
+# 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムローズS〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「くっ……しかし私は負けない!
+>  ゆくぞガンダムロォォォズ!」
+“Ngh... but I won’t lose! Here I go, Gundam Rose!”
+
+@17268 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ガンダムローズ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ガ、ガンダムローズが……」
+“G-gundam Rose is...”
+
+@17269 George · ジョルジュ
+# 触发：中伤（剩余 HP 30–90%），乘坐〈ガンダムローズS〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ガ、ガンダムローズが……」
+“G-gundam Rose is...”
+
+@17270 George · ジョルジュ
+# 触发：攻击无效（护罩／装甲），乘坐〈ガンダムローズ〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「それではこのガンダムローズに、
+>  傷ひとつつきませんよ」
+“You won’t put a single scratch on this Gundam Rose.”
+
+@17271 George · ジョルジュ
+# 触发：攻击无效（护罩／装甲），乘坐〈ガンダムローズS〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「それではこのガンダムローズに、
+>  傷ひとつつきませんよ」
+“You won’t put a single scratch on this Gundam Rose.”

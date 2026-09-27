@@ -90,9 +90,10 @@ I'd like to join your operation.”
 “Of course. We're grateful you came.”
 
 @29430 Noin · ノイン
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ゼクス特佐……、来てくれたのですね
 >  今までどこに?」
-“Lieutenant Colonel Zechs... so you've come. Where have you been all this time?”
+“Special Colonel Zechs... so you've come. Where have you been all this time?”
 
 @29431 Zechs · ゼクス
 > 「考えていた。愚かな人類に、まだ
@@ -141,9 +142,10 @@ but in the end I've come back.”
 closed to a friend. I'm glad you've come.”
 
 @29437 Zechs · ゼクス
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「財団総帥に復帰したそうだな。
 >  リリーナのこと……感謝している
-“I hear you've returned as head of the foundation. About Relena... thank you.
+“I hear you've returned as head of the Foundation. About Relena... thank you.
 ---
 >  今の状況はあれにとって
 >  過酷すぎる」
@@ -193,25 +195,27 @@ the lunar base is now under Treize faction control.”
 “Oh, splendid work. I suppose the troops' morale really is different with Treize back.”
 
 @29442 Garrison · ギャリソン
+# 审校：全局：バルジ 词条 Barge
 > 「さようで。月内部にもトレーズ様を
 >  密かに信奉する者が
 “Indeed. There must have been no small number of those within the lunar forces
 ---
 >  少なくなかったのでしょうな。バルジと
 >  違い、ロームフェラの本拠地から
-secretly loyal to Lord Treize as well. Unlike Balgi, it's quite far from
+secretly loyal to Lord Treize as well. Unlike Barge, it's quite far from
 ---
 >  遠うございますから」
 Romefeller's home base, after all.”
 
 @29443 Banjo · 万丈
+# 审校：全局：バルジ 词条 Barge
 > 「これでロームフェラ派……
 >  いやシロッコ派は、バルジとリーブラに
 “With this, the Romefeller faction... no, the Scirocco faction, will concentrate
 ---
 >  戦力を集中するだろうね。
 >  月の奪還に出て戦力を
-its forces at Balgi and Libra. That man wouldn't split his forces
+its forces at Barge and Libra. That man wouldn't split his forces
 ---
 >  分散させるようなことは、
 >  あの男はしないだろう」
@@ -253,9 +257,10 @@ dispatch reinforcements?”
 “W-wait a second. You're abandoning the moon?”
 
 @29449 Scirocco · シロッコ
+# 审校：全局：バルジ 词条 Barge
 > 「そうだ。リーブラとバルジに勢力を
 >  集中させる。いい機会だ」
-“That's right. We'll concentrate our strength at Libra and Balgi. It's a good opportunity.”
+“That's right. We'll concentrate our strength at Libra and Barge. It's a good opportunity.”
 
 @29450 Mouar · マウアー
 > 「しかし……」
@@ -279,9 +284,10 @@ That is the most basic of all tactics. Surely you know that?”
 to return.”
 
 @29453 Scirocco · シロッコ
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ジェリド特尉、状況を判断する
 >  ためには、大局を見ることだ
-“Lieutenant Jerid, to judge a situation, one must look at the big picture.
+“Special Lieutenant Jerid, to judge a situation, one must look at the big picture.
 ---
 >  時の運は、まだ十分に傾いては
 >  いない。今は、我々の敵が互いに
@@ -292,9 +298,10 @@ Fortune's tide has not yet tilted far enough. For now, we need only sit here
 and watch our enemies fight among themselves. Don't you agree?”
 
 @29454 Jerid · ジェリド
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「はっ、なるほどね。そういうことなら
 >  了解しましょう、特佐殿」
-“Yes, I see. If that's the case, I understand, Lieutenant Colonel.”
+“Yes, I see. If that's the case, I understand, Special Colonel.”
 
 @29455 Wahl · ワール
 > 「苦戦しておるようだな、
@@ -311,9 +318,10 @@ and watch our enemies fight among themselves. Don't you agree?”
 time. With the next attack, I will most certainly...”
 
 @29457 Wahl · ワール
+# 审校：精读：マーズ 误作 Mazinger
 > 「黙れ。貴様、そうやって何度
 >  マーズと{HeroMech}を
-“Silence. How many times have you let Mazinger and the {HeroMech}
+“Silence. How many times have you let Mars and the {HeroMech}
 ---
 >  討ちもらした。ズール皇帝はお怒り
 >  になっておられる。貴様に
@@ -337,13 +345,14 @@ entrusting you with the advance fleet was a mistake.”
 to Earth. Prepare yourself for his reprimand, Commander Gandal.”
 
 @29460 Gandal · ガンダル
+# 审校：精读：マーズ 误作 Mazinger
 > 「ま、待て。皇帝陛下にお伝え
 >  下され。今しばらく、今しばらくの
 “W-wait. Tell His Majesty the Emperor, I beg you. Grant me a little more
 ---
 >  お時間をたまわりたい。このガンダル、
 >  命にかえてもマーズと地球人を
-time, just a little more. This Gandal will slay Mazinger and the Earthlings
+time, just a little more. This Gandal will slay Mars and the Earthlings
 ---
 >  しとめてみせる。どうか今一度の
 >  機会を……」
@@ -362,9 +371,10 @@ you know what that means. You'd best apply yourself,
 Commander Gandal...”
 
 @29462 Gandal · ガンダル
+# 审校：精读：マーズ 误作 Mazinger
 > 「おっ、おのれおのれえっ! マーズ!
 >  {HeroMech}! このうえは
-“D-damn you, damn you all! Mazinger! {HeroMech}! Now I must wash away
+“D-damn you, damn you all! Mars! {HeroMech}! Now I must wash away
 ---
 >  何としても恥をそそがねば、この
 >  ガンダル、死んでも死にきれぬわ!
@@ -408,9 +418,10 @@ One appears to be the {HeroMech}...”
 “Y-yes, sir!”
 
 @29470 Gandal · ガンダル
+# 审校：精读：マーズ 误作 Mazinger
 > 「ふっ、ふはははは! マーズ、
 >  {HeroMech}! 奴らの方から
-“Heh, heheheheh! Mazinger, {HeroMech}! To think they'd come
+“Heh, heheheheh! Mars, {HeroMech}! To think they'd come
 ---
 >  出向いてくれるとはなあ!
 >  礼をいうぞ! わしも出撃する!」
@@ -438,8 +449,9 @@ unnecessary things is reassuring, though.”
 “Tch.”
 
 @29474 Marg · マーグ
+# 审校：精读：マーズ 误作 Mazinger
 > 「マーズ……今度こそ貴様を倒す」
-“Mazinger... This time I will defeat you for certain.”
+“Mars... This time I will defeat you for certain.”
 
 @29475 Takeru · タケル
 > 「マーグ!? 思い出せ!
@@ -624,18 +636,19 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Marg, it's all right now. I'll never let you go!”
 
 @29508 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Captain Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, prepare yourself!”
 
 @29509 Marg · マーグ
 > 「ロゼ、やめろッ!」
 “Rose, stop!”
 
 @29510 Takeru · タケル
+# 审校：原文「やめろぉぉぉぉぉっ」是拖长音的怒吼，译文应体现拖长音。
 > 「マーグ!? やめろぉぉぉぉぉっ!!」
-“Marg?! Stop it!!”
+“Marg?! Stoooop!!”
 
 @29511 Marg · マーグ
 > 「うわあぁぁぁぁぁーっ!?」
@@ -725,10 +738,10 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Marg, it's all right now. I'll never let you go!”
 
 @29528 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Captain Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, prepare yourself!”
 
 @29529 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -932,10 +945,10 @@ And he turned me into a man who fights exactly as Zuul wills...”
 “Uwaaaaaaah!!”
 
 @29570 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一
 > 「くっ、マーグ隊長!?
 >  おのれ、許さん!」
-“Ngh, Captain Marg?! Curse you, I won't forgive this!”
+“Ngh, Commander Marg?! Curse you, I won't forgive this!”
 
 @29571 Marg · マーグ
 > 「……!? マーズ……俺はいったい、
@@ -1265,9 +1278,10 @@ I must descend to the surface!”
 “However...”
 
 @29624 Dermail · デルマイユ
+# 审校：精读：引号
 > 「しかしではない!
 >  しかも{HeroMech}の連中は
-“'However' nothing! And on top of that, {HeroMech} and the others
+“‘However’ nothing! And on top of that, {HeroMech} and the others
 ---
 >  帝国軍に勝ってしまったのだぞ!?」
 have actually beaten the Imperial forces?!”
@@ -1281,7 +1295,7 @@ have actually beaten the Imperial forces?!”
 full-scale invasion is yet to come.”
 
 @29626 Dermail · デルマイユ
-# 审校：「可能だといったではないか」是反问“你不是说过可以吗”，初稿译成陈述句“I told you it was possible”，说话人变成德鲁麦尤自己，逻辑错误，改为反问。
+# 审校：Dermail 对 Scirocco 用「貴様ごとき」是轻蔑语气，改为 the likes of you 更符合老贵族的傲慢口吻。
 > 「だが、そのおかげで財団は
 >  トレーズ派の方を頼りに
 “But thanks to that, the Foundation is starting to rely on the Treize faction!
@@ -1296,7 +1310,7 @@ the Treize faction! Did you not say it was possible with the Virgo II?!
 ---
 >  可能だといったではないか!
 >  それとも貴様ごときでは
-Or are you saying that even someone like you
+Or are you saying that even the likes of you
 ---
 >  やはり無理だというのか!?」
 can't manage it?!”
@@ -1345,13 +1359,14 @@ no purpose. Just exclude the shuttle from the MD's identification codes.”
 “Hmph, I see.”
 
 @29632 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「まもなく大気圏突入ですな。
 >  しかしデルマイユ公、シロッコ特佐は
 “We'll be entering the atmosphere shortly. But Duke Dermail, shouldn't you
 ---
 >  あまり信用せぬほうが
 >  よろしいのではありませんか?」
-be a little less trusting of Special Officer Scirocco?”
+be a little less trusting of Special Colonel Scirocco?”
 
 @29633 Dermail · デルマイユ
 > 「ワシもそれは考えておる。だが、
@@ -1413,9 +1428,11 @@ They're approaching. Shall we activate the MDs?”
 “I-Impossible...”
 
 @29644 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：ツバロフ→Tubarov、トレーズ→Treize
 > 「トレーズさま、報告が入りました。
 >  先ほど、財団代表代行の
-“Lord Treize, we've received a report. The shuttle carrying the Foundation's
+“Your Excellency, we've received a report. The shuttle carrying the Foundation's
 ---
 >  デルマイユ公爵が乗ったシャトルが、
 >  我が方のパトロール隊に
@@ -1470,9 +1487,10 @@ As an accident, it's a bit too strange.”
 “I see... Paptimus Scirocco, then. ...He's reckless.”
 
 @29650 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, is Marg—is my brother all right?!”
+“Rain, is Marg, is my brother all right?!”
 
 @29651 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -1531,13 +1549,14 @@ She comes from a world conquered by the Empire.”
 “But, brother...”
 
 @29662 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > 「マーズ、悪いのはズールだ。
 >  銀河帝国の人々すべてが
-“Mars, Zuhl is the one to blame. Not everyone in the Galactic Empire
+“Mars, Zuul is the one to blame. Not everyone in the Galactic Empire
 ---
 >  ズールと同じわけではない。
 >  俺はそう信じている」
-is the same as Zuhl. I believe that.”
+is the same as Zuul. I believe that.”
 
 @29663 Takeru · タケル
 > 「わかったよ、兄さん。なんとかやってみる」
@@ -1564,9 +1583,10 @@ Let's leave it at that for today.”
 “All right... Rain, please take care of my brother.”
 
 @29668 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, is Marg—is my brother all right?!”
+“Rain, is Marg, is my brother all right?!”
 
 @29669 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -1597,22 +1617,24 @@ to a proper facility soon. It's dangerous to keep bringing him along like this.�
 “It's all right, brother. For now, just focus on getting better.”
 
 @29674 Marg · マーグ
+# 审校：全局：Zuul 拼写
 > 「ああ……マーズ、悪いのはズールだ。
 >  銀河帝国のすべてがズールと
-“Yeah... Mars, Zuhl is the one to blame. Not everyone in the Galactic Empire
+“Yeah... Mars, Zuul is the one to blame. Not everyone in the Galactic Empire
 ---
 >  同じわけじゃない。
 >  ズールを倒すんだ、マーズ
-is the same as Zuhl. Defeat Zuhl, Mars.
+is the same as Zuul. Defeat Zuul, Mars.
 ---
 >  でなければ、いつまでもこんなことが
 >  繰り返される」
 Otherwise, this will just keep happening forever.”
 
 @29675 Takeru · タケル
+# 审校：全局：Zuul 拼写
 > 「……わかったよ、兄さん。
 >  ズールは俺たちが必ず倒してみせる」
-“...I understand, brother. We'll make sure to defeat Zuhl.”
+“...I understand, brother. We'll make sure to defeat Zuul.”
 
 @29676 Marg · マーグ
 > 「頼んだぞ……マーズ……」
@@ -1759,8 +1781,9 @@ and I swear I'll protect the Earth.”
 “But to think there were other survivors from Planet Fleed besides us.”
 
 @29702 Daisuke · 大介
+# 审校：大介对ナイーダ的回应用“Yeah”过于随意，改为更符合其温和内敛口吻的“Yes”。
 > 「ああ、ナイーダ、よく無事でいてくれた」
-“Yeah, Naida, I'm glad you made it through safely.”
+“Yes, Naida, I'm glad you made it through safely.”
 
 @29703 Banjo · 万丈
 > 「失礼、お嬢さん。
@@ -1857,9 +1880,10 @@ forget you for even a moment...)
 “When it comes to Captain Bright, Emary is something else.”
 
 @29715 Bright · ブライト
+# 审校：Bright 对部下的口吻应更直接，将 'I'm not' 改为 'I weren't' 更符合虚拟语气和舰长语气。
 > 「本人がいないかのように話すのは、
 >  やめてくれないか」
-“Could you stop talking as if I'm not here?”
+“Could you stop talking as if I weren't here?”
 
 @29716 Amuro · アムロ
 # 审校：原文“おかげで”指エマリー，初稿用 “that” 指代模糊，改为 “her”。

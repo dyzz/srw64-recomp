@@ -1,107 +1,140 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11796 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，1/7）
 > 「消えてなくなれ」
 “Just disappear.”
 
 @11797 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，2/7）
 > 「くらうがいい」
 “Take this.”
 
 @11798 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，3/7）
 > 「その力……我に示してみよ」
 “Show me... that power of yours.”
 
 @11799 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，4/7）
+# 审校：existence’s death 生硬
 > 「見るがいい……存在の死の闇を」
-“Behold... the darkness of existence's death.”
+“Behold... the darkness where existence dies.”
 
 @11800 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「死にたくなければ、我と戦え」
-“If you don't want to die, fight me.”
+“If you don’t want to die, fight me.”
 
 @11801 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「……消滅させる」
-“...I'll annihilate you.”
+“...I’ll annihilate you.”
 
 @11802 J-Ren · ジェイ＝レン
+# 触发：攻击（通用，7/7）
 > 「終わりだ」
 “This is the end.”
 
 @11803 J-Ren · ジェイ＝レン
+# 触发：被击坠（通用，1/2）
 > 「な……なに!?」
 “Wha... what?!”
 
 @11804 J-Ren · ジェイ＝レン
+# 触发：被击坠（通用，2/2）
 > 「くっ……まさか、これほどとは……」
 “Ngh... To think it was this much...”
 
 @11805 J-Ren · ジェイ＝レン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「いったい……この力はどこからくるのだ」
 “Just... where does this power come from?”
 
 @11806 J-Ren · ジェイ＝レン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「く……これほどの力があるのか?」
 “Ngh... You have this much power?”
 
 @11807 J-Ren · ジェイ＝レン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「まさかとは思ったが……我らの予想を上
 >  回るか……」
 “I doubted it, but... you surpass our expectations...”
 
 @11808 J-Ren · ジェイ＝レン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局：Zuul 拼写
 > 「ほう……ズールを倒しただけのことはある」
-“Oh... worthy of one who defeated Zuhl.”
+“Oh... worthy of one who defeated Zuul.”
 
 @11809 J-Ren · ジェイ＝レン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なるほど……こういうことか」
-“I see... so that's how it is.”
+“I see... so that’s how it is.”
 
 @11810 J-Ren · ジェイ＝レン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「……確かに、面白い知性体だ……」
 “...Truly, an interesting intellect...”
 
 @11811 J-Ren · ジェイ＝レン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：无駄だった指期待落空
 > 「この程度とは……無駄だったか」
-“Only this much... Was it pointless?”
+“Only this much... So it was a waste.”
 
 @11812 J-Ren · ジェイ＝レン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「……本気でこい。でなければ、消滅させ
 >  る」
-“...Come at me seriously. Otherwise, I'll annihilate you.”
+“...Come at me seriously. Otherwise, I’ll annihilate you.”
 
 @11813 J-Ren · ジェイ＝レン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「その程度で“アル＝イー＝クイス”と
 >  戦おうというのか?」
 “You think you can fight Al-E-Quis with that?”
 
 @11814 J-Ren · ジェイ＝レン
+# 触发：回避（通用，1/3）
 > 「愚かな……」
 “Foolish...”
 
 @11815 J-Ren · ジェイ＝レン
+# 触发：回避（通用，2/3）
 > 「無駄なことがわからぬようだな」
 “You seem unable to see the futility.”
 
 @11816 J-Ren · ジェイ＝レン
+# 触发：回避（通用，3/3）
 # 审校：原译“beyond reasoning”不通顺，改为更自然的表达。
 > 「これでは、話にならぬな」
 “This is getting us nowhere.”
 
 @11817 J-Ren · ジェイ＝レン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ばかめ」
 “Fool.”
 
 @11818 J-Ren · ジェイ＝レン
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 # 审校：原译“Am I draining too fast?”主语不明确，补充为“My energy”更清楚。
 > 「いかん……消耗が激しすぎるか」
 “No... My energy is draining too fast.”
 
 @11819 J-Ren · ジェイ＝レン
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「くっ……これ以上エネルギーを失っては…
 >  …」
 “Ngh... If I lose any more energy...”
 
 @11820 J-Ren · ジェイ＝レン
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ほう……なかなかやるな」
-“Oh... You're quite good.”
+“Oh... You’re quite good.”

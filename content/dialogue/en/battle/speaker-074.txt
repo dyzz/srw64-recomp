@@ -1,167 +1,280 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8622 Haman · ハマーン
+# 触发：攻击（通用，1/13）
 > 「小賢しいっ!!」
 “Insolent fool!!”
 
 @8623 Haman · ハマーン
+# 触发：攻击（通用，2/13）
+# 审校：哈曼的威严口吻下，“俗物”译为“commoner”过于平淡，改为更符合其冷傲语气的“vulgar wretch”。
 > 「俗物がっ!」
-“You commoner!”
+“You vulgar wretch!”
 
 @8624 Haman · ハマーン
+# 触发：攻击（通用，3/13）
 > 「私に倒されること、幸運に
 >  思うのだな!」
 “Consider it good fortune to be struck down by me!”
 
 @8625 Haman · ハマーン
+# 触发：攻击（通用，4/13）
 > 「もらったぁっ!!」
 “Got you!!”
 
 @8626 Haman · ハマーン
+# 触发：攻击（通用，5/13）
 > 「そこかっ!」
 “There!”
 
 @8627 Haman · ハマーン
+# 触发：攻击（通用，6/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「消えろ、目障りだっ!!」
-“Vanish, you're an eyesore!!”
+“Vanish, you’re an eyesore!!”
 
 @8628 Haman · ハマーン
+# 触发：攻击（通用，7/13）
 > 「邪魔だっ!」
 “Out of my way!”
 
 @8629 Haman · ハマーン
+# 触发：攻击（通用，8/13）
 > 「これで終わりだっ!」
 “This ends now!”
 
 @8630 Haman · ハマーン
+# 触发：攻击（通用，9/13）
 > 「失せろっ!」
 “Begone!”
 
 @8631 Haman · ハマーン
+# 触发：攻击（通用，10/13）
 > 「ここまでだっ!」
 “This is as far as you go!”
 
 @8632 Haman · ハマーン
+# 触发：攻击（通用，11/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせんっ!」
-“I won't let you!”
+“I won’t let you!”
 
 @8633 Haman · ハマーン
+# 触发：攻击（通用，12/13）
 > 「行けっ!」
 “Go!”
 
 @8634 Haman · ハマーン
+# 触发：攻击（通用，13/13）
 > 「ここまでのようだな……覚悟っ!」
 “So this is your limit... Prepare yourself!”
 
 @8635 Haman · ハマーン
+# 触发：被击坠（通用，1/2）
+# 审校：被击坠时的なんだと
 > 「なんだと!?」
-“What did you say?!”
+“What?!”
 
 @8636 Haman · ハマーン
+# 触发：被击坠（通用，2/2）
 > 「ちいっ……」
 “Tch...”
 
 @8637 Haman · ハマーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!? お、押されているのか!?」
-“Ngh?! A-Am I being pushed back?!”
+“Ngh?! A-am I being pushed back?!”
 
 @8638 Haman · ハマーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むうっ!? こ、このパワー……」
-“Mmph?! Th-This power...”
+“Mmph?! Th-this power...”
 
 @8639 Haman · ハマーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、何だこの力は!?
 >  これ程の力があるのか!?」
-“Wh-What is this strength?! You had this much power?!”
+“Wh-what is this strength?! You had this much power?!”
 
 @8640 Haman · ハマーン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「ぬううっ! この私が追い詰められて
 >  いるというのか!?」
 “Nghhh! Am I, of all people, being cornered?!”
 
 @8641 Haman · ハマーン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 > 「ちっ! なめたマネを!!」
 “Tch! You dare mock me!!”
 
 @8642 Haman · ハマーン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! そういつまでも好きには
 >  させんぞっ!!」
-“Ngh! I won't let you keep having your way forever!!”
+“Ngh! I won’t let you keep having your way forever!!”
 
 @8643 Haman · ハマーン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! 貴様……つけあがるなっ!」
-“Ugh! You... don't get cocky!”
+“Ugh! You... don’t get cocky!”
 
 @8644 Haman · ハマーン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「何っ!? 私の動きが
 >  読まれたのか!?」
 “What?! You read my movements?!”
 
 @8645 Haman · ハマーン
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
+# 审校：更顺口
 > 「俗物が私に!」
-“A commoner, against me!”
+“A vulgar wretch, laying a hand on me!”
 
 @8646 Haman · ハマーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：主语
 > 「その程度か……みくびられたものだ」
-“Is that all... They underestimate me.”
+“Is that all... I’ve been underestimated.”
 
 @8647 Haman · ハマーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ……なめられたものだな!」
-“Hmph... I've been taken lightly.”
+“Hmph... I’ve been taken lightly.”
 
 @8648 Haman · ハマーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「そんなものでっ!」
 “With something like that?!”
 
 @8649 Haman · ハマーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな腕で私と戦おうとはな……」
-“To think you'd fight me with such skill...”
+“To think you’d fight me with such meager skill...”
 
 @8650 Haman · ハマーン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「思い上がるなっ!」
-“Don't get above yourself!”
+“Don’t get above yourself!”
 
 @8651 Haman · ハマーン
+# 触发：回避（通用，1/7）
+# 审校：甘い统一
 > 「甘いな!」
-“Too soft!”
+“Too naive!”
 
 @8652 Haman · ハマーン
+# 触发：回避（通用，2/7）
 > 「そうか……見える!」
 “I see... I can see it!”
 
 @8653 Haman · ハマーン
+# 触发：回避（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめるなっ!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @8654 Haman · ハマーン
+# 触发：回避（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはせんよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8655 Haman · ハマーン
+# 触发：回避（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たってやるわけにはいかんな!」
-“I can't afford to be hit!”
+“I can’t afford to be hit!”
 
 @8656 Haman · ハマーン
+# 触发：回避（通用，6/7）
 > 「遅いな!」
 “Too slow!”
 
 @8657 Haman · ハマーン
+# 触发：回避（通用，7/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このキュベレイをなめてもらってはこまる!」
-“I won't have you underestimating this Qubeley!”
+“I won’t have you underestimating this Qubeley!”
 
 @8658 Haman · ハマーン
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ムダなことを……」
 “What a waste of effort...”
 
 @8659 Haman · ハマーン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「愚かな……」
 “Foolish...”
 
 @8660 Haman · ハマーン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「何っ!? 弾切れか!? ええいっ!」
 “What?! Out of ammo?! Damn it!”
 
 @8661 Haman · ハマーン
+# 触发：射程外，无法反击（通用，1/1）
 > 「賢しいな……射程外から攻撃
 >  してるとは」
 “Clever... attacking from out of range.”
+
+@14636 Haman · ハマーン
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：同上
+> 「ファンネルッ!!」
+“Funnels!!”
+
+@14637 Haman · ハマーン
+# 触发：使用〈ファンネル／マザーファンネル〉
+# 审校：同上
+> 「いけっ、ファンネル!!」
+“Go, Funnels!!”
+
+@14638 Haman · ハマーン
+# 触发：回避，条件 1000
+# 审校：俗物统一
+> 「フッ、俗物が私にあてられるなどと
+>  思うな」
+“Hmph. Don’t think a vulgar wretch like you can hit me.”
+
+@14639 Haman · ハマーン
+# 触发：回避，条件 1000
+> 「ダミーにかかってくれるとは、助かる」
+“How convenient that you fell for the decoy.”
+
+@14640 Haman · ハマーン
+# 触发：回避，条件 1000
+> 「それだけか」
+“Is that all?”
+
+@14641 Haman · ハマーン
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「そこまでのようだな」
+“It seems that’s your limit.”
+
+@14642 Haman · ハマーン
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「それでは私を倒すことなどできんよ」
+“Then you can’t possibly defeat me.”
+
+@14643 Haman · ハマーン
+# 触发：回避，条件 1000
+> 「ダミーバルーンというのも
+>  なかなか役に立つ」
+“These dummy balloons are quite useful.”
+
+@14644 Haman · ハマーン
+# 触发：回避，条件 1000
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「その程度で私がやれると思われては
+>  困るな」
+“I can’t have you thinking that’s enough to finish me.”

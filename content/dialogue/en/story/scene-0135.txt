@@ -18,15 +18,17 @@
 “Captain Bright! An urgent transmission!”
 
 @31516 Bright · ブライト
+# 审校：空格
 > 「何だと!?
 >  ……君は! 村雨君か!」
-“What?! ... It's you! Murasame!”
+“What?! ...It's you! Murasame!”
 
 @31517 Ginrei · 銀鈴
 > 「健二さん!」
 “Kenji!”
 
 @31518 Murasame · 村雨
+# 审校：破折号；数字汉字
 > 「中条長官の指示で
 >  潜入していたんだ
 “I infiltrated on Chief Chujo's orders.
@@ -37,7 +39,7 @@ I'll keep it short, so listen carefully. All right, this fortress is still incom
 ---
 >  こいつを完全に破壊するには、
 >  4か所あるエネルギー発生機を
-To destroy it completely, we have to take out the four energy generators—
+To destroy it completely, we have to take out the four energy generators,
 ---
 >  すべて破壊するしかない」
 all of them, no exceptions.”
@@ -106,8 +108,9 @@ the grief of my comrades!”
 “Dr. Gura, Marquis Janus!”
 
 @31528 Dr. Gura · グラー博士
+# 审校：古拉博士对大帝的回应「ははっ」应体现谄媚的敬语，改为“Yes, my lord!”更符合其voice。
 > 「ははっ」
-“Yes, sir!”
+“Yes, my lord!”
 
 @31529 Marquis Janus · ヤヌス侯爵
 > 「お側に」
@@ -127,21 +130,23 @@ If those are destroyed, this fortress will be torn apart.
 Kill them before they realize it!”
 
 @31531 Dr. Gura · グラー博士
+# 审校：古拉博士对大帝的回应「はっ!」应体现谄媚的敬语，改为“Yes, my lord!”更符合其voice。
 > 「はっ!」
-“Yes, sir!”
+“Yes, my lord!”
 
 @31532 Marquis Janus · ヤヌス侯爵
+# 审校：雅努斯侯爵对大帝的回应「承知いたしてございます!」应体现老贵族对主君的敬语，改为“As you command, my lord!”更符合其voice。
 > 「承知いたしてございます!」
-“As you command!”
+“As you command, my lord!”
 
 @31533 Hell Marshal · 地獄大元帥
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“Onward, all of you! This time we'll finish off
-# 草稿第 2 页：【主角机体名】 for good!”
+# 审校：补译：原稿占位符错页
 > 「ゆくぞ者ども!
 >  今度こそ{HeroMech}に
+“Onward, men! This time we send the {HeroMech}
 ---
 >  引導を渡すのだ!」
+to its grave!”
 
 @31534 Bright · ブライト
 > 「村雨のいっていたエネルギー
@@ -347,36 +352,38 @@ there's no way they'll be coming back.”
 “Yeah. Even those stubborn bastards are done for now. They sure made us work for it...”
 
 @31577 Koji · 甲児
-# 审校：原文「へっ、らまあみやがれ」应为「ざまあみやがれ」的咬舌口误，译文“just you watch”未体现口误和挑衅语气，改为“just you wait”并保留轻蔑感。
+# 审校：咬到舌头的口齿不清
 > 「へっ、らまあみやがれ!」
-“Heh, just you wait!”
+“Heh, thervesh you right!”
 
 @31578 David · デビッド
 > 「おい、口から血が出てるぞ」
 “Hey, you're bleeding from the mouth.”
 
 @31579 Koji · 甲児
+# 审校：甲儿对沙也加用「さやかさん」，按 address 应保留敬称，改为“Sayaka, the medicine...!”
 > 「ひてて……。さやかさん、薬……!」
-“Owww... Sayaka, medicine...!”
+“Owww... Sayaka, the medicine...!”
 
 @31580 Daisaku · 大作
 > 「そうだ、村雨さんは!?」
 “That's right, what about Murasame?!”
 
 @31581 Ginrei · 銀鈴
+# 审校：村雨是男性
 > 「心配いらないわ、
 >  とっくに脱出してるはずよ」
-“No need to worry, she should have escaped long ago.”
+“No need to worry, he should have escaped long ago.”
 
 @31582 Daisaku · 大作
 > 「……わかるんですか?」
 “...How can you tell?”
 
 @31583 Ginrei · 銀鈴
-# 审校：原文「あの人」未明确性别，但后文用「仕損じることなんてありはしないの」且语境指专家，初稿译成 woman 可能误判性别；改为中性 that person。
+# 审校：村雨是男性
 > 「ええ。あの人はエキスパートよ……。
 >  仕損じることなんてありはしないの」
-“Yes. That person is an expert... She never makes a mistake.”
+“Yes. That man is an expert... He never makes a mistake.”
 
 @31584 Astonaige · アストナージ
 > 「おうい、鉄也、ジュン。それに甲児
@@ -384,8 +391,9 @@ there's no way they'll be coming back.”
 “Hey, Tetsuya, Jun. And Koji and the rest of you too, could you listen for a moment?”
 
 @31585 Koji · 甲児
+# 审校：咬到舌头
 > 「何らい?」
-“What is it?”
+“Whath ith it?”
 
 @31586 Sayaka · さやか
 > 「ちょっと甲児くん、動かないで!
@@ -516,17 +524,18 @@ That is truly a joyous thing. But our responsibility
 is not fulfilled by this alone...”
 
 @31604 Relena · リリーナ
+# 审校：标点
 > 「わたくしはクイーン・リリーナ……。
 >  新たなるロームフェラ財団の代表
 “I am Queen Relena... the representative of the new Romefeller Foundation.
 ---
 >  ……そして世界国家を
 >  代表する者……。世界国家
-...And the one who represents the world nation.... The world nation
+...And the one who represents the World Nation... The World Nation,
 ---
 >  ……すなわち紛争のもととなる
 >  国家の垣根を取りのぞき
-...that is, the era has come when the barriers of nations, the source of conflict, are removed
+...that is, the era has come when the barriers between nations, the source of conflict, are removed
 ---
 >  ひとつとなる時代がきたのです。
 >  地球の未来は国と国とが
@@ -537,13 +546,14 @@ and all become one. Earth's future will be opened
 by nations joining together as one.”
 
 @31605 Dermail · デルマイユ
+# 审校：大写
 > 「すばらしい! 我が財団は
 >  リリーナ代表のもと
-“Splendid! Under Representative Relena, let our foundation
+“Splendid! Under Representative Relena, let our Foundation
 ---
 >  一致団結して、世界国家
 >  建設にまい進しようではないか!」
-unite as one and press on with the construction of the world nation!”
+unite as one and press on with the construction of the World Nation!”
 
 @31606 Relena · リリーナ
 > (……ヒイロ、わたくしも自分に
@@ -631,9 +641,10 @@ is trying to do exactly that.”
 I see... A splendid resolve.”
 
 @31620 Treize · トレーズ
+# 审校：大写
 > 「財団も考えたものだ。
 >  確かに彼女ならばロームフェラに
-“The foundation has thought this through. Indeed, with her, Romefeller can
+“The Foundation has thought this through. Indeed, with her, Romefeller can
 ---
 >  人心を吸収することができる。
 >  だがそれが、ロームフェラにとって

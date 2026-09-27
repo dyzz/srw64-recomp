@@ -1,124 +1,184 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9588 Helmut · ヘルマット
+# 触发：攻击（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ただの一度で、奴らの心臓に
 >  杭を打ちこんでみせるわ!」
-“With a single blow, I'll drive a stake through their hearts!”
+“With a single blow, I’ll drive a stake through their hearts!”
 
 @9589 Helmut · ヘルマット
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击（通用，2/8）
+# 审校：原句重复 hand
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「血塗られた心臓は、この
 >  ヘルマット大将軍のたなごころの中」
-“Their blood-soaked hearts are in the palm of my hand, Great General Helmut's hand.”],”
+“Their blood-soaked hearts rest in the palm of Great General Helmut’s hand.”
 
 @9590 Helmut · ヘルマット
+# 触发：攻击（通用，3/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「感じる、感じるぞ! ピクピクと
 >  恐怖におののいている!」
-“I can feel it, I can feel it! They're trembling with fear!”
+“I can feel it, I can feel it! They’re trembling with fear!”
 
 @9591 Helmut · ヘルマット
+# 触发：攻击（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まず、お前から血祭りにあげてやる!」
-“First, I'll make a blood offering of you!”
+“First, I’ll make a blood offering of you!”
 
 @9592 Helmut · ヘルマット
+# 触发：攻击（通用，5/8）
 > 「押しつぶせっ!」
 “Crush them!”
 
 @9593 Helmut · ヘルマット
+# 触发：攻击（通用，6/8）
 > 「地獄の底まで叩きつぶすのだ!」
 “Smash them to the depths of hell!”
 
 @9594 Helmut · ヘルマット
+# 触发：攻击（通用，7/8）
 > 「攻撃をかけろっ!」
 “Open fire!”
 
 @9595 Helmut · ヘルマット
+# 触发：攻击（通用，8/8）
 > 「バカめ!」
 “Fools!”
 
 @9596 Helmut · ヘルマット
+# 触发：被击坠（通用，1/2）
 > 「うわあぁぁぁぁーっ!!」
 “Uwaaaaaaah!!”
 
 @9597 Helmut · ヘルマット
+# 触发：被击坠（通用，2/2）
 > 「わ、私の軍団がぁっ!!」
 “M-my army!!”
 
 @9598 Helmut · ヘルマット
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：図にのりおって是指责
 > 「き、貴様、図にのりおって!」
-“Y-you, getting carried away!”
+“Y-you... getting cocky, are you!”
 
 @9599 Helmut · ヘルマット
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「くっ……撃ち落とせ! 奴をしとめろ!!」
 “Ngh... shoot them down! Kill them!!”
 
 @9600 Helmut · ヘルマット
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「な……なんだとぉっ!?」
 “W-what?!”
 
 @9601 Helmut · ヘルマット
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「バカな……バカなバカなぁっ!!」
 “Impossible... impossible, impossible!!”
 
 @9602 Helmut · ヘルマット
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「な、なにをしておる、撃ちおとせぃ!」
 “W-what are you doing, shoot them down!”
 
 @9603 Helmut · ヘルマット
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「えぇぃ、これではシャピロに示しが
 >  つかんではないか!」
 “Gah, how can I show my face to Shapiro like this!”
 
 @9604 Helmut · ヘルマット
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：誘発＝诱爆
 > 「なーにをもたもたしている!
 >  散開して誘発を避けろ!」
-“What are you dawdling for! Spread out and avoid the provocation!”
+“What are you dawdling for! Spread out, avoid the chain explosions!”
 
 @9605 Helmut · ヘルマット
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……おのれ、よくもやってくれたな!」
-“Ngh... why you, you've done it now!”
+“Ngh... why you, you’ve done it now!”
 
 @9606 Helmut · ヘルマット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ええい、うろたえるな!」
-“Gah, don't panic!”
+“Gah, don’t panic!”
 
 @9607 Helmut · ヘルマット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハーッハハハハッ!
 >  効かぬ、効かぬなぁ!」
-“Hahahahaha! It doesn't work, it doesn't work at all!”
+“Hahahahaha! It doesn’t work, it doesn’t work at all!”
 
 @9608 Helmut · ヘルマット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クククッ、あきらめのわるいやつらだ!」
-“Kukuku, you lot just don't know when to give up!”
+“Kukuku, you lot just don’t know when to give up!”
 
 @9609 Helmut · ヘルマット
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「たとえ体当たりをしたところで
 >  このヘルマット艦は、びくともせんわ!」
-“Even if you ram me, this Helmut ship won't budge!”
+“Even if you ram me, this Helmut ship won’t budge!”
 
 @9610 Helmut · ヘルマット
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 检查提示：未用必用译名：デスガイヤー→Death Gaia
 > 「見よ、デスガイヤー、ギルドローム
 >  わしはお前たちとは違う!」
-“Behold, Death Gaia, Gildrome, I'm different from the likes of you!”
+“Behold, Death Gaia, Gildrome, I’m different from the likes of you!”
 
 @9611 Helmut · ヘルマット
+# 触发：回避（通用，2/2）
 > 「わしの恐ろしさが身にしみたか!」
 “Have you felt just how terrifying I am!”
 
 @9612 Helmut · ヘルマット
-# 审校：原文句末有句号，初稿漏掉句末标点，补上。
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッフッフ、どうだ、手が出まい」
-“Heh heh heh, well, you can't lay a hand on me.”],”
+“Heh heh heh, well, you can’t lay a hand on me.”
 
 @9613 Helmut · ヘルマット
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「くっ、使い物にならんとはな……」
 “Ngh, useless after all...”
 
 @9614 Helmut · ヘルマット
+# 触发：射程外，无法反击（通用，1/2）
 > 「放っておけ!」
 “Leave them be!”
 
 @9615 Helmut · ヘルマット
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ええい、追え、追うのだー!
 >  逃してはならん!」
-“Gah, chase them, chase them! Don't let them escape!”
+“Gah, chase them, chase them! Don’t let them escape!”
+
+@14814 Helmut · ヘルマット
+# 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル一斉攻撃だ!」
+“All missiles, fire!”
+
+@14815 Helmut · ヘルマット
+# 触发：使用〈ビーム〉（低优先，可能被通用台词顶掉）
+# 审校：discharge 不像口令
+> 「ビーム一斉放射っ!」
+“All beams, fire!”
+
+@14816 Helmut · ヘルマット
+# 触发：使用〈ビーム〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「焼け死んでもらおうか!」
+“I’ll burn you to death!”

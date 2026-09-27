@@ -113,22 +113,24 @@ is active in Northern Europe.”
 “Things are rough on the ground too...”
 
 @35074 Alan · アラン
+# 审校：精读：去破折号
 > 「詳しい状況は、いまギャリソンに
 >  調べてもらっている。准将の行方
 “Garrison is looking into the details right now. The General's whereabouts,
 ---
 >  トレーズの幽閉場所、
 >  地上の動き、といったところだな」
-where Treize is being held, movements on the ground—that sort of thing.”
+where Treize is being held, movements on the ground, that sort of thing.”
 
 @35075 Kamille · カミーユ
 > 「しばらく動きがとれないか……」
 “So we can't make a move for a while...”
 
 @35076 Takeru · タケル
+# 审校：全局：Zuul 拼写
 > (ズール……銀河帝国……マーズ……
 >  いったいなんなんだ……?
-(Zuhl... the Galactic Empire... Mars... what is going on...?
+(Zuul... the Galactic Empire... Mars... what is going on...?
 ---
 >  俺は……地球人じゃないのか……?
 >  そんなこと……)
@@ -160,22 +162,25 @@ and that person was among them.”
 “The one you used to call your senior.”
 
 @35082 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「先輩……ゲイル先輩が!?
 >  ゲイル先輩が生きていたのか!?」
-“My senior... Senior Gale?! Senior Gale is alive?!”
+“Gale... it's Gale?! Gale is alive?!”
 
 @35083 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「ゲイル先輩!!」
-“Senior Gale!!”
+“Gale!!”
 
 @35084 Gale · ゲイル
 > 「……エイジ。ひさしぶりだな」
 “...Eiji. It's been a while.”
 
 @35085 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「先輩……よかった。
 >  生きていたんですね。俺は……」
-“Senior... thank goodness. You were alive. I...”
+“Gale... thank goodness. You're alive. I...”
 
 @35086 Gale · ゲイル
 > 「もうすんだことだ。気にするな。
@@ -187,8 +192,9 @@ and that person was among them.”
 can't believe you people really beat the Imperial army.”
 
 @35087 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「先輩……」
-“Senior...”
+“Gale...”
 
 @35088 Gale · ゲイル
 > 「気づかいは無用だ。私とて
@@ -200,8 +206,9 @@ can't believe you people really beat the Imperial army.”
 ...that I too was left behind on this Earth, just like you.”
 
 @35089 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「でも先輩、いったいどうして……」
-“But Senior, how on earth...”
+“But Gale, how on earth...”
 
 @35090 Gale · ゲイル
 > 「お前たちに負けたあと、重傷を
@@ -231,9 +238,10 @@ to apologize to you for.”
 “Eiji... I'm so glad.”
 
 @35092 Eiji · エイジ
+# 审校：同上，Senior 改为 Sir。（人工改写）
 > 「ありがとう、アンナ。先輩……
 >  ジュリア姉さんも、地球にいるんです」
-“Thanks, Anna. Senior... Julia is on Earth too.”
+“Thanks, Anna. Gale... Julia is on Earth too.”
 
 @35093 Gale · ゲイル
 > 「“クスコの聖女”だな。会って
@@ -261,9 +269,10 @@ were born anew on this Earth. At first I was
 startled by how much Julia had changed, though.”
 
 @35096 Eiji · エイジ
+# 审校：同上，Senior 改为 Sir。（人工改写）
 > 「先輩……姉さんに会ったのなら、
 >  どうしてここへ?」
-“Senior... if you met my sister, why did you come here?”
+“Gale... if you met my sister, why did you come here?”
 
 @35097 Gale · ゲイル
 > 「ジュリアは聖女だ。
@@ -279,8 +288,9 @@ she works for the sake of the exhausted people of Earth. But I'm a soldier.
 I couldn't bring myself to stay by their side.”
 
 @35098 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「先輩……」
-“Senior...”
+“Gale...”
 
 @35099 Gale · ゲイル
 > 「ジュリアたちから聞いた。帝国の
@@ -304,9 +314,10 @@ to atone for my sins. Julia and the others said they wanted to resolve things th
 discussion to the very end. But they told me about you as well.”
 
 @35100 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「歓迎します、先輩。
 >  みんなに紹介しますよ」
-“Welcome, Senior. I'll introduce you to everyone.”
+“Welcome, Gale. I'll introduce you to everyone.”
 
 @35101 Anna · アンナ
 > 「私、ブライトさんたちに伝えてくるわ」
@@ -357,12 +368,13 @@ will be dealt with in no time.”
 “A fleet? Not the {HeroMech}?”
 
 @35110 Specials · スペシャルズ
+# 审校：精读：大小写
 > 「{HeroMech}ではありません。
 >  地球圏外からのものと
 “It's not the {HeroMech}. It's presumed to have come from
 ---
 >  推測されます」
-outside the Earth sphere.”
+outside the Earth Sphere.”
 
 @35111 Bask · バスク
 > 「なんだと!? ゾルバドスめ、
@@ -460,9 +472,11 @@ an OZ officer, you know what you ought to pledge your loyalty to, don't you?”
 join them, it would be taken as an order from Treize. Be careful.”
 
 @35126 Lady · レディ
+# 审校：机械统一：蕾蒂称特列斯为阁下／Your Excellency（用户 2026-09-26 定）
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「私はレディ・アン……。OZの?
 >  それとも、トレーズ様の……?」
-“I am Lady Une... OZ's? Or Lord Treize's...?”
+“I am Lady Une... OZ's? Or His Excellency's...?”
 
 @35127 Roux · ルー
 > 「ねぇちょっと、みんな聞いた!?」
@@ -491,13 +505,14 @@ the enemy's come again.”
 “What's going on? Isn't it the Romefeller faction?”
 
 @35132 Roux · ルー
+# 审校：全局：バルジ 词条 Barge
 > 「艦隊が接近してるらしいのよ。
 >  OZじゃないって
 “A fleet seems to be approaching. It's not OZ.
 ---
 >  バルジの方もかなり動きが
 >  あわただしいらしいわ」
-Things over at Balgi seem to be in quite a stir too.”
+Things over at Barge seem to be in quite a stir too.”
 
 @35133 Shinobu · 忍
 > 「まさか、帝国軍がもうもどって
@@ -539,8 +554,9 @@ Things over at Balgi seem to be in quite a stir too.”
 (Mars, come out. You cannot escape anyway.)
 
 @35141 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (なに!?)
-(What!?)
+(What?!)
 
 @35142 Takeru · タケル
 > 「どこだ、どこにいる?」
@@ -597,6 +613,7 @@ His Majesty is most displeased with your act of rebellion.”
 “Aaaah... u... uwaaaaaaah!!”
 
 @35154 Baren · バレン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なに!? しまった、ガイヤーか!」
 “What?! Damn it, Gaia?!”
 
@@ -605,7 +622,7 @@ His Majesty is most displeased with your act of rebellion.”
 “Ngh... W-What is this?!”
 
 @35156 ???
-# 审校：内心独白括号内原文第二页结尾有句号，初稿漏掉句号，已补上。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (マーズ、恐れることはない。
 >  ガイヤーはお前を守るために来た
 (Mars, there is nothing to fear. Gaia has come to protect you.
@@ -618,6 +635,7 @@ Get on Gaia.)
 “W-What is this thing... moving on its own...”
 
 @35158 Takeru · タケル
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだここは? 俺はいったい……
 >  ガイヤーだと?
 “What is this place? What in the world am I... Gaia?
@@ -626,6 +644,7 @@ Get on Gaia.)
 So this is what Zuul was talking about...”
 
 @35159 Baren · バレン
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ、ならばガイヤーごと葬り
 >  去ってやる! 観念するがいい!」
 “Tch, then I'll destroy you along with Gaia! Give it up!”
@@ -650,7 +669,7 @@ So this is what Zuul was talking about...”
 “W-What is this thing? There's no data on anything like this?!”
 
 @35164 ???
-# 审校：内心独白括号内原文第二页结尾有句号，初稿漏掉句号，已补上。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > (マーズ……ガイヤーが危機に
 >  おちいった時、五神ロボはあらわれる
 (Mars... when Gaia is in danger, the five god robots appear.
@@ -778,6 +797,7 @@ prepare to intercept!”
 “Tch.”
 
 @35190 Blacky · ブラッキー
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「むっ、あれがバレンが
 >  知らせてきたロボットだな
 “Mm, so that's the robot Baren told us about.
@@ -858,9 +878,9 @@ Now then, let's begin purging the Treize faction. Hyahahahahaha!”
 but it's convenient that the enemy is attacking the moon.”
 
 @35203 Jerid · ジェリド
-# 审校：シロッコ特佐的“特佐”是上校，不是中校；词表未给但军衔应译为 Colonel。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「どうするんだ、シロッコ特佐」
-“What do we do, Colonel Scirocco?”
+“What do we do, Special Colonel Scirocco?”
 
 @35204 Scirocco · シロッコ
 > 「このまま月面基地を落とす。
@@ -884,9 +904,9 @@ but it's convenient that the enemy is attacking the moon.”
 “Right.”
 
 @35209 Kamille · カミーユ
-# 审校：ジェリド・メサ特尉的“特尉”是上尉，不是中尉；应译为 Captain。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ジェリド・メサ特尉かッ!?」
-“Captain Jerid Messa?!”
+“Special Lieutenant Jerid Messa?!”
 
 @35210 Jerid · ジェリド
 > 「カミーユ!!
@@ -1006,9 +1026,10 @@ we're abandoning this place.”
 the Treize faction had already withdrawn. Shall we pursue?”
 
 @35233 Scirocco · シロッコ
+# 审校：全局：バルジ 词条 Barge
 > 「放っておけ。月さえ確保できれば
 >  いい。バルジのバスク特佐に
-“Leave them. Securing the moon is enough. Contact Colonel Bask at Balgi.
+“Leave them. Securing the moon is enough. Contact Special Colonel Bask at Barge.
 ---
 >  連絡してくれ。私が月を落とした
 >  ことをあまり喜ばれないかもしれんがな」
@@ -1028,9 +1049,9 @@ He may not be too pleased that I took the moon, though.”
 “Yeah... seems I screwed up a bit. Like this, I won't be able to fight for a while.”
 
 @35237 Scirocco · シロッコ
-# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ジェリド特尉は?」
-“Where is Captain Jerid?”
+“Where is Special Lieutenant Jerid?”
 
 @35238 Mouar · マウアー
 > 「あばらが折れているそうですが、
@@ -1038,10 +1059,10 @@ He may not be too pleased that I took the moon, though.”
 “His ribs are broken, but his life doesn't seem to be in danger.”
 
 @35239 Scirocco · シロッコ
-# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「そうか、それはよかった。ジェリド特尉
 >  は極端に運がいい。その強運を
-“I see, that's good. Captain Jerid is extremely lucky. Believing in that luck
+“I see, that's good. Special Lieutenant Jerid is extremely lucky. Believing in that luck
 ---
 >  信じることが、彼にとってはよい
 >  結果を生む。そういってやってくれ」
@@ -1052,13 +1073,13 @@ will bring about good results for him. Tell him that.”
 (This man... what is he thinking...?)
 
 @35241 Scirocco · シロッコ
-# 审校：ジェリド特尉应译为 Captain Jerid，不是 Lieutenant。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「が、戦えぬのではしかたがない。
 >  ジェリド特尉には
 “But if he can't fight, there's nothing to be done. Let's have
 ---
 >  しばらく休んでもらうとしよう」
-Captain Jerid rest for a while.”
+Special Lieutenant Jerid rest for a while.”
 
 @35242 Mouar · マウアー
 > 「では、私も……」
@@ -1108,9 +1129,10 @@ and the fact that it's destroying colonies bothers me.”
 “What shall we do? I doubt our unit's strength can stop it, but...”
 
 @35250 Lady · レディ
+# 审校：全局：バルジ 词条 Barge
 > 「バルジへ報告するか……いや、
 >  このままサイド7へ向かってくれ」
-“Shall we report to Balgi...? No, set course for Side 7 as is.”
+“Shall we report to Barge...? No, set course for Side 7 as is.”
 
 @35251 Specials · スペシャルズ
 > 「了解しました。
@@ -1134,17 +1156,18 @@ equal to Muge Zorbados, the Earth Sphere will be visited by nightmare again.
 I cannot overlook that...)
 
 @35253 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「これはこれはレディ・アン特佐。
 >  トレーズ派の反乱にも加わらず
-“Well, well, Colonel Lady Une. You didn't join the Treize faction's rebellion,
+“Well, well, Special Colonel Lady Une. You didn't join the Treize faction's rebellion,
 ---
 >  バスク特佐のもとで
 >  偵察任務についておられるとか
-and I hear you're on a reconnaissance mission under Colonel Bask.
+and I hear you're on a reconnaissance mission under Special Colonel Bask.
 ---
 >  どうやら特佐も世渡りが
 >  上手になられたようですな」
-It seems the Colonel has learned to navigate the world quite well.”
+It seems the Special Colonel has learned to navigate the world quite well.”
 
 @35254 Lady · レディ
 > 「フン、ツバロフ技師長、貴様の
@@ -1168,9 +1191,10 @@ the Gundam type that's destroying colonies.”
 converted into MDs. If you have pilots who can handle them properly, by all means, but...”
 
 @35256 Lady · レディ
+# 审校：精读：特士
 > 「心当たりがある。
 >  トロワ特士を呼んでもらおう」
-“I have an idea. Have Warrant Officer Trowa summoned.”
+“I have an idea. Have Special Officer Trowa summoned.”
 
 @35257 Trowa · トロワ
 > 「ガンダムが出たそうだな」
@@ -1215,9 +1239,10 @@ who could withstand that machine.”
 “Oh? That's quite a bold plan.”
 
 @35264 Lady · レディ
+# 审校：精读：特士
 > 「生半可なパイロットでは
 >  役に立つまい。それと、特士」
-“A half-hearted pilot would be of no use. And one more thing, Warrant Officer.”
+“A half-hearted pilot would be of no use. And one more thing, Special Officer.”
 
 @35265 Trowa · トロワ
 > 「なんだ?」
@@ -1229,23 +1254,23 @@ who could withstand that machine.”
 “Once you've made contact, I leave your actions to you. Do as you please.”
 
 @35267 Trowa · トロワ
-# 审校：“特佐”是“トレーズ特佐”的省略，指特列兹上校，初稿只译成 Colonel，未体现称呼对象，补全为 Colonel Treize。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……ああ……了解した、特佐」
-“...Yeah... Understood, Colonel Treize.”
+“...Yeah... Understood, Special Colonel.”
 
 @35268 Lady · レディ
-# 审校：第1页原文结尾无句号，初稿加了句号；改为逗号以贴合原文断句。
+# 审校：精读：独白里的トレーズさま
 > (どうやらこの混沌とした時代の
 >  流れは、容易には変えられぬらしい
 (It seems the flow of this chaotic era cannot easily be changed,
 ---
 >  たとえ……トレーズさまでも。
 >  だが私は……
-even for... Lord Treize. But I... I need only carry history toward
+even for... His Excellency Treize. But I... I need only carry history toward
 ---
 >  トレーズさまの理想へと、歴史を
 >  運べばよいのだ。私はあの者たちに
-Lord Treize's ideal. I will believe that those people have the power
+His Excellency's ideal. I will believe that those people have the power
 ---
 >  時代を動かす力があると、戦って
 >  勝ちとることができるのだと、信じよう
@@ -1253,4 +1278,4 @@ to move the era, that they can fight and win it.
 ---
 >  トレーズ様の未来……
 >  この地球圏の未来を……)
-Lord Treize's future... the future of this Earth Sphere...)
+His Excellency's future... the future of this Earth Sphere...)

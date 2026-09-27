@@ -35,13 +35,14 @@ believe they are the Zorbados Army. Judging by their formation, it may be
 General Gildrome, who withdrew during the battle at the Asteroid Base.”
 
 @42335 Duo · デュオ
+# 审校：精读：整句在两页重复
 > 「な～んてこったぁ。そういや
 >  あの将軍ども、まだ
-“Well, what do you know. Come to think of it, those generals were still hanging around, weren't they? I totally forgot. Right, Heero?
+“Well, what do you know. Come to think of it, those generals were still
 ---
 >  残ってやがったんだよなぁ。
 >  すっかり忘れてたぜ。なぁヒイロ」
-Well, what do you know. Come to think of it, those generals were still hanging around, weren't they? I totally forgot. Right, Heero?”
+hanging around, weren't they? I totally forgot. Right, Heero?”
 
 @42336 Heero · ヒイロ
 > 「俺はくると思っていた。
@@ -49,12 +50,13 @@ Well, what do you know. Come to think of it, those generals were still hanging a
 “I knew they would come. Forgetting was your mistake.”
 
 @42337 Duo · デュオ
+# 审校：精读：整句在两页重复
 > 「へぇへぇ。お前を驚かすにゃ、
 >  あのお嬢さんでも連れてこなくちゃ
-“Yeah, yeah. To surprise you, I'd have to bring that young lady along, wouldn't I? I forgot about her too.
+“Yeah, yeah. To surprise you, I'd have to bring that young lady along,
 ---
 >  だめだよな。そいつも忘れてたぜ」
-Yeah, yeah. To surprise you, I'd have to bring that young lady along, wouldn't I? I forgot about her too.”
+wouldn't I? I forgot about her too.”
 
 @42338 Heero · ヒイロ
 > 「リリーナは関係ない」
@@ -74,13 +76,14 @@ Yeah, yeah. To surprise you, I'd have to bring that young lady along, wouldn't I
 “...”
 
 @42342 Amuro · アムロ
+# 审校：精读：整句在两页重复
 > 「デュオ、そういうことはあとにしてくれ。
 >  それで、連中はいったいどうやって
-“Duo, save that for later. So, how on earth did they manage to reach the solar system, which should be sealed off by the ‘Mark’?
+“Duo, save that for later. So, how on earth did they manage to reach
 ---
 >  “刻印”で閉鎖されている
 >  はずの太陽系へ到達できたんだ?」
-Duo, save that for later. So, how on earth did they manage to reach the solar system, which should be sealed off by the ‘Mark’?”
+the solar system, which should be sealed off by the ‘Crest’?”
 
 @42343 Garrison · ギャリソン
 > 「それに関しましては、
@@ -96,22 +99,24 @@ the doctors are currently analyzing and researching it.
 This time we have the observation data as well, after all.”
 
 @42344 Banjo · 万丈
+# 审校：精读：整句在两页重复
 > 「それは期待できるね。なにしろ今
 >  ガンドールには、地球の誇る
-“Then we can count on them. After all, the Gandor is carrying Earth's finest genius scientists as a group right now.
+“Then we can count on them. After all, right now the Gandor is carrying
 ---
 >  天才科学者が集団で
 >  乗ってるんだ」
-Then we can count on them. After all, the Gandor is carrying Earth's finest genius scientists as a group right now.”
+Earth's finest genius scientists, the whole lot of them.”
 
 @42345 Shinobu · 忍
+# 审校：精读：整句在两页重复
 > 「そんなこたぁどうだっていいぜ。
 >  ムゲ野郎どもがもどってきたってんなら
-“Who cares about all that. If those Muge bastards are coming back, we just have to crush them again, that's all.
+“Who cares about all that. If those Muge bastards are back,
 ---
 >  俺たちがぶっつぶしてやりゃあ
 >  いいだけの話だろう」
-Who cares about all that. If those Muge bastards are coming back, we just have to crush them again, that's all.”
+we just have to crush them again, that's all.”
 
 @42346 Sara · 沙羅
 > 「バカだね。大尉は根っこから
@@ -134,51 +139,56 @@ rebuilding the Earth Sphere is hopeless. Relying only on brute force
 is your bad habit.”
 
 @42348 Shinobu · 忍
+# 审校：精读：整句在两页重复
 > 「チッ、あんたの説教は聞き飽きたぜ
 >  最近ますます
-“Tch, I'm sick of your lectures. Lately you've been sounding more and more like the Commander, Alan.
+“Tch, I'm sick of your lectures. Lately you've been sounding
 ---
 >  長官に似てきたぜ、アラン」
-Tch, I'm sick of your lectures. Lately you've been sounding more and more like the Commander, Alan.”
+more and more like the Commander, Alan.”
 
 @42349 Ryoma · リョウ
+# 审校：精读：整句在两页重复
 > 「しかし、とりあえずはギルドロームを
 >  叩かなければならないのは
-“But for now, it's a fact that we have to strike down Gildrome, isn't it? We can't afford to sit around.
+“But for now, it's a fact that we have to strike down Gildrome,
 ---
 >  事実だろう? ぐずぐずしては
 >  いられないな」
-But for now, it's a fact that we have to strike down Gildrome, isn't it? We can't afford to sit around.”
+isn't it? We can't afford to sit around.”
 
 @42350 Bright · ブライト
+# 审校：精读：整句在两页重复；人名
 > 「そうだな。チャム、悪いが
 >  シーラ女王を呼んできてくれ
-“Right. Chum, sorry, but go call Queen Ciela. It looks like we'll need to launch right away.
+“Right. Chum, sorry, but go call Queen Ciela.
 ---
 >  どうやらすぐにでも出る
 >  必要がありそうだ」
-Right. Chum, sorry, but go call Queen Ciela. It looks like we'll need to launch right away.”
+It looks like we'll need to launch right away.”
 
 @42351 Bright · ブライト
+# 审校：精读：整句在两页重复
 > 「そうだな。チャム、悪いが
 >  エレ女王を呼んできてくれ
-“Right. Chum, sorry, but go call Queen Elle. It looks like we'll need to launch right away.
+“Right. Chum, sorry, but go call Queen Elle.
 ---
 >  どうやらすぐにでも出る
 >  必要がありそうだ」
-Right. Chum, sorry, but go call Queen Elle. It looks like we'll need to launch right away.”
+It looks like we'll need to launch right away.”
 
 @42352 Chum · チャム
 > 「いいわよ。すぐに呼んでくるッ!」
 “Sure. I'll go call them right away!”
 
 @42353 Bright · ブライト
+# 审校：精读：整句在两页重复
 > 「まったく……悪夢だな。
 >  アムロ、全員を呼び戻せ
-“Honestly... what a nightmare. Amuro, call everyone back. We're preparing to set sail.
+“Honestly... what a nightmare. Amuro, call everyone back.
 ---
 >  出港の準備だ」
-Honestly... what a nightmare. Amuro, call everyone back. We're preparing to set sail.”
+We're preparing to set sail.”
 
 @42354 Sayaka · さやか
 > 「どう、お父さま?
@@ -195,13 +205,14 @@ Honestly... what a nightmare. Amuro, call everyone back. We're preparing to set 
 “So, what's the verdict, Doctors?”
 
 @42357 Dr. Hazuki · 葉月博士
+# 审校：精读：整句在两页重复
 > 「アステロイドに監視衛星を残した
 >  のは正解だった。そのデータのおかげで
-“Leaving a surveillance satellite at the Asteroid was the right call. Thanks to that data, we've almost figured out exactly where they're coming from.
+“Leaving a surveillance satellite at the Asteroid was the right call. Thanks to that data,
 ---
 >  彼らがいったいどこからやってくるのかは
 >  ほぼわかってきている」
-Leaving a surveillance satellite at the Asteroid was the right call. Thanks to that data, we've almost figured out exactly where they're coming from.”
+we've almost figured out exactly where they're coming from.”
 
 @42358 Koji · 甲児
 > 「どこからって、異次元なんだろ?」
@@ -212,26 +223,28 @@ Leaving a surveillance satellite at the Asteroid was the right call. Thanks to t
 “Just listen quietly, Koji.”
 
 @42360 Dr. Saotome · 早乙女博士
+# 审校：精读：整句在两页重复
 > 「いちがいに異次元とはいっても、これ
 >  まで我々には、それが実際にどの
-“Even if we simply call it another dimension, until now we could say we never actually understood what it truly was like. What I'm saying is that we're starting to understand it.
+“Even if we simply call it another dimension, until now we could say we never actually
 ---
 >  ようなものかはわかっていなかったといえる
 >  それがわかってきたといっておるんだ」
-Even if we simply call it another dimension, until now we could say we never actually understood what it truly was like. What I'm saying is that we're starting to understand it.”
+understood what it truly was like. What I'm saying is that we're starting to understand it.”
 
 @42361 Boss · ボス
 > 「それがわかったらどうなるのよ?」
 “And what happens once we understand it?”
 
 @42362 Dr. Hazuki · 葉月博士
+# 审校：精读：整句在两页重复
 > 「やれやれ、わからんかね?
 >  まずそこから始めなければ
-“Good grief, don't you get it? It means that unless we start there, we won't be able to find any countermeasures at all.
+“Good grief, don't you get it? It means that unless we start there,
 ---
 >  何も対応策は見つけられないと
 >  いうことだ」
-Good grief, don't you get it? It means that unless we start there, we won't be able to find any countermeasures at all.”
+we won't be able to find any countermeasures at all.”
 
 @42363 Maria · マリア
 > 「つまり、それがわかれば対応策も
@@ -248,21 +261,23 @@ Good grief, don't you get it? It means that unless we start there, we won't be a
 “What the heck, that's so vague.”
 
 @42366 Prof. Yumi · 弓教授
+# 审校：精读：整句在两页重复
 > 「甲児くん、我々も
 >  全力で解明にあたっている
-“Koji, we're doing everything we can to figure it out as well. Could you give us a little more time?
+“Koji, we're doing everything we can to figure it out as well.
 ---
 >  もうしばらく時間をくれないかね」
-Koji, we're doing everything we can to figure it out as well. Could you give us a little more time?”
+Could you give us a little more time?”
 
 @42367 Dr. Hazuki · 葉月博士
+# 审校：精读：整句在两页重复
 > 「君たちは戦いに
 >  集中してくれればいい。まずは
-“You just focus on the fighting. If we can't intercept the enemy force first, nothing else will matter.
+“You just focus on the fighting. If we can't
 ---
 >  敵の部隊を迎撃できなくては、
 >  どうにもならんのだからな」
-You just focus on the fighting. If we can't intercept the enemy force first, nothing else will matter.”
+intercept the enemy force first, nothing else will matter.”
 
 @42368 Reika · レイカ
 > 「ゾルバドス軍と思われる敵部隊、
@@ -345,9 +360,10 @@ But the Gildrome Style is neither speed nor power!”
 “No way... Watch out! His mental attack is coming!”
 
 @42380 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -377,9 +393,10 @@ your minds? Kukukukuku.”
 Focus your minds!”
 
 @42385 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -391,6 +408,7 @@ your minds? Kukukukuku.”
 “Ugh... What happened?! Is everyone all right?!”
 
 @42387 Bright · ブライト
+# 审校：精读：人名
 > 「シーラ女王、大丈夫ですか!?
 >  どうやら我々は
 “Queen Ciela, are you okay?! It seems we've
@@ -408,9 +426,10 @@ fallen into the enemy's trap.”
 “A mental attack?! I won't let you!”
 
 @42390 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -448,9 +467,10 @@ fallen into the enemy's trap.”
 “A mental attack?!”
 
 @42397 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -489,9 +509,10 @@ But the Gildrome Style is neither speed nor power!”
 “No way... Watch out! His mental attack is coming!”
 
 @42404 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -521,9 +542,10 @@ your minds? Kukukukuku.”
 Focus your minds!”
 
 @42409 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -535,9 +557,10 @@ your minds? Kukukukuku.”
 “Ugh... What happened?! Is everyone all right?!”
 
 @42411 Bright · ブライト
+# 审校：称呼与 address 不符，Sheela 应为 Ciela。
 > 「シーラ女王、大丈夫ですか!?
 >  どうやら我々は
-“Queen Ciela, are you okay?! It seems we've
+“Queen Ciela, are you all right?! It seems we've
 ---
 >  敵の術中にはまったようです」
 fallen into the enemy's trap.”
@@ -552,9 +575,10 @@ fallen into the enemy's trap.”
 “A mental attack?! I won't let you!”
 
 @42414 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -592,9 +616,10 @@ fallen into the enemy's trap.”
 “A mental attack?!”
 
 @42421 Gildrome · ギルドローム
+# 审校：精读：破折号
 > 「マシーンは壊れなくとも、
 >  貴様たちの脳
-“Your machines may not break, but what of your brains—
+“Your machines may not break, but what of your brains,
 ---
 >  精神は果たしてどうかな。
 >  クククククッ」
@@ -721,6 +746,7 @@ It seems they can come here now.”
 “We haven't been idle either, you know. Dr. Hazuki.”
 
 @42442 Dr. Hazuki · 葉月博士
+# 审校：精读：破折号、先住格拉多斯人
 > 「ええ。さまざまな情報を
 >  検討した結果
 “Yes. After examining various data,
@@ -739,11 +765,11 @@ Unfortunately, however, we lack the scientific power of the
 ---
 >  科学力はない。“刻印”の
 >  ようにムゲの宇宙と我々の
-ancient Grados people. A mechanism like the ‘Crest’ that would make
+ancestral Gradosians. A mechanism like the ‘Crest’ that would make
 ---
 >  宇宙との行き来を不可能に
 >  するような機構は、実現できない」
-travel between the Muge universe and ours impossible—we can't build it.”
+travel between the Muge universe and ours impossible is beyond us.”
 
 @42443 Koji · 甲児
 > 「なんだよ、それじゃ何にも
@@ -875,9 +901,10 @@ and handle the recovery?”
 “Good, get started right away.”
 
 @42465 Shinobu · 忍
+# 审校：原文称呼为「先生」，此处指哈桑医生，应译为 Doctor 而非 Teacher。
 > 「沙羅が倒れた?
 >  どういうことだよ、先生」
-“Sara collapsed? What do you mean, Teacher?”
+“Sara collapsed? What do you mean, Doctor?”
 
 @42466 Hasan · ハサン
 > 「どうもこうも、また例のやつだな」
@@ -1022,8 +1049,9 @@ to whom, in many senses, that doesn't apply.”
 “Yeah. The Grados are one thing, but the top brass of Muge are exactly that.”
 
 @42489 Ark · アーク（按段落 3DD1）
+# 审校：说话人应为Ark，原译“how are things?”过于寒暄，与询问分析结果的语境不符。
 > 「それで葉月博士、どうなんです?」
-“So, Dr. Hazuki, how are things?”
+“So, Dr. Hazuki, what's the situation?”
 
 @42490 Selain · セレイン（按段落 3DD2）
 > 「博士、そろそろ結果を
@@ -1035,9 +1063,10 @@ to whom, in many senses, that doesn't apply.”
 “So, what's the situation, Doctor?”
 
 @42492 Manami · マナミ（按段落 3DD4）
+# 审校：Manami是贵族小姐，原译“I heard”过于随意，改为“I believe”更符合其优雅有礼的说话方式。
 > 「葉月博士、お話を
 >  聞かせていただけるとのことでしたが?」
-“Dr. Hazuki, I heard you had something to tell us?”
+“Dr. Hazuki, I believe you had something to tell us?”
 
 @42493 Dr. Hazuki · 葉月博士
 > 「うむ、ムゲの戦艦を
@@ -1069,13 +1098,14 @@ and reach the Muge universe.”
 “Is there a problem...?”
 
 @42498 Dr. Hazuki · 葉月博士
+# 审校：精读：破折号
 > 「超空間を通ってムゲの宇宙へ
 >  到達するには莫大なエネルギーが
 “Reaching the Muge universe through hyperspace requires an immense amount of
 ---
 >  必要とされる。知っての通り竜の
 >  命、このガンドールのエネルギーは
-energy. As you know, the Dragon's Life—the Gandor's energy—is
+energy. As you know, the Dragon's Life, the Gandor's energy, is
 ---
 >  もう残り少ない」
 already running low.”
@@ -1141,9 +1171,10 @@ we can secure a means for them to return.”
 “So that means...”
 
 @42507 Banjo · 万丈
+# 审校：Banjo潇洒从容，原译“huh”语气过于随意，改为“then”更符合其从容不迫的说话风格。
 > 「……地獄への
 >  片道キップってわけだね」
-“...A one-way ticket to hell, huh.”
+“...A one-way ticket to hell, then.”
 
 @42508 Tetsuya · 鉄也
 > 「ちっ、それじゃまるでカミカゼだぜ」
@@ -1160,13 +1191,15 @@ we can secure a means for them to return.”
 “Yeah... Of course, if there's another way, that would be best... but is there one?”
 
 @42511 Dr. Hazuki · 葉月博士
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「数ヶ月後ならば、だな。それだけ
 >  時間があれば、我々はガンドールを
 “If we wait a few months, yes. With that much time, we can modify the Gandor
 ---
 >  その用途にあわせて改造できる。
 >  弓教授と早乙女博士に
-for that purpose. If we have Prof. Yumi and Dr. Saotome
+for that purpose. If we have Professor Yumi and Dr. Saotome
 ---
 >  協力してもらい、ゲッター線と
 >  光子力を利用するシステムを
@@ -1455,6 +1488,7 @@ the Earth Sphere's safety can be secured...”
 “Hey, Amuro. Are you saying you'll go along with such a reckless operation too?!”
 
 @42554 Amuro · アムロ
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「ブライト、状況はアランの
 >  いった通りだよ
 “Bright, the situation is just as Alan said.
@@ -1773,16 +1807,18 @@ I'll leave the job of beating those Muge bastards to Shinobu and the others.”
 I can't very well leave it all to you alone, Mr. Amuro, now can I?”
 
 @42594 Lawrence · ローレンス
+# 审校：ローレンス是对ブラッド说话，不是对マナミ，不应说“my lady”。
 > 「さようでございますな」
-“Indeed, my lady.”
+“Indeed.”
 
 @42595 Amuro · アムロ
 > 「そうか……残念だな」
 “I see... That's a shame.”
 
 @42596 Amuro · アムロ
+# 审校：“that helps a lot”过于随意，不符合阿姆罗沉稳内敛的口吻。
 > 「すまない、助かるよ」
-“Sorry, that helps a lot.”
+“Sorry, I appreciate it.”
 
 @42597 Bright · ブライト
 > 「オーラマシンの件があるので、
@@ -1904,25 +1940,28 @@ and Eiji, David, and Simone, was it?”
 It really does seem more convenient to have him stay behind.”
 
 @42618 Chum · チャム
+# 审校：精读：破折号
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ゴーショーグンもザンボットも
-“There are more, Marvel. Seabook and Cecily, and GoShogun and Zambot too—
+“There are more, Marvel. Seabook and Cecily, and GoShogun and Zambot too,
 ---
 >  いくって言ってたもの」
 they all said they're going.”
 
 @42619 Chum · チャム
+# 审校：精读：破折号
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ゴーショーグンもいくって
-“There are more, Marvel. Seabook and Cecily, and GoShogun too—
+“There are more, Marvel. Seabook and Cecily, and GoShogun too,
 ---
 >  言ってたもの」
 they all said they're going.”
 
 @42620 Chum · チャム
+# 审校：精读：破折号
 > 「まだいるわよ、マーベル。シーブックと
 >  セシリーも、ザンボットもいくって
-“There are more, Marvel. Seabook and Cecily, and Zambot too—
+“There are more, Marvel. Seabook and Cecily, and Zambot too,
 ---
 >  言ってたもの」
 they all said they're going.”
@@ -1952,6 +1991,7 @@ they all said they're going.”
 “You've got to remember properly, you know.”
 
 @42626 Marvel · マーベル
+# 审校：人名按词表统一
 > 「わかってるわよ、チャム」
 “I know, Chum.”
 
@@ -1960,6 +2000,7 @@ they all said they're going.”
 “Emperor Muge.”
 
 @42628 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤーか。どうした」
 “Death Gaia. What is it?”
 
@@ -1973,6 +2014,7 @@ they all said they're going.”
 I may be overthinking it, but could he have been defeated by the Earthlings...?”
 
 @42630 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「かもしれぬ。ギルドロームのたっての
 >  希望があったので行かせたが、
 “Perhaps. I sent him because Gildrome insisted so strongly,
@@ -1995,6 +2037,7 @@ Death Gaia, I shall have you handle it.”
 and, by some chance, make it all the way here...”
 
 @42632 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「フフフ、それも面白いではないか
 >  デスガイヤー。もしそのような強敵が
 “Heh heh heh, wouldn't that be interesting, Death Gaia? If such a powerful enemy
@@ -2011,9 +2054,10 @@ And then, we shall rebuild the Empire of Power again.
 Now rise, Death Gaia.”
 
 @42633 Death Gaia · デスガイヤー
+# 审校：精读：破折号
 > 「はっ! ありがたきお言葉、
 >  身に余る光栄。このデスガイヤー
-“Yes, sir! Such gracious words—an honor beyond my station. I, Death Gaia,
+“Yes, sir! Such gracious words, an honor beyond my station. I, Death Gaia,
 ---
 >  若き日を思いだし、
 >  思う存分に戦う覚悟」
@@ -2024,13 +2068,14 @@ recalling the days of my youth, am resolved to fight to my heart's content.”
 “Mm.”
 
 @42635 Death Gaia · デスガイヤー
+# 审校：精读：破折号
 > 「くるならこい、地球人ども!
 >  貴様らはこのデスガイヤーが倒す!
 “Come if you dare, Earthlings! I, Death Gaia, will strike you down!
 ---
 >  必ず、叩きつぶす! 燃える、燃え
 >  るぞ! 血が、戦いの血が騒ぐッ!」
-I will crush you all, without fail! It burns, it burns! My blood—the blood of battle—stirs!”
+I will crush you all, without fail! It burns, it burns! My blood, the blood of battle, stirs!”
 
 @42636 Sally · サリィ
 > 「ムゲの宇宙へ向かうメンバーが
@@ -2206,8 +2251,9 @@ One minute until energy critical.”
 “Anna, take care of things here. I'll definitely bring Eiji back with me.”
 
 @42668 David · デビッド
+# 审校：デビッド是冲动热血的少年，原文「俺はどうでもいいのかよ」带有不满和撒娇语气，tr过于平淡，改为更符合其口吻的抱怨。
 > 「シモーヌ、俺はどうでもいいのかよ」
-“Simone, what about me?”
+“Simone, don't I matter at all?”
 
 @42669 Simone · シモーヌ
 > 「あんたもエイジのついでに、
@@ -2444,9 +2490,11 @@ We're going to be plenty busy ourselves.”
 Dr. Hazuki, please take care of the Gandor's modifications.”
 
 @42711 Dr. Hazuki · 葉月博士
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「わかっている。もう弓教授たちとも
 >  プランは練ってある
-“I know. I've already worked out a plan with Prof. Yumi and the others.
+“I know. I've already worked out a plan with Professor Yumi and the others.
 ---
 >  一刻も早く彼らを迎えに
 >  行ってやらなくてはな」
@@ -2650,11 +2698,12 @@ I'll apologize properly to Ple later.”
 “I'm so happy. Thank you, {HeroName}.”
 
 @42752 Death Gaia · デスガイヤー
-# 审校：原文是“ムゲ帝王様”，Deathgaiyer 对帝王的敬称应体现为“My lord Emperor Muge”，而不是“Emperor Muge, sir.”
+# 审校：Death Gaia 是武人型将军，对帝王用简洁的敬称即可，原文无“我が君”等，译成“My lord Emperor Muge”过于冗长且不符合其豪迈口吻。
 > 「ムゲ帝王様」
-“My lord Emperor Muge.”
+“Emperor Muge.”
 
 @42753 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤーか。どうした」
 “Death Gaia. What is it?”
 
@@ -2668,6 +2717,7 @@ I'll apologize properly to Ple later.”
 I may be wrong, but could he have been defeated by the Earthlings...?”
 
 @42755 Emperor Muge · ムゲ帝王
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「かもしれぬ。ギルドロームのたっての
 >  希望があったので行かせたが、
 “Perhaps. I sent him because Gildrome insisted so strongly,
@@ -2690,6 +2740,7 @@ Death Gaia, I shall have you handle it.”
 and, by some chance, push all the way here...”
 
 @42757 Emperor Muge · ムゲ帝王
+# 审校：精读：与 42632 统一
 > 「フフフ、それも面白いではないか
 >  デスガイヤー。もしそのような強敵が
 “Heh heh heh, wouldn't that be interesting, Death Gaia? If such a powerful enemy
@@ -2700,12 +2751,13 @@ appears in this universe, then you and I shall fight to our hearts' content
 ---
 >  戦おうではないか。そして、
 >  再び力の帝国を築き直すのだ
-once more. And we shall rebuild the Empire of Might again.
+once more. And we shall rebuild the Empire of Power again.
 ---
 >  さぁ立て、デスガイヤー」
 Now rise, Death Gaia.”
 
 @42758 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「はっ! ありがたきお言葉、
 >  身に余る光栄。このデスガイヤー
 “Yes, sir! Such gracious words, an honor beyond my worth. I, Death Gaia,
@@ -2719,6 +2771,7 @@ recalling the days of my youth, am ready to fight to my heart's content.”
 “Mm.”
 
 @42760 Death Gaia · デスガイヤー
+# 审校：デスガイヤー 按词表 Death Gaia
 > 「くるならこい、地球人ども!
 >  貴様らはこのデスガイヤーが倒す!
 “Come if you dare, Earthlings! I, Death Gaia, will strike you down!

@@ -1,153 +1,211 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @14010 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔なんだよ!」
-“You're in the way!”
+“You’re in the way!”
 
 @14011 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，2/10）
 > 「うおおおおっ!!」
 “Uwooooh!!”
 
 @14012 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
 “This is the finishing blow!!”
 
 @14013 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，4/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつで決めてやる!」
-“I'll finish you with this!”
+“I’ll finish you with this!”
 
 @14014 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，5/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせるかっ!!」
-“Like I'd let you!!”
+“Like I’d let you!!”
 
 @14015 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，6/10）
 > 「落ちろっ!!」
 “Go down!!”
 
 @14016 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，7/10）
 > 「このっ!!」
 “Why you!!”
 
 @14017 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，8/10）
 > 「行くぞっ!!」
 “Here I come!!”
 
 @14018 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，9/10）
 > 「そこだっ!」
 “Right there!”
 
 @14019 Maganac Soldier · マグアナック兵
+# 触发：攻击（通用，10/10）
 > 「もらった!」
 “Got you!”
 
 @14020 Maganac Soldier · マグアナック兵
+# 触发：被击坠（通用，1/2）
+# 审校：被击坠情境，何だと 不是问对方说了什么
 > 「な、何だと!?」
-“W-what did you say?!”
+“W-what?!”
 
 @14021 Maganac Soldier · マグアナック兵
+# 触发：被击坠（通用，2/2）
 > 「しまった! 直撃か!?」
 “Damn! A direct hit?!”
 
 @14022 Maganac Soldier · マグアナック兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、い、いかん、やられる!?」
-“Guh, th-this is bad, I'm done for?!”
+“Guh, th-this is bad, I’m done for?!”
 
 @14023 Maganac Soldier · マグアナック兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I'm at a disadvantage!”
+“Whoa?! Tch, I’m at a disadvantage!”
 
 @14024 Maganac Soldier · マグアナック兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうううっ! つ、強いっ!」
-“Nghhh! H-he's strong!”
+“Nghhh! H-he’s strong!”
 
 @14025 Maganac Soldier · マグアナック兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“Not bad! As expected!”
+“Not bad! As expected of you!”
 
 @14026 Maganac Soldier · マグアナック兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
 “Guhh!! The power difference is too much!!”
 
 @14027 Maganac Soldier · マグアナック兵
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! まだまだっ!」
-“Tch! It's not over yet!”
+“Tch! It’s not over yet!”
 
 @14028 Maganac Soldier · マグアナック兵
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! 少しはできるな!」
-“Tch! You're not half bad!”
+“Tch! You’re not half bad!”
 
 @14029 Maganac Soldier · マグアナック兵
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! そう簡単にやられはせん!!」
-“Ngh! I won't go down that easily!!”
+“Ngh! I won’t go down that easily!!”
 
 @14030 Maganac Soldier · マグアナック兵
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! やってくれたな!!」
-“Ugh! You'll pay for that!!”
+“Ugh! You’ll pay for that!!”
 
 @14031 Maganac Soldier · マグアナック兵
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「まだだっ! まだこれからよ!!」
 “Not yet! This is just the beginning!!”
 
 @14032 Maganac Soldier · マグアナック兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「非力なんだよ!」
-“You're just weak!”
+“You’re just weak!”
 
 @14033 Maganac Soldier · マグアナック兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「パワー不足だな!」
 “Not enough power!”
 
 @14034 Maganac Soldier · マグアナック兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度か!」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @14035 Maganac Soldier · マグアナック兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃など効くものかよ!」
-“An attack like that won't do a thing!”
+“An attack like that won’t do a thing!”
 
 @14036 Maganac Soldier · マグアナック兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「ふん、かすっただけよ!」
 “Hmph, that just grazed me!”
 
 @14037 Maganac Soldier · マグアナック兵
+# 触发：回避（通用，1/5）
 > 「当たるものかよ!」
 “Like that could hit me!”
 
 @14038 Maganac Soldier · マグアナック兵
+# 触发：回避（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「踏み込みが足りん!」
-“You're not committing enough!”
+“You’re not committing enough!”
 
 @14039 Maganac Soldier · マグアナック兵
+# 触发：回避（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「間合いが遠いわっ!」
-“Your spacing's way off!”
+“Your spacing’s way off!”
 
 @14040 Maganac Soldier · マグアナック兵
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「狙いが甘い!」
-“Your aim's too soft!”
+“Your aim’s too soft!”
 
 @14041 Maganac Soldier · マグアナック兵
+# 触发：回避（通用，5/5）
 > 「バカめ。どこを狙っている!」
 “Fool. What are you aiming at?!”
 
 @14042 Maganac Soldier · マグアナック兵
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ムダな攻撃をする……」
 “What a waste of an attack...”
 
 @14043 Maganac Soldier · マグアナック兵
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ、そんなビームではな!」
-“Hah, a beam like that won't work!”
+“Hah, a beam like that won’t work!”
 
 @14044 Maganac Soldier · マグアナック兵
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、弾切れとはな……」
 “Tch, out of ammo, huh...”
 
 @14045 Maganac Soldier · マグアナック兵
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「弾切れか……しかたあるまい」
 “Out of ammo... nothing I can do about it.”
 
 @14046 Maganac Soldier · マグアナック兵
+# 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
 “Tch, attacking from long range, huh...”
 
 @14047 Maganac Soldier · マグアナック兵
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「む……ここからでは反撃できん」
-“Hm... I can't counter from here.”
+“Hm... I can’t counter from here.”

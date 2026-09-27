@@ -18,13 +18,14 @@ I thank you.”
 “It's over, Haman. The ground beneath you has crumbled.”
 
 @43613 Haman · ハマーン
+# 审校：哈曼的威严正式口吻，Let's 改为 Let us 更符合其庄重语气。
 > 「小ざかしいことを少年がいうのか?
 >  ……フッ、フフフ、いいだろう
 “A boy dares to talk so cleverly? ...Hmph, heh heh, very well.
 ---
 >  ここで決着をつけるとしよう。
 >  お前たちさえいなくなれば
-Let's settle this here. Once you are gone,
+Let us settle this here. Once you are gone,
 ---
 >  もはや私をはばむ者はない。私は
 >  お前たちを倒したうえで、ゆっくりと
@@ -39,9 +40,10 @@ and bring the Earth Sphere under my control.”
 “Don't think everything will go your way, Haman!”
 
 @43615 Haman · ハマーン
+# 审校：人称
 > 「どういわれようと、己の運命は
 >  自分で切り開くのが私だ!」
-“Whatever you say, I am the one who carves out her own destiny!”
+“Whatever you say, I carve out my own destiny!”
 
 @43616 Bright · ブライト
 > 「パイロット各員は発進急げ!
@@ -202,13 +204,14 @@ to sever the curse of Earth that humanity bears...”
 “Haman?!”
 
 @43640 Haman · ハマーン
+# 审校：なぜ私と
 > (シャア……なぜ私と……)
-(Char... why won't you...)
+(Char... why not me...)
 
 @43641 Haman · ハマーン
-# 审校：原文“くっ……シャア……なぜ私と……”与L31内心独白呼应，初稿“why won't you...”漏译“私と”，补上“with me”
+# 审校：なぜ私と
 > 「くっ……シャア……なぜ私と……」
-“Ngh... Char... why won't you... with me...”
+“Ngh... Char... why not... me...”
 
 @43642 Gato · ガトー
 > 「ハマーン殿!? くっ……だが、もはや
@@ -229,8 +232,9 @@ to sever the curse of Earth that humanity bears...”
 “Hey, we... we actually won, right?”
 
 @43646 Trowa · トロワ
+# 审校：そのはずだ
 > 「ああ、そのはずだ」
-“Yeah, that's how it should be.”
+“Yeah, we should have.”
 
 @43647 Show · ショウ
 > 「とりあえずは……
@@ -450,12 +454,13 @@ I'm having Garrison analyze it right now, but...”
 “...So it's them after all, is it?”
 
 @43682 Dr. Hazuki · 葉月博士
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「間違いないでしょう。
 >  やはり連中は“刻印”の
 “There's no doubt about it. As expected, they seem unaffected by the
 ---
 >  影響を受けないようですな」
-‘Mark.’”
+‘Crest.’”
 
 @43683 Chief Chujo · 中条長官
 > 「たった数日か……命がけで

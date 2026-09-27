@@ -124,9 +124,10 @@ would be pointless. Quinze, prepare a room for her.”
 “What about OZ?”
 
 @39227 Henken · ヘンケン
+# 审校：全局：バルジ 词条 Barge
 > 「どうにもならんよ。OZの宇宙軍は
 >  上層部をバルジごと失ったおかげで
-“There's nothing to be done. OZ's space forces lost their entire upper command with the Barge,
+“There's nothing to be done. OZ's space forces lost their entire upper command with Barge,
 ---
 >  まるで統制がとれていない」
 so they're in complete disarray.”
@@ -153,9 +154,10 @@ crumbles easily once it comes to this.”
 “So we can't count on OZ anymore...”
 
 @39231 Banjo · 万丈
+# 审校：精读：獅子身中の虫
 > 「ホワイトファングめ、
 >  獅子身中の虫とは、このことだな
-“White Fang, huh. A worm in the lion's body, that's what this is.
+“White Fang, huh. Talk about the enemy within.
 ---
 >  地球が滅んでは独立も革命も
 >  ないというのに。こうなったら、僕らで
@@ -224,9 +226,10 @@ We can't leave negotiations to him. And I doubt he'd want to go himself.”
 “Ah...”
 
 @39239 Beltorchika · ベルトーチカ
+# 审校：原文“こんなところまで上がってきてる”带有“居然跑到这种地方来”的责备语气，现译过于平淡，未体现贝尔托琪卡直率强势的口吻。
 > 「あなた、何こんなところまで
 >  上がってきてるのよ?」
-“What are you doing up here?”
+“What are you doing coming all the way up here?”
 
 @39240 Chan · チェーン
 > 「私はアムロ大尉に用があるだけです」
@@ -459,8 +462,9 @@ Damn it, why does it have to... why does it show me this again...)
 “Hey, are you all right?!”
 
 @39280 Ark · アーク（按段落 3DD1）
+# 审校：对长辈阿斯特纳吉用“ええ”应译得更礼貌，与Ark对长辈用敬语的设定一致。
 > 「……え、ええ。だ、大丈夫です」
-“...Y-yeah. I-I'm fine.”
+“...Y-yes. I-I'm fine.”
 
 @39281 Astonaige · アストナージ
 > 「びっくりさせるなよ。俺はまた、
@@ -502,8 +506,9 @@ which is like that ZERO System... Is it too much for you?”
 “Understood.”
 
 @39287 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：Ehrlich是冷静有礼的军官，原文“か”是确认语气，改为更符合其沉稳口吻的“is it”而非随意的“huh”。
 > 「……アシュクリーフか」
-“...Ashcleef, huh.”
+“...Ashcleef, is it.”
 
 @39288 Ark · アーク（按段落 3DD1）
 > 「知ってるんですか?」
@@ -561,8 +566,9 @@ but they were for that system...”
 “You'll be doing combat tests too, right? I'll join you with the Norouz.”
 
 @39296 Ark · アーク（按段落 3DD1）
+# 审校：アーク对エルリッヒ用「助かります」是敬体，译文应体现礼貌，而非过于随意的“that helps”。
 > 「ああ、助かります」
-“Yeah, that helps.”
+“Yeah, I'd appreciate that.”
 
 @39297 Chan · チェーン
 > 「あ、エマさん、ヘンケン中佐から、これ」
@@ -618,8 +624,9 @@ the Galactic Empire's advance fleet. Lieutenant Colonel Henken, I'll leave the r
 “Hm? Is that Naida? What's she doing here... Oh no, Naida, watch out!”
 
 @39308 Naida · ナイーダ
+# 审校：「きゃあっ!?」是女性惊叫，应译为自然的英语惊叫“Eek”，而非罗马音“Kyaa”。
 > 「きゃあっ!?」
-“Kyaa?!”
+“Eek?!”
 
 @39309 Daisuke · 大介
 > 「大丈夫か? グレンダイザーは
@@ -889,8 +896,9 @@ We'll annihilate the Galactic Empire's advance fleet right here!”
 “Ugh...”
 
 @39357 Mika · ミカ
+# 审校：「気がついた」指恢复意识，原译“waking up”与上下文“已经醒了”不符，改为“come to”。
 > 「タケル、気がついたわよ」
-“Takeru, she's waking up.”
+“Takeru, she's come to.”
 
 @39358 Takeru · タケル
 > 「よかった」
@@ -902,12 +910,13 @@ We'll annihilate the Galactic Empire's advance fleet right here!”
 “Where am I...? What happened to me...?”
 
 @39360 Ryoma · リョウ
+# 审校：「ののしった」是“辱骂/斥责”，原译“branded”语气过重且不准确，改为“called”。
 > 「どうしたのはないだろう。君のおかげで
 >  デュークは大変なことになっているんだ
 “What happened? Thanks to you, Duke is in a terrible state.
 ---
 >  君が裏切り者とののしったせいでね」
-Because you branded him a traitor.”
+Because you called him a traitor.”
 
 @39361 Naida · ナイーダ
 > 「ええっ、あたしが!?」
@@ -1023,13 +1032,14 @@ more than you do. So... so I'll make amends for my sin.”
 “Enemy fleet spotted. All hands, man your first battle stations!”
 
 @39381 Koji · 甲児
+# 审校：精读：先生＝医生
 > 「ちっ、もうそんな時間かよ。
 >  こうなったら大介さんを何がなんでも
 “Tch, it's that time already. If it's come to this, we've got to get Daisuke to fight
 ---
 >  戦わせなくちゃな。先生、
 >  なんか、いいアイデアはないんですか!?」
-no matter what. Teacher, do you have any good ideas?!”
+no matter what. Doctor, do you have any good ideas?!”
 
 @39382 Hasan · ハサン
 > 「そうはいってもなぁ。いま彼は自分の
@@ -1060,12 +1070,13 @@ his awareness might turn back this way, but...”
 “Betrayal... I'm a traitor...”
 
 @39386 Ark · アーク（按段落 3DD1）
+# 审校：“Shockwave”是招式名，但此处是让塔克鲁用冲击波打醒杜克，并非喊出招式名，应小写。
 > 「デューク、悪いけどのんびりやっている
 >  時間はないんだ。タケル、デュークに
 “Duke, sorry, but we don't have time to take it easy. Takeru, give Duke
 ---
 >  衝撃波をくらわせてやってくれ」
-a Shockwave.”
+a shockwave.”
 
 @39387 Takeru · タケル
 > 「あ、ああ、わかった」
@@ -1186,9 +1197,10 @@ somewhere. And the enemy's already right in front of us!”
 “A traitor... I'm a traitor...”
 
 @39406 Selain · セレイン（按段落 3DD2）
+# 审校：“Shockwave”是招式名，但此处是让塔克鲁用冲击波打醒杜克，并非喊出招式名，应小写。
 > 「悪いが、のんびりやっている時間は
 >  ない。タケル、衝撃波をやってくれ」
-“Sorry, but we don't have time to take it easy. Takeru, hit him with the Shockwave.”
+“Sorry, but we don't have time to take it easy. Takeru, hit him with a shockwave.”
 
 @39407 Takeru · タケル
 > 「あ、ああ、わかった」
@@ -1921,10 +1933,10 @@ a man who fights only as Zuul wills...”
 “Marg, it's all right now. I'll never let you go!”
 
 @39529 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Captain Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, prepare yourself!”
 
 @39530 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -2140,10 +2152,10 @@ a man who fights exactly as Zuul wills...”
 “Uwaaaaaaaah!!”
 
 @39573 Rose · ロゼ
-# 检查提示：未用必用译名：マーグ隊→Marg Squad
+# 审校：精读：隊長 统一
 > 「くっ、マーグ隊長!?
 >  おのれ、許さん!」
-“Ngh, Captain Marg?! You'll pay for this, I won't forgive you!”
+“Ngh, Commander Marg?! You'll pay for this, I won't forgive you!”
 
 @39574 Marg · マーグ
 > 「……!? マーズ……俺はいったい、
@@ -2298,9 +2310,10 @@ we've achieved our immediate objective. Let's withdraw.”
 “Right. All right, we'll rendezvous with La Vie en Rose. You all get some rest too.”
 
 @39598 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, is Marg—is my brother all right?!”
+“Rain, is Marg, is my brother all right?!”
 
 @39599 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -2317,8 +2330,9 @@ as soon as possible. It's dangerous to keep bringing him along like this.”
 “I see... is he all right for now?”
 
 @39601 Rain · レイン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「ええ、ハサン先生がいるわ。どうぞ」
-“Yes, Teacher Hasan is with him. Go ahead.”
+“Yes, Dr. Hasan is with him. Go ahead.”
 
 @39602 Hasan · ハサン
 > 「ああ、君か。患者は体が弱っとる
@@ -2365,8 +2379,9 @@ as soon as possible. It's dangerous to keep bringing him along like this.”
 the Empire conquered.”
 
 @39611 Takeru · タケル
+# 审校：精读：去破折号
 > 「しかし、兄さん」
-“But, brother—”
+“But, brother...”
 
 @39612 Marg · マーグ
 > 「マーズ、悪いのはズールだ。
@@ -2398,13 +2413,15 @@ the same as Zuul. I believe that.”
 Leave it at that for today.”
 
 @39617 Takeru · タケル
+# 审校：精读：先生＝医生
 > 「はい……先生、兄さんを頼みます」
-“Yes... Teacher, please take care of my brother.”
+“Yes... Doctor, please take care of my brother.”
 
 @39618 Takeru · タケル
+# 审校：精读：去破折号
 > 「レインさん、マーグは、
 >  兄さんは大丈夫ですか!?」
-“Rain, is Marg—is my brother all right?!”
+“Rain, is Marg, is my brother all right?!”
 
 @39619 Rain · レイン
 > 「命に別状はないわ。ただ、かなりの
@@ -2421,8 +2438,9 @@ as soon as possible. It's dangerous to keep bringing him along like this.”
 “I see... is he all right for now?”
 
 @39621 Rain · レイン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「ええ、ハサン先生がいるわ。どうぞ」
-“Yes, Teacher Hasan is with him. Go ahead.”
+“Yes, Dr. Hasan is with him. Go ahead.”
 
 @39622 Hasan · ハサン
 > 「ああ、君か。患者は体が弱っとる
@@ -2486,6 +2504,7 @@ happening over and over.”
 “Anna...?”
 
 @39634 Anna · アンナ
+# 审校：精读：去破折号
 > 「だって、マーグさんの体はなくなって
 >  しまっても、きっと心はあなたの中に
 “Because even if Marg's body is gone, his heart surely lives on inside you.
@@ -2496,7 +2515,7 @@ The life that was split in two when you were born has become one again
 ---
 >  あなたの中で1つになったんだって、
 >  私、そう思う」
-inside you—that's what I believe.”
+inside you. That's what I believe.”
 
 @39635 Takeru · タケル
 > 「マーグの心が俺の中に……」
@@ -2562,6 +2581,7 @@ convince herself with her own words...”
 “Anna...?”
 
 @39648 Anna · アンナ
+# 审校：精读：去破折号
 > 「だって、マーグさんの体はなくなって
 >  しまっても、きっと心はあなたの中に
 “Because even if Marg's body is gone, his heart surely lives on inside you.
@@ -2572,7 +2592,7 @@ The life that was split in two when you were born has become one again
 ---
 >  あなたの中で1つになったんだって、
 >  私、そう思う」
-inside you—that's what I believe.”
+inside you. That's what I believe.”
 
 @39649 Takeru · タケル
 > 「マーグの心が俺の中に……」
@@ -2608,10 +2628,10 @@ I swear I'll protect the Earth.”
 “Really, Maria?!”
 
 @39655 Maria · マリア
-# 审校：词表将“先生”列为参考译名 Teacher，此处指哈桑，应使用 Teacher 而非 doctor。
+# 审校：“先生”在此指医生，译文“the Teacher”不符合语境，应改为“the doctor”。
 > 「うん。いま先生の診察を受けてる
 >  ところよ」
-“Yeah. He's being examined by the Teacher right now.”
+“Yeah. He's being examined by the doctor right now.”
 
 @39656 Koji · 甲児
 > 「大介さん!」
@@ -2623,8 +2643,9 @@ I swear I'll protect the Earth.”
 “What is it? So noisy. And such a crowd, all trooping in.”
 
 @39658 Takeru · タケル
+# 审校：原文「先生」指医生，哈桑是长者，译作 Teacher 不符语境。
 > 「すみません、先生」
-“Sorry, Teacher.”
+“Sorry, Doctor.”
 
 @39659 Daisuke · 大介
 > 「……みんな……すまなかった」
@@ -2742,12 +2763,13 @@ or Emperor Zuul, destroy the Earth...)
 intention of making contact with us.”
 
 @39679 Amuro · アムロ
+# 审校：精读：主语；去破折号
 > 「敵としても味方としても、という
 >  ことか。銀河帝国軍のほうは
-“Whether as an enemy or an ally, you mean. What about the Galactic Empire—
+“Whether as an enemy or an ally, you mean. What about the Galactic Empire?
 ---
 >  どうするつもりなんだ?」
-what do they intend to do?”
+What do they intend to do?”
 
 @39680 Kamille · カミーユ
 > 「それは、やるつもりのようです。ただ、
@@ -2915,9 +2937,10 @@ If not, we've got no choice but to fight. We've got no choice but to fight, that
 There's no other option.”
 
 @39703 Koji · 甲児
+# 审校：全局：Zuul 拼写
 > 「だけどよ、ズールって奴さえ倒せりゃ、
 >  なんとかなるんじゃないのか?」
-“But if we just take out that Zuhl guy, won't things work out somehow?”
+“But hey, if we just take out that Zuul guy, won't things work out somehow?”
 
 @39704 Sayaka · さやか
 > 「ばかね、皇帝が自分で出てくる
@@ -2938,9 +2961,10 @@ There's no other option.”
 anymore. Just cut, cut, and keep cutting them down.”
 
 @39707 Ryo · 亮
+# 审校：精读：去破折号
 > 「そうだな。だがトレーズやハマーンは
 >  問題ないだろうが、ゼクスたちは
-“Right. But Treize and Haman should be no problem—it's how Zechs and the others
+“Right. But Treize and Haman should be no problem. It's how Zechs and the others
 ---
 >  どう動くか」
 will move that worries me.”

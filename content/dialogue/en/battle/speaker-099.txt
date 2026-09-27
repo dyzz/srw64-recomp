@@ -1,75 +1,106 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @6888 Alex · アレックス
+# 触发：攻击（通用，1/8）
 > 「フン」
 “Hmph.”
 
 @6889 Alex · アレックス
+# 触发：攻击（通用，2/8）
 > 「フッフッフッフッ」
 “Heh heh heh heh.”
 
 @6890 Alex · アレックス
+# 触发：攻击（通用，3/8）
 > 「これは処刑なのだよ」
 “This is an execution.”
 
 @6891 Alex · アレックス
+# 触发：攻击（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お望みの所に撃ちこんでやるぜ!」
-“I'll put one right where you want it!”
+“I’ll put one right where you want it!”
 
 @6892 Alex · アレックス
+# 触发：攻击（通用，5/8）
 > 「とどめだ!」
 “This is the finishing blow!”
 
 @6893 Alex · アレックス
+# 触发：攻击（通用，6/8）
+# 审校：よどみ是淤滞，歪斜不对
 > 「我々がよどみを正すのだっ!」
-“We shall correct the stagnation!”
+“We will set this stagnant world right!”
 
 @6894 Alex · アレックス
+# 触发：攻击（通用，7/8）
 > 「これは粛正なのだよ!」
 “This is a purge!”
 
 @6895 Alex · アレックス
+# 触发：攻击（通用，8/8）
 > 「時代の流れに逆らう
 >  愚か者がぁっ!」
 “You fool, defying the flow of the times!”
 
 @6896 Alex · アレックス
+# 触发：被击坠（通用，1/1）
 > 「し、しまったぁぁぁっ!」
 “D-damn it all!”
 
 @6897 Alex · アレックス
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「き、貴様っ貴様ぁぁーっ!」
 “Y-you, youuu!”
 
 @6898 Alex · アレックス
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「ばかなばかなばかなぁぁーっ!」
 “Impossible, impossible, impossible!”
 
 @6899 Alex · アレックス
+# 触发：中伤（剩余 HP 30–90%）（通用，1/2）
 > 「く! おのれっ!」
 “Ngh! Curse you!”
 
 @6900 Alex · アレックス
+# 触发：中伤（剩余 HP 30–90%）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅっ、殺してやる!」
-“Guh, I'll kill you!”
+“Guh, I’ll kill you!”
 
 @6901 Alex · アレックス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/1）
+# 审校：ククク不是咕咕咕
 > 「ククク、こいつの性能を
 >  甘くみたようだな」
-“Kukuku, seems you underestimated this machine's performance.”
+“Heh heh heh, seems you underestimated this machine’s performance.”
 
 @6902 Alex · アレックス
+# 触发：回避（通用，1/1）
 > 「ハハハハ、余裕すぎるな」
 “Hahahaha, this is too easy.”
 
 @6903 Alex · アレックス
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ハハハハ、余裕すぎるな」
 “Hahahaha, this is too easy.”
 
 @6904 Alex · アレックス
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れだと!? そんなばかな!」
-“Out of ammo?! That's impossible!”
+“Out of ammo?! That’s impossible!”
 
 @6905 Alex · アレックス
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「く、くそっ、どこからの攻撃だ!?」
-“D-damn it, where's that attack coming from?!”
+“D-damn it, where’s that attack coming from?!”
+
+@14397 Alex · アレックス
+# 触发：攻击，乘坐〈キャンサー〉
+# 审校：“これより敵を叩く”是即将开始攻击，初稿 engaging the enemy now 尚可，但 Red Cancer 为专名，按词表外专名应保留并确认；此处改为更贴切的“moving to engage the enemy”以体现“これより”。
+> 「こちらレッドキャンサー、
+>  これより敵を叩く!」
+“This is Red Cancer, moving to engage the enemy!”

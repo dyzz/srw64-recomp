@@ -1,105 +1,140 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7305 Q Boss · Qボス
+# 触发：攻击（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「逃がさんぞ!」
-“You won't escape!”
+“You won’t escape!”
 
 @7306 Q Boss · Qボス
+# 触发：攻击（通用，2/10）
 > 「これでどうかな!」
 “How about this!”
 
 @7307 Q Boss · Qボス
+# 触发：攻击（通用，3/10）
 > 「おのれっ!」
 “Curse you!”
 
 @7308 Q Boss · Qボス
+# 触发：攻击（通用，4/10）
 > 「さぁっ!」
 “Come on!”
 
 @7309 Q Boss · Qボス
+# 触发：攻击（通用，5/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これならどうだ!?」
-“How's this?!”
+“How’s this?!”
 
 @7310 Q Boss · Qボス
+# 触发：攻击（通用，6/10）
 > 「いくぞっ!」
 “Here I go!”
 
 @7311 Q Boss · Qボス
+# 触发：攻击（通用，7/10）
 > 「貴様っ!」
 “You bastard!”
 
 @7312 Q Boss · Qボス
+# 触发：攻击（通用，8/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「手段は選ばん」
-“I'll use any means necessary.”
+“I’ll use any means necessary.”
 
 @7313 Q Boss · Qボス
+# 触发：攻击（通用，9/10）
 > 「観念なさいぃっ!」
 “Give it up!”
 
 @7314 Q Boss · Qボス
+# 触发：攻击（通用，10/10）
 > 「ビッグファイアーのためにぃっ!」
 “For Big Fire!”
 
 @7315 Q Boss · Qボス
+# 触发：被击坠（通用，1/2）
 > 「グゥゥ、ビッグファイアーのためにぃぃぃ!」
 “Guh, for Big Fire!”
 
 @7316 Q Boss · Qボス
+# 触发：被击坠（通用，2/2）
+# 审校：保留拖音
 > 「そんなばかなぁぁぁぁっ!」
-“That's impossible!”
+“Th-this can’t beeee!”
 
 @7317 Q Boss · Qボス
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：更自然
 > 「こ、これはっ!」
-“Th-This is?!”
+“Wh-what’s this?!”
 
 @7318 Q Boss · Qボス
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「エンジンシステムを!?」
 “The engine system?!”
 
 @7319 Q Boss · Qボス
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「くそぅっ!」
 “Damn it!”
 
 @7320 Q Boss · Qボス
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだ!?」
-“Wh-What?!”
+“Wh-what?!”
 
 @7321 Q Boss · Qボス
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってくれたな、ただでは逃がさんぞっ」
-“You've done it now. I won't let you get away with that.”
+“You’ve done it now. I won’t let you get away with that.”
 
 @7322 Q Boss · Qボス
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「ぐぅ? 貴様っ!」
 “Guh? You bastard!”
 
 @7323 Q Boss · Qボス
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「おわっ」
 “Whoa!”
 
 @7324 Q Boss · Qボス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「ほう? その程度かな」
 “Oh? Is that all?”
 
 @7325 Q Boss · Qボス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「ふはははははっ!」
 “Fuhahahahaha!”
 
 @7326 Q Boss · Qボス
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「あきらめなさい」
 “Give it up.”
 
 @7327 Q Boss · Qボス
+# 触发：回避（通用，1/1）
 > 「フフフ、どこを狙っているのかな」
 “Hehehe, what are you aiming at?”
 
 @7328 Q Boss · Qボス
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「あきらめなさい」
 “Give it up.”
 
 @7329 Q Boss · Qボス
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：“这是”直译生硬
 > 「こ、これは、残弾がゼロだと!?」
-“Th-This is, zero rounds left?!”
+“Wh-what? Zero rounds left?!”
 
 @7330 Q Boss · Qボス
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそぅっ、届かんとは!」
-“Damn it, it won't reach!”
+“Damn it, it won’t reach!”

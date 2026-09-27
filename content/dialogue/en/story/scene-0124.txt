@@ -14,9 +14,10 @@
 “What's going on, Bunny?”
 
 @50679 George · ジョルジュ
+# 审校：乔治是优雅有礼的骑士，原文“血相をかえて”用“seen a ghost”过于俚俗，改为更符合其口吻的“as pale as a ghost”。
 > 「{HeroNick}も、どうしたんです、血相を
 >  かえて」
-“What's the matter with you too, {HeroNick}? You look like you've seen a ghost.”
+“What's the matter with you too, {HeroNick}? You look as pale as a ghost.”
 
 @50680 Bunny · バニー
 > 「あ、チボデー。それがね、さっき例の
@@ -31,18 +32,20 @@ guy.”
 “...And? What did he say?”
 
 @50682 Bunny · バニー
+# 审校：邦妮转述，对象是主角
 > 「決着をつけたいから指定した場
 >  所に1人で出てこいって。それで……」
-“He says he wants to settle this, so come alone to the designated place. And then...”
+“He says he wants to settle this, so you're to come alone to the designated place. And then...”
 
 @50683 Chibodee · チボデー
 > 「なんだよ、どうした」
 “What? What is it?”
 
 @50684 Bunny · バニー
+# 审校：one of you
 > 「これが最後だって。どちらかが倒れる
 >  までやらなければ、終わらないって」
-“He says this is the last time. That it won't end until one of us falls.”
+“He says this is the last time. That it won't end until one of you falls.”
 
 @50685 Chibodee · チボデー
 > 「なんだとぉ!?」
@@ -283,6 +286,7 @@ this far...”
 “{PartnerNick}...?”
 
 @50728 对手
+# 审校：词条：ヴァイローズ=Virose
 > 「……あるとき俺は気づいたのだ。俺の
 >  ヴァイローズに隠された、真実に」
 “...At some point, I realized. The truth hidden within my Virose.”
@@ -292,6 +296,7 @@ this far...”
 “...What is it?”
 
 @50730 对手
+# 审校：词条：ヴァイローズ=Virose
 > 「{HeroNick}……貴様は不思議
 >  に思ったことはないか。アースゲインと
 “{HeroNick}... Haven't you ever wondered? The Earthgain and
@@ -340,9 +345,10 @@ could have lacked a machine of his own.”
 “Here...? What do you mean by that?!”
 
 @50738 对手
+# 审校：词条：ヴァイローズ=Virose
 > 「わからんか? 貴様のアースゲインと、
 >  俺のヴァイローズこそが、師匠が
-“Don't you understand? Your Earthgain and my Virose are the very machine
+“Don't you understand? Your Earthgain and my Virose are the very machines
 ---
 >  乗られていた機体そのものなのだ」
 the Master once piloted.”
@@ -365,6 +371,7 @@ he split his own machine in two and entrusted them to us.”
 “Th-That's impossible...”
 
 @50742 对手
+# 审校：词条：ヴァイローズ=Virose
 > 「俺はそれに気づいたとき、こう思った
 >  真に“武機覇拳流”を継ぐ
 “When I realized that, I thought this: the one who truly inherits the ‘Buki Haken-ryu’
@@ -490,6 +497,7 @@ Take your... your fangs, and drive them into their throats.”
 “{PartnerNick}...”
 
 @50754 对手
+# 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを頼む。あれに入っている
 >  データをみれば、師匠の機体を……
 “Take care of the Virose. If you look at the data inside it, you should be able to...
@@ -522,6 +530,7 @@ Farewell, {HeroNick}. Farewell... my...”
 “{PartnerNick}...{PartnerNick}!!”
 
 @50758 主角
+# 审校：补全整条台词的外层引号
 > 「{PartnerNick}! おい、大丈夫か!?」
 “{PartnerNick}! Hey, are you all right?!”
 
@@ -552,7 +561,7 @@ Farewell, {HeroNick}. Farewell... my...”
 fighting me?”
 
 @50763 对手
-# 审校：L18 原文带引号，初稿漏了引号，补上；同时将 'Buki Haken-ryu' 改为弯引号 ‘Buki Haken-ryu’。
+# 审校：词条：ヴァイローズ=Virose
 > 「{HeroNick}……貴様は不思議
 >  に思ったことはないか。アースゲインと
 “{HeroNick}... Haven't you ever wondered? The Earthgain and
@@ -608,7 +617,7 @@ wouldn't have a machine of his own.”
 “Here...? What do you mean by that?!”
 
 @50771 对手
-# 审校：L26 原文带引号，初稿漏了引号，补上。
+# 审校：词条：ヴァイローズ=Virose
 > 「わからんか? 貴様のアースゲインと、
 >  俺のヴァイローズこそが、師匠が
 “Don't you get it? Your Earthgain and my Virose are the very machine
@@ -622,9 +631,10 @@ the Master once piloted.”
 “Wha... What did you say?!”
 
 @50773 对手
+# 审校：引号
 > 「師匠は俺たちに
 >  “武機覇拳流”を継がせる
-“When the Master decided to pass the 'Buki Haken-ryu' on to us,
+“When the Master decided to pass the ‘Buki Haken-ryu’ on to us,
 ---
 >  ことを決めたとき、自分の機体を
 >  2つに分け俺たちに託したのだ」
@@ -636,7 +646,7 @@ he split his own machine in two and entrusted them to us.”
 “Th-That's impossible...”
 
 @50775 对手
-# 审校：L30 原文带引号，初稿漏了引号，补上；同时将 'Buki Haken-ryu' 改为弯引号 ‘Buki Haken-ryu’。
+# 审校：词条：ヴァイローズ=Virose
 > 「俺はそれに気づいたとき、こう思った
 >  真に“武機覇拳流”を継ぐ
 “When I realized that, I thought this: the true heir to the ‘Buki Haken-ryu’
@@ -660,7 +670,7 @@ one of us must lose his machine, one of us must lose the battle.”
 “{PartnerNick}... So that's why you thought there could be only one heir...”
 
 @50777 对手
-# 审校：L32 原文带引号，初稿漏了引号，补上。
+# 审校：词条：ヴァイローズ=Virose
 > 「ああ……だが、どうやら残ったのは
 >  貴様の方だったな。貴様の
 “Yeah... But it seems the one who remains is you. You
@@ -684,6 +694,7 @@ Virose. Much less the right to pilot the Master's machine.”
 “{HeroNick}...?”
 
 @50780 主角
+# 审校：词条：ヴァイローズ=Virose
 > 「お前には、師匠のお心がわからない
 >  のか!? もしお前の言葉が真実
 “Can't you understand the Master's feelings?! If your words are true,
@@ -697,12 +708,13 @@ then the Earthgain and the Virose are what the Master prepared for the two of us
 even at the cost of losing his own beloved machine!”
 
 @50781 对手
-# 审校：L36 原文带引号，初稿漏了引号，补上。
+# 审校：词条：ヴァイローズ=Virose
 > 「しかし……ヴァイローズを使わねば、
 >  スーパーアースゲインには……」
 “But... without the Virose, the Super Earthgain can't...”
 
 @50782 主角
+# 审校：补全整条台词的外层引号
 > 「そんなものは必要ない。師匠がそん
 >  なことを望んでいたと思うのか!?
 “We don't need that. Do you think the Master would have wanted that?!
@@ -724,6 +736,7 @@ Isn't that right, {PartnerNick}?!”
 “{HeroNick}... But I...”
 
 @50784 主角
+# 审校：补全整条台词的外层引号
 > 「ああ、お前は大バカ野郎だ。これか
 >  らみっちり、修行をやりなおさなければ
 “Yeah, you're a huge idiot. Looks like you'll have to start your training
@@ -738,6 +751,7 @@ all over again, and thoroughly this time.”
 “You can't mean... you'd... you'd forgive me?”
 
 @50786 主角
+# 审校：补全整条台词的外层引号
 > 「地球を守る戦いは、俺たちの
 >  正義の戦いは、まだ続く
 “The battle to protect Earth, our battle for justice, isn't over yet.
@@ -747,6 +761,7 @@ all over again, and thoroughly this time.”
 {PartnerNick}, come with me. ...I need you.”
 
 @50787 对手
+# 审校：补全整条台词的外层引号
 > 「……相変わらず甘い奴だな、
 >  貴様は。だが……それも、よかろう
 “...You're as soft as ever. But... that's fine too.

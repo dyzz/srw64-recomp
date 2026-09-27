@@ -84,9 +84,10 @@ Even if it was unavoidable, I am sorry for what we did to Representative Relena.
 “Good grief. Defeating the enemy and still not being able to celebrate honestly... what a feeling.”
 
 @28737 Amuro · アムロ
+# 审校：精读：去破折号
 > 「守るべきものは、この国の平和か、
 >  それとも平和そのものか……
-“What we must protect—is it this country's peace, or peace itself...
+“What we must protect. Is it this country's peace, or peace itself...
 ---
 >  むずかしいな。いずれにしても、
 >  現実と理想というものは
@@ -157,9 +158,10 @@ giving it order. And so, let us welcome once more an age of
 fine old tradition and dignity, and rule the world, gentlemen.”
 
 @28745 Jamitov · ジャミトフ
+# 审校：贾米托夫是政客，对特列斯说话应更正式，将 I'll 改为 I will。
 > 「名演説だな、デルマイユ公。
 >  トレーズ、これからもOZを頼むぞ」
-“A fine speech, Duke Dermail. Treize, I'll be counting on OZ from now on as well.”
+“A fine speech, Duke Dermail. Treize, I will be counting on OZ from now on as well.”
 
 @28746 Treize · トレーズ
 > 「デルマイユ公、ジャミトフ閣下、
@@ -195,13 +197,14 @@ I also wish to speak of the preciousness of life and express my mourning for sou
 intend to defy Romefeller?”
 
 @28750 Treize · トレーズ
+# 审校：精读：去破折号
 > 「私は、人間に必要なのは
 >  絶対的な勝利ではなく
 “I believe what humanity needs is not absolute victory,
 ---
 >  戦う姿、その姿勢と考えます。
 >  しかし、ロームフェラの築く時代は
-but the act of fighting—the stance itself. Yet will the age Romefeller builds
+but the act of fighting, the stance itself. Yet will the age Romefeller builds
 ---
 >  後の世に恥ずべきものとなりは
 >  しないでしょうか。今この世界には
@@ -245,8 +248,9 @@ and it is among the defeated that the bearers of a new age are born.”
 “Treize, what are you trying to say?”
 
 @28753 Treize · トレーズ
+# 审校：精读：敗者
 > 「私は、敗者になりたい」
-“I wish to be a loser.”
+“I wish to be one of the defeated.”
 
 @28754 Dermail · デルマイユ
 > 「……本気のようだな。反逆は
@@ -266,9 +270,10 @@ Treize, I will have you confined.”
 “Is the report that the soldiers are wavering true?”
 
 @28756 Tubarov · ツバロフ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「は。トレーズ特佐解任の噂を
 >  聞いた一部の兵士たちが
-“Yes, sir. Some soldiers who heard rumors of Colonel Treize's dismissal
+“Yes, sir. Some soldiers who heard rumors of Special Colonel Treize's dismissal
 ---
 >  命令を拒否……、数カ所で
 >  小競り合いになっております。やはり
@@ -276,7 +281,7 @@ have refused orders... and there have been skirmishes in several places. As expe
 ---
 >  トレーズ特佐の息のかかった
 >  連中は一筋縄ではまいりません」
-those connected to Colonel Treize are not so easily dealt with.”
+those connected to Special Colonel Treize are not so easily dealt with.”
 
 @28757 Bask · バスク
 > 「それは反乱ではないか!
@@ -505,9 +510,10 @@ field base!”
 “Did we make it in time?!”
 
 @28790 Quattro · クワトロ
+# 审校：Quattro 对上级布莱特说话，原文用「亡くなられた」的敬语，译文用 killed 过于直白，改为 is dead 更符合其含蓄口吻。
 > 「来てくれたか……残念ながら
 >  ブレックス准将は亡くなられた」
-“So you came... Unfortunately, Brigadier General Blex has been killed.”
+“So you came... Unfortunately, Brigadier General Blex is dead.”
 
 @28791 Alan · アラン
 > 「くっ! だめだったか……」
@@ -522,9 +528,10 @@ field base!”
 but... I'm in luck!”
 
 @28793 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：Ehrlich 是冷静有礼的职业军人，内心独白用 It'd 过于随意，改为 It would 更符合其 formal 口吻。
 > (そう都合よくいけばいいが……
 >  あれは連中のエースパイロットたちだ
-(It'd be nice if things went that conveniently... but those are their ace pilots.
+(It would be nice if things went that conveniently... but those are their ace pilots.
 ---
 >  フッ……あの少年も、いつのまにか
 >  エースか。そうさせてしまったのは
@@ -623,12 +630,13 @@ was fate, you know?”
 understand what I'm saying?”
 
 @28808 Selain · セレイン（按段落 3DD2）
+# 审校：精读：去破折号
 > 「馬鹿か貴様は。敵のいうことなど
 >  なぜ聞かねばならん! 敵ならば倒す
-“Are you a fool? Why should I listen to anything an enemy says? If you're the enemy, I'll just defeat you—
+“Are you a fool? Why should I listen to anything an enemy says? If you're the enemy, I'll just defeat you.
 ---
 >  それだけだ!」
-that's all!”
+That's all!”
 
 @28809 Rish · リッシュ（按段落 3DD2）
 > 「ま、そりゃそうだ。しかたがねぇか」
@@ -663,9 +671,10 @@ that you always end up going home beaten.”
 “Whatever you say, as long as you're the enemy, there's no path but to fight.”
 
 @28815 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：去破折号；中文重复
 > 「だからよ、お前が本気でいってくれる
 >  んなら、俺はいつでもそっちにつくって
-“That's what I'm saying—if you'd just tell me you mean it for real, I'd join your side anytime,
+“That's what I'm saying. If you'd just tell me you mean it for real, I'd join your side anytime,
 ---
 >  いってるじゃねぇか」
 haven't I told you that?”
@@ -676,9 +685,10 @@ haven't I told you that?”
 “And why must I say such a thing?!”
 
 @28817 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：去破折号
 > 「そりゃお前……俺がいってほしいからだ
 >  何度もいうが俺ぁマジだぜ!?」
-“Well, because... I want you to say it. I've said it over and over—I'm serious, you know?!”
+“Well, because... I want you to say it. I've said it over and over. I'm serious, you know?!”
 
 @28818 Selain · セレイン（按段落 3DD2）
 > 「そうか……なら、お前が死んだら
@@ -858,9 +868,10 @@ it's impossible to begin a conversation from the heart.”
 subjecting us to outrageous provocations and pressure. At a time like this...”
 
 @28844 Relena · リリーナ
+# 审校：精读：去破折号
 > 「ですから、その解決のために
 >  行くのです。大丈夫です
-“That is precisely why I go—to resolve it. It will be all right.
+“That is precisely why I go, to resolve it. It will be all right.
 ---
 >  話し合ってわからない人間など
 >  この世にはいません
@@ -871,9 +882,11 @@ There is no one in this world who cannot understand through talk.
 We have nothing to be ashamed of.”
 
 @28845 Dorothy · ドロシー
+# 审校：多萝西对莉莉娜的呼语“リリーナ様”应译为“My lady”，而不是直呼其名。
+# 检查提示：未用必用译名：リリーナ→Relena
 > 「リリーナ様! 財団には
 >  私が案内いたしますわ」
-“Lady Relena! I shall guide you to the Foundation.”
+“My lady! I shall guide you to the Foundation.”
 
 @28846 Quatre · カトル
 > 「地上にMD部隊が

@@ -15,9 +15,10 @@
 “Yeah, what's gotten into you anyway?”
 
 @50832 Kappei · 勝平
+# 审校：Kappei 的 scrappy 口吻应更随意，looking 改为 lookin' 更贴合。
 > 「レジスタンス部隊っていうんだっけ、
 >  いつまで探すんだよ」
-“The Resistance, right? How long are we gonna keep looking for them?”
+“The Resistance, right? How long are we gonna keep lookin' for them?”
 
 @50833 Keiko · 恵子
 > 「もう少しのがまんよ。レーダーの反応
@@ -25,9 +26,10 @@
 “Just be patient a little longer. The radar signal's getting closer and closer.”
 
 @50834 Kappei · 勝平
+# 审校：Kappei 的 scrappy 口吻应更随意，fishing 改为 fishin' 更贴合。
 > 「もう、帰ろうぜ。これじゃ、とうちゃんと
 >  一緒に漁に出た方がまだマシさ」
-“Let's just go home already. We'd be better off out fishing with Dad.”
+“Let's just go home already. We'd be better off out fishin' with Dad.”
 
 @50835 Keiko · 恵子
 > 「なーに、いってんのよ。
@@ -64,9 +66,10 @@ be destroyed like Planet Bial.”
 “That's not the Resistance... it's the enemy! We've run into an enemy unit!”
 
 @50840 Kappei · 勝平
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「おいでなすったか。退屈しのぎだ!
 >  いっちょもんでやりますか」
-“So they've shown up, huh? Something to cure my boredom! Let's take 'em on!”
+“So they've shown up, huh? Something to cure my boredom! Let's take ’em on!”
 
 @50841 Kappei · 勝平
 > 「ザンボットコンビネーション!」
@@ -102,9 +105,10 @@ be destroyed like Planet Bial.”
 “Heh, serves you right.”
 
 @50849 Kappei · 勝平
+# 审校：合并：冲突人工取舍
 > 「はん、チョロいチョロい。
 >  軽ーくひねってやったぜ」
-“Hah, too easy, too easy. I twisted 'em up nice and light.”
+“Hah, too easy, too easy. Wrung ’em out without breaking a sweat.”
 
 @50850 Keiko · 恵子
 > 「勝平! 油断してると、いつか

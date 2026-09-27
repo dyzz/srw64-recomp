@@ -1,166 +1,223 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13740 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，1/11）
 > 「このおぉぉぉっ!!」
 “Why youuuu!!”
 
 @13741 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，2/11）
 > 「覚悟!」
 “Prepare yourself!”
 
 @13742 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，3/11）
 > 「くらえっ!!」
 “Take this!!”
 
 @13743 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，4/11）
 > 「うけてみろっ!!」
 “Try and take it!!”
 
 @13744 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，5/11）
 > 「いけっ!」
 “Go!”
 
 @13745 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，6/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるかっ!」
-“Like I'd let you!”
+“Like I’d let you!”
 
 @13746 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，7/11）
 > 「うおおっ!」
 “Whoaah!”
 
 @13747 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，8/11）
 > 「そこだっ!」
 “Right there!”
 
 @13748 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，9/11）
 > 「当たれっ!」
 “Hit him!”
 
 @13749 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，10/11）
 > 「とどめっ!!」
 “Finishing blow!!”
 
 @13750 Axis Soldier · アクシズ兵
+# 触发：攻击（通用，11/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつでどうだっ!」
-“How's this one!”
+“How’s this one!”
 
 @13751 Axis Soldier · アクシズ兵
+# 触发：被击坠（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ! や、やられたっ!」
-“Waaah! I-I'm hit!”
+“Waaah! I-I’m hit!”
 
 @13752 Axis Soldier · アクシズ兵
+# 触发：被击坠（通用，2/2）
 > 「ぐうっ! しまった!」
 “Guuh! Damn it!”
 
 @13753 Axis Soldier · アクシズ兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うおおっ! く、なんてパワーなんだ!?」
-“Whoaah! W-what power!?”
+“Whoaah! W-what power?!”
 
 @13754 Axis Soldier · アクシズ兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! こ、こいつ、強いぞ!」
-“Gah! Th-this guy's strong!”
+“Gah! Th-this guy’s strong!”
 
 @13755 Axis Soldier · アクシズ兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「な、何っ!? バカな!?」
-“W-what!? Impossible!?”
+“W-what?! Impossible?!”
 
 @13756 Axis Soldier · アクシズ兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぐっ! い、いかん、やられる!?」
-“Ugh! N-no, I'm going down!?”
+“Ugh! N-no, I’m going down?!”
 
 @13757 Axis Soldier · アクシズ兵
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「あうっ! ま、まずい、このままでは……」
 “Agh! Th-this is bad, at this rate...”
 
 @13758 Axis Soldier · アクシズ兵
+# 触发：中伤（剩余 HP 30–90%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、さすがにできるな!」
-“Tch, you're good, I'll give you that!”
+“Tch, you’re good, I’ll give you that!”
 
 @13759 Axis Soldier · アクシズ兵
+# 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「ぐっ! だが、この程度ならまだっ!」
 “Ngh! But I can still take this much!”
 
 @13760 Axis Soldier · アクシズ兵
+# 触发：中伤（剩余 HP 30–90%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! まだまだ勝負はこれからよ!」
-“Ngh! The real fight's just beginning!”
+“Ngh! The real fight’s just beginning!”
 
 @13761 Axis Soldier · アクシズ兵
+# 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「うっ! やるな!!」
 “Ugh! Not bad!!”
 
 @13762 Axis Soldier · アクシズ兵
+# 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「くぅっ! やってくれたな!!」
 “Kuh! You got me!!”
 
 @13763 Axis Soldier · アクシズ兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 > 「ふん、かすった程度のものよ!」
 “Hmph, it barely grazed me!”
 
 @13764 Axis Soldier · アクシズ兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「こそばゆいぜ!」
 “That tickles!”
 
 @13765 Axis Soldier · アクシズ兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「ちっ、あたっちまった!」
 “Tch, it got me!”
 
 @13766 Axis Soldier · アクシズ兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「この程度のダメージなど!!」
 “Damage like this is nothing!!”
 
 @13767 Axis Soldier · アクシズ兵
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：与上一句区分
 > 「当たっただけだ!」
-“It barely grazed me!”
+“It only grazed me!”
 
 @13768 Axis Soldier · アクシズ兵
+# 触发：回避（通用，1/7）
+# 审校：回避情境的甘い
 > 「甘いっ!」
-“Too soft!”
+“Too easy!”
 
 @13769 Axis Soldier · アクシズ兵
+# 触发：回避（通用，2/7）
+# 审校：回避时的そこか
 > 「そこかっ!」
-“There you are!”
+“There!”
 
 @13770 Axis Soldier · アクシズ兵
+# 触发：回避（通用，3/7）
 > 「かわせたっ!」
 “I dodged it!”
 
 @13771 Axis Soldier · アクシズ兵
+# 触发：回避（通用，4/7）
 > 「当たるか!」
 “Like that would hit!”
 
 @13772 Axis Soldier · アクシズ兵
+# 触发：回避（通用，5/7）
+# 审校：なんの
 > 「なんの!」
-“No problem!”
+“That’s nothing!”
 
 @13773 Axis Soldier · アクシズ兵
+# 触发：回避（通用，6/7）
+# 审校：原句英文生硬
 > 「かわしてみせる!!」
-“I'll show you a dodge!!”
+“I’ll dodge it, just watch!!”
 
 @13774 Axis Soldier · アクシズ兵
+# 触发：回避（通用，7/7）
 > 「残念だったな!」
 “Too bad for you!”
 
 @13775 Axis Soldier · アクシズ兵
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんなビームなど!」
 “A Beam like that is nothing!”
 
 @13776 Axis Soldier · アクシズ兵
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ふん、ムダなことをする!」
 “Hmph, what a waste of effort!”
 
 @13777 Axis Soldier · アクシズ兵
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、しまった! 弾切れか!」
 “Tch, damn! Out of ammo!”
 
 @13778 Axis Soldier · アクシズ兵
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「くそっ! 弾切れかよ!」
 “Damn! Out of ammo already!”
 
 @13779 Axis Soldier · アクシズ兵
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ここからでは
 >  反撃は無理か……」
-“Ngh! I can't counter from here...”
+“Ngh! I can’t counter from here...”
 
 @13780 Axis Soldier · アクシズ兵
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「あんな遠くから攻撃してくるのか!?」
-“He can attack from that far away!?”
+“He can attack from that far away?!”

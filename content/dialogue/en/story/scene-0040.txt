@@ -13,17 +13,17 @@
 “Alan, how are things on Banjo's end?”
 
 @26020 Alan · アラン
-# 待译：机翻未采用（第 2 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“We've managed to get back on our feet, more or less. In terms of organization,
-# 草稿第 2 页：we can't expect much, but that just means we can focus everything on
-# 草稿第 3 页：backing up the 【主角机体名】.”
+# 审校：补译：原稿占位符丢失
 > 「なんとか立て直したというところだな。
 >  組織力という点では
+“We've managed to get back on our feet, more or less. As far as organization goes,
 ---
 >  期待できないが、その分
 >  {HeroMech}に集中して
+we can't expect much, but that means we can concentrate on the {HeroMech}
 ---
 >  バックアップできるだろう」
+and back it up properly.”
 
 @26021 Quattro · クワトロ
 > 「ほう、それは朗報だな」
@@ -76,13 +76,14 @@ has broken out in some colonies. As for OZ itself, it looks like
 they've fallen into complete civil war.”
 
 @26026 Alan · アラン
+# 审校：精读：長びくな 误读为不会持久
 > 「ロームフェラ派とトレーズ派か。
 >  しかしトレーズ派はそれほど数が
 “The Romefeller faction and the Treize faction, huh. But the Treize faction can't
 ---
 >  多いとも思えないが、長びくな。
 >  もっともその方がこちらには
-have that many people. It won't last long. Though that works out
+have that many people, yet it's dragging on. Though that works out
 ---
 >  都合がよいわけだが……」
 better for us, I suppose...”
@@ -100,9 +101,10 @@ There's no doubt OZ's best and brightest are gathered there.
 And they're probably focusing entirely on defense.”
 
 @26028 Amuro · アムロ
+# 审校：原文“何かいってきてなかったか?”是疑问语气，译文“hasn't there been some word”略显生硬，改为“any word”更自然，且保持阿姆罗对布莱特的平辈称呼。
 > 「そういえばブライト、スウィートウォーター
 >  から何かいってきてなかったか?」
-“By the way, Bright, hasn't there been some word from Sweetwater?”
+“By the way, Bright, hasn't there been any word from Sweetwater?”
 
 @26029 Bright · ブライト
 > 「OZが大規模な作戦の準備を
@@ -151,10 +153,10 @@ but I don't know the details.”
 “...You've got to be kidding!”
 
 @26039 Rish · リッシュ（按段落 3DD2）
-# 审校：原文两页，第一页结尾没有标点，初稿第一页用逗号结尾不符合页末标点规则，改为破折号表示语气延续。
+# 审校：精读：去破折号
 > 「よぉ、我が愛しの{HeroName}ちゃん
 >  わざわざ出迎えてくれるとは
-“Yo, my beloved {HeroName}, coming out to greet me personally—
+“Yo, my beloved {HeroName}, coming out to greet me personally,
 ---
 >  涙がでるほどうれしいねぇ」
 I'm so happy I could cry.”
@@ -194,22 +196,22 @@ it seems my luck, which was on the verge of running out, has come back.”
 “And anyway, why are you here?!”
 
 @26045 Rish · リッシュ（按段落 3DD2）
-# 待译：机翻未采用（残留汉字：联络艇）
-# 草稿第 1 页：“It's all thanks to my incredible luck. I was picked up by a联络艇 from your dock ship,
-# 草稿第 2 页：and when I told the woman acting as captain that I was with the 【主角机体名】,
-# 草稿第 3 页：she went on about destiny or something and was overjoyed. She even repaired
-# 草稿第 4 页：my machine and arranged for me to head down to Jaburo.”
+# 审校：补译：原稿残留汉字
 > 「俺の豪運のたまものだ。お前らの
 >  ドック艦の連絡艇に拾われてな
+“It's all thanks to my incredible luck. A liaison boat from your dock ship picked me up,
 ---
 >  艦長代理っていう女に、
 >  {HeroMech}のもんだっていったら
+and when I told the woman acting as captain that I was with the {HeroMech},
 ---
 >  運命だ、とかなんとかいって
 >  えらい喜んでな。俺の機体を
+she went on about destiny or something and was overjoyed. She had my machine
 ---
 >  修理したうえに、ジャブローに降りる
 >  手はずまで整えてくれたってわけだ」
+repaired and even arranged for me to come down to Jaburo.”
 
 @26046 Selain · セレイン（按段落 3DD2）
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -218,9 +220,10 @@ it seems my luck, which was on the verge of running out, has come back.”
 “...That woman. When it comes to Captain Bright, she has no sense of restraint.”
 
 @26047 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ口吻应更痞气、多缩略，原译过于正式。
 > 「ま、そういうわけだ。
 >  これからよろしく頼むぜ」
-“Well, that's how it is. I'll be in your care from now on.”
+“Well, that's how it is. Lookin' forward to workin' with ya.”
 
 @26048 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -232,8 +235,9 @@ it seems my luck, which was on the verge of running out, has come back.”
 “Ah, {HeroNick}, there you are. Perfect timing.”
 
 @26050 Selain · セレイン（按段落 3DD2）
+# 审校：大尉 统一 Captain
 > 「なにか、クワトロ大尉?」
-“Is something the matter, Lieutenant Quattro?”
+“Is something the matter, Captain Quattro?”
 
 @26051 Quattro · クワトロ
 > 「彼はしばらく保護観察と
@@ -244,8 +248,9 @@ it seems my luck, which was on the verge of running out, has come back.”
 I'm leaving his supervision to you.”
 
 @26052 Selain · セレイン（按段落 3DD2）
+# 审校：精读：大尉
 > 「は? 大尉、私はパイロットです」
-“What? Lieutenant, I'm a pilot.”
+“What? Captain, I'm a pilot.”
 
 @26053 Quattro · クワトロ
 > 「しかしな、自分の言葉には
@@ -266,13 +271,14 @@ I'm leaving his supervision to you.”
 We want skilled pilots too. I'm counting on you.”
 
 @26056 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ对セレイン用“お前ら”复数，译文应体现“你们”而非泛指。
 > 「そりゃ、どうも。ああ、それとひとつだけ。
 >  OZの動きなんですがね
 “Much obliged. Ah, and one more thing. About OZ's movements,
 ---
 >  気をつけていた方がいい。
 >  連中は示威の意味も含め
-you'd better be careful. They'll probably launch a large-scale
+you'd better watch yourselves. They'll probably pull off a large-scale
 ---
 >  多分大規模な
 >  降下作戦をやってきますよ」
@@ -297,13 +303,14 @@ I'd like to ask you more about OZ another time, though.”
 “I see. That helps.”
 
 @26060 Rish · リッシュ（按段落 3DD2）
+# 审校：大尉 统一 Captain
 > 「あのクワトロ大尉ってのは、
 >  ただ者じゃねぇな
-“That Lieutenant Quattro's no ordinary guy.
+“That Captain Quattro's no ordinary guy.
 ---
 >  だいたいこの部隊ってのは、
 >  よくよく見てみりゃすげぇのばかりだ」
-And this whole unit, when you really look at it, it's nothing but incredible people.”
+And this whole unit, when you really look at it, it's nothin' but incredible people.”
 
 @26061 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -315,14 +322,16 @@ And this whole unit, when you really look at it, it's nothing but incredible peo
 “To think I used to fight against guys like these. Right, {HeroNick}?”
 
 @26063 Selain · セレイン（按段落 3DD2）
+# 审校：セレイン对敌人语气应更冷硬，原译“You're far too familiar”偏书面，改为更直接的命令式。（人工改写）
 > 「……なれなれしいぞ、貴様!
 >  それに、少し黙っていろ」
-“...You're far too familiar, you wretch! And keep quiet for a while.”
+“...Don't get so familiar with me, you wretch! And keep your mouth shut for a while.”
 
 @26064 Rish · リッシュ（按段落 3DD2）
+# 审校：リッシュ口吻应更痞气，fine 改为 whatever，we'll 改为 we're gonna 更口语。
 > 「こわいねぇ。ま、いいさ。
 >  何しろこれからずーっと一緒だからな」
-“Scary. Well, fine. After all, we'll be together for a long, long time from now on.”
+“Scary. Well, whatever. After all, we're gonna be together for a long, long time from now on.”
 
 @26065 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -337,23 +346,26 @@ And this whole unit, when you really look at it, it's nothing but incredible peo
 relieved of his post as commander-in-chief?”
 
 @26067 Shinobu · 忍
+# 审校：忍口吻应更粗野，know 前加 the hell，thinking 改为 thinkin' 更贴合其狂放。
 > 「俺が知るかよ。ごちゃごちゃしたこと
 >  考えんのは苦手なんだ
-“How should I know? I'm no good at thinking about complicated stuff.
+“How the hell should I know? I'm no good at thinkin' about complicated stuff.
 ---
 >  目の前の戦いに勝てば、
 >  道は開ける」
 Win the battle in front of you, and the path opens up.”
 
 @26068 Ryo · 亮
+# 审校：精读：バカの耳に念仏
 > 「ことわざにいわく、
 >  バカの耳に念仏」
-“As the saying goes, prayers to a fool's ears.”
+“As the saying goes, it's like reading sutras to a fool.”
 
 @26069 Shinobu · 忍
+# 审校：忍对亮用“てめぇ”，应译出 bastard，picking 改为 pickin' 更粗野。
 > 「亮、てめぇ俺に
 >  ケンカ売ってんのか!?」
-“Ryo, are you picking a fight with me?!”
+“Ryo, you bastard, are you pickin' a fight with me?!”
 
 @26070 Hayato · ハヤト
 > 「それが悪口であるということは
@@ -516,9 +528,10 @@ how about we go meet him face to face?”
 “Yeah... you're right. There may be some meaning to it after all.”
 
 @26099 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad是热血武者口吻，settles for a position语气偏文雅，改为更直白的puts up with。
 > 「面白れぇ。あの男がそんな境遇に
 >  甘んじている理由がわかるってわけだ」
-“Interesting. So we'll find out why that man settles for a position like that.”
+“Interesting. So we'll find out why that man puts up with a situation like that.”
 
 @26100 Manami · マナミ（按段落 3DD4）
 > 「そうね……あたしもトレーズ・
@@ -555,10 +568,10 @@ You'd better be careful.”
 “Yeah. Well then, we're off.”
 
 @26105 Specials · スペシャルズ
-# 审校：“恐れいる”在这里是“佩服、服了”的意思，不是“frightening”；改为 that's impressive 更贴合语境。
+# 审校：精读：去破折号
 > 「くそっ、待ちぶせされていたか。
 >  しかも新型の投入とは恐れいる」
-“Damn, they were lying in wait for us. And they've even deployed new models—that's impressive.”
+“Damn it, they were lying in wait for us. And they've even deployed new models. Impressive.”
 
 @26106 Specials · スペシャルズ
 > 「裏切り者どもめ、かかったな。
@@ -602,9 +615,10 @@ You'd better be careful.”
 “Yes, my lady.”
 
 @26115 Specials · スペシャルズ
+# 审校：精读：去破折号
 > 「なに!? 奴ら、
 >  {HeroMech}か!
-“What?! It's them—the {HeroMech}!
+“What?! It's them, the {HeroMech}!
 ---
 >  くそっ、なぜここに。ええい、増援を
 >  出せ! 奴らを迎撃しろ!」
@@ -657,9 +671,10 @@ Red One, lead a detachment and charge in!”
 “To see Treize? I see.”
 
 @26124 Duo · デュオ
+# 审校：精读：去破折号
 > 「それよりお前こそ、こんなところで何
 >  やってんだよ!? ガンダムはどうした!?」
-“Never mind that—what are you doing in a place like this?! What happened to your Gundam?!”
+“Never mind that, what are you doing in a place like this?! What happened to your Gundam?!”
 
 @26125 Heero · ヒイロ
 > 「お前には関係ない」
@@ -675,12 +690,14 @@ Red One, lead a detachment and charge in!”
 “...The {HeroMech}, huh...”
 
 @26128 Specials · スペシャルズ
+# 审校：精读：トレーズ様
 > 「ぐうぅっ……トレーズ様を……頼む……」
-“Guh... Lord Treize... I leave it to you...”
+“Guh... His Excellency Treize... I leave him to you...”
 
 @26129 Heero · ヒイロ
+# 审校：精读：ここまでか
 > 「ここまでか……」
-“This is as far as I go...”
+“So this is it...”
 
 @26130 Duo · デュオ
 > 「おい!? ……脱出したか。
@@ -688,8 +705,9 @@ Red One, lead a detachment and charge in!”
 “Hey?! ...He ejected. Jeez, he always gives me a scare.”
 
 @26131 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐，voice要求正式精确、愤怒时也不用缩略，应改为“I have made it in time”以符合其口吻。
 > 「どうやら間に合ったようですわね」
-“It seems I made it in time.”
+“It seems I have made it in time.”
 
 @26132 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}!?
@@ -724,9 +742,10 @@ Treize faction, the path I must take is decided.”
 “{PartnerName}... then you'll come with us?!”
 
 @26137 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ是贵族小姐，口吻应更正式，将 can't 改为 cannot，you're 改为 you are。
 > 「しかたがありませんわ。
 >  ロームフェラ派のOZの行為は
-“It can't be helped. The actions of the Romefeller faction's OZ
+“It cannot be helped. The actions of the Romefeller faction's OZ
 ---
 >  いくらわたくしでも
 >  認めることはできません
@@ -734,24 +753,26 @@ are something even I cannot approve of.
 ---
 >  彼らと戦うなら、あなたがたと
 >  一緒の方がよいでしょう」
-If you're going to fight them, it's better that I stand with you.”
+If you are going to fight them, it is better that I stand with you.”
 
 @26138 Manami · マナミ（按段落 3DD4）
 > 「ありがとう、{PartnerName}」
 “Thank you, {PartnerName}.”
 
 @26139 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式，将 let's 改为 let us。
 > 「礼などいわれるすじあいはありません。
 >  さぁ、そんなことよりも
-“There's no need for thanks. Come, more importantly than that,
+“There is no need for thanks. Come, more importantly than that,
 ---
 >  まずはあの者たちを倒します。
 >  いきますわよ」
-let's defeat those people first. Here I go.”
+let us defeat those people first. Here I go.”
 
 @26140 Manami · マナミ（按段落 3DD4）
+# 审校：マナミ是名门大小姐，yeah 过于随意，改为更符合其身份的 Yes。
 > 「ええ!」
-“Yeah!”
+“Yes!”
 
 @26141 Security · セキュリティ
 > 「システム起動……ドアハ
@@ -837,9 +858,10 @@ As the leader of OZ, you made us suffer plenty.
 So why turn against Romefeller now and get yourself locked up in a place like this?!”
 
 @26156 Treize · トレーズ
+# 审校：特列斯口吻正式，将 it's 改为 it is。
 > 「フッ、つまらぬことだ。君たちは
 >  平和のことだけを考えていればよい
-“Heh, it's a trivial matter. You need only think of peace.
+“Heh, it is a trivial matter. You need only think of peace.
 ---
 >  この地球圏の平和をな」
 Of the peace of this Earth Sphere.”
@@ -986,13 +1008,14 @@ one must find the answer.”
 “Alarm! Hostile units entering range one!”
 
 @26178 Treize · トレーズ
+# 审校：精读：去破折号
 > 「そろそろ行きたまえ。そして、死ぬな。
 >  戦って、生き続けるのだ
 “It's about time you went. And don't die. Fight, and keep living.
 ---
 >  君は、君たちは死んではならない。
 >  おぼえておきたまえ
-You—all of you—must not die. Remember that.
+You, all of you, must not die. Remember that.
 ---
 >  君たちは、私を殺すまで
 >  勝手に死ぬことを許可しない」
@@ -1015,9 +1038,10 @@ I will not permit you to die on your own until you have killed me.”
 “Treize Khushrenada?!”
 
 @26183 Koji · 甲児
+# 审校：精读：脱出 是撤离
 > 「うわっ、やばいぜ。
 >  もうだめだ、脱出しよう!」
-“Whoa, this is bad. We're done for—let's eject!”
+“Whoa, this is bad. We're done for, let's get out of here!”
 
 @26184 主角
 > 「くっ……」
@@ -1037,9 +1061,10 @@ Use it. Its name is Epyon.”
 “...Fine, Treize.”
 
 @26187 Treize · トレーズ
+# 审校：精读：去破折号
 > 「私には選択すべき未来は
 >  存在しなかった。見せてくれたまえ
-“For me, there was no future to choose. Show me—
+“For me, there was no future to choose. Show me
 ---
 >  君たちの戦いを。この地球圏の
 >  ……君たちの未来を」
@@ -1168,9 +1193,10 @@ occupied this base works in our favor. Defense will be a bit easier.”
 “That's right. I think so too.”
 
 @26208 Bask · バスク
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「{PartnerSurname}上級特尉、
 >  いったいどういうことか
-“Senior Special Ensign {PartnerSurname}, just what is the meaning of this?
+“Senior Special Lieutenant {PartnerSurname}, just what is the meaning of this?
 ---
 >  貴官は降下作戦に
 >  参加していたはずだな」
@@ -1252,8 +1278,9 @@ the second descent operation. The target is Jaburo.”
 the order, but in that case, the woman's safety cannot be guaranteed. Understood?”
 
 @26220 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：原文是愤怒的指责，you bastard 过于直白，改为 you...! 更贴合军人克制而愤怒的口吻。
 > 「くっ……バスク・オム……あなたはッ!」
-“Ngh... Bask Om... you bastard!”
+“Ngh... Bask Om... you...!”
 
 @26221 Bask · バスク
 > 「女を助けたければ、貴様が
@@ -1360,9 +1387,11 @@ It looks like my unit, but...?”
 “...TYPE33? Hey, tell me, what is that?”
 
 @26233 Rish · リッシュ（按段落 3DD2）
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ヴァルキュリア・シリーズ→Valkyrie Series
 > 「まだ帝国がいた頃に、
 >  月のZ&R社で開発していた
-“Back when the Empire was still around, it was developed by the Z&R company on the Moon—
+“Back when the Empire was still around, it was developed by the Z&R company on the Moon,
 ---
 >  ヴァルキュリア・シリーズの新型だ」
 a new model of the Valkyrie Series.”
@@ -1396,9 +1425,10 @@ should never have been built, since OZ's coup d'état happened
 while they were still at the design stage.”
 
 @26236 Alan · アラン
+# 审校：精读：去破折号
 > 「その通り。あれは我々で製作した
 >  いわば“TYPE33改”とでも
-“Exactly. That one is what we built ourselves—one might call it a
+“Exactly. That one is what we built ourselves. You might call it a
 ---
 >  いうべきものだ」
 ‘TYPE33 Kai.’”
@@ -1457,9 +1487,10 @@ who opposed OZ came to us, design data and all.”
 It has my habits recorded in it. I can't switch to another unit now.”
 
 @26244 Astonaige · アストナージ
+# 审校：Astonaige is addressing Alain, not Selain; the original "you didn't pilot" misreads the subject.
 > 「だからこそ、あれには
 >  お前が乗ってくれないと困るんだよ」
-“That's exactly why we'd be in trouble if you didn't pilot that one.”
+“That's exactly why we need you to pilot that one.”
 
 @26245 Selain · セレイン（按段落 3DD2）
 > 「アストナージ?」
@@ -1483,12 +1514,13 @@ and no one but you can handle it.”
 “When did you go and do that... Astonaige, you copied my data without telling me.”
 
 @26248 Alan · アラン
+# 审校：精读：去破折号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
-“Haha, well, isn't it fine? More importantly, we went to the trouble of bringing it here—
+“Haha, well, isn't it fine? More importantly, we went to the trouble of bringing it here.
 ---
 >  乗ってくれるだろうな?」
-you'll pilot it, won't you?”
+You'll pilot it, won't you?”
 
 @26249 Selain · セレイン（按段落 3DD2）
 > 「いいだろう。使わせてもらうとしよう。
@@ -1513,9 +1545,11 @@ you'll pilot it, won't you?”
 “Yeah. So, what's that one's name?”
 
 @26254 Alan · アラン
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ラーズグリーズ→Razgreez
 > 「“TYPE33改”
 >  ラーズグリーズだ」
-“‘TYPE33 Kai’—the Razgreez.”
+“‘TYPE33 Kai,’ the Razgreez.”
 
 @26255 Selain · セレイン（按段落 3DD2）
 > 「ん? なんだ、見たことのない
@@ -1540,9 +1574,11 @@ They say it's a new Valkyrie. The successor to the Svanheld.”
 “The Svanheld's...”
 
 @26258 Alan · アラン
+# 审校：精读：去破折号
+# 检查提示：未用必用译名：ラーズグリーズ→Razgreez、ヴァルキュリア→Valkyrie
 > 「その通り。あれは我々で製作した
 >  ヴァルキュリア
-“Exactly. That is the Valkyrie we built—
+“Exactly. That is the Valkyrie we built,
 ---
 >  “TYPE33改”ラーズグリーズだ」
 the ‘TYPE33 Kai,’ the Razgreez.”
@@ -1645,12 +1681,13 @@ and no one but you can handle it.”
 “When did you go and do that... Astonaige, you copied my data without telling me.”
 
 @26270 Alan · アラン
+# 审校：精读：去破折号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
-“Haha, well, isn't it fine? More importantly, we went to the trouble of bringing it here—
+“Haha, well, isn't it fine? More importantly, we went to the trouble of bringing it here.
 ---
 >  乗ってくれるだろうな?」
-you'll pilot it, won't you?”
+You'll pilot it, won't you?”
 
 @26271 Selain · セレイン（按段落 3DD2）
 > 「いいだろう。使わせてもらうとしよう。
@@ -1672,6 +1709,8 @@ you'll pilot it, won't you?”
 “How does it look, Astonaige?”
 
 @26275 Astonaige · アストナージ
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「ああ、見てみたんだがね、スイームルグも
 >  エルブルスも、設計段階に
 “Yeah, I took a look, and both the Sweemurg and the Elbulls have been redesigned
@@ -1681,10 +1720,10 @@ you'll pilot it, won't you?”
 with the docking mechanism from the design stage removed.”
 
 @26276 Lawrence · ローレンス
-# 审校：万丈様是管家对万丈的敬称，应译为Master Banjo而非Lord Banjo，以符合ローレンス的恭敬语气。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「確かに万丈様は
 >  そうおっしゃっておられましたな
-“Indeed, Master Banjo did say as much.
+“Indeed, Banjo did say as much.
 ---
 >  つまり、合体分離は
 >  できないということですかな」
@@ -1724,6 +1763,8 @@ How disappointing.”
 combined the whole time, it can be done.”
 
 @26282 Aisha · アイシャ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「お待ちなさい。それは
 >  わたくしのエルブルスが、スイームルグの
 “Wait a moment. Are you saying my Elbulls would stay
@@ -1745,6 +1786,8 @@ attached to the Sweemurg's back the entire time?”
 to do in that case?”
 
 @26285 Astonaige · アストナージ
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「うーん、その場合はエルブルスの
 >  火器管制もスイームルグに
 “Hmm, in that case the Elbulls's fire control would be unified with the Sweemurg's,
@@ -1762,6 +1805,7 @@ so the Elbulls wouldn't need a pilot anymore.”
 “{PartnerNick}, calm down a moment.”
 
 @26288 Aisha · アイシャ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
 > 「冗談ではありません! そんなこと、
 >  絶対に認められませんわ!
 “This is no joke! I absolutely will not accept such a thing!
@@ -1779,11 +1823,14 @@ acceptable for me not to pilot it!”
 “...Guess that was a bit of a misstep. So, what'll it be?”
 
 @26290 Manami · マナミ（按段落 3DD4）
+# 审校：“there's nothing to be done”过于口语化，不符合玛奈美贵族小姐的措辞。
 > 「{PartnerNick}が嫌といっている
 >  以上は、しかたないわ」
-“As long as {PartnerNick} says no, there's nothing to be done.”
+“As long as {PartnerNick} says no, it cannot be helped.”
 
 @26291 Shirley · シャリー
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「でも残念ね。合体させれば
 >  飛行能力が
 “But it's a shame. If they combined, not only would it gain flight capability,
@@ -1806,53 +1853,55 @@ be used by the Sweemurg.”
 “Oh, Lawrence. If you intend to persuade me, it's useless.”
 
 @26294 Lawrence · ローレンス
-# 待译：机翻未采用（第 1 页的占位符应为 ['{PartnerName}']，实际为 []）
-# 草稿第 1 页：“No, actually, there is something I wished to ask of you,
-# 草稿第 2 页：my lady 【搭档名字】. Might you hear me out?”
+# 审校：补译：原稿占位符丢失
 > 「いえ、実は{PartnerName}
 >  お嬢様にお頼みいたしたいことが
+“No, in truth there is something I wished to ask of Lady {PartnerName}.
 ---
 >  ございまして。お聞きいただけますかな?」
+Might you hear me out?”
 
 @26295 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ为高傲贵族女性，原文“聞いてあげます”带有施恩语气，用“I shall listen”更贴合其正式口吻。
 > 「いいわ、聞いてあげます。
 >  いってごらんなさいな」
-“Very well, I'll listen. Go on and say it.”
+“Very well, I shall listen. Go on and say it.”
 
 @26296 Lawrence · ローレンス
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
-# 草稿第 1 页：“The truth is, I have been whipping this old body of mine to support
-# 草稿第 2 页：my lady 【主角名字】, and my lower back has grown terribly sore. At this rate,
-# 草稿第 3 页：it seems I may soon be unable to pilot the Simurgh.”
+# 审校：合并：冲突人工取舍
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「実はこれまで老骨にムチ打って
 >  {HeroName}お嬢様のサポートを
+“The truth is, from whipping these old bones to support Lady {HeroName},
 ---
 >  してまいりましたためか、腰痛が
 >  ひどくなってまいりました。このままでは
+my back has grown terribly sore. At this rate,
 ---
 >  近いうちにスイームルグに搭乗する
 >  ことができなくなってしまいそうなのです」
+I fear I shall soon be unable to board the Sweemurg at all.”
 
 @26297 Aisha · アイシャ（按段落 3DD4）
 > 「…………それで?」
 “...And so?”
 
 @26298 Lawrence · ローレンス
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroName}']，实际为 []）
-# 草稿第 1 页：“I have been searching for a replacement pilot, but finding someone who can match
-# 草稿第 2 页：the breathing of my lady 【主角名字】 has proven quite difficult.
-# 草稿第 3 页：So I thought perhaps I might borrow the wisdom of my lady 【搭档名字】.
-# 草稿第 4 页：That is what I had in mind.”
+# 审校：补译：原稿占位符丢失
 > 「かわりのパイロットを探しておるのですが
 >  {HeroName}お嬢様の呼吸に
+“I have been seeking a replacement pilot, but one able to match Lady {HeroName}'s
 ---
 >  あわせることのできる方となると、
 >  これがなかなか見つかりません
+rhythm is proving very hard to find.
 ---
 >  そこで、{PartnerName}お嬢様に
 >  お知恵をお借りできないものかと
+So I wondered whether Lady {PartnerName} might lend me her wisdom
 ---
 >  そう思いまして」
+on the matter.”
 
 @26299 Aisha · アイシャ（按段落 3DD4）
 > 「……ローレンス」
@@ -1863,21 +1912,23 @@ be used by the Sweemurg.”
 “Yes, what might it be?”
 
 @26301 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ为贵族小姐，对管家说话应保持正式，原文“嘘ね？”用“wasn't it?”过于随意。
 > 「腰痛というのは嘘ね?」
-“The back pain was a lie, wasn't it?”
+“The back pain was a lie, was it not?”
 
 @26302 Lawrence · ローレンス
 > 「は、いえ、そのようなことは……」
 “N-No, nothing of the sort...”
 
 @26303 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ的贵族口吻要求正式措辞，“I will not”改为“I shall not”更符合其voice要求。
 > 「貴方は昔からそうでしたわ。嘘を
 >  つくのが本当に下手でした。それで
 “You have always been like this. You were truly terrible at lying. So
 ---
 >  どういうおつもり? わたくしをたてるため
 >  というのでしたら、聞けませんわよ」
-what is your intention? If it is to flatter me, I will not hear it.”
+what is your intention? If it is to flatter me, I shall not hear it.”
 
 @26304 Lawrence · ローレンス
 > 「これはまいりましたな。実は……
@@ -1906,6 +1957,7 @@ cannot keep up with my lady's movements. My lady says nothing, but
 if this continues, it may one day bring about a fatal result.”
 
 @26307 Aisha · アイシャ（按段落 3DD4）
+# 审校：アイシャ为高傲贵族女性，voice要求“I shall”，将“I will”改为“I shall”以符合其正式口吻。
 > 「いいわ、ローレンス。
 >  その主人を思う心に免じて
 “Very well, Lawrence. In deference to that heart of yours that thinks of your master,
@@ -1916,7 +1968,7 @@ I shall play along with your lie. Have the work begun at once.
 ---
 >  取りかからせてちょうだい。
 >  次からはわたくしが乗るわ」
-From now on, I will be the one to pilot it.”
+From now on, I shall be the one to pilot it.”
 
 @26308 Lawrence · ローレンス
 > 「はい、{PartnerName}お嬢様」
@@ -1931,6 +1983,7 @@ From now on, I will be the one to pilot it.”
 “Astonaige, what happened?!”
 
 @26311 Astonaige · アストナージ
+# 审校：词条：エルブルス=Elbulls
 > 「ああ{HeroNick}か。万丈の
 >  とこのスタッフが持ちこんできたんだ
 “Oh, {HeroNick}. Banjo's people brought it in.
@@ -1980,6 +2033,7 @@ must surely resent me.”
 “What is it?”
 
 @26319 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
 > 「『貴女の正義、貴女の理想
 >  が、どのような結末を迎えるのか、
 “‘I shall see through to what end your justice, your ideals will lead.
@@ -2006,6 +2060,8 @@ Elbulls, use it as you please.’ That is all.”
 “Work? On what?”
 
 @26323 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「スイームルグとエルブルスを、
 >  本来の姿に戻すのです
 “To return the Sweemurg and the Elbulls to their original form.
@@ -2019,6 +2075,8 @@ Since they have been redesigned, they cannot be equipped with
 a combine-and-separate mechanism, but they can be unified into one.”
 
 @26324 Manami · マナミ（按段落 3DD4）
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「スイームルグとエルブルスを……
 >  {PartnerName}のエルブルスで
 “The Sweemurg and the Elbulls... With {PartnerName}'s Elbulls,
@@ -2041,6 +2099,8 @@ and also add flight capability and new weapons.”
 “New weapons...?”
 
 @26327 Lawrence · ローレンス
+# 审校：词条：エルブルス=Elbulls
+# 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「はい。エルブルスの
 >  ジェネレーター出力を利用した
 “Yes. It is the new Sweemurg's greatest weapon,
@@ -2063,8 +2123,10 @@ utilizing the output of the Elbulls's generator.”
 I look forward to the completion of the new Sweemurg.”
 
 @26330 ???
+# 审校：精读：トレーズ様
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様……」
-“Lord Treize...”
+“Your Excellency...”
 
 @26331 Treize · トレーズ
 > 「彼らは戦いぬくよ。
@@ -2097,5 +2159,7 @@ truly be doomed to extinction. But as things stand,
 we cannot open the third act. Let us wait a while longer. Understood?”
 
 @26334 ???
+# 审校：精读：トレーズ様
+# 检查提示：未用必用译名：トレーズ→Treize
 > 「はい、トレーズ様の意のままに」
-“Yes, as Lord Treize wills.”
+“Yes, as Your Excellency wills.”

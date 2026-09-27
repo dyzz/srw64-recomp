@@ -47,8 +47,9 @@ playing along with a lunatic like you! Walking right into your own death is what
 You're not the only ones here!”
 
 @47251 Tetsuya · 鉄也
+# 审校：「外野」在这里是“局外人/无关者”的意思，不是“outsider”那种外来者；铁也语气冷峻简短，改为更贴切的“Stay out of this!”
 > 「外野はひっこんでろ!」
-“Stay out of this, outsider!”
+“Stay out of this!”
 
 @47252 Shinobu · 忍
 > 「んだとコラ、上等じゃねぇか!」
@@ -119,9 +120,10 @@ You're not the only ones here!”
 “Bright, what happened?”
 
 @47268 Bright · ブライト
+# 审校：精读：開いた口がふさがらない
 > 「口論、乱闘。
 >  開いたクチがふさがらんよ」
-“An argument, then a brawl. Once their mouths open, they won't shut up.”
+“An argument, then a brawl. I'm at a loss for words.”
 
 @47269 George · ジョルジュ
 > 「どうします、艦長」
@@ -286,13 +288,15 @@ one alone can accomplish nothing.”
 “Everyone feels the same way. But for now, all we can do is wait.”
 
 @47295 Shinobu · 忍
+# 审校：精读：破折号
 > 「待つ待つ待つ待つ、結局それか!
 >  くそっなんとかできねぇのかよ、なんとか!」
-“Wait, wait, wait, wait—so that's all it comes down to?! Damn it, can't we do something?! Anything?!”
+“Wait, wait, wait, wait, so that's all it comes down to?! Damn it, can't we do something?! Anything?!”
 
 @47296 Mashymre · マシュマー
+# 审校：マシュマー对哈曼的称呼应为“Lady Haman”，且“this is terrible”语气不够戏剧化，改为更符合其浮夸骑士口吻的“terrible news”。
 > 「ハマーン様、大変です!」
-“Lady Haman, this is terrible!”
+“Lady Haman, terrible news!”
 
 @47297 Haman · ハマーン
 > 「どうした、マシュマー」
@@ -329,17 +333,18 @@ if it had sortied, we would know.”
 attacking Axis?”
 
 @47303 Mashymre · マシュマー
+# 审校：精读：破折号
 > 「敵MSおよび戦艦は、我が
 >  アクシズ軍のものだ。識別コードは
 “The enemy mobile suits and battleships belong to our own Axis Forces. The identification codes are
 ---
 >  地球制圧艦隊のもの。
 >  これは反乱なのだ! グレミーめ
-those of the Earth Suppression Fleet. This is a rebellion! That Glemy—
+those of the Earth Suppression Fleet. This is a rebellion! That Glemy,
 ---
 >  自分の艦隊の面倒も
 >  見れぬとは!」
-he can't even keep his own fleet in order!”
+he cannot even keep his own fleet in order!”
 
 @47304 Haman · ハマーン
 > 「いや……アクシズに攻撃を
@@ -347,9 +352,10 @@ he can't even keep his own fleet in order!”
 “No... the one attacking Axis is that Glemy.”
 
 @47305 Gato · ガトー
+# 审校：Gato 对哈曼的敬称应放在句末更自然，且原文呼语为「ハマーン殿」。
 > 「ではハマーン殿は、グレミー・トトが
 >  反乱を起こしたと申されるのか!?」
-“Then are you saying, Lady Haman, that Glemy Toto has raised a rebellion?!”
+“Then are you saying that Glemy Toto has raised a rebellion, Lady Haman?!”
 
 @47306 Mashymre · マシュマー
 > 「まさか……グレミーは艦隊を率いて、
@@ -665,8 +671,9 @@ Let's do it, Captain, Doctor!”
 We've got no other choice!”
 
 @47352 Judau · ジュドー
+# 审校：ジュドー对布莱特应称 Captain，原文的“ブライトさん”需保留敬称。
 > 「ああ、やろうぜブライトさん」
-“Yeah, let's do it, Bright.”
+“Yeah, let's do it, Captain Bright.”
 
 @47353 Amuro · アムロ
 > 「まずは動かなければ、話にならないな。
@@ -682,6 +689,7 @@ Side 3 as well, no matter what.”
 “Like Shinobu says, I don't think we have any choice.”
 
 @47355 Bright · ブライト
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「わかった。誰か、シーラ女王へ
 >  連絡を頼む。我々は月をでる」
 “Understood. Someone contact Queen Ciela. We're leaving the moon.”
@@ -742,8 +750,9 @@ Side 3 as well, no matter what.”
 “What? Where?”
 
 @47368 Ple-Two · プルツー
+# 审校：全局：省略号统一为三点
 > (……いる。見つけたよ、ハマーン)
-(…There you are. I found you, Haman.)
+(...There you are. I found you, Haman.)
 
 @47369 Axis Soldier · アクシズ兵
 > 「そこのMS、どこの所属だ!」
@@ -767,9 +776,10 @@ regarding Glemy Toto's rebellion!”
 “What?! Hold on, I'll check on that now.”
 
 @47372 Ple-Two · プルツー
+# 审校：全局：省略号统一为三点
 > (……ハマーンやマシュマーなら、
 >  私を通そうなど考えないだろうな)
-(…If it were Haman or Mashymre, they wouldn't even think of letting me through.)
+(...If it were Haman or Mashymre, they wouldn't even think of letting me through.)
 
 @47373 Axis Soldier · アクシズ兵
 > 「ん? 待てといったのが
@@ -791,9 +801,10 @@ regarding Glemy Toto's rebellion!”
 “You think the likes of you could take me down?”
 
 @47377 Haman · ハマーン
+# 审校：全局：省略号统一为三点
 > (この感覚……
 >  グレミーの強化人間だな
-(This sensation… it's one of Glemy's enhanced humans.
+(This sensation... it's one of Glemy's enhanced humans.
 ---
 >  私を殺しに来たか)
 So she's come to kill me.)
@@ -813,21 +824,23 @@ So she's come to kill me.)
 “You're nothing but Glemy's puppet! Know your place!”
 
 @47381 Ple-Two · プルツー
+# 审校：全局：省略号统一为三点
 > 「くっ、キャラ・スーンと、
 >  マシュマー・セロか
 “Ngh, Chara Soon and Mashymre Cello, huh.
 ---
 >  ハマーンが出ていることがわかっただけで
 >  よしとしておくか……」
-I suppose I'll settle for confirming that Haman is here…”
+I suppose I'll settle for confirming that Haman is here...”
 
 @47382 Mashymre · マシュマー
 > 「ちいっ! 逃さん!!」
 “Tch! You won't escape!!”
 
 @47383 Ple-Two · プルツー
+# 审校：全局：省略号统一为三点
 > 「フン……」
-“Hmph…”
+“Hmph...”
 
 @47384 Mashymre · マシュマー
 > 「ぐうぅぅっ!」
@@ -858,8 +871,9 @@ I suppose I'll settle for confirming that Haman is here…”
 seized by Glemy. They'll likely come out to intercept. Return and prepare for it.”
 
 @47389 Mashymre · マシュマー
+# 审校：全局：省略号统一为三点
 > 「はっ……ハマーン様」
-“Yes… Lady Haman.”
+“Yes... Lady Haman.”
 
 @47390 Show · ショウ
 > 「何かわかりましたか?」
@@ -870,12 +884,14 @@ seized by Glemy. They'll likely come out to intercept. Return and prepare for it
 “I'm working on it right now.”
 
 @47392 Bunny · バニー
+# 审校：全局：省略号统一为三点
 > 「……ねぇ、これって……」
-“…Hey, doesn't this mean…”
+“...Hey, doesn't this mean...”
 
 @47393 Mika · ミカ
+# 审校：全局：省略号统一为三点
 > 「……うん、間違いないわ」
-“…Yeah, there's no mistake.”
+“...Yeah, there's no mistake.”
 
 @47394 Bright · ブライト
 > 「どうした? 何かわかったのか!?」
@@ -899,8 +915,9 @@ seized by Glemy. They'll likely come out to intercept. Return and prepare for it
 They say Axis has been occupied.”
 
 @47398 Roux · ルー
+# 审校：全局：省略号统一为三点
 > 「グレミーって……あいつが!?」
-“Glemy…? That guy?!”
+“Glemy...? That guy?!”
 
 @47399 Banjo · 万丈
 > 「ビンゴだ、艦長。いけるかもしれない」
@@ -915,8 +932,9 @@ They say Axis has been occupied.”
 a better situation.”
 
 @47401 Bunny · バニー
+# 审校：全局：省略号统一为三点
 > 「でも……」
-“But…”
+“But...”
 
 @47402 Bright · ブライト
 > 「何だ?」
@@ -1054,12 +1072,13 @@ once before, and above all her actions are easy to read.”
 “Exactly. She's straightforward, after all.”
 
 @47427 Shinobu · 忍
+# 审校：忍的粗野口吻应更强烈，加入“Screw that”以匹配其不服管的语气。
 > 「なんだよ、お前らまたあの女に
 >  いいように使われるつもりか!?
 “What the hell, are you guys planning to let that woman use you again?!
 ---
 >  俺はごめんだぜ!」
-Count me out!”
+Screw that, count me out!”
 
 @47428 Boss · ボス
 > 「おう、俺さまも同意見だわさ」
@@ -1170,13 +1189,14 @@ There's still more to this battle ahead. Overdoing it is a no-no, right?
 If it's Haman, there's a high chance she'll prioritize attacking the rebel army.”
 
 @47442 Manami · マナミ（按段落 3DD4）
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あたしも、考えるまでもないと思うわ。
 >  グレミー・トトというのは論外としても
 “I think it goes without saying, too. Glemy Toto is out of the question, but
 ---
 >  ハマーンだって許せるものではないわ。
 >  クワトロ特尉がいたら
-Haman isn't someone we can forgive either. If Lieutenant Quattro were here,
+Haman isn't someone we can forgive either. If Special Lieutenant Quattro were here,
 ---
 >  きっとそういうはずよ」
 I'm sure he'd say the same.”
@@ -1352,12 +1372,13 @@ Impossible, why?!”
 “Right. We just want to smash you first!”
 
 @47471 Glemy · グレミー
-# 待译：机翻未采用（页数应为 2，实际给了 1（zh 必须与 ja 逐页对应））
-# 草稿第 1 页：“Ngh... damn you, you scum. Fine, I'll just eliminate both Haman and 【主角机体名】!”
+# 审校：补译：原稿页数错误
 > 「くっ……おのれ、クズどもが。かまわん、
 >  ハマーンも{HeroMech}も
+“Ngh... damn you, scum. No matter. Haman and the {HeroMech} alike,
 ---
 >  排除すればよいのだ!」
+I need only eliminate them both!”
 
 @47472 Haman · ハマーン
 > 「威勢がいいな、グレミー。
@@ -1507,8 +1528,9 @@ she must deal with as well.”
 “As if the likes of you could.”
 
 @47491 Shinobu · 忍
+# 审校：Shinobu 的粗野口吻要求 heavy slang，原文「ぐたぐだうるせぇんだよ」语气强烈，译文过于温和。
 > 「ぐたぐだうるせぇんだよ! やってやるぜ!」
-“Quit your yapping! Let's do this!”
+“Quit your damn yapping! Let's do this!”
 
 @47492 Haman · ハマーン
 > 「マシュマーか。存分にやれ」
@@ -1519,13 +1541,14 @@ she must deal with as well.”
 “Yes, Lady Haman!”
 
 @47494 Mashymre · マシュマー
+# 审校：精读：破折号
 > 「ハマーン様は撤退されたか。
 >  お前たち、よいな
-“So Lady Haman has withdrawn. Listen up, all of you—
+“So Lady Haman has withdrawn. Listen up, all of you.
 ---
 >  ハマーン様のため、
 >  なんとしても敵を叩きつぶすのだ!」
-for Lady Haman's sake, crush the enemy no matter what!”
+For Lady Haman's sake, crush the enemy no matter what!”
 
 @47495 Haman · ハマーン
 > 「マシュマーか。存分にやれ」
@@ -1536,13 +1559,14 @@ for Lady Haman's sake, crush the enemy no matter what!”
 “Yes, Lady Haman!”
 
 @47497 Mashymre · マシュマー
+# 审校：精读：破折号
 > 「ハマーン様は撤退されたか。
 >  お前たち、よいな
-“So Lady Haman has withdrawn. Listen up, all of you—
+“So Lady Haman has withdrawn. Listen up, all of you.
 ---
 >  ハマーン様のため、
 >  なんとしても敵を叩きつぶすのだ!」
-for Lady Haman's sake, crush the enemy no matter what!”
+For Lady Haman's sake, crush the enemy no matter what!”
 
 @47498 Glemy · グレミー
 > 「遅いぞ、プルツー!」
@@ -1636,36 +1660,40 @@ Finish him off!”
 “What?!”
 
 @47517 Haman · ハマーン
+# 审校：哈曼语气威严正式，can't 过于口语化，改为 cannot。
 > 「くっ、こんなところでやられるわけには
 >  いかん。少佐、あとは頼む」
-“Ngh, I can't afford to be finished off in a place like this. Major, I leave the rest to you.”
+“Ngh, I cannot afford to be finished off in a place like this. Major, I leave the rest to you.”
 
 @47518 Gato · ガトー
 > 「承知した」
 “Understood.”
 
 @47519 Haman · ハマーン
+# 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところでやられるわけには
 >  いかん。マシュマー、あとは頼むぞ」
-“Ngh, I can't afford to be finished off in a place like this. Mashymre, I leave the rest to you.”
+“Ngh, I cannot afford to be finished off in a place like this. Mashymre, I leave the rest to you.”
 
 @47520 Mashymre · マシュマー
 > 「はっ、おまかせください、ハマーン様!」
 “Yes, leave it to me, Lady Haman!”
 
 @47521 Haman · ハマーン
+# 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところでやられるわけには
 >  いかん。キャラ、あとは頼むぞ」
-“Ngh, I can't afford to be finished off in a place like this. Chara, I leave the rest to you.”
+“Ngh, I cannot afford to be finished off in a place like this. Chara, I leave the rest to you.”
 
 @47522 Chara · キャラ
 > 「はい、おまかせください、ハマーン様!」
 “Yes, leave it to me, Lady Haman!”
 
 @47523 Haman · ハマーン
+# 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところで
 >  やられるわけにはいかん」
-“Ngh, I can't afford to be finished off in a place like this.”
+“Ngh, I cannot afford to be finished off in a place like this.”
 
 @47524 Judau · ジュドー
 > 「このぉっ!!」
@@ -1891,9 +1919,10 @@ It shouldn't be the same thing.”
 “That common sense can stop applying sometimes. That's what people are like.”
 
 @47566 Bright · ブライト
+# 审校：精读：我がごとながら
 > 「我がごとながら、度し難いことだな。
 >  まったく」
-“It's hard to stomach, even if it's our own kind. Truly.”
+“Speaking as one of them, we humans really are beyond saving. Honestly.”
 
 @47567 Quatre · カトル
 > 「ええ。どのような形であれ、

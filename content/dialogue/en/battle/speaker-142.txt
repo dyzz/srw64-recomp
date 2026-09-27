@@ -1,99 +1,164 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7093 Baren · バレン
+# 触发：攻击（通用，1/9）
 > 「死ね!」
 “Die!”
 
 @7094 Baren · バレン
+# 触发：攻击（通用，2/9）
 > 「いくぞ!」
 “Here I come!”
 
 @7095 Baren · バレン
+# 触发：攻击（通用，3/9）
 > 「これでもくらえぃ!」
 “Take this!”
 
 @7096 Baren · バレン
+# 触发：攻击（通用，4/9）
 > 「えぇぃっ!」
 “Hah!”
 
 @7097 Baren · バレン
+# 触发：攻击（通用，5/9）
 > 「はっはっはっはっ!」
 “Hahahahaha!”
 
 @7098 Baren · バレン
+# 触发：攻击（通用，6/9）
 > 「もはや最後だ。観念するがいい!」
 “This is the end. Give it up!”
 
 @7099 Baren · バレン
+# 触发：攻击（通用，7/9）
 > 「覚悟!」
 “Prepare yourself!”
 
 @7100 Baren · バレン
+# 触发：攻击（通用，8/9）
 > 「フフフ、ゆくぞ!」
 “Hehehe, here I go!”
 
 @7101 Baren · バレン
-# 审校：原文「どうだ!」是反问/威吓语气，初稿用句号语气不对，改为问号加感叹号。
+# 触发：攻击（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうだ!」
-“How's that?!”
+“How’s that?!”
 
 @7102 Baren · バレン
+# 触发：被击坠（通用，1/1）
 > 「ああぁぁぁぁぁぁぁぁっ!」
 “Aaaaaaaaaah!”
 
 @7103 Baren · バレン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「あぁぁぁぁっ!」
 “Aaaaaaah!”
 
 @7104 Baren · バレン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：おのれ
 > 「おのれっ!」
-“You bastard!”
+“Curse you!”
 
 @7105 Baren · バレン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「きゃぁぁぁぁっ!」
 “Kyaaaaaah!”
 
 @7106 Baren · バレン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このままでは済まさん!」
-“You won't get away with this!”
+“You won’t get away with this!”
 
 @7107 Baren · バレン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
+# 审校：おのれ
 > 「ぬぅ、おのれぇ!」
-“Ngh, you bastard!”
+“Ngh, curse you!”
 
 @7108 Baren · バレン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「うわぁぁっ!」
 “Uwaaah!”
 
 @7109 Baren · バレン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「よくも、よくも!」
 “How dare you, how dare you!”
 
 @7110 Baren · バレン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、もうおしまいか!」
-“What's wrong, is that all?!”
+“What’s wrong, is that all?!”
 
 @7111 Baren · バレン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「フフフ、そんな攻撃が効くと
 >  思ったか!」
 “Hehehe, did you think that attack would work?!”
 
 @7112 Baren · バレン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「フフ、その程度か」
 “Heh, is that all?”
 
 @7113 Baren · バレン
+# 触发：回避（通用，1/1）
 > 「ばかめっ! こっちの思うつぼだ」
 “Fool! Just as I planned.”
 
 @7114 Baren · バレン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「フフ、その程度か」
 “Heh, is that all?”
 
 @7115 Baren · バレン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なに!? エネルギー切れか!」
 “What?! Out of energy?!”
 
 @7116 Baren · バレン
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ、ここからでは!」
 “Ngh, not from here!”
+
+@14406 Baren · バレン
+# 触发：对手驾驶员〈タケル〉
+> 「マーズ覚悟!」
+“Prepare yourself, Mars!”
+
+@14407 Baren · バレン
+# 触发：对手驾驶员〈タケル〉
+> 「フフフ、ゆくぞマーズ!」
+“Heh heh, here I come, Mars!”
+
+@14408 Baren · バレン
+# 触发：对手驾驶员〈タケル〉
+> 「死ねマーズ!」
+“Die, Mars!”
+
+@14409 Baren · バレン
+# 触发：对手驾驶员〈タケル〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「どうだマーズ!」
+“How’s that, Mars!”
+
+@14410 Baren · バレン
+# 触发：对手驾驶员〈タケル〉
+> 「マーズ、もはや最後だ。観念するが
+>  いい!」
+“Mars, this is the end. Give it up!”
+
+@14411 Baren · バレン
+# 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈タケル〉
+> 「おのれマーズ!」
+“Curse you, Mars!”
+
+@14412 Baren · バレン
+# 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈タケル〉
+> 「フフ、その程度かマーズ」
+“Heh, is that all, Mars?”

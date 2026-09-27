@@ -1,176 +1,247 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8432 Kamille · カミーユ
+# 触发：攻击（通用，1/10）
 > 「これならっ!」
 “This should do it!”
 
 @8433 Kamille · カミーユ
+# 触发：攻击（通用，2/10）
+# 审校：damn you 多余
 > 「おちろぉーっ!」
-“Fall, damn you!”
+“Go dooown!”
 
 @8434 Kamille · カミーユ
+# 触发：攻击（通用，3/10）
 > 「そこかぁーっ!」
 “There you are!”
 
 @8435 Kamille · カミーユ
+# 触发：攻击（通用，4/10）
+# 审校：更像喊话
 > 「あたれぇーっ!」
-“Hit him!”
+“Hit already!”
 
 @8436 Kamille · カミーユ
+# 触发：攻击（通用，5/10）
 > 「いけるかっ!?」
 “Can I do this?!”
 
 @8437 Kamille · カミーユ
+# 触发：攻击（通用，6/10）
 > 「そこだっ!!」
 “Right there!!”
 
 @8438 Kamille · カミーユ
+# 触发：攻击（通用，7/10）
 > 「いけーっ!!」
 “Go!!”
 
 @8439 Kamille · カミーユ
+# 触发：攻击（通用，8/10）
 > 「そこをどけーっ!!」
 “Get out of the way!!”
 
 @8440 Kamille · カミーユ
+# 触发：攻击（通用，9/10）
+# 审校：ええい 是懊恼
 > 「ええいっ!」
-“Come on!”
+“Damn it!”
 
 @8441 Kamille · カミーユ
+# 触发：攻击（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させるっ!」
-“I'll land a direct hit!”
+“I’ll land a direct hit!”
 
 @8442 Kamille · カミーユ
+# 触发：被击坠（通用，1/4）
 > 「しまった! 直撃をくらった!!」
 “Damn! Took a direct hit!!”
 
 @8443 Kamille · カミーユ
+# 触发：被击坠（通用，2/4）
 > 「し、しまった!!」
 “D-damn it!!”
 
 @8444 Kamille · カミーユ
+# 触发：被击坠（通用，3/4）
 > 「うわぁぁぁぁっ!!」
 “Uwaaaaaaah!!”
 
 @8445 Kamille · カミーユ
+# 触发：被击坠（通用，4/4）
 > 「うわっ!しまった!!」
 “Uwah! Damn it!!”
 
 @8446 Kamille · カミーユ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「ぐうっ!! まだだ! まだもってくれ!!」
 “Guh!! Not yet! Hold together a little longer!!”
 
 @8447 Kamille · カミーユ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：Kuh 改 Ngh
 > 「くぅっ! パワーダウンか!?
 >  こんな時に……」
-“Kuh! Power down?! Of all times...”
+“Ngh! Power down?! Of all times...”
 
 @8448 Kamille · カミーユ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだ、このままじゃもたないっ!!」
-“No good, I can't hold out like this!!”
+“No good, I can’t hold out like this!!”
 
 @8449 Kamille · カミーユ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：Kuh 改 Ngh
 > 「くっ!!ダメージを受けすぎたか!?」
-“Kuh!! Did I take too much damage?!”
+“Ngh!! Did I take too much damage?!”
 
 @8450 Kamille · カミーユ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「うわっ!!も、もつのか!?」
 “Uwah!! C-can it hold?!”
 
 @8451 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだやられるわけにはいかない!」
-“Not yet! I can't afford to go down yet!”
+“Not yet! I can’t afford to go down yet!”
 
 @8452 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/7）
+# 审校：中伤情境是自己被打中
 > 「当たった!? やってくれる!!」
-“It hit?! You're good!!”
+“I’m hit?! Not bad!!”
 
 @8453 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! やる!!
 >  けど、まだやられちゃいない!!」
-“Ugh! Nice one!! But I'm not down yet!!”
+“Ugh! Nice one!! But I’m not down yet!!”
 
 @8454 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/7）
+# 审校：补双感叹
 > 「なにっ!!こ、こいつっ!!」
-“What?! Th-this guy!”
+“What?! Th-this guy!!”
 
 @8455 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/7）
+# 审校：补双感叹
 > 「くっ!!まだっ!!」
-“Ngh! Not yet!”
+“Ngh!! Not yet!!”
 
 @8456 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/7）
+# 审校：Nice try 是对方失败时说的
 > 「やる!でもまだ!」
-“Nice try! But not yet!”
+“Not bad! But not yet!”
 
 @8457 Kamille · カミーユ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/7）
+# 审校：去掉“呢”；补双感叹
 > 「まだまだっ!!」
-“Not even close!”
+“Not even close!!”
 
 @8458 Kamille · カミーユ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+# 审校：补双感叹，更贴原文
 > 「こんな攻撃、効くもんかよっ!!」
-“An attack like that won't even scratch me!”
+“Like an attack like that would work!!”
 
 @8459 Kamille · カミーユ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「被弾!? いや、かすめただけか」
 “I got hit?! No, it just grazed me.”
 
 @8460 Kamille · カミーユ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：补双感叹
 > 「そんなのでやられるものか!!」
-“You think that's enough to take me down?!”
+“Like that’s gonna take me down!!”
 
 @8461 Kamille · カミーユ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：补双感叹
 > 「この程度の攻撃!!」
-“An attack of this level?!”
+“An attack like this!!”
 
 @8462 Kamille · カミーユ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度のダメージなら!」
-“If it's only this much damage!”
+“If it’s only this much damage!”
 
 @8463 Kamille · カミーユ
+# 触发：回避（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはしないっ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8464 Kamille · カミーユ
+# 触发：回避（通用，2/6）
+# 审校：补双感叹
 > 「下!? いや、正面か!!」
-“Below?! No, straight ahead!”
+“Below?! No, straight ahead!!”
 
 @8465 Kamille · カミーユ
+# 触发：回避（通用，3/6）
+# 审校：补双感叹
 > 「そう簡単にっ!!」
-“Not that easily!”
+“Not that easily!!”
 
 @8466 Kamille · カミーユ
+# 触发：回避（通用，4/6）
+# 审校：なんの 是回避时的“不算什么”
 > 「なんのっ!」
-“No problem!”
+“Not a chance!”
 
 @8467 Kamille · カミーユ
+# 触发：回避（通用，5/6）
+# 审校：补双感叹
 > 「あたるかよっ!!」
-“Like you could hit me!”
+“Like you could hit me!!”
 
 @8468 Kamille · カミーユ
+# 触发：回避（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるものか!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @8469 Kamille · カミーユ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：补双感叹
 > 「ビームは効かないっていってる!!」
-“I told you, beams don't work!”
+“I told you, beams don’t work!!”
 
 @8470 Kamille · カミーユ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効くかよ!」
-“As if that'd work!”
+“As if that’d work!”
 
 @8471 Kamille · カミーユ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「しまった! 弾切れか!?」
 “Damn! Out of ammo?!”
 
 @8472 Kamille · カミーユ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境
 > 「くっ!ダメか!?」
-“Ngh! No good?!”
+“Ngh! Can’t fire?!”
 
 @8473 Kamille · カミーユ
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだ、
 >  この距離じゃ反撃できない!」
-“No good, I can't counter from this distance!”
+“No good, I can’t counter from this distance!”
 
 @8474 Kamille · カミーユ
+# 触发：射程外，无法反击（通用，2/2）
 > 「くっ!遠すぎるか!」
 “Ngh! Too far?!”

@@ -311,13 +311,14 @@ Eiji's sister.)
 “...”
 
 @23754 Relena · リリーナ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「初めてあなたに会った頃の私は、
 >  世界がどうなっているのかも考えず
 “When I first met you, I never even thought about what was happening in the world.
 ---
 >  自分では何の代償も払わずに、
 >  ただ幸福を享受するだけの
-I paid no price myself, and simply enjoyed my happiness—
+I paid no price myself, and simply enjoyed my happiness...
 ---
 >  世間知らずだった。でもあなたと
 >  出会ってから、私の運命は
@@ -433,9 +434,10 @@ If we can't do that, we simply die.”
 Kamille is right.”
 
 @23768 Selain · セレイン（按段落 3DD2）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「私は……信じてみてもいいと思う。
 >  いきなり武装解除して対話を
-“I... think it's worth believing in. Suddenly disarming and holding talks—
+“I... think it's worth believing in. Suddenly disarming and holding talks...
 ---
 >  なんていうのは馬鹿げているがな。
 >  だが……いつかはそんな時代がくると
@@ -475,13 +477,14 @@ saying ‘let's settle this through discussion’ is impossible from the start.�
 There's no way we can get by without fighting the Empire and OZ.”
 
 @23772 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ああ、俺もすげぇと思うぜ。
 >  俺にゃできるかどうかなんて
 “Yeah, I think it's amazing too. I don't know if I could do it myself,
 ---
 >  わかんねぇけどよ、できたらいいって、
 >  本気で思うぜ」
-but if it could happen, that'd be great—I really mean that.”
+but if it could happen, that'd be great... I really mean that.”
 
 @23773
 > *  残念だけど、実現できるとは……
@@ -631,9 +634,10 @@ over to you here, but with young Musashi gone...”
 “Right, we're one man short now.”
 
 @23795 Chief Chujo · 中条長官
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「失礼、話が聞こえたものでね。
 >  ゲッターロボのパイロットだが
-“Excuse me, I happened to overhear. About the Getter Robo's pilot—
+“Excuse me, I happened to overhear. About the Getter Robo's pilot...
 ---
 >  私に心当たりがある。
 >  まかせてもらえないだろうか」
@@ -672,13 +676,14 @@ training on the new Get Machines right away.”
 “I can't accept this. Why must we do such a thing?”
 
 @23802 Komei · 孔明
+# 审校：孔明自称“この諸葛亮”应译为“me, Shokatsu Ryo Komei”，原译“this Shokatsu Ryo Komei”过于生硬且不符合其儒雅口吻。
 > 「なるほど、この作戦がご不満と
 >  いうわけですか。しかしこれも今後の
 “I see, so you're dissatisfied with this operation. But this too is done with the future
 ---
 >  ことを考慮した上でのことと、
 >  この諸葛亮を信じていただきたい」
-in mind. I ask that you put your trust in this Shokatsu Ryo Komei.”
+in mind. I ask that you put your trust in me, Shokatsu Ryo Komei.”
 
 @23803 Alberto · アルベルト
 > 「だがおかしいではないか。
@@ -706,9 +711,10 @@ the will of Big Fire.”
 you may come out now.”
 
 @23806 Master · マスター
+# 审校：Master 的 voice 要求不用缩略形式，原译“you're”改为“you are”。
 > 「貴様が諸葛亮孔明か。この
 >  ワシに用があるとウォンから聞いたが」
-“So you're Shokatsu Ryo Komei. Wong told me you had business with me.”
+“So you are Shokatsu Ryo Komei. Wong told me you had business with me.”
 
 @23807 Komei · 孔明
 > 「これはこれは、あなただったとは。
@@ -733,14 +739,14 @@ made a proposal, and so...”
 “We don't even know who sent us that information. What will you do?”
 
 @23811 Emperor Burai · ブライ大帝
-# 审校：「ミケーネの」是称呼对方，不是地名修饰语，改为 you of Mycenae。
+# 审校：Emperor Burai 的 voice 要求 archaic grandeur，原译“don't”和“we're”改为“do not”和“we are”。
 > 「もはや、そんなことを
 >  いっておれる状況ではないわ
 “This is no time to be saying such things.
 ---
 >  なんとしても早急にエネルギー源を
 >  確保せねば、我らは終わりだ
-If we don't secure an energy source at once, by any means, we're finished.
+If we do not secure an energy source at once, by any means, we are finished.
 ---
 >  それは貴様たちも同様なのだぞ
 >  ミケーネの」
@@ -755,9 +761,10 @@ That goes for you of Mycenae as well.”
 will vanish like a dream too. I know that well enough.”
 
 @23813 Emperor Burai · ブライ大帝
+# 审校：Emperor Burai 的 voice 要求 archaic grandeur，原译“doesn't”改为“does not”。
 > 「情報の出所など、この際かまわぬ
 >  百鬼一族とミケーネの
-“Where the information came from doesn't matter now. We stake the fate of the Hyakki Clan
+“Where the information came from does not matter now. We stake the fate of the Hyakki Clan
 ---
 >  命運をかけ、ここで一大決戦を
 >  行うのだ。みていろ人間どもめ
@@ -781,9 +788,11 @@ And then the Earth will be ours.”
 “Yeah. All right, let's go once more.”
 
 @23817 Domon · ドモン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……くそっ、俺はなんて情けない
 >  男なんだ。師匠は敵になった
-“...Damn it, what a pathetic man I am. Master became the enemy—
+“...Damn it, what a pathetic man I am. Master became the enemy...
 ---
 >  デビルガンダムの手先になったんだ。
 >  こんなことではだめだ
@@ -794,9 +803,10 @@ he became a pawn of the Dark Gundam. I can't go on like this.
 I still don't have enough training... Hm, who's there?!”
 
 @23818 Alberto · アルベルト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「このわしの気配に気づくとは、
 >  貴様できるな。だが、それが命とりよ」
-“To notice my presence—you're quite capable. But that will cost you your life.”
+“To notice my presence... you're quite capable. But that will cost you your life.”
 
 @23819 Domon · ドモン
 > 「なんだと!? 貴様何者だ!」
@@ -825,9 +835,10 @@ I still don't have enough training... Hm, who's there?!”
 “Ngh, there's more of them?!”
 
 @23825 Schwarz · シュバルツ
+# 审校：Schwarz 的 voice 要求 formal，原译“It's”改为“It is”。
 > 「私だよドモン。
 >  あいかわらずブザマな奴よ」
-“It's me, Domon. Still as pathetic as ever, I see.”
+“It is me, Domon. Still as pathetic as ever, I see.”
 
 @23826 Domon · ドモン
 > 「シュバルツ!? また貴様か!」
@@ -955,13 +966,15 @@ We'd better tell everyone to stay on guard.”
 “Those are the Class-C operatives, huh.”
 
 @23848 Chief Chujo · 中条長官
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：衝撃のアルベルト→Shockwave Alberto
 > 「するとさっきのはやはり
 >  衝撃のアルベルト……
 “Then that earlier one really was Shockwave Alberto...
 ---
 >  やつら十傑集が動き出したのか。
 >  いかん、敵をここへいれるな!」
-So the Ten Elite have made their move. This is bad—don't let the enemy in here!”
+So the Ten Elite have made their move. This is bad... don't let the enemy in here!”
 
 @23849 Ivan · イワン
 > 「ビッグファイアーのためにぃーっ!!」
@@ -1167,8 +1180,9 @@ leaving young Daisaku and the robot behind.”
 “Just what could be in a place like this...”
 
 @23882 Ginrei · 銀鈴
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ッ!? 長官、これは!」
-“!? Chief, this is!”
+“?! Chief, this is!”
 
 @23883 Chief Chujo · 中条長官
 > 「そう、これが我々の
@@ -1179,6 +1193,7 @@ leaving young Daisaku and the robot behind.”
 the Ginrei Robo.”
 
 @23884 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「シーラ女王、おひさしぶりでございます
 >  よくご無事で」
 “Queen Ciela, it has been a long time. I am glad you are safe.”
@@ -1211,6 +1226,7 @@ fought well, but we couldn't quite finish off Drake...”
 “Show Zama... you've found the meaning of fighting for yourself, haven't you.”
 
 @23888 Show · ショウ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「はい、シーラ・ラパーナ」
 “Yes, Ciela Lapana.”
 
@@ -1242,6 +1258,8 @@ Now I can entrust the Billbine to you. I'll be counting on you from now on.”
 “Queen Elle, I'm glad to see you well.”
 
 @23894 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「シーラ女王こそ、よくご無事で。
 >  万丈という地上人のおかげで
 “Queen Ciela, I'm glad you're safe too. Thanks to a surface-dweller named Banjo,
@@ -1263,6 +1281,7 @@ Drake's Will-Wips.”
 But if you're here, Queen Elle, we can surely defeat Drake.”
 
 @23896 Elle · エレ
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「そう信じます。シーラ女王、
 >  おあずかりしていたビルバインは
 “I believe so. Queen Ciela, what shall we do
@@ -1297,10 +1316,10 @@ To stop Drake, please lend us its power from now on.”
 “It's me, Eiji.”
 
 @23902 Eiji · エイジ
-# 审校：“ゲイル先輩”是后辈对前辈的称呼，英文中直接叫名字更自然，去掉“sir”。
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「まさか……ゲイル先輩!?
 >  よかった……生きていたんですね!!」
-“No way... Gale!? Thank goodness... you're alive!!”
+“No way... Gale?! Thank goodness... you're alive!!”
 
 @23903 Gale · ゲイル
 > 「お前たちにやられた後、
@@ -1460,9 +1479,10 @@ we've been fighting for the colonies all this time! Damn it!”
 “...Yes.”
 
 @23923 Beltorchika · ベルトーチカ
+# 审校：Beltorchika 对舰长布莱特用敬称，原文「艦長」应译出 Captain，且 Gundam Sandrock 在词表中为 Sandrock，去掉多余 Gundam。
 > 「艦長、ウイング、ヘビーアームズ、
 >  サンドロック、デスサイズ
-“Captain, Wing, Heavyarms, Gundam Sandrock, Deathscythe,
+“Captain, Wing, Heavyarms, Sandrock, Deathscythe,
 ---
 >  シェンロンが発進しました!」
 and Shenlong have launched!”
@@ -1725,13 +1745,14 @@ plenty of our own troubles ahead.”
 I'd like to help them as much as we can.”
 
 @23964 Zechs · ゼクス
+# 审校：句首 Former 在句中应为小写 former。
 > 「追撃隊が来たか。
 >  確か、OZに参入しようという
 “So the pursuit force has come. If I recall, they were mostly
 ---
 >  旧連邦のパイロットが
 >  ほとんどだったな
-Former Federation pilots trying to join OZ.
+former Federation pilots trying to join OZ.
 ---
 >  レジスタンスにも参加しなかった
 >  ような者が、どれだけ集まろうと

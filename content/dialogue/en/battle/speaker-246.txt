@@ -1,0 +1,243 @@
+# 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
+
+@11223 Chara · キャラ
+# 触发：攻击（通用，1/13）
+> 「アッハッハッハッハッハッ!」
+“Ahahahahahaha!”
+
+@11224 Chara · キャラ
+# 触发：攻击（通用，2/13）
+# 审校：原文“くぅ”是呻吟/兴奋的感叹，不是“it's the enemy”的强调；改为更贴近原意的自然表达。
+> 「くぅ 敵だ、敵だぁ、もう胸が
+>  張り裂けそう!」
+“Ngh, the enemy, the enemy! My chest is about to burst!”
+
+@11225 Chara · キャラ
+# 触发：攻击（通用，3/13）
+# 审校：“burning hot”改为“burning up”，更符合角色兴奋喊叫的语气。
+> 「身体が、身体が熱いのよおっ!」
+“My body, my body is burning up!”
+
+@11226 Chara · キャラ
+# 触发：攻击（通用，4/13）
+# 审校：更像疯癫喊话
+> 「あははは、もっともっと躍れ!」
+“Ahahaha, dance! Dance for me!”
+
+@11227 Chara · キャラ
+# 触发：攻击（通用，5/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「いっただき!」
+“I’ll take that!”
+
+@11228 Chara · キャラ
+# 触发：攻击（通用，6/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ああっ体が熱いっ燃えるっ!」
+“Ahh, my body’s hot, it’s on fire!”
+
+@11229 Chara · キャラ
+# 触发：攻击（通用，7/13）
+# 审校：“It's the enemy”改为“The enemy”，更贴近原文“敵だ、敵だ”的重复呼喊。
+> 「くぅーっ! あははは! 敵だ、敵だ!
+>  もう胸が張り裂けそう! 快感!」
+“Ngh! Ahahaha! The enemy, the enemy! My chest is about to burst! Such ecstasy!”
+
+@11230 Chara · キャラ
+# 触发：攻击（通用，8/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「そーら、そら! 落としちゃうよ!」
+“There, there! I’m gonna drop you!”
+
+@11231 Chara · キャラ
+# 触发：攻击（通用，9/13）
+> 「さあて、行くよっ!」
+“Well now, here I go!”
+
+@11232 Chara · キャラ
+# 触发：攻击（通用，10/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「はははっ! ぞくぞくする! それっ!」
+“Hahaha! I’m tingling! Take this!”
+
+@11233 Chara · キャラ
+# 触发：攻击（通用，11/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「魂よ! 魂の躍動なのよ!
+>  私の魂は、宇宙を駆ける魂!」
+“My soul! It’s the throb of my soul! My soul races across the universe!”
+
+@11234 Chara · キャラ
+# 触发：攻击（通用，12/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「胸が苦しい、もう死ぬ!
+>  死んじゃうぞっ!」
+“My chest hurts, I’m gonna die! I’m really gonna die!”
+
+@11235 Chara · キャラ
+# 触发：攻击（通用，13/13）
+# 审校：“そこかいっ!”是“在那里吗！”的感叹，初稿“Right there, huh!”语气不对，改为“Right there!”。
+> 「そこかいっ!」
+“Right there!”
+
+@11236 Chara · キャラ
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「え! ウソ!? やられちゃったのかい!?」
+“Eh! No way?! I got taken down?!”
+
+@11237 Chara · キャラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「あうっ! や、やば……壊れちゃいそう」
+“Agh! Th-this is bad... I think I’m gonna break.”
+
+@11238 Chara · キャラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「わわっ! な、何だいこいつは!?」
+“Whoa! Wh-what the heck is this?!”
+
+@11239 Chara · キャラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
+> 「ああっ! す、すごい、なんて強烈……」
+“Ahh! A-amazing, so intense...”
+
+@11240 Chara · キャラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「なに!? 化け物かっ!?」
+“What?! Is it a monster?!”
+
+@11241 Chara · キャラ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+> 「ちっ! やってくれたね!」
+“Tch! You got me good!”
+
+@11242 Chara · キャラ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+> 「このっ! あたしを怒らせるとどうなるか
+>  わかってるんだろうね!!」
+“Why you! You know what happens when you make me mad!!”
+
+@11243 Chara · キャラ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+> 「くっ! やるじゃないか! おもしろく
+>  なってきたよ!」
+“Ngh! Not bad! This is getting interesting!”
+
+@11244 Chara · キャラ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+> 「うっ! そうかい、やるっていうのかい!」
+“Ugh! So you wanna go, huh!”
+
+@11245 Chara · キャラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
+> 「くすぐったいんだよ!」
+“That tickles!”
+
+@11246 Chara · キャラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「あはは、かわいいじゃないか」
+“Ahaha, aren’t you cute.”
+
+@11247 Chara · キャラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「その程度かい? 笑わせてくれるね!」
+“Is that all? You’re making me laugh!”
+
+@11248 Chara · キャラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「なんだい、物足りないね!」
+“What’s this, not satisfying at all!”
+
+@11249 Chara · キャラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「うるさいな!」
+“You’re so annoying!”
+
+@11250 Chara · キャラ
+# 触发：回避（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「当たらないんだよ!」
+“You can’t hit me!”
+
+@11251 Chara · キャラ
+# 触发：回避（通用，2/5）
+> 「あははは、は～ずれた!」
+“Ahahaha, you missed!”
+
+@11252 Chara · キャラ
+# 触发：回避（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「笑わせんじゃないよ!
+>  甘いんだよ、そんなの!!」
+“Don’t make me laugh! That’s way too soft!!”
+
+@11253 Chara · キャラ
+# 触发：回避（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「甘いね、そんなもの!」
+“Too soft, that’s nothing!”
+
+@11254 Chara · キャラ
+# 触发：回避（通用，5/5）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「どこ狙ってんのさ!」
+“What are you aiming at?!”
+
+@11255 Chara · キャラ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「あははは、効かないね!」
+“Ahahaha, that doesn’t work!”
+
+@11256 Chara · キャラ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「ムダなんだよ、そんなのは!」
+“That’s pointless!”
+
+@11257 Chara · キャラ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+> 「弾切れ!? なんでぇ?」
+“Out of ammo?! What the heck?”
+
+@11258 Chara · キャラ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「くそっ! 届かないのかい!?」
+“Damn! Can’t reach?!”
+
+@16409 Chara · キャラ
+# 触发：使用〈ミサイルポッド／連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I’ll shoot you!”
+
+@16410 Chara · キャラ
+# 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「邪魔するんなら撃っちゃうからねっ!」
+“If you get in my way, I’ll shoot you!”
+
+@16411 Chara · キャラ
+# 触发：使用〈ファンネル／マザーファンネル〉
+> 「ファンネルっ!」
+“Funnel!”
+
+@16412 Chara · キャラ
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンルっ!!」
+“Fin Funnels!!”
+
+@16413 Chara · キャラ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... go! High Mega Cannon!!”

@@ -127,9 +127,10 @@ This is Heero Yuy.”
 (That boy... from back then... it's definitely him.)
 
 @18916 Karla · カルラ
+# 审校：卡尔拉对尤莉亚的称呼应为“你”，且“would”更符合女军官的正式口吻。
 > 「……ジュリア・アスカ……まさかお前が
 >  くるとはな」
-“...Julia Asuka... I never thought you'd show up here.”
+“...Julia Asuka... I never thought you would show up here.”
 
 @18917 Julia · ジュリア
 > 「……………………」
@@ -278,9 +279,10 @@ destroying the enemy base is not our objective.”
 “Kamille, wait, Kamille!”
 
 @18934 Kamille · カミーユ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「いうなよ、
 >  カミーユだってのが俺だって
-“Don't say that. The name Kamille is who I am—
+“Don't say that. The name Kamille is who I am...
 ---
 >  誰にでもわかってしまうだろ」
 anyone would figure it out.”
@@ -306,10 +308,11 @@ Where are you going?”
 “Jerid!”
 
 @18938 Jerid · ジェリド
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 # 检查提示：未用必用译名：スペシャルズ→Specials
 > 「カクリコン!
 >  スペシャルズらしくなって
-“Kacricon! You're looking like a proper Special now—
+“Kacricon! You're looking like a proper Special now...
 ---
 >  よくきてくれた」
 glad you could make it.”
@@ -345,9 +348,10 @@ glad you could make it.”
 “What's wrong, Kamille? ...Kamille, no, not that way!”
 
 @18946 Jerid · ジェリド
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ん?
 >  カクリコン特尉の知り合いか?」
-“Hm? You know Lieutenant Kacricon?”
+“Hm? You know Special Lieutenant Kacricon?”
 
 @18947 Kamille · カミーユ
 > 「なめるなっ!!」
@@ -540,9 +544,10 @@ All right, we're capturing it.”
 “What are you doing?! Get him out of there, now!”
 
 @18983 Emma · エマ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐! あれに乗って
 >  いるのは、パイロットじゃありません!」
-“Colonel Bask! The one piloting that isn't a pilot!”
+“Special Colonel Bask! The one piloting that isn't a pilot!”
 
 @18984 Bask · バスク
 > 「なんだと!?
@@ -654,9 +659,10 @@ Don't let them escape!”
 “...”
 
 @19004 Eiji · エイジ
+# 审校：先輩：英文统一直呼 Gale
 > 「赤いグライムカイザル……
 >  ゲイル先輩が生きていたのか!?」
-“The red Greimkaiser...? Was Senior Gale alive?!”
+“The red Greimkaiser...? Gale was alive?!”
 
 @19005 Julia · ジュリア
 > 「エイジ……」
@@ -782,8 +788,9 @@ We've accomplished our objective well enough. All units, retreat!”
 And that boy, too...”
 
 @19026 Kamille · カミーユ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「お前はぁっ!」
-“You're—!”
+“You're...!”
 
 @19027 Jerid · ジェリド
 > 「この声、カミーユとかって女みたいな
@@ -1169,13 +1176,13 @@ For now, all we can do is devote ourselves to breaking the deadlock.”
 “You are...”
 
 @19081 Relena · リリーナ
-# 审校：“You're called Heero”语气生硬，改为更自然的“Your name is Heero, isn't it.”。
+# 审校：Relena's voice is formal and avoids contractions, so the contracted forms in the existing translation should be expanded.
 > 「あなた、ヒイロといったわね
-“Your name is Heero, isn't it.
+“Your name is Heero, is it not.
 ---
 >  こんな軍の港で何をしているの、
 >  教えて
-Tell me what you're doing at a military port like this.
+Tell me what you are doing at a military port like this.
 ---
 >  そしてあなたは何者?
 >  わたくし知りたいの、あなたのことを
@@ -1206,12 +1213,13 @@ You've pried too deep. I'll kill you.”
 “Ngh...”
 
 @19085 Duo · デュオ
+# 审校：Duo's slangy, casual speech should use contractions, and 'my lady' is too formal for his address to a stranger; 'miss' fits his tone.（人工改写）
 > 「こういう場合、どう見たって
 >  お前の方が悪者だろ
 “In a situation like this, no matter how you look at it, you're the bad guy.
 ---
 >  ケガはないかい、お嬢さん?」
-Are you hurt, my lady?”
+Are you hurt, miss?”
 
 @19086 Relena · リリーナ
 > 「大丈夫、ヒイロ? もうやめて。
@@ -1243,9 +1251,10 @@ Now I'm the one who's turned into the bad guy.”
 “Huh... what...?”
 
 @19091 Duo · デュオ
+# 审校：Duo's casual tone is better served by 'miss' instead of the overly formal 'my lady', and the contractions are kept for his slangy voice.
 > 「おっと、みちゃいけねぇ。お嬢さん、
 >  なんかわけありみたいだけど
-“Whoa, I shouldn't look. My lady, seems like you've got some kind of situation,
+“Whoa, I shouldn't look. Miss, seems like you've got some kind of situation,
 ---
 >  すぐ、こっから立ち去るのが
 >  身のためだ
@@ -1256,7 +1265,7 @@ but for your own good, you should get out of here right away.
 Even if you're a fine-dressed A-class citizen in this era,
 ---
 >  お嬢さんを殺すのは、忍びない」
-I can't bring myself to kill you, my lady.”
+I can't bring myself to kill you, miss.”
 
 @19092 Relena · リリーナ
 > 「ヒイロ!?」

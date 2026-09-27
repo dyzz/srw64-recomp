@@ -1,106 +1,140 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @7393 Red · レッド
+# 触发：攻击（通用，1/11）
 > 「ワハハハハハハハッ」
 “Wah ha ha ha ha ha ha!”
 
 @7394 Red · レッド
+# 触发：攻击（通用，2/11）
 > 「ハッハッハッハッ」
 “Ha ha ha ha!”
 
 @7395 Red · レッド
+# 触发：攻击（通用，3/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵ではないわっ」
-“You're no match for me!”
+“You’re no match for me!”
 
 @7396 Red · レッド
+# 触发：攻击（通用，4/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「踏み砕いてくれるわ」
-“I'll crush you underfoot.”
+“I’ll crush you underfoot.”
 
 @7397 Red · レッド
+# 触发：攻击（通用，5/11）
 > 「今度こそ死ねぇい!」
 “This time you die for sure!”
 
 @7398 Red · レッド
+# 触发：攻击（通用，6/11）
 > 「ワーッハッハッハッハッ」
 “Wah ha ha ha ha ha!”
 
 @7399 Red · レッド
+# 触发：攻击（通用，7/11）
 > 「ハッハッハッ、見よ!」
 “Ha ha ha, behold!”
 
 @7400 Red · レッド
+# 触发：攻击（通用，8/11）
 > 「フッフッフッフッ」
 “Heh heh heh heh.”
 
 @7401 Red · レッド
+# 触发：攻击（通用，9/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いまのうちだ」
-“Now's my chance.”
+“Now’s my chance.”
 
 @7402 Red · レッド
+# 触发：攻击（通用，10/11）
 > 「ククククククッ!」
 “Kukuku kukuku!”
 
 @7403 Red · レッド
+# 触发：攻击（通用，11/11）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「押しつぶしてやるわ!」
-“I'll squash you flat!”
+“I’ll squash you flat!”
 
 @7404 Red · レッド
+# 触发：被击坠（通用，1/1）
 > 「お、おのれぇぇぇっ!」
 “Y-you wretch!”
 
 @7405 Red · レッド
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「まさかこれほどのものとはっ!」
 “To think you were this strong!”
 
 @7406 Red · レッド
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「お、おのれぇぇぇっ!」
 “Y-you wretch!”
 
 @7407 Red · レッド
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：原文是未说完的句子
 > 「くっ、さすがの十傑集も
 >  こうなってはっ!」
-“Tch, even the Ten Great Warriors can't hold out like this!”
+“Tch, even one of the Ten Great Warriors, in this state...!”
 
 @7408 Red · レッド
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「なぁにぃっ!?」
 “Whaaat?!”
 
 @7409 Red · レッド
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「おのれっ!」
 “You wretch!”
 
 @7410 Red · レッド
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「なにをこしゃくな」
 “How insolent.”
 
 @7411 Red · レッド
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「ええぃ!」
 “Enough!”
 
 @7412 Red · レッド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「クククククッ」
 “Kukuku kuku.”
 
 @7413 Red · レッド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「ハハハハハハッ」
 “Ha ha ha ha ha ha!”
 
 @7414 Red · レッド
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度か」
-“Is this all you've got?”
+“Is this all you’ve got?”
 
 @7415 Red · レッド
+# 触发：回避（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんよ!」
-“You won't hit me!”
+“You won’t hit me!”
 
 @7416 Red · レッド
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「お、おのれぇぇぇっ!」
 “Y-you wretch!”
 
 @7417 Red · レッド
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「お、おのれぇぇぇっ!」
 “Y-you wretch!”
 
 @7418 Red · レッド
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれ届かぬとはっ!」
-“Curse it, it won't reach!”
+“Curse it, it won’t reach!”

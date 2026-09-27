@@ -1,105 +1,171 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @13029 Wong · ウォン
+# 触发：攻击（通用，1/8）
 > 「ふふふふふふ」
 “Fufufufufu.”
 
 @13030 Wong · ウォン
+# 触发：攻击（通用，2/8）
 > 「ははははははっ!」
 “Hahahahaha!”
 
 @13031 Wong · ウォン
+# 触发：攻击（通用，3/8）
 > 「ふはははははっ!」
 “Fuhahahaha!”
 
 @13032 Wong · ウォン
+# 触发：攻击（通用，4/8）
 > 「ふふふふふはっははははっ!」
 “Fufufufuhahahaha!”
 
 @13033 Wong · ウォン
+# 触发：攻击（通用，5/8）
 > 「そうだ、感じる、感じるぞ!」
 “Yes, I feel it, I feel it!”
 
 @13034 Wong · ウォン
+# 触发：攻击（通用，6/8）
 > 「落ちろ!」
 “Fall!”
 
 @13035 Wong · ウォン
+# 触发：攻击（通用，7/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「殺してやる、殺してやるぞ!」
-“I'll kill you, I'll kill you!”
+“I’ll kill you, I’ll kill you!”
 
 @13036 Wong · ウォン
+# 触发：攻击（通用，8/8）
 > 「落ちろ! 落ちてくだけろぉぉぉ!」
 “Fall! Fall and be crushed!”
 
 @13037 Wong · ウォン
+# 触发：被击坠（通用，1/2）
 > 「た、助けてくれぇ!」
 “H-help me!”
 
 @13038 Wong · ウォン
+# 触发：被击坠（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうせお前たちは終わりだぁぁぁ!」
-“Either way, you're all finished!”
+“Either way, you’re all finished!”
 
 @13039 Wong · ウォン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「な、なんだと!?」
 “W-what did you say?!”
 
 @13040 Wong · ウォン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 > 「や、やめろぉぉぉ!」
 “S-stop it!”
 
 @13041 Wong · ウォン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「うわぁぁぁぁぁ!」
 “Uwaaaaaaah!”
 
 @13042 Wong · ウォン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：貴様ごときに＝竟被你这种货色
 > 「き、貴様ごときにぃっ!」
-“B-by the likes of you?!”
+“T-to the likes of you...?!”
 
 @13043 Wong · ウォン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「ああぁぁぁ!?」
 “Aaaaaah?!”
 
 @13044 Wong · ウォン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「うわぁぁ!」
 “Uwaaaah!”
 
 @13045 Wong · ウォン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「お、おのれぇ!」
 “Y-you bastard!”
 
 @13046 Wong · ウォン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「その程度の攻撃などはっ!」
 “An attack like that is nothing!”
 
 @13047 Wong · ウォン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「うるさい!」
 “Shut up!”
 
 @13048 Wong · ウォン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「はははははは」
 “Hahahahaha.”
 
 @13049 Wong · ウォン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「それがどうした」
 “So what?”
 
 @13050 Wong · ウォン
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらんなぁ!」
-“Can't even hit me!”
+“Can’t even hit me!”
 
 @13051 Wong · ウォン
+# 触发：回避（通用，2/2）
 > 「ふははははははっ!」
 “Fuhahahahaha!”
 
 @13052 Wong · ウォン
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「ははははっ、無駄なことを!」
 “Hahahaha, what a waste of effort!”
 
 @13053 Wong · ウォン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「な、なんだとぉぉぉぉ!?」
 “W-what did you say?!”
 
 @13054 Wong · ウォン
+# 触发：射程外，无法反击（通用，1/1）
 > 「ば、ばかな、そんな距離から!?」
 “I-impossible, from that distance?!”
+
+@17293 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells... I am Great Wong!”
+
+@17294 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”
+
+@17295 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells... I am Great Wong!”
+
+@17296 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”
+
+@17297 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+> 「今の私はDG細胞の力を得た、
+>  グレートウォンだぁ!」
+“I now wield the power of the DG Cells... I am Great Wong!”
+
+@17298 Wong · ウォン
+# 触发：攻击，乘坐〈デビルガンダム〉
+> 「デビルガンダムは私のものだぁ!」
+“The Dark Gundam is mine!”

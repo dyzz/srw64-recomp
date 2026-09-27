@@ -100,9 +100,10 @@ I could entrust one of the Sides to you. How about it?”
 I must respectfully decline, Haman.”
 
 @41956 Haman · ハマーン
+# 审校：全局：Zuul 拼写
 > 「そうか。ならばズールのあとを追って、
 >  お前たちもここで死ぬがいい」
-“I see. Then follow after Zuhl and die here as well.”
+“I see. Then follow after Zuul and die here as well.”
 
 @41957 Amuro · アムロ
 > 「キャラ・スーンに、マシュマー・セロ
@@ -115,12 +116,13 @@ I must respectfully decline, Haman.”
 “We were just fighting together, and now you want to go at it?!”
 
 @41959 Chara · キャラ
+# 审校：破折号
 > 「あんたたちが仲間になってくれれば
 >  よかったんだけどね
 “It would've been nice if you'd joined us,
 ---
 >  残念だけど、逃がしゃしないよ」
-but too bad — I'm not letting you get away.”
+but too bad. I'm not letting you get away.”
 
 @41960 Mashymre · マシュマー
 > 「先ほどまでともに戦った者たちと
@@ -188,26 +190,30 @@ take you over.”
 “Ple?”
 
 @41972 Ple · プル
+# 审校：破折号
 > 「ジュドー、わかったよ、
 >  サイコガンダムのパイロットが」
-“Judau, I get it now — the Psyco Gundam's pilot.”
+“Judau, I know now who the Psyco Gundam's pilot is.”
 
 @41973 Ple-Two · プルツー
+# 审校：Ple-Two 的冷淡好战口吻下，“unpleasant thing” 过于平淡，改为更带敌意的 “wretch” 以贴合语气。
 > 「くっ……不愉快な奴が!!」
-“Ngh... you unpleasant thing!!”
+“Ngh... you unpleasant wretch!!”
 
 @41974 Ple · プル
+# 审校：原文「不愉快なのは」指“不愉快的是（看着自己）”，现有译文 “Of course I'm unpleasant” 把主语变成了 Ple 自己，割裂了与上一句的呼应，改为 “it's” 保持句意连贯。
 > 「当たり前だよ、不愉快なのは」
-“Of course I'm unpleasant.”
+“Of course it's unpleasant.”
 
 @41975 Ple-Two · プルツー
 > 「な、なんだと!? なんだ、何をいう!?」
 “W-What?! What, what are you saying?!”
 
 @41976 Ple · プル
+# 审校：破折号
 > 「人はね、人間はね、自分を見る
 >  のが不愉快なのよ。でもね、どんなに
-“People, you know — humans find it unpleasant to look at themselves. But no matter how
+“People, you know, humans find it unpleasant to look at themselves. But no matter how
 ---
 >  不愉快でも、どんなに憎くっても、
 >  自分をやめることはできないのよ!」
@@ -218,9 +224,10 @@ unpleasant, no matter how much you hate it, you can't stop being yourself!”
 “W-What are you talking about?!”
 
 @41978 Ple · プル
+# 审校：原文「あたしはあなたよ。あなたはあたしなのよ」是 Ple 对 Ple-Two 的宣告，现有译文 “I am you. You are me!” 已准确，无需修改。
 > 「あたしはあなたよ。あなたはあたしなのよ!
 >  あなたはあたしのいっとう激しい
-“I am you. You are me! You're the person who has only my most violent
+“I am you. You are me! You're the one who has only my most violent
 ---
 >  ところだけを持った人でしょ!?
 >  あたしは、エルピー・プル!」
@@ -290,13 +297,15 @@ pull you in.”
 Are you the one doing this?!”
 
 @41992 Judau · ジュドー
+# 审校：破折号
+# 检查提示：未用必用译名：プルツー→Ple-Two
 > 「やめろプルツー!
 >  そんなことをしてるから
 “Stop it, Ple-Two! It's because you do things like this that
 ---
 >  気持ち悪いんだって、
 >  なぜわからない!?」
-you feel awful — why can't you understand?!”
+you feel awful. Why can't you understand?!”
 
 @41993 Ple-Two · プルツー
 > 「うるさい! お前たちを倒せば、
@@ -365,9 +374,11 @@ I suppose I'll start over another time. All forces, retreat.”
 “What? There are more of them?!”
 
 @42004 J-Ren · ジェイ＝レン
+# 审校：全局：Zuul 拼写
+# 检查提示：未用必用译名：アヴィ＝ルー→Avie-Lu
 > 「……まさかとは思ったが……
 >  あのズールがやられるとは、我らの
-“...I thought it impossible, but... for that Zuhl to be defeated. Are they
+“...I thought it impossible, but... for that Zuul to be defeated. Are they
 ---
 >  予測を上まわる知性体か。
 >  アヴィ＝ルーのいうとおり
@@ -400,9 +411,10 @@ they may indeed prove interesting...”
 “...There is a matching record registered, my lady.”
 
 @42010 Manami · マナミ（按段落 3DD4）
+# 审校：破折号
 > 「やっぱり、あの時の敵の
 >  仲間なんだわ」
-“I knew it — they're comrades of that enemy from back then.”
+“I knew it. They're comrades of that enemy from back then.”
 
 @42011 Ryoma · リョウ
 > 「ああ……間違いない」
@@ -507,13 +519,14 @@ rendezvous with La Vie en Rose.”
 but can't we do something about it?”
 
 @42030 Koji · 甲児
+# 审校：句义
 > 「まったくだぜ。オレたちはズールを倒して
 >  とてもかないやしないって思ってた
-“You said it. We thought beating Zuhl was impossible,
+“You said it. We beat Zuul, and the Galactic Empire forces we thought we'd never stand a chance against
 ---
 >  銀河帝国軍だって
 >  もうほとんど敵じゃないんだぜ?」
-and now even the Galactic Empire forces are hardly a threat, right?”
+are hardly even enemies anymore, right?”
 
 @42031 Chum · チャム
 > 「そうよ、すごいじゃない」
@@ -564,9 +577,10 @@ somewhere before...”
 “Do you know something about it, Daisuke?”
 
 @42040 Daisuke · 大介
+# 审校：破折号
 > 「マリアにいわれて思い出したが、
 >  確かに僕も
-“Maria mentioning it reminded me — I'm sure I've heard
+“Maria mentioning it reminded me. I'm sure I've heard
 ---
 >  その言葉を聞いたことがある。
 >  フリード星の古い伝説だ」
@@ -756,9 +770,10 @@ for back then?!”
 “I know, Rosamy.”
 
 @42066 Garrison · ギャリソン
+# 审校：ギャリソン是彬彬有礼的老管家，译文应更符合其无缩略、客气的口吻。
 > 「みなさん相当お疲れのようですな。
 >  少しお休みになられてはいかがですかな」
-“You all seem quite exhausted. Why not take a little rest?”
+“You all seem quite exhausted. Might I suggest you take a little rest?”
 
 @42067 Hasan · ハサン
 > 「その意見には賛成だ。
@@ -891,9 +906,10 @@ You were rescued by the {HeroMech}.”
 who do you think is evil?”
 
 @42090 Wufei · 五飛
+# 审校：全局：Zuul 拼写
 > 「くだらん質問だ。銀河帝国の
 >  ズールと、アクシズのハマーン・カーンだ
-“What a stupid question. Zuhl of the Galactic Empire, and Haman Karn of Axis.
+“What a stupid question. Zuul of the Galactic Empire, and Haman Karn of Axis.
 ---
 >  奴らが悪だ」
 They're the evil ones.”
@@ -912,17 +928,19 @@ They're the evil ones.”
 “Ohh, see, this is what we're dealing with.”
 
 @42094 Wufei · 五飛
+# 审校：全局：Zuul 拼写
 > 「なんだと!? ……くっ、ズールめ!
 >  まさかこの俺が、悪のために
-“What?! ...Ngh, damn you, Zuhl! To think that I was made to
+“What?! ...Ngh, damn you, Zuul! To think that I was made to
 ---
 >  戦わされていたとは……くそぉっ!!」
 fight for evil... damn it!!”
 
 @42095 Amuro · アムロ
+# 审校：全局：Zuul 拼写
 > 「落ち着いてくれ、五飛。ズールは
 >  倒れた。いま俺たちが考えるべき
-“Calm down, Wufei. Zuhl has fallen. The problem we need to think about
+“Calm down, Wufei. Zuul has fallen. The problem we need to think about
 ---
 >  問題は、アクシズのハマーンなんだ」
 now is Haman of Axis.”

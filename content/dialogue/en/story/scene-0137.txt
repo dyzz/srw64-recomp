@@ -218,9 +218,11 @@ Answer me, Allenby!!”
 “Wong! What in the world is the meaning of this?!”
 
 @45406 Wong · ウォン
+# 审校：Wong 对 Master 的称呼应为 Master Asia，而非 Master Toho。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「東方先生、私のアレンビーが
 >  ドモンたちを倒して、デビルガンダムの
-“Master Toho, my Allenby will defeat Domon and the others and become the core of the Dark Gundam.
+“Master Asia, my Allenby will defeat Domon and the others and become the core of the Dark Gundam.
 ---
 >  コアになる。そういうことですよ」
 That is what this is.”
@@ -280,9 +282,11 @@ Answer me, Allenby!!”
 “Wong! What in the world is the meaning of this?!”
 
 @45418 Wong · ウォン
+# 审校：Wong 对 Master 的称呼应为 Master Asia，而非 Master Toho。
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「東方先生、私のアレンビーが
 >  ドモンたちを倒して、デビルガンダムの
-“Master Toho, my Allenby will defeat Domon and the others and become the core of the Dark Gundam.
+“Master Asia, my Allenby will defeat Domon and the others and become the core of the Dark Gundam.
 ---
 >  コアになる。そういうことですよ」
 That is what this is.”
@@ -657,9 +661,11 @@ created using the power of the DG Cells. All of it was to destroy the Dark Gunda
 “No way! But you were the one who used it to try and conquer the Earth Sphere...”
 
 @45482 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+“That's wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -670,25 +676,27 @@ created for the purpose of restoring the Earth.”
 “Restoring the Earth...?”
 
 @45484 Schwarz · シュバルツ
+# 审校：破折号；与 43118 一致
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あの3大理論、自己再生・
 >  自己進化・自己増殖は
-“Those three great theories—self-recovery, self-evolution, self-replication—
+“Those three great theories, self-recovery, self-evolution and self-replication, were
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-were all meant for the Earth's natural healing. But! Someone took notice of
+all meant for the Earth's natural regeneration. But! There were those who noticed
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
-that incredible power. I boarded the Ultimate Gundam and
+its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. But the attack I took during my escape sent the program
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-haywire, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @45485 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -696,10 +704,11 @@ haywire, and it became that terrifying Dark Gundam.”
 “What?! Then you stealing the Dark Gundam was...”
 
 @45486 Schwarz · シュバルツ
+# 审校：破折号；我们→我
 # 检查提示：未用必用译名：アルティメットガンダム→Ultimate Gundam
 > 「でっちあげだ。だまされたのだ、カーンズに
 >  奴はオペレーション・メテオの6つめの
-“A fabrication. I was deceived—by Quinze. He tried to use the Ultimate
+“A fabrication. I was deceived by Quinze. He tried to use the Ultimate
 ---
 >  ガンダムとして、アルティメットガンダムを
 >  使おうとしたのだ」
@@ -749,8 +758,9 @@ and tried to have me protect you.”
 believed me... Domon, I... I suffered too... ugh...”
 
 @45491 Domon · ドモン
+# 审校：破折号
 > 「シュバルツ、いや兄さん!?」
-“Schwarz—no, brother?!”
+“Schwarz... no, brother?!”
 
 @45492 Schwarz · シュバルツ
 > 「私の命もまたキョウジとともにある。
@@ -798,9 +808,11 @@ hold on, body!”
 “Kyoji! Brother!”
 
 @45502 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、早くうて、
 >  私ごとデビルガンダムを!」
-“Domon, fire now—Dark Gundam and all, me included!”
+“Domon, fire now! The Dark Gundam and all, me included!”
 
 @45503 Domon · ドモン
 > 「し、しかし兄さん……」
@@ -820,6 +832,7 @@ Gundam, there's no way but to shoot Kyoji!”
 “No! I can't, I can't do it!”
 
 @45506 Schwarz · シュバルツ
+# 审校：破折号
 > 「甘ったれるな! その拳の紋章は
 >  偽物か! お前もその紋章を
 “Don't be soft! Is the crest on that fist a fake?! If you bear that crest
@@ -830,30 +843,32 @@ too, you mustn't be swayed by sentiment and lose sight of your purpose!
 ---
 >  こんな、こんな悲劇は、終わらせる
 >  のだ!」
-This—this tragedy, we end it here!”
+This... this tragedy ends here!”
 
 @45507 Domon · ドモン
 > 「兄さん……」
 “Brother...”
 
 @45508 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「さぁ、やるんだ! デビルガンダムの呪い
 >  から、私たちを解き放ってくれ!
 “Now, do it! Free us from the Dark Gundam's curse!
 ---
 >  頼むドモン、デビルガンダムに
 >  最後の一撃を!!」
-Please, Domon—the final blow to the Dark Gundam!!”
+Please, Domon, deal the Dark Gundam its final blow!!”
 
 @45509 Domon · ドモン
 > 「くっ……わかったよ、兄さん……」
 “Ngh... all right, brother...”
 
 @45510 Master · マスター
-# 审校：原文句尾是“未来はぁぁぁぁ!!”，初稿“will!!”缺破折号且语气不完整，补为“will—!!”更贴合拖长音。
+# 审校：破折号
 > 「よせドモォォンッ! それなくして地球
 >  の、地球の未来はぁぁぁぁぁ!!」
-“Stop, Domoooon! Without it, the Earth's—the Earth's future will—!!”
+“Stop, Domoooon! Without it, the Earth's... the Earth's future will beeee!!”
 
 @45511 Domon · ドモン
 > 「……兄さん……」
@@ -915,9 +930,10 @@ to make the world your own!!”
 “Then why do you need the Dark Gundam?!”
 
 @45522 Master · マスター
+# 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then I'll teach you with the word 'duel'!”
+“Heh heh heh, you want to know? Then let a match between us be my answer!”
 
 @45523 Domon · ドモン
 > 「キョウジ……兄さん……」
@@ -977,9 +993,11 @@ All of it was to destroy the Dark Gundam.”
 “No way! It was my brother who used that thing and tried to conquer the Earth Sphere...”
 
 @45534 Schwarz · シュバルツ
+# 审校：破折号
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That's wrong! To begin with, the Dark Gundam—no, the Ultimate Gundam—was
+“That's wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -990,25 +1008,27 @@ created for the purpose of restoring the Earth.”
 “Restoring the Earth...?”
 
 @45536 Schwarz · シュバルツ
+# 审校：破折号；与 43118 一致
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あの3大理論、自己再生・
 >  自己進化・自己増殖は
-“Those three great theories—self-recovery, self-evolution, self-replication—were
+“Those three great theories, self-recovery, self-evolution and self-replication, were
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth's natural regeneration. But! There was one who took notice of
+all meant for the Earth's natural regeneration. But! There were those who noticed
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
-that astonishing power. I boarded the Ultimate Gundam and fled to Earth. However,
+its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-the attack I took during my escape sent the program haywire, and it became that
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @45537 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -1033,13 +1053,15 @@ as the sixth Gundam of Operation Meteor.”
 desperately chased after my brother...”
 
 @45540 Schwarz · シュバルツ
+# 审校：全局：帝国軍 Imperial 大写统一
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
 “You're honest at heart, so I was sure you'd be put on a Gundam and come chasing
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、帝国軍もいた。お前が
-after Kyoji. That's what I thought. But the enemy was powerful, and the imperial army
+after Kyoji. That's what I thought. But the enemy was powerful, and the Imperial army
 ---
 >  無茶をするのは目に見えていた。
 >  そこでデビルガンダムに取り込まれた
@@ -1067,8 +1089,9 @@ protect you.”
 believed me honestly... Domon, I too... I suffered too... ngh...”
 
 @45543 Domon · ドモン
+# 审校：破折号
 > 「シュバルツ、いや兄さん!?」
-“Schwarz—no, brother?!”
+“Schwarz... no, brother?!”
 
 @45544 Schwarz · シュバルツ
 > 「私の命もまたキョウジとともにある。
@@ -1159,9 +1182,10 @@ to make the world your own!!”
 “Then why do you need the Dark Gundam?!”
 
 @45560 Master · マスター
+# 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then I'll teach you with the word 'duel'!”
+“Heh heh heh, you want to know? Then let a match between us be my answer!”
 
 @45561 Master · マスター
 > 「ドモンよ、貴様らは地球の
@@ -1272,8 +1296,9 @@ King of Hearts...”
 “Gwah!”
 
 @45574 Domon · ドモン
+# 审校：多蒙对师父的称呼应为 Master，且原译 you're finished now 语气偏正式，改为更贴合其粗犷短句口吻的 it's over for you。
 > 「東方不敗、あんたはもう終わりだ」
-“Master Asia, you're finished now.”
+“Master Asia, it's over for you.”
 
 @45575 Master · マスター
 > 「フ、ククククッ、まったくこの……
@@ -1313,9 +1338,11 @@ King of Hearts...”
 was supposed to become a god who rules the universe...”
 
 @45582 Domon · ドモン
+# 审校：大写
+# 检查提示：未用必用译名：ウォン・ユンファ→Wong Yun-Fat
 > 「ウォン・ユンファ、財団の幹部が
 >  何を企んだか知らぬが、すべて
-“Wong Yun-Fat, I don't know what the foundation's executives were plotting, but it all
+“Wong Yun-Fat, I don't know what the Foundation's executives were plotting, but it all
 ---
 >  終わったようだな」
 seems to be over now.”
@@ -1443,12 +1470,13 @@ will never revive now.”
 “Master Asia...”
 
 @45607 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 aren't 改为 are not。
 > 「なぁ、ドモンよ……
 >  お前の拳が語っておったわ
 “You know, Domon... your fists spoke to me.
 ---
 >  人は、そう捨てたものでもないとな」
-They said people aren't so far gone after all.”
+They said people are not so far gone after all.”
 
 @45608 Domon · ドモン
 > 「…………」
@@ -1467,9 +1495,10 @@ to start over...”
 “M-Master...”
 
 @45611 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 You'll 改为 You will。
 > 「ワシをまた師匠と呼んで
 >  くれるのか……? ワシは……
-“You'll still call me Master...? Was I...
+“You will still call me Master...? Was I...
 ---
 >  ワシは間違っておったのか……?
 >  なぁ、ドモンよ」
@@ -1489,9 +1518,10 @@ all I ever thought about was fighting you. I never even tried to listen to you.
 And still, you thought of me to the very end...”
 
 @45613 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 I'm 改为 I am。
 > 「何をいう……しょせんワシは大罪人
 >  よ。だがな、見てくれ。ワシの体は
-“What are you saying...? I'm nothing but a great sinner. But look. Not one piece
+“What are you saying...? I am nothing but a great sinner. But look. Not one piece
 ---
 >  一片たりともDG細胞に
 >  おかされてはおらぬ」
@@ -1528,30 +1558,36 @@ none of this, none of this would have happened...”
 “Good... then...”
 
 @45620 Domon · ドモン
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @45621 Master · マスター
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @45622 Domon · ドモン
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“All-new series split!”
+“Zenshin Keiretsu!”
 
 @45623 Master · マスター
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“All-new series split!”
+“Zenshin Keiretsu!”
 
 @45624 Domon · ドモン
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @45625 Master · マスター
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @45626 Domon · ドモン
 > 「見よ! 東方は赤く燃えている!」
@@ -1571,9 +1607,10 @@ none of this, none of this would have happened...”
 “Master...”
 
 @45630 Master · マスター
+# 审校：Master Asia 的 voice 要求不用缩写，将 It's 和 wouldn't 改为 It is 和 would not。（人工改写）
 > 「……もうよいわ。どのみちワシは長くは
 >  もたなんだ。……なぁドモン、ワシはな
-“...It's all right now. I wouldn't have lasted much longer anyway. ...Domon, you see,
+“...It is all right now. I would not have lasted much longer anyway. ...Domon, you see,
 ---
 >  ワシは、この地球を再び緑あふるる
 >  星にしたかったのだ……」
@@ -1602,9 +1639,10 @@ an excuse.”
 listen to you... And still, you thought of me to the very end...”
 
 @45634 Master · マスター
+# 审校：Master's voice requires no contractions; "I'm" should be "I am".
 > 「何をいう……しょせんワシは大罪人
 >  よ。だがな、見てくれ。ワシの体は
-“What are you saying...? I'm nothing but a great sinner. But look. Not one piece
+“What are you saying...? I am nothing but a great sinner. But look. Not one piece
 ---
 >  一片たりともDG細胞に
 >  おかされてはおらぬ」
@@ -1641,32 +1679,36 @@ none of this, none of this would have happened...”
 “Good... then...”
 
 @45641 Domon · ドモン
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @45642 Master · マスター
+# 审校：口诀统一（英配）
 > 「流派、東方不敗は
 >  王者の風よ!」
-“The School of the Undefeated of the East is the way of the king!”
+“The School of the Undefeated of the East! The winds of the King!”
 
 @45643 Domon · ドモン
-# 审校：“全新系裂”应为“Full New-Type Burst”，初稿误作 Break。
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full New-Type Burst!”
+“Zenshin Keiretsu!”
 
 @45644 Master · マスター
-# 审校：同上，修正招式名。
+# 审校：口诀统一（罗马字，同 Sekiha Tenkyoken）
 > 「全新系裂!」
-“Full New-Type Burst!”
+“Zenshin Keiretsu!”
 
 @45645 Domon · ドモン
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @45646 Master · マスター
+# 审校：口诀统一（罗马字）
 > 「天破侠乱!」
-“Heaven-Splitting Heroic Chaos!”
+“Tenpa Kyoran!”
 
 @45647 Domon · ドモン
 > 「見よ! 東方は赤く燃えている!」
@@ -1773,9 +1815,10 @@ moves just the way we want it to.”
 “...So it seems. At this rate, even I have no choice but to acknowledge it.”
 
 @45665 Ryoma · リョウ
+# 审校：破折号
 > 「よぉし、真ゲッター! これから頼むぜ
 >  お前は無敵の勇者だ!」
-“All right, Shin Getter! From now on I'm counting on you—you're an invincible hero!”
+“All right, Shin Getter! From now on I'm counting on you. You're an invincible hero!”
 
 @45666 Domon · ドモン
 > 「な……なんだと!? レイン、いまなんと
@@ -1844,9 +1887,10 @@ self-evolve. He said there might be some connection there,
 though he wasn't certain.”
 
 @45676 Domon · ドモン
+# 审校：破折号
 > 「レイン、そんなことはどうでもいい!
 >  シュバルツは、兄さんは
-“Rain, that doesn't matter! Schwarz, my brother—
+“Rain, that doesn't matter! Schwarz, my brother,
 ---
 >  どこにいるんだ!?」
 where is he?!”
@@ -1882,22 +1926,24 @@ To think it would turn out like this...”
 “But brother, I'm just glad you're alive...”
 
 @45683 Schwarz · シュバルツ
+# 审校：破折号
 > 「それは違うぞ、ドモン。キョウジは、
 >  お前の兄は、確かに死んだのだ
-“That's not true, Domon. Kyoji—your brother—did die.
+“That's not true, Domon. Kyoji, your brother, did die.
 ---
 >  私は、しょせんキョウジのコピーに
 >  すぎん……」
 I'm nothing more than a copy of Kyoji...”
 
 @45684 Domon · ドモン
+# 审校：破折号
 > 「だけど、あんたは俺の兄さんだ!
 >  ずっと俺のことを陰から支えてくれた
 “But you're my brother! You've always supported me from the shadows.
 ---
 >  俺の子供の頃のことも知っている
 >  俺の兄さんだ……」
-You're my brother—you even know about my childhood...”
+You're my brother. You even know about my childhood...”
 
 @45685 Schwarz · シュバルツ
 > 「……そんな顔をするな、ドモン。まだまだ
@@ -1930,12 +1976,13 @@ But... as long as this life continues, Domon, I'll fight with you.”
 “How's Allenby doing?”
 
 @45690 Rain · レイン
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「なんとか大丈夫みたい。かなり
 >  体力を消耗しているけど
 “She seems to be all right, somehow. She's worn out pretty badly, though.
 ---
 >  ハサン先生にお願いしてあるわ」
-I've asked Teacher Hasan to look after her.”
+I've asked Dr. Hasan to look after her.”
 
 @45691 Sally · サリィ
 > 「でも、あの娘、DG細胞におかされて
@@ -2026,9 +2073,10 @@ but nothing's finished yet, you know?”
 “He's just exhausted. Give him a nutrient shot. That'll be enough.”
 
 @45708 Rain · レイン
+# 审校：破折号
 > 「ヒイロ? そうね、そうするわ。
 >  あなたが、そんなこといってくれるなんて
-“Heero? You're right, I'll do that. For you to say something like that—
+“Heero? You're right, I'll do that. For you to say something like that,
 ---
 >  珍しいわね」
 that's rare.”
@@ -2155,9 +2203,10 @@ remain as they always were. That's what the saying means.”
 “It was so unexpected I couldn't even speak.”
 
 @45732 Brad · ブラッド（按段落 3DD3）
+# 审校：Brad 对师父的称呼应为小写 master，而非大写 Master（大写是头衔，此处是“我的师父”）。
 > 「悪かったな。
 >  ……師匠に教わったんだ」
-“Sorry to disappoint. ...My Master taught me.”
+“Sorry to disappoint. ...My master taught me.”
 
 @45733 Manami · マナミ（按段落 3DD4）
 > 「戦乱のために国は滅びて、もとの
@@ -2211,9 +2260,10 @@ to lead Earth's postwar reconstruction.”
 “That's a relief.”
 
 @45741 Treize · トレーズ
+# 审校：破折号
 > 「さて諸君、今後のことについて話
 >  をしよう。まず我々の状況だが
-“Now then, everyone, let's discuss what comes next. First, our situation—as
+“Now then, everyone, let's discuss what comes next. First, our situation. As
 ---
 >  知っての通りこの戦いで、
 >  OZは残存する兵力のすべてを
@@ -2221,7 +2271,7 @@ you know, OZ committed every remaining unit to this battle. Those
 ---
 >  投入した。生き残った者たちも、
 >  疲弊しきっている。“刻印”の
-who survived are exhausted. Thanks to the ‘Mark,’ we barely
+who survived are exhausted. Thanks to the ‘Crest,’ we barely
 ---
 >  おかげで、かろうじて地上を死守
 >  することに成功したものの、もはや
@@ -2283,13 +2333,14 @@ For us, every moment is literally worth its weight in gold.”
 “You got word from Haman? What's the situation over there?”
 
 @45748 Treize · トレーズ
+# 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「さて……アクシズもグワダンも、
 >  無事だったようだがね。くわしいことは
 “Well... Axis and the Gwadan seem to be safe. I don't know the details.
 ---
 >  わからないよ。バルジとリーブラも健在
 >  だそうだ。現在そちらには動きはない」
-Balji and Libra are apparently intact as well. There's no movement from them at present.”
+Barge and Libra are apparently intact as well. There's no movement from them at present.”
 
 @45749 Quattro · クワトロ
 > 「パプティマス・シロッコか……」
@@ -2471,9 +2522,10 @@ that the people on the surface were the ones who did it.”
 Is that rumor true, Scirocco?”
 
 @45774 Scirocco · シロッコ
+# 审校：全局：grados-en
 > 「空間をゆがめる機構……
 >  “グラドスの刻印”か
-“A mechanism that warps space... the ‘Crest of Grados,’ is it?
+“A mechanism that warps space... the ‘Grados Crest,’ is it?
 ---
 >  信じ難い話ではあるが、異星人
 >  どもの反応をみれば、違った答えも
@@ -2511,6 +2563,7 @@ You coming too, Jerid?”
 “What do you mean?”
 
 @45779 Scirocco · シロッコ
+# 审校：全局：バルジ 词条 Barge
 > 「我々の動くべき時ではないという
 >  ことだ。ここは、このバルジとリーブラ
 “It means this isn't the time for us to make a move. Our first priority is to
@@ -2523,9 +2576,10 @@ regroup here at this Barge and Libra, along with the Mobile Dolls. There's still
 a long road ahead. Rest while you can.”
 
 @45780 Haman · ハマーン
+# 审校：全局：grados-en
 > (“グラドスの刻印”……まさか
 >  そのようなものがあろうとはな。フフッ
-(The ‘Crest of Grados’... To think such a thing could exist. Heh heh.
+(The ‘Grados Crest’... To think such a thing could exist. Heh heh.
 ---
 >  あの連中はよくやってくれたよ。
 >  このまま帝国軍を排除できれば
@@ -2554,9 +2608,9 @@ hope a little. Scirocco... that man won't make a move yet, will he?)
 “Mashymre has come, has he? Understood. Bring him here.”
 
 @45783 Glemy · グレミー
-# 审校：「はっ」是短促应答/呼气，不是“Yes, ma'am”，改为自然英语短音。
+# 审校：「はっ」是军人对长官的短促应答，应译为干脆的 Yes，而不是笑声 Hah。
 > 「はっ」
-“Hah.”
+“Yes.”
 
 @45784 Mashymre · マシュマー
 > 「ハマーン様。マシュマー・セロ、並びに
@@ -2696,9 +2750,9 @@ with us. That's what I mean.”
 “It appears to be from the Moon. They're requesting permission to land.”
 
 @45810 Amuro · アムロ
-# 审校：特佐不是 special ensign；按军衔体系应译为 Special Captain，并保持后文一致。
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐?」
-“Special Captain?”
+“Special Colonel?”
 
 @45811 Treize · トレーズ
 > 「ああ、頼んでおいた補充のMSだろう
@@ -2718,25 +2772,25 @@ thrown into the Moon's defense battle, but unfortunately only one survived.”
 “All right, permission granted. Guide them in.”
 
 @45814 Ark · アーク（按段落 3DD1）
-# 审校：特尉应为 Special Captain，与 L28 统一。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あれ、アムロ特尉、どうしたんです?」
-“Huh, Special Captain Amuro, what's wrong?”
+“Huh, Special Lieutenant Amuro, what's wrong?”
 
 @45815 Selain · セレイン（按段落 3DD2）
-# 审校：特尉应为 Special Captain，与 L28 统一。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「アムロ特尉、ブリッジの方はよろしい
 >  ので?」
-“Special Captain Amuro, is it all right for you to leave the bridge?”
+“Special Lieutenant Amuro, is it all right for you to leave the bridge?”
 
 @45816 Brad · ブラッド（按段落 3DD3）
 > 「おっと、なんだよ、ぞろぞろと」
 “Whoa, what's this, everyone piling in?”
 
 @45817 Manami · マナミ（按段落 3DD4）
-# 审校：特尉应为 Special Captain，与 L28 统一。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「あら? アムロ特尉、どうかしたんです
 >  か?」
-“Oh? Special Captain Amuro, is something the matter?”
+“Oh? Special Lieutenant Amuro, is something the matter?”
 
 @45818 Amuro · アムロ
 > 「いや、補充のMSを見に来たんだよ
@@ -2773,6 +2827,7 @@ has been doing good work too.”
 brought over a unit that was still undergoing overhaul.”
 
 @45823 Astonaige · アストナージ
+# 审校：人名按词表统一
 > 「ああ、ちょうどよかった。いまチャムに
 >  呼びに行かせるところだったんですよ」
 “Ah, perfect timing. I was just about to have Chum go call for you.”
@@ -2930,9 +2985,9 @@ start the checks.”
 “Yes... what is it?”
 
 @45852 Selain · セレイン（按段落 3DD2）
-# 审校：特尉应为 Special Captain，与 L28 统一。
+# 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「なにか、特尉」
-“What is it, Special Captain?”
+“What is it, Special Lieutenant?”
 
 @45853 Brad · ブラッド（按段落 3DD3）
 > 「別にいいけど……何だ?」
@@ -2957,13 +3012,13 @@ start the checks.”
 “Special Lieutenant, what do you mean? {HeroNick} has nothing to do with this.”
 
 @45858 Amuro · アムロ
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroNick}']，实际为 []）
-# 草稿第 1 页：“That's exactly it. Because it has nothing to do with you, you're the one deciding. No one
-# 草稿第 2 页：complains about 【主角昵称】's decision. Everyone got that?”
+# 审校：补译：原稿占位符错页
 > 「だからさ。関係ないから、決めて
 >  もらうんだよ。{HeroNick}の決定に
+“Exactly. It's got nothing to do with us, so we let {HeroNick} decide. About that decision,
 ---
 >  文句はいわないこと。みんな、いいな?」
+nobody complains. Everyone clear?”
 
 @45859 Roux · ルー
 > 「……わかりました」

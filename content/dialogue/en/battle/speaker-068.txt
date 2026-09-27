@@ -1,102 +1,149 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8893 Gates · ゲーツ
+# 触发：攻击（通用，1/7）
 > 「もらったっ!」
 “Got you!”
 
 @8894 Gates · ゲーツ
+# 触发：攻击（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせん!」
-“I won't let you!”
+“I won’t let you!”
 
 @8895 Gates · ゲーツ
+# 触发：攻击（通用，3/7）
 > 「そこかっ!」
 “There you are!”
 
 @8896 Gates · ゲーツ
+# 触发：攻击（通用，4/7）
 > 「いけっ!」
 “Go!”
 
 @8897 Gates · ゲーツ
+# 触发：攻击（通用，5/7）
 > 「消えろっ!」
 “Disappear!”
 
 @8898 Gates · ゲーツ
+# 触发：攻击（通用，6/7）
 > 「邪魔だっ!」
 “Out of my way!”
 
 @8899 Gates · ゲーツ
+# 触发：攻击（通用，7/7）
 > 「このっ!」
 “Why you!”
 
 @8900 Gates · ゲーツ
+# 触发：被击坠（通用，1/2）
 > 「な、何!? うおっ!!」
 “W-what?! Whoa!!”
 
 @8901 Gates · ゲーツ
+# 触发：被击坠（通用，2/2）
 > 「バカな……うあっ!」
 “Impossible... Ugh!”
 
 @8902 Gates · ゲーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!! お、押されているだと!?」
-“Ugh!! I-I'm being pushed back?!”
+“Ugh!! I-I’m being pushed back?!”
 
 @8903 Gates · ゲーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「くうっ!! な、なんだ、このパワーは!?」
 “Ngh!! W-what is this power?!”
 
 @8904 Gates · ゲーツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
+# 审校：何者だこいつ指对方
 > 「むうっ! な、何者だ、こいつ……」
-“Hmph! W-who are you...?”
+“Ngh! Wh-who is this guy...?”
 
 @8905 Gates · ゲーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだやられてはいない!」
-“Not yet! I'm not done yet!”
+“Not yet! I’m not done yet!”
 
 @8906 Gates · ゲーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「やるっ! しかしっ!」
 “Not bad! But still!”
 
 @8907 Gates · ゲーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：なんの＝不算什么
 > 「ちっ! なんの、まだ落ちるものか!」
-“Tch! No way, I won't go down!”
+“Tch! Ha, I’m not going down yet!”
 
 @8908 Gates · ゲーツ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! 貴様、いい気になるなっ!」
-“Ngh! Don't get cocky, you bastard!”
+“Ngh! Don’t get cocky, you bastard!”
 
 @8909 Gates · ゲーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
+# 审校：原译“is that all you've got?!”语气过强，日文是轻蔑的陈述，改为更贴合的反派轻蔑口吻。
 > 「ふん、その程度の攻撃!」
-“Hmph, is that all you've got?!”
+“Hmph, an attack of that level!”
 
 @8910 Gates · ゲーツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな」
-“That's nothing.”
+“That’s nothing.”
 
 @8911 Gates · ゲーツ
+# 触发：回避（通用，1/4）
 > 「甘いな!」
 “Too easy!”
 
 @8912 Gates · ゲーツ
+# 触发：回避（通用，2/4）
 > 「そこか!」
 “There!”
 
 @8913 Gates · ゲーツ
+# 触发：回避（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるか!」
-“As if that'd hit!”
+“As if that’d hit!”
 
 @8914 Gates · ゲーツ
+# 触发：回避（通用，4/4）
 > 「見える……見えるぞ!」
 “I can see it... I can see you!”
 
 @8915 Gates · ゲーツ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃が通用するか!」
-“That attack won't work on me!”
+“That attack won’t work on me!”
 
 @8916 Gates · ゲーツ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「なんだ!? 弾切れか!?」
 “What?! Out of ammo?!”
 
 @8917 Gates · ゲーツ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ……この距離では手出し
 >  できんか……」
-“Tch... I can't reach at this range...”
+“Tch... I can’t reach at this range...”
+
+@14667 Gates · ゲーツ
+# 触发：使用〈フィンファンネル〉
+> 「フィンファンネルっ!!」
+“Fin Funnels!!”
+
+@14668 Gates · ゲーツ
+# 触发：轻伤（剩余 HP 90% 以上），乘坐〈バウンド・ドック〉
+> 「このバウンド・ドッグに、そんな攻撃が
+>  通用すると思っているのか!」
+“You think that attack can hurt this Baund Doc?!”

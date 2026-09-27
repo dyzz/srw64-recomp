@@ -1,118 +1,173 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8145 Kayra · ケーラ
+# 触发：攻击（通用，1/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせない!」
-“I won't let you!”
+“I won’t let you!”
 
 @8146 Kayra · ケーラ
+# 触发：攻击（通用，2/7）
+# 审校：Fall 不像喊话；补双感叹
 > 「落ちなっ!!」
-“Fall!”
+“Go down!!”
 
 @8147 Kayra · ケーラ
+# 触发：攻击（通用，3/7）
+# 审校：补双感叹
 > 「そこっ!!」
-“There!”
+“There!!”
 
 @8148 Kayra · ケーラ
+# 触发：攻击（通用，4/7）
+# 审校：补双感叹
 > 「もらったっ!!」
-“Got you!”
+“Got you!!”
 
 @8149 Kayra · ケーラ
-# 审校：补足语气，使英文更自然，避免“stop you”缺少宾语感
+# 触发：攻击（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんとしても足を止める!」
-“I'll stop you no matter what it takes!”
+“I’ll stop you no matter what it takes!”
 
 @8150 Kayra · ケーラ
+# 触发：攻击（通用，6/7）
 > 「つかまえたっ!」
 “Caught you!”
 
 @8151 Kayra · ケーラ
+# 触发：攻击（通用，7/7）
 > 「こいつ!」
 “Why you!”
 
 @8152 Kayra · ケーラ
+# 触发：被击坠（通用，1/3）
 > 「しまった! 脱出を!」
 “Damn! Eject!”
 
 @8153 Kayra · ケーラ
+# 触发：被击坠（通用，2/3）
+# 审校：补双感叹
 > 「くっ! しまったっ!!」
-“Ngh! Damn it!”
+“Ngh! Damn it!!”
 
 @8154 Kayra · ケーラ
+# 触发：被击坠（通用，3/3）
 > 「直撃!?」
 “A direct hit?!”
 
 @8155 Kayra · ケーラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! も、もたない!?」
-“Ngh! I-I can't hold out?!”
+“Ngh! I-I can’t hold out?!”
 
 @8156 Kayra · ケーラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：补双感叹
 > 「まだやられるわけには!!」
-“I can't go down yet!”
+“I can’t go down yet!!”
 
 @8157 Kayra · ケーラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだやられるわけには!」
-“I-I can't go down yet!”
+“I-I can’t go down yet!”
 
 @8158 Kayra · ケーラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「ま、まだもう一撃できる!」
 “I-I can take one more shot!”
 
 @8159 Kayra · ケーラ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ああぁぁ!?」
 “Aaaah?!”
 
 @8160 Kayra · ケーラ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
+# 审校：ちっ 用“啧”；补双感叹
 > 「ちっ!! やるな!!」
-“Tch! Not bad!”
+“Tch!! Not bad!!”
 
 @8161 Kayra · ケーラ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
+# 审校：补双感叹
 > 「くっ!! でもまだ!」
-“Ngh! But I'm not done!”
+“Ngh!! But I’m not done!”
 
 @8162 Kayra · ケーラ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
+# 审校：补双感叹
 > 「やるな! しかし!!」
-“Not bad! But still!”
+“Not bad! But still!!”
 
 @8163 Kayra · ケーラ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かざりをやられただけなんだから!」
-“It's just the decorations that got hit!”
+“It’s just the decorations that got hit!”
 
 @8164 Kayra · ケーラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：补双感叹
 > 「こいつ!!」
-“Why you!”
+“Why you!!”
 
 @8165 Kayra · ケーラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度で!」
-“That's all you've got!”
+“That’s all you’ve got!”
 
 @8166 Kayra · ケーラ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
+# 审校：补双感叹
 > 「まだまだっ!!」
-“Not even close!”
+“Not even close!!”
 
 @8167 Kayra · ケーラ
+# 触发：回避（通用，1/3）
 > 「あまいなっ!」
 “Too naive!”
 
 @8168 Kayra · ケーラ
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだまだ! あまいんだよ!」
-“Not even close! You're too naive!”
+“Not even close! You’re too naive!”
 
 @8169 Kayra · ケーラ
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっこみがたらない!」
-“Your attacks aren't sharp enough!”
+“Your attacks aren’t sharp enough!”
 
 @8170 Kayra · ケーラ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：补双感叹
 > 「ビームは効かないって!!」
-“I told you beams don't work!”
+“I told you beams don’t work!!”
 
 @8171 Kayra · ケーラ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：补双感叹
 > 「ムダだっ!!」
-“It's useless!”
+“It’s useless!!”
 
 @8172 Kayra · ケーラ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, can’t fire?!”
 
 @8173 Kayra · ケーラ
+# 触发：射程外，无法反击（通用，1/1）
 > 「遠すぎる!」
 “Too far!”
+
+@14583 Kayra · ケーラ
+# 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+“Energy charge... Go! High Mega Cannon!!”

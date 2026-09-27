@@ -124,9 +124,9 @@ This is Lieutenant Colonel Bright Noa of the Liberation Front of the Earth.”
 “I'm {HeroFull}.”
 
 @18355 Quattro · クワトロ
-# 审校：中佐应译为 Lieutenant Colonel，与词表及 L21 一致，原译 Colonel 不准确。
+# 审校：原文“もとC級市民”意为“前C级市民”，补上former使意思更准确。
 > 「彼はもとC級市民だ、中佐
-“He was a C-class citizen, Lieutenant Colonel.
+“He was a former C-class citizen, Lieutenant Colonel.
 ---
 >  ゲリラ狩りに巻きこまれていた
 >  ところを保護した」
@@ -255,13 +255,15 @@ I came to tell you that.”
 But I don't understand. Why would you tell us that?”
 
 @18372 Eiji · エイジ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「グレスコ総督を、
 >  ムゲゾルバドス帝国を
 “To drive Governor Gresco and the Muge Zorbados Empire
 ---
 >  この地球から叩きだすためだ。
 >  悪いことはいわない
-out of this Earth. I'm telling you for your own good—
+out of this Earth. I'm telling you for your own good...
 ---
 >  すぐここから退去したほうがいい」
 you'd better leave this place right away.”
@@ -281,21 +283,23 @@ you'd better leave this place right away.”
 is unconfirmed. Won't you tell us how you came to know it?”
 
 @18375 Eiji · エイジ
+# 审校：精读：发现地点的是英二自己，不是敌军
 > 「ゲリラ掃討部隊の通信を
 >  傍受した
 “I intercepted communications from a guerrilla sweep unit.
 ---
 >  この場所は付近一帯の
 >  地形をスキャンして、
-This place was found by scanning and
+I found this place by scanning and
 ---
 >  分析した結果、発見した」
 analyzing the terrain of the surrounding area.”
 
 @18376 Aboly · アポリー
+# 审校：阿波利对克瓦特罗说话应保持部下对长官的礼貌，原文“こんなやつ”虽有不屑但非粗口，现译“a word this guy says”生硬，改为更自然的“what this guy says”。
 > 「大尉、こんなやつのいうことを
 >  真に受ける必要はありませんよ」
-“Captain, there's no need to take a word this guy says seriously.”
+“Captain, there's no need to take what this guy says seriously.”
 
 @18377 Quattro · クワトロ
 > 「ふむ……少し考えさせてもらう
@@ -578,13 +582,14 @@ I can't abandon it. Besides, if I wanted a safe life,
 I would never have taken up a gun in the first place.”
 
 @18423 Quattro · クワトロ
+# 审校：原文句末为反问语气「だな?」，译文加了“all right?”显得过于随意，与克瓦特罗含蓄的军官口吻不符，改为陈述式收束。
 > 「優秀なパイロットが増えるのは
 >  助かる
 “I'm glad to have another skilled pilot.
 ---
 >  が、死に急ぐような真似は
 >  つつしんでもらいたいものだな?」
-But I'd ask you not to be so eager to throw your life away, all right?”
+But I'd ask you not to be so eager to throw your life away.”
 
 @18424 Selain · セレイン（按段落 3DD2）
 > 「わかっています。ご安心を」
@@ -902,14 +907,16 @@ Right, they said there's no pilot.
 “What... what's going on?”
 
 @18483 Karla · カルラ
+# 审校：跨页多余的引号
 > 「アルバトロ・ナル・エイジ・アスカ!
 “Albatro Null Eiji Asuka!
 ---
 >  よくもぬけぬけと中尉の前に
 >  現れた!」
-How dare you show your face before the Lieutenant so brazenly!”
+How dare you show your face before the Lieutenant so shamelessly!”
 
 @18484 Gale · ゲイル
+# 审校：跨页多余的引号
 > 「カルラ、やめろ
 “Karla, stop.
 ---
@@ -923,6 +930,7 @@ Eiji, I never thought you were still alive.”
 “Gale...”
 
 @18486 Gale · ゲイル
+# 审校：跨页多余的引号
 > 「エイジ、お前が生きていたと知れば、
 >  ジュリアも喜ぶだろう
 “Eiji, if Julia knew you were alive, she'd be glad too.
@@ -936,7 +944,7 @@ I'm glad I ran into you here. Surrender, Eiji.
 If you do it now, I can still spare your life on my authority.”
 
 @18487 Eiji · エイジ
-# 审校：原文两页为同一句台词，初稿第二页开头多加了引号，已去掉；同时去掉 Senior。
+# 审校：跨页多余的引号
 > 「帝国にもどるつもりはありません。
 >  先輩、地球の現状を見れば
 “I have no intention of going back to the Empire. Gale, if you look at Earth as it is now,
@@ -946,7 +954,7 @@ If you do it now, I can still spare your life on my authority.”
 you must see that the Empire is wrong.”
 
 @18488 Gale · ゲイル
-# 审校：原文“反逆者の弟を持つ兄”指身为叛徒的哥哥，初稿误译为“traitor's brother”，改为“the brother of a traitor”。
+# 审校：跨页多余的引号
 > 「……お前の体の半分に流れる
 >  地球人の血か……
 “...The Earthling blood flowing through half your body, is it...
@@ -960,9 +968,10 @@ Eiji, have you ever thought about what it's like to be the brother of a traitor?
 There's still time. Eiji, surrender to us.”
 
 @18489 Quattro · クワトロ
+# 审校：跨页多余的引号
 > 「勝手なことを! エイジ・アスカ、
 >  迷いは自分を殺すことになる!
-“You can't just decide that! Eiji Asuka, hesitation will only get you killed!
+“You can't just decide that! Eiji Asuka, hesitation will get you killed!
 ---
 >  ここは戦場だぞ!」
 This is a battlefield!”
@@ -972,6 +981,7 @@ This is a battlefield!”
 “It seems I have no choice but to fight...”
 
 @18491 Ark · アーク（按段落 3DD1）
+# 审校：跨页多余的引号
 > 「あんなに敵が……
 >  なんでソルデファーが出ていないんだ!?
 “So many enemies... why isn't the Soldifar launching?!
@@ -989,7 +999,7 @@ This is a battlefield!”
 “Hey, what do you think you're doing?!”
 
 @18494 Ark · アーク（按段落 3DD1）
-# 审校：原文三页为同一句台词，初稿第二、三页开头多加了引号，已去掉。
+# 审校：跨页多余的引号
 > 「パイロットがいないんでしょ!?
 >  あんなに敵が多くちゃ
 “There's no pilot, right?! With that many enemies out there,
@@ -1260,9 +1270,10 @@ Resting when you can is part of a pilot's job.”
 “Y-yes, I'll do that.”
 
 @18532 Aboly · アポリー
+# 审校：精读：素直 不是 honest
 > 「おう、素直なのはいいことだ。
 >  これからも頼むぞ」
-“Oh, being honest is a good thing. I'll be counting on you from now on too.”
+“Good to see you're so agreeable. I'll be counting on you from now on.”
 
 @18533 Aboly · アポリー
 > 「そうか……

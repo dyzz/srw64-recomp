@@ -356,37 +356,37 @@ to drive out the Imperial forces and bring peace to the world:
 an executive of the Foundation and commander of OZ, Treize Khushrenada.”
 
 @23460 Treize · トレーズ
-# 待译：机翻未采用（另一种语言未通过检查）
-# 草稿第 1 页：“You may think that OZ will replace the Former Federation and the Muge Empire
-# 草稿第 2 页：and impose excessive control through military force. The word dominion
-# 草稿第 3 页：seems to suggest an oppressive stance, arrogant action. But I consider this
-# 草稿第 4 页：governance, to bring order to the world. In this world where war is ceaseless
-# 草稿第 5 页：and countless unknown threats exist in space,
-# 草稿第 6 页：it has surpassed God's imagination. What humanity needs now is
-# 草稿第 7 页：a highly advanced system of dominion to maintain absolute order,
-# 草稿第 8 页：and to stand against unknown threats...”
+# 审校：全局：旧連邦 = former Federation
 > 「OZは旧連邦やムゲ帝国にかわり
 >  軍事力で過剰な支配を
+“You may think that OZ will replace the former Federation and the Muge Empire
 ---
 >  行うのかと、考えられるかもしれません
 >  支配という言葉は
+and impose excessive control through military force. The word dominion
 ---
 >  抑圧する姿勢、おごりある行動
 >  に思えます。しかしこれは世界に
+seems to suggest an oppressive stance, arrogant action. But I consider this
 ---
 >  秩序をもたらすための、統治と
 >  考えます。戦争が絶えず
+governance, to bring order to the world. In this world where war is ceaseless
 ---
 >  宇宙に未知の脅威が数多に
 >  存在するこの世界は
+and countless unknown threats exist in space,
 ---
 >  神の想像を超えていたのです。
 >  いま人類に必要とされているのは
+it has surpassed God's imagination. What humanity needs now is
 ---
 >  絶対の秩序をたもつための、そして
 >  未知の脅威に対抗するための
+a highly advanced system of dominion to maintain absolute order,
 ---
 >  高度な支配体制なのです……」
+and to stand against unknown threats...”
 
 @23461 Bright · ブライト
 > 「ロームフェラめ……」
@@ -519,6 +519,7 @@ so they surely haven't noticed us.”
 “Then...”
 
 @23478 Drake · ドレイク
+# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「地上人の軍よりも、シーラやエレの
 >  ほうが脅威であろう。先に叩いて
 “Ciela and Elle are more of a threat than the surface dwellers' army. If we can strike
@@ -576,6 +577,7 @@ and be done with it!!”
 “Hahahahaha! What power! This means I'm going to win!!”
 
 @23488 Show · ショウ
+# 审校：“Jeryl” 与词表/address 的 “Jeril” 不一致，改为 Jeril。（人工改写）
 > 「ジェリル……!?」
 “Jeril...?!”
 
@@ -605,6 +607,7 @@ and be done with it!!”
 “No, Show! Don't become like that!”
 
 @23495 Show · ショウ
+# 审校：人名按词表统一
 > 「ははっ、大丈夫さチャム。俺は
 >  制御してみせる」
 “Haha, it's all right, Chum. I'll prove I can control it.”
@@ -935,9 +938,10 @@ set the stagnation right.”
 “Hahahahaha, purge, purge!”
 
 @23560 Zechs · ゼクス
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「まて、貴様らはそれでもOZの将兵
 >  か! そのような下等な思いあがり
-“Stop! Are you lot even OZ officers and men?! Such lowly arrogance—
+“Stop! Are you lot even OZ officers and men?! Such lowly arrogance...
 ---
 >  恥を知れ!」
 have some shame!”
@@ -974,9 +978,10 @@ have been left entirely to us.”
 “What?!”
 
 @23567 Mueller · ミューラー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「見せてもらおう、ライトニングカウントの
 >  お手なみとやらを!」
-“Let's see it, then—the skill of the Lightning Count!”
+“Let's see it, then... the skill of the Lightning Count!”
 
 @23568 Zechs · ゼクス
 > 「くっ、やめろ!」
@@ -1044,13 +1049,14 @@ deal with me.”
 “Zechs, what do you intend to do in a machine like that?! Please retreat!”
 
 @23581 Zechs · ゼクス
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうはいかんのだ、ノイン。彼らは
 >  その理想のために命を
 “I cannot, Noin. They are prepared to cast aside their lives and fight
 ---
 >  かなぐり捨ててでも戦う覚悟をした
 >  その生き方こそ戦士の真の姿だ
-for their ideals—that way of living is the true form of a warrior.
+for their ideals... that way of living is the true form of a warrior.
 ---
 >  甘いのだ、私は」
 I have been too soft.”
@@ -1090,9 +1096,10 @@ one must learn at the cost of one's life!”
 “Quit your yapping! In the end you're OZ too!”
 
 @23587 Koji · 甲児
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうだぜ。オレたちがいうことをきかない
 >  からってよ、そうやってすぐに攻撃を
-“That's right. Just because we won't do what you say, you lot immediately launch an attack—
+“That's right. Just because we won't do what you say, you lot immediately launch an attack...
 ---
 >  しかけてくるのがOZじゃねぇか!」
 that's OZ for you!”
@@ -1162,9 +1169,10 @@ just go home empty-handed.”
 “Whoa, what the hell, where did this guy come from?!”
 
 @23600 Avie-Lu · アヴィ＝ルー
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「すごいネ……感じるヨ、お前たちの
 >  力を」
-“Amazing... I can feel it, you know—your power.”
+“Amazing... I can feel it, you know... your power.”
 
 @23601 Amuro · アムロ
 > 「くっ……なんだ、この強烈な
@@ -1194,12 +1202,13 @@ just go home empty-handed.”
 from, soldier?!”
 
 @23606 Brad · ブラッド（按段落 3DD3）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「なんだと!? グゥゥッ……なんて
 >  威圧感だ。ただ者ではない
 “What?! Guhh... What overwhelming pressure. You're no ordinary
 ---
 >  貴様ぁ、いったい何者だ!?」
-man—just who are you?!”
+man... just who are you?!”
 
 @23607 Manami · マナミ（按段落 3DD4）
 > 「な……なんなの、あれは!?」
@@ -1229,9 +1238,10 @@ a bio-response? ...It says it's impossible to determine?! Just who are you?!”
 “What?! You, just what the hell is that?!”
 
 @23612 Avie-Lu · アヴィ＝ルー
+# 审校：修正了“underst-and”的断词，使译文自然通顺。
 > 「わかンなくていいのサ、アンタたちは。
 >  アタシが見たところじゃ、アンタたちは
-“You don't need to underst-and, you lot. From what I see, you have
+“You don't need to understand, you lot. From what I see, you have
 ---
 >  この惑星圏の中デモ突出した
 >  潜在能力がある。確かめなくちゃ
@@ -1306,8 +1316,9 @@ Come on, show me more. More, more. Otherwise you'll all die, you know?!”
 “Yeah... But Ryoma, just what are you planning to do?”
 
 @23626 Hayato · ハヤト
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「リョウ……お前まさか!」
-“Ryoma... You can't mean—!”
+“Ryoma... You can't mean...!”
 
 @23627 Ryoma · リョウ
 > 「ああ、ゲッター線エネルギーを暴走
@@ -1322,9 +1333,10 @@ along with the Getter!”
 “Don't talk nonsense, Ryoma!”
 
 @23629 Ryoma · リョウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「しかしもう他には方法がない!
 >  大丈夫、ちゃんと脱出しますって」
-“But there's no other way now! It's fine—we'll eject properly, I swear.”
+“But there's no other way now! It's fine... we'll eject properly, I swear.”
 
 @23630 Hayato · ハヤト
 > 「了解だ、リョウ。やってみる価値は
@@ -1366,9 +1378,10 @@ along with the Getter!”
 “...It's no good! The ejection system's broken!!”
 
 @23639 Ryoma · リョウ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「なんだって!? しかたがない。ムサシ、
 >  もういい、早く回避しろ!!」
-“What?! There's no choice. Musashi, forget it—evade, now!!”
+“What?! There's no choice. Musashi, forget it... evade, now!!”
 
 @23640 Musashi · ムサシ
 > 「バカをいうな。どうせ、奴にちゃんと
@@ -1444,9 +1457,11 @@ Earthlings, huh? Interesting...)
 “You don't have to tell me! You Muge bastard, I'll take you on!!”
 
 @23655 Helmut · ヘルマット
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「クククッ、貴様らの血塗られた
 >  心臓は、このヘルマットが
-“Heh heh heh, those blood-soaked hearts of yours—I, Helmut,
+“Heh heh heh, those blood-soaked hearts of yours... I, Helmut,
 ---
 >  握りつぶしてくれる!」
 will crush them in my fist!”
@@ -1541,9 +1556,10 @@ for him here.”
 “It's no good. We know nothing.”
 
 @23672 Lawrence · ローレンス
+# 审校：Lawrence is addressing Quattro, not Manami, so “my lady” is incorrect.
 > 「残念ながら現段階では、何もわ
 >  からないとしか申しようがございませんな」
-“Regrettably, at this stage I can only say that we know nothing at all, my lady.”
+“Regrettably, at this stage I can only say that we know nothing at all.”
 
 @23673 Sally · サリィ
 > 「レインと私で回収した破片の
@@ -1721,9 +1737,10 @@ trouble.”
 “Your Excellency, I believe I can no longer follow the intentions of the Romefeller Foundation.”
 
 @23702 Treize · トレーズ
+# 审校：“sorted out your heart” 过于直译，改为更自然且符合特列斯优雅口吻的说法。
 > 「なに? ……そうか、君の心の整理
 >  はついたというわけか……
-“What? ...I see, so you've finally sorted out your heart...
+“What? ...I see, so you've sorted out your feelings...
 ---
 >  ミリアルド・ピースクラフト?」
 Milliardo Peacecraft?”
@@ -1733,9 +1750,10 @@ Milliardo Peacecraft?”
 “I'm sorry.”
 
 @23704 Treize · トレーズ
+# 审校：特列斯是贵族口吻，将“it's a shame”改为更正式的“it is a shame”。
 > 「いや……だが残念だよ、ミリアルド。
 >  私はロームフェラに対しての立場を
-“No... but it's a shame, Milliardo. I must make my position toward Romefeller clear.
+“No... but it is a shame, Milliardo. I must make my position toward Romefeller clear.
 ---
 >  示さなければならない。ライトニング
 >  バロン……いやカウントだったな

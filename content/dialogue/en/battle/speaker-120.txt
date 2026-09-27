@@ -1,134 +1,289 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @9924 Benkei · ベンケイ
+# 触发：攻击（通用，1/4）
 > 「くらえっ!!」
 “Take this!!”
 
 @9925 Benkei · ベンケイ
+# 触发：攻击（通用，2/4）
 > 「これでもくらえっ!!」
 “Try this one on for size!!”
 
 @9926 Benkei · ベンケイ
+# 触发：攻击（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつでとどめだっ!!」
-“This'll finish you!!”
+“This’ll finish you!!”
 
 @9927 Benkei · ベンケイ
+# 触发：攻击（通用，4/4）
 > 「行くぞっ!!」
 “Here I come!!”
 
 @9928 Benkei · ベンケイ
+# 触发：被击坠（通用，1/3）
 > 「うわっちゃあ! やられちまったぜ!」
 “Whoa! They got me!”
 
 @9929 Benkei · ベンケイ
+# 触发：被击坠（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「う、うおおおっ!!」
-“U-Uwooooh!!”
+“U-uwooooh!!”
 
 @9930 Benkei · ベンケイ
+# 触发：被击坠（通用，3/3）
 > 「くそっ! だめか!」
 “Damn! No good!”
 
 @9931 Benkei · ベンケイ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「くそっ!! なんてパワーだ!」
 “Damn!! What power!”
 
 @9932 Benkei · ベンケイ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「や、やられちまう!?」
-“Th-They're gonna get me?!”
+“Th-they’re gonna get me?!”
 
 @9933 Benkei · ベンケイ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ!! ちょいとヤバイぜ!」
-“Tch!! This is gettin' bad!”
+“Tch!! This is gettin’ bad!”
 
 @9934 Benkei · ベンケイ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!! や、やばいっ!!」
-“Whoa!! Th-This is bad!!”
+“Whoa!! Th-this is bad!!”
 
 @9935 Benkei · ベンケイ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう!! このままじゃ
 >  やられちまうぜっ!!」
-“Damn it!! At this rate they'll get me!!”
+“Damn it!! At this rate they’ll get me!!”
 
 @9936 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/6）
 > 「いてえじゃねえか、この野郎!」
 “That hurt, you bastard!”
 
 @9937 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いてっ! 何しやがる!!」
-“Ow! What're you doin'!!”
+“Ow! What’re you doin’!!”
 
 @9938 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/6）
+# 审校：なんの、これしき 更顺的说法
 > 「なんの、これしき!」
-“What, that's nothing!”
+“That’s nothing!”
 
 @9939 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/6）
+# 审校：やったな 是“你竟敢”，You did it 意思偏
 > 「やったな、このやろう!」
-“You did it, you jerk!”
+“You’ll pay for that, you jerk!”
 
 @9940 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 > 「うおおっ!!」
 “Uwooooh!!”
 
 @9941 Benkei · ベンケイ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/6）
+# 审校：やりやがったな 是被打后发狠，You got me 太弱
 > 「やりやがったな!!」
-“You got me!!”
+“Oh, you’re gonna get it now!!”
 
 @9942 Benkei · ベンケイ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 > 「そんなもんかよ!」
 “Is that all you got!”
 
 @9943 Benkei · ベンケイ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
+# 审校：拖音用“——”，“就这点东西”不像人话
 > 「ふあ～あ、なんじゃい、そんなもん」
-“Yaaawn, what's this, that's all?”
+“Yaaawn, what, that’s all?”
 
 @9944 Benkei · ベンケイ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へーき、へーき!」
-“I'm fine, I'm fine!”
+“I’m fine, I’m fine!”
 
 @9945 Benkei · ベンケイ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「こんなもん、効くかい!」
 “Like that could hurt me!”
 
 @9946 Benkei · ベンケイ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「こんなものかいっ!」
 “Is that all?!”
 
 @9947 Benkei · ベンケイ
+# 触发：回避（通用，1/5）
 > 「おっとっと、あぶねえ、あぶねえ」
 “Whoa there, that was close, that was close.”
 
 @9948 Benkei · ベンケイ
+# 触发：回避（通用，2/5）
+# 审校：ヘタクソ 指打不准
 > 「ははーん、ヘタクソ」
-“Ha ha, you're terrible.”
+“Ha, lousy aim.”
 
 @9949 Benkei · ベンケイ
+# 触发：回避（通用，3/5）
 > 「ふう、あぶなかった」
 “Phew, that was close.”
 
 @9950 Benkei · ベンケイ
+# 触发：回避（通用，4/5）
+# 审校：なんの 回避时的不屑
 > 「なんのっ!!」
-“What, no problem!!”
+“That’s nothing!!”
 
 @9951 Benkei · ベンケイ
+# 触发：回避（通用，5/5）
+# 审校：ツルカメ（鶴亀）是驱邪口头禅，不能音译“鹤龟”
 > 「おおっと! ツルカメ、ツルカメ」
-“Whoa there! Easy does it, easy does it.”
+“Whoa there! Knock on wood, knock on wood.”
 
 @9952 Benkei · ベンケイ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @9953 Benkei · ベンケイ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：beam 不该大写
 > 「ビームなんてへでもねえぜ!」
-“A Beam's nothin' to me!”
+“A beam’s nothin’ to me!”
 
 @9954 Benkei · ベンケイ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ありゃ、反撃できねえ」
-“Aw man, I can't counter.”
+“Aw man, I can’t counter.”
 
 @9955 Benkei · ベンケイ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! 反撃できねえ!」
-“Tch! I can't counter!”
+“Tch! I can’t counter!”
 
 @9956 Benkei · ベンケイ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそうっ! とどかん!」
-“Damn! It won't reach!”
+“Damn! It won’t reach!”
+
+@15244 Benkei · ベンケイ
+# 触发：使用〈ゲッターミサイル〉
+> 「ゲッターミサイル!!」
+“Getter Missile!!”
+
+@15245 Benkei · ベンケイ
+# 触发：使用〈ゲッターサイクロン〉
+> 「ゲッターサイクロン!!」
+“Getter Cyclone!!”
+
+@15246 Benkei · ベンケイ
+# 触发：使用〈ストロングミサイル〉
+> 「ストロングミサイル!!」
+“Strong Missile!!”
+
+@15247 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし〉
+# 审校：词表必用译名为 Daisetsuzan Oroshi，原文的间隔号是喊招时的拖长强调，不应拆成 Dai-set-su-zan O-ro-shi。
+> 「うおおお!!」
+“Uwooooh!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15248 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし〉
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「うおおおーっ!!」
+“Uwooooh!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15249 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし〉
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「くらえっ!!」
+“Take this!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15250 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし〉
+# 审校：同上，改用词表译名 Daisetsuzan Oroshi。
+> 「行くぞっ!!」
+“Here I go!!”
+---
+> 「大・雪・山おろしぃーっ!!」
+“Daisetsuzan Oroshi!!”
+
+@15251 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 1/2 句）
+> 「くらえっ!!」
+“Take this!!”
+
+@15252 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 2/2 句）
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15253 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 1/2 句）
+> 「これでもくらえっ!!」
+“Try this one!!”
+
+@15254 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 2/2 句）
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15255 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 1/2 句）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「こいつでとどめだっ!!」
+“This one’s the finisher!!”
+
+@15256 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 2/2 句）
+> 「大雪山おろし、
+>  二段返しじゃーい!!」
+“Daisetsuzan Oroshi, second round!!”
+
+@15257 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉
+> 「大雪山おろし、
+>  二段返しぃぃぃーっ!!」
+“Daisetsuzan Oroshi, second rooound!!”
+
+@15258 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 1/2 句）
+> 「おりゃあっ!!」
+“Hraaah!!”
+
+@15259 Benkei · ベンケイ
+# 触发：使用〈大雪山おろし二段返し〉（对话第 2/2 句）
+> 「大雪山おろし、
+>  二段返しじゃーいっ!!」
+“Daisetsuzan Oroshi, second round!!”

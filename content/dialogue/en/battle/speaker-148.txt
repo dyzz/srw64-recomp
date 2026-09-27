@@ -1,91 +1,138 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11960 Kosuke · 小介
+# 触发：攻击（通用，1/5）
 > 「このっ!」
 “Take this!”
 
 @11961 Kosuke · 小介
+# 触发：攻击（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やらせませんよ!」
-“I won't let you!”
+“I won’t let you!”
 
 @11962 Kosuke · 小介
+# 触发：攻击（通用，3/5）
 > 「これでもくらえっ!」
 “Try taking this!”
 
 @11963 Kosuke · 小介
+# 触发：攻击（通用，4/5）
 > 「いくよっ!」
 “Here I go!”
 
 @11964 Kosuke · 小介
+# 触发：攻击（通用，5/5）
 > 「僕だって!」
 “I can do it too!”
 
 @11965 Kosuke · 小介
+# 触发：被击坠（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わあああっ! す、すいません、やられて
 >  しまいました!」
-“Waaah! S-sorry, I've been shot down!”
+“Waaah! S-sorry, I’ve been shot down!”
 
 @11966 Kosuke · 小介
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
+# 审校：“power's way too different”不像英语
 > 「うわああっ! パ、パワーが
 >  違いすぎるっ!」
-“Uwaaah! H-his power's way too different!”
+“Uwaaah! Th-the power gap’s way too big!”
 
 @11967 Kosuke · 小介
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わああっ! や、やられちゃうっ!!」
-“Waaah! I-I'm gonna be shot down!!”
+“Waaah! I-I’m gonna be shot down!!”
 
 @11968 Kosuke · 小介
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「うわあっ! ちずるお姉ちゃん、
 >  豹馬さん、助けてくださいっ!」
 “Uwaah! Chizuru, Hyoma, please help me!”
 
 @11969 Kosuke · 小介
+# 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くうっ! やったなあっ!」
 “Ngh! You did it now!”
 
 @11970 Kosuke · 小介
+# 触发：中伤（剩余 HP 30–90%）（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このっ! まだやられてませんよ!」
-“Wh-why you! I'm not beaten yet!”
+“Wh-why you! I’m not beaten yet!”
 
 @11971 Kosuke · 小介
+# 触发：中伤（剩余 HP 30–90%）（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだやられるもんか!」
-“Not yet! Like I'd go down!”
+“Not yet! Like I’d go down!”
 
 @11972 Kosuke · 小介
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わっ! あ、当たったけど、
 >  大丈夫だよね?」
-“Whoa! I-it hit, but I'm okay, right?”
+“Whoa! I-it hit, but I’m okay, right?”
 
 @11973 Kosuke · 小介
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「こんな攻撃で落ちるもんか!」
 “Like an attack like that would bring me down!”
 
 @11974 Kosuke · 小介
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「この程度のダメージなんて!」
 “Damage like this is nothing!”
 
 @11975 Kosuke · 小介
+# 触发：回避（通用，1/3）
 > 「わあああっ! あ、危なかったぁ」
 “Waaah! Th-that was close.”
 
 @11976 Kosuke · 小介
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わあっ! あた、あた……当たってないや」
-“Whoa! I-it, it... it didn't hit.”
+“Whoa! I-it, it... it didn’t hit.”
 
 @11977 Kosuke · 小介
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わっ、わっ、来るなぁっ!」
-“Wh-whoa, don't come at me!”
+“Wh-whoa, don’t come at me!”
 
 @11978 Kosuke · 小介
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなビームじゃ、このバトルクラフトは
 >  やられませんよ!」
-“A beam like that won't take down this Battle Craft!”
+“A beam like that won’t take down this Battle Craft!”
 
 @11979 Kosuke · 小介
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「あ、あれ? 弾切れなの? 計算
 >  間違ったかな?」
 “H-huh? Out of ammo? Did I miscalculate?”
 
 @11980 Kosuke · 小介
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だ、ダメだ! ここからじゃ届かないよ!」
-“N-no good! It won't reach from here!”
+“N-no good! It won’t reach from here!”
+
+@16793 Kosuke · 小介
+# 触发：使用〈クラフトドリル〉（低优先，可能被通用台词顶掉）
+> 「クラフトドリル!」
+“Craft Drill!”
+
+@16794 Kosuke · 小介
+# 触发：使用〈クラフトミサイル〉（低优先，可能被通用台词顶掉）
+> 「クラフトミサァァイル!」
+“Craft Missiiile!”
+
+@16795 Kosuke · 小介
+# 触发：使用〈クラフトミサイル〉（低优先，可能被通用台词顶掉）
+> 「ミサイル発射!」
+“Missile launch!”

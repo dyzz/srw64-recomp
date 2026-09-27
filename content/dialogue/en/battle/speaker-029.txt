@@ -1,231 +1,340 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @11322 Ehrlich · エルリッヒ
+# 触发：攻击（通用，1/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃させるよ」
-“I'll land a direct hit.”
+“I’ll land a direct hit.”
 
 @11323 Ehrlich · エルリッヒ
+# 触发：攻击（通用，2/14）
 > 「敵は、倒すさ」
 “The enemy goes down.”
 
 @11324 Ehrlich · エルリッヒ
+# 触发：攻击（通用，3/14）
 > 「さぁ、いくぞっ!」
 “Now, here I come!”
 
 @11325 Ehrlich · エルリッヒ
+# 触发：攻击（通用，4/14）
 > 「その程度の動きではな」
 “Not with moves like that.”
 
 @11326 Ehrlich · エルリッヒ
+# 触发：攻击（通用，5/14）
 > 「遅い!」
 “Too slow!”
 
 @11327 Ehrlich · エルリッヒ
+# 触发：攻击（通用，6/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「笑わせるな!」
-“Don't make me laugh!”
+“Don’t make me laugh!”
 
 @11328 Ehrlich · エルリッヒ
+# 触发：攻击（通用，7/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落としてみせる」
-“I'll shoot you down.”
+“I’ll shoot you down.”
 
 @11329 Ehrlich · エルリッヒ
+# 触发：攻击（通用，8/14）
 > 「よくも出てくる」
 “You dare show yourself.”
 
 @11330 Ehrlich · エルリッヒ
+# 触发：攻击（通用，9/14）
 > 「私はやってみせねばならん」
 “I must see this through.”
 
 @11331 Ehrlich · エルリッヒ
+# 触发：攻击（通用，10/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが決めさせてもらう」
-“Sorry, but I'll finish this.”
+“Sorry, but I’ll finish this.”
 
 @11332 Ehrlich · エルリッヒ
+# 触发：攻击（通用，11/14）
 > 「そこだな」
 “Right there.”
 
 @11333 Ehrlich · エルリッヒ
+# 触发：攻击（通用，12/14）
 > 「この体勢ならば、いけるな」
 “From this position, I can do it.”
 
 @11334 Ehrlich · エルリッヒ
+# 触发：攻击（通用，13/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私の前に出てきたことを
 >  後悔させてやろう!」
-“I'll make you regret crossing my path!”
+“I’ll make you regret crossing my path!”
 
 @11335 Ehrlich · エルリッヒ
+# 触发：攻击（通用，14/14）
 > 「ターゲット捕捉……落ちろ!」
 “Target locked... fall!”
 
 @11336 Ehrlich · エルリッヒ
+# 触发：被击坠（通用，1/4）
+# 审校：大小写
 > 「う、うおぉぉぉぉぉ!?」
-“U-uwAAAAAAH?!”
+“U-uwaaaaaah?!”
 
 @11337 Ehrlich · エルリッヒ
+# 触发：被击坠（通用，2/4）
+# 审校：被击坠情境
 > 「くっ、や、やられた……のか」
-“Tch, I-I've been... hit...”
+“Tch, s-so I’ve been... beaten...”
 
 @11338 Ehrlich · エルリッヒ
+# 触发：被击坠（通用，3/4）
 > 「い、いかん!?」
 “Th-this is bad?!”
 
 @11339 Ehrlich · エルリッヒ
+# 触发：被击坠（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なにっ! げ、限界か!?」
-“What?! A-are we at our limit?!”
+“What?! I-is this the limit?!”
 
 @11340 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
 > 「ぐうぅぅっ……
 >  この私が、直撃をくらう!?」
 “Guh... I, of all people, took a direct hit?!”
 
 @11341 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
 > 「な、なにっ!? これほどのものとは!」
 “W-what?! This much power?!”
 
 @11342 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
 > 「くっ……ぬかったな、私も……」
 “Tch... I let my guard down too...”
 
 @11343 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そう簡単に退くわけには!」
-“I can't just retreat so easily!”
+“I can’t just retreat so easily!”
 
 @11344 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
 > 「つ、強い……だがっ!」
 “S-strong... but still!”
 
 @11345 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くぅっ、出力があがらんとは!」
-“Guh, the output won't rise?!”
+“Guh, the output won’t rise?!”
 
 @11346 Ehrlich · エルリッヒ
+# 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
 > 「や、やられるのか……私が!?」
 “A-am I going down... me?!”
 
 @11347 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/9）
 > 「できる敵だ……手強い!」
 “A capable foe... tough!”
 
 @11348 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さ、さすがにやるな!」
-“A-as expected, you're good!”
+“A-as expected, you’re good!”
 
 @11349 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/9）
+# 审校：できる 是“有本事”，不是“做得到”
 > 「で、できる!? こいつ!」
-“Y-you can do that?! This one!”
+“Th-this one’s... good?!”
 
 @11350 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、やらせはせんよ!」
-“Tch, I won't let you!”
+“Tch, I won’t let you!”
 
 @11351 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上やってもらっては!」
-“I can't let you do any more!”
+“I can’t let you do any more!”
 
 @11352 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，6/9）
 > 「ぬぅっ、私をここまで
 >  本気にさせるとはなっ!」
 “Ngh, to make me get this serious!”
 
 @11353 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「少しはできるようだな……」
-“Seems you're somewhat capable...”
+“Seems you’re somewhat capable...”
 
 @11354 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，8/9）
 > 「こ、これほどのパワーとは!」
 “Th-this much power?!”
 
 @11355 Ehrlich · エルリッヒ
+# 触发：中伤（剩余 HP 30–90%）（通用，9/9）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私が押されている!?」
-“I'm being pushed back?!”
+“I’m being pushed back?!”
 
 @11356 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度で止められると思われては
 >  困るな」
-“I'd hate for you to think that's enough to stop me.”
+“I’d hate for you to think that’s enough to stop me.”
 
 @11357 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵をなめると痛い目にあうということ
 >  を、教えてやろう!」
-“I'll teach you that underestimating the enemy costs you dearly!”
+“I’ll teach you that underestimating the enemy costs you dearly!”
 
 @11358 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「ふん、この程度か」
 “Hmph, is that all?”
 
 @11359 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「甘いな」
 “Too naive.”
 
 @11360 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かぬよ、そんな攻撃は」
-“That attack won't work on me.”
+“That attack won’t work on me.”
 
 @11361 Ehrlich · エルリッヒ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なめてもらっては困る!」
-“Don't underestimate me!”
+“Don’t underestimate me!”
 
 @11362 Ehrlich · エルリッヒ
+# 触发：回避（通用，1/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それが本気だというのなら、
 >  私には勝てん!」
-“If that's your best, you can't beat me!”
+“If that’s your best, you can’t beat me!”
 
 @11363 Ehrlich · エルリッヒ
+# 触发：回避（通用，2/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やはりその程度か」
-“Just as I thought, that's all you've got.”
+“Just as I thought, that’s all you’ve got.”
 
 @11364 Ehrlich · エルリッヒ
+# 触发：回避（通用，3/8）
 > 「見え見えだな」
 “I saw that coming a mile away.”
 
 @11365 Ehrlich · エルリッヒ
+# 触发：回避（通用，4/8）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それで終わりか!?」
-“Is that all you've got?!”
+“Is that all you’ve got?!”
 
 @11366 Ehrlich · エルリッヒ
+# 触发：回避（通用，5/8）
 > 「うかつだな」
 “Careless.”
 
 @11367 Ehrlich · エルリッヒ
+# 触发：回避（通用，6/8）
 > 「甘すぎる」
 “Too soft.”
 
 @11368 Ehrlich · エルリッヒ
+# 触发：回避（通用，7/8）
 > 「その程度ではな」
 “Not with that.”
 
 @11369 Ehrlich · エルリッヒ
+# 触发：回避（通用，8/8）
 > 「狙いが甘いのだよ」
 “Your aim is sloppy.”
 
 @11370 Ehrlich · エルリッヒ
+# 触发：攻击无效（护罩／装甲）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなのだがな!」
-“That's pointless!”
+“That’s pointless!”
 
 @11371 Ehrlich · エルリッヒ
+# 触发：攻击无效（护罩／装甲）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この機体にはきかんな!」
-“It won't work on this machine!”
+“It won’t work on this machine!”
 
 @11372 Ehrlich · エルリッヒ
+# 触发：攻击无效（护罩／装甲）（通用，3/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ、この程度なら!」
-“Hmph, if that's all!”
+“Hmph, if that’s all!”
 
 @11373 Ehrlich · エルリッヒ
+# 触发：攻击无效（护罩／装甲）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームなど効きはせんよ」
-“Beams won't do a thing to me.”
+“Beams won’t do a thing to me.”
 
 @11374 Ehrlich · エルリッヒ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちいっ、こんなときに!」
 “Tch, of all times!”
 
 @11375 Ehrlich · エルリッヒ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：更自然
 > 「弾切れ!? うかつだったか」
-“Out of ammo?! Was I careless?”
+“Out of ammo?! How careless of me.”
 
 @11376 Ehrlich · エルリッヒ
+# 触发：射程外，无法反击（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ええい、これでは届かん!」
-“Damn, it won't reach!”
+“Damn, it won’t reach!”
 
 @11377 Ehrlich · エルリッヒ
+# 触发：射程外，无法反击（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵の射程距離がこれほどとは!」
-“The enemy's range is this far?!”
+“The enemy’s range is this far?!”
+
+@16426 Ehrlich · エルリッヒ
+# 触发：对手驾驶员〈アーク〉
+> 「なぜ君はそうも戦える!?」
+“Why can you still fight like that?!”
+
+@16427 Ehrlich · エルリッヒ
+# 触发：对手驾驶员〈アーク〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「悪いが、落とさせてもらう!」
+“Sorry, but I’m taking you down!”
+
+@16428 Ehrlich · エルリッヒ
+# 触发：对手驾驶员〈アーク〉
+> 「いくぞ!」
+“Here I come!”
+
+@16429 Ehrlich · エルリッヒ
+# 触发：对手驾驶员〈アーク〉
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+> 「戦いに出るのなら……
+>  覚悟を決めろ!」
+“If you’re going into battle, then steel yourself!”

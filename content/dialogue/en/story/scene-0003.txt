@@ -94,9 +94,10 @@ When do you think they'll sniff out this place?”
 and probably the Specials.”
 
 @17633 Hamilton · ハミルトン
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「地球人のくせにムゲ野郎どもに
 >  くっついた、胸くそ悪い
-“Those Earthlings who've thrown in with the Muge bastards — disgusting
+“Those Earthlings who've thrown in with the Muge bastards... disgusting
 ---
 >  裏切り者どもか。奴らには
 >  うってつけの役回りだな
@@ -208,13 +209,14 @@ This was supposed to be an easy mission, too...”
 “Reinforcements... Looks like this place is going to be my grave...”
 
 @17647 Rish · リッシュ（本话主角的对手）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「おいそこの。俺はスペシャルズの
 >  {PartnerFull}だ
 “Hey, you there. I'm {PartnerFull} of the Specials.
 ---
 >  降りるか、やるのか、選ばせてやる。
 >  もっともどちらにしても、命の保証は
-Surrender or fight — I'll let you choose. Though either way, I won't
+Surrender or fight... I'll let you choose. Though either way, I won't
 ---
 >  してやらんがな」
 guarantee your life.”
@@ -229,12 +231,13 @@ guarantee your life.”
 You're going to keep me company in my final battle!”
 
 @17649 Rish · リッシュ（本话主角的对手）
+# 审校：名前を聞いておいてやる
 > 「女? 女だと……!?
 >  ふん、いい覚悟だ。気に入ったぜ
 “A woman? A woman...?! Hmph, good resolve. I like it.
 ---
 >  名前を聞いておいてやる」
-I'll ask your name.”
+Tell me your name.”
 
 @17650 Selain · セレイン（本话主角）
 > 「……{HeroFull}だ」
@@ -279,13 +282,15 @@ That's how we survived the One Year War, after all.”
 “Yes, Captain Quattro.”
 
 @17656 Quattro · クワトロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「そこのパイロット、聞こえるか?
 >  私は地球解放戦線機構の
 “Pilot over there, can you hear me? I'm Captain Quattro Bajeena of the
 ---
 >  クワトロ・バジーナ大尉だ。
 >  これより援護するが、まだやれそうか?」
-Liberation Front of the Earth. We'll cover you from here — can you still fight?”
+Liberation Front of the Earth. We'll cover you from here... can you still fight?”
 
 @17657 Selain · セレイン（本话主角）
 > 「……大丈夫だ。
@@ -319,6 +324,8 @@ Did that one unit drive them off?”
 “Captain, that's the unit.”
 
 @17662 Quattro · クワトロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「そのようだ。そこのパイロット、
 >  聞こえるか? 私は
 “So it seems. Pilot over there, can you hear me? I'm
@@ -332,7 +339,7 @@ Captain Quattro Bajeena of the Liberation Front of the Earth.
 There are unmanned units operating nearby on other business. We'll cover
 ---
 >  援護するが、動けるか」
-your escape — can you move?”
+your escape... can you move?”
 
 @17663 Selain · セレイン（本话主角）
 > 「……大丈夫だ。感謝する、
@@ -345,9 +352,10 @@ your escape — can you move?”
 “Good. Let's go, Lieutenant Aboly, Lieutenant Roberto.”
 
 @17665 Rish · リッシュ（本话主角的对手）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちぃっ、まいったぜ。
 >  しかたがねぇ、ここは撤退するぞっ!」
-“Tch, you've got me. Can't help it — we're retreating!”
+“Tch, you've got me. Can't help it... we're retreating!”
 
 @17666 Rish · リッシュ（本话主角的对手）
 > 「まいったぜ、こりゃ。
@@ -358,13 +366,14 @@ your escape — can you move?”
 Let's meet again.”
 
 @17667 Rish · リッシュ（本话主角的对手）
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「ちぃっ、まいったぜ。
 >  レジスタンスの新型が出てきたのは
 “Tch, you've got me. The Resistance rolling out a new model was
 ---
 >  予想外だったな。しかたがねぇ、
 >  ここは撤退するぞっ!」
-unexpected. Can't help it — we're retreating!”
+unexpected. Can't help it... we're retreating!”
 
 @17668 Rish · リッシュ（本话主角的对手）
 > 「まいったぜ、こりゃ。
@@ -423,12 +432,13 @@ since you've acquired the prototype. If we'd been a little faster, we might have
 “Captain, we'd better hurry or we're in trouble.”
 
 @17679 Quattro · クワトロ
+# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「そうだな。我々はこれから仲間と
 >  合流する。君の機体の修理も
 “Right. We're going to rendezvous with our comrades now. We should be able to
 ---
 >  できるはずだが、どうする?」
-repair your unit too — what do you say?”
+repair your unit too... what do you say?”
 
 @17680 Selain · セレイン（本话主角）
 > 「いきます。1人で生き残ってしまい

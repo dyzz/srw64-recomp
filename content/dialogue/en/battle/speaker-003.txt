@@ -1,211 +1,288 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12772 Schwarz · シュバルツ
+# 触发：攻击（通用，1/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! どうした! どうしたっ!」
-“What's wrong?! What's wrong?! What's wrong?!”
+“What’s wrong?! What’s wrong?! What’s wrong?!”
 
 @12773 Schwarz · シュバルツ
+# 触发：攻击（通用，2/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここらで引導を渡してくれるわ!!」
-“I'll put you out of your misery right here!!”
+“I’ll put you out of your misery right here!!”
 
 @12774 Schwarz · シュバルツ
+# 触发：攻击（通用，3/14）
 > 「はああああっ!!」
 “Haaaaaah!!”
 
 @12775 Schwarz · シュバルツ
+# 触发：攻击（通用，4/14）
 > 「いくぞっ!! うりゃぁぁぁぁぁぁっ!!」
 “Here I come!! Hraaaah!!”
 
 @12776 Schwarz · シュバルツ
+# 触发：攻击（通用，5/14）
 > 「とりゃぁぁぁっ!!」
 “Hraaah!!”
 
 @12777 Schwarz · シュバルツ
+# 触发：攻击（通用，6/14）
 > 「そこだっ!!」
 “Right there!!”
 
 @12778 Schwarz · シュバルツ
+# 触发：攻击（通用，7/14）
 > 「これまでだっ!!」
 “This is the end!!”
 
 @12779 Schwarz · シュバルツ
+# 触发：攻击（通用，8/14）
 > 「おららららららっ!!」
 “Orarararara!!”
 
 @12780 Schwarz · シュバルツ
+# 触发：攻击（通用，9/14）
 > 「それ! それ! それ! それっ!!」
 “Take this! And this! And this! And this!!”
 
 @12781 Schwarz · シュバルツ
+# 触发：攻击（通用，10/14）
 > 「バカ者ぉぉぉっ!!」
 “You foooool!!”
 
 @12782 Schwarz · シュバルツ
+# 触发：攻击（通用，11/14）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様の思う様にはさせんぞ!!」
-“I won't let you have your way!!”
+“I won’t let you have your way!!”
 
 @12783 Schwarz · シュバルツ
+# 触发：攻击（通用，12/14）
 > 「愚か者!!」
 “Fool!!”
 
 @12784 Schwarz · シュバルツ
+# 触发：攻击（通用，13/14）
 > 「バカ者っ!!」
 “Idiot!!”
 
 @12785 Schwarz · シュバルツ
+# 触发：攻击（通用，14/14）
 > 「くらえっ!」
 “Take this!”
 
 @12786 Schwarz · シュバルツ
+# 触发：被击坠（通用，1/5）
 > 「あまかったか……!?」
 “Was I too soft...?!”
 
 @12787 Schwarz · シュバルツ
+# 触发：被击坠（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまったっ!!」
-“D-Damn it!!”
+“D-damn it!!”
 
 @12788 Schwarz · シュバルツ
+# 触发：被击坠（通用，3/5）
 > 「くっ! しまったっ!!」
 “Ngh! Damn it!!”
 
 @12789 Schwarz · シュバルツ
+# 触发：被击坠（通用，4/5）
 > 「くっ! ぬかった!」
 “Ngh! I let my guard down!”
 
 @12790 Schwarz · シュバルツ
+# 触发：被击坠（通用，5/5）
 > 「むうっ! 私も修行が足りんな」
 “Hmph! I still have much to learn.”
 
 @12791 Schwarz · シュバルツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「バカな?」
 “Impossible?”
 
 @12792 Schwarz · シュバルツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くくっ……! この凄まじいパワー、
 >  ただ者ではないな!?」
-“Heh heh...! This incredible power, you're no ordinary foe?!”
+“Heh heh...! This incredible power, you’re no ordinary foe?!”
 
 @12793 Schwarz · シュバルツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
+# 审校：この程度ならまだいける 指伤势，不是速度
 > 「くっ!
 >  だが、この程度ならまだいける!!」
-“Ngh! But I can still keep going at this rate!!”
+“Ngh! But I can still take this much!!”
 
 @12794 Schwarz · シュバルツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「むうっ! やる!」
 “Hmph! Not bad!”
 
 @12795 Schwarz · シュバルツ
+# 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ! このままでは機体がもたんか!」
-“Tch! At this rate my unit won't hold!”
+“Tch! At this rate my unit won’t hold!”
 
 @12796 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では私は、やられん!!」
-“That won't be enough to take me down!!”
+“That won’t be enough to take me down!!”
 
 @12797 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/10）
 > 「くっ! くらったか!?」
 “Ngh! Did I take a hit?!”
 
 @12798 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，3/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! まだだ! まだやられはせん!!」
-“Ngh! Not yet! I'm not going down yet!!”
+“Ngh! Not yet! I’m not going down yet!!”
 
 @12799 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，4/10）
 > 「くっ! ま、まだいける!」
 “Ngh! I-I can still go!”
 
 @12800 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，5/10）
 > 「このくらい!」
 “This is nothing!”
 
 @12801 Schwarz · シュバルツ
-# 审校：「ツメがあまい」是惯用语，指经验不足、不够老练，不是字面的爪子软。
+# 触发：中伤（剩余 HP 30–90%）（通用，6/10）
+# 审校：ツメが甘い＝收尾不够狠
 > 「いい腕だ! だが、ツメがあまいぞっ!!」
-“Good skill! But you're still green!!”
+“Good skill! But your finish is sloppy!!”
 
 @12802 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，7/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むっ! 少しは出来るな!」
-“Hmph! You've got some skill!”
+“Hmph! You’ve got some skill!”
 
 @12803 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 > 「よくぞ、この私に当てた!」
 “You actually managed to hit me!”
 
 @12804 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，9/10）
 > 「うっ!! 当たったか……」
 “Ugh!! So it hit...”
 
 @12805 Schwarz · シュバルツ
+# 触发：中伤（剩余 HP 30–90%）（通用，10/10）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬっ! だが、まだ落ちはせんぞ!」
-“Ngh! But I won't fall yet!”
+“Ngh! But I won’t fall yet!”
 
 @12806 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/7）
+# 审校：なんの＝这算不了什么
 > 「なんのっ!!」
-“As if!!”
+“This is nothing!!”
 
 @12807 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では私は、倒せんぞ!!」
-“That won't be enough to defeat me!!”
+“That won’t be enough to defeat me!!”
 
 @12808 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It's useless!!”
+“It’s useless!!”
 
 @12809 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、そんなものか!」
-“What's wrong, is that all you've got?”
+“What’s wrong, is that all you’ve got?”
 
 @12810 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度とはな!」
-“So that's all you amount to!”
+“So that’s all you amount to!”
 
 @12811 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/7）
 > 「笑止っ!」
 “Ridiculous!”
 
 @12812 Schwarz · シュバルツ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，7/7）
 > 「本気で来いっ!!」
 “Come at me for real!!”
 
 @12813 Schwarz · シュバルツ
-# 审校：「あまい」在这里指对手太嫩，不是“soft”。
+# 触发：回避（通用，1/5）
+# 审校：回避的あまい，Too green 不对味
 > 「あまいぞっ!!」
-“Too green!!”
+“Naive!!”
 
 @12814 Schwarz · シュバルツ
-# 审校：同上，「あまい」应译为“green”而非“soft”。
+# 触发：回避（通用，2/5）
+# 审校：同上
 > 「あまいなっ!私はここだっ!!」
-“Too green! I'm right here!!”
+“Naive! I’m right here!!”
 
 @12815 Schwarz · シュバルツ
+# 触发：回避（通用，3/5）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あきらめが悪いぞ!」
-“You don't know when to give up!”
+“You don’t know when to give up!”
 
 @12816 Schwarz · シュバルツ
+# 触发：回避（通用，4/5）
+# 审校：拖长音用——，叠词更像喊话
 > 「未熟、未熟ゥゥゥゥッ!!」
-“Amateur, amateurrr!!”
+“Amateur! Amateuuur!!”
 
 @12817 Schwarz · シュバルツ
-# 审校：同上，「あまい」应译为“green”而非“soft”。
+# 触发：回避（通用，5/5）
+# 审校：回避的あまい
 > 「あまい、あまいぞっ!!」
-“Green, too green!!”
+“Naive, too naive!!”
 
 @12818 Schwarz · シュバルツ
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームは、効きはせん!」
-“Beams won't work on me!”
+“Beams won’t work on me!”
 
 @12819 Schwarz · シュバルツ
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「無駄無駄無駄ぁぁぁぁっ!!」
 “Useless, useless, useless!!”
 
 @12820 Schwarz · シュバルツ
+# 触发：弹药／EN 不足，无法反击（通用，1/2）
+# 审校：弹尽情境：打不了了吗
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, I can’t strike back?!”
 
 @12821 Schwarz · シュバルツ
+# 触发：弹药／EN 不足，无法反击（通用，2/2）
+# 审校：弹尽情境下的自责
 > 「不覚……」
-“A blunder...”
+“Careless of me...”
 
 @12822 Schwarz · シュバルツ
+# 触发：射程外，无法反击（通用，1/1）
 > 「むっ!届かん!」
 “Hmph! Out of range!”
+
+@17197 Schwarz · シュバルツ
+# 触发：使用〈シュツルムウントドランク〉
+> 「シュトゥルム! ウント! ドランクゥッ!」
+“Sturm! Und! Drang!”

@@ -1,153 +1,201 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @8108 Rezin · レズン
+# 触发：攻击（通用，1/13）
 > 「はっ!」
 “Ha!”
 
 @8109 Rezin · レズン
+# 触发：攻击（通用，2/13）
 > 「落ちなっ!!」
 “Fall!”
 
 @8110 Rezin · レズン
+# 触发：攻击（通用，3/13）
 > 「もらったっ!!」
 “Got you!”
 
 @8111 Rezin · レズン
+# 触发：攻击（通用，4/13）
 > 「アハハハハ、落ちなよっ!!」
 “Ahahahaha, fall!”
 
 @8112 Rezin · レズン
+# 触发：攻击（通用，5/13）
 > 「くらいなよ!!」
 “Take this!”
 
 @8113 Rezin · レズン
+# 触发：攻击（通用，6/13）
 > 「かんねんしなっ!!」
 “Give it up!”
 
 @8114 Rezin · レズン
+# 触发：攻击（通用，7/13）
 > 「もらったっ!!」
 “Got you!”
 
 @8115 Rezin · レズン
+# 触发：攻击（通用，8/13）
+# 审校：对敌喊话用 you
 > 「アタシだけで掃除してやるよ!」
-“I'll wipe them all out myself!”
+“I’ll clean you all up by myself!”
 
 @8116 Rezin · レズン
+# 触发：攻击（通用，9/13）
+# 审校：削减数量太书面
 > 「こういうときに数を減らす!」
-“This is when you thin out their numbers!”
+“Now’s the time to thin your numbers!”
 
 @8117 Rezin · レズン
+# 触发：攻击（通用，10/13）
 > 「みーつけた」
 “Found you.”
 
 @8118 Rezin · レズン
+# 触发：攻击（通用，11/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「とりついた!」
-“I'm on you!”
+“I’m on you!”
 
 @8119 Rezin · レズン
+# 触发：攻击（通用，12/13）
 > 「あれかっ!?」
 “That one?!”
 
 @8120 Rezin · レズン
+# 触发：攻击（通用，13/13）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ニュータイプだ、強化人間だって、
 >  敵の足を止めてくれなくちゃさ!」
-“Newtype, enhanced human, whatever—you've gotta stop the enemy in their tracks!”
+“Newtype, enhanced human, whatever... you’ve gotta stop the enemy in their tracks!”
 
 @8121 Rezin · レズン
+# 触发：被击坠（通用，1/3）
 > 「こ、このアタシが直撃をうけたのか!?」
 “I-I took a direct hit?!”
 
 @8122 Rezin · レズン
+# 触发：被击坠（通用，2/3）
 > 「バカな!? このアタシが!?」
 “Impossible! Me?!”
 
 @8123 Rezin · レズン
+# 触发：被击坠（通用，3/3）
 > 「直撃だと!?」
 “A direct hit?!”
 
 @8124 Rezin · レズン
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いかん! やられる!?」
-“Damn! I'm going down?!”
+“Damn! I’m going down?!”
 
 @8125 Rezin · レズン
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ダメージがでかすぎるか!?」
-“Ngh! That's too much damage?!”
+“Ngh! That’s too much damage?!”
 
 @8126 Rezin · レズン
+# 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「なんなんだ! この力は!?」
 “What is this power?!”
 
 @8127 Rezin · レズン
+# 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「アタシが直撃を受けている!?」
-“I'm taking a direct hit?!”
+“I’m taking a direct hit?!”
 
 @8128 Rezin · レズン
+# 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：原文“ちょこまかと”形容对方灵活闪躲，初稿“you little pest”带有额外贬义且不够贴切，改为更贴近原意。
 > 「やるじゃないか、ちょこまかと!」
 “Not bad, darting around like that!”
 
 @8129 Rezin · レズン
+# 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「くっ! やるじゃないか!」
 “Ngh! Not bad!”
 
 @8130 Rezin · レズン
+# 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「くっ!! やるなっ!!」
 “Ngh! Not bad!”
 
 @8131 Rezin · レズン
+# 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「なにぃっ!?」
 “What?!”
 
 @8132 Rezin · レズン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「なにっ!?」
 “What?!”
 
 @8133 Rezin · レズン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「うっ!」
 “Ugh!”
 
 @8134 Rezin · レズン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「ハン! そんなものかい!」
 “Hah! Is that all?!”
 
 @8135 Rezin · レズン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「ハハハハ、その程度かいっ!!」
 “Hahahaha, is that all?!”
 
 @8136 Rezin · レズン
+# 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「その程度かい!!」
 “Is that all?!”
 
 @8137 Rezin · レズン
-# 审校：原文“なまいきやっちゃって”是嘲讽对方狂妄，初稿“Don't get cocky!”是命令式，改为更贴近原文语气的陈述式。
+# 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なまいきやっちゃって!」
-“Getting cocky, aren't you!”
+“Getting cocky, aren’t you!”
 
 @8138 Rezin · レズン
+# 触发：回避（通用，1/3）
 > 「どこを狙ってる!」
 “What are you aiming at?!”
 
 @8139 Rezin · レズン
+# 触发：回避（通用，2/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「みえみえなんだよ!!」
-“It's so obvious!”
+“It’s so obvious!”
 
 @8140 Rezin · レズン
+# 触发：回避（通用，3/3）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたるかい!」
-“As if that'll hit!”
+“As if that’ll hit!”
 
 @8141 Rezin · レズン
-# 审校：原文“ビームは効かないっていってる!!”强调“我说过了”，初稿缺少“I told you”的强调，补充逗号使语气更自然。
+# 触发：攻击无效（护罩／装甲）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビームは効かないっていってる!!」
-“I told you, beams don't work!”
+“I told you, beams don’t work!”
 
 @8142 Rezin · レズン
+# 触发：攻击无效（护罩／装甲）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないんだよ!!」
-“It doesn't work!”
+“It doesn’t work!”
 
 @8143 Rezin · レズン
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：弹尽情境下的だめか
 > 「くっ、だめか!?」
-“Ngh, no good?!”
+“Ngh, can’t fire?!”
 
 @8144 Rezin · レズン
+# 触发：射程外，无法反击（通用，1/1）
 > 「くっ! 遠すぎるか!」
 “Ngh! Too far?!”

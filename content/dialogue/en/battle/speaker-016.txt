@@ -1,81 +1,107 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @12955 Sijima · シジーマ
+# 触发：攻击（通用，1/7）
 > 「ここがお前の死に場所よ!」
 “This is where you die!”
 
 @12956 Sijima · シジーマ
-# 审校：“struggle” 改为动名词“struggling”更自然
+# 触发：攻击（通用，2/7）
+# 审校：ってば＝都说了
 > 「ムダなあがきはよしなさいってば」
-“Just give up the pointless struggling, I'm telling you.”
+“I told you, quit your pointless struggling.”
 
 @12957 Sijima · シジーマ
+# 触发：攻击（通用，3/7）
 > 「もらったわ」
 “Got you.”
 
 @12958 Sijima · シジーマ
-# 审校：“keep on attacking” 可接受，但“pressing the attack”更贴合战斗语气
+# 触发：攻击（通用，4/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このまま攻めさせてもらうわ!」
-“I'll just keep pressing the attack!”
+“I’ll just keep pressing the attack!”
 
 @12959 Sijima · シジーマ
+# 触发：攻击（通用，5/7）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「とどめを刺してあげるわ!」
-“I'll finish you off!”
+“I’ll finish you off!”
 
 @12960 Sijima · シジーマ
+# 触发：攻击（通用，6/7）
 > 「これで、最後よ」
 “This is the end.”
 
 @12961 Sijima · シジーマ
+# 触发：攻击（通用，7/7）
 # 审校：拟声词拼写统一为更接近原文的“Cheiyaaah”
 > 「ちぇぃやぁぁぁ!」
 “Cheiyaaah!”
 
 @12962 Sijima · シジーマ
+# 触发：被击坠（通用，1/1）
 > 「ぎゃぁぁぁぁぁぁぁぁ!!」
 “Gyaaaaaaaaah!!”
 
 @12963 Sijima · シジーマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このままじゃやられるわ……」
-“A-At this rate I'll be done for...”
+“A-at this rate I’ll be done for...”
 
 @12964 Sijima · シジーマ
+# 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「うぎゃぁぁぁぁぁ」
 “Ugyaaaaaaaa!”
 
 @12965 Sijima · シジーマ
+# 触发：中伤（剩余 HP 30–90%）（通用，1/2）
 > 「こ、こいつぅ!?」
 “Wh-why you?!”
 
 @12966 Sijima · シジーマ
+# 触发：中伤（剩余 HP 30–90%）（通用，2/2）
 > 「なんですってぇ!?」
 “What did you say?!”
 
 @12967 Sijima · シジーマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 > 「ムダなことをするわねぇ」
 “What a pointless thing to do.”
 
 @12968 Sijima · シジーマ
+# 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないわよ」
-“That won't work on me.”
+“That won’t work on me.”
 
 @12969 Sijima · シジーマ
-# 审校：“you missed” 偏离“あたらないわ”的持续状态，改为“you can't hit me”
+# 触发：回避（通用，1/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふふふふ、あたらないわ」
-“Fufufufu, you can't hit me.”
+“Fufufufu, you can’t hit me.”
 
 @12970 Sijima · シジーマ
+# 触发：回避（通用，2/2）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お前の攻撃はあたらないわ」
-“Your attacks won't hit me.”
+“Your attacks won’t hit me.”
 
 @12971 Sijima · シジーマ
+# 触发：攻击无效（护罩／装甲）（通用，1/1）
+# 审校：攻击无效情境（打中但零伤害）
 > 「お前の攻撃はあたらないわ」
-“Your attacks won't hit me.”
+“Your attacks can’t touch me.”
 
 @12972 Sijima · シジーマ
+# 触发：弹药／EN 不足，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「は、反撃ができない!?」
-“I-I can't counterattack?!”
+“I-I can’t counterattack?!”
 
 @12973 Sijima · シジーマ
+# 触发：射程外，无法反击（通用，1/1）
+# 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「と、とどかないわ」
-“I-It won't reach.”
+“I-it won’t reach.”

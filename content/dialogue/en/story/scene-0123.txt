@@ -40,13 +40,13 @@
 “A woman... She's been put to sleep with drugs? No doubt about it, it's her. What a horrible thing to do.”
 
 @50629 Bask · バスク
-# 待译：机翻未采用（第 1 页的占位符应为 ['{HeroMech}']，实际为 []）
-# 草稿第 1 页：“What's this, where's the guard detail?! Isn't that the
-# 草稿第 2 页：[主角机体名] over there?!”
+# 审校：补译：原稿占位符错页
 > 「なんだ、警備隊はどうしたか!
 >  あそこにおるのは{HeroMech}の
+“What's this? Where's the guard detail?! That over there is one of the {HeroMech}'s
 ---
 >  奴ではないか!」
+people, isn't it?!”
 
 @50630 Ehrlich · エルリッヒ（按段落 3DD1）
 > (あれは……ソルデファーだと!? バカな、
@@ -54,9 +54,10 @@
 (That's... the Soldifar?! Impossible, why is that boy here...)
 
 @50631 Specials · スペシャルズ
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バスク特佐、警備隊は全滅の
 >  模様です!」
-“Colonel Bask, the guard detail appears to have been wiped out!”
+“Special Colonel Bask, the guard detail appears to have been wiped out!”
 
 @50632 Bask · バスク
 > 「ふざけおって! MS隊発進させろ!
@@ -96,8 +97,9 @@
 this is?!”
 
 @50639 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：「どういうことだ」在此处是追问对方话里的含义，用“What are you talking about”语气过冲，改为更贴合冷静军官口吻的“What do you mean”。
 > 「なに? どういうことだ、少年」
-“What? What are you talking about, boy?”
+“What? What do you mean, boy?”
 
 @50640 Ark · アーク（按段落 3DD1）
 > 「ここは、あんたの恋人が軟禁されて
@@ -121,8 +123,9 @@ going to obey the man who did that, just to protect this place?!”
 “Gah, what are you doing?!”
 
 @50643 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「……特佐、いまの話は事実ですか」
-“...Colonel, is what he just said true?”
+“...Special Colonel, is what he just said true?”
 
 @50644 Bask · バスク
 > 「黙れ! 貴様は黙って命令を
@@ -172,8 +175,9 @@ will be killed by him!”
 prove it by protecting your own woman!”
 
 @50651 Bask · バスク
+# 审校：Bask 对部下的命令应更粗暴直接，原译“as you are”语气偏弱且不自然。
 > 「よぉし、そのままやってしまえ!」
-“All right, just finish him off as you are!”
+“All right, finish him off right now!”
 
 @50652 Ark · アーク（按段落 3DD1）
 > 「くっ……」
@@ -230,12 +234,13 @@ Don't let him leave alive! Kill the woman too!”
 You've done me a great favor, boy.”
 
 @50663 主角
+# 审校：引号
 > 「{HeroFull}です。
 >  名乗るのが遅れて悪かったけど
 “It's {HeroFull}. Sorry I was slow to introduce myself,
 ---
 >  その少年ってのはやめてもらいたいな」
-but I'd appreciate it if you'd stop calling me 'boy.'”
+but I'd appreciate it if you'd stop calling me ‘boy’.”
 
 @50664 对手
 > 「すまん。しかし……まさか君がこのような
