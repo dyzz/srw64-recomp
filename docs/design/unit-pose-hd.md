@@ -66,7 +66,7 @@
 
 ## 定案与接入（2026-09-26）
 
-14 个本地模型（[`esrgan_pose.py`](../../tools/hd_ai/esrgan_pose.py)，输出 `assets/hd-ai/unit-poses/esrgan-2`）在三台机体上对比后，**定案：4x-UltraSharpV2 与 4x-PixelPerfectV4 各半混合**。UltraSharpV2（DAT）细节最多、线条最干净，但用户觉得稍锐；六种减锐做法（一趟加 Lanczos、1.5 / 2.5 px 高斯、与 BS-Deviance / PixelPerfectV4 各半混合，`esrgan-5`）里选了 PixelPerfectV4 混合。淘汰：AnimeSharpV4_RCAN、HFA2k_realplksr（发灰重影）、Drawimation（糊）、NumericFrames（过黑）、Faithful-Lite（保留像素感）、两个 2x AnimeSharp（三趟叠加发软或出颗粒）。
+14 个本地模型（[`esrgan_pose.py`](../../tools/hd_ai/esrgan_pose.py)，输出 `assets/hd-ai/unit-poses/esrgan-2`）在三台机体上对比后，**定案：4x-UltraSharpV2 与 4x-PixelPerfectV4 各半混合**。UltraSharpV2（DAT）细节最多、线条最干净，但用户觉得稍锐；六种减锐做法（一趟加 Lanczos、1.5 / 2.5 px 高斯、与 BS-Deviance / PixelPerfectV4 各半混合，`esrgan-5`）里选了 PixelPerfectV4 混合。淘汰：AnimeSharpV4_RCAN、HFA2k_realplksr（发灰重影）、Drawimation（糊）、NumericFrames（过黑）、Faithful-Lite（保留像素感）、两个 2x AnimeSharp（三趟叠加发软或出颗粒）。2026-09-27 起 `build/esrgan-models/` 只留定案用的 4x-UltraSharpV2 与 4x-PixelPerfectV4（图标流水线也只用后者），其余对比模型已删，要重做对比时从 OpenModelDB 重新下载。
 
 流水线：
 
