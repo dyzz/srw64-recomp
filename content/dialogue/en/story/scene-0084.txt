@@ -2596,10 +2596,10 @@ must be eliminated.”
 “Wh... what are you saying?”
 
 @41456 Judau · ジュドー
-# 审校：全局：弯撇号／弯引号
+# 审校：抽检：原文是“像普露那样的孩子”，英文改成“a kid like you”，丢了普露这个参照（中文保留了）。
 > 「プルみたいな子が人殺しなんて、
 >  しちゃいけない!」
-“A kid like you shouldn’t be killing people!”
+“A kid like Puru shouldn’t be killing people!”
 
 @41457 Ple · プル
 > 「やめてよ! あたしは、ジュドーと

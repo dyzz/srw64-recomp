@@ -1695,18 +1695,18 @@ Didn’t you really come just to join up with us?”
 “It’s not for your sake. It’s for Earth’s.”
 
 @36950 Treize · トレーズ
-# 审校：全局：弯撇号／弯引号
+# 审校：抽检：“this Earth’s, this Earth Sphere’s peace”所有格叠用，英语读者会卡住。
 > 「君たちは、当然そうだろう。
 >  君たちはこの地球の、地球圏の
-“For you, that would be only natural. You need only think of this Earth’s,
+“For you, that is only natural. You need only concern yourselves with the peace of this Earth,
 ---
 >  平和のことだけを考えていればよい。
 >  でなければ君たちをOZに招いたのは
-this Earth Sphere’s peace. Otherwise, inviting you to OZ would have been
+of this Earth Sphere. Otherwise, inviting you into OZ would have been
 ---
 >  私の見当違いだったことに
 >  なってしまう」
-a miscalculation on my part.”
+a misjudgment on my part.”
 
 @36951 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

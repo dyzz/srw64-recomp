@@ -48,12 +48,13 @@ when Earth was invaded three years ago.”
 “But they’re not with the Federation Forces, right?”
 
 @18198 Garrison · ギャリソン
+# 审校：抽检：“左様で”是肯定“正是”，英文却译成否定的“Indeed not”，且they/his单复数混乱。
 > 「左様で
-“Indeed not.
+“Indeed.
 ---
 >  当時、地球側について戦った
 >  帝国の方と
-I understand they are an Imperial who sided with Earth in those days,
+I understand he was an Imperial who fought on Earth’s side back then,
 ---
 >  そのお仲間の方々と
 >  うかがっております」

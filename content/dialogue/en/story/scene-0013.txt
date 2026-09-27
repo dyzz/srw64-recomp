@@ -105,17 +105,18 @@ Well, I suppose a little of that’s only natural...”
 He’ll be fine.”
 
 @18912 Heero · ヒイロ
+# 审校：抽检：“A Class-A citizen school”冠词与定语连用别扭，末句“is...”悬空。
 > 「A級市民の学校か……
 >  ちょうどいい
-“A Class-A citizen school... just what I needed.
+“A school for Class-A citizens... just what I needed.
 ---
 >  転入手続き……クリア。
 >  各種入金……クリア
-Transfer procedures... clear. All payments... clear.
+Transfer paperwork... clear. All payments... clear.
 ---
 >  帝国軍の基地データの
 >  アクセスは……」
-Access to Imperial military base data is...”
+Access to Imperial military base data...”
 
 @18913 Teacher · 先生
 # 审校：全局：弯撇号／弯引号
