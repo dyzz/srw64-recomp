@@ -25,27 +25,28 @@ Leaving the rule of Earth to the Gradosians was my blunder, Death Gaia's alone.
 I am prepared to accept any punishment.”
 
 @32189 Emperor Muge · ムゲ帝王
-# 审校：デスガイヤー 按词表 Death Gaia
+# 审校：去掉 it could not be helped；中文末页“那便是如此了”不通
 > 「そのことはもうよい。貴様が敗れた
 >  のであれば、やむをえまい。我らが
-“Enough of that. If you were defeated, it could not be helped. If General Death Gaia,
+“Enough of that. If you were beaten, then there was nothing for it. If General Death Gaia,
 ---
 >  支配する宇宙の隅々まで
 >  勇猛でしられたデスガイヤー将軍が
 whose valor was known to every corner of the universe we rule,
 ---
 >  敗れたのであればな」
-was defeated, then so be it.”
+could be beaten, then so be it.”
 
 @32190 Death Gaia · デスガイヤー
+# 审校：对帝王不用 sir，与下文 Your Majesty 统一
 > 「はっ! 恐れいります!」
-“Yes, sir! I am most grateful!”
+“Your Majesty! I am unworthy of such words!”
 
 @32191 Emperor Muge · ムゲ帝王
-# 审校：デスガイヤー 按词表 Death Gaia
+# 审校：首句更口语
 > 「なつかしいのぅ、あの頃。ともに戦った
 >  あの頃がな。ゲルド星系での
-“Those days were dear to me. The days we fought together. The battle against the
+“Ah, those were the days. The days we fought side by side. The battle against the
 ---
 >  銀河帝国との戦い、ロデウム星
 >  で超能力者どもを打ち破った
@@ -76,8 +77,9 @@ That you were defeated in a single battle... I would like to see this opponent o
 Until then, rest well.”
 
 @32194 Death Gaia · デスガイヤー
+# 审校：称呼与 32192 统一
 > 「はっ、ありがたき幸せに存じます」
-“Yes, sir. I am deeply honored.”
+“Yes, Your Majesty. I am deeply honored.”
 
 @32195 Roux · ルー
 > 「艦長、コスモクラッシャーが到着
@@ -320,12 +322,13 @@ I have high expectations for you.”
 “Yes, sir.”
 
 @32234 Rain · レイン
+# 审校：第二页 Would you? 是凑页，改成自然断句
 > 「レラ、悪いんだけどあそこのパーツを
 >  アストナージさんのところへ持っていって
-“Lera, sorry, but could you take those parts over to Astonaige for me?
+“Lera, sorry to bother you, but could you take those parts over
 ---
 >  くれないかしら?」
-Would you?”
+to Astonaige for me?”
 
 @32235 Lera · レラ
 > 「いいよ。これだね」
@@ -367,17 +370,18 @@ Would you?”
 “You used to wonder?”
 
 @32244 Lera · レラ
+# 审校：ずっと明確 是“清楚多了”，不是“一直清楚”
 > 「こないだの話聞いてさ、考えたんだ。
 >  とりあえず何をするのか
-“After hearing what was said the other day, I got to thinking. For now, what we're going to do
+“After hearing what was said the other day, I got to thinking. At least what we’re going to do
 ---
 >  何ができるのかは、ずっと明確に
 >  なってるんだなって。いままでは
-and what we can do has become clear to me. Until now,
+and what we can do is a lot clearer to me now. Until now,
 ---
 >  ただ必死になって戦ってただけだった
 >  から」
-I was just fighting desperately, that's all.”
+I was just fighting for my life, that’s all.”
 
 @32245 Ark · アーク（按段落 3DD1）
 > 「そう……だな、それは俺だってそうだ。
@@ -506,23 +510,24 @@ I just didn't have any other way.”
 “You're imagining things.”
 
 @32265 Masato · 雅人
+# 审校：maintenance's 不自然
 > 「ま、いいか。整備終わったんだろ?
 >  メシ食いにいこうよ」
-“Well, whatever. The maintenance's done, right? Let's go eat.”
+“Well, whatever. Maintenance is done, right? Let’s go eat.”
 
 @32266 Ark · アーク（按段落 3DD1）
 > 「ああ、つきあうよ」
 “Yeah, I'll join you.”
 
 @32267 Selain · セレイン（按段落 3DD2）
-# 审校：精读：去破折号、与 31889 用语统一
+# 审校：首页直译不通顺
 > (“戦う意味”の喪失、か。恐れ
 >  ているのは、私自身だというのにな
-(The loss of a ‘meaning in fighting,’ huh. Even though the one I fear is myself.
+(The loss of a ‘reason to fight,’ huh. When the one who fears it most is me.
 ---
 >  ロームフェラ、いやOZという組織
 >  ならば、帝国を本当に
-If it's Romefeller, no, an organization like OZ, they might truly be able to
+If it’s Romefeller, no, an organization like OZ, they might truly be able to
 ---
 >  排除できるかもしれん。だが、その中
 >  で私の戦いは、私が戦う意味は
@@ -724,17 +729,17 @@ No... if something ends, it's my life that will...
 You still seem like you can start over.”
 
 @32298 Lera · レラ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：陈述句尾的 ?! 读成疑问；中文“！？”也改感叹
 > 「ねぇ、しっかりしてよ{HeroNick}。まだ戦
 >  うべき敵はたくさん残ってるんだよ!?
-“Hey, pull yourself together, {HeroNick}. There are still plenty of enemies left to fight?!
+“Hey, pull yourself together, {HeroNick}. There are still plenty of enemies left to fight, you know?!
 ---
 >  まだまだ終わったりなんかしない、まだ
 >  勝ったなんていえないんだよ!?
-It's not over yet, we can't say we've won yet?!
+It’s not over yet, and we can’t say we’ve won, either!
 ---
 >  いまのアンタは、まるで……」
-Right now you're just like...”
+Right now you’re just like...”
 
 @32299 Selain · セレイン（按段落 3DD2）
 > 「ああ……そうだな、まだ戦いは続く。
@@ -757,9 +762,10 @@ fighting... I suppose I'll think about it then.”
 “None of your business.”
 
 @32303 Hayato · ハヤト
+# 审校：どうにもならん 是“没法收场”，不是“撑不下去”
 > 「かもしれん。だがな、このままじゃどうにも
 >  ならんぜ、あれは」
-“Maybe so. But the way things are, he's not going to make it, that one.”
+“Maybe so. But at this rate, nothing’s gonna change. Not with him like that.”
 
 @32304 Brad · ブラッド（按段落 3DD3）
 > 「…………」
@@ -802,12 +808,13 @@ Argo, I want to tune up my machine. Come with me.”
 “Beats me.”
 
 @32311 George · ジョルジュ
+# 审校：原句 but still 悬空
 > 「ドモンも、{HeroNick}と同じだからですよ
 >  師弟と兄弟弟子という違い
-“It's the same for Domon as it is for {HeroNick}. There's a difference between master and disciple and between fellow disciples,
+“Domon’s in the same boat as {HeroNick}. One’s master and disciple, the other’s fellow disciples,
 ---
 >  こそありますが」
-but still.”
+but that’s the only difference.”
 
 @32312 Hayato · ハヤト
 > 「東方不敗、マスターアジアか」
@@ -835,9 +842,10 @@ it's all some kind of mistake.”
 “...Maybe. I don't really know.”
 
 @32316 Chibodee · チボデー
+# 审校：语序不自然
 > 「どっちにしてもよ、1度とことんやりあっ
 >  て、ケリつけるしかねぇんじゃねぇのか?」
-“Either way, ain't the only option to fight it out once and for all and settle it?”
+“Either way, the only thing left is to fight it out once and for all and settle it, ain’t it?”
 
 @32317 Brad · ブラッド（按段落 3DD3）
 > 「いわれなくともわかってる! 俺が、
@@ -862,9 +870,10 @@ it's all some kind of mistake.”
 “...It's about {PartnerName}, isn't it?”
 
 @32322 Manami · マナミ（按段落 3DD4）
+# 审校：去掉 it can't be helped
 > 「ええ、そう。でもしかたないわね。
 >  {PartnerName}をああしてしまったのは
-“Yes, it is. But it can't be helped. I'm the one who made {PartnerName}
+“Yes, it is. But there’s nothing for it. I’m the one who made {PartnerName}
 ---
 >  私なんだから……」
 end up like that, after all...”
@@ -1244,10 +1253,10 @@ has joined. That is why I came all this way.”
 “Surface dwellers?”
 
 @32386 Alan · アラン
-# 审校：阿兰是沉着的指挥官，对众人说话应更正式，不用缩写更符合其口吻。
+# 审校：よろしく頼む 改自然说法
 > 「そういうことだ。よろしく頼む、
 >  {HeroMech}の諸君」
-“That is how it is. I will be counting on you, pilots of the {HeroMech}.”
+“That’s how it is. Good to be working with you, pilots of the {HeroMech}.”
 
 @32387 Bright · ブライト
 > 「アランか」
@@ -1267,9 +1276,11 @@ Besides us, the Audhumla will be heading out in support. There are two others
 accompanying us here.”
 
 @32389 David · デビッド
+# 审校：Isn't that Roan 不像惊呼
+# 检查提示：未用必用译名：ロアン→Roanne
 > 「ロアン! ロアンじゃないか!
 >  アーサーもか……」
-“Roanne! Isn't that Roanne?! Arthur too...”
+“Roanne! It’s Roanne! Arthur too...”
 
 @32390 Roanne · ロアン
 > 「ひさしぶりだね、デビッド、アンナ、
@@ -1399,9 +1410,10 @@ Just who the hell is this guy?”
 I'd heard about that business with the Dark Gundam myself.”
 
 @32413 Shinobu · 忍
+# 审校：knows the identity of 生硬
 > 「てめぇ、どこの誰だかわからねぇような
 >  怪しい奴を連れてきたってのかよ!?」
-“You brought along some shady bastard nobody even knows the identity of?!”
+“You went and brought along some shady character nobody even knows?!”
 
 @32414 Domon · ドモン
 > 「シュバルツ、貴様どういうつもりだ」
@@ -1605,13 +1617,14 @@ we will lose most of the surface to the Earthlings.”
 “Curse you, Shapiro! Do you intend to betray the Empire?!”
 
 @32446 Luna · ルーナ
+# 审校：understands ... not in the slightest 语序别扭；中文“无法理解”改口语
 > 「ホホホ、バカなことを。
 >  ギルドローム将軍にはシャピロ様の
-“Hohoho, how foolish. It seems General Gildrome understands
+“Hohoho, how foolish. It seems General Gildrome doesn’t understand
 ---
 >  計画がまるでおわかりにならないよう
 >  ですわね」
-Lord Shapiro's plan not in the slightest.”
+Lord Shapiro’s plan in the slightest.”
 
 @32447 Gildrome · ギルドローム
 > 「……聞かせてもらおうか」
@@ -1730,9 +1743,10 @@ I suppose I'll give him another chance to fight.”
 “Bright, it's about time.”
 
 @32463 Bright · ブライト
+# 审校：口语
 > 「よし、カリフォルニア・ベースへ向けて
 >  出発するぞ」
-“All right, we depart for the California Base.”
+“All right, we’re setting out for the California Base.”
 
 @32464 Amuro · アムロ
 > 「陸上に展開した味方部隊が
@@ -1799,9 +1813,9 @@ it's those people.”
 “Yes.”
 
 @32476 Show · ショウ
-# 审校：“What a force...”容易误解为部队质量，改为更贴近“なんて数だ”的数量感叹。
+# 审校：What a number of them 不像口语
 > 「なんて数だ……」
-“What a number of them...”
+“Look how many there are...”
 
 @32477 Chum · チャム
 > 「ホントに、あんなところへ行くの!?」
@@ -1835,8 +1849,9 @@ it's those people.”
 “All right, let's go. All pilots, launch immediately!”
 
 @32484 Shot · ショット
+# 审校：与 24201 同句统一，原句多出 can't die
 > 「こ、こんな所で俺は……ミュージィ……」
-“I-I can't die in a place like this... Musy...”
+“T-To fall in a place like this... Musy...”
 
 @32485 Musy · ミュージィ
 > 「ショット様!? くっ、おのれ!」
@@ -1866,14 +1881,14 @@ it's those people.”
 shall strike you down, Drake Luft!”
 
 @32490 Drake · ドレイク
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：It would be a problem if 是日语腔；中文“让人觉得……麻烦了”不通
 # 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips、エレ・ハンム→Elle Hunm
 > 「エレ・ハンムにシーラ・ラパーナか。
 >  そう簡単にこのウィル・ウィプスが
-“Elle Hunm and Ciela Lapana, is it. It would be a problem if you thought this Will-Wips
+“Elle Hunm and Ciela Lapana, is it. Don’t go thinking this Will-Wips
 ---
 >  落ちると思われては、困るな」
-would fall so easily.”
+will fall so easily.”
 
 @32491 Tod · トッド
 > 「ショウもいるのか」
@@ -2267,10 +2282,10 @@ I can't afford to end things in a place like this.”
 “No, Show! Don't become like that!!”
 
 @32560 Show · ショウ
-# 审校：人名按词表统一
+# 审校：prove I can control 生硬
 > 「……大丈夫さ、チャム。俺は、
 >  制御してみせる」
-“...It's all right, Chum. I'll prove I can control it.”
+“...It’s all right, Chum. I’ll keep it under control, I swear.”
 
 @32561 Bright · ブライト
 # 审校：精读：去破折号
@@ -2375,8 +2390,9 @@ realize that!”
 “Wh-what did you say?!”
 
 @32580 Ciela · シーラ
+# 审校：as far as I go 不达意
 > 「こ、ここまでというのか!?」
-“Th-this is as far as I go?!”
+“I-Is this the end?!”
 
 @32581 Elle · エレ
 > 「あと、あと少しというところで……」
@@ -2388,22 +2404,24 @@ realize that!”
 “Shapiro got away?! Why didn't you say so sooner!!”
 
 @32583 Amuro · アムロ
+# 审校：原句直译拗口
 > 「落ち着け、沙羅。そういう状況
 >  じゃなかったのはわかっているはずだ」
-“Calm down, Sara. You must know it wasn't a situation where we could.”
+“Calm down, Sara. You know full well it wasn’t the time.”
 
 @32584 Sara · 沙羅
 > 「だけどッ!」
 “But still!”
 
 @32585 Ryo · 亮
+# 审校：“还没到让……逃掉的地步”“还有干劲”不像人话
 > 「まだシャピロを逃がしたわけじゃない。
 >  奴は策があって脱出し宇宙へと
-“We haven't let Shapiro get away for good. He had a plan and escaped into space.
+“We haven’t let Shapiro get away for good. He had a plan and escaped into space.
 ---
 >  上がった。つまり奴もまだやる気で
 >  いるということだ。機会はある」
-In other words, he's still eager to fight. We'll have our chance.”
+In other words, he still means to fight. We’ll have our chance.”
 
 @32586 Ryoma · リョウ
 > 「そうだな。戦いはまだ終わったわけ
@@ -2423,13 +2441,13 @@ to try and crush us.”
 “And he used Drake's people too.”
 
 @32589 Tetsuya · 鉄也
-# 审校：精读：去破折号
+# 审校：第二页 that OZ is, since we're with them 不通
 > 「考えようによっちゃ、それだけ俺たちが
 >  奴にとって脅威だってことだ。いや
-“Depending on how you look at it, that just means we're that much of a threat to him. No,
+“Depending on how you look at it, that just means we’re that much of a threat to him. Or rather,
 ---
 >  俺たちがいるOZが、か」
-that OZ is, since we're with them.”
+the OZ we’re part of is.”
 
 @32590 Daisaku · 大作
 > 「OZはもう僕たちの敵対していた
@@ -2535,9 +2553,10 @@ undefeated either.”
 bastards and Shapiro are still right there.”
 
 @32603 Kamille · カミーユ
+# 审校：去掉 it can't be helped
 > 「しかたないさ。残った奴らをつぶして
 >  いくしかない」
-“It can't be helped. We've just got to crush the ones left behind.”
+“Nothing for it. We’ve just got to crush the ones left behind.”
 
 @32604 Hayato · ハヤト
 # 审校：补译：原稿页数错误
@@ -2643,9 +2662,10 @@ still above our heads. We can't relax yet.”
 “Is that what you came to tell me?”
 
 @32620 Lera · レラ
+# 审校：口语
 > 「あ……違う違う。そうじゃなくて、この
 >  前の続き聞かせてもらおうと思って」
-“Ah... no, no. Not that. I was thinking I'd hear the rest of what you were saying before.”
+“Ah... no, no. Not that. I wanted to hear the rest of what you were telling me before.”
 
 @32621 Ark · アーク（按段落 3DD1）
 > 「ああ……なんで俺がここにいるかって

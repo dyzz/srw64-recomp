@@ -42,9 +42,10 @@ didn't want that man moving freely.”
 I'll let Noin know too.”
 
 @36695 Heero · ヒイロ
+# 审校：going now won't be in time 不像英语
 > 「……無駄なことだ。もしそうなら、
 >  いまからいったところで、間に合わない」
-“...It's pointless. If that's what happened, going now won't be in time.”
+“...It’s pointless. If that’s what happened, we’d never make it in time.”
 
 @36696 Quatre · カトル
 > 「だけど、知らないフリはできないよ!」
@@ -81,12 +82,13 @@ I'll let Noin know too.”
 “Stay with us!”
 
 @36704 Blex · ブレックス
+# 审校：is a regret 生硬
 > 「……私はもうだめだ。
 >  平和な地球圏を見ることが
-“...I'm finished. Not being able to see a peaceful Earth Sphere...
+“...I’m done for. Never getting to see the Earth Sphere at peace...
 ---
 >  できなかったのは……残念だが……」
-is a regret, but...”
+that’s my one regret, but...”
 
 @36705 Quatre · カトル
 # 审校：准将应译为 Brigadier General，而非 Commodore。
@@ -94,12 +96,13 @@ is a regret, but...”
 “Brigadier General...”
 
 @36706 Blex · ブレックス
+# 审校：grasp your future 直译
 > 「君たちは……戦いにもどる時だろう。
 >  ここにいても……
-“It's time for you to... return to the fight. Even if you stay here...
+“It’s time for you to... return to the fight. Even if you stay here...
 ---
 >  君たちの未来はつかめん……」
-you won't grasp your future...”
+you’ll never find your future...”
 
 @36707 Quatre · カトル
 > 「……僕たちが誰だか、
@@ -107,9 +110,10 @@ you won't grasp your future...”
 “...You knew who we were, didn't you.”
 
 @36708 Blex · ブレックス
+# 审校：去掉 can't be helped；中文断句不通
 > 「……戦いの中で自分を見失う
 >  ……それはしかたのないことだ。だが……
-“...Losing yourself in battle... that can't be helped. But...
+“...Losing yourself in battle... that’s only natural. But...
 ---
 >  敵がいる以上は……
 >  君たちの未来は君たち自身が
@@ -117,7 +121,7 @@ as long as the enemy exists... your future is something only you
 ---
 >  戦うことでしか……手に入れられない
 >  それは忘れないでほしい……」
-yourselves can win by fighting... Please don't forget that...”
+yourselves can win by fighting... Please don’t forget that...”
 
 @36709 Heero · ヒイロ
 > 「最初から、俺には
@@ -195,10 +199,10 @@ should have been more careful.”
 “So the Romefeller faction has launched an all-out offensive...”
 
 @36722 Pagan · パーガン
-# 审校：帕根是老管家，口吻应更正式，can't 改为 cannot。
+# 审校：去掉 it cannot be helped
 > 「異星人の艦隊がきていることを
 >  考えれば、やむをえぬことでしょう
-“Considering an alien fleet has come, it cannot be helped.
+“Considering an alien fleet has come, it was only to be expected.
 ---
 >  各地でトレーズ派との交戦が
 >  激化しております」
@@ -222,12 +226,13 @@ Who could have predicted another alien invasion...”
 “...Relena.”
 
 @36726 Relena · リリーナ
+# 审校：わかる 是看得出，不是理解
 > 「またわたくしに黙って、
 >  いなくなってしまうつもりだったのでしょう
-“You were going to disappear without telling me again, weren't you.
+“You were going to disappear without telling me again, weren’t you.
 ---
 >  そのくらいは、わかるつもりです」
-That much, I can understand.”
+That much I can tell.”
 
 @36727 Heero · ヒイロ
 > 「……世話になった」
@@ -336,10 +341,10 @@ In a situation like this, why won't they obey the Foundation?”
 that they won't stop this foolish fighting.”
 
 @36744 Dermail · デルマイユ
-# 审校：迪鲁马尤是老贵族，口吻应更正式，can't 改为 cannot。
+# 审校：去掉 cannot be helped；“怎么办。”接不上问句
 > 「……やむをえんか。許せよ、トレーズ。
 >  地球のためだ。それで、どうする
-“...Then it cannot be helped. Forgive me, Treize. It's for Earth. So, what will you do?
+“...Then so be it. Forgive me, Treize. It’s for Earth. So, what will you do?
 ---
 >  レディ・アンのおかげで、
 >  すでにトレーズ派の連中が
@@ -347,7 +352,7 @@ Thanks to Lady Une, the Treize faction has already
 ---
 >  動き始めていよう。
 >  ブレックスのようにはいくまい」
-begun to move. It won't go as it did with Blex.”
+begun to move. It won’t go as it did with Blex.”
 
 @36745 Jamitov · ジャミトフ
 > 「バスクにやらせる。
@@ -1028,8 +1033,9 @@ You know about the Galactic Empire, don't you?! Without Treize,
 why do you think OZ could ever be united?!”
 
 @36857 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：皮肉 是讽刺不是残酷
 > 「……運命とは、皮肉なものだな」
-“...Fate is a cruel thing.”
+“...Fate has a cruel sense of humor, doesn’t it.”
 
 @36858 Ark · アーク（按段落 3DD1）
 > 「なんだって?」
@@ -1105,20 +1111,22 @@ for my own foolishness. This time, I cannot retreat.”
 Even you can't be satisfied with the way Romefeller does things.”
 
 @36870 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：皮肉 是讽刺不是残酷
 > 「運命とは、皮肉なものだ。
 >  なぜ私は
-“Fate is a cruel thing. Why am I not
+“Fate has a cruel sense of humor. Why am I not
 ---
 >  君たちの側にたっていないのだろうな」
 standing at your side, I wonder.”
 
 @36871 Ark · アーク（按段落 3DD1）
+# 审校：“已经忘了仇恨”不像人话；英文标点
 > 「{PartnerSurname}?
 >  ……俺は、恨みは忘れる
-“{PartnerSurname}?...I can forget my grudge.
+“{PartnerSurname}? ...I can let bygones be bygones.
 ---
 >  そう思うなら今からだって……」
-If that's what you think, then even now...”
+If that’s what you think, then it’s not too late...”
 
 @36872 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1139,9 +1147,10 @@ unite OZ, and stand against the aliens. Prepare yourself!”
 “{PartnerFull}?!”
 
 @36874 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：It's been since 不完整
 > 「月での作戦以来だな、
 >  {HeroMech}」
-“It's been since the operation on the moon, {HeroMech}.”
+“We haven’t met since the operation on the moon, {HeroMech}.”
 
 @36875 Ark · アーク（按段落 3DD1）
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1179,12 +1188,13 @@ has come, this operation is insane, isn't it?!”
 “What?!”
 
 @36880 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：皮肉 是讽刺不是残酷
 > 「私は……自らの愚かさの代償を、
 >  支払わねばならんのだ
 “I... must pay the price for my own foolishness.
 ---
 >  運命とは、皮肉なものだな」
-Fate is a cruel thing.”
+Fate has a cruel sense of humor, doesn’t it.”
 
 @36881 Ark · アーク（按段落 3DD1）
 > 「どういうことだ、
@@ -1227,9 +1237,10 @@ You will accompany me in my final battle!”
 What are you thinking?!”
 
 @36888 对手
+# 审校：just like that 意思偏
 > 「少年か……ちょうどいい、
 >  そのまま私を撃墜しろ」
-“The boy, is it... Good timing. Shoot me down just like that.”
+“The boy, is it... Perfect. Shoot me down, here and now.”
 
 @36889 主角
 > 「な……なんだって!?」
@@ -1281,21 +1292,22 @@ Do it, boy! Otherwise... I will shoot you down!”
 “Gah... Impossible?! Boy, why didn't you aim for the cockpit...”
 
 @36898 主角
+# 审校：中英第二三页断句都读不通
 > 「できるわけないだろッ!? なにがあったか
 >  知らないけど、あんたはまだ生きてる!
-“Like I could do that?! I don't know what happened, but you're still alive!
+“Like I could do that?! I don’t know what happened, but you’re still alive!
 ---
 >  なら、やるべきことをやってみせろよ!
 >  それすらかなわず……
-Then show me you'll do what you're supposed to do! There are plenty of people who died
+Then do what you’re supposed to do! Plenty of people died
 ---
 >  死んでいった人たちだって、
 >  大勢いるんだぞ!! 理屈ならべて
-without even managing that!! Spouting off logic and
+without ever getting that chance!! Lining up excuses and
 ---
 >  死んで楽になろうなんて、
 >  逃げてるだけじゃないか!」
-trying to die to make it easy on yourself... that's just running away!”
+trying to die to make it easy on yourself... that’s just running away!”
 
 @36899 对手
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -1427,8 +1439,9 @@ to protect humanity's future.”
 “...That... is the same for me as well.”
 
 @36917 主角
+# 审校：no good 直译
 > 「どうしても……だめなの……?」
-“Is it really... no good...?”
+“Is there really... no other way...?”
 
 @36918 Bask · バスク
 > 「ええぃ、何をやっておるか!!
@@ -1440,13 +1453,14 @@ to protect humanity's future.”
 You came to OZ to defeat that woman, didn't you?!”
 
 @36919 对手
+# 审校：艾莎不用缩写；“抱着这个打算上”生硬
 > 「もう……疲れましたわ。
 >  これで終わりにしましょう
-“I'm... tired of this. Let's end it here,
+“I am... so tired of this. Let us end it here,
 ---
 >  {HeroName}さん。わたくしも、
 >  そのつもりでまいります」
-{HeroName}. I'll come at you ready for that as well.”
+{HeroName}. I shall come at you meaning to do just that.”
 
 @36920 主角
 > 「{PartnerNick}!!」
@@ -1685,17 +1699,17 @@ for your sake. Your battle is not over yet.”
 “I see...”
 
 @36960 Bright · ブライト
-# 审校：精读：去破折号
+# 审校：it needs you 悬空
 > 「特佐、さきほどの言葉があなたの
 >  本心だと、それを我々に信じろと
-“Special Colonel, are you telling us to believe that what you said just now
+“Special Colonel, are you telling us to believe that what you just said
 ---
 >  いうのですか。銀河帝国の
 >  脅威にさらされた地球圏には
-is your true feeling? The Earth Sphere, exposed to the threat of the Galactic Empire,
+is how you truly feel? With the Galactic Empire bearing down on the Earth Sphere,
 ---
 >  あなたが必要なんです」
-it needs you.”
+we need you.”
 
 @36961 Treize · トレーズ
 > 「私ひとりでは、なにもできない。私など
@@ -1703,14 +1717,14 @@ it needs you.”
 “Alone, I can do nothing. Even without me, little would change.”
 
 @36962 Ark · アーク（按段落 3DD1）
-# 审校：精读：去破折号
+# 审校：sins of what you've done 累赘；“做过的事所犯下的罪”“触及和平”直译
 > 「あなたはひきょうですよ、
 >  トレーズ・クシュリナーダ
-“You're a coward, Treize Khushrenada.
+“You’re a coward, Treize Khushrenada.
 ---
 >  あなたがしてきたことの罪を、俺たちは
 >  忘れちゃいない。だけど、俺たちは
-We haven't forgotten the sins of what you've done. But even so,
+We haven’t forgotten the wrongs you’ve done. But even so,
 ---
 >  それでも、あなたを信じた。
 >  それで平和に手が届くと
@@ -1729,21 +1743,21 @@ decided on your own to stand by and watch, and refuse to do anything.
 Even with the Earth Sphere in such chaos as this,
 ---
 >  そんなバカな話はない」
-there's no excuse for such nonsense.”
+there’s no excuse for such nonsense.”
 
 @36963 Selain · セレイン（按段落 3DD2）
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：list your own convenience 直译
 > 「あなたはひきょうだ、特佐。
 >  自分の都合ばかりならべたて
-“You're a coward, Special Colonel. You do nothing but list your own convenience,
+“You’re a coward, Special Colonel. You line up your own excuses,
 ---
 >  必要とされる時には何もしない。
 >  自分の行動で、兵士を
-and when you're needed, you do nothing at all. With your own actions, you drove soldiers
+and when you’re needed, you do nothing at all. With your own actions, you drove soldiers
 ---
 >  無意味に死地へ追いやって
 >  おきながら、動こうともしない
-to their deaths for nothing, and yet you won't lift a finger.
+to their deaths for nothing, and yet you won’t lift a finger.
 ---
 >  死んでいった兵士たちの声を、
 >  聞いてみるがいい
@@ -1751,10 +1765,10 @@ Listen to the voices of the soldiers who died.
 ---
 >  かつて我々にいった言葉を、
 >  忘れてしまったようだな
-It seems you've forgotten the words you once said to us.
+It seems you’ve forgotten the words you once said to us.
 ---
 >  我々はペテンにかかったというわけだ」
-We've been taken in by a con man.”
+We were taken in by a con man.”
 
 @36964 Brad · ブラッド（按段落 3DD3）
 # 审校：精读：去破折号
@@ -1804,18 +1818,18 @@ says something like that!”
 “Then what is it you would have me do?”
 
 @36967 Amuro · アムロ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：which now centers the Earth 不通
 > 「今の財団とOZ中心の
 >  地球の軍事力を
-“The only one who can unite the military power of the Foundation and OZ, which now centers the Earth,
+“The only one who can unite Earth’s military, now centered on the Foundation and OZ,
 ---
 >  まとめられるのは、特佐だけだ。
 >  あなたは財団の幹部で
-is you, Special Colonel. You are a Foundation executive,
+is you, Special Colonel. You’re a Foundation executive,
 ---
 >  そしてOZはあなたがつくったのだから。
 >  それをやってもらいたい」
-and OZ is something you created. We want you to do it.”
+and OZ is your creation. That’s what we want you to do.”
 
 @36968 Treize · トレーズ
 > 「まいた種の面倒は、
@@ -2035,9 +2049,10 @@ Now, fight me! This time I'll bring you down!”
 “{PartnerName}... fine, I'll settle this here and now!”
 
 @37011 Kurtz · カーツ（按段落 3DD3）
+# 审校：take fright at me 生硬
 > 「チッ、奴がいないのか! この俺に
 >  恐れをなしたか!? ふざけおって!」
-“Tch, so he's not here! Did he take fright at me?! Don't mock me!”
+“Tch, so he’s not here! Scared of me, is he?! Don’t mock me!”
 
 @37012 Kurtz · カーツ（按段落 3DD3）
 # 审校：精读：去破折号
@@ -2367,14 +2382,14 @@ We shall attack Kilimanjaro.”
 “Kilimanjaro?!”
 
 @37044 Banjo · 万丈
-# 审校：精读：去破折号
+# 审校：去掉 As expected of
 > 「これはこれは。さすがはもとOZの総帥
 >  いきなりいうことがでかいね
-“Well, well. As expected of the former supreme commander of OZ. He says something grand right off the bat.
+“Well, well. That’s the former Supreme Commander of OZ for you. Talking big right off the bat.
 ---
 >  僕の記憶が間違いじゃなければ、
 >  あそこは地上のOZの拠点のはずだ」
-If my memory serves me right, that place should be OZ's base on the surface.”
+If my memory serves, that’s OZ’s main base on the surface.”
 
 @37045 Treize · トレーズ
 > 「ジャミトフ公が私を殺そうとしたのは
@@ -2535,14 +2550,14 @@ she entrusted me with a message.”
 “Yes... thank you, Lawrence. Oh, then what has become of the Elbulls?”
 
 @37070 Lawrence · ローレンス
-# 审校：词条：エルブルス=Elbulls
+# 审校：与 30031 的 Miss Shirley 一致
 > 「すでに大破したエルブルスも、
 >  運びこんでいるとのことです
 “The Elbulls, which was heavily damaged, has also been brought in, I am told.
 ---
 >  念のため、そちらはシャリーさまに
 >  見ていただいております」
-Just to be safe, Lady Shirley is looking after it.”
+Just to be safe, Miss Shirley is looking after it.”
 
 @37071 Manami · マナミ（按段落 3DD4）
 > 「そうね。もしかしたら、
@@ -2889,8 +2904,9 @@ I've come to take Grendizer back!”
 “Brother, you were alive?!”
 
 @37126 Daisuke · 大介
+# 审校：you're the one who made it out safely 生硬
 > 「マリア、お前こそよく無事で……」
-“Maria, you're the one who made it out safely...”
+“Maria, I’m just glad you’re safe...”
 
 @37127 Maria · マリア
 > 「あの時、あたしは侍従に連れられて
@@ -3030,17 +3046,17 @@ field of expertise. Please rely on me as much as you like.”
 “So, what did you find?”
 
 @37150 Garrison · ギャリソン
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：and that was that 是多出来的
 > 「それが、{PartnerSurname}という士官は、
 >  ロームフェラ派の作戦に
-“It seems the officer named {PartnerSurname} was marked by Special Colonel Bask
+“It seems the officer named {PartnerSurname}, being critical of
 ---
 >  批判的であるとして、
 >  バスク特佐に
-for being critical of the Romefeller faction's operations,
+the Romefeller faction’s operations, had been marked
 ---
 >  目をつけられておったようですな」
-and that was that.”
+by Special Colonel Bask.”
 
 @37151 Ark · アーク（按段落 3DD1）
 > 「……わかる話だな。月の件も、
@@ -3066,9 +3082,10 @@ was placed under house arrest on Bask Om's orders.”
 “To put it plainly, a hostage.”
 
 @37155 Ark · アーク（按段落 3DD1）
+# 审校：どうしようっていうんです 问的是对方意图
 > 「人質!? そんなもん、
 >  どうしようっていうんです」
-“A hostage?! What are we supposed to do about that?”
+“A hostage?! What’s he trying to pull with that?”
 
 @37156 Garrison · ギャリソン
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -3463,10 +3480,10 @@ you were so... Master... Why? Why...)
 “Calm down, Mika. What happened?”
 
 @37217 Mika · ミカ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：お兄さん 是武的哥哥，不是阿姆罗的
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
-“Probably a psychic from Planet Gishin! Your brother was taken, and Takeru
+“Probably a psychic from Planet Gishin! His brother was taken, and Takeru
 ---
 >  それを追ってガイヤーで……」
 went after him in the Gaia...”
@@ -3589,12 +3606,13 @@ What's a guy like that doing in a place like this?!”
 “I don't know... I definitely fought Zuul, and... that's right, look for my brother!”
 
 @37239 Hayato · ハヤト
+# 审校：Even if you tell us to look 生硬
 > 「探せといわれてもな。俺たちは上空
 >  から見たが、それらしい人物は
-“Even if you tell us to look, we saw from the sky, but there was no one
+“Easier said than done. We looked from the air, but there was no one
 ---
 >  見当たらなかったぞ」
-who looked like him.”
+who fit the description.”
 
 @37240 Takeru · タケル
 > 「そ、そんなことは……」

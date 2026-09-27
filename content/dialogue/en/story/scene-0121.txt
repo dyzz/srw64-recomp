@@ -213,10 +213,10 @@ moving out!”
 “Yeah. ...But the fight's still far from over.”
 
 @50971 Remy · レミー
-# 审校：原文是疑问推测语气，用 a resistance unit 更贴合“是不是一支抵抗部队”的口吻。
+# 审校：与 50877 同句统一
 > 「見て、真吾。
 >  あれ、レジスタンス部隊じゃないかしら」
-“Look, Shingo. Isn't that a resistance unit?”
+“Look, Shingo. Isn’t that the resistance unit?”
 
 @50972 Shingo · 真吾
 # 审校：补上开头的左双引号和结尾的右双引号。

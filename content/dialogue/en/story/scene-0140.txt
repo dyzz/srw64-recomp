@@ -6,9 +6,10 @@
 “Captain, they're here! Hyakki and Mycenae!”
 
 @38753 Bright · ブライト
+# 审校：It can't be helped 日语腔
 > 「くっ、もう来たか。やむを得ん、
 >  アーガマ発進させろ!」
-“Ngh, they're already here. It can't be helped. Launch the Argama!”
+“Ngh, they’re already here. No choice. Launch the Argama!”
 
 @38754 Bright · ブライト
 > 「{HeroNick}はどうした!? 艦内の
@@ -177,14 +178,14 @@ Don't move, you. Let Lera go.”
 “Mycenae...?! I said don't move!”
 
 @38785 Marquis Janus · ヤヌス侯爵
-# 审校：原文「このヤヌス侯爵にそんなものは効かぬ」是“对我这个雅努斯侯爵无效”，初稿“don't work on me, Marquis Janus”语序稍怪，改为更自然的“won't work on me, Marquis Janus”。
+# 审校：原译像在称呼对方为 Marquis Janus
 > 「このヤヌス侯爵にそんなものは効かぬ
 >  お前こそ動くでない
-“Such things won't work on me, Marquis Janus. You're the one who shouldn't move.
+“Such things won’t work on Marquis Janus. You’re the one who shouldn’t move.
 ---
 >  この小娘の細首など、ひねるのは
 >  簡単ぞ!」
-Snapping this little girl's slender neck would be easy!”
+Snapping this little girl’s slender neck would be easy!”
 
 @38786 Ark · アーク（按段落 3DD1）
 > 「く……」
@@ -424,14 +425,14 @@ Lera?!”
 “Mycenae...?! Don't move!”
 
 @38831 Marquis Janus · ヤヌス侯爵
-# 审校：修正语序和语气，使“このヤヌス侯爵に”的自称表达更自然，并让第二页与原文对应。
+# 审校：同 38785
 > 「このヤヌス侯爵にそんなものは効かぬ
 >  お前こそ動くでない
-“Such things have no effect on me, Marquis Janus. You are the one who should not move.
+“Such things have no effect on Marquis Janus. You are the one who should not move.
 ---
 >  この小娘の細首など、ひねるのは
 >  簡単ぞ!」
-Snapping this little girl's slender neck would be easy!”
+Snapping this little girl’s slender neck would be easy!”
 
 @38832 Selain · セレイン（按段落 3DD2）
 > 「なに……? く……」
@@ -643,39 +644,43 @@ right away. I'll do everything I can.”
 “Rain... please... save her... save Lera...”
 
 @38869 Ginrei · 銀鈴
+# 审校：口语化
 > 「ここはいいから、早く出て!」
-“We've got things here, so get out there, quick!”
+“We’ve got this. Get out there, quick!”
 
 @38870 Selain · セレイン（按段落 3DD2）
+# 审校：that one 指人别扭
 > 「あいつは……あいつをこんな所で
 >  死なせるわけには……」
-“That one... I can't let that one die in a place like this...”
+“She... I can’t let her die in a place like this...”
 
 @38871 Ginrei · 銀鈴
+# 审校：Where has the you… gone 拗口
 > 「しっかりしなさい! そうした奴も外へ
 >  逃げてしまったわ。敵が来てるのよ
 “Pull yourself together! That thing has fled outside too. The enemy is coming.
 ---
 >  あなたがこれまで戦ってきたのは、
 >  何のためなの!? いつものあなたは
-What have you been fighting for all this time?! Where has the you we know
+What have you been fighting for all this time?! What happened to
 ---
 >  どこへいってしまったの!? あなたは
 >  そんなに弱くはないでしょう!?」
-gone?! You're not this weak, are you?!”
+the you we know?! You’re not this weak, are you?!”
 
 @38872 Selain · セレイン（按段落 3DD2）
 > 「お前に……お前たちに何がわかる!」
 “What do you... what do any of you know?!”
 
 @38873 Rain · レイン
+# 审校：そんなことわからない 是回应“你们懂什么”，不是“我不知道”
 > 「そんなことわからないわよ!
 >  でも、あなたのいまするべきことは
-“I don't know about that! But what you ought to be doing
+“Of course we don’t! But what you should be doing right now
 ---
 >  戦うことでしょう!? あの娘があなた
 >  を助けたのは、何のためだか、
-is fighting, isn't it?! Think hard about why
+is fighting, isn’t it?! Think hard about why
 ---
 >  よく考えなさい!」
 that girl saved you!”
@@ -690,15 +695,16 @@ that girl saved you!”
 “Ngh... were we too late?! Report the damage!”
 
 @38876 Marquis Janus · ヤヌス侯爵
-# 审校：对象是部下
+# 审校：笑声与自称统一
 > 「ほほほっ、これがわらわの本体よ。
 >  さぁお前たち、やっておしまい!」
-“Hohoho, this is my true body. Now then, all of you, finish them off!”
+“Ho ho ho, this is my true body. Now then, all of you, finish them off!”
 
 @38877 Ark · アーク（按段落 3DD1）
+# 审校：not ever 别扭
 > 「ヤヌス……絶対に逃がすものか。
 >  ソルデファー、発進準備完了!」
-“Janus... I won't let you escape, not ever. Soldifar, launch preparations complete!”
+“Janus... there’s no way I’m letting you get away. Soldifar, launch preparations complete!”
 
 @38878 Bright · ブライト
 > 「よし出ろ!」
@@ -709,33 +715,36 @@ that girl saved you!”
 “Youuuuuuuuu!!”
 
 @38880 Marquis Janus · ヤヌス侯爵
-# 审校：统一侯爵语气，将“I'll”改为“I shall”。
+# 审校：笑声统一 Ho ho ho
 > 「ほほほほほ、お前もさっきの小娘の
 >  あとを追わせてやろうぞ!
-“Hohohohoho, I shall send you after that little girl from before too!
+“Ho ho ho ho ho, I shall send you after that little girl from before too!
 ---
 >  あの世で仲よくするがよいわ!」
 Make merry together in the next world!”
 
 @38881 Selain · セレイン（按段落 3DD2）
+# 审校：I will never forgive you 日语腔
+# 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「ヤヌス……化け物ども……絶対に
 >  許さんぞ。スヴァンヒルド、出る!」
-“Janus... you monsters... I will never forgive you. Svanheld, launching!”
+“Janus... you monsters... You’ll pay for this. Svanheld, launching!”
 
 @38882 Bright · ブライト
 > 「よし、許可する!」
 “All right, permission granted!”
 
 @38883 Selain · セレイン（按段落 3DD2）
+# 审校：you alone I will kill myself 拗口
 > 「貴様は……貴様だけは私が
 >  殺す! 絶対に逃さん!!」
-“You... you alone I will kill myself! I will never let you escape!!”
+“You... I’ll kill you with my own hands! You’re not getting away!!”
 
 @38884 Marquis Janus · ヤヌス侯爵
-# 审校：统一侯爵语气，将“I'll”改为“I shall”。
+# 审校：同 38880
 > 「ほほほほほ、お前もさっきの小娘の
 >  あとを追わせてやろうぞ!
-“Hohohohoho, I shall send you after that little girl from before too!
+“Ho ho ho ho ho, I shall send you after that little girl from before too!
 ---
 >  あの世で仲よくするがよいわ!」
 Make merry together in the next world!”
@@ -750,9 +759,10 @@ Make merry together in the next world!”
 “?! What's wrong, {HeroNick}? What on earth is going on?”
 
 @38887 Ark · アーク（按段落 3DD1）
+# 审校：fooled but good 不自然
 > 「まったく、見事にだまされたよ。悪い
 >  けど基地の中に閉じこめられていた
-“I really was fooled but good. Sorry, but word came that the real Sally was found
+“Man, you had me fooled, all right. Sorry, but word came in that the real Sally was found
 ---
 >  本物のサリィが発見されたって
 >  連絡があってね」
@@ -763,9 +773,10 @@ locked up inside the base.”
 “Don't move. Who are you?!”
 
 @38889 Sally · サリィ
+# 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
 
 @38890 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -777,9 +788,10 @@ locked up inside the base.”
 “So you've shown your true form, you monster! Give it up!”
 
 @38892 Marquis Janus · ヤヌス侯爵
+# 审校：“几乎等同于达成”机翻腔；笑声、自称统一
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it's too late now. My objective is already as good as
+“Ho ho ho, it’s too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -790,8 +802,9 @@ accomplished.”
 “What?!”
 
 @38894 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほっ。それ!」
-“Hohohoho. There!”
+“Ho ho ho ho. There!”
 
 @38895 Bright · ブライト
 > 「くっ……遅かったのか!
@@ -799,8 +812,9 @@ accomplished.”
 “Ngh... were we too late?! Report the damage!”
 
 @38896 Marquis Janus · ヤヌス侯爵
+# 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Hohoho, this is my true body.”
+“Ho ho ho, this is my true body.”
 
 @38897 Ark · アーク（按段落 3DD1）
 > 「くそっ、艦長、出撃します!」
@@ -832,9 +846,10 @@ must be the enemy who infiltrated us.”
 “Don't move. Who are you?!”
 
 @38903 Sally · サリィ
+# 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
 
 @38904 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -846,10 +861,10 @@ must be the enemy who infiltrated us.”
 “So you've shown your true form, you monster! Give it up!”
 
 @38906 Marquis Janus · ヤヌス侯爵
-# 审校：雅努斯侯爵是老贵族反派，it's 过于口语化，改为 it is 以贴合其腔调。
+# 审校：“几乎等同于达成”机翻腔；笑声、自称统一
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it is too late now. My objective is already as good as
+“Ho ho ho, it’s too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -859,8 +874,9 @@ accomplished.”
 “What did you say?!”
 
 @38908 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほっ。それ!」
-“Hohohoho. There!”
+“Ho ho ho ho. There!”
 
 @38909 Bright · ブライト
 > 「くっ……遅かったのか!
@@ -868,8 +884,9 @@ accomplished.”
 “Ngh... were we too late?! Report the damage!”
 
 @38910 Marquis Janus · ヤヌス侯爵
+# 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Hohoho, this is my true body.”
+“Ho ho ho, this is my true body.”
 
 @38911 Selain · セレイン（按段落 3DD2）
 > 「そうそう好きにさせるものか。
@@ -904,9 +921,10 @@ found inside the base. We already know you're the enemy!!”
 “Don't move. Who are you?!”
 
 @38917 Sally · サリィ
+# 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
 
 @38918 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -918,10 +936,10 @@ found inside the base. We already know you're the enemy!!”
 “So you've shown your true form, you monster! Give it up!”
 
 @38920 Marquis Janus · ヤヌス侯爵
-# 审校：雅努斯侯爵是老贵族反派，it's 过于口语化，改为 it is 以贴合其腔调。
+# 审校：“几乎等同于达成”机翻腔；笑声、自称统一
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it is too late now. My objective is already as good as
+“Ho ho ho, it’s too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -931,8 +949,9 @@ accomplished.”
 “What?!”
 
 @38922 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほっ。それ!」
-“Hohohoho. There!”
+“Ho ho ho ho. There!”
 
 @38923 Bright · ブライト
 > 「くっ……遅かったのか!
@@ -940,8 +959,9 @@ accomplished.”
 “Ngh... were we too late?! Report the damage!”
 
 @38924 Marquis Janus · ヤヌス侯爵
+# 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Hohoho, this is my true body.”
+“Ho ho ho, this is my true body.”
 
 @38925 Brad · ブラッド（按段落 3DD3）
 > 「くっそぉっ!! アースゲイン、出るぞ!
@@ -975,9 +995,10 @@ inside the base.”
 “Don't move. Who are you?!”
 
 @38931 Sally · サリィ
+# 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, hohohohoho. Now that I've been found out, it can't be helped. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
 
 @38932 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -989,10 +1010,10 @@ inside the base.”
 “So you've shown your true form, you monster! Give it up!”
 
 @38934 Marquis Janus · ヤヌス侯爵
-# 审校：老贵族反派应避免“it's”这类缩写，改为“it is”以保持其庄重口吻。
+# 审校：“几乎等同于达成”机翻腔；笑声、自称统一
 > 「ほほほ、いまごろ遅いわ。もうわらわの
 >  目的は、ほとんど達成されたも
-“Hohoho, it is too late now. My objective is already as good as
+“Ho ho ho, it’s too late now. My objective is already as good as
 ---
 >  同然じゃ」
 accomplished.”
@@ -1002,8 +1023,9 @@ accomplished.”
 “What did you say?!”
 
 @38936 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほっ。それ!」
-“Hohohoho. There!”
+“Ho ho ho ho. There!”
 
 @38937 Bright · ブライト
 > 「くっ……遅かったのか!
@@ -1011,13 +1033,15 @@ accomplished.”
 “Ngh... were we too late?! Report the damage!”
 
 @38938 Marquis Janus · ヤヌス侯爵
+# 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Hohoho, this is my true body.”
+“Ho ho ho, this is my true body.”
 
 @38939 Manami · マナミ（按段落 3DD4）
+# 审校：I won't forgive this 日语腔
 > 「許せない! あなたたちの好きにはさせ
 >  ないわ! 艦長、出撃するわよ!!」
-“I won't forgive this! I won't let you have your way! Captain, I'm launching!!”
+“This is unforgivable! I won’t let you have your way! Captain, I’m launching!!”
 
 @38940 Bright · ブライト
 > 「頼む!」
@@ -1028,9 +1052,10 @@ accomplished.”
 “Damn iiiit!!”
 
 @38942 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほほ、やれるものならやってみるが
 >  よいわ!」
-“Hohohohoho, try it if you can!”
+“Ho ho ho ho ho, try it if you can!”
 
 @38943 Marquis Janus · ヤヌス侯爵
 > 「人間ごときがわらわと戦おうという
@@ -1046,20 +1071,23 @@ accomplished.”
 “You bastard, you'll pay for that!”
 
 @38946 Marquis Janus · ヤヌス侯爵
+# 审校：笑声统一
 > 「ほほほほ、死ぬがよい!」
-“Hohohoho, die!”
+“Ho ho ho ho, die!”
 
 @38947 主角
+# 审校：I will never forgive you 日语腔
 > 「お前は絶対に許さないわ!」
-“I will never forgive you!”
+“You’ll pay for this!”
 
 @38948 Marquis Janus · ヤヌス侯爵
 > 「人間ごときが!」
 “A mere human!”
 
 @38949 Marquis Janus · ヤヌス侯爵
+# 审校：I'll be your opponent 直译；自称统一
 > 「おのれ! わらわが相手だ!」
-“Curse you! I'll be your opponent!”
+“Curse you! You’ll face me!”
 
 @38950 Tetsuya · 鉄也
 > 「フン、望むところだ!!」
@@ -1348,14 +1376,14 @@ Return to the ship.”
 “That's impossible?!”
 
 @39004 Avie-Lu · アヴィ＝ルー
-# 审校：?!
+# 审校：nothin' like this 意思反了
 > 「ククク……まだまだだヨ。アンタたちの
 >  力はまだこんなものじゃナイ
-“Kukuku... not yet, not by a long shot. Your power's still nothin' like this.
+“Kukuku... not yet, not by a long shot. Your power’s way more than this.
 ---
 >  サァ見せておくれヨ。もっと、もっと。
 >  でなきゃみんな死んでしまうヨ!?」
-C'mon, show me more. More, more. Otherwise you'll all die?!”
+C’mon, show me. More, more. Or else you’ll all die, y’know?!”
 
 @39005 Bright · ブライト
 > 「バカな……そんなことが……」
@@ -1443,18 +1471,19 @@ Getter and all!”
 “...It's no good! The ejection system's broken!!”
 
 @39023 Ryoma · リョウ
+# 审校：It can't be helped 日语腔
 > 「なんだって!? しかたがない。ムサシ、
 >  もういい、早く回避しろ!!」
-“What?! It can't be helped. Musashi, forget it, evade now!!”
+“What?! No choice, then. Musashi, forget it, get out of there!!”
 
 @39024 Musashi · ムサシ
-# 审校：“someone controls it” 语气偏生硬，改为更口语化的说法以贴合武藏憨直热血的语气。
+# 审校：it's more certain 生硬
 > 「バカをいうな。どうせ、奴にちゃんと
 >  ゲッターをぶち当てるためには誰かが
-“Don't be stupid. Anyway, to slam the Getter into that thing properly, it's more
+“Don’t be stupid. If we want the Getter to hit that thing dead on,
 ---
 >  コントロールした方が確実なんだ」
-certain if someone's at the controls.”
+somebody’s gotta be at the controls anyway.”
 
 @39025 Ryoma · リョウ
 > 「なんだって!? やめろムサシ!!」
@@ -1512,9 +1541,10 @@ not bad... Earthlings, huh, interesting...)
 “No... You're kidding, right?!”
 
 @39037 Cath · キャス
+# 审校：说的是蕾拉，不是凯丝自己
 > 「……意識だけは薬ではっきりしてる
 >  けど……もう……」
-“...The medicine's keeping my mind clear, but... it's already...”
+“...The drugs are keeping her conscious, but... she’s already...”
 
 @39038 Rain · レイン
 > 「あなたを待ってるわ。いってあげて」
@@ -1537,9 +1567,10 @@ not bad... Earthlings, huh, interesting...)
 “Good... You look well...”
 
 @39043 Ark · アーク（按段落 3DD1）
+# 审校：仇はとってやった 是为你报仇
 > 「お前のおかげだ。安心しろよ、
 >  俺たちが仇はとってやったからさ」
-“Thanks to you. Don't worry, we've avenged them for you.”
+“Thanks to you. Don’t worry, we’ve avenged you.”
 
 @39044 Lera · レラ
 > 「うん……{HeroNick}、アタシ、お願いが
@@ -1627,9 +1658,10 @@ And yet... and yet like this... like this...”
 “This isn't... this isn't something you can joke about, is it?”
 
 @39056 Cath · キャス
+# 审校：同 39037
 > 「……意識だけは薬ではっきりしてる
 >  けど……もう……」
-“...The medicine's keeping my mind clear, but... it's already...”
+“...The drugs are keeping her conscious, but... she’s already...”
 
 @39057 Rain · レイン
 > 「あなたを待ってるわ。いってあげて」
@@ -1810,12 +1842,13 @@ I'm sure you will.”
 “Are you done already?”
 
 @39088 Ryoma · リョウ
+# 审校：That'd be a problem 生硬
 > 「ああ……俺たちがいつまでも悲しんで
 >  いたら、ムサシは成仏できなくて
-“Yeah... If we keep grieving forever, Musashi won't be able to rest in peace.
+“Yeah... If we keep grieving forever, Musashi won’t be able to rest in peace.
 ---
 >  困るだろう」
-That'd be a problem.”
+He’d hate that.”
 
 @39089 Hayato · ハヤト
 > 「それにな、ムサシの死を無駄にしない
@@ -2045,18 +2078,18 @@ in the fact that only we have returned to this land like this.”
 “And that would mean?”
 
 @39126 Ciela · シーラ
-# 审校：破折号
+# 审校：第二页残句
 > 「地上界……いいえ、あなたがたのいう
 >  地球圏には、いまだ悪意が
 “In the surface world... no, in what you call the Earth Sphere, malice still
 ---
 >  うずまいています。それを取り除き、
 >  地上界に平穏をとりもどすことが
-swirls. To remove it and restore peace to the surface world.
+swirls. Removing it and restoring calm to the surface world...
 ---
 >  我らに課せられた新たな役割では
 >  ないかと思えるのです」
-I feel that may be the new role imposed upon us.”
+I feel that may be the new role laid upon us.”
 
 @39127 Chum · チャム
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
@@ -2172,18 +2205,18 @@ in the fact that only we have returned to this land like this.”
 “And that would mean?”
 
 @39145 Elle · エレ
-# 审校：破折号
+# 审校：第二页残句
 > 「地上界……いえ、皆さんのいう
 >  地球圏には、いまだ悪意の
 “In the surface world... no, in what you call the Earth Sphere, I can feel
 ---
 >  オーラが渦をまいているのを感じます。
 >  それを取り除き、地上界に
-an aura of malice still swirling. To remove it and restore peace
+an aura of malice still swirling. Removing it and restoring calm
 ---
 >  平穏を取りもどすことが、私たちの
 >  担うべき新たな役割と
-to the surface world. That must have become the new role
+to the surface world... that must be the new role
 ---
 >  なったのでしょう」
 we are meant to bear.”
@@ -2506,27 +2539,27 @@ despite having a pacifist father. ...Noin.”
 the Lightning Count, means to leave OZ?”
 
 @39198 Zechs · ゼクス
-# 审校：破折号；大写
+# 审校：第三页悬空 it
 > 「このままいけば、私などいなくともOZは
 >  帝国軍に勝利することでしょう
 “At this rate, OZ will defeat the Imperial forces even without me.
 ---
 >  しかし、そのあとの地球圏で財団
 >  の目指そうとしているものには
-But what the Foundation intends for the Earth Sphere afterward,
+But what the Foundation intends for the Earth Sphere afterward
 ---
 >  賛同いたしかねます」
-I cannot bring myself to approve of it.”
+is something I cannot bring myself to support.”
 
 @39199 Treize · トレーズ
-# 审校：大写
+# 审校：同行させてもか 是特列斯提议让杰克斯随行
 > 「ゼクス……{HeroMech}と同行
 >  させてもか? 彼らもまた、財団の
-“Zechs... May I let {HeroMech} go with you, then? They too cannot truly be
+“Zechs... even if I had you accompany the {HeroMech}? They too can hardly be
 ---
 >  方針に心から賛成しているわけ
 >  ではないだろう」
-in favor of the Foundation's course.”
+in favor of the Foundation’s course.”
 
 @39200 Zechs · ゼクス
 > 「トレーズ。{HeroMech}は帝国
@@ -2559,10 +2592,10 @@ my friend Milliardo Peacecraft.”
 “I simply want to live in a way I can accept.”
 
 @39203 Treize · トレーズ
-# 审校：大写
+# 审校：律義 不是 honest
 > 「律義な男だよ、君は。いいだろう、
 >  君の気のすむようにするといい。だが
-“You're an honest man. Very well, do as you see fit. But
+“You’re a man of principle. Very well, do as you see fit. But
 ---
 >  財団は君の行動を許さないかも
 >  しれない」

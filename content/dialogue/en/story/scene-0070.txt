@@ -101,13 +101,14 @@ One is to surrender to OZ and serve under their command.”
 deal with us fairly. That option was out of the question from the start.”
 
 @30117 Bright · ブライト
+# 审校：“可以吗”不接上下文
 > 「そういうことだ。いいかな?
 >  それでは残る2つの選択肢だ
-“Exactly. Understand? That leaves two choices.
+“Exactly. Are we clear? That leaves two options.
 ---
 >  トレーズ派と組むか、
 >  我々独自で戦うか」
-Either we side with Treize's faction, or we fight on our own.”
+Either we side with Treize’s faction, or we fight on our own.”
 
 @30118 Hayato · ハヤト
 > 「……こいつは難しいな。とにかく、
@@ -118,14 +119,16 @@ Either we side with Treize's faction, or we fight on our own.”
 I suppose...”
 
 @30119 Tetsuya · 鉄也
+# 审校：“对战斗还要讲道理”不顺
 > 「俺は信用できないな。戦うことに
 >  理屈をこねるような奴は……」
-“I can't trust him. A guy who rationalizes fighting like that...”
+“I can’t trust him. A guy who dresses up fighting in fancy reasoning...”
 
 @30120 Show · ショウ
+# 审校：maybe that's not it 不接上句
 > 「いや、そうでもないんじゃないか?
 >  現にトレーズ派はロームフェラ派に
-“No, maybe that's not it. After all, Treize's faction did rise up in revolt
+“No, I’m not so sure. After all, Treize’s faction did rise up in revolt
 ---
 >  対して反乱を起こしたわけだし……」
 against the Romefeller faction...”
@@ -192,9 +195,10 @@ we can't just sit here and let time pass.”
 “Where our enemies are, of course. Into space.”
 
 @30132 Judau · ジュドー
+# 审校：“就凭那股劲头”不达意
 > 「万丈っていう人、
 >  あのノリでムチャなこと考えるよなあ
-“That Banjo guy really comes up with reckless ideas with that attitude of his.
+“That Banjo guy, the way he tosses out crazy ideas like it’s nothing.
 ---
 >  OZの宇宙港を乗っ取って、
 >  そのまま宇宙へ行こうだなんて」
@@ -209,12 +213,13 @@ Seizing an OZ spaceport and just heading into space like that.”
 I don't dislike this kind of thing.”
 
 @30134 Elle · エル
+# 审校：“气魄宏大”书面
 > 「ほんと、大胆! って感じだよね。
 >  かっこいいなあ
-“Really, it's like, so bold! He's cool, isn't he?
+“Really, it’s like, so bold! He’s cool, isn’t he?
 ---
 >  スケールの大きな男って」
-A man with that kind of scale.”
+A man who thinks big.”
 
 @30135 Roux · ルー
 > 「あら、あなた、あーゆうタイプがお好み?」
@@ -384,8 +389,9 @@ Emperor Zuul...”
 “Daisuke, what's wrong?”
 
 @30160 Daisuke · 大介
+# 审校：haven't they 拖沓
 > 「……ついに、ついに来てしまったのか」
-“...They've finally come. They've finally come, haven't they.”
+“...So they’ve come. They’ve finally come.”
 
 @30161 Hikaru · ひかる
 > 「大介さん、いったいどうしたのよ?」
@@ -586,10 +592,10 @@ Captain, we'll cover you!”
 “We'll kill Mars and destroy the Earth! We'll show Lady Janera!”
 
 @30191 Bright · ブライト
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：语序倒装不顺
 > 「なんだ、奴らは!?
 >  例の異星人か」
-“What are those things?! Those aliens?”
+“What are they?! Those aliens we heard about?”
 
 @30192 Beltorchika · ベルトーチカ
 > 「……さらに接近する機体が
@@ -662,9 +668,10 @@ Hey, contact my brother.”
 “Oh man, looks like it's already over.”
 
 @30203 Chibodee · チボデー
+# 审校：hit you 指代错，对象是敌人
 > 「オー、ジーザス! せっかく
 >  パワーアップしたマシンガンパンチを
-“Oh, Jesus! And here I was hoping to hit you with my
+“Oh, Jesus! And here I was hoping to give them a taste of my
 ---
 >  くらわせてやろうと思ったのに」
 powered-up Machine Gun Punch.”
@@ -841,9 +848,10 @@ Besides, that robot of his is powerful.”
 “That is... Grendizer, the guardian deity of Planet Fleed.”
 
 @30229 Koji · 甲児
+# 审校：a while ago 应为刚才
 > 「大介さん……さっき、
 >  地球人のつもりだっていったよな」
-“Daisuke... a while ago, you said you think of yourself as an Earthling.”
+“Daisuke... just now, you said you think of yourself as an Earthling.”
 
 @30230 Daisuke · 大介
 > 「……ああ……?」
@@ -863,17 +871,19 @@ you were probably planning to do it all alone anyway. You just play it too cool.
 “Koji...”
 
 @30233 Bright · ブライト
+# 审校：all right? 不像舰长
 > 「話はわかった。
 >  ともに戦ってくれるというのなら
-“I understand the situation. If you're willing to fight with us,
+“I understand the situation. If you’re willing to fight with us,
 ---
 >  我々は君たちを歓迎するが?」
-then we welcome you, all right?”
+then you’re welcome among us. How about it?”
 
 @30234 Daisuke · 大介
+# 审校：去掉 I'll be in your care
 > 「……どうやらその方がいいようですね。
 >  わかりました。よろしく頼みます」
-“...It seems that would be for the best. Understood. I'll be in your care.”
+“...It seems that would be for the best. Understood. Thank you for having us.”
 
 @30235 Maria · マリア
 > 「あ……あれは……まさかグレンダイザー!?
@@ -894,12 +904,13 @@ Unforgivable! I'll take Grendizer back myself!”
 “Domon, Shinobu, everyone else too... I'm glad you came.”
 
 @30237 Roux · ルー
+# 审校：given up thinking we'd never 双重否定
 > 「宇宙に上がったら、
 >  もう会えないと思ってあきらめてたもの
-“Once we went up into space, I'd given up thinking we'd never meet again.
+“I figured once you went up into space, I’d never see you again. I’d given up.
 ---
 >  まさか、ここで会えるなんて……」
-To think we'd meet here...”
+To think we’d meet here...”
 
 @30238 Rain · レイン
 > 「ふふふ、さすがに宇宙までは
@@ -1268,9 +1279,10 @@ are you all right?”
 “...Koji, a word with you.”
 
 @30303 Koji · 甲児
+# 审校：something important 与原意不符
 > 「なんだよ、さやかさん。用事なら
 >  あとにしてくれよ」
-“What is it, Sayaka? If it's something important, can it wait?”
+“What is it, Sayaka? If you need something, can it wait?”
 
 @30304 Sayaka · さやか
 > 「いいから、いらっしゃい!」
@@ -1485,27 +1497,28 @@ I'm so happy I could cry.”
 died back then?!”
 
 @30342 Rish · リッシュ（按段落 3DD2）
+# 审校：痞气口吻，去掉on the wane
 > 「ひどいな、勝手に殺すなよ。
 >  とはいえ、さすがの俺も
-“How cruel, don't kill me off on your own. Still, even I have to admit
+“Ouch, don’t go killing me off like that. Still, even I gotta admit
 ---
 >  死にかけたのは事実だがな。
 >  お前が誘ってくれたから
-I came close to dying. But since you invited me,
+I came pretty close. But since you invited me,
 ---
 >  つきかけてた俺の運も、
 >  戻ってきたとみえる」
-it seems my luck, which was on the wane, has come back.”
+looks like my luck’s turned back around.”
 
 @30343 Selain · セレイン（按段落 3DD2）
 > 「…………」
 “...”
 
 @30344 Rish · リッシュ（按段落 3DD2）
-# 审校：リッシュ口吻应更痞气、俚语化，原文「頼むぜ」的轻佻感未体现。
+# 审校：countin' on ya 是日语套话
 > 「ま、そういうわけだ。
 >  これからよろしく頼むぜ」
-“Well, that's how it is. I'll be countin' on ya from now on.”
+“Well, that’s how it is. Looks like we’re stuck together from here on.”
 
 @30345 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -1570,14 +1583,16 @@ And this whole unit, when ya look close, is full of incredible people.”
 “...”
 
 @30356 Rish · リッシュ（按段落 3DD2）
+# 审校：quite a bunch 不达意
 > 「俺もよくこんな連中と戦ってた
 >  もんだな。なぁ{HeroNick}」
-“I sure fought against quite a bunch, didn't I? Right, {HeroNick}?”
+“And I used to go up against these guys, huh? Right, {HeroNick}?”
 
 @30357 Selain · セレイン（按段落 3DD2）
+# 审校：be quiet for a while 软
 > 「……なれなれしいぞ、貴様!
 >  それに、少し黙っていろ」
-“...Don't get so familiar with me! And be quiet for a while.”
+“...Don’t get so familiar with me! And shut up for a bit.”
 
 @30358 Rish · リッシュ（按段落 3DD2）
 # 审校：リッシュ口吻应更俚语化，原文「ずーっと一緒だからな」的痞气未体现。
@@ -1616,9 +1631,10 @@ but I still haven't reached a conclusion.”
 “Same here. The more I think about it, the more...”
 
 @30364 David · デビッド
+# 审校：去掉no helping it
 > 「それじゃ、しょうがねえな。だからって、
 >  まさか多数決ってのもなあ……」
-“Then I guess there's no helping it. But still, a majority vote is a bit much...”
+“Then there’s nothing for it. But still, a majority vote is a bit much...”
 
 @30365 Amuro · アムロ
 > 「……いいか?」

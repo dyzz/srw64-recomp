@@ -1,13 +1,14 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @17503 Ark · アーク（本话主角）
+# 审校：少年自言自语，去掉“啊”堆叠和 miscalculation
 > 「オレンジが手に入らなかったのは
 >  予定外だったな
-“Not getting any oranges was a miscalculation.
+“Couldn’t get any oranges. Didn’t plan on that.
 ---
 >  エミリア、怒るだろうなぁ……。
 >  でも、しかたないよな
-Emilia's going to be mad... But I guess there's nothing I can do.
+Emilia’s gonna be mad... But there’s nothing I could do.
 ---
 >  かわりにチーズも手に入ったし……」
 At least I got some cheese instead...”
@@ -47,18 +48,20 @@ At least I got some cheese instead...”
 issued for the area in question.”
 
 @17511 Ehrlich · エルリッヒ（本话主角的对手）
+# 审校：バカな 这里是“荒唐”，不是“不可能”
 > 「バカな。無人機にコードCでは、
 >  無差別攻撃と同じではないか
-“That's absurd. Code C with drones is no different from indiscriminate attack.
+“That’s absurd. Code C with drones is no different from an indiscriminate attack.
 ---
 >  ゲリラ掃討のためとはいえ、
 >  それでは何も残らん」
-Even if it's to sweep out guerrillas, that would leave nothing behind.”
+Even if it’s to sweep out guerrillas, that would leave nothing behind.”
 
 @17512 Specials · スペシャルズ
+# 审校：部下对长官
 > 「このところかなり多くなってますね。
 >  どうしますか?」
-“It's been happening quite a lot lately. What will you do?”
+“It’s been happening quite a lot lately. What are your orders?”
 
 @17513 Ehrlich · エルリッヒ（本话主角的对手）
 > 「追跡していた試作機の行方が
@@ -105,9 +108,9 @@ If we leave it alone, the residents will be wiped out too.”
 “Waaaaaaaah!!”
 
 @17520 Guerrilla · ゲリラ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：しまった 不是 Damn it?!
 > 「しまった!? くっ……」
-“Damn it?! Ngh...”
+“Oh no! Ngh...”
 
 @17521 Guerrilla · ゲリラ
 > 「坊や、おい坊や、生きてるか!?
@@ -137,9 +140,10 @@ Hey kid, what are you doing?!”
 “...Auntie, Auntie! Uncle?!”
 
 @17525 Guerrilla · ゲリラ
+# 审校：“doing foolish things”直译
 > 「バカなことはやめて早く逃げろ!
 >  お前も死ぬぞ!!」
-“Stop doing foolish things and run! You'll die too!!”
+“Stop being a fool and run! You’ll die too!!”
 
 @17526 Ark · アーク（按段落 3DD1）
 > 「エミリア!
@@ -189,13 +193,14 @@ Their methods haven't changed one bit since three years ago.”
 “Ugh... ugh...”
 
 @17533 Guerrilla · ゲリラ
+# 审校：“至少你一个人也要”“at least you have to”别扭
 > 「逃げろ坊や。
 >  俺たちはもう長くは持たない
-“Run, kid. We won't last much longer.
+“Run, kid. We won’t last much longer.
 ---
 >  頼む、せめて君だけでも
 >  逃げてくれ!」
-Please, at least you have to get away!”
+I’m begging you, at least you get out of here!”
 
 @17534 Guerrilla · ゲリラ
 > 「くっそぉぉぉーっ!!」
@@ -207,9 +212,9 @@ Please, at least you have to get away!”
 “Waah!!”
 
 @17536 Ark · アーク（按段落 3DD1）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：Hii 不是英文拟声
 > 「ひっ!?」
-“Hii?!”
+“Eek?!”
 
 @17537 Ark · アーク（按段落 3DD1）
 > 「う……ううっ……」
@@ -292,9 +297,10 @@ Is what's on this display an operation guide...?”
 “Seems we were a step too late.”
 
 @17552 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“what a sight”语义不清
 > 「うむ……ひどい有り様だ。帝国の
 >  無人機などに好きにやらせるから、
-“Mm... what a sight. Because they let the Empire's drones run wild,
+“Mm... what a mess. Because they let the Empire’s drones run wild,
 ---
 >  非武装の市民まで巻き添えに
 >  なる」
@@ -360,9 +366,10 @@ But if you refuse to listen...”
 “Shut up, you murderer! What's the point of me being the only one left alive?!”
 
 @17561 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：It can’t be helped
 > 「……やむを得まい。これ以上
 >  死者を増やすのは忍びないが、
-“...It can't be helped. I hate to add to the death toll,
+“...Then so be it. I hate to add to the death toll,
 ---
 >  これも任務なのでな」
 but this too is my duty.”
@@ -438,8 +445,9 @@ That's how we made it through the One Year War.”
 “Sir, what is that?!”
 
 @17575 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“Even Intelligence is unreliable”生硬
 > 「ん? 見たことのない機体だな
-“Hm? A machine I've never seen before.
+“Hm? A machine I’ve never seen before.
 ---
 >  レジスタンスが独自に
 >  開発したものか?
@@ -447,7 +455,7 @@ Did the Resistance develop it on their own?
 ---
 >  情報部もあてにならん。
 >  狙いは、あれか……」
-Even Intelligence is unreliable. So that's their target...”
+Can’t count on Intelligence either. So that’s their target...”
 
 @17576 Specials · スペシャルズ
 > 「やはりレジスタンスでしょうか?
@@ -522,28 +530,33 @@ Besides, I can't let a young man like you die for nothing.”
 If you can still move, then fight. We'll cover you.”
 
 @17589 Quattro · クワトロ
+# 审校：It can’t be helped；“确保下来”生硬
+# 检查提示：未用必用译名：アポリー→Aboly
 > 「しかたあるまい。アポリー、ロベルト、あの
 >  機体は確保したい。援護するぞ」
-“It can't be helped. Aboly, Roberto, I want that machine secured. We're covering it.”
+“Nothing for it. Aboly, Roberto, I want that machine secured. We’ll cover it.”
 
 @17590 Aboly · アポリー
 > 「了解です」
 “Understood.”
 
 @17591 Ehrlich · エルリッヒ（本话主角的对手）
+# 审校：It can’t be helped；“吗”不是疑问
 > 「くっ、やむを得ん。
 >  ここはひとまず引くしかないか……」
-“Ngh, it can't be helped. I suppose we have no choice but to withdraw for now...”
+“Ngh, no choice. We’ll have to pull back for now...”
 
 @17592 Ehrlich · エルリッヒ（本话主角的对手）
+# 审校：It can’t be helped
 > 「くっ、やむを得ん。
 >  全機、撤退せよ!」
-“Ngh, it can't be helped. All units, retreat!”
+“Ngh, no choice. All units, retreat!”
 
 @17593 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：同 17591
 > 「くっ、やむを得ん。
 >  ここはひとまず引くしかないか……」
-“Ngh, it can't be helped. I suppose we have no choice but to withdraw for now...”
+“Ngh, no choice. We’ll have to pull back for now...”
 
 @17594 Roberto · ロベルト
 > 「コックピット、開きます」
@@ -626,16 +639,18 @@ I won't stop you, but...”
 “I see...”
 
 @17604 Ark · アーク（本话主角）
+# 审校：“姨母夫妇”“aunt and her husband”生硬
 > 「あの、少し時間をください。
 >  おば夫婦や……友達を……
-“Um, please give me a little time. My aunt and her husband... and my friends...
+“Um, please give me a little time. My aunt and uncle... and my friends...
 ---
 >  せめて埋葬してあげたいんです」
 I want to at least bury them.”
 
 @17605 Quattro · クワトロ
+# 审校：“I don’t mind, but…”不像克瓦特罗
 > 「構わんが……我々も手伝おう」
-“I don't mind, but... we'll help too.”
+“Of course... We’ll help too.”
 
 @17606 Ark · アーク（本话主角）
 > 「でも……」

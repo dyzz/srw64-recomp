@@ -120,13 +120,14 @@ None of us would be alive if it weren't for Eiji.”
 “Heh, that's reassuring.”
 
 @18211 Le Cain · ル・カイン
+# 审校：同 19121
 > (地球か……。私が来たからには、
 >  帝国に刃を向ける者たちも
 (Earth, is it... Now that I have come, those who would turn their blades on the Empire
 ---
 >  私の足もとに血まみれの体を
 >  投げ出すことになろう)
-shall throw their blood-soaked bodies down at my feet.)
+will end up sprawled bloody at my feet.)
 
 @18212 Giura · ギウラ
 # 审校：精读：迎接上级到任的 ご苦労様です
@@ -134,9 +135,10 @@ shall throw their blood-soaked bodies down at my feet.)
 “Welcome, Your Excellency Le Cain.”
 
 @18213 Le Cain · ル・カイン
+# 审校：英文语序
 > 「そいつらか、
 >  使える地球人というのは」
-“So these are them. The Earthlings who are of use.”
+“So these are the useful Earthlings.”
 
 @18214 Giura · ギウラ
 > 「はっ、ロアン・デミトリッヒと
@@ -310,13 +312,14 @@ or else...”
 Does that mean we're supposed to just sit back and take it?”
 
 @18240 Banjo · 万丈
+# 审校：crushing his opening move 别扭
 > 「ル・カインか……大胆なことをする。
 >  だが、僕たちがこれから
-“Le Cain, huh... He's being bold. But as we go on fighting from here,
+“Le Cain, huh... He’s being bold. But as we go on fighting from here,
 ---
 >  戦っていく上で、
 >  彼の出端をくじくのは
-crushing his opening move will carry great significance.
+blunting his first move will mean a great deal.
 ---
 >  重要な意味がある。アランもいって
 >  いたが、彼を倒すことができれば
@@ -392,17 +395,18 @@ We have been completely surrounded.”
 “Yeah, looks like the real one has shown up.”
 
 @18254 Le Cain · ル・カイン
+# 审校：第二三页直译
 > 「なるほど、ワナと知りつつ
 >  あえて出てきたというのか
 “I see, so you dared to come out knowing full well it was a trap.
 ---
 >  地球人ごときが、
 >  こざかしい真似をする
-For mere Earthlings, you put on quite a clever act.
+Mere Earthlings, playing at being clever.
 ---
 >  だが、その浅はかさを
 >  身をもって知ることになる」
-But you will learn that foolishness firsthand.”
+But you will learn just how shallow that was, the hard way.”
 
 @18255 Le Cain · ル・カイン
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela

@@ -54,9 +54,9 @@ Is she at the base?”
 “This way...”
 
 @28036 ???
-# 审校：“Stop”不如“Halt”符合哨兵喝止口令，语气更贴合军事场景。
+# 审校：“怪しい奴”喊话不会译成“可疑的家伙”
 > 「とまれ、怪しい奴! 動くと撃つ!」
-“Halt, you suspicious character! Move and I'll shoot!”
+“Halt! Who goes there? Move and I’ll shoot!”
 
 @28037 Kamille · カミーユ
 # 审校：“Kgh”不是自然英文拟声，改为“Ngh!!”。
@@ -106,9 +106,9 @@ I knew you'd come to see me.”
 (Four, if you want your memories back, you must defeat the enemy.)
 
 @28047 Four · フォウ
-# 审校：はい＝递东西
+# 审校：原文有「」，补上引号
 > 「……はい、コーラ。おいしいよ」
-“...Here, have a cola. It's good.”
+“...Here, have a cola. It’s good.”
 
 @28048 Kamille · カミーユ
 > 「フォウ……」
@@ -304,12 +304,14 @@ you wanted your memories back so badly.”
 “Wait, Four! Snap out of it. It's me, Kamille. Don't you recognize me?!”
 
 @28085 Four · フォウ
+# 审校：わかる 是“知道你是谁”，接下一句的档案口吻
 > 「わかる!」
-“I recognize you!”
+“I know you!”
 
 @28086 Kamille · カミーユ
+# 审校：同上
 > 「わかる……?」
-“You recognize me...?”
+“You know me...?”
 
 @28087 Four · フォウ
 # 审校：原文“レジスタンスの戦闘パイロット”中“レジスタンス”是修饰语，译文“a combat pilot of the Resistance”稍显生硬，改为更自然的“a Resistance combat pilot”。
@@ -579,13 +581,13 @@ The system forcing her to fight should be at Jaburo.
 If we wipe out the enemy, it can be shut down.”
 
 @28139 Domon · ドモン
-# 审校：破折号
+# 审校：补引号
 > 「承知した! アレンビー、
 >  奪われたお前の魂は
 “Understood! Allenby, the soul they stole from you,
 ---
 >  この俺の拳で取り戻してやる!」
-I'll take it back with these fists of mine!”
+I’ll take it back with these fists of mine!”
 
 @28140 Wong · ウォン
 > 「ククククク、さぁお行きなさい、
@@ -622,13 +624,13 @@ The system forcing her to fight should be at Jaburo.
 If we wipe out the enemy, it can be shut down.”
 
 @28144 Domon · ドモン
-# 审校：破折号
+# 审校：补引号
 > 「承知した! アレンビー、
 >  奪われたお前の魂は
 “Understood! Allenby, the soul they stole from you,
 ---
 >  この俺の拳で取り戻してやる!」
-I'll take it back with these fists of mine!”
+I’ll take it back with these fists of mine!”
 
 @28145 Domon · ドモン
 > 「アレンビーッ!!」
@@ -655,13 +657,13 @@ we ever wanted!”
 “Uuuuuu... D-Domon...?”
 
 @28149 Domon · ドモン
-# 审校：願わくば
+# 审校：补引号；“但愿能……呼唤回来”不像祈求
 > 「アレンビー!? シャッフルの証しよ、
 >  願わくばアレンビーの
 “Allenby?! Crest of the Shuffle Alliance, I beg you,
 ---
 >  魂の拳を、呼び戻してくれ!」
-call back Allenby's fist of the soul!”
+call back Allenby’s fist of the soul!”
 
 @28150 Allenby · アレンビー
 > 「う……ドモン……アタシ………」
@@ -823,9 +825,10 @@ there's also the matter of the drugs. Have Dr. Hasan take a look at you.”
 “Well, of course I can tell.”
 
 @28180 Koji · 甲児
+# 审校：pushing her case、cruel guy 不像少年口语
 > 「でも、ファは押しが弱いからなぁ。
 >  カミーユもひどい奴だな」
-“But Fa's not good at pushing her case. Kamille's a cruel guy too.”
+“But Fa’s not the pushy type. And Kamille’s a real jerk about it.”
 
 @28181 Simone · シモーヌ
 > 「あんたもそうならないように
@@ -868,9 +871,10 @@ make a world where this never happens again.”
 “U... Waaaaaaaaaah!!”
 
 @28188 Master · マスター
+# 审校：东方不败不用缩写、不带语气词
 > 「フフフフ、奴らに手ひどく
 >  やられたようだな」
-“Heh heh heh, seems they gave you a real beating.”
+“Heh heh heh. It seems they gave you quite the thrashing.”
 
 @28189 Wong · ウォン
 > 「……まぁいいでしょう。まだ私には
@@ -882,22 +886,23 @@ make a world where this never happens again.”
 “And what of that Foundation of yours?”
 
 @28191 Wong · ウォン
-# 审校：先生＝东方先生
+# 审校：补引号
 > 「クククク、しょせん伝統に
 >  しがみついているような連中ですよ
-“Heh heh heh, they're just a bunch clinging to tradition.
+“Heh heh heh, they’re just a bunch clinging to tradition.
 ---
 >  それよりも先生の方はどうですか」
 More importantly, how are things on your end, Master?”
 
 @28192 Master · マスター
+# 审校：东方不败不用缩写
 > 「うむ、奴らが再びあらわれたのは
 >  都合がよいわ
-“Indeed. It's convenient that they've appeared again.
+“Indeed. It is convenient that they have appeared again.
 ---
 >  これで目的も
 >  達成しやすくなるというものよ」
-This will make it all the easier to achieve my goal.”
+It will make my goal all the easier to achieve.”
 
 @28193 Wong · ウォン
 # 审校：ウォン称呼东方不败为“東方先生”，按 address 应译为 Master Asia，而非 Master Touhou。
@@ -998,6 +1003,7 @@ seeks to rule the world,
 they still continue to hold the will to fight for their ideals.”
 
 @28201 Treize · トレーズ
+# 审校：put an end to themselves with decline 不通
 > 「美しく思われた人々の感情は
 >  常に悲しく、重んじた伝統も
 “The emotions of those we found beautiful are always sad, and the traditions we
@@ -1008,18 +1014,18 @@ cherished will in time vanish amid the cries of the weak. The victors in battle
 ---
 >  歴史の中で衰退という
 >  終止符を打たねばならず
-must in history put an end to themselves with decline,
+are fated, in history, to meet their end in decline,
 ---
 >  新たな時代の担い手は
 >  敗者の中にこそ生まれいずる」
-and the bearers of a new age are born precisely from among the defeated.”
+and the bearers of a new age are born from among the defeated.”
 
 @28202 Dermail · デルマイユ
 > 「トレーズ、何がいいたい?」
 “Treize, what are you trying to say?”
 
 @28203 Treize · トレーズ
-# 审校：与 33297 一致
+# 审校：补引号
 > 「私は、敗者になりたい」
 “I wish to be one of the defeated.”
 
@@ -1036,14 +1042,14 @@ but I don't wish for anything bloody. In light of your achievements thus far,
 Treize, I will have you confined.”
 
 @28205 Tubarov · ツバロフ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：去掉 As expected
 > 「そうですか、武装解除には
 >  応じませんでしたか
 “I see, so they refused to disarm.
 ---
 >  やはりトレーズ特佐の息のかかった
 >  者たちは、一筋縄ではいきませんな」
-As expected, the men in Special Colonel Treize's camp are no pushovers.”
+It seems anyone who came up under Special Colonel Treize is no pushover.”
 
 @28206 Dermail · デルマイユ
 > 「トレーズめ、

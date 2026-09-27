@@ -320,9 +320,10 @@ I just wish he'd realize that himself... But thank you, Anna.”
 hand over the Professor and that case.”
 
 @21035 Prof. Yumi · 弓教授
+# 审校：“even if it's only you”“你一个人”是直译
 > 「ぎ、銀鈴くん、君だけでも先に
 >  逃げてくれ」
-“G-Ginrei, just run ahead, even if it's only you.”
+“G-Ginrei, at least you should get away!”
 
 @21036 Ginrei · 銀鈴
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
@@ -386,9 +387,10 @@ Go! Giant Robo!”
 “We're moving out. Ginrei, Professor, hold on tight.”
 
 @21048 Bright · ブライト
+# 审校：“索敌”“slack off on your search”不像口语
 > 「まだ他にもいるかもしれん。
 >  索敵おこたるなよ」
-“There may be more of them. Don't slack off on your search.”
+“There may be more of them. Keep scanning.”
 
 @21049 Koji · 甲児
 > 「なんだよ、あれは」
@@ -423,10 +425,11 @@ Go! Giant Robo!”
 me here.”
 
 @21055 Banjo · 万丈
+# 审校：“Thanks for your hard work”是日语腔
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「ご苦労さま、きれいなお嬢さん。
 >  しかし、なぜ弓教授が?」
-“Thanks for your hard work, beautiful lady. But why is Professor Yumi with you?”
+“Well done, my lovely lady. But why is Professor Yumi with you?”
 
 @21056 Prof. Yumi · 弓教授
 > 「おお、万丈くん。実は研究施
@@ -538,9 +541,10 @@ that to someone you just met? Isn't that rude?”
 “Go! Crush them all!”
 
 @21077 Hayato · ハヤト
+# 审校：“aren't you Isamu”“你不是勇吗”读来别扭
 > 「間違いない……イサム、お前はイサム
 >  じゃないのか!?」
-“There's no mistake... Isamu, aren't you Isamu?!”
+“No mistake... Isamu. You’re Isamu, aren’t you?!”
 
 @21078 Boryuki · 暴竜鬼
 > 「お前……隼人か!?」
@@ -707,12 +711,13 @@ a human.”
 “Ha... ya... to... I'm...”
 
 @21107 Hayato · ハヤト
+# 审校：去掉 I will never forgive 套话
 > 「くっ……イサム……。帝国、そして
 >  百鬼一族め。おれは絶対に
-“Ngh... Isamu... The Empire, and the Hyakki Clan too. I will never
+“Ngh... Isamu... The Empire, and the Hyakki Clan too. You’ll all
 ---
 >  貴様らを許さんぞ!」
-forgive you bastards!”
+pay for this, I swear it!”
 
 @21108 Brad · ブラッド（按段落 3DD3）
 > 「やーれやれ、やっと終わったか」
@@ -814,8 +819,9 @@ All right, you bastards!”
 “What the heck, they ran off just like that. Are you hurt, miss?”
 
 @21123 Erika · エリカ
+# 审校：回答“Are you hurt?”不能用 Yes
 > 「ええ……ありがとう」
-“Yes... thank you.”
+“I’m fine... thank you.”
 
 @21124 Koji · 甲児
 > 「それで、なんで奴らに追われてたんだ?」

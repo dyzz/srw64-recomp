@@ -14,8 +14,9 @@
 “You might be killed any day now.”
 
 @21142 Koji · 甲児
+# 审校：去掉 it can't be helped
 > 「そうなっちまったら、しかたのないことさ」
-“If that happens, it can't be helped.”
+“If it comes to that, then that’s just how it is.”
 
 @21143 Erika · エリカ
 > 「えぇっ!?」
@@ -61,8 +62,9 @@ And for that, even if I end up a sacrifice, I won't regret it.”
 “Humanity's... future... I...”
 
 @21147 Boss · ボス
+# 审校：老大在英文里其他处都叫 Koji，统一称呼
 > 「兜のやつ、どうしちまったんだ!?」
-“What's gotten into Kabuto?!”
+“What’s gotten into Koji?!”
 
 @21148 Sayaka · さやか
 > 「ふんっ、女の前でカッコつけてる
@@ -128,9 +130,10 @@ My town was attacked by the Imperial army, and...”
 “We're coming too. That okay? Ryoma, Musashi.”
 
 @21160 Ryoma · リョウ
+# 审校：“If that's decided”是直译
 > 「もちろんだ。そうと決まれば、
 >  すぐ出よう」
-“Of course. If that's decided, let's head out right away.”
+“Of course. Then let’s head out right away.”
 
 @21161 Emma · エマ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -157,9 +160,10 @@ You might run into the enemy, after all.”
 “Fine, you have my permission. But keep pilots on standby on the Albion too.”
 
 @21164 Koji · 甲児
+# 审校：去掉 As expected of you
 > 「さっすが、話がわかるね艦長。
 >  よし、行こうエリカ」
-“As expected of you, Captain, you get it. All right, let's go, Erika.”
+“Now that’s our Captain, he gets it. All right, let’s go, Erika.”
 
 @21165 Ryoma · リョウ
 > 「敵はいないようだな」
@@ -281,9 +285,10 @@ Send out interceptors at once! Call back the group that went to town!”
 “...Well, well, this is bad. We're surrounded by armed locals here.”
 
 @21188 Hayato · ハヤト
+# 审校：remodeled 用在人身上不自然
 > 「まさか、住民たちはすでに奴らに
 >  改造されちまってたのか……」
-“Don't tell me the townspeople were already remodeled by them...”
+“Don’t tell me the townspeople had already been converted by them...”
 
 @21189 Koji · 甲児
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -619,9 +624,10 @@ rain of bullets.”
 “She's right... that might actually get us through.”
 
 @21252 Koji · 甲児
+# 审校：“If that's settled”“别久留”生硬
 > 「わかった、エリカ、頼む。そうと決まれ
 >  ば長居は無用だ。みんな行こうぜ!」
-“All right, Erika, I'm counting on you. If that's settled, there's no point in staying. Everyone, let's go!”
+“All right, Erika, I’m counting on you. Then there’s no point hanging around. Everyone, let’s go!”
 
 @21253 Ryoma · リョウ
 > 「いけるか……」
@@ -774,9 +780,10 @@ isn't she? There's no reason to protect her.”
 Everyone should be able to see that.”
 
 @21283 Bright · ブライト
+# 审校：竜馬やデビッドたち 不止两人
 > 「しかしな……。竜馬やデビッドたちも
 >  同じなのか?」
-“But still... Ryoma, David, do you two feel the same?”
+“But still... Ryoma, David, do the rest of you feel the same?”
 
 @21284 Ryoma · リョウ
 > 「はい。悪いのは帝国とそれにくみする
@@ -784,13 +791,14 @@ Everyone should be able to see that.”
 “Yes. The ones at fault are the Empire and those who side with them.”
 
 @21285 Quattro · クワトロ
+# 审校：“no telling whether she won't”双重否定拗口
 > 「それは確かだが、彼女は君たちを
 >  殺すことができなかったという
-“That may be true, but all it means is that she couldn't bring herself to kill you.
+“That may be true, but all it means is that she couldn’t bring herself to kill you.
 ---
 >  だけにすぎない。同じ理由から、
 >  また敵に協力しないとも限らん」
-For the same reason, there's no telling whether she won't help the enemy again.”
+For the same reason, there’s no guarantee she won’t help the enemy again.”
 
 @21286 Daisaku · 大作
 > 「そんなことありません! あの人は、
@@ -1098,13 +1106,14 @@ Captain, what about the Liberation Front?!”
 and every organization out there has taken devastating damage.”
 
 @21333 Amuro · アムロ
+# 审校：“should have had a considerable”别扭
 > 「まさか!? こちらだって、かなりの
 >  情報網があったはずだ。それだけ
-“No way! We should have had a considerable intelligence network ourselves. An operation
+“No way! We had a decent intelligence network of our own. An operation
 ---
 >  大規模な作戦なら少しくらいは
 >  事前の動きがつかめていたはずだろ?」
-that large should have shown some signs beforehand, shouldn't it?”
+that large should have shown some signs beforehand, shouldn’t it?”
 
 @21334 Quattro · クワトロ
 > 「いや、ありうるな。ル・カインならば、

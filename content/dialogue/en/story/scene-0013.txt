@@ -81,12 +81,13 @@ More importantly, Anna, how's Eiji holding up?”
 “...For now, he seems calm. But still...”
 
 @18910 Aboly · アポリー
+# 审校：对安娜说，是英二的姐姐，不是“你姐姐”
 > 「姉の婚約者だったって
 >  話だからな
-“He was your sister's fiance, after all.
+“The man was his sister’s fiance, after all.
 ---
 >  ま、少しくらいはしかたがないか……」
-Well, I suppose a little of that's only natural...”
+Well, I suppose a little of that’s only natural...”
 
 @18911 David · デビッド
 > 「なに、あいつだって、だてに帝国に
@@ -236,17 +237,18 @@ get killed by Eiji and those Earthlings.”
 “...”
 
 @18930 Bright · ブライト
+# 审校：make them know 不地道
 > 「作戦の手順は説明したとおりだ
 >  敵の新型のデータ収集が
 “The operation procedure is as I explained. Our objective is to gather data on
 ---
 >  目的だが、可能ならば捕獲
 >  したい。もう1つの目的は
-the enemy's new model, and if possible, to capture it. Our other objective is
+the enemy’s new model, and if possible, to capture it. Our other objective is
 ---
 >  我々が帝国に対して
 >  積極的に戦う意思と力を
-to make them know that we possess both the will and the strength
+to make it known that we have both the will and the strength
 ---
 >  持っているということを
 >  知らしめることにある。大尉」
@@ -270,9 +272,10 @@ fighting strength. However, Imperial reinforcements will come. Don't forget that
 destroying the enemy base is not our objective.”
 
 @18932 Bright · ブライト
+# 审校：That's how it is 是日语腔
 > 「そういうことだ。みんな頼むぞ。
 >  では、出撃だ」
-“That's how it is. I'm counting on all of you. Now, launch.”
+“That’s the plan. I’m counting on all of you. Now, launch.”
 
 @18933 Fa · ファ
 > 「カミーユ、 待ってよカミーユ」
@@ -622,17 +625,17 @@ Stop him!”
 “I'll show you proof!”
 
 @18998 Bask · バスク
-# 审校：“show our faces to the regular army”误解了“示しがつかん”，改为“set an example for the regular army”。
+# 审校：示しがつかん是丢脸，不是树榜样
 > 「レジスタンスどもが
 >  調子に乗りおって
 “Those Resistance dogs are getting cocky.
 ---
 >  これでは正規軍にたいして
 >  示しがつかん
-At this rate we can't set an example for the regular army.
+At this rate we’ll be a laughingstock to the regular army.
 ---
 >  やつらを逃がすな!」
-Don't let them escape!”
+Don’t let them escape!”
 
 @18999 Giura · ギウラ
 > 「苦戦しているようだな。
@@ -696,12 +699,13 @@ Did you really kill Gale?”
 “...Y-Yes, it's true. But Sis...”
 
 @19011 Julia · ジュリア
+# 审校：去掉 I can't forgive you
 > 「……ゲイルは私のすべてだった
 “...Gale was everything to me.
 ---
 >  私はお前たちを
 >  許すわけにはいかない」
-I can't forgive you people.”
+I cannot let you people go unpunished.”
 
 @19012 Eiji · エイジ
 > 「待ってくれ、姉さん!」
@@ -712,12 +716,13 @@ I can't forgive you people.”
 “Die, Eiji!”
 
 @19014 Gosterro · ゴステロ
+# 审校：英文更像疯子台词
 > 「ゲイルの後を追わせてやろうかぁ
-“Shall I let you follow Gale?
+“How about I send you after Gale?
 ---
 >  えぇっ! たまらないなぁ
 >  人殺しというのはぁ!」
-Eeeh! Killing people is just irresistible!”
+Eh?! Nothing beats killing, nothing at all!”
 
 @19015 Gosterro · ゴステロ
 > 「こぞうは、いないようだなぁ、
@@ -725,12 +730,13 @@ Eeeh! Killing people is just irresistible!”
 “The brat doesn't seem to be here, eh, Julia?”
 
 @19016 Julia · ジュリア
+# 审校：同 19011
 > 「エイジ……ゲイルは私のすべてだった
 “Eiji... Gale was everything to me.
 ---
 >  私はお前たちを
 >  許すわけにはいかない」
-I can't forgive you people.”
+I cannot let you people go unpunished.”
 
 @19017 Gosterro · ゴステロ
 > 「ひゃーはははははぁ。
@@ -738,9 +744,10 @@ I can't forgive you people.”
 “Hyahahahaha! I'll kill every last one of you!”
 
 @19018 Gosterro · ゴステロ
+# 审校：wipe you from existence 生硬
 > 「貴様ら、影も形もないように
 >  してやる!!」
-“You lot, I'll wipe you from existence!!”
+“I’ll wipe you all out, not a trace left!!”
 
 @19019 Julia · ジュリア
 > 「あぁぁぁぁぁぁぁぁーっ!!」
@@ -767,9 +774,10 @@ We've accomplished our objective well enough. All units, retreat!”
 And that boy, too...”
 
 @19023 Gosterro · ゴステロ
+# 审校：ME of all people 不像嘶吼
 > 「くそぉぉっ、貴様ら、貴様らッ
 >  こ、この俺をぉぉぉーっ!!!」
-“Damn youuu, you, you lot, me, ME of all peopleee!!!”
+“Damn youuu, you, you bastards... doing this to ME!!!”
 
 @19024 Quattro · クワトロ
 > 「どうやらこの辺りが限界か……
@@ -849,13 +857,14 @@ And that boy, too...”
 “What's wrong, Kamille Bidan? Aren't you coming?”
 
 @19037 Kamille · カミーユ
+# 审校：更何况/more than anything 冗余
 > 「……いえ、いきます。
 >  帝国軍は嫌いですし
-“...No, I'm coming. I hate the Imperial Army,
+“...No, I’m coming. I hate the Imperial Army,
 ---
 >  なによりスペシャルズは
 >  もっと嫌いなんです」
-and more than anything, I hate the Specials even more.”
+and I hate the Specials even more.”
 
 @19038 Eiji · エイジ
 > 「くっ……姉さん……」
@@ -907,9 +916,10 @@ it's to make sure his resolve isn't wasted.”
 “But, but there has to be a way to do this without fighting...”
 
 @19046 Quattro · クワトロ
+# 审校：第四页英文语法别扭
 > 「ないな。
 >  皆が君のように
-“There isn't. If everyone had
+“There isn’t. If everyone had
 ---
 >  やさしい心を持っているのならば
 >  可能かもしれんが
@@ -917,14 +927,14 @@ a gentle heart like yours, it might be possible,
 ---
 >  我々にはその方法は
 >  見つけられなかった
-but we couldn't find such a way.
+but we couldn’t find such a way.
 ---
 >  帝国のことを、もっともよく知って
 >  いるはずのエイジくんの行動も
-Eiji's actions, when he should know the Empire better than anyone,
+The actions of Eiji, who knows the Empire better than any of us,
 ---
 >  それを裏づけている」
-prove that.”
+bear that out.”
 
 @19047 Anna · アンナ
 > 「だけどそんなの……
@@ -966,15 +976,16 @@ Is this him, young Kamille?”
 “No, it's nothing like that...”
 
 @19055 Blex · ブレックス
+# 审校：对卡缪说，原文是主角和你两人
 > 「{HeroName}くんや君の協力で
-“Thanks to your cooperation, {HeroName},
+“Thanks to {HeroName} and to you,
 ---
 >  帝国の試作機が2機も
 >  手に入った
-we've gotten our hands on two Imperial prototypes.
+we’ve gotten our hands on two Imperial prototypes.
 ---
 >  普通ではできないことだ」
-That's no ordinary feat.”
+That’s no ordinary feat.”
 
 @19056 Ark · アーク（按段落 3DD1）
 > 「僕も……ですか?」
@@ -990,9 +1001,10 @@ That's no ordinary feat.”
 “It just happened to turn out that way.”
 
 @19059 Kamille · カミーユ
+# 审校：接塞莱因的话，简短
 > 「僕の場合も、そう思います。
 >  偶然が重なっただけです」
-“In my case too, I think so. It was just a series of coincidences.”
+“Same for me, I think. It was just a series of coincidences.”
 
 @19060 Blex · ブレックス
 # 审校：初稿混入了全角斜线“／”，改为正常英文断句。
@@ -1251,10 +1263,10 @@ Now I'm the one who's turned into the bad guy.”
 “Huh... what...?”
 
 @19091 Duo · デュオ
-# 审校：Duo's casual tone is better served by 'miss' instead of the overly formal 'my lady', and the contractions are kept for his slangy voice.
+# 审校：迪奥痞气口吻；みちゃいけねぇ是不让她看
 > 「おっと、みちゃいけねぇ。お嬢さん、
 >  なんかわけありみたいだけど
-“Whoa, I shouldn't look. Miss, seems like you've got some kind of situation,
+“Whoa, that’s not for your eyes. Miss, seems like you’ve got some kind of situation,
 ---
 >  すぐ、こっから立ち去るのが
 >  身のためだ
@@ -1262,10 +1274,10 @@ but for your own good, you should get out of here right away.
 ---
 >  この時代に立派な身なりの
 >  A級市民とはいえ
-Even if you're a fine-dressed A-class citizen in this era,
+Even if you’re a well-dressed A-class citizen in this day and age,
 ---
 >  お嬢さんを殺すのは、忍びない」
-I can't bring myself to kill you, miss.”
+I can’t bring myself to kill a girl like you.”
 
 @19092 Relena · リリーナ
 > 「ヒイロ!?」

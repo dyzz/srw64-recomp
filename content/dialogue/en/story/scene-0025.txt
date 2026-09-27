@@ -271,9 +271,10 @@ Now I want to know all the more...)
 “What are we gonna do, Captain?”
 
 @21634 Amuro · アムロ
+# 审校：“must be destroyed”读起来像命令
 > 「ブライト、残念だがあきらめるしかない
 >  地下基地は壊滅だろう」
-“Bright, it's a shame, but we have no choice but to give up. The underground base must be destroyed.”
+“Bright, it’s a shame, but we have no choice but to give up. The underground base is surely gone.”
 
 @21635 Bright · ブライト
 > 「くっ……全速で
@@ -357,13 +358,14 @@ He's alive.)
 “So it's going according to plan, Shapiro.”
 
 @21651 Shapiro · シャピロ
+# 审校：“push the Empire”不达意
 > 「はい。あとは閣下のお力で連中を
 >  倒せば、帝国にも無理がききます
-“Yes. After that, if Your Excellency's power destroys them, we can push the Empire as well.
+“Yes. Once Your Excellency’s power has crushed them, we’ll have leverage with the Empire as well.
 ---
 >  ショットどのと合流できれば
 >  閣下のお力は
-If we can join forces with Lord Shot, Your Excellency's power
+If we can join forces with Lord Shot, Your Excellency’s power
 ---
 >  帝国にもひけをとらぬでしょう」
 would be a match even for the Empire.”
@@ -398,22 +400,24 @@ Fujiwara... and Sara.”
 “Hmph... A man who has abandoned his past has no need for such things.”
 
 @21657 Allen · アレン
+# 审校：“movement Show Zama”“动作不是座间翔”都不通
 > 「おいトッド、あのオーラバトラーの動き、
 >  ショウ・ザマじゃないのか」
-“Hey Tod, isn't that Aura Battler's movement Show Zama?”
+“Hey, Tod, the way that Aura Battler moves... that’s Show Zama, isn’t it?”
 
 @21658 Tod · トッド
 > 「ショウ!? やはり地上に出ていたか」
 “Show?! So he did come to the surface after all.”
 
 @21659 Dr. Gura · グラー博士
+# 审校：“went to the trouble of increasing”生硬
 > 「これで我らの役目は終わりじゃ
 >  せっかく増やした鬼兵士を
-“With this, our role is finished. There's no point wasting the
+“With this, our role is finished. No point wasting the
 ---
 >  ムダにすることもない。撤退するぞ
 >  む? 牛餓鬼、なにをする?」
-demon soldiers we went to the trouble of increasing. We're withdrawing. Hm? Gyugaki, what are you doing?”
+demon soldiers we worked so hard to build up. We’re withdrawing. Hm? Gyugaki, what are you doing?”
 
 @21660 Gyugaki · 牛餓鬼
 # 审校：百鬼 统一 Hyakki
@@ -458,12 +462,13 @@ Dr. Gura, please forgive my selfishness.”
 “If he tries to ram us, that'd be bad. Everyone, be careful.”
 
 @21667 Dr. Gura · グラー博士
+# 审校：同 21659
 > 「これで我らの役目は終わりじゃ
 >  せっかく増やした鬼兵士を
-“With this, our role is finished. There's no point wasting the
+“With this, our role is finished. No point wasting the
 ---
 >  ムダにすることもない。撤退するぞ」
-demon soldiers we went to the trouble of increasing. We're withdrawing.”
+demon soldiers we worked so hard to build up. We’re withdrawing.”
 
 @21668 Ryoma · リョウ
 # 审校：百鬼 统一 Hyakki
@@ -524,9 +529,10 @@ Even now, you can still change your mind.”
 “Those aren't words I want to hear from a traitor.”
 
 @21677 Shapiro · シャピロ
+# 审校：“quite fallen to being”别扭
 > 「フ……お前もすっかりスケールの小さな
 >  地球人になりさがったな」
-“Heh... You've quite fallen to being a small-minded Earthling too.”
+“Heh... So you’ve sunk to being a small-minded Earthling as well.”
 
 @21678 Shinobu · 忍
 > 「シャピロッ! てめぇ今度こそ、
@@ -1000,9 +1006,9 @@ but it seems it withdrew when it saw us. Take a look.”
 “Same to you, Marvel. Are you all right?”
 
 @21765 Marvel · マーベル
-# 审校：原文“助かったわ”是被动/结果含义“得救了”，初稿“you saved me”把主语变成对方，改为“I was saved”更忠实。
+# 审校：“but I was saved”“不过，得救了”接不上
 > 「ええ……でも、助かったわ」
-“Yes... but I was saved.”
+“Yes... You really saved me.”
 
 @21766 Astonaige · アストナージ
 > 「……誰なんだ?」
@@ -1121,14 +1127,14 @@ a great deal as well. We're doing this out of necessity, so don't worry about it
 but the Resistance scum toyed with him and killed him. A shame.”
 
 @21786 Gyukenki · 牛剣鬼
-# 审校：原文“仇をうってやる”的对象是儿子，初稿“avenge you”变成对儿子直接喊话，改为“avenge him”更符合叙述语气。
+# 审校：去掉 I won't forgive 套话；blessed to me 不自然
 > 「おおぉぉ、なんということだ。年老いて
 >  やっとさずかった、ひとり息子を……
-“Ohhh, how could this be. My only son, finally blessed to me in my old age...
+“Ohhh, how could this be. My only son, finally granted to me in my old age...
 ---
 >  許さんぞきゃつらめ、地の果てまで
 >  追いかけて必ず仇をうってやる!
-I won't forgive them! I'll chase them to the ends of the earth and avenge him for certain!
+They’ll pay for this! I’ll chase them to the ends of the earth and avenge him!
 ---
 >  まっていろよ!!」
 Just you wait!!”

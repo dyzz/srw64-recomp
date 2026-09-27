@@ -32,8 +32,9 @@ they're just not coming back.”
 “...Captain, we're getting a transmission from Alan of Karaba.”
 
 @22301 Bright · ブライト
+# 审校：So it’s come 生硬
 > 「来たか。まわしてくれ」
-“So it's come. Put him through.”
+“There it is. Put him through.”
 
 @22302 Bright · ブライト
 > 「なるほど、やはり敵が引き上げたのは
@@ -184,9 +185,10 @@ occupation forces to the resistance.”
 He's been working energetically.”
 
 @22322 Bright · ブライト
+# 审校：问号句不通
 > 「話の途中で悪いが、
 >  状況の整理を続けたいのだが?」
-“Sorry to interrupt, but I'd like to continue sorting out our situation?”
+“Sorry to interrupt, but could we get back to sorting out the situation?”
 
 @22323 Koji · 甲児
 > 「ちょっと待った。艦長、
@@ -294,13 +296,15 @@ Eiji Asuka, and those who fought alongside him... in other words, all of you.”
 “...So you're saying we need to intercept Le Cain?”
 
 @22337 Alan · アラン
+# 审校：“其他危险波及”不通
 > 「そうだ。それまで他に危険が
 >  およぶのは避けたい」
-“That's right. Until then, I want to avoid any other danger spreading.”
+“That’s right. Until then, I’d rather not have the danger spread anywhere else.”
 
 @22338 Bright · ブライト
+# 审校：去掉 It can’t be helped
 > 「しかたがないな。いいでしょう」
-“It can't be helped, then. Very well.”
+“No way around it, then. Very well.”
 
 @22339 Alan · アラン
 > 「頼みます。それとギャリソンのつかんだ
@@ -651,10 +655,10 @@ stuck with these guys who barely say a word?”
 “Gundaaaaam...”
 
 @22404 ???
-# 审校：“flaunting”过于书面，与说话人粗犷的武者口吻不符，改为更口语的“showing off”
+# 审校：东方不败不用缩写，语气更古雅
 > 「待てぃ! こんなところでやたらと
 >  ロボットを出すでない」
-“Hold it! Don't go showing off your robots in a place like this!”
+“Hold! Do not go carelessly calling out your robots in a place like this.”
 
 @22405 Duo · デュオ
 > 「な……なんだぁ!?」
@@ -901,9 +905,10 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Master? ... Master?!”
 
 @22456 Master · マスター
+# 审校：东方不败不用缩写
 > 「どこを見ておる。
 >  ワシはここだ。ここにおる!」
-“Where are you looking? I'm right here. Here!”
+“Where are you looking? I am right here. Right here!”
 
 @22457 Domon · ドモン
 > 「師匠!!」
@@ -946,10 +951,10 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Look! The East is burning red!!”
 
 @22466 Master · マスター
-# 审校：Master 的 voice 要求不用缩略形式，it's 应改为 it has。
+# 审校：my acknowledged 生硬；中文顺句
 > 「フッ、久しぶりだな、ドモン。いや、
 >  ワシが認めたキング・オブ・ハートよ」
-“Heh, it has been a long time, Domon. No, my acknowledged King of Hearts.”
+“Heh, it has been a long time, Domon. No... the King of Hearts I myself acknowledged.”
 
 @22467 Domon · ドモン
 > 「師匠……
@@ -957,9 +962,9 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Master... I have longed to see you!!”
 
 @22468 Master · マスター
-# 审校：Master 的 voice 要求不用缩略形式，What's 应改为 What is。
+# 审校：Why is a man crying 直译
 > 「どうした、男子たるものがなんで泣く」
-“What is wrong? Why is a man crying?”
+“What is this? Since when does a man cry?”
 
 @22469 Duo · デュオ
 > 「なんなんだよ、こいつら……。
@@ -977,12 +982,13 @@ He just destroyed a Mobile Suit with his bare hands!”
 “Yes.”
 
 @22472 Master · マスター
+# 审校：英文语序别扭；中文去掉“呢”
 > 「ふむ……やはりワシとお前は、
 >  目に見えぬ縁で
-“Hmm... It seems you and I are, after all, bound by a bond unseen,
+“Hmm... Perhaps you and I are bound
 ---
 >  結ばれておるのやもしれんな」
-perhaps.”
+by some unseen thread of fate after all.”
 
 @22473 Domon · ドモン
 > 「どういうことですか、師匠?」
@@ -1024,9 +1030,10 @@ the Dark Gundam's minions, the Death Army.”
 “The Dark Gundam's minions... the Death Army...”
 
 @22481 Master · マスター
+# 审校：去掉 can’t be helped，东方不败不用缩写
 > 「あれだけの数が来てはしかたあるまい。
 >  ドモンよ、ガンダムを呼ぶがよい」
-“With that many coming, it can't be helped. Domon, call your Gundam.”
+“With that many coming, there is nothing for it. Domon, call your Gundam.”
 
 @22482 Domon · ドモン
 > 「はい師匠!」
@@ -1164,10 +1171,10 @@ has not seen such a fine display in a long while.”
 my Master, Master Asia, the Undefeated of the East!”
 
 @22508 ???
-# 审校：原文“倒せませんか”是说话人对ドモン等人说“你们”，初稿译成 them 指代错误，改为 you。
+# 审校：倒せません 说的是打不倒对方，不是 you
 > 「フフフフ、やはり
 >  あの程度では倒せませんか」
-“Heh heh heh, so that level of foe won't bring you down after all.”
+“Heh heh heh, so that level of opposition was not enough to bring them down after all.”
 
 @22509 ???
 > 「ああ。奴らもだてに
@@ -1209,9 +1216,10 @@ left in this land tremble in fear and cannot sleep at night.”
 “So that's why you took a stand, Master.”
 
 @22515 Master · マスター
+# 审校：东方不败自称统一“老夫”；英文 even one more 生硬
 > 「民衆の嘆きを放っては
 >  おけなんだでな。だが、いかんせん
-“I could not simply ignore the people's grief. But alas,
+“I could not simply ignore the people’s grief. But alas,
 ---
 >  ワシひとりでは難儀しておったところよ
 >  ドモン、それに他の方々よ
@@ -1219,7 +1227,7 @@ on my own I was struggling. Domon, and all of you as well,
 ---
 >  今はひとりでも味方がほしい。
 >  ここで出会うたのも何かの縁
-right now I want allies, even one more. Meeting you here must be fate.
+right now I would welcome every ally I can get. Meeting you here must be fate.
 ---
 >  ともに戦ってはくれまいか。
 >  そう、この東方不敗
@@ -1414,12 +1422,13 @@ let's split into two groups. Domon, I'll leave one to you.”
 “We won't lose either, Master.”
 
 @22552 Ginrei · 銀鈴
+# 审校：银铃不是徒弟，お師匠さん 指多蒙的师父
 > 「……確かこのあたりだったはずだけど……
 >  お師匠さんたちは
-“...It should be somewhere around here... It seems Master and the others
+“...It should be somewhere around here... It seems Domon’s master and the others
 ---
 >  まだ来ていないようね」
-haven't arrived yet.”
+haven’t arrived yet.”
 
 @22553 Domon · ドモン
 > 「ああ……しかし誰もいないな」
@@ -1443,12 +1452,13 @@ haven't arrived yet.”
 “Yeah, seems so.”
 
 @22558 ???
+# 审校：去掉 It can’t be helped
 > 「フフフ、頭の回転もいいようですね。
 >  お嬢さんがいるのは意外でしたが
-“Heh heh, you're quick on the uptake too, I see. I didn't expect the young lady to be here, though.
+“Heh heh, you’re quick on the uptake too, I see. I didn’t expect the young lady to be here, though.
 ---
 >  しかたがありません」
-It can't be helped.”
+But so be it.”
 
 @22559 Domon · ドモン
 > 「……ッ!! お前たち……まさか!?」
@@ -1515,9 +1525,11 @@ It can't be helped.”
 “...It seems this is no ordinary power.”
 
 @22574 Domon · ドモン
+# 审校：中文“……的话”悬空；英文 Not in the name 语义反
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あれは……まさかDG細胞!?
 >  そうか……お前たちがデビルガンダムの
-“That's... don't tell me, DG Cells?! I see... so you've become pawns of the Dark Gundam.
+“That’s... don’t tell me, DG Cells?! I see... so you’ve become pawns of the Dark Gundam.
 ---
 >  いや、キョウジの手先に
 >  なってしまったのなら
@@ -1525,4 +1537,4 @@ No, of Kyoji.
 ---
 >  俺は、負けるわけにはいかない!
 >  キング・オブ・ハートの名にかけても!!」
-I can't afford to lose! Not in the name of the King of Hearts!!”
+I can’t afford to lose! I swear it on the name of the King of Hearts!!”

@@ -89,29 +89,31 @@ taken the name of the Treize faction and risen in revolt against the OZ mainstre
 that is to say, the Romefeller Foundation faction.”
 
 @28864 David · デビッド
+# 审校：戴维口吻，去掉“呢”
 > 「はあ。あのおっさんって
 >  人望厚いんだなあ
 “Huh. That old man sure is popular.
 ---
 >  わけのわかんないところが、いいのかね」
-I wonder if it's that incomprehensible side of him that does it.”
+Guess it’s the part nobody can figure out that people like.”
 
 @28865 Bright · ブライト
 > 「それで、現状は?」
 “So, what is the current situation?”
 
 @28866 Noin · ノイン
+# 审校：the crucial Treize 不像英文
 > 「トレーズ派は苦戦しています。
 >  もともと物量で
 “The Treize faction is struggling. They were already overwhelmed
 ---
 >  圧倒されている上に、かんじんの
 >  トレーズはいまだに姿を現さない
-by sheer numbers, and on top of that, the crucial Treize has yet to appear.
+by sheer numbers, and on top of that, Treize himself has yet to show his face.
 ---
 >  組織の面でも
 >  不利といわざるをえません」
-Organizationally as well, one must say they are at a disadvantage.”
+Organizationally, too, they’re at a disadvantage.”
 
 @28867 Alan · アラン
 > 「それでは、鎮圧は
@@ -301,9 +303,9 @@ inside a nation of complete pacifism. Fuhahahaha!”
 it's only a matter of time before it spreads here...”
 
 @28891 Hayato · ハヤト
-# 审校：Hayato's casual, sardonic tone doesn't fit the formal 'Mr. Pagan'; address should match his blunt style.
+# 审校：隼人的挖苦口吻
 > 「動かなくていいのかい、パーガンさんよ」
-“Are you sure you don't want to move, Pagan?”
+“Sure you don’t want to make a move, Pagan?”
 
 @28892 Pagan · パーガン
 > 「……今しばらくお待ち下さい。
@@ -319,26 +321,27 @@ directly attacked, so...”
 “That too is only a matter of time. You'd best make up your mind.”
 
 @28894 Pagan · パーガン
+# 审校：语序顺一下
 > 「それはリリーナ様もご承知です。
 >  ですが、最後まであきらめずに
-“Lady Relena understands that as well. But she wishes to keep searching
+“Lady Relena understands that as well. But she means to keep searching
 ---
 >  戦闘を回避する道を
 >  探そうとなさっておられる
-for a way to avoid battle without giving up until the very end.
+for a way to avoid a battle, right up to the very end.
 ---
 >  どうか、今しばらく……」
 Please, just a little longer...”
 
 @28895 Beltorchika · ベルトーチカ
-# 检查提示：未用必用译名：ブライト艦→Bright's ship
+# 审校：句尾 so... 悬空
 > 「ブライト艦長、ノインさんから
 >  入電! トレーズ派部隊が
-“Captain Bright, an incoming message from Noin! Treize's forces are being
+“Captain Bright, an incoming message from Noin! Treize’s forces are being
 ---
 >  ロームフェラ派の追撃を受け、
 >  国境内に追いこまれたと……」
-pursued by the Romefeller faction and have been driven inside the border, so...”
+pursued by the Romefeller faction and have been driven inside our borders...”
 
 @28896 Bright · ブライト
 > 「……まずいな。奴らの思うつぼだ」
@@ -505,9 +508,10 @@ Cease combat immediately and withdraw from this nation!”
 abandon the wounded to die. But...”
 
 @28915 Eiji · エイジ
+# 审校：we can only help 生硬
 > 「彼らに退去してもらうしかない。
 >  せめて安全に逃げてもらうしか……」
-“We've got no choice but to make them withdraw. At the very least, we can only help them escape safely...”
+“All we can do is have them leave. At the very least, help them get away safely...”
 
 @28916 Amuro · アムロ
 > 「無理だ。国境周辺は
@@ -675,22 +679,24 @@ It's not OZ... Could this be?!”
 “What?! Damn it, of all times!”
 
 @28940 Hayato · ハヤト
+# 审校：隼人口吻
 > 「よりによって
 >  問答無用の連中とはな
 “Of all the unreasonable bastards to show up.
 ---
 >  いちばん来てほしくねえ奴らが
 >  来やがったか!」
-The ones I least wanted to see came after all!”
+The last guys I wanted to see, and here they are!”
 
 @28941 Bright · ブライト
+# 审校：つまらん気 指自决念头
 > 「くっ……! やむをえん、
 >  総員戦闘配置!
-“Ngh...! We've got no choice. All hands, battle stations!
+“Ngh...! We’ve got no choice. All hands, battle stations!
 ---
 >  諸君、話はあとだ。
 >  いいか、つまらん気は起こすなよ!」
-Everyone, we'll talk later. Listen, don't do anything foolish!”
+Everyone, we’ll talk later. And don’t get any foolish ideas!”
 
 @28942 Specials · スペシャルズ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -840,13 +846,15 @@ launch immediately!”
 for Mazinger Z.”
 
 @28965 Koji · 甲児
+# 审校：口吻卡：Gramps
 > 「おじいちゃんが……」
-“Grandpa did...”
+“Gramps did...”
 
 @28966 Prof. Yumi · 弓教授
+# 审校：should never have been built 是误读
 > 「だが設計図の段階までで、
 >  実際にはつくられなかったはずだ」
-“But it never got past the blueprint stage. It should never have actually been built.”
+“But it never got past the blueprint stage. It was never actually built, as far as I know.”
 
 @28967 Marquis Janus · ヤヌス侯爵
 > 「兜博士の設計図を盗んで、
@@ -970,9 +978,10 @@ using her as they please! Hang on, Minerva X... here I come!”
 “{PartnerName}... Fine, I'll finish this here and now!”
 
 @28991 Kurtz · カーツ（按段落 3DD3）
+# 审校：Don’t mock me 直译，卡兹不说俚语
 > 「チッ、奴がいないのか! この俺に
 >  恐れをなしたか!? ふざけおって!」
-“Tch, so he's not here! Did he take fright at me?! Don't mock me!”
+“Tch, so he’s not here! Is he afraid of me?! How dare he!”
 
 @28992 Kurtz · カーツ（按段落 3DD3）
 > 「ばかな……ばかなばかなばかなぁ!!
@@ -1014,9 +1023,10 @@ Not to the likes of you!!”
 “A boy, is it? What do you want?”
 
 @28997 Ark · アーク（按段落 3DD1）
+# 审校：口语化
 > 「聞かせてくれないか。いまのあんたは、
 >  何のために戦っているのかをさ」
-“Won't you tell me? What are you fighting for now?”
+“Tell me something. What is it you’re fighting for now?”
 
 @28998 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「なに?」
@@ -1043,21 +1053,23 @@ you were talking about?”
 “Can't answer me?”
 
 @29002 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“自认……战斗”机翻腔
 > 「私は……いまでも正しいと信じる道
 >  で、戦っているつもりだ。地球圏は
-“I... believe even now that I am fighting on the path I hold to be right. The Earth Sphere
+“I... still believe the path I fight on is the right one. The Earth Sphere
 ---
 >  早急に統一されなければならない」
-must be unified at once.”
+must be unified, and soon.”
 
 @29003 Ark · アーク（按段落 3DD1）
+# 审校：第二页英文别扭
 > 「なら俺たちがやっていることは間違い
 >  か? いまのあんたに、そういえるのか!?
-“Then is what we're doing wrong? Can you really say that now?!
+“Then is what we’re doing wrong? Can you really say that now?!
 ---
 >  ジャミトフやバスクのような連中に、
 >  いいように使われてるあんたに!?」
-You, who are being used as they please by the likes of Jamitov and Bask?!”
+You, a tool for the likes of Jamitov and Bask to use as they please?!”
 
 @29004 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……ならばこちらからも聞かせてもらおう
@@ -1097,9 +1109,10 @@ That's why we're here.”
 what do you intend to do?”
 
 @29007 Ark · アーク（按段落 3DD1）
+# 审校：结尾口语化
 > 「俺たちは、道を探している。何が
 >  本当に地球圏のためになるのか
-“We're searching for a path. For what would truly be best for the Earth Sphere,
+“We’re searching for a path. For what would truly be best for the Earth Sphere,
 ---
 >  そのために俺たちはどうすればいいのか
 >  をね。OZからトレーズもゼクスも
@@ -1111,24 +1124,25 @@ from OZ, I thought that you... might lend us a hand.
 ---
 >  恨みは忘れる。俺たちに協力
 >  してくれないか」
-I'll forget my grudge. Won't you cooperate with us?”
+I’ll let the grudge go. Will you work with us?”
 
 @29008 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……これはまた、唐突だな」
 “...This is rather sudden.”
 
 @29009 Ark · アーク（按段落 3DD1）
+# 审校：speak with authority 不达意
 > 「そうでもないさ。前から考えてはいた。
 >  誰もが高圧的なものいいしかしない
-“Not really. I've been thinking about it for a while. Amid everyone who does nothing
+“Not really. I’ve been thinking about it for a while. When everyone else did nothing
 ---
 >  中で、あんたは俺に、あんたの側の
 >  理を説いて説得しようとしてた
-but speak with authority, you tried to persuade me by explaining your side's logic.
+but talk down to me, you tried to win me over by explaining your side’s reasoning.
 ---
 >  それが本気だってのは、信じられると
 >  思った」
-I felt I could believe that you meant it.”
+I figured I could believe you meant it.”
 
 @29010 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「そうか……」
@@ -1193,12 +1207,13 @@ Heh... Hell must be quite the lively place.”
 What are you doing?!”
 
 @29020 Manami · マナミ（按段落 3DD4）
+# 审校：it has no meaning at all?! 不像英文
 > 「お願い、もうやめて。
 >  あたしたちが戦ったって
-“Please, stop this already. Even if we fight,
+“Please, stop this already. Even if we fight each other,
 ---
 >  何の意味もないのよ!?」
-it has no meaning at all?!”
+what would it even accomplish?!”
 
 @29021 Aisha · アイシャ（按段落 3DD4）
 > 「意味……いいえ、
@@ -1213,13 +1228,14 @@ If I do not defeat you, I, no, the {PartnerSurname} family,
 will lose its standing within Romefeller.”
 
 @29022 Manami · マナミ（按段落 3DD4）
+# 审校：わかって 是“听我说”不是“我知道”
 > 「わかって{PartnerName}、もう
 >  そんなことを言っているときではないのよ
-“I know, {PartnerName}, this is no time to be saying such things.
+“Listen to me, {PartnerName}. This is no time to be saying such things.
 ---
 >  ロームフェラの、
 >  OZのやり方は間違ってるわ!
-Romefeller's and OZ's ways are wrong!
+Romefeller’s and OZ’s ways are wrong!
 ---
 >  あなただってそれは
 >  わかっているでしょうに!」
@@ -1303,9 +1319,10 @@ has escaped safely.”
 “Astonaige and the others recovered it. It seems to be in the maintenance hangar.”
 
 @29036 Koji · 甲児
+# 审校：甲儿对沙也加直呼其名；英文口语化
 > 「へへっ、恋人の顔でも見てくるか。
 >  それじゃあな、さやかさん」
-“Heh, guess I'll go see my girlfriend's face. See you later, Sayaka.”
+“Heh, guess I’ll go say hi to the girlfriend. See you, Sayaka.”
 
 @29037 Sayaka · さやか
 > 「あ、ちょ、ちょっと待ってよぉ、
@@ -1433,8 +1450,9 @@ Of course, should they refuse, by any means of force we deem necessary...”
 “So it has come to this after all... It was unavoidable, I suppose...”
 
 @29054 Quattro · クワトロ
+# 审校：as expected 套话
 > 「強引だな。やはり奴らもあせっている」
-“How forceful. They're getting desperate, as expected.”
+“Heavy-handed. So they’re getting impatient too, as I thought.”
 
 @29055 Eiji · エイジ
 > 「……例の内紛のことですか?」
@@ -1741,14 +1759,14 @@ what do you say?”
 “...”
 
 @29094 Kurtz · カーツ（按段落 3DD3）
-# 审校：词条：ヴァイローズ=Virose
+# 审校：お前たちと戦った 是交手不是并肩；去掉“嘛”
 > 「ま、いろいろあったがお前たちと戦った
 >  ことで、俺も自分の弱さってもんが
-“Well, a lot happened, but fighting alongside you taught me a thing or two about
+“Well, a lot happened, but fighting you taught me a thing or two about
 ---
 >  わかったとでもいうのかな……今までの
 >  罪ほろぼしってわけじゃないが
-my own weakness, I suppose... It's not exactly atonement for my past sins, but
+my own weakness, I suppose... It’s not exactly atonement for my past sins, but
 ---
 >  俺のヴァイローズを使ってくれよ」
 use my Virose.”

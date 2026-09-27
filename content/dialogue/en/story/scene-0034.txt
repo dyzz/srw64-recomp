@@ -36,14 +36,16 @@
 “What's it to you?! This is between me and Amuro!”
 
 @24566 Quattro · クワトロ
+# 审校：“qualification”“是需要……的”生硬
 > 「ベルトーチカ、人の心の中に踏み
 >  込むには、それ相応の資格がいる」
-“Beltorchika, stepping into someone's heart requires a certain qualification.”
+“Beltorchika, you have to have earned the right to step into someone’s heart.”
 
 @24567 Beltorchika · ベルトーチカ
+# 审校：与上句 right 对应
 > 「あたしには、その資格があるつもりです
 >  アムロッ!」
-“I believe I have that qualification, Amuro!”
+“I believe I’ve earned that right, Amuro!”
 
 @24568 Quattro · クワトロ
 # 审校：Lalah 的通行译名是 Lalah，初稿误作 Lalla。
@@ -81,9 +83,10 @@ the problem points. Rain, I want you to check the list.”
 “I'll have it out right away, just a moment.”
 
 @24572 Astonaige · アストナージ
+# 审校：it can't be helped 去日语腔
 > 「やっぱりダメかぁ。十分なテストが
 >  できなかったから、しかたないといえば
-“No good after all, huh. We couldn't do enough testing, so I suppose it can't be helped,
+“No good after all, huh. We couldn’t do enough testing, so I guess it was bound to happen,
 ---
 >  しかたないんだが……」
 but still...”
@@ -214,8 +217,9 @@ There are many comrades there. It seems they haven't let their guard down agains
 “That's good. So for now, we head there, right?”
 
 @24591 Bright · ブライト
+# 审校：“That's how it works out, yes.”生硬
 > 「そういうことになるな」
-“That's how it works out, yes.”
+“That’s about the size of it.”
 
 @24592 Sayaka · さやか
 > 「でも宇宙で私たちが頼れるのって、
@@ -703,10 +707,10 @@ You shouldn't say such careless things.”
 “H-hey, Domon, cut it out...”
 
 @24678 Bright · ブライト
-# 审校：布莱特是舰长，对多蒙等人下命令时语气应更干脆严厉，原文“いいかげんにしろ”是命令口吻，现有译文“stop saying unnecessary things too”过于啰嗦，改为更直接的命令。
+# 审校：“stop saying unnecessary things”直译
 > 「お前ら、いいかげんにしろ! シュバルツ
 >  も、よけいなことをいうんじゃない!」
-“You lot, that's enough! Schwarz, stop saying unnecessary things!”
+“You lot, that’s enough! Schwarz, that’s enough out of you too!”
 
 @24679 Astonaige · アストナージ
 > 「ケーラ!」
@@ -765,10 +769,10 @@ It seems things are quite tough with just Astonaige and the others.”
 “Got it. I'll go let the others know.”
 
 @24690 Bright · ブライト
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“I'll say this now”生硬
 > 「……なんだ、何かいいたいことがあるのか
 >  いっておくが俺は別に……」
-“...What, is there something you want to say? I'll say this now, I'm not...”
+“...What, is there something you want to say? Let me be clear, there’s nothing...”
 
 @24691 Amuro · アムロ
 > 「そういう態度が誤解をまねくんだよ
@@ -776,9 +780,10 @@ It seems things are quite tough with just Astonaige and the others.”
 “That attitude is what causes misunderstandings, Bright. ...Or is it really a misunderstanding?”
 
 @24692 Bright · ブライト
+# 审校：回答“真的是误解吗”应为“当然是”
 > 「当たり前だ。お前まで、そんなことを
 >  いうのか」
-“Of course not. You too, saying things like that?”
+“Of course it is. Not you too.”
 
 @24693 Amuro · アムロ
 > 「冗談だよ」
@@ -789,10 +794,11 @@ It seems things are quite tough with just Astonaige and the others.”
 “Oh my, what is everyone watching?”
 
 @24695 Tetsuya · 鉄也
+# 审校：“the OZ fellows are about to come out”不自然
 # 检查提示：未用必用译名：コロニー代表→Colony Delegate
 > 「コロニー代表会議だそうだ。
 >  ちょうどOZの奴が出るところだな」
-“It's the colony representatives' conference. Looks like the OZ fellows are just about to come out.”
+“It’s the colony representatives’ conference. The OZ people are just coming on.”
 
 @24696 Lady · レディ
 > 「A.C.195年、宇宙の
@@ -841,10 +847,10 @@ The other colonies will surely follow suit as well.”
 to the Earth Sphere...”
 
 @24699 Koji · 甲児
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“美辞麗句”要译成一个够文雅的词，24709 才有笑点
 > 「ちっ、けったくそわりぃな。よくこんだけ
 >  美辞麗句を口にできるもんだぜ
-“Tch, this is damn irritating. How can she spout all that fine talk?
+“Tch, this is damn irritating. How can she spout such flowery rhetoric?
 ---
 >  だいたいコロニーの連中も、なんだって
 >  こうもあっさり信用しちまうんだよ」
@@ -865,10 +871,10 @@ then the Empire. If OZ, who could easily subdue them by force,
 comes to them in a friendly manner...”
 
 @24701 Sayaka · さやか
-# 审校：调整语序，使英文更自然。
+# 审校：it can't be helped 去日语腔；中文“也是没办法的事”直译
 > 「受け入れてしまっても、しかたのない
 >  ことってわけね」
-“So it can't be helped if they just accept it.”
+“So you can’t blame them for going along with it.”
 
 @24702 Alan · アラン
 # 审校：调整语序，使英文更自然。
@@ -931,10 +937,10 @@ Right, Daisaku?”
 “Something on your mind?”
 
 @24709 Alan · アラン
-# 审校：用户确认：直引号→弯引号
+# 审校：与 24699 用词对应
 > 「うむ……。兜、お前……よく
 >  “美辞麗句”などという言葉を
-“Yeah... Kabuto, you... you actually knew a word like ‘fine talk.’
+“Yeah... Kabuto, you... you actually knew a phrase like ‘flowery rhetoric.’
 ---
 >  知っていたな。驚いたぞ」
 I was surprised.”

@@ -18,9 +18,10 @@ but the enemy not making a move bothers me.”
 Something may be up, but either way, we won't last long without resupply.”
 
 @20046 Bright · ブライト
+# 审校：強化人間 全篇统一为 enhanced human，此处孤例 Cyber Newtypes
 > 「ああ。……強化人間か……
 >  やっかいなことにならなければいいが」
-“Right. ...Cyber Newtypes, huh... I just hope this doesn't turn into a real mess.”
+“Right. ...Enhanced humans, huh... I just hope this doesn’t turn into a real mess.”
 
 @20047 Amuro · アムロ
 > 「……君がルオ商会へ交渉に
@@ -76,8 +77,9 @@ a time of sleep. Body and mind alike. Rest is necessary.
 You just have to wake up. Then you'll be the same as before.”
 
 @20055 Amuro · アムロ
+# 审校：“I'm not confident”生硬
 > 「……自信がないな」
-“...I'm not confident.”
+“...I’m not so sure about that.”
 
 @20056 Beltorchika · ベルトーチカ
 > 「あなたは前にカミーユたちと同じことを
@@ -318,9 +320,10 @@ Anna, go tell the others too.”
 “That's a tough name...”
 
 @20100 Four · フォウ
+# 审校：去掉 It can't be helped；中文“因为就被起了”不顺
 > 「しかたないわ。
 >  そうつけられてしまったんだもの」
-“It can't be helped. It was given to me.”
+“Nothing I can do about it. That’s the name they gave me.”
 
 @20101 Kamille · カミーユ
 > 「そりゃそうだ」
@@ -369,9 +372,10 @@ Anna, go tell the others too.”
 “Dr. Hazuki?! What are you doing here?”
 
 @20112 Dr. Hazuki · 葉月博士
+# 审校：どうしてもこうしてもあるか 是“别问为什么”
 > 「どうしてもこうしてもあるか。お前たちが
 >  ルオ商会と接触すると聞いて
-“There's every reason for me to be here. When I heard you'd be meeting with the Luo Company,
+“Never mind why. When I heard you’d be meeting with the Luo Company,
 ---
 >  解放戦線で開発した
 >  新型を運び込んでもらったのだ
@@ -525,32 +529,34 @@ I can't trouble His Excellency with something this trivial.)
 under my management, but we're still in the process of gathering data.”
 
 @20137 Lady · レディ
+# 审校：ない腹もさぐられる 是招人怀疑，不是“我去查你”
 > 「出し惜しみするおつもりか、
 >  ウォン行政官?
 “Do you intend to hold out on me, Administrator Wong?
 ---
 >  それでは、ない腹もさぐられる
 >  というものだぞ」
-Then I'll have no choice but to probe for what you're hiding.”
+That’ll only invite suspicion, whether you deserve it or not.”
 
 @20138 Wong · ウォン
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：去掉 it can't be helped
 > 「いやいや、そんなつもりはありませんよ。
 >  よろしい、そこまでおっしゃるのなら
-“No, no, that's not my intention at all. Very well, if you insist that much,
+“No, no, that’s not my intention at all. Very well, if you insist that much,
 ---
 >  しかたありませんな。
 >  私の実験部隊でアウドムラを
-it can't be helped. I'll have my experimental unit strike
+so be it. I’ll have my experimental unit strike
 ---
 >  叩くとしましょう。トレーズ特佐には
 >  よろしくお伝えいただきたい」
 the Audhumla. Please give my regards to Special Colonel Treize.”
 
 @20139 Lady · レディ
+# 审校：更像口语
 > 「結構だ。よい結果を期待しよう
 >  お互いにな」
-“Good. Let's both look forward to good results.”
+“Good. Let’s both hope for good results, shall we?”
 
 @20140 Wong · ウォン
 > 「ふん……女狐め。
@@ -607,8 +613,9 @@ Have the remaining pilots stand by!”
 You can do it, right?”
 
 @20148 Amuro · アムロ
+# 审校：“I'll show you”像挑衅；“做给你看”生硬
 > 「ああ……大丈夫だ。やってみせるさ」
-“Yeah... I'll be fine. I'll show you.”
+“Yeah... I’m fine. I’ll prove it.”
 
 @20149 Kamille · カミーユ
 > 「君が……スペシャルズとは思えないな」
@@ -692,13 +699,13 @@ I want to know about the past. That's what I was searching for.”
 “All pilots, launch in sequence!”
 
 @20166 Dr. Hazuki · 葉月博士
-# 审校：叶月博士对舰长说话应保持敬语，原文「すまないが」应译为更礼貌的“I'm sorry, but please wait”。
+# 审校：獣戦機 是四架机，统一为 Beast Fighters
 > 「艦長、獣戦機は
 >  調整が終了していない
-“Captain, the Beast Fighter's adjustments aren't finished yet.
+“Captain, the Beast Fighters’ adjustments aren’t finished yet.
 ---
 >  すまないが少し待ってくれ」
-I'm sorry, but please wait a little longer.”
+I’m sorry, but please wait a little longer.”
 
 @20167 Bright · ブライト
 # 审校：布莱特对叶月博士用「ください」表示客气，译文“Hurry, please!”语序不自然，改为“Please hurry!”更符合舰长口吻。
@@ -711,8 +718,9 @@ I'm sorry, but please wait a little longer.”
 “Kamille hasn't come back?! Damn it!”
 
 @20169 Bright · ブライト
+# 审校：“have launched, huh?”不像舰长口吻
 > 「アムロたちが出たか。他も急がせろ!」
-“Amuro and the others have launched, huh? Get the rest moving too!”
+“Amuro’s group is out? Get the rest moving too!”
 
 @20170 Kamille · カミーユ
 > 「フォウ、アウドムラへ行こう。君が
@@ -732,9 +740,10 @@ bring my memories back to me!”
 “Four?!”
 
 @20173 Four · フォウ
+# 审校：“转移注意力”“distract myself”直译
 > 「孤独はイヤ! まぎらわせたくても、
 >  まぎらわす思い出もないのよ!?」
-“I don't want to be alone! Even if I wanted to distract myself, I don't have a single memory to do it with?!”
+“I don’t want to be alone! I don’t even have one memory to lose myself in, do I?!”
 
 @20174 Masato · 雅人
 > 「あれは……イーグルファイター!
@@ -742,8 +751,9 @@ bring my memories back to me!”
 “That's... the Eagle Fighter! It's Shinobu!”
 
 @20175 Sara · 沙羅
+# 审校：沙罗是在对忍喊话，中文也用“你”
 > 「忍!? 大丈夫なのかい!?」
-“Shinobu?! Is he all right?!”
+“Shinobu?! Are you all right?!”
 
 @20176 Shinobu · 忍
 > 「沙羅か。すまねぇ、またせたな!」
@@ -764,12 +774,14 @@ bring my memories back to me!”
 “You remembered?”
 
 @20180 Shinobu · 忍
+# 审校：“下定决心看着”不通
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「ああ。獣戦機隊に野性を
 >  しばる理性はいらねぇってな!
-“Yeah. The Cyber Beast Force doesn't need reason to chain down its wild instincts!
+“Yeah. The Cyber Beast Force doesn’t need reason to chain down its wild instincts!
 ---
 >  わかったら、腹くくって見物してな!」
-If you get it, brace yourself and just watch!”
+Got it? Then brace yourself and watch!”
 
 @20181 Ryo · 亮
 > 「フッ、あいかわらずの単細胞ぶりだな
@@ -795,13 +807,15 @@ If you get it, brace yourself and just watch!”
 The enemy's right in front of us! Doctor, can't we launch yet?!”
 
 @20185 Dr. Hazuki · 葉月博士
+# 审校：“现在刚好结束了”“It just finished now”别扭
 > 「あわてるな。いま終わったところだ」
-“Don't rush. It just finished now.”
+“Don’t panic. It’s just finished.”
 
 @20186 Masato · 雅人
+# 审校：统一 Beast Fighters
 > 「それじゃ行きますか。
 >  艦長、獣戦機出撃します!」
-“Then let's go. Captain, the Beast Fighter is launching!”
+“Then let’s go. Captain, the Beast Fighters are launching!”
 
 @20187 Shinobu · 忍
 > 「へっ、やけにのんびりした
@@ -841,9 +855,10 @@ Aggressive Mode won't cut it. We're combining!”
 “Keyword, D-A-N-C-O-U-G-A...”
 
 @20194 Shinobu · 忍
+# 审校：やってやるぜ 是口头禅，不是撕碎你
 > 「ダンクーガ! ロックオフ!
 >  やあぁぁぁぁぁってやるぜ!!」
-“Dancouga! Lock off! I'm gonna tear you apart, yaaahhh!!”
+“Dancouga! Lock off! Yaaaahhh, let’s do this!!”
 
 @20195 Kamille · カミーユ
 > 「フォウ……フォウ!
@@ -851,8 +866,9 @@ Aggressive Mode won't cut it. We're combining!”
 “Four... Four! What's gotten into you?!”
 
 @20196 Four · フォウ
+# 审校：わかる 这里是“认得出”
 > 「わかる? わたしが誰だか、わかる!?」
-“Do you understand? Do you understand who I am?!”
+“Do you know? Do you know who I am?!”
 
 @20197 Kamille · カミーユ
 > 「フォウ! 行っちゃいけない、フォウ!」
@@ -961,16 +977,17 @@ I don't want... to be picked on...”
 “Captain?”
 
 @20219 Amuro · アムロ
+# 审校：首句突兀，末页重复
 > 「システムを破壊する。
 >  戦闘システムがパイロットに
-“We destroy the system. The combat system is forcing the pilot
+“We’ll destroy the system. The combat system is forcing the pilot
 ---
 >  戦いを強制しているんだ。
 >  どこだ、どこがシステムの中心だ?
-to fight. Where is it? Where's the system's core?
+to fight. Where is it? Where’s the system’s core?
 ---
 >  どこがシステムの!?」
-Where is the system?!”
+Where is it?!”
 
 @20220 Kamille · カミーユ
 > 「そ、そんなことができるっていうのか……?」
@@ -1058,9 +1075,10 @@ I'm sorry, but right now, saving her is impossible.”
 “B-but still!”
 
 @20236 Amuro · アムロ
+# 审校：“fulfilling your purpose”“没达成目的就死”生硬
 > 「目的を果たさずに死ぬつもりか、
 >  ドモン・カッシュ!?」
-“Do you intend to die without fulfilling your purpose, Domon Kasshu?!”
+“You planning to die before you’ve done what you came for, Domon Kasshu?!”
 
 @20237 Domon · ドモン
 > 「クッ……」
@@ -1113,13 +1131,15 @@ I hate you!!”
 “Allenbyyyyy!!”
 
 @20248 Ark · アーク（按段落 3DD1）
+# 审校：去掉 as expected
 > 「さすがですね、アムロ・レイ大尉」
-“Impressive as expected, Captain Amuro Ray.”
+“That’s Captain Amuro Ray for you.”
 
 @20249 Selain · セレイン（按段落 3DD2）
+# 审校：伊達ではない 的地道说法
 > 「アムロ・レイ……
 >  さすがに、伊達ではなかったか」
-“Amuro Ray... so he really was the real thing.”
+“Amuro Ray... so the name wasn’t just for show.”
 
 @20250 Beltorchika · ベルトーチカ
 > 「第一印象を取り消さなくてはね
@@ -1149,13 +1169,15 @@ I hate men who cower, but I don't like the aggressive type either...”
 “How can you know that?!”
 
 @20255 Amuro · アムロ
+# 审校：“I have experience”“我有过经验”直译
 > 「……経験がある。
 >  彼女には近づくな」
-“...I have experience. Don't go near her.”
+“...I’ve been through it before. Don’t go near her.”
 
 @20256 Kamille · カミーユ
+# 审校：わかる 是感觉得到驾驶员是女性
 > (彼女……わかるのか?)
-(Her...? Does he know?)
+(Her... Can he sense it too?)
 
 @20257 Kamille · カミーユ
 # 审校：「勝手をいわないでください」在此语境下是卡缪对阿姆罗的顶撞，原译“Don't be so selfish”语气偏指责对方自私，改为更贴合少年顶撞口吻的“Don't tell me what to do”。
@@ -1302,12 +1324,13 @@ and now you're gonna force me off?!”
 You're the one who wanted to go back to Kansas in the first place!”
 
 @20285 Selain · セレイン（按段落 3DD2）
+# 审校：塞莱因是回应蕾拉的指控，不是“我不是那个意思”
 > 「別にそんなつもりはない。
 >  が、勝手は困るな
-“That's not what I meant. But I can't have you doing as you please.
+“We’ve no intention of doing that. But I can’t have you acting on your own.
 ---
 >  あの街に戻りたかったんじゃないのか?」
-Didn't you want to go back to that city?”
+Didn’t you want to go back to that city?”
 
 @20286 Lera · レラ
 > 「別にあんたたちに迷惑かけようって
@@ -1350,8 +1373,9 @@ She'll be more use than someone who knows nothing.”
 “Then it's settled. That's that. In exchange, you pull your weight, got it?”
 
 @20291 Lera · レラ
+# 审校：蕾拉口吻不用“啦”“哦”
 > 「わかってるよ。礼はいわないからね」
-“I know. I'm not gonna thank you, though.”
+“I know. Don’t expect a thank-you.”
 
 @20292 Aboly · アポリー
 > 「どうしたんだ、あいつ?」

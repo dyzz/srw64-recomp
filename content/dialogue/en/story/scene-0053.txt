@@ -1,9 +1,10 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
 @35269 Koji · 甲児
+# 审校：台词里不用 *yawn* 这种舞台提示
 > 「ふわぁ～あ。コロニーに逃げこんだは
 >  いいけど、こんなにヒマでいいのかね」
-“*yawn*... Well, we made it into the colony, but is it really okay to be this bored?”
+“Yaaawn... Well, we made it into the colony, but is it really okay to be this bored?”
 
 @35270 Sayaka · さやか
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -68,21 +69,24 @@ to the mechanics?”
 “I get what you're trying to say, though.”
 
 @35281 Show · ショウ
+# 审校：move your body 是直译
 > 「血の気が多いのさ。
 >  それが悪いとはいわないけど……
-“He's just hot-blooded. Not that that's a bad thing...
+“He’s just hot-blooded. Not that that’s a bad thing...
 ---
 >  甲児も少し体動かした方が
 >  いいんじゃないのか?」
-Koji, maybe you should move your body a bit more?”
+Koji, maybe you should get some exercise?”
 
 @35282 Sayaka · さやか
+# 审校：“Really, you’re right”“真是的，说得没错”都不像附和
 > 「ほんと、そうね」
-“Really, you're right.”
+“Yeah, really.”
 
 @35283 Koji · 甲児
+# 审校：saying whatever they want 生硬
 > 「ちぇっ、好き勝手いってくれるぜ」
-“Tch, everyone's saying whatever they want.”
+“Tch, easy for you all to say.”
 
 @35284 Bright · ブライト
 > 「状況はどうだ?」
@@ -167,9 +171,10 @@ there's nothing we can do.”
 we at least had a clear goal: defeat the Imperial army.”
 
 @35294 Quattro · クワトロ
+# 审校：去掉 It can’t be helped
 > 「しかたあるまい。ある程度想定は
 >  していたことだ。もっとも、トレーズの
-“It can't be helped. We'd anticipated this to some extent. Though Treize's
+“Nothing for it. We’d anticipated this to some extent. Though Treize’s
 ---
 >  行動は我々の予想を
 >  超えていたがな。が、善かれ悪しかれ
@@ -508,9 +513,10 @@ Just fulfill the duty you have been given. That is also for your own good.”
 “Ngh... W-Wait, Domon.”
 
 @35351 Domon · ドモン
+# 审校：give up at this level 生硬
 > 「どうした亮。これしきで音をあげるよう
 >  では、格闘家の名がなくぞ。次!」
-“What's wrong, Ryo? If you give up at this level, you'll disgrace the name of a martial artist. Next!”
+“What’s wrong, Ryo? If this is enough to make you cry uncle, you’ve no right to call yourself a fighter. Next!”
 
 @35352 Masato · 雅人
 > 「あ～あ、やめときゃいいのに。
@@ -535,18 +541,20 @@ if he keeps up with Domon, he'll literally get his bones broken.”
 “No way. Even Domon holds back, right?”
 
 @35355 Sai Saici · サイ・サイシー
+# 审校：顺口
 > 「アニキにそんなこと
 >  期待するだけムダだよ」
-“It's pointless expecting that from bro.”
+“No point expecting that from Bro.”
 
 @35356 Masato · 雅人
 > 「そうなの?」
 “Really?”
 
 @35357 Chibodee · チボデー
+# 审校：super-grade idiot、“啊啊”不像人话
 > 「あぁ。あいつは走り出したらとまらねぇ
 >  超がつくほどの大バカだからなぁ」
-“Yeah. Once that guy gets going, he won't stop. He's a super-grade idiot.”
+“Yeah. Once that guy gets going, he doesn’t stop. A grade-A idiot, that one.”
 
 @35358 Masato · 雅人
 > 「……俺、とめてくるッ!」
@@ -671,20 +679,22 @@ When it finally shows itself and you face it, in that state you have no chance o
 “Silence! I'll defeat it and take back my Master!”
 
 @35383 Schwarz · シュバルツ
+# 审校：原句绕
 > 「ムキになっても、勝てぬものは勝てぬわ」
-“Getting worked up won't change what you can't win.”
+“Get as worked up as you like. You still can’t win.”
 
 @35384 Domon · ドモン
+# 审校：I can’t stand listening to you 偏
 > 「貴様のいうことなど、
 >  聞いていられるか」
-“I can't stand listening to you.”
+“I don’t have to listen to this.”
 
 @35385 Schwarz · シュバルツ
-# 审校：精读：去破折号
+# 审校：dream within a dream 直译；修瓦鲁兹不说“哎呀呀”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「やれやれ。いいかドモン、よく聞け。
 >  いまのお前は人より
-“Good grief. Listen well, Domon. Right now you're just a man who's slightly
+“Good grief. Listen well, Domon. Right now you’re just a man who’s slightly
 ---
 >  わずかに抜きん出た、おのが腕に
 >  おぼれているにすぎない。そんなことでは
@@ -692,10 +702,10 @@ above average, drunk on his own skill. At this rate,
 ---
 >  デビルガンダムはおろか、お前の師匠
 >  マスターアジアに勝つことすら
-beating the Dark Gundam is out of the question. You couldn't even beat your own Master, Master Asia.
+beating the Dark Gundam is out of the question. Forget even beating your own Master, Master Asia.
 ---
 >  夢のまた夢。見ていろ」
-It's a dream within a dream. Watch.”
+A pipe dream, nothing more. Watch.”
 
 @35386 Domon · ドモン
 > 「錆びた刀……?」
@@ -836,10 +846,10 @@ His Majesty is most displeased with your acts of rebellion.”
 “Of course not! As if I would!”
 
 @35415 Baren · バレン
-# 审校：将“it can't be helped”改为更符合巴伦正式语气的“it cannot be helped”，并调整后半句为更自然的被动表达。
+# 审校：去掉 it cannot be helped
 > 「ならばしかたがない。お前を殺しても
 >  目的は達成されるのだ
-“Then it cannot be helped. Even if I kill you, the objective will be achieved.
+“Then so be it. Even if I kill you, the objective will be achieved.
 ---
 >  死ねマーズ!」
 Die, Mars!”
@@ -962,9 +972,10 @@ You may call this combined form Godmars.)
 “Wait! Who in the world are you...?!”
 
 @35438 Baren · バレン
+# 审校：同 35168
 > 「しょせんはみかけ倒しにすぎない。
 >  一気にケリをつけてやる」
-“He's nothing but a bluff. I'll finish this in one go.”
+“All show and nothing more. I’ll finish this in one go.”
 
 @35439 Baren · バレン
 > 「きゃあああぁぁーっ!!」
@@ -1040,8 +1051,9 @@ I shall repay that debt by fighting splendidly.”
 (Hmph, that Bask. Foisting these weirdos on me.)
 
 @35451 Yazan · ヤザン
+# 审校：英文里不用波浪线
 > 「よ～し、はじめるぞ!!」
-“All ri~ght, let's begin!!”
+“All riiight, let’s begin!!”
 
 @35452 Amuro · アムロ
 > 「くそっ、連中とかち合うとはな。
@@ -1190,8 +1202,9 @@ Takeru Myojin, then answer me.”
 “Commander, are you doubting me?!”
 
 @35476 Naoto · ナオト
+# 审校：疑うもくそもあるか 的语气
 > 「疑うもくそもあるかよ!」
-“Doubting you? Of course we are!”
+“Doubt you? That’s putting it mildly!”
 
 @35477 Kenji · ケンジ
 > 「ナオト、やめろ」
@@ -1376,9 +1389,10 @@ The {HeroMech} are a bunch of monsters!”
 who can beat us bare-handed.”
 
 @35508 Chibodee · チボデー
+# 审校：主语搞反了：是我们留下让她倒霉
 > 「そういうこった。俺たちが残ってたのは
 >  運がなかったな、お嬢ちゃん」
-“That's how it is. You just had bad luck, staying behind with us, missy.”
+“That’s how it is. Bad luck for you that we stayed behind, missy.”
 
 @35509 Elle · エル
 > 「うっさい!」
@@ -1515,8 +1529,9 @@ some connection to that Galactic Empire.”
 “...What do you mean?”
 
 @35534 Amuro · アムロ
+# 审校：Something like that 不像反应
 > 「そんなことが……」
-“Something like that...”
+“So that’s what happened...”
 
 @35535 Bright · ブライト
 > 「どう思う?」
@@ -1808,9 +1823,11 @@ the Galactic Empire has appeared.”
 “Yes. We've already fought them once.”
 
 @35578 Gale · ゲイル
+# 审校：去掉 existence／“存在”
+# 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「私の推測に間違いがなければ、
 >  彼らは地球にとって
-“If my guess is right, they are a far more dangerous existence
+“If my guess is right, they pose a far greater danger
 ---
 >  ムゲゾルバドス帝国よりも
 >  危険な存在だ」
@@ -1875,17 +1892,19 @@ could stop it, but...”
 “Understood. Changing course to the Moon.”
 
 @35588 Lady · レディ
+# 审校：visited by a nightmare 直译
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > (異星人と思われる新たな敵……
 >  OZの内紛が続いた状態で
-(A new enemy, apparently aliens... If they're an opponent we can beat
+(A new enemy, apparently aliens... If they’re an opponent we can beat
 ---
 >  勝てる程度の相手ならばよいが
 >  ……もしムゲゾルバドスと
-while OZ remains divided, all the better... but if they're a force
+while OZ remains divided, all the better... but if they’re a force
 ---
 >  同等の勢力だとしたら、
 >  地球圏は再び悪夢にみまわれる
-equal to Muge Zorbados, the Earth Sphere will be visited by a nightmare once more.
+equal to Muge Zorbados, the Earth Sphere will be plunged into nightmare once more.
 ---
 >  それは見過ごすわけにはいかん……)
 I cannot let that happen...)
@@ -1939,13 +1958,14 @@ by all means, but...”
 “I hear a Gundam has appeared.”
 
 @35594 Lady · レディ
+# 审校：同 35258
 > 「そうだ。しかしこのガンダムはコロニーを
 >  破壊しているらしい。すでにOZの
-“That's right. But this Gundam is apparently destroying colonies. OZ's
+“That’s right. But this Gundam is apparently destroying colonies. OZ’s
 ---
 >  コロニー守備隊が交戦したが、
 >  まったく歯が立たんそうだ
-Colony Defense Force has already engaged it, but they couldn't put up any resistance.
+Colony Defense Force has already engaged it, but they were no match for it at all.
 ---
 >  ガンダムはそのまま、
 >  サイド1方面へ向かった」

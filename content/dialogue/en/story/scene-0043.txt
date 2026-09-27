@@ -186,12 +186,13 @@ do something about it.”
 look a great deal like him.”
 
 @26893 Dr. Yotsuya · 四谷博士
+# 审校：“I’ve business”不口语
 > 「いけすかん奴だな。いかにもわしが
 >  四谷だ。だがお前たちには用はない
-“What an unpleasant fellow. Fine, I'm Yotsuya. But I've no business with you.
+“What an unpleasant fellow. Fine, I’m Yotsuya. But I’ve got no business with you.
 ---
 >  わしが用のあるのは酒だけだ」
-The only thing I've business with is liquor.”
+The only business I’ve got is with liquor.”
 
 @26894 Banjo · 万丈
 > 「ところがこちらはそういうわけには
@@ -367,9 +368,10 @@ In real combat, I can't leave my back to you.”
 “That's not true. I'd say you're quite good.”
 
 @26919 Lera · レラ
+# 审校：without hardly 双重否定
 > 「だけどさ、ろくに訓練もしないで
 >  乗りこなす奴だっているじゃないか」
-“But still, there are people out there who can handle a machine without hardly any training, aren't there?”
+“But still, there are people out there who can handle a machine with barely any training, aren’t there?”
 
 @26920 Selain · セレイン（按段落 3DD2）
 > 「あれが特殊なだけだ。世の中の
@@ -381,9 +383,10 @@ In real combat, I can't leave my back to you.”
 we wouldn't need training schools, and we never would have lost to the Empire.”
 
 @26921 Lera · レラ
+# 审校：反意疑问搭配错
 > 「じゃあ、アンタはどうなのさ。そんなに
 >  時間はかからなかったんでしょ?」
-“Then what about you? It didn't take you that long, did you?”
+“Then what about you? It didn’t take you that long, did it?”
 
 @26922 Selain · セレイン（按段落 3DD2）
 > 「私にはそれしかなかったからだ。命をか
@@ -411,13 +414,14 @@ you'd be under the dirt.”
 “Then that just means I should get used to real combat too, right?”
 
 @26924 Selain · セレイン（按段落 3DD2）
+# 审校：去掉直译长句
 > 「いまは頼りになる連中が大勢いる
 >  不慣れな人間が命をかけるのは
-“Right now we have plenty of people we can rely on. For someone unaccustomed to it to risk their life
+“Right now we have plenty of people we can rely on. There’s no point in someone green
 ---
 >  意味がない。戦いたければ早く
 >  慣れることだ」
-is meaningless. If you want to fight, then get used to it quickly.”
+risking their life. If you want to fight, then get used to it fast.”
 
 @26925 Lera · レラ
 > 「……そうだね。戦いはまだまだ続くんだ」
@@ -456,9 +460,10 @@ to stop acting so familiar with me? Your probation is already over.
 There's no reason I have to stay with you.”
 
 @26931 Rish · リッシュ（按段落 3DD2）
+# 审校：How cruel 不自然；中文去“呢”
 > 「心外だな。これは親愛の情を
 >  表現しているつもりなんだが」
-“How cruel. I'm just trying to express my affection.”
+“That hurts. I’m just trying to express my affection here.”
 
 @26932 Selain · セレイン（按段落 3DD2）
 > 「迷惑だ。貴様がデッキに残ると
@@ -644,9 +649,10 @@ couldn't fight anymore, what would you have done?”
 And that really is a misfortune. If someone like you died, who would be happy about it?”
 
 @26960 Lera · レラ
+# 审校：去掉 can’t be helped
 > 「他にやりようがないんだから
 >  しょうがないじゃないか!」
-“There's no other way, so it can't be helped!”
+“There’s no other way, so what else am I supposed to do?!”
 
 @26961 Ark · アーク（按段落 3DD1）
 # 审校：精读：去破折号
@@ -721,10 +727,10 @@ It's not like I want us all to go die together.”
 “I think I understand, actually.”
 
 @26973 Ark · アーク（按段落 3DD1）
-# 审校：精读：去破折号、納得して生きる
+# 审校：納得して生きる 是活得心安，不是昂首
 > 「俺は、あいつの中で固まってしまった
 >  “納得して生きるには
-“I want to change that thing that's hardened inside her, that ‘to live with your head held high,
+“I want to change that thing that’s hardened inside her, that ‘to live at peace with yourself,
 ---
 >  戦うしかない”っていうのを変えて
 >  やりたい。もっと別の生き方だって
@@ -801,17 +807,19 @@ an enemy, they'll accept just about anything.”
 “Sorry, but I want no part of that hassle. Ask Jun or someone.”
 
 @26984 Daisuke · 大介
+# 审校：去掉 can’t be helped
 > 「そうか……しかたないな。ジュンさん、
 >  頼めるか?」
-“I see... can't be helped. Jun, could you do it?”
+“I see... nothing for it, then. Jun, could you do it?”
 
 @26985 Jun · ジュン
+# 审校：英文不该出现 -san；中文去“呢”
 > 「ホント鉄也は自分勝手だね。
 >  いいよ、行ってあげる。ただし
-“Tetsuya really is selfish. Fine, I'll go. But
+“Tetsuya really is selfish. Fine, I’ll go. But
 ---
 >  さんづけはやめてよね。ジュンでいいよ」
-drop the ‘-san,’ all right? Just Jun.”
+drop the ‘Miss,’ all right? Just Jun.”
 
 @26986 Daisuke · 大介
 > 「ありがとう。では来てくれ甲児くん、
@@ -835,10 +843,10 @@ let me give you a quick rundown anyway.”
 “Calm down, Mika. What happened?”
 
 @26990 Mika · ミカ
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：被掳的是武的哥哥，不是阿姆罗的
 > 「たぶん、ギシン星の超能力者
 >  です! お兄さんがさらわれて、タケルが
-“It's probably a Gishin psychic! They took your brother, and Takeru
+“It’s probably a Gishin psychic! They took his brother, and Takeru
 ---
 >  それを追ってガイヤーで……」
 went after them in the Gaia...”
@@ -1302,8 +1310,9 @@ already decided, ain't it.”
 “Heh, Mycenae, of course.”
 
 @27069 Daisaku · 大作
+# 审校：“That’s right, isn’t it. Of course.”不像人话
 > 「そうですよね、やっぱり」
-“That's right, isn't it. Of course.”
+“Yeah, that’s how it should be.”
 
 @27070 Amuro · アムロ
 > 「ということだ、ブライト」
@@ -1557,16 +1566,17 @@ and I want to link up with them before that.”
 Everyone, hurry.”
 
 @27120 Marquis Janus · ヤヌス侯爵
+# 审校：自言自语却混用 you/them；中文人称统一
 > 「なに? 人間どもが
 >  攻めてきただと!? おのれ
 “What? The humans are attacking us?! Curse them!
 ---
 >  わがミケーネ闇の帝国の復活、
 >  邪魔はさせぬぞ!
-You will not stand in the way of the revival of our Mycenae Empire of Darkness!
+They will not stand in the way of our Mycenae Empire of Darkness’s revival!
 ---
 >  返り討ちにしてくれるわ!!」
-We'll drive them back!!”
+We’ll crush them where they stand!!”
 
 @27121 Alan · アラン
 > 「あれはダイターン3! 万丈か!?」
@@ -1655,10 +1665,10 @@ I'm Hyoma Aoi. Well, I'll be counting on you.”
 Let's wrap this up quick and treat ourselves to a little space voyage.”
 
 @27134 Marquis Janus · ヤヌス侯爵
-# 审校：雅努斯侯爵是老贵族反派，译文应更符合其威严、命令式的口吻，将“Don't”改为“Do not”以增强庄重感。
+# 审校：you mock us 生硬
 > 「おのれ、ふざけおって。奴らを生かして
 >  帰すな!!」
-“Curse you, you mock us. Do not let them get away alive!!”
+“Curse you, insolent wretch! Do not let them leave here alive!!”
 
 @27135 Marquis Janus · ヤヌス侯爵
 # 审校：老贵族口吻应避免缩写，将“can't”改为“cannot”以符合其庄重语气。
@@ -1856,12 +1866,13 @@ I've been fighting in city battles all along. I'm used to this kind of thing.”
 “Nice! Hurry!”
 
 @27174 Jerid · ジェリド
+# 审校：Be caught 语法生硬
 > 「なぜだ!? なぜこういつもいつもっ!!
 >  だが貴様らはここから逃がさんぞ
-“Why?! Why does this always, always happen?! But I won't let you escape from here.
+“Why?! Why does this always, always happen?! But I won’t let you escape from here.
 ---
 >  爆発にまきこまれて死ぬがいい!」
-Be caught in the explosion and die!”
+Get caught in the blast and die!”
 
 @27175 Bright · ブライト
 > 「なんだ、どういうことだ?
@@ -1958,9 +1969,10 @@ There's no way we can fit in there!”
 “B-But if you go alone and something happens...”
 
 @27192 Lera · レラ
+# 审校：日语腔反问
 > 「そんなこといってる場合か! アタシだ
 >  ってこのくらいやってみせる。アンタたちは
-“Is this the time to say that?! I can pull off at least this much. You two
+“This isn’t the time for that! I can pull off at least this much. You two
 ---
 >  先に戻って、退路を確保して」
 head back first and secure our escape route.”
@@ -2043,9 +2055,10 @@ head back first and secure our escape route.”
 “Wait a moment! I'll go and bring Lera back!”
 
 @27211 Bright · ブライト
+# 审校：no choice but to give up 生硬
 > 「くっ、残念だがもう間に合わん……
 >  あきらめるしかない!」
-“Ngh, I'm sorry, but there's no time left... We have no choice but to give up!”
+“Ngh, I’m sorry, but there’s no time left... There’s nothing we can do!”
 
 @27212 Ark · アーク（按段落 3DD1）
 > 「まだ、まだ少しは時間があります。
@@ -2088,12 +2101,13 @@ you as well!”
 “Lera? Hang on, I'll be right there!”
 
 @27220 Lera · レラ
+# 审校：surely... do it 不像台词
 > 「アタシさ……信じるよ、{HeroNick}。
 >  アンタのいったこと……
 “You know... I believe you, {HeroNick}. What you said...
 ---
 >  きっとアンタなら……できるって」
-that you can surely... do it.”
+I know you can... make it happen.”
 
 @27221 Ark · アーク（按段落 3DD1）
 > 「レラ……!?」
@@ -2113,17 +2127,17 @@ the future you spoke of.”
 “Ah... yeah, I promise. I promise. Absolutely!”
 
 @27224 Lera · レラ
-# 审校：补出 trusting someone 作主语，使第二页更通顺自然。
+# 审校：两页重复 I never knew
 > 「うん……
 “Yeah...
 ---
 >  へへっ、誰かを信じていられるってさ、
 >  こんなに……気持ちが軽いなんて、
-Heh heh, I never knew that trusting someone could make me feel so... light.
+Heh heh, trusting someone... I had no idea it could make you feel this... light,
 ---
 >  知らなかった。なんかすっごくいい
 >  気分だよ。ねぇ……
-I never knew. It's such a great feeling. Hey...
+I never knew. It feels so, so good. Hey...
 ---
 >  この戦争が……終わったらさ、
 >  アタシ……」
@@ -2187,9 +2201,10 @@ once this war... is over, I...”
 “No, hold the launch! I'll bring her back.”
 
 @27238 Bright · ブライト
+# 审校：同 27211
 > 「くっ、残念だがもう間に合わん……
 >  あきらめるしかない!」
-“Ngh, I'm sorry, but it's too late... we have no choice but to give up!”
+“Ngh, I’m sorry, but it’s too late... There’s nothing we can do!”
 
 @27239 Selain · セレイン（按段落 3DD2）
 > 「だめだ、だめだ、だめだ!
@@ -2197,13 +2212,13 @@ once this war... is over, I...”
 “No, no, no! Stop the launch!!”
 
 @27240 Bright · ブライト
-# 审校：修正语序，Where did the calm you always have go 改为 Where has the calm you always have gone，更自然。
+# 审校：直译句式
 > 「無理なものは無理なんだ!
 >  つらいのは皆一緒だ。いつもの
-“What can't be done can't be done! Everyone feels the same pain. Where has
+“It can’t be done, and that’s that! We’re all hurting, every one of us. Where’s
 ---
 >  冷静なお前はどこへいった!?」
-the calm you always have gone?!”
+the calm you always have?!”
 
 @27241 Selain · セレイン（按段落 3DD2）
 > 「あの娘は……私なんだ!」
@@ -2461,14 +2476,14 @@ have a talk with him. He'll be fine. He's not that weak.”
 “...What is it?”
 
 @27290 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：第二页“今だけにしておきたまえ”意为“仅限于现在”，初稿“and no longer”语气生硬且不够准确。
+# 审校：“你的身份不允许”“只限于现在”直译
 > 「気持ちはわかるが、君は戦いを
 >  やめるわけにはいかない身だ
-“I understand how you feel, but you're not in a position to stop fighting.
+“I understand how you feel, but you’re not in a position to stop fighting.
 ---
 >  彼女のことを嘆き悲しむのは、
 >  今だけにしておきたまえ」
-Mourn her only for now.”
+Grieve for her, but only for now.”
 
 @27291 Ark · アーク（按段落 3DD1）
 > 「俺を殺そうとしてたあんたに、いわれる
@@ -3001,13 +3016,14 @@ over the space battleship Libra, which was nearly complete.”
 whittling down OZ's forces. It's practically suicide.”
 
 @27376 Ryoma · リョウ
+# 审校：日语腔反问
 > 「落ち着いている場合か、ハヤト。
 >  そいつらが自殺するのはいいが
-“Is this the time to stay calm, Hayato? If they want to kill themselves, fine,
+“This is no time to be calm, Hayato. If they want to kill themselves, fine,
 ---
 >  地球圏がまきぞえになるのは
 >  ごめんだぜ」
-but I won't stand for the Earth Sphere getting dragged into it.”
+but I won’t stand for the Earth Sphere getting dragged into it.”
 
 @27377 Alan · アラン
 > 「その様子では、お前たちも聞いた

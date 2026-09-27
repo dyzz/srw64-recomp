@@ -835,13 +835,14 @@ So I came to see what was going on.”
 “Gundaaaaaam!!”
 
 @25863 Master · マスター
+# 审校：のう是附和，不是 Won't I
 > 「フフフフ、やはり
 >  デスアーミーごときでは相手にならぬか
 “Hehehehe, so the Death Army alone is no match for you after all.
 ---
 >  このワシが自ら葬ってくれよう。
 >  のう、ドモンよ」
-I shall bury you myself. Won't I, Domon?”
+I shall bury you myself. Eh, Domon?”
 
 @25864 Domon · ドモン
 > 「でたな、東方不敗!」
@@ -928,9 +929,10 @@ That is the only way to win. But for you as you are now, it is impossible.”
 “Kukukukukukuku, hahahahahaha!!”
 
 @25880 Domon · ドモン
+# 审校：去掉 I will never forgive you；“没有被你嘲笑的道理”直译
 > 「何がおかしい……何がおかしぃぃぃッ!
 >  貴様のおかげで母は死に
-“What's so funny... What's so funnyyy?! Because of you, Mother died,
+“What’s so funny... What’s so funnyyy?! Because of you, Mother died,
 ---
 >  コロニーは崩壊、俺は貴様を
 >  追ってきてこのザマだ
@@ -938,10 +940,10 @@ the colony was destroyed, and I chased after you and ended up like this.
 ---
 >  貴様に笑われるすじあいはない!
 >  俺は貴様を許せん!
-You have no right to laugh at me! I will never forgive you!
+You’ve got no right to laugh at me! You’ll pay for this!
 ---
 >  貴様を叩きつぶしてやる!」
-I'll crush you!”
+I’ll crush you!”
 
 @25881 Master · マスター
 # 审校：精读：去破折号
@@ -1168,9 +1170,10 @@ Curse you! I won't let a single one of you leave here alive!!”
 “...Then we'll head back to Jaburo first. Domon... we'll be waiting.”
 
 @25922 Selain · セレイン（按段落 3DD2）
+# 审校：陈述句改问句
 > 「ではジャブローに戻る。
 >  お前たちもいいな」
-“Then we return to Jaburo. You're all fine with that too.”
+“Then we return to Jaburo. That all right with the rest of you?”
 
 @25923 Chibodee · チボデー
 > 「ああ」
@@ -1228,6 +1231,7 @@ You fool of a pupil!”
 What do you gain by defeating me?!”
 
 @25932 Master · マスター
+# 审校：东方不败不用缩写
 > 「ワシが何のために戦うかだと?
 >  そんなことを貴様に話してどうなる
 “You ask what I fight for? What good would it do to tell the likes of you?
@@ -1238,7 +1242,7 @@ Heh heh heh, even I am a pitiful man. To think that a pupil I raised myself woul
 ---
 >  逆らわれるとは、思ってもみなんだわ。
 >  そうだ、貴様らさえ、貴様らさえ
-this much. That's right, if only all of you, if only all of you
+this much. That is right, if only all of you, if only all of you
 ---
 >  あそこにあらわれなんだら、貴様さえ
 >  ガンダム乗りになっていなければ
@@ -1252,9 +1256,10 @@ how much better it would have been!”
 “Master Asia... Just what are you...”
 
 @25934 Master · マスター
+# 审校：去掉 I will never forgive you，不用缩写
 > 「だからお前は、アホなのだぁっ!
 >  ドモン、貴様は許さんぞ!」
-“That's why you're a fool! Domon, I will never forgive you!”
+“That is why you are a fool! Domon, I will not spare you!”
 
 @25935 Domon · ドモン
 > 「くっ……なに!?
@@ -1553,25 +1558,25 @@ I'd never thought about it either, so I couldn't answer.
 And then I wondered what you'd say.”
 
 @25987 Selain · セレイン（按段落 3DD2）
-# 审校：精读：单数指代、句子衔接
+# 审校：第二三页语序混乱
 > 「そうか……昔はな、そんなことは
 >  考える必要すらないと思ってたのさ
 “I see... Long ago, I thought there was no need to even think about that.
 ---
 >  どうせどこかで力尽きて
 >  死ぬだけだとね。勝てるかどうかも
-I'd just run out of strength somewhere and die, that's all. Whether we could win or not,
+I’d just run out of strength somewhere and die, that’s all. There was a guy who went on
 ---
 >  わからないのに、そんなことばかりいってる
 >  奴もいた。私はそいつが嫌いだった
-there was a guy who went on about nothing but that, without even knowing. I hated him.
+about nothing else, when we didn’t even know if we could win. I hated him.
 ---
 >  現実を見れないバカ者だと思って
 >  いたからな。実際、そいつは帝国の
-I thought he was a fool who couldn't face reality. And sure enough, he died
+I thought he was a fool who couldn’t face reality. And sure enough, he died
 ---
 >  ゲリラ狩りであっさり死んだ。ただ……」
-just like that in one of the Empire's guerrilla hunts. But...”
+just like that in one of the Empire’s guerrilla hunts. But...”
 
 @25988 Lera · レラ
 > 「ただ?」
@@ -1749,14 +1754,14 @@ It's supposed to be quite a special one?”
 “Understood. I'll have the specs sent over later. For now, go take a look at the new model.”
 
 @26013 Wong · ウォン
-# 审校：“東方先生”指东方不败，应译为 Master Asia，而非 Master Toho。
+# 审校：去掉 It can't be helped
 > 「東方先生が失敗しましたか……
 >  どうもドモン・カッシュに、こだわりすぎの
-“So Master Asia failed... It seems he's far too fixated on Domon Kasshu.
+“So Master Asia failed... It seems he’s far too fixated on Domon Kasshu.
 ---
 >  ようですね。しかたがない、あの手は
 >  使いたくなかったのですが……」
-It can't be helped. I didn't want to use that card, but...”
+Nothing for it. I didn’t want to use that card, but...”
 
 @26014 ???
 > 「お呼びかな」

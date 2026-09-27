@@ -57,17 +57,17 @@ guy.”
 “{PartnerNick}... You're that... that serious about me...”
 
 @50687 Roux · ルー
-# 审校：初稿已正确，无需修改；但按规则只返回需修改条目，此条不返回。
+# 审校：The other side/absolutely serious 生硬
 > 「ちょっと、あんたまだそんなこといってん
 >  の!? 向こうは本気の本気
-“Hey, are you still saying that?! The other side is dead serious,
+“Hey, are you still saying that?! He’s dead serious,
 ---
 >  大本気じゃないのよ。あいつの
 >  行動のどこを見たら、本気じゃ
-absolutely serious. What part of his actions makes you think he
+serious as it gets. What part of what he’s done makes you think he
 ---
 >  ないって思えるわけ?」
-isn't serious?”
+isn’t?”
 
 @50688 主角
 > 「…………」
@@ -101,12 +101,13 @@ isn't serious?”
 “You guys...”
 
 @50695 Sai Saici · サイ・サイシー
+# 审校：obvious to anyone you're going, you know 拗口
 > 「まったく、わかりやすい性格しているよ
 >  な。あの面みりゃ、いくつもりだってのは
-“Man, you're so easy to read. With that face, it's obvious to anyone
+“Man, you’re so easy to read. One look at your face and anyone can tell
 ---
 >  バレバレだぜ?」
-you're going, you know?”
+you’re going.”
 
 @50696 主角
 > 「……止めても無駄だ。俺は、どうし
@@ -160,9 +161,10 @@ Otherwise, there's no way forward.”
 “Don't lose, {HeroNick}.”
 
 @50705 主角
+# 审校：两个definitely
 > 「お前たち……ああ、俺は必ず勝つ。
 >  必ず戻ってくるぜ」
-“You guys... Yeah, I'll definitely win. I'll definitely come back.”
+“You guys... Yeah. I’m gonna win. And I’m coming back.”
 
 @50706 主角
 > 「どこだ……{PartnerNick}、どこにいる!?
@@ -511,8 +513,9 @@ revive the Master's machine. As long as you keep fighting with that machine...
 my soul too... will go... go together with you...”
 
 @50755 主角
+# 审校：such foolish things 生硬
 > 「バカなことをいうな、おい{PartnerNick}!!」
-“Don't say such foolish things, {PartnerNick}!!”
+“Don’t talk like that, {PartnerNick}!!”
 
 @50756 对手
 # 审校：L11 原文首句有「……」且以引号开始，初稿漏了开引号，补上。
@@ -684,9 +687,9 @@ win. I, who was beaten so thoroughly, no longer have the right to pilot the
 Virose. Much less the right to pilot the Master's machine.”
 
 @50778 主角
-# 审校：L33 原文带引号，初稿漏了引号，补上。
+# 审校：同上
 > 「バカなことをいうな!」
-“Don't say such foolish things!”
+“Don’t be stupid!”
 
 @50779 对手
 # 审校：L34 原文带引号，初稿漏了引号，补上。

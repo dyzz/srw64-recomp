@@ -118,9 +118,10 @@ commander. Rumor is he's a real piece of work.”
 “...Not my problem.”
 
 @19115 Duo · デュオ
+# 审校：第三页不像人话
 > 「……まったくどうしてこんなヤツを
 >  助けちまったのかなぁ
-“...I really don't know why I saved a guy like you.
+“...I really don’t know why I saved a guy like you.
 ---
 >  無口で無鉄砲で無愛想で
 >  あーやだやだ。俺がお前だったら
@@ -128,7 +129,7 @@ Silent, reckless, and rude. Ugh, what a pain. If I were you,
 ---
 >  その暗い性格のろって、
 >  とっくの昔に人間やめてるぜ」
-I'd have cursed this gloomy personality of yours and stopped being human ages ago.”
+I’d have cursed that gloomy personality and given up on being human ages ago.”
 
 @19116 Heero · ヒイロ
 > 「おい」
@@ -161,23 +162,26 @@ I'd have cursed this gloomy personality of yours and stopped being human ages ag
 the same too, huh...)
 
 @19121 Le Cain · ル・カイン
+# 审校：“抛下血肉模糊的身躯”直译
 > (私が来たからには、
 >  帝国に刃を向ける者たちも
-(Now that I've come, those who dare raise their blades against the Empire
+(Now that I’ve come, those who dare raise their blades against the Empire
 ---
 >  私の足もとに血まみれの体を
 >  投げ出す事になろう)
-will throw their blood-soaked bodies at my feet.)
+will end up sprawled bloody at my feet.)
 
 @19122 Giura · ギウラ
+# 审校：Thank you for your hard work 是日语腔
 > 「ご苦労様です。
 >  準備は整っております」
-“Thank you for your hard work. Everything is ready.”
+“Welcome, sir. Everything is ready.”
 
 @19123 Le Cain · ル・カイン
+# 审校：英文语序
 > 「そいつらか、
 >  使える地球人というのは」
-“So these are them? The Earthlings who are useful.”
+“So these are the useful Earthlings?”
 
 @19124 Giura · ギウラ
 > 「はっ、ロアン・デミトリッヒと
@@ -199,10 +203,10 @@ command it of me.”
 “On behalf of the Specials, I offer my congratulations on your appointment, Your Excellency.”
 
 @19127 Le Cain · ル・カイン
-# 审校：Le Cain 是冷酷高傲的贵族，用 shall 比 I'll 更符合其正式、居高临下的口吻。
+# 审校：“好好用用你们”别扭
 > 「フッ、こういう地球人もいるか。
 >  よかろう、存分に働いてもらうぞ」
-“Heh, so there are Earthlings like this too. Very well, I shall have you work to your fullest.”
+“Heh, so there are Earthlings like this too. Very well, I expect you to earn your keep.”
 
 @19128 David · デビッド
 > 「中止するまでは
@@ -214,40 +218,43 @@ command it of me.”
 Stop this foolish attack on Le Cain!”
 
 @19129 Guerrilla · ゲリラ
+# 审校：Just try defeating 读不通
 > 「バカな真似とはなんだ!
 “What do you mean, foolish?!
 ---
 >  お前たち解放戦線の手を
 >  借りるわけではない
-We're not asking for help from you Liberation Front people.
+We’re not asking for help from you Liberation Front people.
 ---
 >  グレスコの息子を倒して見ろ、
 >  帝国軍に与える精神的
-Just try defeating Gresco's son. The psychological blow to the
+If we take down Gresco’s son, the psychological blow to the
 ---
 >  打撃は、はかりしれない」
-Imperial Army would be immeasurable.”
+Imperial Army will be immeasurable.”
 
 @19130 David · デビッド
+# 审校：take it back 不地道
 > 「それが甘いんだ。
 >  みくびりすぎている
-“That's naive. You're underestimating him.
+“That’s naive. You’re underestimating him.
 ---
 >  組織と仲間を失ってからでは、
 >  取り返しがつかないんだぞ」
-Once you lose your organization and your comrades, you can't take it back.”
+Once you lose your organization and your comrades, there’s no getting them back.”
 
 @19131 Selain · セレイン（按段落 3DD2）
+# 审校：That's what naive means 不通
 > 「それが甘いというのだ。仮にも
 >  占領軍の新司令官として
-“That's what naive means. A man coming to take up the post of
+“That’s exactly what’s naive about it. A man coming to take up the post of
 ---
 >  赴任してくる男が、そう簡単に
 >  やれるわけがない。全滅してからでは
-new commander of the occupation army wouldn't be that easy to beat. Once you're wiped out,
+new commander of the occupation army wouldn’t be that easy to beat. Once you’re wiped out,
 ---
 >  取り返しがつかないぞ」
-you can't take it back.”
+there’s no undoing it.”
 
 @19132 Guerrilla · ゲリラ
 > 「俺たちが銃やバズーカでやるとでも
@@ -286,9 +293,10 @@ sticking your nose in. We'll show you what we can do.”
 “...There's no point saying anything to these people. Let's go back.”
 
 @19138 Bright · ブライト
+# 审校：It can't be helped
 > 「そうか、やはり無理だったか。
 >  しかたあるまい
-“I see, so it was no use after all. It can't be helped.
+“I see, so it was no use after all. Nothing for it.
 ---
 >  大尉、出撃の準備を
 >  しておいてくれ」
@@ -358,12 +366,13 @@ You see that, David?! So much for the Liberation Front!”
 “Damn you, Empire... Y-you're?!”
 
 @19150 Le Cain · ル・カイン
+# 审校：口语化
 > 「私がお前らごとき地球人の
 >  ワナに、はまると思うのか
-“Do you think I'd fall into a trap set by Earthlings like you?
+“Do you think I’d fall into a trap set by Earthlings like you?
 ---
 >  己の策のなさを恨め」
-Curse your own lack of cunning.”
+Blame your own lack of cunning.”
 
 @19151 Guerrilla · ゲリラ
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -403,8 +412,9 @@ based on that principle. Cast aside everything Earthly!
 Believe in me! Believe in the Empire!”
 
 @19153 Quattro · クワトロ
+# 审校：How self-serving 不像喊话
 > 「勝手なことを!」
-“How self-serving!”
+“What arrogance!”
 
 @19154 Le Cain · ル・カイン
 > 「なんだ貴様らは?」
@@ -501,9 +511,10 @@ Hahahahahaha! Annihilate them!”
 “...What foolishness...”
 
 @19169 David · デビッド
+# 审校：口语化
 > 「バカにしやがって、
 >  地球人を、なめきってやがる
-“They mock us, they underestimate Earthlings completely.
+“Making fools of us, looking down on Earthlings like that.
 ---
 >  しかもあの裏切り者の
 >  ブタまで一緒だ」
@@ -519,16 +530,17 @@ And that traitorous pig is with them too.”
 “No way... Gosterro?! You're alive?”
 
 @19172 Gosterro · ゴステロ
+# 审校：第二页直译
 > 「さぁてなぁ、貴様らのおかげで
 >  体中機械だらけだ
-“Who knows. Thanks to you lot, my whole body's nothing but machinery.
+“Who knows. Thanks to you lot, my whole body’s nothing but machinery.
 ---
 >  この体のどこからどこまでが
 >  生きていることやら
-I don't even know how much of this body is still alive.
+I don’t even know how much of this body is still alive.
 ---
 >  お礼はたっぷりと、させてもらうぜぇ」
-I'll be giving you plenty of thanks.”
+I’ll be paying you back in full.”
 
 @19173 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -569,12 +581,13 @@ we're blocking their escape route.”
 No way we're not using it.”
 
 @19180 Gaia · ガイア
+# 审校：“那个”指代不清；与前文“来那一手”一致
 > 「むろんだ。使い勝手の報告も
 >  してやらねばならん
-“Of course. We've got to report back on how well it handles too.
+“Of course. We’ve got to report back on how well it handles too.
 ---
 >  機会があれば、あれをやるぞ」
-If we get the chance, we're doing that.”
+If we get the chance, we’re pulling that move.”
 
 @19181 Mash · マッシュ
 > 「了解だ。ドライセンでどこまでできるか
@@ -703,9 +716,10 @@ and die here. Never say it again!”
 I figured you'd say that.”
 
 @19200 Selain · セレイン（按段落 3DD2）
+# 审校：I won't forgive you
 > 「貴様……やはり、ざれ言か!
 >  許さん!」
-“You... so it was just a joke after all! I won't forgive you!”
+“You... so it was just a joke after all! You’ll pay for that!”
 
 @19201 Rish · リッシュ（按段落 3DD2）
 > 「おっと、あの部隊だってのに
@@ -734,12 +748,13 @@ All units, retreat. Hurry back to the Green Area.”
 “All right, we're retreating too. All units, fall back to the Green Area.”
 
 @19204 Eiji · エイジ
+# 审校：and nothing else 改变了意思
 > 「ル・カイン。誇りのためだけに戦うこと
 >  もできるのが、地球人だということを
-“Le Cain. Remember this well: Earthlings can fight for pride alone,
+“Le Cain. Remember this well: Earthlings are the kind who can fight
 ---
 >  よく覚えておけ!」
-and nothing else!”
+for pride alone!”
 
 @19205 Le Cain · ル・カイン
 > 「フフフ、おもしろい。
@@ -764,13 +779,14 @@ But thinking you can defy the Empire with this much is laughable.”
 “This is bad, everyone retreat!!”
 
 @19208 Eiji · エイジ
+# 审校：同 19204
 > 「ル・カイン、誇りのためだけに
 >  戦うこともできるのが
-“Le Cain, remember this well: Earthlings can fight for pride alone,
+“Le Cain, remember this well: Earthlings are the kind who can fight
 ---
 >  地球人だということを、
 >  よく覚えておけ!」
-and nothing else!”
+for pride alone!”
 
 @19209 Le Cain · ル・カイン
 > 「フフフ、おもしろい。
@@ -795,13 +811,14 @@ But thinking you can defy the Empire with this much is laughable.”
 “This is bad, everyone retreat!!”
 
 @19212 Eiji · エイジ
+# 审校：同 19204
 > 「ル・カイン、誇りのためだけに
 >  戦うこともできるのが
-“Le Cain, remember this well: Earthlings can fight for pride alone,
+“Le Cain, remember this well: Earthlings are the kind who can fight
 ---
 >  地球人だということを、
 >  よく覚えておけ!」
-and nothing else!”
+for pride alone!”
 
 @19213 Le Cain · ル・カイン
 > 「フフフ、おもしろい。
@@ -839,8 +856,9 @@ I like it! Hahahahahaha!!”
 “Well, guess there's no choice in this case.”
 
 @19220 Karla · カルラ
+# 审校：I will never forgive
 > 「エイジ……貴様だけは許さんぞ!」
-“Eiji... You, of all people, I will never forgive!”
+“Eiji... you of all people will pay for this!”
 
 @19221 Gosterro · ゴステロ
 > 「エイジィィ、貴様だけはこの俺の手
@@ -857,9 +875,10 @@ I like it! Hahahahahaha!!”
 “In the end, we came all this way for nothing.”
 
 @19224 Bright · ブライト
+# 审校：It can't be helped
 > 「しかたあるまい。ル・カインか……
 >  やっかいな相手だな」
-“It can't be helped. Le Cain, huh... He's a troublesome opponent.”
+“Nothing for it. Le Cain, huh... He’s a troublesome opponent.”
 
 @19225 Quattro · クワトロ
 > 「そうだな。それを直接確認できた

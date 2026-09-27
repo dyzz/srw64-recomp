@@ -66,12 +66,13 @@ enemy territory...”
 “What do you mean by that, Captain?”
 
 @22845 Quattro · クワトロ
+# 审校：“as we are”是このまま直译
 > 「我々はこのままジャブローにある
 >  旧地球連邦軍基地を
-“We're going to take the old Earth Federation base at Jaburo
+“We’re going to push on and take the old Earth Federation base
 ---
 >  攻略する」
-as we are.”
+at Jaburo.”
 
 @22846 Kamille · カミーユ
 > 「そんな、無茶ですよ!」
@@ -152,8 +153,9 @@ and I was getting sick of it. Sometimes we've gotta be the ones attacking.”
 “I'm with you there. All right, let's do this.”
 
 @22856 Sayaka · さやか
+# 审校：調子いい是说风就是雨，不是“会说话／easygoing”
 > 「もう、ふたりとも調子いいんだから」
-“Honestly, you two are so easygoing.”
+“Honestly, you two change your tune so fast.”
 
 @22857 Ark · アーク（按段落 3DD1）
 > 「でも、勝算はあるんでしょう?
@@ -205,17 +207,18 @@ or something?”
 “I wouldn't call it a good plan, but it's not as if we have no chance of victory.”
 
 @22866 Bright · ブライト
+# 审校：“as is”是そのまま直译
 > 「帝国軍の動きをさぐっている
 >  工作員が、そのままジャブローへ
-“An agent who's been probing the Imperial Army's movements is set to
+“An agent who’s been probing the Imperial Army’s movements is set to
 ---
 >  潜入して破壊活動を行う
 >  手はずになっている
-infiltrate Jaburo as is and carry out sabotage.
+go straight on into Jaburo and carry out sabotage.
 ---
 >  非常に優秀な男だということだ。
 >  十分期待できるだろう」
-I hear he's an extremely capable man. We can expect a great deal from him.”
+I hear he’s an extremely capable man. We can expect a great deal from him.”
 
 @22867 Tetsuya · 鉄也
 > 「ほう、そんな奴がいたとはね。
@@ -671,9 +674,10 @@ I just thought about it a little.”
 “What, out of nowhere? That's not like you.”
 
 @22935 Selain · セレイン（按段落 3DD2）
+# 审校：“It’s not nothing”误解別に；中文接上句“突然”
 > 「別に、前から考えることはあったさ。
 >  私たちはずっと戦い続けてきた。だが
-“It's not nothing. I've thought about it before. We've kept fighting all this time. But
+“It’s nothing new. I’ve thought about it before. We’ve kept fighting all this time. But
 ---
 >  状況が好転しているとはいいがたい」
 you can hardly say the situation has improved.”
@@ -1300,37 +1304,42 @@ Today I'm going to teach him a good lesson about that.”
 “Your Excellency! We have a notice from General Shapiro.”
 
 @23039 Treize · トレーズ
+# 审校：せっかく的惋惜没译出；“被视为危险”生硬
+# 检查提示：未用必用译名：ロアン・デミトリッヒ→Roanne Demitrich
 > 「わかっているよ、レディ。せっかくここまで
 >  きたものをな。ロアン・デミトリッヒの
-“I know, Lady. We've come this far, after all. Because of Roanne Demitrich's
+“I know, Lady. And after all it took to get this far. So Roanne Demitrich’s
 ---
 >  行動で、こちらまで危険視された
 >  ということか」
-actions, even we are being seen as a danger now, is that it?”
+actions have made even us look dangerous, is that it?”
 
 @23040 Lady · レディ
 > 「どうなさるおつもりですか?」
 “What do you intend to do?”
 
 @23041 Treize · トレーズ
+# 审校：“Your Excellency Jamitov”“意向是如何啊”别扭
+# 检查提示：未用必用译名：ジャミトフ→Jamitov
 > 「素直に受け入れるわけにはいかない
 >  ね。財団の幹部会の意向は
-“I can't simply accept it. What is the Foundation executives'
+“I can’t simply accept it. What does the Foundation’s board
 ---
 >  どうですかな、ジャミトフ閣下」
-intention, Your Excellency Jamitov?”
+intend, Your Excellency?”
 
 @23042 Jamitov · ジャミトフ
+# 审校：“for that that”“won’t let you say”生硬
 > 「例の計画を早めなければならんな。
 >  デルマイユ公もその線で進めることを
 “We must move that plan up. Duke Dermail also wishes
 ---
 >  望んでいる。できぬとはいわせんぞ、
 >  トレーズ。貴公にはそのためにOZを
-to proceed along those lines. I won't let you say it can't be done, Treize.
+to proceed along those lines. I won’t hear that it can’t be done, Treize.
 ---
 >  まかせてきたのだからな」
-It's precisely for that that I entrusted OZ to you.”
+That is exactly why I entrusted OZ to you.”
 
 @23043 Treize · トレーズ
 > 「なるほど、それもいいでしょう。しかし
@@ -1375,17 +1384,19 @@ It is not for you to speak up.”
 failure will affect not only the Romefeller Foundation, but the fate of the Earth.”
 
 @23049 Treize · トレーズ
+# 审校：“engraved on my heart”是肝に銘じる直译
 > 「はい、それは肝にめいじております」
-“Yes, I have that engraved on my heart.”
+“Yes, I am keenly aware of that.”
 
 @23050 Lady · レディ
 > 「ゼクスか、なんだ?」
 “Zechs, is that you? What is it?”
 
 @23051 Zechs · ゼクス
+# 审校：“caught the movements”不地道
 > 「例のレジスタンスたちの動きをキャッチ
 >  しました」
-“We've caught the movements of those resistance fighters.”
+“We’ve picked up the movements of those resistance fighters.”
 
 @23052 Treize · トレーズ
 > 「君がそれだけのことで連絡してくる
@@ -1404,17 +1415,17 @@ failure will affect not only the Romefeller Foundation, but the fate of the Eart
 “South America? Have they been cornered so badly they've lost their minds?”
 
 @23055 Zechs · ゼクス
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：“they wouldn’t do that”“他们不会那样”没接上“脑子出问题”
 > 「レディ・アン特佐、彼らは
 >  そんなことにはならん。わざわざ帝国の
-“Special Colonel Lady Une, they wouldn't do that. The fact that they're
+“Special Colonel Lady Une, they aren’t the type. If they’re heading straight for
 ---
 >  警戒エリアに向かっているということ
 >  は何かあるのだ。そう
-going out of their way toward an Imperial patrol zone means something's up. Something
+an Imperial patrol zone, there’s a reason for it. Something
 ---
 >  例えばジャブローを攻める、などのな」
-like, for instance, attacking Jaburo.”
+like, say, an attack on Jaburo.”
 
 @23056 Lady · レディ
 > 「バカなことを」
@@ -1494,20 +1505,22 @@ won't get us anywhere. Someday we'll die and that'll be the end.
 Nothing will be left.”
 
 @23069 Lera · レラ
+# 审校：“It will be left”三连太机械
 > 「残るよ。アタシたちが戦ったっていう
 >  事実が残る。誇りをもって
-“It will be left. The fact that we fought will be left. The fact that we
+“Something will. The fact that we fought will remain. The fact that we
 ---
 >  生きたっていう事実が残る。
 >  そうすれば、アタシたちが負けても
-lived with pride will be left. If we do that, even if we lose,
+lived with pride will remain. Then even if we lose,
 ---
 >  いつかまた戦う人たちがでてくるよ」
-someday people will rise up to fight again.”
+someday someone will rise up to fight again.”
 
 @23070 Ark · アーク（按段落 3DD1）
+# 审校：“not okay”“那种事，不行”太弱
 > 「そんなの……そんなのは、ダメだ」
-“That's... that's not okay.”
+“That’s... no. That’s not good enough.”
 
 @23071 Lera · レラ
 > 「なら、アンタはどうしたいっていうのさ?
@@ -1838,8 +1851,9 @@ pilots of this unit, after all.”
 get lost!!”
 
 @23123 Ark · アーク（按段落 3DD1）
+# 审校：“without you telling me”生硬
 > 「いわれなくてもそうするさ」
-“I will, without you telling me.”
+“Didn’t need you to tell me.”
 
 @23124 Lera · レラ
 # 审校：原文是「なんだよ、ちきしょう」，初稿重复了 Damn it，改为更自然的“What the hell. Damn it.”
@@ -1878,13 +1892,14 @@ Is something wrong with that?”
 “Weak? No. Anyone could see it if they calmly thought about the situation.”
 
 @23131 Lera · レラ
+# 审校：“obedient servants”“与其那样，还不如战斗、战斗”都太硬
 > 「だけどさ。アタシは絶対にイヤだ。
 >  あんな連中のいいなりになるなんて
-“But I absolutely refuse. To become their obedient servants... If it comes to that,
+“But I flat-out refuse. Bow and scrape to those guys? If it comes to that,
 ---
 >  そんなことになるくらいなら戦って、
 >  戦ってそして死んだってしかたないんだ」
-I'd rather fight, and fight, and even if I die, so be it.”
+I’d rather fight, keep fighting, and if I die, so be it.”
 
 @23132 Selain · セレイン（按段落 3DD2）
 > 「……そうだな。どのみち、私には戦う
@@ -1950,13 +1965,14 @@ So why would you say something like that?!”
 Anyone could see it if they thought about the situation.”
 
 @23140 Lera · レラ
+# 审校：“obedient servants”生硬；“没有别人”指代不清
 > 「だけどさ。アタシは、たとえ他にどうし
 >  ようもなくったって、あいつらのいいなりに
-“But even if there's no other way, I'd rather fight and die than become their
+“But even if there’s no other way, I’d rather fight and die than do whatever
 ---
 >  なるくらいなら戦って死ぬ方を選ぶ
 >  他に誰もいなくっても」
-obedient servants. Even if I'm the only one left.”
+those guys say. Even if I’m the only one left.”
 
 @23141 Selain · セレイン（按段落 3DD2）
 > 「どのみち私もそうするだろう。
@@ -2000,8 +2016,9 @@ It's as if... I'm seeing my old self in a mirror.)
 * “That may be so, but...”
 
 @23148 Selain · セレイン（按段落 3DD2）
+# 审校：“I was interrupting, then”生硬
 > 「そうか……邪魔をしたな」
-“I see... I was interrupting, then.”
+“I see... sorry to intrude.”
 
 @23149 Lera · レラ
 > 「フン」
@@ -2171,8 +2188,9 @@ we can show just how incompetent Le Cain and Shapiro were.”
 “What, what happened?!”
 
 @23181 Muge Soldier · ムゲ兵
+# 审校：士兵报告口吻
 > 「ば、爆弾がしかけられていたようです!」
-“I-It seems bombs were planted!”
+“B-bombs, sir! Someone planted bombs!”
 
 @23182 Gildrome · ギルドローム
 > 「敵に潜入されていたというのか!
@@ -2215,9 +2233,10 @@ Search for them! Don't let them leave alive!”
 “You... you're not a soldier!”
 
 @23190 Murasame · 村雨
+# 审校：去掉“As expected of”
 > 「クッ……さすがは帝国の将軍か。
 >  だが、そんなものでは俺は殺せないな」
-“Ngh... As expected of an Imperial general. But that won't be enough to kill me.”
+“Ngh... That’s an Imperial general for you. But it’ll take more than that to kill me.”
 
 @23191 Gildrome · ギルドローム
 > 「レジスタンスか。よくもこの基地に
@@ -2419,10 +2438,10 @@ crushing the anti-Imperial movement?!”
 and for us as well. That had to be avoided.”
 
 @23223 Selain · セレイン（按段落 3DD2）
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“投身反帝国活动，却折磨”主语错乱；“regrets unfulfilled”生硬
 > 「そうだな、納得できん。
 >  反帝国活動に身を投じた、
-“No, I can't accept that. It was you Specials who tormented
+“No, I can’t accept that. It was you Specials who tormented
 ---
 >  その同じ地球人を苦しめてきた
 >  のが、お前たちスペシャルズだろう
@@ -2433,7 +2452,7 @@ your fellow Earthlings... the very people who threw themselves into the anti-Imp
 Do you have any idea how many Earthlings died
 ---
 >  死んでいったと思っている?」
-with their regrets unfulfilled because of you?”
+with bitterness in their hearts because of you?”
 
 @23224 Rish · リッシュ（按段落 3DD2）
 > 「ハッハッハッ、お前ならそういうだろうと
@@ -2490,16 +2509,17 @@ had to be avoided.”
 and say that now?”
 
 @23229 Zechs · ゼクス
+# 审校：“there’s no helping it”“我也没办法”日语腔
 > 「そういわれても、しかたがないが……
 >  我々が動かなければレジスタンスとは
-“Say what you will, but there's no helping it... If we hadn't acted, far more
+“I can’t blame you for saying so... But if we hadn’t acted, far more
 ---
 >  無関係な民衆に、もっと多くの
 >  犠牲がでていただろう
-civilians with no connection to the Resistance would have been sacrificed.
+civilians with no ties to the Resistance would have died.
 ---
 >  それを考えてもらいたいな」
-I'd like you to consider that.”
+I’d ask you to consider that.”
 
 @23230 Brad · ブラッド（按段落 3DD3）
 > 「ふざけんなよ、仮面の兄ちゃん。なら
@@ -2534,25 +2554,27 @@ your fellow Earthlings, wasn't it?! Because of that, so many innocent people
 died! How dare you say such a thing!!”
 
 @23233 Zechs · ゼクス
+# 审校：同 23229
 > 「そういわれても、しかたがないが……
 >  我々が動かなければレジスタンスとは
-“Say what you will, but there's no helping it... If we hadn't acted, far more
+“I can’t blame you for saying so... But if we hadn’t acted, far more
 ---
 >  無関係な民衆に、もっと多くの
 >  犠牲がでていただろう
-civilians with no connection to the Resistance would have been sacrificed.
+civilians with no ties to the Resistance would have died.
 ---
 >  それを考えてもらいたいな、お嬢さん」
-I'd like you to consider that, my lady.”
+I’d ask you to consider that, young lady.”
 
 @23234 Manami · マナミ（按段落 3DD4）
+# 审校：玛奈美用“不可饶恕”；去掉“I can’t forgive”
 > 「ばかにしないで! それにあなたたちは帝
 >  国のために、帝国に取りいるために
-“Don't treat me like a fool! Besides, you crushed anti-Imperial organizations
+“Don’t treat me like a fool! Besides, you crushed anti-Imperial organizations
 ---
 >  反帝国組織をつぶしてまわった。
 >  許せることではないわ!!」
-for the Empire's sake, to curry favor with it. I can't forgive that!!”
+for the Empire’s sake, to curry favor with it. That cannot be forgiven!!”
 
 @23235 Zechs · ゼクス
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -2574,26 +2596,26 @@ and for us as well. That had to be avoided.”
 that people fought. You have no right to deny that.”
 
 @23237 Zechs · ゼクス
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“作为帝国军一部分发挥作用的我们的临时名称”长定语
 > 「否定などしていないよ、
 >  クワトロ・バジーナ大尉。なぜなら
 “I am not denying it, Captain Quattro Bajeena. Because
 ---
 >  我々スペシャルズ、いや、もはやOZと
 >  いった方がいいな。スペシャルズは
-we Specials... no, perhaps I should say OZ now. Specials was
+we Specials... no, I should say OZ now. ‘Specials’ was
 ---
 >  帝国軍の一部として機能した
 >  我々の仮の名にすぎん
-merely a provisional name for us as a part of the Imperial military.
+only the provisional name we used as part of the Imperial military.
 ---
 >  我々OZもまた、その目的のために
 >  こそ存在しているのだから
-We OZ, too, exist for that very purpose.
+We of OZ exist for that very same purpose.
 ---
 >  そしてもはや我々と諸君らが戦う
 >  理由もない」
-And there is no longer any reason for us and you to fight.”
+And there is no longer any reason for us to fight you.”
 
 @23238 Quattro · クワトロ
 > 「なんだと?」
@@ -2699,8 +2721,9 @@ I've finally found him!!”
 “Gwah! D...damn it...”
 
 @23251 Dr. Gura · グラー博士
+# 审校：“what has come of this”不地道
 > 「ええぃ、なんとしたことじゃ!」
-“Gah, what has come of this!”
+“Gah, what is the meaning of this!”
 
 @23252 Noin · ノイン
 > 「この基地は制圧された。
@@ -3110,6 +3133,7 @@ maintain order? You cannot do it.”
 “Besides, it's not decided that things will turn out that way...”
 
 @23310 Lady · レディ
+# 审校：“你们这些什么都不懂的人，人类就是这种东西”断错；“第一次成为现实／does it first”是初めて直译
 > 「バカな。貴様らは何もわかっておらん
 >  人間とはそういうものだ。お前たちは
 “Fools. You understand nothing. That is simply what humans are. Do you fancy
@@ -3124,7 +3148,7 @@ How laughable. With ideals alone, peace is nothing but a mere dream.
 ---
 >  力があってこそ初めてそれは現実の
 >  ものとなるのだ」
-Only with power does it first become reality.”
+Only with power does it become reality.”
 
 @23311 Treize · トレーズ
 > 「レディ、そういういい方をするもの
@@ -3182,9 +3206,10 @@ decide the path you will walk. We shall take our leave now. I await your favorab
 will be disbanded.”
 
 @23319 Roux · ルー
+# 审校：去掉“It can’t be helped”
 > 「しかたありませんね。もともと反帝国
 >  の組織だったわけですから」
-“It can't be helped. We were an anti-Imperial organization to begin with, after all.”
+“Nothing for it. We were an anti-Imperial group to begin with, after all.”
 
 @23320 Bright · ブライト
 > 「そういうことだ」
@@ -3245,9 +3270,10 @@ restore peace. Then there's nothing to think about. We should side with OZ.
 As Treize says, with pretty words alone peace is too far away.”
 
 @23328 Quatre · カトル
+# 审校：“the other party is ... of all people”生硬
 > 「そんな! 相手は、あのロームフェラ
 >  なんですよ!?」
-“No way! The other party is Romefeller, of all people?!”
+“No way! We’re talking about Romefeller here!”
 
 @23329 Duo · デュオ
 > 「そうだ。寝首をかくのを得意とする
@@ -3301,9 +3327,10 @@ we want. But at least it's better than the fighting continuing as it is.”
 “...”
 
 @23335 Shinobu · 忍
+# 审校：去掉“it can’t be helped”
 > 「チッ、OZにゃいけすかねぇ連中も
 >  多いが、しかたねぇってことかよ」
-“Tch. There are plenty of bastards in OZ I can't stand, but I guess it can't be helped.”
+“Tch. Plenty of guys in OZ I can’t stand, but I guess there’s no way around it.”
 
 @23336 Koji · 甲児
 > 「でもよぉ……」
@@ -3356,13 +3383,14 @@ reasonable choice. I can't accept it, but we cannot let personal feelings
 spread the conflict further.”
 
 @23343 Brad · ブラッド（按段落 3DD3）
+# 审校：“Depending on how they move”“看他们的做法，我随时都会变成敌人”不顺
 > 「どうもこうもねぇや。トレーズの言葉に
 >  のってみるのもいいだろうさ。だがあくまで
-“There's no two ways about it. It might be fine to go along with what Treize says. But it's strictly
+“There’s no two ways about it. Might as well go along with what Treize says. But it’s strictly
 ---
 >  平和のためだ。連中の動き方に
 >  よっちゃ、俺はいつでも敵になるぜ」
-for the sake of peace. Depending on how they move, I'll become their enemy anytime.”
+for the sake of peace. Depending on how they act, I’ll turn on them in a heartbeat.”
 
 @23344 Manami · マナミ（按段落 3DD4）
 > 「あたしは財団を裏切った身です。
@@ -3443,8 +3471,9 @@ Special Colonel Treize.”
 stop fighting. We will continue to cooperate as before.”
 
 @23356 Bright · ブライト
+# 审校：同一句助かります两条分支英文不一致，统一为 23394 的写法
 > 「助かります」
-“That helps.”
+“You have my thanks.”
 
 @23357 Bright · ブライト
 > 「エレ女王、お聞きの通りですが、
@@ -3472,8 +3501,9 @@ stop fighting.”
 “We will assist you as before.”
 
 @23361 Bright · ブライト
+# 审校：同一句助かります两条分支英文不一致，统一为 23394 的写法
 > 「助かります」
-“That helps.”
+“You have my thanks.”
 
 @23362 Wufei · 五飛
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela

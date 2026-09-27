@@ -94,9 +94,10 @@ kill us here and now.”
 “Though I don't intend to let you do it without a fight.”
 
 @31788 Sai Saici · サイ・サイシー
+# 审校：“try this once”不明
 > 「なら、オイラが相手してやるぜ! 前
 >  から1度やってみたいと思ってたんだ」
-“Then I'll take you on! I've wanted to try this once for ages!”
+“Then I’ll take you on! I’ve been itching to try you for ages!”
 
 @31789 Bright · ブライト
 > 「やめんか、お前たち!」
@@ -111,12 +112,13 @@ kill us here and now.”
 no intention of stopping you.”
 
 @31791 Duo · デュオ
+# 审校：“without holding back”“不客气地走了”直译
 > 「か～っ、ありがたくて涙がでるぜ。
 >  んじゃ、悪いがお言葉に甘えて
-“Man, I'm so grateful I could cry. Well then, sorry, but we'll take you up on that and
+“Man, I’m so grateful I could cry. Well then, sorry, but we’ll take you up on that
 ---
 >  遠慮なく行かせてもらうぜ」
-be on our way without holding back.”
+and get going.”
 
 @31792 Heero · ヒイロ
 > 「……世話になったな」
@@ -144,9 +146,10 @@ hold them back, there's nothing we can do about it, is there?”
 “I see... so they really left.”
 
 @31796 Roux · ルー
+# 审校：Can’t be helped
 > 「しかたないわね。あたしたちがOZに
 >  なる以上、今度あう時は
-“Can't be helped. Since we're with OZ now, the next time we meet,
+“Nothing for it. We’re OZ now, so the next time we meet,
 ---
 >  敵になるかもね」
 we might be enemies.”
@@ -168,9 +171,10 @@ we might be enemies.”
 what would happen.”
 
 @31800 Roux · ルー
+# 审校：Can’t be helped
 > 「しかたないわね。あたしたちがOZに
 >  なる以上、今度あう時は
-“Can't be helped. Since we're with OZ now, the next time we meet,
+“Nothing for it. We’re OZ now, so the next time we meet,
 ---
 >  敵になるかもね」
 we might be enemies.”
@@ -219,9 +223,10 @@ we might be enemies.”
 “The next time they come back... they might be enemies... I'd rather not think about it.”
 
 @31810 Simone · シモーヌ
+# 审校：时态：他们已走
 > 「しょうがないわよ。あの連中には
 >  連中なりの戦う理由が
-“It can't be helped. Those kids had their own reasons
+“It couldn’t be helped. Those kids had their own reasons
 ---
 >  あったんだから」
 to fight.”
@@ -491,10 +496,10 @@ the petty hopes of those foolish Earthlings who believe they can win. The
 operation is already prepared.”
 
 @31851 Gildrome · ギルドローム
-# 审校：精读：去破折号
+# 审校：“Why you, Shapiro, do you mean”不通
 > 「おのれシャピロ、貴様このギルドローム
 >  に指図するつもりか!?」
-“Why you, Shapiro, do you mean to give orders to me, Gildrome?!”
+“Damn you, Shapiro! You mean to give orders to me, Gildrome?!”
 
 @31852 Emperor Muge · ムゲ帝王
 > 「やめい、ギルドローム」
@@ -518,9 +523,10 @@ subdue the Earthlings once more.”
 “Yes...”
 
 @31856 Emperor Muge · ムゲ帝王
+# 审校：“show me something splendid”“漂亮地做给我看看”直译
 > 「うむ……シャピロよ、見事やってみせる
 >  がよい」
-“Mm... Shapiro, go and show me something splendid.”
+“Mm... Shapiro, see that you do it well.”
 
 @31857 Shapiro · シャピロ
 > 「おかませください、帝王様」
@@ -535,9 +541,11 @@ subdue the Earthlings once more.”
 “What is it, Lord Shapiro?”
 
 @31860 Shapiro · シャピロ
+# 审校：人名前多了 the
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「ヘルマットがショット・ウェポンとともに
 >  出撃した」
-“Helmut has sortied with the Shot Weapon.”
+“Helmut has sortied with Shot Weapon.”
 
 @31861 Luna · ルーナ
 > 「ヘルマット将軍が!? シャピロ様、
@@ -593,9 +601,10 @@ pay, without fail...)
 “Don't say that, not now.”
 
 @31871 Lera · レラ
+# 审校：“they’re those Specials, you know?!”“虽然……可”
 > 「だって、あいつらOZとかいってるけど、
 >  あのスペシャルズなんだよ!?」
-“But they call themselves OZ, and they're those Specials, you know?!”
+“But they can call themselves OZ all they want, they’re still the Specials!”
 
 @31872 Ark · アーク（按段落 3DD1）
 # 审校：精读：去破折号
@@ -621,23 +630,24 @@ Front and Karaba joined OZ. And even then, still fighting Muge, still
 fighting OZ, where are we headed?!”
 
 @31873 Lera · レラ
+# 审校：“I don’t know about that kind of thing”直译
 > 「わかんないよ、そんなことッ! だけど、
 >  だけどアタシは……」
-“I don't know about that kind of thing! But, but I...”
+“How should I know?! But, but I...”
 
 @31874 Ark · アーク（按段落 3DD1）
-# 审校：精读：去破折号
+# 审校：末页“fought while thinking”绕
 > 「いいたいことは、わかるよ。だけどさ、
 >  スペシャルズだろうがOZだろうが
-“I get what you want to say. But listen, whether it's the Specials or OZ, if
+“I get what you want to say. But listen, whether it’s the Specials or OZ, if
 ---
 >  異星人を追いだすことができるん
 >  なら、それはいいことだって思えないか?
-they can drive out the aliens, can't you see that as a good thing? To begin
+they can drive out the aliens, can’t you see that as a good thing? We never
 ---
 >  もともと俺たち、勝ったあとのこと
 >  なんか考えてやしなかったんだ」
-with, we never fought while thinking about what comes after winning.”
+gave a thought to what comes after winning, anyway.”
 
 @31875 Lera · レラ
 > 「…………」
@@ -657,12 +667,13 @@ bastard Muge. That's a lot easier to understand, isn't it?”
 “Shinobu...”
 
 @31878 Lera · レラ
+# 审校：“saying something strange”直译
 > 「……うん……そうだね……
 >  そうかもしれない……。ごめん、{HeroNick}
-“...Yeah... you're right... maybe so... Sorry, {HeroNick},
+“...Yeah... you’re right... maybe so... Sorry, {HeroNick},
 ---
 >  おかしなこといってさ」
-for saying something strange.”
+for going on like that.”
 
 @31879 Ark · アーク（按段落 3DD1）
 > 「いいさ。何が正しいのかわかれば、
@@ -694,23 +705,24 @@ for saying something strange.”
 “That's not what I'm talking about!”
 
 @31885 Selain · セレイン（按段落 3DD2）
-# 审校：精读：ロームフェラ～OZ
+# 审校：“Becoming comrades with”“成为那支特殊部队的同伴”生硬
 > 「ならば何が問題だ? あの
 >  スペシャルズの仲間になることか?
-“Then what is the problem? Becoming comrades with those Specials?
+“Then what is the problem? Joining up with those Specials?
 ---
 >  いや、違うな……ロームフェラ～OZと
 >  いう組織に飲みこまれることか」
-No, that's not it... It's being swallowed up by the organization called Romefeller and OZ.”
+No, that’s not it... It’s being swallowed up by Romefeller, by OZ.”
 
 @31886 Lera · レラ
+# 审校：“没办法，这种事我自己也明白啊”“Even I understand”
 > 「な……なんでアタシが、そんなこと気に
 >  しなくちゃいけないのさ。異星人に
-“W-Why should I have to worry about something like that? It's to beat the
+“W-Why should I have to worry about something like that? It’s to beat the
 ---
 >  勝つためなんだ。しかたないってことは、
 >  アタシだってわかってるよ!」
-aliens. Even I understand there's no other way!”
+aliens. I know there’s no other way, all right?!”
 
 @31887 Selain · セレイン（按段落 3DD2）
 > 「これまでお前は、自分の身に
@@ -904,17 +916,17 @@ because we joined OZ, though...”
 “That's harsh.”
 
 @31917 Selain · セレイン（按段落 3DD2）
-# 审校：精读：去破折号
+# 审校：“push themselves too hard”“已经没有力量的人”
 > 「無駄に死ぬことはないといいたかった
 >  だけです。状況は変わって、OZは
-“I only meant that there's no need to die for nothing. The situation has changed. OZ,
+“I only meant that there’s no need to die for nothing. The situation has changed. OZ,
 ---
 >  地球人は、帝国を排除しつつ
 >  ある。もう力のない者が無理をする
-the people of Earth, are pushing the Empire out. There's no longer any need for
+the people of Earth, are pushing the Empire out. Those without the strength for it
 ---
 >  必要はないでしょう」
-those without power to push themselves too hard.”
+no longer need to force themselves.”
 
 @31918 Amuro · アムロ
 > 「それはそうだが……」
@@ -1029,9 +1041,10 @@ and several colonies have sided with OZ.”
 “Oh, you said it.”
 
 @31937 Sayaka · さやか
+# 审校：調子いい 是见风转舵，不是 carefree／顺杆爬
 > 「何いってんのよ。まぁったく、
 >  甲児くんたちは調子いいんだから」
-“What are you talking about? Honestly, you boys are so carefree.”
+“What are you talking about? Honestly, you boys change your tune so easily.”
 
 @31938 Treize · トレーズ
 > 「すまない諸君、連絡が遅くなって
@@ -1163,13 +1176,15 @@ Not to join some army!!”
 “Be quiet, Rain!”
 
 @31954 Treize · トレーズ
+# 审校：“I believe I understand that it’s a dangerous thing”绕
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン・カッシュだったね。デビルガンダム
 >  のことは私も報告を受けている
-“Domon Kasshu, was it? I've received reports about the Dark Gundam as well.
+“Domon Kasshu, was it? I’ve received reports about the Dark Gundam as well.
 ---
 >  あれが危険な代物であることは、
 >  私も理解しているつもりだ」
-I believe I understand that it's a dangerous thing.”
+I do understand how dangerous it is.”
 
 @31955 Domon · ドモン
 > 「デビルガンダムは俺がこの手で倒す!
@@ -1510,8 +1525,9 @@ It's from a poem I heard long ago. That's the title of the poem.”
 “Let's see... How about {HeroMech}?”
 
 @32017 Lawrence · ローレンス
+# 审校：As expected of
 > 「さすがお嬢様、よい名前です」
-“As expected of you, my lady. It is a fine name.”
+“Just what I would expect of you, my lady. It is a fine name.”
 
 @32018 Shinobu · 忍
 > 「{HeroMech}だぁ?
@@ -1553,9 +1569,10 @@ complaining to me later.”
 “Kayra Su, Special Lieutenant First Class, reporting for duty.”
 
 @32025 Bright · ブライト
+# 审校：ご苦労 对新报到者不是 Good work
 > 「ご苦労。聞いていると思うが、
 >  我々はすぐに哨戒任務につく」
-“Good work. As you've likely heard, we're heading out on patrol duty immediately.”
+“At ease. As you’ve likely heard, we’re heading out on patrol immediately.”
 
 @32026 Kayra · ケーラ
 > 「了解であります、特佐」
@@ -1666,9 +1683,11 @@ annihilate the Imperial forces. All hands, second battle stations.
 We're pursuing the Imperial fleet.”
 
 @32046 Ginrei · 銀鈴
+# 审校：“It appears… without a doubt”自相矛盾
+# 检查提示：未用必用译名：ヘルマット→Helmut
 > 「……敵発見! ヘルマット艦隊に
 >  間違いないと思われます」
-“...Enemy spotted! It appears to be Helmut's fleet, without a doubt.”
+“...Enemy spotted! It’s Helmut’s fleet, no doubt about it.”
 
 @32047 Bright · ブライト
 > 「総員、第一戦闘配置!
@@ -1874,8 +1893,9 @@ worth the trouble.”
 The rest of you can do as you please.”
 
 @32077 Dr. Gura · グラー博士
+# 审校：“what kind of man is that?!”不像骂人
 > 「おのれ、なんという奴だ」
-“Why, you... what kind of man is that?!”
+“Why, you... the nerve of that man!”
 
 @32078 Dark General · 暗黒大将軍
 > 「たかが人間1匹ごとき、かまいはせぬ
@@ -1995,16 +2015,17 @@ happy about this.”
 “I don't have time to keep you company!”
 
 @32098 Rish · リッシュ（按段落 3DD2）
+# 审校：ちゃん 的轻佻要体现；“小妹妹”过头
 > 「やーれやれ。もう少しマシな言葉が
 >  返ってきてもいいと思うんだがな
-“Well, well. I'd have thought I might get a slightly nicer reply than that.
+“Well, well. I’d have thought I might get a slightly nicer reply than that.
 ---
 >  ま、なんにせよこれからはお仲間って
 >  ことでな、よろしく頼むぜ
-Anyway, from now on we're comrades, so I'll be counting on you,
+Anyway, from now on we’re comrades, so I’ll be counting on you,
 ---
 >  {HeroName}ちゃん」
-{HeroName}.”
+{HeroName}, sweetheart.”
 
 @32099 Selain · セレイン（按段落 3DD2）
 > 「…………」
@@ -2037,14 +2058,14 @@ do something so disgraceful?”
 “{PartnerName}...”
 
 @32104 Aisha · アイシャ（按段落 3DD4）
-# 审校：精读：トレーズ様
+# 审校：“is a handful”“让人为难”不合意
 > 「トレーズ様にも困ったものですわ。この
 >  ような者たちをOZに引きいれなくとも
-“His Excellency Treize is a handful too. Even without taking people like these into OZ,
+“Honestly, His Excellency Treize... Even without bringing people like these into OZ,
 ---
 >  わたくしたちが十分に働いてみせます
 >  ものを」
-we would have served him well enough.”
+we could have served him well enough ourselves.”
 
 @32105 Lila · ライラ
 > 「そのくらいでやめにしてほしいね。
@@ -2123,9 +2144,10 @@ with my own hands.”
 “Jerid...”
 
 @32121 对手
+# 审校：“let’s meet again”“哦”
 > 「そんじゃま、また会おうや。
 >  {HeroName}、愛してるぜ」
-“Well then, let's meet again. {HeroName}, I love you.”
+“Well then, see you around. {HeroName}, love you.”
 
 @32122 主角
 # 审校：精读：セレイン 口吻
@@ -2137,10 +2159,10 @@ with my own hands.”
 “Wait, {PartnerNick}, I...”
 
 @32124 对手
-# 审校：原文「貴女を許しませんわ」带有女性说话者对上位/同辈女性的敬称和「わ」语尾，初稿丢失了这层语气，补上“my dear”以体现。
+# 审校：去掉 my dear；“我，不会”
 > 「{HeroName}さん……私は、貴女を
 >  許しませんわ」
-“{HeroName}... I will never forgive you, my dear.”
+“{HeroName}... I shall never forgive you for this.”
 
 @32125 主角
 > 「{PartnerNick}……どうして……」

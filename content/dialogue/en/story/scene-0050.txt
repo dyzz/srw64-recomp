@@ -220,9 +220,10 @@ then fight with OZ.”
 Muge bastards out of the Earth Sphere.”
 
 @33879 Sara · 沙羅
+# 审校：“彻底干一场”不通；英文自然
 > 「……ああ。奴らをこれ以上のさばらせ
 >  ておくもんか。徹底的にやってやるよ」
-“...Yeah. We can't let them run wild any longer. I'll take them down completely.”
+“...Yeah. We can’t let them run wild any longer. We’re gonna finish them for good.”
 
 @33880 Alan · アラン
 > 「あまり意気ごむなよ、結城。
@@ -243,9 +244,10 @@ combat strength left than expected. Losing your cool is dangerous.”
 “Good grief, you're all worked up.”
 
 @33883 Shinobu · 忍
+# 审校：去掉 can't help it
 > 「しかたねぇさ。俺たちだって、たいして
 >  かわりゃしねぇ」
-“Can't help it. We're no different.”
+“Can’t blame her. We’re no different.”
 
 @33884 Jun · ジュン
 > 「とかいって、あんたが冷静な時なんて
@@ -320,9 +322,10 @@ than to worry about OZ and the rest.”
 “Good. From here, the {HeroMech} heads to the moon for Operation Apollo.”
 
 @33897 Bask · バスク
+# 审校：英文更自然；中文顺口
 > 「奴らも意外にあっさり作戦への
 >  参加を受け入れましたな」
-“They accepted participating in the operation surprisingly easily.”
+“They agreed to join the operation surprisingly easily.”
 
 @33898 Jamitov · ジャミトフ
 > 「なにしろ{HeroMech}は、もともと
@@ -362,9 +365,10 @@ there'll be no need to use them.”
 “I'll have them watched. Now, I'll take command of the moon suppression.”
 
 @33904 Bask · バスク
+# 审校：补上告辞的 では
 > 「私はアポロ作戦の指揮をとります
 >  では」
-“I will take command of Operation Apollo.”
+“I will take command of Operation Apollo. If you’ll excuse me.”
 
 @33905 Shapiro · シャピロ
 > 「来たか」
@@ -502,13 +506,13 @@ Everyone else, launch, hurry!”
 “W-why are you here?!”
 
 @33927 Ehrlich · エルリッヒ（按段落 3DD1）
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：去掉 I'm counting on you 套话
 > 「バスク特佐からの命令で、
 >  この作戦中{HeroMech}に
-“By order of Special Colonel Bask, I'm to join the {HeroMech}
+“By order of Special Colonel Bask, I’m to join the {HeroMech}
 ---
 >  加わることとなった。よろしく頼む」
-for this operation. I'm counting on you.”
+for this operation. I look forward to working with you.”
 
 @33928 Bright · ブライト
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -557,13 +561,13 @@ but to obey.”
 “A superior? You mean Special Colonel Bask ordered this?”
 
 @33937 Rish · リッシュ（按段落 3DD2）
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：去掉 in your care 套话
 > 「そういうことです。この作戦の間
 >  {HeroMech}に加わるようにとね
-“That's right. I'm to join the {HeroMech} for this operation.
+“That’s right. I’m to join the {HeroMech} for this operation.
 ---
 >  ま、よろしく頼んます、特佐」
-Well, I'll be in your care, Special Colonel.”
+Well, glad to be aboard, Special Colonel.”
 
 @33938 Bright · ブライト
 > 「あ、ああ……」
@@ -627,10 +631,10 @@ first of all!”
 but are they really going to be any use?”
 
 @33949 Bask · バスク
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：英文口语化，补“所谓的”
 > 「ノア特佐、まずは貴官ら
 >  {HeroMech}とやらの実力を
-“Special Colonel Noah, first let's see the ability of you and your {HeroMech}.
+“Special Colonel Noah, first let’s see what you and your so-called {HeroMech} can do.
 ---
 >  見せてもらおう。前へでろ」
 Get to the front.”
@@ -649,18 +653,18 @@ Get to the front.”
 “...Ngh...”
 
 @33953 Bask · バスク
-# 审校：初稿在 {HeroMech} 后缺少空格，导致占位符与后续单词粘连，补上空格。
+# 审校：中文语序；英文末页理顺
 > 「どうした、なぜ動かん。
 >  {HeroMech}はかなりの戦果を
-“What's wrong? Why don't you move? I hear the {HeroMech} is a unit that has
+“What’s wrong? Why don’t you move? I hear the {HeroMech} is a unit that has
 ---
 >  あげてきた部隊と聞くぞ。それとも
 >  貴官らは、やはりトレーズ派の
-achieved considerable results. Or are you after all Treize's rebel faction,
+achieved considerable results. Or are you Treize’s rebels after all,
 ---
 >  反乱分子であって、命令には
 >  従えないというのか」
-and cannot obey orders?”
+unable to obey orders?”
 
 @33954 Quattro · クワトロ
 > 「艦長、ここでバスクの部隊と
@@ -1546,8 +1550,9 @@ has no intention of attacking the Asteroid Base anytime soon.”
 mean to prioritize spreading their control through the Earth Sphere.”
 
 @34106 Ark · アーク（按段落 3DD1）
+# 审校：英文自然
 > 「なんて奴らだ」
-“What a bunch.”
+“Unbelievable.”
 
 @34107 Kamille · カミーユ
 > 「だけど、考えようによっては、こちら
@@ -1952,10 +1957,10 @@ I won't exactly welcome you, though.”
 “Yeah... I'll think about it.”
 
 @34168 Rish · リッシュ（按段落 3DD2）
-# 审校：说话对象是セレイン（女性），原文“行ったか”指她离开，初稿误用 He's/him，改为 She's/her。
+# 审校：“其他家伙”指他谎称的内应
 > 「行ったか……。へっ、ホントに他の連
 >  中なんてのがいりゃ、楽だったんだがな
-“She's gone... Heh, if there really were others like her, this'd be a lot easier.
+“She’s gone... Heh, if those ‘others’ really existed, this’d be a lot easier.
 ---
 >  逃げてよ、生きのびろよ……」
 Run. Survive...”
@@ -2116,10 +2121,10 @@ we can resupply, right?”
 “That's right. But we don't even know where it is right now.”
 
 @34198 Jun · ジュン
-# 审校：原文是“いま暗礁宙域にいるって、いったじゃない”，指“我们”在暗礁宙域，初稿漏译主语。
+# 审校：指的是拉维安罗斯
 > 「いま暗礁宙域にいるって、いった
 >  じゃない」
-“You just said we're in the Shoal Zone.”
+“You just said it’s in the Shoal Zone.”
 
 @34199 Kenji · ケンジ
 > 「暗礁宙域は広大だ。

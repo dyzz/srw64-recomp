@@ -252,14 +252,14 @@ would you lend us your strength?”
 “Exactly. This is my fight too.”
 
 @24342 Bright · ブライト
-# 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
+# 审校：“こちらこそお願いする”去日语腔
 > 「シーラ女王、エレ女王。
 >  こちらこそお願いする
-“Queen Ciela, Queen Elle. The pleasure is ours.
+“Queen Ciela, Queen Elle. We should be the ones asking.
 ---
 >  今後も我々と
 >  共に戦っていただきたい」
-We ask that you continue to fight alongside us.”
+We’d be honored to have you keep fighting alongside us.”
 
 @24343 Elle · エレ
 > 「ありがとう、感謝します。
@@ -284,12 +284,13 @@ I won't accept this. That's no different from tucking our tails and running!”
 “It has already been decided. You have no room to raise objections.”
 
 @24346 Death Gaia · デスガイヤー
+# 审校：“spooked by cowardice”不自然
 > 「何をいうか。地上を放棄するよう
 >  進言したのは貴様であろうが
-“What nonsense. You're the one who proposed abandoning the surface.
+“What nonsense. You’re the one who proposed abandoning the surface.
 ---
 >  臆病風に吹かれおって」
-You've been spooked by cowardice.”
+You’ve lost your nerve.”
 
 @24347 Luna · ルーナ
 # 审校：デスガイヤー 按词表 Death Gaia
@@ -373,12 +374,13 @@ for the lunar mission coming along?”
 I'm starving and I can't move another inch.”
 
 @24358 Hayato · ハヤト
+# 审校：“In exchange”日语腔
 > 「しょうがない奴だな。
 >  リョウ、食事にしよう
-“Hopeless, aren't you. Ryoma, let's eat.
+“You’re hopeless. Ryoma, let’s eat.
 ---
 >  そのかわり午後からまた特訓だ」
-In exchange, it's more special training this afternoon.”
+But it’s back to training this afternoon.”
 
 @24359 Benkei · ベンケイ
 > 「わかったよ」
@@ -538,9 +540,10 @@ anymore, are we?”
 we need to show the whole world that we exist.”
 
 @24384 Roux · ルー
+# 审校：As expected of 去日语腔；中文接上文
 > 「さっすがアムロさん。
 >  そうなんですよ艦長」
-“As expected of you, Amuro. That's exactly right, Captain.”
+“That’s Amuro for you. See, Captain?”
 
 @24385 Bright · ブライト
 > 「わかったよ。好きにしろ」
@@ -640,13 +643,15 @@ guerrilla unit in some revolutionary movement.”
 “Well, it means the sun's f...”
 
 @24405 Masato · 雅人
+# 审校：“even for you”偏离原意；中文更口语
 > 「ストップ! ちょっと、
 >  いくらなんでもそりゃまずいよデビッド」
-“Stop! Hey, that's going too far even for you, David.”
+“Stop! Hey, that one’s a bit much, David.”
 
 @24406 David · デビッド
+# 审校：接上句更自然
 > 「あ、やっぱり?」
-“Oh, really?”
+“Oh, you think?”
 
 @24407 Roux · ルー
 > 「もー、みんなちゃんと考えてよね」
@@ -662,8 +667,9 @@ guerrilla unit in some revolutionary movement.”
 “I know that, but...”
 
 @24410 Beltorchika · ベルトーチカ
+# 审校：英文更口语
 > 「ねぇアムロ、何かいい名前はないの?」
-“Hey Amuro, don't you have a good name?”
+“Hey, Amuro, got any good names?”
 
 @24411 Amuro · アムロ
 # 审校：精读：引号
@@ -680,17 +686,17 @@ guerrilla unit in some revolutionary movement.”
 “It doesn't sound bad, I suppose...”
 
 @24414 Amuro · アムロ
-# 审校：精读：引号与破折号
+# 审校：“含义也是有的”“诗的名字”不顺
 > 「意味もちゃんとあるさ。
 >  『三月の風、四月の雨
 “It has a proper meaning too. ‘March winds, April rains,
 ---
 >  五月の花を咲かせるために』。
 >  むかし聞いたことのある詩でね
-to make the May flowers bloom.’ It's from a poem I heard
+to make the May flowers bloom.’ It’s from a poem I heard
 ---
 >  その詩のタイトルなんだよ」
-long ago. That's the title of the poem.”
+long ago. That’s the poem’s title.”
 
 @24415 Jun · ジュン
 > 「マーチウィンド……
@@ -774,8 +780,9 @@ long ago. That's the title of the poem.”
 “Let me think... how about {HeroMech}?”
 
 @24431 Lawrence · ローレンス
+# 审校：As expected of 去日语腔
 > 「さすがお嬢様、よい名前です」
-“As expected of you, my lady. A fine name.”
+“Splendid, my lady. A fine name.”
 
 @24432 Shinobu · 忍
 > 「{HeroMech}だぁ?
@@ -884,9 +891,10 @@ They say Europe is relatively calm right now...
 Oh, that reminds me. Speaking of Europe, have you heard about the Sanc Kingdom?”
 
 @24452 Eiji · エイジ
+# 审校：统一“完全平和主義”译法为 complete pacifism
 > 「確か完全平和主義を
 >  唱えている国だったな
-“That was the country that advocated total pacifism, right?
+“That was the country that advocated complete pacifism, right?
 ---
 >  先代のピースクラフト王が
 >  提唱した……」
@@ -1000,13 +1008,14 @@ We'll send them packing!”
 “All units, prepare for launch! Assume intercept positions!”
 
 @24467 Kenji · ケンジ
+# 审校：场景内统一 Cosmo Crusher Corps
 > 「こちらコスモクラッシャー隊、
 >  隊長の飛鳥ケンジです
-“This is the Cosmo Crusher team, Commander Kenji Asuka speaking.
+“This is the Cosmo Crusher Corps, Commander Kenji Asuka speaking.
 ---
 >  大塚長官からの
 >  指示を受けてまいりました」
-We've come under orders from Chief Otsuka.”
+We’ve come under orders from Chief Otsuka.”
 
 @24468 Bright · ブライト
 > 「艦長のブライト・ノアだ。
@@ -1053,9 +1062,10 @@ I, General Death Gaia, will crush them all!”
 But when it comes to settling personal feelings, that I will see through myself.”
 
 @24475 Elle · エレ
+# 审校：“a power of malice”直译
 > 「なんという悪意の力か……これでは
 >  ……ますます悪意が広がって……」
-“What a power of malice... At this rate... the malice will spread further and further...”
+“Such malice... At this rate... the malice will only spread further and further...”
 
 @24476 Ciela · シーラ
 > (かりそめの客は、
@@ -1099,13 +1109,15 @@ Are you really okay with the Earth being torn apart like this? Tod!”
 “You're one to talk, Show!! Once I've beaten you, then I'll think about it!”
 
 @24482 Drake · ドレイク
+# 审校：“retreat here”“end it”不顺
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「く……これ以上やられては、いかな
 >  ウィル・ウィプスといえども……。ここは
-“Ngh... If we take any more damage, even the Will-Wips... We'll have to
+“Ngh... If we take any more damage, even the Will-Wips... We
 ---
 >  撤退だな。このようなところで終わる
 >  わけにはいかぬ」
-retreat here. I can't afford to end it in a place like this.”
+retreat, for now. I can’t have it end in a place like this.”
 
 @24483 Tod · トッド
 > 「ショウ……」
@@ -1152,12 +1164,13 @@ be thinking of returning to that land?!”
 “Tod!”
 
 @24492 Tod · トッド
+# 审校：“lucky with your chances”不自然
 > 「ショウ・ザマ、貴様は
 >  ただ機会に恵まれただけだ!
-“Show Zama, you just got lucky with your chances!
+“Show Zama, you just got lucky, that’s all!
 ---
 >  それを思い知らせてやる!」
-I'll make you realize that!”
+I’ll make you see that!”
 
 @24493 Show · ショウ
 > 「ドレイク! 地上とバイストンウェル
@@ -1209,14 +1222,17 @@ that all of you came through safely.”
 We can only wait for the next time we meet...”
 
 @24501 Kenji · ケンジ
+# 审校：场景内统一 Crusher Corps
+# 检查提示：未用必用译名：クラッシャー隊→Crusher Team
 > 「クラッシャー隊、
 >  隊長の飛鳥ケンジです」
-“Crusher Team, Commander Kenji Asuka speaking.”
+“Crusher Corps, Commander Kenji Asuka speaking.”
 
 @24502 Bright · ブライト
+# 审校：场景内统一 Cosmo Crusher Corps
 > 「コスモクラッシャー隊のクルーは
 >  5人か」
-“So the Cosmo Crusher team has five crew members.”
+“So the Cosmo Crusher Corps is a crew of five.”
 
 @24503 Takeru · タケル
 > 「射撃担当の明神タケルです」
@@ -1305,25 +1321,27 @@ At least, I myself do... People of {HeroMech},
 I'll be blunt. I want you to come to the Sanc Kingdom.”
 
 @24516 Bright · ブライト
+# 审校：统一 complete pacifism
 > 「サンクキングダムへ? しかし……
 >  それは完全平和主義に
-“To the Sanc Kingdom? But... wouldn't that go against
+“To the Sanc Kingdom? But... wouldn’t that go against
 ---
 >  反するのでは?」
-absolute pacifism?”
+complete pacifism?”
 
 @24517 Noin · ノイン
+# 审校：“太过笔直”“straight an arrow”直译
 > 「いいたいことはわかる。
 >  これはリリーナさまはご存知ない
-“I understand what you mean. Lady Relena doesn't know about this.
+“I understand what you mean. Lady Relena doesn’t know about this.
 ---
 >  私が勝手にやっていることだ。
 >  確かにリリーナさまの理想は尊い
-I'm doing this on my own. Lady Relena's ideal is certainly noble,
+I’m doing this on my own. Lady Relena’s ideal is certainly noble,
 ---
 >  だが、いまの世界の中では、
 >  あまりにもまっすぐすぎる
-but in today's world, it's far too straight an arrow.
+but in today’s world, it’s far too idealistic.
 ---
 >  我々は、あなた方を
 >  必要としているのだ」
@@ -1343,13 +1361,14 @@ that's a contradiction. But maybe our position now
 isn't so different from that.”
 
 @24519 Bright · ブライト
+# 审校：“把战斗本身当作目的”“we can't bear it”不顺
 > 「確かにそうともいえる。戦うこと
 >  そのものが目的では、やりきれんからな
-“You could certainly say that. If fighting itself becomes the goal, we can't bear it.
+“You could certainly say that. Fighting for its own sake would be unbearable.
 ---
 >  ノインさん、わかりました。
 >  我々も協力させていただきましょう」
-Miss Noin, understood. We'll cooperate as well.”
+Miss Noin, understood. We’ll help as well.”
 
 @24520 Noin · ノイン
 > 「ありがたい。感謝する、
@@ -1428,6 +1447,7 @@ then even what could be done won't get done.”
 “Say whatever you want. I'm out.”
 
 @24529 Ryo · 亮
+# 审校：长定语机翻腔
 > 「悪いが、俺たちもだ。
 “Sorry, but neither are we.
 ---
@@ -1437,7 +1457,7 @@ Even if OZ is driving the Imperial forces out, there are still plenty of
 ---
 >  黙っていたって襲ってくるような
 >  奴らが、たくさん残ってるんだ」
-enemies left in the Earth Sphere who'll attack us if we just stay quiet.”
+enemies in the Earth Sphere who’ll come for us whether we sit still or not.”
 
 @24530 Domon · ドモン
 > 「百鬼やミケーネ、ドレイク軍、それに
@@ -1515,9 +1535,10 @@ Zeon Deikun also preached peace and coexistence for humanity, but in the end
 he was assassinated by the Zabi family, and rumor has it only his name was used)
 
 @24540 Bright · ブライト
+# 审校：It can't be helped 去日语腔；中文“无法同行去”不顺
 > 「……しかたないな。サンクキングダムに
 >  同行できない者は申し出てくれ」
-“...It can't be helped. Those who can't come to the Sanc Kingdom, speak up.”
+“...Nothing for it. Anyone who can’t come to the Sanc Kingdom, speak up.”
 
 @24541 Amuro · アムロ
 > 「……結局、サンクキングダムに
@@ -1525,9 +1546,11 @@ he was assassinated by the Zabi family, and rumor has it only his name was used)
 “...So in the end, only this many are going to the Sanc Kingdom...”
 
 @24542 Bright · ブライト
+# 审校：数字用汉字；英文“忍 and the four”把人数弄成五个
+# 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「{HeroMech}から、ぬけるのは
 >  藤原忍ら獣戦機隊の4名
-“Leaving {HeroMech} are Shinobu Fujiwara and the four members of the Cyber Beast Force,
+“Leaving {HeroMech} are the four of the Cyber Beast Force, Shinobu Fujiwara’s group,
 ---
 >  それとドモンたち、他に……」
 plus Domon and the others, and besides them...”
@@ -1542,9 +1565,10 @@ plus Domon and the others, and besides them...”
 “I never thought Captain Quattro would leave too.”
 
 @24545 Bright · ブライト
+# 审校：it can't be helped 去日语腔
 > 「かなりの戦力ダウンだが……
 >  しかたがない」
-“It's a considerable loss of fighting strength, but... it can't be helped.”
+“It’s a considerable loss of fighting strength, but... there’s nothing for it.”
 
 @24546 Koji · 甲児
 > 「あーあ、奴ら行っちまったか。
@@ -1578,9 +1602,10 @@ are bound by red-hot friendship.”
 Having a friend for so long sure is something to be thankful for.”
 
 @24550 Simone · シモーヌ
+# 审校：it can't be helped 去日语腔
 > 「あらあら、しょうがないわね。
 >  まあ無理ないか」
-“Oh my, oh my, it can't be helped. Well, I suppose it's only natural.”
+“Oh my, honestly. Well, I suppose it’s only natural.”
 
 @24551 Ryoma · リョウ
 > 「みんな、また会おう。
@@ -1593,45 +1618,50 @@ Having a friend for so long sure is something to be thankful for.”
 “Well, I'm not worried, though. Not with them.”
 
 @24553 Noin · ノイン
+# 审校：“都是为了我”语义偏（原意是因我而起）
 > 「申しわけないことになった……。
 >  私のために」
-“I'm sorry it turned out this way... because of me.”
+“I’m sorry it came to this... all because of me.”
 
 @24554 Amuro · アムロ
+# 审校：“彼らじゃないが”是“借他们的话说”，不是“他们不在”
 > 「いや、気にしないで下さい。
 >  彼らじゃないが、必ずまた
-“No, please don't worry about it. It may not be them, but surely we'll
+“No, please don’t worry about it. Not to echo them, but I’m sure we’ll all
 ---
 >  ともに戦うことになるでしょう。
 >  そう信じていますから」
-fight together again. I believe that from the bottom of my heart.”
+fight together again. I truly believe that.”
 
 @24555 Noin · ノイン
+# 审校：{HeroMech} 是队名，不能说 aboard
 > 「そういってもらえれば……。
 >  では、改めてお願いします
 “If you say that, then... Well then, allow me to ask again.
 ---
 >  {HeroMech}の皆さん、
 >  サンクキングダムを守って下さい
-Everyone aboard the {HeroMech}, please protect the Sanc Kingdom,
+Everyone of {HeroMech}, please protect the Sanc Kingdom,
 ---
 >  完全平和主義の理想を、
 >  消さないために」
 so that the ideal of complete pacifism is not erased.”
 
 @24556 Bright · ブライト
+# 审校：布莱特对诺茵称呼统一 Miss Noin；“the area”生硬
 > 「了解しました。{HeroMech}は
 >  これより、サンクキングダム
-“Understood. The {HeroMech} will now head to the area
+“Understood. {HeroMech} will now head there
 ---
 >  防衛のため、当地に向かいます。
 >  ノインさん、案内をお願いする」
-to defend the Sanc Kingdom. Noin, please guide us.”
+to defend the Sanc Kingdom. Miss Noin, please lead the way.”
 
 @24557 Noin · ノイン
+# 审校：{HeroMech} 是队名，不能说 aboard
 > 「わかりました。出発しましょう
-“Understood. Let's depart.
+“Understood. Let’s depart.
 ---
 >  {HeroMech}の皆さん……
 >  本当にありがとう」
-Everyone aboard the {HeroMech}... thank you, truly.”
+Everyone of {HeroMech}... thank you, truly.”

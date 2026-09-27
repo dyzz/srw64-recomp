@@ -9,10 +9,10 @@
 Where shall I bring it for you?”
 
 @17411 Manami · マナミ（本话主角）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：末页“口吐怨恨地死去”“die cursing their fate?!”别扭
 > 「……ローレンス、
 >  お茶などどうでもいいわ
-“...Lawrence, I don't care about the tea.
+“...Lawrence, I don’t care about the tea.
 ---
 >  あたしはいったい、
 >  いつまで待てばよいのです!
@@ -24,20 +24,21 @@ Even now, while we sit here, those people keep committing their atrocities,
 ---
 >  苦しみ、恨み言を口にしながら
 >  死んでいく者たちがいるのよ!?」
-and there are those who suffer and die cursing their fate?!”
+and people are suffering and dying with curses on their lips!”
 
 @17412 Lawrence · ローレンス
+# 审校：obtain/obtained 重复
 > 「お嬢様、私どもの活動とて
 >  反帝国を志す方々にとっては
 “My lady, even our own activities are of great importance
 ---
 >  とても重要なものなのですぞ。
 >  他の方では手に入らぬ情報も
-to those who aspire to resist the Empire. Information that no one else could obtain
+to those who aspire to resist the Empire. There is information no one else could obtain
 ---
 >  お嬢様がロームフェラの一員である
 >  からこそ手に入れられるのです」
-can be obtained only because you are a member of Romefeller.”
+that you can, precisely because you are a member of Romefeller.”
 
 @17413 Manami · マナミ（本话主角）
 > 「それはうんざりするくらい何度も聞き
@@ -125,22 +126,23 @@ Is {HeroName} there?”
 “One moment, please.”
 
 @17426 Manami · マナミ（本话主角）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：玛奈美对万丈称 Mr. Banjo；反问改陈述
 > 「お待たせいたしました、
 >  {HeroName}です
 “Sorry to keep you waiting. This is {HeroName}.
 ---
 >  万丈様、あたしずっとご連絡を
 >  待ってましたのよ?」
-Banjo, I have been waiting for your word all this time, you know?”
+Mr. Banjo, I have been waiting for your call all this time!”
 
 @17427 Banjo · 万丈
+# 审校：两页连说两次 sorry
 > 「すまなかった
 “Sorry about that.
 ---
 >  長い間いやな仕事を
 >  してもらって悪かったね」
-I'm sorry I had you doing such unpleasant work for so long.”
+I know I’ve had you doing unpleasant work for a long time.”
 
 @17428 Manami · マナミ（本话主角）
 > 「では……」
@@ -156,9 +158,10 @@ I'm sorry I had you doing such unpleasant work for so long.”
 I hear Sweemurg's adjustments are finished as well.”
 
 @17430 Manami · マナミ（本话主角）
+# 审校：のですね 是确认，不是问句
 > 「本当ですか!?
 >  では、いよいよ始めるのですね」
-“Truly?! Then we are finally starting.”
+“Really?! Then it is finally beginning.”
 
 @17431 Banjo · 万丈
 > 「そうだ。そちらの準備が整い次第
@@ -174,18 +177,22 @@ contact you with the details. I have to get in touch with one more person now.�
 “Who might that be?”
 
 @17433 Banjo · 万丈
+# 审校：“the Duke Lefranc”冠词
+# 检查提示：未用必用译名：ルフラン→Reflann
 > 「君と同じで帝国の動きを
 >  探ってもらっていた人でね
-“Someone who, like you, has been gathering information on the Empire's movements.
+“Someone who, like you, has been gathering information on the Empire’s movements.
 ---
 >  やはりロームフェラ財団の、
 >  ルフラン公爵家のご令嬢だ」
-She is also of the Romefeller Foundation, the daughter of the Duke Reflann.”
+She’s also from the Romefeller Foundation, the daughter of Duke Reflann.”
 
 @17434 Manami · マナミ（本话主角）
+# 审校：“那位大人”指西蒙娜过重
+# 检查提示：未用必用译名：ルフラン→Reflann
 > 「ルフラン公爵家……
 >  シモーヌ様ですね?
-“The Duke Reflann's house... Lady Simone, you mean?
+“The house of Reflann... You mean Lady Simone?
 ---
 >  そういえば、あの方は3年前にも
 >  帝国と戦ったことがあったと
@@ -200,9 +207,9 @@ three years ago as well.”
 “That's right. See you later, then.”
 
 @17436 Manami · マナミ（本话主角）
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：称呼统一 Mr. Banjo
 > 「万丈様!」
-“Banjo!”
+“Mr. Banjo!”
 
 @17437 Banjo · 万丈
 # 审校：万丈称 さん
@@ -234,20 +241,21 @@ so you may as well take a look at the unit. This way.”
 “Hmm, most impressive indeed.”
 
 @17442 Banjo · 万丈
+# 审校：However…but 重复
 > 「いやいや、設計データが完全だった
 >  からこそさ。でなければ、ここまでのものを
-“No, no, it's only because the design data was complete. Otherwise, building something
+“No, no, it’s only because the design data was complete. Otherwise, building something
 ---
 >  いちからつくるのは無理だよ。ただ、
 >  背面部にブースターのようなものを
-like this from scratch would be impossible. However, there was a joint on the rear
+like this from scratch would be impossible. One thing, though: there was a joint on the back
 ---
 >  取りつけるジョイントがあったんだけど、
 >  その部分は設計を変更して
-for attaching something like a booster, but I changed the design
+for attaching some sort of booster, but I changed the design
 ---
 >  取り外してある」
-and removed that part.”
+and took it out.”
 
 @17443 Garrison · ギャリソン
 # 审校：ギャリソン的管家敬语“お待ちください”应更正式，改为 if you would kindly wait。
@@ -273,8 +281,9 @@ We are just putting on the finishing touches, so if you would kindly wait a litt
 He's waxing the Sweemurg.”
 
 @17446 Manami · マナミ（本话主角）
+# 审校：“What, this?!”不通
 > 「なに、これは!?」
-“What, this?!”
+“What?! What’s this?!”
 
 @17447 Garrison · ギャリソン
 > 「どうやら帝国軍がこの近くに
@@ -369,8 +378,9 @@ Unforgivable... Absolutely unforgivable!”
 Garrison, I'm going out too. I'll leave the rest to you.”
 
 @17462 Garrison · ギャリソン
+# 审校：いってらっしゃいませ 不是 Have a safe trip
 > 「いってらっしゃいませ」
-“Have a safe trip.”
+“Go safely, sir.”
 
 @17463 Banjo · 万丈
 > 「ダイターン、カムヒアッ!」
@@ -437,21 +447,22 @@ I'd be glad if you could lend a hand.”
 “What do you mean, Lady Simone?”
 
 @17472 Simone · シモーヌ
+# 审校：首句“so it was yours”不通
 > 「あら、見慣れない機体があると
 >  思ったら、貴女のだったのね
-“Oh, I thought there was an unfamiliar machine here, so it was yours.
+“Oh, I was wondering about the machine I didn’t recognize. So it’s yours.
 ---
 >  実は連絡員がつかまって、
 >  アタシが情報を流していたことが
-Actually, our contact got caught, and it came out that I'd been leaking information.
+Actually, our contact got caught, and it came out that I’d been leaking information.
 ---
 >  バレちゃったのよ。ちょうどここへ来る
 >  予定だったから、タイミングはそれほど
-I was planning to come here anyway, so the timing wasn't all that
+I was planning to come here anyway, so the timing wasn’t all that
 ---
 >  悪くなかったけど、それで追手が
 >  かかってるってわけ」
-bad, but that's why they're after me.”
+bad, but that’s why they’re after me.”
 
 @17473 Garrison · ギャリソン
 > 「確認いたしました。
@@ -618,12 +629,13 @@ build up enough fighting strength as fast as we can.”
 “So, where are we headed?”
 
 @17495 Banjo · 万丈
+# 审校：误作“去卡拉巴”；与 17401 同句统一
 > 「とりあえずカラバで、研究を
 >  支援している博士の1人に
-“For now, we're going to Karaba to meet one of the doctors
+“For now, we’re going to meet one of the doctors
 ---
 >  会いに行く予定だ」
-who's been supporting our research.”
+whose research Karaba supports.”
 
 @17496 Simone · シモーヌ
 > 「カラバ……あなたたちが組織した

@@ -113,10 +113,10 @@ is active in Northern Europe.”
 “Things are rough on the ground too...”
 
 @35074 Alan · アラン
-# 审校：精读：去破折号
+# 审校：布雷克斯的军衔前后统一为 Brigadier General
 > 「詳しい状況は、いまギャリソンに
 >  調べてもらっている。准将の行方
-“Garrison is looking into the details right now. The General's whereabouts,
+“Garrison is looking into the details right now. The Brigadier General’s whereabouts,
 ---
 >  トレーズの幽閉場所、
 >  地上の動き、といったところだな」
@@ -157,9 +157,10 @@ and that person was among them.”
 “That person?”
 
 @35081 Anna · アンナ
+# 审校：“your senior”是日语腔，安娜不点名
 # 检查提示：未用必用译名：エイジ→Eiji
 > 「エイジが、先輩って呼んでいた人よ」
-“The one you used to call your senior.”
+“The one you used to look up to. Your old superior officer.”
 
 @35082 Eiji · エイジ
 # 审校：先輩：英文统一直呼 Gale
@@ -293,13 +294,14 @@ I couldn't bring myself to stay by their side.”
 “Gale...”
 
 @35099 Gale · ゲイル
+# 审校：英文“now, this time, being dominated by force by”生硬；中文 お前たち 是复数
 > 「ジュリアたちから聞いた。帝国の
 >  支配を脱した地球を、今度は
-“I heard it from Julia and the others. The Earth that broke free of the Empire's rule is now,
+“I heard it from Julia and the others. The Earth that broke free of the Empire’s rule is now
 ---
 >  同じ地球人が、武力をもって
 >  支配しようとしていると
-this time, being dominated by force by fellow Earthlings.
+being brought under the heel of fellow Earthlings, by force.
 ---
 >  私は、お前たちとともに戦うために
 >  ここへ来たのだ。それが私にできる
@@ -307,11 +309,11 @@ I came here to fight alongside you. I consider it the least I can do
 ---
 >  せめてもの罪滅ぼしだと思っている。
 >  ジュリアたちは、あくまでも話しあいに
-to atone for my sins. Julia and the others said they wanted to resolve things through
+to atone. Julia and the others insisted on settling things
 ---
 >  よって解決したいといっていたがね。
 >  だが、お前たちのことも教えてくれた」
-discussion to the very end. But they told me about you as well.”
+through dialogue. But they told me about you, too.”
 
 @35100 Eiji · エイジ
 # 审校：先輩：英文统一直呼 Gale
@@ -324,12 +326,13 @@ discussion to the very end. But they told me about you as well.”
 “I'll go tell Bright and the others.”
 
 @35102 Tubarov · ツバロフ
+# 审校：去掉 As expected
 > 「そうですか、月を拠点に。やはり
 >  トレーズ特佐の息のかかったものは
-“I see, so they're using the Moon as their base. As expected, anything connected to
+“I see, so they’re using the Moon as their base. Anyone who came up under
 ---
 >  ひと筋縄ではいきませんな」
-Special Colonel Treize is never easy to deal with.”
+Special Colonel Treize was never going to be easy to deal with.”
 
 @35103 Jamitov · ジャミトフ
 > 「トレーズめ、よけいな仕事を
@@ -596,9 +599,10 @@ His Majesty is most displeased with your act of rebellion.”
 “Of course not! Who would?!”
 
 @35150 Baren · バレン
+# 审校：“Even if you die”把主语弄丢了，与后一版本对齐
 > 「お前を殺しても目的は
 >  達成されるのだ。死ねマーズ!」
-“Even if you die, our goal will be achieved. Die, Mars!”
+“Killing you would serve our purpose just as well. Die, Mars!”
 
 @35151 Takeru · タケル
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -615,22 +619,22 @@ His Majesty is most displeased with your act of rebellion.”
 “Aaaah... u... waaaaaaaah!!”
 
 @35154 Baren · バレン
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：与场景 53 的同一句统一
 > 「なに!? しまった、ガイヤーか!」
-“What?! Damn it, Gaia?!”
+“What?! Damn, it’s Gaia!”
 
 @35155 Takeru · タケル
 > 「ぐ……な、なんだ!?」
 “Ngh... W-What is this?!”
 
 @35156 ???
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：Get on → Get in，与后文统一
 > (マーズ、恐れることはない。
 >  ガイヤーはお前を守るために来た
 (Mars, there is nothing to fear. Gaia has come to protect you.
 ---
 >  ガイヤーに乗れ)
-Get on Gaia.)
+Get in Gaia.)
 
 @35157 Takeru · タケル
 > 「な、なんだこいつ……勝手に……」
@@ -694,9 +698,10 @@ You may call their combined form Godmars.)
 “Wait! Who in the world are you...?!”
 
 @35168 Baren · バレン
+# 审校：“He’s nothing but a bluff”对机器人说不通
 > 「しょせんはみかけ倒しにすぎない。
 >  一気にケリをつけてやる」
-“He's nothing but a bluff. I'll finish this at once.”
+“All show and nothing more. I’ll finish this in one stroke.”
 
 @35169 Baren · バレン
 > 「きゃあああぁぁーっ!!」
@@ -799,14 +804,14 @@ prepare to intercept!”
 “Tch.”
 
 @35190 Blacky · ブラッキー
-# 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
+# 审校：“that thing must contain”“那上面就有”都别扭
 > 「むっ、あれがバレンが
 >  知らせてきたロボットだな
-“Mm, so that's the robot Baren told us about.
+“Mm, so that’s the robot Baren told us about.
 ---
 >  すると、あれにガイヤーとマーズが……。
 >  全機に告ぐ、マーズを倒せ!」
-Then that thing must contain Gaia and Mars... All units, destroy Mars!”
+Then Gaia and Mars must be inside that thing... All units, destroy Mars!”
 
 @35191 Koji · 甲児
 > 「おいなんだよ! あんな連中
@@ -871,13 +876,14 @@ Now then, let's begin purging the Treize faction. Hyahahahahaha!”
 “Damn, of all times! Return fire!!”
 
 @35202 Scirocco · シロッコ
+# 审校：Moon 大写统一，句子顺一点
 > 「先行した部隊はよくやってくれて
 >  いるな。どのような理由か知らんが
-“The advance unit is doing well. I don't know why,
+“The advance unit is doing well. I don’t know their reasons,
 ---
 >  あの敵が月を攻めるとは
 >  好都合だった」
-but it's convenient that the enemy is attacking the moon.”
+but that enemy attacking the Moon is convenient for us.”
 
 @35203 Jerid · ジェリド
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1028,14 +1034,14 @@ we're abandoning this place.”
 the Treize faction had already withdrawn. Shall we pursue?”
 
 @35233 Scirocco · シロッコ
-# 审校：全局：バルジ 词条 Barge
+# 审校：Moon 大写统一
 > 「放っておけ。月さえ確保できれば
 >  いい。バルジのバスク特佐に
-“Leave them. Securing the moon is enough. Contact Special Colonel Bask at Barge.
+“Leave them. Securing the Moon is enough. Contact Special Colonel Bask at Barge.
 ---
 >  連絡してくれ。私が月を落とした
 >  ことをあまり喜ばれないかもしれんがな」
-He may not be too pleased that I took the moon, though.”
+He may not be too pleased that I took the Moon, though.”
 
 @35234 Specials · スペシャルズ
 > 「……はっ」
@@ -1088,13 +1094,14 @@ Special Lieutenant Jerid rest for a while.”
 “Then I'll also...”
 
 @35243 Scirocco · シロッコ
+# 审校：“大人就该配成熟的男人”“I’d be in trouble”直译
 > 「君には残ってもらわねば困る。
 >  ……大人には大人の男が似合う
-“I'd be in trouble if you didn't stay. ...A grown man suits a grown woman.
+“I need you to stay. ...A grown woman belongs with a grown man.
 ---
 >  小僧が好きなら別だが、君の
 >  野心を満たせるのは私の方だろう」
-If you prefer a boy, that's another matter, but I'm the one who can satisfy your ambition.”
+Unless you prefer boys. But I’m the one who can satisfy your ambition.”
 
 @35244 Mouar · マウアー
 > 「…………失礼します」
@@ -1142,17 +1149,19 @@ and the fact that it's destroying colonies bothers me.”
 “Understood. Changing course to Side 7.”
 
 @35252 Lady · レディ
+# 审校：visited by nightmare 是直译
+# 检查提示：未用必用译名：ムゲゾルバドス→Muge Zorbados
 > (異星人と思われる新たな敵……
 >  OZの内紛が続いた状態で
-(A new enemy, seemingly alien... With OZ's internal strife ongoing,
+(A new enemy, seemingly alien... With OZ’s internal strife ongoing,
 ---
 >  勝てる程度の相手ならばよいが
 >  ……もしムゲゾルバドスと
-I hope it's an opponent we can beat... but if it's a force
+I hope it’s an opponent we can beat... but if it’s a force
 ---
 >  同等の勢力だとしたら、
 >  地球圏は再び悪夢にみまわれる
-equal to Muge Zorbados, the Earth Sphere will be visited by nightmare again.
+equal to Muge Zorbados, the Earth Sphere will be plunged into nightmare once more.
 ---
 >  それは見過ごすわけにはいかん……)
 I cannot overlook that...)
@@ -1193,23 +1202,24 @@ the Gundam type that's destroying colonies.”
 converted into MDs. If you have pilots who can handle them properly, by all means, but...”
 
 @35256 Lady · レディ
-# 审校：精读：特士
+# 审校：I have an idea 意思偏，与后一版本统一
 > 「心当たりがある。
 >  トロワ特士を呼んでもらおう」
-“I have an idea. Have Special Officer Trowa summoned.”
+“I have someone in mind. Have Special Officer Trowa summoned.”
 
 @35257 Trowa · トロワ
 > 「ガンダムが出たそうだな」
 “I hear a Gundam has appeared.”
 
 @35258 Lady · レディ
+# 审校：couldn’t put up any fight 不地道
 > 「そうだ。しかしこのガンダムはコロニーを
 >  破壊しているらしい。すでにOZの
-“That's right. But this Gundam seems to be destroying colonies. OZ's
+“That’s right. But this Gundam seems to be destroying colonies. OZ’s
 ---
 >  コロニー守備隊が交戦したが、
 >  まったく歯が立たんそうだ」
-Colony Defense Force has already engaged it, but they couldn't put up any fight at all.”
+Colony Defense Force has already engaged it, but they were no match for it at all.”
 
 @35259 Trowa · トロワ
 > 「……ほう。それで」

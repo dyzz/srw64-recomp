@@ -107,9 +107,10 @@ I just hope this doesn't turn into a headache...”
 “Oh yeah, you were in Bask's unit, weren't you.”
 
 @33060 Emma · エマ
+# 审校：come crawling back 过重
 > 「そう。出戻りみたいなものね。
 >  覚悟はしていたけれど……」
-“Yes. I suppose you could say I've come crawling back. I was prepared for this, but still...”
+“Yes. It’s like coming back to where I started. I was prepared for this, but still...”
 
 @33061 Tetsuya · 鉄也
 > 「なに、気にすることはない。バスクが
@@ -160,9 +161,10 @@ can they.”
 “Exactly. Though I suppose we'll have to help out too.”
 
 @33068 Domon · ドモン
+# 审校：ふう 是喘气不是哼
 > 「ふう。やはりバランスが悪くなって
 >  いるか……」
-“Hmph. The balance really is off, after all...”
+“Whew. The balance really is off, after all...”
 
 @33069 Rain · レイン
 > 「ドモン、聞いた? やっぱり宇宙へ
@@ -203,7 +205,7 @@ hasn't been able to find the Dark Gundam, so what else can we do?”
 “Sai Saici.”
 
 @33076 Sai Saici · サイ・サイシー
-# 审校：呼喊拉长音
+# 审校：英文缺引号
 # 检查提示：未用必用译名：レイン→Rain
 > 「レインね～ちゃ～ん!! よっと」
 “Raaain, big siiis!! Hup!”
@@ -273,7 +275,7 @@ hasn't been able to find the Dark Gundam, so what else can we do?”
 “Alan, Ryoma and the others don't seem to be around. Where did they go?”
 
 @33092 Alan · アラン
-# 审校：ムサシとともに失った：武藏已死，不是同行
+# 审校：中英缺引号
 > 「ああ、彼らなら早乙女博士に
 >  会いに行ったよ。ムサシとともに
 “Ah, they went to see Dr. Saotome. Along with Musashi,
@@ -318,9 +320,10 @@ It won't be ready before we head into space, I'd say.”
 “Yes. It's still under development, though.”
 
 @33100 Naoto · ナオト
+# 审校：I want... don't you 不通
 > 「俺たちもロボットがほしいよな。
 >  なぁ、タケル」
-“I want a robot too, don't you? Right, Takeru?”
+“We want a robot of our own too. Right, Takeru?”
 
 @33101 Takeru · タケル
 > 「俺はコスモクラッシャーでいいよ」
@@ -547,7 +550,7 @@ battle with the Muge Zorbados Empire begins.”
 it's best to leave him be.”
 
 @33140 Beltorchika · ベルトーチカ
-# 审校：去掉补写
+# 审校：英文缺引号
 > 「なによ、あなたには関係のないこと
 >  でしょう!? これは私とアムロの
 “What? This has nothing to do with you, does it?!
@@ -556,13 +559,13 @@ it's best to leave him be.”
 This is between me and Amuro.”
 
 @33141 Quattro · クワトロ
-# 审校：資格 口语
+# 审校：英文缺引号
 > 「ベルトーチカ、人の心の中に踏みこ
 >  むには、それ相応の資格がいる」
-“Beltorchika, one needs the right to step into another person's heart.”
+“Beltorchika, one needs the right to step into another person’s heart.”
 
 @33142 Beltorchika · ベルトーチカ
-# 审校：承接
+# 审校：英文缺引号
 > 「あたしにはその資格はあるつもりです。
 >  アムロッ!」
 “I believe I have that right. Amuro!”
@@ -646,9 +649,10 @@ Special Colonel Lady Une.”
 “Do you think I hadn't considered something so obvious?”
 
 @33153 Jamitov · ジャミトフ
+# 审校：いってみろ 是让西罗克说，不是“让他说”
 > 「よい、バスク。いってみろシロッコ。
 >  お前ならどうするというのだ」
-“Enough, Bask. Let him speak, Scirocco. What would you do?”
+“Enough, Bask. Go on, Scirocco. What would you do?”
 
 @33154 Scirocco · シロッコ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -759,7 +763,7 @@ welcome news for us OZ generals either.”
 hunt down Zechs?”
 
 @33165 Bask · バスク
-# 审校：破折号
+# 审校：英文缺引号
 > 「それではトレーズ特佐の立場がある
 >  まい。またわたしがそれを進言しても
 “That would put Special Colonel Treize in an awkward position. And if I were to make such a proposal myself,
@@ -857,17 +861,17 @@ but wasn't Treize planning to let it go?”
 “Besides, the lunar offensive should be the top priority right now.”
 
 @33177 Lady · レディ
-# 审校：首句
+# 审校：英文缺引号；中文“怀有不安”生硬
 > 「今だからこそだ。ゼクスが
 >  暗礁宙域へ入ったことが
-“It's precisely because it's now. It has been confirmed that Zechs
+“Precisely because it is now. It has been confirmed that Zechs
 ---
 >  確認されている。大事な作戦の
 >  前に、OZの将兵にいらぬ不安を
-entered the shoal zone. Before a major operation, I don't want OZ's officers and men
+entered the shoal zone. Before a major operation, I don’t want OZ’s officers and men
 ---
 >  抱かせたくない。それに……」
-to harbor needless unease. And besides...”
+harboring needless unease. And besides...”
 
 @33178 Alan · アラン
 > 「それに?」
@@ -887,13 +891,13 @@ to harbor needless unease. And besides...”
 “Surely that can't be. Zechs isn't that kind of man.”
 
 @33182 Lady · レディ
-# 审校：破折号
+# 审校：英文缺引号
 > 「そう思う奴もいるということだ。
 >  問題なのは事実ではなく
-“There are those who think so. The problem isn't the fact.
+“There are those who think so. The problem isn’t the fact.
 ---
 >  そのような憶測を生む状況だ」
-It's the situation that gives rise to such speculation.”
+It’s the situation that gives rise to such speculation.”
 
 @33183 Bright · ブライト
 > 「……わかった。月面攻略作戦に
@@ -986,10 +990,10 @@ that soon... Lady Une.)
 “Found him sooner than expected. All right, close in.”
 
 @33199 Zechs · ゼクス
-# 审校：破折号
+# 审校：英文缺引号
 > 「あれは……{HeroMech}か。
 >  私の追撃に{HeroMech}を
-“That's... {HeroMech}. Sending {HeroMech} after me
+“That’s... {HeroMech}. Sending {HeroMech} after me
 ---
 >  よこすとは、大げさすぎるな。
 >  レディ・アンか……」
@@ -1033,15 +1037,16 @@ I will not surrender.”
 “I can understand that, but if you will not surrender, we will destroy you here.”
 
 @33207 Zechs · ゼクス
+# 审校：中文缺引号；I will be your opponent 直译
 > 「それでいい。私の命の見積もりと
 >  しては少々高すぎるようだが
 “That is fine. It seems a little too high a price for my life, but
 ---
 >  お相手しよう」
-I will be your opponent.”
+I will oblige you.”
 
 @33208 Amuro · アムロ
-# 审校：破折号
+# 审校：英文缺引号
 > 「バカな、死ぬ気か!?」
 “Are you mad? Do you intend to die?!”
 
@@ -1125,10 +1130,10 @@ score some results!!”
 “You say that, but you're not thinking of running while we're busy, are you?!”
 
 @33225 Zechs · ゼクス
-# 审校：よしみ
+# 审校：英文缺引号
 > 「私は、それほど愚かではないつもりだ。
 >  わずかな間とはいえ同志だったよしみ」
-“I'm not that foolish. Brief as it was, we were once comrades.”
+“I’m not that foolish. Brief as it was, we were once comrades.”
 
 @33226 Zechs · ゼクス
 > 「この仮面砕けるまでは、
@@ -1320,13 +1325,14 @@ Is that so?”
 “That is correct, sir.”
 
 @33261 Jamitov · ジャミトフ
+# 审校：no few 生硬
 > 「もとレジスタンスは少なくはないがな。
 >  貴官らほどの戦歴を持った者は
-“There are no few former Resistance members, but none with a battle record like
+“Plenty of men came out of the Resistance, but none with a battle record like
 ---
 >  他にはなかろう。スペシャルズとも
 >  戦ったはずだな。それがなぜOZへ入る」
-yours. You should have fought the Specials as well. So why join OZ?”
+yours. You must have fought the Specials as well. So why join OZ?”
 
 @33262 Bright · ブライト
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zolbados Empire
@@ -1339,14 +1345,14 @@ yours. You should have fought the Specials as well. So why join OZ?”
 Empire. We chose the best path to that end. That is all.”
 
 @33263 Jamitov · ジャミトフ
-# 审校：Foundation 大写
+# 审校：英文缺引号；OZ入り 是“你们加入OZ”而非“OZ加入”
 > 「なるほどな。トレーズが無理をして
 >  財団の幹部会にOZ入りを
-“I see. Now I understand why Treize went to such lengths to force the Foundation's
+“I see. Now I understand why Treize went to such lengths to force the Foundation’s
 ---
 >  認めさせたのもわかろうというものだ。
 >  期待してもよいのだろうな? すでに
-executive council to approve OZ's entry. I trust I may expect great things? You've
+executive council to approve your entry into OZ. I trust I may expect great things? You’ve
 ---
 >  聞いていると思うが、貴官らにも
 >  月の帝国軍基地攻略に
@@ -1427,13 +1433,13 @@ committing it to a large-scale operation. It will be ready in time for Operation
 Don't forget that.”
 
 @33275 Scirocco · シロッコ
-# 审校：破折号；巴斯克不称阁下
+# 审校：中英缺引号
 > 「結構です。貴官からそのような
 >  言葉を聞けるとはうれしい
-“Fine by me. I'm delighted to hear such words from you.
+“Fine by me. I’m delighted to hear such words from you.
 ---
 >  軍人の志、模範としたいものです」
-A soldier's spirit. I'd like to make it my model.”
+A soldier’s spirit. I’d like to make it my model.”
 
 @33276 Bask · バスク
 > 「シロッコめ……」
@@ -1461,9 +1467,10 @@ is launched.”
 “I don't understand. Do you trust those men of unknown background?”
 
 @33281 Jamitov · ジャミトフ
+# 审校：原文 MD，本场景其他句都作 MD
 > 「信用はせん。が、使いではあろう。
 >  MDの整備、急がせろ」
-“I don't trust them. But they'll be useful. Get the Mobile Doll maintenance moving.”
+“I don’t trust them. But they’ll be useful. Hurry the MD maintenance.”
 
 @33282 Specials · スペシャルズ
 # 审校：Specials 对 Treize 的称呼应为“Your Excellency”，而非“Lord”。（人工改写）
@@ -1505,7 +1512,7 @@ subjugate the moon, the Imperial forces' last stronghold in the Earth Sphere.
 The age in which we rightly guide the Earth Sphere has come at last.”
 
 @33286 Dermail · デルマイユ
-# 审校：破折号
+# 审校：英文缺引号
 > 「支配すべき階級である我々は、
 >  帝国を排除した後モビルドールの
 “We, the class meant to rule, will after expelling the Empire pacify the
@@ -1560,7 +1567,7 @@ to mourn the souls being lost as I speak of how precious life is.”
 “Treize... what do you mean by that?”
 
 @33293 Treize · トレーズ
-# 审校：破折号
+# 审校：英文缺引号
 > 「私は、人間に必要なのは
 >  絶対的な勝利ではなく
 “I believe what humanity needs is not absolute victory, but the
@@ -1626,7 +1633,7 @@ age grows only within the defeated...”
 “Treize, what are you trying to say?”
 
 @33297 Treize · トレーズ
-# 审校：敗者
+# 审校：英文缺引号
 > 「私は、敗者になりたい」
 “I wish to be one of the defeated.”
 
@@ -1755,7 +1762,7 @@ If so, then let the strong always rule the world. It is only natural that the wo
 continue to fight. Only then does history move correctly.”
 
 @33313 Lady · レディ
-# 审校：my lord→Your Excellency
+# 审校：英文缺引号
 > 「それには無駄な血が流れすぎます。
 >  閣下はすべての人々を愛せる方
 “That would spill too much pointless blood. You are a man who can love all people,
@@ -1769,12 +1776,13 @@ a man who can build true peace in the Earth Sphere from space. For that sake, I
 was going to prepare soldiers that would never pain your heart, Your Excellency.”
 
 @33314 Treize · トレーズ
+# 审校：原文 MD，与本场景一致
 > 「私の兵……? なるほど、君がMDの
 >  生産に積極的だったのは
-“My soldiers...? I see, so that's why you were so eager about
+“My soldiers...? I see, so that’s why you were so eager about
 ---
 >  そのためだったのか」
-Mobile Doll production.”
+MD production.”
 
 @33315 Lady · レディ
 > 「はい」
@@ -1786,7 +1794,7 @@ Mobile Doll production.”
 “Lady, you are looking at the future through your own ideals.”
 
 @33317 Lady · レディ
-# 审校：同上
+# 审校：英文缺引号
 > 「閣下がお望みになったことです」
 “It was what you wished for, Your Excellency.”
 
@@ -1800,7 +1808,7 @@ Mobile Doll production.”
 accumulation of days. I have no interest in any individual's future.”
 
 @33319 Lady · レディ
-# 审校：同上
+# 审校：英文缺引号
 > 「閣下の未来は決まっております。
 >  宇宙にこそ閣下の未来が
 “Your future is already decided, Your Excellency. It is in space that your future
@@ -1837,7 +1845,7 @@ there is no need to hurry. History repeats itself.”
 “Your Excellency...”
 
 @33324 Treize · トレーズ
-# 审校：大好きだった 过去式
+# 审校：英文缺引号
 > 「レディ、もどってきておくれ。
 >  私の大好きだった、レディ・アン」
 “Lady, come back to me. The Lady Une I was so very fond of.”
@@ -1889,13 +1897,13 @@ there is no way the Imperial forces can win.”
 “I figured as much. What about Special Colonel Lady Une?”
 
 @33331 Amuro · アムロ
-# 审校：謹慎
+# 审校：英文缺引号
 > 「そっちもだめだったよ。
 >  特佐は謹慎中だそうだ」
-“That was a dead end too. She's been suspended, apparently.”
+“That was a dead end too. She’s been suspended, apparently.”
 
 @33332 Show · ショウ
-# 审校：承接
+# 审校：英文缺引号
 > 「謹慎? どうしてです?」
 “Suspended? Why?”
 
@@ -1918,9 +1926,9 @@ rashly, so they probably fabricated some minor fault.”
 “You've gotta be kidding me. Why did it have to come to this?”
 
 @33335 Boss · ボス
-# 审校：ボス自己说话，去掉 boss
+# 审校：英文缺引号
 > 「まったくだわさ」
-“Ain't that the truth.”
+“Ain’t that the truth.”
 
 @33336 Tetsuya · 鉄也
 > 「結局俺たちがゼクスを追ったのも、
@@ -2154,7 +2162,7 @@ We cannot obey Romefeller.”
 “And what about the Imperial forces?”
 
 @33371 Ark · アーク（按段落 3DD1）
-# 审校：the Muge
+# 审校：英文缺引号
 > 「だからですよ。今度の作戦で、
 >  ムゲは叩くんです。だけどそれは
 “That is exactly why. In the coming operation, we will strike down the Muge. But we will do it
@@ -2278,25 +2286,27 @@ we take the lunar base.”
 We can decide when the time comes.”
 
 @33385 Brad · ブラッド（按段落 3DD3）
+# 审校：布拉德口吻太正式
 > 「俺はロームフェラなんかに従うのは、
 >  ごめんだな。あんとき俺はトレーズの
-“I have no intention of obeying Romefeller. Back then, I said I would go along with
+“No way I’m bowing to Romefeller. Back then, I said I’d go along with
 ---
 >  言葉には乗るといった。だが、
 >  場合によってはいつでもOZの敵に
-what Treize said. But I also said that depending on the situation, I would turn back into
+what Treize said. But I also said I’d turn right back into
 ---
 >  もどるともいった。今がその時だ」
-an enemy of OZ at any time. That time is now.”
+OZ’s enemy whenever it came to that. That time’s now.”
 
 @33386 Quattro · クワトロ
 > 「しかし、帝国軍はどうする?」
 “But what about the Imperial forces?”
 
 @33387 Brad · ブラッド（按段落 3DD3）
+# 审校：布拉德口吻太正式
 > 「だからさ、月は攻めるしムゲも倒す。
 >  ただし、月基地は俺たちがいただく」
-“That is why we attack the moon and crush Muge too. But the lunar base is ours to take.”
+“Like I said, we hit the moon and take down Muge too. But the lunar base? We’re taking it.”
 
 @33388 Quattro · クワトロ
 > 「アポロ作戦の指揮をとるのはバスク
@@ -2307,9 +2317,10 @@ an enemy of OZ at any time. That time is now.”
 we will be treated as enemies.”
 
 @33389 Brad · ブラッド（按段落 3DD3）
+# 审校：布拉德口吻太正式
 > 「望むところだろう? やるんなら早い
 >  ほうがいい」
-“That is just what I want. If we are going to do it, sooner is better.”
+“Bring it on. If we’re doing this, sooner’s better.”
 
 @33390 Shinobu · 忍
 # 审校：忍的口吻应更粗野随性，原文有「ぜ」，译文应体现其狂放语气。
@@ -2479,10 +2490,10 @@ the resistance. We should have that much strength now.”
 This time, even if there are some issues, we should act as OZ.”
 
 @33412 Brad · ブラッド（按段落 3DD3）
-# 审校：Brad 的热血粗放口吻中，反问句应更直接有力，将陈述句改为反问句以贴合原文语气。
+# 审校：中文缺引号，“变得那么厉害”不顺；英文口吻
 > 「めんどくせぇことはいい。とにかく、まず
 >  ムゲ野郎をぶっつぶすってことだろ!?
-“Forget the troublesome stuff. Anyway, first we crush the Muge bastards, right?!
+“Screw the complicated stuff. Point is, first we crush the Muge bastards, right?!
 ---
 >  それ以上に重要なことなんかあるの
 >  かよ。俺たちがOZなんぞに入ったのは
@@ -2490,7 +2501,7 @@ Is there anything more important than that? What did we join OZ
 ---
 >  なんのためだ? トレーズはいねぇが、まだ
 >  状況はそれほど大きく変わっちゃ
-for? Treize isn't here, but the situation hasn't changed
+for? Treize isn’t here, but the situation hasn’t changed
 ---
 >  いないぜ」
 that much yet.”

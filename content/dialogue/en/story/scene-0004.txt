@@ -59,22 +59,22 @@ I knew something huge was going down, but...
 So? What happened next?”
 
 @17687 Banjo · 万丈
-# 审校：合并：misc 与 scene 批次三方合并
+# 审校：被动句改主动，读起来顺
 > 「帝国軍は地球圏を占領した
 >  占領軍の司令官だった
-“The Imperial Army occupied the Earth Sphere. Its occupation commander,
+“The Imperial Army occupied the Earth Sphere. The commander of the occupation force,
 ---
 >  グラドス人のグレスコが、地球圏
 >  総督になり地球は帝国によって
-a Gradosian named Gresco, became Governor-General of the Earth Sphere, and Earth was ruled by the Empire
+a Gradosian named Gresco, became Governor-General of the Earth Sphere, and the Empire ruled Earth
 ---
 >  死と、破壊と、恐怖とで
 >  支配された。地球人はその
-through death, destruction, and fear. Earthlings had their
+through death, destruction, and fear. Earthlings were stripped of their
 ---
 >  文化を奪われ、帝国のいいなりに
 >  なるしか、生き残る道はなかった」
-culture stripped away, and the only way to survive was to do exactly as the Empire said.”
+culture, and the only way to survive was to do as the Empire said.”
 
 @17688 Kurtz · カーツ（按段落 3DD3）
 > 「連中が言うところの
@@ -249,17 +249,18 @@ cooperating with the Imperial Army ahead of everyone else, right?”
 “But everyone else had been fighting since back then, hadn't they?”
 
 @17703 Simone · シモーヌ
+# 审校：研究设施不说“全军覆没”
 > 「運が悪かったのかもね。アタシは
 >  地球人が最初に帝国からの
-“Maybe I was just unlucky. I was at the Mars research facility when Earthlings took the Empire's
+“Maybe I was just unlucky. I was at the Mars research facility, the first place
 ---
 >  攻撃を受けた、火星の研究
 >  施設にいたのよ。全滅した、ね
-first attack. Everyone there was wiped out.
+the Empire ever hit us. Everyone there was wiped out.
 ---
 >  今こうして、ここにいることすら
 >  不思議なくらい」
-It's a miracle I'm even here now.”
+It’s a miracle I’m even here now.”
 
 @17704 Banjo · 万丈
 > 「火星、か…………」
@@ -598,9 +599,10 @@ I won't forget this!”
 “I see... I'm sorry. If only we'd moved sooner.”
 
 @17756 Koji · 甲児
+# 审校：去掉 It can't be helped
 > 「ま、しかたないさ。別に
 >  あんたのせいじゃない」
-“Well, it can't be helped. It's not your fault anyway.”
+“Well, nothing for it. It’s not your fault anyway.”
 
 @17757 Banjo · 万丈
 > 「そういってもらえると、助かる。

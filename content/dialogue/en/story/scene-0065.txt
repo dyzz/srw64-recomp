@@ -79,19 +79,20 @@ those who fight now may someday live in peace.”
 Even if it was unavoidable, I am sorry for what we did to Representative Relena.”
 
 @28736 David · デビッド
+# 审校：英文口语化
 > 「やれやれ、敵を倒したってのに素直
 >  に喜べないってのは、なんだかなあ」
-“Good grief. Defeating the enemy and still not being able to celebrate honestly... what a feeling.”
+“Man. We beat the enemy and can’t even enjoy it... what a drag.”
 
 @28737 Amuro · アムロ
-# 审校：精读：去破折号
+# 审校：英文开头改成自然的问句
 > 「守るべきものは、この国の平和か、
 >  それとも平和そのものか……
-“What we must protect. Is it this country's peace, or peace itself...
+“What are we supposed to protect? This country’s peace, or peace itself...
 ---
 >  むずかしいな。いずれにしても、
 >  現実と理想というものは
-It's difficult. Either way, reality and ideals are
+It’s a hard one. Either way, reality and ideals are
 ---
 >  ぶつかり合わざるをえない」
 bound to clash.”
@@ -227,17 +228,18 @@ Romefeller seeks to rule the world,
 they still continue to hold the will to fight for their ideals.”
 
 @28751 Treize · トレーズ
+# 审校：英文第三页直译生硬
 > 「美しく思われた人々の感情は
 >  常に悲しく、重んじた伝統も
-“The emotions of those deemed beautiful are always sad, and the traditions they cherished
+“The emotions of those once thought beautiful are always sorrowful, and the traditions they honored
 ---
 >  いずれは弱者たちの叫びの中へ
 >  消え失せる。戦いにおける勝者は
-will eventually vanish amid the cries of the weak. The victor in battle
+will one day vanish amid the cries of the weak. The victor in battle
 ---
 >  歴史の中で衰退という
 >  終止符を打たねばならず
-must, in history, put an end to things with decline,
+is fated, in history, to end in decline,
 ---
 >  新たな時代の担い手は
 >  敗者の中にこそ生まれいずる」
@@ -270,18 +272,18 @@ Treize, I will have you confined.”
 “Is the report that the soldiers are wavering true?”
 
 @28756 Tubarov · ツバロフ
-# 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
+# 审校：省略号后多余逗号；As expected 改口语
 > 「は。トレーズ特佐解任の噂を
 >  聞いた一部の兵士たちが
-“Yes, sir. Some soldiers who heard rumors of Special Colonel Treize's dismissal
+“Yes, sir. Some soldiers who heard rumors of Special Colonel Treize’s dismissal
 ---
 >  命令を拒否……、数カ所で
 >  小競り合いになっております。やはり
-have refused orders... and there have been skirmishes in several places. As expected,
+have refused orders... and there have been skirmishes in several places. Sure enough,
 ---
 >  トレーズ特佐の息のかかった
 >  連中は一筋縄ではまいりません」
-those connected to Special Colonel Treize are not so easily dealt with.”
+those with ties to Special Colonel Treize are not so easily dealt with.”
 
 @28757 Bask · バスク
 > 「それは反乱ではないか!
@@ -301,9 +303,10 @@ and it is an important time. It would not do for our units
 to fall into confusion at a time like this.”
 
 @28759 Bask · バスク
+# 审校：英文口语化
 > 「当然だ。トレーズの奴、
 >  全くよけいな仕事を増やしおって…」
-“Of course. That Treize, adding nothing but unnecessary work...”
+“Of course. Damn that Treize, making extra work for us...”
 
 @28760 Jamitov · ジャミトフ
 > 「計画に支障はあるまいな?」
@@ -350,9 +353,10 @@ we will activate Operation Nova. We will subjugate the surface in one stroke!”
 “A unit? Report in detail!”
 
 @28767 Beltorchika · ベルトーチカ
+# 审校：英文通信口吻
 > 「機影は1つだけ、識別……あら、
 >  これって……ブラックウィングじゃない!?」
-“Only one craft on radar. Identifying... Oh, isn't this... the Black Wing?!”
+“Just one contact. Identifying... Wait, is that... the Black Wing?!”
 
 @28768 Bright · ブライト
 > 「何だって?」
@@ -378,9 +382,10 @@ we will activate Operation Nova. We will subjugate the surface in one stroke!”
 “Alan?! Hey, it's been a while! How are Shinobu and the others doing?!”
 
 @28773 Alan · アラン
+# 审校：“攒下的话”不像人话；英文顺口
 > 「すまんが、つもる話はあとだ。
 >  事情はあとで説明する
-“Sorry, but the long stories can wait. I'll explain later.
+“Sorry, catching up will have to wait. I’ll explain later.
 ---
 >  着艦許可をたのむ!」
 Requesting permission to land!”
@@ -414,12 +419,13 @@ We were watching how the battle was going for a while, but...
 suddenly they came raining down from the sky. We're engaging them right now.”
 
 @28778 Eiji · エイジ
+# 审校：英文第二页接得更自然
 > 「交戦中って……、
 >  攻撃されてるんですか!?
-“Engaging... you mean you're under attack?!
+“Engaging... you mean they’re attacking you?!
 ---
 >  地球人同士なのに……」
-And you're all Earthlings...”
+But you’re fellow Earthlings...”
 
 @28779 Alan · アラン
 > 「奴らはOZ以外のすべての勢力に
@@ -497,9 +503,10 @@ All hands to battle stations! Target: the Former Liberation Front's
 field base!”
 
 @28787 Alan · アラン
+# 审校：英文祈使句生硬
 > 「ブレックス准将……。
 >  間に合ってくれよ……」
-“Brigadier General Blex... Please, let us make it in time...”
+“Brigadier General Blex... We have to make it in time...”
 
 @28788 Quattro · クワトロ
 > 「ようやく片づいたか……しかし……」
@@ -639,13 +646,15 @@ understand what I'm saying?”
 That's all!”
 
 @28809 Rish · リッシュ（按段落 3DD2）
+# 审校：去掉 can't be helped
 > 「ま、そりゃそうだ。しかたがねぇか」
-“Well, I guess so. Can't be helped.”
+“Well, I guess so. Nothing for it, then.”
 
 @28810 Selain · セレイン（按段落 3DD2）
+# 审校：もの好き 不是“好事之徒”；英文 glutton for punishment 偏义
 > 「フン、貴様もあいかわらず、もの好き
 >  な奴だな。そんなふざけたことばかり
-“Hmph, you're as much a glutton for punishment as ever. It's because you keep spouting nonsense like that
+“Hmph, you’re as strange as ever. It’s because you keep fooling around like that
 ---
 >  しているから、いつも負けて帰るハメに
 >  なる」
@@ -662,8 +671,9 @@ that you always end up going home beaten.”
 “Is that so? Then why not try again this time?!”
 
 @28813 Rish · リッシュ（按段落 3DD2）
+# 审校：去掉 can't be helped
 > 「おっと、そうくるかよ。ま、しゃーねぇわな」
-“Whoa, so that's how it is. Well, can't be helped.”
+“Whoa, so that’s how it’s gonna be. Well, fine by me.”
 
 @28814 Selain · セレイン（按段落 3DD2）
 > 「貴様が何をいおうと、敵である
@@ -671,13 +681,13 @@ that you always end up going home beaten.”
 “Whatever you say, as long as you're the enemy, there's no path but to fight.”
 
 @28815 Rish · リッシュ（按段落 3DD2）
-# 审校：精读：去破折号；中文重复
+# 审校：英文更口语
 > 「だからよ、お前が本気でいってくれる
 >  んなら、俺はいつでもそっちにつくって
-“That's what I'm saying. If you'd just tell me you mean it for real, I'd join your side anytime,
+“That’s what I keep telling you. Say the word and mean it, and I’ll switch to your side anytime,
 ---
 >  いってるじゃねぇか」
-haven't I told you that?”
+haven’t I said that?”
 
 @28816 Selain · セレイン（按段落 3DD2）
 > 「だから、なぜ私がそんなことをいわねば
@@ -850,13 +860,14 @@ said to leave the Earth Sphere to us. The rest is for each of us to consider.”
 “Lady Relena, are you truly going in person?”
 
 @28842 Relena · リリーナ
+# 审校：莉莉娜不用缩写；措辞自然
 > 「ええ。どのような相手とでも、
 >  まず直接あわないと
-“Yes. With anyone, unless I first meet them face to face,
+“Yes. Whoever they may be, unless I first meet them face to face,
 ---
 >  本心からの話しあいを
 >  始めることは不可能だわ」
-it's impossible to begin a conversation from the heart.”
+it is impossible to begin an honest conversation.”
 
 @28843 Pagan · パーガン
 > 「しかし、あまりに危険でございます。
@@ -868,25 +879,24 @@ it's impossible to begin a conversation from the heart.”
 subjecting us to outrageous provocations and pressure. At a time like this...”
 
 @28844 Relena · リリーナ
-# 审校：精读：去破折号
+# 审校：understand through talk 生硬
 > 「ですから、その解決のために
 >  行くのです。大丈夫です
 “That is precisely why I go, to resolve it. It will be all right.
 ---
 >  話し合ってわからない人間など
 >  この世にはいません
-There is no one in this world who cannot understand through talk.
+There is no one in this world who cannot be reached by talking.
 ---
 >  私たちには何もやましいことなど
 >  ないのですから」
 We have nothing to be ashamed of.”
 
 @28845 Dorothy · ドロシー
-# 审校：多萝西对莉莉娜的呼语“リリーナ様”应译为“My lady”，而不是直呼其名。
-# 检查提示：未用必用译名：リリーナ→Relena
+# 审校：称呼统一为 Lady Relena
 > 「リリーナ様! 財団には
 >  私が案内いたしますわ」
-“My lady! I shall guide you to the Foundation.”
+“Lady Relena! I shall guide you to the Foundation.”
 
 @28846 Quatre · カトル
 > 「地上にMD部隊が
@@ -910,12 +920,13 @@ possible on the lunar surface.”
 “We couldn't stop it...”
 
 @28849 Heero · ヒイロ
+# 审校：去掉“存在／beings”直译
 > 「いずれイヤでも戦うことになる。
 >  俺たちガンダムパイロットは
-“Sooner or later, we'll fight whether we like it or not. We Gundam pilots
+“Sooner or later, we’ll fight whether we like it or not. We Gundam pilots
 ---
 >  戦うことしかできない存在だからな」
-are beings who can do nothing but fight.”
+only know how to fight.”
 
 @28850 Quatre · カトル
 > 「……ぼくがもっと強ければ……。
@@ -926,13 +937,15 @@ are beings who can do nothing but fight.”
 Trowa ended up like that...”
 
 @28851 Quatre · カトル
+# 审校：英文顺口；中文补“听说”
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「地球解放戦線のみんなが、
 >  今{HeroMech}と
-“Everyone from the Liberation Front of the Earth has apparently changed their name to {HeroMech} now
+“I hear everyone from the Liberation Front of the Earth goes by {HeroMech} now,
 ---
 >  名前を変えてサンクキングダムに
 >  いるんだって。知ってたかい?」
-and is at the Sanc Kingdom. Did you know?”
+and they’re in the Sanc Kingdom. Did you know?”
 
 @28852 Heero · ヒイロ
 > 「ああ、そうらしいな」

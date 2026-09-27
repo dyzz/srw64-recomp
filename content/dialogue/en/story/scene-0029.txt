@@ -99,9 +99,10 @@ Did you get some rest?”
 “Me? Even in chaos, one must not forget a calm mind.”
 
 @22588 Domon · ドモン
+# 审校：去掉“As expected of”日语腔
 > 「さすがですね……俺はまだまだ修業が
 >  足りないようです」
-“As expected of you... I still have a long way to go in my training.”
+“That’s you all over, Master... I’ve still got a long way to go in my training.”
 
 @22589 Koji · 甲児
 > 「うわっ、マジだぜ。
@@ -299,9 +300,10 @@ after all?!”
 “Chibodee! Was becoming the devil's pawn your dream?!”
 
 @22628 Chibodee · チボデー
+# 审校：“廉价／cheap”直译不通，チープな奴是说人小气
 > 「フッ、チープな奴だぜ、ドモン・カッシュ
 >  この強さこそが俺の夢よ!」
-“Hah, you're so cheap, Domon Kasshu. This strength is my dream!”
+“Hah, how petty, Domon Kasshu. This strength is my dream!”
 
 @22629 Domon · ドモン
 > 「バカな! そんなものは偽りの力、
@@ -523,14 +525,16 @@ Become strong.”
 “...Ra... Rain...?! Wh-what am I doing...”
 
 @22664 Master · マスター
+# 审校：英文更像台词，东方不败不用缩写
 > 「小娘が! もう少しで楽にドモンを
 >  仲間にできたものを」
-“You little girl! I nearly had Domon as an ally so easily.”
+“Insolent girl! A moment more and Domon would have been mine without a fight.”
 
 @22665 Domon · ドモン
+# 审校：“That’s wrong”生硬
 > 「ち……違う! 俺の師匠は
 >  こんなことをする男ではない!!」
-“Th-that's wrong! My Master is not a man who would do this!!”
+“N-no! My Master would never do something like this!!”
 
 @22666 Master · マスター
 # 审校：Master Asia 的宗师口吻应更豪迈，原文「このバカ弟子がぁぁーっ!」的怒吼和拖长音在译文中体现不足。
@@ -602,21 +606,22 @@ every battle throughout history and prevented humanity's destruction.”
 Eliminate me, is it?!”
 
 @22675 Joker · ジョーカー
+# 审校：“sullied ... well”是日语よくも直译
 > 「そうです、マスターアジア。よくも我が
 >  同盟の名を汚してくれた。その罪
-“That's right, Master Asia. You have sullied the name of our Alliance well. For that crime,
+“That’s right, Master Asia. How dare you sully the name of our Alliance. For that crime,
 ---
 >  貴様の命で、つぐなってもらおう!」
-I will have you pay with your life!”
+you will pay with your life!”
 
 @22676 Master · マスター
-# 审校：精读：東方不敗 英文统一；頭をはった
+# 审校：中英句子结构都别扭
 > 「それが貴様らの頭をはった、
 >  もとキング・オブ・ハート
-“So that is what you lot, whose head was the former King of Hearts,
+“Is that how you speak to the one who once led you, the former King of Hearts,
 ---
 >  東方不敗にいうことか!」
-the Undefeated of the East, have to say!”
+the Undefeated of the East!”
 
 @22677 Domon · ドモン
 > 「そ、そんな……師匠が敵だった
@@ -633,13 +638,14 @@ the Undefeated of the East, have to say!”
 “Master! What on earth is going on?!”
 
 @22680 Master · マスター
+# 审校：东方不败口吻不用缩写，语气更狂
 > 「やれやれ、お前がここまでアホだとは
 >  思わなんだわ。このうえはお前たち
-“Good grief, I never thought you were this much of a fool. From here on, I'll defeat you all,
+“Good grief, I never thought you such a fool. Very well, then. I shall crush the lot of you,
 ---
 >  すべてを倒し、それからゆっくりと
 >  お前を仲間にしてくれよう」
-and then I'll take my time making you my ally.”
+and then take my time bringing you to my side.”
 
 @22681 George · ジョルジュ
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -761,9 +767,10 @@ together with the many warriors gathered here.”
 brats like these. What a waste.”
 
 @22701 Duo · デュオ
+# 审校：迪奥口吻，“跟上去”指代不清
 > 「すぐにあんたも、そのあとを追わせて
 >  やるぜ、悪者のおっさん!」
-“You'll be following right after him soon enough, you villainous old man!”
+“And you’ll be right behind him, you crusty old villain!”
 
 @22702 Master · マスター
 > 「クククククッ、ザコどもが、ほざきよるわ!
@@ -804,12 +811,13 @@ Undefeated of the East, Master Asia, I won't let you have your way!!”
 “Oh my, here comes another one???”
 
 @22710 Schwarz · シュバルツ
+# 审校：“end at this level”“就会完蛋的男人”直译
 > 「どうしたどうした、ドモン・カッシュ!
 >  貴様はしょせん、この程度のことで
-“What's wrong, what's wrong, Domon Kasshu! Were you really just a man who
+“What’s wrong, what’s wrong, Domon Kasshu! Is this all it takes to finish you?
 ---
 >  終わってしまう男だったのか!?」
-would end at this level?!”
+Is that the kind of man you are?!”
 
 @22711 Domon · ドモン
 > 「な……なんだと!? お前はいったい
@@ -826,13 +834,15 @@ would end at this level?!”
 “Domon, he's on our side! He saved me!”
 
 @22714 Schwarz · シュバルツ
+# 审校：“comes before my identity”生硬
+# 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「フフフフ、そういうことだ。だが今は
 >  私の正体よりも、デビルガンダムを
-“Fufufu, that's right. But right now, defeating the Dark Gundam comes before
+“Heh heh heh, that is so. But right now, beating the Dark Gundam matters more than
 ---
 >  倒すことが先決だろう。それとも
 >  お前は、もう戦えないとでもいうのか?」
-my identity. Or are you saying you can't fight anymore?”
+who I am. Or are you telling me you can’t fight anymore?”
 
 @22715 Domon · ドモン
 > 「クッ……貴様にいわれるまでもない!!
@@ -856,9 +866,10 @@ and get Master back!!”
 “Domon, I will not give up.”
 
 @22719 Schwarz · シュバルツ
+# 审校：“we meet again”时态错，また会おう是后会有期
 > 「どうやら逃げたようだな。では私も
 >  ゆくとするか。諸君、また会おう!
-“It seems he's fled. Then I shall take my leave as well. Everyone, we meet again!
+“It seems he’s fled. Then I shall take my leave as well. We will meet again, everyone!
 ---
 >  ハハハハハハッ!」
 Hahahahahaha!”
@@ -899,9 +910,10 @@ Hahahahahaha!”
 “Domon, I shall not give up.”
 
 @22727 Schwarz · シュバルツ
+# 审校：“we meet again”时态错，また会おう是后会有期
 > 「どうやら逃げたようだな。では私も
 >  ゆくとするか。諸君、また会おう!
-“It seems he's fled. Then I shall take my leave as well. Everyone, we meet again!
+“It seems he’s fled. Then I shall take my leave as well. We will meet again, everyone!
 ---
 >  ハハハハハハッ!」
 Hahahahahaha!”
@@ -942,9 +954,10 @@ Hahahahahaha!”
 “Domon, I shall not give up.”
 
 @22735 Schwarz · シュバルツ
+# 审校：“we meet again”时态错，また会おう是后会有期
 > 「どうやら逃げたようだな。では私も
 >  ゆくとするか。諸君、また会おう!
-“It seems he's fled. Then I shall take my leave as well. Everyone, we meet again!
+“It seems he’s fled. Then I shall take my leave as well. We will meet again, everyone!
 ---
 >  ハハハハハハッ!」
 Hahahahahaha!”
@@ -985,9 +998,10 @@ Hahahahahaha!”
 “Domon, I shall not give up.”
 
 @22743 Schwarz · シュバルツ
+# 审校：“we meet again”时态错，また会おう是后会有期
 > 「どうやら逃げたようだな。では私も
 >  ゆくとするか。諸君、また会おう!
-“It seems he's fled. Then I shall take my leave as well. Everyone, we meet again!
+“It seems he’s fled. Then I shall take my leave as well. We will meet again, everyone!
 ---
 >  ハハハハハハッ!」
 Hahahahahaha!”
@@ -1058,12 +1072,13 @@ Hahahahahaha!”
 “...”
 
 @22758 Domon · ドモン
+# 审校：“brother is”缺主语所有格，中文“真心要瞄准”不顺
 > 「兄さん……本気で俺を狙っていた
 >  本気で俺を殺そうと……
 “Brother... you were really aiming for me, really trying to kill me...
 ---
 >  やっぱり兄さんは……」
-So after all, brother is...”
+So my brother really is...”
 
 @22759 Amuro · アムロ
 > 「もう大丈夫なようだね」
@@ -1093,12 +1108,13 @@ for a knight who should protect the people to do such a thing...”
 “...To think we were doing something like that...”
 
 @22764 Chibodee · チボデー
+# 审校：奇波迪口语化
 > 「ちっ、どいつもこいつもしけたツラしやがっ
 >  て。いまさら終わっちまったことを
-“Tch, every last one of you's got a gloomy face. There's no point in
+“Tch, look at all your long faces. No use bellyaching
 ---
 >  とやかくいってもしょうがねぇだろうが」
-complaining about what's already over and done with.”
+over what’s already done and over with.”
 
 @22765 Shirley · シャリー
 > 「チボデー!」
@@ -1156,9 +1172,10 @@ the Dark Gundam's cruelty go unanswered...”
 we were fighting the Empire to begin with anyway.”
 
 @22775 Amuro · アムロ
+# 审校：“you’re welcome”会被读成“不客气”
 > 「ああ、歓迎するよ。君はどうだ、
 >  チボデー・クロケット?」
-“Yeah, you're welcome. What about you, Chibodee Crocket?”
+“Yeah, glad to have you. What about you, Chibodee Crocket?”
 
 @22776 Bunny · バニー
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -1170,18 +1187,20 @@ we were fighting the Empire to begin with anyway.”
 we were saved by these people, after all.”
 
 @22777 Chibodee · チボデー
+# 审校：“no way I can’t”双重否定别扭
 > 「ちっ。わかってるさバニー。こんだけ
 >  借りが多くちゃ、返さねぇわけには
-“Tch. I know, Bunny. With a debt this big, there's no way
+“Tch. I know, Bunny. With a debt this big, I’ve got no choice
 ---
 >  いかねぇよな。いいぜ、俺様も
 >  一緒にやらせてもらう」
-I can't pay it back. Fine, I'll go along with you guys too.”
+but to pay it back. Fine, I’ll go along with you guys too.”
 
 @22778 Sai Saici · サイ・サイシー
+# 审校：あんちゃん是叫阿姆罗，不是“大哥／big bro”，和多蒙大哥混
 > 「ヘヘヘヘッ、そうこなくっちゃ。ところで
 >  あんちゃん、ドモンのアニキは
-“Heh heh heh, now that's more like it. By the way, big bro, what happened
+“Heh heh heh, now that’s more like it. By the way, pal, what happened
 ---
 >  どうしたんだい?」
 to Domon?”
@@ -1282,9 +1301,9 @@ Well, no need for you to worry about her.”
 are different types, but Sara's a woman who can look after herself.”
 
 @22794 Selain · セレイン（按段落 3DD2）
-# 审校：用户确认：直引号→弯引号
+# 审校：“没想到是多余的”看不懂
 > 「意外はよけいだ」
-“‘Surprisingly’ is uncalled for.”
+“You can drop the ‘surprisingly.’”
 
 @22795 Manami · マナミ（按段落 3DD4）
 # 审校：原译把“沙羅”当作呼语，但原文是自言自语式的陈述，应改为自然陈述句。
@@ -1390,9 +1409,10 @@ I only saw him once, but...”
 bothered me, so that much I remember clearly. Why do you have his photo, Sara?”
 
 @22812 Sara · 沙羅
+# 审校：“just something”“有点事”是搪塞，改成口语
 > 「ん……ちょっとね。ありがとう、
 >  手間とらせて悪かったね」
-“Hm... just something. Thanks, sorry to take up your time.”
+“Mm... no reason. Thanks, sorry for the trouble.”
 
 @22813 Marvel · マーベル
 > 「大丈夫? 顔色悪いわよ」

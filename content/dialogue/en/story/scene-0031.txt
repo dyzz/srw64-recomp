@@ -323,9 +323,10 @@ a great deal of responsibility. They tried to shirk that responsibility.
 As for the Muge Zorbados Empire, they are out of the question.”
 
 @23458 Dermail · デルマイユ
+# 审校：“all of you of our” 不通
 > 「そして我がロームフェラ財団の
 >  皆さまは、時代を支配できる
-“And all of you of our Romefeller Foundation possess the tradition
+“And you, the members of our Romefeller Foundation, possess the tradition
 ---
 >  伝統をお持ちだ。かつて世界は、
 >  平等・自由などの不完全な
@@ -356,7 +357,7 @@ to drive out the Imperial forces and bring peace to the world:
 an executive of the Foundation and commander of OZ, Treize Khushrenada.”
 
 @23460 Treize · トレーズ
-# 审校：全局：旧連邦 = former Federation
+# 审校：“In this world... it has surpassed” 主语悬空
 > 「OZは旧連邦やムゲ帝国にかわり
 >  軍事力で過剰な支配を
 “You may think that OZ will replace the former Federation and the Muge Empire
@@ -371,15 +372,15 @@ seems to suggest an oppressive stance, arrogant action. But I consider this
 ---
 >  秩序をもたらすための、統治と
 >  考えます。戦争が絶えず
-governance, to bring order to the world. In this world where war is ceaseless
+governance, to bring order to the world. This world, where war never ceases
 ---
 >  宇宙に未知の脅威が数多に
 >  存在するこの世界は
-and countless unknown threats exist in space,
+and countless unknown threats lurk in space,
 ---
 >  神の想像を超えていたのです。
 >  いま人類に必要とされているのは
-it has surpassed God's imagination. What humanity needs now is
+has gone beyond even God’s imagining. What humanity needs now is
 ---
 >  絶対の秩序をたもつための、そして
 >  未知の脅威に対抗するための
@@ -757,13 +758,15 @@ I can't just run away after they've done this to me!! Uwoooooooh!!”
 “What are you doing, Shinobu?! Hurry up and go after them!”
 
 @23524 Drake · ドレイク
+# 审校：舰名前漏了 the，与 23496 一致
+# 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips、ヘルマット将軍→General Helmut
 > 「このウィル・ウィプスによくもここまでやる
 >  だがこのままでは……ヘルマット将軍
-“To think they would push Will-Wips this far... but at this rate... General Helmut,
+“To think they’d push the Will-Wips this far... but at this rate... General Helmut,
 ---
 >  撤退するぞ。これ以上戦いを
 >  長引かせるわけにはいかぬ」
-we're retreating. We can't let this battle drag on any longer.”
+we’re retreating. We can’t let this battle drag on any longer.”
 
 @23525 Helmut · ヘルマット
 > 「そのようだな。よし、全軍撤退だ!」
@@ -939,13 +942,13 @@ set the stagnation right.”
 “Hahahahaha, purge, purge!”
 
 @23560 Zechs · ゼクス
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：“officers and men”“lowly arrogance”不像台词
 > 「まて、貴様らはそれでもOZの将兵
 >  か! そのような下等な思いあがり
-“Stop! Are you lot even OZ officers and men?! Such lowly arrogance...
+“Stop! And you call yourselves soldiers of OZ?! Such base arrogance...
 ---
 >  恥を知れ!」
-have some shame!”
+have you no shame!”
 
 @23561 Alex · アレックス
 > 「ゼクスだとぉ!? 特佐、なんであんた
@@ -953,9 +956,10 @@ have some shame!”
 “Zechs?! Special Colonel, what are you doing in a place like this?”
 
 @23562 Mueller · ミューラー
+# 审校：军衔前置，与全篇一致
 > 「あんたこそ命令違反じゃないの
 >  かい? 部下殺しのゼクス特佐ぁ」
-“Aren't you the one disobeying orders? Zechs the Special Colonel, killer of his own men.”
+“Aren’t you the one disobeying orders? Special Colonel Zechs, killer of his own men.”
 
 @23563 Alex · アレックス
 > 「処刑の邪魔はしないでもらいま
@@ -993,9 +997,10 @@ have been left entirely to us.”
 “Mueller?! Zechs, you bastard!”
 
 @23570 Zechs · ゼクス
+# 审校：“your head is far too poor”直译
 > 「技術はたいしたものだ。だが、ノインの
 >  教え子にしては頭のできが悪すぎる」
-“Your skill is impressive. But for Noin's pupil, your head is far too poor.”
+“Your skill is impressive. But for one of Noin’s pupils, you’re far too slow in the head.”
 
 @23571 Alex · アレックス
 > 「やかましぃっ! ノイン教官の名を
@@ -1003,8 +1008,9 @@ have been left entirely to us.”
 “Shut up! Don't you dare speak Instructor Noin's name!”
 
 @23572 Zechs · ゼクス
+# 审校：补省略号，接原文停顿
 > (…………この時代が狂わせたのか?)
-(Did this era drive them mad?)
+(...Is it this era that drove them mad?)
 
 @23573 Alex · アレックス
 > 「あんたは格好よすぎるんだよぉ!!」
@@ -1025,9 +1031,10 @@ have been left entirely to us.”
 “Isn't he just trying to put us in his debt?”
 
 @23577 Zechs · ゼクス
+# 审校：“Spare me your strange misunderstandings”是直译
 > 「おかしな誤解はやめてもらおう。彼ら
 >  は上官である私に攻撃をしかけた
-“Spare me your strange misunderstandings. They attacked me, their superior officer,
+“Don’t get the wrong idea. They attacked me, their superior officer,
 ---
 >  その結果このようになっただけのこと。
 >  それに、貴様たちにはこれから
@@ -1067,20 +1074,21 @@ I have been too soft.”
 “Zechs...”
 
 @23583 Zechs · ゼクス
+# 审校：去掉“I will simply be struck down”等被动直译
 > 「私はこれまで戦争の中に勝手な
 >  美意識を持ち込んでいた。だが
-“Until now I brought my own selfish sense of aesthetics into war. But
+“Until now I’ve brought my own self-indulgent aesthetics into war. But
 ---
 >  もはやそんな体裁など必要ない。
 >  そんな戦いしかできないのであれば
-such pretense is no longer needed. If this is the only way I can fight,
+I no longer need such pretense. If that’s the only way I know how to fight,
 ---
 >  私はここで彼らに倒されるだけのこと
 >  これは戦争なのだ。命をかけて
-then I will simply be struck down here by them. This is war. There are things
+then let them strike me down here. This is war. Some things
 ---
 >  学ばねばならぬこともある!」
-one must learn at the cost of one's life!”
+can only be learned at the cost of one’s life!”
 
 @23584 Noin · ノイン
 > 「ゼクス……わかりました、そこまでいうの
@@ -1176,9 +1184,10 @@ just go home empty-handed.”
 “Amazing... I can feel it, you know... your power.”
 
 @23601 Amuro · アムロ
+# 审校：“What is this? What is this”重复
 > 「くっ……なんだ、この強烈な
 >  プレッシャーは!?」
-“Ngh... What is this? What is this intense pressure?!”
+“Ngh... What is this intense pressure?!”
 
 @23602 Quattro · クワトロ
 > 「むぅ…………」
@@ -1195,12 +1204,13 @@ just go home empty-handed.”
 “A type I've never seen before...? Wh... what... what are you?!”
 
 @23605 Selain · セレイン（按段落 3DD2）
+# 审校：“what army are you from, soldier”别扭
 > 「くっ……こんなタイプのマシンは見たこと
 >  がない。貴様、いったいどこの
-“Ngh... I've never seen a machine like this. You, just what army are you
+“Ngh... I’ve never seen a machine like this. You there, just whose army
 ---
 >  兵士だ!?」
-from, soldier?!”
+are you from?!”
 
 @23606 Brad · ブラッド（按段落 3DD3）
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -1385,12 +1395,13 @@ along with the Getter!”
 “What?! There's no choice. Musashi, forget it... evade, now!!”
 
 @23640 Musashi · ムサシ
+# 审校：“it’s more certain if someone controls it”直译
 > 「バカをいうな。どうせ、奴にちゃんと
 >  ゲッターをぶち当てるためには、誰かが
-“Don't be stupid. Either way, to slam the Getter into that thing properly, it's more certain if
+“Don’t be stupid. Either way, to make sure the Getter hits that thing dead on, it’s better if
 ---
 >  コントロールした方が確実なんだ」
-someone controls it.”
+someone’s at the controls.”
 
 @23641 Ryoma · リョウ
 > 「なんだって!? やめろムサシ!!」
@@ -1436,8 +1447,9 @@ Earthlings, huh? Interesting...)
 “Hey, you're kidding, right?! I mean, Musashi was in that thing...”
 
 @23650 Ryoma · リョウ
+# 审校：“D...”不知所云，ク是哽咽
 > 「ク……ムサシィィィィィィィィーッッ!!!」
-“D... MUSASHIIIIIIIIII!!!”
+“Ngh... MUSASHIIIIIIIIII!!!”
 
 @23651 Heero · ヒイロ
 > 「ゼクスか……」
@@ -1480,8 +1492,9 @@ will crush them in my fist!”
 it can just be repaired.”
 
 @23658 Kamille · カミーユ
+# 审校：There’s no helping it 是日语腔
 > 「そう……か。しかたがないな」
-“I... see. There's no helping it.”
+“I... see. Nothing we can do.”
 
 @23659 Shinobu · 忍
 > 「……ムサシの奴、つまんねぇこと
@@ -1659,16 +1672,17 @@ As for its location, Ginrei should know.”
 “Understood. Then we'll set course for Ryozanpaku.”
 
 @23690 Noin · ノイン
+# 审校：疑问句结构不通
 > 「聞きましたか、ゼクス? あの
 >  レジスタンスたち以外に、OZと
-“Did you hear that, Zechs? Besides those resistance fighters, there are others who
+“Have you heard, Zechs? Besides those resistance fighters, there are others
 ---
 >  ロームフェラの行動とその思想が
 >  間違いであると宣言した者たちが
-declare that the actions and ideology of OZ and
+who’ve declared the actions and ideology of OZ and
 ---
 >  いると?」
-Romefeller are wrong?”
+Romefeller to be wrong.”
 
 @23691 Zechs · ゼクス
 > 「……噂だけはな。クスコの聖女隊と
@@ -1676,9 +1690,10 @@ Romefeller are wrong?”
 “...Only rumors. The Saints of Cusco, was it?”
 
 @23692 Noin · ノイン
+# 审校：接上句，补成完整问句
 > 「ではその者たちに、聖女の他に
 >  もうひとり、指導者と目されている
-“Then, among them, besides the Holy Woman, there is another
+“Then did you know that among them, besides the Holy Woman, there’s another
 ---
 >  人物がいるのは?」
 figure regarded as a leader?”
@@ -1723,9 +1738,10 @@ trouble.”
 “What are you saying? I don't mind at all.”
 
 @23699 Zechs · ゼクス
+# 审校：承接上句 selfishness
 > 「ならば勝手ついでに、ひとつ頼みを
 >  聞いてもらいたい…………」
-“Then, while I'm at it, I'd like you to do one favor for me...”
+“Then let me be selfish once more and ask you one favor...”
 
 @23700 Treize · トレーズ
 > 「報告は聞いた。君らしくない戦い

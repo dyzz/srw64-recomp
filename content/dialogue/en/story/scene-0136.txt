@@ -341,13 +341,14 @@ and watch this war go on.”
 on the ground.”
 
 @31690 Julia · ジュリア
+# 审校：聞いておいて 是听我一句，不是提问；下句是叮嘱
 > 「わかりました。あなたのその決意は、
 >  尊いと思います
 “Understood. I think your resolve is noble.
 ---
 >  行ってらっしゃい、リリーナさん。
 >  だけど、これだけは聞いておいて」
-Take care, Relena. But let me ask you just this one thing.”
+Take care, Relena. But hear me out on just one thing.”
 
 @31691 Relena · リリーナ
 > 「何でしょう?」
@@ -411,14 +412,14 @@ the rapidly shifting situation.”
 “Then you will accept after all?”
 
 @31698 Treize · トレーズ
-# 审校：破折号
+# 审校：英文从句太长
 > 「無論だよ、レディ。地球圏の、
 >  いや人類の未来を決する
-“Of course, Lady. The players for the great stage that will decide the future
+“Of course, Lady. The players are assembled for the grand stage that will decide the future
 ---
 >  大舞台の役者はそろった。
 >  残された時間はあまり多くない」
-of the Earth Sphere, no, of humanity, are assembled. There is little time left.”
+of the Earth Sphere... no, of humanity. There is little time left.”
 
 @31699 Lady · レディ
 # 审校：Lady 对 Treize 的称呼应为 Your Excellency，而非 Lord Treize。
@@ -579,8 +580,9 @@ There's no way it can go into combat.”
 “But if we can't hand it over now, who knows when the next chance will be?!”
 
 @31717 October · オクトバー
+# 审校：英文更自然
 > 「無理なものは無理ですよ」
-“Impossible is impossible.”
+“What can’t be done can’t be done.”
 
 @31718 Chan · チェーン
 > 「わかりました。調整は
@@ -623,9 +625,10 @@ ready to launch, and hurry. I'll have the Nu loaded aboard.”
 “That's fine with you, isn't it, October?”
 
 @31725 October · オクトバー
+# 审校：去掉no helping it
 > 「しかたないですね。わかりました、データは
 >  整理して、ラビアンローズに
-“I suppose there's no helping it. All right, I'll organize the data and
+“I suppose I’ve no choice. All right, I’ll organize the data and
 ---
 >  送っておきますよ。そのかわり、実戦
 >  データは逐次こちらへ送ってください」
@@ -636,8 +639,9 @@ send it to La Vie en Rose. In exchange, send me the combat data as it comes in.�
 “Yes. Thank you so much!”
 
 @31727 Henken · ヘンケン
+# 审校：亨肯是在说琴刚才的样子
 > 「……なんだ、ありゃ」
-“...What on earth is that?”
+“...What was that about?”
 
 @31728 Selain · セレイン（按段落 3DD2）
 > 「ん? なんだ、

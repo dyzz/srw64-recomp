@@ -167,12 +167,13 @@ will be killed by him!”
 “You brat, running your mouth as you please! Shut him up, now!”
 
 @50650 Ark · アーク（按段落 3DD1）
+# 审校：“证明给我看你能”拗口
 > 「こういう奴は許せないんだって、あんた
 >  だってわかるはずだ! だったら
-“You should understand that men like him can't be forgiven! Then
+“You know men like him can’t be forgiven, same as I do! So
 ---
 >  自分の女を守って見せろよ!」
-prove it by protecting your own woman!”
+prove it! Protect your own woman!”
 
 @50651 Bask · バスク
 # 审校：Bask 对部下的命令应更粗暴直接，原译“as you are”语气偏弱且不自然。
@@ -184,9 +185,10 @@ prove it by protecting your own woman!”
 “Ngh...”
 
 @50653 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：repeat again 重复
 > 「……君のいう通りだ、少年。私は
 >  また、過ちを重ねるところだった」
-“...You're right, boy. I was about to repeat my mistake again.”
+“...You’re right, boy. I was about to make the same mistake again.”
 
 @50654 Bask · バスク
 > 「なんだと貴様ぁ! ええい、かまわん!

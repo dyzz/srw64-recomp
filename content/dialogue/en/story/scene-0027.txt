@@ -144,9 +144,10 @@ purified by fire. Treize Khushrenada.”
 and the reconstruction plan for the major cities and colonies are ready.”
 
 @22074 Le Cain · ル・カイン
+# 审校：O old things 太怪
 > 「諸君、聞いての通りだ。
 >  古きものよ! 悪しきものよ!
-“Everyone, you heard him. O old things! O wicked things!
+“Everyone, you heard him. All that is old! All that is wicked!
 ---
 >  新しきもの、理想なるものの誕生
 >  のため、炎の洗礼を受けよ!!」
@@ -231,8 +232,9 @@ under the dominion of the Muge Zorbados Empire?”
 “I heard His Excellency Gresco passed away from illness?”
 
 @22090 Luna · ルーナ
+# 审校：顺句
 > 「不審なこと、このうえありません」
-“There is nothing more suspicious than that.”
+“Nothing could be more suspicious.”
 
 @22091 Shapiro · シャピロ
 > 「ふむ……アステロイド基地に
@@ -312,13 +314,14 @@ So they've summoned the generals from the Asteroid Frontline Base...”
 “...”
 
 @22104 Le Cain · ル・カイン
+# 审校：与 21836 同一句口号措辞统一
 > 「すぐれた者によるよりよき指導、
 >  それに従う無垢なる従順……
-“The superior few give wise guidance, and the purehearted obey...
+“Better guidance from the superior, and innocent obedience from those who follow...
 ---
 >  私の理想とした国家の建設は
 >  夢で終わらせはせん……」
-I will not let my dream of building such a nation end as a dream...”
+I will not let the nation I dreamed of end as a mere dream...”
 
 @22105 Gresco · グレスコ
 # 审校：精读：与 22024 同一句
@@ -471,9 +474,10 @@ Don't show your face in front of me again. Understood?”
 “Haven't seen him.”
 
 @22129 Domon · ドモン
+# 审校：If you mean him 生硬
 > 「……奴なら暗い顔して
 >  うろつきまわってたようだぞ」
-“...If you mean him, he was wandering around with a gloomy look.”
+“...Him? I saw him wandering around looking gloomy.”
 
 @22130 Amuro · アムロ
 > 「そうか……。ドモン、すまないな。君には
@@ -778,13 +782,14 @@ with no lead on him, it's also a fact that I have no choice but to rely on you a
 You don't need to concern yourself with me.”
 
 @22176 Selain · セレイン（按段落 3DD2）
+# 审校：心里话结尾补句号
 > (帝国の……大部隊か……。
 >  いずれこうなることは
-(The Empire's... main force, huh... I knew it would come to this eventually.
+(The Empire’s... main force, huh... I knew it would come to this eventually.
 ---
 >  予想していたことだ。
 >  やれるだけやってみるさ)
-I'll do what I can)
+I’ll do what I can.)
 
 @22177 Lera · レラ
 > 「あっ……
@@ -845,9 +850,10 @@ You think I'd run away over something like this?!”
 In this day and age, what better way to live is there?”
 
 @22185 Selain · セレイン（按段落 3DD2）
+# 审校：“我说了无聊的话”是直译
 > 「ああ……そうだな。確かに、お前の
 >  いう通りだ。つまらないことをいったな」
-“Yeah... you're right. You're absolutely right. I said something pointless.”
+“Yeah... you’re right. You’re absolutely right. That was a foolish question.”
 
 @22186 Lera · レラ
 > 「……いいよ、別に。それよりも……」
@@ -1011,9 +1017,10 @@ there's no way we could ever liberate the Earth Sphere.”
 but to rely on you all. You don't need to concern yourself with me.”
 
 @22209 Brad · ブラッド（按段落 3DD3）
+# 审校：顺句
 > 「とかいって、本当はレインさんに
 >  そういわれたんだろ?」
-“You say that, but really Rain told you that, didn't she?”
+“You say that, but really it was Rain who told you that, wasn’t it?”
 
 @22210 Domon · ドモン
 > 「……{HeroNick}、盗み聞きするとは
@@ -1037,12 +1044,13 @@ but to rely on you all. You don't need to concern yourself with me.”
 Don't go causing so much trouble for Rain.”
 
 @22214 Domon · ドモン
+# 审校：すじあいじゃない 不是 not one to talk
 > 「大きなお世話だ。
 >  レインは俺のパートナーだ
 “None of your business. Rain is my partner.
 ---
 >  お前にいわれるすじあいじゃない」
-You're not one to talk.”
+It’s not your place to say anything.”
 
 @22215 Brad · ブラッド（按段落 3DD3）
 > 「いいかドモン、知らないようだから
@@ -1124,8 +1132,9 @@ but to rely on you all. You don't need to concern yourself with me.”
 but we've got no choice but to fight as long as we can. And if that's not enough, then we...”
 
 @22225 Lawrence · ローレンス
+# 审校：Defeatism is forbidden 不像管家说话
 > 「弱気は禁物ですぞ、アムロ様」
-“Defeatism is forbidden, Master Amuro.”
+“You mustn’t lose heart, Master Amuro.”
 
 @22226 Amuro · アムロ
 > 「すまない、ローレンス」
@@ -1342,10 +1351,11 @@ Roanne Demitrich.”
 “Yes.”
 
 @22263 Le Cain · ル・カイン
-# 审校：「どうした」在此是询问对方怎么了，初稿译成 What's wrong 可以，但结合后续 Roan 的「はっ?」和 Le Cain 指出他站错位置，改为 What is it 更贴合语境；同时保持跨页引号规则。
+# 审校：果報 是好消息不是 rewards
+# 检查提示：未用必用译名：ロアン・デミトリッヒ→Roanne Demitrich
 > 「あとはお前にまかせた。
 >  私は休んで果報を待つとしよう
-“I leave the rest to you. I shall rest and await the rewards.
+“I leave the rest to you. I shall rest and await the good news.
 ---
 >  ……どうしたロアン・デミトリッヒ?」
 ...What is it, Roanne Demitrich?”
@@ -1495,13 +1505,15 @@ order will vanish once more.”
 “Zakarl?! Your Excellency...?”
 
 @22286 Le Cain · ル・カイン
+# 审校：その命あずけておこう 是暂且饶命，英文 in your hands 反了
+# 检查提示：未用必用译名：ロアン・デミトリッヒ→Roanne Demitrich
 > 「ロアン・デミトリッヒ。
 >  だまされていたとはいえ、貴様たちに
 “Roanne Demitrich. Even if you were deceived, it is also true that I entrusted
 ---
 >  はかなき夢を託したのも、また事実
 >  私が帰るまでその命、あずけておこう」
-a fleeting dream to you all. Until I return, I shall leave that life in your hands.”
+a fleeting dream to you all. Until I return, I shall let you keep that life of yours.”
 
 @22287 Roanne · ロアン
 > 「…………閣下……」

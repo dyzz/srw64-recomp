@@ -191,9 +191,10 @@ Kamille, show Special Lieutenant Emma to her room.”
 “Enemy force approaching from two o'clock.”
 
 @19604 Bright · ブライト
+# 审校：去 no helping it；“展开着吗”直译
 > 「別の部隊が展開していたか。
 >  やむをえん
-“So another unit was deployed. There's no helping it.
+“So another unit was deployed. No way around it.
 ---
 >  総員、第一戦闘配置!
 >  敵を迎撃する」
@@ -396,38 +397,40 @@ I can't just let myself be beaten either.”
 “Very well. Otherwise there would be no contest at all.”
 
 @19642 Emma · エマ
-# 审校：精读：1級特尉
+# 审校：第二、三页重复问了两遍；“set up”统一为“played”
 > 「私は、スペシャルズのエマ・シーン1級
 >  特尉だ。聞きたいことがある
-“I'm Emma Sheen, Special Lieutenant First Class of the Specials. There's something I want to ask.
+“I’m Emma Sheen, Special Lieutenant First Class of the Specials. There’s something I want to ask.
 ---
 >  ニューエドワーズ基地でお前たちが
 >  言っていた“はめられた”とは、
-What did you mean by ‘we were set up’ back at New Edwards Base?
+That thing you said at New Edwards Base, about being ‘played’...
 ---
 >  いったいどういうことか?」
-What exactly did you mean by that?”
+what exactly did you mean by that?”
 
 @19643 Quattro · クワトロ
+# 审校：“What was at that base were”不合语法
+# 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「言葉の通りだ。我々、
 >  地球解放戦線も、カラバも、
 “It means exactly what it says. We of the Liberation Front of the Earth, and Karaba too,
 ---
 >  あの基地には帝国とスペシャルズの
 >  幹部が集結するという情報を
-had intelligence that the Empire's and the Specials' top brass would gather at that base.
+had intelligence that the Empire’s and the Specials’ top brass would gather at that base.
 ---
 >  つかんでいた。そのためにカラバはあの
 >  基地を攻撃したのだ。しかし、
-That's why Karaba attacked it. But look at the result.
+That’s why Karaba attacked it. But look at the result.
 ---
 >  その結果はどうだ? あの基地にい
 >  たのは、帝国と地球の
-What was at that base were the Empire's and Earth's
+The ones at that base were the Empire’s and Earth’s
 ---
 >  平和論者たちだった。何者かが
 >  我々が攻撃することをみこして、
-peace advocates. It's obvious that someone anticipated our attack
+peace advocates. It’s obvious that someone anticipated our attack
 ---
 >  ニセの情報を流したのは明白だ。
 >  我々は平和論者たちの
@@ -522,8 +525,9 @@ Someone's personal army.”
 “It doesn't appear in our data, my lady.”
 
 @19657 Quatre · カトル
+# 审校：“That is,”读成“也就是说”
 > 「あれは、もしかして……」
-“That is, could it be...”
+“That’s... could it be...”
 
 @19658 Duo · デュオ
 > 「やっぱりお前もか。俺も、知ってる
@@ -578,12 +582,13 @@ This is the Getter Team, attached to Karaba.”
 “Dr. Saotome's Getter Robo?!”
 
 @19668 Hayato · ハヤト
+# 审校：英文“First we smash…, that comes first”重复；中文同 19665
 > 「おっと、万丈さんかい。
 >  説明は後だ
 “Whoa, Banjo, is that you? Explanations later.
 ---
 >  まずはこいつを叩いちまうのが先さ」
-First we smash this thing, that comes first.”
+Taking this thing down comes first.”
 
 @19669 Duo · デュオ
 > 「間違いねぇ。あれはデビルガンダムだぜ」
@@ -638,12 +643,13 @@ That is... the true identity of the sixth meteor.”
 “Wait!!”
 
 @19680 Ryoma · リョウ
+# 审校：“Pursuing too far is forbidden”像条例
 > 「いかん、ドモン・カッシュ。この付近は
 >  帝国軍も多い
-“Don't, Domon Kasshu. There are many Imperial troops around here.
+“Don’t, Domon Kasshu. There are a lot of Imperial troops around here.
 ---
 >  深追いは禁物だ」
-Pursuing too far is forbidden.”
+Don’t chase him too far.”
 
 @19681 Domon · ドモン
 > 「だが、奴を逃がすわけには!」
@@ -668,12 +674,13 @@ Pursuing too far is forbidden.”
 “No... it seems he got away. We're going after him, Rain!!”
 
 @19686 Ryoma · リョウ
+# 审校：“Pursuing too far is forbidden”像条例
 > 「いかん、ドモン・カッシュ。この付近は
 >  帝国軍も多い
-“Don't, Domon Kasshu. There are many Imperial troops around here.
+“Don’t, Domon Kasshu. There are a lot of Imperial troops around here.
 ---
 >  深追いは禁物だ」
-Pursuing too far is forbidden.”
+Don’t chase him too far.”
 
 @19687 Domon · ドモン
 > 「だが、奴を逃がすわけには!」
@@ -711,12 +718,13 @@ Pursuing too far is forbidden.”
 “Y-you, why...?”
 
 @19695 Banjo · 万丈
+# 审校：“这可真是失敬”“从……旁边离开，可以吗”拗口
 > 「どうしたんだ? ……おっと、これはこれは
 >  悪いが、その黒いMSからは離れて
-“What's going on? ...Whoa, well now, sorry, but I'd like you to get away from that black MS,
+“What’s going on? ...Oh. Well now, sorry to ask, but I’d like you to step away from that black MS,
 ---
 >  もらいたいな?」
-if you don't mind?”
+if you don’t mind.”
 
 @19696 Emma · エマ
 > 「攻撃の意思はないわ」
@@ -752,18 +760,20 @@ if you don't mind?”
 “What do you mean?”
 
 @19703 Banjo · 万丈
+# 审校：“a Specials”不成话
 > 「クワトロ大尉は、あなたがスペシャルズ
 >  ではないと思えるといっていたんだ」
-“Captain Quattro said he didn't think you were a Specials.”
+“Captain Quattro said you didn’t seem like one of the Specials to him.”
 
 @19704 Emma · エマ
 > 「私が?」
 “Me?”
 
 @19705 Quattro · クワトロ
+# 审校：同上；“在那个场合退下吧”书面
 > 「スペシャルズならば、あの場で引き下
 >  がったりはしないだろう」
-“If you were a Specials, you wouldn't have backed down back there.”
+“If you were really one of the Specials, you wouldn’t have backed down back there.”
 
 @19706 Emma · エマ
 > 「……私をこちらに加えてもらえない
@@ -781,12 +791,13 @@ if you don't mind?”
 “What changed your mind? Would you tell me?”
 
 @19709 Emma · エマ
+# 审校：“live as I believe in”不通
 > 「私は、自分が信じるように
 >  生きたいというだけで
-“I simply want to live as I believe in,
+“I simply want to live by what I believe,
 ---
 >  何も変わってはいないつもりです」
-and I don't think anything about me has changed.”
+and I don’t think that’s changed.”
 
 @19710 Quattro · クワトロ
 > 「……わかった。万丈くん、判断は
@@ -993,14 +1004,14 @@ Liberation Front of the Earth.”
 and Captain Quattro of the Liberation Front of the Earth.”
 
 @19749 Banjo · 万丈
-# 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
+# 审校：去 as expected
 > 「噂は聞いていますよ、
 >  アムロ・レイ大尉
-“I've heard the rumors, Captain Amuro Ray.
+“I’ve heard the rumors, Captain Amuro Ray.
 ---
 >  輸送機のような機動性のない
 >  ものをMSにぶつけるとは、さすがですね」
-Ramming a transport with no mobility into an MS... impressive as expected.”
+Ramming a transport with no mobility into an MS... you live up to your name.”
 
 @19750 Amuro · アムロ
 > 「アムロでいいよ。たまたまうまくいった
@@ -1180,9 +1191,10 @@ he's already started on new research.”
 but I never imagined anything like this. So that Gundam type is Karaba's too?”
 
 @19780 Banjo · 万丈
+# 审校：“new staff”不像军队口吻
 > 「いや、僕は知らないな。リョウ、
 >  彼らは新しいスタッフなのか?」
-“No, I don't know anything about that. Ryoma, are they new staff?”
+“No, I don’t know anything about that. Ryoma, are they new recruits?”
 
 @19781 Rain · レイン
 > 「あ、私たちは、違うんです。その、
@@ -1436,7 +1448,7 @@ to ignore it ourselves.”
 The only saving grace is that it's not exactly a picnic for the Empire either.”
 
 @19814 Banjo · 万丈
-# 审校：跨页多余的引号
+# 审校：句尾“you know?”别扭
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン・カッシュ。レイン嬢の
 >  言う通り僕たちに同行すれば
@@ -1444,7 +1456,7 @@ The only saving grace is that it's not exactly a picnic for the Empire either.�
 ---
 >  僕たちの情報網でデビルガンダムの
 >  ことも探しやすくなるが?」
-our information network will make it easier to track down the Dark Gundam too, you know?”
+our information network will make it easier to track down the Dark Gundam too. What do you say?”
 
 @19815 Domon · ドモン
 > 「……いいだろう。ただし、俺にとっては
@@ -1456,8 +1468,9 @@ our information network will make it easier to track down the Dark Gundam too, y
 “That's fine by me too.”
 
 @19817 Quattro · クワトロ
+# 审校：称呼放句中更自然
 > 「……私に何か用かな? 大尉」
-“...Do you need something from me? Captain.”
+“...Something you need from me, Captain?”
 
 @19818 Amuro · アムロ
 > 「シャア…………

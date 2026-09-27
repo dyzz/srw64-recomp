@@ -400,13 +400,14 @@ I heard it over and over. There's no mistake.”
 “Sara... you...”
 
 @24989 Sara · 沙羅
+# 审校：By some chance 直译
 > 「シャピロは危険な奴なんだ。万が
 >  いちにも、あいつが逃げるなんてことに
-“Shapiro is a dangerous man. By some chance, we can't let him get away.
+“Shapiro is a dangerous man. We can’t let him slip away, not by any chance.
 ---
 >  なっちゃいけないんだよ。どうしてもって
 >  いうんなら、あたしひとりでも行くよ」
-If you insist on not going, then I'll go alone.”
+If you all won’t go, then I’ll go alone.”
 
 @24990 Simone · シモーヌ
 > 「ちょっと待ってよ、沙羅」
@@ -498,9 +499,10 @@ as well.”
 “Don't go getting any weird ideas. I'm fine.”
 
 @25005 Shinobu · 忍
+# 审校：句尾补省略号
 > (沙羅……お前にとっての決着のと
 >  きが近づいているということか。沙羅)
-(Sara... So the time for you to settle things is drawing near. Sara)
+(Sara... So the time for you to settle things is drawing near. Sara...)
 
 @25006 Beltorchika · ベルトーチカ
 > 「ラビアンローズ、離れていきます」
@@ -677,9 +679,10 @@ this is about the limit...”
 “Of course. Otherwise I could destroy a base like this by myself.”
 
 @25039 Duo · デュオ
+# 审校：probably... I bet 重复
 > 「くっそー、たぶん俺たちいいことしてる
 >  はずなんだけどな。なんでこんなところで
-“Damn it... we're probably doing the right thing, I bet. So why do we have to
+“Damn it... I’m pretty sure we’re doing the right thing here. So why do we have to
 ---
 >  死ななきゃならないんだ」
 die in a place like this?”
@@ -818,13 +821,13 @@ joined up with this base's reinforcements from the homeland...”
 for love. Shapiro, you need no one at all... that's what this means.”
 
 @25060 Shapiro · シャピロ
-# 检查提示：未用必用译名：ルーナ→Luna
+# 审校：英文语序别扭
 > 「女よなぁルーナ。だがいずれ神となる
 >  この私に、それ以上の口出しは
-“Women, always... But I will not permit even you to say more
+“Women... Luna. But I, who will one day be a god, will permit no more
 ---
 >  許さん」
-to me, who will one day become a god.”
+back talk from you.”
 
 @25061 Luna · ルーナ
 > 「…………」
@@ -924,8 +927,9 @@ That is His Majesty the Emperor's will.”
 Shapiro, you who fancied yourself a god shouldn't be able to say it.”
 
 @25078 Shapiro · シャピロ
+# 审校：原文只是“你们”，去掉 traitors
 > 「おのれ、き、貴様ら……」
-“Curse you... y-you traitors...”
+“Curse you... y-you...”
 
 @25079 Luna · ルーナ
 > 「シャピロ、あたしが愛すには足りない
@@ -1080,13 +1084,14 @@ The universe is calling for me.”
 “Die, Sara. You will now vanish completely from before me.”
 
 @25107 Sara · 沙羅
+# 审校：そいつがいいとこだ 是“顶多如此”
 > 「お得意の神をきどったセリフかい。
 >  シャピロ、あいにくだけどね
-“That's your favorite god-act line, is it. Shapiro, I hate to tell you,
+“That’s your favorite god-act line, is it. Shapiro, I hate to tell you,
 ---
 >  今のあんたは神というより、ただの
 >  道化さ。そいつがいいとこだ
-but right now you're less a god than just a clown. And that's your best part.
+but right now you’re less a god than just a clown. And that’s being generous.
 ---
 >  シャピロ、あんたとつきあって、あたしは
 >  ひとつだけ喜びを見つけたよ」
@@ -1101,8 +1106,9 @@ Shapiro, being with you, I found just one thing to be happy about.”
 “Killing you.”
 
 @25110 Shapiro · シャピロ
+# 审校：Can you do it, you 不通
 > 「……できるのか、お前に」
-“...Can you do it, you?”
+“...Can you, though?”
 
 @25111 Sara · 沙羅
 > 「もう話すことは何も残っていない
@@ -1162,9 +1168,10 @@ Fuh, fuhahahahaha!!”
 “Let's go!”
 
 @25122 Ryo · 亮
+# 审校：couldn't help but understand 生硬
 > 「あんたの気持ち、わからんでもなかった
 >  がな。だが力だけでは、人の心は
-“I couldn't help but understand how you felt. But strength alone can't move a person's heart.
+“I could understand how you felt, in a way. But strength alone can’t move a person’s heart.
 ---
 >  どうにもできん。あばよ、シャピロ」
 So long, Shapiro.”
@@ -1476,13 +1483,14 @@ Keep the observation going.”
 “Yeah, yeah. But come on, there's no need to fight a war for the colonies' sake.”
 
 @25171 Hilde · ヒルデ
+# 审校：Anyone can do nothing but 不通
 > 「批判だけなら誰にだってできるわ。
 >  コロニーの屈辱の歴史を
-“Anyone can do nothing but criticize. We're not afraid of the fight to
+“Anyone can criticize. We’re not afraid of the fight to
 ---
 >  変えるための戦いを、私たちは恐れ
 >  てはいない。今は行動するときよ
-change the colonies' history of humiliation. Now is the time to act.
+change the colonies’ history of humiliation. Now is the time to act.
 ---
 >  OZに入ったのはその手段の1つに
 >  すぎないわ」

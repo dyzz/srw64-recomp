@@ -394,9 +394,10 @@ Launch every remaining unit. Assign one to me as well.”
 “They're coming this way... Of course they are.”
 
 @18809 Quattro · クワトロ
+# 审校：去掉 Can't be helped
 > 「やはり見逃してはもらえないようだ。
 >  やむを得ん、迎撃するぞ」
-“It seems they won't let us slip away after all. Can't be helped. We'll intercept them.”
+“It seems they won’t let us slip away after all. No help for it. We intercept.”
 
 @18810 Gale · ゲイル
 > 「ご苦労だった、ゼクス特尉。
@@ -548,9 +549,10 @@ Come at me carrying the full weight of this Earth!”
 “Ngh... Gale... Goodbye... Gale...”
 
 @18833 Karla · カルラ
+# 审校：去掉 I won't forgive
 > 「ゲイル中尉ッ!?
 >  おのれ、よくも! 許さん!!」
-“Lieutenant Gale?! You bastard, how dare you! I won't forgive this!!”
+“Lieutenant Gale?! You bastard, how dare you! You’ll pay for this!!”
 
 @18834 Gale · ゲイル
 > 「エイジ、これで終わりにするぞ」
@@ -575,9 +577,10 @@ Come at me carrying the full weight of this Earth!”
 ...Goodbye... Gale...”
 
 @18838 Karla · カルラ
+# 审校：同 18833
 > 「ゲイル中尉ッ!?
 >  おのれ、よくも! 許さん!!」
-“Lieutenant Gale?! You bastard, how dare you! I won't forgive this!!”
+“Lieutenant Gale?! You bastard, how dare you! You’ll pay for this!!”
 
 @18839 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「どうやら追いついたようだな
@@ -678,11 +681,12 @@ Do you understand that?!”
 “What are you doing, {HeroName}? At this rate you'll die!”
 
 @18850 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：“没空再谈下去了吗”多个“吗”
 > 「これ以上話している余裕はないか
 “No time left to talk, it seems.
 ---
 >  ……やむを得ん」
-...It can't be helped.”
+...So be it.”
 
 @18851 Rish · リッシュ（按段落 3DD2）
 # 审校：精读：时态
@@ -728,9 +732,10 @@ If anything, I'm the one who's owed.”
 “As if I care about you! I lost every one of my comrades!”
 
 @18857 Rish · リッシュ（按段落 3DD2）
+# 审校：去掉 Can't be helped
 > 「俺にも任務ってもんがあるんだ、
 >  しかたないだろ」
-“I've got my own mission too, you know. Can't be helped.”
+“I’ve got my own mission too, you know. Nothing I can do about that.”
 
 @18858 Selain · セレイン（按段落 3DD2）
 > 「貴様は、私が落とす!」

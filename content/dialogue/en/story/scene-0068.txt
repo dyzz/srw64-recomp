@@ -109,13 +109,14 @@ advance fleet.”
 doesn't feel too good either.”
 
 @29310 Simone · シモーヌ
+# 审校：去掉 It can’t be helped；ふくろ叩き 是围殴不是夹击
 > 「しかたないじゃない。まわりは全部、
 >  OZの支配地域なのよ
-“It can't be helped. Everything around us is OZ territory.
+“What can we do? Everything around us is OZ territory.
 ---
 >  発見されたら、あっという間に取り
 >  囲まれて、ふくろ叩きにされちゃうわ」
-If we're spotted, they'll surround us in no time and catch us in a pincer.”
+If we’re spotted, they’ll surround us in no time and beat us to a pulp.”
 
 @29311 Kamille · カミーユ
 > 「その支配地域が、
@@ -160,21 +161,23 @@ And the reason for that is...”
 “You mean that mysterious space fleet? From outer space...”
 
 @29316 Quattro · クワトロ
+# 审校：“动向仓促”“in a frenzy”都不贴
 > 「即座には信じられん話だがな。
 >  OZの動きがあわただしいのは本当だ
-“It's hard to believe at once, but it's true OZ has been in a frenzy.
+“Not something I can believe on the spot. But OZ is certainly in a hurry about something.
 ---
 >  あるいは……」
 Perhaps...”
 
 @29317 Hayato · ハヤト
+# 审校：Maybe it’s the real thing 接不上克瓦特罗的话
 > 「事実かもしれねえ、か。
 >  まったく、これからどうなることやら
-“Maybe it's the real thing, huh. Honestly, who knows what'll happen now.
+“‘Might be true,’ huh. Honestly, who knows where this goes from here.
 ---
 >  予想もつかんな。
 >  新たな侵略者など
-I can't even imagine. A new invader...
+Can’t even guess. A new invader...
 ---
 >  さすがのジャミトフも
 >  計算には入れてなかったろうぜ」
@@ -224,13 +227,14 @@ Even Jamitov surely never factored that in.”
 “Miss Relena, how say you? Have you made up your mind?”
 
 @29327 Relena · リリーナ
+# 审校：Lord／Duke 统一为 Duke Dermail
 > 「デルマイユ公、何度聞かれても
 >  答えは変わりません
-“Lord Dermail, no matter how many times you ask, my answer won't change.
+“Duke Dermail, no matter how many times you ask, my answer won’t change.
 ---
 >  私は、財団の代表になど
 >  なるつもりはありません」
-I have no intention of becoming the Foundation's representative.”
+I have no intention of becoming the Foundation’s representative.”
 
 @29328 Dermail · デルマイユ
 # 审校：公爵语气应更庄重，it's fine 和 right now 偏口语。
@@ -266,9 +270,10 @@ If you would stop fighting, everything would be resolved.”
 in truth, a new invader has appeared from outer space.”
 
 @29331 Relena · リリーナ
+# 审校：同上
 > 「何ですって? ……デルマイユ公、
 >  そのようなことをいって、この私が
-“What? ...Lord Dermail, do you really think I would
+“What? ...Duke Dermail, do you really think I would
 ---
 >  信じるとでもお思いですか?」
 believe you if you said such a thing?”
@@ -309,6 +314,7 @@ can unify the Earth.”
 “...By crushing everyone who opposes you, you mean.”
 
 @29336 Dermail · デルマイユ
+# 审校：Earth people’s lives will be taken 生硬
 > 「まあ、もうしばらくお考え下さい、
 >  リリーナ嬢
 “Well, please think it over a while longer, Miss Relena.
@@ -319,7 +325,7 @@ But let me say this much. If you do not obey us,
 ---
 >  それだけ多くの地球人の命が
 >  奪われていくのです。よろしいですな
-that many more Earth people's lives will be taken. Is that clear?
+that many more lives on Earth will be lost. Is that clear?
 ---
 >  では、今日はこれで失礼」
 Well then, I shall take my leave for today.”
@@ -699,9 +705,10 @@ Tetsuya, Jun, you lead the way!”
 “All right, all hands to battle stations! Begin the attack!”
 
 @29396 Dark General · 暗黒大将軍
+# 审校：Back to be beaten again 拗口
 > 「何度きても同じだ!
 >  またやられにきたか!?」
-“It makes no difference how many times you come! Back to be beaten again?!”
+“It makes no difference how many times you come! Back for another beating?!”
 
 @29397 Tetsuya · 鉄也
 > 「覚悟しろ! 今度こそ最期だ」
