@@ -13,7 +13,7 @@
 | 5600 模型 | Original 保留原版八面模型；HD 按 profile 使用原生 GPU 水滴。任意模型包接口尚未开放。 |
 | 阅读体验 | 四档自动、逐字、分页、回看、速度/进度和活动对话框指示；原脚本保留事件推进权。 |
 | 存档恢复 | 历史 SRAM 按完成报告、ROM 身份和摘要筛选，支持列表/显式恢复；已验证第一话通关档冷启动到整备和驾驶员详情。安全节点自动保存尚未实现，见[恢复记录](native-save-recovery.md)。 |
-| 姓名输入 | 游戏窗口内的主角选择页与姓名页（SDL／RmlUi 页面）、原生字段与双人确认；原字库范围与原 7/7/5 字数上限。输入法组字可经调试接口模拟；任意 Unicode、SRAM 冷启动往返和输入法候选窗未验收。 |
+| 主角选择 | 游戏窗口内的选角页与双人确认页（SDL／RmlUi 页面）；不许改名，默认名按阅读语言显示，见[默认姓名三语显示](../native/default-names.md)。SRAM 冷启动往返未验收。 |
 | 玩法 Mod | `gameplay_mods` 必须为空。机体/人物/武器 schema、关卡编辑、内容类型注册和公开 SDK 仍是计划。 |
 | 平台 | 只支持 macOS：图形宿主为 SDL2 + RT64/Metal；游戏内页面（姓名页、设置、场间与战前页）都是 SDL／RmlUi，只有菜单栏入口用 AppKit。文字由跨平台的 FreeType＋HarfBuzz＋ICU 引擎排版。其他平台暂不考虑。 |
 | 调试 | `SRW64_DEBUG=1` 时宿主提供 JSON-RPC 调试接口，命令行与 MCP 可驱动全部游戏输入和原生界面，见[调试接口与 MCP](debug-interface.md)。 |
@@ -31,7 +31,7 @@
 | `src/native/presentation/` | 原图/HD 模式请求与 display-list 快照归属。 |
 | `src/host/host.cpp`、`game_hooks.*` | 原生宿主、N64 系统接入、overlay/资源钩子与 VI 控制。 |
 | `native_dialogue.*`、`native_dialogue_text.cpp` | 原对白桥接与阅读状态；跨平台排版及场景绘制见 `src/host/dialogue_scene.cpp`。 |
-| `native_name_entry.cpp` / `src/native/ui/name_page.cpp` | 游戏线程上的命名请求、原校验与写回 / RmlUi 页面上的字段编辑与绘制。 |
+| `native_name_entry.cpp` / `src/native/ui/name_page.cpp` | 游戏线程上的选角请求、经原校验写入默认名 / RmlUi 选角与确认页。 |
 | `graphics.cpp`、`native_marker.cpp`、`audio.cpp` | SDL/RT64 接入、GPU 水滴绘制、音频设备适配。 |
 | `window_test_control.hpp`、`src/native/ui/window_test_control.cpp` | 默认关闭的窗口 QA：真实关窗、SDL 缩放、与 F6 相同的图片模式请求；独立于命名页面。 |
 | `tools/recomp/run/verification_support.py` | 验证脚本共用的等待、原子请求写入和退出线程日志解析。 |

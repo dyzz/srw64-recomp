@@ -4,8 +4,9 @@
 From the title menu: set name_entry_ui to original through the debug interface (the
 choice persists in the presentation settings), start a new game, press through the
 two prologues and check that no native name page opens while the selection overlay
-is up; a screenshot shows the original page. Then switch back and check the
-persisted value."""
+is up; a screenshot shows the original page. Its はい then commits the default names
+and goes straight to the story, without the original name pages
+(docs/native/default-names.md). Then switch back and check the persisted value."""
 import argparse
 import json
 from pathlib import Path
@@ -75,6 +76,28 @@ shot('name-entry-original.png')
 # The original page answers to the game keys: right moves the route, A opens はい／いいえ.
 keys('right', pause=1)
 shot('name-entry-original-right.png')
+keys('z', pause=1.5)
+shot('name-entry-original-confirm.png')
+keys('z', pause=1)
+def name_events():
+    log = s.run / 'name-entry-events.jsonl'
+    return [json.loads(line) for line in log.read_text().splitlines()] if log.exists() else []
+end = time.monotonic() + 30
+while time.monotonic() < end and not any(e['kind'] == 'original-started' for e in name_events()):
+    time.sleep(.3)
+check('original-defaults-committed', [e['kind'] for e in name_events()] == ['original-started'], name_events())
+# The route's prologue follows; no name grid, native or original, comes in between.
+end = time.monotonic() + 120
+while time.monotonic() < end:
+    st = status()
+    if st['name_page'].get('visible'):
+        raise AssertionError('a name page opened after the original はい')
+    if (st.get('intro') or {}).get('loaded') or (st.get('dialogue') or {}).get('active'):
+        break
+    time.sleep(.3)
+check('original-story-starts', (st.get('intro') or {}).get('loaded') or (st.get('dialogue') or {}).get('active'),
+      {'intro': st.get('intro'), 'dialogue': st.get('dialogue'), 'vi': st.get('vi')})
+shot('name-entry-original-story.png')
 done = s.client.call('settings', name_entry_ui='native')
 check('settings-native', done.get('name_entry_ui') == 'native' and saved_ui() == 'native', done)
 print('EXIT', s.quit().get('exit_code'), flush=True)

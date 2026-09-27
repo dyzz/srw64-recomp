@@ -1,4 +1,5 @@
 #include "native_dialogue.hpp"
+#include "native_name_entry.hpp"
 #include "diagnostics.hpp"
 #include "game_hooks.hpp"
 #include "state_probe.hpp"
@@ -79,9 +80,21 @@ std::string decode(const uint8_t* ram,uint32_t address,size_t limit) {
     }
     return {}; // Unterminated guest buffers are not accepted as dialogue.
 }
-std::string expand(const uint8_t* ram,const std::string& text) {
-    static const uint32_t names[]={0x10F638,0x10F650,0x10F5F8,0x10F618,
-        0x10F644,0x10F674,0x10F608,0x10F628,0x10F698};
+// The name fields the dynamic tokens <G:0124>..<G:012C> read, in token order: the
+// protagonist's nickname, full, given and family name, the partner's the same, the unit.
+struct NameSlot {uint32_t address;names::Field field;bool full;};
+constexpr NameSlot name_slots[]={{0x10F638,names::Field::Nick,false},{0x10F650,names::Field::Name,true},
+    {0x10F5F8,names::Field::Name,false},{0x10F618,names::Field::Surname,false},
+    {0x10F644,names::Field::Nick,false},{0x10F674,names::Field::Name,true},
+    {0x10F608,names::Field::Name,false},{0x10F628,names::Field::Surname,false},
+    {0x10F698,names::Field::Unit,false}};
+// A name field as the reading language shows it: a default in that language, any
+// other name as stored (docs/native/default-names.md).
+std::string shown_name(const std::string& stored,const NameSlot& slot,const std::string& locale) {
+    const auto& table=names::default_names();
+    return slot.full?table.display_full(stored,locale):table.display(slot.field,stored,locale);
+}
+std::string expand(const uint8_t* ram,const std::string& text,const std::string& locale) {
     std::string result;
     for(size_t i=0;i<text.size();) {
         if(text[i]!='<') {result+=text[i++];continue;}
@@ -94,7 +107,8 @@ std::string expand(const uint8_t* ram,const std::string& text) {
         else if(token.rfind("G:",0)==0) {
             const auto code=std::stoul(token.substr(2),nullptr,16);
             if(code>=0x124 && code<=0x12C) {
-                result+=decode(ram,names[code-0x124],16);
+                const auto& slot=name_slots[code-0x124];
+                result+=shown_name(decode(ram,slot.address,16),slot,locale);
                 // The guest encodes a name field as repeated copies of the
                 // same token; the runtime expands that entire run once.
                 const auto raw=text.substr(i,end-i+1);
@@ -110,28 +124,30 @@ std::string expand(const uint8_t* ram,const std::string& text) {
     return result;
 }
 // The original fetcher (8008CF14) swaps the protagonists' and partners' name
-// records for the names the player entered; every other record is its text.
-uint32_t entered_name(uint16_t id) {
-    if(uint16_t(id-0x1137)<4)return 0x10F638;
-    if(uint16_t(id-0x113B)<4)return 0x10F644;
-    if(uint16_t(id-0x12A0)<4)return 0x10F650;
-    if(uint16_t(id-0x12A4)<4)return 0x10F674;
-    return 0;
+// records for the name fields; every other record is its text.
+const NameSlot* entered_name(uint16_t id) {
+    if(uint16_t(id-0x1137)<4)return &name_slots[0];
+    if(uint16_t(id-0x113B)<4)return &name_slots[4];
+    if(uint16_t(id-0x12A0)<4)return &name_slots[1];
+    if(uint16_t(id-0x12A4)<4)return &name_slots[5];
+    return nullptr;
 }
 std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,uint16_t id) {
-    if(const uint32_t bank=entered_name(id))
-        if(auto name=decode(ram,bank,16);!name.empty())return name;
+    if(const auto* slot=entered_name(id))
+        if(auto name=decode(ram,slot->address,16);!name.empty())return shown_name(name,*slot,catalog.locale);
     const auto* value=catalog.resolve(localization::TextKey::base(0,id));
-    return value?expand(ram,*value):std::string();
+    return value?expand(ram,*value,catalog.locale):std::string();
 }
 // The speaker label holds its record id at +0 and the glyphs it shows at +12.
 // Show the record in the reading language while the label still shows that
-// record's Japanese text; entered names and anything else stay as drawn.
+// record's Japanese text, and a name field as shown_name does; anything else
+// stays as drawn.
 std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::Catalog& language) {
     const auto shown=decode(ram,label+12,20);
     const uint16_t id=half(ram,label);
+    if(const auto* slot=entered_name(id))return shown_name(shown,*slot,language.locale);
     const auto japanese=localization::find("ja");
-    if(entered_name(id) || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    if(!japanese || record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,language,id);
 }
 // A battle quote cannot be paged: the original advances it on its own clock.
@@ -154,7 +170,7 @@ std::string segment(const std::string& text,unsigned number) {
 Record story_record(const uint8_t* ram,const localization::Catalog& catalog,uint16_t text_id,uint32_t p) {
     const auto key=game_adapter::standard_dialogue_key(text_id);
     const auto* message=catalog.resolve(key);
-    auto record=joined_record(utf16(message?expand(ram,*message):decode(ram,p+12,256)),catalog.locale);
+    auto record=joined_record(utf16(message?expand(ram,*message,catalog.locale):decode(ram,p+12,256)),catalog.locale);
     const auto japanese=localization::find("ja");
     if(const auto* original=japanese?japanese->resolve(key):nullptr) {
         const auto end=original->find("<END>");
@@ -195,7 +211,7 @@ void refresh(uint8_t* ram,bool create_events) {
         Record source;
         if(display_only) {
             const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
-            source.text=utf16(segment(message?expand(ram,*message):decode(ram,p+12,256),box.segment));
+            source.text=utf16(segment(message?expand(ram,*message,localization::catalog().locale):decode(ram,p+12,256),box.segment));
         } else source=story_record(ram,localization::catalog(),box.text_id,p);
         const auto& body=source.text;
         if(body.empty()) {current[slot]={};continue;}
@@ -395,7 +411,7 @@ void service_locale(uint8_t* ram) {
                 for(const auto& box:current)if(box.visible) {
                     const auto* text=target->resolve(game_adapter::standard_dialogue_key(box.text_id));
                     if(!text)continue;
-                    if(display_only)typeset_body(utf16(segment(expand(ram,*text),box.segment)),body_size(reader.font_size));
+                    if(display_only)typeset_body(utf16(segment(expand(ram,*text,target->locale),box.segment)),body_size(reader.font_size));
                     else {
                         const auto source=story_record(ram,*target,box.text_id,body_base+box.slot*stride);
                         typeset_body(source.text,body_size(reader.font_size),source.stops);
@@ -539,6 +555,17 @@ void configure(const std::filesystem::path& directory) {
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
     output=directory;log.open(directory/"dialogue-events.jsonl");
+    {
+        // The protagonists' and partners' defaults in every reading language.
+        std::vector<std::string> locales;
+        for(const auto& [locale,catalog]:base_catalogs)locales.push_back(locale);
+        const auto unsplit=names::add_people(names::default_names(),locales,[](const std::string& locale,unsigned id) {
+            const auto catalog=localization::find(locale);
+            const auto* text=catalog?catalog->resolve(localization::TextKey::base(0,uint16_t(id))):nullptr;
+            return text?*text:std::string();
+        });
+        for(const auto& locale:unsplit)record("default_names_unsplit",{{"locale",locale}});
+    }
     if(const char* value=std::getenv("SRW64_DIALOGUE_TEXT"))text_bundled=value;
     if(const char* value=std::getenv("SRW64_DIALOGUE_OVERRIDES"))text_overrides=value;
     {
@@ -649,8 +676,9 @@ std::string label_text(const uint8_t* ram,uint32_t label) {
     label&=0x1FFFFFFF;
     const auto shown=decode(ram,label+12,64);
     const uint16_t id=half(ram,label);
+    if(const auto* slot=entered_name(id))return shown_name(shown,*slot,localization::catalog().locale);
     const auto japanese=localization::find("ja");
-    if(!id || entered_name(id) || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    if(!id || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,localization::catalog(),id);
 }
 std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit) {

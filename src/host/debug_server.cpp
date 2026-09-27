@@ -72,10 +72,8 @@ json on_window(std::function<json()> work) {
 std::string utf8(const std::u16string& value){return dialogue::utf8(value);}
 json name_page() {
     const auto request=names::request();
-    json values=json::array();
-    for(const auto& value:request.values)values.push_back(utf8(value));
     json page={{"visible",request.visible},{"active",request.active},{"pending",request.pending},
-               {"person",request.person},{"serial",request.serial},{"values",values},{"error",request.error}};
+               {"person",request.person},{"serial",request.serial}};
     if(request.person==names::Selection) {   // the protagonist selection page
         page["route"]=request.route;page["choices"]=json::array();
         for(const auto& choice:request.choices)page["choices"].push_back({

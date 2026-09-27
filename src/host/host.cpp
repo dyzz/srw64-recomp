@@ -249,9 +249,6 @@ void srw64_debug_quit() {
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
-#if defined(SRW64_WITH_RT64)
-    if(srw64::names::read(rom,rdram,ram,size)) {ctx->r2=0;return;}
-#endif
     srw64_original_rom_read(rdram, ctx);
     for (size_t index = 1; index < num_sections; ++index) {
         const auto& section = section_table[index];
@@ -289,11 +286,6 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     if(srw64::upgrades::descriptor(rdram,uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
         MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;
     }
-#if defined(SRW64_WITH_RT64)
-    if(srw64::names::descriptor(uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
-        MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;
-    }
-#endif
     srw64_original_text_descriptor(rdram,ctx);
 }
 
