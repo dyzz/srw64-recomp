@@ -2,7 +2,6 @@
 #include "dialogue_raster.hpp"
 #include "dialogue_layout_adapter.hpp"
 #include "text/game_fonts.hpp"
-#include "text/button_prompts.hpp"
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
@@ -141,14 +140,12 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
         }
         paint.blocks.push_back({{"role","auto_speed"},{"level",frame.auto_read?frame.speed:0},{"maximum",Reader::max_speed}});
         paint.label(utf16(catalog.ui("font_size")+" "+std::to_string(frame.font_size)),68,230,6,24,.75,.87,1,"font_size");
-        const auto family=text::PadFamily(frame.pad_family);
-        paint.label(utf16(text::expand_prompts(catalog.ui(frame.pad_hints?"controls_pad":"controls"),family)),92,231,5.1,222,.75,.8,.86,"controls");
+        if(!frame.controls_text.empty())paint.label(utf16(frame.controls_text),92,231,5.1,222,.75,.8,.86,"controls");
     }
     if(frame.history_open) {
         paint.panel(16,18,288,202);
         paint.label(utf16(localization::catalog().ui("history_title")),23,23,12,210,.41,.75,1,"history_title");
-        paint.label(utf16(text::expand_prompts(localization::catalog().ui(frame.pad_hints?"history_controls_pad":"history_controls"),
-            text::PadFamily(frame.pad_family))),151,27,6.2,147,.75,.8,.86,"history_controls");
+        if(!frame.history_controls_text.empty())paint.label(utf16(frame.history_controls_text),151,27,6.2,147,.75,.8,.86,"history_controls");
         struct HistoryLine {Layout layout;Line range;bool speaker;bool warm_name{};bool notice{};};
         std::vector<HistoryLine> lines;
         for(const auto& entry:frame.history) {

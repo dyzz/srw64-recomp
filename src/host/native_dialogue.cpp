@@ -7,6 +7,7 @@
 #include "notices.hpp"
 #include "upgrade_refund.hpp"
 #include "input_mode.hpp"
+#include "text/button_prompts.hpp"
 #include "game_adapter/dialogue_source.hpp"
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
@@ -533,6 +534,15 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     frame->speed=reader.speed;frame->auto_read=reader.auto_read;frame->fast=reader.fast;
     frame->history_open=reader.history_open;frame->skipping=reader.skipping;frame->display_only=display_only;
     frame->pad_hints=input::pad_hints.load();frame->pad_family=input::pad_family.load();
+    {
+        // The hints name what the player bound (input_bindings.hpp); copied again only when that changes.
+        static input::Bindings bindings=input::live_bindings().get();
+        static uint64_t revision=input::live_bindings().revision();
+        if(const auto now=input::live_bindings().revision();now!=revision){bindings=input::live_bindings().get();revision=now;}
+        const text::PromptContext context{frame->pad_hints,text::PadFamily(frame->pad_family),&bindings,settings::key_display_name};
+        frame->controls_text=text::expand_prompts(localization::catalog().ui(frame->pad_hints?"controls_pad":"controls"),context);
+        frame->history_controls_text=text::expand_prompts(localization::catalog().ui(frame->pad_hints?"history_controls_pad":"history_controls"),context);
+    }
     frame->history=reader.history;frame->history_offset=reader.history_offset;
     drawings.publish(begin,end,frame);
 }

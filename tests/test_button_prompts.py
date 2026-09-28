@@ -13,10 +13,10 @@ from PIL import ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADER = (ROOT / "src/native/text/button_prompts.hpp").read_text()
-TABLE = {m[0]: [int(c, 16) for c in m[1:]] for m in re.findall(
-    r'\{"(\w+)", 0x([0-9A-F]+), 0x([0-9A-F]+), 0x([0-9A-F]+), 0x([0-9A-F]+)\}', HEADER)}
-KEYBOARD = {"Esc", "Enter", "Tab", "Space", "Ctrl", "KeyLeft", "KeyUp", "KeyRight", "KeyDown", "Arrows", "WASD",
-            "IJKL", "F5", "F6", "F7"}
+KEYBOARD = set(re.findall(r'\{"(\w+)", 0xE8[0-9A-F]{2}\}', HEADER))           # fixed page keys
+ACTIONS = set(re.findall(r'\{"(\w+)", \{Action::', HEADER))                  # bound N64 / host inputs
+TABLE = KEYBOARD | ACTIONS
+GLYPHS = {int(c, 16) for c in re.findall(r"0x(E8[0-9A-F]{2})", HEADER)}
 TOKEN = re.compile(r"\{([A-Z][A-Za-z0-9]*)\}")
 LOCALES = ("zh-Hans", "en", "ja")
 
@@ -28,18 +28,15 @@ def catalogue(locale: str) -> dict:
 
 class ButtonPromptTests(unittest.TestCase):
     def test_table_parses(self):
-        self.assertGreater(len(TABLE), 30)
-        self.assertTrue(KEYBOARD <= set(TABLE))
-        # Keyboard keys look the same for every controller family.
-        for token in KEYBOARD:
-            self.assertEqual(len(set(TABLE[token])), 1, token)
+        self.assertEqual(len(KEYBOARD), 15)
+        self.assertTrue({"A", "B", "Z", "Start", "L", "R", "Settings", "AuxL", "AuxR", "DPad", "C", "Stick"} <= ACTIONS)
+        self.assertFalse(KEYBOARD & ACTIONS)
 
     def test_font_draws_every_character_the_table_uses(self):
         font = ImageFont.truetype(str(ROOT / "content/fonts/SRW64Prompts.ttf"), 1000)
         builder = (ROOT / "tools/content/build_prompt_font.py").read_text()
         built = {int(c, 16) for c in re.findall(r"\(0x(E8[0-9A-F]{2}), 0x", builder)}
-        used = {c for codes in TABLE.values() for c in codes}
-        self.assertTrue(used <= built, sorted(hex(c) for c in used - built))
+        self.assertTrue(GLYPHS <= built, sorted(hex(c) for c in GLYPHS - built))
         for code in sorted(built):
             with self.subTest(code=hex(code)):
                 self.assertGreater(font.getlength(chr(code)), 1000)
@@ -68,17 +65,22 @@ class ButtonPromptTests(unittest.TestCase):
                 self.assertEqual(tokens["zh-Hans"], tokens["en"])
                 self.assertEqual(tokens["zh-Hans"], tokens["ja"])
 
-    def test_controller_hints_name_controller_buttons_and_keyboard_hints_keys(self):
+    def test_controller_hints_use_bound_buttons_only(self):
+        # A controller hint names what is bound; the fixed page keys are the keyboard's.
         ui = catalogue("zh-Hans")
         for key, text in ui.items():
-            if not isinstance(text, str):
-                continue
-            tokens = set(TOKEN.findall(text))
-            with self.subTest(key=key):
-                if key.endswith("_pad") or key == "pad_rstick_down":
-                    self.assertFalse(tokens & KEYBOARD)
-                elif tokens:
-                    self.assertTrue(tokens <= KEYBOARD, tokens - KEYBOARD)
+            if isinstance(text, str) and (key.endswith("_pad") or key == "pad_rstick_down"):
+                with self.subTest(key=key):
+                    self.assertFalse(set(TOKEN.findall(text)) & KEYBOARD)
+
+    def test_keyboard_hints_name_bound_keys_not_letters(self):
+        # The letters of the default keys (Z, X, Q, E, I, K) are tokens now, so a rebinding shows.
+        for locale in LOCALES:
+            ui = catalogue(locale)
+            for key, text in ui.items():
+                if isinstance(text, str) and key + "_pad" in ui:
+                    with self.subTest(locale=locale, key=key):
+                        self.assertIsNone(re.search(r"(?<![A-Za-z{/])[ZXQEIK](?![A-Za-z}])", text), text)
 
     def test_the_hints_that_name_buttons_use_tokens(self):
         # The controller strings no longer spell out button names.

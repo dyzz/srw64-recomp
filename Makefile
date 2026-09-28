@@ -127,7 +127,7 @@ recomp-input-bindings-test:
 .PHONY: recomp-button-prompts-test
 recomp-button-prompts-test:
 	mkdir -p $(RECOMP_BUILD)
-	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/native tests/native_button_prompts.cpp -o $(RECOMP_BUILD)/button-prompts-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/native -Isrc/host tests/native_button_prompts.cpp -o $(RECOMP_BUILD)/button-prompts-test
 	$(RECOMP_BUILD)/button-prompts-test
 
 .PHONY: recomp-data

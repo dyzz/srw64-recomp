@@ -68,6 +68,8 @@ struct Frame {
     bool auto_read{}, history_open{}, fast{}, skipping{};
     bool pad_hints{};                  // controls name the controller's buttons
     uint8_t pad_family{};              // whose button icons (text::PadFamily)
+    // The reading controls and history hints with the player's bindings (text/button_prompts.hpp).
+    std::string controls_text, history_controls_text;
     // Battle quotes: the translation replaces the drawn text, the original keeps
     // its own pacing, so there are no reading controls to show.
     bool display_only{};

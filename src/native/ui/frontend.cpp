@@ -105,13 +105,44 @@ std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
-// Button tokens ("{A}", "{Esc}") become the icons of the controller in use
-// (text/button_prompts.hpp, the SRW64Prompts font).
+// Button tokens ("{A}", "{Esc}") become what the player bound to them, as icons of the
+// controller in use or keys (text/button_prompts.hpp, the SRW64Prompts font).
 text::PadFamily pad_family(){return text::PadFamily(input::pad_family.load());}
+input::Bindings hint_bindings=input::live_bindings().get();  // refreshed with the hints (sync)
+text::PromptContext prompt_context(bool pad){return {pad,pad_family(),&hint_bindings,settings::key_display_name};}
+// The native pages follow the player's bindings (input_bindings.hpp): a key bound to an N64
+// button reads as that button's default key, which the page code knows (Z for A, Q for L,
+// the arrows for the D-pad and the stick). Enter, Esc, Tab and the arrow keys keep their own
+// meaning whatever else they are bound to, so no binding can lock the player out of a page.
+// A key bound to something with no page meaning (the trigger functions) does nothing here.
+// True when the key is the settings button's. The controller bridge (pad_keys) already
+// sends the default keys.
+bool follow_bindings(SDL_Event& event) {
+    if((event.type!=SDL_KEYDOWN && event.type!=SDL_KEYUP) || !event.key.windowID)return false;
+    const int key=int(event.key.keysym.scancode);
+    using input::Action;
+    namespace sc=input::scancode;
+    if(key==sc::Return || key==sc::Escape || key==SDL_SCANCODE_TAB || key==sc::Up || key==sc::Down || key==sc::Left || key==sc::Right)return false;
+    const auto* action=input::action_of_key(hint_bindings,key);
+    if(!action)return false;
+    SDL_Keycode page=SDLK_UNKNOWN;
+    switch(*action) {
+    case Action::A:page=SDLK_z;break; case Action::B:page=SDLK_x;break; case Action::Z:page=SDLK_SPACE;break;
+    case Action::Start:page=SDLK_RETURN;break; case Action::L:page=SDLK_q;break; case Action::R:page=SDLK_e;break;
+    case Action::CUp:page=SDLK_i;break; case Action::CDown:page=SDLK_k;break; case Action::CLeft:page=SDLK_j;break; case Action::CRight:page=SDLK_l;break;
+    case Action::DUp:case Action::StickUp:page=SDLK_UP;break; case Action::DDown:case Action::StickDown:page=SDLK_DOWN;break;
+    case Action::DLeft:case Action::StickLeft:page=SDLK_LEFT;break; case Action::DRight:case Action::StickRight:page=SDLK_RIGHT;break;
+    case Action::Settings:return true;
+    default:break;
+    }
+    event.key.keysym.sym=page;
+    event.key.keysym.scancode=page==SDLK_UNKNOWN?SDL_SCANCODE_UNKNOWN:SDL_GetScancodeFromKey(page);
+    return false;
+}
 std::string label(const std::string& key){
     const auto& catalog=localization::catalog();
-    if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return escape(text::expand_prompts(value,pad_family()));}
-    return escape(text::expand_prompts(catalog.ui(key),pad_family()));
+    if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return escape(text::expand_prompts(value,prompt_context(true)));}
+    return escape(text::expand_prompts(catalog.ui(key),prompt_context(false)));
 }
 // The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
 // added; empty when the rule is off or the machine's own cap already is the cap.
@@ -1573,7 +1604,7 @@ std::string battle_hd_page(const json& next) {
     }
     body+="</div>";
     // The animation switch, as on the original screen (battle_sync).
-    return body+"<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):std::string("K / C\xe2\x96\xbc"))+"]</span> "+
+    return body+"<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):escape(text::expand_prompts("{CDown} / C\xe2\x96\xbc",prompt_context(false))))+"]</span> "+
         label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>";
 }
 // Its keys follow the original screen: A starts (or takes the menu entry), B goes back
@@ -1601,7 +1632,7 @@ void battle_sync() {
         const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
         if(stamp!=original_stamp) {
             document_close(original_doc);original_stamp=stamp;
-            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):std::string("K / C\xe2\x96\xbc"))+"]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
+            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):escape(text::expand_prompts("{CDown} / C\xe2\x96\xbc",prompt_context(false))))+"]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
         }
         return;
     }
@@ -1942,13 +1973,19 @@ void sync() {
     // Catalog owns all labels. No duplicate translation table in the frontend.
     auto labels=language->ui_labels();
     if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
-    for(auto& [key,value]:labels)value=text::expand_prompts(value,pad_family());
+    for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
     name_page->sync(request,labels,language->locale);
     {
         // Controller edges; a button already down when a page opens is not a press.
         static uint32_t pad_before=0;
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
         if(pad_pressed){set_pad_mode(true);set_pointer_mode(false);}
+        // New bindings from the Controls page: every hint is rebuilt with them.
+        static uint64_t bindings_seen=input::live_bindings().revision();
+        if(const auto revision=input::live_bindings().revision();revision!=bindings_seen) {
+            bindings_seen=revision;hint_bindings=input::live_bindings().get();
+            for(auto* stamp:all_stamps())stamp->clear();
+        }
         // The settings button: View, or a key bound to it (the keyboard state holds both).
         static uint32_t view_before=0;
         const uint32_t view_now=srw64_keyboard_state()&input::pad_view,view_pressed=view_now&~view_before;view_before=view_now;
@@ -2007,6 +2044,11 @@ bool dispatch(SDL_Event& event) {
     // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
+    // Typing into the funds box or a name takes the keys as they are.
+    if(funds_editing.empty() && !names::request().visible && follow_bindings(event)) {
+        if(event.type==SDL_KEYDOWN && !event.key.repeat)choose(settings_open?"settings-close":"settings-open");
+        return true;
+    }
     if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
         auto* field=doc?dynamic_cast<Rml::ElementFormControlInput*>(doc->GetElementById(funds_editing+"-funds-input")):nullptr;

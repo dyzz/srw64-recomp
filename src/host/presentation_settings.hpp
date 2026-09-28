@@ -55,4 +55,6 @@ std::string key_name(int scancode);
 int key_from_name(const std::string& name);
 std::string pad_input_name(const input::PadInput& input);
 std::optional<input::PadInput> pad_input_from_name(const std::string& name);
+// A key as the player sees it on this keyboard layout ("Z", "Y" on a German one).
+std::string key_display_name(int scancode);
 }
