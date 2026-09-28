@@ -13,22 +13,28 @@ SRW64 Recompiled, Steam Deck edition (experimental). English below.
      也可以在 Steam 里选「添加非 Steam 游戏」手动添加 srw64.sh，只是没有封面。
   之后回到游戏模式，就能像普通游戏一样从库里启动。不需要改 Steam 输入设置。
 
-按键（Steam Deck 默认手柄模板）
+按键（Steam Deck 默认手柄模板；游戏自动认出 Deck，提示显示 Deck 的按键）
   A            确认 / 下一页
-  B（或 X）    取消 / 返回
+  B            取消 / 返回
   菜单键 ☰     START
   十字键 / 左摇杆  移动光标
-  L1 / R1      L / R（地图上切换我方机体；对白中 L1 打开回看）
-  Y            Z 扳机
+  L1 / R1      L / R（地图上切换我方机体；对白中 L1 打开回看；选移动目的地时按住 R1 跳到最远格）
+  X            按住：地图光标加速
+  Y            战前确认画面：战斗动画 开 / 关
   L2 / R2      地图上：光标移到上一个 / 下一个敌方机体（L1 / R1 是我方机体）
   L2           对白：自动阅读 开 / 关
-  R2           对白：按住快进；R2 + 菜单键 跳过当前段落
+  R2           对白：按住快进；R2 + 菜单键 跳过当前段落；战斗中结束演出
   右摇杆       C 键（对白中上下调字号）
-  视图键 ⧉     打开 / 关闭设置：语言、原版／HD 画面、规则修正、各界面切换
+  按下左摇杆   切换语言
+  按下右摇杆   切换原版 / HD 画面
+  视图键 ⧉     打开 / 关闭设置：语言、原版／HD 画面、规则修正、各界面切换、改键
                设置里用十字键移动、A 选择、B 关闭
                标题画面右下角也有设置入口，可直接点触
-  注意：战斗动画中 Y + 菜单键 是原版的「退出关卡」，会回到标题画面，未存档进度丢失。
-  输入姓名时会弹出 Steam 屏幕键盘；也可以直接用默认名字。
+  键盘（其他 Linux 电脑）照 PCSX2 的默认布局，每个键对应手柄同一位置的键：
+    K 确认  L 取消  J 光标加速  I 战斗动画  Enter START  Backspace 设置
+    Q / E  L / R   1 / 3  L2 / R2   2 / 4  切换语言 / 原版·HD
+    方向键 十字键   WASD 左摇杆   T F G H 右摇杆（C 键）
+  设置窗口的「操作」页可以改键盘和手柄的按键。
   界面底部的操作提示会随你最后用的设备显示手柄按键或键盘按键。
 
 存档与设置
@@ -57,14 +63,22 @@ the library with its artwork, named in the game's language (adding srw64.sh by h
 as a non-Steam game also works, without artwork). It then starts from Game Mode; no
 Steam Input changes are needed.
 
-Controls: A confirm, B/X back, Menu = START, D-pad/left stick move, L1/R1 = L/R
-(on the map: your units; in dialogue L1 opens the history), L2/R2 on the map step
-through the enemy units, Y = Z, right stick = C buttons, View opens the settings
-(language, Original/HD, rules); so does the button at the bottom right of the
-title screen. Dialogue: L2 turns automatic reading on or off, hold R2 to fast-
-forward, R2 + Menu skips the segment. In a battle animation, Y + Menu is the
-original "quit the stage" and returns to the title screen. Names open the Steam
-on-screen keyboard. Hints follow the last device you used.
+Controls (the game recognises the Deck and shows its buttons): A confirm, B back,
+Menu = START, D-pad/left stick move, L1/R1 = L/R (on the map: your units; in
+dialogue L1 opens the history; hold R1 when choosing where to move to jump to the
+farthest square), hold X to speed the map cursor, Y turns the battle animation on
+or off on the pre-battle screen, L2/R2 on the map step through the enemy units,
+right stick = C buttons (text size in dialogue), press the left stick for the next
+language and the right stick for Original/HD, View opens the settings (language,
+Original/HD, rules, controls); so does the button at the bottom right of the title
+screen. Dialogue: L2 turns automatic reading on or off, hold R2 to fast-forward,
+R2 + Menu skips the segment; R2 also ends a battle animation. On a keyboard (other
+Linux PCs) the keys follow PCSX2's defaults, each key standing for the controller
+button in its place: K confirm, L back, J cursor speed, I battle animation, Enter
+START, Backspace settings, Q/E L/R, 1/3 L2/R2, 2/4 language and Original/HD, the
+arrows the D-pad, WASD the left stick, T F G H the right stick. The settings
+window's Controls page rebinds keys and buttons. Hints follow the last device you
+used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
 HD: unpack the HD pack (the same download as for macOS) as
