@@ -178,7 +178,11 @@ bootstrap 的 `compiled` 状态指分析工具已编译，不指游戏宿主已�
 没有离线 Metal 编译器；实验采用可选的 MSL 源码嵌入方式，通过 Metal 运行时
 源码编译接口加载同一份 SPIRV-Cross 输出。该后端原有的内部着色器也使用该接口。
 两个源码适配位于忽略的克隆中，每次准备都会核对原始内容、固定提交和变更范围，
-记录 `build/recomp/graphics-source-patches.json`；仓库保存适配脚本。另在本项目
+记录 `build/recomp/graphics-source-patches.json`；仓库保存适配脚本。Plume 的
+`CocoaWindow` 从呈现线程往主队列投递读取窗口尺寸的 block，原版 block 直接捕获
+`this`；RT64 结束时在图形线程释放交换链，退出时 SDL 的 `Cocoa_VideoQuit` 再跑
+主循环，残留 block 读到已释放对象而崩溃（调过窗口大小后退出时出现过）。补丁让
+block 共享一份存活标记，窗口析构后直接返回。另在本项目
 CMake 中为固定 hlsl++ 版本补入 `labs` 的声明头文件。
 
 GPU 图片由宿主使用 RT64 的 draw hook、Metal texture-to-buffer blit 和完成回调
