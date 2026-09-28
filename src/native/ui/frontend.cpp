@@ -29,6 +29,7 @@
 #include "presentation/image_mode.hpp"
 #include "input_mode.hpp"
 #include "presentation/rgba_file.hpp"
+#include "text/button_prompts.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <array>
@@ -54,7 +55,7 @@ Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
 std::unique_ptr<SlantInstancer> slant_instancer;
 std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file width of unit art, by path
-std::vector<Rml::byte> font, chinese_font, english_font, symbol_font;
+std::vector<Rml::byte> font, chinese_font, english_font, symbol_font, prompt_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 // The last input was a controller: hints use the "_pad" labels (Steam Deck).
@@ -104,10 +105,13 @@ std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
+// Button tokens ("{A}", "{Esc}") become the icons of the controller in use
+// (text/button_prompts.hpp, the SRW64Prompts font).
+text::PadFamily pad_family(){return text::PadFamily(input::pad_family.load());}
 std::string label(const std::string& key){
     const auto& catalog=localization::catalog();
-    if(pad_mode){const auto pad=key+"_pad";if(auto text=catalog.ui(pad);text!=pad)return escape(text);}
-    return escape(catalog.ui(key));
+    if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return escape(text::expand_prompts(value,pad_family()));}
+    return escape(text::expand_prompts(catalog.ui(key),pad_family()));
 }
 // The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
 // added; empty when the rule is off or the machine's own cap already is the cap.
@@ -508,7 +512,9 @@ void settings_sync() {
         auto version=localization::catalog().ui("settings_about_version");
         if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
         // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
-        body+="<div class='set-about'><h2>SRW64</h2><div>"+escape(version)+"</div><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div></div>";
+        body+="<div class='set-about'><h2>SRW64</h2><div>"+escape(version)+"</div><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div>"
+            // PromptFont asks for an attribution in the credits.
+            "<h2>"+label("settings_about_prompts_title")+"</h2><div>"+label("settings_about_prompts")+"</div></div>";
     }
     body+="</div>";
     if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
@@ -1819,7 +1825,7 @@ void initialize() {
         // of the requested weight (Normal: Regular).
         const std::filesystem::path dir(font_dir);
         path=dir/"HarmonyOS_Sans_SC.ttf";
-        for(const auto* name:{"HarmonyOS_Sans_SC.ttf","HarmonyOS_Sans_Condensed.ttf","SRW64Symbols.ttf"})
+        for(const auto* name:{"HarmonyOS_Sans_SC.ttf","HarmonyOS_Sans_Condensed.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"})
             if(!std::filesystem::is_regular_file(dir/name))throw std::runtime_error("Missing font "+(dir/name).string()+": run tools/content/prepare_fonts.py");
     }
     else for(const auto* candidate:{"/System/Library/Fonts/Supplemental/Arial Unicode.ttf","C:/Windows/Fonts/msyh.ttc","/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"})
@@ -1834,6 +1840,10 @@ void initialize() {
             english_font_family()="srw64-ui-en";
         if(!Rml::LoadFontFace(symbol_font,"srw64-ui-symbols",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
             throw std::runtime_error("Cannot load the symbol font");
+        // Button icons (tools/content/build_prompt_font.py), reached only through the tokens' PUA characters.
+        prompt_font=bytes(dir/"SRW64Prompts.ttf");
+        if(!Rml::LoadFontFace(prompt_font,"srw64-ui-prompts",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
+            throw std::runtime_error("Cannot load the button prompt font");
     }
     else if(!std::getenv("SRW64_UI_FONT") && path.filename()=="Arial Unicode.ttf")
         for(const auto* chinese:{"/System/Library/Fonts/Hiragino Sans GB.ttc"})
@@ -1932,6 +1942,7 @@ void sync() {
     // Catalog owns all labels. No duplicate translation table in the frontend.
     auto labels=language->ui_labels();
     if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
+    for(auto& [key,value]:labels)value=text::expand_prompts(value,pad_family());
     name_page->sync(request,labels,language->locale);
     {
         // Controller edges; a button already down when a page opens is not a press.

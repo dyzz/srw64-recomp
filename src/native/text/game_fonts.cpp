@@ -15,16 +15,17 @@ std::filesystem::path utf8_path(const char* value) {
 // a missing file is an error, never a silent switch to a system font.
 std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::string& locale,int weight) {
     std::vector<std::string> names;
-    if(locale=="en")names={"HarmonyOS_Sans_Condensed.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf"};
-    else names={"HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf"};
+    // SRW64Prompts holds the hints' button icons in the Private Use Area (text/button_prompts.hpp).
+    if(locale=="en")names={"HarmonyOS_Sans_Condensed.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
+    else names={"HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
     std::vector<FontSource> sources;
     for(const auto& name:names) {
         const auto path=dir/name;
         if(!std::filesystem::is_regular_file(path))
             throw std::runtime_error("Missing font "+path.string()+": run tools/content/prepare_fonts.py "
                 "(HarmonyOS Sans 2.040 comes from https://developer.huawei.com/consumer/cn/design/resource/)");
-        // The symbol font has one weight.
-        sources.push_back({path,0,name=="SRW64Symbols.ttf"?0:weight});
+        // The symbol and prompt fonts have one weight.
+        sources.push_back({path,0,name.starts_with("SRW64")?0:weight});
     }
     return sources;
 }

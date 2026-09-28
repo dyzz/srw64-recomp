@@ -32,7 +32,7 @@ Linux 可安装 `libfreetype6-dev libharfbuzz-dev libicu-dev fonts-noto-cjk`；W
 
 2026-09-23 起游戏运行使用打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
 准备的目录（开发运行是 `build/fonts/`，应用包是 `Contents/Resources/fonts/`）。字体链：中文、日文为
-HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf`；英文为 HarmonyOS Sans Condensed → SC → 符号字体。符号字体里还有武器标记图标（U+E000＋原版字形号，见[改造画面](native-upgrade-screens.md)）。
+HarmonyOS Sans SC → 符号字体 `SRW64Symbols.ttf` → 按键图标 `SRW64Prompts.ttf`；英文为 HarmonyOS Sans Condensed → SC → 符号字体 → 按键图标。符号字体里还有武器标记图标（U+E000＋原版字形号，见[改造画面](native-upgrade-screens.md)）。
 2026-09-24 起字体包是 HarmonyOS Sans 2.040：`HarmonyOS_Sans_SC.ttf`（20.6 MB）和 `HarmonyOS_Sans_Condensed.ttf`（0.3 MB）都是可变字体（wght 40–900），
 每个文件含全部字重。`FontSource::weight` 为 0 时用文件默认实例 Regular（400）；其他值取 wght 轴上最近的命名实例，
 塑形和光栅都用这个实例。标题菜单与章节标题卡用 `game_font_sources(locale, 700)`，即 Bold 实例（706）；符号字体只有一个字重，不受影响。

@@ -56,7 +56,7 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
     std::ostringstream key;
     key << localization::catalog().locale << localization::catalog().font << localization::catalog().revision
         << ',' << framebuffer->getWidth() << ',' << framebuffer->getHeight() << ',' << frame->font_size
-        << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping << frame->pad_hints
+        << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping << frame->pad_hints << int(frame->pad_family)
         << ',' << frame->reading_event << ',' << frame->advance.visible << frame->advance.waiting << frame->advance.paused << ',' << frame->advance.permille;
     for (const auto& box : frame->boxes)
         key << ':' << box.event << ',' << box.visible << box.active << ',' << box.page << ',' << box.revealed << ',' << box.x << ',' << box.y;

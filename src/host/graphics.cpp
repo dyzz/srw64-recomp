@@ -541,6 +541,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #endif
     // Steam sets SteamDeck=1 for games on the Deck: fill its screen, Game Mode or not.
     const bool deck = std::getenv("SteamDeck") && std::string(std::getenv("SteamDeck")) == "1";
+    if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               960, 720, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
@@ -619,7 +620,18 @@ void srw64_update_window(void*) {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         // One controller at a time: the first one connected, replaced when it leaves.
-        if(event.type==SDL_CONTROLLERDEVICEADDED){if(!pad)pad=SDL_GameControllerOpen(event.cdevice.which);continue;}
+        if(event.type==SDL_CONTROLLERDEVICEADDED) {
+            if(!pad && (pad=SDL_GameControllerOpen(event.cdevice.which))) {
+                // Hint icons follow the controller. On the Deck, Game Mode shows games Steam's
+                // virtual controller, which SDL reports as an Xbox one, so SteamDeck=1 decides.
+                const char* deck=std::getenv("SteamDeck");
+                const auto type=SDL_GameControllerGetType(pad);
+                srw64::input::pad_family=deck && std::string(deck)=="1"?1:
+                    type==SDL_CONTROLLER_TYPE_PS3 || type==SDL_CONTROLLER_TYPE_PS4 || type==SDL_CONTROLLER_TYPE_PS5?2:
+                    type==SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO?3:0;
+            }
+            continue;
+        }
         if(event.type==SDL_CONTROLLERDEVICEREMOVED) {
             if(pad && SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(pad))==event.cdevice.which){SDL_GameControllerClose(pad);pad=nullptr;}
             continue;

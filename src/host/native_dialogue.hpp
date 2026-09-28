@@ -67,6 +67,7 @@ struct Frame {
     unsigned font_size=13, speed{};
     bool auto_read{}, history_open{}, fast{}, skipping{};
     bool pad_hints{};                  // controls name the controller's buttons
+    uint8_t pad_family{};              // whose button icons (text::PadFamily)
     // Battle quotes: the translation replaces the drawn text, the original keeps
     // its own pacing, so there are no reading controls to show.
     bool display_only{};
