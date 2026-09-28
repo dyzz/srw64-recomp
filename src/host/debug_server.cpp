@@ -233,8 +233,8 @@ json settings(const json& params) {
     }
     if(params.contains("battle_ui")) {
         const auto ui=params["battle_ui"].get<std::string>();
-        if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"battle_ui must be native or original");
-        on_window([&]{settings::set_native_battle_ui(ui=="native");return json(nullptr);});
+        if(ui!="native" && ui!="hd" && ui!="original")throw RpcError(InvalidParams,"battle_ui must be native, hd or original");
+        on_window([&]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
         done["battle_ui"]=ui;
     }
     if(params.contains("intermission_ui")) {

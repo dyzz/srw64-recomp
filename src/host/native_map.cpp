@@ -245,6 +245,8 @@ bool hd_enabled() {
     return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1;
 }
 
+std::atomic<bool (*)(uint16_t)> original_frames{};
+
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -395,6 +397,8 @@ void gpu_init() {
     program = std::make_unique<gpu::Program>("HdMap", 2, std::vector<gpu::Sampler>{{true, true}});
 }
 
+void set_original_frames(bool (*keep)(uint16_t)) { original_frames = keep; }
+
 void rewrite(uint8_t* rdram, const MapDraw& draw) {
     if (assets.empty() && !rom_frames) return;
     int asset_index = find_asset(draw.layout);
@@ -411,7 +415,8 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
     if (asset_index < 0) return;
     if (!assets[size_t(asset_index)].from_rom) current_map = asset_index;
     const uint8_t colony_frame = rdram[(0x80178C6D & 0x1FFFFFFF) ^ 3] & 7;
-    const bool hd = hd_enabled();
+    const auto keep = original_frames.load();
+    const bool hd = hd_enabled() && !(assets[size_t(asset_index)].from_rom && keep && keep(draw.layout));
     if (!assets[size_t(asset_index)].colonies.empty() &&
         (last_colony_layout != draw.layout || last_colony_frame != colony_frame || last_colony_mode != int(hd))) {
         colony_events << json({{"layout", draw.layout}, {"frame", colony_frame},

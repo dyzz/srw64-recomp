@@ -18,6 +18,9 @@ void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const MapDraw& draw);
+// Set once at start (battle_page.cpp): true for a window frame that keeps its original
+// image although the image mode is HD. Unset, every frame follows the image mode.
+void set_original_frames(bool (*keep)(uint16_t layout));
 // The terrain panel (801E2D54) magnifies the cursor cell from the tile atlas; with an HD
 // map it shows that cell's block of the whole-map base instead (the "pseudo tile").
 struct PanelDraw {

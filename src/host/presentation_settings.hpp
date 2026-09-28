@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <cstdint>
 #include <string>
+#include <string_view>
 struct SDL_Window;
 namespace srw64::settings {
 void window_init(SDL_Window* window,const std::filesystem::path& output);
@@ -14,11 +15,17 @@ void shutdown();
 void control(SDL_Window*,const std::filesystem::path&);
 // Apply and remember one registered locale (the settings window; F7 cycles).
 void request_locale(const std::string& locale);
-// Pre-battle confirmation: the native page (default) or the original HUD.
-// Read on the game thread when a confirmation opens; the choice is saved with
-// the locale. SRW64_NATIVE_BATTLE_UI=0 forces the original for a run.
-bool native_battle_ui();
-void set_native_battle_ui(bool native);
+// Pre-battle confirmation: our redesigned page (default), the original layout
+// redrawn as a native page ("hd"), or the original screen with original images.
+// Read on the game thread when a confirmation opens; the choice is saved with the
+// locale as battle_ui, where the older native/original values keep their meaning.
+// SRW64_NATIVE_BATTLE_UI=0 forces the original for a run.
+enum class BattleUi {Native,HD,Original};
+BattleUi battle_ui();
+void set_battle_ui(BattleUi ui);
+// "native", "hd", "original"; a name this build does not know reads as native.
+const char* battle_ui_name(BattleUi ui);
+BattleUi battle_ui_from(std::string_view name);
 // インターミッション screens (main menu, ユニット改造／武器改造, and the screens that
 // follow): the native pages (default) or the original screens. Read on the
 // game thread when a screen builds; saved as intermission_ui with the locale.
