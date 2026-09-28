@@ -200,6 +200,7 @@ button.set-toggle:focus {background-color:#ffd75e24;} button.set-toggle:focus .s
 .ctl-diagram {position:relative; border-radius:10dp; background-color:#f6f8fb;}
 .ctl-diagram img {position:absolute; left:0; top:0; margin:0;}
 .ctl-slot {position:absolute; display:flex; align-items:center;}
+.ctl-line,.ctl-dot {position:absolute;} .ctl-dot {box-sizing:border-box; border:2dp; background-color:#ffffff;}
 button.ctl-pill {display:flex; align-items:center; gap:6dp; margin:0; padding:0 10dp; box-sizing:border-box; white-space:nowrap; color:#ffffff; font-weight:bold; border:2dp #00000000;}
 button.ctl-pill.dark {color:#3a2c00;}
 button.ctl-pill .k {padding:0 6dp; font-weight:normal; background-color:#ffffff33;} button.ctl-pill.dark .k {background-color:#00000024;}
@@ -492,25 +493,33 @@ struct Callout {
     char grow;                         // 'l' away to the left, 'r' to the right, 'c' both ways
     const char* colour;
     bool dark_text;
+    int line_top=0;                    // a label the picture lacks: its line runs up to here
 };
 using input::Action;
 constexpr Callout callouts[]={
-    {"l","L",{Action::L},1,"{L}",150,49,226,93,'l',"#474d5b",false},
-    {"z","Z",{Action::Z},1,"{Z}",139,938,226,979,'l',"#652fa6",false},
-    {"dpad","controls_dpad",{Action::DUp,Action::DDown,Action::DLeft,Action::DRight},4,"{DPad}",65,399,156,442,'l',"#464d5b",false},
-    {"stick","controls_stick",{Action::StickUp,Action::StickDown,Action::StickLeft,Action::StickRight},4,"{Stick}",681,816,768,855,'c',"#454c5a",false},
-    {"start","START",{Action::Start},1,"{Start}",680,270,768,309,'c',"#e8201f",false},
-    {"b","B",{Action::B},1,"{B}",879,644,965,684,'c',"#01a83d",false},
-    {"c_left","C\xe2\x97\x80",{Action::CLeft},1,"{CLeft}",825,364,898,402,'l',"#fec421",true},
-    {"c_up","C\xe2\x96\xb2",{Action::CUp},1,"{CUp}",1216,255,1305,295,'r',"#fec421",true},
-    {"c_right","C\xe2\x96\xb6",{Action::CRight},1,"{CRight}",1295,374,1384,415,'r',"#fec421",true},
-    {"c_down","C\xe2\x96\xbc",{Action::CDown},1,"{CDown}",1267,476,1358,519,'r',"#fec421",true},
-    {"a","A",{Action::A},1,"{A}",1217,574,1313,617,'r',"#0081f3",false},
-    {"r","R",{Action::R},1,"{R}",1221,49,1299,92,'r',"#474d5b",false},
-    // Not on the N64 controller: the host's own buttons, in a row under the diagram.
+    // L2 and R2 are the host's two extra buttons, drawn under L and R (function 1: automatic
+    // reading, previous enemy; function 2: fast-forward, next enemy, end a battle animation).
+    {"l","L",{Action::L},1,"{L}",140,49,220,93,'l',"#474d5b",false},
+    {"l2","L2",{Action::AuxLeft},1,"{AuxL}",140,110,221,155,'l',"#474d5b",false},
+    {"z","Z",{Action::Z},1,"{Z}",136,936,223,978,'l',"#652fa6",false},
+    {"d_up","\xe2\x96\xb2",{Action::DUp},1,"{DUp}",212,300,303,344,'l',"#464d5b",false},
+    {"d_left","\xe2\x97\x80",{Action::DLeft},1,"{DLeft}",82,382,176,425,'l',"#464d5b",false},
+    {"d_down","\xe2\x96\xbc",{Action::DDown},1,"{DDown}",197,484,290,527,'l',"#464d5b",false},
+    // Between the D-pad and START: keep it short, it grows towards the START button.
+    {"d_right","\xe2\x96\xb6",{Action::DRight},1,"{DRight}",577,386,667,427,'r',"#464d5b",false},
+    {"start","START",{Action::Start},1,"{Start}",681,275,767,317,'c',"#e8201f",false},
+    // The picture has no label for the stick: this one brings its own line (line_top).
+    {"stick","controls_stick",{Action::StickUp,Action::StickDown,Action::StickLeft,Action::StickRight},4,"{Stick}",680,800,766,842,'c',"#454c5a",false,690},
+    {"b","B",{Action::B},1,"{B}",873,641,966,684,'c',"#01a83d",false},
+    {"c_left","C\xe2\x97\x80",{Action::CLeft},1,"{CLeft}",813,362,902,404,'l',"#fec421",true},
+    {"c_up","C\xe2\x96\xb2",{Action::CUp},1,"{CUp}",1216,252,1316,296,'r',"#fec421",true},
+    {"c_right","C\xe2\x96\xb6",{Action::CRight},1,"{CRight}",1288,366,1382,410,'r',"#fec421",true},
+    {"c_down","C\xe2\x96\xbc",{Action::CDown},1,"{CDown}",1269,464,1364,508,'r',"#fec421",true},
+    {"a","A",{Action::A},1,"{A}",1214,571,1312,615,'r',"#0081f3",false},
+    {"r","R",{Action::R},1,"{R}",1228,49,1307,93,'r',"#474d5b",false},
+    {"r2","R2",{Action::AuxRight},1,"{AuxR}",1228,110,1308,155,'r',"#474d5b",false},
+    // Not on the N64 controller: the settings window's button, in a row under the diagram.
     {"settings","controls_settings",{Action::Settings},1,"{Settings}",0,0,0,0,0,nullptr,false},
-    {"aux_left","controls_aux_left",{Action::AuxLeft},1,"{AuxL}",0,0,0,0,0,nullptr,false},
-    {"aux_right","controls_aux_right",{Action::AuxRight},1,"{AuxR}",0,0,0,0,0,nullptr,false},
 };
 constexpr const char* direction_keys[]={"controls_up","controls_down","controls_left","controls_right"};
 std::string callout_text(const Callout& c){return std::string_view(c.text).starts_with("controls_")?label(c.text):escape(c.text);}
@@ -598,6 +607,12 @@ std::string controls_page(float body_width) {
             const float span=260*s,top=c.y0*s,height=(c.y1-c.y0)*s,min_w=(c.x1-c.x0)*s;
             const float left=c.grow=='l'?c.x1*s-span:c.grow=='r'?c.x0*s:(c.x0+c.x1)*.5f*s-span/2;
             const char* justify=c.grow=='l'?"flex-end":c.grow=='r'?"flex-start":"center";
+            if(c.line_top) {
+                // The line from the input down to the label, and the dot at its end, as drawn ones look.
+                const float cx=(c.x0+c.x1)*.5f*s,line=std::max(1.5f,3*s),dot=std::max(5.f,14*s);
+                body+="<div class='ctl-line' style='left:"+dp(cx-line/2)+";top:"+dp(c.line_top*s)+";width:"+dp(line)+";height:"+dp(top-c.line_top*s)+";background-color:"+c.colour+";'></div>"
+                    "<div class='ctl-dot' style='left:"+dp(cx-dot/2)+";top:"+dp(c.line_top*s-dot/2)+";width:"+dp(dot)+";height:"+dp(dot)+";border-radius:"+dp(dot/2)+";border-color:"+c.colour+";'></div>";
+            }
             body+="<div class='ctl-slot' style='left:"+dp(left)+";top:"+dp(top)+";width:"+dp(span)+";height:"+dp(height)+";justify-content:"+justify+";'>"
                 "<button id='controls-bind:"+std::string(c.id)+"' class='ctl-pill"+(c.dark_text?" dark":"")+"' style='min-width:"+dp(min_w)+";height:"+dp(height)+
                 ";border-radius:"+dp(height/2)+";font-size:"+dp(std::max(11.f,height*.5f))+";background-color:"+c.colour+";'>"
