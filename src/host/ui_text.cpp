@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "battle_page.hpp"
 #include "game_hooks.hpp"
 #include "native_dialogue.hpp"
 #include "native_sprite.hpp"
@@ -174,7 +175,9 @@ std::string number_text(unsigned type, unsigned value) {
 bool active() {
     if (disabled || !dialogue::reader_configured()) return false;
     // Japanese in original image mode is the original screen; any translation always draws.
-    const bool hd = !presentation::image_mode.enabled() || presentation::image_mode.current() == 1;
+    // The original battle confirmation, when chosen so, counts as original image mode.
+    const bool hd = (!presentation::image_mode.enabled() || presentation::image_mode.current() == 1) &&
+                    !battle_page::original_screen();
     return hd || localization::catalog().locale != "ja";
 }
 

@@ -74,7 +74,7 @@ TOOLS = [
     {"name": "srw64_settings", "description": "Change rules (preset or id list), language or image mode directly.",
      "inputSchema": {"type": "object", "properties": {"rules": {"type": ["string", "array"]},
          "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
-         "battle_ui": {"type": "string", "enum": ["native", "original"]},
+         "battle_ui": {"type": "string", "enum": ["native", "hd", "original"]},
          "intermission_ui": {"type": "string", "enum": ["native", "original"]},
          "name_entry_ui": {"type": "string", "enum": ["native", "original"]},
          "title_ui": {"type": "string", "enum": ["native", "original"]}}}},

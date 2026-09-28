@@ -94,7 +94,7 @@ class SettingsWindowTests(unittest.TestCase):
     def test_every_switch_is_rebuilt_when_it_changes(self):
         stamp = self.page[self.page.index("const auto stamp=localization::catalog().locale+"):]
         stamp = stamp[:stamp.index(";")]
-        for call in ("native_battle_ui", "native_intermission_ui", "native_name_entry_ui", "native_title_ui"):
+        for call in ("battle_ui", "native_intermission_ui", "native_name_entry_ui", "native_title_ui"):
             self.assertIn(f"settings::{call}()", stamp)
         self.assertIn("settings_page", stamp)
 

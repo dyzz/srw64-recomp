@@ -70,6 +70,7 @@ bool link_waiting{};
 Rml::ElementDocument *settings_doc{}, *link_doc{}, *notice_doc{};
 std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
+uint64_t battle_request_serial{};   // the encounter the HD original page shows
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
@@ -259,6 +260,14 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-original {position:absolute; bottom:14dp; left:0; width:100%; text-align:center; font-size:15dp; color:#a4b0d2;}
 .bp-original div {display:inline-block; padding:5dp 16dp; background-color:#0c122ceb; border:1dp #3fd0ff;}
 .bp-original .key {color:#ffd75e;} .bp-original b {color:#e8eefc;}
+.bh-frame {position:absolute; box-sizing:border-box; border-color:#3162c5;}
+.bh-fill {position:absolute; left:0; top:0; width:100%; height:100%; box-sizing:border-box; border-color:#101020; background-color:#000020c0;}
+.bh-rule {position:absolute;} .bh-rule.blue {background-color:#3162c5;} .bh-rule.dark {background-color:#101020;}
+.bh-text {position:absolute; white-space:nowrap;}
+.bh-num {position:absolute; white-space:nowrap; text-align:right; font-weight:normal; color:#ffffff;} .bh-num.key {text-align:left; color:#ffff00;} .bh-num.slash {text-align:center;}
+.bh-bar {position:absolute; background-color:#ff0000;} .bh-bar div {height:100%; background-color:#00ff00;}
+.bh-item {position:absolute; display:block; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
+.bh-item:hover {border:0;} body.pointer .bh-item:hover {background-color:#00ff0040;} .bh-item:focus,body.pointer .bh-item:focus {border:0; background-color:#00ff0080;}
 .home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
 .bp-hints {text-align:center; font-size:10dp; color:#a4b0d2; height:14dp; white-space:nowrap; overflow:hidden;}
 .bp-hints span {margin:0 9dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
@@ -455,7 +464,7 @@ void settings_sync() {
         settings_page=0;
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+std::to_string(settings::native_battle_ui())+std::to_string(settings::native_intermission_ui())+
+    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -476,7 +485,7 @@ void settings_sync() {
         body+=settings_row("settings_language",locales);
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
     } else if(page=="interface") {
-        body+=settings_choice("settings_battle_ui","battle-ui",{"native","original"},settings::native_battle_ui()?"native":"original");
+        body+=settings_choice("settings_battle_ui","battle-ui",{"native","hd","original"},settings::battle_ui_name(settings::battle_ui()));
         body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
@@ -1481,6 +1490,103 @@ void home_sync() {
     document_close(home_doc);home_stamp=stamp;
     home_doc=document("<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>",false);
 }
+// The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
+// coordinates, like the intermission pages. Two panels (window layout 0x45, frame 1196;
+// 801D4660 / 801E7A28), the player's on the right; when an enemy attacks, the menu
+// (0x46, frame 1197; 801D51A8). The same words, figures and ??? for an unknown enemy.
+std::string battle_hd_page(const json& next) {
+    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const float line=std::max(1.f,float(int(u+0.5f)))/u;   // one original pixel
+    const auto box=[&](float x,float y,float w,float h){return "left:"+px(x)+"; top:"+px(y)+"; width:"+px(w)+"; height:"+px(h)+";";};
+    const auto& words=next.at("words");
+    const auto word=[&](const char* key){return words.value(key,std::string());};
+    // A 14-pixel ROM text row whose cell starts at (x, y). The ROM's kana are half as wide
+    // as the font's, so a long row is first narrowed (to 70%, English 80%, as the original
+    // screen's text in ui_text.cpp) and only then set smaller.
+    const auto text=[&](float x,float y,float w,const std::string& s,bool right=false) {
+        const float natural=std::max(1.f,text_units(s))*12.5f;
+        const bool ascii=std::all_of(s.begin(),s.end(),[](unsigned char c){return c<0x80;});
+        const float squeeze=std::clamp(w/natural,ascii?.8f:.7f,1.f),font=std::min(12.5f,12.5f*w/(natural*squeeze)),inner=w/squeeze;
+        return "<div class='bh-text' style='"+box(x,y-1,w,16)+"'><div style='position:absolute; top:0; left:"+px(right?w-inner:0)+"; width:"+px(inner)+"; height:"+px(16)+
+            "; line-height:"+px(16)+"; font-size:"+px(font)+"; text-align:"+(right?"right":"left")+"; transform-origin:"+(right?"right":"left")+" center; transform:scale("+
+            std::to_string(squeeze)+", 1);'>"+escape(s)+"</div></div>";
+    };
+    // The number pool's 8x8 cells (white, grey shadow), right-aligned in `cells` of them.
+    const auto figure=[&](float x,float y,float cells,const std::string& s,const char* cls="bh-num") {
+        return "<div class='"+std::string(cls)+"' style='"+box(x,y-1,cells*8,10)+" line-height:"+px(10)+"; font-size:"+px(10.5f)+
+            "; font-effect:shadow("+px(1)+" "+px(1)+" #848484);'>"+escape(s)+"</div>";
+    };
+    const auto gauge=[&](float x,float y,float w,const json& value,const json& maximum_value) {
+        const int maximum=maximum_value.get<int>();
+        const int filled=maximum>0?std::clamp(value.get<int>(),0,maximum)*int(w)/maximum:0;
+        return "<div class='bh-bar' style='"+box(x,y,w,2)+"'><div style='width:"+px(float(filled))+";'></div></div>";
+    };
+    const auto frame=[&](float x,float y,float w,float h) {
+        return "<div class='bh-frame' style='"+box(x,y,w,h)+" border-width:"+px(line)+";'><div class='bh-fill' style='border-width:"+px(line)+";'></div></div>";
+    };
+    const int response=next.value("response",0);
+    const auto panel=[&](const json& c,float x,bool defender) {
+        const bool known=c.value("known",true),armed=c.at("weapon").get<int>()>=0;
+        const auto shown=[&](const char* key,const char* unknown){return known?std::to_string(c.at(key).get<int>()):std::string(unknown);};
+        std::string b=frame(x+19,19,138,122);
+        b+="<div class='bh-rule blue' style='"+box(x+20,51,136,line)+"'></div><div class='bh-rule dark' style='"+box(x+20,52,136,line)+"'></div>";
+        b+=figure(x+36,26,2,"HP","bh-num key")+figure(x+53,26,5,shown("hp","?????"))+figure(x+91,26,1,"/","bh-num slash")+figure(x+102,26,5,shown("max_hp","?????"));
+        b+=gauge(x+52,35,88,c.at("hp"),c.at("max_hp"));
+        b+=figure(x+36,39,2,"EN","bh-num key")+figure(x+53,39,3,shown("en","???"))+figure(x+74,39,1,"/","bh-num slash")+figure(x+86,39,3,shown("max_en","???"));
+        b+=gauge(x+112,42,28,c.at("en"),c.at("max_en"));
+        b+=text(x+24,56,130,c.at("unit_name").get<std::string>());
+        b+=text(x+24,72,74,c.at("pilot_name").get<std::string>())+text(x+100,72,35,word("level"),true);
+        b+=text(x+137,72,16,c.value("level_known",true)?std::to_string(c.at("level").get<int>()):std::string("??"),true);
+        // 回避／防御 once the defender has chosen it, else its weapon or 反撃不能.
+        const auto weapon=defender && response==1?word("evade"):defender && response==2?word("defending"):armed?c.at("weapon_name").get<std::string>():word("no_counter");
+        b+=text(x+24,88,130,weapon);
+        b+=text(x+24,104,32,word("morale"))+text(x+56,104,24,std::to_string(c.at("morale").get<int>()),true);
+        // 命中率    %: the figure goes in the blank run, whatever the words around it.
+        auto hit=word("hit");std::string after="%";
+        if(const auto gap=hit.find("  ");gap!=std::string::npos) {
+            const auto rest=hit.find_first_not_of(' ',gap);
+            after=rest==std::string::npos?std::string():hit.substr(rest);
+            hit.resize(gap);
+        } else if(!hit.empty() && hit.back()=='%')hit.pop_back();
+        b+=text(x+24,122,46,hit)+text(x+72,122,24,armed?std::to_string(c.at("hit").get<int>()):std::string("---"),true)+text(x+96,122,16,after);
+        return b;
+    };
+    const bool player_attacks=next.at("attacker").at("side")==0;
+    std::string body="<div class='im-root' id='battle-hd' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    body+="<div id='battle-card-left'>"+panel(next.at(player_attacks?"defender":"attacker"),0,player_attacks)+"</div>";
+    body+="<div id='battle-card-right'>"+panel(next.at(player_attacks?"attacker":"defender"),144,!player_attacks)+"</div>";
+    if(next.value("mode",0)==2) {
+        body+=frame(123,147,74,74);
+        const std::pair<const char*,const char*> items[]={{"battle-confirm","start"},{"battle-weapon","weapon"},{"battle-evade","evade"},{"battle-defend","defend"}};
+        for(unsigned n=0;n<4;++n) {
+            const auto name=word(items[n].second);
+            body+="<button id='"+std::string(items[n].first)+"' class='bh-item' style='"+box(124,150+16.f*n,71,17)+" line-height:"+px(17)+"; padding:0 0 0 "+px(4)+
+                "; font-size:"+px(std::min(12.5f,63/std::max(1.f,text_units(name))))+";'>"+escape(name)+"</button>";
+        }
+    }
+    body+="</div>";
+    // The animation switch, as on the original screen (battle_sync).
+    return body+"<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):std::string("K / C\xe2\x96\xbc"))+"]</span> "+
+        label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>";
+}
+// Its keys follow the original screen: A starts (or takes the menu entry), B goes back
+// to the target, or to the weapon list when an enemy attacks; C-down the animation.
+void battle_hd_buttons(uint32_t pressed) {
+    const bool menu=battle_request.value("mode",0)==2;
+    if(pressed&0x0004){choose("battle-animation");return;}
+    if(pressed&0x4000){choose(menu?"battle-weapon":"battle-back");return;}
+    static constexpr const char* items[]={"battle-confirm","battle-weapon","battle-evade","battle-defend"};
+    auto* focus=context->GetFocusElement();
+    const auto at=std::find_if(std::begin(items),std::end(items),[&](const char* id){return focus && focus->GetId()==id;});
+    const int index=at==std::end(items)?0:int(at-std::begin(items));
+    if(menu && (pressed&(0x0F00|(0xFu<<16)))) {
+        const bool up=pressed&(0x0800|0x0200|(1u<<16)|(1u<<18));
+        if(auto* e=battle_doc->GetElementById(items[(index+(up?3:1))%4]))e->Focus();
+        return;
+    }
+    if(pressed&(0x8000|0x1000))choose(menu?items[index]:"battle-confirm");
+}
 void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
     if(!next.value("visible",false)) {
@@ -1494,8 +1600,18 @@ void battle_sync() {
         return;
     }
     document_close(original_doc);original_stamp.clear();
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const bool hd_original=next.value("style",std::string())=="hd";
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+(hd_original && pad_mode?"+pad":"");
     if(battle_doc && battle_stamp==stamp)return;
+    if(hd_original) {
+        // The menu cursor stays where it was when the same encounter redraws.
+        auto* focus=battle_doc && context->GetFocusElement() && context->GetFocusElement()->GetOwnerDocument()==battle_doc?context->GetFocusElement():nullptr;
+        const auto kept=focus && battle_request_serial==next.value("serial",uint64_t{})?focus->GetId():std::string("battle-confirm");
+        document_close(battle_doc);battle_stamp=stamp;battle_request_serial=next.value("serial",uint64_t{});
+        battle_doc=document(battle_hd_page(next),true);battle_doc->SetClass("modal",false);
+        if(auto* e=battle_doc->GetElementById(kept))e->Focus();
+        return;
+    }
     document_close(battle_doc);battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
     // follows screen position, not attacker/defender role or faction arithmetic.
@@ -1639,7 +1755,7 @@ void choose(const std::string& id) {
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
-        if(id.starts_with("battle-ui:"))settings::set_native_battle_ui(id=="battle-ui:native");
+        if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
@@ -1651,6 +1767,7 @@ void choose(const std::string& id) {
 // weapon list, R the spirits, C-down toggles the battle animation.
 void battle_buttons(uint32_t pressed) {
     if(!battle_doc || !battle_request.value("visible",false) || settings_open)return;
+    if(battle_request.value("style",std::string())=="hd"){battle_hd_buttons(pressed);return;}
     const bool spirits=battle_request.value("spirit_menu",false);
     if(pressed&0x4000){choose("battle-back");return;}
     if(!spirits) {
