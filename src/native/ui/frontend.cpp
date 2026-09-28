@@ -285,6 +285,8 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-pilot-head {display:flex; gap:8dp;}
 .bp-pilot-head img {width:96dp; height:96dp; margin:0; border:2dp #ff6fa8;} .right .bp-pilot-head img {border-color:#3fd0ff;}
 .narrow .bp-pilot-head img {width:64dp; height:64dp;} .narrow .bp-stat {padding:3dp 5dp;} .narrow .battle-actions button {margin:2dp; padding:5dp 7dp;}
+.narrow .bp-tag {font-size:10dp;} .narrow .weapon-cost {font-size:11dp; line-height:13dp; height:26dp;} .narrow .bp-caption,.narrow .bp-detail {font-size:11dp;}
+.narrow .bp-arrow {font-size:10dp; line-height:12dp;}
 .bp-pilot-info {flex:1; min-width:0;}
 .bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:17dp; font-weight:bold; height:24dp;}
 .bp-pilot-name .level {font-size:12dp; font-weight:normal; color:#a4b0d2;}
@@ -811,24 +813,35 @@ std::string battle_unit(const json& c,bool left) {
         static constexpr float share[]={.30f,.52f,.70f,.84f,1.15f};  // LL breaks out of its box a little
         const float part=share[std::clamp(c.value("size",4),0,4)];
         const float scale=std::min({limit_w*part/w,limit_h*part/h,6.f*rom_px});
-        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(path))+"' rect='"+std::to_string(x)+" "+std::to_string(y)+" "+std::to_string(w)+" "+std::to_string(h)+"' style='width:"+std::to_string(w*scale)+"dp;height:"+std::to_string(h*scale)+"dp;'/>";
+        // A first guess at the room; battle_fit_units sizes it again to the laid-out middle row.
+        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(path))+"' rect='"+std::to_string(x)+" "+std::to_string(y)+" "+std::to_string(w)+" "+std::to_string(h)+"' style='width:"+std::to_string(w*scale)+"dp;height:"+std::to_string(h*scale)+"dp;'"+
+            " data-w='"+std::to_string(w)+"' data-h='"+std::to_string(h)+"' data-part='"+std::to_string(part)+"' data-max='"+std::to_string(6.f*rom_px)+"'/>";
     }
     return body+"</div>";
 }
-// Bottom panel: pilot identity, spirit state, special defenses and abilities.
-std::string battle_pilot(const json& c,bool left) {
-    const std::string side=left?"left":"right";
-    std::string body="<div id='battle-pilot-"+side+"' class='bp-side bp-pilot "+side+"'><div class='bp-pilot-head'>";
-    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(96)))+"'/>";
-    body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
-    body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
-    body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div><div class='battle-spirits'>";
-    const auto spirits=c.value("spirit_grid",json::array());
-    if(spirits.empty())body+="<span class='muted'>"+label("battle_spirits_none")+"</span>";
-    for(const auto& spirit:spirits) {
-        const bool active=spirit.at("active");const unsigned id=spirit.at("id");
-        body+="<span class='"+std::string(!active?"":id==5 || id==9 || id==18?"defensive":"active")+"'>"+escape(spirit.at("name").get<std::string>())+"</span>";
+// The unit pictures, sized again once the page is laid out: as large as the middle row
+// between the banners and the pilot panels allows (at most 360 dp, 6x the ROM pixels),
+// by the same size-class share as battle_unit's first guess.
+void battle_fit_units(Rml::ElementDocument* doc) {
+    auto* mid=doc?doc->GetElementById("battle-mid"):nullptr;
+    if(!mid)return;
+    const float room=std::clamp(mid->GetBox().GetSize().y/ui_density-8,80.f,360.f),limit_w=pixels_w/ui_density*.31f-8;
+    Rml::ElementList pictures;mid->QuerySelectorAll(pictures,".battle-unit img");
+    for(auto* img:pictures) {
+        const float w=img->GetAttribute<float>("data-w",0),h=img->GetAttribute<float>("data-h",0),part=img->GetAttribute<float>("data-part",1);
+        if(w<=0 || h<=0)continue;
+        const float scale=std::min({limit_w*part/w,room*part/h,img->GetAttribute<float>("data-max",6)});
+        img->SetProperty("width",std::to_string(w*scale)+"dp");img->SetProperty("height",std::to_string(h*scale)+"dp");
     }
+}
+// What the two pilot panels keep room for, the same on both sides so they line up: the
+// rows of spirit tags, the special defenses line (parry, shield, clone: kept when either
+// unit has one, whatever the weapon, so changing weapons does not move the page) and the
+// ability lines. Sized for this encounter, not for the most any pilot could need (user,
+// 2026-09-28: the empty room crowded the unit pictures on a Steam Deck).
+struct PilotRoom {int spirit_rows=1;bool defenses=false;int effect_lines=0;};
+struct PilotDefenses {std::string line,conditions;};
+PilotDefenses battle_defenses(const json& c) {
     const auto& d=c.at("defense");
     bool parry=false,shield=false,clone=false;std::string clone_name;
     for(const auto& e:c.value("defensive_effects",json::array())) {
@@ -837,17 +850,63 @@ std::string battle_pilot(const json& c,bool left) {
         (id=="parry"?parry:id=="shield"?shield:clone)=true;
         if(id!="parry" && id!="shield")clone_name=label("battle_skill_"+id); // the unit's own variant
     }
-    std::string defenses,conditions;
+    PilotDefenses out;
     const auto add=[](std::string& line,const std::string& text){line+=(line.empty()?"":" · ")+text;};
-    if(parry)add(defenses,label("battle_parry")+" "+battle_number(d.at("parry"))+"%");
-    if(shield)add(defenses,label("battle_shield")+" "+battle_number(d.at("shield"))+"%");
-    if(clone)add(defenses,clone_name+" "+battle_number(d.at("clone"))+"%");
-    if(parry && d.at("parry_reason")=="uncuttable")add(conditions,label("battle_uncuttable"));
-    if((parry && d.at("parry_reason")=="sure_hit") || (clone && d.at("clone_reason")=="sure_hit"))add(conditions,label("battle_sure_hit"));
-    if(clone && d.at("clone_reason")=="morale_low")add(conditions,label("battle_clone_morale"));
-    if(shield && d.at("shield_reason")=="barrier_first")add(conditions,label("battle_barrier_first"));
-    body+="</div></div></div><div class='battle-defenses'>"+defenses+"</div><div class='battle-defense-note battle-defense-conditions'>"+conditions;
-    return body+"</div>"+battle_effects(c)+"</div>";
+    if(parry)add(out.line,label("battle_parry")+" "+battle_number(d.at("parry"))+"%");
+    if(shield)add(out.line,label("battle_shield")+" "+battle_number(d.at("shield"))+"%");
+    if(clone)add(out.line,clone_name+" "+battle_number(d.at("clone"))+"%");
+    if(parry && d.at("parry_reason")=="uncuttable")add(out.conditions,label("battle_uncuttable"));
+    if((parry && d.at("parry_reason")=="sure_hit") || (clone && d.at("clone_reason")=="sure_hit"))add(out.conditions,label("battle_sure_hit"));
+    if(clone && d.at("clone_reason")=="morale_low")add(out.conditions,label("battle_clone_morale"));
+    if(shield && d.at("shield_reason")=="barrier_first")add(out.conditions,label("battle_barrier_first"));
+    return out;
+}
+float text_units(const std::string& text);
+// Rows the spirit tags take in a pilot panel's info column (12 dp text with 12 dp of
+// padding and border each, 3 dp apart), a little pessimistic so a second row is never
+// hidden: the column is the panel (31% of the page) less its padding, the face and a gap.
+int battle_spirit_rows(const json& c,bool narrow) {
+    const float page=std::min(pixels_w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
+    int rows=1;float x=0;
+    for(const auto& spirit:c.value("spirit_grid",json::array())) {
+        const float w=text_units(spirit.at("name").get<std::string>())*12+12;
+        if(x>0 && x+3+w>width){++rows;x=w;}else x+=(x>0?3:0)+w;
+    }
+    return rows;
+}
+int battle_effect_lines(const json& c) {
+    const auto html=battle_effects(c);int lines=0;
+    for(size_t at=html.find("<div class='battle-effect'>");at!=std::string::npos;at=html.find("<div class='battle-effect'>",at+1))++lines;
+    return lines;
+}
+PilotRoom battle_pilot_room(const json& a,const json& b,bool narrow) {
+    return {std::max({1,battle_spirit_rows(a,narrow),battle_spirit_rows(b,narrow)}),
+            !battle_defenses(a).line.empty() || !battle_defenses(b).line.empty(),
+            std::max(battle_effect_lines(a),battle_effect_lines(b))};
+}
+// Bottom panel: pilot identity, spirit state, special defenses and abilities.
+std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
+    const std::string side=left?"left":"right";
+    std::string body="<div id='battle-pilot-"+side+"' class='bp-side bp-pilot "+side+"'><div class='bp-pilot-head'>";
+    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(96)))+"'/>";
+    body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
+    body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
+    body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
+        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23-2)+"dp;'>";
+    const auto spirits=c.value("spirit_grid",json::array());
+    if(spirits.empty())body+="<span class='muted'>"+label("battle_spirits_none")+"</span>";
+    for(const auto& spirit:spirits) {
+        const bool active=spirit.at("active");const unsigned id=spirit.at("id");
+        body+="<span class='"+std::string(!active?"":id==5 || id==9 || id==18?"defensive":"active")+"'>"+escape(spirit.at("name").get<std::string>())+"</span>";
+    }
+    const auto defenses=battle_defenses(c);
+    // Without a defenses line on either side only its rule stays, as the divider.
+    body+="</div></div></div><div class='battle-defenses'"+std::string(room.defenses?"":" style='height:0;padding-top:0;'")+">"+defenses.line+"</div>"
+        "<div class='battle-defense-note battle-defense-conditions'>"+defenses.conditions+"</div>";
+    auto effects=battle_effects(c);
+    // A line is 12 dp at 1.3 with 2 dp above and below: 20 each and 2 over, or the list scrolls.
+    effects.replace(0,std::string("<div class='battle-effects'>").size(),"<div class='battle-effects' style='height:"+std::to_string(room.effect_lines?room.effect_lines*20+2:0)+"dp;'>");
+    return body+effects+"</div>";
 }
 // Centre column: both conditional damages face each other; "—" keeps the
 // rows in place when a side does not attack.
@@ -1767,8 +1826,9 @@ void battle_sync() {
     const bool narrow=pixels_w/ui_density<1000;
     std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page"+std::string(narrow?" narrow":"")+"'><div class='bp-row'>";
     body+=battle_banner(enemy,true,!player_attacks,enemy_response)+"<div class='bp-center bp-phase'><div class='enemy"+std::string(player_attacks?"":" on")+"'>"+label("battle_phase_enemy")+"</div><div class='player"+std::string(player_attacks?" on":"")+"'>"+label("battle_phase_player")+"</div></div>"+battle_banner(player,false,player_attacks,player_response)+"</div>";
-    body+="<div class='bp-row bp-mid'>"+battle_unit(enemy,true)+battle_clash(enemy,player,player_attacks,player_response,responding)+battle_unit(player,false)+"</div>";
-    body+="<div class='bp-row'>"+battle_pilot(enemy,true)+"<div class='bp-center battle-actions'><div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
+    body+="<div id='battle-mid' class='bp-row bp-mid'>"+battle_unit(enemy,true)+battle_clash(enemy,player,player_attacks,player_response,responding)+battle_unit(player,false)+"</div>";
+    const auto room=battle_pilot_room(enemy,player,narrow);
+    body+="<div class='bp-row'>"+battle_pilot(enemy,true,room)+"<div class='bp-center battle-actions'><div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
     if(responding) {
         body+="<div class='bp-segment'><div>"+button("battle-counter",label("battle_counter"),response==0,selecting_spirit);
         body+=button("battle-evade",label("battle_evade"),response==1,selecting_spirit);
@@ -1778,7 +1838,7 @@ void battle_sync() {
     body+=button("battle-spirits",label("battle_spirits"),false,selecting_spirit);
     body+=button("battle-animation",label("battle_animation")+" · "+label(next.value("animation",true)?"battle_on":"battle_off"),false,selecting_spirit);
     if(next.value("can_cancel",false))body+=button("battle-back",label("battle_back"),false,selecting_spirit);
-    body+="</div></div>"+battle_pilot(player,false)+"</div><div class='bp-hints'>";
+    body+="</div></div>"+battle_pilot(player,false,room)+"</div><div class='bp-hints'>";
     // The bound keys or the controller's buttons (battle_buttons below), as the hints elsewhere.
     const auto hint=[&](const char* token,const std::string& text){body+="<span><b>"+escape(text::expand_prompts(token,prompt_context(pad_mode)))+"</b> "+text+"</span>";};
     hint("{A}",label("battle_confirm"));hint("{L}",label("battle_change_weapon"));
@@ -1795,6 +1855,7 @@ void battle_sync() {
         body+="</div><div class='spirit-footer'>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
     }
     battle_doc=document(body,true);battle_doc->SetClass("modal",false);battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":"battle-confirm")->Focus();
+    battle_doc->UpdateDocument();battle_fit_units(battle_doc);
 
 }
 
