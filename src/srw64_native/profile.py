@@ -42,18 +42,17 @@ UI_KEYS |= {"title_press_start", "title_start", "title_load", "title_continue", 
 UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_original", "settings_title_ui_note",
             "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint"}
 # The settings window's pages, footer and Controls page (frontend.cpp settings_sync; the
-# page ids and key rows are the same lists as settings_pages and key_rows there).
+# page ids and the functions are the same lists as settings_pages and control_rows there).
 SETTINGS_PAGES = ("general", "interface", "rules", "controls", "about")
-SETTINGS_KEY_SECTIONS = ("game", "dialogue", "map", "shortcuts")
-SETTINGS_KEY_ROWS = ("confirm", "start", "shoulders", "z", "c", "move", "next", "fast", "skip", "auto", "history",
-                     "text_size", "units", "enemies", "farthest", "cursor_fast", "animation", "settings", "language", "images",
-                     "reload", "quit")
-UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES} | {f"settings_keys_{s}" for s in SETTINGS_KEY_SECTIONS}
-UI_KEYS |= {f"settings_{kind}_{row}{pad}" for row in SETTINGS_KEY_ROWS for kind, pad in (("key", ""), ("bind", ""), ("bind", "_pad"))}
+UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES}
+# The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
+CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
+                "language", "images", "d_up", "d_down", "d_left", "d_right", "z")
+UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
 # The Controls page's remapping (frontend.cpp controls_page).
-UI_KEYS |= {"controls_device", "controls_keyboard", "controls_controller", "controls_controller_none", "controls_note", "controls_extra", "controls_extra_note", "controls_settings", "controls_fixed", "controls_fixed_list", "controls_reset", "controls_capture", "controls_capture_note", "controls_reserved", "controls_cancel"}
+UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_fn_a", "controls_fn_animation", "controls_fn_aux_left", "controls_fn_aux_right", "controls_fn_b", "controls_fn_cursor_fast", "controls_fn_images", "controls_fn_l", "controls_fn_language", "controls_fn_move", "controls_fn_r", "controls_fn_settings", "controls_fn_start", "controls_fn_text_size", "controls_fn_z", "controls_keyboard", "controls_layout_note", "controls_list", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}

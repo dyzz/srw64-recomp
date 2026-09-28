@@ -196,7 +196,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
             shutil.copyfile(path, fonts / path.name)
     ui = stage / 'ui'
     ui.mkdir()
-    for path in sorted((ROOT / 'content/ui').glob('*.png')):
+    for path in sorted([*(ROOT / 'content/ui').glob('*.png'), *(ROOT / 'content/ui').glob('*.json')]):
         shutil.copyfile(path, ui / path.name)
     source_text = ROOT / 'content/dialogue'
     for path in sorted(source_text.rglob('*.txt')):
