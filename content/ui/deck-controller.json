@@ -1,86 +1,86 @@
 {
  "schema": "srw64.controller-diagram.v1",
  "image": "deck-controller.png",
- "width": 2160,
- "height": 760,
+ "width": 1440,
+ "height": 1080,
  "slots": [
   {
    "group": "l2",
-   "align": "left",
-   "x": 455,
-   "y": 112
+   "align": "centre",
+   "x": 367,
+   "y": 110
+  },
+  {
+   "group": "r2",
+   "align": "centre",
+   "x": 1071,
+   "y": 110
+  },
+  {
+   "group": "view",
+   "align": "centre",
+   "x": 521,
+   "y": 220
+  },
+  {
+   "group": "menu",
+   "align": "centre",
+   "x": 916,
+   "y": 220
   },
   {
    "group": "l1",
    "align": "left",
-   "x": 455,
-   "y": 240
-  },
-  {
-   "group": "dpad",
-   "align": "left",
-   "x": 455,
-   "y": 448
-  },
-  {
-   "group": "r2",
-   "align": "right",
-   "x": 1705,
-   "y": 112
+   "x": 282,
+   "y": 450
   },
   {
    "group": "r1",
    "align": "right",
-   "x": 1705,
-   "y": 240
+   "x": 1158,
+   "y": 450
+  },
+  {
+   "group": "dpad",
+   "align": "left",
+   "x": 282,
+   "y": 609
   },
   {
    "group": "y",
    "align": "right",
-   "x": 1705,
-   "y": 360
+   "x": 1158,
+   "y": 541
   },
   {
    "group": "b",
    "align": "right",
-   "x": 1705,
-   "y": 447
+   "x": 1158,
+   "y": 609
   },
   {
    "group": "a",
    "align": "right",
-   "x": 1705,
-   "y": 537
+   "x": 1158,
+   "y": 679
   },
   {
    "group": "x",
    "align": "right",
-   "x": 1705,
-   "y": 628
-  },
-  {
-   "group": "view",
-   "align": "right",
-   "x": 871,
-   "y": 339
-  },
-  {
-   "group": "menu",
-   "align": "left",
-   "x": 1289,
-   "y": 339
+   "x": 1158,
+   "y": 772
   },
   {
    "group": "ls",
-   "align": "left",
-   "x": 455,
-   "y": 640
+   "align": "centre",
+   "x": 614,
+   "y": 830
   },
   {
    "group": "rs",
    "align": "centre",
-   "x": 1214,
-   "y": 712
+   "x": 823,
+   "y": 920
   }
  ]
 }

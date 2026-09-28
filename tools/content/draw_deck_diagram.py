@@ -27,8 +27,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / "content/ui/deck-controller.png"
 LAYOUT = ROOT / "content/ui/deck-controller.json"
 FONT = ROOT / "build/fonts/HarmonyOS_Sans_SC.ttf"
-W, H = 2160, 760          # canvas; the controller sits between two label margins
-X0 = 479                  # left edge of the controller drawing
+W, H = 1440, 1080         # 4:3 like the game window; the controller in the middle, labels round it
+OX, OY, K = 250, 260, 0.78  # where the controller drawing (1202 x 600 units) sits, and its scale
 SS = 3                    # supersampling
 BACK, SHAPE, INK, RING, LINE = (35, 35, 35), (244, 244, 244), (35, 35, 35), (92, 92, 92), (128, 128, 128)
 
@@ -40,13 +40,13 @@ def mirror(points):
 def draw() -> dict:
     img = Image.new("RGB", (W * SS, H * SS), BACK)
     d = ImageDraw.Draw(img)
-    font = ImageFont.truetype(str(FONT), 46 * SS)
+    font = ImageFont.truetype(str(FONT), int(46 * K) * SS)
     font.set_variation_by_name("Bold")
     small = ImageFont.truetype(str(FONT), 30 * SS)
     small.set_variation_by_name("Bold")
 
     def p(x, y):
-        return ((X0 + x) * SS, y * SS)
+        return ((OX + K * x) * SS, (OY + K * y) * SS)
 
     def poly(points, colour=SHAPE):
         pts = [p(x, y) for x, y in points]
@@ -54,10 +54,10 @@ def draw() -> dict:
         # Rounded corners: a thick outline with curved joints. It starts halfway along the
         # last edge, since PIL rounds only the joints between segments, not the ends.
         mid = ((pts[-1][0] + pts[0][0]) / 2, (pts[-1][1] + pts[0][1]) / 2)
-        d.line([mid] + pts + [mid], fill=colour, width=22 * SS, joint="curve")
+        d.line([mid] + pts + [mid], fill=colour, width=int(22 * K) * SS, joint="curve")
 
     def rrect(x0, y0, x1, y1, r, colour=SHAPE):
-        d.rounded_rectangle([p(x0, y0), p(x1, y1)], radius=r * SS, fill=colour)
+        d.rounded_rectangle([p(x0, y0), p(x1, y1)], radius=r * K * SS, fill=colour)
 
     def circle(cx, cy, r, colour=SHAPE):
         d.ellipse([p(cx - r, cy - r), p(cx + r, cy + r)], fill=colour)
@@ -66,7 +66,8 @@ def draw() -> dict:
         d.text(p(x, y), value, font=f, fill=colour, anchor="mm")
 
     def line(points):
-        pts = [((X0 + x) * SS, y * SS) for x, y in points]
+        # Canvas pixels: the labels live outside the controller drawing.
+        pts = [(x * SS, y * SS) for x, y in points]
         d.line(pts, fill=LINE, width=4 * SS, joint="curve")
         x, y = pts[-1]
         r = 9 * SS
@@ -80,7 +81,7 @@ def draw() -> dict:
     text(150, 118, "L2"); text(228, 236, "L1"); text(1202 - 150, 118, "R2"); text(1202 - 228, 236, "R1")
     # View and Menu.
     rrect(290, 318, 378, 360, 21); rrect(824, 318, 912, 360, 21)
-    d.rectangle([p(318, 328), p(340, 344)], outline=INK, width=5 * SS)
+    d.rectangle([p(318, 328), p(340, 344)], outline=INK, width=4 * SS)
     d.rectangle([p(328, 334), p(352, 352)], fill=INK)
     for dy in (329, 338, 347):
         d.rounded_rectangle([p(852, dy), p(884, dy + 4)], radius=2 * SS, fill=INK)
@@ -93,28 +94,37 @@ def draw() -> dict:
     for label, (cx, cy) in {"Y": (1000, 360), "X": (910, 447), "B": (1090, 447), "A": (1000, 537)}.items():
         circle(cx, cy, 45); text(cx, cy + 2, label)
 
-    # Leader lines, from where the label ends to the input (dot on the input).
+    # Leader lines, from where the label ends to the input (dot on the input); canvas
+    # pixels. Above the controller: the triggers, View and Menu; beside it: L1, the D-pad,
+    # R1 and the face buttons; under it: the sticks, the right one a row lower.
     slots = []
+
+    def at(x, y):
+        return (OX + K * x, OY + K * y)
 
     def slot(group, align, x, y, route):
         line(route)
-        slots.append({"group": group, "align": align, "x": X0 + x, "y": y})
+        slots.append({"group": group, "align": align, "x": round(x), "y": round(y)})
 
-    slot("l2", "left", -24, 112, [(-16, 112), (74, 112)])
-    slot("l1", "left", -24, 240, [(-16, 240), (86, 240)])
-    slot("dpad", "left", -24, 448, [(-16, 448), (104, 448)])
-    slot("r2", "right", 1226, 112, [(1218, 112), (1128, 112)])
-    slot("r1", "right", 1226, 240, [(1218, 240), (1116, 240)])
-    slot("y", "right", 1226, 360, [(1218, 360), (1045, 360)])
-    slot("b", "right", 1226, 447, [(1218, 447), (1135, 447)])
-    slot("a", "right", 1226, 537, [(1218, 537), (1045, 537)])
-    slot("x", "right", 1226, 628, [(1218, 628), (910, 628), (910, 492)])
-    slot("view", "right", 392, 339, [(386, 339), (378, 339)])
-    slot("menu", "left", 810, 339, [(816, 339), (824, 339)])
-    # The left stick's label goes to the margin; the right one, the longest (C buttons and
-    # R3), centred under its stick, so the two cannot meet.
-    slot("ls", "left", -24, 640, [(-16, 640), (467, 640), (467, 583)])
-    slot("rs", "centre", 735, 712, [(735, 690), (735, 583)])
+    l2, r2 = at(150, 64), at(1052, 64)
+    slot("l2", "centre", l2[0], 110, [(l2[0], 132), l2])
+    slot("r2", "centre", r2[0], 110, [(r2[0], 132), r2])
+    view, menu = at(348, 318), at(854, 318)  # right of L1's tip, left of R1's
+    slot("view", "centre", view[0], 220, [(view[0], 242), view])
+    slot("menu", "centre", menu[0], 220, [(menu[0], 242), menu])
+    l1, r1 = at(84, 244), at(1118, 244)
+    slot("l1", "left", 282, l1[1], [(290, l1[1]), l1])
+    slot("r1", "right", 1158, r1[1], [(1150, r1[1]), r1])
+    dpad = at(100, 448)
+    slot("dpad", "left", 282, dpad[1], [(290, dpad[1]), dpad])
+    for group, (cx, cy) in {"y": (1045, 360), "b": (1135, 447), "a": (1045, 537)}.items():
+        point = at(cx, cy)
+        slot(group, "right", 1158, point[1], [(1150, point[1]), point])
+    x_bottom = at(910, 492)
+    slot("x", "right", 1158, 772, [(1150, 772), (x_bottom[0], 772), x_bottom])
+    ls, rs = at(467, 583), at(735, 583)
+    slot("ls", "centre", ls[0], 830, [(ls[0], 808), ls])
+    slot("rs", "centre", rs[0], 920, [(rs[0], 898), rs])
     img = img.resize((W, H), Image.Resampling.LANCZOS)
     img.save(OUTPUT, optimize=True)
     return {"schema": "srw64.controller-diagram.v1", "image": OUTPUT.name, "width": W, "height": H, "slots": slots}

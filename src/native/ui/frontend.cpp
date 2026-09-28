@@ -619,14 +619,17 @@ std::string capture_prompt() {
 }
 // The Controls page body: the controller found, the diagram, the functions to rebind, the
 // fixed shortcuts and restore.
-std::string controls_page(float body_width) {
+std::string controls_page(float body_width,float body_height) {
     std::string body;
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");
     if(const auto at=found.find("{name}");at!=std::string::npos)found.replace(at,6,escape(pad_name));
     body+="<p class='ctl-found'>"+found+"</p>";
     if(const auto& diagram=controller_diagram()) {
-        const float w=std::min(body_width*.98f,1100.f),s=w/diagram->width,h=diagram->height*s,span=900*s;
+        // As wide as the body allows, but short enough to show whole in the page (a 4:3
+        // window gives about 590 dp), with the list's heading in view under it.
+        const float w=std::min({body_width*.98f,1100.f,(body_height-40)*diagram->width/diagram->height});
+        const float s=w/diagram->width,h=diagram->height*s,span=900*s;
         const auto dp=[](float v){return std::to_string(int(v+.5f))+"dp";};
         body+="<div class='ctl-diagram-row'><div class='ctl-diagram' style='width:"+dp(w)+";height:"+dp(h)+";'>"
             "<img src='"+escape(image(diagram->image.string(),dp_pixels(w)))+"' style='width:"+dp(w)+";height:"+dp(h)+";'/>";
@@ -736,8 +739,9 @@ void settings_sync() {
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
     } else if(page=="controls") {
-        // The body's width: the panel (88% of the window, 1040 dp at most) less its padding and the scrollbar.
-        body+=controls_page(std::min(pixels_w/ui_density*.88f,1040.f)-80);
+        // The body: the panel (88% of the window, at most 1040 x 820 dp) less its padding and
+        // scrollbar, and less the title, tabs and footer above and below it.
+        body+=controls_page(std::min(pixels_w/ui_density*.88f,1040.f)-80,std::min(pixels_h/ui_density*.88f,820.f)-190);
     } else {
         auto version=localization::catalog().ui("settings_about_version");
         if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
