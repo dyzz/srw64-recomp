@@ -340,7 +340,7 @@ def main() -> int:
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
                    "SRW64_RULE_FIXES": ",".join(rule_fixes)}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_NATIVE_MODELS", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_INPUT_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR"):
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_NATIVE_MODELS", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_INPUT_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR", "SRW64_UI_ASSETS"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
@@ -357,6 +357,7 @@ def main() -> int:
         if not fonts_prepared(FONT_DIR):
             prepare_fonts()
         environment["SRW64_FONT_DIR"] = str(FONT_DIR)
+        environment["SRW64_UI_ASSETS"] = str(ROOT / "content/ui")
         report["dialogue_text"] = {"bundled": environment["SRW64_DIALOGUE_TEXT"], "overrides": environment["SRW64_DIALOGUE_OVERRIDES"]}
         environment["SRW64_PRESENTATION_SETTINGS"] = str(args.presentation_settings.resolve() if args.presentation_settings else output / "presentation-settings.json")
         report["presentation_settings_path"] = environment["SRW64_PRESENTATION_SETTINGS"]

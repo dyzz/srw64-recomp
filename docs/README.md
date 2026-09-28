@@ -21,6 +21,7 @@
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
 | 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
+| 原版怎么读手柄、每个键在每个画面里做什么（重映射前先看） | [原版按键绑定](gameplay/original-controls.md) |
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
@@ -53,6 +54,7 @@
 | [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
 | [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
 | [Link Battler 联动](gameplay/link-battler.md) | F91、ゴーショーグン、ザンボット3 的开放判定、插入关、等级对齐与 GB 数据块格式；原生版用联动页勾选代替卡带 |
+| [原版按键绑定](gameplay/original-controls.md) | 采样层与三张输入表、连发时序、摇杆折算、Z＋START 与开机 START、各画面每个键的用途、调试菜单与调试 overlay（静态分析） |
 
 ## 原生界面与呈现（native/）
 
@@ -92,6 +94,7 @@
 | [移动选格：按住 R 跳到最远格](native/move-jump.md) | 现代机战式操作：选移动目的地时按住 R 高亮最远格、方向键在其间跳；状态 0xC 选格 `801CBB04`、范围绘制 `801E4760`、输入字与镜头的静态分析 |
 | [战斗演出中途退出](native/battle-animation-skip.md) | 进战斗后按 X 中止演出回地图：演出状态机 `D_80250000` 与收尾状态 21、原版 Z+START 是标题路线不能用；伤害其实由地图状态 0x4B 链的子状态 2（`801FBBD4`）计算，开动画时整条链被跳过；两个 overlay 地址重叠与未完成部分 |
 | [L2 / R2 切换敌方机体](native/enemy-cycle.md) | 现代机战式操作：地图空闲时用手柄扳机遍历敌方与第三方机体；空闲状态 `801C8B04` 里原版 L/R 切换我方的静态分析与接管方式 |
+| [改键](native/controls-remapping.md) | 设置窗口「操作」页：N64 手柄图上点键、按新键即绑定，键盘与手柄各一套，附加按键（设置、L2/R2 功能），`input.json`；提示与原生页面跟随绑定 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
 | [世界地图过场模型 HD](native/native-ship-model.md) | 世界地图模型表、`3D72` 载具与场景地标、15 个舰船／地标按设定重建、平滑航迹与实机对照 |
 | [退出生命周期](native/native-window-close.md) | 关窗崩潰修复、线程回收与退出验收边界 |

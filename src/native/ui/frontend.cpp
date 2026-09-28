@@ -196,6 +196,22 @@ button.set-toggle,button.set-toggle.on {display:flex; align-items:center; gap:14
 button.set-toggle:focus {background-color:#ffd75e24;} button.set-toggle:focus .set-name {color:#ffd75e;}
 .set-key {display:flex; align-items:center; gap:16dp; padding:6dp 12dp; font-size:14dp; border-bottom:1dp #3fd0ff14;}
 .set-key span {flex:1 1 0; min-width:0; color:#d6ddf2;} .set-key b {flex:0 0 46%; text-align:right; font-weight:normal; color:#ffd75e;}
+.ctl-diagram-row {display:flex; justify-content:center; padding:12dp 0;}
+.ctl-diagram {position:relative; border-radius:10dp; background-color:#f6f8fb;}
+.ctl-diagram img {position:absolute; left:0; top:0; margin:0;}
+.ctl-slot {position:absolute; display:flex; align-items:center;}
+button.ctl-pill {display:flex; align-items:center; gap:6dp; margin:0; padding:0 10dp; box-sizing:border-box; white-space:nowrap; color:#ffffff; font-weight:bold; border:2dp #00000000;}
+button.ctl-pill.dark {color:#3a2c00;}
+button.ctl-pill .k {padding:0 6dp; font-weight:normal; background-color:#ffffff33;} button.ctl-pill.dark .k {background-color:#00000024;}
+button.ctl-pill:focus,button.ctl-pill:hover {border-color:#ffd75e;}
+.ctl-extras {display:flex; flex-wrap:wrap; gap:8dp;}
+button.ctl-extra {display:flex; align-items:center; gap:10dp; margin:0; padding:7dp 12dp; font-size:14dp; color:#e8eefc; background-color:#0c122ceb; border:2dp #3fd0ff; border-radius:0;}
+button.ctl-extra .k {color:#ffd75e;}
+button.ctl-extra:focus,button.ctl-extra:hover {border-color:#ffd75e;}
+.ctl-capture {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712a8;}
+.ctl-capture-box {width:540dp; padding:18dp 22dp; text-align:center; background-color:#0c122cf8; border:2dp #ffd75e;}
+.ctl-capture-title {font-size:18dp; font-weight:bold; color:#ffd75e;}
+.ctl-capture-box p {margin:8dp 0 12dp; font-size:13dp; color:#a4b0d2;}
 .set-about {padding:0 12dp;} .set-about div {margin-top:6dp; font-size:15dp; color:#d6ddf2;}
 .set-error {margin-top:8dp; font-size:13dp; color:#ff8d8d;}
 .set-foot {display:flex; align-items:center; gap:12dp; margin-top:8dp; padding-top:8dp; border-top:1dp #3fd0ff40;}
@@ -452,6 +468,151 @@ constexpr KeyRow key_rows[]={
 #ifndef SRW64_VERSION
 #define SRW64_VERSION "?"
 #endif
+// The Controls page's remapping (docs/native/controls-remapping.md). The diagram is
+// content/ui/n64-controller.png (1448 x 1086) with a coloured pill at the end of each
+// callout line; each pill here is a button over the drawn one, naming the N64 input and
+// what the keyboard or the controller has bound to it, and growing away from its line.
+bool controls_pad_view=false;  // the diagram shows the controller's bindings, else the keyboard's
+struct Capture {
+    std::vector<input::Action> queue;  // what the next presses go to; a D-pad or stick takes four in turn
+    std::string name;                  // the input being set, for the prompt
+    bool directions=false;             // a D-pad or stick: the prompt names the direction
+    uint64_t since=0;                  // SDL ticks when it began: it gives up after 6 s
+    bool refused=false;                // a key kept for the shortcuts was pressed
+    bool release=false;                // after a controller press: wait until the controller is let go
+    std::array<bool,input::pad_axis::Count> axis_rest{};  // an axis must come back to rest between presses
+} capture;
+struct Callout {
+    const char* id;
+    const char* text;                  // the label, or a ui key when it starts with "controls_"
+    std::array<input::Action,4> actions;
+    uint8_t count;
+    const char* token;                 // the binding, as text/button_prompts.hpp writes it
+    int x0,y0,x1,y1;                   // the drawn pill, in image pixels
+    char grow;                         // 'l' away to the left, 'r' to the right, 'c' both ways
+    const char* colour;
+    bool dark_text;
+};
+using input::Action;
+constexpr Callout callouts[]={
+    {"l","L",{Action::L},1,"{L}",150,49,226,93,'l',"#474d5b",false},
+    {"z","Z",{Action::Z},1,"{Z}",139,938,226,979,'l',"#652fa6",false},
+    {"dpad","controls_dpad",{Action::DUp,Action::DDown,Action::DLeft,Action::DRight},4,"{DPad}",65,399,156,442,'l',"#464d5b",false},
+    {"stick","controls_stick",{Action::StickUp,Action::StickDown,Action::StickLeft,Action::StickRight},4,"{Stick}",681,816,768,855,'c',"#454c5a",false},
+    {"start","START",{Action::Start},1,"{Start}",680,270,768,309,'c',"#e8201f",false},
+    {"b","B",{Action::B},1,"{B}",879,644,965,684,'c',"#01a83d",false},
+    {"c_left","C\xe2\x97\x80",{Action::CLeft},1,"{CLeft}",825,364,898,402,'l',"#fec421",true},
+    {"c_up","C\xe2\x96\xb2",{Action::CUp},1,"{CUp}",1216,255,1305,295,'r',"#fec421",true},
+    {"c_right","C\xe2\x96\xb6",{Action::CRight},1,"{CRight}",1295,374,1384,415,'r',"#fec421",true},
+    {"c_down","C\xe2\x96\xbc",{Action::CDown},1,"{CDown}",1267,476,1358,519,'r',"#fec421",true},
+    {"a","A",{Action::A},1,"{A}",1217,574,1313,617,'r',"#0081f3",false},
+    {"r","R",{Action::R},1,"{R}",1221,49,1299,92,'r',"#474d5b",false},
+    // Not on the N64 controller: the host's own buttons, in a row under the diagram.
+    {"settings","controls_settings",{Action::Settings},1,"{Settings}",0,0,0,0,0,nullptr,false},
+    {"aux_left","controls_aux_left",{Action::AuxLeft},1,"{AuxL}",0,0,0,0,0,nullptr,false},
+    {"aux_right","controls_aux_right",{Action::AuxRight},1,"{AuxR}",0,0,0,0,0,nullptr,false},
+};
+constexpr const char* direction_keys[]={"controls_up","controls_down","controls_left","controls_right"};
+std::string callout_text(const Callout& c){return std::string_view(c.text).starts_with("controls_")?label(c.text):escape(c.text);}
+std::filesystem::path ui_asset(const char* name) {
+    const char* dir=std::getenv("SRW64_UI_ASSETS");
+    return dir && *dir?std::filesystem::path(dir)/name:std::filesystem::path();
+}
+void start_capture(const std::string& id) {
+    for(const auto& c:callouts)if(id==c.id) {
+        capture=Capture{};
+        capture.queue.assign(c.actions.begin(),c.actions.begin()+c.count);
+        capture.name=callout_text(c);capture.directions=c.count==4;capture.since=SDL_GetTicks64();capture.axis_rest.fill(true);
+        return;
+    }
+}
+// While a capture waits, every key and controller input goes to it: Esc gives up, the
+// shortcut keys are refused, anything else is bound to the input in front of the queue
+// on the device it came from, which the diagram then shows.
+bool capture_event(const SDL_Event& event) {
+    const auto bind=[&](auto assign) {
+        auto bindings=input::live_bindings().get();
+        assign(bindings,capture.queue.front());
+        input::live_bindings().set(bindings);
+        capture.queue.erase(capture.queue.begin());capture.refused=false;capture.since=SDL_GetTicks64();
+    };
+    switch(event.type) {
+    case SDL_KEYDOWN: {
+        if(event.key.repeat)return true;
+        const auto key=event.key.keysym.scancode;
+        if(key==SDL_SCANCODE_ESCAPE){capture.queue.clear();return true;}
+        if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8){capture.refused=true;return true;}
+        controls_pad_view=false;
+        bind([&](input::Bindings& b,input::Action a){input::assign_key(b,a,int(key));});
+        return true;
+    }
+    case SDL_CONTROLLERBUTTONDOWN:
+        controls_pad_view=true;
+        bind([&](input::Bindings& b,input::Action a){input::assign_pad(b,a,input::button(uint8_t(event.cbutton.button)));});
+        if(capture.queue.empty())capture.release=true;
+        return true;
+    case SDL_CONTROLLERAXISMOTION: {
+        const auto axis=event.caxis.axis;const int value=event.caxis.value;
+        if(axis>=input::pad_axis::Count)return true;
+        if(std::abs(value)<8000)capture.axis_rest[axis]=true;
+        else if(std::abs(value)>24000 && capture.axis_rest[axis]) {
+            capture.axis_rest[axis]=false;controls_pad_view=true;
+            bind([&](input::Bindings& b,input::Action a){input::assign_pad(b,a,input::axis(uint8_t(axis),value<0?-1:1));});
+            if(capture.queue.empty())capture.release=true;
+        }
+        return true;
+    }
+    case SDL_KEYUP: case SDL_CONTROLLERBUTTONUP: case SDL_TEXTINPUT: case SDL_TEXTEDITING: return true;
+    default: return false;
+    }
+}
+std::string capture_prompt() {
+    if(capture.queue.empty())return {};
+    std::string what=capture.name;
+    if(capture.directions)what+=" \xc2\xb7 "+label(direction_keys[4-capture.queue.size()]);
+    auto prompt=label("controls_capture");
+    if(const auto at=prompt.find("{name}");at!=std::string::npos)prompt.replace(at,6,what);
+    return "<div class='ctl-capture'><div class='ctl-capture-box'><div class='ctl-capture-title'>"+prompt+"</div>"
+        "<p>"+label(capture.refused?"controls_reserved":"controls_capture_note")+"</p>"+button("controls-cancel",label("controls_cancel"))+"</div></div>";
+}
+// The Controls page body: device switch, diagram, the host's buttons, fixed shortcuts,
+// restore, then the table of what each input does (key_rows).
+std::string controls_page(float body_width) {
+    std::string body;
+    const auto pad_name=srw64_pad_name();
+    const std::string pad_label=pad_name.empty()?label("controls_controller_none"):label("controls_controller")+" \xc2\xb7 "+escape(pad_name);
+    body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("controls_device")+"</div><div class='set-seg'>"+
+        button("controls-device:keyboard",label("controls_keyboard"),!controls_pad_view)+button("controls-device:pad",pad_label,controls_pad_view)+
+        "</div></div><p>"+label("controls_note")+"</p></div>";
+    const auto context=prompt_context(controls_pad_view);
+    const auto binding=[&](const Callout& c){return escape(text::expand_prompts(c.token,context));};
+    const auto diagram=ui_asset("n64-controller.png");
+    if(!diagram.empty() && std::filesystem::is_regular_file(diagram)) {
+        // Room either side for the pills that grow outward past the drawing.
+        const float w=std::min(body_width*.8f,860.f),s=w/1448.f,h=1086.f*s;
+        const auto dp=[](float v){return std::to_string(int(v+.5f))+"dp";};
+        body+="<div class='set-row nav ctl-diagram-row'><div class='ctl-diagram' style='width:"+dp(w)+";height:"+dp(h)+";'>"
+            "<img src='"+escape(image(diagram.string(),dp_pixels(w)))+"' style='width:"+dp(w)+";height:"+dp(h)+";'/>";
+        for(const auto& c:callouts) {
+            if(!c.colour)continue;
+            const float span=260*s,top=c.y0*s,height=(c.y1-c.y0)*s,min_w=(c.x1-c.x0)*s;
+            const float left=c.grow=='l'?c.x1*s-span:c.grow=='r'?c.x0*s:(c.x0+c.x1)*.5f*s-span/2;
+            const char* justify=c.grow=='l'?"flex-end":c.grow=='r'?"flex-start":"center";
+            body+="<div class='ctl-slot' style='left:"+dp(left)+";top:"+dp(top)+";width:"+dp(span)+";height:"+dp(height)+";justify-content:"+justify+";'>"
+                "<button id='controls-bind:"+std::string(c.id)+"' class='ctl-pill"+(c.dark_text?" dark":"")+"' style='min-width:"+dp(min_w)+";height:"+dp(height)+
+                ";border-radius:"+dp(height/2)+";font-size:"+dp(std::max(11.f,height*.5f))+";background-color:"+c.colour+";'>"
+                "<span class='n'>"+callout_text(c)+"</span><span class='k'>"+binding(c)+"</span></button></div>";
+        }
+        body+="</div></div>";
+    }
+    body+="<h2>"+label("controls_extra")+"</h2><div class='set-row nav'><div class='ctl-extras'>";
+    for(const auto& c:callouts)if(!c.colour)
+        body+="<button id='controls-bind:"+std::string(c.id)+"' class='ctl-extra'><span class='n'>"+callout_text(c)+"</span><span class='k'>"+binding(c)+"</span></button>";
+    body+="</div><p>"+label("controls_extra_note")+"</p></div>";
+    body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("controls_fixed")+"</div><div class='set-seg'>"+
+        button("controls-reset",label("controls_reset"))+"</div></div><p>"+escape(text::expand_prompts(localization::catalog().ui("controls_fixed_list"),prompt_context(false)))+"</p></div>";
+    return body;
+}
 // One setting: its name with its choices beside it, and its note on a line of its own.
 // RmlUi breaks lines only at spaces, so a Chinese or Japanese note needs the whole
 // width (test_settings_window.py checks that each fits the smallest window).
@@ -501,7 +662,10 @@ void settings_sync() {
     }
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed());
+        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+
+        // The Controls page: bindings, the device shown, a capture waiting, the controller, the window size (the diagram's).
+        std::to_string(input::live_bindings().revision())+(controls_pad_view?"p":"k")+capture_prompt()+srw64_pad_name()+
+        std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -534,6 +698,8 @@ void settings_sync() {
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
     } else if(page=="controls") {
+        // The body's width: the panel (88% of the window, 1040 dp at most) less its padding and the scrollbar.
+        body+=controls_page(std::min(pixels_w/ui_density*.88f,1040.f)-80);
         std::string section;
         for(const auto& [group,row]:key_rows){
             if(section!=group){section=group;body+="<h2>"+label("settings_keys_"+section)+"</h2>";}
@@ -549,7 +715,7 @@ void settings_sync() {
     }
     body+="</div>";
     if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
-    body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+    body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";
     settings_doc=document(body,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
     settings_doc->UpdateDocument();
     if(scroll>0)if(auto* page_body=settings_doc->GetElementById("set-body"))page_body->SetScrollTop(scroll);
@@ -1699,6 +1865,11 @@ void choose(const std::string& id) {
     funds_editing.clear();
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
+    // The Controls page (controls_page): which device the diagram shows, a capture, restore.
+    if(id.starts_with("controls-device:")){controls_pad_view=id=="controls-device:pad";return;}
+    if(id.starts_with("controls-bind:")){start_capture(id.substr(14));settings_focus=id;return;}
+    if(id=="controls-cancel"){capture.queue.clear();return;}
+    if(id=="controls-reset"){input::live_bindings().set(input::default_bindings());return;}
     if(id=="settings-close"){physical_held=held();settings_open=false;return;}
     if(id.starts_with("upgrade") && upgrade_request.value("visible",false) && !settings_open) {
         const auto serial=upgrade_request.at("serial").get<uint64_t>();const auto screen=upgrade_request.value("screen",std::string());const bool list=screen=="list" || screen=="weapons";
@@ -1991,7 +2162,13 @@ void sync() {
         const uint32_t view_now=srw64_keyboard_state()&input::pad_view,view_pressed=view_now&~view_before;view_before=view_now;
         // Page requests stay null until their page first reports.
         const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
-        if(view_pressed)choose(settings_open?"settings-close":"settings-open");
+        // A capture takes the controller's presses itself (capture_event), and once it has one
+        // the page ignores the controller until it is let go.
+        if(capture.release && !pad_now)capture.release=false;
+        if(!capture.queue.empty() && SDL_GetTicks64()-capture.since>6000)capture.queue.clear();
+        const bool capturing=!capture.queue.empty() || capture.release;
+        if(capturing && settings_open){}
+        else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
         else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
         else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))
@@ -2017,6 +2194,8 @@ void sync() {
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
     if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE)return false;
+    // A capture on the Controls page takes the next key or controller input.
+    if(!capture.queue.empty() && settings_open && capture_event(event))return true;
     if(event.type==SDL_DROPFILE) {
         // Debug aid: a mini-stage file dropped on the title menu loads and enters.
         const std::string path=event.drop.file?event.drop.file:"";SDL_free(event.drop.file);

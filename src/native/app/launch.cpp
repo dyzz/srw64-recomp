@@ -177,7 +177,9 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         // The dialogue text shipped with the program, and the player's own edits.
         {"SRW64_DIALOGUE_TEXT",bundled_resource("dialogue").string()},{"SRW64_DIALOGUE_OVERRIDES",(session.user_dir()/"dialogue").string()},
         // HarmonyOS Sans and the symbol font shipped in the bundle.
-        {"SRW64_FONT_DIR",bundled_resource("fonts").string()}})
+        {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
+        // Pictures the native pages draw (content/ui): the Controls page's controller diagram.
+        {"SRW64_UI_ASSETS",bundled_resource("ui").string()}})
         set_environment(key,value);
     if(hd_art) {
         set_environment("SRW64_ART_PACK",(hd/"art").string());

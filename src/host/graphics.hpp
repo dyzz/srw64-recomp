@@ -14,6 +14,8 @@ void srw64_keyboard_input(uint16_t* buttons, float* x, float* y);
 // Controller buttons as the N64 mask (bits 16-19: stick up/down/left/right; bits
 // 20-22: View, L2, R2, input_mode.hpp), for native pages that own the pad.
 uint32_t srw64_pad_state();
+// The connected controller's name as SDL knows it, empty without one (window thread).
+std::string srw64_pad_name();
 // Keyboard and controller together, the same mask, as held before any page or the
 // dialogue reader filters them: for host features that must see a button the game
 // is not shown.

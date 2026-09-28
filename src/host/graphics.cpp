@@ -755,6 +755,10 @@ void srw64_update_window(void*) {
     keyboard_state.store(state | buttons, std::memory_order_relaxed);
 }
 uint32_t srw64_pad_state() { return pad_state.load(std::memory_order_relaxed); }
+std::string srw64_pad_name() {
+    const char* name = pad ? SDL_GameControllerName(pad) : nullptr;
+    return name ? name : "";
+}
 uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
 
 nlohmann::json srw64_window_status() {
