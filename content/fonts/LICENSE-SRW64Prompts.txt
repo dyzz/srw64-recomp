@@ -7,9 +7,10 @@ Yukari "Shinmera" Hafner, available at https://shinmera.com/promptfont
 
 This font is a Modified Version of PromptFont under the SIL Open Font License 1.1
 below: it keeps 59 of PromptFont's glyphs, moves them to the Private Use Area
-from U+E800, scales them by 700/660 and takes the vertical metrics of HarmonyOS
-Sans SC. It is built by tools/content/build_prompt_font.py from the PromptFont
-release shipped with Zelda64Recomp (assets/promptfont, 2023-12-29, SHA-256
+from U+E800, scales them by 700/660 and up to a Chinese character's height, and
+takes the vertical metrics of HarmonyOS Sans SC. It is built by
+tools/content/build_prompt_font.py from the PromptFont release shipped with
+Zelda64Recomp (assets/promptfont, 2023-12-29, SHA-256
 7206e62fdb7e07fdf137e52464d7fa862f2f8dc79931fa6500e6ceb8ed1f06b9). Included trademarks belong to their respective owners.
 
 The PromptFont licence follows unchanged.

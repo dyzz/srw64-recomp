@@ -36,15 +36,17 @@ class SettingsWindowTests(unittest.TestCase):
                 self.assertTrue(labels[f"controls_row_{row}"].strip(), (locale, row))
 
     def test_labels_fit_at_the_smallest_window(self):
-        # The UI is laid out at no less than 960 x 720 dp; the panel is 88 % of that less
-        # its padding and borders, a row loses the scroll bar and its own padding. RmlUi
-        # breaks lines only at spaces, so every run between spaces must fit its column:
-        # a Chinese or Japanese sentence is one run.
-        panel = 960 * 0.88 - 52 - 2
+        # The UI is laid out at no less than 800 x 540 dp (the interface size grows a dp
+        # only while the window keeps that much, frontend.cpp sync); the panel is 88 % of
+        # that less its padding and borders, a row loses the scroll bar and its own
+        # padding. RmlUi breaks lines only at spaces, so every run between spaces must fit
+        # its column: a Chinese or Japanese sentence is one run.
+        panel = 800 * 0.88 - 52 - 2
         row = panel - 8 - 12 - 24
         tab = (panel - 4 * 6) / 5 - 20
         runs = lambda text: text.split(" ")
         choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
+                   "settings_ui_size": ("standard", "large", "largest"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
                    "settings_title_ui": ("native", "original"), "settings_language": ()}
         for locale in LOCALES:

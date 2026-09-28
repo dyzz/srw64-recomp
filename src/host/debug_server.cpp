@@ -239,6 +239,12 @@ json settings(const json& params) {
         on_window([&]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
         done["battle_ui"]=ui;
     }
+    if(params.contains("ui_size")) {
+        const auto size=params["ui_size"].get<std::string>();
+        if(size!="standard" && size!="large" && size!="largest")throw RpcError(InvalidParams,"ui_size must be standard, large or largest");
+        on_window([&]{settings::set_ui_size(size=="largest"?settings::UiSize::Largest:size=="large"?settings::UiSize::Large:settings::UiSize::Standard);return json(nullptr);});
+        done["ui_size"]=size;
+    }
     if(params.contains("intermission_ui")) {
         const auto ui=params["intermission_ui"].get<std::string>();
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"intermission_ui must be native or original");

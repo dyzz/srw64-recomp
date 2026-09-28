@@ -10,8 +10,12 @@ SRW64Symbols have nothing there), where both text engines reach them as the last
 of the chain. UI strings write tokens such as {A} or {Esc}; src/native/text/
 button_prompts.hpp turns them into these characters for the controller in use.
 
-The glyphs are scaled by 700/660, HarmonyOS Sans's cap height over PromptFont's, so an
-icon keeps PromptFont's size and placement against the text. Vertical metrics copy
+The glyphs are scaled by 700/660, HarmonyOS Sans's cap height over PromptFont's, and
+then enlarged about their middle to stand as tall as a Chinese character (about 930 of
+1000, centred on 380): at PromptFont's own size a face button was a size smaller than
+the text beside it and a shoulder button a flat sliver, too small to read on a Steam
+Deck (user, 2026-09-28). A flat glyph grows by at most 1.4, and none shrinks. Vertical
+metrics copy
 HarmonyOS Sans SC, so the fallback never raises a line. Being a Modified Version under
 the OFL, the font has its own name; PromptFont declares no Reserved Font Name.
 
@@ -41,6 +45,7 @@ LICENCE_SHA256 = "91db5ab511830ae7b393be382e64423c5a783da51faf6211b3d42ac836ac0c
 OUTPUT = ROOT / "content/fonts/SRW64Prompts.ttf"
 LICENCE_OUTPUT = ROOT / "content/fonts/LICENSE-SRW64Prompts.txt"
 SCALE = 700 / 660                        # HarmonyOS Sans cap height / PromptFont's (H)
+TALL, MIDDLE, GROW = 930, 380, 1.4       # a CJK character's height and middle; the most a glyph grows
 ASCENT, DESCENT = 928, -244              # HarmonyOS Sans SC hhea
 BUILT = timestampFromString("Mon Sep 28 00:00:00 2026")
 
@@ -75,9 +80,10 @@ Yukari "Shinmera" Hafner, available at https://shinmera.com/promptfont
 
 This font is a Modified Version of PromptFont under the SIL Open Font License 1.1
 below: it keeps {count} of PromptFont's glyphs, moves them to the Private Use Area
-from U+E800, scales them by 700/660 and takes the vertical metrics of HarmonyOS
-Sans SC. It is built by tools/content/build_prompt_font.py from the PromptFont
-release shipped with Zelda64Recomp (assets/promptfont, 2023-12-29, SHA-256
+from U+E800, scales them by 700/660 and up to a Chinese character's height, and
+takes the vertical metrics of HarmonyOS Sans SC. It is built by
+tools/content/build_prompt_font.py from the PromptFont release shipped with
+Zelda64Recomp (assets/promptfont, 2023-12-29, SHA-256
 {sha}). Included trademarks belong to their respective owners.
 
 The PromptFont licence follows unchanged.
@@ -114,12 +120,18 @@ def build(source: Path = SOURCE, output: Path = OUTPUT, licence_output: Path = L
         glyph = glyf[name]
         if glyph.isComposite():
             raise SystemExit(f"{name} is a composite glyph; scale its components first")
+        grow = 1.0
         if glyph.numberOfContours:
             glyph.coordinates.scale((SCALE, SCALE))
+            glyph.recalcBounds(glyf)
+            grow = max(1.0, min(GROW, TALL / (glyph.yMax - glyph.yMin)))
+            middle = (glyph.yMax + glyph.yMin) / 2
+            glyph.coordinates.transform(((grow, 0), (0, grow)))
+            glyph.coordinates.translate((0, MIDDLE - middle * grow))
             glyph.coordinates.toInt()
             glyph.recalcBounds(glyf)
         advance, _ = hmtx[name]
-        hmtx[name] = (round(advance * SCALE), glyph.xMin if glyph.numberOfContours else 0)
+        hmtx[name] = (round(advance * SCALE * grow), glyph.xMin if glyph.numberOfContours else 0)
     # An empty .notdef, so a character outside the table falls through to nothing.
     glyf[".notdef"] = Glyph()
     hmtx[".notdef"] = (500, 0)

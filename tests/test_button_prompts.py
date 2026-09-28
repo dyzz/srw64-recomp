@@ -69,7 +69,7 @@ class ButtonPromptTests(unittest.TestCase):
         # A controller hint names what is bound; the fixed page keys are the keyboard's.
         ui = catalogue("zh-Hans")
         for key, text in ui.items():
-            if isinstance(text, str) and (key.endswith("_pad") or key == "pad_rstick_down"):
+            if isinstance(text, str) and key.endswith("_pad"):
                 with self.subTest(key=key):
                     self.assertFalse(set(TOKEN.findall(text)) & KEYBOARD)
 

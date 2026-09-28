@@ -35,6 +35,7 @@ SRW64 Recompiled, Steam Deck edition (experimental). English below.
     Q / E  L / R   1 / 3  L2 / R2   2 / 4  切换语言 / 原版·HD
     方向键 十字键   WASD 左摇杆   T F G H 右摇杆（C 键）
   设置窗口的「操作」页可以改键盘和手柄的按键。
+  字太大或太小：设置窗口「界面」页的「界面大小」（Steam Deck 默认「特大」）。
   界面底部的操作提示会随你最后用的设备显示手柄按键或键盘按键。
 
 存档与设置
@@ -77,8 +78,9 @@ Linux PCs) the keys follow PCSX2's defaults, each key standing for the controlle
 button in its place: K confirm, L back, J cursor speed, I battle animation, Enter
 START, Backspace settings, Q/E L/R, 1/3 L2/R2, 2/4 language and Original/HD, the
 arrows the D-pad, WASD the left stick, T F G H the right stick. The settings
-window's Controls page rebinds keys and buttons. Hints follow the last device you
-used.
+window's Controls page rebinds keys and buttons, and its Interface page sets the
+interface size (Largest by default on a Steam Deck). Hints follow the last device
+you used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
 HD: unpack the HD pack (the same download as for macOS) as

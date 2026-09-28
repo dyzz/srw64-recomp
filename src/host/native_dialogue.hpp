@@ -70,6 +70,7 @@ struct Frame {
     uint8_t pad_family{};              // whose button icons (text::PadFamily)
     // The reading controls and history hints with the player's bindings (text/button_prompts.hpp).
     std::string controls_text, history_controls_text;
+    double bar_scale=1;                // the bottom bar's size: the interface size (settings::ui_scale)
     // Battle quotes: the translation replaces the drawn text, the original keeps
     // its own pacing, so there are no reading controls to show.
     bool display_only{};

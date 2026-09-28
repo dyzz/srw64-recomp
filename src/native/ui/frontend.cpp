@@ -149,7 +149,8 @@ std::optional<input::Action> follow_bindings(SDL_Event& event) {
 std::string label(const std::string& key){
     const auto& catalog=localization::catalog();
     if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return escape(text::expand_prompts(value,prompt_context(true)));}
-    return escape(text::expand_prompts(catalog.ui(key),prompt_context(false)));
+    // A string with no controller variant still names the controller's buttons while it is in use.
+    return escape(text::expand_prompts(catalog.ui(key),prompt_context(pad_mode)));
 }
 // The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
 // added; empty when the rule is off or the machine's own cap already is the cap.
@@ -283,11 +284,12 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-pilot {padding:7dp 9dp; background-color:#0c122ceb; border:2dp #ff6fa8;} .bp-pilot.right {border-color:#3fd0ff;}
 .bp-pilot-head {display:flex; gap:8dp;}
 .bp-pilot-head img {width:96dp; height:96dp; margin:0; border:2dp #ff6fa8;} .right .bp-pilot-head img {border-color:#3fd0ff;}
+.narrow .bp-pilot-head img {width:64dp; height:64dp;} .narrow .bp-stat {padding:3dp 5dp;} .narrow .battle-actions button {margin:2dp; padding:5dp 7dp;}
 .bp-pilot-info {flex:1; min-width:0;}
 .bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:17dp; font-weight:bold; height:24dp;}
 .bp-pilot-name .level {font-size:12dp; font-weight:normal; color:#a4b0d2;}
 .bp-stats {display:flex; gap:4dp; margin-top:3dp;}
-.bp-stat {flex:1; display:flex; justify-content:space-between; padding:3dp 7dp; font-size:13dp; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
+.bp-stat {flex:1; display:flex; justify-content:space-between; padding:3dp 7dp; font-size:13dp; white-space:nowrap; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
 .battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
@@ -322,7 +324,7 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bh-item {position:absolute; display:block; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
 .bh-item:hover {border:0;} body.pointer .bh-item:hover {background-color:#00ff0040;} .bh-item:focus,body.pointer .bh-item:focus {border:0; background-color:#00ff0080;}
 .home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
-.bp-hints {text-align:center; font-size:10dp; color:#a4b0d2; height:14dp; white-space:nowrap; overflow:hidden;}
+.bp-hints {text-align:center; font-size:12dp; color:#a4b0d2; height:17dp; white-space:nowrap; overflow:hidden;}
 .bp-hints span {margin:0 9dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
 .spirit-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071299;}
 .spirit-overlay {position:absolute; left:22%; top:12%; width:56%; max-height:78%; box-sizing:border-box; padding:12dp 22dp 13dp; color:#e8eefc; background-color:#0c122cfa; border-top:3dp #3fd0ff; border-bottom:3dp #3fd0ff;}
@@ -601,7 +603,7 @@ void settings_sync() {
         settings_page=0;
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+std::to_string(settings::native_intermission_ui())+
+    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
@@ -624,6 +626,7 @@ void settings_sync() {
         body+=settings_row("settings_language",locales);
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
     } else if(page=="interface") {
+        body+=settings_choice("settings_ui_size","ui-size",{"standard","large","largest"},settings::ui_size_name(settings::ui_size()));
         body+=settings_choice("settings_battle_ui","battle-ui",{"native","hd","original"},settings::battle_ui_name(settings::battle_ui()));
         body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
@@ -1704,7 +1707,7 @@ std::string battle_hd_page(const json& next) {
     }
     body+="</div>";
     // The animation switch, as on the original screen (battle_sync).
-    return body+"<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):escape(text::expand_prompts("{CDown} / C\xe2\x96\xbc",prompt_context(false))))+"]</span> "+
+    return body+"<div class='bp-original'><div><span class='key'>"+escape(text::expand_prompts("{Anim}",prompt_context(pad_mode)))+"</span> "+
         label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>";
 }
 // Its keys follow the original screen: A starts (or takes the menu entry), B goes back
@@ -1732,13 +1735,14 @@ void battle_sync() {
         const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
         if(stamp!=original_stamp) {
             document_close(original_doc);original_stamp=stamp;
-            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>["+(pad_mode?label("pad_rstick_down"):escape(text::expand_prompts("{CDown} / C\xe2\x96\xbc",prompt_context(false))))+"]</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
+            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>"+escape(text::expand_prompts("{Anim}",prompt_context(pad_mode)))+"</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
         }
         return;
     }
     document_close(original_doc);original_stamp.clear();
     const bool hd_original=next.value("style",std::string())=="hd";
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+(hd_original && pad_mode?"+pad":"");
+    // The window and the interface size set the unit pictures' room (ui_density).
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"");
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
@@ -1758,7 +1762,10 @@ void battle_sync() {
     const auto player_response=label(response==1?"battle_evade":response==2?"battle_defend":player.at("weapon").get<int>()<0?"battle_none":"battle_counter");
     const auto enemy_response=label(enemy.at("weapon").get<int>()<0?"battle_none":"battle_counter");
     const bool selecting_spirit=next.value("spirit_menu",false);
-    std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page'><div class='bp-row'>";
+    // Under 1000 dp wide (a larger interface size on a small screen) the pilots' faces and
+    // the buttons' padding shrink, so the figures keep one line.
+    const bool narrow=pixels_w/ui_density<1000;
+    std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page"+std::string(narrow?" narrow":"")+"'><div class='bp-row'>";
     body+=battle_banner(enemy,true,!player_attacks,enemy_response)+"<div class='bp-center bp-phase'><div class='enemy"+std::string(player_attacks?"":" on")+"'>"+label("battle_phase_enemy")+"</div><div class='player"+std::string(player_attacks?" on":"")+"'>"+label("battle_phase_player")+"</div></div>"+battle_banner(player,false,player_attacks,player_response)+"</div>";
     body+="<div class='bp-row bp-mid'>"+battle_unit(enemy,true)+battle_clash(enemy,player,player_attacks,player_response,responding)+battle_unit(player,false)+"</div>";
     body+="<div class='bp-row'>"+battle_pilot(enemy,true)+"<div class='bp-center battle-actions'><div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
@@ -1772,12 +1779,11 @@ void battle_sync() {
     body+=button("battle-animation",label("battle_animation")+" · "+label(next.value("animation",true)?"battle_on":"battle_off"),false,selecting_spirit);
     if(next.value("can_cancel",false))body+=button("battle-back",label("battle_back"),false,selecting_spirit);
     body+="</div></div>"+battle_pilot(player,false)+"</div><div class='bp-hints'>";
-    const auto hint=[&](const char* key,const std::string& text){body+="<span><b>["+std::string(key)+"]</b> "+text+"</span>";};
-    // The keyboard and N64 keys, or the controller's buttons (battle_buttons below).
-    const auto key=[&](const char* keys,const std::string& pad){return pad_mode?pad:std::string(keys);};
-    hint(key("Z / A","A").c_str(),label("battle_confirm"));hint(key("Q / L","L1").c_str(),label("battle_change_weapon"));
-    hint(key("E / R","R1").c_str(),label("battle_spirits"));hint(key("K / C▼",label("pad_rstick_down")).c_str(),label("battle_animation"));
-    if(next.value("can_cancel",false))hint(key("X / B","B").c_str(),label("battle_back"));
+    // The bound keys or the controller's buttons (battle_buttons below), as the hints elsewhere.
+    const auto hint=[&](const char* token,const std::string& text){body+="<span><b>"+escape(text::expand_prompts(token,prompt_context(pad_mode)))+"</b> "+text+"</span>";};
+    hint("{A}",label("battle_confirm"));hint("{L}",label("battle_change_weapon"));
+    hint("{R}",label("battle_spirits"));hint("{Anim}",label("battle_animation"));
+    if(next.value("can_cancel",false))hint("{B}",label("battle_back"));
     body+="</div></div>";
     if(selecting_spirit) {
         body+="<div class='spirit-shade'></div><div class='spirit-overlay'><h2>"+label("battle_spirits")+" · "+escape(player.at("unit_name").get<std::string>())+"</h2><p>"+label("battle_spirit_hint")+"</p><div class='spirit-options'>";
@@ -1897,6 +1903,8 @@ void choose(const std::string& id) {
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
+        if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
+            if(id.substr(8)==settings::ui_size_name(size))settings::set_ui_size(size);
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
@@ -2064,7 +2072,12 @@ void settings_pad(uint32_t now,uint32_t pressed) {
 }
 void sync() {
     physical_held=held();
-    ui_density=pixel_ratio*std::min({1.f,float(pixels_w)/pixel_ratio/960.f,float(pixels_h)/pixel_ratio/720.f});
+    // A dp is a point, fewer when the window is under 960 x 720 points, so the pages always
+    // have that much room; the player's Interface size then enlarges it, as far as the
+    // window keeps 800 x 540 dp (a Steam Deck's 1280 x 800: Large 1.25, Largest 1.48).
+    const float points_w=float(pixels_w)/pixel_ratio,points_h=float(pixels_h)/pixel_ratio;
+    const float fit=std::min({1.f,points_w/960.f,points_h/720.f});
+    ui_density=pixel_ratio*std::min(fit*settings::ui_scale(settings::ui_size()),std::max(fit,std::min(points_w/800.f,points_h/540.f)));
     context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
     const auto language=localization::snapshot();localization::Scope scope(language);
     auto request=names::request();
