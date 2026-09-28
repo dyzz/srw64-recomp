@@ -200,7 +200,6 @@ button.set-toggle:focus {background-color:#ffd75e24;} button.set-toggle:focus .s
 .ctl-diagram {position:relative; border-radius:10dp; background-color:#f6f8fb;}
 .ctl-diagram img {position:absolute; left:0; top:0; margin:0;}
 .ctl-slot {position:absolute; display:flex; align-items:center;}
-.ctl-line,.ctl-dot {position:absolute;} .ctl-dot {box-sizing:border-box; border:2dp; background-color:#ffffff;}
 button.ctl-pill {display:flex; align-items:center; gap:6dp; margin:0; padding:0 10dp; box-sizing:border-box; white-space:nowrap; color:#ffffff; font-weight:bold; border:2dp #00000000;}
 button.ctl-pill.dark {color:#3a2c00;}
 button.ctl-pill .k {padding:0 6dp; font-weight:normal; background-color:#ffffff33;} button.ctl-pill.dark .k {background-color:#00000024;}
@@ -475,9 +474,8 @@ constexpr KeyRow key_rows[]={
 // what the keyboard or the controller has bound to it, and growing away from its line.
 bool controls_pad_view=false;  // the diagram shows the controller's bindings, else the keyboard's
 struct Capture {
-    std::vector<input::Action> queue;  // what the next presses go to; a D-pad or stick takes four in turn
+    std::vector<input::Action> queue;  // what the next press goes to
     std::string name;                  // the input being set, for the prompt
-    bool directions=false;             // a D-pad or stick: the prompt names the direction
     uint64_t since=0;                  // SDL ticks when it began: it gives up after 6 s
     bool refused=false;                // a key kept for the shortcuts was pressed
     bool release=false;                // after a controller press: wait until the controller is let go
@@ -493,7 +491,6 @@ struct Callout {
     char grow;                         // 'l' away to the left, 'r' to the right, 'c' both ways
     const char* colour;
     bool dark_text;
-    int line_top=0;                    // a label the picture lacks: its line runs up to here
 };
 using input::Action;
 constexpr Callout callouts[]={
@@ -508,8 +505,6 @@ constexpr Callout callouts[]={
     // Between the D-pad and START: keep it short, it grows towards the START button.
     {"d_right","\xe2\x96\xb6",{Action::DRight},1,"{DRight}",577,386,667,427,'r',"#464d5b",false},
     {"start","START",{Action::Start},1,"{Start}",681,275,767,317,'c',"#e8201f",false},
-    // The picture has no label for the stick: this one brings its own line (line_top).
-    {"stick","controls_stick",{Action::StickUp,Action::StickDown,Action::StickLeft,Action::StickRight},4,"{Stick}",680,800,766,842,'c',"#454c5a",false,690},
     {"b","B",{Action::B},1,"{B}",873,641,966,684,'c',"#01a83d",false},
     {"c_left","C\xe2\x97\x80",{Action::CLeft},1,"{CLeft}",813,362,902,404,'l',"#fec421",true},
     {"c_up","C\xe2\x96\xb2",{Action::CUp},1,"{CUp}",1216,252,1316,296,'r',"#fec421",true},
@@ -521,7 +516,6 @@ constexpr Callout callouts[]={
     // Not on the N64 controller: the settings window's button, in a row under the diagram.
     {"settings","controls_settings",{Action::Settings},1,"{Settings}",0,0,0,0,0,nullptr,false},
 };
-constexpr const char* direction_keys[]={"controls_up","controls_down","controls_left","controls_right"};
 std::string callout_text(const Callout& c){return std::string_view(c.text).starts_with("controls_")?label(c.text):escape(c.text);}
 std::filesystem::path ui_asset(const char* name) {
     const char* dir=std::getenv("SRW64_UI_ASSETS");
@@ -531,7 +525,7 @@ void start_capture(const std::string& id) {
     for(const auto& c:callouts)if(id==c.id) {
         capture=Capture{};
         capture.queue.assign(c.actions.begin(),c.actions.begin()+c.count);
-        capture.name=callout_text(c);capture.directions=c.count==4;capture.since=SDL_GetTicks64();capture.axis_rest.fill(true);
+        capture.name=callout_text(c);capture.since=SDL_GetTicks64();capture.axis_rest.fill(true);
         return;
     }
 }
@@ -577,10 +571,8 @@ bool capture_event(const SDL_Event& event) {
 }
 std::string capture_prompt() {
     if(capture.queue.empty())return {};
-    std::string what=capture.name;
-    if(capture.directions)what+=" \xc2\xb7 "+label(direction_keys[4-capture.queue.size()]);
     auto prompt=label("controls_capture");
-    if(const auto at=prompt.find("{name}");at!=std::string::npos)prompt.replace(at,6,what);
+    if(const auto at=prompt.find("{name}");at!=std::string::npos)prompt.replace(at,6,capture.name);
     return "<div class='ctl-capture'><div class='ctl-capture-box'><div class='ctl-capture-title'>"+prompt+"</div>"
         "<p>"+label(capture.refused?"controls_reserved":"controls_capture_note")+"</p>"+button("controls-cancel",label("controls_cancel"))+"</div></div>";
 }
@@ -607,12 +599,6 @@ std::string controls_page(float body_width) {
             const float span=260*s,top=c.y0*s,height=(c.y1-c.y0)*s,min_w=(c.x1-c.x0)*s;
             const float left=c.grow=='l'?c.x1*s-span:c.grow=='r'?c.x0*s:(c.x0+c.x1)*.5f*s-span/2;
             const char* justify=c.grow=='l'?"flex-end":c.grow=='r'?"flex-start":"center";
-            if(c.line_top) {
-                // The line from the input down to the label, and the dot at its end, as drawn ones look.
-                const float cx=(c.x0+c.x1)*.5f*s,line=std::max(1.5f,3*s),dot=std::max(5.f,14*s);
-                body+="<div class='ctl-line' style='left:"+dp(cx-line/2)+";top:"+dp(c.line_top*s)+";width:"+dp(line)+";height:"+dp(top-c.line_top*s)+";background-color:"+c.colour+";'></div>"
-                    "<div class='ctl-dot' style='left:"+dp(cx-dot/2)+";top:"+dp(c.line_top*s-dot/2)+";width:"+dp(dot)+";height:"+dp(dot)+";border-radius:"+dp(dot/2)+";border-color:"+c.colour+";'></div>";
-            }
             body+="<div class='ctl-slot' style='left:"+dp(left)+";top:"+dp(top)+";width:"+dp(span)+";height:"+dp(height)+";justify-content:"+justify+";'>"
                 "<button id='controls-bind:"+std::string(c.id)+"' class='ctl-pill"+(c.dark_text?" dark":"")+"' style='min-width:"+dp(min_w)+";height:"+dp(height)+
                 ";border-radius:"+dp(height/2)+";font-size:"+dp(std::max(11.f,height*.5f))+";background-color:"+c.colour+";'>"
