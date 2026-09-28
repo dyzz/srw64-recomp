@@ -46,7 +46,7 @@ UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_
 SETTINGS_PAGES = ("general", "interface", "rules", "controls", "about")
 SETTINGS_KEY_SECTIONS = ("game", "dialogue", "map", "shortcuts")
 SETTINGS_KEY_ROWS = ("confirm", "start", "shoulders", "z", "c", "move", "next", "fast", "skip", "auto", "history",
-                     "text_size", "units", "enemies", "farthest", "animation", "settings", "language", "images",
+                     "text_size", "units", "enemies", "farthest", "cursor_fast", "animation", "settings", "language", "images",
                      "reload", "quit")
 UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES} | {f"settings_keys_{s}" for s in SETTINGS_KEY_SECTIONS}
 UI_KEYS |= {f"settings_{kind}_{row}{pad}" for row in SETTINGS_KEY_ROWS for kind, pad in (("key", ""), ("bind", ""), ("bind", "_pad"))}

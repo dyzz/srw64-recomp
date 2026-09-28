@@ -23,8 +23,13 @@ int main() {
         return pad_mask(defaults, [&](uint8_t b) { return buttons.count(b) > 0; }, [&](uint8_t a) { return axes[a]; });
     };
     assert(pads({pad_button::A}, {}) == 0x8000);
-    assert(pads({pad_button::B}, {}) == 0x4000 && pads({pad_button::X}, {}) == 0x4000);
-    assert(pads({pad_button::Y}, {}) == 0x2000);
+    assert(pads({pad_button::B}, {}) == 0x4000);
+    // The Deck's freed buttons (docs/gameplay/original-controls.md): no Z; X holds C-left
+    // (the faster map cursor), Y the battle animation, L3 / R3 language and Original / HD.
+    assert(pads({pad_button::X}, {}) == 0x0002);
+    assert(pads({pad_button::Y}, {}) == pad_animation);
+    assert(pads({pad_button::LeftStick}, {}) == pad_language && pads({pad_button::RightStick}, {}) == pad_images);
+    assert(defaults.pads[size_t(Action::Z)].empty() && defaults.keys[size_t(Action::Z)] == std::vector<int>{scancode::Space});
     assert(pads({pad_button::Back}, {}) == pad_view);
     assert(pads({}, {0, 0, 0, -20000, 0, 0}) == 0x0008);      // right stick up: C-up
     assert(pads({}, {0, 0, 0, -16000, 0, 0}) == 0);           // not past the threshold
@@ -40,11 +45,15 @@ int main() {
     assign_key(b, Action::Settings, 58 /* F1 */);
     assert(b.keys[size_t(Action::Settings)] == std::vector<int>{58});
     assert(b.keys[size_t(Action::A)] == std::vector<int>{scancode::K});
-    // B keeps its other controller button when X goes elsewhere, so nothing is swapped in.
+    // C-left keeps its stick direction when X goes elsewhere, so nothing is swapped in.
     b = defaults;
     assign_pad(b, Action::Z, button(pad_button::X));
-    assert(b.pads[size_t(Action::B)] == std::vector<PadInput>{button(pad_button::B)});
+    assert(b.pads[size_t(Action::CLeft)] == std::vector<PadInput>{axis(pad_axis::RightX, -1)});
     assert(b.pads[size_t(Action::Z)] == std::vector<PadInput>{button(pad_button::X)});
+    // An action with no inputs gives nothing back: Y moves to Z, the animation keeps nothing.
+    b = defaults;
+    assign_pad(b, Action::Z, button(pad_button::Y));
+    assert(b.pads[size_t(Action::Animation)].empty());
     // A trigger swapped onto the settings button: View moves to the trigger's action.
     b = defaults;
     assign_pad(b, Action::Settings, axis(pad_axis::TriggerLeft, 1));

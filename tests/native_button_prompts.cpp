@@ -34,7 +34,10 @@ int main(){
     in::assign_pad(b,in::Action::A,in::button(in::pad_button::Y));
     const PromptContext keys2{false,PadFamily::Xbox,&b,name},pad2{true,PadFamily::Xbox,&b,name};
     assert(expand_prompts("{A}",keys2)=="K" && expand_prompts("{CDown}",keys2)=="Z");
-    assert(expand_prompts("{A}",pad2)==u8(0xE803) && expand_prompts("{Z}",pad2)==u8(0xE800));
+    // Y was the animation button's; it gets A in exchange. Z has no controller button.
+    assert(expand_prompts("{A}",pad2)==u8(0xE803) && expand_prompts("{Anim}",pad2)==u8(0xE800));
+    assert(expand_prompts("{Z}",pad2)=="\xe2\x80\x94");
+    assert(expand_prompts("{Lang}{Images}",xbox)==u8(0xE83D)+u8(0xE83E));
     in::assign_pad(b,in::Action::DUp,in::button(in::pad_button::X));
     assert(expand_prompts("{DUpDown}",pad2)==u8(0xE802)+u8(0xE832));  // no longer the group icon
     // Other braces stay.
