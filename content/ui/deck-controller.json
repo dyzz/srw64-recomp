@@ -1,0 +1,86 @@
+{
+ "schema": "srw64.controller-diagram.v1",
+ "image": "deck-controller.png",
+ "width": 2160,
+ "height": 760,
+ "slots": [
+  {
+   "group": "l2",
+   "align": "left",
+   "x": 455,
+   "y": 112
+  },
+  {
+   "group": "l1",
+   "align": "left",
+   "x": 455,
+   "y": 240
+  },
+  {
+   "group": "dpad",
+   "align": "left",
+   "x": 455,
+   "y": 448
+  },
+  {
+   "group": "r2",
+   "align": "right",
+   "x": 1705,
+   "y": 112
+  },
+  {
+   "group": "r1",
+   "align": "right",
+   "x": 1705,
+   "y": 240
+  },
+  {
+   "group": "y",
+   "align": "right",
+   "x": 1705,
+   "y": 360
+  },
+  {
+   "group": "b",
+   "align": "right",
+   "x": 1705,
+   "y": 447
+  },
+  {
+   "group": "a",
+   "align": "right",
+   "x": 1705,
+   "y": 537
+  },
+  {
+   "group": "x",
+   "align": "right",
+   "x": 1705,
+   "y": 628
+  },
+  {
+   "group": "view",
+   "align": "right",
+   "x": 871,
+   "y": 339
+  },
+  {
+   "group": "menu",
+   "align": "left",
+   "x": 1289,
+   "y": 339
+  },
+  {
+   "group": "ls",
+   "align": "left",
+   "x": 455,
+   "y": 640
+  },
+  {
+   "group": "rs",
+   "align": "centre",
+   "x": 1214,
+   "y": 712
+  }
+ ]
+}

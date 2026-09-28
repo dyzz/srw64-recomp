@@ -5,7 +5,7 @@ import re
 import unicodedata
 import unittest
 
-from srw64_native.profile import SETTINGS_KEY_ROWS, SETTINGS_KEY_SECTIONS, SETTINGS_PAGES, UI_KEYS
+from srw64_native.profile import CONTROL_ROWS, SETTINGS_PAGES, UI_KEYS
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = ("ja", "zh-Hans", "en")
@@ -24,18 +24,16 @@ class SettingsWindowTests(unittest.TestCase):
     def setUp(self):
         self.page = (ROOT / "src/native/ui/frontend.cpp").read_text()
 
-    def test_pages_and_key_rows_match_the_python_lists(self):
+    def test_pages_and_control_rows_match_the_python_lists(self):
         pages = re.search(r"settings_pages\[\]=\{(.*?)\};", self.page).group(1)
         self.assertEqual(tuple(re.findall(r'"(\w+)"', pages)), SETTINGS_PAGES)
-        rows = re.findall(r'\{"(\w+)","(\w+)"\}', re.search(r"key_rows\[\]=\{(.*?)\};", self.page, re.S).group(1))
-        self.assertEqual(tuple(row for _, row in rows), SETTINGS_KEY_ROWS)
-        self.assertEqual(tuple(dict.fromkeys(section for section, _ in rows)), SETTINGS_KEY_SECTIONS)
+        rows = re.findall(r'\{"(\w+)",Action::\w+\}', re.search(r"control_rows\[\]=\{(.*?)\};", self.page, re.S).group(1))
+        self.assertEqual(tuple(rows), CONTROL_ROWS)
         for locale in LOCALES:
             labels = ui(locale)
             self.assertEqual(set(labels), UI_KEYS, locale)
-            for row in SETTINGS_KEY_ROWS:
-                for key in (f"settings_key_{row}", f"settings_bind_{row}", f"settings_bind_{row}_pad"):
-                    self.assertTrue(labels[key].strip(), (locale, key))
+            for row in CONTROL_ROWS:
+                self.assertTrue(labels[f"controls_row_{row}"].strip(), (locale, row))
 
     def test_labels_fit_at_the_smallest_window(self):
         # The UI is laid out at no less than 960 x 720 dp; the panel is 88 % of that less
@@ -65,12 +63,13 @@ class SettingsWindowTests(unittest.TestCase):
             for key in [k for k in labels if k.startswith("rule_")]:
                 for run in runs(labels[key]):   # beside the 38 dp switch
                     self.assertLessEqual(em(run) * 15, row - 38 - 14, (locale, key, run))
-            for name in SETTINGS_KEY_ROWS:   # the keys take 46 % of the row
-                for run in runs(labels[f"settings_key_{name}"]):
-                    self.assertLessEqual(em(run) * 14, row * 0.54 - 16, (locale, name, run))
-                for key in (f"settings_bind_{name}", f"settings_bind_{name}_pad"):
-                    for run in runs(labels[key]):
-                        self.assertLessEqual(em(run) * 14, row * 0.46, (locale, key, run))
+            for name in CONTROL_ROWS:   # beside two 150 dp binding columns
+                for run in runs(labels[f"controls_row_{name}"]):
+                    self.assertLessEqual(em(run) * 14, row - 300, (locale, name, run))
+            for key in ("controls_detected", "controls_no_pad", "controls_layout_note", "controls_list_note",
+                        "controls_capture_note", "controls_reserved"):
+                for run in runs(labels[key]):
+                    self.assertLessEqual(em(run.replace("{name}", "Steam Deck")) * 13, row, (locale, key, run))
 
     def test_page_is_remembered_across_launches(self):
         settings = (ROOT / "src/native/ui/presentation_settings.cpp").read_text()

@@ -178,10 +178,10 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, target)
         if ui is not None:
-            # Pictures the native pages draw (the Controls page's controller diagram).
+            # Pictures the native pages draw (the Controls page's controller diagram and its layout).
             source = ui.resolve(strict=True)
             (resources / "ui").mkdir()
-            for path in sorted(source.glob("*.png")):
+            for path in sorted([*source.glob("*.png"), *source.glob("*.json")]):
                 shutil.copyfile(path, resources / "ui" / path.name)
         if fonts is not None:
             # HarmonyOS Sans must ship unmodified with its licence (tools/content/prepare_fonts.py).
