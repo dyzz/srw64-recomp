@@ -44,6 +44,18 @@ void set_native_name_entry_ui(bool native);
 // built; saved as title_ui.
 bool native_title_ui();
 void set_native_title_ui(bool native);
+// The size of the interface drawn in dp (the settings window, the pre-battle page, the
+// title's settings button, notices) and of the dialogue's bottom bar: Standard, Large or
+// Largest, 1, 1.25 or 1.5 times, as far as the window has room (frontend.cpp sync). Saved
+// as ui_size once the player chooses; until then Largest on a Steam Deck, whose 7-inch
+// 1280 x 800 screen shows a dp at about half a desktop's size (Largest still falls
+// short of a desktop's Standard), and Standard elsewhere.
+enum class UiSize {Standard,Large,Largest};
+UiSize ui_size();
+void set_ui_size(UiSize size);
+// "standard", "large", "largest"; a name this build does not know reads as the default.
+const char* ui_size_name(UiSize size);
+float ui_scale(UiSize size);
 // The settings window's page last shown ("general", "interface", "rules", "controls",
 // "about"; empty before the first), saved as settings_page so the window reopens there.
 // Window thread only.

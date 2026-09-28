@@ -74,6 +74,12 @@ struct Painter {
         const auto shaped=layout_text(value,size,1000000,size*1.4);
         text(shaped,x,y,width,size*1.4,shaped.pages.front().lines,value.size(),r,g,b,role);
     }
+    // One line at SIZE, or smaller if that is what fits WIDTH.
+    void label_fit(const std::u16string& value,double x,double y,double size,double width,double r,double g,double b,const char* role) {
+        const auto shaped=layout_text(value,size,1000000,size*1.4);
+        const double wide=shaped.shaped && !shaped.shaped->lines().empty()?shaped.shaped->lines().front().width:0;
+        label(value,x,y,wide>width?size*width/wide:size,width,r,g,b,role);
+    }
     void progress(const Box& box,const AdvanceProgress& value) {
         const double x=box.x+116,y=box.y-15.5,w=61,h=2.5;  // right of the name
         fill(x-1,y-1,w+2,h+2,.025,.055,.085,.96);
@@ -130,17 +136,22 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
         const auto status=frame.skipping?catalog.ui("skip"):frame.fast?catalog.ui("fast"):frame.auto_read?
             catalog.ui("auto")+" "+std::to_string(frame.speed)+"/"+std::to_string(Reader::max_speed):catalog.ui("manual");
         // The map marker and portraits occupy the middle of this scene.
-        // Keep the reading controls on the otherwise unused bottom edge.
-        paint.panel(3,229,314,10);
-        paint.label(utf16(status),6,230,6,31,.75,.87,1,"status");
+        // Keep the reading controls on the otherwise unused bottom edge. The bar grows
+        // upward with the interface size, up to the lower dialogue box's edge (225), and
+        // the controls take what width is left, shrinking to fit it.
+        const double f=std::clamp(frame.bar_scale,1.0,1.4),top=239-10*f;
+        const auto x=[&](double at){return 6+(at-6)*f;};
+        const auto y=[&](double at){return top+(at-229)*f;};
+        paint.panel(3,top,314,10*f);
+        paint.label(utf16(status),6,y(230),6*f,31*f,.75,.87,1,"status");
         constexpr double speed_pitch=28.0/Reader::max_speed;
         for(unsigned i=0;i<Reader::max_speed;++i) {
             const bool lit=frame.auto_read && i<frame.speed;
-            paint.fill(38+i*speed_pitch,232,speed_pitch-1,4.5,lit?1:.17,lit?.64:.26,lit?.23:.32);
+            paint.fill(x(38+i*speed_pitch),y(232),(speed_pitch-1)*f,4.5*f,lit?1:.17,lit?.64:.26,lit?.23:.32);
         }
         paint.blocks.push_back({{"role","auto_speed"},{"level",frame.auto_read?frame.speed:0},{"maximum",Reader::max_speed}});
-        paint.label(utf16(catalog.ui("font_size")+" "+std::to_string(frame.font_size)),68,230,6,24,.75,.87,1,"font_size");
-        if(!frame.controls_text.empty())paint.label(utf16(frame.controls_text),92,231,5.1,222,.75,.8,.86,"controls");
+        paint.label(utf16(catalog.ui("font_size")+" "+std::to_string(frame.font_size)),x(68),y(230),6*f,24*f,.75,.87,1,"font_size");
+        if(!frame.controls_text.empty())paint.label_fit(utf16(frame.controls_text),x(92),y(231),5.1*f,314-x(92),.75,.8,.86,"controls");
     }
     if(frame.history_open) {
         paint.panel(16,18,288,202);

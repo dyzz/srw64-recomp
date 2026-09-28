@@ -17,6 +17,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",
             "settings_language", "settings_language_note",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
+            "settings_ui_size", "settings_ui_size_standard", "settings_ui_size_large", "settings_ui_size_largest", "settings_ui_size_note",
             "settings_battle_ui", "settings_battle_ui_native", "settings_battle_ui_hd", "settings_battle_ui_original", "settings_battle_ui_note",
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
@@ -84,8 +85,6 @@ UI_KEYS |= {
 # Controller versions of the key hints ("_pad"), shown after controller input (Steam Deck).
 PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint"}
 UI_KEYS |= {key + "_pad" for key in PAD_HINT_KEYS}
-# Controller names in hints.
-UI_KEYS |= {"pad_rstick_down"}
 
 
 def load_profile(path: Path, *, locale: str | None = None, images: str | None = None) -> dict:

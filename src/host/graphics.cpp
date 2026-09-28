@@ -8,6 +8,7 @@
 #include "window_test_control.hpp"
 #include "input_mode.hpp"
 #include "input_bindings.hpp"
+#include "steam_deck.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
 #include "native_gpu.hpp"
@@ -97,23 +98,6 @@ static_assert(SDL_CONTROLLER_BUTTON_BACK == srw64::input::pad_button::Back && SD
               SDL_CONTROLLER_BUTTON_DPAD_RIGHT == srw64::input::pad_button::DRight && SDL_CONTROLLER_BUTTON_MAX == srw64::input::pad_button::Count);
 static_assert(SDL_CONTROLLER_AXIS_RIGHTY == srw64::input::pad_axis::RightY && SDL_CONTROLLER_AXIS_TRIGGERRIGHT == srw64::input::pad_axis::TriggerRight &&
               SDL_CONTROLLER_AXIS_MAX == srw64::input::pad_axis::Count);
-
-// Running on a Steam Deck. Steam sets SteamDeck=1 for the games it starts there; started
-// any other way (Desktop Mode, a terminal) the firmware still names the machine: Valve's
-// Jupiter (LCD) or Galileo (OLED).
-bool on_steam_deck() {
-    static const bool deck = [] {
-        if (const char* value = std::getenv("SteamDeck"); value && std::string(value) == "1") return true;
-#ifdef __linux__
-        const auto read = [](const char* path) { std::ifstream file(path); std::string line; std::getline(file, line); return line; };
-        const auto product = read("/sys/devices/virtual/dmi/id/product_name");
-        return read("/sys/devices/virtual/dmi/id/board_vendor") == "Valve" && (product == "Jupiter" || product == "Galileo");
-#else
-        return false;
-#endif
-    }();
-    return deck;
-}
 
 // The physical key of the same name as a key the debug interface holds or presses.
 SDL_Scancode virtual_scancode(srw64::debug::Key key) {
@@ -582,7 +566,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #endif
     // Steam sets SteamDeck=1 for games on the Deck: fill its screen, Game Mode or not.
     const bool deck = std::getenv("SteamDeck") && std::string(std::getenv("SteamDeck")) == "1";
-    if (on_steam_deck()) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
+    if (srw64::on_steam_deck()) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               960, 720, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
@@ -672,7 +656,7 @@ void srw64_update_window(void*) {
                 srw64::input::pad_family=
                     type==SDL_CONTROLLER_TYPE_PS3 || type==SDL_CONTROLLER_TYPE_PS4 || type==SDL_CONTROLLER_TYPE_PS5?2:
                     type==SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO?3:
-                    on_steam_deck() || (name && std::string(name).find("Steam Deck")!=std::string::npos)?1:0;
+                    srw64::on_steam_deck() || (name && std::string(name).find("Steam Deck")!=std::string::npos)?1:0;
                 fprintf(stderr,"SRW64_PAD name=\"%s\" type=%d family=%d\n",name?name:"",int(type),int(srw64::input::pad_family.load()));
             }
             continue;

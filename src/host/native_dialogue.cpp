@@ -534,6 +534,7 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     frame->speed=reader.speed;frame->auto_read=reader.auto_read;frame->fast=reader.fast;
     frame->history_open=reader.history_open;frame->skipping=reader.skipping;frame->display_only=display_only;
     frame->pad_hints=input::pad_hints.load();frame->pad_family=input::pad_family.load();
+    frame->bar_scale=settings::ui_scale(settings::ui_size());
     {
         // The hints name what the player bound (input_bindings.hpp); copied again only when that changes.
         static input::Bindings bindings=input::live_bindings().get();
