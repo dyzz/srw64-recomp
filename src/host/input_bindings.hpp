@@ -24,6 +24,9 @@ enum class Action : uint8_t {
     Settings,   // the settings window (View)
     AuxLeft,    // dialogue: automatic reading on / off; idle map: previous enemy (L2)
     AuxRight,   // dialogue: fast-forward; idle map: next enemy; battle: end the animation (R2)
+    Animation,  // the battle animation on / off on the pre-battle screens (Y)
+    Language,   // the next reading language (L3; F7 on the keyboard)
+    Images,     // Original / HD pictures (R3; F6 on the keyboard)
     Count
 };
 inline constexpr size_t action_count = size_t(Action::Count);
@@ -38,6 +41,7 @@ inline constexpr std::array<ActionInfo, action_count> actions{{
     {"d_up", 0x0800}, {"d_down", 0x0400}, {"d_left", 0x0200}, {"d_right", 0x0100},
     {"stick_up", 1u << 16}, {"stick_down", 1u << 17}, {"stick_left", 1u << 18}, {"stick_right", 1u << 19},
     {"settings", pad_view}, {"aux_left", pad_l2}, {"aux_right", pad_r2},
+    {"animation", pad_animation}, {"language", pad_language}, {"images", pad_images},
 }};
 inline constexpr const ActionInfo& info(Action action) { return actions[size_t(action)]; }
 
@@ -85,19 +89,25 @@ inline Bindings default_bindings() {
     }
     // The keyboard reaches the settings window with Ctrl / Cmd + , (frontend.cpp) and has no
     // automatic-reading or enemy keys until the player binds some.
+    // The controller follows what the game's inputs are worth (docs/gameplay/original-controls.md):
+    // A, B, START, the D-pad and the stick as the original; L1 / R1 for L / R. Z only repeats L
+    // in lists and makes Z + START's reset to the title, so it has no button. The freed ones
+    // serve the port: X held speeds the map cursor (C-left), Y the battle animation, the
+    // stick clicks the language and Original / HD; the right stick stays the C buttons.
     using namespace pad_button;  // scancode's names are out of scope here
-    pads(Action::A, {button(A)}); pads(Action::B, {button(B), button(X)}); pads(Action::Z, {button(Y)});
+    pads(Action::A, {button(A)}); pads(Action::B, {button(B)});
     pads(Action::Start, {button(Start)});
     pads(Action::L, {button(LeftShoulder)}); pads(Action::R, {button(RightShoulder)});
     pads(Action::CUp, {axis(pad_axis::RightY, -1)}); pads(Action::CDown, {axis(pad_axis::RightY, 1)});
-    pads(Action::CLeft, {axis(pad_axis::RightX, -1)}); pads(Action::CRight, {axis(pad_axis::RightX, 1)});
+    pads(Action::CLeft, {button(X), axis(pad_axis::RightX, -1)}); pads(Action::CRight, {axis(pad_axis::RightX, 1)});
     pads(Action::DUp, {button(DUp)}); pads(Action::DDown, {button(DDown)});
     pads(Action::DLeft, {button(DLeft)}); pads(Action::DRight, {button(DRight)});
     pads(Action::StickUp, {axis(pad_axis::LeftY, -1)}); pads(Action::StickDown, {axis(pad_axis::LeftY, 1)});
     pads(Action::StickLeft, {axis(pad_axis::LeftX, -1)}); pads(Action::StickRight, {axis(pad_axis::LeftX, 1)});
-    // Z is Y alone, so L2 + Menu cannot make the original's quit-the-stage Z + START.
     pads(Action::Settings, {button(Back)});
     pads(Action::AuxLeft, {axis(pad_axis::TriggerLeft, 1)}); pads(Action::AuxRight, {axis(pad_axis::TriggerRight, 1)});
+    pads(Action::Animation, {button(Y)});
+    pads(Action::Language, {button(LeftStick)}); pads(Action::Images, {button(RightStick)});
     return b;
 }
 

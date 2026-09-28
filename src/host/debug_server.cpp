@@ -117,9 +117,11 @@ uint16_t button_mask(const json& value) {
     return mask;
 }
 
-// Controller buttons by name, "a+r2": the Steam Deck default template's names.
+// Controller buttons by name, "a+r2": the Steam Deck's names, pressing what the default
+// bindings give them (input_bindings.hpp); a remapped controller is not followed.
 uint32_t pad_mask(const std::string& text) {
-    static const std::pair<const char*,uint32_t> names[]={{"a",0x8000},{"b",0x4000},{"x",0x4000},{"y",0x2000},
+    static const std::pair<const char*,uint32_t> names[]={{"a",0x8000},{"b",0x4000},{"x",0x0002},{"y",input::pad_animation},
+        {"l3",input::pad_language},{"r3",input::pad_images},
         {"menu",0x1000},{"up",0x800},{"down",0x400},{"left",0x200},{"right",0x100},{"l1",0x20},{"r1",0x10},
         {"rs_up",8},{"rs_down",4},{"rs_left",2},{"rs_right",1},
         {"ls_up",1u<<16},{"ls_down",1u<<17},{"ls_left",1u<<18},{"ls_right",1u<<19},

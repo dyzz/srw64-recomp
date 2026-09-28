@@ -5,7 +5,8 @@
 //
 // - Action tokens name an N64 input or a host button: {A} {B} {Z} {Start} {L} {R}, the
 //   C buttons {CUp} {CDown} {CLeft} {CRight}, the D-pad {DUp} {DDown} {DLeft} {DRight},
-//   {Settings} and the trigger functions {AuxL} {AuxR}; groups {DPad} {DUpDown}
+//   {Settings}, the trigger functions {AuxL} {AuxR}, {Anim} (battle animation), {Lang},
+//   {Images} (Original / HD); groups {DPad} {DUpDown}
 //   {DLeftRight} {C} {CUpDown} {Stick}. They show what the player bound to it
 //   (input_bindings.hpp): the controller button's icon, in the controller's own family,
 //   in a controller hint; the key in a keyboard hint (an icon for Enter, Esc, arrows and
@@ -56,8 +57,8 @@ inline char32_t pad_glyph(const input::PadInput& p, PadFamily family) {
         case b::DDown: return 0xE832;
         case b::DLeft: return 0xE833;
         case b::DRight: return 0xE834;
-        case b::LeftStick: return 0xE838;
-        case b::RightStick: return 0xE839;
+        case b::LeftStick: return 0xE83D;   // L3
+        case b::RightStick: return 0xE83E;  // R3
         default: return 0;
         }
     }
@@ -113,6 +114,7 @@ inline constexpr ActionToken action_tokens[] = {
     {"DUp", {Action::DUp}, 1, {}, 0}, {"DDown", {Action::DDown}, 1, {}, 0},
     {"DLeft", {Action::DLeft}, 1, {}, 0}, {"DRight", {Action::DRight}, 1, {}, 0},
     {"Settings", {Action::Settings}, 1, {}, 0}, {"AuxL", {Action::AuxLeft}, 1, {}, 0}, {"AuxR", {Action::AuxRight}, 1, {}, 0},
+    {"Anim", {Action::Animation}, 1, {}, 0}, {"Lang", {Action::Language}, 1, {}, 0}, {"Images", {Action::Images}, 1, {}, 0},
     {"DPad", {Action::DUp, Action::DDown, Action::DLeft, Action::DRight}, 4, same(0xE830), 0xE849},
     {"DUpDown", {Action::DUp, Action::DDown}, 2, same(0xE835), 0},
     {"DLeftRight", {Action::DLeft, Action::DRight}, 2, same(0xE836), 0},

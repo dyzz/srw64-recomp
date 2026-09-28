@@ -114,17 +114,18 @@ text::PromptContext prompt_context(bool pad){return {pad,pad_family(),&hint_bind
 // button reads as that button's default key, which the page code knows (Z for A, Q for L,
 // the arrows for the D-pad and the stick). Enter, Esc, Tab and the arrow keys keep their own
 // meaning whatever else they are bound to, so no binding can lock the player out of a page.
-// A key bound to something with no page meaning (the trigger functions) does nothing here.
-// True when the key is the settings button's. The controller bridge (pad_keys) already
-// sends the default keys.
-bool follow_bindings(SDL_Event& event) {
-    if((event.type!=SDL_KEYDOWN && event.type!=SDL_KEYUP) || !event.key.windowID)return false;
+// The animation button reads as C-down's key, which the pre-battle pages take. A key bound
+// to something with no page meaning (the trigger functions) does nothing here. Returns the
+// host button a key stands for (settings, language, Original / HD), for the caller; the
+// controller bridge (pad_keys) already sends the default keys.
+std::optional<input::Action> follow_bindings(SDL_Event& event) {
+    if((event.type!=SDL_KEYDOWN && event.type!=SDL_KEYUP) || !event.key.windowID)return std::nullopt;
     const int key=int(event.key.keysym.scancode);
     using input::Action;
     namespace sc=input::scancode;
-    if(key==sc::Return || key==sc::Escape || key==SDL_SCANCODE_TAB || key==sc::Up || key==sc::Down || key==sc::Left || key==sc::Right)return false;
+    if(key==sc::Return || key==sc::Escape || key==SDL_SCANCODE_TAB || key==sc::Up || key==sc::Down || key==sc::Left || key==sc::Right)return std::nullopt;
     const auto* action=input::action_of_key(hint_bindings,key);
-    if(!action)return false;
+    if(!action)return std::nullopt;
     SDL_Keycode page=SDLK_UNKNOWN;
     switch(*action) {
     case Action::A:page=SDLK_z;break; case Action::B:page=SDLK_x;break; case Action::Z:page=SDLK_SPACE;break;
@@ -132,12 +133,13 @@ bool follow_bindings(SDL_Event& event) {
     case Action::CUp:page=SDLK_i;break; case Action::CDown:page=SDLK_k;break; case Action::CLeft:page=SDLK_j;break; case Action::CRight:page=SDLK_l;break;
     case Action::DUp:case Action::StickUp:page=SDLK_UP;break; case Action::DDown:case Action::StickDown:page=SDLK_DOWN;break;
     case Action::DLeft:case Action::StickLeft:page=SDLK_LEFT;break; case Action::DRight:case Action::StickRight:page=SDLK_RIGHT;break;
-    case Action::Settings:return true;
+    case Action::Animation:page=SDLK_k;break;
+    case Action::Settings:case Action::Language:case Action::Images:return *action;
     default:break;
     }
     event.key.keysym.sym=page;
     event.key.keysym.scancode=page==SDLK_UNKNOWN?SDL_SCANCODE_UNKNOWN:SDL_GetScancodeFromKey(page);
-    return false;
+    return std::nullopt;
 }
 std::string label(const std::string& key){
     const auto& catalog=localization::catalog();
@@ -463,7 +465,7 @@ struct KeyRow {const char* section;const char* row;};
 constexpr KeyRow key_rows[]={
     {"game","confirm"},{"game","start"},{"game","shoulders"},{"game","z"},{"game","c"},{"game","move"},
     {"dialogue","next"},{"dialogue","fast"},{"dialogue","skip"},{"dialogue","auto"},{"dialogue","history"},{"dialogue","text_size"},
-    {"map","units"},{"map","enemies"},{"map","farthest"},{"map","animation"},
+    {"map","units"},{"map","enemies"},{"map","farthest"},{"map","cursor_fast"},{"map","animation"},
     {"shortcuts","settings"},{"shortcuts","language"},{"shortcuts","images"},{"shortcuts","reload"},{"shortcuts","quit"}};
 #ifndef SRW64_VERSION
 #define SRW64_VERSION "?"
@@ -1778,7 +1780,7 @@ std::string battle_hd_page(const json& next) {
 // to the target, or to the weapon list when an enemy attacks; C-down the animation.
 void battle_hd_buttons(uint32_t pressed) {
     const bool menu=battle_request.value("mode",0)==2;
-    if(pressed&0x0004){choose("battle-animation");return;}
+    if(pressed&(0x0004|input::pad_animation)){choose("battle-animation");return;}
     if(pressed&0x4000){choose(menu?"battle-weapon":"battle-back");return;}
     static constexpr const char* items[]={"battle-confirm","battle-weapon","battle-evade","battle-defend"};
     auto* focus=context->GetFocusElement();
@@ -1982,7 +1984,7 @@ void battle_buttons(uint32_t pressed) {
     if(!spirits) {
         if(pressed&0x0020){choose("battle-weapon");return;}
         if(pressed&0x0010){choose("battle-spirits");return;}
-        if(pressed&0x0004){choose("battle-animation");return;}
+        if(pressed&(0x0004|input::pad_animation)){choose("battle-animation");return;}
     }
     if(pressed&(0x0F00|(0xFu<<16))) {
         std::vector<Rml::Element*> items;
@@ -2158,9 +2160,12 @@ void sync() {
             bindings_seen=revision;hint_bindings=input::live_bindings().get();
             for(auto* stamp:all_stamps())stamp->clear();
         }
-        // The settings button: View, or a key bound to it (the keyboard state holds both).
-        static uint32_t view_before=0;
-        const uint32_t view_now=srw64_keyboard_state()&input::pad_view,view_pressed=view_now&~view_before;view_before=view_now;
+        // The host's buttons, from the controller or keys bound to them (the keyboard state
+        // holds both): the settings window, the next language, Original / HD.
+        static uint32_t host_before=0;
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images);
+        const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
+        const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
         const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
         // A capture takes the controller's presses itself (capture_event), and once it has one
@@ -2168,6 +2173,8 @@ void sync() {
         if(capture.release && !pad_now)capture.release=false;
         if(!capture.queue.empty() && SDL_GetTicks64()-capture.since>6000)capture.queue.clear();
         const bool capturing=!capture.queue.empty() || capture.release;
+        if(!capturing && (host_pressed&input::pad_language))settings::request_locale(localization::next_locale(localization::catalog().locale));
+        if(!capturing && (host_pressed&input::pad_images))presentation::image_mode.toggle();
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
@@ -2225,8 +2232,12 @@ bool dispatch(SDL_Event& event) {
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
     // Typing into the funds box or a name takes the keys as they are.
-    if(funds_editing.empty() && !names::request().visible && follow_bindings(event)) {
-        if(event.type==SDL_KEYDOWN && !event.key.repeat)choose(settings_open?"settings-close":"settings-open");
+    if(funds_editing.empty() && !names::request().visible)if(const auto host=follow_bindings(event)) {
+        if(event.type==SDL_KEYDOWN && !event.key.repeat) {
+            if(*host==input::Action::Settings)choose(settings_open?"settings-close":"settings-open");
+            else if(*host==input::Action::Language)settings::request_locale(localization::next_locale(localization::catalog().locale));
+            else presentation::image_mode.toggle();
+        }
         return true;
     }
     if(!funds_editing.empty() && !settings_open){

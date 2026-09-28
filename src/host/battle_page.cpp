@@ -9,6 +9,8 @@
 #include <atomic>
 #include <mutex>
 
+uint32_t srw64_keyboard_state();  // graphics.cpp: keyboard and controller, host bits included
+
 namespace srw64::battle_page {
 namespace {
 using namespace guest;
@@ -145,9 +147,13 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     std::unique_lock lock(mutex);
     const auto style=settings::battle_ui();
     if(!current.value("visible",false) && style==settings::BattleUi::Original) {
-        // Original confirmation, plus one addition: C-down toggles the battle
-        // animation (8015DDA8 & 4 set = off). Its A/B/menu handling is untouched.
-        if(read(ram,0x80178A08,2)&0x0004)write8(ram,0x8015DDA8,read(ram,0x8015DDA8,1)^4);
+        // Original confirmation, plus one addition: C-down, or the animation button
+        // (input_bindings.hpp, Y on the Deck), toggles the battle animation (8015DDA8 & 4
+        // set = off). Its A/B/menu handling is untouched.
+        static bool animation_before=false;
+        const bool animation_now=srw64_keyboard_state()&input::pad_animation,animation_pressed=animation_now && !animation_before;
+        animation_before=animation_now;
+        if((read(ram,0x80178A08,2)&0x0004) || animation_pressed)write8(ram,0x8015DDA8,read(ram,0x8015DDA8,1)^4);
         original_animation=(read(ram,0x8015DDA8,1)&4)==0;original_mode=mode;original_vi=srw64_current_vi();
         return false;
     }

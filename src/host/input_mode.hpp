@@ -19,4 +19,9 @@ inline constexpr uint32_t pad_view = 1u << 20;  // View / Back: the settings win
 // idle tactical map they put the cursor on the previous / next enemy (enemy_cycle.cpp).
 inline constexpr uint32_t pad_l2 = 1u << 21;
 inline constexpr uint32_t pad_r2 = 1u << 22;
+// More host buttons (input_bindings.hpp; on the Deck Y, L3 and R3 by default): the battle
+// animation on / off on the pre-battle screens, the next reading language, Original / HD.
+inline constexpr uint32_t pad_animation = 1u << 23;
+inline constexpr uint32_t pad_language = 1u << 24;
+inline constexpr uint32_t pad_images = 1u << 25;
 }

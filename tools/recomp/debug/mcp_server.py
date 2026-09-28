@@ -46,7 +46,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string"}, "hold_ms": {"type": "integer"},
          "steps": {"type": "array", "items": {"type": "object"}}}}},
-    {"name": "srw64_pad", "description": "A virtual controller merged into the real one every frame (controller hints, native pages, and the host keys View, L2, R2). Names follow the Steam Deck: a b x y menu view l1 r1 l2 r2 up down left right ls_up ls_down ls_left ls_right rs_up rs_down rs_left rs_right; combine with +. {press, hold_ms} or {down} / {up} / {release_all: true}.",
+    {"name": "srw64_pad", "description": "A virtual controller merged into the real one every frame (controller hints, native pages, and the host keys View, L2, R2). Names follow the Steam Deck and press what its default bindings give (x: C-left, y: battle animation, l3: language, r3: Original/HD): a b x y menu view l1 r1 l2 r2 l3 r3 up down left right ls_up ls_down ls_left ls_right rs_up rs_down rs_left rs_right; combine with +. {press, hold_ms} or {down} / {up} / {release_all: true}.",
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string", "description": "e.g. \"r2\" or \"r1+menu\""}, "hold_ms": {"type": "integer", "minimum": 0, "maximum": 10000},
          "down": {"type": "string"}, "up": {"type": "string"}, "release_all": {"type": "boolean"}}}},
