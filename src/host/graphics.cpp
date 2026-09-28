@@ -7,6 +7,7 @@
 #include "diagnostics.hpp"
 #include "window_test_control.hpp"
 #include "input_mode.hpp"
+#include "input_bindings.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
 #include "native_gpu.hpp"
@@ -84,6 +85,27 @@ std::string capture_clock = "native_vi_at_draw";
 // SDL is polled on the window thread; the game reads one coherent snapshot.
 std::atomic<uint32_t> keyboard_state{}, pad_state{};
 SDL_GameController* pad{};
+
+// input_bindings.hpp spells SDL's numbers out so it needs no SDL.
+static_assert(SDL_SCANCODE_Z == srw64::input::scancode::Z && SDL_SCANCODE_RETURN == srw64::input::scancode::Return &&
+              SDL_SCANCODE_SPACE == srw64::input::scancode::Space && SDL_SCANCODE_UP == srw64::input::scancode::Up &&
+              SDL_SCANCODE_A == srw64::input::scancode::A && SDL_SCANCODE_ESCAPE == srw64::input::scancode::Escape);
+static_assert(SDL_CONTROLLER_BUTTON_BACK == srw64::input::pad_button::Back && SDL_CONTROLLER_BUTTON_START == srw64::input::pad_button::Start &&
+              SDL_CONTROLLER_BUTTON_LEFTSHOULDER == srw64::input::pad_button::LeftShoulder &&
+              SDL_CONTROLLER_BUTTON_DPAD_RIGHT == srw64::input::pad_button::DRight && SDL_CONTROLLER_BUTTON_MAX == srw64::input::pad_button::Count);
+static_assert(SDL_CONTROLLER_AXIS_RIGHTY == srw64::input::pad_axis::RightY && SDL_CONTROLLER_AXIS_TRIGGERRIGHT == srw64::input::pad_axis::TriggerRight &&
+              SDL_CONTROLLER_AXIS_MAX == srw64::input::pad_axis::Count);
+
+// The physical key a key held through the debug interface stands for (same name).
+SDL_Scancode virtual_scancode(srw64::debug::Key key) {
+    static const auto table = [] {
+        std::array<SDL_Scancode, srw64::debug::KeyCount> t{};
+        for (unsigned k = 0; k < srw64::debug::KeyCount; ++k)
+            t[k] = SDL_GetScancodeFromName(std::string(srw64::debug::key_names[k]).c_str());
+        return t;
+    }();
+    return table[key];
+}
 
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
@@ -689,6 +711,13 @@ void srw64_update_window(void*) {
     if(virtual_keys)keys_released=false;
     srw64::settings::release_input_when(keys_released);
 #endif
+    // The bindings, copied again only when the Controls page changes them.
+    static srw64::input::Bindings bindings = srw64::input::live_bindings().get();
+    static uint64_t bindings_revision = srw64::input::live_bindings().revision();
+    if (const auto revision = srw64::input::live_bindings().revision(); revision != bindings_revision) {
+        bindings = srw64::input::live_bindings().get();
+        bindings_revision = revision;
+    }
     if (!editing_name) {
         const Uint8* keys = SDL_GetKeyboardState(nullptr);
         // Physical positions stay stable across keyboard layouts. Do not pass
@@ -696,44 +725,27 @@ void srw64_update_window(void*) {
         // window focus; keys held through the debug interface do not, since it
         // drives the game while another application is in front.
         const bool physical = SDL_GetKeyboardFocus() == window && !(SDL_GetModState() & (KMOD_GUI | KMOD_ALT | KMOD_CTRL));
-        using namespace srw64::debug;
-        const auto bind = [&](SDL_Scancode key, Key debug_key, uint32_t mask) {
-            if ((physical && keys[key]) || (virtual_keys & bit(debug_key))) state |= mask;
-        };
-        bind(SDL_SCANCODE_Z, Z, 0x8000); bind(SDL_SCANCODE_X, X, 0x4000);
-        bind(SDL_SCANCODE_SPACE, Space, 0x2000); bind(SDL_SCANCODE_RETURN, Return, 0x1000);
-        bind(SDL_SCANCODE_UP, Up, 0x0800); bind(SDL_SCANCODE_DOWN, Down, 0x0400);
-        bind(SDL_SCANCODE_LEFT, Left, 0x0200); bind(SDL_SCANCODE_RIGHT, Right, 0x0100);
-        bind(SDL_SCANCODE_Q, Q, 0x0020); bind(SDL_SCANCODE_E, E, 0x0010);
-        bind(SDL_SCANCODE_I, I, 0x0008); bind(SDL_SCANCODE_K, K, 0x0004);
-        bind(SDL_SCANCODE_J, J, 0x0002); bind(SDL_SCANCODE_L, L, 0x0001);
-        bind(SDL_SCANCODE_W, W, 1U << 16); bind(SDL_SCANCODE_S, S, 1U << 17);
-        bind(SDL_SCANCODE_A, A, 1U << 18); bind(SDL_SCANCODE_D, D, 1U << 19);
+        // The keys are the player's bindings (input_bindings.hpp); keys the debug interface
+        // holds count as the physical key of the same name.
+        state |= srw64::input::key_mask(bindings, [&](int key) {
+            if (physical && key >= 0 && key < SDL_NUM_SCANCODES && keys[key]) return true;
+            for (unsigned k = 0; k < srw64::debug::KeyCount; ++k)
+                if ((virtual_keys & srw64::debug::bit(srw64::debug::Key(k))) && virtual_scancode(srw64::debug::Key(k)) == key) return true;
+            return false;
+        });
     }
     // Controller: the same N64 mask as the keyboard table above. Native pages
     // that own the pad read it through srw64_pad_state(); the game never sees
     // it then, because each page's input() filter swallows the buttons.
     uint32_t buttons = 0;
-    if (pad) {
-        const auto button = [&](SDL_GameControllerButton b, uint32_t mask) { if (SDL_GameControllerGetButton(pad, b)) buttons |= mask; };
-        const auto axis = [&](SDL_GameControllerAxis a, int sign, uint32_t mask) { if (SDL_GameControllerGetAxis(pad, a) * sign > 16000) buttons |= mask; };
-        button(SDL_CONTROLLER_BUTTON_A, 0x8000); button(SDL_CONTROLLER_BUTTON_B, 0x4000); button(SDL_CONTROLLER_BUTTON_X, 0x4000);
-        button(SDL_CONTROLLER_BUTTON_Y, 0x2000); button(SDL_CONTROLLER_BUTTON_START, 0x1000);
-        button(SDL_CONTROLLER_BUTTON_DPAD_UP, 0x0800); button(SDL_CONTROLLER_BUTTON_DPAD_DOWN, 0x0400);
-        button(SDL_CONTROLLER_BUTTON_DPAD_LEFT, 0x0200); button(SDL_CONTROLLER_BUTTON_DPAD_RIGHT, 0x0100);
-        button(SDL_CONTROLLER_BUTTON_LEFTSHOULDER, 0x0020); button(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER, 0x0010);
-        axis(SDL_CONTROLLER_AXIS_RIGHTY, -1, 0x0008); axis(SDL_CONTROLLER_AXIS_RIGHTY, 1, 0x0004);
-        axis(SDL_CONTROLLER_AXIS_RIGHTX, -1, 0x0002); axis(SDL_CONTROLLER_AXIS_RIGHTX, 1, 0x0001);
-        axis(SDL_CONTROLLER_AXIS_LEFTY, -1, 1U << 16); axis(SDL_CONTROLLER_AXIS_LEFTY, 1, 1U << 17);
-        axis(SDL_CONTROLLER_AXIS_LEFTX, -1, 1U << 18); axis(SDL_CONTROLLER_AXIS_LEFTX, 1, 1U << 19);
-        // Host-only (docs/design/steam-deck-controls.md): View opens the settings window
-        // (Steam Deck: no keyboard needed); the triggers serve dialogue and the map's enemy
-        // cycling. Z is Y alone, so L2 + Menu no longer makes the original's quit-the-stage
-        // Z + START.
-        button(SDL_CONTROLLER_BUTTON_BACK, srw64::input::pad_view);
-        axis(SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1, srw64::input::pad_l2);
-        axis(SDL_CONTROLLER_AXIS_TRIGGERRIGHT, 1, srw64::input::pad_r2);
-    }
+    // The player's controller bindings (input_bindings.hpp). The defaults keep the host's
+    // own buttons (docs/design/steam-deck-controls.md): View opens the settings window
+    // (Steam Deck: no keyboard needed), the triggers serve dialogue and the map's enemy
+    // cycling, and Z is Y alone, so L2 + Menu cannot make the original's quit-the-stage Z + START.
+    if (pad)
+        buttons = srw64::input::pad_mask(bindings,
+            [&](uint8_t b) { return SDL_GameControllerGetButton(pad, SDL_GameControllerButton(b)) != 0; },
+            [&](uint8_t a) { return int(SDL_GameControllerGetAxis(pad, SDL_GameControllerAxis(a))); });
     buttons |= srw64::debug::pad().load(std::memory_order_relaxed);
     // Controller play hides the pointer; the mouse or touch screen brings it back.
     static int cursor=-1;

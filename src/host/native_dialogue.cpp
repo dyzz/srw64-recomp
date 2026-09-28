@@ -22,6 +22,7 @@
 
 uint64_t srw64_current_vi();
 uint32_t srw64_pad_state();
+uint32_t srw64_keyboard_state();
 namespace srw64::dialogue {
 namespace {
 using json=nlohmann::json;
@@ -605,8 +606,9 @@ uint16_t input(uint16_t buttons) {
     // R2 held reads as R + A, fast-forward, the same chord as E + Z (Reader::update: a press
     // turns one page, held it runs, let go reading is manual); with Menu as R + START, the
     // segment skip, which R2 letting go does not stop. An L2 press toggles automatic
-    // reading. The game never sees either trigger.
-    const uint32_t pad=srw64_pad_state();
+    // reading. The game never sees either trigger. Keys bound to them (input_bindings.hpp)
+    // count the same, so this reads the keyboard state, which holds the controller's too.
+    const uint32_t pad=srw64_keyboard_state();
     static bool l2_before=false;
     if((pad&srw64::input::pad_l2) && !l2_before)auto_toggle=true;
     l2_before=pad&srw64::input::pad_l2;

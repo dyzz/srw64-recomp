@@ -2,7 +2,9 @@
 #include <filesystem>
 #include <cstdint>
 #include <string>
+#include <optional>
 #include <string_view>
+#include "input_bindings.hpp"
 struct SDL_Window;
 namespace srw64::settings {
 void window_init(SDL_Window* window,const std::filesystem::path& output);
@@ -47,4 +49,10 @@ void set_native_title_ui(bool native);
 // Window thread only.
 std::string settings_page();
 void set_settings_page(const std::string& page);
+// Controls (input_bindings.hpp): the SDL names input.json uses, and back. window_init loads
+// SRW64_INPUT_SETTINGS into input::live_bindings() and saves each later change there.
+std::string key_name(int scancode);
+int key_from_name(const std::string& name);
+std::string pad_input_name(const input::PadInput& input);
+std::optional<input::PadInput> pad_input_from_name(const std::string& name);
 }

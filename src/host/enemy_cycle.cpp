@@ -66,8 +66,9 @@ std::vector<Unit> opponents(const uint8_t* ram) {
 }
 
 bool idle(uint8_t* ram, recomp_context* ctx) {
-    // The triggers are host bits (input_mode.hpp): the game never reads them.
-    const uint32_t triggers = srw64_pad_state() & (input::pad_l2 | input::pad_r2);
+    // The triggers are host bits (input_mode.hpp): the game never reads them. The keyboard
+    // state holds the controller's and any keys bound to them (input_bindings.hpp).
+    const uint32_t triggers = srw64_keyboard_state() & (input::pad_l2 | input::pad_r2);
     const uint64_t now = srw64_current_vi();
     const bool fresh = triggers & ~held_before;
     if (triggers != held_before) held_since = now;

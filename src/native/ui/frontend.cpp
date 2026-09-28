@@ -1949,9 +1949,12 @@ void sync() {
         static uint32_t pad_before=0;
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
         if(pad_pressed){set_pad_mode(true);set_pointer_mode(false);}
+        // The settings button: View, or a key bound to it (the keyboard state holds both).
+        static uint32_t view_before=0;
+        const uint32_t view_now=srw64_keyboard_state()&input::pad_view,view_pressed=view_now&~view_before;view_before=view_now;
         // Page requests stay null until their page first reports.
         const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
-        if(pad_pressed&input::pad_view)choose(settings_open?"settings-close":"settings-open");
+        if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
         else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
         else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))

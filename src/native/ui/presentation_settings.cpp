@@ -5,6 +5,7 @@
 #include "modal_input.hpp"
 #include "localization/catalog.hpp"
 #include "json/json.hpp"
+#include "input_bindings.hpp"
 #include <atomic>
 #include <cstdlib>
 #include <filesystem>
@@ -17,7 +18,38 @@ std::atomic_bool applying{},awaiting_release{};
 ModalInputRelease release_gate;
 uint64_t applying_request{};
 std::string applying_locale,last_error,page;
-std::filesystem::path destination,output;
+std::filesystem::path destination,output,input_destination;
+// input.json (SRW64_INPUT_SETTINGS): the actions whose bindings differ from the defaults,
+// each device's inputs by SDL name ("Z", "Return"; "a", "leftshoulder", "righty-").
+void save_bindings(const input::Bindings& bindings) {
+    if(input_destination.empty())return;
+    const auto defaults=input::default_bindings();
+    nlohmann::json keyboard=nlohmann::json::object(),controller=nlohmann::json::object();
+    for(size_t i=0;i<input::action_count;++i) {
+        const auto id=std::string(input::actions[i].id);
+        if(bindings.keys[i]!=defaults.keys[i]){auto& row=keyboard[id]=nlohmann::json::array();for(int key:bindings.keys[i])row.push_back(key_name(key));}
+        if(bindings.pads[i]!=defaults.pads[i]){auto& row=controller[id]=nlohmann::json::array();for(const auto& p:bindings.pads[i])row.push_back(pad_input_name(p));}
+    }
+    try{srw64::app::atomic_write(input_destination,nlohmann::json({{"schema","srw64.input-bindings.v1"},{"keyboard",keyboard},{"controller",controller}}).dump(2)+"\n");}
+    catch(const std::exception& error){last_error=error.what();}
+}
+input::Bindings load_bindings(const nlohmann::json& saved) {
+    auto bindings=input::default_bindings();
+    if(!saved.is_object() || saved.value("schema","")!="srw64.input-bindings.v1")return bindings;
+    for(size_t i=0;i<input::action_count;++i) {
+        const auto id=std::string(input::actions[i].id);
+        // Names this build does not know are dropped; an action keeps an empty list if the player cleared it.
+        if(saved.contains("keyboard") && saved["keyboard"].contains(id) && saved["keyboard"][id].is_array()) {
+            bindings.keys[i].clear();
+            for(const auto& name:saved["keyboard"][id])if(name.is_string())if(const int key=key_from_name(name.get<std::string>());key>0)bindings.keys[i].push_back(key);
+        }
+        if(saved.contains("controller") && saved["controller"].contains(id) && saved["controller"][id].is_array()) {
+            bindings.pads[i].clear();
+            for(const auto& name:saved["controller"][id])if(name.is_string())if(const auto p=pad_input_from_name(name.get<std::string>()))bindings.pads[i].push_back(*p);
+        }
+    }
+    return bindings;
+}
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true};
 void persist(const std::filesystem::path& path,const std::string& locale) {
@@ -91,6 +123,30 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object()){battle=battle_ui_from(saved.value("battle_ui","native"));native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";native_title=saved.value("title_ui","native")!="original";}
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
     }
+    if(const auto* path=std::getenv("SRW64_INPUT_SETTINGS"))input_destination=path;
+    if(!input_destination.empty() && std::filesystem::exists(input_destination)) {
+        std::ifstream file(input_destination);
+        input::live_bindings().set(load_bindings(nlohmann::json::parse(file,nullptr,false)),false);
+    }
+    input::live_bindings().set_saver(save_bindings);
+}
+std::string key_name(int key){return SDL_GetScancodeName(SDL_Scancode(key));}
+int key_from_name(const std::string& name){return int(SDL_GetScancodeFromName(name.c_str()));}
+std::string pad_input_name(const input::PadInput& p) {
+    if(p.kind==input::PadInput::Button){const char* name=SDL_GameControllerGetStringForButton(SDL_GameControllerButton(p.index));return name?name:"";}
+    const char* name=SDL_GameControllerGetStringForAxis(SDL_GameControllerAxis(p.index));
+    return std::string(name?name:"")+(p.kind==input::PadInput::AxisMinus?"-":"+");
+}
+std::optional<input::PadInput> pad_input_from_name(const std::string& name) {
+    if(name.empty())return std::nullopt;
+    if(name.back()=='+' || name.back()=='-') {
+        const auto axis=SDL_GameControllerGetAxisFromString(name.substr(0,name.size()-1).c_str());
+        if(axis==SDL_CONTROLLER_AXIS_INVALID)return std::nullopt;
+        return input::axis(uint8_t(axis),name.back()=='-'?-1:1);
+    }
+    const auto button=SDL_GameControllerGetButtonFromString(name.c_str());
+    if(button==SDL_CONTROLLER_BUTTON_INVALID)return std::nullopt;
+    return input::button(uint8_t(button));
 }
 
 void control(SDL_Window*,const std::filesystem::path& directory) {

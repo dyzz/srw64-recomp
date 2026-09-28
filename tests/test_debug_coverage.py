@@ -28,15 +28,15 @@ class DebugCoverageTests(unittest.TestCase):
         self.graphics = (HOST / "graphics.cpp").read_text()
 
     def test_every_bound_key_has_a_virtual_key_of_the_same_name(self):
-        binds = re.findall(r"bind\(SDL_SCANCODE_(\w+), (\w+), ", self.graphics)
-        self.assertEqual(len(binds), 18)  # 14 N64 buttons' keys and WASD for the stick
-        for scancode, key in binds:
-            self.assertEqual(scancode.lower(), key.lower(), scancode)
-        bound = {scancode.lower() for scancode, _ in binds}
-        self.assertTrue(bound <= set(debug_keys()))
-        # Every scancode the host reads goes through a binding with a virtual key.
-        used = set(re.findall(r"SDL_SCANCODE_(\w+)", self.graphics))
-        self.assertEqual({name.lower() for name in used}, bound)
+        # The default keyboard bindings (input_bindings.hpp); the player may change them.
+        bindings = (HOST / "input_bindings.hpp").read_text()
+        keys = re.findall(r"keys\(Action::\w+, \{(\w+)\}\)", bindings)
+        self.assertEqual(len(keys), 18)  # 14 N64 buttons' keys and WASD for the stick
+        self.assertTrue({key.lower() for key in keys} <= set(debug_keys()))
+        # Keys held through the interface go through the same bindings as physical keys.
+        self.assertIn("srw64::input::key_mask(bindings", self.graphics)
+        self.assertIn("virtual_scancode(srw64::debug::Key(k)) == key", self.graphics)
+        self.assertIn("SDL_GetScancodeFromName(std::string(srw64::debug::key_names[k]).c_str())", self.graphics)
 
     def test_every_hotkey_has_a_virtual_press(self):
         handled = set(re.findall(r"event\.key\.keysym\.sym ?== ?SDLK_(\w+)", self.graphics))
