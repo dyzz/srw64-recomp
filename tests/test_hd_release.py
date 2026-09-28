@@ -52,9 +52,9 @@ class CompressHdTests(unittest.TestCase):
         art = root / "art"
         (art / "portraits").mkdir(parents=True)
         (art / "backgrounds").mkdir()
-        face = Image.new("RGBA", (32, 32), (200, 150, 100, 0))
-        face.paste((90, 60, 30, 255), (8, 8, 24, 24))
-        face.putpixel((7, 7), (90, 60, 30, 128))
+        face = Image.new("RGBA", (64, 64), (200, 150, 100, 0))
+        face.paste((90, 60, 30, 255), (16, 16, 48, 48))
+        face.putpixel((15, 15), (90, 60, 30, 128))
         face.save(art / "portraits/portrait-9.png")
         Image.new("RGB", (32, 24), (10, 80, 160)).save(art / "backgrounds/background-5470-5478.png")
         (art / "srw64-portraits-hd.json").write_text(json.dumps({
@@ -69,7 +69,8 @@ class CompressHdTests(unittest.TestCase):
         compress = load("compress_hd")
         with tempfile.TemporaryDirectory() as tmp:
             art = self.art(Path(tmp))
-            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "tactical_maps": 0, "jpeg_quality": 95})
+            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "units": 0, "tactical_maps": 0,
+                                                      "rt64_resaved": 0, "jpeg_quality": 92, "jpeg_subsampling": "4:2:0"})
             row = json.loads((art / "srw64-portraits-hd.json").read_text())["images"][0]
             self.assertEqual((row["file"], row["alpha"]), ("portraits/portrait-9.jpg", "portraits/portrait-9.alpha.png"))
             self.assertEqual(row["sha256"], compress.sha(art / row["file"]))
@@ -77,13 +78,14 @@ class CompressHdTests(unittest.TestCase):
             alpha = Image.open(art / row["alpha"])
             self.assertEqual(alpha.mode, "LA")
             # The alpha is exact, and read as RGBA the file is the silhouette portrait.
-            # (JPEG rings near the painted edge; the block 8..15 lies inside the square.)
-            self.assertEqual(alpha.convert("RGBA").getpixel((12, 12)), (41, 41, 41, 255))
-            self.assertEqual(alpha.getpixel((7, 7))[1], 128)
+            # (JPEG rings near the painted edge and 4:2:0 shares colour over 16x16
+            # blocks; the block 16..31 lies inside the square.)
+            self.assertEqual(alpha.convert("RGBA").getpixel((24, 24)), (41, 41, 41, 255))
+            self.assertEqual(alpha.getpixel((15, 15))[1], 128)
             self.assertEqual(alpha.getpixel((0, 0))[1], 0)
             colour = Image.open(art / row["file"])
             self.assertEqual(colour.format, "JPEG")
-            self.assertTrue(all(abs(a - b) <= 3 for a, b in zip(colour.getpixel((12, 12)), (90, 60, 30))))
+            self.assertTrue(all(abs(a - b) <= 3 for a, b in zip(colour.getpixel((24, 24)), (90, 60, 30))))
             background = json.loads((art / "srw64-backgrounds-hd.json").read_text())["images"][0]
             self.assertEqual(background["file"], "backgrounds/background-5470-5478.jpg")
             self.assertEqual(Image.open(art / background["file"]).format, "JPEG")
@@ -95,6 +97,53 @@ class CompressHdTests(unittest.TestCase):
             art = self.art(Path(tmp))
             load("compress_hd").compress(art)
             self.assertEqual(bundle.page_portraits(art), {"9:309": "portraits/portrait-9.jpg", "9:609": "portraits/portrait-9.alpha.png"})
+
+    def test_unit_poses_scale_to_six_times_and_split(self):
+        compress = load("compress_hd")
+        with tempfile.TemporaryDirectory() as tmp:
+            art = Path(tmp)
+            (art / "units").mkdir()
+            pose = Image.new("RGBA", (32, 40), (120, 80, 40, 0))
+            pose.paste((30, 60, 200, 255), (8, 8, 24, 32))
+            pose.save(art / "units/unit-1-2-3.png")
+            tall = Image.new("RGBA", (400, 1600), (120, 80, 40, 255))
+            tall.save(art / "units/unit-4-5-6.png")
+            (art / "srw64-units-hd.json").write_text(json.dumps({"schema": "srw64.unit-images.v1", "scale": 8, "images": [
+                {"scene": 1, "atlas": 2, "palette": 3, "units": [0], "file": "units/unit-1-2-3.png", "sha256": "x", "width": 32, "height": 40},
+                {"scene": 4, "atlas": 5, "palette": 6, "units": [1], "file": "units/unit-4-5-6.png", "sha256": "x", "width": 400, "height": 1600}]}))
+            self.assertEqual(compress.compress_units(art), 2)
+            index = json.loads((art / "srw64-units-hd.json").read_text())
+            self.assertEqual((index["scale"], index["limit"]), (6, 1024))
+            small, big = index["images"]
+            self.assertEqual((small["file"], small["alpha"]), ("units/unit-1-2-3.jpg", "units/unit-1-2-3.alpha.png"))
+            self.assertEqual((small["width"], small["height"]), (24, 30))  # 6/8 of the master
+            self.assertEqual((big["width"], big["height"]), (256, 1024))  # the longer side capped first
+            self.assertEqual(small["sha256"], compress.sha(art / small["file"]))
+            self.assertFalse((art / "units/unit-1-2-3.png").exists())
+            self.assertEqual(Image.open(art / small["file"]).format, "JPEG")
+            alpha = Image.open(art / small["alpha"])
+            self.assertEqual((alpha.mode, alpha.size), ("LA", (24, 30)))
+            self.assertEqual(alpha.getpixel((0, 0))[1], 0)
+            self.assertEqual(alpha.getpixel((12, 15))[1], 255)
+
+    def test_rt64_textures_lose_an_opaque_alpha_only(self):
+        compress = load("compress_hd")
+        with tempfile.TemporaryDirectory() as tmp:
+            art = Path(tmp)
+            opaque = Image.new("RGBA", (64, 64), (10, 20, 30, 255))
+            opaque.putpixel((3, 3), (200, 100, 50, 255))
+            opaque.save(art / "a.png", compress_level=0)
+            clear = Image.new("RGBA", (64, 64), (10, 20, 30, 128))
+            clear.save(art / "b.png", compress_level=0)
+            (art / "rt64.json").write_text(json.dumps({"configuration": {}, "textures": [
+                {"hashes": {"rt64": "a"}, "path": "a.png", "kind": "worldmap"},
+                {"hashes": {"rt64": "b"}, "path": "b.png", "kind": "worldmap"}]}))
+            self.assertEqual(compress.compress_rt64(art), 2)
+            self.assertEqual(Image.open(art / "a.png").mode, "RGB")
+            self.assertEqual(Image.open(art / "a.png").getpixel((3, 3)), (200, 100, 50))
+            self.assertEqual(Image.open(art / "b.png").mode, "RGBA")
+            self.assertEqual(Image.open(art / "b.png").getpixel((0, 0)), (10, 20, 30, 128))
+            self.assertEqual(sorted(p.name for p in art.iterdir()), ["a.png", "b.png", "rt64.json"])
 
     def test_a_translucent_background_is_refused(self):
         compress = load("compress_hd")
