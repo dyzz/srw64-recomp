@@ -74,8 +74,6 @@ CMakeCache.txt
 !/docs/media/*.jpg
 !/docs/media/*.webp
 !/docs/media/reading-demo.mp4
-# Pictures the native pages draw (the Controls page's controller diagram, tools/content/draw_deck_diagram.py).
-!/content/ui/*.png
 
 # Editor and operating-system metadata
 .DS_Store

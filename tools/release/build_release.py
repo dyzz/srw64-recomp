@@ -128,7 +128,7 @@ def main() -> int:
     steps.run("package", [python, "tools/release/package_macos.py", "--binary", str(build / "srw64-gfx-host"),
         "--output", str(app_dir / "SRW64 Recompiled.app"), "--version", args.version, "--minimum-macos", "14.0",
         "--search-dir", str(DEPS / "lib"), "--runtime-library", str(DEPS / "lib/libSDL3.dylib"),
-        "--fonts", str(source / "build/fonts"), "--dialogue", str(source / "content/dialogue"), "--ui", str(source / "content/ui")], source, env)
+        "--fonts", str(source / "build/fonts"), "--dialogue", str(source / "content/dialogue")], source, env)
     app_zip = output / f"SRW64-{args.version}-macos14-arm64.zip"
     zip_folder(steps, "zip-app", app_dir, "SRW64 Recompiled.app", app_zip)
 

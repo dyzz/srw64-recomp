@@ -5,7 +5,10 @@
 using namespace srw64::text;
 namespace in = srw64::input;
 static std::string u8(char32_t c){std::string s;append_utf8(s,c);return s;}
-static std::string name(int scancode){return scancode==in::scancode::Z?"Z":scancode==in::scancode::X?"X":scancode==in::scancode::K?"K":scancode==in::scancode::Q?"Q":"?";}
+static std::string name(int scancode){
+    namespace k=in::scancode;
+    return scancode==k::K?"K":scancode==k::L?"L":scancode==k::J?"J":scancode==k::T?"T":scancode==k::G?"G":scancode==k::H?"H":scancode==k::N1?"1":"?";
+}
 int main(){
     const PromptContext xbox{true,PadFamily::Xbox,nullptr,name},deck{true,PadFamily::Deck,nullptr,name};
     const PromptContext sony{true,PadFamily::PlayStation,nullptr,name},nintendo{true,PadFamily::Nintendo,nullptr,name};
@@ -19,21 +22,22 @@ int main(){
     assert(expand_prompts("{CUp}{CDown}",xbox)==u8(0xE83A)+u8(0xE83B));
     // Groups at their defaults are one icon.
     assert(expand_prompts("{DPad}{DUpDown}{CUpDown}{Stick}",xbox)==u8(0xE830)+u8(0xE835)+u8(0xE83C)+u8(0xE838));
-    // Keyboard hints: fixed keys are icons, bound keys an icon or their name.
-    assert(expand_prompts("{Enter} / {A} 确定",keys)==u8(0xE841)+" / Z 确定");
-    assert(expand_prompts("{Esc} / {B}",keys)==u8(0xE840)+" / X");
+    // Keyboard hints (PCSX2's layout): fixed keys are icons, bound keys an icon or their name.
+    assert(expand_prompts("{Enter} / {A} 确定",keys)==u8(0xE841)+" / K 确定");
+    assert(expand_prompts("{Esc} / {B}",keys)==u8(0xE840)+" / L");
     assert(expand_prompts("{Start}",keys)==u8(0xE841));             // Return
-    assert(expand_prompts("{Z}",keys)==u8(0xE843));                 // Space
     assert(expand_prompts("{DPad} ／ {Stick}",keys)==u8(0xE849)+" ／ "+u8(0xE84A));
     assert(expand_prompts("{DUpDown}",keys)==u8(0xE846)+u8(0xE848));  // two icons, no slash
-    assert(expand_prompts("{CUpDown}",keys)=="?/K");                 // I has no name in this test
-    assert(expand_prompts("{AuxL}",keys)=="\xe2\x80\x94");           // unbound on the keyboard
+    assert(expand_prompts("{CUpDown}",keys)=="T/G");
+    assert(expand_prompts("{C}",keys)=="T/G/J/H");                  // no group icon; C-left's first key is J
+    assert(expand_prompts("{AuxL}",keys)=="1");
+    assert(expand_prompts("{Z}",keys)=="\xe2\x80\x94");              // no key, as no button
     // Rebinding moves the hint with it.
     auto b=in::default_bindings();
-    in::assign_key(b,in::Action::A,in::scancode::K);
+    in::assign_key(b,in::Action::A,in::scancode::G);
     in::assign_pad(b,in::Action::A,in::button(in::pad_button::Y));
     const PromptContext keys2{false,PadFamily::Xbox,&b,name},pad2{true,PadFamily::Xbox,&b,name};
-    assert(expand_prompts("{A}",keys2)=="K" && expand_prompts("{CDown}",keys2)=="Z");
+    assert(expand_prompts("{A}",keys2)=="G" && expand_prompts("{CDown}",keys2)=="K");
     // Y was the animation button's; it gets A in exchange. Z has no controller button.
     assert(expand_prompts("{A}",pad2)==u8(0xE803) && expand_prompts("{Anim}",pad2)==u8(0xE800));
     assert(expand_prompts("{Z}",pad2)=="\xe2\x80\x94");

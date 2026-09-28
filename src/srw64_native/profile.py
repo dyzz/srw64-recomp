@@ -52,7 +52,7 @@ UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
 # The Controls page's remapping (frontend.cpp controls_page).
-UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_fn_a", "controls_fn_animation", "controls_fn_aux_left", "controls_fn_aux_right", "controls_fn_b", "controls_fn_cursor_fast", "controls_fn_images", "controls_fn_l", "controls_fn_language", "controls_fn_move", "controls_fn_r", "controls_fn_settings", "controls_fn_start", "controls_fn_text_size", "controls_fn_z", "controls_keyboard", "controls_layout_note", "controls_list", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
+UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
