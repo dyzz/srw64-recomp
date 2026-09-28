@@ -10,5 +10,5 @@
     "HarmonyOS_Sans_Condensed.ttf": {"member": "HarmonyOS Sans/HarmonyOS_Sans_Condensed.ttf", "sha256": "a07c6bd4e6ebe6f44c55350985295c779a2cdce70de21f4361c67d21a8f341c1"},
     "LICENSE-HarmonyOS-Sans.txt": {"member": "HarmonyOS Sans/LICENSE-update.txt", "sha256": "7d7acf8e3ac928ae7f34aaa9f8e348dd0476dbb52caaa058e402894d4f6efe73"}
   },
-  "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt"]
+  "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt", "SRW64Prompts.ttf", "LICENSE-SRW64Prompts.txt"]
 }

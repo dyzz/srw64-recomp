@@ -1,6 +1,6 @@
 # Steam Deck 键位与按键图标
 
-2026-09-25。Steam Deck 版按 **Steam 默认手柄模板**操作，玩家不用改 Steam 输入设置。本页记录现在的键位（以代码为准）、这次补上的设置入口，以及下一步要做的按键图标。上级计划见[三平台移植](three-platform-port.md) X2，构建与安装见 [Linux 构建](../guide/linux-build.md)。
+2026-09-25。Steam Deck 版按 **Steam 默认手柄模板**操作，玩家不用改 Steam 输入设置。本页记录现在的键位（以代码为准）、这次补上的设置入口，以及按键图标（PromptFont）。上级计划见[三平台移植](three-platform-port.md) X2，构建与安装见 [Linux 构建](../guide/linux-build.md)。
 
 ## 原则
 
@@ -72,55 +72,40 @@
 
 2026-09-27 实现：叠加在游戏上的半透明面板，五页（通用：语言、画面；界面：各原版／新版开关；规则；操作：键位表；关于：版本与字体），L1/R1 翻页，十字键选项，A 确定，B 或视图键关闭，上次的分页写进 `presentation.json` 下次照用。键盘上仍是 Ctrl/Cmd+, 打开、Esc 关闭，Q/E 翻页。游戏仍不暂停。细节见[设置窗口](../native/settings-window.md) §7。尚未实机截图。
 
-## 按键图标规划
+## 按键图标
 
-### 为什么要画图标
+2026-09-28 实现。原计划自己画一套图标字体；用户指出有现成的按键字体，改用 **PromptFont**（Yukari “Shinmera” Hafner，SIL OFL 1.1）。Zelda64Recomp 也用它；本机固定的上游检出里带了一份（`Zelda64Recomp-reference/assets/promptfont`，2023-12-29），不用另外下载。用户定的范围：手柄提示显示手上那只手柄的按键图标，键盘提示给 Esc、Enter 这类功能键加键帽图标；字母键（Z、X、Q、E）仍写字；N64 原版按键不做。
 
-- 界面字体（随包的 HarmonyOS Sans）里没有 ⧉、☰ 这类符号（2026-09-25 用 fontTools 查过 SC、拉丁与 Condensed 三个字形文件），Deck 上直接写会显示成方框。现在的提示只能写成「视图键」「菜单键」这样的文字。
-- Deck 玩家看的是机身上的图形，图标比「右摇杆↓」这样的文字更快认出来。
+### 字体
 
-### 图标集（第一版）
-
-| 组 | 图标 |
-| --- | --- |
-| 面键 | A、B、X、Y（深色圆形键帽，白字） |
-| 肩键 | L1、R1（肩键形）、L2、R2（扳机形） |
-| 系统键 | 视图（两个叠放的方框）、菜单（三条横线） |
-| 方向 | 十字键（整体，以及上／下／左／右／上下／左右高亮） |
-| 摇杆 | 左摇杆、右摇杆（圆形带 L/R，以及上／下／左／右／上下 箭头） |
-
-全部自己画，线条简单，不用 Valve 的原图。
-
-### 画法：一套自绘图标字体
-
-游戏里有两套文字引擎：RmlUi（各页面、设置、提示栏）和对白用的 FreeType + HarfBuzz（`dialogue_scene.cpp`：对白底栏的操作提示、回看）。只有做成字体，两边才能用同一份图标：
-
-- 源文件是每个图标一张 SVG，放在仓库里；构建时用 fontTools 生成一个小字体（Unicode 私用区 U+E000 起），随包分发。
-- 两套引擎都把它登记成后备字体，图标会跟着字号缩放、与文字对齐基线。
-- 单色字形，颜色随文字；键帽内的字母用镂空，这样深色、浅色背景上都清楚。
-- 高度约为文字大写字母高度的 1.15 倍，左右各留 0.1 em 间距。
-
-只在 RmlUi 里用 CSS 画键帽也行（RmlUi 支持 `border-radius`），但对白底栏用不上，所以不选。
+- PromptFont 把图标放在普通码位上（箭头、数学符号）。HarmonyOS Sans 也有其中 9 个，只当后备字体的话永远轮不到它，⇓ 会显示成普通箭头。
+- 所以 [`build_prompt_font.py`](../../tools/content/build_prompt_font.py) 只挑出提示要用的 57 个字形，挪到私用区 U+E800 起，按两款字体大写字母高度之比 700/660 缩放，竖向度量照 HarmonyOS Sans SC。生成的 `content/fonts/SRW64Prompts.ttf` 约 11 KB，随仓库提交；按 OFL 另起名字，许可与署名在 `LICENSE-SRW64Prompts.txt`。
+- 两套文字引擎都把它接在字体链最后（RmlUi 登记为后备字体，对白引擎见 `game_fonts.cpp`），由 `prepare_fonts.py` 和其他字体一起放进字体目录。设置窗口「关于」页按 PromptFont 的要求署名。
+- 注意：Zelda64Recomp 与 RecompFrontend 的 `promptfont.h` 把键盘方向键的两个码位写反了，实际是 U+23F5 右、U+23F6 上，以字形为准。
 
 ### 文字里怎么写
 
-- `_pad` 词条里用记号，例如 `{A} 确定   ·   {B} 返回   ·   {View} 设置`。`label()` 在取词条时把记号换成当前手柄家族对应的私用区字符；对白引擎在同一处（`catalog.ui()` 之后）替换。
-- 记号与语言无关，翻译只改周围的字。
-- 键盘词条不变。
-- 测试检查：每个 `{…}` 记号都在图标表里；三种语言的同一词条用的记号相同；图标字体包含表里的每个字符。
+词条里写记号，[`button_prompts.hpp`](../../src/native/text/button_prompts.hpp) 的 `expand_prompts()` 在显示前换成图标字符：RmlUi 页面在 `label()` 里换，姓名页在传词条表前换，对白底栏和回看在 `dialogue_scene.cpp` 里换。`{n}` 这类占位符不受影响。
 
-### 在哪里用
+| 记号 | Deck | Xbox | PlayStation | Switch |
+| --- | --- | --- | --- | --- |
+| `{A}` `{B}` `{X}` `{Y}` | A B X Y | A B X Y | ✕ ○ □ △ | 按位置的四点图（下／右／左／上） |
+| `{L1}` `{R1}` `{L2}` `{R2}` | L1 R1 L2 R2 | LB RB LT RT | L1 R1 L2 R2 | L R ZL ZR |
+| `{View}` `{Menu}` | 视图／菜单 | 视图／菜单 | Create／Options | − ／ + |
+| `{DPad}` `{DUp}` … `{DUpDown}` `{DLeftRight}` | 十字键（整体或高亮方向） | 同左 | 同左 | 同左 |
+| `{LStick}` `{RStick}` `{RStickUp}` `{RStickDown}` `{RStickUpDown}` | 摇杆（带方向箭头） | 同左 | 同左 | 同左 |
 
-- 全部 `_pad` 提示词条（现有 38 条）、战前确认页的按键提示、原版 HUD 的战斗动画开关提示；
-- 标题画面的设置入口、场间主菜单的设置提示；
-- 设置窗口底部加一行「{A} 选择 · {B} 关闭」；
-- 对白底栏的操作提示与回看提示；
+键盘记号各家族相同：`{Esc}` `{Enter}` `{Tab}` `{Space}` `{Ctrl}` `{KeyUp}` `{KeyDown}` `{KeyLeft}` `{KeyRight}` `{Arrows}` `{WASD}` `{IJKL}` `{F5}` `{F6}` `{F7}`。
 
-### 手柄家族
+- 手柄家族：`SteamDeck=1` 固定 Deck（游戏模式下 SDL 看到的是 Steam 虚拟手柄，会被当成 Xbox）；否则按连接时 `SDL_GameControllerGetType`：PS3/4/5 → PlayStation，Switch Pro → Switch，其余 → Xbox。存在 `input::pad_family`，对白帧快照里也带一份。
+- Switch 手柄按位置显示（确定是下方键、返回是右方键），不按印字，所以用 PromptFont 的通用四点图。
+- 全部 57 条 `_pad` 词条与对应键盘词条、`pad_rstick_down`（原版战前界面的动画开关），三种语言共 303 条，已改成记号写法。
 
-- **Deck 版**（`SteamDeck=1`）固定用 Deck 图标：游戏模式下 SDL 看到的是 Steam 虚拟手柄，按类型判断会得到 Xbox，不能靠它。
-- 其他平台按 `SDL_GameControllerGetType` 选：Xbox（字母同 Deck，带颜色）、PlayStation（✕ ○ □ △，视图键换成「Create」、菜单键换成「Options」）、Switch Pro（A/B 位置相反，−/+）。第一版只做 Deck 和 Xbox，另外两种先显示 Xbox 图标。
-- 确定键与返回键始终按「下方键确定、右方键返回」，与图标一致（Switch 手柄也按位置，不按印字）。
+### 测试
+
+- `tests/test_button_prompts.py`：C++ 表用到的每个字符都在字体里、原码位已去掉；词条里的记号都认识、没有 `{{`；同一词条三种语言的记号相同；手柄词条只用手柄记号、键盘词条只用键盘记号；字体与许可在打包清单里。
+- `make recomp-button-prompts-test`（`tests/native_button_prompts.cpp`）：各家族的替换结果与占位符不受影响。
+- 尚未实机截图。
 
 ## 验证计划
 
@@ -132,6 +117,6 @@
 
 1. 设置入口与战前确认页提示；L2 自动阅读、R2 快进；地图上 L2/R2 切换敌方（本次，已编译，阅读器单元测试已加，待截图与实机）。
 2. 调试接口的手柄注入（`pad` 方法与 `srw64ctl pad`，已加），补上 Mac 截图检查。
-3. 图标字体：SVG 源、生成脚本、两套引擎登记后备字体、`{…}` 记号替换与测试。
-4. 把全部 `_pad` 词条改成记号写法。
+3. 图标字体：改用 PromptFont（2026-09-28 已做，见上）。
+4. 把全部 `_pad` 词条改成记号写法（已做）。
 5. 待用户决定的几项：演出中是否拦掉 Y+菜单；演出跳过上线后的 R2 提示。

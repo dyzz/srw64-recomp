@@ -48,6 +48,7 @@
     - 系统字体（Arial Unicode、Apple 表情等）的版权属于 Monotype 或苹果，不允许摘出来再分发，所以没有用。
     - 竖向度量与 SC 相同，作为后备不会抬高行高。
     - 许可说明在 `content/fonts/LICENSE-SRW64Symbols.txt`，测试在 `tests/test_symbol_font.py`。
+  - 2026-09-28 起符号字体后面再接一个按键图标字体 `content/fonts/SRW64Prompts.ttf`：从 PromptFont（SIL OFL）取 57 个手柄按键与键盘键图标，挪到私用区 U+E800 起，提示词条里的 `{A}`、`{Esc}` 这类记号换成这些字符（见 [Steam Deck 键位与按键图标](steam-deck-controls.md#按键图标)）。台词正文不用私用区，排版与分页不受影响。
   - 英文台词里个别未译的“射”“格”由 SC 补上。
 - **日文写法。** SC 按简体中文写法画汉字，比如“直、骨、今、令、次、具”和日文写法不同。现在日文模式用的 Arial Unicode 也不是标准日文写法，所以暂不单独配日文字体；以后需要时再给日文加一款日文字体。
 - **字偶间距。** 三款字体都有字偶间距数据，HarfBuzz 默认会用上，不用改代码。

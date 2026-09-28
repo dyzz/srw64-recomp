@@ -37,7 +37,7 @@ RecompFrontend 与 RmlUi；不会覆盖脏上游或错误版本。源码准备�
 运行和本地 ROM 导入仍无需 Python。独立姓名页原型保留为 `make recomp-ui-probe`。
 
 共享 UI 与对白用同一套打包字体：启动器把 `SRW64_FONT_DIR` 指向 `tools/content/prepare_fonts.py`
-准备的目录（HarmonyOS Sans SC 与 Condensed，外加仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`），
+准备的目录（HarmonyOS Sans SC 与 Condensed，外加仓库里的符号字体 `content/fonts/SRW64Symbols.ttf` 与按键图标字体 `SRW64Prompts.ttf`），
 缺文件时明确报错。应用包在 `Contents/Resources/fonts/` 带上这些字体与许可，设置窗口的「关于」页注明字体来源。
 开发环境可用 `SRW64_UI_FONT` 指定单个字体；没有 `SRW64_FONT_DIR` 时（单元测试、旧探针）才查找本机
 Arial Unicode、微软雅黑或 Noto Sans CJK。见[中日英跨平台文字与游戏对白](portable-text.md)。

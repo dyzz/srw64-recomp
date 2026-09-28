@@ -7,6 +7,9 @@ namespace srw64::input {
 // (the "_pad" UI labels). The shared UI sets it; the dialogue reader copies it
 // into each frame snapshot so a hint never changes inside a drawn frame.
 inline std::atomic_bool pad_hints{false};
+// Which controller's icons the hints draw (text::PadFamily in text/button_prompts.hpp:
+// 0 Xbox, 1 Steam Deck, 2 PlayStation, 3 Nintendo), set when a controller connects.
+inline std::atomic<uint8_t> pad_family{0};
 
 // Controller bits above the N64 mask in srw64_pad_state(). The game never sees
 // them: srw64_keyboard_input keeps 16 button bits and the four stick bits.

@@ -34004,11 +34004,13 @@
   "en": [
    "HarmonyOS_Sans_Condensed.ttf",
    "HarmonyOS_Sans_SC.ttf",
-   "SRW64Symbols.ttf"
+   "SRW64Symbols.ttf",
+   "SRW64Prompts.ttf"
   ],
   "zh-Hans": [
    "HarmonyOS_Sans_SC.ttf",
-   "SRW64Symbols.ttf"
+   "SRW64Symbols.ttf",
+   "SRW64Prompts.ttf"
   ]
  },
  "marks": {
