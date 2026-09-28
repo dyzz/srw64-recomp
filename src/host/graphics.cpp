@@ -89,14 +89,33 @@ SDL_GameController* pad{};
 // input_bindings.hpp spells SDL's numbers out so it needs no SDL.
 static_assert(SDL_SCANCODE_Z == srw64::input::scancode::Z && SDL_SCANCODE_RETURN == srw64::input::scancode::Return &&
               SDL_SCANCODE_SPACE == srw64::input::scancode::Space && SDL_SCANCODE_UP == srw64::input::scancode::Up &&
-              SDL_SCANCODE_A == srw64::input::scancode::A && SDL_SCANCODE_ESCAPE == srw64::input::scancode::Escape);
+              SDL_SCANCODE_A == srw64::input::scancode::A && SDL_SCANCODE_ESCAPE == srw64::input::scancode::Escape &&
+              SDL_SCANCODE_T == srw64::input::scancode::T && SDL_SCANCODE_1 == srw64::input::scancode::N1 &&
+              SDL_SCANCODE_4 == srw64::input::scancode::N4 && SDL_SCANCODE_BACKSPACE == srw64::input::scancode::Backspace);
 static_assert(SDL_CONTROLLER_BUTTON_BACK == srw64::input::pad_button::Back && SDL_CONTROLLER_BUTTON_START == srw64::input::pad_button::Start &&
               SDL_CONTROLLER_BUTTON_LEFTSHOULDER == srw64::input::pad_button::LeftShoulder &&
               SDL_CONTROLLER_BUTTON_DPAD_RIGHT == srw64::input::pad_button::DRight && SDL_CONTROLLER_BUTTON_MAX == srw64::input::pad_button::Count);
 static_assert(SDL_CONTROLLER_AXIS_RIGHTY == srw64::input::pad_axis::RightY && SDL_CONTROLLER_AXIS_TRIGGERRIGHT == srw64::input::pad_axis::TriggerRight &&
               SDL_CONTROLLER_AXIS_MAX == srw64::input::pad_axis::Count);
 
-// The physical key a key held through the debug interface stands for (same name).
+// Running on a Steam Deck. Steam sets SteamDeck=1 for the games it starts there; started
+// any other way (Desktop Mode, a terminal) the firmware still names the machine: Valve's
+// Jupiter (LCD) or Galileo (OLED).
+bool on_steam_deck() {
+    static const bool deck = [] {
+        if (const char* value = std::getenv("SteamDeck"); value && std::string(value) == "1") return true;
+#ifdef __linux__
+        const auto read = [](const char* path) { std::ifstream file(path); std::string line; std::getline(file, line); return line; };
+        const auto product = read("/sys/devices/virtual/dmi/id/product_name");
+        return read("/sys/devices/virtual/dmi/id/board_vendor") == "Valve" && (product == "Jupiter" || product == "Galileo");
+#else
+        return false;
+#endif
+    }();
+    return deck;
+}
+
+// The physical key of the same name as a key the debug interface holds or presses.
 SDL_Scancode virtual_scancode(srw64::debug::Key key) {
     static const auto table = [] {
         std::array<SDL_Scancode, srw64::debug::KeyCount> t{};
@@ -563,7 +582,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #endif
     // Steam sets SteamDeck=1 for games on the Deck: fill its screen, Game Mode or not.
     const bool deck = std::getenv("SteamDeck") && std::string(std::getenv("SteamDeck")) == "1";
-    if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
+    if (on_steam_deck()) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               960, 720, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
@@ -644,13 +663,17 @@ void srw64_update_window(void*) {
         // One controller at a time: the first one connected, replaced when it leaves.
         if(event.type==SDL_CONTROLLERDEVICEADDED) {
             if(!pad && (pad=SDL_GameControllerOpen(event.cdevice.which))) {
-                // Hint icons follow the controller. On the Deck, Game Mode shows games Steam's
-                // virtual controller, which SDL reports as an Xbox one, so SteamDeck=1 decides.
-                const char* deck=std::getenv("SteamDeck");
+                // Hint icons follow the controller. Steam Input shows games a virtual controller,
+                // which SDL reports as an Xbox one unless Steam says it is a PlayStation or
+                // Nintendo pad; on the Deck, anything else is the Deck's own controls. The
+                // bindings are by position, so every family plays the same defaults.
                 const auto type=SDL_GameControllerGetType(pad);
-                srw64::input::pad_family=deck && std::string(deck)=="1"?1:
+                const char* name=SDL_GameControllerName(pad);
+                srw64::input::pad_family=
                     type==SDL_CONTROLLER_TYPE_PS3 || type==SDL_CONTROLLER_TYPE_PS4 || type==SDL_CONTROLLER_TYPE_PS5?2:
-                    type==SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO?3:0;
+                    type==SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO?3:
+                    on_steam_deck() || (name && std::string(name).find("Steam Deck")!=std::string::npos)?1:0;
+                fprintf(stderr,"SRW64_PAD name=\"%s\" type=%d family=%d\n",name?name:"",int(type),int(srw64::input::pad_family.load()));
             }
             continue;
         }
@@ -727,10 +750,12 @@ void srw64_update_window(void*) {
         // window focus; keys held through the debug interface do not, since it
         // drives the game while another application is in front.
         const bool physical = SDL_GetKeyboardFocus() == window && !(SDL_GetModState() & (KMOD_GUI | KMOD_ALT | KMOD_CTRL));
-        // The keys are the player's bindings (input_bindings.hpp); keys the debug interface
-        // holds count as the physical key of the same name.
-        state |= srw64::input::key_mask(bindings, [&](int key) {
-            if (physical && key >= 0 && key < SDL_NUM_SCANCODES && keys[key]) return true;
+        // The keys are the player's bindings (input_bindings.hpp). Keys the debug interface
+        // holds keep the classic layout whatever is bound, as the native pages take them.
+        if (physical)
+            state |= srw64::input::key_mask(bindings, [&](int key) { return key >= 0 && key < SDL_NUM_SCANCODES && keys[key]; });
+        static const auto classic = srw64::input::classic_keys();
+        state |= srw64::input::key_mask(classic, [&](int key) {
             for (unsigned k = 0; k < srw64::debug::KeyCount; ++k)
                 if ((virtual_keys & srw64::debug::bit(srw64::debug::Key(k))) && virtual_scancode(srw64::debug::Key(k)) == key) return true;
             return false;
@@ -759,7 +784,10 @@ void srw64_update_window(void*) {
 uint32_t srw64_pad_state() { return pad_state.load(std::memory_order_relaxed); }
 std::string srw64_pad_name() {
     const char* name = pad ? SDL_GameControllerName(pad) : nullptr;
-    return name ? name : "";
+    if (!name) return "";
+    // The Deck's own controls reach a game through Steam Input's virtual controller.
+    if (srw64::input::pad_family == 1 && std::string(name).starts_with("Steam Virtual")) return "Steam Deck";
+    return name;
 }
 uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
 

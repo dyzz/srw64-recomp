@@ -115,7 +115,9 @@ text::PromptContext prompt_context(bool pad){return {pad,pad_family(),&hint_bind
 // the arrows for the D-pad and the stick). Enter, Esc, Tab and the arrow keys keep their own
 // meaning whatever else they are bound to, so no binding can lock the player out of a page.
 // The animation button reads as C-down's key, which the pre-battle pages take. A key bound
-// to something with no page meaning (the trigger functions) does nothing here. Returns the
+// to something with no page meaning (the trigger functions) does nothing here, nor does an
+// unbound letter: the letters are the page code's words (Z, X...), not the player's. Keys
+// the debug interface presses (no window) are taken as page keys as they are. Returns the
 // host button a key stands for (settings, language, Original / HD), for the caller; the
 // controller bridge (pad_keys) already sends the default keys.
 std::optional<input::Action> follow_bindings(SDL_Event& event) {
@@ -125,8 +127,11 @@ std::optional<input::Action> follow_bindings(SDL_Event& event) {
     namespace sc=input::scancode;
     if(key==sc::Return || key==sc::Escape || key==SDL_SCANCODE_TAB || key==sc::Up || key==sc::Down || key==sc::Left || key==sc::Right)return std::nullopt;
     const auto* action=input::action_of_key(hint_bindings,key);
-    if(!action)return std::nullopt;
     SDL_Keycode page=SDLK_UNKNOWN;
+    if(!action) {
+        if(key>=SDL_SCANCODE_A && key<=SDL_SCANCODE_Z){event.key.keysym.sym=SDLK_UNKNOWN;event.key.keysym.scancode=SDL_SCANCODE_UNKNOWN;}
+        return std::nullopt;
+    }
     switch(*action) {
     case Action::A:page=SDLK_z;break; case Action::B:page=SDLK_x;break; case Action::Z:page=SDLK_SPACE;break;
     case Action::Start:page=SDLK_RETURN;break; case Action::L:page=SDLK_q;break; case Action::R:page=SDLK_e;break;
@@ -199,12 +204,6 @@ button.set-toggle:focus {background-color:#ffd75e24;} button.set-toggle:focus .s
 .set-key {display:flex; align-items:center; gap:16dp; padding:6dp 12dp; font-size:14dp; border-bottom:1dp #3fd0ff14;}
 .set-key span {flex:1 1 0; min-width:0; color:#d6ddf2;} .set-key b {flex:0 0 46%; text-align:right; font-weight:normal; color:#ffd75e;}
 .ctl-found {margin:4dp 0 0; font-size:13dp; color:#a4b0d2;}
-.ctl-diagram-row {display:flex; justify-content:center; padding:10dp 0 4dp;}
-.ctl-diagram {position:relative; border-radius:10dp; background-color:#232323;}
-.ctl-diagram img {position:absolute; left:0; top:0; margin:0;}
-.ctl-slot {position:absolute; display:flex; align-items:center;}
-.ctl-label {display:flex; align-items:center; gap:4dp; height:24dp; padding:0 8dp; white-space:nowrap; font-size:12dp; color:#f4f4f4; background-color:#2f2f2f; border-radius:12dp;}
-.ctl-label .g {font-size:15dp; color:#ffffff; margin-left:4dp;}
 .ctl-head {display:flex; padding:6dp 12dp 2dp; font-size:12dp; color:#a4b0d2;}
 .ctl-head .n,.ctl-row .n {flex:1 1 0; min-width:0;}
 .ctl-head .k,.ctl-row .k {flex:0 0 150dp; text-align:center;}
@@ -462,10 +461,8 @@ std::string settings_focus;
 #ifndef SRW64_VERSION
 #define SRW64_VERSION "?"
 #endif
-// The Controls page (docs/native/controls-remapping.md): a Steam Deck diagram saying what
-// each controller input does now, then one row per function to rebind on the keyboard or
-// the controller. The diagram is content/ui/deck-controller.png with its label slots in
-// deck-controller.json (tools/content/draw_deck_diagram.py).
+// The Controls page (docs/native/controls-remapping.md): one row per function, with its key
+// and its controller input; select one to rebind it on either.
 struct Capture {
     std::vector<input::Action> queue;  // what the next press goes to
     std::string name;                  // the function being set, for the prompt
@@ -483,88 +480,6 @@ constexpr ControlRow control_rows[]={
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},
     {"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
-// What the diagram calls an action (controls_fn_<name>); actions sharing a name show it
-// once. C-right does nothing in the game, so it is not named.
-const char* short_name(Action a) {
-    switch(a) {
-    case Action::A:return "a"; case Action::B:return "b"; case Action::Start:return "start";
-    case Action::L:return "l"; case Action::R:return "r"; case Action::Z:return "z";
-    case Action::CUp:case Action::CDown:return "text_size"; case Action::CLeft:return "cursor_fast";
-    case Action::DUp:case Action::DDown:case Action::DLeft:case Action::DRight:
-    case Action::StickUp:case Action::StickDown:case Action::StickLeft:case Action::StickRight:return "move";
-    case Action::Settings:return "settings"; case Action::AuxLeft:return "aux_left"; case Action::AuxRight:return "aux_right";
-    case Action::Animation:return "animation"; case Action::Language:return "language"; case Action::Images:return "images";
-    default:return nullptr;
-    }
-}
-// The diagram's input groups: the controller inputs a label speaks for, its icon, and a
-// stick's click, which the label names after the stick's own functions.
-struct PadGroup {std::vector<input::PadInput> inputs;char32_t icon;std::optional<input::PadInput> click;};
-PadGroup pad_group(const std::string& id) {
-    namespace b=input::pad_button;namespace ax=input::pad_axis;
-    const auto one=[](input::PadInput p){return PadGroup{{p},text::pad_glyph(p,pad_family()),std::nullopt};};
-    if(id=="l2")return one(input::axis(ax::TriggerLeft,1));
-    if(id=="r2")return one(input::axis(ax::TriggerRight,1));
-    if(id=="l1")return one(input::button(b::LeftShoulder));
-    if(id=="r1")return one(input::button(b::RightShoulder));
-    if(id=="view")return one(input::button(b::Back));
-    if(id=="menu")return one(input::button(b::Start));
-    if(id=="a")return one(input::button(b::A));
-    if(id=="b")return one(input::button(b::B));
-    if(id=="x")return one(input::button(b::X));
-    if(id=="y")return one(input::button(b::Y));
-    if(id=="dpad")return {{input::button(b::DUp),input::button(b::DDown),input::button(b::DLeft),input::button(b::DRight)},0xE830,std::nullopt};
-    if(id=="ls")return {{input::axis(ax::LeftX,-1),input::axis(ax::LeftX,1),input::axis(ax::LeftY,-1),input::axis(ax::LeftY,1)},0xE838,input::button(b::LeftStick)};
-    if(id=="rs")return {{input::axis(ax::RightX,-1),input::axis(ax::RightX,1),input::axis(ax::RightY,-1),input::axis(ax::RightY,1)},0xE839,input::button(b::RightStick)};
-    return {};
-}
-// "<icon> what the inputs do", from the controller bindings; "—" for nothing.
-std::string group_label(const std::string& id) {
-    const auto group=pad_group(id);
-    const auto names=[&](const std::vector<input::PadInput>& inputs) {
-        std::vector<std::string> seen;
-        for(size_t i=0;i<input::action_count;++i)
-            for(const auto& p:hint_bindings.pads[i])
-                if(std::find(inputs.begin(),inputs.end(),p)!=inputs.end())
-                    if(const char* name=short_name(Action(i)))
-                        if(auto text=label(std::string("controls_fn_")+name);std::find(seen.begin(),seen.end(),text)==seen.end())seen.push_back(text);
-        std::string out;
-        for(const auto& text:seen)out+=(out.empty()?"":" \xc2\xb7 ")+text;
-        return out.empty()?std::string("\xe2\x80\x94"):out;
-    };
-    std::string icon;text::append_utf8(icon,group.icon);
-    // Each part in its own element: RmlUi's flex layout does not show bare text beside one.
-    std::string out="<span class='g'>"+icon+"</span><span>"+names(group.inputs)+"</span>";
-    if(group.click){std::string click;text::append_utf8(click,text::pad_glyph(*group.click,pad_family()));out+="<span class='g'>"+click+"</span><span>"+names({*group.click})+"</span>";}
-    return out;
-}
-std::filesystem::path ui_asset(const char* name) {
-    const char* dir=std::getenv("SRW64_UI_ASSETS");
-    return dir && *dir?std::filesystem::path(dir)/name:std::filesystem::path();
-}
-struct Diagram {
-    std::filesystem::path image;
-    float width=0,height=0;
-    struct Slot {std::string group,align;float x,y;};
-    std::vector<Slot> slots;
-};
-// deck-controller.json, read once; no diagram when it is missing or not understood.
-const std::optional<Diagram>& controller_diagram() {
-    static const std::optional<Diagram> diagram=[]()->std::optional<Diagram> {
-        const auto path=ui_asset("deck-controller.json");
-        if(path.empty() || !std::filesystem::is_regular_file(path))return std::nullopt;
-        std::ifstream file(path);
-        const auto doc=json::parse(file,nullptr,false);
-        if(!doc.is_object() || doc.value("schema","")!="srw64.controller-diagram.v1")return std::nullopt;
-        Diagram d;
-        d.image=path.parent_path()/doc.value("image","");d.width=doc.value("width",0.f);d.height=doc.value("height",0.f);
-        for(const auto& s:doc.value("slots",json::array()))
-            d.slots.push_back({s.value("group",""),s.value("align",""),s.value("x",0.f),s.value("y",0.f)});
-        if(d.width<=0 || d.height<=0 || !std::filesystem::is_regular_file(d.image))return std::nullopt;
-        return d;
-    }();
-    return diagram;
-}
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
         capture=Capture{};
@@ -619,32 +534,15 @@ std::string capture_prompt() {
     return "<div class='ctl-capture'><div class='ctl-capture-box'><div class='ctl-capture-title'>"+prompt+"</div>"
         "<p>"+label(capture.refused?"controls_reserved":"controls_capture_note")+"</p>"+button("controls-cancel",label("controls_cancel"))+"</div></div>";
 }
-// The Controls page body: the controller found, the diagram, the functions to rebind, the
-// fixed shortcuts and restore.
-std::string controls_page(float body_width,float body_height) {
+// The Controls page body: the controller found, the functions to rebind, the fixed
+// shortcuts and restore.
+std::string controls_page() {
     std::string body;
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");
     if(const auto at=found.find("{name}");at!=std::string::npos)found.replace(at,6,escape(pad_name));
-    body+="<p class='ctl-found'>"+found+"</p>";
-    if(const auto& diagram=controller_diagram()) {
-        // As wide as the body allows, but short enough to show whole in the page (a 4:3
-        // window gives about 590 dp), with the list's heading in view under it.
-        const float w=std::min({body_width*.98f,1100.f,(body_height-40)*diagram->width/diagram->height});
-        const float s=w/diagram->width,h=diagram->height*s,span=900*s;
-        const auto dp=[](float v){return std::to_string(int(v+.5f))+"dp";};
-        body+="<div class='ctl-diagram-row'><div class='ctl-diagram' style='width:"+dp(w)+";height:"+dp(h)+";'>"
-            "<img src='"+escape(image(diagram->image.string(),dp_pixels(w)))+"' style='width:"+dp(w)+";height:"+dp(h)+";'/>";
-        for(const auto& slot:diagram->slots) {
-            const float left=slot.align=="left"?slot.x*s-span:slot.align=="right"?slot.x*s:slot.x*s-span/2;
-            const char* justify=slot.align=="left"?"flex-end":slot.align=="right"?"flex-start":"center";
-            body+="<div class='ctl-slot' style='left:"+dp(left)+";top:"+dp(slot.y*s-14)+";width:"+dp(span)+";height:28dp;justify-content:"+justify+";'>"
-                "<div class='ctl-label'>"+group_label(slot.group)+"</div></div>";
-        }
-        body+="</div></div><p>"+label("controls_layout_note")+"</p>";
-    }
-    body+="<h2>"+label("controls_list")+"</h2><p>"+label("controls_list_note")+"</p>"
-        "<div class='ctl-head'><span class='n'></span><span class='k'>"+label("controls_keyboard")+"</span><span class='k'>"+label("controls_controller")+"</span></div>";
+    body+="<p class='ctl-found'>"+found+"</p><p>"+label("controls_keyboard_note")+"</p>";
+    body+="<p>"+label("controls_list_note")+"</p><div class='ctl-head'><span class='n'></span><span class='k'>"+label("controls_keyboard")+"</span><span class='k'>"+label("controls_controller")+"</span></div>";
     const auto keys=prompt_context(false),pads=prompt_context(true);
     for(const auto& row:control_rows) {
         // The row's own action, as a token the prompts know.
@@ -706,9 +604,8 @@ void settings_sync() {
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+
-        // The Controls page: bindings, the device shown, a capture waiting, the controller, the window size (the diagram's).
-        std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
-        std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+        // The Controls page: bindings, a capture waiting, the controller and its icons.
+        std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()));
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -741,9 +638,7 @@ void settings_sync() {
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
     } else if(page=="controls") {
-        // The body: the panel (88% of the window, at most 1040 x 820 dp) less its padding and
-        // scrollbar, and less the title, tabs and footer above and below it.
-        body+=controls_page(std::min(pixels_w/ui_density*.88f,1040.f)-80,std::min(pixels_h/ui_density*.88f,820.f)-190);
+        body+=controls_page();
     } else {
         auto version=localization::catalog().ui("settings_about_version");
         if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
@@ -2136,8 +2031,9 @@ void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
     dispatch(e);
     e.type=SDL_KEYUP;e.key.state=SDL_RELEASED;e.key.repeat=0;dispatch(e);
 }
-// The other native pages read the keyboard through the game's own key map (Z = A,
-// X = B, Enter = START, Space = Z, arrows = pad and stick, Q/E = L/R, IJKL = C).
+// The other native pages read the keyboard in the classic key map (Z = A,
+// X = B, Enter = START, Space = Z, arrows = pad and stick, Q/E = L/R, IJKL = C;
+// input::classic_keys), which follow_bindings turns the player's keys into.
 // A controller drives them with the same keys, so a Steam Deck needs no keyboard.
 // Funds entry and the name page take A as Enter and B as Esc.
 void pad_keys(uint32_t now,uint32_t pressed) {
@@ -2266,8 +2162,9 @@ bool dispatch(SDL_Event& event) {
     // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
-    // Typing into the funds box or a name takes the keys as they are.
-    if(funds_editing.empty() && !names::request().visible)if(const auto host=follow_bindings(event)) {
+    // Typing into the funds box takes the keys as they are. The name page has nothing to
+    // type since the names are fixed, so it follows the bindings too.
+    if(funds_editing.empty())if(const auto host=follow_bindings(event)) {
         if(event.type==SDL_KEYDOWN && !event.key.repeat) {
             if(*host==input::Action::Settings)choose(settings_open?"settings-close":"settings-open");
             else if(*host==input::Action::Language)settings::request_locale(localization::next_locale(localization::catalog().locale));

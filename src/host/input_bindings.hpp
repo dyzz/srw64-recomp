@@ -1,7 +1,8 @@
 #pragma once
 // Remappable controls (docs/native/controls-remapping.md). Every N64 input and the
 // host's own buttons is an Action; the keyboard and the controller each bind a list of
-// inputs to it. The defaults are the tables graphics.cpp had built in. The window thread
+// inputs to it. The controller's defaults suit the Steam Deck; the keyboard's put each
+// function where PCSX2 puts the controller button that has it. The window thread
 // turns the pressed inputs into the N64 mask (bits 0-15, stick bits 16-19) and the host
 // bits of input_mode.hpp every frame; the settings window's Controls page changes the
 // bindings and presentation_settings.cpp keeps them in the user's input.json.
@@ -25,8 +26,8 @@ enum class Action : uint8_t {
     AuxLeft,    // dialogue: automatic reading on / off; idle map: previous enemy (L2)
     AuxRight,   // dialogue: fast-forward; idle map: next enemy; battle: end the animation (R2)
     Animation,  // the battle animation on / off on the pre-battle screens (Y)
-    Language,   // the next reading language (L3; F7 on the keyboard)
-    Images,     // Original / HD pictures (R3; F6 on the keyboard)
+    Language,   // the next reading language (L3; F7 also, a fixed shortcut)
+    Images,     // Original / HD pictures (R3; F6 also, a fixed shortcut)
     Count
 };
 inline constexpr size_t action_count = size_t(Action::Count);
@@ -46,8 +47,9 @@ inline constexpr std::array<ActionInfo, action_count> actions{{
 inline constexpr const ActionInfo& info(Action action) { return actions[size_t(action)]; }
 
 namespace scancode {
-inline constexpr int A = 4, D = 7, E = 8, I = 12, J = 13, K = 14, L = 15, Q = 20, S = 22, W = 26, X = 27, Z = 29,
-    Return = 40, Escape = 41, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
+inline constexpr int A = 4, D = 7, E = 8, F = 9, G = 10, H = 11, I = 12, J = 13, K = 14, L = 15, Q = 20, S = 22, T = 23,
+    W = 26, X = 27, Z = 29, N1 = 30, N2 = 31, N3 = 32, N4 = 33,
+    Return = 40, Escape = 41, Backspace = 42, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
 }
 namespace pad_button {
 inline constexpr uint8_t A = 0, B = 1, X = 2, Y = 3, Back = 4, Guide = 5, Start = 6, LeftStick = 7, RightStick = 8,
@@ -79,22 +81,14 @@ inline Bindings default_bindings() {
     Bindings b;
     const auto keys = [&](Action a, std::vector<int> v) { b.keys[size_t(a)] = std::move(v); };
     const auto pads = [&](Action a, std::vector<PadInput> v) { b.pads[size_t(a)] = std::move(v); };
-    {
-    using namespace scancode;
-    keys(Action::A, {Z}); keys(Action::B, {X}); keys(Action::Z, {Space}); keys(Action::Start, {Return});
-    keys(Action::L, {Q}); keys(Action::R, {E});
-    keys(Action::CUp, {I}); keys(Action::CDown, {K}); keys(Action::CLeft, {J}); keys(Action::CRight, {L});
-    keys(Action::DUp, {Up}); keys(Action::DDown, {Down}); keys(Action::DLeft, {Left}); keys(Action::DRight, {Right});
-    keys(Action::StickUp, {W}); keys(Action::StickDown, {S}); keys(Action::StickLeft, {A}); keys(Action::StickRight, {D});
-    }
-    // The keyboard reaches the settings window with Ctrl / Cmd + , (frontend.cpp) and has no
-    // automatic-reading or enemy keys until the player binds some.
     // The controller follows what the game's inputs are worth (docs/gameplay/original-controls.md):
     // A, B, START, the D-pad and the stick as the original; L1 / R1 for L / R. Z only repeats L
     // in lists and makes Z + START's reset to the title, so it has no button. The freed ones
     // serve the port: X held speeds the map cursor (C-left), Y the battle animation, the
-    // stick clicks the language and Original / HD; the right stick stays the C buttons.
-    using namespace pad_button;  // scancode's names are out of scope here
+    // stick clicks the language and Original / HD; the right stick stays the C buttons. View
+    // opens the settings window and the triggers work the dialogue and the map's enemies.
+    {
+    using namespace pad_button;
     pads(Action::A, {button(A)}); pads(Action::B, {button(B)});
     pads(Action::Start, {button(Start)});
     pads(Action::L, {button(LeftShoulder)}); pads(Action::R, {button(RightShoulder)});
@@ -108,6 +102,40 @@ inline Bindings default_bindings() {
     pads(Action::AuxLeft, {axis(pad_axis::TriggerLeft, 1)}); pads(Action::AuxRight, {axis(pad_axis::TriggerRight, 1)});
     pads(Action::Animation, {button(Y)});
     pads(Action::Language, {button(LeftStick)}); pads(Action::Images, {button(RightStick)});
+    }
+    // The keyboard is PCSX2's default layout (pcsx2/Input/InputManager.cpp,
+    // GetKeyboardGenericBindingMapping; user, 2026-09-28), which stands a key for each
+    // controller button: K L J I the face buttons (south, east, west, north), Q E L1 R1,
+    // 1 3 L2 R2, 2 4 L3 R3, Enter and Backspace Menu and View, the arrows the D-pad, WASD
+    // the left stick and T F G H the right one. Each key does what its button does above,
+    // so Z has no key here either. The settings window also opens with Ctrl / Cmd + ,
+    // (frontend.cpp).
+    using namespace scancode;  // pad_button's names are out of scope here
+    keys(Action::A, {K}); keys(Action::B, {L}); keys(Action::Start, {Return});
+    keys(Action::L, {Q}); keys(Action::R, {E});
+    keys(Action::CUp, {T}); keys(Action::CDown, {G}); keys(Action::CLeft, {J, F}); keys(Action::CRight, {H});
+    keys(Action::DUp, {Up}); keys(Action::DDown, {Down}); keys(Action::DLeft, {Left}); keys(Action::DRight, {Right});
+    keys(Action::StickUp, {W}); keys(Action::StickDown, {S}); keys(Action::StickLeft, {A}); keys(Action::StickRight, {D});
+    keys(Action::Settings, {Backspace});
+    keys(Action::AuxLeft, {N1}); keys(Action::AuxRight, {N3});
+    keys(Action::Animation, {I});
+    keys(Action::Language, {N2}); keys(Action::Images, {N4});
+    return b;
+}
+
+// The keyboard before 0.3.0, on the N64's positions: Z A, X B, Space Z, Enter START, Q E
+// L R, I K J L the C buttons, the arrows the D-pad and WASD the stick. The keys the debug
+// interface holds keep it whatever the player bound (graphics.cpp), so scripts say "z" for
+// A; the native pages' key code speaks it too (frontend.cpp follow_bindings).
+inline Bindings classic_keys() {
+    Bindings b;
+    const auto keys = [&](Action a, std::vector<int> v) { b.keys[size_t(a)] = std::move(v); };
+    using namespace scancode;
+    keys(Action::A, {Z}); keys(Action::B, {X}); keys(Action::Z, {Space}); keys(Action::Start, {Return});
+    keys(Action::L, {Q}); keys(Action::R, {E});
+    keys(Action::CUp, {I}); keys(Action::CDown, {K}); keys(Action::CLeft, {J}); keys(Action::CRight, {L});
+    keys(Action::DUp, {Up}); keys(Action::DDown, {Down}); keys(Action::DLeft, {Left}); keys(Action::DRight, {Right});
+    keys(Action::StickUp, {W}); keys(Action::StickDown, {S}); keys(Action::StickLeft, {A}); keys(Action::StickRight, {D});
     return b;
 }
 

@@ -13,7 +13,8 @@
 //   the like, else the key's name). A group left at its defaults shows one icon.
 // - Key tokens are the native pages' fixed keys, which work whatever the bindings say:
 //   {Esc} {Enter} {Tab} {Space} {Ctrl} {KeyUp} {KeyDown} {KeyLeft} {KeyRight} {Arrows}
-//   {WASD} {IJKL} {F5} {F6} {F7}. Keyboard hints only.
+//   {WASD} {F5} {F6} {F7}. Keyboard hints only. (The font's IJKL icon went with the old
+//   keyboard layout; the C buttons are T G F H now, which have no icon.)
 //
 // Other braces, such as the "{n}" placeholders, are left as they are.
 #include "input_bindings.hpp"
@@ -95,7 +96,7 @@ struct KeyToken {std::string_view token; char32_t glyph;};
 inline constexpr KeyToken key_tokens[] = {
     {"Esc", 0xE840}, {"Enter", 0xE841}, {"Tab", 0xE842}, {"Space", 0xE843}, {"Ctrl", 0xE844},
     {"KeyLeft", 0xE845}, {"KeyUp", 0xE846}, {"KeyRight", 0xE847}, {"KeyDown", 0xE848},
-    {"Arrows", 0xE849}, {"WASD", 0xE84A}, {"IJKL", 0xE84B}, {"F5", 0xE84C}, {"F6", 0xE84D}, {"F7", 0xE84E},
+    {"Arrows", 0xE849}, {"WASD", 0xE84A}, {"F5", 0xE84C}, {"F6", 0xE84D}, {"F7", 0xE84E},
 };
 
 using input::Action;
@@ -118,7 +119,7 @@ inline constexpr ActionToken action_tokens[] = {
     {"DPad", {Action::DUp, Action::DDown, Action::DLeft, Action::DRight}, 4, same(0xE830), 0xE849},
     {"DUpDown", {Action::DUp, Action::DDown}, 2, same(0xE835), 0},
     {"DLeftRight", {Action::DLeft, Action::DRight}, 2, same(0xE836), 0},
-    {"C", {Action::CUp, Action::CDown, Action::CLeft, Action::CRight}, 4, same(0xE839), 0xE84B},
+    {"C", {Action::CUp, Action::CDown, Action::CLeft, Action::CRight}, 4, same(0xE839), 0},
     {"CUpDown", {Action::CUp, Action::CDown}, 2, same(0xE83C), 0},
     {"Stick", {Action::StickUp, Action::StickDown, Action::StickLeft, Action::StickRight}, 4, same(0xE838), 0xE84A},
 };

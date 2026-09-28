@@ -97,7 +97,7 @@
 | `{DPad}` `{DUp}` … `{DUpDown}` `{DLeftRight}` | 十字键（整体或高亮方向） | 同左 | 同左 | 同左 |
 | `{LStick}` `{RStick}` `{RStickUp}` `{RStickDown}` `{RStickUpDown}` | 摇杆（带方向箭头） | 同左 | 同左 | 同左 |
 
-键盘记号各家族相同：`{Esc}` `{Enter}` `{Tab}` `{Space}` `{Ctrl}` `{KeyUp}` `{KeyDown}` `{KeyLeft}` `{KeyRight}` `{Arrows}` `{WASD}` `{IJKL}` `{F5}` `{F6}` `{F7}`。
+键盘记号各家族相同：`{Esc}` `{Enter}` `{Tab}` `{Space}` `{Ctrl}` `{KeyUp}` `{KeyDown}` `{KeyLeft}` `{KeyRight}` `{Arrows}` `{WASD}` `{F5}` `{F6}` `{F7}`（`{IJKL}` 随旧键盘表去掉；键盘默认改为 PCSX2 布局，见 [改键](../native/controls-remapping.md)）。
 
 - 手柄家族：`SteamDeck=1` 固定 Deck（游戏模式下 SDL 看到的是 Steam 虚拟手柄，会被当成 Xbox）；否则按连接时 `SDL_GameControllerGetType`：PS3/4/5 → PlayStation，Switch Pro → Switch，其余 → Xbox。存在 `input::pad_family`，对白帧快照里也带一份。
 - Switch 手柄按位置显示（确定是下方键、返回是右方键），不按印字，所以用 PromptFont 的通用四点图。

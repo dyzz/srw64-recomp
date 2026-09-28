@@ -105,8 +105,7 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
-                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None,
-                 ui: Path | None = None) -> Path:
+                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -177,12 +176,6 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum:
                 target = resources / "dialogue" / path.relative_to(source)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, target)
-        if ui is not None:
-            # Pictures the native pages draw (the Controls page's controller diagram and its layout).
-            source = ui.resolve(strict=True)
-            (resources / "ui").mkdir()
-            for path in sorted([*source.glob("*.png"), *source.glob("*.json")]):
-                shutil.copyfile(path, resources / "ui" / path.name)
         if fonts is not None:
             # HarmonyOS Sans must ship unmodified with its licence (tools/content/prepare_fonts.py).
             source = fonts.resolve(strict=True)
@@ -234,8 +227,6 @@ def main() -> int:
                         help="Build-side directory for resolving dependent @loader_path/@rpath libraries")
     parser.add_argument("--dialogue", type=Path, default=Path(__file__).resolve().parents[2] / "content/dialogue",
                         help="dialogue text directory copied to Contents/Resources/dialogue")
-    parser.add_argument("--ui", type=Path, default=Path(__file__).resolve().parents[2] / "content/ui",
-                        help="native page pictures copied to Contents/Resources/ui")
     parser.add_argument("--fonts", type=Path, default=Path(__file__).resolve().parents[2] / "build/fonts",
                         help="prepared fonts (tools/content/prepare_fonts.py) copied to Contents/Resources/fonts")
     parser.add_argument("--hd", type=Path, help="HD folder (tools/release/prepare_hd_bundle.py): the app starts in HD")
@@ -246,8 +237,7 @@ def main() -> int:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
-                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd,
-                              ui=args.ui if args.ui.is_dir() else None)
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")

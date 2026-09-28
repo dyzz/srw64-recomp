@@ -28,7 +28,7 @@ def catalogue(locale: str) -> dict:
 
 class ButtonPromptTests(unittest.TestCase):
     def test_table_parses(self):
-        self.assertEqual(len(KEYBOARD), 15)
+        self.assertEqual(len(KEYBOARD), 14)
         self.assertTrue({"A", "B", "Z", "Start", "L", "R", "Settings", "AuxL", "AuxR", "DPad", "C", "Stick"} <= ACTIONS)
         self.assertFalse(KEYBOARD & ACTIONS)
 

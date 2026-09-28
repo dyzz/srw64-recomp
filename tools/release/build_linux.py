@@ -194,10 +194,6 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     for path in sorted((ROOT / 'build/fonts').iterdir()):
         if path.suffix in ('.ttf', '.txt'):
             shutil.copyfile(path, fonts / path.name)
-    ui = stage / 'ui'
-    ui.mkdir()
-    for path in sorted([*(ROOT / 'content/ui').glob('*.png'), *(ROOT / 'content/ui').glob('*.json')]):
-        shutil.copyfile(path, ui / path.name)
     source_text = ROOT / 'content/dialogue'
     for path in sorted(source_text.rglob('*.txt')):
         target = stage / 'dialogue' / path.relative_to(source_text)

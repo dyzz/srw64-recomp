@@ -19,8 +19,8 @@ PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
 INSTRUCTIONS = """Drive the SRW64 native host for debugging. Start with srw64_launch (or srw64_attach to a
 session started with tools/recomp/debug/srw64ctl.py), then read srw64_status and take
 srw64_screenshot. Two input layers:
-- srw64_keys: the game keyboard (Z=A, X=B, Enter=START, arrows, E=R, Q=L, I/K=C-up/down,
-  WASD stick, F5 reload dialogue text, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
+- srw64_keys: the classic game keyboard, fixed whatever the player bound (Z=A, X=B, Enter=START, arrows, E=R, Q=L,
+  I/K=C-up/down, WASD stick, F5 reload dialogue text, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
   window focus not required. Reading controls: E+Z fast-forward, E+Enter skip, I/K text size.
 - srw64_pad: a virtual controller (Steam Deck names; View opens the settings, L2/R2 are host keys).
 - srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the shared SDL/RmlUi UI that

@@ -66,7 +66,7 @@ class SettingsWindowTests(unittest.TestCase):
             for name in CONTROL_ROWS:   # beside two 150 dp binding columns
                 for run in runs(labels[f"controls_row_{name}"]):
                     self.assertLessEqual(em(run) * 14, row - 300, (locale, name, run))
-            for key in ("controls_detected", "controls_no_pad", "controls_layout_note", "controls_list_note",
+            for key in ("controls_detected", "controls_no_pad", "controls_keyboard_note", "controls_list_note",
                         "controls_capture_note", "controls_reserved"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run.replace("{name}", "Steam Deck")) * 13, row, (locale, key, run))
