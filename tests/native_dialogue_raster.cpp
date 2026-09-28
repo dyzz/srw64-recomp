@@ -42,6 +42,7 @@ void verify_raster(const Frame& frame,uint32_t width,uint32_t height) {
 void run() {
     Scratch scratch;
     Frame frame;frame.catalog=catalog("en","Manual");frame.font_size=13;
+    frame.controls_text="Next / History";frame.history_controls_text="Back";  // expanded by the host
     verify_raster(frame,320,240);
     const auto empty=rasterize_frame(frame,320,240);
     check(std::all_of(empty.image.pixels.begin(),empty.image.pixels.end(),[](auto b){return b==0;}),"hidden frame is not transparent");

@@ -131,6 +131,10 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     input::live_bindings().set_saver(save_bindings);
 }
 std::string key_name(int key){return SDL_GetScancodeName(SDL_Scancode(key));}
+std::string key_display_name(int key) {
+    const std::string name=SDL_GetKeyName(SDL_GetKeyFromScancode(SDL_Scancode(key)));
+    return name.empty()?key_name(key):name;
+}
 int key_from_name(const std::string& name){return int(SDL_GetScancodeFromName(name.c_str()));}
 std::string pad_input_name(const input::PadInput& p) {
     if(p.kind==input::PadInput::Button){const char* name=SDL_GameControllerGetStringForButton(SDL_GameControllerButton(p.index));return name?name:"";}
