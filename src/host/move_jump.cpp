@@ -94,7 +94,9 @@ void find_farthest(const uint8_t* ram) {
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<>> queue;
     queue.push({0, centre});
     while (!queue.empty()) {
-        const auto [d, i] = queue.top();
+        // Not a structured binding: the lambda below uses d, which clang 14 (the Linux
+        // build's) cannot capture from one.
+        const int d = queue.top().first, i = queue.top().second;
         queue.pop();
         if (d != distance[i]) continue;
         neighbours(i, [&](int n) {
