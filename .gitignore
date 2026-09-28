@@ -39,6 +39,7 @@ htmlcov/
 *.ttf
 # Our own symbol font (DejaVu triangles + a drawn wrench) ships from the repository.
 !/content/fonts/SRW64Symbols.ttf
+!/content/fonts/SRW64Prompts.ttf
 *.zip
 *.7z
 *.tar
@@ -73,6 +74,8 @@ CMakeCache.txt
 !/docs/media/*.jpg
 !/docs/media/*.webp
 !/docs/media/reading-demo.mp4
+# Pictures the native pages draw (the Controls page's controller diagram).
+!/content/ui/*.png
 
 # Editor and operating-system metadata
 .DS_Store

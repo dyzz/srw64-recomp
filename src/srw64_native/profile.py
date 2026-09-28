@@ -52,6 +52,8 @@ UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES} | {f"settings_ke
 UI_KEYS |= {f"settings_{kind}_{row}{pad}" for row in SETTINGS_KEY_ROWS for kind, pad in (("key", ""), ("bind", ""), ("bind", "_pad"))}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
+# The Controls page's remapping (frontend.cpp controls_page).
+UI_KEYS |= {"controls_device", "controls_keyboard", "controls_controller", "controls_controller_none", "controls_note", "controls_dpad", "controls_stick", "controls_extra", "controls_extra_note", "controls_settings", "controls_aux_left", "controls_aux_right", "controls_fixed", "controls_fixed_list", "controls_reset", "controls_capture", "controls_capture_note", "controls_reserved", "controls_cancel", "controls_up", "controls_down", "controls_left", "controls_right"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
