@@ -9,10 +9,13 @@ SRW64 Recompiled — HD 图片包 / HD image pack
 - 头像、场间背景、宇宙物件和标题 Logo 与火焰，
   由阿里云百炼的通义千问图像模型（qwen-image-3.0 / qwen-image-3.0-pro）
   以原版画面为参考生成，属于 AI 生成内容。
-- 剧情世界地图由 OpenAI 的图像模型（通过 Codex 的 image_gen）
+- 剧情世界地图和战术地图的底图由 OpenAI 的图像模型（通过 Codex 的 image_gen）
   以原版画面为参考绘制，属于 AI 生成内容。
+- 机体立绘和地图上的机体图标，用本地放大模型（4x-UltraSharpV2、4x-PixelPerfectV4）
+  从原版像素图放大重绘；战术地图的色号图（水面等颜色循环用）由原版地图像素放大而来。
+  这几类图由原版画面衍生。
 - 对话框和战斗界面边框由代码绘制；世界地图的舰船、地标与 5600 标记是自制模型。
-- 包内不含 ROM 数据。BANPRESTO 标志、GAME OVER 和窗口边框由原版画面算出，不在包里，由游戏处理。
+- BANPRESTO 标志、GAME OVER 和窗口边框由游戏运行时从原版画面算出，不在包里。
 
 这是非官方的粉丝作品，与万代南梦宫、万普（BANPRESTO）及各作品的版权方无关。
 原作角色、美术与商标的权利归各自的权利人所有。
@@ -24,12 +27,15 @@ the app of the same version, and replace it as a whole when you update.
 
 The portraits, intermission backgrounds, space objects and the title logo and flames
 are AI-generated with Alibaba Cloud Model Studio (Qwen image models qwen-image-3.0 /
-qwen-image-3.0-pro), and the story world map with OpenAI's image model (Codex
-image_gen), using the original graphics as reference. The
-dialogue and battle frames are drawn by code; the world-map ships, landmarks and the
-5600 marker are models made for this project. The pack contains no ROM data: the
-BANPRESTO logo, GAME OVER and the window frames are computed from the original
-graphics, so they are not in the pack and the game handles them.
+qwen-image-3.0-pro), and the story world map and the tactical map bases with OpenAI's
+image model (Codex image_gen), using the original graphics as reference. The unit
+poses and the map unit icons are upscaled and redrawn from the original pixel art with
+local upscaling models (4x-UltraSharpV2, 4x-PixelPerfectV4), and the tactical maps'
+palette-index maps (for water and other colour cycling) are upscaled from the original
+map pixels: these images are derived from the original graphics. The dialogue and
+battle frames are drawn by code; the world-map ships, landmarks and the 5600 marker are
+models made for this project. The BANPRESTO logo, GAME OVER and the window frames are
+computed from the original graphics by the game at run time and are not in the pack.
 
 This is an unofficial fan work, not affiliated with Bandai Namco, BANPRESTO or the
 rights holders of the series. The original characters, art and trademarks belong to

@@ -198,7 +198,7 @@ HD 底图是整张画的，同一个 tile 在不同位置画出来不一样，�
 - **美术清单**：`content/art/stage1-hd.json` 新增 `tactical_maps`（路径加清单摘要）。`compile_art` 逐文件校验：打包时拷进 `art/maps`，开发运行（`profile.py`）不拷贝、直接指向资产目录；两种都写 `art/srw64-tactical-maps.json`，`root` 为相对的 `maps` 或绝对路径。
 - **宿主**：没设 `SRW64_HD_MAPS` 时从 `SRW64_ART_PACK` 的这份索引找地图目录，所以启动器、自用全 HD 包、`--images hd` 的开发运行都会自动带上。地图改为按需加载：第一次画到某个布局时交给解码线程（连 mip 链一起算），游戏线程最多等 400 毫秒，实测进关第一帧就是 HD；约 900 次地图绘制没用到的地图在渲染线程用 `gpu::retire` 释放纹理，下次出现再解码（`SRW64_HD_MAPS_EVICT_AFTER` 可调，检查用）。以前是启动时把全部地图解码进内存，约 4 GB。
 - **自用全 HD 包**：`compress_hd.py` 把地图底图转成 JPEG（质量 95），`meta.json` 的 `base` 指向 `base.jpg`，色号图和殖民地帧保持 PNG；地图部分 1.0 GB → 350 MB，整个 HD 目录约 708 MB。
-- **公开包不带**：色号图和循环区像素是 ROM 派生数据，`build_release.py` 把 `art/maps` 列进 `ROM_DERIVED` 并删掉索引，游戏在公开包下画原版地图。若要公开发布，需要把色号图、参考调色板和保护区改为运行时从玩家 ROM 生成（与窗口边框的做法相同），另行决定。
+- **公开包也带**（2026-09-28 用户定：公开 HD 包与自用相同）：色号图和循环区像素由原版地图像素放大而来，NOTICE 与发布说明写明这一点。此前 `build_release.py` 把 `art/maps` 列进 `ROM_DERIVED` 从公开包删掉，已取消。底图 JPEG 质量 92、4:2:0（`compress_hd.py`），地图部分约 236 MB。
 - **验证**：`test_tactical_maps_pack.py`（校验与压缩）、`test_hd_release.py`；实机用自用包里的 JPEG 地图跑了地形面板（176 次）和殖民地（8 帧），用开发路径跑了总览和 109→121 切换（释放 1 次），均无跳过、无解码失败。
 
 ## 7. 待核实

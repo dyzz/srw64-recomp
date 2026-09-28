@@ -10,8 +10,8 @@ launcher and profile.py then attach each unit's `hd` file by that triplet.
     .venv/bin/python -m tools.hd_ai.build_unit_images --run assets/hd-ai/unit-poses/all-1 \
         --output assets/hd-ai/unit-poses/whole-v1 --bind
 
-The images stay PNG (they carry alpha; the pages crop by it). ROM-derived, so
-the folder is not part of the public HD download.
+The images stay PNG (they carry alpha; the pages crop by it); the release pack
+stores them as JPEG plus an alpha PNG (tools/release/compress_hd.py).
 """
 from __future__ import annotations
 

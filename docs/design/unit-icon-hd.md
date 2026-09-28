@@ -96,6 +96,6 @@ MMPX 放在模型前面才有意义；放在后面只是机械放大，但用在
 - **键**：图标由 `801C60A4` 建的子槽 0（模式 5）绘制，是单独装载的 16×16 CI4 贴图，调色板参数 `1010 + 阵营`。RT64 v5 的 TMEM 哈希把用到的调色板项也算进去，所以同一图标的四个阵营是四个不同的键，正好对应四套渲染。哈希算法沿用 `worldmap_space.ci4_hash`（TMEM 里奇数行 4 字节对调、用到的色号各 8 字节、再加 宽 16／高 16／tlut 0x8000／line 1／siz 0／fmt 2），**已用真实转储核对**：`--dump-textures` 运行（`Session.launch(dump_textures=True)`，RT64 写 `<run>/textures/<hash>.{tmem,tile.json,rice.json}`）里地图上 3 台机体的 16×16 贴图（tile line 1、fmt 2、siz 0、masks 4）与算出的键一一对应。
 - **包**：`unit_icon_hd.py pack --output v2 --pack assets/hd-ai/worldmap-surfaces/pack-v5 --bind` 把 320 × 4 张 64×64 写成 `icon-<hash>.png`（透明像素的 RGB 填最近实色，线性采样不出暗边；像素相同的图标去重后 1256 张）并入 `rt64.json`，在 `content/art/stage1-hd.json` 里登记为 `kind: icon`；`compile_art` 接受这一类，并在编译出的 `rt64.json` 里保留 `kind`（RT64 忽略多余字段）。
 - **实机**：`check_unit_icon_hd.py` 在 HD 下进 move-jump 迷你关卡截图、F6 切原版再截一张，并断言转储里的 16×16 机体贴图哈希都在包里。默认倍率 4 下 64 像素 1:1 绘制，阵营色正确，边缘无暗边。
-- **公开包**：产物是 ROM 派生图，`build_release.py` 按 `kind` 把它们从公开 HD 包的 `rt64.json` 和文件里剔除（`ROM_DERIVED_TEXTURE_KINDS`），只留在本机全 HD 自用包和用户目录 `hd/`。
+- **公开包**：2026-09-28 起公开 HD 包与自用相同，图标也在里面；NOTICE 写明由原版像素图放大重绘。此前 `build_release.py` 按 `kind` 剔除（`ROM_DERIVED_TEXTURE_KINDS`），已取消。
 - 未做：阴影椭圆（资源 687）没有换；1013（灰）对应的阵营含义、"已行动"是否换调色板仍未确认——灰版已经在包里，用到自然生效。
-- 版权：PixelPerfectV4 是 WTFPL，产物按 ROM 派生图处理（见 [HD 化规划](hd-pipeline-plan.md)）。
+- 版权：PixelPerfectV4 是 WTFPL；产物由原版画面衍生，随 HD 包发布时在 NOTICE 里说明（见 [HD 化规划](hd-pipeline-plan.md)）。

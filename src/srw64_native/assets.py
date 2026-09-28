@@ -130,7 +130,7 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         if sha(path.read_bytes()) != row["sha256"]:
             raise ValueError(f"Art pixels changed: {digest}")
         name = f"{digest}{path.suffix}"
-        # RT64 ignores `kind`; build_release.py prunes ROM-derived kinds from the public pack.
+        # RT64 ignores `kind`; it names the texture's family (worldmap, space, frame, icon).
         textures.append({**entry, "path": name, "kind": row["kind"]})
         files.append((path, name))
     if "worldmap" in manifest:

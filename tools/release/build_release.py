@@ -34,13 +34,6 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 # toolchain and the ROM, not on the project's sources.
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
-# The HD tactical maps carry the 4x palette-index map and the palette-cycled cells rendered
-# from ROM pixels (docs/design/tactical-map-hd-kit.md), so they stay in the self-use pack only.
-ROM_DERIVED = ("art/frames", "art/maps")
-# RT64 replacement textures redrawn from ROM pixels (compile_art keeps their kind): the map unit icons.
-ROM_DERIVED_TEXTURE_KINDS = ("icon",)
-# Scene images that are algorithmic upscales of ROM frames (tools/hd_ai/flat_scene_hd.py).
-ROM_DERIVED_SCENES = ("scene-images/banpresto-logo.png", "scene-images/game-over.png")
 
 
 def sha256(path: Path) -> str:
@@ -146,42 +139,7 @@ def main() -> int:
     pack_dir = output / "pack"
     pack_dir.mkdir()
     steps.run("hd-pack", [python, "tools/release/prepare_hd_bundle.py", "--output", str(pack_dir / "hd")], source, env)
-    # ROM-derived images stay out of the public pack; without the folder the game draws the
-    # originals. The window frames are Scale2x upscales of ROM tiles (tools/hd_ai/frame_hd.py).
-    left_out = []
-    for relative in ROM_DERIVED:
-        if (pack_dir / "hd" / relative).exists():
-            shutil.rmtree(pack_dir / "hd" / relative)
-            left_out.append(relative)
-    # Without its folder the maps' index only points at nothing; the game draws the originals.
-    (pack_dir / "hd/art/srw64-tactical-maps.json").unlink(missing_ok=True)
-    rt64 = pack_dir / "hd/art/rt64.json"
-    if rt64.is_file():
-        database = json.loads(rt64.read_text())
-        kept = [row for row in database["textures"] if row.get("kind") not in ROM_DERIVED_TEXTURE_KINDS]
-        dropped = [row for row in database["textures"] if row.get("kind") in ROM_DERIVED_TEXTURE_KINDS]
-        for row in dropped:
-            (pack_dir / "hd/art" / row["path"]).unlink()
-        if dropped:
-            rt64.write_text(json.dumps({**database, "textures": kept}, indent=2) + "\n")
-            about = json.loads((pack_dir / "hd/hd.json").read_text())
-            about["art"]["count"] = len(kept)
-            (pack_dir / "hd/hd.json").write_text(json.dumps(about, indent=2) + "\n")
-            left_out.append(f"art: {len(dropped)} {'/'.join(ROM_DERIVED_TEXTURE_KINDS)} textures")
-    scenes = pack_dir / "hd/art/srw64-scene-images.json"
-    if scenes.is_file():
-        index = json.loads(scenes.read_text())
-        kept = [row for row in index["images"] if row["file"] not in ROM_DERIVED_SCENES]
-        for row in index["images"]:
-            if row not in kept:
-                (pack_dir / "hd/art" / row["file"]).unlink()
-                left_out.append(f"art/{row['file']}")
-        scenes.write_text(json.dumps({**index, "images": kept}, indent=2) + "\n")
-        about = json.loads((pack_dir / "hd/hd.json").read_text())
-        about["art"]["scene_images"] = len(kept)
-        (pack_dir / "hd/hd.json").write_text(json.dumps({**about, "left_out_rom_derived": left_out}, indent=2) + "\n")
-    for relative in left_out:
-        print(f"     left out {relative} (ROM-derived)", flush=True)
+    # The public pack is the whole HD folder, the same as the self-use one (user, 2026-09-28).
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
     hd_zip = output / f"SRW64-{args.version}-HD.zip"

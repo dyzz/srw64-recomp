@@ -17,8 +17,8 @@ named like the battle asset, for the HD package.
 
 The venv is separate from .venv (torch): python3.14 -m venv build/esrgan-venv;
 pip install torch spandrel pillow numpy. Models: 4x-PixelPerfectV4 (WTFPL,
-OpenModelDB), 4x-AnimeSharp (CC-BY-NC-SA 4.0, Kim2091). Neither model nor its
-output is part of the public package: the poses are ROM-derived.
+OpenModelDB), 4x-AnimeSharp (CC-BY-NC-SA 4.0, Kim2091). The models stay local;
+the blended poses go into the HD pack (tools/release/hd-notice.txt names them).
 """
 from __future__ import annotations
 

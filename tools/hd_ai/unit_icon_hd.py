@@ -27,7 +27,7 @@ Gaussian radius of the abandoned first recipe (smooth 16 -> blur 0.7 -> 32).
 palettes.json and names.json (icon resource -> units). `run` writes
 hd/<rid>.idx.png and hd/<rid>-<palette>.png, a full contact sheet and a
 review sheet of a few icons (original, smooth, result, red, grey). The
-model output is ROM-derived, so nothing here goes into the public HD package.
+packed icons go into the HD pack, public and self-use alike (2026-09-28).
 Needs the ESRGAN venv (torch, spandrel, numpy, pillow); the game venv has no numpy.
 """
 from __future__ import annotations
