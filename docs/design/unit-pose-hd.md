@@ -82,7 +82,7 @@ build/esrgan-venv/bin/python tools/hd_ai/esrgan_pose.py --samples assets/hd-ai/u
 - 接入沿用头像的路子：`compile_art` 复制成 `art/units/` 和 `srw64-units-hd.json`；`assets.unit_lookup` 按三元组找文件；`profile.py` → `prepare_battle_assets(..., hd_unit)` 给 `battle_assets.units[n]` 加 `hd`；发布版启动器 `launch.cpp` 读同一索引按 `resources` 三元组挂 `hd`（C++ 导入器的机体条目新增 `resources`）。
 - 页面：战前确认页 `battle_unit` 与改造页用 `portrait_path()`（HD 模式且带 `hd` 时取 HD 文件），能力／のりかえ／存档页原本就走 `portrait_path`，无需改。确认页放大上限按 ROM 像素算（6 × ROM 宽 ÷ 文件宽），HD 文件按显示宽度重采样。
 - 实机核对：[`check_unit_pose_hd.py`](../../tools/recomp/debug/check_unit_pose_hd.py)，HD 进战前确认页截图，F6 切原图对照。
-- 版权：两个模型都是 CC-BY-NC-SA 4.0；产物是 ROM 派生图，只装用户目录 `hd/`，不进公开 HD 包（与头像相同的策略，见 [[srw64-full-hd-app]]）。
+- 版权：模型的许可见 [`esrgan_pose.py`](../../tools/hd_ai/esrgan_pose.py) 的说明；产物由原版画面衍生，随 HD 包发布（公开包与自用相同，2026-09-28 用户定），NOTICE 写明所用模型。发布包里存 6 倍 ROM 像素的 JPEG 加透明 PNG（`compress_hd.py`）。
 
 ## 战斗动画能否照此处理
 
