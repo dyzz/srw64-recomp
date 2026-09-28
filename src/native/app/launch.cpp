@@ -169,6 +169,8 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         {"SRW64_INTERACTIVE","1"},{"SRW64_DIAGNOSTICS","light"},{"SRW64_ROM_VARIANT","jp"},
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
         {"SRW64_DIALOGUE_DATA",dialogue.string()},{"SRW64_PRESENTATION_SETTINGS",language_file.string()},
+        // The player's key and controller bindings (input_bindings.hpp), beside the language.
+        {"SRW64_INPUT_SETTINGS",(session.user_dir()/"input.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         // HD starts on when the bundle has it; F6 or the settings window switch to Original.
         {"SRW64_HD_AVAILABLE",hd_art?"1":"0"},{"SRW64_IMAGE_MODE",hd_art?"hd":"original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
