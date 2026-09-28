@@ -686,6 +686,8 @@ void srw64_update_window(void*) {
         {
             SDL_Event e{};e.type=SDL_KEYDOWN;
             e.key.keysym.sym=SDL_GetKeyFromName(std::string(srw64::debug::key_names[key]).c_str());
+            // With the physical key too: the bindings (input_bindings.hpp) go by scancode.
+            e.key.keysym.scancode=virtual_scancode(key);
             const bool consumed=srw64::ui::event(e);e.type=SDL_KEYUP;srw64::ui::event(e);
             if(consumed)continue;
         }

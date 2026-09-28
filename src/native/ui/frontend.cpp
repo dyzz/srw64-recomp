@@ -533,8 +533,9 @@ std::string group_label(const std::string& id) {
         return out.empty()?std::string("\xe2\x80\x94"):out;
     };
     std::string icon;text::append_utf8(icon,group.icon);
-    std::string out="<span class='g'>"+icon+"</span>"+names(group.inputs);
-    if(group.click){std::string click;text::append_utf8(click,text::pad_glyph(*group.click,pad_family()));out+="<span class='g'>"+click+"</span>"+names({*group.click});}
+    // Each part in its own element: RmlUi's flex layout does not show bare text beside one.
+    std::string out="<span class='g'>"+icon+"</span><span>"+names(group.inputs)+"</span>";
+    if(group.click){std::string click;text::append_utf8(click,text::pad_glyph(*group.click,pad_family()));out+="<span class='g'>"+click+"</span><span>"+names({*group.click})+"</span>";}
     return out;
 }
 std::filesystem::path ui_asset(const char* name) {
@@ -586,6 +587,7 @@ bool capture_event(const SDL_Event& event) {
     case SDL_KEYDOWN: {
         if(event.key.repeat)return true;
         const auto key=event.key.keysym.scancode;
+        if(key==SDL_SCANCODE_UNKNOWN)return true;
         if(key==SDL_SCANCODE_ESCAPE){capture.queue.clear();return true;}
         if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8){capture.refused=true;return true;}
         bind([&](input::Bindings& b,input::Action a){input::assign_key(b,a,int(key));});
