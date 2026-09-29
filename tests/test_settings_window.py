@@ -47,6 +47,7 @@ class SettingsWindowTests(unittest.TestCase):
         runs = lambda text: text.split(" ")
         choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
                    "settings_ui_size": ("standard", "large", "largest"),
+                   "settings_aspect": ("wide", "original"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
                    "settings_title_ui": ("native", "original"), "settings_language": ()}
         for locale in LOCALES:

@@ -28,6 +28,10 @@
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_map.hpp"
+#include "wide_map.hpp"
+#include "game_frame.hpp"
+#include <algorithm>
+#include <iterator>
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
@@ -357,6 +361,35 @@ static int run_host(int argc, char** argv) {
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
+    // The tactical map wider than the original (docs/design/deck-16x10.md §5). Sprites that
+    // scroll with the map (sub-record +2 == 1: the map, units and cursor, map effects) and
+    // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
+    // portraits) stays in the centred 320. Not in the whole-map overview (801027DB == 1).
+    srw64_game_hooks.frame_start = [](uint8_t* ram) { srw64::wide_map::frame(ram); };
+    srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
+        if (ram[0x001027DB ^ 3] == 1) return false;
+        // The map overlay's callbacks, whichever call reaches them (a node registered by
+        // 8008A5C4 may carry a slot too): grid, move range, attack ranges, target tiles,
+        // damage figures (80209900) and 3D56's target area (800A3AD8). Other overlays use
+        // the same addresses, so only while the widened map is on screen.
+        static constexpr uint32_t map_callbacks[] = {0x801E44BC, 0x801E4760, 0x801E4C44, 0x801E4C88,
+            0x801E4CCC, 0x801E4D10, 0x80209900, 0x800A3AD8};
+        if (std::find(std::begin(map_callbacks), std::end(map_callbacks), function) != std::end(map_callbacks)) {
+            if (!srw64::wide_map::map_shown()) return false;
+        } else {
+            // Sprites that scroll with the map (sub-record +2 == 1): the map itself (mode 8,
+            // 800945D4), units and the cursor (modes 5 and 6), map effects (modes 12 and 13).
+            // The intermission picture (mode 4) also carries the flag but is no map.
+            static constexpr uint32_t map_sprites[] = {0x800945D4, 0x801E2C5C, 0x801E26C0, 0x800975A4, 0x8009751C};
+            if (slot >= 300 || sub >= 4 || ram[(0x000FFAAE + slot * 0xC4 + sub * 0x30) ^ 3] != 1 ||
+                std::find(std::begin(map_sprites), std::end(map_sprites), function) == std::end(map_sprites))
+                return false;
+            // Only the map opens the view; the rest follow it while it is on screen.
+            if (function != 0x800945D4 && !srw64::wide_map::map_shown()) return false;
+        }
+        return srw64::wide_map::begin(ram, cursor);
+    };
+    srw64_game_hooks.map_space_end = [](uint8_t* ram, int32_t cursor) { srw64::wide_map::end(ram, cursor); };
     srw64_game_hooks.map_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
         // Sprite record read by 800945D4: base 800FFA70 + slot*0xC4, sub-record at +0x3C + sub*0x30.
         const uint32_t base = 0x000FFA70 + slot * 0xC4, record = base + 0x3C + sub * 0x30;
@@ -372,7 +405,7 @@ static int run_host(int argc, char** argv) {
         int32_t offset_x = int32_t(origin_x), offset_y = int32_t(origin_y);
         if (byte(record + 2) == 1) { offset_x += int32_t(word(0x0010F5D4)); offset_y += int32_t(word(0x0010F5D8)); }
         // Screen = map + offset, so the map pixel at screen (0,0) is -offset.
-        srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y, overview});
+        srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y, overview, srw64::wide_map::view_offset()});
     };
     srw64_game_hooks.terrain_panel_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
         srw64::hdmap::rewrite_panel(ram, {begin, end});
@@ -382,8 +415,15 @@ static int run_host(int argc, char** argv) {
         // the texture data the drawn display list points at.
         srw64::portraits::rewrite(ram, {begin, end});
     };
-    srw64_game_hooks.background_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
-        srw64::backgrounds::rewrite(ram, {begin, end, slot, sub});
+    // The battle's sky (mode 2 while the battle animation runs) is drawn a period to each
+    // side in a picture wider than 4:3.
+    srw64_game_hooks.background_sides = [](uint8_t*, uint32_t, uint32_t) {
+        return srw64::frame::wide && srw64::frame::picture_width > srw64::frame::kWidth && srw64::wide_map::battle_shown();
+    };
+    srw64_game_hooks.background_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides) {
+        // A background still 4:3 (the intermission pictures without HD art) leaves the
+        // sides black (docs/design/deck-16x10.md).
+        if (!srw64::backgrounds::rewrite(ram, {begin, end, slot, sub}) && !sides) srw64::wide_map::mark_original();
     };
     srw64_game_hooks.scene_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads) {
         srw64::sprites::rewrite(ram, {begin, end, slot, sub, quads});

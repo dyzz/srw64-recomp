@@ -142,6 +142,7 @@
 | [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
+| [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |

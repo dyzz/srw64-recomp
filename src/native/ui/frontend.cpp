@@ -21,6 +21,8 @@
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
+#include "game_frame.hpp"
+#include "steam_deck.hpp"
 #include "rule_fixes.hpp"
 #include "notices.hpp"
 #include "debug_ui.hpp"
@@ -32,7 +34,9 @@
 #include "text/button_prompts.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
+#include <algorithm>
 #include <array>
+#include <cmath>
 #include <condition_variable>
 #include <deque>
 #include <fstream>
@@ -100,6 +104,47 @@ struct Banner {std::string text;double until;};
 std::deque<Banner> banners;
 int pixels_w{},pixels_h{};
 float pixel_ratio=1;
+// The window and the game picture's width (game_frame.hpp), which place the pages drawn
+// in the original's 320x240 coordinates.
+std::string frame_stamp(){return std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+"/"+std::to_string(frame::width(pixels_w,pixels_h));}
+// The View menu's window sizes (app_menu.hpp): n times the original's 240 lines, as wide
+// as the picture is for the window's present shape, in points.
+SDL_Point scaled_size(int w,int h,int n){return {int(std::lround(frame::width(float(w),float(h))*n)),int(frame::kHeight)*n};}
+// The display's room for the window, below its title bar.
+SDL_Rect window_room(int& top){
+    SDL_Rect room{};SDL_GetDisplayUsableBounds(std::max(0,SDL_GetWindowDisplayIndex(window)),&room);
+    top=0;SDL_GetWindowBordersSize(window,&top,nullptr,nullptr,nullptr);
+    return room;
+}
+app_menu::WindowState window_menu_state(){
+    app_menu::WindowState state;
+    if(!window)return state;
+    state.fullscreen=SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN;
+    int w,h,top;SDL_GetWindowSize(window,&w,&h);const SDL_Rect room=window_room(top);
+    for(int n=1;n<=app_menu::kScales;++n){
+        const SDL_Point size=scaled_size(w,h,n);
+        if(std::abs(size.x-w)<=1 && size.y==h)state.scale=n;
+        if(size.x<=room.w && size.y+top<=room.h)state.largest=n;
+    }
+    return state;
+}
+// Keeps the window's centre where it was, inside the display's room.
+void scale_window(int n){
+    if(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN)return;
+    if(SDL_GetWindowFlags(window)&SDL_WINDOW_MAXIMIZED)SDL_RestoreWindow(window);
+    int w,h,x,y,top;SDL_GetWindowSize(window,&w,&h);SDL_GetWindowPosition(window,&x,&y);
+    const SDL_Point size=scaled_size(w,h,n);const SDL_Rect room=window_room(top);
+    x=std::clamp(x+(w-size.x)/2,room.x,std::max(room.x,room.x+room.w-size.x));
+    y=std::clamp(y+(h-size.y)/2,room.y+top,std::max(room.y+top,room.y+room.h-size.y));
+    SDL_SetWindowSize(window,size.x,size.y);SDL_SetWindowPosition(window,x,y);
+}
+void toggle_fullscreen(){SDL_SetWindowFullscreen(window,(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN)?0:SDL_WINDOW_FULLSCREEN_DESKTOP);}
+// The settings page's window rows follow the window (a Deck shows none).
+std::string window_stamp(){
+    if(on_steam_deck())return {};
+    const auto state=window_menu_state();
+    return "w"+std::to_string(state.fullscreen)+std::to_string(state.scale)+std::to_string(state.largest);
+}
 float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
 std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
@@ -626,9 +671,9 @@ void settings_sync() {
         settings_page=0;
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::native_intermission_ui())+
+    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+
+        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()));
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -648,6 +693,16 @@ void settings_sync() {
         for(const auto& [locale,catalog]:localization::registered())locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
         body+=settings_row("settings_language",locales);
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
+        body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
+        // A handheld plays full screen and has no window to size.
+        if(!on_steam_deck()) {
+            const auto window_state=window_menu_state();
+            body+=settings_choice("settings_window","window",{"windowed","fullscreen"},window_state.fullscreen?"fullscreen":"windowed");
+            std::string sizes;
+            for(int n=1;n<=app_menu::kScales;++n)
+                sizes+=button("window-size:"+std::to_string(n),std::to_string(n)+"×",n==window_state.scale,window_state.fullscreen || n>window_state.largest);
+            body+=settings_row("settings_window_size",sizes);
+        }
     } else if(page=="interface") {
         body+=settings_choice("settings_ui_size","ui-size",{"standard","large","largest"},settings::ui_size_name(settings::ui_size()));
         body+=settings_choice("settings_battle_ui","battle-ui",{"native","hd","original"},settings::battle_ui_name(settings::battle_ui()));
@@ -980,10 +1035,10 @@ float text_units(const std::string& text) {
 void intermission_sync() {
     const auto next=intermission_page::state();intermission_request=next;
     if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+funds_editing;
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     document_close(intermission_doc);intermission_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;   // the border, one original pixel
     const auto panel=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="") {
@@ -1103,10 +1158,10 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
 void upgrade_sync() {
     const auto next=upgrade_page::state();upgrade_request=next;
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+funds_editing;
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(upgrade_doc && upgrade_stamp==stamp)return;
     document_close(upgrade_doc);upgrade_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
@@ -1229,10 +1284,10 @@ void upgrade_sync() {
 void parts_sync() {
     const auto next=parts_page::state();parts_request=next;
     if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp();
     if(parts_doc && parts_stamp==stamp)return;
     document_close(parts_doc);parts_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
@@ -1327,10 +1382,10 @@ void parts_sync() {
 void swap_sync() {
     const auto next=swap_page::state();swap_request=next;
     if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
     if(swap_doc && swap_stamp==stamp)return;
     document_close(swap_doc);swap_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
@@ -1431,10 +1486,10 @@ void swap_sync() {
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
     if(save_doc && save_stamp==stamp)return;
     document_close(save_doc);save_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
@@ -1524,10 +1579,10 @@ void save_sync() {
 void title_sync() {
     const auto next=title_page::state();title_request=next;
     if(!next.value("visible",false)){document_close(title_doc);title_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h);
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp();
     if(title_doc && title_stamp==stamp)return;
     document_close(title_doc);title_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="") {
@@ -1584,10 +1639,10 @@ void title_sync() {
 void ability_sync() {
     const auto next=ability_page::state();ability_request=next;
     if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
     if(ability_doc && ability_stamp==stamp)return;
     document_close(ability_doc);ability_stamp=stamp;
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
     const auto box=[&](float x0,float y0,float x1,float y1,const std::string& content,float font,const std::string& id="",const std::string& extra="") {
@@ -1739,7 +1794,7 @@ void home_sync() {
 // 801D4660 / 801E7A28), the player's on the right; when an enemy attacks, the menu
 // (0x46, frame 1197; 801D51A8). The same words, figures and ??? for an unknown enemy.
 std::string battle_hd_page(const json& next) {
-    const float u=std::min(pixels_w/320.f,pixels_h/240.f),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
+    const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;   // one original pixel
     const auto box=[&](float x,float y,float w,float h){return "left:"+px(x)+"; top:"+px(y)+"; width:"+px(w)+"; height:"+px(h)+";";};
@@ -1846,7 +1901,7 @@ void battle_sync() {
     document_close(original_doc);original_stamp.clear();
     const bool hd_original=next.value("style",std::string())=="hd";
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"");
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"");
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
@@ -2009,6 +2064,9 @@ void choose(const std::string& id) {
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
+        if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");
+        if(id.starts_with("window:") && (id=="window:fullscreen")!=bool(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN))toggle_fullscreen();
+        if(id.starts_with("window-size:"))scale_window(std::stoi(id.substr(12)));
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
             if(id.substr(8)==settings::ui_size_name(size))settings::set_ui_size(size);
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
@@ -2234,9 +2292,12 @@ void sync() {
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();
-    app_menu::update(language->ui("settings_open"),language->ui("dialogue_reload"));
+    app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
+                      language->ui("menu_fullscreen"),language->ui("menu_window_scale")},window_menu_state());
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
+    if(app_menu::take_fullscreen_request())toggle_fullscreen();
+    if(const int n=app_menu::take_scale_request())scale_window(n);
     settings_sync();notices_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
@@ -2277,6 +2338,13 @@ bool dispatch(SDL_Event& event) {
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
         if(!event.key.repeat)srw64::dialogue::request_reload();return true;
     }
+#ifndef __APPLE__
+    // F11 toggles full screen where there is no menu bar (a Mac has View > Full Screen, ⌃⌘F).
+    if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F11 && !on_steam_deck() &&
+       !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
+        if(!event.key.repeat)toggle_fullscreen();return true;
+    }
+#endif
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_COMMA && (event.key.keysym.mod&(KMOD_CTRL|KMOD_GUI))){choose("settings-open");return true;}
     // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
@@ -2599,6 +2667,7 @@ json menu(const json& p){
 #endif
             sync();return {{"opened","settings"}};
         }
+        if(app_menu::activate(wanted)){sync();return {{"pressed",wanted}};}
         for(const auto& entry:rules::catalog)if(wanted==localization::catalog().ui(rules::ui_key(entry.id))){choose("settings-open");choose("rule:"+std::string(entry.id));sync();return {{"pressed",wanted}};}
         for(const auto& preset:rules::presets)if(wanted==localization::catalog().ui(std::string(preset.key))){choose("settings-open");choose("preset:"+std::string(preset.key));sync();return {{"pressed",wanted}};}
     }

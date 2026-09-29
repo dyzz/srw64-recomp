@@ -162,7 +162,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     std::memcpy(u.rect, draw.rect, sizeof(u.rect));
     // The quad is in full-frame N64 coordinates (see native_map.cpp on screenScale).
     u.uv[0] = draw.flip ? 1.f : 0.f; u.uv[1] = 0; u.uv[2] = draw.flip ? 0.f : 1.f; u.uv[3] = 1;
-    u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
+    gpu::frame_resolution(call, u.resolution);
     u.fill[0] = silhouette_rgb[0]; u.fill[1] = silhouette_rgb[1]; u.fill[2] = silhouette_rgb[2];
     u.fill[3] = draw.silhouette ? 1.f : 0.f;
     gpu::State state;

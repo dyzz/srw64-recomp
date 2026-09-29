@@ -64,6 +64,7 @@ struct Draw {
     uint32_t id = 0;
     int asset = -1;
     float rect[4]{}, uv[4]{};                // N64 screen pixels; normalized map coordinates
+    float view_left = -1;                    // MapDraw::view_left
     Palette live{};
     uint8_t colony_frame = 0;
 };
@@ -267,7 +268,9 @@ bool render_quad(plume::RenderCommandList* list, plume::RenderFramebuffer* frame
         uint32_t reference[256], live[256];
     } data{};
     std::memcpy(data.rect, draw.rect, sizeof(data.rect)); std::memcpy(data.uv, draw.uv, sizeof(data.uv));
-    data.resolution[0] = float(call.fbWidth); data.resolution[1] = float(call.fbHeight);
+    gpu::frame_resolution(call, data.resolution);
+    // In the widened view (wide_map.hpp) the map's x = 0 sits at the view's left edge.
+    if (draw.view_left >= 0) data.resolution[3] = draw.view_left;
     // RT64's screenScale/screenOffset for a rectangle describe that rectangle's own
     // viewport (width / frame width, centre offset). The quad is already in full-frame
     // N64 coordinates, so applying them stretched the map by the marker's overhang and
@@ -487,6 +490,7 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
     // Texture rectangle corners are 10.2 fixed point; the lower-right is exclusive.
     record.rect[0] = x0 / 4.0f; record.rect[1] = y0 / 4.0f;
     record.rect[2] = x1 / 4.0f; record.rect[3] = y1 / 4.0f;
+    record.view_left = draw.view_left;
     if (draw.overview) {
         // The overview draws every cell shrunk, skipping the border ring: the cells it drew
         // form a grid whose column and row counts tell how many border cells it left out.

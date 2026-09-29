@@ -23,11 +23,23 @@ struct SRW64GameHooks {
     void (*terrain_panel_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800964E4 (sprite mode 7: every character portrait) wrote [begin, end) for slot/sub.
     void (*portrait_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
+    // 80095974 is about to draw slot/sub: true when it should also be drawn one 320-pixel
+    // period to each side (the battle's wrapping sky in a picture wider than 4:3).
+    bool (*background_sides)(uint8_t*, uint32_t slot, uint32_t sub){};
     // 80095974 (sprite modes 2 and 4: intermission backgrounds) wrote [begin, end) for slot/sub.
-    void (*background_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
+    // sides: it was drawn to each side as well (background_sides).
+    void (*background_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides){};
     // 80096CD8 (sprite modes 11-13, texture rectangles) or 8009761C (modes 14-16, quads) wrote
     // [begin, end) for one scene frame of slot/sub.
     void (*scene_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads){};
+    // A render node's function (a sprite drawer with slot/sub, or a callback with slot ~0u) is
+    // about to write at the display list cursor `cursor` (a Gfx**). True: the host appended
+    // commands placing the draw in the widened map view (wide_map.hpp) and map_space_end
+    // closes them after it.
+    // The frame boundary, after the original's (80085F30): the map view's width for the frame.
+    void (*frame_start)(uint8_t*){};
+    bool (*map_space_begin)(uint8_t*, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub){};
+    void (*map_space_end)(uint8_t*, int32_t cursor){};
     void (*reset)(uint8_t*){};
     bool (*script_before)(uint8_t*, uint32_t){};
     void (*script_after)(uint8_t*, uint32_t){};

@@ -131,7 +131,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     if(!owned_session)owned_session=std::make_unique<Session>(options);
     auto& session=*owned_session;
     const auto language_file=session.user_dir()/"presentation.json";
-    std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size;
+    std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto";
     if(fs::exists(language_file)) {
         // Unreadable settings count as invalid: an explicit --language replaces them.
         json saved=json::object();
@@ -146,6 +146,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
             title_ui=saved.value("title_ui","native");
             settings_page=saved.value("settings_page","");
             ui_size=saved.value("ui_size","");
+            aspect=saved.value("aspect","auto");
         }
     }
     if(locale.empty())locale=data.at("config").at("locale").get<std::string>();
@@ -161,7 +162,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         {"rules_version",game.rules_version},{"fixes",rules}}).dump(2)+"\n");
     if(!options.language.empty()) {
         json settings={{"schema","srw64.presentation-settings.v1"},
-            {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page}};
+            {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect}};
         if(!ui_size.empty())settings["ui_size"]=ui_size;  // absent until the player chooses one
         atomic_write(language_file,settings.dump(2)+"\n");
     }

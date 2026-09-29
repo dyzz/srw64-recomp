@@ -165,6 +165,77 @@ NATIVE_HOOKS = {
 }
 
 
+# The tactical map's screen-width constants (docs/design/deck-16x10.md §5, src/host/wide_map.hpp).
+# Keyed by instruction address: the literal in the statement after that address's comment
+# becomes srw64_map_x(literal, halves), the original plus halves/2 of the widened view's
+# extra width (0 at 4:3, so the original's behaviour is unchanged there): 2 for a right
+# edge or a width, 1 for a centre, negative when the literal is subtracted. A float loaded
+# by lui is written as its full bits and becomes srw64_map_x_float(bits, halves); a string
+# in place of halves is a whole expression for the literal.
+MAP_WIDTH_CONSTANTS = {
+    # Overlays share addresses, so each is keyed by its function's generated name too.
+    ("srw64_original_map_draw", 0x80094A94): ("0X149", 2),             # 800945D4 draws a cell while its x + 16 < 329
+    ("load_000AB160_func_801FFCB0", 0x801FFCB8): ("0X98", 1),          # centre a point: scroll = 152 - x
+    ("load_000AB160_func_801FFCB0", 0x801FFCEC): ("0X140", 2),         # ...keeping the map's right edge in view
+    ("load_000AB160_func_801FFADC", 0x801FFBA0): ("S32(0X4388 << 16)", 2),  # follow the cursor past x = 272.0
+    ("load_000AB160_func_801FFADC", 0x801FFBD0): ("0X110", 2),         # ...scrolling to put it at 272
+    ("load_000AB160_func_801FFE34", 0x801FFE44): ("0X101", 2),         # a point is in view while 32 <= x <= 288
+    ("load_000AB160_func_801FFE78", 0x801FFE84): ("-0X60", -1),        # the centre box starts at x = 96...
+    ("load_000AB160_func_801E44BC", 0x801E45EC): ("0X140", 2),         # the grid's vertical lines up to x = 320
+    ("load_000AB160_func_801E44BC", 0x801E46F4): ("0X140", 2),         # ...its horizontal lines end at 320
+    ("load_000AB160_func_801E44BC", 0x801E4700): ("0X140", 2),
+    # Windows that open beside a unit stay on the centred 320 while units move in the wider
+    # view: their anchor is the unit's x less half the extra width, so they still open next to it.
+    ("load_000AB160_func_801CABAC", 0x801CAC6C): ("0XBD", 1),          # terrain panel: which side of x = 189
+    ("load_000AB160_func_801CABAC", 0x801CAC74): ("-0X22", -1),        # ...then 34 to the left
+    ("load_000AB160_func_801C9D08", 0x801C9D44): ("-0X20", -1),        # a unit's window: 32 to its left
+    ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "(MEM_W(ctx->r1, -0XA2C) - srw64_map_x(0, 1))"),
+}
+
+# 8008AE90 builds each frame's display list by calling every render node's function: sprites
+# at 8008B3FC (cursor, slot, sub), callbacks at 8008B3E0 (cursor). Both calls go through the
+# host's srw64_render_node (game_hooks.cpp), which may place the draw in the widened map view.
+RENDER_NODE_CALLS = {0x8008B3E0: 0, 0x8008B3FC: 1}
+
+
+def bind_render_nodes(source: str) -> str:
+    for address, sprite in RENDER_NODE_CALLS.items():
+        pattern = re.compile(rf"(    // 0x{address:08X}: jalr        \$v0\n    // 0x[0-9A-F]{{8}}: [^\n]*\n    [^\n]*\n)    LOOKUP_FUNC\(ctx->r2\)\(rdram, ctx\);")
+        source, count = pattern.subn(rf"\1    srw64_render_node(rdram, ctx, (int32_t)ctx->r2, {sprite});", source)
+        if count > 1 or (count == 0 and "RECOMP_FUNC void resident_func_8008AE90(" in source):
+            raise RuntimeError(f"render node call {address:#x} rewritten {count} times")
+    return source
+
+
+def bind_map_width(source: str, found: dict[tuple[str, int], int]) -> str:
+    """Rewrite MAP_WIDTH_CONSTANTS literals; count each constant's rewritten statements."""
+    lines = source.split("\n")
+    function = ""
+    for index, line in enumerate(lines[:-1]):
+        if line.startswith("RECOMP_FUNC void "):
+            function = line[len("RECOMP_FUNC void "):line.index("(")]
+            continue
+        match = re.match(r"\s*// 0x([0-9A-F]{8}):", line)
+        key = (function, int(match[1], 16)) if match else None
+        if key not in MAP_WIDTH_CONSTANTS:
+            continue
+        address = key[1]
+        literal, halves = MAP_WIDTH_CONSTANTS[key]
+        statement = lines[index + 1]
+        if statement.count(literal) != 1:
+            raise RuntimeError(f"map width constant {address:#x}: {literal} not once in {statement.strip()!r}")
+        if isinstance(halves, str):
+            replacement = halves   # a whole expression in place of the literal
+        elif literal.startswith("S32("):
+            bits = int(re.match(r"S32\(0X([0-9A-F]+) << 16\)", literal)[1], 16) << 16
+            replacement = f"srw64_map_x_float(0X{bits:08X}u, {halves})"
+        else:
+            replacement = f"srw64_map_x({literal}, {halves})"
+        lines[index + 1] = statement.replace(literal, replacement)
+        found[key] = found.get(key, 0) + 1
+    return "\n".join(lines)
+
+
 def bind_native_hooks(source: str) -> str:
     """Rename definitions only; direct calls and overlay tables use the bridge."""
     for original, renamed in NATIVE_HOOKS.items():
@@ -282,12 +353,15 @@ def main() -> int:
         header = work / "generated/funcs.h"
         declarations = set(re.findall(r"void (\w+)\(", header.read_text()))
         called: set[str] = set()
+        map_width_found: dict[tuple[str, int], int] = {}
         for path in sorted((work / "generated").glob("funcs_*.c")):
             if path.name == "funcs_unsupported.c":
                 continue
             source = path.read_text()
             adapted, count = bind_overlay_calls(source)
             adapted = bind_native_hooks(adapted)
+            adapted = bind_map_width(adapted, map_width_found)
+            adapted = bind_render_nodes(adapted)
             adapted = adapted.replace("RECOMP_FUNC void resident_func_8007F704(",
                                       "RECOMP_FUNC void srw64_original_rom_read(")
             adapted = adapted.replace("RECOMP_FUNC void resident_func_8008C510(",
@@ -297,6 +371,8 @@ def main() -> int:
             generated_files.append({"path": str(path.relative_to(work)), "overlay_lookup_calls": count,
                                     "raw_sha256": hashlib.sha256(source.encode()).hexdigest(),
                                     "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+        if set(map_width_found) != set(MAP_WIDTH_CONSTANTS):
+            raise RuntimeError(f"map width constants not found: {sorted(set(MAP_WIDTH_CONSTANTS) - set(map_width_found))}")
         # Upstream deliberately omits some internal OS/Pak routines. Retained
         # SDK callers may still refer to them. Make the diagnostic executable
         # fail with the exact routine instead of silently inventing behavior.
@@ -313,7 +389,9 @@ def main() -> int:
             f"void {name}(uint8_t* rdram, recomp_context* ctx);" for name in missing_declarations) + "\n")
         with header.open("a") as destination:
             destination.write("\n".join(f"void {name}(uint8_t*, recomp_context*);" for name in NATIVE_HOOKS.values()) + "\n")
-            destination.write("void srw64_original_rom_read(uint8_t*, recomp_context*);\nvoid srw64_original_text_descriptor(uint8_t*, recomp_context*);\n#ifdef __cplusplus\n}\n#endif\n")
+            destination.write("void srw64_original_rom_read(uint8_t*, recomp_context*);\nvoid srw64_original_text_descriptor(uint8_t*, recomp_context*);\n")
+            destination.write("int32_t srw64_map_x(int32_t original, int32_t halves);\nint32_t srw64_map_x_float(uint32_t bits, int32_t halves);\n"
+                              "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(
             f'void {name}(uint8_t* rdram, recomp_context* ctx) {{ '

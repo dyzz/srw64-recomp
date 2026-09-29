@@ -44,6 +44,11 @@ void set_native_name_entry_ui(bool native);
 // built; saved as title_ui.
 bool native_title_ui();
 void set_native_title_ui(bool native);
+// The game picture: following the screen's shape from 4:3 to 16:9 (the default; the
+// original centred with room on each side) or the original 4:3 (game_frame.hpp). Saved
+// as aspect, "auto" or "4:3"; applies from the next frame.
+bool wide_picture();
+void set_wide_picture(bool wide);
 // The size of the interface drawn in dp (the settings window, the pre-battle page, the
 // title's settings button, notices) and of the dialogue's bottom bar: Standard, Large or
 // Largest, 1, 1.25 or 1.5 times, as far as the window has room (frontend.cpp sync). Saved

@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include "presentation_settings.hpp"
 #include "steam_deck.hpp"
+#include "game_frame.hpp"
 #include "app/runtime.hpp"
 #include "native_dialogue.hpp"
 #include "modal_input.hpp"
@@ -57,7 +58,7 @@ std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
-        {"title_ui",native_title?"native":"original"},{"settings_page",page}});
+        {"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
     srw64::app::atomic_write(path,saved.dump(2)+"\n");
 }
@@ -87,6 +88,12 @@ const char* ui_size_name(UiSize size){return size==UiSize::Largest?"largest":siz
 float ui_scale(UiSize size){return size==UiSize::Largest?1.5f:size==UiSize::Large?1.25f:1.f;}
 void set_ui_size(UiSize size) {
     size_choice=int(size);
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+bool wide_picture(){return frame::wide.load();}
+void set_wide_picture(bool wide) {
+    frame::wide=wide;
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -137,11 +144,14 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         const auto saved=nlohmann::json::parse(file,nullptr,false);
         if(saved.is_object()){battle=battle_ui_from(saved.value("battle_ui","native"));native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";native_title=saved.value("title_ui","native")!="original";}
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
+        if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("ui_size") && saved["ui_size"].is_string()) {
             const auto name=saved["ui_size"].get<std::string>();
             for(const auto size:{UiSize::Standard,UiSize::Large,UiSize::Largest})if(name==ui_size_name(size))size_choice=int(size);
         }
     }
+    // For comparisons: SRW64_ASPECT=4:3 or auto for a run, saved only if changed.
+    if(const auto* aspect=std::getenv("SRW64_ASPECT"))frame::wide=std::string(aspect)!="4:3";
     if(const auto* path=std::getenv("SRW64_INPUT_SETTINGS"))input_destination=path;
     if(!input_destination.empty() && std::filesystem::exists(input_destination)) {
         std::ifstream file(input_destination);

@@ -5,6 +5,7 @@
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
+#include "game_frame.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -61,6 +62,7 @@ struct Draw {
     uint32_t id = 0;
     int asset = -1;
     bool quad = false, wrap = false, text = false;
+    bool wide = false;   // drawn past the original's 320 (a repeating picture), the scissor too
     TextJob::Anchor anchor = TextJob::Anchor::center;
     float rect[4]{};      // union of the parts: screen x0,y0,x1,y1 (N64 px), or model x0,top,x1,bottom (y up)
     float at[2]{};        // Anchor::origin: where the image origin goes (screen N64 px)
@@ -298,7 +300,7 @@ bool render_items(plume::RenderCommandList* list, plume::RenderFramebuffer* fram
         u.rect[2] = u.rect[0] + image.units[0]; u.rect[3] = u.rect[1] + image.units[1];
         u.uv[2] = u.uv[3] = 1;
         u.color[0] = item->tint[0]; u.color[1] = item->tint[1]; u.color[2] = item->tint[2]; u.color[3] = 1;
-        u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
+        gpu::frame_resolution(call, u.resolution);
         if (!draw_sprite(list, framebuffer, call, image.set, u, false, false)) { ++skipped; return true; }
     }
     rendered += drawable.size();
@@ -343,7 +345,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     std::memcpy(u.uv, draw.uv, sizeof(u.uv));
     std::memcpy(u.color, draw.color, sizeof(u.color));
     u.z[0] = draw.z;
-    u.resolution[0] = float(call.fbWidth); u.resolution[1] = float(call.fbHeight);
+    gpu::frame_resolution(call, u.resolution);
     u.screen[0] = call.screenScale[0]; u.screen[1] = call.screenScale[1];
     u.screen[2] = call.screenOffset[0]; u.screen[3] = call.screenOffset[1];
     if (draw.quad) {
@@ -355,7 +357,10 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
         const auto& viewport = d.rspViewports.at(call.viewProjIndex);
         hlslpp::store(viewport.scale, u.viewportScale); hlslpp::store(viewport.translate, u.viewportTranslate);
     }
-    if (!draw_sprite(list, framebuffer, call, set, u, draw.quad, draw.wrap)) { ++skipped; return true; }
+    // A picture drawn past the original's 320 is clipped to the whole picture instead.
+    RT64::NativeMeshDraw wide = call;
+    if (draw.wide) wide.scissor = {0, 0, int32_t(call.viewport.width), int32_t(call.viewport.height)};
+    if (!draw_sprite(list, framebuffer, wide, set, u, draw.quad, draw.wrap)) { ++skipped; return true; }
     ++rendered;
     return true;
 }
@@ -527,6 +532,15 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     record.color[3] = alpha;
     if (draw.quads) { record.rect[0] = x0; record.rect[1] = y1; record.rect[2] = x1; record.rect[3] = y0; }
     else { record.rect[0] = x0; record.rect[1] = y0; record.rect[2] = x1; record.rect[3] = y1; }
+    // A repeating picture across the whole frame (the title's flames) repeats on across a
+    // picture wider than 4:3 (docs/design/deck-16x10.md).
+    const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
+    if (record.wrap && !draw.quads && side > 0 && x0 <= 0.5f && x1 >= frame::kWidth - 0.5f) {
+        const float per_pixel = (record.uv[2] - record.uv[0]) / (x1 - x0);
+        record.rect[0] -= side; record.rect[2] += side;
+        record.uv[0] -= side * per_pixel; record.uv[2] += side * per_pixel;
+        record.wide = true;
+    }
     {
         std::lock_guard lock(ring_mutex);
         record.id = next_id;

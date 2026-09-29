@@ -17,11 +17,16 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",
             "settings_language", "settings_language_note",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
+            "settings_aspect", "settings_aspect_wide", "settings_aspect_original", "settings_aspect_note",
+            "settings_window", "settings_window_windowed", "settings_window_fullscreen", "settings_window_note",
+            "settings_window_size", "settings_window_size_note",
             "settings_ui_size", "settings_ui_size_standard", "settings_ui_size_large", "settings_ui_size_largest", "settings_ui_size_note",
             "settings_battle_ui", "settings_battle_ui_native", "settings_battle_ui_hd", "settings_battle_ui_original", "settings_battle_ui_note",
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
+# The macOS View menu (src/host/macos/app_menu.hpp).
+UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
 # The 部隊名 each language shows while the stored name is the original マーチウィンド
 # (docs/native/fixed-unit-name.md; the name cannot be changed).
 UI_KEYS |= {"unit_default_name"}

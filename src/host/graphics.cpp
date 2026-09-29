@@ -9,6 +9,8 @@
 #include "input_mode.hpp"
 #include "input_bindings.hpp"
 #include "steam_deck.hpp"
+#include "game_frame.hpp"
+#include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
 #include "native_gpu.hpp"
@@ -25,6 +27,7 @@
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
+#include "../include/rt64_extended_gbi.h"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
@@ -110,8 +113,34 @@ SDL_Scancode virtual_scancode(srw64::debug::Key key) {
     return table[key];
 }
 
+// At 16:10 the original's 4:3 stays centred, but what the game draws across the whole
+// frame reaches the sides: its clear colour (grey in battle), full-screen flashes, the
+// after-images the battle copies from earlier frames. Until a scene is widened on purpose
+// (docs/design/deck-16x10.md) the sides are black, like the 4:3 picture's pillarbox.
+// Each frame says how much of the picture it fills (wide_map::Shape): all of it, the band a
+// widened tactical map's view covers, or the original's 4:3 (art not yet drawn wider).
+void mask_sides(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
+    const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
+    const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
+    const auto shape = srw64::wide_map::frame_shape(RT64::GetRenderHookWorkloadId());
+    if (shape.fill == srw64::wide_map::Shape::Fill::whole) return;
+    float band_left = (picture - srw64::frame::kWidth) / 2, band_right = (picture + srw64::frame::kWidth) / 2;
+    if (shape.fill == srw64::wide_map::Shape::Fill::view) { band_left = shape.left; band_right = shape.right; }
+    const float origin = (width - picture * scale) / 2;
+    const int32_t left = std::max(0, int32_t(std::lround(origin + band_left * scale)));
+    const int32_t right = std::min(int32_t(width), int32_t(std::lround(origin + band_right * scale)));
+    if (left <= 0 && right >= int32_t(width)) return;
+    plume::RenderRect sides[2];
+    uint32_t count = 0;
+    if (left > 0) sides[count++] = {0, 0, left, int32_t(height)};
+    if (right < int32_t(width)) sides[count++] = {right, 0, int32_t(width), int32_t(height)};
+    list->setFramebuffer(framebuffer);
+    list->clearColor(0, plume::RenderColor(0.f, 0.f, 0.f, 1.f), sides, count);
+}
+
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
+    mask_sides(list, framebuffer);
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::dialogue::gpu_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
     // Clear workload-keyed guest naming frames before the shared UI renders.
@@ -365,7 +394,7 @@ public:
         }
         fprintf(stderr, "SRW64_RENDER_RESOLUTION mode=%d multiplier=%.0f\n",
                 int(app->userConfig.resolution), app->userConfig.resolutionMultiplier);
-        app->userConfig.aspectRatio = RT64::UserConfiguration::AspectRatio::Original;
+        configure_aspect(srw64::frame::kWidth);   // the window's shape is known from the first frame
         app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Original;
         // 4x MSAA; SRW64_MSAA=0/2/4/8 for comparisons. RT64 falls back when the device
         // lacks the sample count; native draws follow the scene target's sample count.
@@ -452,8 +481,21 @@ public:
     void enable_instant_present() override {}
     void send_dl(const OSTask* task) override {
         apply_images();
+        apply_aspect();
         app->state->rsp->reset();
         app->interpreter->loadUCodeGBI(task->t.ucode & 0x3FFFFFF, task->t.ucode_data & 0x3FFFFFF, true);
+        // What this frame fills of the picture, from its draws (wide_map::Shape).
+        const auto shape=srw64::wide_map::take_shape();
+        if (aspect_width > srw64::frame::kWidth) {
+            // A picture wider than 4:3 keeps the original's rectangles centred until a
+            // scene places them wider (wide_map.cpp); a rectangle as wide as the screen
+            // stretches across the picture (RT64's own rule): fades, dimming, flashes and
+            // letterbox bars, never pictures (the game draws those in tiles). 3D widens:
+            // the world map, the title's and the prologue's lines, the battle's ground,
+            // units and effects. The same as gEXEnable at the head of the display list;
+            // RT64 clears it with every workload.
+            app->state->enableExtendedGBI(RT64_EXTENDED_OPCODE);
+        }
         const uint32_t start=task->t.data_ptr & 0x3FFFFFF;
         bool native_text=false;
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -463,8 +505,10 @@ public:
         const bool name_cover=srw64::names::request().visible;
         srw64::names::queue_cover(app->state->workloadId+1,name_cover);
 #endif
+        srw64::wide_map::queue_shape(app->state->workloadId+1,shape);
         // The native dialogue submits an edited copy of the display list.
         app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
+        srw64::wide_map::queue_shape(app->state->workloadId,shape);
 #ifdef SRW64_NATIVE_DIALOGUE
         srw64::dialogue::queue_frame(app->state->workloadId,native_frame);
         srw64::names::queue_cover(app->state->workloadId,name_cover);
@@ -477,6 +521,34 @@ public:
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:
+    // A picture wider than the original renders that much more of the original's width
+    // (RT64 Manual at the picture's ratio, game_frame.hpp); extended origins reach its
+    // edges (Expand: all the way). Otherwise the plain 4:3 picture.
+    void configure_aspect(float width) {
+        using AspectRatio = RT64::UserConfiguration::AspectRatio;
+        const bool wide = width > srw64::frame::kWidth;
+        app->userConfig.aspectRatio = wide ? AspectRatio::Manual : AspectRatio::Original;
+        app->userConfig.aspectTarget = width / srw64::frame::kHeight;
+        app->userConfig.extAspectRatio = wide ? AspectRatio::Expand : AspectRatio::Original;
+        aspect_width = width;
+        srw64::frame::picture_width = width;
+    }
+    // The picture follows the window, and the settings window turns it on or off while
+    // the game runs; RT64 reads the configuration again for each workload.
+    void apply_aspect() {
+        uint32_t w, h;
+        {
+            auto& shared = *app->sharedQueueResources;
+            std::scoped_lock lock(shared.configurationMutex);
+            w = shared.swapChainWidth; h = shared.swapChainHeight;
+        }
+        const float width = srw64::frame::width(float(w), float(h));
+        if (width == aspect_width) return;
+        configure_aspect(width);
+        app->updateUserConfig(false);
+        fprintf(stderr, "SRW64_ASPECT width=%.2f window=%ux%u\n", width, w, h);
+    }
+    float aspect_width = 0;
     void apply_images() {
         auto& mode=srw64::presentation::image_mode;
         if(!mode.enabled() || mode.current()==int(mode.requested()))return;
@@ -564,11 +636,13 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // RT64 creates D3D12 swapchains from the HWND; the Vulkan flag is harmless there.
     constexpr Uint32 surface = SDL_WINDOW_VULKAN;
 #endif
-    // Steam sets SteamDeck=1 for games on the Deck: fill its screen, Game Mode or not.
-    const bool deck = std::getenv("SteamDeck") && std::string(std::getenv("SteamDeck")) == "1";
-    if (srw64::on_steam_deck()) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
+    // A handheld fills its screen, Game Mode or Desktop Mode; a desktop opens a window (View
+    // menu, F11 or the settings page for full screen, frontend.cpp).
+    const bool deck = srw64::on_steam_deck();
+    if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
+    // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              960, 720, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
@@ -785,6 +859,7 @@ nlohmann::json srw64_window_status() {
     SDL_Vulkan_GetDrawableSize(window, &pixel_width, &pixel_height);
 #endif
     return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
+            {"fullscreen", (SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN) != 0},
             {"pixel_width", pixel_width}, {"pixel_height", pixel_height}, {"title", SDL_GetWindowTitle(window)}};
 }
 
