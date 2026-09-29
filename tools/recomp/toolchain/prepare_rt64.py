@@ -70,7 +70,7 @@ def main() -> int:
                                            "src/tools/spirv_cross_msl/CMakeLists.txt",
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp"} | set(NATIVE_MODEL_PATCHES)),
-                                (plume, {"plume_metal.cpp", "plume_vulkan.cpp"})):
+                                (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
             raise RuntimeError(f"unrelated local changes in graphics dependency: {changed - allowed}")
@@ -159,11 +159,64 @@ def main() -> int:
             vkCmdCopyImageToBuffer(vk, srcTexture->vk, toImageLayout(srcTexture->textureLayout), dstBuffer->vk, 1, &imageCopy);
         }
         else {"""
+    # CocoaWindow queues blocks on the main queue from the present thread (every
+    # needsResize()), and they capture `this`. Application::end() frees the swapchain
+    # and its CocoaWindow on the graphics thread while the main thread is joining it,
+    # so a block queued after the main thread's last event pump runs in SDL_Quit's
+    # run loop (Cocoa_VideoQuit) against freed memory: SIGSEGV at exit on macOS.
+    # The blocks now share a lifetime record and return once the window is gone.
+    apple_include = ("#include <atomic>\n#include <mutex>\n",
+                     "#include <atomic>\n#include <memory>\n#include <mutex>\n")
+    apple_class = ("    class CocoaWindow {\n"
+                   "        void* windowHandle;\n"
+                   "        CocoaWindowAttributes cachedAttributes;\n"
+                   "        std::atomic<int> cachedRefreshRate;\n"
+                   "        mutable std::mutex attributesMutex;\n",
+                   "    // Blocks queued on the main queue can outlive the CocoaWindow that queued them.\n"
+                   "    struct CocoaWindowLifetime {\n"
+                   "        std::mutex mutex;\n"
+                   "        bool alive = true;\n"
+                   "    };\n\n"
+                   "    class CocoaWindow {\n"
+                   "        void* windowHandle;\n"
+                   "        CocoaWindowAttributes cachedAttributes;\n"
+                   "        std::atomic<int> cachedRefreshRate;\n"
+                   "        mutable std::mutex attributesMutex;\n"
+                   "        std::shared_ptr<CocoaWindowLifetime> lifetime = std::make_shared<CocoaWindowLifetime>();\n")
+    def lifetime_check(indent: str) -> str:
+        return (f"{indent}std::lock_guard<std::mutex> lifetimeLock(windowLifetime->mutex);\n"
+                f"{indent}if (!windowLifetime->alive) {{\n{indent}    return;\n{indent}}}\n\n")
+    apple_destructor = ("    CocoaWindow::~CocoaWindow() {}",
+                        "    CocoaWindow::~CocoaWindow() {\n"
+                        "        std::lock_guard<std::mutex> lock(lifetime->mutex);\n"
+                        "        lifetime->alive = false;\n"
+                        "    }")
+    apple_attributes = ("        auto updateBlock = ^{\n"
+                        "            NSWindow *nsWindow = (__bridge NSWindow *)windowHandle;\n"
+                        "            NSRect contentFrame",
+                        "        std::shared_ptr<CocoaWindowLifetime> windowLifetime = lifetime;\n"
+                        "        auto updateBlock = ^{\n" + lifetime_check(" " * 12) +
+                        "            NSWindow *nsWindow = (__bridge NSWindow *)windowHandle;\n"
+                        "            NSRect contentFrame")
+    apple_refresh = ("        auto updateBlock = ^{\n"
+                     "            NSWindow *nsWindow = (__bridge NSWindow *)windowHandle;\n"
+                     "            NSScreen *screen",
+                     "        std::shared_ptr<CocoaWindowLifetime> windowLifetime = lifetime;\n"
+                     "        auto updateBlock = ^{\n" + lifetime_check(" " * 12) +
+                     "            NSWindow *nsWindow = (__bridge NSWindow *)windowHandle;\n"
+                     "            NSScreen *screen")
+    apple_fullscreen = ("            dispatch_async(dispatch_get_main_queue(), ^{\n"
+                        "                NSWindow *nsWindow",
+                        "            std::shared_ptr<CocoaWindowLifetime> windowLifetime = lifetime;\n"
+                        "            dispatch_async(dispatch_get_main_queue(), ^{\n" + lifetime_check(" " * 16) +
+                        "                NSWindow *nsWindow")
     records = [patch(checkout, "CMakeLists.txt", old_cmake, new_cmake),
                patch(checkout, "src/tools/spirv_cross_msl/CMakeLists.txt",
                      "set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)",
                      "set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})"),
                patch(plume, "plume_metal.cpp", old_library, new_library, [(old_resize, new_resize)]),
+               patch(plume, "plume_apple.h", *apple_include, [apple_class]),
+               patch(plume, "plume_apple.mm", *apple_destructor, [apple_attributes, apple_refresh, apple_fullscreen]),
                # Screenshots on Vulkan: read the swapchain image back into a buffer.
                patch(plume, "plume_vulkan.cpp",
                      "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
@@ -235,7 +288,7 @@ def main() -> int:
               "plume_commit": plume_revision, "patches": records,
               "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "native_model_hooks_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/native_model_hook_patches.py').read_bytes()).hexdigest(),
-              "purpose": "Metal source compilation, resize descriptor synchronization, workload-matched UI hooks, and opt-in native model callbacks preserving scene transforms and draw order"}
+              "purpose": "Metal source compilation, resize descriptor synchronization, main-queue window blocks that outlive their swapchain, workload-matched UI hooks, and opt-in native model callbacks preserving scene transforms and draw order"}
     (ROOT / "build/recomp/graphics-source-patches.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
     return 0
