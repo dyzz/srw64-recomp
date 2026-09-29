@@ -256,8 +256,12 @@ def main() -> int:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")
     print(f"Staged {result}; signature={'ad-hoc (local tests only)' if args.sign_identity == '-' else 'Developer-supplied identity'}.")
-    print("Not notarized. No ROM, imported game content or saves were bundled"
-          + ("; the HD folder was, so keep this build to yourself." if args.hd else "."))
+    if args.rom:
+        print("Not notarized. INTERNAL TEST BUILD: the ROM" + (" and the HD folder were" if args.hd else " was")
+              + " bundled; never share it. No imported game content or saves were.")
+    else:
+        print("Not notarized. No ROM, imported game content or saves were bundled"
+              + ("; the HD folder was, so keep this build to yourself." if args.hd else "."))
     return 0
 
 
