@@ -1,0 +1,14 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Super Robot Wars 64",
+  "wikidata": "Q1988494",
+  "system": "N64",
+  "type": "recomp",
+  "original": { "region": "Japan" },
+  "project": "SRW64 Recomp",
+  "status": "playable",
+  "targets": ["macOS"],
+  "toolchain": "N64recomp",
+  "approach": "Static recompilation, RT64 renderer, native RmlUi screens",
+  "notes": "Japanese, Chinese and English text. QoL improvements: battle animation skip, short script skip, dialogue history, remappable controls, widescreen, in-game settings overlay. Optional HD pack for portraits, backgrounds, maps and icons."
+}
