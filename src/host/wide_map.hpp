@@ -52,6 +52,10 @@ bool battle_shown();
 void open_sides(uint8_t* rdram, int32_t cursor);
 void offset_rects(uint8_t* rdram, int32_t cursor, float pixels);
 void close_sides(uint8_t* rdram, int32_t cursor);
+// Rectangles from here on stretch across the whole picture (RT64's rectangle aspect
+// STRETCH), or back to RT64's own rule: art that has no wider version but reads the same
+// stretched (the focus lines).
+void stretch_rects(uint8_t* rdram, int32_t cursor, bool on);
 // The shared screen wipe (80099814's render callback 80099508: 240 one-pixel black lines
 // from x 0/1 to 319/320) across the whole picture: wipe_begin before it runs; wipe_end
 // scales the lines it wrote in [begin, the cursor) to the picture's width, edges to its edges.

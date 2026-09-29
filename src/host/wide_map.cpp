@@ -42,7 +42,8 @@ void append(uint8_t* rdram, int32_t cursor, std::initializer_list<uint32_t> word
     std::memcpy(rdram + (uint32_t(cursor) & 0x1FFFFFFF), &next, 4);
 }
 constexpr uint32_t kExtended = 0x64000000;
-constexpr uint32_t kSetScissor = 0x05, kSetRectAlign = 0x06, kPushScissor = 0x17, kPopScissor = 0x18;
+constexpr uint32_t kSetScissor = 0x05, kSetRectAlign = 0x06, kPushScissor = 0x17, kPopScissor = 0x18, kSetRectAspect = 0x33;
+constexpr uint32_t kAspectAuto = 0, kAspectStretch = 1;
 constexpr uint32_t kOriginLeft = 0x000, kOriginRight = 0x400, kOriginNone = 0x800;
 uint32_t pair(int32_t high, int32_t low) { return (uint32_t(high) & 0xFFFF) << 16 | (uint32_t(low) & 0xFFFF); }
 }  // namespace
@@ -140,6 +141,9 @@ void wipe_end(uint8_t* rdram, int32_t cursor, uint32_t begin) {
 }
 void close_sides(uint8_t* rdram, int32_t cursor) {
     append(rdram, cursor, {kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, 0, 0, kExtended | kPopScissor, 0});
+}
+void stretch_rects(uint8_t* rdram, int32_t cursor, bool on) {
+    append(rdram, cursor, {kExtended | kSetRectAspect, on ? kAspectStretch : kAspectAuto});
 }
 Shape take_shape() {
     const int marks = frame_marks.exchange(0);

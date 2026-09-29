@@ -57,7 +57,7 @@ void NamePage::build() {
     const bool selection=request.person==names::Selection;
     std::string body="<div id='page'><div id='top'>SRW64 <span>"+t("name_title")+"</span></div><div id='steps'>";
     body+="<span class='"+std::string(selection?"active":"")+"'>"+t("name_step_select")+"</span>";
-    body+="<span class='"+std::string(selection?"":"active")+"'>"+t("name_step_review")+"</span></div>";
+    body+="<span class='"+std::string(selection?"":"active")+"'>"+t("name_step_review")+"</span></div><div id='main'>";
     if(selection){
         body+="<h1>"+t("select_title")+"</h1><p>"+t("select_hint")+"</p><div id='cards'>";
         for(unsigned i=0;i<4;++i){
@@ -75,7 +75,8 @@ void NamePage::build() {
         for(unsigned p=0;p<2;++p)body+="<h2>"+t(p?"name_step_partner":"name_step_player")+"</h2><p id='name"+std::to_string(p)+"'>"+escape(full(request.names[p])+" / "+utf8(request.names[p][2]))+"</p>";
         body+="</div>";
     }
-    body+="<div id='footer'>";
+    // The footer stays on screen below the part that scrolls (a 540 dp tall Steam Deck).
+    body+="</div><div id='footer'>";
     if(!selection)body+="<button id='back'>"+t("name_cancel")+"</button>";
     body+="<button id='next'>"+t(selection?"select_confirm":"name_start")+"</button></div></div>";
     const std::string style=R"(
@@ -84,24 +85,25 @@ scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-colo
 scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background-color: #506d81; min-height: 16dp; min-width: 12dp; }
 body { display: block; width: 100%; height: 100%; font-family: srw64-ui; font-size: 18dp; color: #d6e2ef; background-color: #0b1421; margin: 0; }
 div, h1, h2, p { display: block; }
-#page { height: 94%; overflow-y: auto; width: 90%; max-width: 1100dp; margin: 24dp auto; }
-#top { font-size: 25dp; font-weight: bold; color: #9be4f7; margin-bottom: 18dp; }
+#page { display: flex; flex-direction: column; box-sizing: border-box; height: 100%; width: 90%; max-width: 1100dp; margin: 0 auto; padding: 14dp 0; }
+#main { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+#top { font-size: 22dp; font-weight: bold; color: #9be4f7; margin-bottom: 10dp; }
 #top span { font-size: 18dp; margin-left: 24dp; color: #8b9eb4; }
-#steps { display: flex; padding-bottom: 14dp; border-bottom: 1dp #294154; }
+#steps { display: flex; padding-bottom: 10dp; border-bottom: 1dp #294154; }
 #steps span { width: 50%; color: #8b9eb4; }
 #steps span.active { color: #9be4f7; }
-h1 { font-size: 30dp; margin: 24dp 0 8dp; } h2 { font-size: 22dp; }
-p { margin: 8dp 0 18dp; color: #9eafc3; }
-#cards { display: flex; margin-top: 24dp; }
+h1 { font-size: 26dp; margin: 16dp 0 6dp; } h2 { font-size: 22dp; }
+p { margin: 6dp 0 12dp; color: #9eafc3; }
+#cards { display: flex; margin-top: 12dp; }
 button { display: inline-block; padding: 12dp 18dp; background-color: #152436; color: #d6e2ef; border: 1dp #304859; border-radius: 7dp; cursor: pointer; tab-index: auto; }
 button:hover, button:focus { border-color: #9be4f7; background-color: #22394e; }
 button:disabled { opacity: 0.45; }
 .card { width: 21%; margin-right: 1%; padding: 12dp 1%; }
 .card.selected { border-color: #9be4f7; background-color: #1e3548; }
-.card img { width: 72dp; height: 72dp; display: block; margin: 12dp auto 6dp; }
-.person { text-align: center; font-size: 16dp; margin-bottom: 16dp; }
+.card img { width: 64dp; height: 64dp; display: block; margin: 8dp auto 4dp; }
+.person { text-align: center; font-size: 16dp; margin-bottom: 10dp; }
 .eyebrow { color: #9be4f7; font-size: 15dp; }
-#footer { display: flex; margin-top: 20dp; } #footer button { margin-right: 12dp; }
+#footer { display: flex; flex: none; margin-top: 12dp; } #footer button { margin-right: 12dp; }
 #next { background-color: #9be4f7; color: #0b2737; margin-left: auto; }
 #review { min-height: 240dp; }
 )";

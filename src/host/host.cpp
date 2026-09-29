@@ -390,6 +390,14 @@ static int run_host(int argc, char** argv) {
         return srw64::wide_map::begin(ram, cursor);
     };
     srw64_game_hooks.map_space_end = [](uint8_t* ram, int32_t cursor) { srw64::wide_map::end(ram, cursor); };
+    srw64_game_hooks.map_stretch = [](uint8_t* ram, uint32_t slot, uint32_t sub) {
+        if (!srw64::frame::wide || srw64::frame::picture_width <= srw64::frame::kWidth || slot >= 300 || sub >= 4) return false;
+        // The focus lines (layouts 610-612) radiate from the centre and end at the 4:3
+        // edges; stretched, they reach the picture's (docs/design/deck-16x10.md).
+        uint16_t layout;
+        std::memcpy(&layout, ram + ((0x000FFA70 + slot * 0xC4 + 0x3C + sub * 0x30 + 4) ^ 2), 2);
+        return layout >= 610 && layout <= 612;
+    };
     srw64_game_hooks.map_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
         // Sprite record read by 800945D4: base 800FFA70 + slot*0xC4, sub-record at +0x3C + sub*0x30.
         const uint32_t base = 0x000FFA70 + slot * 0xC4, record = base + 0x3C + sub * 0x30;
