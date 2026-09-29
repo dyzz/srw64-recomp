@@ -1,5 +1,6 @@
 """The English demo must preserve the Chinese scope and script structure."""
 import json
+import re
 from pathlib import Path
 import unittest
 
@@ -26,6 +27,14 @@ class EnglishLocaleTests(unittest.TestCase):
                 self.assertEqual(row['review_status'], 'draft')
                 self.assertTrue(row['target'].strip())
         self.assertTrue(all(english['ui'].values()))
+
+    def test_translated_ui_labels_have_no_kana(self):
+        kana = re.compile('[ぁ-ゟァ-ヺｦ-ﾟ]')
+        for locale in ('zh-Hans', 'en'):
+            labels = json.loads((ROOT / f'content/locales/{locale}.json').read_text())['ui']
+            for key, text in labels.items():
+                with self.subTest(locale=locale, key=key):
+                    self.assertIsNone(kana.search(text), text)
 
     def test_english_launch_and_saved_preference(self):
         import tempfile

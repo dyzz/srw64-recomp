@@ -12,7 +12,8 @@ public:
     SDL_Window* window{};
     plume::RenderWindow handle{};
     std::unique_ptr<plume::RenderInterface> interface;
-    ProbeSurface();
+    // The layout audit (tools/recomp/ui_audit) asks for a window size and Retina pixels.
+    explicit ProbeSurface(int width=1100,int height=760,bool high_dpi=false);
     ~ProbeSurface();
     // Record readback, return an encoder run only after the queue fence.
     std::function<void()> capture(plume::RenderDevice*,plume::RenderCommandList*,plume::RenderTexture*,

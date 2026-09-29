@@ -6,6 +6,7 @@
     {"name": "series", "ranges": [[60, 109]], "complete": true, "note": "登场作品；85-109 为带换行的第二套"},
     {"name": "models", "ranges": [[110, 224]], "complete": false, "note": "机体型号，只有非型号文字需要翻译"},
     {"name": "title_menu", "ranges": [[225, 231]], "complete": true, "note": "标题画面「オプション」菜单"},
+    {"name": "songs", "ranges": [[232, 280]], "complete": true, "note": "音乐鉴赏与卡拉OK模式的曲目名；英文原名不译"},
     {"name": "stages", "ranges": [[281, 423]], "complete": true, "note": "关卡标题，存档页显示「第 N 话『标题』」"},
     {"name": "pak_messages", "ranges": [[424, 486]], "complete": true, "note": "コントローラパック／64GB パック提示，一句常被拆成多条"},
     {"name": "default_names", "ranges": [[487, 502]], "complete": true, "note": "原创主角与搭档的默认姓名（简称 487-494、全名 495-502）"},
