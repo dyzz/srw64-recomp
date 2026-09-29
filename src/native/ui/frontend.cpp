@@ -372,8 +372,9 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bh-item {position:absolute; display:block; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
 .bh-item:hover {border:0;} body.pointer .bh-item:hover {background-color:#00ff0040;} .bh-item:focus,body.pointer .bh-item:focus {border:0; background-color:#00ff0080;}
 .home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
-.bp-hints {text-align:center; font-size:12dp; color:#a4b0d2; height:17dp; white-space:nowrap; overflow:hidden;}
-.bp-hints span {margin:0 9dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
+.bp-hints {text-align:center; font-size:15dp; color:#a4b0d2; height:21dp; white-space:nowrap; overflow:hidden;}
+.narrow .bp-hints {font-size:16dp; height:22dp;}
+.bp-hints span {margin:0 10dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
 .spirit-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071299;}
 .spirit-overlay {position:absolute; left:22%; top:12%; width:56%; max-height:78%; box-sizing:border-box; padding:12dp 22dp 13dp; color:#e8eefc; background-color:#0c122cfa; border-top:3dp #3fd0ff; border-bottom:3dp #3fd0ff;}
 .spirit-overlay h2 {margin:0; font-size:16dp;} .spirit-overlay p {margin:2dp 0 8dp; font-size:10dp; color:#a4b0d2;}
