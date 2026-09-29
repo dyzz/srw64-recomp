@@ -24,6 +24,7 @@ import shutil
 import subprocess
 import sys
 import tarfile
+import tomllib
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_macos_dependencies import source  # the same pinned archives and checks
@@ -151,12 +152,17 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     # Uncommitted program sources make the commit name misleading.
     if output([*git, 'status', '--porcelain', '--', 'src', 'cmake', 'config', 'content', 'tools/release']).strip():
         revision += '-dirty'
-    # The Steam Deck edition; the same program runs on other x86-64 Linux desktops.
-    name = f'SRW64-SteamDeck-{revision}'
+    version = tomllib.loads((ROOT / 'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
+    date = output([*git, 'show', '-s', '--format=%cd', '--date=format:%Y%m%d', 'HEAD']).strip()
+    # The Steam Deck edition; the same program runs on other x86-64 Linux desktops. Named by
+    # version, commit date and commit (user, 2026-09-29), so a copy or a kept install says
+    # what it is; VERSION.txt says it inside the folder the Steam shortcut points at.
+    name = f'SRW64-SteamDeck-{version}-{date}-{revision}'
     stage = WORK / 'package' / name
     if stage.exists():
         shutil.rmtree(stage)
     (stage / 'lib').mkdir(parents=True)
+    (stage / 'VERSION.txt').write_text(name + '\n', encoding='utf-8')
     program = stage / 'srw64'
     shutil.copy2(binary, program)
     run(['strip', '--strip-unneeded', program])
@@ -230,7 +236,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     archive = WORK / f'{name}.tar.gz'
     with tarfile.open(archive, 'w:gz') as tar:
         tar.add(stage, arcname=name)
-    report = {'schema': 'srw64.linux-package.v1', 'archive': archive.name, 'revision': revision,
+    report = {'schema': 'srw64.linux-package.v1', 'archive': archive.name, 'version': version, 'date': date, 'revision': revision,
               'glibc_required': '.'.join(map(str, newest)), 'bundled': sorted(bundled),
               'program_sha256': hashlib.sha256(program.read_bytes()).hexdigest(),
               'verification': 'ELF linkage and glibc symbol versions; not a run on another distribution'}
