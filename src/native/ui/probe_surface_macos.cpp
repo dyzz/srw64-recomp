@@ -8,9 +8,9 @@
 namespace plume { std::unique_ptr<RenderInterface> CreateMetalInterface(); }
 
 namespace srw64::ui {
-ProbeSurface::ProbeSurface() {
-    window=SDL_CreateWindow("SRW64 shared name page — standalone prototype",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
-        1100,760,SDL_WINDOW_METAL|SDL_WINDOW_RESIZABLE);
+ProbeSurface::ProbeSurface(int width,int height,bool high_dpi) {
+    window=SDL_CreateWindow("SRW64 shared UI — standalone prototype",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
+        width,height,SDL_WINDOW_METAL|SDL_WINDOW_RESIZABLE|(high_dpi?SDL_WINDOW_ALLOW_HIGHDPI:0));
     if(!window)throw std::runtime_error(SDL_GetError());
     SDL_SysWMinfo info{};SDL_VERSION(&info.version);
     if(!SDL_GetWindowWMInfo(window,&info))throw std::runtime_error(SDL_GetError());

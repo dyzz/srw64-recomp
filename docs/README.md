@@ -19,6 +19,7 @@
 | 启动试玩、按键、阅读操作、选角页与「选项」菜单 | [原生试玩](guide/native-playtest.md) |
 | 构建、源码责任、验证开关、证据与清理 | [原生开发指南](guide/native-development.md) |
 | 不靠人工按键驱动实机：启动隔离会话、按键、截图、读状态、操作原生界面（命令行与 MCP） | [调试接口与 MCP](guide/debug-interface.md) |
+| 不启动游戏检查界面文字有没有超出框（各语言、各窗口尺寸） | [界面排版离线审计](guide/ui-layout-audit.md) |
 | 原版有哪些 Bug、我们修了哪些、怎么开关 | [原版 Bug 登记](gameplay/original-bug-register.md) → [基础修复](gameplay/base-fixes.md)、[可选规则修正](gameplay/rule-fixes.md) |
 | 伤害／命中／暴击怎么算，防御判定与精神指令有哪些效果 | [战斗计算](gameplay/battle-formulas.md) |
 | 原版怎么读手柄、每个键在每个画面里做什么（重映射前先看） | [原版按键绑定](gameplay/original-controls.md) |
@@ -36,6 +37,7 @@
 | [原生试玩](guide/native-playtest.md) | 启动参数、完整按键表、阅读操作、选角页与「选项」菜单、存档历史 |
 | [原生开发指南](guide/native-development.md) | 当前能力与限制、源码与工具目录、构建与组件测试、验证用环境变量与控制文件、证据与清理 |
 | [调试接口与 MCP](guide/debug-interface.md) | 宿主 JSON-RPC 方法、输入覆盖范围、命令行 `srw64ctl.py`、MCP 工具、实测与限制 |
+| [界面排版离线审计](guide/ui-layout-audit.md) | 用录下的页面状态在无游戏的小窗口里排版共用界面、截图、报告溢出；首次审计修掉的问题 |
 | [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |

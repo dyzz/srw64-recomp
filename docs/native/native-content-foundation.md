@@ -42,7 +42,7 @@
 ## 多语言内容
 
 游戏原文从用户本地 ROM 生成。译文分两部分，都使用 Unicode，不占用或扩展 N64 字库：
-- **数据文本**（名称、标签、提示，记录 0–5643）：由词条表 `content/locales/terms/` 经 `tools/content/apply_terms.py` 展开进 `content/locales/<语言>.json`，中英文各 4,674 条，见[数据文本词条表](localization-terms.md)。
+- **数据文本**（名称、标签、提示，记录 0–5643）：由词条表 `content/locales/terms/` 经 `tools/content/apply_terms.py` 展开进 `content/locales/<语言>.json`，中英文各 4,712 条，见[数据文本词条表](localization-terms.md)。
 - **剧情与战斗台词**：玩家可改的台词文本文件 `content/dialogue/<语言>/`，见[台词文本文件](../guide/dialogue-text.md)。
 
 缺译时按完整 TextKey 回退相应的日文源记录。

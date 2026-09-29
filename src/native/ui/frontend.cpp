@@ -269,6 +269,7 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-clash {display:flex; align-items:flex-end; padding:9dp 22dp 9dp; decorator:slant(#0c122cf0 #3fd0ff 0dp 3dp 0dp 0dp 19dp 19dp);}
 .bp-clash-side {flex:1; min-width:0;} .bp-clash-side.left {text-align:right;}
 .bp-damage {font-size:46dp; line-height:48dp; font-weight:bold; color:#ffd75e;}
+.bp-damage.d5 {font-size:36dp;} .narrow .bp-damage.d4 {font-size:38dp;} .narrow .bp-damage.d5 {font-size:31dp;}
 .bp-caption {font-size:10dp; color:#a4b0d2;}
 .bp-arrow {width:62dp; text-align:center; padding-bottom:16dp; font-size:8dp; line-height:10dp; color:#ffd75e;}
 .bp-arrow div {font-size:13dp;}
@@ -291,7 +292,7 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-pilot-name {display:flex; justify-content:space-between; align-items:flex-end; font-size:17dp; font-weight:bold; height:24dp;}
 .bp-pilot-name .level {font-size:12dp; font-weight:normal; color:#a4b0d2;}
 .bp-stats {display:flex; gap:4dp; margin-top:3dp;}
-.bp-stat {flex:1; display:flex; justify-content:space-between; padding:3dp 7dp; font-size:13dp; white-space:nowrap; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
+.bp-stat {flex:1 1 auto; display:flex; justify-content:space-between; gap:6dp; padding:3dp 7dp; font-size:13dp; white-space:nowrap; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
 .battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
@@ -378,10 +379,30 @@ struct Actions : Rml::EventListener {
             if(el->GetTagName()=="button"){choose(el->GetId());break;}
     }
 } actions;
+// One-line text marked 'fit' that runs past its box after layout gets a smaller face,
+// in proportion, down to 60 % (or its data-fit-min): names and notes whose length the page cannot know.
+void fit_lines(Rml::ElementDocument* doc) {
+    Rml::ElementList lines;doc->QuerySelectorAll(lines,".fit");
+    std::map<Rml::Element*,float> first;
+    // A flex row gives a shrinking item back some room, so a second look settles it.
+    for(int pass=0;pass<3;++pass) {
+        bool changed=false;
+        for(auto* line:lines) {
+            const float room=line->GetClientWidth(),need=line->GetScrollWidth();
+            if(room<=0 || need<=room+.5f)continue;
+            const float size=line->GetComputedValues().font_size(),floor=first.emplace(line,size).first->second*line->GetAttribute<float>("data-fit-min",.6f);
+            if(size<=floor+.01f)continue;
+            line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need))+"px");changed=true;
+        }
+        if(!changed)break;
+        doc->UpdateDocument();
+    }
+}
 Rml::ElementDocument* document(const std::string& body,bool modal) {
     auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+body+"</body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
-    doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);return doc;
+    doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
+    doc->UpdateDocument();fit_lines(doc);return doc;
 }
 std::string button(const std::string& id,const std::string& text,bool on=false,bool disabled=false,const std::string& cls="") {
     return "<button id='"+escape(id)+"' class='"+cls+(on?" on":"")+"'"+(disabled?" disabled":"")+">"+text+"</button>";
@@ -723,7 +744,7 @@ void link_sync() {
     for(unsigned i=0;i<3;++i){
         std::string content;
         for(const auto& path:hd_portraits()?next.portraits_hd[i]:next.portraits[i]){content+="<img src='"+image(path,dp_pixels(86))+"'/>";}
-        content+="<h2>"+label(std::string("link_series_")+keys[i])+"</h2><p>"+label(std::string("link_lead_")+keys[i])+"</p><p>"+label(std::string("link_units_")+keys[i])+"</p><p>"+label(std::string("link_crew_")+keys[i])+"</p>";
+        content+="<h2 class='fit'>"+label(std::string("link_series_")+keys[i])+"</h2><p>"+label(std::string("link_lead_")+keys[i])+"</p><p>"+label(std::string("link_units_")+keys[i])+"</p><p>"+label(std::string("link_crew_")+keys[i])+"</p>";
         if(next.joined[i] || next.scheduled[i] || ticked[i])content+="<p>"+label(next.joined[i]?"link_joined":next.scheduled[i]?"link_scheduled":"link_ticked")+"</p>";
         body+=button("link:"+std::to_string(i),content,ticked[i] || i==link_focus,link_waiting || next.joined[i] || next.scheduled[i],"card");
     }
@@ -775,9 +796,9 @@ std::string battle_effects(const json& c) {
 // Top banner: unit, turn-order tag, weapon and mirrored HP/EN bars.
 std::string battle_banner(const json& c,bool left,bool first,const std::string& response) {
     const std::string side=left?"left":"right";const bool armed=c.at("weapon").get<int>()>=0;
-    std::string body="<div id='battle-card-"+side+"' class='bp-side bp-banner "+side+"'><div class='bp-title'><span class='bp-name'>"+escape(c.at("unit_name").get<std::string>())+"</span>";
+    std::string body="<div id='battle-card-"+side+"' class='bp-side bp-banner "+side+"'><div class='bp-title'><span class='bp-name fit'>"+escape(c.at("unit_name").get<std::string>())+"</span>";
     body+="<span class='bp-tag"+std::string(first?" first":"")+"'>"+(first?label("battle_first"):label("battle_second")+" · "+response)+"</span></div>";
-    body+="<div class='bp-weapon'>"+(armed?escape(c.at("weapon_name").get<std::string>()):label("battle_none"))+"</div>";
+    body+="<div class='bp-weapon fit'>"+(armed?escape(c.at("weapon_name").get<std::string>()):label("battle_none"))+"</div>";
     for(const auto* kind:{"hp","en"}) {
         const int value=c.at(kind),maximum=c.at(std::string("max_")+kind);
         body+="<div class='battle-resource'><span class='resource-key'>"+std::string(kind==std::string("hp")?"HP":"EN")+"</span><div class='battle-track'><div style='width:"+std::to_string(maximum?std::clamp(value*100/maximum,0,100):0)+"%;'></div></div><span class='resource-value'>"+battle_number(value)+" / "+battle_number(maximum)+"</span></div>";
@@ -902,7 +923,7 @@ std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     const auto defenses=battle_defenses(c);
     // Without a defenses line on either side only its rule stays, as the divider.
     body+="</div></div></div><div class='battle-defenses'"+std::string(room.defenses?"":" style='height:0;padding-top:0;'")+">"+defenses.line+"</div>"
-        "<div class='battle-defense-note battle-defense-conditions'>"+defenses.conditions+"</div>";
+        "<div class='battle-defense-note battle-defense-conditions fit'>"+defenses.conditions+"</div>";
     auto effects=battle_effects(c);
     // A line is 12 dp at 1.3 with 2 dp above and below: 20 each and 2 over, or the list scrolls.
     effects.replace(0,std::string("<div class='battle-effects'>").size(),"<div class='battle-effects' style='height:"+std::to_string(room.effect_lines?room.effect_lines*20+2:0)+"dp;'>");
@@ -923,9 +944,11 @@ std::string battle_clash(const json& enemy,const json& player,bool player_first,
         return label("battle_barrier_"+c.at("barrier").at("status").get<std::string>())+(reduced(c)?" · "+battle_number(c.at("damage_raw"))+" → "+battle_number(c.at("damage")):std::string{});
     };
     const auto critical=[&](const json& c){return armed(c) && c.at("critical").get<int>()>0?battle_number(c.at("critical_damage")):std::string("—");};
-    std::string body="<div class='bp-center'><div class='bp-clash'><div class='bp-clash-side left'><div class='bp-damage'>"+value(enemy,"damage")+"</div><div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div>";
+    // Four and five digits step the figure down so it stays inside its half of the panel.
+    const auto damage=[&](const json& c){const auto text=value(c,"damage");return "<div class='bp-damage"+std::string(text.size()>=5?" d5":text.size()==4?" d4":"")+"'>"+text+"</div>";};
+    std::string body="<div class='bp-center'><div class='bp-clash'><div class='bp-clash-side left'>"+damage(enemy)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div>";
     body+="<div class='bp-arrow'><div>"+std::string(player_first?"◀━━":"━━▶")+"</div>"+label(player_first?"battle_first_player":"battle_first_enemy")+"</div>";
-    body+="<div class='bp-clash-side right'><div class='bp-damage'>"+value(player,"damage")+"</div><div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div></div>";
+    body+="<div class='bp-clash-side right'>"+damage(player)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div></div>";
     for(const auto* row:{"hit","critical"})
         body+="<div class='bp-versus'><span class='left'>"+value(enemy,row,"%")+"</span><b>"+label(std::string("battle_")+row)+"</b><span>"+value(player,row,"%")+"</span></div>";
     body+="<div class='bp-detail'><div><span class='left'>"+critical(enemy)+"</span><b>"+label("battle_critical_damage")+"</b><span>"+critical(player)+"</span></div>";
@@ -1013,7 +1036,7 @@ const char* marker_glyph(const std::string& token) {
 }
 std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
         return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
     };
@@ -1041,17 +1064,20 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     };
     const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
     std::string body=cell(21,68,21,44,"<div style='text-align:right; padding-right:"+px(4)+";'>"+escape(page_text)+"</div>")+
-        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("weapon"))+"</div>")+
-        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("power"))+"</div>")+
-        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("range"))+"</div>")+
-        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim'>"+escape(wl("hit"))+"</div>");
+        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("weapon"))+"</div>")+
+        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("power"))+"</div>")+
+        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("range"))+"</div>")+
+        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("hit"))+"</div>");
     std::string list;
     for(unsigned n=0;n<rows.size();++n) {
         const auto& r=rows[n];
         std::string name;
         const auto markers=r.value("markers",json::array());
         for(const auto& m:markers)if(m=="格" || m=="射")name+=badge(m.get<std::string>());
-        name+=escape(r.value("display_name",r.value("name",std::string())));
+        // The name keeps to the room its marker icons leave and shrinks there (fit_lines), rather than the
+        // column clipping the P／B／MAP icon.
+        float room=146;for(const auto& m:markers)room-=m=="MAP"?26:15;
+        name+="<span class='fit' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
         for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
         list+="<button id='"+id_prefix+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"
             "<span style='width:"+px(146)+"; white-space:nowrap; overflow:hidden;'>"+name+"</span>"+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
@@ -1088,7 +1114,7 @@ void upgrade_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
     const std::string screen=next.value("screen",std::string());
@@ -1107,9 +1133,9 @@ void upgrade_sync() {
         body+=box(21,21,299,219,
             "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+";'>"+span(page,60,"im-right")+"<span style='width:"+px(210)+"; text-align:center;'>"+escape(next.value("title",std::string()))+"</span></div>"
             "<div id='upgrade-list' style='margin-top:"+px(2)+";'>"+list+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(153)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(153)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of("mobility"),44,"im-dim")+span(number(sel.value("mobility",json())),30,"im-right")+span(label_of("armor"),40,"im-dim",0,22)+span(number(sel.value("armor",json())),40,"im-right")+span(label_of("limit"),40,"im-dim",0,22)+span(number(sel.value("limit",json())),30,"im-right")+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(176)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(176)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of("pilot"),52,"im-dim")+span(pilot.empty()?"--------":pilot,100,"",0,6)+span(label_of("funds"),40,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(60),px(11.5f),px(22))+"</div>",
             11.5f,"upgrade-panel");
         const std::string hint=next.value("pages",1u)>1?"upgrade_list_hint_pages":"upgrade_list_hint";
@@ -1137,7 +1163,7 @@ void upgrade_sync() {
             for(char c:w.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
             // Layout 0x78: name and gauge at y 64, 攻撃力 ▶ preview and 資金 at 88, 費用 in its own box.
             body+="<div class='im-shade'></div>"+box(21,61,299,107,
-                "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("display_name",w.value("name",std::string())),150)+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
+                "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("display_name",w.value("name",std::string())),150,"",std::min(11.f,fit(w.value("display_name",w.value("name",std::string())),148)))+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
                 "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(3)+";'>"+span(wl("power"),44,"im-dim")+span(number(w.at("power")),40,"im-right")+span("▶",14,"im-dim")+span(number(w.value("preview",json())),40,"im-right")+
                     span(label_of("funds"),32,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(56),px(11),px(20))+"</div>",11.f,"upgrade-weapon")+
                 box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(w.value("price",json())),76,"im-right")+"</div>",11.f,"upgrade-weapon-price");
@@ -1145,7 +1171,7 @@ void upgrade_sync() {
                 body+="<div class='im-dim' style='position:absolute; left:"+px(24)+"; top:"+px(110)+"; width:"+px(150)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>";
             if(window=="confirm")
                 body+=box(261,133,291,171,"<button id='upgrade-confirm' class='"+std::string(cursor==0?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"upgrade-choice");
-            else body+=box(85,61,235,83,"<button id='upgrade-dismiss' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
+            else body+=box(85,61,235,83,"<button id='upgrade-dismiss' class='fit' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
         } else if(window=="bonus") {
             // Layout 0x8C: 「X を最大まで改造したので、特別ボーナスとして Y が追加されます」.
             const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
@@ -1214,7 +1240,7 @@ void parts_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
     const auto dashes=[](const std::string& s){return s.empty()?std::string("--------"):s;};
@@ -1312,7 +1338,7 @@ void swap_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
@@ -1343,7 +1369,7 @@ void swap_sync() {
         body+=box(21,21,299,219,
             "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of("title"))+"</span></div>"
             "<div id='swap-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of(sub_key),40,"im-dim",fit(label_of(sub_key),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
             11.5f,"swap-panel");
         body+=hint("swap_list_hint");
@@ -1416,7 +1442,7 @@ void save_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("--");};
@@ -1518,7 +1544,8 @@ void title_sync() {
         body+=box(133,21,187,43,at(0,3,54,16,escape(title),"text-align:center;"),fit(title,50),"tp-title");
         const auto& items=next.at("items");const unsigned cursor=next.value("cursor",0u);
         float font=12.5f;
-        for(const auto& item:items)font=std::min(font,fit(item.value("label",std::string())+item.value("value",std::string()),96));
+        // The label and the value have their own cells (62 + 34): each must fit its own.
+        for(const auto& item:items)font=std::min(font,item.contains("value")?std::min(fit(item.value("label",std::string()),60),fit(item.value("value",std::string()),33)):fit(item.value("label",std::string()),94));
         std::string rows;
         for(unsigned n=0;n<items.size();++n) {
             const auto& item=items[n];
@@ -1568,7 +1595,7 @@ void ability_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='"+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
@@ -1596,7 +1623,7 @@ void ability_sync() {
         body+=box(21,21,299,219,
             "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of(pilots?"pilot_list":"unit_list"))+"</span></div>"
             "<div id='ability-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
-            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
+            "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of("sub"),40,"im-dim",fit(label_of("sub"),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
             11.5f,"ability-panel");
         body+=hint("ability_list_hint");
@@ -1605,9 +1632,23 @@ void ability_sync() {
         std::string parts;
         for(const auto& p:next.value("parts",json::array()))parts+="<div style='padding:0 "+px(3)+"; line-height:"+px(16)+";'>"+escape(p.get<std::string>())+"</div>";
         std::string types;
-        for(const auto& tname:next.value("types",json::array()))types+=escape(tname.get<std::string>());
+        // 陸空 run together as the original's glyphs do; English abbreviations need a separator (Lnd/Air).
+        for(const auto& tname:next.value("types",json::array())) {
+            const auto name=tname.get<std::string>();
+            if(!types.empty() && !name.empty() && uint8_t(name[0])<0x80)types+="/";
+            types+=escape(name);
+        }
+        // Side by side, wrapping, as the original lays them from (25,188): the box holds two
+        // lines, and a unit shows up to three (ビルバイン: 変形, 分身, オーラバリア).
+        // More than the two lines hold at 10.5 sets them all smaller, rather than losing one.
         std::string abilities;
-        for(const auto& a:next.value("abilities",json::array()))abilities+="<div style='padding:0 "+px(3)+"; line-height:"+px(16)+";'>"+escape(a.get<std::string>())+"</div>";
+        const auto& ability_names=next.value("abilities",json::array());
+        float ability_units=0;for(const auto& a:ability_names)ability_units+=text_units(a.get<std::string>())+.8f;
+        const float ability_font=std::max(7.f,std::min(10.5f,220/std::max(1.f,ability_units)));
+        for(const auto& a:ability_names) {
+            const auto name=a.get<std::string>();   // one that alone overruns a line (128 less its 8 margin) gets smaller still
+            abilities+="<span style='display:inline-block; white-space:nowrap; margin-right:"+px(8*ability_font/10.5f)+"; font-size:"+px(std::min(ability_font,118/std::max(1.f,text_units(name))))+";'>"+escape(name)+"</span> ";
+        }
         const long long hp=next.value("hp",0ll),hp_max=std::max(1ll,next.value("hp_max",1ll)),en=next.value("en",0ll),en_max=std::max(1ll,next.value("en_max",1ll));
         const std::string terrain=next.value("terrain",std::string("----"));
         const auto stat=[&](const char* key,const json& v,float y){return at(3,y,"<span class='im-dim'>"+escape(label_of(key))+"</span>")+at(60,y,number(v),"im-right",0,40);};
@@ -1618,8 +1659,8 @@ void ability_sync() {
                 "<div class='im-bar-back' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89)+";'></div><div class='im-bar' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89.f*float(hp)/float(hp_max))+";'></div>"+
                 at(6,16,"<span style='color:#ffd75e;'>"+escape(label_of("en"))+"</span>","",9)+at(36,16,std::to_string(en)+"/ "+std::to_string(en_max),"",10)+
                 "<div class='im-bar-back' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28)+";'></div><div class='im-bar' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28.f*float(en)/float(en_max))+";'></div>",11.f,"ability-gauges")+
-            box(21,164,155,219,at(3,3,"<span class='im-dim'>"+escape(label_of("abilities"))+"</span>","",fit(label_of("abilities"),76))+at(83,3,escape(next.value("shield",std::string())),"",10)+"<div style='margin-top:"+px(22)+";'>"+abilities+"</div>",10.5f,"ability-abilities")+
-            box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),11.f,"ability-stats")+
+            box(21,164,155,219,at(3,3,"<span class='im-dim'>"+escape(label_of("abilities"))+"</span>","",fit(label_of("abilities"),76))+at(83,3,escape(next.value("shield",std::string())),"",10)+"<div style='margin-top:"+px(22)+"; padding:0 "+px(3)+"; line-height:"+px(16*ability_font/10.5f)+"; white-space:normal;'>"+abilities+"</div>",10.5f,"ability-abilities")+
+            box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right fit",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),11.f,"ability-stats")+
             box(260,132,299,219,at(3,4,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),34))+at(3,20,"<span class='im-dim'>"+escape(label_of("air"))+"</span>")+at(24,20,terrain.substr(0,1))+at(3,36,"<span class='im-dim'>"+escape(label_of("land"))+"</span>")+at(24,36,terrain.substr(1,1))+
                 at(3,52,"<span class='im-dim'>"+escape(label_of("sea"))+"</span>")+at(24,52,terrain.substr(2,1))+at(3,68,"<span class='im-dim'>"+escape(label_of("space"))+"</span>")+at(24,68,terrain.substr(3,1)),11.f,"ability-terrain")+
             box(176,8,302,132,art_img(unit,118),12.f,"ability-art","display:flex; align-items:center; justify-content:center;");
@@ -1639,17 +1680,21 @@ void ability_sync() {
         const float spirit_at[6][2]={{136,144},{192,144},{24,162},{80,162},{136,162},{192,162}},skill_at[3][2]={{96,184},{96,202},{168,202}};
         std::string spirits;
         const auto& sp=next.value("spirits",json::array());
-        for(unsigned n=0;n<6;++n)spirits+=at(spirit_at[n][0]-18,spirit_at[n][1]-138,n<sp.size()?escape(sp[n].get<std::string>()):escape(label_of("unknown")),"",10.5f);
+        // Cells 56 apart; the last column has only the 36 left before the frame.
+        for(unsigned n=0;n<6;++n)spirits+=at(spirit_at[n][0]-18,spirit_at[n][1]-138,n<sp.size()?escape(sp[n].get<std::string>()):escape(label_of("unknown")),"fit",10.5f,
+                                             std::min(54.f,208-(spirit_at[n][0]-18)));
         std::string skills;
         const auto& sk=next.value("skills",json::array());
-        for(unsigned n=0;n<sk.size() && n<3;++n)skills+=at(skill_at[n][0]-18,skill_at[n][1]-178,escape(sk[n].get<std::string>()),"",10.5f);
+        // Three slots as the original (no pilot has more): one wide line, then two halves.
+        const float skill_w[3]={130,70,58};
+        for(unsigned n=0;n<sk.size() && n<3;++n)skills+=at(skill_at[n][0]-18,skill_at[n][1]-178,escape(sk[n].get<std::string>()),"fit",10.5f,skill_w[n]);
         const std::string terrain=next.value("terrain",std::string("----"));
         const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
         body+=box(18,10,110,101,art_img(p,88),12.f,"ability-art","display:flex; align-items:center; justify-content:center;")+
             box(111,10,299,35,"<div style='padding:0 "+px(6)+"; line-height:"+px(24)+"; text-align:right; font-size:"+px(fit(label_of("pilot"),176))+";' class='im-dim'>"+escape(label_of("pilot"))+"</div>",10.f,"ability-title")+
             box(111,36,299,101,at(9,4,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),170))+
-                at(17,28,dim("morale"),"",10)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"",10)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
-                at(129,28,dim("next"),"",10)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
+                at(17,28,dim("morale"),"fit",10,27)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"fit",10,18)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
+                at(129,28,dim("next"),"fit",10,24)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
                 at(17,46,dim("sp"),"",10)+at(90,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,60),11.f,"ability-name")+
             box(18,102,299,137,at(6,4,dim("melee"))+at(40,4,stat_value("melee"),"im-right",0,32)+at(94,4,dim("evade"))+at(126,4,plus_value("evade"),cls("evade"),0,70)+at(214,4,dim("reaction"))+at(248,4,stat_value("reaction"),"im-right",0,32)+
                 at(6,20,dim("ranged"))+at(40,20,stat_value("ranged"),"im-right",0,32)+at(94,20,dim("hit"))+at(126,20,plus_value("hit"),cls("hit"),0,70)+at(214,20,dim("skill"))+at(248,20,stat_value("skill"),"im-right",0,32),11.f,"ability-stats")+
@@ -1707,7 +1752,7 @@ std::string battle_hd_page(const json& next) {
         const float natural=std::max(1.f,text_units(s))*12.5f;
         const bool ascii=std::all_of(s.begin(),s.end(),[](unsigned char c){return c<0x80;});
         const float squeeze=std::clamp(w/natural,ascii?.8f:.7f,1.f),font=std::min(12.5f,12.5f*w/(natural*squeeze)),inner=w/squeeze;
-        return "<div class='bh-text' style='"+box(x,y-1,w,16)+"'><div style='position:absolute; top:0; left:"+px(right?w-inner:0)+"; width:"+px(inner)+"; height:"+px(16)+
+        return "<div class='bh-text' style='"+box(x,y-1,w,16)+"'><div class='fit' style='position:absolute; top:0; left:"+px(right?w-inner:0)+"; width:"+px(inner)+"; height:"+px(16)+
             "; line-height:"+px(16)+"; font-size:"+px(font)+"; text-align:"+(right?"right":"left")+"; transform-origin:"+(right?"right":"left")+" center; transform:scale("+
             std::to_string(squeeze)+", 1);'>"+escape(s)+"</div></div>";
     };

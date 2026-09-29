@@ -1,0 +1,2311 @@
+{
+ "schema": "srw64.ui-audit-states.v1",
+ "note": "Page states recorded by the live checks (2026-09-23 intermission pages and title options in Japanese/Chinese, 2026-09-28 battle page in Chinese). run_audit.py turns every string into each reading language through the ROM text records.",
+ "intermission": {
+  "clear_label": "クリア",
+  "cursor": 0,
+  "episode": 1,
+  "funds": 14500,
+  "funds_label": "資金",
+  "items": [
+   "データセーブ",
+   "ユニット改造",
+   "武器改造",
+   "ユニット能力",
+   "パイロット能力",
+   "のりかえ",
+   "強化パーツ",
+   "リンク",
+   "次のマップへ"
+  ],
+  "restricted": false,
+  "scene": 1,
+  "scene_title": "出撃!スイームルグ",
+  "serial": 1,
+  "submenu": false,
+  "swap_cursor": 0,
+  "swap_items": [
+   "パイロット",
+   "妖精"
+  ],
+  "swap_refused": false,
+  "title": "インターミッション",
+  "turns": 7,
+  "turns_label": "総ターン数",
+  "visible": true
+ },
+ "save": {
+  "choice": {
+   "cursor": 0,
+   "labels": {
+    "ask": "よろしいですか?",
+    "checking": "データを調べています。",
+    "clear": "クリア",
+    "episode": "第  話",
+    "funds": "資金",
+    "level": "レベル",
+    "no": "いいえ",
+    "overwrite": "記録を更新します。",
+    "pak": "コントローラパック",
+    "rom": "ROMカートリッジ",
+    "save_to": "にセーブします。",
+    "slot": "セーブデータ",
+    "turns": "総ターン数",
+    "yes": "はい"
+   },
+   "screen": "choice",
+   "serial": 1,
+   "visible": true,
+   "waiting": false
+  },
+  "slots": {
+   "cursor": 0,
+   "labels": {
+    "ask": "よろしいですか?",
+    "checking": "データを調べています。",
+    "clear": "クリア",
+    "episode": "第  話",
+    "funds": "資金",
+    "level": "レベル",
+    "no": "いいえ",
+    "overwrite": "記録を更新します。",
+    "pak": "コントローラパック",
+    "rom": "ROMカートリッジ",
+    "save_to": "にセーブします。",
+    "slot": "セーブデータ",
+    "turns": "総ターン数",
+    "yes": "はい"
+   },
+   "medium": 0,
+   "mode": 0,
+   "screen": "slots",
+   "serial": 2,
+   "slots": [
+    {
+     "art": {
+      "height": 64,
+      "width": 64
+     },
+     "episode": 1,
+     "funds": 14500,
+     "index": 0,
+     "level": 2,
+     "name": "マナミ",
+     "protagonist": 3,
+     "title": "出撃!スイームルグ",
+     "turns": 7,
+     "used": true
+    },
+    {
+     "index": 1,
+     "used": false
+    }
+   ],
+   "status": 255,
+   "visible": true,
+   "window_cursor": 0
+  },
+  "overwrite-window": {
+   "cursor": 0,
+   "labels": {
+    "ask": "よろしいですか?",
+    "checking": "データを調べています。",
+    "clear": "クリア",
+    "episode": "第  話",
+    "funds": "資金",
+    "level": "レベル",
+    "no": "いいえ",
+    "overwrite": "記録を更新します。",
+    "pak": "コントローラパック",
+    "rom": "ROMカートリッジ",
+    "save_to": "にセーブします。",
+    "slot": "セーブデータ",
+    "turns": "総ターン数",
+    "yes": "はい"
+   },
+   "medium": 0,
+   "mode": 1,
+   "screen": "slots",
+   "serial": 3,
+   "slots": [
+    {
+     "art": {
+      "height": 64,
+      "width": 64
+     },
+     "episode": 1,
+     "funds": 14500,
+     "index": 0,
+     "level": 2,
+     "name": "マナミ",
+     "protagonist": 3,
+     "title": "出撃!スイームルグ",
+     "turns": 7,
+     "used": true
+    },
+    {
+     "art": {
+      "height": 64,
+      "width": 64
+     },
+     "episode": 1,
+     "funds": 14500,
+     "index": 1,
+     "level": 2,
+     "name": "マナミ",
+     "protagonist": 3,
+     "title": "出撃!スイームルグ",
+     "turns": 7,
+     "used": true
+    }
+   ],
+   "status": 0,
+   "visible": true,
+   "window_cursor": 0
+  },
+  "pak-message": {
+   "cursor": 0,
+   "labels": {
+    "ask": "よろしいですか?",
+    "checking": "データを調べています。",
+    "clear": "クリア",
+    "episode": "第  話",
+    "funds": "資金",
+    "level": "レベル",
+    "no": "いいえ",
+    "overwrite": "記録を更新します。",
+    "pak": "コントローラパック",
+    "rom": "ROMカートリッジ",
+    "save_to": "にセーブします。",
+    "slot": "セーブデータ",
+    "turns": "総ターン数",
+    "yes": "はい"
+   },
+   "medium": 1,
+   "message": [
+    {
+     "text": "コントローラパックに異常があります",
+     "x": 96,
+     "y": 82
+    },
+    {
+     "text": "コントローラパックを接続しなおすか修復",
+     "x": 36,
+     "y": 98
+    },
+    {
+     "text": "するかしてください",
+     "x": 212,
+     "y": 98
+    },
+    {
+     "text": "Aボタンで修復します",
+     "x": 120,
+     "y": 120
+    },
+    {
+     "text": "(修復するとデータが",
+     "x": 64,
+     "y": 136
+    },
+    {
+     "text": "消えることがあります)",
+     "x": 156,
+     "y": 136
+    },
+    {
+     "text": "(Bボタンでセーブ選択画面に戻る)",
+     "x": 72,
+     "y": 160
+    }
+   ],
+   "mode": 2,
+   "screen": "slots",
+   "serial": 6,
+   "slots": [
+    {
+     "art": {
+      "height": 64,
+      "width": 64
+     },
+     "episode": 1,
+     "funds": 14500,
+     "index": 0,
+     "level": 2,
+     "name": "マナミ",
+     "protagonist": 3,
+     "title": "出撃!スイームルグ",
+     "turns": 7,
+     "used": true
+    },
+    {
+     "art": {
+      "height": 64,
+      "width": 64
+     },
+     "episode": 1,
+     "funds": 14500,
+     "index": 1,
+     "level": 2,
+     "name": "マナミ",
+     "protagonist": 3,
+     "title": "出撃!スイームルグ",
+     "turns": 7,
+     "used": true
+    }
+   ],
+   "status": 7,
+   "visible": true,
+   "window_cursor": 0
+  }
+ },
+ "swap": {
+  "pilots": {
+   "cursor": 0,
+   "labels": {
+    "after": "( )内は本来の能力",
+    "air": "空",
+    "ask": "よろしいですか?",
+    "board": "この組み合わせで",
+    "current": "制限をうける能力",
+    "evade": "回避",
+    "fairy": "パイロット",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "no": "いいえ",
+    "sea": "海",
+    "space": "宇",
+    "sub": "妖精",
+    "terrain": "地形",
+    "title": "のりかえ",
+    "yes": "はい"
+   },
+   "page": 0,
+   "pages": 1,
+   "rows": [
+    {
+     "art": {
+      "height": 96,
+      "resources": [
+       99,
+       399
+      ],
+      "width": 96
+     },
+     "full_name": "ヒイロ・ユイ",
+     "index": 0,
+     "level": 1,
+     "name": "ヒイロ",
+     "number": 95,
+     "unit": "ウイングガンダム"
+    },
+    {
+     "art": {
+      "height": 96,
+      "resources": [
+       95,
+       395
+      ],
+      "width": 96
+     },
+     "full_name": "張五飛",
+     "index": 1,
+     "level": 1,
+     "name": "五飛",
+     "number": 91,
+     "unit": "アルトロンガンダム"
+    }
+   ],
+   "screen": "pilots",
+   "serial": 1,
+   "sub": {
+    "name": ""
+   },
+   "visible": true
+  },
+  "targets": {
+   "cursor": 0,
+   "labels": {
+    "after": "( )内は本来の能力",
+    "air": "空",
+    "ask": "よろしいですか?",
+    "board": "この組み合わせで",
+    "current": "制限をうける能力",
+    "evade": "回避",
+    "fairy": "パイロット",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "no": "いいえ",
+    "sea": "海",
+    "space": "宇",
+    "sub": "妖精",
+    "terrain": "地形",
+    "title": "のりかえ",
+    "yes": "はい"
+   },
+   "page": 0,
+   "pages": 1,
+   "pilot": {
+    "art": {
+     "height": 96,
+     "resources": [
+      99,
+      399
+     ],
+     "width": 96
+    },
+    "full_name": "ヒイロ・ユイ",
+    "index": 0,
+    "level": 1,
+    "name": "ヒイロ",
+    "number": 95,
+    "unit": "ウイングガンダム"
+   },
+   "rows": [
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2310,
+       1710,
+       2010
+      ],
+      "width": 96
+     },
+     "hp": 5700,
+     "name": "アルトロンガンダム",
+     "number": 115,
+     "pilot": "五飛",
+     "slot": 2
+    }
+   ],
+   "screen": "targets",
+   "serial": 2,
+   "sub": {
+    "name": ""
+   },
+   "visible": true
+  },
+  "confirm": {
+   "cursor": 0,
+   "evade": {
+    "after": 235,
+    "now": 220,
+    "over": false,
+    "value": 120
+   },
+   "from": {
+    "art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "height": 128,
+     "resources": [
+      2312,
+      1712,
+      2012
+     ],
+     "width": 128
+    },
+    "name": "ウイングガンダム",
+    "number": 117,
+    "pilot": "ヒイロ",
+    "sub": {
+     "name": ""
+    }
+   },
+   "hit": {
+    "after": 228,
+    "now": 213,
+    "over": false,
+    "value": 113
+   },
+   "labels": {
+    "after": "( )内は本来の能力",
+    "air": "空",
+    "ask": "よろしいですか?",
+    "board": "この組み合わせで",
+    "current": "制限をうける能力",
+    "evade": "回避",
+    "fairy": "パイロット",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "no": "いいえ",
+    "sea": "海",
+    "space": "宇",
+    "sub": "妖精",
+    "terrain": "地形",
+    "title": "のりかえ",
+    "yes": "はい"
+   },
+   "pilot": {
+    "art": {
+     "height": 96,
+     "resources": [
+      99,
+      399
+     ],
+     "width": 96
+    },
+    "full_name": "ヒイロ・ユイ",
+    "index": 0,
+    "level": 1,
+    "name": "ヒイロ",
+    "number": 95
+   },
+   "screen": "confirm",
+   "serial": 3,
+   "terrain": "CABA",
+   "to": {
+    "art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "height": 96,
+     "resources": [
+      2310,
+      1710,
+      2010
+     ],
+     "width": 96
+    },
+    "hp": 5700,
+    "limit": 330,
+    "mobility": 115,
+    "name": "アルトロンガンダム",
+    "number": 115,
+    "pilot": "五飛",
+    "slot": 2,
+    "sub": {
+     "name": ""
+    }
+   },
+   "visible": true
+  }
+ },
+ "ability": {
+  "unit-list": {
+   "cursor": 0,
+   "labels": {
+    "abilities": "特殊能力",
+    "air": "空",
+    "armor": "装甲",
+    "en": "EN",
+    "evade": "回避",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "melee": "格闘",
+    "mobility": "運動性",
+    "morale": "気力",
+    "move": "移動力",
+    "next": "NEXT",
+    "pilot": "LRZ:次のパイロット",
+    "pilot_list": "パイロット能力",
+    "ranged": "射撃",
+    "reaction": "反応",
+    "repair": "修理費用",
+    "sea": "海",
+    "size": "サイズ",
+    "skill": "技量",
+    "skills": "特殊技能",
+    "sp": "精神ポイント",
+    "space": "宇",
+    "spirits": "精神コマンド",
+    "sub": "妖精",
+    "terrain": "地形",
+    "type": "タイプ",
+    "unit_list": "ユニット能力",
+    "unknown": "?????"
+   },
+   "page": 0,
+   "pages": 1,
+   "rows": [
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2407,
+       1810,
+       2110
+      ],
+      "width": 96
+     },
+     "hp": 8000,
+     "name": "ダイターン3",
+     "number": 216,
+     "pilot": "万丈",
+     "slot": 1
+    },
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2409,
+       1812,
+       2112
+      ],
+      "width": 96
+     },
+     "hp": 8000,
+     "name": "ダイファイター",
+     "number": 218,
+     "pilot": "万丈",
+     "slot": 2
+    },
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2408,
+       1811,
+       2111
+      ],
+      "width": 96
+     },
+     "hp": 8000,
+     "name": "ダイタンク",
+     "number": 217,
+     "pilot": "万丈",
+     "slot": 3
+    },
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2865,
+       2869,
+       2870
+      ],
+      "width": 96
+     },
+     "hp": 5300,
+     "name": "スイームルグ",
+     "number": 36,
+     "pilot": "マナミ",
+     "slot": 0
+    },
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2800,
+       1863,
+       2163
+      ],
+      "width": 96
+     },
+     "hp": 3000,
+     "name": "ドール",
+     "number": 339,
+     "pilot": "シモーヌ",
+     "slot": 4
+    },
+    {
+     "art": {
+      "clipped_parts": 0,
+      "facing": "left",
+      "frame": 0,
+      "height": 96,
+      "resources": [
+       2796,
+       2767,
+       2774
+      ],
+      "width": 96
+     },
+     "hp": 3000,
+     "name": "ドール(飛行)",
+     "number": 340,
+     "pilot": "シモーヌ",
+     "slot": 5
+    }
+   ],
+   "screen": "units",
+   "serial": 1,
+   "sub": {
+    "name": ""
+   },
+   "visible": true,
+   "weapon_labels": {
+    "air": "空",
+    "ammo": "弾数",
+    "critical": "クリティカル補正",
+    "en": "消費EN",
+    "hit": "命中",
+    "land": "陸",
+    "morale": "必要気力",
+    "power": "攻撃力",
+    "range": "射程",
+    "sea": "海",
+    "skill": "必要技能",
+    "space": "宇",
+    "terrain": "地形",
+    "weapon": "武器名"
+   }
+  },
+  "unit-page": {
+   "abilities": [
+    "変形"
+   ],
+   "armor": 1800,
+   "count": 6,
+   "en": 200,
+   "en_max": 200,
+   "hp": 8000,
+   "hp_max": 8000,
+   "index": 0,
+   "labels": {
+    "abilities": "特殊能力",
+    "air": "空",
+    "armor": "装甲",
+    "en": "EN",
+    "evade": "回避",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "melee": "格闘",
+    "mobility": "運動性",
+    "morale": "気力",
+    "move": "移動力",
+    "next": "NEXT",
+    "pilot": "LRZ:次のパイロット",
+    "pilot_list": "パイロット能力",
+    "ranged": "射撃",
+    "reaction": "反応",
+    "repair": "修理費用",
+    "sea": "海",
+    "size": "サイズ",
+    "skill": "技量",
+    "skills": "特殊技能",
+    "sp": "精神ポイント",
+    "space": "宇",
+    "spirits": "精神コマンド",
+    "sub": "妖精",
+    "terrain": "地形",
+    "type": "タイプ",
+    "unit_list": "ユニット能力",
+    "unknown": "?????"
+   },
+   "limit": 270,
+   "mobility": 70,
+   "move": 5,
+   "parts": [],
+   "repair": 14000,
+   "screen": "unit",
+   "serial": 2,
+   "shield": "シールド有",
+   "size": "LL",
+   "terrain": "AABA",
+   "types": [
+    "陸",
+    "空"
+   ],
+   "unit": {
+    "art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "height": 96,
+     "resources": [
+      2407,
+      1810,
+      2110
+     ],
+     "width": 96
+    },
+    "name": "ダイターン3",
+    "number": 216,
+    "slot": 1
+   },
+   "visible": true,
+   "weapon_labels": {
+    "air": "空",
+    "ammo": "弾数",
+    "critical": "クリティカル補正",
+    "en": "消費EN",
+    "hit": "命中",
+    "land": "陸",
+    "morale": "必要気力",
+    "power": "攻撃力",
+    "range": "射程",
+    "sea": "海",
+    "skill": "必要技能",
+    "space": "宇",
+    "terrain": "地形",
+    "weapon": "武器名"
+   }
+  },
+  "weapons": {
+   "cursor": 0,
+   "labels": {
+    "abilities": "特殊能力",
+    "air": "空",
+    "armor": "装甲",
+    "en": "EN",
+    "evade": "回避",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "melee": "格闘",
+    "mobility": "運動性",
+    "morale": "気力",
+    "move": "移動力",
+    "next": "NEXT",
+    "pilot": "LRZ:次のパイロット",
+    "pilot_list": "パイロット能力",
+    "ranged": "射撃",
+    "reaction": "反応",
+    "repair": "修理費用",
+    "sea": "海",
+    "size": "サイズ",
+    "skill": "技量",
+    "skills": "特殊技能",
+    "sp": "精神ポイント",
+    "space": "宇",
+    "spirits": "精神コマンド",
+    "sub": "妖精",
+    "terrain": "地形",
+    "type": "タイプ",
+    "unit_list": "ユニット能力",
+    "unknown": "?????"
+   },
+   "page": 0,
+   "pages": 2,
+   "rows": [
+    {
+     "ammo": 10,
+     "ammo_max": 10,
+     "cap": 7,
+     "critical": 0,
+     "en": 0,
+     "gauge": ".......",
+     "hit": 0,
+     "index": 0,
+     "level": 0,
+     "morale": 0,
+     "name": "射ダイターンミサイル",
+     "number": 842,
+     "original_cap": 7,
+     "power": 900,
+     "preview": 1000,
+     "price": 4000,
+     "range_max": 5,
+     "range_min": 1,
+     "skill": 0,
+     "terrain": "BBBB",
+     "type": 2
+    },
+    {
+     "ammo": 10,
+     "ammo_max": 10,
+     "cap": 7,
+     "critical": 0,
+     "en": 0,
+     "gauge": ".......",
+     "hit": -10,
+     "index": 2,
+     "level": 0,
+     "morale": 0,
+     "name": "射ダイターンキャノン",
+     "number": 844,
+     "original_cap": 7,
+     "power": 1300,
+     "preview": 1400,
+     "price": 4000,
+     "range_max": 6,
+     "range_min": 1,
+     "skill": 0,
+     "terrain": "BBCB",
+     "type": 2
+    },
+    {
+     "cap": 7,
+     "critical": 10,
+     "en": 0,
+     "gauge": ".......",
+     "hit": 30,
+     "index": 3,
+     "level": 0,
+     "morale": 0,
+     "name": "格ダイターンザンバーP",
+     "number": 843,
+     "original_cap": 7,
+     "power": 1300,
+     "preview": 1400,
+     "price": 4000,
+     "range_max": 1,
+     "range_min": 1,
+     "skill": 0,
+     "terrain": "BBBB",
+     "type": 2
+    },
+    {
+     "ammo": 4,
+     "ammo_max": 4,
+     "cap": 7,
+     "critical": 0,
+     "en": 0,
+     "gauge": ".......",
+     "hit": -5,
+     "index": 4,
+     "level": 0,
+     "morale": 0,
+     "name": "格ダイターンウェッブP",
+     "number": 845,
+     "original_cap": 7,
+     "power": 1400,
+     "preview": 1500,
+     "price": 4000,
+     "range_max": 3,
+     "range_min": 1,
+     "skill": 0,
+     "terrain": "BBDB",
+     "type": 2
+    },
+    {
+     "cap": 7,
+     "critical": 0,
+     "en": 30,
+     "gauge": ".......",
+     "hit": 0,
+     "index": 6,
+     "level": 0,
+     "morale": 0,
+     "name": "射サンレーザー",
+     "number": 846,
+     "original_cap": 7,
+     "power": 1500,
+     "preview": 1600,
+     "price": 4000,
+     "range_max": 3,
+     "range_min": 1,
+     "skill": 0,
+     "terrain": "BB-B",
+     "type": 2
+    },
+    {
+     "ammo": 1,
+     "ammo_max": 1,
+     "cap": 7,
+     "critical": 0,
+     "en": 0,
+     "gauge": ".......",
+     "hit": -10,
+     "index": 7,
+     "level": 0,
+     "morale": 0,
+     "name": "格ビッグウェッブ",
+     "number": 847,
+     "original_cap": 7,
+     "power": 1600,
+     "preview": 1700,
+     "price": 4000,
+     "range_max": 5,
+     "range_min": 2,
+     "skill": 0,
+     "terrain": "BBDB",
+     "type": 2
+    }
+   ],
+   "screen": "weapons",
+   "serial": 5,
+   "unit": {
+    "art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "height": 96,
+     "resources": [
+      2407,
+      1810,
+      2110
+     ],
+     "width": 96
+    },
+    "en": 200,
+    "morale": 100,
+    "name": "ダイターン3",
+    "number": 216,
+    "slot": 1
+   },
+   "visible": true,
+   "weapon_labels": {
+    "air": "空",
+    "ammo": "弾数",
+    "critical": "クリティカル補正",
+    "en": "消費EN",
+    "hit": "命中",
+    "land": "陸",
+    "morale": "必要気力",
+    "power": "攻撃力",
+    "range": "射程",
+    "sea": "海",
+    "skill": "必要技能",
+    "space": "宇",
+    "terrain": "地形",
+    "weapon": "武器名"
+   }
+  },
+  "pilot-list": {
+   "cursor": 0,
+   "labels": {
+    "abilities": "特殊能力",
+    "air": "空",
+    "armor": "装甲",
+    "en": "EN",
+    "evade": "回避",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "melee": "格闘",
+    "mobility": "運動性",
+    "morale": "気力",
+    "move": "移動力",
+    "next": "NEXT",
+    "pilot": "LRZ:次のパイロット",
+    "pilot_list": "パイロット能力",
+    "ranged": "射撃",
+    "reaction": "反応",
+    "repair": "修理費用",
+    "sea": "海",
+    "size": "サイズ",
+    "skill": "技量",
+    "skills": "特殊技能",
+    "sp": "精神ポイント",
+    "space": "宇",
+    "spirits": "精神コマンド",
+    "sub": "妖精",
+    "terrain": "地形",
+    "type": "タイプ",
+    "unit_list": "ユニット能力",
+    "unknown": "?????"
+   },
+   "page": 0,
+   "pages": 1,
+   "rows": [
+    {
+     "index": 2,
+     "level": 5,
+     "name": "万丈",
+     "number": 165,
+     "unit": "ダイターン3"
+    },
+    {
+     "index": 3,
+     "level": 3,
+     "name": "シモーヌ",
+     "number": 204,
+     "unit": "ドール"
+    },
+    {
+     "index": 0,
+     "level": 2,
+     "name": "マナミ",
+     "number": 28,
+     "unit": "スイームルグ"
+    },
+    {
+     "index": 1,
+     "level": 2,
+     "name": "ローレンス",
+     "number": 24,
+     "unit": "スイームルグ"
+    }
+   ],
+   "screen": "pilots",
+   "serial": 8,
+   "sub": {
+    "name": ""
+   },
+   "visible": true,
+   "weapon_labels": {
+    "air": "空",
+    "ammo": "弾数",
+    "critical": "クリティカル補正",
+    "en": "消費EN",
+    "hit": "命中",
+    "land": "陸",
+    "morale": "必要気力",
+    "power": "攻撃力",
+    "range": "射程",
+    "sea": "海",
+    "skill": "必要技能",
+    "space": "宇",
+    "terrain": "地形",
+    "weapon": "武器名"
+   }
+  },
+  "pilot-page": {
+   "count": 4,
+   "index": 0,
+   "labels": {
+    "abilities": "特殊能力",
+    "air": "空",
+    "armor": "装甲",
+    "en": "EN",
+    "evade": "回避",
+    "hit": "命中",
+    "hp": "HP",
+    "land": "陸",
+    "level": "レベル",
+    "limit": "限界",
+    "melee": "格闘",
+    "mobility": "運動性",
+    "morale": "気力",
+    "move": "移動力",
+    "next": "NEXT",
+    "pilot": "LRZ:次のパイロット",
+    "pilot_list": "パイロット能力",
+    "ranged": "射撃",
+    "reaction": "反応",
+    "repair": "修理費用",
+    "sea": "海",
+    "size": "サイズ",
+    "skill": "技量",
+    "skills": "特殊技能",
+    "sp": "精神ポイント",
+    "space": "宇",
+    "spirits": "精神コマンド",
+    "sub": "妖精",
+    "terrain": "地形",
+    "type": "タイプ",
+    "unit_list": "ユニット能力",
+    "unknown": "?????"
+   },
+   "mobility": 70,
+   "morale": 100,
+   "next": 444,
+   "over": {
+    "evade": false,
+    "hit": false
+   },
+   "pilot": {
+    "art": {
+     "height": 96,
+     "resources": [
+      169,
+      469
+     ],
+     "width": 96
+    },
+    "full_name": "破嵐万丈",
+    "hidden": false,
+    "index": 2,
+    "level": 5,
+    "name": "万丈",
+    "number": 165
+   },
+   "screen": "pilot",
+   "serial": 9,
+   "skills": [
+    "底力L4",
+    "切り払いL4",
+    "S防御L4"
+   ],
+   "sp": 83,
+   "sp_max": 83,
+   "spirits": [
+    "必中",
+    "ド根性",
+    "気合",
+    "ひらめき",
+    "熱血"
+   ],
+   "stats": {
+    "evade": 108,
+    "hit": 108,
+    "melee": 150,
+    "ranged": 126,
+    "reaction": 92,
+    "skill": 124
+   },
+   "terrain": "AAAA",
+   "unit": {
+    "art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "height": 96,
+     "resources": [
+      2407,
+      1810,
+      2110
+     ],
+     "width": 96
+    },
+    "name": "ダイターン3",
+    "number": 216
+   },
+   "visible": true,
+   "weapon_labels": {
+    "air": "空",
+    "ammo": "弾数",
+    "critical": "クリティカル補正",
+    "en": "消費EN",
+    "hit": "命中",
+    "land": "陸",
+    "morale": "必要気力",
+    "power": "攻撃力",
+    "range": "射程",
+    "sea": "海",
+    "skill": "必要技能",
+    "space": "宇",
+    "terrain": "地形",
+    "weapon": "武器名"
+   }
+  }
+ },
+ "parts": {
+  "list-rows": {
+   "cursor": 0,
+   "labels": {
+    "armor": "装甲",
+    "arrow": "▶",
+    "en": "EN",
+    "equipped": "装備中のパーツ",
+    "hp": "HP",
+    "level": "レベル",
+    "limit": "限界",
+    "mobility": "運動性",
+    "move": "移動力",
+    "next": "▶",
+    "prev": "◀",
+    "remove": "はずす",
+    "select": "/",
+    "select_title": "強化パーツ選択",
+    "title": "強化パーツ"
+   },
+   "page": 0,
+   "pages": 1,
+   "rows": [
+    {
+     "en": 200,
+     "level": 5,
+     "name": "ダイターン3",
+     "number": 216,
+     "parts": [
+      {
+       "name": "",
+       "part": -1
+      },
+      {
+       "name": "",
+       "part": -1
+      }
+     ],
+     "pilot": "万丈",
+     "slot": 1
+    },
+    {
+     "en": 160,
+     "level": 3,
+     "name": "ドール",
+     "number": 339,
+     "parts": [
+      {
+       "name": "",
+       "part": -1
+      },
+      {
+       "name": "",
+       "part": -1
+      },
+      {
+       "name": "",
+       "part": -1
+      }
+     ],
+     "pilot": "シモーヌ",
+     "slot": 4
+    },
+    {
+     "en": 160,
+     "level": 2,
+     "name": "スイームルグ",
+     "number": 36,
+     "parts": [
+      {
+       "name": "",
+       "part": -1
+      },
+      {
+       "name": "",
+       "part": -1
+      }
+     ],
+     "pilot": "マナミ",
+     "slot": 0
+    }
+   ],
+   "screen": "list",
+   "serial": 1,
+   "visible": true
+  },
+  "slots-open": {
+   "cursor": 0,
+   "description": [],
+   "inventory": {
+    "cursor": 0,
+    "page": 0,
+    "pages": 1,
+    "rows": [
+     {
+      "name": "はずす",
+      "part": 18,
+      "remove": true
+     }
+    ]
+   },
+   "labels": {
+    "armor": "装甲",
+    "arrow": "▶",
+    "en": "EN",
+    "equipped": "装備中のパーツ",
+    "hp": "HP",
+    "level": "レベル",
+    "limit": "限界",
+    "mobility": "運動性",
+    "move": "移動力",
+    "next": "▶",
+    "prev": "◀",
+    "remove": "はずす",
+    "select": "/",
+    "select_title": "強化パーツ選択",
+    "title": "強化パーツ"
+   },
+   "mode": 0,
+   "screen": "slots",
+   "selected": -1,
+   "serial": 2,
+   "stats": [
+    {
+     "current": 8000,
+     "key": "hp",
+     "preview": 8000
+    },
+    {
+     "current": 200,
+     "key": "en",
+     "preview": 200
+    },
+    {
+     "current": 5,
+     "key": "move",
+     "preview": 5
+    },
+    {
+     "current": 70,
+     "key": "mobility",
+     "preview": 70
+    },
+    {
+     "current": 1800,
+     "key": "armor",
+     "preview": 1800
+    },
+    {
+     "current": 270,
+     "key": "limit",
+     "preview": 270
+    }
+   ],
+   "unit": {
+    "en": 200,
+    "level": 5,
+    "name": "ダイターン3",
+    "number": 216,
+    "parts": [
+     {
+      "name": "",
+      "part": -1
+     },
+     {
+      "name": "",
+      "part": -1
+     }
+    ],
+    "pilot": "万丈",
+    "slot": 1
+   },
+   "visible": true
+  },
+  "inventory-open": {
+   "cursor": 0,
+   "description": [],
+   "inventory": {
+    "cursor": 0,
+    "page": 0,
+    "pages": 1,
+    "rows": [
+     {
+      "name": "はずす",
+      "part": 18,
+      "remove": true
+     }
+    ]
+   },
+   "labels": {
+    "armor": "装甲",
+    "arrow": "▶",
+    "en": "EN",
+    "equipped": "装備中のパーツ",
+    "hp": "HP",
+    "level": "レベル",
+    "limit": "限界",
+    "mobility": "運動性",
+    "move": "移動力",
+    "next": "▶",
+    "prev": "◀",
+    "remove": "はずす",
+    "select": "/",
+    "select_title": "強化パーツ選択",
+    "title": "強化パーツ"
+   },
+   "mode": 1,
+   "screen": "slots",
+   "selected": 18,
+   "serial": 2,
+   "stats": [
+    {
+     "current": 8000,
+     "key": "hp",
+     "preview": 8000
+    },
+    {
+     "current": 200,
+     "key": "en",
+     "preview": 200
+    },
+    {
+     "current": 5,
+     "key": "move",
+     "preview": 5
+    },
+    {
+     "current": 70,
+     "key": "mobility",
+     "preview": 70
+    },
+    {
+     "current": 1800,
+     "key": "armor",
+     "preview": 1800
+    },
+    {
+     "current": 270,
+     "key": "limit",
+     "preview": 270
+    }
+   ],
+   "unit": {
+    "en": 200,
+    "level": 5,
+    "name": "ダイターン3",
+    "number": 216,
+    "parts": [
+     {
+      "name": "",
+      "part": -1
+     },
+     {
+      "name": "",
+      "part": -1
+     }
+    ],
+    "pilot": "万丈",
+    "slot": 1
+   },
+   "visible": true
+  }
+ },
+ "title_options": {
+  "cursor": 0,
+  "items": [
+   {
+    "label": "声音",
+    "value": "立体声"
+   },
+   {
+    "label": "音乐鉴赏"
+   },
+   {
+    "label": "卡拉OK模式"
+   }
+  ],
+  "mono": false,
+  "screen": "options",
+  "serial": 1,
+  "title": "选项",
+  "visible": true
+ },
+ "battle": [
+  {
+   "animation": true,
+   "attacker": {
+    "abilities": 0,
+    "active_spirits": [],
+    "ammo": 10,
+    "barrier": {
+     "blocks_shield": false,
+     "en_cost": 0,
+     "kind": "aura",
+     "status": "non_beam",
+     "strength": 3600
+    },
+    "critical": 1,
+    "critical_damage": 3585,
+    "critical_modifier": 0,
+    "damage": 2390,
+    "damage_if_shield": 1190,
+    "damage_raw": 2390,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "no_skill",
+     "incoming_cuttable": true,
+     "parry": 0,
+     "parry_reason": "no_skill",
+     "shield": 0,
+     "shield_reason": "no_skill"
+    },
+    "defensive_effects": [
+     {
+      "id": "dummy",
+      "remaining": 0
+     }
+    ],
+    "en": 150,
+    "en_cost": 0,
+    "estimated_hit": 0,
+    "handle": 98,
+    "hit": 0,
+    "hit_modifier": 0,
+    "hp": 3000,
+    "known": false,
+    "level": 1,
+    "level_known": false,
+    "max_en": 150,
+    "max_hp": 3000,
+    "max_sp": 0,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 298,
+    "pilot_effects": [],
+    "pilot_name": "穆格兵",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-285.png",
+     "height": 96,
+     "resources": [
+      285,
+      585
+     ],
+     "width": 96
+    },
+    "side": 1,
+    "size": 1,
+    "sp": 0,
+    "spirit_grid": [],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 170,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2365-1765-2065.png",
+     "height": 96,
+     "resources": [
+      2365,
+      1765,
+      2065
+     ],
+     "width": 96
+    },
+    "unit_name": "迷你碟",
+    "weapon": 678,
+    "weapon_name": "贝加能源光束"
+   },
+   "can_cancel": false,
+   "can_counter": true,
+   "defender": {
+    "abilities": 16400,
+    "active_spirits": [],
+    "ammo": -1,
+    "barrier": {
+     "blocks_shield": false,
+     "en_cost": 0,
+     "kind": "none",
+     "status": "none",
+     "strength": 0
+    },
+    "critical": 16,
+    "critical_damage": 1544,
+    "critical_modifier": 0,
+    "damage": 1029,
+    "damage_if_shield": 510,
+    "damage_raw": 1029,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "morale_low",
+     "incoming_cuttable": false,
+     "parry": 0,
+     "parry_reason": "uncuttable",
+     "shield": 0,
+     "shield_reason": "no_skill"
+    },
+    "defensive_effects": [
+     {
+      "chance": 0,
+      "id": "parry",
+      "level": 1,
+      "reason": "uncuttable"
+     },
+     {
+      "chance": 0,
+      "id": "clone",
+      "reason": "morale_low"
+     },
+     {
+      "id": "aura_barrier",
+      "reason": "non_beam",
+      "strength": 3600
+     }
+    ],
+    "en": 80,
+    "en_cost": 0,
+    "estimated_hit": 100,
+    "handle": 68,
+    "hit": 100,
+    "hit_modifier": 15,
+    "hp": 2800,
+    "known": true,
+    "level": 2,
+    "level_known": true,
+    "max_en": 80,
+    "max_hp": 2800,
+    "max_sp": 62,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 181,
+    "pilot_effects": [
+     {
+      "active": true,
+      "critical": 0,
+      "evade": 18,
+      "hit": 0,
+      "id": "holy",
+      "level": 3
+     }
+    ],
+    "pilot_name": "翔",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-185.png",
+     "height": 96,
+     "resources": [
+      185,
+      485
+     ],
+     "width": 96
+    },
+    "side": 0,
+    "size": 1,
+    "sp": 62,
+    "spirit_grid": [
+     {
+      "active": false,
+      "id": 2,
+      "name": "加速"
+     },
+     {
+      "active": false,
+      "id": 14,
+      "name": "幸运"
+     }
+    ],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 247,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2438-1841-2141.png",
+     "height": 96,
+     "resources": [
+      2438,
+      1841,
+      2141
+     ],
+     "width": 96
+    },
+    "unit_name": "丹拜因",
+    "weapon": 952,
+    "weapon_name": "奥拉剑"
+   },
+   "kind": "open",
+   "locale": "zh-Hans",
+   "mode": 2,
+   "response": 0,
+   "rules": 671,
+   "serial": 1,
+   "spirit_menu": false,
+   "spirit_options": [
+    {
+     "cost": 10,
+     "crew": 0,
+     "enabled": true,
+     "id": 2,
+     "max_sp": 62,
+     "name": "加速",
+     "pilot_name": "翔",
+     "reason": "ready",
+     "slot": 0,
+     "sp": 62
+    },
+    {
+     "cost": 45,
+     "crew": 1,
+     "enabled": false,
+     "id": 14,
+     "max_sp": 32,
+     "name": "幸运",
+     "pilot_name": "恰姆",
+     "reason": "sp",
+     "slot": 0,
+     "sp": 32
+    }
+   ],
+   "style": "native",
+   "turn": 0,
+   "vi": 2740,
+   "visible": true,
+   "words": {
+    "defend": "防御",
+    "defending": "防御",
+    "evade": "回避",
+    "hit": "命中率    %",
+    "level": "等级",
+    "morale": "气力",
+    "no_counter": "无法反击",
+    "start": "开始反击",
+    "weapon": "武器"
+   }
+  },
+  {
+   "animation": false,
+   "attacker": {
+    "abilities": 0,
+    "active_spirits": [],
+    "ammo": 10,
+    "barrier": {
+     "blocks_shield": false,
+     "en_cost": 0,
+     "kind": "aura",
+     "status": "non_beam",
+     "strength": 3600
+    },
+    "critical": 1,
+    "critical_damage": 3585,
+    "critical_modifier": 0,
+    "damage": 2390,
+    "damage_if_shield": 1190,
+    "damage_raw": 2390,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "no_attack",
+     "incoming_cuttable": false,
+     "parry": 0,
+     "parry_reason": "no_attack",
+     "shield": 0,
+     "shield_reason": "no_attack"
+    },
+    "defensive_effects": [
+     {
+      "id": "dummy",
+      "remaining": 0
+     }
+    ],
+    "en": 150,
+    "en_cost": 0,
+    "estimated_hit": 0,
+    "handle": 98,
+    "hit": 0,
+    "hit_modifier": 0,
+    "hp": 3000,
+    "known": false,
+    "level": 1,
+    "level_known": false,
+    "max_en": 150,
+    "max_hp": 3000,
+    "max_sp": 0,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 298,
+    "pilot_effects": [],
+    "pilot_name": "穆格兵",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-285.png",
+     "height": 96,
+     "resources": [
+      285,
+      585
+     ],
+     "width": 96
+    },
+    "side": 1,
+    "size": 1,
+    "sp": 0,
+    "spirit_grid": [],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 170,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2365-1765-2065.png",
+     "height": 96,
+     "resources": [
+      2365,
+      1765,
+      2065
+     ],
+     "width": 96
+    },
+    "unit_name": "迷你碟",
+    "weapon": 678,
+    "weapon_name": "贝加能源光束"
+   },
+   "can_cancel": false,
+   "can_counter": true,
+   "defender": {
+    "abilities": 16400,
+    "active_spirits": [],
+    "ammo": -1,
+    "barrier": {
+     "kind": "none",
+     "status": "none"
+    },
+    "critical": 0,
+    "critical_damage": 0,
+    "critical_modifier": 0,
+    "damage": 0,
+    "damage_if_shield": 0,
+    "damage_raw": 0,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "morale_low",
+     "incoming_cuttable": false,
+     "parry": 0,
+     "parry_reason": "uncuttable",
+     "shield": 0,
+     "shield_reason": "no_skill"
+    },
+    "defensive_effects": [
+     {
+      "chance": 0,
+      "id": "parry",
+      "level": 1,
+      "reason": "uncuttable"
+     },
+     {
+      "chance": 0,
+      "id": "clone",
+      "reason": "morale_low"
+     },
+     {
+      "id": "aura_barrier",
+      "reason": "non_beam",
+      "strength": 3600
+     }
+    ],
+    "en": 80,
+    "en_cost": 0,
+    "estimated_hit": 0,
+    "handle": 68,
+    "hit": 0,
+    "hit_modifier": 0,
+    "hp": 2800,
+    "known": true,
+    "level": 2,
+    "level_known": true,
+    "max_en": 80,
+    "max_hp": 2800,
+    "max_sp": 62,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 181,
+    "pilot_effects": [
+     {
+      "active": true,
+      "critical": 0,
+      "evade": 18,
+      "hit": 0,
+      "id": "holy",
+      "level": 3
+     }
+    ],
+    "pilot_name": "翔",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-185.png",
+     "height": 96,
+     "resources": [
+      185,
+      485
+     ],
+     "width": 96
+    },
+    "side": 0,
+    "size": 1,
+    "sp": 62,
+    "spirit_grid": [
+     {
+      "active": false,
+      "id": 2,
+      "name": "加速"
+     },
+     {
+      "active": false,
+      "id": 14,
+      "name": "幸运"
+     }
+    ],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 247,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2438-1841-2141.png",
+     "height": 96,
+     "resources": [
+      2438,
+      1841,
+      2141
+     ],
+     "width": 96
+    },
+    "unit_name": "丹拜因",
+    "weapon": -1,
+    "weapon_name": ""
+   },
+   "kind": "open",
+   "locale": "zh-Hans",
+   "mode": 2,
+   "response": 1,
+   "rules": 671,
+   "serial": 2,
+   "spirit_menu": false,
+   "spirit_options": [
+    {
+     "cost": 10,
+     "crew": 0,
+     "enabled": true,
+     "id": 2,
+     "max_sp": 62,
+     "name": "加速",
+     "pilot_name": "翔",
+     "reason": "ready",
+     "slot": 0,
+     "sp": 62
+    },
+    {
+     "cost": 45,
+     "crew": 1,
+     "enabled": false,
+     "id": 14,
+     "max_sp": 32,
+     "name": "幸运",
+     "pilot_name": "恰姆",
+     "reason": "sp",
+     "slot": 0,
+     "sp": 32
+    }
+   ],
+   "style": "native",
+   "turn": 0,
+   "vi": 2773,
+   "visible": true,
+   "words": {
+    "defend": "防御",
+    "defending": "防御",
+    "evade": "回避",
+    "hit": "命中率    %",
+    "level": "等级",
+    "morale": "气力",
+    "no_counter": "无法反击",
+    "start": "开始反击",
+    "weapon": "武器"
+   }
+  },
+  {
+   "animation": false,
+   "attacker": {
+    "abilities": 16400,
+    "active_spirits": [],
+    "ammo": 4,
+    "barrier": {
+     "blocks_shield": false,
+     "en_cost": 0,
+     "kind": "none",
+     "status": "none",
+     "strength": 0
+    },
+    "critical": 1,
+    "critical_damage": 270,
+    "critical_modifier": 0,
+    "damage": 180,
+    "damage_if_shield": 90,
+    "damage_raw": 180,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "morale_low",
+     "incoming_cuttable": false,
+     "parry": 0,
+     "parry_reason": "uncuttable",
+     "shield": 0,
+     "shield_reason": "no_skill"
+    },
+    "defensive_effects": [
+     {
+      "chance": 0,
+      "id": "parry",
+      "level": 1,
+      "reason": "uncuttable"
+     },
+     {
+      "chance": 0,
+      "id": "clone",
+      "reason": "morale_low"
+     },
+     {
+      "id": "aura_barrier",
+      "reason": "non_beam",
+      "strength": 3000
+     },
+     {
+      "id": "dummy",
+      "remaining": 0
+     }
+    ],
+    "en": 80,
+    "en_cost": 0,
+    "estimated_hit": 100,
+    "handle": 97,
+    "hit": 100,
+    "hit_modifier": -10,
+    "hp": 2900,
+    "known": false,
+    "level": 2,
+    "level_known": false,
+    "max_en": 80,
+    "max_hp": 2900,
+    "max_sp": 52,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 185,
+    "pilot_effects": [
+     {
+      "active": false,
+      "critical": 0,
+      "evade": 0,
+      "hit": 0,
+      "id": "holy",
+      "level": 0
+     }
+    ],
+    "pilot_name": "卡拉利亚",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-189.png",
+     "height": 96,
+     "resources": [
+      189,
+      489
+     ],
+     "width": 96
+    },
+    "side": 1,
+    "size": 1,
+    "sp": 52,
+    "spirit_grid": [
+     {
+      "active": false,
+      "id": 6,
+      "name": "毅力"
+     }
+    ],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 250,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2441-1844-2144.png",
+     "height": 96,
+     "resources": [
+      2441,
+      1844,
+      2144
+     ],
+     "width": 96
+    },
+    "unit_name": "巴斯托尔",
+    "weapon": 967,
+    "weapon_name": "导弹发射器"
+   },
+   "can_cancel": false,
+   "can_counter": true,
+   "defender": {
+    "abilities": 0,
+    "active_spirits": [],
+    "ammo": 10,
+    "barrier": {
+     "blocks_shield": false,
+     "en_cost": 0,
+     "kind": "aura",
+     "status": "non_beam",
+     "strength": 3000
+    },
+    "critical": 18,
+    "critical_damage": 3818,
+    "critical_modifier": 0,
+    "damage": 2545,
+    "damage_if_shield": 1270,
+    "damage_raw": 2545,
+    "defense": {
+     "clone": 0,
+     "clone_reason": "no_skill",
+     "incoming_cuttable": true,
+     "parry": 0,
+     "parry_reason": "no_skill",
+     "shield": 0,
+     "shield_reason": "no_skill"
+    },
+    "defensive_effects": [
+     {
+      "chance": 0,
+      "id": "parry",
+      "level": 4,
+      "reason": "no_equipment"
+     },
+     {
+      "chance": 0,
+      "id": "shield",
+      "level": 4,
+      "reason": "no_equipment"
+     }
+    ],
+    "en": 150,
+    "en_cost": 0,
+    "estimated_hit": 10,
+    "handle": 69,
+    "hit": 10,
+    "hit_modifier": 0,
+    "hp": 3000,
+    "known": true,
+    "level": 5,
+    "level_known": true,
+    "max_en": 150,
+    "max_hp": 3000,
+    "max_sp": 83,
+    "morale": 100,
+    "morale_required": 0,
+    "pilot": 165,
+    "pilot_effects": [
+     {
+      "active": false,
+      "base": 0,
+      "critical": 0,
+      "critical_suppressed": false,
+      "evade": 0,
+      "full_hp": false,
+      "hit": 0,
+      "id": "potential",
+      "level": 4,
+      "threshold": 40
+     }
+    ],
+    "pilot_name": "万丈",
+    "portrait": {
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/portraits/portrait-169.png",
+     "height": 96,
+     "resources": [
+      169,
+      469
+     ],
+     "width": 96
+    },
+    "side": 0,
+    "size": 1,
+    "sp": 83,
+    "spirit_grid": [
+     {
+      "active": false,
+      "id": 5,
+      "name": "直觉"
+     },
+     {
+      "active": false,
+      "id": 7,
+      "name": "必中"
+     },
+     {
+      "active": false,
+      "id": 11,
+      "name": "热血"
+     },
+     {
+      "active": false,
+      "id": 12,
+      "name": "气合"
+     },
+     {
+      "active": false,
+      "id": 13,
+      "name": "大毅力"
+     }
+    ],
+    "spirits": 0,
+    "target_shield": 0,
+    "unit": 170,
+    "unit_art": {
+     "clipped_parts": 0,
+     "facing": "left",
+     "frame": 0,
+     "hd": "/Users/nate/srw64/build/recomp/debug/20260928T160933.474851Z.content/art/units/unit-2365-1765-2065.png",
+     "height": 96,
+     "resources": [
+      2365,
+      1765,
+      2065
+     ],
+     "width": 96
+    },
+    "unit_name": "迷你碟",
+    "weapon": 678,
+    "weapon_name": "贝加能源光束"
+   },
+   "kind": "open",
+   "locale": "zh-Hans",
+   "mode": 2,
+   "response": 0,
+   "rules": 671,
+   "serial": 5,
+   "spirit_menu": false,
+   "spirit_options": [
+    {
+     "cost": 25,
+     "crew": 0,
+     "enabled": true,
+     "id": 7,
+     "max_sp": 83,
+     "name": "必中",
+     "pilot_name": "万丈",
+     "reason": "ready",
+     "slot": 0,
+     "sp": 83
+    },
+    {
+     "cost": 40,
+     "crew": 0,
+     "enabled": false,
+     "id": 13,
+     "max_sp": 83,
+     "name": "大毅力",
+     "pilot_name": "万丈",
+     "reason": "unavailable",
+     "slot": 1,
+     "sp": 83
+    },
+    {
+     "cost": 40,
+     "crew": 0,
+     "enabled": true,
+     "id": 12,
+     "max_sp": 83,
+     "name": "气合",
+     "pilot_name": "万丈",
+     "reason": "ready",
+     "slot": 2,
+     "sp": 83
+    },
+    {
+     "cost": 15,
+     "crew": 0,
+     "enabled": true,
+     "id": 5,
+     "max_sp": 83,
+     "name": "直觉",
+     "pilot_name": "万丈",
+     "reason": "ready",
+     "slot": 3,
+     "sp": 83
+    },
+    {
+     "cost": 40,
+     "crew": 0,
+     "enabled": true,
+     "id": 11,
+     "max_sp": 83,
+     "name": "热血",
+     "pilot_name": "万丈",
+     "reason": "ready",
+     "slot": 4,
+     "sp": 83
+    }
+   ],
+   "style": "native",
+   "turn": 0,
+   "vi": 3419,
+   "visible": true,
+   "words": {
+    "defend": "防御",
+    "defending": "防御",
+    "evade": "回避",
+    "hit": "命中率    %",
+    "level": "等级",
+    "morale": "气力",
+    "no_counter": "无法反击",
+    "start": "开始反击",
+    "weapon": "武器"
+   }
+  }
+ ]
+}
