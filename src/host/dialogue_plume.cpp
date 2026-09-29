@@ -2,6 +2,7 @@
 // and D3D12; only target inspection differs, and completion goes through the host.
 #include "dialogue_raster.hpp"
 #include "diagnostics.hpp"
+#include "game_frame.hpp"
 #include "presentation/pixel_compositor.hpp"
 #ifdef __APPLE__
 #include "plume_metal.h"
@@ -55,13 +56,13 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
     // Preserve the existing workload/cache identity and CPU raster behavior.
     std::ostringstream key;
     key << localization::catalog().locale << localization::catalog().font << localization::catalog().revision
-        << ',' << framebuffer->getWidth() << ',' << framebuffer->getHeight() << ',' << frame->font_size
+        << ',' << framebuffer->getWidth() << ',' << framebuffer->getHeight() << ',' << srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()) << ',' << frame->font_size
         << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping << frame->pad_hints << int(frame->pad_family) << frame->controls_text << frame->history_controls_text << frame->bar_scale
         << ',' << frame->reading_event << ',' << frame->advance.visible << frame->advance.waiting << frame->advance.paused << ',' << frame->advance.permille;
     for (const auto& box : frame->boxes)
         key << ':' << box.event << ',' << box.visible << box.active << ',' << box.page << ',' << box.revealed << ',' << box.x << ',' << box.y;
     if (!image || cached_key != key.str()) {
-        auto raster = rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight());
+        auto raster = rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight(),srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()));
         auto next = compositor->upload(*list,raster.image);
         // Retain uploads independently of draw success until the command buffer
         // completes. A later cache replacement cannot free a recorded upload.

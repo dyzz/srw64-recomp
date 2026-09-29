@@ -15,6 +15,7 @@
 #include "parts_carry.hpp"
 #include "link_battler.hpp"
 #include "script_skip.hpp"
+#include "wide_map.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -26,6 +27,7 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
+    srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64_original_battle_animation_step(ram,ctx);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
@@ -50,8 +52,28 @@ void resident_func_80082334(uint8_t* ram,recomp_context* ctx) {
     else srw64_original_random_bound(ram,ctx);
 }
 
+// The frame display list builder 8008AE90 calls every render node's function at 8008B3FC
+// (sprites: cursor, slot, sub) or 8008B3E0 (callbacks: cursor only); generate_cpu.py routes
+// both calls here so the host can place map-space draws in the widened view (wide_map.hpp).
+void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32_t sprite) {
+    const int32_t cursor=ctx->r4;
+    // The shared screen wipe (phase changes, scene changes) across the whole picture.
+    if(uint32_t(function)==0x80099508 && srw64_game_hooks.map_space_begin) {
+        const bool widened=srw64::wide_map::wipe_begin(rdram,cursor);
+        const uint32_t begin=MEM_W(0,cursor);
+        LOOKUP_FUNC(function)(rdram,ctx);
+        if(widened)srw64::wide_map::wipe_end(rdram,cursor,begin);
+        return;
+    }
+    const bool wide=srw64_game_hooks.map_space_begin &&
+        srw64_game_hooks.map_space_begin(rdram,cursor,uint32_t(function),sprite?uint32_t(ctx->r5):~0u,sprite?uint32_t(ctx->r6):0);
+    LOOKUP_FUNC(function)(rdram,ctx);
+    if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
+}
+
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
+    if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
     if(srw64_game_hooks.intermission_frame)srw64_game_hooks.intermission_frame(ram);
     if(srw64_game_hooks.upgrade_frame)srw64_game_hooks.upgrade_frame(ram);
@@ -241,10 +263,23 @@ void resident_func_800964E4(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
+    // The battle's sky wraps every 320 pixels: the periods either side fill a wider
+    // picture (docs/design/deck-16x10.md). Each copy runs the drawer on a copy of the call.
+    const bool sides = srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
+    if (sides) {
+        srw64::wide_map::open_sides(rdram, cursor);
+        for (const float offset : {-320.f, 320.f}) {
+            srw64::wide_map::offset_rects(rdram, cursor, offset);
+            recomp_context copy = *ctx;
+            srw64_original_background_draw(rdram, &copy);
+        }
+        srw64::wide_map::offset_rects(rdram, cursor, 0);
+    }
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     srw64_original_background_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
-    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub);
+    if (sides) srw64::wide_map::close_sides(rdram, cursor);
+    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides);
 }
 void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;

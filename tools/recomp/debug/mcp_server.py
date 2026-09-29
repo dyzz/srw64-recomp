@@ -76,6 +76,7 @@ TOOLS = [
          "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
          "battle_ui": {"type": "string", "enum": ["native", "hd", "original"]},
          "ui_size": {"type": "string", "enum": ["standard", "large", "largest"]},
+         "aspect": {"type": "string", "enum": ["auto", "4:3"]},
          "intermission_ui": {"type": "string", "enum": ["native", "original"]},
          "name_entry_ui": {"type": "string", "enum": ["native", "original"]},
          "title_ui": {"type": "string", "enum": ["native", "original"]}}}},

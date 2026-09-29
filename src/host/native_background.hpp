@@ -17,5 +17,6 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
-void rewrite(uint8_t* rdram, const BackgroundDraw& draw);
+// True when the picture was drawn wider than the original's 4:3 (the starfield).
+bool rewrite(uint8_t* rdram, const BackgroundDraw& draw);
 }

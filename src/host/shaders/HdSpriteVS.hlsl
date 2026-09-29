@@ -17,7 +17,7 @@ Varyings VSMain(uint vertex : SV_VertexID) {
     Varyings result;
     result.uv = lerp(uv.xy, uv.zw, corner);
     if ((gParams.flags & 2) == 0) {
-        result.position = float4(NativeClip(lerp(rect.xy, rect.zw, corner), resolution.xy), 0, 1);
+        result.position = float4(NativeFrame(lerp(rect.xy, rect.zw, corner), resolution), 0, 1);
         return result;
     }
     const float3 model = float3(lerp(rect.x, rect.z, corner.x), lerp(rect.y, rect.w, corner.y), NativeData(11).x);

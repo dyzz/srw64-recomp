@@ -25,7 +25,7 @@ class DialogueBackendBoundaryTests(unittest.TestCase):
         source = (ROOT / "src/host/dialogue_plume.cpp").read_text(encoding="utf-8")
         for name in ("CoreText/", "CoreGraphics/", "CTTypesetter", "CGContext", "CFString"):
             self.assertNotIn(name, source)
-        self.assertIn("rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight())", source)
+        self.assertIn("rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight(),srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()))", source)
         self.assertIn("compositor->upload(*list,raster.image)", source)
 
     def test_dialogue_tests_are_outside_renderer_link_group(self):

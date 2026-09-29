@@ -102,11 +102,12 @@ struct Painter {
 
 }
 
-RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t height) {
+RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
     localization::Scope locale(frame.catalog);
     RasterizedFrame result{presentation::Bgra8Surface(width,height),{}};
     if(!frame.font_size || frame.font_size>256)throw std::runtime_error("Invalid native UI font size");
-    const double scale=std::min(width/320.0,height/240.0);
+    if(!(picture_width>=320 && picture_width<=640))throw std::runtime_error("Invalid picture width");
+    const double scale=std::min(width/picture_width,height/240.0);
     const double ox=(width-320*scale)/2,oy=(height-240*scale)/2;
     Painter paint{result.image,scale,ox,oy};
     const auto* focus=frame.focused_box();

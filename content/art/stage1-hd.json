@@ -7874,8 +7874,8 @@
     "manifest_sha256": "c3cae3c013e2d7a0ebd60849db1b9a723b95777c071be9a0afdee99100e44213"
   },
   "backgrounds": {
-    "path": "assets/hd-ai/backgrounds/whole-v2",
-    "manifest_sha256": "607d6e931d4b36cd46b0beed3b1b00784f3775dd7301f24e66d62a2e90a16001"
+    "path": "assets/hd-ai/backgrounds/whole-v3",
+    "manifest_sha256": "e48f8d82de0329aa6e2b3d50bfde7a3d04dff0bb3ee2ceb111ccdf4b3d932d40"
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v1",

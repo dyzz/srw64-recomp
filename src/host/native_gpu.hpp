@@ -38,6 +38,16 @@ struct Sampler {
     bool repeat_u = false, repeat_v = false;  // otherwise clamped
 };
 
+// A draw's resolution as the HD layers' shaders take it (NativeFrame in NativeGpu.hlsli):
+// the call's N64 frame (320 x 240), then the width of the picture RT64 draws into, in
+// the same pixels (384 at 16:10, game_frame.hpp), and where the frame's x = 0 falls
+// in it: the original's rectangles stay centred (RT64's rect aspect ADJUST).
+inline void frame_resolution(const RT64::NativeMeshDraw& call, float out[4]) {
+    out[0] = float(call.fbWidth); out[1] = float(call.fbHeight);
+    const float picture = call.viewport.height > 0 ? call.viewport.width * call.fbHeight / call.viewport.height : out[0];
+    out[2] = picture; out[3] = (picture - out[0]) / 2;
+}
+
 // Called from the render hooks' init and deinit.
 void init(plume::RenderInterface* rhi, plume::RenderDevice* device);
 void shutdown();

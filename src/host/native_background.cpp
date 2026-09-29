@@ -4,6 +4,7 @@
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
+#include "game_frame.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -34,6 +35,10 @@ constexpr uint32_t kHandles = 0x00160340, kHandleSize = 20, kHandleCount = 200; 
 struct Asset {
     uint16_t image = 0, palette = 0;
     std::filesystem::path file;
+    int width = 0, height = 0;                 // the picture's pixels
+    // The original's pixels the picture covers: 0, 0, 320, 240, or wider for a picture
+    // drawn out to 16:9 (tools/hd_ai/background_wide.py; docs/design/deck-16x10.md).
+    float extent[4]{};
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mip chain, dropped after upload
     std::vector<std::pair<int, int>> sizes;
     std::unique_ptr<gpu::Texture> texture;
@@ -41,9 +46,13 @@ struct Asset {
 };
 
 struct Quad { float rect[4], uv[4]; };        // N64 screen pixels; normalised picture coordinates
+// The world-map starfield (5582) fills a picture wider than 4:3 with its own edges
+// mirrored beyond the original's 320 (docs/design/deck-16x10.md); stars hide the seam.
+constexpr uint16_t kStarfield = 5582;
 struct Draw {
     uint32_t id = 0;
     int asset = -1;
+    bool wide = false;                        // side quads beyond the original's 320 (the scissor too)
     float prim[4]{1, 1, 1, 1};                // the combiner is TEXEL0 * PRIM (fades)
     std::vector<Quad> quads;
 };
@@ -90,7 +99,7 @@ void decode(Asset& asset) {
     int w = 0, h = 0, n = 0;
     uint8_t* pixels = stbi_load(asset.file.c_str(), &w, &h, &n, 4);
     if (!pixels) throw std::runtime_error("Cannot read HD background " + asset.file.string());
-    if (w != width || h != height) { stbi_image_free(pixels); throw std::runtime_error("HD background size differs from the manifest: " + asset.file.string()); }
+    if (w != asset.width || h != asset.height) { stbi_image_free(pixels); throw std::runtime_error("HD background size differs from the manifest: " + asset.file.string()); }
     std::vector<uint8_t> level(pixels, pixels + size_t(w) * h * 4);
     stbi_image_free(pixels);
     for (size_t i = 0; i < level.size(); i += 4)
@@ -125,7 +134,7 @@ plume::RenderDescriptorSet* textures_for(Asset& asset, plume::RenderCommandList*
     std::lock_guard lock(asset_mutex);
     if (asset.textures) return asset.textures.get();
     if (asset.levels.empty()) return nullptr;
-    asset.texture = std::make_unique<gpu::Texture>(uint32_t(width), uint32_t(height), plume::RenderFormat::R8G8B8A8_UNORM,
+    asset.texture = std::make_unique<gpu::Texture>(uint32_t(asset.width), uint32_t(asset.height), plume::RenderFormat::R8G8B8A8_UNORM,
                                                    std::move(asset.levels));
     asset.levels.clear(); asset.sizes.clear();
     if (!asset.texture->upload(list)) return nullptr;
@@ -146,12 +155,15 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     if (!textures) { ++skipped; return true; }
     // HdBackgroundVS/PS data: resolution, PRIM, then rect and uv per quad.
     std::vector<float> data(8 + draw.quads.size() * 8);
-    data[0] = float(call.fbWidth); data[1] = float(call.fbHeight);
+    gpu::frame_resolution(call, &data[0]);
     std::memcpy(&data[4], draw.prim, sizeof(draw.prim));
     std::memcpy(&data[8], draw.quads.data(), draw.quads.size() * sizeof(Quad));
     gpu::State state;
     state.blend = gpu::Blend::premultiplied;
-    if (!program->begin(list, framebuffer, call, state, textures, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
+    // The side quads lie outside the original's scissor (the whole picture instead).
+    RT64::NativeMeshDraw wide = call;
+    if (draw.wide) wide.scissor = {0, 0, int32_t(call.viewport.width), int32_t(call.viewport.height)};
+    if (!program->begin(list, framebuffer, wide, state, textures, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
         ++skipped;
         return true;
     }
@@ -178,6 +190,13 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         asset.image = row.at("image").get<uint16_t>();
         asset.palette = row.at("palette").get<uint16_t>();
         asset.file = art_directory / row.at("file").get<std::string>();
+        asset.width = row.contains("size") ? row["size"][0].get<int>() : width;
+        asset.height = row.contains("size") ? row["size"][1].get<int>() : height;
+        const auto extent = row.value("extent", json::array({0, 0, source_width, source_height}));
+        for (int i = 0; i < 4; ++i) asset.extent[i] = extent.at(i).get<float>();
+        if (asset.width <= 0 || asset.height <= 0 || asset.width > 8192 || asset.height > 8192 ||
+            asset.extent[0] > 0 || asset.extent[1] > 0 || asset.extent[2] < source_width || asset.extent[3] < source_height)
+            throw std::runtime_error("Unsupported HD background size or extent: " + asset.file.string());
         if (!std::filesystem::exists(asset.file)) throw std::runtime_error("Missing HD background " + asset.file.string());
         if (!by_ids.emplace(std::make_pair(asset.image, asset.palette), int(assets.size())).second)
             throw std::runtime_error("Duplicate HD background identity");
@@ -195,11 +214,11 @@ void gpu_init() {
     program = std::make_unique<gpu::Program>("HdBackground", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
 }
 
-void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
-    if (draw.slot >= 300 || draw.sub >= 4) return;
+bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
+    if (draw.slot >= 300 || draw.sub >= 4) return false;
     const uint32_t sub = kSlots + draw.slot * kSlotSize + kSubBase + draw.sub * kSubSize;
     uint16_t image = 0, palette = 0;
-    if (!resource(rdram, int16_t(half(rdram, sub + 0xC)), image) || !resource(rdram, int16_t(half(rdram, sub + 0xE)), palette)) return;
+    if (!resource(rdram, int16_t(half(rdram, sub + 0xC)), image) || !resource(rdram, int16_t(half(rdram, sub + 0xE)), palette)) return false;
     const auto found = by_ids.find({image, palette});
     if (found == by_ids.end() && dump.is_open() && dumped.insert({image, palette}).second) {
         json words = json::array();
@@ -207,12 +226,14 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         dump << json({{"slot", draw.slot}, {"sub", draw.sub}, {"image", image}, {"palette", palette}, {"words", words}}).dump() << '\n';
         dump.flush();
     }
-    if (found == by_ids.end() || !hd_enabled()) return;
+    if (found == by_ids.end() || !hd_enabled()) return false;
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
     // the tile's region (image coordinates), SETTILESIZE to (0,0)-(31,31) and TEXRECT
     // (E4, E1, F1) at the tile's screen position with S/T from the tile's origin.
     Draw record;
     record.asset = found->second;
+    float extent[4];
+    std::copy(std::begin(assets[size_t(record.asset)].extent), std::end(assets[size_t(record.asset)].extent), extent);
     std::vector<uint32_t> rects;
     float load[4]{}, tile[2]{};
     float columns = 1;  // picture pixels per loaded texel: 2 when CI4 is loaded as 8-bit (starfield)
@@ -232,7 +253,7 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
             tile[0] = ((w0 >> 12) & 0xFFF) / 4.f; tile[1] = (w0 & 0xFFF) / 4.f;  // render tile 0 origin
         } else if (op == 0xE4 && p + 24 <= draw.dl_end) {
             if (word(rdram, p + 8) >> 24 != 0xE1 || word(rdram, p + 16) >> 24 != 0xF1 || !loaded || rects.size() >= kMaxRects) {
-                ++unexpected; return;
+                ++unexpected; return false;
             }
             const uint32_t st = word(rdram, p + 12), d = word(rdram, p + 20);
             const float sx0 = ((w1 >> 12) & 0xFFF) / 4.f, sy0 = (w1 & 0xFFF) / 4.f;
@@ -241,8 +262,11 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
             const float dsdx = int16_t(d >> 16) / 1024.f, dtdy = int16_t(d & 0xFFFF) / 1024.f;
             // Texel (s, t) of tile 0 is picture pixel load origin + (s, t) - tile origin.
             const float u0 = load[0] + s - tile[0], v0 = load[1] + t - tile[1];
-            Quad q{{sx0, sy0, sx1, sy1},
-                   {u0 / source_width, v0 / source_height, (u0 + (sx1 - sx0) * dsdx) / source_width, (v0 + (sy1 - sy0) * dtdy) / source_height}};
+            // Original picture pixels to the HD picture's coordinates through its extent.
+            const float* e = extent;
+            const auto u = [&](float x) { return (x - e[0]) / (e[2] - e[0]); };
+            const auto v = [&](float y) { return (y - e[1]) / (e[3] - e[1]); };
+            Quad q{{sx0, sy0, sx1, sy1}, {u(u0), v(v0), u(u0 + (sx1 - sx0) * dsdx), v(v0 + (sy1 - sy0) * dtdy)}};
             record.quads.push_back(q);
             x0 = std::min<int32_t>(x0, (w1 >> 12) & 0xFFF); y0 = std::min<int32_t>(y0, w1 & 0xFFF);
             x1 = std::max<int32_t>(x1, (w0 >> 12) & 0xFFF); y1 = std::max<int32_t>(y1, w0 & 0xFFF);
@@ -250,7 +274,25 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
             p += 16;
         }
     }
-    if (rects.empty() || x1 <= x0 || y1 <= y0) { ++unexpected; return; }
+    if (rects.empty() || x1 <= x0 || y1 <= y0) { ++unexpected; return false; }
+    const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
+    const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;
+    if (side > 0 && whole && -extent[0] >= side - 0.5f && extent[2] - source_width >= side - 0.5f) {
+        // A picture drawn out past 4:3: its own sides fill the picture's.
+        const float top = y0 / 4.f, bottom = y1 / 4.f;
+        const float v0 = (top - extent[1]) / (extent[3] - extent[1]), v1 = (bottom - extent[1]) / (extent[3] - extent[1]);
+        const auto u = [&](float x) { return (x - extent[0]) / (extent[2] - extent[0]); };
+        record.quads.push_back({{-side, top, 0, bottom}, {u(-side), v0, u(0), v1}});
+        record.quads.push_back({{frame::kWidth, top, frame::kWidth + side, bottom}, {u(frame::kWidth), v0, u(frame::kWidth + side), v1}});
+        record.wide = true;
+    } else if (image == kStarfield && side > 0 && whole) {
+        // Mirrored edges: u runs back from each edge as far as the side reaches.
+        const float reach = side / frame::kWidth;
+        const float top = y0 / 4.f, bottom = y1 / 4.f, v0 = top / source_height, v1 = bottom / source_height;
+        record.quads.push_back({{-side, top, 0, bottom}, {reach, v0, 0, v1}});
+        record.quads.push_back({{frame::kWidth, top, frame::kWidth + side, bottom}, {1, v0, 1 - reach, v1}});
+        record.wide = true;
+    }
     {
         std::lock_guard lock(asset_mutex);
         Asset& asset = assets[size_t(record.asset)];
@@ -282,6 +324,7 @@ void rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     }
     put(rdram, rects[marker] - 8, kTagW0); put(rdram, rects[marker] - 4, kTagW1 | record.id);
     ++rewritten;
+    return record.wide;
 }
 
 void shutdown() {

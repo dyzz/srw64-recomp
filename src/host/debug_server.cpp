@@ -23,6 +23,8 @@
 #include "presentation/image_mode.hpp"
 #include "rule_fixes.hpp"
 #include "settings_window.hpp"
+#include "game_frame.hpp"
+#include "wide_map.hpp"
 #include "notices.hpp"
 #include "guest_memory.hpp"
 #include "localization/catalog.hpp"
@@ -163,6 +165,8 @@ json status(const json& params) {
     json state={{"vi",srw64_current_vi()},{"pid",getpid()},{"run",output.string()},{"host",host_info},
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
+        {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
+        {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
         {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
@@ -240,6 +244,12 @@ json settings(const json& params) {
         if(ui!="native" && ui!="hd" && ui!="original")throw RpcError(InvalidParams,"battle_ui must be native, hd or original");
         on_window([&]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
         done["battle_ui"]=ui;
+    }
+    if(params.contains("aspect")) {
+        const auto aspect=params["aspect"].get<std::string>();
+        if(aspect!="auto" && aspect!="4:3")throw RpcError(InvalidParams,"aspect must be auto or 4:3");
+        on_window([&]{settings::set_wide_picture(aspect=="auto");return json(nullptr);});
+        done["aspect"]=aspect;
     }
     if(params.contains("ui_size")) {
         const auto size=params["ui_size"].get<std::string>();

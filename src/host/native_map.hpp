@@ -11,6 +11,7 @@ struct MapDraw {
     uint16_t layout = 0;                 // map layout resource being drawn
     int32_t camera_x = 0, camera_y = 0;  // map pixels at screen (0,0)
     bool overview = false;               // 800943E0 scaling: the whole map (less its border) on one screen
+    float view_left = -1;                // the widened view's x = 0 in the picture, or < 0 (wide_map.hpp)
 };
 void configure(const std::filesystem::path& output);
 // Render-hook init, after gpu::init (native_gpu.hpp).

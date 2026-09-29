@@ -12,7 +12,7 @@ Varyings VSMain(uint vertex : SV_VertexID, uint instance : SV_InstanceID) {
     const float4 rect = NativeData(2 + instance * 2), uv = NativeData(3 + instance * 2);
     const float2 corner = float2(vertex & 1, vertex >> 1);
     Varyings result;
-    result.position = float4(NativeClip(lerp(rect.xy, rect.zw, corner), resolution.xy), 0, 1);
+    result.position = float4(NativeFrame(lerp(rect.xy, rect.zw, corner), resolution), 0, 1);
     result.uv = lerp(uv.xy, uv.zw, corner);
     return result;
 }

@@ -24,3 +24,11 @@ uint NativeWord(uint base, uint index) {
 float2 NativeClip(float2 pixel, float2 resolution) {
     return (pixel - resolution * 0.5f) / (resolution * float2(0.5f, -0.5f));
 }
+
+// N64 screen pixels to clip space in RT64's picture, from gpu::frame_resolution: the
+// frame (xy), the picture's width (z, wider than the frame at 16:10) and the frame's
+// left edge in it (w). A zero z is the frame itself.
+float2 NativeFrame(float2 pixel, float4 resolution) {
+    const float width = resolution.z > 0 ? resolution.z : resolution.x;
+    return NativeClip(float2(pixel.x + resolution.w, pixel.y), float2(width, resolution.y));
+}
