@@ -19,6 +19,7 @@
 #include "title_page.hpp"
 #include "settings_window.hpp"
 #include "debug_ui.hpp"
+#include "app_menu.hpp"
 #include <RmlUi/Core.h>
 #include <RmlUi/Core/ElementText.h>
 #include <RmlUi/Core/ElementUtilities.h>
@@ -70,8 +71,9 @@ const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 }
 namespace srw64::app_menu {
-void update(const std::string&,const std::string&){} bool available(){return false;} bool activate_settings(){return false;}
-bool take_settings_request(){return false;} bool take_reload_request(){return false;} void shutdown(){}
+void update(const Labels&,const WindowState&){} bool available(){return false;} bool activate_settings(){return false;}
+bool activate(const std::string&){return false;} bool take_settings_request(){return false;} bool take_reload_request(){return false;}
+bool take_fullscreen_request(){return false;} int take_scale_request(){return 0;} void shutdown(){}
 }
 namespace srw64::dialogue { void request_reload(){} }
 namespace srw64::intro { int title_major(){return 0;} }
