@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "srw64-recomp"
-version = "0.3.0"
+version = "0.3.1"
 description = "Super Robot Wars 64 native recompilation, content and runtime validation tools"
 readme = "README.md"
 requires-python = ">=3.11"
