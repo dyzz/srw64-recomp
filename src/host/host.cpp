@@ -51,6 +51,7 @@
 #include "enemy_cycle.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
+extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
 #endif
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
@@ -109,6 +110,7 @@ private:
 };
 
 void on_init(uint8_t* rdram, recomp_context*) {
+    srw64_rdram = rdram;
     srw64::state_probe::directory=output_dir;
     srw64::mini_stage::configure(output_dir);
     srw64::rules::configure(output_dir);
@@ -235,6 +237,8 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 }
 
 uint64_t srw64_current_vi() { return vi_count.load(); }
+// Guest RDRAM, for the debug interface's read-only memory view (debug_server.cpp).
+uint8_t* srw64_rdram = nullptr;
 
 // Debug interface hooks (debug_server.cpp): a button pulse that starts now
 // rather than at the next control-file poll, and a quit reported like SRWQ1.

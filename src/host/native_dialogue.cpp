@@ -2,6 +2,7 @@
 #include "native_name_entry.hpp"
 #include "diagnostics.hpp"
 #include "game_hooks.hpp"
+#include "script_skip.hpp"
 #include "state_probe.hpp"
 #include "presentation_settings.hpp"
 #include "notices.hpp"
@@ -184,7 +185,7 @@ Record story_record(const uint8_t* ram,const localization::Catalog& catalog,uint
 }
 void cancel(const char* reason,bool clear=false) {
     if(reader.active || reader.skipping || reader.history_open)record("boundary",{{"reason",reason}});
-    reader.boundary(clear);current={};owns_input=false;reading_owner=skip_owner=0;
+    reader.boundary(clear);current={};owns_input=false;reading_owner=skip_owner=0;script_skip::end();
 }
 void refresh(uint8_t* ram,bool create_events) {
     if(!scene_supported) {current={};owns_input=false;return;}
@@ -464,9 +465,11 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     }
     read_keys();
     if(reader.skipping && !was_skip) {
-        if(reading_owner) {skip_owner=reading_owner;record("skip_start",{{"owner",skip_owner}});}
+        if(reading_owner) {skip_owner=reading_owner;script_skip::start(skip_owner);record("skip_start",{{"owner",skip_owner}});}
         else {reader.skipping=false;record("skip_unavailable");}
     }
+    // B or the history ends the skip where it is (Reader::update).
+    if(was_skip && !reader.skipping && script_skip::active()){script_skip::end();skip_owner=0;record("skip_cancelled");}
     if(old_font!=reader.font_size) {
         // The current page keeps its first character; only what follows moves.
         reader.relayout(typeset_body(reader.layout.text,body_size(reader.font_size),reader.stops,{reader.page_start()}));
@@ -475,13 +478,15 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     if(old_speed!=reader.speed)record("speed",{{"level",reader.speed},{"automatic",reader.auto_read}});
     if(was_history!=reader.history_open)record("history",{{"open",reader.history_open},{"entries",reader.history.size()}});
     if(reader.history_open && !was_history) {
+        // As the panel lays them out (dialogue_scene.cpp): a name line for each record
+        // but a notice, its text, a gap.
         size_t lines=0;
         for(const auto& entry:reader.history)if(!entry.text.empty()) {
             const auto layout=typeset(entry.text,10,270,10000);
-            lines+=2;
+            lines+=entry.notice?1:2;
             for(const auto& page:layout.pages)lines+=page.lines.size();
         }
-        reader.history_scroll_limit=lines>13?lines-13:0;
+        reader.history_scroll_limit=lines>Reader::history_shown?lines-Reader::history_shown:0;
     }
     // The exact original routine owns STOP increments and completion status.
     // Only its local A trigger is substituted, then restored to avoid leakage:
@@ -597,10 +602,27 @@ void configure(const std::filesystem::path& directory) {
     };
     srw64_game_hooks.script_after=[](uint8_t* ram,uint32_t owner) {
         std::lock_guard lock(mutex);executing_owner=0;
+        if(const char* stop=script_skip::take_stop())cancel(stop);
         if(reading_owner==owner && (!word(ram,(owner&0x1FFFFFFF)+0x1C) || half(ram,(owner&0x1FFFFFFF)+0x24)==0x80))
             cancel("script_ended");
     };
     srw64_game_hooks.choice=[](uint8_t*) {std::lock_guard lock(mutex);cancel("choice");};
+    // A page the short skip read without showing goes to the history in every language:
+    // the name is the record the original's name panel shows, 0x111E + the header's
+    // speaker digits (8008F648), which also covers the protagonists' fields.
+    script_skip::state().skipped=[](const uint8_t* ram,uint16_t text_id,uint16_t speaker) {
+        std::lock_guard lock(mutex);
+        Entry entry;entry.event=++event_serial;entry.text_id=text_id;
+        for(const auto& [locale,catalog]:localization::registered()) {
+            entry.localized[locale]=story_record(ram,*catalog,text_id,body_base).text;
+            entry.localized_speaker[locale]=utf16(record_text(ram,*catalog,uint16_t(0x111E + speaker)));
+        }
+        const auto& locale=localization::catalog().locale;
+        entry.text=entry.localized[locale];entry.speaker=entry.localized_speaker[locale];
+        if(entry.text.empty())return;
+        record("skipped",{{"text_id",text_id},{"speaker",speaker},{"name",utf8(entry.speaker)}});
+        reader.skipped(std::move(entry));
+    };
     srw64_game_hooks.refund=[](uint8_t* ram,uint16_t unit,uint32_t amount) {refund_notice(ram,unit,amount);};
     record("configured",{{"mode",observe?"observe":"replace"},{"font_size",reader.font_size},
         {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision}});
@@ -623,7 +645,14 @@ uint16_t input(uint16_t buttons) {
     static bool l2_before=false;
     if((pad&srw64::input::pad_l2) && !l2_before)auto_toggle=true;
     l2_before=pad&srw64::input::pad_l2;
-    raw_buttons=uint16_t(buttons|((pad&srw64::input::pad_r2)?(Reader::R|Reader::A):0));
+    // The stick counts as the D-pad, as the original folds it in (original-controls.md), so
+    // the auto speed and the history scroll take it too.
+    uint16_t stick=0;
+    if(pad&(1u<<16))stick|=Reader::UP;
+    if(pad&(1u<<17))stick|=Reader::DOWN;
+    if(pad&(1u<<18))stick|=Reader::LEFT;
+    if(pad&(1u<<19))stick|=Reader::RIGHT;
+    raw_buttons=uint16_t(buttons|stick|((pad&srw64::input::pad_r2)?(Reader::R|Reader::A):0));
     consumed_hold &= buttons;
     if(owns_input)consumed_hold |= buttons & (Reader::A|Reader::B|Reader::START|Reader::UP|Reader::DOWN|Reader::L|Reader::R|Reader::BIGGER|Reader::SMALLER);
     return buttons & ~consumed_hold;

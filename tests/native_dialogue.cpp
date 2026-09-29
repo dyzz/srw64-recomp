@@ -181,6 +181,28 @@ int main() {
         skip.update(Reader::R|Reader::A,14);skip.update(0,16);
         assert(skip.skipping && !skip.fast);
     }
+    // The short skip's pages (docs/native/script-skip.md): the page being read completes,
+    // the rest follow read in full, and speaker colours alternate as for read pages.
+    {
+        Reader skipped;
+        skipped.begin(1,200,u"甲",typeset(u"第一句。",13),0);
+        Entry same;same.text_id=200;same.speaker=u"甲";same.text=u"第一句全文。";same.localized={{"zh-Hans",u"第一句全文。"}};
+        skipped.skipped(same);
+        assert(skipped.history.size()==1 && skipped.history.back().complete && skipped.history.back().text==u"第一句全文。");
+        Entry next;next.event=7;next.text_id=201;next.speaker=u"乙";next.text=u"第二句。";
+        skipped.skipped(next);
+        assert(skipped.history.size()==2 && skipped.history.back().complete && skipped.history.back().warm_name);
+        Entry again=next;again.text_id=202;skipped.skipped(again);
+        assert(skipped.history.size()==3 && skipped.history.back().warm_name);  // 乙 again keeps its colour
+        // History: up / down a line, left / right a panel, within the scroll limit.
+        skipped.update(Reader::L,10);assert(skipped.history_open);
+        skipped.history_scroll_limit=30;
+        skipped.update(Reader::LEFT,12);assert(skipped.history_offset==Reader::history_shown-1);
+        skipped.update(0,14);skipped.update(Reader::LEFT,16);skipped.update(0,18);skipped.update(Reader::LEFT,20);
+        assert(skipped.history_offset==30);
+        skipped.update(0,22);skipped.update(Reader::RIGHT,24);assert(skipped.history_offset==30-(Reader::history_shown-1));
+        skipped.update(0,26);skipped.update(Reader::UP,28);assert(skipped.history_offset==30-(Reader::history_shown-1)+1);
+    }
     // A host notice (an upgrade refund) goes before the fragment being read, keeps
     // every language, and does not take part in the speaker colours.
     Reader noted;

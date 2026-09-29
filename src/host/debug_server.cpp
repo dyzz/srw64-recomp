@@ -43,6 +43,8 @@
 #include <thread>
 #include <unistd.h>
 
+extern uint8_t* srw64_rdram;  // host.cpp
+
 namespace srw64::debug {
 namespace {
 using json=nlohmann::json;
@@ -305,9 +307,17 @@ json dispatch(const std::string& method,const json& params) {
     });
     if(method=="wait_vi")return wait_vi(params);
     if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
+    if(method=="memory.read") {
+        // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
+        const uint32_t address=params.at("address").get<uint32_t>(),size=params.value("size",4u);
+        if(!srw64_rdram || size>0x10000 || !guest::valid(address,size))throw RpcError(InvalidParams,"address or size out of RDRAM");
+        std::string hex;char byte[3];
+        for(uint32_t i=0;i<size;++i){std::snprintf(byte,sizeof byte,"%02X",guest::read(srw64_rdram,address+i,1));hex+=byte;}
+        return {{"address",address},{"size",size},{"hex",hex},{"vi",srw64_current_vi()}};
+    }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","mini_stage.load","quit","methods"};
+                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
 

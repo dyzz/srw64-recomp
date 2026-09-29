@@ -14,6 +14,7 @@
 #include "upgrade_refund.hpp"
 #include "parts_carry.hpp"
 #include "link_battler.hpp"
+#include "script_skip.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -265,6 +266,77 @@ void resident_func_8008F5C8(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_reset(rdram, ctx);
     if (srw64_game_hooks.reset) srw64_game_hooks.reset(rdram);
 }
+// The short skip (script_skip.hpp). Before the frame's first poll of a skipped script: its dialogue is not shown from here
+// on (8008FED4 below), and the page being read when the skip began closes as 3D48 closes
+// it (800A34D8: windows 0x22 and 0x1F, both dialogue panels).
+static void skip_begin(uint8_t* rdram, recomp_context* ctx, uint32_t owner) {
+    auto& s = srw64::script_skip::state();
+    if (!srw64::script_skip::skipping(owner)) return;
+    if (s.fresh.exchange(false)) {
+        auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x200);
+        resident_func_800A34D8(rdram, &c);
+    }
+    s.polling = true;
+}
+// After it: while the script `owner` is skipped, polls it again in this frame each time a
+// command completes or can be completed at once, the way its caller 8009E180 would next
+// frame (the returned status goes to engine+0x97C). The loop ends at a command that runs
+// its own time, at the script's end, after a stop point, or when the reader ends the skip.
+static void skip_polls(uint8_t* rdram, recomp_context* ctx, uint32_t engine, uint32_t owner) {
+    namespace skip = srw64::script_skip;
+    using srw64::guest::read;
+    auto& s = skip::state();
+    if (!skip::skipping(owner)) { s.polling = false; return; }
+    srw64::guest::write16(rdram, engine + 0x97C, uint16_t(ctx->r2));
+    unsigned steps = 0;  // polls of the current command that advance it one call at a time
+    for (unsigned i = 0; i < 4000 && skip::skipping(owner); ++i) {
+        const uint32_t status = read(rdram, engine + 0x97C, 2), command = read(rdram, owner + 0x24, 2);
+        if (status == 0x80 || command == 0x80 || !read(rdram, owner + 0x1C, 4)) break;
+        // A handler stays at +0x30 until the next fetch, so this is the command just run.
+        if (const char* stop = skip::stop_point(read(rdram, owner + 0x30, 4))) { s.stop = stop; break; }
+        const auto how = command ? skip::finish(rdram, owner) : skip::Finish::once;
+        if (how == skip::Finish::no) {
+            // A command that runs its own time: logged once where it starts, so the
+            // commands worth finishing at once can be counted.
+            static uint32_t logged = 0;
+            const uint32_t at = read(rdram, owner + 0x1C, 4);
+            if (at != logged) {
+                logged = at;
+                fprintf(stderr, "SRW64_SCRIPT_SKIP wait handler=%08X pc=%08X vi=%llu\n", read(rdram, owner + 0x30, 4), at,
+                        (unsigned long long)srw64_current_vi());
+            }
+            break;
+        }
+        if ((how == skip::Finish::steps || how == skip::Finish::motion) && ++steps > 600) {
+            static uint32_t spun = 0;
+            const uint32_t at = read(rdram, owner + 0x1C, 4);
+            if (at != spun) {
+                spun = at;
+                fprintf(stderr, "SRW64_SCRIPT_SKIP steps handler=%08X pc=%08X vi=%llu\n", read(rdram, owner + 0x30, 4), at,
+                        (unsigned long long)srw64_current_vi());
+            }
+            break;
+        }
+        const uint32_t pc = read(rdram, owner + 0x1C, 4), h = read(rdram, owner + 0x30, 4);
+        if (how == skip::Finish::motion) {
+            auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x200);
+            resident_func_80081BFC(rdram, &c);
+        }
+        ctx->r4 = int32_t(engine); ctx->r5 = int32_t(owner);
+        srw64_original_script_step(rdram, ctx);
+        srw64::guest::write16(rdram, engine + 0x97C, uint16_t(ctx->r2));
+        const bool moved = read(rdram, owner + 0x1C, 4) != pc || read(rdram, owner + 0x24, 2) != command || read(rdram, owner + 0x30, 4) != h;
+        if (moved) {
+            steps = 0;
+            if (std::getenv("SRW64_SCRIPT_SKIP_TRACE"))
+                fprintf(stderr, "SRW64_SCRIPT_SKIP run handler=%08X pc=%08X state=%u vi=%llu\n", read(rdram, owner + 0x30, 4),
+                        read(rdram, owner + 0x1C, 4), read(rdram, owner + 0x24, 2), (unsigned long long)srw64_current_vi());
+        }
+        else if (how == skip::Finish::once) break;
+    }
+    s.polling = false;
+    ctx->r2 = int32_t(int16_t(read(rdram, engine + 0x97C, 2)));
+}
 void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t owner = ctx->r5;
     const uint32_t engine = ctx->r4;
@@ -279,6 +351,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     move_probe.before(rdram,engine,owner);
     srw64::script_trace::Snapshot before;
     if(tracing)before=srw64::script_trace::snapshot(rdram,engine,owner);
+    skip_begin(rdram, ctx, owner);
     srw64_original_script_step(rdram, ctx);
     if(tracing)srw64::script_trace::record(engine,owner,before,srw64::script_trace::snapshot(rdram,engine,owner));
     {
@@ -293,7 +366,31 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     srw64::rule_probe::poll(rdram,ctx,owner);
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
+    skip_polls(rdram,ctx,engine,owner);
     if (srw64_game_hooks.script_after) srw64_game_hooks.script_after(rdram, owner);
+}
+void resident_func_8008FED4(uint8_t* rdram, recomp_context* ctx) {
+    // A dialogue command's page (panel a0, text a1; 3D3E-3D43 via 8009F4B4). While the
+    // short skip runs its script it is read at once and never shown: 3 is the answer the
+    // original gives a finished page.
+    if (auto& skip = srw64::script_skip::state(); skip.polling) {
+        const uint16_t text = uint16_t(ctx->r5);
+        if (skip.skipped) {
+            // The speaker as the record's header gives it (8008CE54 reads the ROM record).
+            auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x200); c.r4 = text;
+            resident_func_8008CE54(rdram, &c);
+            skip.skipped(rdram, text, uint16_t(c.r2));
+        }
+        ctx->r2 = 3;
+        return;
+    }
+    srw64_original_dialogue_show(rdram, ctx);
+}
+void resident_func_8007E8A8(uint8_t* rdram, recomp_context* ctx) {
+    // A sound effect (a0; -1 stops them). The short skip is silent, as the commands it
+    // runs in one frame would otherwise sound together; the music still changes.
+    if (srw64::script_skip::active() && int32_t(ctx->r4) != -1) return;
+    srw64_original_play_sound(rdram, ctx);
 }
 void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
     // Scene registration: a mini stage image replaces the pointer table and buffers first.

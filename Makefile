@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test
+recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -135,6 +135,11 @@ recomp-data:
 	$(PYTHON) tools/content/extract_original.py --rom $(ROM)
 
 .PHONY: recomp-script-inject-test
+recomp-script-skip-test:
+	mkdir -p build/recomp/script-skip
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_script_skip.cpp -o build/recomp/script-skip/test
+	build/recomp/script-skip/test
+
 recomp-script-inject-test:
 	mkdir -p build/recomp/script-inject
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib tests/native_script_inject.cpp -o build/recomp/script-inject/test
