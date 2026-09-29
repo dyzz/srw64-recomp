@@ -104,6 +104,12 @@ def main() -> int:
     work.mkdir(parents=True)
     for name in CLONED:
         steps.run(f"clone-{name}", ["/bin/cp", "-cR", str(ROOT / "build/recomp" / name), str(work / name)], ROOT)
+    # RT64 as pinned, before this commit's prepare_rt64.py applies its own patches: edits
+    # another session has in the main checkout's RT64 must neither reach the release nor
+    # stop it (prepare_rt64 refuses changes it does not know).
+    rt64 = work / "upstream/RT64"
+    steps.run("pristine-rt64", ["git", "checkout", "--", "."], rt64)
+    steps.run("pristine-rt64-submodules", ["git", "submodule", "foreach", "--recursive", "git checkout -- ."], rt64)
     # This checkout's modules, never the main worktree's (the editable install points there).
     env = {**os.environ, "PYTHONPATH": f"{source / 'src'}:{source / 'tools'}"}
     for key in [k for k in env if k.startswith("SRW64_")]:
