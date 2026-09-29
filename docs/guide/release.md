@@ -28,6 +28,23 @@
 
 整个过程在本机约 3 分钟：从零编译 942 步不到一分钟，测试约 40 秒。
 
+### 内部测试版（带 ROM 与 HD，不外传）
+
+2026-09-29 用户要一个装好 ROM 的内部测试版。先按上面加 `--keep-source` 构建，再把编好的程序、`pack/hd` 和 ROM 一起打进应用：
+
+```sh
+cd build/release/<版本>-<提交>/src
+PYTHONPATH=src:tools ../../../../.venv/bin/python tools/release/package_macos.py \
+  --binary build/recomp/macos14-app-build/srw64-gfx-host --output "../app-internal/SRW64 Recompiled.app" \
+  --version <版本> --minimum-macos 14.0 --search-dir ../../../macos-deps/14.0-arm64/prefix/lib \
+  --runtime-library ../../../macos-deps/14.0-arm64/prefix/lib/libSDL3.dylib \
+  --fonts build/fonts --dialogue content/dialogue --hd ../pack/hd --rom rom.z64
+```
+
+- `--rom` 先按 `config/recomp/rom-variants.json` 核对 SHA-256，只收日版 Rev 0；ROM 放进 `Contents/Resources/rom.z64`，`Distribution.txt` 第一行写明内部测试版、含 ROM、不得外传。
+- 启动时（`src/host/host.cpp`）打包的 ROM 顶替第一次弹出的 ROM 选择框：这台 Mac 记得别的 ROM 时照旧用记住的；按住 Option 或 `--choose-rom` 仍然弹选择框。
+- 这个应用不进 `release.json`，也不压缩成发布文件；`build_release.py` 本身从不带 ROM。
+
 ## 发布
 
 确认 `release-notes.md` 与两个文件后，执行 `release.json` 里 `publish` 记下的 `gh release create` 命令。

@@ -99,6 +99,23 @@ class MacOSPackageTests(unittest.TestCase):
         self.output = self.root / "Plain.app"
         self.assertNotIn("do not distribute", (self.stage() / "Contents/Resources/Distribution.txt").read_text())
 
+    def test_internal_build_bundles_only_the_right_rom(self):
+        # A synthetic stand-in: the check compares against rom-variants.json's hash.
+        rom = self.root / "rom.z64"
+        rom.write_bytes(b"synthetic fixture only")
+        with self.assertRaisesRegex(ValueError, "not Super Robot Taisen 64"):
+            self.stage(rom=rom)
+        self.assertFalse(self.output.exists())
+        with patch.object(PACKAGE, "ROM_SHA256", PACKAGE.hashlib.sha256(rom.read_bytes()).hexdigest()):
+            result = self.stage(rom=rom)
+        self.assertEqual((result / "Contents/Resources/rom.z64").read_bytes(), rom.read_bytes())
+        self.assertIn("INTERNAL TEST BUILD", (result / "Contents/Resources/Distribution.txt").read_text())
+        # A player's build has neither.
+        self.output = self.root / "Plain.app"
+        plain = self.stage()
+        self.assertFalse((plain / "Contents/Resources/rom.z64").exists())
+        self.assertNotIn("INTERNAL", (plain / "Contents/Resources/Distribution.txt").read_text())
+
     def test_hd_folder_must_be_prepared(self):
         (self.root / "loose").mkdir()
         with self.assertRaisesRegex(ValueError, "prepared HD folder"):
