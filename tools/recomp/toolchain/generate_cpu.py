@@ -75,6 +75,10 @@ NATIVE_HOOKS = {
     "resident_func_8009761C": "srw64_original_scene_quad_draw",
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",
     "resident_func_8009EFDC": "srw64_original_script_step",
+    # The short skip (script_skip.hpp): a skipped dialogue page reads as finished, and
+    # sound effects are silent while it runs.
+    "resident_func_8008FED4": "srw64_original_dialogue_show",
+    "resident_func_8007E8A8": "srw64_original_play_sound",
     "resident_func_8009FA94": "srw64_original_dialogue_choice",
     "resident_func_8009DE7C": "srw64_original_script_register",
     "load_000AB160_func_80209D6C": "srw64_original_stage_map_select",

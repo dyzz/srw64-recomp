@@ -156,7 +156,7 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
     if(frame.history_open) {
         paint.panel(16,18,288,202);
         paint.label(utf16(localization::catalog().ui("history_title")),23,23,12,210,.41,.75,1,"history_title");
-        if(!frame.history_controls_text.empty())paint.label(utf16(frame.history_controls_text),151,27,6.2,147,.75,.8,.86,"history_controls");
+        if(!frame.history_controls_text.empty())paint.label_fit(utf16(frame.history_controls_text),151,27,6.2,147,.75,.8,.86,"history_controls");
         struct HistoryLine {Layout layout;Line range;bool speaker;bool warm_name{};bool notice{};};
         std::vector<HistoryLine> lines;
         for(const auto& entry:frame.history) {
@@ -168,7 +168,7 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
                 lines.push_back({layout,line,false,false,entry.notice});
             lines.push_back({{}, {},false});
         }
-        constexpr size_t shown=13;
+        constexpr size_t shown=Reader::history_shown;
         const auto end=lines.size()-std::min(frame.history_offset,lines.size());
         const auto begin=end>shown?end-shown:0;
         double y=45;

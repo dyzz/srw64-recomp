@@ -87,7 +87,7 @@ def until_reading(timeout=240):
 
 def split(log):
     """The turns while the chord was held and after it let go, and the release row."""
-    release = next((i for i, r in enumerate(log) if r['kind'] == 'fast' and not r['held']), None)
+    release = next((i for i, r in enumerate(log) if r['kind'] == 'fast' and not r['fast']), None)
     turns = [r for r in log if r['kind'] == 'turn']
     if release is None:
         return turns, [], None
@@ -96,8 +96,8 @@ def split(log):
 
 
 def held_vis(log):
-    press = next((r for r in log if r['kind'] == 'fast' and r['held']), None)
-    release = next((r for r in log if r['kind'] == 'fast' and not r['held']), None)
+    press = next((r for r in log if r['kind'] == 'fast' and r['fast']), None)
+    release = next((r for r in log if r['kind'] == 'fast' and not r['fast']), None)
     return release['vi'] - press['vi'] if press and release else None
 
 
@@ -202,7 +202,7 @@ while time.monotonic() < end and not any(r['kind'] == 'boundary' for r in rows(s
     time.sleep(.5)
 log = rows(start)
 began = next((i for i, r in enumerate(log) if r['kind'] == 'skip_start'), None)
-released = next((r for r in log[(began or 0):] if r['kind'] == 'fast' and not r['held']), None)
+released = next((r for r in log[(began or 0):] if r['kind'] == 'fast' and not r['fast']), None)
 ended = next((r for r in log[(began or 0):] if r['kind'] == 'boundary'), None)
 check('pad-r2-menu-skip-outlasts-r2', began is not None and released and released['skip'] and ended,
       {'skip_start': log[began] if began is not None else None, 'release': released, 'boundary': ended})

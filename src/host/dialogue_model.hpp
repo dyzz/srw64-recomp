@@ -86,7 +86,8 @@ struct Reader {
     static constexpr size_t history_limit=256;
     static constexpr unsigned max_speed=4;
     static constexpr uint16_t A=0x8000, B=0x4000, START=0x1000,
-        UP=0x800, DOWN=0x400, L=0x20, R=0x10, BIGGER=8, SMALLER=4;
+        UP=0x800, DOWN=0x400, LEFT=0x200, RIGHT=0x100, L=0x20, R=0x10, BIGGER=8, SMALLER=4;
+    static constexpr size_t history_shown=13;  // lines the history panel shows (dialogue_scene.cpp)
 
     void begin(uint64_t id, uint16_t text_id, std::u16string speaker, Layout value,
                uint64_t now, std::vector<size_t> record_stops={}) {
@@ -101,6 +102,20 @@ struct Reader {
         const bool warm_name=previous!=history.rend() &&
             (previous->warm_name != (previous->speaker!=speaker));
         history.push_back({id,text_id,std::move(speaker),{},warm_name});
+        if(history.size()>history_limit) history.pop_front();
+    }
+    // A record the short skip ran without showing it (docs/native/script-skip.md), read in
+    // full. The page being read when the skip began is that record: it is completed.
+    void skipped(Entry entry) {
+        if(!history.empty() && !history.back().notice && history.back().text_id==entry.text_id) {
+            auto& last=history.back();
+            last.text=entry.text;last.localized=std::move(entry.localized);last.complete=true;
+            return;
+        }
+        const auto previous=std::find_if(history.rbegin(),history.rend(),[](const Entry& e){return !e.notice;});
+        entry.warm_name=previous!=history.rend() && (previous->warm_name != (previous->speaker!=entry.speaker));
+        entry.complete=true;
+        history.push_back(std::move(entry));
         if(history.size()>history_limit) history.pop_front();
     }
     // A host notice in every language. It goes before the fragment being read, so
@@ -246,11 +261,13 @@ struct Reader {
         }
         if(history_open) {
             if(pressed & (A|B|START))history_open=false;
-            const bool repeat=(pressed & (UP|DOWN)) || now-last_repeat>=10;
+            // Up / down a line, left / right a panel (held: every 10 VIs after the press).
+            const bool repeat=(pressed & (UP|DOWN|LEFT|RIGHT)) || now-last_repeat>=10;
             if(repeat) {
-                if(buttons&UP)history_offset=std::min(history_offset+1,history_scroll_limit);
-                if(buttons&DOWN)history_offset=history_offset?history_offset-1:0;
-                if(buttons&(UP|DOWN))last_repeat=now;
+                const size_t step=(buttons&(LEFT|RIGHT))?history_shown-1:1;
+                if(buttons&(UP|LEFT))history_offset=std::min(history_offset+step,history_scroll_limit);
+                if(buttons&(DOWN|RIGHT))history_offset=history_offset>step?history_offset-step:0;
+                if(buttons&(UP|DOWN|LEFT|RIGHT))last_repeat=now;
             }
             page_started+=elapsed;
             return false;

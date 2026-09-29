@@ -59,6 +59,7 @@
 | `settings` | `rules`（预设名或 ID 列表）、`locale`、`images` | 直接改规则、语言、画面 |
 | `window` | `width`/`height`、`front`、`close` | 调整游戏窗口尺寸（640–2560 × 480–1600 点）、带到前台（只在要验证真实焦点或真实鼠标事件时需要）、按下关闭按钮（`SDL_WINDOWEVENT_CLOSE`）；回应窗口状态 |
 | `wait_vi` | `vi`、`timeout_ms` | 等到指定 VI |
+| `memory.read` | `address`、`size`（≤ 0x10000） | 读客体内存，返回十六进制；不暂停游戏，是调试视图而非快照（[短跳过](../native/script-skip.md)的状态对照用它） |
 | `quit` | — | 正常退出，报告记为控制退出 |
 | `methods` | — | 列出宿主支持的方法 |
 
@@ -86,7 +87,7 @@
 
 ## MCP 工具
 
-`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`、`unit_name`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
+`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_memory`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`、`unit_name`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。
 
 ## 与现有控制文件的关系
 
