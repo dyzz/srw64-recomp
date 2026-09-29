@@ -10,6 +10,8 @@ An ad-hoc signature permits local testing; it is NOT Developer ID/notarization.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 from pathlib import Path
 import plistlib
 import re
@@ -21,6 +23,8 @@ import tempfile
 MACHO_MAGIC = {bytes.fromhex(value) for value in (
     "feedface", "cefaedfe", "feedfacf", "cffaedfe", "cafebabe", "bebafeca", "cafebabf", "bfbafeca")}
 EXECUTABLE = "srw64-gfx-host"
+# The one ROM the game runs (config/recomp/rom-variants.json), checked before --rom bundles it.
+ROM_SHA256 = json.loads((Path(__file__).resolve().parents[2] / "config/recomp/rom-variants.json").read_text())["variants"]["jp"]["sha256"]
 
 
 def run(command: list[str]) -> str:
@@ -105,7 +109,8 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
-                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None) -> Path:
+                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None,
+                 rom: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -158,8 +163,16 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.0", minimum:
             "NSPrincipalClass": "NSApplication",
         }
         (staged / "Contents/Info.plist").write_bytes(plistlib.dumps(info))
+        if rom is not None:
+            # An internal test build only (docs/guide/release.md): the app starts on this ROM
+            # without asking, unless the Mac remembers another. Never for distribution.
+            source = rom.resolve(strict=True)
+            if hashlib.sha256(source.read_bytes()).hexdigest() != ROM_SHA256:
+                raise ValueError(f"{rom} is not Super Robot Taisen 64 (Japan, Rev 0)")
+            shutil.copyfile(source, resources / "rom.z64")
         (resources / "Distribution.txt").write_text(
-            "SRW64 Recompiled experimental application. ROM not included.\n"
+            ("SRW64 Recompiled INTERNAL TEST BUILD. It contains the game ROM: do not share it.\n"
+             if rom is not None else "SRW64 Recompiled experimental application. ROM not included.\n") +
             "Imported game content and saves remain in your private user directory.\n"
             "Hold Option when launching to choose another ROM, or use --choose-rom.\n"
             "Public distribution requires dependency-license review and Developer ID notarization.\n"
@@ -230,6 +243,7 @@ def main() -> int:
     parser.add_argument("--fonts", type=Path, default=Path(__file__).resolve().parents[2] / "build/fonts",
                         help="prepared fonts (tools/content/prepare_fonts.py) copied to Contents/Resources/fonts")
     parser.add_argument("--hd", type=Path, help="HD folder (tools/release/prepare_hd_bundle.py): the app starts in HD")
+    parser.add_argument("--rom", type=Path, help="internal test builds only: bundle this ROM, so the app starts without asking for one")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
                         help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
     args = parser.parse_args()
@@ -237,7 +251,7 @@ def main() -> int:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
-                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd)
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd, rom=args.rom)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")

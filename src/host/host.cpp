@@ -477,7 +477,16 @@ int main(int argc, char** argv) {
     // Finder supplies no arguments. Explicit --play and the diagnostic ABI
     // below remain non-GUI and deterministic for the existing developer tools.
     if (argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom")) {
-        const auto ui = srw64::app::macos_desktop_ui();
+        auto ui = srw64::app::macos_desktop_ui();
+        const bool choose_another = argc == 2 || srw64::app::macos_choose_another_rom();
+        // An internal test build carries the ROM (package_macos.py --rom): it answers the
+        // first time the ROM picker would open, so a Mac that remembers another ROM keeps
+        // it. Option or --choose-rom still asks.
+        if (const auto bundled = srw64::app::bundled_resource("rom.z64"); !bundled.empty() && !choose_another)
+            ui.choose_rom = [bundled, picker = ui.choose_rom, used = false]() mutable -> std::optional<std::filesystem::path> {
+                if (!used) { used = true; return bundled; }
+                return picker();
+            };
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
@@ -488,7 +497,7 @@ int main(int argc, char** argv) {
                     ready(); // The standalone Session owns the lock until run_host returns.
                     return run_host(count, values);
                 });
-            }, argc == 2 || srw64::app::macos_choose_another_rom());
+            }, choose_another);
     }
 #endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {
