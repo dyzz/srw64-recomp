@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_portrait.hpp"
+#include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
 #include "hle/rt64_state.h"
@@ -257,6 +258,10 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     record.silhouette = found->second.second;
     record.rect[0] = x0 / 4.0f; record.rect[1] = y0 / 4.0f;
     record.rect[2] = x1 / 4.0f; record.rect[3] = y1 / 4.0f;
+    // In the battle the portrait moves to its corner with the tiles it replaces (battle_hud.hpp).
+    float dx, dy;
+    battle_hud::portrait_offset(record.rect[0], dx, dy);
+    record.rect[0] += dx; record.rect[2] += dx; record.rect[1] += dy; record.rect[3] += dy;
     {
         std::lock_guard lock(ring_mutex);
         record.id = next_id;

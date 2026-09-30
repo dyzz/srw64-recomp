@@ -120,10 +120,11 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
         // triangle marker removed).
         const bool focused=&box==focus;
         const double name=focused?1:.8;
-        paint.label(box.speaker,box.x,box.y+name_top,name_size,body_width,
+        const double x=box.x+box.shift_x,y=box.y+box.shift_y;
+        paint.label(box.speaker,x,y+name_top,name_size,box.width,
             name*105/255,name*191/255,name,"speaker");
         const double grey=box.active?1:123./255;
-        paint.text(box.layout,box.x,box.y+body_top,body_width,body_height,page.lines,box.revealed,grey,grey,grey,"body");
+        paint.text(box.layout,x,y+body_top,box.width,body_height,page.lines,box.revealed,grey,grey,grey,"body");
         // No page counter: a long translation simply continues on the next A,
         // like the original's own pages.
         if(focused && frame.advance.visible && box.event==frame.reading_event)paint.progress(box,frame.advance);
@@ -207,9 +208,9 @@ text::PageStyle body_style(const std::string& locale,std::vector<size_t> stops,s
     if(locale=="ja")style.sentence_ends=std::move(stops);
     return style;
 }
-Layout typeset_body(const std::u16string& value,double size,std::vector<size_t> stops,std::vector<size_t> forced) {
+Layout typeset_body(const std::u16string& value,double size,std::vector<size_t> stops,std::vector<size_t> forced,double width) {
     const auto& locale=localization::catalog().locale;
-    return reader_layout(text::game_fonts(locale)->layout(value,size,body_width,locale,
+    return reader_layout(text::game_fonts(locale)->layout(value,size,width,locale,
         body_style(locale,std::move(stops),std::move(forced))),body_height);
 }
 }

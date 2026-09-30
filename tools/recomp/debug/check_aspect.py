@@ -13,7 +13,10 @@ the same screenshots under one name each, to tell a switch's effects from the as
 --stage NAME (with --fixed): another mini stage, entered and screenshot every 3 s for
 45 s from the click (stage-NN.png), e.g. worldmap-models for the world map's models, act
 for a chapter title card; --stage intro starts a new game for the zooming prologue text
-instead. --every S --count N change the screenshots' spacing and number."""
+instead. --every S --count N change the screenshots' spacing and number.
+
+--battle FILE: the battle run on another mini stage laid out like battle-ui (other units,
+another map), for the battle animation over other backgrounds."""
 import json
 import os
 from pathlib import Path
@@ -28,10 +31,11 @@ window = [int(v) for v in sys.argv[sys.argv.index("--window") + 1:][:2]] if "--w
 stage = sys.argv[sys.argv.index("--stage") + 1] if "--stage" in sys.argv else "battle-ui"
 every = float(sys.argv[sys.argv.index("--every") + 1]) if "--every" in sys.argv else 3.0
 count = int(sys.argv[sys.argv.index("--count") + 1]) if "--count" in sys.argv else 15
+battle = sys.argv[sys.argv.index("--battle") + 1] if "--battle" in sys.argv else None
 binary = os.environ.get("SRW64_HOST_BINARY") or str(ROOT / "build/recomp/gfx-build/srw64-gfx-host")
 s = Session.launch(language="zh-Hans", images="hd", diagnostics="light",
                    binary=binary if Path(binary).exists() else None,
-                   mini_stage=str(ROOT / f"config/recomp/mini-stages/{'battle-ui' if stage == 'intro' else stage}.json"),
+                   mini_stage=battle or str(ROOT / f"config/recomp/mini-stages/{'battle-ui' if stage == 'intro' else stage}.json"),
                    env={"SRW64_ASPECT": fixed} if fixed else None)
 print("RUN", s.run, flush=True)
 checks = []

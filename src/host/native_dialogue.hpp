@@ -44,7 +44,7 @@ double body_size(unsigned setting);
 // A story record or battle quote in the text area: as many lines as fit at the
 // minimum spacing, spread over the height, page ends ranked. stops are the
 // original's page breaks, which end a sentence; forced offsets start a page.
-Layout typeset_body(const std::u16string&, double size, std::vector<size_t> stops={}, std::vector<size_t> forced={});
+Layout typeset_body(const std::u16string&, double size, std::vector<size_t> stops={}, std::vector<size_t> forced={}, double width=body_width);
 // The page rules typeset_body uses for a language.
 text::PageStyle body_style(const std::string& locale, std::vector<size_t> stops={}, std::vector<size_t> forced={});
 
@@ -55,6 +55,9 @@ struct Box {
     unsigned segment{}, page{};
     uint64_t event{};
     double x{}, y{};
+    // Where it is drawn, if not at the original's x, y (which the glyphs are matched by),
+    // and the text area's width: a battle quote's box moves and widens (battle_hud.hpp).
+    double shift_x{}, shift_y{}, width=body_width;
     size_t revealed{};
     std::u16string speaker;
     Layout layout;

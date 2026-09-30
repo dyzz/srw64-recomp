@@ -1,4 +1,5 @@
 #include "native_dialogue.hpp"
+#include "battle_hud.hpp"
 #include "native_name_entry.hpp"
 #include "diagnostics.hpp"
 #include "game_hooks.hpp"
@@ -155,9 +156,9 @@ std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::C
 }
 // A battle quote cannot be paged: the original advances it on its own clock.
 // Shrink the text until it fits the box; the log names any that still overflow.
-Layout fitted(const std::u16string& body,double size) {
-    for(double s=size;s>9;s-=1)if(auto layout=typeset_body(body,s);layout.pages.size()<=1)return layout;
-    return typeset_body(body,9);
+Layout fitted(const std::u16string& body,double size,double width) {
+    for(double s=size;s>9;s-=1)if(auto layout=typeset_body(body,s,{},{},width);layout.pages.size()<=1)return layout;
+    return typeset_body(body,9,{},{},width);
 }
 std::string segment(const std::string& text,unsigned number) {
     size_t start=0;
@@ -208,6 +209,8 @@ void refresh(uint8_t* ram,bool create_events) {
         box.visible=true;box.active=status==1;box.text_id=half(ram,p);
         box.segment=byte(ram,p+0x215);box.palette=byte(ram,p+3);
         box.x=x+4;box.y=y+4;
+        // A battle quote's box follows the portrait to the picture's edge, wider (battle_hud.hpp).
+        if(display_only){const auto moved=battle_hud::quote();box.shift_x=moved.dx;box.shift_y=moved.dy;box.width+=moved.extra;}
         box.speaker=utf16(speaker_name(ram,np,localization::catalog()));
         if(box.speaker.empty()) {current[slot]={};continue;}
         // A battle quote follows the original page by page; a story record is read whole.
@@ -224,9 +227,9 @@ void refresh(uint8_t* ram,bool create_events) {
         }
         box.event=events[slot];
         if(current[slot].event==box.event && current[slot].layout.text==body &&
-           reader.font_size==reader_font_size)box.layout=current[slot].layout;
+           reader.font_size==reader_font_size && current[slot].width==box.width)box.layout=current[slot].layout;
         else {
-            box.layout=display_only?fitted(body,body_size(reader.font_size)):typeset_body(body,body_size(reader.font_size),source.stops);
+            box.layout=display_only?fitted(body,body_size(reader.font_size),box.width):typeset_body(body,body_size(reader.font_size),source.stops);
             if(display_only && box.layout.pages.size()>1)record("battle_overflow",{{"text_id",box.text_id},{"segment",box.segment},{"pages",box.layout.pages.size()}});
         }
         box.page=0;box.revealed=body.size();

@@ -325,9 +325,19 @@ json dispatch(const std::string& method,const json& params) {
         for(uint32_t i=0;i<size;++i){std::snprintf(byte,sizeof byte,"%02X",guest::read(srw64_rdram,address+i,1));hex+=byte;}
         return {{"address",address},{"size",size},{"hex",hex},{"vi",srw64_current_vi()}};
     }
+    if(method=="memory.write") {
+        // Bytes into guest RAM, between the game's own writes (for probes such as forcing a
+        // battle background; a debug session only, never the player's game).
+        const uint32_t address=params.at("address").get<uint32_t>();
+        const std::string hex=params.at("hex").get<std::string>();
+        if(hex.size()%2 || hex.size()>2*0x1000)throw RpcError(InvalidParams,"hex must be whole bytes, at most 4096");
+        if(!srw64_rdram || !guest::valid(address,uint32_t(hex.size()/2)))throw RpcError(InvalidParams,"address or size out of RDRAM");
+        for(size_t i=0;i<hex.size();i+=2)guest::write8(srw64_rdram,address+uint32_t(i/2),uint8_t(std::stoul(hex.substr(i,2),nullptr,16)));
+        return {{"address",address},{"size",hex.size()/2},{"vi",srw64_current_vi()}};
+    }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","quit","methods"};
+                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
 
