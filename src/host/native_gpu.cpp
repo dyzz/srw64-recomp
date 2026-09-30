@@ -25,6 +25,10 @@
 #include "HdTrailPS.hlsl.spirv.h"
 #include "HdPlateVS.hlsl.spirv.h"
 #include "HdPlatePS.hlsl.spirv.h"
+#include "HdBakedVS.hlsl.spirv.h"
+#include "HdBakedPS.hlsl.spirv.h"
+#include "HdWaterVS.hlsl.spirv.h"
+#include "HdWaterPS.hlsl.spirv.h"
 #include "HdSpriteVS.hlsl.spirv.h"
 #include "HdSpritePS.hlsl.spirv.h"
 #include "HdPortraitVS.hlsl.spirv.h"
@@ -44,6 +48,10 @@
 #include "HdTrailPS.hlsl.metal.h"
 #include "HdPlateVS.hlsl.metal.h"
 #include "HdPlatePS.hlsl.metal.h"
+#include "HdBakedVS.hlsl.metal.h"
+#include "HdBakedPS.hlsl.metal.h"
+#include "HdWaterVS.hlsl.metal.h"
+#include "HdWaterPS.hlsl.metal.h"
 #include "HdSpriteVS.hlsl.metal.h"
 #include "HdSpritePS.hlsl.metal.h"
 #include "HdPortraitVS.hlsl.metal.h"
@@ -63,6 +71,10 @@
 #include "HdTrailPS.hlsl.dxil.h"
 #include "HdPlateVS.hlsl.dxil.h"
 #include "HdPlatePS.hlsl.dxil.h"
+#include "HdBakedVS.hlsl.dxil.h"
+#include "HdBakedPS.hlsl.dxil.h"
+#include "HdWaterVS.hlsl.dxil.h"
+#include "HdWaterPS.hlsl.dxil.h"
 #include "HdSpriteVS.hlsl.dxil.h"
 #include "HdSpritePS.hlsl.dxil.h"
 #include "HdPortraitVS.hlsl.dxil.h"
@@ -77,7 +89,7 @@ template<size_t N> Bytes bytes(const char (&value)[N]) { return {reinterpret_cas
 struct Blobs { std::string_view name; Bytes vertex, pixel; RenderShaderFormat format; };
 
 // Every embedded program, for each shader format this platform builds.
-#define SRW64_NATIVE_PROGRAMS(X) X(HdMap) X(HdBackground) X(HdMarker) X(HdModel) X(HdRing) X(HdTrail) X(HdPlate) X(HdSprite) X(HdPortrait)
+#define SRW64_NATIVE_PROGRAMS(X) X(HdMap) X(HdBackground) X(HdMarker) X(HdModel) X(HdRing) X(HdTrail) X(HdPlate) X(HdSprite) X(HdPortrait) X(HdBaked) X(HdWater)
 std::vector<Blobs> embedded() {
     std::vector<Blobs> all;
 #define SRW64_SPIRV(name) all.push_back({#name, bytes(name##VSBlobSPIRV), bytes(name##PSBlobSPIRV), RenderShaderFormat::SPIRV});

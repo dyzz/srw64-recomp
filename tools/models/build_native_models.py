@@ -64,6 +64,23 @@ MODELS = [
      'original_sha256': '4e4542dbd1a289773701a65c205c300787e08e1d6843d814aebcd7a046ae2ad8'},
     {'resource_id': 5607, 'name': 'Fifth Luna', 'key': 'fifth-luna', 'display_list': 0,
      'original_sha256': 'efaae5560b4655bae2d10febb84e1519f1bd567237da2885d81d0b0091033c63'},
+    # Battle backgrounds (docs/design/battle-animation-rendering.md §10): 5837 is the Yokohama
+    # harbour of background record 58, its skyline, quay and two ships.
+    # shading 'baked': the mesh carries uvs and an atlas with the lighting baked in
+    # (tools/models/battle_bake.py); 'water': no authored mesh, the host shades a plane
+    # with moving waves (HdWaterPS.hlsl). The original's water is two layers: a flat opaque
+    # plane (5836, y 0) and a wave layer over the whole ground drawn at vertex alpha 178 without
+    # depth writes (5838, y 3..14); what is under the surface (a unit's legs) shows through
+    # it. Both keep that: the plane opaque, the surface at the original's alpha.
+    # 'hidden' drops a list without drawing.
+    {'resource_id': 5837, 'name': 'Battle harbour city', 'key': 'battle-city', 'shading': 'baked',
+     'original_sha256': '7e218a6f2ef80b72d2c7a5277de829c074a50de83cf258fa3e5bbd0a7b3d0110'},
+    {'resource_id': 5838, 'name': 'Battle harbour water', 'key': None, 'shading': 'water', 'alpha': 178 / 255,
+     'water': ((-500.0, -341.0), (500.0, 397.0), 6.0),
+     'original_sha256': 'b72663a69ec9274fefea239461d07c2e14f858d391e7d41a93bbae2ece49e511'},
+    {'resource_id': 5836, 'name': 'Battle harbour water (under)', 'key': None, 'shading': 'water', 'alpha': 1.0,
+     'water': ((-500.0, -340.0), (500.0, 389.0), 0.0),
+     'original_sha256': 'fda1aab5ab26697ef51c47fc71440001aa1acd09a42208c1187896be1b169680'},
 ]
 # Not handled for now: 5597, index 21, plate 「デビルアクシズ」 (the game's Devil Axis), which
 # no scene places — the デビルアクシズ scenes place the plain Axis; 5601, index 16, a red
@@ -88,6 +105,7 @@ PLATE_SCALE = 8  # texture pixels per original unit; the board is 200 x 30 units
 FONT = ROOT / 'build/fonts/HarmonyOS_Sans_SC.ttf'  # tools/content/prepare_fonts.py
 for _model in MODELS:
     _model['mesh'] = ROOT / f"assets/models/{_model['key']}/mesh.json" if _model['key'] else None
+TEXTURED_STRIDE = 36  # float3 position, float3 normal, float2 uv, uchar4 colour (alpha: 200 glass, 255 matte)
 # World-map travel trail (3D33): drawn by load_000A7EC0 801C4960 as one quad per step
 # from the vertex buffer 801C97C0. The host checks this code is resident before it
 # replaces the quads with one smooth ribbon (docs/native/native-ship-model.md).
@@ -207,6 +225,28 @@ def trail_code(rom: bytes) -> bytes:
     return rom[start:start + TRAIL['code_bytes']]
 
 
+def pack_textured(mesh: dict) -> bytes:
+    return b''.join(struct.pack('<8f4B', *p, *n, *t, *c)
+                    for p, n, t, c in zip(mesh['positions'], mesh['normals'], mesh['uvs'], mesh['colors']))
+
+
+def water_mesh(spec) -> dict:
+    """A flat grid over the replaced layer's extent at height y; the shader makes the waves."""
+    lo, hi, y = spec
+    n, m = 40, 30
+    positions, faces = [], []
+    for j in range(m + 1):
+        for i in range(n + 1):
+            positions.append([lo[0] + (hi[0] - lo[0]) * i / n, y, lo[1] + (hi[1] - lo[1]) * j / m])
+    for j in range(m):
+        for i in range(n):
+            a = j * (n + 1) + i
+            faces += [[a, a + n + 1, a + 1], [a + 1, a + n + 1, a + n + 2]]
+    return {'positions': positions, 'normals': [[0.0, 1.0, 0.0]] * len(positions),
+            'uvs': [[p[0], p[2]] for p in positions], 'colors': [[255, 255, 255, 255]] * len(positions),
+            'faces': faces, 'bounds': [[lo[0], y, lo[1]], [hi[0], y, hi[1]]]}
+
+
 def pack_indices(mesh: dict) -> bytes:
     return b''.join(struct.pack('<3I', *f) for f in mesh['faces'])
 
@@ -220,19 +260,24 @@ def build(output: Path) -> dict:
     entries = []
     skipped = []
     for model in MODELS:
-        if model['mesh'] is None or not model['mesh'].exists():
+        shading = model.get('shading', 'colour')
+        if shading not in ('water', 'hidden') and (model['mesh'] is None or not model['mesh'].exists()):
             skipped.append(model['resource_id'])
             continue
         original, _ = table.extract(model['resource_id'])
         if digest(original) != model['original_sha256']:
             raise ValueError(f"resource {model['resource_id']} differs from the modelled original")
-        mesh = json.loads(model['mesh'].read_text())
+        mesh = water_mesh(model['water']) if shading in ('water', 'hidden') else json.loads(model['mesh'].read_text())
         check_mesh(mesh)
         commands = triangle_commands(original, model.get('display_list'))
         files = {'vertices': f"{model['resource_id']}.vertices.bin",
                  'indices': f"{model['resource_id']}.indices.bin"}
         scale = model.get('display_scale', 1.0)
-        (output / files['vertices']).write_bytes(pack_vertices(mesh, scale))
+        stride = STRIDE if shading == 'colour' else TEXTURED_STRIDE
+        (output / files['vertices']).write_bytes(pack_vertices(mesh, scale) if shading == 'colour' else pack_textured(mesh))
+        if shading == 'baked':
+            files['texture'] = f"{model['resource_id']}.texture.png"
+            (output / files['texture']).write_bytes((model['mesh'].parent / mesh['texture']).read_bytes())
         (output / files['indices']).write_bytes(pack_indices(mesh))
         plate = None
         if model['resource_id'] in PLATES:
@@ -247,10 +292,11 @@ def build(output: Path) -> dict:
             files.update({f'plate.{locale}': name for locale, name in textures.items()})
         entries.append({'resource_id': model['resource_id'], 'name': model['name'], 'plate': plate, **files,
                         'original_bytes': len(original), 'original_sha256': digest(original),
-                        'display_list': model.get('display_list'), 'triangle_commands': commands, 'vertex_stride': STRIDE,
+                        'display_list': model.get('display_list'), 'triangle_commands': commands, 'vertex_stride': stride,
+                        'shading': shading, 'alpha': model.get('alpha', 1.0),
                         'vertices_count': len(mesh['positions']), 'triangles': len(mesh['faces']),
                         'display_scale': scale, 'bounds': [[v * scale for v in b] for b in mesh['bounds']] if mesh.get('bounds') else None,
-                        'mesh_sha256': digest(model['mesh'].read_bytes()),
+                        'mesh_sha256': digest(model['mesh'].read_bytes()) if model['mesh'] else None,
                         'sha256': {name: digest((output / name).read_bytes()) for name in files.values()}})
     boards = []
     for resource, board in BOARDS.items():
@@ -326,7 +372,7 @@ def validate(directory: Path, rom: bytes | None = None) -> dict:
         check_original(entry, known[entry['resource_id']]['original_sha256'], lists)
         vertices = (directory / entry['vertices']).read_bytes()
         indices = (directory / entry['indices']).read_bytes()
-        if len(vertices) != entry['vertices_count'] * STRIDE or len(indices) != entry['triangles'] * 12:
+        if len(vertices) != entry['vertices_count'] * entry.get('vertex_stride', STRIDE) or len(indices) != entry['triangles'] * 12:
             raise ValueError('mesh sizes differ from the manifest')
         count = entry['vertices_count']
         if any(i >= count for (i,) in struct.iter_unpack('<I', indices)):
