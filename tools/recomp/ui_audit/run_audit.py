@@ -47,7 +47,7 @@ def build():
     obj.mkdir(parents=True, exist_ok=True)
     sources = [ROOT / 'src/native/ui/frontend.cpp', ROOT / 'src/native/localization/catalog.cpp', HERE / 'layout_audit.cpp',
                ROOT / 'src/native/ui/probe_surface_macos.cpp']
-    headers = max(p.stat().st_mtime for d in ('src/native/ui', 'src/host') for p in (ROOT / d).glob('*.hpp'))
+    headers = max(p.stat().st_mtime for d in ('src/native/ui', 'src/host', 'src/native/text', 'src/native/localization') for p in (ROOT / d).glob('*.hpp'))
     jobs, objects = [], []
     for source in sources:
         target = obj / (source.stem + '.o')
@@ -249,6 +249,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--sizes', default=','.join(SIZES), help='comma-separated: ' + ', '.join(SIZES))
     parser.add_argument('--only', help='regular expression on fixture names (e.g. "zh-Hans$" or "^battle")')
+    parser.add_argument('--shrunk', type=float, default=0.85, metavar='SCALE',
+                        help='also list text the fit class set smaller than this share of its face (default 0.85; 1 lists every shrink, 0 none)')
     args = parser.parse_args()
     binary = build()
     all_fixtures = fixtures(Text())
@@ -272,6 +274,12 @@ def main():
         for name, issue in problems:
             failed = True
             print(f"  {name}: {issue['kind']} {issue.get('over_dp', 0):.1f} dp {issue.get('text', '')!r} ({issue.get('path', '')})")
+        # Shrinks are not failures (the fit class exists to shrink), but the worst ones say where a face is set too large.
+        shrunk = sorted(((r['name'], s) for r in report for s in r.get('shrunk', []) if s['scale'] < args.shrunk), key=lambda ns: ns[1]['scale'])
+        if shrunk:
+            print(f'  {len(shrunk)} line(s) shrunk below {args.shrunk:.0%}:')
+        for name, s in shrunk:
+            print(f"    {name}: {s['from_dp']:.1f} → {s['to_dp']:.1f} dp ({s['scale']:.0%}) {s['text']!r} ({s['path']})")
     sys.exit(1 if failed else 0)
 
 

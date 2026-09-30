@@ -9,8 +9,8 @@
 //   {Images} (Original / HD); groups {DPad} {DUpDown}
 //   {DLeftRight} {C} {CUpDown} {Stick}. They show what the player bound to it
 //   (input_bindings.hpp): the controller button's icon, in the controller's own family,
-//   in a controller hint; the key in a keyboard hint (an icon for Enter, Esc, arrows and
-//   the like, else the key's name). A group left at its defaults shows one icon.
+//   in a controller hint; the key in a keyboard hint (an icon for letters, digits, Enter,
+//   Esc, arrows and the like, else the key's name). A group left at its defaults shows one icon.
 // - Key tokens are the native pages' fixed keys, which work whatever the bindings say:
 //   {Esc} {Enter} {Tab} {Space} {Ctrl} {KeyUp} {KeyDown} {KeyLeft} {KeyRight} {Arrows}
 //   {WASD} {F5} {F6} {F7}. Keyboard hints only. (The font's IJKL icon went with the old
@@ -73,9 +73,16 @@ inline char32_t pad_glyph(const input::PadInput& p, PadFamily family) {
     }
 }
 
-// The icon of a key, or 0 for keys shown by name (letters, digits, most others).
+// The icon of a key, or 0 for keys shown by name (punctuation, the keypad and the like).
 inline char32_t key_glyph(int scancode) {
+    if (scancode >= 4 && scancode <= 29) return char32_t(0xE850 + scancode - 4);   // A-Z
+    if (scancode >= 30 && scancode <= 38) return char32_t(0xE871 + scancode - 30); // 1-9
     switch (scancode) {
+    case 39: return 0xE870;             // 0
+    case 42: return 0xE87A;             // Backspace
+    case 225: case 229: return 0xE87B;  // Shift
+    case 226: case 230: return 0xE87C;  // Alt
+    case 76: return 0xE87D;             // Delete
     case 41: return 0xE840;             // Escape
     case 40: case 88: return 0xE841;    // Return, keypad Enter
     case 43: return 0xE842;             // Tab
