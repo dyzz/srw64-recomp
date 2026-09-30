@@ -1049,10 +1049,10 @@ void intermission_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
     const auto& items=next.at("items");const bool restricted=next.value("restricted",false),submenu=next.value("submenu",false);
     const unsigned cursor=next.value("cursor",0u);
-    float item_font=12.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
+    float item_font=10.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
     const float row=(restricted?31.f:143.f)/items.size();
     std::string menu;
     for(unsigned n=0;n<items.size();++n)
@@ -1072,7 +1072,7 @@ void intermission_sync() {
         panel(34,193,287,207,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
     if(submenu) {
         const auto& swap=next.at("swap_items");const unsigned chosen=next.value("swap_cursor",0u);
-        float swap_font=12.5f;std::string options;
+        float swap_font=10.5f;std::string options;
         for(const auto& item:swap)swap_font=std::min(swap_font,fit(item.get<std::string>(),43));
         for(unsigned n=0;n<swap.size();++n)
             options+="<button id='intermission-swap:"+std::to_string(n)+"' class='"+(n==chosen?"on":"")+"' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(2)+";'>"+escape(swap[n].get<std::string>())+"</button>";
@@ -1122,7 +1122,7 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
                 "; vertical-align:middle; margin:0 "+px(1)+";'/>";
         }
         const char* cls=token=="格"?"melee":token=="射"?"ranged":token=="P"?"post":token=="B"?"beam":"map";
-        const float w=token=="MAP"?22.f:11.f;
+        const float w=token=="MAP"?22.f:10.f;
         return "<span class='im-badge "+std::string(cls)+"' style='width:"+px(w)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(token=="MAP"?6.f:7.f)+";'>"+escape(token)+"</span>";
     };
     const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
@@ -1176,7 +1176,9 @@ void upgrade_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
+    // The list rows and their labels share one face, a size under the panels around them.
+    const float face=10.5f;const auto lfit=[&](const std::string& text,float width){return std::min(face,fit(text,width));};
     // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
@@ -1203,8 +1205,8 @@ void upgrade_sync() {
             "<div class='im-row' style='position:absolute; left:0; top:"+px(153)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of("mobility"),44,"im-dim")+span(number(sel.value("mobility",json())),30,"im-right")+span(label_of("armor"),40,"im-dim",0,22)+span(number(sel.value("armor",json())),40,"im-right")+span(label_of("limit"),40,"im-dim",0,22)+span(number(sel.value("limit",json())),30,"im-right")+"</div>"
             "<div class='im-row' style='position:absolute; left:0; top:"+px(176)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
-                span(label_of("pilot"),52,"im-dim")+span(pilot.empty()?"--------":pilot,100,"",0,6)+span(label_of("funds"),40,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(60),px(11.5f),px(22))+"</div>",
-            11.5f,"upgrade-panel");
+                span(label_of("pilot"),52,"im-dim")+span(pilot.empty()?"--------":pilot,100,"",0,6)+span(label_of("funds"),40,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(60),px(10.5f),px(22))+"</div>",
+            face,"upgrade-panel");
         const std::string hint=next.value("pages",1u)>1?"upgrade_list_hint_pages":"upgrade_list_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
     } else if(screen=="weapons" || screen=="weapon") {
@@ -1230,10 +1232,10 @@ void upgrade_sync() {
             for(char c:w.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
             // Layout 0x78: name and gauge at y 64, 攻撃力 ▶ preview and 資金 at 88, 費用 in its own box.
             body+="<div class='im-shade'></div>"+box(21,61,299,107,
-                "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("display_name",w.value("name",std::string())),150,"",std::min(11.f,fit(w.value("display_name",w.value("name",std::string())),148)))+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
+                "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("display_name",w.value("name",std::string())),150,"",std::min(10.f,fit(w.value("display_name",w.value("name",std::string())),148)))+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
                 "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(3)+";'>"+span(wl("power"),44,"im-dim")+span(number(w.at("power")),40,"im-right")+span("▶",14,"im-dim")+span(number(w.value("preview",json())),40,"im-right")+
-                    span(label_of("funds"),32,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(56),px(11),px(20))+"</div>",11.f,"upgrade-weapon")+
-                box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(w.value("price",json())),76,"im-right")+"</div>",11.f,"upgrade-weapon-price");
+                    span(label_of("funds"),32,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(56),px(11),px(20))+"</div>",10.f,"upgrade-weapon")+
+                box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(w.value("price",json())),76,"im-right")+"</div>",10.f,"upgrade-weapon-price");
             if(const std::string raised=cap_legend(w.value("original_cap",0u),w.value("cap",0u));!raised.empty())
                 body+="<div class='im-dim' style='position:absolute; left:"+px(24)+"; top:"+px(110)+"; width:"+px(150)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>";
             if(window=="confirm")
@@ -1243,7 +1245,7 @@ void upgrade_sync() {
             // Layout 0x8C: 「X を最大まで改造したので、特別ボーナスとして Y が追加されます」.
             const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
             body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
-                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",11.f,"upgrade-bonus");
+                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
         }
         const char* hint=confirm?(window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
@@ -1267,19 +1269,19 @@ void upgrade_sync() {
             box(21,90,175,131,"<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("funds"),50,"im-dim")+funds_field("upgrade",next.value("funds",0u),px(90),px(12),px(16))+"</div>"
                 "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+span(number(row_at.value("price",json())),90,"im-right")+"</div>"+
                 // The 上限突破 legend fills the money box's spare third row; the question box has no room for it.
-                (raised.empty()?std::string():"<div class='im-dim' style='padding:0 "+px(4)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>"),12.f,"upgrade-money");
+                (raised.empty()?std::string():"<div class='im-dim' style='padding:0 "+px(4)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>"),10.f,"upgrade-money");
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
             const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(118.f/w,118.f/h);
             art="<img src='"+escape(image(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
         }
-        body+=box(176,8,302,132,art,12.f,"upgrade-art","display:flex; align-items:center; justify-content:center;")+
-            box(21,133,302,219,lines,11.5f,"upgrade-rows");
+        body+=box(176,8,302,132,art,10.f,"upgrade-art","display:flex; align-items:center; justify-content:center;")+
+            box(21,133,302,219,lines,10.5f,"upgrade-rows");
         const auto window=next.value("window",std::string());
         if(!window.empty()) {
             body+="<div class='im-shade'></div>";
             if(window=="confirm")
-                body+=box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(label_of("ask"))+"</div>",12.f,"upgrade-window")+
+                body+=box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(label_of("ask"))+"</div>",10.f,"upgrade-window")+
                     box(221,139,251,163,"<button id='upgrade-confirm' class='on' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",7.5f,"upgrade-choice");
             else
                 body+=box(85,61,235,83,"<button id='upgrade-dismiss' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
@@ -1306,7 +1308,9 @@ void parts_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
+    // The list rows and their labels share one face, a size under the panels around them.
+    const float face=10.5f;const auto lfit=[&](const std::string& text,float width){return std::min(face,fit(text,width));};
     // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
@@ -1331,7 +1335,7 @@ void parts_sync() {
         for(unsigned n=0;n<rows.size();++n) {
             const auto& r=rows[n];
             list+="<button id='parts:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
-                span(r.value("name",std::string()),126)+span(dashes(r.value("pilot",std::string())),90)+span(label_of("level"),36,"im-dim",fit(label_of("level"),34))+span(r.contains("level")?number(r.at("level")):std::string(),18,"im-right")+"</button>";
+                span(r.value("name",std::string()),126)+span(dashes(r.value("pilot",std::string())),90)+span(label_of("level"),36,"im-dim",lfit(label_of("level"),34))+span(r.contains("level")?number(r.at("level")):std::string(),18,"im-right")+"</button>";
         }
         const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
         const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
@@ -1339,8 +1343,8 @@ void parts_sync() {
             "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of("title"))+"</span></div>"
             "<div id='parts-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
             "<div style='position:absolute; left:0; top:"+px(157)+"; width:100%; height:"+px(42)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"
-                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(4)+"; width:"+px(88)+"; font-size:"+px(fit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(sel,4)+"</div>",
-            11.5f,"parts-panel");
+                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(4)+"; width:"+px(88)+"; font-size:"+px(lfit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(sel,4)+"</div>",
+            face,"parts-panel");
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(next.value("pages",1u)>1?"parts_list_hint_pages":"parts_list_hint")+"</div>";
     } else if(screen=="slots") {
         const auto& unit=next.at("unit");const auto& inv=next.at("inventory");const unsigned mode=next.value("mode",0u),cursor=next.value("cursor",0u);
@@ -1366,11 +1370,11 @@ void parts_sync() {
         std::string description;
         for(const auto& d:next.value("description",json::array()))description+="<div style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(4)+";'>"+escape(d.get<std::string>())+"</div>";
         const auto page_text=std::to_string(page+1)+"/"+std::to_string(pages);
-        body+=box(21,21,163,43,"<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+";'>"+span(page_text,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(90)+"; text-align:center; font-size:"+px(fit(label_of("select_title"),88))+";'>"+escape(label_of("select_title"))+"</span></div>",11.f,"parts-title")+
-            box(21,43,163,113,"<div id='parts-slots' style='margin-top:"+px(1)+";'>"+slots+"</div>",11.5f,"parts-slot-panel")+
-            box(21,113,163,219,"<div style='margin-top:"+px(5)+";'>"+stats+"</div>",11.f,"parts-stats")+
-            box(163,21,299,43,"<div style='padding:0 "+px(4)+"; line-height:"+px(22)+"; font-size:"+px(fit(unit.value("name",std::string()),128))+";'>"+escape(unit.value("name",std::string()))+"</div>",11.5f,"parts-unit")+
-            box(163,43,299,160,arrows+"<div id='parts-inventory'>"+list+"</div>",11.f,"parts-inventory-panel")+
+        body+=box(21,21,163,43,"<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+";'>"+span(page_text,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(90)+"; text-align:center; font-size:"+px(fit(label_of("select_title"),88))+";'>"+escape(label_of("select_title"))+"</span></div>",10.f,"parts-title")+
+            box(21,43,163,113,"<div id='parts-slots' style='margin-top:"+px(1)+";'>"+slots+"</div>",10.5f,"parts-slot-panel")+
+            box(21,113,163,219,"<div style='margin-top:"+px(5)+";'>"+stats+"</div>",10.f,"parts-stats")+
+            box(163,21,299,43,"<div style='padding:0 "+px(4)+"; line-height:"+px(22)+"; font-size:"+px(fit(unit.value("name",std::string()),128))+";'>"+escape(unit.value("name",std::string()))+"</div>",10.5f,"parts-unit")+
+            box(163,43,299,160,arrows+"<div id='parts-inventory'>"+list+"</div>",10.f,"parts-inventory-panel")+
             box(163,160,299,219,"<div style='margin-top:"+px(4)+";'>"+description+"</div>",9.5f,"parts-description");
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(mode?"parts_inventory_hint":"parts_slots_hint")+"</div>";
     } else if(screen=="holders") {
@@ -1384,8 +1388,8 @@ void parts_sync() {
         }
         body+=box(21,21,299,219,
             "<div style='position:absolute; left:0; top:0; width:100%; height:"+px(42)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"
-                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(3)+"; width:"+px(88)+"; font-size:"+px(fit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(next.at("unit"),3)+"</div>"
-            "<div id='parts-holders' style='margin-top:"+px(43)+";'>"+list+"</div>",11.5f,"parts-panel");
+                "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(3)+"; width:"+px(88)+"; font-size:"+px(lfit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(next.at("unit"),3)+"</div>"
+            "<div id='parts-holders' style='margin-top:"+px(43)+";'>"+list+"</div>",face,"parts-panel");
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
     }
     body+="</div>";
@@ -1408,7 +1412,9 @@ void swap_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
+    // The list rows and their labels share one face, a size under the panels around them.
+    const float face=10.5f;const auto lfit=[&](const std::string& text,float width){return std::min(face,fit(text,width));};
     // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
@@ -1436,7 +1442,7 @@ void swap_sync() {
         for(unsigned n=0;n<rows.size();++n) {
             const auto& r=rows[n];
             list+="<button id='swap:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
-                span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")+"</button>";
+                span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",lfit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")+"</button>";
         }
         const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
         const auto& sub=next.value("sub",json::object());
@@ -1445,8 +1451,8 @@ void swap_sync() {
             "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of("title"))+"</span></div>"
             "<div id='swap-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
             "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
-                span(label_of(sub_key),40,"im-dim",fit(label_of(sub_key),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
-            11.5f,"swap-panel");
+                span(label_of(sub_key),40,"im-dim",lfit(label_of(sub_key),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",lfit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
+            face,"swap-panel");
         body+=hint("swap_list_hint");
     } else if(screen=="targets" || screen=="fairy_targets") {
         const bool fairy=screen=="fairy_targets";
@@ -1455,7 +1461,7 @@ void swap_sync() {
         for(unsigned n=0;n<rows.size();++n) {
             const auto& r=rows[n];
             list+="<button id='swap:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
-                (fairy?span(r.value("name",std::string()),128)+span(dashes(r.value("unit",std::string())),96)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
+                (fairy?span(r.value("name",std::string()),128)+span(dashes(r.value("unit",std::string())),96)+span(label_of("level"),34,"im-dim",lfit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
                       :span(r.value("name",std::string()),128)+span(dashes(r.value("pilot",std::string())),80)+span(label_of("hp"),24,"im-dim")+span(number(r.value("hp",json())),40,"im-right"))+"</button>";
         }
         const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
@@ -1465,10 +1471,10 @@ void swap_sync() {
             at(98,32,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),120),120)+at(230,32,dim("level"))+at(262,32,number(p.value("level",json())),"im-right",0,20)+
             at(98,52,dim(fairy?"fairy":"sub"))+at(134,52,dashes(sub.value("name",std::string())),"",0,96)+at(230,52,dim("level"))+at(262,52,sub.contains("level")?number(sub.at("level")):std::string("--"),"im-right",0,20)+
             "<div style='position:absolute; left:0; top:"+px(94)+"; width:100%; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'></div>"
-            "<div id='swap-list' style='position:absolute; left:0; top:"+px(95)+"; width:100%;'>"+list+"</div>",11.5f,"swap-panel");
+            "<div id='swap-list' style='position:absolute; left:0; top:"+px(95)+"; width:100%;'>"+list+"</div>",face,"swap-panel");
         if(fairy && next.value("mode",0u)) {
             const auto& target_row=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
-            body+="<div class='im-shade'></div>"+box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(target_row.value("name",std::string()))+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",11.f,"swap-window")+
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(target_row.value("name",std::string()))+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",10.f,"swap-window")+
                 yes_no("swap",next.value("window_cursor",0u),221,122,251,163,20);
             body+=hint("swap_confirm_hint");
         } else body+=hint("swap_list_hint");
@@ -1481,19 +1487,19 @@ void swap_sync() {
         const auto plus=[&](const json& s){return number(s.value("value",json()))+"+"+std::to_string(s.value("after",0)-s.value("value",0));};
         const std::string terrain=next.value("terrain",std::string("----"));
         const auto& sub=from.value("sub",json::object());
-        body+=box(18,10,110,101,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(72)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(p,70)+"</div>"+at(0,74,escape(p.value("name",std::string())),"im-center",fit(p.value("name",std::string()),86),90),11.f,"swap-portrait")+
-            box(111,10,175,35,"<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(label_of("level"),34,"im-dim")+span(number(p.value("level",json())),22,"im-right")+"</div>",11.f,"swap-level")+
-            box(111,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("hp"),20,"im-dim")+span(number(to.value("hp",json())),36,"im-right")+"</div>",11.f,"swap-hp")+
-            box(18,102,175,122,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(label_of("sub"),34,"im-dim")+span(dashes(sub.value("name",std::string())),112)+"</div>",11.f,"swap-fairy")+
+        body+=box(18,10,110,101,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(72)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(p,70)+"</div>"+at(0,74,escape(p.value("name",std::string())),"im-center",fit(p.value("name",std::string()),86),90),10.f,"swap-portrait")+
+            box(111,10,175,35,"<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(label_of("level"),34,"im-dim")+span(number(p.value("level",json())),22,"im-right")+"</div>",10.f,"swap-level")+
+            box(111,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("hp"),20,"im-dim")+span(number(to.value("hp",json())),36,"im-right")+"</div>",10.f,"swap-hp")+
+            box(18,102,175,122,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(label_of("sub"),34,"im-dim")+span(dashes(sub.value("name",std::string())),112)+"</div>",10.f,"swap-fairy")+
             box(18,123,175,162,"<div style='padding:"+px(3)+" "+px(3)+"; line-height:"+px(16)+";' class='im-dim'>"+escape(label_of("current"))+"<br/>"+escape(label_of("after"))+"</div>",fit(label_of("after"),150),"swap-notes")+
             box(18,163,175,219,"<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("limit"),34,"im-dim")+span(number(to.value("limit",json())),40,"im-right")+"</div>"
                 "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("evade"),34,"im-dim")+span(plus(evade),60,evade.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(evade.value("now",0))+")",50,"im-right im-dim")+"</div>"
-                "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("hit"),34,"im-dim")+span(plus(hit),60,hit.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(hit.value("now",0))+")",50,"im-right im-dim")+"</div>",11.f,"swap-stats")+
-            box(176,8,302,132,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(108)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(to,104)+"</div>"+at(0,108,escape(to.value("name",std::string())),"im-center",fit(to.value("name",std::string()),120),126),11.f,"swap-art")+
+                "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("hit"),34,"im-dim")+span(plus(hit),60,hit.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(hit.value("now",0))+")",50,"im-right im-dim")+"</div>",10.f,"swap-stats")+
+            box(176,8,302,132,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(108)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(to,104)+"</div>"+at(0,108,escape(to.value("name",std::string())),"im-center",fit(to.value("name",std::string()),120),126),10.f,"swap-art")+
             box(176,133,258,219,"<div style='padding:"+px(2)+" "+px(3)+"; line-height:"+px(15)+";'>"+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",fit(label_of("board"),78),"swap-question")+
             yes_no("swap",cursor,215,168,250,206,18)+
             box(259,133,302,219,at(3,3,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),38))+at(3,20,dim("air"))+at(26,20,terrain.substr(0,1))+at(3,36,dim("land"))+at(26,36,terrain.substr(1,1))+
-                at(3,52,dim("sea"))+at(26,52,terrain.substr(2,1))+at(3,68,dim("space"))+at(26,68,terrain.substr(3,1)),11.f,"swap-terrain");
+                at(3,52,dim("sea"))+at(26,52,terrain.substr(2,1))+at(3,68,dim("space"))+at(26,68,terrain.substr(3,1)),10.f,"swap-terrain");
         body+=hint("swap_confirm_hint");
     }
     body+="</div>";
@@ -1516,7 +1522,7 @@ void save_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
     // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
@@ -1546,17 +1552,17 @@ void save_sync() {
         body+=box(117,61,203,99,items,std::min(fit(media[0],80),fit(media[1],80)),"save-media");
         // The original draws the medium and the sentence as two labels; Chinese runs them together.
         const std::string message=media[cursor]+(localization::catalog().locale.starts_with("zh")?"":" ")+label_of("save_to");
-        body+=box(85,125,235,147,at(0,3,escape(message),"im-center",fit(message,146),150),11.f,"save-message");
+        body+=box(85,125,235,147,at(0,3,escape(message),"im-center",fit(message,146),150),10.f,"save-message");
         if(next.value("waiting",false))
-            body+=box(101,109,219,131,at(0,3,escape(label_of("checking")),"im-center",fit(label_of("checking"),114),118),11.f,"save-checking");
+            body+=box(101,109,219,131,at(0,3,escape(label_of("checking")),"im-center",fit(label_of("checking"),114),118),10.f,"save-checking");
         body+=hint(next.value("waiting",false)?"save_message_hint":"save_choice_hint");
     } else if(screen=="slots") {
         const unsigned cursor=next.value("cursor",0u),mode=next.value("mode",0u),medium=next.value("medium",0u);
-        body+=box(117,21,203,43,at(0,3,escape(media[medium]),"im-center",fit(media[medium],80),86),11.f,"save-title");
+        body+=box(117,21,203,43,at(0,3,escape(media[medium]),"im-center",fit(media[medium],80),86),10.f,"save-title");
         const auto& slots=next.at("slots");
         for(unsigned n=0;n<slots.size();++n) {
             const auto& s=slots[n];const float y0=69+80*n;const bool used=s.value("used",false);
-            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",11.f,"save-face:"+std::to_string(n));
+            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",10.f,"save-face:"+std::to_string(n));
             std::string rows="<button id='save:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
                 span(label_of("slot")+std::to_string(n+1),68,"",fit(label_of("slot")+std::to_string(n+1),66))+
                 (used?span(s.value("name",std::string()),90,"",fit(s.value("name",std::string()),86))+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(s.value("level",json())),14,"im-right"):std::string())+"</button>";
@@ -1572,10 +1578,10 @@ void save_sync() {
                     at(3,54,escape(label_of("turns")),"im-dim",fit(label_of("turns"),54))+at(58,54,number(s.value("turns",json())),"im-right",0,24)+
                     at(104,54,escape(label_of("funds")),"im-dim",fit(label_of("funds"),38))+at(144,54,number(s.value("funds",json())),"im-right",0,62);
             }
-            body+=box(87,y0,299,y0+70,rows,11.f,"save-slot:"+std::to_string(n));
+            body+=box(87,y0,299,y0+70,rows,10.f,"save-slot:"+std::to_string(n));
         }
         if(mode==1) {
-            body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(label_of("overwrite")),"",fit(label_of("overwrite"),208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),11.f,"save-window")+
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(label_of("overwrite")),"",fit(label_of("overwrite"),208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),10.f,"save-window")+
                 yes_no(next.value("window_cursor",0u),221,122,251,163,20);
         } else if(mode==2) {
             // Texts the original placed on one row (status 7 splits lines in two) are joined.
@@ -1673,7 +1679,9 @@ void ability_sync() {
         return "<div class='im-panel'"+(id.empty()?"":" id='"+id+"'")+" style='left:"+px(x0-line)+"; top:"+px(y0-line)+"; width:"+px(x1-x0+1+2*line)+"; height:"+px(y1-y0+1+2*line)+
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
-    const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
+    const auto fit=[&](const std::string& text,float width){return std::min(10.5f,width/std::max(1.f,text_units(text)));};
+    // The list rows and their labels share one face, a size under the panels around them.
+    const float face=10.5f;const auto lfit=[&](const std::string& text,float width){return std::min(face,fit(text,width));};
     // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
@@ -1698,7 +1706,7 @@ void ability_sync() {
         for(unsigned n=0;n<rows.size();++n) {
             const auto& r=rows[n];
             list+="<button id='ability:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"+
-                (pilots?span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
+                (pilots?span(r.value("name",std::string()),70)+span(dashes(r.value("unit",std::string())),150)+span(label_of("level"),34,"im-dim",lfit(label_of("level"),32))+span(number(r.value("level",json())),16,"im-right")
                        :span(r.value("name",std::string()),126)+span(dashes(r.value("pilot",std::string())),80)+span(label_of("hp"),24,"im-dim")+span(number(r.value("hp",json())),40,"im-right"))+"</button>";
         }
         const auto page=std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u));
@@ -1707,8 +1715,8 @@ void ability_sync() {
             "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"+span(page,44,"im-right")+"<span style='width:"+px(2)+"; height:100%; border-left-width:"+px(line)+"; border-left-color:#3a78e0; margin-left:"+px(2)+";'></span><span style='width:"+px(228)+"; text-align:center;'>"+escape(label_of(pilots?"pilot_list":"unit_list"))+"</span></div>"
             "<div id='ability-list' style='margin-top:"+px(3)+";'>"+list+"</div>"
             "<div class='im-row' style='position:absolute; left:0; top:"+px(175)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
-                span(label_of("sub"),40,"im-dim",fit(label_of("sub"),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
-            11.5f,"ability-panel");
+                span(label_of("sub"),40,"im-dim",lfit(label_of("sub"),38))+span(dashes(sub.value("name",std::string())),150)+span(label_of("level"),34,"im-dim",lfit(label_of("level"),32))+span(sub.contains("level")?number(sub.at("level")):std::string("--"),16,"im-right")+"</div>",
+            face,"ability-panel");
         body+=hint("ability_list_hint");
     } else if(screen=="unit") {
         const auto& unit=next.at("unit");
@@ -1735,18 +1743,18 @@ void ability_sync() {
         const long long hp=next.value("hp",0ll),hp_max=std::max(1ll,next.value("hp_max",1ll)),en=next.value("en",0ll),en_max=std::max(1ll,next.value("en_max",1ll));
         const std::string terrain=next.value("terrain",std::string("----"));
         const auto stat=[&](const char* key,const json& v,float y){return at(3,y,"<span class='im-dim'>"+escape(label_of(key))+"</span>")+at(60,y,number(v),"im-right",0,40);};
-        body+=box(21,10,175,35,"<div style='padding:0 "+px(8)+"; line-height:"+px(24)+"; font-size:"+px(fit(unit.value("name",std::string()),140))+";'>"+escape(unit.value("name",std::string()))+"</div>",12.f,"ability-name")+
-            box(21,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("size"),34,"im-dim")+span(next.value("size",std::string()),22)+span(label_of("repair"),48,"im-dim",fit(label_of("repair"),46),4)+span(number(next.value("repair",json())),40,"im-right")+"</div>",11.f,"ability-size")+
-            box(21,59,175,131,"<div style='margin-top:"+px(3)+";'>"+parts+"</div>",11.f,"ability-parts")+
+        body+=box(21,10,175,35,"<div style='padding:0 "+px(8)+"; line-height:"+px(24)+"; font-size:"+px(fit(unit.value("name",std::string()),140))+";'>"+escape(unit.value("name",std::string()))+"</div>",10.f,"ability-name")+
+            box(21,36,175,58,"<div class='im-row' style='height:"+px(21)+"; line-height:"+px(21)+"; padding:0 "+px(3)+";'>"+span(label_of("size"),34,"im-dim")+span(next.value("size",std::string()),22)+span(label_of("repair"),48,"im-dim",fit(label_of("repair"),46),4)+span(number(next.value("repair",json())),40,"im-right")+"</div>",10.f,"ability-size")+
+            box(21,59,175,131,"<div style='margin-top:"+px(3)+";'>"+parts+"</div>",10.f,"ability-parts")+
             box(21,132,155,163,at(6,2,"<span style='color:#ffd75e;'>"+escape(label_of("hp"))+"</span>","",9)+at(36,2,std::to_string(hp)+"/ "+std::to_string(hp_max),"",10)+
                 "<div class='im-bar-back' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89)+";'></div><div class='im-bar' style='left:"+px(32)+"; top:"+px(15)+"; width:"+px(89.f*float(hp)/float(hp_max))+";'></div>"+
                 at(6,16,"<span style='color:#ffd75e;'>"+escape(label_of("en"))+"</span>","",9)+at(36,16,std::to_string(en)+"/ "+std::to_string(en_max),"",10)+
-                "<div class='im-bar-back' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28)+";'></div><div class='im-bar' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28.f*float(en)/float(en_max))+";'></div>",11.f,"ability-gauges")+
+                "<div class='im-bar-back' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28)+";'></div><div class='im-bar' style='left:"+px(93)+"; top:"+px(22)+"; width:"+px(28.f*float(en)/float(en_max))+";'></div>",10.f,"ability-gauges")+
             box(21,164,155,219,at(3,3,"<span class='im-dim'>"+escape(label_of("abilities"))+"</span>","",fit(label_of("abilities"),76))+at(83,3,escape(next.value("shield",std::string())),"",10)+"<div style='margin-top:"+px(22)+"; padding:0 "+px(3)+"; line-height:"+px(16*ability_font/10.5f)+"; white-space:normal;'>"+abilities+"</div>",10.5f,"ability-abilities")+
-            box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right fit",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),11.f,"ability-stats")+
+            box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right fit",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),10.f,"ability-stats")+
             box(260,132,299,219,at(3,4,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),34))+at(3,20,"<span class='im-dim'>"+escape(label_of("air"))+"</span>")+at(24,20,terrain.substr(0,1))+at(3,36,"<span class='im-dim'>"+escape(label_of("land"))+"</span>")+at(24,36,terrain.substr(1,1))+
-                at(3,52,"<span class='im-dim'>"+escape(label_of("sea"))+"</span>")+at(24,52,terrain.substr(2,1))+at(3,68,"<span class='im-dim'>"+escape(label_of("space"))+"</span>")+at(24,68,terrain.substr(3,1)),11.f,"ability-terrain")+
-            box(176,8,302,132,art_img(unit,118),12.f,"ability-art","display:flex; align-items:center; justify-content:center;");
+                at(3,52,"<span class='im-dim'>"+escape(label_of("sea"))+"</span>")+at(24,52,terrain.substr(2,1))+at(3,68,"<span class='im-dim'>"+escape(label_of("space"))+"</span>")+at(24,68,terrain.substr(3,1)),10.f,"ability-terrain")+
+            box(176,8,302,132,art_img(unit,118),10.f,"ability-art","display:flex; align-items:center; justify-content:center;");
         body+=hint("ability_unit_hint");
     } else if(screen=="weapons") {
         const auto page=std::to_string(next.value("page",0u)+1)+"/ "+std::to_string(next.value("pages",1u));
@@ -1773,22 +1781,22 @@ void ability_sync() {
         for(unsigned n=0;n<sk.size() && n<3;++n)skills+=at(skill_at[n][0]-18,skill_at[n][1]-178,escape(sk[n].get<std::string>()),"fit",10.5f,skill_w[n]);
         const std::string terrain=next.value("terrain",std::string("----"));
         const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
-        body+=box(18,10,110,101,art_img(p,88),12.f,"ability-art","display:flex; align-items:center; justify-content:center;")+
+        body+=box(18,10,110,101,art_img(p,88),10.f,"ability-art","display:flex; align-items:center; justify-content:center;")+
             box(111,10,299,35,"<div style='padding:0 "+px(6)+"; line-height:"+px(24)+"; text-align:right; font-size:"+px(fit(label_of("pilot"),176))+";' class='im-dim'>"+escape(label_of("pilot"))+"</div>",10.f,"ability-title")+
             box(111,36,299,101,at(9,4,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),170))+
                 at(17,28,dim("morale"),"fit",10,27)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"fit",10,18)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
                 at(129,28,dim("next"),"fit",10,24)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
-                at(17,46,dim("sp"),"",10)+at(90,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,60),11.f,"ability-name")+
+                at(17,46,dim("sp"),"",10)+at(90,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,60),10.f,"ability-name")+
             box(18,102,299,137,at(6,4,dim("melee"))+at(40,4,stat_value("melee"),"im-right",0,32)+at(94,4,dim("evade"))+at(126,4,plus_value("evade"),cls("evade"),0,70)+at(214,4,dim("reaction"))+at(248,4,stat_value("reaction"),"im-right",0,32)+
-                at(6,20,dim("ranged"))+at(40,20,stat_value("ranged"),"im-right",0,32)+at(94,20,dim("hit"))+at(126,20,plus_value("hit"),cls("hit"),0,70)+at(214,20,dim("skill"))+at(248,20,stat_value("skill"),"im-right",0,32),11.f,"ability-stats")+
-            box(18,138,230,177,at(6,6,dim("spirits"),"",fit(label_of("spirits"),86))+spirits,11.f,"ability-spirits")+
-            box(18,178,230,219,at(6,6,dim("skills"),"",fit(label_of("skills"),70))+skills,11.f,"ability-skills")+
-            box(231,138,299,167,"<div style='text-align:center; line-height:"+px(28)+";' class='im-dim'>"+escape(label_of("terrain"))+"</div>",11.f,"ability-terrain-title")+
+                at(6,20,dim("ranged"))+at(40,20,stat_value("ranged"),"im-right",0,32)+at(94,20,dim("hit"))+at(126,20,plus_value("hit"),cls("hit"),0,70)+at(214,20,dim("skill"))+at(248,20,stat_value("skill"),"im-right",0,32),10.f,"ability-stats")+
+            box(18,138,230,177,at(6,6,dim("spirits"),"",fit(label_of("spirits"),86))+spirits,10.f,"ability-spirits")+
+            box(18,178,230,219,at(6,6,dim("skills"),"",fit(label_of("skills"),70))+skills,10.f,"ability-skills")+
+            box(231,138,299,167,"<div style='text-align:center; line-height:"+px(28)+";' class='im-dim'>"+escape(label_of("terrain"))+"</div>",10.f,"ability-terrain-title")+
             // Each cell is 33 wide: the label shrinks to the 17 in front of the rank ("Lnd A").
-            box(231,168,264,193,at(3,4,dim("air"),"",std::min(11.f,17.f/text_units(label_of("air"))))+at(22,4,terrain.substr(0,1)),11.f)+
-            box(265,168,299,193,at(3,4,dim("land"),"",std::min(11.f,17.f/text_units(label_of("land"))))+at(22,4,terrain.substr(1,1)),11.f)+
-            box(231,194,264,219,at(3,4,dim("sea"),"",std::min(11.f,17.f/text_units(label_of("sea"))))+at(22,4,terrain.substr(2,1)),11.f)+
-            box(265,194,299,219,at(3,4,dim("space"),"",std::min(11.f,17.f/text_units(label_of("space"))))+at(22,4,terrain.substr(3,1)),11.f);
+            box(231,168,264,193,at(3,4,dim("air"),"",std::min(10.f,17.f/text_units(label_of("air"))))+at(22,4,terrain.substr(0,1)),10.f)+
+            box(265,168,299,193,at(3,4,dim("land"),"",std::min(10.f,17.f/text_units(label_of("land"))))+at(22,4,terrain.substr(1,1)),10.f)+
+            box(231,194,264,219,at(3,4,dim("sea"),"",std::min(10.f,17.f/text_units(label_of("sea"))))+at(22,4,terrain.substr(2,1)),10.f)+
+            box(265,194,299,219,at(3,4,dim("space"),"",std::min(10.f,17.f/text_units(label_of("space"))))+at(22,4,terrain.substr(3,1)),10.f);
         body+=hint("ability_pilot_hint");
     }
     body+="</div>";
