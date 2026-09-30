@@ -66,7 +66,7 @@ def prepare(output: Path, art_manifest: Path = ART, marker: Path = MARKER, model
     shutil.copytree(models, output / "native-models")
     report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Qwen image models; world map and tactical maps: OpenAI image model via Codex) and images redrawn from the original graphics (unit poses, map unit icons, the tactical maps' palette-index maps); see NOTICE.txt",
               "art_source_sha256": sha(art_manifest.read_bytes()),
-              "art": {key: art[key] for key in ("count", "portraits", "backgrounds", "scene_images", "tactical_maps")},
+              "art": {key: art[key] for key in ("count", "portraits", "units", "unit_extras", "backgrounds", "scene_images", "tactical_maps")},
               "page_portraits": len(pages), "compressed": compressed,
               "native_marker": marker_check["manifest_sha256"], "native_models": models_check["manifest_sha256"]}
     (output / "hd.json").write_text(json.dumps(report, indent=2) + "\n")
