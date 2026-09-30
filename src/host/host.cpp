@@ -48,6 +48,7 @@
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
 #include "ability_page.hpp"
+#include "focus_lines.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
 #include "title_page.hpp"
@@ -397,6 +398,12 @@ static int run_host(int argc, char** argv) {
         uint16_t layout;
         std::memcpy(&layout, ram + ((0x000FFA70 + slot * 0xC4 + 0x3C + sub * 0x30 + 4) ^ 2), 2);
         return layout >= 610 && layout <= 612;
+    };
+    srw64_game_hooks.map_underlay = [](uint8_t* ram, int32_t cursor, uint32_t slot, uint32_t sub) {
+        // The focus lines behind a unit's picture on a native page: its panel under them.
+        if (srw64::focus_lines::is_lines(ram, slot, sub) &&
+            (srw64::ability_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::swap_page::owns_input()))
+            srw64::focus_lines::panel(ram, cursor);
     };
     srw64_game_hooks.map_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
         // Sprite record read by 800945D4: base 800FFA70 + slot*0xC4, sub-record at +0x3C + sub*0x30.

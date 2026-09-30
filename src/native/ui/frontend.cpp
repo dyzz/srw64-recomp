@@ -1164,9 +1164,14 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
 }
 
 // The panel behind a unit's battle picture on the unit ability, upgrade and swap confirm
-// pages: lighter than the others, so the game's focus lines under the page
-// (host/focus_lines.hpp) show about as bright as the original's, drawn over its panel.
-constexpr const char* kLinesPanel="#0a0e3c50";
+// pages is left clear: the game fills it in the panel's colour and draws its focus lines
+// over that (host/focus_lines.hpp), as bright as the original's. The picture is drawn at
+// the original's size (one pixel for one), so the lines show around it as they did.
+constexpr const char* kLinesPanel="transparent";
+float original_side(const json& owner,float most){
+    const auto& art=owner.value("art",json::object());
+    return std::min(most,std::max(art.value("width",96.f),art.value("height",96.f)));
+}
 void upgrade_sync() {
     const auto next=upgrade_page::state();upgrade_request=next;
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
@@ -1276,7 +1281,7 @@ void upgrade_sync() {
                 (raised.empty()?std::string():"<div class='im-dim' style='padding:0 "+px(4)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>"),10.f,"upgrade-money");
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
-            const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(118.f/w,118.f/h);
+            const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(1.f,std::min(118.f/w,118.f/h));
             art="<img src='"+escape(image(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
         }
         body+=box(176,8,302,132,art,10.f,"upgrade-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";")+
@@ -1499,7 +1504,7 @@ void swap_sync() {
             box(18,163,175,219,"<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("limit"),34,"im-dim")+span(number(to.value("limit",json())),40,"im-right")+"</div>"
                 "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("evade"),34,"im-dim")+span(plus(evade),60,evade.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(evade.value("now",0))+")",50,"im-right im-dim")+"</div>"
                 "<div class='im-row' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+span(label_of("hit"),34,"im-dim")+span(plus(hit),60,hit.value("over",false)?"im-right im-down":"im-right")+span("("+std::to_string(hit.value("now",0))+")",50,"im-right im-dim")+"</div>",10.f,"swap-stats")+
-            box(176,8,302,132,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(108)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(to,104)+"</div>"+at(0,108,escape(to.value("name",std::string())),"im-center",fit(to.value("name",std::string()),120),126),10.f,"swap-art",std::string("background-color:")+kLinesPanel+";")+
+            box(176,8,302,132,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(108)+"; display:flex; align-items:center; justify-content:center;'>"+art_img(to,original_side(to,104))+"</div>"+at(0,108,escape(to.value("name",std::string())),"im-center",fit(to.value("name",std::string()),120),126),10.f,"swap-art",std::string("background-color:")+kLinesPanel+";")+
             box(176,133,258,219,"<div style='padding:"+px(2)+" "+px(3)+"; line-height:"+px(15)+";'>"+escape(label_of("board"))+"<br/>"+escape(label_of("ask"))+"</div>",fit(label_of("board"),78),"swap-question")+
             yes_no("swap",cursor,215,168,250,206,18)+
             box(259,133,302,219,at(3,3,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),38))+at(3,20,dim("air"))+at(26,20,terrain.substr(0,1))+at(3,36,dim("land"))+at(26,36,terrain.substr(1,1))+
@@ -1758,7 +1763,7 @@ void ability_sync() {
             box(156,132,259,219,at(3,4,"<span class='im-dim'>"+escape(label_of("type"))+"</span>")+at(60,4,types,"im-right fit",0,40)+stat("move",next.value("move",json()),20)+stat("mobility",next.value("mobility",json()),36)+stat("armor",next.value("armor",json()),52)+stat("limit",next.value("limit",json()),68),10.f,"ability-stats")+
             box(260,132,299,219,at(3,4,"<span class='im-dim'>"+escape(label_of("terrain"))+"</span>","",fit(label_of("terrain"),34))+at(3,20,"<span class='im-dim'>"+escape(label_of("air"))+"</span>")+at(24,20,terrain.substr(0,1))+at(3,36,"<span class='im-dim'>"+escape(label_of("land"))+"</span>")+at(24,36,terrain.substr(1,1))+
                 at(3,52,"<span class='im-dim'>"+escape(label_of("sea"))+"</span>")+at(24,52,terrain.substr(2,1))+at(3,68,"<span class='im-dim'>"+escape(label_of("space"))+"</span>")+at(24,68,terrain.substr(3,1)),10.f,"ability-terrain")+
-            box(176,8,302,132,art_img(unit,118),10.f,"ability-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";");
+            box(176,8,302,132,art_img(unit,original_side(unit,118)),10.f,"ability-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";");
         body+=hint("ability_unit_hint");
     } else if(screen=="weapons") {
         const auto page=std::to_string(next.value("page",0u)+1)+"/ "+std::to_string(next.value("pages",1u));
