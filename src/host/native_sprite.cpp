@@ -2,6 +2,7 @@
 #include "native_sprite.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
+#include "presentation/rgba_file.hpp"
 #include "hle/rt64_state.h"
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
@@ -180,15 +181,13 @@ void work() {
                 pixels = std::move(image.rgba);
                 ok = w && h && pixels.size() == size_t(w) * h * 4;
             } else {
-                int iw = 0, ih = 0, n = 0;
-                if (uint8_t* data = stbi_load(file.c_str(), &iw, &ih, &n, 4)) {
-                    w = uint32_t(iw); h = uint32_t(ih);
-                    pixels.assign(data, data + size_t(w) * h * 4);
-                    stbi_image_free(data);
-                    for (size_t i = 0; i < pixels.size(); i += 4)
-                        for (int c = 0; c < 3; ++c) pixels[i + c] = uint8_t((pixels[i + c] * pixels[i + 3] + 127) / 255);
-                    ok = true;
-                }
+                // PNG, or the released pack's JPEG with its alpha beside it (compress_hd.py).
+                auto image = presentation::load_rgba(file);
+                w = uint32_t(image.width); h = uint32_t(image.height);
+                pixels = std::move(image.pixels);
+                for (size_t i = 0; i < pixels.size(); i += 4)
+                    for (int c = 0; c < 3; ++c) pixels[i + c] = uint8_t((pixels[i + c] * pixels[i + 3] + 127) / 255);
+                ok = w && h;
             }
         } catch (const std::exception& error) {
             fprintf(stderr, "SRW64_SCENE_SPRITE_FAILED %s\n", error.what());
@@ -410,6 +409,38 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         }
         fprintf(stderr, "SRW64_SCENE_IMAGES loaded %zu frame image(s)\n", images.size());
     }
+    // The HD unit poses the pages show (docs/design/unit-pose-hd.md) are the same scenes the
+    // battle animation draws a unit with (sprite mode 15, a quad per part): one frame, the
+    // scene's bounds. They replace the unit in battle too, with the frames of its other
+    // battle images derived from them, each cut to the parts it draws
+    // (docs/design/battle-animation-rendering.md §12-13).
+    const auto load_units = [&](const char* name, const char* schema, bool frames) {
+        if (art_directory.empty() || !std::filesystem::exists(art_directory / name)) return;
+        std::ifstream stream(art_directory / name);
+        const json spec = json::parse(stream);
+        if (spec.at("schema") != schema) throw std::runtime_error(std::string("Unsupported ") + name);
+        size_t count = 0;
+        for (const auto& row : spec.at("images")) {
+            Image image;
+            image.scene = row.at("scene"); image.atlas = row.at("atlas"); image.palette = row.at("palette");
+            image.frames.insert(frames ? row.at("frame").get<uint8_t>() : uint8_t(0));
+            auto asset = std::make_unique<Asset>();
+            asset->file = art_directory / row.at("file").get<std::string>();
+            if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
+            asset->key = "unit:" + row.at("file").get<std::string>();
+            {
+                std::lock_guard lock(asset_mutex);
+                image.asset = int(assets.size());
+                assets.push_back(std::move(asset));
+            }
+            std::lock_guard lock(image_mutex);
+            images.push_back(image);
+            ++count;
+        }
+        fprintf(stderr, "SRW64_SCENE_IMAGES loaded %zu image(s) from %s\n", count, name);
+    };
+    load_units("srw64-units-hd.json", "srw64.unit-images.v1", false);
+    load_units("srw64-unit-extras-hd.json", "srw64.unit-extra-images.v1", true);
     if (installed) return;
     installed = true;
     if (!output.empty()) log.open(output / "scene-sprites.jsonl");
@@ -468,7 +499,12 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         const auto found = std::find_if(images.begin(), images.end(), [&](const Image& image) {
             return image.scene == id.scene && image.atlas == id.atlas && image.palette == id.palette && image.frames.count(id.frame);
         });
-        if (found == images.end()) return;
+        if (found == images.end()) {
+            // which sprites have no HD image (once per identity)
+            if (log.is_open()) note("miss:" + std::to_string(id.scene) + "/" + std::to_string(id.atlas) + "/" + std::to_string(id.palette) + "/" + std::to_string(id.frame),
+                     {{"kind", "no image"}, {"scene", id.scene}, {"atlas", id.atlas}, {"palette", id.palette}, {"frame", id.frame}, {"slot", id.slot}});
+            return;
+        }
         record.asset = found->asset;
         record.wrap = found->wrap;
         std::copy(std::begin(found->uv), std::end(found->uv), record.uv);
@@ -478,6 +514,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     std::vector<uint32_t> parts;
     float alpha = 1;
     bool odd = false;
+    int flipped = -1;   // quads: the part drawn from its mirrored vertices (S falls as x rises)
     float x0 = 1e9f, y0 = 1e9f, x1 = -1e9f, y1 = -1e9f, z = 0;
     for (uint32_t p = draw.dl_begin + 8; p + 8 <= draw.dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), op = w0 >> 24;
@@ -502,11 +539,16 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
             if (!load || word(rdram, p - 8) >> 24 != 0xF2) { odd = true; continue; }
             const uint32_t vertices = word(rdram, load + 4) & 0x1FFFFFFF;
             if (vertices + 64 > 0x800000) { odd = true; continue; }
+            float left = 1e9f, right = -1e9f, s_left = 0, s_right = 0;
             for (uint32_t v = 0; v < 4; ++v) {
                 const float x = int16_t(half(rdram, vertices + v * 16)), y = int16_t(half(rdram, vertices + v * 16 + 2));
                 z = int16_t(half(rdram, vertices + v * 16 + 4));
                 x0 = std::min(x0, x); x1 = std::max(x1, x); y0 = std::min(y0, y); y1 = std::max(y1, y);
+                const float s = int16_t(half(rdram, vertices + v * 16 + 8));
+                if (x < left) { left = x; s_left = s; }
+                if (x > right) { right = x; s_right = s; }
             }
+            if (flipped < 0 && right > left && s_left != s_right) flipped = s_left > s_right ? 1 : 0;
             parts.push_back(p);
         }
     }
@@ -529,6 +571,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         if (!text) return;
     }
     record.quad = draw.quads;
+    if (draw.quads && flipped == 1 && !text) std::swap(record.uv[0], record.uv[2]);   // a unit facing the other way
     record.z = z;
     record.color[3] = alpha;
     if (draw.quads) { record.rect[0] = x0; record.rect[1] = y1; record.rect[2] = x1; record.rect[3] = y0; }

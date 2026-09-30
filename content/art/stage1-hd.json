@@ -7881,6 +7881,10 @@
     "path": "assets/hd-ai/unit-poses/whole-v1",
     "manifest_sha256": "f0b813dc5110844f38ed917fb6b1e706f0a1796646cd22b282f291cd89f2ab9e"
   },
+  "unit_extras": {
+    "path": "assets/hd-ai/unit-extras-derived/pack",
+    "manifest_sha256": "4306f1b88387c6987338fbf9ebddee0036b8a114a4403d0bba72da9f1d936ed1"
+  },
   "tactical_maps": {
     "path": "assets/hd-ai/tactical-maps/pack-v1",
     "manifest_sha256": "6d94e8e4ddb693ce9d79c6eafa2b8b2b308b135116cfc08d2448604827607c55"

@@ -69,7 +69,7 @@ class CompressHdTests(unittest.TestCase):
         compress = load("compress_hd")
         with tempfile.TemporaryDirectory() as tmp:
             art = self.art(Path(tmp))
-            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "units": 0, "tactical_maps": 0,
+            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "units": 0, "unit_extras": 0, "tactical_maps": 0,
                                                       "rt64_resaved": 0, "jpeg_quality": 92, "jpeg_subsampling": "4:2:0"})
             row = json.loads((art / "srw64-portraits-hd.json").read_text())["images"][0]
             self.assertEqual((row["file"], row["alpha"]), ("portraits/portrait-9.jpg", "portraits/portrait-9.alpha.png"))
@@ -125,6 +125,20 @@ class CompressHdTests(unittest.TestCase):
             self.assertEqual((alpha.mode, alpha.size), ("LA", (24, 30)))
             self.assertEqual(alpha.getpixel((0, 0))[1], 0)
             self.assertEqual(alpha.getpixel((12, 15))[1], 255)
+
+    def test_unit_extra_frames_split_like_the_poses(self):
+        compress = load("compress_hd")
+        with tempfile.TemporaryDirectory() as tmp:
+            art = Path(tmp)
+            (art / "unit-extras").mkdir()
+            Image.new("RGBA", (64, 48), (200, 30, 30, 255)).save(art / "unit-extras/2237-1636-2997-f0.png")
+            (art / "srw64-unit-extras-hd.json").write_text(json.dumps({"schema": "srw64.unit-extra-images.v1", "scale": 8, "images": [
+                {"scene": 2237, "atlas": 1636, "palette": 2997, "frame": 0, "file": "unit-extras/2237-1636-2997-f0.png",
+                 "sha256": "x", "width": 64, "height": 48}]}))
+            self.assertEqual(compress.compress_units(art, "srw64-unit-extras-hd.json"), 1)
+            row = json.loads((art / "srw64-unit-extras-hd.json").read_text())["images"][0]
+            self.assertEqual((row["file"], row["alpha"], row["frame"]), ("unit-extras/2237-1636-2997-f0.jpg", "unit-extras/2237-1636-2997-f0.alpha.png", 0))
+            self.assertEqual((row["width"], row["height"]), (48, 36))
 
     def test_rt64_textures_lose_an_opaque_alpha_only(self):
         compress = load("compress_hd")
