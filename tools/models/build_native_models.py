@@ -16,6 +16,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import struct
 import sys
@@ -64,7 +65,12 @@ MODELS = [
      'original_sha256': '4e4542dbd1a289773701a65c205c300787e08e1d6843d814aebcd7a046ae2ad8'},
     {'resource_id': 5607, 'name': 'Fifth Luna', 'key': 'fifth-luna', 'display_list': 0,
      'original_sha256': 'efaae5560b4655bae2d10febb84e1519f1bd567237da2885d81d0b0091033c63'},
-    # Battle backgrounds (docs/design/battle-animation-rendering.md §10): 5837 is the Yokohama
+]
+# Battle backgrounds, not in the HD pack yet (2026-10-01: left out of 0.3.2; the host
+# draws the originals when the pack has none). SRW64_BATTLE_BACKGROUNDS=1 packs them for a
+# local build.
+BATTLE_BACKGROUNDS = [
+    # docs/design/battle-animation-rendering.md §10: 5837 is the Yokohama
     # harbour of background record 58, its skyline, quay and two ships.
     # shading 'baked': the mesh carries uvs and an atlas with the lighting baked in
     # (tools/models/battle_bake.py); 'water': no authored mesh, the host shades a plane
@@ -82,6 +88,8 @@ MODELS = [
      'water': ((-500.0, -340.0), (500.0, 389.0), 0.0),
      'original_sha256': 'fda1aab5ab26697ef51c47fc71440001aa1acd09a42208c1187896be1b169680'},
 ]
+if os.environ.get('SRW64_BATTLE_BACKGROUNDS') == '1':
+    MODELS += BATTLE_BACKGROUNDS
 # Not handled for now: 5597, index 21, plate 「デビルアクシズ」 (the game's Devil Axis), which
 # no scene places — the デビルアクシズ scenes place the plain Axis; 5601, index 16, a red
 # copy of the 5600 marker nothing creates.
