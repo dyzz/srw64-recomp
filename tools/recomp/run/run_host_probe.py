@@ -373,6 +373,9 @@ def main() -> int:
     if prepared_profile:
         if prepared_profile["art"]:
             environment["SRW64_ART_PACK"] = prepared_profile["art"]["path"]
+        # A released HD pack's art folder instead (its JPEG + alpha images, compress_hd.py).
+        if os.environ.get("SRW64_TEST_ART_PACK"):
+            environment["SRW64_ART_PACK"] = str(Path(os.environ["SRW64_TEST_ART_PACK"]).resolve())
         environment["SRW64_HD_AVAILABLE"] = "1" if prepared_profile["hd_available"] else "0"
         environment["SRW64_IMAGE_MODE"] = profile["presentation"]["images"]
     if args.resolution_scale:
