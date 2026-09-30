@@ -8,6 +8,7 @@
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
+#include "focus_lines.hpp"
 #include <algorithm>
 #include <atomic>
 #include <fstream>
@@ -371,6 +372,7 @@ json confirm_json(uint8_t* ram,recomp_context* ctx) {
 }
 bool confirm_build(uint8_t* ram,recomp_context* ctx) {
     call(ram,ctx,resident_func_80085B94,0,1);
+    focus_lines::show(ram,ctx);
     write16(ram,confirm_cursor,0);
     std::lock_guard lock(mutex);
     open(confirm_json(ram,ctx),ram);
