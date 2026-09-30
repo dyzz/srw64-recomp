@@ -187,7 +187,7 @@ button:disabled { opacity: 0.45; }
 .pilotname { font-size: 13dp; color: #8fa5b5; border-top: 1dp #2b4356; padding-top: 6dp; margin-top: 6dp; white-space: nowrap; overflow: hidden; }
 #footer { display: flex; flex: none; align-items: center; height: 64dp; }
 #footer button { flex: none; height: 44dp; line-height: 40dp; padding: 0 18dp; font-size: 17dp; font-weight: bold; white-space: nowrap; }
-#footer .keys { flex: 1 1 auto; min-width: 0; margin: 0 16dp; font-size: 12dp; color: #8fa5b5; white-space: nowrap; overflow: hidden; }
+#footer .keys { flex: 1 1 auto; min-width: 0; margin: 0 16dp; font-size: 15dp; color: #a9bccb; white-space: nowrap; overflow: hidden; }   /* the pre-battle page's hint size; 12dp was too small (user, 2026-09-30) */
 #back { border-color: #2b4356; font-weight: normal; }
 #next { background-color: #8fddf2; border-color: #8fddf2; color: #0a141e; }
 #next:hover, #next:focus { background-color: #b9ecf9; border-color: #b9ecf9; }
