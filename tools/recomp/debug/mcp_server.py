@@ -84,6 +84,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_memory", "description": "Read guest RAM as hex (address such as 0x8015F950, size up to 0x10000). A view while the game runs, not a snapshot.",
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
+    {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
+     "inputSchema": {"type": "object", "required": ["address", "hex"], "properties": {"address": {"type": "integer"}, "hex": {"type": "string"}}}},
     {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, intro_active, name_page, link_page, intermission_page, battle_page, parts_page, ability_page, swap_page, save_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
      "inputSchema": {"type": "object", "properties": {"until": {"type": "object"}, "timeout_s": {"type": "number"}}}},
     {"name": "srw64_events", "description": "Rows of an event log from a cursor. Logs: " + ", ".join(EVENT_LOGS) + ".",
@@ -149,6 +151,8 @@ class Server:
             return text(client.call("mini_stage.load", path=args["path"]))
         if name == "srw64_memory":
             return text(client.call("memory.read", address=int(args["address"]), size=int(args.get("size", 4))))
+        if name == "srw64_memory_write":
+            return text(client.call("memory.write", address=int(args["address"]), hex=str(args["hex"])))
         if name == "srw64_wait":
             return text(session.wait(timeout=float(args.get("timeout_s", 30)), **args.get("until", {})))
         if name == "srw64_events":
