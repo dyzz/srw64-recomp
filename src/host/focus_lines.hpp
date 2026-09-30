@@ -4,7 +4,9 @@
 // 0x50F with palette 0x3F7, the palette animation 0x3F8 that makes them flicker). The
 // native unit ability, upgrade and swap confirm pages build without 801C6410, drawing
 // the picture themselves; this puts the lines back under the page at the picture's
-// place, and the game animates and clears them as it does the original's.
+// place, and the game animates and clears them as it does the original's. The page
+// leaves that panel clear and the game fills it first (panel), so the lines lie over
+// the panel's colour as in the original instead of dimmed under it.
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include <cstring>
@@ -27,5 +29,26 @@ inline void show(uint8_t* ram, const recomp_context* ctx, float x = 176, float y
     uint32_t bits;
     std::memcpy(&bits, &x, 4); guest::write32(ram, 0x8010083C, bits);
     std::memcpy(&bits, &y, 4); guest::write32(ram, 0x80100840, bits);
+}
+// The lines' sprite (slot 0x12, sub 0, layout 0x3F6 in 800FFA70's sprite records).
+inline bool is_lines(const uint8_t* ram, uint32_t slot, uint32_t sub) {
+    return slot == 0x12 && sub == 0 && guest::read(ram, 0x800FFA70 + 0x12 * 0xC4 + 0x3C + 4, 2) == 0x3F6;
+}
+// Before 800945D4 draws the lines: the native panel's fill (frontend.cpp .im-panel,
+// #0a0e3c at 0xC8) over the picture's panel (176,8)-(302,132), at the display list
+// cursor `cursor` (a Gfx**). One cycle, primitive colour, translucent blend; the lines'
+// drawer sets its own modes after.
+inline void panel(uint8_t* ram, int32_t cursor) {
+    const uint32_t words[] = {
+        0xE7000000, 0,                        // pipe sync
+        0xEF000000, 0x00504240,               // one cycle; G_RM_XLU_SURF, G_RM_XLU_SURF2
+        0xFCFFFFFF, 0xFFFDF6FB,               // G_CC_PRIMITIVE, G_CC_PRIMITIVE
+        0xFA000000, 0x0A0E3CC8,               // primitive colour
+        0xF6000000 | (303 << 2) << 12 | (133 << 2), (176 << 2) << 12 | (8 << 2),
+        0xE7000000, 0};
+    const uint32_t list = guest::read(ram, uint32_t(cursor), 4);
+    uint32_t at = list;
+    for (const uint32_t word : words) { guest::write32(ram, at, word); at += 4; }
+    guest::write32(ram, uint32_t(cursor), list + uint32_t(sizeof(words)));
 }
 }  // namespace srw64::focus_lines
