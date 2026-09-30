@@ -23,21 +23,22 @@ int main(){
     // Groups at their defaults are one icon.
     assert(expand_prompts("{DPad}{DUpDown}{CUpDown}{Stick}",xbox)==u8(0xE830)+u8(0xE835)+u8(0xE83C)+u8(0xE838));
     // Keyboard hints (PCSX2's layout): fixed keys are icons, bound keys an icon or their name.
-    assert(expand_prompts("{Enter} / {A} 确定",keys)==u8(0xE841)+" / K 确定");
-    assert(expand_prompts("{Esc} / {B}",keys)==u8(0xE840)+" / L");
+    assert(expand_prompts("{Enter} / {A} 确定",keys)==u8(0xE841)+" / "+u8(0xE85A)+" 确定");   // K, an icon since 2026-09-30
+    assert(expand_prompts("{Esc} / {B}",keys)==u8(0xE840)+" / "+u8(0xE85B));
     assert(expand_prompts("{Start}",keys)==u8(0xE841));             // Return
     assert(expand_prompts("{DPad} ／ {Stick}",keys)==u8(0xE849)+" ／ "+u8(0xE84A));
     assert(expand_prompts("{DUpDown}",keys)==u8(0xE846)+u8(0xE848));  // two icons, no slash
-    assert(expand_prompts("{CUpDown}",keys)=="T/G");
-    assert(expand_prompts("{C}",keys)=="T/G/J/H");                  // no group icon; C-left's first key is J
-    assert(expand_prompts("{AuxL}",keys)=="1");
+    assert(expand_prompts("{CUpDown}",keys)==u8(0xE863)+u8(0xE856));   // letter icons, so no slash
+    assert(expand_prompts("{C}",keys)==u8(0xE863)+u8(0xE856)+u8(0xE859)+u8(0xE857));   // no group icon; C-left's first key is J
+    assert(expand_prompts("{AuxL}",keys)==u8(0xE871));                // the 1 key
+    assert(expand_prompts("{Settings}",keys)==u8(0xE87A));            // Backspace
     assert(expand_prompts("{Z}",keys)=="\xe2\x80\x94");              // no key, as no button
     // Rebinding moves the hint with it.
     auto b=in::default_bindings();
     in::assign_key(b,in::Action::A,in::scancode::G);
     in::assign_pad(b,in::Action::A,in::button(in::pad_button::Y));
     const PromptContext keys2{false,PadFamily::Xbox,&b,name},pad2{true,PadFamily::Xbox,&b,name};
-    assert(expand_prompts("{A}",keys2)=="G" && expand_prompts("{CDown}",keys2)=="K");
+    assert(expand_prompts("{A}",keys2)==u8(0xE856) && expand_prompts("{CDown}",keys2)==u8(0xE85A));
     // Y was the animation button's; it gets A in exchange. Z has no controller button.
     assert(expand_prompts("{A}",pad2)==u8(0xE803) && expand_prompts("{Anim}",pad2)==u8(0xE800));
     assert(expand_prompts("{Z}",pad2)=="\xe2\x80\x94");

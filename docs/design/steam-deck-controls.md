@@ -76,12 +76,12 @@
 
 ## 按键图标
 
-2026-09-28 实现。原计划自己画一套图标字体；用户指出有现成的按键字体，改用 **PromptFont**（Yukari “Shinmera” Hafner，SIL OFL 1.1）。Zelda64Recomp 也用它；本机固定的上游检出里带了一份（`Zelda64Recomp-reference/assets/promptfont`，2023-12-29），不用另外下载。用户定的范围：手柄提示显示手上那只手柄的按键图标，键盘提示给 Esc、Enter 这类功能键加键帽图标；字母键（Z、X、Q、E）仍写字；N64 原版按键不做。
+2026-09-28 实现。原计划自己画一套图标字体；用户指出有现成的按键字体，改用 **PromptFont**（Yukari “Shinmera” Hafner，SIL OFL 1.1）。Zelda64Recomp 也用它；本机固定的上游检出里带了一份（`Zelda64Recomp-reference/assets/promptfont`，2023-12-29），不用另外下载。用户定的范围：手柄提示显示手上那只手柄的按键图标，键盘提示给 Esc、Enter 这类功能键加键帽图标；N64 原版按键不做。2026-09-30 起字母键、数字键、Backspace、Shift、Alt、Delete 也用键帽图标（PromptFont 画在全角字母 U+FF21–FF3A、全角数字 U+FF10–FF19 上，挪到 U+E850–E87D）：用户要求所有按键提示都走 PromptFont，之前战前确认页底栏的「K 开始战斗 · Q 选择武器」是写字的。仍写字的只剩标点、小键盘这类没有图标的键。
 
 ### 字体
 
 - PromptFont 把图标放在普通码位上（箭头、数学符号）。HarmonyOS Sans 也有其中 9 个，只当后备字体的话永远轮不到它，⇓ 会显示成普通箭头。
-- 所以 [`build_prompt_font.py`](../../tools/content/build_prompt_font.py) 只挑出提示要用的 57 个字形，挪到私用区 U+E800 起，按两款字体大写字母高度之比 700/660 缩放，竖向度量照 HarmonyOS Sans SC。生成的 `content/fonts/SRW64Prompts.ttf` 约 11 KB，随仓库提交；按 OFL 另起名字，许可与署名在 `LICENSE-SRW64Prompts.txt`。
+- 所以 [`build_prompt_font.py`](../../tools/content/build_prompt_font.py) 只挑出提示要用的 99 个字形（2026-09-30 加了字母、数字和四个修饰键），挪到私用区 U+E800 起，按两款字体大写字母高度之比 700/660 缩放，竖向度量照 HarmonyOS Sans SC。生成的 `content/fonts/SRW64Prompts.ttf` 约 18 KB，随仓库提交；按 OFL 另起名字，许可与署名在 `LICENSE-SRW64Prompts.txt`。
 - 两套文字引擎都把它接在字体链最后（RmlUi 登记为后备字体，对白引擎见 `game_fonts.cpp`），由 `prepare_fonts.py` 和其他字体一起放进字体目录。设置窗口「关于」页按 PromptFont 的要求署名。
 - 注意：Zelda64Recomp 与 RecompFrontend 的 `promptfont.h` 把键盘方向键的两个码位写反了，实际是 U+23F5 右、U+23F6 上，以字形为准。
 

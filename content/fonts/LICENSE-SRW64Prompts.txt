@@ -6,7 +6,7 @@ Yukari "Shinmera" Hafner, available at https://shinmera.com/promptfont
 (PromptFont is based on the Xolonium font by Severin Meyer).
 
 This font is a Modified Version of PromptFont under the SIL Open Font License 1.1
-below: it keeps 59 of PromptFont's glyphs, moves them to the Private Use Area
+below: it keeps 99 of PromptFont's glyphs, moves them to the Private Use Area
 from U+E800, scales them by 700/660 and up to a Chinese character's height, and
 takes the vertical metrics of HarmonyOS Sans SC. It is built by
 tools/content/build_prompt_font.py from the PromptFont release shipped with
