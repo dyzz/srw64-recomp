@@ -436,9 +436,10 @@ void fit_lines(Rml::ElementDocument* doc) {
         for(auto* line:lines) {
             const float room=line->GetClientWidth(),need=line->GetScrollWidth();
             if(room<=0 || need<=room+.5f)continue;
-            const float size=line->GetComputedValues().font_size(),floor=first.emplace(line,size).first->second*line->GetAttribute<float>("data-fit-min",.6f);
+            const float size=line->GetComputedValues().font_size(),from=first.emplace(line,size).first->second,floor=from*line->GetAttribute<float>("data-fit-min",.6f);
             if(size<=floor+.01f)continue;
-            line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need))+"px");changed=true;
+            // data-fit-from keeps the face it started with, for the layout audit's shrink report.
+            line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need))+"px");line->SetAttribute("data-fit-from",from);changed=true;
         }
         if(!changed)break;
         doc->UpdateDocument();
@@ -2163,7 +2164,8 @@ void initialize() {
             }
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
-    name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review});
+    name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
+        [](const std::string& path,int dp){return image(path,dp_pixels(dp));}});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -2246,9 +2248,9 @@ void sync() {
     context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
     const auto language=localization::snapshot();localization::Scope scope(language);
     auto request=names::request();
-    // Name page (name_page.cpp): choice cards show 72 dp portraits, and every name is a
-    // default, shown in the reading language (docs/native/default-names.md).
-    for(auto& choice:request.choices)for(auto& person:choice.portraits)for(auto& path:person)path=image(path,dp_pixels(72));
+    // Name page (name_page.cpp): it sizes and resolves its own images through the
+    // action above; every name is a default, shown in the reading language
+    // (docs/native/default-names.md).
     const auto shown=[&](names::Field field,std::u16string& name){name=utf16(names::default_names().display(field,utf8(name),language->locale));};
     for(auto& choice:request.choices)for(auto& person:choice.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);}
     for(auto& person:request.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);shown(names::Field::Nick,person[2]);}

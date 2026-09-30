@@ -11,7 +11,7 @@ from .catalog import compile_locale, sha, source_catalog
 UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "controls", "history_title", "history_controls",
            "name_title", "name_cancel", "name_review", "name_step_player", "name_step_partner", "name_step_review", "name_review_hint", "name_start",
            "name_step_select", "select_title", "select_hint", "select_super", "select_real", "select_male",
-           "select_female", "select_confirm", "select_keyboard_hint"}
+           "select_female", "select_confirm", "select_keyboard_hint", "review_keyboard_hint", "name_unit", "name_pilot"}
 # The 选项 menu and settings window label one item per optional rule, so those keys follow the catalog.
 UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_note", "rules_defaults",
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",
@@ -88,7 +88,7 @@ UI_KEYS |= {
     "battle_response", "battle_response_hint", "battle_title", "battle_weapon",
 }
 # Controller versions of the key hints ("_pad"), shown after controller input (Steam Deck).
-PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint"}
+PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "review_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint"}
 UI_KEYS |= {key + "_pad" for key in PAD_HINT_KEYS}
 
 

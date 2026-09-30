@@ -4,6 +4,7 @@
 #include "game_hooks.hpp"
 #include "presentation_settings.hpp"
 #include "mini_stage.hpp"
+#include "localization/catalog.hpp"
 #include "funcs.h"
 #include "json/json.hpp"
 #include <atomic>
@@ -24,6 +25,8 @@ uint64_t serial{};
 std::mutex mutex;
 Request current;
 std::array<std::array<std::array<std::string,2>,4>,2> portrait_paths;
+nlohmann::json unit_art=nlohmann::json::object();   // battle_assets.units by unit number
+std::string art_locale;
 std::map<uint64_t,bool> covers;
 uint64_t presented_workload{};
 bool presented_cover{};
@@ -97,17 +100,37 @@ bool commit_defaults(uint8_t* ram,recomp_context* ctx,unsigned route) {
     }
     return true;
 }
+// Each route's starting units, protagonist then partner, as ROM unit numbers (the name
+// is text 0x20F + number): アースゲイン／ヴァイローズ, スイームルグ／エルブルス,
+// ソルデファー／ノウルーズ, スヴァンヒルド／シグルーン.
+constexpr uint16_t route_units[4][2]={{34,35},{36,37},{30,327},{32,328}};
+constexpr uint16_t text_unit_names=0x20F;
+// Portraits and starting units of every route; the unit names follow the reading language.
+void fill_art(const uint8_t* ram) {
+    art_locale=localization::catalog().locale;
+    for(unsigned route=0;route<4;++route)for(unsigned p=0;p<2;++p) {
+        auto& choice=current.choices[route];
+        choice.portraits[p]=portrait_paths[p][route];
+        const auto number=route_units[route][p];
+        Art& unit=choice.units[p];unit={};
+        if(const auto row=unit_art.find(std::to_string(number));row!=unit_art.end() && row->is_object()) {
+            unit.original=row->value("path",std::string());unit.hd=row->value("hd",std::string());
+            unit.width=row->value("width",96u);unit.height=row->value("height",96u);
+        }
+        choice.unit_names[p]=dialogue::ui_text(ram,uint16_t(text_unit_names+number));
+    }
+}
 void begin_selection(uint8_t* ram) {
     current.serial=++serial;current.person=Selection;current.route=half(ram,highlight)&3;
     for(unsigned route=0;route<4;++route)for(unsigned p=0;p<2;++p) {
         auto& choice=current.choices[route];
-        choice.portraits[p]=portrait_paths[p][route];
         for(unsigned f=0;f<2;++f) {
             choice.names[p][f]=default_name(ram,name_table(route,p,f));
             // Unknown glyphs: keep the original page rather than show blanks.
             if(choice.names[p][f].empty()){current={};return;}
         }
     }
+    fill_art(ram);
     current.visible=true;owning=true;
 }
 void begin(uint8_t* ram,unsigned person) {
@@ -126,6 +149,7 @@ void begin(uint8_t* ram,unsigned person) {
         }
         current.names[p][f]=codec.decode(codes);
     }
+    fill_art(ram);   // the chosen route's portraits and starting units
     current.visible=true;owning=true;
 }
 // The original selection page, chosen in the settings window: after its はい
@@ -152,6 +176,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
     if(!current.active) {
         current.active=true;++current.revision;record("open");
     }
+    if(localization::catalog().locale!=art_locale)fill_art(ram);   // unit names follow a language switch
     if(person==Selection && cursor_moves) {
         cursor_moves=0;call=*ctx;call.r4=0xB9;resident_func_8007E8A8(ram,&call);
     }
@@ -196,6 +221,7 @@ void configure(const std::filesystem::path& directory) {
     if(!path || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
     std::ifstream source(path);nlohmann::json data;source>>data;
     for(const auto& [key,value]:data.at("glyphs").items())codec.add(std::stoul(key),dialogue::utf16(value.get<std::string>()));
+    if(data.contains("battle_assets") && data.at("battle_assets").contains("units"))unit_art=data.at("battle_assets").at("units");
     if(data.contains("name_entry_assets")) {
         const auto& art=data.at("name_entry_assets");
         for(unsigned p=0;p<2;++p)for(unsigned route=0;route<4;++route) {

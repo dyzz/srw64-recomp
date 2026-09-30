@@ -13,9 +13,16 @@ enum Stage : unsigned { Player=0, Partner=1, Review=2, Selection=3 };
 // One of the four protagonists on the selection page, in the game's route order:
 // 0 ブラッド (super, male), 1 マナミ (super, female), 2 アークライト (real, male),
 // 3 セレイン (real, female). Route < 2 is super robot, even routes are male.
+// A page image: the ROM original and, when the HD set carries one, the whole HD image.
+struct Art {
+    std::string original,hd;
+    unsigned width{96},height{96};
+};
 struct Choice {
     std::array<std::array<std::u16string,2>,2> names;   // protagonist/partner x given/family defaults
     std::array<std::array<std::string,2>,2> portraits;  // protagonist/partner x original/HD
+    std::array<Art,2> units;                            // protagonist/partner starting units' poses
+    std::array<std::string,2> unit_names;               // UTF-8, in the reading language
 };
 // Names are the guest's own text, Japanese; the page shows defaults in the reading language.
 struct Request {
@@ -24,7 +31,7 @@ struct Request {
     unsigned route{};
     bool visible{},active{},pending{};
     std::array<std::array<std::u16string,3>,2> names;  // Review: protagonist/partner x given/family/nickname
-    std::array<Choice,4> choices;                      // Selection only; `route` is the highlighted one
+    std::array<Choice,4> choices;                      // `route` is the highlighted (Review: chosen) one
 };
 // Default names by reading language (docs/native/default-names.md). Filled while the
 // host starts, before the game runs; read-only afterwards on every thread.

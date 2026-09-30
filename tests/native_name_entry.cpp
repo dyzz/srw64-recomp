@@ -5,6 +5,7 @@
 #include "game_hooks.hpp"
 #include "native_dialogue.hpp"
 #include "presentation_settings.hpp"
+#include "localization/catalog.hpp"
 #include "json/json.hpp"
 #include <cassert>
 #include <codecvt>
@@ -17,7 +18,9 @@ uint64_t srw64_current_vi() {return 1200;}
 namespace srw64::dialogue {
 std::u16string utf16(const std::string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.from_bytes(s);}
 std::string utf8(const std::u16string& s) {return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>,char16_t>{}.to_bytes(s);}
+std::string ui_text(const uint8_t*,uint16_t id) {return "text"+std::to_string(id);}
 }
+namespace srw64::localization {const Catalog& catalog() {static Catalog c;return c;}}
 namespace srw64::settings {bool native=true;bool native_name_entry_ui() {return native;}}
 int fade=-1;bool reject=false,original_yes=false;unsigned transitions{},defaults_loaded{};
 std::vector<uint32_t> sounds;
@@ -75,6 +78,8 @@ int main() {
     srw64_game_hooks.name_begin(rdram,Selection);auto r=request();
     assert(r.visible && r.person==Selection && r.route==2 && owns_input());
     assert(r.choices[0].names[0][0]==u"ア" && r.choices[2].names[0][0]==u"アイアイアイア" && r.choices[3].names[1][1]==u"アＡ");
+    // Starting units: アースゲイン (34) for route 0's protagonist, シグルーン (328) for route 3's partner.
+    assert(r.choices[0].unit_names[0]=="text"+std::to_string(0x20F+34) && r.choices[3].unit_names[1]=="text"+std::to_string(0x20F+328));
     assert(input(0xFFFF)==0);   // the whole controller belongs to the page
     fade=1;assert(srw64_game_hooks.name_step(rdram,&ctx,Selection) && !request().active);
     fade=-1;srw64_game_hooks.name_step(rdram,&ctx,Selection);assert(request().active);
