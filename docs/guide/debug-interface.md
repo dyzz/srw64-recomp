@@ -60,6 +60,7 @@
 | `window` | `width`/`height`、`front`、`close` | 调整游戏窗口尺寸（640–2560 × 480–1600 点）、带到前台（只在要验证真实焦点或真实鼠标事件时需要）、按下关闭按钮（`SDL_WINDOWEVENT_CLOSE`）；回应窗口状态 |
 | `wait_vi` | `vi`、`timeout_ms` | 等到指定 VI |
 | `memory.read` | `address`、`size`（≤ 0x10000） | 读客体内存，返回十六进制；不暂停游戏，是调试视图而非快照（[短跳过](../native/script-skip.md)的状态对照用它） |
+| `memory.write` | `address`、`hex`（整字节，≤ 4096 字节） | 写客体内存（探针用，比如强制战斗背景；只在调试会话里） |
 | `quit` | — | 正常退出，报告记为控制退出 |
 | `methods` | — | 列出宿主支持的方法 |
 

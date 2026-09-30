@@ -1,4 +1,5 @@
 #include "game_hooks.hpp"
+#include "battle_hud.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
@@ -67,8 +68,12 @@ void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32
     }
     const bool wide=srw64_game_hooks.map_space_begin &&
         srw64_game_hooks.map_space_begin(rdram,cursor,uint32_t(function),sprite?uint32_t(ctx->r5):~0u,sprite?uint32_t(ctx->r6):0);
+    // The battle's windows to the picture's edges (battle_hud.hpp).
+    const int32_t slot=sprite?int32_t(ctx->r5):-1,sub=sprite?int32_t(ctx->r6):-1;
+    const uint32_t begin=MEM_W(0,cursor);
     LOOKUP_FUNC(function)(rdram,ctx);
     if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
+    else srw64::battle_hud::after_draw(rdram,cursor,uint32_t(function),slot,sub,begin);
 }
 
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {

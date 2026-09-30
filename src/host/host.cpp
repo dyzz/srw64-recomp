@@ -29,6 +29,7 @@
 #include "native_dialogue.hpp"
 #include "native_map.hpp"
 #include "wide_map.hpp"
+#include "battle_hud.hpp"
 #include "game_frame.hpp"
 #include <algorithm>
 #include <iterator>
@@ -366,7 +367,7 @@ static int run_host(int argc, char** argv) {
     // scroll with the map (sub-record +2 == 1: the map, units and cursor, map effects) and
     // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
     // portraits) stays in the centred 320. Not in the whole-map overview (801027DB == 1).
-    srw64_game_hooks.frame_start = [](uint8_t* ram) { srw64::wide_map::frame(ram); };
+    srw64_game_hooks.frame_start = [](uint8_t* ram) { srw64::wide_map::frame(ram); srw64::battle_hud::frame(ram); };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
         if (ram[0x001027DB ^ 3] == 1) return false;
         // The map overlay's callbacks, whichever call reaches them (a node registered by

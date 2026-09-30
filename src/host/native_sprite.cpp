@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_sprite.hpp"
+#include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "hle/rt64_state.h"
 #include "hle/rt64_workload.h"
@@ -532,6 +533,11 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     record.color[3] = alpha;
     if (draw.quads) { record.rect[0] = x0; record.rect[1] = y1; record.rect[2] = x1; record.rect[3] = y0; }
     else { record.rect[0] = x0; record.rect[1] = y0; record.rect[2] = x1; record.rect[3] = y1; }
+    if (!draw.quads) {   // a battle window's sprite moves with the window (battle_hud.hpp)
+        float dx, dy;
+        battle_hud::sprite_offset(int32_t(id.slot), (x0 + x1) / 2, dx, dy);
+        record.rect[0] += dx; record.rect[2] += dx; record.rect[1] += dy; record.rect[3] += dy;
+    }
     // A repeating picture across the whole frame (the title's flames) repeats on across a
     // picture wider than 4:3 (docs/design/deck-16x10.md).
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
@@ -611,6 +617,11 @@ void rewrite_grid(uint8_t* rdram, const SceneDraw& draw) {
     record.anchor = TextJob::Anchor::center;
     std::copy(std::begin(job.tint), std::end(job.tint), record.color);
     record.rect[0] = x0; record.rect[1] = y0; record.rect[2] = x1; record.rect[3] = y1;
+    {   // a battle window's mark moves with the window (battle_hud.hpp)
+        float dx, dy;
+        battle_hud::sprite_offset(int32_t(draw.slot), (x0 + x1) / 2, dx, dy);
+        record.rect[0] += dx; record.rect[2] += dx; record.rect[1] += dy; record.rect[3] += dy;
+    }
     if (!ready(record.asset)) ++pending;
     uint32_t id_number;
     {
@@ -642,7 +653,10 @@ bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const s
     for (const auto& item : items) {
         Draw::Item entry;
         entry.asset = text_asset(item.job);
-        entry.at[0] = item.x; entry.at[1] = item.y;
+        // In the battle the text moves with its window (battle_hud.hpp).
+        float dx, dy;
+        battle_hud::text_offset(item.x, item.y, dx, dy);
+        entry.at[0] = item.x + dx; entry.at[1] = item.y + dy;
         std::copy(std::begin(item.job.tint), std::end(item.job.tint), entry.tint);
         // Text not drawn yet shows nothing this frame, as the story text does.
         if (!ready(entry.asset)) ++text_waiting;
