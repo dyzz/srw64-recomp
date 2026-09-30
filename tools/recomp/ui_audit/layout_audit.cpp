@@ -241,14 +241,20 @@ int main(int argc,char** argv){try{
             if(f.contains("settings")){srw64::settings::page=f.at("settings");srw64::settings_window::open();}
             for(int i=0;i<4;++i)frame({});
             frame(output/(name+".png"));
-            json issues=json::array();float ratio=1;
+            json issues=json::array(),shrunk=json::array();float ratio=1;
             if(auto* context=Rml::GetContext("game-ui")) {
                 ratio=context->GetDensityIndependentPixelRatio();
                 for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible()) {
                     std::vector<Drawn> drawn;scan(context->GetDocument(i),issues,ratio,drawn);collide(drawn,issues,ratio);
+                    // Lines fit_lines set smaller (data-fit-from is the face they started with): how far each went.
+                    Rml::ElementList lines;context->GetDocument(i)->QuerySelectorAll(lines,".fit");
+                    for(auto* line:lines)if(line->HasAttribute("data-fit-from") && shown(line)) {
+                        const float from=line->GetAttribute<float>("data-fit-from",0),to=line->GetComputedValues().font_size();
+                        if(from>0 && to<from-.01f)shrunk.push_back({{"text",line->GetInnerRML()},{"from_dp",from/ratio},{"to_dp",to/ratio},{"scale",to/from},{"path",path_of(line)}});
+                    }
                 }
             }
-            report.push_back({{"name",name},{"issues",issues}});
+            report.push_back({{"name",name},{"issues",issues},{"shrunk",shrunk}});
             std::cout<<name<<": "<<issues.size()<<" issue(s)\n";
         } catch(const std::exception& e) {
             report.push_back({{"name",name},{"error",e.what()}});std::cout<<name<<": ERROR "<<e.what()<<"\n";

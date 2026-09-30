@@ -314,7 +314,8 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bp-clash {display:flex; align-items:flex-end; padding:9dp 22dp 9dp; decorator:slant(#0c122cf0 #3fd0ff 0dp 3dp 0dp 0dp 19dp 19dp);}
 .bp-clash-side {flex:1; min-width:0;} .bp-clash-side.left {text-align:right;}
 .bp-damage {font-size:46dp; line-height:48dp; font-weight:bold; color:#ffd75e;}
-.bp-damage.d5 {font-size:36dp;} .narrow .bp-damage.d4 {font-size:38dp;} .narrow .bp-damage.d5 {font-size:31dp;}
+.bp-damage.d5 {font-size:42dp;} .narrow .bp-damage.d4 {font-size:42dp;} .narrow .bp-damage.d5 {font-size:36dp;}
+.narrow .bp-clash {padding:9dp 14dp;}
 .bp-caption {font-size:10dp; color:#a4b0d2;}
 .bp-arrow {width:62dp; text-align:center; padding-bottom:16dp; font-size:8dp; line-height:10dp; color:#ffd75e;}
 .bp-arrow div {font-size:13dp;}
@@ -1001,8 +1002,9 @@ std::string battle_clash(const json& enemy,const json& player,bool player_first,
         return label("battle_barrier_"+c.at("barrier").at("status").get<std::string>())+(reduced(c)?" · "+battle_number(c.at("damage_raw"))+" → "+battle_number(c.at("damage")):std::string{});
     };
     const auto critical=[&](const json& c){return armed(c) && c.at("critical").get<int>()>0?battle_number(c.at("critical_damage")):std::string("—");};
-    // Four and five digits step the figure down so it stays inside its half of the panel.
-    const auto damage=[&](const json& c){const auto text=value(c,"damage");return "<div class='bp-damage"+std::string(text.size()>=5?" d5":text.size()==4?" d4":"")+"'>"+text+"</div>";};
+    // Four and five digits step the figure down so it stays inside its half of the panel
+    // (on the Deck the panel also gives up some side padding); `fit` catches any width left over.
+    const auto damage=[&](const json& c){const auto text=value(c,"damage");return "<div class='bp-damage fit"+std::string(text.size()>=5?" d5":text.size()==4?" d4":"")+"'>"+text+"</div>";};
     std::string body="<div class='bp-center'><div class='bp-clash'><div class='bp-clash-side left'>"+damage(enemy)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div>";
     body+="<div class='bp-arrow'><div>"+std::string(player_first?"◀━━":"━━▶")+"</div>"+label(player_first?"battle_first_player":"battle_first_enemy")+"</div>";
     body+="<div class='bp-clash-side right'>"+damage(player)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div></div>";
@@ -1093,7 +1095,11 @@ const char* marker_glyph(const std::string& token) {
 }
 std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
         return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
     };
@@ -1171,7 +1177,11 @@ void upgrade_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
     const std::string screen=next.value("screen",std::string());
@@ -1297,7 +1307,11 @@ void parts_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
     const auto dashes=[](const std::string& s){return s.empty()?std::string("--------"):s;};
@@ -1395,7 +1409,11 @@ void swap_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto dim=[&](const char* key){return "<span class='im-dim'>"+escape(label_of(key))+"</span>";};
@@ -1499,7 +1517,11 @@ void save_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("--");};
@@ -1652,7 +1674,11 @@ void ability_sync() {
             "; border-width:"+px(line)+"; font-size:"+px(font)+"; line-height:"+px(16)+";"+extra+"'>"+content+"</div>";
     };
     const auto fit=[&](const std::string& text,float width){return std::min(12.5f,width/std::max(1.f,text_units(text)));};
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){return "<span class='fit "+cls+"' style='width:"+px(width)+";"+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto at=[&](float x,float y,const std::string& content,const std::string& cls="",float font=0,float width=0){return "<div class='"+cls+"' style='position:absolute; left:"+px(x)+"; top:"+px(y)+";"+(width?" width:"+px(width)+";":"")+(font?" font-size:"+px(font)+";":"")+" line-height:"+px(16)+"; white-space:nowrap;'>"+content+"</div>";};
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
