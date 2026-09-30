@@ -34,7 +34,7 @@ using json = nlohmann::json;
 std::vector<uint8_t> reference, vertices, indices;
 std::filesystem::path output;
 // src/host/shaders/Hd{Marker,Ring,Model,Trail,Plate}{VS,PS}.hlsl (NativeMarker.hlsli).
-std::unique_ptr<gpu::Program> markerProgram, ringProgram, modelProgram, trailProgram, plateProgram;
+std::unique_ptr<gpu::Program> markerProgram, ringProgram, modelProgram, trailProgram, plateProgram, bakedProgram, waterProgram;
 std::unique_ptr<gpu::Buffer> vertexBuffer, indexBuffer;
 std::unique_ptr<plume::RenderDescriptorSet> markerMesh;
 std::atomic<uint64_t> classified{};
@@ -68,9 +68,19 @@ std::ofstream draws;
 // the original resource and the triangle command sits at a known offset in it.
 constexpr uint32_t kModelIdBase = 0x534D0000;  // 'SM'; low bit set = suppressed original triangles
 constexpr size_t kModelStride = 28;           // float3 position, float3 normal, uchar4 colour
+// Battle backgrounds (docs/design/battle-animation-rendering.md §11): 'baked' meshes add a
+// float2 uv and draw their lighting from an atlas; 'water' is a plane shaded with waves.
+constexpr size_t kTexturedStride = 36;
+enum class Shading : uint8_t { colour, baked, water, hidden };  // hidden: suppressed, nothing drawn
 struct Model {
     uint32_t resource = 0;
     std::string name;
+    Shading shading = Shading::colour;
+    float alpha = 1;   // water: below 1 blends over what is under it, as the original's layer
+    size_t stride = kModelStride;
+    std::vector<uint8_t> atlasPixels;
+    int atlasWidth = 0, atlasHeight = 0;
+    std::unique_ptr<gpu::Texture> atlas;
     std::vector<uint8_t> reference, vertices, indices;  // reference: taken from the ROM, see originals_ready()
     size_t referenceBytes = 0;
     std::vector<uint32_t> commands;  // sorted; the first carries the native draw
@@ -323,7 +333,7 @@ struct Uniforms {
 
 // Transforms come from the immutable workload that carried the marked draw.
 Uniforms uniforms(const RT64::NativeMeshDraw& call, hlslpp::float4x4 *mvpOut = nullptr, uint32_t *worldIndexOut = nullptr,
-                  const hlslpp::float4x4 *local = nullptr) {
+                  const hlslpp::float4x4 *local = nullptr, hlslpp::float4x4 *modelViewOut = nullptr) {
     const auto& d = call.workload->drawData;
     const auto worldIndex = d.worldIndices.at(call.vertexIndex);
     const auto& guestWorld = d.lerpWorldTransforms.empty() ? d.worldTransforms.at(worldIndex) : d.lerpWorldTransforms.at(worldIndex);
@@ -342,6 +352,7 @@ Uniforms uniforms(const RT64::NativeMeshDraw& call, hlslpp::float4x4 *mvpOut = n
     u.screen[2] = call.screenOffset[0]; u.screen[3] = call.screenOffset[1];
     if (mvpOut) *mvpOut = mvp;
     if (worldIndexOut) *worldIndexOut = worldIndex;
+    if (modelViewOut) *modelViewOut = hlslpp::mul(world, view);
     return u;
 }
 
@@ -399,10 +410,33 @@ bool render_model(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
     if (index >= models.size()) return false;
     Model& m = *models[index];
     if (call.id & 1) { ++m.suppressed; return true; }
-    if (!modelProgram || !m.mesh || !call.workload) throw std::runtime_error("Native model missing immutable draw context");
-    hlslpp::float4x4 mvp; uint32_t worldIndex{};
-    const Uniforms u = uniforms(call, &mvp, &worldIndex);
-    if (!draw(list, framebuffer, call, *modelProgram, mesh_state(call), m.mesh.get(), u, uint32_t(m.indices.size() / 4))) return false;
+    if (!call.workload) throw std::runtime_error("Native model missing immutable draw context");
+    hlslpp::float4x4 mvp, modelView; uint32_t worldIndex{};
+    const Uniforms u = uniforms(call, &mvp, &worldIndex, nullptr, &modelView);
+    const uint32_t count = uint32_t(m.indices.size() / 4);
+    if (m.shading == Shading::hidden) {
+        ++m.suppressed; return true;
+    } else if (m.shading == Shading::baked) {
+        // The atlas uploads on first draw, on RT64's workload command list, like the plates.
+        if (!m.mesh) {
+            if (!bakedProgram || !m.atlas || !m.atlas->upload(list)) return false;
+            m.mesh = bakedProgram->bind({m.vertexBuffer.get(), m.indexBuffer.get(), m.atlas.get()});
+        }
+        if (!draw(list, framebuffer, call, *bakedProgram, mesh_state(call), m.mesh.get(), u, count)) return false;
+    } else if (m.shading == Shading::water) {
+        if (!waterProgram || !m.mesh) throw std::runtime_error("Native water missing its program");
+        struct { float modelView[16]; float time[4]; } extra{};
+        hlslpp::store(modelView, extra.modelView);
+        static const auto start = std::chrono::steady_clock::now();
+        extra.time[0] = std::chrono::duration<float>(std::chrono::steady_clock::now() - start).count();
+        extra.time[1] = m.alpha;
+        gpu::State state = mesh_state(call);
+        if (m.alpha < 1) state.blend = gpu::Blend::straight;
+        if (!draw(list, framebuffer, call, *waterProgram, state, m.mesh.get(), u, count, &extra, sizeof(extra))) return false;
+    } else {
+        if (!modelProgram || !m.mesh) throw std::runtime_error("Native model missing immutable draw context");
+        if (!draw(list, framebuffer, call, *modelProgram, mesh_state(call), m.mesh.get(), u, count)) return false;
+    }
     ++m.rendered;
     if (m.rendered == 1 || m.rendered % 60 == 0) log_draw(call, m.rendered, m.resource, m.indices.size()/12, u, mvp, worldIndex);
     return true;
@@ -522,21 +556,38 @@ void load_models(const std::filesystem::path& pack) {
         m->vertices = read(pack / entry.at("vertices").get<std::string>());
         m->indices = read(pack / entry.at("indices").get<std::string>());
         m->commands = entry.at("triangle_commands").get<std::vector<uint32_t>>();
-        if (m->commands.empty() || m->vertices.empty() || m->vertices.size() % kModelStride || m->indices.empty() || m->indices.size() % 12)
+        const std::string shading = entry.value("shading", std::string("colour"));
+        m->shading = shading == "baked" ? Shading::baked : shading == "water" ? Shading::water
+                   : shading == "hidden" ? Shading::hidden : Shading::colour;
+        if (shading != "colour" && shading != "baked" && shading != "water" && shading != "hidden") throw std::runtime_error("Unknown native model shading " + shading);
+        m->stride = m->shading == Shading::colour ? kModelStride : kTexturedStride;
+        m->alpha = entry.value("alpha", 1.0f);
+        if (!(m->alpha > 0 && m->alpha <= 1)) throw std::runtime_error("Invalid native model alpha");
+        if (entry.value("vertex_stride", size_t(kModelStride)) != m->stride) throw std::runtime_error("Native model stride differs from its shading");
+        if (m->shading == Shading::baked) {
+            const auto file = pack / entry.at("texture").get<std::string>();
+            int width = 0, height = 0, channels = 0;
+            uint8_t *pixels = stbi_load(file.c_str(), &width, &height, &channels, 4);
+            if (!pixels) throw std::runtime_error("Cannot read native model atlas " + file.string());
+            m->atlasPixels.assign(pixels, pixels + size_t(width) * height * 4);
+            stbi_image_free(pixels);
+            m->atlasWidth = width; m->atlasHeight = height;
+        }
+        if (m->commands.empty() || m->vertices.empty() || m->vertices.size() % m->stride || m->indices.empty() || m->indices.size() % 12)
             throw std::runtime_error("Invalid native model sizes for resource " + std::to_string(m->resource));
         m->draw_command = m->commands.front();
         std::sort(m->commands.begin(), m->commands.end());
         if (entry.contains("plate") && !entry.at("plate").is_null()) load_plate(*m, pack, entry.at("plate"));
         if (m->draw_command != m->commands.front() || m->commands.back() + 8 > m->referenceBytes)
             throw std::runtime_error("Invalid native model command offsets");
-        const size_t count = m->vertices.size() / kModelStride;
+        const size_t count = m->vertices.size() / m->stride;
         for (size_t i = 0; i < m->indices.size(); i += 4) {
             uint32_t index; std::memcpy(&index, m->indices.data() + i, 4);
             if (index >= count) throw std::runtime_error("Native model index out of range");
         }
         for (size_t v = 0; v < count; ++v)
             for (size_t k = 0; k < 6; ++k) {
-                float value; std::memcpy(&value, m->vertices.data() + v * kModelStride + k * 4, 4);
+                float value; std::memcpy(&value, m->vertices.data() + v * m->stride + k * 4, 4);
                 if (!std::isfinite(value)) throw std::runtime_error("Native model non-finite vertex");
             }
         models.push_back(std::move(m));
@@ -609,10 +660,25 @@ void gpu_init() {
     }
     for (auto& m : models) {
         if (m->vertices.empty()) continue;  // plate-only entry
-        if (!modelProgram)
-            modelProgram = std::make_unique<gpu::Program>("HdModel", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer}});
         m->vertexBuffer = std::make_unique<gpu::Buffer>(m->vertices);
         m->indexBuffer = std::make_unique<gpu::Buffer>(m->indices);
+        if (m->shading == Shading::baked) {
+            if (!bakedProgram)
+                bakedProgram = std::make_unique<gpu::Program>("HdBaked", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer},
+                    {gpu::Slot::texture}, {gpu::Slot::sampler, {.linear = true, .mipmaps = true}}});
+            m->atlas = std::make_unique<gpu::Texture>(m->atlasWidth, m->atlasHeight, plume::RenderFormat::R8G8B8A8_UNORM,
+                gpu::rgba_mips(std::move(m->atlasPixels), m->atlasWidth, m->atlasHeight));
+            continue;   // bound after the atlas uploads (render_model)
+        }
+        if (m->shading == Shading::hidden) continue;
+        if (m->shading == Shading::water) {
+            if (!waterProgram)
+                waterProgram = std::make_unique<gpu::Program>("HdWater", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer}});
+            m->mesh = waterProgram->bind({m->vertexBuffer.get(), m->indexBuffer.get()});
+            continue;
+        }
+        if (!modelProgram)
+            modelProgram = std::make_unique<gpu::Program>("HdModel", std::vector<gpu::Slot>{{gpu::Slot::buffer}, {gpu::Slot::buffer}});
         m->mesh = modelProgram->bind({m->vertexBuffer.get(), m->indexBuffer.get()});
     }
     if (trail.enabled) trailProgram = std::make_unique<gpu::Program>("HdTrail", std::vector<gpu::Slot>{});
@@ -643,7 +709,7 @@ void shutdown() {
             list.push_back({{"resource",m->resource},{"name",m->name},{"classified_commands",m->classified.load()},
                 {"native_draws",m->rendered},{"suppressed_commands",m->suppressed},{"original_draws",m->original.load()},
                 {"plate_classified",m->plateClassified.load()},{"plate_draws",m->plateRendered},{"plate_suppressed",m->plateSuppressed},
-                {"vertices",m->vertices.size()/kModelStride},{"triangles",m->indices.size()/12}});
+                {"vertices",m->vertices.size()/m->stride},{"triangles",m->indices.size()/12}});
         json summary = {{"schema","srw64.native-models-run.v1"},{"models",list},{"rdram_modified",false}};
         if (trail.enabled)
             summary["trail"] = {{"classified_quads",trail.classified.load()},{"snapshots",trail.snapshots.load()},
@@ -655,9 +721,10 @@ void shutdown() {
     for (auto& m : models) {
         for (auto& set : m->plateSets) set.reset();
         for (auto& texture : m->plateTextures) texture.reset();
-        m->mesh.reset(); m->vertexBuffer.reset(); m->indexBuffer.reset();
+        m->mesh.reset(); m->atlas.reset(); m->vertexBuffer.reset(); m->indexBuffer.reset();
     }
     markerMesh.reset(); vertexBuffer.reset(); indexBuffer.reset();
     markerProgram.reset(); ringProgram.reset(); modelProgram.reset(); trailProgram.reset(); plateProgram.reset();
+    bakedProgram.reset(); waterProgram.reset();
 }
 }
