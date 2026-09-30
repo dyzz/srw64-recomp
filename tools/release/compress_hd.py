@@ -118,11 +118,12 @@ def compress_tactical_maps(art: Path) -> int:
     return len(index["maps"])
 
 
-def compress_units(art: Path) -> int:
-    """Whole HD unit poses: scaled to UNIT_SCALE (UNIT_LIMIT at most), then JPEG colour
-    and an alpha PNG beside it, as the portraits. The masters fill transparent pixels
-    with the nearest painted colour, so colour and alpha scale apart without dark edges."""
-    index_path = art / "srw64-units-hd.json"
+def compress_units(art: Path, index_name: str = "srw64-units-hd.json") -> int:
+    """Whole HD unit poses (and the frames derived from them, srw64-unit-extras-hd.json):
+    scaled to UNIT_SCALE (UNIT_LIMIT at most), then JPEG colour and an alpha PNG beside
+    it, as the portraits. The masters fill transparent pixels with the nearest painted
+    colour, so colour and alpha scale apart without dark edges."""
+    index_path = art / index_name
     if not index_path.is_file():
         return 0
     index = json.loads(index_path.read_text())
@@ -178,7 +179,8 @@ def compress_rt64(art: Path) -> int:
 
 def compress(art: Path) -> dict:
     return {"backgrounds": compress_backgrounds(art), "portraits": compress_portraits(art),
-            "units": compress_units(art), "tactical_maps": compress_tactical_maps(art),
+            "units": compress_units(art), "unit_extras": compress_units(art, "srw64-unit-extras-hd.json"),
+            "tactical_maps": compress_tactical_maps(art),
             "rt64_resaved": compress_rt64(art), "jpeg_quality": QUALITY, "jpeg_subsampling": SUBSAMPLING}
 
 

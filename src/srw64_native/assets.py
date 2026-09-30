@@ -147,6 +147,11 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
     unit_index, unit_files = None, []
     if "units" in manifest:
         unit_index, unit_files = whole_images(root, manifest["units"], "units.json", "srw64.unit-images.v1", "Unit pose")
+    # Frames of a unit's other battle images derived from its whole HD pose (native_sprite.cpp).
+    extra_index, extra_files = None, []
+    if "unit_extras" in manifest:
+        extra_index, extra_files = whole_images(root, manifest["unit_extras"], "unit-extras.json",
+                                                "srw64.unit-extra-images.v1", "Unit extra")
     background_index, background_files = None, []
     if "backgrounds" in manifest:
         background_index, background_files = whole_images(root, manifest["backgrounds"], "backgrounds.json",
@@ -177,6 +182,8 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json")
     if unit_index is not None:
         copy_whole_images(unit_index, unit_files, output, "units", "srw64-units-hd.json")
+    if extra_index is not None:
+        copy_whole_images(extra_index, extra_files, output, "unit-extras", "srw64-unit-extras-hd.json")
     if background_index is not None:
         copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json")
     if scene_index is not None:
@@ -202,6 +209,6 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         (output / "srw64-tactical-maps.json").write_text(json.dumps(
             {"schema": "srw64.tactical-maps-runtime.v1", "root": root_name, "maps": len(maps_index["maps"]),
              "colony_frames": len(maps_index["colony_frames"])}, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "unit_extras": len(extra_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
             "tactical_maps": len(maps_index["maps"]) if maps_index else 0,
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}
