@@ -11,6 +11,8 @@ std::u16string utf16(const std::string& value);
 struct NameActions {
     std::function<void(uint64_t,unsigned)> select, choose;
     std::function<void(uint64_t,bool)> review;
+    // An image file as an RmlUi resource, resampled for the given width in dp.
+    std::function<std::string(const std::string&,int)> image;
 };
 // The protagonist selection and the review of both names (docs/native/native-name-entry.md).
 // Consumes an immutable Request whose names are already in the reading language, and
@@ -22,6 +24,7 @@ class NamePage final : public Rml::EventListener {
     names::Request request;
     std::map<std::string,std::string> labels;
     std::string locale;
+    int page_w{},page_h{};   // the window in dp; the layout is sized to it
     bool waiting{}, hd{}, art_changed{};
     void build();
     std::string label(const std::string& key) const;

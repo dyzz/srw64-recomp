@@ -6,12 +6,12 @@
 
 重新启动 `scripts/Play SRW64 Native.command`，选择新游戏、跳过公共序章后出现主角选择页，确定后进入确认页。两步共用一套页头，界面文案有日、中、英三语。页面在 Original 和 HD 模式下都能用，人物头像按模式选原图或已登记的 HD 图。
 
-- **主角选择**：四张卡片按原版顺序并排——ブラッド（超级系·男）、マナミ（超级系·女）、アークライト（真实系·男）、セレイン（真实系·女）。每张卡片上方是主角头像与默认姓名，分隔线下是搭档头像与姓名，姓名按阅读语言显示。
-  - 操作：←→ 切换，Enter／Z／空格确定；鼠标点击卡片高亮，再点一次或双击确定，也可以按「继续：确认」。
+- **主角选择**（2026-09-30 起为 2×2 卡片，设计稿见 Claude 画布「SRW64 主角选择重设计」方案 C）：四张卡片两行两列，按原版顺序——ブラッド（超级系·男）、マナミ（超级系·女）在上排，アークライト（真实系·男）、セレイン（真实系·女）在下排。每张卡片左上是斜角的路线标签（超级系橙、真实系蓝），下面主角与搭档两张**同尺寸**头像并排，各自标「主角／搭档」和默认姓名（阅读语言）。头像边长由窗口算出：卡片高减去标签、标注和姓名后的余量，Deck 特大档约 100 dp（150 像素）。
+  - 操作：←→ 按原版顺序循环，↑↓ 换行；Enter／Z／A 确定；鼠标或触摸点击卡片高亮，再按「继续：确认」。底栏显示按键提示（`select_keyboard_hint`，手柄下为 `_pad` 版）。
   - 音效：切换时播放原版光标音，确定时播放原版确认音。
   - 原版这一页没有返回，这一页也没有。
-- **确认页**：显示两人的全名和昵称（阅读语言，全名用该语言的分隔符连接）。「开始故事」（Enter／Z）沿原版入口进入剧情；「返回角色选择」（Esc）回到选角页，保持原来的高亮。
-- **窗口缩放**：头像、文字和按钮按同一个布局比例缩放，不另开窗口。SDL 提前更新 Metal layer 时也同步 Plume drawable 描述尺寸，避免返回剧情后对白仍用上一次的窗口尺寸。
+- **确认页**：上排两张横卡（主角卡青色描边），各有路线标签、方框头像、全名与「/ 昵称」（阅读语言，全名用该语言的分隔符连接）；下排两张卡展示**初始机体**：机体姿势图（HD 模式下用整张 HD 姿势，`battle_assets.units` 登记的 `hd`）、机体名（文本 `0x20F + 机体号`，随阅读语言，切换语言时宿主重新取名）和「驾驶员 · 昵称」。各路线的初始机体写死在 `native_name_entry.cpp` 的 `route_units`：アースゲイン(34)／ヴァイローズ(35)、スイームルグ(36)／エルブルス(37)、ソルデファー(30)／ノウルーズ(327)、スヴァンヒルド(32)／シグルーン(328)。「开始故事」（Enter／Z／A）沿原版入口进入剧情；「返回角色选择」（Esc／X／B）回到选角页，保持原来的高亮。
+- **窗口缩放**：页面按窗口的 dp 尺寸排版（`NamePage::build` 用 `context` 的尺寸和 dp 比例算头像、卡片尺寸，窗口或界面大小变化时重建），头像通过 `NameActions::image` 按显示宽度重采样。SDL 提前更新 Metal layer 时也同步 Plume drawable 描述尺寸，避免返回剧情后对白仍用上一次的窗口尺寸。
 - **切换语言**：F7 或设置切换语言，页面立即按新语言重建。
 
 ## 适配边界
@@ -22,7 +22,7 @@
 - 桥接在 `src/host/native_name_entry.cpp`；
 - 原生 UI 在 `src/native/ui/name_page.cpp`（RmlUi）；
 - 字形解码在 `src/native/game_adapter/name_codec.hpp`，默认名表在 `src/native/game_adapter/default_names.hpp`；
-- 界面词条在 `content/locales/{ja,zh-Hans,en}.json`。
+- 界面词条在 `content/locales/{ja,zh-Hans,en}.json`（`select_*`、`name_*`、`review_keyboard_hint`，键名登记在 `src/srw64_native/profile.py` 的 `UI_KEYS`）。
 
 平台 UI 只接收不可变请求并回报语义动作；只有游戏线程读取、修改 RDRAM，UI 线程不调用原版函数。
 
@@ -63,6 +63,8 @@
 ## 验证与证据
 
 现在的页面用[调试接口](../guide/debug-interface.md)驱动：`ui.click` 与 `ui.key` 操作卡片和按钮，`status.name_page` 给出当前请求（选角页附四条路线的日文默认姓名）；名字写入与开始记在 `name-entry-events.jsonl`（`selected`、`back`、`started`、`original-started`、`defaults-rejected`）。
+- 离线探针 `srw64-ui-probe`（`cmake --build build/recomp/gfx-build --target srw64-ui-probe`）不开游戏就能画这两页：`--dialogue` 给它 `name_entry_assets` 的头像和 `battle_assets.units` 的初始机体姿势，`--density` 是宿主的 dp 比例（Retina Mac 上模拟 Deck 特大档传 2.96，标准档 2.0），脚本里 `resize`／`capture`／`click`／`key`／`language`。夹具用 ROM 的八个默认名和各路线的初始机体名，按 `content/locales/terms/<语言>.json` 的 `default_names`、`units` 换成阅读语言，头像按 `route_faces` 对路线。2026-09-30 的 2×2 版就是这样在 1280×800 特大、1280×800 标准、960×720 三种尺寸、三种语言下核对的，RmlUi 无排版断言。
+  - RmlUi 的两个坑：`display:flex` 容器里直接写的文本不显示，要包 `<span>`；弹性项 `flex:1 1 0` 里再嵌弹性盒时，RmlUi 会按 min-content 排一遍，取整误差触发 `containing_block.x >= 0` 断言——确认页的四张卡因此改成显式宽度。
 - `tools/recomp/verify/verify_shared_ui.py`：选角、确认页三语名字、设置、缩放、返回与开始。
 - `tools/recomp/debug/check_name_entry_ui_switch.py`：原版／现代页面切换，原版「はい」直接开始。
 - `tools/recomp/debug/check_dialogue.py`：新游戏时用 Enter 走完主角选择与确认，进入剧情。

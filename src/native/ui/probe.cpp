@@ -1,4 +1,6 @@
 #include "name_page.hpp"
+#include "slant_decorator.hpp"
+#include "text/button_prompts.hpp"
 #include "probe_surface.hpp"
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
@@ -18,43 +20,104 @@ std::vector<Rml::byte> bytes(const fs::path& path){std::ifstream in(path,std::io
 struct Fixture {
     srw64::names::Request request;
     unsigned starts{},backs{};
+    // The ROM's default names and starting units per route, protagonist then partner
+    // (tests/test_protagonist_select.py, native_name_entry.cpp route_units); the terms
+    // catalog translates them the way the host's DefaultNames and text table do.
+    static constexpr const char* full_names[4][2]={{"ブラッド・スカイウィンド","カーツ・フォルネウス"},{"マナミ・ハミル","アイシャ・リッジモンド"},{"アークライト・ブルー","エルリッヒ・シュターゼン"},{"セレイン・メネス","リッシュ・グリスウェル"}};
+    static constexpr const char* nicknames[4][2]={{"ブラッド","カーツ"},{"マナミ","アイシャ"},{"アーク","エルリッヒ"},{"セレイン","リッシュ"}};
+    static constexpr const char* unit_names[4][2]={{"アースゲイン","ヴァイローズ"},{"スイームルグ","エルブルス"},{"ソルデファー","ノウルーズ"},{"スヴァンヒルド","シグルーン"}};
+    std::map<std::string,json> terms;   // locale -> terms sections (none for ja)
     Fixture(){
         request.serial=1;request.visible=request.active=true;request.person=srw64::names::Selection;
-        for(unsigned i=0;i<4;++i)request.choices[i].names={{{u"アキラ",utf16("Test"+std::to_string(i+1))},{u"ユウ",u"Test"}}};
+        localize("ja");
+    }
+    // Names in the reading language: the terms catalog's default_names and units, split
+    // at the language's separator into given and family name as the host shows them.
+    void localize(const std::string& locale){
+        auto term=[&](const char* section,const std::string& ja){
+            const auto found=terms.find(locale);
+            if(found==terms.end() || !found->second.contains(section))return ja;
+            return found->second.at(section).value(ja,ja);
+        };
+        const std::string sep=srw64::names::separator(locale);
+        auto split=[&](const std::string& full){
+            const auto at=full.find(sep);
+            return std::array<std::u16string,2>{utf16(at==std::string::npos?full:full.substr(0,at)),utf16(at==std::string::npos?"":full.substr(at+sep.size()))};
+        };
+        for(unsigned r=0;r<4;++r)for(unsigned p=0;p<2;++p){
+            request.choices[r].names[p]=split(term("default_names",full_names[r][p]));
+            request.choices[r].unit_names[p]=term("units",unit_names[r][p]);
+        }
+        for(unsigned p=0;p<2;++p){
+            const auto name=split(term("default_names",full_names[request.route][p]));
+            request.names[p]={name[0],name[1],utf16(term("default_names",nicknames[request.route][p]))};
+        }
     }
     void open(unsigned person){request.person=person;++request.serial;request.active=true;request.pending=false;}
     NameActions actions(){return {
         [this](uint64_t serial,unsigned route){if(serial==request.serial && route<4)request.route=route;},
-        [this](uint64_t serial,unsigned route){if(serial!=request.serial || route>=4)return;request.route=route;
-            for(unsigned p=0;p<2;++p)request.names[p]={request.choices[route].names[p][0],request.choices[route].names[p][1],request.choices[route].names[p][0]};
-            open(srw64::names::Review);},
+        [this](uint64_t serial,unsigned route){if(serial!=request.serial || route>=4)return;request.route=route;open(srw64::names::Review);},
         [this](uint64_t serial,bool confirm){if(serial!=request.serial)return;
-            if(confirm){++starts;request.visible=false;}else{++backs;open(srw64::names::Selection);}}
+            if(confirm){++starts;request.visible=false;}else{++backs;open(srw64::names::Selection);}},
+        // Fixture images are registered by name; the page's requested width is ignored.
+        [](const std::string& path,int){return path;}
     };}
 };
 }
 int main(int argc,char** argv){try{
     std::map<std::string,std::string> options;
     for(int i=1;i<argc;++i){std::string key=argv[i];if(key=="--help"){
-        std::cout<<"srw64-ui-probe --catalog-dir content/locales --font local.ttf --output NEW_DIR [--script actions.json] [--dialogue local/dialogue.json] [--language ja|zh-Hans|en]\n";return 0;}
+        std::cout<<"srw64-ui-probe --catalog-dir content/locales --font local.ttf --output NEW_DIR [--script actions.json] [--dialogue local/dialogue.json] [--language ja|zh-Hans|en] [--density 1.48] [--pad deck|xbox|playstation|nintendo]\n";return 0;}
         if(i+1==argc || !key.starts_with("--") || options.contains(key))throw std::runtime_error("Invalid probe arguments");options[key]=argv[++i];}
-    for(const auto& [key,value]:options)if(key!="--catalog-dir" && key!="--font" && key!="--output" && key!="--script" && key!="--dialogue" && key!="--language")throw std::runtime_error("Unknown option: "+key);
+    for(const auto& [key,value]:options)if(key!="--catalog-dir" && key!="--font" && key!="--output" && key!="--script" && key!="--dialogue" && key!="--language" && key!="--density" && key!="--pad")throw std::runtime_error("Unknown option: "+key);
     for(auto key:{"--catalog-dir","--font","--output"})if(!options.contains(key))throw std::runtime_error(std::string("Required: ")+key);
     fs::path output=fs::absolute(options.at("--output"));if(!fs::create_directory(output))throw std::runtime_error("Output must be a new directory");
     std::map<std::string,std::map<std::string,std::string>> catalogs;
     for(auto language:{"ja","zh-Hans","en"})catalogs[language]=load(fs::path(options.at("--catalog-dir"))/(std::string(language)+".json")).at("ui");
     std::string locale=options.contains("--language")?options.at("--language"):"en";
     if(!catalogs.contains(locale))throw std::runtime_error("Unknown locale");
+    // Button tokens become PromptFont icons as in the host (frontend.cpp sync): keyboard
+    // hints, or with --pad the controller hints ("_pad" labels) of that controller family.
+    srw64::text::PromptContext prompts;
+    if(options.contains("--pad")){
+        const auto family=options.at("--pad");
+        prompts.pad=true;
+        prompts.family=family=="deck"?srw64::text::PadFamily::Deck:family=="playstation"?srw64::text::PadFamily::PlayStation:family=="nintendo"?srw64::text::PadFamily::Nintendo:srw64::text::PadFamily::Xbox;
+    }
+    const auto labels=[&](const std::string& language){
+        auto result=catalogs.at(language);
+        if(prompts.pad)for(auto& [key,value]:result)if(const auto pad=result.find(key+"_pad");pad!=result.end())value=pad->second;
+        for(auto& [key,value]:result)value=srw64::text::expand_prompts(value,prompts);
+        return result;
+    };
     json script=json::array();if(options.contains("--script")){
         const auto data=load(options.at("--script"));if(data.at("schema")!="srw64.ui-probe-script.v1")throw std::runtime_error("Invalid script schema");script=data.at("actions");}
     Fixture fixture;
+    for(auto language:{"zh-Hans","en"}){
+        const auto path=fs::path(options.at("--catalog-dir"))/"terms"/(std::string(language)+".json");
+        if(fs::exists(path))fixture.terms[language]=load(path).at("sections");
+    }
     std::vector<std::pair<std::string,std::vector<char>>> portraits;
     if(options.contains("--dialogue")){
         const auto data=load(options.at("--dialogue"));
-        unsigned i=0;for(auto& [id,face]:data.at("name_entry_assets").at("portraits").items()){
-            if(i==8)break;fs::path path=face.at("original").get<std::string>();if(path.is_relative())path=fs::path(options.at("--dialogue")).parent_path()/path;
+        // The eight portraits by route (route_faces: protagonist then partner, four routes each).
+        const auto& assets=data.at("name_entry_assets");
+        for(unsigned p=0;p<2;++p)for(unsigned r=0;r<4;++r){
+            const auto id=std::to_string(assets.at("route_faces").at(p).at(r).get<unsigned>());
+            fs::path path=assets.at("portraits").at(id).at("original").get<std::string>();if(path.is_relative())path=fs::path(options.at("--dialogue")).parent_path()/path;
             std::ifstream in(path,std::ios::binary);if(!in)throw std::runtime_error("Missing fixture portrait");
-            std::string name="fixture-face-"+id;portraits.push_back({name,{std::istreambuf_iterator<char>(in),{}}});fixture.request.choices[i/2].portraits[i%2][0]=name;++i;
+            std::string name="fixture-face-"+id;portraits.push_back({name,{std::istreambuf_iterator<char>(in),{}}});fixture.request.choices[r].portraits[p][0]=name;
+        }
+        // The starting units' poses (native_name_entry.cpp route_units), when the content has them.
+        if(data.contains("battle_assets") && data.at("battle_assets").contains("units")){
+            const unsigned route_units[4][2]={{34,35},{36,37},{30,327},{32,328}};
+            const auto& units=data.at("battle_assets").at("units");
+            for(unsigned r=0;r<4;++r)for(unsigned p=0;p<2;++p)if(const auto row=units.find(std::to_string(route_units[r][p]));row!=units.end()){
+                fs::path path=row->at("path").get<std::string>();if(path.is_relative())path=fs::path(options.at("--dialogue")).parent_path()/path;
+                std::ifstream in(path,std::ios::binary);if(!in)throw std::runtime_error("Missing fixture unit pose");
+                std::string name="fixture-unit-"+std::to_string(route_units[r][p]);portraits.push_back({name,{std::istreambuf_iterator<char>(in),{}}});
+                fixture.request.choices[r].units[p]={name,"",row->value("width",96u),row->value("height",96u)};
+            }
         }
     }
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS))throw std::runtime_error(SDL_GetError());
@@ -78,12 +141,22 @@ int main(int argc,char** argv){try{
     if(!Rml::Initialise())throw std::runtime_error("RmlUi initialization failed");
     struct RmlCleanup{bool active=true;~RmlCleanup(){if(active)Rml::Shutdown();}} rml_cleanup;
     if(!Rml::LoadFontFace(font,"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))throw std::runtime_error("Cannot load font");
+    // The button icons, a fallback face beside the font as in the host.
+    std::vector<Rml::byte> prompt_font;
+    if(const auto path=fs::path(options.at("--font")).parent_path()/"SRW64Prompts.ttf";fs::exists(path)){
+        prompt_font=bytes(path);
+        if(!Rml::LoadFontFace(prompt_font,"srw64-ui-prompts",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))throw std::runtime_error("Cannot load prompt font");
+    }
+    SlantInstancer slant_instancer;Rml::Factory::RegisterDecoratorInstancer("slant",&slant_instancer);   // the route tags (frontend.cpp registers it too)
     auto* context=Rml::CreateContext("name-probe",{1100,760});if(!context)throw std::runtime_error("Cannot create RmlUi context");
+    // The host's dp ratio (frontend.cpp sync): a Steam Deck at Largest is 1.48.
+    if(options.contains("--density"))context->SetDensityIndependentPixelRatio(std::stof(options.at("--density")));
+    context->SetDimensions({int(swapchain->getWidth()),int(swapchain->getHeight())});   // the window's size before the first layout, as the host
     bool running=true;unsigned frame=0;size_t next_action=0;std::ofstream log(output/"events.jsonl");
     {
     NamePage page(*context,fixture.actions());
-    page.sync({},catalogs.at(locale),locale);   // the host syncs every frame, also with no page up
-    auto sync=[&]{page.sync(fixture.request,catalogs.at(locale),locale);context->Update();};sync();
+    page.sync({},labels(locale),locale);   // the host syncs every frame, also with no page up
+    auto sync=[&]{fixture.localize(locale);page.sync(fixture.request,labels(locale),locale);context->Update();};sync();
     auto snapshot=[&]{
         json state={{"schema","srw64.ui-probe-state.v1"},{"frame",frame},{"locale",locale},{"serial",fixture.request.serial},
             {"person",fixture.request.person},{"route",fixture.request.route},{"visible",fixture.request.visible},
