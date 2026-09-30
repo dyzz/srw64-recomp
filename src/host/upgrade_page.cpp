@@ -7,6 +7,7 @@
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
+#include "focus_lines.hpp"
 #include <algorithm>
 #include <atomic>
 #include <fstream>
@@ -271,6 +272,7 @@ json stats_json(uint8_t* ram,recomp_context* ctx) {
 bool stats_build(uint8_t* ram,recomp_context* ctx) {
     if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
+    focus_lines::show(ram,ctx);
     // D_801DEC50 is the row whose price the original step last drew; keeping it equal
     // to the cursor stops the step from drawing the price itself.
     write8(ram,0x801DDA30,2);write32(ram,mode,0);write32(ram,stat_drawn,read(ram,stat_cursor,2));write8(ram,0x801DECC1,0);write8(ram,0x801DECC0,0);

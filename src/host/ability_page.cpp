@@ -9,6 +9,7 @@
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
+#include "focus_lines.hpp"
 #include <atomic>
 #include <fstream>
 #include <mutex>
@@ -282,6 +283,7 @@ json unit_json(uint8_t* ram,recomp_context* ctx) {
 }
 bool unit_build(uint8_t* ram,recomp_context* ctx) {
     call(ram,ctx,resident_func_80085B94,0,1);
+    focus_lines::show(ram,ctx);
     std::lock_guard lock(mutex);
     open(unit_json(ram,ctx),ram);
     call(ram,ctx,resident_func_80099814,4,2,0);
