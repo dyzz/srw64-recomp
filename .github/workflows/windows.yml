@@ -167,6 +167,8 @@ jobs:
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item tools/release/windows/srw64.cmd $out
+          # The VC++ runtime (redistributable with the program), so no separate installer is needed.
+          Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
           dumpbin /nologo /dependents "$out/srw64.exe"
           Get-ChildItem $out | Format-Table Name, Length
 
