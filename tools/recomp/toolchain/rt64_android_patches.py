@@ -1,19 +1,10 @@
-#!/usr/bin/env python3
-"""Android adaptations for a copy of the prepared RT64 (docs/design/android-port.md).
+"""RT64 changes for the Android build (docs/design/android-port.md).
 
-prepare_rt64.py prepares build/recomp/upstream/RT64 for the desktop hosts. The Android
-build works on its own copy of that tree (other sessions build from the shared one),
-and this script applies the Android changes there: each is an exact, unique text
-replacement, and every one is guarded by ANDROID or __ANDROID__, so the same patches
-leave the desktop builds unchanged when they move into prepare_rt64.py.
-
-  tools/recomp/toolchain/prepare_rt64_android.py build/android/upstream/RT64
+prepare_rt64.py applies these after its own patches, as exact and unique text
+replacements. Each one is guarded by ANDROID, __ANDROID__ or an option that is off
+on the desktop (RT64_SINGLE_SOURCE_BLEND), so the desktop hosts build as before.
 """
 from __future__ import annotations
-
-import argparse
-from pathlib import Path
-import sys
 
 PATCHES: list[tuple[str, str, str]] = [
     # Shader tools run on the build machine: DXC for the host, file_to_c built for the
@@ -124,34 +115,49 @@ namespace RT64 {
         newWindowTop = 0;
 #   elif defined(RT64_SDL_WINDOW_VULKAN)
         SDL_GetWindowPosition(windowHandle, &newWindowLeft, &newWindowTop);'''),
+    # Android surfaces offer R8G8B8A8 but not B8G8R8A8 (Solana Seeker, Mali-G615): with
+    # B8G8R8A8 Plume finds no surface format and the Mali driver crashes in resize().
+    ('src/hle/rt64_application.cpp', '''        swapChainDesc.format = RenderFormat::B8G8R8A8_UNORM;''', '''#   ifdef __ANDROID__
+        swapChainDesc.format = RenderFormat::R8G8B8A8_UNORM;
+#   else
+        swapChainDesc.format = RenderFormat::B8G8R8A8_UNORM;
+#   endif'''),
+    # Dual-source blending (SRC1_ALPHA) is missing on Mali GPUs, which still accept the
+    # pipeline and draw white. With RT64_SINGLE_SOURCE_BLEND (on for Android) the pixel
+    # shader has one output: a blended draw writes its blend factor into alpha in place
+    # of the coverage, and blends with SRC_ALPHA. Colours are the same; only the stored
+    # coverage of blended pixels differs.
+    ('CMakeLists.txt', '''set (DXC_PS_OPTS "${DXC_COMMON_OPTS}" "-E" "PSMain" "-T ps_6_3")''', '''set (DXC_PS_OPTS "${DXC_COMMON_OPTS}" "-E" "PSMain" "-T ps_6_3")
+option(RT64_SINGLE_SOURCE_BLEND "Blend without dual-source blending (Android: most Mali GPUs lack it)" OFF)
+if (ANDROID OR RT64_SINGLE_SOURCE_BLEND)
+    list(APPEND DXC_PS_OPTS "-D" "SINGLE_SOURCE_BLEND")
+    add_compile_definitions(RT64_SINGLE_SOURCE_BLEND)
+endif()'''),
+    ('src/shaders/RasterPS.hlsl', '''    // Add highlight color to the last step.''', '''#if defined(SINGLE_SOURCE_BLEND)
+    // One output carries both: a blended draw stores its blend factor, not its coverage.
+    if (alphaBlend) {
+        resultColor.a = resultAlpha.a;
+    }
+#endif
+
+    // Add highlight color to the last step.'''),
+    ('src/shaders/RasterPS.hlsl', '''    , [[vk::location(0)]] [[vk::index(1)]] out float4 pixelAlpha : SV_TARGET1''', '''#if !defined(SINGLE_SOURCE_BLEND)
+    , [[vk::location(0)]] [[vk::index(1)]] out float4 pixelAlpha : SV_TARGET1
+#endif'''),
+    ('src/shaders/RasterPS.hlsl', '''    pixelAlpha = resultAlpha;''', '''#if !defined(SINGLE_SOURCE_BLEND)
+    pixelAlpha = resultAlpha;
+#endif'''),
+    ('src/render/rt64_raster_shader.cpp', '''            targetBlend.srcBlend = RenderBlend::SRC1_ALPHA;
+            targetBlend.dstBlend = RenderBlend::INV_SRC1_ALPHA;''', '''#       ifdef RT64_SINGLE_SOURCE_BLEND
+            targetBlend.srcBlend = RenderBlend::SRC_ALPHA;
+            targetBlend.dstBlend = RenderBlend::INV_SRC_ALPHA;
+#       else
+            targetBlend.srcBlend = RenderBlend::SRC1_ALPHA;
+            targetBlend.dstBlend = RenderBlend::INV_SRC1_ALPHA;
+#       endif'''),
 ]
 
-
-def apply(checkout: Path) -> list[str]:
-    applied = []
-    texts: dict[str, str] = {}
-    for relative, old, new in PATCHES:
-        text = texts.setdefault(relative, (checkout / relative).read_text())
-        if text.count(new) == 1 and text.count(old) <= (1 if old in new else 0):
-            continue  # already applied
-        if text.count(old) != 1:
-            raise RuntimeError(f'Android patch context differs in {relative}: {old.splitlines()[0]!r}')
-        texts[relative] = text.replace(old, new)
-        applied.append(relative)
-    for relative, text in texts.items():
-        if (checkout / relative).read_text() != text:
-            (checkout / relative).write_text(text)
-    return applied
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('checkout', type=Path)
-    args = parser.parse_args()
-    applied = apply(args.checkout)
-    print(f'SRW64_RT64_ANDROID applied={len(applied)} patches={len(PATCHES)}')
-    return 0
-
-
-if __name__ == '__main__':
-    sys.exit(main())
+# prepare_rt64.py applies a file's replacements in this order, after its own.
+BY_FILE: dict[str, list[tuple[str, str]]] = {}
+for _relative, _old, _new in PATCHES:
+    BY_FILE.setdefault(_relative, []).append((_old, _new))

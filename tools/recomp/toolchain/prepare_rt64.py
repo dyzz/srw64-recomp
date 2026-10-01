@@ -17,13 +17,15 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # tools/, home of the recomp package
 from recomp.toolchain.analyze_layout import ROOT
 from recomp.toolchain.native_model_hook_patches import PATCHES as NATIVE_MODEL_PATCHES
+from recomp.toolchain.rt64_android_patches import BY_FILE as ANDROID_PATCHES
 
 
 def patch(checkout: Path, relative: str, old: str | None = None, new: str | None = None, additional=()) -> dict:
     original = subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout).decode()
     if old is not None and original.count(old) != 1:
         raise RuntimeError(f"patch context differs in {relative}")
-    steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional]
+    steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional,
+             *ANDROID_PATCHES.get(relative, [])]
     expected = original
     # A checkout patched by an earlier revision of these lists holds some of the
     # patches, in order: accept any such subset, nothing else.
@@ -71,7 +73,7 @@ def main() -> int:
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
                                            "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp"}
-                                           | set(NATIVE_MODEL_PATCHES)),
+                                           | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
@@ -372,13 +374,15 @@ def main() -> int:
                           ('#include "rt64_workload_queue.h"\n',
                            '#include "rt64_workload_queue.h"\n\n#include <cmath>\n\n#include "../include/rt64_extended_gbi.h"\n')]))
     recorded = {r['path'] for r in records}
-    for relative in NATIVE_MODEL_PATCHES:
+    for relative in [*NATIVE_MODEL_PATCHES, *ANDROID_PATCHES]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
+            recorded.add(str((checkout/relative).relative_to(ROOT)))
             records.append(patch(checkout, relative))
     report = {"schema": "srw64.recomp-graphics-source-patches.v1", "rt64_commit": revision,
               "plume_commit": plume_revision, "patches": records,
               "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "native_model_hooks_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/native_model_hook_patches.py').read_bytes()).hexdigest(),
+              "android_patches_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/rt64_android_patches.py').read_bytes()).hexdigest(),
               "purpose": "Metal source compilation, resize descriptor synchronization, main-queue window blocks that outlive their swapchain, workload-matched UI hooks, and opt-in native model callbacks preserving scene transforms and draw order"}
     (ROOT / "build/recomp/graphics-source-patches.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
