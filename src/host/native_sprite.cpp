@@ -480,6 +480,27 @@ void gpu_init() {
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true, .repeat_u = true}}});
 }
 
+// Which of its part's two vertex sets a quad was drawn from: 0 the part as the frame has
+// it, 1 the mirrored set 8009761C takes for the other side (64 bytes on; scenes of vertex
+// mode 0 only), -1 when the vertices belong to no part of the frame. The texture
+// coordinates cannot tell: a part can be stored flipped (flag 0x10), and 134 of the 316
+// unit poses are stored that way whole.
+int vertex_set(const uint8_t* rdram, const SceneDraw& draw, uint8_t frame, uint32_t vertices) {
+    const uint32_t sub = kSlots + draw.slot * kSlotSize + kSubBase + draw.sub * kSubSize;
+    uint16_t scene;
+    uint32_t data;
+    if (!resource(rdram, int16_t(half(rdram, sub + 0xA)), scene, data)) return -1;
+    const uint32_t table = 2 + 2u * byte(rdram, data) + 2;
+    uint32_t part = data + half(rdram, data + table + 2u * frame);
+    for (int n = 0; n < 64 && part + 16 <= 0x800000; ++n, part += 16) {
+        if (half(rdram, part) & 0x8000) break;
+        const uint32_t offset = uint32_t(half(rdram, part + 12)) << 16 | half(rdram, part + 14);
+        if (vertices == data + offset) return 0;
+        if (vertices == data + offset + 0x40) return 1;
+    }
+    return -1;
+}
+
 void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     if (!installed || draw.dl_end <= draw.dl_begin) return;
     SceneId id;
@@ -514,7 +535,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     std::vector<uint32_t> parts;
     float alpha = 1;
     bool odd = false;
-    int flipped = -1;   // quads: the part drawn from its mirrored vertices (S falls as x rises)
+    int flipped = -1;   // quads: drawn from the parts' mirrored vertex sets (the unit faces the other way)
     float x0 = 1e9f, y0 = 1e9f, x1 = -1e9f, y1 = -1e9f, z = 0;
     for (uint32_t p = draw.dl_begin + 8; p + 8 <= draw.dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), op = w0 >> 24;
@@ -539,16 +560,12 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
             if (!load || word(rdram, p - 8) >> 24 != 0xF2) { odd = true; continue; }
             const uint32_t vertices = word(rdram, load + 4) & 0x1FFFFFFF;
             if (vertices + 64 > 0x800000) { odd = true; continue; }
-            float left = 1e9f, right = -1e9f, s_left = 0, s_right = 0;
             for (uint32_t v = 0; v < 4; ++v) {
                 const float x = int16_t(half(rdram, vertices + v * 16)), y = int16_t(half(rdram, vertices + v * 16 + 2));
                 z = int16_t(half(rdram, vertices + v * 16 + 4));
                 x0 = std::min(x0, x); x1 = std::max(x1, x); y0 = std::min(y0, y); y1 = std::max(y1, y);
-                const float s = int16_t(half(rdram, vertices + v * 16 + 8));
-                if (x < left) { left = x; s_left = s; }
-                if (x > right) { right = x; s_right = s; }
             }
-            if (flipped < 0 && right > left && s_left != s_right) flipped = s_left > s_right ? 1 : 0;
+            if (flipped < 0) flipped = vertex_set(rdram, draw, id.frame, vertices);
             parts.push_back(p);
         }
     }
