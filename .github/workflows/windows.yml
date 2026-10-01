@@ -169,8 +169,19 @@ jobs:
           dumpbin /nologo /dependents "$out/srw64.exe"
           Get-ChildItem $out | Format-Table Name, Length
 
+      # The program carries the recompiled game, like a release download; until a release is
+      # public it stays encrypted too (decrypt: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000).
+      - name: Encrypt the package
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          tar -czf package.tgz SRW64-windows-x64
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in package.tgz -out SRW64-windows-x64.tgz.enc
+          rm package.tgz
+
       - uses: actions/upload-artifact@v4
         with:
-          name: SRW64-windows-x64
-          path: SRW64-windows-x64
+          name: SRW64-windows-x64-encrypted
+          path: SRW64-windows-x64.tgz.enc
           retention-days: 7
