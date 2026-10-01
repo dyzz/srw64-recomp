@@ -88,7 +88,12 @@ void set_battle_ui(BattleUi ui) {
 }
 UiSize ui_size() {
     const int choice=size_choice.load();
+#ifdef __ANDROID__
+    // A phone or handheld screen, like the Deck's (docs/design/android-port.md).
+    return choice>=0?UiSize(choice):UiSize::Largest;
+#else
     return choice>=0?UiSize(choice):on_steam_deck()?UiSize::Largest:UiSize::Standard;
+#endif
 }
 const char* ui_size_name(UiSize size){return size==UiSize::Largest?"largest":size==UiSize::Large?"large":"standard";}
 float ui_scale(UiSize size){return size==UiSize::Largest?1.5f:size==UiSize::Large?1.25f:1.f;}
