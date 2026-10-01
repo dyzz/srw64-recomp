@@ -61,9 +61,6 @@ std::vector<AutoSave> autosaves();
 // the record mapped and may add to `about`), then its .json `about`, then keeps the
 // newest `keep` of its kind.
 bool autosave(bool turn,unsigned keep,nlohmann::json& about,const std::function<void(const fs::path&)>& write);
-// A slot's player note (slots/NNN.json); empty when there is none.
-std::string note(unsigned number);
-void set_note(unsigned number,const std::string& text);
 // Moves a slot or autosave record, with its .json, to trash/.
 bool trash(const fs::path& record);
 // import/: emulator files the player put there, with what each holds; export/: the
