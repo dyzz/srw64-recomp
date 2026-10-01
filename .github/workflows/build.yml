@@ -1,12 +1,13 @@
-# Windows x64 build (docs/design/three-platform-port.md, X3).
+# Windows x64 and Linux x64 (Steam Deck) builds (docs/design/three-platform-port.md; the
+# macOS app and the HD pack are built on the Mac by tools/release/build_release.py).
 #
 # The game code is recompiled from the ROM, which never enters this public repository:
 # the generate job reads it from the private dyzz/srw64-ci-inputs through a read-only
 # deploy key (secret CI_INPUTS_DEPLOY_KEY). What it generates is passed to the Windows
-# job encrypted with CI_ARTIFACT_KEY (artifacts of a public repository can be downloaded
+# jobs encrypted with CI_ARTIFACT_KEY (artifacts of a public repository can be downloaded
 # by anyone) and kept for a day. Only the built program is uploaded in the clear, the
 # same as a release download. No log may print ROM bytes or generated sources.
-name: windows
+name: build
 
 on:
   workflow_dispatch:
@@ -18,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: windows-${{ github.ref }}
+  group: build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -67,7 +68,8 @@ jobs:
             d=$(dirname "$g"); git -C "$d" rev-parse HEAD > "$d/.srw64-revision"
           done
           tar -czf "$RUNNER_TEMP/generated.tgz" --exclude=.git \
-            build/recomp/cpu-bound build/recomp/audio-probe build/fonts build/recomp/upstream
+            build/recomp/cpu-bound build/recomp/audio-probe build/fonts build/recomp/upstream \
+            build/recomp/graphics-source-patches.json
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY \
             -in "$RUNNER_TEMP/generated.tgz" -out generated.tgz.enc
           rm "$RUNNER_TEMP/generated.tgz" rom.z64
@@ -80,7 +82,7 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
-  build:
+  windows:
     needs: generate
     runs-on: windows-2022
     env:
@@ -188,4 +190,54 @@ jobs:
         with:
           name: SRW64-windows-x64-encrypted
           path: SRW64-windows-x64.tgz.enc
+          retention-days: 7
+
+  linux:
+    needs: generate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: generated-encrypted
+
+      - name: Decrypt the generated inputs
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out generated.tgz
+          tar -xzf generated.tgz
+          rm generated.tgz.enc generated.tgz
+
+      # The runtime libraries built from the pinned sources, and those sources.
+      - name: Dependency cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/linux-x64/deps
+            build/macos-deps/sources
+          key: linux-deps-${{ hashFiles('config/recomp/macos-dependencies.json') }}-v1
+
+      # The same Ubuntu 22.04 container as tools/release/linux/build.sh (glibc 2.35 baseline).
+      - name: Build in the Ubuntu 22.04 container
+        run: |
+          docker build -q -t srw64-linux-build:jammy tools/release/linux
+          docker run --rm -v "$PWD:$PWD" -w "$PWD" -e HOME=/tmp -e PYTHONUTF8=1 \
+            -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e GIT_CONFIG_VALUE_0='*' \
+            srw64-linux-build:jammy python3.11 tools/release/build_linux.py --jobs 4
+          sudo chown -R "$(id -u):$(id -g)" build
+          ls -l build/linux-x64/*.tar.gz
+
+      - name: Encrypt the package
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          mv build/linux-x64/*.tar.gz SRW64-linux-x64.tar.gz
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in SRW64-linux-x64.tar.gz -out SRW64-linux-x64.tar.gz.enc
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SRW64-linux-x64-encrypted
+          path: SRW64-linux-x64.tar.gz.enc
           retention-days: 7

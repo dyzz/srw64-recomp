@@ -7,7 +7,7 @@
 ## 一次构建
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.2
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.3
 ```
 
 - 输出目录默认是 `build/release/<版本>-<短提交号>`，已存在时拒绝覆盖。可以用 `--output` 指定，用 `--keep-source` 保留检出目录与编译产物。
@@ -47,7 +47,19 @@ PYTHONPATH=src:tools ../../../../.venv/bin/python tools/release/package_macos.py
 
 ### 附上其他平台的包
 
-Linux 包（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`）和 Windows 包（GitHub Actions 的 `windows` 工作流）在别处构建，
+Linux 包和 Windows 包由 GitHub Actions 的 `build` 工作流构建（`.github/workflows/build.yml`；推送 main、推送 `v*` 标签或手动触发）：
+Ubuntu 上从私有仓库 `dyzz/srw64-ci-inputs` 的 ROM 生成游戏代码，加密后交给 Windows（clang-cl）和 Linux（与 `tools/release/linux/build.sh`
+同一个 Ubuntu 22.04 容器）两个任务；成品也加密上传（公开仓库的产物谁都能下载），用本地 `~/.config/srw64/ci-artifact-key` 解开：
+
+```sh
+gh run download <运行号> --repo dyzz/srw64-recomp -n SRW64-linux-x64-encrypted
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/ci-artifact-key -in SRW64-linux-x64.tar.gz.enc -out SRW64-linux-x64.tar.gz
+```
+
+Windows 包同样下载 `SRW64-windows-x64-encrypted`，解开后是 `SRW64-windows-x64` 文件夹，压成 zip 再附上。CI 上没有 HD 素材，所以 Linux 包不带 Steam 封面图
+（`add-to-steam.sh` 照常加入游戏）；要带封面就在本机用 `tools/release/linux/build.sh` 构建。
+
+Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`），Windows 包只由 Actions 构建，
 用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：
 
 ```sh

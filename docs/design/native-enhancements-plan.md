@@ -35,7 +35,7 @@
 | `dialogue_layout.hpp`（2026-09-24 已删除） | 已识别开场对白和姓名页的局部字形绘制 | 目前只改位置；不能自动换行，也不是完整文字解释器 |
 | [`graphics.cpp`](../../src/host/graphics.cpp) | RT64 最终帧 draw hook、Metal、GPU 完成后读回、纹理替换 | 最终分辨率文字合成、统一 DPI 处理、原字形的可靠抑制 |
 | [`audio_timing.hpp`](../../src/host/audio_timing.hpp) | 已有音频队列反馈和时长限制 | 当前以 60 VI 为假设；任何改变模拟速度的方案都需重新验证 |
-| [`auto_counter.py`](../../tools/recomp/probes/auto_counter.py) | 有界的既有反击菜单自动确认探针 | 它使用已审阅截图模板，不提供战斗状态机或单位数据模型 |
+| `auto_counter.py`（2026-10-01 在 5b997c7 删除） | 有界的既有反击菜单自动确认探针 | 它使用已审阅截图模板，不提供战斗状态机或单位数据模型 |
 | `host.cpp::get_device` 和固定运行库的 `ultramodern/input.hpp` | 当前控制器输入 | 宿主返回 `Pak::None`；运行库的 `TransferPak` 仍是注释项，需要专项适配 |
 
 当前 JP 第一话通关保存、原生语言与高清配置以及单帧字体实验的证据范围分别见 [recomp 进度](recomp-progress.md)、[原生内容配置](../native/native-content-foundation.md)、字体实验（探针 2026-09-24 已删除）。三者不能互相替代。
