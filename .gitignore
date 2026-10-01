@@ -40,6 +40,9 @@ htmlcov/
 # Our own symbol font (DejaVu triangles + a drawn wrench) ships from the repository.
 !/content/fonts/SRW64Symbols.ttf
 !/content/fonts/SRW64Prompts.ttf
+# HarmonyOS Sans, unmodified with its licence (redistribution with the software is allowed).
+!/content/fonts/HarmonyOS_Sans_SC.ttf
+!/content/fonts/HarmonyOS_Sans_Condensed.ttf
 *.zip
 *.7z
 *.tar

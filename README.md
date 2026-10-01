@@ -260,7 +260,8 @@ rest of the story and battle dialogue is not translated yet.
 ### Getting started
 
 The repository does **not** include a ROM, game saves, extracted game assets,
-fonts, HD texture packs, generated game code, or a prebuilt application. Supply
+HD texture packs, generated game code, or a prebuilt application (it does carry
+the HarmonyOS Sans fonts the game uses, unmodified, with their licence). Supply
 your own matching original Japanese Rev 0 ROM as `rom.z64` in the repository
 root. Its identity and pinned toolchain sources are in [provenance](docs/guide/provenance.md).
 
@@ -365,7 +366,7 @@ GitHub Actions is disabled; build and validation commands run locally.
 
 ### 启动与检查
 
-仓库不包含 ROM、存档、提取后的游戏素材、字体、HD 纹理包、生成的游戏代码或预编译程序。
+仓库不包含 ROM、存档、提取后的游戏素材、HD 纹理包、生成的游戏代码或预编译程序（游戏用的 HarmonyOS Sans 字体按许可原样附带）。
 请自行准备匹配的日版 Rev 0 原始 ROM，放在仓库根目录并命名为 `rom.z64`。
 ROM 身份和工具链固定版本见[来源记录](docs/guide/provenance.md)。
 
@@ -458,14 +459,12 @@ open "dist/SRW64-macos14-arm64/SRW64 Recompiled.app"
 On first launch, select your matching ROM; the application imports the content
 locally. ROMs, imported assets and saves are not copied into the bundle. The
 bundle carries HarmonyOS Sans and a small symbol font in `Contents/Resources/fonts`
-with their licences: run `tools/content/prepare_fonts.py` first, which checks
-the official HarmonyOS Sans archive (placed under `assets/`) against
-`content/fonts/harmonyos-sans.json`. ICU retains its full data package for now.
+with their licences: `make` (or `tools/content/prepare_fonts.py`) checks the
+copies in `content/fonts` against `content/fonts/harmonyos-sans.json`. ICU retains its full data package for now.
 
 首次启动选择匹配的 ROM，由应用在本地导入内容；ROM、导出素材和存档不装入应用包。应用包在
-`Contents/Resources/fonts` 带上 HarmonyOS Sans 和一个小型符号字体及各自许可：打包前先运行
-`tools/content/prepare_fonts.py`，它按 `content/fonts/harmonyos-sans.json` 核对放在 `assets/` 下的
-HarmonyOS Sans 官方包。ICU 暂时保留完整数据。
+`Contents/Resources/fonts` 带上 HarmonyOS Sans 和一个小型符号字体及各自许可：`make`（或
+`tools/content/prepare_fonts.py`）会按 `content/fonts/harmonyos-sans.json` 核对 `content/fonts` 里的字体。ICU 暂时保留完整数据。
 
 The packager checks every bundled Mach-O's deployment target and signs the app
 ad hoc for local testing; it is not notarized. Existing output is never overwritten:
@@ -550,9 +549,9 @@ See / 见 [debug interface / 调试接口与 MCP](docs/guide/debug-interface.md)
 ## Credits and contributing / 致谢与贡献
 
 Dialogue and native pages use the HarmonyOS Sans fonts (HarmonyOS Sans Fonts
-License Agreement; the files ship only inside the application, see
-`content/fonts/harmonyos-sans.json`). / 对白与原生页面使用 HarmonyOS Sans 字体（HarmonyOS Sans 字体许可协议，
-字体文件只随应用分发，见 `content/fonts/harmonyos-sans.json`）。
+License Agreement, which allows redistributing them unmodified with software but
+not on their own; the official files and licence are in `content/fonts`). / 对白与原生页面使用 HarmonyOS Sans
+字体（HarmonyOS Sans 字体许可协议：允许随软件原样再分发，不许单独分发或修改；官方原样文件与协议在 `content/fonts`）。
 
 Built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
 [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime), and
