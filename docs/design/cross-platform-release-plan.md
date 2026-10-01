@@ -101,6 +101,7 @@ manifest 列出允许读取的文件及 SHA-256；运行时拒绝路径越界、
 - `--import-save`：认 32 KiB SRAM（大端／32 位字倒序／16 位倒序）和 RetroArch `.srm`（SRAM 段在 0x20800），
   按文件头魔数判断，不认扩展名。旧卡带先存进 `imports/`，旧栏 1、2 里与新卡不同的存档挪成扩展栏，
   两边的「见过」位图合并。
+- `--import-save` 不带 `--rom`：只导入、不启动游戏；游戏运行时用户目录被锁，会拒绝。
 - `--export-save`：默认按扩展名选格式（`.ram`/`.sav` ares、`.sra` Project64、`.srm` RetroArch），
   `--export-format` 可指定。目标已存在时先复制成 `*.before-srw64`；写入 RetroArch `.srm` 时保留其中其他存档。
 - `--new-game`：从空白卡带开始；退出时旧卡带栏 1、2 里完好的存档挪成扩展栏，不会丢（旧卡带损坏也照常开始）。

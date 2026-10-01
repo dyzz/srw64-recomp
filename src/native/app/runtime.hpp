@@ -22,6 +22,9 @@ std::string usage();
 // --export-save: writes the saved card for an emulator and returns the file; no ROM
 // or game is needed.
 fs::path export_save(const Options& options);
+// --import-save without --rom: takes the file in as the card (save_library.hpp) under the
+// user directory's lock and starts nothing; returns what was found and kept.
+std::string import_save(const Options& options);
 enum class Platform { Windows, MacOS, Linux };
 using EnvironmentLookup = std::function<std::string(const char*)>;
 fs::path default_user_dir(Platform platform, const EnvironmentLookup& lookup);
@@ -35,11 +38,20 @@ fs::path bundled_resource(const std::string& name);
 void set_environment(const std::string& key, const std::string& value);
 void clear_runtime_environment();
 
-// The lock is held for the entire in-process host run. An existing lock file is
-// harmless; only an OS-held lock prevents another launch.
+// The user directory's lock: one game (or one import) at a time. An existing lock file is
+// harmless; only an OS-held lock prevents another.
+class UserLock {
+    struct Handle;
+    std::unique_ptr<Handle> handle;
+public:
+    explicit UserLock(const fs::path& user_dir);
+    ~UserLock();
+    UserLock(const UserLock&)=delete;
+    UserLock& operator=(const UserLock&)=delete;
+};
+// The lock is held for the entire in-process host run.
 class Session {
-    struct Lock;
-    std::unique_ptr<Lock> lock;
+    std::unique_ptr<UserLock> lock;
     fs::path root, directory;
     std::optional<fs::path> initial;
     std::string id;

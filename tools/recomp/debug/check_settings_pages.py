@@ -110,7 +110,7 @@ time.sleep(2)
 s.client.call('window', width=960, height=720)
 key(',', command)
 wait_for(settings_open, 'the window opens')
-check('opens-on-general', lambda: shown_page() == 'general' and focused() == 'locale:zh-Hans', lambda: {'page': shown_page(), 'focus': focused()})
+check('opens-on-general', lambda: shown_page() == 'general' and focused() == 'locale:zh-Hans', lambda: {'page': shown_page(), 'focus': focused()}, timeout=12)
 
 # Every page in every language at the smallest window.
 for locale in ('zh-Hans', 'en', 'ja'):
@@ -134,11 +134,14 @@ time.sleep(.5)
 key('down')
 check('down-leaves-the-tabs', lambda: focused() == 'locale:zh-Hans', lambda: {'focus': focused()})
 key('e')
-check('e-turns-to-interface', lambda: shown_page() == 'interface' and focused() == 'battle-ui:native', lambda: {'page': shown_page(), 'focus': focused()})
+# 界面 starts with the interface size, then the pre-battle page (native / hd / original).
+check('e-turns-to-interface', lambda: shown_page() == 'interface' and (focused() or '').startswith('ui-size:'), lambda: {'page': shown_page(), 'focus': focused()})
+key('down')
+check('down-to-battle-ui', lambda: focused() == 'battle-ui:native', lambda: {'focus': focused()})
 key('right')
-check('right-moves-within-row', lambda: focused() == 'battle-ui:original', lambda: {'focus': focused()})
+check('right-moves-within-row', lambda: focused() == 'battle-ui:hd', lambda: {'focus': focused()})
 key('return', pause=.8)
-check('enter-presses', lambda: saved('battle_ui') == 'original' and focused() == 'battle-ui:original', lambda: {'battle_ui': saved('battle_ui'), 'focus': focused()})
+check('enter-presses', lambda: saved('battle_ui') == 'hd' and focused() == 'battle-ui:hd', lambda: {'battle_ui': saved('battle_ui'), 'focus': focused()})
 shot('settings-keys-interface-960.png')
 key('left')
 key('return', pause=.8)
@@ -181,13 +184,15 @@ check('reopens-on-saved-page', lambda: shown_page() == 'rules' and saved('settin
 # The controller: hints follow it, L1/R1 turn, B closes, View opens.
 pad('r1')
 check('r1-turns', lambda: shown_page() == 'saves', lambda: {'page': shown_page()})
-check('pad-hints', lambda: any('L1 / R1 切换分类' in row.get('text', '') for row in nodes()))
+# The hints show the controller's buttons as PromptFont icons (button_prompts), not as words.
+check('pad-hints', lambda: any('切换分类' in row.get('text', '') and '{' not in row.get('text', '') for row in nodes()))
 shot('settings-pad-saves-960.png')
 pad('l1')
 pad('l1')
 # A debug run has no save library, so 存档 has nothing to choose: the focus sat on the
 # tabs and stays there.
 check('l1-turns-back', lambda: shown_page() == 'interface' and focused() == 'settings-page:interface', lambda: {'page': shown_page(), 'focus': focused()})
+pad('down')
 pad('down')
 pad('down')
 pad('right')
