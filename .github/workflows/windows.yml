@@ -84,6 +84,8 @@ jobs:
     runs-on: windows-2022
     env:
       VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}\vcpkg-cache
+      # Python reads and writes text as UTF-8, not the Windows code page (X3: unspecified encodings).
+      PYTHONUTF8: "1"
     steps:
       - uses: actions/checkout@v4
 
