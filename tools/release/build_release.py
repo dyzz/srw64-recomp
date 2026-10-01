@@ -34,6 +34,18 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 # toolchain and the ROM, not on the project's sources.
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
+# --attach: the other platforms' packages and their lines in the notes.
+ATTACH_NAMES = {"linux": "SRW64-{version}-linux-x64.tar.gz", "windows": "SRW64-{version}-windows-x64.zip"}
+PACKAGE_ROWS = {
+    "macos": "应用本体。Apple Silicon，macOS 14 起。首次启动时选择你的 ROM。",
+    "linux": "应用本体。Linux x64（含 Steam Deck），glibc 2.35 起，Vulkan。解压后运行 `srw64.sh`；"
+             "ROM 放在 `~/.local/share/srw64-recomp/rom.z64` 或 `srw64.sh` 旁边。Steam Deck 上可用 `add-to-steam.sh` 加入 Steam，详见包内 README.txt。",
+    "windows": "应用本体。Windows 10（2004）／11，x64，D3D12 或 Vulkan。解压后把 ROM 命名为 `rom.z64` 放在 `srw64.cmd` 旁边"
+               "（或 `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`），双击 `srw64.cmd`。",
+}
+PACKAGE_EN = {"macos": "is the macOS app (Apple Silicon, macOS 14 or later)",
+              "linux": "the Linux x64 / Steam Deck build (glibc 2.35+, Vulkan; run `srw64.sh`, see README.txt)",
+              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `srw64.cmd` as `rom.z64` and run it)"}
 
 
 def sha256(path: Path) -> str:
@@ -73,6 +85,10 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="new directory (default build/release/<version>-<commit>)")
     parser.add_argument("--keep-source", action="store_true", help="keep OUTPUT/src and its build after success")
     parser.add_argument("--jobs", type=int, default=8)
+    parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
+                        help="another platform's package built elsewhere: linux=… (build_linux.py) or "
+                             "windows=… (the windows workflow); copied in as SRW64-<version>-<platform> and "
+                             "listed in release.json and the notes")
     args = parser.parse_args()
 
     commit = subprocess.check_output(["git", "rev-parse", "--verify", f"{args.commit}^{{commit}}"], cwd=ROOT, text=True).strip()
@@ -151,21 +167,33 @@ def main() -> int:
     hd_zip = output / f"SRW64-{args.version}-HD.zip"
     zip_folder(steps, "zip-hd", pack_dir, "hd", hd_zip)
 
-    artifacts = {path.name: {"bytes": path.stat().st_size, "sha256": sha256(path)} for path in (app_zip, hd_zip)}
+    # Packages of the other platforms, under the release's names, between the app and the HD pack.
+    attached = []
+    for item in args.attach:
+        platform, _, source_file = item.partition("=")
+        if platform not in ATTACH_NAMES or not Path(source_file).is_file():
+            raise SystemExit(f"--attach {item}: expected linux=FILE or windows=FILE")
+        target = output / ATTACH_NAMES[platform].format(version=args.version)
+        shutil.copyfile(source_file, target)
+        attached.append((platform, target))
+    packages = [("macos", app_zip), *attached]
+    artifacts = {path.name: {"bytes": path.stat().st_size, "sha256": sha256(path)} for _, path in (*packages, ("hd", hd_zip))}
     record = {"schema": "srw64.release-build.v1", "version": args.version, "tag": f"v{args.version}", "commit": commit,
               "artifacts": artifacts, "hd": json.loads((pack_dir / "hd/hd.json").read_text()),
               # Not run here. --target pins the tag to the built commit.
               "publish": ["gh", "release", "create", f"v{args.version}", "--repo", "dyzz/srw64-recomp",
                           "--target", commit, "--title", f"SRW64 Recompiled {args.version}",
-                          "--notes-file", str(output / "release-notes.md"), str(app_zip), str(hd_zip)]}
+                          "--notes-file", str(output / "release-notes.md"), *[str(path) for _, path in packages], str(hd_zip)]}
     (output / "release.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
     notes = source / NOTES.relative_to(ROOT)
     if notes.is_file():
         mib = {name: f"{row['bytes'] / 1048576:.0f} MB" for name, row in artifacts.items()}
+        rows = "\n".join(f"| `{path.name}` | {mib[path.name]} | {PACKAGE_ROWS[platform]} |" for platform, path in packages)
+        checksums = "\n".join(f"{row['sha256']}  {name}" for name, row in artifacts.items())
         text = notes.read_text().format(version=args.version, tag=record["tag"], commit=commit, short=commit[:7],
-                                        app_zip=app_zip.name, hd_zip=hd_zip.name,
-                                        app_size=mib[app_zip.name], hd_size=mib[hd_zip.name],
-                                        app_sha=artifacts[app_zip.name]["sha256"], hd_sha=artifacts[hd_zip.name]["sha256"])
+                                        app_zip=app_zip.name, hd_zip=hd_zip.name, hd_size=mib[hd_zip.name],
+                                        package_rows=rows, checksums=checksums,
+                                        packages_en="; ".join(f"`{path.name}` {PACKAGE_EN[platform]}" for platform, path in packages))
         (output / "release-notes.md").write_text(text)
     if not args.keep_source:
         subprocess.run(["git", "worktree", "remove", "--force", str(source)], cwd=ROOT, check=True)
