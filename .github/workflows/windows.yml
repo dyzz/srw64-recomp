@@ -60,7 +60,10 @@ jobs:
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
         run: |
-          tar -czf "$RUNNER_TEMP/generated.tgz" build/recomp/cpu-bound build/recomp/audio-probe build/fonts
+          # The patched upstream sources go too (without their .git), so the Windows job
+          # builds exactly what was prepared here.
+          tar -czf "$RUNNER_TEMP/generated.tgz" --exclude=.git \
+            build/recomp/cpu-bound build/recomp/audio-probe build/fonts build/recomp/upstream
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY \
             -in "$RUNNER_TEMP/generated.tgz" -out generated.tgz.enc
           rm "$RUNNER_TEMP/generated.tgz" rom.z64
@@ -72,3 +75,69 @@ jobs:
           path: generated.tgz.enc
           retention-days: 1
           if-no-files-found: error
+
+  build:
+    needs: generate
+    runs-on: windows-2022
+    env:
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}\vcpkg-cache
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: generated-encrypted
+
+      - name: Decrypt the generated inputs
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out "$RUNNER_TEMP/generated.tgz"
+          tar -xzf "$RUNNER_TEMP/generated.tgz"
+          rm generated.tgz.enc "$RUNNER_TEMP/generated.tgz"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Python environment
+        run: |
+          python -m venv .venv
+          .venv\Scripts\python -m pip install -q -e . -r requirements.lock
+
+      - name: vcpkg cache
+        uses: actions/cache@v4
+        with:
+          path: vcpkg-cache
+          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
+
+      - name: FreeType, HarfBuzz, ICU (vcpkg)
+        run: |
+          New-Item -ItemType Directory -Force vcpkg-cache | Out-Null
+          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu --triplet x64-windows
+
+      - name: MSVC environment
+        shell: pwsh
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
+          cmd /c "`"$vs\VC\Auxiliary\Build\vcvars64.bat`" >nul && set" | ForEach-Object {
+            if ($_ -match '^([^=]+)=(.*)$') { "$($Matches[1])=$($Matches[2])" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV }
+          }
+
+      - name: Configure
+        run: |
+          cmake -S src/host -B build/recomp/gfx-build -G Ninja -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl `
+            "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" `
+            -DSRW64_ENABLE_RT64=ON -DSRW64_METAL_SOURCE_SHADERS=OFF `
+            "-DPython3_EXECUTABLE=$PWD/.venv/Scripts/python.exe"
+
+      - name: Game code (output kept out of the log)
+        run: |
+          cmake --build build/recomp/gfx-build --target srw64_cpu -j 4 *> cpu-build.log
+          if ($LASTEXITCODE -ne 0) { "srw64_cpu failed: " + (Select-String -Path cpu-build.log -Pattern "error:" | Measure-Object).Count + " errors"; exit 1 }
+          Remove-Item cpu-build.log
+
+      - name: Host
+        run: cmake --build build/recomp/gfx-build --target srw64-gfx-host -j 4 -- -k 0
