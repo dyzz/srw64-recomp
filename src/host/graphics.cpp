@@ -279,14 +279,14 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
             previous=std::move(sample);
         }
         if (debug_shot) {
-            const bool written = stbi_write_png(debug_shot->path.c_str(), width, height, 4, rgba.data(), width * 4);
+            const bool written = stbi_write_png(debug_shot->path.string().c_str(), width, height, 4, rgba.data(), width * 4);
             srw64::debug::screenshots().finish(debug_shot->id, written
                 ? nlohmann::json({{"path", debug_shot->path.string()}, {"present", frame}, {"vi", vi},
                                   {"width", width}, {"height", height}, {"image_mode", image_mode}})
                 : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
         if(!screenshot && !anomaly)return;
-        if (!stbi_write_png(path.c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
+        if (!stbi_write_png(path.string().c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
         auto metadata_path = path;
         metadata_path.replace_extension("json");
         std::ofstream metadata(metadata_path);

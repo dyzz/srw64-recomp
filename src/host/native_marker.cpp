@@ -533,7 +533,7 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
     for (size_t l = 0; l < kPlateLocales.size(); ++l) {
         const auto file = pack / plate.at("textures").at(kPlateLocales[l]).get<std::string>();
         int width = 0, height = 0, channels = 0;
-        uint8_t *pixels = stbi_load(file.c_str(), &width, &height, &channels, 4);
+        uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
         if (!pixels) throw std::runtime_error("Cannot read native plate " + file.string());
         m.platePixels[l].assign(pixels, pixels + size_t(width) * height * 4);
         stbi_image_free(pixels);
@@ -567,7 +567,7 @@ void load_models(const std::filesystem::path& pack) {
         if (m->shading == Shading::baked) {
             const auto file = pack / entry.at("texture").get<std::string>();
             int width = 0, height = 0, channels = 0;
-            uint8_t *pixels = stbi_load(file.c_str(), &width, &height, &channels, 4);
+            uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
             if (!pixels) throw std::runtime_error("Cannot read native model atlas " + file.string());
             m->atlasPixels.assign(pixels, pixels + size_t(width) * height * 4);
             stbi_image_free(pixels);

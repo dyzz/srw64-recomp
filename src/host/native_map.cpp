@@ -178,7 +178,7 @@ void decode(Asset& asset) {
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
         int x = 0, y = 0, n = 0;
-        uint8_t* pixels = stbi_load((folder / name).c_str(), &x, &y, &n, channels);
+        uint8_t* pixels = stbi_load((folder / name).string().c_str(), &x, &y, &n, channels);
         if (!pixels) throw std::runtime_error("Cannot read HD map image " + (folder / name).string());
         if (x != w || y != h) { stbi_image_free(pixels); throw std::runtime_error("HD map image size differs from meta.json"); }
         out.assign(pixels, pixels + size_t(x) * y * channels);
