@@ -45,6 +45,21 @@ PYTHONPATH=src:tools ../../../../.venv/bin/python tools/release/package_macos.py
 - 启动时（`src/host/host.cpp`）打包的 ROM 顶替第一次弹出的 ROM 选择框：这台 Mac 记得别的 ROM 时照旧用记住的；按住 Option 或 `--choose-rom` 仍然弹选择框。
 - 这个应用不进 `release.json`，也不压缩成发布文件；`build_release.py` 本身从不带 ROM。
 
+### 附上其他平台的包
+
+Linux 包（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`）和 Windows 包（GitHub Actions 的 `windows` 工作流）在别处构建，
+用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：
+
+```sh
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.3 \
+  --attach linux=build/deck/<提交>/src/build/linux-x64/SRW64-SteamDeck-0.3.3-<日期>-<提交>.tar.gz \
+  --attach windows=build/windows/<提交>/SRW64-0.3.3-windows-x64.zip
+```
+
+附件改名为 `SRW64-<版本>-linux-x64.tar.gz`、`SRW64-<版本>-windows-x64.zip`，下载表、HD 包的三个平台安装位置、校验值和
+`release.json` 的发布命令都按附上的包生成。三个平台共用同一个 HD 包；它只能在本机构建（素材不进仓库），所以总是由这一步打出。
+附上的包要来自同一个提交：HD 包只配同一版本的应用。
+
 ## 发布
 
 确认 `release-notes.md` 与两个文件后，执行 `release.json` 里 `publish` 记下的 `gh release create` 命令。
