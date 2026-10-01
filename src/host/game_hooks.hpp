@@ -91,6 +91,9 @@ struct SRW64GameHooks {
     bool (*swap_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*swap_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};
     void (*swap_frame)(uint8_t*){};
+    // SRAM transfers through 80090E5C (direction 1 write / 0 read, cartridge address, RDRAM
+    // buffer, length); true: the host answered it and the original does not run (save_store.hpp).
+    bool (*sram_transfer)(uint8_t*, unsigned direction, uint32_t cart, uint32_t buffer, uint32_t length){};
     // データセーブ: screens 1 (medium choice) and 9 (slots, overwrite window, pak messages).
     bool (*save_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*save_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};

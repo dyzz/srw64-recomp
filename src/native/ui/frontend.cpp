@@ -1517,7 +1517,8 @@ void swap_sync() {
 
 // データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
 // and the two-slot page (0x73) with the overwrite window (0x74) and the Controller Pak
-// message box (0x8C), at the original positions.
+// message box (0x8C), at the original positions. With extended slots the list runs on
+// in pages of two; page 1 is the cartridge's own slots.
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
@@ -1569,11 +1570,18 @@ void save_sync() {
         const unsigned cursor=next.value("cursor",0u),mode=next.value("mode",0u),medium=next.value("medium",0u);
         body+=box(117,21,203,43,at(0,3,escape(media[medium]),"im-center",fit(media[medium],80),86),10.f,"save-title");
         const auto& slots=next.at("slots");
+        const unsigned count=next.value("count",2u),page=next.value("page",0u),pages=next.value("pages",1u);
+        if(count>2) {
+            const std::string cartridge=localization::catalog().ui("save_cartridge"),number=std::to_string(page+1)+" / "+std::to_string(pages);
+            if(page==0)body+=at(21,50,escape(cartridge),"im-dim",fit(cartridge,80));
+            body+=at(239,50,"&lt; "+escape(number)+" &gt;","im-right im-dim",0,60);
+        }
         for(unsigned n=0;n<slots.size();++n) {
             const auto& s=slots[n];const float y0=69+80*n;const bool used=s.value("used",false);
-            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",10.f,"save-face:"+std::to_string(n));
-            std::string rows="<button id='save:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
-                span(label_of("slot")+std::to_string(n+1),68,"",fit(label_of("slot")+std::to_string(n+1),66))+
+            const unsigned index=s.value("index",n),slot=s.value("number",n+1);
+            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",10.f,"save-face:"+std::to_string(index));
+            std::string rows="<button id='save:"+std::to_string(index)+"' class='im-row "+(index==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
+                span(label_of("slot")+std::to_string(slot),68,"",fit(label_of("slot")+std::to_string(slot),66))+
                 (used?span(s.value("name",std::string()),90,"",fit(s.value("name",std::string()),86))+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(s.value("level",json())),14,"im-right"):std::string())+"</button>";
             if(used) {
                 // 第  話 carries the number in its blanks, as the original's %2d at x=104.
@@ -1587,7 +1595,7 @@ void save_sync() {
                     at(3,54,escape(label_of("turns")),"im-dim",fit(label_of("turns"),54))+at(58,54,number(s.value("turns",json())),"im-right",0,24)+
                     at(104,54,escape(label_of("funds")),"im-dim",fit(label_of("funds"),38))+at(144,54,number(s.value("funds",json())),"im-right",0,62);
             }
-            body+=box(87,y0,299,y0+70,rows,10.f,"save-slot:"+std::to_string(n));
+            body+=box(87,y0,299,y0+70,rows,10.f,"save-slot:"+std::to_string(index));
         }
         if(mode==1) {
             body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(label_of("overwrite")),"",fit(label_of("overwrite"),208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),10.f,"save-window")+
@@ -1606,7 +1614,8 @@ void save_sync() {
             body+="<div class='im-shade'></div>"+box(29,77,291,179,lines,9.f,"save-pak-message");
         }
         const bool loading=next.value("context",std::string())=="title";
-        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":loading?"title_load_hint":"save_slots_hint");
+        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":loading?(count>2?"title_load_hint_pages":"title_load_hint"):
+                   count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
     save_doc=document(body,true);save_doc->SetClass("modal",false);
@@ -2515,7 +2524,14 @@ bool dispatch(SDL_Event& event) {
                 return true;
             }
             const unsigned at=save_request.value(mode==1?"window_cursor":"cursor",0u);
-            if(k==SDLK_UP || k==SDLK_DOWN){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+            if(mode==1 && (k==SDLK_UP || k==SDLK_DOWN)){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+            // The slot list: up and down run through every slot, left and right turn the page.
+            const unsigned count=std::max(1u,save_request.value("count",2u)),pages=(count+1)/2;
+            if(k==SDLK_UP || k==SDLK_DOWN){save_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            if(screen=="slots" && pages>1 && (k==SDLK_LEFT || k==SDLK_RIGHT)) {
+                const unsigned page=(at/2+(k==SDLK_LEFT?pages-1:1))%pages;
+                save_page::answer(serial,"move:"+std::to_string(std::min(page*2+at%2,count-1)));return true;
+            }
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){save_page::answer(serial,"choose");return true;}
             if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,mode==1?"cancel":"back");return true;}

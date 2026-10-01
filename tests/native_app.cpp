@@ -1,5 +1,6 @@
 #include "app/runtime.hpp"
 #include "app/sha256.hpp"
+#include "app/sram.hpp"
 #include <cstdlib>
 #include <chrono>
 #include <iostream>
@@ -67,6 +68,12 @@ void parser_and_paths() {
     reject({"--rom","x","--content","y","--mute","--mute"});
     reject({"--rom","x","--content","y","--unknown","z"});
     reject({"--rom","x","--content","y","--new-game","--import-save","z"});
+    const std::vector<std::string_view> exporting={"--export-save","card.srm","--user-dir","u"};
+    const auto export_options=parse_options(exporting);
+    check(export_options.export_save.is_absolute() && export_options.rom.empty(),"export needs no ROM");
+    reject({"--export-format","ares"});
+    reject({"--export-save","x.sra","--export-format","pj64"});
+    reject({"--export-save","x.sra","--rom","y"});
     reject({"--rom","--content","y"});
     std::map<std::string,std::string> env;
     const auto get=[&](const char* key){return env[key];};
@@ -93,11 +100,20 @@ void parser_and_paths() {
     check(read_text(temp.path/"replace.txt",5)=="after","atomic replacement");
     rejects([&]{read_text(temp.path/"replace.txt",4);},"oversized text accepted");
 }
+// A formatted card whose slot 1 holds `tag` bytes under a correct checksum.
+std::string card(char tag) {
+    std::string bytes(32768,'\0');
+    std::copy(sram::magic.begin(),sram::magic.end(),bytes.begin());
+    std::fill_n(bytes.begin()+0x12,0x100,tag);
+    unsigned sum=0;for(size_t i=0x12;i<0x12+0x1F00;++i)sum+=uint8_t(bytes[i]);
+    bytes[0x10]=char(0x80);bytes[0x11]=char(sum);
+    return bytes;
+}
 void sessions() {
     Temporary temp;
     Options options;options.user_dir=temp.path/"player data";
     fs::path completed;
-    const auto old_save=std::string(32768,'a');
+    const auto old_save=card('a');
     {
         Session session(options);
         check(!session.initial_save(),"fresh launch did not start empty");
@@ -108,8 +124,11 @@ void sessions() {
         check(!session.commit_save(temp.path/"absent.bin"),"absent save published");
         atomic_write(temp.path/"short.bin","bad");
         rejects([&]{session.commit_save(temp.path/"short.bin");},"short save published");
+        atomic_write(temp.path/"blank.bin",std::string(32768,'a'));
+        rejects([&]{session.commit_save(temp.path/"blank.bin");},"unformatted save published");
         atomic_write(temp.path/"host.bin",old_save);
         check(session.commit_save(temp.path/"host.bin"),"valid save not published");
+        check(read_text(options.user_dir/"saves/cartridge.sram",32768)==old_save,"card not published");
         completed=session.session_dir();
         rejects([&]{session.commit_save(temp.path/"host.bin");},"duplicate commit accepted");
     }
@@ -118,8 +137,9 @@ void sessions() {
         Session session(options);
         check(session.initial_save().has_value(),"resume lost save");
         check(read_text(*session.initial_save(),32768)==old_save,"resume changed save");
-        atomic_write(*session.initial_save(),std::string(32768,'b'));
+        atomic_write(*session.initial_save(),card('b'));
         check(read_text(completed/"save.bin",32768)==old_save,"game edited immutable history");
+        check(read_text(options.user_dir/"saves/cartridge.sram",32768)==old_save,"game edited the card before commit");
         // Simulated failed/aborted host: do not commit.
     }
     check(read_text(options.user_dir/"last-session.txt",128)==pointer,"aborted launch replaced latest save");
@@ -129,15 +149,53 @@ void sessions() {
         check(!session.commit_save(session.output_dir()/"missing.bin"),"new game without a save replaced history");
     }
     check(read_text(options.user_dir/"last-session.txt",128)==pointer,"empty new game replaced latest pointer");
-    atomic_write(completed/"save.bin",std::string(32768,'c'));
+    auto damaged=old_save;damaged[0x20]^=1;
+    atomic_write(options.user_dir/"saves/cartridge.sram",damaged);
     rejects([&]{Session session(options);},"corrupted save resumed silently");
     {
         auto recovery=options;recovery.import_save=temp.path/"host.bin";Session session(recovery);
         check(read_text(*session.initial_save(),32768)==old_save,"explicit import failed");
         session.commit_save(*session.initial_save());
     }
-    atomic_write(options.user_dir/"last-session.txt","../outside\n");
-    rejects([&]{Session session(options);},"traversing session pointer accepted");
+    {
+        // A new game replaces the card but keeps its slot as an extended slot.
+        auto fresh=options;fresh.new_game=true;Session session(fresh);
+        atomic_write(temp.path/"new.bin",card('n'));
+        check(session.commit_save(temp.path/"new.bin"),"new game not published");
+        check(read_text(options.user_dir/"saves/cartridge.sram",32768)==card('n'),"new game card not published");
+        check(read_text(options.user_dir/"saves/slots/003.rec",0x1F00)==old_save.substr(0x10,0x1F00),"new game lost the old slot");
+    }
+    // Before saves/ the latest card was the last session's save.bin.
+    Options legacy;legacy.user_dir=temp.path/"older player";
+    {
+        Session session(legacy);
+        atomic_write(temp.path/"host.bin",old_save);session.commit_save(temp.path/"host.bin");
+    }
+    fs::remove_all(legacy.user_dir/"saves");
+    {
+        Session session(legacy);
+        check(session.initial_save() && read_text(*session.initial_save(),32768)==old_save,"legacy session not migrated");
+        check(read_text(legacy.user_dir/"saves/cartridge.sram",32768)==old_save,"migration did not publish the card");
+    }
+    fs::remove_all(legacy.user_dir/"saves");
+    {
+        // A new game on an unmigrated directory still keeps the old card's slot.
+        auto fresh=legacy;fresh.new_game=true;Session session(fresh);
+        atomic_write(temp.path/"new.bin",card('m'));session.commit_save(temp.path/"new.bin");
+        check(read_text(legacy.user_dir/"saves/slots/003.rec",0x1F00)==old_save.substr(0x10,0x1F00),"unmigrated new game lost the slot");
+    }
+    {
+        // ... and a damaged card does not stop a new game.
+        auto damaged_card=card('m');damaged_card[0x40]^=1;
+        atomic_write(legacy.user_dir/"saves/cartridge.sram",damaged_card);
+        auto fresh=legacy;fresh.new_game=true;Session session(fresh);
+        atomic_write(temp.path/"new.bin",card('k'));
+        check(session.commit_save(temp.path/"new.bin"),"new game over a damaged card");
+        check(read_text(legacy.user_dir/"saves/cartridge.sram",32768)==card('k'),"new game card after damage");
+    }
+    fs::remove_all(legacy.user_dir/"saves");
+    atomic_write(legacy.user_dir/"last-session.txt","../outside\n");
+    rejects([&]{Session session(legacy);},"traversing session pointer accepted");
     // Even a stale lock FILE is safe after the owner closes the OS lock.
     options.new_game=true;Session unlocked(options);
     check(!unlocked.initial_save(),"stale file prevented new game");
