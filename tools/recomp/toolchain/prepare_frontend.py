@@ -59,7 +59,10 @@ def prepare(fetch: bool = False) -> dict:
     before = '#include "recompui.h"'
     if header.count(before) != 1:
         raise RuntimeError("Pinned renderer header adapter no longer matches")
-    header = header.replace(before, '#include <string>\n#include <vector>\n#include "common/rt64_plume.h"\n#include <RmlUi/Core.h>')
+    # On Windows rt64_plume.h brings in objbase.h, which defines interface as struct, and
+    # the renderer names a parameter interface.
+    header = header.replace(before, '#include <string>\n#include <vector>\n#include "common/rt64_plume.h"\n'
+                            '#ifdef interface\n#undef interface\n#endif\n#include <RmlUi/Core.h>')
     source = (renderer / "ui_renderer.cpp").read_bytes()
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
