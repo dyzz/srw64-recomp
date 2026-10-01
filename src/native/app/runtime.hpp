@@ -12,6 +12,10 @@ namespace srw64::app {
 namespace fs = std::filesystem;
 struct Options {
     fs::path rom, content, user_dir, import_save, export_save;
+    // A compiled custom campaign (srw64.campaign-image.v1, docs/design/custom-campaign.md);
+    // it plays from its own save library, user_dir/campaigns/<id>/saves.
+    fs::path campaign;
+    std::string campaign_id;   // the id the campaign declares; run_standalone reads it
     std::string language, export_format;
     std::optional<std::string> rules;
     unsigned resolution_scale{}; // Zero means use the prepared content default.
@@ -31,6 +35,8 @@ fs::path default_user_dir(Platform platform, const EnvironmentLookup& lookup);
 fs::path default_user_dir();
 fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);
+// A campaign id names its save directory: 1-64 letters, digits, '.', '_' or '-'.
+bool valid_campaign_id(const std::string& id);
 void atomic_write(const fs::path& path, std::string_view text);
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.
@@ -52,7 +58,7 @@ public:
 // The lock is held for the entire in-process host run.
 class Session {
     std::unique_ptr<UserLock> lock;
-    fs::path root, directory;
+    fs::path root, directory, saves_root;
     std::optional<fs::path> initial;
     std::string id;
     bool published{};
@@ -62,6 +68,8 @@ public:
     Session(const Session&)=delete;
     Session& operator=(const Session&)=delete;
     const fs::path& user_dir() const { return root; }
+    // The save library: user_dir/saves, or a campaign's own beside it.
+    const fs::path& saves_dir() const { return saves_root; }
     const fs::path& session_dir() const { return directory; }
     fs::path output_dir() const { return directory/"run"; }
     const std::optional<fs::path>& initial_save() const { return initial; }

@@ -7,6 +7,7 @@
 #include "presentation_settings.hpp"
 #include "notices.hpp"
 #include "upgrade_refund.hpp"
+#include "campaign.hpp"
 #include "input_mode.hpp"
 #include "text/button_prompts.hpp"
 #include "game_adapter/dialogue_source.hpp"
@@ -751,6 +752,10 @@ std::string page_text(const std::string& locale,unsigned resource) {
     return found==language->second.end()?std::string():found->second;
 }
 std::string ui_text(const uint8_t* ram,uint16_t id) {
+    // Chapter titles are record 281 + scene everywhere (title card, intermission,
+    // save list); a campaign's stage names the scene it borrows.
+    if(id>=281 && id<281+256)
+        if(auto title=campaign::title(id-281u,localization::snapshot()->locale))return *title;
     auto text=record_text(ram,localization::catalog(),id);
     return text.empty() && !localization::catalog().resolve(localization::TextKey::base(0,id))?std::to_string(id):text;
 }

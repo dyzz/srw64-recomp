@@ -37,7 +37,21 @@ std::vector<std::string> selected_rules(const Options& options,const GameIdentit
 }
 }
 
-int run_standalone(const Options& options,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
+// The id a compiled campaign (srw64.campaign-image.v1) declares; it names the campaign's
+// save library, so the session needs it before it opens one.
+static std::string read_campaign_id(const fs::path& campaign) {
+    // Stage images make a compiled campaign a few hundred KB; 64 MiB is only a sanity bound.
+    const auto document=json::parse(read_text(campaign,64u<<20),nullptr,false);
+    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1")
+        throw std::runtime_error("Not a compiled campaign (srw64.campaign-image.v1): "+campaign.string());
+    auto id=document.value("id",std::string());
+    if(!valid_campaign_id(id))throw std::runtime_error("A campaign id is 1-64 letters, digits, '.', '_' or '-': "+campaign.string());
+    return id;
+}
+
+int run_standalone(const Options& requested,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
+    Options options=requested;
+    if(!options.campaign.empty())options.campaign_id=read_campaign_id(options.campaign);
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
     if(sha256_file(options.rom)!=game.rom_sha256)throw std::runtime_error("ROM does not match the supported baseline");
@@ -179,7 +193,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         {"SRW64_INPUT_SETTINGS",(session.user_dir()/"input.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         // The save library: extended slots, and the card published as the game saves.
-        {"SRW64_SAVE_LIBRARY",(session.user_dir()/"saves").string()},
+        {"SRW64_SAVE_LIBRARY",session.saves_dir().string()},
         // HD starts on when the bundle has it; F6 or the settings window switch to Original.
         {"SRW64_HD_AVAILABLE",hd_art?"1":"0"},{"SRW64_IMAGE_MODE",hd_art?"hd":"original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
         // The dialogue text shipped with the program, and the player's own edits.
@@ -187,6 +201,8 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         // HarmonyOS Sans and the symbol font shipped in the bundle.
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()}})
         set_environment(key,value);
+    // A custom campaign: its stages replace the scenes they borrow (mini_stage.hpp).
+    if(!options.campaign.empty())set_environment("SRW64_CAMPAIGN",options.campaign.string());
     if(hd_art) {
         set_environment("SRW64_ART_PACK",(hd/"art").string());
         // The golden beacon replaces the dashed ring only with both model packs loaded.
