@@ -28,6 +28,8 @@ NATIVE_HOOKS = {
     "resident_func_80085F30": "srw64_original_frame_boundary",
     "resident_func_800821B0": "srw64_original_rng_seed",
     "resident_func_800822D8": "srw64_original_rng_next",
+    # Every SRAM transfer, for extended slots and autosaves (save_store.cpp).
+    "resident_func_80090E5C": "srw64_original_sram_transfer",
     "resident_func_800924D8": "srw64_original_intermission_serialize",
     "resident_func_80093278": "srw64_original_tactical_serialize",
     "resident_func_800927A4": "srw64_original_intermission_restore",
@@ -123,6 +125,8 @@ NATIVE_HOOKS = {
     # native page's answers (intermission_page.cpp).
     "load_0008F4B0_func_801CDFB0": "srw64_original_intermission_menu_build",
     "load_0008F4B0_func_801CE19C": "srw64_original_intermission_menu_step",
+    # Entering the intermission (autosave.cpp).
+    "load_0008F4B0_func_801D8F74": "srw64_original_intermission_enter",
     # 強化パーツ screens 7 / 18 / 19 (parts_page.cpp).
     "load_0008F4B0_func_801D4A00": "srw64_original_parts_list_open",
     "load_0008F4B0_func_801D4A98": "srw64_original_parts_list_step",

@@ -178,6 +178,8 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
         // The player's key and controller bindings (input_bindings.hpp), beside the language.
         {"SRW64_INPUT_SETTINGS",(session.user_dir()/"input.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
+        // The save library: extended slots, and the card published as the game saves.
+        {"SRW64_SAVE_LIBRARY",(session.user_dir()/"saves").string()},
         // HD starts on when the bundle has it; F6 or the settings window switch to Original.
         {"SRW64_HD_AVAILABLE",hd_art?"1":"0"},{"SRW64_IMAGE_MODE",hd_art?"hd":"original"},{"SRW64_RESOLUTION_SCALE",std::to_string(scale)},
         // The dialogue text shipped with the program, and the player's own edits.

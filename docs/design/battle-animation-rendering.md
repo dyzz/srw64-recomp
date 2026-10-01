@@ -280,3 +280,5 @@ HD 要替换的资源范围：天空 6067–6115（副资源 6116–6224）、�
 - `compile_art` 把它编成 `srw64-unit-extras-hd.json` 与 `unit-extras/`；发布压缩 `compress_hd.py` 与机体立绘同法缩到 6 倍、拆 JPEG＋alpha PNG。
 - 宿主 `native_sprite.cpp`：读 `srw64-units-hd.json`（帧 0）与 `srw64-unit-extras-hd.json`（按帧号），解码改用共享的 `presentation::load_rgba`（发布包的 JPEG＋alpha）；原版镜像按零件顶点 S 判定、翻转 UV；没有 HD 图的四边形精灵在 `scene-sprites.jsonl` 记一条 `no image`。
 - 实机（Mac，正常 play profile）：日志加载 332 张立绘与 96 帧推导图；battle-ui 迷你关卡里 ミニフォー、ダンバイン、ゴッドガンダム 都被替换。推导出的额外帧这几场战斗没有出现（要特定武器演出才会用到），只经离线对照，未在实机上见到。
+
+**朝向修正（2026-10-01）**：最初按零件顶点的 S 方向判镜像，但 316 个站姿里有 134 个（多为敌方机体）整张反着存、每个零件都带翻转标记（0x10），正常绘制时 S 就是反的，于是被误判成镜像、HD 图朝错方向。改为精确判断：四边形的顶点地址等于「场景数据＋零件顶点偏移」是第一组，再加 0x40 是镜像组（`vertex_set`）。实机 デスアーミー（反存）与 ダンバイン 的 HD 与同一时刻原版朝向一致。

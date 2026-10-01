@@ -56,8 +56,9 @@ make
   --language zh-Hans
 ```
 
-`--user-dir PATH` 指定独立用户目录；`--new-game` 不读取旧存档；
-`--import-save PATH` 显式导入一份 32 KiB 原版 SRAM（复制而非修改来源）；
+`--user-dir PATH` 指定独立用户目录；`--new-game` 从空白卡带开始；
+`--import-save PATH` 导入一份模拟器存档作为卡带（见下文「内容与存档」）；
+`--export-save PATH [--export-format ares|project64|mupen64plus|retroarch]` 只导出卡带、不启动游戏；
 `--mute` 静音；`--rules original|fixed|all` 选择并记住规则预设；
 `--resolution-scale 1..8` 指定本次分辨率。语言可在游戏内切换并在下次恢复。
 
@@ -83,13 +84,31 @@ manifest 列出允许读取的文件及 SHA-256；运行时拒绝路径越界、
 | macOS | `~/Library/Application Support/SRW64Recomp` |
 | Linux | `$XDG_DATA_HOME/srw64-recomp`；未设置有效绝对路径时为 `~/.local/share/srw64-recomp` |
 
-每次运行占一个独立会话，宿主只修改本次 SRAM 副本。正常返回后才复制最终 SRAM、
-写摘要并原子替换 `last-session.txt`。无存档、错误返回、损坏摘要或异常终止不会自动
-把未完成会话作为下次恢复源。文件完整性检查不证明游戏内存档槽位有效。
+存档在用户目录的 `saves/`（2026-10-01 起，设计见[多存档栏与自动存档](save-slots-autosave.md)）：
 
-历史快照保留在 `sessions/<id>/save.bin`。需要恢复旧会话时用 `--import-save` 指向该文件；
+| 文件 | 内容 |
+| --- | --- |
+| `saves/cartridge.sram` | 32 KiB 卡带，与 ares 的 `save.ram` 逐字节相同 |
+| `saves/cartridge.sram.prev` | 上一次发布前的卡带 |
+| `saves/slots/NNN.rec` | 扩展栏 3–99：游戏写进一个存档栏的 0x1F00 字节 |
+| `saves/imports/` | 每次导入替换掉的旧卡带 |
+
+每次运行占一个独立会话，宿主只修改本次 SRAM 副本。正常返回后才把最终 SRAM 发布为卡带
+（旧卡带留作 `.prev`），并照旧复制到 `sessions/<id>/save.bin`、写摘要、替换 `last-session.txt`。
+无存档、错误返回或异常终止不发布。卡带必须带 `SRW64V3` 文件头、已用栏和中断区的校验和
+都要对得上，否则拒绝启动，不悄悄回退或开新档。
+
+- `--import-save`：认 32 KiB SRAM（大端／32 位字倒序／16 位倒序）和 RetroArch `.srm`（SRAM 段在 0x20800），
+  按文件头魔数判断，不认扩展名。旧卡带先存进 `imports/`，旧栏 1、2 里与新卡不同的存档挪成扩展栏，
+  两边的「见过」位图合并。
+- `--import-save` 不带 `--rom`：只导入、不启动游戏；游戏运行时用户目录被锁，会拒绝。
+- `--export-save`：默认按扩展名选格式（`.ram`/`.sav` ares、`.sra` Project64、`.srm` RetroArch），
+  `--export-format` 可指定。目标已存在时先复制成 `*.before-srw64`；写入 RetroArch `.srm` 时保留其中其他存档。
+- `--new-game`：从空白卡带开始；退出时旧卡带栏 1、2 里完好的存档挪成扩展栏，不会丢（旧卡带损坏也照常开始）。
+- 旧版本只有 `sessions/`：首次启动时把 `last-session.txt` 指向、摘要相符的 `save.bin` 迁成卡带。
+
+历史快照仍保留在 `sessions/<id>/save.bin`，需要时用 `--import-save` 指向它。
 导入原 Python 试玩历史时，显式选择那次会话的 `runtime-data/saves/*.bin`。
-自动恢复损坏时不悄悄回退或开新档。`--new-game`/`--import-save` 是显式恢复通道。
 
 没有自动清理历史；本次宿主的日志与 runtime-data 也会保留，可能包括缓存 ROM。
 这些目录是私有运行数据，不是可分享的错误报告包。未来增加共享 ROM/cache 目录、日志脱敏

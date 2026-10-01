@@ -17,6 +17,7 @@
 #include "ability_page.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
+#include "save_store.hpp"
 #include "title_page.hpp"
 #include "mini_stage.hpp"
 #include "settings_window.hpp"
@@ -233,6 +234,9 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .set-body p {margin:3dp 0 0; font-size:12dp; line-height:1.35; color:#a4b0d2;}
 .set-name {font-size:17dp; font-weight:bold; color:#e8eefc;}
 .set-row {padding:10dp 12dp; border-bottom:1dp #3fd0ff1f;}
+.set-path {margin:2dp 0 0; font-size:13dp; color:#7f8fa3;}
+.set-message {margin:10dp 12dp; color:#9fe0ff;}
+.set-note {font-size:13dp; color:#7f8fa3;}
 .set-line {display:flex; align-items:center; gap:18dp;} .set-line .set-name {flex:1 1 0; min-width:0;}
 .set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
@@ -525,7 +529,7 @@ int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 // The settings window (docs/native/settings-window.md): an overlay panel over the game
 // with one page per category. Pages in tab order; the id is what presentation.json
 // keeps as settings_page, so the window reopens where it was left.
-constexpr const char* settings_pages[]={"general","interface","rules","controls","about"};
+constexpr const char* settings_pages[]={"general","interface","rules","saves","controls","about"};
 unsigned settings_page{};
 int settings_built=-1;  // the page the open window shows; -1 once it closes
 // The control to focus once the window is rebuilt: an id, "first" for the page's first
@@ -627,14 +631,58 @@ std::string controls_page() {
         button("controls-reset",label("controls_reset"))+"</div></div><p>"+escape(text::expand_prompts(localization::catalog().ui("controls_fixed_list"),prompt_context(false)))+"</p></div>";
     return body;
 }
+// The セーブ page (save_store.hpp): autosave choices, the card written for every emulator,
+// and the slots of the emulator files in saves/import to take in as extended slots. The
+// folder is read when the page is first built and on 再読み込み; a slot whose checksum
+// differs needs a second press, which imports it with the sum redone.
+nlohmann::json save_candidates;
+bool save_candidates_read{};
+std::string save_message,save_force;
+std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={});
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
+std::string with_number(const std::string& key,unsigned n) {
+    auto text=localization::catalog().ui(key);
+    if(const auto at=text.find("{n}");at!=std::string::npos)text.replace(at,3,std::to_string(n));
+    return escape(text);
+}
+std::string saves_page() {
+    if(!save_store::enabled())return "<p>"+label("settings_saves_off")+"</p>";
+    const auto choices=save_store::settings();
+    std::string body=settings_choice("settings_autosave","autosave",{"on","off"},choices.autosave?"on":"off",false);
+    std::string intermission,turn;
+    for(const unsigned n:{1u,3u,5u,10u}) {
+        intermission+=button("autosave-intermission:"+std::to_string(n),std::to_string(n),n==choices.intermission,!choices.autosave);
+        turn+=button("autosave-turn:"+std::to_string(n),std::to_string(n),n==choices.turn,!choices.autosave);
+    }
+    body+=settings_row("settings_autosave_intermission",intermission)+settings_row("settings_autosave_turn",turn);
+    const auto folder=save_store::library_directory();
+    body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button")),"<p class='set-path'>"+escape((folder/"export").string())+"</p>");
+    if(!save_candidates_read){save_candidates=save_store::import_candidates();save_candidates_read=true;}
+    body+=settings_row("settings_save_import",button("save-import-refresh",label("settings_save_import_refresh")),"<p class='set-path'>"+escape((folder/"import").string())+"</p>");
+    for(const auto& file:save_candidates) {
+        const auto name=file.value("file",std::string());
+        std::string slots;
+        if(file.value("unknown",false))slots="<span class='set-note'>"+label("settings_save_import_unknown")+"</span>";
+        else for(unsigned i=0;i<file.at("slots").size();++i) {
+            const auto& slot=file.at("slots")[i];
+            if(!slot.value("used",false))continue;
+            const auto id="save-import:"+std::to_string(i)+":"+name;
+            const auto key=slot.value("intact",false)?"settings_save_import_slot":save_force==id?"settings_save_import_confirm":"settings_save_import_damaged";
+            slots+=button(id,with_number(key,i+1));
+        }
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+" <span class='set-note'>"+escape(file.value("format",std::string()))+"</span></div><div class='set-seg'>"+slots+"</div></div></div>";
+    }
+    if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
+    return body;
+}
 // One setting: its name with its choices beside it, and its note on a line of its own.
 // RmlUi breaks lines only at spaces, so a Chinese or Japanese note needs the whole
 // width (test_settings_window.py checks that each fits the smallest window).
-std::string settings_row(const std::string& key,const std::string& choices) {
-    return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(key+"_note")+"</p></div>";
+std::string settings_row(const std::string& key,const std::string& choices,const std::string& more) {
+    return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(key+"_note")+"</p>"+more+"</div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false) {
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled) {
     std::string choices;
     for(const std::string mode:modes)choices+=button(prefix+":"+mode,label(key+"_"+mode),mode==current,disabled);
     return settings_row(key,choices);
@@ -678,7 +726,10 @@ void settings_sync() {
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
-        std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()));
+        std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
+        // The セーブ page: its choices, the import folder as last read and the last result.
+        [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
+        save_candidates.dump()+save_message+save_force;
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -721,6 +772,8 @@ void settings_sync() {
             for(const auto& entry:rules::catalog)if(entry.kind==group)
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
+    } else if(page=="saves") {
+        body+=saves_page();
     } else if(page=="controls") {
         body+=controls_page();
     } else {
@@ -1517,11 +1570,12 @@ void swap_sync() {
 
 // データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
 // and the two-slot page (0x73) with the overwrite window (0x74) and the Controller Pak
-// message box (0x8C), at the original positions.
+// message box (0x8C), at the original positions. With extended slots the list runs on
+// in pages of two; page 1 is the cartridge's own slots.
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+funds_editing;
     if(save_doc && save_stamp==stamp)return;
     document_close(save_doc);save_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -1569,28 +1623,53 @@ void save_sync() {
         const unsigned cursor=next.value("cursor",0u),mode=next.value("mode",0u),medium=next.value("medium",0u);
         body+=box(117,21,203,43,at(0,3,escape(media[medium]),"im-center",fit(media[medium],80),86),10.f,"save-title");
         const auto& slots=next.at("slots");
+        const unsigned count=next.value("count",2u),page=next.value("page",0u),pages=next.value("pages",1u);
+        if(count>2) {
+            const std::string cartridge=localization::catalog().ui("save_cartridge"),number=std::to_string(page+1)+" / "+std::to_string(pages);
+            if(page==0)body+=at(21,50,escape(cartridge),"im-dim",fit(cartridge,80));
+            body+=at(239,50,"&lt; "+escape(number)+" &gt;","im-right im-dim",0,60);
+        }
         for(unsigned n=0;n<slots.size();++n) {
             const auto& s=slots[n];const float y0=69+80*n;const bool used=s.value("used",false);
-            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",10.f,"save-face:"+std::to_string(n));
-            std::string rows="<button id='save:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
-                span(label_of("slot")+std::to_string(n+1),68,"",fit(label_of("slot")+std::to_string(n+1),66))+
-                (used?span(s.value("name",std::string()),90,"",fit(s.value("name",std::string()),86))+span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(s.value("level",json())),14,"im-right"):std::string())+"</button>";
-            if(used) {
+            const unsigned index=s.value("index",n),slot=s.value("number",n+1);
+            const std::string kind=s.value("kind",std::string("slot"));
+            // An autosave is named by when it was made; a slot 3+ may carry the player's note.
+            const std::string name=kind=="slot"?label_of("slot")+std::to_string(slot):localization::catalog().ui(kind=="turn"?"save_auto_turn":"save_auto");
+            std::string time=s.value("time",std::string());
+            if(time.size()>=16)time=time.substr(5,2)+"/"+time.substr(8,2)+" "+time.substr(11,5);
+            body+=box(21,y0,87,y0+70,"<div style='position:absolute; left:0; top:0; width:100%; height:"+px(70)+"; display:flex; align-items:center; justify-content:center;'>"+(used?art_img(s,64):std::string())+"</div>",10.f,"save-face:"+std::to_string(index));
+            std::string rows="<button id='save:"+std::to_string(index)+"' class='im-row "+(index==cursor?"on":"")+"' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(2)+";'>"+
+                span(name,68,"",fit(name,66))+
+                (used?span(s.value("name",std::string()),90,"",fit(s.value("name",std::string()),86))+
+                    // A turn autosave's record does not say the protagonist's level.
+                    (kind=="turn"?std::string():span(label_of("level"),34,"im-dim",fit(label_of("level"),32))+span(number(s.value("level",json())),14,"im-right")):std::string())+"</button>";
+            if(used && kind=="turn") {
+                // A turn autosave: the map in progress, its turn, the funds.
+                auto turn=localization::catalog().ui("save_turn");
+                if(const auto at=turn.find("{n}");at!=std::string::npos)turn.replace(at,3,number(s.value("map_turn",json())));
+                rows+=at(3,20,escape(turn),"",fit(turn,60))+at(110,20,escape(time),"im-right im-dim",0,96)+
+                    at(2,37,escape(s.value("title",std::string())),"",fit(s.value("title",std::string()),204),204)+
+                    at(104,54,escape(label_of("funds")),"im-dim",fit(label_of("funds"),38))+at(144,54,number(s.value("funds",json())),"im-right",0,62);
+            } else if(used) {
                 // 第  話 carries the number in its blanks, as the original's %2d at x=104.
                 std::string episode=label_of("episode");const std::string count=number(s.value("episode",json()));
                 if(const auto blank=episode.find("  ");blank!=std::string::npos)episode.replace(blank,2,count.size()>1?count:" "+count);
                 else if(const auto one=episode.find(' ');one!=std::string::npos)episode.replace(one,1,count);
                 else episode+=count;
                 const std::string title=s.value("title",std::string())+" "+label_of("clear");
+                const std::string aside=kind=="slot"?s.value("note",std::string()):time;
+                if(!aside.empty())rows+=at(70,20,escape(aside),"im-right im-dim",fit(aside,134),136);
                 rows+=at(3,20,"<span class='im-dim'>"+escape(episode.substr(0,episode.find(count)))+"</span>"+escape(count)+"<span class='im-dim'>"+escape(episode.substr(episode.find(count)+count.size()))+"</span>","",fit(episode,60))+
                     at(2,37,escape(title),"",fit(title,204),204)+
                     at(3,54,escape(label_of("turns")),"im-dim",fit(label_of("turns"),54))+at(58,54,number(s.value("turns",json())),"im-right",0,24)+
                     at(104,54,escape(label_of("funds")),"im-dim",fit(label_of("funds"),38))+at(144,54,number(s.value("funds",json())),"im-right",0,62);
             }
-            body+=box(87,y0,299,y0+70,rows,10.f,"save-slot:"+std::to_string(n));
+            body+=box(87,y0,299,y0+70,rows,10.f,"save-slot:"+std::to_string(index));
         }
-        if(mode==1) {
-            body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(label_of("overwrite")),"",fit(label_of("overwrite"),208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),10.f,"save-window")+
+        if(mode==1 || mode==3) {
+            // 3: deleting a slot 3+ or an autosave, in the overwrite window's place.
+            const std::string first=mode==3?localization::catalog().ui("save_delete"):label_of("overwrite");
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,at(3,3,escape(first),"",fit(first,208),210)+at(3,19,escape(label_of("ask")),"",fit(label_of("ask"),208),210),10.f,"save-window")+
                 yes_no(next.value("window_cursor",0u),221,122,251,163,20);
         } else if(mode==2) {
             // Texts the original placed on one row (status 7 splits lines in two) are joined.
@@ -1606,10 +1685,25 @@ void save_sync() {
             body+="<div class='im-shade'></div>"+box(29,77,291,179,lines,9.f,"save-pak-message");
         }
         const bool loading=next.value("context",std::string())=="title";
-        body+=hint(mode==1?"save_confirm_hint":mode==2?"save_message_hint":loading?"title_load_hint":"save_slots_hint");
+        const auto& tools=next.value("tools",json::object());
+        const bool note=tools.value("note",false),erase=tools.value("delete",false);
+        if(funds_editing=="save-note") {
+            // The note box over the cursor's slot, filled with the note it has.
+            const float y0=69+80*float(cursor%2);
+            std::string current;
+            for(const auto& s:slots)if(s.value("index",0u)==cursor)current=s.value("note",std::string());
+            body+="<input type='text' id='save-note-input' class='im-funds-input' maxlength='40' value='"+escape(current)+"' style='position:absolute; left:"+px(157)+"; top:"+px(y0+21)+
+                "; width:"+px(138)+"; height:"+px(16)+"; line-height:"+px(16)+"; font-size:"+px(9)+";'/>";
+            body+=hint("save_note_hint");
+        } else body+=hint(mode==1 || mode==3?"save_confirm_hint":mode==2?"save_message_hint":
+                   loading?(note?"title_load_hint_tools":erase?"title_load_hint_delete":count>2?"title_load_hint_pages":"title_load_hint"):
+                   note?"save_slots_hint_tools":count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
     save_doc=document(body,true);save_doc->SetClass("modal",false);
+    if(funds_editing=="save-note")if(auto* field=dynamic_cast<Rml::ElementFormControlInput*>(save_doc->GetElementById("save-note-input"))) {
+        context->Update();field->Focus();field->SetSelectionRange(0,int(field->GetValue().size()));
+    }
 }
 
 // Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
@@ -2007,7 +2101,7 @@ void battle_sync() {
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
-    if(id.ends_with("-funds-input"))return;
+    if(id.ends_with("-funds-input") || id=="save-note-input")return;
     funds_editing.clear();
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
@@ -2042,8 +2136,9 @@ void choose(const std::string& id) {
         const unsigned mode=save_request.value("mode",0u);
         if(screen=="choice" && save_request.value("waiting",false))return;
         if(mode==2)return;
-        if(id=="save-yes")save_page::answer(serial,mode==1 && save_request.value("window_cursor",0u)==0?"choose":"move:0");
-        else if(id=="save-no")save_page::answer(serial,mode==1 && save_request.value("window_cursor",0u)==1?"cancel":"move:1");
+        const bool window=mode==1 || mode==3;
+        if(id=="save-yes")save_page::answer(serial,window && save_request.value("window_cursor",0u)==0?"choose":"move:0");
+        else if(id=="save-no")save_page::answer(serial,window && save_request.value("window_cursor",0u)==1?"cancel":"move:1");
         else if(id.starts_with("save:") && mode==0) {
             const unsigned n=unsigned(std::atoi(id.c_str()+5));
             save_page::answer(serial,n==save_request.value("cursor",0u)?"choose":"move:"+std::to_string(n));
@@ -2117,6 +2212,31 @@ void choose(const std::string& id) {
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
+        if(id.starts_with("autosave")) {
+            auto c=save_store::settings();
+            if(id.starts_with("autosave:"))c.autosave=id=="autosave:on";
+            else if(id.starts_with("autosave-intermission:"))c.intermission=unsigned(std::stoi(id.substr(22)));
+            else if(id.starts_with("autosave-turn:"))c.turn=unsigned(std::stoi(id.substr(14)));
+            save_store::set_settings(c);
+        }
+        if(id=="save-export") {
+            std::string error;const auto files=save_store::export_all(error);
+            save_message=error.empty()?localization::catalog().ui("settings_save_exported"):error;
+            if(const auto at=save_message.find("{n}");at!=std::string::npos)save_message.replace(at,3,std::to_string(files.size()));
+        }
+        if(id=="save-import-refresh"){save_candidates_read=false;save_message.clear();save_force.clear();}
+        if(id.starts_with("save-import:") && id.size()>14) {
+            const unsigned index=unsigned(id[12]-'0');const auto file=id.substr(14);
+            bool intact=false;
+            for(const auto& f:save_candidates)if(f.value("file",std::string())==file && index<f.value("slots",nlohmann::json::array()).size())
+                intact=f.at("slots")[index].value("intact",false);
+            if(!intact && save_force!=id){save_force=id;save_message=localization::catalog().ui("settings_save_import_warning");return;}
+            std::string error;
+            const auto number=save_store::import_slot(file,index,!intact,error);
+            save_force.clear();
+            save_message=number?localization::catalog().ui("settings_save_imported"):error;
+            if(const auto at=save_message.find("{n}");number && at!=std::string::npos)save_message.replace(at,3,std::to_string(*number));
+        }
     } catch(const std::exception& error){notices::post("settings-error",error.what());}
 }
 // Newly pressed N64 buttons on the battle page, from the keyboard table in
@@ -2336,7 +2456,8 @@ void sync() {
         else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))
             pad_keys(pad_now,pad_pressed);
     }
-    if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
+    if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)) ||
+       (funds_editing=="save-note" && !save_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
                       language->ui("menu_fullscreen"),language->ui("menu_window_scale")},window_menu_state());
@@ -2405,7 +2526,21 @@ bool dispatch(SDL_Event& event) {
         }
         return true;
     }
-    if(!funds_editing.empty() && !settings_open){
+    if(funds_editing=="save-note" && !settings_open){
+        // A slot's note, typed as it is; Enter keeps it, Esc leaves it as it was.
+        // The box appears with the next rebuild: the key that opened it may still be coming up.
+        auto* field=save_doc?dynamic_cast<Rml::ElementFormControlInput*>(save_doc->GetElementById("save-note-input")):nullptr;
+        if(!save_request.value("visible",false)){funds_editing.clear();return true;}
+        if(!field)return true;
+        if(event.type==SDL_KEYDOWN && !event.key.repeat){
+            const auto k=event.key.keysym.sym;
+            if((k==SDLK_RETURN || k==SDLK_KP_ENTER) && input.accepts_submit()){
+                save_page::answer(save_request.at("serial").get<uint64_t>(),"note:"+std::string(field->GetValue()));
+                funds_editing.clear();return true;
+            }
+            if(k==SDLK_ESCAPE){funds_editing.clear();return true;}
+        }
+    } else if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
         auto* field=doc?dynamic_cast<Rml::ElementFormControlInput*>(doc->GetElementById(funds_editing+"-funds-input")):nullptr;
         const bool page_up=funds_editing=="intermission"?intermission_request.value("visible",false):upgrade_request.value("visible",false);
@@ -2514,11 +2649,24 @@ bool dispatch(SDL_Event& event) {
                 if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,"back");return true;}
                 return true;
             }
-            const unsigned at=save_request.value(mode==1?"window_cursor":"cursor",0u);
-            if(k==SDLK_UP || k==SDLK_DOWN){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+            const unsigned at=save_request.value(mode==1 || mode==3?"window_cursor":"cursor",0u);
+            if((mode==1 || mode==3) && (k==SDLK_UP || k==SDLK_DOWN)){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+            // L writes a note on a slot 3+, R deletes it or an autosave.
+            const auto& tools=save_request.value("tools",json::object());
+            if(screen=="slots" && mode==0 && !event.key.repeat) {
+                if(k==SDLK_q && tools.value("note",false)){funds_editing="save-note";return true;}
+                if(k==SDLK_e && tools.value("delete",false)){save_page::answer(serial,"delete");return true;}
+            }
+            // The slot list: up and down run through every slot, left and right turn the page.
+            const unsigned count=std::max(1u,save_request.value("count",2u)),pages=(count+1)/2;
+            if(k==SDLK_UP || k==SDLK_DOWN){save_page::answer(serial,"move:"+std::to_string((at+(k==SDLK_UP?count-1:1))%count));return true;}
+            if(screen=="slots" && pages>1 && (k==SDLK_LEFT || k==SDLK_RIGHT)) {
+                const unsigned page=(at/2+(k==SDLK_LEFT?pages-1:1))%pages;
+                save_page::answer(serial,"move:"+std::to_string(std::min(page*2+at%2,count-1)));return true;
+            }
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){save_page::answer(serial,"choose");return true;}
-            if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,mode==1?"cancel":"back");return true;}
+            if(k==SDLK_ESCAPE || k==SDLK_x){save_page::answer(serial,mode==1 || mode==3?"cancel":"back");return true;}
         }
     } else if(title_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
