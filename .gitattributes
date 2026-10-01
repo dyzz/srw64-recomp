@@ -1,3 +1,5 @@
-# Windows batch files need CRLF: cmd.exe misreads LF-only lines.
+# Every file checks out byte for byte as committed (hash-locked data, pinned sources),
+# whatever core.autocrlf says; Windows batch files need CRLF, which cmd.exe requires.
+* -text
 *.cmd text eol=crlf
 *.bat text eol=crlf
