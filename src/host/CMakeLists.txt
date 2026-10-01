@@ -181,5 +181,9 @@ if(SRW64_ENABLE_RT64)
         "${SRW64_RT64}/src/contrib/plume/contrib/metal-cpp"
         "${SRW64_RT64}/src/rhi" "${SRW64_RT64}/src/render")
     target_link_libraries(${SRW64_HOST_TARGET} PRIVATE rt64 SDL2::SDL2)
+    if(WIN32)
+        # rt64 names SDL2 and SDL2main by library name; its link_directories stays in its own directory.
+        target_link_directories(${SRW64_HOST_TARGET} PRIVATE "${SRW64_SDL2}/lib/x64")
+    endif()
     endforeach()
 endif()
