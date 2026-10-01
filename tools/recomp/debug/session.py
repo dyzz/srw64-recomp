@@ -46,10 +46,18 @@ class Client:
 
     def _connect(self) -> socket.socket:
         if self._socket is None:
-            connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            # An Android run (tools/release/android/attach.py) has debug.tcp beside it: the
+            # local port adb forwards to the app's abstract socket.
+            tcp = self.path.with_name("debug.tcp")
+            if not self.path.exists() and tcp.exists():
+                connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                address = ("127.0.0.1", int(tcp.read_text().strip()))
+            else:
+                connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                address = str(self.path)
             connection.settimeout(self.timeout)
             try:
-                connection.connect(str(self.path))
+                connection.connect(address)
             except OSError as error:
                 connection.close()
                 raise HostError(f"cannot reach the host at {self.path}: {error}") from error
@@ -217,7 +225,7 @@ class Session:
                 raise HostError("no debug session has been launched; run srw64ctl launch first")
             run = CURRENT.read_text().strip()
         session = cls(Path(run))
-        if not (session.run / "debug.sock").exists():
+        if not (session.run / "debug.sock").exists() and not (session.run / "debug.tcp").exists():
             raise HostError(f"{session.run} has no debug socket (not a debug run, or it has ended)")
         return session
 
